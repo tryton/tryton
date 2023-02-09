@@ -9,12 +9,9 @@ from email.mime.nonmultipart import MIMENonMultipart
 from email.utils import formataddr, getaddresses, parseaddr
 
 from genshi.template import TextTemplate
-from sql import Null
-from sql.operators import Concat
 
 from trytond.config import config
 from trytond.i18n import gettext
-from trytond.ir.resource import ResourceAccessMixin
 from trytond.model import ModelSQL, ModelView, fields
 from trytond.pool import Pool
 from trytond.pyson import Eval, TimeDelta
@@ -202,17 +199,7 @@ class Email(ModelSQL, ModelView):
         msg['Cc'] = ', '.join(formataddr(parseaddr(a)) for a in cc)
         msg['Subject'] = Header(title, 'utf-8')
         msg['Auto-Submitted'] = 'auto-generated'
-        return msg
-
-    def get_log(self, record, trigger, msg, bcc=None):
-        return {
-            'recipients': msg['To'],
-            'recipients_secondary': msg['Cc'],
-            'recipients_hidden': bcc,
-            'resource': str(record),
-            'notification': trigger.notification_email.id,
-            'trigger': trigger.id,
-            }
+        return msg, title
 
     @classmethod
     def trigger(cls, records, trigger):
@@ -240,12 +227,12 @@ class Email(ModelSQL, ModelView):
 
     def send_email(self, records, trigger):
         pool = Pool()
-        Log = pool.get('notification.email.log')
+        Email = pool.get('ir.email')
         datamanager = SMTPDataManager()
         Transaction().join(datamanager)
         from_ = (config.get('notification_email', 'from')
             or config.get('email', 'from'))
-        logs = []
+        emails = []
         for record in records:
             to, to_languages = self._get_to(record)
             cc, cc_languages = self._get_cc(record)
@@ -253,13 +240,20 @@ class Email(ModelSQL, ModelView):
             languagues = to_languages | cc_languages | bcc_languages
             to_addrs = [e for _, e in getaddresses(to + cc + bcc)]
             if to_addrs:
-                msg = self.get_email(record, from_, to, cc, bcc, languagues)
+                msg, title = self.get_email(
+                    record, from_, to, cc, bcc, languagues)
                 sendmail_transactional(
                     from_, to_addrs, msg, datamanager=datamanager)
-                logs.append(self.get_log(
-                        record, trigger, msg, bcc=', '.join(bcc)))
-        if logs:
-            Log.create(logs)
+                emails.append(Email(
+                        recipients=', '.join(to),
+                        recipients_secondary=', '.join(cc),
+                        recipients_hidden=', '.join(bcc),
+                        addresses=[{'address': a} for a in to_addrs],
+                        subject=title,
+                        resource=record,
+                        notification_email=trigger.notification_email,
+                        notification_trigger=trigger))
+        Email.save(emails)
 
     def _get_recipients(self, record, name):
         if name == 'id':
@@ -376,66 +370,3 @@ class EmailAttachment(ModelSQL):
             'Content-Disposition', 'attachment',
             filename=('utf-8', language, name))
         return msg
-
-
-class EmailLog(ResourceAccessMixin, ModelSQL, ModelView):
-    "Notification Email Log"
-    __name__ = 'notification.email.log'
-    date = fields.Function(fields.DateTime('Date'), 'get_date')
-    recipients = fields.Char("Recipients")
-    recipients_secondary = fields.Char("Secondary Recipients")
-    recipients_hidden = fields.Char("Hidden Recipients")
-    notification = fields.Many2One(
-        'notification.email', "Notification",
-        required=True, ondelete='RESTRICT')
-    trigger = fields.Many2One('ir.trigger', "Trigger")
-
-    @classmethod
-    def __setup__(cls):
-        super().__setup__()
-        cls._order = [
-            ('create_date', 'DESC'),
-            ('id', 'DESC'),
-            ]
-
-    @classmethod
-    def __register__(cls, module_name):
-        pool = Pool()
-        Model = pool.get('ir.model')
-        Trigger = pool.get('ir.trigger')
-        model = Model.__table__()
-        trigger = Trigger.__table__()
-        table = cls.__table__()
-        super().__register__(module_name)
-
-        table_h = cls.__table_handler__(module_name)
-        cursor = Transaction().connection.cursor()
-
-        # Migration from 5.6:
-        # fill notification and resource
-        # remove required on trigger
-        notification = trigger.select(
-            trigger.notification_email,
-            where=trigger.id == table.trigger)
-        resource = (trigger
-            .join(model, condition=trigger.model == model.id)
-            .select(
-                Concat(model.model, ',-1'),
-                where=trigger.id == table.trigger))
-        cursor.execute(*table.update(
-                [table.notification, table.resource],
-                [notification, resource],
-                where=(table.trigger != Null) & (table.resource == Null)))
-        table_h.not_null_action('trigger', 'remove')
-
-    def get_date(self, name):
-        return self.create_date.replace(microsecond=0)
-
-    @classmethod
-    def search_date(cls, name, clause):
-        return [('create_date',) + tuple(clause[1:])]
-
-    @staticmethod
-    def order_date(tables):
-        table, _ = tables[None]
-        return [table.create_date]

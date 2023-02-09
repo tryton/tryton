@@ -91,7 +91,7 @@ class NotificationEmailTestCase(CompanyTestMixin, ModuleTestCase):
         Trigger = pool.get('ir.trigger')
         Model = pool.get('ir.model')
         NotificationEmail = pool.get('notification.email')
-        Log = pool.get('notification.email.log')
+        Email = pool.get('ir.email')
 
         self._setup_notification()
         notification_email, = NotificationEmail.search([])
@@ -99,7 +99,7 @@ class NotificationEmailTestCase(CompanyTestMixin, ModuleTestCase):
         model, = Model.search([
                 ('model', '=', User.__name__),
                 ])
-        Trigger.create([{
+        trigger, = Trigger.create([{
                     'name': 'Test creation',
                     'model': model.id,
                     'on_create': True,
@@ -111,7 +111,7 @@ class NotificationEmailTestCase(CompanyTestMixin, ModuleTestCase):
         with patch.object(
                 notification_module, 'sendmail_transactional') as sendmail, \
                 patch.object(notification_module, 'SMTPDataManager'):
-            User.create([{'name': "Michael Scott", 'login': "msc"}])
+            user, = User.create([{'name': "Michael Scott", 'login': "msc"}])
             self.run_tasks()
             sendmail.assert_called_once_with(
                 FROM, ['user@example.com'], ANY,
@@ -125,11 +125,14 @@ class NotificationEmailTestCase(CompanyTestMixin, ModuleTestCase):
             self.assertEqual(
                 msg.get_payload(0).get_payload(), 'Hello Michael Scott')
 
-        log, = Log.search([])
-        self.assertEqual(log.trigger.notification_email, notification_email)
-        self.assertEqual(log.recipients, 'Administrator <user@example.com>')
-        self.assertEqual(log.recipients_secondary, '')
-        self.assertEqual(log.recipients_hidden, '')
+        email, = Email.search([])
+        self.assertEqual(email.recipients, 'Administrator <user@example.com>')
+        self.assertEqual(email.recipients_secondary, '')
+        self.assertEqual(email.recipients_hidden, '')
+        self.assertEqual(email.subject, 'Notification Email')
+        self.assertEqual(email.resource, user)
+        self.assertEqual(email.notification_email, notification_email)
+        self.assertEqual(email.notification_trigger, trigger)
 
     @unittest.skipIf(
         (3, 5, 0) <= sys.version_info < (3, 5, 2), "python bug #25195")
@@ -141,7 +144,7 @@ class NotificationEmailTestCase(CompanyTestMixin, ModuleTestCase):
         Trigger = pool.get('ir.trigger')
         Model = pool.get('ir.model')
         NotificationEmail = pool.get('notification.email')
-        Log = pool.get('notification.email.log')
+        Email = pool.get('ir.email')
 
         self._setup_notification(recipient_field='id')
         notification_email, = NotificationEmail.search([])
@@ -149,7 +152,7 @@ class NotificationEmailTestCase(CompanyTestMixin, ModuleTestCase):
         model, = Model.search([
                 ('model', '=', User.__name__),
                 ])
-        Trigger.create([{
+        trigger, = Trigger.create([{
                     'name': 'Test creation',
                     'model': model.id,
                     'on_create': True,
@@ -161,7 +164,7 @@ class NotificationEmailTestCase(CompanyTestMixin, ModuleTestCase):
         with patch.object(
                 notification_module, 'sendmail_transactional') as sendmail, \
                 patch.object(notification_module, 'SMTPDataManager'):
-            User.create([{
+            user, = User.create([{
                         'name': "Michael Scott",
                         'login': "msc",
                         'email': 'msc@example.com'}])
@@ -170,9 +173,11 @@ class NotificationEmailTestCase(CompanyTestMixin, ModuleTestCase):
                 FROM, ['msc@example.com'], ANY,
                 datamanager=ANY)
 
-        log, = Log.search([])
-        self.assertEqual(log.trigger.notification_email, notification_email)
-        self.assertEqual(log.recipients, 'Michael Scott <msc@example.com>')
+        email, = Email.search([])
+        self.assertEqual(email.recipients, 'Michael Scott <msc@example.com>')
+        self.assertEqual(email.resource, user)
+        self.assertEqual(email.notification_email, notification_email)
+        self.assertEqual(email.notification_trigger, trigger)
 
     @with_transaction()
     def test_notification_email_delay(self):
@@ -240,7 +245,7 @@ class NotificationEmailTestCase(CompanyTestMixin, ModuleTestCase):
 
         user, = User.create([{'name': "Michael Scott", 'login': "msc"}])
 
-        msg = notification_email.get_email(
+        msg, title = notification_email.get_email(
             user, FROM, ['Administrator <user@example.com>'], [], [], [en])
 
         self.assertEqual(msg['From'], FROM)
@@ -280,7 +285,7 @@ class NotificationEmailTestCase(CompanyTestMixin, ModuleTestCase):
 
         user, = User.create([{'name': "Michael Scott", 'login': "msc"}])
 
-        msg = notification_email.get_email(
+        msg, title = notification_email.get_email(
             user, FROM, ['Administrator <user@example.com>'], [], [], [en])
 
         self.assertEqual(msg['Subject'], 'Notification for Michael Scott')
@@ -316,7 +321,7 @@ class NotificationEmailTestCase(CompanyTestMixin, ModuleTestCase):
                     'language': es.id,
                     }])
 
-        msg = notification_email.get_email(
+        msg, title = notification_email.get_email(
             user, FROM, ['Administrator <user@example.com>'], [], [], [es])
 
         self.assertEqual(msg['Subject'], 'Notificación para Michael Scott')
