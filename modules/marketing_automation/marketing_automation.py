@@ -535,6 +535,7 @@ class Activity(ModelSQL, ModelView):
             self, record_activity, smtpd_datamanager=None, **kwargs):
         pool = Pool()
         WebShortener = pool.get('web.shortened_url')
+        Email = pool.get('ir.email')
         record = record_activity.record
 
         with Transaction().set_context(language=record.language):
@@ -618,6 +619,16 @@ class Activity(ModelSQL, ModelView):
         if to_addrs:
             sendmail_transactional(
                 from_, to_addrs, msg, datamanager=smtpd_datamanager)
+
+            email = Email(
+                recipients=to,
+                addresses=[{'address': a} for a in to_addrs],
+                subject=title,
+                resource=record.record,
+                marketing_automation_activity=self,
+                marketing_automation_record=record,
+                )
+            email.save()
 
     def email_context(self, record):
         return {

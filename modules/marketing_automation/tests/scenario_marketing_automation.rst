@@ -24,6 +24,8 @@ Activate modules::
 
     >>> config = activate_modules('marketing_automation')
 
+    >>> Email = Model.get('ir.email')
+
 Create a party::
 
     >>> Party = Model.get('party.party')
@@ -153,6 +155,18 @@ Check email sent::
     >>> click_url.method
     'marketing.automation.record.activity|on_email_clicked'
     >>> record.uuid in msg
+    True
+
+    >>> email, = Email.find([])
+    >>> email.recipients
+    'Michael Scott <michael@example.com>'
+    >>> email.subject
+    'Hello'
+    >>> email.resource == party
+    True
+    >>> email.marketing_automation_activity == root_activity
+    True
+    >>> bool(email.marketing_automation_record)
     True
 
 Trigger open email and reminder after delay::

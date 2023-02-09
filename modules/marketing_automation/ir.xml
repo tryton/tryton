@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data>
+        <record model="ir.ui.view" id="ir_email_view_form">
+            <field name="model">ir.email</field>
+            <field name="inherit" ref="ir.email_view_form"/>
+            <field name="name">ir_email_form</field>
+        </record>
+
+        <record model="ir.action.act_window" id="act_ir_email_form_relate_activity">
+            <field name="name">E-mails</field>
+            <field name="res_model">ir.email</field>
+            <field name="domain"
+                eval="[('marketing_automation_activity', 'in', Eval('active_ids'))]"
+                pyson="1"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_ir_email_form_relate_activity_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="ir.email_view_list"/>
+            <field name="act_window" ref="act_ir_email_form_relate_activity"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_ir_email_form_relate_activity_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="ir.email_view_form"/>
+            <field name="act_window" ref="act_ir_email_form_relate_activity"/>
+        </record>
+        <record model="ir.action.keyword" id="act_ir_email_form_relate_activity_keyword1">
+            <field name="keyword">form_relate</field>
+            <field name="model">marketing.automation.activity,-1</field>
+            <field name="action" ref="act_ir_email_form_relate_activity"/>
+        </record>
+    </data>
+</tryton>

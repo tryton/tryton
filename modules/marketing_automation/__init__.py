@@ -11,6 +11,7 @@ __all__ = ['register', 'routes']
 def register():
     Pool.register(
         ir.Cron,
+        ir.Email,
         marketing_automation.Scenario,
         marketing_automation.Activity,
         marketing_automation.Record,
