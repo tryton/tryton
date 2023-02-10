@@ -405,12 +405,13 @@ class CreateMoveTemplate(ModelView):
                 Eval('context', {}).get('company', 0)),
             ])
 
-    @staticmethod
-    def default_period():
+    @classmethod
+    def default_period(cls):
         pool = Pool()
         Period = pool.get('account.period')
         company = Transaction().context.get('company')
-        return Period.find(company, exception=False)
+        period = Period.find(company, exception=False)
+        return period.id if period else None
 
 
 class CreateMoveKeywords(ModelView):

@@ -576,9 +576,9 @@ class Statement(Workflow, ModelSQL, ModelView):
         Move = pool.get('account.move')
         Period = pool.get('account.period')
 
-        period_id = Period.find(self.company.id, date=key['date'])
+        period = Period.find(self.company, date=key['date'])
         return Move(
-            period=period_id,
+            period=period,
             journal=self.journal.journal,
             date=key['date'],
             origin=self,

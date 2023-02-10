@@ -152,11 +152,12 @@ class Move(ModelSQL, ModelView):
     def default_company():
         return Transaction().context.get('company')
 
-    @staticmethod
-    def default_period():
+    @classmethod
+    def default_period(cls):
         Period = Pool().get('account.period')
-        return Period.find(Transaction().context.get('company'),
-            exception=False)
+        company = cls.default_company()
+        period = Period.find(company, exception=False)
+        return period.id if period else None
 
     @staticmethod
     def default_state():
@@ -385,10 +386,10 @@ class Move(ModelSQL, ModelView):
                         move=self.rec_name))
             with Transaction().set_context(company=self.company.id):
                 date = Date.today()
-            period_id = Period.find(self.company.id, date=date)
+            period = Period.find(self.company, date=date)
             default.update({
                     'date': date,
-                    'period': period_id,
+                    'period': period.id,
                     })
         if reversal:
             default['lines.debit'] = lambda data: data['credit']
@@ -1561,7 +1562,7 @@ class Line(MoveLineMixin, ModelSQL, ModelView):
         if not date:
             with Transaction().set_context(company=company.id):
                 date = Date.today()
-        period_id = Period.find(reconcile_account.company.id, date=date)
+        period = Period.find(reconcile_account.company, date=date)
         account = None
         journal = None
         if writeoff:
@@ -1574,7 +1575,7 @@ class Line(MoveLineMixin, ModelSQL, ModelView):
         move = Move()
         move.company = company
         move.journal = journal
-        move.period = period_id
+        move.period = period
         move.date = date
         move.description = description
 
@@ -1665,11 +1666,13 @@ class OpenJournalAsk(ModelView):
             ('state', '!=', 'close'),
             ])
 
-    @staticmethod
-    def default_period():
-        Period = Pool().get('account.period')
-        return Period.find(Transaction().context.get('company'),
-                exception=False)
+    @classmethod
+    def default_period(cls):
+        pool = Pool()
+        Period = pool.get('account.period')
+        company = Transaction().context.get('company')
+        period = Period.find(company, exception=False)
+        return period.id if period else None
 
 
 class OpenJournal(Wizard):
@@ -2359,7 +2362,7 @@ class GroupLines(Wizard):
         if not date:
             with Transaction().set_context(company=company.id):
                 date = Date.today()
-        period = Period.find(company.id, date=date)
+        period = Period.find(company, date=date)
 
         move = Move()
         move.company = company
@@ -2621,7 +2624,7 @@ class RescheduleLines(Wizard):
         if not date:
             with Transaction().set_context(company=company.id):
                 date = Date.today()
-        period = Period.find(company.id, date=date)
+        period = Period.find(company, date=date)
 
         move = Move()
         move.company = company
@@ -2818,7 +2821,7 @@ class DelegateLines(Wizard):
         if not date:
             with Transaction().set_context(company=company.id):
                 date = Date.today()
-        period = Period.find(company.id, date=date)
+        period = Period.find(company, date=date)
 
         move = Move()
         move.company = company

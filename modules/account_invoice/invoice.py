@@ -1093,11 +1093,11 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
                 remainder_total_currency
 
         accounting_date = self.accounting_date or self.invoice_date or today
-        period_id = Period.find(self.company.id, date=accounting_date)
+        period = Period.find(self.company, date=accounting_date)
 
         move = Move()
         move.journal = self.journal
-        move.period = period_id
+        move.period = period
         move.date = accounting_date
         move.origin = self
         move.company = self.company
@@ -1174,11 +1174,10 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
             pattern = pattern.copy()
 
         accounting_date = self.accounting_date or self.invoice_date
-        period_id = Period.find(
-            self.company.id, date=accounting_date,
+        period = Period.find(
+            self.company, date=accounting_date,
             test_state=self.type != 'in')
 
-        period = Period(period_id)
         fiscalyear = period.fiscalyear
         pattern.setdefault('company', self.company.id)
         pattern.setdefault('fiscalyear', fiscalyear.id)
@@ -1443,10 +1442,10 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
             if line.account.party_required:
                 line.party = party
 
-        period_id = Period.find(self.company.id, date=date)
+        period = Period.find(self.company, date=date)
 
         move = Move(
-            journal=payment_method.journal, period=period_id, date=date,
+            journal=payment_method.journal, period=period, date=date,
             origin=self, description=description,
             company=self.company, lines=lines)
         move.save()

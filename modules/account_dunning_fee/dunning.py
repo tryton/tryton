@@ -140,7 +140,7 @@ class FeeDunningLevel(ModelSQL, ModelView):
         move.company = self.dunning.company
         move.journal = self.level.fee.journal
         move.date = today
-        move.period = Period.find(move.company.id, date=today)
+        move.period = Period.find(move.company, date=today)
         move.origin = self
         move.description = self.level.fee.name
 

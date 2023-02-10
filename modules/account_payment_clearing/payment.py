@@ -246,7 +246,7 @@ class Payment(metaclass=PoolMeta):
         if date is None:
             with Transaction().set_context(company=self.company.id):
                 date = Date.today()
-        period = Period.find(self.company.id, date=date)
+        period = Period.find(self.company, date=date)
 
         local_currency = self.journal.currency == self.company.currency
         if not local_currency:

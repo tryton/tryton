@@ -534,7 +534,7 @@ class Asset(Workflow, ModelSQL, ModelView):
         Move = pool.get('account.move')
         MoveLine = pool.get('account.move.line')
 
-        period_id = Period.find(self.company.id, line.date)
+        period = Period.find(self.company, line.date)
         with Transaction().set_context(date=line.date):
             expense_line = MoveLine(
                 credit=0,
@@ -550,7 +550,7 @@ class Asset(Workflow, ModelSQL, ModelView):
         return Move(
             company=self.company,
             origin=line,
-            period=period_id,
+            period=period,
             journal=self.account_journal,
             date=line.date,
             lines=[expense_line, depreciation_line],
@@ -596,7 +596,7 @@ class Asset(Workflow, ModelSQL, ModelView):
         if date is None:
             with Transaction().set_context(company=self.company.id):
                 date = Date.today()
-        period_id = Period.find(self.company.id, date)
+        period = Period.find(self.company, date)
         if self.supplier_invoice_line:
             account_asset = self.supplier_invoice_line.account.current()
         else:
@@ -626,7 +626,7 @@ class Asset(Workflow, ModelSQL, ModelView):
         return Move(
             company=self.company,
             origin=self,
-            period=period_id,
+            period=period,
             journal=self.account_journal,
             date=date,
             lines=lines,
@@ -886,12 +886,12 @@ class UpdateAsset(Wizard):
         pool = Pool()
         Period = pool.get('account.period')
         Move = pool.get('account.move')
-        period_id = Period.find(asset.company.id, self.show_move.date)
+        period = Period.find(asset.company, self.show_move.date)
         return Move(
             company=asset.company,
             origin=asset,
             journal=asset.account_journal.id,
-            period=period_id,
+            period=period,
             date=self.show_move.date,
             )
 

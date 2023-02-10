@@ -214,7 +214,7 @@ class InvoiceDeferred(Workflow, ModelSQL, ModelView):
         Period = pool.get('account.period')
         # Ensure it starts at an opened period
         for deferral in deferrals:
-            Period.find(deferral.company.id, deferral.start_date)
+            Period.find(deferral.company, deferral.start_date)
         # Set state before create moves and defer amount to pass assert
         cls.write(deferrals, {'state': 'running'})
         cls.create_moves(deferrals)

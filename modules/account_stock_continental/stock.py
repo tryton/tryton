@@ -105,20 +105,19 @@ class Move(metaclass=PoolMeta):
         with Transaction().set_context(company=self.company.id):
             today = Date.today()
         for date in [self.effective_date, today]:
-            period_id = Period.find(
-                self.company.id, date=date, exception=False, test_state=False)
-            if not period_id and date < today:
+            period = Period.find(
+                self.company, date=date, exception=False, test_state=False)
+            if not period and date < today:
                 return
-            elif period_id:
+            elif period:
                 break
         else:
             return
-        period = Period(period_id)
         if not period.fiscalyear.account_stock_method:
             return
         if period.state != 'open':
             date = today
-            period = Period(Period.find(self.company.id, date=date))
+            period = Period.find(self.company, date=date)
 
         type_ = self._get_account_stock_move_type()
         if not type_:
@@ -153,7 +152,7 @@ class Move(metaclass=PoolMeta):
             'stock_journal', company=self.company.id)
         return AccountMove(
             journal=journal,
-            period=period_id,
+            period=period,
             date=date,
             origin=self,
             lines=account_move_lines,

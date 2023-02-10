@@ -306,7 +306,7 @@ class Invoice(metaclass=PoolMeta):
                     date = Transaction().context.get(
                         'payment_date', Date.today())
                 periods[invoice.company] = Period.find(
-                    invoice.company.id, date=date)
+                    invoice.company, date=date)
             period = periods[invoice.company]
             ratio = invoice.cash_paid_ratio
             for line in invoice.move.lines:
@@ -331,8 +331,7 @@ class InvoiceTax(metaclass=PoolMeta):
                 accounting_date = (
                     self.invoice.accounting_date or self.invoice.invoice_date)
                 period = Period.find(
-                    self.invoice.company.id, date=accounting_date)
-                period = Period(period)
+                    self.invoice.company, date=accounting_date)
             return period.is_on_cash_basis(self.tax)
 
 

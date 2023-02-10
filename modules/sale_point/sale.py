@@ -358,7 +358,7 @@ class POSSale(Workflow, ModelSQL, ModelView, TaxableMixin):
         Move = pool.get('account.move')
         Period = pool.get('account.period')
 
-        period_id = Period.find(self.company.id, date=self.date)
+        period = Period.find(self.company, date=self.date)
         lines = []
         for line in self.lines:
             move_lines = line.get_account_move_lines()
@@ -376,7 +376,7 @@ class POSSale(Workflow, ModelSQL, ModelView, TaxableMixin):
 
         move = Move()
         move.journal = self.point.journal
-        move.period = period_id
+        move.period = period
         move.date = self.date
         move.origin = self
         move.company = self.company
@@ -1299,7 +1299,7 @@ class POSCashTransfer(Workflow, ModelSQL, ModelView):
         Move = pool.get('account.move')
         Period = pool.get('account.period')
 
-        period_id = Period.find(self.company.id, date=self.date)
+        period = Period.find(self.company, date=self.date)
         line = Line()
         if self.amount >= 0:
             line.debit, line.credit = self.amount, Decimal(0)
@@ -1312,7 +1312,7 @@ class POSCashTransfer(Workflow, ModelSQL, ModelView):
 
         move = Move()
         move.journal = self.type.journal
-        move.period = period_id
+        move.period = period
         move.date = self.date
         move.origin = self
         move.company = self.company

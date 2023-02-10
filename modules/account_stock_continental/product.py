@@ -211,7 +211,7 @@ class Product(metaclass=PoolMeta):
         company = Company(context['company'])
         with Transaction().set_context(company=company.id):
             stock_date_end = Date.today()
-        period = Period(Period.find(company.id, date=stock_date_end))
+        period = Period.find(company, date=stock_date_end)
         if period.fiscalyear.account_stock_method:
             moves = []
             with Transaction().set_context(locations=[l.id for l in locations],

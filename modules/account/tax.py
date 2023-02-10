@@ -557,8 +557,9 @@ class TaxCodeContext(ModelView):
     def default_period(cls):
         pool = Pool()
         Period = pool.get('account.period')
-        return Period.find(
+        period = Period.find(
             cls.default_company(), exception=False, test_state=False)
+        return period.id if period else None
 
     @fields.depends(
         'method', 'company',

@@ -70,8 +70,7 @@ class InvoiceLine(metaclass=PoolMeta):
 
         accounting_date = (self.invoice.accounting_date
             or self.invoice.invoice_date)
-        period_id = Period.find(self.invoice.company.id, date=accounting_date)
-        period = Period(period_id)
+        period = Period.find(self.invoice.company, date=accounting_date)
         if period.fiscalyear.account_stock_method != 'anglo_saxon':
             return result
 

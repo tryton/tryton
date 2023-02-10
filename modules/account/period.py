@@ -1,6 +1,7 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 
+from trytond.cache import Cache
 from trytond.const import OPERATORS
 from trytond.i18n import gettext
 from trytond.model import Index, ModelSQL, ModelView, Workflow, fields
@@ -50,6 +51,7 @@ class Period(Workflow, ModelSQL, ModelView):
     company = fields.Function(fields.Many2One('company.company', 'Company',),
         'on_change_with_company', searcher='search_company')
     icon = fields.Function(fields.Char("Icon"), 'get_icon')
+    _find_cache = Cache(__name__ + '.find', context=False)
 
     @classmethod
     def __setup__(cls):
@@ -180,39 +182,46 @@ class Period(Workflow, ModelSQL, ModelView):
                         second=periods[0].rec_name))
 
     @classmethod
-    def find(cls, company_id, date=None, exception=True, test_state=True):
+    def find(cls, company, date=None, exception=True, test_state=True):
         '''
-        Return the period for the company_id
-            at the date or the current date.
-        If exception is set the function will raise an exception
-            if no period is found.
-        If test_state is true, it will search on non-closed periods
+        Return the period for the company at the date or the current date.
+        If exception is set it raises an exception if no period is found.
+        If test_state is true, it searches on non-closed periods
         '''
         pool = Pool()
         Date = pool.get('ir.date')
         Lang = pool.get('ir.lang')
 
+        company_id = int(company) if company is not None else None
         if not date:
             with Transaction().set_context(company=company_id):
                 date = Date.today()
-        clause = [
-            ('start_date', '<=', date),
-            ('end_date', '>=', date),
-            ('fiscalyear.company', '=', company_id),
-            ('type', '=', 'standard'),
-            ]
-        if test_state:
-            clause.append(('state', '=', 'open'))
-        periods = cls.search(clause, order=[('start_date', 'DESC')], limit=1)
-        if not periods:
-            if exception:
-                lang = Lang.get()
-                raise PeriodNotFoundError(
-                    gettext('account.msg_no_period_date',
-                        date=lang.strftime(date)))
+        key = (company_id, date, test_state)
+        period = cls._find_cache.get(key, -1)
+        if period is not None and period < 0:
+            clause = [
+                ('start_date', '<=', date),
+                ('end_date', '>=', date),
+                ('fiscalyear.company', '=', company_id),
+                ('type', '=', 'standard'),
+                ]
+            if test_state:
+                clause.append(('state', '=', 'open'))
+            periods = cls.search(
+                clause, order=[('start_date', 'DESC')], limit=1)
+            if periods:
+                period, = periods
             else:
-                return None
-        return periods[0].id
+                period = None
+            cls._find_cache.set(key, int(period) if period else None)
+        elif period is not None:
+            period = cls(period)
+        if not period and exception:
+            lang = Lang.get()
+            raise PeriodNotFoundError(
+                gettext('account.msg_no_period_date',
+                    date=lang.strftime(date)))
+        return period
 
     @classmethod
     def _check(cls, periods):
@@ -267,7 +276,9 @@ class Period(Workflow, ModelSQL, ModelView):
                 if not vals.get('post_move_sequence'):
                     vals['post_move_sequence'] = (
                         fiscalyear.post_move_sequence.id)
-        return super(Period, cls).create(vlist)
+        periods = super(Period, cls).create(vlist)
+        cls._find_cache.clear()
+        return periods
 
     @classmethod
     def write(cls, *args):
@@ -307,11 +318,13 @@ class Period(Workflow, ModelSQL, ModelView):
                                     period=period.rec_name))
             args.extend((periods, values))
         super(Period, cls).write(*args)
+        cls._find_cache.clear()
 
     @classmethod
     def delete(cls, periods):
         cls._check(periods)
         super(Period, cls).delete(periods)
+        cls._find_cache.clear()
 
     @classmethod
     @ModelView.button
