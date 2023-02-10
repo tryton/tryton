@@ -756,8 +756,10 @@ class ESVATBookContext(ModelView):
     @classmethod
     def default_fiscalyear(cls):
         pool = Pool()
-        Fiscalyear = pool.get('account.fiscalyear')
-        return Fiscalyear.find(cls.default_company(), exception=False)
+        FiscalYear = pool.get('account.fiscalyear')
+        fiscalyear = FiscalYear.find(
+            cls.default_company(), exception=False, test_state=False)
+        return fiscalyear.id if fiscalyear else None
 
 
 class ESVATBook(ModelSQL, ModelView):

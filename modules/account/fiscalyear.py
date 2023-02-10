@@ -3,6 +3,7 @@
 
 from dateutil.relativedelta import relativedelta
 
+from trytond.cache import Cache
 from trytond.i18n import gettext
 from trytond.model import ModelSQL, ModelView, Workflow, fields
 from trytond.model.exceptions import AccessError
@@ -51,6 +52,7 @@ class FiscalYear(Workflow, ModelSQL, ModelView):
     company = fields.Many2One(
         'company.company', "Company", required=True)
     icon = fields.Function(fields.Char("Icon"), 'get_icon')
+    _find_cache = Cache(__name__ + '.find', context=False)
 
     @classmethod
     def __setup__(cls):
@@ -164,6 +166,12 @@ class FiscalYear(Workflow, ModelSQL, ModelView):
                         second=years[0].rec_name))
 
     @classmethod
+    def create(cls, vlist):
+        fiscalyears = super().create(vlist)
+        cls._find_cache.clear()
+        return fiscalyears
+
+    @classmethod
     def write(cls, *args):
         pool = Pool()
         Move = pool.get('account.move')
@@ -183,12 +191,14 @@ class FiscalYear(Workflow, ModelSQL, ModelView):
                                     'msg_change_fiscalyear_post_move_sequence',
                                     fiscalyear=fiscalyear.rec_name))
         super(FiscalYear, cls).write(*args)
+        cls._find_cache.clear()
 
     @classmethod
     def delete(cls, fiscalyears):
         Period = Pool().get('account.period')
         Period.delete([p for f in fiscalyears for p in f.periods])
         super(FiscalYear, cls).delete(fiscalyears)
+        cls._find_cache.clear()
 
     @classmethod
     def create_period(cls, fiscalyears, interval=1, end_day=31):
@@ -226,34 +236,45 @@ class FiscalYear(Workflow, ModelSQL, ModelView):
         pass
 
     @classmethod
-    def find(cls, company_id, date=None, exception=True):
+    def find(cls, company, date=None, exception=True, test_state=True):
         '''
-        Return the fiscal year for the company_id
-            at the date or the current date.
-        If exception is set the function will raise an exception
-            if any fiscal year is found.
+        Return the fiscal year for the company at the date or the current date.
+        If exception is set it raises an exception if any fiscal year is found.
+        If test_state is true, it searches on non-closed fiscal years
         '''
         pool = Pool()
         Lang = pool.get('ir.lang')
         Date = pool.get('ir.date')
 
+        company_id = int(company) if company is not None else None
         if not date:
             with Transaction().set_context(company=company_id):
                 date = Date.today()
-        fiscalyears = cls.search([
-            ('start_date', '<=', date),
-            ('end_date', '>=', date),
-            ('company', '=', company_id),
-            ], order=[('start_date', 'DESC')], limit=1)
-        if not fiscalyears:
-            if exception:
-                lang = Lang.get()
-                raise FiscalYearNotFoundError(
-                    gettext('account.msg_no_fiscalyear_date',
-                        date=lang.strftime(date)))
+        key = (company_id, date)
+        fiscalyear = cls._find_cache.get(key, -1)
+        if fiscalyear is not None and fiscalyear < 0:
+            clause = [
+                ('start_date', '<=', date),
+                ('end_date', '>=', date),
+                ('company', '=', company_id),
+                ]
+            if test_state:
+                clause.append(('state', '=', 'open'))
+            fiscalyears = cls.search(
+                clause, order=[('start_date', 'DESC')], limit=1)
+            if fiscalyears:
+                fiscalyear, = fiscalyears
             else:
-                return None
-        return fiscalyears[0].id
+                fiscalyear = None
+            cls._find_cache.set(key, int(fiscalyear) if fiscalyear else None)
+        elif fiscalyear is not None:
+            fiscalyear = cls(fiscalyear)
+        if not fiscalyear and exception:
+            lang = Lang.get()
+            raise FiscalYearNotFoundError(
+                gettext('account.msg_no_fiscalyear_date',
+                    date=lang.strftime(date)))
+        return fiscalyear
 
     def get_deferral(self, account):
         'Computes deferrals for accounts'

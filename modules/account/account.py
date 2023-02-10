@@ -2167,7 +2167,9 @@ class GeneralLedgerAccountContext(ModelView):
             period = Period(context['period'])
             return period.fiscalyear.id
         else:
-            return FiscalYear.find(context.get('company'), exception=False)
+            fiscalyear = FiscalYear.find(
+                context.get('company'), exception=False, test_state=False)
+            return fiscalyear.id if fiscalyear else None
 
     @classmethod
     def default_start_period(cls):
@@ -2672,11 +2674,13 @@ class IncomeStatementContext(ModelView):
             'invisible': ~Eval('comparison', False),
             })
 
-    @staticmethod
-    def default_fiscalyear():
-        FiscalYear = Pool().get('account.fiscalyear')
-        return FiscalYear.find(
-            Transaction().context.get('company'), exception=False)
+    @classmethod
+    def default_fiscalyear(cls):
+        pool = Pool()
+        FiscalYear = pool.get('account.fiscalyear')
+        fiscalyear = FiscalYear.find(
+            cls.default_company(), exception=False, test_state=False)
+        return fiscalyear.id if fiscalyear else None
 
     @staticmethod
     def default_company():

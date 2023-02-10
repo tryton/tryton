@@ -162,6 +162,8 @@ class BEVATCustomerContext(ModelView):
         pool = Pool()
         FiscalYear = pool.get('account.fiscalyear')
         context = Transaction().context
-        return context.get(
-            'fiscalyear',
-            FiscalYear.find(context.get('company'), exception=False))
+        if 'fiscalyear' not in context:
+            fiscalyear = FiscalYear.find(
+                cls.default_company(), exception=False, test_state=False)
+            return fiscalyear.id if fiscalyear else None
+        return context['fiscalyear']
