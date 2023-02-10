@@ -19,7 +19,8 @@ class MultiValueMixin(object):
         Value = self.multivalue_model(field)
         for fname, field in self._fields.items():
             if (field._type == 'one2many'
-                    and field.model_name == Value.__name__):
+                    and field.model_name == Value.__name__
+                    and not field.filter):
                 return getattr(self, fname)
         return Value.search([])
 
