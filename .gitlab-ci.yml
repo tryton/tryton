@@ -223,7 +223,7 @@ check-trytond-rng:
   script:
     - python trytond/setup.py update_rng
     - |
-      if [ `hg status | wc -l` -ne 0 ]; then
+      if [ `hg status trytond| wc -l` -ne 0 ]; then
         false
       fi
   rules:
