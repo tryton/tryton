@@ -30,9 +30,9 @@ from trytond.wizard import (
     Button, StateAction, StateTransition, StateView, Wizard)
 
 from .exceptions import (
-    InvoiceFutureWarning, InvoiceLineValidationError, InvoiceNumberError,
-    InvoicePaymentTermDateWarning, InvoiceSimilarWarning,
-    InvoiceTaxValidationError, InvoiceValidationError, PayInvoiceError)
+    InvoiceFutureWarning, InvoiceNumberError, InvoicePaymentTermDateWarning,
+    InvoiceSimilarWarning, InvoiceTaxValidationError, InvoiceValidationError,
+    PayInvoiceError)
 
 if config.getboolean('account_invoice', 'filestore', default=False):
     file_id = 'invoice_report_cache_id'
@@ -184,6 +184,10 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
             ('company', '=', Eval('company', -1)),
             ('currency', '=', Eval('currency', -1)),
             ['OR',
+                ('account', '=', None),
+                ('account', '!=', Eval('account', -1)),
+                ],
+            ['OR',
                 ('invoice_type', '=', Eval('type')),
                 ('invoice_type', '=', None),
                 ],
@@ -196,10 +200,19 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
             'readonly': (
                 (Eval('state') != 'draft')
                 | ~Eval('company')
-                | ~Eval('currency')),
+                | ~Eval('currency')
+                | ~Eval('account')),
             })
-    taxes = fields.One2Many('account.invoice.tax', 'invoice', 'Tax Lines',
-        states=_states)
+    taxes = fields.One2Many(
+        'account.invoice.tax', 'invoice', 'Tax Lines',
+        domain=[
+            ('account', '!=', Eval('account', -1)),
+            ],
+        states={
+            'readonly': (
+                (Eval('state') != 'draft')
+                | ~Eval('account')),
+            })
     comment = fields.Text('Comment', states=_states)
     origins = fields.Function(fields.Char('Origins'), 'get_origins')
     untaxed_amount = fields.Function(Monetary(
@@ -1320,26 +1333,6 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
         for invoice in invoices:
             invoice.check_payment_lines()
 
-    @classmethod
-    def validate_fields(cls, invoices, field_names):
-        super().validate_fields(invoices, field_names)
-        cls.check_same_account(invoices, field_names)
-
-    @classmethod
-    def check_same_account(cls, invoices, field_names=None):
-        if field_names and not (field_names & {'lines', 'account'}):
-            return
-        for invoice in invoices:
-            for line in invoice.lines:
-                if (line.type == 'line'
-                        and line.account == invoice.account):
-                    raise InvoiceValidationError(
-                        gettext(
-                            'account_invoice.msg_invoice_same_account_line',
-                            account=invoice.account.rec_name,
-                            invoice=invoice.rec_name,
-                            line=line.rec_name))
-
     def check_payment_lines(self):
         amount = sum(l.debit - l.credit for l in self.lines_to_pay)
         payment_amount = sum(l.debit - l.credit for l in self.payment_lines)
@@ -2100,6 +2093,7 @@ class InvoiceLine(sequence_ordered(), ModelSQL, ModelView, TaxableMixin):
         cls.account.domain = [
             ('closed', '!=', True),
             ('company', '=', Eval('company', -1)),
+            ('id', '!=', Eval('_parent_invoice', {}).get('account', -1)),
             If(Bool(Eval('_parent_invoice')),
                 If(Eval('_parent_invoice', {}).get('type') == 'out',
                     cls._account_domain('out'),
@@ -2580,25 +2574,6 @@ class InvoiceLine(sequence_ordered(), ModelSQL, ModelView, TaxableMixin):
         default.setdefault('origin', None)
         return super(InvoiceLine, cls).copy(lines, default=default)
 
-    @classmethod
-    def validate_fields(cls, lines, field_names):
-        super().validate_fields(lines, field_names)
-        cls.check_same_account(lines, field_names)
-
-    @classmethod
-    def check_same_account(cls, lines, field_names=None):
-        if field_names and not (field_names & {'type', 'invoice', 'account'}):
-            return
-        for line in lines:
-            if (line.type == 'line'
-                    and line.invoice
-                    and line.account == line.invoice.account):
-                raise InvoiceLineValidationError(
-                    gettext('account_invoice.msg_invoice_same_account_line',
-                        account=line.account.rec_name,
-                        invoice=line.invoice.rec_name,
-                        line=line.rec_name))
-
     def _compute_taxes(self):
         pool = Pool()
         Currency = pool.get('currency.currency')
@@ -2729,6 +2704,7 @@ class InvoiceTax(sequence_ordered(), ModelSQL, ModelView):
             ('type', '!=', None),
             ('closed', '!=', True),
             ('company', '=', Eval('_parent_invoice', {}).get('company', 0)),
+            ('id', '!=', Eval('_parent_invoice', {}).get('account', -1)),
             ],
         states=_states, depends={'invoice'})
     base = Monetary(
@@ -2911,23 +2887,6 @@ class InvoiceTax(sequence_ordered(), ModelSQL, ModelView):
                     gettext('account_invoice.msg_invoice_tax_create_draft',
                         invoice=invoice.rec_name))
         return super(InvoiceTax, cls).create(vlist)
-
-    @classmethod
-    def validate_fields(cls, taxes, field_names):
-        super().validate_fields(taxes, field_names)
-        cls.check_same_account(taxes, field_names)
-
-    @classmethod
-    def check_same_account(cls, taxes, field_names=None):
-        if field_names and not (field_names & {'account', 'invoice'}):
-            return
-        for tax in taxes:
-            if tax.account == tax.invoice.account:
-                raise InvoiceTaxValidationError(
-                    gettext('account_invoice.msg_invoice_same_account_line',
-                        account=tax.account.rec_name,
-                        invoice=tax.invoice.rec_name,
-                        line=tax.rec_name))
 
     def get_move_lines(self):
         '''
