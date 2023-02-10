@@ -415,8 +415,14 @@ class CreatePurchase(Wizard):
 
         requests = [r for r in requests if not r.purchase_line]
 
+        def _sort_keyfunc(requests, request):
+            return (
+                self._group_purchase_key(requests, request)
+                + self._group_purchase_line_key(request))
+        sort_keyfunc = partial(_sort_keyfunc, requests)
+
         keyfunc = partial(self._group_purchase_key, requests)
-        requests = sorted(requests, key=keyfunc)
+        requests = sorted(requests, key=sort_keyfunc)
 
         purchases = []
         lines = []
