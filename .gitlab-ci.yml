@@ -101,7 +101,7 @@ check-flake8:
 check-isort:
   extends: .check-code
   script:
-    - isort -m VERTICAL_GRID -c --skip-glob 'cookiecutter*' .
+    - isort --multi-line VERTICAL_GRID --check --diff --skip-glob 'cookiecutter*' .
 
 check-dist:
   stage: check
@@ -127,7 +127,7 @@ check-cookiecutter-module:
   script:
     - cookiecutter --no-input cookiecutter-module -o /tmp
     - flake8 /tmp/my_module
-    - isort -m VERTICAL_GRID -c /tmp/my_module
+    - isort --multi-line VERTICAL_GRID --check --diff /tmp/my_module
   rules:
     - changes:
         - cookiecutter-module/**/*
