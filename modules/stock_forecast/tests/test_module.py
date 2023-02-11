@@ -329,10 +329,14 @@ class StockForecastTestCase(CompanyTestMixin, ModuleTestCase):
                     active_model=Forecast.__name__, active_id=forecast.id):
                 session_id, _, _ = ForecastComplete.create()
                 forecast_complete = ForecastComplete(session_id)
+                forecast_complete.ask.company = company
+                forecast_complete.ask.warehouse = warehouse
+                forecast_complete.ask.destination = customer
                 forecast_complete.ask.from_date = (
                     today + relativedelta(months=-1, day=1))
                 forecast_complete.ask.to_date = (
                     today + relativedelta(months=-1, day=20))
+                forecast_complete.ask.products = [product]
                 forecast_complete.transition_complete()
 
             self.assertEqual(len(forecast.lines), 1)

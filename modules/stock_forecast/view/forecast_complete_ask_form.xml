@@ -2,8 +2,15 @@
 <!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
 this repository contains the full copyright notices and license terms. -->
 <form>
+    <label name="warehouse"/>
+    <field name="warehouse"/>
+    <label name="destination"/>
+    <field name="destination"/>
+
     <label name="from_date"/>
     <field name="from_date"/>
     <label name="to_date"/>
     <field name="to_date"/>
+
+    <field name="products" colspan="4" view_ids="stock_forecast.product_view_list_forecast"/>
 </form>

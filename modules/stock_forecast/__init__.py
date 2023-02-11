@@ -12,7 +12,6 @@ def register():
         forecast.ForecastLine,
         forecast.ForecastLineMove,
         forecast.ForecastCompleteAsk,
-        forecast.ForecastCompleteChoose,
         module='stock_forecast', type_='model')
     Pool.register(
         forecast.ForecastComplete,

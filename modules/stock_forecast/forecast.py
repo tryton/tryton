@@ -452,6 +452,8 @@ class ForecastLine(ModelSQL, ModelView):
         to_date = self.forecast.to_date
         if to_date < today:
             return []
+        if self.quantity_executed >= self.quantity:
+            return []
 
         delta = to_date - from_date
         delta = delta.days + 1
@@ -529,23 +531,39 @@ class ForecastLineMove(ModelSQL):
 class ForecastCompleteAsk(ModelView):
     'Complete Forecast'
     __name__ = 'stock.forecast.complete.ask'
+    company = fields.Many2One('company.company', "Company", readonly=True)
+    warehouse = fields.Many2One('stock.location', "Warehouse", readonly=True)
+    destination = fields.Many2One(
+        'stock.location', "Destination", readonly=True)
     from_date = fields.Date(
         "From Date", required=True,
-        domain=[('from_date', '<', Eval('to_date'))])
+        domain=[('from_date', '<', Eval('to_date'))],
+        states={
+            'readonly': Bool(Eval('products')),
+            })
     to_date = fields.Date(
         "To Date", required=True,
-        domain=[('to_date', '>', Eval('from_date'))])
-
-
-class ForecastCompleteChoose(ModelView):
-    'Complete Forecast'
-    __name__ = 'stock.forecast.complete.choose'
+        domain=[('to_date', '>', Eval('from_date'))],
+        states={
+            'readonly': Bool(Eval('products')),
+            })
     products = fields.Many2Many(
         'product.product', None, None, "Products",
         domain=[
             ('type', '=', 'goods'),
             ('consumable', '=', False),
-            ])
+            ],
+        context={
+            'company': Eval('company', -1),
+            'locations': [Eval('warehouse', -1)],
+            'stock_destinations': [Eval('destination', -1)],
+            'stock_date_start': Eval('from_date', None),
+            'stock_date_end': Eval('to_date', None),
+            'with_childs': True,
+            'stock_invert': True,
+            },
+        depends=[
+            'company', 'warehouse', 'destination', 'from_date', 'to_date'])
 
 
 class ForecastComplete(Wizard):
@@ -554,15 +572,8 @@ class ForecastComplete(Wizard):
     start_state = 'ask'
     ask = StateView('stock.forecast.complete.ask',
         'stock_forecast.forecast_complete_ask_view_form', [
-            Button('Cancel', 'end', 'tryton-cancel'),
-            Button('Choose Products', 'choose', 'tryton-forward'),
-            Button('Complete', 'complete', 'tryton-ok', default=True),
-            ])
-    choose = StateView('stock.forecast.complete.choose',
-        'stock_forecast.forecast_complete_choose_view_form', [
-            Button('Cancel', 'end', 'tryton-cancel'),
-            Button('Choose Dates', 'ask', 'tryton-back'),
-            Button('Complete', 'complete', 'tryton-ok', default=True),
+            Button("Cancel", 'end', 'tryton-cancel'),
+            Button("Complete", 'complete', 'tryton-ok', default=True),
             ])
     complete = StateTransition()
 
@@ -571,74 +582,35 @@ class ForecastComplete(Wizard):
         Forecast dates shifted by one year.
         """
         default = {}
-        for field in ("to_date", "from_date"):
-            default[field] = (
-                getattr(self.record, field) - relativedelta(years=1))
+        for field in ['company', 'warehouse', 'destination']:
+            if field in fields:
+                record = getattr(self.record, field)
+                default[field] = record.id
+        for field in ["to_date", "from_date"]:
+            if field in fields:
+                default[field] = (
+                    getattr(self.record, field) - relativedelta(years=1))
         return default
-
-    def _get_product_quantity(self):
-        pool = Pool()
-        Product = pool.get('product.product')
-
-        with Transaction().set_context(
-                stock_destinations=[self.record.destination.id],
-                stock_date_start=self.ask.from_date,
-                stock_date_end=self.ask.to_date):
-            return Product.products_by_location([self.record.warehouse.id],
-                with_childs=True)
-
-    def default_choose(self, fields):
-        """
-        Collect products for which there is an outgoing stream between
-        the given location and the destination.
-        """
-        if getattr(self.choose, 'products', None):
-            return {'products': [x.id for x in self.choose.products]}
-        pbl = self._get_product_quantity()
-        products = []
-        for (_, product), qty in pbl.items():
-            if qty < 0:
-                products.append(product)
-        return {'products': products}
 
     def transition_complete(self):
         pool = Pool()
         ForecastLine = pool.get('stock.forecast.line')
-        Product = pool.get('product.product')
 
-        forecast = self.record
-        prod2line = {}
-        forecast_lines = ForecastLine.search([
-                ('forecast', '=', forecast.id),
-                ])
-        for forecast_line in forecast_lines:
-            prod2line[forecast_line.product.id] = forecast_line
-
-        pbl = self._get_product_quantity()
-        id2product = {p.id: p for p in Product.browse([x[1] for x in pbl])}
-
-        products = set(getattr(self.choose, 'products', {}))
-
+        product2line = {l.product: l for l in self.record.lines}
         to_save = []
-        for key, qty in pbl.items():
-            _, product_id = key
-            product = id2product[product_id]
-            if products and product not in products:
-                continue
-            if product.type != 'goods' or product.consumable:
-                continue
-            if -qty <= 0:
-                continue
-            if product in prod2line:
-                line = prod2line[product]
-            else:
-                line = ForecastLine()
-            line.product = product
-            line.quantity = -qty
-            line.uom = product.default_uom.id
-            line.forecast = forecast
-            line.minimal_quantity = min(1, -qty)
+        # Ensure context is set
+        self.ask.products = map(int, self.ask.products)
+        for product in self.ask.products:
+            line = product2line.get(product, ForecastLine())
+            self._fill_line(line, product)
             to_save.append(line)
-
         ForecastLine.save(to_save)
         return 'end'
+
+    def _fill_line(self, line, product):
+        quantity = max(product.quantity, 0)
+        line.product = product
+        line.quantity = quantity
+        line.uom = product.default_uom.id
+        line.forecast = self.record
+        line.minimal_quantity = min(1, quantity)

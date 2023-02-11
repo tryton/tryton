@@ -1,6 +1,8 @@
 <?xml version="1.0"?>
 <!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
 this repository contains the full copyright notices and license terms. -->
-<form col="1" >
-    <field name="products"/>
-</form>
+<tree>
+    <field name="code" optional="0"/>
+    <field name="name" expand="1"/>
+    <field name="quantity" symbol="default_uom"/>
+</tree>

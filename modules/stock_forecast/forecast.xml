@@ -85,11 +85,6 @@ this repository contains the full copyright notices and license terms. -->
             <field name="type">form</field>
             <field name="name">forecast_complete_ask_form</field>
         </record>
-        <record model="ir.ui.view" id="forecast_complete_choose_view_form">
-            <field name="model">stock.forecast.complete.choose</field>
-            <field name="type">form</field>
-            <field name="name">forecast_complete_choose_form</field>
-        </record>
 
         <record model="ir.rule.group" id="rule_group_forecast_companies">
             <field name="name">User in companies</field>
