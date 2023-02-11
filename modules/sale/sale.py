@@ -1328,7 +1328,7 @@ class SaleLine(TaxableMixin, sequence_ordered(), ModelSQL, ModelView):
     def default_type():
         return 'line'
 
-    @fields.depends('type', 'product', 'unit')
+    @fields.depends('type')
     def on_change_type(self):
         if self.type != 'line':
             self.product = None

@@ -6,6 +6,7 @@ from trytond.i18n import gettext
 from trytond.model import ModelView, Workflow, fields
 from trytond.model.exceptions import AccessError
 from trytond.pool import Pool, PoolMeta
+from trytond.pyson import Eval
 from trytond.transaction import Transaction, without_check_access
 
 
@@ -108,6 +109,15 @@ class Invoice(metaclass=PoolMeta):
 
 class InvoiceLine(metaclass=PoolMeta):
     __name__ = 'account.invoice.line'
+
+    @classmethod
+    def __setup__(cls):
+        super().__setup__()
+        if not cls.origin.domain:
+            cls.origin.domain = {}
+        cls.origin.domain['purchase.line'] = [
+            ('type', '=', Eval('type')),
+            ]
 
     @fields.depends('origin')
     def on_change_with_product_uom_category(self, name=None):
