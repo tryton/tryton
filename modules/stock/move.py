@@ -1155,6 +1155,7 @@ class Move(Workflow, ModelSQL, ModelView):
             forecast: if set compute the forecast quantity.
             stock_destinations: A list of location ids. If set, restrict the
                 computation to moves from and to those locations.
+            stock_invert: if set invert the quantity.
         If with_childs, it computes also for child locations.
         grouping is a tuple of Move (or Product if prefixed by 'product.' or
             'date') field names and defines how stock moves are grouped.
@@ -1517,9 +1518,12 @@ class Move(Workflow, ModelSQL, ModelView):
                     & dest_clause_period),
                 all_=True)
         query_keys = [Column(query, key).as_(key) for key in grouping]
+        quantity = Sum(query.quantity)
+        if context.get('stock_invert'):
+            quantity *= -1
         columns = ([query.location.as_('location')]
             + query_keys
-            + [Sum(query.quantity).as_('quantity')])
+            + [quantity.as_('quantity')])
         query = query.select(*columns,
             group_by=[query.location] + query_keys)
         return query
