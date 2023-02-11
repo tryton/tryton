@@ -1145,6 +1145,11 @@ class SaleLine(TaxableMixin, sequence_ordered(), ModelSQL, ModelView):
             })
     quantity = fields.Float(
         "Quantity", digits='unit',
+        domain=[
+            If(Eval('type') != 'line',
+                ('quantity', '=', None),
+                ()),
+            ],
         states={
             'invisible': Eval('type') != 'line',
             'required': Eval('type') == 'line',
@@ -1152,6 +1157,11 @@ class SaleLine(TaxableMixin, sequence_ordered(), ModelSQL, ModelView):
             })
     actual_quantity = fields.Float(
         "Actual Quantity", digits='unit', readonly=True,
+        domain=[
+            If(Eval('type') != 'line',
+                ('quantity', '=', None),
+                ()),
+            ],
         states={
             'invisible': ((Eval('type') != 'line') | ~Eval('actual_quantity')),
             })
@@ -1165,12 +1175,18 @@ class SaleLine(TaxableMixin, sequence_ordered(), ModelSQL, ModelView):
             If(Bool(Eval('product_uom_category')),
                 ('category', '=', Eval('product_uom_category')),
                 ('category', '!=', -1)),
+            If(Eval('type') != 'line',
+                ('id', '=', None),
+                ()),
             ])
     product = fields.Many2One('product.product', 'Product',
         ondelete='RESTRICT',
         domain=[
             If(Eval('sale_state').in_(['draft', 'quotation']),
                 ('salable', '=', True),
+                ()),
+            If(Eval('type') != 'line',
+                ('id', '=', None),
                 ()),
             ],
         states={
@@ -1198,6 +1214,11 @@ class SaleLine(TaxableMixin, sequence_ordered(), ModelSQL, ModelView):
         'on_change_with_product_uom_category')
     unit_price = Monetary(
         "Unit Price", digits=price_digits, currency='currency',
+        domain=[
+            If(Eval('type') != 'line',
+                ('unit_price', '=', None),
+                ()),
+            ],
         states={
             'invisible': Eval('type') != 'line',
             'required': Eval('type') == 'line',
@@ -1221,11 +1242,16 @@ class SaleLine(TaxableMixin, sequence_ordered(), ModelSQL, ModelView):
     note = fields.Text('Note')
     taxes = fields.Many2Many('sale.line-account.tax', 'line', 'tax', 'Taxes',
         order=[('tax.sequence', 'ASC'), ('tax.id', 'ASC')],
-        domain=[('parent', '=', None), ['OR',
+        domain=[
+            ('parent', '=', None),
+            ['OR',
                 ('group', '=', None),
                 ('group.kind', 'in', ['sale', 'both'])],
-                ('company', '=',
-                    Eval('_parent_sale', {}).get('company', -1)),
+            ('company', '=',
+                Eval('_parent_sale', {}).get('company', -1)),
+            If(Eval('type') != 'line',
+                ('id', '=', None),
+                ()),
             ],
         states={
             'invisible': Eval('type') != 'line',
@@ -1301,6 +1327,13 @@ class SaleLine(TaxableMixin, sequence_ordered(), ModelSQL, ModelView):
     @staticmethod
     def default_type():
         return 'line'
+
+    @fields.depends('type', 'product', 'unit')
+    def on_change_type(self):
+        if self.type != 'line':
+            self.product = None
+            self.unit = None
+            self.taxes = None
 
     @property
     def _move_remaining_quantity(self):

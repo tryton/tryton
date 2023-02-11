@@ -1059,6 +1059,11 @@ class Line(sequence_ordered(), ModelSQL, ModelView):
             })
     quantity = fields.Float(
         "Quantity", digits='unit',
+        domain=[
+            If(Eval('type') != 'line',
+                ('quantity', '=', None),
+                ()),
+            ],
         states={
             'invisible': Eval('type') != 'line',
             'required': Eval('type') == 'line',
@@ -1066,6 +1071,11 @@ class Line(sequence_ordered(), ModelSQL, ModelView):
             })
     actual_quantity = fields.Float(
         "Actual Quantity", digits='unit', readonly=True,
+        domain=[
+            If(Eval('type') != 'line',
+                ('actual_quantity', '=', None),
+                ()),
+            ],
         states={
             'invisible': ((Eval('type') != 'line') | ~Eval('actual_quantity')),
             })
@@ -1080,6 +1090,9 @@ class Line(sequence_ordered(), ModelSQL, ModelView):
             If(Bool(Eval('product_uom_category')),
                 ('category', '=', Eval('product_uom_category')),
                 ('category', '!=', -1)),
+            If(Eval('type') != 'line',
+                ('id', '=', None),
+                ()),
             ])
     product = fields.Many2One('product.product', 'Product',
         ondelete='RESTRICT',
@@ -1087,6 +1100,9 @@ class Line(sequence_ordered(), ModelSQL, ModelView):
             If(Eval('purchase_state').in_(['draft', 'quotation']),
                 [('purchasable', '=', True)],
                 []),
+            If(Eval('type') != 'line',
+                ('id', '=', None),
+                ()),
             ],
         states={
             'invisible': Eval('type') != 'line',
@@ -1116,6 +1132,9 @@ class Line(sequence_ordered(), ModelSQL, ModelView):
         'purchase.product_supplier', "Supplier's Product",
         ondelete='RESTRICT',
         domain=[
+            If(Eval('type') != 'line',
+                ('id', '=', None),
+                ()),
             If(Bool(Eval('product')),
                 ['OR',
                     [
@@ -1136,6 +1155,11 @@ class Line(sequence_ordered(), ModelSQL, ModelView):
         'on_change_with_product_uom_category')
     unit_price = Monetary(
         "Unit Price", currency='currency', digits=price_digits,
+        domain=[
+            If(Eval('type') != 'line',
+                ('unit_price', '=', None),
+                ()),
+            ],
         states={
             'invisible': Eval('type') != 'line',
             'required': Eval('type') == 'line',
@@ -1156,11 +1180,17 @@ class Line(sequence_ordered(), ModelSQL, ModelView):
     taxes = fields.Many2Many('purchase.line-account.tax',
         'line', 'tax', 'Taxes',
         order=[('tax.sequence', 'ASC'), ('tax.id', 'ASC')],
-        domain=[('parent', '=', None), ['OR',
+        domain=[
+            ('parent', '=', None),
+            ['OR',
                 ('group', '=', None),
-                ('group.kind', 'in', ['purchase', 'both'])],
-                ('company', '=',
-                    Eval('_parent_purchase', {}).get('company', -1)),
+                ('group.kind', 'in', ['purchase', 'both']),
+                ],
+            ('company', '=',
+                Eval('_parent_purchase', {}).get('company', -1)),
+            If(Eval('type') != 'line',
+                ('id', '=', None),
+                ()),
             ],
         states={
             'invisible': Eval('type') != 'line',
@@ -1197,6 +1227,11 @@ class Line(sequence_ordered(), ModelSQL, ModelView):
         'on_change_with_delivery_date', setter='set_delivery_date')
     delivery_date_edit = fields.Boolean(
         "Edit Delivery Date",
+        domain=[
+            If(Eval('type') != 'line',
+                ('delivery_date_edit', '=', None),
+                ()),
+            ],
         states={
             'invisible': (
                 (Eval('type') != 'line')
@@ -1208,6 +1243,11 @@ class Line(sequence_ordered(), ModelSQL, ModelView):
         help="Check to edit the delivery date.")
     delivery_date_store = fields.Date(
         "Delivery Date", readonly=True,
+        domain=[
+            If(Eval('type') != 'line',
+                ('delivery_date_store', '=', None),
+                ()),
+            ],
         states={
             'invisible': Eval('type') != 'line',
             })
@@ -1255,6 +1295,14 @@ class Line(sequence_ordered(), ModelSQL, ModelView):
     @staticmethod
     def default_type():
         return 'line'
+
+    @fields.depends('type', 'product', 'product_supplier', 'unit')
+    def on_change_type(self):
+        if self.type != 'line':
+            self.product = None
+            self.product_supplier = None
+            self.unit = None
+            self.taxes = None
 
     @classmethod
     def default_delivery_date_edit(cls):
