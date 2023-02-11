@@ -1662,6 +1662,7 @@
             var invalid = false;
             var state_attrs = this.get_state_attrs(record);
             var is_required = Boolean(parseInt(state_attrs.required, 10));
+            var is_invisible = Boolean(parseInt(state_attrs.invisible, 10));
             state_attrs.domain_readonly = false;
             var inversion = new Sao.common.DomainInversion();
             var domain = inversion.simplify(this.validation_domains(record,
@@ -1688,6 +1689,7 @@
                     screen_domain)[0];
                 if (this._is_empty(record) &&
                     !is_required &&
+                    !is_invisible &&
                     !unique_from_screen) {
                     // Do nothing
                 } else if (unique) {

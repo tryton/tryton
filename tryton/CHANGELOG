@@ -5,7 +5,7 @@
 * Use ``&`` and ``|`` as boolean operator in search widget
 * Use toggle button and label on translate dialog
 * Manage domain on id in single value list as unique
-* Do not validate domain and enforce uniqueness for empty fields unless they're required
+* Do not validate domain nor enforce uniqueness for empty fields unless they're required or invisible
 * Display the number of selected records on xxx2Many
 
 Version 6.6.0 - 2022-10-31
