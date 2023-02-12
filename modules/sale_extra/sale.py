@@ -26,6 +26,9 @@ class Sale(metaclass=PoolMeta):
 
         super(Sale, cls).quote(sales)
 
+        # State must be draft to add or delete lines
+        # because extra must be set after to have correct amount
+        cls.write(sales, {'state': 'draft'})
         lines_to_delete = []
         for sale in sales:
             sale.set_extra(lines_to_delete)
