@@ -29,18 +29,17 @@ class Sale(metaclass=PoolMeta):
         # State must be draft to add or delete lines
         # because extra must be set after to have correct amount
         cls.write(sales, {'state': 'draft'})
-        lines_to_delete = []
+        removed = []
         for sale in sales:
-            sale.set_extra(lines_to_delete)
-        if lines_to_delete:
-            Line.delete(lines_to_delete)
+            removed.extend(sale.set_extra())
+        Line.delete(removed)
         cls.save(sales)
 
-    def set_extra(self, lines_to_delete):
+    def set_extra(self):
         'Set extra lines and fill lines_to_delete'
         pool = Pool()
         Extra = pool.get('sale.extra')
-
+        removed = []
         extra_lines = Extra.get_lines(self)
         extra2lines = {line.extra: line for line in extra_lines}
         lines = list(self.lines)
@@ -52,10 +51,11 @@ class Sale(metaclass=PoolMeta):
                 continue
             else:
                 lines.remove(line)
-                lines_to_delete.append(line)
+                removed.append(line)
         if extra2lines:
             lines.extend(extra2lines.values())
         self.lines = lines
+        return removed
 
 
 class Line(metaclass=PoolMeta):
