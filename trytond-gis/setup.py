@@ -65,6 +65,7 @@ setup(name=name,
     platforms='any',
     license='GPL-3',
     python_requires='>=3.4',
+    install_requires=requires,
     entry_points={
         'trytond.backend': [
             'postgis = trytond_gis.postgis',
