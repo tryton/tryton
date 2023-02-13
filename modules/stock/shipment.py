@@ -215,6 +215,10 @@ class ShipmentIn(ShipmentMixin, Workflow, ModelSQL, ModelView):
                         [Eval('warehouse_input', -1)], 'parent'),
                     ('to_location', '=', Eval('warehouse_input'))),
                 ],
+            search_order=[
+                ('planned_date', 'ASC NULLS LAST'),
+                ('id', 'ASC')
+                ],
             domain=[
                 If(Eval('state') == 'draft',
                     ('from_location', '=', Eval('supplier_location')),
