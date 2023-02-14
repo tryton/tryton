@@ -69,10 +69,6 @@ class PostError(UserError):
     pass
 
 
-class MoveDatesError(ValidationError):
-    pass
-
-
 class MoveTemplateExpressionError(UserError):
     pass
 

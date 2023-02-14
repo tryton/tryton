@@ -29,8 +29,8 @@ from trytond.wizard import (
 
 from .exceptions import (
     CancelDelegatedWarning, CancelWarning, DelegateLineError, GroupLineError,
-    MoveDatesError, PostError, ReconciliationDeleteWarning,
-    ReconciliationError, RescheduleLineError)
+    PostError, ReconciliationDeleteWarning, ReconciliationError,
+    RescheduleLineError)
 
 _MOVE_STATES = {
     'readonly': Eval('state') == 'posted',
@@ -55,6 +55,11 @@ class Move(ModelSQL, ModelView):
             If(Eval('state') == 'draft',
                 ('state', '=', 'open'),
                 ()),
+            If(Eval('date'), [
+                    ('start_date', '<=', Eval('date')),
+                    ('end_date', '>=', Eval('date')),
+                    ],
+                []),
             ],
         states=_MOVE_STATES)
     journal = fields.Many2One('account.journal', 'Journal', required=True,
@@ -166,55 +171,64 @@ class Move(ModelSQL, ModelView):
         period_id = cls.default_period()
         if period_id:
             period = Period(period_id)
-            if today < period.start_date or today > period.end_date:
-                return period.start_date
-        return today
-
-    @fields.depends('period', 'journal', 'date', 'company')
-    def on_change_with_date(self):
-        pool = Pool()
-        Line = pool.get('account.move.line')
-        Date = pool.get('ir.date')
-        if self.company:
-            company_id = self.company.id
-        else:
-            company_id = Transaction().context.get('company')
-        with Transaction().set_context(company=company_id):
-            today = Date.today()
-        date = self.date
-        if date:
-            if self.period and not (
-                    self.period.start_date <= date <= self.period.end_date):
-                if (today >= self.period.start_date
-                        and today <= self.period.end_date):
-                    date = today
-                else:
-                    date = self.period.start_date
-                self.on_change_date()
-            return date
-        lines = Line.search([
-                ('journal', '=', self.journal),
-                ('period', '=', self.period),
-                ], order=[('id', 'DESC')], limit=1)
-        if lines:
-            date = lines[0].date
-        elif self.period:
-            if (today >= self.period.start_date
-                    and today <= self.period.end_date):
-                date = today
+            start_date = period.start_date
+            end_date = period.end_date
+            if start_date <= today <= end_date:
+                return today
+            elif start_date >= today:
+                return start_date
             else:
-                date = self.period.start_date
-        return date
+                end_date
 
-    @fields.depends('date', 'lines')
+    @fields.depends('date', 'period', 'company', 'lines')
     def on_change_date(self):
+        pool = Pool()
+        Period = pool.get('account.period')
+        context = Transaction().context
+        if self.date:
+            company = self.company or context.get('company')
+            if (not self.period
+                    or not (
+                        self.period.start_date <= self.date
+                        <= self.period.end_date)):
+                self.period = Period.find(
+                    company, date=self.date, exception=False)
         for line in (self.lines or []):
             line.date = self.date
 
-    @fields.depends(methods=['on_change_with_date', 'on_change_date'])
+    @fields.depends(
+        'period', 'date', 'company', 'journal', methods=['on_change_date'])
     def on_change_period(self):
-        self.date = self.on_change_with_date()
-        self.on_change_date()
+        pool = Pool()
+        Date = pool.get('ir.date')
+        Line = pool.get('account.move.line')
+        context = Transaction().context
+        company_id = (
+            self.company.id if self.company else context.get('company'))
+        with Transaction().set_context(company=company_id):
+            today = Date.today()
+        if self.period:
+            start_date = self.period.start_date
+            end_date = self.period.end_date
+            if (not self.date
+                    or not (start_date <= self.date <= end_date)):
+                if start_date <= today <= end_date:
+                    self.date = today
+                else:
+                    lines = Line.search([
+                            ('company', '=', company_id),
+                            ('journal', '=', self.journal),
+                            ('period', '=', self.period),
+                            ],
+                        order=[('date', 'DESC')], limit=1)
+                    if lines:
+                        line, = lines
+                        self.date = line.date
+                    elif start_date >= today:
+                        self.date = start_date
+                    else:
+                        self.date = end_date
+            self.on_change_date()
 
     @classmethod
     def _get_origin(cls):
@@ -227,22 +241,6 @@ class Move(ModelSQL, ModelView):
         get_name = Model.get_name
         models = cls._get_origin()
         return [(None, '')] + [(m, get_name(m)) for m in models]
-
-    @classmethod
-    def validate_fields(cls, moves, field_names):
-        super().validate_fields(moves, field_names)
-        cls.check_date(moves, field_names)
-
-    @classmethod
-    def check_date(cls, moves, field_names=None):
-        if field_names and not (field_names & {'date', 'period'}):
-            return
-        for move in moves:
-            if (move.date < move.period.start_date
-                    or move.date > move.period.end_date):
-                raise MoveDatesError(
-                    gettext('account.msg_move_date_outside_period',
-                        move=move.rec_name))
 
     @classmethod
     def check_modify(cls, moves):
@@ -1049,19 +1047,26 @@ class Line(MoveLineMixin, ModelSQL, ModelView):
         pool = Pool()
         Period = pool.get('account.period')
         Date = pool.get('ir.date')
+        context = Transaction().context
 
         date = Date.today()
         lines = cls.search([
-                ('journal', '=', Transaction().context.get('journal')),
-                ('period', '=', Transaction().context.get('period')),
-                ], order=[('id', 'DESC')], limit=1)
+                ('company', '=', context.get('company')),
+                ('journal', '=', context.get('journal')),
+                ('period', '=', context.get('period')),
+                ],
+            order=[('date', 'DESC')], limit=1)
         if lines:
-            date = lines[0].date
-        elif Transaction().context.get('period'):
-            period = Period(Transaction().context['period'])
-            date = period.start_date
-        if Transaction().context.get('date'):
-            date = Transaction().context['date']
+            line, = lines
+            date = line.date
+        elif context.get('period'):
+            period = Period(context['period'])
+            if period.start_date >= date:
+                date = period.start_date
+            else:
+                date = period.end_date
+        if context.get('date'):
+            date = context['date']
         return date
 
     @classmethod
