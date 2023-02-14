@@ -11,7 +11,14 @@ root = os.path.dirname(os.path.dirname(__file__))
 module_path = os.path.join(root, 'modules')
 
 dependencies = set()
-development_dependencies = set()
+development_dependencies = {
+    'Babel',
+    'Sphinx',
+    'cookiecutter',
+    'rnc2rng',
+    'sphinx-lint',
+    'tox',
+    }
 
 FNULL = open(os.devnull, 'w')
 
