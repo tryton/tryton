@@ -35,6 +35,8 @@ class Party(metaclass=PoolMeta):
                 if not quantity:
                     continue
                 for invoice_line in line.invoice_lines:
+                    if invoice_line.type != 'line':
+                        continue
                     invoice = invoice_line.invoice
                     if invoice and invoice.move:
                         quantity -= Uom.compute_qty(
