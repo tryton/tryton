@@ -602,7 +602,7 @@ class Reconciliation(ModelSQL, ModelView):
         Warning = pool.get('res.user.warning')
         for reconciliation in reconciliations:
             if reconciliation.delegate_to:
-                key = '%s.delete.delegated' % reconciliation
+                key = Warning.format('delete.delegated', [reconciliation])
                 if Warning.check(key):
                     raise ReconciliationDeleteWarning(key,
                         gettext('account.msg_reconciliation_delete_delegated',
