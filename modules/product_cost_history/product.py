@@ -42,8 +42,12 @@ class Product(metaclass=PoolMeta):
                 company = Company(company)
                 if company.timezone:
                     timezone = tz.ZoneInfo(company.timezone)
-                    datetime = (
-                        datetime.replace(tzinfo=tz.UTC).astimezone(timezone))
+                    try:
+                        datetime = (
+                            datetime.replace(tzinfo=tz.UTC).astimezone(
+                                timezone))
+                    except OverflowError:
+                        pass
             cost_price = self.get_cost_price_at(datetime.date(), **pattern)
             if cost_price is not None:
                 return cost_price
