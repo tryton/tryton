@@ -971,7 +971,8 @@ class Line(MoveLineMixin, ModelSQL, ModelView):
         fields.Selection('get_move_states', "Move State"),
         'on_change_with_move_state', searcher='search_move_field')
     currency = fields.Function(fields.Many2One(
-            'currency.currency', "Currency"), 'on_change_with_currency')
+            'currency.currency', "Currency"),
+        'on_change_with_currency', searcher='search_currency')
     amount = fields.Function(Monetary(
             "Amount", currency='amount_currency', digits='amount_currency'),
         'get_amount')
@@ -1122,6 +1123,10 @@ class Line(MoveLineMixin, ModelSQL, ModelView):
     @fields.depends('account')
     def on_change_with_currency(self, name=None):
         return self.account.currency if self.account else None
+
+    @classmethod
+    def search_currency(cls, name, clause):
+        return [('account.company.' + clause[0], * clause[1:])]
 
     @classmethod
     def _get_origin(cls):
