@@ -11,6 +11,8 @@ this repository contains the full copyright notices and license terms. -->
     <field name="party" expand="1"/>
     <field name="debit" sum="Debit"/>
     <field name="credit" sum="Credit"/>
+    <field name="amount_second_currency" symbol="" optional="1"/>
+    <field name="second_currency" optional="1"/>
     <field name="delegated_amount" optional="0"/>
     <field name="tax_lines" optional="1"/>
     <field name="description" expand="1" optional="1"/>
