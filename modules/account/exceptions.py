@@ -85,7 +85,7 @@ class ReconciliationError(ValidationError):
     pass
 
 
-class DeleteDelegatedWarning(UserWarning):
+class ReconciliationDeleteWarning(UserWarning):
     pass
 
 

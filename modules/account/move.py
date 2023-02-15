@@ -28,8 +28,8 @@ from trytond.wizard import (
     Button, StateAction, StateTransition, StateView, Wizard)
 
 from .exceptions import (
-    CancelDelegatedWarning, CancelWarning, DelegateLineError,
-    DeleteDelegatedWarning, GroupLineError, MoveDatesError, PostError,
+    CancelDelegatedWarning, CancelWarning, DelegateLineError, GroupLineError,
+    MoveDatesError, PostError, ReconciliationDeleteWarning,
     ReconciliationError, RescheduleLineError)
 
 _MOVE_STATES = {
@@ -604,7 +604,7 @@ class Reconciliation(ModelSQL, ModelView):
             if reconciliation.delegate_to:
                 key = '%s.delete.delegated' % reconciliation
                 if Warning.check(key):
-                    raise DeleteDelegatedWarning(key,
+                    raise ReconciliationDeleteWarning(key,
                         gettext('account.msg_reconciliation_delete_delegated',
                             reconciliation=reconciliation.rec_name,
                             line=reconciliation.delegate_to.rec_name,
