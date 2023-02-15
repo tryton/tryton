@@ -609,6 +609,16 @@ class Reconciliation(ModelSQL, ModelView):
                             reconciliation=reconciliation.rec_name,
                             line=reconciliation.delegate_to.rec_name,
                             move=reconciliation.delegate_to.move.rec_name))
+            for line in reconciliation.lines:
+                if line.move.journal.type == 'write-off':
+                    key = Warning.format('delete.write-off', [reconciliation])
+                    if Warning.check(key):
+                        raise ReconciliationDeleteWarning(key,
+                            gettext(
+                                'account.msg_reconciliation_delete_write_off',
+                                reconciliation=reconciliation.rec_name,
+                                line=line.rec_name,
+                                move=line.move.rec_name))
         super().delete(reconciliations)
 
     @classmethod

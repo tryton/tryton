@@ -151,6 +151,10 @@ Use the current period to cancel the move?</field>
             <field name="text">The reconciliation "%(reconciliation)s" is delegated to the line "%(line)s".
 You may need to cancel its move "%(move)s".</field>
         </record>
+        <record model="ir.message" id="msg_reconciliation_delete_write_off">
+            <field name="text">The reconciliation "%(reconciliation)s" is linked to the write-off line "%(line)s".
+You may need to cancel its move "%(move)s".</field>
+        </record>
         <record model="ir.message" id="msg_reconciliation_line_not_valid">
             <field name="text">You cannot reconcile non-valid line "%(line)s".</field>
         </record>
