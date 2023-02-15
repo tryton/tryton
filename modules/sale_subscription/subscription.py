@@ -313,6 +313,29 @@ class Subscription(Workflow, ModelSQL, ModelView):
                         'sale_subscription.msg_invoice_recurrence_invalid',
                         subscription=subscription.rec_name))
 
+    def get_rec_name(self, name):
+        items = []
+        if self.number:
+            items.append(self.number)
+        if self.reference:
+            items.append('[%s]' % self.reference)
+        if not items:
+            items.append('(%s)' % self.id)
+        return ' '.join(items)
+
+    @classmethod
+    def search_rec_name(cls, name, clause):
+        _, operator, value = clause
+        if operator.startswith('!') or operator.startswith('not '):
+            bool_op = 'AND'
+        else:
+            bool_op = 'OR'
+        domain = [bool_op,
+            ('number', operator, value),
+            ('reference', operator, value),
+            ]
+        return domain
+
     @classmethod
     def copy(cls, subscriptions, default=None):
         if default is None:
