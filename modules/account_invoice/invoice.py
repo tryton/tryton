@@ -238,6 +238,10 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
         domain=[
             ('account', '=', Eval('account', -1)),
             ['OR',
+                ('currency', '=', Eval('currency', -1)),
+                ('second_currency', '=', Eval('currency', -1)),
+                ],
+            ['OR',
                 ('party', 'in', [None, Eval('party', -1)]),
                 ('party', 'in', Eval('alternative_payees', [])),
                 ],
@@ -1350,15 +1354,22 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
             invoice.check_payment_lines()
 
     def check_payment_lines(self):
-        amount = sum(l.debit - l.credit for l in self.lines_to_pay)
-        payment_amount = sum(l.debit - l.credit for l in self.payment_lines)
+        def balance(line):
+            if self.currency == line.second_currency:
+                return line.amount_second_currency
+            elif self.currency == self.company.currency:
+                return line.debit - line.credit
+            else:
+                return 0
+        amount = sum(map(balance, self.lines_to_pay))
+        payment_amount = sum(map(balance, self.payment_lines))
         if abs(amount) < abs(payment_amount):
             raise InvoiceValidationError(
                 gettext('account_invoice'
                     '.msg_invoice_payment_lines_greater_amount',
                     invoice=self.rec_name))
 
-    def get_reconcile_lines_for_amount(self, amount, party=None):
+    def get_reconcile_lines_for_amount(self, amount, currency, party=None):
         '''
         Return list of lines and the remainder to make reconciliation.
         '''
@@ -1366,6 +1377,16 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
 
         if party is None:
             party = self.party
+
+        assert currency in [self.currency, self.company.currency]
+
+        def balance(line):
+            if currency == line.second_currency:
+                return line.amount_second_currency
+            elif currency == self.company.currency:
+                return line.debit - line.credit
+            else:
+                return 0
 
         lines = [
             l for l in self.payment_lines + self.lines_to_pay
@@ -1375,18 +1396,18 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
         best = Result([], self.total_amount)
         for n in range(len(lines), 0, -1):
             for comb_lines in combinations(lines, n):
-                remainder = sum((l.debit - l.credit) for l in comb_lines)
+                remainder = sum(map(balance, comb_lines))
                 remainder -= amount
                 result = Result(list(comb_lines), remainder)
-                if self.currency.is_zero(remainder):
+                if currency.is_zero(remainder):
                     return result
                 if abs(remainder) < abs(best.remainder):
                     best = result
         return best
 
-    def pay_invoice(self, amount, payment_method, date, description=None,
-            amount_second_currency=None, second_currency=None, overpayment=0,
-            overpayment_second_currency=0, party=None):
+    def pay_invoice(
+            self, amount, payment_method, date, description=None,
+            overpayment=0, party=None):
         '''
         Adds a payment of amount to an invoice using the journal, date and
         description.
@@ -1395,6 +1416,7 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
         Returns the payment lines.
         '''
         pool = Pool()
+        Currency = pool.get('currency.currency')
         Move = pool.get('account.move')
         Line = pool.get('account.move.line')
         Period = pool.get('account.period')
@@ -1407,9 +1429,20 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
         lines = [pay_line, counterpart_line]
 
         pay_amount = amount - overpayment
-        if amount_second_currency is not None:
-            pay_amount_second_currency = (
-                amount_second_currency - overpayment_second_currency)
+        if self.currency != self.company.currency:
+            amount_second_currency = pay_amount
+            second_currency = self.currency
+            overpayment_second_currency = overpayment
+            with Transaction().set_context(date=date):
+                amount = Currency.compute(
+                    self.currency, amount, self.company.currency)
+                overpayment = Currency.compute(
+                    self.currency, overpayment, self.company.currency)
+                pay_amount = amount - overpayment
+        else:
+            amount_second_currency = None
+            second_currency = None
+            overpayment_second_currency = None
         if pay_amount >= 0:
             if self.type == 'out':
                 pay_line.debit, pay_line.credit = 0, pay_amount
@@ -1422,7 +1455,7 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
                 pay_line.debit, pay_line.credit = 0, -pay_amount
         if amount_second_currency is not None:
             pay_line.amount_second_currency = (
-                pay_amount_second_currency.copy_sign(
+                amount_second_currency.copy_sign(
                     pay_line.debit - pay_line.credit))
             pay_line.second_currency = second_currency
 
@@ -1433,7 +1466,7 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
                 abs(overpayment) if pay_line.debit else 0)
             overpayment_line.credit = (
                 abs(overpayment) if pay_line.credit else 0)
-            if amount_second_currency is not None:
+            if overpayment_second_currency is not None:
                 overpayment_line.amount_second_currency = (
                     overpayment_second_currency.copy_sign(
                         overpayment_line.debit - overpayment_line.credit))
@@ -3099,7 +3132,7 @@ class PayInvoiceStart(ModelView):
         depends=['company'])
     amount = Monetary(
         "Amount", currency='currency', digits='currency', required=True)
-    currency = fields.Many2One('currency.currency', 'Currency', required=True)
+    currency = fields.Many2One('currency.currency', 'Currency', readonly=True)
     description = fields.Char('Description', size=None)
     company = fields.Many2One('company.company', "Company", readonly=True)
     invoice_account = fields.Many2One(
@@ -3140,17 +3173,12 @@ class PayInvoiceAsk(ModelView):
     amount = Monetary(
         "Payment Amount",
         currency='currency', digits='currency', readonly=True)
-    currency = fields.Many2One('currency.currency', 'Payment Currency',
-            readonly=True)
+    currency = fields.Many2One('currency.currency', "Currency", readonly=True)
     amount_writeoff = Monetary(
         "Write-Off Amount",
-        currency='currency_writeoff', digits='currency_writeoff',
+        currency='currency', digits='currency',
         readonly=True,
         states={
-            'invisible': Eval('type') != 'writeoff',
-            })
-    currency_writeoff = fields.Many2One('currency.currency',
-        'Write-Off Currency', readonly=True, states={
             'invisible': Eval('type') != 'writeoff',
             })
     lines_to_pay = fields.Many2Many('account.move.line', None, None,
@@ -3170,35 +3198,34 @@ class PayInvoiceAsk(ModelView):
             })
     company = fields.Many2One('company.company', 'Company', readonly=True)
     invoice = fields.Many2One('account.invoice', 'Invoice', readonly=True)
-    date = fields.Date('Date', readonly=True)
 
     @staticmethod
     def default_type():
         return 'partial'
 
-    @fields.depends('lines', 'amount', 'currency', 'currency_writeoff',
-        'invoice', 'payment_lines', 'date')
+    @fields.depends(
+        'lines', 'amount', 'currency', 'invoice', 'payment_lines', 'company')
     def on_change_lines(self):
-        Currency = Pool().get('currency.currency')
-
-        if self.currency and self.currency_writeoff:
-            with Transaction().set_context(date=self.date):
-                amount = Currency.compute(self.currency, self.amount,
-                    self.currency_writeoff)
-        else:
-            amount = self.amount
-
         self.amount_writeoff = Decimal('0.0')
         if not self.invoice:
             return
+
+        def balance(line):
+            if self.currency == line.second_currency:
+                return line.amount_second_currency
+            elif self.currency == self.company.currency:
+                return line.debit - line.credit
+            else:
+                return 0
+
         for line in self.lines:
-            self.amount_writeoff += line.debit - line.credit
+            self.amount_writeoff += balance(line)
         for line in self.payment_lines:
-            self.amount_writeoff += line.debit - line.credit
+            self.amount_writeoff += balance(line)
         if self.invoice.type == 'in':
-            self.amount_writeoff = - self.amount_writeoff - amount
+            self.amount_writeoff = - self.amount_writeoff - self.amount
         else:
-            self.amount_writeoff = self.amount_writeoff - amount
+            self.amount_writeoff = self.amount_writeoff - self.amount
 
 
 class PayInvoice(Wizard):
@@ -3222,11 +3249,11 @@ class PayInvoice(Wizard):
         super(PayInvoice, cls).__setup__()
         cls.__rpc__['create'].fresh_session = True
 
-    def get_reconcile_lines_for_amount(self, invoice, amount):
+    def get_reconcile_lines_for_amount(self, invoice, amount, currency):
         if invoice.type == 'in':
             amount *= -1
         return invoice.get_reconcile_lines_for_amount(
-            amount, party=self.start.payee)
+            amount, currency, party=self.start.payee)
 
     def default_start(self, fields):
         default = {}
@@ -3248,46 +3275,32 @@ class PayInvoice(Wizard):
         return default
 
     def transition_choice(self):
-        pool = Pool()
-        Currency = pool.get('currency.currency')
-
         invoice = self.record
-
-        with Transaction().set_context(date=self.start.date):
-            amount = Currency.compute(self.start.currency,
-                self.start.amount, invoice.company.currency)
-            amount_invoice = Currency.compute(
-                self.start.currency, self.start.amount, invoice.currency)
-        _, remainder = self.get_reconcile_lines_for_amount(invoice, amount)
-        if (remainder == Decimal('0.0')
-                and amount_invoice <= invoice.amount_to_pay):
+        amount = self.start.amount
+        currency = self.start.currency
+        _, remainder = self.get_reconcile_lines_for_amount(
+            invoice, amount, currency)
+        if remainder == Decimal('0.0') and amount <= invoice.amount_to_pay:
             return 'pay'
         return 'ask'
 
     def default_ask(self, fields):
-        pool = Pool()
-        Currency = pool.get('currency.currency')
-
         default = {}
         invoice = self.record
+        amount = self.start.amount
+        currency = self.start.currency
         default['lines_to_pay'] = [x.id for x in invoice.lines_to_pay
                 if not x.reconciliation]
 
-        default['amount'] = self.start.amount
-        default['date'] = self.start.date
-        default['currency'] = self.start.currency.id
+        default['amount'] = amount
+        default['currency'] = currency.id
         default['company'] = invoice.company.id
 
-        with Transaction().set_context(date=self.start.date):
-            amount = Currency.compute(self.start.currency,
-                self.start.amount, invoice.company.currency)
-            amount_invoice = Currency.compute(
-                self.start.currency, self.start.amount, invoice.currency)
-
-        if invoice.company.currency.is_zero(amount):
+        if currency.is_zero(amount):
             lines = invoice.lines_to_pay
         else:
-            lines, _ = self.get_reconcile_lines_for_amount(invoice, amount)
+            lines, _ = self.get_reconcile_lines_for_amount(
+                invoice, amount, currency)
         default['lines'] = [x.id for x in lines]
 
         for line_id in default['lines'][:]:
@@ -3297,41 +3310,27 @@ class PayInvoice(Wizard):
         default['payment_lines'] = [x.id for x in invoice.payment_lines
                 if not x.reconciliation]
 
-        default['currency_writeoff'] = invoice.company.currency.id
         default['invoice'] = invoice.id
 
-        if (amount_invoice >= invoice.amount_to_pay
-                or invoice.company.currency.is_zero(amount)):
+        if amount >= invoice.amount_to_pay or currency.is_zero(amount):
             default['type'] = 'writeoff'
         return default
 
     def transition_pay(self):
         pool = Pool()
-        Currency = pool.get('currency.currency')
         MoveLine = pool.get('account.move.line')
         Lang = pool.get('ir.lang')
 
         invoice = self.record
+        amount = self.start.amount
+        currency = self.start.currency
 
-        with Transaction().set_context(date=self.start.date):
-            amount = Currency.compute(self.start.currency,
-                self.start.amount, invoice.company.currency)
-            amount_invoice = Currency.compute(
-                self.start.currency, self.start.amount, invoice.currency)
-
-        reconcile_lines, remainder = \
-            self.get_reconcile_lines_for_amount(invoice, amount)
-
-        amount_second_currency = None
-        second_currency = None
-        if self.start.currency != invoice.company.currency:
-            amount_second_currency = self.start.amount
-            second_currency = self.start.currency
+        reconcile_lines, remainder = (
+            self.get_reconcile_lines_for_amount(invoice, amount, currency))
 
         overpayment = 0
-        overpayment_second_currency = 0
-        if (0 <= invoice.amount_to_pay < amount_invoice
-                or amount_invoice < invoice.amount_to_pay <= 0):
+        if (0 <= invoice.amount_to_pay < amount
+                or amount < invoice.amount_to_pay <= 0):
             if self.ask.type == 'partial':
                 lang = Lang.get()
                 raise PayInvoiceError(
@@ -3345,24 +3344,13 @@ class PayInvoice(Wizard):
                     raise PayInvoiceError(
                         gettext('account_invoice.msg_invoice_overpay_paid',
                             invoice=invoice.rec_name))
-                with Transaction().set_context(date=self.start.date):
-                    overpayment = Currency.compute(
-                        invoice.currency,
-                        amount_invoice - invoice.amount_to_pay,
-                        invoice.company.currency)
-                    if second_currency:
-                        overpayment_second_currency = Currency.compute(
-                            invoice.currency,
-                            amount_invoice - invoice.amount_to_pay,
-                            second_currency)
+                overpayment = amount - invoice.amount_to_pay
 
         lines = []
-        if not invoice.company.currency.is_zero(amount):
-            lines = invoice.pay_invoice(amount,
-                self.start.payment_method, self.start.date,
-                self.start.description, amount_second_currency,
-                second_currency, overpayment, overpayment_second_currency,
-                party=self.start.payee)
+        if not currency.is_zero(amount):
+            lines = invoice.pay_invoice(
+                amount, self.start.payment_method, self.start.date,
+                self.start.description, overpayment, party=self.start.payee)
 
         if remainder:
             if self.ask.type != 'partial':

@@ -284,20 +284,12 @@ class Statement(Workflow, ModelSQL, ModelView):
             origin.lines = lines
         self.origins = origins
 
-    @fields.depends('lines', 'journal', 'company')
+    @fields.depends('lines')
     def on_change_lines(self):
         pool = Pool()
         Line = pool.get('account.statement.line')
-        if not self.journal or not self.lines or not self.company:
-            return
-        if self.journal.currency != self.company.currency:
-            return
 
-        invoices = set()
-        for line in self.lines:
-            if (line.invoice
-                    and line.invoice.currency == self.company.currency):
-                invoices.add(line.invoice)
+        invoices = {l.invoice for l in self.lines if l.invoice}
         invoice_id2amount_to_pay = {}
         for invoice in invoices:
             if invoice.type == 'out':
@@ -758,6 +750,7 @@ class Line(origin_mixin(_states), sequence_ordered(), ModelSQL, ModelView):
         domain={
             'account.invoice': [
                 ('company', '=', Eval('company', -1)),
+                ('currency', '=', Eval('currency', -1)),
                 If(Bool(Eval('party')),
                     ['OR',
                         ('party', '=', Eval('party', -1)),
@@ -991,8 +984,15 @@ class Line(origin_mixin(_states), sequence_ordered(), ModelSQL, ModelView):
                 MoveLine.reconcile(*to_reconcile)
                 to_reconcile.clear()
 
+            if move_line.second_currency:
+                amount = move_line.amount_second_currency
+                currency = move_line.second_currency
+            else:
+                amount = move_line.credit - move_line.debit
+                currency = line.company.currency
+
             reconcile_lines = line.invoice.get_reconcile_lines_for_amount(
-                move_line.credit - move_line.debit, party=line.party)
+                amount, currency, party=line.party)
 
             assert move_line.account == line.invoice.account
 

@@ -1,3 +1,4 @@
+* Support payment with currency exchange
 * Remove support for Python 3.7
 * Add support for Python 3.11
 * Warn when cancelling a move related to an invoice

@@ -154,29 +154,6 @@ Create invoice with alternate currency::
     >>> invoice.total_amount
     Decimal('460.00')
 
-Pay the invoice with rate change::
-
-    >>> pay = invoice.click('pay')
-    >>> pay.form.amount
-    Decimal('460.00')
-    >>> pay.form.payment_method = payment_method
-    >>> pay.form.date = tomorrow
-    >>> pay.execute('choice')
-    >>> pay.form.type
-    'writeoff'
-    >>> pay.form.writeoff = writeoff
-    >>> pay.form.amount
-    Decimal('460.00')
-    >>> pay.form.currency == eur
-    True
-    >>> pay.form.amount_writeoff
-    Decimal('46.00')
-    >>> pay.form.currency_writeoff == currency
-    True
-    >>> pay.execute('pay')
-    >>> invoice.state
-    'paid'
-
 Create negative tax::
 
     >>> negative_tax = create_tax(Decimal('-.10'))

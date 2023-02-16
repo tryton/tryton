@@ -139,6 +139,14 @@ class Invoice(metaclass=PoolMeta):
         Line = pool.get('account.move.line')
         if not hasattr(Payment, 'clearing_move'):
             return
+
+        def balance(line):
+            if self.currency == line.second_currency:
+                return line.amount_second_currency
+            elif self.currency == self.company.currency:
+                return line.debit - line.credit
+            else:
+                return 0
         to_reconcile = []
         for line in self.lines_to_pay:
             if line.reconciliation:
@@ -150,7 +158,7 @@ class Invoice(metaclass=PoolMeta):
                         if (pline.account == line.account
                                 and not pline.reconciliation):
                             lines.append(pline)
-            if not sum(l.debit - l.credit for l in lines):
+            if not sum(map(balance, lines)):
                 to_reconcile.append(lines)
         for lines in to_reconcile:
             Line.reconcile(lines)

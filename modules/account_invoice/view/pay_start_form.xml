@@ -4,12 +4,9 @@ this repository contains the full copyright notices and license terms. -->
 <form cursor="amount">
     <label name="payee"/>
     <field name="payee"/>
-    <newline/>
-
     <label name="amount"/>
-    <field name="amount" symbol=""/>
-    <label name="currency"/>
-    <field name="currency"/>
+    <field name="amount"/>
+
     <label name="description"/>
     <field name="description" colspan="3"/>
     <label name="payment_method"/>
