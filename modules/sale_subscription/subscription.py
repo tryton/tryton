@@ -738,9 +738,14 @@ class Line(sequence_ordered(), ModelSQL, ModelView):
 
     @classmethod
     def search_rec_name(cls, name, clause):
-        return ['OR',
-            ('subscription.rec_name',) + tuple(clause[1:]),
-            ('service.rec_name',) + tuple(clause[1:]),
+        _, operator, value = clause
+        if operator.startswith('!') or operator.startswith('not '):
+            bool_op = 'AND'
+        else:
+            bool_op = 'OR'
+        return [bool_op,
+            ('subscription.rec_name', *clause[1:]),
+            ('service.rec_name', *clause[1:]),
             ]
 
     @classmethod
