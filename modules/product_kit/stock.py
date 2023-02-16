@@ -48,10 +48,17 @@ class MoveSale(metaclass=PoolMeta):
 
     @classmethod
     def search_sale(cls, name, clause):
-        return ['OR',
-            super().search_sale(name, clause),
-            ('origin.line.' + clause[0],) + tuple(clause[1:3])
-            + ('sale.line.component',) + tuple(clause[3:])]
+        operator = clause[1]
+        if operator.startswith('!') or operator.startswith('not '):
+            bool_op = 'AND'
+        else:
+            bool_op = 'OR'
+        domain = super().search_sale(name, clause)
+        return [bool_op,
+            domain,
+            ('origin.line.' + clause[0],
+                *clause[1:3], 'sale.line.component', *clause[3:]),
+            ]
 
     def get_sale_exception_state(self, name):
         pool = Pool()
@@ -139,10 +146,17 @@ class MovePurchase(metaclass=PoolMeta):
 
     @classmethod
     def search_purchase(cls, name, clause):
-        return ['OR',
-            super().search_purchase(name, clause),
-            ('origin.line.' + clause[0],) + tuple(clause[1:3])
-            + ('purchase.line.component',) + tuple(clause[3:])]
+        operator = clause[1]
+        if operator.startswith('!') or operator.startswith('not '):
+            bool_op = 'AND'
+        else:
+            bool_op = 'OR'
+        domain = super().search_purchase(name, clause)
+        return [bool_op,
+            domain,
+            ('origin.line.' + clause[0],
+                *clause[1:3], 'purchase.line.component', *clause[3:]),
+            ]
 
     def get_supplier(self, name):
         pool = Pool()
@@ -154,11 +168,16 @@ class MovePurchase(metaclass=PoolMeta):
 
     @classmethod
     def search_supplier(cls, name, clause):
-        return ['OR',
-            super().search_supplier(name, clause),
-            ('origin.line.purchase.party' + clause[0].lstrip(name),)
-            + tuple(clause[1:3]) + ('purchase.line.component',)
-            + tuple(clause[3:])]
+        operator = clause[1]
+        if operator.startswith('!') or operator.startswith('not '):
+            bool_op = 'AND'
+        else:
+            bool_op = 'OR'
+        domain = super().search_supplier(name, clause)
+        return [bool_op,
+            domain,
+            ('origin.line.purchase.party' + clause[0][len(name):],
+                *clause[1:3], 'purchase.line.component', *clause[3:])]
 
     def get_purchase_exception_state(self, name):
         pool = Pool()

@@ -221,8 +221,8 @@ class ComponentMixin(sequence_ordered(), ModelStorage):
 
     @classmethod
     def search_rec_name(cls, name, clause):
-        return ['OR',
-            ('product.rec_name',) + tuple(clause[1:]),
+        return [
+            ('product.rec_name', *clause[1:]),
             ]
 
 
