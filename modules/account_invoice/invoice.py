@@ -1257,7 +1257,6 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
         return [bool_op,
             ('number', *clause[1:]),
             ('reference', *clause[1:]),
-            ('party', *clause[1:]),
             ]
 
     def get_origins(self, name):
