@@ -193,6 +193,7 @@ class Binary(BinaryMixin, Widget):
         return False
 
     def sig_icon_press(self, widget, icon_pos, event):
+        widget.grab_focus()
         if icon_pos == Gtk.EntryIconPosition.PRIMARY:
             self.open_()
 

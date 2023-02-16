@@ -279,7 +279,9 @@ class TranslateMixin:
         button.connect('clicked', self.translate)
         return button
 
-    def translate(self, *args):
+    def translate(self, widget=None, *args):
+        if widget:
+            widget.grab_focus()
         self.view.set_value()
         if self.record.id < 0 or self.record.modified:
             common.message(
