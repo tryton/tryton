@@ -544,6 +544,7 @@ class ScreenContainer(object):
         GLib.idle_add(keypress)
 
     def icon_press(self, widget, icon_pos, event):
+        widget.grab_focus()
         if icon_pos == Gtk.EntryIconPosition.PRIMARY:
             self.search_box(widget)
         elif icon_pos == Gtk.EntryIconPosition.SECONDARY:
