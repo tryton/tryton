@@ -62,9 +62,14 @@ def get_moves(func):
 def search_moves(func):
     @wraps(func)
     def wrapper(cls, name, clause):
-        return ['OR',
+        operator = clause[1]
+        if operator.startswith('!') or operator.startswith('not '):
+            bool_op = 'AND'
+        else:
+            bool_op = 'OR'
+        return [bool_op,
             func(cls, name, clause),
-            ('lines.components.' + clause[0],) + tuple(clause[1:]),
+            ('lines.components.' + clause[0], *clause[1:]),
             ]
     return wrapper
 

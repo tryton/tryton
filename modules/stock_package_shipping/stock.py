@@ -159,9 +159,15 @@ class Package(DimensionsMixin, metaclass=PoolMeta):
 
     @classmethod
     def search_rec_name(cls, name, clause):
+        _, operator, value = clause
+        if operator.startswith('!') or operator.startswith('not '):
+            bool_op = 'AND'
+        else:
+            bool_op = 'OR'
         domain = super(Package, cls).search_rec_name(name, clause)
-        return ['OR', domain,
-            ('shipping_reference',) + tuple(clause[1:]),
+        return [bool_op,
+            domain,
+            ('shipping_reference', *clause[1:]),
             ]
 
     @fields.depends('type')
@@ -216,9 +222,15 @@ class ShippingMixin:
 
     @classmethod
     def search_rec_name(cls, name, clause):
+        _, operator, value = clause
+        if operator.startswith('!') or operator.startswith('not '):
+            bool_op = 'AND'
+        else:
+            bool_op = 'OR'
         domain = super().search_rec_name(name, clause)
-        return ['OR', domain,
-            ('reference',) + tuple(clause[1:]),
+        return [bool_op,
+            domain,
+            ('reference', *clause[1:]),
             ]
 
     @classmethod

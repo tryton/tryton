@@ -692,7 +692,12 @@ class Move(metaclass=PoolMeta):
 
     @classmethod
     def search_customer_drop(cls, name, clause):
-        return ['OR',
+        operator = clause[1]
+        if operator.startswith('!') or operator.startswith('not '):
+            bool_op = 'AND'
+        else:
+            bool_op = 'OR'
+        return [bool_op,
             ('origin.sale.party' + clause[0][len(name):],
                 *clause[1:3], 'sale.line', *clause[3:]),
             ('origin.purchase.customer' + clause[0][len(name):],
