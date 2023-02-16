@@ -311,6 +311,7 @@ class FrFEC(Wizard):
         return Line.search(
             domain,
             order=[
+                ('move.post_date', 'ASC'),
                 ('move.post_number', 'ASC'),
                 ('id', 'ASC'),
                 ])
