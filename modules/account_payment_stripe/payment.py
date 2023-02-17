@@ -966,15 +966,18 @@ class Account(ModelSQL, ModelView):
                 ('webhook_identifier', '=', None),
                 ])
         for account in accounts:
-            events = stripe.Event.list(
-                api_key=account.secret_key,
-                ending_before=account.last_event,
-                limit=100)
-            for event in reversed(list(events)):
-                account.webhook(event)
-                account.last_event = event.id
-                account.save()
-                Transaction().commit()
+            while True:
+                events = stripe.Event.list(
+                    api_key=account.secret_key,
+                    ending_before=account.last_event,
+                    limit=100)
+                if not events:
+                    break
+                for event in reversed(list(events)):
+                    account.webhook(event)
+                    account.last_event = event.id
+                    account.save()
+                    Transaction().commit()
 
     def webhook(self, payload):
         """This method handles stripe webhook callbacks
