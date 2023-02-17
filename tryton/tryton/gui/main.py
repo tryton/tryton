@@ -175,9 +175,10 @@ class Main(Gtk.Application):
         Gtk.AccelMap.add_entry(
             '<tryton>/Form/Delete', Gdk.KEY_D, Gdk.ModifierType.CONTROL_MASK)
         Gtk.AccelMap.add_entry(
-            '<tryton>/Form/Next', Gdk.KEY_Page_Down, 0)
+            '<tryton>/Form/Next', Gdk.KEY_Down, Gdk.ModifierType.CONTROL_MASK)
         Gtk.AccelMap.add_entry(
-            '<tryton>/Form/Previous', Gdk.KEY_Page_Up, 0)
+            '<tryton>/Form/Previous',
+            Gdk.KEY_Up, Gdk.ModifierType.CONTROL_MASK)
         Gtk.AccelMap.add_entry(
             '<tryton>/Form/Switch View', Gdk.KEY_L,
             Gdk.ModifierType.CONTROL_MASK)

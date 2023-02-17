@@ -976,19 +976,7 @@ class Screen:
 
     def _get_next_record(self, test=False):
         view = self.current_view
-        if view.view_type == 'tree' and len(self.group):
-            range_ = view.treeview.get_visible_range()
-            if range_ and not test:
-                start, end = range_
-                vadjustment = view.treeview.get_vadjustment()
-                vadjustment.set_value(
-                    vadjustment.props.value + vadjustment.props.page_increment)
-                model = view.treeview.get_model()
-                iter_ = model.get_iter(end)
-                return model.get_value(iter_, 0)
-            else:
-                return self.group[-1]
-        elif (view.view_type == 'form'
+        if (view.view_type in {'tree', 'form'}
                 and self.current_record
                 and self.current_record.group):
             group = self.current_record.group
@@ -1063,19 +1051,7 @@ class Screen:
 
     def _get_prev_record(self, test=False):
         view = self.current_view
-        if view.view_type == 'tree' and len(self.group):
-            range_ = view.treeview.get_visible_range()
-            if range_ and not test:
-                start, end = range_
-                vadjustment = view.treeview.get_vadjustment()
-                vadjustment.set_value(
-                    vadjustment.props.value - vadjustment.props.page_increment)
-                model = view.treeview.get_model()
-                iter_ = model.get_iter(start)
-                return model.get_value(iter_, 0)
-            else:
-                return self.group[0]
-        elif (view.view_type == 'form'
+        if (view.view_type in {'tree', 'form'}
                 and self.current_record
                 and self.current_record.group):
             group = self.current_record.group
