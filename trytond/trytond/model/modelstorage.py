@@ -1285,6 +1285,11 @@ class ModelStorage(Model):
                             'many2one', 'one2many', 'many2many', 'one2one',
                             'reference'}:
                         invalid_records = invalid_relations
+                    elif field._type.endswith('2many'):
+                        invalid_records = [
+                            r for r in records
+                            if invalid_relations.intersection(
+                                getattr(r, field.name))]
                     else:
                         invalid_records = [
                             r for r in records
