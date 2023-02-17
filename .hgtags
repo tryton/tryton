@@ -8911,3 +8911,4 @@ de482cce11bffc3777c49c8eb3467a456ecfd692 trytond-6.4.12
 5b4a35c81e7e0bd222a13a3a05b99e441a36f709 tryton-6.4.10
 a56fe1bb8cc43a493cb5f48b3423a6fe1d61244d sao-6.4.12
 addc08d49983c4c101aa40df0b80f9cfd3411986 purchase_request-6.4.4
+a9ed556ffdc22c90fa3cd634c0d1a8dd81ab6e46 account_payment_stripe-6.4.3
