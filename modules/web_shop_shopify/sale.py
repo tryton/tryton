@@ -52,7 +52,7 @@ class Sale(IdentifierMixin, metaclass=PoolMeta):
         Currency = pool.get('currency.currency')
         Line = pool.get('sale.line')
 
-        if hasattr(order, 'customer'):
+        if getattr(order, 'customer', None):
             party = Party.get_from_shopify(shop, order.customer)
             party.save()
             party.set_shopify_identifier(shop, order.customer.id)
@@ -74,10 +74,10 @@ class Sale(IdentifierMixin, metaclass=PoolMeta):
                     ('code', '=', order.currency),
                     ], limit=1)
 
-        if hasattr(order, 'shipping_address'):
+        if getattr(order, 'shipping_address', None):
             sale.shipment_address = party.get_address_from_shopify(
                 order.shipping_address)
-        if hasattr(order, 'billing_address'):
+        if getattr(order, 'billing_address', None):
             sale.invoice_address = party.get_address_from_shopify(
                 order.billing_address)
 
@@ -337,7 +337,7 @@ class Line(IdentifierMixin, metaclass=PoolMeta):
             line.sale = sale
             line.shopify_identifier = line_item.id
         assert line.shopify_identifier == line_item.id
-        if hasattr(line_item, 'variant_id'):
+        if getattr(line_item, 'variant_id', None):
             line.product = Product.search_shopify_identifier(
                 sale.web_shop, line_item.variant_id)
         else:
