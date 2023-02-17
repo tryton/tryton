@@ -8692,3 +8692,4 @@ b46baf0da340fc25b52e8a2a13ddafff0255e88a tryton-6.6.5
 84049671b29ed21e6cc8d10824110e70b08a38ee sao-6.6.5
 0f1fdaf708631cf3efdec7dac08d4a9f96dcd836 sale_supply_drop_shipment-6.6.2
 b9711da60063021b9d45e5edaf57981af595288b purchase_request-6.6.3
+72be5cfcfdcd0976daef676169a8be6d0c33177e account_payment_stripe-6.6.1
