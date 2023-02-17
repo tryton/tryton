@@ -18,6 +18,8 @@ Imports::
 
     >>> today = dt.date.today()
 
+    >>> FETCH_SLEEP = 1
+
 Activate modules::
 
     >>> config = activate_modules('account_payment_stripe')
@@ -119,7 +121,7 @@ Process off-session the payment::
     >>> payment.state
     'processing'
 
-    >>> time.sleep(1)
+    >>> time.sleep(FETCH_SLEEP)
     >>> cron_fetch_events.click('run_once')
     >>> payment.reload()
     >>> payment.state
@@ -140,7 +142,7 @@ Refund the payment::
     ...     ])
     >>> cron_refund_create.click('run_once')
 
-    >>> time.sleep(1)
+    >>> time.sleep(FETCH_SLEEP)
     >>> cron_fetch_events.click('run_once')
     >>> payment.reload()
     >>> payment.state
@@ -168,7 +170,7 @@ Cancel payment intent::
 
     >>> _ = stripe.PaymentIntent.cancel(payment.stripe_payment_intent_id)
 
-    >>> time.sleep(1)
+    >>> time.sleep(FETCH_SLEEP)
     >>> cron_fetch_events.click('run_once')
     >>> payment.reload()
     >>> payment.state

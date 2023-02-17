@@ -18,6 +18,8 @@ Imports::
 
     >>> today = dt.date.today()
 
+    >>> FETCH_SLEEP = 1
+
 Activate modules::
 
     >>> config = activate_modules('account_payment_stripe')
@@ -103,7 +105,7 @@ Create fully disputed payment::
     >>> payment.state
     'processing'
 
-    >>> time.sleep(1)
+    >>> time.sleep(FETCH_SLEEP)
     >>> cron_fetch_events.click('run_once')
     >>> payment.reload()
     >>> payment.state
@@ -195,7 +197,7 @@ Create partial disputed payment::
     >>> payment.state
     'processing'
 
-    >>> time.sleep(1)
+    >>> time.sleep(FETCH_SLEEP)
     >>> cron_fetch_events.click('run_once')
     >>> payment.reload()
     >>> payment.state
@@ -265,7 +267,7 @@ Create won disputed payment::
     >>> payment.state
     'processing'
 
-    >>> time.sleep(1)
+    >>> time.sleep(FETCH_SLEEP)
     >>> cron_fetch_events.click('run_once')
     >>> payment.reload()
     >>> payment.state
@@ -279,7 +281,7 @@ Simulate charge.dispute.closed event::
     >>> dispute = stripe.Dispute.modify(charge.dispute,
     ...     evidence={'uncategorized_text': 'winning_evidence'})
 
-    >>> time.sleep(1)
+    >>> time.sleep(FETCH_SLEEP)
     >>> cron_fetch_events.click('run_once')
     >>> payment.reload()
     >>> payment.state

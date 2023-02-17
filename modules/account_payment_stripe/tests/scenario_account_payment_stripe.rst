@@ -18,6 +18,8 @@ Imports::
 
     >>> today = dt.date.today()
 
+    >>> FETCH_SLEEP = 1
+
 Activate modules::
 
     >>> config = activate_modules('account_payment_stripe')
@@ -120,7 +122,7 @@ Process the payment::
     >>> payment.state
     'processing'
 
-    >>> time.sleep(1)
+    >>> time.sleep(FETCH_SLEEP)
     >>> cron_fetch_events.click('run_once')
     >>> payment.reload()
     >>> payment.state
@@ -227,7 +229,7 @@ Make payment with customer::
     >>> payment.state
     'processing'
 
-    >>> time.sleep(1)
+    >>> time.sleep(FETCH_SLEEP)
     >>> cron_fetch_events.click('run_once')
     >>> payment.reload()
     >>> payment.state
@@ -302,7 +304,7 @@ Capture lower amount::
     >>> payment.state
     'processing'
 
-    >>> time.sleep(1)
+    >>> time.sleep(FETCH_SLEEP)
     >>> cron_fetch_events.click('run_once')
     >>> payment.reload()
     >>> payment.state
@@ -322,6 +324,7 @@ Refund some amount::
     ...     ('method', '=', 'account.payment.stripe.refund|stripe_create'),
     ...     ])
     >>> cron_refund_create.click('run_once')
+    >>> time.sleep(FETCH_SLEEP)
     >>> cron_fetch_events.click('run_once')
 
     >>> payment.reload()
@@ -341,6 +344,7 @@ Simulate charge.refunded event with full amount::
     >>> refund.click('submit')
     >>> refund.click('approve')
     >>> cron_refund_create.click('run_once')
+    >>> time.sleep(FETCH_SLEEP)
     >>> cron_fetch_events.click('run_once')
 
     >>> payment.reload()
@@ -360,6 +364,7 @@ Try to refund more::
     >>> refund.click('submit')
     >>> refund.click('approve')
     >>> cron_refund_create.click('run_once')
+    >>> time.sleep(FETCH_SLEEP)
     >>> cron_fetch_events.click('run_once')
     >>> refund.reload()
     >>> refund.state
