@@ -424,6 +424,8 @@ class ModelStorage(Model):
             if (not isinstance(f, fields.Function)
                 or isinstance(f, fields.MultiValue))
             and n not in mptt]
+        assert (
+            {k.split('.', 1)[0] for k in default.keys()} <= set(fields_names))
         ids = list(map(int, records))
         with without_check_access():
             values = {
