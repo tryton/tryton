@@ -1378,6 +1378,7 @@ class TranslationClean(Wizard):
         ModelData = pool.get('ir.model.data')
 
         to_delete = []
+        records = defaultdict(lambda: defaultdict(set))
         keys = set()
         translations = Translation.search([])
         for translation in translations:
@@ -1391,6 +1392,19 @@ class TranslationClean(Wizard):
                     to_delete.append(translation.id)
                 else:
                     keys.add(key)
+                if translation.type == 'model' and translation.res_id >= 0:
+                    model_name, _ = translation.name.split(',', 1)
+                    records[model_name][translation.res_id].add(translation.id)
+
+        with inactive_records():
+            for model_name, translations in records.items():
+                Model = pool.get(model_name)
+                for sub_ids in grouped_slice(translations.keys()):
+                    sub_ids = list(sub_ids)
+                    records = Model.search([('id', 'in', sub_ids)])
+                    for record_id in set(sub_ids) - set(map(int, records)):
+                        to_delete.extend(translations[record_id])
+
         # skip translation handled in ir.model.data
         models_data = ModelData.search([
             ('db_id', 'in', to_delete),
