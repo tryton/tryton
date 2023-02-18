@@ -55,7 +55,7 @@ class Geometry(fields.Field):
     def definition(self, model, language):
         definition = super().definition(model, language)
         definition['dimension'] = self.dimension
-        definition['geometry_type'] = self.geometry_type
+        definition['geometry_type'] = self._geometry_type
         return definition
 
 
