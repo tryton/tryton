@@ -15,6 +15,17 @@ class TestGeographicFields(unittest.TestCase):
         activate_module('tests')
 
     @with_transaction()
+    def test_fields_get(self):
+        "Test fields_get"
+        pool = Pool()
+
+        GISPoint = pool.get('test.gis.point')
+
+        self.assertDictContainsSubset(
+            {'dimension': 2, 'geometry_type': 'POINT'},
+            GISPoint.fields_get(['point'])['point'])
+
+    @with_transaction()
     def test_create_save(self):
         "Testing create/write with GIS types"
         pool = Pool()
