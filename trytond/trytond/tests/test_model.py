@@ -205,6 +205,23 @@ class ModelTestCase(unittest.TestCase):
                 'record': record.id, 'value': "Test"})
 
     @with_transaction()
+    def test_names_value_list(self):
+        "Test __names__ with value as list"
+        pool = Pool()
+        Model = pool.get('test.model_parent')
+        Child = pool.get('test.model_child')
+
+        record = Model(
+            name="Test", children=[Child(name="Foo"), Child(name="Bar")])
+        record.save()
+        names = Model.__names__(field='children', record=record)
+
+        self.assertEqual(
+            names, {
+                'model': "Model Parent", 'field': "Children",
+                'record': "Test", 'value': "Foo, Bar"})
+
+    @with_transaction()
     def test_names_unset_value(self):
         "test __names__ with unset value"
         pool = Pool()
@@ -216,7 +233,7 @@ class ModelTestCase(unittest.TestCase):
         self.assertEqual(
             names, {
                 'model': "Model", 'field': "Name",
-                'record': record.id, 'value': None})
+                'record': record.id, 'value': 'None'})
 
     @with_transaction()
     def test_fields_get_no_write_access(self):

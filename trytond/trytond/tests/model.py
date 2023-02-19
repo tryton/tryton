@@ -16,6 +16,7 @@ class ModelParent(Model):
     "Model Parent"
     __name__ = 'test.model_parent'
     name = fields.Char("Name")
+    children = fields.One2Many('test.model_child', 'parent', "Children")
 
 
 class ModelChild(Model):
