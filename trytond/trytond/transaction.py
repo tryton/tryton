@@ -15,6 +15,7 @@ __all__ = ['Transaction',
     'check_access', 'without_check_access',
     'active_records', 'inactive_records']
 
+_retry = config.getint('database', 'retry')
 _cache_transaction = config.getint('cache', 'transaction')
 _cache_model = config.getint('cache', 'model')
 _cache_record = config.getint('cache', 'record')
@@ -172,8 +173,6 @@ class Transaction(object):
             else:
                 database = backend.Database(database_name).connect()
             Flavor.set(backend.Database.flavor)
-            self.connection = database.get_connection(readonly=readonly,
-                autocommit=autocommit)
             self.user = user
             self.database = database
             self.readonly = readonly
@@ -186,10 +185,26 @@ class Transaction(object):
             self.timestamp = {}
             self.counter = 0
             self._datamanagers = []
-            lock_tables = extras.get('_lock_tables', [])
-            for table in lock_tables:
-                self.database.lock(self.connection, table)
-            self._locked_tables = set(lock_tables)
+
+            count = 0
+            while True:
+                if count:
+                    time.sleep(0.002 * (_retry - count))
+                self.connection = database.get_connection(readonly=readonly,
+                    autocommit=autocommit)
+                try:
+                    lock_tables = extras.get('_lock_tables', [])
+                    for table in lock_tables:
+                        self.database.lock(self.connection, table)
+                    self._locked_tables = set(lock_tables)
+                except backend.DatabaseOperationalError:
+                    if count < _retry:
+                        self.connection.rollback()
+                        count += 1
+                        logger.debug("Retry: %i", count)
+                        continue
+                    raise
+                break
             if database_name:
                 from trytond.cache import Cache
                 Cache.sync(self)
