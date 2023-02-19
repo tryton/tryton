@@ -317,6 +317,37 @@ this repository contains the full copyright notices and license terms. -->
             <field name="rate" eval="round(1.0 / 0.83612736, 12)"/>
         </record>
 
+        <record model="product.uom.category" id="uom_cat_energy">
+            <field name="name">Energy</field>
+        </record>
+        <record model="product.uom" id="uom_energy_joule">
+            <field name="name">Joule</field>
+            <field name="symbol">J</field>
+            <field name="category" ref="uom_cat_energy"/>
+            <field name="factor" eval="1."/>
+            <field name="rate" eval="1."/>
+        </record>
+        <record model="product.uom" id="uom_energy_megajoule">
+            <field name="name">Megajoule</field>
+            <field name="symbol">MJ</field>
+            <field name="category" ref="uom_cat_energy"/>
+            <field name="factor" eval="1_000_000."/>
+            <field name="rate" eval="round(1.0 / 1_000_000, 12)"/>
+        </record>
+        <record model="product.uom" id="uom_energy_kwh">
+            <field name="name">Kilowatt-hour</field>
+            <field name="symbol">kW⋅h</field>
+            <field name="category" ref="uom_cat_energy"/>
+            <field name="factor" eval="3_600_000"/>
+            <field name="rate" eval="round(1.0 / 3_600_000, 12)"/>
+        </record>
+        <record model="product.uom" id="uom_energy_mwh">
+            <field name="name">Megawatt-hour</field>
+            <field name="symbol">MW⋅h</field>
+            <field name="category" ref="uom_cat_energy"/>
+            <field name="factor" eval="3_600_000_000"/>
+            <field name="rate" eval="round(1.0 / 3_600_000_000, 12)"/>
+        </record>
 
         <record model="ir.model.access" id="access_uom">
             <field name="model" search="[('model', '=', 'product.uom')]"/>
