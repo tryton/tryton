@@ -216,7 +216,7 @@ def _dispatch(request, pool, *args, **kwargs):
             except backend.DatabaseOperationalError:
                 if count and not rpc.readonly:
                     transaction.rollback()
-                    logger.debug("Retry: %i", retry - count + 1)
+                    transaction.tasks.clear()
                     continue
                 logger.exception(log_message, *log_args, duration())
                 raise
