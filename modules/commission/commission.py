@@ -345,7 +345,7 @@ class Commission(ModelSQL, ModelView):
         states=_readonly_states,
         help="The product that is used on the invoice line.")
     base_amount = Monetary(
-        "Base Amount", currency='currency', digits='currency',
+        "Base Amount", currency='currency', digits=price_digits,
         states=_readonly_states)
     amount = Monetary(
         "Amount", currency='currency', required=True, digits=price_digits,
