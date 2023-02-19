@@ -4,7 +4,7 @@ import unittest
 
 from trytond.config import config
 from trytond.model.exceptions import (
-    RequiredValidationError, SizeValidationError)
+    DomainValidationError, RequiredValidationError, SizeValidationError)
 from trytond.pool import Pool
 from trytond.tests.test_tryton import activate_module, with_transaction
 
@@ -551,6 +551,36 @@ class FieldOne2ManyTestCase(
                         ('create', [{}]),
                         ],
                     }])
+
+    @with_transaction()
+    def test_create_with_domain_valid(self):
+        "Test create one2many with valid domain"
+        pool = Pool()
+        One2Many = pool.get('test.one2many_domain')
+
+        one2many, = One2Many.create([{
+                    'targets': [
+                        ('create', [{'value': 42}]),
+                        ],
+                    }])
+
+        self.assertEqual(len(one2many.targets), 1)
+
+    @with_transaction()
+    def test_create_with_domain_invalid(self):
+        "Test create one2many with invalid domain"
+        pool = Pool()
+        One2Many = pool.get('test.one2many_domain')
+
+        with self.assertRaisesRegexp(
+                DomainValidationError,
+                'The value ".*,.*" for field "Targets" '
+                'in ".*" of "One2Many Domain"'):
+            One2Many.create([{
+                        'targets': [
+                            ('create', [{'value': 10}, {'value': None}]),
+                            ],
+                        }])
 
     @with_transaction()
     def test_create_filter(self):

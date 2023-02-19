@@ -78,6 +78,23 @@ class One2ManySizePYSONTarget(ModelSQL):
     origin = fields.Many2One('test.one2many_size_pyson', 'Origin')
 
 
+class One2ManyDomain(ModelSQL):
+    "One2Many Domain"
+    __name__ = 'test.one2many_domain'
+    targets = fields.One2Many(
+        'test.one2many_domain.target', 'origin', "Targets",
+        domain=[
+            ('value', '=', 42),
+            ])
+
+
+class One2ManyDomainTarget(ModelSQL):
+    "One2Many Domain Target"
+    __name__ = 'test.one2many_domain.target'
+    origin = fields.Many2One('test.one2many_domain', "Origin")
+    value = fields.Integer("Value")
+
+
 class One2ManyFilter(ModelSQL):
     'One2Many Filter Relation'
     __name__ = 'test.one2many_filter'
@@ -142,6 +159,8 @@ def register(module):
         One2ManySizeTarget,
         One2ManySizePYSON,
         One2ManySizePYSONTarget,
+        One2ManyDomain,
+        One2ManyDomainTarget,
         One2ManyFilter,
         One2ManyFilterTarget,
         One2ManyFilterDomain,

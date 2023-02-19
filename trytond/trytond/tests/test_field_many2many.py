@@ -3,7 +3,7 @@
 import unittest
 
 from trytond.model.exceptions import (
-    RequiredValidationError, SizeValidationError)
+    DomainValidationError, RequiredValidationError, SizeValidationError)
 from trytond.pool import Pool
 from trytond.tests.test_tryton import activate_module, with_transaction
 
@@ -432,6 +432,36 @@ class FieldMany2ManyTestCase(unittest.TestCase, CommonTestCaseMixin):
             Many2Many.create([{
                         'targets': [
                             ('create', [{}] * 4),
+                            ],
+                        }])
+
+    @with_transaction()
+    def test_create_with_domain_valid(self):
+        "Test create many2many with valid domain"
+        pool = Pool()
+        Many2Many = pool.get('test.many2many_domain')
+
+        many2many, = Many2Many.create([{
+                    'targets': [
+                        ('create', [{'value': 42}]),
+                        ],
+                    }])
+
+        self.assertEqual(len(many2many.targets), 1)
+
+    @with_transaction()
+    def test_create_with_domain_invalid(self):
+        "Test create many2many with invalid domain"
+        pool = Pool()
+        Many2Many = pool.get('test.many2many_domain')
+
+        with self.assertRaisesRegexp(
+                DomainValidationError,
+                'The value ".*,.*" for field "Targets" '
+                'in ".*" of "Many2Many Domain"'):
+            Many2Many.create([{
+                        'targets': [
+                            ('create', [{'value': 10}, {'value': None}]),
                             ],
                         }])
 

@@ -90,6 +90,29 @@ class Many2ManySizeRelation(ModelSQL):
     target = fields.Many2One('test.many2many_size.target', 'Target')
 
 
+class Many2ManyDomain(ModelSQL):
+    "Many2Many Domain"
+    __name__ = 'test.many2many_domain'
+    targets = fields.Many2Many(
+        'test.many2many_domain.relation', 'origin', 'target', "Targets",
+        domain=[
+            ('value', '=', 42),
+            ])
+
+
+class Many2ManyDomainTarget(ModelSQL):
+    "Many2Many Domain Target"
+    __name__ = 'test.many2many_domain.target'
+    value = fields.Integer("Value")
+
+
+class Many2ManyDomainRelation(ModelSQL):
+    "Many2Many Domain Relation"
+    __name__ = 'test.many2many_domain.relation'
+    origin = fields.Many2One('test.many2many_domain', "Origin")
+    target = fields.Many2One('test.many2many_domain.target', "Target")
+
+
 class Many2ManyFilter(ModelSQL):
     'Many2Many Filter Relation'
     __name__ = 'test.many2many_filter'
@@ -194,6 +217,9 @@ def register(module):
         Many2ManySize,
         Many2ManySizeTarget,
         Many2ManySizeRelation,
+        Many2ManyDomain,
+        Many2ManyDomainTarget,
+        Many2ManyDomainRelation,
         Many2ManyFilter,
         Many2ManyFilterTarget,
         Many2ManyFilterRelation,
