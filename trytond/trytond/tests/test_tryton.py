@@ -222,6 +222,8 @@ def with_transaction(user=1, context=None):
                     try:
                         result = func(*args, **kwargs)
                     except TransactionError as e:
+                        transaction.rollback()
+                        transaction.tasks.clear()
                         e.fix(extras)
                         continue
                     finally:
