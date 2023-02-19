@@ -44,6 +44,7 @@ def create_invoice(type_, company, party, taxes, currency=None, quantity=1):
             ('type', '=', kind),
             ], limit=1)
     line_account, = Account.search([
+            ('company', '=', company.id),
             ('type.%s' % kind, '=', True),
             ], limit=1)
     if currency is None:
@@ -59,6 +60,7 @@ def create_invoice(type_, company, party, taxes, currency=None, quantity=1):
                 'invoice_date': today,
                 'lines': [
                     ('create', [{
+                                'company': company.id,
                                 'currency': currency.id,
                                 'account': line_account.id,
                                 'quantity': quantity,
