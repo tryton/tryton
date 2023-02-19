@@ -12,7 +12,7 @@ from trytond import backend
 from trytond.config import config
 from trytond.pool import Pool
 from trytond.sendmail import send_test_email
-from trytond.transaction import Transaction, inactive_records
+from trytond.transaction import Transaction, TransactionError, inactive_records
 
 __all__ = ['run']
 logger = logging.getLogger(__name__)
@@ -74,54 +74,70 @@ def run(options):
                         })
 
     for db_name in options.database_names:
-        with Transaction().start(db_name, 0) as transaction:
-            pool = Pool()
-            User = pool.get('res.user')
-            Configuration = pool.get('ir.configuration')
-            configuration = Configuration(1)
-            with inactive_records():
-                admin, = User.search([('login', '=', 'admin')])
+        if options.email is not None:
+            email = options.email
+        elif init[db_name]:
+            email = input(
+                '"admin" email for "%s": ' % db_name)
+        else:
+            email = None
 
-            if options.email is not None:
-                admin.email = options.email
-            elif init[db_name]:
-                admin.email = input(
-                    '"admin" email for "%s": ' % db_name)
-            if init[db_name] or options.password:
-                configuration.language = main_lang
-                # try to read password from environment variable
-                # TRYTONPASSFILE, empty TRYTONPASSFILE ignored
-                passpath = os.getenv('TRYTONPASSFILE')
-                password = ''
-                if passpath:
-                    try:
-                        with open(passpath) as passfile:
-                            password, = passfile.read().splitlines()
-                    except Exception as err:
-                        sys.stderr.write('Can not read password '
-                            'from "%s": "%s"\n' % (passpath, err))
+        password = ''
+        if init[db_name] or options.password:
+            # try to read password from environment variable
+            # TRYTONPASSFILE, empty TRYTONPASSFILE ignored
+            passpath = os.getenv('TRYTONPASSFILE')
+            if passpath:
+                try:
+                    with open(passpath) as passfile:
+                        password, = passfile.read().splitlines()
+                except Exception as err:
+                    sys.stderr.write('Can not read password '
+                        'from "%s": "%s"\n' % (passpath, err))
 
-                if not password and not options.reset_password:
-                    while True:
-                        password = getpass(
-                            '"admin" password for "%s": ' % db_name)
-                        password2 = getpass('"admin" password confirmation: ')
-                        if password != password2:
-                            sys.stderr.write('"admin" password confirmation '
-                                'doesn\'t match "admin" password.\n')
-                            continue
-                        if not password:
-                            sys.stderr.write('"admin" password is required.\n')
-                            continue
-                        break
-                if not options.reset_password:
-                    admin.password = password
-            admin.save()
-            if options.reset_password:
-                User.reset_password([admin])
-            if options.hostname is not None:
-                configuration.hostname = options.hostname or None
-            configuration.save()
+            if not password and not options.reset_password:
+                while True:
+                    password = getpass(
+                        '"admin" password for "%s": ' % db_name)
+                    password2 = getpass('"admin" password confirmation: ')
+                    if password != password2:
+                        sys.stderr.write('"admin" password confirmation '
+                            'doesn\'t match "admin" password.\n')
+                        continue
+                    if not password:
+                        sys.stderr.write('"admin" password is required.\n')
+                        continue
+                    break
+
+        transaction_extras = {}
+        while True:
+            with Transaction().start(
+                    db_name, 0, **transaction_extras) as transaction:
+                try:
+                    pool = Pool()
+                    User = pool.get('res.user')
+                    Configuration = pool.get('ir.configuration')
+                    configuration = Configuration(1)
+                    with inactive_records():
+                        admin, = User.search([('login', '=', 'admin')])
+
+                    if email is not None:
+                        admin.email = email
+                    if init[db_name] or options.password:
+                        configuration.language = main_lang
+                        if not options.reset_password:
+                            admin.password = password
+                    admin.save()
+                    if options.reset_password:
+                        User.reset_password([admin])
+                    if options.hostname is not None:
+                        configuration.hostname = options.hostname or None
+                    configuration.save()
+                except TransactionError as e:
+                    transaction.rollback()
+                    e.fix(transaction_extras)
+                    continue
+                break
         with Transaction().start(db_name, 0, readonly=True):
             if options.validate is not None:
                 validate(options.validate, options.validate_percentage)
