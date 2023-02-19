@@ -155,7 +155,7 @@ Post invoice::
     >>> len(line.commissions)
     2
     >>> [c.base_amount for c in line.commissions]
-    [Decimal('100.00'), Decimal('100.00')]
+    [Decimal('100.0000'), Decimal('100.0000')]
     >>> [c.amount for c in line.commissions]
     [Decimal('10.0000'), Decimal('10.0000')]
     >>> [c.invoice_state for c in line.commissions]

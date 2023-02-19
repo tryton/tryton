@@ -179,6 +179,7 @@ class InvoiceLine(metaclass=PoolMeta):
             with Transaction().set_context(date=self.invoice.currency_date):
                 base_amount = Currency.compute(self.invoice.currency,
                     self.amount, agent.currency, round=False)
+            base_amount = round_price(base_amount)
             amount = self._get_commission_amount(base_amount, plan)
             if amount:
                 amount = round_price(amount)
