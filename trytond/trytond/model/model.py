@@ -239,6 +239,15 @@ class Model(URLMixin, PoolBase, metaclass=ModelMeta):
         IrModel = pool.get('ir.model')
         IrModelField = pool.get('ir.model.field')
 
+        def format_value(value):
+            if isinstance(value, Model):
+                try:
+                    return value.rec_name
+                except Exception:
+                    return str(value.id)
+            else:
+                return str(value)
+
         names = {
             'model': IrModel.get_name(cls.__name__),
             }
@@ -252,11 +261,10 @@ class Model(URLMixin, PoolBase, metaclass=ModelMeta):
                 names['record'] = record.id
             if field:
                 value = getattr(record, field, None)
-                if isinstance(value, Model):
-                    try:
-                        value = value.rec_name
-                    except Exception:
-                        value = value.id
+                if isinstance(value, (tuple, list)):
+                    value = ', '.join(map(format_value, value))
+                else:
+                    value = format_value(value)
                 names['value'] = value
         return names
 
