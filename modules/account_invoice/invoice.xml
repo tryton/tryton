@@ -141,6 +141,52 @@ this repository contains the full copyright notices and license terms. -->
             sequence="10"
             id="menu_invoice_in_form"/>
 
+        <record model="ir.action.act_window" id="act_invoice_relate">
+            <field name="name">Invoices</field>
+            <field name="res_model">account.invoice</field>
+            <field name="domain"
+                eval="[
+                If(Eval('active_model') == 'party.party',
+                ('party', 'in', Eval('active_ids', [])), ()),
+                ]"
+                pyson="1"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_invoice_relate_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="invoice_view_tree"/>
+            <field name="act_window" ref="act_invoice_relate"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_invoice_relate_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="invoice_view_form"/>
+            <field name="act_window" ref="act_invoice_relate"/>
+        </record>
+        <record model="ir.action.act_window.domain" id="act_invoice_relate_pending">
+            <field name="name">Pending</field>
+            <field name="sequence" eval="10"/>
+            <field name="domain" eval="[('state', 'not in', ['paid', 'cancelled'])]" pyson="1"/>
+            <field name="count" eval="True"/>
+            <field name="act_window" ref="act_invoice_relate"/>
+        </record>
+        <record model="ir.action.act_window.domain" id="act_invoice_relate_paid">
+            <field name="name">Paid</field>
+            <field name="sequence" eval="20"/>
+            <field name="domain" eval="[('state', '=', 'paid')]" pyson="1"/>
+            <field name="count" eval="True"/>
+            <field name="act_window" ref="act_invoice_relate"/>
+        </record>
+        <record model="ir.action.act_window.domain" id="act_invoice_relate_all">
+            <field name="name">All</field>
+            <field name="sequence" eval="9999"/>
+            <field name="domain"></field>
+            <field name="act_window" ref="act_invoice_relate"/>
+        </record>
+        <record model="ir.action.keyword" id="act_invoice_relate_keyword_party">
+            <field name="keyword">form_relate</field>
+            <field name="model">party.party,-1</field>
+            <field name="action" ref="act_invoice_relate"/>
+        </record>
+
         <record model="ir.model.access" id="access_invoice">
             <field name="model" search="[('model', '=', 'account.invoice')]"/>
             <field name="perm_read" eval="False"/>

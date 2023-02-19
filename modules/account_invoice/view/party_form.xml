@@ -3,7 +3,7 @@
 this repository contains the full copyright notices and license terms. -->
 <data>
     <xpath expr="//group[@id='links']" position="inside">
-        <link icon="tryton-invoice" name="account_invoice.act_invoice_form2" empty="hide"/>
+        <link icon="tryton-invoice" name="account_invoice.act_invoice_relate" empty="hide"/>
     </xpath>
     <xpath
         expr="/form/notebook/page[@id='accounting']/separator[@id='account']"
