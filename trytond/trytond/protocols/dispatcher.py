@@ -212,11 +212,13 @@ def _dispatch(request, pool, *args, **kwargs):
                             for i in inst]
             except TransactionError as e:
                 transaction.rollback()
+                transaction.tasks.clear()
                 e.fix(transaction_extras)
                 continue
             except backend.DatabaseOperationalError:
                 if count < retry and not rpc.readonly:
                     transaction.rollback()
+                    transaction.tasks.clear()
                     count += 1
                     logger.debug("Retry: %i", count)
                     continue
