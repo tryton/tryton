@@ -12,7 +12,7 @@ from trytond.tools import grouped_slice
 from trytond.tools.immutabledict import ImmutableDict
 from trytond.transaction import Transaction
 
-from .field import SQL_OPERATORS, Field
+from .field import SQL_OPERATORS, Field, domain_method
 
 # Use canonical form
 dumps = partial(
@@ -112,6 +112,7 @@ class Dict(Field):
                 expression &= (column != Null)
         return expression
 
+    @domain_method
     def convert_domain(self, domain, tables, Model):
         name, operator, value = domain[:3]
         if '.' not in name:

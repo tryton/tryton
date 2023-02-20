@@ -195,6 +195,18 @@ def on_change_result(record):
     return record._changed_values
 
 
+def domain_method(func):
+    @wraps(func)
+    def wrapper(self, domain, tables, Model):
+        name = domain[0].split('.', 1)[0]
+        assert name == self.name
+        method = getattr(Model, f'domain_{name}', None)
+        if method:
+            return method(domain, tables)
+        return func(self, domain, tables, Model)
+    return wrapper
+
+
 SQL_OPERATORS = {
     '=': operators.Equal,
     '!=': operators.NotEqual,
@@ -417,14 +429,11 @@ class Field(object):
                     expression &= (column != Null)
         return expression
 
+    @domain_method
     def convert_domain(self, domain, tables, Model):
         "Return a SQL expression for the domain using tables"
         table, _ = tables[None]
         name, operator, value = domain
-        assert name == self.name
-        method = getattr(Model, 'domain_%s' % name, None)
-        if method:
-            return method(domain, tables)
         Operator = SQL_OPERATORS[operator]
         column = self.sql_column(table)
         column = self._domain_column(operator, column)
@@ -652,6 +661,7 @@ class FieldTranslate(Field):
             language = get_parent_language(language)
         return table, join, column
 
+    @domain_method
     def convert_domain(self, domain, tables, Model):
         if not self.translate:
             return super(FieldTranslate, self).convert_domain(

@@ -8,7 +8,7 @@ from sql import Literal, operators
 from trytond.rpc import RPC
 from trytond.transaction import Transaction
 
-from .field import Field
+from .field import Field, domain_method
 from .selection import SelectionMixin
 
 # Use canonical form
@@ -83,6 +83,7 @@ class MultiSelection(SelectionMixin, Field):
             domain_value = database.json_get(domain_value)
         return domain_value
 
+    @domain_method
     def convert_domain(self, domain, tables, Model):
         name, operator, value = domain[:3]
         if operator not in {'in', 'not in'}:

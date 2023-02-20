@@ -14,7 +14,7 @@ from trytond.tools import cached_property, grouped_slice
 from trytond.transaction import Transaction
 
 from .field import (
-    Field, context_validate, domain_validate, get_eval_fields,
+    Field, context_validate, domain_method, domain_validate, get_eval_fields,
     instanciate_values, instantiate_context, search_order_validate,
     size_validate)
 from .function import Function
@@ -312,6 +312,7 @@ class One2Many(Field):
             inst, self.name,
             [r for r in getattr(inst, self.name) if r not in records])
 
+    @domain_method
     def convert_domain(self, domain, tables, Model):
         from ..modelsql import convert_from
         pool = Pool()

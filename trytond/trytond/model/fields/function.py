@@ -6,9 +6,10 @@ import inspect
 from functools import wraps
 
 from trytond.i18n import gettext
-from trytond.model.fields.field import Field
 from trytond.tools import is_instance_method
 from trytond.transaction import Transaction, without_check_access
+
+from .field import Field, domain_method
 
 
 def getter_context(func):
@@ -91,12 +92,8 @@ class Function(Field):
     def sql_type(self):
         return None
 
+    @domain_method
     def convert_domain(self, domain, tables, Model):
-        name, operator, value = domain[:3]
-        assert name.startswith(self.name)
-        method = getattr(Model, 'domain_%s' % self.name, None)
-        if method:
-            return method(domain, tables)
         if self.searcher:
             return getattr(Model, self.searcher)(self.name, domain)
         raise NotImplementedError(gettext(

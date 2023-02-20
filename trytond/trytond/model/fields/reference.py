@@ -13,8 +13,8 @@ from trytond.transaction import (
     Transaction, inactive_records, without_check_access)
 
 from .field import (
-    Field, context_validate, domain_validate, instantiate_context,
-    search_order_validate)
+    Field, context_validate, domain_method, domain_validate,
+    instantiate_context, search_order_validate)
 from .selection import SelectionMixin
 
 
@@ -195,6 +195,7 @@ class Reference(SelectionMixin, Field):
             Model.id.sql_type().base)
 
     @inactive_records
+    @domain_method
     def convert_domain(self, domain, tables, Model):
         if '.' not in domain[0]:
             return super(Reference, self).convert_domain(domain, tables, Model)
