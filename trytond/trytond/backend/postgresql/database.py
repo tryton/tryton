@@ -197,9 +197,11 @@ class Database(DatabaseInterface):
     flavor = Flavor(ilike=True)
 
     TYPES_MAPPING = {
+        'SMALLINT': SQLType('INT2', 'INT2'),
         'BIGINT': SQLType('INT8', 'INT8'),
         'BLOB': SQLType('BYTEA', 'BYTEA'),
         'DATETIME': SQLType('TIMESTAMP', 'TIMESTAMP(0)'),
+        'REAL': SQLType('FLOAT4', 'FLOAT4'),
         'FLOAT': SQLType('FLOAT8', 'FLOAT8'),
         'FULLTEXT': SQLType('TSVECTOR', 'TSVECTOR'),
         'INTEGER': SQLType('INT4', 'INT4'),

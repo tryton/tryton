@@ -298,28 +298,41 @@ class TableHandler(TableHandlerInterface):
 
             add_comment()
             base_type = column_type[0].lower()
-            if base_type != self._columns[column_name]['typname']:
-                if (self._columns[column_name]['typname'], base_type) in [
+            typname = self._columns[column_name]['typname']
+            if base_type != typname:
+                if (typname, base_type) in [
                         ('varchar', 'text'),
                         ('text', 'varchar'),
                         ('date', 'timestamp'),
+                        ('int2', 'int4'),
+                        ('int2', 'float4'),
+                        ('int2', 'int8'),
+                        ('int2', 'float8'),
+                        ('int2', 'numeric'),
                         ('int4', 'int8'),
                         ('int4', 'float8'),
                         ('int4', 'numeric'),
                         ('int8', 'float8'),
                         ('int8', 'numeric'),
+                        ('float4', 'numeric'),
+                        ('float4', 'float8'),
                         ('float8', 'numeric'),
                         ]:
                     self.alter_type(column_name, base_type)
+                elif (typname, base_type) in [
+                        ('int8', 'int4'),
+                        ('int8', 'int2'),
+                        ('int4', 'int2'),
+                        ('float8', 'float4'),
+                        ]:
+                    pass
                 else:
                     logger.warning(
                         'Unable to migrate column %s on table %s '
                         'from %s to %s.',
-                        column_name, self.table_name,
-                        self._columns[column_name]['typname'], base_type)
+                        column_name, self.table_name, typname, base_type)
 
-            if (base_type == 'varchar'
-                    and self._columns[column_name]['typname'] == 'varchar'):
+            if base_type == typname == 'varchar':
                 # Migrate size
                 from_size = self._columns[column_name]['size']
                 if field_size is None:
