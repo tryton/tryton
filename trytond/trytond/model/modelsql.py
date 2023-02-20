@@ -643,6 +643,14 @@ class ModelSQL(ModelStorage):
         cursor = transaction.connection.cursor()
         table = cls.__table__()
         history = cls.__table_history__()
+
+        transaction.counter += 1
+        for cache in transaction.cache.values():
+            if cls.__name__ in cache:
+                cache_cls = cache[cls.__name__]
+                for id_ in ids:
+                    cache_cls.pop(id_, None)
+
         columns = []
         hcolumns = []
         fnames = sorted(n for n, f in cls._fields.items()
