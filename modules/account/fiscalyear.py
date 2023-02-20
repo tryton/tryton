@@ -245,6 +245,7 @@ class FiscalYear(Workflow, ModelSQL, ModelView):
         pool = Pool()
         Lang = pool.get('ir.lang')
         Date = pool.get('ir.date')
+        Company = pool.get('company.company')
 
         company_id = int(company) if company is not None else None
         if not date:
@@ -258,8 +259,6 @@ class FiscalYear(Workflow, ModelSQL, ModelView):
                 ('end_date', '>=', date),
                 ('company', '=', company_id),
                 ]
-            if test_state:
-                clause.append(('state', '=', 'open'))
             fiscalyears = cls.search(
                 clause, order=[('start_date', 'DESC')], limit=1)
             if fiscalyears:
@@ -269,12 +268,25 @@ class FiscalYear(Workflow, ModelSQL, ModelView):
             cls._find_cache.set(key, int(fiscalyear) if fiscalyear else None)
         elif fiscalyear is not None:
             fiscalyear = cls(fiscalyear)
-        if not fiscalyear and exception:
-            lang = Lang.get()
-            raise FiscalYearNotFoundError(
-                gettext('account.msg_no_fiscalyear_date',
-                    date=lang.strftime(date)))
-        return fiscalyear
+        found = fiscalyear and (not test_state or fiscalyear.state == 'open')
+        if not found:
+            if exception:
+                lang = Lang.get()
+                if company is not None and not isinstance(company, Company):
+                    company = Company(company)
+                if not fiscalyear:
+                    raise FiscalYearNotFoundError(
+                        gettext('account.msg_no_fiscalyear_date',
+                            date=lang.strftime(date),
+                            company=company.rec_name if company else ''))
+                else:
+                    raise FiscalYearNotFoundError(
+                        gettext('account.msg_no_open_fiscalyear_date',
+                            date=lang.strftime(date),
+                            fiscalyear=fiscalyear.rec_name,
+                            company=company.rec_name if company else ''))
+        else:
+            return fiscalyear
 
     def get_deferral(self, account):
         'Computes deferrals for accounts'

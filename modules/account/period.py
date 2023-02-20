@@ -191,6 +191,7 @@ class Period(Workflow, ModelSQL, ModelView):
         pool = Pool()
         Date = pool.get('ir.date')
         Lang = pool.get('ir.lang')
+        Company = pool.get('company.company')
 
         company_id = int(company) if company is not None else None
         if not date:
@@ -205,8 +206,6 @@ class Period(Workflow, ModelSQL, ModelView):
                 ('fiscalyear.company', '=', company_id),
                 ('type', '=', 'standard'),
                 ]
-            if test_state:
-                clause.append(('state', '=', 'open'))
             periods = cls.search(
                 clause, order=[('start_date', 'DESC')], limit=1)
             if periods:
@@ -216,12 +215,25 @@ class Period(Workflow, ModelSQL, ModelView):
             cls._find_cache.set(key, int(period) if period else None)
         elif period is not None:
             period = cls(period)
-        if not period and exception:
-            lang = Lang.get()
-            raise PeriodNotFoundError(
-                gettext('account.msg_no_period_date',
-                    date=lang.strftime(date)))
-        return period
+        found = period and (not test_state or period.state == 'open')
+        if not found:
+            if exception:
+                lang = Lang.get()
+                if company is not None and not isinstance(company, Company):
+                    company = Company(company)
+                if not period:
+                    raise PeriodNotFoundError(
+                        gettext('account.msg_no_period_date',
+                            date=lang.strftime(date),
+                            company=company.rec_name if company else ''))
+                else:
+                    raise PeriodNotFoundError(
+                        gettext('account.msg_no_open_period_date',
+                            date=lang.strftime(date),
+                            period=period.rec_name,
+                            company=company.rec_name if company else ''))
+        else:
+            return period
 
     @classmethod
     def _check(cls, periods):
