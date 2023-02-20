@@ -145,6 +145,10 @@ A list of parameters supported by PostgreSQL can be found in the
 `documentation
 <https://www.postgresql.org/docs/current/libpq-connect.html#LIBPQ-PARAMKEYWORDS>`__.
 
+.. note::
+   ``fallback_application_name`` parameter from aforementioned documentation can
+   be set directly thanks to the ``TRYTOND_APPNAME`` environment variable.
+
 SQLite
 ******
 

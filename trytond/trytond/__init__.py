@@ -1,6 +1,7 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 import os
+import sys
 import time
 import warnings
 from email import charset
@@ -9,6 +10,7 @@ from lxml import etree, objectify
 
 __version__ = "6.7.0"
 
+os.environ.setdefault('TRYTOND_APPNAME', os.path.basename(sys.argv[0]))
 os.environ.setdefault('TRYTOND_TZ', os.environ.get('TZ', 'UTC'))
 os.environ['TZ'] = 'UTC'
 if hasattr(time, 'tzset'):
