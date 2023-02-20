@@ -122,10 +122,6 @@ class Action:
                     self.screen.current_record.cancel()
             WinForm(self.screen, callback, title=self.title.get_text())
 
-    def set_value(self, mode, model_field):
-        self.screen.current_view.set_value()
-        return True
-
     def display(self):
         self.screen.search_filter(self.screen.screen_container.get_text())
 

@@ -179,8 +179,6 @@
                 });
             }
         },
-        set_value: function() {
-        },
         display: function() {
             this.screen.search_filter(this.screen.screen_container.get_text());
         },
