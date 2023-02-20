@@ -1,3 +1,4 @@
+* Remove BigInteger field
 * Remove support for Python 3.7
 * Add support for Python 3.11
 * Add scroll time for calendar view

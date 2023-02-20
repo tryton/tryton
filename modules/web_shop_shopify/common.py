@@ -8,9 +8,10 @@ from trytond.pool import Pool
 class IdentifierMixin:
     __slots__ = ()
 
-    shopify_identifier_signed = fields.BigInteger(
+    shopify_identifier_signed = fields.Integer(
         lazy_gettext('web_shop_shopify.msg_shopify_identifier'))
-    shopify_identifier = fields.Function(fields.BigInteger(
+    shopify_identifier_signed._sql_type = 'BIGINT'
+    shopify_identifier = fields.Function(fields.Integer(
             lazy_gettext('web_shop_shopify.msg_shopify_identifier')),
         'get_shopify_identifier', setter='set_shopify_identifier',
         searcher='search_shopify_identifier')

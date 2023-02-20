@@ -260,13 +260,6 @@ Integer
 
    An :py:class:`integer <int>` field.
 
-BigInteger
-----------
-
-.. class:: BigInteger(string[, \**options])
-
-   A long :py:class:`integer <int>` field.
-
 Char
 ----
 

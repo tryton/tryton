@@ -10,11 +10,3 @@ class Integer(Field):
     _type = 'integer'
     _sql_type = 'INTEGER'
     _py_type = int
-
-
-class BigInteger(Integer):
-    '''
-    Define an integer field (``long``).
-    '''
-    _type = 'biginteger'
-    _sql_type = 'BIGINT'

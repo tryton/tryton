@@ -11,7 +11,7 @@ from .field import (
     get_eval_fields, on_change_result, states_validate)
 from .float import Float
 from .function import Function, MultiValue
-from .integer import BigInteger, Integer
+from .integer import Integer
 from .many2many import Many2Many
 from .many2one import Many2One
 from .multiselection import MultiSelection
@@ -25,7 +25,7 @@ from .text import FullText, Text
 __all__ = [
     depends, SQL_OPERATORS, on_change_result,
     get_eval_fields, states_validate, domain_validate, context_validate, Field,
-    Boolean, Integer, BigInteger, Char, Text, FullText, Float, Numeric, Date,
+    Boolean, Integer, Char, Text, FullText, Float, Numeric, Date,
     Timestamp, DateTime, Time, TimeDelta, Binary, Selection, Reference,
     Many2One, One2Many, Many2Many, Function, MultiValue, One2One, Dict,
     MultiSelection]
