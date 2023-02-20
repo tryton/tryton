@@ -583,7 +583,8 @@ Class methods:
    Restoring a record still generates an entry in the history table.
 
    .. warning::
-      No access rights are verified and the records are not validated.
+      No access rights are verified, the restored records are not validated and
+      no triggers are called.
 
 .. classmethod:: ModelSQL.restore_history_before(ids, datetime)
 
@@ -592,7 +593,8 @@ Class methods:
    Restoring a record still generates an entry in the history table.
 
    .. warning::
-      No access rights are verified and the records are not validated.
+      No access rights are verified, the restored records are not validated and
+      not triggers are called.
 
 .. classmethod:: ModelSQL.search(domain[, offset[, limit[, order[, count[, query]]]]])
 
