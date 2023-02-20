@@ -10,6 +10,7 @@ def register():
     Pool.register(
         party.Party,
         party.Address,
+        party.Identifier,
         account.Invoice,
         account_invoice.PaymentTerm,
         account_invoice.PaymentTermLine,

@@ -11,3 +11,8 @@ class Party(metaclass=PoolMeta):
 class Address(metaclass=PoolMeta):
     __name__ = 'party.address'
     _history = True
+
+
+class Identifier(metaclass=PoolMeta):
+    __name__ = 'party.identifier'
+    _history = True
