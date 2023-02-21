@@ -313,10 +313,11 @@ class Statement(Workflow, ModelSQL, ModelView):
             if line.invoice and line.id:
                 if line.invoice.id not in invoice_id2amount_to_pay:
                     continue
+                if getattr(line, 'amount', None) is None:
+                    continue
                 amount_to_pay = invoice_id2amount_to_pay[line.invoice.id]
-                if (amount_to_pay
-                        and getattr(line, 'amount', None)
-                        and (line.amount >= 0) == (amount_to_pay <= 0)):
+                if ((line.amount > 0) == (amount_to_pay < 0)
+                        or not amount_to_pay):
                     if abs(line.amount) > abs(amount_to_pay):
                         new_line = Line()
                         for field_name, field in Line._fields.items():
@@ -879,7 +880,6 @@ class Line(origin_mixin(_states), sequence_ordered(), ModelSQL, ModelView):
         'statement', '_parent_statement.journal',
         methods=['invoice'])
     def on_change_amount(self):
-        Currency = Pool().get('currency.currency')
         if self.party:
             with Transaction().set_context(date=self.date):
                 if self.account and self.account not in (
@@ -892,17 +892,7 @@ class Line(origin_mixin(_states), sequence_ordered(), ModelSQL, ModelView):
                         self.account = self.party.account_receivable_used
                     else:
                         self.account = self.party.account_payable_used
-        if self.invoice:
-            if self.amount and self.statement and self.statement.journal:
-                invoice = self.invoice
-                journal = self.statement.journal
-                with Transaction().set_context(date=invoice.currency_date):
-                    amount_to_pay = Currency.compute(invoice.currency,
-                        invoice.amount_to_pay, journal.currency)
-                if abs(self.amount) > amount_to_pay:
-                    self.invoice = None
-            else:
-                self.invoice = None
+        self.invoice = None
 
     @fields.depends('account', methods=['invoice'])
     def on_change_account(self):
