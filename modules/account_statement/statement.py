@@ -12,7 +12,7 @@ from sql.operators import Concat
 from trytond.config import config
 from trytond.i18n import gettext
 from trytond.model import (
-    Check, DictSchemaMixin, Index, ModelSQL, ModelView, Workflow, fields,
+    DictSchemaMixin, Index, ModelSQL, ModelView, Workflow, fields,
     sequence_ordered)
 from trytond.model.exceptions import AccessError
 from trytond.modules.company import CompanyReport
@@ -554,6 +554,8 @@ class Statement(Workflow, ModelSQL, ModelView):
             amount_second_currency = 0
             for line in lines:
                 move_line = line.get_move_line()
+                if not move_line:
+                    continue
                 move_line.move = move
                 amount += move_line.debit - move_line.credit
                 if move_line.amount_second_currency:
@@ -798,11 +800,6 @@ class Line(origin_mixin(_states), sequence_ordered(), ModelSQL, ModelView):
             'required': (Eval('party_required', False)
                 & (Eval('statement_state') == 'draft')),
             }
-        t = cls.__table__()
-        cls._sql_constraints += [
-            ('check_statement_line_amount', Check(t, t.amount != 0),
-                'account_statement.msg_line_amount_non_zero'),
-            ]
 
     @classmethod
     def __register__(cls, module):
@@ -820,6 +817,9 @@ class Line(origin_mixin(_states), sequence_ordered(), ModelSQL, ModelView):
                     [Concat('account.invoice,', table.invoice)],
                     where=table.invoice != Null))
             table_h.drop_column('invoice')
+
+        # Migration from 6.6: Allow amount of zero
+        table_h.drop_constraint('check_statement_line_amount')
 
     @property
     @fields.depends('related_to')
@@ -1043,6 +1043,8 @@ class Line(origin_mixin(_states), sequence_ordered(), ModelSQL, ModelView):
         MoveLine = pool.get('account.move.line')
         Currency = Pool().get('currency.currency')
         zero = Decimal("0.0")
+        if not self.amount:
+            return
         with Transaction().set_context(date=self.date):
             amount = Currency.compute(self.statement.journal.currency,
                 self.amount, self.statement.company.currency)

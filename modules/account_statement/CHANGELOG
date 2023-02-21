@@ -1,3 +1,4 @@
+* Allow line with amount of zero
 * Remove support for Python 3.7
 * Add support for Python 3.11
 
