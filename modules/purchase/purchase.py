@@ -92,8 +92,9 @@ class Purchase(
             'required': ~Eval('state').in_(
                 ['draft', 'quotation', 'cancelled']),
             })
-    payment_term = fields.Many2One('account.invoice.payment_term',
-        'Payment Term', states={
+    payment_term = fields.Many2One(
+        'account.invoice.payment_term', "Payment Term", ondelete='RESTRICT',
+        states={
             'readonly': ~Eval('state').in_(['draft', 'quotation']),
             })
     party = fields.Many2One('party.party', 'Party', required=True,

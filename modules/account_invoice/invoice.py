@@ -169,8 +169,9 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
                 Eval('accounting_date'),
                 Eval('invoice_date')),
             })
-    payment_term = fields.Many2One('account.invoice.payment_term',
-        'Payment Term', states=_states)
+    payment_term = fields.Many2One(
+        'account.invoice.payment_term', "Payment Term",
+        ondelete='RESTRICT', states=_states)
     alternative_payees = fields.Many2Many(
         'account.invoice.alternative_payee', 'invoice', 'party',
         "Alternative Payee", states=_states,

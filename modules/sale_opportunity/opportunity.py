@@ -75,8 +75,9 @@ class SaleOpportunity(
         "Amount", currency='currency', digits='currency',
         states=_states_stop,
         help='Estimated revenue amount.')
-    payment_term = fields.Many2One('account.invoice.payment_term',
-        'Payment Term', states={
+    payment_term = fields.Many2One(
+        'account.invoice.payment_term', "Payment Term", ondelete='RESTRICT',
+        states={
             'readonly': In(Eval('state'),
                 ['converted', 'lost', 'cancelled']),
             })

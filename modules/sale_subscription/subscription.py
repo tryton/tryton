@@ -92,7 +92,7 @@ class Subscription(Workflow, ModelSQL, ModelView):
             'required': ~Eval('state').in_(['draft']),
             })
     payment_term = fields.Many2One(
-        'account.invoice.payment_term', "Payment Term",
+        'account.invoice.payment_term', "Payment Term", ondelete='RESTRICT',
         states={
             'readonly': Eval('state') != 'draft',
             })
