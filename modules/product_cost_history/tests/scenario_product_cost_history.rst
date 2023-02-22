@@ -22,6 +22,8 @@ Create company::
 
     >>> _ = create_company()
     >>> company = get_company()
+    >>> company.timezone = 'Europe/Madrid'
+    >>> company.save()
 
 Create product::
 
