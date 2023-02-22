@@ -272,6 +272,7 @@ class Report(URLMixin, PoolBase):
 
         class TranslateModel(object):
             _languages = {}
+            __class__ = Model
 
             def __init__(self, id):
                 self.id = id
