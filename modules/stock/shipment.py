@@ -1,7 +1,6 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 import datetime
-import functools
 from collections import defaultdict
 from functools import partial
 from itertools import groupby
@@ -12,7 +11,7 @@ from sql.functions import CharLength
 
 from trytond.i18n import gettext
 from trytond.model import (
-    Index, ModelSQL, ModelView, Workflow, dualmethod, fields)
+    Index, ModelSQL, ModelView, Workflow, dualmethod, fields, sort)
 from trytond.model.exceptions import AccessError
 from trytond.modules.company import CompanyReport
 from trytond.modules.company.model import employee_field, set_employee
@@ -215,6 +214,10 @@ class ShipmentIn(ShipmentMixin, Workflow, ModelSQL, ModelView):
                         [Eval('warehouse_input', -1)], 'parent'),
                     ('to_location', '=', Eval('warehouse_input'))),
                 ],
+            order=[
+                ('product', 'ASC'),
+                ('id', 'ASC'),
+                ],
             search_order=[
                 ('planned_date', 'ASC NULLS LAST'),
                 ('id', 'ASC')
@@ -249,6 +252,11 @@ class ShipmentIn(ShipmentMixin, Workflow, ModelSQL, ModelView):
                         ],
                     [],),
                 ('company', '=', Eval('company')),
+                ],
+            order=[
+                ('to_location', 'ASC'),
+                ('product', 'ASC'),
+                ('id', 'ASC'),
                 ],
             states={
                 'readonly': Eval('state').in_(['draft', 'done', 'cancelled']),
@@ -396,13 +404,12 @@ class ShipmentIn(ShipmentMixin, Workflow, ModelSQL, ModelView):
             return self.supplier.supplier_location.id
 
     def get_incoming_moves(self, name):
-        moves = []
+        moves = sort(self.moves, self.__class__.incoming_moves.order)
         if self.warehouse_input == self.warehouse_storage:
-            return [m.id for m in self.moves]
-        for move in self.moves:
-            if move.to_location == self.warehouse_input:
-                moves.append(move.id)
-        return moves
+            return [m.id for m in moves]
+        else:
+            return [
+                m.id for m in moves if m.to_location == self.warehouse_input]
 
     @classmethod
     def set_incoming_moves(cls, shipments, name, value):
@@ -413,11 +420,8 @@ class ShipmentIn(ShipmentMixin, Workflow, ModelSQL, ModelView):
                 })
 
     def get_inventory_moves(self, name):
-        moves = []
-        for move in self.moves:
-            if move.from_location == self.warehouse_input:
-                moves.append(move.id)
-        return moves
+        moves = sort(self.moves, self.__class__.inventory_moves.order)
+        return [m.id for m in moves if m.from_location == self.warehouse_input]
 
     @classmethod
     def set_inventory_moves(cls, shipments, name, value):
@@ -694,6 +698,11 @@ class ShipmentInReturn(ShipmentAssignMixin, Workflow, ModelSQL, ModelView):
                         ],
                     [])),
             ('company', '=', Eval('company')),
+            ],
+        order=[
+            ('from_location', 'ASC'),
+            ('product', 'ASC'),
+            ('id', 'ASC'),
             ],
         help="The moves that return the stock to the supplier.")
     origins = fields.Function(fields.Char('Origins'), 'get_origins')
@@ -1102,6 +1111,10 @@ class ShipmentOut(ShipmentAssignMixin, Workflow, ModelSQL, ModelView):
                     ()),
                 ('company', '=', Eval('company')),
                 ],
+            order=[
+                ('product', 'ASC'),
+                ('id', 'ASC'),
+                ],
             states={
                 'readonly': (Eval('state').in_(
                         If(Eval('warehouse_storage')
@@ -1122,6 +1135,11 @@ class ShipmentOut(ShipmentAssignMixin, Workflow, ModelSQL, ModelView):
                     ()),
                 ('to_location', '=', Eval('warehouse_output')),
                 ('company', '=', Eval('company')),
+                ],
+            order=[
+                ('from_location', 'ASC'),
+                ('product', 'ASC'),
+                ('id', 'ASC'),
                 ],
             states={
                 'readonly': Eval('state').in_(
@@ -1336,11 +1354,12 @@ class ShipmentOut(ShipmentAssignMixin, Workflow, ModelSQL, ModelView):
             return self.customer.customer_location.id
 
     def get_outgoing_moves(self, name):
+        moves = sort(self.moves, self.__class__.outgoing_moves.order)
         if self.warehouse_output == self.warehouse_storage:
-            return [m.id for m in self.moves]
+            return [m.id for m in moves]
         else:
             return [
-                m.id for m in self.moves
+                m.id for m in moves
                 if m.from_location == self.warehouse_output]
 
     @classmethod
@@ -1352,11 +1371,8 @@ class ShipmentOut(ShipmentAssignMixin, Workflow, ModelSQL, ModelView):
                 })
 
     def get_inventory_moves(self, name):
-        moves = []
-        for move in self.moves:
-            if move.to_location == self.warehouse_output:
-                moves.append(move.id)
-        return moves
+        moves = sort(self.moves, self.__class__.inventory_moves.order)
+        return [m.id for m in moves if m.to_location == self.warehouse_output]
 
     @classmethod
     def set_inventory_moves(cls, shipments, name, value):
@@ -1817,6 +1833,10 @@ class ShipmentOutReturn(ShipmentMixin, Workflow, ModelSQL, ModelView):
                     ('to_location', '=', Eval('warehouse_input'))),
                 ('company', '=', Eval('company')),
                 ],
+            order=[
+                ('product', 'ASC'),
+                ('id', 'ASC'),
+                ],
             states={
                 'readonly': ((Eval('state') != 'draft')
                     | ~Eval('warehouse') | ~Eval('customer')),
@@ -1836,6 +1856,11 @@ class ShipmentOutReturn(ShipmentMixin, Workflow, ModelSQL, ModelView):
                         ],
                     []),
                 ('company', '=', Eval('company')),
+                ],
+            order=[
+                ('to_location', 'ASC'),
+                ('product', 'ASC'),
+                ('id', 'ASC'),
                 ],
             states={
                 'readonly': Eval('state').in_(['draft', 'cancelled', 'done']),
@@ -1987,11 +2012,12 @@ class ShipmentOutReturn(ShipmentMixin, Workflow, ModelSQL, ModelView):
             return self.customer.customer_location.id
 
     def get_incoming_moves(self, name):
+        moves = sort(self.moves, self.__class__.incoming_moves.order)
         if self.warehouse_input == self.warehouse_storage:
-            return [m.id for m in self.moves]
+            return [m.id for m in moves]
         else:
             return [
-                m.id for m in self.moves
+                m.id for m in moves
                 if m.to_location == self.warehouse_input]
 
     @classmethod
@@ -2003,11 +2029,8 @@ class ShipmentOutReturn(ShipmentMixin, Workflow, ModelSQL, ModelView):
                 })
 
     def get_inventory_moves(self, name):
-        moves = []
-        for move in self.moves:
-            if move.from_location == self.warehouse_input:
-                moves.append(move.id)
-        return moves
+        moves = sort(self.moves, self.__class__.inventory_moves.order)
+        return [m.id for m in moves if m.from_location == self.warehouse_input]
 
     @classmethod
     def set_inventory_moves(cls, shipments, name, value):
@@ -2303,6 +2326,11 @@ class ShipmentInternal(ShipmentAssignMixin, Workflow, ModelSQL, ModelView):
                     [])),
             ('company', '=', Eval('company')),
             ],
+        order=[
+            ('from_location', 'ASC'),
+            ('product', 'ASC'),
+            ('id', 'ASC'),
+            ],
         help="The moves that perform the shipment.")
     outgoing_moves = fields.Function(fields.One2Many('stock.move', 'shipment',
             'Outgoing Moves',
@@ -2316,6 +2344,11 @@ class ShipmentInternal(ShipmentAssignMixin, Workflow, ModelSQL, ModelView):
                             ('to_location', '=', Eval('transit_location'))),
                         ],
                     []),
+                ],
+            order=[
+                ('from_location', 'ASC'),
+                ('product', 'ASC'),
+                ('id', 'ASC'),
                 ],
             states={
                 'readonly': Eval('state').in_(
@@ -2337,6 +2370,11 @@ class ShipmentInternal(ShipmentAssignMixin, Workflow, ModelSQL, ModelView):
                             [Eval('to_location', -1)], 'parent'),
                         ],
                     []),
+                ],
+            order=[
+                ('to_location', 'ASC'),
+                ('product', 'ASC'),
+                ('id', 'ASC'),
                 ],
             states={
                 'readonly': Eval('state').in_(['done', 'cancelled']),
@@ -2527,22 +2565,21 @@ class ShipmentInternal(ShipmentAssignMixin, Workflow, ModelSQL, ModelView):
         return self.planned_date
 
     def get_outgoing_moves(self, name):
+        moves = sort(self.moves, self.__class__.outgoing_moves.order)
         if not self.transit_location:
-            return [m.id for m in self.moves]
-        moves = []
-        for move in self.moves:
-            if move.to_location == self.transit_location:
-                moves.append(move.id)
-        return moves
+            return [m.id for m in moves]
+        else:
+            return [
+                m.id for m in moves if m.to_location == self.transit_location]
 
     def get_incoming_moves(self, name):
+        moves = sort(self.moves, self.__class__.incoming_moves.order)
         if not self.transit_location:
-            return [m.id for m in self.moves]
-        moves = []
-        for move in self.moves:
-            if move.from_location == self.transit_location:
-                moves.append(move.id)
-        return moves
+            return [m.id for m in moves]
+        else:
+            return [
+                m.id for m in moves
+                if m.from_location == self.transit_location]
 
     @classmethod
     def set_moves(cls, shipments, name, value):
@@ -2993,39 +3030,14 @@ class ShipmentReport(CompanyReport):
         raise NotImplementedError
 
     @classmethod
-    def get_context(cls, shipments, header, data):
-        report_context = super().get_context(shipments, header, data)
-
-        compare_context = cls.get_compare_context(shipments, data)
-        sorted_moves = {}
-        for shipment in shipments:
-            sorted_moves[shipment.id] = sorted(
-                cls.moves(shipment),
-                key=functools.partial(cls.get_compare_key, compare_context))
-        report_context['moves'] = sorted_moves
-
-        return report_context
+    def moves_order(cls, shipment):
+        return []
 
     @classmethod
-    def get_compare_context(cls, shipments, data):
-        from_location_ids = set()
-        to_location_ids = set()
-        for shipment in shipments:
-            for move in cls.moves(shipment):
-                from_location_ids.add(move.from_location.id)
-                to_location_ids.add(move.to_location.id)
-
-        return {
-            'from_location_ids': list(from_location_ids),
-            'to_location_ids': list(to_location_ids),
-            }
-
-    @staticmethod
-    def get_compare_key(compare_context, move):
-        from_location_ids = compare_context['from_location_ids']
-        to_location_ids = compare_context['to_location_ids']
-        return [from_location_ids.index(move.from_location.id),
-                to_location_ids.index(move.to_location.id)]
+    def get_context(cls, shipments, header, data):
+        report_context = super().get_context(shipments, header, data)
+        report_context['moves'] = cls.moves
+        return report_context
 
 
 class PickingList(ShipmentReport):
@@ -3035,9 +3047,14 @@ class PickingList(ShipmentReport):
     @classmethod
     def moves(cls, shipment):
         if shipment.warehouse_storage == shipment.warehouse_output:
-            return shipment.outgoing_moves
+            moves = shipment.outgoing_moves
         else:
-            return shipment.inventory_moves
+            moves = shipment.inventory_moves
+        return sort(moves, cls.moves_order(shipment))
+
+    @classmethod
+    def moves_order(cls, shipment):
+        return shipment.__class__.inventory_moves.order
 
 
 class SupplierRestockingList(ShipmentReport):
@@ -3047,9 +3064,14 @@ class SupplierRestockingList(ShipmentReport):
     @classmethod
     def moves(cls, shipment):
         if shipment.warehouse_input == shipment.warehouse_storage:
-            return shipment.incoming_moves
+            moves = shipment.incoming_moves
         else:
-            return shipment.inventory_moves
+            moves = shipment.inventory_moves
+        return sort(moves, cls.moves_order(shipment))
+
+    @classmethod
+    def moves_order(cls, shipment):
+        return shipment.__class__.inventory_moves.order
 
 
 class CustomerReturnRestockingList(ShipmentReport):
@@ -3059,9 +3081,14 @@ class CustomerReturnRestockingList(ShipmentReport):
     @classmethod
     def moves(cls, shipment):
         if shipment.warehouse_input == shipment.warehouse_storage:
-            return shipment.incoming_moves
+            moves = shipment.incoming_moves
         else:
-            return shipment.inventory_moves
+            moves = shipment.inventory_moves
+        return sort(moves, cls.moves_order(shipment))
+
+    @classmethod
+    def moves_order(cls, shipment):
+        return shipment.__class__.inventory_moves.order
 
 
 class InteralShipmentReport(ShipmentReport):
@@ -3072,8 +3099,16 @@ class InteralShipmentReport(ShipmentReport):
     def moves(cls, shipment):
         if shipment.transit_location:
             if shipment.state == 'shipped':
-                return shipment.incoming_moves
+                moves = shipment.incoming_moves
             else:
-                return shipment.outgoing_moves
+                moves = shipment.outgoing_moves
         else:
-            return shipment.moves
+            moves = shipment.moves
+        return sort(moves, cls.moves_order(shipment))
+
+    @classmethod
+    def moves_order(cls, shipment):
+        if shipment.state == 'shipped':
+            return shipment.__class__.incoming_moves.order
+        else:
+            return shipment.__class__.outgoing_moves.order

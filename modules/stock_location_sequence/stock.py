@@ -6,3 +6,4 @@ from trytond.pool import PoolMeta
 
 class Location(sequence_ordered(), metaclass=PoolMeta):
     __name__ = 'stock.location'
+    _order_name = 'sequence'
