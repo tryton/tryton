@@ -979,6 +979,14 @@ values is ``sequence``.
 to ``Sequence``.
 Order specifies the order direction and defaults to ``ASC NULLS FIRST``.
 
+sort
+====
+
+.. function:: sort(records, order)
+
+Return a new list of records ordered by the ``order`` list defined like in
+:meth:`~ModelStorage.search`.
+
 MultiValueMixin
 ===============
 

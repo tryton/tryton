@@ -12,7 +12,7 @@ from .modelsql import Check, Exclude, Index, ModelSQL, Unique
 from .modelstorage import EvalEnvironment, ModelStorage
 from .modelview import ModelView
 from .multivalue import MultiValueMixin, ValueMixin
-from .order import sequence_ordered
+from .order import sequence_ordered, sort
 from .symbol import SymbolMixin
 from .tree import tree
 from .union import UnionMixin
@@ -22,5 +22,5 @@ __all__ = ['Model', 'ModelView', 'ModelStorage', 'ModelSingleton', 'ModelSQL',
     'Check', 'Unique', 'Exclude', 'Index',
     'Workflow', 'DictSchemaMixin', 'MatchMixin', 'UnionMixin', 'dualmethod',
     'MultiValueMixin', 'ValueMixin', 'SymbolMixin', 'DigitsMixin',
-    'EvalEnvironment', 'sequence_ordered', 'DeactivableMixin', 'tree',
+    'EvalEnvironment', 'sequence_ordered', 'sort', 'DeactivableMixin', 'tree',
     'avatar_mixin']
