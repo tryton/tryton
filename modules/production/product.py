@@ -76,6 +76,7 @@ class Product(metaclass=PoolMeta):
         else:
             default = default.copy()
         default.setdefault('boms', None)
+        default.setdefault('lead_times', None)
         return super(Product, cls).copy(products, default=default)
 
 
