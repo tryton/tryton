@@ -30,7 +30,7 @@ def get_currency(code='USD', config=None):
     currencies = Currency.find([('code', '=', code)])
     if not currencies:
         currency = Currency(name=_names.get(code, code),
-            symbol=_symbols.get(code, code), code=code,
+            symbol=_symbols.get(code), code=code,
             rounding=Decimal('0.01'))
         currency.save()
         rate = _rates.get(code)

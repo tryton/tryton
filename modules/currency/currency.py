@@ -43,7 +43,7 @@ class Currency(
     name = fields.Char('Name', required=True, translate=True,
         help="The main identifier of the currency.")
     symbol = fields.Char(
-        "Symbol", size=10, required=True, strip=False,
+        "Symbol", size=10, strip=False,
         help="The symbol used for currency formating.")
     code = fields.Char('Code', size=3, required=True,
         help="The 3 chars ISO currency code.")
@@ -88,6 +88,9 @@ class Currency(
         # Migration from 5.2: remove country data
         cursor.execute(*data.delete(where=(data.module == 'currency')
                 & (data.model == cls.__name__)))
+
+        # Migration from 6.6: remove required on symbol
+        table_h.not_null_action('symbol', 'remove')
 
     @staticmethod
     def default_rounding():
@@ -256,6 +259,8 @@ class Currency(
         Lang = pool.get('ir.lang')
         lang = Lang.get()
         symbol, position = super().get_symbol(sign, symbol=symbol)
+        if not symbol:
+            symbol = self.code
         if ((sign < 0 and lang.n_cs_precedes)
                 or (sign >= 0 and lang.p_cs_precedes)):
             position = 0

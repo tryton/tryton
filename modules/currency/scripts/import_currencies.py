@@ -62,11 +62,9 @@ def update_currencies(currencies):
         if code in currencies:
             record = currencies[code]
         else:
-            record = Currency(code=code, symbol=None)
+            record = Currency(code=code)
         record.name = _remove_forbidden_chars(currency.name)
         record.numeric_code = currency.numeric
-        if not record.symbol:
-            record.symbol = currency.alpha_3
         records.append(record)
 
     Currency.save(records)
