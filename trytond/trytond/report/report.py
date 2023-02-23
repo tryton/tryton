@@ -101,6 +101,8 @@ TIMEDELTA_DEFAULT_CONVERTER['w'] = TIMEDELTA_DEFAULT_CONVERTER['d'] * 7
 TIMEDELTA_DEFAULT_CONVERTER['M'] = TIMEDELTA_DEFAULT_CONVERTER['d'] * 30
 TIMEDELTA_DEFAULT_CONVERTER['Y'] = TIMEDELTA_DEFAULT_CONVERTER['d'] * 365
 
+NO_BREAKING_SPACE = '\u00A0'
+
 # For most OS maximum filename is 255 but Excel has a limitation which include
 # the path of 218.
 # As on Windows report is most likely to be open from
@@ -483,7 +485,7 @@ class Report(URLMixin, PoolBase):
                 # Add space if no time
                 text += ' '
             text += ('%.6f' % value)[1:]
-        return text
+        return text.replace(' ', NO_BREAKING_SPACE)
 
     @classmethod
     def format_currency(

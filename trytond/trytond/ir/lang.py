@@ -38,6 +38,9 @@ class DeleteDefaultError(UserError):
     pass
 
 
+NO_BREAKING_SPACE = '\u00A0'
+
+
 class Lang(DeactivableMixin, ModelSQL, ModelView):
     "Language"
     __name__ = "ir.lang"
@@ -473,7 +476,7 @@ class Lang(DeactivableMixin, ModelSQL, ModelView):
                 formatted, seps = self._group(formatted, monetary=monetary)
             if seps:
                 formatted = _strip_padding(formatted, seps)
-        return formatted
+        return formatted.replace(' ', NO_BREAKING_SPACE)
 
     def currency(
             self, val, currency, symbol=True, grouping=False, digits=None):
@@ -528,7 +531,9 @@ class Lang(DeactivableMixin, ModelSQL, ModelView):
             # this should be the most fitting sign position
             s = sign + s
 
-        return s.replace('<', '').replace('>', '')
+        return (
+            s.replace('<', '').replace('>', '')
+            .replace(' ', NO_BREAKING_SPACE))
 
     def strftime(self, value, format=None):
         '''
@@ -561,7 +566,7 @@ class Lang(DeactivableMixin, ModelSQL, ModelView):
             else:
                 p = self.pm or 'PM'
             format = format.replace('%p', p)
-        return value.strftime(format)
+        return value.strftime(format).replace(' ', NO_BREAKING_SPACE)
 
     def format_number(self, value, digits=None, grouping=True, monetary=None):
         if digits is None:
@@ -574,14 +579,13 @@ class Lang(DeactivableMixin, ModelSQL, ModelView):
 
     def format_number_symbol(self, value, symbol, digits=None, grouping=True):
         symbol, position = symbol.get_symbol(value)
-        separated = (
-            value < 0 and self.n_sep_by_space or self.p_sep_by_space)
+        separated = True
         s = self.format_number(value, digits, grouping)
         if position:
             s = s + (separated and ' ' or '') + symbol
         else:
             s = symbol + (separated and ' ' or '') + s
-        return s
+        return s.replace(' ', NO_BREAKING_SPACE)
 
 
 class LangConfigStart(ModelView):

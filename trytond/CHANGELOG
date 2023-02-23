@@ -1,3 +1,4 @@
+* Use no breaking space to format number and date
 * Fallback to code to format currency without symbol
 * Add sort method to order like ModelStorage.search
 * Do not alter argument values of with_transaction decorator (#12108)

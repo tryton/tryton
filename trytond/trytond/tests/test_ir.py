@@ -153,8 +153,8 @@ class IrTestCase(ModuleTestCase):
         currency.symbol = None
         currency.code = 'USD'
         test_data = [
-            (Decimal('10.50'), True, False, None, 'USD 10.50'),
-            (Decimal('10.50'), True, False, 4, 'USD 10.5000'),
+            (Decimal('10.50'), True, False, None, 'USD 10.50'),
+            (Decimal('10.50'), True, False, 4, 'USD 10.5000'),
             ]
         for value, symbol, grouping, digits, result in test_data:
             self.assertEqual(
@@ -181,17 +181,17 @@ class IrTestCase(ModuleTestCase):
         Lang = pool.get('ir.lang')
         lang = Lang.get('en')
         test_data = [
-            (datetime.date(2016, 8, 3), '%d %B %Y', "03 August 2016"),
-            (datetime.time(8, 20), '%I:%M %p', "08:20 AM"),
+            (datetime.date(2016, 8, 3), '%d %B %Y', "03 August 2016"),
+            (datetime.time(8, 20), '%I:%M %p', "08:20 AM"),
             (datetime.datetime(2018, 11, 1, 14, 30), '%a %d %b %Y %I:%M %p',
-                "Thu 01 Nov 2018 02:30 PM"),
+                "Thu 01 Nov 2018 02:30 PM"),
             (datetime.date(2018, 11, 1), '%x', "11/01/2018"),
             (datetime.datetime(2018, 11, 1, 14, 30, 12),
-                '%x %X', "11/01/2018 14:30:12"),
+                '%x %X', "11/01/2018 14:30:12"),
             (datetime.datetime(2018, 11, 1, 14, 30, 12),
                 '%H:%M:%S', "14:30:12"),
             (datetime.datetime(2018, 11, 1, 14, 30, 12), None,
-                "11/01/2018 14:30:12"),
+                "11/01/2018 14:30:12"),
             ]
         for date, format_, result in test_data:
             self.assertEqual(lang.strftime(date, format_), result)
@@ -222,8 +222,8 @@ class IrTestCase(ModuleTestCase):
         unit.get_symbol = Mock()
         unit.get_symbol.return_value = 'Kg', 1
         test_data = [
-            (Decimal('10.50'), False, None, '10.50Kg'),
-            (Decimal('1000.50'), True, 4, '1,000.5000Kg'),
+            (Decimal('10.50'), False, None, '10.50 Kg'),
+            (Decimal('1000.50'), True, 4, '1,000.5000 Kg'),
             ]
         for value, grouping, digits, result in test_data:
             self.assertEqual(
