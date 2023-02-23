@@ -143,6 +143,25 @@ class IrTestCase(ModuleTestCase):
                 result)
 
     @with_transaction()
+    def test_lang_currency_without_symbol(self):
+        "Test Lang.currency without symbol"
+        pool = Pool()
+        Lang = pool.get('ir.lang')
+        lang = Lang.get('en')
+        currency = Mock()
+        currency.digits = 2
+        currency.symbol = None
+        currency.code = 'USD'
+        test_data = [
+            (Decimal('10.50'), True, False, None, 'USD 10.50'),
+            (Decimal('10.50'), True, False, 4, 'USD 10.5000'),
+            ]
+        for value, symbol, grouping, digits, result in test_data:
+            self.assertEqual(
+                lang.currency(value, currency, symbol, grouping, digits),
+                result)
+
+    @with_transaction()
     def test_lang_format(self):
         "Test Lang.format"
         pool = Pool()

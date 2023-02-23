@@ -501,6 +501,9 @@ class Lang(DeactivableMixin, ModelSQL, ModelView):
                 or self.p_cs_precedes)
             separated = (val < 0 and self.n_sep_by_space
                 or self.p_sep_by_space)
+            if not smb and hasattr(currency, 'code'):
+                smb = currency.code
+                separated = True
 
             if precedes:
                 s = smb + (separated and ' ' or '') + s

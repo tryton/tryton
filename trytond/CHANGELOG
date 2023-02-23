@@ -1,3 +1,4 @@
+* Fallback to code to format currency without symbol
 * Add sort method to order like ModelStorage.search
 * Do not alter argument values of with_transaction decorator (#12108)
 * Support SMALLINT and REAL as backend types
