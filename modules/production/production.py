@@ -433,6 +433,8 @@ class Production(ShipmentAssignMixin, Workflow, ModelSQL, ModelView):
     def get_cost(self, name):
         cost = Decimal(0)
         for input_ in self.inputs:
+            if input_.state == 'cancelled':
+                continue
             if input_.cost_price is not None:
                 cost_price = input_.cost_price
             else:
@@ -451,7 +453,8 @@ class Production(ShipmentAssignMixin, Workflow, ModelSQL, ModelView):
         for input_ in self.inputs:
             if (input_.product is None
                     or input_.uom is None
-                    or input_.quantity is None):
+                    or input_.quantity is None
+                    or input_.state == 'cancelled'):
                 continue
             product = input_.product
             quantity = Uom.compute_qty(input_.uom, input_.quantity,
@@ -536,6 +539,8 @@ class Production(ShipmentAssignMixin, Workflow, ModelSQL, ModelView):
             input_quantities = defaultdict(Decimal)
             input_costs = defaultdict(Decimal)
             for input_ in production.inputs:
+                if input_.state == 'cancelled':
+                    continue
                 if input_.cost_price is not None:
                     cost_price = input_.cost_price
                 else:
@@ -546,7 +551,8 @@ class Production(ShipmentAssignMixin, Workflow, ModelSQL, ModelView):
                     Decimal(str(input_.internal_quantity)) * cost_price)
             outputs = []
             for output in production.outputs:
-                if output.to_location.type == 'lost_found':
+                if (output.to_location.type == 'lost_found'
+                        or output.state == 'cancelled'):
                     continue
                 product = output.product
                 if input_quantities.get(output.product):
