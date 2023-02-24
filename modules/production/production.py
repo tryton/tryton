@@ -383,6 +383,8 @@ class Production(Workflow, ModelSQL, ModelView):
     def get_cost(self, name):
         cost = Decimal(0)
         for input_ in self.inputs:
+            if input_.state == 'cancel':
+                continue
             if input_.cost_price is not None:
                 cost_price = input_.cost_price
             else:
@@ -403,7 +405,8 @@ class Production(Workflow, ModelSQL, ModelView):
         for input_ in self.inputs:
             if (input_.product is None
                     or input_.uom is None
-                    or input_.quantity is None):
+                    or input_.quantity is None
+                    or input_.state == 'cancel'):
                 continue
             product = input_.product
             quantity = Uom.compute_qty(input_.uom, input_.quantity,
