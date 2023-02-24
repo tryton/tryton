@@ -1012,9 +1012,20 @@ class Move(Workflow, ModelSQL, ModelView):
             else:
                 return True
 
+        def default_values(values):
+            def get_value(name):
+                def get_default(data):
+                    return values[data['id']][name]
+                return get_default
+            default = {}
+            for name in set().union(*(v.keys() for v in values.values())):
+                default[name] = get_value(name)
+            return default
+
         child_locations = {}
         to_write = []
         to_assign = []
+        to_copy = defaultdict(list)
         success = True
         for move in moves:
             if move.state != 'draft':
@@ -1080,13 +1091,26 @@ class Move(Workflow, ModelSQL, ModelView):
                     to_assign.append(move)
                     first = False
                 else:
-                    with Transaction().set_context(_stock_move_split=True):
-                        to_assign.extend(cls.copy([move], default=values))
+                    to_copy[move].append(values)
 
                 qty_default_uom = Uom.compute_qty(move.uom, qty,
                         move.product.default_uom, round=False)
 
                 pbl[key] = pbl.get(key, 0.0) - qty_default_uom
+
+        with Transaction().set_context(_stock_move_split=True):
+            while to_copy:
+                moves_to_copy = []
+                values = {}
+                for move, vlist in list(to_copy.items()):
+                    if vlist:
+                        moves_to_copy.append(move)
+                        values[move.id] = vlist.pop(0)
+                    else:
+                        del to_copy[move]
+                to_assign.extend(cls.copy(
+                        moves_to_copy,
+                        default=default_values(values)))
         if to_write:
             cls.write(*to_write)
         if to_assign:
