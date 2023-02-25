@@ -1,3 +1,4 @@
+* Do not alter argument values of with_transaction decorator (#12108)
 * Support SMALLINT and REAL as backend types
 * Remove BigInteger field
 * Remove support for Python 3.7

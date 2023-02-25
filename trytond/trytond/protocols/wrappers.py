@@ -200,7 +200,6 @@ def with_transaction(readonly=None, user=0, context=None):
     def decorator(func):
         @wraps(func)
         def wrapper(request, pool, *args, **kwargs):
-            nonlocal user, context
             readonly_ = readonly  # can not modify non local
             if readonly_ is None:
                 if request.method in {'POST', 'PUT', 'DELETE', 'PATCH'}:
@@ -208,19 +207,21 @@ def with_transaction(readonly=None, user=0, context=None):
                 else:
                     readonly_ = True
             if context is None:
-                context = {}
+                context_ = {}
             else:
-                context = context.copy()
-            context['_request'] = request.context
+                context_ = context.copy()
+            context_['_request'] = request.context
             if user == 'request':
-                user = request.user_id
+                user_ = request.user_id
+            else:
+                user_ = user
             retry = config.getint('database', 'retry')
             for count in range(retry, -1, -1):
                 if count != retry:
                     time.sleep(0.02 * (retry - count))
                 with Transaction().start(
-                        pool.database_name, user, readonly=readonly_,
-                        context=context) as transaction:
+                        pool.database_name, user_, readonly=readonly_,
+                        context=context_) as transaction:
                     try:
                         result = func(request, pool, *args, **kwargs)
                     except backend.DatabaseOperationalError:
