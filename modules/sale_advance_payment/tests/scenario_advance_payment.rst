@@ -285,7 +285,7 @@ Create the product::
     >>> sos_template.salable = True
     >>> sos_template.list_price = Decimal('10')
     >>> sos_template.account_category = account_category
-    >>> sos_template.supply_on_sale = True
+    >>> sos_template.supply_on_sale = 'always'
     >>> sos_template.save()
     >>> sos_product, = sos_template.products
 

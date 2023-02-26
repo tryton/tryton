@@ -7,7 +7,6 @@ from trytond.modules.sale.sale import (
 from trytond.pool import Pool, PoolMeta
 from trytond.pyson import Eval
 from trytond.tools.multivalue import migrate_property
-from trytond.transaction import Transaction
 
 sale_drop_location = fields.Many2One(
     'stock.location', "Sale Drop Location", domain=[('type', '=', 'drop')])
@@ -82,14 +81,13 @@ class Sale(metaclass=PoolMeta):
     search_drop_shipments = search_shipments_returns('stock.shipment.drop')
 
     @classmethod
-    def _process_shipment(cls, sales):
+    def _process_supply(cls, sales, product_quantities):
         pool = Pool()
         Move = pool.get('stock.move')
-        super()._process_shipment(sales)
+        super()._process_supply(sales, product_quantities)
         moves = []
-        with Transaction().set_context(_drop_shipment=True):
-            for sale in sales:
-                moves.extend(sale.create_drop_shipment_moves())
+        for sale in sales:
+            moves.extend(sale.create_drop_shipment_moves())
         Move.save(moves)
 
     def create_drop_shipment_moves(self):
@@ -125,15 +123,13 @@ class Line(metaclass=PoolMeta):
         return True
 
     def get_move(self, shipment_type):
-        result = super().get_move(shipment_type)
-        if (shipment_type == 'out'
-                and not Transaction().context.get('_drop_shipment')):
-            if self.supply_on_sale_drop_move:
-                return
-        return result
+        move = super().get_move(shipment_type)
+        if self.supply_on_sale_drop_move and not self.purchase_request:
+            move = None
+        return move
 
-    def get_purchase_request(self):
-        request = super().get_purchase_request()
+    def get_purchase_request(self, product_quantities):
+        request = super().get_purchase_request(product_quantities)
         if request and request.party:
             if self.product and self.product.type in ('goods', 'assets'):
                 product_supplier = request.find_best_product_supplier(

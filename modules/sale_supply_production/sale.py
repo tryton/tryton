@@ -11,21 +11,21 @@ class Sale(metaclass=PoolMeta):
     __name__ = 'sale.sale'
 
     @classmethod
-    def _process_shipment(cls, sales):
+    def _process_supply(cls, sales, product_quantities):
         pool = Pool()
         Production = pool.get('production')
 
         productions = []
         for sale in sales:
-            productions.extend(sale.create_productions())
+            productions.extend(sale.create_productions(product_quantities))
         Production.save(productions)
         Production.set_moves(productions)
-        super()._process_shipment(sales)
+        super()._process_supply(sales, product_quantities)
 
-    def create_productions(self):
+    def create_productions(self, product_quantities):
         productions = []
         for line in self.lines:
-            production = line.get_production()
+            production = line.get_production(product_quantities)
             if not production:
                 continue
             production.planned_start_date = (
@@ -67,28 +67,32 @@ class Line(metaclass=PoolMeta):
         default.setdefault('productions', None)
         return super().copy(lines, default=default)
 
-    def get_production(self):
+    def get_production(self, product_quantities):
         "Return production for the sale line"
         pool = Pool()
         Production = pool.get('production')
         Date = pool.get('ir.date')
+        Uom = pool.get('product.uom')
+
         with Transaction().set_context(company=self.sale.company.id):
             today = Date.today()
 
         if (not self.supply_on_sale
                 or self.productions
+                or not self.ready_for_supply
                 or not self.product.producible):
             return
 
-        # Ensure to create the request for the maximum paid
-        if self.sale.shipment_method == 'invoice':
-            invoice_skips = (set(self.sale.invoices_ignored)
-                | set(self.sale.invoices_recreated))
-            invoice_lines = [l for l in self.invoice_lines
-                if l.invoice not in invoice_skips]
-            if (not invoice_lines
-                    or any((not l.invoice) or l.invoice.state != 'paid'
-                        for l in invoice_lines)):
+        product = self.product
+        quantity = self._get_move_quantity('out')
+        if product.supply_on_sale == 'stock_first':
+            available_qty = product_quantities[product]
+            available_qty = Uom.compute_qty(
+                product.default_uom, available_qty, self.unit,
+                round=False)
+            if quantity < available_qty:
+                product_quantities[product] -= Uom.compute_qty(
+                    self.unit, quantity, product.default_uom, round=False)
                 return
 
         date = self.shipping_date or today
@@ -96,8 +100,6 @@ class Line(metaclass=PoolMeta):
             date = today
         else:
             date -= dt.timedelta(1)
-        product = self.product
-        quantity = self._get_move_quantity('out')
         return Production(
             planned_date=date,
             company=self.sale.company,

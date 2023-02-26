@@ -15,6 +15,7 @@ class Template(metaclass=PoolMeta):
 
     supply_on_sale = fields.Selection([
             (None, "Never"),
+            ('stock_first', "Stock First"),
             ('always', "Always"),
             ], "Supply On Sale",
         states={

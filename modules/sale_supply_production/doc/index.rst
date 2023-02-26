@@ -3,9 +3,9 @@ Sale Supply Production Module
 
 The Sale Supply Production module adds a "supply on sale" option to producible
 products.
-If checked, it will generate a production request for each sale line of this
-product regardless of the stock levels. Once the products are produced they are
-assigned to the customer shipments.
+If selected, it will generate a production request for each sale line of this
+product depending of the option and the stock levels.
+Once the products are produced they are assigned to the customer shipments.
 If the production request is cancelled, the sale goes back to the default
 supply method.
 

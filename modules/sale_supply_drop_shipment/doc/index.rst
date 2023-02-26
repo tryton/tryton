@@ -2,10 +2,10 @@ Sale Supply Drop Shipment Model
 ###############################
 
 The Sale Supply Drop Shipment module adds a drop shipment option on product
-supplier if "supply on request" is checked. When checked, the purchase request
-and the linked purchase have the address of customer as Delivery Address;
-at the confirmation of the purchase a drop shipment is created and linked to
-both the purchase and the sale.
+supplier if "supply on request" is selected.
+When selected, the purchase request and the linked purchase have the address of
+customer as Delivery Address; at the confirmation of the purchase a drop
+shipment is created and linked to both the purchase and the sale.
 
 Drop Shipment
 *************

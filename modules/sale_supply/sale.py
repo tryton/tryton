@@ -1,5 +1,10 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
+
+from collections import defaultdict
+from itertools import groupby
+from operator import attrgetter
+
 from trytond.model import Model, fields
 from trytond.pool import Pool, PoolMeta
 from trytond.pyson import Eval
@@ -20,6 +25,31 @@ class Sale(metaclass=PoolMeta):
     @classmethod
     def _process_shipment(cls, sales):
         pool = Pool()
+        Product = pool.get('product.product')
+
+        product_quantities = defaultdict(float)
+        get_warehouse = attrgetter('warehouse')
+        for warehouse, sub_sales in groupby(
+                filter(get_warehouse, sales), key=get_warehouse):
+            products = {
+                l.product for s in sub_sales for l in s.lines
+                if l.product and l.product.supply_on_sale == 'stock_first'}
+            locations = [warehouse.id]
+            with Transaction().set_context(
+                    locations=locations, stock_date_end=None):
+                products = Product.browse(products)
+                product_quantities.update(
+                    (p, min(p.quantity, p.forecast_quantity))
+                    for p in Product.browse(products))
+
+        # purchase requests must be created before shipments to get information
+        # about requests during the shipments creation like the supplier
+        cls._process_supply(sales, product_quantities)
+        super()._process_shipment(sales)
+
+    @classmethod
+    def _process_supply(cls, sales, product_quantities):
+        pool = Pool()
         Line = pool.get('sale.line')
         Move = pool.get('stock.move')
         PurchaseRequest = pool.get('purchase.request')
@@ -28,10 +58,7 @@ class Sale(metaclass=PoolMeta):
         requests, lines = [], []
         moves_to_draft, shipments_to_wait = [], []
         for sale in sales:
-            # purchase requests must be created before shipments to get
-            # information about requests during the shipments creation
-            # like the supplier
-            reqs, lns = sale.create_purchase_requests()
+            reqs, lns = sale.create_purchase_requests(product_quantities)
             requests.extend(reqs)
             lines.extend(lns)
 
@@ -42,12 +69,11 @@ class Sale(metaclass=PoolMeta):
         Line.save(lines)
         Move.draft(moves_to_draft)
         ShipmentOut.wait(shipments_to_wait)
-        super()._process_shipment(sales)
 
-    def create_purchase_requests(self):
+    def create_purchase_requests(self, product_quantities):
         requests, lines = [], []
         for line in self.lines:
-            request = line.get_purchase_request()
+            request = line.get_purchase_request(product_quantities)
             if not request:
                 continue
             requests.append(request)
@@ -123,48 +149,72 @@ class Line(metaclass=PoolMeta):
             return False
         return bool(self.product.supply_on_sale)
 
+    @property
+    def ready_for_supply(self):
+        if self.sale.shipment_method == 'invoice':
+            # Ensure to create the request for the maximum paid
+            invoice_skips = (
+                set(self.sale.invoices_ignored)
+                | set(self.sale.invoices_recreated))
+            invoice_lines = [
+                l for l in self.invoice_lines
+                if l.invoice not in invoice_skips]
+            if (not invoice_lines
+                    or any(
+                        (not l.invoice) or l.invoice.state != 'paid'
+                        for l in invoice_lines)):
+                return False
+        return True
+
     def get_move(self, shipment_type):
         move = super().get_move(shipment_type)
         if (move
                 and shipment_type == 'out'
-                and (self.supply_on_sale or self.has_supply)):
+                and self.has_supply):
             if self.supply_state in {'', 'requested'}:
                 move.state = 'staging'
         return move
+
+    def _get_move_quantity(self, shipment_type):
+        quantity = super()._get_move_quantity(shipment_type)
+        if self.supply_on_sale and not self.ready_for_supply:
+            quantity = 0
+        return quantity
 
     def _get_purchase_request_product_supplier_pattern(self):
         return {
             'company': self.sale.company.id,
             }
 
-    def get_purchase_request(self):
-        'Return purchase request for the sale line'
+    def get_purchase_request(self, product_quantities):
+        """Return purchase request for the sale line
+        depending on the product quantities"""
         pool = Pool()
         Uom = pool.get('product.uom')
         Request = pool.get('purchase.request')
 
         if (not self.supply_on_sale
                 or self.purchase_request
+                or not self.ready_for_supply
                 or not self.product.purchasable):
             return
 
-        # Ensure to create the request for the maximum paid
-        if self.sale.shipment_method == 'invoice':
-            invoice_skips = (set(self.sale.invoices_ignored)
-                | set(self.sale.invoices_recreated))
-            invoice_lines = [l for l in self.invoice_lines
-                if l.invoice not in invoice_skips]
-            if (not invoice_lines
-                    or any((not l.invoice) or l.invoice.state != 'paid'
-                        for l in invoice_lines)):
+        product = self.product
+        quantity = self._get_move_quantity('out')
+        if product.supply_on_sale == 'stock_first':
+            available_qty = product_quantities[product]
+            available_qty = Uom.compute_qty(
+                product.default_uom, available_qty, self.unit,
+                round=False)
+            if available_qty > 0:
+                product_quantities[product] -= Uom.compute_qty(
+                    self.unit, quantity, product.default_uom, round=False)
                 return
 
-        product = self.product
         supplier, purchase_date = Request.find_best_supplier(product,
             self.shipping_date,
             **self._get_purchase_request_product_supplier_pattern())
         uom = product.purchase_uom or product.default_uom
-        quantity = self._get_move_quantity('out')
         quantity = Uom.compute_qty(self.unit, quantity, uom)
         return Request(
             product=product,

@@ -451,8 +451,8 @@ class SaleLine(metaclass=PoolMeta):
             return None
         return move
 
-    def get_purchase_request(self):
-        request = super(SaleLine, self).get_purchase_request()
+    def get_purchase_request(self, product_quantities):
+        request = super().get_purchase_request(product_quantities)
         if (self.sale.advance_payment_eligible()
                 and self.sale.supply_blocked):
             return None

@@ -1,3 +1,4 @@
+* Add stock_first option to supply_on_sale
 * Change supply_on_sale into selection
 * Remove support for Python 3.7
 * Add support for Python 3.11

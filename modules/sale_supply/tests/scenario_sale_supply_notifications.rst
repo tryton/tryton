@@ -36,7 +36,7 @@ Create product::
     >>> product_template.default_uom = unit
     >>> product_template.purchasable = True
     >>> product_template.salable = True
-    >>> product_template.supply_on_sale = True
+    >>> product_template.supply_on_sale = 'always'
     >>> product_template.save()
     >>> product, = product_template.products
 
