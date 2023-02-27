@@ -1216,13 +1216,13 @@ class SaleLine(TaxableMixin, sequence_ordered(), ModelSQL, ModelView):
             'company': Eval('company', None),
             },
         search_context={
-            'locations': If(Bool(Eval('_parent_sale', {}).get('warehouse')),
-                [Eval('_parent_sale', {}).get('warehouse', 0)], []),
-            'stock_date_end': Eval('_parent_sale', {}).get('sale_date'),
+            'locations': If(Bool(Eval('warehouse')),
+                [Eval('warehouse', -1)], []),
+            'stock_date_end': Eval('sale_date', None),
             'stock_skip_warehouse': True,
-            'currency': Eval('_parent_sale', {}).get('currency'),
-            'customer': Eval('_parent_sale', {}).get('party'),
-            'sale_date': Eval('_parent_sale', {}).get('sale_date'),
+            'currency': Eval('currency', -1),
+            'customer': Eval('customer', -1),
+            'sale_date': Eval('sale_date', None),
             'uom': Eval('unit'),
             'taxes': Eval('taxes', []),
             'quantity': Eval('quantity'),
@@ -1265,9 +1265,9 @@ class SaleLine(TaxableMixin, sequence_ordered(), ModelSQL, ModelView):
             ('parent', '=', None),
             ['OR',
                 ('group', '=', None),
-                ('group.kind', 'in', ['sale', 'both'])],
-            ('company', '=',
-                Eval('_parent_sale', {}).get('company', -1)),
+                ('group.kind', 'in', ['sale', 'both']),
+                ],
+            ('company', '=', Eval('company', -1)),
             If(Eval('type') != 'line',
                 ('id', '=', None),
                 ()),
@@ -1296,8 +1296,9 @@ class SaleLine(TaxableMixin, sequence_ordered(), ModelSQL, ModelView):
     moves_progress = fields.Function(
         fields.Float("Moves Progress", digits=(1, 4)),
         'get_moves_progress')
-    warehouse = fields.Function(fields.Many2One('stock.location',
-            'Warehouse'), 'get_warehouse')
+    warehouse = fields.Function(fields.Many2One(
+            'stock.location', "Warehouse"),
+        'on_change_with_warehouse')
     from_location = fields.Function(fields.Many2One('stock.location',
             'From Location'), 'get_from_location')
     to_location = fields.Function(fields.Many2One('stock.location',
@@ -1543,8 +1544,10 @@ class SaleLine(TaxableMixin, sequence_ordered(), ModelSQL, ModelView):
             return amount
         return Decimal('0.0')
 
-    def get_warehouse(self, name):
-        return self.sale.warehouse.id if self.sale.warehouse else None
+    @fields.depends('sale', '_parent_sale.warehouse')
+    def on_change_with_warehouse(self, name=None):
+        if self.sale and self.sale.warehouse:
+            return self.sale.warehouse.id
 
     def get_from_location(self, name):
         if (self.quantity or 0) >= 0:

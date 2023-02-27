@@ -1132,16 +1132,13 @@ class Line(sequence_ordered(), ModelSQL, ModelView):
             'company': Eval('company', None),
             },
         search_context={
-            'locations': If(Bool(Eval('_parent_purchase', {}).get(
-                        'warehouse')),
-                [Eval('_parent_purchase', {}).get('warehouse', None)],
-                []),
-            'stock_date_end': Eval('_parent_purchase', {}).get(
-                'purchase_date'),
+            'locations': If(Bool(Eval('warehouse')),
+                [Eval('warehouse', -1)], []),
+            'stock_date_end': Eval('purchase_date', None),
             'stock_skip_warehouse': True,
-            'currency': Eval('_parent_purchase', {}).get('currency'),
-            'supplier': Eval('_parent_purchase', {}).get('party'),
-            'purchase_date': Eval('_parent_purchase', {}).get('purchase_date'),
+            'currency': Eval('currency', -1),
+            'supplier': Eval('supplier', -1),
+            'purchase_date': Eval('purchase_date', None),
             'uom': Eval('unit'),
             'taxes': Eval('taxes', []),
             'quantity': Eval('quantity'),
@@ -1163,7 +1160,7 @@ class Line(sequence_ordered(), ModelSQL, ModelView):
                     ('product', '=', Eval('product')),
                     ],
                 []),
-            ('party', '=', Eval('_parent_purchase', {}).get('party')),
+            ('party', '=', Eval('supplier', -1)),
             ],
         states={
             'invisible': Eval('type') != 'line',
@@ -1205,8 +1202,7 @@ class Line(sequence_ordered(), ModelSQL, ModelView):
                 ('group', '=', None),
                 ('group.kind', 'in', ['purchase', 'both']),
                 ],
-            ('company', '=',
-                Eval('_parent_purchase', {}).get('company', -1)),
+            ('company', '=', Eval('company', -1)),
             If(Eval('type') != 'line',
                 ('id', '=', None),
                 ()),
@@ -1234,6 +1230,9 @@ class Line(sequence_ordered(), ModelSQL, ModelView):
     moves_progress = fields.Function(
         fields.Float("Moves Progress", digits=(1, 4)),
         'get_moves_progress')
+    warehouse = fields.Function(fields.Many2One(
+            'stock.location', "Warehouse"),
+        'on_change_with_warehouse')
     from_location = fields.Function(fields.Many2One('stock.location',
             'From Location'), 'get_from_location')
     to_location = fields.Function(fields.Many2One('stock.location',
@@ -1523,6 +1522,11 @@ class Line(sequence_ordered(), ModelSQL, ModelView):
                     amount = Decimal('0.0')
             return amount
         return Decimal('0.0')
+
+    @fields.depends('purchase', '_parent_purchase.warehouse')
+    def on_change_with_warehouse(self, name=None):
+        if self.purchase and self.purchase.warehouse:
+            return self.purchase.warehouse.id
 
     def get_from_location(self, name):
         if (self.quantity or 0) >= 0:

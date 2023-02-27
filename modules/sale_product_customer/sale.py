@@ -22,7 +22,7 @@ class Line(metaclass=PoolMeta):
                     ('product', '=', Eval('product')),
                     ],
                 []),
-            ('party', '=', Eval('_parent_sale', {}).get('party')),
+            ('party', '=', Eval('customer', -1)),
             ],
         states={
             'invisible': Eval('type') != 'line',
