@@ -178,6 +178,8 @@ class Many2One(Widget):
             title=self.attrs.get('string'), rec_name=self.wid_text.get_text())
 
     def sig_edit(self, entry=None, icon_pos=None, *args):
+        if entry:
+            entry.grab_focus()
         model = self.get_model()
         if not model or not common.MODELACCESS[model]['read']:
             return

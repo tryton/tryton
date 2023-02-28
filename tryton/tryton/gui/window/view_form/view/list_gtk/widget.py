@@ -638,6 +638,7 @@ class M2O(GenericText):
                 editable.set_icon_tooltip_text(pos, tooltip)
 
         def icon_press(editable, icon_pos, event):
+            editable.grab_focus()
             value = field.get(record)
             if icon_pos == gtk.ENTRY_ICON_SECONDARY and value:
                 field.set_client(record, (None, ''))
