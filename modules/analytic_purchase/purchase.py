@@ -106,9 +106,14 @@ class AnalyticAccountEntry(metaclass=PoolMeta):
 
     @classmethod
     def search_company(cls, name, clause):
+        operator = clause[1]
+        if operator.startswith('!') or operator.startswith('not '):
+            bool_op = 'AND'
+        else:
+            bool_op = 'OR'
         domain = super(AnalyticAccountEntry, cls).search_company(name, clause)
-        return ['OR',
+        return [bool_op,
             domain,
-            (('origin.purchase.' + clause[0],) + tuple(clause[1:3])
-                + ('purchase.line',) + tuple(clause[3:])),
+            ('origin.purchase.' + clause[0],
+                *clause[1:3], 'purchase.line', *clause[3:]),
             ]

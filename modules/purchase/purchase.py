@@ -1534,9 +1534,14 @@ class PurchaseLine(sequence_ordered(), ModelSQL, ModelView):
 
     @classmethod
     def search_rec_name(cls, name, clause):
-        return ['OR',
-            ('purchase.rec_name',) + tuple(clause[1:]),
-            ('product.rec_name',) + tuple(clause[1:]),
+        _, operator, value = clause
+        if operator.startswith('!') or operator.startswith('not '):
+            bool_op = 'AND'
+        else:
+            bool_op = 'OR'
+        return [bool_op,
+            ('purchase.rec_name', *clause[1:]),
+            ('product.rec_name', *clause[1:]),
             ]
 
     @classmethod
