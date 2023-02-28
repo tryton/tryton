@@ -18,16 +18,48 @@ logger = logging.getLogger(__name__)
 _ = gettext.gettext
 
 
-def get_config_dir():
+def _reverse_series_iterator(starting_version):
+    major, minor = map(int, starting_version.split('.'))
+    while major >= 0 and minor >= 0:
+        yield f"{major}.{minor}"
+        if minor == 0:
+            major -= 1
+            minor = 8
+        else:
+            minor -= 2 if not minor % 2 else 1
+
+
+def copy_previous_configuration(config_element):
+    current_version = __version__.rsplit('.', 1)[0]
+    config_dir = get_config_root()
+    for version in _reverse_series_iterator(current_version):
+        config_path = os.path.join(config_dir, version, config_element)
+        if version == current_version and os.path.exists(config_path):
+            break
+        elif os.path.exists(config_path):
+            if os.path.isfile(config_path):
+                shutil.copy(config_path, get_config_dir())
+            elif os.path.isdir(config_path):
+                shutil.copytree(
+                    config_path,
+                    os.path.join(get_config_dir(), config_element))
+            break
+
+
+def get_config_root():
     if os.name == 'nt':
         appdata = os.environ['APPDATA']
         if not isinstance(appdata, str):
             appdata = str(appdata, sys.getfilesystemencoding())
-        return os.path.join(appdata, '.config', 'tryton',
-                __version__.rsplit('.', 1)[0])
-    config_path = os.getenv('XDG_CONFIG_HOME', os.path.join('~', '.config'))
-    return os.path.expanduser(
-        os.path.join(config_path, 'tryton', __version__.rsplit('.', 1)[0]))
+        config_path = os.path.join(appdata, '.config')
+    else:
+        config_path = os.path.expanduser(os.getenv(
+            'XDG_CONFIG_HOME', os.path.join('~', '.config')))
+    return os.path.join(config_path, 'tryton')
+
+
+def get_config_dir():
+    return os.path.join(get_config_root(), __version__.rsplit('.', 1)[0])
 
 
 if not os.path.isdir(get_config_dir()):
