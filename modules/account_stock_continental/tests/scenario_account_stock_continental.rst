@@ -284,7 +284,7 @@ Create Drop Shipment Move::
     >>> product_supplier.drop_shipment = True
     >>> product_supplier.lead_time = dt.timedelta(0)
     >>> product_supplier.save()
-    >>> product.template.supply_on_sale = True
+    >>> product.template.supply_on_sale = 'always'
     >>> product.template.save()
 
     >>> sale = Sale()
@@ -337,7 +337,7 @@ Create Drop Shipment Move::
     >>> product_supplier.drop_shipment = True
     >>> product_supplier.lead_time = dt.timedelta(0)
     >>> product_supplier.save()
-    >>> product_average.template.supply_on_sale = True
+    >>> product_average.template.supply_on_sale = 'always'
     >>> product_average.template.save()
 
     >>> sale = Sale()

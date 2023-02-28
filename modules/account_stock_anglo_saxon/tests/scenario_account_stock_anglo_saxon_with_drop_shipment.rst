@@ -133,7 +133,7 @@ Create product::
     >>> template.list_price = Decimal('10')
     >>> template.cost_price_method = 'fixed'
     >>> template.lead_time = dt.timedelta(0)
-    >>> template.supply_on_sale = True
+    >>> template.supply_on_sale = 'always'
     >>> template.account_category = account_category
     >>> product, = template.products
     >>> product.cost_price = Decimal('5')
