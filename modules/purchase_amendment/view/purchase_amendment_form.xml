@@ -3,10 +3,10 @@
 this repository contains the full copyright notices and license terms. -->
 <form>
     <label name="purchase"/>
-    <field name="purchase" colspan="3"/>
+    <field name="purchase"/>
     <label name="date"/>
     <field name="date"/>
-    <newline/>
+
     <label name="description"/>
     <field name="description" colspan="3"/>
     <field name="lines" colspan="4"/>
