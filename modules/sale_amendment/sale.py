@@ -61,7 +61,9 @@ class Amendment(Workflow, ModelSQL, ModelView):
     lines = fields.One2Many(
         'sale.amendment.line', 'amendment', "Lines",
         states={
-            'readonly': Eval('state') != 'draft',
+            'readonly': (
+                (Eval('state') != 'draft')
+                | ~Eval('sale')),
             })
 
     @classmethod
