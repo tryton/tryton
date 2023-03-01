@@ -24,12 +24,14 @@
             }
             return added;
         },
-        execute: function(method, params, context={}, async=true) {
+        execute: function(
+                method, params, context={}, async=true,
+                process_exception=true) {
             var args = {
                 'method': 'model.' + this.name + '.' + method,
                 'params': params.concat(context)
             };
-            return Sao.rpc(args, this.session, async);
+            return Sao.rpc(args, this.session, async, process_exception);
         },
         copy: function(records, context) {
             if (jQuery.isEmptyObject(records)) {
@@ -609,7 +611,7 @@
         is_loaded: function(name) {
             return ((this.id < 0) || (name in this._loaded));
         },
-        load: function(name, async=true) {
+        load: function(name, async=true, process_exception=true) {
             var fname;
             var prm;
             if (this.destroyed || this.is_loaded(name)) {
@@ -748,7 +750,7 @@
             }
             var result = this.model.execute('read', [
                 Object.keys(id2record).map( e => parseInt(e, 10)),
-                fnames_to_fetch], context, async);
+                fnames_to_fetch], context, async, process_exception);
             const succeed = (values, exception=false) => {
                 var id2value = {};
                 for (const e of values) {

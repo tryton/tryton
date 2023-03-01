@@ -44,6 +44,11 @@ class Record:
         self.destroyed = False
 
     def __getitem__(self, name):
+        self.load(name)
+        if name != '*':
+            return self.group.fields[name]
+
+    def load(self, name, process_exception=True):
         if not self.destroyed and self.id >= 0 and name not in self._loaded:
             id2record = {
                 self.id: self,
@@ -130,7 +135,8 @@ class Record:
             exception = False
             try:
                 values = RPCExecute('model', self.model_name, 'read',
-                    list(id2record.keys()), fnames, context=ctx)
+                    list(id2record.keys()), fnames, context=ctx,
+                    process_exception=process_exception)
             except RPCException:
                 values = [{'id': x} for x in id2record]
                 default_values = dict((f, None) for f in fnames)
@@ -146,8 +152,6 @@ class Record:
                     for key in record.modified_fields:
                         value.pop(key, None)
                     record.set(value, modified=False)
-        if name != '*':
-            return self.group.fields[name]
 
     def __repr__(self):
         return '<Record %s@%s at %s>' % (self.id, self.model_name, id(self))

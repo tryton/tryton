@@ -788,7 +788,7 @@
                     'method': 'model.' + this.attributes.relation +
                         '.search_read',
                     'params': [domain, 0, null, null, fields, context]
-                }, record.model.session);
+                }, record.model.session, true, false);
                 prm.done(result => {
                     var selection = [];
                     for (const x of result) {

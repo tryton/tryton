@@ -2,6 +2,7 @@
 # this repository contains the full copyright notices and license terms.
 import datetime
 import gettext
+import logging
 import os
 import webbrowser
 from functools import partial, wraps
@@ -31,6 +32,7 @@ from tryton.gui.window.win_form import WinForm
 from tryton.gui.window.win_search import WinSearch
 
 _ = gettext.gettext
+logger = logging.getLogger(__name__)
 
 COLORS = {n: v for n, v in zip(
         ['muted', 'success', 'warning', 'danger'],
@@ -48,6 +50,23 @@ def send_keys(renderer, editable, position, treeview):
             if combobox.get_active_iter():
                 treeview.on_editing_done(combobox, renderer)
         editable.connect('changed', changed)
+
+
+def catch_errors(error_value=_('#ERROR')):
+    def decorator(func):
+        @wraps(func)
+        def wrapper(self, record):
+            if record.exception:
+                return error_value
+            try:
+                return func(self, record)
+            except Exception:
+                logger.error(
+                    f"Error calling {func.__name__} for {self} with {record}",
+                    exc_info=True)
+                return error_value
+        return wrapper
+    return decorator
 
 
 def realized(func):
@@ -143,7 +162,7 @@ class Cell(object):
         if not store:
             store = self.view.treeview.get_model()
         record = store.get_value(iter_, 0)
-        field = record[self.attrs['name']]
+        field = record.group.fields[self.attrs['name']]
         return record, field
 
     def _set_visual(self, cell, record):
@@ -330,9 +349,9 @@ class GenericText(Cell):
             callback=None):
         raise NotImplementedError
 
+    @catch_errors()
     def get_textual_value(self, record):
-        if not record:
-            return ''
+        record.load(self.attrs['name'], process_exception=False)
         return record[self.attrs['name']].get_client(record)
 
     def value_from_text(self, record, text, callback=None):
@@ -396,9 +415,9 @@ class Int(GenericText):
             return [self.renderer_suffix]
         return []
 
+    @catch_errors()
     def get_textual_value(self, record):
-        if not record:
-            return ''
+        record.load(self.attrs['name'], process_exception=False)
         return record[self.attrs['name']].get_client(
             record, factor=self.factor, grouping=self.grouping)
 
@@ -464,9 +483,9 @@ class Date(GenericText):
         else:
             return '%x'
 
+    @catch_errors()
     def get_textual_value(self, record):
-        if not record:
-            return ''
+        record.load(self.attrs['name'], process_exception=False)
         value = record[self.attrs['name']].get_client(record)
         if value:
             return value.strftime(self.renderer.props.format)
@@ -487,9 +506,9 @@ class Time(Date):
         else:
             return '%X'
 
+    @catch_errors()
     def get_textual_value(self, record):
-        if not record:
-            return ''
+        record.load(self.attrs['name'], process_exception=False)
         value = record[self.attrs['name']].get_client(record)
         if value is not None:
             if isinstance(value, datetime.datetime):
@@ -549,7 +568,9 @@ class Binary(GenericText):
     def suffixes(self):
         return [self.renderer_save, self.renderer_select]
 
+    @catch_errors()
     def get_textual_value(self, record):
+        record.load(self.attrs['name'], process_exception=False)
         field = record[self.attrs['name']]
         if hasattr(field, 'get_size'):
             size = field.get_size(record)
@@ -604,6 +625,11 @@ class _BinaryIcon(Cell):
     def view(self):
         return self.binary.view
 
+    @catch_errors(False)
+    def _fetch_data(self, record):
+        record.fetch(self.attrs['name'], process_exception=False)
+        return True
+
 
 class _BinarySave(_BinaryIcon):
     icon_name = 'tryton-save'
@@ -631,6 +657,9 @@ class _BinarySave(_BinaryIcon):
     @CellCache.cache
     def setter(self, column, cell, store, iter_, user_data=None):
         record, field = self._get_record_field_from_iter(iter_, store)
+        if not self._fetch_data(record):
+            cell.set_property('visible', False)
+            return
         if hasattr(field, 'get_size'):
             size = field.get_size(record)
         else:
@@ -671,6 +700,9 @@ class _BinarySelect(_BinaryIcon):
     @CellCache.cache
     def setter(self, column, cell, store, iter_, user_data=None):
         record, field = self._get_record_field_from_iter(iter_, store)
+        if not self._fetch_data(record):
+            cell.set_property('visible', False)
+            return
         if hasattr(field, 'get_size'):
             size = field.get_size(record)
         else:
@@ -710,6 +742,9 @@ class _BinaryOpen(_BinarySave):
     def setter(self, column, cell, store, iter_, user_data=None):
         super().setter(column, cell, store, iter_)
         record, field = self._get_record_field_from_iter(iter_, store)
+        if not self._fetch_data(record):
+            cell.set_property('visible', False)
+            return
         filename_field = record.group.fields.get(self.attrs.get('filename'))
         filename = filename_field.get(record)
         if not filename:
@@ -731,22 +766,33 @@ class Image(GenericText):
     @CellCache.cache
     def setter(self, column, cell, store, iter_, user_data=None):
         record, field = self._get_record_field_from_iter(iter_, store)
-        value = field.get_client(record)
-        if isinstance(value, int):
-            if value > CONFIG['image.max_size']:
-                value = None
-            else:
-                value = field.get_data(record)
+        value = self._get_data(record)
+        if value is None:
+            cell.set_property('pixbuf', None)
+            return
         pixbuf = data2pixbuf(value)
         if pixbuf:
             pixbuf = common.resize_pixbuf(pixbuf, self.width, self.height)
         cell.set_property('pixbuf', pixbuf)
         self._set_visual(cell, record)
 
+    @catch_errors(None)
+    def _get_data(self, record):
+        record.load(self.attrs['name'], process_exception=False)
+        field = record[self.attrs['name']]
+        value = field.get_client(record)
+        if isinstance(value, int):
+            if value > CONFIG['image.max_size']:
+                value = None
+            else:
+                value = field.get_data(record)
+        return value
+
+    @catch_errors()
     def get_textual_value(self, record):
-        if not record:
-            return ''
-        return str(record[self.attrs['name']].get_size(record))
+        record.load(self.attrs['name'], process_exception=False)
+        field = record[self.attrs['name']]
+        return str(field.get_size(record))
 
 
 class M2O(GenericText):
@@ -974,9 +1020,11 @@ class O2O(M2O):
 class O2M(GenericText):
     align = 0.5
 
+    @catch_errors()
     def get_textual_value(self, record):
-        return '( ' + str(len(record[self.attrs['name']]
-                .get_eval(record))) + ' )'
+        record.load(self.attrs['name'], process_exception=False)
+        field = record[self.attrs['name']]
+        return '( ' + str(len(field.get_eval(record))) + ' )'
 
     def value_from_text(self, record, text, callback=None):
         if callback:
@@ -1056,13 +1104,16 @@ class Selection(GenericText, SelectionMixin, PopdownMixin):
     def get_value(self, record, field):
         return field.get(record)
 
+    @catch_errors()
     def get_textual_value(self, record):
         related = self.attrs['name'] + ':string'
+        record.load(related, process_exception=False)
         if not self.view.editable and related in record.value:
             return record.value[related]
 
+        record.load(self.attrs['name'], process_exception=False)
         field = record[self.attrs['name']]
-        self.update_selection(record, field)
+        self.update_selection(record, field, process_exception=False)
         value = self.get_value(record, field)
         text = dict(self.selection).get(value, '')
         if value and not text:
@@ -1138,13 +1189,16 @@ class MultiSelection(GenericText, SelectionMixin):
         if callback:
             callback()
 
+    @catch_errors()
     def get_textual_value(self, record):
         related = self.attrs['name'] + ':string'
+        record.load(related, process_exception=False)
         if not self.view.editable and related in record.value:
             return ";".join(record.value[related])
 
+        record.load(self.attrs['name'], process_exception=False)
         field = record[self.attrs['name']]
-        self.update_selection(record, field)
+        self.update_selection(record, field, process_exception=False)
         selection = dict(self.selection)
         values = []
         for value in field.get_eval(record):
@@ -1191,6 +1245,7 @@ class Reference(M2O):
         _, value = value.split(',')
         return int(value)
 
+    @catch_errors()
     def get_textual_value(self, record):
         value = super().get_textual_value(record)
         if value:
@@ -1232,8 +1287,11 @@ class Dict(GenericText):
         super().setter(column, cell, store, iter_, user_data=None)
         cell.props.editable = False
 
+    @catch_errors()
     def get_textual_value(self, record):
-        return '(%s)' % len(record[self.attrs['name']].get_client(record))
+        record.load(self.attrs['name'], process_exception=False)
+        field = record[self.attrs['name']]
+        return '(%s)' % len(field.get_client(record))
 
 
 class ProgressBar(Cell):
@@ -1275,8 +1333,11 @@ class ProgressBar(Cell):
             callback=None):
         raise NotImplementedError
 
+    @catch_errors()
     def get_textual_value(self, record):
-        return record[self.attrs['name']].get_client(record, factor=100) or ''
+        record.load(self.attrs['name'], process_exception=False)
+        field = record[self.attrs['name']]
+        return field.get_client(record, factor=100) or ''
 
     def value_from_text(self, record, text, callback=None):
         field = record[self.attrs['name']]

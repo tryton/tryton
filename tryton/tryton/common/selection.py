@@ -73,7 +73,7 @@ class SelectionMixin(object):
             try:
                 result = RPCExecute('model', self.attrs['relation'],
                     'search_read', domain, 0, None, None, fields,
-                    context=context)
+                    context=context, process_exception=False)
             except RPCException:
                 result = False
             if isinstance(result, list):

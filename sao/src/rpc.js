@@ -3,7 +3,7 @@
 (function() {
     'use strict';
 
-    Sao.rpc = function(args, session=null, async=true) {
+    Sao.rpc = function(args, session=null, async=true, process_exception=true) {
         var dfd = jQuery.Deferred(),
             result;
         if (!session) {
@@ -32,7 +32,10 @@
                 Sao.common.warning.run('',
                         Sao.i18n.gettext('Unable to reach the server.'))
                     .always(dfd.reject);
-            } else if (data.error) {
+            } else if (data.error && !process_exception) {
+                console.debug(`RPC error calling ${args}: ${data.error[0]}: ${data.error[1]}.`);
+                dfd.reject();
+            } else if (data.error && process_exception) {
                 var name, msg, description;
                 if (data.error[0] == 'UserWarning') {
                     name = data.error[1][0];

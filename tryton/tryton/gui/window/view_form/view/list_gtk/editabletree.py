@@ -1,6 +1,7 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 import gettext
+import logging
 from itertools import chain, cycle, islice
 
 from gi.repository import Gdk, GLib, Gtk
@@ -9,6 +10,7 @@ from tryton.common import MODELACCESS
 from tryton.common.datetime_ import Date, Time
 
 _ = gettext.gettext
+logger = logging.getLogger(__name__)
 
 
 def focusable_cells(column, editable=True):
@@ -51,7 +53,14 @@ class TreeView(Gtk.TreeView):
             if not column.name:
                 continue
             widget = self.view.get_column_widget(column)
-            field = record[column.name]
+            try:
+                record.load(column.name, process_exception=False)
+            except Exception:
+                logger.error(
+                    f"Error loading '{column.name}' for {record}",
+                    exc_info=True)
+                return (None, None)
+            field = record.group.fields[column.name]
             field.state_set(record, states=('readonly', 'invisible'))
             invisible = field.get_state_attrs(record).get('invisible', False)
             if not column.get_visible():
@@ -83,7 +92,8 @@ class EditableTreeView(TreeView):
 
     def on_quit_cell(
             self, current_record, column, renderer, value, callback=None):
-        field = current_record[column.name]
+        current_record.load(column.name, process_exception=False)
+        field = current_record.group.fields[column.name]
         widget = self.view.get_column_widget(column)
 
         # The value has not changed and is valid ... do nothing.
@@ -271,7 +281,7 @@ class EditableTreeView(TreeView):
                 create=(event.keyval == Gdk.KEY_F3), value=value,
                 callback=callback)
         else:
-            field = record[column.name]
+            field = record.group.fields[column.name]
             if isinstance(entry, Gtk.Entry):
                 entry.set_max_length(int(field.attrs.get('size', 0)))
             record.modified_fields.setdefault(column.name)

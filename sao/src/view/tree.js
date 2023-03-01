@@ -1389,7 +1389,7 @@
                 if (field_name && !record.is_loaded(field_name)) {
                     // Prefetch the first field to prevent promises in
                     // Cell.render
-                    record.load(field_name).done(redraw);
+                    record.load(field_name, true, false).done(redraw);
                     return;
                 } else {
                     row.redraw(selected, expanded);
@@ -1686,7 +1686,8 @@
                     }
                 };
                 if (!this.record.is_loaded(this.children_field)) {
-                    this.record.load(this.children_field).done(update_expander);
+                    this.record.load(this.children_field, true, false)
+                        .done(update_expander);
                 } else {
                     update_expander();
                 }
@@ -1761,7 +1762,8 @@
             this.rows = [];
         },
         expand_children: function(selected, expanded) {
-            return this.record.load(this.children_field).done(() => {
+            return this.record.load(
+            this.children_field, true, false).done(() => {
                 if (this.rows.length === 0) {
                     var children = this.record.field_get_client(
                         this.children_field);
@@ -1957,7 +1959,8 @@
                 if (widget) {
                     var callback = display_callback(widget);
                     if (!this.record.is_loaded(column.attributes.name)) {
-                        this.record.load(column.attributes.name).done(callback);
+                        this.record.load(column.attributes.name, true, false)
+                            .done(callback);
                     } else {
                         callback();
                     }
@@ -2304,7 +2307,7 @@
                 }
             };
             if (!record.is_loaded(this.attributes.name)) {
-                record.load(this.attributes.name).done(render);
+                record.load(this.attributes.name, true, false).done(render);
             } else {
                 render();
             }
@@ -2353,7 +2356,7 @@
                 }
             };
             if (!record.is_loaded(this.attributes.name)) {
-                record.load(this.attributes.name).done(render);
+                record.load(this.attributes.name, true, false).done(render);
             } else {
                 render();
             }
@@ -2405,10 +2408,21 @@
                     cell.show();
                 }
             };
+            const render_error = () => {
+                var text = Sao.i18n.gettext('#ERROR');
+                cell.text(text).attr('title', text);
+            };
+
             if (!record.is_loaded(this.attributes.name)) {
-                record.load(this.attributes.name).done(render);
+                record.load(this.attributes.name, true, false)
+                    .done(render)
+                    .fail(render_error);
             } else {
-                render();
+                if (record.exception) {
+                    render_error();
+                } else {
+                    render();
+                }
             }
             return cell;
         },
@@ -2832,10 +2846,19 @@
                     set_src(null);
                 }
             };
+            const render_error = () => {
+                cell.attr('src', null);
+            };
             if (!record.is_loaded(this.attributes.name)) {
-                record.load(this.attributes.name).done(render);
+                record.load(this.attributes.name, true, false)
+                    .done(render)
+                    .fail(render_error);
             } else {
-                render();
+                if (render.exception) {
+                    render_error();
+                } else {
+                    render();
+                }
             }
             return cell;
         }
