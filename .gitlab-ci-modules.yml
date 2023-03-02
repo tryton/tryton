@@ -857,6 +857,28 @@ test-modules-account_statement_coda-postgresql:
     PACKAGE: modules/account_statement_coda
     TAG_PATTERN: '/^account_statement_coda-.*/'
 
+check-doc-modules-account_statement_mt940:
+  extends: .check-doc
+  variables:
+    PACKAGE: modules/account_statement_mt940
+
+trigger-doc-build-modules-account_statement_mt940:
+  extends: .trigger-doc-build
+  variables:
+    PACKAGE: modules/account_statement_mt940
+
+test-modules-account_statement_mt940-sqlite:
+  extends: .test-sqlite
+  variables:
+    PACKAGE: modules/account_statement_mt940
+    TAG_PATTERN: '/^account_statement_mt940-.*/'
+
+test-modules-account_statement_mt940-postgresql:
+  extends: .test-postgresql
+  variables:
+    PACKAGE: modules/account_statement_mt940
+    TAG_PATTERN: '/^account_statement_mt940-.*/'
+
 check-doc-modules-account_statement_ofx:
   extends: .check-doc
   variables:

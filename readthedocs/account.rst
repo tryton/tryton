@@ -122,6 +122,9 @@ Accounting
 `Statement CODA </projects/modules-account-statement-coda/en/latest>`_
     Imports statements in CODA format.
 
+`Statement MT940 </projects/modules-account-statement-mt940/en/latest>`_
+    Imports statement in MT940 format.
+
 `Statement OFX </projects/modules-account-statement-ofx/en/latest>`_
     Imports statements in OFX format.
 
