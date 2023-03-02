@@ -13,7 +13,8 @@ from trytond.model.exceptions import (
     ForeignKeyError, RequiredValidationError, SQLConstraintError)
 from trytond.model.modelsql import split_subquery_domain
 from trytond.pool import Pool
-from trytond.tests.test_tryton import activate_module, with_transaction
+from trytond.tests.test_tryton import (
+    CONTEXT, DB_NAME, USER, activate_module, with_transaction)
 from trytond.transaction import Transaction, TransactionError
 
 
@@ -364,6 +365,48 @@ class ModelSQLTestCase(unittest.TestCase):
         transaction.commit()
         ModelsqlTimestamp.delete([record])
         transaction.commit()
+
+    @with_transaction()
+    def test_create_many_records(self):
+        "Test create many records"
+        pool = Pool()
+        Model = pool.get('test.modelsql.create')
+
+        # The order of the keys shouldn't matter
+        foo, bar, baz = Model.create([{
+                    'char': "Foo",
+                    'integer': 2
+                    }, {
+                    'integer': 4,
+                    'char': "Bar"
+                    }, {
+                    'char': "Baz"
+                    }])
+
+        self.assertEqual(foo.char, "Foo")
+        self.assertEqual(foo.integer, 2)
+        self.assertEqual(bar.char, "Bar")
+        self.assertEqual(bar.integer, 4)
+        self.assertEqual(baz.char, "Baz")
+        self.assertEqual(baz.integer, None)
+
+    def test_create_no_returning(self):
+        with patch.object(backend.Database, 'has_returning') as returning:
+            returning.return_value = False
+            with Transaction().start(DB_NAME, USER, context=CONTEXT):
+                pool = Pool()
+                Model = pool.get('test.modelsql.create')
+
+                m1, m2 = Model.create([{
+                            'char': "Value 1",
+                            }, {
+                            'char': "Value 2",
+                            }])
+
+                self.assertTrue(m1.id)
+                self.assertEqual(m1.char, "Value 1")
+                self.assertTrue(m2.id)
+                self.assertEqual(m2.char, "Value 2")
 
     @with_transaction()
     def test_create_field_set(self):

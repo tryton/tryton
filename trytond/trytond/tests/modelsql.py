@@ -48,6 +48,14 @@ class ModelSQLTimestamp(ModelSQL):
     __name__ = 'test.modelsql.timestamp'
 
 
+class ModelSQLCreate(ModelSQL):
+    "Model to test creation"
+    __name__ = 'test.modelsql.create'
+
+    char = fields.Char("Char")
+    integer = fields.Integer("Integer")
+
+
 class ModelSQLFieldSet(ModelSQL):
     'Model to test field set'
     __name__ = 'test.modelsql.field_set'
@@ -228,6 +236,7 @@ def register(module):
         ModelSQLReadContextID,
         ModelSQLRequiredField,
         ModelSQLTimestamp,
+        ModelSQLCreate,
         ModelSQLFieldSet,
         ModelSQLOne2Many,
         ModelSQLOne2ManyTarget,

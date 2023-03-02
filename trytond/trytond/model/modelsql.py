@@ -758,6 +758,53 @@ class ModelSQL(ModelStorage):
         missing_defaults = {}  # Store missing default values by schema
         new_ids = []
         vlist = [v.copy() for v in vlist]
+
+        def db_insert(columns, vlist, fields):
+            if (transaction.database.has_multirow_insert()
+                    and transaction.database.has_returning()):
+                vlist = (s for s in grouped_slice(vlist))
+            else:
+                vlist = ([v] for v in vlist)
+
+            for values in vlist:
+                values = list(values)
+                try:
+                    if transaction.database.has_returning():
+                        cursor.execute(*table.insert(
+                                columns, values, [table.id]))
+                        yield from (r[0] for r in cursor)
+                    else:
+                        id_new = transaction.database.nextid(
+                            transaction.connection, cls._table)
+                        if id_new:
+                            if 'id' not in {c.name for c in columns}:
+                                columns.append(table.id)
+                            values[0].append(id_new)
+                            cursor.execute(*table.insert(columns, values))
+                        else:
+                            cursor.execute(*table.insert(columns, values))
+                            id_new = transaction.database.lastid(cursor)
+                        yield id_new
+                except (
+                        backend.DatabaseIntegrityError,
+                        backend.DatabaseDataError
+                        ) as exception:
+                    if isinstance(exception, backend.DatabaseIntegrityError):
+                        raise_func = cls.__raise_integrity_error
+                    elif isinstance(exception, backend.DatabaseDataError):
+                        raise_func = cls.__raise_data_error
+                    with transaction.new_transaction():
+                        for value in values:
+                            skip = len(['create_uid', 'create_date'])
+                            recomposed = dict(zip(fields, value[skip:]))
+                            raise_func(
+                                exception, recomposed, transaction=transaction)
+                    raise
+
+        to_insert = []
+        previous_columns = [table.create_uid, table.create_date]
+        previous_column_names = set()
+
         for values in vlist:
             # Clean values
             for key in ('create_uid', 'create_date',
@@ -791,46 +838,31 @@ class ModelSQL(ModelStorage):
                     defaults_cache.update(default_values)
             values.update(missing_defaults[values_schema])
 
-            insert_columns = [table.create_uid, table.create_date]
-            insert_values = [transaction.user, CurrentTimestamp()]
+            current_column_names = set()
+            current_columns = [table.create_uid, table.create_date]
+            current_values = [transaction.user, CurrentTimestamp()]
 
             # Insert record
-            for fname, value in values.items():
+            for fname, value in sorted(values.items()):
                 field = cls._fields[fname]
                 if not hasattr(field, 'set'):
-                    insert_columns.append(Column(table, fname))
-                    insert_values.append(field.sql_format(value))
+                    current_columns.append(Column(table, fname))
+                    current_values.append(field.sql_format(value))
+                    current_column_names.add(fname)
 
-            try:
-                if transaction.database.has_returning():
-                    cursor.execute(*table.insert(insert_columns,
-                            [insert_values], [table.id]))
-                    id_new, = cursor.fetchone()
-                else:
-                    id_new = transaction.database.nextid(
-                        transaction.connection, cls._table)
-                    if id_new:
-                        insert_columns.append(table.id)
-                        insert_values.append(id_new)
-                        cursor.execute(*table.insert(insert_columns,
-                                [insert_values]))
-                    else:
-                        cursor.execute(*table.insert(insert_columns,
-                                [insert_values]))
-                        id_new = transaction.database.lastid(cursor)
-                new_ids.append(id_new)
-            except (
-                    backend.DatabaseIntegrityError,
-                    backend.DatabaseDataError) as exception:
-                transaction = Transaction()
-                with Transaction().new_transaction():
-                    if isinstance(exception, backend.DatabaseIntegrityError):
-                        cls.__raise_integrity_error(
-                            exception, values, transaction=transaction)
-                    elif isinstance(exception, backend.DatabaseDataError):
-                        cls.__raise_data_error(
-                            exception, values, transaction=transaction)
-                raise
+            if current_column_names != previous_column_names:
+                if to_insert:
+                    new_ids.extend(db_insert(
+                            previous_columns, to_insert,
+                            previous_column_names))
+                    to_insert.clear()
+                previous_columns = current_columns
+                previous_column_names = current_column_names
+            to_insert.append(current_values)
+        else:
+            if to_insert:
+                new_ids.extend(db_insert(
+                        current_columns, to_insert, current_column_names))
 
         transaction.create_records[cls.__name__].update(new_ids)
 
