@@ -3,8 +3,9 @@ set -eu
 
 OUTPUTDIR=`realpath "${1}"`
 mkdir -p "${OUTPUTDIR}"
+export DOC_BASE_URL=$OUTPUTDIR
 
-find . -name 'cookiecutter*' -prune -o -path '*/doc/conf.py' -print | while read path; do
+(find . -name 'cookiecutter*' -prune -o -path '*/doc/conf.py' -print | while read path; do
     path=`dirname "${path}"`
     path=`dirname "${path}"`
     package=`basename "${path}"`
@@ -20,5 +21,5 @@ find . -name 'cookiecutter*' -prune -o -path '*/doc/conf.py' -print | while read
     else
         package="modules-${package}"
     fi
-    (cd "${path}" && python -m sphinx -T -E -b html doc "${OUTPUTDIR}/${package}")
-done
+    echo "${path}/doc" "${OUTPUTDIR}/${package}"
+done) | xargs --max-args=2 --max-procs=$(( `nproc` * 2)) python -m sphinx -Q -T -E -b html
