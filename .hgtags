@@ -8932,3 +8932,4 @@ e9d4292467608d8330d7e8dd8fa8207ddb00a73a product_cost_history-6.4.2
 f3e552a11e65ca78adeb4be46d1e4e2321b79f96 commission-6.4.2
 20f915423230cc2c017b04e911e94ace05bc39df analytic_sale-6.4.2
 8136ef0fa2dceb7bfb8a4e85531283994d539533 analytic_purchase-6.4.2
+a92d53e06f88c4dc0807a34d693a4b33e804ba10 account_payment_stripe-6.4.4
