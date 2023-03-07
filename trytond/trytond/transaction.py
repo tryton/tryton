@@ -2,9 +2,10 @@
 # this repository contains the full copyright notices and license terms.
 import logging
 import time
-from collections import defaultdict
+from collections import defaultdict, deque
 from functools import wraps
 from threading import local
+from weakref import WeakValueDictionary
 
 from sql import Flavor
 
@@ -105,8 +106,6 @@ class Transaction(object):
     cache_keys = {'language', 'fuzzy_translation', '_datetime'}
 
     def __new__(cls, new=False):
-        from trytond.cache import LRUDict
-        from trytond.pool import Pool
         transactions = cls._local.transactions
         if new or not transactions:
             instance = super(Transaction, cls).__new__(cls)
@@ -122,14 +121,8 @@ class Transaction(object):
             instance.check_warnings = None
             instance.timestamp = None
             instance.started_at = None
-            instance.cache = LRUDict(
-                _cache_transaction,
-                lambda: LRUDict(
-                    _cache_model,
-                    lambda name: LRUDict(
-                        record_cache_size(instance),
-                        Pool().get(name)._record),
-                    default_factory_with_key=True))
+            instance.cache = WeakValueDictionary()
+            instance._cache_deque = deque(maxlen=_cache_transaction)
             instance._atexit = []
             transactions.append(instance)
         else:
@@ -148,10 +141,21 @@ class Transaction(object):
         return self._local.tasks
 
     def get_cache(self):
+        from trytond.cache import LRUDict
+        from trytond.pool import Pool
         keys = tuple(((key, self.context[key])
                 for key in sorted(self.cache_keys)
                 if key in self.context))
-        return self.cache[(self.user, keys)]
+        cache = self.cache.setdefault(
+            (self.user, keys), LRUDict(
+                _cache_model,
+                lambda name: LRUDict(
+                    record_cache_size(self),
+                    Pool().get(name)._record),
+                default_factory_with_key=True))
+        # Keep last used cache references to allow to pre-fill them
+        self._cache_deque.append(cache)
+        return cache
 
     def start(self, database_name, user, readonly=False, context=None,
             close=False, autocommit=False, **extras):
