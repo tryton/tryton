@@ -11,8 +11,8 @@ SERVER_URLS = {
     'production': 'https://public-ws.dpd.com/services/',
     }
 
-LOGIN_SERVICE = 'LoginService/V2_0?wsdl'
-SHIPMENT_SERVICE = 'ShipmentService/V3_2?wsdl'
+LOGIN_SERVICE = 'LoginService/V2_0/?wsdl'
+SHIPMENT_SERVICE = 'ShipmentService/V3_2/?wsdl'
 
 
 def get_client(server, service):
