@@ -101,7 +101,8 @@
             });
         },
         clear: function() {
-            var kinds = this.el.children().each((i, el) => el.data('kind'));
+            var kinds = this.el.children().each(
+                (i, el) => jQuery(el).data('kind'));
             new Set(kinds).forEach(kind => {
                 this.refresh(kind);
             });
