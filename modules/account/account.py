@@ -244,7 +244,8 @@ class Type(
             ('company', '=', Eval('company', -1)),
             ])
     currency = fields.Function(fields.Many2One(
-        'currency.currency', 'Currency'), 'get_currency')
+        'currency.currency', "Currency"),
+        'get_currency', searcher='search_currency')
     amount = fields.Function(Monetary(
             "Amount", currency='currency', digits='currency'),
         'get_amount')
@@ -296,6 +297,10 @@ class Type(
 
     def get_currency(self, name):
         return self.company.currency.id
+
+    @classmethod
+    def search_currency(cls, name, clause):
+        return [('company.' + clause[0], *clause[1:])]
 
     @classmethod
     def get_amount(cls, types, name):
@@ -853,8 +858,9 @@ class Account(
         }
     company = fields.Many2One('company.company', 'Company', required=True,
             ondelete="RESTRICT")
-    currency = fields.Function(fields.Many2One('currency.currency',
-        'Currency'), 'get_currency')
+    currency = fields.Function(fields.Many2One(
+            'currency.currency', "Currency"),
+        'get_currency', searcher='search_currency')
     second_currency = fields.Many2One('currency.currency',
         'Secondary Currency', help='Force all moves for this account \n'
         'to have this secondary currency.', ondelete="RESTRICT",
@@ -1017,6 +1023,10 @@ class Account(
 
     def get_currency(self, name):
         return self.company.currency.id
+
+    @classmethod
+    def search_currency(cls, name, clause):
+        return [('company.' + clause[0], *clause[1:])]
 
     @classmethod
     def get_balance(cls, accounts, name):
@@ -1477,7 +1487,8 @@ class AccountParty(ActivePeriodMixin, ModelSQL):
         'currency.currency', "Secondary Currency")
 
     currency = fields.Function(fields.Many2One(
-            'currency.currency', "Currency"), 'get_currency')
+            'currency.currency', "Currency"),
+        'get_currency', searcher='search_currency')
 
     @classmethod
     def table_query(cls):
@@ -1641,6 +1652,10 @@ class AccountParty(ActivePeriodMixin, ModelSQL):
     def get_currency(self, name):
         return self.company.currency.id
 
+    @classmethod
+    def search_currency(cls, name, clause):
+        return [('company.' + clause[0], *clause[1:])]
+
 
 class AccountDeferral(ModelSQL, ModelView):
     '''
@@ -1660,7 +1675,8 @@ class AccountDeferral(ModelSQL, ModelView):
             "Balance", currency='currency', digits='currency'),
         'get_balance')
     currency = fields.Function(fields.Many2One(
-            'currency.currency', "Currency"), 'get_currency')
+            'currency.currency', "Currency"),
+        'get_currency', searcher='search_currency')
     amount_second_currency = Monetary(
         "Amount Second Currency",
         currency='second_currency', digits='second_currency', required=True,
@@ -1763,6 +1779,10 @@ class AccountDeferral(ModelSQL, ModelView):
 
     def get_currency(self, name):
         return self.account.currency.id
+
+    @classmethod
+    def search_currency(cls, name, clause):
+        return [('account.' + clause[0], *clause[1:])]
 
     def get_second_currency(self, name):
         if self.account.second_currency:
@@ -1874,7 +1894,8 @@ class _GeneralLedgerAccount(ActivePeriodMixin, ModelSQL, ModelView):
             "End Balance", currency='currency', digits='currency'),
         'get_account', searcher='search_account')
     currency = fields.Function(fields.Many2One(
-        'currency.currency', 'Currency'), 'get_currency')
+            'currency.currency', "Currency"),
+        'get_currency', searcher='search_currency')
 
     @classmethod
     def __setup__(cls):
@@ -2075,6 +2096,10 @@ class _GeneralLedgerAccount(ActivePeriodMixin, ModelSQL, ModelView):
 
     def get_currency(self, name):
         return self.company.currency.id
+
+    @classmethod
+    def search_currency(cls, name, clause):
+        return [('company.' + clause[0], *clause[1:])]
 
     def get_rec_name(self, name):
         return self.account.rec_name
@@ -2344,7 +2369,8 @@ class GeneralLedgerLine(ModelSQL, ModelView):
         ], "State", sort=False)
     state_string = state.translated('state')
     currency = fields.Function(fields.Many2One(
-            'currency.currency', "Currency"), 'get_currency')
+            'currency.currency', "Currency"),
+        'get_currency', searcher='search_currency')
 
     @classmethod
     def __setup__(cls):
@@ -2403,6 +2429,10 @@ class GeneralLedgerLine(ModelSQL, ModelView):
 
     def get_currency(self, name):
         return self.company.currency.id
+
+    @classmethod
+    def search_currency(cls, name, clause):
+        return [('company.' + clause[0], *clause[1:])]
 
     @classmethod
     def get_origin(cls):
@@ -2850,7 +2880,8 @@ class AgedBalance(ModelSQL, ModelView):
     balance = Monetary(
         "Balance", currency='currency', digits='currency')
     currency = fields.Function(fields.Many2One(
-            'currency.currency', "Currency"), 'get_currency')
+            'currency.currency', "Currency"),
+        'get_currency', searcher='search_currency')
 
     @classmethod
     def __setup__(cls):
@@ -2967,6 +2998,10 @@ class AgedBalance(ModelSQL, ModelView):
 
     def get_currency(self, name):
         return self.company.currency.id
+
+    @classmethod
+    def search_currency(cls, name, clause):
+        return [('company.' + clause[0], *clause[1:])]
 
 
 class AgedBalanceReport(Report):
