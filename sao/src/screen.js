@@ -1600,7 +1600,9 @@
             }
             const display = () => {
                 // Return the original promise to keep succeed/rejected state
-                return this.display().then(() => prm, () => prm);
+                return this.display()
+                    .always(() => this.record_saved())
+                    .then(() => prm, () => prm);
             };
             return prm.then(current_record => {
                 if (path && current_record && current_record.id) {
