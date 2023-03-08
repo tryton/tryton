@@ -15,7 +15,7 @@ from trytond.transaction import Transaction
 from trytond.wizard import (
     Button, StateAction, StateTransition, StateView, Wizard)
 
-from .exceptions import MoveTemplateExpressionError
+from .exceptions import MoveTemplateExpressionError, PeriodNotFoundError
 
 
 class MoveTemplate(DeactivableMixin, ModelSQL, ModelView):
@@ -410,8 +410,11 @@ class CreateMoveTemplate(ModelView):
         pool = Pool()
         Period = pool.get('account.period')
         company = Transaction().context.get('company')
-        period = Period.find(company, exception=False)
-        return period.id if period else None
+        try:
+            period = Period.find(company)
+        except PeriodNotFoundError:
+            return None
+        return period.id
 
 
 class CreateMoveKeywords(ModelView):

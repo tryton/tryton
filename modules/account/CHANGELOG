@@ -1,3 +1,4 @@
+* Always raise exception when fiscal year or period are not found
 * Remove support for Python 3.7
 * Add support for Python 3.11
 * Add reversal option when cancelling move

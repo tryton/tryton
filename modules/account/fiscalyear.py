@@ -236,10 +236,10 @@ class FiscalYear(Workflow, ModelSQL, ModelView):
         pass
 
     @classmethod
-    def find(cls, company, date=None, exception=True, test_state=True):
+    def find(cls, company, date=None, test_state=True):
         '''
-        Return the fiscal year for the company at the date or the current date.
-        If exception is set it raises an exception if any fiscal year is found.
+        Return the fiscal year for the company at the date or the current date
+        or raise FiscalYearNotFoundError.
         If test_state is true, it searches on non-closed fiscal years
         '''
         pool = Pool()
@@ -270,21 +270,20 @@ class FiscalYear(Workflow, ModelSQL, ModelView):
             fiscalyear = cls(fiscalyear)
         found = fiscalyear and (not test_state or fiscalyear.state == 'open')
         if not found:
-            if exception:
-                lang = Lang.get()
-                if company is not None and not isinstance(company, Company):
-                    company = Company(company)
-                if not fiscalyear:
-                    raise FiscalYearNotFoundError(
-                        gettext('account.msg_no_fiscalyear_date',
-                            date=lang.strftime(date),
-                            company=company.rec_name if company else ''))
-                else:
-                    raise FiscalYearNotFoundError(
-                        gettext('account.msg_no_open_fiscalyear_date',
-                            date=lang.strftime(date),
-                            fiscalyear=fiscalyear.rec_name,
-                            company=company.rec_name if company else ''))
+            lang = Lang.get()
+            if company is not None and not isinstance(company, Company):
+                company = Company(company)
+            if not fiscalyear:
+                raise FiscalYearNotFoundError(
+                    gettext('account.msg_no_fiscalyear_date',
+                        date=lang.strftime(date),
+                        company=company.rec_name if company else ''))
+            else:
+                raise FiscalYearNotFoundError(
+                    gettext('account.msg_no_open_fiscalyear_date',
+                        date=lang.strftime(date),
+                        fiscalyear=fiscalyear.rec_name,
+                        company=company.rec_name if company else ''))
         else:
             return fiscalyear
 

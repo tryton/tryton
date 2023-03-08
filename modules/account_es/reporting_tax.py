@@ -21,6 +21,7 @@ from sql.operators import Exists
 from trytond.i18n import gettext
 from trytond.model import ModelSQL, ModelView, fields
 from trytond.model.modelsql import convert_from
+from trytond.modules.account.exceptions import FiscalYearNotFoundError
 from trytond.modules.account_eu.account import ECSalesList, ECSalesListContext
 from trytond.modules.currency.fields import Monetary
 from trytond.pool import Pool
@@ -757,9 +758,12 @@ class ESVATBookContext(ModelView):
     def default_fiscalyear(cls):
         pool = Pool()
         FiscalYear = pool.get('account.fiscalyear')
-        fiscalyear = FiscalYear.find(
-            cls.default_company(), exception=False, test_state=False)
-        return fiscalyear.id if fiscalyear else None
+        try:
+            fiscalyear = FiscalYear.find(
+                cls.default_company(), test_state=False)
+        except FiscalYearNotFoundError:
+            return None
+        return fiscalyear.id
 
 
 class ESVATBook(ModelSQL, ModelView):

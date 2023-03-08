@@ -23,6 +23,7 @@ from trytond.transaction import Transaction
 from trytond.wizard import Button, StateAction, StateView, Wizard
 
 from .common import ActivePeriodMixin, ContextCompanyMixin, PeriodMixin
+from .exceptions import PeriodNotFoundError
 
 KINDS = [
     ('sale', 'Sale'),
@@ -557,9 +558,11 @@ class TaxCodeContext(ModelView):
     def default_period(cls):
         pool = Pool()
         Period = pool.get('account.period')
-        period = Period.find(
-            cls.default_company(), exception=False, test_state=False)
-        return period.id if period else None
+        try:
+            period = Period.find(cls.default_company(), test_state=False)
+        except PeriodNotFoundError:
+            return None
+        return period.id
 
     @fields.depends(
         'method', 'company',

@@ -29,8 +29,8 @@ from trytond.wizard import (
 
 from .exceptions import (
     CancelDelegatedWarning, CancelWarning, DelegateLineError, GroupLineError,
-    PostError, ReconciliationDeleteWarning, ReconciliationError,
-    RescheduleLineError)
+    PeriodNotFoundError, PostError, ReconciliationDeleteWarning,
+    ReconciliationError, RescheduleLineError)
 
 _MOVE_STATES = {
     'readonly': Eval('state') == 'posted',
@@ -156,8 +156,11 @@ class Move(ModelSQL, ModelView):
     def default_period(cls):
         Period = Pool().get('account.period')
         company = cls.default_company()
-        period = Period.find(company, exception=False)
-        return period.id if period else None
+        try:
+            period = Period.find(company)
+        except PeriodNotFoundError:
+            return None
+        return period.id
 
     @staticmethod
     def default_state():
@@ -192,8 +195,10 @@ class Move(ModelSQL, ModelView):
                     or not (
                         self.period.start_date <= self.date
                         <= self.period.end_date)):
-                self.period = Period.find(
-                    company, date=self.date, exception=False)
+                try:
+                    self.period = Period.find(company, date=self.date)
+                except PeriodNotFoundError:
+                    self.period = None
         for line in (self.lines or []):
             line.date = self.date
 
@@ -1671,8 +1676,11 @@ class OpenJournalAsk(ModelView):
         pool = Pool()
         Period = pool.get('account.period')
         company = Transaction().context.get('company')
-        period = Period.find(company, exception=False)
-        return period.id if period else None
+        try:
+            period = Period.find(company)
+        except PeriodNotFoundError:
+            return None
+        return period.id
 
 
 class OpenJournal(Wizard):

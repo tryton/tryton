@@ -182,10 +182,10 @@ class Period(Workflow, ModelSQL, ModelView):
                         second=periods[0].rec_name))
 
     @classmethod
-    def find(cls, company, date=None, exception=True, test_state=True):
+    def find(cls, company, date=None, test_state=True):
         '''
-        Return the period for the company at the date or the current date.
-        If exception is set it raises an exception if no period is found.
+        Return the period for the company at the date or the current date
+        or raise PeriodNotFoundError.
         If test_state is true, it searches on non-closed periods
         '''
         pool = Pool()
@@ -217,21 +217,20 @@ class Period(Workflow, ModelSQL, ModelView):
             period = cls(period)
         found = period and (not test_state or period.state == 'open')
         if not found:
-            if exception:
-                lang = Lang.get()
-                if company is not None and not isinstance(company, Company):
-                    company = Company(company)
-                if not period:
-                    raise PeriodNotFoundError(
-                        gettext('account.msg_no_period_date',
-                            date=lang.strftime(date),
-                            company=company.rec_name if company else ''))
-                else:
-                    raise PeriodNotFoundError(
-                        gettext('account.msg_no_open_period_date',
-                            date=lang.strftime(date),
-                            period=period.rec_name,
-                            company=company.rec_name if company else ''))
+            lang = Lang.get()
+            if company is not None and not isinstance(company, Company):
+                company = Company(company)
+            if not period:
+                raise PeriodNotFoundError(
+                    gettext('account.msg_no_period_date',
+                        date=lang.strftime(date),
+                        company=company.rec_name if company else ''))
+            else:
+                raise PeriodNotFoundError(
+                    gettext('account.msg_no_open_period_date',
+                        date=lang.strftime(date),
+                        period=period.rec_name,
+                        company=company.rec_name if company else ''))
         else:
             return period
 

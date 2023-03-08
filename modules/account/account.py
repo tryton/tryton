@@ -28,7 +28,8 @@ from trytond.wizard import (
 
 from .common import ActivePeriodMixin, ContextCompanyMixin, PeriodMixin
 from .exceptions import (
-    AccountValidationError, ChartWarning, SecondCurrencyError)
+    AccountValidationError, ChartWarning, FiscalYearNotFoundError,
+    SecondCurrencyError)
 
 
 def TypeMixin(template=False):
@@ -2167,9 +2168,12 @@ class GeneralLedgerAccountContext(ModelView):
             period = Period(context['period'])
             return period.fiscalyear.id
         else:
-            fiscalyear = FiscalYear.find(
-                context.get('company'), exception=False, test_state=False)
-            return fiscalyear.id if fiscalyear else None
+            try:
+                fiscalyear = FiscalYear.find(
+                    context.get('company'), test_state=False)
+            except FiscalYearNotFoundError:
+                return None
+            return fiscalyear.id
 
     @classmethod
     def default_start_period(cls):
@@ -2678,9 +2682,12 @@ class IncomeStatementContext(ModelView):
     def default_fiscalyear(cls):
         pool = Pool()
         FiscalYear = pool.get('account.fiscalyear')
-        fiscalyear = FiscalYear.find(
-            cls.default_company(), exception=False, test_state=False)
-        return fiscalyear.id if fiscalyear else None
+        try:
+            fiscalyear = FiscalYear.find(
+                cls.default_company(), test_state=False)
+        except FiscalYearNotFoundError:
+            return None
+        return fiscalyear.id
 
     @staticmethod
     def default_company():

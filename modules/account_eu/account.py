@@ -5,6 +5,7 @@ from sql.aggregate import Min, Sum
 from sql.functions import CurrentTimestamp
 
 from trytond.model import ModelSQL, ModelView, fields
+from trytond.modules.account.exceptions import FiscalYearNotFoundError
 from trytond.modules.currency.fields import Monetary
 from trytond.pool import Pool, PoolMeta
 from trytond.pyson import Bool, Eval
@@ -133,7 +134,10 @@ class ECSalesListContext(ModelView):
         FiscalYear = pool.get('account.fiscalyear')
         context = Transaction().context
         if 'fiscalyear' not in context:
-            fiscalyear = FiscalYear.find(
-                cls.default_company(), exception=False, test_state=False)
-            return fiscalyear.id if fiscalyear else None
+            try:
+                fiscalyear = FiscalYear.find(
+                    cls.default_company(), test_state=False)
+            except FiscalYearNotFoundError:
+                return None
+            return fiscalyear.id
         return context['fiscalyear']

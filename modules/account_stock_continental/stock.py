@@ -3,6 +3,7 @@
 from decimal import Decimal
 
 from trytond.model import ModelView, Workflow
+from trytond.modules.account.exceptions import PeriodNotFoundError
 from trytond.pool import Pool, PoolMeta
 from trytond.transaction import Transaction
 
@@ -105,12 +106,13 @@ class Move(metaclass=PoolMeta):
         with Transaction().set_context(company=self.company.id):
             today = Date.today()
         for date in [self.effective_date, today]:
-            period = Period.find(
-                self.company, date=date, exception=False, test_state=False)
-            if not period and date < today:
-                return
-            elif period:
-                break
+            try:
+                period = Period.find(self.company, date=date, test_state=False)
+            except PeriodNotFoundError:
+                if date < today:
+                    return
+                continue
+            break
         else:
             return
         if not period.fiscalyear.account_stock_method:

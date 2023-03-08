@@ -10,6 +10,7 @@ from sql.conditionals import Coalesce
 from trytond.i18n import gettext
 from trytond.model import (
     Index, ModelSQL, ModelView, Unique, fields, sequence_ordered, tree)
+from trytond.modules.account.exceptions import FiscalYearNotFoundError
 from trytond.modules.currency.fields import Monetary
 from trytond.pool import Pool
 from trytond.pyson import Bool, Eval, If
@@ -282,15 +283,17 @@ class BudgetContext(ModelView):
         context = Transaction().context
         if 'budget' in context:
             return context.get('budget')
-        fiscalyear = FiscalYear.find(
-            context.get('company'), exception=False, test_state=False)
-        if fiscalyear:
-            budgets = Budget.search([
-                    ('fiscalyear', '=', fiscalyear.id),
-                    ], limit=1)
-            if budgets:
-                budget, = budgets
-                return budget.id
+        try:
+            fiscalyear = FiscalYear.find(
+                context.get('company'), test_state=False)
+        except FiscalYearNotFoundError:
+            return None
+        budgets = Budget.search([
+                ('fiscalyear', '=', fiscalyear.id),
+                ], limit=1)
+        if budgets:
+            budget, = budgets
+            return budget.id
 
     @fields.depends('budget')
     def on_change_with_fiscalyear(self, name=None):
@@ -334,17 +337,23 @@ class Budget(BudgetMixin, ModelSQL, ModelView):
     def default_fiscalyear(cls):
         pool = Pool()
         FiscalYear = pool.get('account.fiscalyear')
-        fiscalyear = FiscalYear.find(
-            cls.default_company(), exception=False, test_state=False)
-        return fiscalyear.id if fiscalyear else None
+        try:
+            fiscalyear = FiscalYear.find(
+                cls.default_company(), test_state=False)
+        except FiscalYearNotFoundError:
+            return None
+        return fiscalyear.id
 
     @fields.depends('company', 'fiscalyear')
     def on_change_company(self):
         pool = Pool()
         FiscalYear = pool.get('account.fiscalyear')
         if not self.fiscalyear or self.fiscalyear.company != self.company:
-            self.fiscalyear = FiscalYear.find(
-                self.company, exception=False, test_state=False)
+            try:
+                self.fiscalyear = FiscalYear.find(
+                    self.company, test_state=False)
+            except FiscalYearNotFoundError:
+                pass
 
     def get_rec_name(self, name):
         return '%s - %s' % (self.name, self.fiscalyear.rec_name)
