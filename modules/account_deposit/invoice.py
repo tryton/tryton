@@ -37,11 +37,9 @@ class Invoice(metaclass=PoolMeta):
     def call_deposit(self, account, description, maximum=None):
         pool = Pool()
         InvoiceLine = pool.get('account.invoice.line')
-        Currency = pool.get('currency.currency')
 
-        balance = self.party.get_deposit_balance(account)
-        balance = Currency.compute(
-            account.company.currency, balance, self.currency)
+        balance = self.party.get_deposit_balance(
+            account, currency=self.currency)
         if maximum is None:
             maximum = self.total_amount
         total_amount = min(maximum, self.total_amount, key=abs)
@@ -131,6 +129,7 @@ class DepositRecall(Wizard):
     def default_start(self, fields):
         return {
             'company': self.record.company.id,
+            'currency': self.record.currency.id,
             }
 
     def transition_recall(self):
@@ -142,9 +141,14 @@ class DepositRecallStart(ModelView):
     'Recall deposit on Invoice'
     __name__ = 'account.invoice.recall_deposit.start'
     company = fields.Many2One('company.company', 'Company', readonly=True)
+    currency = fields.Many2One('currency.currency', "Currency", readonly=True)
     account = fields.Many2One('account.account', 'Account', required=True,
         domain=[
             ('type.deposit', '=', True),
             ('company', '=', Eval('company', -1)),
+            ['OR',
+                ('currency', '=', Eval('currency', -1)),
+                ('second_currency', '=', Eval('currency', -1)),
+                ],
             ])
     description = fields.Text('Description', required=True)

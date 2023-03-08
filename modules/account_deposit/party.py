@@ -4,7 +4,7 @@ from decimal import Decimal
 
 from sql import For, Literal, Null
 from sql.aggregate import Sum
-from sql.conditionals import Coalesce
+from sql.conditionals import Case, Coalesce
 
 from trytond.i18n import gettext
 from trytond.model import fields
@@ -100,7 +100,7 @@ class Party(metaclass=PoolMeta):
                     Decimal(clause[2] or 0))))
         return [('id', 'in', query)]
 
-    def get_deposit_balance(self, deposit_account):
+    def get_deposit_balance(self, deposit_account, currency=None):
         'Return the deposit account balance (debit - credit) for the party'
         pool = Pool()
         MoveLine = pool.get('account.move.line')
@@ -108,6 +108,8 @@ class Party(metaclass=PoolMeta):
         cursor = transaction.connection.cursor()
 
         line = MoveLine.__table__()
+        if currency is None:
+            currency = deposit_account.currency
         assert deposit_account.type.deposit
 
         where = ((line.account == deposit_account.id)
@@ -120,20 +122,29 @@ class Party(metaclass=PoolMeta):
                     for_=For('UPDATE', nowait=True)))
         else:
             MoveLine.lock()
-        cursor.execute(*line.select(
-                Sum(Coalesce(line.debit, 0) - Coalesce(line.credit, 0)),
-                where=where))
+
+        if currency == deposit_account.currency:
+            amount = Sum(Coalesce(line.debit, 0) - Coalesce(line.credit, 0))
+        else:
+            amount = Sum(Case(
+                    (line.second_currency == currency.id,
+                        line.amount_second_currency),
+                    else_=0))
+
+        cursor.execute(*line.select(amount, where=where))
         amount, = cursor.fetchone()
-        if amount and not isinstance(amount, Decimal):
-            currency = deposit_account.company.currency
-            amount = currency.round(Decimal(str(amount)))
-        return amount or Decimal(0)
+        if amount is None:
+            amount = Decimal(0)
+        if not isinstance(amount, Decimal):
+            amount = Decimal(str(amount))
+        return currency.round(amount)
 
     def check_deposit(self, deposit_account, sign=1):
         '''Check if the deposit account balance (debit - credit) has the same
         sign for the party'''
         assert sign in (1, -1)
-        amount = self.get_deposit_balance(deposit_account)
+        amount = self.get_deposit_balance(
+            deposit_account, currency=deposit_account.second_currency)
         return not amount or ((amount < 0) == (sign < 0))
 
 
