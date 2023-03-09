@@ -32,7 +32,7 @@ class Party(metaclass=PoolMeta):
             amount = 0
             for line in sale.lines:
                 quantity = line.quantity
-                if not quantity:
+                if not quantity or (line.type != 'line'):
                     continue
                 for invoice_line in line.invoice_lines:
                     if invoice_line.type != 'line':
