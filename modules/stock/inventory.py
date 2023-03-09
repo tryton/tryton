@@ -253,7 +253,9 @@ class Inventory(Workflow, ModelSQL, ModelView):
             if inventory.state == 'done':
                 continue
             # Compute product quantities
-            with Transaction().set_context(stock_date_end=inventory.date):
+            with Transaction().set_context(
+                    company=inventory.company.id,
+                    stock_date_end=inventory.date):
                 if fill:
                     pbl = Product.products_by_location(
                         [inventory.location.id],
