@@ -221,7 +221,9 @@ class Inventory(Workflow, ModelSQL, ModelView):
                 product_ids = None
             else:
                 product_ids = [l.product.id for l in inventory.lines]
-            with Transaction().set_context(stock_date_end=inventory.date):
+            with Transaction().set_context(
+                    company=inventory.company.id,
+                    stock_date_end=inventory.date):
                 pbl = Product.products_by_location(
                     [inventory.location.id],
                     grouping=grouping,
