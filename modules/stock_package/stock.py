@@ -412,24 +412,14 @@ class PackageMixin(object):
         domain=[
             ('company', '=', Eval('company', -1)),
             ])
-    root_packages = fields.Function(fields.One2Many('stock.package',
-            'shipment', 'Packages',
-            domain=[
-                ('company', '=', Eval('company', -1)),
-                ('parent', '=', None),
-                ]),
-        'get_root_packages', setter='set_root_packages')
-
-    def get_root_packages(self, name):
-        return [p.id for p in self.packages if not p.parent]
-
-    @classmethod
-    def set_root_packages(cls, shipments, name, value):
-        if not value:
-            return
-        cls.write(shipments, {
-                'packages': value,
-                })
+    root_packages = fields.One2Many('stock.package',
+        'shipment', 'Packages',
+        domain=[
+            ('company', '=', Eval('company', -1)),
+            ],
+        filter=[
+            ('parent', '=', None),
+            ])
 
     @classmethod
     def check_packages(cls, shipments):
