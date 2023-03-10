@@ -4,6 +4,7 @@ import configparser
 import logging
 import os
 import urllib.parse
+from getpass import getuser
 
 import __main__ as main
 
@@ -82,6 +83,7 @@ class TrytonConfigParser(configparser.ConfigParser):
         self.add_section('ssl')
         self.add_section('email')
         self.set('email', 'uri', 'smtp://localhost:25')
+        self.set('email', 'from', getuser())
         self.add_section('session')
         self.set('session', 'authentications', 'password')
         self.set('session', 'max_age', str(60 * 60 * 24 * 30))

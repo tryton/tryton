@@ -445,6 +445,8 @@ For example::
 
     from: "Company Inc" <info@example.com>
 
+Default: The login name of the :abbr:`OS (Operating System)` user.
+
 retry
 ~~~~~
 
