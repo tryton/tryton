@@ -572,7 +572,7 @@ class Activity(ModelSQL, ModelView):
             for kind, data, pos in stream:
                 if kind is START:
                     tag, attrs = data
-                    if tag == 'a':
+                    if tag == 'a' and attrs.get('href'):
                         href = attrs.get('href')
                         attrs -= 'href'
                         if href.startswith('unsubscribe'):
