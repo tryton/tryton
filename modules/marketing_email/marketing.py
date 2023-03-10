@@ -425,7 +425,7 @@ class Message(Workflow, ModelSQL, ModelView):
                 for kind, data, pos in stream:
                     if kind is START:
                         tag, attrs = data
-                        if tag == 'a':
+                        if tag == 'a' and attrs.get('href'):
                             href = attrs.get('href')
                             attrs -= 'href'
                             href = short(href, str(message))
