@@ -220,7 +220,7 @@ class MoveLineTemplate(ModelSQL, ModelView):
         try:
             amount = simple_eval(decistmt(self.amount),
                 functions={'Decimal': Decimal}, names=values)
-        except InvalidExpression as e:
+        except (InvalidExpression, SyntaxError) as e:
             raise MoveTemplateExpressionError(
                 gettext('account.msg_move_template_invalid_expression',
                     expression=values,
@@ -300,7 +300,7 @@ class TaxLineTemplate(ModelSQL, ModelView):
         try:
             amount = simple_eval(decistmt(self.amount),
                 functions={'Decimal': Decimal}, names=values)
-        except InvalidExpression as e:
+        except (InvalidExpression, SyntaxError) as e:
             raise MoveTemplateExpressionError(
                 gettext('account.msg_template_invalid_expression',
                     expression=values,
