@@ -1,0 +1,429 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data>
+        <record model="res.group" id="group_quality">
+            <field name="name">Quality</field>
+        </record>
+        <record model="res.user-res.group" id="user_admin_group_quality">
+            <field name="user" ref="res.user_admin"/>
+            <field name="group" ref="group_quality"/>
+        </record>
+
+        <record model="res.group" id="group_quality_admin">
+            <field name="name">Quality Administration</field>
+            <field name="parent" ref="group_quality"/>
+        </record>
+        <record model="res.user-res.group" id="user_admin_group_quality_admin">
+            <field name="user" ref="res.user_admin"/>
+            <field name="group" ref="group_quality_admin"/>
+        </record>
+
+        <record model="ir.ui.icon" id="quality_icon">
+            <field name="name">tryton-quality</field>
+            <field name="path">icons/tryton-quality.svg</field>
+        </record>
+
+        <menuitem
+            name="Quality"
+            sequence="110"
+            id="menu_quality"
+            icon="tryton-quality"/>
+        <record model="ir.ui.menu-res.group" id="menu_quality_group_quality">
+            <field name="menu" ref="menu_quality"/>
+            <field name="group" ref="group_quality"/>
+        </record>
+
+        <menuitem
+            name="Configuration"
+            parent="menu_quality"
+            sequence="0"
+            id="menu_configuration"
+            icon="tryton-settings"/>
+        <record model="ir.ui.menu-res.group" id="menu_configuration_group_quality_admin">
+            <field name="menu" ref="menu_configuration"/>
+            <field name="group" ref="group_quality_admin"/>
+        </record>
+
+        <record model="ir.ui.view" id="quality_configuration_view_form">
+            <field name="model">quality.configuration</field>
+            <field name="type">form</field>
+            <field name="name">quality_configuration_form</field>
+        </record>
+
+        <record model="ir.action.act_window" id="act_quality_configuration_form">
+            <field name="name">Configuration</field>
+            <field name="res_model">quality.configuration</field>
+        </record>
+        <record model="ir.action.act_window.view" id="act_quality_configuration_form_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="quality_configuration_view_form"/>
+            <field name="act_window" ref="act_quality_configuration_form"/>
+        </record>
+        <menuitem
+            parent="menu_configuration"
+            action="act_quality_configuration_form"
+            sequence="10"
+            id="menu_quality_configuration"
+            icon="tryton-list"/>
+
+        <record model="ir.model.access" id="access_quality_configuration">
+            <field name="model" search="[('model', '=', 'quality.configuration')]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_quality_configuration_quality_admin">
+            <field name="model" search="[('model', '=', 'quality.configuration')]"/>
+            <field name="group" ref="group_quality_admin"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+
+        <record model="ir.sequence.type" id="sequence_type_quality_inspection">
+            <field name="name">Quality Inspection</field>
+        </record>
+        <record model="ir.sequence.type-res.group" id="sequence_type_quality_inspection_group_admin">
+            <field name="sequence_type" ref="sequence_type_quality_inspection"/>
+            <field name="group" ref="res.group_admin"/>
+        </record>
+        <record model="ir.sequence.type-res.group" id="sequence_type_quality_inspection_group_quality_admin">
+            <field name="sequence_type" ref="sequence_type_quality_inspection"/>
+            <field name="group" ref="group_quality_admin"/>
+        </record>
+
+        <record model="ir.sequence.type" id="sequence_type_quality_alert">
+            <field name="name">Quality Alert</field>
+        </record>
+        <record model="ir.sequence.type-res.group" id="sequence_type_quality_alert_group_admin">
+            <field name="sequence_type" ref="sequence_type_quality_alert"/>
+            <field name="group" ref="res.group_admin"/>
+        </record>
+        <record model="ir.sequence.type-res.group" id="sequence_type_quality_alert_group_quality_admin">
+            <field name="sequence_type" ref="sequence_type_quality_alert"/>
+            <field name="group" ref="group_quality_admin"/>
+        </record>
+
+        <record model="ir.ui.view" id="quality_control_view_form">
+            <field name="model">quality.control</field>
+            <field name="type">form</field>
+            <field name="name">quality_control_form</field>
+        </record>
+
+        <record model="ir.ui.view" id="quality_control_view_list">
+            <field name="model">quality.control</field>
+            <field name="type">tree</field>
+            <field name="name">quality_control_list</field>
+        </record>
+
+        <record model="ir.action.act_window" id="act_quality_control_form">
+            <field name="name">Controls</field>
+            <field name="res_model">quality.control</field>
+        </record>
+        <record model="ir.action.act_window.view" id="act_quality_control_form_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="quality_control_view_list"/>
+            <field name="act_window" ref="act_quality_control_form"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_quality_control_form_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="quality_control_view_form"/>
+            <field name="act_window" ref="act_quality_control_form"/>
+        </record>
+        <menuitem
+            parent="menu_configuration"
+            action="act_quality_control_form"
+            sequence="20"
+            id="menu_quality_control"/>
+
+        <record model="ir.model.access" id="access_quality_control">
+            <field name="model" search="[('model', '=', 'quality.control')]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_quality_control_quality_admin">
+            <field name="model" search="[('model', '=', 'quality.control')]"/>
+            <field name="group" ref="group_quality_admin"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
+
+        <record model="ir.rule.group" id="rule_group_quality_control_companies">
+            <field name="name">User in companies</field>
+            <field name="model" search="[('model', '=', 'quality.control')]"/>
+            <field name="global_p" eval="True"/>
+        </record>
+        <record model="ir.rule" id="rule_quality_control_companies">
+            <field name="domain"
+                eval="[('company', 'in', Eval('companies', []))]"
+                pyson="1"/>
+            <field name="rule_group" ref="rule_group_quality_control_companies"/>
+        </record>
+        <record model="ir.rule" id="rule_quality_control_no_company">
+            <field name="domain"
+                eval="[('company', '=', None)]"
+                pyson="1"/>
+            <field name="rule_group" ref="rule_group_quality_control_companies"/>
+        </record>
+
+        <record model="ir.ui.view" id="quality_control_point_view_form">
+            <field name="model">quality.control.point</field>
+            <field name="type">form</field>
+            <field name="name">quality_control_point_form</field>
+        </record>
+
+        <record model="ir.ui.view" id="quality_control_point_view_list">
+            <field name="model">quality.control.point</field>
+            <field name="type">tree</field>
+            <field name="name">quality_control_point_list</field>
+        </record>
+
+        <record model="ir.ui.view" id="quality_inspection_view_form">
+            <field name="model">quality.inspection</field>
+            <field name="type">form</field>
+            <field name="name">quality_inspection_form</field>
+        </record>
+
+        <record model="ir.ui.view" id="quality_inspection_view_list">
+            <field name="model">quality.inspection</field>
+            <field name="type">tree</field>
+            <field name="name">quality_inspection_list</field>
+        </record>
+
+        <record model="ir.action.act_window" id="act_quality_inspection_form">
+            <field name="name">Inspections</field>
+            <field name="res_model">quality.inspection</field>
+        </record>
+        <record model="ir.action.act_window.view" id="act_quality_inspection_form_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="quality_inspection_view_list"/>
+            <field name="act_window" ref="act_quality_inspection_form"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_quality_inspection_form_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="quality_inspection_view_form"/>
+            <field name="act_window" ref="act_quality_inspection_form"/>
+        </record>
+        <record model="ir.action.act_window.domain" id="act_quality_inspection_form_domain_pending">
+            <field name="name">Pending</field>
+            <field name="sequence" eval="10"/>
+            <field name="domain" eval="[('state', '=', 'pending')]" pyson="1"/>
+            <field name="count" eval="True"/>
+            <field name="act_window" ref="act_quality_inspection_form"/>
+        </record>
+        <record model="ir.action.act_window.domain" id="act_quality_inspection_form_domain_processed">
+            <field name="name">Processed</field>
+            <field name="sequence" eval="20"/>
+            <field name="domain" eval="[('state', 'in', ['passed', 'failed'])]" pyson="1"/>
+            <field name="act_window" ref="act_quality_inspection_form"/>
+        </record>
+        <record model="ir.action.act_window.domain" id="act_quality_inspection_form_domain_all">
+            <field name="name">All</field>
+            <field name="sequence" eval="9999"/>
+            <field name="domain"></field>
+            <field name="act_window" ref="act_quality_inspection_form"/>
+        </record>
+        <menuitem
+            parent="menu_quality"
+            action="act_quality_inspection_form"
+            sequence="20"
+            id="menu_quality_inspection_form"/>
+
+        <record model="ir.action.act_window" id="act_quality_inspection_form_relate">
+            <field name="name">Quality Inspections</field>
+            <field name="res_model">quality.inspection</field>
+            <field
+                name="domain"
+                eval="[('origin.id', 'in', Eval('active_ids', []), Eval('active_model'))]"
+                pyson="1"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_quality_inspection_form_relate_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="quality_inspection_view_list"/>
+            <field name="act_window" ref="act_quality_inspection_form_relate"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_quality_inspection_form_relate_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="quality_inspection_view_form"/>
+            <field name="act_window" ref="act_quality_inspection_form_relate"/>
+        </record>
+
+        <record model="ir.model.access" id="access_quality_inspection">
+            <field name="model" search="[('model', '=', 'quality.inspection')]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_quality_control_quality">
+            <field name="model" search="[('model', '=', 'quality.inspection')]"/>
+            <field name="group" ref="group_quality"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
+
+        <record model="ir.rule.group" id="rule_group_quality_inspection_companies">
+            <field name="name">User in companies</field>
+            <field name="model" search="[('model', '=', 'quality.inspection')]"/>
+            <field name="global_p" eval="True"/>
+        </record>
+        <record model="ir.rule" id="rule_quality_inspection_companies">
+            <field name="domain"
+                eval="[('company', 'in', Eval('companies', []))]"
+                pyson="1"/>
+            <field name="rule_group" ref="rule_group_quality_inspection_companies"/>
+        </record>
+
+        <record model="ir.model.button" id="quality_inspection_pending_button">
+            <field name="name">pending</field>
+            <field name="string">Pending</field>
+            <field name="model" search="[('model', '=', 'quality.inspection')]"/>
+        </record>
+
+        <record model="ir.model.button" id="quality_inspection_process_button">
+            <field name="name">process</field>
+            <field name="string">Process</field>
+            <field name="model" search="[('model', '=', 'quality.inspection')]"/>
+        </record>
+
+        <record model="ir.model.button" id="quality_inspection_pass_button">
+            <field name="name">pass_</field>
+            <field name="string">Pass</field>
+            <field name="model" search="[('model', '=', 'quality.inspection')]"/>
+        </record>
+        <record model="ir.model.button-res.group" id="quality_inspection_pass_button_group_quality">
+            <field name="button" ref="quality_inspection_pass_button"/>
+            <field name="group" ref="group_quality"/>
+        </record>
+
+        <record model="ir.model.button" id="quality_inspection_fail_button">
+            <field name="name">fail</field>
+            <field name="string">Fail</field>
+            <field name="model" search="[('model', '=', 'quality.inspection')]"/>
+        </record>
+        <record model="ir.model.button-res.group" id="quality_inspection_fail_button_group_quality">
+            <field name="button" ref="quality_inspection_fail_button"/>
+            <field name="group" ref="group_quality"/>
+        </record>
+
+        <record model="ir.ui.view" id="quality_alert_view_form">
+            <field name="model">quality.alert</field>
+            <field name="type">form</field>
+            <field name="name">quality_alert_form</field>
+        </record>
+
+        <record model="ir.ui.view" id="quality_alert_view_list">
+            <field name="model">quality.alert</field>
+            <field name="type">tree</field>
+            <field name="name">quality_alert_list</field>
+        </record>
+
+        <record model="ir.action.act_window" id="act_quality_alert_form">
+            <field name="name">Alerts</field>
+            <field name="res_model">quality.alert</field>
+        </record>
+        <record model="ir.action.act_window.view" id="act_quality_alert_form_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="quality_alert_view_list"/>
+            <field name="act_window" ref="act_quality_alert_form"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_quality_alert_form_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="quality_alert_view_form"/>
+            <field name="act_window" ref="act_quality_alert_form"/>
+        </record>
+        <record model="ir.action.act_window.domain" id="act_quality_alert_form_domain_open">
+            <field name="name">Open</field>
+            <field name="sequence" eval="10"/>
+            <field name="domain" eval="[('state', '=', 'open')]" pyson="1"/>
+            <field name="count" eval="True"/>
+            <field name="act_window" ref="act_quality_alert_form"/>
+        </record>
+        <record model="ir.action.act_window.domain" id="act_quality_alert_form_domain_processing">
+            <field name="name">Processing</field>
+            <field name="sequence" eval="20"/>
+            <field name="domain" eval="[('state', '=', 'processing')]" pyson="1"/>
+            <field name="count" eval="True"/>
+            <field name="act_window" ref="act_quality_alert_form"/>
+        </record>
+        <record model="ir.action.act_window.domain" id="act_quality_alert_form_domain_deferred">
+            <field name="name">Deferred</field>
+            <field name="sequence" eval="30"/>
+            <field name="domain" eval="[('state', '=', 'deferred')]" pyson="1"/>
+            <field name="count" eval="True"/>
+            <field name="act_window" ref="act_quality_alert_form"/>
+        </record>
+        <record model="ir.action.act_window.domain" id="act_quality_alert_form_domain_all">
+            <field name="name">All</field>
+            <field name="sequence" eval="9999"/>
+            <field name="domain"></field>
+            <field name="act_window" ref="act_quality_alert_form"/>
+        </record>
+        <menuitem
+            parent="menu_quality"
+            action="act_quality_alert_form"
+            sequence="10"
+            id="menu_quality_alert_form"/>
+
+        <record model="ir.model.access" id="access_quality_alert">
+            <field name="model" search="[('model', '=', 'quality.alert')]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_quality_alert_quality">
+            <field name="model" search="[('model', '=', 'quality.alert')]"/>
+            <field name="group" ref="group_quality"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
+
+        <record model="ir.model.button" id="quality_alert_open_button">
+            <field name="name">open</field>
+            <field name="string">Open</field>
+            <field name="model" search="[('model', '=', 'quality.alert')]"/>
+        </record>
+
+        <record model="ir.model.button" id="quality_alert_process_button">
+            <field name="name">process</field>
+            <field name="string">Process</field>
+            <field name="model" search="[('model', '=', 'quality.alert')]"/>
+        </record>
+
+        <record model="ir.model.button" id="quality_alert_defer_button">
+            <field name="name">defer</field>
+            <field name="string">Defer</field>
+            <field name="model" search="[('model', '=', 'quality.alert')]"/>
+        </record>
+
+        <record model="ir.model.button" id="quality_alert_resolve_button">
+            <field name="name">resolve</field>
+            <field name="string">Resolve</field>
+            <field name="model" search="[('model', '=', 'quality.alert')]"/>
+        </record>
+    </data>
+    <data noupdate="1">
+        <record model="ir.sequence" id="sequence_quality_inspection">
+            <field name="name">Quality Inspection</field>
+            <field name="sequence_type" ref="sequence_type_quality_inspection"/>
+        </record>
+
+        <record model="ir.sequence" id="sequence_quality_alert">
+            <field name="name">Quality Alert</field>
+            <field name="sequence_type" ref="sequence_type_quality_alert"/>
+        </record>
+    </data>
+</tryton>

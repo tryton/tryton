@@ -1,0 +1,118 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data depends="stock">
+        <record model="ir.action.wizard" id="wizard_stock_shipment_in_inspect_receive">
+            <field name="name">Inspect Reception</field>
+            <field name="wiz_name">quality.inspect</field>
+            <field name="model">stock.shipment.in</field>
+        </record>
+        <record model="ir.action.keyword" id="wizard_stock_shipment_in_inspect_receive_keyword1">
+            <field name="keyword">form_action</field>
+            <field name="model">stock.shipment.in,-1</field>
+            <field name="action" ref="wizard_stock_shipment_in_inspect_receive"/>
+        </record>
+
+        <record model="ir.action.wizard" id="wizard_stock_shipment_in_inspect_done">
+            <field name="name">Inspect Done</field>
+            <field name="wiz_name">quality.inspect</field>
+            <field name="model">stock.shipment.in</field>
+        </record>
+        <record model="ir.action.keyword" id="wizard_stock_shipment_in_inspect_done_keyword1">
+            <field name="keyword">form_action</field>
+            <field name="model">stock.shipment.in,-1</field>
+            <field name="action" ref="wizard_stock_shipment_in_inspect_done"/>
+        </record>
+
+        <record model="ir.action.keyword" id="act_quality_inspection_form_relate_keyword_stock_shipment_in">
+            <field name="keyword">form_relate</field>
+            <field name="model">stock.shipment.in,-1</field>
+            <field name="action" ref="act_quality_inspection_form_relate"/>
+        </record>
+
+        <record model="ir.action.wizard" id="wizard_stock_shipment_out_inspect_pick">
+            <field name="name">Inspect Pick</field>
+            <field name="wiz_name">quality.inspect</field>
+            <field name="model">stock.shipment.out</field>
+        </record>
+        <record model="ir.action.keyword" id="wizard_stock_shipment_out_inspect_pick_keyword1">
+            <field name="keyword">form_action</field>
+            <field name="model">stock.shipment.out,-1</field>
+            <field name="action" ref="wizard_stock_shipment_out_inspect_pick"/>
+        </record>
+
+        <record model="ir.action.wizard" id="wizard_stock_shipment_out_inspect_pack">
+            <field name="name">Inspect Pack</field>
+            <field name="wiz_name">quality.inspect</field>
+            <field name="model">stock.shipment.out</field>
+        </record>
+        <record model="ir.action.keyword" id="wizard_stock_shipment_out_inspect_pack_keyword1">
+            <field name="keyword">form_action</field>
+            <field name="model">stock.shipment.out,-1</field>
+            <field name="action" ref="wizard_stock_shipment_out_inspect_pack"/>
+        </record>
+
+        <record model="ir.action.keyword" id="act_quality_inspection_form_relate_keyword_stock_shipment_out">
+            <field name="keyword">form_relate</field>
+            <field name="model">stock.shipment.out,-1</field>
+            <field name="action" ref="act_quality_inspection_form_relate"/>
+        </record>
+
+        <record model="ir.action.wizard" id="wizard_stock_shipment_out_return_inspect_receive">
+            <field name="name">Inspect Reception</field>
+            <field name="wiz_name">quality.inspect</field>
+            <field name="model">stock.shipment.out.return</field>
+        </record>
+        <record model="ir.action.keyword" id="wizard_stock_shipment_out_return_inspect_receive_keyword1">
+            <field name="keyword">form_action</field>
+            <field name="model">stock.shipment.out.return,-1</field>
+            <field name="action" ref="wizard_stock_shipment_out_return_inspect_receive"/>
+        </record>
+
+        <record model="ir.action.wizard" id="wizard_stock_shipment_out_return_inspect_done">
+            <field name="name">Inspect Done</field>
+            <field name="wiz_name">quality.inspect</field>
+            <field name="model">stock.shipment.out.return</field>
+        </record>
+        <record model="ir.action.keyword" id="wizard_stock_shipment_out_return_inspect_done_keyword1">
+            <field name="keyword">form_action</field>
+            <field name="model">stock.shipment.out.return,-1</field>
+            <field name="action" ref="wizard_stock_shipment_out_return_inspect_done"/>
+        </record>
+
+        <record model="ir.action.keyword" id="act_quality_inspection_form_relate_keyword_stock_shipment_out_return">
+            <field name="keyword">form_relate</field>
+            <field name="model">stock.shipment.out.return,-1</field>
+            <field name="action" ref="act_quality_inspection_form_relate"/>
+        </record>
+
+        <record model="ir.action.wizard" id="wizard_stock_shipment_internal_inspect_ship">
+            <field name="name">Inspect Ship</field>
+            <field name="wiz_name">quality.inspect</field>
+            <field name="model">stock.shipment.internal</field>
+        </record>
+        <record model="ir.action.keyword" id="wizard_stock_shipment_internal_inspect_ship_keyword1">
+            <field name="keyword">form_action</field>
+            <field name="model">stock.shipment.internal,-1</field>
+            <field name="action" ref="wizard_stock_shipment_internal_inspect_ship"/>
+        </record>
+
+        <record model="ir.action.wizard" id="wizard_stock_shipment_internal_inspect_done">
+            <field name="name">Inspect Done</field>
+            <field name="wiz_name">quality.inspect</field>
+            <field name="model">stock.shipment.internal</field>
+        </record>
+        <record model="ir.action.keyword" id="wizard_stock_shipment_internal_inspect_done_keyword1">
+            <field name="keyword">form_action</field>
+            <field name="model">stock.shipment.internal,-1</field>
+            <field name="action" ref="wizard_stock_shipment_internal_inspect_done"/>
+        </record>
+
+        <record model="ir.action.keyword" id="act_quality_inspection_form_relate_keyword_stock_shipment_internal">
+            <field name="keyword">form_relate</field>
+            <field name="model">stock.shipment.internal,-1</field>
+            <field name="action" ref="act_quality_inspection_form_relate"/>
+        </record>
+    </data>
+</tryton>

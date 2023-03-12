@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<form>
+    <label name="alert_sequence"/>
+    <field name="alert_sequence"/>
+    <label name="inspection_sequence"/>
+    <field name="inspection_sequence"/>
+</form>

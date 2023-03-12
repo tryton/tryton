@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<form>
+    <label name="name"/>
+    <field name="name" colspan="3"/>
+
+    <label name="operations"/>
+    <field name="operations" yexpand="0"/>
+    <label name="frequency"/>
+    <group col="-1" id="frequency">
+        <field name="frequency" factor="100" xexpand="0"/>
+        <label name="frequency" string="%" xalign="0.0" xexpand="1"/>
+    </group>
+
+    <label name="company"/>
+    <field name="company"/>
+    <newline/>
+
+    <label name="product_category"/>
+    <field name="product_category"/>
+    <label name="product"/>
+    <field name="product"/>
+
+    <field name="points" colspan="4"/>
+</form>

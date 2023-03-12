@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<form>
+    <label name="control"/>
+    <field name="control"/>
+    <label name="number"/>
+    <field name="number"/>
+
+    <label name="origin"/>
+    <field name="origin"/>
+
+    <notebook>
+        <page name="points">
+            <field name="points" colspan="4"/>
+        </page>
+        <page name="alerts">
+            <field name="alerts" colspan="4"/>
+        </page>
+        <page string="Other Info" id="other">
+            <label name="company"/>
+            <field name="company"/>
+            <newline/>
+
+            <label name="processed_by"/>
+            <field name="processed_by"/>
+            <label name="processed_at"/>
+            <field name="processed_at"/>
+
+            <label name="passed_by"/>
+            <field name="passed_by"/>
+            <label name="failed_by"/>
+            <field name="failed_by"/>
+        </page>
+    </notebook>
+
+    <label name="state"/>
+    <field name="state"/>
+    <group col="-1" colspan="2" id="buttons">
+        <button name="pending"/>
+        <button name="process"/>
+        <button name="pass_"/>
+        <button name="fail"/>
+    </group>
+</form>

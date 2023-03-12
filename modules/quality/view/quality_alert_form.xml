@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<form>
+    <label name="title"/>
+    <field name="title"/>
+    <label name="number"/>
+    <field name="number"/>
+
+    <label name="origin"/>
+    <field name="origin"/>
+
+    <notebook>
+        <page name="description">
+            <separator name="description" colspan="4"/>
+            <field name="description" colspan="4"/>
+        </page>
+        <page string="Other Info" id="other">
+            <label name="company"/>
+            <field name="company"/>
+            <newline/>
+
+            <label name="processed_by"/>
+            <field name="processed_by"/>
+            <label name="deferred_by"/>
+            <field name="deferred_by"/>
+
+            <label name="resolved_by"/>
+            <field name="resolved_by"/>
+        </page>
+    </notebook>
+
+    <label name="state"/>
+    <field name="state"/>
+    <group col="-1" colspan="2" id="buttons">
+        <button name="open"/>
+        <button name="process"/>
+        <button name="defer"/>
+        <button name="resolve"/>
+    </group>
+</form>

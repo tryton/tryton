@@ -53,6 +53,9 @@ Operational
 :ref:`Purchase <index-purchase>`
     Follows your purchases.
 
+:ref:`Quality <index-quality>`
+    Manage Quality.
+
 :ref:`Sale <index-sale>`
     Follows sale orders.
 

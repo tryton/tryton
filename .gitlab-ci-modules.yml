@@ -2793,6 +2793,28 @@ test-modules-purchase_shipment_cost-postgresql:
     PACKAGE: modules/purchase_shipment_cost
     TAG_PATTERN: '/^purchase_shipment_cost-.*/'
 
+check-doc-modules-quality:
+  extends: .check-doc
+  variables:
+    PACKAGE: modules/quality
+
+trigger-doc-build-modules-quality:
+  extends: .trigger-doc-build
+  variables:
+    PACKAGE: modules/quality
+
+test-modules-quality-sqlite:
+  extends: .test-sqlite
+  variables:
+    PACKAGE: modules/quality
+    TAG_PATTERN: '/^quality-.*/'
+
+test-modules-quality-postgresql:
+  extends: .test-postgresql
+  variables:
+    PACKAGE: modules/quality
+    TAG_PATTERN: '/^quality-.*/'
+
 check-doc-modules-sale:
   extends: .check-doc
   variables:
