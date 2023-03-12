@@ -2148,14 +2148,13 @@ class ReturnSale(Wizard):
 
     def do_return_(self, action):
         sales = self.records
-        return_sales = self.model.copy(sales)
-        for return_sale, sale in zip(return_sales, sales):
-            return_sale.origin = sale
-            for line in return_sale.lines:
-                if line.type == 'line':
-                    line.quantity *= -1
-            return_sale.lines = return_sale.lines  # Force saving
-        self.model.save(return_sales)
+        return_sales = self.model.copy(sales, default={
+                'origin': lambda data: (
+                    '%s,%s' % (self.model.__name__, data['id'])),
+                'lines.quantity': lambda data: (
+                    data['quantity'] * -1 if data['type'] == 'line'
+                    else data['quantity']),
+                })
 
         data = {'res_id': [s.id for s in return_sales]}
         if len(return_sales) == 1:
