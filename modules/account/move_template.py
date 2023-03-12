@@ -15,7 +15,9 @@ from trytond.transaction import Transaction
 from trytond.wizard import (
     Button, StateAction, StateTransition, StateView, Wizard)
 
-from .exceptions import MoveTemplateExpressionError, PeriodNotFoundError
+from .exceptions import (
+    MoveTemplateExpressionError, MoveTemplateKeywordValidationError,
+    PeriodNotFoundError)
 
 
 class MoveTemplate(DeactivableMixin, ModelSQL, ModelView):
@@ -86,6 +88,17 @@ class MoveTemplateKeyword(sequence_ordered(), ModelSQL, ModelView):
     def __setup__(cls):
         super().__setup__()
         cls.__access__.add('move')
+
+    @classmethod
+    def validate(cls, keywords):
+        for keyword in keywords:
+            keyword.check_name()
+
+    def check_name(self):
+        if self.name and not self.name.isidentifier():
+            raise MoveTemplateKeywordValidationError(
+                gettext('account.msg_name_not_valid',
+                    name=self.name))
 
     @staticmethod
     def default_required():

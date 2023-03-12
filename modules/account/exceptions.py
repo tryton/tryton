@@ -73,6 +73,10 @@ class MoveTemplateExpressionError(UserError):
     pass
 
 
+class MoveTemplateKeywordValidationError(ValidationError):
+    pass
+
+
 class CancelWarning(UserWarning):
     pass
 

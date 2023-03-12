@@ -146,7 +146,9 @@ Use the current period to cancel the move?</field>
         <record model="ir.message" id="msg_move_template_expession_not_number">
             <field name="text">The value "%(value)s" of "%(expression)s" from template "%(template)s" is not a number.</field>
         </record>
-
+        <record model="ir.message" id="msg_move_template_keyword_name_not_identifier">
+            <field name="text">The keyword name "%(name)s" is not a valid identifier.</field>
+        </record>
         <record model="ir.message" id="msg_write_reconciliation">
             <field name="text">You cannot modify any reconciliation.</field>
         </record>
