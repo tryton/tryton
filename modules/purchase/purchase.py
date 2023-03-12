@@ -2210,14 +2210,13 @@ class ReturnPurchase(Wizard):
 
     def do_return_(self, action):
         purchases = self.records
-        return_purchases = self.model.copy(purchases)
-        for return_purchase, purchase in zip(return_purchases, purchases):
-            return_purchase.origin = purchase
-            for line in return_purchase.lines:
-                if line.type == 'line':
-                    line.quantity *= -1
-            return_purchase.lines = return_purchase.lines  # Force saving
-        self.model.save(return_purchases)
+        return_purchases = self.model.copy(purchases, default={
+                'origin': lambda data: (
+                    '%s,%s' % (self.model.__name__, data['id'])),
+                'lines.quantity': lambda data: (
+                    data['quantity'] * -1 if data['type'] == 'line'
+                    else data['quantity']),
+                })
 
         data = {'res_id': [s.id for s in return_purchases]}
         if len(return_purchases) == 1:
