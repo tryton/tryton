@@ -229,10 +229,10 @@ def order_line_mixin(prefix):
                 move = None
             return move
 
-        def get_move_exception(self, name):
-            exception = super().get_move_exception(name)
+        def get_moves_exception(self, name):
+            exception = super().get_moves_exception(name)
             if self.components:
-                exception = any(c.move_exception for c in self.components)
+                exception = any(c.moves_exception for c in self.components)
             return exception
 
         def get_moves_progress(self, name):
@@ -269,8 +269,8 @@ def order_line_component_mixin(prefix):
         moves_recreated = fields.Many2Many(
             prefix + '.line.component-recreated-stock.move',
             'component', 'move', "Recreated Moves", readonly=True)
-        move_exception = fields.Function(
-            fields.Boolean('Moves Exception'), 'get_move_exception')
+        moves_exception = fields.Function(
+            fields.Boolean('Moves Exception'), 'get_moves_exception')
         moves_progress = fields.Function(
             fields.Float("Moves Progress", digits=(1, 4)),
             'get_moves_progress')
@@ -351,13 +351,11 @@ def order_line_component_mixin(prefix):
                         move.uom, move.quantity, self.unit)
             return quantity
 
-        def get_move_exception(self, name):
+        def get_moves_exception(self, name):
             skips = set(self.moves_ignored)
             skips.update(self.moves_recreated)
-            for move in self.moves:
-                if move.state == 'cancelled' and move not in skips:
-                    return True
-            return False
+            return any(
+                m.state == 'cancelled' for m in self.moves if m not in skips)
 
         def get_moves_progress(self, name):
             progress = None

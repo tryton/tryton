@@ -633,7 +633,7 @@ class Purchase(
         Return the shipment state for the purchase.
         '''
         if self.moves:
-            if any(l.move_exception for l in self.lines):
+            if any(l.moves_exception for l in self.lines):
                 return 'exception'
             elif all(l.moves_progress >= 1 for l in self.lines
                     if l.moves_progress is not None):
@@ -1225,8 +1225,8 @@ class Line(sequence_ordered(), ModelSQL, ModelView):
             'purchase_line', 'move', 'Ignored Moves', readonly=True)
     moves_recreated = fields.Many2Many('purchase.line-recreated-stock.move',
             'purchase_line', 'move', 'Recreated Moves', readonly=True)
-    move_exception = fields.Function(fields.Boolean('Moves Exception'),
-            'get_move_exception')
+    moves_exception = fields.Function(
+        fields.Boolean("Moves Exception"), 'get_moves_exception')
     moves_progress = fields.Function(
         fields.Float("Moves Progress", digits=(1, 4)),
         'get_moves_progress')
@@ -1344,14 +1344,11 @@ class Line(sequence_ordered(), ModelSQL, ModelView):
                 quantity -= Uom.compute_qty(move.uom, move.quantity, self.unit)
         return quantity
 
-    def get_move_exception(self, name):
-        skip_ids = set(x.id for x in self.moves_ignored
-            + self.moves_recreated)
-        for move in self.moves:
-            if move.state == 'cancelled' \
-                    and move.id not in skip_ids:
-                return True
-        return False
+    def get_moves_exception(self, name):
+        skips = set(self.moves_ignored)
+        skips.update(self.moves_recreated)
+        return any(
+            m.state == 'cancelled' for m in self.moves if m not in skips)
 
     def get_moves_progress(self, name):
         progress = None
