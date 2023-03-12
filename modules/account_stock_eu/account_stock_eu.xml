@@ -1,0 +1,365 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data>
+        <record model="ir.ui.view" id="intrastat_transaction_view_form">
+            <field name="model">account.stock.eu.intrastat.transaction</field>
+            <field name="type">form</field>
+            <field name="name">intrastat_transaction_form</field>
+        </record>
+
+        <record model="ir.ui.view" id="intrastat_transaction_view_list">
+            <field name="model">account.stock.eu.intrastat.transaction</field>
+            <field name="type">tree</field>
+            <field name="name">intrastat_transaction_list</field>
+        </record>
+
+        <record model="ir.model.access" id="access_intrastat_transaction">
+            <field name="model" search="[('model', '=', 'account.stock.eu.intrastat.transaction')]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+
+        <record model="ir.ui.view" id="intrastat_transport_view_form">
+            <field name="model">account.stock.eu.intrastat.transport</field>
+            <field name="type">form</field>
+            <field name="name">intrastat_transport_form</field>
+        </record>
+
+        <record model="ir.ui.view" id="intrastat_transport_view_list">
+            <field name="model">account.stock.eu.intrastat.transport</field>
+            <field name="type">tree</field>
+            <field name="name">intrastat_transport_list</field>
+        </record>
+
+        <record model="ir.model.access" id="access_intrastat_transport">
+            <field name="model" search="[('model', '=', 'account.stock.eu.intrastat.transport')]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+
+        <record model="ir.ui.view" id="intrastat_declaration_view_form">
+            <field name="model">account.stock.eu.intrastat.declaration</field>
+            <field name="type">form</field>
+            <field name="name">intrastat_declaration_form</field>
+        </record>
+
+        <record model="ir.ui.view" id="intrastat_declaration_view_list">
+            <field name="model">account.stock.eu.intrastat.declaration</field>
+            <field name="type">tree</field>
+            <field name="name">intrastat_declaration_list</field>
+        </record>
+
+        <record model="ir.action.act_window" id="act_intrastat_declaration_form">
+            <field name="name">Intrastat Declarations</field>
+            <field name="res_model">account.stock.eu.intrastat.declaration</field>
+        </record>
+        <record model="ir.action.act_window.view" id="act_intrastat_declaration_form_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="intrastat_declaration_view_list"/>
+            <field name="act_window" ref="act_intrastat_declaration_form"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_intrastat_declaration_form_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="intrastat_declaration_view_form"/>
+            <field name="act_window" ref="act_intrastat_declaration_form"/>
+        </record>
+        <record model="ir.action.act_window.domain" id="act_intrastat_declaration_form_domain_opened">
+            <field name="name">Opened</field>
+            <field name="sequence" eval="10"/>
+            <field name="domain" eval="[('state', '=', 'opened')]" pyson="1"/>
+            <field name="count" eval="True"/>
+            <field name="act_window" ref="act_intrastat_declaration_form"/>
+        </record>
+        <record model="ir.action.act_window.domain" id="act_intrastat_declaration_form_domain_all">
+            <field name="name">All</field>
+            <field name="sequence" eval="9999"/>
+            <field name="domain"></field>
+            <field name="act_window" ref="act_intrastat_declaration_form"/>
+        </record>
+
+        <menuitem
+            parent="account.menu_processing"
+            action="act_intrastat_declaration_form"
+            sequence="50"
+            id="menu_intrastat_declaration"/>
+
+        <record model="ir.model.button" id="intrastat_declaration_export_button">
+            <field name="name">export</field>
+            <field name="string">Export</field>
+            <field name="model" search="[('model', '=', 'account.stock.eu.intrastat.declaration')]"/>
+        </record>
+
+        <record model="ir.model.access" id="access_intrastat_declaration">
+            <field name="model" search="[('model', '=', 'account.stock.eu.intrastat.declaration')]"/>
+            <field name="perm_read" eval="False"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+
+        <record model="ir.model.access" id="access_intrastat_declaration_account">
+            <field name="model" search="[('model', '=', 'account.stock.eu.intrastat.declaration')]"/>
+            <field name="group" ref="account.group_account"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+
+        <record model="ir.rule.group" id="rule_group_intrastat_declaration_companies">
+            <field name="name">User in companies</field>
+            <field name="model" search="[('model', '=', 'account.stock.eu.intrastat.declaration')]"/>
+            <field name="global_p" eval="True"/>
+        </record>
+        <record model="ir.rule" id="rule_intrastat_declaration_companies">
+            <field name="domain"
+                eval="[('company', 'in', Eval('companies', []))]"
+                pyson="1"/>
+            <field name="rule_group" ref="rule_group_intrastat_declaration_companies"/>
+        </record>
+
+        <record model="ir.ui.view" id="intrastat_declaration_context_view_form">
+            <field name="model">account.stock.eu.intrastat.declaration.context</field>
+            <field name="type">form</field>
+            <field name="name">intrastat_declaration_context_form</field>
+        </record>
+
+        <record model="ir.ui.view" id="intrastat_declaration_line_view_list">
+            <field name="model">account.stock.eu.intrastat.declaration.line</field>
+            <field name="type">tree</field>
+            <field name="name">intrastat_declaration_line_list</field>
+        </record>
+
+        <record model="ir.model.access" id="access_intrastat_declaration_line">
+            <field name="model" search="[('model', '=', 'account.stock.eu.intrastat.declaration.line')]"/>
+            <field name="perm_read" eval="False"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+
+        <record model="ir.model.access" id="access_intrastat_declaration_line_account">
+            <field name="model" search="[('model', '=', 'account.stock.eu.intrastat.declaration.line')]"/>
+            <field name="group" ref="account.group_account"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+
+        <record model="ir.action.act_window" id="act_intrastat_declaration_line_form">
+            <field name="name">Intrastat Declaration Lines</field>
+            <field name="res_model">account.stock.eu.intrastat.declaration.line</field>
+            <field name="context" eval="{'declaration': Eval('active_id')}" pyson="1"/>
+            <field name="context_model">account.stock.eu.intrastat.declaration.context</field>
+        </record>
+        <record model="ir.action.act_window.view" id="act_intrastat_declaration_line_form_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="intrastat_declaration_line_view_list"/>
+            <field name="act_window" ref="act_intrastat_declaration_line_form"/>
+        </record>
+        <record model="ir.action.keyword" id="act_intrastat_declaration_line_form_keyword1">
+            <field name="keyword">tree_open</field>
+            <field name="model">account.stock.eu.intrastat.declaration,-1</field>
+            <field name="action" ref="act_intrastat_declaration_line_form"/>
+        </record>
+        <record model="ir.action.keyword" id="act_intrastat_declaration_line_form_keyword2">
+            <field name="keyword">form_relate</field>
+            <field name="model">account.stock.eu.intrastat.declaration,-1</field>
+            <field name="action" ref="act_intrastat_declaration_line_form"/>
+        </record>
+
+        <record model="ir.action.wizard" id="wizard_intrastat_declaration_export">
+            <field name="name">Export Intrastat Declaration</field>
+            <field name="wiz_name">account.stock.eu.intrastat.declaration.export</field>
+        </record>
+
+        <record model="ir.ui.view" id="intrastat_declaration_export_result_view_form">
+            <field name="model">account.stock.eu.intrastat.declaration.export.result</field>
+            <field name="type">form</field>
+            <field name="name">intrastat_declaration_export_result_form</field>
+        </record>
+    </data>
+    <data depends="incoterm">
+        <record model="ir.ui.view" id="intrastat_declaration_line_view_list_incoterm">
+            <field name="model">account.stock.eu.intrastat.declaration.line</field>
+            <field name="inherit" ref="intrastat_declaration_line_view_list"/>
+            <field name="name">intrastat_declaration_line_list_incoterm</field>
+        </record>
+    </data>
+    <data grouped="1">
+        <record model="account.stock.eu.intrastat.transaction" id="intrastat_transaction_1">
+            <field name="code">1</field>
+            <field name="description">Transactions involving actual change of ownership with financial compensation</field>
+        </record>
+        <record model="account.stock.eu.intrastat.transaction" id="intrastat_transaction_2">
+            <field name="code">2</field>
+            <field name="description">Return and replacement of goods free of charge after registration of the original transaction</field>
+        </record>
+        <record model="account.stock.eu.intrastat.transaction" id="intrastat_transaction_3">
+            <field name="code">3</field>
+            <field name="description">Transactions involving intended change of ownership or change of ownership without financial compensation</field>
+        </record>
+        <record model="account.stock.eu.intrastat.transaction" id="intrastat_transaction_4">
+            <field name="code">4</field>
+            <field name="description">Transactions with a view to processing under contract (not involving change of ownership)</field>
+        </record>
+        <record model="account.stock.eu.intrastat.transaction" id="intrastat_transaction_5">
+            <field name="code">5</field>
+            <field name="description">Transactions following processing under contract (not involving change of ownership)</field>
+        </record>
+        <record model="account.stock.eu.intrastat.transaction" id="intrastat_transaction_6">
+            <field name="code">6</field>
+            <field name="description">Particular transactions recorded for national purposes</field>
+        </record>
+        <record model="account.stock.eu.intrastat.transaction" id="intrastat_transaction_7">
+            <field name="code">7</field>
+            <field name="description">Transactions with a view to/following customs clearance (not involving change of ownership, related to goods in quasi-import or export)</field>
+        </record>
+        <record model="account.stock.eu.intrastat.transaction" id="intrastat_transaction_8">
+            <field name="code">8</field>
+            <field name="description">Transactions involving the supply of building materials and technical equipment under a general construction or civil engineering contract for which no separate invoicing of the goods is required and an invoice for the total contract is issued</field>
+        </record>
+        <record model="account.stock.eu.intrastat.transaction" id="intrastat_transaction_9">
+            <field name="code">9</field>
+            <field name="description">Other transactions which cannot be classified under other codes</field>
+        </record>
+    </data>
+    <data grouped="1">
+        <record model="account.stock.eu.intrastat.transaction" id="intrastat_transaction_11">
+            <field name="code">11</field>
+            <field name="parent" ref="intrastat_transaction_1"/>
+            <field name="description">Outright sale/purchase except direct trade with/by private consumers</field>
+        </record>
+        <record model="account.stock.eu.intrastat.transaction" id="intrastat_transaction_12">
+            <field name="code">12</field>
+            <field name="parent" ref="intrastat_transaction_1"/>
+            <field name="description">Direct trade with/by private consumers (incl. distance sale)</field>
+        </record>
+        <record model="account.stock.eu.intrastat.transaction" id="intrastat_transaction_21">
+            <field name="code">21</field>
+            <field name="parent" ref="intrastat_transaction_2"/>
+            <field name="description">Return of goods</field>
+        </record>
+        <record model="account.stock.eu.intrastat.transaction" id="intrastat_transaction_22">
+            <field name="code">22</field>
+            <field name="parent" ref="intrastat_transaction_2"/>
+            <field name="description">Replacement for returned goods</field>
+        </record>
+        <record model="account.stock.eu.intrastat.transaction" id="intrastat_transaction_23">
+            <field name="code">23</field>
+            <field name="parent" ref="intrastat_transaction_2"/>
+            <field name="description">Replacement (e.g. under warranty) for goods not being returned</field>
+        </record>
+        <record model="account.stock.eu.intrastat.transaction" id="intrastat_transaction_31">
+            <field name="code">31</field>
+            <field name="parent" ref="intrastat_transaction_3"/>
+            <field name="description">Movements to/from a warehouse (excluding call off and consignment stock)</field>
+        </record>
+        <record model="account.stock.eu.intrastat.transaction" id="intrastat_transaction_32">
+            <field name="code">32</field>
+            <field name="parent" ref="intrastat_transaction_3"/>
+            <field name="description">Supply for sale on approval or after trial (including call-off and consignment stock)</field>
+        </record>
+        <record model="account.stock.eu.intrastat.transaction" id="intrastat_transaction_33">
+            <field name="code">33</field>
+            <field name="parent" ref="intrastat_transaction_3"/>
+            <field name="description">Financial leasing</field>
+        </record>
+        <record model="account.stock.eu.intrastat.transaction" id="intrastat_transaction_34">
+            <field name="code">34</field>
+            <field name="parent" ref="intrastat_transaction_3"/>
+            <field name="description">Transactions involving transfer of ownership without financial compensation</field>
+        </record>
+        <record model="account.stock.eu.intrastat.transaction" id="intrastat_transaction_41">
+            <field name="code">41</field>
+            <field name="parent" ref="intrastat_transaction_4"/>
+            <field name="description">Goods expected to return to the initial Member State/country of export</field>
+        </record>
+        <record model="account.stock.eu.intrastat.transaction" id="intrastat_transaction_42">
+            <field name="code">42</field>
+            <field name="parent" ref="intrastat_transaction_4"/>
+            <field name="description">Goods not expected to return to the initial Member State/country of export</field>
+        </record>
+        <record model="account.stock.eu.intrastat.transaction" id="intrastat_transaction_51">
+            <field name="code">51</field>
+            <field name="parent" ref="intrastat_transaction_5"/>
+            <field name="description">Goods returning to the initial Member State/country of export</field>
+        </record>
+        <record model="account.stock.eu.intrastat.transaction" id="intrastat_transaction_52">
+            <field name="code">52</field>
+            <field name="parent" ref="intrastat_transaction_5"/>
+            <field name="description">Goods not returning to the initial Member State/country of export</field>
+        </record>
+        <record model="account.stock.eu.intrastat.transaction" id="intrastat_transaction_60">
+            <field name="code">60</field>
+            <field name="parent" ref="intrastat_transaction_6"/>
+            <field name="description">Particular transactions recorded for national purposes</field>
+        </record>
+        <record model="account.stock.eu.intrastat.transaction" id="intrastat_transaction_71">
+            <field name="code">71</field>
+            <field name="parent" ref="intrastat_transaction_7"/>
+            <field name="description">Release of goods for free circulation in a Member State with a subsequent export to another Member State</field>
+        </record>
+        <record model="account.stock.eu.intrastat.transaction" id="intrastat_transaction_72">
+            <field name="code">72</field>
+            <field name="parent" ref="intrastat_transaction_7"/>
+            <field name="description">Transportation of goods from one Member State to another Member State to place the goods under the export procedure</field>
+        </record>
+        <record model="account.stock.eu.intrastat.transaction" id="intrastat_transaction_80">
+            <field name="code">80</field>
+            <field name="parent" ref="intrastat_transaction_8"/>
+            <field name="description">Transactions involving the supply of building materials and technical equipment under a general construction or civil engineering contract for which no separate invoicing of the goods is required and an invoice for the total contract is issued</field>
+        </record>
+        <record model="account.stock.eu.intrastat.transaction" id="intrastat_transaction_91">
+            <field name="code">91</field>
+            <field name="parent" ref="intrastat_transaction_9"/>
+            <field name="description">Hire, loan, and operational leasing longer than 24 months</field>
+        </record>
+        <record model="account.stock.eu.intrastat.transaction" id="intrastat_transaction_99">
+            <field name="code">99</field>
+            <field name="parent" ref="intrastat_transaction_9"/>
+            <field name="description">Other</field>
+        </record>
+    </data>
+    <data grouped="1">
+        <record model="account.stock.eu.intrastat.transport" id="intrastat_transport_1">
+            <field name="code">1</field>
+            <field name="name">Sea transport</field>
+        </record>
+        <record model="account.stock.eu.intrastat.transport" id="intrastat_transport_2">
+            <field name="code">2</field>
+            <field name="name">Railway transport</field>
+        </record>
+        <record model="account.stock.eu.intrastat.transport" id="intrastat_transport_3">
+            <field name="code">3</field>
+            <field name="name">Road transport</field>
+        </record>
+        <record model="account.stock.eu.intrastat.transport" id="intrastat_transport_4">
+            <field name="code">4</field>
+            <field name="name">Air transport</field>
+        </record>
+        <record model="account.stock.eu.intrastat.transport" id="intrastat_transport_5">
+            <field name="code">5</field>
+            <field name="name">Postal consignments</field>
+        </record>
+        <record model="account.stock.eu.intrastat.transport" id="intrastat_transport_7">
+            <field name="code">7</field>
+            <field name="name">Fixed transport devices</field>
+        </record>
+        <record model="account.stock.eu.intrastat.transport" id="intrastat_transport_8">
+            <field name="code">8</field>
+            <field name="name">Inland waterway transport</field>
+        </record>
+        <record model="account.stock.eu.intrastat.transport" id="intrastat_transport_9">
+            <field name="code">9</field>
+            <field name="name">Own propulsion</field>
+        </record>
+    </data>
+</tryton>

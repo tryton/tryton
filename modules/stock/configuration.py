@@ -16,6 +16,7 @@ shipment_internal_transit = fields.Many2One(
     'stock.location', "Internal Shipment Transit", required=True,
     domain=[
         ('type', '=', 'storage'),
+        ('parent', '=', None),
         ],
     help="The default location used for stock that is in transit between "
     "warehouses.")

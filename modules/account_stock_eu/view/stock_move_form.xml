@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<data>
+    <xpath expr="//notebook" position="inside">
+        <page string="Intrastat" id="intrastat">
+            <label name="intrastat_type" string="Type"/>
+            <field name="intrastat_type"/>
+            <newline/>
+
+            <label name="intrastat_warehouse_country" string="Warehouse Country"/>
+            <field name="intrastat_warehouse_country"/>
+            <label name="intrastat_country" string="Country"/>
+            <field name="intrastat_country"/>
+
+            <label name="intrastat_subdivision" string="Subdivision"/>
+            <field name="intrastat_subdivision"/>
+            <newline/>
+
+            <label name="intrastat_transaction" string="Transaction"/>
+            <field name="intrastat_transaction"/>
+            <label name="intrastat_value" string="Value"/>
+            <field name="intrastat_value"/>
+
+            <label name="intrastat_tariff_code" string="Tariff Code"/>
+            <field name="intrastat_tariff_code"/>
+            <label name="intrastat_additional_unit" string="Additional Unit"/>
+            <field name="intrastat_additional_unit" symbol="intrastat_tariff_code_uom"/>
+
+            <label name="intrastat_country_of_origin" string="Country of Origin"/>
+            <field name="intrastat_country_of_origin"/>
+            <label name="intrastat_vat" string="VAT"/>
+            <field name="intrastat_vat"/>
+        </page>
+    </xpath>
+</data>

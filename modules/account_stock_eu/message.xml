@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data grouped="1">
+        <record model="ir.message" id="msg_intrastat_declaration_company_country_month_unique">
+            <field name="text">Intrastat declaration must be unique per month, country and company.</field>
+        </record>
+        <record model="ir.message" id="msg_intrastat_declaration_month_first_day">
+            <field name="text">The day of intrastat declaration must be the first of the month.</field>
+        </record>
+        <record model="ir.message" id="msg_move_counterparty_not_found">
+            <field name="text">Could not find the intrastat counterparty of move "%(move)s".</field>
+        </record>
+        <record model="ir.message" id="msg_move_country_not_found">
+            <field name="text">Could not find the intrastat countries for moves "%(moves)s".</field>
+        </record>
+    </data>
+</tryton>

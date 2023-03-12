@@ -144,16 +144,24 @@ class Move(metaclass=PoolMeta):
                 required = True
         return required
 
+    @property
+    def is_supplier_consignment(self):
+        return (self.from_location.type == 'supplier'
+            and self.to_location.type in {'storage', 'production', 'customer'}
+            and self.from_location.consignment_party)
+
+    @property
+    def is_customer_consignment(self):
+        return (
+            self.from_location.type in {'storage', 'production', 'supplier'}
+            and self.to_location.type == 'customer'
+            and self.from_location.consignment_party)
+
     def get_invoice_lines_consignment(self):
         lines = []
-        if (self.from_location.type == 'supplier'
-                and self.to_location.type in {
-                    'storage', 'production', 'customer'}
-                and self.from_location.consignment_party):
+        if self.is_supplier_consignment:
             lines.append(self._get_supplier_invoice_line_consignment())
-        if (self.from_location.type in {'storage', 'production', 'supplier'}
-                and self.to_location.type == 'customer'
-                and self.from_location.consignment_party):
+        if self.is_customer_consignment:
             lines.append(self._get_customer_invoice_line_consignment())
         return lines
 

@@ -137,6 +137,9 @@ Accounting
 `Stock Continental </projects/modules-account-stock-continental/en/latest>`_
     Values stock using the continental method.
 
+`Stock European </projects/modules-account-stock-eu/en/latest>`_
+    Common stock European requirements.
+
 `Stock Landed Cost </projects/modules-account-stock-landed-cost/en/latest>`_
     Allocates landed cost.
 

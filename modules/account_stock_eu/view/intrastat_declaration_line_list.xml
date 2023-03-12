@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tree>
+    <field name="type"/>
+    <field name="country" expand="2"/>
+    <field name="subdivision" expand="2"/>
+    <field name="tariff_code" expand="1"/>
+    <field name="weight"/>
+    <field name="value"/>
+    <field name="transaction"/>
+    <field name="additional_unit"/>
+    <field name="country_of_origin" expand="1"/>
+    <field name="vat" expand="1"/>
+</tree>

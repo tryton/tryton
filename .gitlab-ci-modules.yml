@@ -967,6 +967,28 @@ test-modules-account_stock_continental-postgresql:
     PACKAGE: modules/account_stock_continental
     TAG_PATTERN: '/^account_stock_continental-.*/'
 
+check-doc-modules-account_stock_eu:
+  extends: .check-doc
+  variables:
+    PACKAGE: modules/account_stock_eu
+
+trigger-doc-build-modules-account_stock_eu:
+  extends: .trigger-doc-build
+  variables:
+    PACKAGE: modules/account_stock_eu
+
+test-modules-account_stock_eu-sqlite:
+  extends: .test-sqlite
+  variables:
+    PACKAGE: modules/account_stock_eu
+    TAG_PATTERN: '/^account_stock_eu-.*/'
+
+test-modules-account_stock_eu-postgresql:
+  extends: .test-postgresql
+  variables:
+    PACKAGE: modules/account_stock_eu
+    TAG_PATTERN: '/^account_stock_eu-.*/'
+
 check-doc-modules-account_stock_landed_cost:
   extends: .check-doc
   variables:

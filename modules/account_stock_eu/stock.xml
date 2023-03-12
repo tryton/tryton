@@ -1,0 +1,177 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data>
+        <record model="ir.ui.view" id="stock_move_view_form">
+            <field name="model">stock.move</field>
+            <field name="inherit" ref="stock.move_view_form"/>
+            <field name="name">stock_move_form</field>
+        </record>
+
+        <record model="ir.model.field.access" id="account_stock_move_intrastat_type">
+            <field name="field" search="[('model.model', '=', 'stock.move'), ('name', '=', 'intrastat_type')]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+        </record>
+        <record model="ir.model.field.access" id="account_stock_move_intrastat_type_account">
+            <field name="field" search="[('model.model', '=', 'stock.move'), ('name', '=', 'intrastat_type')]"/>
+            <field name="group" ref="account.group_account"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+        </record>
+
+        <record model="ir.model.field.access" id="account_stock_move_intrastat_warehouse_country">
+            <field name="field" search="[('model.model', '=', 'stock.move'), ('name', '=', 'intrastat_warehouse_country')]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+        </record>
+        <record model="ir.model.field.access" id="account_stock_move_intrastat_warehouse_country_account">
+            <field name="field" search="[('model.model', '=', 'stock.move'), ('name', '=', 'intrastat_warehouse_country')]"/>
+            <field name="group" ref="account.group_account"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+        </record>
+
+        <record model="ir.model.field.access" id="account_stock_move_intrastat_country">
+            <field name="field" search="[('model.model', '=', 'stock.move'), ('name', '=', 'intrastat_country')]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+        </record>
+        <record model="ir.model.field.access" id="account_stock_move_intrastat_country_account">
+            <field name="field" search="[('model.model', '=', 'stock.move'), ('name', '=', 'intrastat_country')]"/>
+            <field name="group" ref="account.group_account"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+        </record>
+
+        <record model="ir.model.field.access" id="account_stock_move_intrastat_subdivision">
+            <field name="field" search="[('model.model', '=', 'stock.move'), ('name', '=', 'intrastat_subdivision')]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+        </record>
+        <record model="ir.model.field.access" id="account_stock_move_intrastat_subdivision_account">
+            <field name="field" search="[('model.model', '=', 'stock.move'), ('name', '=', 'intrastat_subdivision')]"/>
+            <field name="group" ref="account.group_account"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+        </record>
+
+        <record model="ir.model.field.access" id="account_stock_move_intrastat_tariff_code">
+            <field name="field" search="[('model.model', '=', 'stock.move'), ('name', '=', 'intrastat_tariff_code')]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+        </record>
+        <record model="ir.model.field.access" id="account_stock_move_intrastat_tariff_code_account">
+            <field name="field" search="[('model.model', '=', 'stock.move'), ('name', '=', 'intrastat_tariff_code')]"/>
+            <field name="group" ref="account.group_account"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+        </record>
+
+        <record model="ir.model.field.access" id="account_stock_move_intrastat_transaction">
+            <field name="field" search="[('model.model', '=', 'stock.move'), ('name', '=', 'intrastat_transaction')]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+        </record>
+        <record model="ir.model.field.access" id="account_stock_move_intrastat_transaction_account">
+            <field name="field" search="[('model.model', '=', 'stock.move'), ('name', '=', 'intrastat_transaction')]"/>
+            <field name="group" ref="account.group_account"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+        </record>
+
+        <record model="ir.model.field.access" id="account_stock_move_intrastat_additional_unit">
+            <field name="field" search="[('model.model', '=', 'stock.move'), ('name', '=', 'intrastat_additional_unit')]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+        </record>
+        <record model="ir.model.field.access" id="account_stock_move_intrastat_additional_unit_account">
+            <field name="field" search="[('model.model', '=', 'stock.move'), ('name', '=', 'intrastat_additional_unit')]"/>
+            <field name="group" ref="account.group_account"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+        </record>
+
+        <record model="ir.model.field.access" id="account_stock_move_intrastat_country_of_origin">
+            <field name="field" search="[('model.model', '=', 'stock.move'), ('name', '=', 'intrastat_country_of_origin')]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+        </record>
+        <record model="ir.model.field.access" id="account_stock_move_intrastat_country_of_origin_account">
+            <field name="field" search="[('model.model', '=', 'stock.move'), ('name', '=', 'intrastat_country_of_origin')]"/>
+            <field name="group" ref="account.group_account"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+        </record>
+
+        <record model="ir.model.field.access" id="account_stock_move_intrastat_vat">
+            <field name="field" search="[('model.model', '=', 'stock.move'), ('name', '=', 'intrastat_vat')]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+        </record>
+        <record model="ir.model.field.access" id="account_stock_move_intrastat_vat_account">
+            <field name="field" search="[('model.model', '=', 'stock.move'), ('name', '=', 'intrastat_vat')]"/>
+            <field name="group" ref="account.group_account"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+        </record>
+    </data>
+    <data depends="incoterm">
+        <record model="ir.ui.view" id="stock_move_view_form_incoterm">
+            <field name="model">stock.move</field>
+            <field name="inherit" ref="stock.move_view_form"/>
+            <field name="priority" eval="20"/>
+            <field name="name">stock_move_form_incoterm</field>
+        </record>
+
+        <record model="ir.model.field.access" id="account_stock_move_intrastat_transport">
+            <field name="field" search="[('model.model', '=', 'stock.move'), ('name', '=', 'intrastat_transport')]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+        </record>
+        <record model="ir.model.field.access" id="account_stock_move_intrastat_transport_account">
+            <field name="field" search="[('model.model', '=', 'stock.move'), ('name', '=', 'intrastat_transport')]"/>
+            <field name="group" ref="account.group_account"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+        </record>
+
+        <record model="ir.model.field.access" id="account_stock_move_intrastat_incoterm">
+            <field name="field" search="[('model.model', '=', 'stock.move'), ('name', '=', 'intrastat_incoterm')]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+        </record>
+        <record model="ir.model.field.access" id="account_stock_move_intrastat_incoterm_account">
+            <field name="field" search="[('model.model', '=', 'stock.move'), ('name', '=', 'intrastat_incoterm')]"/>
+            <field name="group" ref="account.group_account"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+        </record>
+    </data>
+    <data>
+        <record model="ir.ui.view" id="stock_shipment_in_view_form">
+            <field name="model">stock.shipment.in</field>
+            <field name="inherit" ref="stock.shipment_in_view_form"/>
+            <field name="name">stock_shipment_form</field>
+        </record>
+
+        <record model="ir.ui.view" id="stock_shipment_in_return_view_form">
+            <field name="model">stock.shipment.in.return</field>
+            <field name="inherit" ref="stock.shipment_in_return_view_form"/>
+            <field name="name">stock_shipment_form</field>
+        </record>
+
+        <record model="ir.ui.view" id="stock_shipment_out_view_form">
+            <field name="model">stock.shipment.out</field>
+            <field name="inherit" ref="stock.shipment_out_view_form"/>
+            <field name="name">stock_shipment_form</field>
+        </record>
+
+        <record model="ir.ui.view" id="stock_shipment_out_return_view_form">
+            <field name="model">stock.shipment.out.return</field>
+            <field name="inherit" ref="stock.shipment_out_return_view_form"/>
+            <field name="name">stock_shipment_form</field>
+        </record>
+    </data>
+</tryton>
