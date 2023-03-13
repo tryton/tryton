@@ -685,7 +685,7 @@ class Mandate(Workflow, ModelSQL, ModelView):
 
     @property
     def is_valid(self):
-        if self.state == 'validated':
+        if self.state == 'validated' and self.account_number.active:
             if self.type == 'one-off':
                 if not self.has_payments:
                     return True
