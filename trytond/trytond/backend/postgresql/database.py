@@ -416,17 +416,22 @@ class Database(DatabaseInterface):
 
     def nextid(self, connection, table):
         cursor = connection.cursor()
-        cursor.execute("SELECT NEXTVAL(%s)", (table + '_id_seq',))
+        cursor.execute(
+            "SELECT NEXTVAL(pg_get_serial_sequence(%s, %s))", (table, 'id'))
         return cursor.fetchone()[0]
 
     def setnextid(self, connection, table, value):
         cursor = connection.cursor()
-        cursor.execute("SELECT SETVAL(%s, %s)", (table + '_id_seq', value))
+        cursor.execute(
+            "SELECT SETVAL(pg_get_serial_sequence(%s, %s), %s)",
+            (table, 'id', value))
 
     def currid(self, connection, table):
         cursor = connection.cursor()
+        cursor.execute("SELECT pg_get_serial_sequence(%s, %s)", (table, 'id'))
+        sequence_name, = cursor.fetchone()
         cursor.execute(SQL("SELECT last_value FROM {}").format(
-                Identifier(table + '_id_seq')))
+                Identifier(*sequence_name.split('.'))))
         return cursor.fetchone()[0]
 
     def lock(self, connection, table):
