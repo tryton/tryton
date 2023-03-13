@@ -315,7 +315,7 @@ def order_line_component_mixin(prefix):
                 if sum_:
                     ratio = list_prices[component] / sum_
                 else:
-                    ratio = 1 / len(components)
+                    ratio = Decimal(1) / len(components)
                 if component.fixed:
                     ratio /= Decimal(str(component.quantity / quantity))
                 else:
