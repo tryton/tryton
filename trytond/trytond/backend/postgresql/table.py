@@ -372,7 +372,7 @@ class TableHandler(TableHandlerInterface):
                     column=Identifier(column_name),
                     reference=Identifier(reference),
                     action=SQL(on_delete)))
-        self._update_definitions(constraints=True)
+            self._update_definitions(constraints=True)
 
     def drop_fk(self, column_name, table=None):
         self.drop_constraint(column_name + '_fkey', table=table)
