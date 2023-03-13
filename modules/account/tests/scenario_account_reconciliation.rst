@@ -123,7 +123,6 @@ Create Moves for writeoff reconciliation::
 
 Create a write-off payment method::
 
-
     >>> Sequence = Model.get('ir.sequence')
     >>> sequence_journal, = Sequence.find(
     ...     [('sequence_type.name', '=', "Account Journal")], limit=1)
@@ -139,6 +138,7 @@ Create a write-off payment method::
     >>> writeoff_method.save()
 
 Reconcile Lines with write-off::
+
     >>> reconcile_lines = Wizard('account.move.reconcile_lines',
     ...     [reconcile1, reconcile2])
     >>> reconcile_lines.form_state == 'writeoff'
