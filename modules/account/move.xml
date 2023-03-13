@@ -310,23 +310,32 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.action.wizard" id="act_reconcile_lines">
             <field name="name">Reconcile Lines</field>
             <field name="wiz_name">account.move.reconcile_lines</field>
-            <field name="model">account.move.line</field>
+            <field name="model"></field>
         </record>
         <record model="ir.action.keyword" id="act_reconcile_lines_keyword">
             <field name="keyword">form_action</field>
             <field name="model">account.move.line,-1</field>
             <field name="action" ref="act_reconcile_lines"/>
         </record>
-        <!-- TODO keyword general ledger -->
+        <record model="ir.action.keyword" id="act_reconcile_lines_keyword_general_ledger_line">
+            <field name="keyword">form_action</field>
+            <field name="model">account.general_ledger.line,-1</field>
+            <field name="action" ref="act_reconcile_lines"/>
+        </record>
 
         <record model="ir.action.wizard" id="act_unreconcile_lines">
             <field name="name">Unreconcile Lines</field>
             <field name="wiz_name">account.move.unreconcile_lines</field>
-            <field name="model">account.move.line</field>
+            <field name="model"></field>
         </record>
         <record model="ir.action.keyword" id="act_unreconcile_lines_keyword">
             <field name="keyword">form_action</field>
             <field name="model">account.move.line,-1</field>
+            <field name="action" ref="act_unreconcile_lines"/>
+        </record>
+        <record model="ir.action.keyword" id="act_unreconcile_lines_keyword_general_ledger_line">
+            <field name="keyword">form_action</field>
+            <field name="model">account.general_ledger.line,-1</field>
             <field name="action" ref="act_unreconcile_lines"/>
         </record>
 

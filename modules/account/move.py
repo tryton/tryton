@@ -1840,6 +1840,21 @@ class ReconcileLines(Wizard):
             ])
     reconcile = StateTransition()
 
+    @classmethod
+    def check_access(cls, models=None):
+        transaction = Transaction()
+        if transaction.user:
+            context = transaction.context
+            models = set() if models is None else models.copy()
+            models.update({'account.move.line', 'account.general_ledger.line'})
+            model = context.get('active_model')
+            if model and model not in models:
+                raise AccessError(gettext(
+                        'ir.msg_access_wizard_model_error',
+                        wizard=cls.__name__,
+                        model=model))
+        super().check_access()
+
     def get_writeoff(self):
         "Return writeoff amount and company"
         company = None
@@ -1879,6 +1894,21 @@ class UnreconcileLines(Wizard):
     __name__ = 'account.move.unreconcile_lines'
     start_state = 'unreconcile'
     unreconcile = StateTransition()
+
+    @classmethod
+    def check_access(cls, models=None):
+        transaction = Transaction()
+        if transaction.user:
+            context = transaction.context
+            models = set() if models is None else models.copy()
+            models.update({'account.move.line', 'account.general_ledger.line'})
+            model = context.get('active_model')
+            if model and model not in models:
+                raise AccessError(gettext(
+                        'ir.msg_access_wizard_model_error',
+                        wizard=cls.__name__,
+                        model=model))
+        super().check_access()
 
     def transition_unreconcile(self):
         self.make_unreconciliation(self.records)

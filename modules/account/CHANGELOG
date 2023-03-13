@@ -1,3 +1,4 @@
+* Add reconcile and unreconcile from general ledger lines
 * Always raise exception when fiscal year or period are not found
 * Remove support for Python 3.7
 * Add support for Python 3.11

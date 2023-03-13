@@ -16,6 +16,8 @@ Activate modules::
 
     >>> config = activate_modules('account')
 
+    >>> GLLine = Model.get('account.general_ledger.line')
+
 Create company::
 
     >>> _ = create_company()
@@ -91,6 +93,41 @@ Reconcile Lines without writeoff::
     True
     >>> len(reconcile1.reconciliation.lines)
     2
+
+Unreconcile lines::
+
+    >>> unreconcile_lines = Wizard(
+    ...     'account.move.unreconcile_lines', [reconcile1])
+    >>> unreconcile_lines.state == 'end'
+    True
+    >>> reconcile1.reload()
+    >>> reconcile1.reconciliation
+    >>> reconcile2.reload()
+    >>> reconcile2.reconciliation
+
+Reconcile general ledger lines::
+
+    >>> gl_reconcile1 = GLLine(reconcile1.id)
+    >>> gl_reconcile2 = GLLine(reconcile2.id)
+    >>> reconcile_lines = Wizard('account.move.reconcile_lines',
+    ...     [gl_reconcile1, gl_reconcile2])
+    >>> reconcile_lines.state == 'end'
+    True
+    >>> gl_reconcile1.reload()
+    >>> gl_reconcile2.reload()
+    >>> gl_reconcile1.reconciliation == gl_reconcile2.reconciliation != None
+    True
+
+Unreconcile general ledger, lines::
+
+    >>> unreconcile_lines = Wizard(
+    ...     'account.move.unreconcile_lines', [gl_reconcile1])
+    >>> unreconcile_lines.state == 'end'
+    True
+    >>> gl_reconcile1.reload()
+    >>> gl_reconcile1.reconciliation
+    >>> gl_reconcile2.reload()
+    >>> gl_reconcile2.reconciliation
 
 Create Moves for writeoff reconciliation::
 

@@ -2460,6 +2460,13 @@ class GeneralLedgerLine(ModelSQL, ModelView):
                         account_parties[record_id] = id_
         return account_parties
 
+    @classmethod
+    def reconcile(cls, *lines_list, **kwargs):
+        pool = Pool()
+        Line = pool.get('account.move.line')
+        lines_list = [Line.browse(l) for l in lines_list]
+        return Line.reconcile(*lines_list, **kwargs)
+
 
 class GeneralLedgerLineContext(GeneralLedgerAccountContext):
     'General Ledger Line Context'
