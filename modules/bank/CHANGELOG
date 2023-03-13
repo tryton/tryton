@@ -1,3 +1,4 @@
+* Deactivate numbers when account is deactivated
 * Remove support for Python 3.7
 * Add support for Python 3.11
 

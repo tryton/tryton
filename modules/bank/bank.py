@@ -14,6 +14,7 @@ from trytond.i18n import gettext
 from trytond.model import (
     DeactivableMixin, Exclude, ModelSQL, ModelView, fields, sequence_ordered)
 from trytond.pool import Pool
+from trytond.pyson import Eval, If
 from trytond.tools import is_full_text, lstrip_wildcard
 
 from .exceptions import AccountValidationError, IBANValidationError, InvalidBIC
@@ -94,7 +95,11 @@ class Account(DeactivableMixin, ModelSQL, ModelView):
     owners = fields.Many2Many('bank.account-party.party', 'account', 'owner',
         'Owners')
     currency = fields.Many2One('currency.currency', 'Currency')
-    numbers = fields.One2Many('bank.account.number', 'account', 'Numbers',
+    numbers = fields.One2Many(
+        'bank.account.number', 'account', 'Numbers',
+        domain=[
+            If(~Eval('active'), ('active', '=', False), ()),
+            ],
         help="Add the numbers which identify the bank account.")
 
     def get_rec_name(self, name):
@@ -171,12 +176,15 @@ class Account(DeactivableMixin, ModelSQL, ModelView):
                 return Bank.from_bic(iban.bic)
 
 
-class AccountNumber(sequence_ordered(), ModelSQL, ModelView):
+class AccountNumber(DeactivableMixin, sequence_ordered(), ModelSQL, ModelView):
     'Bank Account Number'
     __name__ = 'bank.account.number'
     _rec_name = 'number'
     account = fields.Many2One(
         'bank.account', "Account", required=True, ondelete='CASCADE',
+        domain=[
+            If(Eval('active'), ('active', '=', True), ()),
+            ],
         help="The bank account which is identified by the number.")
     type = fields.Selection([
             ('iban', 'IBAN'),

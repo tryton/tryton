@@ -4,8 +4,13 @@ this repository contains the full copyright notices and license terms. -->
 <form cursor="number">
     <label name="account"/>
     <field name="account"/>
-    <label name="sequence"/>
-    <field name="sequence"/>
+    <group col="-1" colspan="2" id="checkboxes">
+        <label name="active"/>
+        <field name="active" xexpand="0" width="25"/>
+        <label name="sequence"/>
+        <field name="sequence"/>
+    </group>
+
     <label name="type"/>
     <field name="type"/>
     <label name="number"/>
