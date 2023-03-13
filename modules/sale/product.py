@@ -58,6 +58,8 @@ class Template(metaclass=PoolMeta):
             help="The time from confirming the sales order to sending the "
             "products.\n"
             "If empty the default lead time from the configuration is used."))
+    lead_times = fields.One2Many(
+        'product.lead_time', 'template', "Lead Times")
 
     @classmethod
     def __register__(cls, module_name):
