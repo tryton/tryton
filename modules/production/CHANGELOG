@@ -1,3 +1,4 @@
+* Rename product lead times to production lead times
 * Remove support for Python 3.7
 * Add support for Python 3.11
 * Create lot for output product when needed

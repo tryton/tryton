@@ -322,7 +322,7 @@ class Production(ShipmentAssignMixin, Workflow, ModelSQL, ModelView):
             pattern = {}
         if self.product:
             pattern.setdefault('bom', self.bom.id if self.bom else None)
-            for line in self.product.lead_times:
+            for line in self.product.production_lead_times:
                 if line.match(pattern):
                     return line.lead_time or timedelta()
         return timedelta()

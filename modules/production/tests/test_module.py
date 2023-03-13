@@ -21,7 +21,7 @@ class ProductionTestCase(CompanyTestMixin, ModuleTestCase):
 
         date = datetime.date(2016, 11, 26)
         product = Product()
-        product.lead_times = []
+        product.production_lead_times = []
         production = Production()
         production.planned_date = date
         production.product = product
@@ -29,7 +29,7 @@ class ProductionTestCase(CompanyTestMixin, ModuleTestCase):
         self.assertEqual(production.on_change_with_planned_start_date(), date)
 
         lead_time = LeadTime(bom=None, lead_time=None)
-        product.lead_times = [lead_time]
+        product.production_lead_times = [lead_time]
         self.assertEqual(production.on_change_with_planned_start_date(), date)
 
         lead_time.lead_time = datetime.timedelta(1)

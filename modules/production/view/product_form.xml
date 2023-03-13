@@ -4,6 +4,6 @@ this repository contains the full copyright notices and license terms. -->
 <data>
     <xpath expr="//page[@id='production']" position="inside">
         <field name="boms" colspan="4" view_ids="production.product-bom_view_list_sequence"/>
-        <field name="lead_times" colspan="4" view_ids="production.production_lead_time_view_list_sequence"/>
+        <field name="production_lead_times" colspan="4" view_ids="production.production_lead_time_view_list_sequence"/>
     </xpath>
 </data>

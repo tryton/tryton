@@ -39,7 +39,7 @@ class Product(metaclass=PoolMeta):
         states={
             'invisible': ~Eval('producible')
             })
-    lead_times = fields.One2Many('production.lead_time',
+    production_lead_times = fields.One2Many('production.lead_time',
         'product', 'Lead Times', order=[('sequence', 'ASC'), ('id', 'ASC')],
         states={
             'invisible': ~Eval('producible'),
@@ -73,7 +73,7 @@ class Product(metaclass=PoolMeta):
         else:
             default = default.copy()
         default.setdefault('boms', None)
-        default.setdefault('lead_times', None)
+        default.setdefault('production_lead_times', None)
         return super(Product, cls).copy(products, default=default)
 
 
