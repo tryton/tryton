@@ -72,7 +72,7 @@ class Trigger(DeactivableMixin, ModelSQL, ModelView):
     @classmethod
     def __register__(cls, module_name):
         cursor = Transaction().connection.cursor()
-        table = cls.__table_handler__(cls, module_name)
+        table = cls.__table_handler__(module_name)
         sql_table = cls.__table__()
 
         super(Trigger, cls).__register__(module_name)
