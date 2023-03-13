@@ -426,7 +426,7 @@ Check Return::
 
     >>> return_.reload()
     >>> return_.shipment_state
-    'waiting'
+    'partially shipped'
     >>> return_.invoice_state
     'pending'
     >>> (len(return_.shipments), len(return_.shipment_returns),

@@ -229,17 +229,20 @@ def order_line_mixin(prefix):
                 move = None
             return move
 
-        def get_move_done(self, name):
-            done = super().get_move_done(name)
-            if self.components:
-                done = all(c.move_done for c in self.components)
-            return done
-
         def get_move_exception(self, name):
             exception = super().get_move_exception(name)
             if self.components:
                 exception = any(c.move_exception for c in self.components)
             return exception
+
+        def get_moves_progress(self, name):
+            progress = super().get_moves_progress(name)
+            if self.components:
+                progress = 0
+                for component in self.components:
+                    progress += component.moves_progress
+                progress = round(progress / len(self.components))
+            return progress
 
         def _get_invoice_line_quantity(self):
             quantity = super()._get_invoice_line_quantity()
@@ -266,10 +269,11 @@ def order_line_component_mixin(prefix):
         moves_recreated = fields.Many2Many(
             prefix + '.line.component-recreated-stock.move',
             'component', 'move', "Recreated Moves", readonly=True)
-        move_done = fields.Function(
-            fields.Boolean('Moves Done'), 'get_move_done')
         move_exception = fields.Function(
             fields.Boolean('Moves Exception'), 'get_move_exception')
+        moves_progress = fields.Function(
+            fields.Float("Moves Progress", digits=(1, 4)),
+            'get_moves_progress')
         quantity_ratio = fields.Float(
             "Quantity Ratio", readonly=True,
             states={
@@ -347,13 +351,6 @@ def order_line_component_mixin(prefix):
                         move.uom, move.quantity, self.unit)
             return quantity
 
-        def get_move_done(self, name):
-            quantity = self._move_remaining_quantity
-            if quantity is None:
-                return True
-            else:
-                return self.unit.round(quantity) <= 0
-
         def get_move_exception(self, name):
             skips = set(self.moves_ignored)
             skips.update(self.moves_recreated)
@@ -361,6 +358,15 @@ def order_line_component_mixin(prefix):
                 if move.state == 'cancelled' and move not in skips:
                     return True
             return False
+
+        def get_moves_progress(self, name):
+            progress = None
+            quantity = self._move_remaining_quantity
+            if quantity is not None and self.quantity:
+                progress = round(
+                    (abs(self.quantity) - quantity) / abs(self.quantity), 4)
+                progress = max(0, min(1, progress))
+            return progress
 
         def get_moved_ratio(self):
             pool = Pool()

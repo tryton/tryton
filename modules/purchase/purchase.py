@@ -201,6 +201,7 @@ class Purchase(
     shipment_state = fields.Selection([
             ('none', 'None'),
             ('waiting', 'Waiting'),
+            ('partially shipped', 'Partially Shipped'),
             ('received', 'Received'),
             ('exception', 'Exception'),
             ], 'Shipment State', readonly=True, required=True, sort=False)
@@ -630,8 +631,11 @@ class Purchase(
         if self.moves:
             if any(l.move_exception for l in self.lines):
                 return 'exception'
-            elif all(l.move_done for l in self.lines):
+            elif all(l.moves_progress >= 1 for l in self.lines
+                    if l.moves_progress is not None):
                 return 'received'
+            elif any(l.moves_progress for l in self.lines):
+                return 'partially shipped'
             else:
                 return 'waiting'
         return 'none'
@@ -1221,9 +1225,11 @@ class Line(sequence_ordered(), ModelSQL, ModelView):
             'purchase_line', 'move', 'Ignored Moves', readonly=True)
     moves_recreated = fields.Many2Many('purchase.line-recreated-stock.move',
             'purchase_line', 'move', 'Recreated Moves', readonly=True)
-    move_done = fields.Function(fields.Boolean('Moves Done'), 'get_move_done')
     move_exception = fields.Function(fields.Boolean('Moves Exception'),
             'get_move_exception')
+    moves_progress = fields.Function(
+        fields.Float("Moves Progress", digits=(1, 4)),
+        'get_moves_progress')
     from_location = fields.Function(fields.Many2One('stock.location',
             'From Location'), 'get_from_location')
     to_location = fields.Function(fields.Many2One('stock.location',
@@ -1335,13 +1341,6 @@ class Line(sequence_ordered(), ModelSQL, ModelView):
                 quantity -= Uom.compute_qty(move.uom, move.quantity, self.unit)
         return quantity
 
-    def get_move_done(self, name):
-        quantity = self._move_remaining_quantity
-        if quantity is None:
-            return True
-        else:
-            return self.unit.round(quantity) <= 0
-
     def get_move_exception(self, name):
         skip_ids = set(x.id for x in self.moves_ignored
             + self.moves_recreated)
@@ -1350,6 +1349,15 @@ class Line(sequence_ordered(), ModelSQL, ModelView):
                     and move.id not in skip_ids:
                 return True
         return False
+
+    def get_moves_progress(self, name):
+        progress = None
+        quantity = self._move_remaining_quantity
+        if quantity is not None and self.quantity:
+            progress = round(
+                (abs(self.quantity) - quantity) / abs(self.quantity), 4)
+            progress = max(0, min(1, progress))
+        return progress
 
     def _get_tax_rule_pattern(self):
         '''
