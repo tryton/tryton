@@ -220,7 +220,9 @@ class TableHandler(TableHandlerInterface):
             self.__indexes = [l[0] for l in cursor]
         return self.__indexes
 
-    def _update_definitions(self, columns=True, constraints=True):
+    def _update_definitions(self, columns=None, constraints=None):
+        if columns is None and constraints is None:
+            columns = constraints = True
         if columns:
             self.__columns = None
         if constraints:
