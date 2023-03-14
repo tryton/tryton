@@ -8,7 +8,6 @@ from . import carrier, stock
 
 def register():
     Pool.register(
-        stock.PackageType,
         stock.Package,
         stock.ShipmentOut,
         stock.ShipmentInReturn,

@@ -80,54 +80,49 @@ class ConfigurationSequence(metaclass=PoolMeta):
 class MeasurementsMixin:
     __slots__ = ()
 
-    packaging_length = fields.Float(
-        "Packaging Length", digits='packaging_length_uom',
+    length = fields.Float(
+        "Length", digits='length_uom',
         help="The length of the package.")
-    packaging_length_uom = fields.Many2One(
-        'product.uom', "Packaging Length UOM",
+    length_uom = fields.Many2One(
+        'product.uom', "Length UOM",
         domain=[('category', '=', Id('product', 'uom_cat_length'))],
         states={
-            'required': Bool(Eval('packaging_length')),
-            },
-        depends=['packaging_length'])
-    packaging_height = fields.Float(
-        "Packaging Height", digits='packaging_height_uom',
+            'required': Bool(Eval('length')),
+            })
+    height = fields.Float(
+        "Height", digits='height_uom',
         help="The height of the package.")
-    packaging_height_uom = fields.Many2One(
-        'product.uom', "Packaging Height UOM",
+    height_uom = fields.Many2One(
+        'product.uom', "Height UOM",
         domain=[('category', '=', Id('product', 'uom_cat_length'))],
         states={
-            'required': Bool(Eval('packaging_height')),
-            },
-        depends=['packaging_height'])
-    packaging_width = fields.Float(
-        "Packaging Width", digits='packaging_width_uom',
+            'required': Bool(Eval('height')),
+            })
+    width = fields.Float(
+        "Width", digits='width_uom',
         help="The width of the package.")
-    packaging_width_uom = fields.Many2One(
-        'product.uom', "Packaging Width UOM",
+    width_uom = fields.Many2One(
+        'product.uom', "Width UOM",
         domain=[('category', '=', Id('product', 'uom_cat_length'))],
         states={
-            'required': Bool(Eval('packaging_width')),
-            },
-        depends=['packaging_width'])
+            'required': Bool(Eval('width')),
+            })
 
     packaging_volume = fields.Float(
         "Packaging Volume", digits='packaging_volume_uom',
         states={
             'readonly': (
-                Bool(Eval('packaging_length'))
-                & Bool(Eval('packaging_height'))
-                & Bool(Eval('packaging_width'))),
+                Bool(Eval('length'))
+                & Bool(Eval('height'))
+                & Bool(Eval('width'))),
             },
-        depends=['packaging_length', 'packaging_height', 'packaging_width'],
         help="The volume of the package.")
     packaging_volume_uom = fields.Many2One(
         'product.uom', "Packaging Volume UOM",
         domain=[('category', '=', Id('product', 'uom_cat_volume'))],
         states={
             'required': Bool(Eval('packaging_volume')),
-            },
-        depends=['packaging_volume'])
+            })
 
     packaging_weight = fields.Float(
         "Packaging Weight", digits='packaging_weight_uom',
@@ -141,22 +136,22 @@ class MeasurementsMixin:
 
     @fields.depends(
         'packaging_volume', 'packaging_volume_uom',
-        'packaging_length', 'packaging_length_uom',
-        'packaging_height', 'packaging_height_uom',
-        'packaging_width', 'packaging_width_uom')
+        'length', 'length_uom',
+        'height', 'height_uom',
+        'width', 'width_uom')
     def on_change_with_packaging_volume(self):
         pool = Pool()
         ModelData = pool.get('ir.model.data')
         Uom = pool.get('product.uom')
 
         if not all([self.packaging_volume_uom,
-                    self.packaging_length, self.packaging_length_uom,
-                    self.packaging_height, self.packaging_height_uom,
-                    self.packaging_width, self.packaging_width_uom]):
+                    self.length, self.length_uom,
+                    self.height, self.height_uom,
+                    self.width, self.width_uom]):
             if all([
-                        self.packaging_length,
-                        self.packaging_height,
-                        self.packaging_width]):
+                        self.length,
+                        self.height,
+                        self.width]):
                 return
             return self.packaging_volume
 
@@ -164,14 +159,11 @@ class MeasurementsMixin:
         cubic_meter = Uom(ModelData.get_id('product', 'uom_cubic_meter'))
 
         length = Uom.compute_qty(
-            self.packaging_length_uom, self.packaging_length, meter,
-            round=False)
+            self.length_uom, self.length, meter, round=False)
         height = Uom.compute_qty(
-            self.packaging_height_uom, self.packaging_height, meter,
-            round=False)
+            self.height_uom, self.height, meter, round=False)
         width = Uom.compute_qty(
-            self.packaging_width_uom, self.packaging_width, meter,
-            round=False)
+            self.width_uom, self.width, meter, round=False)
 
         return Uom.compute_qty(
             cubic_meter, length * height * width, self.packaging_volume_uom)

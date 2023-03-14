@@ -1,3 +1,4 @@
+* Remove packaging prefix from dimensions
 * Remove support for Python 3.7
 * Add support for Python 3.11
 

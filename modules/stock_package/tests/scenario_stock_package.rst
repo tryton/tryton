@@ -86,22 +86,22 @@ Package products::
 
     >>> PackageType = Model.get('stock.package.type')
     >>> box = PackageType(name='box')
-    >>> box.packaging_length = 80
-    >>> box.packaging_length_uom, = ProductUom.find([('name', '=', "Centimeter")])
-    >>> box.packaging_width = 1
-    >>> box.packaging_width_uom, = ProductUom.find([('name', '=', "Meter")])
-    >>> box.packaging_height_uom = box.packaging_length_uom
+    >>> box.length = 80
+    >>> box.length_uom, = ProductUom.find([('name', '=', "Centimeter")])
+    >>> box.width = 1
+    >>> box.width_uom, = ProductUom.find([('name', '=', "Meter")])
+    >>> box.height_uom = box.length_uom
     >>> box.packaging_volume
     >>> box.packaging_volume_uom, = ProductUom.find([('name', '=', "Cubic meter")])
     >>> box.save()
     >>> package1 = shipment_out.packages.new(type=box)
-    >>> package1.packaging_length
+    >>> package1.length
     80.0
-    >>> package1.packaging_height = 50
+    >>> package1.height = 50
     >>> package1.packaging_volume
     0.4
     >>> package_child = package1.children.new(shipment=shipment_out, type=box)
-    >>> package_child.packaging_height = 100
+    >>> package_child.height = 100
     >>> moves = package_child.moves.find()
     >>> len(moves)
     2
@@ -112,7 +112,7 @@ Package products::
         ...
     PackageValidationError: ...
 
-    >>> package1.packaging_height = 120
+    >>> package1.height = 120
     >>> package1.packaging_volume
     0.96
 

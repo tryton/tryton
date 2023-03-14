@@ -9,7 +9,7 @@ from trytond.i18n import gettext
 from trytond.model import ModelView, Workflow, fields
 from trytond.model.exceptions import AccessError
 from trytond.pool import Pool, PoolMeta
-from trytond.pyson import Bool, Eval, Id
+from trytond.pyson import Eval
 from trytond.report import Report
 from trytond.transaction import Transaction
 from trytond.wizard import StateAction, StateTransition, Wizard
@@ -24,76 +24,7 @@ else:
     file_id = store_prefix = None
 
 
-class DimensionsMixin(object):
-    __slots__ = ()
-
-    length = fields.Float('Length', digits=(16, Eval('length_digits', 2)))
-    length_uom = fields.Many2One('product.uom', 'Length Unit',
-        domain=[
-            ('category', '=', Id('product', 'uom_cat_length')),
-            ],
-        states={
-            'required': Bool(Eval('length')),
-            },
-        depends={'length_digits'})
-    length_digits = fields.Function(fields.Integer('Length Digits'),
-        'on_change_with_length_digits')
-    height = fields.Float('Height', digits=(16, Eval('height_digits', 2)))
-    height_uom = fields.Many2One('product.uom', 'Height Unit',
-        domain=[
-            ('category', '=', Id('product', 'uom_cat_length')),
-            ],
-        states={
-            'required': Bool(Eval('height')),
-            },
-        depends={'height_digits'})
-    height_digits = fields.Function(fields.Integer('Height Digits'),
-        'on_change_with_height_digits')
-    width = fields.Float('Width', digits=(16, Eval('width_digits', 2)))
-    width_uom = fields.Many2One('product.uom', 'Width Unit',
-        domain=[
-            ('category', '=', Id('product', 'uom_cat_length')),
-            ],
-        states={
-            'required': Bool(Eval('width')),
-            },
-        depends={'width_digits'})
-    width_digits = fields.Function(fields.Integer('Width Digits'),
-        'on_change_with_width_digits')
-
-    @fields.depends('length_uom')
-    def on_change_with_length_digits(self, name=None):
-        return (self.length_uom.digits if self.length_uom
-            else self.default_length_digits())
-
-    @fields.depends('height_uom')
-    def on_change_with_height_digits(self, name=None):
-        return (self.height_uom.digits if self.height_uom
-            else self.default_height_digits())
-
-    @fields.depends('width_uom')
-    def on_change_with_width_digits(self, name=None):
-        return (self.width_uom.digits if self.width_uom
-            else self.default_width_digits())
-
-    @classmethod
-    def default_length_digits(cls):
-        return 2
-
-    @classmethod
-    def default_height_digits(cls):
-        return 2
-
-    @classmethod
-    def default_width_digits(cls):
-        return 2
-
-
-class PackageType(DimensionsMixin, metaclass=PoolMeta):
-    __name__ = 'stock.package.type'
-
-
-class Package(DimensionsMixin, metaclass=PoolMeta):
+class Package(metaclass=PoolMeta):
     __name__ = 'stock.package'
 
     shipping_reference = fields.Char('Shipping Reference',
@@ -169,17 +100,6 @@ class Package(DimensionsMixin, metaclass=PoolMeta):
             domain,
             ('shipping_reference', *clause[1:]),
             ]
-
-    @fields.depends('type')
-    def on_change_type(self):
-        super().on_change_type()
-        if self.type:
-            self.length = self.type.length
-            self.length_uom = self.type.length_uom
-            self.height = self.type.height
-            self.height_uom = self.type.height_uom
-            self.width = self.type.width
-            self.width_uom = self.type.width_uom
 
     @classmethod
     def copy(cls, packages, default=None):
