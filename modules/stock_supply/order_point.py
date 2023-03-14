@@ -129,6 +129,10 @@ class OrderPoint(ModelSQL, ModelView):
     def default_type():
         return "purchase"
 
+    @classmethod
+    def default_warehouse_location(cls):
+        return Pool().get('stock.location').get_default_warehouse()
+
     @fields.depends('product', '_parent_product.default_uom')
     def on_change_product(self):
         self.unit = None
