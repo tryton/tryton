@@ -279,13 +279,18 @@ class FormXMLViewParser(XMLViewParser):
             return
         vbox = VBox(attrs=attributes)
         if attributes.get('string'):
+            attributes.setdefault('xexpand', 0)
+            attributes.setdefault('xalign', 0)
+            attributes.setdefault('yalign', 0.5)
             label = Label(label=attributes['string'], attrs=attributes)
             label.set_halign(get_align(
-                    attributes.get('xalign', 0.0),
-                    bool(attributes.get('xexpand', True))))
+                    attributes['xalign'],
+                    bool(attributes.get('xexpand'))))
             label.set_valign(get_align(
-                    attributes.get('yalign', 0.5),
-                    bool(attributes.get('yexpand', False))))
+                    attributes['yalign'],
+                    bool(attributes.get('yexpand'))))
+            label.props.xalign = float(attributes['xalign'])
+            label.props.yalign = float(attributes['yalign'])
             vbox.pack_start(label, expand=True, fill=True, padding=0)
             self.view.state_widgets.append(label)
             if name:
@@ -303,13 +308,17 @@ class FormXMLViewParser(XMLViewParser):
             attributes['xalign'] = 0.0
 
         attributes.setdefault('xexpand', 0)
+        attributes.setdefault('xalign', 1)
+        attributes.setdefault('yalign', 0.5)
         label = Label(label=attributes.get('string', ''), attrs=attributes)
         label.set_halign(get_align(
-                attributes.get('xalign', 1.0),
+                attributes['xalign'],
                 bool(attributes.get('xexpand'))))
         label.set_valign(get_align(
                 attributes.get('yalign', 0.5),
                 bool(attributes.get('yexpand'))))
+        label.props.xalign = float(attributes['xalign'])
+        label.props.yalign = float(attributes['yalign'])
         label.set_angle(int(attributes.get('angle', 0)))
         self.view.state_widgets.append(label)
         self.container.add(label, attributes)
