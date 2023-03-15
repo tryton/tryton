@@ -399,10 +399,12 @@ class RenewFiscalYear(metaclass=PoolMeta):
                 sequence = getattr(invoice_sequence, field, None)
                 sequences[sequence.id] = sequence
         copies = Sequence.copy(list(sequences.values()), default={
-                'next_number': 1,
                 'name': lambda data: data['name'].replace(
                     self.start.previous_fiscalyear.name,
                     self.start.name)
+                })
+        Sequence.write(copies, {
+                'number_next': Sequence.default_number_next(),
                 })
 
         mapping = {}
