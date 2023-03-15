@@ -38,18 +38,14 @@ class Purchase(metaclass=PoolMeta):
 
     def get_invoice_state(self):
         state = super(Purchase, self).get_invoice_state()
-        skips = set(x.id for x in self.invoice_lines_ignored)
-        invoice_lines = [l for l in self.invoice_lines if l.id not in skips]
-        if invoice_lines:
-            if any(l.invoice and l.invoice.state == 'cancelled'
-                    for l in invoice_lines):
-                return 'exception'
-            elif (state == 'paid'
-                    and all(l.invoice for l in invoice_lines)
-                    and all(l.invoice.state == 'paid' for l in invoice_lines)):
-                return 'paid'
-            else:
-                return 'waiting'
+        skips = set(self.invoice_lines_ignored)
+        standalone_lines = [
+            l for l in self.invoice_lines if l not in skips and not l.invoice]
+        if standalone_lines:
+            state = {
+                'paid': 'partially paid',
+                'none': 'pending',
+                }.get(state, state)
         return state
 
     @classmethod
