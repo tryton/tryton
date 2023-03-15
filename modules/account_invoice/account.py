@@ -326,8 +326,9 @@ class RenewFiscalYear(metaclass=PoolMeta):
             for field in self.invoice_sequence_fields:
                 sequence = getattr(invoice_sequence, field, None)
                 sequences[sequence.id] = sequence
-        copies = Sequence.copy(list(sequences.values()), default={
-                'next_number': 1,
+        copies = Sequence.copy(list(sequences.values()))
+        Sequence.write(copies, {
+                'number_next': Sequence.default_number_next(),
                 })
 
         mapping = {}
