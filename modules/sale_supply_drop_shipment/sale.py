@@ -118,7 +118,7 @@ class Line(metaclass=PoolMeta):
             return False
         if self.purchase_request:
             purchase_line = self.purchase_request.purchase_line
-            if purchase_line and purchase_line.move_done:
+            if purchase_line and purchase_line.moves_progress >= 1:
                 return False
         return True
 
