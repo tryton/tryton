@@ -157,6 +157,13 @@ class User(avatar_mixin(100), DeactivableMixin, ModelSQL, ModelView):
         cls.save(users)
 
     @classmethod
+    def copy(cls, users, default=None):
+        default = default.copy() if default is not None else {}
+        default['password_hash'] = None
+        default['reset_password_token'] = None
+        return super().copy(users, default=default)
+
+    @classmethod
     def create(cls, vlist):
         users = super(User, cls).create(vlist)
         cls._format_email(users)
