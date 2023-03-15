@@ -45,15 +45,12 @@ you must enter this initial stock in the correct way.
 The right way of doing this is to create a set of individual
 `Stock Moves <model-stock.move>`.
 These moves can be created in the view that is opened from the
-|Inventory & Stock --> Moves|__ main menu item.
+:menuselection:`Inventory & Stock --> Moves` main menu item.
 Each of the stock moves should move some stock of a `Product <concept-product>`
 from a supplier `Location <model-stock.location>` to the appropriate storage
 location.
 These stock moves must have their unit prices set to their product's cost
 price.
-
-.. |Inventory & Stock --> Moves| replace:: :menuselection:`Inventory & Stock --> Moves`
-__ https://demo.tryton.org/model/stock.move
 
 .. note::
 

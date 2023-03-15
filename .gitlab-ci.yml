@@ -57,11 +57,12 @@ documentation:
     paths:
       - .cache/pip/http
   before_script:
-    - pip install sphinx-lint
+    - pip install sphinx-lint rstcheck[sphinx]
   script:
     - cd "${PACKAGE}"
     - python -m sphinx -T -E -W -n -b html ${DOC_DIR} _build/html
     - python -m sphinxlint ${DOC_DIR}
+    - rstcheck --recursive ${DOC_DIR}
     - |
       if [ "${CHECK_LINK}" ]; then
       python -m sphinx -T -E -W -n -b linkcheck ${DOC_DIR} _build;

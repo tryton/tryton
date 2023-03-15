@@ -33,8 +33,8 @@ the `Postal Codes <model-country.postal_code>` in Tryton from the `GeoNames
 Database`_.
 It is run with:
 
-.. code-block:: bash
+.. code-block:: console
 
-   trytond_import_postal_codes -c trytond.conf -d <database> <two_letter_country_code>
+   $ trytond_import_postal_codes -c trytond.conf -d <database> <two_letter_country_code>
 
 .. _GeoNames Database: https://www.geonames.org/

@@ -74,7 +74,7 @@ the :class:`~trytond.pool.Pool` as type ``model`` in :file:`__init__.py`:
     def register():
         ...
         Pool.register(
-            ...
+            ...,
             opportunity.OpportunityMonthly,
             module='opportunity', type_='model')
 

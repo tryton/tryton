@@ -24,9 +24,8 @@ product variant is based exclusively on one product template.
 
 A product's full code is made up from a prefix code which is defined on the
 product template and a suffix code which is specified on the product variant.
-The full product code can then be used as the product's |SKU|_.
+The full product code can then be used as the product's SKU_.
 
-.. |SKU| replace:: :abbr:`SKU (Stock Keeping Unit)`
 .. _SKU: https://en.wikipedia.org/wiki/Stock_keeping_unit
 
 .. _model-product.template:

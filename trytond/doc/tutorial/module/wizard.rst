@@ -71,14 +71,14 @@ Now we can define the :class:`~trytond.wizard.Wizard` with a ``start``
     ...
     class Opportunity(...):
         ...
-       @classmethod
-       @Workflow.transition('converted')
-       def convert(cls, opportunities, end_date=None):
-           pool = Pool()
-           Date = pool.get('ir.date')
-           cls.write(opportunities, {
-               'end_date': end_date or Date.today(),
-               })
+        @classmethod
+        @Workflow.transition('converted')
+        def convert(cls, opportunities, end_date=None):
+            pool = Pool()
+            Date = pool.get('ir.date')
+            cls.write(opportunities, {
+                'end_date': end_date or Date.today(),
+                })
     ...
     class Convert(Wizard):
         "Convert Opportunities"

@@ -122,7 +122,7 @@ Additional objects can be passed to a report.
 This is discussed below in `Passing custom values to a report`_
 
 Within Tryton the model, the report is based on, can be found by opening the
-menu item:
+menu item::
 
    |Administration --> Models --> Models|__
 
@@ -130,7 +130,7 @@ menu item:
    __ https://demo.tryton.org/model/ir.model
 
 Furthermore in Tryton the fields for that model can be found by opening the
-menu item:
+menu item::
 
    |Administration --> Models --> Models --> Fields|__
 
@@ -142,7 +142,7 @@ Creating a simple report template for a model from the client
 -------------------------------------------------------------
 
 Once you have created a report template it has to be uploaded to the server.
-This can be done by creating a new record by opening the menu item:
+This can be done by creating a new record by opening the menu item::
 
    |Administration --> User Interface --> Actions --> Reports|__
 
@@ -214,18 +214,20 @@ Then you must create your new sale report:
 
 .. code-block:: xml
 
-   <record model="ir.action.report" id="report_sale">
-      <field name="name">Sale</field>
-      <field name="report_name">sale.sale</field>
-      <field name="model">sale.sale</field>
-      <field name="report">my_module/sale.odt</field>
-      <field name="template_extension">odt</field>
-   </record>
-   <record model="ir.action.keyword" id="report_sale_keyword">
-      <field name="keyword">form_print</field>
-      <field name="model">sale.sale,-1</field>
-      <field name="action" ref="report_sale"/>
-   </record>
+   <data>
+      <record model="ir.action.report" id="report_sale">
+         <field name="name">Sale</field>
+         <field name="report_name">sale.sale</field>
+         <field name="model">sale.sale</field>
+         <field name="report">my_module/sale.odt</field>
+         <field name="template_extension">odt</field>
+      </record>
+      <record model="ir.action.keyword" id="report_sale_keyword">
+         <field name="keyword">form_print</field>
+         <field name="model">sale.sale,-1</field>
+         <field name="action" ref="report_sale"/>
+      </record>
+   </data>
 
 Passing custom values to a report
 ---------------------------------

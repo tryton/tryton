@@ -9,6 +9,7 @@ is set with the default value if exists.
 
 The following class method:
 
+.. rstcheck: ignore-next-code-block
 .. code-block:: python
 
     Model.default_<field name>()

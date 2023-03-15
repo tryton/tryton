@@ -15,6 +15,6 @@ updates `Currencies <model-currency.currency>`.
 
 You can run it with:
 
-.. code-block:: bash
+.. code-block:: console
 
-   trytond_import_currencies -c trytond.conf -d <database>
+   $ trytond_import_currencies -c trytond.conf -d <database>

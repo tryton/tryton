@@ -78,7 +78,7 @@ selected record instances.
 
 Here is an example of the directives to insert in the document:
 
-.. code-block::
+.. code-block:: text
 
    <for each="opportunity in records">
    Opportunity: <opportunity.rec_name>
