@@ -247,8 +247,6 @@ class BudgetLineMixin(
             default = {}
         else:
             default = default.copy()
-        default.setdefault('left', 0)
-        default.setdefault('right', 0)
         if 'budget' in default and 'children.budget' not in default:
             default['children.budget'] = default['budget']
         if 'amount' in default and 'children.amount' not in default:

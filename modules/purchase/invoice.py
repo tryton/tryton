@@ -71,15 +71,6 @@ class Invoice(metaclass=PoolMeta):
         super(Invoice, cls).delete(invoices)
 
     @classmethod
-    def copy(cls, invoices, default=None):
-        if default is None:
-            default = {}
-        else:
-            default = default.copy()
-        default.setdefault('purchases', None)
-        return super(Invoice, cls).copy(invoices, default=default)
-
-    @classmethod
     @ModelView.button
     @Workflow.transition('draft')
     def draft(cls, invoices):

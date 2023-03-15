@@ -65,15 +65,6 @@ class Invoice(metaclass=PoolMeta):
                 *clause[1:3], 'sale.line', *clause[3:])]
 
     @classmethod
-    def copy(cls, invoices, default=None):
-        if default is None:
-            default = {}
-        else:
-            default = default.copy()
-        default.setdefault('sales', None)
-        return super(Invoice, cls).copy(invoices, default=default)
-
-    @classmethod
     @process_sale
     def delete(cls, invoices):
         super(Invoice, cls).delete(invoices)

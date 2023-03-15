@@ -497,8 +497,6 @@ class ShipmentIn(ShipmentMixin, Workflow, ModelSQL, ModelView):
             default = {}
         else:
             default = default.copy()
-        default.setdefault('inventory_moves', None)
-        default.setdefault('incoming_moves', None)
         default.setdefault('number', None)
         default.setdefault('received_by', None)
         default.setdefault('done_by', None)
@@ -1656,8 +1654,6 @@ class ShipmentOut(ShipmentAssignMixin, Workflow, ModelSQL, ModelView):
             default = {}
         else:
             default = default.copy()
-        default.setdefault('inventory_moves', None)
-        default.setdefault('outgoing_moves', None)
         default.setdefault('number', None)
         default.setdefault('picked_by', None)
         default.setdefault('packed_by', None)
@@ -2085,8 +2081,6 @@ class ShipmentOutReturn(ShipmentMixin, Workflow, ModelSQL, ModelView):
         if default is None:
             default = {}
         default = default.copy()
-        default.setdefault('inventory_moves', None)
-        default.setdefault('incoming_moves', None)
         default.setdefault('number', None)
         default.setdefault('received_by', None)
         default.setdefault('done_by', None)
