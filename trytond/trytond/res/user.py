@@ -433,7 +433,8 @@ class User(DeactivableMixin, ModelSQL, ModelView):
             default = {}
         default = default.copy()
 
-        default['password'] = ''
+        default['password_hash'] = None
+        default['password_reset'] = None
         default.setdefault('warnings')
         default.setdefault('applications')
 
