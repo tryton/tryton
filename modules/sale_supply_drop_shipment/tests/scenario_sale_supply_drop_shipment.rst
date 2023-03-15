@@ -231,7 +231,7 @@ The purchase is now waiting for his new drop shipment::
     >>> set_user(purchase_user)
     >>> purchase.reload()
     >>> purchase.shipment_state
-    'waiting'
+    'partially shipped'
     >>> len(purchase.drop_shipments)
     2
     >>> shipment, = [s for s in purchase.drop_shipments
