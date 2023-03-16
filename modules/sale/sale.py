@@ -607,13 +607,17 @@ class Sale(
         return [('lines.invoice_lines.invoice' + clause[0][len(name):],
                 *clause[1:])]
 
+    @property
+    def _invoices_for_state(self):
+        return self.invoices
+
     def get_invoice_state(self):
         '''
         Return the invoice state for the sale.
         '''
-        skip_ids = set(x.id for x in self.invoices_ignored)
-        skip_ids.update(x.id for x in self.invoices_recreated)
-        invoices = [i for i in self.invoices if i.id not in skip_ids]
+        skips = set(self.invoices_ignored)
+        skips.update(self.invoices_recreated)
+        invoices = [i for i in self._invoices_for_state if i not in skips]
         if invoices:
             if any(i.state == 'cancelled' for i in invoices):
                 return 'exception'

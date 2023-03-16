@@ -345,20 +345,9 @@ class Sale(metaclass=PoolMeta):
         return [('advance_payment_conditions.invoice_lines.invoice'
                 + clause[0][len(name):], *clause[1:])]
 
-    def get_invoice_state(self):
-        state = super(Sale, self).get_invoice_state()
-        skip_ids = set(x.id for x in self.invoices_ignored)
-        skip_ids.update(x.id for x in self.invoices_recreated)
-        invoices = [i
-            for i in self.advance_payment_invoices if i.id not in skip_ids]
-        if invoices:
-            if any(i.state == 'cancelled' for i in invoices):
-                return 'exception'
-            elif all(i.state == 'paid' for i in invoices):
-                return state
-            else:
-                return 'waiting'
-        return state
+    @property
+    def _invoices_for_state(self):
+        return super()._invoices_for_state + self.advance_payment_invoices
 
     def get_recall_lines(self, invoice):
         pool = Pool()
