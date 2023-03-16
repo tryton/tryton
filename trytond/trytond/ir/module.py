@@ -15,6 +15,7 @@ from trytond.modules import get_module_info, get_module_list
 from trytond.pool import Pool
 from trytond.pyson import Eval
 from trytond.rpc import RPC
+from trytond.tools import grouped_slice
 from trytond.transaction import Transaction
 from trytond.wizard import (
     Button, StateAction, StateTransition, StateView, Wizard)
@@ -277,54 +278,34 @@ class Module(ModelSQL, ModelView):
 
     @classmethod
     def update_list(cls):
-        'Update the list of available packages'
-        count = 0
-        module_names = get_module_list(with_test=Pool.test)
-
-        modules = cls.search([])
-        name2id = dict((m.name, m.id) for m in modules)
-        cls.delete([m for m in modules
-                if m.state != 'activated' and m.name not in module_names])
-
-        # iterate through activated modules and mark them as being so
-        for name in module_names:
-            if name in name2id:
-                module = cls(name2id[name])
-                tryton = get_module_info(name)
-                cls._update_dependencies(module, tryton.get('depends', []))
-                continue
-
-            tryton = get_module_info(name)
-            if not tryton:
-                continue
-            module, = cls.create([{
-                        'name': name,
-                        'state': 'not activated',
-                        }])
-            count += 1
-            cls._update_dependencies(module, tryton.get('depends', []))
-        return count
-
-    @classmethod
-    def _update_dependencies(cls, module, depends=None):
+        "Update the list of available modules"
         pool = Pool()
         Dependency = pool.get('ir.module.dependency')
-        Dependency.delete([x for x in module.dependencies
-            if x.name not in depends])
-        if depends is None:
-            depends = []
-        # Restart Browse Cache for deleted dependencies
-        module = cls(module.id)
-        dependency_names = [x.name for x in module.dependencies]
-        to_create = []
-        for depend in depends:
-            if depend not in dependency_names:
-                to_create.append({
-                        'module': module.id,
-                        'name': depend,
-                        })
-        if to_create:
-            Dependency.create(to_create)
+        module_names = get_module_list(with_test=Pool.test)
+        for sub_module_names in grouped_slice(module_names):
+            cls.delete(cls.search([
+                        ('state', '!=', 'activated'),
+                        ('name', 'not in', list(sub_module_names)),
+                        ]))
+        modules = cls.search([])
+        name2module = {m.name: m for m in modules}
+
+        for name in set(module_names) - name2module.keys():
+            name2module[name] = cls(name=name, state=cls.default_state())
+        cls.save(name2module.values())
+
+        to_save, to_delete = [], []
+        for module in name2module.values():
+            depends = set(get_module_info(module.name).get('depends', []))
+            for dependency in module.dependencies:
+                if dependency.name not in depends:
+                    to_delete.append(dependency)
+            for name in depends - {d.name for d in module.dependencies}:
+                to_save.append(Dependency(name=name, module=module))
+        if to_delete:
+            Dependency.delete(to_delete)
+        if to_save:
+            Dependency.save(to_save)
 
 
 class ModuleDependency(ModelSQL, ModelView):
