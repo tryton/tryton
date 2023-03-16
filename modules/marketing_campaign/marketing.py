@@ -108,7 +108,9 @@ class MarketingCampaignMixin(Model):
         default = super().default_get(
             fields_names, with_rec_name=with_rec_name)
         for fname in cls.marketing_campaign_fields():
-            if isinstance(context.get(fname), str) and not default.get(fname):
+            if (isinstance(context.get(fname), str)
+                    and context[fname]
+                    and not default.get(fname)):
                 field = getattr(cls, fname)
                 Target = field.get_target()
                 target = Target.from_name(
