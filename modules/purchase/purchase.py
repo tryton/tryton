@@ -1337,10 +1337,10 @@ class Line(sequence_ordered(), ModelSQL, ModelView):
             return
         if self.product.type == 'service':
             return
-        skip_ids = set(x.id for x in self.moves_ignored)
+        skips = set(self.moves_ignored)
         quantity = abs(self.quantity)
         for move in self.moves:
-            if move.state == 'done' or move.id in skip_ids:
+            if move.state == 'done' or move in skips:
                 quantity -= Uom.compute_qty(move.uom, move.quantity, self.unit)
         return quantity
 
