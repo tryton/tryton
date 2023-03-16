@@ -342,16 +342,18 @@ class ModuleDependency(ModelSQL, ModelView):
 
         super(ModuleDependency, cls).__register__(module_name)
 
-    def get_state(self, name):
+    @classmethod
+    def get_state(cls, dependencies, name):
         pool = Pool()
         Module = pool.get('ir.module')
-        dependencies = Module.search([
-                ('name', '=', self.name),
-                ])
-        if dependencies:
-            return dependencies[0].state
-        else:
-            return 'unknown'
+        modules = []
+        names = [d.name for d in dependencies]
+        for sub_names in grouped_slice(names):
+            modules.extend(Module.search([
+                        ('name', 'in', list(sub_names)),
+                        ]))
+        name2state = {m.name: m.state for m in modules}
+        return {d.id: name2state.get(d.name, 'unknown') for d in dependencies}
 
 
 class ModuleConfigWizardItem(sequence_ordered(), ModelSQL, ModelView):
