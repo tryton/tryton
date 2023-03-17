@@ -13,6 +13,11 @@ class Purchase(metaclass=PoolMeta):
             'purchase.purchase-ignored-account.invoice.line',
             'purchase', 'invoice', 'Invoice Lines Ignored', readonly=True)
 
+    @property
+    def invoice_line_standalone(self):
+        party = self.invoice_party or self.party
+        return party.purchase_invoice_line_standalone
+
     def get_invoice_lines(self, name):
         return list({il.id for l in self.lines for il in l.invoice_lines})
 
@@ -26,15 +31,19 @@ class Purchase(metaclass=PoolMeta):
         InvoiceLine = pool.get('account.invoice.line')
 
         lines = []
-        for invoice in invoices.values():
-            for line in invoice.lines:
-                if line.type == 'line':
-                    line.invoice = None
-                    line.party = invoice.party
-                    lines.append(line)
+        non_standalone = {}
+        for purchase, invoice in invoices.items():
+            if purchase.invoice_line_standalone:
+                for line in invoice.lines:
+                    if line.type == 'line':
+                        line.invoice = None
+                        line.party = invoice.party
+                        lines.append(line)
+            else:
+                non_standalone[purchase] = invoice
         InvoiceLine.save(lines)
 
-        super()._save_invoice({})
+        super()._save_invoice(non_standalone)
 
     def get_invoice_state(self):
         state = super(Purchase, self).get_invoice_state()

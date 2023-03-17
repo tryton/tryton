@@ -3,11 +3,13 @@
 
 from trytond.pool import Pool
 
-from . import purchase
+from . import party, purchase
 
 
 def register():
     Pool.register(
+        party.Party,
+        party.PartyPurchaseInvoiceLineStandalone,
         purchase.Purchase,
         purchase.PurchaseIgnoredInvoiceLine,
         module='purchase_invoice_line_standalone', type_='model')

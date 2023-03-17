@@ -53,6 +53,7 @@ Create parties::
 
     >>> Party = Model.get('party.party')
     >>> supplier = Party(name='Supplier')
+    >>> supplier.purchase_invoice_line_standalone = True
     >>> supplier.save()
     >>> customer = Party(name='Customer')
     >>> customer.save()
