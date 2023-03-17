@@ -15,3 +15,7 @@ def register():
         asset.Asset,
         module='analytic_invoice', type_='model',
         depends=['account_asset'])
+    Pool.register(
+        asset.UpdateAsset,
+        module='analytic_invoice', type_='wizard',
+        depends=['account_asset'])

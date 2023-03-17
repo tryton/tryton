@@ -887,13 +887,15 @@ class UpdateAsset(Wizard):
         Period = pool.get('account.period')
         Move = pool.get('account.move')
         period = Period.find(asset.company, self.show_move.date)
-        return Move(
+        move = Move(
             company=asset.company,
             origin=asset,
             journal=asset.account_journal.id,
             period=period,
             date=self.show_move.date,
             )
+        move.lines = self.get_move_lines(asset)
+        return move
 
     def get_move_lines(self, asset):
         MoveLine = Pool().get('account.move.line')
@@ -918,7 +920,6 @@ class UpdateAsset(Wizard):
         if not (latest_move_date <= self.show_move.date <= next_date):
             raise ValueError('The update move date is invalid')
         move = self.get_move(self.record)
-        move.lines = self.get_move_lines(self.record)
         move.save()
         self.model.write([self.record], {
                 'update_moves': [('add', [move.id])],

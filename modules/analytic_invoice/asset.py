@@ -57,3 +57,12 @@ class Asset(AnalyticMixin, metaclass=PoolMeta):
                         analytic_lines.extend(
                             entry.get_analytic_lines(line, move.date))
                     line.analytic_lines = analytic_lines
+
+
+class UpdateAsset(metaclass=PoolMeta):
+    __name__ = 'account.asset.update'
+
+    def get_move(self, asset):
+        move = super().get_move(asset)
+        asset.set_analytic_lines(move, self.show_move.counterpart_account)
+        return move

@@ -132,6 +132,19 @@ Create Moves for 1 month::
     >>> analytic_account.credit
     Decimal('0.00')
 
+Update the asset::
+
+    >>> update = Wizard('account.asset.update', [asset])
+    >>> update.form.value = Decimal('950.00')
+    >>> update.execute('update_asset')
+    >>> update.form.date = update.form.next_depreciation_date
+    >>> update.execute('create_move')
+    >>> analytic_account.reload()
+    >>> analytic_account.debit
+    Decimal('150.00')
+    >>> analytic_account.credit
+    Decimal('0.00')
+
 Close the asset::
 
     >>> asset.click('close')
