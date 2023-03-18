@@ -1107,7 +1107,6 @@ class Selection(GenericText, SelectionMixin, PopdownMixin):
     @catch_errors()
     def get_textual_value(self, record):
         related = self.attrs['name'] + ':string'
-        record.load(related, process_exception=False)
         if not self.view.editable and related in record.value:
             return record.value[related]
 
@@ -1192,7 +1191,6 @@ class MultiSelection(GenericText, SelectionMixin):
     @catch_errors()
     def get_textual_value(self, record):
         related = self.attrs['name'] + ':string'
-        record.load(related, process_exception=False)
         if not self.view.editable and related in record.value:
             return ";".join(record.value[related])
 
