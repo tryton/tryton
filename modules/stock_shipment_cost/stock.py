@@ -30,9 +30,15 @@ class Move(metaclass=PoolMeta):
 class ShipmentCostMixin:
     __slots__ = ()
 
-    carrier = fields.Many2One('carrier', 'Carrier', states={
+    carrier = fields.Many2One(
+        'carrier', "Carrier",
+        states={
             'readonly': Eval('shipment_cost_readonly', True),
-            })
+            },
+        context={
+            'company': Eval('company', -1),
+            },
+        depends=['company'])
 
     cost_currency_used = fields.Function(fields.Many2One(
             'currency.currency', "Cost Currency",

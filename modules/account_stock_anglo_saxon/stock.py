@@ -51,8 +51,9 @@ class Move(metaclass=PoolMeta):
         AccountMoveLine = pool.get('account.move.line')
         Currency = pool.get('currency.currency')
         lines = super(Move, self)._get_account_stock_move_lines(type_)
-        if (type_.endswith('supplier')
-                and self.product.cost_price_method == 'fixed'):
+        cost_price_method = self.product.get_multivalue(
+            'cost_price_method', **self._cost_price_pattern)
+        if type_.endswith('supplier') and cost_price_method == 'fixed':
             cost_price = Uom.compute_price(self.product.default_uom,
                 self.cost_price, self.uom)
             with Transaction().set_context(date=self.effective_date):

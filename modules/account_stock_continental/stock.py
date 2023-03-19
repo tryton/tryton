@@ -22,10 +22,12 @@ class Move(metaclass=PoolMeta):
             'wrong type'
 
         move_line = AccountMoveLine()
+        cost_price_method = self.product.get_multivalue(
+            'cost_price_method', **self._cost_price_pattern)
         if ((
                     type_.endswith('supplier')
                     or type_ in {'in_production', 'in_warehouse'})
-                and self.product.cost_price_method != 'fixed'):
+                and cost_price_method != 'fixed'):
             unit_price = self.unit_price_company
         else:
             unit_price = self.cost_price

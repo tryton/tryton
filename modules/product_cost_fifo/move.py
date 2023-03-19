@@ -116,17 +116,19 @@ class Move(metaclass=PoolMeta):
 
     def _do(self):
         cost_price, to_save = super(Move, self)._do()
+        cost_price_method = self.product.get_multivalue(
+            'cost_price_method', **self._cost_price_pattern)
         if (self.from_location.type != 'storage'
                 and self.to_location.type == 'storage'
-                and self.product.cost_price_method == 'fifo'):
+                and cost_price_method == 'fifo'):
             cost_price = self._compute_product_cost_price('in')
         elif (self.to_location.type == 'supplier'
                 and self.from_location.type == 'storage'
-                and self.product.cost_price_method == 'fifo'):
+                and cost_price_method == 'fifo'):
             cost_price = self._compute_product_cost_price('out')
         elif (self.from_location.type == 'storage'
                 and self.to_location.type != 'storage'
-                and self.product.cost_price_method == 'fifo'):
+                and cost_price_method == 'fifo'):
             fifo_cost_price, cost_price, moves = (
                 self._update_fifo_out_product_cost_price())
             if self.cost_price_required and self.cost_price is None:

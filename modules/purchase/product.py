@@ -158,7 +158,7 @@ class Product(metaclass=PoolMeta):
         '''
         pool = Pool()
         Uom = pool.get('product.uom')
-        User = pool.get('res.user')
+        Company = pool.get('company.company')
         Currency = pool.get('currency.currency')
         Date = pool.get('ir.date')
         ProductSupplier = pool.get('purchase.product_supplier')
@@ -177,14 +177,13 @@ class Product(metaclass=PoolMeta):
         currency = None
         if context.get('currency'):
             currency = Currency(context['currency'])
-
-        user = User(Transaction().user)
+        elif context.get('company'):
+            currency = Company(context['company']).currency
 
         for product in products:
             unit_price = product._get_purchase_unit_price(quantity=quantity)
             default_uom = product.default_uom
-            default_currency = (user.company.currency if user.company
-                else None)
+            default_currency = currency
             if not uom or default_uom.category != uom.category:
                 product_uom = default_uom
             else:

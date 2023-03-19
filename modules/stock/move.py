@@ -783,13 +783,15 @@ class Move(Workflow, ModelSQL, ModelView):
 
     def _do(self):
         "Return cost_price and a list of moves to save"
+        cost_price_method = self.product.get_multivalue(
+            'cost_price_method', **self._cost_price_pattern)
         if (self.from_location.type in ('supplier', 'production')
                 and self.to_location.type == 'storage'
-                and self.product.cost_price_method == 'average'):
+                and cost_price_method == 'average'):
             return self._compute_product_cost_price('in'), []
         elif (self.to_location.type == 'supplier'
                 and self.from_location.type == 'storage'
-                and self.product.cost_price_method == 'average'):
+                and cost_price_method == 'average'):
             return self._compute_product_cost_price('out'), []
         return None, []
 

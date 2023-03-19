@@ -1377,8 +1377,8 @@ class Line(sequence_ordered(), ModelSQL, ModelView):
             if self.purchase.party:
                 context['supplier'] = self.purchase.party.id
             context['purchase_date'] = self.purchase.purchase_date
-            if self.company:
-                context['company'] = self.company.id
+        if self.company:
+            context['company'] = self.company.id
         if self.unit:
             context['uom'] = self.unit.id
         elif self.product:

@@ -440,7 +440,6 @@ class ForecastLine(ModelSQL, ModelView):
         'Get stock moves for the forecast line'
         pool = Pool()
         Move = pool.get('stock.move')
-        Uom = pool.get('product.uom')
         Date = pool.get('ir.date')
 
         assert not self.moves
@@ -460,11 +459,6 @@ class ForecastLine(ModelSQL, ModelView):
         nb_packet = ((self.quantity - self.quantity_executed)
             // self.minimal_quantity)
         distribution = self.distribute(delta, nb_packet)
-        unit_price = None
-        if self.forecast.destination.type == 'customer':
-            unit_price = self.product.list_price or 0
-            unit_price = Uom.compute_price(self.product.default_uom,
-                unit_price, self.uom)
 
         moves = []
         for day, qty in distribution.items():
@@ -479,7 +473,8 @@ class ForecastLine(ModelSQL, ModelView):
             move.planned_date = from_date + datetime.timedelta(day)
             move.company = self.forecast.company
             move.currency = self.forecast.company.currency
-            move.unit_price = unit_price
+            move.unit_price = (
+                0 if self.forecast.destination.type == 'customer' else None)
             moves.append(move)
         return moves
 

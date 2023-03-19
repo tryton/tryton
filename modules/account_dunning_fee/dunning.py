@@ -30,13 +30,16 @@ class Fee(DeactivableMixin, ModelSQL, ModelView):
             'required': Eval('compute_method') == 'percentage',
             })
 
+    def get_list_price(self, dunning, **pattern):
+        pattern.setdefault('company', dunning.company.id)
+        return self.product.get_multivalue('list_price', **pattern)
+
     def get_amount(self, dunning):
         'Return fee amount and currency'
         amount, currency = None, None
         if self.compute_method == 'list_price':
-            assert Transaction().context.get('company') == dunning.company.id
             currency = dunning.company.currency
-            amount = currency.round(self.product.list_price)
+            amount = currency.round(self.get_list_price(dunning))
         elif self.compute_method == 'percentage':
             if dunning.second_currency:
                 amount = dunning.amount_second_currency

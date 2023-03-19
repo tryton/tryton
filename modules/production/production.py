@@ -456,10 +456,7 @@ class Production(ShipmentAssignMixin, Workflow, ModelSQL, ModelView):
         for input_ in self.inputs:
             if input_.state == 'cancelled':
                 continue
-            if input_.cost_price is not None:
-                cost_price = input_.cost_price
-            else:
-                cost_price = input_.product.cost_price
+            cost_price = input_.get_cost_price()
             cost += (Decimal(str(input_.internal_quantity)) * cost_price)
         return round_price(cost)
 
@@ -556,10 +553,7 @@ class Production(ShipmentAssignMixin, Workflow, ModelSQL, ModelView):
             for input_ in production.inputs:
                 if input_.state == 'cancelled':
                     continue
-                if input_.cost_price is not None:
-                    cost_price = input_.cost_price
-                else:
-                    cost_price = input_.product.cost_price
+                cost_price = input_.get_cost_price()
                 input_quantities[input_.product] += (
                     Decimal(str(input_.internal_quantity)))
                 input_costs[input_.product] += (
