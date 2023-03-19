@@ -525,6 +525,12 @@ class Product(
                 return []
         return super().set_multivalue(name, value, save=save, **pattern)
 
+    def get_multivalue(self, name, **pattern):
+        if isinstance(self._fields[name], TemplateFunction):
+            return self.template.get_multivalue(name, **pattern)
+        else:
+            return super().get_multivalue(name, **pattern)
+
     @classmethod
     def default_cost_price(cls, **pattern):
         context = Transaction().context
