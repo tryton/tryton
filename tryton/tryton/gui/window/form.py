@@ -75,7 +75,7 @@ class Form(TabContent):
                 self.screen.search_filter()
 
         self.update_revision()
-        self.activate_save()
+        self.set_buttons_sensitive()
 
     def get_toolbars(self):
         try:
@@ -374,14 +374,18 @@ class Form(TabContent):
             tooltip = self.name
         self.title.set_text(label)
         tooltips.set_tip(self.title, tooltip)
-        self.set_buttons_sensitive(revision)
+        self.set_buttons_sensitive()
 
-    def set_buttons_sensitive(self, revision=None):
+    def set_buttons_sensitive(self):
+        revision = self.screen.context.get('_datetime')
         if not revision:
             access = common.MODELACCESS[self.model]
+            modified = self.screen.modified()
             for name, sensitive in [
-                    ('new', access['create']),
-                    ('save', access['create'] or access['write']),
+                    ('new', access['create'] and not modified),
+                    ('save',
+                        (access['create'] or access['write'])
+                        and modified and not self.screen.readonly),
                     ('remove', access['delete']),
                     ('copy', access['create']),
                     ('import', access['create']),
@@ -467,7 +471,7 @@ class Form(TabContent):
                 return
         self.screen.new()
         self.info_bar_clear()
-        self.activate_save()
+        self.set_buttons_sensitive()
 
     def sig_copy(self, widget=None):
         if not common.MODELACCESS[self.model]['create']:
@@ -502,14 +506,14 @@ class Form(TabContent):
             return
         self.screen.display_prev()
         self.info_bar_clear()
-        self.activate_save()
+        self.set_buttons_sensitive()
 
     def sig_next(self, widget=None):
         if not self.modified_save():
             return
         self.screen.display_next()
         self.info_bar_clear()
-        self.activate_save()
+        self.set_buttons_sensitive()
 
     def sig_reload(self, test_modified=True):
         if test_modified:
@@ -531,7 +535,6 @@ class Form(TabContent):
         self.screen.display(set_cursor=set_cursor)
         self.info_bar_clear()
         self.set_buttons_sensitive()
-        self.activate_save()
         self.screen.count_tab_domain()
         return True
 
@@ -601,8 +604,7 @@ class Form(TabContent):
         selected = len(self.screen.selected_records)
         if selected > 1:
             name += '#%i' % selected
-        for button_id in ('print', 'relate', 'email', 'open', 'save',
-                'attach'):
+        for button_id in ['print', 'relate', 'email', 'open', 'attach']:
             button = self.buttons[button_id]
             can_be_sensitive = getattr(button, '_can_be_sensitive', True)
             if button_id in {'print', 'relate', 'email', 'open'}:
@@ -612,8 +614,6 @@ class Form(TabContent):
                 can_be_sensitive |= any(
                     b.attrs.get('keyword', 'action') == action_type
                     for b in self.screen.get_buttons())
-            elif button_id == 'save':
-                can_be_sensitive &= not self.screen.readonly
             set_sensitive(button_id, bool(position) and can_be_sensitive)
         set_sensitive('switch', self.screen.number_of_views > 1)
         set_sensitive('remove', self.screen.deletable)
@@ -629,7 +629,7 @@ class Form(TabContent):
             msg = "%s/%s" % (name, common.humanize(size))
         self.status_label.set_text(msg)
         self.info_bar_clear()
-        self.activate_save()
+        self.set_buttons_sensitive()
         self.refresh_attachment_preview()
 
     def record_modified(self):
@@ -637,12 +637,12 @@ class Form(TabContent):
             # As it is called via idle_add, the form could have been destroyed
             # in the meantime.
             if self.widget_get().props.window:
-                self.activate_save()
+                self.set_buttons_sensitive()
         GLib.idle_add(_record_modified)
         self.info_bar_refresh()
 
     def record_saved(self):
-        self.activate_save()
+        self.set_buttons_sensitive()
         self.refresh_resources()
 
     def modified_save(self):
@@ -692,9 +692,6 @@ class Form(TabContent):
             'paths': record_paths,
         }
         Action.execute(action, data, context=self.screen.local_context)
-
-    def activate_save(self):
-        self.buttons['save'].props.sensitive = self.screen.modified()
 
     def sig_win_close(self, widget):
         Main().sig_win_close(widget)

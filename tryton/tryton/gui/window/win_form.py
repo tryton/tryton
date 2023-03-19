@@ -345,7 +345,7 @@ class WinForm(NoModal, InfoBar):
         win.show()
 
     def record_message(self, position, size, *args):
-        self.activate_save()
+        self.set_buttons_sensitive()
         if self.view_type != 'tree':
             return
         name = '_'
@@ -380,10 +380,10 @@ class WinForm(NoModal, InfoBar):
         self.label.set_text(line)
 
     def record_modified(self, *args):
-        self.activate_save()
+        self.set_buttons_sensitive()
         self.info_bar_refresh()
 
-    def activate_save(self):
+    def set_buttons_sensitive(self):
         modified = self.screen.modified()
         # Keep sensible as change could have been trigger by a Many2One edition
         sensitive = modified or self.but_ok.props.sensitive

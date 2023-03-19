@@ -388,7 +388,7 @@
             });
         },
         record_message: function(position, size) {
-            this.activate_save();
+            this.set_buttons_sensitive();
             if (this.view_type != 'tree') {
                 return;
             }
@@ -420,10 +420,10 @@
             this.label.text(message).attr('title', message);
         },
         record_modified: function() {
-            this.activate_save();
+            this.set_buttons_sensitive();
             this.info_bar.refresh();
         },
-        activate_save: function() {
+        set_buttons_sensitive: function() {
             if (this.but_ok.hasClass('disabled') && this.screen.modified()) {
                 this.but_ok.removeClass('disabled');
             }

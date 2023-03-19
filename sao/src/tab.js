@@ -497,9 +497,8 @@
                 }
             };
 
-            this.set_buttons_sensitive();
-
             this.view_prm = this.screen.switch_view().done(() => {
+                this.set_buttons_sensitive();
                 this.content.append(screen.screen_container.el);
                 if (attributes.res_id) {
                     if (!jQuery.isArray(attributes.res_id)) {
@@ -817,7 +816,7 @@
             return this.modified_save().then(() => {
                 return this.screen.new_().then(() => {
                     this.info_bar.clear();
-                    this.activate_save();
+                    this.set_buttons_sensitive();
                 });
             });
         },
@@ -870,7 +869,7 @@
                 .then(set_cursor => {
                     return this.screen.display(set_cursor).then(() => {
                         this.info_bar.clear();
-                        this.activate_save();
+                        this.set_buttons_sensitive();
                         this.screen.count_tab_domain();
                     });
                 });
@@ -924,7 +923,7 @@
             return this.modified_save().then(() => {
                 var prm = this.screen.display_previous();
                 this.info_bar.clear();
-                this.activate_save();
+                this.set_buttons_sensitive();
                 return prm;
             });
         },
@@ -932,7 +931,7 @@
             return this.modified_save().then(() => {
                 var prm = this.screen.display_next();
                 this.info_bar.clear();
-                this.activate_save();
+                this.set_buttons_sensitive();
                 return prm;
             });
         },
@@ -1051,14 +1050,18 @@
             }
             this.title.text(label);
             this.title.attr('title', title);
-            this.set_buttons_sensitive(revision);
+            this.set_buttons_sensitive();
         },
-        set_buttons_sensitive: function(revision) {
+        set_buttons_sensitive: function() {
+            var revision = this.screen.context._datetime;
             if (!revision) {
                 var access = Sao.common.MODELACCESS.get(this.screen.model_name);
+                var modified = this.screen.modified();
                 const accesses = new Map([
-                    ['new_', access.create],
-                    ['save', access.create || access.write],
+                    ['new_', access.create && !modified],
+                    ['save',
+                        (access.create || access.write) &&
+                        modified && !this.screen.readonly],
                     ['delete_', access.delete],
                     ['copy', access.create],
                     ['import', access.create],
@@ -1465,7 +1468,7 @@
                     name += '#' + selected;
                 }
             }
-            var buttons = ['print', 'relate', 'email', 'save', 'attach'];
+            var buttons = ['print', 'relate', 'email', 'attach'];
             for (const button_id of buttons) {
                 const button = this.buttons[button_id];
                 let can_be_sensitive = button._can_be_sensitive;
@@ -1480,8 +1483,6 @@
                             var keyword = button.attributes.keyword || 'action';
                             return keyword == button_id;
                         });
-                } else if (button_id == 'save') {
-                    can_be_sensitive &= !this.screen.readonly;
                 }
                 set_sensitive(button_id, position && can_be_sensitive);
             }
@@ -1504,21 +1505,16 @@
             }
             this.status_label.text(msg).attr('title', msg);
             this.info_bar.clear();
-            this.activate_save();
+            this.set_buttons_sensitive();
             this.refresh_attachment_preview();
         },
         record_modified: function() {
-            this.activate_save();
+            this.set_buttons_sensitive();
             this.info_bar.refresh();
         },
         record_saved: function() {
-            this.activate_save();
+            this.set_buttons_sensitive();
             this.refresh_resources();
-        },
-        activate_save: function() {
-            this.menu_buttons.save.toggleClass(
-                'disabled', !this.screen.modified());
-            this.buttons.save.prop('disabled', !this.screen.modified());
         },
         action: function() {
             window.setTimeout(() => {
