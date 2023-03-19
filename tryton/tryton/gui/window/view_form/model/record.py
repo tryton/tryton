@@ -248,6 +248,7 @@ class Record:
         return (self.deleted
             or self.removed
             or self.exception
+            or self.group.readonly
             or not self._write)
 
     readonly = property(get_readonly)

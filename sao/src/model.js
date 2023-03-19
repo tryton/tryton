@@ -1374,6 +1374,7 @@
             return (this.deleted ||
                 this.removed ||
                 this.exception ||
+                this.group.readonly ||
                 !this._write);
         },
         get deletable() {
