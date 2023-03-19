@@ -931,7 +931,8 @@
             } else {
                 this.el.show();
             }
-            this.el.prop('disabled', Boolean(states.readonly));
+            this.el.prop(
+                'disabled', record.readonly || Boolean(states.readonly));
             this.set_icon(states.icon || this.attributes.icon);
 
             if (this.attributes.rule) {

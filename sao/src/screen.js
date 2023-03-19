@@ -1903,7 +1903,8 @@
             var buttons = this.current_view.get_buttons();
             for (const record of selected_records) {
                 buttons = buttons.filter(function(button) {
-                    if (button.attributes.type === 'instance') {
+                    if (record.readonly ||
+                        button.attributes.type === 'instance') {
                         return false;
                     }
                     var states = record.expr_eval(
