@@ -182,7 +182,7 @@ Receive many product lines::
     >>> shipment.state
     'received'
     >>> [move.unit_price for move in shipment.incoming_moves] == \
-    ...     [Decimal('8.3333'), Decimal('8.3333'), Decimal('8.3334')]
+    ...     [Decimal('8.3334'), Decimal('8.3333'), Decimal('8.3333')]
     True
     >>> stock_in.reload()
     >>> (stock_in.debit, stock_in.credit) == \

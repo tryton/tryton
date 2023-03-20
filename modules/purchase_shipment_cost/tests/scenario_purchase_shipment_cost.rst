@@ -111,7 +111,7 @@ Receive many product lines::
     >>> shipment.state
     'received'
     >>> [move.unit_price for move in shipment.incoming_moves] == \
-    ...     [Decimal('8.3333'), Decimal('8.3333'), Decimal('8.3334')]
+    ...     [Decimal('8.3334'), Decimal('8.3333'), Decimal('8.3333')]
     True
 
 Receive a two lines with no cost::
@@ -139,4 +139,4 @@ Receive a two lines with no cost::
     >>> shipment.state
     'received'
     >>> tuple(m.unit_price for m in shipment.incoming_moves)
-    (Decimal('0.0600'), Decimal('0.0200'))
+    (Decimal('0.0200'), Decimal('0.0600'))

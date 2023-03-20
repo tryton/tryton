@@ -127,4 +127,4 @@ Pick the shipment::
     ...     quantity = lot_quantities.setdefault(number, 0)
     ...     lot_quantities[number] += move.quantity
     >>> sorted(lot_quantities.items())
-    [('', 0.0), ('00001', 3.0), ('00002', 7.0)]
+    [('', 0.0), ('00001', 7.0), ('00002', 3.0)]

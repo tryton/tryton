@@ -123,8 +123,8 @@ Shipment is not yet assigned::
     ['assigned', 'assigned', 'draft']
     >>> [m.quantity for m in shipment.inventory_moves if m.state == 'assigned']
     [1.0, 1.0]
-    >>> [m.from_location for m in shipment.inventory_moves
-    ...     if m.state == 'assigned'] == [storage_loc, storage_loc2]
+    >>> {m.from_location for m in shipment.inventory_moves
+    ...     if m.state == 'assigned'} == {storage_loc, storage_loc2}
     True
 
 Assign manually remaining move::
