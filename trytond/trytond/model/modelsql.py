@@ -2061,17 +2061,17 @@ class ModelSQL(ModelStorage):
             transaction.lock_table(cls._table)
 
 
-def convert_from(table, tables):
+def convert_from(table, tables, type_='LEFT'):
     # Don't nested joins as SQLite doesn't support
     right, condition = tables[None]
     if table:
-        table = table.join(right, 'LEFT', condition)
+        table = table.join(right, type_, condition)
     else:
         table = right
     for k, sub_tables in tables.items():
         if k is None:
             continue
-        table = convert_from(table, sub_tables)
+        table = convert_from(table, sub_tables, type_=type_)
     return table
 
 

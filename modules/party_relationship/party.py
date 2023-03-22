@@ -9,7 +9,7 @@ from sql.aggregate import Min
 from sql.conditionals import Coalesce
 
 from trytond.config import config
-from trytond.model import Index, ModelSQL, ModelView, fields
+from trytond.model import Index, ModelSQL, ModelView, convert_from, fields
 from trytond.pool import Pool, PoolMeta
 from trytond.pyson import Eval, If
 from trytond.transaction import Transaction
@@ -159,21 +159,9 @@ class RelationAll(Relation, ModelView):
             columns.append(column)
             reverse_columns.append(reverse_column)
 
-        def convert_from(table, tables):
-            right, condition = tables[None]
-            if table:
-                table = table.join(right, condition=condition)
-            else:
-                table = right
-            for k, sub_tables in tables.items():
-                if k is None:
-                    continue
-                table = convert_from(table, sub_tables)
-            return table
-
-        query = convert_from(None, tables).select(*columns)
-        reverse_query = convert_from(None, reverse_tables).select(
-            *reverse_columns)
+        query = convert_from(None, tables, type_='INNER').select(*columns)
+        reverse_query = convert_from(
+            None, reverse_tables, type_='INNER').select(*reverse_columns)
         return Union(query, reverse_query, all_=True)
 
     @classmethod

@@ -741,6 +741,15 @@ Additional options are available:
    * ``begin``: optimize for constant pattern and anchored to the beginning of
      the string
 
+
+convert_from
+------------
+
+.. method:: convert_from(table, tables[, type_])
+
+Return a SQL ``FromItem`` constructed by joining ``table`` and :ref:`tables
+<ref-tables>` using ``type_`` with default value ``LEFT``.
+
 Workflow
 ========
 

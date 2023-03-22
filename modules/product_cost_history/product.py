@@ -5,24 +5,11 @@ from sql.aggregate import Max
 from sql.conditionals import Coalesce
 from sql.functions import CurrentTimestamp, LastValue
 
-from trytond.model import ModelSQL, ModelView, fields
+from trytond.model import ModelSQL, ModelView, convert_from, fields
 from trytond.modules.product import round_price
 from trytond.pool import Pool, PoolMeta
 from trytond.tools import timezone as tz
 from trytond.transaction import Transaction
-
-
-def convert_from(table, tables):
-    right, condition = tables[None]
-    if table:
-        table = table.join(right, condition=condition)
-    else:
-        table = right
-    for k, sub_tables in tables.items():
-        if k is None:
-            continue
-        table = convert_from(table, sub_tables)
-    return table
 
 
 class Product(metaclass=PoolMeta):
@@ -121,7 +108,7 @@ class ProductCostHistory(ModelSQL, ModelView):
         else:
             cost_price = cls.cost_price.sql_cast(move.cost_price)
 
-        move_history = convert_from(None, tables).select(
+        move_history = convert_from(None, tables, type_='INNER').select(
             (move.id * 2).as_('id'),
             move.effective_date.as_('date'),
             move.product.as_('product'),

@@ -10,7 +10,7 @@ from trytond import backend
 from trytond.i18n import gettext
 from trytond.model import (
     DeactivableMixin, Index, ModelSQL, ModelView, MultiValueMixin, Unique,
-    ValueMixin, fields, sequence_ordered)
+    ValueMixin, convert_from, fields, sequence_ordered)
 from trytond.model.exceptions import AccessError
 from trytond.pool import Pool
 from trytond.pyson import Bool, Eval
@@ -937,18 +937,6 @@ class Erase(Wizard):
         Party = pool.get('party.party')
         cursor = Transaction().connection.cursor()
 
-        def convert_from(table, tables):
-            right, condition = tables[None]
-            if table:
-                table = table.join(right, condition=condition)
-            else:
-                table = right
-            for k, sub_tables in tables.items():
-                if k is None:
-                    continue
-                table = convert_from(table, sub_tables)
-            return table
-
         resources = self.get_resources()
         parties = replacing = [self.ask.party]
         with inactive_records():
@@ -968,7 +956,7 @@ class Erase(Wizard):
                     Model.write(records, {'active': False})
 
                 tables, where = Model.search_domain(domain, active_test=False)
-                from_ = convert_from(None, tables)
+                from_ = convert_from(None, tables, type_='INNER')
                 table, _ = tables[None]
                 query = from_.select(table.id, where=where)
 

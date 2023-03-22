@@ -19,8 +19,7 @@ from sql.functions import CurrentTimestamp, Extract
 from sql.operators import Exists
 
 from trytond.i18n import gettext
-from trytond.model import ModelSQL, ModelView, fields
-from trytond.model.modelsql import convert_from
+from trytond.model import ModelSQL, ModelView, convert_from, fields
 from trytond.modules.account.exceptions import FiscalYearNotFoundError
 from trytond.modules.account_eu.account import ECSalesList, ECSalesListContext
 from trytond.modules.currency.fields import Monetary
