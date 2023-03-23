@@ -1116,9 +1116,10 @@ class Line(sequence_ordered(), ModelSQL, ModelView):
     product = fields.Many2One('product.product', 'Product',
         ondelete='RESTRICT',
         domain=[
-            If(Eval('purchase_state').in_(['draft', 'quotation']),
-                [('purchasable', '=', True)],
-                []),
+            If(Eval('purchase_state').in_(['draft', 'quotation'])
+                & ~(Eval('quantity', 0) < 0),
+                ('purchasable', '=', True),
+                ()),
             If(Eval('type') != 'line',
                 ('id', '=', None),
                 ()),

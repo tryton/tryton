@@ -28,7 +28,12 @@ class PurchaseRequest(ModelSQL, ModelView):
 
     product = fields.Many2One(
         'product.product', "Product", readonly=True,
-        domain=[('purchasable', '=', True)],
+        domain=[
+            If((Eval('state') == 'draft')
+                & ~(Eval('quantity', 0) < 0),
+                ('purchasable', '=', True),
+                ()),
+            ],
         context={
             'company': Eval('company', -1),
             },

@@ -445,7 +445,10 @@ class PurchaseRequisitionLine(sequence_ordered(), ModelSQL, ModelView):
         'product.product', 'Product',
         ondelete='RESTRICT',
         domain=[
-            ('purchasable', '=', True),
+            If((Eval('purchase_requisition_state') == 'draft')
+                & ~(Eval('quantity', 0) < 0),
+                ('purchasable', '=', True),
+                ()),
             ],
         states=_states)
     product_uom_category = fields.Function(
