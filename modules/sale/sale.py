@@ -1201,7 +1201,8 @@ class SaleLine(TaxableMixin, sequence_ordered(), ModelSQL, ModelView):
     product = fields.Many2One('product.product', 'Product',
         ondelete='RESTRICT',
         domain=[
-            If(Eval('sale_state').in_(['draft', 'quotation']),
+            If(Eval('sale_state').in_(['draft', 'quotation'])
+                & ~(Eval('quantity', 0) < 0),
                 ('salable', '=', True),
                 ()),
             If(Eval('type') != 'line',

@@ -569,7 +569,13 @@ class SaleOpportunityLine(sequence_ordered(), ModelSQL, ModelView):
         fields.Selection('get_opportunity_states', "Opportunity State"),
         'on_change_with_opportunity_state')
     product = fields.Many2One('product.product', 'Product', required=True,
-        domain=[('salable', '=', True)], states=_states)
+        domain=[
+            If(Eval('opportunity_state').in_(['lead', 'opportunity'])
+                & ~(Eval('quantity', 0) < 0),
+                ('salable', '=', True),
+                ()),
+            ],
+        states=_states)
     quantity = fields.Float(
         "Quantity", digits='unit', required=True, states=_states)
     unit = fields.Many2One('product.uom', 'Unit', required=True,

@@ -456,7 +456,10 @@ class POSSaleLine(ModelSQL, ModelView, TaxableMixin):
     product = fields.Many2One(
         'product.product', "Product", required=True,
         domain=[
-            ('salable', '=', True),
+            If((Eval('sale_state') == 'open')
+                & ~(Eval('quantity', 0) < 0),
+                ('salable', '=', True),
+                ()),
             ],
         context={
             'company': Eval('company'),

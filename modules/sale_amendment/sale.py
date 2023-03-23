@@ -282,7 +282,8 @@ class AmendmentLine(ModelSQL, ModelView):
     product = fields.Many2One(
         'product.product', "Product",
         domain=[
-            If(Eval('state') == 'draft',
+            If((Eval('state') == 'draft')
+                & ~(Eval('quantity', 0) < 0),
                 ('salable', '=', True),
                 ()),
             If(Eval('product_uom_category'),
