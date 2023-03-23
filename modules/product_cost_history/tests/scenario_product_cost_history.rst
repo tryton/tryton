@@ -11,12 +11,12 @@ Imports::
     >>> from trytond.tests.tools import activate_modules
     >>> from trytond.modules.company.tests.tools import create_company, \
     ...     get_company
-    >>> today = dt.date.today()
-    >>> now = dt.datetime.now()
 
 Activate modules::
 
     >>> config = activate_modules('product_cost_history')
+
+    >>> Date = Model.get('ir.date')
 
 Create company::
 
@@ -24,6 +24,9 @@ Create company::
     >>> company = get_company()
     >>> company.timezone = 'Europe/Madrid'
     >>> company.save()
+
+    >>> today = Date.today(config.context)
+    >>> now = dt.datetime.combine(today, dt.time())
 
 Create product::
 
