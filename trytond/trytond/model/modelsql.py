@@ -459,20 +459,20 @@ class ModelSQL(ModelStorage):
 
         if cls._history:
             cls._update_history_table()
-            history_table = cls.__table_history__()
+            h_table = cls.__table_history__()
             cursor.execute(*sql_table.select(sql_table.id, limit=1))
             if cursor.fetchone():
                 cursor.execute(
-                    *history_table.select(history_table.id, limit=1))
+                    *h_table.select(h_table.id, limit=1))
                 if not cursor.fetchone():
                     columns = [n for n, f in cls._fields.items()
                         if f.sql_type()]
-                    cursor.execute(*history_table.insert(
-                            [Column(history_table, c) for c in columns],
+                    cursor.execute(*h_table.insert(
+                            [Column(h_table, c) for c in columns],
                             sql_table.select(*(Column(sql_table, c)
                                     for c in columns))))
-                    cursor.execute(*history_table.update(
-                            [history_table.write_date], [None]))
+                    cursor.execute(*h_table.update(
+                            [h_table.write_date], [None]))
 
     @classmethod
     def _update_sql_indexes(cls):
