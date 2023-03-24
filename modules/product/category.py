@@ -36,3 +36,9 @@ class Category(tree(separator=' / '), ModelSQL, ModelView):
             'pyson_domain': PYSONEncoder().encode(
                 [('id', '=', categories[0].id)]),
              }
+
+    @classmethod
+    def copy(cls, categories, default=None):
+        default = default.copy() if default is not None else {}
+        default.setdefault('templates')
+        return super().copy(categories, default=default)
