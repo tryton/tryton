@@ -374,10 +374,7 @@ class Move(metaclass=PoolMeta):
         'stock.package', "Package", readonly=True,
         domain=[
             ('company', '=', Eval('company', -1)),
-            ],
-        states={
-            'readonly': Eval('state') == 'cancelled',
-            })
+            ])
 
     @property
     def package_path(self):
