@@ -275,6 +275,8 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
     invoice_report_format = fields.Char('Invoice Report Format', readonly=True)
     allow_cancel = fields.Function(
         fields.Boolean("Allow Cancel Invoice"), 'get_allow_cancel')
+    has_payment_method = fields.Function(
+        fields.Boolean("Has Payment Method"), 'get_has_payment_method')
 
     del _states
 
@@ -356,8 +358,10 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
                     'depends': ['state', 'move'],
                     },
                 'pay': {
-                    'invisible': Eval('state') != 'posted',
-                    'depends': ['state'],
+                    'invisible': (
+                        (Eval('state') != 'posted')
+                        | ~Eval('has_payment_method', False)),
+                    'depends': ['state', 'has_payment_method'],
                     },
                 'reschedule_lines_to_pay': {
                     'invisible': (
@@ -926,6 +930,22 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
         if self.state == 'posted':
             return self.type == 'in' or self.company.cancel_invoice_out
         return False
+
+    @classmethod
+    def get_has_payment_method(cls, invoices, name):
+        pool = Pool()
+        Method = pool.get('account.invoice.payment.method')
+        methods = {}
+        for (company, account), sub_invoices in groupby(
+                invoices, key=lambda i: (i.company, i.account)):
+            sub_invoice_ids = [i.id for i in sub_invoices]
+            value = bool(Method.search([
+                        ('company', '=', company.id),
+                        ('debit_account', '!=', account.id),
+                        ('credit_account', '!=', account.id),
+                        ], limit=1))
+            methods.update(dict.fromkeys(sub_invoice_ids, value))
+        return methods
 
     @property
     def taxable_lines(self):
