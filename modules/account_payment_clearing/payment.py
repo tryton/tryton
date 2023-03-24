@@ -19,6 +19,7 @@ class Journal(metaclass=PoolMeta):
     __name__ = 'account.payment.journal'
     clearing_account = fields.Many2One('account.account', 'Clearing Account',
         domain=[
+            ('company', '=', Eval('company', -1)),
             ('type', '!=', None),
             ('closed', '!=', True),
             ('party_required', '=', False),
