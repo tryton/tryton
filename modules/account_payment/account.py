@@ -27,7 +27,7 @@ from .payment import KINDS
 class MoveLine(metaclass=PoolMeta):
     __name__ = 'account.move.line'
     payment_amount = fields.Function(Monetary(
-            "Payment Amount",
+            "Amount to Pay",
             currency='payment_currency', digits='payment_currency',
             states={
                 'invisible': ~Eval('payment_kind'),
