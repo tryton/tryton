@@ -1112,7 +1112,7 @@ class Selection(GenericText, SelectionMixin, PopdownMixin):
 
         record.load(self.attrs['name'], process_exception=False)
         field = record[self.attrs['name']]
-        self.update_selection(record, field, process_exception=False)
+        self.update_selection(record, field)
         value = self.get_value(record, field)
         text = dict(self.selection).get(value, '')
         if value and not text:
@@ -1196,7 +1196,7 @@ class MultiSelection(GenericText, SelectionMixin):
 
         record.load(self.attrs['name'], process_exception=False)
         field = record[self.attrs['name']]
-        self.update_selection(record, field, process_exception=False)
+        self.update_selection(record, field)
         selection = dict(self.selection)
         values = []
         for value in field.get_eval(record):
