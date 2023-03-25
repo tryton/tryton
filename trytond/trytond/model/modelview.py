@@ -767,10 +767,22 @@ class ModelView(Model):
         return [self._changed_values]
 
     def on_change_with(self, fieldnames):
+        from .modelstorage import ModelStorage
         changes = {}
         for fieldname in fieldnames:
+            field = self._fields[fieldname]
             method_name = 'on_change_with_%s' % fieldname
-            changes[fieldname] = getattr(self, method_name)()
+            value = getattr(self, method_name)()
+            if field._type in {'many2one', 'one2one', 'reference'}:
+                if isinstance(value, ModelStorage):
+                    if field._type == 'reference':
+                        value = str(value)
+                    else:
+                        value = value.id
+            elif field._type in {'one2many', 'many2many'}:
+                if isinstance(value, (list, tuple)):
+                    value = [int(r) for r in value]
+            changes[fieldname] = value
         return changes
 
     def on_change_notify(self):
