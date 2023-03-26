@@ -235,8 +235,7 @@ class POSSale(Workflow, ModelSQL, ModelView, TaxableMixin):
 
     @fields.depends('company')
     def on_change_with_currency(self, name=None):
-        if self.company and self.company.currency:
-            return self.company.currency.id
+        return self.company.currency if self.company else None
 
     @fields.depends('lines')
     def on_change_with_total_tax(self, name=None):
@@ -512,8 +511,7 @@ class POSSaleLine(ModelSQL, ModelView, TaxableMixin):
     @fields.depends('product')
     def on_change_with_unit(self, name=None):
         # TODO packaging UOM
-        if self.product:
-            return self.product.sale_uom.id
+        return self.product.sale_uom if self.product else None
 
     @classmethod
     def get_sale_states(cls):
@@ -576,8 +574,7 @@ class POSSaleLine(ModelSQL, ModelView, TaxableMixin):
 
     @fields.depends('sale', '_parent_sale.company')
     def on_change_with_company(self, name=None):
-        if self.sale and self.sale.company:
-            return self.sale.company.id
+        return self.sale.company if self.sale else None
 
     @classmethod
     def search_company(cls, name, clause):
@@ -585,8 +582,7 @@ class POSSaleLine(ModelSQL, ModelView, TaxableMixin):
 
     @fields.depends('sale', '_parent_sale.currency')
     def on_change_with_currency(self, name=None):
-        if self.sale and self.sale.currency:
-            return self.sale.currency.id
+        return self.sale.currency if self.sale else None
 
     @property
     def untax_amount(self):
@@ -877,8 +873,7 @@ class POSCashSession(Workflow, ModelSQL, ModelView):
 
     @fields.depends('point')
     def on_change_with_currency(self, name=None):
-        if self.point:
-            return self.point.company.currency.id
+        return self.point.company.currency if self.point else None
 
     @classmethod
     @Workflow.transition('open')
@@ -1022,13 +1017,11 @@ class POSPayment(ModelSQL, ModelView):
 
     @fields.depends('company')
     def on_change_with_currency(self, name=None):
-        if self.company and self.company.currency:
-            return self.company.currency.id
+        return self.company.currency if self.company else None
 
     @fields.depends('sale', '_parent_sale.company')
     def on_change_with_company(self, name=None):
-        if self.sale and self.sale.company:
-            return self.sale.company.id
+        return self.sale.company if self.sale else None
 
     @classmethod
     def search_company(cls, name, clause):
@@ -1047,8 +1040,7 @@ class POSPayment(ModelSQL, ModelView):
 
     @fields.depends('sale', '_parent_sale.point')
     def on_change_with_point(self, name=None):
-        if self.sale and self.sale.point:
-            return self.sale.point.id
+        return self.sale.point if self.sale else None
 
     @fields.depends('method')
     def on_change_with_cash(self, name=None):
@@ -1253,13 +1245,11 @@ class POSCashTransfer(Workflow, ModelSQL, ModelView):
 
     @fields.depends('point')
     def on_change_with_company(self, name=None):
-        if self.point:
-            return self.point.company.id
+        return self.point.company if self.point else None
 
     @fields.depends('point')
     def on_change_with_currency(self, name=None):
-        if self.point:
-            return self.point.company.currency.id
+        return self.point.company.currency if self.point else None
 
     @classmethod
     def delete(cls, transfers):

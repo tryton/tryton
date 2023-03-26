@@ -83,8 +83,7 @@ class PartyReceptionDirectDebit(
 
     @fields.depends('journal')
     def on_change_with_company(self, name=None):
-        if self.journal:
-            return self.journal.company.id
+        return self.journal.company if self.journal else None
 
     @classmethod
     def search_company(cls, name, clause):
@@ -93,8 +92,7 @@ class PartyReceptionDirectDebit(
 
     @fields.depends('journal')
     def on_change_with_currency(self, name=None):
-        if self.journal:
-            return self.journal.currency.id
+        return self.journal.currency if self.journal else None
 
     @classmethod
     def get_process_methods(cls):

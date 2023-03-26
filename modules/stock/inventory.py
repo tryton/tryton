@@ -412,8 +412,7 @@ class InventoryLine(ModelSQL, ModelView):
 
     @fields.depends('inventory', '_parent_inventory.location')
     def on_change_with_inventory_location(self, name=None):
-        if self.inventory and self.inventory.location:
-            return self.inventory.location.id
+        return self.inventory.location if self.inventory else None
 
     @classmethod
     def search_inventory_location(cls, name, clause):

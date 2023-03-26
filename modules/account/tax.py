@@ -182,8 +182,7 @@ class TaxCode(
 
     @fields.depends('company')
     def on_change_with_currency(self, name=None):
-        if self.company:
-            return self.company.currency.id
+        return self.company.currency if self.company else None
 
     @classmethod
     def get_amount(cls, codes, name):
@@ -570,11 +569,12 @@ class TaxCodeContext(ModelView):
     def on_change_with_periods(self):
         pool = Pool()
         Period = pool.get('account.period')
+        periods = []
         if self.method == 'fiscalyear' and self.fiscalyear:
-            return [
-                p.id for p in self.fiscalyear.periods if p.type == 'standard']
+            periods.extend(
+                p for p in self.fiscalyear.periods if p.type == 'standard')
         elif self.method == 'period' and self.period:
-            return [self.period.id]
+            periods.append(self.period)
         elif (self.method == 'periods'
                 and self.company
                 and self.start_period and self.end_period):
@@ -584,8 +584,7 @@ class TaxCodeContext(ModelView):
                     ('company', '=', self.company.id),
                     ('type', '=', 'standard'),
                     ])
-            return [p.id for p in periods]
-        return []
+        return periods
 
 
 class TaxTemplate(sequence_ordered(), ModelSQL, ModelView, DeactivableMixin):
@@ -976,8 +975,7 @@ class Tax(sequence_ordered(), ModelSQL, ModelView, DeactivableMixin):
 
     @fields.depends('company')
     def on_change_with_currency(self, name=None):
-        if self.company:
-            return self.company.currency.id
+        return self.company.currency if self.company else None
 
     @classmethod
     def copy(cls, taxes, default=None):
@@ -1376,13 +1374,12 @@ class TaxLine(ModelSQL, ModelView):
 
     @fields.depends('move_line', '_parent_move_line.currency')
     def on_change_with_currency(self, name=None):
-        if self.move_line and self.move_line.currency:
-            return self.move_line.currency.id
+        return self.move_line.currency if self.move_line else None
 
     @fields.depends('_parent_move_line.account', 'move_line')
     def on_change_with_company(self, name=None):
         if self.move_line and self.move_line.account:
-            return self.move_line.account.company.id
+            return self.move_line.account.company
 
     def get_rec_name(self, name):
         name = super(TaxLine, self).get_rec_name(name)

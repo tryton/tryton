@@ -107,8 +107,7 @@ class StatementRule(sequence_ordered(), ModelSQL, ModelView):
 
     @fields.depends('journal')
     def on_change_with_currency(self, name=None):
-        if self.journal:
-            return self.journal.currency.id
+        return self.journal.currency if self.journal else None
 
     def match(self, origin):
         keywords = {}
@@ -313,8 +312,7 @@ class StatementRuleLine(sequence_ordered(), ModelSQL, ModelView):
 
     @fields.depends('rule', '_parent_rule.company')
     def on_change_with_company(self, name=None):
-        if self.rule and self.rule.company:
-            return self.rule.company.id
+        return self.rule.company if self.rule else None
 
     def get_line(self, origin, keywords, **context):
         pool = Pool()

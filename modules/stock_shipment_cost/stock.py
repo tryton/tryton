@@ -104,7 +104,7 @@ class ShipmentCostMixin:
         if not self.cost_edit and not readonly:
             return self._compute_costs()['cost_currency']
         elif self.cost_currency:
-            return self.cost_currency.id
+            return self.cost_currency
 
     @fields.depends(
         'cost', 'cost_edit',

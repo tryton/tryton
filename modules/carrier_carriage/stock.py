@@ -68,8 +68,7 @@ class Carriage(sequence_ordered(), ShipmentCostMixin, ModelSQL, ModelView):
 
     @fields.depends('shipment')
     def on_change_with_company(self, name=None):
-        if self.shipment and self.shipment.company:
-            return self.shipment.company.id
+        return self.shipment.company if self.shipment else None
 
     def get_rec_name(self, name):
         return f'{self.carrier.rec_name} @ {self.shipment.rec_name}'

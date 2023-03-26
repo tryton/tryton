@@ -144,8 +144,7 @@ class Account(
 
     @fields.depends('company')
     def on_change_with_currency(self, name=None):
-        if self.company:
-            return self.company.currency.id
+        return self.company.currency if self.company else None
 
     @fields.depends('parent', 'type',
         '_parent_parent.id', '_parent_parent.root', '_parent_parent.type')
@@ -357,8 +356,7 @@ class AccountDistribution(ModelView, ModelSQL):
 
     @fields.depends('parent', '_parent_parent.root')
     def on_change_with_root(self, name=None):
-        if self.parent:
-            return self.parent.root.id
+        return self.parent.root if self.parent else None
 
 
 class AnalyticAccountEntry(ModelView, ModelSQL):

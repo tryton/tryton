@@ -340,8 +340,7 @@ class AccountRuleAccountAbstract(sequence_ordered(), ModelSQL, ModelView):
 
     @fields.depends('rule', '_parent_rule.company')
     def on_change_with_company(self, name=None):
-        if self.rule and self.rule.company:
-            return self.rule.company.id
+        return self.rule.company if self.rule else None
 
     @fields.depends('rule', '_parent_rule.account_party_required')
     def on_change_with_account_party_required(self, name=None):

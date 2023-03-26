@@ -76,11 +76,10 @@ class AnalyticAccountEntry(metaclass=PoolMeta):
             Asset = pool.get('account.asset')
         except KeyError:
             Asset = None
-        company = super(AnalyticAccountEntry, self).on_change_with_company(
-            name)
+        company = super().on_change_with_company(name=name)
         if (isinstance(self.origin, InvoiceLine)
                 or (Asset and isinstance(self.origin, Asset))):
-            company = self.origin.company.id if self.origin.company else None
+            company = self.origin.company
         return company
 
     @classmethod

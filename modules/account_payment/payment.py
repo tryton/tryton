@@ -269,8 +269,7 @@ class Group(ModelSQL, ModelView):
 
     @fields.depends('journal')
     def on_change_with_currency(self, name=None):
-        if self.journal:
-            return self.journal.currency.id
+        return self.journal.currency if self.journal else None
 
     @classmethod
     def search_currency(cls, name, clause):
@@ -478,8 +477,7 @@ class Payment(Workflow, ModelSQL, ModelView):
 
     @fields.depends('journal')
     def on_change_with_currency(self, name=None):
-        if self.journal:
-            return self.journal.currency.id
+        return self.journal.currency if self.journal else None
 
     @classmethod
     def search_currency(cls, name, clause):

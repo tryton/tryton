@@ -82,14 +82,14 @@ class SaleMixin:
         config = Configuration(1)
         method = config.get_multivalue('product_recommendation_method')
         size = config.get_multivalue('product_recommendation_size')
-        product_ids = []
+        products = []
         if method:
             products = getattr(self, '_recommended_products_%s' % method)()
             for product in filter(self._is_recommendable_product, products):
-                product_ids.append(product.id)
-                if len(product_ids) >= size:
+                products.append(product)
+                if len(products) >= size:
                     break
-        return product_ids
+        return products
 
     @classmethod
     def _is_recommendable_product(cls, product):

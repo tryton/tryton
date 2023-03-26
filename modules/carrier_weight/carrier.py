@@ -115,5 +115,4 @@ class WeightPriceList(ModelSQL, ModelView):
 
     @fields.depends('carrier', '_parent_carrier.weight_currency')
     def on_change_with_currency(self, name=None):
-        if self.carrier and self.carrier.weight_currency:
-            return self.carrier.weight_currency.id
+        return self.carrier.weight_currency if self.carrier else None

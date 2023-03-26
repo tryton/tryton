@@ -56,7 +56,7 @@ class SaleSecondaryMixin:
     @fields.depends('sale_secondary_uom')
     def on_change_with_sale_secondary_uom_category(self, name=None):
         if self.sale_secondary_uom:
-            return self.sale_secondary_uom.category.id
+            return self.sale_secondary_uom.category
 
     @classmethod
     def search_sale_secondary_uom_category(cls, name, clause):
@@ -151,9 +151,9 @@ class ProductCustomer(SaleSecondaryMixin, metaclass=PoolMeta):
         'product', '_parent_product.sale_uom')
     def on_change_with_default_uom_category(self, name=None):
         if self.product and self.product.sale_uom:
-            return self.product.sale_uom.category.id
+            return self.product.sale_uom.category
         elif self.template and self.template.sale_uom:
-            return self.template.sale_uom.category.id
+            return self.template.sale_uom.category
 
     @property
     def sale_uom(self):

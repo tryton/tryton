@@ -1480,8 +1480,7 @@ class Line(sequence_ordered(), ModelSQL, ModelView):
 
     @fields.depends('product')
     def on_change_with_product_uom_category(self, name=None):
-        if self.product:
-            return self.product.default_uom_category.id
+        return self.product.default_uom_category if self.product else None
 
     @fields.depends(methods=['compute_unit_price'])
     def on_change_quantity(self):
@@ -1526,8 +1525,7 @@ class Line(sequence_ordered(), ModelSQL, ModelView):
 
     @fields.depends('purchase', '_parent_purchase.warehouse')
     def on_change_with_warehouse(self, name=None):
-        if self.purchase and self.purchase.warehouse:
-            return self.purchase.warehouse.id
+        return self.purchase.warehouse if self.purchase else None
 
     def get_from_location(self, name):
         if (self.quantity or 0) >= 0:
@@ -1619,13 +1617,11 @@ class Line(sequence_ordered(), ModelSQL, ModelView):
 
     @fields.depends('purchase', '_parent_purchase.company')
     def on_change_with_company(self, name=None):
-        if self.purchase and self.purchase.company:
-            return self.purchase.company.id
+        return self.purchase.company if self.purchase else None
 
     @fields.depends('purchase', '_parent_purchase.party')
     def on_change_with_supplier(self, name=None):
-        if self.purchase and self.purchase.party:
-            return self.purchase.party.id
+        return self.purchase.party if self.purchase else None
 
     @classmethod
     def search_supplier(cls, name, clause):
@@ -1647,8 +1643,7 @@ class Line(sequence_ordered(), ModelSQL, ModelView):
 
     @fields.depends('purchase', '_parent_purchase.currency')
     def on_change_with_currency(self, name=None):
-        if self.purchase and self.purchase.currency:
-            return self.purchase.currency.id
+        return self.purchase.currency if self.purchase else None
 
     def get_invoice_line(self):
         'Return a list of invoice line for purchase line'

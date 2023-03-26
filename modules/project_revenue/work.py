@@ -170,8 +170,7 @@ class Work(metaclass=PoolMeta):
 
     @fields.depends('company')
     def on_change_with_currency(self, name=None):
-        if self.company:
-            return self.company.currency.id
+        return self.company.currency if self.company else None
 
     @fields.depends('product', 'company')
     def on_change_product(self):

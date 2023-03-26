@@ -155,8 +155,7 @@ class Journal(metaclass=PoolMeta):
 
     @fields.depends('company')
     def on_change_with_company_party(self, name=None):
-        if self.company:
-            return self.company.party.id
+        return self.company.party if self.company else None
 
     @staticmethod
     def default_sepa_charge_bearer():

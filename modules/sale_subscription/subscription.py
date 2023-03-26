@@ -666,8 +666,7 @@ class Line(sequence_ordered(), ModelSQL, ModelView):
 
     @fields.depends('subscription', '_parent_subscription.company')
     def on_change_with_company(self, name=None):
-        if self.subscription and self.subscription.company:
-            return self.subscription.company.id
+        return self.subscription.company if self.subscription else None
 
     @fields.depends('subscription', 'start_date', 'end_date',
         '_parent_subscription.start_date', '_parent_subscription.end_date')
@@ -684,13 +683,12 @@ class Line(sequence_ordered(), ModelSQL, ModelView):
 
     @fields.depends('subscription', '_parent_subscription.currency')
     def on_change_with_currency(self, name=None):
-        if self.subscription and self.subscription.currency:
-            return self.subscription.currency.id
+        return self.subscription.currency if self.subscription else None
 
     @fields.depends('service')
     def on_change_with_service_unit_category(self, name=None):
         if self.service:
-            return self.service.product.default_uom_category.id
+            return self.service.product.default_uom_category
 
     @fields.depends('service', 'quantity', 'unit',
         'subscription', '_parent_subscription.party',
@@ -908,8 +906,7 @@ class LineConsumption(ModelSQL, ModelView):
 
     @fields.depends('line')
     def on_change_with_unit(self, name=None):
-        if self.line and self.line.unit:
-            return self.line.unit.id
+        return self.line.unit if self.line else None
 
     @classmethod
     def copy(cls, consumptions, default=None):

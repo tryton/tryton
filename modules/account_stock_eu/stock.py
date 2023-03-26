@@ -126,9 +126,8 @@ class Move(metaclass=PoolMeta):
 
     @fields.depends('intrastat_tariff_code')
     def on_change_with_intrastat_tariff_code_uom(self, name=None):
-        if (self.intrastat_tariff_code
-                and self.intrastat_tariff_code.intrastat_uom):
-            return self.intrastat_tariff_code.intrastat_uom.id
+        if self.intrastat_tariff_code:
+            return self.intrastat_tariff_code.intrastat_uom
 
     @property
     @fields.depends('from_location', 'shipment')
@@ -576,10 +575,8 @@ class ShipmentIn(ShipmentMixin, metaclass=PoolMeta):
 
     @fields.depends('warehouse')
     def on_change_with_intrastat_to_country(self, name=None):
-        if (self.warehouse
-                and self.warehouse.address
-                and self.warehouse.address.country):
-            return self.warehouse.address.country.id
+        if self.warehouse and self.warehouse.address:
+            return self.warehouse.address.country
 
 
 class ShipmentInReturn(ShipmentMixin, metaclass=PoolMeta):
@@ -594,15 +591,13 @@ class ShipmentInReturn(ShipmentMixin, metaclass=PoolMeta):
 
     @fields.depends('warehouse')
     def on_change_with_intrastat_from_country(self, name=None):
-        if (self.warehouse
-                and self.warehouse.address
-                and self.warehouse.address.country):
-            return self.warehouse.address.country.id
+        if self.warehouse and self.warehouse.address:
+            return self.warehouse.address.country
 
     @fields.depends('delivery_address')
     def on_change_with_intrastat_to_country(self, name=None):
-        if self.delivery_address and self.delivery_address.country:
-            return self.delivery_address.country.id
+        if self.delivery_address:
+            return self.delivery_address.country
 
 
 class ShipmentOut(ShipmentMixin, metaclass=PoolMeta):
@@ -617,15 +612,13 @@ class ShipmentOut(ShipmentMixin, metaclass=PoolMeta):
 
     @fields.depends('warehouse')
     def on_change_with_intrastat_from_country(self, name=None):
-        if (self.warehouse
-                and self.warehouse.address
-                and self.warehouse.address.country):
-            return self.warehouse.address.country.id
+        if self.warehouse and self.warehouse.address:
+            return self.warehouse.address.country
 
     @fields.depends('delivery_address')
     def on_change_with_intrastat_to_country(self, name=None):
-        if self.delivery_address and self.delivery_address.country:
-            return self.delivery_address.country.id
+        if self.delivery_address:
+            return self.delivery_address.country
 
 
 class ShipmentOutReturn(ShipmentMixin, metaclass=PoolMeta):
@@ -645,10 +638,8 @@ class ShipmentOutReturn(ShipmentMixin, metaclass=PoolMeta):
 
     @fields.depends('warehouse')
     def on_change_with_intrastat_to_country(self, name=None):
-        if (self.warehouse
-                and self.warehouse.address
-                and self.warehouse.address.country):
-            return self.warehouse.address.country.id
+        if self.warehouse and self.warehouse.address:
+            return self.warehouse.address.country
 
 
 class ShipmentInternal(ShipmentMixin, metaclass=PoolMeta):
@@ -665,17 +656,15 @@ class ShipmentInternal(ShipmentMixin, metaclass=PoolMeta):
     def on_change_with_intrastat_from_country(self, name=None):
         if (self.from_location
                 and self.from_location.warehouse
-                and self.from_location.warehouse.address
-                and self.from_location.warehouse.address.country):
-            return self.from_location.warehouse.address.country.id
+                and self.from_location.warehouse.address):
+            return self.from_location.warehouse.address.country
 
     @fields.depends('to_location')
     def on_change_with_intrastat_to_country(self, name=None):
         if (self.to_location
                 and self.to_location.warehouse
-                and self.to_location.warehouse.address
-                and self.to_location.warehouse.address.country):
-            return self.to_location.warehouse.address.country.id
+                and self.to_location.warehouse.address):
+            return self.to_location.warehouse.address.country
 
 
 class ShipmentDrop(ShipmentMixin, metaclass=PoolMeta):

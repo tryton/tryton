@@ -190,8 +190,7 @@ class MoveLineGroup(MoveLineMixin, ModelSQL, ModelView):
 
     @fields.depends('account')
     def on_change_with_currency(self, name=None):
-        if self.account:
-            return self.account.currency.id
+        return self.account.currency if self.account else None
 
     def get_delegated_amount(self, name):
         return self.amount_currency.round(

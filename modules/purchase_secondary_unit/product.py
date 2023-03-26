@@ -59,7 +59,7 @@ class PurchaseSecondaryMixin:
     @fields.depends('purchase_secondary_uom')
     def on_change_with_purchase_secondary_uom_category(self, name=None):
         if self.purchase_secondary_uom:
-            return self.purchase_secondary_uom.category.id
+            return self.purchase_secondary_uom.category
 
     @classmethod
     def search_purchase_secondary_uom_category(cls, name, clause):
@@ -155,9 +155,9 @@ class ProductSupplier(PurchaseSecondaryMixin, metaclass=PoolMeta):
         'product', '_parent_product.purchase_uom')
     def on_change_with_default_uom_category(self, name=None):
         if self.product and self.product.purchase_uom:
-            return self.product.purchase_uom.category.id
+            return self.product.purchase_uom.category
         elif self.template and self.template.purchase_uom:
-            return self.template.purchase_uom.category.id
+            return self.template.purchase_uom.category
 
     @property
     def purchase_uom(self):

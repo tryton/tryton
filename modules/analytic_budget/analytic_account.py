@@ -163,8 +163,7 @@ class BudgetLine(BudgetLineMixin, ModelSQL, ModelView):
 
     @fields.depends('budget', '_parent_budget.root')
     def on_change_with_root(self, name=None):
-        if self.budget and self.budget.root:
-            return self.budget.root.id
+        return self.budget.root if self.budget else None
 
     @classmethod
     def _get_amount_group_key(cls, record):

@@ -552,4 +552,4 @@ class POSPayGiftCard(ModelView):
     @fields.depends('sale')
     def on_change_with_currency(self, name=None):
         if self.sale and self.sale.company:
-            return self.sale.company.currency.id
+            return self.sale.company.currency

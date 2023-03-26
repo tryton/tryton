@@ -409,11 +409,9 @@ class ProductSupplier(
         'template', '_parent_template.purchase_uom')
     def on_change_with_uom(self, name=None):
         if self.product:
-            if self.product.purchase_uom:
-                return self.product.purchase_uom.id
+            return self.product.purchase_uom
         elif self.template:
-            if self.template.purchase_uom:
-                return self.template.purchase_uom.id
+            return self.template.purchase_uom
 
     @property
     def lead_time_used(self):
@@ -506,13 +504,12 @@ class ProductSupplierPrice(
 
     @fields.depends('product_supplier', '_parent_product_supplier.product')
     def on_change_with_uom(self, name=None):
-        if self.product_supplier and self.product_supplier.uom:
-            return self.product_supplier.uom.id
+        return self.product_supplier.uom if self.product_supplier else None
 
     @fields.depends('product_supplier', '_parent_product_supplier.currency')
     def on_change_with_currency(self, name=None):
-        if self.product_supplier and self.product_supplier.currency:
-            return self.product_supplier.currency.id
+        if self.product_supplier:
+            return self.product_supplier.currency
 
     @staticmethod
     def get_pattern():

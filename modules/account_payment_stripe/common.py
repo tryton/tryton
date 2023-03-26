@@ -79,7 +79,7 @@ class StripeCustomerMethodMixin:
     @fields.depends('journal')
     def on_change_with_stripe_account(self, name=None):
         if self.journal and self.journal.process_method == 'stripe':
-            return self.journal.stripe_account.id
+            return self.journal.stripe_account
 
     @fields.depends('stripe_customer', 'stripe_customer_source')
     def get_stripe_customer_sources(self):

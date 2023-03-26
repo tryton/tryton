@@ -89,8 +89,7 @@ class BOMInput(ModelSQL, ModelView):
 
     @fields.depends('product')
     def on_change_with_uom_category(self, name=None):
-        if self.product:
-            return self.product.default_uom.category.id
+        return self.product.default_uom.category if self.product else None
 
     def get_rec_name(self, name):
         return self.product.rec_name

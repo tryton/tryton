@@ -360,8 +360,7 @@ class AmendmentLine(ModelSQL, ModelView):
         'amendment',
         '_parent_amendment.purchase')
     def on_change_with_purchase(self, name=None):
-        if self.amendment and self.amendment.purchase:
-            return self.amendment.purchase.id
+        return self.amendment.purchase if self.amendment else None
 
     @fields.depends('line')
     def on_change_line(self):
@@ -396,9 +395,9 @@ class AmendmentLine(ModelSQL, ModelView):
     def on_change_with_product_uom_category(self, name=None):
         if self.line:
             if self.line.product_uom_category:
-                return self.line.product_uom_category.id
+                return self.line.product_uom_category
             elif self.line.unit:
-                return self.line.unit.category.id
+                return self.line.unit.category
 
     def apply(self, purchase):
         assert self.purchase == purchase

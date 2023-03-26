@@ -241,8 +241,7 @@ class Template(
 
     @fields.depends('default_uom')
     def on_change_with_default_uom_category(self, name=None):
-        if self.default_uom:
-            return self.default_uom.category.id
+        return self.default_uom.category if self.default_uom else None
 
     @classmethod
     def search_default_uom_category(cls, name, clause):

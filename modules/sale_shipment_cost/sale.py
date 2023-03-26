@@ -154,8 +154,7 @@ class Sale(metaclass=PoolMeta):
             return []
 
         pattern = self._get_carrier_selection_pattern()
-        carriers = CarrierSelection.get_carriers(pattern)
-        return [c.id for c in carriers]
+        return CarrierSelection.get_carriers(pattern)
 
     @fields.depends('carrier', methods=['on_change_with_available_carriers'])
     def on_change_party(self):

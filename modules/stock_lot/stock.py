@@ -123,8 +123,7 @@ class Lot(DeactivableMixin, ModelSQL, ModelView, LotMixin, StockMixin):
 
     @fields.depends('product')
     def on_change_with_default_uom(self, name=None):
-        if self.product:
-            return self.product.default_uom.id
+        return self.product.default_uom if self.product else None
 
     @fields.depends('product')
     def on_change_with_default_uom_digits(self, name=None):
@@ -381,7 +380,7 @@ class LotByWarehouseContext(LotByLocationContext):
     def on_change_with_locations(self, name=None):
         locations = []
         if self.warehouse:
-            locations.append(self.warehouse.id)
+            locations.append(self.warehouse)
         return locations
 
 

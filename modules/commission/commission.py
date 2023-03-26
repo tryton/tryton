@@ -186,8 +186,7 @@ class AgentSelection(sequence_ordered(), MatchMixin, ModelSQL, ModelView):
 
     @fields.depends('agent', '_parent_agent.company')
     def on_change_with_company(self, name=None):
-        if self.agent:
-            return self.agent.company.id
+        return self.agent.company if self.agent else None
 
     @classmethod
     def search_company(cls, name, clause):
@@ -409,8 +408,7 @@ class Commission(ModelSQL, ModelView):
 
     @fields.depends('agent')
     def on_change_with_currency(self, name=None):
-        if self.agent:
-            return self.agent.currency.id
+        return self.agent.currency if self.agent else None
 
     @fields.depends('agent')
     def on_change_with_type_(self, name=None):

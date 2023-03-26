@@ -476,8 +476,7 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
 
     @fields.depends('company')
     def on_change_with_company_party(self, name=None):
-        if self.company:
-            return self.company.party.id
+        return self.company.party if self.company else None
 
     @fields.depends('party', 'type', 'accounting_date', 'invoice_date')
     def on_change_with_account(self):
@@ -489,7 +488,7 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
                     account = self.party.account_receivable_used
                 elif self.type == 'in':
                     account = self.party.account_payable_used
-        return account.id if account else None
+        return account
 
     @classmethod
     def _journal_types(cls, invoice_type):
@@ -507,9 +506,7 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
                 'out': 'revenue',
                 'in': 'expense',
                 }.get(self.type))
-        journal = Journal.find(pattern)
-        if journal:
-            return journal.id
+        return Journal.find(pattern)
 
     @classmethod
     def order_accounting_date(cls, tables):
@@ -2195,9 +2192,9 @@ class InvoiceLine(sequence_ordered(), ModelSQL, ModelView, TaxableMixin):
     @fields.depends('party', 'invoice', '_parent_invoice.party')
     def on_change_with_invoice_party(self, name=None):
         if self.invoice and self.invoice.party:
-            return self.invoice.party.id
+            return self.invoice.party
         elif self.party:
-            return self.party.id
+            return self.party
 
     @classmethod
     def search_invoice_party(cls, name, clause):
@@ -2445,8 +2442,7 @@ class InvoiceLine(sequence_ordered(), ModelSQL, ModelView, TaxableMixin):
 
     @fields.depends('product')
     def on_change_with_product_uom_category(self, name=None):
-        if self.product:
-            return self.product.default_uom_category.id
+        return self.product.default_uom_category if self.product else None
 
     @fields.depends('account', 'product', 'invoice',
         '_parent_invoice.party', '_parent_invoice.type',
@@ -2794,8 +2790,7 @@ class InvoiceTax(sequence_ordered(), ModelSQL, ModelView):
 
     @fields.depends('invoice', '_parent_invoice.currency')
     def on_change_with_currency(self, name=None):
-        if self.invoice:
-            return self.invoice.currency.id
+        return self.invoice.currency if self.invoice else None
 
     @fields.depends('tax', 'invoice', '_parent_invoice.party', 'base')
     def on_change_tax(self):

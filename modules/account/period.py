@@ -95,8 +95,7 @@ class Period(Workflow, ModelSQL, ModelView):
 
     @fields.depends('fiscalyear', '_parent_fiscalyear.company')
     def on_change_with_company(self, name=None):
-        if self.fiscalyear:
-            return self.fiscalyear.company.id
+        return self.fiscalyear.company if self.fiscalyear else None
 
     @classmethod
     def search_company(cls, name, clause):

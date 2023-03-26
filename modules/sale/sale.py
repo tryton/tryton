@@ -1496,8 +1496,7 @@ class SaleLine(TaxableMixin, sequence_ordered(), ModelSQL, ModelView):
 
     @fields.depends('product')
     def on_change_with_product_uom_category(self, name=None):
-        if self.product:
-            return self.product.default_uom_category.id
+        return self.product.default_uom_category if self.product else None
 
     @fields.depends(methods=['compute_unit_price'])
     def on_change_quantity(self):
@@ -1546,8 +1545,7 @@ class SaleLine(TaxableMixin, sequence_ordered(), ModelSQL, ModelView):
 
     @fields.depends('sale', '_parent_sale.warehouse')
     def on_change_with_warehouse(self, name=None):
-        if self.sale and self.sale.warehouse:
-            return self.sale.warehouse.id
+        return self.sale.warehouse if self.sale else None
 
     def get_from_location(self, name):
         if (self.quantity or 0) >= 0:
@@ -1600,8 +1598,7 @@ class SaleLine(TaxableMixin, sequence_ordered(), ModelSQL, ModelView):
 
     @fields.depends('sale', '_parent_sale.currency')
     def on_change_with_currency(self, name=None):
-        if self.sale and self.sale.currency:
-            return self.sale.currency.id
+        return self.sale.currency if self.sale else None
 
     @classmethod
     def get_sale_states(cls):
@@ -1620,13 +1617,11 @@ class SaleLine(TaxableMixin, sequence_ordered(), ModelSQL, ModelView):
 
     @fields.depends('sale', '_parent_sale.company')
     def on_change_with_company(self, name=None):
-        if self.sale and self.sale.company:
-            return self.sale.company.id
+        return self.sale.company if self.sale else None
 
     @fields.depends('sale', '_parent_sale.party')
     def on_change_with_customer(self, name=None):
-        if self.sale and self.sale.party:
-            return self.sale.party.id
+        return self.sale.party if self.sale else None
 
     @classmethod
     def search_customer(cls, name, clause):

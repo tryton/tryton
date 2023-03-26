@@ -204,12 +204,10 @@ class QuantityEarlyPlan(Workflow, ModelSQL, ModelView):
         pool = Pool()
         Move = pool.get('stock.move')
         if isinstance(self.origin, Move) and self.origin.id >= 0:
-            warehouse = self.origin.from_location.warehouse
-            if warehouse:
-                return warehouse.id
+            return self.origin.from_location.warehouse
         elif (isinstance(self.origin, Model) and self.origin.id >= 0
-                and getattr(self.origin, 'warehouse', None)):
-            return self.origin.warehouse.id
+                and hasattr(self.origin, 'warehouse')):
+            return self.origin.warehouse
 
     def get_moves(self, name):
         pool = Pool()

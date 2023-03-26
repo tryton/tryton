@@ -173,9 +173,7 @@ class InvoiceDeferred(Workflow, ModelSQL, ModelView):
                 'out': 'revenue',
                 'in': 'expense',
                 }.get(self.type))
-        journal = Journal.find(pattern)
-        if journal:
-            return journal.id
+        return Journal.find(pattern)
 
     @fields.depends('invoice_line', 'start_date', 'company')
     def on_change_invoice_line(self):
@@ -203,8 +201,7 @@ class InvoiceDeferred(Workflow, ModelSQL, ModelView):
 
     @fields.depends('company')
     def on_change_with_currency(self, name=None):
-        if self.company:
-            return self.company.currency.id
+        return self.company.currency if self.company else None
 
     @classmethod
     @ModelView.button

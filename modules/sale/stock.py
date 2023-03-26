@@ -154,14 +154,13 @@ class Move(metaclass=PoolMeta):
     def on_change_with_product_uom_category(self, name=None):
         pool = Pool()
         SaleLine = pool.get('sale.line')
-        category = super(Move, self).on_change_with_product_uom_category(
-            name=name)
+        category = super().on_change_with_product_uom_category(name=name)
         # Enforce the same unit category as they are used to compute the
         # remaining quantity to ship and the quantity to invoice.
         # Use getattr as reference field can have negative id
         if (isinstance(self.origin, SaleLine)
                 and getattr(self.origin, 'unit', None)):
-            category = self.origin.unit.category.id
+            category = self.origin.unit.category
         return category
 
     def get_cost_price(self, product_cost_price=None):

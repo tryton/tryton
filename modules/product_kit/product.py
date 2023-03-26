@@ -188,8 +188,7 @@ class ComponentMixin(sequence_ordered(), ModelStorage):
 
     @fields.depends('product')
     def on_change_with_product_unit_category(self, name=None):
-        if self.product:
-            return self.product.default_uom.category.id
+        return self.product.default_uom.category if self.product else None
 
     def get_line(self, Line, quantity, unit, **values):
         pool = Pool()

@@ -231,8 +231,7 @@ class Statement(Workflow, ModelSQL, ModelView):
 
     @fields.depends('journal')
     def on_change_with_currency(self, name=None):
-        if self.journal:
-            return self.journal.currency.id
+        return self.journal.currency if self.journal else None
 
     @fields.depends('start_balance', 'end_balance')
     def on_change_with_balance(self, name=None):
@@ -726,8 +725,7 @@ def origin_mixin(_states):
 
         @fields.depends('statement', '_parent_statement.company')
         def on_change_with_company(self, name=None):
-            if self.statement and self.statement.company:
-                return self.statement.company.id
+            return self.statement.company if self.statement else None
 
         @classmethod
         def search_company(cls, name, clause):
@@ -736,7 +734,7 @@ def origin_mixin(_states):
         @fields.depends('statement', '_parent_statement.journal')
         def on_change_with_currency(self, name=None):
             if self.statement and self.statement.journal:
-                return self.statement.journal.currency.id
+                return self.statement.journal.currency
 
     return Mixin
 
@@ -938,11 +936,11 @@ class Line(origin_mixin(_states), sequence_ordered(), ModelSQL, ModelView):
     @fields.depends('origin', '_parent_origin.company')
     def on_change_with_company(self, name=None):
         try:
-            company = super(Line, self).on_change_with_company()
+            company = super().on_change_with_company()
         except AttributeError:
             company = None
-        if self.origin and self.origin.company:
-            return self.origin.company.id
+        if self.origin and hasattr(self.origin, 'company'):
+            company = self.origin.company
         return company
 
     @fields.depends('origin', '_parent_origin.statement_state')

@@ -459,7 +459,7 @@ class Action(ModelSQL, ModelView):
         if (self.complaint
                 and self.complaint.origin_model in {
                     'sale.line', 'account.invoice.line'}):
-            return self.complaint.origin.unit.id
+            return self.complaint.origin.unit
 
     @fields.depends(
         'quantity', 'unit_price', 'currency', 'sale_lines', 'invoice_lines',
@@ -506,7 +506,7 @@ class Action(ModelSQL, ModelView):
                 and self.complaint.origin_model in {
                     'sale.sale', 'sale.line',
                     'account.invoice', 'account.invoice.line'}):
-            return self.complaint.origin.currency.id
+            return self.complaint.origin.currency
 
     @classmethod
     def get_complaint_states(cls):
@@ -706,8 +706,7 @@ class _Action_Line:
 
     @fields.depends('action', '_parent_action.currency')
     def on_change_with_currency(self, name=None):
-        if self.action and self.action.currency:
-            return self.action.currency.id
+        return self.action.currency if self.action else None
 
     @classmethod
     def get_complaint_states(cls):
@@ -742,8 +741,7 @@ class Action_SaleLine(_Action_Line, ModelView, ModelSQL):
 
     @fields.depends('line')
     def on_change_with_unit(self, name=None):
-        if self.line and self.line.unit:
-            return self.line.unit.id
+        return self.line.unit if self.line else None
 
     @fields.depends('quantity', 'line')
     def get_quantity(self):
@@ -774,8 +772,7 @@ class Action_InvoiceLine(_Action_Line, ModelView, ModelSQL):
 
     @fields.depends('line')
     def on_change_with_unit(self, name=None):
-        if self.line and self.line.unit:
-            return self.line.unit.id
+        return self.line.unit if self.line else None
 
     @fields.depends('quantity', 'line')
     def get_quantity(self):

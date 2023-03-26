@@ -408,8 +408,7 @@ class ShipmentAssignedMove(ModelView):
 
     @fields.depends('move')
     def on_change_with_unit(self, name=None):
-        if self.move:
-            return self.move.uom.id
+        return self.move.uom if self.move else None
 
     @fields.depends('move')
     def on_change_with_move_quantity(self, name=None):

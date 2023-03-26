@@ -199,7 +199,7 @@ class Sale(metaclass=PoolMeta):
 
     @fields.depends(methods=['_coupon_parties'])
     def on_change_with_coupon_parties(self, name=None):
-        return [p.id for p in self._coupon_parties()]
+        return list(self._coupon_parties())
 
     @fields.depends('party')
     def _coupon_parties(self):

@@ -82,12 +82,12 @@ class Line(ModelSQL, ModelView):
     @fields.depends('move_line', '_parent_move_line.account')
     def on_change_with_currency(self, name=None):
         if self.move_line and self.move_line.account:
-            return self.move_line.account.company.currency.id
+            return self.move_line.account.company.currency
 
     @fields.depends('move_line', '_parent_move_line.account')
     def on_change_with_company(self, name=None):
         if self.move_line and self.move_line.account:
-            return self.move_line.account.company.id
+            return self.move_line.account.company
 
     @classmethod
     def search_company(cls, name, clause):

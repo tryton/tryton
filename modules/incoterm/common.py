@@ -91,7 +91,7 @@ class IncotermAvailableMixin(IncotermMixin):
         else:
             party_incoterms = set()
         return [
-            i.id for i in incoterms
+            i for i in incoterms
             if not party_incoterms or i in party_incoterms]
 
     @fields.depends()

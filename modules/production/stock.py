@@ -83,9 +83,9 @@ class Move(metaclass=PoolMeta):
         'production_output', '_parent_production_output.id')
     def on_change_with_production(self, name=None):
         if self.production_input:
-            return self.production_input.id
+            return self.production_input
         elif self.production_output:
-            return self.production_output.id
+            return self.production_output
 
     def set_effective_date(self):
         if not self.effective_date and self.production_input:

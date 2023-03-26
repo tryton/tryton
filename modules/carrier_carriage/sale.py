@@ -200,8 +200,7 @@ class Carriage(sequence_ordered(), ModelSQL, ModelView):
         CarrierSelection = pool.get('carrier.selection')
 
         pattern = self._get_carrier_selection_pattern()
-        carriers = CarrierSelection.get_carriers(pattern)
-        return [c.id for c in carriers]
+        return CarrierSelection.get_carriers(pattern)
 
     @fields.depends('from_', 'to')
     def _get_carrier_selection_pattern(self):

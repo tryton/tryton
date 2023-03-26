@@ -183,13 +183,12 @@ class BudgetLineMixin(
 
     @fields.depends('budget', '_parent_budget.company')
     def on_change_with_company(self, name=None):
-        if self.budget and self.budget.company:
-            return self.budget.company.id
+        return self.budget.company if self.budget else None
 
     @fields.depends('budget', '_parent_budget.company')
     def on_change_with_currency(self, name=None):
         if self.budget and self.budget.company:
-            return self.budget.company.currency.id
+            return self.budget.company.currency
 
     @classmethod
     def get_total_amount(cls, records, name):
@@ -295,8 +294,7 @@ class BudgetContext(ModelView):
 
     @fields.depends('budget')
     def on_change_with_fiscalyear(self, name=None):
-        if self.budget:
-            return self.budget.fiscalyear.id
+        return self.budget.fiscalyear if self.budget else None
 
 
 class Budget(BudgetMixin, ModelSQL, ModelView):
@@ -501,8 +499,7 @@ class BudgetLine(BudgetLineMixin, ModelSQL, ModelView):
 
     @fields.depends('parent', '_parent_parent.account_type')
     def on_change_with_parent_account_type(self, name=None):
-        if self.parent and self.parent.account_type:
-            return self.parent.account_type.id
+        return self.parent.account_type if self.parent else None
 
     @fields.depends('account_type')
     def on_change_with_current_name(self, name=None):
@@ -646,17 +643,15 @@ class BudgetLinePeriod(AmountMixin, ModelSQL, ModelView):
     @fields.depends('budget_line', '_parent_budget_line.company')
     def on_change_with_currency(self, name=None):
         if self.budget_line and self.budget_line.company:
-            return self.budget_line.company.currency.id
+            return self.budget_line.company.currency
 
     @fields.depends(
         'budget_line',
         '_parent_budget_line.budget',
         '_parent_budget_line._parent_budget.fiscalyear')
     def on_change_with_fiscalyear(self, name=None):
-        if (self.budget_line
-                and self.budget_line.budget
-                and self.budget_line.budget.fiscalyear):
-            return self.budget_line.budget.fiscalyear.id
+        if self.budget_line and self.budget_line.budget:
+            return self.budget_line.budget.fiscalyear
 
     @classmethod
     def get_total_amount(cls, periods, name):

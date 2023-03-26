@@ -496,13 +496,11 @@ class PurchaseRequisitionLine(sequence_ordered(), ModelSQL, ModelView):
 
     @fields.depends('product')
     def on_change_with_product_uom_category(self, name=None):
-        if self.product:
-            return self.product.default_uom_category.id
+        return self.product.default_uom_category if self.product else None
 
     @fields.depends('requisition', '_parent_requisition.currency')
     def on_change_with_currency(self, name=None):
-        if self.requisition and self.requisition.currency:
-            return self.requisition.currency.id
+        return self.requisition.currency if self.requisition else None
 
     @classmethod
     def get_purchase_requisition_states(cls):

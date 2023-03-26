@@ -400,8 +400,7 @@ class ShipmentIn(ShipmentMixin, Workflow, ModelSQL, ModelView):
 
     @fields.depends('supplier')
     def on_change_with_supplier_location(self, name=None):
-        if self.supplier and self.supplier.supplier_location:
-            return self.supplier.supplier_location.id
+        return self.supplier.supplier_location if self.supplier else None
 
     def get_incoming_moves(self, name):
         moves = sort(self.moves, self.__class__.incoming_moves.order)
@@ -820,8 +819,7 @@ class ShipmentInReturn(ShipmentAssignMixin, Workflow, ModelSQL, ModelView):
 
     @fields.depends('from_location')
     def on_change_with_warehouse(self, name=None):
-        if self.from_location and self.from_location.warehouse:
-            return self.from_location.warehouse.id
+        return self.from_location.warehouse if self.from_location else None
 
     @property
     def _move_planned_date(self):
@@ -1350,8 +1348,7 @@ class ShipmentOut(ShipmentAssignMixin, Workflow, ModelSQL, ModelView):
 
     @fields.depends('customer')
     def on_change_with_customer_location(self, name=None):
-        if self.customer:
-            return self.customer.customer_location.id
+        return self.customer.customer_location if self.customer else None
 
     def get_outgoing_moves(self, name):
         moves = sort(self.moves, self.__class__.outgoing_moves.order)
@@ -2008,8 +2005,7 @@ class ShipmentOutReturn(ShipmentMixin, Workflow, ModelSQL, ModelView):
 
     @fields.depends('customer')
     def on_change_with_customer_location(self, name=None):
-        if self.customer:
-            return self.customer.customer_location.id
+        return self.customer.customer_location if self.customer else None
 
     def get_incoming_moves(self, name):
         moves = sort(self.moves, self.__class__.incoming_moves.order)
@@ -2534,12 +2530,11 @@ class ShipmentInternal(ShipmentAssignMixin, Workflow, ModelSQL, ModelView):
                 and self.to_location.warehouse):
             return Config(1).get_multivalue(
                 'shipment_internal_transit',
-                company=self.company.id if self.company else None).id
+                company=self.company.id if self.company else None)
 
     @fields.depends('from_location')
     def on_change_with_warehouse(self, name=None):
-        if self.from_location and self.from_location.warehouse:
-            return self.from_location.warehouse.id
+        return self.from_location.warehouse if self.from_location else None
 
     @fields.depends(
         'planned_date', 'from_location', 'to_location',

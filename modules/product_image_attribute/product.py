@@ -47,8 +47,7 @@ class Image(metaclass=PoolMeta):
 
     @fields.depends('template', '_parent_template.attribute_set')
     def on_change_with_attribute_set(self, name=None):
-        if self.template and self.template.attribute_set:
-            return self.template.attribute_set.id
+        return self.template.attribute_set if self.template else None
 
     @fields.depends('attribute_set', 'attributes')
     def on_change_with_attributes_name(self, name=None):

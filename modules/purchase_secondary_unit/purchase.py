@@ -124,7 +124,7 @@ class Line(metaclass=PoolMeta):
     def on_change_with_product_secondary_uom_category(self, name=None):
         secondary_record = self._secondary_record()
         if secondary_record:
-            return secondary_record.purchase_secondary_uom.category.id
+            return secondary_record.purchase_secondary_uom.category
 
     @classmethod
     def set_secondary(cls, lines, name, value):
@@ -186,7 +186,7 @@ class RequisitionLine(metaclass=PoolMeta):
     @fields.depends('product')
     def on_change_with_product_secondary_uom_category(self, name=None):
         if self.product and self.product.purchase_secondary_uom:
-            return self.product.purchase_secondary_uom.category.id
+            return self.product.purchase_secondary_uom.category
 
     @property
     def request_unit(self):
@@ -275,7 +275,7 @@ class BlanketAgreementLine(metaclass=PoolMeta):
     @fields.depends('product')
     def on_change_with_product_secondary_uom_category(self, name=None):
         if self.product and self.product.purchase_secondary_uom:
-            return self.product.purchase_secondary_uom.category.id
+            return self.product.purchase_secondary_uom.category
 
     def _set_purchase_line_quantity(self, purchase_line):
         super()._set_purchase_line_quantity(purchase_line)

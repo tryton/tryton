@@ -224,7 +224,7 @@ class Move(metaclass=PoolMeta):
         # Use getattr as reference field can have negative id
         if (isinstance(self.origin, PurchaseLine)
                 and getattr(self.origin, 'unit', None)):
-            category = self.origin.unit.category.id
+            category = self.origin.unit.category
         return category
 
     @property

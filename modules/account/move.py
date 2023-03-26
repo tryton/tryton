@@ -1121,8 +1121,7 @@ class Line(MoveLineMixin, ModelSQL, ModelView):
 
     @fields.depends('account')
     def on_change_with_currency(self, name=None):
-        if self.account:
-            return self.account.currency.id
+        return self.account.currency if self.account else None
 
     @classmethod
     def _get_origin(cls):
@@ -1825,8 +1824,7 @@ class ReconcileLinesWriteOff(ModelView):
 
     @fields.depends('company')
     def on_change_with_currency(self, name=None):
-        if self.company:
-            return self.company.currency.id
+        return self.company.currency if self.company else None
 
 
 class ReconcileLines(Wizard):
@@ -2227,8 +2225,7 @@ class ReconcileShow(ModelView):
 
     @fields.depends('company')
     def on_change_with_currency(self, name=None):
-        if self.company:
-            return self.company.currency.id
+        return self.company.currency if self.company else None
 
 
 class CancelMoves(Wizard):

@@ -49,8 +49,7 @@ class LotUnitMixin:
     @fields.depends('product')
     def on_change_with_product_default_uom_category(self, name=None):
         if self.product:
-            category = self.product.default_uom_category
-            return category.id if category else None
+            return self.product.default_uom_category
 
 
 class Lot(LotUnitMixin, metaclass=PoolMeta):

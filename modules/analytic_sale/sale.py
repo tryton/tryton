@@ -46,10 +46,9 @@ class AnalyticAccountEntry(metaclass=PoolMeta):
     def on_change_with_company(self, name=None):
         pool = Pool()
         SaleLine = pool.get('sale.line')
-        company = super(AnalyticAccountEntry, self).on_change_with_company(
-            name)
+        company = super().on_change_with_company(name)
         if isinstance(self.origin, SaleLine) and self.origin.sale:
-            company = self.origin.sale.company.id
+            company = self.origin.sale.company
         return company
 
     @classmethod

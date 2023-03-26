@@ -87,7 +87,7 @@ class ShipmentCostSaleMixin:
         if not self.cost_edit and not self.shipment_cost_sale_readonly:
             return self._compute_costs()['cost_sale_currency']
         elif self.cost_sale_currency:
-            return self.cost_sale_currency.id
+            return self.cost_sale_currency
 
     @classmethod
     def get_cost_methods(cls):

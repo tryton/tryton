@@ -309,8 +309,7 @@ class Asset(Workflow, ModelSQL, ModelView):
 
     @fields.depends('company')
     def on_change_with_currency(self, name=None):
-        if self.company:
-            return self.company.currency.id
+        return self.company.currency if self.company else None
 
     @fields.depends('supplier_invoice_line', 'unit')
     def on_change_supplier_invoice_line(self):
@@ -350,9 +349,7 @@ class Asset(Workflow, ModelSQL, ModelView):
 
     @fields.depends('product')
     def on_change_with_unit(self):
-        if not self.product:
-            return None
-        return self.product.default_uom.id
+        return self.product.default_uom if self.product else None
 
     @fields.depends('end_date', 'product', 'start_date')
     def on_change_with_end_date(self):
@@ -759,8 +756,7 @@ class AssetLine(ModelSQL, ModelView):
 
     @fields.depends('asset', '_parent_asset.currency')
     def on_change_with_currency(self, name=None):
-        if self.asset:
-            return self.asset.currency.id
+        return self.asset.currency if self.asset else None
 
 
 class AssetUpdateMove(ModelSQL):
@@ -964,8 +960,7 @@ class AssetRevision(ModelSQL, ModelView):
 
     @fields.depends('asset', '_parent_asset.currency')
     def on_change_with_currency(self, name=None):
-        if self.asset and self.asset.currency:
-            return self.asset.currency.id
+        return self.asset.currency if self.asset else None
 
     @fields.depends('origin', 'value', 'asset', '_parent_asset.value')
     def on_change_origin(self, name=None):

@@ -223,6 +223,4 @@ class ShipmentInternal(metaclass=PoolMeta):
         if not location and self.company and self.company.cost_price_warehouse:
             location = Config(1).get_multivalue(
                 'shipment_internal_transit', company=self.company)
-            if location:
-                location = location.id
         return location

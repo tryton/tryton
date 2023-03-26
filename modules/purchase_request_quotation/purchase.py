@@ -361,8 +361,7 @@ class QuotationLine(ModelSQL, ModelView):
 
     @fields.depends('product')
     def on_change_with_product_uom_category(self, name=None):
-        if self.product:
-            return self.product.default_uom_category.id
+        return self.product.default_uom_category if self.product else None
 
     @classmethod
     def get_quotation_state(cls):

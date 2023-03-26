@@ -171,8 +171,7 @@ class Work(sequence_ordered(), ModelSQL, ModelView):
 
     @fields.depends('operation')
     def on_change_with_work_center_category(self, name=None):
-        if self.operation and self.operation.work_center_category:
-            return self.operation.work_center_category.id
+        return self.operation.work_center_category if self.operation else None
 
     @classmethod
     def default_company(cls):
@@ -180,8 +179,7 @@ class Work(sequence_ordered(), ModelSQL, ModelView):
 
     @fields.depends('production', '_parent_production.warehouse')
     def on_change_with_warehouse(self, name=None):
-        if self.production:
-            return self.production.warehouse.id
+        return self.production.warehouse if self.production else None
 
     @classmethod
     def default_state(cls):

@@ -616,13 +616,11 @@ class PaymentBraintreeRefund(Workflow, ModelSQL, ModelView):
 
     @fields.depends('payment', '_parent_payment.currency')
     def on_change_with_currency(self, name=None):
-        if self.payment and self.payment.currency:
-            return self.payment.currency.id
+        return self.payment.currency if self.payment else None
 
     @fields.depends('payment', '_parent_payment.company')
     def on_change_with_company(self, name=None):
-        if self.payment and self.payment.company:
-            return self.payment.company.id
+        return self.payment.company if self.payment else None
 
     @classmethod
     def copy(cls, refunds, default=None):

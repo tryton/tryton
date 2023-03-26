@@ -505,8 +505,7 @@ class BlanketAgreementLine(ModelSQL, ModelView):
 
     @fields.depends('product')
     def on_change_with_product_uom_category(self, name=None):
-        if self.product:
-            return self.product.default_uom_category.id
+        return self.product.default_uom_category if self.product else None
 
     @fields.depends(
         'quantity', 'unit_price', 'blanket_agreement',
@@ -522,8 +521,8 @@ class BlanketAgreementLine(ModelSQL, ModelView):
 
     @fields.depends('blanket_agreement', '_parent_blanket_agreement.currency')
     def on_change_with_currency(self, name=None):
-        if self.blanket_agreement and self.blanket_agreement.currency:
-            return self.blanket_agreement.currency.id
+        if self.blanket_agreement:
+            return self.blanket_agreement.currency
 
     def get_processed_quantity(self, name=None):
         processed_quantity = 0.
@@ -551,8 +550,8 @@ class BlanketAgreementLine(ModelSQL, ModelView):
 
     @fields.depends('blanket_agreement', '_parent_blanket_agreement.company')
     def on_change_with_company(self, name=None):
-        if self.blanket_agreement and self.blanket_agreement.company:
-            return self.blanket_agreement.company.id
+        if self.blanket_agreement:
+            return self.blanket_agreement.company
 
     def get_sale_line(self, sale):
         pool = Pool()

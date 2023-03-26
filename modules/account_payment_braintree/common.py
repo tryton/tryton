@@ -53,7 +53,7 @@ class BraintreeCustomerMethodMixin:
     @fields.depends('journal')
     def on_change_with_braintree_account(self, name=None):
         if self.journal and self.journal.process_method == 'braintree':
-            return self.journal.braintree_account.id
+            return self.journal.braintree_account
 
     @fields.depends('braintree_customer', 'braintree_customer_method')
     def get_braintree_customer_methods(self):

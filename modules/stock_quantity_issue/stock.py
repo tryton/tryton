@@ -146,8 +146,8 @@ class QuantityIssue(
     @fields.depends('origin')
     def on_change_with_warehouse(self, name=None):
         if (isinstance(self.origin, Model) and self.origin.id >= 0
-                and getattr(self.origin, 'warehouse', None)):
-            return self.origin.warehouse.id
+                and hasattr(self.origin, 'warehouse')):
+            return self.origin.warehouse
 
     @classmethod
     def default_state(cls):

@@ -429,8 +429,7 @@ class BalanceNonDeferralStart(ModelView):
 
     @fields.depends('fiscalyear')
     def on_change_with_company(self, name=None):
-        if self.fiscalyear:
-            return self.fiscalyear.company.id
+        return self.fiscalyear.company if self.fiscalyear else None
 
 
 class BalanceNonDeferral(Wizard):

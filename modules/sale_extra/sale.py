@@ -131,8 +131,7 @@ class Extra(DeactivableMixin, ModelSQL, ModelView, MatchMixin):
 
     @fields.depends('company')
     def on_change_with_currency(self, name=None):
-        if self.company:
-            return self.company.currency.id
+        return self.company.currency if self.company else None
 
     @classmethod
     def _extras_domain(cls, sale):
@@ -216,8 +215,7 @@ class ExtraLine(sequence_ordered(), ModelSQL, ModelView, MatchMixin):
 
     @fields.depends('product')
     def on_change_with_product_uom_category(self, name=None):
-        if self.product:
-            return self.product.default_uom_category.id
+        return self.product.default_uom_category if self.product else None
 
     @fields.depends('product')
     def on_change_product(self):
@@ -230,8 +228,7 @@ class ExtraLine(sequence_ordered(), ModelSQL, ModelView, MatchMixin):
 
     @fields.depends('extra', '_parent_extra.currency')
     def on_change_with_currency(self, name=None):
-        if self.extra and self.extra.currency:
-            return self.extra.currency.id
+        return self.extra.currency if self.extra else None
 
     def match(self, pattern):
         pattern = pattern.copy()

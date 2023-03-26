@@ -200,13 +200,11 @@ class AdvancePaymentCondition(ModelSQL, ModelView):
 
     @fields.depends('sale', '_parent_sale.company')
     def on_change_with_sale_company(self, name=None):
-        if self.sale and self.sale.company:
-            return self.sale.company.id
+        return self.sale.company if self.sale else None
 
     @fields.depends('sale', '_parent_sale.currency')
     def on_change_with_currency(self, name=None):
-        if self.sale and self.sale.currency:
-            return self.sale.currency.id
+        return self.sale.currency if self.sale else None
 
     @classmethod
     def copy(cls, conditions, default=None):

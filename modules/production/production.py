@@ -432,8 +432,7 @@ class Production(ShipmentAssignMixin, Workflow, ModelSQL, ModelView):
 
     @fields.depends('product')
     def on_change_with_uom_category(self, name=None):
-        if self.product:
-            return self.product.default_uom.category.id
+        return self.product.default_uom.category if self.product else None
 
     @fields.depends(methods=['explode_bom'])
     def on_change_bom(self):
