@@ -237,11 +237,11 @@ class Email(ModelSQL, ModelView):
             to, to_languages = self._get_to(record)
             cc, cc_languages = self._get_cc(record)
             bcc, bcc_languages = self._get_bcc(record)
-            languagues = to_languages | cc_languages | bcc_languages
+            languages = to_languages | cc_languages | bcc_languages
             to_addrs = [e for _, e in getaddresses(to + cc + bcc)]
             if to_addrs:
                 msg, title = self.get_email(
-                    record, from_, to, cc, bcc, languagues)
+                    record, from_, to, cc, bcc, languages)
                 sendmail_transactional(
                     from_, to_addrs, msg, datamanager=datamanager)
                 emails.append(Email(
@@ -263,48 +263,48 @@ class Email(ModelSQL, ModelView):
 
     def _get_to(self, record):
         to = []
-        languagues = set()
+        languages = set()
         if self.recipients:
             recipients = self._get_recipients(record, self.recipients.name)
             if recipients:
-                languagues.update(self._get_languages(recipients))
+                languages.update(self._get_languages(recipients))
                 to = self._get_addresses(recipients)
         if not to and self.fallback_recipients:
-            languagues.update(
+            languages.update(
                 self._get_languages(self.fallback_recipients))
             to = self._get_addresses(self.fallback_recipients)
-        return to, languagues
+        return to, languages
 
     def _get_cc(self, record):
         cc = []
-        languagues = set()
+        languages = set()
         if self.recipients_secondary:
             recipients_secondary = self._get_recipients(
                 record, self.recipients_secondary.name)
             if recipients_secondary:
-                languagues.update(
+                languages.update(
                     self._get_languages(recipients_secondary))
                 cc = self._get_addresses(recipients_secondary)
         if not cc and self.fallback_recipients_secondary:
-            languagues.update(
+            languages.update(
                 self._get_languages(self.fallback_recipients_secondary))
             cc = self._get_addresses(self.fallback_recipients_secondary)
-        return cc, languagues
+        return cc, languages
 
     def _get_bcc(self, record):
         bcc = []
-        languagues = set()
+        languages = set()
         if self.recipients_hidden:
             recipients_hidden = self._get_recipients(
                 record, self.recipients_hidden.name)
             if recipients_hidden:
-                languagues.update(self._get_languages(recipients_hidden))
+                languages.update(self._get_languages(recipients_hidden))
                 bcc = self._get_addresses(recipients_hidden)
         if not bcc and self.fallback_recipients_hidden:
-            languagues.update(
+            languages.update(
                 self._get_languages(self.fallback_recipients_hidden))
             bcc = self._get_addresses(self.fallback_recipients_hidden)
-        return bcc, languagues
+        return bcc, languages
 
     @classmethod
     def validate_fields(cls, notifications, field_names):

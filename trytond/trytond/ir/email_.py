@@ -554,15 +554,15 @@ class EmailTemplate(ModelSQL, ModelView):
         Configuration = pool.get('ir.configuration')
         Lang = pool.get('ir.lang')
         if isinstance(value, (list, tuple)):
-            languagues = {cls._get_language(v) for v in value}
+            languages = {cls._get_language(v) for v in value}
         else:
-            languagues = {cls._get_language(value)}
-        languagues = list(filter(None, languagues))
-        if not languagues:
+            languages = {cls._get_language(value)}
+        languages = list(filter(None, languages))
+        if not languages:
             return Lang.search([
                     ('code', '=', Configuration.get_language()),
                     ], limit=1)
-        return languagues
+        return languages
 
     @classmethod
     def _get_language(cls, record):
