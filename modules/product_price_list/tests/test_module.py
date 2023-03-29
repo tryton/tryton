@@ -19,15 +19,11 @@ class ProductPriceListTestCase(CompanyTestMixin, ModuleTestCase):
         pool = Pool()
         Template = pool.get('product.template')
         Product = pool.get('product.product')
-        Party = pool.get('party.party')
         Uom = pool.get('product.uom')
         PriceList = pool.get('product.price_list')
 
         company = create_company()
         with set_company(company):
-            party = Party(name='Customer')
-            party.save()
-
             kilogram, = Uom.search([
                     ('name', '=', 'Kilogram'),
                     ])
@@ -74,8 +70,8 @@ class ProductPriceListTestCase(CompanyTestMixin, ModuleTestCase):
                 ]
             for product, quantity, unit, result in tests:
                 self.assertEqual(
-                    price_list.compute(party, product, product.list_price,
-                        quantity, unit),
+                    price_list.compute(
+                        product, product.list_price, quantity, unit),
                     result)
 
     @with_transaction()
@@ -119,21 +115,21 @@ class ProductPriceListTestCase(CompanyTestMixin, ModuleTestCase):
                         }])
 
             self.assertEqual(
-                price_list.compute(None, product, product.list_price, 1, unit),
+                price_list.compute(product, product.list_price, 1, unit),
                 Decimal(8))
 
             template.categories = []
             template.save()
 
             self.assertEqual(
-                price_list.compute(None, product, product.list_price, 1, unit),
+                price_list.compute(product, product.list_price, 1, unit),
                 Decimal(10))
 
             template.categories = [child_category]
             template.save()
 
             self.assertEqual(
-                price_list.compute(None, product, product.list_price, 1, unit),
+                price_list.compute(product, product.list_price, 1, unit),
                 Decimal(8))
 
     @with_transaction()
@@ -167,14 +163,14 @@ class ProductPriceListTestCase(CompanyTestMixin, ModuleTestCase):
                         }])
 
             self.assertEqual(
-                price_list.compute(None, product, product.list_price, 1, unit),
+                price_list.compute(product, product.list_price, 1, unit),
                 Decimal(0))
 
             product.cost_price = Decimal(5)
             product.save()
 
             self.assertEqual(
-                price_list.compute(None, product, product.list_price, 1, unit),
+                price_list.compute(product, product.list_price, 1, unit),
                 Decimal(6))
 
     @with_transaction()
@@ -208,7 +204,7 @@ class ProductPriceListTestCase(CompanyTestMixin, ModuleTestCase):
                         }])
 
             self.assertEqual(
-                price_list.compute(None, product, Decimal(0), 1, unit),
+                price_list.compute(product, Decimal(0), 1, unit),
                 Decimal(8))
 
     @with_transaction()
@@ -229,7 +225,7 @@ class ProductPriceListTestCase(CompanyTestMixin, ModuleTestCase):
                                         }])],
                         }])
             self.assertEqual(
-                price_list.compute(None, None, None, 1, unit),
+                price_list.compute(None, None, 1, unit),
                 None)
 
 

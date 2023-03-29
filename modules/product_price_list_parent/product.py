@@ -10,13 +10,13 @@ class PriceList(tree(), metaclass=PoolMeta):
 
     parent = fields.Many2One('product.price_list', "Parent")
 
-    def get_context_formula(self, party, product, unit_price, quantity, uom,
-            pattern=None):
-        context = super(PriceList, self).get_context_formula(
-            party, product, unit_price, quantity, uom, pattern=pattern)
+    def get_context_formula(
+            self, product, unit_price, quantity, uom, pattern=None):
+        context = super().get_context_formula(
+            product, unit_price, quantity, uom, pattern=pattern)
         if self.parent:
             parent_unit_price = self.parent.compute(
-                party, product, unit_price, quantity, uom, pattern=pattern)
+                product, unit_price, quantity, uom, pattern=pattern)
             context['names']['parent_unit_price'] = parent_unit_price
         return context
 

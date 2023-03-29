@@ -12,7 +12,6 @@ class Product(metaclass=PoolMeta):
         pool = Pool()
         Date = pool.get('ir.date')
         PriceList = pool.get('product.price_list')
-        Party = pool.get('party.party')
         Uom = pool.get('product.uom')
         Tax = pool.get('account.tax')
         User = pool.get('res.user')
@@ -24,10 +23,6 @@ class Product(metaclass=PoolMeta):
         if context.get('price_list'):
             price_list = PriceList(context['price_list'])
             assert price_list.company == User(Transaction().user).company
-            if context.get('customer'):
-                customer = Party(context['customer'])
-            else:
-                customer = None
             context_uom = None
             if context.get('uom'):
                 context_uom = Uom(context['uom'])
@@ -37,8 +32,7 @@ class Product(metaclass=PoolMeta):
             uom = context_uom or self.sale_uom
             if uom.category != self.sale_uom.category:
                 uom = self.sale_uom
-            unit_price = price_list.compute(
-                 customer, self, unit_price, quantity, uom)
+            unit_price = price_list.compute(self, unit_price, quantity, uom)
             if price_list.tax_included and taxes and unit_price is not None:
                 unit_price = Tax.reverse_compute(
                     unit_price, taxes, today)

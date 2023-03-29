@@ -72,8 +72,8 @@ class PriceList(DeactivableMixin, ModelSQL, ModelView):
     def default_unit(cls):
         return 'product_default'
 
-    def get_context_formula(self, party, product, unit_price, quantity, uom,
-            pattern=None):
+    def get_context_formula(
+            self, product, unit_price, quantity, uom, pattern=None):
         if product:
             cost_price = product.get_multivalue('cost_price') or Decimal('0')
             list_price = product.list_price_used
@@ -93,10 +93,7 @@ class PriceList(DeactivableMixin, ModelSQL, ModelView):
     def get_uom(self, product):
         return product.default_uom
 
-    def compute(self, party, product, unit_price, quantity, uom,
-            pattern=None):
-        'Compute price based on price list of party'
-
+    def compute(self, product, unit_price, quantity, uom, pattern=None):
         Uom = Pool().get('product.uom')
 
         def parents(categories):
@@ -117,7 +114,7 @@ class PriceList(DeactivableMixin, ModelSQL, ModelView):
             self.get_uom(product), round=False) if product else quantity
 
         context = self.get_context_formula(
-            party, product, unit_price, quantity, uom, pattern=pattern)
+            product, unit_price, quantity, uom, pattern=pattern)
         for line in self.lines:
             if line.match(pattern):
                 unit_price = line.get_unit_price(**context)
@@ -172,7 +169,7 @@ class PriceListLine(sequence_ordered(), ModelSQL, ModelView, MatchMixin):
             return
         for line in lines:
             context = line.price_list.get_context_formula(
-                None, None, Decimal('0'), 0, None)
+                product=None, unit_price=Decimal('0'), quantity=0, uom=None)
             try:
                 if not isinstance(line.get_unit_price(**context), Decimal):
                     raise ValueError

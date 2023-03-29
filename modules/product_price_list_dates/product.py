@@ -22,13 +22,12 @@ class PriceList(metaclass=PoolMeta):
     def open_lines(cls, price_lists):
         pass
 
-    def compute(
-            self, party, product, unit_price, quantity, uom, pattern=None):
+    def compute(self, product, unit_price, quantity, uom, pattern=None):
         context = Transaction().context
         pattern = pattern.copy() if pattern is not None else {}
         pattern.setdefault('date', context.get('date'))
         return super().compute(
-            party, product, unit_price, quantity, uom, pattern=pattern)
+            product, unit_price, quantity, uom, pattern=pattern)
 
 
 class PriceListLine(metaclass=PoolMeta):

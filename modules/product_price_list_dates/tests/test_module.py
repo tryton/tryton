@@ -46,11 +46,13 @@ class ProductPriceListDatesTestCase(CompanyTestMixin, ModuleTestCase):
 
         self.assertEqual(
             price_list.compute(
-                None, None, Decimal(10), 1, None, pattern={'date': today}),
+                product=None, unit_price=Decimal(10), quantity=1, uom=None,
+                pattern={'date': today}),
             Decimal(10))
         self.assertEqual(
             price_list.compute(
-                None, None, Decimal(10), 1, None, pattern={'date': tomorrow}),
+                product=None, unit_price=Decimal(10), quantity=1, uom=None,
+                pattern={'date': tomorrow}),
             Decimal(9))
 
     @with_transaction()
@@ -66,11 +68,13 @@ class ProductPriceListDatesTestCase(CompanyTestMixin, ModuleTestCase):
 
         self.assertEqual(
             price_list.compute(
-                None, None, Decimal(10), 1, None, pattern={'date': today}),
+                product=None, unit_price=Decimal(10), quantity=1, uom=None,
+                pattern={'date': today}),
             Decimal(10))
         self.assertEqual(
             price_list.compute(
-                None, None, Decimal(10), 1, None, pattern={'date': yesterday}),
+                product=None, unit_price=Decimal(10), quantity=1, uom=None,
+                pattern={'date': yesterday}),
             Decimal(9))
 
     @with_transaction()
@@ -86,11 +90,15 @@ class ProductPriceListDatesTestCase(CompanyTestMixin, ModuleTestCase):
 
         with Transaction().set_context(date=today):
             self.assertEqual(
-                price_list.compute(None, None, Decimal(10), 1, None),
+                price_list.compute(
+                    product=None, unit_price=Decimal(10),
+                    quantity=1, uom=None),
                 Decimal(10))
         with Transaction().set_context(date=tomorrow):
             self.assertEqual(
-                price_list.compute(None, None, Decimal(10), 1, None),
+                price_list.compute(
+                    product=None, unit_price=Decimal(10),
+                    quantity=1, uom=None),
                 Decimal(9))
 
 

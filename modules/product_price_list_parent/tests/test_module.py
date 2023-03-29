@@ -19,15 +19,11 @@ class ProductPriceListParentTestCase(CompanyTestMixin, ModuleTestCase):
         pool = Pool()
         Template = pool.get('product.template')
         Product = pool.get('product.product')
-        Party = pool.get('party.party')
         Uom = pool.get('product.uom')
         PriceList = pool.get('product.price_list')
 
         company = create_company()
         with set_company(company):
-            party = Party(name='Customer')
-            party.save()
-
             unit, = Uom.search([('name', '=', "Unit")])
 
             template = Template(
@@ -52,7 +48,7 @@ class ProductPriceListParentTestCase(CompanyTestMixin, ModuleTestCase):
 
             self.assertEqual(
                 price_list.compute(
-                    party, product, product.list_price, 1, unit),
+                    product, product.list_price, 1, unit),
                 Decimal('40'))
 
     @with_transaction()
