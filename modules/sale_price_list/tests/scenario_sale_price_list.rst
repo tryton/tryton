@@ -109,7 +109,7 @@ Create payment term::
 Create a price List and assign it to customer::
 
     >>> PriceList = Model.get('product.price_list')
-    >>> price_list = PriceList(name='Retail')
+    >>> price_list = PriceList(name='Retail', price='list_price')
     >>> price_list_line = price_list.lines.new()
     >>> price_list_line.quantity = 10.0
     >>> price_list_line.product = product

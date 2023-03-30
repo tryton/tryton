@@ -32,7 +32,7 @@ class Product(metaclass=PoolMeta):
             uom = context_uom or self.sale_uom
             if uom.category != self.sale_uom.category:
                 uom = self.sale_uom
-            unit_price = price_list.compute(self, unit_price, quantity, uom)
+            unit_price = price_list.compute(self, quantity, uom)
             if price_list.tax_included and taxes and unit_price is not None:
                 unit_price = Tax.reverse_compute(
                     unit_price, taxes, today)

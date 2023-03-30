@@ -34,6 +34,7 @@ class ProductPriceListParentTestCase(CompanyTestMixin, ModuleTestCase):
 
             price_list_parent, = PriceList.create([{
                         'name': "Parent",
+                        'price': 'list_price',
                         'lines': [('create', [{
                                         'formula': 'unit_price * 2',
                                         }])],
@@ -47,9 +48,7 @@ class ProductPriceListParentTestCase(CompanyTestMixin, ModuleTestCase):
                         }])
 
             self.assertEqual(
-                price_list.compute(
-                    product, product.list_price, 1, unit),
-                Decimal('40'))
+                price_list.compute(product, 1, unit), Decimal('40'))
 
     @with_transaction()
     def test_line_formula_help(self):

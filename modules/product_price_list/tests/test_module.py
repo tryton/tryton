@@ -5,6 +5,7 @@ from decimal import Decimal
 
 from trytond.modules.company.tests import (
     CompanyTestMixin, create_company, set_company)
+from trytond.modules.product_price_list.price_list import Null
 from trytond.pool import Pool
 from trytond.tests.test_tryton import ModuleTestCase, with_transaction
 
@@ -12,6 +13,17 @@ from trytond.tests.test_tryton import ModuleTestCase, with_transaction
 class ProductPriceListTestCase(CompanyTestMixin, ModuleTestCase):
     'Test ProductPriceList module'
     module = 'product_price_list'
+
+    def test_null(self):
+        "Test Null object"
+        none = None
+        self.assertEqual(Null() == Null(), True)
+        self.assertEqual(Null() == none, True)
+        self.assertEqual(Null() == 0, False)
+        self.assertEqual(Null() < 1, True)
+        self.assertEqual(Null() < 0, False)
+        self.assertEqual(Null() + 1, Null())
+        self.assertEqual(1 + Null(), Null())
 
     @with_transaction()
     def test_price_list(self):
@@ -44,6 +56,7 @@ class ProductPriceListTestCase(CompanyTestMixin, ModuleTestCase):
 
             price_list, = PriceList.create([{
                         'name': 'Default Price List',
+                        'price': 'list_price',
                         'lines': [('create', [{
                                         'quantity': 10.0,
                                         'product': variant.id,
@@ -70,9 +83,7 @@ class ProductPriceListTestCase(CompanyTestMixin, ModuleTestCase):
                 ]
             for product, quantity, unit, result in tests:
                 self.assertEqual(
-                    price_list.compute(
-                        product, product.list_price, quantity, unit),
-                    result)
+                    price_list.compute(product, quantity, unit), result)
 
     @with_transaction()
     def test_price_list_category(self):
@@ -106,6 +117,7 @@ class ProductPriceListTestCase(CompanyTestMixin, ModuleTestCase):
 
             price_list, = PriceList.create([{
                         'name': "Price List",
+                        'price': 'list_price',
                         'lines': [('create', [{
                                         'category': category.id,
                                         'formula': 'unit_price * 0.8',
@@ -114,23 +126,18 @@ class ProductPriceListTestCase(CompanyTestMixin, ModuleTestCase):
                                         }])],
                         }])
 
-            self.assertEqual(
-                price_list.compute(product, product.list_price, 1, unit),
-                Decimal(8))
+            self.assertEqual(price_list.compute(product, 1, unit), Decimal(8))
 
             template.categories = []
             template.save()
 
             self.assertEqual(
-                price_list.compute(product, product.list_price, 1, unit),
-                Decimal(10))
+                price_list.compute(product, 1, unit), Decimal(10))
 
             template.categories = [child_category]
             template.save()
 
-            self.assertEqual(
-                price_list.compute(product, product.list_price, 1, unit),
-                Decimal(8))
+            self.assertEqual(price_list.compute(product, 1, unit), Decimal(8))
 
     @with_transaction()
     def test_price_list_cost_price(self):
@@ -162,16 +169,12 @@ class ProductPriceListTestCase(CompanyTestMixin, ModuleTestCase):
                                         }])],
                         }])
 
-            self.assertEqual(
-                price_list.compute(product, product.list_price, 1, unit),
-                Decimal(0))
+            self.assertEqual(price_list.compute(product, 1, unit), Decimal(0))
 
             product.cost_price = Decimal(5)
             product.save()
 
-            self.assertEqual(
-                price_list.compute(product, product.list_price, 1, unit),
-                Decimal(6))
+            self.assertEqual(price_list.compute(product, 1, unit), Decimal(6))
 
     @with_transaction()
     def test_price_list_list_price(self):
@@ -203,9 +206,7 @@ class ProductPriceListTestCase(CompanyTestMixin, ModuleTestCase):
                                         }])],
                         }])
 
-            self.assertEqual(
-                price_list.compute(product, Decimal(0), 1, unit),
-                Decimal(8))
+            self.assertEqual(price_list.compute(product, 1, unit), Decimal(8))
 
     @with_transaction()
     def test_price_list_with_none(self):
@@ -224,9 +225,7 @@ class ProductPriceListTestCase(CompanyTestMixin, ModuleTestCase):
                                         'formula': 'list_price * 0.8',
                                         }])],
                         }])
-            self.assertEqual(
-                price_list.compute(None, None, 1, unit),
-                None)
+            self.assertEqual(price_list.compute(None, 1, unit), None)
 
 
 del ModuleTestCase

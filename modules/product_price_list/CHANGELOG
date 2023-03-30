@@ -1,3 +1,5 @@
+* Define the value of 'unit_price' on price list
+* Remove unit price to compute price list
 * Remove party to compute price list
 
 Version 6.8.0 - 2023-05-01

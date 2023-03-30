@@ -19,6 +19,8 @@ this repository contains the full copyright notices and license terms. -->
 
     <label name="unit"/>
     <field name="unit"/>
+    <label name="price"/>
+    <field name="price"/>
 
     <notebook colspan="4">
         <page name="lines">

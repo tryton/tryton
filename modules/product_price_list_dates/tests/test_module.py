@@ -20,18 +20,31 @@ class ProductPriceListDatesTestCase(CompanyTestMixin, ModuleTestCase):
         pool = Pool()
         PriceList = pool.get('product.price_list')
 
-        company = create_company()
-        with set_company(company):
-            price_list, = PriceList.create([{
-                        'name': "Price List",
-                        'lines': [('create', [{
-                                        field: date,
-                                        'formula': 'unit_price * 0.9',
-                                        }, {
-                                        'formula': 'unit_price',
-                                        }])],
-                        }])
+        price_list, = PriceList.create([{
+                    'name': "Price List",
+                    'price': 'list_price',
+                    'lines': [('create', [{
+                                    field: date,
+                                    'formula': 'unit_price * 0.9',
+                                    }, {
+                                    'formula': 'unit_price',
+                                    }])],
+                    }])
         return price_list
+
+    def create_product(self, list_price=Decimal(10)):
+        pool = Pool()
+        Product = pool.get('product.product')
+        Template = pool.get('product.template')
+        Uom = pool.get('product.uom')
+
+        unit, = Uom.search([('name', '=', "Unit")])
+        template = Template(
+            name="Template", list_price=list_price, default_uom=unit)
+        template.save()
+        product = Product(template=template)
+        product.save()
+        return product
 
     @with_transaction()
     def test_price_list_start_date(self):
@@ -42,18 +55,20 @@ class ProductPriceListDatesTestCase(CompanyTestMixin, ModuleTestCase):
         today = Date.today()
         tomorrow = today + datetime.timedelta(days=1)
 
-        price_list = self.create_price_list('start_date', tomorrow)
+        company = create_company()
+        with set_company(company):
+            product = self.create_product()
+            uom = product.default_uom
+            price_list = self.create_price_list('start_date', tomorrow)
 
-        self.assertEqual(
-            price_list.compute(
-                product=None, unit_price=Decimal(10), quantity=1, uom=None,
-                pattern={'date': today}),
-            Decimal(10))
-        self.assertEqual(
-            price_list.compute(
-                product=None, unit_price=Decimal(10), quantity=1, uom=None,
-                pattern={'date': tomorrow}),
-            Decimal(9))
+            self.assertEqual(
+                price_list.compute(
+                    product, 1, uom, pattern={'date': today}),
+                Decimal(10))
+            self.assertEqual(
+                price_list.compute(
+                    product, 1, uom, pattern={'date': tomorrow}),
+                Decimal(9))
 
     @with_transaction()
     def test_price_list_end_date(self):
@@ -64,18 +79,20 @@ class ProductPriceListDatesTestCase(CompanyTestMixin, ModuleTestCase):
         today = Date.today()
         yesterday = today - datetime.timedelta(days=1)
 
-        price_list = self.create_price_list('end_date', yesterday)
+        company = create_company()
+        with set_company(company):
+            product = self.create_product()
+            uom = product.default_uom
+            price_list = self.create_price_list('end_date', yesterday)
 
-        self.assertEqual(
-            price_list.compute(
-                product=None, unit_price=Decimal(10), quantity=1, uom=None,
-                pattern={'date': today}),
-            Decimal(10))
-        self.assertEqual(
-            price_list.compute(
-                product=None, unit_price=Decimal(10), quantity=1, uom=None,
-                pattern={'date': yesterday}),
-            Decimal(9))
+            self.assertEqual(
+                price_list.compute(
+                    product, 1, uom, pattern={'date': today}),
+                Decimal(10))
+            self.assertEqual(
+                price_list.compute(
+                    product, 1, uom, pattern={'date': yesterday}),
+                Decimal(9))
 
     @with_transaction()
     def test_price_list_with_context_date(self):
@@ -86,20 +103,20 @@ class ProductPriceListDatesTestCase(CompanyTestMixin, ModuleTestCase):
         today = Date.today()
         tomorrow = today + datetime.timedelta(days=1)
 
-        price_list = self.create_price_list('start_date', tomorrow)
+        company = create_company()
+        with set_company(company):
+            product = self.create_product()
+            uom = product.default_uom
+            price_list = self.create_price_list('start_date', tomorrow)
 
-        with Transaction().set_context(date=today):
-            self.assertEqual(
-                price_list.compute(
-                    product=None, unit_price=Decimal(10),
-                    quantity=1, uom=None),
-                Decimal(10))
-        with Transaction().set_context(date=tomorrow):
-            self.assertEqual(
-                price_list.compute(
-                    product=None, unit_price=Decimal(10),
-                    quantity=1, uom=None),
-                Decimal(9))
+            with Transaction().set_context(date=today):
+                self.assertEqual(
+                    price_list.compute(product, 1, uom),
+                    Decimal(10))
+            with Transaction().set_context(date=tomorrow):
+                self.assertEqual(
+                    price_list.compute(product, 1, uom),
+                    Decimal(9))
 
 
 del ModuleTestCase

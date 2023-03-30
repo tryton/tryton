@@ -17,7 +17,7 @@ from .exceptions import FormulaError
 
 
 @total_ordering
-class Null:
+class Null(Decimal):
     def __eq__(self, other):
         if isinstance(other, Null) or other is None:
             return True
@@ -55,6 +55,12 @@ class PriceList(DeactivableMixin, ModelSQL, ModelView):
             ('product_default', "Product Default"),
             ], "Unit", required=True,
         help="The unit in which the quantity is expressed.")
+    price = fields.Selection([
+            (None, ""),
+            ('list_price', "List price"),
+            ('cost_price', "Cost Price"),
+            ], "Price",
+        help="The value used for 'unit_price'.")
     lines = fields.One2Many(
         'product.price_list.line', 'price_list', "Lines",
         help="Add price formulas for different criteria.\n"
@@ -72,28 +78,31 @@ class PriceList(DeactivableMixin, ModelSQL, ModelView):
     def default_unit(cls):
         return 'product_default'
 
-    def get_context_formula(
-            self, product, unit_price, quantity, uom, pattern=None):
+    def get_context_formula(self, product, quantity, uom, pattern=None):
         if product:
             cost_price = product.get_multivalue('cost_price') or Decimal('0')
             list_price = product.list_price_used
-            if list_price is None:
-                list_price = unit_price
         else:
             cost_price = Decimal('0')
-            list_price = unit_price
+            list_price = Null()
+        if self.price == 'list_price':
+            unit_price = list_price
+        elif self.price == 'cost_price':
+            unit_price = cost_price
+        else:
+            unit_price = Null()
         return {
             'names': {
                 'unit_price': unit_price if unit_price is not None else Null(),
-                'cost_price': cost_price if unit_price is not None else Null(),
-                'list_price': list_price if unit_price is not None else Null(),
+                'cost_price': cost_price if cost_price is not None else Null(),
+                'list_price': list_price if list_price is not None else Null(),
                 },
             }
 
     def get_uom(self, product):
         return product.default_uom
 
-    def compute(self, product, unit_price, quantity, uom, pattern=None):
+    def compute(self, product, quantity, uom, pattern=None):
         Uom = Pool().get('product.uom')
 
         def parents(categories):
@@ -114,14 +123,13 @@ class PriceList(DeactivableMixin, ModelSQL, ModelView):
             self.get_uom(product), round=False) if product else quantity
 
         context = self.get_context_formula(
-            product, unit_price, quantity, uom, pattern=pattern)
+            product, quantity, uom, pattern=pattern)
         for line in self.lines:
             if line.match(pattern):
                 unit_price = line.get_unit_price(**context)
                 if isinstance(unit_price, Null):
                     unit_price = None
-                break
-        return unit_price
+                return unit_price
 
 
 class PriceListLine(sequence_ordered(), ModelSQL, ModelView, MatchMixin):
@@ -169,7 +177,7 @@ class PriceListLine(sequence_ordered(), ModelSQL, ModelView, MatchMixin):
             return
         for line in lines:
             context = line.price_list.get_context_formula(
-                product=None, unit_price=Decimal('0'), quantity=0, uom=None)
+                product=None, quantity=0, uom=None)
             try:
                 if not isinstance(line.get_unit_price(**context), Decimal):
                     raise ValueError
