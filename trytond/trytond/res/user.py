@@ -361,12 +361,13 @@ class User(avatar_mixin(100, 'login'), DeactivableMixin, ModelSQL, ModelView):
     @classmethod
     def read(cls, ids, fields_names):
         result = super(User, cls).read(ids, fields_names)
-        cache = Transaction().get_cache()[cls.__name__]
-        for values in result:
-            if 'password_hash' in values:
-                values['password_hash'] = None
-            if values['id'] in cache:
-                cache[values['id']]['password_hash'] = None
+        cache = Transaction().get_cache().get(cls.__name__)
+        if cache is not None:
+            for values in result:
+                if 'password_hash' in values:
+                    values['password_hash'] = None
+                if values['id'] in cache:
+                    cache[values['id']]['password_hash'] = None
         return result
 
     @classmethod
@@ -376,11 +377,12 @@ class User(avatar_mixin(100, 'login'), DeactivableMixin, ModelSQL, ModelView):
         users = super().search(
             domain, offset=offset, limit=limit, order=order, count=count,
             query=query)
-        cache = Transaction().get_cache()[cls.__name__]
         if not count and not query:
-            for user in users:
-                if user.id in cache:
-                    cache[user.id]['password_hash'] = None
+            cache = Transaction().get_cache().get(cls.__name__)
+            if cache is not None:
+                for user in users:
+                    if user.id in cache:
+                        cache[user.id]['password_hash'] = None
         return users
 
     @classmethod
