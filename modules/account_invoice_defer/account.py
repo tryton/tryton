@@ -273,19 +273,13 @@ class InvoiceDeferred(Workflow, ModelSQL, ModelView):
                 last_move = deferral.moves[-1]
                 if last_move.period.end_date >= deferral.end_date:
                     remainder = deferral.amount_remainder
-                    if remainder > 0:
-                        for line in last_move.lines:
-                            if line.debit:
-                                line.debit += remainder
-                            else:
-                                line.credit += remainder
-                    elif remainder < 0:
+                    if remainder:
                         for line in last_move.lines:
                             if line.debit:
                                 line.debit -= remainder
                             else:
                                 line.credit -= remainder
-                    if remainder:
+                        last_move.lines = last_move.lines
                         to_save.append(last_move)
         Move.save(to_save)
         Move.post(moves)
@@ -297,10 +291,13 @@ class InvoiceDeferred(Workflow, ModelSQL, ModelView):
 
     @property
     def amount_remainder(self):
-        period = self.invoice_line.invoice.move.period
-        return abs(self.amount) - sum(
-            l.credit for m in self.moves for l in m.lines
-            if m.period != period)
+        balance = 0
+        for move in self.moves:
+            income_account = self.invoice_line.account.current(move.date)
+            for line in move.lines:
+                if line.account == income_account:
+                    balance += line.debit - line.credit
+        return balance
 
     def get_move(self, period=None):
         pool = Pool()
