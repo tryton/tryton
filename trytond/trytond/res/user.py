@@ -362,12 +362,11 @@ class User(avatar_mixin(100, 'login'), DeactivableMixin, ModelSQL, ModelView):
     def read(cls, ids, fields_names):
         result = super(User, cls).read(ids, fields_names)
         cache = Transaction().get_cache().get(cls.__name__)
-        if cache is not None:
-            for values in result:
-                if 'password_hash' in values:
-                    values['password_hash'] = None
-                if values['id'] in cache:
-                    cache[values['id']]['password_hash'] = None
+        for values in result:
+            if 'password_hash' in values:
+                values['password_hash'] = None
+            if cache and values['id'] in cache:
+                cache[values['id']]['password_hash'] = None
         return result
 
     @classmethod
