@@ -892,7 +892,6 @@ class Line(origin_mixin(_states), sequence_ordered(), ModelSQL, ModelView):
                         self.account = self.party.account_receivable_used
                     else:
                         self.account = self.party.account_payable_used
-        self.invoice = None
 
     @fields.depends('account', methods=['invoice'])
     def on_change_account(self):
