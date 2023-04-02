@@ -10,7 +10,7 @@ from trytond.modules.company.tests import (
     CompanyTestMixin, create_company, set_company)
 from trytond.pool import Pool
 from trytond.tests.test_tryton import ModuleTestCase, with_transaction
-from trytond.transaction import Transaction
+from trytond.transaction import Transaction, inactive_records
 
 
 class StockForecastTestCase(CompanyTestMixin, ModuleTestCase):
@@ -35,7 +35,8 @@ class StockForecastTestCase(CompanyTestMixin, ModuleTestCase):
                 to_date=datetime.date(2023, 3, 31),
                 )
             forecast.save()
-            forecasts = Forecast.search([('rec_name', '=', "Warehouse")])
+            with inactive_records():
+                forecasts = Forecast.search([('rec_name', '=', "Warehouse")])
 
             self.assertEqual(
                 forecast.rec_name,
