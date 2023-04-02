@@ -2,6 +2,7 @@
 # this repository contains the full copyright notices and license terms.
 from trytond.model import ModelSQL, fields
 from trytond.modules.company.model import CompanyValueMixin
+from trytond.modules.product.product import TemplateFunction
 from trytond.pool import Pool, PoolMeta
 from trytond.pyson import Eval
 from trytond.transaction import Transaction
@@ -57,11 +58,12 @@ class Product(metaclass=PoolMeta):
         pool = Pool()
         Company = pool.get('company.company')
         context = Transaction().context
-        Value = self.multivalue_model(name)
-        if issubclass(Value, CostPrice) and context.get('company'):
-            company = Company(context['company'])
-            if company.cost_price_warehouse:
-                pattern.setdefault('warehouse', context.get('warehouse'))
+        if not isinstance(self._fields[name], TemplateFunction):
+            Value = self.multivalue_model(name)
+            if issubclass(Value, CostPrice) and context.get('company'):
+                company = Company(context['company'])
+                if company.cost_price_warehouse:
+                    pattern.setdefault('warehouse', context.get('warehouse'))
         return super().get_multivalue(name, **pattern)
 
     def set_multivalue(self, name, value, save=True, **pattern):
