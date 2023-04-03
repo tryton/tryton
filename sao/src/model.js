@@ -1765,6 +1765,12 @@
             return value;
         },
         set_client: function(record, value, force_change) {
+            if (value === null) {
+                value = [];
+            }
+            if (typeof(value) == 'string') {
+                value = [value];
+            }
             if (value) {
                 value = value.slice().sort();
             }
