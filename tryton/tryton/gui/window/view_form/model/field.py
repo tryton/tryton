@@ -241,6 +241,10 @@ class MultiSelectionField(Field):
         return value
 
     def set_client(self, record, value, force_change=False):
+        if value is None:
+            value = []
+        if isinstance(value, str):
+            value = [value]
         if value:
             value = sorted(value)
         super().set_client(record, value, force_change=force_change)
