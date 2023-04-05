@@ -38,7 +38,8 @@ class Button(Gtk.Button):
         else:
             self.show()
         self.set_sensitive(
-            not record.readonly and not states.get('readonly', False))
+            not (record.readonly if record else False)
+            and not states.get('readonly', False))
         self._set_icon(states.get('icon', self.attrs.get('icon')))
 
         if self.attrs.get('rule'):
