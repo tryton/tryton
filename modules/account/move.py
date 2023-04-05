@@ -922,7 +922,7 @@ class Line(MoveLineMixin, ModelSQL, ModelView):
             help='The second currency.',
         domain=[
             If(~Eval('second_currency_required'),
-                (),
+                ('id', '!=', Eval('currency', -1)),
                 ('id', '=', Eval('second_currency_required', -1))),
             ],
         states={
@@ -1533,25 +1533,49 @@ class Line(MoveLineMixin, ModelSQL, ModelView):
             reconcile_account = None
             reconcile_party = None
             amount = Decimal('0.0')
+            amount_second_currency = Decimal('0.0')
+            second_currencies = set()
             for line in lines:
                 amount += line.debit - line.credit
                 if not reconcile_account:
                     reconcile_account = line.account
                 if not reconcile_party:
                     reconcile_party = line.party
-            if amount:
+                if line.amount_second_currency is not None:
+                    amount_second_currency += line.amount_second_currency
+                second_currencies.add(line.second_currency)
+            company = reconcile_account.company
+
+            try:
+                second_currency, = second_currencies
+            except ValueError:
+                amount_second_currency = None
+                second_currency = None
+            if second_currency:
+                writeoff_amount = amount_second_currency
+                writeoff_currency = second_currency
+            else:
+                writeoff_amount = amount
+                writeoff_currency = company.currency
+            if writeoff_amount:
                 move = cls._get_writeoff_move(
-                    reconcile_account, reconcile_party, amount,
+                    reconcile_account, reconcile_party,
+                    writeoff_amount, writeoff_currency,
                     date, writeoff, description)
                 move.save()
-                lines += cls.search([
-                        ('move', '=', move.id),
-                        ('account', '=', reconcile_account.id),
-                        ('debit', '=', amount < Decimal('0.0') and - amount
-                            or Decimal('0.0')),
-                        ('credit', '=', amount > Decimal('0.0') and amount
-                            or Decimal('0.0')),
-                        ], limit=1)
+                for line in move.lines:
+                    if line.account == reconcile_account:
+                        lines.append(line)
+                        amount += line.debit - line.credit
+            if second_currency and amount:
+                move = cls._get_exchange_move(
+                    reconcile_account, reconcile_party, amount, date)
+                move.save()
+                for line in move.lines:
+                    if line.account == reconcile_account:
+                        lines.append(line)
+                        amount += line.debit - line.credit
+            assert not amount, f"{amount} must be zero"
             reconciliations.append({
                     'company': reconcile_account.company,
                     'lines': [('add', [x.id for x in lines])],
@@ -1561,9 +1585,11 @@ class Line(MoveLineMixin, ModelSQL, ModelView):
         return Reconciliation.create(reconciliations)
 
     @classmethod
-    def _get_writeoff_move(cls, reconcile_account, reconcile_party, amount,
+    def _get_writeoff_move(
+            cls, reconcile_account, reconcile_party, amount, currency,
             date=None, writeoff=None, description=None):
         pool = Pool()
+        Currency = pool.get('currency.currency')
         Date = pool.get('ir.date')
         Period = pool.get('account.period')
         Move = pool.get('account.move')
@@ -1574,12 +1600,22 @@ class Line(MoveLineMixin, ModelSQL, ModelView):
         period = Period.find(reconcile_account.company, date=date)
         account = None
         journal = None
-        if writeoff:
+        if writeoff and writeoff.company == company:
             if amount >= 0:
                 account = writeoff.debit_account
             else:
                 account = writeoff.credit_account
             journal = writeoff.journal
+
+        if currency != company.currency:
+            amount_second_currency = amount
+            second_currency = currency
+            with Transaction().set_context(date=date):
+                amount = Currency.compute(
+                    currency, amount, company.currency)
+        else:
+            amount_second_currency = None
+            second_currency = None
 
         move = Move()
         move.company = company
@@ -1596,6 +1632,11 @@ class Line(MoveLineMixin, ModelSQL, ModelView):
         line.party = reconcile_party
         line.debit = -amount if amount < 0 else 0
         line.credit = amount if amount > 0 else 0
+        if second_currency:
+            line.amount_second_currency = (
+                amount_second_currency).copy_sign(
+                    line.debit - line.credit)
+            line.second_currency = second_currency
 
         line = cls()
         lines.append(line)
@@ -1604,6 +1645,58 @@ class Line(MoveLineMixin, ModelSQL, ModelView):
             reconcile_party if account and account.party_required else None)
         line.debit = amount if amount > 0 else 0
         line.credit = -amount if amount < 0 else 0
+        if account.second_currency:
+            with Transaction().set_context(date=date):
+                line.amount_second_currency = Currency.compute(
+                    company.currency, amount,
+                    reconcile_account.second_currency).copy_sign(
+                        line.debit - line.credit)
+
+        move.lines = lines
+        return move
+
+    @classmethod
+    def _get_exchange_move(cls, account, party, amount, date=None):
+        pool = Pool()
+        Configuration = pool.get('account.configuration')
+        Date = pool.get('ir.date')
+        Move = pool.get('account.move')
+        Period = pool.get('account.period')
+
+        configuration = Configuration(1)
+        company = account.company
+        if not date:
+            with Transaction().set_context(company=company.id):
+                date = Date.today()
+
+        period_id = Period.find(company.id, date=date)
+
+        move = Move()
+        move.company = company
+        move.journal = configuration.get_multivalue(
+            'currency_exchange_journal', company=company.id)
+        move.period = period_id
+        move.date = date
+
+        lines = []
+
+        line = cls()
+        lines.append(line)
+        line.account = account
+        line.party = party
+        line.debit = -amount if amount < 0 else 0
+        line.credit = amount if amount > 0 else 0
+
+        line = cls()
+        lines.append(line)
+        line.debit = amount if amount > 0 else 0
+        line.credit = -amount if amount < 0 else 0
+        if line.credit:
+            line.account = configuration.get_multivalue(
+                'currency_exchange_credit_account', company=company.id)
+        else:
+            line.account = configuration.get_multivalue(
+                'currency_exchange_debit_account', company=company.id)
 
         move.lines = lines
         return move
@@ -1817,19 +1910,13 @@ class ReconcileLinesWriteOff(ModelView):
     date = fields.Date('Date', required=True)
     amount = Monetary(
         "Amount", currency='currency', digits='currency', readonly=True)
-    currency = fields.Function(fields.Many2One(
-            'currency.currency', "Currency"),
-        'on_change_with_currency')
+    currency = fields.Many2One('currency.currency', "Currency", readonly=True)
     description = fields.Char('Description')
 
     @staticmethod
     def default_date():
         Date = Pool().get('ir.date')
         return Date.today()
-
-    @fields.depends('company')
-    def on_change_with_currency(self, name=None):
-        return self.company.currency if self.company else None
 
 
 class ReconcileLines(Wizard):
@@ -1862,24 +1949,39 @@ class ReconcileLines(Wizard):
         "Return writeoff amount and company"
         company = None
         amount = Decimal('0.0')
+        amount_second_currency = Decimal('0.0')
+        second_currencies = set()
         for line in self.records:
             amount += line.debit - line.credit
+            if line.amount_second_currency is not None:
+                amount_second_currency += line.amount_second_currency
+            second_currencies.add(line.second_currency)
             if not company:
                 company = line.account.company
-        return amount, company
+        try:
+            second_currency, = second_currencies
+        except ValueError:
+            second_currency = None
+        if second_currency:
+            amount = amount_second_currency
+            currency = second_currency
+        else:
+            currency = company.currency
+        return amount, currency, company
 
     def transition_start(self):
-        amount, company = self.get_writeoff()
+        amount, currency, company = self.get_writeoff()
         if not company:
             return 'end'
-        if company.currency.is_zero(amount):
+        if currency.is_zero(amount):
             return 'reconcile'
         return 'writeoff'
 
     def default_writeoff(self, fields):
-        amount, company = self.get_writeoff()
+        amount, currency, company = self.get_writeoff()
         return {
             'amount': amount,
+            'currency': currency.id,
             'company': company.id,
             }
 
@@ -1984,7 +2086,7 @@ class Reconcile(Wizard):
                     )))
         return [a for a, in cursor]
 
-    def get_parties(self, account, _balanced=False, party=None):
+    def get_parties(self, account, party=None):
         'Return a list party to reconcile for the account'
         pool = Pool()
         Line = pool.get('account.move.line')
@@ -1995,7 +2097,32 @@ class Reconcile(Wizard):
             lines = [l for l in self.records if not l.reconciliation]
             return list({l.party for l in lines if l.account == account})
 
-        balance = line.debit - line.credit
+        where = ((line.reconciliation == Null)
+            & (line.account == account.id))
+        if party:
+            where &= (line.party == party.id)
+        cursor.execute(*line.select(line.party,
+                where=where,
+                group_by=line.party))
+        return [p for p, in cursor]
+
+    def get_currencies(self, account, party, currency=None, _balanced=False):
+        "Return a list of currencies to reconcile for the account and party"
+        pool = Pool()
+        Line = pool.get('account.move.line')
+        line = Line.__table__()
+        cursor = Transaction().connection.cursor()
+
+        if self.model and self.model.__name__ == 'account.move.line':
+            lines = [l for l in self.records if not l.reconciliation]
+            return list({
+                    (l.second_currency or l.currency).id
+                    for l in lines
+                    if l.account == account and l.party == party})
+
+        balance = Case(
+            (line.second_currency != Null, line.amount_second_currency),
+            else_=line.debit - line.credit)
         if _balanced:
             having = Sum(balance) == 0
         else:
@@ -2008,12 +2135,15 @@ class Reconcile(Wizard):
                     else_=False)
                 )
         where = ((line.reconciliation == Null)
-            & (line.account == account.id))
-        if party:
-            where &= (line.party == party.id)
-        cursor.execute(*line.select(line.party,
+            & (line.account == account.id)
+            & (line.party == party.id if party else None))
+        currency_expr = Coalesce(line.second_currency, account.currency.id)
+        if currency:
+            where &= (currency_expr == currency.id)
+        cursor.execute(*line.select(
+                currency_expr,
                 where=where,
-                group_by=line.party,
+                group_by=line.second_currency,
                 having=having))
         return [p for p, in cursor]
 
@@ -2028,8 +2158,9 @@ class Reconcile(Wizard):
                 return
             account = accounts.pop()
             self.show.account = account
-            self.show.parties = self.get_parties(account)
             self.show.accounts = accounts
+            self.show.parties = self.get_parties(account)
+            next_party()
             return account
 
         def next_party():
@@ -2039,7 +2170,18 @@ class Reconcile(Wizard):
             party = parties.pop()
             self.show.party = party
             self.show.parties = parties
+            self.show.currencies = self.get_currencies(
+                self.show.account, party)
             return party,
+
+        def next_currency():
+            currencies = list(self.show.currencies)
+            if not currencies:
+                return
+            currency = currencies.pop()
+            self.show.currency = currency
+            self.show.currencies = currencies
+            return currency
 
         if getattr(self.show, 'accounts', None) is None:
             self.show.accounts = self.get_accounts()
@@ -2047,10 +2189,16 @@ class Reconcile(Wizard):
                 return 'end'
         if getattr(self.show, 'parties', None) is None:
             self.show.parties = self.get_parties(self.show.account)
-
-        while not next_party():
-            if not next_account():
+            if not next_party():
                 return 'end'
+        if getattr(self.show, 'currencies', None) is None:
+            self.show.currencies = self.get_currencies(
+                self.show.account, self.show.party)
+
+        while not next_currency():
+            while not next_party():
+                if not next_account():
+                    return 'end'
         if self.start.automatic or self.start.only_balanced:
             lines = self._default_lines()
             if lines and self.start.automatic:
@@ -2074,9 +2222,11 @@ class Reconcile(Wizard):
         defaults['company'] = self.show.account.company.id
         defaults['parties'] = [p.id for p in self.show.parties]
         defaults['party'] = self.show.party.id if self.show.party else None
-        defaults['currency'] = self.show.account.company.currency.id
+        defaults['currencies'] = [c.id for c in self.show.currencies]
+        defaults['currency'] = (
+            self.show.currency.id if self.show.currency else None)
         defaults['lines'] = list(map(int, self._default_lines()))
-        defaults['write_off_amount'] = Decimal(0)
+        defaults['write_off_amount'] = None
         with Transaction().set_context(company=self.show.account.company.id):
             defaults['date'] = Date.today()
         return defaults
@@ -2090,6 +2240,13 @@ class Reconcile(Wizard):
                 ('party', '=',
                     self.show.party.id if self.show.party else None),
                 ('reconciliation', '=', None),
+                ['OR',
+                    [
+                        ('currency', '=', self.show.currency.id),
+                        ('second_currency', '=', None),
+                        ],
+                    ('second_currency', '=', self.show.currency.id),
+                    ],
                 ],
             order=[])
 
@@ -2102,14 +2259,22 @@ class Reconcile(Wizard):
             requested = {
                 l for l in self.records
                 if l.account == self.show.account
-                and l.party == self.show.party}
+                and l.party == self.show.party
+                and (l.second_currency or l.currency) == self.show.currency}
         else:
             requested = None
+        currency = self.show.currency
 
-        currency = self.show.account.company.currency
+        def balance(line):
+            if line.second_currency == currency:
+                return line.amount_second_currency
+            elif line.currency == currency:
+                return line.debit - line.credit
+            else:
+                return 0
 
         all_lines = self._all_lines()
-        amount = sum((l.debit - l.credit) for l in all_lines)
+        amount = sum(map(balance, all_lines))
         if currency.is_zero(amount):
             return all_lines
 
@@ -2124,7 +2289,7 @@ class Reconcile(Wizard):
                 for comb_lines in combinations(lines, n):
                     if requested and not requested.intersection(comb_lines):
                         continue
-                    amount = sum((l.debit - l.credit) for l in comb_lines)
+                    amount = sum(balance(l) for l in comb_lines)
                     if currency.is_zero(amount):
                         best = comb_lines
                         break
@@ -2147,7 +2312,9 @@ class Reconcile(Wizard):
                 writeoff=self.show.write_off,
                 description=self.show.description)
 
-        if self.get_parties(self.show.account, party=self.show.party):
+        if self.get_currencies(
+                self.show.account, self.show.party,
+                currency=self.show.currency):
             return 'show'
         return 'next_'
 
@@ -2190,11 +2357,21 @@ class ReconcileShow(ModelView):
             'company': Eval('company', -1),
             },
         depends={'company'})
+    currencies = fields.Many2Many(
+        'currency.currency', None, None, "Currencies", readonly=True)
+    currency = fields.Many2One('currency.currency', "Currency", readonly=True)
     lines = fields.Many2Many('account.move.line', None, None, 'Lines',
         domain=[
             ('account', '=', Eval('account')),
             ('party', '=', Eval('party')),
             ('reconciliation', '=', None),
+            ['OR',
+                [
+                    ('currency', '=', Eval('currency', -1)),
+                    ('second_currency', '=', None),
+                    ],
+                ('second_currency', '=', Eval('currency', -1)),
+                ],
             ])
 
     _write_off_states = {
@@ -2202,13 +2379,9 @@ class ReconcileShow(ModelView):
         'invisible': ~Eval('write_off_amount', 0),
         }
 
-    write_off_amount = fields.Function(Monetary(
-            "Amount", currency='currency', digits='currency',
-            states=_write_off_states),
-        'on_change_with_write_off_amount')
-    currency = fields.Function(fields.Many2One(
-            'currency.currency', "Currency"),
-        'on_change_with_currency')
+    write_off_amount = Monetary(
+        "Amount", currency='currency', digits='currency', readonly=True,
+        states=_write_off_states)
     write_off = fields.Many2One(
         'account.move.reconcile.write_off', "Write Off",
         domain=[
@@ -2221,16 +2394,17 @@ class ReconcileShow(ModelView):
             'invisible': _write_off_states['invisible'],
             })
 
-    @fields.depends('lines', 'currency')
-    def on_change_with_write_off_amount(self, name=None):
-        amount = sum(((l.debit - l.credit) for l in self.lines), Decimal(0))
+    @fields.depends('lines', 'currency', 'company')
+    def on_change_lines(self):
+        amount = Decimal(0)
+        for line in self.lines:
+            if line.second_currency == self.currency:
+                amount += line.amount_second_currency
+            elif line.currency == self.currency:
+                amount += line.debit - line.credit
         if self.currency:
             amount = self.currency.round(amount)
-        return amount
-
-    @fields.depends('company')
-    def on_change_with_currency(self, name=None):
-        return self.company.currency if self.company else None
+        self.write_off_amount = amount
 
 
 class CancelMoves(Wizard):

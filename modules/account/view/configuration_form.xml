@@ -17,4 +17,13 @@ this repository contains the full copyright notices and license terms. -->
     <separator id="move" string="Move" colspan="4"/>
     <label name="reconciliation_sequence"/>
     <field name="reconciliation_sequence"/>
+
+    <separator id="currency_exchange" string="Currency Exchange" colspan="4"/>
+    <label name="currency_exchange_journal" string="Journal"/>
+    <field name="currency_exchange_journal"/>
+    <newline/>
+    <label name="currency_exchange_credit_account" string="Credit Account"/>
+    <field name="currency_exchange_credit_account"/>
+    <label name="currency_exchange_debit_account" string="Debit Account"/>
+    <field name="currency_exchange_debit_account"/>
 </form>

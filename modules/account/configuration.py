@@ -58,16 +58,42 @@ class Configuration(
                     Id('account',
                         'sequence_type_account_move_reconciliation')),
                 ]))
+    currency_exchange_journal = fields.MultiValue(fields.Many2One(
+            'account.journal', "Currency Exchange Journal",
+            domain=[
+                ('type', '=', 'write-off'),
+                ]))
+    currency_exchange_credit_account = fields.MultiValue(fields.Many2One(
+            'account.account', "Currency Exchange Credit Account",
+            domain=[
+                ('closed', '!=', True),
+                ('type.statement', '=', 'income'),
+                ('company', '=', Eval('context', {}).get('company', -1)),
+                ('second_currency', '=', None),
+                ]))
+    currency_exchange_debit_account = fields.MultiValue(fields.Many2One(
+            'account.account', "Currency Exchange Debit Account",
+            domain=[
+                ('closed', '!=', True),
+                ('type.statement', '=', 'income'),
+                ('company', '=', Eval('context', {}).get('company', -1)),
+                ('second_currency', '=', None),
+                ]))
 
     @classmethod
     def multivalue_model(cls, field):
         pool = Pool()
-        if field in {'default_account_receivable', 'default_account_payable'}:
+        if field in {
+                'default_account_receivable', 'default_account_payable',
+                'currency_exchange_credit_account',
+                'currency_exchange_debit_account'}:
             return pool.get('account.configuration.default_account')
         if field in {'default_customer_tax_rule', 'default_supplier_tax_rule'}:
             return pool.get('account.configuration.default_tax_rule')
         if field == 'reconciliation_sequence':
             return pool.get('account.configuration.sequence')
+        elif field == 'currency_exchange_journal':
+            return pool.get('account.configuration.journal')
         return super(Configuration, cls).multivalue_model(field)
 
     @classmethod
@@ -78,6 +104,11 @@ class Configuration(
     def default_reconciliation_sequence(cls, **pattern):
         return cls.multivalue_model(
             'reconciliation_sequence').default_reconciliation_sequence()
+
+    @classmethod
+    def default_currency_exchange_journal(cls, **pattern):
+        return cls.multivalue_model(
+            'currency_exchange_journal').default_currency_exchange_journal()
 
 
 class ConfigurationDefaultAccount(ModelSQL, CompanyValueMixin):
@@ -96,6 +127,22 @@ class ConfigurationDefaultAccount(ModelSQL, CompanyValueMixin):
             ('type.payable', '=', True),
             ('party_required', '=', True),
             ('company', '=', Eval('company', -1)),
+            ])
+    currency_exchange_credit_account = fields.Many2One(
+        'account.account', "Currency Exchange Credit Account",
+        domain=[
+            ('closed', '!=', True),
+            ('type.statement', '=', 'income'),
+            ('company', '=', Eval('company', -1)),
+            ('second_currency', '=', None),
+            ])
+    currency_exchange_debit_account = fields.Many2One(
+        'account.account', "Currency Exchange Debit Account",
+        domain=[
+            ('closed', '!=', True),
+            ('type.statement', '=', 'income'),
+            ('company', '=', Eval('company', -1)),
+            ('second_currency', '=', None),
             ])
 
 
@@ -165,5 +212,27 @@ class Sequence(ModelSQL, CompanyValueMixin):
         try:
             return ModelData.get_id(
                 'account', 'sequence_account_move_reconciliation')
+        except KeyError:
+            return None
+
+
+class Journal(ModelSQL, CompanyValueMixin):
+    "Account Configuration Journal"
+    __name__ = 'account.configuration.journal'
+    currency_exchange_journal = fields.Many2One(
+        'account.journal', "Currency Exchange Journal",
+        domain=[
+            ('type', '=', 'write-off'),
+            ],
+        context={
+            'company': Eval('company', -1),
+            })
+
+    @classmethod
+    def default_currency_exchange_journal(cls):
+        pool = Pool()
+        ModelData = pool.get('ir.model.data')
+        try:
+            return ModelData.get_id('account', 'journal_currency_exchange')
         except KeyError:
             return None

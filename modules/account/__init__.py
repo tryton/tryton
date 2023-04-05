@@ -44,6 +44,7 @@ def register():
         configuration.ConfigurationDefaultAccount,
         configuration.DefaultTaxRule,
         configuration.Sequence,
+        configuration.Journal,
         period.Period,
         journal.Journal,
         journal.JournalSequence,

@@ -9,7 +9,7 @@ this repository contains the full copyright notices and license terms. -->
     <label name="party"/>
     <field name="party"/>
 
-    <field name="lines" colspan="6"/>
+    <field name="lines" colspan="6" view_ids="account.move_line_view_list_reconcile"/>
 
     <separator name="write_off" colspan="6"/>
 

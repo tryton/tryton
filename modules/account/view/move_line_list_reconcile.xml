@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tree>
+    <field name="move" optional="0"/>
+    <field name="move_origin" optional="0"/>
+    <field name="origin" optional="1"/>
+    <field name="move_description" optional="1"/>
+    <field name="description" optional="1"/>
+    <field name="maturity_date"/>
+    <field name="amount"/>
+</tree>
