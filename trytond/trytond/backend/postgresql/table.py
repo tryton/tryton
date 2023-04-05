@@ -109,6 +109,9 @@ class TableHandler(TableHandlerInterface):
         elif self.history:
             if not self.__columns['__id']['identity']:
                 update_definitions = True
+                cursor.execute(
+                    SQL("ALTER TABLE {} ALTER COLUMN id DROP DEFAULT").format(
+                        Identifier(self.table_name)))
                 migrate_to_identity(self.table_name, '__id')
         if update_definitions:
             self._update_definitions(columns=True)
