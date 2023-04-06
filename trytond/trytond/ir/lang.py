@@ -66,7 +66,7 @@ class Lang(DeactivableMixin, ModelSQL, ModelView):
     mon_grouping = fields.Char('Grouping', required=True)
     mon_decimal_point = fields.Char(
         "Decimal Separator", required=True, strip=False)
-    mon_thousands_sep = fields.Char('Thousands Separator')
+    mon_thousands_sep = fields.Char('Thousands Separator', strip=False)
     p_sign_posn = fields.Integer('Positive Sign Position', required=True)
     n_sign_posn = fields.Integer('Negative Sign Position', required=True)
     positive_sign = fields.Char("Positive Sign", strip=False)
