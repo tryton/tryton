@@ -2681,7 +2681,9 @@ class AgedBalance(ModelSQL, ModelView):
         with Transaction().set_context(date=None):
             line_query, _ = MoveLine.query_get(line)
         kind = cls.get_kind(type_)
-        debit_kind = cls.get_kind(debit_type)
+        debit_kind = (
+            cls.get_kind(debit_type)
+            & (line.debit != 0))
         columns = [
             line.party.as_('id'),
             Literal(0).as_('create_uid'),
