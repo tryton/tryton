@@ -1,0 +1,58 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data>
+        <record model="ir.ui.view" id="company_view_list">
+            <field name="model">company.company</field>
+            <field name="inherit" ref="company.company_view_list"/>
+            <field name="name">company_list</field>
+        </record>
+
+        <record model="ir.ui.view" id="company_view_form">
+            <field name="model">company.company</field>
+            <field name="inherit" ref="company.company_view_form"/>
+            <field name="name">company_form</field>
+        </record>
+
+        <record model="ir.model.field.access" id="access_company_receivable">
+            <field name="field" search="[('model.model', '=', 'company.company'), ('name', '=', 'receivable')]"/>
+            <field name="perm_read" eval="False"/>
+        </record>
+        <record model="ir.model.field.access" id="access_company_receivable_account">
+            <field name="field" search="[('model.model', '=', 'company.company'), ('name', '=', 'receivable')]"/>
+            <field name="group" ref="group_account"/>
+            <field name="perm_read" eval="True"/>
+        </record>
+
+        <record model="ir.model.field.access" id="access_company_payable">
+            <field name="field" search="[('model.model', '=', 'company.company'), ('name', '=', 'payable')]"/>
+            <field name="perm_read" eval="False"/>
+        </record>
+        <record model="ir.model.field.access" id="access_company_payable_account">
+            <field name="field" search="[('model.model', '=', 'company.company'), ('name', '=', 'payable')]"/>
+            <field name="group" ref="group_account"/>
+            <field name="perm_read" eval="True"/>
+        </record>
+
+        <record model="ir.model.field.access" id="access_company_receivable_today">
+            <field name="field" search="[('model.model', '=', 'company.company'), ('name', '=', 'receivable_today')]"/>
+            <field name="perm_read" eval="False"/>
+        </record>
+        <record model="ir.model.field.access" id="access_company_receivable_today_account">
+            <field name="field" search="[('model.model', '=', 'company.company'), ('name', '=', 'receivable_today')]"/>
+            <field name="group" ref="group_account"/>
+            <field name="perm_read" eval="True"/>
+        </record>
+
+        <record model="ir.model.field.access" id="access_company_payable_today">
+            <field name="field" search="[('model.model', '=', 'company.company'), ('name', '=', 'payable_today')]"/>
+            <field name="perm_read" eval="False"/>
+        </record>
+        <record model="ir.model.field.access" id="access_company_payable_today_account">
+            <field name="field" search="[('model.model', '=', 'company.company'), ('name', '=', 'payable_today')]"/>
+            <field name="group" ref="group_account"/>
+            <field name="perm_read" eval="True"/>
+        </record>
+    </data>
+</tryton>

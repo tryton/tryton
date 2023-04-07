@@ -1330,6 +1330,7 @@ class AccountTestCase(
     def test_receivable_payable(self):
         'Test party receivable payable'
         pool = Pool()
+        Company = pool.get('company.company')
         Party = pool.get('party.party')
         FiscalYear = pool.get('account.fiscalyear')
         Journal = pool.get('account.journal')
@@ -1399,27 +1400,34 @@ class AccountTestCase(
 
             def check_fields():
                 party_test = Party(party.id)
+                company_test = Company(company.id)
 
-                for field, value in [('receivable', Decimal('300')),
-                        ('receivable_today', Decimal('100')),
-                        ('payable', Decimal('90')),
-                        ('payable_today', Decimal('30')),
+                for record, Model in [
+                        (party_test, Party),
+                        (company_test, Company),
                         ]:
-                    msg = 'field: %s, value: %s' % (field, value)
-                    self.assertEqual(
-                        getattr(party_test, field), value, msg=msg)
-                    self.assertEqual(
-                        Party.search([(field, '=', value)]),
-                        [party_test], msg=msg)
-                    self.assertEqual(
-                        Party.search([(field, 'in', [value])]),
-                        [party_test], msg=msg)
-                    self.assertEqual(
-                        Party.search([(field, '!=', value)]),
-                        [], msg=msg)
-                    self.assertEqual(
-                        Party.search([(field, 'not in', [value])]),
-                        [], msg=msg)
+                    for field, value in [
+                            ('receivable', Decimal('300')),
+                            ('receivable_today', Decimal('100')),
+                            ('payable', Decimal('90')),
+                            ('payable_today', Decimal('30')),
+                            ]:
+                        with self.subTest(
+                                record=record, field=field, value=value):
+                            self.assertEqual(
+                                getattr(record, field), value)
+                            self.assertEqual(
+                                Model.search([(field, '=', value)]),
+                                [record])
+                            self.assertEqual(
+                                Model.search([(field, 'in', [value])]),
+                                [record])
+                            self.assertEqual(
+                                Model.search([(field, '!=', value)]),
+                                [])
+                            self.assertEqual(
+                                Model.search([(field, 'not in', [value])]),
+                                [])
 
             check_fields()
             close_fiscalyear(fiscalyear)

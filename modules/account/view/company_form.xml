@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<data>
+    <xpath expr="/form/notebook" position="inside">
+        <page string="Accounting" id="accounting">
+            <separator string="Account" colspan="4" id="account"/>
+            <label name="receivable_today"/>
+            <field name="receivable_today"/>
+            <label name="payable_today"/>
+            <field name="payable_today"/>
+
+            <label name="receivable"/>
+            <field name="receivable"/>
+            <label name="payable"/>
+            <field name="payable"/>
+        </page>
+    </xpath>
+</data>
