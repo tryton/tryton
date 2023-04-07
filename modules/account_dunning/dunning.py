@@ -284,6 +284,7 @@ class Dunning(ModelSQL, ModelView):
         else:
             return
         return cls(
+            company=line.account.company,
             line=line,
             procedure=procedure,
             level=level,
