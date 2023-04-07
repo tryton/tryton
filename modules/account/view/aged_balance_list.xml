@@ -3,9 +3,9 @@
 this repository contains the full copyright notices and license terms. -->
 <tree>
     <field name="party" expand="2"/>
-    <field name="term0" expand="1"/>
-    <field name="term1" expand="1"/>
-    <field name="term2" expand="1"/>
-    <field name="term3" expand="1"/>
-    <field name="balance" expand="1"/>
+    <field name="term0" expand="1" sum="Total Now"/>
+    <field name="term1" expand="1" sum="Total First Term"/>
+    <field name="term2" expand="1" sum="Total Second Term"/>
+    <field name="term3" expand="1" sum="Total Third Term"/>
+    <field name="balance" expand="1" sum="Total Balance"/>
 </tree>
