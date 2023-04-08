@@ -240,9 +240,9 @@ class StatementRuleLine(metaclass=PoolMeta):
 
     def _get_payment_group(self, origin, keywords):
         pool = Pool()
-        Payment = pool.get('account.payment.group')
+        PaymentGroup = pool.get('account.payment.group')
         if keywords.get('payment_group'):
-            groups, = Payment.search(
+            groups, = PaymentGroup.search(
                 [('rec_name', '=', keywords['payment_group'])])
             if len(groups) == 1:
                 group, = groups
