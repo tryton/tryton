@@ -20,3 +20,6 @@ def register():
         account.InvoiceSII,
         party.Identifier,
         module='account_es_sii', type_='model')
+    Pool.register(
+        account.RenewFiscalYear,
+        module='account_es_sii', type_='wizard')

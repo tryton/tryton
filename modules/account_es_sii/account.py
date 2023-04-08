@@ -166,6 +166,20 @@ class FiscalYear(metaclass=PoolMeta):
         Period.write(periods, {name: value})
 
 
+class RenewFiscalYear(metaclass=PoolMeta):
+    __name__ = 'account.fiscalyear.renew'
+
+    def create_fiscalyear(self):
+        fiscalyear = super().create_fiscalyear()
+        previous_fiscalyear = self.start.previous_fiscalyear
+        periods = [
+            p for p in previous_fiscalyear.periods if p.type == 'standard']
+        if periods:
+            last_period = periods[-1]
+            fiscalyear.es_sii_send_invoices = last_period.es_sii_send_invoices
+        return fiscalyear
+
+
 class Period(metaclass=PoolMeta):
     __name__ = 'account.period'
     es_sii_send_invoices = fields.Boolean(
