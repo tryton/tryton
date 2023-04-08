@@ -486,8 +486,11 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
     def on_change_with_company_party(self, name=None):
         return self.company.party if self.company else None
 
-    @fields.depends('party', 'type', 'accounting_date', 'invoice_date')
+    @fields.depends(
+        'state', 'account', 'party', 'type', 'accounting_date', 'invoice_date')
     def on_change_with_account(self):
+        if self.state != 'draft':
+            return self.account
         account = None
         if self.party:
             with Transaction().set_context(
@@ -505,10 +508,12 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
         else:
             return ['expense']
 
-    @fields.depends('type')
+    @fields.depends('state', 'journal', 'type')
     def on_change_with_journal(self, pattern=None):
         pool = Pool()
         Journal = pool.get('account.journal')
+        if self.state != 'draft':
+            return self.journal
         pattern = pattern.copy() if pattern is not None else {}
         pattern.setdefault('type', {
                 'out': 'revenue',
