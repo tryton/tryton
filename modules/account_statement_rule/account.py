@@ -323,17 +323,23 @@ class StatementRuleLine(sequence_ordered(), ModelSQL, ModelView):
         currency = origin.statement.journal.currency
         amount = currency.round(simple_eval(decistmt(self.amount), **context))
         party = self._get_party(origin, keywords)
-        invoice = self._get_invoice(origin, keywords)
+        related_to = list(filter(None, self._get_related_to(origin, keywords)))
+        if len(related_to) == 1:
+            related_to, = related_to
+        else:
+            related_to = None
+        related_to_party = self._get_party_from(related_to)
 
-        if invoice and party and invoice.party != party:
+        if related_to_party and party and related_to_party != party:
             return
-        if invoice and not party:
-            party = invoice.party
+        if related_to_party and not party:
+            party = related_to_party
 
         account = self.account
         if not account:
-            if invoice:
-                account = invoice.account
+            related_to_account = self._get_account_from(related_to)
+            if related_to_account:
+                account = related_to_account
             elif party:
                 with Transaction().set_context(date=origin.date):
                     if amount > Decimal('0.0'):
@@ -359,7 +365,7 @@ class StatementRuleLine(sequence_ordered(), ModelSQL, ModelView):
         line.date = origin.date
         line.party = party
         line.account = account
-        line.related_to = invoice
+        line.related_to = related_to
         return line
 
     def _get_party(self, origin, keywords):
@@ -410,6 +416,21 @@ class StatementRuleLine(sequence_ordered(), ModelSQL, ModelView):
                         line, = lines
                         party = line.party
         return party
+
+    def _get_related_to(self, origin, keywords):
+        return {self._get_invoice(origin, keywords)}
+
+    def _get_party_from(self, related_to):
+        pool = Pool()
+        Invoice = pool.get('account.invoice')
+        if isinstance(related_to, Invoice):
+            return related_to.party
+
+    def _get_account_from(self, related_to):
+        pool = Pool()
+        Invoice = pool.get('account.invoice')
+        if isinstance(related_to, Invoice):
+            return related_to.account
 
     def _get_invoice(self, origin, keywords):
         pool = Pool()
