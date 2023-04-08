@@ -3,6 +3,11 @@
 this repository contains the full copyright notices and license terms. -->
 <tryton>
     <data>
+        <record model="ir.ui.view" id="timesheet_line_view_form">
+            <field name="model">timesheet.line</field>
+            <field name="inherit" ref="timesheet.line_view_form"/>
+            <field name="name">timesheet_line_form</field>
+        </record>
         <record model="ir.action.act_window" id="act_timesheet_line_form_invoice">
             <field name="name">Timesheet Lines</field>
             <field name="res_model">timesheet.line</field>
