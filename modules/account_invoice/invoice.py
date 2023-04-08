@@ -458,8 +458,11 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
         if self.company:
             return self.company.party.id
 
-    @fields.depends('party', 'type', 'accounting_date', 'invoice_date')
+    @fields.depends(
+        'state', 'account', 'party', 'type', 'accounting_date', 'invoice_date')
     def on_change_with_account(self):
+        if self.state != 'draft':
+            return self.account
         account = None
         if self.party:
             with Transaction().set_context(
