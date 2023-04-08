@@ -1201,6 +1201,7 @@ class RPCProgress(object):
         self.res = None
         self.error = False
         self.exception = None
+        self._cursor_timeout = None
 
     def start(self):
         try:
@@ -1225,7 +1226,7 @@ class RPCProgress(object):
             # Parent is only useful if it is asynchronous
             # otherwise the cursor is not updated.
             self.parent = get_toplevel_window()
-            GLib.timeout_add(3000, self._set_cursor)
+            self._cursor_timeout = GLib.timeout_add(3000, self._set_cursor)
             _thread.start_new_thread(self.start, ())
             return
         else:
@@ -1233,6 +1234,7 @@ class RPCProgress(object):
             return self.process()
 
     def _set_cursor(self):
+        self._cursor_timeout = None
         if self.parent:
             window = self.parent.get_window()
             if window:
@@ -1242,9 +1244,11 @@ class RPCProgress(object):
                 window.set_cursor(watch)
 
     def process(self):
+        if self._cursor_timeout:
+            GLib.source_remove(self._cursor_timeout)
+            self._cursor_timeout = None
         if self.parent and self.parent.get_window():
             self.parent.get_window().set_cursor(None)
-            self.parent = None
 
         if self.exception and self.process_exception_p:
             def rpc_execute(*args):
