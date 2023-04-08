@@ -682,5 +682,6 @@ class RenewFiscalYear(Wizard):
 
     def do_create_(self, action):
         fiscalyear = self.create_fiscalyear()
+        fiscalyear.save()
         action['views'].reverse()
         return action, {'res_id': fiscalyear.id}
