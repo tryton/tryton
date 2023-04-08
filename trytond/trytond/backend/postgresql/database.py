@@ -430,8 +430,7 @@ class Database(DatabaseInterface):
         cursor = connection.cursor()
         cursor.execute("SELECT pg_get_serial_sequence(%s, %s)", (table, 'id'))
         sequence_name, = cursor.fetchone()
-        cursor.execute(SQL("SELECT last_value FROM {}").format(
-                Identifier(*sequence_name.split('.'))))
+        cursor.execute(f"SELECT last_value FROM {sequence_name}")
         return cursor.fetchone()[0]
 
     def lock(self, connection, table):
