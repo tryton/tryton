@@ -530,6 +530,9 @@ class POSSaleLine(ModelSQL, ModelView, TaxableMixin):
     def on_change_product(self):
         pool = Pool()
         Tax = pool.get('account.tax')
+
+        self.unit_gross_price = None
+        self.unit_list_price = None
         if self.product and self.sale and self.sale.point:
             if (self.sale.point.tax_included
                     and self.product.gross_price is not None):
@@ -537,7 +540,7 @@ class POSSaleLine(ModelSQL, ModelView, TaxableMixin):
                 self.unit_list_price = round_price(Tax.reverse_compute(
                         self.unit_gross_price, self.taxes,
                         date=self.sale.date))
-            else:
+            elif self.product.list_price is not None:
                 self.unit_list_price = self.product.list_price
                 taxes = Tax.compute(
                     self.taxes, self.unit_list_price, 1,
@@ -547,9 +550,6 @@ class POSSaleLine(ModelSQL, ModelView, TaxableMixin):
                     self.unit_list_price + tax_amount).quantize(
                         Decimal(1)
                         / 10 ** self.__class__.unit_gross_price.digits[1])
-        else:
-            self.unit_gross_price = None
-            self.unit_list_price = None
         self.unit_price = self.on_change_with_unit_price()
         self.amount = self.on_change_with_amount()
 
