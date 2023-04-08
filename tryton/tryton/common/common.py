@@ -450,9 +450,9 @@ def file_selection(title, filename='',
     win.add_buttons(*buttons)
     win.set_icon(TRYTON_ICON)
     if filename:
-        filename = slugify(filename)
         if action in (Gtk.FileChooserAction.SAVE,
                 Gtk.FileChooserAction.CREATE_FOLDER):
+            filename = _slugify_filename(filename)
             win.set_current_name(filename)
         else:
             win.set_filename(filename)
@@ -507,15 +507,19 @@ def slugify(value):
     return _slugify_hyphenate_re.sub('-', value)
 
 
-def file_write(filename, data):
-    if isinstance(data, str):
-        data = data.encode('utf-8')
-    dtemp = tempfile.mkdtemp(prefix='tryton_')
+def _slugify_filename(filename):
     if not isinstance(filename, str):
         name, ext = filename
     else:
         name, ext = os.path.splitext(filename)
-    filename = ''.join([slugify(name), os.extsep, slugify(ext)])
+    return ''.join([slugify(name), os.extsep, slugify(ext)])
+
+
+def file_write(filename, data):
+    if isinstance(data, str):
+        data = data.encode('utf-8')
+    dtemp = tempfile.mkdtemp(prefix='tryton_')
+    filename = _slugify_filename(filename)
     filepath = os.path.join(dtemp, filename)
     with open(filepath, 'wb') as fp:
         fp.write(data)
