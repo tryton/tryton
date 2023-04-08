@@ -318,8 +318,8 @@ class Type(
             period_ids = list(
                 set(end_period_ids).difference(set(start_period_ids)))
         elif context.get('from_date') or context.get('to_date'):
-            from_date, _ = GeneralLedger.get_dates('start_%s' % name)
-            _, to_date = GeneralLedger.get_dates('end_%s' % name)
+            from_date = context.get('from_date')
+            to_date = context.get('to_date')
 
         with Transaction().set_context(
                 periods=period_ids, from_date=from_date, to_date=to_date):
