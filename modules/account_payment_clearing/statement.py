@@ -206,15 +206,28 @@ class StatementLine(metaclass=PoolMeta):
 class StatementRuleLine(metaclass=PoolMeta):
     __name__ = 'account.statement.rule.line'
 
-    def get_line(self, origin, keywords, **context):
-        line = super().get_line(origin, keywords, **context)
-        if line:
-            line.payment = self._get_payment(origin, keywords)
-            if (line.payment and line.party
-                    and line.payment.party != line.party):
-                return
-            line.payment_group = self._get_payment_group(origin, keywords)
-        return line
+    def _get_related_to(self, origin, keywords):
+        return super()._get_related_to(origin, keywords) | {
+            self._get_payment(origin, keywords),
+            self._get_payment_group(origin, keywords),
+            }
+
+    def _get_party_from(self, related_to):
+        pool = Pool()
+        Payment = pool.get('account.payment')
+        party = super()._get_party_from(related_to)
+        if isinstance(related_to, Payment):
+            party = related_to.party
+        return party
+
+    def _get_account_from(self, related_to):
+        pool = Pool()
+        Payment = pool.get('account.payment')
+        PaymentGroup = pool.get('account.payment.group')
+        account = super()._get_account_from(related_to)
+        if isinstance(related_to, (Payment, PaymentGroup)):
+            account = related_to.journal.clearing_account
+        return account
 
     def _get_payment(self, origin, keywords):
         pool = Pool()
