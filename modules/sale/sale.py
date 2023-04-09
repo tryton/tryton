@@ -1446,9 +1446,6 @@ class SaleLine(TaxableMixin, sequence_ordered(), ModelSQL, ModelView):
         methods=['compute_taxes', 'compute_unit_price',
             'on_change_with_amount'])
     def on_change_product(self):
-        if not self.product:
-            return
-
         party = None
         if self.sale:
             party = self.sale.invoice_party or self.sale.party
@@ -1456,20 +1453,33 @@ class SaleLine(TaxableMixin, sequence_ordered(), ModelSQL, ModelView):
         # Set taxes before unit_price to have taxes in context of sale price
         self.taxes = self.compute_taxes(party)
 
-        category = self.product.sale_uom.category
-        if not self.unit or self.unit.category != category:
-            self.unit = self.product.sale_uom
+        if self.product:
+            category = self.product.sale_uom.category
+            if not self.unit or self.unit.category != category:
+                self.unit = self.product.sale_uom
 
         self.unit_price = self.compute_unit_price()
 
         self.type = 'line'
         self.amount = self.on_change_with_amount()
 
-    @fields.depends('product', methods=['_get_tax_rule_pattern'])
+    @fields.depends('product', 'company', methods=['_get_tax_rule_pattern'])
     def compute_taxes(self, party):
+        pool = Pool()
+        AccountConfiguration = pool.get('account.configuration')
+
         taxes = set()
         pattern = self._get_tax_rule_pattern()
-        for tax in self.product.customer_taxes_used:
+        taxes_used = []
+        if self.product:
+            taxes_used = self.product.customer_taxes_used
+        elif self.company:
+            account_config = AccountConfiguration(1)
+            account = account_config.get_multivalue(
+                'default_category_account_revenue', company=self.company.id)
+            if account:
+                taxes_used = account.taxes
+        for tax in taxes_used:
             if party and party.customer_tax_rule:
                 tax_ids = party.customer_tax_rule.apply(tax, pattern)
                 if tax_ids:

@@ -1,3 +1,4 @@
+* Fill taxes from default account for line without product
 * Add partially shipped to shipment state
 * Add pending, awaiting payment and partially paid to invoice state
 * Remove support for Python 3.7

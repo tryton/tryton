@@ -1406,9 +1406,6 @@ class Line(sequence_ordered(), ModelSQL, ModelView):
         'product_supplier', methods=['compute_taxes', 'compute_unit_price',
             '_get_product_supplier_pattern'])
     def on_change_product(self):
-        if not self.product:
-            return
-
         party = None
         if self.purchase:
             party = self.purchase.invoice_party or self.purchase.party
@@ -1417,28 +1414,40 @@ class Line(sequence_ordered(), ModelSQL, ModelView):
         # price
         self.taxes = self.compute_taxes(party)
 
-        category = self.product.purchase_uom.category
-        if not self.unit or self.unit.category != category:
-            self.unit = self.product.purchase_uom
+        if self.product:
+            category = self.product.purchase_uom.category
+            if not self.unit or self.unit.category != category:
+                self.unit = self.product.purchase_uom
 
-        product_suppliers = list(self.product.product_suppliers_used(
-                **self._get_product_supplier_pattern()))
-        if len(product_suppliers) == 1:
-            self.product_supplier, = product_suppliers
-        elif (self.product_supplier
-                and self.product_supplier not in product_suppliers):
-            self.product_supplier = None
+            product_suppliers = list(self.product.product_suppliers_used(
+                    **self._get_product_supplier_pattern()))
+            if len(product_suppliers) == 1:
+                self.product_supplier, = product_suppliers
+            elif (self.product_supplier
+                    and self.product_supplier not in product_suppliers):
+                self.product_supplier = None
 
         self.unit_price = self.compute_unit_price()
 
         self.type = 'line'
         self.amount = self.on_change_with_amount()
 
-    @fields.depends('product', methods=['_get_tax_rule_pattern'])
+    @fields.depends('product', 'company', methods=['_get_tax_rule_pattern'])
     def compute_taxes(self, party):
+        pool = Pool()
+        AccountConfiguration = pool.get('account.configuration')
         taxes = set()
         pattern = self._get_tax_rule_pattern()
-        for tax in self.product.supplier_taxes_used:
+        taxes_used = []
+        if self.product:
+            taxes_used = self.product.supplier_taxes_used
+        elif self.company:
+            account_config = AccountConfiguration(1)
+            account = account_config.get_multivalue(
+                'default_category_account_expense', company=self.company.id)
+            if account:
+                taxes_used = account.taxes
+        for tax in taxes_used:
             if party and party.supplier_tax_rule:
                 tax_ids = party.supplier_tax_rule.apply(tax, pattern)
                 if tax_ids:
