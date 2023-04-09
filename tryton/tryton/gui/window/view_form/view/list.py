@@ -337,19 +337,6 @@ class TreeXMLViewParser(XMLViewParser):
         if 'optional' in attributes:
             self.view.optionals.append(column)
 
-        if bool(int(attributes.get('sum', 0))):
-            text = attributes['string'] + _(':')
-            label, sum_ = Gtk.Label(label=text), Gtk.Label()
-
-            hbox = Gtk.HBox()
-            hbox.pack_start(label, expand=True, fill=False, padding=2)
-            hbox.pack_start(sum_, expand=True, fill=False, padding=2)
-            hbox.show_all()
-            self.view.sum_box.pack_start(
-                hbox, expand=False, fill=False, padding=0)
-
-            self.view.sum_widgets.append((attributes['name'], sum_))
-
     def _parse_button(self, node, attributes):
         button = Button(self.view, attributes)
         self.view.state_widgets.append(button)
@@ -392,7 +379,19 @@ class TreeXMLViewParser(XMLViewParser):
             hbox.pack_start(arrow_widget, expand=False, fill=False, padding=0)
             column.set_clickable(True)
         hbox.show()
-        column.set_widget(hbox)
+        if bool(int(attributes.get('sum', 0))):
+            vbox = Gtk.VBox(homogeneous=False, spacing=0)
+            vbox.pack_start(hbox, expand=False, fill=True, padding=0)
+            sum_ = Gtk.Label()
+            sum_.set_justify(Gtk.Justification.RIGHT)
+            sum_.show()
+            vbox.pack_start(sum_, expand=False, fill=True, padding=0)
+            self.view.sum_widgets.append((attributes['name'], sum_))
+            vbox.show()
+            widget = vbox
+        else:
+            widget = hbox
+        column.set_widget(widget)
         column.set_alignment(align)
 
     def _set_column_width(self, column, attributes):
@@ -1205,7 +1204,7 @@ class ViewTree(View):
                         '{}'.format(selected_sum or 0), True)
                     sum_ = locale.localize('{}'.format(sum_ or 0), True)
 
-                text = '%s / %s' % (selected_sum, sum_)
+                text = '%s\n%s' % (selected_sum, sum_)
             else:
                 text = '-'
             label.set_text(text)

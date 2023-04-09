@@ -113,11 +113,10 @@
             }
 
             if (Boolean(parseInt(attributes.sum || '0', 10))) {
-                var label = attributes.string + Sao.i18n.gettext(': ');
                 var sum = jQuery('<label/>', {
-                    'text': label,
+                    'text': attributes.string,
                 });
-                var aggregate = jQuery('<span/>', {
+                var aggregate = jQuery('<div/>', {
                     'class': 'value',
                 });
                 this.view.sum_widgets.set(column, [sum, aggregate]);
@@ -1067,11 +1066,11 @@
                         sum_ = (sum_ || 0).toLocaleString(
                             Sao.i18n.BC47(Sao.i18n.getlang()), options);
                     }
-                    aggregate = selected_sum + ' / ' + sum_;
+                    aggregate = selected_sum + '\n' + sum_;
                 }
                 sum_value.text(aggregate);
                 sum_value.parent().attr(
-                    'title', sum_label.text() + ' ' + sum_value.text());
+                    'title', sum_label.text() + '\n' + sum_value.text());
             }
         },
         get selected_records() {
