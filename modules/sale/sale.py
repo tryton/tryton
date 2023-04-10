@@ -680,6 +680,12 @@ class Sale(
         else:
             return ''
 
+    @property
+    def delivery_full_address(self):
+        if self.shipment_address:
+            return self.shipment_address.full_address
+        return ''
+
     @classmethod
     def validate_fields(cls, sales, field_names):
         super().validate_fields(sales, field_names)
