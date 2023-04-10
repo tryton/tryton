@@ -11,7 +11,7 @@ from trytond.tools import is_instance_method
 from trytond.tools.string_ import LazyString
 from trytond.transaction import Transaction
 
-from .field import Field
+from .field import Field, order_method
 
 
 class SelectionMixin(Field):
@@ -141,11 +141,8 @@ class Selection(SelectionMixin, Field):
             model.__rpc__.setdefault(
                 self.selection, RPC(instantiate=instantiate, cache=cache))
 
+    @order_method
     def convert_order(self, name, tables, Model):
-        if getattr(Model, 'order_%s' % name, None):
-            return super(Selection, self).convert_order(name, tables, Model)
-
-        assert name == self.name
         table, _ = tables[None]
         selections = Model.fields_get([name])[name]['selection']
         if not isinstance(selections, (tuple, list)):

@@ -6,7 +6,7 @@ from sql.operators import ILike, In, Not, NotIn
 from trytond.transaction import Transaction
 
 from .char import Char
-from .field import SQL_OPERATORS, Field
+from .field import SQL_OPERATORS, Field, order_method
 
 
 class Text(Char):
@@ -85,10 +85,8 @@ class FullText(Field):
                 column, operator, value, expression)
         return expression
 
+    @order_method
     def convert_order(self, name, tables, Model):
-        method = getattr(Model, 'order_%s' % name, None)
-        if method:
-            return method(tables)
         table, _ = tables[None]
         column = self.sql_column(table)
         column = self._domain_column('ilike', column)

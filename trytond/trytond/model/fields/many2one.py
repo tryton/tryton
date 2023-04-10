@@ -12,7 +12,7 @@ from trytond.tools import cached_property, reduce_ids
 from trytond.transaction import Transaction, inactive_records
 
 from .field import (
-    Field, context_validate, domain_method, instantiate_context,
+    Field, context_validate, domain_method, instantiate_context, order_method,
     search_order_validate)
 
 _subquery_threshold = config.getint('database', 'subquery_threshold')
@@ -280,11 +280,9 @@ class Many2One(Field):
                 target_domain, tables=target_tables)
             return expression
 
+    @order_method
     def convert_order(self, name, tables, Model):
         fname, _, oexpr = name.partition('.')
-        if not oexpr and getattr(Model, 'order_%s' % fname, None):
-            return super(Many2One, self).convert_order(fname, tables, Model)
-        assert fname == self.name
 
         Target = self.get_target()
 

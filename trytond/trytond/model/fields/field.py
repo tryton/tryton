@@ -221,6 +221,19 @@ def domain_method(func):
     return wrapper
 
 
+def order_method(func):
+    @wraps(func)
+    def wrapper(self, name, tables, Model):
+        fname, _, oexpr = name.partition('.')
+        assert fname == self.name
+        method = getattr(Model, f'order_{fname}', None)
+        if not oexpr and method:
+            return method(tables)
+        else:
+            return func(self, name, tables, Model)
+    return wrapper
+
+
 SQL_OPERATORS = {
     '=': operators.Equal,
     '!=': operators.NotEqual,
@@ -456,15 +469,11 @@ class Field(object):
         expression = self._domain_add_null(column, operator, value, expression)
         return expression
 
+    @order_method
     def convert_order(self, name, tables, Model):
         "Return a SQL expression to order"
-        assert name == self.name
         table, _ = tables[None]
-        method = getattr(Model, 'order_%s' % name, None)
-        if method:
-            return method(tables)
-        else:
-            return [self.sql_column(table)]
+        return [self.sql_column(table)]
 
     def set_rpc(self, model):
         for attribute, result in (
@@ -732,6 +741,7 @@ class FieldTranslate(Field):
             language = get_parent_language(language)
         return column
 
+    @order_method
     def convert_order(self, name, tables, Model):
         if not self.translate:
             return super().convert_order(name, tables, Model)

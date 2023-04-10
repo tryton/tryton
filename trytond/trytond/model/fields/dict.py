@@ -12,7 +12,7 @@ from trytond.tools import grouped_slice
 from trytond.tools.immutabledict import ImmutableDict
 from trytond.transaction import Transaction
 
-from .field import SQL_OPERATORS, Field, domain_method
+from .field import SQL_OPERATORS, Field, domain_method, order_method
 
 # Use canonical form
 dumps = partial(
@@ -164,6 +164,7 @@ class Dict(Field):
         expression = self._domain_add_null(column, operator, value, expression)
         return expression
 
+    @order_method
     def convert_order(self, name, tables, Model):
         fname, _, key = name.partition('.')
         if not key:

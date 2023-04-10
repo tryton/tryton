@@ -12,7 +12,7 @@ from trytond.rpc import RPC
 from trytond.tools import is_full_text, unescape_wildcard
 from trytond.transaction import Transaction
 
-from .field import Field, FieldTranslate, size_validate
+from .field import Field, FieldTranslate, order_method, size_validate
 
 
 class Char(FieldTranslate):
@@ -188,10 +188,8 @@ class Char(FieldTranslate):
                         expression = fts
         return expression
 
+    @order_method
     def convert_order(self, name, tables, Model):
-        method = getattr(Model, 'order_%s' % name, None)
-        if method:
-            return method(tables)
         transaction = Transaction()
         context = transaction.context
         database = transaction.database
