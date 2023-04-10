@@ -18,7 +18,7 @@ How to obtain the certificate and private keys?
 -----------------------------------------------
 
 Both values should be extracted from the p12 certificate issued by the
-`FNMT <https://www.sede.fnmt.gob.es/certificados>`_.
+`FNMT <https://www.sede.fnmt.gob.es/certificados/persona-fisica>`_.
 The certificate should be related to the company presenting the information
 or an authorized party.
 
