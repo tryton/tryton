@@ -306,6 +306,7 @@ class User(avatar_mixin(100, 'login'), DeactivableMixin, ModelSQL, ModelView):
     @classmethod
     @ModelView.button
     def reset_password(cls, users, length=8, from_=None):
+        length = max(length, config.getint('password', 'length', default=0))
         for user in users:
             user.password_reset = gen_password(length=length)
             user.password_reset_expire = (
