@@ -227,6 +227,7 @@
                 th = jQuery('<th/>', {
                     'class': column.attributes.widget,
                 });
+                th.uniqueId();
                 var label = jQuery('<label/>')
                     .text(column.attributes.string)
                     .attr('title', column.attributes.string);
@@ -1531,6 +1532,7 @@
                         'aria-hidden': true
                     }));
                 }
+                td.attr('headers', column.header.attr('id'));
                 td.on('click keypress', {'index': i}, on_click);
                 if (!this.tree.editable) {
                     td.dblclick(this.switch_row.bind(this));
