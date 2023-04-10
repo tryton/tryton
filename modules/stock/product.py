@@ -20,6 +20,7 @@ from trytond.modules.product import price_digits, round_price
 from trytond.pool import Pool, PoolMeta
 from trytond.pyson import Bool, Eval, If, PYSONEncoder
 from trytond.tools import decistmt, grouped_slice
+from trytond.tools import timezone as tz
 from trytond.transaction import Transaction, without_check_access
 from trytond.wizard import (
     Button, StateAction, StateTransition, StateView, Wizard)
@@ -216,6 +217,8 @@ class Product(StockMixin, object, metaclass=PoolMeta):
 
     @classmethod
     def get_cost_value(cls, products, name):
+        pool = Pool()
+        Company = pool.get('company.company')
         cost_values = {p.id: None for p in products}
         context = {}
         trans_context = Transaction().context
@@ -223,6 +226,18 @@ class Product(StockMixin, object, metaclass=PoolMeta):
             # Use the last cost_price of the day
             context['_datetime'] = datetime.datetime.combine(
                 trans_context['stock_date_end'], datetime.time.max)
+            company = trans_context.get('company')
+            if company:
+                company = Company(company)
+                if company.timezone:
+                    timezone = tz.ZoneInfo(company.timezone)
+                    try:
+                        context['_datetime'] = (
+                            context['_datetime']
+                            .replace(tzinfo=timezone)
+                            .astimezone(tz.UTC))
+                    except OverflowError:
+                        pass
             # The date could be before the product creation
             products = [p for p in products
                 if p.create_date <= context['_datetime']]
