@@ -102,8 +102,12 @@ class Cron(DeactivableMixin, ModelSQL, ModelView):
         # Migration from 5.0: remove required on next_call
         table_h.not_null_action('next_call', 'remove')
 
-    def get_timezone(self, name):
+    @classmethod
+    def default_timezone(cls):
         return tz.SERVER.tzname(datetime.datetime.now())
+
+    def get_timezone(self, name):
+        return self.default_timezone()
 
     @staticmethod
     def check_xml_record(crons, values):
