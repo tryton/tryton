@@ -206,9 +206,10 @@ class StatementLine(metaclass=PoolMeta):
 class StatementRuleLine(metaclass=PoolMeta):
     __name__ = 'account.statement.rule.line'
 
-    def _get_related_to(self, origin, keywords):
-        return super()._get_related_to(origin, keywords) | {
-            self._get_payment(origin, keywords),
+    def _get_related_to(self, origin, keywords, party=None, amount=0):
+        return super()._get_related_to(
+            origin, keywords, party=party, amount=amount) | {
+            self._get_payment(origin, keywords, party=party, amount=amount),
             self._get_payment_group(origin, keywords),
             }
 
@@ -229,11 +230,24 @@ class StatementRuleLine(metaclass=PoolMeta):
             account = related_to.journal.clearing_account
         return account
 
-    def _get_payment(self, origin, keywords):
+    def _get_payment(self, origin, keywords, party=None, amount=0):
         pool = Pool()
         Payment = pool.get('account.payment')
         if keywords.get('payment'):
-            payments = Payment.search([('rec_name', '=', keywords['payment'])])
+            domain = [
+                ('rec_name', '=', keywords['payment']),
+                ('company', '=', origin.company.id),
+                ('currency', '=', origin.currency.id),
+                ('state', 'in', ['processing', 'succeeded', 'failed']),
+                ('clearing_reconciled', '!=', True),
+                ]
+            if party:
+                domain.append(('party', '=', party.id))
+            if amount > 0:
+                domain.append(('kind', '=', 'receivable'))
+            elif amount < 0:
+                domain.append(('kind', '=', 'payable'))
+            payments = Payment.search(domain)
             if len(payments) == 1:
                 payment, = payments
                 return payment
@@ -242,8 +256,12 @@ class StatementRuleLine(metaclass=PoolMeta):
         pool = Pool()
         PaymentGroup = pool.get('account.payment.group')
         if keywords.get('payment_group'):
-            groups, = PaymentGroup.search(
-                [('rec_name', '=', keywords['payment_group'])])
+            groups, = PaymentGroup.search([
+                    ('rec_name', '=', keywords['payment_group']),
+                    ('company', '=', origin.company.id),
+                    ('currency', '=', origin.currency.id),
+                    ('clearing_reconciled', '!=', True),
+                    ])
             if len(groups) == 1:
                 group, = groups
                 return group

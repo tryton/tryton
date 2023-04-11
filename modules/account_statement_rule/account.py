@@ -323,7 +323,9 @@ class StatementRuleLine(sequence_ordered(), ModelSQL, ModelView):
         currency = origin.statement.journal.currency
         amount = currency.round(simple_eval(decistmt(self.amount), **context))
         party = self._get_party(origin, keywords)
-        related_to = list(filter(None, self._get_related_to(origin, keywords)))
+        related_to = list(
+            filter(None, self._get_related_to(
+                    origin, keywords, party=party, amount=amount)))
         if len(related_to) == 1:
             related_to, = related_to
         else:
@@ -417,8 +419,8 @@ class StatementRuleLine(sequence_ordered(), ModelSQL, ModelView):
                         party = line.party
         return party
 
-    def _get_related_to(self, origin, keywords):
-        return {self._get_invoice(origin, keywords)}
+    def _get_related_to(self, origin, keywords, party=None, amount=0):
+        return {self._get_invoice(origin, keywords, party=party)}
 
     def _get_party_from(self, related_to):
         pool = Pool()
@@ -432,11 +434,22 @@ class StatementRuleLine(sequence_ordered(), ModelSQL, ModelView):
         if isinstance(related_to, Invoice):
             return related_to.account
 
-    def _get_invoice(self, origin, keywords):
+    def _get_invoice(self, origin, keywords, party=None):
         pool = Pool()
         Invoice = pool.get('account.invoice')
         if keywords.get('invoice'):
-            invoices = Invoice.search([('rec_name', '=', keywords['invoice'])])
+            domain = [
+                ('rec_name', '=', keywords['invoice']),
+                ('company', '=', origin.company.id),
+                ('currency', '=', origin.currency.id),
+                ('state', '=', 'posted'),
+                ]
+            if party:
+                domain.append(['OR',
+                        ('party', '=', party.id),
+                        ('alternative_payees', '=', party.id),
+                        ])
+            invoices = Invoice.search(domain)
             if len(invoices) == 1:
                 invoice, = invoices
                 return invoice
