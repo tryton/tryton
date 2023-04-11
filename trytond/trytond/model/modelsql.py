@@ -747,6 +747,7 @@ class ModelSQL(ModelStorage):
     def create(cls, vlist):
         transaction = Transaction()
         cursor = transaction.connection.cursor()
+        in_max = transaction.database.IN_MAX
         pool = Pool()
         Translation = pool.get('ir.translation')
 
@@ -762,7 +763,9 @@ class ModelSQL(ModelStorage):
         def db_insert(columns, vlist, fields):
             if (transaction.database.has_multirow_insert()
                     and transaction.database.has_returning()):
-                vlist = (s for s in grouped_slice(vlist))
+                vlist = (
+                    s for s in grouped_slice(
+                        vlist, in_max // (len(fields) or 1)))
             else:
                 vlist = ([v] for v in vlist)
 
