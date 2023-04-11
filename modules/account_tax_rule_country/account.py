@@ -132,7 +132,7 @@ class InvoiceLine(metaclass=PoolMeta):
             invoice_address = self.origin.purchase.invoice_address
             from_country = invoice_address.country
             from_subdivision = invoice_address.subdivision
-            warehouse = self.origin.purchase.warehouse
+            warehouse = self.origin.warehouse
             if warehouse and warehouse.address:
                 to_country = warehouse.address.country
                 to_subdivision = warehouse.address.subdivision

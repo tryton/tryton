@@ -2,7 +2,7 @@
 # this repository contains the full copyright notices and license terms.
 
 from trytond.model import fields
-from trytond.pool import Pool, PoolMeta
+from trytond.pool import PoolMeta
 from trytond.pyson import Eval
 
 
@@ -20,24 +20,14 @@ class Sale(metaclass=PoolMeta):
 class Line(metaclass=PoolMeta):
     __name__ = 'sale.line'
 
-    @fields.depends('sale', '_parent_sale.warehouse',
-        '_parent_sale.shipment_address')
+    @fields.depends('sale', 'warehouse', '_parent_sale.shipment_address')
     def _get_tax_rule_pattern(self):
-        pool = Pool()
-        Location = pool.get('stock.location')
-
         pattern = super()._get_tax_rule_pattern()
 
         from_country = from_subdivision = to_country = to_subdivision = None
-        if self.id is None or self.id < 0:
-            warehouse = self.get_warehouse('warehouse')
-            if warehouse:
-                warehouse = Location(warehouse)
-        else:
-            warehouse = self.warehouse
-        if warehouse and warehouse.address:
-            from_country = warehouse.address.country
-            from_subdivision = warehouse.address.subdivision
+        if self.warehouse and self.warehouse.address:
+            from_country = self.warehouse.address.country
+            from_subdivision = self.warehouse.address.subdivision
         if self.sale and self.sale.shipment_address:
             to_country = self.sale.shipment_address.country
             to_subdivision = self.sale.shipment_address.subdivision

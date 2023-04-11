@@ -20,8 +20,8 @@ class Purchase(metaclass=PoolMeta):
 class Line(metaclass=PoolMeta):
     __name__ = 'purchase.line'
 
-    @fields.depends('purchase', '_parent_purchase.warehouse',
-        '_parent_purchase.invoice_address')
+    @fields.depends(
+        'purchase', 'warehouse', '_parent_purchase.invoice_address')
     def _get_tax_rule_pattern(self):
         pattern = super()._get_tax_rule_pattern()
 
@@ -30,10 +30,9 @@ class Line(metaclass=PoolMeta):
             if self.purchase.invoice_address:
                 from_country = self.purchase.invoice_address.country
                 from_subdivision = self.purchase.invoice_address.subdivision
-            warehouse = self.purchase.warehouse
-            if warehouse and warehouse.address:
-                to_country = warehouse.address.country
-                to_subdivision = warehouse.address.subdivision
+            if self.warehouse and self.warehouse.address:
+                to_country = self.warehouse.address.country
+                to_subdivision = self.warehouse.address.subdivision
 
         pattern['from_country'] = from_country.id if from_country else None
         pattern['from_subdivision'] = (
