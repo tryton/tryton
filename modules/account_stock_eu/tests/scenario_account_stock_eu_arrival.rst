@@ -257,6 +257,8 @@ Check declaration::
     True
     >>> declaration.state
     'opened'
+    >>> bool(declaration.extended)
+    False
 
     >>> with config.set_context(declaration=declaration.id):
     ...     declaration_line, _ = IntrastatDeclarationLine.find([])
