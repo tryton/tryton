@@ -40,11 +40,12 @@ class Workflow(object):
                         current_state = getattr(record, cls._transition_state)
                         if current_state != to_update[record]:
                             del to_update[record]
-                    cls.write(list(to_update), {
+                    to_update = list(to_update)
+                    cls.write(to_update, {
                             cls._transition_state: state,
                             })
                     cls.log(
-                        records, 'transition',
+                        to_update, 'transition',
                         f'{cls._transition_state}:{state}')
                 return result
             return wrapper
