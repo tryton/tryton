@@ -963,6 +963,7 @@ class Main(Gtk.Application):
                 return
 
         def open_model(path):
+            attributes = {}
             model, path = (path.split('/', 1) + [''])[:2]
             if not model:
                 return
@@ -970,7 +971,9 @@ class Main(Gtk.Application):
             mode = None
             try:
                 view_ids = json.loads(params.get('views', '[]'))
-                limit = json.loads(params.get('limit', 'null'))
+                if 'limit' in params:
+                    attributes['limit'] = json.loads(
+                        params.get('limit', 'null'))
                 name = json.loads(params.get('name', '""'))
                 search_value = json.loads(params.get('search_value', '[]'),
                     object_hook=object_hook)
@@ -998,9 +1001,9 @@ class Main(Gtk.Application):
                     context_model=context_model,
                     mode=mode,
                     name=name,
-                    limit=limit,
                     search_value=search_value,
-                    tab_domain=tab_domain)
+                    tab_domain=tab_domain,
+                    **attributes)
             except Exception:
                 # Prevent crashing the client
                 return

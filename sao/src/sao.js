@@ -507,7 +507,9 @@ var Sao = {};
             }
             try {
                 attributes.view_ids = loads(params.views || '[]');
-                attributes.limit = loads(params.limi || 'null');
+                if (params.limit !== undefined) {
+                    attributes.limit = loads(params.limit || 'null');
+                }
                 attributes.name = loads(params.name || '""');
                 attributes.search_value = loads(params.search_value || '[]');
                 attributes.domain = loads(params.domain || '[]');
