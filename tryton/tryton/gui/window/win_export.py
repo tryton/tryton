@@ -468,7 +468,8 @@ class WinExport(WinCSV):
         else:
             domain = self.screen.search_domain(
                 self.screen.screen_container.get_text())
-            if not self.ignore_search_limit.get_active():
+            if (not self.ignore_search_limit.get_active()
+                    and self.screen.limit is not None):
                 query_string.append(('s', str(self.screen.limit)))
                 query_string.append(
                     ('p', str(self.screen.offset // self.screen.limit)))
