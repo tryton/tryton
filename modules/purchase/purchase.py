@@ -860,22 +860,28 @@ class Purchase(
             purchase.check_for_quotation()
         cls.set_number(purchases)
 
+    @property
+    def process_after(self):
+        pool = Pool()
+        Configuration = pool.get('purchase.configuration')
+        config = Configuration(1)
+        return config.purchase_process_after
+
     @classmethod
     @ModelView.button
     @Workflow.transition('confirmed')
     @set_employee('confirmed_by')
     def confirm(cls, purchases):
-        pool = Pool()
-        Configuration = pool.get('purchase.configuration')
         transaction = Transaction()
         context = transaction.context
         cls.set_purchase_date(purchases)
         cls.store_cache(purchases)
-        config = Configuration(1)
-        with transaction.set_context(
-                queue_scheduled_at=config.purchase_process_after,
-                queue_batch=context.get('queue_batch', True)):
-            cls.__queue__.process(purchases)
+        for process_after, sub_purchases in groupby(
+                purchases, lambda p: p.process_after):
+            with transaction.set_context(
+                    queue_scheduled_at=process_after,
+                    queue_batch=context.get('queue_batch', True)):
+                cls.__queue__.process(sub_purchases)
 
     @classmethod
     @Workflow.transition('processing')

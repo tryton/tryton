@@ -982,22 +982,28 @@ class Sale(
             sale.check_for_quotation()
         cls.set_number(sales)
 
+    @property
+    def process_after(self):
+        pool = Pool()
+        Configuration = pool.get('sale.configuration')
+        config = Configuration(1)
+        return config.sale_process_after
+
     @classmethod
     @ModelView.button
     @Workflow.transition('confirmed')
     @set_employee('confirmed_by')
     def confirm(cls, sales):
-        pool = Pool()
-        Configuration = pool.get('sale.configuration')
         transaction = Transaction()
         context = transaction.context
         cls.set_sale_date(sales)
         cls.store_cache(sales)
-        config = Configuration(1)
-        with transaction.set_context(
-                queue_scheduled_at=config.sale_process_after,
-                queue_batch=context.get('queue_batch', True)):
-            cls.__queue__.process(sales)
+        for process_after, sub_sales in groupby(
+                sales, lambda s: s.process_after):
+            with transaction.set_context(
+                    queue_scheduled_at=process_after,
+                    queue_batch=context.get('queue_batch', True)):
+                cls.__queue__.process(sub_sales)
 
     @classmethod
     @ModelView.button_action('sale.wizard_invoice_handle_exception')
