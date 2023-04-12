@@ -2058,7 +2058,8 @@
             } else {
                 domain = this.screen.search_domain(
                     this.screen.screen_container.get_text());
-                if (!this.ignore_search_limit.prop('checked')) {
+                if (!this.ignore_search_limit.prop('checked') &&
+                    this.screen.limit !== null) {
                     query_string.push(['s', this.screen.limit.toString()]);
                     query_string.push(
                         ['p', Math.floor(
