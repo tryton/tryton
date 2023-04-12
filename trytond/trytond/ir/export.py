@@ -31,6 +31,11 @@ class Export(_ClearCache, ModelSQL, ModelView):
     header = fields.Boolean(
         "Header",
         help="Check to include field names on the export.")
+    records = fields.Selection([
+            ('selected', "Selected"),
+            ('listed', "Listed"),
+            ], "Records",
+        help="The records on which the export runs.")
     export_fields = fields.One2Many('ir.export.line', 'export',
        'Fields')
 
@@ -45,9 +50,14 @@ class Export(_ClearCache, ModelSQL, ModelView):
         return False
 
     @classmethod
-    def update(cls, exports, fields):
+    def default_records(cls):
+        return 'selected'
+
+    @classmethod
+    def update(cls, exports, values, fields):
         pool = Pool()
         Line = pool.get('ir.export.line')
+        cls.write(exports, values)
         to_delete = []
         to_save = []
         for export in exports:

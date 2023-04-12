@@ -99,15 +99,16 @@ class WinExport(WinCSV):
 
         self.pref_export = Gtk.TreeView()
         self.pref_export.append_column(
-            Gtk.TreeViewColumn(_('Name'), Gtk.CellRendererText(), text=2))
+            Gtk.TreeViewColumn(_('Name'), Gtk.CellRendererText(), text=1))
         scrolledwindow_exports.add(self.pref_export)
         self.pref_export.connect("button-press-event", self.export_click)
         self.pref_export.connect("key-press-event", self.export_keypress)
 
         self.predef_model = Gtk.ListStore(
-                GObject.TYPE_INT,
-                GObject.TYPE_PYOBJECT,
-                GObject.TYPE_STRING)
+            GObject.TYPE_INT,
+            GObject.TYPE_STRING,
+            GObject.TYPE_PYOBJECT,
+            GObject.TYPE_PYOBJECT)
         self.fill_predefwin()
 
     def add_chooser(self, box):
@@ -216,15 +217,16 @@ class WinExport(WinCSV):
             exports = RPCExecute(
                 'model', 'ir.export', 'search_read',
                 [('resource', '=', self.model)], 0, None, None,
-                ['name', 'export_fields.name'],
+                ['name', 'header', 'records', 'export_fields.name'],
                 context=self.context)
         except RPCException:
             return
         for export in exports:
             self.predef_model.append((
                     export['id'],
+                    export['name'],
                     [f['name'] for f in export['export_fields.']],
-                    export['name']))
+                    export))
         self.pref_export.set_model(self.predef_model)
 
     def addreplace_predef(self, widget):
@@ -248,31 +250,39 @@ class WinExport(WinCSV):
                 return
         else:
             pref_id = model.get_value(iter_, 0)
-            name = model.get_value(iter_, 2)
+            name = model.get_value(iter_, 1)
             override = common.sur(_("Override '%s' definition?") % name)
             if not override:
                 return
         try:
+            values = {
+                'header': self.add_field_names.get_active(),
+                'records': (
+                    'selected' if self.selected_records.get_active()
+                    else 'listed'),
+                }
             if not pref_id:
-                pref_id, = RPCExecute('model', 'ir.export', 'create', [{
+                values.update({
                         'name': name,
                         'resource': self.model,
-                        'header': self.add_field_names.get_active(),
-                        'export_fields': [('create', [{
-                                            'name': x,
-                                            } for x in fields])],
-                        }], context=self.context)
+                        'export_fields': [
+                            ('create', [{'name': x, } for x in fields])],
+                        })
+                pref_id, = RPCExecute(
+                    'model', 'ir.export', 'create', [values],
+                    context=self.context)
             else:
-                RPCExecute('model', 'ir.export', 'update', [pref_id], fields,
+                RPCExecute(
+                    'model', 'ir.export', 'update', [pref_id], values, fields,
                     context=self.context)
         except RPCException:
             return
         clear_cache('model.%s.view_toolbar_get' % self.model)
         if iter_ is None:
-            self.predef_model.append((pref_id, fields, name))
+            self.predef_model.append((pref_id, name, fields, values))
         else:
-            model.set_value(iter_, 0, pref_id)
-            model.set_value(iter_, 1, fields)
+            model.set_value(iter_, 2, fields)
+            model.set_value(iter_, 3, values)
 
     def remove_predef(self, widget):
         sel = self.pref_export.get_selection().get_selected()
@@ -296,7 +306,8 @@ class WinExport(WinCSV):
 
     def sel_predef(self, path):
         self.model2.clear()
-        for name in self.predef_model[path[0]][1]:
+        _, _, fields, values = self.predef_model[path[0]]
+        for name in fields:
             if name not in self.fields:
                 iter = self.model1.get_iter_first()
                 prefix = ''
@@ -315,6 +326,10 @@ class WinExport(WinCSV):
             if name not in self.fields:
                 continue
             self.sel_field(name)
+
+        self.add_field_names.set_active(values.get('header'))
+        self.selected_records.set_active(
+            int(values.get('records') == 'selected'))
 
     def sel_field(self, name):
         string_, relation = self.fields[name]

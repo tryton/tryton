@@ -408,9 +408,7 @@ class Form(TabContent):
     def do_export(self, widget, export):
         if not self.modified_save():
             return
-        if (self.screen.current_view
-                and self.screen.current_view.view_type == 'tree'
-                and self.screen.current_view.children_field):
+        if export.get('records') == 'listed':
             ids = [r.id for r in self.screen.listed_records]
             paths = self.screen.listed_paths
         else:

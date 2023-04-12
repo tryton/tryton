@@ -1506,9 +1506,7 @@
         do_export: function(export_) {
             this.modified_save().then(() => {
                 var ids, paths;
-                if (this.screen.current_view &&
-                    (this.screen.current_view.view_type == 'tree') &&
-                    this.screen.current_view.children_field) {
+                if (export_.records == 'listed') {
                     ids = this.screen.listed_records.map(r => r.id);
                     paths = this.screen.listed_paths;
                 } else {

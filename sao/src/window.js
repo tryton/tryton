@@ -1939,11 +1939,14 @@
                 'method': 'model.ir.export.search_read',
                 'params': [
                     [['resource', '=', this.screen.model_name]], 0, null, null,
-                    ['name', 'export_fields.name'], {}],
+                    ['name', 'header', 'records', 'export_fields.name'], {}],
             }, this.session).done(exports => {
                 for (const export_ of exports) {
-                    this.predef_exports[export_.id] = export_['export_fields.']
-                        .map(field => field.name);
+                    this.predef_exports[export_.id] = {
+                        'fields': export_['export_fields.'].map(
+                            field => field.name),
+                        'values': export_,
+                    };
                     this.add_to_predef(export_.id, export_.name);
                     this.predef_exports_list.children('li').first().focus();
                 }
@@ -1981,37 +1984,36 @@
 
             const save = name => {
                 var prm;
+                var values = {
+                    'header': this.el_add_field_names.is(':checked'),
+                    'records': (
+                        JSON.parse(this.selected_records.val()) ?
+                        'selected' : 'listed'),
+                };
                 if (!pref_id) {
+                    values.name = name;
+                    values.resource = this.screen.model_name;
+                    values.export_fields = [
+                        ['create', fields.map(f => ({'name': f}))]];
                     prm = Sao.rpc({
                         method: 'model.ir.export.create',
-                        params: [[{
-                            name: name,
-                            resource: this.screen.model_name,
-                            header: this.el_add_field_names.is(':checked'),
-                            export_fields: [['create', fields.map(function(f) {
-                                return {name: f};
-                            })]],
-                        }], this.context],
-                    }, this.session).then(function(new_ids) {
-                        return new_ids[0];
-                    });
+                        params: [[values], this.context],
+                    }, this.session).then(([id]) => id);
                 } else {
                     prm = Sao.rpc({
                         method: 'model.ir.export.update',
-                        params: [[pref_id], fields, this.context],
-                    }, this.session).then(function() {
-                        return pref_id;
-                    });
+                        params: [[pref_id], values, fields, this.context],
+                    }, this.session).then(() =>  pref_id);
                 }
                 return prm.then(pref_id => {
                     this.session.cache.clear(
                         'model.' + this.screen.model_name + '.view_toolbar_get');
-                    this.predef_exports[pref_id] = fields;
+                    this.predef_exports[pref_id] = {
+                        'fields': fields,
+                        'values': values,
+                    };
                     if (selection.length === 0) {
                         this.add_to_predef(pref_id, name);
-                    }
-                    else {
-                        selection.attr('export_id', pref_id);
                     }
                 });
             };
@@ -2050,7 +2052,8 @@
         },
         sel_predef: function(export_id) {
             this.fields_selected.empty();
-            for (const name of this.predef_exports[export_id]) {
+            const export_ = this.predef_exports[export_id];
+            for (const name of export_.fields) {
                 if (!(name in this.fields)) {
                     var fields = this.fields_model;
                     var prefix = '';
@@ -2062,6 +2065,9 @@
                 }
                 this.sel_field(name);
             }
+            this.el_add_field_names.prop('checked', export_.values.header);
+            this.selected_records.val(
+                JSON.stringify(export_.values.records == 'selected'));
         },
         _traverse: function(fields, prefix, parents, i) {
             var field, item;
