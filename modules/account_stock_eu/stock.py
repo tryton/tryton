@@ -7,6 +7,7 @@ from sql import Null
 
 from trytond.i18n import gettext
 from trytond.model import Index, ModelView, Workflow, fields
+from trytond.modules.account.exceptions import FiscalYearNotFoundError
 from trytond.pool import Pool, PoolMeta
 from trytond.pyson import Eval
 from trytond.transaction import Transaction, without_check_access
@@ -499,12 +500,13 @@ class Move_Incoterm(metaclass=PoolMeta):
         pool = Pool()
         FiscalYear = pool.get('account.fiscalyear')
         if self.company:
-            fiscalyear = FiscalYear.find(
-                self.company.id,
-                date=self.effective_date or self.planned_date,
-                exception=False)
-            if fiscalyear:
-                fiscalyear = FiscalYear(fiscalyear)
+            try:
+                fiscalyear = FiscalYear.find(
+                    self.company.id,
+                    date=self.effective_date or self.planned_date)
+            except FiscalYearNotFoundError:
+                pass
+            else:
                 return fiscalyear.intrastat_extended
 
     def _set_intrastat(self):

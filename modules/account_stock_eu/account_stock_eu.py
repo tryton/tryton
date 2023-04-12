@@ -14,6 +14,7 @@ from trytond.cache import Cache
 from trytond.model import (
     Check, DeactivableMixin, Index, ModelSQL, ModelView, Unique, Workflow,
     fields)
+from trytond.modules.account.exceptions import FiscalYearNotFoundError
 from trytond.pool import Pool, PoolMeta
 from trytond.pyson import Eval
 from trytond.tools import grouped_slice
@@ -156,12 +157,13 @@ class IntrastatDeclaration(Workflow, ModelSQL, ModelView):
         pool = Pool()
         FiscalYear = pool.get('account.fiscalyear')
         if self.company and self.month:
-            fiscalyear = FiscalYear.find(
-                self.company.id,
-                date=self.month,
-                exception=False)
-            if fiscalyear:
-                fiscalyear = FiscalYear(fiscalyear)
+            try:
+                fiscalyear = FiscalYear.find(
+                    self.company.id,
+                    date=self.month)
+            except FiscalYearNotFoundError:
+                pass
+            else:
                 return fiscalyear.intrastat_extended
 
     def get_rec_name(self, name):
