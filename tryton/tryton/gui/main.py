@@ -9,6 +9,7 @@ import sys
 import threading
 import traceback
 import webbrowser
+from functools import partial
 from urllib.parse import parse_qsl, unquote, urlparse
 
 from gi.repository import Gdk, GdkPixbuf, Gio, GLib, Gtk
@@ -960,6 +961,7 @@ class Main(Gtk.Application):
             dialog.show()
 
     def _open_url(self, url):
+        loads = partial(json.loads, object_hook=object_hook)
         urlp = urlparse(url)
         if not urlp.scheme == 'tryton':
             return
@@ -982,88 +984,72 @@ class Main(Gtk.Application):
             model, path = (path.split('/', 1) + [''])[:2]
             if not model:
                 return
-            res_id = None
-            mode = None
+            attributes = {}
             try:
-                view_ids = json.loads(params.get('views', '[]'))
+                attributes['view_ids'] = loads(params.get('views', '[]'))
                 if 'limit' in params:
-                    attributes['limit'] = json.loads(
-                        params.get('limit', 'null'))
-                name = json.loads(params.get('name', '""'))
-                search_value = json.loads(params.get('search_value', '[]'),
-                    object_hook=object_hook)
-                domain = json.loads(params.get('domain', '[]'),
-                    object_hook=object_hook)
-                context = json.loads(params.get('context', '{}'),
-                    object_hook=object_hook)
-                context_model = params.get('context_model')
-                tab_domain = json.loads(params.get('tab_domain', '[]'),
-                    object_hook=object_hook)
+                    attributes['limit'] = loads(params.get('limit', 'null'))
+                attributes['name'] = loads(params.get('name', '""'))
+                attributes['search_value'] = loads(
+                    params.get('search_value', '[]'))
+                attributes['domain'] = loads(params.get('domain', '[]'))
+                attributes['context'] = loads(params.get('context', '{}'))
+                attributes['context_model'] = params.get('context_model')
+                attributes['tab_domain'] = loads(
+                    params.get('tab_domain', '[]'))
             except ValueError:
                 return
             if path:
                 try:
-                    res_id = int(path)
+                    attributes['res_id'] = int(path)
                 except ValueError:
                     return
-                mode = ['form', 'tree']
+                attributes['mode'] = ['form', 'tree']
             try:
-                Window.create(model,
-                    view_ids=view_ids,
-                    res_id=res_id,
-                    domain=domain,
-                    context=context,
-                    context_model=context_model,
-                    mode=mode,
-                    name=name,
-                    search_value=search_value,
-                    tab_domain=tab_domain,
-                    **attributes)
+                Window.create(model, **attributes)
             except Exception:
                 # Prevent crashing the client
                 return
 
         def open_wizard(wizard):
+            attributes = {}
             if not wizard:
                 return
             try:
-                data = json.loads(params.get('data', '{}'),
-                    object_hook=object_hook)
-                direct_print = json.loads(params.get('direct_print', 'false'))
-                name = json.loads(params.get('name', '""'))
-                window = json.loads(params.get('window', 'false'))
-                context = json.loads(params.get('context', '{}'),
-                    object_hook=object_hook)
+                attributes['data'] = loads(params.get('data', '{}'))
+                attributes['direct_print'] = loads(
+                    params.get('direct_print', 'false'))
+                attributes['name'] = loads(params.get('name', '""'))
+                attributes['window'] = loads(params.get('window', 'false'))
+                attributes['context'] = loads(params.get('context', '{}'))
             except ValueError:
                 return
             try:
-                Window.create_wizard(
-                    wizard, data, direct_print=direct_print, name=name,
-                    context=context, window=window)
+                Window.create_wizard(wizard, **attributes)
             except Exception:
                 # Prevent crashing the client
                 return
 
         def open_report(report):
+            attributes = {}
             if not report:
                 return
             try:
-                data = json.loads(params.get('data'), object_hook=object_hook)
-                direct_print = json.loads(params.get('direct_print', 'false'))
-                context = json.loads(params.get('context', '{}'),
-                    object_hook=object_hook)
+                attributes['data'] = loads(params.get('data', '{}'))
+                attributes['direct_print'] = loads(
+                    params.get('direct_print', 'false'))
+                attributes['context'] = loads(params.get('context', '{}'))
             except ValueError:
                 return
             try:
-                Action.exec_report(
-                    report, data, direct_print=direct_print, context=context)
+                Action.exec_report(report, **attributes)
             except Exception:
                 # Prevent crashing the client
                 return
 
         def open_url():
             try:
-                url = json.loads(params.get('url', 'false'))
+                url = loads(params.get('url', 'false'))
             except ValueError:
                 return
             if url:

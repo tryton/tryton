@@ -54,12 +54,12 @@
             });
         }
         data.action_id = action.id;
-        var params = {};
+        var params = {
+            'icon': action['icon.rec_name'] || '',
+        };
         var name_prm;
         switch (action.type) {
             case 'ir.action.act_window':
-                params.view_ids = [];
-                params.mode = null;
                 if (!jQuery.isEmptyObject(action.views)) {
                     params.view_ids = [];
                     params.mode = [];
@@ -103,12 +103,9 @@
                 params.res_id = action.res_id || data.res_id;
                 params.context_model = action.context_model;
                 params.context_domain = action.context_domain;
-                if (action.limit !== null) {
+                if ((action.limit !== undefined) && (action.limit !== null)) {
                     params.limit = action.limit;
-                } else {
-                    params.limit = Sao.config.limit;
                 }
-                params.icon = action['icon.rec_name'] || '';
 
                 if (action.keyword) {
                     name_prm = add_name_suffix(action.name, params.context);

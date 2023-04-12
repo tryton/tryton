@@ -6,7 +6,6 @@ import webbrowser
 import tryton.rpc as rpc
 from tryton.common import (
     RPCException, RPCExecute, file_open, file_write, message, selection)
-from tryton.config import CONFIG
 from tryton.pyson import PYSONDecoder
 
 _ = gettext.gettext
@@ -91,14 +90,15 @@ class Action(object):
                 return name
 
         data['action_id'] = action['id']
+        params = {
+            'icon': action.get('icon.rec_name') or '',
+            }
         if action['type'] == 'ir.action.act_window':
-            view_ids = []
-            view_mode = None
             if action.get('views', []):
-                view_ids = [x[0] for x in action['views']]
-                view_mode = [x[1] for x in action['views']]
+                params['view_ids'] = [x[0] for x in action['views']]
+                params['view_mode'] = [x[1] for x in action['views']]
             elif action.get('view_id', False):
-                view_ids = [action['view_id'][0]]
+                params['view_ids'] = [action['view_id'][0]]
 
             action.setdefault('pyson_domain', '[]')
             ctx = {
@@ -109,58 +109,47 @@ class Action(object):
             ctx.update(rpc.CONTEXT)
             ctx['_user'] = rpc._USER
             decoder = PYSONDecoder(ctx)
-            action_ctx = context.copy()
-            action_ctx.update(
+            params['context'] = context.copy()
+            params['context'].update(
                 decoder.decode(action.get('pyson_context') or '{}'))
-            ctx.update(action_ctx)
+            ctx.update(params['context'])
 
             ctx['context'] = ctx
             decoder = PYSONDecoder(ctx)
-            domain = decoder.decode(action['pyson_domain'])
-            order = decoder.decode(action['pyson_order'])
-            search_value = decoder.decode(action['pyson_search_value'] or '[]')
-            tab_domain = [(n, decoder.decode(d), c)
-                for n, d, c in action['domains']]
+            params['domain'] = decoder.decode(action['pyson_domain'])
+            params['order'] = decoder.decode(action['pyson_order'])
+            params['search_value'] = decoder.decode(
+                action['pyson_search_value'] or '[]')
+            params['tab_domain'] = [
+                (n, decoder.decode(d), c) for n, d, c in action['domains']]
 
             name = action.get('name', '')
             if action.get('keyword', ''):
-                name = add_name_suffix(name, action_ctx)
+                name = add_name_suffix(name, params['context'])
+            params['name'] = name
 
             res_model = action.get('res_model', data.get('res_model'))
-            res_id = action.get('res_id', data.get('res_id'))
+            params['res_id'] = action.get('res_id', data.get('res_id'))
+            params['context_model'] = action.get('context_model')
+            params['context_domain'] = action.get('context_domain')
             limit = action.get('limit')
-            if limit is None:
-                limit = CONFIG['client.limit']
+            if limit is not None:
+                params['limit'] = limit
 
-            Window.create(res_model,
-                view_ids=view_ids,
-                res_id=res_id,
-                domain=domain,
-                context=action_ctx,
-                order=order,
-                mode=view_mode,
-                name=name,
-                limit=limit,
-                search_value=search_value,
-                icon=(action.get('icon.rec_name') or ''),
-                tab_domain=tab_domain,
-                context_model=action['context_model'],
-                context_domain=action['context_domain'])
+            Window.create(res_model, **params)
         elif action['type'] == 'ir.action.wizard':
+            params['context'] = context
+            params['window'] = action.get('window')
             name = action.get('name', '')
             if action.get('keyword', 'form_action') == 'form_action':
                 name = add_name_suffix(name, context)
-            Window.create_wizard(action['wiz_name'], data,
-                direct_print=action.get('direct_print', False),
-                name=name,
-                context=context, icon=(action.get('icon.rec_name') or ''),
-                window=action.get('window', False))
-
+            params['name'] = name
+            Window.create_wizard(action['wiz_name'], data, **params)
         elif action['type'] == 'ir.action.report':
-            Action.exec_report(
-                action['report_name'], data,
-                direct_print=action.get('direct_print', False),
-                context=context)
+            params['direct_print'] = action.get('direct_print', False)
+            params['context'] = context
+            del params['icon']
+            Action.exec_report(action['report_name'], data, **params)
 
         elif action['type'] == 'ir.action.url':
             if action['url']:
