@@ -40,8 +40,10 @@ class ResourceMixin(ModelSQL, ModelView):
         Model = pool.get('ir.model')
         ModelAccess = pool.get('ir.model.access')
         models = Model.search([])
-        access = ModelAccess.get_access([m.model for m in models])
-        return [(m.model, m.name) for m in models if access[m.model]['read']]
+        if Transaction().context.get('_check_access'):
+            access = ModelAccess.get_access([m.model for m in models])
+            models = (m for m in models if access[m.model]['read'])
+        return [(m.model, m.name) for m in models]
 
     def get_last_user(self, name):
         return (self.write_uid.rec_name if self.write_uid
