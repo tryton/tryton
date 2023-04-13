@@ -16,6 +16,9 @@ You must use the "Modify Cost Price" wizard.</field>
         <record model="ir.message" id="msg_invalid_cost_price">
             <field name="text">Invalid cost price "%(cost_price)s" for product "%(product)s" with exception "%(exception)s".</field>
         </record>
+        <record model="ir.message" id="msg_invalid_cost_price_not_number">
+            <field name="text">The value "%(value)s" of "%(cost_price)s" for product "%(product)s" is not a number.</field>
+        </record>
         <record model="ir.message" id="msg_location_invalid_type_for_moves">
             <field name="text">You cannot change the type of location "%(location)s" to "%(type)s"
 because the type does not support moves and location has existing moves.</field>

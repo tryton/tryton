@@ -6,7 +6,7 @@ from collections import defaultdict
 from copy import deepcopy
 from decimal import Decimal
 
-from simpleeval import simple_eval
+from simpleeval import InvalidExpression, simple_eval
 from sql import Literal, Select, Window, With
 from sql.aggregate import Max, Sum
 from sql.conditionals import Case, Coalesce
@@ -1253,22 +1253,27 @@ class CostPriceRevision(ModelSQL, ModifyCostPriceStart):
         if field_names and 'cost_price' not in field_names:
             return
         for revision in revisions:
-            try:
-                if not isinstance(
-                        revision.get_cost_price(Decimal(0)), Decimal):
-                    raise ValueError
-            except Exception as exception:
-                product = revision.product or revision.template
-                raise ProductCostPriceError(
-                    gettext('stock.msg_invalid_cost_price',
-                        cost_price=revision.cost_price,
-                        product=product.rec_name,
-                        exception=exception)) from exception
+            revision.get_cost_price(Decimal(0))
 
     def get_cost_price(self, cost_price, **context):
         context.setdefault('names', {})['cost_price'] = cost_price
         context.setdefault('functions', {})['Decimal'] = Decimal
-        return simple_eval(decistmt(self.cost_price), **context)
+        try:
+            amount = simple_eval(decistmt(self.cost_price), **context)
+        except (InvalidExpression, SyntaxError) as exception:
+            product = self.product or self.template
+            raise ProductCostPriceError(
+                gettext('stock.msg_invalid_cost_price',
+                    cost_price=self.cost_price,
+                    product=product.rec_name,
+                    exception=exception)) from exception
+        if not isinstance(amount, Decimal):
+            raise ProductCostPriceError(
+                gettext('stock.msg_invalid_cost_price_not_number',
+                    value=amount,
+                    cost_price=self.cost_price,
+                    product=product.rec_name))
+        return amount
 
     @classmethod
     def _get_for_product_domain(cls):
