@@ -1612,15 +1612,13 @@ class Line(sequence_ordered(), ModelSQL, ModelView):
                 qty = Uom.compute_qty(move.uom, move.quantity, self.unit)
                 # Test only against from_location
                 # as it is what matters for purchase
-                src_type = self.from_location.type
+                src_type = 'supplier'
                 if (move.from_location.type == src_type
                         and move.to_location.type != src_type):
                     quantity += qty
                 elif (move.to_location.type == src_type
                         and move.from_location.type != src_type):
                     quantity -= qty
-            if self.quantity < 0:
-                quantity *= -1
             return quantity
 
     def _get_invoiced_quantity(self):
