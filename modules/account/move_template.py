@@ -229,7 +229,7 @@ class MoveLineTemplate(ModelSQL, ModelView):
 
         if not isinstance(amount, Decimal):
             raise MoveTemplateExpressionError(
-                gettext('account.msg_move_template_expession_not_number',
+                gettext('account.msg_move_template_expression_not_number',
                     value=amount,
                     expression=self.move.name,
                     template=self.move.rec_name))

@@ -143,7 +143,7 @@ Use the current period to cancel the move?</field>
             <field name="text">Failed to evaluate expression "%(expression)s" from template "%(template)s" with error:
 "%(error)s"</field>
         </record>
-        <record model="ir.message" id="msg_move_template_expession_not_number">
+        <record model="ir.message" id="msg_move_template_expression_not_number">
             <field name="text">The value "%(value)s" of "%(expression)s" from template "%(template)s" is not a number.</field>
         </record>
         <record model="ir.message" id="msg_move_template_keyword_name_not_identifier">
