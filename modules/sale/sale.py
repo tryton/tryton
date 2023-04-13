@@ -1613,15 +1613,13 @@ class SaleLine(TaxableMixin, sequence_ordered(), ModelSQL, ModelView):
                 qty = Uom.compute_qty(move.uom, move.quantity, self.unit)
                 # Test only against to_location
                 # as it is what matters for sale
-                dest_type = self.to_location.type
+                dest_type = 'customer'
                 if (move.to_location.type == dest_type
                         and move.from_location.type != dest_type):
                     quantity += qty
                 elif (move.from_location.type == dest_type
                         and move.to_location.type != dest_type):
                     quantity -= qty
-            if self.quantity < 0:
-                quantity *= -1
             return quantity
 
     def _get_invoiced_quantity(self):
