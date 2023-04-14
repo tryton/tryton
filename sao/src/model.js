@@ -1060,11 +1060,14 @@
             if (!jQuery.isEmptyObject(values)) {
                 var changes;
                 try {
-                    if (fieldnames.length == 1) {
+                    if ((fieldnames.length == 1) ||
+                        (values.id === undefined)) {
                         changes = [];
-                        changes.push(this.model.execute(
-                            'on_change_' + fieldnames[0],
-                            [values], this.get_context(), false));
+                        for (const fieldname in fieldnames) {
+                            changes.push(this.model.execute(
+                                'on_change_' + fieldname,
+                                [values], this.get_context(), false));
+                        }
                     } else {
                         changes = this.model.execute(
                             'on_change',
@@ -1128,12 +1131,14 @@
             fieldnames = Object.keys(fieldnames);
             if (fieldnames.length) {
                 try {
-                    if (fieldnames.length == 1) {
-                        fieldname = fieldnames[0];
+                    if ((fieldnames.length == 1) ||
+                        (values.id === undefined)) {
                         result = {};
-                        result[fieldname] = this.model.execute(
-                            'on_change_with_' + fieldname,
-                            [values], this.get_context(), false);
+                        for (const fieldname in fieldnames) {
+                            result[fieldname] = this.model.execute(
+                                'on_change_with_' + fieldname,
+                                [values], this.get_context(), false);
+                        }
                     } else {
                         result = this.model.execute(
                             'on_change_with',
@@ -1146,7 +1151,7 @@
             }
             if (!jQuery.isEmptyObject(later)) {
                 values = {};
-                for (fieldname in later) {
+                for (const fieldname in later) {
                     on_change_with = this.model.fields[fieldname]
                         .description.on_change_with;
                     values = jQuery.extend(
@@ -1155,12 +1160,14 @@
                 }
                 fieldnames = Object.keys(later);
                 try {
-                    if (fieldnames.length == 1) {
-                        fieldname = fieldnames[0];
+                    if ((fieldnames.length == 1) ||
+                        (values.id === undefined)) {
                         result = {};
-                        result[fieldname] = this.model.execute(
-                            'on_change_with_' + fieldname,
-                            [values], this.get_context(), false);
+                        for (const fieldname in fieldnames) {
+                            result[fieldname] = this.model.execute(
+                                'on_change_with_' + fieldname,
+                                [values], this.get_context(), false);
+                        }
                     } else {
                         result = this.model.execute(
                             'on_change_with',

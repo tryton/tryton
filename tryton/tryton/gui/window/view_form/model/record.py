@@ -568,12 +568,13 @@ class Record:
 
         if values:
             try:
-                if len(fieldnames) == 1:
-                    fieldname, = fieldnames
+                if len(fieldnames) == 1 or 'id' not in values:
                     changes = []
-                    changes.append(RPCExecute(
-                            'model', self.model_name, 'on_change_' + fieldname,
-                            values, context=self.get_context()))
+                    for fieldname in fieldnames:
+                        changes.append(RPCExecute(
+                                'model', self.model_name,
+                                'on_change_' + fieldname,
+                                values, context=self.get_context()))
                 else:
                     changes = RPCExecute(
                         'model', self.model_name, 'on_change',
@@ -618,13 +619,13 @@ class Record:
                 self.value.pop(fieldname + '.', None)
         if fieldnames:
             try:
-                if len(fieldnames) == 1:
-                    fieldname, = fieldnames
+                if len(fieldnames) == 1 or 'id' not in values:
                     result = {}
-                    result[fieldname] = RPCExecute(
-                        'model', self.model_name,
-                        'on_change_with_' + fieldname,
-                        values, context=self.get_context())
+                    for fieldname in fieldnames:
+                        result[fieldname] = RPCExecute(
+                            'model', self.model_name,
+                            'on_change_with_' + fieldname,
+                            values, context=self.get_context())
                 else:
                     result = RPCExecute(
                         'model', self.model_name, 'on_change_with',
@@ -639,13 +640,13 @@ class Record:
                         'on_change_with')
                 values.update(self._get_on_change_args(on_change_with))
             try:
-                if len(later) == 1:
-                    fieldname, = fieldnames
+                if len(later) == 1 or 'id' not in values:
                     result = {}
-                    result[fieldname] = RPCExecute(
-                        'model', self.model_name,
-                        'on_change_with_' + fieldname,
-                        values, context=self.get_context())
+                    for fieldname in fieldnames:
+                        result[fieldname] = RPCExecute(
+                            'model', self.model_name,
+                            'on_change_with_' + fieldname,
+                            values, context=self.get_context())
                 else:
                     result = RPCExecute(
                         'model', self.model_name, 'on_change_with',
