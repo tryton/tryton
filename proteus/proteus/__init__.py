@@ -1176,13 +1176,15 @@ class Model(object):
             changes = getattr(self._proxy, 'on_change_with')(values,
                 list(to_change), context)
             self._set_on_change(changes)
-        for field in later:
-            on_change_with = self._fields[field]['on_change_with']
-            values = self._on_change_args(on_change_with)
+        if later:
+            values = {}
+            for field in later:
+                on_change_with = self._fields[field]['on_change_with']
+                values.update(self._on_change_args(on_change_with))
             context = self._context
-            result = getattr(self._proxy, 'on_change_with_%s' % field)(values,
-                    context)
-            self._on_change_set(field, result)
+            changes = getattr(self._proxy, 'on_change_with')(
+                values, list(later), context)
+            self._set_on_change(changes)
 
         if self._parent:
             self._parent._changed.add(self._parent_field_name)

@@ -773,6 +773,7 @@ class ModelView(Model):
             field = self._fields[fieldname]
             method_name = 'on_change_with_%s' % fieldname
             value = getattr(self, method_name)()
+            setattr(self, fieldname, value)
             if field._type in {'many2one', 'one2one', 'reference'}:
                 if isinstance(value, ModelStorage):
                     if value.id and value.id >= 0:

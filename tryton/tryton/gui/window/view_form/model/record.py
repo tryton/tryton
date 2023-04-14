@@ -632,18 +632,27 @@ class Record:
             except RPCException:
                 return
             self.set_on_change(result)
-        for fieldname in later:
-            on_change_with = self.group.fields[fieldname].attrs.get(
-                    'on_change_with')
-            values = self._get_on_change_args(on_change_with)
+        if later:
+            values = {}
+            for fieldname in later:
+                on_change_with = self.group.fields[fieldname].attrs.get(
+                        'on_change_with')
+                values.update(self._get_on_change_args(on_change_with))
             try:
-                result = RPCExecute('model', self.model_name,
-                    'on_change_with_' + fieldname, values,
-                    context=self.get_context())
+                if len(later) == 1:
+                    fieldname, = fieldnames
+                    result = {}
+                    result[fieldname] = RPCExecute(
+                        'model', self.model_name,
+                        'on_change_with_' + fieldname,
+                        values, context=self.get_context())
+                else:
+                    result = RPCExecute(
+                        'model', self.model_name, 'on_change_with',
+                        values, list(later), context=self.get_context())
             except RPCException:
                 return
-            # Load fieldname before setting value
-            self[fieldname].set_on_change(self, result)
+            self.set_on_change(result)
 
     def autocomplete_with(self, field_name):
         for fieldname, fieldinfo in self.group.fields.items():

@@ -1144,18 +1144,32 @@
                 }
                 this.set_on_change(result);
             }
-            for (fieldname in later) {
-                on_change_with = this.model.fields[fieldname]
-                    .description.on_change_with;
-                values = this._get_on_change_args(on_change_with);
+            if (!jQuery.isEmptyObject(later)) {
+                values = {};
+                for (fieldname in later) {
+                    on_change_with = this.model.fields[fieldname]
+                        .description.on_change_with;
+                    values = jQuery.extend(
+                        values,
+                        this._get_on_change_args(on_change_with));
+                }
+                fieldnames = Object.keys(later);
                 try {
-                    result = this.model.execute(
-                        'on_change_with_' + fieldname,
-                        [values], this.get_context(), false);
+                    if (fieldnames.length == 1) {
+                        fieldname = fieldnames[0];
+                        result = {};
+                        result[fieldname] = this.model.execute(
+                            'on_change_with_' + fieldname,
+                            [values], this.get_context(), false);
+                    } else {
+                        result = this.model.execute(
+                            'on_change_with',
+                            [values, fieldnames], this.get_context(), false);
+                    }
                 } catch (e) {
                     return;
                 }
-                this.load(fieldname, false).set_on_change(this, result);
+                this.set_on_change(result);
             }
         },
         set_on_change: function(values) {
