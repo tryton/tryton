@@ -9,9 +9,9 @@ class Party(metaclass=PoolMeta):
 
     purchase_invoice_line_standalone = fields.MultiValue(
             fields.Boolean("Purchase Invoice Line Standalone"))
-    purchase_invoice_line_standalones = fields.One2Many(
+    purchase_invoice_lines_standalone = fields.One2Many(
         'party.party.purchase_invoice_line_standalone', 'party',
-        "Purchase Invoice Line Standalones")
+        "Purchase Invoice Lines Standalone")
 
     @classmethod
     def default_purchase_invoice_line_standalone(cls, **pattern):
