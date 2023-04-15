@@ -9,7 +9,7 @@ from trytond.i18n import gettext
 from trytond.tools import is_instance_method
 from trytond.transaction import Transaction, without_check_access
 
-from .field import Field, domain_method
+from .field import Field, domain_method, on_change_with_result
 
 
 def getter_context(func):
@@ -108,7 +108,6 @@ class Function(Field):
         If the function has ``names`` in the function definition then
         it will call it with a list of name.
         '''
-        from ..modelstorage import ModelStorage
         method = getattr(Model, self.getter)
         instance_method = is_instance_method(Model, self.getter)
         multiple = self.getter_multiple(method)
@@ -123,23 +122,13 @@ class Function(Field):
                         'one2many', 'many2many', 'one2one'}:
                     record._local_cache[record.id][fname] = val
 
-        def convert(value):
-            if self._type in {'many2one', 'one2one', 'reference'}:
-                if isinstance(value, ModelStorage):
-                    if self._type == 'reference':
-                        value = str(value)
-                    else:
-                        value = value.id
-            elif self._type in {'one2many', 'many2many'}:
-                if isinstance(value, (list, tuple)):
-                    value = [int(r) for r in value]
-            return value
-
         def call(name):
             if not instance_method:
-                return convert(method(records, name))
+                return on_change_with_result(self, method(records, name))
             else:
-                return dict((r.id, convert(method(r, name))) for r in records)
+                return {
+                    r.id: on_change_with_result(self, method(r, name))
+                    for r in records}
         if isinstance(name, list):
             names = name
             if multiple:
