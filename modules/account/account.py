@@ -861,16 +861,16 @@ class Account(
     currency = fields.Function(fields.Many2One(
             'currency.currency', "Currency"),
         'get_currency', searcher='search_currency')
-    second_currency = fields.Many2One('currency.currency',
-        'Secondary Currency', help='Force all moves for this account \n'
-        'to have this secondary currency.', ondelete="RESTRICT",
+    second_currency = fields.Many2One(
+        'currency.currency', "Second Currency", ondelete="RESTRICT",
         domain=[
             ('id', '!=', Eval('currency', -1)),
             ],
         states={
             'readonly': _states['readonly'],
             'invisible': ~Eval('deferral', False),
-            })
+            },
+        help="Force all moves for this account to have this second currency.")
     type = fields.Many2One(
         'account.account.type', "Type", ondelete='RESTRICT',
         states={
