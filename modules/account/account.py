@@ -2172,7 +2172,7 @@ class GeneralLedgerAccountContext(ModelView):
                 | Eval('end_period', False)),
             })
     company = fields.Many2One('company.company', 'Company', required=True)
-    posted = fields.Boolean('Posted Move', help="Only include posted moves.")
+    posted = fields.Boolean('Posted Moves', help="Only include posted moves.")
     journal = fields.Many2One(
         'account.journal', "Journal",
         context={
@@ -2585,7 +2585,7 @@ class BalanceSheetContext(ModelView):
     __name__ = 'account.balance_sheet.context'
     date = fields.Date('Date', required=True)
     company = fields.Many2One('company.company', 'Company', required=True)
-    posted = fields.Boolean('Posted Move', help="Only include posted moves.")
+    posted = fields.Boolean('Posted Moves', help="Only include posted moves.")
 
     @staticmethod
     def default_date():

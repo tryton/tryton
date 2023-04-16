@@ -299,7 +299,7 @@ class ConsolidationBalanceSheetContext(ModelView):
     "Consolidation Balance Sheet Context"
     __name__ = 'account.consolidation.balance_sheet.context'
     date = fields.Date("Date", required=True)
-    posted = fields.Boolean("Posted Move", help="Only include posted moves.")
+    posted = fields.Boolean("Posted Moves", help="Only include posted moves.")
     companies = fields.Many2Many('company.company', None, None, "Companies")
     currency = fields.Many2One('currency.currency', "Currency", required=True)
 
@@ -373,7 +373,7 @@ class ConsolidationIncomeStatementContext(ModelView):
             ])
     companies = fields.Many2Many('company.company', None, None, "Companies")
     currency = fields.Many2One('currency.currency', "Currency", required=True)
-    posted = fields.Boolean('Posted Move', help="Only include posted moves.")
+    posted = fields.Boolean('Posted Moves', help="Only include posted moves.")
     comparison = fields.Boolean('Comparison')
     from_date_cmp = fields.Date(
         "From Date",
