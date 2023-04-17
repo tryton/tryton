@@ -84,8 +84,8 @@ class SaleMixin:
         size = config.get_multivalue('product_recommendation_size')
         products = []
         if method:
-            products = getattr(self, '_recommended_products_%s' % method)()
-            for product in filter(self._is_recommendable_product, products):
+            generator = getattr(self, '_recommended_products_%s' % method)()
+            for product in filter(self._is_recommendable_product, generator):
                 products.append(product)
                 if len(products) >= size:
                     break
