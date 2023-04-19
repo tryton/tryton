@@ -19,6 +19,7 @@ class Taxon(classification_tree('product.taxon'), ModelSQL, ModelView):
     'Taxon'
     __name__ = 'product.taxon'
     rank = fields.Selection([
+            (None, ""),
             ('domain', 'Domain'),
             ('kingdom', 'Kingdom'),
             ('phylum', 'Phylum'),
