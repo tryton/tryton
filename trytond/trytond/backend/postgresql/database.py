@@ -406,12 +406,15 @@ class Database(DatabaseInterface):
 
     def nextid(self, connection, table):
         cursor = connection.cursor()
-        cursor.execute("SELECT NEXTVAL(%s)", (table + '_id_seq',))
+        cursor.execute(
+            "SELECT nextval(format(%s, %s))", ('%I', table + '_id_seq',))
         return cursor.fetchone()[0]
 
     def setnextid(self, connection, table, value):
         cursor = connection.cursor()
-        cursor.execute("SELECT SETVAL(%s, %s)", (table + '_id_seq', value))
+        cursor.execute(
+            "SELECT setval(format(%s, %s), %s)",
+            ('%I', table + '_id_seq', value))
 
     def currid(self, connection, table):
         cursor = connection.cursor()
