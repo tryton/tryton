@@ -3376,7 +3376,7 @@ function eval_pyson(value){
                 var record = this.record;
                 var field_size = record.expr_eval(
                     this.attributes.size) || -1;
-                field_size -= this.field.get_eval(record);
+                field_size -= this.field.get_eval(record).length;
                 var win = new Sao.Window.Form(this.screen, update_sequence, {
                     new_: true,
                     many: field_size,
