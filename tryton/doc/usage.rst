@@ -596,15 +596,26 @@ Appendix
 Configuration File
 ^^^^^^^^^^^^^^^^^^
 
-::
+General configuration
+   :file:`~/.config/tryton/x.y/tryton.conf`
 
-   :file:`~/.config/tryton/x.y/tryton.conf`  # General configuration
-   :file:`~/.config/tryton/x.y/accel.map`    # Accelerators configuration
-   :file:`~/.config/tryton/x.y/known_hosts`  # Fingerprints
-   :file:`~/.config/tryton/x.y/ca_certs`     # Certification Authority (http://docs.python.org/library/ssl.html#ssl-certificates)
-   :file:`~/.config/tryton/x.y/profiles.cfg` # Profile configuration
-   :file:`~/.config/tryton/x.y/plugins`      # Local user plugins directory
-   :file:`~/.config.tryton/x.y/theme.css`    # Custom CSS theme
+Accelerators configuration
+   :file:`~/.config/tryton/x.y/accel.map`
+
+Fingerprints
+   :file:`~/.config/tryton/x.y/known_hosts`
+
+`Certification Authority <http://docs.python.org/library/ssl.html#ssl-certificates>`_
+   :file:`~/.config/tryton/x.y/ca_certs`
+
+Profile configuration
+   :file:`~/.config/tryton/x.y/profiles.cfg`
+
+Local user plugins directory
+   :file:`~/.config/tryton/x.y/plugins`
+
+Custom CSS theme
+   :file:`~/.config.tryton/x.y/theme.css`
 
 .. note::
    ``~`` means the home directory of the user.
