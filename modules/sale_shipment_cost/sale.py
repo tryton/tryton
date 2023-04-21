@@ -357,7 +357,7 @@ class Line(metaclass=PoolMeta):
         context = Transaction().context
         shipment_cost_invoiced = context.get('_shipment_cost_invoiced')
         lines = super().get_invoice_line()
-        if (self.shipment_cost
+        if (self.shipment_cost is not None
                 and shipment_cost_invoiced is not None):
             for shipment in self.sale.shipments:
                 if (shipment.state == 'done'
@@ -372,7 +372,7 @@ class Line(metaclass=PoolMeta):
 
     def _get_invoice_line_quantity(self):
         quantity = super()._get_invoice_line_quantity()
-        if self.shipment_cost:
+        if self.shipment_cost is not None:
             if self.sale.shipment_cost_method == 'shipment':
                 quantity = 0
             elif (self.sale.shipment_cost_method == 'order'
@@ -385,7 +385,7 @@ class Line(metaclass=PoolMeta):
 
     def _get_invoiced_quantity(self):
         quantity = super()._get_invoiced_quantity()
-        if self.shipment_cost:
+        if self.shipment_cost is not None:
             if self.sale.shipment_cost_method == 'shipment':
                 quantity = 0
         return quantity
@@ -405,7 +405,7 @@ class ReturnSale(metaclass=PoolMeta):
         for sale in return_sales:
             for line in sale.lines:
                 # Do not consider return shipment cost as a shipment cost
-                if line.shipment_cost:
+                if line.shipment_cost is not None:
                     line.shipment_cost = None
                     lines.append(line)
         SaleLine.save(lines)
@@ -427,17 +427,18 @@ class Promotion(metaclass=PoolMeta):
 
     def get_context_formula(self, sale_line):
         context = super(Promotion, self).get_context_formula(sale_line)
-        if sale_line and sale_line.shipment_cost:
+        if sale_line and sale_line.shipment_cost is not None:
             context['names']['unit_price'] = sale_line.shipment_cost
         return context
 
     def get_sale_amount(self, sale):
         amount = super().get_sale_amount(sale)
         if not self.amount_shipment_cost_included:
-            amount -= sum(l.amount for l in sale.lines if l.shipment_cost)
+            amount -= sum(
+                l.amount for l in sale.lines if l.shipment_cost is not None)
             if not self.untaxed_amount:
                 amount -= sum(
                     v['amount']
-                    for l in sale.lines if l.shipment_cost
+                    for l in sale.lines if l.shipment_cost is not None
                     for v in l._get_taxes().values())
         return amount
