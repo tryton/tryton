@@ -313,8 +313,6 @@ class Sale(metaclass=PoolMeta):
             cost_line.unit_price = round_price(unit_price)
         else:
             cost_line.unit_price = round_price(cost)
-        if not cost_line.unit_price:
-            cost_line.quantity = 0
         cost_line.amount = cost_line.on_change_with_amount()
         return cost_line
 
