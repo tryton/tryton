@@ -148,7 +148,7 @@ class PurchaseRequest(metaclass=PoolMeta):
         reqs = [r for r in reqs
             if r.product in products and r.warehouse in warehouses]
         cls.delete(reqs)
-        new_requests = cls.compare_requests(new_requests)
+        new_requests = cls.compare_requests(new_requests, company)
 
         cls.create_requests(new_requests)
 
@@ -163,7 +163,7 @@ class PurchaseRequest(metaclass=PoolMeta):
         cls.save(to_save)
 
     @classmethod
-    def compare_requests(cls, new_requests):
+    def compare_requests(cls, new_requests, company):
         """
         Compare new_requests with already existing request to avoid
         to re-create existing requests.
@@ -175,6 +175,7 @@ class PurchaseRequest(metaclass=PoolMeta):
         requests = Request.search([
                 ('purchase_line.moves', '=', None),
                 ('purchase_line.purchase.state', '!=', 'cancelled'),
+                ('company', '=', company.id),
                 ('origin', 'like', 'stock.order_point,%'),
                 ])
         # Fetch data from existing requests
