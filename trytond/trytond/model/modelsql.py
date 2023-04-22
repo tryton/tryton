@@ -1358,11 +1358,14 @@ class ModelSQL(ModelStorage):
                     Column(foreign_table, field_name), sub_ids)
                 cursor.execute(*foreign_table.select(foreign_table.id,
                         where=foreign_red_sql))
-                records = Model.browse([x[0] for x in cursor])
+                related_records = Model.browse([x[0] for x in cursor])
             else:
                 with transaction.set_context(active_test=False):
-                    records = Model.search([(field_name, 'in', sub_ids)])
-            return records
+                    related_records = Model.search(
+                        [(field_name, 'in', sub_ids)])
+            if Model == cls:
+                related_records = list(set(related_records) - set(records))
+            return related_records
 
         for sub_ids, sub_records in zip(
                 grouped_slice(ids), grouped_slice(records)):
