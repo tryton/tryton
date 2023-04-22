@@ -59,7 +59,7 @@ class Location(DeactivableMixin, tree(), ModelSQL, ModelView):
         ], "Location type")
     type_string = type.translated('type')
     parent = fields.Many2One(
-        "stock.location", "Parent",
+        "stock.location", "Parent", ondelete='CASCADE',
         left="left", right="right",
         help="Used to add structure above the location.")
     left = fields.Integer('Left', required=True)
@@ -573,8 +573,16 @@ class Location(DeactivableMixin, tree(), ModelSQL, ModelView):
                             warehouse=warehouse.rec_name))
 
     @classmethod
-    def delete(cls, *args):
-        super().delete(*args)
+    def delete(cls, locations):
+        # Delete also required children as CASCADING is done separately
+        extra_locations = []
+        for location in locations:
+            extra_locations.extend(filter(None, [
+                        location.input_location,
+                        location.output_location,
+                        location.storage_location,
+                        ]))
+        super().delete(locations + extra_locations)
         cls._default_warehouse_cache.clear()
 
     @classmethod
