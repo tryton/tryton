@@ -55,7 +55,7 @@ class DatabaseInterface(object):
         '''
         raise NotImplementedError
 
-    def nextid(self, connection, table):
+    def nextid(self, connection, table, count=1):
         pass
 
     def setnextid(self, connection, table, value):

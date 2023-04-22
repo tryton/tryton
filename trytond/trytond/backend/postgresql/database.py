@@ -414,12 +414,16 @@ class Database(DatabaseInterface):
                 pass
         return True
 
-    def nextid(self, connection, table):
+    def nextid(self, connection, table, count=1):
         cursor = connection.cursor()
         cursor.execute(
-            "SELECT nextval(pg_get_serial_sequence(format(%s, %s), %s))",
-            ('%I', table, 'id'))
-        return cursor.fetchone()[0]
+            "SELECT nextval(pg_get_serial_sequence(format(%s, %s), %s)) "
+            "FROM generate_series(1, %s)",
+            ('%I', table, 'id', count))
+        if count == 1:
+            return cursor.fetchone()[0]
+        else:
+            return [id for id, in cursor]
 
     def setnextid(self, connection, table, value):
         cursor = connection.cursor()

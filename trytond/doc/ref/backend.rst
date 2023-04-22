@@ -65,9 +65,9 @@ Database
    If ``hostname`` is set, it checks also if it has the same configured
    hostname.
 
-.. method:: Database.nextid(connection, table)
+.. method:: Database.nextid(connection, table[, count])
 
-   Return the next ID for the ``table`` using the ``connection``.
+   Return the next ``count`` IDs for the ``table`` using the ``connection``.
 
    .. note:: It may return ``None`` for some database.
 
