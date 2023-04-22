@@ -1229,9 +1229,10 @@ class ModelSQL(ModelStorage):
                 if (not hasattr(Model, 'search')
                         or not hasattr(Model, 'write')):
                     continue
-                records = get_related_records(Model, field_name, sub_ids)
-                if records:
-                    Model.write(records, {
+                related_records = get_related_records(
+                    Model, field_name, sub_ids)
+                if related_records:
+                    Model.write(related_records, {
                             field_name: None,
                             })
 
@@ -1239,9 +1240,10 @@ class ModelSQL(ModelStorage):
                 if (not hasattr(Model, 'search')
                         or not hasattr(Model, 'delete')):
                     continue
-                records = get_related_records(Model, field_name, sub_ids)
-                if records:
-                    Model.delete(records)
+                related_records = get_related_records(
+                    Model, field_name, sub_ids)
+                if related_records:
+                    Model.delete(related_records)
 
             for Model, field_name in foreign_keys_tocheck:
                 with Transaction().set_context(
