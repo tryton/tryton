@@ -50,7 +50,7 @@ class ShipmentOut(ControlledShipmentMixin, metaclass=PoolMeta):
     @ControlledMixin.control(
         'pack', 'quality.wizard_stock_shipment_out_inspect_pack')
     def pack(cls, shipments):
-        return super().pick(shipments)
+        return super().pack(shipments)
 
 
 class ShipmentOutReturn(ControlledShipmentMixin, metaclass=PoolMeta):
