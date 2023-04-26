@@ -407,8 +407,8 @@ class Type(
                 if child.template:
                     if not child.template_override:
                         if child.template.parent:
-                            parent = template2type[
-                                child.template.parent.id]
+                            parent = template2type.get(
+                                child.template.parent.id)
                         else:
                             parent = None
                         old_parent = (
