@@ -11,7 +11,7 @@ A new configuration field for accounting is added:
 Three new fields are added to Accounting categories:
 
 - Account Stock: The account which is used to record stock value.
-- Account Stock IN: The counter part account for incomming stock moves.
+- Account Stock IN: The counter part account for incoming stock moves.
 - Account Stock OUT: The counter part account for outgoing stock moves.
 
 An Account Move is created for each Stock Move done under a fiscal year with

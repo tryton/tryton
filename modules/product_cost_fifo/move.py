@@ -71,7 +71,7 @@ class Move(metaclass=PoolMeta):
     def _update_fifo_out_product_cost_price(self):
         '''
         Update the product cost price of the given product on the move. Update
-        fifo_quantity on the concerned incomming moves. Return the
+        fifo_quantity on the concerned incoming moves. Return the
         cost price for outputing the given product and quantity.
         '''
         pool = Pool()
