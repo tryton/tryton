@@ -4,4 +4,6 @@ this repository contains the full copyright notices and license terms. -->
 <form>
     <label name="name"/>
     <field name="name"/>
+    <label name="active"/>
+    <field name="active"/>
 </form>
