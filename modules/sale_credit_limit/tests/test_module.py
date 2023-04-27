@@ -88,8 +88,8 @@ class SaleCreditLimitTestCase(CompanyTestMixin, ModuleTestCase):
                         'lines': [
                             ('create', [{
                                         'description': 'Test',
-                                        'quantity': 1,
-                                        'unit_price': Decimal('50'),
+                                        'quantity': 2,
+                                        'unit_price': Decimal('25'),
                                         }]),
                             ],
                         }])
@@ -114,10 +114,10 @@ class SaleCreditLimitTestCase(CompanyTestMixin, ModuleTestCase):
             # process should still work as sale is already processing
             Sale.process([sale])
 
-            # Increase quantity invoiced does not change the credit amount
+            # Invoice part of quantity does not change the credit amount
             invoice, = sale.invoices
             invoice_line, = invoice.lines
-            invoice_line.quantity += 1
+            invoice_line.quantity = 1
             invoice_line.save()
             Invoice.post([invoice])
             self.assertEqual(party.credit_amount, Decimal('150'))

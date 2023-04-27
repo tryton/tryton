@@ -32,7 +32,7 @@ class Party(metaclass=PoolMeta):
             amount = 0
             for line in sale.lines:
                 quantity = line.quantity
-                if not quantity or (line.type != 'line'):
+                if (line.type != 'line') or (quantity <= 0):
                     continue
                 for invoice_line in line.invoice_lines:
                     if invoice_line.type != 'line':
@@ -42,10 +42,11 @@ class Party(metaclass=PoolMeta):
                         quantity -= Uom.compute_qty(
                             invoice_line.unit, invoice_line.quantity,
                             line.unit, round=False)
-                amount += Currency.compute(
-                    sale.currency,
-                    Decimal(str(quantity)) * line.unit_price, currency,
-                    round=False)
+                if quantity > 0:
+                    amount += Currency.compute(
+                        sale.currency,
+                        Decimal(str(quantity)) * line.unit_price, currency,
+                        round=False)
             amounts[sale.party.id] = currency.round(
                 amounts[sale.party.id] + amount)
         return amounts
