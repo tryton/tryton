@@ -2017,7 +2017,7 @@
                     }, this.session);
                 }
                 prm.then(data => {
-                    this.export_csv(data, paths).then(() => {
+                    this.export_csv(data, paths, header).then(() => {
                         this.destroy();
                     });
                 });
@@ -2025,7 +2025,7 @@
                 this.destroy();
             }
         },
-        export_csv: function(data, paths) {
+        export_csv: function(data, paths, header=false) {
             var locale_format = this.el_csv_locale.prop('checked');
             var unparse_obj = {};
             unparse_obj.data = data.map(function(row, i) {
@@ -2043,9 +2043,13 @@
             }
             Sao.common.download_file(
                 csv, this.name + '.csv', {type: 'text/csv;charset=utf-8'});
+            var size = data.length;
+            if (header) {
+                size -= 1;
+            }
             return Sao.common.message.run(
-                Sao.i18n.ngettext('%1 record saved', '%1 records saved',
-                    data.length));
+                Sao.i18n.ngettext(
+                    "%1 record saved", "%1 records saved", size));
         },
         set_url: function() {
             var path = [this.session.database, 'data', this.screen.model_name];
