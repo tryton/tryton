@@ -794,6 +794,9 @@
 
             // Set column visibility depending on attributes and domain
             var visible_columns = 1;  // start at 1 because of the checkbox
+            if (this.optionals.length && !this.draggable) {
+                visible_columns += 1;
+            }
             var domain = [];
             if (!jQuery.isEmptyObject(this.screen.domain)) {
                 domain.push(this.screen.domain);
