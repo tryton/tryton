@@ -754,7 +754,8 @@
                 }).map(function(row) {
                     return row.el;
                 }));
-                if (this.display_size < this.group.length) {
+                if ((this.display_size < this.group.length) &&
+                    (!this.tbody.children().last().hasClass('more-row'))) {
                     var more_row = jQuery('<tr/>', {
                         'class': 'more-row',
                     });
