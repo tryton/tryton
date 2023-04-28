@@ -936,8 +936,17 @@
                         'title': Sao.i18n.gettext("More"),
                     }).text(Sao.i18n.gettext('More')
                     ).click(() => {
+                        var height = this.table.height();
                         this.display_size += Sao.config.display_size;
                         this.display();
+                        height -= this.treeview.height();
+                        height -= 50;
+                        if (this.tfoot) {
+                            height -= this.tfoot.height();
+                        }
+                        this.treeview[0].scroll({
+                            'top': height,
+                        });
                     });
                     more_cell.append(more_button);
                     more_row.append(more_cell);
