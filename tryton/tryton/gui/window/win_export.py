@@ -371,18 +371,19 @@ class WinExport(WinCSV):
                 fname = common.file_selection(_('Save As...'),
                         action=Gtk.FileChooserAction.SAVE)
                 if fname:
-                    self.export_csv(fname, data, paths)
+                    self.export_csv(fname, data, paths, header=header)
             else:
                 fileno, fname = tempfile.mkstemp(
                     '.csv', common.slugify(self.name) + '_')
-                if self.export_csv(fname, data, paths, popup=False):
+                if self.export_csv(
+                        fname, data, paths, popup=False, header=header):
                     os.close(fileno)
                     common.file_open(fname, 'csv')
                 else:
                     os.close(fileno)
         self.destroy()
 
-    def export_csv(self, fname, data, paths, popup=True):
+    def export_csv(self, fname, data, paths, popup=True, header=False):
         encoding = self.csv_enc.get_active_text() or 'utf_8_sig'
         locale_format = self.csv_locale.get_active()
 
@@ -397,10 +398,13 @@ class WinExport(WinCSV):
                     writer.writerow(self.format_row(
                             row, indent=indent, locale_format=locale_format))
             if popup:
-                if len(data) == 1:
-                    common.message(_('%d record saved.') % len(data))
+                size = len(data)
+                if header:
+                    size -= 1
+                if size <= 1:
+                    common.message(_('%d record saved.') % size)
                 else:
-                    common.message(_('%d records saved.') % len(data))
+                    common.message(_('%d records saved.') % size)
             return True
         except (IOError, UnicodeEncodeError, csv.Error) as exception:
             common.warning(str(exception), _('Export failed'))
