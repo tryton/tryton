@@ -761,8 +761,7 @@ class ModelSQL(ModelStorage):
         vlist = [v.copy() for v in vlist]
 
         def db_insert(columns, vlist, fields):
-            if (transaction.database.has_multirow_insert()
-                    and transaction.database.has_returning()):
+            if transaction.database.has_multirow_insert():
                 vlist = (
                     s for s in grouped_slice(
                         vlist, in_max // (len(fields) or 1)))
@@ -771,23 +770,37 @@ class ModelSQL(ModelStorage):
 
             for values in vlist:
                 values = list(values)
+                cols = list(columns)
                 try:
-                    if transaction.database.has_returning():
-                        cursor.execute(*table.insert(
-                                columns, values, [table.id]))
-                        yield from (r[0] for r in cursor)
-                    else:
-                        id_new = transaction.database.nextid(
-                            transaction.connection, cls._table)
-                        if id_new:
-                            if 'id' not in {c.name for c in columns}:
-                                columns.append(table.id)
-                            values[0].append(id_new)
-                            cursor.execute(*table.insert(columns, values))
+                    if len(values) > 1:
+                        ids = transaction.database.nextid(
+                            transaction.connection, cls._table,
+                            count=len(values))
+                        if ids is not None:
+                            assert len(ids) == len(values)
+                            cols.append(table.id)
+                            for val, id in zip(values, ids):
+                                val.append(id)
+                            cursor.execute(*table.insert(cols, values))
+                            yield from ids
+                            continue
+                    for i, val in enumerate(values):
+                        if transaction.database.has_returning():
+                            cursor.execute(*table.insert(
+                                    cols, [val], [table.id]))
+                            yield from (r[0] for r in cursor)
                         else:
-                            cursor.execute(*table.insert(columns, values))
-                            id_new = transaction.database.lastid(cursor)
-                        yield id_new
+                            id_new = transaction.database.nextid(
+                                transaction.connection, cls._table)
+                            if id_new:
+                                if i == 0:
+                                    cols.append(table.id)
+                                val.append(id_new)
+                                cursor.execute(*table.insert(cols, [val]))
+                            else:
+                                cursor.execute(*table.insert(cols, [val]))
+                                id_new = transaction.database.lastid(cursor)
+                            yield id_new
                 except (
                         backend.DatabaseIntegrityError,
                         backend.DatabaseDataError

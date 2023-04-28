@@ -367,6 +367,34 @@ class ModelSQLTestCase(unittest.TestCase):
         transaction.commit()
 
     @with_transaction()
+    def test_create(self):
+        "Test create record"
+        pool = Pool()
+        Model = pool.get('test.modelsql.create')
+
+        m1, = Model.create([{
+                    'char': "Value 1",
+                    }])
+
+        self.assertTrue(m1.id)
+        self.assertEqual(m1.char, "Value 1")
+
+    def test_create_without_returning(self):
+        "Test create record without returning"
+        with patch.object(backend.Database, 'has_returning') as returning:
+            returning.return_value = False
+            with Transaction().start(DB_NAME, USER, context=CONTEXT):
+                pool = Pool()
+                Model = pool.get('test.modelsql.create')
+
+                m1, = Model.create([{
+                            'char': "Value 1",
+                            }])
+
+                self.assertTrue(m1.id)
+                self.assertEqual(m1.char, "Value 1")
+
+    @with_transaction()
     def test_create_many_records(self):
         "Test create many records"
         pool = Pool()
@@ -390,9 +418,10 @@ class ModelSQLTestCase(unittest.TestCase):
         self.assertEqual(baz.char, "Baz")
         self.assertEqual(baz.integer, None)
 
-    def test_create_no_returning(self):
-        with patch.object(backend.Database, 'has_returning') as returning:
-            returning.return_value = False
+    def test_create_many_records_without_multirow_insert(self):
+        "Test create many records without multirow insert"
+        with patch.object(backend.Database, 'has_multirow_insert') as multirow:
+            multirow.return_value = False
             with Transaction().start(DB_NAME, USER, context=CONTEXT):
                 pool = Pool()
                 Model = pool.get('test.modelsql.create')
@@ -407,6 +436,30 @@ class ModelSQLTestCase(unittest.TestCase):
                 self.assertEqual(m1.char, "Value 1")
                 self.assertTrue(m2.id)
                 self.assertEqual(m2.char, "Value 2")
+                self.assertLess(m1.id, m2.id)
+
+    def test_create_many_without_returning_and_multirow_insert(self):
+        "Test create record without returning an multirow insert"
+        with patch.object(backend.Database, 'has_returning') as returning, \
+                patch.object(
+                    backend.Database, 'has_multirow_insert') as multirow:
+            returning.return_value = False
+            multirow.return_value = False
+            with Transaction().start(DB_NAME, USER, context=CONTEXT):
+                pool = Pool()
+                Model = pool.get('test.modelsql.create')
+
+                m1, m2 = Model.create([{
+                            'char': "Value 1",
+                            }, {
+                            'char': "Value 2",
+                            }])
+
+                self.assertTrue(m1.id)
+                self.assertEqual(m1.char, "Value 1")
+                self.assertTrue(m2.id)
+                self.assertEqual(m2.char, "Value 2")
+                self.assertLess(m1.id, m2.id)
 
     @with_transaction()
     def test_create_field_set(self):
