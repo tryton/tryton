@@ -76,8 +76,10 @@ class Request(_Request):
     def authorization(self):
         authorization = super(Request, self).authorization
         if authorization is None:
-            header = self.environ.get('HTTP_AUTHORIZATION')
+            header = self.headers.get('Authorization')
             return parse_authorization_header(header)
+        elif authorization.type == 'session':
+            return parse_session(authorization.token)
         return authorization
 
     @cached_property
@@ -96,9 +98,10 @@ class Request(_Request):
                 database_name, auth.get('userid'), auth.get('session'),
                 context=context)
         else:
+            parameters = getattr(auth, 'parameters', auth)
             try:
                 user_id = security.login(
-                    database_name, auth.username, auth, cache=False,
+                    database_name, auth.username, parameters, cache=False,
                     context=context)
             except RateLimitException:
                 abort(HTTPStatus.TOO_MANY_REQUESTS)
@@ -117,25 +120,33 @@ class Request(_Request):
 def parse_authorization_header(value):
     if not value:
         return
-    if not isinstance(value, bytes):
-        value = value.encode('latin1')
+    if isinstance(value, bytes):
+        value = value.decode('latin1')
     try:
         auth_type, auth_info = value.split(None, 1)
         auth_type = auth_type.lower()
     except ValueError:
         return
-    if auth_type == b'session':
-        try:
-            username, userid, session = base64.b64decode(auth_info).split(
-                b':', 3)
-            userid = int(userid)
-        except Exception:
-            return
-        return Authorization('session', {
-                'username': username.decode("latin1"),
-                'userid': userid,
-                'session': session.decode("latin1"),
-                })
+    if auth_type == 'session':
+        return parse_session(auth_info)
+    else:
+        authorization = Authorization(auth_type)
+        authorization.token = auth_info
+        return authorization
+
+
+def parse_session(token):
+    try:
+        username, userid, session = (
+            base64.b64decode(token).decode().split(':', 3))
+        userid = int(userid)
+    except Exception:
+        return
+    return Authorization('session', {
+            'username': username,
+            'userid': userid,
+            'session': session,
+            })
 
 
 def set_max_request_size(size):
@@ -223,16 +234,17 @@ def user_application(name, json=True):
             pool = Pool()
             UserApplication = pool.get('res.user.application')
 
-            authorization = request.headers['Authorization']
-            try:
-                auth_type, auth_info = authorization.split(None, 1)
-                auth_type = auth_type.lower()
-            except ValueError:
+            authorization = request.authorization
+            if authorization is None:
+                header = request.headers.get('Authorization')
+                authorization = parse_authorization_header(header)
+            if authorization is None:
                 abort(HTTPStatus.UNAUTHORIZED)
-            if auth_type != 'bearer':
+            if authorization.type != 'bearer':
                 abort(HTTPStatus.FORBIDDEN)
 
-            application = UserApplication.check(auth_info, name)
+            token = getattr(authorization, 'token', '')
+            application = UserApplication.check(token, name)
             if not application:
                 abort(HTTPStatus.FORBIDDEN)
             transaction = Transaction()
