@@ -758,7 +758,7 @@ class Purchase(
             account=party.account_payable_used,
             payment_term=self.payment_term,
             )
-        invoice.journal = invoice.on_change_with_journal()
+        invoice.set_journal()
         return invoice
 
     def create_invoice(self):

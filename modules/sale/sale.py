@@ -846,7 +846,7 @@ class Sale(
             currency=self.currency,
             account=party.account_receivable_used,
             )
-        invoice.journal = invoice.on_change_with_journal()
+        invoice.set_journal()
         invoice.payment_term = self.payment_term
         return invoice
 

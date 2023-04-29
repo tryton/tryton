@@ -437,6 +437,7 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
 
     @fields.depends(methods=['set_journal', 'on_change_party'])
     def on_change_type(self):
+        self.set_journal()
         self.on_change_party()
 
     @classmethod
@@ -446,18 +447,16 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
         else:
             return ['expense']
 
-    @fields.depends('state', 'journal', 'type')
-    def on_change_with_journal(self, pattern=None):
+    @fields.depends('type')
+    def set_journal(self, pattern=None):
         pool = Pool()
         Journal = pool.get('account.journal')
-        if self.state != 'draft':
-            return self.journal
         pattern = pattern.copy() if pattern is not None else {}
         pattern.setdefault('type', {
                 'out': 'revenue',
                 'in': 'expense',
                 }.get(self.type))
-        return Journal.find(pattern)
+        self.journal = Journal.find(pattern)
 
     @classmethod
     def order_accounting_date(cls, tables):

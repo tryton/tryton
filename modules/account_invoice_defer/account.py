@@ -164,8 +164,12 @@ class InvoiceDeferred(Workflow, ModelSQL, ModelView):
         else:
             return ['expense']
 
+    @fields.depends(methods=['set_journal'])
+    def on_change_type(self):
+        self.set_journal()
+
     @fields.depends('type')
-    def on_change_with_journal(self, pattern=None):
+    def set_journal(self, pattern=None):
         pool = Pool()
         Journal = pool.get('account.journal')
         pattern = pattern.copy() if pattern is not None else {}
@@ -173,7 +177,7 @@ class InvoiceDeferred(Workflow, ModelSQL, ModelView):
                 'out': 'revenue',
                 'in': 'expense',
                 }.get(self.type))
-        return Journal.find(pattern)
+        self.journal = Journal.find(pattern)
 
     @fields.depends('invoice_line', 'start_date', 'company')
     def on_change_invoice_line(self):
