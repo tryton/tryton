@@ -4226,4 +4226,23 @@
         return el.html();
     };
 
+    Sao.common.image_url = function(data) {
+        if (!data) {
+            return null;
+        }
+        var type = '';
+        try {
+            var xml = data;
+            if (xml instanceof Uint8Array) {
+                xml = new TextDecoder().decode(data);
+            }
+            if (jQuery.parseXML(xml)) {
+                type = 'image/svg+xml';
+            }
+        } catch (e) {
+        }
+        blob = new Blob([data], {type: type});
+        return window.URL.createObjectURL(blob);
+    };
+
 }());
