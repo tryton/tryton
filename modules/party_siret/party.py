@@ -22,7 +22,7 @@ class Party(metaclass=PoolMeta):
         domain = [
             ('identifiers', 'where', [
                     ('code', operator, value),
-                    ('type', 'in', 'fr_siren'),
+                    ('type', '=', 'fr_siren'),
                     ]),
             ]
         # Add party without tax identifier
