@@ -1,3 +1,4 @@
+* Manage dereferenced name in SIREN and SIRET identifier clause
 * Remove support for Python 3.7
 * Add support for Python 3.11
 

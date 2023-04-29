@@ -68,9 +68,10 @@ class Address(metaclass=PoolMeta):
     @classmethod
     def search_siret(cls, name, clause):
         _, operator, value = clause
+        nested = clause[0][len(name) + 1:]
         domain = [
             ('identifiers', 'where', [
-                    ('code', operator, value),
+                    (nested or 'rec_name', operator, value),
                     ('type', '=', 'fr_siren'),
                     ]),
             ]
