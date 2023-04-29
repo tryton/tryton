@@ -4198,17 +4198,10 @@ function eval_pyson(value){
                 value = jQuery.when(null);
             }
             value.done(function(data) {
-                var url, blob;
                 if (record !== this.record) {
                     return;
                 }
-                if (!data) {
-                    url = null;
-                } else {
-                    blob = new Blob([data]);
-                    url = window.URL.createObjectURL(blob);
-                }
-                this.image.attr('src', url);
+                this.image.attr('src', Sao.common.image_url(data));
                 this.update_buttons(Boolean(data));
             }.bind(this));
         },

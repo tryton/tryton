@@ -2558,14 +2558,7 @@
             }
             var render = function() {
                 var set_src = function(data) {
-                    var img_url, blob;
-                    if (!data) {
-                        img_url = null;
-                    } else {
-                        blob = new Blob([data]);
-                        img_url = window.URL.createObjectURL(blob);
-                    }
-                    cell.attr('src', img_url);
+                    cell.attr('src', Sao.common.image_url(data));
                 }.bind(this);
 
                 var value = this.field.get_client(record);
