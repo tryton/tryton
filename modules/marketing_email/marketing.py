@@ -32,7 +32,8 @@ from trytond.report import Report, get_email
 from trytond.sendmail import SMTPDataManager, sendmail_transactional
 from trytond.tools import grouped_slice, reduce_ids
 from trytond.tools.email_ import (
-    EmailNotValidError, convert_ascii_email, set_from_header, validate_email)
+    EmailNotValidError, convert_ascii_email, normalize_email, set_from_header,
+    validate_email)
 from trytond.transaction import Transaction, inactive_records
 from trytond.url import http_host
 from trytond.wizard import Button, StateTransition, StateView, Wizard
@@ -129,7 +130,7 @@ class Email(DeactivableMixin, ModelSQL, ModelView):
     @classmethod
     def _format_email(cls, records):
         for record in records:
-            email = record.email.lower()
+            email = normalize_email(record.email).lower()
             if email != record.email:
                 record.email = email
         cls.save(records)

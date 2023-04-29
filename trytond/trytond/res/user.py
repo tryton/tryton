@@ -55,7 +55,7 @@ from trytond.rpc import RPC
 from trytond.sendmail import sendmail_transactional
 from trytond.tools import grouped_slice
 from trytond.tools.email_ import (
-    EmailNotValidError, set_from_header, validate_email)
+    EmailNotValidError, normalize_email, set_from_header, validate_email)
 from trytond.transaction import Transaction
 from trytond.url import host, http_host
 from trytond.wizard import Button, StateTransition, StateView, Wizard
@@ -350,6 +350,8 @@ class User(avatar_mixin(100, 'login'), DeactivableMixin, ModelSQL, ModelView):
         Action = pool.get('ir.action')
         if 'menu' in vals:
             vals['menu'] = Action.get_action_id(vals['menu'])
+        if vals.get('email'):
+            vals['email'] = normalize_email(vals['email'])
         return vals
 
     @classmethod

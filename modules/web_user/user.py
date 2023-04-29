@@ -36,7 +36,7 @@ from trytond.report import Report, get_email
 from trytond.res.user import CRYPT_CONTEXT, LoginAttempt
 from trytond.sendmail import sendmail_transactional
 from trytond.tools.email_ import (
-    EmailNotValidError, set_from_header, validate_email)
+    EmailNotValidError, normalize_email, set_from_header, validate_email)
 from trytond.transaction import Transaction
 
 from .exceptions import UserValidationError
@@ -148,7 +148,7 @@ class User(avatar_mixin(100), DeactivableMixin, ModelSQL, ModelView):
     @classmethod
     def _format_email(cls, users):
         for user in users:
-            email = user.email.lower()
+            email = normalize_email(user.email).lower()
             if email != user.email:
                 user.email = email
         cls.save(users)

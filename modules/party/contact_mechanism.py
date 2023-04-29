@@ -14,7 +14,8 @@ from trytond.model import (
     fields, sequence_ordered)
 from trytond.model.exceptions import AccessError
 from trytond.pyson import Eval
-from trytond.tools.email_ import EmailNotValidError, validate_email
+from trytond.tools.email_ import (
+    EmailNotValidError, normalize_email, validate_email)
 from trytond.transaction import Transaction
 
 from .exceptions import InvalidEMail, InvalidPhoneNumber
@@ -199,6 +200,8 @@ class ContactMechanism(
             if phonenumber:
                 value = phonenumbers.format_number(
                     phonenumber, PhoneNumberFormat.INTERNATIONAL)
+        if type_ == 'email' and value:
+            value = normalize_email(value)
         return value
 
     @fields.depends(methods=['_parse_phonenumber'])
