@@ -486,20 +486,9 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
     def on_change_with_company_party(self, name=None):
         return self.company.party if self.company else None
 
-    @fields.depends(
-        'state', 'account', 'party', 'type', 'accounting_date', 'invoice_date')
-    def on_change_with_account(self):
-        if self.state != 'draft':
-            return self.account
-        account = None
-        if self.party:
-            with Transaction().set_context(
-                    date=self.accounting_date or self.invoice_date):
-                if self.type == 'out':
-                    account = self.party.account_receivable_used
-                elif self.type == 'in':
-                    account = self.party.account_payable_used
-        return account
+    @fields.depends(methods=['set_journal', 'on_change_party'])
+    def on_change_type(self):
+        self.on_change_party()
 
     @classmethod
     def _journal_types(cls, invoice_type):
@@ -526,18 +515,39 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
         table, _ = tables[None]
         return [Coalesce(table.accounting_date, table.invoice_date)]
 
-    @fields.depends('party', 'type')
+    @fields.depends('party', 'type', methods=['_update_account'])
     def on_change_party(self):
         self.invoice_address = None
         if self.party:
             self.invoice_address = self.party.address_get(type='invoice')
             self.party_tax_identifier = self.party.tax_identifier
             if self.type == 'out':
+                self.account = self.party.account_receivable_used
                 self.payment_term = self.party.customer_payment_term
             elif self.type == 'in':
+                self.account = self.party.account_payable_used
                 self.payment_term = self.party.supplier_payment_term
         else:
             self.payment_term = None
+            self.account = None
+        self._update_account()
+
+    @fields.depends(methods=['_update_account'])
+    def on_change_accounting_date(self):
+        self._update_account()
+
+    @fields.depends(methods=['_update_account'])
+    def on_change_invoice_date(self):
+        self._update_account()
+
+    @fields.depends('account', 'accounting_date', 'invoice_date')
+    def _update_account(self):
+        "Update account to current account"
+        if self.account:
+            account = self.account.current(
+                date=self.accounting_date or self.invoice_date)
+            if account != self.account:
+                self.account = account
 
     @fields.depends('invoice_date', 'company')
     def on_change_with_currency_date(self, name=None):
