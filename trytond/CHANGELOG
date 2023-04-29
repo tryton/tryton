@@ -1,3 +1,4 @@
+* Add email validation tools
 * Remove overlapping indexes
 * Support subset operator between index definitions
 * Add sum_tree helper
