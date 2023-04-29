@@ -36,7 +36,7 @@ msgstr "Périodes"
 
 msgctxt "field:account.budget.context,posted:"
 msgid "Posted"
-msgstr "Posté"
+msgstr "Comptabilisés"
 
 msgctxt "field:account.budget.copy.start,company:"
 msgid "Company"
@@ -168,7 +168,7 @@ msgstr "L'année fiscale auquel le budget s'applique."
 
 msgctxt "help:account.budget.context,posted:"
 msgid "Only include posted moves."
-msgstr "Inclure seulement les mouvements postés."
+msgstr "Inclure seulement les mouvements comptabilisés."
 
 msgctxt "help:account.budget.copy.start,factor:"
 msgid "The percentage to apply to the budget line amounts."

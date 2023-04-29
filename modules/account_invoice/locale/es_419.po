@@ -105,6 +105,11 @@ msgctxt "field:account.invoice,description:"
 msgid "Description"
 msgstr ""
 
+#, fuzzy
+msgctxt "field:account.invoice,has_payment_method:"
+msgid "Has Payment Method"
+msgstr "Prueba de término de pago"
+
 msgctxt "field:account.invoice,invoice_address:"
 msgid "Invoice Address"
 msgstr ""
@@ -299,6 +304,15 @@ msgctxt "field:account.invoice.line,invoice:"
 msgid "Invoice"
 msgstr ""
 
+#, fuzzy
+msgctxt "field:account.invoice.line,invoice_description:"
+msgid "Invoice Description"
+msgstr "Informe de factura"
+
+msgctxt "field:account.invoice.line,invoice_party:"
+msgid "Party"
+msgstr ""
+
 msgctxt "field:account.invoice.line,invoice_state:"
 msgid "Invoice State"
 msgstr ""
@@ -388,15 +402,7 @@ msgid "Company"
 msgstr ""
 
 msgctxt "field:account.invoice.pay.ask,currency:"
-msgid "Payment Currency"
-msgstr ""
-
-msgctxt "field:account.invoice.pay.ask,currency_writeoff:"
-msgid "Write-Off Currency"
-msgstr ""
-
-msgctxt "field:account.invoice.pay.ask,date:"
-msgid "Date"
+msgid "Currency"
 msgstr ""
 
 msgctxt "field:account.invoice.pay.ask,invoice:"
@@ -779,10 +785,6 @@ msgctxt "model:ir.action,name:act_invoice_form"
 msgid "Invoices"
 msgstr ""
 
-msgctxt "model:ir.action,name:act_invoice_form2"
-msgid "Invoices"
-msgstr ""
-
 msgctxt "model:ir.action,name:act_invoice_in_form"
 msgid "Supplier Invoices"
 msgstr ""
@@ -790,6 +792,11 @@ msgstr ""
 msgctxt "model:ir.action,name:act_invoice_out_form"
 msgid "Customer Invoices"
 msgstr ""
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_invoice_relate"
+msgid "Invoices"
+msgstr "Informe de factura"
 
 msgctxt "model:ir.action,name:act_payment_method_form"
 msgid "Invoice Payment Methods"
@@ -855,6 +862,28 @@ msgctxt ""
 msgid "Validated"
 msgstr ""
 
+msgctxt "model:ir.action.act_window.domain,name:act_invoice_relate_all"
+msgid "All"
+msgstr ""
+
+msgctxt "model:ir.action.act_window.domain,name:act_invoice_relate_paid"
+msgid "Paid"
+msgstr ""
+
+msgctxt "model:ir.action.act_window.domain,name:act_invoice_relate_pending"
+msgid "Pending"
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_cancel_invoice_move"
+msgid "The moves \"%(moves)s\" have the posted invoices \"%(invoices)s\" as origin."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_cancel_invoice_move_description"
+msgid ""
+"Cancelling them will reconcile the move lines thus paying the invoices. You "
+"might want to cancel the invoices first."
+msgstr ""
+
 msgctxt "model:ir.message,text:msg_close_period_non_posted_invoices"
 msgid "To close the periods you must post the invoices \"%(invoices)s\"."
 msgstr ""
@@ -891,10 +920,10 @@ msgid "You cannot delete invoice \"%(invoice)s\" because it has a number."
 msgstr ""
 
 #, fuzzy
-msgctxt "model:ir.message,text:msg_invoice_line_create"
+msgctxt "model:ir.message,text:msg_invoice_line_create_draft"
 msgid ""
-"You cannot add a line to invoice \"%(invoice)s\" because it is posted, paid "
-"or cancelled."
+"You cannot add lines to invoice \"%(invoice)s\" because it is no longer in a"
+" draft state."
 msgstr ""
 "No puede agregar el impuesto a la factura \"%(invoice)s\" porque está "
 "contabilizada, pagada o cancelada."
@@ -964,12 +993,6 @@ msgctxt "model:ir.message,text:msg_invoice_payment_term_date_past"
 msgid "The invoice \"%(invoice)s\" generates a payment date \"%(date)s\" in the past."
 msgstr ""
 
-msgctxt "model:ir.message,text:msg_invoice_same_account_line"
-msgid ""
-"You cannot use the same account \"%(account)s\" on invoice \"%(invoice)s\" "
-"and on line \"%(line)s\"."
-msgstr ""
-
 msgctxt "model:ir.message,text:msg_invoice_similar"
 msgid "The invoice \"%(invoice)s\" is similar to invoice \"%(similar)s\"."
 msgstr ""
@@ -977,8 +1000,8 @@ msgstr ""
 #, fuzzy
 msgctxt "model:ir.message,text:msg_invoice_tax_create"
 msgid ""
-"You cannot add a tax to invoice \"%(invoice)s\" because it is posted, paid "
-"or cancelled."
+"You cannot add taxes to invoice \"%(invoice)s\" because it is no longer in a"
+" draft state."
 msgstr ""
 "No puede agregar el impuesto a la factura \"%(invoice)s\" porque está "
 "contabilizada, pagada o cancelada."

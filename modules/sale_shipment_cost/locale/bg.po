@@ -86,6 +86,10 @@ msgid ""
 "Leave empty to use the default value from the configuration."
 msgstr ""
 
+msgctxt "model:ir.message,text:msg_sale_carrier_required_for_quotation"
+msgid "To get a quote for sale \"%(sale)s\" you must enter a carrier."
+msgstr ""
+
 msgctxt "model:ir.message,text:msg_sale_invalid_carrier"
 msgid "To confirm sale \"%(sale)s\" you must change the carrier \"%(carrier)s\"."
 msgstr ""

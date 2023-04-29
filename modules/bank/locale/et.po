@@ -8,7 +8,7 @@ msgstr "BIC"
 
 msgctxt "field:bank,party:"
 msgid "Party"
-msgstr "Osapool"
+msgstr "Partner"
 
 msgctxt "field:bank.account,bank:"
 msgid "Bank"

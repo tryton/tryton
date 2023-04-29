@@ -78,6 +78,12 @@ msgstr ""
 "La méthode de coût d'expédition par défaut pour le client.\n"
 "Laissez vide pour utiliser la valeur par défaut de la configuration."
 
+msgctxt "model:ir.message,text:msg_sale_carrier_required_for_quotation"
+msgid "To get a quote for sale \"%(sale)s\" you must enter a carrier."
+msgstr ""
+"Pour obtenir un devis pour la vente « %(sale)s », vous devez entrer un "
+"transporteur."
+
 msgctxt "model:ir.message,text:msg_sale_invalid_carrier"
 msgid "To confirm sale \"%(sale)s\" you must change the carrier \"%(carrier)s\"."
 msgstr ""

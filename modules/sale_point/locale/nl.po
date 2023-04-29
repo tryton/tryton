@@ -12,7 +12,7 @@ msgstr "Bruto prijs"
 
 msgctxt "field:product.gross_price,template:"
 msgid "Template"
-msgstr "Sjabloon"
+msgstr "Template"
 
 msgctxt "field:product.product,gross_price:"
 msgid "Gross Price"
@@ -52,7 +52,7 @@ msgstr "Naam"
 
 msgctxt "field:sale.point,return_location:"
 msgid "Return Location"
-msgstr "Retourlocatie"
+msgstr "Retour locatie"
 
 msgctxt "field:sale.point,sequence:"
 msgid "Sequence"
@@ -84,11 +84,11 @@ msgstr "Volgende sessie"
 
 msgctxt "field:sale.point.cash.session,payments:"
 msgid "Payments"
-msgstr "betalingen"
+msgstr "Betalingen"
 
 msgctxt "field:sale.point.cash.session,point:"
 msgid "Point"
-msgstr "Punt"
+msgstr "Verkooppunt"
 
 msgctxt "field:sale.point.cash.session,previous_session:"
 msgid "Previous Session"
@@ -100,11 +100,11 @@ msgstr "Startbedrag"
 
 msgctxt "field:sale.point.cash.session,state:"
 msgid "State"
-msgstr "Staat"
+msgstr "Status"
 
 msgctxt "field:sale.point.cash.session,transfers:"
 msgid "Transfers"
-msgstr "Overboekingen"
+msgstr "Boekingen"
 
 msgctxt "field:sale.point.cash.session.relation,next:"
 msgid "Next"
@@ -136,7 +136,7 @@ msgstr "Boeking"
 
 msgctxt "field:sale.point.cash.transfer,point:"
 msgid "Point"
-msgstr "Punt"
+msgstr "Verkooppunt"
 
 msgctxt "field:sale.point.cash.transfer,session:"
 msgid "Session"
@@ -144,15 +144,15 @@ msgstr "Sessie"
 
 msgctxt "field:sale.point.cash.transfer,state:"
 msgid "State"
-msgstr "Staat"
+msgstr "Status"
 
 msgctxt "field:sale.point.cash.transfer,type:"
 msgid "Type"
-msgstr "Type"
+msgstr "Soort"
 
 msgctxt "field:sale.point.cash.transfer.type,account:"
 msgid "Account"
-msgstr "Rekening"
+msgstr "Grootboekrekening"
 
 msgctxt "field:sale.point.cash.transfer.type,company:"
 msgid "Company"
@@ -188,7 +188,7 @@ msgstr "Methode"
 
 msgctxt "field:sale.point.payment,point:"
 msgid "Point"
-msgstr "Punt"
+msgstr "Verkooppunt"
 
 msgctxt "field:sale.point.payment,sale:"
 msgid "Sale"
@@ -204,7 +204,7 @@ msgstr "Sessie"
 
 msgctxt "field:sale.point.payment.method,account:"
 msgid "Account"
-msgstr "Rekening"
+msgstr "Grootboekrekening"
 
 msgctxt "field:sale.point.payment.method,cash:"
 msgid "Cash"
@@ -224,7 +224,7 @@ msgstr "Betaald"
 
 msgctxt "field:sale.point.sale,amount_to_pay:"
 msgid "To Pay"
-msgstr "te betalen"
+msgstr "Te betalen"
 
 msgctxt "field:sale.point.sale,company:"
 msgid "Company"
@@ -236,7 +236,7 @@ msgstr "Valuta"
 
 msgctxt "field:sale.point.sale,date:"
 msgid "Date"
-msgstr "datum"
+msgstr "Datum"
 
 msgctxt "field:sale.point.sale,employee:"
 msgid "Employee"
@@ -248,7 +248,7 @@ msgstr "Regels"
 
 msgctxt "field:sale.point.sale,move:"
 msgid "Move"
-msgstr "Mutatie"
+msgstr "Boeking"
 
 msgctxt "field:sale.point.sale,number:"
 msgid "Number"
@@ -256,15 +256,15 @@ msgstr "Nummer"
 
 msgctxt "field:sale.point.sale,payments:"
 msgid "Payments"
-msgstr "betalingen"
+msgstr "Betalingen"
 
 msgctxt "field:sale.point.sale,point:"
 msgid "Point"
-msgstr "Punt"
+msgstr "Verkooppunt"
 
 msgctxt "field:sale.point.sale,state:"
 msgid "State"
-msgstr "Staat"
+msgstr "Status"
 
 msgctxt "field:sale.point.sale,total:"
 msgid "Total"
@@ -288,7 +288,7 @@ msgstr "Valuta"
 
 msgctxt "field:sale.point.sale.line,moves:"
 msgid "Moves"
-msgstr "Mutaties"
+msgstr "Boekingen"
 
 msgctxt "field:sale.point.sale.line,product:"
 msgid "Product"
@@ -316,23 +316,24 @@ msgstr "Brutoprijs per eenheid"
 
 msgctxt "field:sale.point.sale.line,unit_list_price:"
 msgid "Unit List Price"
-msgstr "eenheidsprijslijst"
+msgstr "Eenheidsprijslijst"
 
 msgctxt "field:sale.point.sale.line,unit_price:"
 msgid "Unit Price"
-msgstr "Eenheids- prijs"
+msgstr "Eenheidsprijs"
 
 msgctxt "help:product.product,gross_price:"
 msgid "The price with default tax included."
-msgstr "De prijs met standaard belasting inbegrepen."
+msgstr "De prijs met belasting inbegrepen."
 
 msgctxt "help:product.template,gross_price:"
 msgid "The price with default tax included."
-msgstr "De prijs met standaard belasting inbegrepen."
+msgstr "De prijs met belasting inbegrepen."
 
 msgctxt "help:sale.point,customer_location:"
 msgid "The location where goods are put when sold."
-msgstr "De locatie waar goederen worden geplaatst wanneer ze verkocht zijn."
+msgstr ""
+"De locatie waar de goederen worden geplaatst wanneer ze verkocht zijn."
 
 msgctxt "help:sale.point,return_location:"
 msgid ""
@@ -353,15 +354,15 @@ msgstr "Vink aan als de eenheidsprijs inclusief belasting is."
 
 msgctxt "model:ir.action,name:act_cash_session_form"
 msgid "POS Cash Sessions"
-msgstr "POS Cash-sessies"
+msgstr "POS sessies"
 
 msgctxt "model:ir.action,name:act_cash_transfer_type_form"
 msgid "POS Cash Transfer Types"
-msgstr "POS kas soorten boeking"
+msgstr "POS boeking soorten"
 
 msgctxt "model:ir.action,name:act_payment_method_form"
 msgid "POS Payment Methods"
-msgstr "POS-betaalmethoden"
+msgstr "POS betaalmethoden"
 
 msgctxt "model:ir.action,name:act_point_form"
 msgid "Points of Sale"
@@ -369,16 +370,16 @@ msgstr "Verkooppunten"
 
 msgctxt "model:ir.action,name:act_sale_form"
 msgid "POS Sales"
-msgstr "POS-verkoop"
+msgstr "POS verkoop"
 
 msgctxt "model:ir.action,name:wizard_pay"
 msgid "Pay POS Sale"
-msgstr "Betaal POS-verkoop"
+msgstr "Betaal POS verkoop"
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_cash_session_form_domain_all"
 msgid "All"
-msgstr "Alle"
+msgstr "Alles"
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_cash_session_form_domain_closed"
@@ -396,7 +397,7 @@ msgstr "Alles"
 
 msgctxt "model:ir.action.act_window.domain,name:act_sale_form_domain_done"
 msgid "Done"
-msgstr "Klaar"
+msgstr "Gereed"
 
 msgctxt "model:ir.action.act_window.domain,name:act_sale_form_domain_open"
 msgid "Opened"
@@ -415,7 +416,7 @@ msgid ""
 "To close session \"%(session)s\" you must change end amount to have "
 "%(amount)s instead of %(end_amount)s."
 msgstr ""
-"Om de sessie \"%(session)s\" te sluiten, moet je het eindbedrag wijzigen om "
+"Om de sessie \"%(session)s\" te sluiten, moet u het eindbedrag wijzigen om "
 "%(amount)s te krijgen in plaats van %(end_amount)s."
 
 msgctxt "model:ir.message,text:msg_payment_delete_sale_open"
@@ -443,8 +444,8 @@ msgid ""
 "You cannot change the point of sale's tax included flag because it has "
 "sales."
 msgstr ""
-"U kunt het vinkje inclusief btw van het verkooppunt niet wijzigen omdat deze"
-" verkopen heeft."
+"U kunt het 'inclusief belasting' van het verkooppunt niet wijzigen omdat "
+"deze verkopen heeft."
 
 msgctxt "model:ir.message,text:msg_sale_amount_paid_cancelled"
 msgid "The sale \"%(sale)s\" is cancelled so cannot have amount paid."
@@ -455,7 +456,8 @@ msgstr ""
 msgctxt "model:ir.message,text:msg_sale_amount_to_pay_done_paid"
 msgid "The sale \"%(sale)s\" is done so cannot have an amount to pay."
 msgstr ""
-"De verkoop \"%(sale)s\" is gedaan en mag dus geen te betalen bedrag hebben."
+"De verkoop \"%(sale)s\" is afgerond en mag dus geen te betalen bedrag "
+"hebben."
 
 msgctxt "model:ir.message,text:msg_sale_delete_numbered"
 msgid "You cannot delete sale \"%(sale)s\" because it has a number."
@@ -463,22 +465,21 @@ msgstr "U kunt verkoop \"%(sale)s\" niet verwijderen omdat deze een nummer heeft
 
 msgctxt "model:ir.message,text:msg_transfer_delete_posted"
 msgid "You cannot delete transfer \"%(transfer)s\" because it is posted."
-msgstr ""
-"U kunt overboeking \"%(transfer)s\" niet verwijderen omdat deze geboekt is ."
+msgstr "U kunt boeking \"%(transfer)s\" niet verwijderen omdat deze geboekt is ."
 
 msgctxt "model:ir.message,text:msg_transfer_delete_session_open"
 msgid "To delete transfer \"%(transfer)s\" you must re-open session \"%(session)s\"."
 msgstr ""
-"Om overdracht \"%(transfer)s\" te verwijderen, moet u sessie \"%(session)s\""
-" opnieuw openen."
+"Om boeking \"%(transfer)s\" te verwijderen, moet u sessie \"%(session)s\" "
+"opnieuw openen."
 
 msgctxt "model:ir.model.button,confirm:cash_session_post_button"
 msgid "Are you sure you want to post the sessions?"
-msgstr "Weet je zeker dat je de sessies wilt boeken?"
+msgstr "Weet u zeker dat u de sessies wilt boeken?"
 
 msgctxt "model:ir.model.button,confirm:cash_transfer_post_button"
 msgid "Are you sure you want to post the transfer?"
-msgstr "Weet u zeker dat u de overboeking wilt boeken?"
+msgstr "Weet u zeker dat u de boeking wilt boeken?"
 
 msgctxt "model:ir.model.button,confirm:sale_post_button"
 msgid "Are you sure you want to post the sales?"
@@ -494,15 +495,15 @@ msgstr "Heropen"
 
 msgctxt "model:ir.model.button,string:cash_session_post_button"
 msgid "Post"
-msgstr "Boek"
+msgstr "Boeken"
 
 msgctxt "model:ir.model.button,string:cash_transfer_post_button"
 msgid "Post"
-msgstr "Boek"
+msgstr "Boeken"
 
 msgctxt "model:ir.model.button,string:sale_cancel_button"
 msgid "Cancel"
-msgstr "Annuleren"
+msgstr "Annuleer"
 
 msgctxt "model:ir.model.button,string:sale_open_button"
 msgid "Re-Open"
@@ -510,11 +511,11 @@ msgstr "Heropen"
 
 msgctxt "model:ir.model.button,string:sale_pay_button"
 msgid "Pay"
-msgstr "Betalen"
+msgstr "Betaal"
 
 msgctxt "model:ir.model.button,string:sale_post_button"
 msgid "Post"
-msgstr "Boek"
+msgstr "Boeken"
 
 msgctxt "model:ir.model.button,string:sale_process_button"
 msgid "Process"
@@ -550,15 +551,15 @@ msgstr "POS"
 
 msgctxt "model:ir.ui.menu,name:menu_cash_session_form"
 msgid "POS Cash Sessions"
-msgstr "POS Cash-sessies"
+msgstr "POS sessies"
 
 msgctxt "model:ir.ui.menu,name:menu_cash_transfer_type_form"
 msgid "POS Cash Transfer Types"
-msgstr "POS kas soorten boeking"
+msgstr "POS boeking soorten"
 
 msgctxt "model:ir.ui.menu,name:menu_payment_method_form"
 msgid "POS Payment Methods"
-msgstr "POS-betaalmethoden"
+msgstr "POS betaalmethoden"
 
 msgctxt "model:ir.ui.menu,name:menu_point_form"
 msgid "Points of Sale"
@@ -566,7 +567,7 @@ msgstr "Verkooppunten"
 
 msgctxt "model:ir.ui.menu,name:menu_sale_form"
 msgid "POS Sales"
-msgstr "POS-verkoop"
+msgstr "POS verkopen"
 
 msgctxt "model:product.gross_price,name:"
 msgid "Product Gross Price"
@@ -578,7 +579,7 @@ msgstr "POS"
 
 msgctxt "model:res.group,name:group_sale_point_posting"
 msgid "POS Posting"
-msgstr "POS-boeking"
+msgstr "POS boeking"
 
 msgctxt "model:sale.point,name:"
 msgid "Point of Sale"
@@ -586,11 +587,11 @@ msgstr "Verkooppunt"
 
 msgctxt "model:sale.point.cash.session,name:"
 msgid "POS Cash Session"
-msgstr "POS Cash-sessies"
+msgstr "POS sessies"
 
 msgctxt "model:sale.point.cash.session.relation,name:"
 msgid "POS Session Relation"
-msgstr "POS-sessierelatie"
+msgstr "POS sessie relatie"
 
 msgctxt "model:sale.point.cash.transfer,name:"
 msgid "POS Cash Transfer"
@@ -602,19 +603,19 @@ msgstr "POS kas soort boeking"
 
 msgctxt "model:sale.point.payment,name:"
 msgid "POS Payment"
-msgstr "POS-betaling"
+msgstr "POS betaling"
 
 msgctxt "model:sale.point.payment.method,name:"
 msgid "POS Payment Method"
-msgstr "POS-betaalmethoden"
+msgstr "POS betaalmethoden"
 
 msgctxt "model:sale.point.sale,name:"
 msgid "POS Sale"
-msgstr "POS-verkoop"
+msgstr "POS verkoop"
 
 msgctxt "model:sale.point.sale.line,name:"
 msgid "POS Sale Line"
-msgstr "POS-verkooplijn"
+msgstr "POS verkoopregel"
 
 msgctxt "selection:sale.point.cash.session,state:"
 msgid "Closed"
@@ -642,7 +643,7 @@ msgstr "Geannuleerd"
 
 msgctxt "selection:sale.point.sale,state:"
 msgid "Done"
-msgstr "Klaar"
+msgstr "Afgerond"
 
 msgctxt "selection:sale.point.sale,state:"
 msgid "Open"
@@ -662,7 +663,7 @@ msgstr "Overige informatie"
 
 msgctxt "view:sale.point.sale:"
 msgid "Payments"
-msgstr "betalingen"
+msgstr "Betalingen"
 
 msgctxt "view:sale.point.sale:"
 msgid "Sale"

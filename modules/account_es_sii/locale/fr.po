@@ -140,7 +140,7 @@ msgid ""
 "are already posted invoices."
 msgstr ""
 "Vous ne pouvez pas modifier le paramètre SII pour la période « %(period)s » "
-"car il y a déjà des factures postées."
+"car il y a déjà des factures comptabilisées."
 
 msgctxt "model:ir.message,text:msg_missing_sii_url"
 msgid ""
@@ -172,7 +172,7 @@ msgstr "Staging"
 
 msgctxt "selection:account.invoice.sii,state:"
 msgid "Pending"
-msgstr "En attente"
+msgstr "En attentes"
 
 msgctxt "selection:account.invoice.sii,state:"
 msgid "Rejected"

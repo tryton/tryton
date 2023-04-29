@@ -78,6 +78,12 @@ msgstr ""
 "De standaardverzendkostenmethode voor de klant.\n"
 "Laat leeg om de standaardwaarde uit de configuratie te gebruiken."
 
+msgctxt "model:ir.message,text:msg_sale_carrier_required_for_quotation"
+msgid "To get a quote for sale \"%(sale)s\" you must enter a carrier."
+msgstr ""
+"Om een offerte voor verkoop \"%(sale)s\" te maken, moet u een koerier "
+"toevoegen."
+
 msgctxt "model:ir.message,text:msg_sale_invalid_carrier"
 msgid "To confirm sale \"%(sale)s\" you must change the carrier \"%(carrier)s\"."
 msgstr ""

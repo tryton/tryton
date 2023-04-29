@@ -88,6 +88,11 @@ msgctxt "field:product.product,lead_time:"
 msgid "Lead Time"
 msgstr "Täitmise aeg"
 
+#, fuzzy
+msgctxt "field:product.product,lead_times:"
+msgid "Lead Times"
+msgstr "Täitmise aeg"
+
 msgctxt "field:product.product,salable:"
 msgid "Salable"
 msgstr "Müüdav"
@@ -136,6 +141,11 @@ msgstr ""
 
 msgctxt "field:product.template,lead_time:"
 msgid "Lead Time"
+msgstr "Täitmise aeg"
+
+#, fuzzy
+msgctxt "field:product.template,lead_times:"
+msgid "Lead Times"
 msgstr "Täitmise aeg"
 
 msgctxt "field:product.template,salable:"
@@ -213,6 +223,11 @@ msgctxt "field:sale.line,currency:"
 msgid "Currency"
 msgstr "Valuuta"
 
+#, fuzzy
+msgctxt "field:sale.line,customer:"
+msgid "Customer"
+msgstr "Klient"
+
 msgctxt "field:sale.line,description:"
 msgid "Description"
 msgstr "Kirjeldus"
@@ -225,21 +240,23 @@ msgctxt "field:sale.line,invoice_lines:"
 msgid "Invoice Lines"
 msgstr "Arve read"
 
-msgctxt "field:sale.line,move_done:"
-msgid "Moves Done"
-msgstr "Kanded tehtud"
-
-msgctxt "field:sale.line,move_exception:"
-msgid "Moves Exception"
-msgstr "Kannete erand"
-
 msgctxt "field:sale.line,moves:"
 msgid "Moves"
 msgstr "Kanded"
 
+#, fuzzy
+msgctxt "field:sale.line,moves_exception:"
+msgid "Moves Exception"
+msgstr "Kannete erand"
+
 msgctxt "field:sale.line,moves_ignored:"
 msgid "Ignored Moves"
 msgstr "Ignoreeritud kanded"
+
+#, fuzzy
+msgctxt "field:sale.line,moves_progress:"
+msgid "Moves Progress"
+msgstr "Kanded tehtud"
 
 msgctxt "field:sale.line,moves_recreated:"
 msgid "Recreated Moves"
@@ -264,6 +281,11 @@ msgstr "Kogus"
 msgctxt "field:sale.line,sale:"
 msgid "Sale"
 msgstr "Müük"
+
+#, fuzzy
+msgctxt "field:sale.line,sale_date:"
+msgid "Sale Date"
+msgstr "Müügi kuupäev"
 
 msgctxt "field:sale.line,sale_state:"
 msgid "Sale State"
@@ -702,6 +724,12 @@ msgid ""
 "Used for products without a lead time."
 msgstr ""
 
+msgctxt "help:product.configuration.default_lead_time,default_lead_time:"
+msgid ""
+"The time from confirming the sales order to sending the products.\n"
+"Used for products without a lead time."
+msgstr ""
+
 msgctxt "help:product.product,lead_time:"
 msgid ""
 "The time from confirming the sales order to sending the products.\n"
@@ -829,26 +857,25 @@ msgctxt "model:ir.action,name:act_sale_form"
 msgid "Sales"
 msgstr "Müügid"
 
-msgctxt "model:ir.action,name:act_sale_form2"
-msgid "Sales"
-msgstr "Müügid"
-
-msgctxt "model:ir.action,name:act_sale_invoice_relate"
-msgid "Sales"
-msgstr "Müügid"
+#, fuzzy
+msgctxt "model:ir.action,name:act_sale_line_relate"
+msgid "Sale Lines"
+msgstr "Müügi rida"
 
 #, fuzzy
 msgctxt "model:ir.action,name:act_sale_move_relate"
 msgid "Moves"
 msgstr "Kanded"
 
-msgctxt "model:ir.action,name:act_sale_shipment_returns_relate"
+#, fuzzy
+msgctxt "model:ir.action,name:act_sale_relate"
 msgid "Sales"
-msgstr "Müügid"
+msgstr "Müük"
 
-msgctxt "model:ir.action,name:act_sale_shipments_relate"
+#, fuzzy
+msgctxt "model:ir.action,name:act_sale_relate_simple"
 msgid "Sales"
-msgstr "Müügid"
+msgstr "Müük"
 
 msgctxt "model:ir.action,name:act_shipment_form"
 msgid "Shipments"
@@ -913,6 +940,34 @@ msgctxt ""
 msgid "Quotation"
 msgstr "Pakkumus"
 
+#, fuzzy
+msgctxt "model:ir.action.act_window.domain,name:act_sale_line_relate_all"
+msgid "All"
+msgstr "Kõik"
+
+#, fuzzy
+msgctxt "model:ir.action.act_window.domain,name:act_sale_line_relate_done"
+msgid "Done"
+msgstr "Tehtud"
+
+msgctxt "model:ir.action.act_window.domain,name:act_sale_line_relate_pending"
+msgid "Pending"
+msgstr ""
+
+#, fuzzy
+msgctxt "model:ir.action.act_window.domain,name:act_sale_relate_all"
+msgid "All"
+msgstr "Kõik"
+
+#, fuzzy
+msgctxt "model:ir.action.act_window.domain,name:act_sale_relate_done"
+msgid "Done"
+msgstr "Tehtud"
+
+msgctxt "model:ir.action.act_window.domain,name:act_sale_relate_pending"
+msgid "Pending"
+msgstr ""
+
 msgctxt "model:ir.message,text:msg_erase_party_pending_sale"
 msgid ""
 "You cannot erase party \"%(party)s\" while they have pending sales with "
@@ -946,6 +1001,12 @@ msgctxt "model:ir.message,text:msg_sale_invoice_reset_draft"
 msgid ""
 "You cannot reset invoice \"%(invoice)s\" to draft because it was generated "
 "by a sale."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_sale_line_create_draft"
+msgid ""
+"You cannot add lines to sale \"%(sale)s\" because it is no longer in a draft"
+" state."
 msgstr ""
 
 msgctxt "model:ir.message,text:msg_sale_line_delete_cancel_draft"
@@ -1362,6 +1423,11 @@ msgctxt "report:sale.sale:"
 msgid "Date:"
 msgstr "Kuupäev:"
 
+#, fuzzy
+msgctxt "report:sale.sale:"
+msgid "Delivery Address:"
+msgstr "Arve aadress"
+
 msgctxt "report:sale.sale:"
 msgid "Description"
 msgstr "Kirjeldus"
@@ -1459,6 +1525,10 @@ msgid "On Shipment Sent"
 msgstr "Tarnel saadetud"
 
 msgctxt "selection:sale.sale,invoice_state:"
+msgid "Awaiting Payment"
+msgstr ""
+
+msgctxt "selection:sale.sale,invoice_state:"
 msgid "Exception"
 msgstr "Erand"
 
@@ -1471,8 +1541,12 @@ msgid "Paid"
 msgstr "Makstud"
 
 msgctxt "selection:sale.sale,invoice_state:"
-msgid "Waiting"
-msgstr "Ootel"
+msgid "Partially Paid"
+msgstr ""
+
+msgctxt "selection:sale.sale,invoice_state:"
+msgid "Pending"
+msgstr ""
 
 msgctxt "selection:sale.sale,shipment_method:"
 msgid "Manual"
@@ -1493,6 +1567,10 @@ msgstr "Erand"
 msgctxt "selection:sale.sale,shipment_state:"
 msgid "None"
 msgstr "Mitte"
+
+msgctxt "selection:sale.sale,shipment_state:"
+msgid "Partially Shipped"
+msgstr ""
 
 msgctxt "selection:sale.sale,shipment_state:"
 msgid "Sent"

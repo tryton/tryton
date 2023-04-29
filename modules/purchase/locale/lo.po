@@ -192,21 +192,22 @@ msgctxt "field:purchase.line,invoice_lines:"
 msgid "Invoice Lines"
 msgstr "ລາຍການເກັບເງິນ"
 
-msgctxt "field:purchase.line,move_done:"
-msgid "Moves Done"
-msgstr ""
-
-msgctxt "field:purchase.line,move_exception:"
-msgid "Moves Exception"
-msgstr ""
-
 #, fuzzy
 msgctxt "field:purchase.line,moves:"
 msgid "Moves"
 msgstr "ຕັດບັນຊີສາງ"
 
+#, fuzzy
+msgctxt "field:purchase.line,moves_exception:"
+msgid "Moves Exception"
+msgstr "ສະຖານະຍົກເວັ້ນ"
+
 msgctxt "field:purchase.line,moves_ignored:"
 msgid "Ignored Moves"
+msgstr ""
+
+msgctxt "field:purchase.line,moves_progress:"
+msgid "Moves Progress"
 msgstr ""
 
 msgctxt "field:purchase.line,moves_recreated:"
@@ -236,6 +237,11 @@ msgid "Purchase"
 msgstr "ສັ່ງຊື້"
 
 #, fuzzy
+msgctxt "field:purchase.line,purchase_date:"
+msgid "Purchase Date"
+msgstr "ວັນທີຈັດຊື້"
+
+#, fuzzy
 msgctxt "field:purchase.line,purchase_state:"
 msgid "Purchase State"
 msgstr "ວັນທີຈັດຊື້"
@@ -247,6 +253,11 @@ msgstr "ຈຳນວນ"
 msgctxt "field:purchase.line,summary:"
 msgid "Summary"
 msgstr ""
+
+#, fuzzy
+msgctxt "field:purchase.line,supplier:"
+msgid "Supplier"
+msgstr "ຜູ້ສະໜອງ"
 
 msgctxt "field:purchase.line,taxes:"
 msgid "Taxes"
@@ -270,6 +281,10 @@ msgstr "ໜ່ວຍ"
 msgctxt "field:purchase.line,unit_price:"
 msgid "Unit Price"
 msgstr "ລາຄາຫົວໜ່ວຍ"
+
+msgctxt "field:purchase.line,warehouse:"
+msgid "Warehouse"
+msgstr ""
 
 #, fuzzy
 msgctxt "field:purchase.line-account.tax,line:"
@@ -636,6 +651,12 @@ msgctxt "help:party.party.supplier_currency,supplier_currency:"
 msgid "Default currency for purchases from this party."
 msgstr ""
 
+msgctxt "help:party.party.supplier_lead_time,supplier_lead_time:"
+msgid ""
+"The time from confirming the purchase order to receiving the goods from the party when used as a supplier.\n"
+"Used if no lead time is set on the product supplier."
+msgstr ""
+
 msgctxt "help:purchase.configuration,purchase_process_after:"
 msgid ""
 "The grace period during which confirmed purchase can still be reset to draft.\n"
@@ -659,6 +680,12 @@ msgctxt "help:purchase.product_supplier,lead_time:"
 msgid ""
 "The time from confirming the purchase order to receiving the products.\n"
 "If empty the lead time of the supplier is used."
+msgstr ""
+
+msgctxt "help:purchase.product_supplier,prices:"
+msgid ""
+"Add price for different criteria.\n"
+"The last matching line is used."
 msgstr ""
 
 msgctxt "help:purchase.product_supplier.price,quantity:"
@@ -706,27 +733,29 @@ msgid "Purchases"
 msgstr "ການຈັດຊື້"
 
 #, fuzzy
-msgctxt "model:ir.action,name:act_purchase_form2"
+msgctxt "model:ir.action,name:act_purchase_invoice_relate"
 msgid "Purchases"
 msgstr "ການຈັດຊື້"
 
 #, fuzzy
-msgctxt "model:ir.action,name:act_purchase_invoice_relate"
-msgid "Purchases"
-msgstr "ການຈັດຊື້"
+msgctxt "model:ir.action,name:act_purchase_line_relate"
+msgid "Purchase Lines"
+msgstr "ວັນທີຈັດຊື້"
 
 #, fuzzy
 msgctxt "model:ir.action,name:act_purchase_move_relate"
 msgid "Moves"
 msgstr "ຕັດບັນຊີສາງ"
 
-msgctxt "model:ir.action,name:act_purchase_shipment_returns_relate"
+#, fuzzy
+msgctxt "model:ir.action,name:act_purchase_relate"
 msgid "Purchases"
-msgstr "Purchases"
+msgstr "ການຈັດຊື້"
 
-msgctxt "model:ir.action,name:act_purchase_shipments_relate"
+#, fuzzy
+msgctxt "model:ir.action,name:act_purchase_relate_simple"
 msgid "Purchases"
-msgstr "Purchases"
+msgstr "ການຈັດຊື້"
 
 #, fuzzy
 msgctxt "model:ir.action,name:act_reporting_main"
@@ -822,6 +851,35 @@ msgctxt ""
 msgid "Quotation"
 msgstr "Quotation"
 
+#, fuzzy
+msgctxt "model:ir.action.act_window.domain,name:act_purchase_line_relate_all"
+msgid "All"
+msgstr "ທັງໝົດ"
+
+#, fuzzy
+msgctxt "model:ir.action.act_window.domain,name:act_purchase_line_relate_done"
+msgid "Done"
+msgstr "ແລ້ວໆ"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_purchase_line_relate_pending"
+msgid "Pending"
+msgstr ""
+
+#, fuzzy
+msgctxt "model:ir.action.act_window.domain,name:act_purchase_relate_all"
+msgid "All"
+msgstr "ທັງໝົດ"
+
+#, fuzzy
+msgctxt "model:ir.action.act_window.domain,name:act_purchase_relate_done"
+msgid "Done"
+msgstr "ແລ້ວໆ"
+
+msgctxt "model:ir.action.act_window.domain,name:act_purchase_relate_pending"
+msgid "Pending"
+msgstr ""
+
 msgctxt "model:ir.message,text:msg_change_purchase_uom"
 msgid ""
 "You are trying to change the purchase UoM on which the purchase prices are "
@@ -842,6 +900,12 @@ msgctxt "model:ir.message,text:msg_purchase_invoice_reset_draft"
 msgid ""
 "You cannot reset invoice \"%(invoice)s\" to draft because it was generated "
 "by a purchase."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_purchase_line_create_draft"
+msgid ""
+"You cannot add lines to purchase \"%(purchase)s\" because it is no longer in"
+" a draft state."
 msgstr ""
 
 msgctxt "model:ir.message,text:msg_purchase_line_delete_cancel_draft"
@@ -1279,6 +1343,10 @@ msgid "Manual"
 msgstr "ໃສ່ເອົາເອງ"
 
 msgctxt "selection:purchase.purchase,invoice_state:"
+msgid "Awaiting Payment"
+msgstr ""
+
+msgctxt "selection:purchase.purchase,invoice_state:"
 msgid "Exception"
 msgstr ""
 
@@ -1293,7 +1361,11 @@ msgid "Paid"
 msgstr "ຈ່າຍແລ້ວ"
 
 msgctxt "selection:purchase.purchase,invoice_state:"
-msgid "Waiting"
+msgid "Partially Paid"
+msgstr ""
+
+msgctxt "selection:purchase.purchase,invoice_state:"
+msgid "Pending"
 msgstr ""
 
 msgctxt "selection:purchase.purchase,shipment_state:"
@@ -1304,6 +1376,10 @@ msgstr ""
 msgctxt "selection:purchase.purchase,shipment_state:"
 msgid "None"
 msgstr "ບໍ່ມີ"
+
+msgctxt "selection:purchase.purchase,shipment_state:"
+msgid "Partially Shipped"
+msgstr ""
 
 msgctxt "selection:purchase.purchase,shipment_state:"
 msgid "Received"

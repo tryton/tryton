@@ -6,13 +6,14 @@ msgctxt "field:product.product,boms:"
 msgid "BOMs"
 msgstr "Listas de Materiais"
 
-msgctxt "field:product.product,lead_times:"
-msgid "Lead Times"
-msgstr "Tempo de Espera"
-
 msgctxt "field:product.product,producible:"
 msgid "Producible"
 msgstr "Produzível"
+
+#, fuzzy
+msgctxt "field:product.product,production_lead_times:"
+msgid "Lead Times"
+msgstr "Tempo de Espera"
 
 msgctxt "field:product.product-production.bom,bom:"
 msgid "BOM"

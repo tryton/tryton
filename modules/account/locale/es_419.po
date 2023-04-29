@@ -113,7 +113,7 @@ msgid "Right"
 msgstr ""
 
 msgctxt "field:account.account,second_currency:"
-msgid "Secondary Currency"
+msgid "Second Currency"
 msgstr ""
 
 msgctxt "field:account.account,start_date:"
@@ -568,7 +568,7 @@ msgstr "Fecha"
 
 #, fuzzy
 msgctxt "field:account.balance_sheet.comparison.context,posted:"
-msgid "Posted Move"
+msgid "Posted Moves"
 msgstr "Asiento Contabilizado"
 
 msgctxt "field:account.balance_sheet.context,company:"
@@ -580,9 +580,23 @@ msgctxt "field:account.balance_sheet.context,date:"
 msgid "Date"
 msgstr "Fecha"
 
+#, fuzzy
 msgctxt "field:account.balance_sheet.context,posted:"
-msgid "Posted Move"
-msgstr "Asiento contabilizado"
+msgid "Posted Moves"
+msgstr "Asiento Contabilizado"
+
+#, fuzzy
+msgctxt "field:account.configuration,currency_exchange_credit_account:"
+msgid "Currency Exchange Credit Account"
+msgstr "Cuenta Crédito"
+
+msgctxt "field:account.configuration,currency_exchange_debit_account:"
+msgid "Currency Exchange Debit Account"
+msgstr ""
+
+msgctxt "field:account.configuration,currency_exchange_journal:"
+msgid "Currency Exchange Journal"
+msgstr ""
 
 msgctxt "field:account.configuration,default_account_payable:"
 msgid "Default Account Payable"
@@ -613,6 +627,17 @@ msgctxt "field:account.configuration.default_account,company:"
 msgid "Company"
 msgstr ""
 
+#, fuzzy
+msgctxt ""
+"field:account.configuration.default_account,currency_exchange_credit_account:"
+msgid "Currency Exchange Credit Account"
+msgstr "Cuenta Crédito"
+
+msgctxt ""
+"field:account.configuration.default_account,currency_exchange_debit_account:"
+msgid "Currency Exchange Debit Account"
+msgstr ""
+
 msgctxt "field:account.configuration.default_account,default_account_payable:"
 msgid "Default Account Payable"
 msgstr "Cuenta por Pagar por Defecto"
@@ -634,6 +659,14 @@ msgstr ""
 msgctxt ""
 "field:account.configuration.default_tax_rule,default_supplier_tax_rule:"
 msgid "Default Supplier Tax Rule"
+msgstr ""
+
+msgctxt "field:account.configuration.journal,company:"
+msgid "Company"
+msgstr ""
+
+msgctxt "field:account.configuration.journal,currency_exchange_journal:"
+msgid "Currency Exchange Journal"
 msgstr ""
 
 msgctxt "field:account.configuration.sequence,company:"
@@ -880,8 +913,9 @@ msgctxt "field:account.general_ledger.account.context,journal:"
 msgid "Journal"
 msgstr "Libro Diario"
 
+#, fuzzy
 msgctxt "field:account.general_ledger.account.context,posted:"
-msgid "Posted Move"
+msgid "Posted Moves"
 msgstr "Asiento Contabilizado"
 
 msgctxt "field:account.general_ledger.account.context,start_period:"
@@ -977,6 +1011,10 @@ msgctxt "field:account.general_ledger.line,account_party:"
 msgid "Account Party"
 msgstr "Cuenta por pagar"
 
+msgctxt "field:account.general_ledger.line,amount_second_currency:"
+msgid "Amount Second Currency"
+msgstr ""
+
 msgctxt "field:account.general_ledger.line,balance:"
 msgid "Balance"
 msgstr "Saldo"
@@ -1036,6 +1074,10 @@ msgctxt "field:account.general_ledger.line,reconciliation:"
 msgid "Reconciliation"
 msgstr "Líneas de conciliación de asientos contables"
 
+msgctxt "field:account.general_ledger.line,second_currency:"
+msgid "Second Currency"
+msgstr ""
+
 msgctxt "field:account.general_ledger.line,state:"
 msgid "State"
 msgstr ""
@@ -1065,9 +1107,10 @@ msgctxt "field:account.general_ledger.line.context,party_cumulate:"
 msgid "Cumulate per Party"
 msgstr "Acumular por tercero"
 
+#, fuzzy
 msgctxt "field:account.general_ledger.line.context,posted:"
-msgid "Posted Move"
-msgstr "Asiento contabilizado"
+msgid "Posted Moves"
+msgstr "Asiento Contabilizado"
 
 msgctxt "field:account.general_ledger.line.context,start_period:"
 msgid "Start Period"
@@ -1151,6 +1194,11 @@ msgstr ""
 msgctxt "field:account.journal,debit:"
 msgid "Debit"
 msgstr "Débito"
+
+#, fuzzy
+msgctxt "field:account.journal,matching_sequence:"
+msgid "Matching Sequence"
+msgstr "Líneas de conciliación de asientos contables"
 
 #, fuzzy
 msgctxt "field:account.journal,name:"
@@ -1260,6 +1308,10 @@ msgctxt "field:account.move.cancel.default,description:"
 msgid "Description"
 msgstr "Descripción"
 
+msgctxt "field:account.move.cancel.default,reversal:"
+msgid "Reversal"
+msgstr ""
+
 msgctxt "field:account.move.line,account:"
 msgid "Account"
 msgstr "Cuenta"
@@ -1347,6 +1399,10 @@ msgctxt "field:account.move.line,party_required:"
 msgid "Party Required"
 msgstr "Tercero requerido"
 
+msgctxt "field:account.move.line,payable_receivable_balance:"
+msgid "Payable/Receivable Balance"
+msgstr ""
+
 #, fuzzy
 msgctxt "field:account.move.line,period:"
 msgid "Period"
@@ -1399,6 +1455,21 @@ msgstr "Descripción"
 msgctxt "field:account.move.line.group.start,journal:"
 msgid "Journal"
 msgstr "Libro Diario"
+
+#, fuzzy
+msgctxt "field:account.move.line.receivable_payable.context,payable:"
+msgid "Payable"
+msgstr "Por pagar"
+
+#, fuzzy
+msgctxt "field:account.move.line.receivable_payable.context,receivable:"
+msgid "Receivable"
+msgstr "Por cobrar"
+
+#, fuzzy
+msgctxt "field:account.move.line.receivable_payable.context,reconciled:"
+msgid "Reconciled"
+msgstr "Líneas de conciliación de asientos contables"
 
 msgctxt "field:account.move.line.reschedule.preview,currency:"
 msgid "Currency"
@@ -1575,9 +1646,9 @@ msgid "Lines"
 msgstr "Líneas"
 
 #, fuzzy
-msgctxt "field:account.move.reconciliation,name:"
-msgid "Name"
-msgstr "Nombre"
+msgctxt "field:account.move.reconciliation,number:"
+msgid "Number"
+msgstr "Número de contabilización"
 
 msgctxt "field:account.move.template,company:"
 msgid "Company"
@@ -1694,6 +1765,10 @@ msgstr "Cuenta"
 
 msgctxt "field:account.reconcile.show,company:"
 msgid "Company"
+msgstr ""
+
+msgctxt "field:account.reconcile.show,currencies:"
+msgid "Currencies"
 msgstr ""
 
 msgctxt "field:account.reconcile.show,currency:"
@@ -2393,11 +2468,10 @@ msgctxt "help:account.account,reconcile:"
 msgid "Allow move lines of this account to be reconciled."
 msgstr "Permite conciliar las líneas de asiento de esta cuenta."
 
+#, fuzzy
 msgctxt "help:account.account,second_currency:"
-msgid ""
-"Force all moves for this account \n"
-"to have this secondary currency."
-msgstr ""
+msgid "Force all moves for this account to have this second currency."
+msgstr "Permite conciliar las líneas de asiento de esta cuenta."
 
 #, fuzzy
 msgctxt "help:account.account,taxes:"
@@ -2507,6 +2581,10 @@ msgstr ""
 
 msgctxt "help:account.move,post_number:"
 msgid "Also known as Folio Number."
+msgstr ""
+
+msgctxt "help:account.move.cancel.default,reversal:"
+msgid "Reverse debit and credit."
 msgstr ""
 
 msgctxt "help:account.move.line,amount_second_currency:"
@@ -2708,6 +2786,11 @@ msgid "Account Configuration Default Tax Rule"
 msgstr "Configuración contable"
 
 #, fuzzy
+msgctxt "model:account.configuration.journal,name:"
+msgid "Account Configuration Journal"
+msgstr "Configuración contable"
+
+#, fuzzy
 msgctxt "model:account.configuration.sequence,name:"
 msgid "Account Configuration Sequence"
 msgstr "Configuración contable"
@@ -2779,6 +2862,10 @@ msgctxt "model:account.journal,name:journal_cash"
 msgid "Cash"
 msgstr ""
 
+msgctxt "model:account.journal,name:journal_currency_exchange"
+msgid "Currency Exchange"
+msgstr ""
+
 msgctxt "model:account.journal,name:journal_expense"
 msgid "Expense"
 msgstr ""
@@ -2827,6 +2914,11 @@ msgstr "Cuenta Débito"
 msgctxt "model:account.move.line.group.start,name:"
 msgid "Group Lines"
 msgstr ""
+
+#, fuzzy
+msgctxt "model:account.move.line.receivable_payable.context,name:"
+msgid "Receivable/Payable Line Context"
+msgstr "Contexto de las líneas del libro mayor"
 
 msgctxt "model:account.move.line.reschedule.preview,name:"
 msgid "Reschedule Lines"
@@ -3288,23 +3380,6 @@ msgctxt "model:ir.action,name:wizard_update_chart"
 msgid "Update Chart of Accounts from Template"
 msgstr ""
 
-msgctxt ""
-"model:ir.action.act_window.domain,name:act_move_line_payable_receivable_domain_all"
-msgid "All"
-msgstr ""
-
-#, fuzzy
-msgctxt ""
-"model:ir.action.act_window.domain,name:act_move_line_payable_receivable_domain_payable"
-msgid "Payable"
-msgstr "Por pagar"
-
-#, fuzzy
-msgctxt ""
-"model:ir.action.act_window.domain,name:act_move_line_payable_receivable_domain_receivable"
-msgid "Receivable"
-msgstr "Por cobrar"
-
 msgctxt "model:ir.message,text:msg_account_chart_exists"
 msgid "A chart of accounts already exists for company \"%(company)s\"."
 msgstr ""
@@ -3540,13 +3615,7 @@ msgid ""
 "Use the current period to cancel the move?"
 msgstr ""
 
-msgctxt "model:ir.message,text:msg_move_date_outside_period"
-msgid ""
-"The date of move \"%(move)s\" is outside the period, you must change the "
-"date or the period."
-msgstr ""
-
-msgctxt "model:ir.message,text:msg_move_template_expession_not_number"
+msgctxt "model:ir.message,text:msg_move_template_expression_not_number"
 msgid ""
 "The value \"%(value)s\" of \"%(expression)s\" from template \"%(template)s\""
 " is not a number."
@@ -3558,12 +3627,32 @@ msgid ""
 "\"%(error)s\""
 msgstr ""
 
+msgctxt "model:ir.message,text:msg_move_template_keyword_name_not_identifier"
+msgid "The keyword name \"%(name)s\" is not a valid identifier."
+msgstr ""
+
 msgctxt "model:ir.message,text:msg_no_fiscalyear_date"
-msgid "To continue, you must create a fiscal year for the date \"%(date)s\"."
+msgid ""
+"To continue, you must create a fiscal year for the date \"%(date)s\" and "
+"company \"%(company)s\"."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_no_open_fiscalyear_date"
+msgid ""
+"To continue, you must reopen the fiscal year \"%(fiscalyear)s\" of company "
+"\"%(company)s\"for the date \"%(date)s\"."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_no_open_period_date"
+msgid ""
+"To continue, you must reopen the period \"%(period)s\" of company "
+"\"%(company)s\" for the date \"%(date)s\"."
 msgstr ""
 
 msgctxt "model:ir.message,text:msg_no_period_date"
-msgid "To continue, you must create a period for the date \"%(date)s\"."
+msgid ""
+"To continue, you must create a period for the date \"%(date)s\" and company "
+"\"%(company)s\"."
 msgstr ""
 
 msgctxt "model:ir.message,text:msg_only_one_debit_credit_types"
@@ -3639,6 +3728,12 @@ msgstr ""
 msgctxt "model:ir.message,text:msg_reconciliation_delete_delegated"
 msgid ""
 "The reconciliation \"%(reconciliation)s\" is delegated to the line \"%(line)s\".\n"
+"You may need to cancel its move \"%(move)s\"."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_reconciliation_delete_write_off"
+msgid ""
+"The reconciliation \"%(reconciliation)s\" is linked to the write-off line \"%(line)s\".\n"
 "You may need to cancel its move \"%(move)s\"."
 msgstr ""
 
@@ -4773,13 +4868,37 @@ msgctxt "view:account.account:"
 msgid "General Information"
 msgstr ""
 
+#, fuzzy
+msgctxt "view:account.account:"
+msgid "General Ledger"
+msgstr "Línea de libro mayor"
+
 msgctxt "view:account.aged_balance.context:"
 msgid "Terms"
 msgstr ""
 
+#, fuzzy
+msgctxt "view:account.configuration:"
+msgid "Credit Account"
+msgstr "Cuenta Crédito"
+
+msgctxt "view:account.configuration:"
+msgid "Currency Exchange"
+msgstr ""
+
+#, fuzzy
+msgctxt "view:account.configuration:"
+msgid "Debit Account"
+msgstr "Cuenta Débito"
+
 msgctxt "view:account.configuration:"
 msgid "Invoice"
 msgstr ""
+
+#, fuzzy
+msgctxt "view:account.configuration:"
+msgid "Journal"
+msgstr "Libro Diario"
 
 #, fuzzy
 msgctxt "view:account.configuration:"
@@ -4860,6 +4979,11 @@ msgstr ""
 msgctxt "view:account.move.line.template:"
 msgid "Other Info"
 msgstr ""
+
+#, fuzzy
+msgctxt "view:account.move.line:"
+msgid "Balance"
+msgstr "Saldo"
 
 msgctxt "view:account.move.line:"
 msgid "Credit"

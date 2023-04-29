@@ -16,8 +16,8 @@ msgstr "Zeiterfassungspositionen"
 
 msgctxt "field:production.work,timesheet_work:"
 msgid "Timesheet Work"
-msgstr "Tätigkeit"
+msgstr "Aufgabe"
 
 msgctxt "field:production.work,timesheet_works:"
 msgid "Timesheet Works"
-msgstr "Tätigkeiten"
+msgstr "Aufgaben"

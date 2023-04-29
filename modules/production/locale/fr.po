@@ -6,13 +6,13 @@ msgctxt "field:product.product,boms:"
 msgid "BOMs"
 msgstr "Nomenclatures"
 
-msgctxt "field:product.product,lead_times:"
-msgid "Lead Times"
-msgstr "Délais de production"
-
 msgctxt "field:product.product,producible:"
 msgid "Producible"
 msgstr "Productible"
+
+msgctxt "field:product.product,production_lead_times:"
+msgid "Lead Times"
+msgstr "Délais de production"
 
 msgctxt "field:product.product-production.bom,bom:"
 msgid "BOM"
@@ -100,7 +100,7 @@ msgstr "Référence"
 
 msgctxt "field:production,run_by:"
 msgid "Run By"
-msgstr "Exécutée par"
+msgstr "Lancée par"
 
 msgctxt "field:production,state:"
 msgid "State"

@@ -34,7 +34,7 @@ msgstr "Artikel"
 
 msgctxt "field:analytic_account.rule,product_category:"
 msgid "Product Category"
-msgstr "Artikel Kategorie"
+msgstr "Artikelkategorie"
 
 msgctxt "field:product.category,account_expense:"
 msgid "Account Expense"

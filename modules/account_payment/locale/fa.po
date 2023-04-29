@@ -19,9 +19,10 @@ msgctxt "field:account.invoice,payment_direct_debit:"
 msgid "Direct Debit"
 msgstr "پرداخت مستقیم"
 
+#, fuzzy
 msgctxt "field:account.move.line,payment_amount:"
-msgid "Payment Amount"
-msgstr "مبلغ پرداختی"
+msgid "Amount to Pay"
+msgstr "خطوط برای پرداخت"
 
 msgctxt "field:account.move.line,payment_blocked:"
 msgid "Blocked"
@@ -430,6 +431,17 @@ msgctxt ""
 "model:ir.action.act_window.domain,name:act_payment_form_domain_to_process"
 msgid "To Process"
 msgstr "پردازش"
+
+#, fuzzy
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_payment_group_form_domain_all"
+msgid "All"
+msgstr "همه"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_payment_group_form_domain_not_completed"
+msgid "Pending"
+msgstr ""
 
 msgctxt "model:ir.message,text:msg_erase_party_pending_payment"
 msgid ""

@@ -2,6 +2,16 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
+#, fuzzy
+msgctxt "field:ir.email,notification_email:"
+msgid "Notification Email"
+msgstr "Notification Emails"
+
+#, fuzzy
+msgctxt "field:ir.email,notification_trigger:"
+msgid "Notification Trigger"
+msgstr "Notification Emails"
+
 msgctxt "field:ir.trigger,notification_email:"
 msgid "Email Notification"
 msgstr ""
@@ -79,35 +89,6 @@ msgctxt "field:notification.email.attachment,report:"
 msgid "Report"
 msgstr ""
 
-msgctxt "field:notification.email.log,date:"
-msgid "Date"
-msgstr ""
-
-#, fuzzy
-msgctxt "field:notification.email.log,notification:"
-msgid "Notification"
-msgstr "Notification Emails"
-
-msgctxt "field:notification.email.log,recipients:"
-msgid "Recipients"
-msgstr ""
-
-msgctxt "field:notification.email.log,recipients_hidden:"
-msgid "Hidden Recipients"
-msgstr ""
-
-msgctxt "field:notification.email.log,recipients_secondary:"
-msgid "Secondary Recipients"
-msgstr ""
-
-msgctxt "field:notification.email.log,resource:"
-msgid "Resource"
-msgstr ""
-
-msgctxt "field:notification.email.log,trigger:"
-msgid "Trigger"
-msgstr ""
-
 msgctxt "help:notification.email,attachments:"
 msgid "The reports used as attachments."
 msgstr ""
@@ -168,14 +149,9 @@ msgctxt "model:ir.action,name:act_email_form"
 msgid "Notification Emails"
 msgstr "Notification Emails"
 
-msgctxt "model:ir.action,name:act_notification_email_log"
-msgid "Logs"
-msgstr "Logs"
-
-#, fuzzy
-msgctxt "model:ir.action,name:act_notification_email_log_relate"
-msgid "Notification E-Mails"
-msgstr "Notification Emails"
+msgctxt "model:ir.action,name:act_ir_email_form_relate_notification"
+msgid "E-mails"
+msgstr ""
 
 msgctxt "model:ir.message,text:msg_notification_invalid_subject"
 msgid ""
@@ -197,15 +173,6 @@ msgid "Email Notification Attachment"
 msgstr ""
 
 #, fuzzy
-msgctxt "model:notification.email.log,name:"
-msgid "Notification Email Log"
-msgstr "Notification Emails"
-
-#, fuzzy
 msgctxt "selection:ir.trigger,action:"
 msgid "Email Notification"
 msgstr "Notification Emails"
-
-msgctxt "view:notification.email.log:"
-msgid "Time"
-msgstr ""

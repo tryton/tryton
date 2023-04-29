@@ -175,21 +175,21 @@ msgctxt "field:purchase.line,invoice_lines:"
 msgid "Invoice Lines"
 msgstr "Rechnungspositionen"
 
-msgctxt "field:purchase.line,move_done:"
-msgid "Moves Done"
-msgstr "Erledigte Warenbewegungen"
-
-msgctxt "field:purchase.line,move_exception:"
-msgid "Moves Exception"
-msgstr "Warenbewegungen mit Vorbehalt"
-
 msgctxt "field:purchase.line,moves:"
 msgid "Moves"
 msgstr "Warenbewegungen"
 
+msgctxt "field:purchase.line,moves_exception:"
+msgid "Moves Exception"
+msgstr "Warenbewegungen mit Vorbehalt"
+
 msgctxt "field:purchase.line,moves_ignored:"
 msgid "Ignored Moves"
 msgstr "Ignorierte Warenbewegungen"
+
+msgctxt "field:purchase.line,moves_progress:"
+msgid "Moves Progress"
+msgstr "Lieferfortschritt"
 
 msgctxt "field:purchase.line,moves_recreated:"
 msgid "Recreated Moves"
@@ -215,6 +215,10 @@ msgctxt "field:purchase.line,purchase:"
 msgid "Purchase"
 msgstr "Einkauf"
 
+msgctxt "field:purchase.line,purchase_date:"
+msgid "Purchase Date"
+msgstr "Bestelldatum"
+
 msgctxt "field:purchase.line,purchase_state:"
 msgid "Purchase State"
 msgstr "Einkaufsstatus"
@@ -226,6 +230,10 @@ msgstr "Menge"
 msgctxt "field:purchase.line,summary:"
 msgid "Summary"
 msgstr "Kurzbeschreibung"
+
+msgctxt "field:purchase.line,supplier:"
+msgid "Supplier"
+msgstr "Lieferant"
 
 msgctxt "field:purchase.line,taxes:"
 msgid "Taxes"
@@ -246,6 +254,10 @@ msgstr "Einheit"
 msgctxt "field:purchase.line,unit_price:"
 msgid "Unit Price"
 msgstr "Einzelpreis"
+
+msgctxt "field:purchase.line,warehouse:"
+msgid "Warehouse"
+msgstr "Logistikstandort"
 
 msgctxt "field:purchase.line-account.tax,line:"
 msgid "Purchase Line"
@@ -570,6 +582,14 @@ msgctxt "help:party.party.supplier_currency,supplier_currency:"
 msgid "Default currency for purchases from this party."
 msgstr "Standardwährung für Einkäufe bei dieser Partei."
 
+msgctxt "help:party.party.supplier_lead_time,supplier_lead_time:"
+msgid ""
+"The time from confirming the purchase order to receiving the goods from the party when used as a supplier.\n"
+"Used if no lead time is set on the product supplier."
+msgstr ""
+"Die Zeit zwischen der Bestellbestätigung und dem Erhalt der Ware bei Nutzung der Partei als Lieferant.\n"
+"Wird genutzt sofern auf dem Lieferantendatensatz keine Beschaffungszeit erfasst wurde."
+
 msgctxt "help:purchase.configuration,purchase_process_after:"
 msgid ""
 "The grace period during which confirmed purchase can still be reset to draft.\n"
@@ -602,6 +622,14 @@ msgid ""
 msgstr ""
 "Die Zeit zwischen der Bestellbestätigung und dem Erhalt der Ware.\n"
 "Wenn leer wird die Standardbeschaffungszeit des Lieferanten genutzt."
+
+msgctxt "help:purchase.product_supplier,prices:"
+msgid ""
+"Add price for different criteria.\n"
+"The last matching line is used."
+msgstr ""
+"Erlaubt die Erfassung von Preisen für unterschiedliche Kriterien.\n"
+"Die letzte Zeile mit übereinstimmenden Kriterien wird verwendet."
 
 msgctxt "help:purchase.product_supplier.price,quantity:"
 msgid "Minimal quantity."
@@ -643,23 +671,23 @@ msgctxt "model:ir.action,name:act_purchase_form"
 msgid "Purchases"
 msgstr "Einkäufe"
 
-msgctxt "model:ir.action,name:act_purchase_form2"
-msgid "Purchases"
-msgstr "Einkäufe"
-
 msgctxt "model:ir.action,name:act_purchase_invoice_relate"
 msgid "Purchases"
 msgstr "Einkäufe"
+
+msgctxt "model:ir.action,name:act_purchase_line_relate"
+msgid "Purchase Lines"
+msgstr "Einkaufspositionen"
 
 msgctxt "model:ir.action,name:act_purchase_move_relate"
 msgid "Moves"
 msgstr "Warenbewegungen"
 
-msgctxt "model:ir.action,name:act_purchase_shipment_returns_relate"
+msgctxt "model:ir.action,name:act_purchase_relate"
 msgid "Purchases"
 msgstr "Einkäufe"
 
-msgctxt "model:ir.action,name:act_purchase_shipments_relate"
+msgctxt "model:ir.action,name:act_purchase_relate_simple"
 msgid "Purchases"
 msgstr "Einkäufe"
 
@@ -744,6 +772,31 @@ msgctxt ""
 msgid "Quotation"
 msgstr "Anfrage"
 
+msgctxt "model:ir.action.act_window.domain,name:act_purchase_line_relate_all"
+msgid "All"
+msgstr "Alle"
+
+msgctxt "model:ir.action.act_window.domain,name:act_purchase_line_relate_done"
+msgid "Done"
+msgstr "Erledigt"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_purchase_line_relate_pending"
+msgid "Pending"
+msgstr "Ausstehend"
+
+msgctxt "model:ir.action.act_window.domain,name:act_purchase_relate_all"
+msgid "All"
+msgstr "Alle"
+
+msgctxt "model:ir.action.act_window.domain,name:act_purchase_relate_done"
+msgid "Done"
+msgstr "Erledigt"
+
+msgctxt "model:ir.action.act_window.domain,name:act_purchase_relate_pending"
+msgid "Pending"
+msgstr "Ausstehend"
+
 msgctxt "model:ir.message,text:msg_change_purchase_uom"
 msgid ""
 "You are trying to change the purchase UoM on which the purchase prices are "
@@ -771,6 +824,14 @@ msgid ""
 msgstr ""
 "Rechnung \"%(invoice)s\" kann nicht auf den Entwurfsstatus\" zurückgesetzt "
 "werden, weil sie durch einen Einkauf erzeugt wurde."
+
+msgctxt "model:ir.message,text:msg_purchase_line_create_draft"
+msgid ""
+"You cannot add lines to purchase \"%(purchase)s\" because it is no longer in"
+" a draft state."
+msgstr ""
+"Zu Einkauf \"%(purchase)s\" kann keine Position mehr hinzugefügt werden, da "
+"er nicht mehr im Entwurfsstatus ist."
 
 msgctxt "model:ir.message,text:msg_purchase_line_delete_cancel_draft"
 msgid ""
@@ -1185,6 +1246,10 @@ msgid "Manual"
 msgstr "Manuell"
 
 msgctxt "selection:purchase.purchase,invoice_state:"
+msgid "Awaiting Payment"
+msgstr "Zahlung Ausstehend"
+
+msgctxt "selection:purchase.purchase,invoice_state:"
 msgid "Exception"
 msgstr "Vorbehalt"
 
@@ -1197,8 +1262,12 @@ msgid "Paid"
 msgstr "Bezahlt"
 
 msgctxt "selection:purchase.purchase,invoice_state:"
-msgid "Waiting"
-msgstr "Wartend"
+msgid "Partially Paid"
+msgstr "Teilweise Bezahlt"
+
+msgctxt "selection:purchase.purchase,invoice_state:"
+msgid "Pending"
+msgstr "Ausstehend"
 
 msgctxt "selection:purchase.purchase,shipment_state:"
 msgid "Exception"
@@ -1207,6 +1276,10 @@ msgstr "Vorbehalt"
 msgctxt "selection:purchase.purchase,shipment_state:"
 msgid "None"
 msgstr "Kein"
+
+msgctxt "selection:purchase.purchase,shipment_state:"
+msgid "Partially Shipped"
+msgstr "Teilweise Versendet"
 
 msgctxt "selection:purchase.purchase,shipment_state:"
 msgid "Received"

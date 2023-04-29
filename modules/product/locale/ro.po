@@ -505,10 +505,9 @@ msgctxt "model:ir.message,text:msg_product_code_unique"
 msgid "Code of active product must be unique."
 msgstr "Codul al unui produs activ trebuie să fie unic."
 
-#, fuzzy
 msgctxt "model:ir.message,text:msg_uom_decrease_digits"
 msgid "You cannot decrease the digits of UOM \"%(uom)s\"."
-msgstr "Nu se poate modifică rate al UM \"%(uom)s\"."
+msgstr "Nu se pot reduce zecimalele al UM \"%(uom)s\"."
 
 msgctxt "model:ir.message,text:msg_uom_incompatible_factor_rate"
 msgid "Incompatible factor and rate values on UOM \"%(uom)s\"."
@@ -516,11 +515,11 @@ msgstr "Factor şi rata incompatibil pentru UM \"%(uom)s\"."
 
 msgctxt "model:ir.message,text:msg_uom_modify_category"
 msgid "You cannot modify the category of UOM \"%(uom)s\"."
-msgstr "Nu se poate modifică categorie de UM \"%(uom)s\"."
+msgstr "Categoria de UM nu se poate modifica \"%(uom)s\"."
 
 msgctxt "model:ir.message,text:msg_uom_modify_factor"
 msgid "You cannot modify the factor of UOM \"%(uom)s\"."
-msgstr "Nu se poate modifică factorul al Unitaţii de Masură \"%(uom)s\"."
+msgstr "Nu se poate modifica factorul Unităţii de Masură \"%(uom)s\"."
 
 msgctxt "model:ir.message,text:msg_uom_modify_options"
 msgid ""
@@ -562,7 +561,6 @@ msgctxt "model:ir.ui.menu,name:menu_configuration"
 msgid "Configuration"
 msgstr "Configurare"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_main_product"
 msgid "Products"
 msgstr "Produse"
@@ -671,6 +669,22 @@ msgctxt "model:product.uom,name:uom_day"
 msgid "Day"
 msgstr "Zi"
 
+msgctxt "model:product.uom,name:uom_energy_joule"
+msgid "Joule"
+msgstr "Joule"
+
+msgctxt "model:product.uom,name:uom_energy_kwh"
+msgid "Kilowatt-hour"
+msgstr "Kilowatt-oră"
+
+msgctxt "model:product.uom,name:uom_energy_megajoule"
+msgid "Megajoule"
+msgstr "Megajoule"
+
+msgctxt "model:product.uom,name:uom_energy_mwh"
+msgid "Megawatt-hour"
+msgstr "Megawatt-oră"
+
 msgctxt "model:product.uom,name:uom_foot"
 msgid "Foot"
 msgstr "Picior"
@@ -759,10 +773,6 @@ msgctxt "model:product.uom,name:uom_unit"
 msgid "Unit"
 msgstr "Unitate"
 
-msgctxt "model:product.uom,name:uom_work_day"
-msgid "Work Day"
-msgstr "Zi de lucru"
-
 msgctxt "model:product.uom,name:uom_yard"
 msgid "Yard"
 msgstr "Iard"
@@ -798,6 +808,22 @@ msgstr "m³"
 msgctxt "model:product.uom,symbol:uom_day"
 msgid "d"
 msgstr "d"
+
+msgctxt "model:product.uom,symbol:uom_energy_joule"
+msgid "J"
+msgstr "J"
+
+msgctxt "model:product.uom,symbol:uom_energy_kwh"
+msgid "kW⋅h"
+msgstr "kW⋅h"
+
+msgctxt "model:product.uom,symbol:uom_energy_megajoule"
+msgid "MJ"
+msgstr "MJ"
+
+msgctxt "model:product.uom,symbol:uom_energy_mwh"
+msgid "MW⋅h"
+msgstr "MW⋅h"
 
 msgctxt "model:product.uom,symbol:uom_foot"
 msgid "ft"
@@ -887,10 +913,6 @@ msgctxt "model:product.uom,symbol:uom_unit"
 msgid "u"
 msgstr "buc"
 
-msgctxt "model:product.uom,symbol:uom_work_day"
-msgid "wd"
-msgstr "wd"
-
 msgctxt "model:product.uom,symbol:uom_yard"
 msgid "yd"
 msgstr "yd"
@@ -898,6 +920,10 @@ msgstr "yd"
 msgctxt "model:product.uom.category,name:"
 msgid "Unit of Measure Category"
 msgstr "Categorie Unitate de Măsura"
+
+msgctxt "model:product.uom.category,name:uom_cat_energy"
+msgid "Energy"
+msgstr "Energie"
 
 msgctxt "model:product.uom.category,name:uom_cat_length"
 msgid "Length"

@@ -116,11 +116,11 @@ msgstr "Demasiadas peticiones. Inténtelo de nuevo más tarde."
 msgid "Login"
 msgstr "Acceder"
 
-msgid "User name"
-msgstr "Nombre de usuario"
-
 msgid "Database"
 msgstr "Base de datos"
+
+msgid "User name"
+msgstr "Nombre de usuario"
 
 msgid "Login with"
 msgstr "Identificarse con"
@@ -294,7 +294,7 @@ msgid "Reload"
 msgstr "Recargar"
 
 msgid "View Logs..."
-msgstr "Ver registro..."
+msgstr "Ver registros..."
 
 msgid "Show revisions..."
 msgstr "Mostrar revisiones..."
@@ -360,24 +360,6 @@ msgstr "Los registros no se han eliminado."
 
 msgid "You have to select one record."
 msgstr "Debe elegir un registro."
-
-msgid "ID:"
-msgstr "ID:"
-
-msgid "Created by:"
-msgstr "Creado por:"
-
-msgid "Created at:"
-msgstr "Creado el:"
-
-msgid "Edited by:"
-msgstr "Editado por:"
-
-msgid "Edited at:"
-msgstr "Editado el:"
-
-msgid "Model: "
-msgstr "Modelo: "
 
 msgid "Add..."
 msgstr "Añadir..."
@@ -536,6 +518,9 @@ msgstr "Personalizar"
 msgid "More"
 msgstr "Más"
 
+msgid "#ERROR"
+msgstr "#ERROR"
+
 msgid "Today"
 msgstr "Hoy"
 
@@ -565,6 +550,27 @@ msgstr "Adjuntos (%1)"
 
 msgid "Notes (%1)"
 msgstr "Notas (%1)"
+
+msgid "Logs (%1)"
+msgstr "Registros (%1)"
+
+msgid "Model:"
+msgstr "Modelo:"
+
+msgid "ID:"
+msgstr "ID:"
+
+msgid "Created by:"
+msgstr "Creado por:"
+
+msgid "Created at:"
+msgstr "Creado el:"
+
+msgid "Last Modified by:"
+msgstr "Última modificación por:"
+
+msgid "Last Modified at:"
+msgstr "Última modificación el:"
 
 msgid "Search %1"
 msgstr "Buscar %1"

@@ -175,21 +175,21 @@ msgctxt "field:purchase.line,invoice_lines:"
 msgid "Invoice Lines"
 msgstr "Línies de factura"
 
-msgctxt "field:purchase.line,move_done:"
-msgid "Moves Done"
-msgstr "Moviments finalitzats"
-
-msgctxt "field:purchase.line,move_exception:"
-msgid "Moves Exception"
-msgstr "Moviments en excepció"
-
 msgctxt "field:purchase.line,moves:"
 msgid "Moves"
 msgstr "Moviments"
 
+msgctxt "field:purchase.line,moves_exception:"
+msgid "Moves Exception"
+msgstr "Moviments en excepció"
+
 msgctxt "field:purchase.line,moves_ignored:"
 msgid "Ignored Moves"
 msgstr "Moviments ignorats"
+
+msgctxt "field:purchase.line,moves_progress:"
+msgid "Moves Progress"
+msgstr "Progres dels moviments"
 
 msgctxt "field:purchase.line,moves_recreated:"
 msgid "Recreated Moves"
@@ -215,6 +215,10 @@ msgctxt "field:purchase.line,purchase:"
 msgid "Purchase"
 msgstr "Compra"
 
+msgctxt "field:purchase.line,purchase_date:"
+msgid "Purchase Date"
+msgstr "Data compra"
+
 msgctxt "field:purchase.line,purchase_state:"
 msgid "Purchase State"
 msgstr "Estat de compra"
@@ -226,6 +230,10 @@ msgstr "Quantitat"
 msgctxt "field:purchase.line,summary:"
 msgid "Summary"
 msgstr "Resum"
+
+msgctxt "field:purchase.line,supplier:"
+msgid "Supplier"
+msgstr "Proveïdor"
 
 msgctxt "field:purchase.line,taxes:"
 msgid "Taxes"
@@ -246,6 +254,10 @@ msgstr "Unitat"
 msgctxt "field:purchase.line,unit_price:"
 msgid "Unit Price"
 msgstr "Preu unitari"
+
+msgctxt "field:purchase.line,warehouse:"
+msgid "Warehouse"
+msgstr "Magatzem"
 
 msgctxt "field:purchase.line-account.tax,line:"
 msgid "Purchase Line"
@@ -569,6 +581,14 @@ msgctxt "help:party.party.supplier_currency,supplier_currency:"
 msgid "Default currency for purchases from this party."
 msgstr "La moneda per defecte per les compres d'aquest tercer."
 
+msgctxt "help:party.party.supplier_lead_time,supplier_lead_time:"
+msgid ""
+"The time from confirming the purchase order to receiving the goods from the party when used as a supplier.\n"
+"Used if no lead time is set on the product supplier."
+msgstr ""
+"El temps des de la confirmació de l'oferta fins a la recepció dels bens quan el tercer s'utilitza com a proveïdor.\n"
+"Utilitzat quan no hi ha temps d'espera al producte de proveïdor."
+
 msgctxt "help:purchase.configuration,purchase_process_after:"
 msgid ""
 "The grace period during which confirmed purchase can still be reset to draft.\n"
@@ -597,6 +617,14 @@ msgid ""
 msgstr ""
 "El temps desde la confirmació de la comanda fins a la recepció dels productes:\n"
 "Si es deixa en blanc s'utilitza el temps d'espera del proveïdor."
+
+msgctxt "help:purchase.product_supplier,prices:"
+msgid ""
+"Add price for different criteria.\n"
+"The last matching line is used."
+msgstr ""
+"Afegiu un preu per diferents criteris.\n"
+"S'utilitza l'ultima línia que coincideix."
 
 msgctxt "help:purchase.product_supplier.price,quantity:"
 msgid "Minimal quantity."
@@ -638,23 +666,23 @@ msgctxt "model:ir.action,name:act_purchase_form"
 msgid "Purchases"
 msgstr "Compres"
 
-msgctxt "model:ir.action,name:act_purchase_form2"
-msgid "Purchases"
-msgstr "Compres"
-
 msgctxt "model:ir.action,name:act_purchase_invoice_relate"
 msgid "Purchases"
 msgstr "Compres"
+
+msgctxt "model:ir.action,name:act_purchase_line_relate"
+msgid "Purchase Lines"
+msgstr "Línies de compra"
 
 msgctxt "model:ir.action,name:act_purchase_move_relate"
 msgid "Moves"
 msgstr "Moviments"
 
-msgctxt "model:ir.action,name:act_purchase_shipment_returns_relate"
+msgctxt "model:ir.action,name:act_purchase_relate"
 msgid "Purchases"
 msgstr "Compres"
 
-msgctxt "model:ir.action,name:act_purchase_shipments_relate"
+msgctxt "model:ir.action,name:act_purchase_relate_simple"
 msgid "Purchases"
 msgstr "Compres"
 
@@ -739,6 +767,31 @@ msgctxt ""
 msgid "Quotation"
 msgstr "Pressupost"
 
+msgctxt "model:ir.action.act_window.domain,name:act_purchase_line_relate_all"
+msgid "All"
+msgstr "Tot"
+
+msgctxt "model:ir.action.act_window.domain,name:act_purchase_line_relate_done"
+msgid "Done"
+msgstr "Finalitzada"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_purchase_line_relate_pending"
+msgid "Pending"
+msgstr "Pendent"
+
+msgctxt "model:ir.action.act_window.domain,name:act_purchase_relate_all"
+msgid "All"
+msgstr "Tot"
+
+msgctxt "model:ir.action.act_window.domain,name:act_purchase_relate_done"
+msgid "Done"
+msgstr "Finalitzada"
+
+msgctxt "model:ir.action.act_window.domain,name:act_purchase_relate_pending"
+msgid "Pending"
+msgstr "Pendent"
+
 msgctxt "model:ir.message,text:msg_change_purchase_uom"
 msgid ""
 "You are trying to change the purchase UoM on which the purchase prices are "
@@ -766,6 +819,14 @@ msgid ""
 msgstr ""
 "No podeu restaurar a esborrany la factura \"%(invoice)s\" perquè ha estat "
 "generada per una compra."
+
+msgctxt "model:ir.message,text:msg_purchase_line_create_draft"
+msgid ""
+"You cannot add lines to purchase \"%(purchase)s\" because it is no longer in"
+" a draft state."
+msgstr ""
+"No podeu afegir línies a la compra \"%(purchase)s\" perquè ja no està en "
+"estat esborrany."
 
 msgctxt "model:ir.message,text:msg_purchase_line_delete_cancel_draft"
 msgid ""
@@ -1179,6 +1240,10 @@ msgid "Manual"
 msgstr "Manual"
 
 msgctxt "selection:purchase.purchase,invoice_state:"
+msgid "Awaiting Payment"
+msgstr "En espera de pagament"
+
+msgctxt "selection:purchase.purchase,invoice_state:"
 msgid "Exception"
 msgstr "Excepció"
 
@@ -1191,8 +1256,12 @@ msgid "Paid"
 msgstr "Pagada"
 
 msgctxt "selection:purchase.purchase,invoice_state:"
-msgid "Waiting"
-msgstr "En espera"
+msgid "Partially Paid"
+msgstr "Pagada parcialment"
+
+msgctxt "selection:purchase.purchase,invoice_state:"
+msgid "Pending"
+msgstr "Pendent"
 
 msgctxt "selection:purchase.purchase,shipment_state:"
 msgid "Exception"
@@ -1201,6 +1270,10 @@ msgstr "Excepció"
 msgctxt "selection:purchase.purchase,shipment_state:"
 msgid "None"
 msgstr "Cap"
+
+msgctxt "selection:purchase.purchase,shipment_state:"
+msgid "Partially Shipped"
+msgstr "Enviada parcialment"
 
 msgctxt "selection:purchase.purchase,shipment_state:"
 msgid "Received"

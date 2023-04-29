@@ -126,11 +126,11 @@ msgstr ""
 msgid "Login"
 msgstr "Logi sisse"
 
-msgid "User name"
-msgstr "Kasutaja nimi"
-
 msgid "Database"
 msgstr "Andmebaas"
+
+msgid "User name"
+msgstr "Kasutaja nimi"
 
 #, fuzzy
 msgid "Login with"
@@ -376,28 +376,6 @@ msgstr "Kirjeid ei eemaldatud."
 msgid "You have to select one record."
 msgstr "Aktiveeri üks kirje."
 
-msgid "ID:"
-msgstr "ID"
-
-#, fuzzy
-msgid "Created by:"
-msgstr "Loo..."
-
-#, fuzzy
-msgid "Created at:"
-msgstr "Loomise kuupäev"
-
-#, fuzzy
-msgid "Edited by:"
-msgstr "Loo..."
-
-#, fuzzy
-msgid "Edited at:"
-msgstr "Muutmise kuupäev"
-
-msgid "Model: "
-msgstr "Mudel: "
-
 msgid "Add..."
 msgstr "Lisa..."
 
@@ -564,6 +542,9 @@ msgstr ""
 msgid "More"
 msgstr "Lisaks"
 
+msgid "#ERROR"
+msgstr ""
+
 msgid "Today"
 msgstr "Täna"
 
@@ -593,6 +574,33 @@ msgstr "Manused (%1)"
 
 msgid "Notes (%1)"
 msgstr "Märkused (%1)"
+
+#, fuzzy
+msgid "Logs (%1)"
+msgstr "Märkused (%1)"
+
+#, fuzzy
+msgid "Model:"
+msgstr "Mudel: "
+
+msgid "ID:"
+msgstr "ID"
+
+#, fuzzy
+msgid "Created by:"
+msgstr "Loo..."
+
+#, fuzzy
+msgid "Created at:"
+msgstr "Loomise kuupäev"
+
+#, fuzzy
+msgid "Last Modified by:"
+msgstr "Muutja:"
+
+#, fuzzy
+msgid "Last Modified at:"
+msgstr "Muutmise kuupäev"
 
 msgid "Search %1"
 msgstr "Otsi %1"

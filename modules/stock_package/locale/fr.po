@@ -26,25 +26,25 @@ msgctxt "field:stock.package,company:"
 msgid "Company"
 msgstr "Société"
 
+msgctxt "field:stock.package,height:"
+msgid "Height"
+msgstr "Hauteur"
+
+msgctxt "field:stock.package,height_uom:"
+msgid "Height UOM"
+msgstr "UDM de hauteur"
+
+msgctxt "field:stock.package,length:"
+msgid "Length"
+msgstr "Longueur"
+
+msgctxt "field:stock.package,length_uom:"
+msgid "Length UOM"
+msgstr "UDM de longueur"
+
 msgctxt "field:stock.package,moves:"
 msgid "Moves"
 msgstr "Mouvements"
-
-msgctxt "field:stock.package,packaging_height:"
-msgid "Packaging Height"
-msgstr "Hauteur de l'emballage"
-
-msgctxt "field:stock.package,packaging_height_uom:"
-msgid "Packaging Height UOM"
-msgstr "Hauteur de l'emballage UDM"
-
-msgctxt "field:stock.package,packaging_length:"
-msgid "Packaging Length"
-msgstr "Longueur de l'emballage"
-
-msgctxt "field:stock.package,packaging_length_uom:"
-msgid "Packaging Length UOM"
-msgstr "Longueur de l'emballage UDM"
 
 msgctxt "field:stock.package,packaging_volume:"
 msgid "Packaging Volume"
@@ -62,14 +62,6 @@ msgctxt "field:stock.package,packaging_weight_uom:"
 msgid "Packaging Weight UOM"
 msgstr "Poids de l'emballage UDM"
 
-msgctxt "field:stock.package,packaging_width:"
-msgid "Packaging Width"
-msgstr "Largeur de l'emballage"
-
-msgctxt "field:stock.package,packaging_width_uom:"
-msgid "Packaging Width UOM"
-msgstr "Largeur de l'emballage UDM"
-
 msgctxt "field:stock.package,parent:"
 msgid "Parent"
 msgstr "Parent"
@@ -86,25 +78,33 @@ msgctxt "field:stock.package,type:"
 msgid "Type"
 msgstr "Type"
 
+msgctxt "field:stock.package,width:"
+msgid "Width"
+msgstr "Largeur"
+
+msgctxt "field:stock.package,width_uom:"
+msgid "Width UOM"
+msgstr "UDM de largeur"
+
+msgctxt "field:stock.package.type,height:"
+msgid "Height"
+msgstr "Hauteur"
+
+msgctxt "field:stock.package.type,height_uom:"
+msgid "Height UOM"
+msgstr "UDM de hauteur"
+
+msgctxt "field:stock.package.type,length:"
+msgid "Length"
+msgstr "Longueur"
+
+msgctxt "field:stock.package.type,length_uom:"
+msgid "Length UOM"
+msgstr "UDM de longueur"
+
 msgctxt "field:stock.package.type,name:"
 msgid "Name"
 msgstr "Nom"
-
-msgctxt "field:stock.package.type,packaging_height:"
-msgid "Packaging Height"
-msgstr "Hauteur de l'emballage"
-
-msgctxt "field:stock.package.type,packaging_height_uom:"
-msgid "Packaging Height UOM"
-msgstr "Hauteur de l'emballage UDM"
-
-msgctxt "field:stock.package.type,packaging_length:"
-msgid "Packaging Length"
-msgstr "Longueur de l'emballage"
-
-msgctxt "field:stock.package.type,packaging_length_uom:"
-msgid "Packaging Length UOM"
-msgstr "Longueur de l'emballage UDM"
 
 msgctxt "field:stock.package.type,packaging_volume:"
 msgid "Packaging Volume"
@@ -122,13 +122,13 @@ msgctxt "field:stock.package.type,packaging_weight_uom:"
 msgid "Packaging Weight UOM"
 msgstr "Poids de l'emballage UDM"
 
-msgctxt "field:stock.package.type,packaging_width:"
-msgid "Packaging Width"
-msgstr "Largeur de l'emballage"
+msgctxt "field:stock.package.type,width:"
+msgid "Width"
+msgstr "Largeur"
 
-msgctxt "field:stock.package.type,packaging_width_uom:"
-msgid "Packaging Width UOM"
-msgstr "Largeur de l'emballage UDM"
+msgctxt "field:stock.package.type,width_uom:"
+msgid "Width UOM"
+msgstr "UDM de largeur"
 
 msgctxt "field:stock.shipment.in.return,packages:"
 msgid "Packages"
@@ -146,11 +146,11 @@ msgctxt "field:stock.shipment.out,root_packages:"
 msgid "Packages"
 msgstr "Emballages"
 
-msgctxt "help:stock.package,packaging_height:"
+msgctxt "help:stock.package,height:"
 msgid "The height of the package."
 msgstr "La hauteur de l'emballage."
 
-msgctxt "help:stock.package,packaging_length:"
+msgctxt "help:stock.package,length:"
 msgid "The length of the package."
 msgstr "La longueur de l'emballage."
 
@@ -162,15 +162,15 @@ msgctxt "help:stock.package,packaging_weight:"
 msgid "The weight of the package when empty."
 msgstr "Le poids du colis vide."
 
-msgctxt "help:stock.package,packaging_width:"
+msgctxt "help:stock.package,width:"
 msgid "The width of the package."
 msgstr "La largeur de l'emballage."
 
-msgctxt "help:stock.package.type,packaging_height:"
+msgctxt "help:stock.package.type,height:"
 msgid "The height of the package."
 msgstr "La hauteur de l'emballage."
 
-msgctxt "help:stock.package.type,packaging_length:"
+msgctxt "help:stock.package.type,length:"
 msgid "The length of the package."
 msgstr "La longueur de l'emballage."
 
@@ -182,7 +182,7 @@ msgctxt "help:stock.package.type,packaging_weight:"
 msgid "The weight of the package when empty."
 msgstr "Le poids du colis vide."
 
-msgctxt "help:stock.package.type,packaging_width:"
+msgctxt "help:stock.package.type,width:"
 msgid "The width of the package."
 msgstr "La largeur de l'emballage."
 

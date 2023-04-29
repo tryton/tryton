@@ -4,7 +4,7 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "field:account.invoice,shipments:"
 msgid "Shipments"
-msgstr ""
+msgstr "Expedieri"
 
 msgctxt "field:account.invoice.line,correction:"
 msgid "Correction"
@@ -12,7 +12,7 @@ msgstr "Corecţie"
 
 msgctxt "field:account.invoice.line,shipments:"
 msgid "Shipments"
-msgstr ""
+msgstr "Expedieri"
 
 msgctxt "field:account.invoice.line,stock_moves:"
 msgid "Stock Moves"

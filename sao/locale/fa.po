@@ -133,11 +133,11 @@ msgstr ""
 msgid "Login"
 msgstr "ورود"
 
-msgid "User name"
-msgstr "نام کاربری"
-
 msgid "Database"
 msgstr "پایگاه داده"
+
+msgid "User name"
+msgstr "نام کاربری"
 
 #, fuzzy
 msgid "Login with"
@@ -383,28 +383,6 @@ msgstr "پرونده ها حذف نشدند."
 msgid "You have to select one record."
 msgstr "شما باید یک پرونده را انتخاب کنید."
 
-msgid "ID:"
-msgstr "شناسه :"
-
-#, fuzzy
-msgid "Created by:"
-msgstr "ایجاد..."
-
-#, fuzzy
-msgid "Created at:"
-msgstr "تاریخ ایجاد"
-
-#, fuzzy
-msgid "Edited by:"
-msgstr "ایجاد..."
-
-#, fuzzy
-msgid "Edited at:"
-msgstr "تاریخ اصلاح"
-
-msgid "Model: "
-msgstr "مدل : "
-
 msgid "Add..."
 msgstr "افزودن..."
 
@@ -574,6 +552,9 @@ msgstr ""
 msgid "More"
 msgstr "بیشتر"
 
+msgid "#ERROR"
+msgstr ""
+
 msgid "Today"
 msgstr "امروز"
 
@@ -603,6 +584,33 @@ msgstr "پیوست ها(1%)"
 
 msgid "Notes (%1)"
 msgstr "یادداشت ها(1%)"
+
+#, fuzzy
+msgid "Logs (%1)"
+msgstr "یادداشت ها(1%)"
+
+#, fuzzy
+msgid "Model:"
+msgstr "مدل : "
+
+msgid "ID:"
+msgstr "شناسه :"
+
+#, fuzzy
+msgid "Created by:"
+msgstr "ایجاد..."
+
+#, fuzzy
+msgid "Created at:"
+msgstr "تاریخ ایجاد"
+
+#, fuzzy
+msgid "Last Modified by:"
+msgstr "آخرین تغییرات بوسیله :"
+
+#, fuzzy
+msgid "Last Modified at:"
+msgstr "تاریخ اصلاح"
 
 msgid "Search %1"
 msgstr "جستجو(1%)"

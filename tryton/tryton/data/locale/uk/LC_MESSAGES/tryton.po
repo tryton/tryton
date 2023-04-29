@@ -23,9 +23,8 @@ msgstr "вкажіть логін користувача"
 msgid "specify the server hostname:port"
 msgstr "вкажіть ім'я сервера:порт"
 
-#, python-format
-msgid "Unable to write config file %s."
-msgstr "Неможливо записати конфігураційний файл %s."
+msgid "disable thread usage"
+msgstr ""
 
 #, python-format
 msgid "Unable to set locale %s"
@@ -61,12 +60,6 @@ msgstr "Гаразд"
 
 msgid "Your selection:"
 msgstr "Ваш вибір:"
-
-msgid "Select"
-msgstr "Вибрати"
-
-msgid "Save"
-msgstr "Зберегти"
 
 msgid "Save As..."
 msgstr "Зберегти як..."
@@ -198,6 +191,10 @@ msgstr "Шаблон"
 
 msgid "Edit..."
 msgstr "Редагувати..."
+
+#, fuzzy
+msgid "View Logs..."
+msgstr "Перегляд _журналів..."
 
 msgid "Attachments..."
 msgstr "Вкладення..."
@@ -595,6 +592,9 @@ msgstr "Вибрати файл"
 msgid "Remove File"
 msgstr "Видалити файл"
 
+msgid "Select"
+msgstr "Вибрати"
+
 msgid "Add..."
 msgstr "Додати..."
 
@@ -617,24 +617,6 @@ msgstr "Примітка (%d/%d)"
 
 msgid "You have to select one record."
 msgstr "Ви повинні вибрати один запис."
-
-msgid "ID:"
-msgstr "ID:"
-
-msgid "Created by:"
-msgstr "Ким створено:"
-
-msgid "Created at:"
-msgstr "Коли створено:"
-
-msgid "Edited by:"
-msgstr "Ким змінено:"
-
-msgid "Edited at:"
-msgstr "Коли змінено:"
-
-msgid "Model:"
-msgstr "Модель:"
 
 msgid "Are you sure to remove this record?"
 msgstr "Ви впевнені, що бажаєте видалити цей запис?"
@@ -699,6 +681,28 @@ msgstr "Налаштування обмеження пошуку"
 
 msgid "Limit:"
 msgstr "Кількість записів:"
+
+#, python-format
+msgid "Logs (%s)"
+msgstr "колоди (%s)"
+
+msgid "Model:"
+msgstr "Модель:"
+
+msgid "ID:"
+msgstr "ID:"
+
+msgid "Created by:"
+msgstr "Ким створено:"
+
+msgid "Created at:"
+msgstr "Коли створено:"
+
+msgid "Last Modified by:"
+msgstr ""
+
+msgid "Last Modified at:"
+msgstr ""
 
 #, python-format
 msgid "Notes (%s)"
@@ -866,6 +870,9 @@ msgstr "Ім'я"
 
 msgid "Open"
 msgstr "Відкрити"
+
+msgid "Save"
+msgstr "Зберегти"
 
 msgid "Listed Records"
 msgstr "Записи списку"
@@ -1088,17 +1095,15 @@ msgstr "попередній рік"
 msgid "next year"
 msgstr "наступний рік"
 
-msgid "Day View"
-msgstr "Вид дня"
-
-msgid "Week View"
-msgstr "Вид тижня"
-
-msgid "Month View"
-msgstr "Вид місяця"
+msgid "Day"
+msgstr ""
 
 msgid "Week"
 msgstr "Тиждень"
+
+#, fuzzy
+msgid "Month"
+msgstr "Вид місяця"
 
 msgid "Select..."
 msgstr "Вибрати..."
@@ -1164,6 +1169,9 @@ msgstr "Треба зберегти запис перед додаванням �
 
 msgid "No other language available."
 msgstr "Немає іншої мови."
+
+msgid "#ERROR"
+msgstr ""
 
 msgid "Translate view"
 msgstr "Переклад вкладки"

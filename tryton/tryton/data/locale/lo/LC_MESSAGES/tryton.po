@@ -28,9 +28,8 @@ msgstr "ລະບຸ ຜູ້ເຂົ້າໃຊ້ງານ"
 msgid "specify the server hostname:port"
 msgstr "ລະບຸ ທີ່ຢູ່ ຂອງ ເຄື່ອງແມ່ຂ່າຍ"
 
-#, python-format
-msgid "Unable to write config file %s."
-msgstr "ບໍ່ສາມາດ ຂຽນ ຟາຍລ໌ ຕັ້ງຄ່າ (config file) %s ນີ້ໄດ້."
+msgid "disable thread usage"
+msgstr ""
 
 #, python-format
 msgid "Unable to set locale %s"
@@ -67,12 +66,6 @@ msgstr ""
 
 msgid "Your selection:"
 msgstr "ການເລືອກຂອງທ່ານ:"
-
-msgid "Select"
-msgstr "ເລືອກ..."
-
-msgid "Save"
-msgstr "ບັນທຶກ"
 
 msgid "Save As..."
 msgstr "ບັນທຶກເປັນ..."
@@ -206,6 +199,10 @@ msgstr "ທີ່ກ່ຽວພັນ"
 
 msgid "Edit..."
 msgstr "ແກ້ໄຂ..."
+
+#, fuzzy
+msgid "View Logs..."
+msgstr "ເບິ່ງ_ບັນທຶກ..."
 
 msgid "Attachments..."
 msgstr "ຄັດຕິດ..."
@@ -626,6 +623,9 @@ msgstr "ເລືອກທັງໝົດ"
 msgid "Remove File"
 msgstr "ເອົາອອກ"
 
+msgid "Select"
+msgstr "ເລືອກ..."
+
 msgid "Add..."
 msgstr ""
 
@@ -649,28 +649,6 @@ msgstr ""
 
 msgid "You have to select one record."
 msgstr "ທ່ານຕ້ອງໄດ້ເລືອກ ໜຶ່ງແຖວຂໍ້ມູນ."
-
-msgid "ID:"
-msgstr "ເລກລໍາດັບ:"
-
-#, fuzzy
-msgid "Created by:"
-msgstr "ວັນທີສ້າງ"
-
-#, fuzzy
-msgid "Created at:"
-msgstr "ວັນທີສ້າງ"
-
-#, fuzzy
-msgid "Edited by:"
-msgstr "ແກ້ໄຂ"
-
-#, fuzzy
-msgid "Edited at:"
-msgstr "ແກ້ໄຂ"
-
-msgid "Model:"
-msgstr "ແບບ:"
 
 msgid "Are you sure to remove this record?"
 msgstr "ທ່ານແນ່ໃຈບໍ່ທີ່ຈະລຶບແຖວຂໍ້ມູນນີ້?"
@@ -733,6 +711,32 @@ msgstr "ການຕັ້ງຄ່າຂີດຈຳກັດການຊອກ
 
 msgid "Limit:"
 msgstr "ຂີດຈຳກັດ:"
+
+#, python-format
+msgid "Logs (%s)"
+msgstr "ໄມ້ທ່ອນ (%s)"
+
+msgid "Model:"
+msgstr "ແບບ:"
+
+msgid "ID:"
+msgstr "ເລກລໍາດັບ:"
+
+#, fuzzy
+msgid "Created by:"
+msgstr "ວັນທີສ້າງ"
+
+#, fuzzy
+msgid "Created at:"
+msgstr "ວັນທີສ້າງ"
+
+#, fuzzy
+msgid "Last Modified by:"
+msgstr "ປັບປ່ຽນລ້າສຸດ ໂດຍ:"
+
+#, fuzzy
+msgid "Last Modified at:"
+msgstr "ວັນທີປັບປ່ຽນລ້າສຸດ:"
 
 #, python-format
 msgid "Notes (%s)"
@@ -904,6 +908,9 @@ msgstr "ຊື່"
 
 msgid "Open"
 msgstr "ໄຂ"
+
+msgid "Save"
+msgstr "ບັນທຶກ"
 
 #, fuzzy
 msgid "Listed Records"
@@ -1133,17 +1140,15 @@ msgstr "ປີກ່ອນ"
 msgid "next year"
 msgstr "ປີຕໍ່ໄປ"
 
-msgid "Day View"
+msgid "Day"
 msgstr ""
-
-msgid "Week View"
-msgstr "ເບິ່ງເປັນລາຍອາທິດ"
-
-msgid "Month View"
-msgstr "ເບິ່ງເປັນເດືອນ"
 
 msgid "Week"
 msgstr "ອາທິດ"
+
+#, fuzzy
+msgid "Month"
+msgstr "ເບິ່ງເປັນເດືອນ"
 
 msgid "Select..."
 msgstr "ເລືອກ..."
@@ -1212,6 +1217,9 @@ msgstr "ທ່ານຕ້ອງບັນທຶກຂໍ້ມູນໄວ້ກ
 
 msgid "No other language available."
 msgstr "ບໍ່ມີພາສາອື່ນໃຫ້ໃຊ້."
+
+msgid "#ERROR"
+msgstr ""
 
 msgid "Translate view"
 msgstr "ມູມມອງການແປ"

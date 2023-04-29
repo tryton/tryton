@@ -136,11 +136,11 @@ msgstr ""
 msgid "Login"
 msgstr "Entrar"
 
-msgid "User name"
-msgstr "Usuário"
-
 msgid "Database"
 msgstr "Banco de dados"
+
+msgid "User name"
+msgstr "Usuário"
 
 #, fuzzy
 msgid "Login with"
@@ -386,28 +386,6 @@ msgstr "Registros não apagados."
 msgid "You have to select one record."
 msgstr "Você precisa selecionar um registo."
 
-msgid "ID:"
-msgstr "ID:"
-
-#, fuzzy
-msgid "Created by:"
-msgstr "Criar..."
-
-#, fuzzy
-msgid "Created at:"
-msgstr "Data de criação"
-
-#, fuzzy
-msgid "Edited by:"
-msgstr "Criar..."
-
-#, fuzzy
-msgid "Edited at:"
-msgstr "Data de modificação"
-
-msgid "Model: "
-msgstr "Modelo: "
-
 msgid "Add..."
 msgstr "Adicionar..."
 
@@ -577,6 +555,9 @@ msgstr ""
 msgid "More"
 msgstr "Mais"
 
+msgid "#ERROR"
+msgstr ""
+
 msgid "Today"
 msgstr "Hoje"
 
@@ -606,6 +587,33 @@ msgstr "Anexo (%1)"
 
 msgid "Notes (%1)"
 msgstr "Notas (%1)"
+
+#, fuzzy
+msgid "Logs (%1)"
+msgstr "Notas (%1)"
+
+#, fuzzy
+msgid "Model:"
+msgstr "Modelo: "
+
+msgid "ID:"
+msgstr "ID:"
+
+#, fuzzy
+msgid "Created by:"
+msgstr "Criar..."
+
+#, fuzzy
+msgid "Created at:"
+msgstr "Data de criação"
+
+#, fuzzy
+msgid "Last Modified by:"
+msgstr "Última modificação por:"
+
+#, fuzzy
+msgid "Last Modified at:"
+msgstr "Data de modificação"
 
 msgid "Search %1"
 msgstr "Buscar %1"

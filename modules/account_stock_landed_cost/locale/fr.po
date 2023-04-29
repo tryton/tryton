@@ -45,7 +45,7 @@ msgstr "Numéro"
 
 msgctxt "field:account.landed_cost,posted_date:"
 msgid "Posted Date"
-msgstr "Date de postage"
+msgstr "Date de comptabilisation"
 
 msgctxt "field:account.landed_cost,products:"
 msgid "Products"
@@ -157,7 +157,7 @@ msgstr "Coûts de débarquement"
 
 msgctxt "model:ir.action,name:wizard_landed_cost_post"
 msgid "Post Landed Cost"
-msgstr "Poster le coût de débarquement"
+msgstr "Comptabiliser le coût de débarquement"
 
 msgctxt "model:ir.action,name:wizard_landed_cost_show"
 msgid "Show Landed Cost"
@@ -176,13 +176,13 @@ msgstr "Brouillon"
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_landed_cost_form_domain_posted"
 msgid "Posted"
-msgstr "Posté"
+msgstr "Comptabilisés"
 
 msgctxt "model:ir.message,text:msg_landed_cost_post_no_stock_move"
 msgid "The posted landed cost \"%(landed_cost)s\" has no stock move."
 msgstr ""
-"Le coût de débarquement posté « %(landed_cost)s » n'a pas de mouvement de "
-"stock."
+"Le coût de débarquement comptabilisé « %(landed_cost)s » n'a pas de "
+"mouvement de stock."
 
 msgctxt "model:ir.message,text:msg_landed_cost_unused_category"
 msgid "The category \"%(category)s\" on landed cost \"%(landed_cost)s\" is not used."
@@ -206,7 +206,7 @@ msgstr "Brouillon"
 
 msgctxt "model:ir.model.button,string:landed_cost_post_button"
 msgid "Post"
-msgstr "Poster"
+msgstr "Comptabiliser"
 
 msgctxt "model:ir.model.button,string:landed_cost_show_button"
 msgid "Show"
@@ -242,7 +242,7 @@ msgstr "Brouillon"
 
 msgctxt "selection:account.landed_cost,state:"
 msgid "Posted"
-msgstr "Posté"
+msgstr "Comptabilisé"
 
 msgctxt "view:account.configuration:"
 msgid "Landed Cost"
@@ -258,7 +258,7 @@ msgstr "Annuler"
 
 msgctxt "wizard_button:account.landed_cost.post,show,post:"
 msgid "Post"
-msgstr "Poster"
+msgstr "Comptabiliser"
 
 msgctxt "wizard_button:account.landed_cost.show,show,end:"
 msgid "Close"

@@ -107,6 +107,11 @@ msgctxt "field:account.invoice,description:"
 msgid "Description"
 msgstr "Kulum"
 
+#, fuzzy
+msgctxt "field:account.invoice,has_payment_method:"
+msgid "Has Payment Method"
+msgstr "Maksemeetod"
+
 msgctxt "field:account.invoice,invoice_address:"
 msgid "Invoice Address"
 msgstr "Arve aadress"
@@ -301,6 +306,16 @@ msgctxt "field:account.invoice.line,invoice:"
 msgid "Invoice"
 msgstr "Arve"
 
+#, fuzzy
+msgctxt "field:account.invoice.line,invoice_description:"
+msgid "Invoice Description"
+msgstr "Kulum"
+
+#, fuzzy
+msgctxt "field:account.invoice.line,invoice_party:"
+msgid "Party"
+msgstr "Osapool"
+
 msgctxt "field:account.invoice.line,invoice_state:"
 msgid "Invoice State"
 msgstr "Arve staatus"
@@ -391,17 +406,10 @@ msgctxt "field:account.invoice.pay.ask,company:"
 msgid "Company"
 msgstr "Ettevõte"
 
+#, fuzzy
 msgctxt "field:account.invoice.pay.ask,currency:"
-msgid "Payment Currency"
-msgstr "Tasumise valuuta"
-
-msgctxt "field:account.invoice.pay.ask,currency_writeoff:"
-msgid "Write-Off Currency"
-msgstr "Mahakandmise valuuta"
-
-msgctxt "field:account.invoice.pay.ask,date:"
-msgid "Date"
-msgstr "Kuupäev"
+msgid "Currency"
+msgstr "Valuuta"
 
 msgctxt "field:account.invoice.pay.ask,invoice:"
 msgid "Invoice"
@@ -785,10 +793,6 @@ msgctxt "model:ir.action,name:act_invoice_form"
 msgid "Invoices"
 msgstr "Arved"
 
-msgctxt "model:ir.action,name:act_invoice_form2"
-msgid "Invoices"
-msgstr "Arved"
-
 msgctxt "model:ir.action,name:act_invoice_in_form"
 msgid "Supplier Invoices"
 msgstr "Ostuarved"
@@ -796,6 +800,11 @@ msgstr "Ostuarved"
 msgctxt "model:ir.action,name:act_invoice_out_form"
 msgid "Customer Invoices"
 msgstr "Müügiarved"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_invoice_relate"
+msgid "Invoices"
+msgstr "Arved"
 
 msgctxt "model:ir.action,name:act_payment_method_form"
 msgid "Invoice Payment Methods"
@@ -860,6 +869,30 @@ msgctxt ""
 msgid "Validated"
 msgstr "Kontrollitud"
 
+#, fuzzy
+msgctxt "model:ir.action.act_window.domain,name:act_invoice_relate_all"
+msgid "All"
+msgstr "Kõik"
+
+#, fuzzy
+msgctxt "model:ir.action.act_window.domain,name:act_invoice_relate_paid"
+msgid "Paid"
+msgstr "Tasutud"
+
+msgctxt "model:ir.action.act_window.domain,name:act_invoice_relate_pending"
+msgid "Pending"
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_cancel_invoice_move"
+msgid "The moves \"%(moves)s\" have the posted invoices \"%(invoices)s\" as origin."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_cancel_invoice_move_description"
+msgid ""
+"Cancelling them will reconcile the move lines thus paying the invoices. You "
+"might want to cancel the invoices first."
+msgstr ""
+
 msgctxt "model:ir.message,text:msg_close_period_non_posted_invoices"
 msgid "To close the periods you must post the invoices \"%(invoices)s\"."
 msgstr ""
@@ -895,10 +928,11 @@ msgctxt "model:ir.message,text:msg_invoice_delete_numbered"
 msgid "You cannot delete invoice \"%(invoice)s\" because it has a number."
 msgstr "Arvet \"%(arve)id\" ei saa kustutada, kuna sellel on number."
 
-msgctxt "model:ir.message,text:msg_invoice_line_create"
+#, fuzzy
+msgctxt "model:ir.message,text:msg_invoice_line_create_draft"
 msgid ""
-"You cannot add a line to invoice \"%(invoice)s\" because it is posted, paid "
-"or cancelled."
+"You cannot add lines to invoice \"%(invoice)s\" because it is no longer in a"
+" draft state."
 msgstr ""
 "Arvele \"%(arve)tele\" ei saa lisada rida, kuna see on postitatud, tasutud "
 "või tühistatud."
@@ -976,23 +1010,15 @@ msgid "The invoice \"%(invoice)s\" generates a payment date \"%(date)s\" in the 
 msgstr ""
 
 #, fuzzy
-msgctxt "model:ir.message,text:msg_invoice_same_account_line"
-msgid ""
-"You cannot use the same account \"%(account)s\" on invoice \"%(invoice)s\" "
-"and on line \"%(line)s\"."
-msgstr ""
-"Arvel \"%(arve)tele\" ja real \"%(rida)del\" ei saa kasutada sama kontot "
-"\"%(konto)sid\""
-
-#, fuzzy
 msgctxt "model:ir.message,text:msg_invoice_similar"
 msgid "The invoice \"%(invoice)s\" is similar to invoice \"%(similar)s\"."
 msgstr "Arve \"%(arve)te\" kustutamiseks tuleb see tühistada."
 
+#, fuzzy
 msgctxt "model:ir.message,text:msg_invoice_tax_create"
 msgid ""
-"You cannot add a tax to invoice \"%(invoice)s\" because it is posted, paid "
-"or cancelled."
+"You cannot add taxes to invoice \"%(invoice)s\" because it is no longer in a"
+" draft state."
 msgstr ""
 "Maksu ei saa lisada arvelt \"%(arve)tele\", kuna see on postitatud, tasutud "
 "või tühistatud."

@@ -26,9 +26,8 @@ msgstr "določi uporabniško ime"
 msgid "specify the server hostname:port"
 msgstr "določi ime in vrata strežniškega gostitelja"
 
-#, python-format
-msgid "Unable to write config file %s."
-msgstr "Ni možno zapisati konfiguracijske datoteke %s."
+msgid "disable thread usage"
+msgstr ""
 
 #, python-format
 msgid "Unable to set locale %s"
@@ -66,12 +65,6 @@ msgstr ""
 
 msgid "Your selection:"
 msgstr "Vaša izbira:"
-
-msgid "Select"
-msgstr "Izberi"
-
-msgid "Save"
-msgstr "Shrani"
 
 msgid "Save As..."
 msgstr "Shrani kot..."
@@ -205,6 +198,10 @@ msgstr "Veza"
 
 msgid "Edit..."
 msgstr "Uredi ..."
+
+#, fuzzy
+msgid "View Logs..."
+msgstr "Poglej dnevni_k..."
 
 msgid "Attachments..."
 msgstr "Priponke..."
@@ -625,6 +622,9 @@ msgstr "Izberi vse"
 msgid "Remove File"
 msgstr "Odstrani <Del>"
 
+msgid "Select"
+msgstr "Izberi"
+
 msgid "Add..."
 msgstr ""
 
@@ -648,28 +648,6 @@ msgstr ""
 
 msgid "You have to select one record."
 msgstr "En zapis mora biti izbran."
-
-msgid "ID:"
-msgstr "ID:"
-
-#, fuzzy
-msgid "Created by:"
-msgstr "Ustvarjeno"
-
-#, fuzzy
-msgid "Created at:"
-msgstr "Ustvarjeno"
-
-#, fuzzy
-msgid "Edited by:"
-msgstr "Uredi"
-
-#, fuzzy
-msgid "Edited at:"
-msgstr "Uredi"
-
-msgid "Model:"
-msgstr "Model:"
 
 msgid "Are you sure to remove this record?"
 msgstr "Ali res želiš izbrisati ta zapis?"
@@ -734,6 +712,33 @@ msgstr "Nastavitev omejitev iskanja"
 
 msgid "Limit:"
 msgstr "Omejitev:"
+
+# ?
+#, python-format
+msgid "Logs (%s)"
+msgstr "Dnevniki (%s)"
+
+msgid "Model:"
+msgstr "Model:"
+
+msgid "ID:"
+msgstr "ID:"
+
+#, fuzzy
+msgid "Created by:"
+msgstr "Ustvarjeno"
+
+#, fuzzy
+msgid "Created at:"
+msgstr "Ustvarjeno"
+
+#, fuzzy
+msgid "Last Modified by:"
+msgstr "Nazadnje popravil:"
+
+#, fuzzy
+msgid "Last Modified at:"
+msgstr "Nazadnje popravljeno:"
 
 #, python-format
 msgid "Notes (%s)"
@@ -903,6 +908,9 @@ msgstr "Naziv"
 
 msgid "Open"
 msgstr "Odpri"
+
+msgid "Save"
+msgstr "Shrani"
 
 #, fuzzy
 msgid "Listed Records"
@@ -1132,17 +1140,15 @@ msgstr "Prejšnje leto"
 msgid "next year"
 msgstr "naslednje leto"
 
-msgid "Day View"
+msgid "Day"
 msgstr ""
-
-msgid "Week View"
-msgstr "Tedensko"
-
-msgid "Month View"
-msgstr "Mesečno"
 
 msgid "Week"
 msgstr "Teden"
+
+#, fuzzy
+msgid "Month"
+msgstr "Mesečno"
 
 msgid "Select..."
 msgstr "Izberi ..."
@@ -1211,6 +1217,9 @@ msgstr "Pred dodajanjem prevodov morate zapis shraniti."
 
 msgid "No other language available."
 msgstr "Drugih jezikov ni na voljo."
+
+msgid "#ERROR"
+msgstr ""
 
 msgid "Translate view"
 msgstr "Prevedi pogled"

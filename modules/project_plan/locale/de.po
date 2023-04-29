@@ -12,7 +12,7 @@ msgstr "Prozentsatz"
 
 msgctxt "field:project.allocation,work:"
 msgid "Work"
-msgstr "Tätigkeit"
+msgstr "Projektaufgabe"
 
 msgctxt "field:project.predecessor_successor,predecessor:"
 msgid "Predecessor"
@@ -64,7 +64,7 @@ msgstr "Fixe Startzeit"
 
 msgctxt "field:project.work,duration:"
 msgid "Duration"
-msgstr "Dauer"
+msgstr "Erfasste Zeit"
 
 msgctxt "field:project.work,early_finish_date:"
 msgid "Early Finish"
@@ -112,7 +112,7 @@ msgstr "Nachfolger"
 
 msgctxt "model:ir.action,name:wizard_leveling"
 msgid "Tasks Leveling"
-msgstr "Aufgaben abgleichen"
+msgstr "Projektaufgaben abgleichen"
 
 msgctxt "model:project.allocation,name:"
 msgid "Allocation"

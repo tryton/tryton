@@ -6,13 +6,14 @@ msgctxt "field:product.product,boms:"
 msgid "BOMs"
 msgstr "Retseptid"
 
-msgctxt "field:product.product,lead_times:"
-msgid "Lead Times"
-msgstr "Viiteaeg"
-
 msgctxt "field:product.product,producible:"
 msgid "Producible"
 msgstr "Toodetav"
+
+#, fuzzy
+msgctxt "field:product.product,production_lead_times:"
+msgid "Lead Times"
+msgstr "Viiteaeg"
 
 msgctxt "field:product.product-production.bom,bom:"
 msgid "BOM"

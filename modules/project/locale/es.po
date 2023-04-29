@@ -106,6 +106,10 @@ msgctxt "help:project.work,progress:"
 msgid "Estimated progress for this work."
 msgstr "Progreso estimado para este trabajo."
 
+msgctxt "help:project.work,timesheet_available:"
+msgid "Check to record time spent."
+msgstr "Marcar para registrar el tiempo invertido."
+
 msgctxt "help:project.work,timesheet_duration:"
 msgid "Total time spent on this work and the sub-works."
 msgstr "Tiempo total empleado en este trabajo y sus subtrabajos."
@@ -286,4 +290,4 @@ msgstr "Inicio:"
 
 msgctxt "view:project.work:"
 msgid "Timesheet:"
-msgstr "Hoja de trabajo:"
+msgstr "Parte de trabajo:"

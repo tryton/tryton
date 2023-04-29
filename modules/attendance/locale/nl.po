@@ -20,7 +20,7 @@ msgstr "Werknemer"
 
 msgctxt "field:attendance.line,type:"
 msgid "Type"
-msgstr "Type"
+msgstr "Soort"
 
 msgctxt "field:attendance.period,company:"
 msgid "Company"
@@ -44,7 +44,7 @@ msgstr "Datum"
 
 msgctxt "field:attendance.sheet,duration:"
 msgid "Duration"
-msgstr "duur"
+msgstr "Duur"
 
 msgctxt "field:attendance.sheet,employee:"
 msgid "Employee"
@@ -56,7 +56,7 @@ msgstr "Regels"
 
 msgctxt "field:attendance.sheet,timesheet_duration:"
 msgid "Timesheet Duration"
-msgstr "Urenstaatduur"
+msgstr "Urenstaat Duur"
 
 msgctxt "field:attendance.sheet.line,company:"
 msgid "Company"
@@ -68,7 +68,7 @@ msgstr "Datum"
 
 msgctxt "field:attendance.sheet.line,duration:"
 msgid "Duration"
-msgstr "duur"
+msgstr "Duur"
 
 msgctxt "field:attendance.sheet.line,employee:"
 msgid "Employee"
@@ -80,7 +80,7 @@ msgstr "Van"
 
 msgctxt "field:attendance.sheet.line,sheet:"
 msgid "Sheet"
-msgstr "Fiche"
+msgstr "Staat"
 
 msgctxt "field:attendance.sheet.line,to:"
 msgid "To"
@@ -108,11 +108,11 @@ msgstr "Aanwezigheidsperiode"
 
 msgctxt "model:attendance.sheet,name:"
 msgid "Attendance Sheet"
-msgstr "Aanwezigheids fiche"
+msgstr "Aanwezigheidsstaat"
 
 msgctxt "model:attendance.sheet.line,name:"
 msgid "Attendance SheetLine"
-msgstr "Lijn aanwezigheids- fiche"
+msgstr "Aanwezigheidsstaat regel"
 
 msgctxt "model:ir.action,name:act_attendance"
 msgid "Attendances"
@@ -124,12 +124,12 @@ msgstr "Periodes"
 
 msgctxt "model:ir.action,name:act_sheet"
 msgid "Sheets"
-msgstr "Fiche"
+msgstr "Staten"
 
 msgctxt "model:ir.message,text:msg_close_period_previous_open"
 msgid "To close period \"%(period)s\" you must first close \"%(other_period)s\"."
 msgstr ""
-"Om periode \"%(period)s\" te sluiten, moet je eerst \"% other_period)s\" "
+"Om periode \"%(period)s\" te sluiten, moet u eerst \"% other_period)s\" "
 "sluiten."
 
 msgctxt "model:ir.message,text:msg_delete_period_close"
@@ -143,7 +143,7 @@ msgid ""
 "To change period \"%(period)s\" you must first change \"%(other_period)s\" "
 "to draft."
 msgstr ""
-"Om periode \"%(period)s\" te sluiten, moet je eerst \"% other_period)s\" "
+"Om periode \"%(period)s\" te sluiten, moet u eerst \"% other_period)s\" "
 "terug in concept zetten."
 
 msgctxt "model:ir.message,text:msg_modify_period_close"
@@ -154,7 +154,7 @@ msgstr ""
 
 msgctxt "model:ir.model.button,string:period_close_button"
 msgid "Close"
-msgstr "Afsluiten"
+msgstr "Sluiten"
 
 msgctxt "model:ir.model.button,string:period_draft_button"
 msgid "Draft"
@@ -162,11 +162,11 @@ msgstr "Concept"
 
 msgctxt "model:ir.rule.group,name:rule_group_attendance"
 msgid "Own attendance"
-msgstr "Eigen aanwezigheden"
+msgstr "Eigen aanwezigheid"
 
 msgctxt "model:ir.rule.group,name:rule_group_attendance_admin"
 msgid "Any attendance"
-msgstr "Elke aanwezigheid"
+msgstr "Alle aanwezigheid"
 
 msgctxt "model:ir.rule.group,name:rule_group_attendance_companies"
 msgid "User in companies"
@@ -178,11 +178,11 @@ msgstr "Gebruiker in bedrijven"
 
 msgctxt "model:ir.rule.group,name:rule_group_sheet"
 msgid "Own attendance sheet"
-msgstr "Eigen aanwezigheids-fiche"
+msgstr "Eigen aanwezigheidsstaat"
 
 msgctxt "model:ir.rule.group,name:rule_group_sheet_admin"
 msgid "Any attendance sheet"
-msgstr "elke aanwezigheids-fiche"
+msgstr "Alle aanwezigheidsstaten"
 
 msgctxt "model:ir.rule.group,name:rule_group_sheet_companies"
 msgid "User in companies"
@@ -190,11 +190,11 @@ msgstr "Gebruiker in bedrijven"
 
 msgctxt "model:ir.rule.group,name:rule_group_sheet_line"
 msgid "Own attendance sheet line"
-msgstr "Eigen aanwezigheids-fiche lijn"
+msgstr "Eigen aanwezigheidsstaat regel"
 
 msgctxt "model:ir.rule.group,name:rule_group_sheet_line_admin"
 msgid "Any attendance sheet line"
-msgstr "Elke aanwezigheids-fiche lijn"
+msgstr "Alle aanwezigheidsstaat regel"
 
 msgctxt "model:ir.rule.group,name:rule_group_sheet_line_companies"
 msgid "User in companies"
@@ -202,7 +202,7 @@ msgstr "Gebruiker in bedrijven"
 
 msgctxt "model:ir.ui.menu,name:menu_attendance"
 msgid "Attendances"
-msgstr "Aanwezigheden"
+msgstr "Aanwezigheid"
 
 msgctxt "model:ir.ui.menu,name:menu_configuration"
 msgid "Configuration"
@@ -210,7 +210,7 @@ msgstr "Instellingen"
 
 msgctxt "model:ir.ui.menu,name:menu_main_attendance"
 msgid "Attendance"
-msgstr "Aanwezigheden"
+msgstr "Aanwezigheid"
 
 msgctxt "model:ir.ui.menu,name:menu_period_list"
 msgid "Periods"
@@ -218,23 +218,23 @@ msgstr "Periodes"
 
 msgctxt "model:ir.ui.menu,name:menu_sheet"
 msgid "Sheets"
-msgstr "Fiches"
+msgstr "Staten"
 
 msgctxt "model:res.group,name:group_attendance_admin"
 msgid "Attendance Administration"
-msgstr "Aanwezigheidsadministratie"
+msgstr "Aanwezigheid Administratie"
 
 msgctxt "selection:attendance.line,type:"
 msgid "In"
-msgstr "In"
+msgstr "Inkomend"
 
 msgctxt "selection:attendance.line,type:"
 msgid "Out"
-msgstr "Uit"
+msgstr "Uitgaand"
 
 msgctxt "selection:attendance.period,state:"
 msgid "Closed"
-msgstr "Afgesloten"
+msgstr "Gesloten"
 
 msgctxt "selection:attendance.period,state:"
 msgid "Draft"

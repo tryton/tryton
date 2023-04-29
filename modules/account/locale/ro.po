@@ -108,9 +108,10 @@ msgctxt "field:account.account,right:"
 msgid "Right"
 msgstr "Dreapta"
 
+#, fuzzy
 msgctxt "field:account.account,second_currency:"
-msgid "Secondary Currency"
-msgstr "Monedă Secundară"
+msgid "Second Currency"
+msgstr "Valută Secundara"
 
 msgctxt "field:account.account,start_date:"
 msgid "Start Date"
@@ -140,12 +141,10 @@ msgctxt "field:account.account-account.tax,tax:"
 msgid "Tax"
 msgstr "Impozit"
 
-#, fuzzy
 msgctxt "field:account.account.context,company:"
 msgid "Company"
 msgstr "Companie"
 
-#, fuzzy
 msgctxt "field:account.account.context,fiscalyear:"
 msgid "Fiscal Year"
 msgstr "An Fiscal"
@@ -517,30 +516,26 @@ msgctxt "field:account.aged_balance.context,unit:"
 msgid "Unit"
 msgstr "Unitate"
 
-#, fuzzy
 msgctxt "field:account.balance_sheet.comparison.context,company:"
 msgid "Company"
 msgstr "Companie"
 
-#, fuzzy
 msgctxt "field:account.balance_sheet.comparison.context,comparison:"
 msgid "Comparison"
 msgstr "Comparație"
 
-#, fuzzy
 msgctxt "field:account.balance_sheet.comparison.context,date:"
 msgid "Date"
 msgstr "Data"
 
-#, fuzzy
 msgctxt "field:account.balance_sheet.comparison.context,date_cmp:"
 msgid "Date"
 msgstr "Data"
 
 #, fuzzy
 msgctxt "field:account.balance_sheet.comparison.context,posted:"
-msgid "Posted Move"
-msgstr "Mișcare postata"
+msgid "Posted Moves"
+msgstr "Mișcari Postate"
 
 msgctxt "field:account.balance_sheet.context,company:"
 msgid "Company"
@@ -550,9 +545,23 @@ msgctxt "field:account.balance_sheet.context,date:"
 msgid "Date"
 msgstr "Data"
 
+#, fuzzy
 msgctxt "field:account.balance_sheet.context,posted:"
-msgid "Posted Move"
-msgstr "Mișcare postata"
+msgid "Posted Moves"
+msgstr "Mișcari Postate"
+
+#, fuzzy
+msgctxt "field:account.configuration,currency_exchange_credit_account:"
+msgid "Currency Exchange Credit Account"
+msgstr "Cont Credit"
+
+msgctxt "field:account.configuration,currency_exchange_debit_account:"
+msgid "Currency Exchange Debit Account"
+msgstr ""
+
+msgctxt "field:account.configuration,currency_exchange_journal:"
+msgid "Currency Exchange Journal"
+msgstr ""
 
 msgctxt "field:account.configuration,default_account_payable:"
 msgid "Default Account Payable"
@@ -582,6 +591,17 @@ msgctxt "field:account.configuration.default_account,company:"
 msgid "Company"
 msgstr "Companie"
 
+#, fuzzy
+msgctxt ""
+"field:account.configuration.default_account,currency_exchange_credit_account:"
+msgid "Currency Exchange Credit Account"
+msgstr "Cont Credit"
+
+msgctxt ""
+"field:account.configuration.default_account,currency_exchange_debit_account:"
+msgid "Currency Exchange Debit Account"
+msgstr ""
+
 msgctxt "field:account.configuration.default_account,default_account_payable:"
 msgid "Default Account Payable"
 msgstr "Cont Implicit Furnizor"
@@ -604,6 +624,15 @@ msgctxt ""
 "field:account.configuration.default_tax_rule,default_supplier_tax_rule:"
 msgid "Default Supplier Tax Rule"
 msgstr "Regula Implicita de Impozitare al Furnizorului"
+
+#, fuzzy
+msgctxt "field:account.configuration.journal,company:"
+msgid "Company"
+msgstr "Companie"
+
+msgctxt "field:account.configuration.journal,currency_exchange_journal:"
+msgid "Currency Exchange Journal"
+msgstr ""
 
 msgctxt "field:account.configuration.sequence,company:"
 msgid "Company"
@@ -838,9 +867,10 @@ msgctxt "field:account.general_ledger.account.context,journal:"
 msgid "Journal"
 msgstr "Jurnal"
 
+#, fuzzy
 msgctxt "field:account.general_ledger.account.context,posted:"
-msgid "Posted Move"
-msgstr "Mișcare postata"
+msgid "Posted Moves"
+msgstr "Mișcari Postate"
 
 msgctxt "field:account.general_ledger.account.context,start_period:"
 msgid "Start Period"
@@ -922,6 +952,11 @@ msgctxt "field:account.general_ledger.line,account_party:"
 msgid "Account Party"
 msgstr "Cont Parte"
 
+#, fuzzy
+msgctxt "field:account.general_ledger.line,amount_second_currency:"
+msgid "Amount Second Currency"
+msgstr "Suma Valută Secundara"
+
 msgctxt "field:account.general_ledger.line,balance:"
 msgid "Balance"
 msgstr "Sold"
@@ -978,6 +1013,11 @@ msgctxt "field:account.general_ledger.line,reconciliation:"
 msgid "Reconciliation"
 msgstr "Reconciliere"
 
+#, fuzzy
+msgctxt "field:account.general_ledger.line,second_currency:"
+msgid "Second Currency"
+msgstr "Valută Secundara"
+
 msgctxt "field:account.general_ledger.line,state:"
 msgid "State"
 msgstr "Stare"
@@ -1006,9 +1046,10 @@ msgctxt "field:account.general_ledger.line.context,party_cumulate:"
 msgid "Cumulate per Party"
 msgstr "Cumulare pe Parte"
 
+#, fuzzy
 msgctxt "field:account.general_ledger.line.context,posted:"
-msgid "Posted Move"
-msgstr "Mișcare postata"
+msgid "Posted Moves"
+msgstr "Mișcari Postate"
 
 msgctxt "field:account.general_ledger.line.context,start_period:"
 msgid "Start Period"
@@ -1089,6 +1130,11 @@ msgstr "Valuta"
 msgctxt "field:account.journal,debit:"
 msgid "Debit"
 msgstr "Debit"
+
+#, fuzzy
+msgctxt "field:account.journal,matching_sequence:"
+msgid "Matching Sequence"
+msgstr "Secvenţa de Reconciliere"
 
 msgctxt "field:account.journal,name:"
 msgid "Name"
@@ -1190,6 +1236,11 @@ msgctxt "field:account.move.cancel.default,description:"
 msgid "Description"
 msgstr "Descriere"
 
+#, fuzzy
+msgctxt "field:account.move.cancel.default,reversal:"
+msgid "Reversal"
+msgstr "fiecare"
+
 msgctxt "field:account.move.line,account:"
 msgid "Account"
 msgstr "Cont"
@@ -1276,6 +1327,11 @@ msgctxt "field:account.move.line,party_required:"
 msgid "Party Required"
 msgstr "Parte obligatorie"
 
+#, fuzzy
+msgctxt "field:account.move.line,payable_receivable_balance:"
+msgid "Payable/Receivable Balance"
+msgstr "Rânduri Client/Furnizor"
+
 msgctxt "field:account.move.line,period:"
 msgid "Period"
 msgstr "Perioadă"
@@ -1304,12 +1360,10 @@ msgctxt "field:account.move.line,tax_lines:"
 msgid "Tax Lines"
 msgstr "Rânduri Impozit"
 
-#, fuzzy
 msgctxt "field:account.move.line.delegate.start,description:"
 msgid "Description"
 msgstr "Descriere"
 
-#, fuzzy
 msgctxt "field:account.move.line.delegate.start,journal:"
 msgid "Journal"
 msgstr "Jurnal"
@@ -1328,16 +1382,29 @@ msgid "Journal"
 msgstr "Jurnal"
 
 #, fuzzy
+msgctxt "field:account.move.line.receivable_payable.context,payable:"
+msgid "Payable"
+msgstr "Furnizor"
+
+#, fuzzy
+msgctxt "field:account.move.line.receivable_payable.context,receivable:"
+msgid "Receivable"
+msgstr "Client"
+
+#, fuzzy
+msgctxt "field:account.move.line.receivable_payable.context,reconciled:"
+msgid "Reconciled"
+msgstr "Reconciliere"
+
+#, fuzzy
 msgctxt "field:account.move.line.reschedule.preview,currency:"
 msgid "Currency"
 msgstr "Valută"
 
-#, fuzzy
 msgctxt "field:account.move.line.reschedule.preview,description:"
 msgid "Description"
 msgstr "Descriere"
 
-#, fuzzy
 msgctxt "field:account.move.line.reschedule.preview,journal:"
 msgid "Journal"
 msgstr "Jurnal"
@@ -1357,17 +1424,14 @@ msgctxt "field:account.move.line.reschedule.start,currency:"
 msgid "Currency"
 msgstr "Valută"
 
-#, fuzzy
 msgctxt "field:account.move.line.reschedule.start,frequency:"
 msgid "Frequency"
 msgstr "Frecvență"
 
-#, fuzzy
 msgctxt "field:account.move.line.reschedule.start,interval:"
 msgid "Interval"
 msgstr "Interval"
 
-#, fuzzy
 msgctxt "field:account.move.line.reschedule.start,number:"
 msgid "Number"
 msgstr "Număr"
@@ -1392,7 +1456,6 @@ msgctxt "field:account.move.line.reschedule.term,currency:"
 msgid "Currency"
 msgstr "Valută"
 
-#, fuzzy
 msgctxt "field:account.move.line.reschedule.term,date:"
 msgid "Date"
 msgstr "Data"
@@ -1497,9 +1560,10 @@ msgctxt "field:account.move.reconciliation,lines:"
 msgid "Lines"
 msgstr "Rânduri"
 
-msgctxt "field:account.move.reconciliation,name:"
-msgid "Name"
-msgstr "Denumire"
+#, fuzzy
+msgctxt "field:account.move.reconciliation,number:"
+msgid "Number"
+msgstr "Număr"
 
 msgctxt "field:account.move.template,company:"
 msgid "Company"
@@ -1609,6 +1673,11 @@ msgctxt "field:account.reconcile.show,company:"
 msgid "Company"
 msgstr "Companie"
 
+#, fuzzy
+msgctxt "field:account.reconcile.show,currencies:"
+msgid "Currencies"
+msgstr "Valută"
+
 msgctxt "field:account.reconcile.show,currency:"
 msgid "Currency"
 msgstr "Valuta"
@@ -1643,7 +1712,7 @@ msgstr "Suma"
 
 msgctxt "field:account.reconcile.start,automatic:"
 msgid "Automatic"
-msgstr ""
+msgstr "Automat"
 
 #, fuzzy
 msgctxt "field:account.reconcile.start,only_balanced:"
@@ -1799,7 +1868,6 @@ msgctxt "field:account.tax.code,template_override:"
 msgid "Override Template"
 msgstr "Suprascriere șablon"
 
-#, fuzzy
 msgctxt "field:account.tax.code.context,company:"
 msgid "Company"
 msgstr "Companie"
@@ -1809,22 +1877,18 @@ msgctxt "field:account.tax.code.context,end_period:"
 msgid "End Period"
 msgstr "Sfârșit de Perioada"
 
-#, fuzzy
 msgctxt "field:account.tax.code.context,fiscalyear:"
 msgid "Fiscal Year"
 msgstr "An Fiscal"
 
-#, fuzzy
 msgctxt "field:account.tax.code.context,method:"
 msgid "Method"
 msgstr "Metodă"
 
-#, fuzzy
 msgctxt "field:account.tax.code.context,period:"
 msgid "Period"
 msgstr "Perioadă"
 
-#, fuzzy
 msgctxt "field:account.tax.code.context,periods:"
 msgid "Periods"
 msgstr "Perioade"
@@ -2271,10 +2335,9 @@ msgctxt "help:account.account,reconcile:"
 msgid "Allow move lines of this account to be reconciled."
 msgstr "Permite reconciliere al randurilr al contului."
 
+#, fuzzy
 msgctxt "help:account.account,second_currency:"
-msgid ""
-"Force all moves for this account \n"
-"to have this secondary currency."
+msgid "Force all moves for this account to have this second currency."
 msgstr ""
 "Obligatoriu pentru toate mişcările pe acest cont\n"
 "să aiba o valută secundară."
@@ -2390,6 +2453,10 @@ msgctxt "help:account.move,post_number:"
 msgid "Also known as Folio Number."
 msgstr "Cunoscut şi că Numărul Folio."
 
+msgctxt "help:account.move.cancel.default,reversal:"
+msgid "Reverse debit and credit."
+msgstr ""
+
 msgctxt "help:account.move.line,amount_second_currency:"
 msgid "The amount expressed in a second currency."
 msgstr "Sumă exprimata în valută secundară."
@@ -2402,7 +2469,6 @@ msgctxt "help:account.move.line,second_currency:"
 msgid "The second currency."
 msgstr "Valută secundara."
 
-#, fuzzy
 msgctxt "help:account.move.line.reschedule.start,interval:"
 msgid "The length of each period, in months."
 msgstr "Lungimea fiecărei perioade, în luni."
@@ -2586,6 +2652,11 @@ msgctxt "model:account.configuration.default_tax_rule,name:"
 msgid "Account Configuration Default Tax Rule"
 msgstr "Configurare Implicita pentru Reguli de Impozitare"
 
+#, fuzzy
+msgctxt "model:account.configuration.journal,name:"
+msgid "Account Configuration Journal"
+msgstr "Configurare"
+
 msgctxt "model:account.configuration.sequence,name:"
 msgid "Account Configuration Sequence"
 msgstr "Secvență Configurare Cont"
@@ -2654,13 +2725,18 @@ msgctxt "model:account.journal,name:journal_cash"
 msgid "Cash"
 msgstr "Cash"
 
+#, fuzzy
+msgctxt "model:account.journal,name:journal_currency_exchange"
+msgid "Currency Exchange"
+msgstr "Valută"
+
 msgctxt "model:account.journal,name:journal_expense"
 msgid "Expense"
 msgstr "Cheltuiala"
 
 msgctxt "model:account.journal,name:journal_miscellaneous"
 msgid "Miscellaneous"
-msgstr ""
+msgstr "Diverse"
 
 msgctxt "model:account.journal,name:journal_revenue"
 msgid "Revenue"
@@ -2702,6 +2778,11 @@ msgstr "Delegat la"
 msgctxt "model:account.move.line.group.start,name:"
 msgid "Group Lines"
 msgstr "Grup de Rânduri"
+
+#, fuzzy
+msgctxt "model:account.move.line.receivable_payable.context,name:"
+msgid "Receivable/Payable Line Context"
+msgstr "Registru General Context Rând"
 
 #, fuzzy
 msgctxt "model:account.move.line.reschedule.preview,name:"
@@ -3079,7 +3160,6 @@ msgctxt "model:ir.action,name:act_tax_list"
 msgid "Taxes"
 msgstr "Impozite"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_tax_rule_form"
 msgid "Rules"
 msgstr "Reguli"
@@ -3128,21 +3208,6 @@ msgstr "Proba Impozit"
 msgctxt "model:ir.action,name:wizard_update_chart"
 msgid "Update Chart of Accounts from Template"
 msgstr "Actualizare Plan de Conturi de la Șablon"
-
-msgctxt ""
-"model:ir.action.act_window.domain,name:act_move_line_payable_receivable_domain_all"
-msgid "All"
-msgstr "Tot"
-
-msgctxt ""
-"model:ir.action.act_window.domain,name:act_move_line_payable_receivable_domain_payable"
-msgid "Payable"
-msgstr "Clienți"
-
-msgctxt ""
-"model:ir.action.act_window.domain,name:act_move_line_payable_receivable_domain_receivable"
-msgid "Receivable"
-msgstr "Client"
 
 msgctxt "model:ir.message,text:msg_account_chart_exists"
 msgid "A chart of accounts already exists for company \"%(company)s\"."
@@ -3419,15 +3484,7 @@ msgstr ""
 "Perioada mișcării \"%(move)s\" este închisă. \n"
 "Folosiți perioada curentă pentru a anula mișcarea?"
 
-msgctxt "model:ir.message,text:msg_move_date_outside_period"
-msgid ""
-"The date of move \"%(move)s\" is outside the period, you must change the "
-"date or the period."
-msgstr ""
-"Data mișcării \"%(move)s\" este în afara perioadei, trebuie schimbată data "
-"sau perioada."
-
-msgctxt "model:ir.message,text:msg_move_template_expession_not_number"
+msgctxt "model:ir.message,text:msg_move_template_expression_not_number"
 msgid ""
 "The value \"%(value)s\" of \"%(expression)s\" from template \"%(template)s\""
 " is not a number."
@@ -3439,12 +3496,36 @@ msgid ""
 "\"%(error)s\""
 msgstr ""
 
+msgctxt "model:ir.message,text:msg_move_template_keyword_name_not_identifier"
+msgid "The keyword name \"%(name)s\" is not a valid identifier."
+msgstr ""
+
+#, fuzzy
 msgctxt "model:ir.message,text:msg_no_fiscalyear_date"
-msgid "To continue, you must create a fiscal year for the date \"%(date)s\"."
+msgid ""
+"To continue, you must create a fiscal year for the date \"%(date)s\" and "
+"company \"%(company)s\"."
 msgstr "Pentru a continua, trebuie creat anul fiscal pentru data \"%(date)s\"."
 
+#, fuzzy
+msgctxt "model:ir.message,text:msg_no_open_fiscalyear_date"
+msgid ""
+"To continue, you must reopen the fiscal year \"%(fiscalyear)s\" of company "
+"\"%(company)s\"for the date \"%(date)s\"."
+msgstr "Pentru a continua, trebuie creat anul fiscal pentru data \"%(date)s\"."
+
+#, fuzzy
+msgctxt "model:ir.message,text:msg_no_open_period_date"
+msgid ""
+"To continue, you must reopen the period \"%(period)s\" of company "
+"\"%(company)s\" for the date \"%(date)s\"."
+msgstr "Pentru a continua, trebuie creată perioada pentru data \"%(date)s\"."
+
+#, fuzzy
 msgctxt "model:ir.message,text:msg_no_period_date"
-msgid "To continue, you must create a period for the date \"%(date)s\"."
+msgid ""
+"To continue, you must create a period for the date \"%(date)s\" and company "
+"\"%(company)s\"."
 msgstr "Pentru a continua, trebuie creată perioada pentru data \"%(date)s\"."
 
 #, fuzzy
@@ -3534,6 +3615,15 @@ msgstr ""
 msgctxt "model:ir.message,text:msg_reconciliation_delete_delegated"
 msgid ""
 "The reconciliation \"%(reconciliation)s\" is delegated to the line \"%(line)s\".\n"
+"You may need to cancel its move \"%(move)s\"."
+msgstr ""
+"Reconcilierea \"%(reconciliation)s\" este corelată cu rândul \"%(line)s\".\n"
+"Posibil să fie nevoie de anularea mișcării \"%(move)s\"."
+
+#, fuzzy
+msgctxt "model:ir.message,text:msg_reconciliation_delete_write_off"
+msgid ""
+"The reconciliation \"%(reconciliation)s\" is linked to the write-off line \"%(line)s\".\n"
 "You may need to cancel its move \"%(move)s\"."
 msgstr ""
 "Reconcilierea \"%(reconciliation)s\" este corelată cu rândul \"%(line)s\".\n"
@@ -4628,13 +4718,38 @@ msgctxt "view:account.account:"
 msgid "General Information"
 msgstr "Informații Generale"
 
+#, fuzzy
+msgctxt "view:account.account:"
+msgid "General Ledger"
+msgstr "Registru General"
+
 msgctxt "view:account.aged_balance.context:"
 msgid "Terms"
 msgstr "Termene"
 
+#, fuzzy
+msgctxt "view:account.configuration:"
+msgid "Credit Account"
+msgstr "Cont Credit"
+
+#, fuzzy
+msgctxt "view:account.configuration:"
+msgid "Currency Exchange"
+msgstr "Valută"
+
+#, fuzzy
+msgctxt "view:account.configuration:"
+msgid "Debit Account"
+msgstr "Cont Debit"
+
 msgctxt "view:account.configuration:"
 msgid "Invoice"
 msgstr "Factura fiscala"
+
+#, fuzzy
+msgctxt "view:account.configuration:"
+msgid "Journal"
+msgstr "Jurnal"
 
 msgctxt "view:account.configuration:"
 msgid "Move"
@@ -4713,6 +4828,11 @@ msgstr "luni"
 msgctxt "view:account.move.line.template:"
 msgid "Other Info"
 msgstr "Alte Informații"
+
+#, fuzzy
+msgctxt "view:account.move.line:"
+msgid "Balance"
+msgstr "Sold"
 
 msgctxt "view:account.move.line:"
 msgid "Credit"

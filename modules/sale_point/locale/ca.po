@@ -132,7 +132,7 @@ msgstr "Data"
 
 msgctxt "field:sale.point.cash.transfer,move:"
 msgid "Move"
-msgstr "Moviment"
+msgstr "Assentament"
 
 msgctxt "field:sale.point.cash.transfer,point:"
 msgid "Point"
@@ -248,7 +248,7 @@ msgstr "Línies"
 
 msgctxt "field:sale.point.sale,move:"
 msgid "Move"
-msgstr "Moviment"
+msgstr "Assentament"
 
 msgctxt "field:sale.point.sale,number:"
 msgid "Number"
@@ -288,7 +288,7 @@ msgstr "Moneda"
 
 msgctxt "field:sale.point.sale.line,moves:"
 msgid "Moves"
-msgstr "Moviments"
+msgstr "Assentament"
 
 msgctxt "field:sale.point.sale.line,product:"
 msgid "Product"

@@ -6,30 +6,6 @@ msgctxt "field:carrier,shipping_service:"
 msgid "Shipping Service"
 msgstr "Versanddienst"
 
-msgctxt "field:stock.package,height:"
-msgid "Height"
-msgstr "Höhe"
-
-msgctxt "field:stock.package,height_digits:"
-msgid "Height Digits"
-msgstr "Nachkommastellen Höhe"
-
-msgctxt "field:stock.package,height_uom:"
-msgid "Height Unit"
-msgstr "Einheit Höhe"
-
-msgctxt "field:stock.package,length:"
-msgid "Length"
-msgstr "Länge"
-
-msgctxt "field:stock.package,length_digits:"
-msgid "Length Digits"
-msgstr "Nachkommastellen Länge"
-
-msgctxt "field:stock.package,length_uom:"
-msgid "Length Unit"
-msgstr "Einheit Länge"
-
 msgctxt "field:stock.package,shipping_label:"
 msgid "Shipping Label"
 msgstr "Versandetikett"
@@ -49,54 +25,6 @@ msgstr "Versandbeleg"
 msgctxt "field:stock.package,shipping_tracking_url:"
 msgid "Shipping Tracking URL"
 msgstr "Versand Tracking URL"
-
-msgctxt "field:stock.package,width:"
-msgid "Width"
-msgstr "Breite"
-
-msgctxt "field:stock.package,width_digits:"
-msgid "Width Digits"
-msgstr "Nachkommastellen Breite"
-
-msgctxt "field:stock.package,width_uom:"
-msgid "Width Unit"
-msgstr "Einheit Breite"
-
-msgctxt "field:stock.package.type,height:"
-msgid "Height"
-msgstr "Höhe"
-
-msgctxt "field:stock.package.type,height_digits:"
-msgid "Height Digits"
-msgstr "Nachkommastellen Höhe"
-
-msgctxt "field:stock.package.type,height_uom:"
-msgid "Height Unit"
-msgstr "Einheit Höhe"
-
-msgctxt "field:stock.package.type,length:"
-msgid "Length"
-msgstr "Länge"
-
-msgctxt "field:stock.package.type,length_digits:"
-msgid "Length Digits"
-msgstr "Nachkommastellen Länge"
-
-msgctxt "field:stock.package.type,length_uom:"
-msgid "Length Unit"
-msgstr "Einheit Länge"
-
-msgctxt "field:stock.package.type,width:"
-msgid "Width"
-msgstr "Breite"
-
-msgctxt "field:stock.package.type,width_digits:"
-msgid "Width Digits"
-msgstr "Nachkommastellen Breite"
-
-msgctxt "field:stock.package.type,width_uom:"
-msgid "Width Unit"
-msgstr "Einheit Breite"
 
 msgctxt "field:stock.shipment.in.return,carrier:"
 msgid "Carrier"

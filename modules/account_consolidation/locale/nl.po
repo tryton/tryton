@@ -63,8 +63,8 @@ msgid "Date"
 msgstr "Datum"
 
 msgctxt "field:account.consolidation.balance_sheet.context,posted:"
-msgid "Posted Move"
-msgstr "Bevestigde boeking"
+msgid "Posted Moves"
+msgstr "Geboekte boekingen"
 
 msgctxt "field:account.consolidation.income_statement.context,companies:"
 msgid "Companies"
@@ -87,8 +87,8 @@ msgid "From Date"
 msgstr "Vanaf datum"
 
 msgctxt "field:account.consolidation.income_statement.context,posted:"
-msgid "Posted Move"
-msgstr "Bevestigde boeking"
+msgid "Posted Moves"
+msgstr "Geboekte boekingen"
 
 msgctxt "field:account.consolidation.income_statement.context,to_date:"
 msgid "To Date"

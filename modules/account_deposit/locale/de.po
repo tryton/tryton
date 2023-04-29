@@ -18,6 +18,10 @@ msgctxt "field:account.invoice.recall_deposit.start,company:"
 msgid "Company"
 msgstr "Unternehmen"
 
+msgctxt "field:account.invoice.recall_deposit.start,currency:"
+msgid "Currency"
+msgstr "Währung"
+
 msgctxt "field:account.invoice.recall_deposit.start,description:"
 msgid "Description"
 msgstr "Beschreibung"

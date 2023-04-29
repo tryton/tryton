@@ -6,36 +6,6 @@ msgctxt "field:carrier,shipping_service:"
 msgid "Shipping Service"
 msgstr ""
 
-#, fuzzy
-msgctxt "field:stock.package,height:"
-msgid "Height"
-msgstr "Ширина"
-
-#, fuzzy
-msgctxt "field:stock.package,height_digits:"
-msgid "Height Digits"
-msgstr "Ширина"
-
-#, fuzzy
-msgctxt "field:stock.package,height_uom:"
-msgid "Height Unit"
-msgstr "Ширина"
-
-#, fuzzy
-msgctxt "field:stock.package,length:"
-msgid "Length"
-msgstr "Длина"
-
-#, fuzzy
-msgctxt "field:stock.package,length_digits:"
-msgid "Length Digits"
-msgstr "Длина"
-
-#, fuzzy
-msgctxt "field:stock.package,length_uom:"
-msgid "Length Unit"
-msgstr "Длина"
-
 msgctxt "field:stock.package,shipping_label:"
 msgid "Shipping Label"
 msgstr ""
@@ -56,59 +26,6 @@ msgstr ""
 
 msgctxt "field:stock.package,shipping_tracking_url:"
 msgid "Shipping Tracking URL"
-msgstr ""
-
-#, fuzzy
-msgctxt "field:stock.package,width:"
-msgid "Width"
-msgstr "Ширина"
-
-msgctxt "field:stock.package,width_digits:"
-msgid "Width Digits"
-msgstr ""
-
-#, fuzzy
-msgctxt "field:stock.package,width_uom:"
-msgid "Width Unit"
-msgstr "Ширина"
-
-#, fuzzy
-msgctxt "field:stock.package.type,height:"
-msgid "Height"
-msgstr "Ширина"
-
-msgctxt "field:stock.package.type,height_digits:"
-msgid "Height Digits"
-msgstr ""
-
-msgctxt "field:stock.package.type,height_uom:"
-msgid "Height Unit"
-msgstr ""
-
-#, fuzzy
-msgctxt "field:stock.package.type,length:"
-msgid "Length"
-msgstr "Длина"
-
-msgctxt "field:stock.package.type,length_digits:"
-msgid "Length Digits"
-msgstr ""
-
-msgctxt "field:stock.package.type,length_uom:"
-msgid "Length Unit"
-msgstr ""
-
-#, fuzzy
-msgctxt "field:stock.package.type,width:"
-msgid "Width"
-msgstr "Ширина"
-
-msgctxt "field:stock.package.type,width_digits:"
-msgid "Width Digits"
-msgstr ""
-
-msgctxt "field:stock.package.type,width_uom:"
-msgid "Width Unit"
 msgstr ""
 
 msgctxt "field:stock.shipment.in.return,carrier:"

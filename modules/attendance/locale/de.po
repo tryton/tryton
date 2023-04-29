@@ -44,7 +44,7 @@ msgstr "Datum"
 
 msgctxt "field:attendance.sheet,duration:"
 msgid "Duration"
-msgstr "Dauer"
+msgstr "Erfasste Zeit"
 
 msgctxt "field:attendance.sheet,employee:"
 msgid "Employee"
@@ -56,7 +56,7 @@ msgstr "Einträge"
 
 msgctxt "field:attendance.sheet,timesheet_duration:"
 msgid "Timesheet Duration"
-msgstr "Zeiterfassung Dauer"
+msgstr "Erfasste Gesamtzeit"
 
 msgctxt "field:attendance.sheet.line,company:"
 msgid "Company"
@@ -68,7 +68,7 @@ msgstr "Datum"
 
 msgctxt "field:attendance.sheet.line,duration:"
 msgid "Duration"
-msgstr "Dauer"
+msgstr "Erfasste Zeit"
 
 msgctxt "field:attendance.sheet.line,employee:"
 msgid "Employee"
@@ -121,7 +121,7 @@ msgstr "Anwesenheiten"
 
 msgctxt "model:ir.action,name:act_period_list"
 msgid "Periods"
-msgstr "Lagerperioden"
+msgstr "Anwesenheitszeiträume"
 
 msgctxt "model:ir.action,name:act_sheet"
 msgid "Sheets"
@@ -216,7 +216,7 @@ msgstr "Anwesenheit"
 
 msgctxt "model:ir.ui.menu,name:menu_period_list"
 msgid "Periods"
-msgstr "Lagerperioden"
+msgstr "Anwesenheitszeiträume"
 
 msgctxt "model:ir.ui.menu,name:menu_sheet"
 msgid "Sheets"

@@ -31,9 +31,8 @@ msgstr "Indica el usuario"
 msgid "specify the server hostname:port"
 msgstr "Indica el nombre:puerto del servidor"
 
-#, python-format
-msgid "Unable to write config file %s."
-msgstr "No se ha podido escribir el archivo de configuración %s."
+msgid "disable thread usage"
+msgstr "desactivar el uso de hilos"
 
 #, python-format
 msgid "Unable to set locale %s"
@@ -69,12 +68,6 @@ msgstr "Aceptar"
 
 msgid "Your selection:"
 msgstr "Su selección:"
-
-msgid "Select"
-msgstr "Seleccionar"
-
-msgid "Save"
-msgstr "Guardar"
 
 msgid "Save As..."
 msgstr "Guardar como..."
@@ -203,6 +196,9 @@ msgstr "Plantilla"
 
 msgid "Edit..."
 msgstr "Editar..."
+
+msgid "View Logs..."
+msgstr "Ver registros..."
 
 msgid "Attachments..."
 msgstr "Adjuntos..."
@@ -597,6 +593,9 @@ msgstr "Seleccionar un archivo"
 msgid "Remove File"
 msgstr "Eliminar archivo"
 
+msgid "Select"
+msgstr "Seleccionar"
+
 msgid "Add..."
 msgstr "Añadir..."
 
@@ -619,24 +618,6 @@ msgstr "Nota (%d/%d)"
 
 msgid "You have to select one record."
 msgstr "Debe elegir un registro."
-
-msgid "ID:"
-msgstr "ID:"
-
-msgid "Created by:"
-msgstr "Creado por:"
-
-msgid "Created at:"
-msgstr "Creado el:"
-
-msgid "Edited by:"
-msgstr "Editado por:"
-
-msgid "Edited at:"
-msgstr "Editado el:"
-
-msgid "Model:"
-msgstr "Modelo:"
 
 msgid "Are you sure to remove this record?"
 msgstr "¿Está seguro que quiere eliminar este registro?"
@@ -701,6 +682,28 @@ msgstr "Preferencias del límite de búsqueda"
 
 msgid "Limit:"
 msgstr "Límite:"
+
+#, python-format
+msgid "Logs (%s)"
+msgstr "Registros (%s)"
+
+msgid "Model:"
+msgstr "Modelo:"
+
+msgid "ID:"
+msgstr "ID:"
+
+msgid "Created by:"
+msgstr "Creado por:"
+
+msgid "Created at:"
+msgstr "Creado el:"
+
+msgid "Last Modified by:"
+msgstr "Última modificación por:"
+
+msgid "Last Modified at:"
+msgstr "Última modificación el:"
 
 #, python-format
 msgid "Notes (%s)"
@@ -868,6 +871,9 @@ msgstr "Nombre"
 
 msgid "Open"
 msgstr "Abrir"
+
+msgid "Save"
+msgstr "Guardar"
 
 msgid "Listed Records"
 msgstr "Registros listados"
@@ -1090,17 +1096,14 @@ msgstr "año anterior"
 msgid "next year"
 msgstr "año próximo"
 
-msgid "Day View"
-msgstr "Vista de día"
-
-msgid "Week View"
-msgstr "Vista semanal"
-
-msgid "Month View"
-msgstr "Vista mensual"
+msgid "Day"
+msgstr "Día"
 
 msgid "Week"
 msgstr "Semana"
+
+msgid "Month"
+msgstr "Mes"
 
 msgid "Select..."
 msgstr "Seleccionar…"
@@ -1166,6 +1169,9 @@ msgstr "Debe guardar el registro antes de añadir traducciones."
 
 msgid "No other language available."
 msgstr "No hay otro idioma disponible."
+
+msgid "#ERROR"
+msgstr "#ERROR"
 
 msgid "Translate view"
 msgstr "Traducir vista"

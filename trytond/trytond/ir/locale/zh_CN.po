@@ -140,6 +140,11 @@ msgctxt "field:ir.action.act_window.view,act_window:"
 msgid "Action"
 msgstr "动作"
 
+#, fuzzy
+msgctxt "field:ir.action.act_window.view,model:"
+msgid "Model"
+msgstr "模型"
+
 msgctxt "field:ir.action.act_window.view,view:"
 msgid "View"
 msgstr "视图"
@@ -976,6 +981,29 @@ msgstr "读权限"
 msgctxt "field:ir.model.field.access,perm_write:"
 msgid "Write Access"
 msgstr "写权限"
+
+#, fuzzy
+msgctxt "field:ir.model.log,action:"
+msgid "Action"
+msgstr "操作"
+
+msgctxt "field:ir.model.log,event:"
+msgid "Event"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:ir.model.log,resource:"
+msgid "Resource"
+msgstr "资源"
+
+msgctxt "field:ir.model.log,target:"
+msgid "Target"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:ir.model.log,user:"
+msgid "User"
+msgstr "用户"
 
 msgctxt "field:ir.model.print_model_graph.start,filter:"
 msgid "Filter"
@@ -1884,6 +1912,10 @@ msgctxt "model:ir.action,name:act_model_form"
 msgid "Models"
 msgstr "模型"
 
+msgctxt "model:ir.action,name:act_model_log_form"
+msgid "Logs"
+msgstr ""
+
 msgctxt "model:ir.action,name:act_module_activate_upgrade"
 msgid "Perform Pending Activation/Upgrade"
 msgstr "挂起激活 / 升级"
@@ -2367,6 +2399,10 @@ msgctxt "model:ir.lang,name:lang_tr"
 msgid "Turkish"
 msgstr "土耳其语"
 
+msgctxt "model:ir.lang,name:lang_uk"
+msgid "Ukrainian"
+msgstr ""
+
 msgctxt "model:ir.lang,name:lang_zh_CN"
 msgid "Chinese Simplified"
 msgstr "中文简体"
@@ -2486,9 +2522,10 @@ msgstr ""
 "不允许删除模型 \"%(model)s\" 的记录 \"%(ids)s\" ， 由于下面的规则（至少一条）:\n"
 "%(rules)s"
 
+#, fuzzy
 msgctxt "model:ir.message,text:msg_delete_xml_record"
-msgid "You are not allowed to delete this record."
-msgstr "没有权限删除此记录."
+msgid "You are not allowed to delete the record \"%(record)s\" of \"%(model)s\"."
+msgstr "没有权限在 \"%(model)s\" 上运行向导程序 \"%(wizard)s\"."
 
 #, fuzzy
 msgctxt "model:ir.message,text:msg_dict_no"
@@ -2726,10 +2763,9 @@ msgctxt "model:ir.message,text:msg_notes"
 msgid "Notes"
 msgstr "注释"
 
+#, fuzzy
 msgctxt "model:ir.message,text:msg_read_error"
-msgid ""
-"You are trying to read records \"%(ids)s\" of \"%(model)s\" that don't exist"
-" anymore."
+msgid "You are trying to read records \"%(ids)s\" of \"%(model)s\" that don't exist."
 msgstr "\"%(model)s\" 的记录 \"%(ids)s\" 已经不存在了，无法读取."
 
 msgctxt "model:ir.message,text:msg_read_rule_error"
@@ -2839,6 +2875,10 @@ msgctxt "model:ir.message,text:msg_setter_function_missing"
 msgid "Missing setter function for field \"%(field)s\" in \"%(model)s\"."
 msgstr "模型 \"%(model)s\" 的字段\"%(field)s\" 没有 setter 函数."
 
+msgctxt "model:ir.message,text:msg_singleton"
+msgid "Only one singleton can be created."
+msgstr ""
+
 #, fuzzy
 msgctxt "model:ir.message,text:msg_size_validation"
 msgid ""
@@ -2921,10 +2961,11 @@ msgctxt "model:ir.message,text:msg_view_search_invalid_domain"
 msgid "Invalid domain or search criteria \"%(domain)s\" for search \"%(search)s\"."
 msgstr "动作 \"%(action)s\" 的域或找条件 \"%(domain)s\" 无效."
 
+#, fuzzy
 msgctxt "model:ir.message,text:msg_write_error"
 msgid ""
 "You are trying to write to records \"%(ids)s\" of \"%(model)s\" that don't "
-"exist anymore."
+"exist."
 msgstr "\"%(model)s\" 的记录 \"%(ids)s\" 已经不存在了，无法写入."
 
 msgctxt "model:ir.message,text:msg_write_rule_error"
@@ -2935,9 +2976,12 @@ msgstr ""
 "不允许写入模型 \"%(model)s\" 的记录 \"%(ids)s\" ， 由于下面的规则（至少一条）:\n"
 "%(rules)s"
 
+#, fuzzy
 msgctxt "model:ir.message,text:msg_write_xml_record"
-msgid "You are not allowed to modify this record."
-msgstr "你无权修改此记录."
+msgid ""
+"You are not allowed to modify the field \"%(field)s\" in \"%(record)s\" of "
+"\"%(model)s\"."
+msgstr "模型\"%(model)s\"的字段\"%(field)s\"需要有取值."
 
 #, fuzzy
 msgctxt "model:ir.message,text:msg_xml_id_syntax_error"
@@ -3047,6 +3091,11 @@ msgstr "模型字段"
 msgctxt "model:ir.model.field.access,name:"
 msgid "Model Field Access"
 msgstr "模型字段权限"
+
+#, fuzzy
+msgctxt "model:ir.model.log,name:"
+msgid "Log"
+msgstr "老挝语"
 
 msgctxt "model:ir.model.print_model_graph.start,name:"
 msgid "Print Model Graph"
@@ -3281,6 +3330,10 @@ msgctxt "model:ir.ui.menu,name:menu_model_form"
 msgid "Models"
 msgstr "模型"
 
+msgctxt "model:ir.ui.menu,name:menu_model_log_form"
+msgid "Logs"
+msgstr ""
+
 msgctxt "model:ir.ui.menu,name:menu_models"
 msgid "Models"
 msgstr "模型"
@@ -3412,6 +3465,26 @@ msgctxt "selection:ir.action,records:"
 msgid "Selected"
 msgstr "已选定的节点"
 
+#, fuzzy
+msgctxt "selection:ir.action,type:"
+msgid "Report"
+msgstr "报告"
+
+#, fuzzy
+msgctxt "selection:ir.action,type:"
+msgid "URL"
+msgstr "网址"
+
+#, fuzzy
+msgctxt "selection:ir.action,type:"
+msgid "Window"
+msgstr "窗口"
+
+#, fuzzy
+msgctxt "selection:ir.action,type:"
+msgid "Wizard"
+msgstr "向导"
+
 msgctxt "selection:ir.action.act_window,records:"
 msgid "Listed"
 msgstr ""
@@ -3420,6 +3493,26 @@ msgstr ""
 msgctxt "selection:ir.action.act_window,records:"
 msgid "Selected"
 msgstr "已选定的节点"
+
+#, fuzzy
+msgctxt "selection:ir.action.act_window,type:"
+msgid "Report"
+msgstr "报告"
+
+#, fuzzy
+msgctxt "selection:ir.action.act_window,type:"
+msgid "URL"
+msgstr "网址"
+
+#, fuzzy
+msgctxt "selection:ir.action.act_window,type:"
+msgid "Window"
+msgstr "窗口"
+
+#, fuzzy
+msgctxt "selection:ir.action.act_window,type:"
+msgid "Wizard"
+msgstr "向导"
 
 msgctxt "selection:ir.action.keyword,keyword:"
 msgid "Action form"
@@ -3450,6 +3543,26 @@ msgctxt "selection:ir.action.report,records:"
 msgid "Selected"
 msgstr "已选定的节点"
 
+#, fuzzy
+msgctxt "selection:ir.action.report,type:"
+msgid "Report"
+msgstr "报告"
+
+#, fuzzy
+msgctxt "selection:ir.action.report,type:"
+msgid "URL"
+msgstr "网址"
+
+#, fuzzy
+msgctxt "selection:ir.action.report,type:"
+msgid "Window"
+msgstr "窗口"
+
+#, fuzzy
+msgctxt "selection:ir.action.report,type:"
+msgid "Wizard"
+msgstr "向导"
+
 msgctxt "selection:ir.action.url,records:"
 msgid "Listed"
 msgstr ""
@@ -3459,6 +3572,26 @@ msgctxt "selection:ir.action.url,records:"
 msgid "Selected"
 msgstr "已选定的节点"
 
+#, fuzzy
+msgctxt "selection:ir.action.url,type:"
+msgid "Report"
+msgstr "报告"
+
+#, fuzzy
+msgctxt "selection:ir.action.url,type:"
+msgid "URL"
+msgstr "网址"
+
+#, fuzzy
+msgctxt "selection:ir.action.url,type:"
+msgid "Window"
+msgstr "窗口"
+
+#, fuzzy
+msgctxt "selection:ir.action.url,type:"
+msgid "Wizard"
+msgstr "向导"
+
 msgctxt "selection:ir.action.wizard,records:"
 msgid "Listed"
 msgstr ""
@@ -3467,6 +3600,26 @@ msgstr ""
 msgctxt "selection:ir.action.wizard,records:"
 msgid "Selected"
 msgstr "已选定的节点"
+
+#, fuzzy
+msgctxt "selection:ir.action.wizard,type:"
+msgid "Report"
+msgstr "报告"
+
+#, fuzzy
+msgctxt "selection:ir.action.wizard,type:"
+msgid "URL"
+msgstr "网址"
+
+#, fuzzy
+msgctxt "selection:ir.action.wizard,type:"
+msgid "Window"
+msgstr "窗口"
+
+#, fuzzy
+msgctxt "selection:ir.action.wizard,type:"
+msgid "Wizard"
+msgstr "向导"
 
 msgctxt "selection:ir.attachment,type:"
 msgid "Data"
@@ -3537,6 +3690,29 @@ msgstr "从左向右"
 msgctxt "selection:ir.lang,direction:"
 msgid "Right-to-left"
 msgstr "从右向左"
+
+#, fuzzy
+msgctxt "selection:ir.model.log,event:"
+msgid "Clicked on"
+msgstr "点击"
+
+#, fuzzy
+msgctxt "selection:ir.model.log,event:"
+msgid "Deleted"
+msgstr "删除时触发"
+
+msgctxt "selection:ir.model.log,event:"
+msgid "Launched"
+msgstr ""
+
+msgctxt "selection:ir.model.log,event:"
+msgid "Modified"
+msgstr ""
+
+#, fuzzy
+msgctxt "selection:ir.model.log,event:"
+msgid "Transitioned to"
+msgstr "翻译"
 
 msgctxt "selection:ir.module,state:"
 msgid "Activated"
@@ -3752,6 +3928,21 @@ msgstr "货币格式"
 msgctxt "view:ir.lang:"
 msgid "Numbers Formatting"
 msgstr "数字格式"
+
+#, fuzzy
+msgctxt "view:ir.model.log:"
+msgid "Date"
+msgstr "日期"
+
+#, fuzzy
+msgctxt "view:ir.model.log:"
+msgid "Hour"
+msgstr "小时"
+
+#, fuzzy
+msgctxt "view:ir.model.log:"
+msgid "at"
+msgstr "星期六"
 
 msgctxt "view:ir.module.activate_upgrade.done:"
 msgid "The modules have been upgraded / activated."

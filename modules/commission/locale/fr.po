@@ -614,7 +614,7 @@ msgstr "Au paiement"
 
 msgctxt "selection:commission.plan,commission_method:"
 msgid "On Posting"
-msgstr "Au postage"
+msgstr "À la comptabilisation"
 
 msgctxt "selection:commission.reporting.context,period:"
 msgid "Day"

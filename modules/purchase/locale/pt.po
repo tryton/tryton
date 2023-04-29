@@ -189,21 +189,23 @@ msgctxt "field:purchase.line,invoice_lines:"
 msgid "Invoice Lines"
 msgstr "Linhas da fatura"
 
-msgctxt "field:purchase.line,move_done:"
-msgid "Moves Done"
-msgstr "Movimentações feitas"
-
-msgctxt "field:purchase.line,move_exception:"
-msgid "Moves Exception"
-msgstr "Exceção nas movimentações"
-
 msgctxt "field:purchase.line,moves:"
 msgid "Moves"
 msgstr "Movimentações"
 
+#, fuzzy
+msgctxt "field:purchase.line,moves_exception:"
+msgid "Moves Exception"
+msgstr "Exceção nas movimentações"
+
 msgctxt "field:purchase.line,moves_ignored:"
 msgid "Ignored Moves"
 msgstr "Movimentações ignoradas"
+
+#, fuzzy
+msgctxt "field:purchase.line,moves_progress:"
+msgid "Moves Progress"
+msgstr "Movimentações feitas"
 
 msgctxt "field:purchase.line,moves_recreated:"
 msgid "Recreated Moves"
@@ -229,6 +231,11 @@ msgctxt "field:purchase.line,purchase:"
 msgid "Purchase"
 msgstr "Compra"
 
+#, fuzzy
+msgctxt "field:purchase.line,purchase_date:"
+msgid "Purchase Date"
+msgstr "Data da compra"
+
 msgctxt "field:purchase.line,purchase_state:"
 msgid "Purchase State"
 msgstr "Estado da Compra"
@@ -240,6 +247,11 @@ msgstr "Quantidade"
 msgctxt "field:purchase.line,summary:"
 msgid "Summary"
 msgstr ""
+
+#, fuzzy
+msgctxt "field:purchase.line,supplier:"
+msgid "Supplier"
+msgstr "Fornecedor"
 
 msgctxt "field:purchase.line,taxes:"
 msgid "Taxes"
@@ -260,6 +272,11 @@ msgstr "Unidade"
 msgctxt "field:purchase.line,unit_price:"
 msgid "Unit Price"
 msgstr "Preço unitário"
+
+#, fuzzy
+msgctxt "field:purchase.line,warehouse:"
+msgid "Warehouse"
+msgstr "Almoxarifado"
 
 msgctxt "field:purchase.line-account.tax,line:"
 msgid "Purchase Line"
@@ -595,6 +612,12 @@ msgctxt "help:party.party.supplier_currency,supplier_currency:"
 msgid "Default currency for purchases from this party."
 msgstr ""
 
+msgctxt "help:party.party.supplier_lead_time,supplier_lead_time:"
+msgid ""
+"The time from confirming the purchase order to receiving the goods from the party when used as a supplier.\n"
+"Used if no lead time is set on the product supplier."
+msgstr ""
+
 msgctxt "help:purchase.configuration,purchase_process_after:"
 msgid ""
 "The grace period during which confirmed purchase can still be reset to draft.\n"
@@ -620,6 +643,12 @@ msgctxt "help:purchase.product_supplier,lead_time:"
 msgid ""
 "The time from confirming the purchase order to receiving the products.\n"
 "If empty the lead time of the supplier is used."
+msgstr ""
+
+msgctxt "help:purchase.product_supplier,prices:"
+msgid ""
+"Add price for different criteria.\n"
+"The last matching line is used."
 msgstr ""
 
 #, fuzzy
@@ -671,27 +700,29 @@ msgid "Purchases"
 msgstr "Purchases"
 
 #, fuzzy
-msgctxt "model:ir.action,name:act_purchase_form2"
+msgctxt "model:ir.action,name:act_purchase_invoice_relate"
 msgid "Purchases"
 msgstr "Purchases"
 
 #, fuzzy
-msgctxt "model:ir.action,name:act_purchase_invoice_relate"
-msgid "Purchases"
-msgstr "Purchases"
+msgctxt "model:ir.action,name:act_purchase_line_relate"
+msgid "Purchase Lines"
+msgstr "Linha da compra"
 
 #, fuzzy
 msgctxt "model:ir.action,name:act_purchase_move_relate"
 msgid "Moves"
 msgstr "Movimentações"
 
-msgctxt "model:ir.action,name:act_purchase_shipment_returns_relate"
+#, fuzzy
+msgctxt "model:ir.action,name:act_purchase_relate"
 msgid "Purchases"
-msgstr "Purchases"
+msgstr "Compras"
 
-msgctxt "model:ir.action,name:act_purchase_shipments_relate"
+#, fuzzy
+msgctxt "model:ir.action,name:act_purchase_relate_simple"
 msgid "Purchases"
-msgstr "Purchases"
+msgstr "Compras"
 
 #, fuzzy
 msgctxt "model:ir.action,name:act_reporting_main"
@@ -792,6 +823,35 @@ msgctxt ""
 msgid "Quotation"
 msgstr "Quotation"
 
+#, fuzzy
+msgctxt "model:ir.action.act_window.domain,name:act_purchase_line_relate_all"
+msgid "All"
+msgstr "All"
+
+#, fuzzy
+msgctxt "model:ir.action.act_window.domain,name:act_purchase_line_relate_done"
+msgid "Done"
+msgstr "Feito"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_purchase_line_relate_pending"
+msgid "Pending"
+msgstr ""
+
+#, fuzzy
+msgctxt "model:ir.action.act_window.domain,name:act_purchase_relate_all"
+msgid "All"
+msgstr "All"
+
+#, fuzzy
+msgctxt "model:ir.action.act_window.domain,name:act_purchase_relate_done"
+msgid "Done"
+msgstr "Feito"
+
+msgctxt "model:ir.action.act_window.domain,name:act_purchase_relate_pending"
+msgid "Pending"
+msgstr ""
+
 msgctxt "model:ir.message,text:msg_change_purchase_uom"
 msgid ""
 "You are trying to change the purchase UoM on which the purchase prices are "
@@ -816,6 +876,12 @@ msgid ""
 msgstr ""
 "Não é possível restaurar para rascunho o movimento \"%s\" porque ele foi "
 "gerado por uma compra."
+
+msgctxt "model:ir.message,text:msg_purchase_line_create_draft"
+msgid ""
+"You cannot add lines to purchase \"%(purchase)s\" because it is no longer in"
+" a draft state."
+msgstr ""
 
 msgctxt "model:ir.message,text:msg_purchase_line_delete_cancel_draft"
 msgid ""
@@ -1239,6 +1305,10 @@ msgid "Manual"
 msgstr "Manual"
 
 msgctxt "selection:purchase.purchase,invoice_state:"
+msgid "Awaiting Payment"
+msgstr ""
+
+msgctxt "selection:purchase.purchase,invoice_state:"
 msgid "Exception"
 msgstr "Exceção"
 
@@ -1251,8 +1321,12 @@ msgid "Paid"
 msgstr "Pago"
 
 msgctxt "selection:purchase.purchase,invoice_state:"
-msgid "Waiting"
-msgstr "Espera"
+msgid "Partially Paid"
+msgstr ""
+
+msgctxt "selection:purchase.purchase,invoice_state:"
+msgid "Pending"
+msgstr ""
 
 msgctxt "selection:purchase.purchase,shipment_state:"
 msgid "Exception"
@@ -1261,6 +1335,10 @@ msgstr "Exceção"
 msgctxt "selection:purchase.purchase,shipment_state:"
 msgid "None"
 msgstr "Nenhum"
+
+msgctxt "selection:purchase.purchase,shipment_state:"
+msgid "Partially Shipped"
+msgstr ""
 
 msgctxt "selection:purchase.purchase,shipment_state:"
 msgid "Received"

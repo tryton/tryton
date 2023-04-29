@@ -48,7 +48,7 @@ msgstr "Fortschritt"
 
 msgctxt "field:project.work.invoiced_progress,work:"
 msgid "Work"
-msgstr "Tätigkeit"
+msgstr "Projektaufgabe"
 
 msgctxt "field:timesheet.line,invoice_line:"
 msgid "Invoice Line"
@@ -81,11 +81,11 @@ msgstr ""
 
 msgctxt "model:ir.message,text:msg_missing_list_price"
 msgid "There is no list price on work \"%(work)s\"."
-msgstr "Fehlender Listenpreis für Aufgabe \"%(work)s\"."
+msgstr "Fehlender Listenpreis für Projektaufgabe \"%(work)s\"."
 
 msgctxt "model:ir.message,text:msg_missing_party"
 msgid "There is no party on work \"%(work)s\"."
-msgstr "Fehlende Partei für Aufgabe \"%(work)s\"."
+msgstr "Fehlende Partei für Projektaufgabe \"%(work)s\"."
 
 msgctxt "model:ir.message,text:msg_modify_invoiced_line"
 msgid "You cannot modify an invoiced line."
@@ -105,7 +105,7 @@ msgstr "Rechnung erstellen"
 
 msgctxt "model:project.work.invoiced_progress,name:"
 msgid "Work Invoiced Progress"
-msgstr "Nach Forstschritt fakturierte Aufgabe"
+msgstr "Nach Fortschritt fakturierte Projektaufgabe"
 
 msgctxt "model:res.group,name:group_project_invoice"
 msgid "Project Invoice"

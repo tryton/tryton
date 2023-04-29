@@ -119,11 +119,11 @@ msgstr ""
 msgid "Login"
 msgstr "Bejelentkezés"
 
-msgid "User name"
-msgstr "Felhasználónév"
-
 msgid "Database"
 msgstr "Adatbázis"
+
+msgid "User name"
+msgstr "Felhasználónév"
 
 #, fuzzy
 msgid "Login with"
@@ -369,24 +369,6 @@ msgstr "A rekordok nem lettek törölve."
 msgid "You have to select one record."
 msgstr "Ki kell választania egy rekordot."
 
-msgid "ID:"
-msgstr ""
-
-msgid "Created by:"
-msgstr "Létrehozta:"
-
-msgid "Created at:"
-msgstr "Létrehozás dátuma:"
-
-msgid "Edited by:"
-msgstr "Módosította:"
-
-msgid "Edited at:"
-msgstr "Módosítás dátuma:"
-
-msgid "Model: "
-msgstr "Elem: "
-
 msgid "Add..."
 msgstr "Hozzáadás..."
 
@@ -545,6 +527,9 @@ msgstr ""
 msgid "More"
 msgstr ""
 
+msgid "#ERROR"
+msgstr ""
+
 msgid "Today"
 msgstr "Ma"
 
@@ -574,6 +559,31 @@ msgstr "Mellékletek (%1)"
 
 msgid "Notes (%1)"
 msgstr "Jegyzetek (%1)"
+
+#, fuzzy
+msgid "Logs (%1)"
+msgstr "Jegyzetek (%1)"
+
+#, fuzzy
+msgid "Model:"
+msgstr "Elem: "
+
+msgid "ID:"
+msgstr ""
+
+msgid "Created by:"
+msgstr "Létrehozta:"
+
+msgid "Created at:"
+msgstr "Létrehozás dátuma:"
+
+#, fuzzy
+msgid "Last Modified by:"
+msgstr "Módosította"
+
+#, fuzzy
+msgid "Last Modified at:"
+msgstr "Módosítás dátuma"
 
 msgid "Search %1"
 msgstr ""

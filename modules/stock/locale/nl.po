@@ -2268,7 +2268,7 @@ msgstr "Terug naar concept"
 
 msgctxt "model:ir.model.button,string:period_close_button"
 msgid "Close"
-msgstr "Afsluiten"
+msgstr "Sluiten"
 
 msgctxt "model:ir.model.button,string:period_draft_button"
 msgid "Draft"

@@ -6,10 +6,9 @@ msgctxt "field:party.address,delivery:"
 msgid "Delivery"
 msgstr "Livrare"
 
-#, fuzzy
 msgctxt "field:party.address,warehouses:"
 msgid "Warehouses"
-msgstr "Depozit"
+msgstr "Depozite"
 
 msgctxt "field:party.contact_mechanism,delivery:"
 msgid "Delivery"
@@ -19,10 +18,9 @@ msgctxt "field:party.party,customer_location:"
 msgid "Customer Location"
 msgstr "Locaţia Client"
 
-#, fuzzy
 msgctxt "field:party.party,delivered_to_warehouses:"
 msgid "Delivered to Warehouses"
-msgstr "Depozit Curent"
+msgstr "Livrat la Depozite"
 
 msgctxt "field:party.party,locations:"
 msgid "Locations"
@@ -32,12 +30,10 @@ msgctxt "field:party.party,supplier_location:"
 msgid "Supplier Location"
 msgstr "Locaţia Furnizor"
 
-#, fuzzy
 msgctxt "field:party.party-delivered_to-stock.location,location:"
 msgid "Location"
 msgstr "Locație"
 
-#, fuzzy
 msgctxt "field:party.party-delivered_to-stock.location,party:"
 msgid "Party"
 msgstr "Parte"
@@ -276,7 +272,7 @@ msgstr "Adresa"
 
 msgctxt "field:stock.location,allow_pickup:"
 msgid "Allow Pickup"
-msgstr ""
+msgstr "Permite Ridicare"
 
 msgctxt "field:stock.location,childs:"
 msgid "Children"
@@ -835,7 +831,6 @@ msgctxt "field:stock.shipment.in.return,to_location:"
 msgid "To Location"
 msgstr "Spre Locație"
 
-#, fuzzy
 msgctxt "field:stock.shipment.in.return,warehouse:"
 msgid "Warehouse"
 msgstr "Depozit"
@@ -1000,7 +995,6 @@ msgctxt "field:stock.shipment.out.return,company:"
 msgid "Company"
 msgstr "Companie"
 
-#, fuzzy
 msgctxt "field:stock.shipment.out.return,contact_address:"
 msgid "Contact Address"
 msgstr "Adresa de Contact"
@@ -1599,7 +1593,6 @@ msgctxt "help:stock.shipment.out.return,company:"
 msgid "The company the shipment is associated with."
 msgstr "Compania cu care este asociată expedierea."
 
-#, fuzzy
 msgctxt "help:stock.shipment.out.return,contact_address:"
 msgid "The address the customer can be contacted at."
 msgstr "Adresa la care poate fi contactat clientul."
@@ -2012,11 +2005,14 @@ msgid ""
 "a parent of location \"%(location)s\"."
 msgstr ""
 
+#, fuzzy
 msgctxt "model:ir.message,text:msg_inventory_missing_empty_quantity"
 msgid ""
 "To confirm the inventory \"%(inventory)s\" you must select an option for "
 "empty quantity."
 msgstr ""
+"Pentru a confirma inventarul \"%(inventory)s\" este necesară o selecție "
+"pentru cantitate zero."
 
 msgctxt "model:ir.message,text:msg_location_child_of_warehouse"
 msgid ""
@@ -2024,25 +2020,33 @@ msgid ""
 "\"%(warehouse)s\", it must be in the warehouse."
 msgstr ""
 
+#, fuzzy
 msgctxt "model:ir.message,text:msg_location_inactive_not_empty"
 msgid "To inactivate location \"%(location)s\", you must empty it."
-msgstr ""
+msgstr "Locația \"%(location)s\" trebuie să fie goală pentru a fi dezactivată."
 
+#, fuzzy
 msgctxt "model:ir.message,text:msg_location_invalid_type_for_moves"
 msgid ""
 "You cannot change the type of location \"%(location)s\" to \"%(type)s\"\n"
 "because the type does not support moves and location has existing moves."
 msgstr ""
+"Nu se poate schimba tipul de locație \"%(location)s\" la \"%(type)s\"\n"
+"deoarece acest tip nu suportă mutări, iar locația are mutări existente."
 
+#, fuzzy
 msgctxt "model:ir.message,text:msg_move_delete_draft_cancel"
 msgid ""
 "To delete stock move \"%(move)s\" you must cancel it or reset its state to "
 "draft."
 msgstr ""
+"Pentru a șterge mutarea de stoc \"%(move)s\" este necesar să o anulați sau "
+"să ii resetați starea la Ciornă."
 
+#, fuzzy
 msgctxt "model:ir.message,text:msg_move_effective_date_in_the_future"
 msgid "The moves \"%(moves)s\" have effective dates in the future."
-msgstr ""
+msgstr "Mutările \"%(moves)s\" au date efective în viitor."
 
 msgctxt "model:ir.message,text:msg_move_from_to_location"
 msgid "The source and destination of stock move must be different."
@@ -2063,17 +2067,24 @@ msgid "You cannot modify stock move \"%(move)s\" because it is cancelled."
 msgstr ""
 "Nu se poate modifica mişcarea de stoc \"%(move)s\" pentru că este anulată."
 
+#, fuzzy
 msgctxt "model:ir.message,text:msg_move_modify_done"
 msgid "You cannot modify stock move \"%(move)s\" because it is done."
 msgstr ""
+"Nu se poate modifica mutarea de stoc \"%(move)s\" deoarece a fost deja "
+"efectuată."
 
+#, fuzzy
 msgctxt "model:ir.message,text:msg_move_modify_period_close"
 msgid "To modify stock move \"%(move)s\" you must reopen period \"%(period)s\"."
 msgstr ""
+"Pentru a modifica mutarea de stoc \"%(move)s\" trebuie să redeschideți "
+"perioada \"%(period)s\"."
 
+#, fuzzy
 msgctxt "model:ir.message,text:msg_move_no_origin"
 msgid "Stock moves \"%(moves)s\" have no origin."
-msgstr ""
+msgstr "Mutările de stoc \"%(moves)s\" nu au origine."
 
 msgctxt "model:ir.message,text:msg_move_quantity_positive"
 msgid "Move quantity must be positive."
@@ -2086,6 +2097,7 @@ msgstr "Nu puteți închide perioadele cu mutări atribuite."
 msgctxt "model:ir.message,text:msg_period_close_date"
 msgid "You cannot close periods with a date in the future or today."
 msgstr ""
+"Nu se pot închide perioade cu date din viitor sau cu data zilei in curs."
 
 msgctxt "model:ir.message,text:msg_product_change_cost_price"
 msgid ""
@@ -2098,24 +2110,31 @@ msgid ""
 "You cannot change the default UOM of a product which is associated with "
 "stock moves."
 msgstr ""
+"Nu se poate schimba Unitatea de Masură implicită a unui produs asociat cu "
+"mutari de stoc."
 
 msgctxt "model:ir.message,text:msg_product_change_type"
 msgid ""
 "You cannot change the type of a product which is associated with stock "
 "moves."
 msgstr ""
+"Nu se poate schimba tipul unui produs care este asociat cu mutări de stoc."
 
 msgctxt "model:ir.message,text:msg_product_location_quantity"
 msgid ""
 "The product \"%(product)s\" has still some quantities in locations "
 "\"%(locations)s\" for company \"%(company)s\"."
 msgstr ""
+"Încă există cantități de produs \"%(product)s\" în locațiile "
+"\"%(locations)s\" pentru compania \"%(company)s\"."
 
 msgctxt "model:ir.message,text:msg_product_location_quantity_description"
 msgid ""
 "It is recommended to clear the stock from the storage locations before "
 "deactivating the product."
 msgstr ""
+"Este recomandată lichidarea stocurilor din locațiile de depozitare înaintea "
+"dezactivării produsului."
 
 msgctxt "model:ir.message,text:msg_shipment_delete_cancel"
 msgid "To delete shipment \"%(shipment)s\" you must cancel it."

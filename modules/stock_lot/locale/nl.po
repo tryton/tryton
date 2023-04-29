@@ -4,28 +4,28 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "field:product.configuration,default_lot_sequence:"
 msgid "Default Lot Sequence"
-msgstr "Standaard batchvolgorde"
+msgstr "Standaard Batch Reeks"
 
 msgctxt ""
 "field:product.configuration.default_lot_sequence,default_lot_sequence:"
 msgid "Default Lot Sequence"
-msgstr "Standaard batchvolgorde"
+msgstr "Standaard Batch Reeks"
 
 msgctxt "field:product.product,lot_required:"
 msgid "Lot Required"
-msgstr "Batch vereist"
+msgstr "Batch Vereist"
 
 msgctxt "field:product.product,lot_sequence:"
 msgid "Lot Sequence"
-msgstr "Batch volgorde"
+msgstr "Batch Reeks"
 
 msgctxt "field:product.template,lot_required:"
 msgid "Lot Required"
-msgstr "Batch vereist"
+msgstr "Batch Vereist"
 
 msgctxt "field:product.template,lot_sequence:"
 msgid "Lot Sequence"
-msgstr "Batch volgorde"
+msgstr "Batch Reeks"
 
 msgctxt "field:stock.inventory.line,lot:"
 msgid "Lot"
@@ -45,7 +45,7 @@ msgstr "Verwachte hoeveelheid"
 
 msgctxt "field:stock.lot,has_sequence:"
 msgid "Has Sequence"
-msgstr "Heeft reeks"
+msgstr "Heeft Reeks"
 
 msgctxt "field:stock.lot,number:"
 msgid "Number"
@@ -229,7 +229,7 @@ msgstr "Het soort locatie waarvoor een batch vereist is."
 
 msgctxt "help:product.product,lot_sequence:"
 msgid "The sequence used to automatically number lots."
-msgstr "De volgorde die wordt gebruikt om batches automatisch te nummeren."
+msgstr "De reeks die wordt gebruikt om batches automatisch te nummeren."
 
 msgctxt "help:product.template,lot_required:"
 msgid "The type of location for which lot is required."
@@ -237,7 +237,7 @@ msgstr "Het soort locatie waarvoor een batch vereist is."
 
 msgctxt "help:product.template,lot_sequence:"
 msgid "The sequence used to automatically number lots."
-msgstr "De volgorde die wordt gebruikt om batches automatisch te nummeren."
+msgstr "De reeks die wordt gebruikt om batches automatisch te nummeren."
 
 msgctxt "help:stock.lots_by_location.context,forecast_date:"
 msgid ""
@@ -272,6 +272,10 @@ msgid "Locations Tree Quantity"
 msgstr "Boomstructuur met hoeveelheden per locatie"
 
 msgctxt "model:ir.action,name:act_lot_form"
+msgid "Lots"
+msgstr "Batches"
+
+msgctxt "model:ir.action,name:act_lot_form_product_relate"
 msgid "Lots"
 msgstr "Batches"
 
@@ -349,7 +353,7 @@ msgstr "Batches"
 
 msgctxt "model:product.configuration.default_lot_sequence,name:"
 msgid "Product Configuration Default Lot Sequence"
-msgstr "Productconfiguratie Standaard Batchvolgorde"
+msgstr "Productconfiguratie Standaard Batch Reeks"
 
 msgctxt "model:stock.lot,name:"
 msgid "Stock Lot"

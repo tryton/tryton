@@ -10,17 +10,15 @@ msgctxt "field:account.invoice,sales:"
 msgid "Sales"
 msgstr "Vânzări"
 
-#, fuzzy
 msgctxt "field:party.party,customer_currencies:"
 msgid "Customer Currencies"
-msgstr "Clienți"
+msgstr "Valute Clienți"
 
 #, fuzzy
 msgctxt "field:party.party,customer_currency:"
 msgid "Customer Currency"
 msgstr "Moneda"
 
-#, fuzzy
 msgctxt "field:party.party,sale_invoice_method:"
 msgid "Invoice Method"
 msgstr "Metoda de facturare"
@@ -74,10 +72,15 @@ msgstr "Timp de livrare"
 
 msgctxt "field:product.lead_time,template:"
 msgid "Template"
-msgstr ""
+msgstr "Șablon"
 
 msgctxt "field:product.product,lead_time:"
 msgid "Lead Time"
+msgstr "Timp de livrare"
+
+#, fuzzy
+msgctxt "field:product.product,lead_times:"
+msgid "Lead Times"
 msgstr "Timp de livrare"
 
 msgctxt "field:product.product,salable:"
@@ -122,6 +125,11 @@ msgstr "Data încheiere Stoc"
 
 msgctxt "field:product.template,lead_time:"
 msgid "Lead Time"
+msgstr "Timp de livrare"
+
+#, fuzzy
+msgctxt "field:product.template,lead_times:"
+msgid "Lead Times"
 msgstr "Timp de livrare"
 
 msgctxt "field:product.template,salable:"
@@ -194,7 +202,11 @@ msgstr "Companie"
 
 msgctxt "field:sale.line,currency:"
 msgid "Currency"
-msgstr "Moneda"
+msgstr "Valută"
+
+msgctxt "field:sale.line,customer:"
+msgid "Customer"
+msgstr "Client"
 
 msgctxt "field:sale.line,description:"
 msgid "Description"
@@ -208,21 +220,23 @@ msgctxt "field:sale.line,invoice_lines:"
 msgid "Invoice Lines"
 msgstr "Rând factură"
 
-msgctxt "field:sale.line,move_done:"
-msgid "Moves Done"
-msgstr "Mișcari Finalizate"
-
-msgctxt "field:sale.line,move_exception:"
-msgid "Moves Exception"
-msgstr "Excepție de Miscare"
-
 msgctxt "field:sale.line,moves:"
 msgid "Moves"
 msgstr "Mișcări"
 
+#, fuzzy
+msgctxt "field:sale.line,moves_exception:"
+msgid "Moves Exception"
+msgstr "Excepție de Miscare"
+
 msgctxt "field:sale.line,moves_ignored:"
 msgid "Ignored Moves"
 msgstr "Mișcări ignorate"
+
+#, fuzzy
+msgctxt "field:sale.line,moves_progress:"
+msgid "Moves Progress"
+msgstr "Mișcari Finalizate"
 
 msgctxt "field:sale.line,moves_recreated:"
 msgid "Recreated Moves"
@@ -247,6 +261,11 @@ msgstr "Cantitate"
 msgctxt "field:sale.line,sale:"
 msgid "Sale"
 msgstr "Vânzare"
+
+#, fuzzy
+msgctxt "field:sale.line,sale_date:"
+msgid "Sale Date"
+msgstr "Data vânzării"
 
 msgctxt "field:sale.line,sale_state:"
 msgid "Sale State"
@@ -580,7 +599,7 @@ msgstr "Data de expediere"
 
 msgctxt "field:sale.sale,shipments:"
 msgid "Shipments"
-msgstr "Transporturi"
+msgstr "Expedieri"
 
 msgctxt "field:sale.sale,shipping_date:"
 msgid "Shipping Date"
@@ -675,6 +694,14 @@ msgid ""
 "Used for products without a lead time."
 msgstr ""
 "Timpul între confirmarea vânzării pana la trimiterea al produselor.\n"
+"Utilizat pentru produse fără un timp de execuţie."
+
+msgctxt "help:product.configuration.default_lead_time,default_lead_time:"
+msgid ""
+"The time from confirming the sales order to sending the products.\n"
+"Used for products without a lead time."
+msgstr ""
+"Timpul dintre confirmarea vânzării și trimiterea produselor.\n"
 "Utilizat pentru produse fără un timp de execuţie."
 
 msgctxt "help:product.product,lead_time:"
@@ -800,29 +827,28 @@ msgctxt "model:ir.action,name:act_sale_form"
 msgid "Sales"
 msgstr "Vânzări"
 
-msgctxt "model:ir.action,name:act_sale_form2"
-msgid "Sales"
-msgstr "Vânzări"
-
-msgctxt "model:ir.action,name:act_sale_invoice_relate"
-msgid "Sales"
-msgstr "Vânzări"
+#, fuzzy
+msgctxt "model:ir.action,name:act_sale_line_relate"
+msgid "Sale Lines"
+msgstr "Rând de vânzare"
 
 msgctxt "model:ir.action,name:act_sale_move_relate"
 msgid "Moves"
 msgstr "Mișcări"
 
-msgctxt "model:ir.action,name:act_sale_shipment_returns_relate"
+#, fuzzy
+msgctxt "model:ir.action,name:act_sale_relate"
 msgid "Sales"
 msgstr "Vânzări"
 
-msgctxt "model:ir.action,name:act_sale_shipments_relate"
+#, fuzzy
+msgctxt "model:ir.action,name:act_sale_relate_simple"
 msgid "Sales"
 msgstr "Vânzări"
 
 msgctxt "model:ir.action,name:act_shipment_form"
 msgid "Shipments"
-msgstr "Transporturi"
+msgstr "Expedieri"
 
 msgctxt "model:ir.action,name:report_sale"
 msgid "Sale"
@@ -882,6 +908,34 @@ msgctxt ""
 msgid "Quotation"
 msgstr "Ofertă"
 
+#, fuzzy
+msgctxt "model:ir.action.act_window.domain,name:act_sale_line_relate_all"
+msgid "All"
+msgstr "Tot"
+
+#, fuzzy
+msgctxt "model:ir.action.act_window.domain,name:act_sale_line_relate_done"
+msgid "Done"
+msgstr "Terminat"
+
+msgctxt "model:ir.action.act_window.domain,name:act_sale_line_relate_pending"
+msgid "Pending"
+msgstr ""
+
+#, fuzzy
+msgctxt "model:ir.action.act_window.domain,name:act_sale_relate_all"
+msgid "All"
+msgstr "Tot"
+
+#, fuzzy
+msgctxt "model:ir.action.act_window.domain,name:act_sale_relate_done"
+msgid "Done"
+msgstr "Terminat"
+
+msgctxt "model:ir.action.act_window.domain,name:act_sale_relate_pending"
+msgid "Pending"
+msgstr ""
+
 msgctxt "model:ir.message,text:msg_erase_party_pending_sale"
 msgid ""
 "You cannot erase party \"%(party)s\" while they have pending sales with "
@@ -924,6 +978,15 @@ msgid ""
 msgstr ""
 "Nu puteți devalida factura \"%(invoice)s\", deoarece a fost generată de o "
 "vânzare."
+
+#, fuzzy
+msgctxt "model:ir.message,text:msg_sale_line_create_draft"
+msgid ""
+"You cannot add lines to sale \"%(sale)s\" because it is no longer in a draft"
+" state."
+msgstr ""
+"Pentru a modifica antetul vânzării \"%(sale)s\", acesta trebuie să fie în "
+"stare devalidata."
 
 msgctxt "model:ir.message,text:msg_sale_line_delete_cancel_draft"
 msgid ""
@@ -973,7 +1036,6 @@ msgctxt "model:ir.message,text:msg_sale_reporting_currency"
 msgid "Currency"
 msgstr "Valută"
 
-#, fuzzy
 msgctxt "model:ir.message,text:msg_sale_reporting_date"
 msgid "Date"
 msgstr "Data"
@@ -1321,6 +1383,11 @@ msgctxt "report:sale.sale:"
 msgid "Date:"
 msgstr "Data:"
 
+#, fuzzy
+msgctxt "report:sale.sale:"
+msgid "Delivery Address:"
+msgstr "Adresa de facturare"
+
 msgctxt "report:sale.sale:"
 msgid "Description"
 msgstr "Descriere"
@@ -1418,6 +1485,10 @@ msgid "On Shipment Sent"
 msgstr "La expediere trimis"
 
 msgctxt "selection:sale.sale,invoice_state:"
+msgid "Awaiting Payment"
+msgstr ""
+
+msgctxt "selection:sale.sale,invoice_state:"
 msgid "Exception"
 msgstr "Excepție"
 
@@ -1430,8 +1501,12 @@ msgid "Paid"
 msgstr "Plătit"
 
 msgctxt "selection:sale.sale,invoice_state:"
-msgid "Waiting"
-msgstr "În Aşteptare"
+msgid "Partially Paid"
+msgstr ""
+
+msgctxt "selection:sale.sale,invoice_state:"
+msgid "Pending"
+msgstr ""
 
 msgctxt "selection:sale.sale,shipment_method:"
 msgid "Manual"
@@ -1452,6 +1527,10 @@ msgstr "Excepție"
 msgctxt "selection:sale.sale,shipment_state:"
 msgid "None"
 msgstr "Nici unul"
+
+msgctxt "selection:sale.sale,shipment_state:"
+msgid "Partially Shipped"
+msgstr ""
 
 msgctxt "selection:sale.sale,shipment_state:"
 msgid "Sent"

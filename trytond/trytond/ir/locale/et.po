@@ -14,10 +14,9 @@ msgctxt "field:ir.action,name:"
 msgid "Name"
 msgstr "Nimetus"
 
-#, fuzzy
 msgctxt "field:ir.action,records:"
 msgid "Records"
-msgstr "Kirje ID"
+msgstr "Kirjed"
 
 msgctxt "field:ir.action,type:"
 msgid "Type"
@@ -139,6 +138,11 @@ msgstr "Nimetus"
 msgctxt "field:ir.action.act_window.view,act_window:"
 msgid "Action"
 msgstr "Toiming"
+
+#, fuzzy
+msgctxt "field:ir.action.act_window.view,model:"
+msgid "Model"
+msgstr "Mudel"
 
 msgctxt "field:ir.action.act_window.view,view:"
 msgid "View"
@@ -988,6 +992,29 @@ msgstr "Lugemisõigus"
 msgctxt "field:ir.model.field.access,perm_write:"
 msgid "Write Access"
 msgstr "Kirjutamisõigus"
+
+#, fuzzy
+msgctxt "field:ir.model.log,action:"
+msgid "Action"
+msgstr "Toiming"
+
+msgctxt "field:ir.model.log,event:"
+msgid "Event"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:ir.model.log,resource:"
+msgid "Resource"
+msgstr "Ressurss"
+
+msgctxt "field:ir.model.log,target:"
+msgid "Target"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:ir.model.log,user:"
+msgid "User"
+msgstr "Kasutaja"
 
 msgctxt "field:ir.model.print_model_graph.start,filter:"
 msgid "Filter"
@@ -1896,6 +1923,10 @@ msgctxt "model:ir.action,name:act_model_form"
 msgid "Models"
 msgstr "Mudelid"
 
+msgctxt "model:ir.action,name:act_model_log_form"
+msgid "Logs"
+msgstr ""
+
 msgctxt "model:ir.action,name:act_module_activate_upgrade"
 msgid "Perform Pending Activation/Upgrade"
 msgstr "Teosta ootel aktiveerimine/uuendus"
@@ -1943,7 +1974,7 @@ msgstr "Ekspordi tõlked"
 
 msgctxt "model:ir.action,name:act_translation_form"
 msgid "Translations"
-msgstr "Tülked"
+msgstr "Tõlked"
 
 msgctxt "model:ir.action,name:act_translation_report"
 msgid "Translations"
@@ -2379,6 +2410,10 @@ msgctxt "model:ir.lang,name:lang_tr"
 msgid "Turkish"
 msgstr ""
 
+msgctxt "model:ir.lang,name:lang_uk"
+msgid "Ukrainian"
+msgstr ""
+
 msgctxt "model:ir.lang,name:lang_zh_CN"
 msgid "Chinese Simplified"
 msgstr "Lihtsustatud Hiina"
@@ -2500,9 +2535,10 @@ msgid ""
 "%(rules)s"
 msgstr ""
 
+#, fuzzy
 msgctxt "model:ir.message,text:msg_delete_xml_record"
-msgid "You are not allowed to delete this record."
-msgstr "Kirje kustutamine on keelatud"
+msgid "You are not allowed to delete the record \"%(record)s\" of \"%(model)s\"."
+msgstr "Puudub ligipääs mudelile (mudelitele)."
 
 #, fuzzy
 msgctxt "model:ir.message,text:msg_dict_no"
@@ -2762,10 +2798,9 @@ msgctxt "model:ir.message,text:msg_notes"
 msgid "Notes"
 msgstr "Märkmed"
 
+#, fuzzy
 msgctxt "model:ir.message,text:msg_read_error"
-msgid ""
-"You are trying to read records \"%(ids)s\" of \"%(model)s\" that don't exist"
-" anymore."
+msgid "You are trying to read records \"%(ids)s\" of \"%(model)s\" that don't exist."
 msgstr ""
 "Ei saa lugeda kirjeid \"%(ids)s\" mudelist \"%(model)s\", mida enam ei "
 "eksisteeri."
@@ -2877,6 +2912,10 @@ msgctxt "model:ir.message,text:msg_setter_function_missing"
 msgid "Missing setter function for field \"%(field)s\" in \"%(model)s\"."
 msgstr "Välja \"%(field)s\" jaoks puudub setter funktsioon mudelis \"%(model)s\"."
 
+msgctxt "model:ir.message,text:msg_singleton"
+msgid "Only one singleton can be created."
+msgstr ""
+
 #, fuzzy
 msgctxt "model:ir.message,text:msg_size_validation"
 msgid ""
@@ -2966,10 +3005,11 @@ msgctxt "model:ir.message,text:msg_view_search_invalid_domain"
 msgid "Invalid domain or search criteria \"%(domain)s\" for search \"%(search)s\"."
 msgstr "Lubamatu eesliide \"%(affix)s\" järjestusele \"%(sequence)s\"."
 
+#, fuzzy
 msgctxt "model:ir.message,text:msg_write_error"
 msgid ""
 "You are trying to write to records \"%(ids)s\" of \"%(model)s\" that don't "
-"exist anymore."
+"exist."
 msgstr ""
 "Ei saa salvestada kirjeid \"%(ids)s\" mudelisse \"%(model)s\", mida enam ei "
 "eksisteeri."
@@ -2980,9 +3020,12 @@ msgid ""
 "%(rules)s"
 msgstr ""
 
+#, fuzzy
 msgctxt "model:ir.message,text:msg_write_xml_record"
-msgid "You are not allowed to modify this record."
-msgstr "Puudub õigus kirje muutmiseks"
+msgid ""
+"You are not allowed to modify the field \"%(field)s\" in \"%(record)s\" of "
+"\"%(model)s\"."
+msgstr "Mudeli \"%(model)s\" välja \"%(field)s\" jaoks on väärtus nõutud."
 
 #, fuzzy
 msgctxt "model:ir.message,text:msg_xml_id_syntax_error"
@@ -3094,6 +3137,11 @@ msgstr "Mudeli väli"
 msgctxt "model:ir.model.field.access,name:"
 msgid "Model Field Access"
 msgstr "Mudeli välja ligipääs"
+
+#, fuzzy
+msgctxt "model:ir.model.log,name:"
+msgid "Log"
+msgstr "Lao"
 
 msgctxt "model:ir.model.print_model_graph.start,name:"
 msgid "Print Model Graph"
@@ -3328,6 +3376,10 @@ msgctxt "model:ir.ui.menu,name:menu_model_form"
 msgid "Models"
 msgstr "Mudelid"
 
+msgctxt "model:ir.ui.menu,name:menu_model_log_form"
+msgid "Logs"
+msgstr ""
+
 msgctxt "model:ir.ui.menu,name:menu_models"
 msgid "Models"
 msgstr "Mudelid"
@@ -3459,6 +3511,26 @@ msgctxt "selection:ir.action,records:"
 msgid "Selected"
 msgstr "Valitud sõlmed"
 
+#, fuzzy
+msgctxt "selection:ir.action,type:"
+msgid "Report"
+msgstr "Aruanne"
+
+#, fuzzy
+msgctxt "selection:ir.action,type:"
+msgid "URL"
+msgstr "URLid"
+
+#, fuzzy
+msgctxt "selection:ir.action,type:"
+msgid "Window"
+msgstr "Aken"
+
+#, fuzzy
+msgctxt "selection:ir.action,type:"
+msgid "Wizard"
+msgstr "Nõustajad"
+
 msgctxt "selection:ir.action.act_window,records:"
 msgid "Listed"
 msgstr ""
@@ -3467,6 +3539,26 @@ msgstr ""
 msgctxt "selection:ir.action.act_window,records:"
 msgid "Selected"
 msgstr "Valitud sõlmed"
+
+#, fuzzy
+msgctxt "selection:ir.action.act_window,type:"
+msgid "Report"
+msgstr "Aruanne"
+
+#, fuzzy
+msgctxt "selection:ir.action.act_window,type:"
+msgid "URL"
+msgstr "URLid"
+
+#, fuzzy
+msgctxt "selection:ir.action.act_window,type:"
+msgid "Window"
+msgstr "Aken"
+
+#, fuzzy
+msgctxt "selection:ir.action.act_window,type:"
+msgid "Wizard"
+msgstr "Nõustajad"
 
 msgctxt "selection:ir.action.keyword,keyword:"
 msgid "Action form"
@@ -3497,6 +3589,26 @@ msgctxt "selection:ir.action.report,records:"
 msgid "Selected"
 msgstr "Valitud sõlmed"
 
+#, fuzzy
+msgctxt "selection:ir.action.report,type:"
+msgid "Report"
+msgstr "Aruanne"
+
+#, fuzzy
+msgctxt "selection:ir.action.report,type:"
+msgid "URL"
+msgstr "URLid"
+
+#, fuzzy
+msgctxt "selection:ir.action.report,type:"
+msgid "Window"
+msgstr "Aken"
+
+#, fuzzy
+msgctxt "selection:ir.action.report,type:"
+msgid "Wizard"
+msgstr "Nõustajad"
+
 msgctxt "selection:ir.action.url,records:"
 msgid "Listed"
 msgstr ""
@@ -3506,6 +3618,26 @@ msgctxt "selection:ir.action.url,records:"
 msgid "Selected"
 msgstr "Valitud sõlmed"
 
+#, fuzzy
+msgctxt "selection:ir.action.url,type:"
+msgid "Report"
+msgstr "Aruanne"
+
+#, fuzzy
+msgctxt "selection:ir.action.url,type:"
+msgid "URL"
+msgstr "URLid"
+
+#, fuzzy
+msgctxt "selection:ir.action.url,type:"
+msgid "Window"
+msgstr "Aken"
+
+#, fuzzy
+msgctxt "selection:ir.action.url,type:"
+msgid "Wizard"
+msgstr "Nõustajad"
+
 msgctxt "selection:ir.action.wizard,records:"
 msgid "Listed"
 msgstr ""
@@ -3514,6 +3646,26 @@ msgstr ""
 msgctxt "selection:ir.action.wizard,records:"
 msgid "Selected"
 msgstr "Valitud sõlmed"
+
+#, fuzzy
+msgctxt "selection:ir.action.wizard,type:"
+msgid "Report"
+msgstr "Aruanne"
+
+#, fuzzy
+msgctxt "selection:ir.action.wizard,type:"
+msgid "URL"
+msgstr "URLid"
+
+#, fuzzy
+msgctxt "selection:ir.action.wizard,type:"
+msgid "Window"
+msgstr "Aken"
+
+#, fuzzy
+msgctxt "selection:ir.action.wizard,type:"
+msgid "Wizard"
+msgstr "Nõustajad"
 
 msgctxt "selection:ir.attachment,type:"
 msgid "Data"
@@ -3585,6 +3737,29 @@ msgstr "Vasakult paremale"
 msgctxt "selection:ir.lang,direction:"
 msgid "Right-to-left"
 msgstr "Paremalt vasakule"
+
+#, fuzzy
+msgctxt "selection:ir.model.log,event:"
+msgid "Clicked on"
+msgstr "Klikid"
+
+#, fuzzy
+msgctxt "selection:ir.model.log,event:"
+msgid "Deleted"
+msgstr "Kustutamisel"
+
+msgctxt "selection:ir.model.log,event:"
+msgid "Launched"
+msgstr ""
+
+msgctxt "selection:ir.model.log,event:"
+msgid "Modified"
+msgstr ""
+
+#, fuzzy
+msgctxt "selection:ir.model.log,event:"
+msgid "Transitioned to"
+msgstr "Tõlge"
 
 msgctxt "selection:ir.module,state:"
 msgid "Activated"
@@ -3800,6 +3975,21 @@ msgctxt "view:ir.lang:"
 msgid "Numbers Formatting"
 msgstr "Numbriväärtuse formaat"
 
+#, fuzzy
+msgctxt "view:ir.model.log:"
+msgid "Date"
+msgstr "Kuupäev"
+
+#, fuzzy
+msgctxt "view:ir.model.log:"
+msgid "Hour"
+msgstr "Tund"
+
+#, fuzzy
+msgctxt "view:ir.model.log:"
+msgid "at"
+msgstr "Laupäev"
+
 msgctxt "view:ir.module.activate_upgrade.done:"
 msgid "The modules have been upgraded / activated."
 msgstr "Moodulid on uuendatud / aktiveeritud."
@@ -3867,7 +4057,6 @@ msgid ""
 "If there is no test defined, the rule is always satisfied if not global."
 msgstr ""
 
-#, fuzzy
 msgctxt "view:ir.rule.group:"
 msgid "The rule is satisfied if at least one test is True."
 msgstr "Reegel kehtib, kui vähemasti üks test õnnestub."
@@ -3924,14 +4113,13 @@ msgctxt "view:ir.translation.set.succeed:"
 msgid "Translations set successfully."
 msgstr ""
 
-#, fuzzy
 msgctxt "wizard_button:ir.lang.config,start,end:"
 msgid "Cancel"
 msgstr "Tühista"
 
 msgctxt "wizard_button:ir.lang.config,start,load:"
 msgid "Load"
-msgstr ""
+msgstr "Lae"
 
 msgctxt "wizard_button:ir.model.print_model_graph,start,end:"
 msgid "Cancel"
@@ -3954,12 +4142,10 @@ msgctxt "wizard_button:ir.module.activate_upgrade,start,upgrade:"
 msgid "Start Upgrade"
 msgstr "Alusta uuendamist"
 
-#, fuzzy
 msgctxt "wizard_button:ir.module.config,start,activate:"
 msgid "Activate"
-msgstr "Aktiveeritud"
+msgstr "Aktiveeri"
 
-#, fuzzy
 msgctxt "wizard_button:ir.module.config,start,end:"
 msgid "Cancel"
 msgstr "Tühista"

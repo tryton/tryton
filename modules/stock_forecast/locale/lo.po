@@ -42,19 +42,32 @@ msgid "Location"
 msgstr "ບ່ອນຢູ່"
 
 #, fuzzy
+msgctxt "field:stock.forecast.complete.ask,company:"
+msgid "Company"
+msgstr "ຫ້ອງການ/ສຳນັກງານ"
+
+msgctxt "field:stock.forecast.complete.ask,destination:"
+msgid "Destination"
+msgstr ""
+
+#, fuzzy
 msgctxt "field:stock.forecast.complete.ask,from_date:"
 msgid "From Date"
 msgstr "ແຕ່ວັນທີ"
+
+#, fuzzy
+msgctxt "field:stock.forecast.complete.ask,products:"
+msgid "Products"
+msgstr "ຜະລິດຕະພັນ"
 
 #, fuzzy
 msgctxt "field:stock.forecast.complete.ask,to_date:"
 msgid "To Date"
 msgstr "ເຖິງວັນທີ"
 
-#, fuzzy
-msgctxt "field:stock.forecast.complete.choose,products:"
-msgid "Products"
-msgstr "ຜະລິດຕະພັນ"
+msgctxt "field:stock.forecast.complete.ask,warehouse:"
+msgid "Warehouse"
+msgstr ""
 
 #, fuzzy
 msgctxt "field:stock.forecast.line,forecast:"
@@ -177,11 +190,6 @@ msgctxt "model:stock.forecast.complete.ask,name:"
 msgid "Complete Forecast"
 msgstr "Complete Forecast"
 
-#, fuzzy
-msgctxt "model:stock.forecast.complete.choose,name:"
-msgid "Complete Forecast"
-msgstr "Complete Forecast"
-
 msgctxt "model:stock.forecast.line,name:"
 msgid "Stock Forecast Line"
 msgstr ""
@@ -214,29 +222,11 @@ msgctxt "view:stock.forecast:"
 msgid "Complete Forecast"
 msgstr "Complete Forecast"
 
-msgctxt "wizard_button:stock.forecast.complete,ask,choose:"
-msgid "Choose Products"
-msgstr ""
-
 msgctxt "wizard_button:stock.forecast.complete,ask,complete:"
 msgid "Complete"
 msgstr ""
 
 #, fuzzy
 msgctxt "wizard_button:stock.forecast.complete,ask,end:"
-msgid "Cancel"
-msgstr "ຍົກເລີກ"
-
-#, fuzzy
-msgctxt "wizard_button:stock.forecast.complete,choose,ask:"
-msgid "Choose Dates"
-msgstr "ເລືອກວັນທີ"
-
-msgctxt "wizard_button:stock.forecast.complete,choose,complete:"
-msgid "Complete"
-msgstr ""
-
-#, fuzzy
-msgctxt "wizard_button:stock.forecast.complete,choose,end:"
 msgid "Cancel"
 msgstr "ຍົກເລີກ"

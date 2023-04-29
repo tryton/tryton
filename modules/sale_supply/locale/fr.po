@@ -26,6 +26,40 @@ msgctxt "model:ir.action,name:act_purchase_request_form"
 msgid "Purchase Requests"
 msgstr "Demandes d'achat"
 
+msgctxt "model:ir.message,text:msg_order_point_product_supply_on_sale"
+msgid "The product \"%(product)s\" is supplied on sale."
+msgstr "Le produit « %(product)s » est approvisionné sur vente."
+
+msgctxt "model:ir.message,text:msg_template_supply_on_sale_order_point"
+msgid "The product has purchase order points \"%(order_points)s\" defined."
+msgstr ""
+"Le produit a des règles d'approvisionnements d'achat « %(order_points)s » "
+"définies."
+
+msgctxt "selection:product.product,supply_on_sale:"
+msgid "Always"
+msgstr "Toujours"
+
+msgctxt "selection:product.product,supply_on_sale:"
+msgid "Never"
+msgstr "Jamais"
+
+msgctxt "selection:product.product,supply_on_sale:"
+msgid "Stock First"
+msgstr "Stock d'abord"
+
+msgctxt "selection:product.template,supply_on_sale:"
+msgid "Always"
+msgstr "Toujours"
+
+msgctxt "selection:product.template,supply_on_sale:"
+msgid "Never"
+msgstr "Jamais"
+
+msgctxt "selection:product.template,supply_on_sale:"
+msgid "Stock First"
+msgstr "Stock d'abord"
+
 msgctxt "selection:sale.line,supply_state:"
 msgid "Cancelled"
 msgstr "Annulé"

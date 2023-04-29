@@ -282,6 +282,11 @@ msgctxt "model:ir.action,name:act_lot_form"
 msgid "Lots"
 msgstr "批次"
 
+#, fuzzy
+msgctxt "model:ir.action,name:act_lot_form_product_relate"
+msgid "Lots"
+msgstr "批次"
+
 msgctxt "model:ir.action,name:act_lot_trace_downward_relate"
 msgid "Downward Traces"
 msgstr ""

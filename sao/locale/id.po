@@ -116,10 +116,10 @@ msgstr "Terlalu banyak permintaan. Coba lagi nanti."
 msgid "Login"
 msgstr ""
 
-msgid "User name"
+msgid "Database"
 msgstr ""
 
-msgid "Database"
+msgid "User name"
 msgstr ""
 
 msgid "Login with"
@@ -359,24 +359,6 @@ msgstr ""
 msgid "You have to select one record."
 msgstr ""
 
-msgid "ID:"
-msgstr "ID:"
-
-msgid "Created by:"
-msgstr "Dibuat oleh:"
-
-msgid "Created at:"
-msgstr "Dibuat pada:"
-
-msgid "Edited by:"
-msgstr "Disunting oleh:"
-
-msgid "Edited at:"
-msgstr "Disunting pada:"
-
-msgid "Model: "
-msgstr ""
-
 msgid "Add..."
 msgstr ""
 
@@ -534,6 +516,9 @@ msgstr ""
 msgid "More"
 msgstr ""
 
+msgid "#ERROR"
+msgstr ""
+
 msgid "Today"
 msgstr "Hari ini"
 
@@ -562,6 +547,27 @@ msgid "Attachments (%1)"
 msgstr ""
 
 msgid "Notes (%1)"
+msgstr ""
+
+msgid "Logs (%1)"
+msgstr ""
+
+msgid "Model:"
+msgstr ""
+
+msgid "ID:"
+msgstr "ID:"
+
+msgid "Created by:"
+msgstr "Dibuat oleh:"
+
+msgid "Created at:"
+msgstr "Dibuat pada:"
+
+msgid "Last Modified by:"
+msgstr ""
+
+msgid "Last Modified at:"
 msgstr ""
 
 msgid "Search %1"

@@ -3027,7 +3027,7 @@ msgstr "Cancelado"
 
 msgctxt "selection:stock.inventory,state:"
 msgid "Done"
-msgstr "Finalizar"
+msgstr "Finalizado"
 
 msgctxt "selection:stock.inventory,state:"
 msgid "Draft"

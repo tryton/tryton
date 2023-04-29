@@ -2,6 +2,14 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
+msgctxt "field:ir.email,marketing_automation_activity:"
+msgid "Activity"
+msgstr "Activitat"
+
+msgctxt "field:ir.email,marketing_automation_record:"
+msgid "Record"
+msgstr "Registre"
+
 msgctxt "field:marketing.automation.activity,action:"
 msgid "Action"
 msgstr "Acció"
@@ -215,6 +223,10 @@ msgstr "Si es marca els tercer també es de-suscribeixen de l'escenari."
 msgctxt "model:ir.action,name:act_activity_tree"
 msgid "Activities"
 msgstr "Activitats"
+
+msgctxt "model:ir.action,name:act_ir_email_form_relate_activity"
+msgid "E-mails"
+msgstr "Correus electrònics"
 
 msgctxt "model:ir.action,name:act_record_activity_form"
 msgid "Record Activities"

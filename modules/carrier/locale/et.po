@@ -12,7 +12,7 @@ msgstr "Vedaja toode"
 
 msgctxt "field:carrier,party:"
 msgid "Party"
-msgstr "Osapool"
+msgstr "Partner"
 
 #, fuzzy
 msgctxt "field:carrier,selections:"
@@ -42,7 +42,7 @@ msgstr "Toose veoteenuse arveldamiseks."
 
 msgctxt "help:carrier,party:"
 msgid "The party which represents the carrier."
-msgstr "Osapool kes esindab vedajat."
+msgstr "Partner kes esindab vedajat."
 
 msgctxt "help:carrier.selection,carrier:"
 msgid "The selected carrier."

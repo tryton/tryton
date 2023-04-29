@@ -20,8 +20,8 @@ msgid "Direct Debit"
 msgstr "Domiciliación bancaria"
 
 msgctxt "field:account.move.line,payment_amount:"
-msgid "Payment Amount"
-msgstr "Importe del pago"
+msgid "Amount to Pay"
+msgstr "Importe a pagar"
 
 msgctxt "field:account.move.line,payment_blocked:"
 msgid "Blocked"
@@ -406,6 +406,16 @@ msgctxt ""
 "model:ir.action.act_window.domain,name:act_payment_form_domain_to_process"
 msgid "To Process"
 msgstr "A procesar"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_payment_group_form_domain_all"
+msgid "All"
+msgstr "Todo"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_payment_group_form_domain_not_completed"
+msgid "Pending"
+msgstr "Pendiente"
 
 msgctxt "model:ir.message,text:msg_erase_party_pending_payment"
 msgid ""

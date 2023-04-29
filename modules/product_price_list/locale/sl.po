@@ -48,8 +48,11 @@ msgid ""
 "It defines the currency of the price list."
 msgstr "Poveži cenik z družbo, ki s tem določa tudi valuto cenika."
 
+#, fuzzy
 msgctxt "help:product.price_list,lines:"
-msgid "Add price formulas for different criterias."
+msgid ""
+"Add price formulas for different criteria.\n"
+"The first matching line is used."
 msgstr "Dodaj formule cen za različne kriterije."
 
 msgctxt "help:product.price_list,name:"

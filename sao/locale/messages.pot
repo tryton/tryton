@@ -112,10 +112,10 @@ msgstr ""
 msgid "Login"
 msgstr ""
 
-msgid "User name"
+msgid "Database"
 msgstr ""
 
-msgid "Database"
+msgid "User name"
 msgstr ""
 
 msgid "Login with"
@@ -353,24 +353,6 @@ msgstr ""
 msgid "You have to select one record."
 msgstr ""
 
-msgid "ID:"
-msgstr ""
-
-msgid "Created by:"
-msgstr ""
-
-msgid "Created at:"
-msgstr ""
-
-msgid "Edited by:"
-msgstr ""
-
-msgid "Edited at:"
-msgstr ""
-
-msgid "Model: "
-msgstr ""
-
 msgid "Add..."
 msgstr ""
 
@@ -528,6 +510,9 @@ msgstr ""
 msgid "More"
 msgstr ""
 
+msgid "#ERROR"
+msgstr ""
+
 msgid "Today"
 msgstr ""
 
@@ -556,6 +541,27 @@ msgid "Attachments (%1)"
 msgstr ""
 
 msgid "Notes (%1)"
+msgstr ""
+
+msgid "Logs (%1)"
+msgstr ""
+
+msgid "Model:"
+msgstr ""
+
+msgid "ID:"
+msgstr ""
+
+msgid "Created by:"
+msgstr ""
+
+msgid "Created at:"
+msgstr ""
+
+msgid "Last Modified by:"
+msgstr ""
+
+msgid "Last Modified at:"
 msgstr ""
 
 msgid "Search %1"

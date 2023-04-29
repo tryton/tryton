@@ -4,7 +4,7 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "field:timesheet.hours_employee,duration:"
 msgid "Duration"
-msgstr "Dauer"
+msgstr "Erfasste Zeit"
 
 msgctxt "field:timesheet.hours_employee,employee:"
 msgid "Employee"
@@ -20,7 +20,7 @@ msgstr "Startdatum"
 
 msgctxt "field:timesheet.hours_employee_monthly,duration:"
 msgid "Duration"
-msgstr "Dauer"
+msgstr "Erfasste Zeit"
 
 msgctxt "field:timesheet.hours_employee_monthly,employee:"
 msgid "Employee"
@@ -36,7 +36,7 @@ msgstr "Jahr"
 
 msgctxt "field:timesheet.hours_employee_weekly,duration:"
 msgid "Duration"
-msgstr "Dauer"
+msgstr "Erfasste Zeit"
 
 msgctxt "field:timesheet.hours_employee_weekly,employee:"
 msgid "Employee"
@@ -64,7 +64,7 @@ msgstr "Beschreibung"
 
 msgctxt "field:timesheet.line,duration:"
 msgid "Duration"
-msgstr "Dauer"
+msgstr "Erfasste Zeit"
 
 msgctxt "field:timesheet.line,employee:"
 msgid "Employee"
@@ -76,7 +76,7 @@ msgstr "UUID"
 
 msgctxt "field:timesheet.line,work:"
 msgid "Work"
-msgstr "Tätigkeit"
+msgstr "Aufgabe"
 
 msgctxt "field:timesheet.line.enter.start,date:"
 msgid "Date"
@@ -92,7 +92,7 @@ msgstr "Unternehmen"
 
 msgctxt "field:timesheet.work,duration:"
 msgid "Timesheet Duration"
-msgstr "Zeiterfassung Dauer"
+msgstr "Erfasste Gesamtzeit"
 
 msgctxt "field:timesheet.work,name:"
 msgid "Name"
@@ -116,7 +116,7 @@ msgstr "Zeiterfassung Beginn"
 
 msgctxt "field:timesheet.work,work:"
 msgid "Work"
-msgstr "Tätigkeit"
+msgstr "Aufgabe"
 
 msgctxt "field:timesheet.work.context,from_date:"
 msgid "From Date"
@@ -176,7 +176,7 @@ msgstr "Hinzufügen von Positionen nach dem Datum beschränken."
 
 msgctxt "help:timesheet.work,timesheet_lines:"
 msgid "Spend time on this work."
-msgstr "Zeit für diese Aufgabe aufwenden."
+msgstr "Aufgewendete Zeiten für die Aufgabe."
 
 msgctxt "help:timesheet.work,timesheet_start_date:"
 msgid "Restrict adding lines before the date."
@@ -216,11 +216,11 @@ msgstr "Zeiterfassungspositionen"
 
 msgctxt "model:ir.action,name:act_work_list"
 msgid "Works"
-msgstr "Tätigkeiten"
+msgstr "Aufgaben"
 
 msgctxt "model:ir.action,name:act_work_report"
 msgid "Works"
-msgstr "Tätigkeiten"
+msgstr "Aufgaben"
 
 msgctxt "model:ir.action.act_window.domain,name:act_work_list_domain_all"
 msgid "All"
@@ -232,7 +232,8 @@ msgstr "Offen"
 
 msgctxt "model:ir.message,text:msg_line_duration_positive"
 msgid "The duration of line \"%(line)s\" must be positive."
-msgstr "Die Zeitdauer von Zeile \"%(line)s\" muss positiv sein."
+msgstr ""
+"Die erfasste Zeit der Zeiterfassungsposition \"%(line)s\" muss positiv sein."
 
 msgctxt "model:ir.message,text:msg_line_uuid_unique"
 msgid "The UUID of timesheet line must be unique."
@@ -241,8 +242,8 @@ msgstr "Die UUID der Zeiterfassungsposition muss eindeutig sein."
 msgctxt "model:ir.message,text:msg_work_company_different_origin"
 msgid "The companies associated with work \"%(work)s\" and its origin differ."
 msgstr ""
-"Die mit der Tätigkeit \"%(work)s\" und Ihrer Herkunft verknüpften "
-"Unternehmen weichen voneinander ab."
+"Die mit der Aufgabe \"%(work)s\" und Ihrer Herkunft verknüpften Unternehmen "
+"weichen voneinander ab."
 
 msgctxt "model:ir.message,text:msg_work_origin_unique_company"
 msgid "Work origin must be unique by company."
@@ -253,9 +254,39 @@ msgctxt "model:ir.rule.group,name:rule_group_hours_employee_admin"
 msgid "Any employee hours"
 msgstr "Alle Mitarbeiterzeiten"
 
+msgctxt "model:ir.rule.group,name:rule_group_hours_employee_monthly"
+msgid "Own hours"
+msgstr "Eigene Monatliche Zeiten"
+
+msgctxt "model:ir.rule.group,name:rule_group_hours_employee_monthly_admin"
+msgid "Any employee hours"
+msgstr "Alle Monatlichen Mitarbeiterzeiten"
+
+msgctxt "model:ir.rule.group,name:rule_group_hours_employee_weekly"
+msgid "Own hours"
+msgstr "Eigene Wöchentliche Zeiten"
+
+msgctxt "model:ir.rule.group,name:rule_group_hours_employee_weekly_admin"
+msgid "Any employee hours"
+msgstr "Alle Wöchentlichen Mitarbeiterzeiten"
+
 msgctxt "model:ir.rule.group,name:rule_group_hours_employees"
-msgid "Own employee hours"
-msgstr "Zeiterfassungspositionen Auswertung (Nur Eigene)"
+msgid "Own hours"
+msgstr "Eigene Zeiten"
+
+msgctxt "model:ir.rule.group,name:rule_group_hours_supervised_employees"
+msgid "Supervised employee's hours"
+msgstr "Alle Zeiten betreuter Mitarbeiter"
+
+msgctxt ""
+"model:ir.rule.group,name:rule_group_hours_supervised_employees_monthly"
+msgid "Supervised employee's hours"
+msgstr "Alle monatlichen Zeiten betreuter Mitarbeiter"
+
+msgctxt ""
+"model:ir.rule.group,name:rule_group_hours_supervised_employees_weekly"
+msgid "Supervised employee's hours"
+msgstr "Alle wöchentlichen Zeiten betreuter Mitarbeiter"
 
 msgctxt "model:ir.rule.group,name:rule_group_line"
 msgid "Own timesheet line"
@@ -307,11 +338,11 @@ msgstr "Zeiterfassung"
 
 msgctxt "model:ir.ui.menu,name:menu_work_list"
 msgid "Works"
-msgstr "Tätigkeiten"
+msgstr "Aufgaben"
 
 msgctxt "model:ir.ui.menu,name:menu_work_report"
 msgid "Works"
-msgstr "Tätigkeiten"
+msgstr "Aufgaben"
 
 msgctxt "model:res.group,name:group_timesheet_admin"
 msgid "Timesheet Administration"
@@ -343,11 +374,11 @@ msgstr "Eingabe Zeilen"
 
 msgctxt "model:timesheet.work,name:"
 msgid "Work"
-msgstr "Tätigkeit"
+msgstr "Aufgabe"
 
 msgctxt "model:timesheet.work.context,name:"
 msgid "Work Context"
-msgstr "Tätigkeit Kontext"
+msgstr "Aufgabe Kontext"
 
 msgctxt "selection:res.user.application,application:"
 msgid "Timesheet"
@@ -355,11 +386,11 @@ msgstr "Zeiterfassung"
 
 msgctxt "view:timesheet.hours_employee:"
 msgid "Duration"
-msgstr "Dauer"
+msgstr "Erfasste Zeit"
 
 msgctxt "view:timesheet.line:"
 msgid "Duration"
-msgstr "Dauer"
+msgstr "Erfasste Zeit"
 
 msgctxt "wizard_button:timesheet.line.enter,start,end:"
 msgid "Cancel"

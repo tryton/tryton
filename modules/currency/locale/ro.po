@@ -182,7 +182,6 @@ msgctxt "model:ir.ui.menu,name:menu_cron_form"
 msgid "Scheduled Rate Updates"
 msgstr "Actualizari Curs Valutar Programate"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_currency"
 msgid "Currencies"
 msgstr "Valute"
@@ -209,7 +208,7 @@ msgstr "Săptămânal"
 
 msgctxt "selection:currency.cron,source:"
 msgid "European Central Bank"
-msgstr ""
+msgstr "Banca Europeană Centrală"
 
 msgctxt "selection:ir.cron,method:"
 msgid "Update Currency Rates"

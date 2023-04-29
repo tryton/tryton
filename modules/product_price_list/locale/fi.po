@@ -50,7 +50,9 @@ msgid ""
 msgstr ""
 
 msgctxt "help:product.price_list,lines:"
-msgid "Add price formulas for different criterias."
+msgid ""
+"Add price formulas for different criteria.\n"
+"The first matching line is used."
 msgstr ""
 
 msgctxt "help:product.price_list,name:"

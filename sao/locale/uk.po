@@ -119,11 +119,11 @@ msgstr "Дуже багато запитів. Спробуйте ще раз п�
 msgid "Login"
 msgstr "Логін"
 
-msgid "User name"
-msgstr "Ім'я користувача"
-
 msgid "Database"
 msgstr "База даних"
+
+msgid "User name"
+msgstr "Ім'я користувача"
 
 #, fuzzy
 msgid "Login with"
@@ -365,24 +365,6 @@ msgstr "Записи не видалено."
 msgid "You have to select one record."
 msgstr "Ви повинні вибрати один запис."
 
-msgid "ID:"
-msgstr "ID:"
-
-msgid "Created by:"
-msgstr "Ким створено:"
-
-msgid "Created at:"
-msgstr "Коли створено:"
-
-msgid "Edited by:"
-msgstr "Ким змінено:"
-
-msgid "Edited at:"
-msgstr "Коли змінено:"
-
-msgid "Model: "
-msgstr "Модель: "
-
 msgid "Add..."
 msgstr "Додати..."
 
@@ -540,6 +522,9 @@ msgstr "Налаштувати"
 msgid "More"
 msgstr "Додатково"
 
+msgid "#ERROR"
+msgstr ""
+
 msgid "Today"
 msgstr "Сьогодні"
 
@@ -569,6 +554,31 @@ msgstr "Вкладення (%1)"
 
 msgid "Notes (%1)"
 msgstr "Примітки (%1)"
+
+#, fuzzy
+msgid "Logs (%1)"
+msgstr "Примітки (%1)"
+
+#, fuzzy
+msgid "Model:"
+msgstr "Модель: "
+
+msgid "ID:"
+msgstr "ID:"
+
+msgid "Created by:"
+msgstr "Ким створено:"
+
+msgid "Created at:"
+msgstr "Коли створено:"
+
+#, fuzzy
+msgid "Last Modified by:"
+msgstr "Ким змінено"
+
+#, fuzzy
+msgid "Last Modified at:"
+msgstr "Коли змінено"
 
 msgid "Search %1"
 msgstr "Пошук %1"

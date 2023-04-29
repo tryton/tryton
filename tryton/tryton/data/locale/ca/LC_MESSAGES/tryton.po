@@ -27,9 +27,8 @@ msgstr "Indica l'usuari"
 msgid "specify the server hostname:port"
 msgstr "Indica el nom:port del servidor"
 
-#, python-format
-msgid "Unable to write config file %s."
-msgstr "No s'ha pogut escriure el fitxer configuració %s."
+msgid "disable thread usage"
+msgstr "desactiva l'ús de fils"
 
 #, python-format
 msgid "Unable to set locale %s"
@@ -65,12 +64,6 @@ msgstr "D'acord"
 
 msgid "Your selection:"
 msgstr "La vostra selecció:"
-
-msgid "Select"
-msgstr "Selecciona"
-
-msgid "Save"
-msgstr "Desa"
 
 msgid "Save As..."
 msgstr "Desa com..."
@@ -199,6 +192,9 @@ msgstr "Plantilla"
 
 msgid "Edit..."
 msgstr "Edita..."
+
+msgid "View Logs..."
+msgstr "Veure registres..."
 
 msgid "Attachments..."
 msgstr "Adjunts..."
@@ -593,6 +589,9 @@ msgstr "Selecciona un fitxer"
 msgid "Remove File"
 msgstr "Elimina fitxer"
 
+msgid "Select"
+msgstr "Selecciona"
+
 msgid "Add..."
 msgstr "Afegeix..."
 
@@ -615,24 +614,6 @@ msgstr "Nota (%d/%d)"
 
 msgid "You have to select one record."
 msgstr "Ha de seleccionar un registre."
-
-msgid "ID:"
-msgstr "Identificador:"
-
-msgid "Created by:"
-msgstr "Creat per:"
-
-msgid "Created at:"
-msgstr "Creat el:"
-
-msgid "Edited by:"
-msgstr "Editat per:"
-
-msgid "Edited at:"
-msgstr "Editat el:"
-
-msgid "Model:"
-msgstr "Model:"
 
 msgid "Are you sure to remove this record?"
 msgstr "Esteu segur que voleu eliminar aquest registre?"
@@ -697,6 +678,28 @@ msgstr "Preferències del límit de cerca"
 
 msgid "Limit:"
 msgstr "Límit:"
+
+#, python-format
+msgid "Logs (%s)"
+msgstr "Registres (%s)"
+
+msgid "Model:"
+msgstr "Model:"
+
+msgid "ID:"
+msgstr "Identificador:"
+
+msgid "Created by:"
+msgstr "Creat per:"
+
+msgid "Created at:"
+msgstr "Creat el:"
+
+msgid "Last Modified by:"
+msgstr "Última modificació per:"
+
+msgid "Last Modified at:"
+msgstr "Última modificació el:"
 
 #, python-format
 msgid "Notes (%s)"
@@ -864,6 +867,9 @@ msgstr "Nom"
 
 msgid "Open"
 msgstr "Obre"
+
+msgid "Save"
+msgstr "Desa"
 
 msgid "Listed Records"
 msgstr "Registres llistats"
@@ -1086,17 +1092,14 @@ msgstr "any anterior"
 msgid "next year"
 msgstr "l'any següent"
 
-msgid "Day View"
-msgstr "Vista de dia"
-
-msgid "Week View"
-msgstr "Vista setmanal"
-
-msgid "Month View"
-msgstr "Vista mensual"
+msgid "Day"
+msgstr "Dia"
 
 msgid "Week"
 msgstr "Setmana"
+
+msgid "Month"
+msgstr "Mes"
 
 msgid "Select..."
 msgstr "Selecciona..."
@@ -1162,6 +1165,9 @@ msgstr "Heu de desar el registre abans d'afegir traduccions."
 
 msgid "No other language available."
 msgstr "No hi ha cap altre idioma disponible."
+
+msgid "#ERROR"
+msgstr "#ERROR"
 
 msgid "Translate view"
 msgstr "Tradueix la vista"

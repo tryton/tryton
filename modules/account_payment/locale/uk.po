@@ -20,7 +20,7 @@ msgid "Direct Debit"
 msgstr ""
 
 msgctxt "field:account.move.line,payment_amount:"
-msgid "Payment Amount"
+msgid "Amount to Pay"
 msgstr ""
 
 msgctxt "field:account.move.line,payment_blocked:"
@@ -402,6 +402,16 @@ msgstr ""
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_payment_form_domain_to_process"
 msgid "To Process"
+msgstr ""
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_payment_group_form_domain_all"
+msgid "All"
+msgstr ""
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_payment_group_form_domain_not_completed"
+msgid "Pending"
 msgstr ""
 
 msgctxt "model:ir.message,text:msg_erase_party_pending_payment"

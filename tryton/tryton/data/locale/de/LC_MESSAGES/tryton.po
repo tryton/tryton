@@ -27,9 +27,8 @@ msgstr "Anmeldename angeben"
 msgid "specify the server hostname:port"
 msgstr "Den Server mit Hostname:Port angeben."
 
-#, python-format
-msgid "Unable to write config file %s."
-msgstr "Kann Konfigurationsdatei '%s' nicht schreiben."
+msgid "disable thread usage"
+msgstr "Threading deaktivieren"
 
 #, python-format
 msgid "Unable to set locale %s"
@@ -65,12 +64,6 @@ msgstr "OK"
 
 msgid "Your selection:"
 msgstr "Ihre Auswahl:"
-
-msgid "Select"
-msgstr "Auswählen"
-
-msgid "Save"
-msgstr "Speichern"
 
 msgid "Save As..."
 msgstr "Speichern unter..."
@@ -201,6 +194,9 @@ msgstr "Vorlage"
 
 msgid "Edit..."
 msgstr "Bearbeiten..."
+
+msgid "View Logs..."
+msgstr "Logs anzeigen..."
 
 msgid "Attachments..."
 msgstr "Anhänge..."
@@ -600,6 +596,9 @@ msgstr "Datei auswählen"
 msgid "Remove File"
 msgstr "Datei entfernen"
 
+msgid "Select"
+msgstr "Auswählen"
+
 msgid "Add..."
 msgstr "Hinzufügen..."
 
@@ -622,24 +621,6 @@ msgstr "Notiz (%d/%d)"
 
 msgid "You have to select one record."
 msgstr "Ein Datensatz muss ausgewählt werden."
-
-msgid "ID:"
-msgstr "ID:"
-
-msgid "Created by:"
-msgstr "Erstellt von:"
-
-msgid "Created at:"
-msgstr "Erstellt am:"
-
-msgid "Edited by:"
-msgstr "Bearbeitet von:"
-
-msgid "Edited at:"
-msgstr "Zuletzt bearbeitet am:"
-
-msgid "Model:"
-msgstr "Modell:"
 
 msgid "Are you sure to remove this record?"
 msgstr "Möchten Sie diesen Datensatz wirklich löschen?"
@@ -704,6 +685,28 @@ msgstr "Einstellung Suchlimit"
 
 msgid "Limit:"
 msgstr "Limit:"
+
+#, python-format
+msgid "Logs (%s)"
+msgstr "Logs (%s)"
+
+msgid "Model:"
+msgstr "Modell:"
+
+msgid "ID:"
+msgstr "ID:"
+
+msgid "Created by:"
+msgstr "Erstellt von:"
+
+msgid "Created at:"
+msgstr "Erstellt am:"
+
+msgid "Last Modified by:"
+msgstr "Zuletzt verändert von:"
+
+msgid "Last Modified at:"
+msgstr "Zuletzt verändert am:"
 
 #, python-format
 msgid "Notes (%s)"
@@ -871,6 +874,9 @@ msgstr "Name"
 
 msgid "Open"
 msgstr "Öffnen"
+
+msgid "Save"
+msgstr "Speichern"
 
 msgid "Listed Records"
 msgstr "Angezeigte Datensätze"
@@ -1093,17 +1099,14 @@ msgstr "Vorheriges Jahr"
 msgid "next year"
 msgstr "Nächstes Jahr"
 
-msgid "Day View"
-msgstr "Tagesansicht"
-
-msgid "Week View"
-msgstr "Wochenansicht"
-
-msgid "Month View"
-msgstr "Monatsansicht"
+msgid "Day"
+msgstr "Tag"
 
 msgid "Week"
 msgstr "Woche"
+
+msgid "Month"
+msgstr "Monat"
 
 msgid "Select..."
 msgstr "Auswählen..."
@@ -1171,6 +1174,9 @@ msgstr ""
 
 msgid "No other language available."
 msgstr "Keine weitere Sprache verfügbar."
+
+msgid "#ERROR"
+msgstr "#FEHLER"
 
 msgid "Translate view"
 msgstr "Aktuelle Sicht übersetzen"

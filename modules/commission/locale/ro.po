@@ -37,7 +37,7 @@ msgstr "Suma"
 
 msgctxt "field:commission,currency:"
 msgid "Currency"
-msgstr "Moneda"
+msgstr "Valută"
 
 msgctxt "field:commission,date:"
 msgid "Date"

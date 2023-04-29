@@ -1,7 +1,8 @@
 #
+#, fuzzy
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "selection:account.shipment_cost,allocation_method:"
 msgid "By Weight"
-msgstr ""
+msgstr "După Greutate"

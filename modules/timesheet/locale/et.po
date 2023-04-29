@@ -252,9 +252,46 @@ msgid "Any employee hours"
 msgstr "Kõigi töötajate tunnid"
 
 #, fuzzy
-msgctxt "model:ir.rule.group,name:rule_group_hours_employees"
-msgid "Own employee hours"
+msgctxt "model:ir.rule.group,name:rule_group_hours_employee_monthly"
+msgid "Own hours"
 msgstr "Oma töötaja tunnid"
+
+#, fuzzy
+msgctxt "model:ir.rule.group,name:rule_group_hours_employee_monthly_admin"
+msgid "Any employee hours"
+msgstr "Kõigi töötajate tunnid"
+
+#, fuzzy
+msgctxt "model:ir.rule.group,name:rule_group_hours_employee_weekly"
+msgid "Own hours"
+msgstr "Oma töötaja tunnid"
+
+#, fuzzy
+msgctxt "model:ir.rule.group,name:rule_group_hours_employee_weekly_admin"
+msgid "Any employee hours"
+msgstr "Kõigi töötajate tunnid"
+
+#, fuzzy
+msgctxt "model:ir.rule.group,name:rule_group_hours_employees"
+msgid "Own hours"
+msgstr "Oma töötaja tunnid"
+
+#, fuzzy
+msgctxt "model:ir.rule.group,name:rule_group_hours_supervised_employees"
+msgid "Supervised employee's hours"
+msgstr "Kõigi töötajate tunnid"
+
+#, fuzzy
+msgctxt ""
+"model:ir.rule.group,name:rule_group_hours_supervised_employees_monthly"
+msgid "Supervised employee's hours"
+msgstr "Kõigi töötajate tunnid"
+
+#, fuzzy
+msgctxt ""
+"model:ir.rule.group,name:rule_group_hours_supervised_employees_weekly"
+msgid "Supervised employee's hours"
+msgstr "Kõigi töötajate tunnid"
 
 msgctxt "model:ir.rule.group,name:rule_group_line"
 msgid "Own timesheet line"

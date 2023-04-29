@@ -108,6 +108,10 @@ msgctxt "help:project.work,progress:"
 msgid "Estimated progress for this work."
 msgstr ""
 
+msgctxt "help:project.work,timesheet_available:"
+msgid "Check to record time spent."
+msgstr ""
+
 msgctxt "help:project.work,timesheet_duration:"
 msgid "Total time spent on this work and the sub-works."
 msgstr ""

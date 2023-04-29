@@ -134,7 +134,7 @@ msgstr "Utilizare conturi definite la categoria părintelui."
 
 msgctxt "help:product.category,accounting:"
 msgid "Check to indicate the category is used for accounting."
-msgstr ""
+msgstr "Bifaţi dacă categoria este utilizata pentru contabilitate."
 
 msgctxt "help:product.category,customer_taxes:"
 msgid "The taxes to apply when selling products of this category."

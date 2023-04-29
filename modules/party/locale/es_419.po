@@ -531,6 +531,10 @@ msgctxt "model:ir.message,text:msg_party_code_unique"
 msgid "The code on party must be unique."
 msgstr ""
 
+msgctxt "model:ir.message,text:msg_party_identifier_duplicate"
+msgid "The party \"%(party)s\" has the same %(type)s \"%(code)s\"."
+msgstr ""
+
 msgctxt "model:ir.message,text:msg_party_set_contact_mechanism"
 msgid ""
 "To change the \"%(field)s\" for party \"%(party)s\", you must edit their "

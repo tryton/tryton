@@ -116,11 +116,11 @@ msgstr "Massa peticions. Proveu-ho de nou més tard."
 msgid "Login"
 msgstr "Accedeix"
 
-msgid "User name"
-msgstr "Nom d'usuari"
-
 msgid "Database"
 msgstr "Base de dades"
+
+msgid "User name"
+msgstr "Nom d'usuari"
 
 msgid "Login with"
 msgstr "Identificar-se amb"
@@ -294,7 +294,7 @@ msgid "Reload"
 msgstr "Recarrega"
 
 msgid "View Logs..."
-msgstr "Veure registre..."
+msgstr "Veure registres..."
 
 msgid "Show revisions..."
 msgstr "Mostra revisions..."
@@ -360,24 +360,6 @@ msgstr "Els registres no s'han eliminat."
 
 msgid "You have to select one record."
 msgstr "Ha de seleccionar un registre."
-
-msgid "ID:"
-msgstr "Identificador:"
-
-msgid "Created by:"
-msgstr "Creat per:"
-
-msgid "Created at:"
-msgstr "Creat el:"
-
-msgid "Edited by:"
-msgstr "Editat per:"
-
-msgid "Edited at:"
-msgstr "Editat el:"
-
-msgid "Model: "
-msgstr "Model: "
 
 msgid "Add..."
 msgstr "Afegeix..."
@@ -536,6 +518,9 @@ msgstr "Personalitza"
 msgid "More"
 msgstr "Més"
 
+msgid "#ERROR"
+msgstr "#ERROR"
+
 msgid "Today"
 msgstr "Avui"
 
@@ -565,6 +550,27 @@ msgstr "Adjunts (%1)"
 
 msgid "Notes (%1)"
 msgstr "Notes (%1)"
+
+msgid "Logs (%1)"
+msgstr "Registres (%1)"
+
+msgid "Model:"
+msgstr "Model:"
+
+msgid "ID:"
+msgstr "Identificador:"
+
+msgid "Created by:"
+msgstr "Creat per:"
+
+msgid "Created at:"
+msgstr "Creat el:"
+
+msgid "Last Modified by:"
+msgstr "Última modificació per:"
+
+msgid "Last Modified at:"
+msgstr "Última modificació el:"
 
 msgid "Search %1"
 msgstr "Cerca %1"

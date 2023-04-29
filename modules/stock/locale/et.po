@@ -6,12 +6,10 @@ msgctxt "field:party.address,delivery:"
 msgid "Delivery"
 msgstr "Tarne"
 
-#, fuzzy
 msgctxt "field:party.address,warehouses:"
 msgid "Warehouses"
-msgstr "Ladu"
+msgstr "Laod"
 
-#, fuzzy
 msgctxt "field:party.contact_mechanism,delivery:"
 msgid "Delivery"
 msgstr "Tarne"
@@ -20,10 +18,9 @@ msgctxt "field:party.party,customer_location:"
 msgid "Customer Location"
 msgstr "Kliendi asukoht"
 
-#, fuzzy
 msgctxt "field:party.party,delivered_to_warehouses:"
 msgid "Delivered to Warehouses"
-msgstr "Ladu"
+msgstr "Tarnitakse ladudesse"
 
 msgctxt "field:party.party,locations:"
 msgid "Locations"
@@ -33,15 +30,13 @@ msgctxt "field:party.party,supplier_location:"
 msgid "Supplier Location"
 msgstr "Hankija asukoht"
 
-#, fuzzy
 msgctxt "field:party.party-delivered_to-stock.location,location:"
 msgid "Location"
 msgstr "Asukoht"
 
-#, fuzzy
 msgctxt "field:party.party-delivered_to-stock.location,party:"
 msgid "Party"
-msgstr "Osapool"
+msgstr "Partner"
 
 msgctxt "field:party.party.location,customer_location:"
 msgid "Customer Location"
@@ -49,7 +44,7 @@ msgstr "Kliendi asukoht"
 
 msgctxt "field:party.party.location,party:"
 msgid "Party"
-msgstr "Osapool"
+msgstr "Partner"
 
 msgctxt "field:party.party.location,supplier_location:"
 msgid "Supplier Location"
@@ -63,34 +58,30 @@ msgctxt "field:product.by_location.context,stock_date_end:"
 msgid "At Date"
 msgstr "Kuupäeval"
 
-#, fuzzy
 msgctxt "field:product.cost_price.revision,company:"
 msgid "Company"
 msgstr "Ettevõte"
 
-#, fuzzy
 msgctxt "field:product.cost_price.revision,cost_price:"
 msgid "New Cost Price"
-msgstr "Kuluväärtus"
+msgstr "Uus omahind"
 
-#, fuzzy
 msgctxt "field:product.cost_price.revision,date:"
 msgid "Date"
 msgstr "Kuupäev"
 
 msgctxt "field:product.cost_price.revision,product:"
 msgid "Variant"
-msgstr ""
+msgstr "Variant"
 
 #, fuzzy
 msgctxt "field:product.cost_price.revision,template:"
 msgid "Product"
 msgstr "Toode"
 
-#, fuzzy
 msgctxt "field:product.modify_cost_price.start,cost_price:"
 msgid "New Cost Price"
-msgstr "Kuluväärtus"
+msgstr "Uus omahind"
 
 #, fuzzy
 msgctxt "field:product.modify_cost_price.start,date:"
@@ -111,7 +102,7 @@ msgstr "Kogus"
 
 msgctxt "field:product.recompute_cost_price.start,from_:"
 msgid "From"
-msgstr ""
+msgstr "Alates"
 
 msgctxt "field:product.template,cost_value:"
 msgid "Cost Value"
@@ -2553,7 +2544,7 @@ msgstr "Seadistus"
 
 msgctxt "model:ir.ui.menu,name:menu_inventory_form"
 msgid "Inventories"
-msgstr "Kaubad"
+msgstr "Inventuurid"
 
 msgctxt "model:ir.ui.menu,name:menu_location_form"
 msgid "Locations"

@@ -78,6 +78,12 @@ msgstr ""
 "Die Standard-Lieferkostenmethode für den Kunden.\n"
 "Leer lassen, um den Standardwert aus den Einstellungen zu verwenden."
 
+msgctxt "model:ir.message,text:msg_sale_carrier_required_for_quotation"
+msgid "To get a quote for sale \"%(sale)s\" you must enter a carrier."
+msgstr ""
+"Damit der Verkauf \"%(sale)s\" in den Status \"Angebot\" gesetzt werden "
+"kann, muss zuerst ein Versanddienstleister erfasst werden."
+
 msgctxt "model:ir.message,text:msg_sale_invalid_carrier"
 msgid "To confirm sale \"%(sale)s\" you must change the carrier \"%(carrier)s\"."
 msgstr ""

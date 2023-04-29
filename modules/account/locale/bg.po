@@ -113,8 +113,9 @@ msgctxt "field:account.account,right:"
 msgid "Right"
 msgstr "Десен"
 
+#, fuzzy
 msgctxt "field:account.account,second_currency:"
-msgid "Secondary Currency"
+msgid "Second Currency"
 msgstr "Втора валута"
 
 #, fuzzy
@@ -598,7 +599,7 @@ msgstr "Дата"
 
 #, fuzzy
 msgctxt "field:account.balance_sheet.comparison.context,posted:"
-msgid "Posted Move"
+msgid "Posted Moves"
 msgstr "Публикувано движение"
 
 #, fuzzy
@@ -613,8 +614,20 @@ msgstr "Дата"
 
 #, fuzzy
 msgctxt "field:account.balance_sheet.context,posted:"
-msgid "Posted Move"
+msgid "Posted Moves"
 msgstr "Публикувано движение"
+
+msgctxt "field:account.configuration,currency_exchange_credit_account:"
+msgid "Currency Exchange Credit Account"
+msgstr ""
+
+msgctxt "field:account.configuration,currency_exchange_debit_account:"
+msgid "Currency Exchange Debit Account"
+msgstr ""
+
+msgctxt "field:account.configuration,currency_exchange_journal:"
+msgid "Currency Exchange Journal"
+msgstr ""
 
 msgctxt "field:account.configuration,default_account_payable:"
 msgid "Default Account Payable"
@@ -648,6 +661,16 @@ msgctxt "field:account.configuration.default_account,company:"
 msgid "Company"
 msgstr "Фирма"
 
+msgctxt ""
+"field:account.configuration.default_account,currency_exchange_credit_account:"
+msgid "Currency Exchange Credit Account"
+msgstr ""
+
+msgctxt ""
+"field:account.configuration.default_account,currency_exchange_debit_account:"
+msgid "Currency Exchange Debit Account"
+msgstr ""
+
 #, fuzzy
 msgctxt "field:account.configuration.default_account,default_account_payable:"
 msgid "Default Account Payable"
@@ -675,6 +698,15 @@ msgctxt ""
 "field:account.configuration.default_tax_rule,default_supplier_tax_rule:"
 msgid "Default Supplier Tax Rule"
 msgstr "Правило за данък на доставчик"
+
+#, fuzzy
+msgctxt "field:account.configuration.journal,company:"
+msgid "Company"
+msgstr "Фирма"
+
+msgctxt "field:account.configuration.journal,currency_exchange_journal:"
+msgid "Currency Exchange Journal"
+msgstr ""
 
 #, fuzzy
 msgctxt "field:account.configuration.sequence,company:"
@@ -946,7 +978,7 @@ msgstr "Дневник"
 
 #, fuzzy
 msgctxt "field:account.general_ledger.account.context,posted:"
-msgid "Posted Move"
+msgid "Posted Moves"
 msgstr "Публикувано движение"
 
 #, fuzzy
@@ -1049,6 +1081,11 @@ msgid "Account Party"
 msgstr "Разходна сметка"
 
 #, fuzzy
+msgctxt "field:account.general_ledger.line,amount_second_currency:"
+msgid "Amount Second Currency"
+msgstr "Сума в допълнителна валута"
+
+#, fuzzy
 msgctxt "field:account.general_ledger.line,balance:"
 msgid "Balance"
 msgstr "Баланс"
@@ -1117,6 +1154,11 @@ msgid "Reconciliation"
 msgstr "Съгласуване"
 
 #, fuzzy
+msgctxt "field:account.general_ledger.line,second_currency:"
+msgid "Second Currency"
+msgstr "Втора валута"
+
+#, fuzzy
 msgctxt "field:account.general_ledger.line,state:"
 msgid "State"
 msgstr "Състояние"
@@ -1152,7 +1194,7 @@ msgstr ""
 
 #, fuzzy
 msgctxt "field:account.general_ledger.line.context,posted:"
-msgid "Posted Move"
+msgid "Posted Moves"
 msgstr "Публикувано движение"
 
 #, fuzzy
@@ -1249,6 +1291,11 @@ msgstr "Валута"
 msgctxt "field:account.journal,debit:"
 msgid "Debit"
 msgstr "Дебит"
+
+#, fuzzy
+msgctxt "field:account.journal,matching_sequence:"
+msgid "Matching Sequence"
+msgstr "Съгласувания"
 
 msgctxt "field:account.journal,name:"
 msgid "Name"
@@ -1361,6 +1408,10 @@ msgctxt "field:account.move.cancel.default,description:"
 msgid "Description"
 msgstr "Описание"
 
+msgctxt "field:account.move.cancel.default,reversal:"
+msgid "Reversal"
+msgstr ""
+
 msgctxt "field:account.move.line,account:"
 msgid "Account"
 msgstr "Сметка"
@@ -1451,6 +1502,11 @@ msgctxt "field:account.move.line,party_required:"
 msgid "Party Required"
 msgstr ""
 
+#, fuzzy
+msgctxt "field:account.move.line,payable_receivable_balance:"
+msgid "Payable/Receivable Balance"
+msgstr "Payable/Receivable Lines"
+
 msgctxt "field:account.move.line,period:"
 msgid "Period"
 msgstr "Период"
@@ -1503,6 +1559,21 @@ msgstr "Описание"
 msgctxt "field:account.move.line.group.start,journal:"
 msgid "Journal"
 msgstr "Дневник"
+
+#, fuzzy
+msgctxt "field:account.move.line.receivable_payable.context,payable:"
+msgid "Payable"
+msgstr "Разходен"
+
+#, fuzzy
+msgctxt "field:account.move.line.receivable_payable.context,receivable:"
+msgid "Receivable"
+msgstr "За получаване"
+
+#, fuzzy
+msgctxt "field:account.move.line.receivable_payable.context,reconciled:"
+msgid "Reconciled"
+msgstr "Съгласуване"
 
 #, fuzzy
 msgctxt "field:account.move.line.reschedule.preview,currency:"
@@ -1689,9 +1760,10 @@ msgctxt "field:account.move.reconciliation,lines:"
 msgid "Lines"
 msgstr "Редове"
 
-msgctxt "field:account.move.reconciliation,name:"
-msgid "Name"
-msgstr "Име"
+#, fuzzy
+msgctxt "field:account.move.reconciliation,number:"
+msgid "Number"
+msgstr "Номер"
 
 #, fuzzy
 msgctxt "field:account.move.template,company:"
@@ -1817,6 +1889,11 @@ msgstr "Фактури"
 msgctxt "field:account.reconcile.show,company:"
 msgid "Company"
 msgstr "Фирма"
+
+#, fuzzy
+msgctxt "field:account.reconcile.show,currencies:"
+msgid "Currencies"
+msgstr "Валута"
 
 #, fuzzy
 msgctxt "field:account.reconcile.show,currency:"
@@ -2543,10 +2620,9 @@ msgstr ""
 "Позволява редове от тази сметка\n"
 "да бъдат съгласувани"
 
+#, fuzzy
 msgctxt "help:account.account,second_currency:"
-msgid ""
-"Force all moves for this account \n"
-"to have this secondary currency."
+msgid "Force all moves for this account to have this second currency."
 msgstr ""
 "Всички движение по тази сметка\n"
 "задължително да имат втора валута"
@@ -2669,6 +2745,10 @@ msgstr "Показване само на публикувани движения
 
 msgctxt "help:account.move,post_number:"
 msgid "Also known as Folio Number."
+msgstr ""
+
+msgctxt "help:account.move.cancel.default,reversal:"
+msgid "Reverse debit and credit."
 msgstr ""
 
 #, fuzzy
@@ -2866,6 +2946,11 @@ msgid "Account Configuration Default Tax Rule"
 msgstr "Настройване на сметка"
 
 #, fuzzy
+msgctxt "model:account.configuration.journal,name:"
+msgid "Account Configuration Journal"
+msgstr "Настройване на сметка"
+
+#, fuzzy
 msgctxt "model:account.configuration.sequence,name:"
 msgid "Account Configuration Sequence"
 msgstr "Настройване на сметка"
@@ -2941,6 +3026,11 @@ msgid "Cash"
 msgstr "Cash"
 
 #, fuzzy
+msgctxt "model:account.journal,name:journal_currency_exchange"
+msgid "Currency Exchange"
+msgstr "Валута"
+
+#, fuzzy
 msgctxt "model:account.journal,name:journal_expense"
 msgid "Expense"
 msgstr "Expense"
@@ -2991,6 +3081,10 @@ msgstr "Затваряне на редове"
 
 msgctxt "model:account.move.line.group.start,name:"
 msgid "Group Lines"
+msgstr ""
+
+msgctxt "model:account.move.line.receivable_payable.context,name:"
+msgid "Receivable/Payable Line Context"
 msgstr ""
 
 #, fuzzy
@@ -3476,23 +3570,6 @@ msgctxt "model:ir.action,name:wizard_update_chart"
 msgid "Update Chart of Accounts from Template"
 msgstr "Update Chart of Accounts from Template"
 
-msgctxt ""
-"model:ir.action.act_window.domain,name:act_move_line_payable_receivable_domain_all"
-msgid "All"
-msgstr "All"
-
-#, fuzzy
-msgctxt ""
-"model:ir.action.act_window.domain,name:act_move_line_payable_receivable_domain_payable"
-msgid "Payable"
-msgstr "Разходен"
-
-#, fuzzy
-msgctxt ""
-"model:ir.action.act_window.domain,name:act_move_line_payable_receivable_domain_receivable"
-msgid "Receivable"
-msgstr "За получаване"
-
 msgctxt "model:ir.message,text:msg_account_chart_exists"
 msgid "A chart of accounts already exists for company \"%(company)s\"."
 msgstr ""
@@ -3718,13 +3795,7 @@ msgid ""
 "Use the current period to cancel the move?"
 msgstr ""
 
-msgctxt "model:ir.message,text:msg_move_date_outside_period"
-msgid ""
-"The date of move \"%(move)s\" is outside the period, you must change the "
-"date or the period."
-msgstr ""
-
-msgctxt "model:ir.message,text:msg_move_template_expession_not_number"
+msgctxt "model:ir.message,text:msg_move_template_expression_not_number"
 msgid ""
 "The value \"%(value)s\" of \"%(expression)s\" from template \"%(template)s\""
 " is not a number."
@@ -3736,12 +3807,32 @@ msgid ""
 "\"%(error)s\""
 msgstr ""
 
+msgctxt "model:ir.message,text:msg_move_template_keyword_name_not_identifier"
+msgid "The keyword name \"%(name)s\" is not a valid identifier."
+msgstr ""
+
 msgctxt "model:ir.message,text:msg_no_fiscalyear_date"
-msgid "To continue, you must create a fiscal year for the date \"%(date)s\"."
+msgid ""
+"To continue, you must create a fiscal year for the date \"%(date)s\" and "
+"company \"%(company)s\"."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_no_open_fiscalyear_date"
+msgid ""
+"To continue, you must reopen the fiscal year \"%(fiscalyear)s\" of company "
+"\"%(company)s\"for the date \"%(date)s\"."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_no_open_period_date"
+msgid ""
+"To continue, you must reopen the period \"%(period)s\" of company "
+"\"%(company)s\" for the date \"%(date)s\"."
 msgstr ""
 
 msgctxt "model:ir.message,text:msg_no_period_date"
-msgid "To continue, you must create a period for the date \"%(date)s\"."
+msgid ""
+"To continue, you must create a period for the date \"%(date)s\" and company "
+"\"%(company)s\"."
 msgstr ""
 
 msgctxt "model:ir.message,text:msg_only_one_debit_credit_types"
@@ -3811,6 +3902,12 @@ msgstr ""
 msgctxt "model:ir.message,text:msg_reconciliation_delete_delegated"
 msgid ""
 "The reconciliation \"%(reconciliation)s\" is delegated to the line \"%(line)s\".\n"
+"You may need to cancel its move \"%(move)s\"."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_reconciliation_delete_write_off"
+msgid ""
+"The reconciliation \"%(reconciliation)s\" is linked to the write-off line \"%(line)s\".\n"
 "You may need to cancel its move \"%(move)s\"."
 msgstr ""
 
@@ -4299,10 +4396,9 @@ msgctxt "report:account.account.type.statement:"
 msgid "Date:"
 msgstr "Дата:"
 
-#, fuzzy
 msgctxt "report:account.account.type.statement:"
 msgid "Fiscal Year:"
-msgstr "Финансова година"
+msgstr "Финансова година:"
 
 #, fuzzy
 msgctxt "report:account.account.type.statement:"
@@ -5005,14 +5101,39 @@ msgid "General Information"
 msgstr "Обща информация"
 
 #, fuzzy
+msgctxt "view:account.account:"
+msgid "General Ledger"
+msgstr "General Ledger"
+
+#, fuzzy
 msgctxt "view:account.aged_balance.context:"
 msgid "Terms"
 msgstr "Условия"
 
 #, fuzzy
 msgctxt "view:account.configuration:"
+msgid "Credit Account"
+msgstr "Сметка на кредитно известие"
+
+#, fuzzy
+msgctxt "view:account.configuration:"
+msgid "Currency Exchange"
+msgstr "Валута"
+
+#, fuzzy
+msgctxt "view:account.configuration:"
+msgid "Debit Account"
+msgstr "Основна сметка"
+
+#, fuzzy
+msgctxt "view:account.configuration:"
 msgid "Invoice"
 msgstr "Фактура"
+
+#, fuzzy
+msgctxt "view:account.configuration:"
+msgid "Journal"
+msgstr "Дневник"
 
 #, fuzzy
 msgctxt "view:account.configuration:"
@@ -5101,6 +5222,11 @@ msgstr "Месеци"
 msgctxt "view:account.move.line.template:"
 msgid "Other Info"
 msgstr "Друга информация"
+
+#, fuzzy
+msgctxt "view:account.move.line:"
+msgid "Balance"
+msgstr "Баланс"
 
 msgctxt "view:account.move.line:"
 msgid "Credit"

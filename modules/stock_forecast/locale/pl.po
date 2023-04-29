@@ -34,17 +34,32 @@ msgctxt "field:stock.forecast,warehouse:"
 msgid "Location"
 msgstr "Lokalizacja"
 
+#, fuzzy
+msgctxt "field:stock.forecast.complete.ask,company:"
+msgid "Company"
+msgstr "Firma"
+
+#, fuzzy
+msgctxt "field:stock.forecast.complete.ask,destination:"
+msgid "Destination"
+msgstr "Cel"
+
 msgctxt "field:stock.forecast.complete.ask,from_date:"
 msgid "From Date"
 msgstr "Od dnia"
+
+#, fuzzy
+msgctxt "field:stock.forecast.complete.ask,products:"
+msgid "Products"
+msgstr "Produkty"
 
 msgctxt "field:stock.forecast.complete.ask,to_date:"
 msgid "To Date"
 msgstr "Do dnia"
 
-msgctxt "field:stock.forecast.complete.choose,products:"
-msgid "Products"
-msgstr "Produkty"
+msgctxt "field:stock.forecast.complete.ask,warehouse:"
+msgid "Warehouse"
+msgstr ""
 
 #, fuzzy
 msgctxt "field:stock.forecast.line,forecast:"
@@ -166,11 +181,6 @@ msgctxt "model:stock.forecast.complete.ask,name:"
 msgid "Complete Forecast"
 msgstr "Complete Forecast"
 
-#, fuzzy
-msgctxt "model:stock.forecast.complete.choose,name:"
-msgid "Complete Forecast"
-msgstr "Complete Forecast"
-
 msgctxt "model:stock.forecast.line,name:"
 msgid "Stock Forecast Line"
 msgstr ""
@@ -202,26 +212,10 @@ msgctxt "view:stock.forecast:"
 msgid "Complete Forecast"
 msgstr "Complete Forecast"
 
-msgctxt "wizard_button:stock.forecast.complete,ask,choose:"
-msgid "Choose Products"
-msgstr "Wybierz produkty"
-
 msgctxt "wizard_button:stock.forecast.complete,ask,complete:"
 msgid "Complete"
 msgstr ""
 
 msgctxt "wizard_button:stock.forecast.complete,ask,end:"
-msgid "Cancel"
-msgstr "Anuluj"
-
-msgctxt "wizard_button:stock.forecast.complete,choose,ask:"
-msgid "Choose Dates"
-msgstr "Wybierz daty"
-
-msgctxt "wizard_button:stock.forecast.complete,choose,complete:"
-msgid "Complete"
-msgstr ""
-
-msgctxt "wizard_button:stock.forecast.complete,choose,end:"
 msgid "Cancel"
 msgstr "Anuluj"

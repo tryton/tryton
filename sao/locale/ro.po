@@ -5,20 +5,17 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 msgid "Are your sure to leave?"
 msgstr "Sigur iesiti?"
 
-#, fuzzy
 msgid "Incompatible version of the server."
-msgstr "Serverul nu se poate accessa."
+msgstr "Versiune incompatibila a serverului."
 
 msgid "Version mismatch"
-msgstr ""
+msgstr "Nepotrivire a versiunii"
 
-#, fuzzy
 msgid "Could not connect to the server."
-msgstr "Serverul nu se poate accessa."
+msgstr "Nu s-a putut efectua conexiunea la server."
 
-#, fuzzy
 msgid "Connection error"
-msgstr "Eroare de aplicație"
+msgstr "Eroare de conexiune"
 
 msgid "Favorites"
 msgstr "Favorite"
@@ -93,13 +90,13 @@ msgid "Show/Hide access keys"
 msgstr "Arata/Ascunde taste de access"
 
 msgid "Help"
-msgstr ""
+msgstr "Ajutor"
 
 msgid "Close"
 msgstr "Închidere"
 
 msgid "Documentation..."
-msgstr ""
+msgstr "Documentație..."
 
 msgid "Keyboard shortcuts"
 msgstr "Comenzi rapide"
@@ -119,18 +116,17 @@ msgstr "Prea multe cereri. Încercați mai târziu."
 msgid "Login"
 msgstr "Autentificare"
 
-msgid "User name"
-msgstr "Utilizator"
-
 msgid "Database"
 msgstr "Bază de date"
 
-#, fuzzy
+msgid "User name"
+msgstr "Utilizator"
+
 msgid "Login with"
-msgstr "Autentificare"
+msgstr "Autentificare cu"
 
 msgid "Not found."
-msgstr ""
+msgstr "Nimic găsit."
 
 msgid "Your selection:"
 msgstr "Selecția dvs.:"
@@ -298,7 +294,7 @@ msgid "Reload"
 msgstr "Reîncare"
 
 msgid "View Logs..."
-msgstr "Vizualizare jurnalele ..."
+msgstr "Vizualizare Jurnale..."
 
 msgid "Show revisions..."
 msgstr "Afișați revizii..."
@@ -364,24 +360,6 @@ msgstr "Înregistrările nu au fost eliminate."
 
 msgid "You have to select one record."
 msgstr "Trebuie selectaa o singura înregistrare."
-
-msgid "ID:"
-msgstr "ID:"
-
-msgid "Created by:"
-msgstr "Creat de:"
-
-msgid "Created at:"
-msgstr "Creat la:"
-
-msgid "Edited by:"
-msgstr "Editat de:"
-
-msgid "Edited at:"
-msgstr "Editat la:"
-
-msgid "Model: "
-msgstr "Model: "
 
 msgid "Add..."
 msgstr "Adăuga..."
@@ -535,10 +513,13 @@ msgid ": "
 msgstr ": "
 
 msgid "Customize"
-msgstr ""
+msgstr "Personalizați"
 
 msgid "More"
 msgstr "Mai multe"
+
+msgid "#ERROR"
+msgstr "#EROARE"
 
 msgid "Today"
 msgstr "Astăzi"
@@ -569,6 +550,27 @@ msgstr "Atașamente (%1)"
 
 msgid "Notes (%1)"
 msgstr "Note (%1)"
+
+msgid "Logs (%1)"
+msgstr "Nota (%1)"
+
+msgid "Model:"
+msgstr "Model:"
+
+msgid "ID:"
+msgstr "ID:"
+
+msgid "Created by:"
+msgstr "Creat de:"
+
+msgid "Created at:"
+msgstr "Creat la:"
+
+msgid "Last Modified by:"
+msgstr "Modificat de:"
+
+msgid "Last Modified at:"
+msgstr "Ultima Modificare la:"
 
 msgid "Search %1"
 msgstr "Căutare %1"
@@ -610,7 +612,7 @@ msgid "You must select an import file first."
 msgstr "Mai întâi trebuie să selectați un fișier de import."
 
 msgid "Detection failed"
-msgstr ""
+msgstr "Detecție eșuată"
 
 msgid "Error processing the file at field %1."
 msgstr "Eroare la procesarea fișierului la câmpul %1."
@@ -618,16 +620,14 @@ msgstr "Eroare la procesarea fișierului la câmpul %1."
 msgid "Error"
 msgstr "Eroare"
 
-#, fuzzy
 msgid "Import failed"
-msgstr "Import"
+msgstr "Import eşuat"
 
-#, fuzzy
 msgid "%1 record imported"
 msgid_plural "%1 records imported"
-msgstr[0] "%1 (denmire inregistrare)"
-msgstr[1] "%1 (denmire inregistrare)"
-msgstr[2] "%1 (denmire inregistrare)"
+msgstr[0] "%1 (denumire înregistrată)"
+msgstr[1] "%1 (denumiri înregistrate)"
+msgstr[2] "%1 (denumiri înregistrate)"
 
 msgid "CSV Export: %1"
 msgstr "Export CSV: %1"
@@ -668,9 +668,8 @@ msgstr "%1 (șir)"
 msgid "%1 (model name)"
 msgstr "%1 (denumire model)"
 
-#, fuzzy
 msgid "%1/Record Name"
-msgstr "%1 (denmire inregistrare)"
+msgstr "%1 (denumire înregistrare)"
 
 msgid "What is the name of this export?"
 msgstr "Care este numele acestui export?"
@@ -678,12 +677,11 @@ msgstr "Care este numele acestui export?"
 msgid "Override %1 definition?"
 msgstr "Trece peste definiţia %1?"
 
-#, fuzzy
 msgid "%1 record saved"
 msgid_plural "%1 records saved"
-msgstr[0] "Înregistrare salvată."
-msgstr[1] "Înregistrare salvată."
-msgstr[2] "Înregistrare salvată."
+msgstr[0] "%1 înregistrare salvată"
+msgstr[1] "%1 înregistrări salvate"
+msgstr[2] "%1 înregistrări salvate"
 
 msgid "E-mail %1"
 msgstr "E-mail %1"

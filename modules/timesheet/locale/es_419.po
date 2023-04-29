@@ -254,8 +254,38 @@ msgctxt "model:ir.rule.group,name:rule_group_hours_employee_admin"
 msgid "Any employee hours"
 msgstr ""
 
+msgctxt "model:ir.rule.group,name:rule_group_hours_employee_monthly"
+msgid "Own hours"
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_hours_employee_monthly_admin"
+msgid "Any employee hours"
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_hours_employee_weekly"
+msgid "Own hours"
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_hours_employee_weekly_admin"
+msgid "Any employee hours"
+msgstr ""
+
 msgctxt "model:ir.rule.group,name:rule_group_hours_employees"
-msgid "Own employee hours"
+msgid "Own hours"
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_hours_supervised_employees"
+msgid "Supervised employee's hours"
+msgstr ""
+
+msgctxt ""
+"model:ir.rule.group,name:rule_group_hours_supervised_employees_monthly"
+msgid "Supervised employee's hours"
+msgstr ""
+
+msgctxt ""
+"model:ir.rule.group,name:rule_group_hours_supervised_employees_weekly"
+msgid "Supervised employee's hours"
 msgstr ""
 
 msgctxt "model:ir.rule.group,name:rule_group_line"

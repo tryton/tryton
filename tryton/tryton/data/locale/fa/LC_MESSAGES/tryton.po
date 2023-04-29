@@ -26,9 +26,8 @@ msgstr "تعیین ورود به سیستم کاربر"
 msgid "specify the server hostname:port"
 msgstr "تعیین نام میزبان سرور : درگاه"
 
-#, python-format
-msgid "Unable to write config file %s."
-msgstr "قادر به نوشتن در فایل پیکربندی \"%s\" نیست."
+msgid "disable thread usage"
+msgstr ""
 
 #, python-format
 msgid "Unable to set locale %s"
@@ -64,12 +63,6 @@ msgstr "بلی"
 
 msgid "Your selection:"
 msgstr "انتخاب شما:"
-
-msgid "Select"
-msgstr "انتخاب"
-
-msgid "Save"
-msgstr "ذخیره"
 
 msgid "Save As..."
 msgstr "ذخیره با نام..."
@@ -203,6 +196,10 @@ msgstr "مرتبط"
 
 msgid "Edit..."
 msgstr "ویرایش..."
+
+#, fuzzy
+msgid "View Logs..."
+msgstr "_مشاهده گزارشات..."
 
 msgid "Attachments..."
 msgstr "پیوست ها..."
@@ -612,6 +609,9 @@ msgstr "انتخاب همه"
 msgid "Remove File"
 msgstr "حذف <Del>"
 
+msgid "Select"
+msgstr "انتخاب"
+
 msgid "Add..."
 msgstr "افزودن..."
 
@@ -635,28 +635,6 @@ msgstr ""
 
 msgid "You have to select one record."
 msgstr "شما باید یک پرونده را انتخاب کنید."
-
-msgid "ID:"
-msgstr "شناسه:"
-
-#, fuzzy
-msgid "Created by:"
-msgstr "تاریخ ایجاد"
-
-#, fuzzy
-msgid "Created at:"
-msgstr "تاریخ ایجاد"
-
-#, fuzzy
-msgid "Edited by:"
-msgstr "ویرایش"
-
-#, fuzzy
-msgid "Edited at:"
-msgstr "ویرایش"
-
-msgid "Model:"
-msgstr "مدل:"
 
 msgid "Are you sure to remove this record?"
 msgstr "برای حذف این پرونده اطمینان کامل دارید؟"
@@ -721,6 +699,32 @@ msgstr "تنظیمات جستجو محدود"
 
 msgid "Limit:"
 msgstr "محدودیت:"
+
+#, python-format
+msgid "Logs (%s)"
+msgstr "سیاهههای مربوط (%s)"
+
+msgid "Model:"
+msgstr "مدل:"
+
+msgid "ID:"
+msgstr "شناسه:"
+
+#, fuzzy
+msgid "Created by:"
+msgstr "تاریخ ایجاد"
+
+#, fuzzy
+msgid "Created at:"
+msgstr "تاریخ ایجاد"
+
+#, fuzzy
+msgid "Last Modified by:"
+msgstr "آخرین تغییرات بوسیله:"
+
+#, fuzzy
+msgid "Last Modified at:"
+msgstr "تاریخ آخرین تغییرات:"
 
 #, python-format
 msgid "Notes (%s)"
@@ -890,6 +894,9 @@ msgstr "نام"
 
 msgid "Open"
 msgstr "باز کردن"
+
+msgid "Save"
+msgstr "ذخیره"
 
 #, fuzzy
 msgid "Listed Records"
@@ -1119,17 +1126,15 @@ msgstr "سال قبل"
 msgid "next year"
 msgstr "سال بعد"
 
-msgid "Day View"
+msgid "Day"
 msgstr ""
-
-msgid "Week View"
-msgstr "نمایش هفته"
-
-msgid "Month View"
-msgstr "نمایش ماه"
 
 msgid "Week"
 msgstr "هفته"
+
+#, fuzzy
+msgid "Month"
+msgstr "نمایش ماه"
 
 msgid "Select..."
 msgstr "انتخاب..."
@@ -1197,6 +1202,9 @@ msgstr "قبل از اضافه کردن ترجمه ها شما باید پرون
 
 msgid "No other language available."
 msgstr "هیچ زبان دیگری در دسترس نیست."
+
+msgid "#ERROR"
+msgstr ""
 
 msgid "Translate view"
 msgstr "نمایش ترجمه"

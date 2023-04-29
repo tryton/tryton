@@ -665,6 +665,22 @@ msgctxt "model:product.uom,name:uom_day"
 msgid "Day"
 msgstr "天"
 
+msgctxt "model:product.uom,name:uom_energy_joule"
+msgid "Joule"
+msgstr ""
+
+msgctxt "model:product.uom,name:uom_energy_kwh"
+msgid "Kilowatt-hour"
+msgstr ""
+
+msgctxt "model:product.uom,name:uom_energy_megajoule"
+msgid "Megajoule"
+msgstr ""
+
+msgctxt "model:product.uom,name:uom_energy_mwh"
+msgid "Megawatt-hour"
+msgstr ""
+
 msgctxt "model:product.uom,name:uom_foot"
 msgid "Foot"
 msgstr "英尺"
@@ -753,10 +769,6 @@ msgctxt "model:product.uom,name:uom_unit"
 msgid "Unit"
 msgstr "单位"
 
-msgctxt "model:product.uom,name:uom_work_day"
-msgid "Work Day"
-msgstr "工作日"
-
 msgctxt "model:product.uom,name:uom_yard"
 msgid "Yard"
 msgstr "码"
@@ -792,6 +804,22 @@ msgstr "m³"
 msgctxt "model:product.uom,symbol:uom_day"
 msgid "d"
 msgstr "d"
+
+msgctxt "model:product.uom,symbol:uom_energy_joule"
+msgid "J"
+msgstr ""
+
+msgctxt "model:product.uom,symbol:uom_energy_kwh"
+msgid "kW⋅h"
+msgstr ""
+
+msgctxt "model:product.uom,symbol:uom_energy_megajoule"
+msgid "MJ"
+msgstr ""
+
+msgctxt "model:product.uom,symbol:uom_energy_mwh"
+msgid "MW⋅h"
+msgstr ""
 
 msgctxt "model:product.uom,symbol:uom_foot"
 msgid "ft"
@@ -881,10 +909,6 @@ msgctxt "model:product.uom,symbol:uom_unit"
 msgid "u"
 msgstr "u"
 
-msgctxt "model:product.uom,symbol:uom_work_day"
-msgid "wd"
-msgstr "wd"
-
 msgctxt "model:product.uom,symbol:uom_yard"
 msgid "yd"
 msgstr "yd"
@@ -892,6 +916,10 @@ msgstr "yd"
 msgctxt "model:product.uom.category,name:"
 msgid "Unit of Measure Category"
 msgstr "计量单位类别"
+
+msgctxt "model:product.uom.category,name:uom_cat_energy"
+msgid "Energy"
+msgstr ""
 
 msgctxt "model:product.uom.category,name:uom_cat_length"
 msgid "Length"

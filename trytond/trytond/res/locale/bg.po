@@ -418,26 +418,6 @@ msgctxt "model:ir.rule.group,name:rule_group_action"
 msgid "User in groups"
 msgstr ""
 
-msgctxt "model:ir.rule.group,name:rule_group_action_act_window"
-msgid "User in groups"
-msgstr ""
-
-msgctxt "model:ir.rule.group,name:rule_group_action_keyword"
-msgid "User in groups"
-msgstr ""
-
-msgctxt "model:ir.rule.group,name:rule_group_action_report"
-msgid "User in groups"
-msgstr ""
-
-msgctxt "model:ir.rule.group,name:rule_group_action_url"
-msgid "User in groups"
-msgstr ""
-
-msgctxt "model:ir.rule.group,name:rule_group_action_wizard"
-msgid "User in groups"
-msgstr ""
-
 msgctxt "model:ir.rule.group,name:rule_group_export_any"
 msgid "Any export"
 msgstr ""

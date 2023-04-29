@@ -112,6 +112,11 @@ msgctxt "field:account.invoice,description:"
 msgid "Description"
 msgstr "Описание"
 
+#, fuzzy
+msgctxt "field:account.invoice,has_payment_method:"
+msgid "Has Payment Method"
+msgstr "Test Payment Term"
+
 msgctxt "field:account.invoice,invoice_address:"
 msgid "Invoice Address"
 msgstr "Адрес для инвойса"
@@ -311,6 +316,16 @@ msgid "Invoice"
 msgstr "Инвойс"
 
 #, fuzzy
+msgctxt "field:account.invoice.line,invoice_description:"
+msgid "Invoice Description"
+msgstr "Описание"
+
+#, fuzzy
+msgctxt "field:account.invoice.line,invoice_party:"
+msgid "Party"
+msgstr "Контрагент"
+
+#, fuzzy
 msgctxt "field:account.invoice.line,invoice_state:"
 msgid "Invoice State"
 msgstr "Состояние инвойса"
@@ -401,18 +416,10 @@ msgctxt "field:account.invoice.pay.ask,company:"
 msgid "Company"
 msgstr "Организация"
 
-msgctxt "field:account.invoice.pay.ask,currency:"
-msgid "Payment Currency"
-msgstr "Валюта оплаты"
-
-msgctxt "field:account.invoice.pay.ask,currency_writeoff:"
-msgid "Write-Off Currency"
-msgstr "Валюта списания"
-
 #, fuzzy
-msgctxt "field:account.invoice.pay.ask,date:"
-msgid "Date"
-msgstr "Дата"
+msgctxt "field:account.invoice.pay.ask,currency:"
+msgid "Currency"
+msgstr "Валюта"
 
 msgctxt "field:account.invoice.pay.ask,invoice:"
 msgid "Invoice"
@@ -822,11 +829,6 @@ msgid "Invoices"
 msgstr "Invoices"
 
 #, fuzzy
-msgctxt "model:ir.action,name:act_invoice_form2"
-msgid "Invoices"
-msgstr "Invoices"
-
-#, fuzzy
 msgctxt "model:ir.action,name:act_invoice_in_form"
 msgid "Supplier Invoices"
 msgstr "Инвойсы поставщиков"
@@ -834,6 +836,11 @@ msgstr "Инвойсы поставщиков"
 msgctxt "model:ir.action,name:act_invoice_out_form"
 msgid "Customer Invoices"
 msgstr "Customer Invoices"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_invoice_relate"
+msgid "Invoices"
+msgstr "Invoices"
 
 msgctxt "model:ir.action,name:act_payment_method_form"
 msgid "Invoice Payment Methods"
@@ -910,6 +917,30 @@ msgctxt ""
 msgid "Validated"
 msgstr "Утвержденный"
 
+#, fuzzy
+msgctxt "model:ir.action.act_window.domain,name:act_invoice_relate_all"
+msgid "All"
+msgstr "Все"
+
+#, fuzzy
+msgctxt "model:ir.action.act_window.domain,name:act_invoice_relate_paid"
+msgid "Paid"
+msgstr "Оплачен"
+
+msgctxt "model:ir.action.act_window.domain,name:act_invoice_relate_pending"
+msgid "Pending"
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_cancel_invoice_move"
+msgid "The moves \"%(moves)s\" have the posted invoices \"%(invoices)s\" as origin."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_cancel_invoice_move_description"
+msgid ""
+"Cancelling them will reconcile the move lines thus paying the invoices. You "
+"might want to cancel the invoices first."
+msgstr ""
+
 msgctxt "model:ir.message,text:msg_close_period_non_posted_invoices"
 msgid "To close the periods you must post the invoices \"%(invoices)s\"."
 msgstr ""
@@ -946,10 +977,10 @@ msgid "You cannot delete invoice \"%(invoice)s\" because it has a number."
 msgstr ""
 
 #, fuzzy
-msgctxt "model:ir.message,text:msg_invoice_line_create"
+msgctxt "model:ir.message,text:msg_invoice_line_create_draft"
 msgid ""
-"You cannot add a line to invoice \"%(invoice)s\" because it is posted, paid "
-"or cancelled."
+"You cannot add lines to invoice \"%(invoice)s\" because it is no longer in a"
+" draft state."
 msgstr ""
 "Вы не можете добавить строчку \"%(line)s\" в инвойс \"%(invoice)s\" так как "
 "он \"Отправлен\", \"Оплачен\" или \"Отменен\"."
@@ -1019,12 +1050,6 @@ msgctxt "model:ir.message,text:msg_invoice_payment_term_date_past"
 msgid "The invoice \"%(invoice)s\" generates a payment date \"%(date)s\" in the past."
 msgstr ""
 
-msgctxt "model:ir.message,text:msg_invoice_same_account_line"
-msgid ""
-"You cannot use the same account \"%(account)s\" on invoice \"%(invoice)s\" "
-"and on line \"%(line)s\"."
-msgstr ""
-
 msgctxt "model:ir.message,text:msg_invoice_similar"
 msgid "The invoice \"%(invoice)s\" is similar to invoice \"%(similar)s\"."
 msgstr ""
@@ -1032,8 +1057,8 @@ msgstr ""
 #, fuzzy
 msgctxt "model:ir.message,text:msg_invoice_tax_create"
 msgid ""
-"You cannot add a tax to invoice \"%(invoice)s\" because it is posted, paid "
-"or cancelled."
+"You cannot add taxes to invoice \"%(invoice)s\" because it is no longer in a"
+" draft state."
 msgstr ""
 "Вы не можете добавить строчку \"%(line)s\" в инвойс \"%(invoice)s\" так как "
 "он \"Отправлен\", \"Оплачен\" или \"Отменен\"."

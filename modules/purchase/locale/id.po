@@ -183,21 +183,23 @@ msgctxt "field:purchase.line,invoice_lines:"
 msgid "Invoice Lines"
 msgstr "Baris Faktur"
 
-msgctxt "field:purchase.line,move_done:"
-msgid "Moves Done"
-msgstr "Perpindahan Selesai"
-
-msgctxt "field:purchase.line,move_exception:"
-msgid "Moves Exception"
-msgstr ""
-
 msgctxt "field:purchase.line,moves:"
 msgid "Moves"
 msgstr "Perpindahan"
 
+#, fuzzy
+msgctxt "field:purchase.line,moves_exception:"
+msgid "Moves Exception"
+msgstr "Perpindahan Selesai"
+
 msgctxt "field:purchase.line,moves_ignored:"
 msgid "Ignored Moves"
 msgstr ""
+
+#, fuzzy
+msgctxt "field:purchase.line,moves_progress:"
+msgid "Moves Progress"
+msgstr "Perpindahan Selesai"
 
 msgctxt "field:purchase.line,moves_recreated:"
 msgid "Recreated Moves"
@@ -223,6 +225,11 @@ msgctxt "field:purchase.line,purchase:"
 msgid "Purchase"
 msgstr "Pembelian"
 
+#, fuzzy
+msgctxt "field:purchase.line,purchase_date:"
+msgid "Purchase Date"
+msgstr "Tanggal Pembelian"
+
 msgctxt "field:purchase.line,purchase_state:"
 msgid "Purchase State"
 msgstr ""
@@ -234,6 +241,11 @@ msgstr ""
 msgctxt "field:purchase.line,summary:"
 msgid "Summary"
 msgstr "Ringkasan"
+
+#, fuzzy
+msgctxt "field:purchase.line,supplier:"
+msgid "Supplier"
+msgstr "Pemasok"
 
 msgctxt "field:purchase.line,taxes:"
 msgid "Taxes"
@@ -254,6 +266,11 @@ msgstr ""
 msgctxt "field:purchase.line,unit_price:"
 msgid "Unit Price"
 msgstr "Harga Satuan"
+
+#, fuzzy
+msgctxt "field:purchase.line,warehouse:"
+msgid "Warehouse"
+msgstr "Gudang"
 
 msgctxt "field:purchase.line-account.tax,line:"
 msgid "Purchase Line"
@@ -586,6 +603,12 @@ msgctxt "help:party.party.supplier_currency,supplier_currency:"
 msgid "Default currency for purchases from this party."
 msgstr ""
 
+msgctxt "help:party.party.supplier_lead_time,supplier_lead_time:"
+msgid ""
+"The time from confirming the purchase order to receiving the goods from the party when used as a supplier.\n"
+"Used if no lead time is set on the product supplier."
+msgstr ""
+
 msgctxt "help:purchase.configuration,purchase_process_after:"
 msgid ""
 "The grace period during which confirmed purchase can still be reset to draft.\n"
@@ -609,6 +632,12 @@ msgctxt "help:purchase.product_supplier,lead_time:"
 msgid ""
 "The time from confirming the purchase order to receiving the products.\n"
 "If empty the lead time of the supplier is used."
+msgstr ""
+
+msgctxt "help:purchase.product_supplier,prices:"
+msgid ""
+"Add price for different criteria.\n"
+"The last matching line is used."
 msgstr ""
 
 msgctxt "help:purchase.product_supplier.price,quantity:"
@@ -652,26 +681,29 @@ msgctxt "model:ir.action,name:act_purchase_form"
 msgid "Purchases"
 msgstr "Pembelian"
 
-msgctxt "model:ir.action,name:act_purchase_form2"
-msgid "Purchases"
-msgstr ""
-
 msgctxt "model:ir.action,name:act_purchase_invoice_relate"
 msgid "Purchases"
 msgstr ""
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_purchase_line_relate"
+msgid "Purchase Lines"
+msgstr "Baris Pembelian"
 
 #, fuzzy
 msgctxt "model:ir.action,name:act_purchase_move_relate"
 msgid "Moves"
 msgstr "Perpindahan"
 
-msgctxt "model:ir.action,name:act_purchase_shipment_returns_relate"
+#, fuzzy
+msgctxt "model:ir.action,name:act_purchase_relate"
 msgid "Purchases"
-msgstr ""
+msgstr "Pembelian"
 
-msgctxt "model:ir.action,name:act_purchase_shipments_relate"
+#, fuzzy
+msgctxt "model:ir.action,name:act_purchase_relate_simple"
 msgid "Purchases"
-msgstr ""
+msgstr "Pembelian"
 
 #, fuzzy
 msgctxt "model:ir.action,name:act_reporting_main"
@@ -759,6 +791,31 @@ msgctxt ""
 msgid "Quotation"
 msgstr ""
 
+msgctxt "model:ir.action.act_window.domain,name:act_purchase_line_relate_all"
+msgid "All"
+msgstr ""
+
+msgctxt "model:ir.action.act_window.domain,name:act_purchase_line_relate_done"
+msgid "Done"
+msgstr ""
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_purchase_line_relate_pending"
+msgid "Pending"
+msgstr ""
+
+msgctxt "model:ir.action.act_window.domain,name:act_purchase_relate_all"
+msgid "All"
+msgstr ""
+
+msgctxt "model:ir.action.act_window.domain,name:act_purchase_relate_done"
+msgid "Done"
+msgstr ""
+
+msgctxt "model:ir.action.act_window.domain,name:act_purchase_relate_pending"
+msgid "Pending"
+msgstr ""
+
 msgctxt "model:ir.message,text:msg_change_purchase_uom"
 msgid ""
 "You are trying to change the purchase UoM on which the purchase prices are "
@@ -779,6 +836,12 @@ msgctxt "model:ir.message,text:msg_purchase_invoice_reset_draft"
 msgid ""
 "You cannot reset invoice \"%(invoice)s\" to draft because it was generated "
 "by a purchase."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_purchase_line_create_draft"
+msgid ""
+"You cannot add lines to purchase \"%(purchase)s\" because it is no longer in"
+" a draft state."
 msgstr ""
 
 msgctxt "model:ir.message,text:msg_purchase_line_delete_cancel_draft"
@@ -1200,6 +1263,10 @@ msgid "Manual"
 msgstr ""
 
 msgctxt "selection:purchase.purchase,invoice_state:"
+msgid "Awaiting Payment"
+msgstr ""
+
+msgctxt "selection:purchase.purchase,invoice_state:"
 msgid "Exception"
 msgstr ""
 
@@ -1212,7 +1279,11 @@ msgid "Paid"
 msgstr ""
 
 msgctxt "selection:purchase.purchase,invoice_state:"
-msgid "Waiting"
+msgid "Partially Paid"
+msgstr ""
+
+msgctxt "selection:purchase.purchase,invoice_state:"
+msgid "Pending"
 msgstr ""
 
 msgctxt "selection:purchase.purchase,shipment_state:"
@@ -1222,6 +1293,10 @@ msgstr ""
 msgctxt "selection:purchase.purchase,shipment_state:"
 msgid "None"
 msgstr "Tidak ada"
+
+msgctxt "selection:purchase.purchase,shipment_state:"
+msgid "Partially Shipped"
+msgstr ""
 
 msgctxt "selection:purchase.purchase,shipment_state:"
 msgid "Received"

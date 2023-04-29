@@ -467,7 +467,8 @@ msgstr ""
 msgctxt "model:ir.message,text:msg_transfer_delete_posted"
 msgid "You cannot delete transfer \"%(transfer)s\" because it is posted."
 msgstr ""
-"Vous ne pouvez pas supprimer le transfert « %(transfer)s » car il est posté."
+"Vous ne pouvez pas supprimer le transfert « %(transfer)s » car il est "
+"comptabilisé."
 
 msgctxt "model:ir.message,text:msg_transfer_delete_session_open"
 msgid "To delete transfer \"%(transfer)s\" you must re-open session \"%(session)s\"."
@@ -477,15 +478,15 @@ msgstr ""
 
 msgctxt "model:ir.model.button,confirm:cash_session_post_button"
 msgid "Are you sure you want to post the sessions?"
-msgstr "Êtes-vous sûr de vouloir poster les sessions ?"
+msgstr "Êtes-vous sûr de vouloir comptabiliser les sessions ?"
 
 msgctxt "model:ir.model.button,confirm:cash_transfer_post_button"
 msgid "Are you sure you want to post the transfer?"
-msgstr "Êtes-vous sûr de vouloir poster le transfert ?"
+msgstr "Êtes-vous sûr de vouloir comptabiliser le transfert ?"
 
 msgctxt "model:ir.model.button,confirm:sale_post_button"
 msgid "Are you sure you want to post the sales?"
-msgstr "Êtes-vous sûr de vouloir poster les ventes ?"
+msgstr "Êtes-vous sûr de vouloir comptabiliser les ventes ?"
 
 msgctxt "model:ir.model.button,string:cash_session_close_button"
 msgid "Close"
@@ -497,11 +498,11 @@ msgstr "Rouvrir"
 
 msgctxt "model:ir.model.button,string:cash_session_post_button"
 msgid "Post"
-msgstr "Poster"
+msgstr "Comptabiliser"
 
 msgctxt "model:ir.model.button,string:cash_transfer_post_button"
 msgid "Post"
-msgstr "Poster"
+msgstr "Comptabiliser"
 
 msgctxt "model:ir.model.button,string:sale_cancel_button"
 msgid "Cancel"
@@ -517,7 +518,7 @@ msgstr "Payer"
 
 msgctxt "model:ir.model.button,string:sale_post_button"
 msgid "Post"
-msgstr "Poster"
+msgstr "Comptabiliser"
 
 msgctxt "model:ir.model.button,string:sale_process_button"
 msgid "Process"
@@ -581,7 +582,7 @@ msgstr "PDV"
 
 msgctxt "model:res.group,name:group_sale_point_posting"
 msgid "POS Posting"
-msgstr "Postage PDV"
+msgstr "Comptabilisation PDV"
 
 msgctxt "model:sale.point,name:"
 msgid "Point of Sale"
@@ -629,7 +630,7 @@ msgstr "Ouverte"
 
 msgctxt "selection:sale.point.cash.session,state:"
 msgid "Posted"
-msgstr "Postée"
+msgstr "Comptabilisé"
 
 msgctxt "selection:sale.point.cash.transfer,state:"
 msgid "Draft"
@@ -637,7 +638,7 @@ msgstr "Brouillon"
 
 msgctxt "selection:sale.point.cash.transfer,state:"
 msgid "Posted"
-msgstr "Posté"
+msgstr "Comptabilisé"
 
 msgctxt "selection:sale.point.sale,state:"
 msgid "Cancelled"
@@ -653,7 +654,7 @@ msgstr "Ouverte"
 
 msgctxt "selection:sale.point.sale,state:"
 msgid "Posted"
-msgstr "Postée"
+msgstr "Comptabilisé"
 
 msgctxt "view:sale.point.sale.line:"
 msgid "General"

@@ -70,7 +70,7 @@ msgstr "Impuestos de proveedor"
 
 msgctxt "field:product.category,supplier_taxes_deductible_rate:"
 msgid "Supplier Taxes Deductible Rate"
-msgstr "Porcentaje de impuestos de proveedor deducible"
+msgstr "Ratio de impuestos de proveedor deducible"
 
 msgctxt "field:product.category,supplier_taxes_used:"
 msgid "Supplier Taxes Used"

@@ -8,7 +8,7 @@ msgstr "Aktiivne"
 
 msgctxt "field:account.account,amount_second_currency:"
 msgid "Amount Second Currency"
-msgstr "Valuutasumma"
+msgstr "Summa valuutas"
 
 msgctxt "field:account.account,balance:"
 msgid "Balance"
@@ -79,7 +79,7 @@ msgstr "Vasak"
 
 msgctxt "field:account.account,line_count:"
 msgid "Line Count"
-msgstr ""
+msgstr "Ridu"
 
 msgctxt "field:account.account,name:"
 msgid "Name"
@@ -109,9 +109,10 @@ msgctxt "field:account.account,right:"
 msgid "Right"
 msgstr "Parem"
 
+#, fuzzy
 msgctxt "field:account.account,second_currency:"
-msgid "Secondary Currency"
-msgstr "Teine valuuta"
+msgid "Second Currency"
+msgstr "Sekundaarne Valuuta"
 
 msgctxt "field:account.account,start_date:"
 msgid "Start Date"
@@ -560,8 +561,8 @@ msgstr "Kuupäev"
 
 #, fuzzy
 msgctxt "field:account.balance_sheet.comparison.context,posted:"
-msgid "Posted Move"
-msgstr "Postitatud kanne"
+msgid "Posted Moves"
+msgstr "Postittaud kanded"
 
 msgctxt "field:account.balance_sheet.context,company:"
 msgid "Company"
@@ -571,9 +572,23 @@ msgctxt "field:account.balance_sheet.context,date:"
 msgid "Date"
 msgstr "Kuupäev"
 
+#, fuzzy
 msgctxt "field:account.balance_sheet.context,posted:"
-msgid "Posted Move"
-msgstr "Postitatud kanne"
+msgid "Posted Moves"
+msgstr "Postittaud kanded"
+
+#, fuzzy
+msgctxt "field:account.configuration,currency_exchange_credit_account:"
+msgid "Currency Exchange Credit Account"
+msgstr "Kreeditkonto"
+
+msgctxt "field:account.configuration,currency_exchange_debit_account:"
+msgid "Currency Exchange Debit Account"
+msgstr ""
+
+msgctxt "field:account.configuration,currency_exchange_journal:"
+msgid "Currency Exchange Journal"
+msgstr ""
 
 msgctxt "field:account.configuration,default_account_payable:"
 msgid "Default Account Payable"
@@ -606,6 +621,17 @@ msgctxt "field:account.configuration.default_account,company:"
 msgid "Company"
 msgstr "Ettevõte"
 
+#, fuzzy
+msgctxt ""
+"field:account.configuration.default_account,currency_exchange_credit_account:"
+msgid "Currency Exchange Credit Account"
+msgstr "Kreeditkonto"
+
+msgctxt ""
+"field:account.configuration.default_account,currency_exchange_debit_account:"
+msgid "Currency Exchange Debit Account"
+msgstr ""
+
 msgctxt "field:account.configuration.default_account,default_account_payable:"
 msgid "Default Account Payable"
 msgstr "Vaikimisi võlgade konto"
@@ -631,6 +657,15 @@ msgctxt ""
 "field:account.configuration.default_tax_rule,default_supplier_tax_rule:"
 msgid "Default Supplier Tax Rule"
 msgstr "Hankija maksu reegel"
+
+#, fuzzy
+msgctxt "field:account.configuration.journal,company:"
+msgid "Company"
+msgstr "Ettevõte"
+
+msgctxt "field:account.configuration.journal,currency_exchange_journal:"
+msgid "Currency Exchange Journal"
+msgstr ""
 
 #, fuzzy
 msgctxt "field:account.configuration.sequence,company:"
@@ -873,9 +908,10 @@ msgctxt "field:account.general_ledger.account.context,journal:"
 msgid "Journal"
 msgstr "Andmik"
 
+#, fuzzy
 msgctxt "field:account.general_ledger.account.context,posted:"
-msgid "Posted Move"
-msgstr "Postitatud kanne"
+msgid "Posted Moves"
+msgstr "Postittaud kanded"
 
 msgctxt "field:account.general_ledger.account.context,start_period:"
 msgid "Start Period"
@@ -973,6 +1009,11 @@ msgctxt "field:account.general_ledger.line,account_party:"
 msgid "Account Party"
 msgstr "Võlgade konto"
 
+#, fuzzy
+msgctxt "field:account.general_ledger.line,amount_second_currency:"
+msgid "Amount Second Currency"
+msgstr "Summa valuutas"
+
 msgctxt "field:account.general_ledger.line,balance:"
 msgid "Balance"
 msgstr "Saldo"
@@ -1032,6 +1073,11 @@ msgctxt "field:account.general_ledger.line,reconciliation:"
 msgid "Reconciliation"
 msgstr "Kontroll"
 
+#, fuzzy
+msgctxt "field:account.general_ledger.line,second_currency:"
+msgid "Second Currency"
+msgstr "Sekundaarne Valuuta"
+
 msgctxt "field:account.general_ledger.line,state:"
 msgid "State"
 msgstr "Olek"
@@ -1061,9 +1107,10 @@ msgctxt "field:account.general_ledger.line.context,party_cumulate:"
 msgid "Cumulate per Party"
 msgstr "Kumulatiivselt osapoolte kaupa"
 
+#, fuzzy
 msgctxt "field:account.general_ledger.line.context,posted:"
-msgid "Posted Move"
-msgstr "Postitatud kanne"
+msgid "Posted Moves"
+msgstr "Postittaud kanded"
 
 msgctxt "field:account.general_ledger.line.context,start_period:"
 msgid "Start Period"
@@ -1145,6 +1192,11 @@ msgstr "Valuuta"
 msgctxt "field:account.journal,debit:"
 msgid "Debit"
 msgstr "Deebet"
+
+#, fuzzy
+msgctxt "field:account.journal,matching_sequence:"
+msgid "Matching Sequence"
+msgstr "Saldeeri read"
 
 msgctxt "field:account.journal,name:"
 msgid "Name"
@@ -1246,6 +1298,10 @@ msgctxt "field:account.move.cancel.default,description:"
 msgid "Description"
 msgstr "Selgitus"
 
+msgctxt "field:account.move.cancel.default,reversal:"
+msgid "Reversal"
+msgstr ""
+
 msgctxt "field:account.move.line,account:"
 msgid "Account"
 msgstr "Konto"
@@ -1334,6 +1390,11 @@ msgctxt "field:account.move.line,party_required:"
 msgid "Party Required"
 msgstr "Osapool vajalik"
 
+#, fuzzy
+msgctxt "field:account.move.line,payable_receivable_balance:"
+msgid "Payable/Receivable Balance"
+msgstr "Kohustuste/nõuete read"
+
 msgctxt "field:account.move.line,period:"
 msgid "Period"
 msgstr "Periood"
@@ -1384,6 +1445,21 @@ msgstr "Kulum"
 msgctxt "field:account.move.line.group.start,journal:"
 msgid "Journal"
 msgstr "Andmik"
+
+#, fuzzy
+msgctxt "field:account.move.line.receivable_payable.context,payable:"
+msgid "Payable"
+msgstr "Tasumine"
+
+#, fuzzy
+msgctxt "field:account.move.line.receivable_payable.context,receivable:"
+msgid "Receivable"
+msgstr "Laekumine"
+
+#, fuzzy
+msgctxt "field:account.move.line.receivable_payable.context,reconciled:"
+msgid "Reconciled"
+msgstr "Saldeeri"
 
 #, fuzzy
 msgctxt "field:account.move.line.reschedule.preview,currency:"
@@ -1556,9 +1632,10 @@ msgctxt "field:account.move.reconciliation,lines:"
 msgid "Lines"
 msgstr "Read"
 
-msgctxt "field:account.move.reconciliation,name:"
-msgid "Name"
-msgstr "Nimetus"
+#, fuzzy
+msgctxt "field:account.move.reconciliation,number:"
+msgid "Number"
+msgstr "Number"
 
 msgctxt "field:account.move.template,company:"
 msgid "Company"
@@ -1670,6 +1747,11 @@ msgid "Company"
 msgstr "Ettevõte"
 
 #, fuzzy
+msgctxt "field:account.reconcile.show,currencies:"
+msgid "Currencies"
+msgstr "Valuuta"
+
+#, fuzzy
 msgctxt "field:account.reconcile.show,currency:"
 msgid "Currency"
 msgstr "Valuuta"
@@ -1688,7 +1770,7 @@ msgstr "Read"
 
 msgctxt "field:account.reconcile.show,parties:"
 msgid "Parties"
-msgstr "Osapooled"
+msgstr "Partnerid"
 
 msgctxt "field:account.reconcile.show,party:"
 msgid "Party"
@@ -2340,10 +2422,9 @@ msgctxt "help:account.account,reconcile:"
 msgid "Allow move lines of this account to be reconciled."
 msgstr "Luba selle konto kande ridade kontroll."
 
+#, fuzzy
 msgctxt "help:account.account,second_currency:"
-msgid ""
-"Force all moves for this account \n"
-"to have this secondary currency."
+msgid "Force all moves for this account to have this second currency."
 msgstr ""
 "Sunni kõigile selle konto kannetele \n"
 "see sekundaarne valuuta."
@@ -2466,6 +2547,10 @@ msgstr "Näita ainult postitatud kannet"
 msgctxt "help:account.move,post_number:"
 msgid "Also known as Folio Number."
 msgstr "Kasutusel ka kui on Folio number"
+
+msgctxt "help:account.move.cancel.default,reversal:"
+msgid "Reverse debit and credit."
+msgstr ""
 
 #, fuzzy
 msgctxt "help:account.move.line,amount_second_currency:"
@@ -2665,6 +2750,11 @@ msgid "Account Configuration Default Tax Rule"
 msgstr "Konto seadistus vaikimisi konto"
 
 #, fuzzy
+msgctxt "model:account.configuration.journal,name:"
+msgid "Account Configuration Journal"
+msgstr "Konto seadistus"
+
+#, fuzzy
 msgctxt "model:account.configuration.sequence,name:"
 msgid "Account Configuration Sequence"
 msgstr "Konto seadistus"
@@ -2735,6 +2825,11 @@ msgctxt "model:account.journal,name:journal_cash"
 msgid "Cash"
 msgstr "Raha"
 
+#, fuzzy
+msgctxt "model:account.journal,name:journal_currency_exchange"
+msgid "Currency Exchange"
+msgstr "Valuuta"
+
 msgctxt "model:account.journal,name:journal_expense"
 msgid "Expense"
 msgstr "Kulu"
@@ -2783,6 +2878,11 @@ msgstr "Delegeeritud"
 msgctxt "model:account.move.line.group.start,name:"
 msgid "Group Lines"
 msgstr "Grupeeri read"
+
+#, fuzzy
+msgctxt "model:account.move.line.receivable_payable.context,name:"
+msgid "Receivable/Payable Line Context"
+msgstr "Pearaamatu rea sisu"
 
 #, fuzzy
 msgctxt "model:account.move.line.reschedule.preview,name:"
@@ -3224,21 +3324,6 @@ msgctxt "model:ir.action,name:wizard_update_chart"
 msgid "Update Chart of Accounts from Template"
 msgstr "Uuenda kontoplaani vormi pealt"
 
-msgctxt ""
-"model:ir.action.act_window.domain,name:act_move_line_payable_receivable_domain_all"
-msgid "All"
-msgstr "Kõik"
-
-msgctxt ""
-"model:ir.action.act_window.domain,name:act_move_line_payable_receivable_domain_payable"
-msgid "Payable"
-msgstr "Tasumine"
-
-msgctxt ""
-"model:ir.action.act_window.domain,name:act_move_line_payable_receivable_domain_receivable"
-msgid "Receivable"
-msgstr "Laekumine"
-
 msgctxt "model:ir.message,text:msg_account_chart_exists"
 msgid "A chart of accounts already exists for company \"%(company)s\"."
 msgstr "\"%(company)s\" jaoks on kontoplaan juba loodud."
@@ -3506,15 +3591,7 @@ msgstr ""
 "Kande \"%(kannete)\" periood on lukus.\n"
 "Kasuta käesolevat perioodi kande tühistamiseks?"
 
-msgctxt "model:ir.message,text:msg_move_date_outside_period"
-msgid ""
-"The date of move \"%(move)s\" is outside the period, you must change the "
-"date or the period."
-msgstr ""
-"Kande \"%(kannete) kuupäev on perioodist väljaspool, muuda kuupäeva või "
-"perioodi."
-
-msgctxt "model:ir.message,text:msg_move_template_expession_not_number"
+msgctxt "model:ir.message,text:msg_move_template_expression_not_number"
 msgid ""
 "The value \"%(value)s\" of \"%(expression)s\" from template \"%(template)s\""
 " is not a number."
@@ -3526,12 +3603,36 @@ msgid ""
 "\"%(error)s\""
 msgstr ""
 
+msgctxt "model:ir.message,text:msg_move_template_keyword_name_not_identifier"
+msgid "The keyword name \"%(name)s\" is not a valid identifier."
+msgstr ""
+
+#, fuzzy
 msgctxt "model:ir.message,text:msg_no_fiscalyear_date"
-msgid "To continue, you must create a fiscal year for the date \"%(date)s\"."
+msgid ""
+"To continue, you must create a fiscal year for the date \"%(date)s\" and "
+"company \"%(company)s\"."
 msgstr "Jätkamiseks, loo kuupäeva \"%(kuupäeva)de\" jaoks majandusaasta."
 
+#, fuzzy
+msgctxt "model:ir.message,text:msg_no_open_fiscalyear_date"
+msgid ""
+"To continue, you must reopen the fiscal year \"%(fiscalyear)s\" of company "
+"\"%(company)s\"for the date \"%(date)s\"."
+msgstr "Jätkamiseks, loo kuupäeva \"%(kuupäeva)de\" jaoks majandusaasta."
+
+#, fuzzy
+msgctxt "model:ir.message,text:msg_no_open_period_date"
+msgid ""
+"To continue, you must reopen the period \"%(period)s\" of company "
+"\"%(company)s\" for the date \"%(date)s\"."
+msgstr "Jätkamiseks, loo kuupäeva \"%(kuupäeva)de\" jaoks periood."
+
+#, fuzzy
 msgctxt "model:ir.message,text:msg_no_period_date"
-msgid "To continue, you must create a period for the date \"%(date)s\"."
+msgid ""
+"To continue, you must create a period for the date \"%(date)s\" and company "
+"\"%(company)s\"."
 msgstr "Jätkamiseks, loo kuupäeva \"%(kuupäeva)de\" jaoks periood."
 
 #, fuzzy
@@ -3615,6 +3716,12 @@ msgstr "Rea \"%(ridade)\" nettimiseks tuleb konto \"%(kontod)\" määrata netita
 msgctxt "model:ir.message,text:msg_reconciliation_delete_delegated"
 msgid ""
 "The reconciliation \"%(reconciliation)s\" is delegated to the line \"%(line)s\".\n"
+"You may need to cancel its move \"%(move)s\"."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_reconciliation_delete_write_off"
+msgid ""
+"The reconciliation \"%(reconciliation)s\" is linked to the write-off line \"%(line)s\".\n"
 "You may need to cancel its move \"%(move)s\"."
 msgstr ""
 
@@ -4739,13 +4846,38 @@ msgctxt "view:account.account:"
 msgid "General Information"
 msgstr "Üldinformatsioon"
 
+#, fuzzy
+msgctxt "view:account.account:"
+msgid "General Ledger"
+msgstr "Pearaamat"
+
 msgctxt "view:account.aged_balance.context:"
 msgid "Terms"
 msgstr "Tingimused"
 
+#, fuzzy
+msgctxt "view:account.configuration:"
+msgid "Credit Account"
+msgstr "Kreeditkonto"
+
+#, fuzzy
+msgctxt "view:account.configuration:"
+msgid "Currency Exchange"
+msgstr "Valuuta"
+
+#, fuzzy
+msgctxt "view:account.configuration:"
+msgid "Debit Account"
+msgstr "Deebetkonto"
+
 msgctxt "view:account.configuration:"
 msgid "Invoice"
 msgstr "Arve"
+
+#, fuzzy
+msgctxt "view:account.configuration:"
+msgid "Journal"
+msgstr "Andmik"
 
 #, fuzzy
 msgctxt "view:account.configuration:"
@@ -4823,6 +4955,11 @@ msgstr "Kuud"
 msgctxt "view:account.move.line.template:"
 msgid "Other Info"
 msgstr "Muu info"
+
+#, fuzzy
+msgctxt "view:account.move.line:"
+msgid "Balance"
+msgstr "Saldo"
 
 msgctxt "view:account.move.line:"
 msgid "Credit"

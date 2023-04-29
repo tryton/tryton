@@ -27,9 +27,8 @@ msgstr "spécifier l'identifiant de l'utilisateur"
 msgid "specify the server hostname:port"
 msgstr "spécifier le nom du serveur:port"
 
-#, python-format
-msgid "Unable to write config file %s."
-msgstr "Impossible d'écrire le fichier de configuration %s."
+msgid "disable thread usage"
+msgstr "désactiver l'utilisation des threads"
 
 #, python-format
 msgid "Unable to set locale %s"
@@ -65,12 +64,6 @@ msgstr "Valider"
 
 msgid "Your selection:"
 msgstr "Votre sélection :"
-
-msgid "Select"
-msgstr "Sélectionner"
-
-msgid "Save"
-msgstr "Sauver"
 
 msgid "Save As..."
 msgstr "Enregistrer sous..."
@@ -201,6 +194,9 @@ msgstr "Modèle"
 
 msgid "Edit..."
 msgstr "Éditer..."
+
+msgid "View Logs..."
+msgstr "Voir les journaux..."
 
 msgid "Attachments..."
 msgstr "Attachements..."
@@ -597,6 +593,9 @@ msgstr "Choisir un fichier"
 msgid "Remove File"
 msgstr "Supprimer le fichier"
 
+msgid "Select"
+msgstr "Sélectionner"
+
 msgid "Add..."
 msgstr "Ajouter..."
 
@@ -619,24 +618,6 @@ msgstr "Note (%d/%d)"
 
 msgid "You have to select one record."
 msgstr "Vous devez sélectionner un enregistrement."
-
-msgid "ID:"
-msgstr "ID :"
-
-msgid "Created by:"
-msgstr "Crée par :"
-
-msgid "Created at:"
-msgstr "Crée le :"
-
-msgid "Edited by:"
-msgstr "Édité par :"
-
-msgid "Edited at:"
-msgstr "Édité le :"
-
-msgid "Model:"
-msgstr "Modèle :"
 
 msgid "Are you sure to remove this record?"
 msgstr "Êtes-vous sûr de vouloir supprimer cet enregistrement ?"
@@ -703,6 +684,28 @@ msgid "Limit:"
 msgstr "Limite :"
 
 #, python-format
+msgid "Logs (%s)"
+msgstr "Journaux (%s)"
+
+msgid "Model:"
+msgstr "Modèle :"
+
+msgid "ID:"
+msgstr "ID :"
+
+msgid "Created by:"
+msgstr "Crée par :"
+
+msgid "Created at:"
+msgstr "Crée le :"
+
+msgid "Last Modified by:"
+msgstr "Dernière modification par :"
+
+msgid "Last Modified at:"
+msgstr "Dernière modification à :"
+
+#, python-format
 msgid "Notes (%s)"
 msgstr "Notes (%s)"
 
@@ -767,7 +770,7 @@ msgid "_Delete..."
 msgstr "Su_pprimer..."
 
 msgid "View _Logs..."
-msgstr "Voir les _Logs..."
+msgstr "Voir les _journaux..."
 
 msgid "Show revisions..."
 msgstr "Afficher les révisions..."
@@ -868,6 +871,9 @@ msgstr "Nom"
 
 msgid "Open"
 msgstr "Ouvrir"
+
+msgid "Save"
+msgstr "Sauver"
 
 msgid "Listed Records"
 msgstr "Enregistrements listés"
@@ -1090,17 +1096,14 @@ msgstr "année précédente"
 msgid "next year"
 msgstr "année suivante"
 
-msgid "Day View"
-msgstr "Vue jour"
-
-msgid "Week View"
-msgstr "Vue semaine"
-
-msgid "Month View"
-msgstr "Vue mois"
+msgid "Day"
+msgstr "Jour"
 
 msgid "Week"
 msgstr "Semaine"
+
+msgid "Month"
+msgstr "Mois"
 
 msgid "Select..."
 msgstr "Sélectionner..."
@@ -1167,6 +1170,9 @@ msgstr ""
 
 msgid "No other language available."
 msgstr "Pas d'autre langue disponible."
+
+msgid "#ERROR"
+msgstr "#ERREUR"
 
 msgid "Translate view"
 msgstr "Traduire la vue"

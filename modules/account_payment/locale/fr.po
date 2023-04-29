@@ -20,8 +20,8 @@ msgid "Direct Debit"
 msgstr "Prélèvement automatique"
 
 msgctxt "field:account.move.line,payment_amount:"
-msgid "Payment Amount"
-msgstr "Montant du paiement"
+msgid "Amount to Pay"
+msgstr "Montant à payer"
 
 msgctxt "field:account.move.line,payment_blocked:"
 msgid "Blocked"
@@ -406,6 +406,16 @@ msgctxt ""
 "model:ir.action.act_window.domain,name:act_payment_form_domain_to_process"
 msgid "To Process"
 msgstr "À traiter"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_payment_group_form_domain_all"
+msgid "All"
+msgstr "Tous"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_payment_group_form_domain_not_completed"
+msgid "Pending"
+msgstr "En attentes"
 
 msgctxt "model:ir.message,text:msg_erase_party_pending_payment"
 msgid ""

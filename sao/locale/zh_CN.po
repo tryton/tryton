@@ -122,11 +122,11 @@ msgstr "请求太多，请稍后重试."
 msgid "Login"
 msgstr "登录"
 
-msgid "User name"
-msgstr "用户名"
-
 msgid "Database"
 msgstr "数据库"
+
+msgid "User name"
+msgstr "用户名"
 
 #, fuzzy
 msgid "Login with"
@@ -369,24 +369,6 @@ msgstr "所选记录未删除成功."
 msgid "You have to select one record."
 msgstr "需要选择一条记录."
 
-msgid "ID:"
-msgstr "标识:"
-
-msgid "Created by:"
-msgstr "创建者:"
-
-msgid "Created at:"
-msgstr "创建日期:"
-
-msgid "Edited by:"
-msgstr "编辑者:"
-
-msgid "Edited at:"
-msgstr "编辑于:"
-
-msgid "Model: "
-msgstr "模型: "
-
 msgid "Add..."
 msgstr "添加..."
 
@@ -546,6 +528,9 @@ msgstr ""
 msgid "More"
 msgstr "更多"
 
+msgid "#ERROR"
+msgstr ""
+
 msgid "Today"
 msgstr "今天"
 
@@ -575,6 +560,31 @@ msgstr "附件(%1)"
 
 msgid "Notes (%1)"
 msgstr "注释(%s)"
+
+#, fuzzy
+msgid "Logs (%1)"
+msgstr "注释(%s)"
+
+#, fuzzy
+msgid "Model:"
+msgstr "模型: "
+
+msgid "ID:"
+msgstr "标识:"
+
+msgid "Created by:"
+msgstr "创建者:"
+
+msgid "Created at:"
+msgstr "创建日期:"
+
+#, fuzzy
+msgid "Last Modified by:"
+msgstr "修改者"
+
+#, fuzzy
+msgid "Last Modified at:"
+msgstr "修改于"
 
 msgid "Search %1"
 msgstr "搜索 %1"

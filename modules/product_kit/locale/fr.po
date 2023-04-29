@@ -62,21 +62,21 @@ msgctxt "field:purchase.line.component,line:"
 msgid "Line"
 msgstr "Ligne"
 
-msgctxt "field:purchase.line.component,move_done:"
-msgid "Moves Done"
-msgstr "Mouvements effectués"
-
-msgctxt "field:purchase.line.component,move_exception:"
-msgid "Moves Exception"
-msgstr "Mouvements en exception"
-
 msgctxt "field:purchase.line.component,moves:"
 msgid "Moves"
 msgstr "Mouvements"
 
+msgctxt "field:purchase.line.component,moves_exception:"
+msgid "Moves Exception"
+msgstr "Mouvements en exception"
+
 msgctxt "field:purchase.line.component,moves_ignored:"
 msgid "Ignored Moves"
 msgstr "Mouvements ignorés"
+
+msgctxt "field:purchase.line.component,moves_progress:"
+msgid "Moves Progress"
+msgstr "Progression des mouvements"
 
 msgctxt "field:purchase.line.component,moves_recreated:"
 msgid "Recreated Moves"
@@ -146,21 +146,21 @@ msgctxt "field:sale.line.component,line:"
 msgid "Line"
 msgstr "Ligne"
 
-msgctxt "field:sale.line.component,move_done:"
-msgid "Moves Done"
-msgstr "Mouvements effectués"
-
-msgctxt "field:sale.line.component,move_exception:"
-msgid "Moves Exception"
-msgstr "Mouvements en exception"
-
 msgctxt "field:sale.line.component,moves:"
 msgid "Moves"
 msgstr "Mouvements"
 
+msgctxt "field:sale.line.component,moves_exception:"
+msgid "Moves Exception"
+msgstr "Mouvements en exception"
+
 msgctxt "field:sale.line.component,moves_ignored:"
 msgid "Ignored Moves"
 msgstr "Mouvements ignorés"
+
+msgctxt "field:sale.line.component,moves_progress:"
+msgid "Moves Progress"
+msgstr "Progression des mouvements"
 
 msgctxt "field:sale.line.component,moves_recreated:"
 msgid "Recreated Moves"

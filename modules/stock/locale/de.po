@@ -320,7 +320,7 @@ msgstr "Übergeordnet (Lagerort)"
 
 msgctxt "field:stock.location,picking_location:"
 msgid "Picking"
-msgstr "Lagerort Picking"
+msgstr "Lagerort Kommissionierung"
 
 msgctxt "field:stock.location,quantity:"
 msgid "Quantity"
@@ -1681,7 +1681,7 @@ msgstr "Warenbewegungen"
 
 msgctxt "model:ir.action,name:act_period_list"
 msgid "Periods"
-msgstr "Lagerperioden"
+msgstr "Anwesenheitszeiträume"
 
 msgctxt "model:ir.action,name:act_product_cost_price_revision"
 msgid "Cost Price Revision"
@@ -1777,7 +1777,7 @@ msgstr "Lieferschein"
 
 msgctxt "model:ir.action,name:report_shipment_out_picking_list"
 msgid "Picking List"
-msgstr "Pickliste"
+msgstr "Kommissionierliste"
 
 msgctxt "model:ir.action,name:report_shipment_out_return_restocking_list"
 msgid "Restocking List"
@@ -2541,7 +2541,7 @@ msgstr "Warenbewegungen"
 
 msgctxt "model:ir.ui.menu,name:menu_period_list"
 msgid "Periods"
-msgstr "Lagerperioden"
+msgstr "Anwesenheitszeiträume"
 
 msgctxt "model:ir.ui.menu,name:menu_reporting"
 msgid "Reporting"
@@ -2925,7 +2925,7 @@ msgstr "Von Lagerort"
 
 msgctxt "report:stock.shipment.out.picking_list:"
 msgid "Picking List"
-msgstr "Pickliste"
+msgstr "Kommissionierliste"
 
 msgctxt "report:stock.shipment.out.picking_list:"
 msgid "Planned Date:"

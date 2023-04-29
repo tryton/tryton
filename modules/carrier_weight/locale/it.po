@@ -39,8 +39,11 @@ msgid "The currency of the price."
 msgstr "La valuta del prezzo."
 
 msgctxt "help:carrier,weight_price_list:"
-msgid "Add price to the carrier service."
-msgstr "Aggiungi prezzo al servizio di corriere."
+msgid ""
+"Add price per weight to the carrier service.\n"
+"The first line for which the weight is greater is used.\n"
+"The line with weight of 0 is used as default price."
+msgstr ""
 
 msgctxt "help:carrier,weight_uom:"
 msgid "The unit of weight criteria of the price list."

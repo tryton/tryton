@@ -26,25 +26,25 @@ msgctxt "field:stock.package,company:"
 msgid "Company"
 msgstr "Bedrijf"
 
+msgctxt "field:stock.package,height:"
+msgid "Height"
+msgstr "Hoogte"
+
+msgctxt "field:stock.package,height_uom:"
+msgid "Height UOM"
+msgstr "Hoogte maateenheid"
+
+msgctxt "field:stock.package,length:"
+msgid "Length"
+msgstr "Lengte"
+
+msgctxt "field:stock.package,length_uom:"
+msgid "Length UOM"
+msgstr "Lengte maateenheid"
+
 msgctxt "field:stock.package,moves:"
 msgid "Moves"
 msgstr "Mutaties"
-
-msgctxt "field:stock.package,packaging_height:"
-msgid "Packaging Height"
-msgstr "Hoogte verpakking"
-
-msgctxt "field:stock.package,packaging_height_uom:"
-msgid "Packaging Height UOM"
-msgstr "Maateenheid hoogte verpakking"
-
-msgctxt "field:stock.package,packaging_length:"
-msgid "Packaging Length"
-msgstr "Lengte verpakking"
-
-msgctxt "field:stock.package,packaging_length_uom:"
-msgid "Packaging Length UOM"
-msgstr "Maateenheid lengte verpakking"
 
 msgctxt "field:stock.package,packaging_volume:"
 msgid "Packaging Volume"
@@ -62,14 +62,6 @@ msgctxt "field:stock.package,packaging_weight_uom:"
 msgid "Packaging Weight UOM"
 msgstr "Maateenheid gewicht verpakking"
 
-msgctxt "field:stock.package,packaging_width:"
-msgid "Packaging Width"
-msgstr "Breedte verpakking"
-
-msgctxt "field:stock.package,packaging_width_uom:"
-msgid "Packaging Width UOM"
-msgstr "Maateenheid breedte verpakking"
-
 msgctxt "field:stock.package,parent:"
 msgid "Parent"
 msgstr "Bovenliggend niveau"
@@ -86,25 +78,33 @@ msgctxt "field:stock.package,type:"
 msgid "Type"
 msgstr "Type"
 
+msgctxt "field:stock.package,width:"
+msgid "Width"
+msgstr "Breedte"
+
+msgctxt "field:stock.package,width_uom:"
+msgid "Width UOM"
+msgstr "Breedte maateenheid"
+
+msgctxt "field:stock.package.type,height:"
+msgid "Height"
+msgstr "Hoogte"
+
+msgctxt "field:stock.package.type,height_uom:"
+msgid "Height UOM"
+msgstr "Hoogte maateenheid"
+
+msgctxt "field:stock.package.type,length:"
+msgid "Length"
+msgstr "Lengte"
+
+msgctxt "field:stock.package.type,length_uom:"
+msgid "Length UOM"
+msgstr "Lengte maateenheid"
+
 msgctxt "field:stock.package.type,name:"
 msgid "Name"
 msgstr "Naam"
-
-msgctxt "field:stock.package.type,packaging_height:"
-msgid "Packaging Height"
-msgstr "Hoogte verpakking"
-
-msgctxt "field:stock.package.type,packaging_height_uom:"
-msgid "Packaging Height UOM"
-msgstr "Maateenheid hoogte verpakking"
-
-msgctxt "field:stock.package.type,packaging_length:"
-msgid "Packaging Length"
-msgstr "Lengte verpakking"
-
-msgctxt "field:stock.package.type,packaging_length_uom:"
-msgid "Packaging Length UOM"
-msgstr "Maateenheid lengte verpakking"
 
 msgctxt "field:stock.package.type,packaging_volume:"
 msgid "Packaging Volume"
@@ -122,13 +122,13 @@ msgctxt "field:stock.package.type,packaging_weight_uom:"
 msgid "Packaging Weight UOM"
 msgstr "Maateenheid gewicht verpakking"
 
-msgctxt "field:stock.package.type,packaging_width:"
-msgid "Packaging Width"
-msgstr "Breedte verpakking"
+msgctxt "field:stock.package.type,width:"
+msgid "Width"
+msgstr "Breedte"
 
-msgctxt "field:stock.package.type,packaging_width_uom:"
-msgid "Packaging Width UOM"
-msgstr "Maateenheid breedte verpakking"
+msgctxt "field:stock.package.type,width_uom:"
+msgid "Width UOM"
+msgstr "Breedte maateenheid"
 
 msgctxt "field:stock.shipment.in.return,packages:"
 msgid "Packages"
@@ -146,11 +146,11 @@ msgctxt "field:stock.shipment.out,root_packages:"
 msgid "Packages"
 msgstr "Pakketten"
 
-msgctxt "help:stock.package,packaging_height:"
+msgctxt "help:stock.package,height:"
 msgid "The height of the package."
 msgstr "De hoogte van de verpakking."
 
-msgctxt "help:stock.package,packaging_length:"
+msgctxt "help:stock.package,length:"
 msgid "The length of the package."
 msgstr "De lengte van de verpakking."
 
@@ -162,15 +162,15 @@ msgctxt "help:stock.package,packaging_weight:"
 msgid "The weight of the package when empty."
 msgstr "Het gewicht van de lege verpakking."
 
-msgctxt "help:stock.package,packaging_width:"
+msgctxt "help:stock.package,width:"
 msgid "The width of the package."
 msgstr "De breedte van de verpakking."
 
-msgctxt "help:stock.package.type,packaging_height:"
+msgctxt "help:stock.package.type,height:"
 msgid "The height of the package."
 msgstr "De hoogte van de verpakking."
 
-msgctxt "help:stock.package.type,packaging_length:"
+msgctxt "help:stock.package.type,length:"
 msgid "The length of the package."
 msgstr "De lengte van de verpakking."
 
@@ -182,7 +182,7 @@ msgctxt "help:stock.package.type,packaging_weight:"
 msgid "The weight of the package when empty."
 msgstr "Het gewicht van de lege verpakking."
 
-msgctxt "help:stock.package.type,packaging_width:"
+msgctxt "help:stock.package.type,width:"
 msgid "The width of the package."
 msgstr "De breedte van de verpakking."
 

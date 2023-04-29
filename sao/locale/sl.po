@@ -122,11 +122,11 @@ msgstr ""
 msgid "Login"
 msgstr "Prijava"
 
-msgid "User name"
-msgstr "Uporabniško ime"
-
 msgid "Database"
 msgstr "Podatkovna baza"
+
+msgid "User name"
+msgstr "Uporabniško ime"
 
 #, fuzzy
 msgid "Login with"
@@ -372,28 +372,6 @@ msgstr "Zapisi niso bili zbrisani."
 msgid "You have to select one record."
 msgstr "En zapis mora biti izbran."
 
-msgid "ID:"
-msgstr "ID:"
-
-#, fuzzy
-msgid "Created by:"
-msgstr "Izdelaj ..."
-
-#, fuzzy
-msgid "Created at:"
-msgstr "Ustvarjeno"
-
-#, fuzzy
-msgid "Edited by:"
-msgstr "Izdelaj ..."
-
-#, fuzzy
-msgid "Edited at:"
-msgstr "Popravljeno"
-
-msgid "Model: "
-msgstr "Model: "
-
 msgid "Add..."
 msgstr ""
 
@@ -561,6 +539,9 @@ msgstr ""
 msgid "More"
 msgstr "Več"
 
+msgid "#ERROR"
+msgstr ""
+
 msgid "Today"
 msgstr ""
 
@@ -590,6 +571,33 @@ msgstr "Priponke (%1)"
 
 msgid "Notes (%1)"
 msgstr "Zabeležke (%1)"
+
+#, fuzzy
+msgid "Logs (%1)"
+msgstr "Zabeležke (%1)"
+
+#, fuzzy
+msgid "Model:"
+msgstr "Model: "
+
+msgid "ID:"
+msgstr "ID:"
+
+#, fuzzy
+msgid "Created by:"
+msgstr "Izdelaj ..."
+
+#, fuzzy
+msgid "Created at:"
+msgstr "Ustvarjeno"
+
+#, fuzzy
+msgid "Last Modified by:"
+msgstr "Nazadnje popravil:"
+
+#, fuzzy
+msgid "Last Modified at:"
+msgstr "Popravljeno"
 
 msgid "Search %1"
 msgstr "Išči %1"

@@ -12,7 +12,7 @@ msgstr "De la subdivisión"
 
 msgctxt "field:account.tax.rule.line,to_country:"
 msgid "To Country"
-msgstr "Para el país"
+msgstr "Hacia el país"
 
 msgctxt "field:account.tax.rule.line,to_subdivision:"
 msgid "To Subdivision"
@@ -28,7 +28,7 @@ msgstr "De la subdivisión"
 
 msgctxt "field:account.tax.rule.line.template,to_country:"
 msgid "To Country"
-msgstr "Para el país"
+msgstr "Hacia el país"
 
 msgctxt "field:account.tax.rule.line.template,to_subdivision:"
 msgid "To Subdivision"

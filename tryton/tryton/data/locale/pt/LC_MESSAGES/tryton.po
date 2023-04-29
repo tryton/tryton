@@ -28,9 +28,8 @@ msgstr "Especifique o nome do usuário"
 msgid "specify the server hostname:port"
 msgstr "Especifique o servidor hostname:porta"
 
-#, python-format
-msgid "Unable to write config file %s."
-msgstr "Não foi possível gravar o arquivo de configuração %s."
+msgid "disable thread usage"
+msgstr ""
 
 #, python-format
 msgid "Unable to set locale %s"
@@ -66,12 +65,6 @@ msgstr "OK"
 
 msgid "Your selection:"
 msgstr "Sua seleção:"
-
-msgid "Select"
-msgstr "Selecionar"
-
-msgid "Save"
-msgstr "Gravar"
 
 msgid "Save As..."
 msgstr "Salvar como..."
@@ -205,6 +198,10 @@ msgstr "Relacionar"
 
 msgid "Edit..."
 msgstr "Editar..."
+
+#, fuzzy
+msgid "View Logs..."
+msgstr "Ver _Logs..."
 
 msgid "Attachments..."
 msgstr "Anexos..."
@@ -611,6 +608,9 @@ msgstr "Selecionar todos"
 msgid "Remove File"
 msgstr "Remover <Del>"
 
+msgid "Select"
+msgstr "Selecionar"
+
 msgid "Add..."
 msgstr "Adicionar..."
 
@@ -634,28 +634,6 @@ msgstr ""
 
 msgid "You have to select one record."
 msgstr "Você precisa selecionar um registo."
-
-msgid "ID:"
-msgstr "ID:"
-
-#, fuzzy
-msgid "Created by:"
-msgstr "Data de criação"
-
-#, fuzzy
-msgid "Created at:"
-msgstr "Data de criação"
-
-#, fuzzy
-msgid "Edited by:"
-msgstr "Editar"
-
-#, fuzzy
-msgid "Edited at:"
-msgstr "Editar"
-
-msgid "Model:"
-msgstr "Modelo:"
 
 msgid "Are you sure to remove this record?"
 msgstr "Você tem certeza que deseja apagar este registro?"
@@ -720,6 +698,32 @@ msgstr "Preferências de limite de buscas"
 
 msgid "Limit:"
 msgstr "Limite:"
+
+#, python-format
+msgid "Logs (%s)"
+msgstr "Histórico (%s)"
+
+msgid "Model:"
+msgstr "Modelo:"
+
+msgid "ID:"
+msgstr "ID:"
+
+#, fuzzy
+msgid "Created by:"
+msgstr "Data de criação"
+
+#, fuzzy
+msgid "Created at:"
+msgstr "Data de criação"
+
+#, fuzzy
+msgid "Last Modified by:"
+msgstr "Última Modificação por:"
+
+#, fuzzy
+msgid "Last Modified at:"
+msgstr "Data da última modificação:"
 
 #, python-format
 msgid "Notes (%s)"
@@ -889,6 +893,9 @@ msgstr "Nome"
 
 msgid "Open"
 msgstr "Abrir"
+
+msgid "Save"
+msgstr "Gravar"
 
 #, fuzzy
 msgid "Listed Records"
@@ -1118,17 +1125,15 @@ msgstr "ano anterior"
 msgid "next year"
 msgstr "próximo ano"
 
-msgid "Day View"
+msgid "Day"
 msgstr ""
-
-msgid "Week View"
-msgstr "Visão Semanal"
-
-msgid "Month View"
-msgstr "Visão Mensal"
 
 msgid "Week"
 msgstr "Semana"
+
+#, fuzzy
+msgid "Month"
+msgstr "Visão Mensal"
 
 msgid "Select..."
 msgstr "Selecionar..."
@@ -1196,6 +1201,9 @@ msgstr "Você precisa salvar o registro antes de adicionar traduções."
 
 msgid "No other language available."
 msgstr "Não há outros idiomas disponíveis."
+
+msgid "#ERROR"
+msgstr ""
 
 msgid "Translate view"
 msgstr "Traduzir visão"

@@ -4,11 +4,11 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "field:product.product,supply_on_sale:"
 msgid "Supply On Sale"
-msgstr "Inkopen bij verkoop"
+msgstr "Inkopen Bij Verkoop"
 
 msgctxt "field:product.template,supply_on_sale:"
 msgid "Supply On Sale"
-msgstr "Inkopen bij verkoop"
+msgstr "Inkopen Bij Verkoop"
 
 msgctxt "field:purchase.request,sale_lines:"
 msgid "Sale Lines"
@@ -16,7 +16,7 @@ msgstr "Verkoop Regels"
 
 msgctxt "field:sale.line,purchase_request:"
 msgid "Purchase Request"
-msgstr "Inkoop aanvraag"
+msgstr "Inkoop Aanvraag"
 
 msgctxt "field:sale.line,supply_state:"
 msgid "Supply State"
@@ -25,6 +25,39 @@ msgstr "Lever Status"
 msgctxt "model:ir.action,name:act_purchase_request_form"
 msgid "Purchase Requests"
 msgstr "Inkoop Aanvragen"
+
+msgctxt "model:ir.message,text:msg_order_point_product_supply_on_sale"
+msgid "The product \"%(product)s\" is supplied on sale."
+msgstr "Het product \"%(product)s\" is aangeleverd voor verkoop."
+
+msgctxt "model:ir.message,text:msg_template_supply_on_sale_order_point"
+msgid "The product has purchase order points \"%(order_points)s\" defined."
+msgstr ""
+"Op het product zijn inkoop order niveaus \"%(order_points)s\" gedefinieerd."
+
+msgctxt "selection:product.product,supply_on_sale:"
+msgid "Always"
+msgstr "Altijd"
+
+msgctxt "selection:product.product,supply_on_sale:"
+msgid "Never"
+msgstr "Nooit"
+
+msgctxt "selection:product.product,supply_on_sale:"
+msgid "Stock First"
+msgstr "Voorraad eerst"
+
+msgctxt "selection:product.template,supply_on_sale:"
+msgid "Always"
+msgstr "Altijd"
+
+msgctxt "selection:product.template,supply_on_sale:"
+msgid "Never"
+msgstr "Nooit"
+
+msgctxt "selection:product.template,supply_on_sale:"
+msgid "Stock First"
+msgstr "Voorraad eerst"
 
 msgctxt "selection:sale.line,supply_state:"
 msgid "Cancelled"

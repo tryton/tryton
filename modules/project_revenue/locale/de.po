@@ -24,11 +24,11 @@ msgstr "Einkaufspositionen"
 
 msgctxt "field:project.work,revenue:"
 msgid "Revenue"
-msgstr "Ertrag"
+msgstr "Veranschlagter Ertrag"
 
 msgctxt "field:purchase.line,work:"
 msgid "Work Effort"
-msgstr "Aufgabe Aufwand"
+msgstr "Projektaufgabe"
 
 msgctxt "help:purchase.line,work:"
 msgid "Add to the cost of the work effort."

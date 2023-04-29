@@ -48,11 +48,11 @@ msgstr "Stripe Kunde"
 
 msgctxt "field:account.payment,stripe_customer_payment_method:"
 msgid "Stripe Payment Method"
-msgstr "Stripe Zahlungsmethode"
+msgstr "Stripe Zahlungsart"
 
 msgctxt "field:account.payment,stripe_customer_payment_method_selection:"
 msgid "Stripe Customer Payment Method"
-msgstr "Stripe Kunde Zahlungsmethode"
+msgstr "Stripe Kunde Zahlungsart"
 
 msgctxt "field:account.payment,stripe_customer_source:"
 msgid "Stripe Customer Source"
@@ -603,7 +603,7 @@ msgstr "Zahlungsabsicht:"
 
 msgctxt "view:account.payment:"
 msgid "Payment Method:"
-msgstr "Zahlungsmethode:"
+msgstr "Zahlungsart:"
 
 msgctxt "view:account.payment:"
 msgid "Source:"
@@ -623,7 +623,7 @@ msgstr "Kunde:"
 
 msgctxt "view:party.party.reception_direct_debit:"
 msgid "Payment Method:"
-msgstr "Zahlungsmethode:"
+msgstr "Zahlungsart:"
 
 msgctxt "view:party.party.reception_direct_debit:"
 msgid "Source:"

@@ -86,6 +86,10 @@ msgctxt "field:account.move.line.group,party:"
 msgid "Party"
 msgstr ""
 
+msgctxt "field:account.move.line.group,payable_receivable_balance:"
+msgid "Payable/Receivable Balance"
+msgstr ""
+
 msgctxt "field:account.move.line.group,period:"
 msgid "Period"
 msgstr ""
@@ -130,19 +134,8 @@ msgctxt "model:ir.action,name:act_open_account"
 msgid "Open Move Account (Grouped)"
 msgstr ""
 
-msgctxt ""
-"model:ir.action.act_window.domain,name:act_move_line_group_payable_receivable_domain_all"
-msgid "All"
-msgstr ""
-
-msgctxt ""
-"model:ir.action.act_window.domain,name:act_move_line_group_payable_receivable_domain_payable"
-msgid "Payable"
-msgstr ""
-
-msgctxt ""
-"model:ir.action.act_window.domain,name:act_move_line_group_payable_receivable_domain_receivable"
-msgid "Receivable"
+msgctxt "view:account.move.line.group:"
+msgid "Balance"
 msgstr ""
 
 msgctxt "view:account.move.line.group:"

@@ -135,6 +135,10 @@ msgctxt ""
 msgid "Validate"
 msgstr "Valider"
 
+msgctxt "model:ir.rule.group,name:rule_group_sale_amendment_companies"
+msgid "User in companies"
+msgstr "Utilisateur dans les sociétés"
+
 msgctxt "model:ir.ui.menu,name:menu_sale_amendment"
 msgid "Amendments"
 msgstr "Amendements"

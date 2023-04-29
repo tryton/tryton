@@ -385,10 +385,6 @@ msgctxt "model:ir.message,text:msg_journal_bank_account_unique"
 msgid "Only one journal is allowed per bank account."
 msgstr ""
 
-msgctxt "model:ir.message,text:msg_line_amount_non_zero"
-msgid "Statement line amount cannot be zero."
-msgstr ""
-
 msgctxt "model:ir.message,text:msg_post_statement_move"
 msgid "To post the move \"%(move)s\" you must post the statement \"%(statement)s\"."
 msgstr ""

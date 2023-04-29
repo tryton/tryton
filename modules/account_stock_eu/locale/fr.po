@@ -1,0 +1,655 @@
+#
+#, fuzzy
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:account.fiscalyear,intrastat_extended:"
+msgid "Intrastat Extended"
+msgstr "Intrastat étendu"
+
+msgctxt "field:account.stock.eu.intrastat.declaration,company:"
+msgid "Company"
+msgstr "Société"
+
+msgctxt "field:account.stock.eu.intrastat.declaration,country:"
+msgid "Country"
+msgstr "Pays"
+
+msgctxt "field:account.stock.eu.intrastat.declaration,extended:"
+msgid "Extended"
+msgstr "Étendu"
+
+msgctxt "field:account.stock.eu.intrastat.declaration,month:"
+msgid "Month"
+msgstr "Mois"
+
+msgctxt "field:account.stock.eu.intrastat.declaration,state:"
+msgid "State"
+msgstr "État"
+
+msgctxt "field:account.stock.eu.intrastat.declaration.context,company:"
+msgid "Company"
+msgstr "Société"
+
+msgctxt "field:account.stock.eu.intrastat.declaration.context,declaration:"
+msgid "Declaration"
+msgstr "Déclaration"
+
+msgctxt "field:account.stock.eu.intrastat.declaration.export.result,file:"
+msgid "File"
+msgstr "Fichier"
+
+msgctxt "field:account.stock.eu.intrastat.declaration.export.result,filename:"
+msgid "File Name"
+msgstr "Nom du fichier"
+
+msgctxt "field:account.stock.eu.intrastat.declaration.line,additional_unit:"
+msgid "Additional Unit"
+msgstr "Unité supplémentaire"
+
+msgctxt "field:account.stock.eu.intrastat.declaration.line,country:"
+msgid "Country"
+msgstr "Pays"
+
+msgctxt "field:account.stock.eu.intrastat.declaration.line,country_of_origin:"
+msgid "Country of Origin"
+msgstr "Pays d'origine"
+
+msgctxt "field:account.stock.eu.intrastat.declaration.line,incoterm:"
+msgid "Incoterm"
+msgstr "Incoterm"
+
+msgctxt "field:account.stock.eu.intrastat.declaration.line,subdivision:"
+msgid "Subdivision"
+msgstr "Subdivision"
+
+msgctxt "field:account.stock.eu.intrastat.declaration.line,tariff_code:"
+msgid "Tariff Code"
+msgstr "Code tarifaire"
+
+msgctxt "field:account.stock.eu.intrastat.declaration.line,transaction:"
+msgid "Transaction"
+msgstr "Transaction"
+
+msgctxt "field:account.stock.eu.intrastat.declaration.line,transport:"
+msgid "Transport"
+msgstr "Transport"
+
+msgctxt "field:account.stock.eu.intrastat.declaration.line,type:"
+msgid "Type"
+msgstr "Type"
+
+msgctxt "field:account.stock.eu.intrastat.declaration.line,value:"
+msgid "Value"
+msgstr "Valeur"
+
+msgctxt "field:account.stock.eu.intrastat.declaration.line,vat:"
+msgid "VAT"
+msgstr "TVA"
+
+msgctxt "field:account.stock.eu.intrastat.declaration.line,weight:"
+msgid "Weight"
+msgstr "Poids"
+
+msgctxt "field:account.stock.eu.intrastat.transaction,code:"
+msgid "Code"
+msgstr "Code"
+
+msgctxt "field:account.stock.eu.intrastat.transaction,description:"
+msgid "Name"
+msgstr "Nom"
+
+msgctxt "field:account.stock.eu.intrastat.transaction,parent:"
+msgid "Parent"
+msgstr "Parent"
+
+msgctxt "field:account.stock.eu.intrastat.transport,code:"
+msgid "Code"
+msgstr "Code"
+
+msgctxt "field:account.stock.eu.intrastat.transport,name:"
+msgid "Name"
+msgstr "Nom"
+
+msgctxt "field:carrier,intrastat_transport:"
+msgid "Intrastat Transport"
+msgstr "Transport Intrastat"
+
+msgctxt "field:company.company,intrastat_currency:"
+msgid "Intrastat Currency"
+msgstr "Devise Intrastat"
+
+msgctxt "field:country.subdivision,country_in_intrastat:"
+msgid "Country in Intrastat"
+msgstr "Pays dans Intrastat"
+
+msgctxt "field:country.subdivision,intrastat_code:"
+msgid "Intrastat Code"
+msgstr "Code Intrastat"
+
+msgctxt "field:customs.tariff.code,intrastat_uom:"
+msgid "Intrastat Additional Unit"
+msgstr "Unité supplémentaire Intrastat"
+
+msgctxt "field:stock.move,intrastat_additional_unit:"
+msgid "Intrastat Additional Unit"
+msgstr "Unité supplémentaire Intrastat"
+
+msgctxt "field:stock.move,intrastat_country:"
+msgid "Intrastat Country"
+msgstr "Pays Intrastat"
+
+msgctxt "field:stock.move,intrastat_country_of_origin:"
+msgid "Intrastat Country of Origin"
+msgstr "Pays d'origine Intrastat"
+
+msgctxt "field:stock.move,intrastat_declaration:"
+msgid "Intrastat Declaration"
+msgstr "Déclaration Intrastat"
+
+msgctxt "field:stock.move,intrastat_extended:"
+msgid "Intrastat Extended"
+msgstr "Intrastat étendu"
+
+msgctxt "field:stock.move,intrastat_incoterm:"
+msgid "Intrastat Incoterm"
+msgstr "Incoterm Intrastat"
+
+msgctxt "field:stock.move,intrastat_subdivision:"
+msgid "Intrastat Subdivision"
+msgstr "Subdivision Intrastat"
+
+msgctxt "field:stock.move,intrastat_tariff_code:"
+msgid "Intrastat Tariff Code"
+msgstr "Code tarifaire Intrastat"
+
+msgctxt "field:stock.move,intrastat_tariff_code_uom:"
+msgid "Intrastat Tariff Code Unit"
+msgstr "Unité du code tarifaire Intrastat"
+
+msgctxt "field:stock.move,intrastat_transaction:"
+msgid "Intrastat Transaction"
+msgstr "Transaction Intrastat"
+
+msgctxt "field:stock.move,intrastat_transport:"
+msgid "Intrastat Transport"
+msgstr "Transport Intrastat"
+
+msgctxt "field:stock.move,intrastat_type:"
+msgid "Intrastat Type"
+msgstr "Type Intrastat"
+
+msgctxt "field:stock.move,intrastat_value:"
+msgid "Intrastat Value"
+msgstr "Valeur Intrastat"
+
+msgctxt "field:stock.move,intrastat_vat:"
+msgid "Intrastat VAT"
+msgstr "TVA Intrastat"
+
+msgctxt "field:stock.move,intrastat_warehouse_country:"
+msgid "Intrastat Warehouse Country"
+msgstr "Pays de l'entrepôt Intrastat"
+
+msgctxt "field:stock.shipment.in,intrastat_from_country:"
+msgid "From Country"
+msgstr "Du pays"
+
+msgctxt "field:stock.shipment.in,intrastat_to_country:"
+msgid "To Country"
+msgstr "Vers le pays"
+
+msgctxt "field:stock.shipment.in.return,intrastat_from_country:"
+msgid "From Country"
+msgstr "Du pays"
+
+msgctxt "field:stock.shipment.in.return,intrastat_to_country:"
+msgid "To Country"
+msgstr "Vers le pays"
+
+msgctxt "field:stock.shipment.internal,intrastat_from_country:"
+msgid "From Country"
+msgstr "Du pays"
+
+msgctxt "field:stock.shipment.internal,intrastat_to_country:"
+msgid "To Country"
+msgstr "Vers le pays"
+
+msgctxt "field:stock.shipment.out,intrastat_from_country:"
+msgid "From Country"
+msgstr "Du pays"
+
+msgctxt "field:stock.shipment.out,intrastat_to_country:"
+msgid "To Country"
+msgstr "Vers le pays"
+
+msgctxt "field:stock.shipment.out.return,intrastat_from_country:"
+msgid "From Country"
+msgstr "Du pays"
+
+msgctxt "field:stock.shipment.out.return,intrastat_to_country:"
+msgid "To Country"
+msgstr "Vers le pays"
+
+msgctxt "help:account.fiscalyear,intrastat_extended:"
+msgid "Check to generate extended declaration."
+msgstr "Cochez pour générer une déclaration étendue."
+
+msgctxt "model:account.stock.eu.intrastat.declaration,name:"
+msgid "Intrastat Declaration"
+msgstr "Déclaration Intrastat"
+
+msgctxt "model:account.stock.eu.intrastat.declaration.context,name:"
+msgid "Intrastat Declaration Context"
+msgstr "Contexte de la déclaration Intrastat"
+
+msgctxt "model:account.stock.eu.intrastat.declaration.export.result,name:"
+msgid "Intrastat Declaration Export"
+msgstr "Exportation de la déclaration Intrastat"
+
+msgctxt "model:account.stock.eu.intrastat.declaration.line,name:"
+msgid "Intrastat Declaration Line"
+msgstr "Ligne de déclaration Intrastat"
+
+msgctxt ""
+"model:account.stock.eu.intrastat.transaction,description:intrastat_transaction_1"
+msgid ""
+"Transactions involving actual change of ownership with financial "
+"compensation"
+msgstr ""
+"Transactions impliquant un transfert effectif de propriété avec compensation"
+" financière"
+
+msgctxt ""
+"model:account.stock.eu.intrastat.transaction,description:intrastat_transaction_11"
+msgid "Outright sale/purchase except direct trade with/by private consumers"
+msgstr ""
+"Vente/achat pur et simple sauf commerce direct avec/par des consommateurs "
+"privés"
+
+msgctxt ""
+"model:account.stock.eu.intrastat.transaction,description:intrastat_transaction_12"
+msgid "Direct trade with/by private consumers (incl. distance sale)"
+msgstr ""
+"Commerce direct avec/par des consommateurs privés (y compris la vente à "
+"distance)"
+
+msgctxt ""
+"model:account.stock.eu.intrastat.transaction,description:intrastat_transaction_2"
+msgid ""
+"Return and replacement of goods free of charge after registration of the "
+"original transaction"
+msgstr ""
+"Retour et remplacement de marchandises gratuits après enregistrement de la "
+"transaction d'origine"
+
+msgctxt ""
+"model:account.stock.eu.intrastat.transaction,description:intrastat_transaction_21"
+msgid "Return of goods"
+msgstr "Retour des marchandises"
+
+msgctxt ""
+"model:account.stock.eu.intrastat.transaction,description:intrastat_transaction_22"
+msgid "Replacement for returned goods"
+msgstr "Remplacement des marchandises retournées"
+
+msgctxt ""
+"model:account.stock.eu.intrastat.transaction,description:intrastat_transaction_23"
+msgid "Replacement (e.g. under warranty) for goods not being returned"
+msgstr ""
+"Remplacement (par exemple sous garantie) pour les marchandises non "
+"retournées"
+
+msgctxt ""
+"model:account.stock.eu.intrastat.transaction,description:intrastat_transaction_3"
+msgid ""
+"Transactions involving intended change of ownership or change of ownership "
+"without financial compensation"
+msgstr ""
+"Transactions avec intention de changement de propriétaire ou changement de "
+"propriétaire sans contrepartie financière"
+
+msgctxt ""
+"model:account.stock.eu.intrastat.transaction,description:intrastat_transaction_31"
+msgid ""
+"Movements to/from a warehouse (excluding call off and consignment stock)"
+msgstr ""
+"Mouvements vers/depuis un entrepôt (hors appel et stock en consignation)"
+
+msgctxt ""
+"model:account.stock.eu.intrastat.transaction,description:intrastat_transaction_32"
+msgid ""
+"Supply for sale on approval or after trial (including call-off and "
+"consignment stock)"
+msgstr ""
+"Fourniture à la vente sur agrément ou après essai (y compris sur appel et "
+"stock en consignation)"
+
+msgctxt ""
+"model:account.stock.eu.intrastat.transaction,description:intrastat_transaction_33"
+msgid "Financial leasing"
+msgstr "Leasing financier"
+
+msgctxt ""
+"model:account.stock.eu.intrastat.transaction,description:intrastat_transaction_34"
+msgid ""
+"Transactions involving transfer of ownership without financial compensation"
+msgstr ""
+"Transactions impliquant un transfert de propriété sans contrepartie "
+"financière"
+
+msgctxt ""
+"model:account.stock.eu.intrastat.transaction,description:intrastat_transaction_4"
+msgid ""
+"Transactions with a view to processing under contract (not involving change "
+"of ownership)"
+msgstr ""
+"Transactions en vue d'un traitement sous contrat (n'impliquant pas de "
+"transfert de propriété)"
+
+msgctxt ""
+"model:account.stock.eu.intrastat.transaction,description:intrastat_transaction_41"
+msgid "Goods expected to return to the initial Member State/country of export"
+msgstr ""
+"Marchandises censées retourner dans l'État membre/pays d'exportation initial"
+
+msgctxt ""
+"model:account.stock.eu.intrastat.transaction,description:intrastat_transaction_42"
+msgid ""
+"Goods not expected to return to the initial Member State/country of export"
+msgstr ""
+"Marchandises pas censées retourner dans l'État membre/pays d'exportation "
+"initial"
+
+msgctxt ""
+"model:account.stock.eu.intrastat.transaction,description:intrastat_transaction_5"
+msgid ""
+"Transactions following processing under contract (not involving change of "
+"ownership)"
+msgstr ""
+"Transactions consécutives à une transformation sous contrat (sans changement"
+" de propriété)"
+
+msgctxt ""
+"model:account.stock.eu.intrastat.transaction,description:intrastat_transaction_51"
+msgid "Goods returning to the initial Member State/country of export"
+msgstr "Marchandises retournant dans l'État membre/pays d'exportation initial"
+
+msgctxt ""
+"model:account.stock.eu.intrastat.transaction,description:intrastat_transaction_52"
+msgid "Goods not returning to the initial Member State/country of export"
+msgstr ""
+"Marchandises retournant pas dans l'État membre/pays d'exportation initial"
+
+msgctxt ""
+"model:account.stock.eu.intrastat.transaction,description:intrastat_transaction_6"
+msgid "Particular transactions recorded for national purposes"
+msgstr "Transactions particulières enregistrées à des fins nationales"
+
+msgctxt ""
+"model:account.stock.eu.intrastat.transaction,description:intrastat_transaction_60"
+msgid "Particular transactions recorded for national purposes"
+msgstr "Transactions particulières enregistrées à des fins nationales"
+
+msgctxt ""
+"model:account.stock.eu.intrastat.transaction,description:intrastat_transaction_7"
+msgid ""
+"Transactions with a view to/following customs clearance (not involving "
+"change of ownership, related to goods in quasi-import or export)"
+msgstr ""
+"Transactions en vue/à la suite du dédouanement (n'impliquant pas de "
+"changement de propriété, portant sur des marchandises en quasi-importation "
+"ou exportation)"
+
+msgctxt ""
+"model:account.stock.eu.intrastat.transaction,description:intrastat_transaction_71"
+msgid ""
+"Release of goods for free circulation in a Member State with a subsequent "
+"export to another Member State"
+msgstr ""
+"Mise en libre circulation de marchandises dans un État membre avec "
+"exportation ultérieure vers un autre État membre"
+
+msgctxt ""
+"model:account.stock.eu.intrastat.transaction,description:intrastat_transaction_72"
+msgid ""
+"Transportation of goods from one Member State to another Member State to "
+"place the goods under the export procedure"
+msgstr ""
+"Transport de marchandises d'un État membre vers un autre État membre pour "
+"placer les marchandises sous le régime de l'exportation"
+
+msgctxt ""
+"model:account.stock.eu.intrastat.transaction,description:intrastat_transaction_8"
+msgid ""
+"Transactions involving the supply of building materials and technical "
+"equipment under a general construction or civil engineering contract for "
+"which no separate invoicing of the goods is required and an invoice for the "
+"total contract is issued"
+msgstr ""
+"Transactions impliquant la fourniture de matériaux de construction et "
+"d'équipements techniques dans le cadre d'un contrat général de construction "
+"ou de génie civil pour lequel aucune facturation séparée des biens n'est "
+"requise et une facture pour l'ensemble du contrat est émise"
+
+msgctxt ""
+"model:account.stock.eu.intrastat.transaction,description:intrastat_transaction_80"
+msgid ""
+"Transactions involving the supply of building materials and technical "
+"equipment under a general construction or civil engineering contract for "
+"which no separate invoicing of the goods is required and an invoice for the "
+"total contract is issued"
+msgstr ""
+"Transactions impliquant la fourniture de matériaux de construction et "
+"d'équipements techniques dans le cadre d'un contrat général de construction "
+"ou de génie civil pour lequel aucune facturation séparée des biens n'est "
+"requise et une facture pour l'ensemble du contrat est émise"
+
+msgctxt ""
+"model:account.stock.eu.intrastat.transaction,description:intrastat_transaction_9"
+msgid "Other transactions which cannot be classified under other codes"
+msgstr "Autres transactions ne pouvant être classées sous d'autres codes"
+
+msgctxt ""
+"model:account.stock.eu.intrastat.transaction,description:intrastat_transaction_91"
+msgid "Hire, loan, and operational leasing longer than 24 months"
+msgstr "Location, prêt et leasing opérationnel de plus de 24 mois"
+
+msgctxt ""
+"model:account.stock.eu.intrastat.transaction,description:intrastat_transaction_99"
+msgid "Other"
+msgstr "Autre"
+
+msgctxt "model:account.stock.eu.intrastat.transaction,name:"
+msgid "Intrastat Transaction"
+msgstr "Transaction Intrastat"
+
+msgctxt "model:account.stock.eu.intrastat.transport,name:"
+msgid "Intrastat Transport"
+msgstr "Transport Intrastat"
+
+msgctxt ""
+"model:account.stock.eu.intrastat.transport,name:intrastat_transport_1"
+msgid "Sea transport"
+msgstr "Transport maritime"
+
+msgctxt ""
+"model:account.stock.eu.intrastat.transport,name:intrastat_transport_2"
+msgid "Railway transport"
+msgstr "Transport ferroviaire"
+
+msgctxt ""
+"model:account.stock.eu.intrastat.transport,name:intrastat_transport_3"
+msgid "Road transport"
+msgstr "Transport routier"
+
+msgctxt ""
+"model:account.stock.eu.intrastat.transport,name:intrastat_transport_4"
+msgid "Air transport"
+msgstr "Transport aérien"
+
+msgctxt ""
+"model:account.stock.eu.intrastat.transport,name:intrastat_transport_5"
+msgid "Postal consignments"
+msgstr "Envois postaux"
+
+msgctxt ""
+"model:account.stock.eu.intrastat.transport,name:intrastat_transport_7"
+msgid "Fixed transport devices"
+msgstr "Dispositifs de transport fixes"
+
+msgctxt ""
+"model:account.stock.eu.intrastat.transport,name:intrastat_transport_8"
+msgid "Inland waterway transport"
+msgstr "Transport fluvial"
+
+msgctxt ""
+"model:account.stock.eu.intrastat.transport,name:intrastat_transport_9"
+msgid "Own propulsion"
+msgstr "Propre propulsion"
+
+msgctxt "model:ir.action,name:act_intrastat_declaration_form"
+msgid "Intrastat Declarations"
+msgstr "Déclarations Intrastat"
+
+msgctxt "model:ir.action,name:act_intrastat_declaration_line_form"
+msgid "Intrastat Declaration Lines"
+msgstr "Lignes de déclaration Intrastat"
+
+msgctxt "model:ir.action,name:wizard_intrastat_declaration_export"
+msgid "Export Intrastat Declaration"
+msgstr "Déclaration Intrastat d'exportation"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_intrastat_declaration_form_domain_all"
+msgid "All"
+msgstr "Toutes"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_intrastat_declaration_form_domain_opened"
+msgid "Opened"
+msgstr "Ouvertes"
+
+msgctxt ""
+"model:ir.message,text:msg_intrastat_declaration_company_country_month_unique"
+msgid "Intrastat declaration must be unique per month, country and company."
+msgstr "La déclaration Intrastat doit être unique par mois, pays et société."
+
+msgctxt "model:ir.message,text:msg_intrastat_declaration_month_first_day"
+msgid "The day of intrastat declaration must be the first of the month."
+msgstr "Le jour de la déclaration Intrastat doit être le premier du mois."
+
+msgctxt "model:ir.message,text:msg_move_counterparty_not_found"
+msgid "Could not find the intrastat counterparty of move \"%(move)s\"."
+msgstr ""
+"Impossible de trouver la contrepartie Intrastat du mouvement « %(move)s »."
+
+msgctxt "model:ir.message,text:msg_move_country_not_found"
+msgid "Could not find the intrastat countries for moves \"%(moves)s\"."
+msgstr ""
+"Impossible de trouver les pays Intrastat pour les mouvements « %(moves)s »."
+
+msgctxt "model:ir.model.button,string:intrastat_declaration_export_button"
+msgid "Export"
+msgstr "Exporter"
+
+msgctxt "model:ir.rule.group,name:rule_group_intrastat_declaration_companies"
+msgid "User in companies"
+msgstr "Utilisateur dans les sociétés"
+
+msgctxt "model:ir.ui.menu,name:menu_intrastat_declaration"
+msgid "Intrastat Declarations"
+msgstr "Déclarations Intrastat"
+
+msgctxt "selection:account.stock.eu.intrastat.declaration,state:"
+msgid "Closed"
+msgstr "Clôturée"
+
+msgctxt "selection:account.stock.eu.intrastat.declaration,state:"
+msgid "Opened"
+msgstr "Ouverte"
+
+msgctxt "selection:account.stock.eu.intrastat.declaration.line,type:"
+msgid "Arrival"
+msgstr "Arrivée"
+
+msgctxt "selection:account.stock.eu.intrastat.declaration.line,type:"
+msgid "Dispatch"
+msgstr "Expédition"
+
+msgctxt "selection:stock.move,intrastat_type:"
+msgid "Arrival"
+msgstr "Arrivée"
+
+msgctxt "selection:stock.move,intrastat_type:"
+msgid "Dispatch"
+msgstr "Expédition"
+
+msgctxt "view:account.fiscalyear:"
+msgid "Intrastat"
+msgstr "Intrastat"
+
+msgctxt "view:stock.move:"
+msgid "Additional Unit"
+msgstr "Unité supplémentaire"
+
+msgctxt "view:stock.move:"
+msgid "Country"
+msgstr "Pays"
+
+msgctxt "view:stock.move:"
+msgid "Country of Origin"
+msgstr "Pays d'origine"
+
+msgctxt "view:stock.move:"
+msgid "Intrastat"
+msgstr "Intrastat"
+
+msgctxt "view:stock.move:"
+msgid "Subdivision"
+msgstr "Subdivision"
+
+msgctxt "view:stock.move:"
+msgid "Tariff Code"
+msgstr "Code tarifaire"
+
+msgctxt "view:stock.move:"
+msgid "Transaction"
+msgstr "Transaction"
+
+msgctxt "view:stock.move:"
+msgid "Type"
+msgstr "Type"
+
+msgctxt "view:stock.move:"
+msgid "VAT"
+msgstr "TVA"
+
+msgctxt "view:stock.move:"
+msgid "Value"
+msgstr "Valeur"
+
+msgctxt "view:stock.move:"
+msgid "Warehouse Country"
+msgstr "Pays de l'entrepôt"
+
+msgctxt "view:stock.shipment.in.return:"
+msgid "Intrastat"
+msgstr "Intrastat"
+
+msgctxt "view:stock.shipment.in:"
+msgid "Intrastat"
+msgstr "Intrastat"
+
+msgctxt "view:stock.shipment.out.return:"
+msgid "Intrastat"
+msgstr "Intrastat"
+
+msgctxt "view:stock.shipment.out:"
+msgid "Intrastat"
+msgstr "Intrastat"
+
+msgctxt ""
+"wizard_button:account.stock.eu.intrastat.declaration.export,result,end:"
+msgid "Close"
+msgstr "Clôturer"

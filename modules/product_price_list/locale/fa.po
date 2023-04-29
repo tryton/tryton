@@ -50,8 +50,11 @@ msgstr ""
 "ساختن لیست قیمت متعلق به شرکت.\n"
 "این ارز از لیست قیمت تعریف می کند."
 
+#, fuzzy
 msgctxt "help:product.price_list,lines:"
-msgid "Add price formulas for different criterias."
+msgid ""
+"Add price formulas for different criteria.\n"
+"The first matching line is used."
 msgstr "فرمول قیمت را برای معیارهای مختلف اضافه کنید."
 
 msgctxt "help:product.price_list,name:"

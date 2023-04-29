@@ -121,11 +121,11 @@ msgstr ""
 msgid "Login"
 msgstr "Prisijungti"
 
-msgid "User name"
-msgstr "Naudotojo vardas"
-
 msgid "Database"
 msgstr ""
+
+msgid "User name"
+msgstr "Naudotojo vardas"
 
 #, fuzzy
 msgid "Login with"
@@ -369,26 +369,6 @@ msgstr "Įrašai nebuvo ištrinti."
 msgid "You have to select one record."
 msgstr "Pasirinkite bent vieną įrašą."
 
-msgid "ID:"
-msgstr "ID:"
-
-#, fuzzy
-msgid "Created by:"
-msgstr "Sukūręs naudotojas"
-
-#, fuzzy
-msgid "Created at:"
-msgstr "Sukūrimo data"
-
-msgid "Edited by:"
-msgstr "Pakeitęs naudotojas:"
-
-msgid "Edited at:"
-msgstr "Keitimo data:"
-
-msgid "Model: "
-msgstr ""
-
 msgid "Add..."
 msgstr "Sukurti naują..."
 
@@ -551,6 +531,9 @@ msgstr ""
 msgid "More"
 msgstr ""
 
+msgid "#ERROR"
+msgstr ""
+
 msgid "Today"
 msgstr "Šiandien"
 
@@ -580,6 +563,32 @@ msgstr ""
 
 msgid "Notes (%1)"
 msgstr "Pastabos (%1)"
+
+#, fuzzy
+msgid "Logs (%1)"
+msgstr "Pastabos (%1)"
+
+msgid "Model:"
+msgstr ""
+
+msgid "ID:"
+msgstr "ID:"
+
+#, fuzzy
+msgid "Created by:"
+msgstr "Sukūręs naudotojas"
+
+#, fuzzy
+msgid "Created at:"
+msgstr "Sukūrimo data"
+
+#, fuzzy
+msgid "Last Modified by:"
+msgstr "Paskutinį kartą redagavo:"
+
+#, fuzzy
+msgid "Last Modified at:"
+msgstr "Pakeitęs naudotojas"
 
 msgid "Search %1"
 msgstr ""

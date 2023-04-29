@@ -10,10 +10,9 @@ msgctxt "field:party.address,city:"
 msgid "City"
 msgstr "Oraș"
 
-#, fuzzy
 msgctxt "field:party.address,contact_mechanisms:"
 msgid "Contact Mechanisms"
-msgstr "Mecanisme de contact"
+msgstr "Date de Contact"
 
 msgctxt "field:party.address,country:"
 msgid "Country"
@@ -23,10 +22,9 @@ msgctxt "field:party.address,full_address:"
 msgid "Full Address"
 msgstr "Adresa completa"
 
-#, fuzzy
 msgctxt "field:party.address,identifiers:"
 msgid "Identifiers"
-msgstr "Identificatorii"
+msgstr "Identificatori"
 
 msgctxt "field:party.address,name:"
 msgid "Building Name"
@@ -120,7 +118,6 @@ msgctxt "field:party.configuration.party_sequence,party_sequence:"
 msgid "Party Sequence"
 msgstr "Secvență Părții"
 
-#, fuzzy
 msgctxt "field:party.contact_mechanism,address:"
 msgid "Address"
 msgstr "Adresa"
@@ -193,7 +190,6 @@ msgctxt "field:party.erase.ask,party:"
 msgid "Party"
 msgstr "Parte"
 
-#, fuzzy
 msgctxt "field:party.identifier,address:"
 msgid "Address"
 msgstr "Adresa"
@@ -210,10 +206,9 @@ msgctxt "field:party.identifier,type:"
 msgid "Type"
 msgstr "Tip"
 
-#, fuzzy
 msgctxt "field:party.identifier,type_address:"
 msgid "Type of Address"
-msgstr "Adresa"
+msgstr "Tip de Adresa"
 
 msgctxt "field:party.party,addresses:"
 msgid "Addresses"
@@ -233,7 +228,7 @@ msgstr "Cod numai pentru citit"
 
 msgctxt "field:party.party,contact_mechanisms:"
 msgid "Contact Mechanisms"
-msgstr "Mecanisme de contact"
+msgstr "Date de Contact"
 
 msgctxt "field:party.party,distance:"
 msgid "Distance"
@@ -396,10 +391,9 @@ msgctxt "help:party.erase.ask,party:"
 msgid "The party to be erased."
 msgstr "Partea care urmează să fie ștearsă."
 
-#, fuzzy
 msgctxt "help:party.identifier,address:"
 msgid "The address identified by this record."
-msgstr "Partea identificată prin această înregistrare."
+msgstr "Adresa identificată prin această înregistrare."
 
 msgctxt "help:party.identifier,party:"
 msgid "The party identified by this record."
@@ -463,11 +457,11 @@ msgstr "Categorii"
 
 msgctxt "model:ir.action,name:act_contact_mechanism_form"
 msgid "Contact Mechanisms"
-msgstr "Mecanisme de contact"
+msgstr "Date de Contact"
 
 msgctxt "model:ir.action,name:act_party_by_category"
 msgid "Parties by Category"
-msgstr "Părți pe categorii"
+msgstr "Părți pe Categorii"
 
 msgctxt "model:ir.action,name:act_party_configuration_form"
 msgid "Configuration"
@@ -549,6 +543,10 @@ msgctxt "model:ir.message,text:msg_party_code_unique"
 msgid "The code on party must be unique."
 msgstr "Codul parții trebuie să fie unic."
 
+msgctxt "model:ir.message,text:msg_party_identifier_duplicate"
+msgid "The party \"%(party)s\" has the same %(type)s \"%(code)s\"."
+msgstr "Partea \"%(party)s\" are acelaş %(type)s \"%(code)s\"."
+
 msgctxt "model:ir.message,text:msg_party_set_contact_mechanism"
 msgid ""
 "To change the \"%(field)s\" for party \"%(party)s\", you must edit their "
@@ -595,9 +593,8 @@ msgstr "Configurare"
 
 msgctxt "model:ir.ui.menu,name:menu_contact_mechanism_form"
 msgid "Contact Mechanisms"
-msgstr "Mecanisme de contact"
+msgstr "Date de Contact"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_party"
 msgid "Parties"
 msgstr "Părți"
@@ -890,15 +887,13 @@ msgctxt "selection:party.configuration,identifier_types:"
 msgid "Finnish VAT Number"
 msgstr "Finlanda, Număr TVA"
 
-#, fuzzy
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "French Company Establishment Identification Number"
-msgstr "Franţa, Cod Numeric Personal"
+msgstr "Franţa, Cod Identificare Companie"
 
-#, fuzzy
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "French Company Identification Number"
-msgstr "Franţa, Cod Fiscal"
+msgstr "Franţa, Cod Identificare Companie"
 
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "French Personal Identification Number"
@@ -1268,7 +1263,6 @@ msgctxt "selection:party.contact_mechanism,type:"
 msgid "Website"
 msgstr "Site web"
 
-#, fuzzy
 msgctxt "view:party.address:"
 msgid "General"
 msgstr "General"

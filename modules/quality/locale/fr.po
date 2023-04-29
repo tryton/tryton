@@ -1,0 +1,490 @@
+#
+#, fuzzy
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:quality.alert,company:"
+msgid "Company"
+msgstr "Société"
+
+msgctxt "field:quality.alert,deferred_by:"
+msgid "Deferred by"
+msgstr "Différé par"
+
+msgctxt "field:quality.alert,description:"
+msgid "Description"
+msgstr "Description"
+
+msgctxt "field:quality.alert,number:"
+msgid "Number"
+msgstr "Nombre"
+
+msgctxt "field:quality.alert,origin:"
+msgid "Origin"
+msgstr "Origine"
+
+msgctxt "field:quality.alert,processed_by:"
+msgid "Processed by"
+msgstr "Traitée par"
+
+msgctxt "field:quality.alert,resolved_by:"
+msgid "Resolved by"
+msgstr "Résolue par"
+
+msgctxt "field:quality.alert,state:"
+msgid "State"
+msgstr "État"
+
+msgctxt "field:quality.alert,title:"
+msgid "Title"
+msgstr "Titre"
+
+msgctxt "field:quality.configuration,alert_sequence:"
+msgid "Alert Sequence"
+msgstr "Séquence d'alerte"
+
+msgctxt "field:quality.configuration,inspection_sequence:"
+msgid "Inspection Sequence"
+msgstr "Séquence d'inspection"
+
+msgctxt "field:quality.configuration.sequence,alert_sequence:"
+msgid "Alert Sequence"
+msgstr "Séquence d'alerte"
+
+msgctxt "field:quality.configuration.sequence,company:"
+msgid "Company"
+msgstr "Société"
+
+msgctxt "field:quality.configuration.sequence,inspection_sequence:"
+msgid "Inspection Sequence"
+msgstr "Séquence d'inspection"
+
+msgctxt "field:quality.control,company:"
+msgid "Company"
+msgstr "Société"
+
+msgctxt "field:quality.control,frequency:"
+msgid "Frequency"
+msgstr "Fréquence"
+
+msgctxt "field:quality.control,name:"
+msgid "Name"
+msgstr "Nom"
+
+msgctxt "field:quality.control,operations:"
+msgid "Operations"
+msgstr "Opérations"
+
+msgctxt "field:quality.control,points:"
+msgid "Points"
+msgstr "Points"
+
+msgctxt "field:quality.control,product:"
+msgid "Product"
+msgstr "Produit"
+
+msgctxt "field:quality.control,product_category:"
+msgid "Product Category"
+msgstr "Catégorie de produit"
+
+msgctxt "field:quality.control.point,control:"
+msgid "Control"
+msgstr "Contrôle"
+
+msgctxt "field:quality.control.point,tolerance_lower:"
+msgid "Tolerance Lower"
+msgstr "Tolérance inférieure"
+
+msgctxt "field:quality.control.point,tolerance_upper:"
+msgid "Tolerance Upper"
+msgstr "Tolérance supérieure"
+
+msgctxt "field:quality.inspect.store,inspections:"
+msgid "Inspections"
+msgstr "Inspections"
+
+msgctxt "field:quality.inspection,alerts:"
+msgid "Alerts"
+msgstr "Alertes"
+
+msgctxt "field:quality.inspection,company:"
+msgid "Company"
+msgstr "Société"
+
+msgctxt "field:quality.inspection,control:"
+msgid "Control"
+msgstr "Contrôle"
+
+msgctxt "field:quality.inspection,failed_by:"
+msgid "Failed by"
+msgstr "Échouée par"
+
+msgctxt "field:quality.inspection,number:"
+msgid "Number"
+msgstr "Nombre"
+
+msgctxt "field:quality.inspection,origin:"
+msgid "Origin"
+msgstr "Origine"
+
+msgctxt "field:quality.inspection,passed_by:"
+msgid "Passed by"
+msgstr "Passée par"
+
+msgctxt "field:quality.inspection,points:"
+msgid "Points"
+msgstr "Points"
+
+msgctxt "field:quality.inspection,processed_at:"
+msgid "Processed at"
+msgstr "Traitée à"
+
+msgctxt "field:quality.inspection,processed_by:"
+msgid "Processed by"
+msgstr "Traitée par"
+
+msgctxt "field:quality.inspection,state:"
+msgid "State"
+msgstr "État"
+
+msgctxt "help:quality.control,company:"
+msgid "The company to which the control applies."
+msgstr "L'entreprise à laquelle s'applique le contrôle."
+
+msgctxt "help:quality.control,frequency:"
+msgid "How often the control must be done."
+msgstr "Combien de fois le contrôle doit être fait."
+
+msgctxt "help:quality.control,operations:"
+msgid "The operations for which the control is performed."
+msgstr "Les opérations pour lesquelles le contrôle est effectué."
+
+msgctxt "help:quality.control,product:"
+msgid "The product to which the control applies."
+msgstr "Le produit auquel s'applique le contrôle."
+
+msgctxt "help:quality.control,product_category:"
+msgid "The product category to which the control applies."
+msgstr "La catégorie de produit à laquelle s'applique le contrôle."
+
+msgctxt "model:ir.action,name:act_quality_alert_form"
+msgid "Alerts"
+msgstr "Alertes"
+
+msgctxt "model:ir.action,name:act_quality_configuration_form"
+msgid "Configuration"
+msgstr "Configuration"
+
+msgctxt "model:ir.action,name:act_quality_control_form"
+msgid "Controls"
+msgstr "Contrôles"
+
+msgctxt "model:ir.action,name:act_quality_inspection_form"
+msgid "Inspections"
+msgstr "Inspections"
+
+msgctxt "model:ir.action,name:act_quality_inspection_form_relate"
+msgid "Quality Inspections"
+msgstr "Inspections de qualité"
+
+msgctxt "model:ir.action,name:wizard_production_inspect_done"
+msgid "Inspect Done"
+msgstr "Inspecter terminé"
+
+msgctxt "model:ir.action,name:wizard_production_inspect_run"
+msgid "Inspect Run"
+msgstr "Inspecter Lancer"
+
+msgctxt "model:ir.action,name:wizard_stock_shipment_in_inspect_done"
+msgid "Inspect Done"
+msgstr "Inspecter terminé"
+
+msgctxt "model:ir.action,name:wizard_stock_shipment_in_inspect_receive"
+msgid "Inspect Reception"
+msgstr "Inspecter la réception"
+
+msgctxt "model:ir.action,name:wizard_stock_shipment_internal_inspect_done"
+msgid "Inspect Done"
+msgstr "Inspecter terminé"
+
+msgctxt "model:ir.action,name:wizard_stock_shipment_internal_inspect_ship"
+msgid "Inspect Ship"
+msgstr "Inspecter Livrer"
+
+msgctxt "model:ir.action,name:wizard_stock_shipment_out_inspect_pack"
+msgid "Inspect Pack"
+msgstr "Inspecter Emballer"
+
+msgctxt "model:ir.action,name:wizard_stock_shipment_out_inspect_pick"
+msgid "Inspect Pick"
+msgstr "Inspecter Prélever"
+
+msgctxt "model:ir.action,name:wizard_stock_shipment_out_return_inspect_done"
+msgid "Inspect Done"
+msgstr "Inspecter terminé"
+
+msgctxt ""
+"model:ir.action,name:wizard_stock_shipment_out_return_inspect_receive"
+msgid "Inspect Reception"
+msgstr "Inspecter la réception"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_quality_alert_form_domain_all"
+msgid "All"
+msgstr "Toutes"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_quality_alert_form_domain_deferred"
+msgid "Deferred"
+msgstr "Différées"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_quality_alert_form_domain_open"
+msgid "Open"
+msgstr "Ouvertes"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_quality_alert_form_domain_processing"
+msgid "Processing"
+msgstr "En traitements"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_quality_inspection_form_domain_all"
+msgid "All"
+msgstr "Toutes"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_quality_inspection_form_domain_pending"
+msgid "Pending"
+msgstr "En attentes"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_quality_inspection_form_domain_processed"
+msgid "Processed"
+msgstr "Traitées"
+
+msgctxt "model:ir.message,text:msg_quality_inspection_failed"
+msgid "To continue, alerts from failed inspections must be resolved."
+msgstr ""
+"Pour continuer, les alertes provenant d'inspections ayant échouées doivent "
+"être résolues."
+
+msgctxt "model:ir.message,text:msg_quality_inspection_missing_point"
+msgid ""
+"To complete the inspection \"%(inspection)s\", you must test points "
+"\"%(points)s\"."
+msgstr ""
+"Pour terminer l'inspection « %(inspection)s », vous devez tester les points "
+"« %(points)s »."
+
+msgctxt "model:ir.message,text:msg_quality_inspections"
+msgid "Quality Inspections"
+msgstr "Inspections de qualité"
+
+msgctxt "model:ir.model.button,string:quality_alert_defer_button"
+msgid "Defer"
+msgstr "Différer"
+
+msgctxt "model:ir.model.button,string:quality_alert_open_button"
+msgid "Open"
+msgstr "Ouvrir"
+
+msgctxt "model:ir.model.button,string:quality_alert_process_button"
+msgid "Process"
+msgstr "Traiter"
+
+msgctxt "model:ir.model.button,string:quality_alert_resolve_button"
+msgid "Resolve"
+msgstr "Résoudre"
+
+msgctxt "model:ir.model.button,string:quality_inspection_fail_button"
+msgid "Fail"
+msgstr "Échouer"
+
+msgctxt "model:ir.model.button,string:quality_inspection_pass_button"
+msgid "Pass"
+msgstr "Passer"
+
+msgctxt "model:ir.model.button,string:quality_inspection_pending_button"
+msgid "Pending"
+msgstr "En attente"
+
+msgctxt "model:ir.model.button,string:quality_inspection_process_button"
+msgid "Process"
+msgstr "Traiter"
+
+msgctxt "model:ir.rule.group,name:rule_group_quality_control_companies"
+msgid "User in companies"
+msgstr "Utilisateur dans les sociétés"
+
+msgctxt "model:ir.rule.group,name:rule_group_quality_inspection_companies"
+msgid "User in companies"
+msgstr "Utilisateur dans les sociétés"
+
+msgctxt "model:ir.sequence,name:sequence_quality_alert"
+msgid "Quality Alert"
+msgstr "Alerte de qualité"
+
+msgctxt "model:ir.sequence,name:sequence_quality_inspection"
+msgid "Quality Inspection"
+msgstr "Inspection de qualité"
+
+msgctxt "model:ir.sequence.type,name:sequence_type_quality_alert"
+msgid "Quality Alert"
+msgstr "Alerte de qualité"
+
+msgctxt "model:ir.sequence.type,name:sequence_type_quality_inspection"
+msgid "Quality Inspection"
+msgstr "Inspection de qualité"
+
+msgctxt "model:ir.ui.menu,name:menu_configuration"
+msgid "Configuration"
+msgstr "Configuration"
+
+msgctxt "model:ir.ui.menu,name:menu_quality"
+msgid "Quality"
+msgstr "Qualité"
+
+msgctxt "model:ir.ui.menu,name:menu_quality_alert_form"
+msgid "Alerts"
+msgstr "Alertes"
+
+msgctxt "model:ir.ui.menu,name:menu_quality_configuration"
+msgid "Configuration"
+msgstr "Configuration"
+
+msgctxt "model:ir.ui.menu,name:menu_quality_control"
+msgid "Controls"
+msgstr "Contrôles"
+
+msgctxt "model:ir.ui.menu,name:menu_quality_inspection_form"
+msgid "Inspections"
+msgstr "Inspections"
+
+msgctxt "model:quality.alert,name:"
+msgid "Quality Alert"
+msgstr "Alerte de qualité"
+
+msgctxt "model:quality.configuration,name:"
+msgid "Quality Configuration"
+msgstr "Configuration de qualité"
+
+msgctxt "model:quality.configuration.sequence,name:"
+msgid "Quality Configuration Sequence"
+msgstr "Configuration de séquence de qualité"
+
+msgctxt "model:quality.control,name:"
+msgid "Quality Control"
+msgstr "Contrôle de qualité"
+
+msgctxt "model:quality.control.point,name:"
+msgid "Quality Control Point"
+msgstr "Point de contrôle de qualité"
+
+msgctxt "model:quality.inspect.store,name:"
+msgid "Inspect Quality"
+msgstr "Inspecter la qualité"
+
+msgctxt "model:quality.inspection,name:"
+msgid "Quality Inspection"
+msgstr "Inspection de qualité"
+
+msgctxt "model:res.group,name:group_quality"
+msgid "Quality"
+msgstr "Qualité"
+
+msgctxt "model:res.group,name:group_quality_admin"
+msgid "Quality Administration"
+msgstr "Administration de la qualité"
+
+msgctxt "selection:quality.alert,state:"
+msgid "Deferred"
+msgstr "Différée"
+
+msgctxt "selection:quality.alert,state:"
+msgid "Open"
+msgstr "Ouverte"
+
+msgctxt "selection:quality.alert,state:"
+msgid "Processing"
+msgstr "En traitement"
+
+msgctxt "selection:quality.alert,state:"
+msgid "Resolved"
+msgstr "Résolue"
+
+msgctxt "selection:quality.control,operations:"
+msgid "Customer Shipment Packed"
+msgstr "Expédition cliente emballée"
+
+msgctxt "selection:quality.control,operations:"
+msgid "Customer Shipment Picked"
+msgstr "Expédition cliente prélevée"
+
+msgctxt "selection:quality.control,operations:"
+msgid "Customer Shipment Return Done"
+msgstr "Retour d'expédition cliente effectué"
+
+msgctxt "selection:quality.control,operations:"
+msgid "Customer Shipment Return Received"
+msgstr "Retour d'expédition cliente reçu"
+
+msgctxt "selection:quality.control,operations:"
+msgid "Internal Shipment Done"
+msgstr "Expédition interne terminée"
+
+msgctxt "selection:quality.control,operations:"
+msgid "Internal Shipment Shipped"
+msgstr "Expédition interne livrée"
+
+msgctxt "selection:quality.control,operations:"
+msgid "Production Done"
+msgstr "Production terminée"
+
+msgctxt "selection:quality.control,operations:"
+msgid "Production Run"
+msgstr "Production lancée"
+
+msgctxt "selection:quality.control,operations:"
+msgid "Supplier Shipment Done"
+msgstr "Expédition fournisseur effectuée"
+
+msgctxt "selection:quality.control,operations:"
+msgid "Supplier Shipment Received"
+msgstr "Expédition fournisseur reçue"
+
+msgctxt "selection:quality.inspection,state:"
+msgid "Failed"
+msgstr "Échouée"
+
+msgctxt "selection:quality.inspection,state:"
+msgid "Passed"
+msgstr "Passée"
+
+msgctxt "selection:quality.inspection,state:"
+msgid "Pending"
+msgstr "En attente"
+
+msgctxt "view:quality.alert:"
+msgid "Other Info"
+msgstr "Autre information"
+
+msgctxt "view:quality.control:"
+msgid "%"
+msgstr "%"
+
+msgctxt "view:quality.inspection:"
+msgid "Other Info"
+msgstr "Autre information"
+
+msgctxt "wizard_button:quality.inspect,inspection,end:"
+msgid "Cancel"
+msgstr "Annuler"
+
+msgctxt "wizard_button:quality.inspect,inspection,next_:"
+msgid "Skip"
+msgstr "Passer"
+
+msgctxt "wizard_button:quality.inspect,inspection,save:"
+msgid "Save"
+msgstr "Sauver"

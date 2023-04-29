@@ -180,20 +180,21 @@ msgctxt "field:purchase.line,invoice_lines:"
 msgid "Invoice Lines"
 msgstr "Számlasorok"
 
-msgctxt "field:purchase.line,move_done:"
-msgid "Moves Done"
-msgstr ""
-
-msgctxt "field:purchase.line,move_exception:"
-msgid "Moves Exception"
-msgstr ""
-
 msgctxt "field:purchase.line,moves:"
 msgid "Moves"
 msgstr "Mozgások"
 
+#, fuzzy
+msgctxt "field:purchase.line,moves_exception:"
+msgid "Moves Exception"
+msgstr "visszautasítva"
+
 msgctxt "field:purchase.line,moves_ignored:"
 msgid "Ignored Moves"
+msgstr ""
+
+msgctxt "field:purchase.line,moves_progress:"
+msgid "Moves Progress"
 msgstr ""
 
 msgctxt "field:purchase.line,moves_recreated:"
@@ -220,6 +221,11 @@ msgctxt "field:purchase.line,purchase:"
 msgid "Purchase"
 msgstr "Beszerzési rendelés"
 
+#, fuzzy
+msgctxt "field:purchase.line,purchase_date:"
+msgid "Purchase Date"
+msgstr "Rendelés dátuma"
+
 msgctxt "field:purchase.line,purchase_state:"
 msgid "Purchase State"
 msgstr ""
@@ -231,6 +237,11 @@ msgstr "Mennyiség"
 msgctxt "field:purchase.line,summary:"
 msgid "Summary"
 msgstr "Leírás"
+
+#, fuzzy
+msgctxt "field:purchase.line,supplier:"
+msgid "Supplier"
+msgstr "Szállító"
 
 msgctxt "field:purchase.line,taxes:"
 msgid "Taxes"
@@ -251,6 +262,11 @@ msgstr "Mértékegység"
 msgctxt "field:purchase.line,unit_price:"
 msgid "Unit Price"
 msgstr "Egységár"
+
+#, fuzzy
+msgctxt "field:purchase.line,warehouse:"
+msgid "Warehouse"
+msgstr "Raktár"
 
 msgctxt "field:purchase.line-account.tax,line:"
 msgid "Purchase Line"
@@ -583,6 +599,15 @@ msgctxt "help:party.party.supplier_currency,supplier_currency:"
 msgid "Default currency for purchases from this party."
 msgstr ""
 
+#, fuzzy
+msgctxt "help:party.party.supplier_lead_time,supplier_lead_time:"
+msgid ""
+"The time from confirming the purchase order to receiving the goods from the party when used as a supplier.\n"
+"Used if no lead time is set on the product supplier."
+msgstr ""
+"Az átfutási idő a beszerzési rendelés jóváhagyásától az áru átvételéig, ha ettől a szállítótól rendelünk.\n"
+"Akkor használja a rendszer, ha nincs más megadva a termékspecifikus szállítói információnál."
+
 msgctxt "help:purchase.configuration,purchase_process_after:"
 msgid ""
 "The grace period during which confirmed purchase can still be reset to draft.\n"
@@ -613,6 +638,12 @@ msgid ""
 msgstr ""
 "Az átfutási idő a beszerzési rendelés jóváhagyásától az áru átvételéig.\n"
 "Ha üres, a szállítónál megadott átfutási időt használja a rendszer."
+
+msgctxt "help:purchase.product_supplier,prices:"
+msgid ""
+"Add price for different criteria.\n"
+"The last matching line is used."
+msgstr ""
 
 msgctxt "help:purchase.product_supplier.price,quantity:"
 msgid "Minimal quantity."
@@ -654,23 +685,26 @@ msgctxt "model:ir.action,name:act_purchase_form"
 msgid "Purchases"
 msgstr "Beszerzési rendelések"
 
-msgctxt "model:ir.action,name:act_purchase_form2"
-msgid "Purchases"
-msgstr "Beszerzési rendelések"
-
 msgctxt "model:ir.action,name:act_purchase_invoice_relate"
 msgid "Purchases"
 msgstr "Beszerzési rendelések"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_purchase_line_relate"
+msgid "Purchase Lines"
+msgstr "Beszerzési rendelés sora"
 
 msgctxt "model:ir.action,name:act_purchase_move_relate"
 msgid "Moves"
 msgstr "Készletmozgások"
 
-msgctxt "model:ir.action,name:act_purchase_shipment_returns_relate"
+#, fuzzy
+msgctxt "model:ir.action,name:act_purchase_relate"
 msgid "Purchases"
 msgstr "Beszerzési rendelések"
 
-msgctxt "model:ir.action,name:act_purchase_shipments_relate"
+#, fuzzy
+msgctxt "model:ir.action,name:act_purchase_relate_simple"
 msgid "Purchases"
 msgstr "Beszerzési rendelések"
 
@@ -761,6 +795,35 @@ msgctxt ""
 msgid "Quotation"
 msgstr "ajánlatkérés"
 
+#, fuzzy
+msgctxt "model:ir.action.act_window.domain,name:act_purchase_line_relate_all"
+msgid "All"
+msgstr "összes"
+
+#, fuzzy
+msgctxt "model:ir.action.act_window.domain,name:act_purchase_line_relate_done"
+msgid "Done"
+msgstr "Kész"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_purchase_line_relate_pending"
+msgid "Pending"
+msgstr ""
+
+#, fuzzy
+msgctxt "model:ir.action.act_window.domain,name:act_purchase_relate_all"
+msgid "All"
+msgstr "összes"
+
+#, fuzzy
+msgctxt "model:ir.action.act_window.domain,name:act_purchase_relate_done"
+msgid "Done"
+msgstr "Kész"
+
+msgctxt "model:ir.action.act_window.domain,name:act_purchase_relate_pending"
+msgid "Pending"
+msgstr ""
+
 msgctxt "model:ir.message,text:msg_change_purchase_uom"
 msgid ""
 "You are trying to change the purchase UoM on which the purchase prices are "
@@ -781,6 +844,12 @@ msgctxt "model:ir.message,text:msg_purchase_invoice_reset_draft"
 msgid ""
 "You cannot reset invoice \"%(invoice)s\" to draft because it was generated "
 "by a purchase."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_purchase_line_create_draft"
+msgid ""
+"You cannot add lines to purchase \"%(purchase)s\" because it is no longer in"
+" a draft state."
 msgstr ""
 
 msgctxt "model:ir.message,text:msg_purchase_line_delete_cancel_draft"
@@ -1201,6 +1270,10 @@ msgid "Manual"
 msgstr "kézzel"
 
 msgctxt "selection:purchase.purchase,invoice_state:"
+msgid "Awaiting Payment"
+msgstr ""
+
+msgctxt "selection:purchase.purchase,invoice_state:"
 msgid "Exception"
 msgstr "visszautasítva"
 
@@ -1213,8 +1286,12 @@ msgid "Paid"
 msgstr "Fizetve"
 
 msgctxt "selection:purchase.purchase,invoice_state:"
-msgid "Waiting"
-msgstr "várakozik"
+msgid "Partially Paid"
+msgstr ""
+
+msgctxt "selection:purchase.purchase,invoice_state:"
+msgid "Pending"
+msgstr ""
 
 msgctxt "selection:purchase.purchase,shipment_state:"
 msgid "Exception"
@@ -1223,6 +1300,10 @@ msgstr "visszautasítva"
 msgctxt "selection:purchase.purchase,shipment_state:"
 msgid "None"
 msgstr "nincs"
+
+msgctxt "selection:purchase.purchase,shipment_state:"
+msgid "Partially Shipped"
+msgstr ""
 
 msgctxt "selection:purchase.purchase,shipment_state:"
 msgid "Received"

@@ -138,6 +138,11 @@ msgctxt "field:ir.action.act_window.view,act_window:"
 msgid "Action"
 msgstr "Дія"
 
+#, fuzzy
+msgctxt "field:ir.action.act_window.view,model:"
+msgid "Model"
+msgstr "Модель"
+
 msgctxt "field:ir.action.act_window.view,view:"
 msgid "View"
 msgstr "Перегляд"
@@ -958,6 +963,29 @@ msgstr "Читання"
 msgctxt "field:ir.model.field.access,perm_write:"
 msgid "Write Access"
 msgstr "Запис"
+
+#, fuzzy
+msgctxt "field:ir.model.log,action:"
+msgid "Action"
+msgstr "Дія"
+
+msgctxt "field:ir.model.log,event:"
+msgid "Event"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:ir.model.log,resource:"
+msgid "Resource"
+msgstr "Ресурс"
+
+msgctxt "field:ir.model.log,target:"
+msgid "Target"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:ir.model.log,user:"
+msgid "User"
+msgstr "Користувач"
 
 msgctxt "field:ir.model.print_model_graph.start,filter:"
 msgid "Filter"
@@ -1864,6 +1892,10 @@ msgctxt "model:ir.action,name:act_model_form"
 msgid "Models"
 msgstr "Моделі"
 
+msgctxt "model:ir.action,name:act_model_log_form"
+msgid "Logs"
+msgstr ""
+
 msgctxt "model:ir.action,name:act_module_activate_upgrade"
 msgid "Perform Pending Activation/Upgrade"
 msgstr "Виконати активацію/оновлення"
@@ -2341,6 +2373,10 @@ msgctxt "model:ir.lang,name:lang_tr"
 msgid "Turkish"
 msgstr "Турецька"
 
+msgctxt "model:ir.lang,name:lang_uk"
+msgid "Ukrainian"
+msgstr ""
+
 msgctxt "model:ir.lang,name:lang_zh_CN"
 msgid "Chinese Simplified"
 msgstr "Китайська (спрощена)"
@@ -2457,9 +2493,10 @@ msgstr ""
 "Вам заборонено видаляти записи \"%(ids)s\" із \"%(model)s\" через принаймні одне з цих правил:\n"
 "%(rules)s"
 
+#, fuzzy
 msgctxt "model:ir.message,text:msg_delete_xml_record"
-msgid "You are not allowed to delete this record."
-msgstr "Ви не можете видалити цей запис."
+msgid "You are not allowed to delete the record \"%(record)s\" of \"%(model)s\"."
+msgstr "Вам заборонено виконувати майстер \"%(wizard)s\" на \"%(model)s\"."
 
 msgctxt "model:ir.message,text:msg_dict_no"
 msgid "No"
@@ -2710,10 +2747,9 @@ msgctxt "model:ir.message,text:msg_notes"
 msgid "Notes"
 msgstr "Примітки"
 
+#, fuzzy
 msgctxt "model:ir.message,text:msg_read_error"
-msgid ""
-"You are trying to read records \"%(ids)s\" of \"%(model)s\" that don't exist"
-" anymore."
+msgid "You are trying to read records \"%(ids)s\" of \"%(model)s\" that don't exist."
 msgstr ""
 "Ви намагаєтеся прочитати записи \"%(ids)s\" із \"%(model)s\", які більше не "
 "існують."
@@ -2835,6 +2871,10 @@ msgctxt "model:ir.message,text:msg_setter_function_missing"
 msgid "Missing setter function for field \"%(field)s\" in \"%(model)s\"."
 msgstr "Відсутня функція setter для поля \"%(field)s\" в \"%(model)s\"."
 
+msgctxt "model:ir.message,text:msg_singleton"
+msgid "Only one singleton can be created."
+msgstr ""
+
 #, fuzzy
 msgctxt "model:ir.message,text:msg_size_validation"
 msgid ""
@@ -2924,10 +2964,11 @@ msgctxt "model:ir.message,text:msg_view_search_invalid_domain"
 msgid "Invalid domain or search criteria \"%(domain)s\" for search \"%(search)s\"."
 msgstr "Недійсний домен або критерії пошуку \"%(domain)s\" для пошуку \"%(search)s\"."
 
+#, fuzzy
 msgctxt "model:ir.message,text:msg_write_error"
 msgid ""
 "You are trying to write to records \"%(ids)s\" of \"%(model)s\" that don't "
-"exist anymore."
+"exist."
 msgstr ""
 "Ви намагаєтеся записати в записи \"%(ids)s\" із \"%(model)s\", які більше не"
 " існують."
@@ -2940,9 +2981,12 @@ msgstr ""
 "Вам заборонено писати в записи \"%(ids)s\" з \"%(model)s\" через принаймні одне з цих правил:\n"
 "%(rules)s"
 
+#, fuzzy
 msgctxt "model:ir.message,text:msg_write_xml_record"
-msgid "You are not allowed to modify this record."
-msgstr "Вам заборонено змінювати цей запис."
+msgid ""
+"You are not allowed to modify the field \"%(field)s\" in \"%(record)s\" of "
+"\"%(model)s\"."
+msgstr "Потрібно значення для поля \"%(field)s\" в \"%(model)s\"."
 
 msgctxt "model:ir.message,text:msg_xml_id_syntax_error"
 msgid ""
@@ -3051,6 +3095,11 @@ msgstr "Поле моделі"
 msgctxt "model:ir.model.field.access,name:"
 msgid "Model Field Access"
 msgstr "Доступ до поля моделі"
+
+#, fuzzy
+msgctxt "model:ir.model.log,name:"
+msgid "Log"
+msgstr "Лаоська"
 
 msgctxt "model:ir.model.print_model_graph.start,name:"
 msgid "Print Model Graph"
@@ -3280,6 +3329,10 @@ msgctxt "model:ir.ui.menu,name:menu_model_form"
 msgid "Models"
 msgstr "Моделі"
 
+msgctxt "model:ir.ui.menu,name:menu_model_log_form"
+msgid "Logs"
+msgstr ""
+
 msgctxt "model:ir.ui.menu,name:menu_models"
 msgid "Models"
 msgstr "Моделі"
@@ -3408,6 +3461,26 @@ msgctxt "selection:ir.action,records:"
 msgid "Selected"
 msgstr "Вибрані"
 
+#, fuzzy
+msgctxt "selection:ir.action,type:"
+msgid "Report"
+msgstr "Звіт"
+
+#, fuzzy
+msgctxt "selection:ir.action,type:"
+msgid "URL"
+msgstr "URL-адреси"
+
+#, fuzzy
+msgctxt "selection:ir.action,type:"
+msgid "Window"
+msgstr "Вікно"
+
+#, fuzzy
+msgctxt "selection:ir.action,type:"
+msgid "Wizard"
+msgstr "Майстри"
+
 msgctxt "selection:ir.action.act_window,records:"
 msgid "Listed"
 msgstr "Перераховані"
@@ -3415,6 +3488,26 @@ msgstr "Перераховані"
 msgctxt "selection:ir.action.act_window,records:"
 msgid "Selected"
 msgstr "Вибрані"
+
+#, fuzzy
+msgctxt "selection:ir.action.act_window,type:"
+msgid "Report"
+msgstr "Звіт"
+
+#, fuzzy
+msgctxt "selection:ir.action.act_window,type:"
+msgid "URL"
+msgstr "URL-адреси"
+
+#, fuzzy
+msgctxt "selection:ir.action.act_window,type:"
+msgid "Window"
+msgstr "Вікно"
+
+#, fuzzy
+msgctxt "selection:ir.action.act_window,type:"
+msgid "Wizard"
+msgstr "Майстри"
 
 msgctxt "selection:ir.action.keyword,keyword:"
 msgid "Action form"
@@ -3444,6 +3537,26 @@ msgctxt "selection:ir.action.report,records:"
 msgid "Selected"
 msgstr "Вибрані"
 
+#, fuzzy
+msgctxt "selection:ir.action.report,type:"
+msgid "Report"
+msgstr "Звіт"
+
+#, fuzzy
+msgctxt "selection:ir.action.report,type:"
+msgid "URL"
+msgstr "URL-адреси"
+
+#, fuzzy
+msgctxt "selection:ir.action.report,type:"
+msgid "Window"
+msgstr "Вікно"
+
+#, fuzzy
+msgctxt "selection:ir.action.report,type:"
+msgid "Wizard"
+msgstr "Майстри"
+
 msgctxt "selection:ir.action.url,records:"
 msgid "Listed"
 msgstr "Перераховані"
@@ -3452,6 +3565,26 @@ msgctxt "selection:ir.action.url,records:"
 msgid "Selected"
 msgstr "Вибрані"
 
+#, fuzzy
+msgctxt "selection:ir.action.url,type:"
+msgid "Report"
+msgstr "Звіт"
+
+#, fuzzy
+msgctxt "selection:ir.action.url,type:"
+msgid "URL"
+msgstr "URL-адреси"
+
+#, fuzzy
+msgctxt "selection:ir.action.url,type:"
+msgid "Window"
+msgstr "Вікно"
+
+#, fuzzy
+msgctxt "selection:ir.action.url,type:"
+msgid "Wizard"
+msgstr "Майстри"
+
 msgctxt "selection:ir.action.wizard,records:"
 msgid "Listed"
 msgstr "Перераховані"
@@ -3459,6 +3592,26 @@ msgstr "Перераховані"
 msgctxt "selection:ir.action.wizard,records:"
 msgid "Selected"
 msgstr "Вибрані"
+
+#, fuzzy
+msgctxt "selection:ir.action.wizard,type:"
+msgid "Report"
+msgstr "Звіт"
+
+#, fuzzy
+msgctxt "selection:ir.action.wizard,type:"
+msgid "URL"
+msgstr "URL-адреси"
+
+#, fuzzy
+msgctxt "selection:ir.action.wizard,type:"
+msgid "Window"
+msgstr "Вікно"
+
+#, fuzzy
+msgctxt "selection:ir.action.wizard,type:"
+msgid "Wizard"
+msgstr "Майстри"
 
 msgctxt "selection:ir.attachment,type:"
 msgid "Data"
@@ -3527,6 +3680,29 @@ msgstr "Зліва-направо"
 msgctxt "selection:ir.lang,direction:"
 msgid "Right-to-left"
 msgstr "Справа-наліво"
+
+#, fuzzy
+msgctxt "selection:ir.model.log,event:"
+msgid "Clicked on"
+msgstr "Кліки"
+
+#, fuzzy
+msgctxt "selection:ir.model.log,event:"
+msgid "Deleted"
+msgstr "При видаленні"
+
+msgctxt "selection:ir.model.log,event:"
+msgid "Launched"
+msgstr ""
+
+msgctxt "selection:ir.model.log,event:"
+msgid "Modified"
+msgstr ""
+
+#, fuzzy
+msgctxt "selection:ir.model.log,event:"
+msgid "Transitioned to"
+msgstr "Переклад"
 
 msgctxt "selection:ir.module,state:"
 msgid "Activated"
@@ -3739,6 +3915,21 @@ msgstr "Форматування грошей"
 msgctxt "view:ir.lang:"
 msgid "Numbers Formatting"
 msgstr "Форматування чисел"
+
+#, fuzzy
+msgctxt "view:ir.model.log:"
+msgid "Date"
+msgstr "Дата"
+
+#, fuzzy
+msgctxt "view:ir.model.log:"
+msgid "Hour"
+msgstr "Година"
+
+#, fuzzy
+msgctxt "view:ir.model.log:"
+msgid "at"
+msgstr "Сб"
 
 msgctxt "view:ir.module.activate_upgrade.done:"
 msgid "The modules have been upgraded / activated."

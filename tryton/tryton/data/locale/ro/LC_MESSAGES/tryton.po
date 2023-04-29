@@ -15,7 +15,7 @@ msgid "specify the log level: DEBUG, INFO, WARNING, ERROR, CRITICAL"
 msgstr "specificați nivelul jurnalului: DEBUG, INFO, WARNING, ERROR, CRITICAL"
 
 msgid "specify the file used to output logging information"
-msgstr ""
+msgstr "specificare fișier pentru scriere informaţii în jurnal"
 
 msgid "specify the login user"
 msgstr "specificati utilizatorul"
@@ -23,9 +23,8 @@ msgstr "specificati utilizatorul"
 msgid "specify the server hostname:port"
 msgstr "specificați numele gazdă server: port"
 
-#, python-format
-msgid "Unable to write config file %s."
-msgstr "Imposibil de scris fișierul de configurare %s."
+msgid "disable thread usage"
+msgstr "dezactivare utilizarea thread-urilor"
 
 #, python-format
 msgid "Unable to set locale %s"
@@ -61,12 +60,6 @@ msgstr "OK"
 
 msgid "Your selection:"
 msgstr "Selecția dvs.:"
-
-msgid "Select"
-msgstr "Selectați"
-
-msgid "Save"
-msgstr "Salvare"
 
 msgid "Save As..."
 msgstr "Salvare că..."
@@ -130,18 +123,15 @@ msgstr "O nouă versiune este disponibilă!"
 msgid "Download"
 msgstr "Descarca"
 
-#, fuzzy
 msgid "Could not get a session."
-msgstr "Nu s-a putut conecta la server."
+msgstr "Nu s-a putut găsi o sesiune."
 
 msgid "Too many requests. Try again later."
 msgstr "Prea multe cereri. Încercați mai târziu."
 
-#, fuzzy
 msgid "Not found."
-msgstr "Niciun rezultat găsit."
+msgstr "Nimic găsit."
 
-#, fuzzy
 msgid "Not Found."
 msgstr "Niciun rezultat găsit."
 
@@ -198,6 +188,9 @@ msgstr "Șablon"
 
 msgid "Edit..."
 msgstr "Editare..."
+
+msgid "View Logs..."
+msgstr "Vizualizare Jurnale..."
 
 msgid "Attachments..."
 msgstr "Atașamente..."
@@ -310,9 +303,8 @@ msgstr "Verificare versiune"
 msgid "Options"
 msgstr "Opțiuni"
 
-#, fuzzy
 msgid "Documentation..."
-msgstr "Acțiuni..."
+msgstr "Documentație..."
 
 msgid "Keyboard Shortcuts..."
 msgstr "Comenzi rapide..."
@@ -524,10 +516,10 @@ msgid "Username:"
 msgstr "Utilizator:"
 
 msgid "Incompatible version of the server."
-msgstr "Versiunea incompatibilă a serverului."
+msgstr "Versiune incompatibila a serverului."
 
 msgid "Could not connect to the server."
-msgstr "Nu s-a putut conecta la server."
+msgstr "Nu s-a putut efectua conexiunea la server."
 
 msgid "Login"
 msgstr "Autentificare"
@@ -593,6 +585,9 @@ msgstr "Selectare Fişier"
 msgid "Remove File"
 msgstr "Eliminare Fişier"
 
+msgid "Select"
+msgstr "Selectați"
+
 msgid "Add..."
 msgstr "Adăuga..."
 
@@ -615,24 +610,6 @@ msgstr "Notă (%d/%d)"
 
 msgid "You have to select one record."
 msgstr "Trebuie selectaa o singura înregistrare."
-
-msgid "ID:"
-msgstr "ID:"
-
-msgid "Created by:"
-msgstr "Creat de:"
-
-msgid "Created at:"
-msgstr "Creat la:"
-
-msgid "Edited by:"
-msgstr "Editat de:"
-
-msgid "Edited at:"
-msgstr "Editat la:"
-
-msgid "Model:"
-msgstr "Model:"
 
 msgid "Are you sure to remove this record?"
 msgstr "Sigur eliminați această înregistrare?"
@@ -697,6 +674,28 @@ msgstr "Setări limită de căutare"
 
 msgid "Limit:"
 msgstr "Limită:"
+
+#, python-format
+msgid "Logs (%s)"
+msgstr "Jurnale (%s)"
+
+msgid "Model:"
+msgstr "Model:"
+
+msgid "ID:"
+msgstr "ID:"
+
+msgid "Created by:"
+msgstr "Creat de:"
+
+msgid "Created at:"
+msgstr "Creat la:"
+
+msgid "Last Modified by:"
+msgstr "Modificat de:"
+
+msgid "Last Modified at:"
+msgstr "Ultima Modificare la:"
 
 #, python-format
 msgid "Notes (%s)"
@@ -865,6 +864,9 @@ msgstr "Denumire"
 msgid "Open"
 msgstr "Deschidere"
 
+msgid "Save"
+msgstr "Salvare"
+
 msgid "Listed Records"
 msgstr "Înregistrări enumerate"
 
@@ -885,9 +887,9 @@ msgstr "%s (string)"
 msgid "%s (model name)"
 msgstr "%s (model name)"
 
-#, fuzzy, python-format
+#, python-format
 msgid "%s/Record Name"
-msgstr "%s (denmire inregistrare)"
+msgstr "%s/Denumire Înregistrare"
 
 msgid "What is the name of this export?"
 msgstr "Care este numele acestui export?"
@@ -954,7 +956,7 @@ msgid "You must select an import file first."
 msgstr "Mai întâi trebuie să selectați un fișier de import."
 
 msgid "Detection failed"
-msgstr "Detectarea a eșuat"
+msgstr "Detecție eșuată"
 
 #, python-format
 msgid "Error processing the file at field %s."
@@ -1086,17 +1088,14 @@ msgstr "anul precedent"
 msgid "next year"
 msgstr "anul urmator"
 
-msgid "Day View"
-msgstr "Visualizare zi"
-
-msgid "Week View"
-msgstr "Visualizare saptamana"
-
-msgid "Month View"
-msgstr "Vizualizare lunară"
+msgid "Day"
+msgstr "Zi"
 
 msgid "Week"
 msgstr "Săptămână"
+
+msgid "Month"
+msgstr "Lună"
 
 msgid "Select..."
 msgstr "Selectare..."
@@ -1162,6 +1161,9 @@ msgstr "Trebuie să salvați înregistrarea înainte de a adăuga traduceri."
 
 msgid "No other language available."
 msgstr "Nu există altă limbă disponibilă."
+
+msgid "#ERROR"
+msgstr "#EROARE"
 
 msgid "Translate view"
 msgstr "Traducere vedere"

@@ -27,9 +27,8 @@ msgstr "zadejte uživatelské jméno"
 msgid "specify the server hostname:port"
 msgstr "zadejte název hostitele pro server"
 
-#, fuzzy, python-format
-msgid "Unable to write config file %s."
-msgstr "Nelze zapsat konfigurační soubor %s!"
+msgid "disable thread usage"
+msgstr ""
 
 #, python-format
 msgid "Unable to set locale %s"
@@ -68,13 +67,6 @@ msgstr ""
 
 msgid "Your selection:"
 msgstr "Váš výběr:"
-
-msgid "Select"
-msgstr ""
-
-#, fuzzy
-msgid "Save"
-msgstr "_Uložit"
 
 msgid "Save As..."
 msgstr "Uložit jako..."
@@ -211,6 +203,10 @@ msgstr "_Vytvořit"
 #, fuzzy
 msgid "Edit..."
 msgstr "Konec..."
+
+#, fuzzy
+msgid "View Logs..."
+msgstr "Zobrazit záznamy..."
 
 #, fuzzy
 msgid "Attachments..."
@@ -635,6 +631,9 @@ msgstr "Výběr"
 msgid "Remove File"
 msgstr "_Odstranit"
 
+msgid "Select"
+msgstr ""
+
 msgid "Add..."
 msgstr ""
 
@@ -659,27 +658,6 @@ msgstr ""
 #, fuzzy
 msgid "You have to select one record."
 msgstr "Musíte vybrat právě jeden záznam!"
-
-msgid "ID:"
-msgstr "ID:"
-
-#, fuzzy
-msgid "Created by:"
-msgstr "Datum vytvoření:"
-
-#, fuzzy
-msgid "Created at:"
-msgstr "Datum vytvoření:"
-
-msgid "Edited by:"
-msgstr ""
-
-#, fuzzy
-msgid "Edited at:"
-msgstr "Datum vytvoření:"
-
-msgid "Model:"
-msgstr "Model:"
 
 msgid "Are you sure to remove this record?"
 msgstr "Opravdu chcete odstranit tento záznam?"
@@ -755,6 +733,32 @@ msgstr ""
 #, fuzzy
 msgid "Limit:"
 msgstr "Omezit:"
+
+#, python-format
+msgid "Logs (%s)"
+msgstr ""
+
+msgid "Model:"
+msgstr "Model:"
+
+msgid "ID:"
+msgstr "ID:"
+
+#, fuzzy
+msgid "Created by:"
+msgstr "Datum vytvoření:"
+
+#, fuzzy
+msgid "Created at:"
+msgstr "Datum vytvoření:"
+
+#, fuzzy
+msgid "Last Modified by:"
+msgstr "Poslední úpravu provedl:"
+
+#, fuzzy
+msgid "Last Modified at:"
+msgstr "Datum poslední úpravy:"
 
 #, python-format
 msgid "Notes (%s)"
@@ -937,6 +941,10 @@ msgstr ""
 
 msgid "Open"
 msgstr "Otevřít"
+
+#, fuzzy
+msgid "Save"
+msgstr "_Uložit"
 
 #, fuzzy
 msgid "Listed Records"
@@ -1173,19 +1181,15 @@ msgstr ""
 msgid "next year"
 msgstr ""
 
-msgid "Day View"
+msgid "Day"
 msgstr ""
-
-#, fuzzy
-msgid "Week View"
-msgstr "Přepnout pohled"
-
-#, fuzzy
-msgid "Month View"
-msgstr "Přepnout pohled"
 
 msgid "Week"
 msgstr ""
+
+#, fuzzy
+msgid "Month"
+msgstr "Přepnout pohled"
 
 msgid "Select..."
 msgstr ""
@@ -1260,6 +1264,9 @@ msgstr "Musíte uložit záznam před přidáváním překladů!"
 #, fuzzy
 msgid "No other language available."
 msgstr "Jiný jazyk není k dispozici!"
+
+msgid "#ERROR"
+msgstr ""
 
 msgid "Translate view"
 msgstr "Přeložit pohled"

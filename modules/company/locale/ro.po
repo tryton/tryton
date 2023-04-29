@@ -166,7 +166,6 @@ msgctxt "help:ir.cron,companies:"
 msgid "Companies registered for this cron."
 msgstr "Companii înregistrate pentru acest cron."
 
-#, fuzzy
 msgctxt "help:ir.rule,domain:"
 msgid ""
 "\n"
@@ -175,7 +174,9 @@ msgid ""
 "- \"companies\" as list of ids from the current user"
 msgstr ""
 "\n"
-"- \"angajatul\" de la utilizatorul curent"
+"- \"angajatul\" de la utilizatorul curent\n"
+"- \"angajați\" ca lista de ID-uri de la utilizatorul curent\n"
+"- \"companii\" ca lista de ID-uri de la utilizatorul curent"
 
 msgctxt "help:ir.sequence,company:"
 msgid "Restricts the sequence usage to the company."
@@ -249,7 +250,6 @@ msgctxt "model:ir.rule.group,name:rule_group_sequence_strict_companies"
 msgid "User in companies"
 msgstr "Utilizator în companii"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_company"
 msgid "Companies"
 msgstr "Companii"

@@ -49,4 +49,4 @@ msgstr ""
 
 msgctxt "view:party.party:"
 msgid "Shipments"
-msgstr ""
+msgstr "Expedieri"

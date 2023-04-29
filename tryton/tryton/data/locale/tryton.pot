@@ -19,8 +19,7 @@ msgstr ""
 msgid "specify the server hostname:port"
 msgstr ""
 
-#, python-format
-msgid "Unable to write config file %s."
+msgid "disable thread usage"
 msgstr ""
 
 #, python-format
@@ -56,12 +55,6 @@ msgid "OK"
 msgstr ""
 
 msgid "Your selection:"
-msgstr ""
-
-msgid "Select"
-msgstr ""
-
-msgid "Save"
 msgstr ""
 
 msgid "Save As..."
@@ -190,6 +183,9 @@ msgid "Template"
 msgstr ""
 
 msgid "Edit..."
+msgstr ""
+
+msgid "View Logs..."
 msgstr ""
 
 msgid "Attachments..."
@@ -583,6 +579,9 @@ msgstr ""
 msgid "Remove File"
 msgstr ""
 
+msgid "Select"
+msgstr ""
+
 msgid "Add..."
 msgstr ""
 
@@ -604,24 +603,6 @@ msgid "Note (%d/%d)"
 msgstr ""
 
 msgid "You have to select one record."
-msgstr ""
-
-msgid "ID:"
-msgstr ""
-
-msgid "Created by:"
-msgstr ""
-
-msgid "Created at:"
-msgstr ""
-
-msgid "Edited by:"
-msgstr ""
-
-msgid "Edited at:"
-msgstr ""
-
-msgid "Model:"
 msgstr ""
 
 msgid "Are you sure to remove this record?"
@@ -684,6 +665,28 @@ msgid "Search Limit Settings"
 msgstr ""
 
 msgid "Limit:"
+msgstr ""
+
+#, python-format
+msgid "Logs (%s)"
+msgstr ""
+
+msgid "Model:"
+msgstr ""
+
+msgid "ID:"
+msgstr ""
+
+msgid "Created by:"
+msgstr ""
+
+msgid "Created at:"
+msgstr ""
+
+msgid "Last Modified by:"
+msgstr ""
+
+msgid "Last Modified at:"
 msgstr ""
 
 #, python-format
@@ -851,6 +854,9 @@ msgid "Name"
 msgstr ""
 
 msgid "Open"
+msgstr ""
+
+msgid "Save"
 msgstr ""
 
 msgid "Listed Records"
@@ -1074,16 +1080,13 @@ msgstr ""
 msgid "next year"
 msgstr ""
 
-msgid "Day View"
-msgstr ""
-
-msgid "Week View"
-msgstr ""
-
-msgid "Month View"
+msgid "Day"
 msgstr ""
 
 msgid "Week"
+msgstr ""
+
+msgid "Month"
 msgstr ""
 
 msgid "Select..."
@@ -1149,6 +1152,9 @@ msgid "You need to save the record before adding translations."
 msgstr ""
 
 msgid "No other language available."
+msgstr ""
+
+msgid "#ERROR"
 msgstr ""
 
 msgid "Translate view"

@@ -140,6 +140,11 @@ msgctxt "field:ir.action.act_window.view,act_window:"
 msgid "Action"
 msgstr "Akcja"
 
+#, fuzzy
+msgctxt "field:ir.action.act_window.view,model:"
+msgid "Model"
+msgstr "Model"
+
 msgctxt "field:ir.action.act_window.view,view:"
 msgid "View"
 msgstr "Widok"
@@ -976,6 +981,29 @@ msgstr "Odczyt"
 msgctxt "field:ir.model.field.access,perm_write:"
 msgid "Write Access"
 msgstr "Zapis"
+
+#, fuzzy
+msgctxt "field:ir.model.log,action:"
+msgid "Action"
+msgstr "Akcja"
+
+msgctxt "field:ir.model.log,event:"
+msgid "Event"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:ir.model.log,resource:"
+msgid "Resource"
+msgstr "Zasób"
+
+msgctxt "field:ir.model.log,target:"
+msgid "Target"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:ir.model.log,user:"
+msgid "User"
+msgstr "Użytkownik"
 
 msgctxt "field:ir.model.print_model_graph.start,filter:"
 msgid "Filter"
@@ -1896,6 +1924,10 @@ msgctxt "model:ir.action,name:act_model_form"
 msgid "Models"
 msgstr "Modele"
 
+msgctxt "model:ir.action,name:act_model_log_form"
+msgid "Logs"
+msgstr ""
+
 msgctxt "model:ir.action,name:act_module_activate_upgrade"
 msgid "Perform Pending Activation/Upgrade"
 msgstr "Wykonaj aktywację/aktualizację"
@@ -2379,6 +2411,10 @@ msgctxt "model:ir.lang,name:lang_tr"
 msgid "Turkish"
 msgstr "Turecki"
 
+msgctxt "model:ir.lang,name:lang_uk"
+msgid "Ukrainian"
+msgstr ""
+
 msgctxt "model:ir.lang,name:lang_zh_CN"
 msgid "Chinese Simplified"
 msgstr "Chiński uproszczony"
@@ -2504,9 +2540,12 @@ msgstr ""
 "Nie masz uprawnień do usunięcia rekordów \"%(ids)s\" z modelu \"%(model)s\" z powodu niezgodności przynajmniej jednej z reguł:\n"
 "%(rules)s"
 
+#, fuzzy
 msgctxt "model:ir.message,text:msg_delete_xml_record"
-msgid "You are not allowed to delete this record."
-msgstr "Nie masz uprawnień do usunięcia tego rekordu."
+msgid "You are not allowed to delete the record \"%(record)s\" of \"%(model)s\"."
+msgstr ""
+"Nie masz uprawnień do uruchomienia kreatora \"%(wizard)s\" w modelu "
+"\"%(model)s\"."
 
 #, fuzzy
 msgctxt "model:ir.message,text:msg_dict_no"
@@ -2759,10 +2798,9 @@ msgctxt "model:ir.message,text:msg_notes"
 msgid "Notes"
 msgstr "Notatki"
 
+#, fuzzy
 msgctxt "model:ir.message,text:msg_read_error"
-msgid ""
-"You are trying to read records \"%(ids)s\" of \"%(model)s\" that don't exist"
-" anymore."
+msgid "You are trying to read records \"%(ids)s\" of \"%(model)s\" that don't exist."
 msgstr ""
 "Próbujesz odczytać rekordy \"%(ids)s\" modelu \"%(model)s\", które już nie "
 "istnieją."
@@ -2884,6 +2922,10 @@ msgctxt "model:ir.message,text:msg_setter_function_missing"
 msgid "Missing setter function for field \"%(field)s\" in \"%(model)s\"."
 msgstr "Brakująca funkcja setter dla pola \"%(field)s\" w \"%(model)s\"."
 
+msgctxt "model:ir.message,text:msg_singleton"
+msgid "Only one singleton can be created."
+msgstr ""
+
 #, fuzzy
 msgctxt "model:ir.message,text:msg_size_validation"
 msgid ""
@@ -2978,10 +3020,11 @@ msgstr ""
 "Nieprawidłowa domena lub kryteria wyszukiwania \"%(domain)s\" dla akcji "
 "\"%(action)s\"."
 
+#, fuzzy
 msgctxt "model:ir.message,text:msg_write_error"
 msgid ""
 "You are trying to write to records \"%(ids)s\" of \"%(model)s\" that don't "
-"exist anymore."
+"exist."
 msgstr ""
 "Próbujesz zapisać rekordy \"%(ids)s\" z modelu \"%(model)s\", które już nie "
 "istnieją."
@@ -2994,9 +3037,12 @@ msgstr ""
 "Nie masz uprawnień do zapisu rekordów \"%(ids)s\" modelu \"%(model)s\" z powodu przynajmniej jednego z reguł:\n"
 "%(rules)s"
 
+#, fuzzy
 msgctxt "model:ir.message,text:msg_write_xml_record"
-msgid "You are not allowed to modify this record."
-msgstr "Nie masz uprawnień do modyfikacji tego rekordu."
+msgid ""
+"You are not allowed to modify the field \"%(field)s\" in \"%(record)s\" of "
+"\"%(model)s\"."
+msgstr "W polu \"%(fields)s\" w modelu \"%(model)s\" wymagana jest wartość."
 
 #, fuzzy
 msgctxt "model:ir.message,text:msg_xml_id_syntax_error"
@@ -3106,6 +3152,11 @@ msgstr "Pole modelu"
 msgctxt "model:ir.model.field.access,name:"
 msgid "Model Field Access"
 msgstr "Dostęp do pola modelu"
+
+#, fuzzy
+msgctxt "model:ir.model.log,name:"
+msgid "Log"
+msgstr "Laotański"
 
 msgctxt "model:ir.model.print_model_graph.start,name:"
 msgid "Print Model Graph"
@@ -3340,6 +3391,10 @@ msgctxt "model:ir.ui.menu,name:menu_model_form"
 msgid "Models"
 msgstr "Modele"
 
+msgctxt "model:ir.ui.menu,name:menu_model_log_form"
+msgid "Logs"
+msgstr ""
+
 msgctxt "model:ir.ui.menu,name:menu_models"
 msgid "Models"
 msgstr "Modele"
@@ -3471,6 +3526,26 @@ msgctxt "selection:ir.action,records:"
 msgid "Selected"
 msgstr "Zaznaczone węzły"
 
+#, fuzzy
+msgctxt "selection:ir.action,type:"
+msgid "Report"
+msgstr "Raport"
+
+#, fuzzy
+msgctxt "selection:ir.action,type:"
+msgid "URL"
+msgstr "Adresy URL"
+
+#, fuzzy
+msgctxt "selection:ir.action,type:"
+msgid "Window"
+msgstr "Okno"
+
+#, fuzzy
+msgctxt "selection:ir.action,type:"
+msgid "Wizard"
+msgstr "Kreatory"
+
 msgctxt "selection:ir.action.act_window,records:"
 msgid "Listed"
 msgstr ""
@@ -3479,6 +3554,26 @@ msgstr ""
 msgctxt "selection:ir.action.act_window,records:"
 msgid "Selected"
 msgstr "Zaznaczone węzły"
+
+#, fuzzy
+msgctxt "selection:ir.action.act_window,type:"
+msgid "Report"
+msgstr "Raport"
+
+#, fuzzy
+msgctxt "selection:ir.action.act_window,type:"
+msgid "URL"
+msgstr "Adresy URL"
+
+#, fuzzy
+msgctxt "selection:ir.action.act_window,type:"
+msgid "Window"
+msgstr "Okno"
+
+#, fuzzy
+msgctxt "selection:ir.action.act_window,type:"
+msgid "Wizard"
+msgstr "Kreatory"
 
 msgctxt "selection:ir.action.keyword,keyword:"
 msgid "Action form"
@@ -3509,6 +3604,26 @@ msgctxt "selection:ir.action.report,records:"
 msgid "Selected"
 msgstr "Zaznaczone węzły"
 
+#, fuzzy
+msgctxt "selection:ir.action.report,type:"
+msgid "Report"
+msgstr "Raport"
+
+#, fuzzy
+msgctxt "selection:ir.action.report,type:"
+msgid "URL"
+msgstr "Adresy URL"
+
+#, fuzzy
+msgctxt "selection:ir.action.report,type:"
+msgid "Window"
+msgstr "Okno"
+
+#, fuzzy
+msgctxt "selection:ir.action.report,type:"
+msgid "Wizard"
+msgstr "Kreatory"
+
 msgctxt "selection:ir.action.url,records:"
 msgid "Listed"
 msgstr ""
@@ -3518,6 +3633,26 @@ msgctxt "selection:ir.action.url,records:"
 msgid "Selected"
 msgstr "Zaznaczone węzły"
 
+#, fuzzy
+msgctxt "selection:ir.action.url,type:"
+msgid "Report"
+msgstr "Raport"
+
+#, fuzzy
+msgctxt "selection:ir.action.url,type:"
+msgid "URL"
+msgstr "Adresy URL"
+
+#, fuzzy
+msgctxt "selection:ir.action.url,type:"
+msgid "Window"
+msgstr "Okno"
+
+#, fuzzy
+msgctxt "selection:ir.action.url,type:"
+msgid "Wizard"
+msgstr "Kreatory"
+
 msgctxt "selection:ir.action.wizard,records:"
 msgid "Listed"
 msgstr ""
@@ -3526,6 +3661,26 @@ msgstr ""
 msgctxt "selection:ir.action.wizard,records:"
 msgid "Selected"
 msgstr "Zaznaczone węzły"
+
+#, fuzzy
+msgctxt "selection:ir.action.wizard,type:"
+msgid "Report"
+msgstr "Raport"
+
+#, fuzzy
+msgctxt "selection:ir.action.wizard,type:"
+msgid "URL"
+msgstr "Adresy URL"
+
+#, fuzzy
+msgctxt "selection:ir.action.wizard,type:"
+msgid "Window"
+msgstr "Okno"
+
+#, fuzzy
+msgctxt "selection:ir.action.wizard,type:"
+msgid "Wizard"
+msgstr "Kreatory"
 
 msgctxt "selection:ir.attachment,type:"
 msgid "Data"
@@ -3596,6 +3751,29 @@ msgstr "Od lewej do prawej"
 msgctxt "selection:ir.lang,direction:"
 msgid "Right-to-left"
 msgstr "Od prawej do lewej"
+
+#, fuzzy
+msgctxt "selection:ir.model.log,event:"
+msgid "Clicked on"
+msgstr "Kliknięcia"
+
+#, fuzzy
+msgctxt "selection:ir.model.log,event:"
+msgid "Deleted"
+msgstr "Przy usunięciu"
+
+msgctxt "selection:ir.model.log,event:"
+msgid "Launched"
+msgstr ""
+
+msgctxt "selection:ir.model.log,event:"
+msgid "Modified"
+msgstr ""
+
+#, fuzzy
+msgctxt "selection:ir.model.log,event:"
+msgid "Transitioned to"
+msgstr "Tłumaczenie"
 
 msgctxt "selection:ir.module,state:"
 msgid "Activated"
@@ -3811,6 +3989,21 @@ msgstr "Formatowanie pieniężne"
 msgctxt "view:ir.lang:"
 msgid "Numbers Formatting"
 msgstr "Formatowanie liczb"
+
+#, fuzzy
+msgctxt "view:ir.model.log:"
+msgid "Date"
+msgstr "Data"
+
+#, fuzzy
+msgctxt "view:ir.model.log:"
+msgid "Hour"
+msgstr "Godzina"
+
+#, fuzzy
+msgctxt "view:ir.model.log:"
+msgid "at"
+msgstr "Sob"
 
 msgctxt "view:ir.module.activate_upgrade.done:"
 msgid "The modules have been upgraded / activated."

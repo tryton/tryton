@@ -63,7 +63,7 @@ msgid "Date"
 msgstr ""
 
 msgctxt "field:account.consolidation.balance_sheet.context,posted:"
-msgid "Posted Move"
+msgid "Posted Moves"
 msgstr ""
 
 msgctxt "field:account.consolidation.income_statement.context,companies:"
@@ -87,7 +87,7 @@ msgid "From Date"
 msgstr ""
 
 msgctxt "field:account.consolidation.income_statement.context,posted:"
-msgid "Posted Move"
+msgid "Posted Moves"
 msgstr ""
 
 msgctxt "field:account.consolidation.income_statement.context,to_date:"

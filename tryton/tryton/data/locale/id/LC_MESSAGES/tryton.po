@@ -23,9 +23,8 @@ msgstr "tentukan user login"
 msgid "specify the server hostname:port"
 msgstr "tentukan nama host server:port"
 
-#, python-format
-msgid "Unable to write config file %s."
-msgstr "Tidak dapat menulis file konfigurasi %s."
+msgid "disable thread usage"
+msgstr ""
 
 #, python-format
 msgid "Unable to set locale %s"
@@ -61,12 +60,6 @@ msgstr "OK"
 
 msgid "Your selection:"
 msgstr "Pilihan Anda:"
-
-msgid "Select"
-msgstr "Pilih"
-
-msgid "Save"
-msgstr "Simpan"
 
 msgid "Save As..."
 msgstr "Simpan Sebagai..."
@@ -196,6 +189,9 @@ msgstr "Templat"
 
 msgid "Edit..."
 msgstr "Sunting..."
+
+msgid "View Logs..."
+msgstr ""
 
 msgid "Attachments..."
 msgstr ""
@@ -590,6 +586,9 @@ msgstr "Pilih Berkas"
 msgid "Remove File"
 msgstr "Hapus Berkas"
 
+msgid "Select"
+msgstr "Pilih"
+
 msgid "Add..."
 msgstr ""
 
@@ -612,24 +611,6 @@ msgstr "Catatan (%d/%d)"
 
 msgid "You have to select one record."
 msgstr ""
-
-msgid "ID:"
-msgstr "ID:"
-
-msgid "Created by:"
-msgstr "Dibuat oleh:"
-
-msgid "Created at:"
-msgstr "Dibuat pada:"
-
-msgid "Edited by:"
-msgstr "Disunting oleh:"
-
-msgid "Edited at:"
-msgstr "Disunting pada:"
-
-msgid "Model:"
-msgstr "Model:"
 
 msgid "Are you sure to remove this record?"
 msgstr ""
@@ -691,6 +672,28 @@ msgid "Search Limit Settings"
 msgstr ""
 
 msgid "Limit:"
+msgstr ""
+
+#, python-format
+msgid "Logs (%s)"
+msgstr "Log (%s)"
+
+msgid "Model:"
+msgstr "Model:"
+
+msgid "ID:"
+msgstr "ID:"
+
+msgid "Created by:"
+msgstr "Dibuat oleh:"
+
+msgid "Created at:"
+msgstr "Dibuat pada:"
+
+msgid "Last Modified by:"
+msgstr ""
+
+msgid "Last Modified at:"
 msgstr ""
 
 #, python-format
@@ -859,6 +862,9 @@ msgstr "Nama"
 
 msgid "Open"
 msgstr "Buka"
+
+msgid "Save"
+msgstr "Simpan"
 
 msgid "Listed Records"
 msgstr ""
@@ -1082,17 +1088,14 @@ msgstr "tahun sebelumnya"
 msgid "next year"
 msgstr "tahun berikutnya"
 
-msgid "Day View"
-msgstr ""
-
-msgid "Week View"
-msgstr ""
-
-msgid "Month View"
+msgid "Day"
 msgstr ""
 
 msgid "Week"
 msgstr "Pekan"
+
+msgid "Month"
+msgstr ""
 
 msgid "Select..."
 msgstr "Pilih..."
@@ -1158,6 +1161,9 @@ msgstr ""
 
 msgid "No other language available."
 msgstr "Tidak ada bahasa lain yang tersedia."
+
+msgid "#ERROR"
+msgstr ""
 
 msgid "Translate view"
 msgstr ""

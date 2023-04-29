@@ -58,7 +58,6 @@ msgctxt "field:ir.export-write-res.group,group:"
 msgid "Group"
 msgstr "Grup"
 
-#, fuzzy
 msgctxt "field:ir.model.button,groups:"
 msgid "Groups"
 msgstr "Grupuri"
@@ -79,7 +78,6 @@ msgctxt "field:ir.model.button.rule,group:"
 msgid "Group"
 msgstr "Grup"
 
-#, fuzzy
 msgctxt "field:ir.rule.group,groups:"
 msgid "Groups"
 msgstr "Grupuri"
@@ -104,7 +102,6 @@ msgctxt "field:ir.sequence.type-res.group,sequence_type:"
 msgid "Sequence Type"
 msgstr "Tip de secvență"
 
-#, fuzzy
 msgctxt "field:ir.ui.menu,groups:"
 msgid "Groups"
 msgstr "Grupuri"
@@ -394,26 +391,6 @@ msgid "Model Button - Group"
 msgstr "Buton Model - Grup"
 
 msgctxt "model:ir.rule.group,name:rule_group_action"
-msgid "User in groups"
-msgstr "Utilizator în grupuri"
-
-msgctxt "model:ir.rule.group,name:rule_group_action_act_window"
-msgid "User in groups"
-msgstr "Utilizator în grupuri"
-
-msgctxt "model:ir.rule.group,name:rule_group_action_keyword"
-msgid "User in groups"
-msgstr "Utilizator în grupuri"
-
-msgctxt "model:ir.rule.group,name:rule_group_action_report"
-msgid "User in groups"
-msgstr "Utilizator în grupuri"
-
-msgctxt "model:ir.rule.group,name:rule_group_action_url"
-msgid "User in groups"
-msgstr "Utilizator în grupuri"
-
-msgctxt "model:ir.rule.group,name:rule_group_action_wizard"
 msgid "User in groups"
 msgstr "Utilizator în grupuri"
 

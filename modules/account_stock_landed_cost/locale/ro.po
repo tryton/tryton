@@ -53,7 +53,7 @@ msgstr ""
 
 msgctxt "field:account.landed_cost,shipments:"
 msgid "Shipments"
-msgstr ""
+msgstr "Expedieri"
 
 msgctxt "field:account.landed_cost,state:"
 msgid "State"

@@ -26,9 +26,8 @@ msgstr "设置登录用户"
 msgid "specify the server hostname:port"
 msgstr "设置服务器主机名:端口号"
 
-#, python-format
-msgid "Unable to write config file %s."
-msgstr "无法写入配置文件 %s."
+msgid "disable thread usage"
+msgstr ""
 
 #, python-format
 msgid "Unable to set locale %s"
@@ -64,12 +63,6 @@ msgstr "确定"
 
 msgid "Your selection:"
 msgstr "已选择:"
-
-msgid "Select"
-msgstr "选择"
-
-msgid "Save"
-msgstr "保存"
 
 msgid "Save As..."
 msgstr "另存为..."
@@ -201,6 +194,10 @@ msgstr "模板"
 
 msgid "Edit..."
 msgstr "编辑..."
+
+#, fuzzy
+msgid "View Logs..."
+msgstr "日志(_V)..."
 
 msgid "Attachments..."
 msgstr "附件..."
@@ -598,6 +595,9 @@ msgstr "全选"
 msgid "Remove File"
 msgstr "删除 <Del>"
 
+msgid "Select"
+msgstr "选择"
+
 msgid "Add..."
 msgstr "添加..."
 
@@ -621,24 +621,6 @@ msgstr "批注 (%d/%d)"
 
 msgid "You have to select one record."
 msgstr "需要选择一条记录."
-
-msgid "ID:"
-msgstr "标识:"
-
-msgid "Created by:"
-msgstr "创建者:"
-
-msgid "Created at:"
-msgstr "创建日期:"
-
-msgid "Edited by:"
-msgstr "编辑者:"
-
-msgid "Edited at:"
-msgstr "编辑于:"
-
-msgid "Model:"
-msgstr "模型:"
 
 msgid "Are you sure to remove this record?"
 msgstr "确定要删除这条记录吗？"
@@ -703,6 +685,30 @@ msgstr "设置查询限制"
 
 msgid "Limit:"
 msgstr "限制:"
+
+#, python-format
+msgid "Logs (%s)"
+msgstr "日志（%s）"
+
+msgid "Model:"
+msgstr "模型:"
+
+msgid "ID:"
+msgstr "标识:"
+
+msgid "Created by:"
+msgstr "创建者:"
+
+msgid "Created at:"
+msgstr "创建日期:"
+
+#, fuzzy
+msgid "Last Modified by:"
+msgstr "最近更改:"
+
+#, fuzzy
+msgid "Last Modified at:"
+msgstr "最近更改日期:"
 
 #, python-format
 msgid "Notes (%s)"
@@ -870,6 +876,9 @@ msgstr "名称"
 
 msgid "Open"
 msgstr "打开"
+
+msgid "Save"
+msgstr "保存"
 
 msgid "Listed Records"
 msgstr "已列出记录"
@@ -1093,17 +1102,15 @@ msgstr "上一年度"
 msgid "next year"
 msgstr "下一年度"
 
-msgid "Day View"
-msgstr "日视图"
-
-msgid "Week View"
-msgstr "周视图"
-
-msgid "Month View"
-msgstr "月视图"
+msgid "Day"
+msgstr ""
 
 msgid "Week"
 msgstr "周"
+
+#, fuzzy
+msgid "Month"
+msgstr "月视图"
 
 msgid "Select..."
 msgstr "选择..."
@@ -1169,6 +1176,9 @@ msgstr "请先保存已翻译条目，然后再增加新翻译 ."
 
 msgid "No other language available."
 msgstr "没有其他可翻译语言."
+
+msgid "#ERROR"
+msgstr ""
 
 msgid "Translate view"
 msgstr "翻译视图"

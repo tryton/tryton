@@ -6,36 +6,6 @@ msgctxt "field:carrier,shipping_service:"
 msgid "Shipping Service"
 msgstr ""
 
-#, fuzzy
-msgctxt "field:stock.package,height:"
-msgid "Height"
-msgstr "Magasság"
-
-#, fuzzy
-msgctxt "field:stock.package,height_digits:"
-msgid "Height Digits"
-msgstr "Vessző utáni magasság"
-
-#, fuzzy
-msgctxt "field:stock.package,height_uom:"
-msgid "Height Unit"
-msgstr "Vessző utáni magasság"
-
-#, fuzzy
-msgctxt "field:stock.package,length:"
-msgid "Length"
-msgstr "Hossz"
-
-#, fuzzy
-msgctxt "field:stock.package,length_digits:"
-msgid "Length Digits"
-msgstr "Vessző utáni hossz"
-
-#, fuzzy
-msgctxt "field:stock.package,length_uom:"
-msgid "Length Unit"
-msgstr "Vessző utáni hossz"
-
 msgctxt "field:stock.package,shipping_label:"
 msgid "Shipping Label"
 msgstr ""
@@ -56,63 +26,6 @@ msgstr ""
 
 msgctxt "field:stock.package,shipping_tracking_url:"
 msgid "Shipping Tracking URL"
-msgstr ""
-
-#, fuzzy
-msgctxt "field:stock.package,width:"
-msgid "Width"
-msgstr "Szélesség"
-
-#, fuzzy
-msgctxt "field:stock.package,width_digits:"
-msgid "Width Digits"
-msgstr "Vessző utáni tömeg"
-
-#, fuzzy
-msgctxt "field:stock.package,width_uom:"
-msgid "Width Unit"
-msgstr "Vessző utáni tömeg"
-
-#, fuzzy
-msgctxt "field:stock.package.type,height:"
-msgid "Height"
-msgstr "Magasság"
-
-#, fuzzy
-msgctxt "field:stock.package.type,height_digits:"
-msgid "Height Digits"
-msgstr "Vessző utáni magasság"
-
-msgctxt "field:stock.package.type,height_uom:"
-msgid "Height Unit"
-msgstr ""
-
-#, fuzzy
-msgctxt "field:stock.package.type,length:"
-msgid "Length"
-msgstr "Hossz"
-
-#, fuzzy
-msgctxt "field:stock.package.type,length_digits:"
-msgid "Length Digits"
-msgstr "Vessző utáni hossz"
-
-msgctxt "field:stock.package.type,length_uom:"
-msgid "Length Unit"
-msgstr ""
-
-#, fuzzy
-msgctxt "field:stock.package.type,width:"
-msgid "Width"
-msgstr "Szélesség"
-
-#, fuzzy
-msgctxt "field:stock.package.type,width_digits:"
-msgid "Width Digits"
-msgstr "Vessző utáni tömeg"
-
-msgctxt "field:stock.package.type,width_uom:"
-msgid "Width Unit"
 msgstr ""
 
 msgctxt "field:stock.shipment.in.return,carrier:"

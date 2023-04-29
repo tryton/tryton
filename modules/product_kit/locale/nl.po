@@ -62,21 +62,21 @@ msgctxt "field:purchase.line.component,line:"
 msgid "Line"
 msgstr "Regel"
 
-msgctxt "field:purchase.line.component,move_done:"
-msgid "Moves Done"
-msgstr "Mutaties gereed"
-
-msgctxt "field:purchase.line.component,move_exception:"
-msgid "Moves Exception"
-msgstr "Mutaties uitzondering"
-
 msgctxt "field:purchase.line.component,moves:"
 msgid "Moves"
-msgstr "beweging"
+msgstr "Mutaties"
+
+msgctxt "field:purchase.line.component,moves_exception:"
+msgid "Moves Exception"
+msgstr "Mutaties Uitzondering"
 
 msgctxt "field:purchase.line.component,moves_ignored:"
 msgid "Ignored Moves"
-msgstr "Genegeerde mutaties"
+msgstr "Genegeerde Mutaties"
+
+msgctxt "field:purchase.line.component,moves_progress:"
+msgid "Moves Progress"
+msgstr "Mutaties Voortgang"
 
 msgctxt "field:purchase.line.component,moves_recreated:"
 msgid "Recreated Moves"
@@ -146,21 +146,21 @@ msgctxt "field:sale.line.component,line:"
 msgid "Line"
 msgstr "Regels"
 
-msgctxt "field:sale.line.component,move_done:"
-msgid "Moves Done"
-msgstr "Mutaties gereed"
-
-msgctxt "field:sale.line.component,move_exception:"
-msgid "Moves Exception"
-msgstr "Mutaties uitzondering"
-
 msgctxt "field:sale.line.component,moves:"
 msgid "Moves"
 msgstr "Mutaties"
 
+msgctxt "field:sale.line.component,moves_exception:"
+msgid "Moves Exception"
+msgstr "Mutaties Uitzondering"
+
 msgctxt "field:sale.line.component,moves_ignored:"
 msgid "Ignored Moves"
 msgstr "Genegeerde mutaties"
+
+msgctxt "field:sale.line.component,moves_progress:"
+msgid "Moves Progress"
+msgstr "Mutaties Voortgang"
 
 msgctxt "field:sale.line.component,moves_recreated:"
 msgid "Recreated Moves"

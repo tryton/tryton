@@ -74,6 +74,10 @@ msgctxt "field:product.product,lead_time:"
 msgid "Lead Time"
 msgstr "Tiempo de espera"
 
+msgctxt "field:product.product,lead_times:"
+msgid "Lead Times"
+msgstr "Tiempos de espera"
+
 msgctxt "field:product.product,salable:"
 msgid "Salable"
 msgstr "Vendible"
@@ -117,6 +121,10 @@ msgstr "Fecha final existencias"
 msgctxt "field:product.template,lead_time:"
 msgid "Lead Time"
 msgstr "Tiempo de espera"
+
+msgctxt "field:product.template,lead_times:"
+msgid "Lead Times"
+msgstr "Tiempos de espera"
 
 msgctxt "field:product.template,salable:"
 msgid "Salable"
@@ -190,6 +198,10 @@ msgctxt "field:sale.line,currency:"
 msgid "Currency"
 msgstr "Moneda"
 
+msgctxt "field:sale.line,customer:"
+msgid "Customer"
+msgstr "Cliente"
+
 msgctxt "field:sale.line,description:"
 msgid "Description"
 msgstr "Descripción"
@@ -202,21 +214,21 @@ msgctxt "field:sale.line,invoice_lines:"
 msgid "Invoice Lines"
 msgstr "Líneas de factura"
 
-msgctxt "field:sale.line,move_done:"
-msgid "Moves Done"
-msgstr "Movimientos finalizados"
-
-msgctxt "field:sale.line,move_exception:"
-msgid "Moves Exception"
-msgstr "Movimientos en excepción"
-
 msgctxt "field:sale.line,moves:"
 msgid "Moves"
 msgstr "Movimientos"
 
+msgctxt "field:sale.line,moves_exception:"
+msgid "Moves Exception"
+msgstr "Movimientos en excepción"
+
 msgctxt "field:sale.line,moves_ignored:"
 msgid "Ignored Moves"
 msgstr "Movimientos ignorados"
+
+msgctxt "field:sale.line,moves_progress:"
+msgid "Moves Progress"
+msgstr "Progreso de los movimientos"
 
 msgctxt "field:sale.line,moves_recreated:"
 msgid "Recreated Moves"
@@ -241,6 +253,10 @@ msgstr "Cantidad"
 msgctxt "field:sale.line,sale:"
 msgid "Sale"
 msgstr "Venta"
+
+msgctxt "field:sale.line,sale_date:"
+msgid "Sale Date"
+msgstr "Fecha venta"
 
 msgctxt "field:sale.line,sale_state:"
 msgid "Sale State"
@@ -658,6 +674,14 @@ msgstr ""
 "El tiempo desde que se ha confirmado la de venta hasta que se envian los productos.\n"
 "Usado en los productos sin tiempo de espera."
 
+msgctxt "help:product.configuration.default_lead_time,default_lead_time:"
+msgid ""
+"The time from confirming the sales order to sending the products.\n"
+"Used for products without a lead time."
+msgstr ""
+"El tiempo desde que se ha confirmado la de venta hasta que se envían los productos.\n"
+"Usado en los productos sin tiempo de espera."
+
 msgctxt "help:product.product,lead_time:"
 msgid ""
 "The time from confirming the sales order to sending the products.\n"
@@ -780,23 +804,19 @@ msgctxt "model:ir.action,name:act_sale_form"
 msgid "Sales"
 msgstr "Ventas"
 
-msgctxt "model:ir.action,name:act_sale_form2"
-msgid "Sales"
-msgstr "Ventas"
-
-msgctxt "model:ir.action,name:act_sale_invoice_relate"
-msgid "Sales"
-msgstr "Ventas"
+msgctxt "model:ir.action,name:act_sale_line_relate"
+msgid "Sale Lines"
+msgstr "Líneas de venta"
 
 msgctxt "model:ir.action,name:act_sale_move_relate"
 msgid "Moves"
 msgstr "Movimientos"
 
-msgctxt "model:ir.action,name:act_sale_shipment_returns_relate"
+msgctxt "model:ir.action,name:act_sale_relate"
 msgid "Sales"
 msgstr "Ventas"
 
-msgctxt "model:ir.action,name:act_sale_shipments_relate"
+msgctxt "model:ir.action,name:act_sale_relate_simple"
 msgid "Sales"
 msgstr "Ventas"
 
@@ -860,6 +880,30 @@ msgctxt ""
 msgid "Quotation"
 msgstr "Presupuesto"
 
+msgctxt "model:ir.action.act_window.domain,name:act_sale_line_relate_all"
+msgid "All"
+msgstr "Todo"
+
+msgctxt "model:ir.action.act_window.domain,name:act_sale_line_relate_done"
+msgid "Done"
+msgstr "Finalizada"
+
+msgctxt "model:ir.action.act_window.domain,name:act_sale_line_relate_pending"
+msgid "Pending"
+msgstr "Pendiente"
+
+msgctxt "model:ir.action.act_window.domain,name:act_sale_relate_all"
+msgid "All"
+msgstr "Todo"
+
+msgctxt "model:ir.action.act_window.domain,name:act_sale_relate_done"
+msgid "Done"
+msgstr "Finalizada"
+
+msgctxt "model:ir.action.act_window.domain,name:act_sale_relate_pending"
+msgid "Pending"
+msgstr "Pendiente"
+
 msgctxt "model:ir.message,text:msg_erase_party_pending_sale"
 msgid ""
 "You cannot erase party \"%(party)s\" while they have pending sales with "
@@ -902,6 +946,14 @@ msgid ""
 msgstr ""
 "No puede establecer la factura \"%(invoice)s\" como borrador porque fue "
 "generada desde una venta."
+
+msgctxt "model:ir.message,text:msg_sale_line_create_draft"
+msgid ""
+"You cannot add lines to sale \"%(sale)s\" because it is no longer in a draft"
+" state."
+msgstr ""
+"No podéis añadir lineas a la venta \"%(sale)s\" porqué no esta en estado "
+"borrador."
 
 msgctxt "model:ir.message,text:msg_sale_line_delete_cancel_draft"
 msgid ""
@@ -1294,6 +1346,10 @@ msgid "Date:"
 msgstr "Fecha:"
 
 msgctxt "report:sale.sale:"
+msgid "Delivery Address:"
+msgstr "Dirección de envío:"
+
+msgctxt "report:sale.sale:"
 msgid "Description"
 msgstr "Descripción"
 
@@ -1390,6 +1446,10 @@ msgid "On Shipment Sent"
 msgstr "Al enviar"
 
 msgctxt "selection:sale.sale,invoice_state:"
+msgid "Awaiting Payment"
+msgstr "A la espera de pago"
+
+msgctxt "selection:sale.sale,invoice_state:"
 msgid "Exception"
 msgstr "Excepción"
 
@@ -1402,8 +1462,12 @@ msgid "Paid"
 msgstr "Pagada"
 
 msgctxt "selection:sale.sale,invoice_state:"
-msgid "Waiting"
-msgstr "En espera"
+msgid "Partially Paid"
+msgstr "Pagada parcialmente"
+
+msgctxt "selection:sale.sale,invoice_state:"
+msgid "Pending"
+msgstr "Pendiente"
 
 msgctxt "selection:sale.sale,shipment_method:"
 msgid "Manual"
@@ -1424,6 +1488,10 @@ msgstr "Excepción"
 msgctxt "selection:sale.sale,shipment_state:"
 msgid "None"
 msgstr "Ninguno"
+
+msgctxt "selection:sale.sale,shipment_state:"
+msgid "Partially Shipped"
+msgstr "Enviada parcialmente"
 
 msgctxt "selection:sale.sale,shipment_state:"
 msgid "Sent"

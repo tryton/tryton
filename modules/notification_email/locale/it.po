@@ -2,6 +2,16 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
+#, fuzzy
+msgctxt "field:ir.email,notification_email:"
+msgid "Notification Email"
+msgstr "Email di notifica"
+
+#, fuzzy
+msgctxt "field:ir.email,notification_trigger:"
+msgid "Notification Trigger"
+msgstr "Notifica"
+
 msgctxt "field:ir.trigger,notification_email:"
 msgid "Email Notification"
 msgstr "Notifica email"
@@ -78,34 +88,6 @@ msgctxt "field:notification.email.attachment,report:"
 msgid "Report"
 msgstr "Segnala"
 
-msgctxt "field:notification.email.log,date:"
-msgid "Date"
-msgstr "Data"
-
-msgctxt "field:notification.email.log,notification:"
-msgid "Notification"
-msgstr "Notifica"
-
-msgctxt "field:notification.email.log,recipients:"
-msgid "Recipients"
-msgstr "Destinatari"
-
-msgctxt "field:notification.email.log,recipients_hidden:"
-msgid "Hidden Recipients"
-msgstr "Destinatari nascosti"
-
-msgctxt "field:notification.email.log,recipients_secondary:"
-msgid "Secondary Recipients"
-msgstr "Destinatari secondari"
-
-msgctxt "field:notification.email.log,resource:"
-msgid "Resource"
-msgstr "Risorsa"
-
-msgctxt "field:notification.email.log,trigger:"
-msgid "Trigger"
-msgstr "Trigger"
-
 msgctxt "help:notification.email,attachments:"
 msgid "The reports used as attachments."
 msgstr "I report utilizzati da usare come allegati."
@@ -177,13 +159,9 @@ msgctxt "model:ir.action,name:act_email_form"
 msgid "Notification Emails"
 msgstr "Email di notifica"
 
-msgctxt "model:ir.action,name:act_notification_email_log"
-msgid "Logs"
-msgstr "Registro Eventi"
-
-msgctxt "model:ir.action,name:act_notification_email_log_relate"
-msgid "Notification E-Mails"
-msgstr "E-mail di notifica"
+msgctxt "model:ir.action,name:act_ir_email_form_relate_notification"
+msgid "E-mails"
+msgstr ""
 
 msgctxt "model:ir.message,text:msg_notification_invalid_subject"
 msgid ""
@@ -205,14 +183,6 @@ msgctxt "model:notification.email.attachment,name:"
 msgid "Email Notification Attachment"
 msgstr "Allegato E-mail di notifica"
 
-msgctxt "model:notification.email.log,name:"
-msgid "Notification Email Log"
-msgstr "Registro Email di notifica"
-
 msgctxt "selection:ir.trigger,action:"
 msgid "Email Notification"
 msgstr "Notifica email"
-
-msgctxt "view:notification.email.log:"
-msgid "Time"
-msgstr "Orario"

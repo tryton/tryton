@@ -10,7 +10,6 @@ msgctxt "field:party.address,city:"
 msgid "City"
 msgstr "Miejscowość"
 
-#, fuzzy
 msgctxt "field:party.address,contact_mechanisms:"
 msgid "Contact Mechanisms"
 msgstr "Sposoby kontaktu"
@@ -23,7 +22,6 @@ msgctxt "field:party.address,full_address:"
 msgid "Full Address"
 msgstr "Pełny adres"
 
-#, fuzzy
 msgctxt "field:party.address,identifiers:"
 msgid "Identifiers"
 msgstr "Identyfikatory"
@@ -48,7 +46,6 @@ msgctxt "field:party.address,street:"
 msgid "Street"
 msgstr "Ulica"
 
-#, fuzzy
 msgctxt "field:party.address,street_single_line:"
 msgid "Street"
 msgstr "Ulica"
@@ -121,7 +118,6 @@ msgctxt "field:party.configuration.party_sequence,party_sequence:"
 msgid "Party Sequence"
 msgstr "Numeracja strony"
 
-#, fuzzy
 msgctxt "field:party.contact_mechanism,address:"
 msgid "Address"
 msgstr "Adres"
@@ -194,7 +190,6 @@ msgctxt "field:party.erase.ask,party:"
 msgid "Party"
 msgstr "Strona"
 
-#, fuzzy
 msgctxt "field:party.identifier,address:"
 msgid "Address"
 msgstr "Adres"
@@ -211,10 +206,9 @@ msgctxt "field:party.identifier,type:"
 msgid "Type"
 msgstr "Typ"
 
-#, fuzzy
 msgctxt "field:party.identifier,type_address:"
 msgid "Type of Address"
-msgstr "Adres"
+msgstr "Typ adresu"
 
 msgctxt "field:party.party,addresses:"
 msgid "Addresses"
@@ -395,7 +389,6 @@ msgctxt "help:party.erase.ask,party:"
 msgid "The party to be erased."
 msgstr "Strona przeznaczona do usunięcia."
 
-#, fuzzy
 msgctxt "help:party.identifier,address:"
 msgid "The address identified by this record."
 msgstr "Strona identyfikowana przez ten rekord."
@@ -552,12 +545,17 @@ msgctxt "model:ir.message,text:msg_party_code_unique"
 msgid "The code on party must be unique."
 msgstr "Kod strony musi być unikatowy."
 
-#, fuzzy
+msgctxt "model:ir.message,text:msg_party_identifier_duplicate"
+msgid "The party \"%(party)s\" has the same %(type)s \"%(code)s\"."
+msgstr ""
+
 msgctxt "model:ir.message,text:msg_party_set_contact_mechanism"
 msgid ""
 "To change the \"%(field)s\" for party \"%(party)s\", you must edit their "
 "contact mechanisms."
-msgstr "Typ %(type)s \"%(code)s\" strony \"%(party)s\" jest niepoprawny."
+msgstr ""
+"Aby zmienić pole \"%(field)s\" strony \"%(party)s\" należy zmodyfikować "
+"sposoby kontaktu."
 
 msgctxt "model:ir.message,text:msg_vies_unavailable"
 msgid "The VIES service is unavailable, try again later."
@@ -599,7 +597,6 @@ msgctxt "model:ir.ui.menu,name:menu_contact_mechanism_form"
 msgid "Contact Mechanisms"
 msgstr "Sposoby kontaktu"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_party"
 msgid "Parties"
 msgstr "Strony"
@@ -638,7 +635,7 @@ msgstr "Ustawienia strony"
 
 msgctxt "model:party.configuration.party_lang,name:"
 msgid "Party Configuration Lang"
-msgstr "Język konfiguracji strony"
+msgstr "Język ustawień strony"
 
 msgctxt "model:party.configuration.party_sequence,name:"
 msgid "Party Configuration Sequence"
@@ -690,7 +687,7 @@ msgstr "Numer podatkowy w Andorze"
 
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "Argentinian National Identity Number"
-msgstr "Argentyński numer identyfikacji narodowej"
+msgstr "Argentyński krajowy numer identyfikacyjny"
 
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "Argentinian Tax Number"

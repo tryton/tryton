@@ -2,6 +2,14 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
+msgctxt "field:ir.email,marketing_automation_activity:"
+msgid "Activity"
+msgstr ""
+
+msgctxt "field:ir.email,marketing_automation_record:"
+msgid "Record"
+msgstr ""
+
 msgctxt "field:marketing.automation.activity,action:"
 msgid "Action"
 msgstr ""
@@ -205,6 +213,10 @@ msgstr ""
 
 msgctxt "model:ir.action,name:act_activity_tree"
 msgid "Activities"
+msgstr ""
+
+msgctxt "model:ir.action,name:act_ir_email_form_relate_activity"
+msgid "E-mails"
 msgstr ""
 
 msgctxt "model:ir.action,name:act_record_activity_form"

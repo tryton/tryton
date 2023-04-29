@@ -26,9 +26,8 @@ msgstr "nurodyti naudotoją"
 msgid "specify the server hostname:port"
 msgstr "nurodyti tarnybinę stotį pavadinimas:prievadas"
 
-#, python-format
-msgid "Unable to write config file %s."
-msgstr "Negalima įrašyti konfigūracinį failą %s."
+msgid "disable thread usage"
+msgstr ""
 
 #, python-format
 msgid "Unable to set locale %s"
@@ -64,12 +63,6 @@ msgstr "Gerai"
 
 msgid "Your selection:"
 msgstr "Jūsų pasirinkimas:"
-
-msgid "Select"
-msgstr "Pasirinkti"
-
-msgid "Save"
-msgstr "Išsaugoti"
 
 msgid "Save As..."
 msgstr "Įrašyti kaip..."
@@ -203,6 +196,10 @@ msgstr "Susijęs"
 
 msgid "Edit..."
 msgstr "Keisti..."
+
+#, fuzzy
+msgid "View Logs..."
+msgstr "Žiūrėti _žurnalus..."
 
 msgid "Attachments..."
 msgstr "Priedai..."
@@ -609,6 +606,9 @@ msgstr "Pasirinkti viską"
 msgid "Remove File"
 msgstr "Šalinti <Del>"
 
+msgid "Select"
+msgstr "Pasirinkti"
+
 msgid "Add..."
 msgstr "Sukurti naują..."
 
@@ -632,26 +632,6 @@ msgstr "Pastaba (%d/%d)"
 
 msgid "You have to select one record."
 msgstr "Pasirinkite bent vieną įrašą."
-
-msgid "ID:"
-msgstr "ID:"
-
-#, fuzzy
-msgid "Created by:"
-msgstr "Sukūręs naudotojas"
-
-#, fuzzy
-msgid "Created at:"
-msgstr "Sukūrimo data"
-
-msgid "Edited by:"
-msgstr "Pakeitęs naudotojas:"
-
-msgid "Edited at:"
-msgstr "Keitimo data:"
-
-msgid "Model:"
-msgstr "Modelis:"
 
 msgid "Are you sure to remove this record?"
 msgstr "Ar tikrai norite ištrinti šį įrašą?"
@@ -716,6 +696,32 @@ msgstr "Paieškos ribojimo nustatymai"
 
 msgid "Limit:"
 msgstr "Riba:"
+
+#, python-format
+msgid "Logs (%s)"
+msgstr "Rąstai (%s)"
+
+msgid "Model:"
+msgstr "Modelis:"
+
+msgid "ID:"
+msgstr "ID:"
+
+#, fuzzy
+msgid "Created by:"
+msgstr "Sukūręs naudotojas"
+
+#, fuzzy
+msgid "Created at:"
+msgstr "Sukūrimo data"
+
+#, fuzzy
+msgid "Last Modified by:"
+msgstr "Paskutinį kartą redagavo:"
+
+#, fuzzy
+msgid "Last Modified at:"
+msgstr "Paskutinio redagavimo data:"
 
 #, python-format
 msgid "Notes (%s)"
@@ -885,6 +891,9 @@ msgstr "Pavadinimas"
 
 msgid "Open"
 msgstr "Atvėrimas"
+
+msgid "Save"
+msgstr "Išsaugoti"
 
 msgid "Listed Records"
 msgstr "Rodomi įrašai"
@@ -1109,17 +1118,15 @@ msgstr "praeiti metai"
 msgid "next year"
 msgstr "kiti metai"
 
-msgid "Day View"
-msgstr "Dienos rodinys"
-
-msgid "Week View"
-msgstr "Savaitės rodinys"
-
-msgid "Month View"
-msgstr "Mėnesio rodinys"
+msgid "Day"
+msgstr ""
 
 msgid "Week"
 msgstr "Savaitė"
+
+#, fuzzy
+msgid "Month"
+msgstr "Mėnesio rodinys"
 
 msgid "Select..."
 msgstr "Pasirinkti..."
@@ -1187,6 +1194,9 @@ msgstr "Išsaugokite įrašą prieš pridedant vertimą."
 
 msgid "No other language available."
 msgstr "Nėra kitų kalbų."
+
+msgid "#ERROR"
+msgstr ""
 
 msgid "Translate view"
 msgstr "Išversti rodinį"

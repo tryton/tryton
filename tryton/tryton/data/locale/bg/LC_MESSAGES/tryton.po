@@ -27,9 +27,8 @@ msgstr "укажете потребителското име"
 msgid "specify the server hostname:port"
 msgstr "укажете адреса на сървъра"
 
-#, fuzzy, python-format
-msgid "Unable to write config file %s."
-msgstr "Не може да запише конфигурационен файл %s!"
+msgid "disable thread usage"
+msgstr ""
 
 #, python-format
 msgid "Unable to set locale %s"
@@ -68,12 +67,6 @@ msgstr ""
 
 msgid "Your selection:"
 msgstr "Вашия избор"
-
-msgid "Select"
-msgstr ""
-
-msgid "Save"
-msgstr "Съхраняване"
 
 msgid "Save As..."
 msgstr "Запис като ..."
@@ -210,6 +203,10 @@ msgstr "Свързани"
 #, fuzzy
 msgid "Edit..."
 msgstr "Изход..."
+
+#, fuzzy
+msgid "View Logs..."
+msgstr "Преглед на логове"
 
 msgid "Attachments..."
 msgstr "Прикачен файл..."
@@ -628,6 +625,9 @@ msgstr "Избор"
 msgid "Remove File"
 msgstr "Изтриване <Del>"
 
+msgid "Select"
+msgstr ""
+
 msgid "Add..."
 msgstr ""
 
@@ -652,28 +652,6 @@ msgstr ""
 #, fuzzy
 msgid "You have to select one record."
 msgstr "Трябва да изберете един запис!"
-
-msgid "ID:"
-msgstr "ID:"
-
-#, fuzzy
-msgid "Created by:"
-msgstr "Дата на създаване:"
-
-#, fuzzy
-msgid "Created at:"
-msgstr "Дата на създаване:"
-
-#, fuzzy
-msgid "Edited by:"
-msgstr "Редактиране"
-
-#, fuzzy
-msgid "Edited at:"
-msgstr "Редактиране"
-
-msgid "Model:"
-msgstr "Модел:"
 
 msgid "Are you sure to remove this record?"
 msgstr "Наистина ли искате да изтриете този запис?"
@@ -743,6 +721,32 @@ msgstr "Настройки на органичения за търсене"
 
 msgid "Limit:"
 msgstr "Ограничение:"
+
+#, python-format
+msgid "Logs (%s)"
+msgstr ""
+
+msgid "Model:"
+msgstr "Модел:"
+
+msgid "ID:"
+msgstr "ID:"
+
+#, fuzzy
+msgid "Created by:"
+msgstr "Дата на създаване:"
+
+#, fuzzy
+msgid "Created at:"
+msgstr "Дата на създаване:"
+
+#, fuzzy
+msgid "Last Modified by:"
+msgstr "Последно променен от:"
+
+#, fuzzy
+msgid "Last Modified at:"
+msgstr "Дата на последна промяна:"
 
 #, python-format
 msgid "Notes (%s)"
@@ -922,6 +926,9 @@ msgstr "Име"
 
 msgid "Open"
 msgstr "Отваряне"
+
+msgid "Save"
+msgstr "Съхраняване"
 
 #, fuzzy
 msgid "Listed Records"
@@ -1157,19 +1164,15 @@ msgstr ""
 msgid "next year"
 msgstr ""
 
-msgid "Day View"
+msgid "Day"
 msgstr ""
-
-#, fuzzy
-msgid "Week View"
-msgstr "Превключване на изглед"
-
-#, fuzzy
-msgid "Month View"
-msgstr "Превключване на изглед"
 
 msgid "Week"
 msgstr ""
+
+#, fuzzy
+msgid "Month"
+msgstr "Превключване на изглед"
 
 msgid "Select..."
 msgstr ""
@@ -1243,6 +1246,9 @@ msgstr "Трябва да съхраните записа преди да доб
 #, fuzzy
 msgid "No other language available."
 msgstr "Няма наличен друг език!"
+
+msgid "#ERROR"
+msgstr ""
 
 msgid "Translate view"
 msgstr "Превод на изглед"

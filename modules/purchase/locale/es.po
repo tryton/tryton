@@ -175,21 +175,21 @@ msgctxt "field:purchase.line,invoice_lines:"
 msgid "Invoice Lines"
 msgstr "Líneas de factura"
 
-msgctxt "field:purchase.line,move_done:"
-msgid "Moves Done"
-msgstr "Movimientos finalizados"
-
-msgctxt "field:purchase.line,move_exception:"
-msgid "Moves Exception"
-msgstr "Movimientos en excepción"
-
 msgctxt "field:purchase.line,moves:"
 msgid "Moves"
 msgstr "Movimientos"
 
+msgctxt "field:purchase.line,moves_exception:"
+msgid "Moves Exception"
+msgstr "Movimientos en excepción"
+
 msgctxt "field:purchase.line,moves_ignored:"
 msgid "Ignored Moves"
 msgstr "Movimientos ignorados"
+
+msgctxt "field:purchase.line,moves_progress:"
+msgid "Moves Progress"
+msgstr "Progreso de los movimientos"
 
 msgctxt "field:purchase.line,moves_recreated:"
 msgid "Recreated Moves"
@@ -215,6 +215,10 @@ msgctxt "field:purchase.line,purchase:"
 msgid "Purchase"
 msgstr "Compra"
 
+msgctxt "field:purchase.line,purchase_date:"
+msgid "Purchase Date"
+msgstr "Fecha de compra"
+
 msgctxt "field:purchase.line,purchase_state:"
 msgid "Purchase State"
 msgstr "Estado de la compra"
@@ -226,6 +230,10 @@ msgstr "Cantidad"
 msgctxt "field:purchase.line,summary:"
 msgid "Summary"
 msgstr "Resumen"
+
+msgctxt "field:purchase.line,supplier:"
+msgid "Supplier"
+msgstr "Proveedor"
 
 msgctxt "field:purchase.line,taxes:"
 msgid "Taxes"
@@ -246,6 +254,10 @@ msgstr "Unidad"
 msgctxt "field:purchase.line,unit_price:"
 msgid "Unit Price"
 msgstr "Precio unitario"
+
+msgctxt "field:purchase.line,warehouse:"
+msgid "Warehouse"
+msgstr "Almacén"
 
 msgctxt "field:purchase.line-account.tax,line:"
 msgid "Purchase Line"
@@ -570,6 +582,14 @@ msgctxt "help:party.party.supplier_currency,supplier_currency:"
 msgid "Default currency for purchases from this party."
 msgstr "La moneda por defecto para las compras de este tercero."
 
+msgctxt "help:party.party.supplier_lead_time,supplier_lead_time:"
+msgid ""
+"The time from confirming the purchase order to receiving the goods from the party when used as a supplier.\n"
+"Used if no lead time is set on the product supplier."
+msgstr ""
+"El tiempo desde que se ha confirmado el pedido de compra hasta recibir los bienes del tercero cuando se utiliza como proveedor.\n"
+"Usado si no hay tiempo de espera establecido en el proveedor del producto."
+
 msgctxt "help:purchase.configuration,purchase_process_after:"
 msgid ""
 "The grace period during which confirmed purchase can still be reset to draft.\n"
@@ -600,6 +620,14 @@ msgid ""
 msgstr ""
 "El tiempo desde que se ha confirmado el pedido de compra hasta recibir los productos.\n"
 "Si está vacío se usa el tiempo de espera del proveedor."
+
+msgctxt "help:purchase.product_supplier,prices:"
+msgid ""
+"Add price for different criteria.\n"
+"The last matching line is used."
+msgstr ""
+"Añade un precio con distintos criterios.\n"
+"Se utiliza la última línea que coincide."
 
 msgctxt "help:purchase.product_supplier.price,quantity:"
 msgid "Minimal quantity."
@@ -641,23 +669,23 @@ msgctxt "model:ir.action,name:act_purchase_form"
 msgid "Purchases"
 msgstr "Compras"
 
-msgctxt "model:ir.action,name:act_purchase_form2"
-msgid "Purchases"
-msgstr "Compras"
-
 msgctxt "model:ir.action,name:act_purchase_invoice_relate"
 msgid "Purchases"
 msgstr "Compras"
+
+msgctxt "model:ir.action,name:act_purchase_line_relate"
+msgid "Purchase Lines"
+msgstr "Líneas de compra"
 
 msgctxt "model:ir.action,name:act_purchase_move_relate"
 msgid "Moves"
 msgstr "Movimientos"
 
-msgctxt "model:ir.action,name:act_purchase_shipment_returns_relate"
+msgctxt "model:ir.action,name:act_purchase_relate"
 msgid "Purchases"
 msgstr "Compras"
 
-msgctxt "model:ir.action,name:act_purchase_shipments_relate"
+msgctxt "model:ir.action,name:act_purchase_relate_simple"
 msgid "Purchases"
 msgstr "Compras"
 
@@ -742,6 +770,31 @@ msgctxt ""
 msgid "Quotation"
 msgstr "Presupuesto"
 
+msgctxt "model:ir.action.act_window.domain,name:act_purchase_line_relate_all"
+msgid "All"
+msgstr "Todo"
+
+msgctxt "model:ir.action.act_window.domain,name:act_purchase_line_relate_done"
+msgid "Done"
+msgstr "Finalizada"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_purchase_line_relate_pending"
+msgid "Pending"
+msgstr "Pendiente"
+
+msgctxt "model:ir.action.act_window.domain,name:act_purchase_relate_all"
+msgid "All"
+msgstr "Todo"
+
+msgctxt "model:ir.action.act_window.domain,name:act_purchase_relate_done"
+msgid "Done"
+msgstr "Finalizada"
+
+msgctxt "model:ir.action.act_window.domain,name:act_purchase_relate_pending"
+msgid "Pending"
+msgstr "Pendiente"
+
 msgctxt "model:ir.message,text:msg_change_purchase_uom"
 msgid ""
 "You are trying to change the purchase UoM on which the purchase prices are "
@@ -769,6 +822,14 @@ msgid ""
 msgstr ""
 "No puede restaurar a borrador la factura \"%(invoice)s\" porque se generó "
 "por una compra."
+
+msgctxt "model:ir.message,text:msg_purchase_line_create_draft"
+msgid ""
+"You cannot add lines to purchase \"%(purchase)s\" because it is no longer in"
+" a draft state."
+msgstr ""
+"No se puede añadir líneas a la compra \"%(purchase)s\", porqué noe està en "
+"estado borrador."
 
 msgctxt "model:ir.message,text:msg_purchase_line_delete_cancel_draft"
 msgid ""
@@ -1182,6 +1243,10 @@ msgid "Manual"
 msgstr "Manual"
 
 msgctxt "selection:purchase.purchase,invoice_state:"
+msgid "Awaiting Payment"
+msgstr "A la espera de pago"
+
+msgctxt "selection:purchase.purchase,invoice_state:"
 msgid "Exception"
 msgstr "Excepción"
 
@@ -1194,8 +1259,12 @@ msgid "Paid"
 msgstr "Pagada"
 
 msgctxt "selection:purchase.purchase,invoice_state:"
-msgid "Waiting"
-msgstr "En espera"
+msgid "Partially Paid"
+msgstr "Pagada parcialmente"
+
+msgctxt "selection:purchase.purchase,invoice_state:"
+msgid "Pending"
+msgstr "Pendiente"
 
 msgctxt "selection:purchase.purchase,shipment_state:"
 msgid "Exception"
@@ -1204,6 +1273,10 @@ msgstr "Excepción"
 msgctxt "selection:purchase.purchase,shipment_state:"
 msgid "None"
 msgstr "Ninguno"
+
+msgctxt "selection:purchase.purchase,shipment_state:"
+msgid "Partially Shipped"
+msgstr "Enviada parcialmente"
 
 msgctxt "selection:purchase.purchase,shipment_state:"
 msgid "Received"

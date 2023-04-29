@@ -19,9 +19,10 @@ msgctxt "field:account.invoice,payment_direct_debit:"
 msgid "Direct Debit"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:account.move.line,payment_amount:"
-msgid "Payment Amount"
-msgstr ""
+msgid "Amount to Pay"
+msgstr "Suma"
 
 msgctxt "field:account.move.line,payment_blocked:"
 msgid "Blocked"
@@ -55,7 +56,7 @@ msgstr "Companie"
 
 msgctxt "field:account.move.line.pay.ask_journal,currency:"
 msgid "Currency"
-msgstr "Moneda"
+msgstr "Valută"
 
 msgctxt "field:account.move.line.pay.ask_journal,journal:"
 msgid "Journal"
@@ -414,6 +415,16 @@ msgstr ""
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_payment_form_domain_to_process"
 msgid "To Process"
+msgstr ""
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_payment_group_form_domain_all"
+msgid "All"
+msgstr ""
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_payment_group_form_domain_not_completed"
+msgid "Pending"
 msgstr ""
 
 msgctxt "model:ir.message,text:msg_erase_party_pending_payment"

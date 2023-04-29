@@ -2,6 +2,16 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
+#, fuzzy
+msgctxt "field:ir.email,notification_email:"
+msgid "Notification Email"
+msgstr "ایمیل‌های اطلاعیه"
+
+#, fuzzy
+msgctxt "field:ir.email,notification_trigger:"
+msgid "Notification Trigger"
+msgstr "اطلاعیه"
+
 msgctxt "field:ir.trigger,notification_email:"
 msgid "Email Notification"
 msgstr "ایمیل اطلاعیه"
@@ -79,35 +89,6 @@ msgctxt "field:notification.email.attachment,report:"
 msgid "Report"
 msgstr "گزارش"
 
-msgctxt "field:notification.email.log,date:"
-msgid "Date"
-msgstr "تاریخ"
-
-#, fuzzy
-msgctxt "field:notification.email.log,notification:"
-msgid "Notification"
-msgstr "اطلاعیه"
-
-msgctxt "field:notification.email.log,recipients:"
-msgid "Recipients"
-msgstr "گیرندگان"
-
-msgctxt "field:notification.email.log,recipients_hidden:"
-msgid "Hidden Recipients"
-msgstr "گیرنده گان پنهان"
-
-msgctxt "field:notification.email.log,recipients_secondary:"
-msgid "Secondary Recipients"
-msgstr "گیرندگان ثانویه"
-
-msgctxt "field:notification.email.log,resource:"
-msgid "Resource"
-msgstr ""
-
-msgctxt "field:notification.email.log,trigger:"
-msgid "Trigger"
-msgstr "ماشه"
-
 msgctxt "help:notification.email,attachments:"
 msgid "The reports used as attachments."
 msgstr "استفاده از گزارش ها بعنوان پیوست ها."
@@ -170,14 +151,9 @@ msgctxt "model:ir.action,name:act_email_form"
 msgid "Notification Emails"
 msgstr "ایمیل‌های اطلاعیه"
 
-msgctxt "model:ir.action,name:act_notification_email_log"
-msgid "Logs"
-msgstr "گزارش ها"
-
-#, fuzzy
-msgctxt "model:ir.action,name:act_notification_email_log_relate"
-msgid "Notification E-Mails"
-msgstr "ایمیل‌های اطلاعیه"
+msgctxt "model:ir.action,name:act_ir_email_form_relate_notification"
+msgid "E-mails"
+msgstr ""
 
 msgctxt "model:ir.message,text:msg_notification_invalid_subject"
 msgid ""
@@ -199,15 +175,6 @@ msgid "Email Notification Attachment"
 msgstr "پیوست ایمیل اطلاعیه"
 
 #, fuzzy
-msgctxt "model:notification.email.log,name:"
-msgid "Notification Email Log"
-msgstr "گزارش ایمیل اطلاعیه"
-
-#, fuzzy
 msgctxt "selection:ir.trigger,action:"
 msgid "Email Notification"
 msgstr "ایمیل اطلاعیه"
-
-msgctxt "view:notification.email.log:"
-msgid "Time"
-msgstr "زمان"

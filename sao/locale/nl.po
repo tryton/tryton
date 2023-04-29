@@ -116,11 +116,11 @@ msgstr "Te veel verzoeken. Probeer het later nog eens."
 msgid "Login"
 msgstr "Inlognaam"
 
-msgid "User name"
-msgstr "Gebruikersnaam"
-
 msgid "Database"
 msgstr "Database"
+
+msgid "User name"
+msgstr "Gebruikersnaam"
 
 msgid "Login with"
 msgstr "Inloggen met"
@@ -294,7 +294,7 @@ msgid "Reload"
 msgstr "Herladen"
 
 msgid "View Logs..."
-msgstr "Bekijk logregister..."
+msgstr "Bekijk Logboek..."
 
 msgid "Show revisions..."
 msgstr "Revisies weergeven ..."
@@ -360,24 +360,6 @@ msgstr "Records niet verwijderd."
 
 msgid "You have to select one record."
 msgstr "U moet één record selecteren."
-
-msgid "ID:"
-msgstr "ID:"
-
-msgid "Created by:"
-msgstr "Aangemaakt door:"
-
-msgid "Created at:"
-msgstr "Aanmaakdatum:"
-
-msgid "Edited by:"
-msgstr "Bewerkt door:"
-
-msgid "Edited at:"
-msgstr "Bewerkt op:"
-
-msgid "Model: "
-msgstr "Model: "
 
 msgid "Add..."
 msgstr "Toevoegen..."
@@ -536,6 +518,9 @@ msgstr "Aanpassen"
 msgid "More"
 msgstr "Meer"
 
+msgid "#ERROR"
+msgstr "#FOUT"
+
 msgid "Today"
 msgstr "Vandaag"
 
@@ -565,6 +550,27 @@ msgstr "Bijlagen (%1)"
 
 msgid "Notes (%1)"
 msgstr "Notities (%1)"
+
+msgid "Logs (%1)"
+msgstr "Logboeken (%1)"
+
+msgid "Model:"
+msgstr "Model:"
+
+msgid "ID:"
+msgstr "ID:"
+
+msgid "Created by:"
+msgstr "Aangemaakt door:"
+
+msgid "Created at:"
+msgstr "Aanmaakdatum:"
+
+msgid "Last Modified by:"
+msgstr "Laatst aangepast door:"
+
+msgid "Last Modified at:"
+msgstr "Laatst gewijzigd om:"
 
 msgid "Search %1"
 msgstr "Zoek %1"

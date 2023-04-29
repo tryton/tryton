@@ -26,9 +26,8 @@ msgstr "määra kasutaja sisselogimise tunnus"
 msgid "specify the server hostname:port"
 msgstr "määra server:port"
 
-#, python-format
-msgid "Unable to write config file %s."
-msgstr "Ei saa kirjutada konfiguratsioonifaili %s."
+msgid "disable thread usage"
+msgstr ""
 
 #, python-format
 msgid "Unable to set locale %s"
@@ -64,12 +63,6 @@ msgstr "OK"
 
 msgid "Your selection:"
 msgstr "Teie valik:"
-
-msgid "Select"
-msgstr "Vali"
-
-msgid "Save"
-msgstr "Salvesta"
 
 msgid "Save As..."
 msgstr "Salvesta nimega..."
@@ -203,6 +196,10 @@ msgstr "Seo"
 
 msgid "Edit..."
 msgstr "Muuda..."
+
+#, fuzzy
+msgid "View Logs..."
+msgstr "Vaata _logisid"
 
 msgid "Attachments..."
 msgstr "Manused..."
@@ -607,6 +604,9 @@ msgstr "Vali kõik"
 msgid "Remove File"
 msgstr "Eemalda <Del>"
 
+msgid "Select"
+msgstr "Vali"
+
 msgid "Add..."
 msgstr "Lisa..."
 
@@ -630,28 +630,6 @@ msgstr "Märkus (%d%d)"
 
 msgid "You have to select one record."
 msgstr "Pead valima vähemasti ühe rea."
-
-msgid "ID:"
-msgstr "ID"
-
-#, fuzzy
-msgid "Created by:"
-msgstr "Loomise kuupäev"
-
-#, fuzzy
-msgid "Created at:"
-msgstr "Loomise kuupäev"
-
-#, fuzzy
-msgid "Edited by:"
-msgstr "Muuda"
-
-#, fuzzy
-msgid "Edited at:"
-msgstr "Muuda"
-
-msgid "Model:"
-msgstr "Mudel:"
 
 msgid "Are you sure to remove this record?"
 msgstr "Oled kindel, et kustutada see kirje?"
@@ -716,6 +694,32 @@ msgstr "Otsingupiirangu seaded"
 
 msgid "Limit:"
 msgstr "Limiit"
+
+#, python-format
+msgid "Logs (%s)"
+msgstr "Palgid (%s)"
+
+msgid "Model:"
+msgstr "Mudel:"
+
+msgid "ID:"
+msgstr "ID"
+
+#, fuzzy
+msgid "Created by:"
+msgstr "Loomise kuupäev"
+
+#, fuzzy
+msgid "Created at:"
+msgstr "Loomise kuupäev"
+
+#, fuzzy
+msgid "Last Modified by:"
+msgstr "Muutja:"
+
+#, fuzzy
+msgid "Last Modified at:"
+msgstr "Muutmise kuupäev:"
 
 #, python-format
 msgid "Notes (%s)"
@@ -885,6 +889,9 @@ msgstr "Nimi"
 
 msgid "Open"
 msgstr "Ava"
+
+msgid "Save"
+msgstr "Salvesta"
 
 #, fuzzy
 msgid "Listed Records"
@@ -1113,17 +1120,15 @@ msgstr "eelmine aasta"
 msgid "next year"
 msgstr "järgmine aasta"
 
-msgid "Day View"
-msgstr "Päeva vaade"
-
-msgid "Week View"
-msgstr "Nädala vaade"
-
-msgid "Month View"
-msgstr "Kuu vaade"
+msgid "Day"
+msgstr ""
 
 msgid "Week"
 msgstr "Nädal"
+
+#, fuzzy
+msgid "Month"
+msgstr "Kuu vaade"
 
 msgid "Select..."
 msgstr "Vali..."
@@ -1189,6 +1194,9 @@ msgstr "Kirje tuleb salvestada enne tõlke lisamist."
 
 msgid "No other language available."
 msgstr "Teisi keeli pole saadaval."
+
+msgid "#ERROR"
+msgstr ""
 
 msgid "Translate view"
 msgstr "Tõlgi vaade"

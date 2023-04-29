@@ -164,7 +164,7 @@ msgstr "Benutzer im Unternehmen"
 
 msgctxt "model:ir.ui.menu,name:menu_invoice_deferred_create_moves"
 msgid "Create Invoices Deferred Moves"
-msgstr "Buchungessätze für Rechnungsabgrenzung erstellen"
+msgstr "Buchungssätze für Rechnungsabgrenzung erstellen"
 
 msgctxt "model:ir.ui.menu,name:menu_invoice_deferred_in_form"
 msgid "Supplier Invoices Deferred"

@@ -8,11 +8,11 @@ msgstr "Relaţii"
 
 msgctxt "field:party.relation,active:"
 msgid "Active"
-msgstr ""
+msgstr "Activ"
 
 msgctxt "field:party.relation,end_date:"
 msgid "End Date"
-msgstr ""
+msgstr "Data de sfârșit"
 
 msgctxt "field:party.relation,from_:"
 msgid "From"
@@ -20,7 +20,7 @@ msgstr "De la"
 
 msgctxt "field:party.relation,start_date:"
 msgid "Start Date"
-msgstr ""
+msgstr "Data de început"
 
 msgctxt "field:party.relation,to:"
 msgid "To"
@@ -32,11 +32,11 @@ msgstr "Tip"
 
 msgctxt "field:party.relation.all,active:"
 msgid "Active"
-msgstr ""
+msgstr "Activ"
 
 msgctxt "field:party.relation.all,end_date:"
 msgid "End Date"
-msgstr ""
+msgstr "Data de sfârşit"
 
 msgctxt "field:party.relation.all,from_:"
 msgid "From"
@@ -44,7 +44,7 @@ msgstr "De la"
 
 msgctxt "field:party.relation.all,start_date:"
 msgid "Start Date"
-msgstr ""
+msgstr "Data de început"
 
 msgctxt "field:party.relation.all,to:"
 msgid "To"

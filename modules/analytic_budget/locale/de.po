@@ -151,23 +151,23 @@ msgstr ""
 
 msgctxt "model:analytic_account.budget,name:"
 msgid "Analytic Budget"
-msgstr "Kostenrechnungsbudget"
+msgstr "Budget Kosten- und Leistungsrechnung"
 
 msgctxt "model:analytic_account.budget.context,name:"
 msgid "Analytic Budget Context"
-msgstr "Kostenrechnungsbudget Kontext"
+msgstr "Budget Kosten- und Leistungsrechnung Kontext"
 
 msgctxt "model:analytic_account.budget.copy.start,name:"
 msgid "Copy Analytic Budget"
-msgstr "Kostenrechnungsbudget kopieren"
+msgstr "Budget Kosten- und Leistungsrechnung kopieren"
 
 msgctxt "model:analytic_account.budget.line,name:"
 msgid "Analytic Budget"
-msgstr "Kostenrechnungsbudget"
+msgstr "Budget Kosten- und Leistungsrechnung"
 
 msgctxt "model:ir.action,name:act_budget_form"
 msgid "Analytic Budgets"
-msgstr "Kostenrechnungsbudgets"
+msgstr "Budgets Kosten- und Leistungsrechnung"
 
 msgctxt "model:ir.action,name:act_budget_line_form"
 msgid "Budget Lines"
@@ -175,7 +175,7 @@ msgstr "Budgetpositionen"
 
 msgctxt "model:ir.action,name:act_budget_report"
 msgid "Analytic Budgets"
-msgstr "Kostenrechnungsbudgets"
+msgstr "Budgets Kosten- und Leistungsrechnung"
 
 msgctxt "model:ir.action,name:wizard_budget_copy"
 msgid "Copy Budget"
@@ -195,11 +195,11 @@ msgstr "Benutzer im Unternehmen"
 
 msgctxt "model:ir.ui.menu,name:menu_budget_form"
 msgid "Analytic Budgets"
-msgstr "Kostenrechnungsbudgets"
+msgstr "Budgets Kosten- und Leistungsrechnung"
 
 msgctxt "model:ir.ui.menu,name:menu_budget_report"
 msgid "Analytic Budgets"
-msgstr "Kostenrechnungsbudgets"
+msgstr "Budgets Kosten- und Leistungsrechnung"
 
 msgctxt "view:analytic_account.budget.copy.start:"
 msgid "%"

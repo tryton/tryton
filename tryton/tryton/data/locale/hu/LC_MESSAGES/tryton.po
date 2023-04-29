@@ -26,9 +26,8 @@ msgstr "adja meg a felhasználónevet"
 msgid "specify the server hostname:port"
 msgstr "adja meg a kiszolgálónév:portot"
 
-#, fuzzy, python-format
-msgid "Unable to write config file %s."
-msgstr "Nem lehet a következő konfigurációs fájlba írni: „%s”"
+msgid "disable thread usage"
+msgstr ""
 
 #, python-format
 msgid "Unable to set locale %s"
@@ -66,12 +65,6 @@ msgstr "OK"
 
 msgid "Your selection:"
 msgstr "Kiválasztva"
-
-msgid "Select"
-msgstr "Kiválaszt"
-
-msgid "Save"
-msgstr "Mentés"
 
 msgid "Save As..."
 msgstr "Mentés másként…"
@@ -204,6 +197,10 @@ msgstr "Sablon"
 
 msgid "Edit..."
 msgstr "Módosítás…"
+
+#, fuzzy
+msgid "View Logs..."
+msgstr "Nap_ló megtekintése…"
 
 msgid "Attachments..."
 msgstr "Mellékletek..."
@@ -601,6 +598,9 @@ msgstr "Mind kijelölése"
 msgid "Remove File"
 msgstr "Fájl eltávolítása"
 
+msgid "Select"
+msgstr "Kiválaszt"
+
 msgid "Add..."
 msgstr "Hozzáadás..."
 
@@ -623,24 +623,6 @@ msgstr "Jegyzet (%d/%d)"
 
 msgid "You have to select one record."
 msgstr "Ki kell választania egy rekordot."
-
-msgid "ID:"
-msgstr "ID:"
-
-msgid "Created by:"
-msgstr "Létrehozta:"
-
-msgid "Created at:"
-msgstr "Létrehozás dátuma:"
-
-msgid "Edited by:"
-msgstr "Módosította:"
-
-msgid "Edited at:"
-msgstr "Módosítás dátuma:"
-
-msgid "Model:"
-msgstr "Elem:"
 
 msgid "Are you sure to remove this record?"
 msgstr "Biztos törölni szeretné?"
@@ -705,6 +687,30 @@ msgstr "Keresett rekordok számának korlátozása"
 
 msgid "Limit:"
 msgstr "Korlát:"
+
+#, python-format
+msgid "Logs (%s)"
+msgstr ""
+
+msgid "Model:"
+msgstr "Elem:"
+
+msgid "ID:"
+msgstr "ID:"
+
+msgid "Created by:"
+msgstr "Létrehozta:"
+
+msgid "Created at:"
+msgstr "Létrehozás dátuma:"
+
+#, fuzzy
+msgid "Last Modified by:"
+msgstr "Utolsó módosítás"
+
+#, fuzzy
+msgid "Last Modified at:"
+msgstr "Módosítás dátuma "
 
 #, python-format
 msgid "Notes (%s)"
@@ -872,6 +878,9 @@ msgstr "Név"
 
 msgid "Open"
 msgstr "Megnyitás"
+
+msgid "Save"
+msgstr "Mentés"
 
 msgid "Listed Records"
 msgstr "A listán szereplő összes rekordot"
@@ -1096,17 +1105,15 @@ msgstr ""
 msgid "next year"
 msgstr ""
 
-msgid "Day View"
+msgid "Day"
 msgstr ""
-
-msgid "Week View"
-msgstr "Heti nézet"
-
-msgid "Month View"
-msgstr "Havi nézet"
 
 msgid "Week"
 msgstr "Hét"
+
+#, fuzzy
+msgid "Month"
+msgstr "Havi nézet"
 
 msgid "Select..."
 msgstr ""
@@ -1172,6 +1179,9 @@ msgstr "El kell menteni a rekordot mielőtt hozzáadja a fordítást."
 
 msgid "No other language available."
 msgstr "Másik nyelv nem elérhető."
+
+msgid "#ERROR"
+msgstr ""
 
 msgid "Translate view"
 msgstr "Nézet lefordítása"

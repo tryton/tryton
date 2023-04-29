@@ -27,9 +27,8 @@ msgstr "specifica l'utente di accesso"
 msgid "specify the server hostname:port"
 msgstr "specifica hostname:porta del server"
 
-#, python-format
-msgid "Unable to write config file %s."
-msgstr "Impossibile scrivere il file di configurazione %s."
+msgid "disable thread usage"
+msgstr ""
 
 #, python-format
 msgid "Unable to set locale %s"
@@ -65,12 +64,6 @@ msgstr "OK"
 
 msgid "Your selection:"
 msgstr "La tua selezione:"
-
-msgid "Select"
-msgstr "Seleziona"
-
-msgid "Save"
-msgstr "Salva"
 
 msgid "Save As..."
 msgstr "Salva come..."
@@ -203,6 +196,10 @@ msgstr "Collegato"
 
 msgid "Edit..."
 msgstr "Modifica..."
+
+#, fuzzy
+msgid "View Logs..."
+msgstr "Visualizza_Log..."
 
 msgid "Attachments..."
 msgstr "Allegati..."
@@ -602,6 +599,9 @@ msgstr "Seleziona tutto"
 msgid "Remove File"
 msgstr "_Rimuovi"
 
+msgid "Select"
+msgstr "Seleziona"
+
 msgid "Add..."
 msgstr "Inserisci..."
 
@@ -625,24 +625,6 @@ msgstr "Appunto (%d/%d)"
 
 msgid "You have to select one record."
 msgstr "Devi selezionare un record."
-
-msgid "ID:"
-msgstr "ID:"
-
-msgid "Created by:"
-msgstr "Creato da:"
-
-msgid "Created at:"
-msgstr "Creato il:"
-
-msgid "Edited by:"
-msgstr "Modificato da:"
-
-msgid "Edited at:"
-msgstr "Modifica il:"
-
-msgid "Model:"
-msgstr "Modello:"
 
 msgid "Are you sure to remove this record?"
 msgstr "Sei sicuro di rimuovere questo record?"
@@ -707,6 +689,30 @@ msgstr "Impostazione dei limiti di ricerca"
 
 msgid "Limit:"
 msgstr "Limite:"
+
+#, python-format
+msgid "Logs (%s)"
+msgstr "Registri (%s)"
+
+msgid "Model:"
+msgstr "Modello:"
+
+msgid "ID:"
+msgstr "ID:"
+
+msgid "Created by:"
+msgstr "Creato da:"
+
+msgid "Created at:"
+msgstr "Creato il:"
+
+#, fuzzy
+msgid "Last Modified by:"
+msgstr "Ultima modifica a:"
+
+#, fuzzy
+msgid "Last Modified at:"
+msgstr "Ultima data di modifica:"
 
 #, python-format
 msgid "Notes (%s)"
@@ -876,6 +882,9 @@ msgstr "Nome"
 
 msgid "Open"
 msgstr "Apri"
+
+msgid "Save"
+msgstr "Salva"
 
 msgid "Listed Records"
 msgstr "Record elencati"
@@ -1104,17 +1113,15 @@ msgstr ""
 msgid "next year"
 msgstr ""
 
-msgid "Day View"
+msgid "Day"
 msgstr ""
-
-msgid "Week View"
-msgstr "Vista settimanale"
-
-msgid "Month View"
-msgstr "Vista mensile"
 
 msgid "Week"
 msgstr "Settimana"
+
+#, fuzzy
+msgid "Month"
+msgstr "Vista mensile"
 
 msgid "Select..."
 msgstr "Seleziona..."
@@ -1183,6 +1190,9 @@ msgstr "È necessario salvare il record prima di aggiungere le traduzioni."
 
 msgid "No other language available."
 msgstr "Nessun altra lingua è disponibile."
+
+msgid "#ERROR"
+msgstr ""
 
 msgid "Translate view"
 msgstr "Traduci vista"

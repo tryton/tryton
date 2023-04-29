@@ -106,6 +106,10 @@ msgctxt "help:project.work,progress:"
 msgid "Estimated progress for this work."
 msgstr "Geschatte voortgang voor dit werk."
 
+msgctxt "help:project.work,timesheet_available:"
+msgid "Check to record time spent."
+msgstr "Vink aan om de bestede tijd te registreren."
+
 msgctxt "help:project.work,timesheet_duration:"
 msgid "Total time spent on this work and the sub-works."
 msgstr "Totale tijd besteed aan dit werk en de subwerken."

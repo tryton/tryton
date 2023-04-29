@@ -128,7 +128,7 @@ msgstr "Aankoopverzoeken"
 
 msgctxt "model:ir.action,name:act_purchase_request_form"
 msgid "Purchase Requests"
-msgstr "Aankoopverzoeken"
+msgstr "Inkoop Aanvragen"
 
 msgctxt "model:ir.action,name:wizard_create_purchase"
 msgid "Create Purchase"

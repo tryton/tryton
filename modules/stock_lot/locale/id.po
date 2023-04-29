@@ -273,6 +273,10 @@ msgctxt "model:ir.action,name:act_lot_form"
 msgid "Lots"
 msgstr ""
 
+msgctxt "model:ir.action,name:act_lot_form_product_relate"
+msgid "Lots"
+msgstr ""
+
 msgctxt "model:ir.action,name:act_lot_trace_downward_relate"
 msgid "Downward Traces"
 msgstr ""

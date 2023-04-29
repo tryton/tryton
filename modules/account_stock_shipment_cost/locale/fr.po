@@ -41,7 +41,7 @@ msgstr "Numéro"
 
 msgctxt "field:account.shipment_cost,posted_date:"
 msgid "Posted Date"
-msgstr "Date de postage"
+msgstr "Date de comptabilisation"
 
 msgctxt "field:account.shipment_cost,shipment_returns:"
 msgid "Shipment Returns"
@@ -133,7 +133,7 @@ msgstr "Montrer les coûts d'expédition"
 
 msgctxt "model:account.shipment_cost.show.shipment,name:"
 msgid "Post Shipment Cost"
-msgstr "Poster les coûts d'expédition"
+msgstr "Comptabiliser les coûts d'expédition"
 
 msgctxt "model:ir.action,name:act_shipment_cost_form"
 msgid "Shipment Costs"
@@ -145,7 +145,7 @@ msgstr "Coûts d'expédition"
 
 msgctxt "model:ir.action,name:wizard_shipment_cost_post"
 msgid "Post Shipment Cost"
-msgstr "Poster les coûts d'expédition"
+msgstr "Comptabiliser les coûts d'expédition"
 
 msgctxt "model:ir.action,name:wizard_shipment_cost_show"
 msgid "Show Shipment Cost"
@@ -164,7 +164,7 @@ msgstr "Brouillons"
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_shipment_cost_form_domain_posted"
 msgid "Posted"
-msgstr "Postés"
+msgstr "Comptabilisés"
 
 msgctxt "model:ir.message,text:msg_shipment_cost_post_no_shipment"
 msgid "The shipment cost \"%(shipment_cost)s\" has no shipment."
@@ -188,7 +188,7 @@ msgstr "Brouillon"
 
 msgctxt "model:ir.model.button,string:shipment_cost_post_button"
 msgid "Post"
-msgstr "Poster"
+msgstr "Comptabiliser"
 
 msgctxt "model:ir.model.button,string:shipment_cost_show_button"
 msgid "Show"
@@ -224,7 +224,7 @@ msgstr "Brouillon"
 
 msgctxt "selection:account.shipment_cost,state:"
 msgid "Posted"
-msgstr "Posté"
+msgstr "Comptabilisé"
 
 msgctxt "selection:account.shipment_cost.show.shipment,shipment:"
 msgid "Shipment"
@@ -248,7 +248,7 @@ msgstr "Annuler"
 
 msgctxt "wizard_button:account.shipment_cost.post,show,post:"
 msgid "Post"
-msgstr "Poster"
+msgstr "Comptabiliser"
 
 msgctxt "wizard_button:account.shipment_cost.show,show,end:"
 msgid "Close"

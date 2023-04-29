@@ -1,0 +1,39 @@
+#
+#, fuzzy
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:account.statement.import.start,mt940_bank:"
+msgid "Bank"
+msgstr "Banco"
+
+msgctxt ""
+"model:account.statement.origin.information,string:information_additional_data"
+msgid "Additional Data"
+msgstr "Información adicional"
+
+msgctxt ""
+"model:account.statement.origin.information,string:information_institution_reference"
+msgid "Institution Reference"
+msgstr "Referencia institucional"
+
+msgctxt ""
+"model:account.statement.origin.information,string:information_reference"
+msgid "Reference"
+msgstr "Referencia"
+
+msgctxt "selection:account.statement.import.start,mt940_bank:"
+msgid "ABN AMRO"
+msgstr "ABN AMRO"
+
+msgctxt "selection:account.statement.import.start,mt940_bank:"
+msgid "ING"
+msgstr "ING"
+
+msgctxt "selection:account.statement.import.start,mt940_bank:"
+msgid "Rabo"
+msgstr "Rabo"
+
+msgctxt "selection:account.statement.import.start,mt940_bank:"
+msgid "RegioBank"
+msgstr "RegioBank"

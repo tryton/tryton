@@ -699,6 +699,22 @@ msgctxt "model:product.uom,name:uom_day"
 msgid "Day"
 msgstr "Day"
 
+msgctxt "model:product.uom,name:uom_energy_joule"
+msgid "Joule"
+msgstr ""
+
+msgctxt "model:product.uom,name:uom_energy_kwh"
+msgid "Kilowatt-hour"
+msgstr ""
+
+msgctxt "model:product.uom,name:uom_energy_megajoule"
+msgid "Megajoule"
+msgstr ""
+
+msgctxt "model:product.uom,name:uom_energy_mwh"
+msgid "Megawatt-hour"
+msgstr ""
+
 #, fuzzy
 msgctxt "model:product.uom,name:uom_foot"
 msgid "Foot"
@@ -810,11 +826,6 @@ msgid "Unit"
 msgstr "Unit"
 
 #, fuzzy
-msgctxt "model:product.uom,name:uom_work_day"
-msgid "Work Day"
-msgstr "Work Day"
-
-#, fuzzy
 msgctxt "model:product.uom,name:uom_yard"
 msgid "Yard"
 msgstr "Yard"
@@ -850,6 +861,22 @@ msgstr "m³"
 msgctxt "model:product.uom,symbol:uom_day"
 msgid "d"
 msgstr "d"
+
+msgctxt "model:product.uom,symbol:uom_energy_joule"
+msgid "J"
+msgstr ""
+
+msgctxt "model:product.uom,symbol:uom_energy_kwh"
+msgid "kW⋅h"
+msgstr ""
+
+msgctxt "model:product.uom,symbol:uom_energy_megajoule"
+msgid "MJ"
+msgstr ""
+
+msgctxt "model:product.uom,symbol:uom_energy_mwh"
+msgid "MW⋅h"
+msgstr ""
 
 msgctxt "model:product.uom,symbol:uom_foot"
 msgid "ft"
@@ -940,11 +967,6 @@ msgctxt "model:product.uom,symbol:uom_unit"
 msgid "u"
 msgstr "u"
 
-#, fuzzy
-msgctxt "model:product.uom,symbol:uom_work_day"
-msgid "wd"
-msgstr "wd"
-
 msgctxt "model:product.uom,symbol:uom_yard"
 msgid "yd"
 msgstr "yd"
@@ -953,6 +975,10 @@ msgstr "yd"
 msgctxt "model:product.uom.category,name:"
 msgid "Unit of Measure Category"
 msgstr "Merska enota"
+
+msgctxt "model:product.uom.category,name:uom_cat_energy"
+msgid "Energy"
+msgstr ""
 
 #, fuzzy
 msgctxt "model:product.uom.category,name:uom_cat_length"

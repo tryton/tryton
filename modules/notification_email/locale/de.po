@@ -2,6 +2,14 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
+msgctxt "field:ir.email,notification_email:"
+msgid "Notification Email"
+msgstr "E-Mail Benachrichtigung"
+
+msgctxt "field:ir.email,notification_trigger:"
+msgid "Notification Trigger"
+msgstr "Benachrichtigung Trigger"
+
 msgctxt "field:ir.trigger,notification_email:"
 msgid "Email Notification"
 msgstr "E-Mail-Benachrichtigung"
@@ -79,35 +87,6 @@ msgctxt "field:notification.email.attachment,report:"
 msgid "Report"
 msgstr "Bericht"
 
-msgctxt "field:notification.email.log,date:"
-msgid "Date"
-msgstr "Datum"
-
-msgctxt "field:notification.email.log,notification:"
-msgid "Notification"
-msgstr "Benachrichtigung"
-
-msgctxt "field:notification.email.log,recipients:"
-msgid "Recipients"
-msgstr "Empfänger"
-
-msgctxt "field:notification.email.log,recipients_hidden:"
-msgid "Hidden Recipients"
-msgstr "Versteckte Empfänger"
-
-msgctxt "field:notification.email.log,recipients_secondary:"
-msgid "Secondary Recipients"
-msgstr "Sekundäre Empfänger"
-
-msgctxt "field:notification.email.log,resource:"
-msgid "Resource"
-msgstr "Ressource"
-
-# https://de.wikipedia.org/wiki/Datenbanktrigger
-msgctxt "field:notification.email.log,trigger:"
-msgid "Trigger"
-msgstr "Trigger"
-
 msgctxt "help:notification.email,attachments:"
 msgid "The reports used as attachments."
 msgstr "Der als Anhang genutzte Bericht."
@@ -178,13 +157,9 @@ msgctxt "model:ir.action,name:act_email_form"
 msgid "Notification Emails"
 msgstr "E-Mail Benachrichtigungen"
 
-msgctxt "model:ir.action,name:act_notification_email_log"
-msgid "Logs"
-msgstr "Logs"
-
-msgctxt "model:ir.action,name:act_notification_email_log_relate"
-msgid "Notification E-Mails"
-msgstr "E-Mail Benachrichtigungen"
+msgctxt "model:ir.action,name:act_ir_email_form_relate_notification"
+msgid "E-mails"
+msgstr "E-Mails"
 
 msgctxt "model:ir.message,text:msg_notification_invalid_subject"
 msgid ""
@@ -206,14 +181,6 @@ msgctxt "model:notification.email.attachment,name:"
 msgid "Email Notification Attachment"
 msgstr "Anhang für die E-Mail-Benachrichtigung"
 
-msgctxt "model:notification.email.log,name:"
-msgid "Notification Email Log"
-msgstr "Log der E-Mail-Benachrichtigung"
-
 msgctxt "selection:ir.trigger,action:"
 msgid "Email Notification"
 msgstr "E-Mail-Benachrichtigung"
-
-msgctxt "view:notification.email.log:"
-msgid "Time"
-msgstr "Zeit"

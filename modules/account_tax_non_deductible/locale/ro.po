@@ -1,15 +1,16 @@
 #
+#, fuzzy
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "field:account.tax,non_deductible:"
 msgid "Non-Deductible"
-msgstr ""
+msgstr "Nedeductibil"
 
 msgctxt "field:account.tax.template,non_deductible:"
 msgid "Non-Deductible"
-msgstr ""
+msgstr "Nedeductibil"
 
 msgctxt "help:account.tax.template,non_deductible:"
 msgid "Check to always include the tax amount as expense."
-msgstr ""
+msgstr "Bifaţi pentru a include impozitul că cheltuiala."

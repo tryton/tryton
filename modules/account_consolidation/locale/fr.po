@@ -63,8 +63,8 @@ msgid "Date"
 msgstr "Date"
 
 msgctxt "field:account.consolidation.balance_sheet.context,posted:"
-msgid "Posted Move"
-msgstr "Mouvement posté"
+msgid "Posted Moves"
+msgstr "Mouvements comptabilisés"
 
 msgctxt "field:account.consolidation.income_statement.context,companies:"
 msgid "Companies"
@@ -87,8 +87,8 @@ msgid "From Date"
 msgstr "Date de début"
 
 msgctxt "field:account.consolidation.income_statement.context,posted:"
-msgid "Posted Move"
-msgstr "Mouvement posté"
+msgid "Posted Moves"
+msgstr "Mouvements comptabilisés"
 
 msgctxt "field:account.consolidation.income_statement.context,to_date:"
 msgid "To Date"
@@ -112,11 +112,11 @@ msgstr "Société de consolidation"
 
 msgctxt "help:account.consolidation.balance_sheet.context,posted:"
 msgid "Only include posted moves."
-msgstr "Inclure seulement les mouvements postés."
+msgstr "Inclure seulement les mouvements comptabilisés."
 
 msgctxt "help:account.consolidation.income_statement.context,posted:"
 msgid "Only include posted moves."
-msgstr "Inclure seulement les mouvements postés."
+msgstr "Inclure seulement les mouvements comptabilisés."
 
 msgctxt "model:account.consolidation,name:"
 msgid "Account Consolidation"

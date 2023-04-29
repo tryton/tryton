@@ -598,7 +598,7 @@ msgstr "Maßeinheiten"
 
 msgctxt "model:product.category,name:"
 msgid "Product Category"
-msgstr "Artikel Kategorie"
+msgstr "Artikelkategorie"
 
 msgctxt "model:product.configuration,name:"
 msgid "Product Configuration"
@@ -675,6 +675,22 @@ msgstr "Kubikmeter"
 msgctxt "model:product.uom,name:uom_day"
 msgid "Day"
 msgstr "Tag"
+
+msgctxt "model:product.uom,name:uom_energy_joule"
+msgid "Joule"
+msgstr "Joule"
+
+msgctxt "model:product.uom,name:uom_energy_kwh"
+msgid "Kilowatt-hour"
+msgstr "Kilowattstunde"
+
+msgctxt "model:product.uom,name:uom_energy_megajoule"
+msgid "Megajoule"
+msgstr "Megajoule"
+
+msgctxt "model:product.uom,name:uom_energy_mwh"
+msgid "Megawatt-hour"
+msgstr "Megawattstunde"
 
 msgctxt "model:product.uom,name:uom_foot"
 msgid "Foot"
@@ -764,10 +780,6 @@ msgctxt "model:product.uom,name:uom_unit"
 msgid "Unit"
 msgstr "Stück"
 
-msgctxt "model:product.uom,name:uom_work_day"
-msgid "Work Day"
-msgstr "Arbeitstag"
-
 msgctxt "model:product.uom,name:uom_yard"
 msgid "Yard"
 msgstr "Yard"
@@ -803,6 +815,22 @@ msgstr "m³"
 msgctxt "model:product.uom,symbol:uom_day"
 msgid "d"
 msgstr "d"
+
+msgctxt "model:product.uom,symbol:uom_energy_joule"
+msgid "J"
+msgstr "J"
+
+msgctxt "model:product.uom,symbol:uom_energy_kwh"
+msgid "kW⋅h"
+msgstr "kWh"
+
+msgctxt "model:product.uom,symbol:uom_energy_megajoule"
+msgid "MJ"
+msgstr "MJ"
+
+msgctxt "model:product.uom,symbol:uom_energy_mwh"
+msgid "MW⋅h"
+msgstr "MWh"
 
 msgctxt "model:product.uom,symbol:uom_foot"
 msgid "ft"
@@ -892,10 +920,6 @@ msgctxt "model:product.uom,symbol:uom_unit"
 msgid "u"
 msgstr "Stk."
 
-msgctxt "model:product.uom,symbol:uom_work_day"
-msgid "wd"
-msgstr "At."
-
 msgctxt "model:product.uom,symbol:uom_yard"
 msgid "yd"
 msgstr "yd"
@@ -903,6 +927,10 @@ msgstr "yd"
 msgctxt "model:product.uom.category,name:"
 msgid "Unit of Measure Category"
 msgstr "Größenart"
+
+msgctxt "model:product.uom.category,name:uom_cat_energy"
+msgid "Energy"
+msgstr "Energie"
 
 msgctxt "model:product.uom.category,name:uom_cat_length"
 msgid "Length"

@@ -27,9 +27,8 @@ msgstr "specificeer de inlog gebruiker"
 msgid "specify the server hostname:port"
 msgstr "specificeer de hostnaam:poort"
 
-#, python-format
-msgid "Unable to write config file %s."
-msgstr "Kan configuratiebestand %s niet opslaan."
+msgid "disable thread usage"
+msgstr "schakel gebruik van threads uit"
 
 #, python-format
 msgid "Unable to set locale %s"
@@ -65,12 +64,6 @@ msgstr "OK"
 
 msgid "Your selection:"
 msgstr "Uw selectie:"
-
-msgid "Select"
-msgstr "Selecteer"
-
-msgid "Save"
-msgstr "Opslaan"
 
 msgid "Save As..."
 msgstr "Opslaan als..."
@@ -199,6 +192,9 @@ msgstr "Sjabloon"
 
 msgid "Edit..."
 msgstr "Bewerken..."
+
+msgid "View Logs..."
+msgstr "Bekijk Logboek..."
 
 msgid "Attachments..."
 msgstr "Bijlagen..."
@@ -593,6 +589,9 @@ msgstr "Selecteer bestand"
 msgid "Remove File"
 msgstr "Bestand verwijderen"
 
+msgid "Select"
+msgstr "Selecteer"
+
 msgid "Add..."
 msgstr "Toevoegen..."
 
@@ -615,24 +614,6 @@ msgstr "Notitie (%d/%d)"
 
 msgid "You have to select one record."
 msgstr "U moet één record selecteren."
-
-msgid "ID:"
-msgstr "ID:"
-
-msgid "Created by:"
-msgstr "Aangemaakt door:"
-
-msgid "Created at:"
-msgstr "Aanmaakdatum:"
-
-msgid "Edited by:"
-msgstr "Bewerkt door:"
-
-msgid "Edited at:"
-msgstr "Bewerkt op:"
-
-msgid "Model:"
-msgstr "Model:"
 
 msgid "Are you sure to remove this record?"
 msgstr "Weet u zeker dat u dit record wilt verwijderen?"
@@ -697,6 +678,28 @@ msgstr "Zoek limiet instellen"
 
 msgid "Limit:"
 msgstr "Limiet:"
+
+#, python-format
+msgid "Logs (%s)"
+msgstr "Logboeken (%s)"
+
+msgid "Model:"
+msgstr "Model:"
+
+msgid "ID:"
+msgstr "ID:"
+
+msgid "Created by:"
+msgstr "Aangemaakt door:"
+
+msgid "Created at:"
+msgstr "Aanmaakdatum:"
+
+msgid "Last Modified by:"
+msgstr "Laatst aangepast door:"
+
+msgid "Last Modified at:"
+msgstr "Laatst gewijzigd om:"
 
 #, python-format
 msgid "Notes (%s)"
@@ -864,6 +867,9 @@ msgstr "Naam"
 
 msgid "Open"
 msgstr "Openen"
+
+msgid "Save"
+msgstr "Opslaan"
 
 msgid "Listed Records"
 msgstr "Weergegeven records"
@@ -1086,17 +1092,14 @@ msgstr "vorig jaar"
 msgid "next year"
 msgstr "volgend jaar"
 
-msgid "Day View"
-msgstr "Dagweergave"
-
-msgid "Week View"
-msgstr "Weekoverzicht"
-
-msgid "Month View"
-msgstr "Maandweergave"
+msgid "Day"
+msgstr "Dag"
 
 msgid "Week"
 msgstr "Week"
+
+msgid "Month"
+msgstr "Maand"
 
 msgid "Select..."
 msgstr "Selecteer ..."
@@ -1162,6 +1165,9 @@ msgstr "U moet de record opslaan voordat u vertalingen kunt toevoegen."
 
 msgid "No other language available."
 msgstr "Geen andere taal beschikbaar."
+
+msgid "#ERROR"
+msgstr "#FOUT"
 
 msgid "Translate view"
 msgstr "Vertaal weergave"

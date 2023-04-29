@@ -116,11 +116,11 @@ msgstr "Zu viele Anfragen. Bitte versuchen Sie es später erneut."
 msgid "Login"
 msgstr "Log-in"
 
-msgid "User name"
-msgstr "Benutzername"
-
 msgid "Database"
 msgstr "Datenbank"
+
+msgid "User name"
+msgstr "Benutzername"
 
 msgid "Login with"
 msgstr "Log-in mit"
@@ -298,7 +298,7 @@ msgid "Reload"
 msgstr "Neu laden"
 
 msgid "View Logs..."
-msgstr "Protokoll ansehen..."
+msgstr "Logs anzeigen..."
 
 msgid "Show revisions..."
 msgstr "Bearbeitungen anzeigen..."
@@ -364,24 +364,6 @@ msgstr "Die Datensätze wurden nicht gelöscht."
 
 msgid "You have to select one record."
 msgstr "Ein Datensatz muss ausgewählt werden."
-
-msgid "ID:"
-msgstr "ID:"
-
-msgid "Created by:"
-msgstr "Erstellt von:"
-
-msgid "Created at:"
-msgstr "Erstellt am:"
-
-msgid "Edited by:"
-msgstr "Bearbeitet von:"
-
-msgid "Edited at:"
-msgstr "Zuletzt bearbeitet am:"
-
-msgid "Model: "
-msgstr "Modell: "
 
 msgid "Add..."
 msgstr "Hinzufügen..."
@@ -542,6 +524,9 @@ msgstr "Anpassen"
 msgid "More"
 msgstr "Mehr"
 
+msgid "#ERROR"
+msgstr "#FEHLER"
+
 msgid "Today"
 msgstr "Heute"
 
@@ -571,6 +556,27 @@ msgstr "Anhänge (%1)"
 
 msgid "Notes (%1)"
 msgstr "Notizen (%1)"
+
+msgid "Logs (%1)"
+msgstr "Logs (%1)"
+
+msgid "Model:"
+msgstr "Modell:"
+
+msgid "ID:"
+msgstr "ID:"
+
+msgid "Created by:"
+msgstr "Erstellt von:"
+
+msgid "Created at:"
+msgstr "Erstellt am:"
+
+msgid "Last Modified by:"
+msgstr "Zuletzt verändert von:"
+
+msgid "Last Modified at:"
+msgstr "Zuletzt verändert am:"
 
 msgid "Search %1"
 msgstr "Suche %1"

@@ -40,7 +40,10 @@ msgid "The currency of the price."
 msgstr "Kainos valiuta."
 
 msgctxt "help:carrier,weight_price_list:"
-msgid "Add price to the carrier service."
+msgid ""
+"Add price per weight to the carrier service.\n"
+"The first line for which the weight is greater is used.\n"
+"The line with weight of 0 is used as default price."
 msgstr ""
 
 msgctxt "help:carrier,weight_uom:"

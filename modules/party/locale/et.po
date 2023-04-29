@@ -2,19 +2,17 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-#, fuzzy
 msgctxt "field:ir.email.template,contact_mechanism:"
 msgid "Contact Mechanism"
-msgstr "Kontakteerumisviis"
+msgstr "Kontaktid"
 
 msgctxt "field:party.address,city:"
 msgid "City"
 msgstr "Linn"
 
-#, fuzzy
 msgctxt "field:party.address,contact_mechanisms:"
 msgid "Contact Mechanisms"
-msgstr "Kontakteerumisviis"
+msgstr "Kontaktid"
 
 msgctxt "field:party.address,country:"
 msgid "Country"
@@ -35,22 +33,20 @@ msgstr "Hoone"
 
 msgctxt "field:party.address,party:"
 msgid "Party"
-msgstr "Osapool"
+msgstr "Partner"
 
 msgctxt "field:party.address,party_name:"
 msgid "Party Name"
-msgstr "Osapoole nimi"
+msgstr "Partneri nimi"
 
-#, fuzzy
 msgctxt "field:party.address,postal_code:"
 msgid "Postal Code"
-msgstr "Riik"
+msgstr "Sihtnumber"
 
 msgctxt "field:party.address,street:"
 msgid "Street"
 msgstr "Tänav"
 
-#, fuzzy
 msgctxt "field:party.address,street_single_line:"
 msgid "Street"
 msgstr "Tänav"
@@ -62,31 +58,27 @@ msgstr "Alajaotus"
 #, fuzzy
 msgctxt "field:party.address,subdivision_types:"
 msgid "Subdivision Types"
-msgstr "Alajaotus"
+msgstr "Maakond"
 
-#, fuzzy
 msgctxt "field:party.address.format,country_code:"
 msgid "Country Code"
-msgstr "Riik"
+msgstr "Riigi kood"
 
 msgctxt "field:party.address.format,format_:"
 msgid "Format"
 msgstr "Formaat"
 
-#, fuzzy
 msgctxt "field:party.address.format,language_code:"
 msgid "Language Code"
-msgstr "Keel"
+msgstr "Keele kood"
 
-#, fuzzy
 msgctxt "field:party.address.subdivision_type,country_code:"
 msgid "Country Code"
-msgstr "Riik"
+msgstr "Riigi kood"
 
-#, fuzzy
 msgctxt "field:party.address.subdivision_type,types:"
 msgid "Subdivision Types"
-msgstr "Alajaotus"
+msgstr "Maakond"
 
 msgctxt "field:party.category,childs:"
 msgid "Children"
@@ -115,24 +107,23 @@ msgstr "Identifikaatorid"
 
 msgctxt "field:party.configuration,party_lang:"
 msgid "Party Language"
-msgstr "Osapoole keel"
+msgstr "Partneri keel"
 
 msgctxt "field:party.configuration,party_sequence:"
 msgid "Party Sequence"
-msgstr "Osapoole jada"
+msgstr "Partneri jada"
 
 msgctxt "field:party.configuration.party_lang,party_lang:"
 msgid "Party Language"
-msgstr "Osapoole keel"
+msgstr "Partneri keel"
 
 msgctxt "field:party.configuration.party_sequence,party_sequence:"
 msgid "Party Sequence"
-msgstr "Osapoole jada"
+msgstr "Partneri jada"
 
-#, fuzzy
 msgctxt "field:party.contact_mechanism,address:"
 msgid "Address"
-msgstr "Aadressid"
+msgstr "Aadress"
 
 msgctxt "field:party.contact_mechanism,comment:"
 msgid "Comment"
@@ -142,12 +133,10 @@ msgctxt "field:party.contact_mechanism,email:"
 msgid "E-Mail"
 msgstr "E-Kiri"
 
-#, fuzzy
 msgctxt "field:party.contact_mechanism,language:"
 msgid "Language"
 msgstr "Keel"
 
-#, fuzzy
 msgctxt "field:party.contact_mechanism,languages:"
 msgid "Languages"
 msgstr "Keeled"
@@ -162,7 +151,7 @@ msgstr "Väärtus"
 
 msgctxt "field:party.contact_mechanism,party:"
 msgid "Party"
-msgstr "Osapool"
+msgstr "Partner"
 
 msgctxt "field:party.contact_mechanism,sip:"
 msgid "SIP"
@@ -192,24 +181,21 @@ msgctxt "field:party.contact_mechanism,website:"
 msgid "Website"
 msgstr "Koduleht"
 
-#, fuzzy
 msgctxt "field:party.contact_mechanism.language,contact_mechanism:"
 msgid "Contact Mechanism"
-msgstr "Kontakteerumisviis"
+msgstr "Kontaktid"
 
-#, fuzzy
 msgctxt "field:party.contact_mechanism.language,language:"
 msgid "Language"
 msgstr "Keel"
 
 msgctxt "field:party.erase.ask,party:"
 msgid "Party"
-msgstr "Osapool"
+msgstr "Partner"
 
-#, fuzzy
 msgctxt "field:party.identifier,address:"
 msgid "Address"
-msgstr "Aadressid"
+msgstr "Aadress"
 
 msgctxt "field:party.identifier,code:"
 msgid "Code"
@@ -217,16 +203,15 @@ msgstr "Kood"
 
 msgctxt "field:party.identifier,party:"
 msgid "Party"
-msgstr "Osapool"
+msgstr "Partner"
 
 msgctxt "field:party.identifier,type:"
 msgid "Type"
 msgstr "Tüüp"
 
-#, fuzzy
 msgctxt "field:party.identifier,type_address:"
 msgid "Type of Address"
-msgstr "Aadressid"
+msgstr "Aadressi tüüp"
 
 msgctxt "field:party.party,addresses:"
 msgid "Addresses"
@@ -246,11 +231,11 @@ msgstr ""
 
 msgctxt "field:party.party,contact_mechanisms:"
 msgid "Contact Mechanisms"
-msgstr "Kontakteerumisviis"
+msgstr "Kontaktid"
 
 msgctxt "field:party.party,distance:"
 msgid "Distance"
-msgstr ""
+msgstr "Kaugus"
 
 msgctxt "field:party.party,email:"
 msgid "E-Mail"
@@ -306,7 +291,7 @@ msgstr "Kategooria"
 
 msgctxt "field:party.party-party.category,party:"
 msgid "Party"
-msgstr "Osapool"
+msgstr "Partner"
 
 msgctxt "field:party.party.lang,lang:"
 msgid "Language"
@@ -314,7 +299,7 @@ msgstr "Keel"
 
 msgctxt "field:party.party.lang,party:"
 msgid "Party"
-msgstr "Osapool"
+msgstr "Partner"
 
 msgctxt "field:party.replace.ask,destination:"
 msgid "Destination"
@@ -371,7 +356,7 @@ msgstr "Uute osapoolte vaikimisi keel"
 
 msgctxt "help:party.configuration,party_sequence:"
 msgid "Used to generate the party code."
-msgstr "Kasutatakse osapoole koodi loomiseks"
+msgstr "Kasutatakse partneri koodi loomiseks"
 
 msgctxt "help:party.configuration.party_lang,party_lang:"
 msgid "The default language for new parties."
@@ -379,51 +364,49 @@ msgstr "Vaikimisi keel uutele osapooltele."
 
 msgctxt "help:party.configuration.party_sequence,party_sequence:"
 msgid "Used to generate the party code."
-msgstr "Kasutatakse osapoole koodi loomiseks"
+msgstr "Kasutatakse partneri koodi loomiseks"
 
-#, fuzzy
 msgctxt "help:party.contact_mechanism,language:"
 msgid ""
 "Used to translate communication made using the contact mechanism.\n"
 "Leave empty for the party language."
-msgstr "Kasutatakse osapoolega suhtluse tõlkimisel"
+msgstr "Kasutatakse partneriga suhtluse tõlkimisel"
 
 msgctxt "help:party.erase.ask,party:"
 msgid "The party to be erased."
-msgstr "Kustutatav osapool."
+msgstr "Kustutatav partner."
 
-#, fuzzy
 msgctxt "help:party.identifier,address:"
 msgid "The address identified by this record."
-msgstr "Kirje poolt identifitseeritud osapool"
+msgstr "Kirje poolt identifitseeritud aadress."
 
 msgctxt "help:party.identifier,party:"
 msgid "The party identified by this record."
-msgstr "Kirje poolt identifitseeritud osapool"
+msgstr "Kirje põhjal identifitseeritud partner"
 
 msgctxt "help:party.party,categories:"
 msgid "The categories the party belongs to."
-msgstr "Kategooriad kuhu osapool kuulub"
+msgstr "Kategooriad kuhu partner kuulub"
 
 msgctxt "help:party.party,code:"
 msgid "The unique identifier of the party."
-msgstr "Osapoole unikaalne tunnus"
+msgstr "Partneri unikaalne tunnus"
 
 msgctxt "help:party.party,identifiers:"
 msgid "Add other identifiers of the party."
-msgstr "Lisa osapoolele muid tunnuseid"
+msgstr "Lisa partnerile muid tunnuseid"
 
 msgctxt "help:party.party,lang:"
 msgid "Used to translate communications with the party."
-msgstr "Kasutatakse osapoolega suhtluse tõlkimisel"
+msgstr "Kasutatakse partneriga suhtluse tõlkimisel"
 
 msgctxt "help:party.party,name:"
 msgid "The main identifier of the party."
-msgstr "Osapoole peamine tunnus"
+msgstr "Partneri identifikaator"
 
 msgctxt "help:party.party,replaced_by:"
 msgid "The party replacing this one."
-msgstr "Osapoolt asendav osapool"
+msgstr "Asendav partner"
 
 msgctxt "help:party.party,tax_identifier:"
 msgid "The identifier used for tax report."
@@ -431,11 +414,11 @@ msgstr "Maksuaruandes kasutatav tunnus"
 
 msgctxt "help:party.replace.ask,destination:"
 msgid "The party that replaces."
-msgstr "Osapool, kes asendab"
+msgstr "Partner, kes asendab"
 
 msgctxt "help:party.replace.ask,source:"
 msgid "The party to be replaced."
-msgstr "Osapool, keda asendatakse"
+msgstr "Partner, keda asendatakse"
 
 msgctxt "model:ir.action,name:act_address_form"
 msgid "Addresses"
@@ -460,20 +443,19 @@ msgstr "Kategooriad"
 
 msgctxt "model:ir.action,name:act_contact_mechanism_form"
 msgid "Contact Mechanisms"
-msgstr "Kontakteerumisviis"
+msgstr "Kontaktid"
 
 msgctxt "model:ir.action,name:act_party_by_category"
 msgid "Parties by Category"
 msgstr "Kategooriatepõhised osapooled"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_party_configuration_form"
 msgid "Configuration"
 msgstr "Seadistus"
 
 msgctxt "model:ir.action,name:act_party_form"
 msgid "Parties"
-msgstr "Osapooled"
+msgstr "Partnerid"
 
 msgctxt "model:ir.action,name:report_label"
 msgid "Labels"
@@ -495,10 +477,9 @@ msgctxt "model:ir.message,text:msg_address_change_party"
 msgid "You cannot change the party of address \"%(address)s\"."
 msgstr ""
 
-#, fuzzy
 msgctxt "model:ir.message,text:msg_address_subdivision_country_code_unique"
 msgid "The country code on subdivision type must be unique."
-msgstr "Osapoole kood peab olema unikaalne."
+msgstr "Riigi kood peab olema unikaalne."
 
 msgctxt "model:ir.message,text:msg_category_name_unique"
 msgid "The name of party category must be unique by parent."
@@ -542,7 +523,11 @@ msgstr ""
 
 msgctxt "model:ir.message,text:msg_party_code_unique"
 msgid "The code on party must be unique."
-msgstr "Osapoole kood peab olema unikaalne."
+msgstr "Partneri kood peab olema unikaalne."
+
+msgctxt "model:ir.message,text:msg_party_identifier_duplicate"
+msgid "The party \"%(party)s\" has the same %(type)s \"%(code)s\"."
+msgstr ""
 
 msgctxt "model:ir.message,text:msg_party_set_contact_mechanism"
 msgid ""
@@ -556,11 +541,11 @@ msgstr ""
 
 msgctxt "model:ir.sequence,name:sequence_party"
 msgid "Party"
-msgstr "Osapool"
+msgstr "Partner"
 
 msgctxt "model:ir.sequence.type,name:sequence_type_party"
 msgid "Party"
-msgstr "Osapool"
+msgstr "Partner"
 
 msgctxt "model:ir.ui.menu,name:menu_address_form"
 msgid "Addresses"
@@ -589,12 +574,11 @@ msgstr "Seadistus"
 
 msgctxt "model:ir.ui.menu,name:menu_contact_mechanism_form"
 msgid "Contact Mechanisms"
-msgstr "Kontakteerumisviis"
+msgstr "Kontaktid"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_party"
 msgid "Parties"
-msgstr "Osapooled"
+msgstr "Partnerid"
 
 #, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_party_configuration"
@@ -603,7 +587,7 @@ msgstr "Seadistus"
 
 msgctxt "model:ir.ui.menu,name:menu_party_form"
 msgid "Parties"
-msgstr "Osapooled"
+msgstr "Partnerid"
 
 msgctxt "model:party.address,name:"
 msgid "Address"
@@ -629,52 +613,51 @@ msgstr "Kontrolli VIES"
 
 msgctxt "model:party.configuration,name:"
 msgid "Party Configuration"
-msgstr "Osapoole seadistus"
+msgstr "Partneri seadistus"
 
 msgctxt "model:party.configuration.party_lang,name:"
 msgid "Party Configuration Lang"
-msgstr "Osapoole seadistuse keel"
+msgstr "Partneri seadistuse keel"
 
 msgctxt "model:party.configuration.party_sequence,name:"
 msgid "Party Configuration Sequence"
-msgstr "Osapoole seadistuse järjestus"
+msgstr "Partneri seadistuse järjestus"
 
 msgctxt "model:party.contact_mechanism,name:"
 msgid "Contact Mechanism"
-msgstr "Kontakteerumisviis"
+msgstr "Kontaktid"
 
-#, fuzzy
 msgctxt "model:party.contact_mechanism.language,name:"
 msgid "Contact Mechanism Language"
-msgstr "Kontakteerumisviis"
+msgstr "Kontakti keel"
 
 msgctxt "model:party.erase.ask,name:"
 msgid "Erase Party"
-msgstr "Kustuta osapool"
+msgstr "Kustuta partner"
 
 msgctxt "model:party.identifier,name:"
 msgid "Party Identifier"
-msgstr "Osapoole tunnus"
+msgstr "Partneri identifikaator"
 
 msgctxt "model:party.party,name:"
 msgid "Party"
-msgstr "Osapool"
+msgstr "Partner"
 
 msgctxt "model:party.party-party.category,name:"
 msgid "Party - Category"
-msgstr "Osapool - Kategooria"
+msgstr "Partner - Kategooria"
 
 msgctxt "model:party.party.lang,name:"
 msgid "Party Lang"
-msgstr ""
+msgstr "Partneri keel"
 
 msgctxt "model:party.replace.ask,name:"
 msgid "Replace Party"
-msgstr "Asenda osapool"
+msgstr "Asenda partner"
 
 msgctxt "model:res.group,name:group_party_admin"
 msgid "Party Administration"
-msgstr "Osapoole administreerimine"
+msgstr "Partneri administreerimine"
 
 #, fuzzy
 msgctxt "selection:party.configuration,identifier_types:"
@@ -1409,7 +1392,7 @@ msgstr "Üldine"
 
 msgctxt "view:party.replace.ask:"
 msgid "Party"
-msgstr "Osapool"
+msgstr "Partner"
 
 msgctxt "view:party.replace.ask:"
 msgid "Replace By"

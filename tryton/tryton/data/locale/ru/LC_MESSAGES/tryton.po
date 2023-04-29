@@ -28,9 +28,8 @@ msgstr "указать имя пользователя"
 msgid "specify the server hostname:port"
 msgstr "укажите имя сервера"
 
-#, fuzzy, python-format
-msgid "Unable to write config file %s."
-msgstr "Невозможно записать файл конфигурации %s!"
+msgid "disable thread usage"
+msgstr ""
 
 #, python-format
 msgid "Unable to set locale %s"
@@ -69,12 +68,6 @@ msgstr ""
 
 msgid "Your selection:"
 msgstr "Ваш выбор:"
-
-msgid "Select"
-msgstr ""
-
-msgid "Save"
-msgstr "Сохранить"
 
 msgid "Save As..."
 msgstr "Сохранить как..."
@@ -214,6 +207,10 @@ msgstr "Связанные"
 #, fuzzy
 msgid "Edit..."
 msgstr "_Выход..."
+
+#, fuzzy
+msgid "View Logs..."
+msgstr "Просмотр изменений"
 
 msgid "Attachments..."
 msgstr "Вложения..."
@@ -633,6 +630,9 @@ msgstr "Выбор"
 msgid "Remove File"
 msgstr "Удалить <Del>"
 
+msgid "Select"
+msgstr ""
+
 msgid "Add..."
 msgstr ""
 
@@ -657,28 +657,6 @@ msgstr ""
 #, fuzzy
 msgid "You have to select one record."
 msgstr "Вы должны выбрать одну запись!"
-
-msgid "ID:"
-msgstr "Номер строки"
-
-#, fuzzy
-msgid "Created by:"
-msgstr "Дата создания"
-
-#, fuzzy
-msgid "Created at:"
-msgstr "Дата создания"
-
-#, fuzzy
-msgid "Edited by:"
-msgstr "Редактировать"
-
-#, fuzzy
-msgid "Edited at:"
-msgstr "Редактировать"
-
-msgid "Model:"
-msgstr "Модель:"
 
 msgid "Are you sure to remove this record?"
 msgstr "Вы уверены что хотите удалить эту запись?"
@@ -748,6 +726,32 @@ msgstr "Настройки ограничения поиска"
 
 msgid "Limit:"
 msgstr "Кол-во записей"
+
+#, python-format
+msgid "Logs (%s)"
+msgstr ""
+
+msgid "Model:"
+msgstr "Модель:"
+
+msgid "ID:"
+msgstr "Номер строки"
+
+#, fuzzy
+msgid "Created by:"
+msgstr "Дата создания"
+
+#, fuzzy
+msgid "Created at:"
+msgstr "Дата создания"
+
+#, fuzzy
+msgid "Last Modified by:"
+msgstr "Изменена пользователем:"
+
+#, fuzzy
+msgid "Last Modified at:"
+msgstr "Дата изменения:"
 
 #, python-format
 msgid "Notes (%s)"
@@ -925,6 +929,9 @@ msgstr "Имя"
 
 msgid "Open"
 msgstr "Открыть"
+
+msgid "Save"
+msgstr "Сохранить"
 
 #, fuzzy
 msgid "Listed Records"
@@ -1159,19 +1166,15 @@ msgstr ""
 msgid "next year"
 msgstr ""
 
-msgid "Day View"
+msgid "Day"
 msgstr ""
-
-#, fuzzy
-msgid "Week View"
-msgstr "Переключить вид"
-
-#, fuzzy
-msgid "Month View"
-msgstr "Переключить вид"
 
 msgid "Week"
 msgstr ""
+
+#, fuzzy
+msgid "Month"
+msgstr "Переключить вид"
 
 msgid "Select..."
 msgstr ""
@@ -1242,6 +1245,9 @@ msgstr "Необходимо сохранить запись перед доба
 #, fuzzy
 msgid "No other language available."
 msgstr "Отсутствуют другие доступные языки!"
+
+msgid "#ERROR"
+msgstr ""
 
 msgid "Translate view"
 msgstr "Перевод текущего окна"

@@ -545,6 +545,10 @@ msgctxt "model:ir.message,text:msg_party_code_unique"
 msgid "The code on party must be unique."
 msgstr "El codi del tercer ha de ser únic."
 
+msgctxt "model:ir.message,text:msg_party_identifier_duplicate"
+msgid "The party \"%(party)s\" has the same %(type)s \"%(code)s\"."
+msgstr "El tercer \"%(party)\" té el mateix \"%(type)s\" \"%(code)s\"."
+
 msgctxt "model:ir.message,text:msg_party_set_contact_mechanism"
 msgid ""
 "To change the \"%(field)s\" for party \"%(party)s\", you must edit their "
@@ -955,7 +959,7 @@ msgstr "Identificador fiscal Indi"
 
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "Indonesian VAT Number"
-msgstr "Identificador fiscal Estonià"
+msgstr "Identificador fiscal Indonesi"
 
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "Irish Personal Number"

@@ -2,6 +2,23 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
+msgctxt "field:party.party,purchase_invoice_line_standalone:"
+msgid "Purchase Invoice Line Standalone"
+msgstr "Linea de factura de compra por separado"
+
+msgctxt "field:party.party,purchase_invoice_lines_standalone:"
+msgid "Purchase Invoice Lines Standalone"
+msgstr "Lineas de factura de compra por separado"
+
+msgctxt "field:party.party.purchase_invoice_line_standalone,party:"
+msgid "Party"
+msgstr "Tercero"
+
+msgctxt ""
+"field:party.party.purchase_invoice_line_standalone,purchase_invoice_line_standalone:"
+msgid "Invoice Line Standalone"
+msgstr "Líneas de factura por separado"
+
 msgctxt "field:purchase.purchase,invoice_lines:"
 msgid "Invoice Lines"
 msgstr "Líneas de factura"
@@ -21,6 +38,10 @@ msgstr "Compra"
 msgctxt "model:ir.action,name:act_purchase_invoice_line_relate"
 msgid "Invoice Lines"
 msgstr "Líneas de factura"
+
+msgctxt "model:party.party.purchase_invoice_line_standalone,name:"
+msgid "Party Purchase Invoice Line Standalone"
+msgstr "Lineas de factura de compra por separado"
 
 msgctxt "model:purchase.purchase-ignored-account.invoice.line,name:"
 msgid "Purchase - Ignored Invoice Line"

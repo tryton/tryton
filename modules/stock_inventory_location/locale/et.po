@@ -8,7 +8,7 @@ msgstr "Ettevõte"
 
 msgctxt "field:stock.inventory.create.start,complete_lines:"
 msgid "Complete"
-msgstr ""
+msgstr "Lõpeta"
 
 msgctxt "field:stock.inventory.create.start,date:"
 msgid "Date"
@@ -16,7 +16,7 @@ msgstr "Kuupäev"
 
 msgctxt "field:stock.inventory.create.start,empty_quantity:"
 msgid "Empty Quantity"
-msgstr ""
+msgstr "Ilma koguseta"
 
 msgctxt "field:stock.inventory.create.start,locations:"
 msgid "Locations"
@@ -28,19 +28,19 @@ msgstr ""
 
 msgctxt "help:stock.inventory.create.start,empty_quantity:"
 msgid "How lines without a quantity are handled."
-msgstr ""
+msgstr "Kuidas käsitleda ilma koguseta ridu."
 
 msgctxt "model:ir.action,name:wizard_create_inventory"
 msgid "Create Inventories"
-msgstr "Loo laoseis"
+msgstr "Loo inventuur"
 
 msgctxt "model:ir.ui.menu,name:menu_create_inventory"
 msgid "Create Inventories"
-msgstr "Loo laoseis"
+msgstr "Loo inventuur"
 
 msgctxt "model:stock.inventory.create.start,name:"
 msgid "Create Inventories"
-msgstr "Loo laoseis"
+msgstr "Loo inventuur"
 
 msgctxt "wizard_button:stock.inventory.create,start,create_:"
 msgid "Create"

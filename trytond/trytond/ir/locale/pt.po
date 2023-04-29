@@ -140,6 +140,11 @@ msgctxt "field:ir.action.act_window.view,act_window:"
 msgid "Action"
 msgstr "Ação"
 
+#, fuzzy
+msgctxt "field:ir.action.act_window.view,model:"
+msgid "Model"
+msgstr "Modelo"
+
 msgctxt "field:ir.action.act_window.view,view:"
 msgid "View"
 msgstr "Sumário"
@@ -990,6 +995,29 @@ msgstr "Acesso de leitura"
 msgctxt "field:ir.model.field.access,perm_write:"
 msgid "Write Access"
 msgstr "Acesso de edição"
+
+#, fuzzy
+msgctxt "field:ir.model.log,action:"
+msgid "Action"
+msgstr "Ação"
+
+msgctxt "field:ir.model.log,event:"
+msgid "Event"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:ir.model.log,resource:"
+msgid "Resource"
+msgstr "Recurso"
+
+msgctxt "field:ir.model.log,target:"
+msgid "Target"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:ir.model.log,user:"
+msgid "User"
+msgstr "Usuário"
 
 msgctxt "field:ir.model.print_model_graph.start,filter:"
 msgid "Filter"
@@ -1925,6 +1953,10 @@ msgctxt "model:ir.action,name:act_model_form"
 msgid "Models"
 msgstr "Modelos"
 
+msgctxt "model:ir.action,name:act_model_log_form"
+msgid "Logs"
+msgstr ""
+
 msgctxt "model:ir.action,name:act_module_activate_upgrade"
 msgid "Perform Pending Activation/Upgrade"
 msgstr "Realizar Ativações/Atualizações Pendentes"
@@ -2409,6 +2441,10 @@ msgctxt "model:ir.lang,name:lang_tr"
 msgid "Turkish"
 msgstr "Turco"
 
+msgctxt "model:ir.lang,name:lang_uk"
+msgid "Ukrainian"
+msgstr ""
+
 msgctxt "model:ir.lang,name:lang_zh_CN"
 msgid "Chinese Simplified"
 msgstr "Chinês Simplificado"
@@ -2532,9 +2568,10 @@ msgid ""
 "%(rules)s"
 msgstr ""
 
+#, fuzzy
 msgctxt "model:ir.message,text:msg_delete_xml_record"
-msgid "You are not allowed to delete this record."
-msgstr "Você não tem permissão para apagar este registro."
+msgid "You are not allowed to delete the record \"%(record)s\" of \"%(model)s\"."
+msgstr "Você não pode acessar \"%(model)s\"."
 
 #, fuzzy
 msgctxt "model:ir.message,text:msg_dict_no"
@@ -2802,9 +2839,7 @@ msgstr "Notas"
 
 #, fuzzy
 msgctxt "model:ir.message,text:msg_read_error"
-msgid ""
-"You are trying to read records \"%(ids)s\" of \"%(model)s\" that don't exist"
-" anymore."
+msgid "You are trying to read records \"%(ids)s\" of \"%(model)s\" that don't exist."
 msgstr "Você está tentando ler registros de \"%(model)s\" que não existem mais."
 
 msgctxt "model:ir.message,text:msg_read_rule_error"
@@ -2920,6 +2955,10 @@ msgctxt "model:ir.message,text:msg_setter_function_missing"
 msgid "Missing setter function for field \"%(field)s\" in \"%(model)s\"."
 msgstr "A função de busca no campo \"%(field)s\" está faltando."
 
+msgctxt "model:ir.message,text:msg_singleton"
+msgid "Only one singleton can be created."
+msgstr ""
+
 #, fuzzy
 msgctxt "model:ir.message,text:msg_size_validation"
 msgid ""
@@ -3019,7 +3058,7 @@ msgstr ""
 msgctxt "model:ir.message,text:msg_write_error"
 msgid ""
 "You are trying to write to records \"%(ids)s\" of \"%(model)s\" that don't "
-"exist anymore."
+"exist."
 msgstr ""
 "Você está tentando gravar registros de \"%(model)s\" que não existem mais."
 
@@ -3029,9 +3068,12 @@ msgid ""
 "%(rules)s"
 msgstr ""
 
+#, fuzzy
 msgctxt "model:ir.message,text:msg_write_xml_record"
-msgid "You are not allowed to modify this record."
-msgstr "Você não pode alterar este registro."
+msgid ""
+"You are not allowed to modify the field \"%(field)s\" in \"%(record)s\" of "
+"\"%(model)s\"."
+msgstr "É necessário um valor para o campo \"%(field)s\" em \"%(model)s\"."
 
 #, fuzzy
 msgctxt "model:ir.message,text:msg_xml_id_syntax_error"
@@ -3143,6 +3185,11 @@ msgstr "Campo do modelo"
 msgctxt "model:ir.model.field.access,name:"
 msgid "Model Field Access"
 msgstr "Acesso ao campo do modelo"
+
+#, fuzzy
+msgctxt "model:ir.model.log,name:"
+msgid "Log"
+msgstr "Lao"
 
 msgctxt "model:ir.model.print_model_graph.start,name:"
 msgid "Print Model Graph"
@@ -3377,6 +3424,10 @@ msgctxt "model:ir.ui.menu,name:menu_model_form"
 msgid "Models"
 msgstr "Modelos"
 
+msgctxt "model:ir.ui.menu,name:menu_model_log_form"
+msgid "Logs"
+msgstr ""
+
 msgctxt "model:ir.ui.menu,name:menu_models"
 msgid "Models"
 msgstr "Modelos"
@@ -3508,6 +3559,26 @@ msgctxt "selection:ir.action,records:"
 msgid "Selected"
 msgstr "Nodos selecionados"
 
+#, fuzzy
+msgctxt "selection:ir.action,type:"
+msgid "Report"
+msgstr "Relatório"
+
+#, fuzzy
+msgctxt "selection:ir.action,type:"
+msgid "URL"
+msgstr "URLs"
+
+#, fuzzy
+msgctxt "selection:ir.action,type:"
+msgid "Window"
+msgstr "Janela"
+
+#, fuzzy
+msgctxt "selection:ir.action,type:"
+msgid "Wizard"
+msgstr "Assistentes"
+
 msgctxt "selection:ir.action.act_window,records:"
 msgid "Listed"
 msgstr ""
@@ -3516,6 +3587,26 @@ msgstr ""
 msgctxt "selection:ir.action.act_window,records:"
 msgid "Selected"
 msgstr "Nodos selecionados"
+
+#, fuzzy
+msgctxt "selection:ir.action.act_window,type:"
+msgid "Report"
+msgstr "Relatório"
+
+#, fuzzy
+msgctxt "selection:ir.action.act_window,type:"
+msgid "URL"
+msgstr "URLs"
+
+#, fuzzy
+msgctxt "selection:ir.action.act_window,type:"
+msgid "Window"
+msgstr "Janela"
+
+#, fuzzy
+msgctxt "selection:ir.action.act_window,type:"
+msgid "Wizard"
+msgstr "Assistentes"
 
 msgctxt "selection:ir.action.keyword,keyword:"
 msgid "Action form"
@@ -3546,6 +3637,26 @@ msgctxt "selection:ir.action.report,records:"
 msgid "Selected"
 msgstr "Nodos selecionados"
 
+#, fuzzy
+msgctxt "selection:ir.action.report,type:"
+msgid "Report"
+msgstr "Relatório"
+
+#, fuzzy
+msgctxt "selection:ir.action.report,type:"
+msgid "URL"
+msgstr "URLs"
+
+#, fuzzy
+msgctxt "selection:ir.action.report,type:"
+msgid "Window"
+msgstr "Janela"
+
+#, fuzzy
+msgctxt "selection:ir.action.report,type:"
+msgid "Wizard"
+msgstr "Assistentes"
+
 msgctxt "selection:ir.action.url,records:"
 msgid "Listed"
 msgstr ""
@@ -3555,6 +3666,26 @@ msgctxt "selection:ir.action.url,records:"
 msgid "Selected"
 msgstr "Nodos selecionados"
 
+#, fuzzy
+msgctxt "selection:ir.action.url,type:"
+msgid "Report"
+msgstr "Relatório"
+
+#, fuzzy
+msgctxt "selection:ir.action.url,type:"
+msgid "URL"
+msgstr "URLs"
+
+#, fuzzy
+msgctxt "selection:ir.action.url,type:"
+msgid "Window"
+msgstr "Janela"
+
+#, fuzzy
+msgctxt "selection:ir.action.url,type:"
+msgid "Wizard"
+msgstr "Assistentes"
+
 msgctxt "selection:ir.action.wizard,records:"
 msgid "Listed"
 msgstr ""
@@ -3563,6 +3694,26 @@ msgstr ""
 msgctxt "selection:ir.action.wizard,records:"
 msgid "Selected"
 msgstr "Nodos selecionados"
+
+#, fuzzy
+msgctxt "selection:ir.action.wizard,type:"
+msgid "Report"
+msgstr "Relatório"
+
+#, fuzzy
+msgctxt "selection:ir.action.wizard,type:"
+msgid "URL"
+msgstr "URLs"
+
+#, fuzzy
+msgctxt "selection:ir.action.wizard,type:"
+msgid "Window"
+msgstr "Janela"
+
+#, fuzzy
+msgctxt "selection:ir.action.wizard,type:"
+msgid "Wizard"
+msgstr "Assistentes"
 
 msgctxt "selection:ir.attachment,type:"
 msgid "Data"
@@ -3634,6 +3785,29 @@ msgstr "Esquerda para a direita"
 msgctxt "selection:ir.lang,direction:"
 msgid "Right-to-left"
 msgstr "Direta para a esquerda"
+
+#, fuzzy
+msgctxt "selection:ir.model.log,event:"
+msgid "Clicked on"
+msgstr "Cliques"
+
+#, fuzzy
+msgctxt "selection:ir.model.log,event:"
+msgid "Deleted"
+msgstr "Ao apagar"
+
+msgctxt "selection:ir.model.log,event:"
+msgid "Launched"
+msgstr ""
+
+msgctxt "selection:ir.model.log,event:"
+msgid "Modified"
+msgstr ""
+
+#, fuzzy
+msgctxt "selection:ir.model.log,event:"
+msgid "Transitioned to"
+msgstr "Tradução"
 
 msgctxt "selection:ir.module,state:"
 msgid "Activated"
@@ -3848,6 +4022,21 @@ msgstr "Formatação Monetária"
 msgctxt "view:ir.lang:"
 msgid "Numbers Formatting"
 msgstr "Formato dos números"
+
+#, fuzzy
+msgctxt "view:ir.model.log:"
+msgid "Date"
+msgstr "Data"
+
+#, fuzzy
+msgctxt "view:ir.model.log:"
+msgid "Hour"
+msgstr "Horas"
+
+#, fuzzy
+msgctxt "view:ir.model.log:"
+msgid "at"
+msgstr "Sáb"
 
 msgctxt "view:ir.module.activate_upgrade.done:"
 msgid "The modules have been upgraded / activated."

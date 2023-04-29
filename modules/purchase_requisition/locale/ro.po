@@ -20,7 +20,7 @@ msgstr "Companie"
 
 msgctxt "field:purchase.requisition,currency:"
 msgid "Currency"
-msgstr "Moneda"
+msgstr "Valută"
 
 msgctxt "field:purchase.requisition,description:"
 msgid "Description"

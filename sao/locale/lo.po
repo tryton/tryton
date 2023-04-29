@@ -121,11 +121,11 @@ msgstr ""
 msgid "Login"
 msgstr "ເຂົ້າສູ່ລະບົບ"
 
-msgid "User name"
-msgstr "ຊື່ຜູ້ໃຊ້"
-
 msgid "Database"
 msgstr "ຖານຂໍ້ມູນ"
+
+msgid "User name"
+msgstr "ຊື່ຜູ້ໃຊ້"
 
 #, fuzzy
 msgid "Login with"
@@ -371,28 +371,6 @@ msgstr "ແຖວຂໍ້ມູນເຫຼົ່ານີ້ບໍ່ໄດ້
 msgid "You have to select one record."
 msgstr "ທ່ານຕ້ອງເລືອກເອົາໜຶ່ງແຖວຂໍ້ມູນ"
 
-msgid "ID:"
-msgstr "ເລກກຳກັບ:"
-
-#, fuzzy
-msgid "Created by:"
-msgstr "ສ້າງ..."
-
-#, fuzzy
-msgid "Created at:"
-msgstr "ວັນທີສ້າງ"
-
-#, fuzzy
-msgid "Edited by:"
-msgstr "ສ້າງ..."
-
-#, fuzzy
-msgid "Edited at:"
-msgstr "ວັນທີແກ້ໄຂ"
-
-msgid "Model: "
-msgstr "ແມ່ແບບ: "
-
 msgid "Add..."
 msgstr ""
 
@@ -560,6 +538,9 @@ msgstr ""
 msgid "More"
 msgstr "ເພີ່ມຕື່ມ"
 
+msgid "#ERROR"
+msgstr ""
+
 msgid "Today"
 msgstr ""
 
@@ -589,6 +570,33 @@ msgstr "ຄັດຕິດ(%1)"
 
 msgid "Notes (%1)"
 msgstr "ບັນທຶກຂໍ້ຄວາມ(%1)"
+
+#, fuzzy
+msgid "Logs (%1)"
+msgstr "ບັນທຶກຂໍ້ຄວາມ(%1)"
+
+#, fuzzy
+msgid "Model:"
+msgstr "ແມ່ແບບ: "
+
+msgid "ID:"
+msgstr "ເລກກຳກັບ:"
+
+#, fuzzy
+msgid "Created by:"
+msgstr "ສ້າງ..."
+
+#, fuzzy
+msgid "Created at:"
+msgstr "ວັນທີສ້າງ"
+
+#, fuzzy
+msgid "Last Modified by:"
+msgstr "ການແກ້ໄຂລ້າສຸດ ໂດຍ:"
+
+#, fuzzy
+msgid "Last Modified at:"
+msgstr "ວັນທີແກ້ໄຂ"
 
 msgid "Search %1"
 msgstr "ຊອກຫາ %1"

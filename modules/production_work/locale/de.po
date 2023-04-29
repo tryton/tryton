@@ -92,7 +92,7 @@ msgstr "Kosten"
 
 msgctxt "field:production.work.cycle,duration:"
 msgid "Duration"
-msgstr "Dauer"
+msgstr "Erfasste Zeit"
 
 msgctxt "field:production.work.cycle,state:"
 msgid "State"
@@ -116,7 +116,7 @@ msgstr "Arbeitsplätze"
 
 msgctxt "model:ir.action,name:act_work_list"
 msgid "Works"
-msgstr "Arbeitsaufträge"
+msgstr "Aufgaben"
 
 msgctxt "model:ir.action.act_window.domain,name:act_work_list_domain_all"
 msgid "All"
@@ -204,7 +204,7 @@ msgstr "Arbeitsplätze"
 
 msgctxt "model:ir.ui.menu,name:menu_work_list"
 msgid "Works"
-msgstr "Arbeitsaufträge"
+msgstr "Aufgaben"
 
 msgctxt "model:production.work,name:"
 msgid "Production Work"

@@ -74,6 +74,10 @@ msgctxt "field:product.product,lead_time:"
 msgid "Lead Time"
 msgstr "Doorlooptijd"
 
+msgctxt "field:product.product,lead_times:"
+msgid "Lead Times"
+msgstr "Doorlooptijden"
+
 msgctxt "field:product.product,salable:"
 msgid "Salable"
 msgstr "Verkoopbaar"
@@ -117,6 +121,10 @@ msgstr "Eind datum voorraad"
 msgctxt "field:product.template,lead_time:"
 msgid "Lead Time"
 msgstr "Doorlooptijd"
+
+msgctxt "field:product.template,lead_times:"
+msgid "Lead Times"
+msgstr "Doorlooptijden"
 
 msgctxt "field:product.template,salable:"
 msgid "Salable"
@@ -190,6 +198,10 @@ msgctxt "field:sale.line,currency:"
 msgid "Currency"
 msgstr "Valuta"
 
+msgctxt "field:sale.line,customer:"
+msgid "Customer"
+msgstr "Klant"
+
 msgctxt "field:sale.line,description:"
 msgid "Description"
 msgstr "Omschrijving"
@@ -202,21 +214,21 @@ msgctxt "field:sale.line,invoice_lines:"
 msgid "Invoice Lines"
 msgstr "Factuur regels"
 
-msgctxt "field:sale.line,move_done:"
-msgid "Moves Done"
-msgstr "Mutaties gereed"
-
-msgctxt "field:sale.line,move_exception:"
-msgid "Moves Exception"
-msgstr "Mutaties uitzondering"
-
 msgctxt "field:sale.line,moves:"
 msgid "Moves"
 msgstr "Mutaties"
 
+msgctxt "field:sale.line,moves_exception:"
+msgid "Moves Exception"
+msgstr "Mutaties Uitzondering"
+
 msgctxt "field:sale.line,moves_ignored:"
 msgid "Ignored Moves"
 msgstr "Genegeerde mutaties"
+
+msgctxt "field:sale.line,moves_progress:"
+msgid "Moves Progress"
+msgstr "Mutaties Voortgang"
 
 msgctxt "field:sale.line,moves_recreated:"
 msgid "Recreated Moves"
@@ -241,6 +253,10 @@ msgstr "Hoeveelheid"
 msgctxt "field:sale.line,sale:"
 msgid "Sale"
 msgstr "Verkoop"
+
+msgctxt "field:sale.line,sale_date:"
+msgid "Sale Date"
+msgstr "Verkoop datum"
 
 msgctxt "field:sale.line,sale_state:"
 msgid "Sale State"
@@ -658,6 +674,14 @@ msgstr ""
 "De tijd tussen de bevestiging van de verkooporder en het verzenden van de producten.\n"
 "Gebruikt voor producten zonder doorlooptijd."
 
+msgctxt "help:product.configuration.default_lead_time,default_lead_time:"
+msgid ""
+"The time from confirming the sales order to sending the products.\n"
+"Used for products without a lead time."
+msgstr ""
+"De tijd vanaf de bevestiging van de verkooporder tot het verzenden van de producten.\n"
+"Wordt gebruikt voor producten zonder doorlooptijd."
+
 msgctxt "help:product.product,lead_time:"
 msgid ""
 "The time from confirming the sales order to sending the products.\n"
@@ -781,25 +805,21 @@ msgctxt "model:ir.action,name:act_sale_form"
 msgid "Sales"
 msgstr "Verkoop"
 
-msgctxt "model:ir.action,name:act_sale_form2"
-msgid "Sales"
-msgstr "Verkoop"
-
-msgctxt "model:ir.action,name:act_sale_invoice_relate"
-msgid "Sales"
-msgstr "Verkoop"
+msgctxt "model:ir.action,name:act_sale_line_relate"
+msgid "Sale Lines"
+msgstr "Verkoop regels"
 
 msgctxt "model:ir.action,name:act_sale_move_relate"
 msgid "Moves"
 msgstr "Mutaties"
 
-msgctxt "model:ir.action,name:act_sale_shipment_returns_relate"
+msgctxt "model:ir.action,name:act_sale_relate"
 msgid "Sales"
-msgstr "Verkoop"
+msgstr "Verkopen"
 
-msgctxt "model:ir.action,name:act_sale_shipments_relate"
+msgctxt "model:ir.action,name:act_sale_relate_simple"
 msgid "Sales"
-msgstr "Verkoop"
+msgstr "Verkopen"
 
 msgctxt "model:ir.action,name:act_shipment_form"
 msgid "Shipments"
@@ -861,6 +881,30 @@ msgctxt ""
 msgid "Quotation"
 msgstr "Offerte"
 
+msgctxt "model:ir.action.act_window.domain,name:act_sale_line_relate_all"
+msgid "All"
+msgstr "Alles"
+
+msgctxt "model:ir.action.act_window.domain,name:act_sale_line_relate_done"
+msgid "Done"
+msgstr "Afgerond"
+
+msgctxt "model:ir.action.act_window.domain,name:act_sale_line_relate_pending"
+msgid "Pending"
+msgstr "In behandeling"
+
+msgctxt "model:ir.action.act_window.domain,name:act_sale_relate_all"
+msgid "All"
+msgstr "Alles"
+
+msgctxt "model:ir.action.act_window.domain,name:act_sale_relate_done"
+msgid "Done"
+msgstr "Afgerond"
+
+msgctxt "model:ir.action.act_window.domain,name:act_sale_relate_pending"
+msgid "Pending"
+msgstr "In behandeling"
+
 msgctxt "model:ir.message,text:msg_erase_party_pending_sale"
 msgid ""
 "You cannot erase party \"%(party)s\" while they have pending sales with "
@@ -903,6 +947,14 @@ msgid ""
 msgstr ""
 "U kunt de factuur \"%(invoice)s\" niet terug zetten naar concept omdat ze is"
 " gegenereerd door een verkoop."
+
+msgctxt "model:ir.message,text:msg_sale_line_create_draft"
+msgid ""
+"You cannot add lines to sale \"%(sale)s\" because it is no longer in a draft"
+" state."
+msgstr ""
+"U kunt geen regels toevoegen aan verkoop \"%(sale)s\" omdat deze niet langer"
+" status \"concept\" staat."
 
 msgctxt "model:ir.message,text:msg_sale_line_delete_cancel_draft"
 msgid ""
@@ -992,7 +1044,7 @@ msgstr ""
 
 msgctxt "model:ir.model.button,string:sale_cancel_button"
 msgid "Cancel"
-msgstr "Annuleren"
+msgstr "Annuleer"
 
 msgctxt "model:ir.model.button,string:sale_confirm_button"
 msgid "Confirm"
@@ -1296,6 +1348,10 @@ msgid "Date:"
 msgstr "Datum:"
 
 msgctxt "report:sale.sale:"
+msgid "Delivery Address:"
+msgstr "Aflever Adres:"
+
+msgctxt "report:sale.sale:"
 msgid "Description"
 msgstr "Omschrijving"
 
@@ -1392,6 +1448,10 @@ msgid "On Shipment Sent"
 msgstr "Na verzending"
 
 msgctxt "selection:sale.sale,invoice_state:"
+msgid "Awaiting Payment"
+msgstr "In afwachting van betaling"
+
+msgctxt "selection:sale.sale,invoice_state:"
 msgid "Exception"
 msgstr "Uitzondering"
 
@@ -1404,8 +1464,12 @@ msgid "Paid"
 msgstr "Betaald"
 
 msgctxt "selection:sale.sale,invoice_state:"
-msgid "Waiting"
-msgstr "In afwachting"
+msgid "Partially Paid"
+msgstr "Gedeeltelijk betaald"
+
+msgctxt "selection:sale.sale,invoice_state:"
+msgid "Pending"
+msgstr "In behandeling"
 
 msgctxt "selection:sale.sale,shipment_method:"
 msgid "Manual"
@@ -1426,6 +1490,10 @@ msgstr "Uitzondering"
 msgctxt "selection:sale.sale,shipment_state:"
 msgid "None"
 msgstr "Geen"
+
+msgctxt "selection:sale.sale,shipment_state:"
+msgid "Partially Shipped"
+msgstr "Gedeeltelijk Verzonden"
 
 msgctxt "selection:sale.sale,shipment_state:"
 msgid "Sent"

@@ -48,7 +48,7 @@ msgstr ""
 
 msgctxt "field:analytic_account.account,currency:"
 msgid "Currency"
-msgstr "Moneda"
+msgstr "Valută"
 
 msgctxt "field:analytic_account.account,debit:"
 msgid "Debit"
@@ -220,6 +220,12 @@ msgstr ""
 
 msgctxt "model:ir.action,name:act_rule_form"
 msgid "Rules"
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_analytic_account_root_change"
+msgid ""
+"You cannot change the root of the analytic account \"%(account)s\" which is "
+"associated with analytic account entry."
 msgstr ""
 
 msgctxt "model:ir.message,text:msg_invalid_distribution"

@@ -119,11 +119,11 @@ msgstr "Troppe richieste. Riprovare più tardi."
 msgid "Login"
 msgstr "Login"
 
-msgid "User name"
-msgstr ""
-
 msgid "Database"
 msgstr "Database"
+
+msgid "User name"
+msgstr ""
 
 #, fuzzy
 msgid "Login with"
@@ -367,24 +367,6 @@ msgstr "Record non rimossi."
 msgid "You have to select one record."
 msgstr "Devi selezionare un record."
 
-msgid "ID:"
-msgstr "ID:"
-
-msgid "Created by:"
-msgstr "Creato da:"
-
-msgid "Created at:"
-msgstr "Creato il:"
-
-msgid "Edited by:"
-msgstr "Modificato da:"
-
-msgid "Edited at:"
-msgstr "Modifica il:"
-
-msgid "Model: "
-msgstr "Modello: "
-
 msgid "Add..."
 msgstr "Inserisci..."
 
@@ -550,6 +532,9 @@ msgstr ""
 msgid "More"
 msgstr "più"
 
+msgid "#ERROR"
+msgstr ""
+
 msgid "Today"
 msgstr ""
 
@@ -579,6 +564,31 @@ msgstr "allegati (%1)"
 
 msgid "Notes (%1)"
 msgstr "note (%1)"
+
+#, fuzzy
+msgid "Logs (%1)"
+msgstr "note (%1)"
+
+#, fuzzy
+msgid "Model:"
+msgstr "Modello: "
+
+msgid "ID:"
+msgstr "ID:"
+
+msgid "Created by:"
+msgstr "Creato da:"
+
+msgid "Created at:"
+msgstr "Creato il:"
+
+#, fuzzy
+msgid "Last Modified by:"
+msgstr "Modificato il"
+
+#, fuzzy
+msgid "Last Modified at:"
+msgstr "Modificato il"
 
 msgid "Search %1"
 msgstr "Cerca %1"

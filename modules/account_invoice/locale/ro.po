@@ -103,6 +103,11 @@ msgctxt "field:account.invoice,description:"
 msgid "Description"
 msgstr "Descriere"
 
+#, fuzzy
+msgctxt "field:account.invoice,has_payment_method:"
+msgid "Has Payment Method"
+msgstr "Metodă Plata"
+
 msgctxt "field:account.invoice,invoice_address:"
 msgid "Invoice Address"
 msgstr "Adresa de facturare"
@@ -293,6 +298,16 @@ msgctxt "field:account.invoice.line,invoice:"
 msgid "Invoice"
 msgstr "Factura"
 
+#, fuzzy
+msgctxt "field:account.invoice.line,invoice_description:"
+msgid "Invoice Description"
+msgstr "Descriere"
+
+#, fuzzy
+msgctxt "field:account.invoice.line,invoice_party:"
+msgid "Party"
+msgstr "Parte"
+
 msgctxt "field:account.invoice.line,invoice_state:"
 msgid "Invoice State"
 msgstr "Stare Factura"
@@ -381,17 +396,10 @@ msgctxt "field:account.invoice.pay.ask,company:"
 msgid "Company"
 msgstr "Companie"
 
+#, fuzzy
 msgctxt "field:account.invoice.pay.ask,currency:"
-msgid "Payment Currency"
-msgstr "Plata Valută"
-
-msgctxt "field:account.invoice.pay.ask,currency_writeoff:"
-msgid "Write-Off Currency"
-msgstr "Prescriere Valută"
-
-msgctxt "field:account.invoice.pay.ask,date:"
-msgid "Date"
-msgstr "Data"
+msgid "Currency"
+msgstr "Moneda"
 
 msgctxt "field:account.invoice.pay.ask,invoice:"
 msgid "Invoice"
@@ -775,10 +783,6 @@ msgctxt "model:ir.action,name:act_invoice_form"
 msgid "Invoices"
 msgstr "Facturi"
 
-msgctxt "model:ir.action,name:act_invoice_form2"
-msgid "Invoices"
-msgstr "Facturi"
-
 msgctxt "model:ir.action,name:act_invoice_in_form"
 msgid "Supplier Invoices"
 msgstr "Facturi Furnizor"
@@ -786,6 +790,11 @@ msgstr "Facturi Furnizor"
 msgctxt "model:ir.action,name:act_invoice_out_form"
 msgid "Customer Invoices"
 msgstr "Facturi Client"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_invoice_relate"
+msgid "Invoices"
+msgstr "Facturi"
 
 msgctxt "model:ir.action,name:act_payment_method_form"
 msgid "Invoice Payment Methods"
@@ -849,6 +858,31 @@ msgctxt ""
 msgid "Validated"
 msgstr "Validat"
 
+#, fuzzy
+msgctxt "model:ir.action.act_window.domain,name:act_invoice_relate_all"
+msgid "All"
+msgstr "Tot"
+
+#, fuzzy
+msgctxt "model:ir.action.act_window.domain,name:act_invoice_relate_paid"
+msgid "Paid"
+msgstr "Plătit"
+
+msgctxt "model:ir.action.act_window.domain,name:act_invoice_relate_pending"
+msgid "Pending"
+msgstr ""
+
+#, fuzzy
+msgctxt "model:ir.message,text:msg_cancel_invoice_move"
+msgid "The moves \"%(moves)s\" have the posted invoices \"%(invoices)s\" as origin."
+msgstr "Pentru a închide perioadele trebuie postate facturile \"%(invoices)s\"."
+
+msgctxt "model:ir.message,text:msg_cancel_invoice_move_description"
+msgid ""
+"Cancelling them will reconcile the move lines thus paying the invoices. You "
+"might want to cancel the invoices first."
+msgstr ""
+
 msgctxt "model:ir.message,text:msg_close_period_non_posted_invoices"
 msgid "To close the periods you must post the invoices \"%(invoices)s\"."
 msgstr "Pentru a închide perioadele trebuie postate facturile \"%(invoices)s\"."
@@ -885,10 +919,11 @@ msgctxt "model:ir.message,text:msg_invoice_delete_numbered"
 msgid "You cannot delete invoice \"%(invoice)s\" because it has a number."
 msgstr "Nu se poate şterge factura \"%(invoice)s\" pentru că are un număr."
 
-msgctxt "model:ir.message,text:msg_invoice_line_create"
+#, fuzzy
+msgctxt "model:ir.message,text:msg_invoice_line_create_draft"
 msgid ""
-"You cannot add a line to invoice \"%(invoice)s\" because it is posted, paid "
-"or cancelled."
+"You cannot add lines to invoice \"%(invoice)s\" because it is no longer in a"
+" draft state."
 msgstr ""
 "Nu se poate adăuga un rând la factura \"%(invoice)s\" pentru că este "
 "postată, plătita sau anulată."
@@ -964,22 +999,19 @@ msgstr ""
 "Factura \"%(invoice)s\" genereaza data \"%(date)s\" de plata care este in "
 "trecut."
 
-msgctxt "model:ir.message,text:msg_invoice_same_account_line"
-msgid ""
-"You cannot use the same account \"%(account)s\" on invoice \"%(invoice)s\" "
-"and on line \"%(line)s\"."
-msgstr ""
-
 #, fuzzy
 msgctxt "model:ir.message,text:msg_invoice_similar"
 msgid "The invoice \"%(invoice)s\" is similar to invoice \"%(similar)s\"."
 msgstr "Facturile \"%(invoices)s\" au o data în viitor."
 
+#, fuzzy
 msgctxt "model:ir.message,text:msg_invoice_tax_create"
 msgid ""
-"You cannot add a tax to invoice \"%(invoice)s\" because it is posted, paid "
-"or cancelled."
+"You cannot add taxes to invoice \"%(invoice)s\" because it is no longer in a"
+" draft state."
 msgstr ""
+"Nu se poate adăuga un rând la factura \"%(invoice)s\" pentru că este "
+"postată, plătita sau anulată."
 
 msgctxt "model:ir.message,text:msg_invoice_tax_invalid"
 msgid ""

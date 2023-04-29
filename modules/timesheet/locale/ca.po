@@ -252,9 +252,39 @@ msgctxt "model:ir.rule.group,name:rule_group_hours_employee_admin"
 msgid "Any employee hours"
 msgstr "Qualsevol hora d'empleat"
 
+msgctxt "model:ir.rule.group,name:rule_group_hours_employee_monthly"
+msgid "Own hours"
+msgstr "Hores pròpies"
+
+msgctxt "model:ir.rule.group,name:rule_group_hours_employee_monthly_admin"
+msgid "Any employee hours"
+msgstr "Hores de qualsevol empleat"
+
+msgctxt "model:ir.rule.group,name:rule_group_hours_employee_weekly"
+msgid "Own hours"
+msgstr "Hores pròpies"
+
+msgctxt "model:ir.rule.group,name:rule_group_hours_employee_weekly_admin"
+msgid "Any employee hours"
+msgstr "Hores de qualsevol empleat"
+
 msgctxt "model:ir.rule.group,name:rule_group_hours_employees"
-msgid "Own employee hours"
-msgstr "Hores del propi empleat"
+msgid "Own hours"
+msgstr "Hores pròpies"
+
+msgctxt "model:ir.rule.group,name:rule_group_hours_supervised_employees"
+msgid "Supervised employee's hours"
+msgstr "Hores dels empleats supervisats"
+
+msgctxt ""
+"model:ir.rule.group,name:rule_group_hours_supervised_employees_monthly"
+msgid "Supervised employee's hours"
+msgstr "Hores dels empleats supervisats"
+
+msgctxt ""
+"model:ir.rule.group,name:rule_group_hours_supervised_employees_weekly"
+msgid "Supervised employee's hours"
+msgstr "Hores dels empleats supervisats"
 
 msgctxt "model:ir.rule.group,name:rule_group_line"
 msgid "Own timesheet line"

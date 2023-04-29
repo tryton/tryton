@@ -62,21 +62,21 @@ msgctxt "field:purchase.line.component,line:"
 msgid "Line"
 msgstr "Position"
 
-msgctxt "field:purchase.line.component,move_done:"
-msgid "Moves Done"
-msgstr "Erledigte Warenbewegungen"
-
-msgctxt "field:purchase.line.component,move_exception:"
-msgid "Moves Exception"
-msgstr "Warenbewegungen mit Vorbehalt"
-
 msgctxt "field:purchase.line.component,moves:"
 msgid "Moves"
 msgstr "Warenbewegungen"
 
+msgctxt "field:purchase.line.component,moves_exception:"
+msgid "Moves Exception"
+msgstr "Warenbewegungen mit Vorbehalt"
+
 msgctxt "field:purchase.line.component,moves_ignored:"
 msgid "Ignored Moves"
 msgstr "Ignorierte Warenbewegungen"
+
+msgctxt "field:purchase.line.component,moves_progress:"
+msgid "Moves Progress"
+msgstr "Lieferfortschritt"
 
 msgctxt "field:purchase.line.component,moves_recreated:"
 msgid "Recreated Moves"
@@ -146,21 +146,21 @@ msgctxt "field:sale.line.component,line:"
 msgid "Line"
 msgstr "Position"
 
-msgctxt "field:sale.line.component,move_done:"
-msgid "Moves Done"
-msgstr "Erledigte Warenbewegungen"
-
-msgctxt "field:sale.line.component,move_exception:"
-msgid "Moves Exception"
-msgstr "Warenbewegungen mit Vorbehalt"
-
 msgctxt "field:sale.line.component,moves:"
 msgid "Moves"
 msgstr "Warenbewegungen"
 
+msgctxt "field:sale.line.component,moves_exception:"
+msgid "Moves Exception"
+msgstr "Warenbewegungen mit Vorbehalt"
+
 msgctxt "field:sale.line.component,moves_ignored:"
 msgid "Ignored Moves"
 msgstr "Ignorierte Warenbewegungen"
+
+msgctxt "field:sale.line.component,moves_progress:"
+msgid "Moves Progress"
+msgstr "Lieferfortschritt"
 
 msgctxt "field:sale.line.component,moves_recreated:"
 msgid "Recreated Moves"

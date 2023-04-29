@@ -296,6 +296,11 @@ msgctxt "model:ir.action,name:act_lot_form"
 msgid "Lots"
 msgstr "Lots"
 
+#, fuzzy
+msgctxt "model:ir.action,name:act_lot_form_product_relate"
+msgid "Lots"
+msgstr "Lots"
+
 msgctxt "model:ir.action,name:act_lot_trace_downward_relate"
 msgid "Downward Traces"
 msgstr ""

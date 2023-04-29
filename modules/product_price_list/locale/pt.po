@@ -50,8 +50,11 @@ msgstr ""
 "Faça com que o preço de tabela pertença à empresa.\n"
 "Isto define a moeda do preço de tabela."
 
+#, fuzzy
 msgctxt "help:product.price_list,lines:"
-msgid "Add price formulas for different criterias."
+msgid ""
+"Add price formulas for different criteria.\n"
+"The first matching line is used."
 msgstr "Adiciona fórmulas de preço para diversos critérios."
 
 msgctxt "help:product.price_list,name:"

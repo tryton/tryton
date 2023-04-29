@@ -20,8 +20,8 @@ msgid "Direct Debit"
 msgstr "Lastschrifteinzug"
 
 msgctxt "field:account.move.line,payment_amount:"
-msgid "Payment Amount"
-msgstr "Betrag"
+msgid "Amount to Pay"
+msgstr "Zahlbarer Betrag"
 
 msgctxt "field:account.move.line,payment_blocked:"
 msgid "Blocked"
@@ -410,6 +410,16 @@ msgctxt ""
 msgid "To Process"
 msgstr "Auszuführen"
 
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_payment_group_form_domain_all"
+msgid "All"
+msgstr "Alle"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_payment_group_form_domain_not_completed"
+msgid "Pending"
+msgstr "Ausstehend"
+
 msgctxt "model:ir.message,text:msg_erase_party_pending_payment"
 msgid ""
 "You cannot erase party \"%(party)s\" while they have pending payments with "
@@ -464,7 +474,7 @@ msgstr "Entwurf"
 
 msgctxt "model:ir.model.button,string:payment_fail_button"
 msgid "Fail"
-msgstr "Erfolglos markieren"
+msgstr "Fehlgeschlagen markieren"
 
 msgctxt "model:ir.model.button,string:payment_group_succeed_button"
 msgid "Succeed"
