@@ -32,7 +32,7 @@ from trytond.pyson import Eval, If, PYSONDecoder, TimeDelta
 from trytond.report import Report
 from trytond.sendmail import SMTPDataManager, sendmail_transactional
 from trytond.tools import grouped_slice, reduce_ids
-from trytond.tools.email_ import set_from_header
+from trytond.tools.email_ import convert_ascii_email, set_from_header
 from trytond.transaction import Transaction
 from trytond.url import http_host
 from trytond.wsgi import Base64Converter
@@ -55,7 +55,7 @@ logger = logging.getLogger(__name__)
 def _formataddr(name, email):
     if name:
         name = str(Header(name, 'utf-8'))
-    return formataddr((name, email))
+    return formataddr((name, convert_ascii_email(email)))
 
 
 class Scenario(Workflow, ModelSQL, ModelView):

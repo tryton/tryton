@@ -6,7 +6,7 @@ from email.header import Header
 from email.mime.application import MIMEApplication
 from email.mime.multipart import MIMEMultipart
 from email.mime.nonmultipart import MIMENonMultipart
-from email.utils import formataddr, getaddresses, parseaddr
+from email.utils import formataddr, getaddresses
 
 from genshi.template import TextTemplate
 
@@ -17,7 +17,7 @@ from trytond.pool import Pool
 from trytond.pyson import Eval, TimeDelta
 from trytond.report import get_email
 from trytond.sendmail import SMTPDataManager, sendmail_transactional
-from trytond.tools.email_ import set_from_header
+from trytond.tools.email_ import convert_ascii_email, set_from_header
 from trytond.transaction import Transaction
 
 from .exceptions import TemplateError
@@ -195,8 +195,12 @@ class Email(ModelSQL, ModelView):
             msg = content
 
         set_from_header(msg, sender, from_)
-        msg['To'] = ', '.join(formataddr(parseaddr(a)) for a in to)
-        msg['Cc'] = ', '.join(formataddr(parseaddr(a)) for a in cc)
+        msg['To'] = ', '.join(
+            formataddr((n, convert_ascii_email(a)))
+            for n, a in getaddresses(to))
+        msg['Cc'] = ', '.join(
+            formataddr((n, convert_ascii_email(a)))
+            for n, a in getaddresses(cc))
         msg['Subject'] = Header(title, 'utf-8')
         msg['Auto-Submitted'] = 'auto-generated'
         return msg, title
@@ -238,7 +242,8 @@ class Email(ModelSQL, ModelView):
             cc, cc_languages = self._get_cc(record)
             bcc, bcc_languages = self._get_bcc(record)
             languages = to_languages | cc_languages | bcc_languages
-            to_addrs = [e for _, e in getaddresses(to + cc + bcc)]
+            to_addrs = [
+                convert_ascii_email(e) for _, e in getaddresses(to + cc + bcc)]
             if to_addrs:
                 msg, title = self.get_email(
                     record, from_, to, cc, bcc, languages)

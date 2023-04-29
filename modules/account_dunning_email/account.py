@@ -9,9 +9,16 @@ from trytond.pool import Pool, PoolMeta
 from trytond.pyson import Bool, Eval
 from trytond.report import get_email
 from trytond.sendmail import SMTPDataManager, sendmail_transactional
-from trytond.tools.email_ import set_from_header
+from trytond.tools.email_ import convert_ascii_email, set_from_header
 from trytond.transaction import Transaction
 from trytond.wizard import StateTransition
+
+
+def _formataddr(pair):
+    name, address = pair
+    if name:
+        name = str(Header(name, 'utf-8'))
+    return formataddr((name, convert_ascii_email(address)))
 
 
 class Configuration(metaclass=PoolMeta):
@@ -117,12 +124,12 @@ class Dunning(metaclass=PoolMeta):
         contact = self.party.contact_mechanism_get(
             'email', usage=self.level.email_contact_mechanism)
         if contact and contact.email:
-            name = str(Header(contact.name or self.party.rec_name))
-            to.append(formataddr((name, contact.email)))
+            name = contact.name or self.party.rec_name
+            to.append(_formataddr((name, contact.email)))
         elif account_config.dunning_email_fallback:
             user = account_config.get_multivalue(
                 'dunning_email_fallback', company=self.company.id)
-            to.append(formataddr((self.party.rec_name, user.email)))
+            to.append(_formataddr((self.party.rec_name, user.email)))
         cc = []
         bcc = []
         languages = set()

@@ -27,7 +27,7 @@ from trytond.report import Report
 from trytond.rpc import RPC
 from trytond.sendmail import sendmail_transactional
 from trytond.tools import escape_wildcard
-from trytond.tools.email_ import set_from_header
+from trytond.tools.email_ import convert_ascii_email, set_from_header
 from trytond.tools.string_ import StringMatcher
 from trytond.transaction import Transaction
 
@@ -56,7 +56,7 @@ def _get_emails(value):
 def _formataddr(pair):
     "Format address without encoding"
     name, address = pair
-    address.encode('ascii')
+    convert_ascii_email(address).encode('ascii')
     if name:
         quotes = ''
         if specialsre.search(name):
@@ -167,8 +167,12 @@ class Email(ResourceAccessMixin, ModelSQL, ModelView):
             msg = content
         from_ = config.get('email', 'from')
         set_from_header(msg, from_, user.email or from_)
-        msg['To'] = ', '.join(formataddr(a) for a in getaddresses([to]))
-        msg['Cc'] = ', '.join(formataddr(a) for a in getaddresses([cc]))
+        msg['To'] = ', '.join(
+            formataddr((n, convert_ascii_email(a)))
+            for n, a in getaddresses([to]))
+        msg['Cc'] = ', '.join(
+            formataddr((n, convert_ascii_email(a)))
+            for n, a in getaddresses([cc]))
         msg['Subject'] = Header(subject, 'utf-8')
 
         to_addrs = list(filter(None, map(

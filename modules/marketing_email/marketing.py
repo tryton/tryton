@@ -31,7 +31,7 @@ from trytond.pyson import Eval
 from trytond.report import Report, get_email
 from trytond.sendmail import SMTPDataManager, sendmail_transactional
 from trytond.tools import grouped_slice, reduce_ids
-from trytond.tools.email_ import set_from_header
+from trytond.tools.email_ import convert_ascii_email, set_from_header
 from trytond.transaction import Transaction, inactive_records
 from trytond.url import http_host
 from trytond.wizard import Button, StateTransition, StateView, Wizard
@@ -51,7 +51,7 @@ URL_OPEN = urljoin(URL_BASE, '/m/empty.gif')
 def _formataddr(name, email):
     if name:
         name = str(Header(name, 'utf-8'))
-    return formataddr((name, email))
+    return formataddr((name, convert_ascii_email(email)))
 
 
 def _add_params(url, **params):
@@ -297,7 +297,8 @@ class EmailList(DeactivableMixin, ModelSQL, ModelView):
             set_from_header(msg, from_cfg, from_ or from_cfg)
             msg['To'] = record.email
             msg['Subject'] = Header(title, 'utf-8')
-            sendmail_transactional(from_cfg, [record.email], msg)
+            sendmail_transactional(
+                from_cfg, [convert_ascii_email(record.email)], msg)
 
     def request_unsubscribe(self, email, from_=None):
         pool = Pool()
@@ -322,7 +323,8 @@ class EmailList(DeactivableMixin, ModelSQL, ModelView):
                 set_from_header(msg, from_cfg, from_ or from_cfg)
                 msg['To'] = record.email
                 msg['Subject'] = Header(title, 'utf-8')
-                sendmail_transactional(from_cfg, [record.email], msg)
+                sendmail_transactional(
+                    from_cfg, [convert_ascii_email(record.email)], msg)
 
 
 class Message(Workflow, ModelSQL, ModelView):
