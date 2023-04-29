@@ -309,7 +309,7 @@ class IrTestCase(ModuleTestCase):
             'user@example.com',
             'me@example.com']
         sendmail.assert_called_once_with(
-            config.get('email', 'from'), addresses, ANY, datamanager=ANY)
+            config.get('email', 'from'), addresses, ANY, strict=True)
         self.assertEqual(
             email.recipients,
             '"John Doe" <john@example.com>, Jane <jane@example.com>')

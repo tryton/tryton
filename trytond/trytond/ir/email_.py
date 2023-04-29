@@ -25,7 +25,7 @@ from trytond.pool import Pool
 from trytond.pyson import Bool, Eval, PYSONDecoder
 from trytond.report import Report
 from trytond.rpc import RPC
-from trytond.sendmail import SMTPDataManager, sendmail_transactional
+from trytond.sendmail import sendmail_transactional
 from trytond.tools import escape_wildcard
 from trytond.tools.email_ import set_from_header
 from trytond.tools.string_ import StringMatcher
@@ -174,8 +174,7 @@ class Email(ResourceAccessMixin, ModelSQL, ModelView):
         to_addrs = list(filter(None, map(
                     str.strip,
                     _get_emails(to) + _get_emails(cc) + _get_emails(bcc))))
-        sendmail_transactional(
-            from_, to_addrs, msg, datamanager=SMTPDataManager(strict=True))
+        sendmail_transactional(from_, to_addrs, msg, strict=True)
 
         email = cls(
             recipients=to,
