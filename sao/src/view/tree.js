@@ -1062,6 +1062,11 @@
                             Sao.i18n.BC47(Sao.i18n.getlang()), options);
                         sum_ = (sum_ || 0).toLocaleString(
                             Sao.i18n.BC47(Sao.i18n.getlang()), options);
+                    } else {
+                        selected_sum = (selected_sum || 0).toLocaleString(
+                            Sao.i18n.BC47(Sao.i18n.getlang()));
+                        sum_ = (sum_ || 0).toLocaleString(
+                            Sao.i18n.BC47(Sao.i18n.getlang()));
                     }
                     aggregate = selected_sum + ' / ' + sum_;
                 }
