@@ -10,5 +10,8 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.message" id="msg_message_invalid_content">
             <field name="text">Invalid content in message "%(message)s" with exception "%(exception)s".</field>
         </record>
+        <record model="ir.message" id="msg_email_invalid">
+            <field name="text">The email address "%(email)s" for "%(record)s" is not valid.</field>
+        </record>
     </data>
 </tryton>

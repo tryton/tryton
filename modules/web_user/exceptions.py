@@ -4,9 +4,5 @@
 from trytond.model.exceptions import ValidationError
 
 
-class TemplateError(ValidationError):
-    pass
-
-
-class EMailValidationError(ValidationError):
+class UserValidationError(ValidationError):
     pass

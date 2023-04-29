@@ -18,6 +18,9 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.message" id="msg_password_email">
             <field name="text">The password cannot be the same as user's email address.</field>
         </record>
+        <record model="ir.message" id="msg_email_invalid">
+            <field name="text">The email address "%(email)s" for "%(user)s" is not valid.</field>
+        </record>
         <record model="ir.message" id="msg_user_delete_forbidden">
             <field name="text">For logging purposes users cannot be deleted, instead they should be deactivated.</field>
         </record>

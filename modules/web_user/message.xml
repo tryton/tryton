@@ -9,5 +9,8 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.message" id="msg_user_session_key_unique">
             <field name="text">Web user session key must be unique.</field>
         </record>
+        <record model="ir.message" id="msg_user_email_invalid">
+            <field name="text">The email address "%(email)s" for "%(user)s" is not valid.</field>
+        </record>
     </data>
 </tryton>

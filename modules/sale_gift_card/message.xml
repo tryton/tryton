@@ -12,5 +12,8 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.message" id="msg_gift_card_move_quantity">
             <field name="text">To do the move "%(move)s", you must use exactly %(quantity)d gift card(s).</field>
         </record>
+        <record model="ir.message" id="msg_gift_card_email_invalid">
+            <field name="text">The email address "%(email)s" for "%(card)s" is not valid.</field>
+        </record>
     </data>
 </tryton>

@@ -2,7 +2,7 @@
 # this repository contains the full copyright notices and license terms.
 
 from trytond.model.exceptions import (
-    RequiredValidationError, SizeValidationError)
+    RequiredValidationError, SizeValidationError, ValidationError)
 from trytond.modules.product.exceptions import TemplateValidationError
 
 
@@ -12,4 +12,8 @@ class GiftCardValidationError(TemplateValidationError):
 
 class MoveGiftCardValidationError(
         RequiredValidationError, SizeValidationError):
+    pass
+
+
+class GiftCardLineValidationError(ValidationError):
     pass

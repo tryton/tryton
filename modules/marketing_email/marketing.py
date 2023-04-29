@@ -31,12 +31,13 @@ from trytond.pyson import Eval
 from trytond.report import Report, get_email
 from trytond.sendmail import SMTPDataManager, sendmail_transactional
 from trytond.tools import grouped_slice, reduce_ids
-from trytond.tools.email_ import convert_ascii_email, set_from_header
+from trytond.tools.email_ import (
+    EmailNotValidError, convert_ascii_email, set_from_header, validate_email)
 from trytond.transaction import Transaction, inactive_records
 from trytond.url import http_host
 from trytond.wizard import Button, StateTransition, StateView, Wizard
 
-from .exceptions import TemplateError
+from .exceptions import EMailValidationError, TemplateError
 
 if not config.get(
         'html', 'plugins-marketing.email.message-content'):
@@ -144,6 +145,26 @@ class Email(DeactivableMixin, ModelSQL, ModelView):
         super().write(*args)
         records = sum(args[0:None:2], [])
         cls._format_email(records)
+
+    @classmethod
+    def validate_fields(cls, records, fields_names):
+        super().validate_fields(records, fields_names)
+        cls.check_valid_email(records, fields_names)
+
+    @classmethod
+    def check_valid_email(cls, records, fields_names=None):
+        if fields_names and 'email' not in fields_names:
+            return
+        for record in records:
+            if record.email:
+                try:
+                    validate_email(record.email)
+                except EmailNotValidError as e:
+                    raise EMailValidationError(gettext(
+                            'marketing_email.msg_email_invalid',
+                            record=record.rec_name,
+                            email=record.email),
+                        str(e)) from e
 
     def get_email_subscribe(self, report_name='marketing.email.subscribe'):
         pool = Pool()

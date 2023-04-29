@@ -7,6 +7,7 @@ from sql.functions import CharLength
 from sql.operators import Equal
 
 from trytond.config import config
+from trytond.i18n import gettext
 from trytond.model import Exclude, ModelSQL, ModelView, Workflow, fields
 from trytond.modules.company.model import CompanyValueMixin
 from trytond.modules.currency.fields import Monetary
@@ -14,9 +15,12 @@ from trytond.pool import Pool, PoolMeta
 from trytond.pyson import Bool, Eval, Id
 from trytond.report import Report, get_email
 from trytond.sendmail import sendmail_transactional
-from trytond.tools.email_ import set_from_header
+from trytond.tools.email_ import (
+    EmailNotValidError, set_from_header, validate_email)
 from trytond.transaction import Transaction
 from trytond.wizard import Button, StateTransition, StateView
+
+from .exceptions import GiftCardLineValidationError
 
 
 class Configuration(metaclass=PoolMeta):
@@ -459,6 +463,26 @@ class _LineMixin:
             card.origin = self
             cards.append(card)
         return cards
+
+    @classmethod
+    def validate_fields(cls, cards, fields_names):
+        super().validate_fields(cards, fields_names)
+        cls.check_valid_email(cards, fields_names)
+
+    @classmethod
+    def check_valid_email(cls, cards, fields_names=None):
+        if fields_names and 'email' not in fields_names:
+            return
+        for card in cards:
+            if card.gift_card_email:
+                try:
+                    validate_email(card.gift_card_email)
+                except EmailNotValidError as e:
+                    raise GiftCardLineValidationError(gettext(
+                            'sale_gift_card.msg_gift_card_email_invalid',
+                            card=card.rec_name,
+                            email=card.gift_card_email),
+                        str(e)) from e
 
 
 class Line(_LineMixin, metaclass=PoolMeta):

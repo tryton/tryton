@@ -47,13 +47,15 @@ from trytond.i18n import gettext
 from trytond.model import (
     DeactivableMixin, Index, ModelSQL, ModelView, Unique, Workflow,
     avatar_mixin, fields)
+from trytond.model.exceptions import ValidationError
 from trytond.pool import Pool
 from trytond.pyson import Bool, Eval, PYSONEncoder
 from trytond.report import Report, get_email
 from trytond.rpc import RPC
 from trytond.sendmail import sendmail_transactional
 from trytond.tools import grouped_slice
-from trytond.tools.email_ import set_from_header
+from trytond.tools.email_ import (
+    EmailNotValidError, set_from_header, validate_email)
 from trytond.transaction import Transaction
 from trytond.url import host, http_host
 from trytond.wizard import Button, StateTransition, StateView, Wizard
@@ -103,6 +105,10 @@ class PasswordError(UserError):
 
 
 class DeleteError(UserError):
+    pass
+
+
+class UserValidationError(ValidationError):
     pass
 
 
@@ -453,6 +459,26 @@ class User(avatar_mixin(100, 'login'), DeactivableMixin, ModelSQL, ModelView):
             new_user, = super(User, cls).copy([user], default)
             new_users.append(new_user)
         return new_users
+
+    @classmethod
+    def validate_fields(cls, users, fields_names):
+        super().validate_fields(users, fields_names)
+        cls.check_valid_email(users, fields_names)
+
+    @classmethod
+    def check_valid_email(cls, users, fields_names=None):
+        if fields_names and 'email' not in fields_names:
+            return
+        for user in users:
+            if user.email:
+                try:
+                    validate_email(user.email)
+                except EmailNotValidError as e:
+                    raise UserValidationError(gettext(
+                            'res.msg_email_invalid',
+                            user=user.rec_name,
+                            email=user.email),
+                        str(e)) from e
 
     @classmethod
     def _get_preferences(cls, user, context_only=False):

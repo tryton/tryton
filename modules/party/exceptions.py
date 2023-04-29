@@ -12,6 +12,10 @@ class InvalidPhoneNumber(ValidationError):
     pass
 
 
+class InvalidEMail(ValidationError):
+    pass
+
+
 class VIESUnavailable(UserError):
     pass
 

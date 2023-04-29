@@ -14,9 +14,10 @@ from trytond.model import (
     fields, sequence_ordered)
 from trytond.model.exceptions import AccessError
 from trytond.pyson import Eval
+from trytond.tools.email_ import EmailNotValidError, validate_email
 from trytond.transaction import Transaction
 
-from .exceptions import InvalidPhoneNumber
+from .exceptions import InvalidEMail, InvalidPhoneNumber
 
 _TYPES = [
     ('phone', 'Phone'),
@@ -306,6 +307,7 @@ class ContactMechanism(
     def validate_fields(cls, mechanisms, field_names):
         super().validate_fields(mechanisms, field_names)
         cls.check_valid_phonenumber(mechanisms, field_names)
+        cls.check_valid_email(mechanisms, field_names)
 
     @classmethod
     def check_valid_phonenumber(cls, mechanisms, field_names=None):
@@ -320,6 +322,21 @@ class ContactMechanism(
                 raise InvalidPhoneNumber(
                     gettext('party.msg_invalid_phone_number',
                         phone=mechanism.value, party=mechanism.party.rec_name))
+
+    @classmethod
+    def check_valid_email(cls, mechanisms, field_names=None):
+        if field_names and not (field_names & {'type', 'value'}):
+            return
+        for mechanism in mechanisms:
+            if mechanism.type == 'email' and mechanism.value:
+                try:
+                    validate_email(mechanism.value)
+                except EmailNotValidError as e:
+                    raise InvalidEMail(gettext(
+                            'party.msg_email_invalid',
+                            email=mechanism.value,
+                            party=mechanism.party.rec_name),
+                        str(e)) from e
 
     @classmethod
     def usages(cls, _fields=None):

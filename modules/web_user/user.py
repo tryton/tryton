@@ -26,6 +26,7 @@ from sql.operators import Equal
 
 from trytond.config import config
 from trytond.exceptions import RateLimitException
+from trytond.i18n import gettext
 from trytond.model import (
     DeactivableMixin, Exclude, Index, ModelSQL, ModelView, Unique,
     avatar_mixin, fields)
@@ -34,8 +35,11 @@ from trytond.pyson import Eval
 from trytond.report import Report, get_email
 from trytond.res.user import CRYPT_CONTEXT, LoginAttempt
 from trytond.sendmail import sendmail_transactional
-from trytond.tools.email_ import set_from_header
+from trytond.tools.email_ import (
+    EmailNotValidError, set_from_header, validate_email)
 from trytond.transaction import Transaction
+
+from .exceptions import UserValidationError
 
 logger = logging.getLogger(__name__)
 
@@ -167,6 +171,26 @@ class User(avatar_mixin(100), DeactivableMixin, ModelSQL, ModelView):
         super(User, cls).write(*args)
         users = sum(args[0:None:2], [])
         cls._format_email(users)
+
+    @classmethod
+    def validate_fields(cls, users, fields_names):
+        super().validate_fields(users, fields_names)
+        cls.check_valid_email(users, fields_names)
+
+    @classmethod
+    def check_valid_email(cls, users, fields_names=None):
+        if fields_names and 'email' not in fields_names:
+            return
+        for user in users:
+            if user.email:
+                try:
+                    validate_email(user.email)
+                except EmailNotValidError as e:
+                    raise UserValidationError(gettext(
+                            'web_user.msg_email_invalid',
+                            user=user.rec_name,
+                            email=user.email),
+                        str(e)) from e
 
     @classmethod
     def authenticate(cls, email, password):
