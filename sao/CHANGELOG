@@ -1,3 +1,7 @@
+
+Version 6.8.0 - 2023-05-01
+--------------------------
+* Bug fixes (see mercurial logs for details)
 * Include events to logs
 * Support scroll time on calendar view
 * Save and Restore tree state on List Form

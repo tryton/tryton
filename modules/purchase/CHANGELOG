@@ -1,3 +1,7 @@
+
+Version 6.8.0 - 2023-05-01
+--------------------------
+* Bug fixes (see mercurial logs for details)
 * Fill taxes from default account for line without product
 * Add partially shipped to shipment state
 * Add pending, awaiting payment and partially paid to invoice state

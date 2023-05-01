@@ -1,3 +1,7 @@
+
+Version 6.8.0 - 2023-05-01
+--------------------------
+* Bug fixes (see mercurial logs for details)
 * Support return instances for Function getter and on_change_with
 * Log events for ModelStorage
 * Use IDENTITY column for id columns in the postgresql backend
