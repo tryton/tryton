@@ -5,5 +5,5 @@
 Quality
 =======
 
-`Quality </projects/modules-quality/en/latest>`_
+`Quality </projects/modules-quality/en/6.8>`_
    Fundamentals to manage quality.
