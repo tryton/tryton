@@ -484,7 +484,7 @@ class Commission(ModelSQL, ModelView):
         cls.save(to_save)
 
         if Move and hasattr(Move, 'update_unit_price'):
-            moves = list(set.union(*(c.stock_moves for c in commissions)))
+            moves = list(set().union(*(c.stock_moves for c in commissions)))
             if moves:
                 Move.__queue__.update_unit_price(moves)
 
