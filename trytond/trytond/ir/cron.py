@@ -161,10 +161,11 @@ class Cron(DeactivableMixin, ModelSQL, ModelView):
         logger.info('cron started for "%s"', db_name)
         now = datetime.datetime.now()
         retry = config.getint('database', 'retry')
-        with transaction.start(db_name, 0, context={'_skip_warnings': True}):
+        with transaction.start(
+                db_name, 0, context={'_skip_warnings': True},
+                _lock_tables=[cls._table]):
             pool = Pool()
             Error = pool.get('ir.error')
-            cls.lock()
             crons = cls.search(['OR',
                     ('next_call', '<=', now),
                     ('next_call', '=', None),
