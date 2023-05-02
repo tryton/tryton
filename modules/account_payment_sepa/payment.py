@@ -235,10 +235,12 @@ class Group(metaclass=PoolMeta):
                         '.msg_payment_process_no_iban',
                         payment=payment.rec_name))
             if not payment.sepa_bank_account_number.account.bank:
+                bank_account = payment.sepa_bank_account_number.account
                 raise ProcessError(
                     gettext('account_payment_sepa'
                         '.msg_payment_process_no_bank',
-                        payment=payment.rec_name))
+                        payment=payment.rec_name,
+                        bank_account=bank_account.rec_name))
         to_write = []
         for key, payments in self.sepa_payments:
             to_write.append(payments)
