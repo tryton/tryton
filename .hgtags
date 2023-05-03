@@ -8957,3 +8957,4 @@ c365b4fd25cb2eb68c97d2088d5dd47a053793cc sale-6.4.7
 1542180ae6fa34a8e170923d6c06c20958eeb18f account_statement_rule-6.4.2
 79cc639727f1872b8b00ea084ad02e5debdaa21d account_payment_clearing-6.4.3
 3bdacc8409ce4d9fa1963fdfaf8d8fd510f140e8 account_invoice_defer-6.4.2
+4dfa0b44918913015d42475f1e132758873c70bc account_invoice-6.4.7
