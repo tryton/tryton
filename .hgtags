@@ -8739,3 +8739,4 @@ af53de9c964282c6600a030f2285ae5e621c5190 purchase-6.6.3
 271d63a864c841cfcb2ae5f63418d690991d63a2 account_statement_rule-6.6.1
 ec1c330851c4c897a7556962fc79892d91db976d account_payment_clearing-6.6.1
 daadd9082d01f5c8346f7190dc5bd57b48307f0a account_invoice_defer-6.6.1
+dc86f5cde495a52601c5b10a4bed3af3c2f69a67 account_invoice-6.6.5
