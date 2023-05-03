@@ -1,16 +1,10 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
-from decimal import Decimal
-
-from sql.aggregate import Sum
-
 from trytond.i18n import gettext
 from trytond.model import ModelView, Workflow, fields
 from trytond.model.exceptions import AccessError
-from trytond.modules.product import round_price
 from trytond.pool import Pool, PoolMeta
 from trytond.pyson import Bool, Eval
-from trytond.transaction import Transaction
 
 
 class Production(metaclass=PoolMeta):
@@ -36,30 +30,10 @@ class Production(metaclass=PoolMeta):
             ])
 
     def get_cost(self, name):
-        pool = Pool()
-        Work = pool.get('production.work')
-        Cycle = pool.get('production.work.cycle')
-        table = self.__table__()
-        work = Work.__table__()
-        cycle = Cycle.__table__()
-        cursor = Transaction().connection.cursor()
-
-        cost = super(Production, self).get_cost(name)
-
-        cursor.execute(*table.join(work, 'LEFT',
-                condition=work.production == table.id
-                ).join(cycle, 'LEFT', condition=cycle.work == work.id
-                ).select(Sum(cycle.cost),
-                where=(cycle.state == 'done')
-                & (table.id == self.id)))
-        cycle_cost, = cursor.fetchone()
-        if cycle_cost is not None:
-            # SQLite uses float for SUM
-            if not isinstance(cycle_cost, Decimal):
-                cycle_cost = Decimal(cycle_cost)
-            cost += cycle_cost
-
-        return round_price(cost)
+        cost = super().get_cost(name)
+        for work in self.works:
+            cost += work.cost
+        return cost
 
     @classmethod
     @ModelView.button

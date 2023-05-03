@@ -2,8 +2,12 @@
 # this repository contains the full copyright notices and license terms.
 import datetime
 import random
+from collections import defaultdict
 from decimal import Decimal
 from functools import wraps
+
+from sql.aggregate import Sum
+from sql.conditionals import Coalesce
 
 from trytond.i18n import gettext
 from trytond.model import (
@@ -13,6 +17,7 @@ from trytond.model.exceptions import AccessError
 from trytond.modules.product import price_digits, round_price
 from trytond.pool import Pool
 from trytond.pyson import Bool, Eval, If, TimeDelta
+from trytond.tools import grouped_slice, reduce_ids
 from trytond.transaction import Transaction
 
 from .exceptions import PickerError
@@ -128,6 +133,8 @@ class Work(sequence_ordered(), ModelSQL, ModelView):
         filter=[
             ('state', '=', 'running'),
             ])
+    cost = fields.Function(fields.Numeric(
+        "Cost", digits=price_digits), 'get_cost')
     company = fields.Many2One('company.company', "Company", required=True)
     warehouse = fields.Function(fields.Many2One('stock.location', 'Warehouse'),
         'on_change_with_warehouse')
@@ -243,6 +250,28 @@ class Work(sequence_ordered(), ModelSQL, ModelView):
             ('operation.rec_name',) + tuple(clause[1:]),
             ('production.rec_name',) + tuple(clause[1:]),
             ]
+
+    @classmethod
+    def get_cost(cls, works, name):
+        pool = Pool()
+        Cycle = pool.get('production.work.cycle')
+        cycle = Cycle.__table__()
+        cursor = Transaction().connection.cursor()
+        costs = defaultdict(Decimal)
+
+        for sub_works in grouped_slice(works):
+            red_sql = reduce_ids(cycle.work, [w.id for w in sub_works])
+            cursor.execute(*cycle.select(
+                    cycle.work, Sum(Coalesce(cycle.cost, 0)),
+                    where=red_sql & (cycle.state == 'done'),
+                    group_by=cycle.work))
+            costs.update(cursor)
+
+        for cost in costs:
+            if not isinstance(cost, Decimal):
+                costs[cost] = Decimal(str(costs[cost]))
+            costs[cost] = round_price(costs[cost])
+        return costs
 
     @classmethod
     def create(cls, values):

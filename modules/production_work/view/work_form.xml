@@ -17,7 +17,8 @@ this repository contains the full copyright notices and license terms. -->
         <button name="stop" icon="tryton-ok"/>
     </group>
     <field name="cycles" colspan="4"/>
-    <label id="empty" colspan="2"/>
+    <label name="cost"/>
+    <field name="cost"/>
     <label name="state"/>
     <field name="state"/>
 </form>

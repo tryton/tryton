@@ -244,6 +244,10 @@ Check production cost::
     >>> production.reload()
     >>> production.cost
     Decimal('17.0000')
+    >>> work1.cost
+    Decimal('10.0000')
+    >>> work2.cost
+    Decimal('5.0000')
 
 Do the production::
 
