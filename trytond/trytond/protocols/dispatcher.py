@@ -14,6 +14,7 @@ from trytond.exceptions import (
     UserWarning)
 from trytond.rpc import RPCReturnException
 from trytond.tools import is_instance_method
+from trytond.tools.logging import format_args
 from trytond.transaction import Transaction, TransactionError
 from trytond.worker import run_task
 from trytond.wsgi import app
@@ -28,7 +29,6 @@ ir_configuration = Table('ir_configuration')
 ir_lang = Table('ir_lang')
 ir_module = Table('ir_module')
 res_user = Table('res_user')
-_MAX_LENGTH = 80
 
 
 @app.route('/<string:database_name>/', methods=['POST'])
@@ -144,14 +144,6 @@ def help_method(request, pool):
     return pydoc.getdoc(getattr(obj, method))
 
 
-def _safe_repr(args, kwargs, short=False):
-    args = args + tuple('%s=%r' % (k, v) for k, v in kwargs.items())
-    result = repr(args)
-    if not short or len(result) < _MAX_LENGTH:
-        return result
-    return result[:_MAX_LENGTH] + ' [truncated]...)'
-
-
 @app.auth_required
 @with_pool
 def _dispatch(request, pool, *args, **kwargs):
@@ -178,7 +170,7 @@ def _dispatch(request, pool, *args, **kwargs):
         username = username.decode('utf-8')
     log_args = (
         obj.__name__, method,
-        _safe_repr(args, kwargs, not logger.isEnabledFor(logging.DEBUG)),
+        format_args(args, kwargs, logger.isEnabledFor(logging.DEBUG)),
         username, request.remote_addr, request.path)
 
     def duration():

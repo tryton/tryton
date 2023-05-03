@@ -12,6 +12,7 @@ Tools API reference.
    barcode
    email
    immutabledict
+   logging
    misc
    qrcode
    singleton

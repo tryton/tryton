@@ -21,6 +21,7 @@ from trytond.tools.domain_inversion import (
     localize_domain, merge, parse, prepare_reference_domain, simplify,
     unique_value)
 from trytond.tools.immutabledict import ImmutableDict
+from trytond.tools.logging import format_args
 from trytond.tools.string_ import LazyString, StringPartitioned
 
 try:
@@ -318,6 +319,68 @@ class ToolsTestCase(unittest.TestCase):
         available_timezones = timezone.available_timezones()
         self.assertTrue(available_timezones)
         self.assertIsInstance(available_timezones, set)
+
+    def test_format_args(self):
+        "Test format_args"
+        for args, kwargs, short_form, long_form in [
+                (tuple(), {}, "()", "()"),
+                (('abcdefghijklmnopqrstuvwxyz',), {},
+                    "('abcdefghijklmnopq...')",
+                    "('abcdefghijklmnopqrstuvwxyz')"),
+                ((b'foo',), {}, "(<3 bytes>)", "(b'foo')"),
+                (([1, 2, 3, 4], [4, 5, 6, 7], [8, 9, 10, 11]), {},
+                    "([1, 2, 3, 4], [4, 5, 6, 7], [8, 9, 10, 11])",
+                    "([1, 2, 3, 4], [4, 5, 6, 7], [8, 9, 10, 11])"),
+                (([1, 2, 3, 4, 5, 6], [4, 5, 6, 7], [8, 9, 10, 11]), {},
+                    "([1, 2, 3, 4, 5, ...], [4, 5, 6, 7], [8, 9, 10, 11])",
+                    "([1, 2, 3, 4, 5, 6], [4, 5, 6, 7], [8, 9, 10, 11])"),
+                (([1, 2, 3], 'foo'), {'a': '1'},
+                    "([1, 2, 3], 'foo', a='1')",
+                    "([1, 2, 3], 'foo', a='1')"),
+                ((list(range(5)),), {},
+                    "([0, 1, 2, 3, 4])",
+                    "([0, 1, 2, 3, 4])"),
+                ((list(range(6)),), {},
+                    "([0, 1, 2, 3, 4, ...])",
+                    "([0, 1, 2, 3, 4, 5])"),
+                (('a', 'b', 'c', 'd'), {},
+                    "('a', 'b', 'c', ...)", "('a', 'b', 'c', 'd')"),
+                (([1, [2, [3, [4, [5, [6]]]]]],), {},
+                    "([1, [2, [3, [4, [5, ...]]]]])",
+                    "([1, [2, [3, [4, [5, [6]]]]]])"),
+                (tuple(), {'a': 1, 'b': 2}, "(a=1, b=2)", "(a=1, b=2)"),
+                ((list(range(10)), 'foo'), {'a': '1'},
+                    "([0, 1, 2, 3, 4, ...], 'foo', a='1')",
+                    "([0, 1, 2, 3, 4, 5, 6, 7, 8, 9], 'foo', a='1')"),
+                ((list(range(4)), 'foo'), {k: k for k in 'abcdefg'},
+                    "([0, 1, 2, 3], 'foo', a='a', ...)",
+                    "([0, 1, 2, 3], 'foo', a='a', b='b', c='c', d='d',"
+                    " e='e', f='f', g='g')"),
+                ((list(range(5)), list(range(20, 25))),
+                    {k: list(range(7)) for k in 'ab'},
+                    "([0, 1, 2, 3, 4], [20, 21, 22, 23, 24], "
+                    "a=[0, 1, 2, 3, 4, ...], ...)",
+                    "([0, 1, 2, 3, 4], [20, 21, 22, 23, 24], "
+                    "a=[0, 1, 2, 3, 4, 5, 6], b=[0, 1, 2, 3, 4, 5, 6])"),
+                (tuple(), {k: {i: i for i in range(7)} for k in 'abcd'},
+                    "(a={0: 0, 1: 1, 2: 2, 3: 3, 4: 4, ...}, "
+                    "b={0: 0, 1: 1, 2: 2, 3: 3, 4: 4, ...}, "
+                    "c={0: 0, 1: 1, 2: 2, 3: 3, 4: 4, ...}, ...)",
+                    "(a={0: 0, 1: 1, 2: 2, 3: 3, 4: 4, 5: 5, 6: 6}, "
+                    "b={0: 0, 1: 1, 2: 2, 3: 3, 4: 4, 5: 5, 6: 6}, "
+                    "c={0: 0, 1: 1, 2: 2, 3: 3, 4: 4, 5: 5, 6: 6}, "
+                    "d={0: 0, 1: 1, 2: 2, 3: 3, 4: 4, 5: 5, 6: 6})"),
+                ]:
+            with self.subTest(form='short', args=args, kwargs=kwargs):
+                self.assertEqual(
+                    str(format_args(args, kwargs, max_args=3, max_items=5)),
+                    short_form)
+            with self.subTest(form='long', args=args, kwargs=kwargs):
+                self.assertEqual(
+                    str(format_args(
+                            args, kwargs, verbose=True, max_args=3,
+                            max_items=5)),
+                    long_form)
 
 
 class StringPartitionedTestCase(unittest.TestCase):
