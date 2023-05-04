@@ -97,24 +97,32 @@ class CompanyTestMixin:
                         'in "%s"."%s" context' % (
                             company, mname, fname))
 
+    @property
+    def _skip_company_rule(self):
+        """Return a set of couple field name and model name
+        for which no company rules are needed."""
+        return {
+            ('company.employee', 'company'),
+            ('res.user', 'company'),
+            }
+
     @with_transaction()
     def test_company_rule(self):
         "Test missing company rule"
         pool = Pool()
         Rule = pool.get('ir.rule')
         Company = pool.get('company.company')
-        Employee = pool.get('company.employee')
-        User = pool.get('res.user')
 
         to_check = defaultdict(set)
         for mname, model in pool.iterobject():
             if (not isregisteredby(model, self.module)
                     or model.__access__
                     or not (issubclass(model, ModelView)
-                        and issubclass(model, ModelStorage))
-                    or issubclass(model, (Company, Employee, User))):
+                        and issubclass(model, ModelStorage))):
                 continue
             for fname, field in model._fields.items():
+                if (mname, fname) in self._skip_company_rule:
+                    continue
                 if (field._type == 'many2one'
                         and issubclass(field.get_target(), Company)):
                     to_check[fname].add(mname)
@@ -131,9 +139,10 @@ class CompanyTestMixin:
                     ])
             with_rules = {r.rule_group.model.model for r in rules}
             self.assertGreaterEqual(with_rules, models,
-                msg='Models "%(models)s" are missing a global rule '
+                msg='Models %(models)s are missing a global rule '
                 'for field "%(field)s"' % {
-                    'models': ', '.join(models - with_rules),
+                    'models': ', '.join(
+                        f'"{m}"' for m in (models - with_rules)),
                     'field': fname,
                     })
 
