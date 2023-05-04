@@ -5,6 +5,8 @@ this repository contains the full copyright notices and license terms. -->
     <xpath expr="//label[@name='forecast_date']" position="before">
         <label name="warehouse"/>
         <field name="warehouse"/>
+        <label name="stock_skip_warehouse"/>
+        <field name="stock_skip_warehouse"/>
     </xpath>
     <xpath expr="//field[@name='stock_date_end']" position="before">
         <field name="locations" invisible="1" colspan="4"/>

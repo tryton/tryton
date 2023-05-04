@@ -368,6 +368,9 @@ class LotByWarehouseContext(LotByLocationContext):
             ('type', '=', 'warehouse'),
             ],
         )
+    stock_skip_warehouse = fields.Boolean(
+        "Only storage zone",
+        help="Check to use only the quantity of the storage zone.")
     locations = fields.Function(
         fields.Many2Many('stock.location', None, None, "Locations"),
         'on_change_with_locations')
@@ -375,6 +378,10 @@ class LotByWarehouseContext(LotByLocationContext):
     @classmethod
     def default_warehouse(cls):
         return Pool().get('stock.location').get_default_warehouse()
+
+    @classmethod
+    def default_stock_skip_warehouse(cls):
+        return Transaction().context.get('stock_skip_warehouse')
 
     @fields.depends('warehouse')
     def on_change_with_locations(self, name=None):
