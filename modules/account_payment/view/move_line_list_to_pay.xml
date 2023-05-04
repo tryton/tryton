@@ -4,5 +4,9 @@ this repository contains the full copyright notices and license terms. -->
 <data>
     <xpath expr="//field[@name='amount']" position="after">
         <field name="payment_amount"/>
+        <button name="pay"/>
+        <button name="payment_block"/>
+        <button name="payment_unblock"/>
+        <field name="payment_blocked" tree_invisible="1"/>
     </xpath>
 </data>

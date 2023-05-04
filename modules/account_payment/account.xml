@@ -119,7 +119,7 @@ this repository contains the full copyright notices and license terms. -->
 
         <record model="ir.model.button" id="move_line_pay_button">
             <field name="name">pay</field>
-            <field name="string">Pay Lines</field>
+            <field name="string">Pay</field>
             <field name="model" search="[('model', '=', 'account.move.line')]"/>
         </record>
         <record model="ir.model.button-res.group" id="move_line_pay_button_group_payment">
