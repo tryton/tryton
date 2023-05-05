@@ -1211,7 +1211,7 @@ class RPCProgress(object):
         else:
             if not self.res:
                 self.error = True
-        if self.callback:
+        if self.callback and CONFIG['thread']:
             # Post to GTK queue to be run by the main thread
             GLib.idle_add(self.process)
         return True
@@ -1220,7 +1220,7 @@ class RPCProgress(object):
         self.process_exception_p = process_exception_p
         self.callback = callback
 
-        if callback:
+        if callback and CONFIG['thread']:
             # Parent is only useful if it is asynchronous
             # otherwise the cursor is not updated.
             self.parent = get_toplevel_window()
