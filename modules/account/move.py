@@ -2167,8 +2167,9 @@ class Reconcile(Wizard):
                 while lines:
                     Line.reconcile(lines)
                     lines = self._default_lines()
-                if not self.get_parties(
-                        self.show.account, party=self.show.party):
+                if not self.get_currencies(
+                        self.show.account, self.show.party,
+                        currency=self.show.currency):
                     return 'next_'
             elif not lines and self.start.only_balanced:
                 return 'next_'
