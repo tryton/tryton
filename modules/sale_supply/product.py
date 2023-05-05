@@ -23,7 +23,7 @@ class Template(metaclass=PoolMeta):
             })
 
     @classmethod
-    def __resgister__(cls, module):
+    def __register__(cls, module):
         table_h = cls.__table_handler__(module)
         table = cls.__table__()
         cursor = Transaction().connection.cursor()
