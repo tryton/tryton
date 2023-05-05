@@ -2397,12 +2397,12 @@ class ReconcileShow(ModelView):
     @fields.depends('lines', 'currency', 'company')
     def on_change_lines(self):
         amount = Decimal(0)
-        for line in self.lines:
-            if line.second_currency == self.currency:
-                amount += line.amount_second_currency
-            elif line.currency == self.currency:
-                amount += line.debit - line.credit
         if self.currency:
+            for line in self.lines:
+                if line.second_currency == self.currency:
+                    amount += line.amount_second_currency
+                elif line.currency == self.currency:
+                    amount += line.debit - line.credit
             amount = self.currency.round(amount)
         self.write_off_amount = amount
 
