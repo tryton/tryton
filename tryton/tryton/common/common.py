@@ -1225,7 +1225,7 @@ class RPCProgress(object):
             # otherwise the cursor is not updated.
             self.parent = get_toplevel_window()
             self._cursor_timeout = GLib.timeout_add(3000, self._set_cursor)
-            Thread(target=self.start).run()
+            Thread(target=self.start).start()
             return
         else:
             self.start()
