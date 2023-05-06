@@ -112,8 +112,8 @@
                 this.view.optionals.push(column);
             }
 
-            if (attributes.sum) {
-                var label = attributes.sum + Sao.i18n.gettext(': ');
+            if (Boolean(parseInt(attributes.sum || '0', 10))) {
+                var label = attributes.string + Sao.i18n.gettext(': ');
                 var sum = jQuery('<label/>', {
                     'text': label,
                 });

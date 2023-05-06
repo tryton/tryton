@@ -4,8 +4,8 @@ this repository contains the full copyright notices and license terms. -->
 <tree editable="1">
     <field name="budget_line" expand="2"/>
     <field name="period" expand="1"/>
-    <field name="ratio" factor="100" sum="Ratio">
+    <field name="ratio" factor="100" sum="1">
         <suffix name="ratio" string="%"/>
     </field>
-    <field name="total_amount" sum="Total Amount"/>
+    <field name="total_amount" sum="1"/>
 </tree>

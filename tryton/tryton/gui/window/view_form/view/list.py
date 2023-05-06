@@ -337,8 +337,8 @@ class TreeXMLViewParser(XMLViewParser):
         if 'optional' in attributes:
             self.view.optionals.append(column)
 
-        if 'sum' in attributes:
-            text = attributes['sum'] + _(':')
+        if bool(int(attributes.get('sum', 0))):
+            text = attributes['string'] + _(':')
             label, sum_ = Gtk.Label(label=text), Gtk.Label()
 
             hbox = Gtk.HBox()

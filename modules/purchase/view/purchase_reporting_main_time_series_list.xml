@@ -3,6 +3,6 @@
 this repository contains the full copyright notices and license terms. -->
 <tree>
     <field name="date"/>
-    <field name="number" sum="Number"/>
-    <field name="expense" sum="Expense"/>
+    <field name="number" sum="1"/>
+    <field name="expense" sum="1"/>
 </tree>

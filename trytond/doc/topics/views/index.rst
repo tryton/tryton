@@ -702,8 +702,7 @@ field
    column.
 
 ``sum``
-   A text for the sum widget that is added on the bottom of list with the sum
-   of all the fields in the column.
+   A boolean to display the sum of all the records.
 
 ``width``
    The width of the column.

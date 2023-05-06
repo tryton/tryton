@@ -3,5 +3,5 @@
 this repository contains the full copyright notices and license terms. -->
 <tree>
     <field name="employee" expand="2"/>
-    <field name="duration" sum="Duration" expand="1"/>
+    <field name="duration" sum="1" expand="1"/>
 </tree>

@@ -189,9 +189,12 @@
   </define>
   <define name="attlist.field" combine="interleave">
     <optional>
-      <attribute>
+      <attribute a:defaultValue="0">
         <name ns="">sum</name>
-        <text/>
+        <choice>
+          <value>0</value>
+          <value>1</value>
+        </choice>
       </attribute>
     </optional>
   </define>

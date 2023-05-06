@@ -2,8 +2,8 @@
 <!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
 this repository contains the full copyright notices and license terms. -->
 <tree keyword_open="1">
-    <field name="cost" sum="Cost"/>
-    <field name="revenue" sum="Revenue"/>
+    <field name="cost" sum="1"/>
+    <field name="revenue" sum="1"/>
     <field name="profit"/>
     <field name="margin" factor="100">
         <suffix string="%" name="margin"/>

@@ -5,7 +5,7 @@ this repository contains the full copyright notices and license terms. -->
     <field name="company" expand="1" optional="1"/>
     <field name="employee" expand="2"/>
     <field name="date"/>
-    <field name="duration" sum="Duration"/>
+    <field name="duration" sum="1"/>
     <field name="work" expand="1"/>
     <field name="description" expand="2" optional="0"/>
 </tree>
