@@ -2250,7 +2250,7 @@
         line.forEach(function(val, i) {
             if (locale_format) {
                 if (val.isDateTime) {
-                    val = val.format(
+                    val = val.local().format(
                         Sao.common.date_format() + ' ' +
                         Sao.common.moment_format('%X'));
                 } else if (val.isDate) {
@@ -2265,6 +2265,8 @@
                             'maximumFractionDigits': 20,
                         });
                 }
+            } else if (val.isDateTime) {
+                val = val.utc();
             } else if (val.isTimeDelta) {
                 val = val.asSeconds();
             } else if (typeof(val) == 'boolean') {

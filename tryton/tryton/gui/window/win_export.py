@@ -433,6 +433,7 @@ class WinExport(WinCSV):
                 if isinstance(val, Number):
                     val = locale.str(val)
                 elif isinstance(val, datetime.datetime):
+                    val = common.timezoned_date(val)
                     val = val.strftime(common.date_format() + ' %X')
                 elif isinstance(val, datetime.date):
                     val = val.strftime(common.date_format())
