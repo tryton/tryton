@@ -271,6 +271,8 @@ def load_module_graph(graph, pool, update=None, lang=None):
                                 ]))
                 module2state[module] = 'activated'
 
+            # Clear cache from old data cached before transaction started
+            Cache.clear_all()
             # Avoid clearing cache to prevent dead lock on ir.cache table
             Cache.rollback(transaction)
             transaction.commit()
