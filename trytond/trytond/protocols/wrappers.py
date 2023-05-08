@@ -95,7 +95,13 @@ class Request(_Request):
             header = self.headers.get('Authorization')
             return parse_authorization_header(header)
         elif authorization.type == 'session':
-            return parse_session(authorization.token)
+            # Werkzeug may parse the session as parameters
+            # if the base64 uses the padding sign '='
+            if authorization.token is None:
+                header = self.headers.get('Authorization')
+                return parse_authorization_header(header)
+            else:
+                return parse_session(authorization.token)
         return authorization
 
     @cached_property
