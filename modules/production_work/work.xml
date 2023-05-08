@@ -331,7 +331,7 @@ this repository contains the full copyright notices and license terms. -->
         </record>
         <record model="ir.rule" id="rule_work_cycle_companies">
             <field name="domain"
-                eval="[('work.company', 'in', Eval('companies', []))]"
+                eval="[('company', 'in', Eval('companies', []))]"
                 pyson="1"/>
             <field name="rule_group" ref="rule_group_work_cycle_companies"/>
         </record>

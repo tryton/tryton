@@ -14,6 +14,7 @@ from trytond.model import (
     DeactivableMixin, Index, ModelSQL, ModelView, Workflow, fields,
     sequence_ordered, tree)
 from trytond.model.exceptions import AccessError
+from trytond.modules.company.model import employee_field, set_employee
 from trytond.modules.product import price_digits, round_price
 from trytond.pool import Pool
 from trytond.pyson import Bool, Eval, If, TimeDelta
@@ -321,6 +322,18 @@ class WorkCycle(Workflow, ModelSQL, ModelView):
             'readonly': Eval('state').in_(['done', 'draft', 'cancelled']),
             })
     cost = fields.Numeric('Cost', digits=price_digits, readonly=True)
+    company = fields.Function(
+        fields.Many2One('company.company', "Company"),
+        'on_change_with_company', searcher='search_company')
+    run_by = employee_field("Run By", states={
+        'readonly': Eval('state') != 'draft',
+        })
+    done_by = employee_field("Done By", states={
+        'readonly': Eval('state').in_(['draft', 'running']),
+        })
+    cancelled_by = employee_field("Cancelled By", states={
+        'readonly': Eval('state').in_(['draft', 'running']),
+        })
     state = fields.Selection([
             ('draft', 'Draft'),
             ('running', 'Running'),
@@ -361,10 +374,28 @@ class WorkCycle(Workflow, ModelSQL, ModelView):
     def default_state(cls):
         return 'draft'
 
+    @fields.depends('work', '_parent_work.company')
+    def on_change_with_company(self, name=None):
+        if self.work and self.work.company:
+            return self.work.company.id
+
+    @classmethod
+    def search_company(cls, name, clause):
+        return [('work.' + clause[0], *clause[1:])]
+
+    @classmethod
+    def copy(cls, cycles, default=None):
+        default = default.copy() if default is not None else {}
+        default.setdefault('run_by')
+        default.setdefault('done_by')
+        default.setdefault('cancelled_by')
+        return super().copy(cycles, default=default)
+
     @classmethod
     @ModelView.button
     @set_work_state
     @Workflow.transition('cancelled')
+    @set_employee('cancelled_by')
     def cancel(cls, cycles):
         pass
 
@@ -372,6 +403,7 @@ class WorkCycle(Workflow, ModelSQL, ModelView):
     @ModelView.button
     @set_work_state
     @Workflow.transition('running')
+    @set_employee('run_by')
     def run(cls, cycles):
         pass
 
@@ -379,6 +411,7 @@ class WorkCycle(Workflow, ModelSQL, ModelView):
     @ModelView.button
     @set_work_state
     @Workflow.transition('done')
+    @set_employee('done_by')
     def do(cls, cycles):
         now = datetime.datetime.now()
         for cycle in cycles:

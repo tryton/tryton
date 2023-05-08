@@ -7,7 +7,7 @@ Imports::
     >>> import datetime as dt
     >>> from decimal import Decimal
     >>> from proteus import Model, Wizard
-    >>> from trytond.tests.tools import activate_modules
+    >>> from trytond.tests.tools import activate_modules, set_user
     >>> from trytond.modules.company.tests.tools import create_company, \
     ...     get_company
 
@@ -16,6 +16,11 @@ Imports::
 Activate modules::
 
     >>> config = activate_modules('production_work')
+
+    >>> Employee = Model.get('company.employee')
+    >>> Group = Model.get('res.group')
+    >>> Party = Model.get('party.party')
+    >>> User = Model.get('res.user')
 
 Create company::
 
@@ -145,6 +150,24 @@ Create an Inventory::
     >>> inventory.state
     'done'
 
+Create production user::
+
+    >>> production_user = User()
+    >>> production_user.name = "Production"
+    >>> production_user.login = 'production'
+    >>> production_user.groups.extend(Group.find([
+    ...             ('name', '=', 'Production'),
+    ...             ]))
+    >>> employee_party = Party(name="Employee")
+    >>> employee_party.save()
+    >>> employee = Employee(party=employee_party)
+    >>> employee.save()
+    >>> production_user.employees.append(employee)
+    >>> production_user.employee = employee
+    >>> production_user.save()
+
+    >>> set_user(production_user)
+
 Make a production::
 
     >>> Production = Model.get('production')
@@ -197,17 +220,23 @@ Run works::
     >>> cycle1.click('run')
     >>> cycle1.state
     'running'
+    >>> cycle1.run_by == employee
+    True
     >>> work1.reload()
     >>> work1.state
     'running'
     >>> cycle1.click('do')
     >>> cycle1.state
     'done'
+    >>> cycle1.done_by == employee
+    True
     >>> work1.reload()
     >>> work1.state
     'finished'
     >>> cycle2 = work2.cycles.new()
     >>> cycle2.click('cancel')
+    >>> cycle2.cancelled_by == employee
+    True
     >>> cycle2.state
     'cancelled'
     >>> work2.reload()

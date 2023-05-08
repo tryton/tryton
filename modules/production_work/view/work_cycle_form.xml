@@ -7,6 +7,10 @@ this repository contains the full copyright notices and license terms. -->
     <label name="duration"/>
     <field name="duration"/>
     <newline/>
+    <label name="run_by"/>
+    <field name="run_by"/>
+    <label name="done_by"/>
+    <field name="done_by"/>
     <label name="state"/>
     <field name="state"/>
     <group col="-1" colspan="2" id="buttons">
