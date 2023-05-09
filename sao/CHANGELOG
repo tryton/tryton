@@ -1,3 +1,4 @@
+* Eagerly read string value of multiselection fields
 * Use locale timezone for CSV in locale format
 
 Version 6.8.0 - 2023-05-01

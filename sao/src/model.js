@@ -669,12 +669,13 @@
             }
             var fnames_to_fetch = fnames.slice();
             var rec_named_fields = ['many2one', 'one2one', 'reference'];
+            const selection_fields = ['selection', 'multiselection'];
             for (const fname of fnames) {
                 var fdescription = this.model.fields[fname].description;
                 if (~rec_named_fields.indexOf(fdescription.type))
                     fnames_to_fetch.push(fname + '.rec_name');
-                else if ((fdescription.type == 'selection') &&
-                        ((fdescription.loading || 'lazy') == 'eager')) {
+                else if (~selection_fields.indexOf(fdescription.type) &&
+                    ((fdescription.loading || 'lazy') == 'eager')) {
                     fnames_to_fetch.push(fname + ':string');
                 }
             }
@@ -842,8 +843,9 @@
                         (field instanceof Sao.field.Reference)) {
                     related = name + '.';
                     this._values[related] = values[related] || {};
-                } else if ((field instanceof Sao.field.Selection) &&
-                        (name + ':string' in values)){
+                } else if (((field instanceof Sao.field.Selection) ||
+                    (field instanceof Sao.field.MultiSelection)) &&
+                    (name + ':string' in values)) {
                     related = name + ':string';
                     this._values[related] = values[related];
                 }

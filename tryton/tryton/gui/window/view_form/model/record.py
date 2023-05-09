@@ -83,7 +83,7 @@ class Record:
                 f_attrs = self.group.fields[fname].attrs
                 if f_attrs['type'] in {'many2one', 'one2one', 'reference'}:
                     fnames.append('%s.rec_name' % fname)
-                elif (f_attrs['type'] == 'selection'
+                elif (f_attrs['type'] in {'selection', 'multiselection'}
                         and f_attrs.get('loading', 'lazy') == 'eager'):
                     fnames.append('%s:string' % fname)
             if 'rec_name' not in fnames:
@@ -480,7 +480,8 @@ class Record:
             if isinstance(field, (fields.M2OField, fields.ReferenceField)):
                 related = fieldname + '.'
                 self.value[related] = val.get(related) or {}
-            elif (isinstance(field, fields.SelectionField)
+            elif (isinstance(field, (
+                            fields.SelectionField, fields.MultiSelectionField))
                     and fieldname + ':string' in val):
                 related = fieldname + ':string'
                 self.value[related] = val[related]
