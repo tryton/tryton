@@ -2631,7 +2631,7 @@
         },
         update_text: function(cell, record) {
             if (!this.tree.editable &&
-                    (this.field_name + ':string' in record._value)) {
+                    (this.field_name + ':string' in record._values)) {
                 var text_value = record._values[this.field_name + ':string'];
                 cell.text(text_value).attr('title', text_value);
             } else {
