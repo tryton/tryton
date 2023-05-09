@@ -436,6 +436,15 @@ class Work(Effort, Progress, Timesheet, metaclass=PoolMeta):
         super().write(*args)
 
     @classmethod
+    def delete(cls, works):
+        if any(w.invoice_line for w in works):
+            work = next((w for w in works if w.invoice_line))
+            raise AccessError(gettext(
+                    'project_invoice.msg_invoiced_work_delete',
+                    work=work.rec_name))
+        super().delete(works)
+
+    @classmethod
     def get_invoice_methods(cls):
         field = 'project_invoice_method'
         return cls.fields_get(field)[field]['selection']
