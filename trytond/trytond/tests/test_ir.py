@@ -13,6 +13,7 @@ except ImportError:
 from dateutil.relativedelta import relativedelta
 
 from trytond.config import config
+from trytond.ir.lang import _replace
 from trytond.pool import Pool
 from trytond.pyson import Eval, If, PYSONEncoder
 from trytond.tools import timezone
@@ -174,6 +175,17 @@ class IrTestCase(ModuleTestCase):
             self.assertEqual(
                 lang.format(percent, value, grouping, monetary, *add), result)
 
+    def test_lang_replace(self):
+        "Test string _replace"
+        for src, result in [
+                ('%x', 'foo'),
+                ('%%x', '%%x'),
+                ('%x %x', 'foo foo'),
+                ('%x %y %x %%x', 'foo %y foo %%x'),
+                ]:
+            with self.subTest(src=src):
+                self.assertEqual(_replace(src, '%x', 'foo'), result)
+
     @with_transaction()
     def test_lang_strftime(self):
         "Test Lang.strftime"
@@ -192,9 +204,14 @@ class IrTestCase(ModuleTestCase):
                 '%H:%M:%S', "14:30:12"),
             (datetime.datetime(2018, 11, 1, 14, 30, 12), None,
                 "11/01/2018 14:30:12"),
+            (datetime.date(2016, 8, 3), '%d %%m %Y', "03 %m 2016"),
+            (datetime.date(2018, 11, 1), '%d %%x', "01 %x"),
+            (datetime.date(2018, 11, 1), '%d %%a', "01 %a"),
+            (datetime.datetime(2018, 11, 1, 14, 30, 12), '%d %%p', "01 %p"),
             ]
         for date, format_, result in test_data:
-            self.assertEqual(lang.strftime(date, format_), result)
+            with self.subTest(date=date, format=format_):
+                self.assertEqual(lang.strftime(date, format_), result)
 
     @with_transaction()
     def test_lang_format_number(self):

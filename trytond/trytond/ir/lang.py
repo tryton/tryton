@@ -4,6 +4,7 @@
 import datetime
 from ast import literal_eval
 from decimal import Decimal
+from itertools import takewhile
 from locale import CHAR_MAX
 
 from sql import Table
@@ -39,6 +40,27 @@ class DeleteDefaultError(UserError):
 
 
 NO_BREAKING_SPACE = '\u00A0'
+
+
+def _replace(src, old, new, escape='%'):
+    """Return a copy of src with all occurrences of substring old replaced
+    by new if not escaped using double escape"""
+    def is_escape(x):
+        return x == escape
+    assert old.startswith(escape)
+    start = 0
+    while start < len(src):
+        i = src.find(old, start)
+        if i < 0:
+            break
+        # if there is an odd number of percentage before the
+        # placeholder then it is not escaped
+        if len(list(takewhile(is_escape, reversed(src[:i])))) % 2:
+            start = i + len(old)
+        else:
+            src = src[:i] + new + src[i + len(old):]
+            start = i + len(new)
+    return src
 
 
 class Lang(DeactivableMixin, ModelSQL, ModelView):
@@ -547,15 +569,15 @@ class Lang(DeactivableMixin, ModelSQL, ModelView):
             if isinstance(value, datetime.datetime):
                 format += ' %H:%M:%S'
         if '%x' in format:
-            format = format.replace('%x', self.date)
-        format = format.replace('%X', '%H:%M:%S')
+            format = _replace(format, '%x', self.date)
+        format = _replace(format, '%X', '%H:%M:%S')
         if isinstance(value, datetime.date):
             for f, i, klass in (('%A', 6, Day), ('%B', 1, Month)):
                 for field, f in [('name', f), ('abbreviation', f.lower())]:
                     if f in format:
                         locale = klass.locale(self, field=field)
-                        format = format.replace(
-                            f, locale[value.timetuple()[i]])
+                        format = _replace(
+                            format, f, locale[value.timetuple()[i]])
         if '%p' in format:
             if isinstance(value, datetime.time):
                 time = value
@@ -569,7 +591,7 @@ class Lang(DeactivableMixin, ModelSQL, ModelView):
                     p = self.am or 'AM'
                 else:
                     p = self.pm or 'PM'
-                format = format.replace('%p', p)
+                format = _replace(format, '%p', p)
         return value.strftime(format).replace(' ', NO_BREAKING_SPACE)
 
     def format_number(self, value, digits=None, grouping=True, monetary=None):
