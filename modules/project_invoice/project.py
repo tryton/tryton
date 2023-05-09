@@ -15,6 +15,7 @@ from sql.operators import Concat
 
 from trytond.i18n import gettext
 from trytond.model import ModelSQL, ModelView, fields
+from trytond.model.exceptions import AccessError
 from trytond.modules.currency.fields import Monetary
 from trytond.pool import Pool, PoolMeta
 from trytond.pyson import Bool, Eval, Id, If
@@ -421,6 +422,18 @@ class Work(Effort, Progress, Timesheet, metaclass=PoolMeta):
             default = default.copy()
         default.setdefault('invoice_line', None)
         return super(Work, cls).copy(records, default=default)
+
+    @classmethod
+    def write(cls, *args):
+        actions = iter(args)
+        for works, values in zip(actions, actions):
+            if ('effort_duration' in values
+                    and any(w.invoice_line for w in works)):
+                work = next((w for w in works if w.invoice_line))
+                raise AccessError(gettext(
+                        'project_invoice.msg_invoiced_work_modify_effort',
+                        work=work.rec_name))
+        super().write(*args)
 
     @classmethod
     def get_invoice_methods(cls):

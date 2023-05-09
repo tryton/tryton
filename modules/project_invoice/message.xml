@@ -24,5 +24,8 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.message" id="msg_missing_party">
             <field name="text">There is no party on work "%(work)s".</field>
         </record>
+        <record model="ir.message" id="msg_invoiced_work_modify_effort">
+            <field name="text">You cannot modify the effort of work "%(work)s" because it has been invoiced.</field>
+        </record>
     </data>
 </tryton>
