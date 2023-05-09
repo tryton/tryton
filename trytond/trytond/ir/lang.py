@@ -546,26 +546,30 @@ class Lang(DeactivableMixin, ModelSQL, ModelView):
             format = self.date
             if isinstance(value, datetime.datetime):
                 format += ' %H:%M:%S'
-        format = format.replace('%x', self.date)
+        if '%x' in format:
+            format = format.replace('%x', self.date)
         format = format.replace('%X', '%H:%M:%S')
         if isinstance(value, datetime.date):
             for f, i, klass in (('%A', 6, Day), ('%B', 1, Month)):
                 for field, f in [('name', f), ('abbreviation', f.lower())]:
-                    locale = klass.locale(self, field=field)
-                    format = format.replace(f, locale[value.timetuple()[i]])
-        if isinstance(value, datetime.time):
-            time = value
-        else:
-            try:
-                time = value.time()
-            except AttributeError:
-                time = None
-        if time:
-            if time < datetime.time(12):
-                p = self.am or 'AM'
+                    if f in format:
+                        locale = klass.locale(self, field=field)
+                        format = format.replace(
+                            f, locale[value.timetuple()[i]])
+        if '%p' in format:
+            if isinstance(value, datetime.time):
+                time = value
             else:
-                p = self.pm or 'PM'
-            format = format.replace('%p', p)
+                try:
+                    time = value.time()
+                except AttributeError:
+                    time = None
+            if time:
+                if time < datetime.time(12):
+                    p = self.am or 'AM'
+                else:
+                    p = self.pm or 'PM'
+                format = format.replace('%p', p)
         return value.strftime(format).replace(' ', NO_BREAKING_SPACE)
 
     def format_number(self, value, digits=None, grouping=True, monetary=None):
