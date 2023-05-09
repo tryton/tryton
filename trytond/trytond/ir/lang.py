@@ -576,8 +576,8 @@ class Lang(DeactivableMixin, ModelSQL, ModelView):
                 for field, f in [('name', f), ('abbreviation', f.lower())]:
                     if f in format:
                         locale = klass.locale(self, field=field)
-                        format = _replace(
-                            format, f, locale[value.timetuple()[i]])
+                        fvalue = locale[value.timetuple()[i]]
+                        format = _replace(format, f, fvalue.replace('%', '%%'))
         if '%p' in format:
             if isinstance(value, datetime.time):
                 time = value
@@ -591,7 +591,7 @@ class Lang(DeactivableMixin, ModelSQL, ModelView):
                     p = self.am or 'AM'
                 else:
                     p = self.pm or 'PM'
-                format = _replace(format, '%p', p)
+                format = _replace(format, '%p', p.replace('%', '%%'))
         return value.strftime(format).replace(' ', NO_BREAKING_SPACE)
 
     def format_number(self, value, digits=None, grouping=True, monetary=None):
