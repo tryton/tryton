@@ -26,13 +26,21 @@ class Line(metaclass=PoolMeta):
         for lines, values in zip(actions, actions):
             if (('duration' in values or 'work' in values)
                     and any(l.invoice_line for l in lines)):
-                raise AccessError(
-                    gettext('project_invoice.msg_modify_invoiced_line'))
+                line = next(l for l in lines if l.invoice_line)
+                if 'duration' in values:
+                    msg = 'msg_invoiced_timesheet_line_modify_duration'
+                else:
+                    msg = 'msg_invoiced_timesheet_line_modify_work'
+                raise AccessError(gettext(
+                        f'project_invoice.{msg}',
+                        line=line.rec_name))
         super().write(*args)
 
     @classmethod
-    def delete(cls, records):
-        if any(r.invoice_line for r in records):
-            raise AccessError(
-                gettext('project_invoice.msg_delete_invoiced_line'))
-        super().delete(records)
+    def delete(cls, lines):
+        if any(r.invoice_line for r in lines):
+            line = next((l for l in lines if l.invoice_line))
+            raise AccessError(gettext(
+                    'project_invoice.msg_invoiced_timesheet_line_delete',
+                    line=line.rec_name))
+        super().delete(lines)
