@@ -166,13 +166,17 @@ def validate(models, percentage=100):
                 break
             records = Model.browse(
                 random.sample(records, int(len(records) * ratio)))
-            for record in records:
-                try:
-                    Model._validate([record])
-                except ValidationError as exception:
-                    logger.error("%s: KO '%s'", record, exception)
-                else:
-                    logger.info("%s: OK", record)
+            try:
+                for record in records:
+                    try:
+                        Model._validate([record])
+                    except ValidationError as exception:
+                        logger.error("%s: KO '%s'", record, exception)
+                    else:
+                        logger.info("%s: OK", record)
+            except TransactionError:
+                logger.info("%s: SKIPPED", name)
+                break
             if issubclass(Model, ModelSingleton):
                 break
             offset += limit
