@@ -1607,7 +1607,7 @@ class Line(MoveLineMixin, ModelSQL, ModelView):
             reconcile_party if account and account.party_required else None)
         line.debit = amount if amount > 0 else 0
         line.credit = -amount if amount < 0 else 0
-        if account.second_currency:
+        if account and account.second_currency:
             with Transaction().set_context(date=date):
                 line.amount_second_currency = Currency.compute(
                     company.currency, amount,
