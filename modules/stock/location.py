@@ -56,7 +56,7 @@ class Location(DeactivableMixin, tree(), ModelSQL, ModelView):
         ('production', 'Production'),
         ('drop', 'Drop'),
         ('view', 'View'),
-        ], "Location type")
+        ], "Type")
     type_string = type.translated('type')
     parent = fields.Many2One(
         "stock.location", "Parent", ondelete='CASCADE',
