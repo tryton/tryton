@@ -396,7 +396,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">writeoff_tree</field>
         </record>
         <record model="ir.action.act_window" id="act_reconcile_writeoff_form">
-            <field name="name">WriteOff Methods</field>
+            <field name="name">Write-off Methods</field>
             <field name="res_model">account.move.reconcile.write_off</field>
         </record>
         <record model="ir.action.act_window.view" id="act_reconcile_writeoff_form_view1">

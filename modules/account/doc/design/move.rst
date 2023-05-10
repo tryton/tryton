@@ -179,10 +179,10 @@ chunk, in an attempt to find the best set of balanced lines.
 
 .. _model-account.move.reconcile.write_off:
 
-Reconcile Write Off
+Reconcile Write-off
 ===================
 
-The *Reconcile Write Off* concept is used to configure which
+The *Reconcile Write-off* concept is used to configure which
 `Journal <model-account.journal>` and debit or credit
 `Accounts <model-account.account>` are used for write-offs generated when
 `Reconciling Lines <wizard-account.move.reconcile_lines>`.
@@ -192,7 +192,7 @@ The *Reconcile Write Off* concept is used to configure which
    A list of the available reconcile write off settings can be found by
    opening the main menu item:
 
-      |Financial --> Configuration --> Journals --> WriteOff Methods|__
+      |Financial --> Configuration --> Journals --> Write-off Methods|__
 
-      .. |Financial --> Configuration --> Journals --> WriteOff Methods| replace:: :menuselection:`Financial --> Configuration --> Journals --> WriteOff Methods`
+      .. |Financial --> Configuration --> Journals --> Write-off Methods| replace:: :menuselection:`Financial --> Configuration --> Journals --> Write-off Methods`
       __ https://demo.tryton.org/model/account.move.reconcile.write_off
