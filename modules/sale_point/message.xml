@@ -9,7 +9,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.message" id="msg_sale_delete_numbered">
             <field name="text">You cannot delete sale "%(sale)s" because it has a number.</field>
         </record>
-        <record model="ir.message" id="msg_sale_amount_to_pay_done_paid">
+        <record model="ir.message" id="msg_sale_amount_to_pay_done_posted">
             <field name="text">The sale "%(sale)s" is done so cannot have an amount to pay.</field>
         </record>
         <record model="ir.message" id="msg_sale_amount_paid_cancelled">
