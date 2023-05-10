@@ -1641,6 +1641,11 @@ class Line(MoveLineMixin, ModelSQL, ModelView):
         move.company = company
         move.journal = configuration.get_multivalue(
             'currency_exchange_journal', company=company.id)
+        if not move.journal:
+            raise ReconciliationError(gettext(
+                    'account.'
+                    'msg_reconciliation_currency_exchange_journal_missing',
+                    company=company.rec_name))
         move.period = period_id
         move.date = date
 
@@ -1660,9 +1665,21 @@ class Line(MoveLineMixin, ModelSQL, ModelView):
         if line.credit:
             line.account = configuration.get_multivalue(
                 'currency_exchange_credit_account', company=company.id)
+            if not line.account:
+                raise ReconciliationError(gettext(
+                        'account.'
+                        'msg_reconciliation_currency_exchange_'
+                        'credit_account_missing',
+                        company=company.rec_name))
         else:
             line.account = configuration.get_multivalue(
                 'currency_exchange_debit_account', company=company.id)
+            if not line.account:
+                raise ReconciliationError(gettext(
+                        'account.'
+                        'msg_reconciliation_currency_exchange_'
+                        'debit_account_missing',
+                        company=company.rec_name))
 
         move.lines = lines
         return move
