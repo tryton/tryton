@@ -235,7 +235,8 @@ class Product(StockMixin, object, metaclass=PoolMeta):
                         context['_datetime'] = (
                             context['_datetime']
                             .replace(tzinfo=timezone)
-                            .astimezone(tz.UTC))
+                            .astimezone(tz.UTC)
+                            .replace(tzinfo=None))
                     except OverflowError:
                         pass
             # The date could be before the product creation
