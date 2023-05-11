@@ -1,5 +1,7 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
+
+from collections import defaultdict
 from decimal import Decimal
 from itertools import tee, zip_longest
 
@@ -15,7 +17,7 @@ except ImportError:
 from dateutil.relativedelta import relativedelta
 
 from trytond.i18n import lazy_gettext
-from trytond.model import ModelSQL, ModelView, fields
+from trytond.model import ModelSQL, ModelView, fields, sum_tree
 from trytond.modules.currency.fields import Monetary
 from trytond.pool import Pool
 from trytond.pyson import Eval, If
@@ -608,7 +610,6 @@ class CategoryTree(ModelSQL, ModelView):
     def get_total(cls, categories, names):
         pool = Pool()
         ReportingCategory = pool.get('stock.reporting.margin.category')
-        table = cls.__table__()
         reporting_category = ReportingCategory.__table__()
         cursor = Transaction().connection.cursor()
 
@@ -616,14 +617,9 @@ class CategoryTree(ModelSQL, ModelView):
                 ('parent', 'child_of', [c.id for c in categories]),
                 ])
         ids = [c.id for c in categories]
-        parents = {}
         reporting_categories = []
         for sub_ids in grouped_slice(ids):
             sub_ids = list(sub_ids)
-            where = reduce_ids(table.id, sub_ids)
-            cursor.execute(*table.select(table.id, table.parent, where=where))
-            parents.update(cursor)
-
             where = reduce_ids(reporting_category.id, sub_ids)
             cursor.execute(
                 *reporting_category.select(reporting_category.id, where=where))
@@ -632,31 +628,10 @@ class CategoryTree(ModelSQL, ModelView):
         result = {}
         reporting_categories = ReportingCategory.browse(reporting_categories)
         for name in names:
-            values = dict.fromkeys(ids, 0)
-            values.update(
-                (c.id, getattr(c, name)) for c in reporting_categories)
-            result[name] = cls._sum_tree(categories, values, parents)
-        return result
-
-    @classmethod
-    def _sum_tree(cls, categories, values, parents):
-        result = values.copy()
-        categories = set((c.id for c in categories))
-        leafs = categories - set(parents.values())
-        while leafs:
-            for category in leafs:
-                categories.remove(category)
-                parent = parents.get(category)
-                if parent in result:
-                    result[parent] += result[category]
-            next_leafs = set(categories)
-            for category in categories:
-                parent = parents.get(category)
-                if not parent:
-                    continue
-                if parent in next_leafs and parent in categories:
-                    next_leafs.remove(parent)
-            leafs = next_leafs
+            values = defaultdict(
+                Decimal,
+                {c.id: getattr(c, name) for c in reporting_categories})
+            result[name] = sum_tree(categories, values)
         return result
 
     def get_margin(self, name):
