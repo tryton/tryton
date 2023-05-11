@@ -49,5 +49,5 @@ class Reconcile(metaclass=PoolMeta):
     def get_currencies(self, account, party, currency=None, _balanced=False):
         if account.type.deposit:
             _balanced = True
-        return super().get_parties(
+        return super().get_currencies(
             account, party, currency=None, _balanced=_balanced)
