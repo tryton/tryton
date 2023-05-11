@@ -9,7 +9,8 @@ from sql.conditionals import Coalesce
 
 from trytond.i18n import gettext
 from trytond.model import (
-    DeactivableMixin, Index, ModelSQL, ModelView, Unique, fields, tree)
+    DeactivableMixin, Index, ModelSQL, ModelView, Unique, fields, sum_tree,
+    tree)
 from trytond.model.exceptions import AccessError
 from trytond.modules.currency.fields import Monetary
 from trytond.pool import Pool
@@ -184,23 +185,16 @@ class Account(
                 & table.id.in_(all_ids)
                 & (table.active == Literal(True)) & line_query,
                 group_by=table.id))
-        account_sum = defaultdict(Decimal)
+        values = defaultdict(Decimal)
         for account_id, value in cursor:
-            account_sum.setdefault(account_id, Decimal('0.0'))
             # SQLite uses float for SUM
             if not isinstance(value, Decimal):
                 value = Decimal(str(value))
-            account_sum[account_id] += value
+            values[account_id] += value
 
-        balances = {}
+        balances = sum_tree(childs, values)
         for account in accounts:
-            balance = Decimal()
-            childs = cls.search([
-                    ('parent', 'child_of', [account.id]),
-                    ])
-            for child in childs:
-                balance += account_sum[child.id]
-            balances[account.id] = account.currency.round(balance)
+            balances[account.id] = account.currency.round(balances[account.id])
         return balances
 
     @classmethod

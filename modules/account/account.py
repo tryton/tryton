@@ -14,7 +14,8 @@ from sql.conditionals import Case, Coalesce
 from trytond import backend
 from trytond.i18n import gettext
 from trytond.model import (
-    Check, Index, ModelSQL, ModelView, Unique, fields, sequence_ordered, tree)
+    Check, Index, ModelSQL, ModelView, Unique, fields, sequence_ordered,
+    sum_tree, tree)
 from trytond.model.exceptions import AccessError
 from trytond.modules.currency.fields import Monetary
 from trytond.pool import Pool
@@ -309,16 +310,9 @@ class Type(
         GeneralLedger = pool.get('account.general_ledger.account')
         context = Transaction().context
 
-        res = {}
-        for type_ in types:
-            res[type_.id] = Decimal('0.0')
-
         childs = cls.search([
                 ('parent', 'child_of', [t.id for t in types]),
                 ])
-        type_sum = {}
-        for type_ in childs:
-            type_sum[type_.id] = Decimal('0.0')
 
         period_ids = from_date = to_date = None
         if context.get('start_period') or context.get('end_period'):
@@ -342,28 +336,26 @@ class Type(
                         ('credit_type', 'in', [t.id for t in childs]),
                         ],
                     ])
+
+        values = defaultdict(Decimal)
         for account in accounts:
             balance = account.credit - account.debit
             if ((not account.debit_type or balance > 0)
                     and (not account.credit_type or balance < 0)):
-                type_sum[account.type.id] += balance
+                values[account.type.id] += balance
         for account in debit_credit_accounts:
             balance = account.credit - account.debit
             if account.debit_type and balance < 0:
-                type_sum[account.debit_type.id] += balance
+                values[account.debit_type.id] += balance
             elif account.credit_type and balance > 0:
-                type_sum[account.credit_type.id] += balance
+                values[account.credit_type.id] += balance
 
+        result = sum_tree(childs, values)
         for type_ in types:
-            childs = cls.search([
-                    ('parent', 'child_of', [type_.id]),
-                    ])
-            for child in childs:
-                res[type_.id] += type_sum[child.id]
-            res[type_.id] = type_.currency.round(res[type_.id])
+            result[type_.id] = type_.currency.round(result[type_.id])
             if type_.statement == 'balance' and type_.assets:
-                res[type_.id] = - res[type_.id]
-        return res
+                result[type_.id] *= -1
+        return result
 
     @classmethod
     def get_amount_cmp(cls, types, name):

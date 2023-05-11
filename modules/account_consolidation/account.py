@@ -8,7 +8,8 @@ from dateutil.relativedelta import relativedelta
 from sql.conditionals import Coalesce
 
 from trytond.i18n import gettext
-from trytond.model import ModelSQL, ModelView, fields, sequence_ordered, tree
+from trytond.model import (
+    ModelSQL, ModelView, fields, sequence_ordered, sum_tree, tree)
 from trytond.modules.currency.fields import Monetary
 from trytond.pool import Pool, PoolMeta
 from trytond.pyson import Bool, Eval, If
@@ -217,7 +218,6 @@ class Consolidation(
         context = transaction.context
         user = User(transaction.user)
 
-        result = defaultdict(Decimal)
         children = cls.search([
                 ('parent', 'child_of', [c.id for c in consolidations]),
                 ])
@@ -236,7 +236,7 @@ class Consolidation(
                 types = AccountType.browse(types)
                 id2types.update((t.id, t) for t in types)
 
-        consolidation_sum = defaultdict(Decimal)
+        values = defaultdict(Decimal)
         for consolidation in children:
             currency = consolidation.currency
             if not currency:
@@ -251,13 +251,10 @@ class Consolidation(
                 if type_.company.currency != currency:
                     value = Currency.compute(
                         type_.company.currency, value, currency, round=False)
-                consolidation_sum[consolidation.id] += value
+                values[consolidation.id] += value
+
+        result = sum_tree(children, values)
         for consolidation in consolidations:
-            children = cls.search([
-                    ('parent', 'child_of', [consolidation.id]),
-                    ])
-            for child in children:
-                result[consolidation.id] += consolidation_sum[child.id]
             if consolidation.currency:
                 result[consolidation.id] = consolidation.currency.round(
                     result[consolidation.id])
