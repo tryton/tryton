@@ -1,6 +1,7 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 from collections import defaultdict
+from decimal import Decimal
 from itertools import tee, zip_longest
 
 try:
@@ -15,7 +16,7 @@ from sql.functions import Ceil, CurrentTimestamp, DateTrunc, Log, Power
 from sql.operators import Concat
 
 from trytond.i18n import lazy_gettext
-from trytond.model import ModelSQL, ModelView, UnionMixin, fields
+from trytond.model import ModelSQL, ModelView, UnionMixin, fields, sum_tree
 from trytond.modules.currency.fields import Monetary
 from trytond.pool import Pool
 from trytond.pyson import Eval, If
@@ -530,7 +531,6 @@ class CustomerCategoryTree(ModelSQL, ModelView):
         pool = Pool()
         ReportingCustomerCategory = pool.get(
             'sale.reporting.customer.category')
-        table = cls.__table__()
         reporting_product_category = ReportingCustomerCategory.__table__()
         cursor = Transaction().connection.cursor()
 
@@ -538,14 +538,9 @@ class CustomerCategoryTree(ModelSQL, ModelView):
                 ('parent', 'child_of', [c.id for c in categories]),
                 ])
         ids = [c.id for c in categories]
-        parents = {}
         reporting_customer_categories = []
         for sub_ids in grouped_slice(ids):
             sub_ids = list(sub_ids)
-            where = reduce_ids(table.id, sub_ids)
-            cursor.execute(*table.select(table.id, table.parent, where=where))
-            parents.update(cursor)
-
             where = reduce_ids(reporting_product_category.id, sub_ids)
             cursor.execute(
                 *reporting_product_category.select(
@@ -556,31 +551,9 @@ class CustomerCategoryTree(ModelSQL, ModelView):
         reporting_product_categories = ReportingCustomerCategory.browse(
             reporting_customer_categories)
         for name in names:
-            values = dict.fromkeys(ids, 0)
-            values.update(
-                (c.id, getattr(c, name)) for c in reporting_product_categories)
-            result[name] = cls._sum_tree(categories, values, parents)
-        return result
-
-    @classmethod
-    def _sum_tree(cls, categories, values, parents):
-        result = values.copy()
-        categories = set((c.id for c in categories))
-        leafs = categories - set(parents.values())
-        while leafs:
-            for category in leafs:
-                categories.remove(category)
-                parent = parents.get(category)
-                if parent in result:
-                    result[parent] += result[category]
-            next_leafs = set(categories)
-            for category in categories:
-                parent = parents.get(category)
-                if not parent:
-                    continue
-                if parent in next_leafs and parent in categories:
-                    next_leafs.remove(parent)
-            leafs = next_leafs
+            values = defaultdict(Decimal,
+                {c.id: getattr(c, name) for c in reporting_product_categories})
+            result[name] = sum_tree(categories, values)
         return result
 
     def get_currency(self, name):
@@ -804,7 +777,6 @@ class ProductCategoryTree(ModelSQL, ModelView):
     def get_total(cls, categories, names):
         pool = Pool()
         ReportingProductCategory = pool.get('sale.reporting.product.category')
-        table = cls.__table__()
         reporting_product_category = ReportingProductCategory.__table__()
         cursor = Transaction().connection.cursor()
 
@@ -812,14 +784,9 @@ class ProductCategoryTree(ModelSQL, ModelView):
                 ('parent', 'child_of', [c.id for c in categories]),
                 ])
         ids = [c.id for c in categories]
-        parents = {}
         reporting_product_categories = []
         for sub_ids in grouped_slice(ids):
             sub_ids = list(sub_ids)
-            where = reduce_ids(table.id, sub_ids)
-            cursor.execute(*table.select(table.id, table.parent, where=where))
-            parents.update(cursor)
-
             where = reduce_ids(reporting_product_category.id, sub_ids)
             cursor.execute(
                 *reporting_product_category.select(
@@ -830,31 +797,10 @@ class ProductCategoryTree(ModelSQL, ModelView):
         reporting_product_categories = ReportingProductCategory.browse(
             reporting_product_categories)
         for name in names:
-            values = dict.fromkeys(ids, 0)
-            values.update(
-                (c.id, getattr(c, name)) for c in reporting_product_categories)
-            result[name] = cls._sum_tree(categories, values, parents)
-        return result
-
-    @classmethod
-    def _sum_tree(cls, categories, values, parents):
-        result = values.copy()
-        categories = set((c.id for c in categories))
-        leafs = categories - set(parents.values())
-        while leafs:
-            for category in leafs:
-                categories.remove(category)
-                parent = parents.get(category)
-                if parent in result:
-                    result[parent] += result[category]
-            next_leafs = set(categories)
-            for category in categories:
-                parent = parents.get(category)
-                if not parent:
-                    continue
-                if parent in next_leafs and parent in categories:
-                    next_leafs.remove(parent)
-            leafs = next_leafs
+            values = defaultdict(
+                Decimal,
+                {c.id: getattr(c, name) for c in reporting_product_categories})
+            result[name] = sum_tree(categories, values)
         return result
 
     def get_currency(self, name):
@@ -959,52 +905,22 @@ class RegionTree(ModelSQL, ModelView):
     def get_total(cls, regions, names):
         pool = Pool()
         ReportingCountry = pool.get('sale.reporting.country')
-        table = cls.__table__()
-        cursor = Transaction().connection.cursor()
 
         regions = cls.search([
                 ('parent', 'child_of', [r.id for r in regions]),
                 ])
-        ids = [c.id for c in regions]
-        parents = {}
         reporting_countries = []
-        for sub_ids in grouped_slice(ids):
-            sub_ids = list(sub_ids)
-            where = reduce_ids(table.id, sub_ids)
-            cursor.execute(*table.select(table.id, table.parent, where=where))
-            parents.update(cursor)
 
         result = {}
         reporting_countries = ReportingCountry.search([
                 ('country.region', 'in', [r.id for r in regions]),
                 ])
         for name in names:
-            values = dict.fromkeys(ids, 0)
+            values = defaultdict(Decimal)
             for reporting_country in reporting_countries:
                 values[reporting_country.country.region.id] += (
                     getattr(reporting_country, name))
-            result[name] = cls._sum_tree(regions, values, parents)
-        return result
-
-    @classmethod
-    def _sum_tree(cls, regions, values, parents):
-        result = values.copy()
-        regions = set((c.id for c in regions))
-        leafs = regions - set(parents.values())
-        while leafs:
-            for region in leafs:
-                regions.remove(region)
-                parent = parents.get(region)
-                if parent in result:
-                    result[parent] += result[region]
-            next_leafs = set(regions)
-            for region in regions:
-                parent = parents.get(region)
-                if not parent:
-                    continue
-                if parent in next_leafs and parent in regions:
-                    next_leafs.remove(parent)
-            leafs = next_leafs
+            result[name] = sum_tree(regions, values)
         return result
 
     def get_currency(self, name):
