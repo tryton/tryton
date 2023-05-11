@@ -90,7 +90,7 @@ class SelectionMixin(Field):
                 switch_value = {None: '', '': None}[value]
                 if switch_value in selection:
                     value = switch_value
-        return selection[value]
+        return selection.get(value, value)
 
 
 class Selection(SelectionMixin, Field):
