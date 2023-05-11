@@ -2,15 +2,15 @@
 # this repository contains the full copyright notices and license terms.
 
 import datetime
+from collections import defaultdict
 
 from trytond.cache import Cache
 from trytond.i18n import gettext
 from trytond.model import (
     DeactivableMixin, Index, ModelSQL, ModelView, fields, sequence_ordered,
-    tree)
+    sum_tree, tree)
 from trytond.pool import Pool
 from trytond.pyson import Bool, Eval, If, PYSONEncoder, TimeDelta
-from trytond.tools import grouped_slice, reduce_ids
 from trytond.transaction import Transaction, without_check_access
 
 from .exceptions import WorkProgressValidationError
@@ -359,41 +359,10 @@ class Work(sequence_ordered(), tree(separator='\\'), ModelSQL, ModelView):
                     })
 
     @classmethod
-    def sum_tree(cls, works, values, parents):
-        result = values.copy()
-        works = set((w.id for w in works))
-        leafs = works - set(parents.values())
-        while leafs:
-            for work in leafs:
-                works.remove(work)
-                parent = parents.get(work)
-                if parent in result:
-                    result[parent] += result[work]
-            next_leafs = set(works)
-            for work in works:
-                parent = parents.get(work)
-                if not parent:
-                    continue
-                if parent in next_leafs and parent in works:
-                    next_leafs.remove(parent)
-            leafs = next_leafs
-        return result
-
-    @classmethod
     def get_total(cls, works, names):
-        cursor = Transaction().connection.cursor()
-        table = cls.__table__()
-
         works = cls.search([
                 ('parent', 'child_of', [w.id for w in works]),
                 ])
-        work_ids = [w.id for w in works]
-        parents = {}
-        for sub_ids in grouped_slice(work_ids):
-            where = reduce_ids(table.id, sub_ids)
-            cursor.execute(*table.select(table.id, table.parent,
-                    where=where))
-            parents.update(cursor)
 
         if 'total_progress' in names and 'total_effort' not in names:
             names = list(names)
@@ -402,7 +371,7 @@ class Work(sequence_ordered(), tree(separator='\\'), ModelSQL, ModelView):
         result = {}
         for name in names:
             values = getattr(cls, '_get_%s' % name)(works)
-            result[name] = cls.sum_tree(works, values, parents)
+            result[name] = sum_tree(works, values)
 
         if 'total_progress' in names:
             digits = cls.total_progress.digits[1]
@@ -419,11 +388,13 @@ class Work(sequence_ordered(), tree(separator='\\'), ModelSQL, ModelView):
 
     @classmethod
     def _get_total_effort(cls, works):
-        return {w.id: w.effort_duration or datetime.timedelta() for w in works}
+        return defaultdict(
+            datetime.timedelta,
+            {w.id: w.effort_duration or datetime.timedelta() for w in works})
 
     @classmethod
     def _get_timesheet_duration(cls, works):
-        durations = {}
+        durations = defaultdict(datetime.timedelta)
         for work in works:
             value = datetime.timedelta()
             for timesheet_work in work.timesheet_works:
@@ -434,7 +405,9 @@ class Work(sequence_ordered(), tree(separator='\\'), ModelSQL, ModelView):
 
     @classmethod
     def _get_total_progress(cls, works):
-        return {w.id: w.effort_hours * (w.progress or 0) for w in works}
+        return defaultdict(
+            int,
+            {w.id: w.effort_hours * (w.progress or 0) for w in works})
 
     @classmethod
     def copy(cls, project_works, default=None):

@@ -447,7 +447,7 @@ class Work(Effort, Progress, Timesheet, metaclass=PoolMeta):
 
     @classmethod
     def _get_amount_to_invoice(cls, works):
-        amounts = {}
+        amounts = defaultdict(Decimal)
         for work in works:
             amounts[work.id] = work.company.currency.round(
                 (work.invoice_unit_price or 0)
@@ -465,7 +465,7 @@ class Work(Effort, Progress, Timesheet, metaclass=PoolMeta):
     @classmethod
     def _get_invoice_values(cls, works, name):
         default = getattr(cls, 'default_%s' % name)
-        amounts = dict.fromkeys((w.id for w in works), default())
+        amounts = defaultdict(default)
         method2works = defaultdict(list)
         for work in works:
             method2works[work.invoice_method].append(work)
