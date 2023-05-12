@@ -14,7 +14,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">message_form</field>
         </record>
         <record model="ir.action.act_window" id="act_message_form">
-            <field name="name">Message</field>
+            <field name="name">Messages</field>
             <field name="res_model">ir.message</field>
         </record>
         <record model="ir.action.act_window.view" id="act_message_form_view1">
