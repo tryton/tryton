@@ -198,7 +198,8 @@ Check consolidation amount only for Dunder Mifflin and Saber::
 
 Test report::
 
-    >>> statement = Report('account.consolidation.statement')
-    >>> with config.set_context(
-    ...         companies=[dunder_mifflin.id, saber.id], currency=usd.id):
-    ...     _ = statement.execute(Consolidation.find([]))
+    >>> statement = Report('account.consolidation.statement', context={
+    ...         'companies': [dunder_mifflin.id, saber.id],
+    ...         'currency': usd.id,
+    ...         })
+    >>> _ = statement.execute(Consolidation.find([]))
