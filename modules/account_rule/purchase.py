@@ -10,5 +10,5 @@ class Line(metaclass=PoolMeta):
     def get_invoice_line(self):
         with Transaction().set_context(
                 taxes=[t.id for t in self.taxes],
-                return_=self.quantity < 0):
+                return_=self.type == 'line' and self.quantity < 0):
             return super().get_invoice_line()
