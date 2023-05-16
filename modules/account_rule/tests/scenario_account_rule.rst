@@ -95,6 +95,9 @@ Test rules with a sale::
     >>> line = sale.lines.new()
     >>> line.product = product
     >>> line.quantity = -1
+    >>> line = sale.lines.new()
+    >>> line.type = 'comment'
+    >>> line.description = 'Sample'
     >>> sale.click('quote')
     >>> sale.click('confirm')
     >>> sale.state
