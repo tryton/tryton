@@ -2778,7 +2778,9 @@ class InvoiceTax(sequence_ordered(), ModelSQL, ModelView):
     def on_change_with_currency(self, name=None):
         return self.invoice.currency if self.invoice else None
 
-    @fields.depends('tax', 'invoice', '_parent_invoice.party', 'base')
+    @fields.depends(
+        'tax', 'invoice', '_parent_invoice.party', 'base',
+        methods=['_compute_amount'])
     def on_change_tax(self):
         Tax = Pool().get('account.tax')
         if not self.tax:
@@ -2795,22 +2797,23 @@ class InvoiceTax(sequence_ordered(), ModelSQL, ModelView):
                 self.account = tax.invoice_account
             else:
                 self.account = tax.credit_note_account
+        self._compute_amount()
 
-    @fields.depends('base', 'tax')
+    @fields.depends('base', 'tax', methods=['_compute_amount'])
     def on_change_base(self):
         if self.base is not None and self.tax:
             if self.base >= 0:
                 self.account = self.tax.invoice_account
             else:
                 self.account = self.tax.credit_note_account
+        self._compute_amount()
 
     @fields.depends(
-        'tax', 'base', 'amount', 'manual', 'invoice',
-        '_parent_invoice.currency',
+        'tax', 'base', 'manual', 'invoice', '_parent_invoice.currency',
         # From_date
         '_parent_invoice.accounting_date', '_parent_invoice.invoice_date',
         '_parent_invoice.company')
-    def on_change_with_amount(self):
+    def _compute_amount(self):
         pool = Pool()
         Tax = pool.get('account.tax')
         if self.tax and self.manual:
@@ -2824,8 +2827,7 @@ class InvoiceTax(sequence_ordered(), ModelSQL, ModelView):
                         amount = values['amount']
                         if self.invoice.currency:
                             amount = self.invoice.currency.round(amount)
-                        return amount
-        return self.amount
+                        self.amount = amount
 
     @property
     def _key(self):
