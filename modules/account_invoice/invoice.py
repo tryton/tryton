@@ -263,7 +263,9 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
     reconciliation_lines = fields.Function(fields.Many2Many(
             'account.move.line', None, None, "Payment Lines",
             states={
-                'invisible': Eval('state') != 'paid',
+                'invisible': (
+                    ~Eval('state').in_(['paid', 'cancelled'])
+                    | ~Eval('reconciliation_lines')),
                 }),
         'get_reconciliation_lines')
     amount_to_pay_today = fields.Function(Monetary(
