@@ -4241,7 +4241,7 @@
             }
         } catch (e) {
         }
-        blob = new Blob([data], {type: type});
+        var blob = new Blob([data], {type: type});
         return window.URL.createObjectURL(blob);
     };
 
