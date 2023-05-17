@@ -254,11 +254,7 @@ class ShipmentIn(
             },
         help="The company the shipment is associated with.")
     reference = fields.Char(
-        "Reference",
-        states={
-            'readonly': Eval('state') != 'draft',
-            },
-        help="The supplier's identifier for the shipment.")
+        "Reference", help="The supplier's identifier for the shipment.")
     supplier = fields.Many2One('party.party', 'Supplier',
         states={
             'readonly': (((Eval('state') != 'draft')
@@ -740,11 +736,7 @@ class ShipmentInReturn(ShipmentAssignMixin, Workflow, ModelSQL, ModelView):
         "Number", readonly=True,
         help="The main identifier for the shipment.")
     reference = fields.Char(
-        "Reference",
-        states={
-            'readonly': Eval('state') != 'draft',
-            },
-        help="The supplier's identifier for the shipment.")
+        "Reference", help="The supplier's identifier for the shipment.")
     supplier = fields.Many2One('party.party', 'Supplier',
         states={
             'readonly': (((Eval('state') != 'draft')
@@ -1151,11 +1143,7 @@ class ShipmentOut(
             ],
         help="Where the stock is sent to.")
     reference = fields.Char(
-        "Reference",
-        states={
-            'readonly': Eval('state') != 'draft',
-            },
-        help="The customer's identifier for the shipment.")
+        "Reference", help="The customer's identifier for the shipment.")
     warehouse = fields.Many2One('stock.location', "Warehouse", required=True,
         states={
             'readonly': ((Eval('state') != 'draft')
@@ -1865,11 +1853,7 @@ class ShipmentOutReturn(
             }, domain=[('party', '=', Eval('customer'))],
         help="The address the customer can be contacted at.")
     reference = fields.Char(
-        "Reference",
-        states={
-            'readonly': Eval('state') != 'draft',
-            },
-        help="The customer's identifier for the shipment.")
+        "Reference", help="The customer's identifier for the shipment.")
     warehouse = fields.Many2One('stock.location', "Warehouse", required=True,
         states={
             'readonly': ((Eval('state') != 'draft')
@@ -2329,11 +2313,7 @@ class ShipmentInternal(
         "Number", readonly=True,
         help="The main identifier for the shipment.")
     reference = fields.Char(
-        "Reference",
-        states={
-            'readonly': ~Eval('state').in_(['request', 'draft']),
-            },
-        help="The external identifiers for the shipment.")
+        "Reference", help="The external identifiers for the shipment.")
     from_location = fields.Many2One('stock.location', "From Location",
         required=True, states={
             'readonly': (~Eval('state').in_(['request', 'draft'])

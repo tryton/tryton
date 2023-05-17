@@ -86,10 +86,7 @@ class ShipmentDrop(ShipmentCheckQuantity, Workflow, ModelSQL, ModelView):
             'readonly': Eval('state') != 'draft',
             })
     reference = fields.Char(
-        "Reference",
-        states={
-            'readonly': Eval('state') != 'draft',
-            })
+        "Reference", help="The external identifiers for the shipment.")
     supplier = fields.Many2One('party.party', 'Supplier', required=True,
         states={
             'readonly': (((Eval('state') != 'draft')
