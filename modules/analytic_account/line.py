@@ -30,10 +30,7 @@ class Line(ModelSQL, ModelView):
         'analytic_account.account', "Account", required=True,
         domain=[
             ('type', '=', 'normal'),
-            ['OR',
-                ('company', '=', None),
-                ('company', '=', Eval('company', -1)),
-                ],
+            ('company', '=', Eval('company', -1)),
             ])
     move_line = fields.Many2One('account.move.line', 'Account Move Line',
             ondelete='CASCADE', required=True)
