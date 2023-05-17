@@ -1065,7 +1065,7 @@
                     if ((fieldnames.length == 1) ||
                         (values.id === undefined)) {
                         changes = [];
-                        for (const fieldname in fieldnames) {
+                        for (const fieldname of fieldnames) {
                             changes.push(this.model.execute(
                                 'on_change_' + fieldname,
                                 [values], this.get_context(), false));
@@ -1136,7 +1136,7 @@
                     if ((fieldnames.length == 1) ||
                         (values.id === undefined)) {
                         result = {};
-                        for (const fieldname in fieldnames) {
+                        for (const fieldname of fieldnames) {
                             result[fieldname] = this.model.execute(
                                 'on_change_with_' + fieldname,
                                 [values], this.get_context(), false);
@@ -1165,7 +1165,7 @@
                     if ((fieldnames.length == 1) ||
                         (values.id === undefined)) {
                         result = {};
-                        for (const fieldname in fieldnames) {
+                        for (const fieldname of fieldnames) {
                             result[fieldname] = this.model.execute(
                                 'on_change_with_' + fieldname,
                                 [values], this.get_context(), false);
