@@ -29,7 +29,7 @@ class Line(ModelSQL, ModelView):
     account = fields.Many2One(
         'analytic_account.account', "Account", required=True,
         domain=[
-            ('type', 'not in', ['view', 'distribution']),
+            ('type', '=', 'normal'),
             ['OR',
                 ('company', '=', None),
                 ('company', '=', Eval('company', -1)),
