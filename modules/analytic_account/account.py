@@ -126,6 +126,7 @@ class Account(
     def validate_fields(cls, accounts, field_names):
         super().validate_fields(accounts, field_names)
         cls.check_distribution(accounts, field_names)
+        cls.check_move_domain(accounts, field_names)
 
     @classmethod
     def check_distribution(cls, accounts, field_names=None):
@@ -138,6 +139,25 @@ class Account(
                 raise AccountValidationError(
                     gettext('analytic_account.msg_invalid_distribution',
                         account=account.rec_name))
+
+    @classmethod
+    def check_move_domain(cls, accounts, field_names):
+        pool = Pool()
+        Line = pool.get('account.move.line')
+        if field_names and 'type' not in field_names:
+            return
+        accounts = [
+            a for a in accounts if a.type in {'root', 'view', 'distribution'}]
+        for sub_accounts in grouped_slice(accounts):
+            sub_accounts = list(sub_accounts)
+            lines = Line.search([
+                    ('account', 'in', [a.id for a in sub_accounts]),
+                    ], order=[], limit=1)
+            if lines:
+                line, = lines
+                raise AccountValidationError(gettext(
+                        'analytic_account.msg_account_wrong_type_line',
+                        account=line.account.rec_name))
 
     @fields.depends('company')
     def on_change_with_currency(self, name=None):
