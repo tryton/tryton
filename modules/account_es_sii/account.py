@@ -34,8 +34,8 @@ SII_URL = [
     # XXX: URLs for basque country and navarra should be added
     ]
 WS_URL = {
-    'aeat': ('https://www2.agenciatributaria.gob.es/static_files/'
-        'common/internet/dep/aplicaciones/es/aeat/ssii_1_1/fact/ws/'),
+    'aeat': ('https://www2.agenciatributaria.gob.es/static_files/common/'
+        'internet/dep/aplicaciones/es/aeat/ssii_1_1_bis/fact/ws/'),
     'guipuzkoa': (
         'https://egoitza.gipuzkoa.eus/ogasuna/sii/ficheros/v1.1/'),
     }
