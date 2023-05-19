@@ -1075,6 +1075,7 @@
         <record model="account.account.template" id="106">
             <field name="name">Réserves</field>
             <field name="code">106</field>
+            <field name="type" eval="None"/>
             <field name="parent" ref="10"/>
         </record>
         <record model="account.account.template" id="1061">
@@ -1514,6 +1515,7 @@
         <record model="account.account.template" id="15">
             <field name="name">Provisions</field>
             <field name="code">15</field>
+            <field name="type" eval="None"/>
             <field name="parent" ref="1"/>
         </record>
         <record model="account.account.template" id="151">
@@ -4665,7 +4667,7 @@
         <record model="account.account.template" id="400">
             <field name="name">Fournisseurs et comptes rattachés</field>
             <field name="code">400</field>
-            <!-- Migration from 5.0 -->
+            <field name="type" eval="None"/>
             <field name="party_required" eval="False"/>
             <field name="reconcile" eval="False"/>
             <field name="parent" ref="40"/>
@@ -4826,7 +4828,6 @@
             <field name="code">410</field>
             <field name="type" ref="creances_clients"/>
             <field name="closed" eval="True"/>
-            <!-- Migration from 5.0 -->
             <field name="party_required" eval="False"/>
             <field name="reconcile" eval="False"/>
             <field name="parent" ref="41"/>
@@ -5362,6 +5363,7 @@
         <record model="account.account.template" id="456">
             <field name="name">Associés - Opérations sur le capital</field>
             <field name="code">456</field>
+            <field name="type" eval="None"/>
             <field name="parent" ref="45"/>
         </record>
         <record model="account.account.template" id="4561">
@@ -5725,6 +5727,7 @@
         <record model="account.account.template" id="50">
             <field name="name">Valeurs mobilières de placement</field>
             <field name="code">50</field>
+            <field name="type" eval="None"/>
             <field name="parent" ref="5"/>
         </record>
         <record model="account.account.template" id="501">
@@ -5829,6 +5832,7 @@
         <record model="account.account.template" id="51">
             <field name="name">Banques établissements financiers et assimilés</field>
             <field name="code">51</field>
+            <field name="type" eval="None"/>
             <field name="parent" ref="5"/>
         </record>
         <record model="account.account.template" id="511">
@@ -6020,6 +6024,7 @@
         <record model="account.account.template" id="590">
             <field name="name">Dépréciation des valeurs mobilières de placement</field>
             <field name="code">590</field>
+            <field name="type" eval="None"/>
             <field name="parent" ref="59"/>
         </record>
         <record model="account.account.template" id="5903">
@@ -7110,6 +7115,7 @@
         <record model="account.account.template" id="65">
             <field name="name">Autres charges de gestion courante</field>
             <field name="code">65</field>
+            <field name="type" eval="None"/>
             <field name="parent" ref="6"/>
         </record>
         <record model="account.account.template" id="651">
@@ -7654,6 +7660,7 @@
         <record model="account.account.template" id="70">
             <field name="name">Ventes de produits fabriqués, prestations de service, marchandises</field>
             <field name="code">70</field>
+            <field name="type" eval="None"/>
             <field name="parent" ref="7"/>
         </record>
         <record model="account.account.template" id="701">
@@ -7788,6 +7795,7 @@
         <record model="account.account.template" id="709">
             <field name="name">Rabais, remises et ristournes accordés par l'entreprise</field>
             <field name="code">709</field>
+            <field name="type" eval="None"/>
             <field name="parent" ref="70"/>
         </record>
         <record model="account.account.template" id="7091">
@@ -7936,6 +7944,7 @@
         <record model="account.account.template" id="75">
             <field name="name">Autres produits de gestion courante</field>
             <field name="code">75</field>
+            <field name="type" eval="None"/>
             <field name="parent" ref="7"/>
         </record>
         <record model="account.account.template" id="751">
