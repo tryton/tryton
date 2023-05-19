@@ -8,6 +8,11 @@ from email import charset
 import __main__
 from lxml import etree, objectify
 
+try:
+    from requests import utils as requests_utils
+except ImportError:
+    requests_utils = None
+
 __version__ = "6.9.0"
 
 os.environ.setdefault(
@@ -27,3 +32,11 @@ charset.add_charset('utf-8', charset.QP, charset.QP)
 # prevent XML vulnerabilities by default
 etree.set_default_parser(etree.XMLParser(resolve_entities=False))
 objectify.set_default_parser(objectify.makeparser(resolve_entities=False))
+
+
+def default_user_agent(name="Tryton"):
+    return f"{name}/{__version__}"
+
+
+if requests_utils:
+    requests_utils.default_user_agent = default_user_agent
