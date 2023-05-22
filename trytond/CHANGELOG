@@ -1,3 +1,4 @@
+* Support subset operator between index definitions
 * Add sum_tree helper
 * Convert sum attribute into boolean
 * Store records selection on export

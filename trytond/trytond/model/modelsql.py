@@ -189,6 +189,26 @@ class Index:
             return str(value) if isinstance(value, Expression) else value
         return {k: _format(v) for k, v in self.options.items()}
 
+    def __lt__(self, other):
+        if not isinstance(other, self.__class__):
+            return NotImplementedError
+        if (self.table != other.table
+                or self._options_cmp != other._options_cmp):
+            return False
+        if self == other:
+            return False
+        if len(self.expressions) >= len(other.expressions):
+            return False
+        for (c, u), (oc, ou) in zip(self.expressions, other.expressions):
+            if (str(c), u) != (str(oc), ou):
+                return False
+        return True
+
+    def __le__(self, other):
+        if not isinstance(other, self.__class__):
+            return NotImplementedError
+        return self < other or self == other
+
     class Unaccent(Expression):
         "Unaccent function if database support for index"
         __slots__ = ('_expression',)
