@@ -173,6 +173,8 @@ class Index:
         return hash((table_def, *expressions))
 
     def __eq__(self, other):
+        if not isinstance(other, self.__class__):
+            return NotImplementedError
         return (
             str(self.table) == str(other.table)
             and len(self.expressions) == len(other.expressions)

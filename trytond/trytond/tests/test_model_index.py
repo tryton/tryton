@@ -28,6 +28,13 @@ class ModelIndexTestCase(unittest.TestCase):
 
         self.assertEqual(index1, index2)
 
+    def test_index_equality_other(self):
+        "test Index equality with other type"
+        table = Table('test')
+        index = Index(table)
+
+        self.assertEqual(index == 0, NotImplementedError)
+
     def test_index_inequality_table(self):
         "Test Index inequality on table"
         table1 = Table('test')
