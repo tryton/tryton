@@ -178,7 +178,13 @@ class Index:
             and all((str(c), u) == (str(oc), ou)
                 for (c, u), (oc, ou) in zip(
                     self.expressions, other.expressions))
-            and self.options == other.options)
+            and self._options_cmp == other._options_cmp)
+
+    @property
+    def _options_cmp(self):
+        def _format(value):
+            return str(value) if isinstance(value, Expression) else value
+        return {k: _format(v) for k, v in self.options.items()}
 
     class Unaccent(Expression):
         "Unaccent function if database support for index"
