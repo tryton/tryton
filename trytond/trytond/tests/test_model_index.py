@@ -103,7 +103,7 @@ class ModelIndexTestCase(unittest.TestCase):
             (table2.amount, Index.Range()),
             where=table2.amount == 'foo')
 
-        self.assertEqual(index1, index2)
+        self.assertNotEqual(index1, index2)
 
     def test_index_inequality_option_param(self):
         "Test Index inequality on option param"
