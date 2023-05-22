@@ -505,10 +505,15 @@ class ModelSQL(ModelStorage):
 
     @classmethod
     def _update_sql_indexes(cls):
+        def no_subset(index):
+            for j in cls._sql_indexes:
+                if j != index and index < j:
+                    return False
+            return True
         if not callable(cls.table_query):
             table_h = cls.__table_handler__()
-            # TODO: remove overlapping indexes
-            table_h.set_indexes(cls._sql_indexes)
+            indexes = filter(no_subset, cls._sql_indexes)
+            table_h.set_indexes(indexes)
 
     @classmethod
     def _update_history_table(cls):
