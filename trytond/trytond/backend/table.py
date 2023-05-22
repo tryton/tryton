@@ -107,6 +107,9 @@ class TableHandlerInterface(object):
                 name = hashlib.sha256(name).hexdigest()[:length - 1]
         return name
 
+    def set_indexes(self, indexes):
+        raise NotImplementedError
+
     def index_translator_for(self, index):
         return next(
             filter(
