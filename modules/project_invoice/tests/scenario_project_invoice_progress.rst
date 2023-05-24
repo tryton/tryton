@@ -194,3 +194,17 @@ Invoice again project::
     Decimal('0.00')
     >>> project.invoiced_amount
     Decimal('136.00')
+
+Try to change invoice line quantity::
+
+    >>> set_user(1)
+    >>> ProjectWork = Model.get('project.work')
+    >>> task = ProjectWork(task.id)
+    >>> invoice_line = task.invoiced_progress[0].invoice_line
+    >>> invoice_line.quantity = 2.
+    >>> invoice_line.save()  # doctest: +IGNORE_EXCEPTION_DETAIL
+    Traceback (most recent call last):
+        ...
+    InvoiceLineValidationError: ...
+    >>> invoice_line.quantity = 2.5
+    >>> invoice_line.save()

@@ -225,3 +225,16 @@ Invoice again project::
     >>> _, _, invoice = Invoice.find([], order=[('id', 'ASC')])
     >>> invoice.total_amount
     Decimal('80.00')
+
+Try to change invoice line quantity::
+
+    >>> set_user(1)
+    >>> TimesheetLine = Model.get('timesheet.line')
+    >>> line = TimesheetLine(line.id)
+    >>> line.invoice_line.quantity = 5
+    >>> line.invoice_line.save()  # doctest: +IGNORE_EXCEPTION_DETAIL
+    Traceback (most recent call last):
+        ...
+    InvoiceLineValidationError: ...
+    >>> line.invoice_line.quantity = 4
+    >>> line.invoice_line.save()
