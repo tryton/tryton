@@ -455,6 +455,9 @@ class Database(DatabaseInterface):
     def put_connection(self, connection=None, close=False):
         pass
 
+    def has_returning(self):
+        return sqlite.sqlite_version_info >= (3, 35, 0)
+
     def close(self):
         if self.name == ':memory:':
             return
