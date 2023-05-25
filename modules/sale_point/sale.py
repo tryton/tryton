@@ -82,7 +82,7 @@ class POS(ModelSQL, ModelView):
                 if 'tax_included' in values:
                     for sub_points in grouped_slice(points):
                         if Sale.search([
-                                    ('points', 'in',
+                                    ('point', 'in',
                                         list(map(int, sub_points))),
                                     ],
                                 limit=1, order=[]):
