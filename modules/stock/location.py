@@ -407,7 +407,7 @@ class Location(DeactivableMixin, tree(), ModelSQL, ModelView):
 
         context = {}
         if (name == 'quantity'
-                and (trans_context.get('stock_date_end', datetime.date.max)
+                and ((trans_context.get('stock_date_end') or datetime.date.max)
                     > Date_.today())):
             context['stock_date_end'] = Date_.today()
 
@@ -495,7 +495,7 @@ class Location(DeactivableMixin, tree(), ModelSQL, ModelView):
                 return Template(trans_context['product_template'])
 
         context = {}
-        if 'stock_date_end' in trans_context:
+        if trans_context.get('stock_date_end') is not None:
             # Use the last cost_price of the day
             context['_datetime'] = datetime.datetime.combine(
                 trans_context['stock_date_end'], datetime.time.max)
