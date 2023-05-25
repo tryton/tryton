@@ -6,7 +6,7 @@ from decimal import Decimal
 from itertools import chain, combinations, groupby
 
 from sql.aggregate import Sum
-from sql.conditionals import Case, Coalesce
+from sql.conditionals import Coalesce
 from sql.functions import CharLength, Round
 
 from trytond import backend
@@ -218,12 +218,18 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
     untaxed_amount = fields.Function(Monetary(
             "Untaxed", currency='currency', digits='currency'),
         'get_amount', searcher='search_untaxed_amount')
+    untaxed_amount_cache = fields.Numeric(
+        "Untaxed Cache", digits='currency', readonly=True)
     tax_amount = fields.Function(Monetary(
             "Tax", currency='currency', digits='currency'),
         'get_amount', searcher='search_tax_amount')
+    tax_amount_cache = fields.Numeric(
+        "Tax Cache", digits='currency', readonly=True)
     total_amount = fields.Function(Monetary(
             "Total", currency='currency', digits='currency'),
         'get_amount', searcher='search_total_amount')
+    total_amount_cache = fields.Numeric(
+        "Total Cache", digits='currency', readonly=True)
     reconciled = fields.Function(fields.Date('Reconciled',
             states={
                 'invisible': ~Eval('reconciled'),
@@ -302,6 +308,7 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
             'state', 'alternative_payees', 'payment_lines',
             'move', 'cancel_move', 'additional_moves',
             'invoice_report_cache', 'invoice_report_format',
+            'total_amount_cache', 'tax_amount_cache', 'untaxed_amount_cache',
             'lines'}
         cls._order = [
             ('number', 'DESC NULLS FIRST'),
@@ -597,18 +604,28 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
     def get_amount(cls, invoices, names):
         pool = Pool()
         InvoiceTax = pool.get('account.invoice.tax')
-        Move = pool.get('account.move')
-        MoveLine = pool.get('account.move.line')
         cursor = Transaction().connection.cursor()
 
-        untaxed_amount = dict((i.id, Decimal(0)) for i in invoices)
-        tax_amount = dict((i.id, Decimal(0)) for i in invoices)
-        total_amount = dict((i.id, Decimal(0)) for i in invoices)
+        untaxed_amount = {i.id: i.currency.round(Decimal(0)) for i in invoices}
+        tax_amount = untaxed_amount.copy()
+        total_amount = untaxed_amount.copy()
+
+        invoices_no_cache = []
+        for invoice in invoices:
+            if (invoice.total_amount_cache is not None
+                    and invoice.untaxed_amount_cache is not None
+                    and invoice.tax_amount_cache is not None):
+                total_amount[invoice.id] = invoice.total_amount_cache
+                untaxed_amount[invoice.id] = invoice.untaxed_amount_cache
+                tax_amount[invoice.id] = invoice.tax_amount_cache
+            else:
+                invoices_no_cache.append(invoice.id)
+        invoices_no_cache = cls.browse(invoices_no_cache)
 
         type_name = cls.tax_amount._field.sql_type().base
         tax = InvoiceTax.__table__()
         to_round = False
-        for sub_ids in grouped_slice(invoices):
+        for sub_ids in grouped_slice(invoices_no_cache):
             red_sql = reduce_ids(tax.invoice, sub_ids)
             cursor.execute(*tax.select(tax.invoice,
                     Coalesce(Sum(tax.amount), 0).as_(type_name),
@@ -626,56 +643,11 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
                 tax_amount[invoice.id] = invoice.currency.round(
                     tax_amount[invoice.id])
 
-        invoices_move = set()
-        invoices_no_move = set()
-        for invoice in invoices:
-            if invoice.move:
-                invoices_move.add(invoice.id)
-            else:
-                invoices_no_move.add(invoice.id)
-        invoices_move = cls.browse(invoices_move)
-        invoices_no_move = cls.browse(invoices_no_move)
-
-        type_name = cls.total_amount._field.sql_type().base
-        invoice = cls.__table__()
-        move = Move.__table__()
-        line = MoveLine.__table__()
-        to_round = False
-        for sub_ids in grouped_slice(invoices_move):
-            red_sql = reduce_ids(invoice.id, sub_ids)
-            cursor.execute(*invoice.join(move,
-                    condition=invoice.move == move.id
-                    ).join(line, condition=move.id == line.move
-                    ).select(invoice.id,
-                    Coalesce(Sum(
-                            Case((
-                                    line.second_currency == invoice.currency,
-                                    line.amount_second_currency),
-                                else_=line.debit - line.credit)),
-                        0).cast(type_name),
-                    where=(invoice.account == line.account) & red_sql,
-                    group_by=invoice.id))
-            for invoice_id, sum_ in cursor:
-                # SQLite uses float for SUM
-                if not isinstance(sum_, Decimal):
-                    sum_ = Decimal(str(sum_))
-                    to_round = True
-                total_amount[invoice_id] = sum_
-
-        for invoice in invoices_move:
-            if invoice.type == 'in':
-                total_amount[invoice.id] *= -1
-            # Float amount must be rounded to get the right precision
-            if to_round:
-                total_amount[invoice.id] = invoice.currency.round(
-                    total_amount[invoice.id])
-            untaxed_amount[invoice.id] = (
-                total_amount[invoice.id] - tax_amount[invoice.id])
-
-        for invoice in invoices_no_move:
+        for invoice in invoices_no_cache:
+            zero = invoice.currency.round(Decimal(0))
             untaxed_amount[invoice.id] = sum(
                 (line.amount for line in invoice.lines
-                    if line.type == 'line'), Decimal(0))
+                    if line.type == 'line'), zero)
             total_amount[invoice.id] = (
                 untaxed_amount[invoice.id] + tax_amount[invoice.id])
 
@@ -1310,6 +1282,9 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
         default.setdefault('invoice_date', None)
         default.setdefault('accounting_date', None)
         default.setdefault('payment_term_date', None)
+        default.setdefault('total_amount_cache', None)
+        default.setdefault('untaxed_amount_cache', None)
+        default.setdefault('tax_amount_cache', None)
         return super(Invoice, cls).copy(invoices, default=default)
 
     @classmethod
@@ -1562,11 +1537,28 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
         return new_invoices
 
     @classmethod
+    def _store_cache(cls, invoices):
+        for invoice in invoices:
+            if (invoice.untaxed_amount == invoice.untaxed_amount_cache
+                    and invoice.tax_amount == invoice.tax_amount_cache
+                    and invoice.total_amount == invoice.total_amount_cache):
+                continue
+            invoice.untaxed_amount_cache = invoice.untaxed_amount
+            invoice.tax_amount_cache = invoice.tax_amount
+            invoice.total_amount_cache = invoice.total_amount
+        cls.save(invoices)
+
+    @classmethod
     @ModelView.button
     @Workflow.transition('draft')
     def draft(cls, invoices):
         Move = Pool().get('account.move')
 
+        cls.write(invoices, {
+                'tax_amount_cache': None,
+                'untaxed_amount_cache': None,
+                'total_amount_cache': None,
+                })
         moves = []
         for invoice in invoices:
             if invoice.move:
@@ -1588,6 +1580,7 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
 
         invoices_in = cls.browse([i for i in invoices if i.type == 'in'])
         cls.set_number(invoices_in)
+        cls._store_cache(invoices)
         cls._check_similar(invoices)
         moves = []
         for invoice in invoices_in:
@@ -1656,6 +1649,7 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
         context = transaction.context
 
         cls.set_number(invoices)
+        cls._store_cache(invoices)
         moves = []
         for invoice in invoices:
             move = invoice.get_move()
@@ -1806,6 +1800,7 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
                         cancel_moves.extend(additional_cancel_moves)
         if cancel_moves:
             Move.save(cancel_moves)
+        cls._store_cache(invoices)
         cls.save(to_save)
         if delete_moves:
             Move.delete(delete_moves)

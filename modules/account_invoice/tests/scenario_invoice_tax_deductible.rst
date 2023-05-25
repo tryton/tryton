@@ -91,7 +91,7 @@ Post a supplier invoice with 0% deductible::
     (Decimal('550.00'), Decimal('0.00'), Decimal('550.00'))
     >>> invoice.click('post')
     >>> invoice.untaxed_amount, invoice.tax_amount, invoice.total_amount
-    (Decimal('550.00'), Decimal('0'), Decimal('550.00'))
+    (Decimal('550.00'), Decimal('0.00'), Decimal('550.00'))
     >>> len(invoice.taxes)
     0
 
