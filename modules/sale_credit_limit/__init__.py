@@ -10,4 +10,5 @@ def register():
     Pool.register(
         party.Party,
         sale.Sale,
+        sale.Line,
         module='sale_credit_limit', type_='model')

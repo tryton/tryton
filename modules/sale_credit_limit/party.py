@@ -31,8 +31,8 @@ class Party(metaclass=PoolMeta):
         for sale in sales:
             amount = 0
             for line in sale.lines:
-                quantity = line.quantity
-                if (line.type != 'line') or (quantity <= 0):
+                quantity = line.credit_limit_quantity
+                if quantity is None:
                     continue
                 for invoice_line in line.invoice_lines:
                     if invoice_line.type != 'line':
