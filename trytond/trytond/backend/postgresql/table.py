@@ -598,6 +598,8 @@ class HashTranslator(IndexMixin, IndexTranslatorInterface):
         if (len(index.expressions) > 1
                 or index.expressions[0][1].__class__.__name__ != 'Equality'):
             return 0
+        if index.options.get('include'):
+            return 0
         return 100
 
     @classmethod
