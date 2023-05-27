@@ -5,9 +5,11 @@ from collections import defaultdict, namedtuple
 from decimal import Decimal
 from itertools import chain, combinations, groupby
 
+from sql import Literal, Null
 from sql.aggregate import Sum
 from sql.conditionals import Coalesce
 from sql.functions import CharLength, Round
+from sql.operators import Exists
 
 from trytond import backend
 from trytond.config import config
@@ -303,6 +305,24 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
                     t,
                     (t.state, Index.Equality()),
                     where=t.state.in_(['draft', 'validated', 'posted'])),
+                Index(t, (t.total_amount_cache, Index.Range())),
+                Index(
+                    t,
+                    (t.total_amount_cache, Index.Equality()),
+                    include=[t.id],
+                    where=t.total_amount_cache == Null),
+                Index(t, (t.untaxed_amount_cache, Index.Range())),
+                Index(
+                    t,
+                    (t.untaxed_amount_cache, Index.Equality()),
+                    include=[t.id],
+                    where=t.untaxed_amount_cache == Null),
+                Index(t, (t.tax_amount_cache, Index.Range())),
+                Index(
+                    t,
+                    (t.tax_amount_cache, Index.Equality()),
+                    include=[t.id],
+                    where=t.tax_amount_cache == Null),
                 })
         cls._check_modify_exclude = {
             'state', 'alternative_payees', 'payment_lines',
@@ -799,12 +819,22 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
                 Coalesce(Sum(Round((line.quantity * line.unit_price).cast(
                                 type_name),
                                 currency.digits)), 0).as_('total_amount'),
-                where=line.invoice.in_(invoice_query),
+                where=(line.invoice.in_(invoice_query)
+                    & (invoice.total_amount_cache == Null)),
                 group_by=line.invoice)
             | tax.select(tax.invoice.as_('invoice'),
                 Coalesce(Sum(tax.amount), 0).as_('total_amount'),
-                where=tax.invoice.in_(invoice_query),
+                where=(tax.invoice.in_(invoice_query)
+                    & ~Exists(invoice.select(Literal(1),
+                            where=(invoice.total_amount_cache == Null)
+                            & (invoice.id == tax.invoice)))),
                 group_by=tax.invoice))
+        union |= invoice.select(
+            invoice.id.as_('invoice'),
+            invoice.total_amount_cache.as_('total_amount'),
+            where=(invoice.id.in_(invoice_query)
+                & (invoice.total_amount_cache != Null)
+                & Operator(invoice.total_amount_cache.cast(type_name), value)))
         query = union.select(union.invoice, group_by=union.invoice,
             having=Operator(Sum(union.total_amount).cast(type_name),
                 value))
@@ -834,13 +864,18 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
             ).join(currency,
                 condition=(currency.id == invoice.currency)
                 ).select(line.invoice,
-                    where=line.invoice.in_(invoice_query),
+                    where=(line.invoice.in_(invoice_query)
+                        & (invoice.untaxed_amount_cache == Null)),
                     group_by=line.invoice,
                     having=Operator(Coalesce(Sum(
                                 Round((line.quantity * line.unit_price).cast(
                                         type_name),
                                     currency.digits)), 0).cast(type_name),
                         value))
+        query |= invoice.select(invoice.id,
+            where=invoice.id.in_(invoice_query)
+            & (invoice.untaxed_amount_cache != Null)
+            & Operator(invoice.untaxed_amount_cache.cast(type_name), value))
         return [('id', 'in', query)]
 
     @classmethod
@@ -848,8 +883,10 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
         pool = Pool()
         Rule = pool.get('ir.rule')
         Tax = pool.get('account.invoice.tax')
+        Invoice = pool.get('account.invoice')
         type_name = cls.tax_amount._field.sql_type().base
         tax = Tax.__table__()
+        invoice = Invoice.__table__()
 
         _, operator, value = clause
         invoice_query = Rule.query_get('account.invoice')
@@ -859,10 +896,17 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
             value = float(value)
 
         query = tax.select(tax.invoice,
-            where=tax.invoice.in_(invoice_query),
+            where=(tax.invoice.in_(invoice_query)
+                & ~Exists(invoice.select(Literal(1),
+                        where=(invoice.tax_amount_cache == Null)
+                        & (invoice.id == tax.invoice)))),
             group_by=tax.invoice,
             having=Operator(Coalesce(Sum(tax.amount), 0).cast(type_name),
                 value))
+        query |= invoice.select(invoice.id,
+            where=invoice.id.in_(invoice_query)
+            & (invoice.tax_amount_cache != Null)
+            & Operator(invoice.tax_amount_cache.cast(type_name), value))
         return [('id', 'in', query)]
 
     def get_allow_cancel(self, name):
