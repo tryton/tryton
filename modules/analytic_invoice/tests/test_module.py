@@ -7,7 +7,7 @@ from trytond.tests.test_tryton import ModuleTestCase
 class AnalyticInvoiceTestCase(ModuleTestCase):
     'Test AnalyticInvoice module'
     module = 'analytic_invoice'
-    extras = ['account_asset']
+    extras = ['account_asset', 'account_invoice_defer']
 
 
 del ModuleTestCase

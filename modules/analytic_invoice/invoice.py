@@ -53,6 +53,23 @@ class InvoiceLine(AnalyticMixin, metaclass=PoolMeta):
         return lines
 
 
+class InvoiceDeferred(metaclass=PoolMeta):
+    __name__ = 'account.invoice.deferred'
+
+    def get_move(self, period=None):
+        move = super().get_move(period=period)
+        if self.invoice_line.analytic_accounts:
+            for line in move.lines:
+                if line.account.type.statement != 'income':
+                    continue
+                analytic_lines = []
+                for entry in self.invoice_line.analytic_accounts:
+                    analytic_lines.extend(
+                        entry.get_analytic_lines(line, move.date))
+                line.analytic_lines = analytic_lines
+        return move
+
+
 class AnalyticAccountEntry(metaclass=PoolMeta):
     __name__ = 'analytic.account.entry'
 

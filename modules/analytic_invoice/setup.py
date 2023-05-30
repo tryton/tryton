@@ -48,7 +48,7 @@ for dep in info.get('depends', []):
 requires.append(get_require_version('trytond'))
 
 tests_require = [get_require_version('proteus')]
-for dep in ['account_asset']:
+for dep in ['account_asset', 'account_invoice_defer']:
     tests_require.append(get_require_version('trytond_%s' % dep))
 
 setup(name=name,
