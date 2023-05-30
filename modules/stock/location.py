@@ -654,6 +654,8 @@ class Location(DeactivableMixin, tree(), ModelSQL, ModelView):
 class ProductsByLocationsContext(ModelView):
     'Products by Locations'
     __name__ = 'stock.products_by_locations.context'
+
+    company = fields.Many2One('company.company', "Company", required=True)
     forecast_date = fields.Date(
         'At Date',
         help="The date for which the stock quantity is calculated.\n"
@@ -661,6 +663,10 @@ class ProductsByLocationsContext(ModelView):
         "* A date in the past will provide historical values.")
     stock_date_end = fields.Function(fields.Date('At Date'),
         'on_change_with_stock_date_end')
+
+    @classmethod
+    def default_company(cls):
+        return Transaction().context.get('company')
 
     @staticmethod
     def default_forecast_date():

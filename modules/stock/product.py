@@ -525,6 +525,8 @@ class Product(StockMixin, object, metaclass=PoolMeta):
 class ProductByLocationContext(ModelView):
     'Product by Location'
     __name__ = 'product.by_location.context'
+
+    company = fields.Many2One('company.company', "Company", required=True)
     forecast_date = fields.Date(
         'At Date',
         help="The date for which the stock quantity is calculated.\n"
@@ -532,6 +534,10 @@ class ProductByLocationContext(ModelView):
         "* A date in the past will provide historical values.")
     stock_date_end = fields.Function(fields.Date('At Date'),
         'on_change_with_stock_date_end')
+
+    @classmethod
+    def default_company(cls):
+        return Transaction().context.get('company')
 
     @staticmethod
     def default_forecast_date():
@@ -809,6 +815,8 @@ class ProductQuantitiesByWarehouse(ModelSQL, ModelView):
 class ProductQuantitiesByWarehouseContext(ModelView):
     'Product Quantities By Warehouse'
     __name__ = 'stock.product_quantities_warehouse.context'
+
+    company = fields.Many2One('company.company', "Company", required=True)
     warehouse = fields.Many2One('stock.location', 'Warehouse', required=True,
         domain=[
             ('type', '=', 'warehouse'),
@@ -817,6 +825,10 @@ class ProductQuantitiesByWarehouseContext(ModelView):
     stock_skip_warehouse = fields.Boolean(
         "Only storage zone",
         help="Check to use only the quantity of the storage zone.")
+
+    @classmethod
+    def default_company(cls):
+        return Transaction().context.get('company')
 
     @classmethod
     def default_warehouse(cls):
