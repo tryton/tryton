@@ -138,6 +138,8 @@ class DateTime(Date):
             child.connect('key_press_event', self.sig_key_press)
             child.connect('activate', self.sig_activate)
             child.connect('changed', lambda _: self.send_modified())
+            child.connect('focus-out-event', lambda *a: self._focus_out())
+        self.entry.connect(self._changed_signal, self.changed)
         self.widget.pack_start(self.entry, expand=False, fill=False, padding=0)
 
     @classmethod
