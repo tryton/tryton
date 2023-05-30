@@ -89,11 +89,20 @@ class Date(Widget):
         self.set_format()
 
 
+def _move_active(combobox, scroll_type):
+    if not combobox.get_child().get_editable():
+        combobox.stop_emission_by_name('move-active')
+
+
 class Time(Date):
     _changed_signal = 'time-changed'
 
     def __init__(self, view, attrs):
         super(Time, self).__init__(view, attrs, _entry=TimeEntry)
+        self.entry.connect('move-active', _move_active)
+        self.entry.connect(
+            'scroll-event',
+            lambda c, e: c.stop_emission_by_name('scroll-event'))
 
     def _set_editable(self, value):
         self.entry.set_sensitive(value)
@@ -130,6 +139,10 @@ class DateTime(Date):
         for child in self.entry.get_children():
             add_operators(child)
             if isinstance(child, Gtk.ComboBox):
+                child.connect('move-active', _move_active)
+                child.connect(
+                    'scroll-event',
+                    lambda c, e: c.stop_emission_by_name('scroll-event'))
                 child = child.get_child()
             child.set_property('activates_default', True)
             child.connect('key_press_event', self.sig_key_press)
