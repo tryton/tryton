@@ -1510,13 +1510,20 @@ class Move(Workflow, ModelSQL, ModelView):
         # because we already know that there will be no duplicates.
         move_keys_alias = [get_column(key, move).as_(key) for key in grouping]
         move_keys = [get_column(key, move) for key in grouping]
+
+        if company:
+            company_clause = move.company == company.id
+        elif not Transaction().user:
+            company_clause = Literal(True)
+        else:
+            company_clause = Literal(False)
         query = move.select(move.to_location.as_('location'),
             Sum(move.internal_quantity).as_('quantity'),
             *move_keys_alias,
             where=state_date_clause_in
             & where
             & move.to_location.in_(location_query)
-            & ((move.company == company.id) if company else Literal(True))
+            & company_clause
             & dest_clause_from,
             group_by=[move.to_location] + move_keys)
         query = Union(query, move.select(move.from_location.as_('location'),
@@ -1525,7 +1532,7 @@ class Move(Workflow, ModelSQL, ModelView):
                 where=state_date_clause_out
                 & where
                 & move.from_location.in_(location_query)
-                & ((move.company == company.id) if company else Literal(True))
+                & company_clause
                 & dest_clause_to,
                 group_by=[move.from_location] + move_keys),
             all_=True)
