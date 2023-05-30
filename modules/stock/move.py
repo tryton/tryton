@@ -1203,10 +1203,11 @@ class Move(Workflow, ModelSQL, ModelView):
 
         move = Move.__table__()
         today = Date.today()
+        transaction = Transaction()
 
         if not location_ids:
             return None
-        context = Transaction().context.copy()
+        context = transaction.context.copy()
 
         use_product = False
         for field in grouping:
@@ -1222,7 +1223,7 @@ class Move(Workflow, ModelSQL, ModelView):
         assert len(set(grouping)) == len(grouping)
         assert ('stock_date_start' in context) if 'date' in grouping else True
 
-        company = User(Transaction().user).company
+        company = User(transaction.user).company
 
         def get_column(name, table):
             if name == 'date':
@@ -1513,7 +1514,7 @@ class Move(Workflow, ModelSQL, ModelView):
 
         if company:
             company_clause = move.company == company.id
-        elif not Transaction().user:
+        elif not transaction.user:
             company_clause = Literal(True)
         else:
             company_clause = Literal(False)
