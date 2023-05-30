@@ -218,7 +218,7 @@ class CompanyTestCase(
 
             with transaction.set_context(company=company3.id):
                 user1, user2 = User.browse([user1.id, user2.id])
-                self.assertEqual(user1.company, company1)
+                self.assertEqual(user1.company, None)
                 self.assertEqual(user2.company, company2)
 
     @with_transaction()
@@ -284,7 +284,7 @@ class CompanyTestCase(
 
             with transaction.set_context(employee=employee3.id):
                 user1, user2 = User.browse([user1.id, user2.id])
-                self.assertEqual(user1.employee, employee1)
+                self.assertEqual(user1.employee, None)
                 self.assertEqual(user2.employee, employee2)
 
     @with_transaction()

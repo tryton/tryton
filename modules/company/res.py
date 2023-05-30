@@ -170,6 +170,8 @@ class User(metaclass=PoolMeta):
                             or not company_id
                             or Transaction().user == 0):
                         values['company'] = company_id
+                    else:
+                        values['company'] = None
                 if ('employee' in fields_names
                         and 'employee' in Transaction().context):
                     employees = values.get('employees')
@@ -181,6 +183,8 @@ class User(metaclass=PoolMeta):
                             or not employee_id
                             or Transaction().user == 0):
                         values['employee'] = employee_id
+                    else:
+                        values['employee'] = None
         return result
 
     @classmethod
