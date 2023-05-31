@@ -1481,6 +1481,8 @@ class Line(MoveLineMixin, ModelSQL, ModelView):
         """
         pool = Pool()
         Reconciliation = pool.get('account.move.reconciliation')
+        Lang = pool.get('ir.lang')
+        lang = Lang.get()
         delegate_to = delegate_to.id if delegate_to else None
 
         reconciliations = []
@@ -1520,10 +1522,15 @@ class Line(MoveLineMixin, ModelSQL, ModelView):
                 writeoff_amount = amount
                 writeoff_currency = company.currency
             if writeoff_amount:
+                if not writeoff:
+                    raise ReconciliationError(gettext(
+                            'account.msg_reconciliation_write_off_missing',
+                            amount=lang.currency(
+                                writeoff_amount, writeoff_currency)))
                 move = cls._get_writeoff_move(
                     reconcile_account, reconcile_party,
                     writeoff_amount, writeoff_currency,
-                    date, writeoff, description)
+                    writeoff, date=date, description=description)
                 move.save()
                 for line in move.lines:
                     if line.account == reconcile_account:
@@ -1549,7 +1556,7 @@ class Line(MoveLineMixin, ModelSQL, ModelView):
     @classmethod
     def _get_writeoff_move(
             cls, reconcile_account, reconcile_party, amount, currency,
-            date=None, writeoff=None, description=None):
+            writeoff, date=None, description=None):
         pool = Pool()
         Currency = pool.get('currency.currency')
         Date = pool.get('ir.date')
@@ -1560,14 +1567,11 @@ class Line(MoveLineMixin, ModelSQL, ModelView):
             with Transaction().set_context(company=company.id):
                 date = Date.today()
         period = Period.find(reconcile_account.company, date=date)
-        account = None
-        journal = None
-        if writeoff and writeoff.company == company:
-            if amount >= 0:
-                account = writeoff.debit_account
-            else:
-                account = writeoff.credit_account
-            journal = writeoff.journal
+        if amount >= 0:
+            account = writeoff.debit_account
+        else:
+            account = writeoff.credit_account
+        journal = writeoff.journal
 
         if currency != company.currency:
             amount_second_currency = amount
@@ -1604,10 +1608,10 @@ class Line(MoveLineMixin, ModelSQL, ModelView):
         lines.append(line)
         line.account = account
         line.party = (
-            reconcile_party if account and account.party_required else None)
+            reconcile_party if account.party_required else None)
         line.debit = amount if amount > 0 else 0
         line.credit = -amount if amount < 0 else 0
-        if account and account.second_currency:
+        if account.second_currency:
             with Transaction().set_context(date=date):
                 line.amount_second_currency = Currency.compute(
                     company.currency, amount,
