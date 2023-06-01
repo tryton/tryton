@@ -2,9 +2,9 @@ Stock Package Shipping UPS Module
 #################################
 
 The Stock Package Shipping UPS module allows you to generate the UPS labels per
-package using the UPS webservices.
+package using the UPS API.
 
-The credential for the webservice is specified by the following fields:
+The credential for the API is specified by the following fields:
 
 UPS Carrier Credential
 **********************
@@ -14,15 +14,13 @@ The credentials used to connect to the UPS API will be automatically retrieved
 based on the company of the Shipment.
 
 - *Company*: The company for which those credentials are valid
-- *User ID*: The User ID provided by UPS.
-- *Password*: The Password used to access the MyUPS Portal.
+- *Client ID*: The Client ID of the App.
+- *Client Secret*: The Client Secret of the App.
 - *Account Number*: The account number UPS assigned to you when you requested the
   API credentials (also known as the Shipper Number).
-- *License*: The License number UPS assigned to you when you requested the API
-  credentials
 - *Server*: Are those credentials used for accessing the Testing or the
   Production server of UPS.
-- *Use Metric*: Use Metric units when communicating with the UPS webservice.
+- *Use Metric*: Use Metric units when communicating with the UPS API.
 
 Carrier
 *******

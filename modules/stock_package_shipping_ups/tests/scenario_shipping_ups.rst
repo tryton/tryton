@@ -155,9 +155,8 @@ Create a UPS Carrier and the related credential::
 
     >>> credential = UPSCredential()
     >>> credential.company = company
-    >>> credential.user_id = os.getenv('UPS_USER_ID')
-    >>> credential.password = os.getenv('UPS_PASSWORD')
-    >>> credential.license = os.getenv('UPS_LICENSE')
+    >>> credential.client_id = os.getenv('UPS_CLIENT_ID')
+    >>> credential.client_secret = os.getenv('UPS_CLIENT_SECRET')
     >>> credential.account_number = os.getenv('UPS_ACCOUNT_NUMBER')
     >>> credential.server = 'testing'
     >>> credential.save()

@@ -21,10 +21,6 @@ from trytond.wizard import StateAction, StateTransition, Wizard
 
 from .exceptions import UPSError
 
-SERVER_URLS = {
-    'testing': 'https://wwwcie.ups.com/json/Ship',
-    'production': 'https://onlinetools.ups.com/json/Ship',
-    }
 TRACKING_URL = 'https://www.ups.com/track'
 TIMEOUT = config.getfloat(
     'stock_package_shipping_ups', 'requests_timeout', default=300)
@@ -178,15 +174,20 @@ class CreateShippingUPS(Wizard):
         carrier = shipment.carrier
         packages = shipment.root_packages
         shipment_request = self.get_request(shipment, packages, credential)
-        api_url = config.get('stock_package_shipping_ups', credential.server,
-            default=SERVER_URLS[credential.server])
+        token = credential.get_token()
+        api_url = credential.get_shipment_url()
+        headers = {
+            'transactionSrc': "Tryton",
+            'Authorization': f"Bearer {token}",
+            }
         nb_tries, response = 0, None
         error_message = ''
         try:
             while nb_tries < 5 and response is None:
                 try:
                     req = requests.post(
-                        api_url, json=shipment_request, timeout=TIMEOUT)
+                        api_url, json=shipment_request, headers=headers,
+                        timeout=TIMEOUT)
                 except ssl.SSLError as e:
                     error_message = e.reason
                     nb_tries += 1
@@ -200,15 +201,6 @@ class CreateShippingUPS(Wizard):
             raise UPSError(
                 gettext('stock_package_shipping_ups.msg_ups_webservice_error',
                     message=error_message))
-
-        if 'Fault' in response:
-            error = response['Fault']['detail']['Errors']
-            message = '%s\n\n%s - %s' % (response['Fault']['faultstring'],
-                error['ErrorDetail']['PrimaryErrorCode']['Code'],
-                error['ErrorDetail']['PrimaryErrorCode']['Description'])
-            raise UPSError(
-                gettext('stock_package_shipping_ups.msg_ups_webservice_error',
-                    message=message))
 
         shipment_response = response['ShipmentResponse']
         response_status = shipment_response['Response']['ResponseStatus']
@@ -250,17 +242,6 @@ class CreateShippingUPS(Wizard):
         for credential in UPSCredential.search([]):
             if credential.match(credential_pattern):
                 return credential
-
-    def get_security(self, credential):
-        return {
-            'UsernameToken': {
-                'Username': credential.user_id,
-                'Password': credential.password,
-                },
-            'ServiceAccessToken': {
-                'AccessLicenseNumber': credential.license,
-                },
-            }
 
     def get_request_container(self, shipment):
         return {
@@ -396,7 +377,6 @@ class CreateShippingUPS(Wizard):
             for pkg in packages:
                 pkg['ShipmentServiceOptions'] = options
         return {
-            'UPSSecurity': self.get_security(credential),
             'ShipmentRequest': {
                 'Request': self.get_request_container(shipment),
                 'Shipment': {

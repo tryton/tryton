@@ -1,5 +1,9 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
+
+from oauthlib.oauth2 import BackendApplicationClient
+from requests_oauthlib import OAuth2Session
+
 from trytond.model import (
     MatchMixin, ModelSQL, ModelView, fields, sequence_ordered)
 from trytond.pool import PoolMeta
@@ -9,11 +13,11 @@ from trytond.pyson import Eval
 class CredentialUPS(sequence_ordered(), ModelSQL, ModelView, MatchMixin):
     'UPS Credential'
     __name__ = 'carrier.credential.ups'
+    _rec_name = 'account_number'
 
     company = fields.Many2One('company.company', 'Company')
-    user_id = fields.Char('User ID', required=True)
-    password = fields.Char('Password', required=True)
-    license = fields.Char('License', required=True)
+    client_id = fields.Char("Client ID", required=True)
+    client_secret = fields.Char("Client Secret", required=True)
     account_number = fields.Char('Account Number', required=True)
     use_metric = fields.Boolean('Use Metric')
     server = fields.Selection([
@@ -22,12 +26,40 @@ class CredentialUPS(sequence_ordered(), ModelSQL, ModelView, MatchMixin):
             ], 'Server')
 
     @classmethod
+    def __register__(cls, module):
+        table_h = cls.__table_handler__(module)
+        super().__register__(module)
+
+        # Migration from 6.8: switch to OAuth
+        table_h.drop_column('user_id')
+        table_h.drop_column('password')
+        table_h.drop_column('license')
+
+    @classmethod
     def default_use_metric(cls):
         return True
 
     @classmethod
     def default_server(cls):
         return 'testing'
+
+    def get_token(self):
+        if self.server == 'production':
+            url = 'https://onlinetools.ups.com/security/v1/oauth/token'
+        else:
+            url = 'https://wwwcie.ups.com/security/v1/oauth/token'
+        client = BackendApplicationClient(client_id=self.client_id)
+        oauth = OAuth2Session(client=client)
+        token = oauth.fetch_token(
+            token_url=url, client_id=self.client_id,
+            client_secret=self.client_secret)
+        return token['access_token']
+
+    def get_shipment_url(self):
+        if self.server == 'production':
+            return 'https://onlinetools.ups.com/api/shipments/v1/ship'
+        else:
+            return 'https://wwwcie.ups.com/api/shipments/v1/ship'
 
 
 class Carrier(metaclass=PoolMeta):
