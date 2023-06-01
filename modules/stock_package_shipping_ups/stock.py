@@ -391,6 +391,8 @@ class CreateShippingUPS(Wizard):
             for p in packages]
         options = self.get_service_options(shipment)
         if options:
+            # options are set on package instead of shipment
+            # despite what UPS documentation says
             for pkg in packages:
                 pkg['ShipmentServiceOptions'] = options
         return {
