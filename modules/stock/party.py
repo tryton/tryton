@@ -91,7 +91,8 @@ class PartyDeliveredToWarehouse(ModelSQL):
     "Party Delivered to Warehouse"
     __name__ = 'party.party-delivered_to-stock.location'
 
-    party = fields.Many2One('party.party', "Party", required=True)
+    party = fields.Many2One(
+        'party.party', "Party", required=True, ondelete='CASCADE')
     location = fields.Many2One(
         'stock.location', "Location", required=True, ondelete='CASCADE',
         domain=[
