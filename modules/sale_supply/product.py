@@ -33,6 +33,15 @@ class Template(metaclass=PoolMeta):
             and table_h.column_is_type('supply_on_sale', 'BOOL'))
         if migrate_supply_on_sale:
             table_h.column_rename('supply_on_sale', '_temp_supply_on_sale')
+        if cls._history:
+            h_table_h = cls.__table_handler__(module, history=True)
+            h_table = cls.__table__()
+            h_migrate_supply_on_sale = (
+                h_table_h.column_exist('supply_on_sale')
+                and h_table_h.column_is_type('supply_on_sale', 'BOOL'))
+            if h_migrate_supply_on_sale:
+                h_table_h.column_rename(
+                    'supply_on_sale', '_temp_supply_on_sale')
 
         super().__register__(module)
 
@@ -43,6 +52,12 @@ class Template(metaclass=PoolMeta):
                     ['always'],
                     where=table._temp_supply_on_sale == Literal(True)))
             table_h.drop_column('_temp_supply_on_sale')
+        if cls._history and h_migrate_supply_on_sale:
+            cursor.execute(*h_table.update(
+                    [h_table.supply_on_sale],
+                    ['always'],
+                    where=h_table._temp_supply_on_sale == Literal(True)))
+            h_table_h.drop_column('_temp_supply_on_sale')
 
     @fields.depends(methods=['_notify_order_point'])
     def on_change_notify(self):
