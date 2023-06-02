@@ -28,8 +28,9 @@ class Template(metaclass=PoolMeta):
         table = cls.__table__()
         cursor = Transaction().connection.cursor()
 
-        migrate_supply_on_sale = table_h.column_is_type(
-            'supply_on_sale', 'BOOL')
+        migrate_supply_on_sale = (
+            table_h.column_exist('supply_on_sale')
+            and table_h.column_is_type('supply_on_sale', 'BOOL'))
         if migrate_supply_on_sale:
             table_h.column_rename('supply_on_sale', '_temp_supply_on_sale')
 
