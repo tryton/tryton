@@ -2,7 +2,9 @@
 # this repository contains the full copyright notices and license terms.
 
 import unittest
+from collections import defaultdict
 
+from trytond.model import sum_tree
 from trytond.model.exceptions import DomainValidationError, RecursionError
 from trytond.pool import Pool
 from trytond.tests.test_tryton import activate_module, with_transaction
@@ -429,3 +431,28 @@ class TreeMixinTestCase(unittest.TestCase):
         with self.assertRaises(RecursionError):
             parent1.parents = [child]
             parent1.save()
+
+
+class TreeTestCase(unittest.TestCase):
+    "Test Tree"
+
+    @with_transaction()
+    def test_sum_tree(self):
+        pool = Pool()
+        Model = pool.get('test.tree')
+        records = [
+            Model(1, parent=None),
+            Model(2, parent=1),
+            Model(3, parent=1),
+            Model(4, parent=2),
+            Model(5, parent=2),
+            ]
+        values = defaultdict(lambda: 1)
+        self.assertEqual(
+            dict(sum_tree(records, values)), {
+                5: 1,
+                4: 1,
+                3: 1,
+                2: 3,
+                1: 5,
+                })

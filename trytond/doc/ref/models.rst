@@ -1100,6 +1100,14 @@ name by concatenating each parent names using it as separator and
    Helper method that checks if there is no recursion in the tree defined by
    :meth:`tree`.
 
+
+.. function:: sum_tree(records, values[, parent])
+
+   Helper method to sum ``values`` following up ``records`` tree using
+   ``parent``.
+   ``records`` must contain a complete branch of the tree.
+   ``values`` is a dictionary with record id as key.
+
 avatar_mixin
 ============
 

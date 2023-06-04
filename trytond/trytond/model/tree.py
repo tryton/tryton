@@ -146,3 +146,27 @@ def tree(parent='parent', name='name', separator=None):
                 visited.update(walked)
 
     return TreeMixin
+
+
+def sum_tree(records, values, parent='parent'):
+    "Sum up values following records tree"
+    result = values.copy()
+    parents = {
+        int(r): int(getattr(r, parent)) for r in records if getattr(r, parent)}
+    records = set(map(int, records))
+    leafs = records - set(parents.values())
+    while leafs:
+        for leaf in leafs:
+            records.remove(leaf)
+            parent = parents.get(leaf)
+            if parent:
+                result[parent] += result[leaf]
+        next_leafs = set(records)
+        for record in records:
+            parent = parents.get(record)
+            if not parent:
+                continue
+            if parent in next_leafs and parent in records:
+                next_leafs.remove(parent)
+        leafs = next_leafs
+    return result

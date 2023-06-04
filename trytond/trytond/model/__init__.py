@@ -14,7 +14,7 @@ from .modelview import ModelView
 from .multivalue import MultiValueMixin, ValueMixin
 from .order import sequence_ordered, sort
 from .symbol import SymbolMixin
-from .tree import tree
+from .tree import sum_tree, tree
 from .union import UnionMixin
 from .workflow import Workflow
 
@@ -23,4 +23,4 @@ __all__ = ['Model', 'ModelView', 'ModelStorage', 'ModelSingleton', 'ModelSQL',
     'Workflow', 'DictSchemaMixin', 'MatchMixin', 'UnionMixin', 'dualmethod',
     'MultiValueMixin', 'ValueMixin', 'SymbolMixin', 'DigitsMixin',
     'EvalEnvironment', 'sequence_ordered', 'sort', 'DeactivableMixin', 'tree',
-    'avatar_mixin']
+    'sum_tree', 'avatar_mixin']
