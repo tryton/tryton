@@ -62,7 +62,7 @@ class Work(metaclass=PoolMeta):
         transaction = Transaction()
         cursor = transaction.connection.cursor()
 
-        costs = dict.fromkeys([w.id for w in works], 0)
+        costs = defaultdict(Decimal)
 
         table = cls.__table__()
         work = Work.__table__()
@@ -156,7 +156,7 @@ class Work(metaclass=PoolMeta):
 
     @classmethod
     def _get_revenue(cls, works):
-        revenues = dict.fromkeys(map(int, works), Decimal(0))
+        revenues = defaultdict(Decimal)
         for work in works:
             if not work.list_price:
                 continue
