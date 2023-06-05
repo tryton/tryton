@@ -1482,3 +1482,17 @@ def idle_add(func):
 def setup_window(window):
     if sys.platform == 'darwin':
         window.set_mnemonic_modifier(Gdk.ModifierType.CONTROL_MASK)
+
+
+def get_gdk_backend():
+    if sys.platform == 'darwin':
+        return 'macos'
+    elif sys.platform == 'win32':
+        return 'win32'
+    else:
+        dm = Gdk.DisplayManager.get()
+        default = dm.props.default_display
+        dm_class_name = default.__class__.__name__.lower()
+        if 'wayland' in dm_class_name:
+            return 'wayland'
+        return 'x11'

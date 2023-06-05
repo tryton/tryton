@@ -11,7 +11,8 @@ from weakref import WeakKeyDictionary
 from gi.repository import Gdk, GLib, Gtk
 
 import tryton.common as common
-from tryton.common import data2pixbuf, file_open, file_selection, file_write
+from tryton.common import (
+    data2pixbuf, file_open, file_selection, file_write, get_gdk_backend)
 from tryton.common.cellrendererbutton import CellRendererButton
 from tryton.common.cellrendererclickablepixbuf import (
     CellRendererClickablePixbuf)
@@ -1134,10 +1135,12 @@ class Selection(GenericText, SelectionMixin, PopdownMixin):
     def editing_started(self, cell, editable, path):
         super(Selection, self).editing_started(cell, editable, path)
         record, field = self._get_record_field_from_path(path)
-        # Combobox does not emit remove-widget when focus is changed
-        self.editable.connect(
-            'editing-done',
-            lambda *a: self.editable.emit('remove-widget'))
+        gdk_backend = get_gdk_backend()
+        if gdk_backend == 'x11':
+            # Combobox does not emit remove-widget when focus is changed
+            self.editable.connect(
+                'editing-done',
+                lambda *a: self.editable.emit('remove-widget'))
 
         selection_shortcuts(editable)
 
@@ -1145,6 +1148,14 @@ class Selection(GenericText, SelectionMixin, PopdownMixin):
             return self.set_value(editable, record, field)
         editable.get_child().connect('activate', set_value)
         editable.get_child().connect('focus-out-event', set_value)
+
+        if gdk_backend != 'x11':
+            # For non X11 backend we can rely the focus-out-event to be sent
+            # correctly
+            def remove_entry(entry, event):
+                editable.emit('editing-done')
+                editable.emit('remove-widget')
+            editable.get_child().connect('focus-out-event', remove_entry)
         editable.connect('changed', set_value)
 
         self.update_selection(record, field)
