@@ -1490,3 +1490,17 @@ def play_sound(self, sound='success'):
         playsound(os.path.join(SOUNDS_DIR, f'{sound}.wav'))
     except ImportError:
         pass
+
+
+def get_gdk_backend():
+    if sys.platform == 'darwin':
+        return 'macos'
+    elif sys.platform == 'win32':
+        return 'win32'
+    else:
+        dm = Gdk.DisplayManager.get()
+        default = dm.props.default_display
+        dm_class_name = default.__class__.__name__.lower()
+        if 'wayland' in dm_class_name:
+            return 'wayland'
+        return 'x11'
