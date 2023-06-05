@@ -1253,7 +1253,7 @@ class Line(sequence_ordered(), ModelSQL, ModelView):
         "Edit Delivery Date",
         domain=[
             If(Eval('type') != 'line',
-                ('delivery_date_edit', '=', None),
+                ('delivery_date_edit', '=', False),
                 ()),
             ],
         states={
