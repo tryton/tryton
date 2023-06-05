@@ -78,7 +78,10 @@ class Location(DeactivableMixin, tree(), ModelSQL, ModelView):
             'required': Eval('type') == 'warehouse',
             },
         domain=[
-            ('type', '=', 'storage'),
+            ['OR',
+                ('type', '=', 'storage'),
+                ('id', '=', Eval('storage_location', -1)),
+                ],
             ['OR',
                 ('parent', 'child_of', [Eval('id', -1)]),
                 ('parent', '=', None),
@@ -91,7 +94,10 @@ class Location(DeactivableMixin, tree(), ModelSQL, ModelView):
             'required': Eval('type') == 'warehouse',
         },
         domain=[
-            ('type', '=', 'storage'),
+            ['OR',
+                ('type', '=', 'storage'),
+                ('id', '=', Eval('storage_location', -1)),
+                ],
             ['OR',
                 ('parent', 'child_of', [Eval('id', -1)]),
                 ('parent', '=', None)]],

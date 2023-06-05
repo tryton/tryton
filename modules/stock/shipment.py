@@ -185,7 +185,10 @@ class ShipmentIn(ShipmentMixin, Workflow, ModelSQL, ModelView):
     warehouse_input = fields.Many2One(
         'stock.location', "Warehouse Input", required=True,
         domain=[
-            ('type', '=', 'storage'),
+            ['OR',
+                ('type', '=', 'storage'),
+                ('id', '=', Eval('warehouse_storage', -1)),
+                ],
             If(Eval('state') == 'draft',
                 ('parent', 'child_of', [Eval('warehouse', -1)]),
                 ()),
@@ -1079,7 +1082,10 @@ class ShipmentOut(ShipmentAssignMixin, Workflow, ModelSQL, ModelView):
     warehouse_output = fields.Many2One(
         'stock.location', "Warehouse Output", required=True,
         domain=[
-            ('type', '=', 'storage'),
+            ['OR',
+                ('type', '=', 'storage'),
+                ('id', '=', Eval('warehouse_output', -1)),
+                ],
             If(Eval('state') == 'draft',
                 ('parent', 'child_of', [Eval('warehouse', -1)]),
                 ()),
@@ -1796,7 +1802,10 @@ class ShipmentOutReturn(ShipmentMixin, Workflow, ModelSQL, ModelView):
     warehouse_input = fields.Many2One(
         'stock.location', "Warehouse Input", required=True,
         domain=[
-            ('type', '=', 'storage'),
+            ['OR',
+                ('type', '=', 'storage'),
+                ('id', '=', Eval('warehouse_storage', -1)),
+                ],
             If(Eval('state') == 'draft',
                 ('parent', 'child_of', [Eval('warehouse', -1)]),
                 ()),
