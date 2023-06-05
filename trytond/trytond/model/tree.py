@@ -160,7 +160,10 @@ def sum_tree(records, values, parent='parent'):
             records.remove(leaf)
             parent = parents.get(leaf)
             if parent:
-                result[parent] += result[leaf]
+                try:
+                    result[parent] += result[leaf]
+                except KeyError:
+                    result[parent] = result[leaf]
         next_leafs = set(records)
         for record in records:
             parent = parents.get(record)
