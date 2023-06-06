@@ -13,6 +13,7 @@ except ImportError:
 from dateutil.relativedelta import relativedelta
 
 from trytond.config import config
+from trytond.ir.exceptions import SequenceAffixError
 from trytond.ir.lang import _replace
 from trytond.pool import Pool
 from trytond.pyson import Eval, If, PYSONEncoder
@@ -117,6 +118,51 @@ class IrTestCase(ModuleTestCase):
         next_year = today + relativedelta(years=1)
         with Transaction().set_context(date=next_year):
             self.assertEqual(sequence.get(), '%s3' % str(next_year.year))
+
+    @with_transaction()
+    def test_sequence_format(self):
+        'Test Sequence Format'
+        pool = Pool()
+        Sequence = pool.get('ir.sequence')
+        SequenceType = pool.get('ir.sequence.type')
+        try:
+            Group = pool.get('res.group')
+            groups = Group.search([])
+        except KeyError:
+            groups = []
+
+        sequence_type = SequenceType(name='Test', groups=groups)
+        sequence_type.save()
+        sequence = Sequence(name='Test Sequence', sequence_type=sequence_type)
+        sequence.save()
+        sequence.prefix = '${date_y}-'
+        sequence.save()
+
+        today = datetime.date(2023, 1, 1)
+
+        with Transaction().set_context(date=today):
+            self.assertEqual(sequence.get(), '23-1')
+
+    @with_transaction()
+    def test_sequence_wrong_format(self):
+        'Test Sequence Wrong Format'
+        pool = Pool()
+        Sequence = pool.get('ir.sequence')
+        SequenceType = pool.get('ir.sequence.type')
+        try:
+            Group = pool.get('res.group')
+            groups = Group.search([])
+        except KeyError:
+            groups = []
+
+        sequence_type = SequenceType(name='Test', groups=groups)
+        sequence_type.save()
+        sequence = Sequence(name='Test Sequence', sequence_type=sequence_type)
+        sequence.save()
+
+        with self.assertRaises(SequenceAffixError):
+            sequence.prefix = '${date_K}'
+            sequence.save()
 
     @with_transaction()
     def test_global_search(self):

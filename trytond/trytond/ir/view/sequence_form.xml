@@ -30,12 +30,4 @@ this repository contains the full copyright notices and license terms. -->
         <label name="last_timestamp"/>
         <field name="last_timestamp"/>
     </group>
-    <separator string="Legend (Placeholders for prefix, suffix)" colspan="4"
-        id="legend"/>
-    <label string="Year:" id="label_year"/>
-    <label string="${year}" colspan="3" xalign="0.0" xexpand="1" id="year"/>
-    <label string="Month:" id="label_month"/>
-    <label string="${month}" colspan="3" xalign="0.0" xexpand="1" id="month"/>
-    <label string="Day:" id="label_day"/>
-    <label string="${day}" colspan="3" xalign="0.0" xexpand="1" id="day"/>
 </form>

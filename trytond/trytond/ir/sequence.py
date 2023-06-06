@@ -60,8 +60,12 @@ class Sequence(DeactivableMixin, ModelSQL, ModelView):
             'readonly': Eval('id', -1) >= 0,
             },
         depends=['id'])
-    prefix = fields.Char('Prefix', strip='leading')
-    suffix = fields.Char('Suffix', strip='trailing')
+    prefix = fields.Char('Prefix', strip='leading',
+        help="The current date can be used formatted using strftime format "
+             "suffixed with underscores: i.e: ${date_Y}")
+    suffix = fields.Char('Suffix', strip='trailing',
+        help="The current date can be used formatted using strftime format "
+             "suffixed with underscores: i.e: ${date_Y}")
     type = fields.Selection([
         ('incremental', 'Incremental'),
         ('decimal timestamp', 'Decimal Timestamp'),
@@ -319,11 +323,14 @@ class Sequence(DeactivableMixin, ModelSQL, ModelView):
 
     @classmethod
     def _process(cls, string, date=None):
-        return Template(string or '').substitute(
-            **cls._get_substitutions(date))
+        if not string:
+            return ''
+
+        substitutions = cls._get_substitutions(date)
+        return Template(string or '').safe_substitute(substitutions)
 
     @classmethod
-    def _get_substitutions(cls, date):
+    def _get_substitutions(cls, date=None):
         '''
         Returns a dictionary with the keys and values of the substitutions
         available to format the sequence
@@ -332,11 +339,39 @@ class Sequence(DeactivableMixin, ModelSQL, ModelView):
         Date = pool.get('ir.date')
         if not date:
             date = Date.today()
-        return {
-            'year': date.strftime('%Y'),
-            'month': date.strftime('%m'),
-            'day': date.strftime('%d'),
-            }
+
+        class CustomFormatter(dict):
+
+            def __getitem__(self, name):
+                try:
+                    value = super().__getitem__(name)
+                except KeyError:
+                    value = cls._convert_substitution_key(self, name)
+                return value
+
+        return CustomFormatter({
+            'date': date,
+            })
+
+    @classmethod
+    def _convert_substitution_key(cls, substitutions, key):
+        """
+        Converts a substitution key into a different (i.e: formated) value
+        Returns the updated value
+        """
+        # Compatibilty with previous keywords
+        key = {
+            'year': 'date_Y',
+            'month': 'date_m',
+            'day': 'date_d',
+            }.get(key, key)
+        if key.startswith('date_'):
+            format_ = key[len('date'):].replace('_', '%')
+            value = substitutions['date'].strftime(format_)
+            if value == format_:
+                raise ValueError(
+                    f"Unknown substitution format {format_}")
+            return value
 
     @staticmethod
     def _timestamp(sequence):
