@@ -133,6 +133,7 @@ class Many2One(Field):
         red_sql = reduce_ids(table.id, (i for i in ids if i is not None))
         Target = self.get_target()
         path_column = getattr(Target, self.path).sql_column(table)
+        path_column = Coalesce(path_column, '')
         cursor.execute(*table.select(path_column, where=red_sql))
         if operator.endswith('child_of'):
             where = Or()
