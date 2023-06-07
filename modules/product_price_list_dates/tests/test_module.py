@@ -14,7 +14,7 @@ from trytond.transaction import Transaction
 class ProductPriceListDatesTestCase(CompanyTestMixin, ModuleTestCase):
     'Test Product Price List Dates module'
     module = 'product_price_list_dates'
-    extras = ['sale_price_list']
+    extras = ['sale_price_list', 'purchase_price_list']
 
     def create_price_list(self, field, date):
         pool = Pool()

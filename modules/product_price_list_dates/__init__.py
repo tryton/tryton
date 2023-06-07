@@ -3,7 +3,7 @@
 
 from trytond.pool import Pool
 
-from . import product, sale
+from . import product, purchase, sale
 
 __all__ = ['register']
 
@@ -19,3 +19,7 @@ def register():
         product.SaleContext,
         module='product_price_list_dates', type_='model',
         depends=['sale_price_list'])
+    Pool.register(
+        purchase.Line,
+        module='product_price_list_dates', type_='model',
+        depends=['purchase_price_list'])

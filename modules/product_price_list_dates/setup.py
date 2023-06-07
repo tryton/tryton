@@ -47,7 +47,10 @@ for dep in info.get('depends', []):
         requires.append(get_require_version('trytond_%s' % dep))
 requires.append(get_require_version('trytond'))
 
-tests_require = [get_require_version('trytond_sale_price_list')]
+tests_require = [
+    get_require_version('trytond_purchase_price_list'),
+    get_require_version('trytond_sale_price_list'),
+    ]
 
 setup(name=name,
     version=version,
