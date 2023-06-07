@@ -968,6 +968,7 @@ class ShipmentInReturn(ShipmentAssignMixin, Workflow, ModelSQL, ModelView):
     def assign_try(cls, shipments, with_childs=None):
         pool = Pool()
         Move = pool.get('stock.move')
+        shipments = [s for s in shipments if s.state == 'waiting']
         to_assign = defaultdict(list)
         for shipment in shipments:
             location_type = shipment.from_location.type
@@ -1712,6 +1713,10 @@ class ShipmentOut(ShipmentAssignMixin, Workflow, ModelSQL, ModelView):
     @ModelView.button
     def assign_try(cls, shipments):
         Move = Pool().get('stock.move')
+        shipments = [
+            s for s in shipments
+            if s.state == 'waiting'
+            and s.warehouse_storage != s.warehouse_output]
         to_assign = [
             m for s in shipments for m in s.assign_moves
             if m.assignation_required]
