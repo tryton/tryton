@@ -327,6 +327,26 @@ class ExportDataTestCase(unittest.TestCase):
             [[export1.id, 'Target 1'], ['', 'Target 2'], [export2.id, '']])
 
     @with_transaction()
+    def test_one2many_empty_value(self):
+        "Test export_data one2many with first child with 0 value"
+        pool = Pool()
+        ExportData = pool.get('test.export_data')
+        ExportDataTarget = pool.get('test.export_data.target')
+
+        export, = ExportData.create([{}])
+        ExportDataTarget.create([{
+                    'value': 0,
+                    'one2many': export.id,
+                    }, {
+                    'value': 42,
+                    'one2many': export.id,
+                    }])
+
+        self.assertEqual(
+            ExportData.export_data([export], ['id', 'one2many/value']),
+            [[export.id, 0], ['', 42]])
+
+    @with_transaction()
     def test_reference(self):
         'Test export_data reference'
         pool = Pool()
