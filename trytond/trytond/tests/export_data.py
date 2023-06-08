@@ -9,6 +9,7 @@ class ExportDataTarget(ModelSQL):
     "Export Data Target"
     __name__ = 'test.export_data.target'
     name = fields.Char('Name')
+    value = fields.Float("Value")
 
 
 class ExportData(ModelSQL):
