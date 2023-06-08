@@ -668,10 +668,11 @@ class ModelStorage(Model):
                         child_lines = ModelStorage.__export_row(child_record,
                                 child_fields_names)
                         if first:
-                            for child_fpos in range(len(fields_names)):
-                                if child_lines and child_lines[0][child_fpos]:
-                                    data[child_fpos] = \
-                                        child_lines[0][child_fpos]
+                            if child_lines:
+                                for child_fpos in range(len(fields_names)):
+                                    if child_fields_names[child_fpos]:
+                                        data[child_fpos] = (
+                                            child_lines[0][child_fpos])
                             lines += child_lines[1:]
                             first = False
                         else:
