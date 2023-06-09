@@ -8,7 +8,7 @@ from trytond.model import (
 from trytond.model.exceptions import AccessError
 from trytond.pool import Pool
 from trytond.pyson import Bool, Eval, If
-from trytond.tools import grouped_slice
+from trytond.tools import grouped_slice, is_full_text, lstrip_wildcard
 from trytond.transaction import Transaction
 from trytond.wizard import Button, StateTransition, StateView, Wizard
 
@@ -122,6 +122,28 @@ class Inventory(Workflow, ModelSQL, ModelView):
     @staticmethod
     def default_company():
         return Transaction().context.get('company')
+
+    def get_rec_name(self, name):
+        pool = Pool()
+        Lang = pool.get('ir.lang')
+        lang = Lang.get()
+        date = lang.strftime(self.date)
+        return f"[{self.number}] {self.location.rec_name} @ {date}"
+
+    @classmethod
+    def search_rec_name(cls, name, clause):
+        _, operator, operand, *extra = clause
+        if operator.startswith('!') or operator.startswith('not '):
+            bool_op = 'AND'
+        else:
+            bool_op = 'OR'
+        number_value = operand
+        if operator.endswith('like') and is_full_text(operand):
+            number_value = lstrip_wildcard(operand)
+        return [bool_op,
+            ('number', operator, number_value, *extra),
+            ('location.rec_name', operator, operand, *extra),
+            ]
 
     @classmethod
     def view_attributes(cls):

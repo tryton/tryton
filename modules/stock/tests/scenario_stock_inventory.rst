@@ -245,3 +245,14 @@ Create an inventory that should be empty after completion::
     >>> inventory.click('complete_lines')
     >>> len(inventory.lines)
     0
+
+Create an inventory and check rec_name::
+
+    >>> Inventory = Model.get('stock.inventory')
+    >>> inventory = Inventory()
+    >>> inventory.date = dt.date(2023, 1, 31)
+    >>> inventory.location = storage_loc
+    >>> inventory.empty_quantity = 'keep'
+    >>> inventory.save()
+    >>> inventory.rec_name
+    '[6] Storage Zone @ 01/31/2023'
