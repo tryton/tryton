@@ -101,7 +101,7 @@ class Request(_Request):
             user_id = security.check(
                 database_name, auth.get('userid'), auth.get('session'),
                 context=context)
-        else:
+        elif auth.username:
             parameters = getattr(auth, 'parameters', auth)
             try:
                 user_id = security.login(
@@ -109,6 +109,8 @@ class Request(_Request):
                     context=context)
             except RateLimitException:
                 abort(HTTPStatus.TOO_MANY_REQUESTS)
+        else:
+            user_id = None
         return user_id
 
     @cached_property
