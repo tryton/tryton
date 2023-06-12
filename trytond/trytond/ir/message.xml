@@ -321,6 +321,9 @@ this repository contains the full copyright notices and license terms. -->
             <field name="text">Some activated modules depend on the ones you are trying to deactivate:</field>
         </record>
 
+        <record model="ir.message" id="msg_trigger_exclusive">
+            <field name="text">You can not select "On Time" and any other on the same time, they are mutually exclusive.</field>
+        </record>
         <record model="ir.message" id="msg_trigger_invalid_condition">
             <field name="text">Condition "%(condition)s" is not a valid PYSON expression for trigger "%(trigger)s".</field>
         </record>

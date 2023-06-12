@@ -71,7 +71,7 @@ class Trigger(DeactivableMixin, ModelSQL, ModelView):
                         & ((t.on_create == Literal(True))
                             | (t.on_write == Literal(True))
                             | (t.on_delete == Literal(True))))),
-                '"On Time" and others are mutually exclusive!'),
+                'ir.msg_trigger_exclusive'),
             ]
         cls._order.insert(0, ('name', 'ASC'))
 
