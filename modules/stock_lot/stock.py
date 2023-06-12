@@ -78,15 +78,15 @@ class Lot(DeactivableMixin, ModelSQL, ModelView, LotMixin, StockMixin):
     __name__ = 'stock.lot'
     _rec_name = 'number'
 
-    quantity = fields.Function(fields.Float('Quantity'), 'get_quantity',
-        searcher='search_quantity')
-    forecast_quantity = fields.Function(fields.Float('Forecast Quantity'),
+    quantity = fields.Function(
+        fields.Float("Quantity", digits='default_uom'),
+        'get_quantity', searcher='search_quantity')
+    forecast_quantity = fields.Function(
+        fields.Float("Forecast Quantity", digits='default_uom'),
         'get_quantity', searcher='search_quantity')
     default_uom = fields.Function(
         fields.Many2One('product.uom', "Default UOM"),
         'on_change_with_default_uom')
-    default_uom_digits = fields.Function(fields.Integer("Default Unit Digits"),
-        'on_change_with_default_uom_digits')
 
     @classmethod
     def __setup__(cls):
@@ -124,11 +124,6 @@ class Lot(DeactivableMixin, ModelSQL, ModelView, LotMixin, StockMixin):
     @fields.depends('product')
     def on_change_with_default_uom(self, name=None):
         return self.product.default_uom if self.product else None
-
-    @fields.depends('product')
-    def on_change_with_default_uom_digits(self, name=None):
-        if self.product:
-            return self.product.default_uom.digits
 
     @classmethod
     def copy(cls, lots, default=None):
@@ -305,18 +300,14 @@ class LotsByLocations(ModelSQL, ModelView):
     lot = fields.Many2One('stock.lot', "Lot")
     product = fields.Many2One('product.product', "Product")
     quantity = fields.Function(
-        fields.Float(
-            "Quantity", digits=(16, Eval('default_uom_digits', 2))),
+        fields.Float("Quantity", digits='default_uom'),
         'get_lot', searcher='search_lot')
     forecast_quantity = fields.Function(
-        fields.Float(
-            "Forecast Quantity", digits=(16, Eval('default_uom_digits', 2))),
+        fields.Float("Forecast Quantity", digits='default_uom'),
         'get_lot', searcher='search_lot')
     default_uom = fields.Function(
         fields.Many2One('product.uom', "Default UOM"),
         'get_lot', searcher='search_lot')
-    default_uom_digits = fields.Function(
-        fields.Integer("Default UOM Digits"), 'get_lot')
 
     @classmethod
     def __setup__(cls):

@@ -147,14 +147,20 @@ def check_no_stock_if_inactive(func):
 
 class Template(metaclass=PoolMeta):
     __name__ = "product.template"
-    quantity = fields.Function(fields.Float('Quantity',
-        help="The amount of stock in the location."),
+    quantity = fields.Function(
+        fields.Float(
+            "Quantity", digits='default_uom',
+            help="The amount of stock in the location."),
         'sum_product')
-    forecast_quantity = fields.Function(fields.Float('Forecast Quantity',
-        help="The amount of stock expected to be in the location."),
+    forecast_quantity = fields.Function(
+        fields.Float(
+            "Forecast Quantity", digits='default_uom',
+            help="The amount of stock expected to be in the location."),
         'sum_product')
-    cost_value = fields.Function(fields.Numeric('Cost Value',
-        help="The value of the stock in the location."),
+    cost_value = fields.Function(
+        fields.Numeric(
+            "Cost Value", digits=price_digits,
+            help="The value of the stock in the location."),
         'sum_product')
 
     def sum_product(self, name):
@@ -191,11 +197,11 @@ class Template(metaclass=PoolMeta):
 class Product(StockMixin, object, metaclass=PoolMeta):
     __name__ = "product.product"
     quantity = fields.Function(fields.Float(
-            "Quantity", digits=(16, Eval('default_uom_digits', 2)),
+            "Quantity", digits='default_uom',
             help="The amount of stock in the location."),
         'get_quantity', searcher='search_quantity')
     forecast_quantity = fields.Function(fields.Float(
-            "Forecast Quantity", digits=(16, Eval('default_uom_digits', 2)),
+            "Forecast Quantity", digits='default_uom',
             help="The amount of stock expected to be in the location."),
         'get_quantity', searcher='search_quantity')
     cost_value = fields.Function(fields.Numeric(

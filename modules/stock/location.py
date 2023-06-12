@@ -686,18 +686,14 @@ class ProductsByLocations(DeactivableMixin, ModelSQL, ModelView):
 
     product = fields.Many2One('product.product', "Product")
     quantity = fields.Function(
-        fields.Float(
-            "Quantity", digits=(16, Eval('default_uom_digits', 2))),
+        fields.Float("Quantity", digits='default_uom'),
         'get_product', searcher='search_product')
     forecast_quantity = fields.Function(
-        fields.Float(
-            "Forecast Quantity", digits=(16, Eval('default_uom_digits', 2))),
+        fields.Float("Forecast Quantity", digits='default_uom'),
         'get_product', searcher='search_product')
     default_uom = fields.Function(
         fields.Many2One('product.uom', "Default UOM"),
         'get_product', searcher='search_product')
-    default_uom_digits = fields.Function(
-        fields.Integer("Default UOM Digits"), 'get_product')
     cost_value = fields.Function(
         fields.Numeric("Cost Value"), 'get_product')
     consumable = fields.Function(

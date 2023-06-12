@@ -101,8 +101,6 @@ class Template(
         fields.Many2One('product.uom.category', 'Default UOM Category'),
         'on_change_with_default_uom_category',
         searcher='search_default_uom_category')
-    default_uom_digits = fields.Function(fields.Integer("Default Unit Digits"),
-        'on_change_with_default_uom_digits')
     categories = fields.Many2Many(
         'product.template-product.category', 'template', 'category',
         "Categories",
@@ -232,11 +230,6 @@ class Template(
     @classmethod
     def search_default_uom_category(cls, name, clause):
         return [('default_uom.category' + clause[0][len(name):], *clause[1:])]
-
-    @fields.depends('default_uom')
-    def on_change_with_default_uom_digits(self, name=None):
-        if self.default_uom:
-            return self.default_uom.digits
 
     @classmethod
     def _new_code(cls):
