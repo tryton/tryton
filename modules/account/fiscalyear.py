@@ -145,7 +145,7 @@ class FiscalYear(Workflow, ModelSQL, ModelView):
                     raise FiscalYearDatesError(
                         gettext('account.msg_open_fiscalyear_earlier',
                             open=year.rec_name,
-                            close=fiscalyear.rec_name))
+                            closed=fiscalyear.rec_name))
 
     @classmethod
     def check_post_move_sequence(cls, fiscalyears, field_names=None):
