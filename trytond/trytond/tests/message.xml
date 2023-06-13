@@ -6,5 +6,20 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.message" id="msg_test">
             <field name="text">Message</field>
         </record>
+        <record model="ir.message" id="msg_modelsql_check">
+            <field name="text">Value must be greater than 42.</field>
+        </record>
+        <record model="ir.message" id="msg_modelsql_unique">
+            <field name="text">Value must be unique.</field>
+        </record>
+        <record model="ir.message" id="msg_modelsql_exclude">
+            <field name="text">Value must be unique.</field>
+        </record>
+        <record model="ir.message" id="msg_one2one_relation_origin_unique">
+            <field name="text">Origin must be unique.</field>
+        </record>
+        <record model="ir.message" id="msg_one2one_relation_target_unique">
+            <field name="text">Target must be unique.</field>
+        </record>
     </data>
 </tryton>

@@ -184,8 +184,7 @@ class ModelCheck(ModelSQL):
         super(ModelCheck, cls).__setup__()
         t = cls.__table__()
         cls._sql_constraints = [
-            ('check', Check(t, (t.value > 42)),
-                "Value must be greater than 42."),
+            ('check', Check(t, (t.value > 42)), 'tests.msg_modelsql_check'),
             ]
 
 
@@ -199,7 +198,7 @@ class ModelUnique(ModelSQL):
         super(ModelUnique, cls).__setup__()
         t = cls.__table__()
         cls._sql_constraints = [
-            ('unique', Unique(t, t.value), "Value must be unique."),
+            ('unique', Unique(t, t.value), 'tests.msg_modelsql_unique'),
             ]
 
 
@@ -220,7 +219,7 @@ class ModelExclude(ModelSQL):
         cls._sql_constraints = [
             ('exclude', Exclude(t, (t.value, Equal),
                     where=t.condition == Literal(True)),
-                "Value must be unique."),
+                'tests.msg_modelsql_exclude'),
             ]
 
 

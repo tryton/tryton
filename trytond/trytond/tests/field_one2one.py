@@ -30,9 +30,9 @@ class One2OneRelation(ModelSQL):
         table = cls.__table__()
         cls._sql_constraints += [
             ('origin_unique', Unique(table, table.origin),
-                'Origin must be unique'),
+                'tests.msg_one2one_relation_origin_unique'),
             ('target_unique', Unique(table, table.target),
-                'Target must be unique'),
+                'tests.msg_one2one_relation_target_unique'),
             ]
 
 
