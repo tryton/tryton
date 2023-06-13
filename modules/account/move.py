@@ -14,7 +14,7 @@ from sql.operators import Exists
 from trytond.config import config
 from trytond.i18n import gettext
 from trytond.model import (
-    Check, DeactivableMixin, Index, ModelSQL, ModelView, fields)
+    Check, DeactivableMixin, Index, ModelSQL, ModelView, dualmethod, fields)
 from trytond.model.exceptions import AccessError
 from trytond.modules.currency.fields import Monetary
 from trytond.pool import Pool
@@ -396,7 +396,7 @@ class Move(ModelSQL, ModelView):
         cancel_move, = self.copy([self], default=default)
         return cancel_move
 
-    @classmethod
+    @dualmethod
     @ModelView.button
     def post(cls, moves):
         pool = Pool()
@@ -2411,6 +2411,7 @@ class CancelMoves(Wizard):
     def transition_cancel(self):
         pool = Pool()
         Line = pool.get('account.move.line')
+        Move = pool.get('account.move')
         Warning = pool.get('res.user.warning')
         Unreconcile = pool.get('account.move.unreconcile_lines', type='wizard')
 
@@ -2430,6 +2431,7 @@ class CancelMoves(Wizard):
                     key, gettext(
                         'account.msg_cancel_line_delegated', moves=names))
 
+        to_post = []
         for move in moves:
             if moves_w_delegation.get(move):
                 # Skip further warnings
@@ -2438,12 +2440,16 @@ class CancelMoves(Wizard):
             default = self.default_cancel(move)
             cancel_move = move.cancel(
                 default=default, reversal=self.default.reversal)
+            if move.state == 'posted':
+                to_post.append(cancel_move)
             to_reconcile = defaultdict(list)
             for line in move.lines + cancel_move.lines:
                 if line.account.reconcile:
                     to_reconcile[(line.account, line.party)].append(line)
             for lines in to_reconcile.values():
                 Line.reconcile(lines)
+        if to_post:
+            Move.post(to_post)
         return 'end'
 
 
@@ -2472,6 +2478,8 @@ class GroupLines(Wizard):
 
     def do_group(self, action):
         move, balance_line = self._group_lines(self.records)
+        if all(l.move.state == 'posted' for l in self.records):
+            move.post()
         return action, {'res_id': move.id}
 
     def _group_lines(self, lines, date=None):
@@ -2764,6 +2772,8 @@ class RescheduleLines(Wizard):
         move.origin = self.get_origin()
         move.description = self.preview.description
         move.save()
+        if all(l.move.state == 'posted' for l in self.records):
+            move.post()
         action['res_id'] = [move.id]
         return action, {}
 
@@ -2992,6 +3002,8 @@ class DelegateLines(Wizard):
             lines, party, journal, date=date)
         move.save()
         Line.save(counterpart + delegated)
+        if all(l.move.state == 'posted' for l in lines):
+            move.post()
 
         for line, cline, dline in zip(lines, counterpart, delegated):
             Line.reconcile([line, cline], delegate_to=dline)
