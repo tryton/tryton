@@ -69,7 +69,7 @@ class DictSchemaMixin(object):
             'invisible': ~Eval('type_').in_(['selection', 'multiselection']),
             },
         depends=['type_'],
-        help=lazy_gettext('is.msg_dict_schema_help_selection_help'))
+        help=lazy_gettext('ir.msg_dict_schema_help_selection_help'))
     selection_json = fields.Function(fields.Char(
             lazy_gettext('ir.msg_dict_schema_selection_json'),
             states={
