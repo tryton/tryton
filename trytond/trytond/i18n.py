@@ -21,10 +21,14 @@ def gettext(message_id, *args, **variables):
     try:
         module, id_ = message_id.split('.')
     except ValueError:
+        if pool.test:
+            raise
         return message_id
     try:
         return Message.gettext(module, id_, language, **variables)
     except KeyError:
+        if pool.test:
+            raise
         return message_id
 
 

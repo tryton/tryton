@@ -82,14 +82,22 @@ class I18nTestCase(unittest.TestCase):
     @with_transaction()
     def test_gettest_wrong_id_format(self):
         "gettext returns the id if it has wrong format"
-        message = gettext("Wrong Format")
+        Pool().test = False
+        try:
+            message = gettext("Wrong Format")
+        finally:
+            Pool().test = True
 
         self.assertEqual(message, "Wrong Format")
 
     @with_transaction()
     def test_gettext_wrong_id(self):
         "gettext returns the id if it does not exist"
-        message = gettext('tests.not_exist')
+        Pool().test = False
+        try:
+            message = gettext('tests.not_exist')
+        finally:
+            Pool().test = True
 
         self.assertEqual(message, 'tests.not_exist')
 
