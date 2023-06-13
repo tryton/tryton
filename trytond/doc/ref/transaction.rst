@@ -165,7 +165,7 @@ Transaction
    active test enabled.
    Otherwise it returns a `context manager`_ that enable active test.
 
-.. function:: with_inactive_records(func)
+.. function:: inactive_records(func)
 
    When called with a function, it decorates the function to be executed with
    active test disabled.
