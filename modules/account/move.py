@@ -944,7 +944,9 @@ class Line(MoveLineMixin, ModelSQL, ModelView):
             "Delegated Amount",
             currency='amount_currency', digits='amount_currency',
             states={
-                'invisible': ~Eval('reconciliation', False),
+                'invisible': (
+                    ~Eval('reconciliation', False)
+                    | ~Eval('delegated_amount', 0)),
                 }),
         'get_delegated_amount')
     payable_receivable_balance = fields.Function(
