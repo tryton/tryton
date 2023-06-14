@@ -17,8 +17,9 @@ class Sale(metaclass=PoolMeta):
     amendments = fields.One2Many(
         'sale.amendment', 'sale', "Amendments",
         states={
-            'invisible': ((Eval('state') != 'processing')
-                | ~Eval('amendments')),
+            'invisible': (
+                ~Eval('state').in_(['processing', 'done'])
+                | ((Eval('state') == 'done') & ~Eval('amendments'))),
             'readonly': Eval('state') != 'processing',
             })
 
