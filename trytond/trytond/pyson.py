@@ -314,12 +314,14 @@ class Greater(PYSON):
             if isinstance(i, PYSON):
                 assert i.types().issubset({
                         int, float, type(None),
-                        datetime.datetime, datetime.date}), \
+                        datetime.datetime, datetime.date,
+                        datetime.timedelta}), \
                     'statement must be an integer, float, date or datetime'
             else:
                 assert isinstance(i, (
                         int, float, type(None),
-                        datetime.datetime, datetime.date)), \
+                        datetime.datetime, datetime.date,
+                        datetime.timedelta)), \
                     'statement must be an integer, float, date or datetime'
         if isinstance(equal, PYSON):
             if equal.types() != {bool}:
@@ -358,6 +360,8 @@ class Greater(PYSON):
                 elif isinstance(stmt, datetime.date):
                     time = datetime.time(0, 0)
                     stmt = datetime.datetime.combine(stmt, time).timestamp()
+                elif isinstance(stmt, datetime.timedelta):
+                    stmt = stmt.total_seconds()
                 dct[i] = float(stmt)
         return dct
 

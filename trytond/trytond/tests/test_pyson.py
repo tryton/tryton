@@ -303,6 +303,21 @@ class PYSONTestCase(unittest.TestCase):
                 pyson.DateTime(2020, 1, 1, 0, 0, 0, 0), 90000))
         self.assertTrue(pyson.PYSONDecoder().decode(eval))
 
+        eval = pyson.PYSONEncoder().encode(pyson.Greater(
+                pyson.TimeDelta(5, 2),
+                pyson.TimeDelta(4, 2)))
+        self.assertTrue(pyson.PYSONDecoder().decode(eval))
+
+        eval = pyson.PYSONEncoder().encode(pyson.Greater(
+                pyson.TimeDelta(4, 2),
+                pyson.TimeDelta(5, 2)))
+        self.assertFalse(pyson.PYSONDecoder().decode(eval))
+
+        eval = pyson.PYSONEncoder().encode(pyson.Greater(
+                pyson.TimeDelta(5, 2),
+                datetime.timedelta(4, 2)))
+        self.assertTrue(pyson.PYSONDecoder().decode(eval))
+
         eval = pyson.PYSONEncoder().encode(
             pyson.Greater(pyson.Eval('i', 0), 0))
         self.assertTrue(pyson.PYSONDecoder({'i': 1}).decode(eval))

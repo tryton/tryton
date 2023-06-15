@@ -415,15 +415,16 @@
                 var statement = statements[i];
                 if (statement instanceof Sao.PYSON.PYSON) {
                     if ( (!(statement instanceof Sao.PYSON.DateTime ||
-                        statement instanceof Sao.PYSON.Date)) &&
+                        statement instanceof Sao.PYSON.Date ||
+                        statement instanceof Sao.PYSON.TimeDelta)) &&
                         (jQuery(statement.types()).not(['number']).length) ) {
                         throw 'statement must be an integer, float, ' +
-                            'date or datetime';
+                            'date, datetime or timedelta';
                     }
                 } else {
                     if (!~['number', 'object'].indexOf(typeof statement)) {
                         throw 'statement must be an integer, float, ' +
-                            'date or datetime';
+                            'date, datetime or timedelta';
                     }
                 }
             }
@@ -461,8 +462,9 @@
         for (var i=0; i < 2; i++) {
             if (moment.isMoment(values[i])) {
                 values[i] = values[i].valueOf();
-            }
-            else {
+            } else if (moment.isDuration(values[i])) {
+                values[i] = values[i].valueOf();
+            } else {
                 values[i] = Number(values[i]);
             }
         }

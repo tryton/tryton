@@ -520,6 +520,24 @@
         QUnit.strictEqual(new Sao.PYSON.Decoder().decode(eval_), true,
             'decode(Greater(PYSON.DateTime(2020, 1, 1, 0, 0, 0, 0), 90000))');
 
+        eval_ = new Sao.PYSON.Encoder().encode(new Sao.PYSON.Greater(
+            new Sao.PYSON.TimeDelta(5, 2),
+            new Sao.PYSON.TimeDelta(4, 2)));
+        QUnit.strictEqual(new Sao.PYSON.Decoder().decode(eval_), true,
+            'decode(Greater(PYSON.TimeDelta(5, 2), PYSON.TimeDelta(4, 2)))');
+
+        eval_ = new Sao.PYSON.Encoder().encode(new Sao.PYSON.Greater(
+            new Sao.PYSON.TimeDelta(4, 2),
+            new Sao.PYSON.TimeDelta(5, 2)));
+        QUnit.strictEqual(new Sao.PYSON.Decoder().decode(eval_), false,
+            'decode(Greater(PYSON.TimeDelta(4, 2), PYSON.TimeDelta(5, 2)))');
+
+        eval_ = new Sao.PYSON.Encoder().encode(new Sao.PYSON.Greater(
+            new Sao.PYSON.TimeDelta(5, 2),
+            Sao.TimeDelta(4, 2)));
+        QUnit.strictEqual(new Sao.PYSON.Decoder().decode(eval_), true,
+            'decode(Greater(PYSON.TimeDelta(5, 2), Sao.TimeDelta(4, 2)))');
+
         eval_ = new Sao.PYSON.Encoder().encode(
             new Sao.PYSON.Greater(new Sao.PYSON.Eval('i', 0), 0));
         QUnit.strictEqual(new Sao.PYSON.Decoder({i: 1}).decode(eval_), true,
