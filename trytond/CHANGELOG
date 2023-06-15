@@ -1,3 +1,4 @@
+* Support encoding timedelta into PYSON TimeDelta
 * Allow date formating in sequences substitutions
 * Make ModelSQL based on table query read only by default
 * Add email validation tools

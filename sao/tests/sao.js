@@ -54,6 +54,8 @@
         var pyson_datetime = new Sao.PYSON.DateTime(
             2002, 1, 1, 12, 30, 0, 0).pyson();
         pyson_datetime.start = null;
+        var timedelta = Sao.TimeDelta(1, 2, 3);
+        var pyson_timedelta = new Sao.PYSON.TimeDelta(1, 2, 3000).pyson();
         var array = ["create_date", '>=', date];
         var pyson_array = ["create_date", '>=', pyson_date];
         var statement = new Sao.PYSON.Equal(date, date);
@@ -71,6 +73,8 @@
             JSON.stringify(pyson_date), "encode(date)");
         QUnit.strictEqual(encoder.encode(datetime),
             JSON.stringify(pyson_datetime), "encode(datetime)");
+        QUnit.strictEqual(encoder.encode(timedelta),
+            JSON.stringify(pyson_timedelta), "encode(timedelta)");
         QUnit.strictEqual(encoder.encode(array),
             JSON.stringify(pyson_array), "encode(array)");
         QUnit.strictEqual(encoder.encode(statement),

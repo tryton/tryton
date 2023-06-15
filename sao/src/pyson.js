@@ -82,6 +82,11 @@
                             value.seconds(),
                             value.milliseconds() * 1000).pyson();
                     }
+                } else if (moment.isDuration(value)) {
+                    value = new Sao.PYSON.TimeDelta(
+                        Math.round(value.asDays()),
+                        value.seconds(),
+                        value.milliseconds() * 1000).pyson();
                 } else if (value instanceof Sao.Decimal) {
                     value = value.valueOf();
                 } else if ((value instanceof Object) &&

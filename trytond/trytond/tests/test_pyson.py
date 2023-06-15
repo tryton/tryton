@@ -763,6 +763,18 @@ class PYSONTestCase(unittest.TestCase):
                 'm': 3,
                 })
 
+    def test_TimeDelta_enode(self):
+        "Test pyson.TimeDelta encode"
+        eval = pyson.PYSONEncoder().encode(pyson.TimeDelta(1, 2, 3))
+        self.assertEqual(
+            pyson.PYSONDecoder().decode(eval),
+            datetime.timedelta(1, 2, 3))
+
+        eval = pyson.PYSONEncoder().encode(datetime.timedelta(1, 2, 3))
+        self.assertEqual(
+            pyson.PYSONDecoder().decode(eval),
+            datetime.timedelta(1, 2, 3))
+
     def test_TimeDelta_types(self):
         "Test pyson.TimeDelta.types"
         self.assertEqual(

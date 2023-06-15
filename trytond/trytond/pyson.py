@@ -101,6 +101,8 @@ class PYSONEncoder(json.JSONEncoder):
                         ).pyson()
             else:
                 return Date(obj.year, obj.month, obj.day).pyson()
+        elif isinstance(obj, datetime.timedelta):
+            return TimeDelta(obj.days, obj.seconds, obj.microseconds)
         elif isinstance(obj, Decimal):
             return float(obj)
         return super(PYSONEncoder, self).default(obj)
