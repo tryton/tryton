@@ -66,7 +66,7 @@
                     for (var i = 0, length = value.length; i < length; i++) {
                         this.prepare(value[i], i, value);
                     }
-                } else if (value._isAMomentObject) {
+                } else if (moment.isMoment(value)) {
                     if (value.isDate) {
                         value = new Sao.PYSON.Date(
                             value.year(),
@@ -457,7 +457,7 @@
         value = jQuery.extend({}, value);
         var values = [value.s1, value.s2];
         for (var i=0; i < 2; i++) {
-            if (values[i] instanceof moment) {
+            if (moment.isMoment(values[i])) {
                 values[i] = values[i].valueOf();
             }
             else {
