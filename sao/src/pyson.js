@@ -394,6 +394,8 @@
             return ((value.s1.isDate == value.s2.isDate) &&
                 (value.s1.isDateTime == value.s2.isDateTime) &&
                 (value.s1.valueOf() == value.s2.valueOf()));
+        } else if (moment.isDuration(value.s1) && moment.isDuration(value.s2)) {
+            return value.s1.valueOf() == value.s2.value();
         } else {
             return value.s1 == value.s2;
         }

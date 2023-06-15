@@ -35,6 +35,10 @@
                     (a.valueOf() != b.valueOf())) {
                     return false;
                 }
+            } else if (moment.isDuration(a) && moment.isDuration(b)) {
+                if (a.valueOf() != b.valueOf()) {
+                    return false;
+                }
             } else if ((a instanceof Number) || (b instanceof Number)) {
                 if (Number(a) !== Number(b)) {
                     return false;
