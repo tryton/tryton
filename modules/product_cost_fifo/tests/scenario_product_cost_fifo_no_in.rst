@@ -96,3 +96,5 @@ Check Cost Price FIFO is the current cost price::
     Decimal('70.0000')
     >>> outgoing_move.cost_price
     Decimal('70.0000')
+    >>> outgoing_move.product_cost_price
+    Decimal('70.0000')

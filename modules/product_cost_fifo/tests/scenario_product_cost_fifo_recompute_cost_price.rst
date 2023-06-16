@@ -106,6 +106,9 @@ Create some moves::
     >>> [m.cost_price for m in StockMove.find([])]
     [Decimal('100.0000'), Decimal('116.6666'), Decimal('106.6666'), Decimal('110.0000'), Decimal('113.3333'), Decimal('113.3333'), Decimal('100.0000')]
 
+    >>> [m.product_cost_price for m in StockMove.find([])]
+    [Decimal('99.9998'), Decimal('99.9999'), None, Decimal('116.6666'), None, None, None]
+
     >>> product.reload()
     >>> product.cost_price
     Decimal('99.9998')
@@ -117,6 +120,9 @@ Recompute cost price::
 
     >>> [m.cost_price for m in StockMove.find([])]
     [Decimal('111.1111'), Decimal('111.1111'), Decimal('106.6666'), Decimal('110.0000'), Decimal('113.3333'), Decimal('113.3333'), Decimal('100.0000')]
+
+    >>> [m.product_cost_price for m in StockMove.find([])]
+    [Decimal('100.0000'), Decimal('100.0000'), None, Decimal('116.6666'), None, None, None]
 
     >>> product.reload()
     >>> product.cost_price

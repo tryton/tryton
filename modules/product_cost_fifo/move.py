@@ -131,8 +131,11 @@ class Move(metaclass=PoolMeta):
                 and cost_price_method == 'fifo'):
             fifo_cost_price, cost_price, moves = (
                 self._update_fifo_out_product_cost_price())
-            if self.cost_price_required and self.cost_price is None:
-                self.cost_price = fifo_cost_price
+            if self.cost_price_required:
+                if self.cost_price is None:
+                    self.cost_price = fifo_cost_price
+                if self.product_cost_price is None:
+                    self.product_cost_price = cost_price
             to_save.extend(moves)
         return cost_price, to_save
 

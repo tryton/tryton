@@ -70,6 +70,8 @@ Consume product for production and reverse some::
 
     >>> [m.cost_price for m in StockMove.find([])]
     [Decimal('40.0000'), Decimal('40.0000')]
+    >>> [m.product_cost_price for m in StockMove.find([])]
+    [None, Decimal('40.0000')]
 
 Recompute cost price::
 
@@ -78,6 +80,9 @@ Recompute cost price::
 
     >>> [m.cost_price for m in StockMove.find([])]
     [Decimal('0.0000'), Decimal('40.0000')]
+
+    >>> [m.product_cost_price for m in StockMove.find([])]
+    [None, Decimal('0.0000')]
 
     >>> product.reload()
     >>> product.cost_price
@@ -101,6 +106,8 @@ Recompute cost price::
 
     >>> [m.cost_price for m in StockMove.find([])]
     [Decimal('20.0000'), Decimal('20.0000'), Decimal('20.0000')]
+    >>> [m.product_cost_price for m in StockMove.find([])]
+    [None, None, Decimal('20.0000')]
 
     >>> product.reload()
     >>> product.cost_price

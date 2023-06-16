@@ -181,10 +181,6 @@ class Product(metaclass=PoolMeta):
                         current_out_qty, current_moves[-1].effective_date)
                     if fifo_cost_price is None:
                         fifo_cost_price = current_cost_price
-                    Move.write([
-                            m for m in out_moves
-                            if m.cost_price != fifo_cost_price],
-                        dict(cost_price=fifo_cost_price))
                     if quantity > 0 and quantity + current_out_qty >= 0:
                         cost_price = (
                             ((current_cost_price * (
@@ -194,6 +190,13 @@ class Product(metaclass=PoolMeta):
                     else:
                         cost_price = current_cost_price
                     current_cost_price = round_price(cost_price)
+                    Move.write([
+                            m for m in out_moves
+                            if m.cost_price != fifo_cost_price
+                            or m.product_cost_price != current_cost_price],
+                        dict(
+                            cost_price=fifo_cost_price,
+                            product_cost_price=current_cost_price))
                 current_moves.clear()
                 current_out_qty = 0
                 qty_production = 0
@@ -235,10 +238,6 @@ class Product(metaclass=PoolMeta):
                 current_out_qty, current_moves[-1].effective_date)
             if fifo_cost_price is None:
                 fifo_cost_price = current_cost_price
-            Move.write([
-                    m for m in out_moves
-                    if m.cost_price != fifo_cost_price],
-                dict(cost_price=fifo_cost_price))
             if quantity > 0:
                 cost_price = (
                     ((cost_price * (quantity + current_out_qty))
@@ -246,6 +245,14 @@ class Product(metaclass=PoolMeta):
                     / quantity)
             else:
                 cost_price = current_cost_price
+            current_cost_price = round_price(cost_price)
+            Move.write([
+                    m for m in out_moves
+                    if m.cost_price != fifo_cost_price
+                    or m.product_cost_price != current_cost_price],
+                dict(
+                    cost_price=fifo_cost_price,
+                    product_cost_price=current_cost_price))
         for revision in revisions:
             cost_price = revision.get_cost_price(cost_price)
         return cost_price
