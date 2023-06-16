@@ -99,14 +99,15 @@ class ProductCostHistory(ModelSQL, ModelView):
                 None: (move, None),
                 })
 
+        cost_price = Coalesce(move.product_cost_price, move.cost_price)
         if database.has_window_functions():
             window = Window(
                 [move.effective_date, move.product],
                 frame='ROWS', start=None, end=None,
                 order_by=[move.write_date.asc, move.id.asc])
-            cost_price = LastValue(move.cost_price, window=window)
+            cost_price = LastValue(cost_price, window=window)
         else:
-            cost_price = cls.cost_price.sql_cast(move.cost_price)
+            cost_price = cls.cost_price.sql_cast(cost_price)
 
         move_history = convert_from(None, tables, type_='INNER').select(
             (move.id * 2).as_('id'),
