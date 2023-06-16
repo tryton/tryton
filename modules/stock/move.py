@@ -281,6 +281,13 @@ class Move(Workflow, ModelSQL, ModelView):
                 (Eval('state') == 'done')
                 & Eval('cost_price_required', False)),
             })
+    product_cost_price = fields.Numeric(
+        "Product Cost Price", digits=price_digits, readonly=True,
+        states={
+            'invisible': ~Eval('cost_price'),
+            },
+        help="The cost price of the product "
+        "when different from the cost price of the move.")
     currency = fields.Many2One('currency.currency', 'Currency',
         states={
             'invisible': ~Eval('unit_price_required'),
