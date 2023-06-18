@@ -96,7 +96,7 @@ class Action(object):
         if action['type'] == 'ir.action.act_window':
             if action.get('views', []):
                 params['view_ids'] = [x[0] for x in action['views']]
-                params['view_mode'] = [x[1] for x in action['views']]
+                params['mode'] = [x[1] for x in action['views']]
             elif action.get('view_id', False):
                 params['view_ids'] = [action['view_id'][0]]
 
