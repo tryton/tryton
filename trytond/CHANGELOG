@@ -1,3 +1,4 @@
+* Make ModelSQL based on table query read only by default
 * Add email validation tools
 * Remove overlapping indexes
 * Support subset operator between index definitions

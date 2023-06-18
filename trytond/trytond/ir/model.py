@@ -565,10 +565,17 @@ class ModelAccess(DeactivableMixin, ModelSQL, ModelView):
         default = {'read': True, 'write': True, 'create': True, 'delete': True}
         default_singleton = {
             'read': True, 'write': True, 'create': False, 'delete': False}
-        access = {
-            m: default
-            if not issubclass(pool.get(m), ModelSingleton)
-            else default_singleton for m in models}
+        default_table_query = {
+            'read': True, 'write': False, 'create': False, 'delete': False}
+        access = {}
+        for model in models:
+            Model = pool.get(model)
+            if callable(getattr(Model, 'table_query', None)):
+                access[model] = default_table_query
+            elif issubclass(Model, ModelSingleton):
+                access[model] = default_singleton
+            else:
+                access[model] = default
         cursor.execute(*model_access.join(ir_model, 'LEFT',
                 condition=model_access.model == ir_model.id
                 ).join(user_group, 'LEFT',
