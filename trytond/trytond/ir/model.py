@@ -605,7 +605,7 @@ class ModelAccess(DeactivableMixin, ModelSQL, ModelView):
                 perm: max(
                     (raw_access[m][perm] for m in model2models[model]
                         if m in raw_access),
-                    default=True)
+                    default=access[model][perm])
                 for perm in ['read', 'write', 'create', 'delete']}
         for model, maccess in access.items():
             cls._get_access_cache.set((user, model), maccess)
