@@ -155,7 +155,7 @@ def run_task(pool, task_id):
                         continue
                     raise
                 except (UserError, UserWarning) as e:
-                    Error.log(task, e)
+                    Error.report(task, e)
                     raise
         logger.info("%s in %i ms", name, duration())
     except backend.DatabaseOperationalError:

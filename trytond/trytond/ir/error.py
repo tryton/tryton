@@ -3,6 +3,7 @@
 import datetime as dt
 import functools
 import logging
+import warnings
 
 from trytond.config import config
 from trytond.exceptions import UserError, UserWarning
@@ -123,9 +124,14 @@ class Error(Workflow, ModelView, ModelSQL):
         # Test if it is a ModelStorage.log call
         if len(args) <= 1 or not isinstance(args[1], Exception):
             return super().log(*args, **kwargs)
+        warnings.warn(
+            "Call report instead of log to store exception",
+            DeprecationWarning)
+        cls.report(*args, **kwargs)
+
+    @classmethod
+    def report(cls, origin, exception):
         try:
-            origin, exception = args
-            assert not kwargs
             assert isinstance(exception, (UserError, UserWarning))
             with Transaction().new_transaction(autocommit=True):
                 if not cls.search([

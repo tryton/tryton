@@ -199,7 +199,7 @@ class Cron(DeactivableMixin, ModelSQL, ModelView):
                             logger.debug("Retry: %i", count)
                             continue
                         if isinstance(e, (UserError, UserWarning)):
-                            Error.log(cron, e)
+                            Error.report(cron, e)
                             logger.info(
                                 "%s failed after %i ms", name, duration())
                         else:
