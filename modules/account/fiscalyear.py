@@ -39,7 +39,7 @@ class FiscalYear(Workflow, ModelSQL, ModelView):
         order=[('start_date', 'ASC'), ('id', 'ASC')])
     state = fields.Selection([
             ('open', 'Open'),
-            ('close', 'Close'),
+            ('closed', 'Closed'),
             ('locked', 'Locked'),
             ], 'State', readonly=True, required=True, sort=False)
     post_move_sequence = fields.Many2One(
@@ -59,9 +59,9 @@ class FiscalYear(Workflow, ModelSQL, ModelView):
         super(FiscalYear, cls).__setup__()
         cls._order.insert(0, ('start_date', 'DESC'))
         cls._transitions |= set((
-                ('open', 'close'),
-                ('close', 'locked'),
-                ('close', 'open'),
+                ('open', 'closed'),
+                ('closed', 'locked'),
+                ('closed', 'open'),
                 ))
         cls._buttons.update({
                 'create_periods': {
@@ -74,17 +74,26 @@ class FiscalYear(Workflow, ModelSQL, ModelView):
                     'depends': ['state'],
                     },
                 'reopen': {
-                    'invisible': Eval('state') != 'close',
+                    'invisible': Eval('state') != 'closed',
                     'depends': ['state'],
                     },
                 'lock_': {
-                    'invisible': Eval('state') != 'close',
+                    'invisible': Eval('state') != 'closed',
                     'depends': ['state'],
                     },
                 })
         cls.__rpc__.update({
                 'create_period': RPC(readonly=False, instantiate=0),
                 })
+
+    @classmethod
+    def __register__(cls, module):
+        cursor = Transaction().connection.cursor()
+        t = cls.__table__()
+        super().__register__(module)
+        # Migration from 6.8: rename state close to closed
+        cursor.execute(
+            *t.update([t.state], ['closed'], where=t.state == 'close'))
 
     @staticmethod
     def default_state():
@@ -97,7 +106,7 @@ class FiscalYear(Workflow, ModelSQL, ModelView):
     def get_icon(self, name):
         return {
             'open': 'tryton-account-open',
-            'close': 'tryton-account-close',
+            'closed': 'tryton-account-close',
             'locked': 'tryton-account-block',
             }.get(self.state)
 
@@ -137,7 +146,7 @@ class FiscalYear(Workflow, ModelSQL, ModelView):
             if year.state == 'open':
                 fiscalyears = cls.search([
                         ('start_date', '>=', year.end_date),
-                        ('state', 'in', ['close', 'locked']),
+                        ('state', 'in', ['closed', 'locked']),
                         ('company', '=', year.company.id),
                         ],
                     limit=1,
@@ -313,7 +322,7 @@ class FiscalYear(Workflow, ModelSQL, ModelView):
 
     @classmethod
     @ModelView.button
-    @Workflow.transition('close')
+    @Workflow.transition('closed')
     def close(cls, fiscalyears):
         '''
         Close a fiscal year

@@ -19,7 +19,7 @@ from trytond.tools import (
 from trytond.transaction import Transaction
 
 STATES = {
-    'readonly': Eval('state') == 'close',
+    'readonly': Eval('state') == 'closed',
 }
 
 
@@ -231,7 +231,7 @@ class JournalPeriod(
     icon = fields.Function(fields.Char('Icon'), 'get_icon')
     state = fields.Selection([
         ('open', 'Open'),
-        ('close', 'Close'),
+        ('closed', 'Closed'),
         ], 'State', readonly=True, required=True, sort=False)
 
     @classmethod
@@ -243,8 +243,8 @@ class JournalPeriod(
                 'account.msg_journal_period_unique'),
             ]
         cls._transitions |= set((
-                ('open', 'close'),
-                ('close', 'open'),
+                ('open', 'closed'),
+                ('closed', 'open'),
                 ))
         cls._buttons.update({
                 'close': {
@@ -252,11 +252,20 @@ class JournalPeriod(
                     'depends': ['state'],
                     },
                 'reopen': {
-                    'invisible': Eval('state') != 'close',
+                    'invisible': Eval('state') != 'closed',
                     'depends': ['state'],
                     },
                 })
         cls.active.states = STATES
+
+    @classmethod
+    def __register__(cls, module):
+        cursor = Transaction().connection.cursor()
+        t = cls.__table__()
+        super().__register__(module)
+        # Migration from 6.8: rename state close to closed
+        cursor.execute(
+            *t.update([t.state], ['closed'], where=t.state == 'close'))
 
     @staticmethod
     def default_state():
@@ -279,7 +288,7 @@ class JournalPeriod(
     def get_icon(self, name):
         return {
             'open': 'tryton-account-open',
-            'close': 'tryton-account-close',
+            'closed': 'tryton-account-close',
             }.get(self.state)
 
     @classmethod
@@ -312,7 +321,7 @@ class JournalPeriod(
     def write(cls, *args):
         actions = iter(args)
         for journal_periods, values in zip(actions, actions):
-            if (values != {'state': 'close'}
+            if (values != {'state': 'closed'}
                     and values != {'state': 'open'}):
                 cls._check(journal_periods)
             if values.get('state') == 'open':
@@ -332,7 +341,7 @@ class JournalPeriod(
 
     @classmethod
     @ModelView.button
-    @Workflow.transition('close')
+    @Workflow.transition('closed')
     def close(cls, periods):
         '''
         Close journal - period

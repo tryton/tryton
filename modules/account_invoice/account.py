@@ -60,7 +60,7 @@ class Period(metaclass=PoolMeta):
 
     @classmethod
     @ModelView.button
-    @Workflow.transition('close')
+    @Workflow.transition('closed')
     def close(cls, periods):
         pool = Pool()
         Invoice = pool.get('account.invoice')

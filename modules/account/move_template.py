@@ -403,7 +403,7 @@ class CreateMoveTemplate(ModelView):
     date = fields.Date('Effective Date', required=True)
     period = fields.Many2One('account.period', 'Period', required=True,
         domain=[
-            ('state', '!=', 'close'),
+            ('state', '!=', 'closed'),
             ('fiscalyear.company.id', '=',
                 Eval('context', {}).get('company', 0)),
             ])

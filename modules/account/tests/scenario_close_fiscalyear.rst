@@ -142,7 +142,7 @@ Close fiscalyear::
 
     >>> fiscalyear.click('close')
     >>> fiscalyear.state
-    'close'
+    'closed'
 
 Check receivable amounts after closing fiscalyear::
 

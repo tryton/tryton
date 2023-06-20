@@ -1159,7 +1159,7 @@ class Account(
         if not fiscalyear:
             return values
 
-        if fiscalyear.state == 'close' and deferral:
+        if fiscalyear.state == 'closed' and deferral:
             Deferral = pool.get(deferral)
             id2deferral = {}
             ids = [a.id for a in accounts]

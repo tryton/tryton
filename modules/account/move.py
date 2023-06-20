@@ -358,7 +358,7 @@ class Move(ModelSQL, ModelView):
         default = {
             'origin': str(self),
             }
-        if self.period.state == 'close':
+        if self.period.state == 'closed':
             key = '%s.cancel' % self
             if Warning.check(key):
                 raise CancelWarning(key,
@@ -1300,7 +1300,7 @@ class Line(MoveLineMixin, ModelSQL, ModelView):
                 ], limit=1)
         if journal_periods:
             journal_period, = journal_periods
-            if journal_period.state == 'close':
+            if journal_period.state == 'closed':
                 raise AccessError(
                     gettext('account.msg_modify_line_closed_journal_period',
                         journal_period=journal_period.rec_name))
@@ -1748,7 +1748,7 @@ class OpenJournalAsk(ModelView):
     journal = fields.Many2One('account.journal', 'Journal', required=True)
     period = fields.Many2One('account.period', 'Period', required=True,
         domain=[
-            ('state', '!=', 'close'),
+            ('state', '!=', 'closed'),
             ])
 
     @classmethod

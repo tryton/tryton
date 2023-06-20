@@ -31,7 +31,7 @@ class Period(Workflow, ModelSQL, ModelView):
         'account.fiscalyear', "Fiscal Year", required=True, states=_STATES)
     state = fields.Selection([
             ('open', 'Open'),
-            ('close', 'Close'),
+            ('closed', 'Closed'),
             ('locked', 'Locked'),
             ], 'State', readonly=True, required=True, sort=False)
     post_move_sequence = fields.Many2One('ir.sequence', 'Post Move Sequence',
@@ -66,9 +66,9 @@ class Period(Workflow, ModelSQL, ModelView):
                 order='DESC'))
         cls._order.insert(0, ('start_date', 'DESC'))
         cls._transitions |= set((
-                ('open', 'close'),
-                ('close', 'locked'),
-                ('close', 'open'),
+                ('open', 'closed'),
+                ('closed', 'locked'),
+                ('closed', 'open'),
                 ))
         cls._buttons.update({
                 'close': {
@@ -76,14 +76,23 @@ class Period(Workflow, ModelSQL, ModelView):
                     'depends': ['state'],
                     },
                 'reopen': {
-                    'invisible': Eval('state') != 'close',
+                    'invisible': Eval('state') != 'closed',
                     'depends': ['state'],
                     },
                 'lock_': {
-                    'invisible': Eval('state') != 'close',
+                    'invisible': Eval('state') != 'closed',
                     'depends': ['state'],
                     },
                 })
+
+    @classmethod
+    def __register__(cls, module):
+        cursor = Transaction().connection.cursor()
+        t = cls.__table__()
+        super().__register__(module)
+        # Migration from 6.8: rename state close to closed
+        cursor.execute(
+            *t.update([t.state], ['closed'], where=t.state == 'close'))
 
     @staticmethod
     def default_state():
@@ -104,7 +113,7 @@ class Period(Workflow, ModelSQL, ModelView):
     def get_icon(self, name):
         return {
             'open': 'tryton-account-open',
-            'close': 'tryton-account-close',
+            'closed': 'tryton-account-close',
             'locked': 'tryton-account-block',
             }.get(self.state)
 
@@ -338,7 +347,7 @@ class Period(Workflow, ModelSQL, ModelView):
 
     @classmethod
     @ModelView.button
-    @Workflow.transition('close')
+    @Workflow.transition('closed')
     def close(cls, periods):
         pool = Pool()
         JournalPeriod = pool.get('account.journal.period')
