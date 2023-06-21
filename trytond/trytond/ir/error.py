@@ -6,7 +6,8 @@ import logging
 
 from trytond.config import config
 from trytond.exceptions import UserError, UserWarning
-from trytond.model import Index, ModelSQL, ModelView, Workflow, fields
+from trytond.model import (
+    Index, ModelSQL, ModelView, Workflow, dualmethod, fields)
 from trytond.pool import Pool
 from trytond.pyson import Eval
 from trytond.tools import firstline
@@ -117,9 +118,14 @@ class Error(Workflow, ModelView, ModelSQL):
             return "%s - %s" % (self.origin_string, self.origin.rec_name)
         return super().get_rec_name(name)
 
-    @classmethod
-    def log(cls, origin, exception):
+    @dualmethod
+    def log(cls, *args, **kwargs):
+        # Test if it is a ModelStorage.log call
+        if len(args) <= 1 or not isinstance(args[1], Exception):
+            return super().log(*args, **kwargs)
         try:
+            origin, exception = args
+            assert not kwargs
             assert isinstance(exception, (UserError, UserWarning))
             with Transaction().new_transaction(autocommit=True):
                 if not cls.search([
