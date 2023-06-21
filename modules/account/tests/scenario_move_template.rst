@@ -4,6 +4,7 @@ Move Template Scenario
 
 Imports::
 
+    >>> import datetime
     >>> from decimal import Decimal
     >>> from proteus import Model, Wizard
     >>> from trytond.tests.tools import activate_modules
@@ -11,6 +12,7 @@ Imports::
     ...     get_company
     >>> from trytond.modules.account.tests.tools import create_fiscalyear, \
     ...     create_chart, get_accounts, create_tax, create_tax_code
+    >>> today = datetime.date.today()
 
 Activate modules::
 
@@ -93,6 +95,23 @@ Create Template::
 Create Move::
 
     >>> create_move = Wizard('account.move.template.create')
+    >>> create_move.form.date == today
+    True
+    >>> period = create_move.form.period
+    >>> period.start_date <= today <= period.end_date
+    True
+    >>> index = fiscalyear.periods.index(create_move.form.period)
+    >>> next_period = fiscalyear.periods[index + 1]
+    >>> create_move.form.date = next_period.start_date
+    >>> create_move.form.period == next_period
+    True
+    >>> prev_period = fiscalyear.periods[index - 1]
+    >>> create_move.form.period = prev_period
+    >>> create_move.form.date == prev_period.end_date
+    True
+    >>> create_move.form.period = next_period
+    >>> create_move.form.date == next_period.start_date
+    True
     >>> create_move.form.template = template
     >>> create_move.execute('keywords')
     >>> data = {}

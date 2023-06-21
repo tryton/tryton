@@ -10,11 +10,8 @@ this repository contains the full copyright notices and license terms. -->
         <page string="Template" id="template">
             <label name="company"/>
             <field name="company"/>
-            <newline/>
             <label name="journal"/>
             <field name="journal"/>
-            <label name="date"/>
-            <field name="date"/>
             <label name="description"/>
             <field name="description" colspan="3"/>
             <field name="lines" colspan="4"/>

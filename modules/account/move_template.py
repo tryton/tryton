@@ -33,7 +33,6 @@ class MoveTemplate(DeactivableMixin, ModelSQL, ModelView):
             'company': Eval('company', -1),
             },
         depends={'company'})
-    date = fields.Char('Date', help='Leave empty for today.')
     description = fields.Char('Description',
         help="Keyword values substitutions are identified "
         "by braces ('{' and '}').")
@@ -55,8 +54,6 @@ class MoveTemplate(DeactivableMixin, ModelSQL, ModelView):
         move = Move()
         move.company = self.company
         move.journal = self.journal
-        if self.date:
-            move.date = values.get(self.date)
         if self.description:
             move.description = self.description.format(
                 **dict(Keyword.format_values(self, values)))
@@ -362,6 +359,7 @@ class CreateMove(Wizard):
         for keyword in template.keywords:
             values[keyword.name] = getattr(self.keywords, keyword.name, None)
         move = template.get_move(values)
+        move.date = self.template.date
         move.period = self.template.period
         move.save()
         return move
@@ -402,12 +400,19 @@ class CreateMoveTemplate(ModelView):
         domain=[
             ('company', '=', Eval('context', {}).get('company', -1)),
             ])
+    date = fields.Date('Effective Date', required=True)
     period = fields.Many2One('account.period', 'Period', required=True,
         domain=[
             ('state', '!=', 'close'),
             ('fiscalyear.company.id', '=',
                 Eval('context', {}).get('company', 0)),
             ])
+
+    @classmethod
+    def default_date(cls):
+        pool = Pool()
+        Date = pool.get('ir.date')
+        return Date.today()
 
     @classmethod
     def default_period(cls):
@@ -419,6 +424,39 @@ class CreateMoveTemplate(ModelView):
         except PeriodNotFoundError:
             return None
         return period.id
+
+    @fields.depends('date', 'period')
+    def on_change_date(self):
+        pool = Pool()
+        Period = pool.get('account.period')
+        company = Transaction().context.get('company')
+        if self.date:
+            if (not self.period
+                or not (
+                    self.period.start_date <= self.date
+                    <= self.period.end_date)):
+                try:
+                    self.period = Period.find(company, date=self.date)
+                except PeriodNotFoundError:
+                    pass
+
+    @fields.depends('period', 'date')
+    def on_change_period(self):
+        pool = Pool()
+        Date = pool.get('ir.date')
+        today = Date.today()
+        if self.period:
+            start_date = self.period.start_date
+            end_date = self.period.end_date
+            if (not self.date
+                    or not (start_date <= self.date <= end_date)):
+                if start_date <= today:
+                    if today <= end_date:
+                        self.date = today
+                    else:
+                        self.date = end_date
+                else:
+                    self.date = start_date
 
 
 class CreateMoveKeywords(ModelView):
