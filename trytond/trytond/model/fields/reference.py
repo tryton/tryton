@@ -45,7 +45,10 @@ class Reference(SelectionMixin, Field):
             on_change=on_change, on_change_with=on_change_with,
             depends=depends, context=context, loading=loading)
         self.datetime_field = datetime_field
-        self.selection = selection or None
+        if hasattr(selection, 'copy'):
+            self.selection = selection.copy()
+        else:
+            self.selection = selection
         self.selection_change_with = set()
         if selection_change_with:
             warnings.warn('selection_change_with argument is deprecated, '
