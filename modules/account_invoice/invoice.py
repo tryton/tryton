@@ -80,7 +80,11 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
             })
     type_name = fields.Function(fields.Char('Type'), 'get_type_name')
     number = fields.Char("Number", readonly=True)
-    reference = fields.Char('Reference', size=None, states=_states)
+    reference = fields.Char(
+        "Reference",
+        states={
+            'readonly': Eval('has_report_cache', False),
+        })
     description = fields.Char('Description', size=None, states=_states)
     state = fields.Selection([
             ('draft', "Draft"),
@@ -290,6 +294,8 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
         fields.Boolean("Allow Cancel Invoice"), 'get_allow_cancel')
     has_payment_method = fields.Function(
         fields.Boolean("Has Payment Method"), 'get_has_payment_method')
+    has_report_cache = fields.Function(
+        fields.Boolean("Has Report Cached"), 'get_has_report_cache')
 
     del _states
 
@@ -329,7 +335,7 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
             'move', 'cancel_move', 'additional_moves',
             'invoice_report_cache', 'invoice_report_format',
             'total_amount_cache', 'tax_amount_cache', 'untaxed_amount_cache',
-            'lines'}
+            'lines', 'reference'}
         cls._order = [
             ('number', 'DESC NULLS FIRST'),
             ('id', 'DESC'),
@@ -931,6 +937,22 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
                         ], limit=1))
             methods.update(dict.fromkeys(sub_invoice_ids, value))
         return methods
+
+    @classmethod
+    def get_has_report_cache(cls, invoices, name):
+        table = cls.__table__()
+        cursor = Transaction().connection.cursor()
+
+        result = {}
+        has_cache = (
+            (table.invoice_report_cache_id != Null)
+            | (table.invoice_report_cache != Null))
+        for sub_invoices in grouped_slice(invoices):
+            sub_ids = map(int, sub_invoices)
+            cursor.execute(*table.select(table.id, has_cache,
+                    where=reduce_ids(table.id, sub_ids)))
+            result.update(cursor)
+        return result
 
     @property
     def taxable_lines(self):

@@ -156,6 +156,8 @@ Create invoice::
     >>> invoice.total_amount
     Decimal('240.00')
     >>> invoice.save()
+    >>> bool(invoice.has_report_cache)
+    False
 
 Test change tax::
 
@@ -173,6 +175,8 @@ Post invoice::
     'posted'
     >>> invoice.tax_identifier.code
     'BE0897290877'
+    >>> bool(invoice.has_report_cache)
+    True
     >>> invoice.untaxed_amount
     Decimal('220.00')
     >>> invoice.tax_amount

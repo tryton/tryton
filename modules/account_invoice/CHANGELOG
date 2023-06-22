@@ -1,3 +1,4 @@
+* Allow modification of invoice references when report is not cached
 * Add cache on invoice's amounts
 
 Version 6.8.0 - 2023-05-01
