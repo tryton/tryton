@@ -6,15 +6,17 @@ this repository contains the full copyright notices and license terms. -->
     <field name="name"/>
     <label name="active"/>
     <field name="active"/>
+
     <label name="parent"/>
     <field name="parent"/>
+    <newline/>
+
     <label name="icon"/>
     <field name="icon"/>
-    <label name="action"/>
-    <field name="action"/>
     <label name="sequence"/>
     <field name="sequence"/>
-    <label name="complete_name"/>
-    <field name="complete_name" colspan="3"/>
+
+    <field name="action_keywords" string="Actions" colspan="4"/>
+
     <field name="groups" colspan="4"/>
 </form>

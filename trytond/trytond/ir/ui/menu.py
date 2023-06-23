@@ -97,8 +97,11 @@ class UIMenu(
                 ('ir.action.wizard', 'ir.action.wizard'),
                 ('ir.action.url', 'ir.action.url'),
                 ], translate=False), 'get_action', setter='set_action')
-    action_keywords = fields.One2Many('ir.action.keyword', 'model',
-        'Action Keywords')
+    action_keywords = fields.One2Many(
+        'ir.action.keyword', 'model', "Action Keywords",
+        filter=[
+            ('keyword', '=', 'tree_open'),
+            ])
     favorite = fields.Function(fields.Boolean('Favorite'), 'get_favorite')
 
     @classmethod
@@ -126,7 +129,7 @@ class UIMenu(
         for record in cls.search([
                     ('rec_name', 'ilike', '%%%s%%' % text),
                     ]):
-            if record.action:
+            if record.action_keywords:
                 yield record, record.rec_name, record.icon
 
     @classmethod
@@ -226,8 +229,8 @@ class UIMenu(
                 ('menu', 'in', [m.id for m in menus]),
                 ('user', '=', user),
                 ])
-        menu2favorite = dict((m.id, False if m.action else None)
-            for m in menus)
+        menu2favorite = {
+            m.id: False if m.action_keywords else None for m in menus}
         menu2favorite.update(dict((f.menu.id, True) for f in favorites))
         return menu2favorite
 
