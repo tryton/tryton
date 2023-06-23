@@ -72,11 +72,6 @@ this repository contains the full copyright notices and license terms. -->
             action="act_subscription_form"
             sequence="20"
             id="menu_subscription_form"/>
-        <record model="ir.ui.menu-res.group"
-            id="menu_subscription_form_group_sale">
-            <field name="menu" ref="menu_subscription_form"/>
-            <field name="group" ref="sale.group_sale"/>
-        </record>
 
         <record model="ir.action.act_window" id="act_subscription_party_relate">
             <field name="name">Subscriptions</field>

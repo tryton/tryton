@@ -145,10 +145,6 @@ this repository contains the full copyright notices and license terms. -->
             action="act_purchase_form"
             sequence="10"
             id="menu_purchase_form"/>
-        <record model="ir.ui.menu-res.group" id="menu_purchase_form_group_purchase">
-            <field name="menu" ref="menu_purchase_form"/>
-            <field name="group" ref="group_purchase"/>
-        </record>
 
         <record model="ir.action.act_window" id="act_purchase_invoice_relate">
             <field name="name">Purchases</field>

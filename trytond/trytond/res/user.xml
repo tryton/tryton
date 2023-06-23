@@ -52,10 +52,6 @@ this repository contains the full copyright notices and license terms. -->
             action="act_user_form"
             sequence="10"
             id="menu_user_form"/>
-        <record model="ir.ui.menu-res.group" id="menu_user_form_group_admin">
-            <field name="menu" ref="menu_user_form"/>
-            <field name="group" ref="group_admin"/>
-        </record>
 
         <record model="ir.model.access" id="access_user">
             <field name="model" search="[('model', '=', 'res.user')]"/>

@@ -34,10 +34,6 @@ this repository contains the full copyright notices and license terms. -->
             action="act_role_form"
             sequence="50"
             id="menu_role_form"/>
-        <record model="ir.ui.menu-res.group" id="menu_role_form_admin">
-            <field name="menu" ref="menu_role_form"/>
-            <field name="group" ref="res.group_admin"/>
-        </record>
 
         <record model="ir.model.access" id="access_role">
             <field name="model" search="[('model', '=', 'res.role')]"/>

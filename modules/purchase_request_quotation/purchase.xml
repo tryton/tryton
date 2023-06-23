@@ -64,16 +64,6 @@ this repository contains the full copyright notices and license terms. -->
             action="act_purchase_request_quotation_form"
             sequence="10"
             id="menu_purchase_request_quotation_form"/>
-        <record model="ir.ui.menu-res.group"
-            id="menu_purchase_request_quotation_group_purchase_request">
-            <field name="menu" ref="menu_purchase_request_quotation_form"/>
-            <field name="group" ref="purchase_request.group_purchase_request"/>
-        </record>
-        <record model="ir.ui.menu-res.group"
-            id="menu_purchase_request_quotation_group_purchase">
-            <field name="menu" ref="menu_purchase_request_quotation_form"/>
-            <field name="group" ref="purchase.group_purchase"/>
-        </record>
 
         <record model="ir.model.button" id="quotation_cancel_button">
             <field name="name">cancel</field>

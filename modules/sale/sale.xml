@@ -167,10 +167,6 @@ this repository contains the full copyright notices and license terms. -->
             action="act_sale_form"
             sequence="10"
             id="menu_sale_form"/>
-        <record model="ir.ui.menu-res.group" id="menu_sale_form_group_sale">
-            <field name="menu" ref="menu_sale_form"/>
-            <field name="group" ref="group_sale"/>
-        </record>
 
         <record model="ir.action.act_window" id="act_sale_relate">
             <field name="name">Sales</field>
