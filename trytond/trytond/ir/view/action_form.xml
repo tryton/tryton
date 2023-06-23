@@ -10,14 +10,15 @@ this repository contains the full copyright notices and license terms. -->
     </group>
     <notebook colspan="4">
         <page string="General" id="general">
-            <label name="type"/>
-            <field name="type"/>
+            <label name="action"/>
+            <field name="action"/>
+            <label name="icon"/>
+            <field name="icon"/>
+
             <label name="records"/>
             <field name="records"/>
             <label name="usage"/>
             <field name="usage"/>
-            <label name="icon"/>
-            <field name="icon"/>
         </page>
         <page name="keywords">
             <field name="keywords" colspan="4"/>

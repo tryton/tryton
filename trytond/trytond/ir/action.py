@@ -46,18 +46,23 @@ class ContextError(ValidationError):
 
 
 EMAIL_REFKEYS = set(('cc', 'to', 'subject'))
+ACTION_SELECTION = [
+    ('ir.action.report', "Report"),
+    ('ir.action.act_window', "Window"),
+    ('ir.action.wizard', "Wizard"),
+    ('ir.action.url', "URL"),
+    ]
 
 
 class Action(DeactivableMixin, ModelSQL, ModelView):
     "Action"
     __name__ = 'ir.action'
     name = fields.Char('Name', required=True, translate=True)
-    type = fields.Selection([
-            ('ir.action.report', "Report"),
-            ('ir.action.act_window', "Window"),
-            ('ir.action.wizard', "Wizard"),
-            ('ir.action.url', "URL"),
-            ], "Type", required=True, readonly=True)
+    type = fields.Selection(
+        ACTION_SELECTION, "Type", required=True, readonly=True)
+    action = fields.Function(
+        fields.Reference("Action", selection=ACTION_SELECTION),
+        'get_action')
     records = fields.Selection([
             ('selected', "Selected"),
             ('listed', "Listed"),
@@ -74,6 +79,9 @@ class Action(DeactivableMixin, ModelSQL, ModelView):
         cls.__rpc__.update({
                 'get_action_value': RPC(instantiate=0, cache=dict(days=1)),
                 })
+
+    def get_action(self, name):
+        return f'{self.type},{self.id}'
 
     @classmethod
     def default_records(cls):
@@ -309,7 +317,8 @@ class ActionMixin(ModelSQL):
     _action_name = 'name'
 
     action = fields.Many2One(
-        'ir.action', "Action", required=True, ondelete='CASCADE')
+        'ir.action', "Action",
+        required=True, readonly=True, ondelete='CASCADE')
 
     @classmethod
     def __setup__(cls):
