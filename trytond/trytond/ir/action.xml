@@ -55,12 +55,14 @@ this repository contains the full copyright notices and license terms. -->
 
         <record model="ir.ui.view" id="action_report_view_form">
             <field name="model">ir.action.report</field>
-            <field name="type">form</field>
+            <field name="type" eval="None"/>
+            <field name="inherit" ref="action_view_form"/>
             <field name="name">action_report_form</field>
         </record>
         <record model="ir.ui.view" id="action_report_view_tree">
             <field name="model">ir.action.report</field>
-            <field name="type">tree</field>
+            <field name="type" eval="None"/>
+            <field name="inherit" ref="action_view_tree"/>
             <field name="name">action_report_list</field>
         </record>
         <record model="ir.action.act_window" id="act_action_report_form">
@@ -84,16 +86,19 @@ this repository contains the full copyright notices and license terms. -->
             parent="menu_action"
             action="act_action_report_form"
             sequence="20"
-            id="menu_action_report_form"/>
+            id="menu_action_report_form"
+            icon="tryton-list"/>
 
         <record model="ir.ui.view" id="action_act_window_view_form">
             <field name="model">ir.action.act_window</field>
-            <field name="type">form</field>
+            <field name="type" eval="None"/>
+            <field name="inherit" ref="action_view_form"/>
             <field name="name">action_act_window_form</field>
         </record>
         <record model="ir.ui.view" id="action_act_window_view_tree">
             <field name="model">ir.action.act_window</field>
-            <field name="type">tree</field>
+            <field name="type" eval="None"/>
+            <field name="inherit" ref="action_view_tree"/>
             <field name="name">action_act_window_list</field>
         </record>
         <record model="ir.action.act_window" id="act_action_act_window_form">
@@ -115,7 +120,8 @@ this repository contains the full copyright notices and license terms. -->
             parent="menu_action"
             action="act_action_act_window_form"
             sequence="20"
-            id="menu_action_act_window"/>
+            id="menu_action_act_window"
+            icon="tryton-list"/>
 
         <record model="ir.ui.view" id="act_window_view_view_form">
             <field name="model">ir.action.act_window.view</field>
@@ -159,12 +165,14 @@ this repository contains the full copyright notices and license terms. -->
 
         <record model="ir.ui.view" id="action_wizard_view_form">
             <field name="model">ir.action.wizard</field>
-            <field name="type">form</field>
+            <field name="type" eval="None"/>
+            <field name="inherit" ref="action_view_form"/>
             <field name="name">action_wizard_form</field>
         </record>
         <record model="ir.ui.view" id="action_wizard_view_tree">
             <field name="model">ir.action.wizard</field>
-            <field name="type">tree</field>
+            <field name="type" eval="None"/>
+            <field name="inherit" ref="action_view_tree"/>
             <field name="name">action_wizard_list</field>
         </record>
         <record model="ir.action.act_window" id="act_action_wizard_form">
@@ -187,16 +195,19 @@ this repository contains the full copyright notices and license terms. -->
         <menuitem
             parent="menu_action"
             action="act_action_wizard_form"
-            id="menu_action_wizard"/>
+            id="menu_action_wizard"
+            icon="tryton-list"/>
 
         <record model="ir.ui.view" id="action_url_view_form">
             <field name="model">ir.action.url</field>
-            <field name="type">form</field>
+            <field name="type" eval="None"/>
+            <field name="inherit" ref="action_view_form"/>
             <field name="name">action_url_form</field>
         </record>
         <record model="ir.ui.view" id="action_url_view_tree">
             <field name="model">ir.action.url</field>
-            <field name="type">tree</field>
+            <field name="type" eval="None"/>
+            <field name="inherit" ref="action_view_tree"/>
             <field name="name">action_url_list</field>
         </record>
         <record model="ir.action.act_window" id="act_action_url_form">
@@ -220,6 +231,7 @@ this repository contains the full copyright notices and license terms. -->
             parent="menu_action"
             action="act_action_url_form"
             sequence="20"
-            id="menu_action_url"/>
+            id="menu_action_url"
+            icon="tryton-list"/>
     </data>
 </tryton>

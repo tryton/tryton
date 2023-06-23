@@ -4,8 +4,10 @@ this repository contains the full copyright notices and license terms. -->
 <form>
     <label name="name"/>
     <field name="name"/>
-    <label name="active"/>
-    <field name="active" xexpand="0" width="100"/>
+    <group id="checkboxes" colspan="2" col="-1">
+        <label name="active"/>
+        <field name="active" xexpand="0" width="25"/>
+    </group>
     <notebook colspan="4">
         <page string="General" id="general">
             <label name="type"/>
