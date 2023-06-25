@@ -137,6 +137,11 @@ class Email(DeactivableMixin, ModelSQL, ModelView):
 
     @classmethod
     def create(cls, vlist):
+        vlist = [v.copy() for v in vlist]
+        for values in vlist:
+            # Ensure to get a different token for each record
+            # default methods are called only once
+            values.setdefault('email_token', cls.default_email_token())
         records = super().create(vlist)
         cls._format_email(records)
         return records
