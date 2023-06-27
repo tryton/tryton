@@ -298,6 +298,8 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
 
     @classmethod
     def __setup__(cls):
+        pool = Pool()
+        Party = pool.get('party.party')
         cls.number.search_unaccented = False
         cls.reference.search_unaccented = False
         super(Invoice, cls).__setup__()
@@ -342,13 +344,14 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
                 ('type', 'in', cls._journal_types('out')),
                 ('type', 'in', cls._journal_types('in'))),
             ]
+        tax_identifier_types = Party.tax_identifier_types()
         cls.tax_identifier.domain = [
             ('party', '=', Eval('company_party', -1)),
-            ('type', 'in', cls.tax_identifier_types()),
+            ('type', 'in', tax_identifier_types),
             ]
         cls.party_tax_identifier.domain = [
             ('party', '=', Eval('party', -1)),
-            ('type', 'in', cls.tax_identifier_types()),
+            ('type', 'in', tax_identifier_types),
             ]
         cls._transitions |= set((
                 ('draft', 'validated'),
@@ -1234,16 +1237,9 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
             field += '_invoice'
         return field + '_sequence'
 
-    @classmethod
-    def tax_identifier_types(cls):
-        return Pool().get('party.party').tax_identifier_types()
-
     def get_tax_identifier(self):
         "Return the default computed tax identifier"
-        types = self.tax_identifier_types()
-        for identifier in self.company.party.identifiers:
-            if identifier.type in types:
-                return identifier.id
+        return self.company.party.tax_identifier
 
     @property
     def is_modifiable(self):
