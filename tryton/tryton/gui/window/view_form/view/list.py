@@ -968,7 +968,9 @@ class ViewTree(View):
 
     def __select_changed(self, tree_sel):
         previous_record = self.record
-        if previous_record and previous_record not in previous_record.group:
+        if (previous_record
+                and (previous_record not in previous_record.group
+                    or previous_record.destroyed)):
             previous_record = None
 
         if tree_sel.get_mode() == Gtk.SelectionMode.SINGLE:
