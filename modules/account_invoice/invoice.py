@@ -115,10 +115,7 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
         depends={'company'})
     party_tax_identifier = fields.Many2One(
         'party.identifier', "Party Tax Identifier", ondelete='RESTRICT',
-        states=_states,
-        domain=[
-            ('party', '=', Eval('party', -1)),
-            ])
+        states=_states)
     party_lang = fields.Function(fields.Char('Party Language'),
         'on_change_with_party_lang')
     invoice_address = fields.Many2One('party.address', 'Invoice Address',
@@ -347,6 +344,10 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
             ]
         cls.tax_identifier.domain = [
             ('party', '=', Eval('company_party', -1)),
+            ('type', 'in', cls.tax_identifier_types()),
+            ]
+        cls.party_tax_identifier.domain = [
+            ('party', '=', Eval('party', -1)),
             ('type', 'in', cls.tax_identifier_types()),
             ]
         cls._transitions |= set((
