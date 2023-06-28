@@ -2143,7 +2143,9 @@ class InvoiceLine(sequence_ordered(), ModelSQL, ModelView, TaxableMixin):
             ('taxes_deductible_rate', '<=', 1),
             ],
         states={
-            'invisible': Eval('invoice_type') != 'in',
+            'invisible': (
+                (Eval('invoice_type') != 'in')
+                | (Eval('type') != 'line')),
             })
     taxes_date = fields.Date(
         "Taxes Date",
