@@ -265,7 +265,8 @@ class Address(
     def get_subdivision_types(cls):
         pool = Pool()
         Subdivision = pool.get('country.subdivision')
-        return Subdivision.fields_get(['type'])['type']['selection']
+        selection = Subdivision.fields_get(['type'])['type']['selection']
+        return [(k, v) for k, v in selection if k is not None]
 
     @fields.depends('country')
     def on_change_with_subdivision_types(self, name=None):
@@ -437,7 +438,8 @@ class SubdivisionType(DeactivableMixin, ModelSQL, ModelView):
     def get_subdivision_types(cls):
         pool = Pool()
         Subdivision = pool.get('country.subdivision')
-        return Subdivision.fields_get(['type'])['type']['selection']
+        selection = Subdivision.fields_get(['type'])['type']['selection']
+        return [(k, v) for k, v in selection if k is not None]
 
     @classmethod
     def create(cls, *args, **kwargs):
