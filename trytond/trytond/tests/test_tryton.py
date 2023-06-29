@@ -663,6 +663,8 @@ class ModuleTestCase(unittest.TestCase):
                         'field': field_name,
                         'model': model.__name__,
                         })
+                if field._type == 'multiselection':
+                    self.assertNotIn(None, dict(selection_values).keys())
 
     @with_transaction()
     def test_function_fields(self):

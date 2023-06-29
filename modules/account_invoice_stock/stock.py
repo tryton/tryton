@@ -41,7 +41,7 @@ class Move(metaclass=PoolMeta):
     def get_invoice_types(cls):
         pool = Pool()
         Invoice = pool.get('account.invoice')
-        return Invoice.fields_get(['type'])['type']['selection'] + [(None, '')]
+        return Invoice.fields_get(['type'])['type']['selection']
 
     @fields.depends('from_location', 'to_location')
     def on_change_with_invoice_types(self, name=None):
