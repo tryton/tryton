@@ -612,7 +612,7 @@ class Image_Attribute(metaclass=PoolMeta):
 
     @property
     def shopify_name(self):
-        name = super().shopify_filename
+        name = super().shopify_name
         if self.product:
             attributes_name = self.product.attributes_name
         else:
