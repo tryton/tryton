@@ -270,6 +270,7 @@ class POSSale(Workflow, ModelSQL, ModelView, TaxableMixin):
         default.setdefault('employee')
         default.setdefault('number')
         default.setdefault('payments')
+        default.setdefault('move')
         return super().copy(sales, default=default)
 
     @classmethod
