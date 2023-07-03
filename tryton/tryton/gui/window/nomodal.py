@@ -39,6 +39,12 @@ class NoModal(object):
                     continue
                 break
 
+    def show(self):
+        raise NotImplementedError
+
+    def hide(self):
+        raise NotImplementedError
+
     def default_size(self):
         from tryton.gui.main import Main
         main = Main()
