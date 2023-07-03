@@ -355,3 +355,9 @@ class Email(NoModal):
     def destroy(self):
         super().destroy()
         self.dialog.destroy()
+
+    def show(self):
+        self.dialog.show()
+
+    def hide(self):
+        self.dialog.hide()
