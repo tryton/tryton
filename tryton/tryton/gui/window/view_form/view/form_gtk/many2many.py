@@ -188,13 +188,7 @@ class Many2Many(Widget):
             new=self.create_access,
             title=self.attrs.get('string'))
         win.screen.search_filter(quote(value))
-        if len(win.screen.group) == 1:
-            callback([
-                    (r.id, r.value.get('rec_name', ''))
-                    for r in win.screen.group])
-            win.destroy()
-        else:
-            win.show()
+        win.show()
 
     def _sig_remove(self, *args):
         self.screen.remove(remove=True)

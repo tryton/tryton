@@ -829,10 +829,7 @@ class M2O(GenericText):
         if model and common.get_toplevel_window().get_focus():
             field = record[self.attrs['name']]
             win = self.search_remote(record, field, text, callback=callback)
-            if len(win.screen.group) == 1:
-                win.response(None, Gtk.ResponseType.OK)
-            else:
-                win.show()
+            win.show()
 
     def editing_started(self, cell, editable, path):
         super(M2O, self).editing_started(cell, editable, path)
