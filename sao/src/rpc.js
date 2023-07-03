@@ -34,7 +34,7 @@
                     .always(dfd.reject);
             } else if (data.error && !process_exception) {
                 console.debug(`RPC error calling ${args}: ${data.error[0]}: ${data.error[1]}.`);
-                dfd.reject();
+                dfd.reject(data.error);
             } else if (data.error && process_exception) {
                 var name, msg, description;
                 if (data.error[0] == 'UserWarning') {
