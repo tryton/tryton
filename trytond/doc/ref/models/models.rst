@@ -92,15 +92,6 @@ Class methods:
 
 Instance methods:
 
-.. method:: Model.on_change(fieldnames)
-
-    Returns the list of changes by calling ``on_change`` method of each field.
-
-.. method:: Model.on_change_with(fieldnames)
-
-    Returns the new values of all fields by calling ``on_change_with`` method of
-    each field.
-
 .. method:: Model.pre_validate()
 
     This method is called by the client to validate the instance.
@@ -192,6 +183,17 @@ Class methods:
 
     This method is public mainly to allow modification the existing XML of the
     view by code.
+
+Instance methods
+
+.. method:: Model.on_change(fieldnames)
+
+    Returns the list of changes by calling ``on_change`` method of each field.
+
+.. method:: Model.on_change_with(fieldnames)
+
+    Returns the new values of all fields by calling ``on_change_with`` method of
+    each field.
 
 ============
 ModelStorage
