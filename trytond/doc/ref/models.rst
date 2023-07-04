@@ -106,24 +106,6 @@ Class methods:
 
 Instance methods:
 
-.. method:: Model.on_change(fieldnames)
-
-   Return the list of changes by calling ``on_change`` method of each field.
-
-.. method:: Model.on_change_with(fieldnames)
-
-   Return the new values of all fields by calling ``on_change_with`` method of
-   each field.
-
-.. method:: Model.on_change_notify(fieldnames)
-
-    Returns a list of type and message couple to display on the client side.
-    Available types are ``info``, ``warning`` and ``error``.
-
-    .. note::
-      To be called by the client, this method must be decorated
-      by :meth:`~trytond.model.fields.depends` with the fields needed.
-
 .. method:: Model.pre_validate()
 
    Validate the instance before being stored.
@@ -227,6 +209,26 @@ Class methods:
 
       This method is public mainly to allow modification the existing XML of
       the view by code.
+
+Instance methods:
+
+.. method:: ModelView.on_change(fieldnames)
+
+   Return the list of changes by calling ``on_change`` method of each field.
+
+.. method:: ModelView.on_change_with(fieldnames)
+
+   Return the new values of all fields by calling ``on_change_with`` method of
+   each field.
+
+.. method:: ModelView.on_change_notify(fieldnames)
+
+    Returns a list of type and message couple to display on the client side.
+    Available types are ``info``, ``warning`` and ``error``.
+
+    .. note::
+      To be called by the client, this method must be decorated
+      by :meth:`~trytond.model.fields.depends` with the fields needed.
 
 ModelStorage
 ============
