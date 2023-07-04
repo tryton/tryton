@@ -123,8 +123,8 @@ StateView
 
    .. note::
       The difference between default values and values is that the client calls
-      :meth:`~trytond.model.Model.on_change` and
-      :meth:`~trytond.model.Model.on_change_with` for the default values.
+      :meth:`~trytond.model.ModelView.on_change` and
+      :meth:`~trytond.model.ModelView.on_change_with` for the default values.
 
 Instance attributes are:
 
