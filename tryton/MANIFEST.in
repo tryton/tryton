@@ -11,4 +11,5 @@ include setup-freeze.py
 include make-*-installer.sh
 include */gtk-3.0/*
 include tryton/data/pixmaps/tryton/LICENSE
+include tryton/data/sounds/LICENSE
 graft doc

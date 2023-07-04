@@ -20,6 +20,9 @@ attlist.form &=
   [ a:defaultValue = "1" ] attribute creatable { "0" | "1" }?
 attlist.form &= [ a:defaultValue = "4" ] attribute col { text }?
 attlist.form &= attribute cursor { text }?
+attlist.form &= attribute scan_code { "one" | "submit" | "loop" }?
+attlist.form &= attribute scan_code_depends { text }?
+attlist.form &= attribute scan_code_states { text }?
 
 label = element label { attlist.label, empty }
 attlist.label &= [ a:defaultValue = "" ] attribute string { text }?

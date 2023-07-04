@@ -189,6 +189,9 @@ Form:
   * Spell Checking:
     Check box to enable spell checking in fields.
 
+  * Play Sound for Code Scanner:
+    Check box to enable sound on success or failure of code scan.
+
 .. _Menu-Options-PDA-Mode:
 
 PDA Mode:

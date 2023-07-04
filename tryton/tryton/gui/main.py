@@ -79,6 +79,7 @@ class Main(Gtk.Application):
                 ('mode-pda', 'client.modepda'),
                 ('save-tree-width', 'client.save_tree_width'),
                 ('save-tree-state', 'client.save_tree_state'),
+                ('code-scanner-sound', 'client.code_scanner_sound'),
                 ('spell-checking', 'client.spellcheck'),
                 ('check-version', 'client.check_version'),
                 ]:
@@ -307,6 +308,7 @@ class Main(Gtk.Application):
         form.append(_("Save Column Width"), 'app.save-tree-width')
         form.append(_("Save Tree State"), 'app.save-tree-state')
         form.append(_("Spell Checking"), 'app.spell-checking')
+        form.append(_("Play Sound for Code Scanner"), 'app.code-scanner-sound')
 
         section.append(_("PDA Mode"), 'app.mode-pda')
         section.append(_("Search Limit..."), 'app.search-limit')

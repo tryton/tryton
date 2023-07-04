@@ -676,6 +676,16 @@ class Record:
             res = []
         self.autocompletion[fieldname] = res
 
+    def on_scan_code(self, code, depends):
+        depends = self.expr_eval(depends)
+        values = self._get_on_change_args(depends)
+        changes = RPCExecute(
+            'model', self.model_name, 'on_scan_code', values, code,
+            context=self.get_context(), process_exception=False)
+        self.set_on_change(changes)
+        self.set_modified()
+        return bool(changes)
+
     def set_field_context(self):
         from .group import Group
         for name, field in self.group.fields.items():

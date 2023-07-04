@@ -9,7 +9,7 @@ from .common import (
     error, file_open, file_selection, file_write, filter_domain,
     generateColorscheme, get_align, get_credentials, get_hostname, get_port,
     get_sensible_widget, get_toplevel_window, hex2rgb, highlight_rgb, humanize,
-    idle_add, mailto, message, node_attributes, open_documentation,
+    idle_add, mailto, message, node_attributes, open_documentation, play_sound,
     process_exception, resize_pixbuf, selection, setup_window, slugify, sur,
     sur_3b, timezoned_date, to_xml, untimezoned_date, url_open, userwarning,
     warning)
@@ -70,6 +70,7 @@ __all__ = [
     message,
     node_attributes,
     open_documentation,
+    play_sound,
     prepare_reference_domain,
     process_exception,
     resize_pixbuf,

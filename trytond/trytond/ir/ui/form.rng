@@ -57,6 +57,34 @@
       </attribute>
     </optional>
   </define>
+  <define name="attlist.form" combine="interleave">
+    <optional>
+      <attribute>
+        <name ns="">scan_code</name>
+        <choice>
+          <value>one</value>
+          <value>submit</value>
+          <value>loop</value>
+        </choice>
+      </attribute>
+    </optional>
+  </define>
+  <define name="attlist.form" combine="interleave">
+    <optional>
+      <attribute>
+        <name ns="">scan_code_depends</name>
+        <text/>
+      </attribute>
+    </optional>
+  </define>
+  <define name="attlist.form" combine="interleave">
+    <optional>
+      <attribute>
+        <name ns="">scan_code_states</name>
+        <text/>
+      </attribute>
+    </optional>
+  </define>
   <define name="label">
     <element>
       <name ns="">label</name>

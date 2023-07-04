@@ -72,6 +72,8 @@ class ModelView(Model):
         cls.__rpc__['on_change_with'] = RPC(
             instantiate=0, result=on_change_result)
         cls.__rpc__['on_change_notify'] = RPC(instantiate=0)
+        cls.__rpc__['on_scan_code'] = RPC(
+            instantiate=0, result=on_change_result)
         cls._buttons = {}
 
         fields_ = {}
@@ -187,20 +189,28 @@ class ModelView(Model):
                     methods['depend_methods'][meth_name] - meth_done)
                 meth_done.add(meth_name)
 
-        set_methods('on_change_notify')
-        cls._on_change_notify_depends = methods['depends']['on_change_notify']
-        meth_names = list(methods['depend_methods']['on_change_notify'])
-        meth_done = set()
-        while meth_names:
-            meth_name = meth_names.pop()
-            method = getattr(cls, meth_name)
-            assert callable(method) or isinstance(method, property), \
-                "%s.%s not callable or property" % (cls, meth_name)
-            set_methods(meth_name)
-            cls._on_change_notify_depends |= methods['depends'][meth_name]
-            meth_names += list(
-                methods['depend_methods'][meth_name] - meth_done)
-            meth_done.add(meth_name)
+        for func_name, depends_attr in [
+                ('on_change_notify', '_on_change_notify_depends'),
+                ('on_scan_code', '_on_scan_code_depends'),
+                ]:
+            set_methods(func_name)
+            setattr(cls, depends_attr, methods['depends'][func_name])
+            meth_names = list(methods['depend_methods'][func_name])
+            meth_done = set()
+            while meth_names:
+                meth_name = meth_names.pop()
+                method = getattr(cls, meth_name)
+                assert callable(method) or isinstance(method, property), \
+                    "%s.%s not callable or property" % (cls, meth_name)
+                set_methods(meth_name)
+                setattr(
+                    cls, depends_attr,
+                    getattr(cls, depends_attr) | methods['depends'][meth_name])
+                meth_names += list(
+                    methods['depend_methods'][meth_name] - meth_done)
+                meth_done.add(meth_name)
+
+        cls.on_scan_code = on_change(cls.on_scan_code)
 
     @classmethod
     def fields_view_get(cls, view_id=None, view_type='form', level=None):
@@ -650,6 +660,10 @@ class ModelView(Model):
             else:
                 element.attrib['id'] = str(action.action.id)
 
+        if element.tag == 'form' and element.get('scan_code'):
+            element.set('scan_code_depends', encoder.encode(
+                    list(cls._on_scan_code_depends)))
+
         if element.tag == 'tree' and element.get('sequence'):
             fields_attrs.setdefault(element.get('sequence'), {})
 
@@ -778,6 +792,9 @@ class ModelView(Model):
         Available types are info, warning and error.
         """
         return []
+
+    def on_scan_code(self, code):
+        pass
 
     @property
     def _changed_values(self):

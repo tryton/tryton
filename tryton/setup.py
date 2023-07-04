@@ -50,6 +50,7 @@ except ImportError:
 package_data = {
     'tryton': ['data/pixmaps/tryton/*.png',
         'data/pixmaps/tryton/*.svg',
+        'data/sounds/*.wav',
         'data/locale/*/LC_MESSAGES/*.mo',
         'data/locale/*/LC_MESSAGES/*.po',
         ]
@@ -139,6 +140,7 @@ dist = setup(name=name,
         ],
     extras_require={
         'calendar': ['GooCalendar>=0.7'],
+        'sound': 'playsound',
         },
     zip_safe=False,
     **args

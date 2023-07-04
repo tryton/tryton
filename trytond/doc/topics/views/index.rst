@@ -258,6 +258,15 @@ Each form view must start with this tag with those attributes:
 ``cursor``
    The name of the field that must have the cursor by default.
 
+.. _form-attributes-scan_code:
+
+``scan_code``
+  Active the scan of code using :meth:`trytond.model.ModelView.on_scan_code`.
+  If the value is ``one``, only one code is requested.
+  If the value is ``submit``, the form is submitted after one code.
+  If the value is ``loop``, codes are requested until the user stops.
+  The default value is empty.
+
 :ref:`col <common-attributes-col>`.
 
 .. _form-label:

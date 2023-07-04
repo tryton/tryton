@@ -230,6 +230,15 @@ Instance methods:
       To be called by the client, this method must be decorated
       by :meth:`~trytond.model.fields.depends` with the fields needed.
 
+.. method:: ModelView.on_scan_code(code)
+
+   Modify the instance when ``code`` is scanned.
+   If the instance is not modified the scan loop ends.
+
+   .. note::
+      When extended, this method must be decorated by
+      :meth:`~trytond.model.fields.depends` with the fields used.
+
 ModelStorage
 ============
 

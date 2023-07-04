@@ -87,6 +87,7 @@ class ConfigManager(object):
             'client.save_tree_width': True,
             'client.save_tree_state': True,
             'client.spellcheck': False,
+            'client.code_scanner_sound': True,
             'client.lang': locale.getdefaultlocale()[0],
             'client.language_direction': 'ltr',
             'client.email': '',
@@ -230,6 +231,10 @@ if not os.path.isdir(PIXMAPS_DIR):
     import pkg_resources
     PIXMAPS_DIR = pkg_resources.resource_filename(
         'tryton', 'data/pixmaps/tryton')
+SOUNDS_DIR = os.path.join(CURRENT_DIR, 'data', 'sounds')
+if not os.path.isdir(SOUNDS_DIR):
+    import pkg_resources
+    SOUNDS_DIR = pkg_resources.resource_filename('tryton', 'data/sounds')
 
 TRYTON_ICON = GdkPixbuf.Pixbuf.new_from_file(
     os.path.join(PIXMAPS_DIR, 'tryton-icon.png'))

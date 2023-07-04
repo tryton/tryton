@@ -3,7 +3,7 @@
 import gettext
 import operator
 
-from gi.repository import Gtk
+from gi.repository import GLib, Gtk
 
 from tryton.common import IconFactory, Tooltips, get_align, node_attributes
 from tryton.common.button import Button
@@ -12,6 +12,7 @@ from tryton.common.focus import (
     get_invisible_ancestor, next_focus_widget)
 from tryton.common.underline import set_underline
 from tryton.config import CONFIG
+from tryton.gui.window.code_scanner import CodeScanner
 
 from . import View, XMLViewParser
 from .form_gtk.binary import Binary
@@ -471,6 +472,23 @@ class ViewForm(View):
 
         self.creatable = bool(int(self.attributes.get('creatable', 1)))
 
+        if self.attributes.get('scan_code'):
+            code_scanner_btn = Button({
+                    'string': _("Scan"),
+                    'icon': 'tryton-barcode-scanner',
+                    'states': self.attributes.get('scan_code_states', {}),
+                    })
+            code_scanner_btn.set_image(IconFactory.get_image(
+                    'tryton-barcode-scanner', Gtk.IconSize.BUTTON))
+            code_scanner_btn.set_always_show_image(True)
+            code_scanner_btn.set_receives_default(False)
+            vbox.pack_start(
+                code_scanner_btn, expand=False, fill=True, padding=2)
+            code_scanner_btn.connect(
+                'clicked', lambda *a: CodeScanner(
+                    self.on_scan_code,
+                    self.attributes['scan_code'] == 'loop'))
+
     def get_fields(self):
         return list(self.widgets.keys())
 
@@ -598,3 +616,13 @@ class ViewForm(View):
             self.screen.button(widget.attrs)
         finally:
             widget.handler_unblock_by_func(self.button_clicked)
+
+    def on_scan_code(self, code):
+        if self.record:
+            modified = self.record.on_scan_code(
+                code, self.attributes.get('scan_code_depends', []))
+            if self.attributes['scan_code'] == 'submit':
+                window = self.widget.get_toplevel()
+                if window and isinstance(window, Gtk.Window):
+                    GLib.idle_add(lambda: window and window.activate_default())
+            return modified

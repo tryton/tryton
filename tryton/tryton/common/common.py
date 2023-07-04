@@ -36,7 +36,7 @@ from string import Template
 from threading import Lock, Thread
 
 import tryton.rpc as rpc
-from tryton.config import CONFIG, PIXMAPS_DIR, TRYTON_ICON
+from tryton.config import CONFIG, PIXMAPS_DIR, SOUNDS_DIR, TRYTON_ICON
 
 try:
     import ssl
@@ -1482,3 +1482,11 @@ def idle_add(func):
 def setup_window(window):
     if sys.platform == 'darwin':
         window.set_mnemonic_modifier(Gdk.ModifierType.CONTROL_MASK)
+
+
+def play_sound(self, sound='success'):
+    try:
+        from playsound import playsound
+        playsound(os.path.join(SOUNDS_DIR, f'{sound}.wav'))
+    except ImportError:
+        pass

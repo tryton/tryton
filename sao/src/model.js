@@ -1227,6 +1227,17 @@
             }
             this.autocompletion[fieldname] = result;
         },
+        on_scan_code: function(code, depends) {
+            depends = this.expr_eval(depends);
+            var values = this._get_on_change_args(depends);
+            return this.model.execute(
+                'on_scan_code', [values, code], this.get_context(),
+                true, false).then((changes) => {
+                    this.set_on_change(changes);
+                    this.set_modified();
+                    return !jQuery.isEmptyObject(changes);
+                });
+        },
         reset: function(value) {
             this.cancel();
             this.set(value, true);

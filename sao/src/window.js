@@ -2577,4 +2577,137 @@
         },
     });
 
+    Sao.Window.CodeScanner = Sao.class_(Object, {
+        init: function(callback, loop=false) {
+            this.callback = callback;
+            this.loop = loop;
+            this.submitting = false;
+            this.dialog = new Sao.Dialog(
+                Sao.i18n.gettext("Code Scanner"), 'code-scanner', 'md');
+            this.el = this.dialog.modal;
+            this.input = jQuery('<input/>', {
+                'type': 'text',
+                'class': 'form-control input-sm mousetrap',
+                'aria-label': Sao.i18n.gettext("Code"),
+                'placeholder': Sao.i18n.gettext("Code"),
+            }).appendTo(jQuery('<div/>', {
+                'class': 'col-sm-12',
+            }).appendTo(this.dialog.body));
+
+            var sound_btn = jQuery('<button/>', {
+                'class': 'btn btn-default pull-right',
+                'type': 'button',
+                'title': Sao.i18n.gettext("Toggle Sound"),
+            }).prependTo(this.dialog.header);
+            var sound_icon = jQuery('<img/>', {
+                'class': 'icon',
+            }).appendTo(sound_btn);
+
+            var sound_set_state = function(state) {
+                var prm;
+                if (state) {
+                    sound_btn.addClass('active');
+                    sound_btn.attr('aria-pressed', state);
+                    prm = Sao.common.ICONFACTORY.get_icon_url('tryton-sound-on')
+                        .done(url => {
+                            sound_icon.attr('src', url);
+                        });
+                } else {
+                    sound_btn.removeClass('active');
+                    sound_btn.attr('aria-pressed', state);
+                    prm = Sao.common.ICONFACTORY.get_icon_url('tryton-sound-off')
+                        .done(url => {
+                            sound_icon.attr('src', url);
+                        });
+                }
+                localStorage.setItem('sao_code_scanner_sound', state);
+                return prm;
+            };
+            var sound_state = JSON.parse(
+                localStorage.getItem('sao_code_scanner_sound'));
+            if (sound_state === null) {
+                sound_state = true;
+            }
+            var sound_prm = sound_set_state(sound_state);
+            sound_btn.click(
+                () => sound_set_state(!sound_btn.hasClass('active')));
+
+            jQuery('<button/>', {
+                'class': 'btn btn-link',
+                'type': 'button',
+                'title': Sao.i18n.gettext("Close"),
+            }).text(' ' + Sao.i18n.gettext("Close")).prepend(
+                Sao.common.ICONFACTORY.get_icon_img('tryton-close')
+            ).click(() => {
+                this.response('RESPONSE_CLOSE');
+            }).appendTo(this.dialog.footer);
+
+            jQuery('<button/>', {
+                'class': 'btn btn-primary',
+                'type': 'submit',
+                'title': Sao.i18n.gettext("OK"),
+            }).text(' ' + Sao.i18n.gettext("OK")).prepend(
+                Sao.common.ICONFACTORY.get_icon_img('tryton-ok')
+            ).appendTo(this.dialog.footer);
+            this.dialog.content.submit(e => {
+                e.preventDefault();
+                this.response('RESPONSE_OK');
+            });
+
+            this.el.on('shown.bs.modal', () => {
+                this.input.on('blur', this._keep_focus);
+                this.input.focus();
+            });
+            this.el.on('hidden.bs.modal', function() {
+                jQuery(this).remove();
+            });
+            // show modal after sound icons have been set
+            // because they can trigger a renew session modal
+            sound_prm.then(() => this.el.modal('show'));
+        },
+        _play_sound: function(sound) {
+            if (JSON.parse(localStorage.getItem('sao_code_scanner_sound'))) {
+                Sao.common.play_sound(sound);
+            }
+        },
+        _keep_focus: function() {
+            setTimeout(() => this.focus(), 1);
+        },
+        response: function(response_id) {
+            if (this.submitting) return;
+            if (response_id == 'RESPONSE_OK') {
+                var code = this.input.val();
+                this.input.val('');  // clear input to prevent multiple calls
+                if (code) {
+                    this.submitting = true;
+                    this.input.off('blur');
+                    return this.callback(code)
+                        .always(() => this.submitting = false)
+                        .then((modified) => {
+                            this._play_sound('success');
+                            if (!this.loop || !modified) {
+                                this.destroy();
+                            }
+                            this.input.on('blur', this._keep_focus);
+                            this.input.focus();
+                        }, (error) => {
+                            this._play_sound('danger');
+                            if (error[0] == 'UserError') {
+                                Sao.common.warning.run(error[1][1], error[1][0]);
+                            } else {
+                                Sao.common.error.run(error[0], error[1]);
+                            }
+                            this.destroy();
+                        });
+                }
+            }
+            if (!this.loop || response_id != 'RESPONSE_OK') {
+                this.destroy();
+            }
+        },
+        destroy: function() {
+            this.el.modal('hide');
+        },
+    });
+
 }());

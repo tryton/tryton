@@ -4344,4 +4344,10 @@
         return window.URL.createObjectURL(blob);
     };
 
+    Sao.common.play_sound = function(sound='success') {
+        var snd = new Audio('sounds/' + sound + '.wav');
+        snd.volume = localStorage.getItem('sao_sound_volume') || 0.5;
+        snd.play();
+    };
+
 }());

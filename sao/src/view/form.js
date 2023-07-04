@@ -290,6 +290,22 @@ function eval_pyson(value){
             if (this.attributes.creatable) {
                 this.creatable = Boolean(parseInt(this.attributes.creatable, 10));
             }
+            if (this.attributes.scan_code) {
+                this.scan_code_btn = new Sao.common.Button({
+                    'string': Sao.i18n.gettext("Scan"),
+                    'icon': 'tryton-barcode-scanner',
+                    'states': this.attributes.scan_code_states,
+                }, null, 'lg', 'btn-primary');
+                this.scan_code_btn.el.click(() => {
+                    new Sao.Window.CodeScanner(
+                        this.on_scan_code.bind(this),
+                        this.attributes.scan_code == 'loop');
+                });
+                this.el.append(jQuery('<div/>', {
+                    'class': 'btn-code-scanner',
+                }).append(this.scan_code_btn.el));
+                this.state_widgets.push(this.scan_code_btn);
+            }
         },
         get_fields: function() {
             return Object.keys(this.widgets);
@@ -309,6 +325,9 @@ function eval_pyson(value){
             var field;
             var depends;
             var promesses = [];
+            if (this.scan_code_btn) {
+                this.scan_code_btn.el.toggle(Boolean(record));
+            }
             if (record) {
                 // Force to set fields in record
                 // Get first the lazy one from the view to reduce number of requests
@@ -391,6 +410,17 @@ function eval_pyson(value){
             var button = event.data;
             button.el.prop('disabled', true);  // state will be reset at display
             this.screen.button(button.attributes);
+        },
+        on_scan_code: function(code) {
+            var record = this.record;
+            if (record) {
+                return record.on_scan_code(
+                    code, this.attributes.scan_code_depends || []).done(() => {
+                        this.el.parents('form').submit();
+                    });
+            } else {
+                return jQuery.when();
+            }
         },
         get selected_records() {
             if (this.record) {
