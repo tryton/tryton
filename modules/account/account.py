@@ -2407,7 +2407,7 @@ class GeneralLedgerLineContext(GeneralLedgerAccountContext):
 
     @classmethod
     def default_party_cumulate(cls):
-        return False
+        return Transaction().context.get('party_cumulate', False)
 
 
 class GeneralLedger(Report):
