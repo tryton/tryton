@@ -66,7 +66,7 @@ class Context(MarketingCampaignMixin, metaclass=PoolMeta):
         return default
 
 
-class MarketingContext(BaseContext):
+class MarketingContext(BaseContext, metaclass=PoolMeta):
     "Sale Opportunity Reporting Context"
     __name__ = 'sale.opportunity.reporting.marketing.context'
 
@@ -78,7 +78,7 @@ class MarketingContext(BaseContext):
         lazy_gettext('marketing_campaign.msg_marketing_source'))
 
 
-class Marketing(MarketingCampaignMixin, Abstract, ModelView):
+class Marketing(MarketingCampaignMixin, ModelView, Abstract):
     "Sale Opportunity Reporting per Marketing"
     __name__ = 'sale.opportunity.reporting.marketing'
 
