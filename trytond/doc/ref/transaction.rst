@@ -68,7 +68,7 @@ Transaction
 
 .. attribute:: Transaction.active_records
 
-   If the active test is enabled.
+   If the active test is enabled for :class:`~trytond.model.DeactivableMixin`.
 
 .. staticmethod:: Transaction.monotonic_time
 

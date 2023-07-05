@@ -605,6 +605,7 @@ Class methods:
 .. classmethod:: ModelSQL.search(domain[, offset[, limit[, order[, count[, query]]]]])
 
    Same as :meth:`ModelStorage.search` with the additional ``query`` argument.
+   The ``domain`` is converted by :meth:`~ModelSQL.search_domain`.
 
    If ``query`` is set to ``True``, the the result is the SQL query.
 
@@ -612,6 +613,9 @@ Class methods:
 
    Convert a :ref:`domain <topics-domain>` into a SQL expression by returning
    the updated tables dictionary and a SQL expression.
+
+   If ``active_test`` is set to ``False``, no clause against
+   :attr:`DeactivableMixin.active` field is added to the domain.
 
    .. _ref-tables:
 
