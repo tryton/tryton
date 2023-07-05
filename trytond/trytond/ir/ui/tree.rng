@@ -487,6 +487,14 @@
       </attribute>
     </optional>
   </define>
+  <define name="attlist.button" combine="interleave">
+    <optional>
+      <attribute>
+        <name ns="">width</name>
+        <text/>
+      </attribute>
+    </optional>
+  </define>
   <define name="data">
     <element>
       <name ns="">data</name>

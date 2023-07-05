@@ -752,7 +752,10 @@ displayed in the same column with the attributes:
 button
 ------
 
-Same as form-button_.
+Same as form-button_ with the addition of:
+
+``width``
+   The width of the column.
 
 List-Form
 =========
