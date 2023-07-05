@@ -1072,7 +1072,7 @@ It renders all the fields as read-only when the record is inactive.
 
 Class attributes are:
 
-.. attribute:: DictSchemaMixin.active
+.. attribute:: DeactivableMixin.active
 
    The definition of the :class:`trytond.model.fields.Boolean` field to store
    soft deletion state.
