@@ -27,7 +27,7 @@ class Many2ManyInactive(fields.Many2Many):
 class Inactivate(ModelSQL, DeactivableMixin):
 
     @classmethod
-    def search_domain(cls, domain, active_test=True, tables=None):
+    def search_domain(cls, domain, active_test=None, tables=None):
         context = Transaction().context
         if context.get('inactive_test'):
             domain = [domain, ('active', '=', False)]

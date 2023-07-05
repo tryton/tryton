@@ -595,10 +595,8 @@ class ModelStorage(Model):
         # reduce_domain return a new instance so we can safety modify domain
         domain = reduce_domain(domain)
         # if the object has a field named 'active', filter out all inactive
-        # records unless they were explicitely asked for
-        if not ('active' in cls._fields
-                and active_test
-                and Transaction().active_records):
+        # records unless they were explicitly asked for
+        if not ('active' in cls._fields and active_test):
             return domain
 
         def process(domain):

@@ -1856,12 +1856,14 @@ class ModelSQL(ModelStorage):
         return cls.browse([x['id'] for x in rows])
 
     @classmethod
-    def search_domain(cls, domain, active_test=True, tables=None):
+    def search_domain(cls, domain, active_test=None, tables=None):
         '''
         Return SQL tables and expression
         Set active_test to add it.
         '''
         transaction = Transaction()
+        if active_test is None:
+            active_test = transaction.active_records
         domain = cls._search_domain_active(domain, active_test=active_test)
 
         if tables is None:
