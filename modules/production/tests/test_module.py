@@ -12,8 +12,8 @@ class ProductionTestCase(CompanyTestMixin, ModuleTestCase):
     module = 'production'
 
     @with_transaction()
-    def test_on_change_with_planned_start_date(self):
-        "Test on_change_with_planned_start_date"
+    def test_on_change_planned_start_date(self):
+        "Test on_change_planned_start_date"
         pool = Pool()
         Production = pool.get('production')
         Product = pool.get('product.product')
@@ -25,17 +25,20 @@ class ProductionTestCase(CompanyTestMixin, ModuleTestCase):
         production = Production()
         production.planned_date = date
         production.product = product
+        production.state = 'draft'
 
-        self.assertEqual(production.on_change_with_planned_start_date(), date)
+        production.on_change_planned_date()
+        self.assertEqual(production.planned_start_date, date)
 
         lead_time = LeadTime(bom=None, lead_time=None)
         product.production_lead_times = [lead_time]
-        self.assertEqual(production.on_change_with_planned_start_date(), date)
+        production.on_change_planned_date()
+        self.assertEqual(production.planned_start_date, date)
 
         lead_time.lead_time = datetime.timedelta(1)
+        production.on_change_planned_date()
         self.assertEqual(
-            production.on_change_with_planned_start_date(),
-            datetime.date(2016, 11, 25))
+            production.planned_start_date, datetime.date(2016, 11, 25))
 
 
 del ModuleTestCase

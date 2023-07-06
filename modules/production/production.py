@@ -314,11 +314,19 @@ class Production(ShipmentAssignMixin, Workflow, ModelSQL, ModelView):
                     return line.lead_time or timedelta()
         return timedelta()
 
-    @fields.depends('planned_date', methods=['compute_lead_time'])
-    def on_change_with_planned_start_date(self, pattern=None):
-        if self.planned_date and self.product:
-            return self.planned_date - self.compute_lead_time()
-        return self.planned_date
+    @fields.depends(
+        'planned_date', 'state', 'product', methods=['compute_lead_time'])
+    def set_planned_start_date(self):
+        if self.state in {'request', 'draft'}:
+            if self.planned_date and self.product:
+                self.planned_start_date = (
+                    self.planned_date - self.compute_lead_time())
+            else:
+                self.planned_start_date = self.planned_date
+
+    @fields.depends(methods=['set_planned_start_date'])
+    def on_change_planned_date(self):
+        self.set_planned_start_date()
 
     @fields.depends(
         'planned_date', 'planned_start_date', methods=['compute_lead_time'])
@@ -406,7 +414,8 @@ class Production(ShipmentAssignMixin, Workflow, ModelSQL, ModelView):
         if self.warehouse:
             self.location = self.warehouse.production_location
 
-    @fields.depends('product', 'uom', methods=['explode_bom'])
+    @fields.depends(
+        'product', 'uom', methods=['explode_bom', 'set_planned_start_date'])
     def on_change_product(self):
         if self.product:
             category = self.product.default_uom.category
@@ -416,14 +425,17 @@ class Production(ShipmentAssignMixin, Workflow, ModelSQL, ModelView):
             self.bom = None
             self.uom = None
         self.explode_bom()
+        self.set_planned_start_date()
 
     @fields.depends('product')
     def on_change_with_uom_category(self, name=None):
         return self.product.default_uom.category if self.product else None
 
-    @fields.depends(methods=['explode_bom'])
+    @fields.depends(methods=['explode_bom', 'set_planned_start_date'])
     def on_change_bom(self):
         self.explode_bom()
+        # Product's production lead time depends on bom
+        self.set_planned_start_date()
 
     @fields.depends(methods=['explode_bom'])
     def on_change_uom(self):
