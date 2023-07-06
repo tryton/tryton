@@ -19,6 +19,8 @@ from trytond.model import (
     fields, sequence_ordered)
 from trytond.model.exceptions import AccessError
 from trytond.modules.account.tax import TaxableMixin
+from trytond.modules.company.model import (
+    employee_field, reset_employee, set_employee)
 from trytond.modules.currency.fields import Monetary
 from trytond.modules.product import price_digits
 from trytond.pool import Pool
@@ -86,6 +88,12 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
             'readonly': Eval('has_report_cache', False),
         })
     description = fields.Char('Description', size=None, states=_states)
+    validated_by = employee_field(
+        "Validated By",
+        states=['validated', 'posted', 'paid', 'cancelled'])
+    posted_by = employee_field(
+        "Posted By",
+        states=['posted', 'paid', 'cancelled'])
     state = fields.Selection([
             ('draft', "Draft"),
             ('validated', "Validated"),
@@ -1615,6 +1623,7 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
     @classmethod
     @ModelView.button
     @Workflow.transition('draft')
+    @reset_employee('validated_by', 'posted_by')
     def draft(cls, invoices):
         Move = Pool().get('account.move')
 
@@ -1638,6 +1647,7 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
     @classmethod
     @ModelView.button
     @Workflow.transition('validated')
+    @set_employee('validated_by')
     def validate_invoice(cls, invoices):
         pool = Pool()
         Move = pool.get('account.move')
@@ -1706,6 +1716,7 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
         cls._post(invoices)
 
     @classmethod
+    @set_employee('posted_by', when='before')
     def _post(cls, invoices):
         pool = Pool()
         Move = pool.get('account.move')

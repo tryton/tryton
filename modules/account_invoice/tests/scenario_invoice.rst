@@ -30,6 +30,20 @@ Create company::
     >>> tax_identifier.code = 'BE0897290877'
     >>> company.party.save()
 
+Set employee::
+
+    >>> User = Model.get('res.user')
+    >>> Party = Model.get('party.party')
+    >>> Employee = Model.get('company.employee')
+    >>> employee_party = Party(name="Employee")
+    >>> employee_party.save()
+    >>> employee = Employee(party=employee_party)
+    >>> employee.save()
+    >>> user = User(config.user)
+    >>> user.employees.append(employee)
+    >>> user.employee = employee
+    >>> user.save()
+
 Create fiscal year::
 
     >>> fiscalyear = set_fiscalyear_invoice_sequences(
@@ -167,10 +181,18 @@ Test change tax::
     >>> tax_line.tax = None
     >>> tax_line.tax = tax
 
+Validate invoice::
+
+    >>> invoice.click('validate_invoice')
+    >>> invoice.validated_by == employee
+    True
+
 Post invoice::
 
     >>> invoice.invoice_date = today
     >>> invoice.click('post')
+    >>> invoice.posted_by == employee
+    True
     >>> invoice.state
     'posted'
     >>> invoice.tax_identifier.code
