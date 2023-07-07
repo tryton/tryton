@@ -26,7 +26,10 @@ this repository contains the full copyright notices and license terms. -->
             <field name="res_model">product.product</field>
             <field name="domain" eval="[('salable', '=', True)]" pyson="1"/>
             <field name="context_model">product.sale.context</field>
-            <field name="context" eval="{'stock_skip_warehouse': True}" pyson="1"/>
+            <field
+                name="context"
+                eval="{'stock_skip_warehouse': True, 'with_childs': True}"
+                pyson="1"/>
         </record>
         <record model="ir.action.act_window.view" id="act_product_view1">
             <field name="sequence" eval="10"/>
