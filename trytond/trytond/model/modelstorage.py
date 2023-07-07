@@ -431,7 +431,9 @@ class ModelStorage(Model):
                         data[field_name] = [('add', data[field_name])]
                 elif ftype == 'binary':
                     # Copy only file_id
-                    if field.file_id and origin.get(field.file_id):
+                    if (field.file_id
+                            and origin.get(field.file_id)
+                            and data[field_name] == origin.get(field_name)):
                         del data[field_name]
             if 'id' in data:
                 del data['id']

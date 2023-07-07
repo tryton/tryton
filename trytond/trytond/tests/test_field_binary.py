@@ -202,3 +202,51 @@ class FieldBinaryTestCase(unittest.TestCase):
 
         self.assertEqual(binary.binary, None)
         self.assertEqual(binary.binary_id, None)
+
+    @with_transaction()
+    def test_copy(self):
+        "Test copy binary"
+        pool = Pool()
+        Binary = pool.get('test.binary')
+        binary = Binary(binary=b'foo')
+        binary.save()
+
+        copy, = Binary.copy([binary])
+
+        self.assertEqual(binary.binary, copy.binary)
+
+    @with_transaction()
+    def test_copy_with_default(self):
+        "Test copy binary with default"
+        pool = Pool()
+        Binary = pool.get('test.binary')
+        binary = Binary(binary=b'foo')
+        binary.save()
+
+        copy, = Binary.copy([binary], default={'binary': b'bar'})
+
+        self.assertEqual(copy.binary, b'bar')
+
+    @with_transaction()
+    def test_copy_with_filestorage(self):
+        "Test copy binary with filestorage"
+        pool = Pool()
+        Binary = pool.get('test.binary_filestorage')
+        binary = Binary(binary=b'foo')
+        binary.save()
+
+        copy, = Binary.copy([binary])
+
+        self.assertEqual(binary.binary, copy.binary)
+
+    @with_transaction()
+    def test_copy_with_filestorage_default(self):
+        "Test copy binary with filestorage and default"
+        pool = Pool()
+        Binary = pool.get('test.binary_filestorage')
+        binary = Binary(binary=b'foo')
+        binary.save()
+
+        copy, = Binary.copy([binary], default={'binary': b'bar'})
+
+        self.assertEqual(copy.binary, b'bar')
