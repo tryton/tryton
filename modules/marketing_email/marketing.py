@@ -84,7 +84,7 @@ class Email(DeactivableMixin, ModelSQL, ModelView):
         t = cls.__table__()
         cls._sql_constraints = [
             ('email_list_unique', Unique(t, t.email, t.list_),
-                'marketing.msg_email_list_unique'),
+                'marketing_email.msg_email_list_unique'),
             ]
 
     @classmethod
