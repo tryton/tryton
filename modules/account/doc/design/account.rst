@@ -162,7 +162,7 @@ by `Party <party:model-party.party>`.
 It can be used to show the information that is normally found in a `Debtors
 or Creditors Ledger`_.
 
-.. _Debtors or Creditors Ledger: https://en.wikipedia.org/wiki/Ledger#Types_on_the_basis_of_purpose
+.. _Debtors or Creditors Ledger: https://en.wikipedia.org/wiki/Ledger
 
 .. _model-account.aged_balance:
 
