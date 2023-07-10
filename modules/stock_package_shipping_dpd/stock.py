@@ -6,12 +6,8 @@ from io import BytesIO
 from itertools import zip_longest
 
 from lxml import etree
+from pypdf import PdfReader, PdfWriter
 from zeep.exceptions import Fault
-
-try:
-    from PyPDF2 import PdfReader, PdfWriter
-except ImportError:
-    from PyPDF2 import PdfFileReader as PdfReader, PdfFileWriter as PdfWriter
 
 from trytond.i18n import gettext
 from trytond.model import fields
@@ -186,10 +182,7 @@ class CreateDPDShipping(Wizard):
         for page in iter_pdf_pages(reader):
             new_pdf = PdfWriter()
             new_label = BytesIO()
-            if hasattr(new_pdf, 'add_page'):
-                new_pdf.add_page(page)
-            else:
-                new_pdf.addPage(page)
+            new_pdf.add_page(page)
             new_pdf.write(new_label)
             labels.append(new_label)
 
