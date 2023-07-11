@@ -73,7 +73,9 @@ def get_parser_daemon():
     parser = get_parser()
     parser.add_argument("--pidfile", dest="pidfile", metavar='FILE',
         help="file where the server pid will be stored")
-    parser.add_argument("--coroutine", action="store_true", dest="coroutine",
+    parser.add_argument(
+        "--coroutine", action="store_true", dest="coroutine",
+        default=bool(os.environ.get('TRYTOND_COROUTINE', False)),
         help="use coroutine for concurrency")
     return parser
 
