@@ -52,6 +52,7 @@ def get_parser():
     parser.add_argument('--dev', dest='dev', action='store_true',
         help='enable development mode')
 
+    logging_config = os.environ.get('TRYTOND_LOGGING_CONFIG')
     db_names = os.environ.get('TRYTOND_DATABASE_NAMES')
     if db_names:
         db_names = list(next(csv.reader(StringIO(db_names))))
@@ -61,7 +62,8 @@ def get_parser():
         "-d", "--database", dest="database_names", nargs='+',
         default=db_names, metavar='DATABASE',
         help="specify the database name").completer = database_completer
-    parser.add_argument("--logconf", dest="logconf", metavar='FILE',
+    parser.add_argument(
+        "--logconf", dest="logconf", default=logging_config, metavar='FILE',
         help="logging configuration file (ConfigParser format)")
 
     return parser
@@ -172,7 +174,11 @@ def config_log(options):
     else:
         logformat = ('%(process)s %(thread)s [%(asctime)s] '
             '%(levelname)s %(name)s %(message)s')
-        level = max(logging.ERROR - options.verbose * 10, logging.NOTSET)
+        if not options.verbose and 'TRYTOND_LOGGING_LEVEL' in os.environ:
+            logging_level = int(os.environ['TRYTOND_LOGGING_LEVEL'])
+            level = max(logging_level, logging.NOTSET)
+        else:
+            level = max(logging.ERROR - options.verbose * 10, logging.NOTSET)
         logging.basicConfig(level=level, format=logformat)
     logging.captureWarnings(True)
 
