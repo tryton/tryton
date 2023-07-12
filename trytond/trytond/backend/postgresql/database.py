@@ -221,14 +221,10 @@ class Database(DatabaseInterface):
             if name in databases:
                 inst = databases[name]
             else:
-                if name == _default_name:
-                    minconn = 0
-                else:
-                    minconn = _minconn
                 inst = DatabaseInterface.__new__(cls, name=name)
                 try:
                     inst._connpool = ThreadedConnectionPool(
-                        minconn, _maxconn, **cls._connection_params(name),
+                        _minconn, _maxconn, **cls._connection_params(name),
                         cursor_factory=LoggingCursor)
                 except Exception:
                     logger.error(
