@@ -626,8 +626,8 @@ class _BinaryIcon(Cell):
         return self.binary.view
 
     @catch_errors(False)
-    def _fetch_data(self, record):
-        record.fetch(self.attrs['name'], process_exception=False)
+    def _load_data(self, record):
+        record.load(self.attrs['name'], process_exception=False)
         return True
 
 
@@ -657,7 +657,7 @@ class _BinarySave(_BinaryIcon):
     @CellCache.cache
     def setter(self, column, cell, store, iter_, user_data=None):
         record, field = self._get_record_field_from_iter(iter_, store)
-        if not self._fetch_data(record):
+        if not self._load_data(record):
             cell.set_property('visible', False)
             return
         if hasattr(field, 'get_size'):
@@ -700,7 +700,7 @@ class _BinarySelect(_BinaryIcon):
     @CellCache.cache
     def setter(self, column, cell, store, iter_, user_data=None):
         record, field = self._get_record_field_from_iter(iter_, store)
-        if not self._fetch_data(record):
+        if not self._load_data(record):
             cell.set_property('visible', False)
             return
         if hasattr(field, 'get_size'):
@@ -742,7 +742,7 @@ class _BinaryOpen(_BinarySave):
     def setter(self, column, cell, store, iter_, user_data=None):
         super().setter(column, cell, store, iter_)
         record, field = self._get_record_field_from_iter(iter_, store)
-        if not self._fetch_data(record):
+        if not self._load_data(record):
             cell.set_property('visible', False)
             return
         filename_field = record.group.fields.get(self.attrs.get('filename'))
