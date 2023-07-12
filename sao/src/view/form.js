@@ -4444,6 +4444,8 @@ function eval_pyson(value){
                 if (record !== this.record) {
                     return;
                 }
+                // in case onload was not yet triggered
+                window.URL.revokeObjectURL(this.object.attr('data'));
                 if (!data) {
                     url = null;
                 } else {
@@ -4456,10 +4458,12 @@ function eval_pyson(value){
                     });
                     url = window.URL.createObjectURL(blob);
                 }
-                this.object.attr('data', url);
+                // set onload before data to be always called
                 this.object.get(0).onload = function() {
+                    this.onload = null;
                     window.URL.revokeObjectURL(url);
                 };
+                this.object.attr('data', url);
             });
         },
     });
