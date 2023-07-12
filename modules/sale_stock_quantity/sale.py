@@ -132,20 +132,21 @@ class Sale(metaclass=PoolMeta):
         with Transaction().set_context(company=self.company.id):
             today = Date.today()
         lang = Lang.get()
-        sale_date = self.sale_date or today
 
         lines = filter(filter_line, self.lines)
         lines = list(lines)
 
         quantities = defaultdict(lambda: defaultdict(int))
-        w_getter = attrgetter('warehouse')
+        w_getter = attrgetter('warehouse', 'shipping_date')
         w_products = {}
-        for warehouse, w_lines in groupby(
+        for (warehouse, shipping_date), w_lines in groupby(
                 sorted(lines, key=w_getter), key=w_getter):
+            if shipping_date is None:
+                shipping_date = today
             w_products[warehouse] = products = {l.product for l in w_lines}
             with transaction.set_context(
                     locations=[warehouse.id],
-                    stock_date_end=sale_date,
+                    stock_date_end=shipping_date,
                     stock_assign=True):
                 products = Product.browse(products)
             quantities[warehouse].update(
@@ -157,15 +158,14 @@ class Sale(metaclass=PoolMeta):
                         ('sale.company', '=', self.company.id),
                         ('sale.state', 'in', self._stock_quantity_states()),
                         ('sale.id', '!=', self.id),
-                        ['OR',
-                            ('sale.sale_date', '<=', sale_date),
-                            ('sale.sale_date', '=', None),
-                            ],
                         ('product', 'in', sub_products),
                         ('quantity', '>', 0),
                         ])
                 for line in other_lines:
                     if line.warehouse != warehouse:
+                        continue
+                    if (line.shipping_date
+                            and line.shipping_date > shipping_date):
                         continue
                     product = line.product
                     date = line.sale.sale_date or today
@@ -180,6 +180,7 @@ class Sale(metaclass=PoolMeta):
             product = line.product
             quantity = Uom.compute_qty(line.unit, line.quantity,
                 product.default_uom, round=False)
+            shipping_date = line.shipping_date or today
             next_supply_date = self._stock_quantity_next_supply_date(product)
             message_values = {
                 'line': line.rec_name,
@@ -190,7 +191,7 @@ class Sale(metaclass=PoolMeta):
                     line.quantity, line.unit, line.unit.digits),
                 }
             if (quantities[warehouse][product] < quantity
-                    and sale_date < next_supply_date):
+                    and shipping_date < next_supply_date):
                 raise_(line.id, message_values)
             # Update quantities if the same product is many times in lines
             quantities[warehouse][product] -= quantity
@@ -199,7 +200,7 @@ class Sale(metaclass=PoolMeta):
             if next_supply_date != datetime.date.max:
                 products = w_products[warehouse]
                 forecast_quantity = quantities[warehouse][product]
-                date = sale_date + datetime.timedelta(1)
+                date = shipping_date + datetime.timedelta(1)
                 while date < next_supply_date:
                     delta = get_delta(date, warehouse, products)
                     forecast_quantity += delta.get(product.id, 0)
@@ -220,7 +221,7 @@ class Line(metaclass=PoolMeta):
 
     @fields.depends(
         'sale_state', 'product', 'quantity', 'unit', 'company',
-        'sale', '_parent_sale.warehouse', '_parent_sale.sale_date')
+        'shipping_date', 'sale', '_parent_sale.warehouse')
     def _notify_stock_quantity(self):
         pool = Pool()
         Date = pool.get('ir.date')
@@ -239,11 +240,11 @@ class Line(metaclass=PoolMeta):
             with Transaction().set_context(
                     company=self.company.id if self.company else None):
                 today = Date.today()
-            sale_date = self.sale.sale_date or today
+            shipping_date = self.shipping_date or today
             locations = [self.sale.warehouse.id]
             with Transaction().set_context(
                     locations=locations,
-                    stock_date_end=sale_date):
+                    stock_date_end=shipping_date):
                 product = Product(self.product.id)
                 quantity = UoM.compute_qty(
                     self.unit, self.quantity,
