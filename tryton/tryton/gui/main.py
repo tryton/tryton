@@ -667,6 +667,10 @@ class Main(Gtk.Application):
                                 ('End', _("Move to bottom")),
                                 ('BackSpace', _("Move to parent")),
                                 ]),
+                        (_("Edition"), [
+                                ('<Primary>c', _("Copy selected rows")),
+                                ('<Primary>v', _("Insert copied rows")),
+                                ]),
                         (_("Selection"), [
                                 ('<Ctrl>a <Ctrl>slash', _("Select all")),
                                 ('<Shift><Ctrl>a <Shift><Ctrl>slash',
