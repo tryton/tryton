@@ -274,50 +274,47 @@
             this.tbody = jQuery('<tbody/>');
             this.table.append(this.tbody);
 
+            this.colgroup.prepend(jQuery('<col/>', {
+                'class': 'tree-menu',
+            }));
+            this.thead.children().prepend(jQuery('<th/>', {
+                'class': 'tree-menu',
+            }));
+            if (this.tfoot) {
+                this.tfoot.children().prepend(jQuery('<th/>'));
+            }
+
             this.set_drag_and_drop();
 
+            th = this.thead.find('th').first();
             if (this.optionals.length) {
-                if (this.draggable) {
-                    th = this.thead.children().children().first();
-                    th.addClass('optional');
-                } else {
-                    this.colgroup.prepend(jQuery('<col/>', {
-                        'class': 'optional',
-                    }));
-                    th = jQuery('<th/>', {
-                        'class': 'optional',
-                    });
-                    this.thead.children().prepend(th);
-                    if (this.tfoot) {
-                        this.tfoot.children().prepend(jQuery('<th/>'));
-                    }
-                }
-                var menu = jQuery('<ul/>', {
-                    'class': 'dropdown-menu',
-                }).click(function(evt) {
-                    evt.stopImmediatePropagation();
-                });
-                var dropdown = jQuery('<div/>', {
-                    'class': 'dropdown',
-                }).append(jQuery('<a/>', {
-                    'data-toggle': 'dropdown',
-                    'aria-haspopup': true,
-                    'aria-expanded': false,
-                    'title': Sao.i18n.gettext("Customize"),
-                }).append(Sao.common.ICONFACTORY.get_icon_img('tryton-menu'))
-                    .click(menu, this.optional_menu.bind(this))
-                ).append(menu);
-                dropdown.on('hide.bs.dropdown', () => {
-                    this.save_optional(true);
-                    Sao.common.set_overflow(th, 'hide');
-                });
-                dropdown.on('show.bs.dropdown', () => {
-                    Sao.common.set_overflow(th, 'show');
-                });
-                th.append(dropdown);
+                th.addClass('optional');
             }
+            var menu = jQuery('<ul/>', {
+                'class': 'dropdown-menu',
+            }).click(function(evt) {
+                evt.stopImmediatePropagation();
+            });
+            var dropdown = jQuery('<div/>', {
+                'class': 'dropdown',
+            }).append(jQuery('<a/>', {
+                'data-toggle': 'dropdown',
+                'aria-haspopup': true,
+                'aria-expanded': false,
+                'title': Sao.i18n.gettext("Menu"),
+            }).append(Sao.common.ICONFACTORY.get_icon_img('tryton-menu'))
+                .click(menu, this.tree_menu.bind(this))
+            ).append(menu);
+            dropdown.on('hide.bs.dropdown', () => {
+                this.save_optional(true);
+                Sao.common.set_overflow(th, 'hide');
+            });
+            dropdown.on('show.bs.dropdown', () => {
+                Sao.common.set_overflow(th, 'show');
+            });
+            th.append(dropdown);
         },
-        optional_menu: function(evt) {
+        tree_menu: function(evt) {
             const toggle = evt => {
                 var column = evt.data;
                 column.set_visible(jQuery(evt.delegateTarget).prop('checked'));
@@ -342,8 +339,36 @@
                 }).change(optional, toggle))
                     .append(' ' + optional.attributes.string))));
             }
+            if (this.optionals.length) {
+                menu.append(jQuery('<li/>', {
+                    'role': 'separator',
+                    'class': 'divider hidden-xs',
+                }));
+            }
+            menu.append(jQuery('<li/>', {
+                'role': 'presentation',
+                'class': (
+                    this.selected_records.length || !navigator.clipboard?
+                    '' : 'disabled'),
+            }).append(jQuery('<a/>', {
+                'role': 'menuitem',
+                'href': '#',
+                'tabindex': -1,
+            }).text(' ' + Sao.i18n.gettext("Copy"))
+                .prepend(
+                    Sao.common.ICONFACTORY.get_icon_img('tryton-copy', {
+                        'aria-hidden': 'true',
+                    }))
+                .click(evt => {
+                    evt.preventDefault();
+                    this.on_copy();
+                    menu.dropdown('toggle');
+                })));
         },
         save_optional: function(store=true) {
+            if (!this.optionals.length) {
+                return;
+            }
             var fields = {};
             for (const column of this.optionals) {
                 fields[column.attributes.name] = !column.get_visible();
@@ -509,6 +534,34 @@
                 }
             });
         },
+        on_copy: function() {
+            var data = [];
+            this.selected_records.forEach((record) => {
+                var values = [];
+                this.columns.forEach((col) => {
+                    if (!col.get_visible() || !col.attributes.name) {
+                        return;
+                    }
+                    var text;
+                    if (!record.is_loaded(col.attributes.name)) {
+                        try {
+                            record.load(this.attributes.name, false, false);
+                            text = col.get_textual_value(record);
+                        } catch (e) {
+                            Sao.Logger.error(
+                                "Error loading " +
+                                `${this.attributes.name} for ${record}`);
+                            text = Sao.i18n.gettext('#ERROR');
+                        }
+                    } else {
+                        text = col.get_textual_value(record);
+                    }
+                    values.push('"' + String(text).replace('"', '""') + '"');
+                });
+                data.push(values.join('\t'));
+            });
+            navigator.clipboard.writeText(data.join('\n'));
+        },
         _add_drag_n_drop: function() {
             Sortable.create(this.tbody[0], {
                 handle: '.draggable-handle',
@@ -535,12 +588,7 @@
 
             this.draggable = dnd;
             if (dnd) {
-                this.colgroup.prepend(jQuery('<col/>', {
-                    'class': 'draggable-handle',
-                }));
-                this.thead.children().prepend(jQuery('<th/>', {
-                    'class': 'draggable-handle',
-                }));
+                this.thead.find('th').first().addClass('draggable-handle');
                 this._add_drag_n_drop();
             }
         },
@@ -793,10 +841,8 @@
             }
 
             // Set column visibility depending on attributes and domain
-            var visible_columns = 1;  // start at 1 because of the checkbox
-            if (this.optionals.length && !this.draggable) {
-                visible_columns += 1;
-            }
+            // start at 2 because of checkbox and option headers
+            var visible_columns = 2;
             var domain = [];
             if (!jQuery.isEmptyObject(this.screen.domain)) {
                 domain.push(this.screen.domain);
@@ -1473,21 +1519,15 @@
         _construct: function() {
             var td;
             this.tree.el.uniqueId();
+            td = jQuery('<td/>');
             if (this.tree.draggable) {
-                td = jQuery('<td/>', {
-                    'class': 'draggable-handle'
-                });
-                if (this.tree.optionals.length) {
-                    td.addClass('optional');
-                }
+                td.addClass('draggable-handle');
                 td.append(Sao.common.ICONFACTORY.get_icon_img('tryton-drag'));
-                this.el.append(td);
-            } else if (this.tree.optionals.length) {
-                td = jQuery('<td/>', {
-                    'class': 'optional'
-                });
-                this.el.append(td);
             }
+            if (this.tree.optionals.length) {
+                td.addClass('optional');
+            }
+            this.el.append(td);
             td = jQuery('<td/>', {
                 'class': 'selection-state',
             }).click(event_ => {
@@ -1579,13 +1619,8 @@
         },
         _get_column_td: function(column_index, row) {
             row = row || this.el;
-            var offset = 1;  // take into account the selection or optional column
-            if (this.tree.draggable) {
-                offset += 1;
-            } else if (this.tree.optionals.length) {
-                offset += 1;
-            }
-            return jQuery(row.children()[column_index + offset]);
+            // take into account the selection and option column
+            return jQuery(row.children()[column_index + 2]);
         },
         redraw: function(selected, expanded) {
             selected = selected || [];

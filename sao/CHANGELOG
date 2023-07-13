@@ -1,3 +1,4 @@
+* Add menu to copy selected record from tree view to clipboard
 * Support PYSON comparison of timedelta
 * Support encoding timedelta into PYSON TimeDelta
 * Eagerly read string value of multiselection fields
