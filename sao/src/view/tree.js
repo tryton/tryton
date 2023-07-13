@@ -2409,8 +2409,11 @@
             });
             return cell;
         },
+        get_textual_value: function(record) {
+            return this.field.get_client(record);
+        },
         update_text: function(cell, record) {
-            var text = this.field.get_client(record);
+            var text = this.get_textual_value(record);
             cell.text(text).attr('title', text);
         },
         render: function(record, cell) {
@@ -2477,11 +2480,9 @@
         get_cell: function() {
             return Sao.View.Tree.IntegerColumn._super.get_cell.call(this);
         },
-        update_text: function(cell, record) {
-            var value = this.field.get_client(
-                record, this.factor, this.grouping);
-            cell.text(value).attr('title', value);
-        }
+        get_textual_value: function(record) {
+            return this.field.get_client(record, this.factor, this.grouping);
+        },
     });
 
     Sao.View.Tree.FloatColumn = Sao.class_(Sao.View.Tree.IntegerColumn, {
@@ -2582,10 +2583,24 @@
             Sao.common.selection_mixin.update_selection.call(this, record,
                 this.field, callback);
         },
+        get_textual_value: function(record) {
+            var related = this.field.name + ':string';
+            if (!this.tree.editable && related in record._values) {
+                return record._values[related];
+            } else {
+                var value = this.field.get(record);
+                for (const option of this.selection) {
+                    if (option[0] === value) {
+                        return option[1];
+                    }
+                }
+                return value;
+            }
+        },
         update_text: function(cell, record) {
             if (!this.tree.editable &&
                     (this.field.name + ':string' in record._values)) {
-                var text_value = record._values[this.field.name + ':string'];
+                var text_value = this.get_textual_value(record);
                 cell.text(text_value).attr('title', text_value);
             } else {
                 this.update_selection(record, () => {
@@ -2629,22 +2644,30 @@
             Sao.common.selection_mixin.update_selection.call(this, record,
                 this.field, callback);
         },
+        get_textual_value: function(record) {
+            var related = this.field.name + ':string';
+            if (!this.tree.editable && related in record._values) {
+                return record._values[related];
+            } else {
+                var values = this.field.get_eval(record).map(value => {
+                    for (const option of this.selection) {
+                        if (option[0] === value) {
+                            return option[1];
+                        }
+                    }
+                    return '';
+                });
+                return values.join(';');
+            }
+        },
         update_text: function(cell, record) {
             if (!this.tree.editable &&
                     (this.field_name + ':string' in record._values)) {
-                var text_value = record._values[this.field_name + ':string'];
+                var text_value = this.get_textual_value(record);
                 cell.text(text_value).attr('title', text_value);
             } else {
                 this.update_selection(record, () => {
-                    var values = this.field.get_eval(record).map(value => {
-                        for (const option of this.selection) {
-                            if (option[0] === value) {
-                                return option[1];
-                            }
-                        }
-                        return '';
-                    });
-                    var text_value = values.join(';');
+                    var text_value = this.get_textual_value(record);
                     cell.text(text_value).attr('title', text_value);
                 });
             }
@@ -2674,30 +2697,35 @@
             }));
             return cell;
         },
+        get_textual_value: function(record) {
+            var value = Sao.View.Tree.ReferenceColumn._super
+                .get_textual_value.call(this, record);
+            var model, name, text;
+            if (!value) {
+                model = '';
+                name = '';
+            } else {
+                model = value[0];
+                name = value[1];
+            }
+            if (model) {
+                for (const option of this.selection) {
+                    if (option[0] === model) {
+                        model = option[1];
+                        break;
+                    }
+                }
+                text = model + ',' + name;
+            } else {
+                text = name;
+            }
+            return text;
+        },
         update_text: function(cell, record) {
             cell = cell.children('a');
             cell.unbind('click');
             this.update_selection(record, () => {
-                var value = this.field.get_client(record);
-                var model, name, text;
-                if (!value) {
-                    model = '';
-                    name = '';
-                } else {
-                    model = value[0];
-                    name = value[1];
-                }
-                if (model) {
-                    for (const option of this.selection) {
-                        if (option[0] === model) {
-                            model = option[1];
-                            break;
-                        }
-                    }
-                    text = model + ',' + name;
-                } else {
-                    text = name;
-                }
+                var text = this.get_textual_value(record);
                 cell.text(text).attr('title', text);
                 cell.click(event => {
                     event.stopPropagation();
@@ -2721,29 +2749,26 @@
 
     Sao.View.Tree.DictColumn = Sao.class_(Sao.View.Tree.CharColumn, {
         class_: 'column-dict',
-        update_text: function(cell, record) {
-            var text = '(' + Object.keys(this.field.get_client(record)).length + ')';
-            cell.text(text).attr('title', text);
+        get_textual_value: function(record) {
+            return '(' + Object.keys(this.field.get_client(record)).length + ')';
         },
     });
 
     Sao.View.Tree.DateColumn = Sao.class_(Sao.View.Tree.CharColumn, {
         class_: 'column-date',
-        update_text: function(cell, record) {
+        get_textual_value: function(record) {
             var value = this.field.get_client(record);
             var date_format = this.field.date_format(record);
-            var text = Sao.common.format_date(date_format, value);
-            cell.text(text).attr('title', text);
+            return Sao.common.format_date(date_format, value);
         }
     });
 
     Sao.View.Tree.TimeColumn = Sao.class_(Sao.View.Tree.CharColumn, {
         class_: 'column-time',
-        update_text: function(cell, record) {
+        get_textual_value: function(record) {
             var value = this.field.get_client(record);
-            var text = Sao.common.format_time(
+            return Sao.common.format_time(
                     this.field.time_format(record), value);
-            cell.text(text).attr('title', text);
         }
     });
 
@@ -2753,9 +2778,8 @@
 
     Sao.View.Tree.One2ManyColumn = Sao.class_(Sao.View.Tree.CharColumn, {
         class_: 'column-one2many',
-        update_text: function(cell, record) {
-            var text = '( ' + this.field.get_client(record).length + ' )';
-            cell.text(text).attr('title', text);
+        get_textual_value: function(record) {
+            return '( ' + this.field.get_client(record).length + ' )';
         }
     });
 
@@ -2774,14 +2798,17 @@
             jQuery('<span/>').appendTo(cell);
             return cell;
         },
-        update_text: function(cell, record) {
+        get_textual_value: function(record) {
             var size;
             if (this.field.get_size) {
                 size = this.field.get_size(record);
             } else {
                 size = this.field.get(record).length;
             }
-            var text = size? Sao.common.humanize(size, 'B') : '';
+            return size? Sao.common.humanize(size, 'B') : '';
+        },
+        update_text: function(cell, record) {
+            var text = this.get_textual_value(record);
             cell.children('span').text(text).attr('title', text);
             var button = cell.children('button');
             if (!button.length) {
@@ -2797,7 +2824,7 @@
                         this.save_as(event.data);
                     });
             }
-            if (!size) {
+            if (!text) {
                 button.hide();
             } else {
                 button.show();
@@ -2908,11 +2935,15 @@
             progressbar.css('min-width: 2em');
             return cell;
         },
-        update_text: function(cell, record) {
+        get_textual_value: function(record) {
             var text = this.field.get_client(record, 100);
             if (text) {
                 text = Sao.i18n.gettext('%1%', text);
             }
+            return text;
+        },
+        update_text: function(cell, record) {
+            var text = this.get_textual_value(record);
             var value = this.field.get(record) || 0;
             var progressbar = cell.find('.progress-bar');
             progressbar.attr('aria-valuenow', value * 100);
