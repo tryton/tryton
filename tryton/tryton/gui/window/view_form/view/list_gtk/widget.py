@@ -1243,13 +1243,10 @@ class Reference(M2O):
         _, value = value.split(',')
         return int(value)
 
-    @catch_errors()
     def get_textual_value(self, record):
         value = super().get_textual_value(record)
-        if value:
+        if isinstance(value, tuple):
             model, value = value
-        else:
-            value = ''
         return value
 
 
