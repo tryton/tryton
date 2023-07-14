@@ -24,7 +24,7 @@ def gettext(message_id, *args, **variables):
         return message_id
     try:
         return Message.gettext(module, id_, language, **variables)
-    except KeyError:
+    except (KeyError, ValueError):
         return message_id
 
 
