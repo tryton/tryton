@@ -1396,16 +1396,17 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
             if not l.reconciliation
             and (not self.account.party_required or l.party == party)]
 
-        best = Result([], self.total_amount)
-        for n in range(len(lines), 0, -1):
-            for comb_lines in combinations(lines, n):
-                remainder = sum(map(balance, comb_lines))
-                remainder -= amount
-                result = Result(list(comb_lines), remainder)
-                if currency.is_zero(remainder):
-                    return result
-                if abs(remainder) < abs(best.remainder):
-                    best = result
+        remainder = sum(map(balance, lines)) - amount
+        best = Result(lines, remainder)
+        if remainder:
+            for n in range(len(lines) - 1, 0, -1):
+                for comb_lines in combinations(lines, n):
+                    remainder = sum(map(balance, comb_lines)) - amount
+                    result = Result(list(comb_lines), remainder)
+                    if currency.is_zero(remainder):
+                        return result
+                    if abs(remainder) < abs(best.remainder):
+                        best = result
         return best
 
     def pay_invoice(
