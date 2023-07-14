@@ -3193,7 +3193,7 @@ class PayInvoiceAsk(ModelView):
         currency='currency', digits='currency',
         readonly=True,
         states={
-            'invisible': Eval('type') != 'writeoff',
+            'invisible': ~Eval('type').in_(['writeoff', 'overpayment']),
             })
     lines_to_pay = fields.Many2Many('account.move.line', None, None,
             'Lines to Pay', readonly=True)
@@ -3203,12 +3203,13 @@ class PayInvoiceAsk(ModelView):
             ('reconciliation', '=', None),
             ],
         states={
-            'invisible': Eval('type') != 'writeoff',
+            'invisible': ~Eval('type').in_(['writeoff', 'overpayment']),
+            'required': Eval('type').in_(['writeoff', 'overpayment']),
             })
     payment_lines = fields.Many2Many('account.move.line', None, None,
         'Payment Lines', readonly=True,
         states={
-            'invisible': Eval('type') != 'writeoff',
+            'invisible': ~Eval('type').in_(['writeoff', 'overpayment']),
             })
     company = fields.Many2One('company.company', 'Company', readonly=True)
     invoice = fields.Many2One('account.invoice', 'Invoice', readonly=True)
