@@ -3157,7 +3157,12 @@ class PayInvoiceAsk(ModelView):
             ('writeoff', "Write-Off"),
             ('partial', "Partial Payment"),
             ('overpayment', "Overpayment"),
-            ], 'Type', required=True)
+            ], 'Type', required=True,
+        domain=[
+            If(Eval('amount_writeoff', 0) >= 0,
+                ('type', 'in', ['writeoff', 'partial']),
+                ()),
+            ])
     writeoff = fields.Many2One(
         'account.move.reconcile.write_off', "Write Off",
         domain=[
