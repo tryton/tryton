@@ -35,7 +35,7 @@ class Template(metaclass=PoolMeta):
             table_h.column_rename('supply_on_sale', '_temp_supply_on_sale')
         if cls._history:
             h_table_h = cls.__table_handler__(module, history=True)
-            h_table = cls.__table__()
+            h_table = cls.__table_history__()
             h_migrate_supply_on_sale = (
                 h_table_h.column_exist('supply_on_sale')
                 and h_table_h.column_is_type('supply_on_sale', 'BOOL'))
