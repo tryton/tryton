@@ -3315,7 +3315,9 @@ class PayInvoice(Wizard):
 
         default['invoice'] = invoice.id
 
-        if amount >= invoice.amount_to_pay or currency.is_zero(amount):
+        if amount >= invoice.amount_to_pay:
+            default['type'] = 'overpayment'
+        elif currency.is_zero(amount):
             default['type'] = 'writeoff'
         return default
 
