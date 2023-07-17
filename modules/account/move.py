@@ -2145,7 +2145,6 @@ class Reconcile(Wizard):
             self.show.account = account
             self.show.accounts = accounts
             self.show.parties = self.get_parties(account)
-            next_party()
             return account
 
         def next_party():
@@ -2170,7 +2169,7 @@ class Reconcile(Wizard):
 
         if getattr(self.show, 'accounts', None) is None:
             self.show.accounts = self.get_accounts()
-            if not next_account():
+            if not (next_account() and next_party()):
                 return 'end'
         if getattr(self.show, 'parties', None) is None:
             self.show.parties = self.get_parties(self.show.account)
