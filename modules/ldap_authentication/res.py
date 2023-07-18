@@ -68,7 +68,9 @@ class User(metaclass=PoolMeta):
         scope = {
             'base': ldap3.BASE,
             'onelevel': ldap3.LEVEL,
+            'one': ldap3.LEVEL,
             'subtree': ldap3.SUBTREE,
+            'sub': ldap3.SUBTREE,
             }[scope]
         uid = config.get(section, 'uid', default='uid')
         if filter_:
