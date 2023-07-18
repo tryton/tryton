@@ -121,7 +121,8 @@
                 //Try to relog
                 Sao.Session.renew(session).then(function() {
                     if (async) {
-                        Sao.rpc(args, session).then(dfd.resolve, dfd.reject);
+                        Sao.rpc(args, session, async, process_exception)
+                            .then(dfd.resolve, dfd.reject);
                     } else {
                         dfd.resolve();
                     }
