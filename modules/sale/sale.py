@@ -1986,7 +1986,9 @@ class SaleReport(CompanyReport):
         pool = Pool()
         Date = pool.get('ir.date')
         context = super().get_context(records, header, data)
-        with Transaction().set_context(company=header['company'].id):
+        company = header.get('company')
+        with Transaction().set_context(
+                company=company.id if company else None):
             context['today'] = Date.today()
         return context
 
