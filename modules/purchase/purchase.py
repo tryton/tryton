@@ -1147,7 +1147,8 @@ class Line(sequence_ordered(), ModelSQL, ModelView):
             'taxes': Eval('taxes', []),
             'quantity': Eval('quantity'),
             },
-        depends={'company'})
+        depends={
+            'company', 'warehouse', 'purchase_date', 'currency', 'supplier'})
     product_supplier = fields.Many2One(
         'purchase.product_supplier', "Supplier's Product",
         ondelete='RESTRICT',
