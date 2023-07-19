@@ -56,7 +56,7 @@ class Dict(Field):
             for k, v in value.items():
                 if v is None:
                     continue
-                if isinstance(v, list):
+                if self.schema_model and isinstance(v, (list, tuple)):
                     v = list(sorted(set(v)))
                 d[k] = v
             value = dumps(d)
@@ -91,7 +91,7 @@ class Dict(Field):
             value = int(value)
         if isinstance(value, (Select, CombiningQuery)):
             return value
-        if isinstance(value, (list, tuple)):
+        if self.schema_model and isinstance(value, (list, tuple)):
             value = sorted(set(value))
         if operator.endswith('in'):
             return [dumps(v) for v in value]
