@@ -77,6 +77,7 @@ this repository contains the full copyright notices and license terms. -->
         <button name="handle_shipment_exception" icon="tryton-forward"/>
         <button name="confirm" icon="tryton-ok"/>
         <button name="process"/>
+        <button name="manual_invoice" icon="tryton-forward"/>
     </group>
     <field name="party_lang" invisible="1" colspan="6"/>
 </form>

@@ -306,6 +306,12 @@ class Purchase(
                         'tryton-forward', 'tryton-refresh'),
                     'depends': ['state'],
                     },
+                'manual_invoice': {
+                    'invisible': (
+                        (Eval('invoice_method') != 'manual')
+                        | ~Eval('state').in_(['processing', 'done'])),
+                    'depends': ['invoice_method', 'state'],
+                    },
                 'handle_invoice_exception': {
                     'invisible': ((Eval('invoice_state') != 'exception')
                         | (Eval('state') == 'cancelled')),
@@ -763,8 +769,9 @@ class Purchase(
 
     def create_invoice(self):
         'Create an invoice for the purchase and return it'
-
-        if self.invoice_method == 'manual':
+        context = Transaction().context
+        if (self.invoice_method == 'manual'
+                and not context.get('_purchase_manual_invoice', False)):
             return
 
         invoice_lines = []
@@ -997,6 +1004,13 @@ class Purchase(
             cls.proceed(process)
         if done:
             cls.do(done)
+
+    @classmethod
+    @ModelView.button
+    def manual_invoice(cls, purchases):
+        purchases = [p for p in purchases if p.invoice_method == 'manual']
+        with Transaction().set_context(_purchase_manual_invoice=True):
+            cls.process(purchases)
 
     @classmethod
     @ModelView.button_action('purchase.wizard_modify_header')
@@ -1670,7 +1684,8 @@ class Line(sequence_ordered(), ModelSQL, ModelView):
 
     def _get_invoice_not_line(self):
         'Return if the not line should be invoiced'
-        return (self.purchase.invoice_method == 'order'
+        return (
+            self.purchase.invoice_method in {'order', 'manual'}
             and not self.invoice_lines)
 
     def _get_invoice_line_quantity(self):
@@ -1678,7 +1693,7 @@ class Line(sequence_ordered(), ModelSQL, ModelView):
         pool = Pool()
         Uom = pool.get('product.uom')
 
-        if (self.purchase.invoice_method == 'order'
+        if (self.purchase.invoice_method in {'order', 'manual'}
                 or not self.product
                 or self.product.type == 'service'):
             return self.quantity
@@ -1717,7 +1732,7 @@ class Line(sequence_ordered(), ModelSQL, ModelView):
     def _get_invoice_line_moves(self):
         'Return the stock moves that should be invoiced'
         moves = []
-        if self.purchase.invoice_method == 'order':
+        if self.purchase.invoice_method in {'order', 'manual'}:
             moves.extend(self.moves)
         elif self.purchase.invoice_method == 'shipment':
             for move in self.moves:
@@ -1790,7 +1805,7 @@ class Line(sequence_ordered(), ModelSQL, ModelView):
 
     def _get_move_invoice_lines(self, move_type):
         'Return the invoice lines that should be shipped'
-        if self.purchase.invoice_method == 'order':
+        if self.purchase.invoice_method in {'order', 'manual'}:
             return [l for l in self.invoice_lines]
         else:
             return [l for l in self.invoice_lines if not l.stock_moves]
