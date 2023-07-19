@@ -345,6 +345,12 @@ class Sale(
                         | ~Eval('state').in_(['processing', 'done'])),
                     'depends': ['invoice_method', 'state'],
                     },
+                'manual_shipment': {
+                    'invisible': (
+                        (Eval('shipment_method') != 'manual')
+                        | ~Eval('state').in_(['processing', 'done'])),
+                    'depends': ['shipment_method', 'state'],
+                    },
                 'handle_invoice_exception': {
                     'invisible': ((Eval('invoice_state') != 'exception')
                         | (Eval('state') == 'cancelled')),
@@ -925,8 +931,9 @@ class Sale(
         Create and return shipments of type shipment_type
         '''
         pool = Pool()
-
-        if self.shipment_method == 'manual':
+        context = Transaction().context
+        if (self.shipment_method == 'manual'
+                and not context.get('_sale_manual_shipment', False)):
             return
 
         moves = self._get_shipment_moves(shipment_type)
@@ -1135,6 +1142,13 @@ class Sale(
     def manual_invoice(cls, sales):
         sales = [s for s in sales if s.invoice_method == 'manual']
         with Transaction().set_context(_sale_manual_invoice=True):
+            cls.process(sales)
+
+    @classmethod
+    @ModelView.button
+    def manual_shipment(cls, sales):
+        sales = [s for s in sales if s.shipment_method == 'manual']
+        with Transaction().set_context(_sale_manual_shipment=True):
             cls.process(sales)
 
     @classmethod
@@ -1762,7 +1776,7 @@ class SaleLine(TaxableMixin, sequence_ordered(), ModelSQL, ModelView):
         'Return the stock moves that should be invoiced'
         moves = []
         if self.sale.invoice_method in {'order', 'manual'}:
-            if self.sale.shipment_method != 'order':
+            if self.sale.shipment_method not in {'order', 'manual'}:
                 moves.extend(self.moves)
         elif self.sale.invoice_method == 'shipment':
             for move in self.moves:
@@ -1821,7 +1835,7 @@ class SaleLine(TaxableMixin, sequence_ordered(), ModelSQL, ModelView):
         pool = Pool()
         Uom = pool.get('product.uom')
 
-        if self.sale.shipment_method == 'order':
+        if self.sale.shipment_method in {'order', 'manual'}:
             return abs(self.quantity)
         elif self.sale.shipment_method == 'invoice':
             quantity = 0.0
@@ -1848,7 +1862,7 @@ class SaleLine(TaxableMixin, sequence_ordered(), ModelSQL, ModelView):
     def _get_move_invoice_lines(self, shipment_type):
         'Return the invoice lines that should be shipped'
         invoice_lines = []
-        if self.sale.shipment_method == 'order':
+        if self.sale.shipment_method in {'order', 'manual'}:
             if self.sale.invoice_method in {'order', 'manual'}:
                 invoice_lines.extend(self.invoice_lines)
         elif self.sale.shipment_method == 'invoice':
