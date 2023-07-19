@@ -2987,6 +2987,8 @@ class DelegateLines(Wizard):
 
     def do_delegate(self, action):
         move = self._delegate_lines(self.records, self.start.party)
+        if all(l.move.state == 'posted' for l in self.records):
+            move.post()
         return action, {'res_id': move.id}
 
     def _delegate_lines(self, lines, party, date=None):
@@ -3004,9 +3006,6 @@ class DelegateLines(Wizard):
             lines, party, journal, date=date)
         move.save()
         Line.save(counterpart + delegated)
-        if all(l.move.state == 'posted' for l in lines):
-            move.post()
-
         for line, cline, dline in zip(lines, counterpart, delegated):
             Line.reconcile([line, cline], delegate_to=dline)
         return move
