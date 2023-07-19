@@ -332,6 +332,21 @@ this repository contains the full copyright notices and license terms. -->
             <field name="button" ref="sale_process_button"/>
             <field name="group" ref="group_sale_admin"/>
         </record>
+
+        <record model="ir.model.button" id="sale_manual_invoice_button">
+            <field name="name">manual_invoice</field>
+            <field name="string">Create Invoice</field>
+            <field name="model" search="[('model', '=', 'sale.sale')]"/>
+        </record>
+        <record model="ir.model.button-res.group" id="sale_manual_invoice_button_group_sale">
+            <field name="button" ref="sale_manual_invoice_button"/>
+            <field name="group" ref="group_sale"/>
+        </record>
+        <record model="ir.model.button-res.group" id="sale_manual_invoice_button_group_account">
+            <field name="button" ref="sale_manual_invoice_button"/>
+            <field name="group" ref="account.group_account"/>
+        </record>
+
         <record model="ir.model.button" id="sale_modify_header_button">
             <field name="name">modify_header</field>
             <field name="string">Modify Header</field>
