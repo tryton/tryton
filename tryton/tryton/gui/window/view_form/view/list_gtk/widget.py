@@ -1009,7 +1009,8 @@ class Button(object):
         store = self.view.treeview.get_model()
         record = store.get_value(store.get_iter(path), 0)
 
-        if self.view.record and self.view.record != record:
+        current_record = self.view.screen.current_record
+        if current_record and current_record != record:
             widget.stop_emission_by_name('clicked')
             return True
 
