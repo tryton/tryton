@@ -3,7 +3,9 @@
 this repository contains the full copyright notices and license terms. -->
 <form>
     <label name="name"/>
-    <field name="name" colspan="3"/>
+    <field name="name"/>
+    <label name="active"/>
+    <field name="active"/>
 
     <label name="operations"/>
     <field name="operations" yexpand="0"/>
