@@ -399,6 +399,8 @@ class AccountEsSiiTestCase(ModuleTestCase):
                 ['PeriodoLiquidacion', 'IDFactura', 'FacturaExpedida'])
             self.assertEqual(
                 payload['FacturaExpedida']['TipoFactura'], 'F1')
+            self.assertEqual(
+                 payload['FacturaExpedida']['ImporteTotal'], '65.50')
             tax_detail = {
                 'DetalleIVA': [{
                     'BaseImponible': Decimal('50.00'),
