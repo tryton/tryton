@@ -472,6 +472,18 @@ class InvoiceSII(ModelSQL, ModelView):
             ('operation_key', tax.es_sii_operation_key or ''),
             ('excluded', tax.es_exclude_from_sii),
             ('product_key', product_type),
+            )
+
+    @classmethod
+    def tax_detail_grouping_key(cls, tax_line):
+        if not tax_line.tax:
+            return tuple()
+        tax = tax_line.tax
+        if tax.es_reported_with:
+            tax = tax.es_reported_with
+        if not tax.es_sii_operation_key:
+            return tuple()
+        return (
             ('rate', tax.rate * 100),
             )
 
@@ -606,18 +618,21 @@ class InvoiceSII(ModelSQL, ModelView):
         tax_amount = Decimal(0)
         for tax_key, tax_lines in groupby(
                 tax_lines, key=self.tax_grouping_key):
-            key = dict(tax_key)
-            values = self.get_tax_values(key, list(tax_lines))
-            if not values:
-                continue
-            operation_keys.add(key['operation_key'])
-            tax_amount += values["Cuota%s" % key['cuota_suffix']]
-            total_amount += (
-                values['BaseImponible']
-                + values["Cuota%s" % key['cuota_suffix']])
-            if 'CuotaRecargoEquivalencia' in values:
-                total_amount += values['CuotaRecargoEquivalencia']
-            tax_values[tax_key].append(values)
+            tax_lines = sorted(tax_lines, key=self.tax_detail_grouping_key)
+            for detail_key, tax_lines in groupby(
+                    tax_lines, key=self.tax_detail_grouping_key):
+                key = dict(tax_key + detail_key)
+                values = self.get_tax_values(key, list(tax_lines))
+                if not values:
+                    continue
+                operation_keys.add(key['operation_key'])
+                tax_amount += values["Cuota%s" % key['cuota_suffix']]
+                total_amount += (
+                    values['BaseImponible']
+                    + values["Cuota%s" % key['cuota_suffix']])
+                if 'CuotaRecargoEquivalencia' in values:
+                    total_amount += values['CuotaRecargoEquivalencia']
+                tax_values[tax_key].append(values)
         return self.get_invoice_detail(
             tax_values, operation_keys, total_amount, tax_amount)
 
