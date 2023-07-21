@@ -363,6 +363,58 @@ class AccountEsSiiTestCase(ModuleTestCase):
                     'Sujeta'][0]['NoExenta']['DesgloseIVA'], tax_detail)
 
     @with_transaction()
+    def test_customer_invoice_multiple_taxes_sii_payload(self):
+        "Test Customer Invoice Multiple Taxes SII Payload"
+        pool = Pool()
+        FiscalYear = pool.get('account.fiscalyear')
+        Tax = pool.get('account.tax')
+        company = create_company()
+        with set_company(company):
+            create_chart(company, chart='account_es.pgc_0_pyme')
+            fiscalyear = set_invoice_sequences(get_fiscalyear(company))
+            fiscalyear.save()
+            FiscalYear.create_period([fiscalyear])
+            fiscalyear.es_sii_send_invoices = True
+            fiscalyear.save()
+            fiscalyear.es_sii_send_invoices = True
+
+            party = create_party('Customer', 'eu_vat', 'ES00000000T')
+            normal_tax, = Tax.search([
+                    ('company', '=', company.id),
+                    ('name', '=', 'IVA 21% (bienes)'),
+                    ('group.kind', '=', 'sale'),
+                    ])
+            reduced_tax, = Tax.search([
+                    ('company', '=', company.id),
+                    ('name', '=', 'IVA 10% (bienes)'),
+                    ('group.kind', '=', 'sale'),
+                    ])
+            taxes = [normal_tax, reduced_tax]
+            sii_invoice = create_invoice('out', company, party, taxes)
+
+            payload = sii_invoice.get_payload()
+
+            self.assertListEqual(
+                list(payload.keys()),
+                ['PeriodoLiquidacion', 'IDFactura', 'FacturaExpedida'])
+            self.assertEqual(
+                payload['FacturaExpedida']['TipoFactura'], 'F1')
+            tax_detail = {
+                'DetalleIVA': [{
+                    'BaseImponible': Decimal('50.00'),
+                    'TipoImpositivo': '10.0',
+                    'CuotaRepercutida': Decimal('5.00'),
+                    }, {
+                    'BaseImponible': Decimal('50.00'),
+                    'TipoImpositivo': '21.00',
+                    'CuotaRepercutida': Decimal('10.50'),
+                    }],
+                }
+            self.assertDictEqual(
+                payload['FacturaExpedida']['TipoDesglose']['DesgloseFactura'][
+                    'Sujeta'][0]['NoExenta']['DesgloseIVA'], tax_detail)
+
+    @with_transaction()
     def test_customer_credit_note_sii_payload(self):
         "Test Customer Credit Note SII Payload"
         pool = Pool()
