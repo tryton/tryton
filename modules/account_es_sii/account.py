@@ -632,6 +632,17 @@ class InvoiceSII(ModelSQL, ModelView):
         tax_amount = Decimal(0)
         for tax_key, tax_lines in groupby(
                 tax_lines, key=self.tax_grouping_key):
+            tax_lines = list(tax_lines)
+            if tax_key and not dict(tax_key).get('excluded'):
+                base_lines = set()
+                for tax_line in tax_lines:
+                    # Do not duplicate base for lines with multiple taxes
+                    if (tax_line.type == 'base'
+                            and tax_line.move_line.id not in base_lines):
+                        total_amount += tax_line.amount
+                        base_lines.add(tax_line.move_line.id)
+                    if tax_line.type == 'tax':
+                        total_amount += tax_line.amount
             tax_lines = sorted(tax_lines, key=self.tax_detail_grouping_key)
             for detail_key, tax_lines in groupby(
                     tax_lines, key=self.tax_detail_grouping_key):
@@ -641,11 +652,6 @@ class InvoiceSII(ModelSQL, ModelView):
                     continue
                 operation_keys.add(key['operation_key'])
                 tax_amount += values["Cuota%s" % key['cuota_suffix']]
-                total_amount += (
-                    values['BaseImponible']
-                    + values["Cuota%s" % key['cuota_suffix']])
-                if 'CuotaRecargoEquivalencia' in values:
-                    total_amount += values['CuotaRecargoEquivalencia']
                 tax_values[tax_key].append(values)
         return self.get_invoice_detail(
             tax_values, operation_keys, total_amount, tax_amount)
