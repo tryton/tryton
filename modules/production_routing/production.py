@@ -28,8 +28,7 @@ class Production(metaclass=PoolMeta):
 
     @fields.depends('routing')
     def on_change_with_planned_start_date(self, pattern=None):
-        if pattern is None:
-            pattern = {}
+        pattern = pattern.copy() if pattern is not None else {}
         pattern.setdefault(
             'routing', self.routing.id if self.routing else None)
         return super(Production, self).on_change_with_planned_start_date(

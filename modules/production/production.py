@@ -305,8 +305,7 @@ class Production(ShipmentAssignMixin, Workflow, ModelSQL, ModelView):
 
     @fields.depends('product', 'bom')
     def compute_lead_time(self, pattern=None):
-        if pattern is None:
-            pattern = {}
+        pattern = pattern.copy() if pattern is not None else {}
         if self.product:
             pattern.setdefault('bom', self.bom.id if self.bom else None)
             for line in self.product.production_lead_times:
