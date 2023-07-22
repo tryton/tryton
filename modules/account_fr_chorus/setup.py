@@ -47,7 +47,11 @@ for dep in info.get('depends', []):
         requires.append(get_require_version('trytond_%s' % dep))
 requires.append(get_require_version('trytond'))
 
-tests_require = [get_require_version('trytond_edocument_uncefact')]
+tests_require = [
+    get_require_version('proteus'),
+    get_require_version('trytond_account_fr'),
+    get_require_version('trytond_edocument_uncefact'),
+    ]
 
 setup(name=name,
     version=version,
