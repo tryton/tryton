@@ -26,7 +26,7 @@ this repository contains the full copyright notices and license terms. -->
     <py:def function="TradeAddress(address)">
         <ram:PostcodeCode py:if="address.postal_code">${address.postal_code}</ram:PostcodeCode>
         <ram:BuildingName py:if="address.name">${address.name}</ram:BuildingName>
-        <py:with vars="lines = address.street.splitlines()">
+        <py:with vars="lines = (address.street or '').splitlines()">
             <ram:LineOne py:if="len(lines) > 0">${lines[0]}</ram:LineOne>
             <ram:LineTwo py:if="len(lines) > 1">${lines[1]}</ram:LineTwo>
             <ram:LineThree  py:if="len(lines) > 2">${lines[2]}</ram:LineThree>
