@@ -27,12 +27,11 @@ class Production(metaclass=PoolMeta):
             self.routing = None
 
     @fields.depends('routing')
-    def on_change_with_planned_start_date(self, pattern=None):
+    def compute_lead_time(self, pattern=None):
         pattern = pattern.copy() if pattern is not None else {}
         pattern.setdefault(
             'routing', self.routing.id if self.routing else None)
-        return super(Production, self).on_change_with_planned_start_date(
-            pattern=pattern)
+        return super().compute_lead_time(pattern=pattern)
 
     @classmethod
     def compute_request(

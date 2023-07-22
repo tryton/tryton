@@ -142,8 +142,7 @@ class Production(metaclass=PoolMeta):
                                 (warehouse.id, product.id))
                             req = cls.compute_request(product, warehouse,
                                 quantity, date, company, order_point)
-                            req.planned_start_date = (
-                                req.on_change_with_planned_start_date())
+                            req.set_planned_start_date()
                             requests.append(req)
         cls.save(requests)
         cls.set_moves(requests)

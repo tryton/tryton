@@ -28,8 +28,7 @@ class Sale(metaclass=PoolMeta):
             production = line.get_production(product_quantities)
             if not production:
                 continue
-            production.planned_start_date = (
-                production.on_change_with_planned_start_date())
+            production.set_planned_start_date()
             productions.append(production)
             assert not line.productions
         return productions
