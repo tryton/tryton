@@ -17,9 +17,9 @@ except ImportError:
     argcomplete = None
 
 try:
-    from progressbar import ETA, Bar, ProgressBar, SimpleProgress
+    from tqdm import tqdm
 except ImportError:
-    ProgressBar = None
+    tqdm = None
 
 try:
     from proteus import Model, config
@@ -365,13 +365,11 @@ SUBREGIONS = {
 REGION2PARENT = {c: p for p, r in SUBREGIONS.items() for c in r}
 
 
-def _progress(iterable):
-    if ProgressBar:
-        pbar = ProgressBar(
-            widgets=[SimpleProgress(), Bar(), ETA()])
+def _progress(iterable, **kwargs):
+    if tqdm:
+        return tqdm(iterable, disable=None, **kwargs)
     else:
-        pbar = iter
-    return pbar(iterable)
+        return iterable
 
 
 def _get_language_codes():

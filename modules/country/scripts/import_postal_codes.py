@@ -24,15 +24,22 @@ except ImportError:
     argcomplete = None
 
 try:
-    from progressbar import ETA, Bar, ProgressBar, SimpleProgress
+    from tqdm import tqdm
 except ImportError:
-    ProgressBar = None
+    tqdm = None
 
 try:
     from proteus import Model, config
 except ImportError:
     prog = os.path.basename(sys.argv[0])
     sys.exit("proteus must be installed to use %s" % prog)
+
+
+def _progress(iterable, **kwargs):
+    if tqdm:
+        return tqdm(iterable, disable=None, **kwargs)
+    else:
+        return iterable
 
 
 def clean(code):
@@ -86,15 +93,11 @@ def import_(data):
         return subdivision
     subdivisions = {}
 
-    if ProgressBar:
-        pbar = ProgressBar(
-            widgets=[SimpleProgress(), Bar(), ETA()])
-    else:
-        pbar = iter
     f = TextIOWrapper(BytesIO(data), encoding='utf-8')
     codes = []
-    for row in pbar(list(csv.DictReader(
-                    f, fieldnames=_fieldnames, delimiter='\t'))):
+    for row in _progress(csv.DictReader(
+                f, fieldnames=_fieldnames, delimiter='\t'),
+            total=data.count(b'\n')):
         country = get_country(row['country'])
         for code in ['code1', 'code2', 'code3']:
             subdivision = get_subdivision(row['country'], row[code])
