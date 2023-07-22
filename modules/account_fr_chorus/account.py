@@ -36,6 +36,14 @@ EDOC2FILENAME = {
     'edocument.uncefact.invoice': 'UNCEFACT-%s.xml',
     }
 TIMEOUT = config.getfloat('account_fr_chorus', 'requests_timeout', default=300)
+if config.getboolean('account_fr_chorus', 'filestore', default=False):
+    file_id = 'data_file_id'
+    store_prefix = config.get(
+        'account_payment_sepa', 'store_prefix', default=None)
+else:
+    file_id = None
+    store_prefix = None
+
 logger = logging.getLogger(__name__)
 
 
@@ -181,8 +189,13 @@ class InvoiceChorus(ModelSQL, ModelView, _SyntaxMixin, metaclass=PoolMeta):
                     ['posted'])),
             ])
     syntax = fields.Selection('get_syntaxes', "Syntax", required=True)
+    filename = fields.Function(fields.Char("Filename"), 'get_filename')
     number = fields.Char("Number", readonly=True, strip=False)
     date = fields.Date("Date", readonly=True)
+    data = fields.Binary(
+        "Data", filename='filename',
+        file_id=file_id, store_prefix=store_prefix, readonly=True)
+    data_file_id = fields.Char("Data File ID", readonly=True)
 
     @classmethod
     def __setup__(cls):
@@ -201,6 +214,10 @@ class InvoiceChorus(ModelSQL, ModelView, _SyntaxMixin, metaclass=PoolMeta):
         Configuration = pool.get('account.configuration')
         config = Configuration(1)
         return config.chorus_syntax
+
+    def get_filename(self, name):
+        filename = EDOC2FILENAME[self.syntax] % self.invoice.number
+        return filename.replace('/', '-')
 
     @classmethod
     def order_number(cls, tables):
@@ -281,12 +298,10 @@ class InvoiceChorus(ModelSQL, ModelView, _SyntaxMixin, metaclass=PoolMeta):
         pool = Pool()
         Doc = pool.get(self.syntax)
         with Transaction().set_context(account_fr_chorus=True):
-            data = Doc(self.invoice).render(None)
-        filename = EDOC2FILENAME[self.syntax] % self.invoice.number
-        filename = filename.replace('/', '-')
+            self.data = Doc(self.invoice).render(None)
         return {
-            'fichierFlux': base64.b64encode(data).decode('ascii'),
-            'nomFichier': filename,
+            'fichierFlux': base64.b64encode(self.data).decode('ascii'),
+            'nomFichier': self.filename,
             'syntaxeFlux': EDOC2SYNTAX[self.syntax],
             'avecSignature': False,
             }
