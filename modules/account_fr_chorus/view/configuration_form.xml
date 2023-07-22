@@ -4,10 +4,16 @@ this repository contains the full copyright notices and license terms. -->
 <data>
     <xpath expr="/form" position="inside">
         <separator id="chorus" string="Chorus" colspan="4"/>
+        <label name="chorus_piste_client_id"/>
+        <field name="chorus_piste_client_id"/>
+        <label name="chorus_piste_client_secret"/>
+        <field name="chorus_piste_client_secret" widget="password"/>
+
         <label name="chorus_login"/>
         <field name="chorus_login"/>
         <label name="chorus_password"/>
         <field name="chorus_password" widget="password"/>
+
         <label name="chorus_service"/>
         <field name="chorus_service"/>
         <label name="chorus_syntax"/>
