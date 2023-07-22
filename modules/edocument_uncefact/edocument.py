@@ -89,12 +89,12 @@ class Invoice(Model):
     @cached_property
     def type_code(self):
         if self.invoice.type == 'out':
-            if all(l.amount < 0 for l in self.lines if l.product):
+            if all(l.amount < 0 for l in self.lines):
                 return '381'
             else:
                 return '380'
         else:
-            if all(l.amount < 0 for l in self.lines if l.product):
+            if all(l.amount < 0 for l in self.lines):
                 return '261'
             else:
                 return '389'
