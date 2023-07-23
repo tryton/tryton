@@ -229,16 +229,20 @@ class Move(Workflow, ModelSQL, ModelView):
     planned_date = fields.Date(
         "Planned Date",
         states={
-            'readonly': (Eval('state').in_(['cancelled', 'assigned', 'done'])
-                | Eval('shipment'))
+            'readonly': (
+                Eval('state').in_(['cancelled', 'assigned', 'done'])
+                | Eval('shipment')
+                | Eval('_parent_shipment'))
             },
         help="When the stock is expected to be moved.")
     effective_date = fields.Date(
         "Effective Date",
         states={
             'required': Eval('state') == 'done',
-            'readonly': (Eval('state').in_(['cancelled', 'done'])
-                | Eval('shipment')),
+            'readonly': (
+                Eval('state').in_(['cancelled', 'done'])
+                | Eval('shipment')
+                | Eval('_parent_shipment')),
             },
         help="When the stock was actually moved.")
     state = fields.Selection([
@@ -373,17 +377,18 @@ class Move(Workflow, ModelSQL, ModelView):
         cls._buttons.update({
                 'cancel': {
                     'invisible': ~Eval('state').in_(['draft', 'assigned']),
-                    'readonly': Eval('shipment'),
+                    'readonly': Eval('shipment') | Eval('_parent_shipment'),
                     'depends': ['state', 'shipment'],
                     },
                 'draft': {
                     'invisible': ~Eval('state').in_(['assigned']),
-                    'readonly': Eval('shipment'),
+                    'readonly': Eval('shipment') | Eval('_parent_shipment'),
                     'depends': ['state', 'shipment'],
                     },
                 'do': {
                     'invisible': ~Eval('state').in_(['draft', 'assigned']),
-                    'readonly': (Eval('shipment')
+                    'readonly': (
+                        Eval('shipment') | Eval('_parent_shipment')
                         | (Eval('assignation_required', True)
                             & (Eval('state') == 'draft'))),
                     'depends': ['state', 'assignation_required', 'shipment'],
