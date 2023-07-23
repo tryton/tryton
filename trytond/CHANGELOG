@@ -1,3 +1,4 @@
+* Enforce record rules when reading only non SQL fields (#12428)
 
 Version 6.0.33 - 2023-06-21
 ---------------------------
