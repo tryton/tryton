@@ -1030,4 +1030,66 @@ class ModelFieldAccessWriteTestCase(_ModelFieldAccessTestCase):
             TestAccess.write([record], {'field2': 'test'})
 
 
+class MenuActionAccessReadTestCase(unittest.TestCase):
+
+    @classmethod
+    def setUpClass(cls):
+        activate_module('tests')
+
+    def create_menu(self, access=None):
+        pool = Pool()
+        Action = pool.get('ir.action.act_window')
+        Menu = pool.get('ir.ui.menu')
+        ModelAccess = pool.get('ir.model.access')
+
+        action = Action(name="Test", res_model='test.access')
+        action.save()
+        menu = Menu(name="Test", action=action)
+        menu.save()
+
+        if access is not None:
+            ModelAccess.create([{
+                        'model': self.model.id,
+                        'perm_read': access,
+                        }])
+        return menu
+
+    @property
+    def model(self):
+        pool = Pool()
+        Model = pool.get('ir.model')
+        model, = Model.search([('model', '=', 'test.access')])
+        return model
+
+    @with_transaction(context=_context)
+    def test_access_empty(self):
+        "Search menu without model access"
+        pool = Pool()
+        Menu = pool.get('ir.ui.menu')
+
+        menu = self.create_menu()
+
+        self.assertEqual(Menu.search([('id', '=', menu.id)]), [menu])
+
+    @with_transaction(context=_context)
+    def test_access(self):
+        "Search menu with model access"
+        pool = Pool()
+        Menu = pool.get('ir.ui.menu')
+
+        menu = self.create_menu(True)
+
+        self.assertEqual(Menu.search([('id', '=', menu.id)]), [menu])
+
+    @with_transaction(context=_context)
+    def test_no_access(self):
+        "Search menu with no model access"
+        pool = Pool()
+        Menu = pool.get('ir.ui.menu')
+
+        menu = self.create_menu(False)
+
+        self.assertEqual(Menu.search([('id', '=', menu.id)]), [])
+
+
 del _ModelAccessTestCase, _ModelFieldAccessTestCase

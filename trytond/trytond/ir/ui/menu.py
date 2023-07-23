@@ -135,12 +135,33 @@ class UIMenu(
     @classmethod
     def search(cls, domain, offset=0, limit=None, order=None, count=False,
             query=False):
+        pool = Pool()
+        ModelAccess = pool.get('ir.model.access')
+        transaction = Transaction()
+
+        def has_action_access(menu):
+            if menu.action_keywords and all(
+                    k.action.type == 'ir.action.act_window'
+                    for k in menu.action_keywords):
+                for keyword in menu.action_keywords:
+                    res_model = keyword.action.action.res_model
+                    if not res_model:
+                        break
+                    if ModelAccess.check(res_model, raise_exception=False):
+                        break
+                else:
+                    return False
+            return True
+
         menus = super(UIMenu, cls).search(domain, offset=offset, limit=limit,
                 order=order, count=False, query=query)
         if query:
             return menus
 
-        if menus:
+        if transaction.check_access and menus:
+
+            menus = list(filter(has_action_access, menus))
+
             parent_ids = {x.parent.id for x in menus if x.parent}
             parents = set()
             for sub_parent_ids in grouped_slice(parent_ids):
