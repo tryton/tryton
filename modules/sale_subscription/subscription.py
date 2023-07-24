@@ -379,13 +379,13 @@ class Subscription(Workflow, ModelSQL, ModelView):
 
         if date is None:
             date = Date.today()
+        company_id = Transaction().context.get('company', -1)
 
         consumptions = Consumption.search([
                 ('invoice_line', '=', None),
                 ('line.subscription.next_invoice_date', '<=', date),
                 ('line.subscription.state', 'in', ['running', 'closed']),
-                ('line.subscription.company', '=',
-                    Transaction().context.get('company')),
+                ('line.subscription.company', '=', company_id),
                 ],
             order=[
                 ('line.subscription.id', 'DESC'),
@@ -424,6 +424,7 @@ class Subscription(Workflow, ModelSQL, ModelView):
 
         subscriptions = cls.search([
                 ('next_invoice_date', '<=', date),
+                ('company', '=', company_id),
                 ])
         for subscription in subscriptions:
             if subscription.state == 'running':
@@ -778,13 +779,13 @@ class Line(sequence_ordered(), ModelSQL, ModelView):
 
         if date is None:
             date = Date.today()
+        company_id = Transaction().context.get('company', -1)
 
         remainings = all_lines = cls.search([
                 ('consumption_recurrence', '!=', None),
                 ('next_consumption_date_delayed', '<=', date),
                 ('subscription.state', '=', 'running'),
-                ('subscription.company', '=',
-                    Transaction().context.get('company')),
+                ('subscription.company', '=', company_id),
                 ])
 
         consumptions = []
