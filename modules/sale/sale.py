@@ -1064,7 +1064,6 @@ class Sale(
                 invoices[sale] = invoice
 
         Invoice.save(invoices.values())
-        Invoice.update_taxes(invoices.values())
         for sale, invoice in invoices.items():
             sale.copy_resources_to(invoice)
 

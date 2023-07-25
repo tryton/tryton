@@ -1323,6 +1323,12 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
         super(Invoice, cls).delete(invoices)
 
     @classmethod
+    def create(cls, vlist):
+        invoices = super().create(vlist)
+        cls.update_taxes(invoices)
+        return invoices
+
+    @classmethod
     def write(cls, *args):
         actions = iter(args)
         all_invoices = []
@@ -1594,7 +1600,6 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
         '''
         new_invoices = [i._credit(**values) for i in invoices]
         cls.save(new_invoices)
-        cls.update_taxes(new_invoices)
         if refund:
             cls.post(new_invoices)
             for invoice, new_invoice in zip(invoices, new_invoices):

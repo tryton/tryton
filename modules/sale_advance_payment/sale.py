@@ -227,8 +227,6 @@ class AdvancePaymentCondition(ModelSQL, ModelView):
             return None
         invoice.lines = invoice_lines
         invoice.save()
-
-        invoice.update_taxes()
         return invoice
 
     def get_invoice_advance_payment_lines(self, invoice):

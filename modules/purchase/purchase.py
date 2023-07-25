@@ -934,7 +934,6 @@ class Purchase(
         Invoice = pool.get('account.invoice')
 
         Invoice.save(invoices.values())
-        Invoice.update_taxes(invoices.values())
         for purchase, invoice in invoices.items():
             purchase.copy_resources_to(invoice)
 
