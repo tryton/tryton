@@ -42,7 +42,7 @@ class Sale(order_mixin('sale'), metaclass=PoolMeta):
     @classmethod
     @search_shipments_returns('stock.shipment.out.return')
     def search_shipment_returns(cls, name, clause):
-        return super().search_shipments(name, clause)
+        return super().search_shipment_returns(name, clause)
 
 
 class Line(order_line_mixin('sale'), metaclass=PoolMeta):
