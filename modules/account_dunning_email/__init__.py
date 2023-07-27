@@ -3,17 +3,17 @@
 
 from trytond.pool import Pool
 
-from . import account
+from . import account, ir
 
 __all__ = ['register']
 
 
 def register():
     Pool.register(
+        ir.Email,
         account.Configuration,
         account.DunningLevel,
         account.Dunning,
-        account.DunningEmailLog,
         module='account_dunning_email', type_='model')
     Pool.register(
         account.ProcessDunning,

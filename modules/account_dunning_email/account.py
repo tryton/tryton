@@ -4,7 +4,7 @@ from email.header import Header
 from email.utils import formataddr, getaddresses
 
 from trytond.config import config
-from trytond.model import ModelSQL, ModelView, fields
+from trytond.model import fields
 from trytond.pool import Pool, PoolMeta
 from trytond.pyson import Bool, Eval
 from trytond.report import get_email
@@ -93,18 +93,18 @@ class ProcessDunning(metaclass=PoolMeta):
 
     def transition_send_email(self):
         pool = Pool()
-        Log = pool.get('account.dunning.email.log')
+        Email = pool.get('ir.email')
         datamanager = SMTPDataManager()
         if not pool.test:
             Transaction().join(datamanager)
-        logs = []
+        emails = []
         for dunning in self.records:
             if dunning.level.send_email:
-                log = dunning.send_email(datamanager=datamanager)
-                if log:
-                    logs.append(log)
-        if logs:
-            Log.create(logs)
+                email = dunning.send_email(datamanager=datamanager)
+                if email:
+                    emails.append(email)
+        if emails:
+            Email.save(emails)
         return self.next_state('send_email')
 
 
@@ -116,6 +116,7 @@ class Dunning(metaclass=PoolMeta):
         Configuration = pool.get('ir.configuration')
         AccountConfig = pool.get('account.configuration')
         Lang = pool.get('ir.lang')
+        Email = pool.get('ir.email')
 
         account_config = AccountConfig(1)
 
@@ -141,13 +142,21 @@ class Dunning(metaclass=PoolMeta):
                     ], limit=1)
             languages.add(lang)
 
-        msg = self._email(from_, to, cc, bcc, languages)
+        msg, title = self._email(from_, to, cc, bcc, languages)
         to_addrs = [e for _, e in getaddresses(to + cc + bcc)]
         if to_addrs:
             if not pool.test:
                 sendmail_transactional(
                     from_, to_addrs, msg, datamanager=datamanager)
-            return self._email_log(msg)
+            return Email(
+                recipients=', '.join(to),
+                recipients_secondary=', '.join(cc),
+                recipients_hidden=', '.join(bcc),
+                addresses=[{'address': a} for a in to_addrs],
+                subject=title,
+                resource=self,
+                dunning_level=self.level,
+                )
 
     def _email(self, sender, to, cc, bcc, languages):
         # TODO order languages to get default as last one for title
@@ -164,36 +173,4 @@ class Dunning(metaclass=PoolMeta):
         msg['Bcc'] = ', '.join(bcc)
         msg['Subject'] = Header(title, 'utf-8')
         msg['Auto-Submitted'] = 'auto-generated'
-        return msg
-
-    def _email_log(self, msg):
-        return {
-            'recipients': msg['To'],
-            'recipients_secondary': msg['Cc'],
-            'recipients_hidden': msg['Bcc'],
-            'dunning': self.id,
-            'level': self.level.id,
-            }
-
-
-class DunningEmailLog(ModelSQL, ModelView):
-    "Dunning Email Log"
-    __name__ = 'account.dunning.email.log'
-    date = fields.Function(fields.DateTime("Date"), 'get_date')
-    recipients = fields.Char("Recipients")
-    recipients_secondary = fields.Char("Secondary Recipients")
-    recipients_hidden = fields.Char("Hidden Recipients")
-    dunning = fields.Many2One('account.dunning', "Dunning", required=True)
-    level = fields.Many2One('account.dunning.level', "Level", required=True)
-
-    def get_date(self, name):
-        return self.create_date.replace(microsecond=0)
-
-    @classmethod
-    def search_date(cls, name, clause):
-        return [('create_date',) + tuple(clause[1:])]
-
-    @staticmethod
-    def order_date(tables):
-        table, _ = tables[None]
-        return [table.create_date]
+        return msg, title

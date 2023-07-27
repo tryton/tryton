@@ -18,6 +18,8 @@ Activate modules::
 
     >>> config = activate_modules('account_dunning_email')
 
+    >>> Email = Model.get('ir.email')
+
 Create company::
 
     >>> _ = create_company()
@@ -47,6 +49,7 @@ Create dunning procedure::
     >>> level.send_email = True
     >>> level.email_from = 'noreply@example.com'
     >>> procedure.save()
+    >>> level, = procedure.levels
 
 Create parties::
 
@@ -116,3 +119,13 @@ Process dunning::
     >>> dunning.reload()
     >>> dunning.state
     'waiting'
+
+    >>> email, = Email.find([])
+    >>> email.recipients
+    'Customer <customer@example.com>'
+    >>> email.subject
+    'Dunning Email'
+    >>> email.resource == dunning
+    True
+    >>> email.dunning_level == level
+    True
