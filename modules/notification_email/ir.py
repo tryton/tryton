@@ -4,6 +4,7 @@
 from sql import Table
 
 from trytond import backend
+from trytond.config import config
 from trytond.model import fields
 from trytond.pool import Pool, PoolMeta
 from trytond.pyson import Eval
@@ -67,14 +68,17 @@ class Email(metaclass=PoolMeta):
     @classmethod
     def __register__(cls, module):
         table = cls.__table__()
-        log = Table('notification_email_log')
+        log_name = 'notification.email.log'
+        log_table_name = config.get(
+            'table', log_name, default=log_name.replace('.', '_'))
+        log = Table(log_table_name)
 
         cursor = Transaction().connection.cursor()
 
         super().__register__(module)
 
         # Migration from 6.6: merge notification email log with email
-        if backend.TableHandler.table_exist('notification_email_log'):
+        if backend.TableHandler.table_exist(log_table_name):
             query = table.insert(
                 [table.create_uid, table.create_date,
                     table.write_uid, table.write_date,
@@ -90,6 +94,7 @@ class Email(metaclass=PoolMeta):
                     log.resource,
                     log.notification, log.trigger))
             cursor.execute(*query)
+            backend.TableHandler.drop_table(log_name, log_table_name)
 
     def get_user(self, name):
         user = super().get_user(name)
