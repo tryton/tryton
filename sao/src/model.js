@@ -2056,6 +2056,9 @@
 
     Sao.field.Integer = Sao.class_(Sao.field.Float, {
         convert: function(value) {
+            if (!value && (value !== 0)) {
+                return null;
+            }
             value = parseInt(value, 10);
             if (isNaN(value)) {
                 value = this._default;
