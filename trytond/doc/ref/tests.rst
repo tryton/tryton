@@ -88,6 +88,8 @@ doctest helpers
    :py:class:`~doctest.DocTest` all ``*.rst`` files in ``directory``,
    with the module ``name`` and the ``path`` to the module file from which the
    doc tests are registered.
+   If a file with the same name but the extension ``.json`` exists, the test is
+   registered for each globals defined in the JSON list.
 
 .. function:: suite()
 

@@ -4,8 +4,10 @@
 import doctest
 import glob
 import inspect
+import json
 import operator
 import os
+import pathlib
 import subprocess
 import sys
 import time
@@ -1047,11 +1049,18 @@ def load_doc_tests(name, path, loader, tests, pattern):
         os.chdir(directory)
         for scenario in filter(
                 shouldIncludeScenario, glob.glob('*.rst')):
-            tests.addTests(doctest.DocFileSuite(
-                    scenario, package=name,
-                    tearDown=doctest_teardown, encoding='utf-8',
-                    checker=doctest_checker,
-                    optionflags=doctest.REPORT_ONLY_FIRST_FAILURE))
+            config = pathlib.Path(scenario).with_suffix('.json')
+            if os.path.exists(config):
+                with config.open() as fp:
+                    configs = json.load(fp)
+            else:
+                configs = [{}]
+            for globs in configs:
+                tests.addTests(doctest.DocFileSuite(
+                        scenario, package=name, globs=globs,
+                        tearDown=doctest_teardown, encoding='utf-8',
+                        checker=doctest_checker,
+                        optionflags=doctest.REPORT_ONLY_FIRST_FAILURE))
     finally:
         os.chdir(cwd)
     return tests
