@@ -1485,11 +1485,13 @@ class Line(MoveLineMixin, ModelSQL, ModelView):
         """
         pool = Pool()
         Reconciliation = pool.get('account.move.reconciliation')
+        Move = pool.get('account.move')
         Lang = pool.get('ir.lang')
         lang = Lang.get()
         delegate_to = delegate_to.id if delegate_to else None
 
         reconciliations = []
+        to_post = []
         for lines in lines_list:
             for line in lines:
                 if line.reconciliation:
@@ -1503,7 +1505,9 @@ class Line(MoveLineMixin, ModelSQL, ModelView):
             amount = Decimal('0.0')
             amount_second_currency = Decimal('0.0')
             second_currencies = set()
+            posted = True
             for line in lines:
+                posted &= line.move.state == 'posted'
                 amount += line.debit - line.credit
                 if not reconcile_account:
                     reconcile_account = line.account
@@ -1536,6 +1540,8 @@ class Line(MoveLineMixin, ModelSQL, ModelView):
                     writeoff_amount, writeoff_currency,
                     writeoff, date=date, description=description)
                 move.save()
+                if posted:
+                    to_post.append(move)
                 for line in move.lines:
                     if line.account == reconcile_account:
                         lines.append(line)
@@ -1544,6 +1550,8 @@ class Line(MoveLineMixin, ModelSQL, ModelView):
                 move = cls._get_exchange_move(
                     reconcile_account, reconcile_party, amount, date)
                 move.save()
+                if posted:
+                    to_post.append(move)
                 for line in move.lines:
                     if line.account == reconcile_account:
                         lines.append(line)
@@ -1555,6 +1563,8 @@ class Line(MoveLineMixin, ModelSQL, ModelView):
                     'date': max(l.date for l in lines),
                     'delegate_to': delegate_to,
                     })
+        if to_post:
+            Move.post(to_post)
         return Reconciliation.create(reconciliations)
 
     @classmethod

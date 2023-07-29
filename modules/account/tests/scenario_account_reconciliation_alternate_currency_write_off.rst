@@ -12,6 +12,8 @@ Imports::
     >>> from trytond.modules.account.tests.tools import (
     ...     create_fiscalyear, create_chart, get_accounts)
 
+    >>> post_moves = globals().get('post_moves', False)
+
 Activate modules::
 
     >>> config = activate_modules('account')
@@ -89,6 +91,8 @@ Create moves to reconcile::
     >>> line.amount_second_currency = Decimal('-90.00')
     >>> line.second_currency = eur
     >>> move.save()
+    >>> if post_moves:
+    ...     move.click('post')
     >>> reconcile1, = [l for l in move.lines if l.account == accounts['payable']]
 
     >>> move = Move()
@@ -105,6 +109,8 @@ Create moves to reconcile::
     >>> line.amount_second_currency = Decimal('-89.00')
     >>> line.second_currency = eur
     >>> move.save()
+    >>> if post_moves:
+    ...     move.click('post')
     >>> reconcile2, = [l for l in move.lines if l.account == accounts['payable']]
 
 Reconcile lines::
@@ -127,3 +133,6 @@ Reconcile lines::
     >>> currency_exchange_account.reload()
     >>> currency_exchange_account.balance
     Decimal('-4.50')
+
+    >>> len(Move.find([('state', '=', 'posted' if post_moves else 'draft')]))
+    4
