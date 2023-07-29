@@ -429,21 +429,28 @@ class FloatField(Field):
         return '', 1
 
     def convert(self, value):
+        if value is None:
+            return None
+        if isinstance(value, str):
+            value = locale.delocalize(
+                value, self.attrs.get('monetary', False))
         try:
-            return float(locale.delocalize(
-                    value, self.attrs.get('monetary', False)))
+            return self._convert(value)
         except ValueError:
             return self._default
+    _convert = float
+
+    def apply_factor(self, record, value, factor):
+        if value is not None:
+            value /= factor
+            digits = self.digits(record)
+            if digits:
+                value = round(value, digits[0])
+            value = self.convert(value)
+        return value
 
     def set_client(self, record, value, force_change=False, factor=1):
-        if isinstance(value, str):
-            value = self.convert(value)
-        if value is not None:
-            # Keep the same type
-            if isinstance(value, int):
-                value //= factor
-            else:
-                value /= factor
+        value = self.apply_factor(record, self.convert(value), factor)
         super(FloatField, self).set_client(record, value,
             force_change=force_change)
 
@@ -471,10 +478,10 @@ class NumericField(FloatField):
 
     def convert(self, value):
         try:
-            return Decimal(locale.delocalize(
-                    value, self.attrs.get('monetary', False)))
+            return super().convert(value)
         except decimal.InvalidOperation:
             return self._default
+    _convert = Decimal
 
     def set_client(self, record, value, force_change=False, factor=1):
         return super(NumericField, self).set_client(record, value,
@@ -487,12 +494,7 @@ class NumericField(FloatField):
 
 class IntegerField(FloatField):
 
-    def convert(self, value):
-        try:
-            return int(locale.delocalize(
-                    value, self.attrs.get('monetary', False)))
-        except ValueError:
-            return self._default
+    _convert = int
 
     def set_client(self, record, value, force_change=False, factor=1):
         return super(IntegerField, self).set_client(record, value,
