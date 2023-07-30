@@ -16,7 +16,7 @@ from trytond.tools import file_open
 from trytond.transaction import Transaction
 from trytond.wizard import Button, StateView, Wizard
 
-from ..action import DomainError
+from ..action import DomainError, ViewError
 
 
 class XMLError(ValidationError):
@@ -444,10 +444,7 @@ class ViewTreeOptional(ModelSQL, ModelView):
     "View Tree Optional"
     __name__ = 'ir.ui.view_tree_optional'
     view_id = fields.Many2One(
-        'ir.ui.view', "View ID", required=True, ondelete='CASCADE',
-        domain=[
-            ('type', '=', 'tree'),
-            ])
+        'ir.ui.view', "View ID", required=True, ondelete='CASCADE')
     user = fields.Many2One(
         'res.user', "User", required=True, ondelete='CASCADE')
     field = fields.Char("Field", required=True)
@@ -465,6 +462,21 @@ class ViewTreeOptional(ModelSQL, ModelView):
                 table,
                 (table.user, Index.Equality()),
                 (table.view_id, Index.Equality())))
+
+    @classmethod
+    def validate_fields(cls, records, fields_names):
+        super().validate_fields(records, fields_names)
+        cls.check_view_id(records, fields_names)
+
+    @classmethod
+    def check_view_id(cls, records, fields_names=None):
+        if fields_names and 'view_id' not in fields_names:
+            return
+        for record in records:
+            if record.view_id and record.view_id.rng_type != 'tree':
+                raise ViewError(gettext(
+                        'ir.msg_view_tree_optional_type',
+                        view=record.view_id.rec_name))
 
     @classmethod
     def create(cls, vlist):
