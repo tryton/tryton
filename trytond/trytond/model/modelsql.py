@@ -1032,7 +1032,7 @@ class ModelSQL(ModelStorage):
                 and columns.keys() == {'write_date'}):
             columns.pop('write_date')
             extra_fields.discard('write_date')
-        if columns:
+        if columns or domain:
             if 'id' not in fields_names:
                 columns['id'] = table.id.as_('id')
 
