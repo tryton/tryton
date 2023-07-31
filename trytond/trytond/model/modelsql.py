@@ -723,7 +723,7 @@ class ModelSQL(ModelStorage):
                         Coalesce(table.write_date, table.create_date)
                         ).cast(sql_type).as_('_timestamp'))
 
-        if len(columns):
+        if len(columns) or domain:
             if 'id' not in fields_names:
                 columns.append(table.id.as_('id'))
 

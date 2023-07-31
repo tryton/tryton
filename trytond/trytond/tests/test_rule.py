@@ -282,6 +282,33 @@ class ModelRuleTestCase(unittest.TestCase):
             TestRule.read([test.id])
 
     @with_transaction()
+    def test_perm_read_with_rule_no_sql_type_fail(self):
+        "Test read with rule fail and without SQL type"
+        pool = Pool()
+        TestRule = pool.get('test.rule')
+        RuleGroup = pool.get('ir.rule.group')
+        Model = pool.get('ir.model')
+
+        model, = Model.search([('model', '=', 'test.rule')])
+        rule_group, = RuleGroup.create([{
+                    'name': "Field different from foo",
+                    'model': model.id,
+                    'global_p': True,
+                    'perm_read': True,
+                    'perm_create': False,
+                    'perm_write': False,
+                    'perm_delete': False,
+                    'rules': [('create', [{
+                                    'domain': json.dumps(
+                                        [('field', '!=', 'foo')]),
+                                    }])],
+                    }])
+        test, = TestRule.create([{'field': 'foo'}])
+
+        with self.assertRaises(UserError):
+            TestRule.read([test.id], ['rec_name'])
+
+    @with_transaction()
     def test_search_without_rule(self):
         "Test search without rule"
         pool = Pool()
