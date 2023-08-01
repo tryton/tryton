@@ -22,7 +22,7 @@ webhook `signing secret`_ is set on the Account.
 If no webhook is setup, a cron task fetches the new events.
 
 .. _webhooks: https://stripe.com/docs/webhooks
-.. _`signing secret`: https://stripe.com/docs/webhooks/signatures
+.. _`signing secret`: https://dashboard.stripe.com/webhooks
 
 Customer
 ********
