@@ -182,7 +182,7 @@ class Move(ModelSQL, ModelView):
             elif start_date >= today:
                 return start_date
             else:
-                end_date
+                return end_date
 
     @fields.depends('date', 'period', 'company', 'lines')
     def on_change_date(self):
