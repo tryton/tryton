@@ -31,7 +31,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="text">You cannot delete work "%(work)s" because it has been invoiced.</field>
         </record>
         <record model="ir.message" id="msg_project_invoice_line_quantity">
-            <field name="text">The quantity of project invoice line "%(invoice_line)s" must be "%(quantity)s"</field>
+            <field name="text">The quantity of project invoice line "%(invoice_line)s" must be "%(quantity)s".</field>
         </record>
     </data>
 </tryton>
