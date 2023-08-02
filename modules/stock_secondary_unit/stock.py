@@ -153,6 +153,12 @@ class ShipmentOut(metaclass=PoolMeta):
             inventory_move.secondary_unit = move.secondary_unit
         return inventory_move
 
+    def _sync_outgoing_move(self, template=None):
+        move = super()._sync_outgoing_move(template)
+        if template:
+            move.secondary_unit = template.secondary_unit
+        return move
+
 
 class ShipmentOutReturn(metaclass=PoolMeta):
     __name__ = 'stock.shipment.out.return'
@@ -161,4 +167,14 @@ class ShipmentOutReturn(metaclass=PoolMeta):
         move = super()._get_inventory_move(incoming_move)
         if move:
             move.secondary_unit = incoming_move.secondary_unit
+        return move
+
+
+class ShipmentInternal(metaclass=PoolMeta):
+    __name__ = 'stock.shipment.internal'
+
+    def _sync_incoming_move(self, template=None):
+        move = super()._sync_incoming_move(template)
+        if template:
+            move.secondary_unit = template.secondary_unit
         return move

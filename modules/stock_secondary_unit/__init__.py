@@ -13,4 +13,5 @@ def register():
         stock.ShipmentIn,
         stock.ShipmentOut,
         stock.ShipmentOutReturn,
+        stock.ShipmentInternal,
         module='stock_secondary_unit', type_='model')
