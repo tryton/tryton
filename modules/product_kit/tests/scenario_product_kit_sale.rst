@@ -184,10 +184,17 @@ Check invoice::
 
 Check shipment::
 
+    >>> Move = Model.get('stock.move')
     >>> shipment, = sale.shipments
     >>> len(shipment.outgoing_moves)
     4
     >>> len(sale.moves)
+    4
+    >>> len(Move.find([('sale', '!=', None)]))
+    4
+    >>> len(Move.find([('sale', '!=', sale.id)]))
+    0
+    >>> len(Move.find([('sale', '=', sale.id)]))
     4
     >>> product2quantity = {
     ...     m.product: m.quantity for m in shipment.outgoing_moves}

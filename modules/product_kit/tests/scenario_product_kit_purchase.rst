@@ -195,7 +195,14 @@ Check invoice::
 
 Check stock moves::
 
+    >>> Move = Model.get('stock.move')
     >>> len(purchase.moves)
+    4
+    >>> len(Move.find([('purchase', '!=', None)]))
+    4
+    >>> len(Move.find([('purchase', '!=', purchase.id)]))
+    0
+    >>> len(Move.find([('purchase', '=', purchase.id)]))
     4
     >>> product2quantity = {
     ...     m.product: m.quantity for m in purchase.moves}
@@ -210,7 +217,6 @@ Check stock moves::
 
 Receive partial shipment::
 
-    >>> Move = Model.get('stock.move')
     >>> ShipmentIn = Model.get('stock.shipment.in')
     >>> shipment = ShipmentIn()
     >>> shipment.supplier = supplier
