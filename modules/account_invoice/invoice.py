@@ -2257,13 +2257,8 @@ class InvoiceLine(sequence_ordered(), ModelSQL, ModelView, TaxableMixin):
 
     @classmethod
     def search_invoice_party(cls, name, clause):
-        operator = clause[1]
-        if operator.startswith('!') or operator.startswith('not '):
-            bool_op = 'AND'
-        else:
-            bool_op = 'OR'
         nested = clause[0][len(name) + 1:]
-        return [bool_op,
+        return ['OR',
             ('invoice.party' + nested, *clause[1:]),
             ('party' + nested, *clause[1:]),
             ]

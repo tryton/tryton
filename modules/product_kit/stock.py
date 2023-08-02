@@ -47,13 +47,8 @@ class MoveSale(metaclass=PoolMeta):
 
     @classmethod
     def search_sale(cls, name, clause):
-        operator = clause[1]
-        if operator.startswith('!') or operator.startswith('not '):
-            bool_op = 'AND'
-        else:
-            bool_op = 'OR'
         domain = super().search_sale(name, clause)
-        return [bool_op,
+        return ['OR',
             domain,
             ('origin.line.' + clause[0],
                 *clause[1:3], 'sale.line.component', *clause[3:]),
@@ -145,13 +140,8 @@ class MovePurchase(metaclass=PoolMeta):
 
     @classmethod
     def search_purchase(cls, name, clause):
-        operator = clause[1]
-        if operator.startswith('!') or operator.startswith('not '):
-            bool_op = 'AND'
-        else:
-            bool_op = 'OR'
         domain = super().search_purchase(name, clause)
-        return [bool_op,
+        return ['OR',
             domain,
             ('origin.line.' + clause[0],
                 *clause[1:3], 'purchase.line.component', *clause[3:]),
@@ -167,13 +157,8 @@ class MovePurchase(metaclass=PoolMeta):
 
     @classmethod
     def search_supplier(cls, name, clause):
-        operator = clause[1]
-        if operator.startswith('!') or operator.startswith('not '):
-            bool_op = 'AND'
-        else:
-            bool_op = 'OR'
         domain = super().search_supplier(name, clause)
-        return [bool_op,
+        return ['OR',
             domain,
             ('origin.line.purchase.party' + clause[0][len(name):],
                 *clause[1:3], 'purchase.line.component', *clause[3:])]
