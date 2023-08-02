@@ -241,12 +241,13 @@ class SalePromotion(
             return False
         elif self.products and line.product not in self.products:
             return False
-        elif (self.categories
-                and not set(parents(line.product.categories_all)).intersection(
-                    self.categories)):
-            return False
-        else:
-            return True
+        elif self.categories:
+            if not line.product:
+                return False
+            categories = set(parents(line.product.categories_all))
+            if not categories.intersection(self.categories):
+                return False
+        return True
 
     def apply(self, sale):
         new_prices = {}
