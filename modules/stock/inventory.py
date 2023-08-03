@@ -2,6 +2,8 @@
 # this repository contains the full copyright notices and license terms.
 from collections import defaultdict
 
+from sql.functions import CharLength
+
 from trytond.i18n import gettext
 from trytond.model import (
     Check, Index, Model, ModelSQL, ModelView, Workflow, fields)
@@ -109,6 +111,11 @@ class Inventory(Workflow, ModelSQL, ModelView):
         cursor.execute(*sql_table.update(
                 [sql_table.state], ['cancelled'],
                 where=sql_table.state == 'cancel'))
+
+    @classmethod
+    def order_number(cls, tables):
+        table, _ = tables[None]
+        return [CharLength(table.number), table.number]
 
     @staticmethod
     def default_state():

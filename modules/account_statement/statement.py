@@ -7,6 +7,7 @@ from itertools import groupby
 from sql import Null
 from sql.aggregate import Max, Sum
 from sql.conditionals import Coalesce
+from sql.functions import CharLength
 from sql.operators import Concat
 
 from trytond.config import config
@@ -695,6 +696,11 @@ def origin_mixin(_states):
             cls.__access__.add('statement')
 
         @classmethod
+        def order_number(cls, tables):
+            table, _ = tables[None]
+            return [CharLength(table.number), table.number]
+
+        @classmethod
         def get_statement_states(cls):
             pool = Pool()
             Statement = pool.get('account.statement')
@@ -1103,6 +1109,11 @@ class LineGroup(ModelSQL, ModelView):
                 where=move.origin.like(Statement.__name__ + ',%'),
                 group_by=std_columns + [move.id]
                 )
+
+    @classmethod
+    def order_number(cls, tables):
+        table, _ = tables[None]
+        return [CharLength(table.number), table.number]
 
     def get_journal(self, name):
         return self.statement.journal.id

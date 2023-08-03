@@ -5,6 +5,8 @@ import functools
 from decimal import Decimal
 from itertools import groupby
 
+from sql.functions import CharLength
+
 from trytond.i18n import gettext
 from trytond.model import Index, ModelSQL, ModelView, Workflow, fields
 from trytond.modules.currency.fields import Monetary
@@ -244,6 +246,11 @@ class BlanketAgreement(Workflow, ModelSQL, ModelView):
     @classmethod
     def default_company(cls):
         return Transaction().context.get('company')
+
+    @classmethod
+    def order_number(cls, tables):
+        table, _ = tables[None]
+        return [CharLength(table.number), table.number]
 
     @classmethod
     def default_currency(cls, **pattern):

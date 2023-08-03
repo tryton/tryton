@@ -5,6 +5,7 @@ import datetime
 import logging
 
 import requests
+from sql.functions import CharLength
 
 from trytond.config import config
 from trytond.i18n import gettext
@@ -151,6 +152,11 @@ class InvoiceChorus(ModelSQL, ModelView, _SyntaxMixin, metaclass=PoolMeta):
         Configuration = pool.get('account.configuration')
         config = Configuration(1)
         return config.chorus_syntax
+
+    @classmethod
+    def order_number(cls, tables):
+        table, _ = tables[None]
+        return [CharLength(table.number), table.number]
 
     @classmethod
     def validate(cls, records):

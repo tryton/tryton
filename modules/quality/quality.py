@@ -5,6 +5,8 @@ import datetime as dt
 from functools import wraps
 from random import Random
 
+from sql.functions import CharLength
+
 from trytond.i18n import gettext, lazy_gettext
 from trytond.model import (
     DeactivableMixin, DictSchemaMixin, MatchMixin, Model, ModelSingleton,
@@ -397,6 +399,11 @@ class Inspection(Workflow, ModelSQL, ModelView):
                     'depends': ['state'],
                     },
                 })
+
+    @classmethod
+    def order_number(cls, tables):
+        table, _ = tables[None]
+        return [CharLength(table.number), table.number]
 
     @classmethod
     def default_company(cls):
