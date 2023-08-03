@@ -195,6 +195,8 @@ class AccountNumber(DeactivableMixin, sequence_ordered(), ModelSQL, ModelView):
 
     @classmethod
     def __setup__(cls):
+        cls.number.search_unaccented = False
+        cls.number_compact.search_unaccented = False
         super().__setup__()
         table = cls.__table__()
         cls._sql_constraints += [

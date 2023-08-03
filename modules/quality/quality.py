@@ -368,6 +368,7 @@ class Inspection(Workflow, ModelSQL, ModelView):
 
     @classmethod
     def __setup__(cls):
+        cls.number.search_unaccented = False
         super().__setup__()
         cls._transitions |= {
             ('pending', 'passed'),
@@ -596,6 +597,7 @@ class Alert(Workflow, ModelSQL, ModelView):
 
     @classmethod
     def __setup__(cls):
+        cls.number.search_unaccented = False
         super().__setup__()
         cls._transitions |= {
             ('open', 'processing'),

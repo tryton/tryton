@@ -88,6 +88,8 @@ class Move(ModelSQL, ModelView):
 
     @classmethod
     def __setup__(cls):
+        cls.number.search_unaccented = False
+        cls.post_number.search_unaccented = False
         super(Move, cls).__setup__()
         t = cls.__table__()
         cls.create_date.select = True

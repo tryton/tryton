@@ -692,6 +692,7 @@ def origin_mixin(_states):
 
         @classmethod
         def __setup__(cls):
+            cls.number.search_unaccented = False
             super().__setup__()
             cls.__access__.add('statement')
 
@@ -1071,6 +1072,7 @@ class LineGroup(ModelSQL, ModelView):
 
     @classmethod
     def __setup__(cls):
+        cls.number.search_unaccented = False
         super(LineGroup, cls).__setup__()
         cls.__access__.add('statement')
         cls._order.insert(0, ('date', 'DESC'))

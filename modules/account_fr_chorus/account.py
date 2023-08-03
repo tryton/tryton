@@ -138,6 +138,7 @@ class InvoiceChorus(ModelSQL, ModelView, _SyntaxMixin, metaclass=PoolMeta):
 
     @classmethod
     def __setup__(cls):
+        cls.number.search_unaccented = False
         super(InvoiceChorus, cls).__setup__()
 
         t = cls.__table__()
