@@ -605,8 +605,17 @@ Accelerators configuration
 Fingerprints
    :file:`~/.config/tryton/x.y/known_hosts`
 
+.. warning::
+   When switching a connection from encrypted to non-encrypted vice-versa,
+   make sure to remove the corresponding host line in the ``known_hosts`` file.
+   Also check this file when the client cannot connect to the server.
+
 `Certification Authority <http://docs.python.org/library/ssl.html#ssl-certificates>`_
    :file:`~/.config/tryton/x.y/ca_certs`
+
+.. note::
+   If the server is using a custom certificate authority, you must put all the
+   certificates of the chain in the ``ca_certs``.
 
 Profile configuration
    :file:`~/.config/tryton/x.y/profiles.cfg`
