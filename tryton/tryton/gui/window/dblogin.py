@@ -602,11 +602,11 @@ class DBLogin(object):
             button.get_parent().remove(button)
         self.services = []
         if key in self._services:
-            self.services = self._services[key]
+            self.services, self.service_base = self._services[key]
         elif hostname and port:
             self.service_base, self.services = rpc.authentication_services(
                 hostname, port)
-            self._services[key] = self.services
+            self._services[key] = (self.services, self.service_base)
         for response_id, (name, url) in enumerate(self.services, 1):
             button = Gtk.Button(label=name)
             self.dialog.add_action_widget(button, response_id)
