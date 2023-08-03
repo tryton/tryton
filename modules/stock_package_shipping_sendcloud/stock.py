@@ -168,7 +168,7 @@ class CreateShippingSendcloud(Wizard):
             'telephone': phone.value if phone else None,
             'email': email.value if email else None,
             'sender_address': credential.get_sender_address(shipment),
-            'external_reference': '/'.join([shipment.number, package.code]),
+            'external_reference': '/'.join([shipment.number, package.number]),
             'quantity': 1,
             'order_number': shipment.number,
             'weight': package.total_weight,

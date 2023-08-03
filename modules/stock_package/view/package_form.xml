@@ -4,8 +4,8 @@ this repository contains the full copyright notices and license terms. -->
 <form>
     <label name="type"/>
     <field name="type" widget="selection"/>
-    <label name="code"/>
-    <field name="code"/>
+    <label name="number"/>
+    <field name="number"/>
     <label name="parent"/>
     <field name="parent"/>
     <label name="company"/>

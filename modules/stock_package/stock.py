@@ -152,8 +152,8 @@ class MeasurementsMixin:
 class Package(tree(), MeasurementsMixin, ModelSQL, ModelView):
     'Stock Package'
     __name__ = 'stock.package'
-    _rec_name = 'code'
-    code = fields.Char('Code', readonly=True, required=True)
+    _rec_name = 'number'
+    number = fields.Char("Number", readonly=True, required=True)
     company = fields.Many2One('company.company', "Company", required=True)
     type = fields.Many2One(
         'stock.package.type', "Type", required=True,
@@ -214,7 +214,7 @@ class Package(tree(), MeasurementsMixin, ModelSQL, ModelView):
 
     @classmethod
     def __setup__(cls):
-        cls.code.search_unaccented = False
+        cls.number.search_unaccented = False
         super().__setup__()
 
     @classmethod
@@ -224,6 +224,10 @@ class Package(tree(), MeasurementsMixin, ModelSQL, ModelView):
         table = cls.__table__()
         company_exist = table_h.column_exist('company')
         cursor = Transaction().connection.cursor()
+
+        # Migration from 6.8: rename code to number
+        if table_h.column_exist('code'):
+            table_h.column_rename('code', 'number')
 
         super().__register__(module)
 
@@ -244,9 +248,9 @@ class Package(tree(), MeasurementsMixin, ModelSQL, ModelView):
                         where=table.shipment.like(name + ',%')))
 
     @classmethod
-    def order_code(cls, tables):
+    def order_number(cls, tables):
         table, _ = tables[None]
-        return [CharLength(table.code), table.code]
+        return [CharLength(table.number), table.number]
 
     @classmethod
     def default_company(cls):
@@ -319,7 +323,7 @@ class Package(tree(), MeasurementsMixin, ModelSQL, ModelView):
         config = Config(1)
         default_company = cls.default_company()
         for values in vlist:
-            values['code'] = config.get_multivalue(
+            values['number'] = config.get_multivalue(
                 'package_sequence',
                 company=values.get('company', default_company)).get()
         return super(Package, cls).create(vlist)
