@@ -117,8 +117,7 @@ Checkout the payment::
 
 Process the payment::
 
-    >>> process_payment = Wizard('account.payment.process', [payment])
-    >>> process_payment.execute('process')
+    >>> process_payment = payment.click('process_wizard')
     >>> payment.state
     'processing'
 
@@ -155,8 +154,7 @@ Create failing payment::
     ...     'stripe_chargeable': True,
     ...     'stripe_payment_intent_id': None,  # Remove intent from checkout
     ...     }, config.context)
-    >>> process_payment = Wizard('account.payment.process', [payment])
-    >>> process_payment.execute('process')
+    >>> process_payment = payment.click('process_wizard')
     >>> payment.state
     'failed'
     >>> payment.stripe_error_code
@@ -224,8 +222,7 @@ Make payment with customer::
     >>> payment.click('submit')
     >>> payment.state
     'submitted'
-    >>> process_payment = Wizard('account.payment.process', [payment])
-    >>> process_payment.execute('process')
+    >>> process_payment = payment.click('process_wizard')
     >>> payment.state
     'processing'
 
@@ -290,8 +287,7 @@ Checkout the capture payment::
 
 Process the capture payment::
 
-    >>> process_payment = Wizard('account.payment.process', [payment])
-    >>> process_payment.execute('process')
+    >>> process_payment = payment.click('process_wizard')
     >>> payment.state
     'processing'
     >>> bool(payment.stripe_captured)

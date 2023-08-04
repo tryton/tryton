@@ -85,8 +85,7 @@ Pay the sale using payment::
     >>> payment.click('submit')
     >>> payment.state
     'submitted'
-    >>> process_payment = Wizard('account.payment.process', [payment])
-    >>> process_payment.execute('process')
+    >>> process_payment = payment.click('process_wizard')
     >>> payment.click('succeed')
 
 The sale should be processing::

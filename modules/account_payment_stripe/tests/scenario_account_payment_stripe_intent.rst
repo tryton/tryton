@@ -117,8 +117,7 @@ Create submitted payment::
 
 Process off-session the payment::
 
-    >>> process_payment = Wizard('account.payment.process', [payment])
-    >>> process_payment.execute('process')
+    >>> process_payment = payment.click('process_wizard')
     >>> payment.state
     'processing'
 
@@ -164,8 +163,7 @@ Cancel payment intent::
     >>> payment.state
     'submitted'
 
-    >>> process_payment = Wizard('account.payment.process', [payment])
-    >>> process_payment.execute('process')
+    >>> process_payment = payment.click('process_wizard')
     >>> payment.state
     'processing'
 

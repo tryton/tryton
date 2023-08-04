@@ -21,7 +21,7 @@ from trytond.rpc import RPC
 from trytond.tools import (
     cursor_dict, grouped_slice, reduce_ids, sortable_values)
 from trytond.transaction import Transaction
-from trytond.wizard import Button, StateAction, StateView, Wizard
+from trytond.wizard import StateAction, Wizard
 
 from .exceptions import OverpayWarning
 
@@ -423,6 +423,14 @@ class Payment(Workflow, ModelSQL, ModelView):
                     'icon': 'tryton-forward',
                     'depends': ['state', 'kind'],
                     },
+                'process_wizard': {
+                    'invisible': ~(
+                        (Eval('state') == 'approved')
+                        | ((Eval('state') == 'submitted')
+                            & (Eval('kind') == 'receivable'))),
+                    'icon': 'tryton-launch',
+                    'depends': ['state', 'kind'],
+                    },
                 'proceed': {
                     'invisible': (
                         ~Eval('state').in_(['succeeded', 'failed'])
@@ -579,6 +587,11 @@ class Payment(Workflow, ModelSQL, ModelView):
         pass
 
     @classmethod
+    @ModelView.button_action('account_payment.act_process_payments')
+    def process_wizard(cls, payments):
+        pass
+
+    @classmethod
     @Workflow.transition('processing')
     def process(cls, payments, group):
         pool = Pool()
@@ -619,19 +632,10 @@ class Payment(Workflow, ModelSQL, ModelView):
         pass
 
 
-class ProcessPaymentStart(ModelView):
-    'Process Payment'
-    __name__ = 'account.payment.process.start'
-
-
 class ProcessPayment(Wizard):
     'Process Payment'
     __name__ = 'account.payment.process'
-    start = StateView('account.payment.process.start',
-        'account_payment.payment_process_start_view_form', [
-            Button('Cancel', 'end', 'tryton-cancel'),
-            Button('Process', 'process', 'tryton-ok', default=True),
-            ])
+    start_state = 'process'
     process = StateAction('account_payment.act_payment_group_form')
 
     def _group_payment_key(self, payment):

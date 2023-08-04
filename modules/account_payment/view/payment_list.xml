@@ -11,6 +11,7 @@ this repository contains the full copyright notices and license terms. -->
     <button name="draft"/>
     <button name="submit"/>
     <button name="approve"/>
+    <button name="process_wizard"/>
     <button name="fail"/>
     <button name="succeed"/>
 </tree>

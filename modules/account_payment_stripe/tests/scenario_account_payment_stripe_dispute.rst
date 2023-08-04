@@ -100,8 +100,7 @@ Create fully disputed payment::
     ...     'stripe_payment_intent_id': None,  # Remove intent from checkout
     ...     }, config.context)
 
-    >>> process_payment = Wizard('account.payment.process', [payment])
-    >>> process_payment.execute('process')
+    >>> process_payment = payment.click('process_wizard')
     >>> payment.state
     'processing'
 
@@ -192,8 +191,7 @@ Create partial disputed payment::
     ...     'stripe_payment_intent_id': None,  # Remove intent from checkout
     ...     }, config.context)
 
-    >>> process_payment = Wizard('account.payment.process', [payment])
-    >>> process_payment.execute('process')
+    >>> process_payment = payment.click('process_wizard')
     >>> payment.state
     'processing'
 
@@ -262,8 +260,7 @@ Create won disputed payment::
     ...     'stripe_payment_intent_id': None,  # Remove intent from checkout
     ...     }, config.context)
 
-    >>> process_payment = Wizard('account.payment.process', [payment])
-    >>> process_payment.execute('process')
+    >>> process_payment = payment.click('process_wizard')
     >>> payment.state
     'processing'
 

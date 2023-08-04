@@ -91,9 +91,7 @@ Pay the line::
     >>> payment.click('approve')
     >>> payment.state
     'approved'
-    >>> process_payment = Wizard('account.payment.process', [payment])
-    >>> process_payment.execute('process')
-    >>> payment.reload()
+    >>> process_payment = payment.click('process_wizard')
     >>> payment.state
     'processing'
 

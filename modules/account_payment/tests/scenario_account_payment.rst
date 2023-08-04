@@ -105,9 +105,10 @@ Partially pay line::
     True
     >>> payment.state
     'approved'
-    >>> process_payment = Wizard('account.payment.process', [payment])
-    >>> process_payment.execute('process')
-    >>> payment.reload()
+    >>> process_payment = payment.click('process_wizard')
+    >>> group, = process_payment.actions[0]
+    >>> group.payments == [payment]
+    True
     >>> payment.state
     'processing'
     >>> line.reload()
@@ -158,8 +159,7 @@ Partially fail to pay the remaining::
     Decimal('30.00')
     >>> payment.click('submit')
     >>> payment.click('approve')
-    >>> process_payment = Wizard('account.payment.process', [payment])
-    >>> process_payment.execute('process')
+    >>> process_payment = payment.click('process_wizard')
     >>> line.reload()
     >>> line.payment_amount
     Decimal('0.00')

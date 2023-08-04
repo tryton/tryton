@@ -101,9 +101,7 @@ Partially pay the line::
     >>> payment.click('approve')
     >>> payment.state
     'approved'
-    >>> process_payment = Wizard('account.payment.process', [payment])
-    >>> process_payment.execute('process')
-    >>> payment.reload()
+    >>> process_payment = payment.click('process_wizard')
     >>> payment.state
     'processing'
 
@@ -158,9 +156,7 @@ Pay the line::
     >>> payment.click('approve')
     >>> payment.state
     'approved'
-    >>> process_payment = Wizard('account.payment.process', [payment])
-    >>> process_payment.execute('process')
-    >>> payment.reload()
+    >>> process_payment = payment.click('process_wizard')
     >>> payment.state
     'processing'
 
@@ -364,9 +360,7 @@ Pay the line::
     Decimal('40.00')
     >>> payment.click('submit')
     >>> payment.click('approve')
-    >>> process_payment = Wizard('account.payment.process', [payment])
-    >>> process_payment.execute('process')
-    >>> payment.reload()
+    >>> process_payment = payment.click('process_wizard')
     >>> payment.state
     'processing'
 
@@ -406,9 +400,7 @@ Pay the line::
     >>> payment.amount
     Decimal('100.0')
     >>> payment.click('submit')
-    >>> process_payment = Wizard('account.payment.process', [payment])
-    >>> process_payment.execute('process')
-    >>> payment.reload()
+    >>> process_payment = payment.click('process_wizard')
     >>> payment.state
     'processing'
 
@@ -448,9 +440,7 @@ Create a processing payment for the move::
     >>> payment.click('approve')
     >>> payment.state
     'approved'
-    >>> process_payment = Wizard('account.payment.process', [payment])
-    >>> process_payment.execute('process')
-    >>> payment.reload()
+    >>> process_payment = payment.click('process_wizard')
     >>> payment.state
     'processing'
 

@@ -117,8 +117,7 @@ Attempt to cancel sale::
 
 Revert sale to draft after failed payment::
 
-    >>> process_payment = Wizard('account.payment.process', [payment])
-    >>> process_payment.execute('process')
+    >>> process_payment = payment.click('process_wizard')
     >>> payment.click('fail')
     >>> payment.state
     'failed'
@@ -181,8 +180,7 @@ Create and process a final payment::
     >>> payment.origin = sale
     >>> payment.amount = Decimal('60.00')
     >>> payment.click('submit')
-    >>> process_payment = Wizard('account.payment.process', [payment])
-    >>> process_payment.execute('process')
+    >>> process_payment = payment.click('process_wizard')
     >>> payment.click('succeed')
 
 The sale should be processing::

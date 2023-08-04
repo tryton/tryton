@@ -97,9 +97,7 @@ Create and pay an invoice without clearing::
     >>> payment.click('submit')
     >>> payment.state
     'submitted'
-    >>> process_payment = Wizard('account.payment.process', [payment])
-    >>> process_payment.execute('process')
-    >>> payment.reload()
+    >>> process_payment = payment.click('process_wizard')
     >>> succeed = payment.click('succeed_wizard')
     >>> succeed.execute('succeed')
 
@@ -130,9 +128,7 @@ Create an invoice and pay it::
     >>> payment.click('submit')
     >>> payment.state
     'submitted'
-    >>> process_payment = Wizard('account.payment.process', [payment])
-    >>> process_payment.execute('process')
-    >>> payment.reload()
+    >>> process_payment = payment.click('process_wizard')
     >>> succeed = payment.click('succeed_wizard')
     >>> succeed.execute('succeed')
 

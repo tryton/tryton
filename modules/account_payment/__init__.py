@@ -11,7 +11,6 @@ def register():
         payment.Group,
         payment.Payment,
         account.MoveLine,
-        payment.ProcessPaymentStart,
         account.CreateDirectDebitStart,
         account.PayLineStart,
         account.PayLineAskJournal,

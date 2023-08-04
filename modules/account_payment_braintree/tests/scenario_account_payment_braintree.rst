@@ -106,8 +106,7 @@ Checkout the payment::
 
 Process the payment::
 
-    >>> process_payment = Wizard('account.payment.process', [payment])
-    >>> process_payment.execute('process')
+    >>> process_payment = payment.click('process_wizard')
     >>> payment.state
     'processing'
     >>> bool(payment.braintree_payment_settled)
@@ -177,8 +176,7 @@ Make payment with customer::
     >>> payment.click('submit')
     >>> payment.state
     'submitted'
-    >>> process_payment = Wizard('account.payment.process', [payment])
-    >>> process_payment.execute('process')
+    >>> process_payment = payment.click('process_wizard')
     >>> payment.state
     'processing'
 
@@ -219,8 +217,7 @@ Create payment to settle::
     ...     'braintree_nonce': Nonces.Transactable,
     ...     }, config.context)
 
-    >>> process_payment = Wizard('account.payment.process', [payment])
-    >>> process_payment.execute('process')
+    >>> process_payment = payment.click('process_wizard')
     >>> payment.state
     'processing'
 

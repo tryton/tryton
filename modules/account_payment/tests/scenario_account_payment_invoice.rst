@@ -3,6 +3,7 @@ Invoice Payment Scenario
 ========================
 
 Imports::
+
     >>> import datetime
     >>> from decimal import Decimal
     >>> from proteus import Model, Wizard
@@ -90,8 +91,7 @@ Check amount to pay::
 
 Process the payment::
 
-    >>> process_payment = Wizard('account.payment.process', [payment])
-    >>> process_payment.execute('process')
+    >>> process_payment = payment.click('process_wizard')
 
 Check amount to pay::
 

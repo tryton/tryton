@@ -99,8 +99,10 @@ Create no dunning::
 Fail the payment::
 
     >>> payment.click('submit')
-    >>> process_payment = Wizard('account.payment.process', [payment])
-    >>> process_payment.execute('process')
+    >>> process_payment = payment.click('process_wizard')
+    >>> group, = process_payment.actions[0]
+    >>> group.payments == [payment]
+    True
     >>> payment.click('fail')
     >>> payment.state
     'failed'

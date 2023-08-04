@@ -503,6 +503,13 @@ this repository contains the full copyright notices and license terms. -->
             <field name="group" ref="group_payment_approval"/>
         </record>
 
+        <record model="ir.model.button" id="payment_process_wizard_button">
+            <field name="name">process_wizard</field>
+            <field name="string">Process</field>
+            <field name="model" search="[('model', '=', 'account.payment')]"/>
+            <field name="confirm">Are you sure you want to process the payments?</field>
+        </record>
+
         <record model="ir.model.button" id="payment_proceed_button">
             <field name="name">proceed</field>
             <field name="string">Processing</field>
@@ -533,22 +540,10 @@ this repository contains the full copyright notices and license terms. -->
             <field name="group" ref="group_payment"/>
         </record>
 
-        <record model="ir.ui.view" id="payment_process_start_view_form">
-            <field name="model">account.payment.process.start</field>
-            <field name="type">form</field>
-            <field name="name">payment_process_start_form</field>
-        </record>
-
         <record model="ir.action.wizard" id="act_process_payments">
             <field name="name">Process Payments</field>
             <field name="wiz_name">account.payment.process</field>
             <field name="model">account.payment</field>
         </record>
-        <record model="ir.action.keyword" id="act_process_payments_keyword1">
-            <field name="keyword">form_action</field>
-            <field name="model">account.payment,-1</field>
-            <field name="action" ref="act_process_payments"/>
-        </record>
-
     </data>
 </tryton>
