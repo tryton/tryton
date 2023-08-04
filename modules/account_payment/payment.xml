@@ -114,7 +114,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">payment_group_list</field>
         </record>
         <record model="ir.action.act_window" id="act_payment_group_form">
-            <field name="name">Groups</field>
+            <field name="name">Payment Groups</field>
             <field name="res_model">account.payment.group</field>
         </record>
         <record model="ir.action.act_window.view"
