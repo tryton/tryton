@@ -528,6 +528,15 @@ class Payment(Workflow, ModelSQL, ModelView):
         return Journal.fields_get([field_name])[field_name]['selection']
 
     @classmethod
+    def view_attributes(cls):
+        context = Transaction().context
+        attributes = super().view_attributes()
+        if context.get('kind') == 'receivable':
+            attributes.append(
+                ('/tree//button[@name="approve"]', 'tree_invisible', True))
+        return attributes
+
+    @classmethod
     def copy(cls, payments, default=None):
         if default is None:
             default = {}

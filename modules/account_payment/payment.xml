@@ -242,58 +242,113 @@ this repository contains the full copyright notices and license terms. -->
             <field name="view" ref="payment_view_form"/>
             <field name="act_window" ref="act_payment_form"/>
         </record>
-        <record model="ir.action.act_window.domain" id="act_payment_form_domain_draft">
+
+        <record model="ir.action.act_window" id="act_payment_form_payable">
+            <field name="name">Payable Payments</field>
+            <field name="res_model">account.payment</field>
+            <field name="domain" eval="[('kind', '=', 'payable')]" pyson="1"/>
+            <field name="context" eval="{'kind': 'payable'}" pyson="1"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_payment_form_payable_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="payment_view_list"/>
+            <field name="act_window" ref="act_payment_form_payable"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_payment_form_payable_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="payment_view_form"/>
+            <field name="act_window" ref="act_payment_form_payable"/>
+        </record>
+        <record model="ir.action.act_window.domain" id="act_payment_form_payable_domain_draft">
             <field name="name">Draft</field>
             <field name="sequence" eval="10"/>
             <field name="domain" eval="[('state', '=', 'draft')]" pyson="1"/>
             <field name="count" eval="True"/>
-            <field name="act_window" ref="act_payment_form"/>
+            <field name="act_window" ref="act_payment_form_payable"/>
         </record>
-        <record model="ir.action.act_window.domain" id="act_payment_form_domain_to_approve">
+        <record model="ir.action.act_window.domain" id="act_payment_form_payable_domain_to_approve">
             <field name="name">To Approve</field>
             <field name="sequence" eval="20"/>
-            <field name="domain" eval="[('state', '=', 'submitted'), ('kind', '=', 'payable')]" pyson="1"/>
+            <field name="domain" eval="[('state', '=', 'submitted')]" pyson="1"/>
             <field name="count" eval="True"/>
-            <field name="act_window" ref="act_payment_form"/>
+            <field name="act_window" ref="act_payment_form_payable"/>
         </record>
-        <record model="ir.action.act_window.domain" id="act_payment_form_domain_to_process">
+        <record model="ir.action.act_window.domain" id="act_payment_form_payable_domain_to_process">
             <field name="name">To Process</field>
             <field name="sequence" eval="30"/>
-            <field name="domain" eval="['OR', ('state', '=', 'approved'), [('state', '=', 'submitted'), ('kind', '=', 'receivable')]]" pyson="1"/>
+            <field name="domain" eval="[('state', '=', 'approved')]" pyson="1"/>
             <field name="count" eval="True"/>
-            <field name="act_window" ref="act_payment_form"/>
+            <field name="act_window" ref="act_payment_form_payable"/>
         </record>
-        <record model="ir.action.act_window.domain" id="act_payment_form_domain_processing">
+        <record model="ir.action.act_window.domain" id="act_payment_form_payable_domain_processing">
             <field name="name">Processing</field>
             <field name="sequence" eval="40"/>
             <field name="domain" eval="[('state', '=', 'processing')]" pyson="1"/>
             <field name="count" eval="True"/>
-            <field name="act_window" ref="act_payment_form"/>
+            <field name="act_window" ref="act_payment_form_payable"/>
         </record>
-        <record model="ir.action.act_window.domain" id="act_payment_form_domain_suceeded">
-            <field name="name">Succeeded</field>
-            <field name="sequence" eval="50"/>
-            <field name="domain" eval="[('state', '=', 'succeeded')]" pyson="1"/>
-            <field name="act_window" ref="act_payment_form"/>
-        </record>
-        <record model="ir.action.act_window.domain" id="act_payment_form_domain_failed">
-            <field name="name">Failed</field>
-            <field name="sequence" eval="60"/>
-            <field name="domain" eval="[('state', '=', 'failed')]" pyson="1"/>
-            <field name="act_window" ref="act_payment_form"/>
-        </record>
-        <record model="ir.action.act_window.domain" id="act_payment_form_domain_all">
+        <record model="ir.action.act_window.domain" id="act_payment_form_payable_domain_all">
             <field name="name">All</field>
             <field name="sequence" eval="9999"/>
             <field name="domain"></field>
-            <field name="act_window" ref="act_payment_form"/>
+            <field name="act_window" ref="act_payment_form_payable"/>
         </record>
 
         <menuitem
             parent="menu_payments"
-            action="act_payment_form"
+            action="act_payment_form_payable"
             sequence="20"
-            id="menu_payment_form"/>
+            id="menu_payment_form_payable"/>
+
+        <record model="ir.action.act_window" id="act_payment_form_receivable">
+            <field name="name">Receivable Payments</field>
+            <field name="res_model">account.payment</field>
+            <field name="domain" eval="[('kind', '=', 'receivable')]" pyson="1"/>
+            <field name="context" eval="{'kind': 'receivable'}" pyson="1"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_payment_form_receivable_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="payment_view_list"/>
+            <field name="act_window" ref="act_payment_form_receivable"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_payment_form_receivable_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="payment_view_form"/>
+            <field name="act_window" ref="act_payment_form_receivable"/>
+        </record>
+        <record model="ir.action.act_window.domain" id="act_payment_form_receivable_domain_draft">
+            <field name="name">Draft</field>
+            <field name="sequence" eval="10"/>
+            <field name="domain" eval="[('state', '=', 'draft')]" pyson="1"/>
+            <field name="count" eval="True"/>
+            <field name="act_window" ref="act_payment_form_receivable"/>
+        </record>
+        <record model="ir.action.act_window.domain" id="act_payment_form_receivable_domain_to_process">
+            <field name="name">To Process</field>
+            <field name="sequence" eval="30"/>
+            <field name="domain" eval="[('state', '=', 'submitted')]" pyson="1"/>
+            <field name="count" eval="True"/>
+            <field name="act_window" ref="act_payment_form_receivable"/>
+        </record>
+        <record model="ir.action.act_window.domain" id="act_payment_form_receivable_domain_processing">
+            <field name="name">Processing</field>
+            <field name="sequence" eval="40"/>
+            <field name="domain" eval="[('state', '=', 'processing')]" pyson="1"/>
+            <field name="count" eval="True"/>
+            <field name="act_window" ref="act_payment_form_receivable"/>
+        </record>
+        <record model="ir.action.act_window.domain" id="act_payment_form_receivable_domain_all">
+            <field name="name">All</field>
+            <field name="sequence" eval="9999"/>
+            <field name="domain"></field>
+            <field name="act_window" ref="act_payment_form_receivable"/>
+        </record>
+
+        <menuitem
+            parent="menu_payments"
+            action="act_payment_form_receivable"
+            sequence="10"
+            id="menu_payment_form_receivable"/>
 
         <record model="ir.action.act_window" id="act_payment_form_relate_party">
             <field name="name">Payments</field>
