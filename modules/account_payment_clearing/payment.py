@@ -9,7 +9,7 @@ from sql.conditionals import Coalesce
 from trytond import backend
 from trytond.model import ModelView, Workflow, fields
 from trytond.pool import Pool, PoolMeta
-from trytond.pyson import Bool, Eval, TimeDelta
+from trytond.pyson import Bool, Eval, If, TimeDelta
 from trytond.tools import grouped_slice, reduce_ids
 from trytond.transaction import Transaction
 from trytond.wizard import Button, StateTransition, StateView, Wizard
@@ -124,10 +124,13 @@ class Payment(metaclass=PoolMeta):
                     ('second_currency', '=', None),
                     ],
                 ],
+            If(Eval('line'),
+                ('id', '=', None),
+                ()),
             ],
         states={
             'readonly': Eval('state') != 'draft',
-            'invisible': Bool(Eval('line')),
+            'invisible': Eval('line') & ~Eval('account'),
             },
         help="Define the account to use for clearing move.")
     clearing_move = fields.Many2One('account.move', 'Clearing Move',
@@ -162,7 +165,7 @@ class Payment(metaclass=PoolMeta):
     @classmethod
     def __setup__(cls):
         super(Payment, cls).__setup__()
-        line_invisible = Bool(Eval('account'))
+        line_invisible = Eval('account') & ~Eval('line')
         if 'invisible' in cls.line.states:
             cls.line.states['invisible'] &= line_invisible
         else:
