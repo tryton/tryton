@@ -5,7 +5,4 @@ this repository contains the full copyright notices and license terms. -->
     <xpath expr="//field[@name='state']" position="after">
         <field name="clearing_reconciled"/>
     </xpath>
-    <xpath expr="//button[@name='succeed']" position="replace_attributes">
-        <button name="succeed_wizard"/>
-    </xpath>
 </data>
