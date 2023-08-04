@@ -49,6 +49,7 @@ class Journal(metaclass=PoolMeta):
             date = Date.today()
         moves = []
         journals = cls.search([
+                ('company', '=', Transaction().context.get('company')),
                 ('clearing_posting_delay', '!=', None),
                 ])
         for journal in journals:
@@ -58,7 +59,7 @@ class Journal(metaclass=PoolMeta):
                         ('origin.journal.id', '=', journal.id,
                             'account.payment'),
                         ('state', '=', 'draft'),
-                        ('company', '=', Transaction().context.get('company')),
+                        ('company', '=', journal.company.id),
                         ]))
         Move.post(moves)
 
