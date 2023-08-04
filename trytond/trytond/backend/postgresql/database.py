@@ -257,10 +257,10 @@ class Database(DatabaseInterface):
         return self
 
     def get_connection(self, autocommit=False, readonly=False):
-        for count in range(config.getint('database', 'retry'), -1, -1):
+        retry = max(config.getint('database', 'retry'), _maxconn)
+        for count in range(retry, -1, -1):
             try:
                 conn = self._connpool.getconn()
-                break
             except PoolError:
                 if count and not self._connpool.closed:
                     logger.info('waiting a connection')
@@ -271,19 +271,26 @@ class Database(DatabaseInterface):
                 logger.error(
                     'connection to "%s" failed', self.name, exc_info=True)
                 raise
-        # We do not use set_session because psycopg2 < 2.7 and psycopg2cffi
-        # change the default_transaction_* attributes which breaks external
-        # pooling at the transaction level.
-        if autocommit:
-            conn.set_isolation_level(ISOLATION_LEVEL_AUTOCOMMIT)
-        else:
-            conn.set_isolation_level(ISOLATION_LEVEL_REPEATABLE_READ)
-        # psycopg2cffi does not have the readonly property
-        if hasattr(conn, 'readonly'):
-            conn.readonly = readonly
-        elif not autocommit and readonly:
-            cursor = conn.cursor()
-            cursor.execute('SET TRANSACTION READ ONLY')
+            try:
+                # We do not use set_session because psycopg2 < 2.7 and
+                # psycopg2cffi change the default_transaction_* attributes
+                # which breaks external pooling at the transaction level.
+                if autocommit:
+                    conn.set_isolation_level(ISOLATION_LEVEL_AUTOCOMMIT)
+                else:
+                    conn.set_isolation_level(ISOLATION_LEVEL_REPEATABLE_READ)
+                # psycopg2cffi does not have the readonly property
+                if hasattr(conn, 'readonly'):
+                    conn.readonly = readonly
+                elif not autocommit and readonly:
+                    cursor = conn.cursor()
+                    cursor.execute('SET TRANSACTION READ ONLY')
+                # Detect disconnection
+                conn.cursor().execute('SELECT 1')
+            except DatabaseOperationalError:
+                self._connpool.putconn(conn, close=True)
+                continue
+            break
         return conn
 
     def put_connection(self, connection, close=False):
