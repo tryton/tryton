@@ -255,10 +255,10 @@ class Database(DatabaseInterface):
         return self
 
     def get_connection(self, autocommit=False, readonly=False):
-        for count in range(config.getint('database', 'retry'), -1, -1):
+        retry = max(config.getint('database', 'retry'), _maxconn)
+        for count in range(retry, -1, -1):
             try:
                 conn = self._connpool.getconn()
-                break
             except PoolError:
                 if count and not self._connpool.closed:
                     logger.info('waiting a connection')
@@ -269,10 +269,17 @@ class Database(DatabaseInterface):
                 logger.error(
                     'connection to "%s" failed', self.name, exc_info=True)
                 raise
-        conn.set_session(
-            isolation_level=ISOLATION_LEVEL_REPEATABLE_READ,
-            readonly=readonly,
-            autocommit=autocommit)
+            try:
+                conn.set_session(
+                    isolation_level=ISOLATION_LEVEL_REPEATABLE_READ,
+                    readonly=readonly,
+                    autocommit=autocommit)
+                # Detect disconnection
+                conn.cursor().execute('SELECT 1')
+            except DatabaseOperationalError:
+                self._connpool.putconn(conn, close=True)
+                continue
+            break
         return conn
 
     def put_connection(self, connection, close=False):
