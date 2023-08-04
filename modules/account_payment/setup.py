@@ -50,6 +50,7 @@ requires.append(get_require_version('trytond'))
 tests_require = [
     get_require_version('proteus'),
     get_require_version('trytond_account_dunning'),
+    get_require_version('trytond_account_statement'),
     ]
 for dep in ['account_invoice']:
     tests_require.append(get_require_version('trytond_%s' % dep))

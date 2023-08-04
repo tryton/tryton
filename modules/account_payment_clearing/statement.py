@@ -1,6 +1,5 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
-from collections import defaultdict
 
 from sql import Null
 from sql.operators import Concat
@@ -51,43 +50,15 @@ class Statement(metaclass=PoolMeta):
     __name__ = 'account.statement'
 
     @classmethod
-    def create_move(cls, statements):
+    def _process_payments(cls, moves):
         pool = Pool()
         Payment = pool.get('account.payment')
 
-        moves = super(Statement, cls).create_move(statements)
+        payments = super()._process_payments(moves)
 
-        to_success = defaultdict(set)
-        to_fail = defaultdict(set)
-        for move, statement, lines in moves:
-            for line in lines:
-                if line.payment:
-                    payments = {line.payment}
-                    kind = line.payment.kind
-                elif line.payment_group:
-                    payments = set(line.payment_group.payments)
-                    kind = line.payment_group.kind
-                else:
-                    continue
-                if (kind == 'receivable') == (line.amount >= 0):
-                    to_success[line.date].update(payments)
-                else:
-                    to_fail[line.date].update(payments)
-        # The failing should be done last because success is usually not a
-        # definitive state
-        if to_success:
-            for date, payments in to_success.items():
-                with Transaction().set_context(clearing_date=date):
-                    Payment.succeed(Payment.browse(payments))
-        if to_fail:
-            for date, payments in to_fail.items():
-                with Transaction().set_context(clearing_date=date):
-                    Payment.fail(Payment.browse(payments))
-
-        if to_success or to_fail:
-            Payment.__queue__.reconcile_clearing(
-                list(set.union(*to_success.values(), *to_fail.values())))
-        return moves
+        if payments:
+            Payment.__queue__.reconcile_clearing(payments)
+        return payments
 
     def _group_key(self, line):
         key = super(Statement, self)._group_key(line)
@@ -170,6 +141,11 @@ class StatementLine(metaclass=PoolMeta):
             clearing_account = self.payment_group.journal.clearing_account
             if clearing_account:
                 self.account = clearing_account
+
+    def payments(self):
+        yield from super().payments()
+        if self.payment_group:
+            yield self.payment_group.kind, self.payment_group.payments
 
     @fields.depends('party', methods=['payment'])
     def on_change_party(self):

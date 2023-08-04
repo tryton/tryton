@@ -1,5 +1,7 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
+
+from collections import defaultdict
 from decimal import Decimal
 from itertools import groupby
 
@@ -542,6 +544,43 @@ class Invoice(metaclass=PoolMeta):
         return amounts
 
 
+class Statement(metaclass=PoolMeta):
+    __name__ = 'account.statement'
+
+    @classmethod
+    def create_move(cls, statements):
+        moves = super().create_move(statements)
+        cls._process_payments(moves)
+        return moves
+
+    @classmethod
+    def _process_payments(cls, moves):
+        pool = Pool()
+        Payment = pool.get('account.payment')
+
+        to_success = defaultdict(set)
+        to_fail = defaultdict(set)
+        for move, statement, lines in moves:
+            for line in lines:
+                for kind, payments in line.payments():
+                    if (kind == 'receivable') == (line.amount >= 0):
+                        to_success[line.date].update(payments)
+                    else:
+                        to_fail[line.date].update(payments)
+        # The failing should be done last because success is usually not a
+        # definitive state
+        if to_success:
+            for date, payments in to_success.items():
+                with Transaction().set_context(clearing_date=date):
+                    Payment.succeed(Payment.browse(payments))
+        if to_fail:
+            for date, payments in to_fail.items():
+                with Transaction().set_context(clearing_date=date):
+                    Payment.fail(Payment.browse(payments))
+        payments = set.union(*to_success.values(), *to_fail.values())
+        return list(payments)
+
+
 class StatementLine(metaclass=PoolMeta):
     __name__ = 'account.statement.line'
 
@@ -594,6 +633,11 @@ class StatementLine(metaclass=PoolMeta):
                 self.party = self.payment.party
             if self.payment.line:
                 self.account = self.payment.line.account
+
+    def payments(self):
+        "Yield payments per kind"
+        if self.payment:
+            yield self.payment.kind, [self.payment]
 
 
 class Dunning(metaclass=PoolMeta):
