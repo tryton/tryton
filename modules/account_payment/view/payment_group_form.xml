@@ -20,5 +20,8 @@ this repository contains the full copyright notices and license terms. -->
     <label name="payment_complete" string="Complete"/>
     <field name="payment_complete"/>
 
-    <button name="succeed" colspan="4"/>
+    <group id="links" col="-1" colspan="2">
+        <link name="account_payment.act_payment_form_group_open"/>
+    </group>
+    <button name="succeed" colspan="2"/>
 </form>

@@ -420,7 +420,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">Payments</field>
             <field name="res_model">account.payment</field>
             <field name="domain"
-                eval="[('group', '=', Eval('active_id'))]" pyson="1"/>
+                eval="[('group', 'in', Eval('active_ids', []))]" pyson="1"/>
         </record>
         <record model="ir.action.act_window.view"
             id="act_payment_form_group_open_view1">
@@ -434,9 +434,37 @@ this repository contains the full copyright notices and license terms. -->
             <field name="view" ref="payment_view_form"/>
             <field name="act_window" ref="act_payment_form_group_open"/>
         </record>
+        <record model="ir.action.act_window.domain" id="act_payment_form_group_open_domain_processing">
+            <field name="name">Processing</field>
+            <field name="sequence" eval="10"/>
+            <field name="domain" eval="[('state', 'not in', ['succeeded', 'failed'])]" pyson="1"/>
+            <field name="count" eval="True"/>
+            <field name="act_window" ref="act_payment_form_group_open"/>
+        </record>
+        <record model="ir.action.act_window.domain" id="act_payment_form_group_open_domain_succeeded">
+            <field name="name">Succeeded</field>
+            <field name="sequence" eval="20"/>
+            <field name="domain" eval="[('state', '=', 'succeeded')]" pyson="1"/>
+            <field name="count" eval="True"/>
+            <field name="act_window" ref="act_payment_form_group_open"/>
+        </record>
+        <record model="ir.action.act_window.domain" id="act_payment_form_group_open_domain_failed">
+            <field name="name">Failed</field>
+            <field name="sequence" eval="30"/>
+            <field name="domain" eval="[('state', '=', 'failed')]" pyson="1"/>
+            <field name="count" eval="True"/>
+            <field name="act_window" ref="act_payment_form_group_open"/>
+        </record>
+        <record model="ir.action.act_window.domain" id="act_payment_form_group_open_domain_all">
+            <field name="name">All</field>
+            <field name="sequence" eval="9999"/>
+            <field name="domain"></field>
+            <field name="act_window" ref="act_payment_form_group_open"/>
+        </record>
+
         <record model="ir.action.keyword"
             id="act_payment_form_group_relate_keyword1">
-            <field name="keyword">tree_open</field>
+            <field name="keyword">form_relate</field>
             <field name="model">account.payment.group,-1</field>
             <field name="action" ref="act_payment_form_group_open"/>
         </record>
