@@ -171,6 +171,16 @@ class Payment(metaclass=PoolMeta):
                 'succeed_wizard': cls._buttons['succeed'],
                 })
 
+    @fields.depends('party', 'kind', 'date')
+    def on_change_party(self):
+        super().on_change_party()
+        if self.kind == 'receivable':
+            if self.party:
+                with Transaction().set_context(date=self.date):
+                    self.account = self.party.account_receivable_used
+            else:
+                self.account = None
+
     @classmethod
     @ModelView.button_action('account_payment_clearing.wizard_succeed')
     def succeed_wizard(cls, payments):
