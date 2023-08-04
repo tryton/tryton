@@ -116,7 +116,10 @@ class Payment(metaclass=PoolMeta):
         domain=[
             ('closed', '!=', True),
             ('company', '=', Eval('company', -1)),
-            ('type.statement', 'in', ['balance', 'off-balance']),
+            If(Eval('kind') == 'receivable',
+                ('type.receivable', '=', True),
+                ('type.payable', '=', True),
+                ),
             ['OR',
                 ('second_currency', '=', Eval('currency', None)),
                 [
