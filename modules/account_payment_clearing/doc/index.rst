@@ -1,12 +1,13 @@
+###############################
 Account Payment Clearing Module
 ###############################
 
-The account_payment_clearing module allows to generate account move when a
+The *Account Payment Clearing Module* allows to generate account move when a
 payment is succeeded between the receivable/payable account to a clearing
 account defined on the payment journal.
 
-The clearing account will be used for statement lines which are linked to such
-payment.
+.. toctree::
+   :maxdepth: 2
 
-If a delay is configured on journal for posting, a scheduled task will post
-automatically clearing moves after this delay.
+   design
+   releases
