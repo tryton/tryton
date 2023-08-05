@@ -117,8 +117,14 @@ Cancel reversal move::
     >>> reconciliations = {
     ...     l.reconciliation for l in cancel_move.lines if l.reconciliation}
     >>> Reconciliation.delete(list(reconciliations))
-    >>> cancel_move.reload()
-    >>> cancel_move.delete()
+    >>> cancel_move = Wizard('account.move.cancel', [cancel_move])
+    >>> cancel_move.form.reversal = False
+    >>> cancel_move.execute('cancel')
+    >>> analytic_account.reload()
+    >>> analytic_account.credit
+    Decimal('42.00')
+    >>> analytic_account.debit
+    Decimal('0.00')
 
 Cancel move::
 
