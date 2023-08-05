@@ -7,7 +7,7 @@ this repository contains the full copyright notices and license terms. -->
     <label name="company"/>
     <field name="company"/>
     <label name="journal"/>
-    <field name="journal"/>
+    <field name="journal" widget="selection"/>
     <label name="kind"/>
     <field name="kind"/>
     <separator id="payments" string="Payments Info" colspan="4"/>

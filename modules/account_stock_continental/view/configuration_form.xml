@@ -5,7 +5,7 @@ this repository contains the full copyright notices and license terms. -->
     <xpath expr="/form" position="inside">
         <separator id="stock" string="Stock" colspan="4"/>
         <label name="stock_journal"/>
-        <field name="stock_journal"/>
+        <field name="stock_journal" widget="selection"/>
         <newline/>
     </xpath>
 </data>

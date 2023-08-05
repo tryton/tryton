@@ -10,7 +10,7 @@ this repository contains the full copyright notices and license terms. -->
     <label name="account"/>
     <field name="account"/>
     <label name="journal"/>
-    <field name="journal"/>
+    <field name="journal" widget="selection"/>
 
     <label name="priorities"/>
     <field name="priorities"/>

@@ -11,7 +11,7 @@ this repository contains the full copyright notices and license terms. -->
     <label name="party"/>
     <field name="party"/>
     <label name="journal"/>
-    <field name="journal"/>
+    <field name="journal" widget="selection"/>
     <separator id="analytic_accounts" colspan="4"/>
     <field name="analytic_accounts" colspan="4"/>
 </form>

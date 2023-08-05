@@ -10,7 +10,7 @@ this repository contains the full copyright notices and license terms. -->
             <label name="company"/>
             <field name="company"/>
             <label name="journal"/>
-            <field name="journal"/>
+            <field name="journal" widget="selection"/>
 
             <label id="between" string="Between"/>
             <group id="range" col="-1" colspan="3">

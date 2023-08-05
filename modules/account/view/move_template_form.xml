@@ -11,7 +11,7 @@ this repository contains the full copyright notices and license terms. -->
             <label name="company"/>
             <field name="company"/>
             <label name="journal"/>
-            <field name="journal"/>
+            <field name="journal" widget="selection"/>
             <label name="description"/>
             <field name="description" colspan="3"/>
             <field name="lines" colspan="4"/>

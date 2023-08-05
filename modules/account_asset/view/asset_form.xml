@@ -28,7 +28,7 @@
             <label name="company"/>
             <field name="company"/>
             <label name="account_journal"/>
-            <field name="account_journal"/>
+            <field name="account_journal" widget="selection"/>
             <label name="depreciation_method"/>
             <field name="depreciation_method"/>
             <label name="frequency"/>

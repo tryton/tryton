@@ -9,7 +9,7 @@ this repository contains the full copyright notices and license terms. -->
     <label name="product"/>
     <field name="product"/>
     <label name="journal"/>
-    <field name="journal"/>
+    <field name="journal" widget="selection"/>
     <label name="compute_method"/>
     <field name="compute_method"/>
     <newline/>

@@ -4,6 +4,6 @@ this repository contains the full copyright notices and license terms. -->
 <data>
     <xpath expr="//notebook/page[@id='vsf']" position="inside">
         <label name="stripe_journal"/>
-        <field name="stripe_journal"/>
+        <field name="stripe_journal" widget="selection"/>
     </xpath>
 </data>

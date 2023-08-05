@@ -6,7 +6,7 @@ this repository contains the full copyright notices and license terms. -->
     <field name="shop" colspan="3"/>
 
     <label name="journal"/>
-    <field name="journal"/>
+    <field name="journal" widget="selection"/>
     <label name="sequence"/>
     <field name="sequence"/>
 

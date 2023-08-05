@@ -20,7 +20,7 @@ this repository contains the full copyright notices and license terms. -->
 
     <separator id="currency_exchange" string="Currency Exchange" colspan="4"/>
     <label name="currency_exchange_journal" string="Journal"/>
-    <field name="currency_exchange_journal"/>
+    <field name="currency_exchange_journal" widget="selection"/>
     <newline/>
     <label name="currency_exchange_credit_account" string="Credit Account"/>
     <field name="currency_exchange_credit_account"/>

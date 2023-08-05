@@ -5,6 +5,6 @@ this repository contains the full copyright notices and license terms. -->
     <label name="currency"/>
     <field name="currency"/>
     <label name="journal"/>
-    <field name="journal"/>
+    <field name="journal" widget="selection"/>
     <field name="journals" colspan="4" invisible="1"/>
 </form>

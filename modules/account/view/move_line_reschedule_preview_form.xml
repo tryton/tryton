@@ -3,7 +3,7 @@
 this repository contains the full copyright notices and license terms. -->
 <form>
     <label name="journal"/>
-    <field name="journal"/>
+    <field name="journal" widget="selection"/>
     <newline/>
 
     <label name="description"/>

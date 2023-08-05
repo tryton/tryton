@@ -5,7 +5,7 @@ this repository contains the full copyright notices and license terms. -->
     <label name="party"/>
     <field name="party"/>
     <label name="journal"/>
-    <field name="journal"/>
+    <field name="journal" widget="selection"/>
 
     <label name="description"/>
     <field name="description" colspan="3"/>
