@@ -22,5 +22,19 @@ this repository contains the full copyright notices and license terms. -->
             <field name="group" ref="purchase_request.group_purchase_request"/>
         </record>
 
+        <record model="ir.action.act_window.domain" id="act_purchase_request_form_domain_quotation">
+            <field name="name">Quotation</field>
+            <field name="sequence" eval="20"/>
+            <field name="domain" eval="[('state', '=', 'quotation')]" pyson="1"/>
+            <field name="count" eval="True"/>
+            <field name="act_window" ref="purchase_request.act_purchase_request_form"/>
+        </record>
+        <record model="ir.action.act_window.domain" id="act_purchase_request_form_domain_received">
+            <field name="name">Received</field>
+            <field name="sequence" eval="30"/>
+            <field name="domain" eval="[('state', '=', 'received')]" pyson="1"/>
+            <field name="count" eval="True"/>
+            <field name="act_window" ref="purchase_request.act_purchase_request_form"/>
+        </record>
     </data>
 </tryton>

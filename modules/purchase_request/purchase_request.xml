@@ -47,7 +47,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.action.act_window.domain"
             id="act_purchase_request_form_domain_exception">
             <field name="name">Exception</field>
-            <field name="sequence" eval="20"/>
+            <field name="sequence" eval="40"/>
             <field name="domain" eval="[('state', '=', 'exception')]" 
                 pyson="1"/>
             <field name="count" eval="True"/>
