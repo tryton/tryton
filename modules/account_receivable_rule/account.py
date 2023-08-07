@@ -34,15 +34,15 @@ class Move(metaclass=PoolMeta):
 class AccountRuleAbstract(DeactivableMixin, ModelSQL, ModelView):
 
     company = fields.Many2One(
-        'company.company', "Company", required=True)
+        'company.company', "Company", required=True, ondelete='CASCADE')
     account = fields.Many2One(
-        'account.account', "Account", required=True,
+        'account.account', "Account", required=True, ondelete='CASCADE',
         domain=[
             ('company', '=', Eval('company', -1)),
             ])
 
     journal = fields.Many2One(
-        'account.journal', "Journal", required=True,
+        'account.journal', "Journal", required=True, ondelete='CASCADE',
         domain=[
             ('type', '=', 'general'),
             ])
@@ -54,7 +54,7 @@ class AccountRuleAbstract(DeactivableMixin, ModelSQL, ModelView):
     accounts = NotImplemented
 
     overflow_account = fields.Many2One(
-        'account.account', "Overflow Account",
+        'account.account', "Overflow Account", ondelete='CASCADE',
         domain=[
             ('company', '=', Eval('company', -1)),
             ('id', '!=', Eval('account', -1)),
@@ -301,7 +301,7 @@ class AccountRuleAccountAbstract(sequence_ordered(), ModelSQL, ModelView):
     rule = NotImplemented
 
     account = fields.Many2One(
-        'account.account', "Account", required=True,
+        'account.account', "Account", required=True, ondelete='CASCADE',
         domain=[
             ('company', '=', Eval('company', -1)),
             ('id', '!=', Eval('_parent_rule.account', -1)),
@@ -390,7 +390,8 @@ class AccountReceivableRuleAccount(AccountRuleAccountAbstract):
     __name__ = 'account.account.receivable.rule.account'
 
     rule = fields.Many2One(
-        'account.account.receivable.rule', "Rule", required=True)
+        'account.account.receivable.rule', "Rule",
+        required=True, ondelete='CASCADE')
 
 
 class AccountReceivableRule_Dunning(metaclass=PoolMeta):
