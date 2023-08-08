@@ -6,7 +6,6 @@ import logging
 import os
 import selectors
 import threading
-import time
 from collections import OrderedDict, defaultdict
 from weakref import WeakKeyDictionary
 
@@ -238,9 +237,6 @@ class MemoryCache(BaseCache):
                     cls._listener[pid, dbname] = listener = threading.Thread(
                         target=cls._listen, args=(dbname,), daemon=True)
                     listener.start()
-                    while (not getattr(listener, 'listening', False)
-                            and listener.is_alive()):
-                        time.sleep(.01)
             return
         last_clean = (dt.datetime.now() - cls._clean_last).total_seconds()
         if last_clean < _clear_timeout:

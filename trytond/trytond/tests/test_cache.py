@@ -2,6 +2,7 @@
 # this repository contains the full copyright notices and license terms.
 
 import datetime as dt
+import os
 import time
 import unittest
 
@@ -107,6 +108,9 @@ class MemoryCacheTestCase(unittest.TestCase):
     def tearDown(self):
         MemoryCache.drop(DB_NAME)
 
+    def wait_cache_listening(self):
+        pass
+
     def wait_cache_sync(self, after=None):
         pass
 
@@ -128,6 +132,7 @@ class MemoryCacheTestCase(unittest.TestCase):
     def test_memory_cache_transactions(self):
         "Test MemoryCache with concurrent transactions"
         transaction1 = Transaction().start(DB_NAME, USER)
+        self.wait_cache_listening()
         self.addCleanup(transaction1.stop)
 
         cache.set('foo', 'bar')
@@ -176,6 +181,7 @@ class MemoryCacheTestCase(unittest.TestCase):
     def test_memory_cache_old_transaction(self):
         "Test old transaction does not fill cache"
         transaction1 = Transaction().start(DB_NAME, USER)
+        self.wait_cache_listening()
         self.addCleanup(transaction1.stop)
 
         # Clear cache from new transaction
@@ -220,6 +226,14 @@ class MemoryCacheChannelTestCase(MemoryCacheTestCase):
         if after is None:
             after = dt.datetime.now()
         while MemoryCache._clean_last < after:
+            time.sleep(.01)
+
+    def wait_cache_listening(self):
+        pid = os.getpid()
+        dbname = Transaction().database.name
+        listener = MemoryCache._listener.get((pid, dbname))
+        while (not getattr(listener, 'listening', False)
+                and listener.is_alive()):
             time.sleep(.01)
 
     @unittest.skip("No cache sync on transaction start with channel")
