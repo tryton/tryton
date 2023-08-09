@@ -207,7 +207,7 @@ class Sale(metaclass=PoolMeta):
                         and line.quantity >= 0
                         and not self.carrier):
                     raise SaleQuotationError(
-                        gettext('sale'
+                        gettext('sale_shipment_cost'
                             '.msg_sale_carrier_required_for_quotation',
                             sale=self.rec_name))
 
