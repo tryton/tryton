@@ -1466,9 +1466,10 @@ class ModelSQL(ModelStorage):
                         where=foreign_red_sql))
                 related_records = Model.browse([x[0] for x in cursor])
             else:
-                with inactive_records():
+                with without_check_access(), inactive_records():
                     related_records = Model.search(
-                        [(field_name, 'in', sub_ids)])
+                        [(field_name, 'in', sub_ids)],
+                        order=[])
             if Model == cls:
                 related_records = list(set(related_records) - set(records))
             return related_records
@@ -1493,14 +1494,11 @@ class ModelSQL(ModelStorage):
                     Model.delete(related_records)
 
             for Model, field_name in foreign_keys_tocheck:
-                with without_check_access(), inactive_records():
-                    if Model.search([
-                                (field_name, 'in', sub_ids),
-                                ], order=[]):
-                        error_args = Model.__names__(field_name)
-                        raise ForeignKeyError(
-                            gettext('ir.msg_foreign_model_exist',
-                                **error_args))
+                if get_related_records(Model, field_name, sub_ids):
+                    error_args = Model.__names__(field_name)
+                    raise ForeignKeyError(
+                        gettext('ir.msg_foreign_model_exist',
+                            **error_args))
 
             super(ModelSQL, cls).delete(list(sub_records))
 
