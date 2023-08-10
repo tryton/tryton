@@ -1555,6 +1555,7 @@ class ModelSQL(ModelStorage):
         if joined_domains is not None:
             union_tables = []
             for sub_domain in joined_domains:
+                sub_domain = [sub_domain]  # it may be a clause
                 tables, expression = cls.search_domain(sub_domain)
                 if rule_domain:
                     tables, domain_exp = cls.search_domain(
