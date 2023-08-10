@@ -1399,6 +1399,7 @@ class ModelSQL(ModelStorage):
     @no_table_query
     def delete(cls, records):
         transaction = Transaction()
+        in_max = transaction.database.IN_MAX
         cursor = transaction.connection.cursor()
         pool = Pool()
         Translation = pool.get('ir.translation')
@@ -1456,6 +1457,21 @@ class ModelSQL(ModelStorage):
 
         transaction.delete_records[cls.__name__].update(ids)
         cls.trigger_delete(records)
+
+        if len(records) > in_max:
+            # Clean self referencing foreign keys
+            # before deleting them by small groups
+            # Use the record id as value instead of NULL
+            # in case the field is required
+            foreign_fields_to_clean = [
+                fn for m, fn in foreign_keys_tocheck if m == cls]
+            if foreign_fields_to_clean:
+                for sub_ids in grouped_slice(ids):
+                    columns = [
+                        Column(table, n) for n in foreign_fields_to_clean]
+                    cursor.execute(*table.update(
+                            columns, [table.id] * len(foreign_fields_to_clean),
+                            where=reduce_ids(table.id, sub_ids)))
 
         def get_related_records(Model, field_name, sub_ids):
             if issubclass(Model, ModelSQL):

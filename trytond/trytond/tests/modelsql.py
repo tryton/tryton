@@ -162,6 +162,18 @@ class ModelSQLForeignKeyTarget(ModelSQL):
     __name__ = 'test.modelsql.fk.target'
 
 
+class ModelSQLForeignKeyTree(ModelSQL):
+    "ModelSQL Foreign Key Tree"
+    __name__ = 'test.modelsql.fk.tree'
+
+    parent_cascade = fields.Many2One(
+        'test.modelsql.fk.tree', "Parent", ondelete='CASCADE')
+    parent_null = fields.Many2One(
+        'test.modelsql.fk.tree', "Parent", ondelete='SET NULL')
+    parent_restrict = fields.Many2One(
+        'test.modelsql.fk.tree', "Parent", ondelete='RESTRICT')
+
+
 class NullOrder(ModelSQL):
     "Null Order"
     __name__ = 'test.modelsql.null_order'
@@ -246,6 +258,7 @@ def register(module):
         ModelSQLSearchOR2UnionOrderTarget,
         ModelSQLForeignKey,
         ModelSQLForeignKeyTarget,
+        ModelSQLForeignKeyTree,
         NullOrder,
         ModelTranslation,
         ModelCheck,

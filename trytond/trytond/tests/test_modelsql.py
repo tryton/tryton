@@ -527,6 +527,21 @@ class ModelSQLTestCase(unittest.TestCase):
         self.assertFalse(Model.search([]))
 
     @with_transaction()
+    def test_foreign_key_cascade_tree(self):
+        "Test tree Foreign key on delete cascade"
+        pool = Pool()
+        Model = pool.get('test.modelsql.fk.tree')
+
+        parent = Model()
+        parent.save()
+        child = Model(parent_cascade=parent)
+        child.save()
+
+        Model.delete([parent])
+
+        self.assertFalse(Model.search([]))
+
+    @with_transaction()
     def test_foreign_key_null(self):
         "Test Foreign key on delete set null"
         pool = Pool()
@@ -541,6 +556,21 @@ class ModelSQLTestCase(unittest.TestCase):
         Target.delete([target])
 
         self.assertFalse(record.target_null)
+
+    @with_transaction()
+    def test_foreign_key_null_tree(self):
+        "Test tree Foreign key on delete set null"
+        pool = Pool()
+        Model = pool.get('test.modelsql.fk.tree')
+
+        parent = Model()
+        parent.save()
+        child = Model(parent_null=parent)
+        child.save()
+
+        Model.delete([parent])
+
+        self.assertFalse(child.parent_null)
 
     @with_transaction()
     def test_foreign_key_null_required(self):
@@ -598,6 +628,56 @@ class ModelSQLTestCase(unittest.TestCase):
         err = cm.exception
         self.assertIn(Model.target_restrict.string, err.message)
         self.assertIn(Model.__doc__, err.message)
+
+    @with_transaction()
+    def test_foreign_key_restrict_tree(self):
+        "Test tree Foreign key on delete restrict"
+        pool = Pool()
+        Model = pool.get('test.modelsql.fk.tree')
+
+        parent = Model()
+        parent.save()
+        child = Model(parent_restrict=parent)
+        child.save()
+
+        with self.assertRaises(ForeignKeyError):
+            Model.delete([parent])
+
+    @with_transaction()
+    def test_foreign_key_restrict_tree_branch_full(self):
+        "Test tree Foreign key on delete restrict full branch"
+        pool = Pool()
+        Model = pool.get('test.modelsql.fk.tree')
+
+        # Delete all records at a time
+        in_max = Transaction().database.IN_MAX
+        self.addCleanup(setattr, Transaction().database, 'IN_MAX', in_max)
+        Transaction().database.IN_MAX = 2
+
+        parent = Model()
+        parent.save()
+        child = Model(parent_restrict=parent)
+        child.save()
+
+        Model.delete([parent, child])
+
+    @with_transaction()
+    def test_foreign_key_restrict_tree_branch_grouped(self):
+        "Test tree Foreign key on delete restrict grouped branch"
+        pool = Pool()
+        Model = pool.get('test.modelsql.fk.tree')
+
+        # Delete one record at a time
+        in_max = Transaction().database.IN_MAX
+        self.addCleanup(setattr, Transaction().database, 'IN_MAX', in_max)
+        Transaction().database.IN_MAX = 1
+
+        parent = Model()
+        parent.save()
+        child = Model(parent_restrict=parent)
+        child.save()
+
+        Model.delete([parent, child])
 
     @with_transaction()
     def test_null_ordering(self):
