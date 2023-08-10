@@ -1438,9 +1438,8 @@ class ModelSQL(ModelStorage):
         foreign_keys_toupdate = []
         foreign_keys_todelete = []
         for _, model in pool.iterobject():
-            if callable(getattr(model, 'table_query', None)):
-                continue
-            if not issubclass(model, ModelStorage):
+            if (not issubclass(model, ModelStorage)
+                    or callable(getattr(model, 'table_query', None))):
                 continue
             for field_name, field in model._fields.items():
                 if (isinstance(field, fields.Many2One)
@@ -1480,9 +1479,6 @@ class ModelSQL(ModelStorage):
             red_sql = reduce_ids(table.id, sub_ids)
 
             for Model, field_name in foreign_keys_toupdate:
-                if (not hasattr(Model, 'search')
-                        or not hasattr(Model, 'write')):
-                    continue
                 related_records = get_related_records(
                     Model, field_name, sub_ids)
                 if related_records:
@@ -1491,9 +1487,6 @@ class ModelSQL(ModelStorage):
                             })
 
             for Model, field_name in foreign_keys_todelete:
-                if (not hasattr(Model, 'search')
-                        or not hasattr(Model, 'delete')):
-                    continue
                 related_records = get_related_records(
                     Model, field_name, sub_ids)
                 if related_records:
