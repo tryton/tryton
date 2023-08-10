@@ -824,6 +824,26 @@ class ModelSQLTestCase(unittest.TestCase):
         self.assertNotIn('UNION', str(query_without_split))
 
     @with_transaction()
+    def test_search_or_to_union_with_in_clause(self):
+        "Test searching for 'OR'-ed domain with in clause"
+        pool = Pool()
+        Model = pool.get('test.modelsql.search.or2union')
+
+        record, = Model.create([{
+                    'name': "Foo",
+                    'targets': [('create', [{
+                                    'name': "Bar",
+                                    }]),
+                        ],
+                    }])
+
+        domain = ['OR',
+            ('name', '=', 'Bar'),
+            ('targets.id', 'in', [t.id for t in record.targets]),
+            ]
+        self.assertEqual(Model.search(domain), [record])
+
+    @with_transaction()
     def test_search_or_to_union_order_eager_field(self):
         """
         Searching for 'OR'-ed domain mixed with ordering on an eager field
