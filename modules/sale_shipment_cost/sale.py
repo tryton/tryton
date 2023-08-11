@@ -139,30 +139,34 @@ class Sale(metaclass=PoolMeta):
     @fields.depends('carrier', methods=['on_change_with_available_carriers'])
     def on_change_party(self):
         super(Sale, self).on_change_party()
-        self.available_carriers = self.on_change_with_available_carriers()
-        if self.available_carriers and (not self.carrier
-                or self.carrier not in self.available_carriers):
-            self.carrier = self.available_carriers[0]
-        elif not self.available_carriers:
-            self.carrier = None
-        if not self.carrier:
-            self.shipment_cost_method = None
-        elif self.party and self.party.sale_shipment_cost_method != 'default':
+        if self.party and self.party.sale_shipment_cost_method != 'default':
             self.shipment_cost_method = self.party.sale_shipment_cost_method
         else:
             self.shipment_cost_method = self.default_shipment_cost_method()
+        self.available_carriers = self.on_change_with_available_carriers()
+        if not self.available_carriers:
+            self.carrier = None
+        elif self.shipment_cost_method:
+            if (not self.carrier
+                    or self.carrier not in self.available_carriers):
+                self.carrier = self.available_carriers[0]
 
-    @fields.depends('carrier', methods=['on_change_with_available_carriers'])
+    @fields.depends(
+        'carrier', 'shipment_cost_method',
+        methods=['on_change_with_available_carriers'])
     def on_change_shipment_party(self):
         super(Sale, self).on_change_shipment_party()
         self.available_carriers = self.on_change_with_available_carriers()
-        if self.available_carriers and (not self.carrier
-                or self.carrier not in self.available_carriers):
-            self.carrier = self.available_carriers[0]
-        elif not self.available_carriers:
+        if not self.available_carriers:
             self.carrier = None
+        elif self.shipment_cost_method:
+            if (not self.carrier
+                    or self.carrier not in self.available_carriers):
+                self.carrier = self.available_carriers[0]
 
-    @fields.depends('carrier', methods=['on_change_with_available_carriers'])
+    @fields.depends(
+        'carrier', 'shipment_cost_method',
+        methods=['on_change_with_available_carriers'])
     def on_change_shipment_address(self):
         try:
             super_on_change = super(Sale, self).on_change_shipment_address
@@ -172,11 +176,12 @@ class Sale(metaclass=PoolMeta):
             super_on_change()
 
         self.available_carriers = self.on_change_with_available_carriers()
-        if self.available_carriers and (not self.carrier
-                or self.carrier not in self.available_carriers):
-            self.carrier = self.available_carriers[0]
-        elif not self.available_carriers:
+        if not self.available_carriers:
             self.carrier = None
+        elif self.shipment_cost_method:
+            if (not self.carrier
+                    or self.carrier not in self.available_carriers):
+                self.carrier = self.available_carriers[0]
 
     def check_for_quotation(self):
         super().check_for_quotation()
