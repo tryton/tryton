@@ -694,11 +694,9 @@ class Translation(ModelSQL, ModelView):
 
     @property
     def unique_key(self):
-        if self.type in {
-                'report', 'view', 'wizard_button', 'selection'}:
-            return (self.name, self.res_id, self.type, self.src)
-        elif self.type in ('field', 'model', 'help'):
+        if self.type == 'model':
             return (self.name, self.res_id, self.type)
+        return (self.name, self.res_id, self.type, self.src)
 
     @classmethod
     def from_poentry(cls, entry):
