@@ -4,4 +4,4 @@ build:
   tools:
     python: "3"
 sphinx:
-  configuration: modules/product_price_list/doc/conf.py
+  configuration: modules/product_price_list_cache/doc/conf.py
