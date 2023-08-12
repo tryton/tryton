@@ -102,6 +102,7 @@ class ProductCostHistory(ModelSQL, ModelView):
         user = User(transaction.user)
 
         tables, clause = Move.search_domain([
+                ('cost_price', '!=', None),
                 ('state', '=', 'done'),
                 Product._domain_moves_cost(),
                 ['OR',
