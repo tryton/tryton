@@ -145,6 +145,16 @@ check-cookiecutter-module:
     - changes:
         - cookiecutter-module/**/*
 
+check-template-modules:
+  extends: .check
+  cache:
+    paths:
+      - .cache/pip/http
+  before_script:
+    - pip install cookiecutter
+  script:
+    - .gitlab-scripts/check-template-modules.sh
+
 .test:
   stage: test
   rules:
