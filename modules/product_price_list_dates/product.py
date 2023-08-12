@@ -1,9 +1,16 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
+
+import datetime as dt
+
+from trytond.config import config
 from trytond.model import ModelView, fields
 from trytond.pool import Pool, PoolMeta
 from trytond.pyson import Eval, If
 from trytond.transaction import Transaction
+
+_cache_days = config.getint(
+    'product_price_list_dates', 'cache_days', default=2)
 
 
 class PriceList(metaclass=PoolMeta):
@@ -27,6 +34,32 @@ class PriceList(metaclass=PoolMeta):
         pattern = pattern.copy() if pattern is not None else {}
         pattern.setdefault('date', context.get('date'))
         return super().compute(product, quantity, uom, pattern=pattern)
+
+
+class PriceListCache(metaclass=PoolMeta):
+    __name__ = 'product.price_list.cache'
+
+    @classmethod
+    def patterns(cls, price_list, product):
+        pool = Pool()
+        Date = pool.get('ir.date')
+        today = Date.today()
+        for pattern in super().patterns(price_list, product):
+            if pattern is None:
+                pattern = {}
+            for days in range(_cache_days):
+                pattern['date'] = today + dt.timedelta(days=days)
+                yield pattern
+
+    @classmethod
+    def get(cls, price_list, product, pattern=None):
+        pool = Pool()
+        Date = pool.get('ir.date')
+        context = Transaction().context
+        today = Date.today()
+        pattern = pattern.copy() if pattern else {}
+        pattern['date'] = pattern.get('date', context.get('date')) or today
+        return super().get(price_list, product, pattern=pattern)
 
 
 class PriceListLine(metaclass=PoolMeta):

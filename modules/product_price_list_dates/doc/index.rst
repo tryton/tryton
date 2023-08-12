@@ -7,5 +7,6 @@ list lines.
 .. toctree::
    :maxdepth: 2
 
+   configuration
    design
    releases

@@ -15,6 +15,10 @@ def register():
         product.PriceListLineContext,
         module='product_price_list_dates', type_='model')
     Pool.register(
+        product.PriceListCache,
+        module='product_price_list_dates', type_='model',
+        depends=['product_price_list_cache'])
+    Pool.register(
         sale.Line,
         product.SaleContext,
         module='product_price_list_dates', type_='model',

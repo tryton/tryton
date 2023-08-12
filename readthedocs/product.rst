@@ -32,6 +32,9 @@ Product
 `Price List </projects/modules-product-price-list/en/latest>`_
     Computes price.
 
+`Price List Cache </projects/modules-product-price-list-cache/en/latest>`_
+    Pre-compute prices.
+
 `Price List Dates </projects/modules-product-price-list-dates/en/latest>`_
     Sets start and end date on price lists.
 

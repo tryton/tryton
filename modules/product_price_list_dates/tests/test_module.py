@@ -14,7 +14,8 @@ from trytond.transaction import Transaction
 class ProductPriceListDatesTestCase(CompanyTestMixin, ModuleTestCase):
     'Test Product Price List Dates module'
     module = 'product_price_list_dates'
-    extras = ['sale_price_list', 'purchase_price_list']
+    extras = [
+        'product_price_list_cache', 'sale_price_list', 'purchase_price_list']
 
     def create_price_list(self, field, date):
         pool = Pool()
@@ -117,6 +118,36 @@ class ProductPriceListDatesTestCase(CompanyTestMixin, ModuleTestCase):
                 self.assertEqual(
                     price_list.compute(product, 1, uom),
                     Decimal(9))
+
+    @with_transaction()
+    def test_price_list_cache(self):
+        "Test price list cache"
+        pool = Pool()
+        Cache = pool.get('product.price_list.cache')
+        Date = pool.get('ir.date')
+
+        today = Date.today()
+        tomorrow = today + datetime.timedelta(days=1)
+
+        company = create_company()
+        with set_company(company):
+            product = self.create_product()
+            uom = product.default_uom
+            price_list = self.create_price_list('start_date', tomorrow)
+
+            price_list.fill_cache()
+
+            caches = Cache.search([])
+            self.assertEqual(len(caches), 2)
+
+            for date, result in [
+                    (today, Decimal(10)),
+                    (tomorrow, Decimal(9)),
+                    ]:
+                with self.subTest(date=date):
+                    with Transaction().set_context(date=date):
+                        cache = Cache.get(price_list, product)
+                        self.assertEqual(cache.get_unit_price(1, uom), result)
 
 
 del ModuleTestCase

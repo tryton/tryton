@@ -2265,6 +2265,28 @@ test-modules-product_price_list-postgresql:
     PACKAGE: modules/product_price_list
     TAG_PATTERN: '/^product_price_list-.*/'
 
+check-doc-modules-product_price_list_cache:
+  extends: .check-doc
+  variables:
+    PACKAGE: modules/product_price_list_cache
+
+trigger-doc-build-modules-product_price_list_cache:
+  extends: .trigger-doc-build
+  variables:
+    PACKAGE: modules/product_price_list_cache
+
+test-modules-product_price_list_cache-sqlite:
+  extends: .test-sqlite
+  variables:
+    PACKAGE: modules/product_price_list_cache
+    TAG_PATTERN: '/^product_price_list_cache-.*/'
+
+test-modules-product_price_list_cache-postgresql:
+  extends: .test-postgresql
+  variables:
+    PACKAGE: modules/product_price_list_cache
+    TAG_PATTERN: '/^product_price_list_cache-.*/'
+
 check-doc-modules-product_price_list_dates:
   extends: .check-doc
   variables:
