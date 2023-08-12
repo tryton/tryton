@@ -85,6 +85,7 @@ class ProductCostHistory(ModelSQL, ModelView):
         database = Transaction().database
 
         tables, clause = Move.search_domain([
+                ('cost_price', '!=', None),
                 ('state', '=', 'done'),
                 Product()._domain_moves_cost(),
                 # Incoming moves
