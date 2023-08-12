@@ -5,7 +5,7 @@ build:
     python: "3"
 sphinx:
   {%- if not cookiecutter.prefix %}
-  configuration: modules/{{ cookiecutter.package_name }}/doc/conf.py
+  configuration: modules/{{ cookiecutter.module_name }}/doc/conf.py
   {%- else %}
   configuration: doc/conf.py
   {%- endif %}
