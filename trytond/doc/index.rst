@@ -57,6 +57,7 @@ Contents
 
    topics/index
    ref/index
+   modules/index
    tutorial/index
    releases
 
