@@ -362,12 +362,12 @@ class Database(DatabaseInterface):
                 if module in ('ir', 'res'):
                     state = 'to activate'
                 info = get_module_info(module)
-                cursor.execute('SELECT NEXTVAL(\'ir_module_id_seq\')')
-                module_id = cursor.fetchone()[0]
                 cursor.execute('INSERT INTO ir_module '
-                    '(id, create_uid, create_date, name, state) '
-                    'VALUES (%s, %s, now(), %s, %s)',
-                    (module_id, 0, module, state))
+                    '(create_uid, create_date, name, state) '
+                    'VALUES (%s, now(), %s, %s) '
+                    'RETURNING id',
+                    (0, module, state))
+                module_id = cursor.fetchone()[0]
                 for dependency in info.get('depends', []):
                     cursor.execute('INSERT INTO ir_module_dependency '
                         '(create_uid, create_date, module, name) '
