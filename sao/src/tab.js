@@ -1034,7 +1034,13 @@
                 return this.screen.model.execute('history_revisions',
                     [ids], this.screen.context)
                     .then(function(revisions) {
-                        new Sao.Window.Revision(revisions, set_revision(revisions));
+                        var revision = this.screen.context._datetime;
+                        if (revision) {
+                            // Remove a millisecond as microseconds are truncated
+                            revision.add(-1, 'milliseconds');
+                        }
+                        new Sao.Window.Revision(
+                            revisions, revision, set_revision(revisions));
                     });
             }.bind(this));
         },
