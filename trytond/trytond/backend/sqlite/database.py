@@ -594,7 +594,7 @@ class Database(DatabaseInterface):
         if type_ in self.TYPES_MAPPING:
             return self.TYPES_MAPPING[type_]
         if type_.startswith('VARCHAR'):
-            return SQLType('VARCHAR', 'VARCHAR')
+            return SQLType('VARCHAR', type_)
         return SQLType(type_, type_)
 
     def sql_format(self, type_, value):
