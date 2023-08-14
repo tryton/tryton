@@ -522,15 +522,12 @@ class Database(DatabaseInterface):
 
             ir_module = Table('ir_module')
             ir_module_dependency = Table('ir_module_dependency')
-            for module in ('ir', 'res'):
-                state = 'not activated'
-                if module in ('ir', 'res'):
-                    state = 'to activate'
+            for module in ['ir', 'res']:
                 info = get_module_info(module)
                 insert = ir_module.insert(
                     [ir_module.create_uid, ir_module.create_date,
                         ir_module.name, ir_module.state],
-                    [[0, CurrentTimestamp(), module, state]])
+                    [[0, CurrentTimestamp(), module, 'to activate']])
                 cursor.execute(*insert)
                 cursor.execute('SELECT last_insert_rowid()')
                 module_id, = cursor.fetchone()

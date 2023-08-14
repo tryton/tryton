@@ -357,16 +357,13 @@ class Database(DatabaseInterface):
                     if (len(line) > 0) and (not line.isspace()):
                         cursor.execute(line)
 
-            for module in ('ir', 'res'):
-                state = 'not activated'
-                if module in ('ir', 'res'):
-                    state = 'to activate'
+            for module in ['ir', 'res']:
                 info = get_module_info(module)
                 cursor.execute('INSERT INTO ir_module '
                     '(create_uid, create_date, name, state) '
                     'VALUES (%s, now(), %s, %s) '
                     'RETURNING id',
-                    (0, module, state))
+                    (0, module, 'to activate'))
                 module_id = cursor.fetchone()[0]
                 for dependency in info.get('depends', []):
                     cursor.execute('INSERT INTO ir_module_dependency '
