@@ -129,7 +129,7 @@ class CellCache(list):
             record = store.get_value(iter_, 0)
             counter = self.view.treeview.display_counter
             if (self.display_counters.get(record.id) != counter):
-                if getattr(cell, 'decorated', None):
+                if getattr(cell, 'decorated', None) or record.exception:
                     func(self, column, cell, store, iter_, user_data)
                 else:
                     cache = cls()

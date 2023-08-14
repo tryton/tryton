@@ -1790,6 +1790,11 @@
             }
         },
         collapse_row: function() {
+            for (const row of this.rows) {
+                if (row.exception) {
+                    row.record.cancel();
+                }
+            }
             this.update_expander(false);
             this.tree.expanded.delete(this);
             this.collapse_children();

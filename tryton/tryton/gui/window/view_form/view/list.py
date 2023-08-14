@@ -703,26 +703,22 @@ class ViewTree(View):
             self.record = model.get_value(iter_, 0)
             self.screen.switch_view('form')
             return True
-        iter_ = model.iter_children(iter_)
-        if not iter_:
-            return False
-        fields = [col.name for col in self.treeview.get_columns()
-                if col.name]
-        while iter_:
-            record = model.get_value(iter_, 0)
-            if not record.get_loaded(fields):
-                for field in fields:
-                    record[field]
-                    if record.exception:
-                        return True
-            iter_ = model.iter_next(iter_)
         return False
 
     def _row_expanded(self, treeview, iter_, path):
         # Force record_message
         self.screen.current_record = self.screen.current_record
 
-    _row_collapsed = _row_expanded
+    def _row_collapsed(self, treeview, iter_, path):
+        # Force record_message
+        self.screen.current_record = self.screen.current_record
+        model = treeview.get_model()
+        iter_ = model.iter_children(iter_)
+        while iter_:
+            record = model.get_value(iter_, 0)
+            if record.exception:
+                record.cancel()
+            iter_ = model.iter_next(iter_)
 
     def on_copy(self):
         for clipboard_type in [

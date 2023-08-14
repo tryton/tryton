@@ -317,10 +317,12 @@ class Record:
 
     def cancel(self):
         self._loaded.clear()
+        self.value = {}
         self.modified_fields.clear()
         self._timestamp = None
         self.button_clicks.clear()
         self.links_counts.clear()
+        self.exception = False
 
     def get_timestamp(self):
         result = {self.model_name + ',' + str(self.id): self._timestamp}

@@ -1316,10 +1316,12 @@
         },
         cancel: function() {
             this._loaded = {};
+            this._values = {};
             this.modified_fields = {};
             this._timestamp = null;
             this.button_clicks = {};
             this.links_counts = {};
+            this.exception = false;
         },
         _check_load: function(fields) {
             if (!this.get_loaded(fields)) {
