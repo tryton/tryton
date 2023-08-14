@@ -4,7 +4,10 @@ Account FR Chorus Invoice
 
 Imports::
 
+    >>> import datetime as dt
     >>> import os
+    >>> import time
+    >>> import uuid
     >>> from decimal import Decimal
 
     >>> from proteus import Model
@@ -16,6 +19,8 @@ Imports::
     ...     create_fiscalyear, create_chart, get_accounts)
     >>> from trytond.modules.account_invoice.tests.tools import (
     ...     set_fiscalyear_invoice_sequences)
+
+    >>> today = dt.date.today()
 
 Patch SIRET validation::
 
@@ -65,14 +70,6 @@ Create chart of accounts::
     ...         ('group.kind', '=', 'sale'),
     ...         ('name', 'ilike', '%normal%'),
     ...         ], limit=1)
-    >>> tax.template_override = True
-    >>> tax.unece_code = 'VAT'
-    >>> tax.unece_category_code = 'S'
-    >>> for child in tax.childs:
-    ...     child.template_override = True
-    ...     child.unece_code = tax.unece_code
-    ...     child.unece_category_code = tax.unece_category_code
-    >>> tax.save()
 
 Configure Chorus::
 
@@ -109,6 +106,11 @@ Create invoice::
     >>> line.quantity = 5
     >>> line.unit_price = Decimal('50.0000')
     >>> line.taxes.append(tax)
+    >>> invoice.save()
+    >>> Invoice.write([invoice], {
+    ...         'number': str(uuid.uuid4())[:20],
+    ...         'invoice_date': today,
+    ...         }, config._context)
     >>> invoice.click('post')
     >>> invoice.state
     'posted'
@@ -123,13 +125,48 @@ Check Chorus invoice::
 
 Send to Chorus::
 
-    >>> cron, = Cron.find([('method', '=', 'account.invoice.chorus|send')])
-    >>> cron.click('run_once')
-
-    >>> invoice_chorus.reload()
+    >>> invoice_chorus.click('send')
+    >>> invoice_chorus.state
+    'sent'
     >>> bool(invoice_chorus.number)
     True
     >>> bool(invoice_chorus.date)
     True
     >>> bool(invoice_chorus.data)
     True
+    >>> number = invoice_chorus.number
+
+Update from Chorus::
+
+    >>> while invoice_chorus.state == 'sent':
+    ...     invoice_chorus.click('update')
+    ...     time.sleep(1)
+    >>> invoice_chorus.state
+    'exception'
+
+Add code to tax::
+
+    >>> tax.template_override = True
+    >>> tax.unece_code = 'VAT'
+    >>> tax.unece_category_code = 'S'
+    >>> for child in tax.childs:
+    ...     child.template_override = True
+    ...     child.unece_code = tax.unece_code
+    ...     child.unece_category_code = tax.unece_category_code
+    >>> tax.save()
+
+Resend to Chorus::
+
+    >>> invoice_chorus.click('send')
+    >>> invoice_chorus.state
+    'sent'
+    >>> invoice_chorus.number != number
+    True
+
+Update from Chorus::
+
+    >>> while invoice_chorus.state == 'sent':
+    ...     invoice_chorus.click('update')
+    ...     time.sleep(1)
+    >>> invoice_chorus.state
+    'done'

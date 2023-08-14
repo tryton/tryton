@@ -7,4 +7,5 @@ this repository contains the full copyright notices and license terms. -->
     <field name="number"/>
     <field name="date"/>
     <field name="data"/>
+    <field name="state"/>
 </tree>

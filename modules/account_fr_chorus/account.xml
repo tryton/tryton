@@ -34,6 +34,34 @@ this repository contains the full copyright notices and license terms. -->
             <field name="view" ref="invoice_chorus_view_form"/>
             <field name="act_window" ref="act_invoice_chorus_form"/>
         </record>
+        <record model="ir.action.act_window.domain" id="act_invoice_chorus_form_domain_draft">
+            <field name="name">Draft</field>
+            <field name="sequence" eval="10"/>
+            <field name="domain" eval="[('state', '=', 'draft')]" pyson="1"/>
+            <field name="count" eval="True"/>
+            <field name="act_window" ref="act_invoice_chorus_form"/>
+        </record>
+        <record model="ir.action.act_window.domain" id="act_invoice_chorus_form_domain_sent">
+            <field name="name">Sent</field>
+            <field name="sequence" eval="20"/>
+            <field name="domain" eval="[('state', '=', 'sent')]" pyson="1"/>
+            <field name="count" eval="True"/>
+            <field name="act_window" ref="act_invoice_chorus_form"/>
+        </record>
+        <record model="ir.action.act_window.domain" id="act_invoice_chorus_form_domain_exception">
+            <field name="name">Exception</field>
+            <field name="sequence" eval="30"/>
+            <field name="domain" eval="[('state', '=', 'exception')]" pyson="1"/>
+            <field name="count" eval="True"/>
+            <field name="act_window" ref="act_invoice_chorus_form"/>
+        </record>
+        <record model="ir.action.act_window.domain" id="act_invoice_chorus_form_domain_all">
+            <field name="name">All</field>
+            <field name="sequence" eval="9999"/>
+            <field name="domain"></field>
+            <field name="act_window" ref="act_invoice_chorus_form"/>
+        </record>
+
         <menuitem
             parent="account_invoice.menu_invoice_out_form"
             action="act_invoice_chorus_form"
@@ -56,10 +84,28 @@ this repository contains the full copyright notices and license terms. -->
             <field name="perm_delete" eval="True"/>
         </record>
 
+        <record model="ir.model.button" id="invoice_chorus_send_button">
+            <field name="name">send</field>
+            <field name="string">Send</field>
+            <field name="model" search="[('model', '=', 'account.invoice.chorus')]"/>
+        </record>
+
+        <record model="ir.model.button" id="invoice_chorus_update_button">
+            <field name="name">update</field>
+            <field name="string">Update</field>
+            <field name="model" search="[('model', '=', 'account.invoice.chorus')]"/>
+        </record>
+
         <record model="ir.cron" id="cron_invoice_send">
             <field name="method">account.invoice.chorus|send</field>
             <field name="interval_number" eval="15"/>
             <field name="interval_type">minutes</field>
+        </record>
+
+        <record model="ir.cron" id="cron_invoice_update">
+            <field name="method">account.invoice.chorus|update</field>
+            <field name="interval_number" eval="1"/>
+            <field name="interval_type">hours</field>
         </record>
     </data>
 </tryton>

@@ -12,7 +12,7 @@ from sql.functions import CharLength
 
 from trytond.config import config
 from trytond.i18n import gettext
-from trytond.model import ModelSQL, ModelView, Unique, fields
+from trytond.model import ModelSQL, ModelView, Unique, Workflow, fields
 from trytond.model.exceptions import AccessError
 from trytond.modules.company.model import CompanyValueMixin
 from trytond.pool import Pool, PoolMeta
@@ -45,6 +45,11 @@ else:
     store_prefix = None
 
 logger = logging.getLogger(__name__)
+
+
+SUCCEEDED = {'IN_INTEGRE', 'IN_RECU', 'IN_TRAITE_SE_CPP'}
+FAILED = {
+    'IN_INCIDENTE', 'QP_IRRECEVABLE', 'QP_RECEVABLE_AVEC_ERREUR', 'IN_REJETE'}
 
 
 class _SyntaxMixin(object):
@@ -176,9 +181,11 @@ class Invoice(metaclass=PoolMeta):
         InvoiceChorus.save(invoices_chorus)
 
 
-class InvoiceChorus(ModelSQL, ModelView, _SyntaxMixin, metaclass=PoolMeta):
+class InvoiceChorus(
+        Workflow, ModelSQL, ModelView, _SyntaxMixin, metaclass=PoolMeta):
     "Invoice Chorus"
     __name__ = 'account.invoice.chorus'
+    _history = True
 
     invoice = fields.Many2One(
         'account.invoice', "Invoice", required=True,
@@ -190,12 +197,26 @@ class InvoiceChorus(ModelSQL, ModelView, _SyntaxMixin, metaclass=PoolMeta):
             ])
     syntax = fields.Selection('get_syntaxes', "Syntax", required=True)
     filename = fields.Function(fields.Char("Filename"), 'get_filename')
-    number = fields.Char("Number", readonly=True, strip=False)
-    date = fields.Date("Date", readonly=True)
+    number = fields.Char(
+        "Number", readonly=True, strip=False,
+        states={
+            'required': Eval('state') == 'sent',
+            })
+    date = fields.Date(
+        "Date", readonly=True,
+        states={
+            'required': Eval('state') == 'sent',
+            })
     data = fields.Binary(
         "Data", filename='filename',
         file_id=file_id, store_prefix=store_prefix, readonly=True)
     data_file_id = fields.Char("Data File ID", readonly=True)
+    state = fields.Selection([
+            ('draft', "Draft"),
+            ('sent', "Sent"),
+            ('done', "Done"),
+            ('exception', "Exception"),
+            ], "State", readonly=True, required=True, sort=False)
 
     @classmethod
     def __setup__(cls):
@@ -208,6 +229,37 @@ class InvoiceChorus(ModelSQL, ModelView, _SyntaxMixin, metaclass=PoolMeta):
                 'account_fr_chorus.msg_invoice_unique'),
             ]
 
+        cls._transitions |= {
+            ('draft', 'sent'),
+            ('sent', 'done'),
+            ('sent', 'exception'),
+            ('exception', 'sent'),
+            }
+        cls._buttons.update(
+            send={
+                'invisible': ~Eval('state').in_(['draft', 'exception']),
+                'depends': ['state'],
+                },
+            update={
+                'invisible': Eval('state') != 'sent',
+                'depends': ['state'],
+                },
+            )
+
+    @classmethod
+    def __register__(cls, module):
+        cursor = Transaction().connection.cursor()
+        table = cls.__table__()
+        table_h = cls.__table_handler__(module)
+
+        update_state = not table_h.column_exist('state')
+
+        super().__register__(module)
+
+        # Migration from 6.8: fill state
+        if update_state:
+            cursor.execute(*table.update([table.state], ['done']))
+
     @classmethod
     def default_syntax(cls):
         pool = Pool()
@@ -218,6 +270,10 @@ class InvoiceChorus(ModelSQL, ModelView, _SyntaxMixin, metaclass=PoolMeta):
     def get_filename(self, name):
         filename = EDOC2FILENAME[self.syntax] % self.invoice.number
         return filename.replace('/', '-')
+
+    @classmethod
+    def default_state(cls):
+        return 'draft'
 
     @classmethod
     def order_number(cls, tables):
@@ -254,6 +310,8 @@ class InvoiceChorus(ModelSQL, ModelView, _SyntaxMixin, metaclass=PoolMeta):
             }
 
     @classmethod
+    @ModelView.button
+    @Workflow.transition('sent')
     def send(cls, records=None):
         """Send invoice to Chorus
 
@@ -264,11 +322,10 @@ class InvoiceChorus(ModelSQL, ModelView, _SyntaxMixin, metaclass=PoolMeta):
         transaction = Transaction()
 
         if not records:
-            records = cls.search(['OR',
-                    ('number', '=', None),
-                    ('number', '=', ''),
+            records = cls.search([
                     ('invoice.company', '=',
                         transaction.context.get('company')),
+                    ('state', '=', 'draft'),
                     ])
 
         sessions = defaultdict(Credential.get_session)
@@ -291,6 +348,7 @@ class InvoiceChorus(ModelSQL, ModelView, _SyntaxMixin, metaclass=PoolMeta):
                     record.number = resp['numeroFluxDepot']
                     record.date = datetime.datetime.strptime(
                         resp['dateDepot'], '%Y-%m-%d').date()
+                    record.state = 'sent'
                     record.save()
             Transaction().commit()
 
@@ -305,3 +363,54 @@ class InvoiceChorus(ModelSQL, ModelView, _SyntaxMixin, metaclass=PoolMeta):
             'syntaxeFlux': EDOC2SYNTAX[self.syntax],
             'avecSignature': False,
             }
+
+    @classmethod
+    @ModelView.button
+    def update(cls, records=None):
+        "Update state from Chorus"
+        pool = Pool()
+        Credential = pool.get('account.credential.chorus')
+        transaction = Transaction()
+
+        if not records:
+            records = cls.search([
+                    ('invoice.company', '=',
+                        transaction.context.get('company')),
+                    ('state', '=', 'sent'),
+                    ])
+
+        sessions = defaultdict(Credential.get_session)
+        succeeded, failed = [], []
+        for record in records:
+            if not record.number:
+                continue
+            context = record._send_context()
+            with transaction.set_context(**context):
+                payload = {
+                    'numeroFluxDepot': record.number,
+                    }
+                resp = Credential.post(
+                    'cpro/transverses/v1/consulterCR', payload,
+                    session=sessions[tuple(context.items())])
+                if resp['codeRetour']:
+                    logger.info(
+                        "Error when retrieve information about %d: %s",
+                        record.id, resp['libelle'])
+                elif resp['etatCourantFlux'] in SUCCEEDED:
+                    succeeded.append(record)
+                elif resp['etatCourantFlux'] in FAILED:
+                    failed.append(record)
+        if failed:
+            cls.fail(failed)
+        if succeeded:
+            cls.succeed(succeeded)
+
+    @classmethod
+    @Workflow.transition('done')
+    def succeed(cls, records):
+        pass
+
+    @classmethod
+    @Workflow.transition('exception')
+    def fail(cls, records):
+        pass

@@ -12,5 +12,12 @@ this repository contains the full copyright notices and license terms. -->
     <field name="date"/>
 
     <label name="data"/>
-    <field name="data"/>
+    <field name="data" colspan="3"/>
+
+    <label name="state"/>
+    <field name="state"/>
+    <group col="-1" colspan="2" id="buttons">
+        <button name="send"/>
+        <button name="update"/>
+    </group>
 </form>

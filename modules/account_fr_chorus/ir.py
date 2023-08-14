@@ -9,5 +9,8 @@ class Cron(metaclass=PoolMeta):
     @classmethod
     def __setup__(cls):
         super().__setup__()
-        cls.method.selection.append(
-            ('account.invoice.chorus|send', "Send invoices to Chorus"))
+        cls.method.selection.extend([
+                ('account.invoice.chorus|send', "Send invoices to Chorus"),
+                ('account.invoice.chorus|update',
+                    "Update invoices from Chorus"),
+                ])
