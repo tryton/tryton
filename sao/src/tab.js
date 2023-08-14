@@ -1005,6 +1005,7 @@
                         revision.add(1, 'milliseconds');
                     }
                     if ((this.screen.current_view.view_type == 'form') &&
+                            revision &&
                             (revision < revisions[revisions.length - 1][0])) {
                         revision = revisions[revisions.length - 1][0];
                     }
