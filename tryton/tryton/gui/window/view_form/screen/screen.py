@@ -18,6 +18,7 @@ from tryton.action import Action
 from tryton.common import (
     MODELACCESS, RPCContextReload, RPCException, RPCExecute, node_attributes,
     sur, warning)
+from tryton.common.domain_inversion import canonicalize
 from tryton.common.domain_parser import DomainParser
 from tryton.config import CONFIG
 from tryton.gui.window.infobar import InfoBar
@@ -42,6 +43,7 @@ class Screen:
 
     def __init__(self, model_name, **attributes):
         context = attributes.get('context', {})
+        self._current_domain = []
         self.limit = attributes.get('limit', CONFIG['client.limit'])
         self.offset = 0
         self.windows = []
@@ -288,6 +290,9 @@ class Screen:
             self.new_group(context)
 
         domain = self.search_domain(search_string, True)
+        if (canonicalized := canonicalize(domain)) != self._current_domain:
+            self._current_domain = canonicalized
+            self.offset = 0
 
         context = self.context
         if self.screen_container.but_active.get_active():

@@ -1,3 +1,4 @@
+* Reset search offset when domain has changed
 * Add a canonicalize function for domains
 * Support PYSON comparison of timedelta
 * Support encoding timedelta into PYSON TimeDelta

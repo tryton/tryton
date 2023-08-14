@@ -807,6 +807,7 @@
             } else {
                 this.limit = attributes.limit;
             }
+            this._current_domain = [];
             this.offset = 0;
             this.order = this.default_order = attributes.order;
             var access = Sao.common.MODELACCESS.get(model_name);
@@ -1034,7 +1035,13 @@
                     this.local_context, screen_context));
             }
 
+            var inversion = Sao.common.DomainInversion();
             var domain = this.search_domain(search_string, true);
+            var canonicalized = inversion.canonicalize(domain);
+            if (!Sao.common.compare(canonicalized, this._current_domain)) {
+                this._current_domain = canonicalized;
+                this.offset = 0;
+            }
 
             var context = this.context;
             if (this.screen_container.but_active.hasClass('active')) {
