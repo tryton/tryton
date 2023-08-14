@@ -110,6 +110,9 @@ Referential
 Administration
 ^^^^^^^^^^^^^^
 
+`Resource </projects/server/en/latest/modules/res>`_
+    Manage users and groups.
+
 :ref:`Authentication <index-authentication>`
     Extends authentication mechanism.
 
