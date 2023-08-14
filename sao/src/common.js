@@ -2436,6 +2436,63 @@
                     e => this.localize_domain(e, field_name, strip_target));
             }
         },
+
+        _sort_key: function(domain) {
+            if (!domain.length) {
+                return [0, domain];
+            } else if (this.is_leaf(domain)) {
+                if (domain[2] === null) {
+                    domain = domain.slice();
+                    domain[2] = Number.NEGATIVE_INFINITY;
+                }
+                return [1, domain];
+            } else if (~['AND', 'OR'].indexOf(domain)) {
+                return [0, domain];
+            } else {
+                var content = domain.map(this._sort_key.bind(this));
+                var nestedness = Math.max(...content.map(e => e[0]));
+                return [nestedness + 1, content];
+            }
+        },
+
+        _domain_compare: function(d1, d2) {
+            if ((d1 instanceof Array) && (d2 instanceof Array)) {
+                var elem_comparison;
+                var min_len = Math.min(d1.length, d2.length);
+                for (var i = 0; i < min_len; i++) {
+                    elem_comparison = this._domain_compare(d1[i], d2[i]);
+                    if (elem_comparison != 0) {
+                        return elem_comparison;
+                    }
+                }
+                if (d1.length == d2.length) {
+                    return 0;
+                } else {
+                    return d1.length < d2.length ? -1 : 1;
+                }
+            } else if (d1 == d2) {
+                return 0;
+            } else {
+                return d1 < d2 ? -1 : 1;
+            }
+        },
+
+        sort: function(domain) {
+            if (!domain.length) {
+                return [];
+            } else if (this.is_leaf(domain)) {
+                return domain;
+            } else if (~['AND', 'OR'].indexOf(domain)) {
+                return domain;
+            } else {
+                var sorted_elements = domain.map(this.sort.bind(this));
+                sorted_elements.sort(
+                    (d1, d2) => this._domain_compare(this._sort_key(d1), this._sort_key(d2))
+                );
+                return sorted_elements;
+            }
+        },
+
         prepare_reference_domain: function(domain, reference) {
 
             var value2reference = function(value) {
@@ -2648,6 +2705,25 @@
             } else {
                 return this.simplify_nested(this.simplify_duplicate(domain));
             }
+        },
+        simplify_AND: function(domain) {
+            if (this.is_leaf(domain)) {
+                return domain;
+            } else if (domain == 'OR') {
+                return domain;
+            } else {
+                var simplified = [];
+                for (const e of domain) {
+                    if (e == 'AND') {
+                        continue;
+                    }
+                    simplified.push(this.simplify_AND(e));
+                }
+                return simplified;
+            }
+        },
+        canonicalize: function(domain) {
+            return this.simplify_AND(this.sort(this.simplify(domain)));
         },
         merge: function(domain, domoperator) {
             if (jQuery.isEmptyObject(domain) ||

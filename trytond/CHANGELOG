@@ -1,3 +1,4 @@
+* Add a canonicalize function for domains
 * Enforce record rules when reading only non SQL fields (#12428)
 * Support PYSON comparison of timedelta
 * Support encoding timedelta into PYSON TimeDelta

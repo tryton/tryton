@@ -17,9 +17,9 @@ from trytond.tools import (
     reduce_ids, remove_forbidden_chars, rstrip_wildcard, slugify,
     sortable_values, strip_wildcard, timezone, unescape_wildcard)
 from trytond.tools.domain_inversion import (
-    concat, domain_inversion, eval_domain, extract_reference_models,
-    localize_domain, merge, parse, prepare_reference_domain, simplify,
-    unique_value)
+    canonicalize, concat, domain_inversion, eval_domain,
+    extract_reference_models, localize_domain, merge, parse,
+    prepare_reference_domain, simplify, sort, unique_value)
 from trytond.tools.immutabledict import ImmutableDict
 from trytond.tools.logging import format_args
 from trytond.tools.string_ import LazyString, StringPartitioned
@@ -1098,6 +1098,59 @@ class DomainInversionTestCase(unittest.TestCase):
         self.assertEqual(
             extract_reference_models(domain, 'x'), {'model_A', 'model_B'})
         self.assertEqual(extract_reference_models(domain, 'y'), set())
+
+    def test_sort(self):
+        "Test sorting domain"
+        for (domain, expected) in [
+                ([], []),
+                (['AND'], ['AND']),
+                (['OR'], ['OR']),
+                ([('foo', '=', 1)], [('foo', '=', 1)]),
+                ([('foo', '=', 1000), ('foo', '=', 0)],
+                    [('foo', '=', 0), ('foo', '=', 1000)]),
+                ([('foo', '=', 1), ('foo', '=', None)],
+                    [('foo', '=', None), ('foo', '=', 1)]),
+                ([('foo', '=', 1), []], [[], ('foo', '=', 1)]),
+                ([[[[('foo', '=', 1)]]], [[('foo', '=', 1)]]],
+                    [[[('foo', '=', 1)]], [[[('foo', '=', 1)]]]]),
+                ([[('foo', '=', 1), ('bar', '=', 2)],
+                    [('foo', '=', 1), ('bar', '=', 2), ('baz', '=', 3)]],
+                    [[('bar', '=', 2), ('baz', '=', 3), ('foo', '=', 1)],
+                        [('bar', '=', 2), ('foo', '=', 1)]]),
+                (['OR', ('foo', '=', 1), ('foo', '=', None),
+                    ['AND', ('bar', '=', 2), ('baz', '=', 3)]],
+                    ['OR', ('foo', '=', None), ('foo', '=', 1),
+                        ['AND', ('bar', '=', 2), ('baz', '=', 3)]]),
+                ]:
+            with self.subTest(domain=domain):
+                self.assertEqual(sort(domain), expected)
+
+    def test_canonicalize(self):
+        "Test domain canonicalization"
+        for (domain, expected) in [
+                ([], []),
+                (['AND'], []),
+                (['OR'], []),
+                ([('foo', '=', 1), ('bar', '=', 2)],
+                    [('bar', '=', 2), ('foo', '=', 1)]),
+                ([[('foo', '=', 1)]], [('foo', '=', 1)]),
+                (['AND', ['OR', ('bar', '=', 2), ('baz', '=', 3)],
+                    ('foo', '=', 1)],
+                    [('foo', '=', 1),
+                        ['OR', ('bar', '=', 2), ('baz', '=', 3)]]),
+                (['OR', ['AND', ('bar', '=', 2), ('baz', '=', 3)],
+                    ('foo', '=', 1)],
+                    ['OR', ('foo', '=', 1),
+                        [('bar', '=', 2), ('baz', '=', 3)]]),
+                (['AND', ['AND', ('bar', '=', 2), ('baz', '=', 3)],
+                    ('foo', '=', 1)],
+                    [('bar', '=', 2), ('baz', '=', 3), ('foo', '=', 1)]),
+                (['OR', ['OR', ('bar', '=', 2), ('baz', '=', 3)],
+                    ('foo', '=', 1)],
+                    ['OR', ('bar', '=', 2), ('baz', '=', 3), ('foo', '=', 1)]),
+                ]:
+            with self.subTest(domain=domain):
+                self.assertEqual(canonicalize(domain), expected)
 
 
 @unittest.skipUnless(barcode, "required barcode")

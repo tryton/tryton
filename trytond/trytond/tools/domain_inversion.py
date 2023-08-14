@@ -284,6 +284,34 @@ def localize_domain(domain, field_name=None, strip_target=False):
             for part in domain]
 
 
+def _sort_key(domain):
+    if not domain:
+        return (0, tuple())
+    elif is_leaf(domain):
+        if domain[2] is None:
+            domain = list(domain).copy()
+            domain[2] = float('-inf')
+        return (1, tuple(domain))
+    elif domain in ['AND', 'OR']:
+        return (0, domain)
+    else:
+        content = tuple(_sort_key(e) for e in domain)
+        nestedness = max(k[0] for k in content)
+        return (nestedness + 1, content)
+
+
+def sort(domain):
+    "Sort a domain"
+    if not domain:
+        return domain
+    elif is_leaf(domain):
+        return domain
+    elif domain in ['AND', 'OR']:
+        return domain
+    else:
+        return sorted((sort(e) for e in domain), key=_sort_key)
+
+
 def bool_operator(domain):
     "Returns the boolean operator used by a domain"
     bool_op = 'AND'
@@ -340,6 +368,16 @@ def simplify_duplicate(domain):
     return dedup_branches
 
 
+def simplify_AND(domain):
+    """Remove useless ANDs"""
+    if is_leaf(domain):
+        return domain
+    elif domain == 'OR':
+        return domain
+    else:
+        return [simplify_AND(e) for e in domain if e != 'AND']
+
+
 def simplify(domain):
     """Remove duplicate expressions and useless OR/AND"""
     if is_leaf(domain):
@@ -348,6 +386,15 @@ def simplify(domain):
         return domain
     else:
         return simplify_nested(simplify_duplicate(domain))
+
+
+def canonicalize(domain):
+    """Returns the canonical version of a domain.
+
+    The canonical version of a domain is one where the domain is both
+    simplified and sorted
+    """
+    return simplify_AND(sort(simplify(domain)))
 
 
 def merge(domain, domoperator=None):

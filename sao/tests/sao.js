@@ -3116,6 +3116,65 @@
             []));
     });
 
+    QUnit.test('DomainInversion.sort', function() {
+        var domain_inversion = new Sao.common.DomainInversion();
+        var sort = domain_inversion.sort.bind(domain_inversion);
+        var tests = [
+            [[], []],
+            [['AND'], ['AND']],
+            [['OR'], ['OR']],
+            [[['foo', '=', 1]], [['foo', '=', 1]]],
+            [[['foo', '=', 1000], ['foo', '=', 0]],
+                [['foo', '=', 0], ['foo', '=', 1000]]],
+            [[['foo', '=', 1], ['foo', '=', null]],
+                [['foo', '=', null], ['foo', '=', 1]]],
+            [[['foo', '=', 1], []], [[], ['foo', '=', 1]]],
+            [[[[[['foo', '=', 1]]]], [[['foo', '=', 1]]]],
+                [[[['foo', '=', 1]]], [[[['foo', '=', 1]]]]]],
+            [[[['foo', '=', 1], ['bar', '=', 2]],
+                [['foo', '=', 1], ['bar', '=', 2], ['baz', '=', 3]]],
+                [[['bar', '=', 2], ['baz', '=', 3], ['foo', '=', 1]],
+                    [['bar', '=', 2], ['foo', '=', 1]]]],
+            [['OR', ['foo', '=', 1], ['foo', '=', null],
+                ['AND', ['bar', '=', 2], ['baz', '=', 3]]],
+                ['OR', ['foo', '=', null], ['foo', '=', 1],
+                    ['AND', ['bar', '=', 2], ['baz', '=', 3]]]],
+        ];
+        for (const [domain, expected] of tests) {
+            QUnit.deepEqual(expected, sort(domain));
+        }
+    });
+
+    QUnit.test('DomainInversion.canonicalize', function() {
+        var domain_inversion = new Sao.common.DomainInversion();
+        var canonicalize = domain_inversion.canonicalize.bind(domain_inversion);
+        var tests = [
+                [[], []],
+                [['AND'], []],
+                [['OR'], []],
+                [[['foo', '=', 1], ['bar', '=', 2]],
+                    [['bar', '=', 2], ['foo', '=', 1]]],
+                [[[['foo', '=', 1]]], [['foo', '=', 1]]],
+                [['AND', ['OR', ['bar', '=', 2], ['baz', '=', 3]],
+                        ['foo', '=', 1]],
+                    [['foo', '=', 1],
+                        ['OR', ['bar', '=', 2], ['baz', '=', 3]]]],
+                [['OR', ['AND', ['bar', '=', 2], ['baz', '=', 3]],
+                        ['foo', '=', 1]],
+                    ['OR', ['foo', '=', 1],
+                        [['bar', '=', 2], ['baz', '=', 3]]]],
+                [['AND', ['AND', ['bar', '=', 2], ['baz', '=', 3]],
+                        ['foo', '=', 1]],
+                    [['bar', '=', 2], ['baz', '=', 3], ['foo', '=', 1]]],
+                [['OR', ['OR', ['bar', '=', 2], ['baz', '=', 3]],
+                        ['foo', '=', 1]],
+                    ['OR', ['bar', '=', 2], ['baz', '=', 3], ['foo', '=', 1]]],
+        ];
+        for (const [domain, expected] of tests) {
+            QUnit.deepEqual(expected, canonicalize(domain));
+        }
+    });
+
     QUnit.test('DomainParser.completion', function() {
         var compare = Sao.common.compare;
         var parser = new Sao.common.DomainParser({

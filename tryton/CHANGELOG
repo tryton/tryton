@@ -1,3 +1,4 @@
+* Add a canonicalize function for domains
 * Support PYSON comparison of timedelta
 * Support encoding timedelta into PYSON TimeDelta
 * Transfer configuration, profiles and plugins from previous version
