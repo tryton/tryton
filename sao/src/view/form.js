@@ -2471,11 +2471,10 @@ function eval_pyson(value){
             this.entry.on('keydown', this.key_press.bind(this));
 
             if (!attributes.completion || attributes.completion == "1") {
-                Sao.common.get_completion(group,
+                this.wid_completion = Sao.common.get_completion(
+                    group,
                     this._update_completion.bind(this),
-                    this._completion_match_selected.bind(this),
-                    this._completion_action_activated.bind(this));
-                this.wid_completion = true;
+                    this._completion_match_selected.bind(this));
             }
             this.el.change(this.focus_out.bind(this));
             this._readonly = false;
@@ -2837,17 +2836,10 @@ function eval_pyson(value){
             }
         },
         _set_completion: function() {
-            var search = this.el.find('.action-search');
-            if (this.read_access) {
-                search.removeClass('disabled');
-            } else {
-                search.addClass('disabled');
-            }
-            var create = this.el.find('.action-create');
-            if (this.create_access) {
-                create.removeClass('disabled');
-            } else {
-                create.addClass('disabled');
+            if (this.wid_completion) {
+                this.wid_completion.set_actions(
+                    this._completion_action_activated.bind(this),
+                    this.read_access, this.create_access);
             }
         },
         _update_completion: function(text) {
@@ -3143,12 +3135,12 @@ function eval_pyson(value){
                 }).appendTo(group);
 
                 if (!attributes.completion || attributes.completion == '1') {
-                    Sao.common.get_completion(this.wid_text,
+                    this.wid_completion = Sao.common.get_completion(
+                        this.wid_text,
                         this._update_completion.bind(this),
                         this._completion_match_selected.bind(this),
                         this._completion_action_activated.bind(this),
                         this.read_access, this.create_access);
-                    this.wid_completion = true;
                 }
 
                 buttons =  jQuery('<div/>', {
@@ -3759,12 +3751,12 @@ function eval_pyson(value){
             this.entry.on('keydown', this.key_press.bind(this));
 
             if (!attributes.completion || attributes.completion == '1') {
-                Sao.common.get_completion(group,
+                this.wid_completion = Sao.common.get_completion(
+                    group,
                     this._update_completion.bind(this),
                     this._completion_match_selected.bind(this),
                     this._completion_action_activated.bind(this),
                     this.read_access, this.create_access);
-                this.wid_completion = true;
             }
 
             var buttons = jQuery('<div/>', {
@@ -4707,10 +4699,10 @@ function eval_pyson(value){
             }).appendTo(group);
 
             if (!attributes.completion || attributes.completion == '1') {
-                Sao.common.get_completion(group,
+                this.wid_completion = Sao.common.get_completion(
+                    group,
                     this._update_completion.bind(this),
                     this._completion_match_selected.bind(this));
-                this.wid_completion = true;
             }
 
             this.but_add = jQuery('<button/>', {

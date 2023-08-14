@@ -3745,9 +3745,16 @@
                 Sao.common.set_overflow(this.input, 'show');
             });
         },
-        set_actions: function(actions, action_activated) {
+        set_actions: function(action_activated, search, create) {
             if (action_activated !== undefined) {
                 this.action_activated = action_activated;
+            }
+            var actions = [];
+            if (search || search == undefined) {
+                actions.push(['search', Sao.i18n.gettext('Search...')]);
+            }
+            if (create || create == undefined) {
+                actions.push(['create', Sao.i18n.gettext('Create...')]);
             }
             this.menu.find('li.action').remove();
             if (jQuery.isEmptyObject(actions)) {
@@ -3845,15 +3852,9 @@
         var completion = new Sao.common.InputCompletion(
                 el, source, match_selected, format);
         if (action_activated) {
-            var actions = [];
-            if (search || search == undefined) {
-                actions.push(['search', Sao.i18n.gettext('Search...')]);
-            }
-            if (create || create == undefined) {
-                actions.push(['create', Sao.i18n.gettext('Create...')]);
-            }
-            completion.set_actions(actions, action_activated);
+            completion.set_actions(action_activated, search, create);
         }
+        return completion;
     };
 
     Sao.common.update_completion = function(
