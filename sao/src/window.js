@@ -951,7 +951,7 @@
     });
 
     Sao.Window.Revision = Sao.class_(Object, {
-        init: function(revisions, callback) {
+        init: function(revisions, revision, callback) {
             this.callback = callback;
             var dialog = new Sao.Dialog(
                     Sao.i18n.gettext('Revision'), '', 'lg');
@@ -992,14 +992,17 @@
                 value: null,
                 text: ''
             }));
-            for (let revision of revisions) {
-                var name = revision[2];
-                revision = revision[0];
+            for (let rev of revisions) {
+                var name = rev[2];
+                rev = rev[0];
                 this.select.append(jQuery('<option/>', {
-                    value: revision.valueOf(),
+                    value: rev.valueOf(),
                     text: Sao.common.format_datetime(
-                        date_format + ' ' + time_format, revision) + ' ' + name,
+                        date_format + ' ' + time_format, rev) + ' ' + name,
                 }));
+            }
+            if (revision) {
+                this.select.val(revision.valueOf());
             }
             this.el.modal('show');
             this.el.on('hidden.bs.modal', function(event) {
