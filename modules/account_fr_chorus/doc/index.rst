@@ -1,9 +1,14 @@
+############################
 Account French Chorus Module
 ############################
 
-The account_fr_chorus module allows to send invoices through the `Chorus Pro
-<https://chorus-pro.gouv.fr/>`_ portal.
+The *Account French Chorus Module* allows to send invoices through the `Chorus
+Pro <https://chorus-pro.gouv.fr/>`_ portal.
 
-If the party is checked for Chorus Pro, all posted customer invoices are queued to be sent.
-A cron job will send them every 15 minutes by default using the credential from
-the accounting configuration.
+.. toctree::
+   :maxdepth: 2
+
+   setup
+   usage
+   design
+   releases
