@@ -647,23 +647,42 @@ class TrigramTranslator(IndexMixin, IndexTranslatorInterface):
 
     @classmethod
     def score(cls, index):
-        has_trigram = Transaction().database.has_extension('pg_trgm')
-        if not has_trigram:
+        database = Transaction().database
+        has_btree_gin = database.has_extension('btree_gin')
+        has_trigram = database.has_extension('pg_trgm')
+        if not has_btree_gin and not has_trigram:
             return 0
 
         score = 0
         for _, usage in index.expressions:
             if usage.__class__.__name__ == 'Similarity':
-                score += 100
+                if has_trigram:
+                    score += 100
+                else:
+                    score += 50
+            elif has_btree_gin:
+                if usage.__class__.__name__ == 'Range':
+                    score += 90
+                elif usage.__class__.__name__ == 'Equality':
+                    score += 40
             else:
                 return 0
         return score
 
     @classmethod
-        return [
-            (e, u) for e, u in index.expressions
-            if u.__class__.__name__ == 'Similarity']
     def _get_indexed_expressions(cls, index):
+        database = Transaction().database
+        has_btree_gin = database.has_extension('btree_gin')
+        has_trigram = database.has_extension('pg_trgm')
+
+        def filter(usage):
+            if usage.__class__.__name__ == 'Similarity':
+                return has_trigram
+            elif usage.__class__.__name__ in {'Range', 'Equality'}:
+                return has_btree_gin
+            else:
+                return False
+        return [(e, u) for e, u in index.expressions if filter(u)]
 
     @classmethod
     def _get_expression_variables(cls, expression, usage):
