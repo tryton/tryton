@@ -1129,27 +1129,29 @@
                     delete this._values[fieldname + '.'];
                 }
             }
-            var result;
+            var changed;
             fieldnames = Object.keys(fieldnames);
             if (fieldnames.length) {
                 try {
                     if ((fieldnames.length == 1) ||
                         (values.id === undefined)) {
-                        result = {};
+                        changed = {};
                         for (const fieldname of fieldnames) {
-                            result[fieldname] = this.model.execute(
-                                'on_change_with_' + fieldname,
-                                [values], this.get_context(), false);
+                            changed = jQuery.extend(
+                                changed,
+                                this.model.execute(
+                                    'on_change_with_' + fieldname,
+                                    [values], this.get_context(), false));
                         }
                     } else {
-                        result = this.model.execute(
+                        changed = this.model.execute(
                             'on_change_with',
                             [values, fieldnames], this.get_context(), false);
                     }
                 } catch (e) {
                     return;
                 }
-                this.set_on_change(result);
+                this.set_on_change(changed);
             }
             if (!jQuery.isEmptyObject(later)) {
                 values = {};
@@ -1164,21 +1166,23 @@
                 try {
                     if ((fieldnames.length == 1) ||
                         (values.id === undefined)) {
-                        result = {};
+                        changed = {};
                         for (const fieldname of fieldnames) {
-                            result[fieldname] = this.model.execute(
-                                'on_change_with_' + fieldname,
-                                [values], this.get_context(), false);
+                            changed = jQuery.extend(
+                                changed,
+                                this.model.execute(
+                                    'on_change_with_' + fieldname,
+                                    [values], this.get_context(), false));
                         }
                     } else {
-                        result = this.model.execute(
+                        changed = this.model.execute(
                             'on_change_with',
                             [values, fieldnames], this.get_context(), false);
                     }
                 } catch (e) {
                     return;
                 }
-                this.set_on_change(result);
+                this.set_on_change(changed);
             }
         },
         set_on_change: function(values) {

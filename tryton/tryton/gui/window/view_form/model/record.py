@@ -621,19 +621,19 @@ class Record:
         if fieldnames:
             try:
                 if len(fieldnames) == 1 or 'id' not in values:
-                    result = {}
+                    changed = {}
                     for fieldname in fieldnames:
-                        result[fieldname] = RPCExecute(
-                            'model', self.model_name,
-                            'on_change_with_' + fieldname,
-                            values, context=self.get_context())
+                        changed.update(RPCExecute(
+                                'model', self.model_name,
+                                'on_change_with_' + fieldname,
+                                values, context=self.get_context()))
                 else:
-                    result = RPCExecute(
+                    changed = RPCExecute(
                         'model', self.model_name, 'on_change_with',
                         values, list(fieldnames), context=self.get_context())
             except RPCException:
                 return
-            self.set_on_change(result)
+            self.set_on_change(changed)
         if later:
             values = {}
             for fieldname in later:
@@ -642,19 +642,19 @@ class Record:
                 values.update(self._get_on_change_args(on_change_with))
             try:
                 if len(later) == 1 or 'id' not in values:
-                    result = {}
+                    changed = {}
                     for fieldname in fieldnames:
-                        result[fieldname] = RPCExecute(
-                            'model', self.model_name,
-                            'on_change_with_' + fieldname,
-                            values, context=self.get_context())
+                        changed.update(RPCExecute(
+                                'model', self.model_name,
+                                'on_change_with_' + fieldname,
+                                values, context=self.get_context()))
                 else:
-                    result = RPCExecute(
+                    changed = RPCExecute(
                         'model', self.model_name, 'on_change_with',
                         values, list(later), context=self.get_context())
             except RPCException:
                 return
-            self.set_on_change(result)
+            self.set_on_change(changed)
 
     def autocomplete_with(self, field_name):
         for fieldname, fieldinfo in self.group.fields.items():

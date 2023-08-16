@@ -1,7 +1,7 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 import warnings
-from functools import partial, wraps
+from functools import wraps
 
 import sql
 from sql import (
@@ -195,18 +195,15 @@ def on_change_result(record):
     return record._changed_values
 
 
-def on_change_with_result(field, value):
-    from ..modelstorage import ModelStorage
-    if field._type in {'many2one', 'one2one', 'reference'}:
-        if isinstance(value, ModelStorage):
-            if field._type == 'reference':
-                value = str(value)
-            else:
-                value = value.id
-    elif field._type in {'one2many', 'many2many'}:
-        if isinstance(value, (list, tuple)):
-            value = [int(r) for r in value]
-    return value
+def on_change_with_result(fieldname):
+    def decorator(func):
+        @wraps(func)
+        def wrapper(self, *args, **kwargs):
+            value = func(self, *args, **kwargs)
+            setattr(self, fieldname, value)
+            return self._changed_values
+        return wrapper
+    return decorator
 
 
 def domain_method(func):
@@ -471,9 +468,9 @@ class Field(object):
         return [self.sql_column(table)]
 
     def set_rpc(self, model):
-        for attribute, result in (
-                ('on_change', on_change_result),
-                ('on_change_with', partial(on_change_with_result, self)),
+        for attribute, decorator, result in (
+                ('on_change', None, on_change_result),
+                ('on_change_with', on_change_with_result(self.name), None),
                 ):
             if not getattr(self, attribute):
                 continue
@@ -481,7 +478,8 @@ class Field(object):
             assert hasattr(model, func_name), \
                 'Missing %s on model %s' % (func_name, model.__name__)
             model.__rpc__.setdefault(
-                func_name, RPC(instantiate=0, result=result))
+                func_name,
+                RPC(instantiate=0, decorator=decorator, result=result))
 
     def definition(self, model, language):
         pool = Pool()

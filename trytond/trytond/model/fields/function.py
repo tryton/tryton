@@ -9,7 +9,7 @@ from trytond.i18n import gettext
 from trytond.tools import is_instance_method
 from trytond.transaction import Transaction, without_check_access
 
-from .field import Field, domain_method, on_change_with_result
+from .field import Field, domain_method
 
 
 def getter_context(func):
@@ -124,11 +124,37 @@ class Function(Field):
 
         def call(name):
             if not instance_method:
-                return on_change_with_result(self, method(records, name))
+                values = method(records, name)
+                if isinstance(name, str):
+                    return convert_dict(values)
+                else:
+                    return {k: convert_dict(v, k) for k, v in values.items()}
             else:
-                return {
-                    r.id: on_change_with_result(self, method(r, name))
-                    for r in records}
+                return {r.id: convert(method(r, name)) for r in records}
+
+        def convert(value, name=None):
+            from ..model import Model as BaseModel
+            if name:
+                field = Model._fields[name]._field
+            else:
+                field = self._field
+            if field._type in {'many2one', 'one2one', 'reference'}:
+                if isinstance(value, BaseModel):
+                    if field._type == 'reference':
+                        value = str(value)
+                    else:
+                        value = int(value)
+            elif field._type in {'one2many', 'many2many'}:
+                if value:
+                    value = [int(r) for r in value]
+            return value
+
+        def convert_dict(values, name=None):
+            # Keep the same class
+            values = values.copy()
+            values.update((k, convert(v, name)) for k, v in values.items())
+            return values
+
         if isinstance(name, list):
             names = name
             if multiple:

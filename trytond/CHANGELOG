@@ -1,3 +1,4 @@
+* Support add/update/remove/delete for on_change_with of xxx2Many
 * Add decorator on RPC
 * Remove translations with empty source
 * Run doc tests with different globals

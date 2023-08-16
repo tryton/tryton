@@ -103,7 +103,7 @@ class FieldFunctionTestCase(unittest.TestCase):
 
         record = Model()
         record.save()
-        with patch.object(Model, 'get_function1') as getter:
+        with patch.object(Model, 'get_function1', autospec=True) as getter:
             getter.return_value = 'test'
 
             Model.read([record.id], ['function1', 'function2'])

@@ -69,7 +69,8 @@ class ModelView(Model):
         cls.__rpc__['fields_view_get'] = RPC(cache=dict(days=1))
         cls.__rpc__['view_toolbar_get'] = RPC(cache=dict(days=1))
         cls.__rpc__['on_change'] = RPC(instantiate=0, result=on_change_result)
-        cls.__rpc__['on_change_with'] = RPC(instantiate=0)
+        cls.__rpc__['on_change_with'] = RPC(
+            instantiate=0, result=on_change_result)
         cls.__rpc__['on_change_notify'] = RPC(instantiate=0)
         cls._buttons = {}
 
@@ -759,35 +760,18 @@ class ModelView(Model):
         return decorator
 
     @on_change
+    def on_change_with(self, fieldnames):
+        for fieldname in fieldnames:
+            method_name = 'on_change_with_%s' % fieldname
+            value = getattr(self, method_name)()
+            setattr(self, fieldname, value)
+
+    @on_change
     def on_change(self, fieldnames):
         for fieldname in sorted(fieldnames):
             method = getattr(self, 'on_change_%s' % fieldname, None)
             if method:
                 method()
-
-    def on_change_with(self, fieldnames):
-        from .modelstorage import ModelStorage
-        changes = {}
-        for fieldname in fieldnames:
-            field = self._fields[fieldname]
-            method_name = 'on_change_with_%s' % fieldname
-            value = getattr(self, method_name)()
-            setattr(self, fieldname, value)
-            if field._type in {'many2one', 'one2one', 'reference'}:
-                if isinstance(value, ModelStorage):
-                    if value.id and value.id >= 0:
-                        changes[f'%{fieldname}.'] = {
-                            'rec_name': value.rec_name,
-                            }
-                    if field._type == 'reference':
-                        value = str(value)
-                    else:
-                        value = value.id
-            elif field._type in {'one2many', 'many2many'}:
-                if isinstance(value, (list, tuple)):
-                    value = [int(r) for r in value]
-            changes[fieldname] = value
-        return changes
 
     def on_change_notify(self):
         """Return a list of type and message couples.
