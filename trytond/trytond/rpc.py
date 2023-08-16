@@ -12,19 +12,23 @@ class RPC(object):
 
     readonly: The transaction mode
     instantiate: The position or the slice of the arguments to be instanciated
+    decorator: A function to decorate the procedure with
     result: The function to transform the result
     check_access: If access right must be checked
     fresh_session: If a fresh session is required
     unique: Check instances are unique
     '''
 
-    __slots__ = ('readonly', 'instantiate', 'result', 'check_access',
-        'fresh_session', 'unique', 'cache')
+    __slots__ = (
+        'readonly', 'instantiate', 'decorator', 'result',
+        'check_access', 'fresh_session', 'unique', 'cache')
 
-    def __init__(self, readonly=True, instantiate=None, result=None,
+    def __init__(
+            self, readonly=True, instantiate=None, decorator=None, result=None,
             check_access=True, fresh_session=False, unique=True, cache=None):
         self.readonly = readonly
         self.instantiate = instantiate
+        self.decorator = decorator
         if result is None:
             def result(r):
                 return r
@@ -82,6 +86,11 @@ class RPC(object):
         if self.check_access:
             context['_check_access'] = True
         return args, kwargs, context, timestamp
+
+    def decorate(self, func):
+        if self.decorator:
+            func = self.decorator(func)
+        return func
 
 
 class RPCCache:

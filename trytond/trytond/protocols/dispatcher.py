@@ -190,7 +190,7 @@ def _dispatch(request, pool, *args, **kwargs):
                 c_args, c_kwargs, transaction.context, transaction.timestamp \
                     = rpc.convert(obj, *args, **kwargs)
                 transaction.context['_request'] = request.context
-                meth = getattr(obj, method)
+                meth = rpc.decorate(getattr(obj, method))
                 if (rpc.instantiate is None
                         or not is_instance_method(obj, method)):
                     result = rpc.result(meth(*c_args, **c_kwargs))

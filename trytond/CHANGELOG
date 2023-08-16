@@ -1,3 +1,4 @@
+* Add decorator on RPC
 * Remove translations with empty source
 * Run doc tests with different globals
 * Create user applications as validated from user preferences

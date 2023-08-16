@@ -4,7 +4,7 @@
 RPC
 ===
 
-.. class:: RPC([readonly[, instantiate[, result[, check_access[, unique[, fresh_session[, cache]]]]]]])
+.. class:: RPC([readonly[, instantiate[, [decorator, result[, check_access[, unique[, fresh_session[, cache]]]]]]]])
 
    Define the behavior of Remote Procedure Call.
 
@@ -17,6 +17,10 @@ Instance attributes are:
 .. attribute:: RPC.instantiate
 
    The position or the slice of the argument to be instanciated
+
+.. attribute:: RPC.decorator
+
+   The function to decorate the called procedure with
 
 .. attribute:: RPC.result
 
