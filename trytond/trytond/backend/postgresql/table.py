@@ -604,7 +604,7 @@ class BTreeTranslator(IndexMixin, IndexTranslatorInterface):
     def _get_indexed_expressions(cls, index):
         return [
             (e, u) for e, u in index.expressions
-            if u.__class__.__name__ in {'Equality', 'Range'}]
+            if u.__class__.__name__ in {'Equality', 'Range', 'Similarity'}]
 
     @classmethod
     def _get_expression_variables(cls, expression, usage):
