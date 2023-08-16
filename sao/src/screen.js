@@ -1035,7 +1035,7 @@
                     this.local_context, screen_context));
             }
 
-            var inversion = Sao.common.DomainInversion();
+            var inversion = new Sao.common.DomainInversion();
             var domain = this.search_domain(search_string, true);
             var canonicalized = inversion.canonicalize(domain);
             if (!Sao.common.compare(canonicalized, this._current_domain)) {
