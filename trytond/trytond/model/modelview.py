@@ -854,7 +854,7 @@ class ModelView(Model):
             # Always test key presence in case value is None
             if (fname in init_values
                     and value == init_values[fname]
-                    and field._type != 'one2many'):
+                    and field._type not in {'one2many', 'many2many'}):
                 continue
             if field._type in ('many2one', 'one2one', 'reference'):
                 if value:
