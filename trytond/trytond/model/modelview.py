@@ -802,8 +802,7 @@ class ModelView(Model):
         By default, the value of a field is its internal representation except:
             - for Many2One and One2One field: the id.
             - for Reference field: the string model,id
-            - for Many2Many: the list of ids
-            - for One2Many: a dictionary composed of three keys:
+            - for One2Many and Many2Many: a dictionary composed of three keys:
                 - add: a list of tuple, the first element is the index where
                   the new line is added, the second element is
                   `_default_values`
