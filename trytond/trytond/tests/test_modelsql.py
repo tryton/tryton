@@ -1352,6 +1352,60 @@ class ModelSQLTranslationTestCase(TranslationTestCase):
         self.assertTrue(other.fuzzy)
 
     @with_transaction()
+    def test_clear_default_language(self):
+        "Test clear default language clear others"
+        pool = Pool()
+        Model = pool.get('test.modelsql.translation')
+        Translation = pool.get('ir.translation')
+
+        record, = Model.create([{'name': "Foo"}])
+        with Transaction().set_context(language=self.other_language):
+            Model.write([record], {'name': "Bar"})
+
+        Model.write([record], {'name': ''})
+
+        translations = Translation.search([
+                ('name', '=', 'test.modelsql.translation,name'),
+                ('res_id', '=', record.id),
+                ('type', '=', 'model'),
+                ])
+        self.assertFalse(translations)
+
+    @with_transaction()
+    def test_clear_other_language(self):
+        "Test clear other language"
+        pool = Pool()
+        Model = pool.get('test.modelsql.translation')
+        Translation = pool.get('ir.translation')
+
+        record, = Model.create([{'name': "Foo"}])
+        with Transaction().set_context(language=self.other_language):
+            Model.write([record], {'name': "Bar"})
+
+        with Transaction().set_context(language=self.other_language):
+            Model.write([record], {'name': ''})
+
+        default, = Translation.search([
+                ('name', '=', 'test.modelsql.translation,name'),
+                ('res_id', '=', record.id),
+                ('type', '=', 'model'),
+                ('lang', '=', self.default_language),
+                ])
+        other, = Translation.search([
+                ('name', '=', 'test.modelsql.translation,name'),
+                ('res_id', '=', record.id),
+                ('type', '=', 'model'),
+                ('lang', '=', self.other_language),
+                ])
+
+        self.assertEqual(default.src, "Foo")
+        self.assertEqual(default.value, "Foo")
+        self.assertFalse(default.fuzzy)
+        self.assertEqual(other.src, "Foo")
+        self.assertEqual(other.value, "")
+        self.assertFalse(other.fuzzy)
+
+    @with_transaction()
     def test_delete(self):
         "Test delete"
         pool = Pool()

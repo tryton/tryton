@@ -466,7 +466,7 @@ class Translation(ModelSQL, ModelView):
                         ]):
                 name2translations[translation.name].append(translation)
 
-            to_save = []
+            to_save, to_delete = [], []
             for record, value in zip(records, values):
                 translations = name2translations.get(get_name(record))
                 if lang == INTERNAL_LANG:
@@ -481,12 +481,16 @@ class Translation(ModelSQL, ModelView):
                     translation.lang = lang
                     translation.type = ttype
                     translations.append(translation)
-                for translation in translations:
-                    translation.src = src
-                    translation.value = value
-                    translation.fuzzy = False
-                    to_save.append(translation)
+                if not src and not value:
+                    to_delete.extend(translations)
+                else:
+                    for translation in translations:
+                        translation.src = src
+                        translation.value = value
+                        translation.fuzzy = False
+                        to_save.append(translation)
             cls.save(to_save)
+            cls.delete(to_delete)
             return
 
         Model = pool.get(model_name)
@@ -513,7 +517,7 @@ class Translation(ModelSQL, ModelView):
                         ]):
                 other_translations[translation.res_id].append(translation)
 
-        to_save = []
+        to_save, to_delete = [], []
         for record, value in zip(records, values):
             translations = id2translations[record.id]
             if lang == Config.get_language():
@@ -531,17 +535,23 @@ class Translation(ModelSQL, ModelView):
                 translations.append(translation)
             else:
                 other_langs = other_translations[record.id]
-                if other_langs:
+                if not src and not value:
+                    to_delete.extend(other_langs)
+                else:
                     for other_lang in other_langs:
                         other_lang.src = src
                         other_lang.fuzzy = True
                         to_save.append(other_lang)
-            for translation in translations:
-                translation.value = value
-                translation.src = src
-                translation.fuzzy = False
-                to_save.append(translation)
+            if not src and not value:
+                to_delete.extend(translations)
+            else:
+                for translation in translations:
+                    translation.value = value
+                    translation.src = src
+                    translation.fuzzy = False
+                    to_save.append(translation)
         cls.save(to_save)
+        cls.delete(to_delete)
 
     @classmethod
     @without_check_access
