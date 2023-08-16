@@ -405,13 +405,14 @@ class ModelSQL(ModelStorage):
             if not sql_type:
                 continue
 
-            default = None
             if field_name in cls._defaults:
                 def default():
                     default_ = cls._clean_defaults({
                             field_name: cls._defaults[field_name](),
                             })[field_name]
                     return field.sql_format(default_)
+            else:
+                default = None
 
             table.add_column(field_name, field._sql_type, default=default)
             if cls._history:

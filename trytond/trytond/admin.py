@@ -39,7 +39,7 @@ def run(options):
 
     for db_name in options.database_names:
         if options.update:
-            with Transaction().start(db_name, 0) as transaction,\
+            with Transaction().start(db_name, 0) as transaction, \
                     transaction.connection.cursor() as cursor:
                 database = backend.Database(db_name)
                 database.connect()

@@ -9,7 +9,7 @@ class DatesPeriod():
     """
 
     def __init__(self, start, end):
-        assert type(start) == type(end)
+        assert type(start) is type(end)
         self.start = start
         self.end = end
 
