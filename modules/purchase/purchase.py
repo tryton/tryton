@@ -570,7 +570,7 @@ class Purchase(
         '''
         skips = set(self.invoices_ignored)
         skips.update(self.invoices_recreated)
-        invoices = [i for i in self._invoices_for_state if i.id not in skips]
+        invoices = [i for i in self._invoices_for_state if i not in skips]
         if invoices:
             if any(i.state == 'cancelled' for i in invoices):
                 return 'exception'
