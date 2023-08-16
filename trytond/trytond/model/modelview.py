@@ -68,7 +68,7 @@ class ModelView(Model):
         super(ModelView, cls).__setup__()
         cls.__rpc__['fields_view_get'] = RPC(cache=dict(days=1))
         cls.__rpc__['view_toolbar_get'] = RPC(cache=dict(days=1))
-        cls.__rpc__['on_change'] = RPC(instantiate=0)
+        cls.__rpc__['on_change'] = RPC(instantiate=0, result=on_change_result)
         cls.__rpc__['on_change_with'] = RPC(instantiate=0)
         cls.__rpc__['on_change_notify'] = RPC(instantiate=0)
         cls._buttons = {}
@@ -758,13 +758,12 @@ class ModelView(Model):
             return func
         return decorator
 
+    @on_change
     def on_change(self, fieldnames):
         for fieldname in sorted(fieldnames):
             method = getattr(self, 'on_change_%s' % fieldname, None)
             if method:
                 method()
-        # XXX remove backward compatibility
-        return [self._changed_values]
 
     def on_change_with(self, fieldnames):
         from .modelstorage import ModelStorage

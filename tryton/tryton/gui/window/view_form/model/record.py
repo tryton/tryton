@@ -577,9 +577,9 @@ class Record:
                                 'on_change_' + fieldname,
                                 values, context=self.get_context()))
                 else:
-                    changes = RPCExecute(
-                        'model', self.model_name, 'on_change',
-                        values, fieldnames, context=self.get_context())
+                    changes = [RPCExecute(
+                            'model', self.model_name, 'on_change',
+                            values, fieldnames, context=self.get_context())]
             except RPCException:
                 pass
             else:

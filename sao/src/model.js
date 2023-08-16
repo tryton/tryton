@@ -1071,9 +1071,9 @@
                                 [values], this.get_context(), false));
                         }
                     } else {
-                        changes = this.model.execute(
+                        changes = [this.model.execute(
                             'on_change',
-                            [values, fieldnames], this.get_context(), false);
+                            [values, fieldnames], this.get_context(), false)];
                     }
                 } catch (e) {
                     return;

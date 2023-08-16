@@ -1152,9 +1152,8 @@ class Model(object):
             values.update(self._on_change_args(on_change))
         if values:
             context = self._context
-            changes = getattr(self._proxy, 'on_change')(values, names, context)
-            for change in changes:
-                self._set_on_change(change)
+            change = getattr(self._proxy, 'on_change')(values, names, context)
+            self._set_on_change(change)
 
         values = {}
         fieldnames = set(names)
