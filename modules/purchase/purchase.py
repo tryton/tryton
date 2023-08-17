@@ -1436,12 +1436,14 @@ class Line(sequence_ordered(), ModelSQL, ModelView):
         pool = Pool()
         Product = pool.get('product.product')
 
-        if not self.product:
-            return self.unit_price
-
-        with Transaction().set_context(self._get_context_purchase_price()):
-            return Product.get_purchase_price([self.product],
-                abs(self.quantity or 0))[self.product.id]
+        unit_price = None
+        if self.product:
+            with Transaction().set_context(self._get_context_purchase_price()):
+                unit_price = Product.get_purchase_price(
+                    [self.product], abs(self.quantity or 0))[self.product.id]
+        if unit_price is None:
+            unit_price = self.unit_price
+        return unit_price
 
     @fields.depends('product', 'product_supplier',
         methods=['on_change_product'])
