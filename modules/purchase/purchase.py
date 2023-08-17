@@ -442,7 +442,7 @@ class Purchase(
                     table.invoice_method,
                     where=(table.party == self.party.id)
                     & (table.invoice_party == invoice_party),
-                    order_by=table.id,
+                    order_by=table.id.desc,
                     limit=10)
                 cursor.execute(*subquery.select(
                         subquery.currency,
