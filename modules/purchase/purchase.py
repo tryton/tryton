@@ -528,7 +528,8 @@ class Purchase(
             else:
                 untaxed_amount[purchase.id] = sum(
                     (line.amount for line in purchase.lines
-                        if line.type == 'line'), Decimal(0))
+                        if line.type == 'line' and line.amount is not None),
+                    Decimal(0))
                 if compute_taxes:
                     tax_amount[purchase.id] = purchase.get_tax_amount()
                     total_amount[purchase.id] = (
@@ -876,9 +877,16 @@ class Purchase(
     @Workflow.transition('confirmed')
     @set_employee('confirmed_by')
     def confirm(cls, purchases):
+        pool = Pool()
+        Line = pool.get('purchase.line')
         transaction = Transaction()
         context = transaction.context
         cls.set_purchase_date(purchases)
+
+        cls.write(purchases, {'state': 'confirmed'})
+        lines = list(sum((p.lines for p in purchases), ()))
+        Line._validate(lines, ['unit_price'])
+
         cls.store_cache(purchases)
         for process_after, sub_purchases in groupby(
                 purchases, lambda p: p.process_after):
@@ -1158,7 +1166,10 @@ class Line(sequence_ordered(), ModelSQL, ModelView):
             ],
         states={
             'invisible': Eval('type') != 'line',
-            'required': Eval('type') == 'line',
+            'required': (
+                (Eval('type') == 'line')
+                & Eval('purchase_state').in_(
+                    ['confirmed', 'processing', 'done'])),
             'readonly': Eval('purchase_state') != 'draft',
             })
     amount = fields.Function(Monetary(
@@ -1475,14 +1486,14 @@ class Line(sequence_ordered(), ModelSQL, ModelView):
         'type', 'quantity', 'unit_price',
         'purchase', '_parent_purchase.currency')
     def on_change_with_amount(self):
-        if self.type == 'line':
+        if (self.type == 'line'
+                and self.quantity is not None
+                and self.unit_price is not None):
             currency = self.purchase.currency if self.purchase else None
-            amount = Decimal(str(self.quantity or '0.0')) * \
-                (self.unit_price or Decimal('0.0'))
+            amount = Decimal(str(self.quantity)) * self.unit_price
             if currency:
                 return currency.round(amount)
             return amount
-        return Decimal('0.0')
 
     def get_amount(self, name):
         if self.type == 'line':
@@ -1498,7 +1509,6 @@ class Line(sequence_ordered(), ModelSQL, ModelView):
                         break
                     amount = Decimal('0.0')
             return amount
-        return Decimal('0.0')
 
     @fields.depends('purchase', '_parent_purchase.warehouse')
     def on_change_with_warehouse(self, name=None):
