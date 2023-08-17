@@ -1226,7 +1226,7 @@ class SaleLine(sequence_ordered(), ModelSQL, ModelView):
         with Transaction().set_context(
                 self._get_context_sale_price()):
             self.unit_price = Product.get_sale_price([self.product],
-                self.quantity or 0)[self.product.id]
+                abs(self.quantity or 0))[self.product.id]
             if self.unit_price:
                 self.unit_price = self.unit_price.quantize(
                     Decimal(1) / 10 ** self.__class__.unit_price.digits[1])
