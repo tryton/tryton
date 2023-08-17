@@ -1351,7 +1351,7 @@ class SaleLine(TaxableMixin, sequence_ordered(), ModelSQL, ModelView):
         with Transaction().set_context(
                 self._get_context_sale_price()):
             unit_price = Product.get_sale_price([self.product],
-                self.quantity or 0)[self.product.id]
+                abs(self.quantity or 0))[self.product.id]
             if unit_price:
                 unit_price = round_price(unit_price)
             return unit_price
