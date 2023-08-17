@@ -6,7 +6,7 @@ from sql import Null
 
 from trytond.model import ModelSQL, ModelView, ValueMixin, fields
 from trytond.modules.currency.fields import Monetary
-from trytond.modules.product import price_digits
+from trytond.modules.product import price_digits, round_price
 from trytond.pool import Pool, PoolMeta
 from trytond.pyson import Eval, TimeDelta
 from trytond.transaction import Transaction
@@ -183,6 +183,8 @@ class Product(metaclass=PoolMeta):
                         unit_price = Currency.compute(
                             company.currency, unit_price,
                             currency, round=False)
+            if unit_price is not None:
+                unit_price = round_price(unit_price)
             prices[product.id] = unit_price
         return prices
 

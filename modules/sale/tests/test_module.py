@@ -57,9 +57,9 @@ class SaleTestCase(
 
             with Transaction().set_context(uom=pound.id):
                 prices = Product.get_sale_price([product], quantity=0.5)
-                self.assertEqual(prices, {product.id: Decimal('2267.96185')})
+                self.assertEqual(prices, {product.id: Decimal('2267.9618')})
                 prices = Product.get_sale_price([product], quantity=1.5)
-                self.assertEqual(prices, {product.id: Decimal('2267.96185')})
+                self.assertEqual(prices, {product.id: Decimal('2267.9618')})
 
 
 del ModuleTestCase

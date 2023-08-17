@@ -14,7 +14,7 @@ from trytond.model.exceptions import AccessError
 from trytond.modules.company.model import (
     employee_field, reset_employee, set_employee)
 from trytond.modules.currency.fields import Monetary
-from trytond.modules.product import price_digits, round_price
+from trytond.modules.product import price_digits
 from trytond.pool import Pool
 from trytond.pyson import Bool, Eval, If
 from trytond.tools import sortable_values
@@ -700,8 +700,6 @@ class Line(sequence_ordered(), ModelSQL, ModelView):
         with Transaction().set_context(self._get_context_sale_price()):
             self.unit_price = Product.get_sale_price(
                 [product], self.quantity or 0)[product.id]
-            if self.unit_price is not None:
-                self.unit_price = round_price(self.unit_price)
 
         self.consumption_recurrence = self.service.consumption_recurrence
         self.consumption_delay = self.service.consumption_delay

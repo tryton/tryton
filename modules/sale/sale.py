@@ -21,7 +21,7 @@ from trytond.modules.company import CompanyReport
 from trytond.modules.company.model import (
     employee_field, reset_employee, set_employee)
 from trytond.modules.currency.fields import Monetary
-from trytond.modules.product import price_digits, round_price
+from trytond.modules.product import price_digits
 from trytond.pool import Pool
 from trytond.pyson import Bool, Eval, If, PYSONEncoder
 from trytond.tools import firstline, sortable_values
@@ -1522,11 +1522,8 @@ class SaleLine(TaxableMixin, sequence_ordered(), ModelSQL, ModelView):
 
         with Transaction().set_context(
                 self._get_context_sale_price()):
-            unit_price = Product.get_sale_price([self.product],
-                abs(self.quantity or 0))[self.product.id]
-            if unit_price is not None:
-                unit_price = round_price(unit_price)
-            return unit_price
+            return Product.get_sale_price(
+                [self.product], abs(self.quantity or 0))[self.product.id]
 
     @fields.depends('product')
     def on_change_with_product_uom_category(self, name=None):
