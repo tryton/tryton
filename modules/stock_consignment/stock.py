@@ -3,7 +3,6 @@
 from functools import wraps
 
 from trytond.model import ModelView, Workflow, fields
-from trytond.modules.product import round_price
 from trytond.pool import Pool, PoolMeta
 from trytond.pyson import Eval
 from trytond.transaction import Transaction
@@ -200,8 +199,6 @@ class Move(metaclass=PoolMeta):
                 taxes=[t.id for t in line.taxes]):
             line.unit_price = Product.get_purchase_price(
                 [line.product], line.quantity)[line.product.id]
-            if line.unit_price is not None:
-                line.unit_price = round_price(line.unit_price)
         return line
 
     def _get_customer_invoice_line_consignment(self):

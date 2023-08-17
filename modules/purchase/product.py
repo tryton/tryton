@@ -10,7 +10,7 @@ from trytond.model import (
     DeactivableMixin, Index, MatchMixin, ModelSQL, ModelView, fields,
     sequence_ordered)
 from trytond.modules.currency.fields import Monetary
-from trytond.modules.product import price_digits
+from trytond.modules.product import price_digits, round_price
 from trytond.pool import Pool, PoolMeta
 from trytond.pyson import Bool, Eval, If, TimeDelta
 from trytond.tools import is_full_text, lstrip_wildcard
@@ -209,6 +209,8 @@ class Product(metaclass=PoolMeta):
                 with Transaction().set_context(date=date):
                     unit_price = Currency.compute(
                         default_currency, unit_price, currency, round=False)
+            if unit_price is not None:
+                unit_price = round_price(unit_price)
             prices[product.id] = unit_price
         return prices
 

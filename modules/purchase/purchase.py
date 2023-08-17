@@ -22,7 +22,7 @@ from trytond.modules.company import CompanyReport
 from trytond.modules.company.model import (
     employee_field, reset_employee, set_employee)
 from trytond.modules.currency.fields import Monetary
-from trytond.modules.product import price_digits, round_price
+from trytond.modules.product import price_digits
 from trytond.pool import Pool
 from trytond.pyson import Bool, Eval, If, PYSONEncoder
 from trytond.tools import firstline
@@ -1440,11 +1440,8 @@ class Line(sequence_ordered(), ModelSQL, ModelView):
             return self.unit_price
 
         with Transaction().set_context(self._get_context_purchase_price()):
-            unit_price = Product.get_purchase_price([self.product],
+            return Product.get_purchase_price([self.product],
                 abs(self.quantity or 0))[self.product.id]
-            if unit_price is not None:
-                unit_price = round_price(unit_price)
-            return unit_price
 
     @fields.depends('product', 'product_supplier',
         methods=['on_change_product'])
