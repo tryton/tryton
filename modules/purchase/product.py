@@ -164,7 +164,6 @@ class Product(metaclass=PoolMeta):
         ProductSupplier = pool.get('purchase.product_supplier')
         ProductSupplierPrice = pool.get('purchase.product_supplier.price')
 
-        today = Date.today()
         context = Transaction().context
         prices = {}
 
@@ -179,6 +178,7 @@ class Product(metaclass=PoolMeta):
             currency = Currency(context['currency'])
         elif context.get('company'):
             currency = Company(context['company']).currency
+        date = context.get('purchase_date') or Date.today()
 
         for product in products:
             unit_price = product._get_purchase_unit_price(quantity=quantity)
@@ -205,7 +205,6 @@ class Product(metaclass=PoolMeta):
                 unit_price = Uom.compute_price(
                     default_uom, unit_price, product_uom)
             if currency and default_currency and unit_price is not None:
-                date = context.get('purchase_date') or today
                 with Transaction().set_context(date=date):
                     unit_price = Currency.compute(
                         default_currency, unit_price, currency, round=False)
