@@ -475,7 +475,6 @@ class CreatePurchase(Wizard):
         Line = pool.get('purchase.line')
 
         line = Line()
-        line.unit_price = round_price(Decimal(0))
         for f, v in key:
             setattr(line, f, v)
         line.purchase = purchase
@@ -487,6 +486,8 @@ class CreatePurchase(Wizard):
         for f, v in key:
             setattr(line, f, v)
         line.on_change_quantity()
+        if line.unit_price is None:
+            line.unit_price = round_price(Decimal(0))
         return line
 
     @classmethod
