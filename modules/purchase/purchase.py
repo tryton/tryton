@@ -283,16 +283,16 @@ class Purchase(
                     'depends': ['state'],
                     },
                 'quote': {
-                    'pre_validate': [
-                        If(~Eval('invoice_address'),
-                            ('invoice_address', '!=', None),
-                            ()),
-                        ],
                     'invisible': Eval('state') != 'draft',
                     'readonly': ~Eval('lines', Eval('untaxed_amount', 0)),
                     'depends': ['state'],
                     },
                 'confirm': {
+                    'pre_validate': [
+                        If(~Eval('invoice_address'),
+                            ('invoice_address', '!=', None),
+                            ()),
+                        ],
                     'invisible': Eval('state') != 'quotation',
                     'depends': ['state'],
                     },
