@@ -390,7 +390,7 @@ class Purchase(Workflow, ModelSQL, ModelView, TaxableMixin):
             if not self.lines:
                 subquery = table.select(table.currency,
                     where=table.party == self.party.id,
-                    order_by=table.id,
+                    order_by=table.id.desc,
                     limit=10)
                 cursor.execute(*subquery.select(subquery.currency,
                         group_by=subquery.currency,
