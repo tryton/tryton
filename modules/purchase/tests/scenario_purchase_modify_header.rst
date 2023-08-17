@@ -62,8 +62,6 @@ Create product::
     >>> template.account_category = account_category
     >>> template.save()
     >>> product, = template.products
-    >>> product.cost_price = Decimal('5')
-    >>> product.save()
 
 Create parties::
 
@@ -81,6 +79,7 @@ Create a sale with a line::
     >>> purchase_line = purchase.lines.new()
     >>> purchase_line.product = product
     >>> purchase_line.quantity = 3
+    >>> purchase_line.unit_price = Decimal('5.0000')
     >>> purchase.save()
     >>> purchase.untaxed_amount, purchase.tax_amount, purchase.total_amount
     (Decimal('15.00'), Decimal('1.50'), Decimal('16.50'))

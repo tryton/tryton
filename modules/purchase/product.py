@@ -1,9 +1,10 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 import datetime
+from collections import defaultdict
 
 from sql import Literal
-from sql.aggregate import Count
+from sql.aggregate import Count, Max
 
 from trytond.i18n import gettext
 from trytond.model import (
@@ -13,7 +14,8 @@ from trytond.modules.currency.fields import Monetary
 from trytond.modules.product import price_digits, round_price
 from trytond.pool import Pool, PoolMeta
 from trytond.pyson import Bool, Eval, If, TimeDelta
-from trytond.tools import is_full_text, lstrip_wildcard
+from trytond.tools import (
+    grouped_slice, is_full_text, lstrip_wildcard, reduce_ids)
 from trytond.transaction import Transaction
 
 from .exceptions import PurchaseUOMWarning
@@ -128,11 +130,75 @@ class Product(metaclass=PoolMeta):
             })
     purchase_price_uom = fields.Function(fields.Numeric(
             "Purchase Price", digits=price_digits), 'get_purchase_price_uom')
+    last_purchase_price_uom = fields.Function(fields.Numeric(
+            "Last Purchase Price", digits=price_digits),
+        'get_last_purchase_price_uom')
 
     @classmethod
     def get_purchase_price_uom(cls, products, name):
         quantity = Transaction().context.get('quantity') or 0
         return cls.get_purchase_price(products, quantity=quantity)
+
+    @classmethod
+    def get_last_purchase_price_uom(cls, products, name=None):
+        pool = Pool()
+        Company = pool.get('company.company')
+        Currency = pool.get('currency.currency')
+        Date = pool.get('ir.date')
+        Line = pool.get('purchase.line')
+        Purchase = pool.get('purchase.purchase')
+        UoM = pool.get('product.uom')
+
+        transaction = Transaction()
+        context = transaction.context
+        cursor = transaction.connection.cursor()
+        purchase = Purchase.__table__()
+        line = Line.__table__()
+
+        line_ids = []
+        where = purchase.state.in_(['confirmed', 'processing', 'done'])
+        supplier = context.get('supplier')
+        if supplier:
+            where &= purchase.party == supplier
+        for sub_products in grouped_slice(products):
+            query = (line
+                .join(purchase, condition=line.purchase == purchase.id)
+                .select(
+                    Max(line.id),
+                    where=where & reduce_ids(
+                        line.product, map(int, sub_products)),
+                    group_by=[line.product]))
+            cursor.execute(*query)
+            line_ids.extend(i for i, in cursor)
+        lines = Line.browse(line_ids)
+
+        uom = None
+        if context.get('uom'):
+            uom = UoM(context['uom'])
+
+        currency = None
+        if context.get('currency'):
+            currency = Currency(context['currency'])
+        elif context.get('company'):
+            currency = Company(context['company']).currency
+        date = context.get('purchase_date') or Date.today()
+
+        prices = defaultdict(lambda: None)
+        for line in lines:
+            default_uom = line.product.default_uom
+            if not uom or default_uom.category != uom.category:
+                product_uom = default_uom
+            else:
+                product_uom = uom
+            unit_price = UoM.compute_price(
+                line.unit, line.unit_price, product_uom)
+            if currency and line.purchase.currency != currency:
+                with Transaction().set_context(date=date):
+                    unit_price = Currency.compute(
+                        line.purchase.currency, unit_price, currency,
+                        round=False)
+            prices[line.product.id] = round_price(unit_price)
+        return prices
 
     def product_suppliers_used(self, **pattern):
         # Skip rules to test pattern on all records
@@ -143,9 +209,6 @@ class Product(metaclass=PoolMeta):
                 yield product_supplier
         pattern['product'] = None
         yield from self.template.product_suppliers_used(**pattern)
-
-    def _get_purchase_unit_price(self, quantity=0):
-        return self.get_multivalue('cost_price')
 
     @classmethod
     def get_purchase_price(cls, products, quantity=0):
@@ -180,8 +243,10 @@ class Product(metaclass=PoolMeta):
             currency = Company(context['company']).currency
         date = context.get('purchase_date') or Date.today()
 
+        last_purchase_prices = cls.get_last_purchase_price_uom(products)
+
         for product in products:
-            unit_price = product._get_purchase_unit_price(quantity=quantity)
+            unit_price = None
             default_uom = product.default_uom
             default_currency = currency
             if not uom or default_uom.category != uom.category:
@@ -201,15 +266,17 @@ class Product(metaclass=PoolMeta):
                         unit_price = price.unit_price
                         default_uom = product_supplier.uom
                         default_currency = product_supplier.currency
-            if unit_price is not None:
-                unit_price = Uom.compute_price(
-                    default_uom, unit_price, product_uom)
-            if currency and default_currency and unit_price is not None:
-                with Transaction().set_context(date=date):
-                    unit_price = Currency.compute(
-                        default_currency, unit_price, currency, round=False)
-            if unit_price is not None:
-                unit_price = round_price(unit_price)
+                if unit_price is not None:
+                    unit_price = Uom.compute_price(
+                        default_uom, unit_price, product_uom)
+                    if currency and default_currency:
+                        with Transaction().set_context(date=date):
+                            unit_price = Currency.compute(
+                                default_currency, unit_price, currency,
+                                round=False)
+                    unit_price = round_price(unit_price)
+            if unit_price is None:
+                unit_price = last_purchase_prices[product.id]
             prices[product.id] = unit_price
         return prices
 

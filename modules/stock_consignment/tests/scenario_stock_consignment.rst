@@ -100,6 +100,9 @@ Create product::
     >>> product_supplier = template.product_suppliers.new()
     >>> product_supplier.party = supplier
     >>> price = product_supplier.prices.new()
+    >>> price.quantity = 1
+    >>> price.unit_price = Decimal('5')
+    >>> price = product_supplier.prices.new()
     >>> price.quantity = 2
     >>> price.unit_price = Decimal('4')
     >>> template.save()

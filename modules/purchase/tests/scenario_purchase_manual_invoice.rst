@@ -53,8 +53,6 @@ Create product::
     >>> template.type = 'service'
     >>> template.purchasable = True
     >>> template.account_category = account_category
-    >>> product, = template.products
-    >>> product.cost_price = Decimal('5')
     >>> template.save()
     >>> product, = template.products
 
@@ -66,6 +64,7 @@ Purchase with manual invoice method::
     >>> line = purchase.lines.new()
     >>> line.product = product
     >>> line.quantity = 10
+    >>> line.unit_price = Decimal('5.0000')
     >>> purchase.click('quote')
     >>> purchase.click('confirm')
     >>> purchase.state

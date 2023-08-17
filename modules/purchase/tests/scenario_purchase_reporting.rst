@@ -64,13 +64,9 @@ Create products::
     >>> template1.list_price = Decimal('20')
     >>> template1.save()
     >>> product1, = template1.products
-    >>> product1.cost_price = Decimal('10')
-    >>> product1.save()
 
     >>> template2, = template1.duplicate(default={'name': "Product2"})
     >>> product2, = template2.products
-    >>> product2.cost_price = Decimal('10')
-    >>> product2.save()
 
 Create purchases::
 
@@ -80,9 +76,11 @@ Create purchases::
     >>> line = purchase1.lines.new()
     >>> line.product = product1
     >>> line.quantity = 2
+    >>> line.unit_price = Decimal('10.0000')
     >>> line = purchase1.lines.new()
     >>> line.product = product2
     >>> line.quantity = 1
+    >>> line.unit_price = Decimal('10.0000')
     >>> purchase1.click('quote')
     >>> purchase1.click('confirm')
 
@@ -93,6 +91,7 @@ Create purchases::
     >>> line = purchase2.lines.new()
     >>> line.product = product1
     >>> line.quantity = 1
+    >>> line.unit_price = Decimal('10.0000')
     >>> purchase2.click('quote')
     >>> purchase2.click('confirm')
 

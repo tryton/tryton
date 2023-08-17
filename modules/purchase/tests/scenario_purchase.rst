@@ -108,8 +108,6 @@ Create product::
     >>> template.list_price = Decimal('10')
     >>> template.cost_price_method = 'fixed'
     >>> template.account_category = account_category_tax
-    >>> product, = template.products
-    >>> product.cost_price = Decimal('5')
     >>> template.save()
     >>> product, = template.products
 
@@ -121,8 +119,6 @@ Create product::
     >>> template.list_price = Decimal('10')
     >>> template.cost_price_method = 'fixed'
     >>> template.account_category = account_category
-    >>> service, = template.products
-    >>> service.cost_price = Decimal('10')
     >>> template.save()
     >>> service, = template.products
 
@@ -159,6 +155,7 @@ Purchase 5 products::
     >>> purchase.lines.append(purchase_line)
     >>> purchase_line.product = product
     >>> purchase_line.quantity = 2.0
+    >>> purchase_line.unit_price = Decimal('5.0000')
     >>> purchase_line = PurchaseLine()
     >>> purchase.lines.append(purchase_line)
     >>> purchase_line.type = 'comment'
@@ -167,6 +164,7 @@ Purchase 5 products::
     >>> purchase.lines.append(purchase_line)
     >>> purchase_line.product = product
     >>> purchase_line.quantity = 3.0
+    >>> purchase_line.unit_price = Decimal('5.0000')
     >>> purchase.click('quote')
     >>> purchase.untaxed_amount, purchase.tax_amount, purchase.total_amount
     (Decimal('25.00'), Decimal('2.50'), Decimal('27.50'))
@@ -510,6 +508,7 @@ Purchase services::
     >>> purchase_line = service_purchase.lines.new()
     >>> purchase_line.product = service
     >>> purchase_line.quantity = 1
+    >>> purchase_line.unit_price = Decimal('10.0000')
     >>> service_purchase.save()
     >>> service_purchase.click('quote')
     >>> service_purchase.click('confirm')
@@ -623,6 +622,7 @@ Deleting a line from a invoice should recreate it::
     >>> line = purchase.lines.new()
     >>> line.product = product
     >>> line.quantity = 10.0
+    >>> line.unit_price = Decimal('5.0000')
     >>> purchase.click('quote')
     >>> purchase.click('confirm')
     >>> invoice, = purchase.invoices

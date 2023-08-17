@@ -1,6 +1,7 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 
+import datetime as dt
 from decimal import Decimal
 
 from trytond.modules.account.tests import create_chart
@@ -26,6 +27,7 @@ class PurchaseTestCase(
         Uom = pool.get('product.uom')
         ProductSupplier = pool.get('purchase.product_supplier')
         Party = pool.get('party.party')
+        Purchase = pool.get('purchase.purchase')
 
         company = create_company()
         with set_company(company):
@@ -48,8 +50,9 @@ class PurchaseTestCase(
                         'default_uom': g.id,
                         'purchase_uom': kg.id,
                         'list_price': Decimal(5),
+                        'purchasable': True,
                         'products': [('create', [{
-                                        'cost_price': Decimal(2),
+                                        'cost_price': Decimal(3),
                                         }])],
                         }])
             product, = template.products
@@ -58,6 +61,7 @@ class PurchaseTestCase(
                         'name': 'Supplier',
                         'account_receivable': receivable.id,
                         'account_payable': payable.id,
+                        'addresses': [('create', [{}])],
                         }])
             product_supplier, = ProductSupplier.create([{
                         'template': template.id,
@@ -72,6 +76,20 @@ class PurchaseTestCase(
                                         'unit_price': Decimal(2500),
                                         }])],
                         }])
+
+            purchase, = Purchase.create([{
+                        'party': supplier.id,
+                        'invoice_address': supplier.addresses[0].id,
+                        'purchase_date': dt.date.today(),
+                        'lines': [('create', [{
+                                        'product': product.id,
+                                        'quantity': 10,
+                                        'unit': kg.id,
+                                        'unit_price': Decimal(2000),
+                                        }])],
+                        }])
+            purchase.state = 'confirmed'
+            purchase.save()
 
             prices = Product.get_purchase_price([product], quantity=100)
             self.assertEqual(prices, {product.id: Decimal(2)})

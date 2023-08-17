@@ -63,8 +63,6 @@ Create product::
     >>> template.list_price = Decimal('10')
     >>> template.cost_price_method = 'fixed'
     >>> template.account_category = account_category
-    >>> service, = template.products
-    >>> service.cost_price = Decimal('10')
     >>> template.save()
     >>> service, = template.products
 
@@ -76,6 +74,7 @@ Return purchase using the wizard::
     >>> purchase_line = purchase_to_return.lines.new()
     >>> purchase_line.product = service
     >>> purchase_line.quantity = 1
+    >>> purchase_line.unit_price = Decimal('10.0000')
     >>> purchase_line = purchase_to_return.lines.new()
     >>> purchase_line.type = 'comment'
     >>> purchase_line.description = 'Test comment'
