@@ -284,9 +284,6 @@ class Purchase(
                     },
                 'quote': {
                     'pre_validate': [
-                        If(~Eval('purchase_date'),
-                            ('purchase_date', '!=', None),
-                            ()),
                         If(~Eval('invoice_address'),
                             ('invoice_address', '!=', None),
                             ()),
