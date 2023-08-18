@@ -1493,7 +1493,7 @@ class ShipmentOut(ShipmentAssignMixin, Workflow, ModelSQL, ModelView):
                         move.uom)
                     if quantity and move.quantity != qty:
                         move.quantity = qty
-                        moves.append(move)
+                    moves.append(move)
         Move.save(moves)
 
     @classmethod
