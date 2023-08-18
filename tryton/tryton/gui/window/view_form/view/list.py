@@ -255,7 +255,6 @@ class AdaptModelGroup(GenericTreeModel):
 class TreeXMLViewParser(XMLViewParser):
 
     WIDGETS = {
-        'biginteger': Int,
         'binary': Binary,
         'boolean': Boolean,
         'callto': URL,
@@ -397,7 +396,6 @@ class TreeXMLViewParser(XMLViewParser):
     def _set_column_width(self, column, attributes):
         default_width = {
             'integer': 80,
-            'biginteger': 80,
             'selection': 90,
             'reference': 200,
             'one2many': 50,

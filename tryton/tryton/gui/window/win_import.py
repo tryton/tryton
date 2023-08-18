@@ -205,7 +205,7 @@ class WinImport(WinCSV):
                 for field, val in zip(fields, line):
                     if locale_format and val:
                         type_ = self.fields_data[field]['type']
-                        if type_ in ['integer', 'biginteger']:
+                        if type_ == 'integer':
                             val = locale.atoi(val)
                         elif type_ == 'float':
                             val = locale.atof(val)

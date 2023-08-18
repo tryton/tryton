@@ -162,7 +162,6 @@ class HContainer(_Container):
 class FormXMLViewParser(XMLViewParser):
 
     WIDGETS = {
-        'biginteger': Integer,
         'binary': Binary,
         'boolean': CheckBox,
         'callto': CallTo,

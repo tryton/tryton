@@ -5368,7 +5368,6 @@ function eval_pyson(value){
     });
 
     Sao.View.FormXMLViewParser.WIDGETS = {
-        'biginteger': Sao.View.Form.Integer,
         'binary': Sao.View.Form.Binary,
         'boolean': Sao.View.Form.Boolean,
         'callto': Sao.View.Form.CallTo,

@@ -906,7 +906,6 @@
                     } else {
                         width = {
                             'integer': 8,
-                            'biginteger': 8,
                             'selection': 9,
                             'reference': 20,
                             'one2many': 5,
@@ -3051,7 +3050,6 @@
     });
 
     Sao.View.TreeXMLViewParser.WIDGETS = {
-        'biginteger': Sao.View.Tree.IntegerColumn,
         'binary': Sao.View.Tree.BinaryColumn,
         'boolean': Sao.View.Tree.BooleanColumn,
         'callto': Sao.View.Tree.URLColumn,
@@ -3232,7 +3230,6 @@
     });
 
     Sao.View.EditableTree.WIDGETS = {
-        'biginteger': Sao.View.EditableTree.Integer,
         'binary': Sao.View.EditableTree.Binary,
         'boolean': Sao.View.EditableTree.Boolean,
         'callto': Sao.View.EditableTree.Char,
