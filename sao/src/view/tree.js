@@ -3100,6 +3100,18 @@
         }
     });
 
+    Sao.View.EditableTree.URL = Sao.class_(Sao.View.EditableTree.Char, {
+        class_: 'editable-url',
+        set_readonly: function(readonly) {
+            Sao.View.EditableTree.URL._super.set_readonly.call(this, readonly);
+            if (readonly) {
+                this.input.hide();
+            } else {
+                this.input.show();
+            }
+        },
+    });
+
     Sao.View.EditableTree.Date = Sao.class_(Sao.View.Form.Date, {
         class_: 'editabletree-date',
         init: function(view, attributes) {
@@ -3232,10 +3244,10 @@
     Sao.View.EditableTree.WIDGETS = {
         'binary': Sao.View.EditableTree.Binary,
         'boolean': Sao.View.EditableTree.Boolean,
-        'callto': Sao.View.EditableTree.Char,
+        'callto': Sao.View.EditableTree.URL,
         'char': Sao.View.EditableTree.Char,
         'date': Sao.View.EditableTree.Date,
-        'email': Sao.View.EditableTree.Char,
+        'email': Sao.View.EditableTree.URL,
         'float': Sao.View.EditableTree.Float,
         'integer': Sao.View.EditableTree.Integer,
         'many2many': Sao.View.EditableTree.Many2Many,
@@ -3245,11 +3257,11 @@
         'one2one': Sao.View.EditableTree.One2One,
         'reference': Sao.View.EditableTree.Reference,
         'selection': Sao.View.EditableTree.Selection,
-        'sip': Sao.View.EditableTree.Char,
+        'sip': Sao.View.EditableTree.URL,
         'text': Sao.View.EditableTree.Char,
         'time': Sao.View.EditableTree.Time,
         'timedelta': Sao.View.EditableTree.TimeDelta,
-        'url': Sao.View.EditableTree.Char,
+        'url': Sao.View.EditableTree.URL,
     };
 
 }());

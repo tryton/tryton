@@ -45,6 +45,7 @@ class URL(Char):
                 value = icon
             self.button.set_image(common.IconFactory.get_image(
                     value, Gtk.IconSize.SMALL_TOOLBAR))
+        self.button.set_sensitive(bool(self.entry.get_text()))
 
     def set_tooltips(self):
         value = self.entry.get_text()
@@ -54,14 +55,6 @@ class URL(Char):
         else:
             self.tooltips.set_tip(self.button, '')
             self.tooltips.disable()
-
-    def _readonly_set(self, value):
-        super(URL, self)._readonly_set(value)
-        if value:
-            self.entry.hide()
-        else:
-            self.entry.show()
-        self.button.set_sensitive(True)
 
     def button_clicked(self, widget):
         value = self.entry.get_text()

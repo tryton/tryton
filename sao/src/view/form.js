@@ -4534,18 +4534,7 @@ function eval_pyson(value){
         },
         set_url: function(value) {
             this.button.attr('href', value);
-        },
-        set_readonly: function(readonly) {
-            Sao.View.Form.URL._super.set_readonly.call(this, readonly);
-            if (readonly) {
-                this.input.hide();
-                this.button.removeClass('btn-default');
-                this.button.addClass('btn-link');
-            } else {
-                this.input.show();
-                this.button.removeClass('btn-link');
-                this.button.addClass('btn-default');
-            }
+            this.button.prop('disabled', !value);
         },
         set_invisible: function(invisible) {
             Sao.View.Form.URL._super.set_invisible.call(this, invisible);
