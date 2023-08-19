@@ -93,7 +93,8 @@ class Production(ShipmentAssignMixin, Workflow, ModelSQL, ModelView):
     uom_category = fields.Function(fields.Many2One(
             'product.uom.category', 'Uom Category'),
         'on_change_with_uom_category')
-    uom = fields.Many2One('product.uom', 'Uom',
+    unit = fields.Many2One(
+        'product.uom', "Unit",
         domain=[
             ('category', '=', Eval('uom_category')),
             ],
@@ -103,7 +104,7 @@ class Production(ShipmentAssignMixin, Workflow, ModelSQL, ModelView):
             'invisible': ~Eval('product'),
             })
     quantity = fields.Float(
-        "Quantity", digits='uom',
+        "Quantity", digits='unit',
         states={
             'readonly': ~Eval('state').in_(['request', 'draft']),
             'required': Bool(Eval('bom')),
@@ -260,6 +261,13 @@ class Production(ShipmentAssignMixin, Workflow, ModelSQL, ModelView):
 
     @classmethod
     def __register__(cls, module_name):
+        table_h = cls.__table_handler__(module_name)
+
+        # Migration from 6.8: rename uom to unit
+        if (table_h.column_exist('uom')
+                and not table_h.column_exist('unit')):
+            table_h.column_rename('uom', 'unit')
+
         super(Production, cls).__register__(module_name)
 
         table = cls.__table__()
@@ -350,13 +358,13 @@ class Production(ShipmentAssignMixin, Workflow, ModelSQL, ModelView):
 
     @fields.depends(
         'company', 'location', methods=['picking_location', 'output_location'])
-    def _move(self, type, product, uom, quantity):
+    def _move(self, type, product, unit, quantity):
         pool = Pool()
         Move = pool.get('stock.move')
         assert type in {'input', 'output'}
         move = Move(
             product=product,
-            uom=uom,
+            uom=unit,
             quantity=quantity,
             company=self.company,
             currency=self.company.currency if self.company else None)
@@ -377,16 +385,16 @@ class Production(ShipmentAssignMixin, Workflow, ModelSQL, ModelView):
         return move
 
     @fields.depends(
-        'bom', 'product', 'uom', 'quantity', 'company', 'inputs', 'outputs',
+        'bom', 'product', 'unit', 'quantity', 'company', 'inputs', 'outputs',
         methods=['_explode_move_values'])
     def explode_bom(self):
         pool = Pool()
         Uom = pool.get('product.uom')
-        if not (self.bom and self.product and self.uom):
+        if not (self.bom and self.product and self.unit):
             return
 
-        factor = self.bom.compute_factor(self.product, self.quantity or 0,
-            self.uom)
+        factor = self.bom.compute_factor(
+            self.product, self.quantity or 0, self.unit)
         inputs = []
         for input_ in self.bom.inputs:
             quantity = input_.compute_quantity(factor)
@@ -414,15 +422,15 @@ class Production(ShipmentAssignMixin, Workflow, ModelSQL, ModelView):
             self.location = self.warehouse.production_location
 
     @fields.depends(
-        'product', 'uom', methods=['explode_bom', 'set_planned_start_date'])
+        'product', 'unit', methods=['explode_bom', 'set_planned_start_date'])
     def on_change_product(self):
         if self.product:
             category = self.product.default_uom.category
-            if not self.uom or self.uom.category != category:
-                self.uom = self.product.default_uom
+            if not self.unit or self.unit.category != category:
+                self.unit = self.product.default_uom
         else:
             self.bom = None
-            self.uom = None
+            self.unit = None
         self.explode_bom()
         self.set_planned_start_date()
 
@@ -437,7 +445,7 @@ class Production(ShipmentAssignMixin, Workflow, ModelSQL, ModelView):
         self.set_planned_start_date()
 
     @fields.depends(methods=['explode_bom'])
-    def on_change_uom(self):
+    def on_change_unit(self):
         self.explode_bom()
 
     @fields.depends(methods=['explode_bom'])
@@ -486,7 +494,7 @@ class Production(ShipmentAssignMixin, Workflow, ModelSQL, ModelView):
             if not production.bom:
                 if production.product:
                     move = production._move(
-                        'output', production.product, production.uom,
+                        'output', production.product, production.unit,
                         production.quantity)
                     if move:
                         move.unit_price = Decimal(0)
@@ -495,7 +503,7 @@ class Production(ShipmentAssignMixin, Workflow, ModelSQL, ModelView):
                 continue
 
             factor = production.bom.compute_factor(
-                production.product, production.quantity, production.uom)
+                production.product, production.quantity, production.unit)
             for input_ in production.bom.inputs:
                 quantity = input_.compute_quantity(factor)
                 product = input_.product

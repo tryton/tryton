@@ -16,8 +16,8 @@ this repository contains the full copyright notices and license terms. -->
     <field name="bom"/>
     <label name="quantity"/>
     <field name="quantity"/>
-    <label name="uom"/>
-    <field name="uom"/>
+    <label name="unit"/>
+    <field name="unit"/>
     <notebook>
         <page string="Lines" id="lines">
             <field name="inputs" colspan="2" view_ids="stock.move_view_list_shipment"/>

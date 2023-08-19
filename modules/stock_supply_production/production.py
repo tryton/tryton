@@ -163,8 +163,8 @@ class Production(metaclass=PoolMeta):
             date = today
         else:
             date -= datetime.timedelta(1)
-        uom = product.default_uom
-        quantity = uom.ceil(quantity)
+        unit = product.default_uom
+        quantity = unit.ceil(quantity)
         if order_point:
             origin = str(order_point)
         else:
@@ -176,7 +176,7 @@ class Production(metaclass=PoolMeta):
             location=warehouse.production_location,
             product=product,
             bom=product.boms[0].bom if product.boms else None,
-            uom=uom,
+            unit=unit,
             quantity=quantity,
             state='request',
             origin=origin,

@@ -212,7 +212,7 @@ class Production(metaclass=PoolMeta):
         line.product_supplier = self.routing.supplier_service_supplier
         line.unit = self.routing.supplier_service.purchase_uom
         factor = self.bom.compute_factor(
-            self.product, self.quantity or 0, self.uom)
+            self.product, self.quantity or 0, self.unit)
         line.quantity = line.unit.round(
             factor * self.routing.supplier_quantity)
         line.purchase = purchase

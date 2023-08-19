@@ -150,7 +150,7 @@ Test reset bom button::
     >>> production.click(
     ...     'reset_bom',
     ...     change=[
-    ...         'bom', 'product', 'uom', 'quantity',
+    ...         'bom', 'product', 'unit', 'quantity',
     ...         'inputs', 'outputs', 'company', 'warehouse', 'location'])
     >>> sorted([i.quantity for i in production.inputs]) == [10, 300]
     True

@@ -25,7 +25,7 @@ class Production(metaclass=PoolMeta):
     def split_wizard(cls, productions):
         pass
 
-    def split(self, quantity, uom, count=None):
+    def split(self, quantity, unit, count=None):
         """
         Split production into productions of quantity.
         If count is not defined, the production will be split until remainder
@@ -36,11 +36,11 @@ class Production(metaclass=PoolMeta):
         Uom = pool.get('product.uom')
 
         productions = [self]
-        remainder = Uom.compute_qty(self.uom, self.quantity, uom)
+        remainder = Uom.compute_qty(self.unit, self.quantity, unit)
         if remainder <= quantity:
             return productions
         self.quantity = quantity
-        self.uom = uom
+        self.unit = unit
         self.save()
         remainder -= quantity
         if count:
@@ -49,19 +49,19 @@ class Production(metaclass=PoolMeta):
                 and (count or count is None)):
             productions.extend(self.copy([self], {
                         'quantity': quantity,
-                        'uom': uom.id,
+                        'unit': unit.id,
                         'inputs': None,
                         'outputs': None,
                         }))
             remainder -= quantity
-            remainder = uom.round(remainder)
+            remainder = unit.round(remainder)
             if count:
                 count -= 1
         assert remainder >= 0
         if remainder:
             productions.extend(self.copy([self], {
                         'quantity': remainder,
-                        'uom': uom.id,
+                        'unit': unit.id,
                         }))
         for production in productions:
             production.explode_bom()
@@ -81,13 +81,13 @@ class SplitProduction(Wizard):
 
     def default_start(self, fields):
         return {
-            'uom': self.record.uom.id,
+            'unit': self.record.unit.id,
             'uom_category': self.record.uom.category.id,
             }
 
     def transition_split(self):
         self.record.split(
-            self.start.quantity, self.start.uom, count=self.start.count)
+            self.start.quantity, self.start.unit, count=self.start.count)
         return 'end'
 
 
@@ -95,8 +95,9 @@ class SplitProductionStart(ModelView):
     'Split Production'
     __name__ = 'production.split.start'
     count = fields.Integer('Count', help='The limit number of productions')
-    quantity = fields.Float("Quantity", digits='uom', required=True)
-    uom = fields.Many2One('product.uom', 'Uom', required=True,
+    quantity = fields.Float("Quantity", digits='unit', required=True)
+    unit = fields.Many2One(
+        'product.uom', "Unit", required=True,
         domain=[
             ('category', '=', Eval('uom_category')),
             ])
