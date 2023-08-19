@@ -95,7 +95,7 @@ class StockForecastTestCase(CompanyTestMixin, ModuleTestCase):
                             ('create', [{
                                         'product': product.id,
                                         'quantity': 10,
-                                        'uom': unit.id,
+                                        'unit': unit.id,
                                         'minimal_quantity': 2,
                                         }],
                                 ),
@@ -174,7 +174,7 @@ class StockForecastTestCase(CompanyTestMixin, ModuleTestCase):
                             ('create', [{
                                         'product': product.id,
                                         'quantity': 20,
-                                        'uom': unit.id,
+                                        'unit': unit.id,
                                         'minimal_quantity': 2,
                                         }],
                                 ),
@@ -252,7 +252,7 @@ class StockForecastTestCase(CompanyTestMixin, ModuleTestCase):
                             ('create', [{
                                         'product': product.id,
                                         'quantity': 20,
-                                        'uom': unit.id,
+                                        'unit': unit.id,
                                         'minimal_quantity': 2,
                                         }],
                                 ),
@@ -343,7 +343,7 @@ class StockForecastTestCase(CompanyTestMixin, ModuleTestCase):
             self.assertEqual(len(forecast.lines), 1)
             forecast_line, = forecast.lines
             self.assertEqual(forecast_line.product, product)
-            self.assertEqual(forecast_line.uom, unit)
+            self.assertEqual(forecast_line.unit, unit)
             self.assertEqual(forecast_line.quantity, 5)
             self.assertEqual(forecast_line.minimal_quantity, 1)
 

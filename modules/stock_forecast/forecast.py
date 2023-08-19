@@ -292,7 +292,8 @@ class ForecastLine(ModelSQL, ModelView):
     product_uom_category = fields.Function(
         fields.Many2One('product.uom.category', 'Product Uom Category'),
         'on_change_with_product_uom_category')
-    uom = fields.Many2One('product.uom', 'UOM', required=True,
+    unit = fields.Many2One(
+        'product.uom', "Unit", required=True,
         domain=[
             If(Bool(Eval('product_uom_category')),
                 ('category', '=', Eval('product_uom_category')),
@@ -301,11 +302,11 @@ class ForecastLine(ModelSQL, ModelView):
         states=_states,
         depends={'product'})
     quantity = fields.Float(
-        "Quantity", digits='uom', required=True,
+        "Quantity", digits='unit', required=True,
         domain=[('quantity', '>=', 0)],
         states=_states)
     minimal_quantity = fields.Float(
-        "Minimal Qty", digits='uom', required=True,
+        "Minimal Qty", digits='unit', required=True,
         domain=[('minimal_quantity', '<=', Eval('quantity'))],
         states=_states)
     moves = fields.Many2Many('stock.forecast.line-stock.move',
@@ -320,7 +321,7 @@ class ForecastLine(ModelSQL, ModelView):
         fields.Selection('get_forecast_states', 'Forecast State'),
         'on_change_with_forecast_state')
     quantity_executed = fields.Function(fields.Float(
-            "Quantity Executed", digits='uom'), 'get_quantity_executed')
+            "Quantity Executed", digits='unit'), 'get_quantity_executed')
 
     del _states
 
@@ -336,6 +337,13 @@ class ForecastLine(ModelSQL, ModelView):
 
     @classmethod
     def __register__(cls, module_name):
+        table_h = cls.__table_handler__(module_name)
+
+        # Migration from 6.8: rename uom to unit
+        if (table_h.column_exist('uom')
+                and not table_h.column_exist('unit')):
+            table_h.column_rename('uom', 'unit')
+
         super().__register__(module_name)
 
         table_h = cls.__table_handler__(module_name)
@@ -351,7 +359,7 @@ class ForecastLine(ModelSQL, ModelView):
     @fields.depends('product')
     def on_change_product(self):
         if self.product:
-            self.uom = self.product.default_uom
+            self.unit = self.product.default_uom
 
     @fields.depends('product')
     def on_change_with_product_uom_category(self, name=None):
@@ -422,8 +430,8 @@ class ForecastLine(ModelSQL, ModelView):
                         group_by=move.product))
                 for product_id, quantity in cursor:
                     line = product2line[product_id]
-                    result[line.id] = Uom.compute_qty(line.product.default_uom,
-                        quantity, line.uom)
+                    result[line.id] = Uom.compute_qty(
+                        line.product.default_uom, quantity, line.unit)
         return result
 
     @classmethod
@@ -467,7 +475,7 @@ class ForecastLine(ModelSQL, ModelView):
             move.from_location = self.forecast.warehouse.storage_location
             move.to_location = self.forecast.destination
             move.product = self.product
-            move.unit = self.uom
+            move.unit = self.unit
             move.quantity = qty * self.minimal_quantity
             move.planned_date = from_date + datetime.timedelta(day)
             move.company = self.forecast.company
@@ -605,6 +613,6 @@ class ForecastComplete(Wizard):
         quantity = max(product.quantity, 0)
         line.product = product
         line.quantity = quantity
-        line.uom = product.default_uom.id
+        line.unit = product.default_uom
         line.forecast = self.record
         line.minimal_quantity = min(1, quantity)

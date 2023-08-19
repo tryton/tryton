@@ -6,6 +6,6 @@ this repository contains the full copyright notices and license terms. -->
     <field name="product" expand="1"/>
     <field name="quantity"/>
     <field name="minimal_quantity"/>
-    <field name="uom"/>
+    <field name="unit"/>
     <field name="quantity_executed"/>
 </tree>

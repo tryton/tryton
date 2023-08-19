@@ -11,8 +11,8 @@ this repository contains the full copyright notices and license terms. -->
     <field name="quantity"/>
     <label name="minimal_quantity"/>
     <field name="minimal_quantity"/>
-    <label name="uom"/>
-    <field name="uom"/>
+    <label name="unit"/>
+    <field name="unit"/>
     <label name="quantity_executed"/>
     <field name="quantity_executed"/>
     <field name="moves" colspan="4"/>
