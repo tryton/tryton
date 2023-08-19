@@ -16,7 +16,7 @@ class BOM(DeactivableMixin, ModelSQL, ModelView):
     output_products = fields.Many2Many('production.bom.output',
         'bom', 'product', 'Output Products')
 
-    def compute_factor(self, product, quantity, uom):
+    def compute_factor(self, product, quantity, unit):
         '''
         Compute factor for an output product
         '''
@@ -25,7 +25,7 @@ class BOM(DeactivableMixin, ModelSQL, ModelView):
         for output in self.outputs:
             if output.product == product:
                 output_quantity += Uom.compute_qty(
-                    output.uom, output.quantity, uom, round=False)
+                    output.unit, output.quantity, unit, round=False)
         if output_quantity:
             return quantity / output_quantity
         else:
@@ -50,11 +50,13 @@ class BOMInput(ModelSQL, ModelView):
     product = fields.Many2One('product.product', 'Product', required=True)
     uom_category = fields.Function(fields.Many2One(
         'product.uom.category', 'Uom Category'), 'on_change_with_uom_category')
-    uom = fields.Many2One('product.uom', 'Uom', required=True,
+    unit = fields.Many2One(
+        'product.uom', "Unit", required=True,
         domain=[
             ('category', '=', Eval('uom_category')),
             ])
-    quantity = fields.Float('Quantity', digits='uom', required=True,
+    quantity = fields.Float(
+        "Quantity", digits='unit', required=True,
         domain=['OR',
             ('quantity', '>=', 0),
             ('quantity', '=', None),
@@ -68,6 +70,13 @@ class BOMInput(ModelSQL, ModelView):
 
     @classmethod
     def __register__(cls, module):
+        table_h = cls.__table_handler__(module)
+
+        # Migration from 6.8: rename uom to unit
+        if (table_h.column_exist('uom')
+                and not table_h.column_exist('unit')):
+            table_h.column_rename('uom', 'unit')
+
         super().__register__(module)
         table_h = cls.__table_handler__(module)
 
@@ -78,14 +87,14 @@ class BOMInput(ModelSQL, ModelView):
     def get_product_types(cls):
         return ['goods', 'assets']
 
-    @fields.depends('product', 'uom')
+    @fields.depends('product', 'unit')
     def on_change_product(self):
         if self.product:
             category = self.product.default_uom.category
-            if not self.uom or self.uom.category != category:
-                self.uom = self.product.default_uom
+            if not self.unit or self.unit.category != category:
+                self.unit = self.product.default_uom
         else:
-            self.uom = None
+            self.unit = None
 
     @fields.depends('product')
     def on_change_with_uom_category(self, name=None):
@@ -111,7 +120,7 @@ class BOMInput(ModelSQL, ModelView):
         self.product.check_bom_recursion()
 
     def compute_quantity(self, factor):
-        return self.uom.ceil(self.quantity * factor)
+        return self.unit.ceil(self.quantity * factor)
 
 
 class BOMOutput(BOMInput):
@@ -120,7 +129,7 @@ class BOMOutput(BOMInput):
     _table = 'production_bom_output'  # Needed to override BOMInput._table
 
     def compute_quantity(self, factor):
-        return self.uom.floor(self.quantity * factor)
+        return self.unit.floor(self.quantity * factor)
 
     @classmethod
     def delete(cls, outputs):
@@ -151,12 +160,12 @@ class BOMTree(ModelView):
     __name__ = 'production.bom.tree'
 
     product = fields.Many2One('product.product', 'Product')
-    quantity = fields.Float('Quantity', digits='uom')
-    uom = fields.Many2One('product.uom', 'Uom')
+    quantity = fields.Float('Quantity', digits='unit')
+    unit = fields.Many2One('product.uom', "Unit")
     childs = fields.One2Many('production.bom.tree', None, 'Childs')
 
     @classmethod
-    def tree(cls, product, quantity, uom, bom=None):
+    def tree(cls, product, quantity, unit, bom=None):
         Input = Pool().get('production.bom.input')
 
         result = []
@@ -165,19 +174,19 @@ class BOMTree(ModelView):
                 return result
             bom = product.boms[0].bom
 
-        factor = bom.compute_factor(product, quantity, uom)
+        factor = bom.compute_factor(product, quantity, unit)
         for input_ in bom.inputs:
             quantity = Input.compute_quantity(input_, factor)
-            childs = cls.tree(input_.product, quantity, input_.uom)
+            childs = cls.tree(input_.product, quantity, input_.unit)
             values = {
                 'product': input_.product.id,
                 'product.': {
                     'rec_name': input_.product.rec_name,
                     },
                 'quantity': quantity,
-                'uom': input_.uom.id,
-                'uom.': {
-                    'rec_name': input_.uom.rec_name,
+                'unit': input_.unit.id,
+                'unit.': {
+                    'rec_name': input_.unit.rec_name,
                     },
                 'childs': childs,
             }
@@ -189,8 +198,9 @@ class OpenBOMTreeStart(ModelView):
     'Open BOM Tree'
     __name__ = 'production.bom.tree.open.start'
 
-    quantity = fields.Float('Quantity', digits='uom', required=True)
-    uom = fields.Many2One('product.uom', 'Unit', required=True,
+    quantity = fields.Float('Quantity', digits='unit', required=True)
+    unit = fields.Many2One(
+        'product.uom', "Unit", required=True,
         domain=[
             ('category', '=', Eval('category')),
             ])
@@ -211,20 +221,20 @@ class OpenBOMTreeTree(ModelView):
         readonly=True)
 
     @classmethod
-    def tree(cls, bom, product, quantity, uom):
+    def tree(cls, bom, product, quantity, unit):
         pool = Pool()
         Tree = pool.get('production.bom.tree')
 
-        childs = Tree.tree(product, quantity, uom, bom=bom)
+        childs = Tree.tree(product, quantity, unit, bom=bom)
         bom_tree = [{
                 'product': product.id,
                 'product.': {
                     'rec_name': product.rec_name,
                     },
                 'quantity': quantity,
-                'uom': uom.id,
-                'uom.': {
-                    'rec_name': uom.rec_name,
+                'unit': unit.id,
+                'unit.': {
+                    'rec_name': unit.rec_name,
                     },
                 'childs': childs,
                 }]
@@ -252,10 +262,10 @@ class OpenBOMTree(Wizard):
         defaults = {}
         product = self.record
         defaults['category'] = product.default_uom.category.id
-        if getattr(self.start, 'uom', None):
-            defaults['uom'] = self.start.uom.id
+        if getattr(self.start, 'unit', None):
+            defaults['unit'] = self.start.unit.id
         else:
-            defaults['uom'] = product.default_uom.id
+            defaults['unit'] = product.default_uom.id
         defaults['product'] = product.id
         if getattr(self.start, 'bom', None):
             defaults['bom'] = self.start.bom.id
@@ -268,4 +278,4 @@ class OpenBOMTree(Wizard):
         pool = Pool()
         BomTree = pool.get('production.bom.tree.open.tree')
         return BomTree.tree(self.start.bom.bom, self.start.product,
-            self.start.quantity, self.start.uom)
+            self.start.quantity, self.start.unit)

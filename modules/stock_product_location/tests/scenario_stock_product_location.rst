@@ -83,7 +83,7 @@ Add one shipment line of product::
 
     >>> move = shipment_in.incoming_moves.new()
     >>> move.product = product
-    >>> move.uom = unit
+    >>> move.unit = unit
     >>> move.quantity = 1
     >>> move.from_location = supplier_loc
     >>> move.to_location = input_loc
@@ -110,7 +110,7 @@ Add one shipment return line::
 
     >>> move = shipment_out_return.incoming_moves.new()
     >>> move.product = product
-    >>> move.uom =unit
+    >>> move.unit =unit
     >>> move.quantity = 1
     >>> move.from_location = customer_loc
     >>> move.to_location =  input_loc

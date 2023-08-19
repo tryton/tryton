@@ -10,6 +10,6 @@ this repository contains the full copyright notices and license terms. -->
     <newline/>
     <label name="quantity"/>
     <field name="quantity"/>
-    <label name="uom"/>
-    <field name="uom"/>
+    <label name="unit"/>
+    <field name="unit"/>
 </form>

@@ -81,7 +81,7 @@ Create Bill of Material::
     >>> bom.inputs.append(input2)
     >>> input2.product = component2
     >>> input2.quantity = 150
-    >>> input2.uom = centimeter
+    >>> input2.unit = centimeter
     >>> output = BOMOutput()
     >>> bom.outputs.append(output)
     >>> output.product = product
