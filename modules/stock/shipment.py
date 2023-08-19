@@ -1685,19 +1685,6 @@ class ShipmentOut(ShipmentAssignMixin, Workflow, ModelSQL, ModelView):
         Move.delete([m for s in shipments for m in s.moves])
         super(ShipmentOut, cls).delete(shipments)
 
-    @staticmethod
-    def _location_amount(target_uom, qty_uom, uom_index):
-        """
-        Take a raw list of quantities and uom and convert it to
-        the target uom.
-        """
-        Uom = Pool().get('product.uom')
-        res = 0
-        for uom, qty in qty_uom:
-            res += Uom.compute_qty(uom_index[uom], qty,
-                    uom_index[target_uom])
-        return res
-
     @classmethod
     @ModelView.button_action('stock.wizard_shipment_out_assign')
     def assign_wizard(cls, shipments):
