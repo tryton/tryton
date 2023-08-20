@@ -3,7 +3,7 @@
 this repository contains the full copyright notices and license terms. -->
 <data>
     <xpath expr="/form/notebook/page[@name='lot_required']/field[@name='lot_required']" position="after">
-        <label name="lot_unit"/>
-        <field name="lot_unit"/>
+        <label name="lot_uom"/>
+        <field name="lot_uom"/>
     </xpath>
 </data>

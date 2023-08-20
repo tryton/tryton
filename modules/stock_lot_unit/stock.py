@@ -37,8 +37,8 @@ class LotUnitMixin:
             super().on_change_product()
         except AttributeError:
             pass
-        if self.product and self.product.lot_unit:
-            self.unit = self.product.lot_unit
+        if self.product and self.product.lot_uom:
+            self.unit = self.product.lot_uom
             self.on_change_unit()
 
     @fields.depends('unit')
