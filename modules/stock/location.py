@@ -162,20 +162,17 @@ class Location(DeactivableMixin, tree(), ModelSQL, ModelView):
 
     quantity = fields.Function(
         fields.Float(
-            "Quantity", digits=(16, Eval('quantity_uom_digits', 2)),
+            "Quantity", digits='quantity_uom',
             help="The amount of stock in the location."),
         'get_quantity', searcher='search_quantity')
     forecast_quantity = fields.Function(
         fields.Float(
-            "Forecast Quantity", digits=(16, Eval('quantity_uom_digits', 2)),
+            "Forecast Quantity", digits='quantity_uom',
             help="The amount of stock expected to be in the location."),
         'get_quantity', searcher='search_quantity')
     quantity_uom = fields.Function(fields.Many2One(
             'product.uom', "Quantity UoM",
             help="The Unit of Measure for the quantities."),
-        'get_quantity_uom')
-    quantity_uom_digits = fields.Function(fields.Integer(
-            "Quantity UoM Digits"),
         'get_quantity_uom')
     cost_value = fields.Function(fields.Numeric(
             "Cost Value", digits=price_digits,
@@ -473,10 +470,7 @@ class Location(DeactivableMixin, tree(), ModelSQL, ModelView):
             template = Template(context['product_template'])
             uom = template.default_uom
         if uom:
-            if name == 'quantity_uom':
-                value = uom.id
-            elif name == 'quantity_uom_digits':
-                value = uom.digits
+            value = uom.id
         return {l.id: value for l in locations}
 
     @classmethod
