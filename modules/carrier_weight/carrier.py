@@ -20,8 +20,6 @@ class Carrier(metaclass=PoolMeta):
             'readonly': Bool(Eval('weight_price_list', [])),
             },
         help="The Unit of Measure of weight criteria for the price list.")
-    weight_uom_digits = fields.Function(fields.Integer("Weight UoM Digits"),
-        'on_change_with_weight_uom_digits')
     weight_currency = fields.Many2One('currency.currency', 'Currency',
         states={
             'invisible': Eval('carrier_cost_method') != 'weight',
@@ -45,16 +43,6 @@ class Carrier(metaclass=PoolMeta):
         selection = ('weight', 'Weight')
         if selection not in cls.carrier_cost_method.selection:
             cls.carrier_cost_method.selection.append(selection)
-
-    @staticmethod
-    def default_weight_uom_digits():
-        return 2
-
-    @fields.depends('weight_uom')
-    def on_change_with_weight_uom_digits(self, name=None):
-        if self.weight_uom:
-            return self.weight_uom.digits
-        return 2
 
     def compute_weight_price(self, weight):
         "Compute price based on weight"
@@ -94,8 +82,8 @@ class WeightPriceList(ModelSQL, ModelView):
     carrier = fields.Many2One(
         'carrier', "Carrier", required=True,
         help="The carrier that the price list belongs to.")
-    weight = fields.Float('Weight',
-        digits=(16, Eval('_parent_carrier', {}).get('weight_uom_digits', 2)),
+    weight = fields.Float(
+        "Weight", digits='weight_uom',
         domain=[
             ('weight', '>=', 0),
             ],
@@ -108,6 +96,10 @@ class WeightPriceList(ModelSQL, ModelView):
     currency = fields.Function(fields.Many2One(
             'currency.currency', "Currency"),
         'on_change_with_currency')
+    weight_uom = fields.Function(fields.Many2One(
+            'product.uom', "Weight UoM",
+            help="The Unit of Measure of the weight."),
+        'on_change_with_weight_uom')
 
     @classmethod
     def __setup__(cls):
@@ -117,3 +109,7 @@ class WeightPriceList(ModelSQL, ModelView):
     @fields.depends('carrier', '_parent_carrier.weight_currency')
     def on_change_with_currency(self, name=None):
         return self.carrier.weight_currency if self.carrier else None
+
+    @fields.depends('carrier', '_parent_carrier.weight_uom')
+    def on_change_with_weight_uom(self, name=None):
+        return self.carrier.weight_uom if self.carrier else None

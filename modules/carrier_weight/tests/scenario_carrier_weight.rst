@@ -95,7 +95,6 @@ Create product::
 Create carrier::
 
     >>> Carrier = Model.get('carrier')
-    >>> WeightPriceList = Model.get('carrier.weight_price_list')
     >>> kilogram, = ProductUom.find([('name', '=', 'Kilogram')])
     >>> carrier = Carrier()
     >>> party = Party(name='Carrier')
@@ -110,8 +109,7 @@ Create carrier::
     ...         (1, Decimal(40)),
     ...         (5, Decimal(180)),
     ...         ):
-    ...     line = WeightPriceList(weight=weight, price=price)
-    ...     carrier.weight_price_list.append(line)
+    ...     line = carrier.weight_price_list.new(weight=weight, price=price)
     >>> carrier.save()
 
 Receive a single product line::
