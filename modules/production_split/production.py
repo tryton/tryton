@@ -101,5 +101,6 @@ class SplitProductionStart(ModelView):
         domain=[
             ('category', '=', Eval('uom_category')),
             ])
-    uom_category = fields.Many2One('product.uom.category', 'Uom Category',
-        readonly=True)
+    uom_category = fields.Many2One(
+        'product.uom.category', "UoM Category", readonly=True,
+        help="The category of Unit of Measure.")

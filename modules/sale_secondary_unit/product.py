@@ -12,12 +12,13 @@ from trytond.pyson import Bool, Eval
 class SaleSecondaryMixin:
     __slots__ = ()
     sale_secondary_uom = fields.Many2One(
-        'product.uom', "Sale Secondary UOM",
+        'product.uom', "Sale Secondary UoM",
         domain=[
             ('category', '!=', Eval('default_uom_category')),
-            ])
+            ],
+        help="The secondary Unit of Measure for sales.")
     sale_secondary_uom_factor = fields.Float(
-        "Sale Secondary UOM Factor", digits=uom_conversion_digits,
+        "Sale Secondary UoM Factor", digits=uom_conversion_digits,
         states={
             'required': Bool(Eval('sale_secondary_uom')),
             'invisible': ~Eval('sale_secondary_uom'),
@@ -25,7 +26,7 @@ class SaleSecondaryMixin:
         help="The coefficient for the formula:\n"
         "1 (sale unit) = coefficient (secondary unit)")
     sale_secondary_uom_rate = fields.Float(
-        "Sale Secondary UOM Rate", digits=uom_conversion_digits,
+        "Sale Secondary UoM Rate", digits=uom_conversion_digits,
         states={
             'required': Bool(Eval('sale_secondary_uom')),
             'invisible': ~Eval('sale_secondary_uom'),
@@ -33,7 +34,7 @@ class SaleSecondaryMixin:
         help="The coefficient for the formula:\n"
         "coefficient (sale unit) = 1 (secondary unit)")
     sale_secondary_uom_category = fields.Function(
-        fields.Many2One('product.uom.category', "Sale Secondary UOM Category"),
+        fields.Many2One('product.uom.category', "Sale Secondary UoM Category"),
         'on_change_with_sale_secondary_uom_category',
         searcher='search_sale_secondary_uom_category')
 
@@ -144,7 +145,9 @@ class ProductCustomer(SaleSecondaryMixin, metaclass=PoolMeta):
     __name__ = 'sale.product_customer'
 
     default_uom_category = fields.Function(
-        fields.Many2One('product.uom.category', "Default UOM Category"),
+        fields.Many2One(
+            'product.uom.category', "Default UoM Category",
+            help="The category of default Unit of Measure."),
         'on_change_with_default_uom_category')
 
     @fields.depends('template', '_parent_template.sale_uom',

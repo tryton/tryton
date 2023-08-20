@@ -171,10 +171,11 @@ class Location(DeactivableMixin, tree(), ModelSQL, ModelView):
             help="The amount of stock expected to be in the location."),
         'get_quantity', searcher='search_quantity')
     quantity_uom = fields.Function(fields.Many2One(
-            'product.uom', "Quantity UOM"),
+            'product.uom', "Quantity UoM",
+            help="The Unit of Measure for the quantities."),
         'get_quantity_uom')
     quantity_uom_digits = fields.Function(fields.Integer(
-            "Quantity UOM Digits"),
+            "Quantity UoM Digits"),
         'get_quantity_uom')
     cost_value = fields.Function(fields.Numeric(
             "Cost Value", digits=price_digits,
@@ -698,7 +699,9 @@ class ProductsByLocations(DeactivableMixin, ModelSQL, ModelView):
         fields.Float("Forecast Quantity", digits='default_uom'),
         'get_product', searcher='search_product')
     default_uom = fields.Function(
-        fields.Many2One('product.uom', "Default UOM"),
+        fields.Many2One(
+            'product.uom', "Default UoM",
+            help="The default Unit of Measure."),
         'get_product', searcher='search_product')
     cost_value = fields.Function(
         fields.Numeric("Cost Value"), 'get_product')

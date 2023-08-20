@@ -85,7 +85,9 @@ class Lot(DeactivableMixin, ModelSQL, ModelView, LotMixin, StockMixin):
         fields.Float("Forecast Quantity", digits='default_uom'),
         'get_quantity', searcher='search_quantity')
     default_uom = fields.Function(
-        fields.Many2One('product.uom', "Default UOM"),
+        fields.Many2One(
+            'product.uom', "Default UoM",
+            help="The default Unit of Measure."),
         'on_change_with_default_uom')
 
     @classmethod
@@ -306,7 +308,9 @@ class LotsByLocations(ModelSQL, ModelView):
         fields.Float("Forecast Quantity", digits='default_uom'),
         'get_lot', searcher='search_lot')
     default_uom = fields.Function(
-        fields.Many2One('product.uom', "Default UOM"),
+        fields.Many2One(
+            'product.uom', "Default UoM",
+            help="The default Unit of Measure."),
         'get_lot', searcher='search_lot')
 
     @classmethod

@@ -179,11 +179,13 @@ class DutyRate(CountryMatchMixin, ModelSQL, ModelView):
             'required': Eval('computation_type').in_(['amount', 'quantity']),
             'invisible': ~Eval('computation_type').in_(['amount', 'quantity']),
             })
-    uom = fields.Many2One('product.uom', 'Uom',
+    uom = fields.Many2One(
+        'product.uom', "UoM",
         states={
             'required': Eval('computation_type') == 'quantity',
             'invisible': Eval('computation_type') != 'quantity',
-            })
+            },
+        help="The Unit of Measure.")
 
     @classmethod
     def __setup__(cls):

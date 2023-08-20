@@ -11,15 +11,16 @@ from trytond.transaction import Transaction
 
 class Carrier(metaclass=PoolMeta):
     __name__ = 'carrier'
-    weight_uom = fields.Many2One('product.uom', 'Weight Uom',
+    weight_uom = fields.Many2One(
+        'product.uom', "Weight UoM",
         domain=[('category', '=', Id('product', 'uom_cat_weight'))],
         states={
             'invisible': Eval('carrier_cost_method') != 'weight',
             'required': Eval('carrier_cost_method') == 'weight',
             'readonly': Bool(Eval('weight_price_list', [])),
             },
-        help="The unit of weight criteria of the price list.")
-    weight_uom_digits = fields.Function(fields.Integer('Weight Uom Digits'),
+        help="The Unit of Measure of weight criteria for the price list.")
+    weight_uom_digits = fields.Function(fields.Integer("Weight UoM Digits"),
         'on_change_with_weight_uom_digits')
     weight_currency = fields.Many2One('currency.currency', 'Currency',
         states={

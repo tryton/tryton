@@ -40,7 +40,8 @@ class InvoiceLine(metaclass=PoolMeta):
 
     product_secondary_uom_category = fields.Function(
         fields.Many2One(
-            'product.uom.category', "Product Secondary UOM Category"),
+            'product.uom.category', "Product Secondary UoM Category",
+            help="The category of secondary Unit of Measure for the product."),
         'get_product_secondary_uom_category')
 
     @fields.depends('quantity', 'unit', 'secondary_unit', 'origin')

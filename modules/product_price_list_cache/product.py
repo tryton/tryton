@@ -96,7 +96,8 @@ class PriceListCache(ModelSQL):
     product = fields.Many2One(
         'product.product', "Product", required=True, ondelete='CASCADE')
     uom = fields.Many2One(
-        'product.uom', "UoM", required=True, ondelete='CASCADE')
+        'product.uom', "UoM", required=True, ondelete='CASCADE',
+        help="The Unit of Measure.")
     raw_unit_prices = fields.Char("Unit Prices")
     pattern = fields.Dict(None, "Pattern")
 

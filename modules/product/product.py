@@ -93,12 +93,15 @@ class Template(
             help="The method used to calculate the cost price."))
     cost_price_methods = fields.One2Many(
         'product.cost_price_method', 'template', "Cost Price Methods")
-    default_uom = fields.Many2One('product.uom', "Default UOM", required=True,
-        help="The standard unit of measure for the product.\n"
+    default_uom = fields.Many2One(
+        'product.uom', "Default UoM", required=True,
+        help="The standard Unit of Measure for the product.\n"
         "Used internally when calculating the stock levels of goods "
         "and assets.")
     default_uom_category = fields.Function(
-        fields.Many2One('product.uom.category', 'Default UOM Category'),
+        fields.Many2One(
+            'product.uom.category', "Default UoM Category",
+            help="The category of the default Unit of Measure."),
         'on_change_with_default_uom_category',
         searcher='search_default_uom_category')
     categories = fields.Many2Many(

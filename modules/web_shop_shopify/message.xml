@@ -25,7 +25,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="text">To update products on the shop "%(shop)s", you must set the language to "%(shopify_primary_locale)s" instead of "%(shop_language)s".</field>
         </record>
         <record model="ir.message" id="msg_product_shopify_uom_digits">
-            <field name="text">To update product "%(product)s" on Shopify, you must use an UOM without digits.</field>
+            <field name="text">To update product "%(product)s" on Shopify, you must use an unit of measure without digits.</field>
         </record>
         <record model="ir.message" id="msg_product_change_template">
             <field name="text">To change the template of product "%(product)s" you must unpublish it from the Shopify web shops.</field>

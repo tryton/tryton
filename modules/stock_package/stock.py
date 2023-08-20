@@ -64,29 +64,32 @@ class MeasurementsMixin:
         "Length", digits='length_uom',
         help="The length of the package.")
     length_uom = fields.Many2One(
-        'product.uom', "Length UOM",
+        'product.uom', "Length UoM",
         domain=[('category', '=', Id('product', 'uom_cat_length'))],
         states={
             'required': Bool(Eval('length')),
-            })
+            },
+        help="The Unit of Measure for the package length.")
     height = fields.Float(
         "Height", digits='height_uom',
         help="The height of the package.")
     height_uom = fields.Many2One(
-        'product.uom', "Height UOM",
+        'product.uom', "Height UoM",
         domain=[('category', '=', Id('product', 'uom_cat_length'))],
         states={
             'required': Bool(Eval('height')),
-            })
+            },
+        help="The Unit of Measure for the package height.")
     width = fields.Float(
         "Width", digits='width_uom',
         help="The width of the package.")
     width_uom = fields.Many2One(
-        'product.uom', "Width UOM",
+        'product.uom', "Width UoM",
         domain=[('category', '=', Id('product', 'uom_cat_length'))],
         states={
             'required': Bool(Eval('width')),
-            })
+            },
+        help="The Unit of Measure for the package width.")
 
     packaging_volume = fields.Float(
         "Packaging Volume", digits='packaging_volume_uom',
@@ -98,21 +101,23 @@ class MeasurementsMixin:
             },
         help="The volume of the package.")
     packaging_volume_uom = fields.Many2One(
-        'product.uom', "Packaging Volume UOM",
+        'product.uom', "Packaging Volume UoM",
         domain=[('category', '=', Id('product', 'uom_cat_volume'))],
         states={
             'required': Bool(Eval('packaging_volume')),
-            })
+            },
+        help="The Unit of Measure for the packaging volume.")
 
     packaging_weight = fields.Float(
         "Packaging Weight", digits='packaging_weight_uom',
         help="The weight of the package when empty.")
     packaging_weight_uom = fields.Many2One(
-        'product.uom', "Packaging Weight UOM",
+        'product.uom', "Packaging Weight UoM",
         domain=[('category', '=', Id('product', 'uom_cat_weight'))],
         states={
             'required': Bool(Eval('packaging_weight')),
-            })
+            },
+        help="The Unit of Measure for the packaging weight.")
 
     @fields.depends(
         'packaging_volume', 'packaging_volume_uom',

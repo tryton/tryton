@@ -4,22 +4,22 @@ this repository contains the full copyright notices and license terms. -->
 <tryton>
     <data grouped="1">
         <record model="ir.message" id="msg_uom_modify_factor">
-            <field name="text">You cannot modify the factor of UOM "%(uom)s".</field>
+            <field name="text">You cannot modify the factor of the unit of measure "%(uom)s".</field>
         </record>
         <record model="ir.message" id="msg_uom_modify_rate">
-            <field name="text">You cannot modify the rate of UOM "%(uom)s".</field>
+            <field name="text">You cannot modify the rate of the unit of measure"%(uom)s".</field>
         </record>
         <record model="ir.message" id="msg_uom_modify_category">
-            <field name="text">You cannot modify the category of UOM "%(uom)s".</field>
+            <field name="text">You cannot modify the category of the unit of measure "%(uom)s".</field>
         </record>
         <record model="ir.message" id="msg_uom_decrease_digits">
-            <field name="text">You cannot decrease the digits of UOM "%(uom)s".</field>
+            <field name="text">You cannot decrease the digits of the unit of measure "%(uom)s".</field>
         </record>
         <record model="ir.message" id="msg_uom_modify_options">
-            <field name="text">If the UOM is still not used, you can delete it otherwise you can deactivate it and create a new one.</field>
+            <field name="text">If the unit of measure is still not used, you can delete it otherwise you can deactivate it and create a new one.</field>
         </record>
         <record model="ir.message" id="msg_uom_incompatible_factor_rate">
-            <field name="text">Incompatible factor and rate values on UOM "%(uom)s".</field>
+            <field name="text">Incompatible factor and rate values on unit of measure"%(uom)s".</field>
         </record>
         <record model="ir.message" id="msg_uom_no_zero_factor_rate">
             <field name="text">Rate and factor can not be both equal to zero.</field>

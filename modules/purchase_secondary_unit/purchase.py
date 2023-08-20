@@ -40,12 +40,17 @@ class Line(metaclass=PoolMeta):
                 }),
         'on_change_with_secondary_unit_price', setter='set_secondary')
 
-    secondary_uom_factor = fields.Float("Secondary UOM Factor")
-    secondary_uom_rate = fields.Float("Secondary UOM Rate")
+    secondary_uom_factor = fields.Float(
+        "Secondary UoM Factor",
+        help="The factor for the secondary Unit of Measure.")
+    secondary_uom_rate = fields.Float(
+        "Secondary UoM Rate",
+        help="The rate for the secondary Unit of Measure.")
 
     product_secondary_uom_category = fields.Function(
         fields.Many2One(
-            'product.uom.category', "Product Secondary UOM Category"),
+            'product.uom.category', "Product Secondary UoM Category",
+            help="The category of secondary Unit of Measure for the product."),
         'on_change_with_product_secondary_uom_category')
 
     @fields.depends('product', 'product_supplier')
@@ -176,7 +181,9 @@ class RequisitionLine(metaclass=PoolMeta):
 
     product_secondary_uom_category = fields.Function(
         fields.Many2One(
-            'product.uom.category', "Product Secondary UOM Category"),
+            'product.uom.category', "Product Secondary UoM Category",
+            help="The category of secondary Unit of Measure "
+            "for the product."),
         'on_change_with_product_secondary_uom_category')
 
     @classmethod
@@ -245,7 +252,9 @@ class BlanketAgreementLine(metaclass=PoolMeta):
 
     product_secondary_uom_category = fields.Function(
         fields.Many2One(
-            'product.uom.category', "Product Secondary UOM Category"),
+            'product.uom.category', "Product Secondary UOM Category",
+            help="The category of secondary Unit of Measure "
+            "for the product."),
         'on_change_with_product_secondary_uom_category')
 
     @classmethod

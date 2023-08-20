@@ -432,7 +432,9 @@ class PurchaseRequisitionLine(sequence_ordered(), ModelSQL, ModelView):
             ],
         states=_states)
     product_uom_category = fields.Function(
-        fields.Many2One('product.uom.category', "Product UOM Category"),
+        fields.Many2One(
+            'product.uom.category', "Product UoM Category",
+            help="The category of Unit of Measure for the product."),
         'on_change_with_product_uom_category')
     description = fields.Text("Description", states=_states)
     summary = fields.Function(fields.Char('Summary'), 'on_change_with_summary')

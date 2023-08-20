@@ -195,9 +195,9 @@ class Uom(SymbolMixin, DigitsMixin, DeactivableMixin, ModelSQL, ModelView):
         if not qty or (from_uom is None and to_uom is None):
             return qty
         if from_uom is None:
-            raise ValueError("missing from_uom")
+            raise ValueError("missing from_UoM")
         if to_uom is None:
-            raise ValueError("missing to_uom")
+            raise ValueError("missing to_UoM")
         if from_uom.category.id != to_uom.category.id:
             if not factor and not rate:
                 raise ValueError(
@@ -243,9 +243,9 @@ class Uom(SymbolMixin, DigitsMixin, DeactivableMixin, ModelSQL, ModelView):
         if not price or (from_uom is None and to_uom is None):
             return price
         if from_uom is None:
-            raise ValueError("missing from_uom")
+            raise ValueError("missing from_UoM")
         if to_uom is None:
-            raise ValueError("missing to_uom")
+            raise ValueError("missing to_UoM")
         if from_uom.category.id != to_uom.category.id:
             if not factor and not rate:
                 raise ValueError(

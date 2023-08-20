@@ -7,7 +7,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="text">The numbers for each company's gift cards must be unique.</field>
         </record>
         <record model="ir.message" id="msg_gift_card_invalid_uom">
-            <field name="text">The default UOM for the gift card "%(template)s" must be "%(unit)s".</field>
+            <field name="text">The default unit of measure for the gift card "%(template)s" must be "%(unit)s".</field>
         </record>
         <record model="ir.message" id="msg_gift_card_move_quantity">
             <field name="text">To do the move "%(move)s", you must use exactly %(quantity)d gift card(s).</field>

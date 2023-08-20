@@ -19,12 +19,14 @@ class Configuration(metaclass=PoolMeta):
 
     measurement_weight_uom = fields.MultiValue(
         fields.Many2One(
-            'product.uom', "Measurement Weight Uom", required=True,
-            domain=[('category', '=', Id('product', 'uom_cat_weight'))]))
+            'product.uom', "Measurement Weight UoM", required=True,
+            domain=[('category', '=', Id('product', 'uom_cat_weight'))],
+            help="The default Unit of Measure for weight."))
     measurement_volume_uom = fields.MultiValue(
         fields.Many2One(
-            'product.uom', "Measurement Volume Uom", required=True,
-            domain=[('category', '=', Id('product', 'uom_cat_volume'))]))
+            'product.uom', "Measurement Volume UoM", required=True,
+            domain=[('category', '=', Id('product', 'uom_cat_volume'))],
+            help="The default Unit of Measure for volume."))
 
     @classmethod
     def multivalue_model(cls, field):
@@ -49,10 +51,10 @@ class ConfigurationMeasurement(ModelSQL, CompanyValueMixin):
     __name__ = 'stock.configuration.measurement'
 
     measurement_weight_uom = fields.Many2One(
-        'product.uom', "Measurement Weight Uom", required=True,
+        'product.uom', "Measurement Weight UoM", required=True,
         domain=[('category', '=', Id('product', 'uom_cat_weight'))])
     measurement_volume_uom = fields.Many2One(
-        'product.uom', "Measurement Volume Uom", required=True,
+        'product.uom', "Measurement Volume UoM", required=True,
         domain=[('category', '=', Id('product', 'uom_cat_volume'))])
 
     @classmethod
@@ -179,7 +181,10 @@ class MeasurementsMixin(object):
             help="The total weight of the record's moves."),
         'get_measurements', searcher='search_measurements')
     weight_uom = fields.Function(
-        fields.Many2One('product.uom', "Weight Uom"), 'get_measurements_uom')
+        fields.Many2One(
+            'product.uom', "Weight UoM",
+            help="The Unit of Measure of weight."),
+        'get_measurements_uom')
     volume = fields.Function(
         fields.Float(
             "Volume", digits='volume_uom',
@@ -189,7 +194,10 @@ class MeasurementsMixin(object):
             help="The total volume of the record's moves."),
         'get_measurements', searcher='search_measurements')
     volume_uom = fields.Function(
-        fields.Many2One('product.uom', "Volume Uom"), 'get_measurements_uom')
+        fields.Many2One(
+            'product.uom', "Volume UoM",
+            help="The Unit of Measure of volume."),
+        'get_measurements_uom')
 
     @classmethod
     def get_measurements_uom(cls, shipments, name):
@@ -364,11 +372,12 @@ class Package(MeasurementsMixin, object, metaclass=PoolMeta):
         "Additional Weight", digits='additional_weight_uom',
         help="The weight to add to the packages.")
     additional_weight_uom = fields.Many2One(
-        'product.uom', "Additional Weight Uom",
+        'product.uom', "Additional Weight UoM",
         domain=[('category', '=', Id('product', 'uom_cat_weight'))],
         states={
             'required': Bool(Eval('additional_weight')),
-            })
+            },
+        help="The Unit of Measure for additional weight.")
     total_weight = fields.Function(
         fields.Float(
             "Total Weight", digits='weight_uom',

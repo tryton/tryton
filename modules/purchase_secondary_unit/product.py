@@ -12,12 +12,13 @@ from trytond.pyson import Bool, Eval
 class PurchaseSecondaryMixin:
     __slots__ = ()
     purchase_secondary_uom = fields.Many2One(
-        'product.uom', "Purchase Secondary UOM",
+        'product.uom', "Purchase Secondary UoM",
         domain=[
             ('category', '!=', Eval('default_uom_category')),
-            ])
+            ],
+        help="The second Unit of Measure for purchases.")
     purchase_secondary_uom_factor = fields.Float(
-        "Purchase Secondary UOM Factor", digits=uom_conversion_digits,
+        "Purchase Secondary UoM Factor", digits=uom_conversion_digits,
         states={
             'required': Bool(Eval('purchase_secondary_uom')),
             'invisible': ~Eval('purchase_secondary_uom'),
@@ -25,7 +26,7 @@ class PurchaseSecondaryMixin:
         help="The coefficient for the formula:\n"
         "1 (purchase unit) = coefficient (secondary unit)")
     purchase_secondary_uom_rate = fields.Float(
-        "Purchase Secondary UOM Rate", digits=uom_conversion_digits,
+        "Purchase Secondary UoM Rate", digits=uom_conversion_digits,
         states={
             'required': Bool(Eval('purchase_secondary_uom')),
             'invisible': ~Eval('purchase_secondary_uom'),
@@ -34,7 +35,7 @@ class PurchaseSecondaryMixin:
         "coefficient (purchase unit) = 1 (secondary unit)")
     purchase_secondary_uom_category = fields.Function(
         fields.Many2One(
-            'product.uom.category', "Purchase Secondary UOM Category"),
+            'product.uom.category', "Purchase Secondary UoM Category"),
         'on_change_with_purchase_secondary_uom_category',
         searcher='search_purchase_secondary_uom_category')
 
@@ -148,7 +149,9 @@ class ProductSupplier(PurchaseSecondaryMixin, metaclass=PoolMeta):
     __name__ = 'purchase.product_supplier'
 
     default_uom_category = fields.Function(
-        fields.Many2One('product.uom.category', "Default UOM Category"),
+        fields.Many2One(
+            'product.uom.category', "Default UoM Category",
+            help="The category of the default Unit of Measure."),
         'on_change_with_default_uom_category')
 
     @fields.depends('template', '_parent_template.purchase_uom',

@@ -38,14 +38,15 @@ class Template(metaclass=PoolMeta):
     __name__ = 'product.template'
     salable = fields.Boolean("Salable")
     sale_uom = fields.Many2One(
-        'product.uom', "Sale UOM",
+        'product.uom', "Sale UoM",
         states={
             'invisible': ~Eval('salable', False),
             'required': Eval('salable', False),
             },
         domain=[
             ('category', '=', Eval('default_uom_category')),
-            ])
+            ],
+        help="The default Unit of Measure for sales.")
     lead_time = fields.MultiValue(fields.TimeDelta(
             "Lead Time",
             domain=['OR',

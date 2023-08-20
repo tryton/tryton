@@ -185,7 +185,9 @@ class Move(Workflow, ModelSQL, ModelView):
         depends={'company'},
         help="The product that the move is associated with.")
     product_uom_category = fields.Function(
-        fields.Many2One('product.uom.category', 'Product Uom Category'),
+        fields.Many2One(
+            'product.uom.category', "Product UoM Category",
+            help="The category of Unit of Measure for the product."),
         'on_change_with_product_uom_category')
     unit = fields.Many2One(
         'product.uom', "Unit", required=True,
@@ -1587,7 +1589,7 @@ class Move(Workflow, ModelSQL, ModelView):
         """
         Executes the supplied query to compute for each location and product
         the stock quantity in the default uom of the product and rounded to
-        Uom's rounding digits.
+        UoM's rounding digits.
 
         See compute_quantites_query for params explanation.
 

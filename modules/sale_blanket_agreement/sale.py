@@ -445,7 +445,9 @@ class BlanketAgreementLine(ModelSQL, ModelView):
             },
         depends=['company', 'unit', 'quantity'])
     product_uom_category = fields.Function(
-        fields.Many2One('product.uom.category', "Product UOM Category"),
+        fields.Many2One(
+            'product.uom.category', "Product UoM Category",
+            help="The category of Unit of Measure for the product."),
         'on_change_with_product_uom_category')
     quantity = fields.Float("Quantity", digits='unit', states=_states)
     unit = fields.Many2One(

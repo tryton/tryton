@@ -24,7 +24,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="weight"/>
             <field name="weight_uom" widget="selection"/>
 
-            <label id="measurements_help" string="Measurements for 1 default UOM." xalign="0" colspan="3"/>
+            <label id="measurements_help" string="Measurements for 1 default UoM." xalign="0" colspan="3"/>
         </page>
     </xpath>
 </data>

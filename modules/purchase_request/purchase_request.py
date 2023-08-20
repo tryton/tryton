@@ -60,15 +60,20 @@ class PurchaseRequest(ModelSQL, ModelView):
             'readonly': STATES['readonly'],
             })
     product_uom_category = fields.Function(
-        fields.Many2One('product.uom.category', "Product Uom Category"),
+        fields.Many2One(
+            'product.uom.category', "Product UoM Category",
+            help="The category of Unit of Measure for the product."),
         'on_change_with_product_uom_category')
     computed_quantity = fields.Float('Computed Quantity', readonly=True)
     computed_unit = fields.Many2One(
         'product.uom', "Computed Unit", readonly=True)
     purchase_date = fields.Date('Best Purchase Date', readonly=True)
     supply_date = fields.Date('Expected Supply Date', readonly=True)
-    default_uom = fields.Function(fields.Many2One(
-            'product.uom', "Default UOM"), 'on_change_with_default_uom')
+    default_uom = fields.Function(
+        fields.Many2One(
+            'product.uom', "Default UoM",
+            help="The default Unit of Measure."),
+        'on_change_with_default_uom')
     stock_level = fields.Float(
         "Stock at Supply Date", readonly=True, digits='default_uom')
     warehouse = fields.Many2One(

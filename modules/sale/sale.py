@@ -1264,7 +1264,9 @@ class SaleLine(TaxableMixin, sequence_ordered(), ModelSQL, ModelView):
         depends={
             'company', 'warehouse', 'sale_date', 'currency', 'customer'})
     product_uom_category = fields.Function(
-        fields.Many2One('product.uom.category', 'Product Uom Category'),
+        fields.Many2One(
+            'product.uom.category', "Product UoM Category",
+            help="The category of Unit of Measure for the product."),
         'on_change_with_product_uom_category')
     unit_price = Monetary(
         "Unit Price", digits=price_digits, currency='currency',

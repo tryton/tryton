@@ -15,37 +15,43 @@ class Template(metaclass=PoolMeta):
         states={
             'invisible': Eval('type').in_(NON_MEASURABLE),
             },
-        help="Length for 1 default UOM.")
-    length_uom = fields.Many2One('product.uom', 'Length UOM',
+        help="Length for 1 default unit of measure.")
+    length_uom = fields.Many2One(
+        'product.uom', "Length UoM",
         domain=[('category', '=', Id('product', 'uom_cat_length'))],
         states={
             'invisible': Eval('type').in_(NON_MEASURABLE),
             'required': Bool(Eval('length')),
-            })
+            },
+        help="The Unit of Measure for the length.")
     height = fields.Float(
         "Height", digits='height_uom',
         states={
             'invisible': Eval('type').in_(NON_MEASURABLE),
             },
-        help="Height for 1 default UOM.")
-    height_uom = fields.Many2One('product.uom', 'Height UOM',
+        help="Height for 1 default unit of measure.")
+    height_uom = fields.Many2One(
+        'product.uom', 'Height UoM',
         domain=[('category', '=', Id('product', 'uom_cat_length'))],
         states={
             'invisible': Eval('type').in_(NON_MEASURABLE),
             'required': Bool(Eval('height')),
-            })
+            },
+        help="The Unit of Measure for the height.")
     width = fields.Float(
         "Width", digits='width_uom',
         states={
             'invisible': Eval('type').in_(NON_MEASURABLE),
             },
-        help="Width for 1 default UOM.")
-    width_uom = fields.Many2One('product.uom', 'Width UOM',
+        help="Width for 1 default unit of measure.")
+    width_uom = fields.Many2One(
+        'product.uom', 'Width UoM',
         domain=[('category', '=', Id('product', 'uom_cat_length'))],
         states={
             'invisible': Eval('type').in_(NON_MEASURABLE),
             'required': Bool(Eval('width')),
-            })
+            },
+        help="The Unit of Measure for the width.")
     volume = fields.Float(
         "Volume", digits='volume_uom',
         states={
@@ -53,25 +59,28 @@ class Template(metaclass=PoolMeta):
             'readonly': (Bool(Eval('length'))
                 & Bool(Eval('height')) & Bool(Eval('width'))),
             },
-        help="Volume for 1 default UOM.")
-    volume_uom = fields.Many2One('product.uom', 'Volume UOM',
+        help="Volume for 1 default unit of measure.")
+    volume_uom = fields.Many2One(
+        'product.uom', "Volume UoM",
         domain=[('category', '=', Id('product', 'uom_cat_volume'))],
         states={
             'invisible': Eval('type').in_(NON_MEASURABLE),
             'required': Bool(Eval('volume')),
-            })
+            },
+        help="The Unit of Measure for the volume.")
     weight = fields.Float(
         "Weight", digits='weight_uom',
         states={
             'invisible': Eval('type').in_(NON_MEASURABLE),
             },
-        help="Weight for 1 default UOM.")
-    weight_uom = fields.Many2One('product.uom', 'Weight UOM',
+        help="Weight for 1 default unit of measure.")
+    weight_uom = fields.Many2One('product.uom', 'Weight UoM',
         domain=[('category', '=', Id('product', 'uom_cat_weight'))],
         states={
             'invisible': Eval('type').in_(NON_MEASURABLE),
             'required': Bool(Eval('weight')),
-            })
+            },
+        help="The Unit of Measure for the weight.")
 
     @fields.depends('volume', 'volume_uom',
         'length', 'length_uom',

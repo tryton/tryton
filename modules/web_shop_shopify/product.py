@@ -70,12 +70,13 @@ class Template(IdentifiersMixin, metaclass=PoolMeta):
     __name__ = 'product.template'
 
     shopify_uom = fields.Many2One(
-        'product.uom', "Shopify UOM",
+        'product.uom', "Shopify UoM",
         states={
             'readonly': Bool(Eval('shopify_identifiers', [-1])),
             'invisible': ~Eval('salable', False),
             },
-        depends={'default_uom_category'})
+        depends={'default_uom_category'},
+        help="The Unit of Measure of the product on Shopify.")
 
     @classmethod
     def __setup__(cls):

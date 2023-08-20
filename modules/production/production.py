@@ -91,7 +91,8 @@ class Production(ShipmentAssignMixin, Workflow, ModelSQL, ModelView):
             'invisible': ~Eval('product'),
             })
     uom_category = fields.Function(fields.Many2One(
-            'product.uom.category', 'Uom Category'),
+            'product.uom.category', "UoM Category",
+            help="The category of Unit of Measure."),
         'on_change_with_uom_category')
     unit = fields.Many2One(
         'product.uom', "Unit",

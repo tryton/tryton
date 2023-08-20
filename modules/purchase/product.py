@@ -33,11 +33,14 @@ class Template(metaclass=PoolMeta):
         domain=[
             If(~Eval('active'), ('active', '=', False), ()),
             ])
-    purchase_uom = fields.Many2One('product.uom', 'Purchase UOM', states={
+    purchase_uom = fields.Many2One(
+        'product.uom', "Purchase UoM",
+        states={
             'invisible': ~Eval('purchasable'),
             'required': Eval('purchasable', False),
             },
-        domain=[('category', '=', Eval('default_uom_category'))])
+        domain=[('category', '=', Eval('default_uom_category'))],
+        help="The default Unit of Measure for purchases.")
 
     @fields.depends('default_uom', 'purchase_uom', 'purchasable')
     def on_change_default_uom(self):
