@@ -212,8 +212,8 @@ class PurchaseRequest(metaclass=PoolMeta):
                         new_req.computed_quantity - old_req['quantity'])
                     new_req.quantity = Uom.compute_qty(
                         new_req.product.default_uom, new_req.computed_quantity,
-                        new_req.uom, round=False)
-                    new_req.quantity = new_req.uom.ceil(new_req.quantity)
+                        new_req.unit, round=False)
+                    new_req.quantity = new_req.unit.ceil(new_req.quantity)
                     old_req['quantity'] = max(0.0,
                         old_req['quantity'] - new_req.computed_quantity)
                 else:
@@ -273,13 +273,13 @@ class PurchaseRequest(metaclass=PoolMeta):
         supplier, purchase_date = cls.find_best_supplier(product,
             shortage_date, **supplier_pattern)
 
-        uom = product.purchase_uom or product.default_uom
+        unit = product.purchase_uom or product.default_uom
         target_quantity = order_point.target_quantity if order_point else 0.0
         computed_quantity = target_quantity - product_quantity
-        product_quantity = uom.ceil(product_quantity)
+        product_quantity = unit.ceil(product_quantity)
         quantity = Uom.compute_qty(
-            product.default_uom, computed_quantity, uom, round=False)
-        quantity = uom.ceil(quantity)
+            product.default_uom, computed_quantity, unit, round=False)
+        quantity = unit.ceil(quantity)
 
         if order_point:
             origin = 'stock.order_point,%s' % order_point.id
@@ -288,9 +288,9 @@ class PurchaseRequest(metaclass=PoolMeta):
         return Request(product=product,
             party=supplier and supplier or None,
             quantity=quantity,
-            uom=uom,
+            unit=unit,
             computed_quantity=computed_quantity,
-            computed_uom=product.default_uom,
+            computed_unit=product.default_uom,
             purchase_date=purchase_date,
             supply_date=shortage_date,
             stock_level=product_quantity,

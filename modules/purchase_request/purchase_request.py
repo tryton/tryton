@@ -46,10 +46,10 @@ class PurchaseRequest(ModelSQL, ModelView):
             'company': Eval('company', -1),
             },
         depends={'company'})
-    quantity = fields.Float('Quantity', required=True, states=STATES,
-        digits=(16, Eval('uom_digits', 2)))
-    uom = fields.Many2One(
-        'product.uom', "UOM", ondelete='RESTRICT',
+    quantity = fields.Float(
+        "Quantity", required=True, states=STATES, digits='unit')
+    unit = fields.Many2One(
+        'product.uom', "Unit", ondelete='RESTRICT',
         domain=[
             If(Bool(Eval('product_uom_category')),
                 ('category', '=', Eval('product_uom_category')),
@@ -59,14 +59,12 @@ class PurchaseRequest(ModelSQL, ModelView):
             'required': Bool(Eval('product')),
             'readonly': STATES['readonly'],
             })
-    uom_digits = fields.Function(fields.Integer('UOM Digits'),
-        'on_change_with_uom_digits')
     product_uom_category = fields.Function(
         fields.Many2One('product.uom.category', "Product Uom Category"),
         'on_change_with_product_uom_category')
     computed_quantity = fields.Float('Computed Quantity', readonly=True)
-    computed_uom = fields.Many2One('product.uom', 'Computed UOM',
-        readonly=True)
+    computed_unit = fields.Many2One(
+        'product.uom', "Computed Unit", readonly=True)
     purchase_date = fields.Date('Best Purchase Date', readonly=True)
     supply_date = fields.Date('Expected Supply Date', readonly=True)
     default_uom = fields.Function(fields.Many2One(
@@ -121,6 +119,17 @@ class PurchaseRequest(ModelSQL, ModelView):
     @classmethod
     def __register__(cls, module_name):
         request = cls.__table__()
+        table_h = cls.__table_handler__(module_name)
+
+        # Migration from 6.8: rename uom to unit
+        if (table_h.column_exist('uom')
+                and not table_h.column_exist('unit')):
+            table_h.column_rename('uom', 'unit')
+
+        # Migration from 6.8: rename uom to unit
+        if (table_h.column_exist('computed_uom')
+                and not table_h.column_exist('computed_unit')):
+            table_h.column_rename('computed_uom', 'computed_unit')
 
         super(PurchaseRequest, cls).__register__(module_name)
 
@@ -137,7 +146,7 @@ class PurchaseRequest(ModelSQL, ModelView):
         if self.product:
             lang = Lang.get()
             rec_name = (lang.format_number_symbol(
-                    self.quantity, self.uom, digits=self.uom.digits)
+                    self.quantity, self.unit, digits=self.unit.digits)
                 + ' %s' % self.product.name)
         elif self.description:
             rec_name = self.description.splitlines()[0]
@@ -228,12 +237,6 @@ class PurchaseRequest(ModelSQL, ModelView):
 
     def get_warehouse_required(self, name):
         return self.product and self.product.type in ('goods', 'assets')
-
-    @fields.depends('uom')
-    def on_change_with_uom_digits(self, name=None):
-        if self.uom:
-            return self.uom.digits
-        return 2
 
     @fields.depends('product')
     def on_change_with_product_uom_category(self, name=None):
@@ -387,7 +390,7 @@ class CreatePurchase(Wizard):
         return (
             ('product', request.product),
             ('description', request.description),
-            ('unit', request.uom),
+            ('unit', request.unit),
             )
 
     def transition_start(self):
@@ -497,7 +500,7 @@ class CreatePurchase(Wizard):
         unit = line.unit
         compute_qty = Uom.compute_qty
         return sum(
-            compute_qty(r.uom, r.quantity, unit, round=False)
+            compute_qty(r.unit, r.quantity, unit, round=False)
             for r in requests)
 
     def end(self):

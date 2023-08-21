@@ -80,7 +80,7 @@ Create the purchase request below minimal::
     >>> pr_id, = PurchaseRequest.create([{
     ...             'product': product.id,
     ...             'quantity': 30,
-    ...             'uom': gr,
+    ...             'unit': gr,
     ...             'warehouse': warehouse_loc.id,
     ...             'company': company.id,
     ...             }], config.context)
@@ -107,7 +107,7 @@ Create the purchase request wrong rounding::
     >>> pr_id, = PurchaseRequest.create([{
     ...             'product': product.id,
     ...             'quantity': 1001,
-    ...             'uom': gr,
+    ...             'unit': gr,
     ...             'warehouse': warehouse_loc.id,
     ...             'company': company.id,
     ...             }], config.context)

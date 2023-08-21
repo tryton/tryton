@@ -9,12 +9,12 @@ this repository contains the full copyright notices and license terms. -->
             <newline/>
             <label name="quantity"/>
             <field name="quantity"/>
-            <label name="uom"/>
-            <field name="uom"/>
+            <label name="unit"/>
+            <field name="unit"/>
             <label name="computed_quantity"/>
             <field name="computed_quantity"/>
-            <label name="computed_uom"/>
-            <field name="computed_uom"/>
+            <label name="computed_unit"/>
+            <field name="computed_unit"/>
             <separator name="description" colspan="4"/>
             <field name="description" colspan="4"/>
         </page>

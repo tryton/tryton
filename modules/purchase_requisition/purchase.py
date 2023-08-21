@@ -588,22 +588,22 @@ class PurchaseRequisitionLine(sequence_ordered(), ModelSQL, ModelView):
             if lead_time is not None:
                 purchase_date = supply_date - lead_time
 
-        uom = self.request_unit
+        unit = self.request_unit
         quantity = self.request_quantity
         if (self.product
                 and self.product.purchase_uom.category == self.unit.category):
-            uom = self.product.purchase_uom
-            quantity = Uom.compute_qty(self.unit, self.quantity,
-                uom, round=True)
+            unit = self.product.purchase_uom
+            quantity = Uom.compute_qty(
+                self.unit, self.quantity, unit, round=True)
 
         return Request(
             product=self.product,
             description=self.description,
             party=supplier or self.supplier,
             quantity=quantity,
-            uom=uom,
+            unit=unit,
             computed_quantity=self.quantity,
-            computed_uom=self.unit,
+            computed_unit=self.unit,
             purchase_date=purchase_date,
             supply_date=supply_date,
             company=self.requisition.company,

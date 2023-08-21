@@ -347,14 +347,14 @@ class QuotationLine(ModelSQL, ModelView):
 
     @fields.depends('request',
         '_parent_request.product', '_parent_request.description',
-        '_parent_request.quantity', '_parent_request.uom',
+        '_parent_request.quantity', '_parent_request.unit',
         '_parent_request.company', '_parent_request.supply_date')
     def on_change_request(self):
         if self.request:
             self.product = self.request.product
             self.description = self.request.description
             self.quantity = self.request.quantity
-            self.unit = self.request.uom
+            self.unit = self.request.unit
             if self.request.company:
                 self.currency = self.request.company.currency
             self.supply_date = self.request.supply_date or datetime.date.max
@@ -555,7 +555,7 @@ class CreatePurchaseRequestQuotation(Wizard):
         quotation_line.request = request
         quotation_line.description = request.description
         quotation_line.quantity = request.quantity
-        quotation_line.unit = request.uom
+        quotation_line.unit = request.unit
         quotation_line.currency = request.currency
         quotation_line.supply_date = request.supply_date or datetime.date.max
         return quotation_line

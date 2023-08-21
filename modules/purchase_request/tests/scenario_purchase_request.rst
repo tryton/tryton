@@ -219,7 +219,7 @@ Create a second purchase request manually::
     >>> pr_id, = PurchaseRequest.create([{
     ...             'product': product.id,
     ...             'quantity': 1,
-    ...             'uom': unit,
+    ...             'unit': unit,
     ...             'warehouse': warehouse_loc.id,
     ...             'origin': 'stock.order_point,-1',
     ...             'company': company.id,

@@ -214,15 +214,15 @@ class Line(metaclass=PoolMeta):
         supplier, purchase_date = Request.find_best_supplier(product,
             self.shipping_date,
             **self._get_purchase_request_product_supplier_pattern())
-        uom = product.purchase_uom or product.default_uom
-        quantity = Uom.compute_qty(self.unit, quantity, uom)
+        unit = product.purchase_uom or product.default_uom
+        quantity = Uom.compute_qty(self.unit, quantity, unit)
         return Request(
             product=product,
             party=supplier,
             quantity=quantity,
-            uom=uom,
+            unit=unit,
             computed_quantity=quantity,
-            computed_uom=uom,
+            computed_unit=unit,
             purchase_date=purchase_date,
             supply_date=self.shipping_date,
             company=self.sale.company,
