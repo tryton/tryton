@@ -31,7 +31,7 @@ class ProductSupplier(metaclass=PoolMeta):
         'on_change_with_quantity_digits')
 
     @fields.depends(
-        'uom',
+        'unit',
         'product', '_parent_product.default_uom',
         'template', '_parent_template.default_uom')
     def on_change_with_quantity_digits(self, name=None):
@@ -44,15 +44,15 @@ class ProductSupplier(metaclass=PoolMeta):
         else:
             return
         rounding = default_uom.rounding
-        if self.uom:
+        if self.unit:
             rounding = Uom.compute_qty(
-                default_uom, rounding, self.uom, round=False)
+                default_uom, rounding, self.unit, round=False)
         return -Decimal(str(rounding)).as_tuple().exponent
 
     def adapt_quantity(self, quantity, unit, round=True):
         pool = Pool()
         Uom = pool.get('product.uom')
-        quantity = Uom.compute_qty(unit, quantity, self.uom, round=False)
+        quantity = Uom.compute_qty(unit, quantity, self.unit, round=False)
         if self.quantity_minimal:
             if quantity < self.quantity_minimal:
                 quantity = self.quantity_minimal
@@ -61,5 +61,5 @@ class ProductSupplier(metaclass=PoolMeta):
                 quantity % self.quantity_rounding, self.quantity_digits)
             if remainder and remainder != self.quantity_rounding:
                 quantity += (self.quantity_rounding - remainder)
-        quantity = Uom.compute_qty(self.uom, quantity, unit, round=round)
+        quantity = Uom.compute_qty(self.unit, quantity, unit, round=round)
         return quantity

@@ -264,7 +264,7 @@ class Product(metaclass=PoolMeta):
                 for price in product_supplier.prices:
                     if price.match(quantity, product_uom, pattern):
                         unit_price = price.unit_price
-                        default_uom = product_supplier.uom
+                        default_uom = product_supplier.unit
                         default_currency = product_supplier.currency
                 if unit_price is not None:
                     unit_price = Uom.compute_price(
@@ -365,8 +365,8 @@ class ProductSupplier(
         "If empty the lead time of the supplier is used.")
     currency = fields.Many2One('currency.currency', 'Currency', required=True,
         ondelete='RESTRICT')
-    uom = fields.Function(
-        fields.Many2One('product.uom', "UOM"), 'on_change_with_uom')
+    unit = fields.Function(
+        fields.Many2One('product.uom', "Unit"), 'on_change_with_unit')
 
     @classmethod
     def __setup__(cls):
@@ -458,7 +458,7 @@ class ProductSupplier(
     @fields.depends(
         'product', '_parent_product.purchase_uom',
         'template', '_parent_template.purchase_uom')
-    def on_change_with_uom(self, name=None):
+    def on_change_with_unit(self, name=None):
         if self.product:
             return self.product.purchase_uom
         elif self.template:
@@ -522,9 +522,10 @@ class ProductSupplierPrice(
     unit_price = Monetary(
         "Unit Price", currency='currency', required=True, digits=price_digits)
 
-    uom = fields.Function(fields.Many2One('product.uom', 'UOM',
-        help="The unit in which the quantity is specified."),
-        'on_change_with_uom')
+    unit = fields.Function(fields.Many2One(
+            'product.uom', "Unit",
+            help="The unit in which the quantity is specified."),
+        'on_change_with_unit')
     currency = fields.Function(
         fields.Many2One('currency.currency', 'Currency'),
         'on_change_with_currency')
@@ -539,8 +540,8 @@ class ProductSupplierPrice(
         return 0.0
 
     @fields.depends('product_supplier', '_parent_product_supplier.product')
-    def on_change_with_uom(self, name=None):
-        return self.product_supplier.uom if self.product_supplier else None
+    def on_change_with_unit(self, name=None):
+        return self.product_supplier.unit if self.product_supplier else None
 
     @fields.depends('product_supplier', '_parent_product_supplier.currency')
     def on_change_with_currency(self, name=None):
@@ -551,11 +552,11 @@ class ProductSupplierPrice(
     def get_pattern():
         return {}
 
-    def match(self, quantity, uom, pattern):
+    def match(self, quantity, unit, pattern):
         pool = Pool()
         Uom = pool.get('product.uom')
         test_quantity = Uom.compute_qty(
-            self.product_supplier.uom, self.quantity, uom)
+            self.product_supplier.unit, self.quantity, unit)
         if test_quantity > abs(quantity):
             return False
         return super(ProductSupplierPrice, self).match(pattern)
