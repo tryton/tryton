@@ -155,6 +155,10 @@ class Carriage_Sale(ShipmentCostSaleMixin, metaclass=PoolMeta):
         if isinstance(self.shipment, ShipmentOut):
             return self.shipment.shipment_cost_readonly
 
+    @property
+    def _shipment_cost_currency_date(self):
+        return self.shipment.effective_date
+
     def get_cost_invoice_line(self, invoice):
         invoice_line = super().get_cost_invoice_line(invoice)
         if invoice_line:

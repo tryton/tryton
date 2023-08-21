@@ -134,19 +134,27 @@ class ShipmentCostSaleMixin:
                     product=product.rec_name))
         return invoice_line
 
+    @property
+    def _shipment_cost_currency_date(self):
+        raise NotImplementedError
+
     def _get_shipment_cost(self):
         pool = Pool()
         Currency = pool.get('currency.currency')
+        transaction = Transaction()
         cost = super()._get_shipment_cost()
         if self.cost_sale:
-            cost_sale = Currency.compute(
-                self.cost_sale_currency, self.cost_sale,
-                self.company.currency, round=False)
+            with transaction.set_context(
+                    date=self._shipment_cost_currency_date):
+                cost_sale = Currency.compute(
+                    self.cost_sale_currency, self.cost_sale,
+                    self.company.currency, round=False)
             cost -= cost_sale
         for line in self.cost_sales:
-            cost_sale = Currency.compute(
-                line.currency, line.amount,
-                self.company.currency, round=False)
+            with transaction.set_context(date=line.sale.sale_date):
+                cost_sale = Currency.compute(
+                    line.currency, line.amount,
+                    self.company.currency, round=False)
             cost -= cost_sale
         return cost
 
@@ -194,6 +202,10 @@ class ShipmentOut(ShipmentCostSaleMixin, metaclass=PoolMeta):
     @fields.depends('state')
     def on_change_with_shipment_cost_sale_readonly(self, name=None):
         return self.state in {'done', 'cancelled'}
+
+    @property
+    def _shipment_cost_currency_date(self):
+        return self.effective_date
 
     def get_cost_invoice_line(self, invoice):
         invoice_line = super().get_cost_invoice_line(invoice)
