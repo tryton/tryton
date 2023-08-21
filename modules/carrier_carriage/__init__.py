@@ -18,6 +18,7 @@ def register():
         sale.Sale,
         sale.Line,
         sale.Carriage,
+        stock.ShipmentCostSale,
         stock.Carriage_Sale,
         account.InvoiceLine,
         module='carrier_carriage', type_='model',

@@ -136,6 +136,15 @@ class _ShipmentMixin:
         return super().copy(shipments, default=default)
 
 
+class ShipmentCostSale(metaclass=PoolMeta):
+    __name__ = 'stock.shipment.cost_sale'
+
+    @classmethod
+    def __setup__(cls):
+        super().__setup__()
+        cls.shipment.selection.append(('stock.shipment.carriage', "Carriage"))
+
+
 class Carriage_Sale(ShipmentCostSaleMixin, metaclass=PoolMeta):
     __name__ = 'stock.shipment.carriage'
 

@@ -1,7 +1,7 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 from trytond.i18n import gettext
-from trytond.model import ModelView, Workflow, fields
+from trytond.model import ModelSQL, ModelView, Workflow, fields
 from trytond.modules.product import price_digits, round_price
 from trytond.pool import Pool, PoolMeta
 from trytond.pyson import Bool, Eval
@@ -43,6 +43,9 @@ class ShipmentCostSaleMixin:
         states={
             'invisible': Eval('cost_method') != 'shipment',
             })
+
+    cost_sales = fields.One2Many(
+        'stock.shipment.cost_sale', 'shipment', "Cost Sales", readonly=True)
 
     cost_invoice_line = fields.Many2One(
         'account.invoice.line', "Cost Invoice Line", readonly=True)
@@ -135,13 +138,30 @@ class ShipmentCostSaleMixin:
         pool = Pool()
         Currency = pool.get('currency.currency')
         cost = super()._get_shipment_cost()
-        if self.cost_method == 'shipment':
-            if self.cost_sale:
-                cost_sale = Currency.compute(
-                    self.cost_sale_currency, self.cost_sale,
-                    self.company.currency, round=False)
-                cost -= cost_sale
+        if self.cost_sale:
+            cost_sale = Currency.compute(
+                self.cost_sale_currency, self.cost_sale,
+                self.company.currency, round=False)
+            cost -= cost_sale
+        for line in self.cost_sales:
+            cost_sale = Currency.compute(
+                line.currency, line.amount,
+                self.company.currency, round=False)
+            cost -= cost_sale
         return cost
+
+
+class ShipmentCostSale(ModelSQL):
+    "Shipment Cost Sale"
+    __name__ = 'stock.shipment.cost_sale'
+
+    shipment = fields.Reference(
+        "Shipment", [
+            ('stock.shipment.out', "Customer"),
+            ], required=True)
+    sale = fields.Many2One('sale.sale', "Sale", required=True)
+    amount = fields.Numeric("Amount", digits=price_digits, required=True)
+    currency = fields.Many2One('currency.currency', "Currency", required=True)
 
 
 class ShipmentOut(ShipmentCostSaleMixin, metaclass=PoolMeta):
@@ -174,20 +194,6 @@ class ShipmentOut(ShipmentCostSaleMixin, metaclass=PoolMeta):
     @fields.depends('state')
     def on_change_with_shipment_cost_sale_readonly(self, name=None):
         return self.state in {'done', 'cancelled'}
-
-    def _get_shipment_cost(self):
-        cost = super()._get_shipment_cost()
-        if self.cost_method == 'order':
-            sales = {
-                m.sale for m in self.outgoing_moves
-                if m.sale and m.sale.shipment_cost_method == 'order'}
-            for sale in sales:
-                shipment_cost = sum(
-                    (s.cost_used or 0) for s in sale.shipments
-                    if s.state == 'done' and s != self)
-                cost_sale = sale.shipment_cost_amount
-                cost -= max(cost_sale - shipment_cost, 0)
-        return cost
 
     def get_cost_invoice_line(self, invoice):
         invoice_line = super().get_cost_invoice_line(invoice)

@@ -98,6 +98,13 @@ class Sale(metaclass=PoolMeta):
         default.setdefault('after_carriages')
         return super().copy(sales, default=default)
 
+    @property
+    def _cost_shipments(self):
+        shipments = super()._cost_shipments
+        for shipment in self.shipments:
+            shipments.extend(shipment.carriages)
+        return shipments
+
 
 class Line(metaclass=PoolMeta):
     __name__ = 'sale.line'

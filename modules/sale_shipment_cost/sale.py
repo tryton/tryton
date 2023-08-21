@@ -85,6 +85,8 @@ class Sale(metaclass=PoolMeta):
         states={
             'readonly': Eval('state') != 'draft',
             })
+    shipment_costs = fields.One2Many(
+        'stock.shipment.cost_sale', 'sale', "Shipment Costs", readonly=True)
 
     @classmethod
     def __register__(cls, module):
@@ -226,6 +228,59 @@ class Sale(metaclass=PoolMeta):
     def process(cls, sales):
         with Transaction().set_context(_shipment_cost_invoiced=list()):
             super().process(sales)
+
+    @classmethod
+    def _process_invoice_shipment_states(cls, sales):
+        pool = Pool()
+        ShipmentOut = pool.get('stock.shipment.out')
+        ShipmentCostSale = pool.get('stock.shipment.cost_sale')
+
+        sent, not_sent = [], []
+        for sale in sales:
+            if sale.shipment_cost_method == 'order':
+                if sale.shipment_state == 'sent':
+                    sent.append(sale)
+                else:
+                    not_sent.append(sale)
+
+        super()._process_invoice_shipment_states(sales)
+
+        to_save, to_delete, shipments = [], [], set()
+        for sale in sent:
+            if sale.shipment_state != 'sent':
+                to_delete.extend(sale.shipment_costs)
+                shipments.update(sale.shipments)
+        for sale in not_sent:
+            if sale.shipment_state == 'sent':
+                to_save.extend(sale._get_shipment_costs())
+                shipments.update(sale.shipments)
+
+        ShipmentCostSale.delete(to_delete)
+        ShipmentCostSale.save(to_save)
+        ShipmentOut.set_shipment_cost(shipments)
+
+    @property
+    def _cost_shipments(self):
+        "Return the shipments to apply cost sale"
+        return list(self.shipments)
+
+    def _get_shipment_costs(self):
+        "Yield shipment costs"
+        pool = Pool()
+        ShipmentCostSale = pool.get('stock.shipment.cost_sale')
+        cost = self.shipment_cost_amount
+        shipments = self._cost_shipments
+        sum_ = sum(s.cost_used for s in shipments)
+        for shipment in shipments:
+            if sum_:
+                factor = shipment.cost_used / sum_
+            else:
+                factor = Decimal(1) / len(shipments)
+            yield ShipmentCostSale(
+                shipment=shipment,
+                sale=self,
+                amount=round_price(cost * factor),
+                currency=self.currency)
 
     def _get_carrier_context(self, carrier):
         return {}
