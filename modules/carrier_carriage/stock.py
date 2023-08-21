@@ -144,7 +144,7 @@ class Carriage_Sale(ShipmentCostSaleMixin, metaclass=PoolMeta):
         pool = Pool()
         ShipmentOut = pool.get('stock.shipment.out')
         if isinstance(self.shipment, ShipmentOut):
-            return self.shipment.state in {'done', 'cancelled'}
+            return self.shipment.shipment_cost_readonly
 
     def get_cost_invoice_line(self, invoice):
         invoice_line = super().get_cost_invoice_line(invoice)
