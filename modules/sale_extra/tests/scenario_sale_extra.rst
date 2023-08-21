@@ -82,7 +82,9 @@ Create Extra::
 
     >>> PriceList = Model.get('product.price_list')
     >>> Extra = Model.get('sale.extra')
-    >>> price_list = PriceList(name='Default')
+    >>> price_list = PriceList(name="Default", price='list_price')
+    >>> price_list_line = price_list.lines.new()
+    >>> price_list_line.formula = 'unit_price'
     >>> price_list.save()
     >>> extra = Extra(name='Free Extra')
     >>> extra.price_list = price_list
