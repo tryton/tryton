@@ -38,7 +38,7 @@ class StockSplitTestCase(CompanyTestMixin, ModuleTestCase):
             def create_move(quantity):
                 move, = Move.create([{
                             'product': product.id,
-                            'uom': unit.id,
+                            'unit': unit.id,
                             'quantity': quantity,
                             'from_location': input_.id,
                             'to_location': storage.id,

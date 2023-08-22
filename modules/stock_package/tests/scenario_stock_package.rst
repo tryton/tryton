@@ -67,7 +67,7 @@ Add two shipment lines of same product::
     >>> shipment_out.outgoing_moves.extend([StockMove(), StockMove()])
     >>> for move in shipment_out.outgoing_moves:
     ...     move.product = product
-    ...     move.uom =unit
+    ...     move.unit =unit
     ...     move.quantity = 1
     ...     move.from_location = output_loc
     ...     move.to_location = customer_loc

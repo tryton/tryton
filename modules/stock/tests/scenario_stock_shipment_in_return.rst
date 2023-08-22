@@ -58,7 +58,7 @@ Create Shipment In::
     >>> shipment_return.from_location = storage_loc
     >>> move = shipment_return.moves.new()
     >>> move.product = product
-    >>> move.uom =unit
+    >>> move.unit =unit
     >>> move.quantity = 1
     >>> move.from_location = storage_loc
     >>> move.to_location = supplier_loc

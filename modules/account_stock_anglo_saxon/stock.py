@@ -54,8 +54,8 @@ class Move(metaclass=PoolMeta):
         cost_price_method = self.product.get_multivalue(
             'cost_price_method', **self._cost_price_pattern)
         if type_.endswith('supplier') and cost_price_method == 'fixed':
-            cost_price = Uom.compute_price(self.product.default_uom,
-                self.cost_price, self.uom)
+            cost_price = Uom.compute_price(
+                self.product.default_uom, self.cost_price, self.unit)
             with Transaction().set_context(date=self.effective_date):
                 unit_price = Currency.compute(self.currency, self.unit_price,
                     self.company.currency, round=False)
@@ -102,9 +102,10 @@ class Move(metaclass=PoolMeta):
 
         consumed_qty = 0.0
         for move in moves:
-            qty = Uom.compute_qty(move.uom,
-                    move.quantity - getattr(move, as_qty_field),
-                    move.product.default_uom, round=False)
+            qty = Uom.compute_qty(
+                move.unit,
+                move.quantity - getattr(move, as_qty_field),
+                move.product.default_uom, round=False)
             if qty <= 0.0:
                 continue
             if qty > quantity - consumed_qty:
@@ -116,8 +117,8 @@ class Move(metaclass=PoolMeta):
                 with Transaction().set_context(date=move.effective_date):
                     unit_price = Currency.compute(move.currency,
                         move.unit_price, move.company.currency, round=False)
-                cost_price = Uom.compute_price(move.uom,
-                        unit_price, move.product.default_uom)
+                cost_price = Uom.compute_price(
+                    move.unit, unit_price, move.product.default_uom)
             else:
                 cost_price = move.cost_price
 
@@ -126,7 +127,7 @@ class Move(metaclass=PoolMeta):
 
     @classmethod
     def update_anglo_saxon_quantity_product_cost(cls, product, moves,
-            quantity, uom, type_):
+            quantity, unit, type_):
         '''
         Return the cost for quantity based on lines.
         Update anglo_saxon_quantity on the concerned moves.
@@ -138,8 +139,8 @@ class Move(metaclass=PoolMeta):
         assert type_.startswith('in_') or type_.startswith('out_'), \
             'wrong type'
 
-        total_qty = Uom.compute_qty(uom, quantity, product.default_uom,
-                round=False)
+        total_qty = Uom.compute_qty(
+            unit, quantity, product.default_uom, round=False)
 
         as_qty_field = _get_field(type_)
         cost = Decimal('0.0')
@@ -151,11 +152,11 @@ class Move(metaclass=PoolMeta):
             cost += move_cost_price * Decimal(str(move_qty))
 
             move_qty = Uom.compute_qty(
-                product.default_uom, move_qty, move.uom, round=False)
+                product.default_uom, move_qty, move.unit, round=False)
 
             # Avoid float rounding issue but allow only rounding precision lost
             new_qty = (getattr(move, as_qty_field) or 0.0) + move_qty
-            assert move.uom.round(new_qty) <= move.quantity
+            assert move.unit.round(new_qty) <= move.quantity
             new_qty = min(new_qty, move.quantity)
             cls.write([move], {
                     as_qty_field: new_qty,

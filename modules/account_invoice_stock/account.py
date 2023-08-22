@@ -107,7 +107,7 @@ class InvoiceLine(metaclass=PoolMeta):
         for stock_move in self.stock_moves:
             if stock_move.state != 'cancelled':
                 quantity += Uom.compute_qty(
-                    stock_move.uom, stock_move.quantity, self.unit)
+                    stock_move.unit, stock_move.quantity, self.unit)
         return quantity
 
     def get_shipments(self, name):

@@ -15,8 +15,8 @@ this repository contains the full copyright notices and license terms. -->
         <page string="Move" id="move">
             <label name="quantity"/>
             <field name="quantity"/>
-            <label name="uom"/>
-            <field name="uom"/>
+            <label name="unit"/>
+            <field name="unit"/>
 
             <label name="unit_price"/>
             <field name="unit_price"/>

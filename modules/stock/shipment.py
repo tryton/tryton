@@ -514,7 +514,7 @@ class ShipmentIn(ShipmentMixin, Workflow, ModelSQL, ModelView):
             today = Date.today()
         move = Move()
         move.product = incoming_move.product
-        move.uom = incoming_move.uom
+        move.unit = incoming_move.unit
         move.quantity = incoming_move.quantity
         move.from_location = incoming_move.to_location
         move.to_location = self.warehouse_storage
@@ -1431,15 +1431,15 @@ class ShipmentOut(ShipmentAssignMixin, Workflow, ModelSQL, ModelView):
             if (inventory_move.origin == move
                     and inventory_move.state != 'cancelled'):
                 quantity -= Uom.compute_qty(
-                    inventory_move.uom, inventory_move.quantity, move.uom)
-        quantity = move.uom.round(quantity)
+                    inventory_move.unit, inventory_move.quantity, move.unit)
+        quantity = move.unit.round(quantity)
         if quantity <= 0:
             return
         inventory_move = Move(
             from_location=self.warehouse_storage,
             to_location=move.from_location,
             product=move.product,
-            uom=move.uom,
+            unit=move.unit,
             quantity=quantity,
             shipment=self,
             planned_date=move.planned_date,
@@ -1494,7 +1494,7 @@ class ShipmentOut(ShipmentAssignMixin, Workflow, ModelSQL, ModelView):
     def _sync_move_key(self, move):
         return (
             ('product', move.product),
-            ('uom', move.uom),
+            ('unit', move.unit),
             )
 
     def _sync_outgoing_move(self, template=None):
@@ -1544,7 +1544,7 @@ class ShipmentOut(ShipmentAssignMixin, Workflow, ModelSQL, ModelView):
                 key = shipment._sync_move_key(move)
                 outgoing_move = outgoing_moves.get(move.origin)
                 qty_default_uom = Uom.compute_qty(
-                    move.uom, move.quantity,
+                    move.unit, move.quantity,
                     move.product.default_uom, round=False)
                 inventory_qty[outgoing_move][key] += qty_default_uom
                 inventory_moves[outgoing_move][key].append(move)
@@ -1567,8 +1567,7 @@ class ShipmentOut(ShipmentAssignMixin, Workflow, ModelSQL, ModelView):
                             imove.origin = move
                             imoves.append(imove)
                     qty = Uom.compute_qty(
-                        move.product.default_uom, qty,
-                        move.uom)
+                        move.product.default_uom, qty, move.unit)
                     if quantity and move.quantity != qty:
                         move.quantity = qty
                     moves.append(move)
@@ -2168,7 +2167,7 @@ class ShipmentOutReturn(ShipmentMixin, Workflow, ModelSQL, ModelView):
             today = Date.today()
         move = Move()
         move.product = incoming_move.product
-        move.uom = incoming_move.uom
+        move.unit = incoming_move.unit
         move.quantity = incoming_move.quantity
         move.from_location = incoming_move.to_location
         move.to_location = self.warehouse_storage
@@ -2628,7 +2627,7 @@ class ShipmentInternal(ShipmentAssignMixin, Workflow, ModelSQL, ModelView):
     def _sync_move_key(self, move):
         return (
             ('product', move.product),
-            ('uom', move.uom),
+            ('unit', move.unit),
             )
 
     def _sync_incoming_move(self, template=None):
@@ -2677,7 +2676,7 @@ class ShipmentInternal(ShipmentAssignMixin, Workflow, ModelSQL, ModelView):
                 key = shipment._sync_move_key(move)
                 incoming_move = incoming_moves.get(move.origin)
                 qty_default_uom = Uom.compute_qty(
-                    move.uom, move.quantity,
+                    move.unit, move.quantity,
                     move.product.default_uom, round=False)
                 outgoing_qty[incoming_move][key] += qty_default_uom
                 outgoing_moves[incoming_move][key].append(move)
@@ -2696,8 +2695,7 @@ class ShipmentInternal(ShipmentAssignMixin, Workflow, ModelSQL, ModelView):
                             omove.origin = move
                             omoves.append(omove)
                     qty = Uom.compute_qty(
-                        move.product.default_uom, qty,
-                        move.uom)
+                        move.product.default_uom, qty, move.unit)
                     if move.quantity != qty:
                         move.quantity = qty
                     moves.append(move)

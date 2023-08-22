@@ -52,7 +52,7 @@ Make 4 units of the product available @ 10 ::
     >>> StockMove = Model.get('stock.move')
     >>> incoming_move = StockMove()
     >>> incoming_move.product = product
-    >>> incoming_move.uom = unit
+    >>> incoming_move.unit = unit
     >>> incoming_move.quantity = 4
     >>> incoming_move.from_location = supplier_loc
     >>> incoming_move.to_location = storage_loc
@@ -72,7 +72,7 @@ Add 2 more units @ 25 from production::
 
     >>> incoming_move = StockMove()
     >>> incoming_move.product = product
-    >>> incoming_move.uom = unit
+    >>> incoming_move.unit = unit
     >>> incoming_move.quantity = 2
     >>> incoming_move.from_location = production_loc
     >>> incoming_move.to_location = storage_loc
@@ -92,7 +92,7 @@ Sell 3 units @ 50::
 
     >>> outgoing_move = StockMove()
     >>> outgoing_move.product = product
-    >>> outgoing_move.uom = unit
+    >>> outgoing_move.unit = unit
     >>> outgoing_move.quantity = 3
     >>> outgoing_move.from_location = storage_loc
     >>> outgoing_move.to_location = customer_loc
@@ -117,7 +117,7 @@ Sell twice 1 more units @ 50::
     >>> outgoing_moves = []
     >>> outgoing_move = StockMove()
     >>> outgoing_move.product = product
-    >>> outgoing_move.uom = unit
+    >>> outgoing_move.unit = unit
     >>> outgoing_move.quantity = 1
     >>> outgoing_move.from_location = storage_loc
     >>> outgoing_move.to_location = customer_loc
@@ -130,7 +130,7 @@ Sell twice 1 more units @ 50::
 
     >>> outgoing_move = StockMove()
     >>> outgoing_move.product = product
-    >>> outgoing_move.uom = unit
+    >>> outgoing_move.unit = unit
     >>> outgoing_move.quantity = 1
     >>> outgoing_move.from_location = storage_loc
     >>> outgoing_move.to_location = customer_loc

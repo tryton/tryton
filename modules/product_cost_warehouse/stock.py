@@ -95,7 +95,7 @@ class Move(metaclass=PoolMeta):
                 for outgoing_move in move.shipment.outgoing_moves:
                     if outgoing_move.product == move.product:
                         qty = Uom.compute_qty(
-                            outgoing_move.uom, outgoing_move.quantity,
+                            outgoing_move.unit, outgoing_move.quantity,
                             move.product.default_uom)
                         qty = Decimal(str(qty))
                         cost += qty * outgoing_move.cost_price

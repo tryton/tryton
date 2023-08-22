@@ -1,3 +1,4 @@
+* Rename Uom to Unit for move and inventory
 * Add product cost price to move
 * Add location and date to inventory name
 

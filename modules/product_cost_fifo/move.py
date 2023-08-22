@@ -77,8 +77,8 @@ class Move(metaclass=PoolMeta):
         pool = Pool()
         Uom = pool.get('product.uom')
 
-        total_qty = Uom.compute_qty(self.uom, self.quantity,
-            self.product.default_uom, round=False)
+        total_qty = Uom.compute_qty(
+            self.unit, self.quantity, self.product.default_uom, round=False)
 
         with Transaction().set_context(company=self.company.id):
             fifo_moves = self.product.get_fifo_move(total_qty)
@@ -90,11 +90,11 @@ class Move(metaclass=PoolMeta):
             consumed_qty += move_qty
             cost_price += move.get_cost_price() * Decimal(str(move_qty))
 
-            move_qty = Uom.compute_qty(self.product.default_uom, move_qty,
-                    move.uom, round=False)
+            move_qty = Uom.compute_qty(
+                self.product.default_uom, move_qty, move.unit, round=False)
             move.fifo_quantity = (move.fifo_quantity or 0.0) + move_qty
             # Due to float, the fifo quantity result can exceed the quantity.
-            assert move.quantity >= move.fifo_quantity - move.uom.rounding
+            assert move.quantity >= move.fifo_quantity - move.unit.rounding
             move.fifo_quantity = min(move.fifo_quantity, move.quantity)
             to_save.append(move)
 

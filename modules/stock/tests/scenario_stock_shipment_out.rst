@@ -88,7 +88,7 @@ Add two shipment lines of same product::
     >>> shipment_out.outgoing_moves.extend([StockMove(), StockMove()])
     >>> for move in shipment_out.outgoing_moves:
     ...     move.product = product
-    ...     move.uom =unit
+    ...     move.unit =unit
     ...     move.quantity = 1
     ...     move.from_location = output_loc
     ...     move.to_location = customer_loc
@@ -118,7 +118,7 @@ Make 1 unit of the product available::
 
     >>> incoming_move = StockMove()
     >>> incoming_move.product = product
-    >>> incoming_move.uom = unit
+    >>> incoming_move.unit = unit
     >>> incoming_move.quantity = 1
     >>> incoming_move.from_location = supplier_loc
     >>> incoming_move.to_location = storage_loc
@@ -221,7 +221,7 @@ Create Shipment Out with effective date::
     >>> shipment_out.company = company
     >>> move = shipment_out.outgoing_moves.new()
     >>> move.product = product
-    >>> move.uom =unit
+    >>> move.unit =unit
     >>> move.quantity = 1
     >>> move.from_location = output_loc
     >>> move.to_location = customer_loc
@@ -234,7 +234,7 @@ Make 1 unit of the product available::
 
     >>> incoming_move = StockMove()
     >>> incoming_move.product = product
-    >>> incoming_move.uom = unit
+    >>> incoming_move.unit = unit
     >>> incoming_move.quantity = 1
     >>> incoming_move.from_location = supplier_loc
     >>> incoming_move.to_location = storage_loc

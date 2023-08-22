@@ -166,7 +166,7 @@ class Line(metaclass=PoolMeta):
     def get_move(self, move_type):
         move = super().get_move(move_type)
         if move and hasattr(move.__class__, 'secondary_unit'):
-            if move.uom == self.unit:
+            if move.unit == self.unit:
                 move.secondary_unit = self.secondary_unit
         return move
 

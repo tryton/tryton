@@ -76,7 +76,7 @@ Fill storage::
     >>> StockMove = Model.get('stock.move')
     >>> incoming_move = StockMove()
     >>> incoming_move.product = product
-    >>> incoming_move.uom = unit
+    >>> incoming_move.unit = unit
     >>> incoming_move.quantity = 1
     >>> incoming_move.from_location = supplier_loc
     >>> incoming_move.to_location = storage_loc
@@ -89,7 +89,7 @@ Fill storage::
 
     >>> incoming_move = StockMove()
     >>> incoming_move.product = product2
-    >>> incoming_move.uom = kg
+    >>> incoming_move.unit = kg
     >>> incoming_move.quantity = 2.5
     >>> incoming_move.from_location = supplier_loc
     >>> incoming_move.to_location = storage_loc
@@ -123,7 +123,7 @@ Fill storage with more quantities::
 
     >>> incoming_move = StockMove()
     >>> incoming_move.product = product
-    >>> incoming_move.uom = unit
+    >>> incoming_move.unit = unit
     >>> incoming_move.quantity = 1
     >>> incoming_move.from_location = supplier_loc
     >>> incoming_move.to_location = storage_loc
@@ -136,7 +136,7 @@ Fill storage with more quantities::
 
     >>> incoming_move = StockMove()
     >>> incoming_move.product = product2
-    >>> incoming_move.uom = kg
+    >>> incoming_move.unit = kg
     >>> incoming_move.quantity = 1.3
     >>> incoming_move.from_location = supplier_loc
     >>> incoming_move.to_location = storage_loc

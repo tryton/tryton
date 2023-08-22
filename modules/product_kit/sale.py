@@ -101,7 +101,7 @@ class LineComponent(
 
         move = Move()
         move.quantity = quantity
-        move.uom = self.unit
+        move.unit = self.unit
         move.product = self.product
         move.from_location = self.line.from_location
         move.to_location = self.line.to_location

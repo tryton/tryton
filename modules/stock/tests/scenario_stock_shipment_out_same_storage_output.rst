@@ -57,7 +57,7 @@ Create Shipment Out::
     >>> shipment_out.company = company
     >>> move = shipment_out.outgoing_moves.new()
     >>> move.product = product
-    >>> move.uom = unit
+    >>> move.unit = unit
     >>> move.quantity = 1
     >>> move.unit_price = Decimal('5')
     >>> move.currency = company.currency

@@ -100,7 +100,7 @@ class Move(metaclass=PoolMeta):
                 and self.lot
                 and self.lot.unit):
             quantity = UoM.compute_qty(
-                self.uom, self.quantity,
+                self.unit, self.quantity,
                 self.lot.unit, round=False)
             if quantity > self.lot.unit_quantity:
                 raise LotUnitQuantityError(
@@ -169,7 +169,7 @@ class LotUnitMixin(object):
                     if not move.lot or not move.lot.unit:
                         continue
                     lot_quantities[move.lot] += UoM.compute_qty(
-                        move.uom, move.quantity,
+                        move.unit, move.quantity,
                         move.lot.unit, round=False)
                 for lot, quantity in lot_quantities.items():
                     if quantity > lot.unit_quantity:

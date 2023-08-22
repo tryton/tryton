@@ -81,7 +81,7 @@ class Move(metaclass=PoolMeta):
         help="The volume of the moved product in liter.")
 
     @classmethod
-    def _get_internal_weight(cls, quantity, uom, product):
+    def _get_internal_weight(cls, quantity, unit, product):
         pool = Pool()
         Uom = pool.get('product.uom')
         ModelData = pool.get('ir.model.data')
@@ -92,17 +92,17 @@ class Move(metaclass=PoolMeta):
         # as it could include some handling weight
         if product.weight is not None:
             internal_quantity = cls._get_internal_quantity(
-                quantity, uom, product)
+                quantity, unit, product)
             return Uom.compute_qty(
                 product.weight_uom, internal_quantity * product.weight, kg,
                 round=False)
-        elif uom.category == kg.category:
-            return Uom.compute_qty(uom, quantity, kg, round=False)
+        elif unit.category == kg.category:
+            return Uom.compute_qty(unit, quantity, kg, round=False)
         else:
             return None
 
     @classmethod
-    def _get_internal_volume(cls, quantity, uom, product):
+    def _get_internal_volume(cls, quantity, unit, product):
         pool = Pool()
         Uom = pool.get('product.uom')
         ModelData = pool.get('ir.model.data')
@@ -113,12 +113,12 @@ class Move(metaclass=PoolMeta):
         # as it could include some handling volume
         if product.volume is not None:
             internal_quantity = cls._get_internal_quantity(
-                quantity, uom, product)
+                quantity, unit, product)
             return Uom.compute_qty(
                 product.volume_uom, internal_quantity * product.volume, liter,
                 round=False)
-        elif uom.category == liter.category:
-            return Uom.compute_qty(uom, quantity, liter, round=False)
+        elif unit.category == liter.category:
+            return Uom.compute_qty(unit, quantity, liter, round=False)
         else:
             return None
 
@@ -131,12 +131,12 @@ class Move(metaclass=PoolMeta):
         vlist = [v.copy() for v in vlist]
         for values in vlist:
             product = Product(values['product'])
-            uom = Uom(values['uom'])
+            unit = Uom(values['unit'])
             quantity = values['quantity']
-            internal_weight = cls._get_internal_weight(quantity, uom, product)
+            internal_weight = cls._get_internal_weight(quantity, unit, product)
             if internal_weight is not None:
                 values['internal_weight'] = internal_weight
-            internal_volume = cls._get_internal_volume(quantity, uom, product)
+            internal_volume = cls._get_internal_volume(quantity, unit, product)
             if internal_volume is not None:
                 values['internal_volume'] = internal_volume
         return super(Move, cls).create(vlist)
@@ -151,13 +151,13 @@ class Move(metaclass=PoolMeta):
             for move in moves:
                 write = {}
                 internal_weight = cls._get_internal_weight(
-                    move.quantity, move.uom, move.product)
+                    move.quantity, move.unit, move.product)
                 if (internal_weight is not None
                         and internal_weight != move.internal_weight
                         and internal_weight != values.get('internal_weight')):
                     write['internal_weight'] = internal_weight
                 internal_volume = cls._get_internal_volume(
-                    move.quantity, move.uom, move.product)
+                    move.quantity, move.unit, move.product)
                 if (internal_volume is not None
                         and internal_volume != move.internal_volume
                         and internal_volume != values.get('internal_volume')):

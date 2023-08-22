@@ -69,7 +69,7 @@ Receive a bunch of products::
 
     >>> move = shipment_in.incoming_moves.new()
     >>> move.product = product
-    >>> move.uom = unit
+    >>> move.unit = unit
     >>> move.quantity = 100
     >>> move.from_location = supplier_loc
     >>> move.to_location = input_loc
@@ -102,7 +102,7 @@ Add two shipment lines of same product and go through the workflow::
 
     >>> move = shipment_out.outgoing_moves.new()
     >>> move.product = product
-    >>> move.uom = unit
+    >>> move.unit = unit
     >>> move.quantity = 1
     >>> move.from_location = output_loc
     >>> move.to_location = customer_loc
@@ -142,7 +142,7 @@ Create an internal shipment::
     >>> shipment_internal.to_location = lost_loc
     >>> move = shipment_internal.moves.new()
     >>> move.product = product
-    >>> move.uom = unit
+    >>> move.unit = unit
     >>> move.quantity = 1
     >>> move.from_location = storage_loc
     >>> move.to_location = lost_loc

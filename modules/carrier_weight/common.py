@@ -3,7 +3,7 @@
 from trytond.pool import Pool
 
 
-def parcel_weight(parcel, carrier_uom, uom_field='uom'):
+def parcel_weight(parcel, carrier_uom, uom_field='unit'):
     pool = Pool()
     Uom = pool.get('product.uom')
 

@@ -55,7 +55,7 @@ class StockLotSLEDTestCase(CompanyTestMixin, ModuleTestCase):
 
             move = Move(
                 product=product,
-                uom=u,
+                unit=u,
                 quantity=5,
                 from_location=supplier,
                 to_location=storage,

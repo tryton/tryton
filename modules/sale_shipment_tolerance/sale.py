@@ -37,7 +37,7 @@ class Line(metaclass=PoolMeta):
         # Compute tolerance only if there is already at least one move.
         if move and set(self.moves) - set(self.moves_recreated):
             quantity = Uom.compute_qty(
-                move.uom, move.quantity, self.unit, round=False)
+                move.unit, move.quantity, self.unit, round=False)
             if self._test_under_shipment_tolerance(quantity):
                 move = None
         return move

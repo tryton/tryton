@@ -364,7 +364,7 @@ class Production(ShipmentAssignMixin, Workflow, ModelSQL, ModelView):
         assert type in {'input', 'output'}
         move = Move(
             product=product,
-            uom=unit,
+            unit=unit,
             quantity=quantity,
             company=self.company,
             currency=self.company.currency if self.company else None)
@@ -401,8 +401,9 @@ class Production(ShipmentAssignMixin, Workflow, ModelSQL, ModelView):
             move = self._explode_move_values('input', input_, quantity)
             if move:
                 inputs.append(move)
-                quantity = Uom.compute_qty(input_.uom, quantity,
-                    input_.product.default_uom, round=False)
+                quantity = Uom.compute_qty(
+                    input_.uom, quantity, input_.product.default_uom,
+                    round=False)
         self.inputs = inputs
 
         outputs = []
@@ -475,13 +476,13 @@ class Production(ShipmentAssignMixin, Workflow, ModelSQL, ModelView):
 
         for input_ in self.inputs:
             if (input_.product is None
-                    or input_.uom is None
+                    or input_.unit is None
                     or input_.quantity is None
                     or input_.state == 'cancelled'):
                 continue
             product = input_.product
-            quantity = Uom.compute_qty(input_.uom, input_.quantity,
-                product.default_uom)
+            quantity = Uom.compute_qty(
+                input_.unit, input_.quantity, product.default_uom)
             cost += Decimal(str(quantity)) * product.cost_price
         return cost
 
@@ -573,7 +574,7 @@ class Production(ShipmentAssignMixin, Workflow, ModelSQL, ModelView):
                     cost_price = (
                         input_costs[product] / input_quantities[product])
                     unit_price = round_price(Uom.compute_price(
-                            product.default_uom, cost_price, output.uom))
+                            product.default_uom, cost_price, output.unit))
                     if (output.unit_price != unit_price
                             or output.currency != production.company.currency):
                         output.unit_price = unit_price
@@ -599,7 +600,7 @@ class Production(ShipmentAssignMixin, Workflow, ModelSQL, ModelView):
                     continue
                 product_price = (Decimal(str(output.quantity))
                     * Uom.compute_price(
-                        product.default_uom, list_price, output.uom))
+                        product.default_uom, list_price, output.unit))
                 prices[output] = product_price
                 sum_ += product_price
 
@@ -608,7 +609,7 @@ class Production(ShipmentAssignMixin, Workflow, ModelSQL, ModelView):
                 for output in outputs:
                     if output.product == production.product:
                         quantity = Uom.compute_qty(
-                            output.uom, output.quantity,
+                            output.unit, output.quantity,
                             output.product.default_uom, round=False)
                         quantity = Decimal(str(quantity))
                         prices[output] = quantity

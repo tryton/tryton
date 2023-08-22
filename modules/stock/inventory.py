@@ -359,16 +359,18 @@ class InventoryLine(ModelSQL, ModelView):
         domain=[
             ('type', '=', 'goods'),
             ], states=_states)
-    uom = fields.Function(fields.Many2One('product.uom', 'UOM',
-        help="The unit in which the quantity is specified."), 'get_uom')
+    unit = fields.Function(fields.Many2One(
+            'product.uom', "Unit",
+            help="The unit in which the quantity is specified."),
+        'get_unit')
     expected_quantity = fields.Float(
-        "Expected Quantity", digits='uom', required=True, readonly=True,
+        "Expected Quantity", digits='unit', required=True, readonly=True,
         states={
             'invisible': Eval('id', -1) < 0,
         },
         help="The quantity the system calculated should be in the location.")
     quantity = fields.Float(
-        "Actual Quantity", digits='uom', states=_states,
+        "Actual Quantity", digits='unit', states=_states,
         help="The actual quantity found in the location.")
     moves = fields.One2Many('stock.move', 'origin', 'Moves', readonly=True)
     inventory = fields.Many2One('stock.inventory', 'Inventory', required=True,
@@ -408,7 +410,7 @@ class InventoryLine(ModelSQL, ModelView):
     @fields.depends('product')
     def on_change_product(self):
         if self.product:
-            self.uom = self.product.default_uom
+            self.unit = self.product.default_uom
 
     @fields.depends('inventory', '_parent_inventory.location')
     def on_change_with_inventory_location(self, name=None):
@@ -447,8 +449,8 @@ class InventoryLine(ModelSQL, ModelView):
     def search_rec_name(cls, name, clause):
         return [('product.rec_name',) + tuple(clause[1:])]
 
-    def get_uom(self, name):
-        return self.product.default_uom.id
+    def get_unit(self, name):
+        return self.product.default_uom
 
     @property
     def unique_key(self):
@@ -473,7 +475,6 @@ class InventoryLine(ModelSQL, ModelView):
         '''
         pool = Pool()
         Move = pool.get('stock.move')
-        Uom = pool.get('product.uom')
 
         qty = self.quantity
         if qty is None:
@@ -486,9 +487,7 @@ class InventoryLine(ModelSQL, ModelView):
             else:
                 qty = 0.0
 
-        delta_qty = Uom.compute_qty(self.uom,
-            self.expected_quantity - qty,
-            self.uom)
+        delta_qty = self.unit.round(self.expected_quantity - qty)
         if delta_qty == 0.0:
             return
         from_location = self.inventory.location
@@ -507,7 +506,7 @@ class InventoryLine(ModelSQL, ModelView):
             to_location=to_location,
             quantity=delta_qty,
             product=self.product,
-            uom=self.uom,
+            unit=self.unit,
             company=self.inventory.company,
             effective_date=self.inventory.date,
             origin=self,
@@ -583,8 +582,8 @@ class Count(Wizard):
             line, = lines
         values['line'] = line.id
         values['product'] = line.product.id
-        values['uom'] = line.uom.id
-        if line.uom.rounding == 1:
+        values['unit'] = line.unit.id
+        if line.unit.rounding == 1:
             values['quantity'] = 1.
         return values
 
@@ -647,14 +646,15 @@ class CountQuantity(ModelView):
     line = fields.Many2One(
         'stock.inventory.line', "Line", readonly=True, required=True)
     product = fields.Many2One('product.product', "Product", readonly=True)
-    uom = fields.Many2One('product.uom', "UOM", readonly=True,
+    unit = fields.Many2One(
+        'product.uom', "Unit", readonly=True,
         help="The unit in which the quantities are specified.")
     total_quantity = fields.Float(
-        "Total Quantity", digits='uom', readonly=True,
+        "Total Quantity", digits='unit', readonly=True,
         help="The total amount of the line counted so far.")
 
     quantity = fields.Float(
-        "Quantity", digits='uom', required=True,
+        "Quantity", digits='unit', required=True,
         help="The quantity to add to the existing count.")
 
     @fields.depends('quantity', 'line')

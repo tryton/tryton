@@ -78,7 +78,7 @@ Make a customer shipment::
     >>> shipment.customer = customer
     >>> move = shipment.outgoing_moves.new()
     >>> move.product = product
-    >>> move.uom = unit
+    >>> move.unit = unit
     >>> move.quantity = 2
     >>> move.from_location = output_loc
     >>> move.to_location = customer_loc
@@ -86,7 +86,7 @@ Make a customer shipment::
     >>> move.currency = company.currency
     >>> move = shipment.outgoing_moves.new()
     >>> move.product = product
-    >>> move.uom = unit
+    >>> move.unit = unit
     >>> move.quantity = 3
     >>> move.from_location = output_loc
     >>> move.to_location = customer_loc

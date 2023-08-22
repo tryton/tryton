@@ -26,7 +26,7 @@ class Move(metaclass=PoolMeta):
         amount *= self.origin.price_ratio
         if quantity:
             unit_price = round_price(amount / Decimal(str(quantity)))
-        unit_price = UoM.compute_price(self.origin.unit, unit_price, self.uom)
+        unit_price = UoM.compute_price(self.origin.unit, unit_price, self.unit)
         return unit_price
 
 

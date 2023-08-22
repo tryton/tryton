@@ -95,7 +95,7 @@ class WebVueStorefrontTestCase(CompanyTestMixin, ModuleTestCase):
             storage, = Location.search([('code', '=', 'STO')])
             with set_company(web_shop.company):
                 move = Move(product=product)
-                move.uom = unit
+                move.unit = unit
                 move.quantity = quantity
                 move.from_location = supplier
                 move.to_location = storage

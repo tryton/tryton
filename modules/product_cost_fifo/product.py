@@ -74,7 +74,7 @@ class Product(metaclass=PoolMeta):
         for move in moves():
             qty = move.fifo_quantity_available if not date else move.quantity
             qty = Uom.compute_qty(
-                move.uom, qty, self.default_uom, round=False)
+                move.unit, qty, self.default_uom, round=False)
             avail_qty -= qty
 
             if avail_qty <= quantity:
@@ -204,7 +204,7 @@ class Product(metaclass=PoolMeta):
 
             cost_price = Revision.apply_up_to(
                 revisions, cost_price, move.effective_date)
-            qty = Uom.compute_qty(move.uom, move.quantity, self.default_uom)
+            qty = Uom.compute_qty(move.unit, move.quantity, self.default_uom)
             qty = Decimal(str(qty))
             if out_move(move):
                 qty *= -1

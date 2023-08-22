@@ -67,7 +67,7 @@ Make 1 unit of the product available @ 100 ::
     >>> StockMove = Model.get('stock.move')
     >>> incoming_move = StockMove()
     >>> incoming_move.product = product
-    >>> incoming_move.uom = unit
+    >>> incoming_move.unit = unit
     >>> incoming_move.quantity = 1
     >>> incoming_move.from_location = supplier_loc
     >>> incoming_move.to_location = storage_sub_loc
@@ -88,7 +88,7 @@ Add 1 more unit @ 200::
 
     >>> incoming_move = StockMove()
     >>> incoming_move.product = product
-    >>> incoming_move.uom = unit
+    >>> incoming_move.unit = unit
     >>> incoming_move.quantity = 1
     >>> incoming_move.from_location = supplier_loc
     >>> incoming_move.to_location = storage_loc
@@ -110,7 +110,7 @@ Add twice 1 more unit @ 200::
     >>> incoming_moves = []
     >>> incoming_move = StockMove()
     >>> incoming_move.product = product
-    >>> incoming_move.uom = unit
+    >>> incoming_move.unit = unit
     >>> incoming_move.quantity = 1
     >>> incoming_move.from_location = supplier_loc
     >>> incoming_move.to_location = storage_loc
@@ -124,7 +124,7 @@ Add twice 1 more unit @ 200::
 
     >>> incoming_move = StockMove()
     >>> incoming_move.product = product
-    >>> incoming_move.uom = unit
+    >>> incoming_move.unit = unit
     >>> incoming_move.quantity = 1
     >>> incoming_move.from_location = supplier_loc
     >>> incoming_move.to_location = storage_loc
@@ -168,7 +168,7 @@ Send one product we don't have in stock::
 
     >>> outgoing_move = StockMove()
     >>> outgoing_move.product = negative_product
-    >>> outgoing_move.uom = unit
+    >>> outgoing_move.unit = unit
     >>> outgoing_move.quantity = 1
     >>> outgoing_move.unit_price = Decimal('28')
     >>> outgoing_move.from_location = storage_loc
@@ -188,7 +188,7 @@ Return one product to the supplier::
 
     >>> outgoing_move = StockMove()
     >>> outgoing_move.product = negative_product
-    >>> outgoing_move.uom = unit
+    >>> outgoing_move.unit = unit
     >>> outgoing_move.quantity = 1
     >>> outgoing_move.unit_price = Decimal('28')
     >>> outgoing_move.currency = company.currency
@@ -208,7 +208,7 @@ Receive one unit of the product with negative stock so the stock stays negative:
 
     >>> incoming_move = StockMove()
     >>> incoming_move.product = negative_product
-    >>> incoming_move.uom = unit
+    >>> incoming_move.unit = unit
     >>> incoming_move.quantity = 1
     >>> incoming_move.from_location = supplier_loc
     >>> incoming_move.to_location = storage_loc
@@ -229,7 +229,7 @@ Receive two units of the product so the stock becomes positive::
 
     >>> incoming_move = StockMove()
     >>> incoming_move.product = negative_product
-    >>> incoming_move.uom = unit
+    >>> incoming_move.unit = unit
     >>> incoming_move.quantity = 2
     >>> incoming_move.from_location = supplier_loc
     >>> incoming_move.to_location = storage_loc

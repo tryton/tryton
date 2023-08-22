@@ -386,14 +386,14 @@ class ShipmentDrop(Workflow, ModelSQL, ModelView):
             for move in filter(active, shipment.supplier_moves):
                 key = shipment._sync_move_key(move)
                 qty_default_uom = Uom.compute_qty(
-                    move.uom, move.quantity,
+                    move.unit, move.quantity,
                     move.product.default_uom, round=False)
                 for customer_move in move.moves_drop:
                     customer_move = customer_moves.get(customer_move)
-                    if customer_move.uom.category != move.uom.category:
+                    if customer_move.unit.category != move.unit.category:
                         continue
                     c_qty_default_uom = Uom.compute_qty(
-                        customer_move.uom, customer_move.quantity,
+                        customer_move.unit, customer_move.quantity,
                         customer_move.product.default_uom, round=False)
                     qty = min(qty_default_uom, c_qty_default_uom)
                     supplier_qty[customer_move][key] += qty
@@ -414,7 +414,7 @@ class ShipmentDrop(Workflow, ModelSQL, ModelView):
                         for name, value in key:
                             setattr(move, name, value)
                     qty = Uom.compute_qty(
-                        move.product.default_uom, qty, move.uom)
+                        move.product.default_uom, qty, move.unit)
                     if move.quantity != qty:
                         move.quantity = qty
                         moves.append(move)
@@ -423,7 +423,7 @@ class ShipmentDrop(Workflow, ModelSQL, ModelView):
     def _sync_move_key(self, move):
         return (
             ('product', move.product),
-            ('uom', move.uom),
+            ('unit', move.unit),
             )
 
     def _sync_customer_move(self, template=None):
@@ -470,7 +470,7 @@ class ShipmentDrop(Workflow, ModelSQL, ModelView):
                     s_move.get_cost_price() * internal_quantity)
 
                 quantity = UoM.compute_qty(
-                    s_move.uom, s_move.quantity, s_move.product.default_uom,
+                    s_move.unit, s_move.quantity, s_move.product.default_uom,
                     round=False)
                 s_product_qty[s_move.product] += quantity
 

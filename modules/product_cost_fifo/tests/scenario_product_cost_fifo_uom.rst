@@ -52,7 +52,7 @@ Make 4 kg of the product available @ 10 ::
     >>> StockMove = Model.get('stock.move')
     >>> incoming_move = StockMove()
     >>> incoming_move.product = product
-    >>> incoming_move.uom = kg
+    >>> incoming_move.unit = kg
     >>> incoming_move.quantity = 4
     >>> incoming_move.from_location = supplier_loc
     >>> incoming_move.to_location = storage_loc
@@ -72,7 +72,7 @@ Add 2000 more g @ 0.025::
 
     >>> incoming_move = StockMove()
     >>> incoming_move.product = product
-    >>> incoming_move.uom = g
+    >>> incoming_move.unit = g
     >>> incoming_move.quantity = 2000
     >>> incoming_move.from_location = supplier_loc
     >>> incoming_move.to_location = storage_loc
@@ -92,7 +92,7 @@ Sell 3 kg @ 50::
 
     >>> outgoing_move = StockMove()
     >>> outgoing_move.product = product
-    >>> outgoing_move.uom = kg
+    >>> outgoing_move.unit = kg
     >>> outgoing_move.quantity = 3
     >>> outgoing_move.from_location = storage_loc
     >>> outgoing_move.to_location = customer_loc
@@ -115,7 +115,7 @@ Sell twice 1 more kg @ 50::
     >>> outgoing_moves = []
     >>> outgoing_move = StockMove()
     >>> outgoing_move.product = product
-    >>> outgoing_move.uom = kg
+    >>> outgoing_move.unit = kg
     >>> outgoing_move.quantity = 1
     >>> outgoing_move.from_location = storage_loc
     >>> outgoing_move.to_location = customer_loc
@@ -128,7 +128,7 @@ Sell twice 1 more kg @ 50::
 
     >>> outgoing_move = StockMove()
     >>> outgoing_move.product = product
-    >>> outgoing_move.uom = g
+    >>> outgoing_move.unit = g
     >>> outgoing_move.quantity = 1000
     >>> outgoing_move.from_location = storage_loc
     >>> outgoing_move.to_location = customer_loc

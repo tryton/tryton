@@ -52,7 +52,7 @@ class StockShipmentMeasurementsTestCase(CompanyTestMixin, ModuleTestCase):
         with set_company(company):
             move, = Move.create([{
                         'product': product,
-                        'uom': g,
+                        'unit': g,
                         'quantity': 200,
                         'from_location': supplier,
                         'to_location': storage,
@@ -75,7 +75,7 @@ class StockShipmentMeasurementsTestCase(CompanyTestMixin, ModuleTestCase):
         with set_company(company):
             move, = Move.create([{
                         'product': product,
-                        'uom': g,
+                        'unit': g,
                         'quantity': 300,
                         'from_location': supplier,
                         'to_location': storage,
@@ -98,7 +98,7 @@ class StockShipmentMeasurementsTestCase(CompanyTestMixin, ModuleTestCase):
         with set_company(company):
             move, = Move.create([{
                         'product': product,
-                        'uom': g,
+                        'unit': g,
                         'quantity': 500,
                         'from_location': supplier,
                         'to_location': storage,
@@ -164,7 +164,7 @@ class StockShipmentMeasurementsTestCase(CompanyTestMixin, ModuleTestCase):
 
             shipment.moves = [Move(
                     product=product,
-                    uom=kg,
+                    unit=kg,
                     quantity=10,
                     from_location=storage,
                     to_location=customer,

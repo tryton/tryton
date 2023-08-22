@@ -326,7 +326,7 @@ def order_line_component_mixin(prefix):
             for move in self.moves:
                 if move not in skips:
                     quantity += Uom.compute_qty(
-                        move.uom, move.quantity, self.unit)
+                        move.unit, move.quantity, self.unit)
             return quantity
 
         @property
@@ -339,7 +339,7 @@ def order_line_component_mixin(prefix):
             for move in self.moves:
                 if move.state == 'done' or move in ignored:
                     quantity -= Uom.compute_qty(
-                        move.uom, move.quantity, self.unit)
+                        move.unit, move.quantity, self.unit)
             return quantity
 
         def get_moves_exception(self, name):
@@ -365,7 +365,7 @@ def order_line_component_mixin(prefix):
             for move in self.moves:
                 if move.state != 'done':
                     continue
-                qty = Uom.compute_qty(move.uom, move.quantity, self.unit)
+                qty = Uom.compute_qty(move.unit, move.quantity, self.unit)
                 dest_type = self.line.to_location.type
                 if (move.to_location.type == dest_type
                         and move.from_location.type != dest_type):

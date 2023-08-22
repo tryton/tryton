@@ -187,7 +187,8 @@ class Move(Workflow, ModelSQL, ModelView):
     product_uom_category = fields.Function(
         fields.Many2One('product.uom.category', 'Product Uom Category'),
         'on_change_with_product_uom_category')
-    uom = fields.Many2One("product.uom", "Uom", required=True,
+    unit = fields.Many2One(
+        'product.uom', "Unit", required=True,
         states={
             'readonly': (Eval('state').in_(['cancelled', 'assigned', 'done'])
                 | Eval('unit_price')),
@@ -199,7 +200,7 @@ class Move(Workflow, ModelSQL, ModelView):
             ],
         help="The unit in which the quantity is specified.")
     quantity = fields.Float(
-        "Quantity", digits='uom', required=True,
+        "Quantity", digits='unit', required=True,
         states=STATES,
         help="The amount of stock moved.")
     internal_quantity = fields.Float('Internal Quantity', readonly=True,
@@ -399,6 +400,12 @@ class Move(Workflow, ModelSQL, ModelView):
     def __register__(cls, module_name):
         cursor = Transaction().connection.cursor()
         sql_table = cls.__table__()
+        table_h = cls.__table_handler__(module_name)
+
+        # Migration from 6.8: rename uom to unit
+        if (table_h.column_exist('uom')
+                and not table_h.column_exist('unit')):
+            table_h.column_rename('uom', 'unit')
 
         super(Move, cls).__register__(module_name)
 
@@ -427,12 +434,13 @@ class Move(Workflow, ModelSQL, ModelView):
     def default_unit_price_updated(cls):
         return True
 
-    @fields.depends('product', 'uom')
+    @fields.depends('product', 'unit')
     def on_change_product(self):
         if self.product:
-            if (not self.uom
-                    or self.uom.category != self.product.default_uom.category):
-                self.uom = self.product.default_uom
+            default_uom = self.product.default_uom
+            if (not self.unit
+                    or self.unit.category != default_uom.category):
+                self.unit = default_uom
 
     @fields.depends('product')
     def on_change_with_product_uom_category(self, name=None):
@@ -456,7 +464,7 @@ class Move(Workflow, ModelSQL, ModelView):
                             move.currency, move.unit_price,
                             move.company.currency, round=False)
                         unit_price = Uom.compute_price(
-                            move.uom, unit_price, move.product.default_uom)
+                            move.unit, unit_price, move.product.default_uom)
                         prices[move.id] = round_price(unit_price)
                 else:
                     prices[move.id] = None
@@ -577,7 +585,7 @@ class Move(Workflow, ModelSQL, ModelView):
         Lang = pool.get('ir.lang')
         lang = Lang.get()
         return (lang.format_number_symbol(
-                self.quantity, self.uom, digits=self.uom.digits)
+                self.quantity, self.unit, digits=self.unit.digits)
             + ' %s' % self.product.rec_name)
 
     @classmethod
@@ -596,7 +604,7 @@ class Move(Workflow, ModelSQL, ModelView):
             quantity = self.quantity
         elif direction == 'out':
             quantity = -self.quantity
-        qty = Uom.compute_qty(self.uom, quantity, self.product.default_uom)
+        qty = Uom.compute_qty(self.unit, quantity, self.product.default_uom)
 
         qty = Decimal(str(qty))
         product_qty = Decimal(str(self.product.quantity))
@@ -614,10 +622,10 @@ class Move(Workflow, ModelSQL, ModelView):
         return round_price(new_cost_price)
 
     @staticmethod
-    def _get_internal_quantity(quantity, uom, product):
+    def _get_internal_quantity(quantity, unit, product):
         Uom = Pool().get('product.uom')
-        internal_quantity = Uom.compute_qty(uom, quantity,
-            product.default_uom, round=True)
+        internal_quantity = Uom.compute_qty(
+            unit, quantity, product.default_uom, round=True)
         return internal_quantity
 
     def set_effective_date(self):
@@ -820,19 +828,19 @@ class Move(Workflow, ModelSQL, ModelView):
 
         vlist = [x.copy() for x in vlist]
         # Use ordered dict to optimize cache alignment
-        products, uoms = OrderedDict(), OrderedDict()
+        products, units = OrderedDict(), OrderedDict()
         for vals in vlist:
             products[vals['product']] = None
-            uoms[vals['uom']] = None
+            units[vals['unit']] = None
         id2product = {p.id: p for p in Product.browse(products.keys())}
-        id2uom = {u.id: u for u in Uom.browse(uoms.keys())}
+        id2unit = {u.id: u for u in Uom.browse(units.keys())}
         for vals in vlist:
             assert vals.get('state', cls.default_state()
                 ) in ['draft', 'staging']
             product = id2product[int(vals['product'])]
-            uom = id2uom[int(vals['uom'])]
+            unit = id2unit[int(vals['unit'])]
             internal_quantity = cls._get_internal_quantity(
-                vals['quantity'], uom, product)
+                vals['quantity'], unit, product)
             vals['internal_quantity'] = internal_quantity
         moves = super(Move, cls).create(vlist)
         cls.check_period_closed(moves)
@@ -865,8 +873,8 @@ class Move(Workflow, ModelSQL, ModelView):
             if any(f not in cls._allow_modify_closed_period for f in values):
                 cls.check_period_closed(moves)
             for move in moves:
-                internal_quantity = cls._get_internal_quantity(move.quantity,
-                        move.uom, move.product)
+                internal_quantity = cls._get_internal_quantity(
+                    move.quantity, move.unit, move.product)
                 if (internal_quantity != move.internal_quantity
                         and internal_quantity
                         != values.get('internal_quantity')):
@@ -940,7 +948,7 @@ class Move(Workflow, ModelSQL, ModelView):
         needed_qty = self.quantity
         for key, available_qty in quantities:
             # Ignore available_qty when too small
-            if available_qty < self.uom.rounding:
+            if available_qty < self.unit.rounding:
                 continue
             if needed_qty <= available_qty:
                 to_pick.append((key, needed_qty))
@@ -1074,7 +1082,7 @@ class Move(Workflow, ModelSQL, ModelView):
                 move_key = get_key(move, key[0])
                 if match(key, move_key):
                     qty = Uom.compute_qty(
-                        move.product.default_uom, qty, move.uom,
+                        move.product.default_uom, qty, move.unit,
                         round=False)
                     location_qties.append((key, qty))
 
@@ -1086,11 +1094,11 @@ class Move(Workflow, ModelSQL, ModelView):
             for _, qty in to_pick:
                 picked_qties += qty
 
-            if move.quantity - picked_qties >= move.uom.rounding:
+            if move.quantity - picked_qties >= move.unit.rounding:
                 success = False
                 first = False
                 values = {
-                    'quantity': move.uom.round(
+                    'quantity': move.unit.round(
                         move.quantity - picked_qties),
                     }
                 to_write.extend([[move], values])
@@ -1098,7 +1106,7 @@ class Move(Workflow, ModelSQL, ModelView):
                 first = True
             for key, qty in to_pick:
                 values = dict(get_values(key, 'from_location'))
-                values['quantity'] = move.uom.round(qty)
+                values['quantity'] = move.unit.round(qty)
                 if first:
                     to_write.extend([[move], values])
                     to_assign.append(move)
@@ -1106,8 +1114,8 @@ class Move(Workflow, ModelSQL, ModelView):
                 else:
                     to_copy[move].append(values)
 
-                qty_default_uom = Uom.compute_qty(move.uom, qty,
-                        move.product.default_uom, round=False)
+                qty_default_uom = Uom.compute_qty(
+                    move.unit, qty, move.product.default_uom, round=False)
 
                 pbl[key] = pbl.get(key, 0.0) - qty_default_uom
 

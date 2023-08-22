@@ -42,52 +42,52 @@ class Move(metaclass=PoolMeta):
             'product.uom.category', "Product Secondary UOM Category"),
         'get_product_secondary_uom_category')
 
-    @fields.depends('quantity', 'uom', 'secondary_unit', 'origin')
+    @fields.depends('quantity', 'unit', 'secondary_unit', 'origin')
     def on_change_with_secondary_quantity(self, name=None):
         pool = Pool()
         Uom = pool.get('product.uom')
-        if (self.quantity and self.uom and self.secondary_unit
+        if (self.quantity and self.unit and self.secondary_unit
                 and (self.secondary_uom_factor or self.secondary_uom_rate)):
             return Uom.compute_qty(
-                self.uom, self.quantity,
+                self.unit, self.quantity,
                 self.secondary_unit, round=True,
                 factor=self.secondary_uom_factor, rate=self.secondary_uom_rate)
         else:
             return None
 
-    @fields.depends('secondary_quantity', 'secondary_unit', 'uom', 'origin')
+    @fields.depends('secondary_quantity', 'secondary_unit', 'unit', 'origin')
     def on_change_secondary_quantity(self):
         pool = Pool()
         Uom = pool.get('product.uom')
-        if (self.secondary_quantity and self.secondary_unit and self.uom
+        if (self.secondary_quantity and self.secondary_unit and self.unit
                 and (self.secondary_uom_factor or self.secondary_uom_rate)):
             self.quantity = Uom.compute_qty(
                 self.secondary_unit, self.secondary_quantity,
-                self.uom, round=True,
+                self.unit, round=True,
                 factor=self.secondary_uom_rate, rate=self.secondary_uom_factor)
 
-    @fields.depends('unit_price', 'uom', 'secondary_unit', 'origin')
+    @fields.depends('unit_price', 'unit', 'secondary_unit', 'origin')
     def on_change_with_secondary_unit_price(self, name=None):
         pool = Pool()
         Uom = pool.get('product.uom')
-        if (self.unit_price and self.uom and self.secondary_unit
+        if (self.unit_price and self.unit and self.secondary_unit
                 and (self.secondary_uom_factor or self.secondary_uom_rate)):
             unit_price = Uom.compute_price(
-                self.uom, self.unit_price, self.secondary_unit,
+                self.unit, self.unit_price, self.secondary_unit,
                 factor=self.secondary_uom_factor, rate=self.secondary_uom_rate
                 )
             return round_price(unit_price)
         else:
             return None
 
-    @fields.depends('secondary_unit_price', 'secondary_unit', 'uom', 'origin')
+    @fields.depends('secondary_unit_price', 'secondary_unit', 'unit', 'origin')
     def on_change_secondary_unit_price(self, name=None):
         pool = Pool()
         Uom = pool.get('product.uom')
-        if (self.secondary_unit_price and self.secondary_unit and self.uom
+        if (self.secondary_unit_price and self.secondary_unit and self.unit
                 and (self.secondary_uom_factor or self.secondary_uom_rate)):
             self.unit_price = Uom.compute_price(
-                self.secondary_unit, self.secondary_unit_price, self.uom,
+                self.secondary_unit, self.secondary_unit_price, self.unit,
                 factor=self.secondary_uom_rate, rate=self.secondary_uom_factor)
             self.unit_price = round_price(self.unit_price)
 

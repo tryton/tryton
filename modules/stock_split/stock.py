@@ -25,7 +25,7 @@ class Move(metaclass=PoolMeta):
     def split_wizard(cls, moves):
         pass
 
-    def split(self, quantity, uom, count=None):
+    def split(self, quantity, unit, count=None):
         """
         Split the move into moves of quantity.
         If count is not defined, the move will be split until the remainder is
@@ -36,7 +36,7 @@ class Move(metaclass=PoolMeta):
         Uom = pool.get('product.uom')
 
         moves = [self]
-        remainder = Uom.compute_qty(self.uom, self.quantity, uom)
+        remainder = Uom.compute_qty(self.unit, self.quantity, unit)
         if remainder <= quantity:
             return moves
         state = self.state
@@ -45,7 +45,7 @@ class Move(metaclass=PoolMeta):
                 })
         self.write([self], {
                 'quantity': quantity,
-                'uom': uom.id,
+                'unit': unit.id,
                 })
         remainder -= quantity
         if count:
@@ -55,18 +55,18 @@ class Move(metaclass=PoolMeta):
             with Transaction().set_context(_stock_move_split=True):
                 moves.extend(self.copy([self], {
                             'quantity': quantity,
-                            'uom': uom.id,
+                            'unit': unit.id,
                             }))
             remainder -= quantity
             if count:
                 count -= 1
-        remainder = uom.round(remainder)
+        remainder = unit.round(remainder)
         assert remainder >= 0
         if remainder:
             with Transaction().set_context(_stock_move_split=True):
                 moves.extend(self.copy([self], {
                             'quantity': remainder,
-                            'uom': uom.id,
+                            'unit': unit.id,
                         }))
         self.write(moves, {
                 'state': state,
@@ -78,8 +78,9 @@ class SplitMoveStart(ModelView):
     'Split Move'
     __name__ = 'stock.move.split.start'
     count = fields.Integer('Counts', help='The limit number of moves.')
-    quantity = fields.Float("Quantity", digits='uom', required=True)
-    uom = fields.Many2One('product.uom', 'Uom', required=True,
+    quantity = fields.Float("Quantity", digits='unit', required=True)
+    unit = fields.Many2One(
+        'product.uom', "Unit", required=True,
         domain=[
             ('category', '=', Eval('uom_category')),
             ])
@@ -99,13 +100,13 @@ class SplitMove(Wizard):
 
     def default_start(self, fields):
         return {
-            'uom': self.record.uom.id,
-            'uom_category': self.record.uom.category.id,
+            'unit': self.record.unit.id,
+            'uom_category': self.record.unit.category.id,
             }
 
     def transition_split(self):
         self.record.split(
-            self.start.quantity, self.start.uom, self.start.count)
+            self.start.quantity, self.start.unit, self.start.count)
         return 'end'
 
 

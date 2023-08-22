@@ -467,7 +467,7 @@ class ForecastLine(ModelSQL, ModelView):
             move.from_location = self.forecast.warehouse.storage_location
             move.to_location = self.forecast.destination
             move.product = self.product
-            move.uom = self.uom
+            move.unit = self.uom
             move.quantity = qty * self.minimal_quantity
             move.planned_date = from_date + datetime.timedelta(day)
             move.company = self.forecast.company

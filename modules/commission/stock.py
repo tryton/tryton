@@ -47,7 +47,7 @@ class Move(metaclass=PoolMeta):
                             total += amount
                 if line.invoice.type == 'out' or not line.correction:
                     quantity += UoM.compute_qty(
-                        line.unit, line.quantity, self.uom)
+                        line.unit, line.quantity, self.unit)
         if quantity:
             unit_price = round_price(total / Decimal(str(quantity)))
         else:

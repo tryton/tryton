@@ -642,7 +642,7 @@ class POSSaleLine(ModelSQL, ModelView, TaxableMixin):
 
         move = Move()
         move.quantity = abs(self.quantity)
-        move.uom = self.unit
+        move.unit = self.unit
         move.product = self.product
         move.from_location = self.from_location
         move.to_location = self.to_location

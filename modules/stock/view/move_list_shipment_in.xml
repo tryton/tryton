@@ -6,7 +6,7 @@ this repository contains the full copyright notices and license terms. -->
     <field name="planned_date" optional="0"/>
     <field name="from_location" expand="1"/>
     <field name="product" expand="2"/>
-    <field name="quantity" symbol="uom"/>
+    <field name="quantity" symbol="unit"/>
     <field name="to_location" expand="1"/>
     <field name="state"/>
 </tree>

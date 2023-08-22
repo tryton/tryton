@@ -290,7 +290,7 @@ class Line(metaclass=PoolMeta):
                 move_key = get_key(move, key[0])
                 if match(key, move_key):
                     qty = Uom.compute_qty(
-                        move.product.default_uom, quantity, move.uom,
+                        move.product.default_uom, quantity, move.unit,
                         round=False)
                     qties_converted.append((key, qty))
             to_pick = move.pick_product(qties_converted)
@@ -305,7 +305,7 @@ class Line(metaclass=PoolMeta):
                 first = True
             for key, qty in to_pick:
                 values = dict(get_values(key, 'from_location'))
-                values['quantity'] = move.uom.round(qty)
+                values['quantity'] = move.unit.round(qty)
                 if first:
                     to_write.extend([[move], values])
                     to_assign.append(move)
@@ -314,8 +314,8 @@ class Line(metaclass=PoolMeta):
                     with Transaction().set_context(_stock_move_split=True):
                         to_assign.extend(Move.copy([move], default=values))
 
-                qty_default_uom = Uom.compute_qty(move.uom, qty,
-                    move.product.default_uom, round=False)
+                qty_default_uom = Uom.compute_qty(
+                    move.unit, qty, move.product.default_uom, round=False)
 
                 quantities[key] -= qty_default_uom
         if to_write:

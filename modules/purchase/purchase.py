@@ -1312,7 +1312,8 @@ class Line(sequence_ordered(), ModelSQL, ModelView):
         quantity = abs(self.quantity)
         for move in self.moves:
             if move.state == 'done' or move in skips:
-                quantity -= Uom.compute_qty(move.uom, move.quantity, self.unit)
+                quantity -= Uom.compute_qty(
+                    move.unit, move.quantity, self.unit)
         return quantity
 
     def get_moves_exception(self, name):
@@ -1699,7 +1700,7 @@ class Line(sequence_ordered(), ModelSQL, ModelView):
             for move in self.moves:
                 if move.state != 'done':
                     continue
-                qty = Uom.compute_qty(move.uom, move.quantity, self.unit)
+                qty = Uom.compute_qty(move.unit, move.quantity, self.unit)
                 # Test only against from_location
                 # as it is what matters for purchase
                 src_type = 'supplier'
@@ -1769,7 +1770,7 @@ class Line(sequence_ordered(), ModelSQL, ModelView):
                     party=self.purchase.party.rec_name))
         move = Move()
         move.quantity = quantity
-        move.uom = self.unit
+        move.unit = self.unit
         move.product = self.product
         move.from_location = self.from_location
         move.to_location = self.to_location
@@ -1796,8 +1797,8 @@ class Line(sequence_ordered(), ModelSQL, ModelView):
         skip = set(self.moves_recreated)
         for move in self.moves:
             if move not in skip:
-                quantity += Uom.compute_qty(move.uom, move.quantity,
-                    self.unit)
+                quantity += Uom.compute_qty(
+                    move.unit, move.quantity, self.unit)
         return quantity
 
     def _get_move_invoice_lines(self, move_type):
@@ -1816,7 +1817,7 @@ class Line(sequence_ordered(), ModelSQL, ModelView):
         for move in self.moves:
             if move.state != 'cancelled' and self.unit:
                 moved_quantity += Uom.compute_qty(
-                    move.uom, move.quantity, self.unit, round=False)
+                    move.unit, move.quantity, self.unit, round=False)
         if self.quantity < 0:
             moved_quantity *= -1
         invoiced_quantity = 0

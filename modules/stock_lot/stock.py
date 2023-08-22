@@ -222,7 +222,7 @@ class LotTrace(ModelSQL, ModelView):
             move.product.as_('product'),
             move.lot.as_('lot'),
             move.quantity.as_('quantity'),
-            move.uom.as_('unit'),
+            move.unit.as_('unit'),
             move.company.as_('company'),
             move.effective_date.as_('date'),
             move.shipment.as_('shipment'),
@@ -487,7 +487,7 @@ class MoveAddLots(Wizard):
         if 'quantity' in fields:
             default['quantity'] = self.record.quantity
         if 'unit' in fields:
-            default['unit'] = self.record.uom.id
+            default['unit'] = self.record.unit.id
         return default
 
     def transition_add(self):
@@ -497,7 +497,7 @@ class MoveAddLots(Wizard):
         lang = Lang.get()
         quantity_remaining = self.start.on_change_with_quantity_remaining()
         if quantity_remaining < 0:
-            digits = self.record.uom.digits
+            digits = self.record.unit.digits
             move_quantity = self.record.quantity
             lot_quantity = self.record.quantity - quantity_remaining
             raise ValidationError(gettext(

@@ -488,7 +488,7 @@ class Product(StockMixin, object, metaclass=PoolMeta):
 
             cost_price = Revision.apply_up_to(
                 revisions, cost_price, move.effective_date)
-            qty = Uom.compute_qty(move.uom, move.quantity, self.default_uom)
+            qty = Uom.compute_qty(move.unit, move.quantity, self.default_uom)
             qty = Decimal(str(qty))
             if out_move(move):
                 qty *= -1

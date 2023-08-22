@@ -53,10 +53,10 @@ class StockTestCase(
                 (g, 1, 0, 0),  # rounded
                 (kg, 35.23, 35.23, 2),  # check infinite loop
             ]
-            for uom, quantity, internal_quantity, ndigits in tests:
+            for unit, quantity, internal_quantity, ndigits in tests:
                 move, = Move.create([{
                             'product': product.id,
-                            'uom': uom.id,
+                            'unit': unit.id,
                             'quantity': quantity,
                             'from_location': supplier.id,
                             'to_location': storage.id,
@@ -67,9 +67,9 @@ class StockTestCase(
                 self.assertEqual(round(move.internal_quantity, ndigits),
                     internal_quantity)
 
-                for uom, quantity, internal_quantity, ndigits in tests:
+                for unit, quantity, internal_quantity, ndigits in tests:
                     Move.write([move], {
-                        'uom': uom.id,
+                        'unit': unit.id,
                         'quantity': quantity,
                         })
                     self.assertEqual(round(move.internal_quantity, ndigits),
@@ -108,7 +108,7 @@ class StockTestCase(
 
             moves = Move.create([{
                         'product': product.id,
-                        'uom': kg.id,
+                        'unit': kg.id,
                         'quantity': 5,
                         'from_location': supplier.id,
                         'to_location': storage.id,
@@ -119,7 +119,7 @@ class StockTestCase(
                         'currency': currency.id,
                         }, {
                         'product': product.id,
-                        'uom': kg.id,
+                        'unit': kg.id,
                         'quantity': 1,
                         'from_location': supplier.id,
                         'to_location': storage.id,
@@ -129,7 +129,7 @@ class StockTestCase(
                         'currency': currency.id,
                         }, {
                         'product': product.id,
-                        'uom': kg.id,
+                        'unit': kg.id,
                         'quantity': 1,
                         'from_location': storage.id,
                         'to_location': customer.id,
@@ -140,7 +140,7 @@ class StockTestCase(
                         'currency': currency.id,
                         }, {
                         'product': product.id,
-                        'uom': kg.id,
+                        'unit': kg.id,
                         'quantity': 1,
                         'from_location': storage.id,
                         'to_location': customer.id,
@@ -150,7 +150,7 @@ class StockTestCase(
                         'currency': currency.id,
                         }, {
                         'product': product.id,
-                        'uom': kg.id,
+                        'unit': kg.id,
                         'quantity': 2,
                         'from_location': storage.id,
                         'to_location': customer.id,
@@ -160,7 +160,7 @@ class StockTestCase(
                         'currency': currency.id,
                         }, {
                         'product': product.id,
-                        'uom': kg.id,
+                        'unit': kg.id,
                         'quantity': 5,
                         'from_location': supplier.id,
                         'to_location': storage.id,
@@ -340,7 +340,7 @@ class StockTestCase(
 
             moves = Move.create([{
                         'product': product.id,
-                        'uom': g.id,
+                        'unit': g.id,
                         'quantity': 1,
                         'from_location': supplier.id,
                         'to_location': storage.id,
@@ -408,7 +408,7 @@ class StockTestCase(
 
             moves = Move.create([{
                         'product': product.id,
-                        'uom': unit.id,
+                        'unit': unit.id,
                         'quantity': 1,
                         'from_location': lost_found.id,
                         'to_location': storage.id,
@@ -417,7 +417,7 @@ class StockTestCase(
                         'company': company.id,
                         }, {
                         'product': product.id,
-                        'uom': unit.id,
+                        'unit': unit.id,
                         'quantity': 1,
                         'from_location': input_.id,
                         'to_location': storage.id,
@@ -508,7 +508,7 @@ class StockTestCase(
 
             moves = Move.create([{
                         'product': product.id,
-                        'uom': unit.id,
+                        'unit': unit.id,
                         'quantity': 1,
                         'from_location': lost_found.id,
                         'to_location': storage.id,
@@ -517,7 +517,7 @@ class StockTestCase(
                         'company': company.id,
                         }, {
                         'product': product.id,
-                        'uom': unit.id,
+                        'unit': unit.id,
                         'quantity': 1,
                         'from_location': lost_found.id,
                         'to_location': storage1.id,
@@ -526,7 +526,7 @@ class StockTestCase(
                         'company': company.id,
                         }, {
                         'product': product.id,
-                        'uom': unit.id,
+                        'unit': unit.id,
                         'quantity': 1,
                         'from_location': storage1.id,
                         'to_location': storage2.id,
@@ -618,7 +618,7 @@ class StockTestCase(
 
             moves = Move.create([{
                         'product': product.id,
-                        'uom': unit.id,
+                        'unit': unit.id,
                         'quantity': 80,
                         'from_location': supplier.id,
                         'to_location': storage.id,
@@ -628,7 +628,7 @@ class StockTestCase(
                         'currency': company.currency.id,
                         }, {
                         'product': product.id,
-                        'uom': unit.id,
+                        'unit': unit.id,
                         'quantity': 60,
                         'from_location': storage.id,
                         'to_location': storage2.id,
@@ -694,7 +694,7 @@ class StockTestCase(
 
             moves = Move.create([{
                         'product': product.id,
-                        'uom': unit.id,
+                        'unit': unit.id,
                         'quantity': 10,
                         'from_location': lost_found.id,
                         'to_location': storage.id,
@@ -702,7 +702,7 @@ class StockTestCase(
                         'company': company.id,
                         }, {
                         'product': product.id,
-                        'uom': unit.id,
+                        'unit': unit.id,
                         'quantity': 2,
                         'from_location': storage.id,
                         'to_location': output.id,
@@ -710,7 +710,7 @@ class StockTestCase(
                         'company': company.id,
                         }, {
                         'product': product.id,
-                        'uom': unit.id,
+                        'unit': unit.id,
                         'quantity': 3,
                         'from_location': storage.id,
                         'to_location': output.id,
@@ -766,7 +766,7 @@ class StockTestCase(
 
             moves = Move.create([{
                         'product': product1.id,
-                        'uom': unit.id,
+                        'unit': unit.id,
                         'quantity': 2,
                         'from_location': lost_found.id,
                         'to_location': storage.id,
@@ -775,7 +775,7 @@ class StockTestCase(
                         'company': company.id,
                         }, {
                         'product': product2.id,
-                        'uom': unit.id,
+                        'unit': unit.id,
                         'quantity': 3,
                         'from_location': input_.id,
                         'to_location': storage.id,
@@ -836,7 +836,7 @@ class StockTestCase(
 
             moves = Move.create([{
                         'product': product.id,
-                        'uom': unit.id,
+                        'unit': unit.id,
                         'quantity': 10,
                         'from_location': supplier.id,
                         'to_location': storage.id,
@@ -847,7 +847,7 @@ class StockTestCase(
                         'currency': currency.id,
                         }, {
                         'product': product.id,
-                        'uom': unit.id,
+                        'unit': unit.id,
                         'quantity': 15,
                         'from_location': supplier.id,
                         'to_location': storage.id,
@@ -858,7 +858,7 @@ class StockTestCase(
                         'currency': currency.id,
                         }, {
                         'product': product.id,
-                        'uom': unit.id,
+                        'unit': unit.id,
                         'quantity': 5,
                         'from_location': storage.id,
                         'to_location': customer.id,
@@ -871,7 +871,7 @@ class StockTestCase(
             Move.do(moves)
             Move.create([{
                         'product': product.id,
-                        'uom': unit.id,
+                        'unit': unit.id,
                         'quantity': 3,
                         'from_location': supplier.id,
                         'to_location': storage.id,
@@ -938,7 +938,7 @@ class StockTestCase(
             # Test check_period_closed
             moves = Move.create([{
                         'product': product.id,
-                        'uom': unit.id,
+                        'unit': unit.id,
                         'quantity': 10,
                         'from_location': supplier.id,
                         'to_location': storage.id,
@@ -952,7 +952,7 @@ class StockTestCase(
 
             self.assertRaises(Exception, Move.create, [{
                         'product': product.id,
-                        'uom': unit.id,
+                        'unit': unit.id,
                         'quantity': 10,
                         'from_location': supplier.id,
                         'to_location': storage.id,
@@ -964,7 +964,7 @@ class StockTestCase(
                         }])
             self.assertRaises(Exception, Move.create, [{
                         'product': product.id,
-                        'uom': unit.id,
+                        'unit': unit.id,
                         'quantity': 10,
                         'from_location': supplier.id,
                         'to_location': storage.id,
@@ -998,11 +998,11 @@ class StockTestCase(
         Location = pool.get('stock.location')
         Move = pool.get('stock.move')
 
-        uom, = Uom.search([('name', '=', 'Unit')])
+        unit, = Uom.search([('name', '=', 'Unit')])
         template, = Template.create([{
                     'name': 'Test Move.check_origin',
                     'type': 'goods',
-                    'default_uom': uom.id,
+                    'default_uom': unit.id,
                     }])
         product, = Product.create([{
                     'template': template.id,
@@ -1013,7 +1013,7 @@ class StockTestCase(
         with set_company(company):
             moves = Move.create([{
                         'product': product.id,
-                        'uom': uom.id,
+                        'unit': unit.id,
                         'quantity': 1,
                         'from_location': storage.id,
                         'to_location': customer.id,
@@ -1047,11 +1047,11 @@ class StockTestCase(
         Location = pool.get('stock.location')
         Move = pool.get('stock.move')
 
-        uom, = Uom.search([('name', '=', 'Meter')])
+        unit, = Uom.search([('name', '=', 'Meter')])
         template = Template(
             name='Test Move.assign_try',
             type='goods',
-            default_uom=uom,
+            default_uom=unit,
             )
         template.save()
         product = Product(template=template.id)
@@ -1065,7 +1065,7 @@ class StockTestCase(
         with set_company(company):
             move, = Move.create([{
                         'product': product.id,
-                        'uom': uom.id,
+                        'unit': unit.id,
                         'quantity': quantity,
                         'from_location': supplier.id,
                         'to_location': storage.id,
@@ -1077,7 +1077,7 @@ class StockTestCase(
 
             moves = Move.create([{
                         'product': product.id,
-                        'uom': uom.id,
+                        'unit': unit.id,
                         'quantity': qty,
                         'from_location': storage.id,
                         'to_location': customer.id,
@@ -1111,11 +1111,11 @@ class StockTestCase(
         Location = pool.get('stock.location')
         Move = pool.get('stock.move')
 
-        uom, = Uom.search([('name', '=', 'Meter')])
+        unit, = Uom.search([('name', '=', 'Meter')])
         template = Template(
             name='Test Move.assign_try',
             type='goods',
-            default_uom=uom,
+            default_uom=unit,
             )
         template.save()
         product = Product(template=template.id)
@@ -1130,7 +1130,7 @@ class StockTestCase(
         with set_company(company):
             move, = Move.create([{
                         'product': product.id,
-                        'uom': uom.id,
+                        'unit': unit.id,
                         'quantity': 1,
                         'from_location': supplier.id,
                         'to_location': storage.id,
@@ -1142,7 +1142,7 @@ class StockTestCase(
 
             moves = Move.create([{
                         'product': product.id,
-                        'uom': uom.id,
+                        'unit': unit.id,
                         'quantity': 1,
                         'from_location': from_.id,
                         'to_location': to.id,
@@ -1166,11 +1166,11 @@ class StockTestCase(
         Location = pool.get('stock.location')
         Move = pool.get('stock.move')
 
-        uom, = Uom.search([('name', '=', 'Meter')])
+        unit, = Uom.search([('name', '=', 'Meter')])
         template = Template(
             name='Test Move.assign_try',
             type='goods',
-            default_uom=uom,
+            default_uom=unit,
             )
         template.save()
         product = Product(template=template.id)
@@ -1184,7 +1184,7 @@ class StockTestCase(
         with set_company(company):
             move, = Move.create([{
                         'product': product.id,
-                        'uom': uom.id,
+                        'unit': unit.id,
                         'quantity': 1,
                         'from_location': supplier.id,
                         'to_location': child.id,
@@ -1196,7 +1196,7 @@ class StockTestCase(
 
             move, = Move.create([{
                         'product': product.id,
-                        'uom': uom.id,
+                        'unit': unit.id,
                         'quantity': 1,
                         'from_location': storage.id,
                         'to_location': child.id,
@@ -1218,11 +1218,11 @@ class StockTestCase(
         Location = pool.get('stock.location')
         Move = pool.get('stock.move')
 
-        uom, = Uom.search([('name', '=', 'Meter')])
+        unit, = Uom.search([('name', '=', 'Meter')])
         template = Template(
             name='Test Move.assign_try',
             type='goods',
-            default_uom=uom,
+            default_uom=unit,
             )
         template.save()
         product = Product(template=template.id)
@@ -1239,7 +1239,7 @@ class StockTestCase(
         with set_company(company):
             moves = Move.create([{
                         'product': product.id,
-                        'uom': uom.id,
+                        'unit': unit.id,
                         'quantity': 1,
                         'from_location': supplier.id,
                         'to_location': storage.id,
@@ -1248,7 +1248,7 @@ class StockTestCase(
                         'currency': company.currency.id,
                         }, {
                         'product': product.id,
-                        'uom': uom.id,
+                        'unit': unit.id,
                         'quantity': 1,
                         'from_location': supplier.id,
                         'to_location': storage2.id,
@@ -1260,7 +1260,7 @@ class StockTestCase(
 
             move, = Move.create([{
                         'product': product.id,
-                        'uom': uom.id,
+                        'unit': unit.id,
                         'quantity': 1,
                         'from_location': storage.id,
                         'to_location': customer.id,
@@ -1292,11 +1292,11 @@ class StockTestCase(
         Location = pool.get('stock.location')
         Move = pool.get('stock.move')
 
-        uom, = Uom.search([('name', '=', 'Meter')])
+        unit, = Uom.search([('name', '=', 'Meter')])
         template = Template(
             name='Test Move.assign_try',
             type='goods',
-            default_uom=uom,
+            default_uom=unit,
             )
         template.save()
         product = Product(template=template.id)
@@ -1311,7 +1311,7 @@ class StockTestCase(
         with set_company(company):
             move, = Move.create([{
                         'product': product.id,
-                        'uom': uom.id,
+                        'unit': unit.id,
                         'quantity': 1,
                         'from_location': supplier.id,
                         'to_location': storage.id,
@@ -1323,7 +1323,7 @@ class StockTestCase(
 
             move, = Move.create([{
                         'product': product.id,
-                        'uom': uom.id,
+                        'unit': unit.id,
                         'quantity': 2,
                         'from_location': storage2.id,
                         'to_location': customer.id,
@@ -1379,7 +1379,7 @@ class StockTestCase(
         with set_company(company):
             move_supplier, = Move.create([{
                         'product': product.id,
-                        'uom': unit.id,
+                        'unit': unit.id,
                         'quantity': 10,
                         'from_location': supplier.id,
                         'to_location': storage.id,
@@ -1390,7 +1390,7 @@ class StockTestCase(
                         }])
             move_customer, = Move.create([{
                         'product': product.id,
-                        'uom': unit.id,
+                        'unit': unit.id,
                         'quantity': 5,
                         'from_location': storage.id,
                         'to_location': customer.id,
@@ -1489,7 +1489,7 @@ class StockTestCase(
 
             moves = Move.create([{
                         'product': product.id,
-                        'uom': unit.id,
+                        'unit': unit.id,
                         'quantity': 1,
                         'from_location': storage.id,
                         'to_location': location.id,
@@ -1527,14 +1527,14 @@ class StockTestCase(
         with set_company(company):
             Move.create([{
                         'product': product.id,
-                        'uom': unit.id,
+                        'unit': unit.id,
                         'quantity': 1,
                         'from_location': storage.id,
                         'to_location': location.id,
                         'company': company.id,
                         }, {
                         'product': product.id,
-                        'uom': unit.id,
+                        'unit': unit.id,
                         'quantity': 1,
                         'from_location': location.id,
                         'to_location': storage.id,
@@ -1569,7 +1569,7 @@ class StockTestCase(
         with set_company(company):
             Move.create([{
                         'product': product.id,
-                        'uom': unit.id,
+                        'unit': unit.id,
                         'quantity': 1,
                         'from_location': supplier.id,
                         'to_location': storage.id,
@@ -1578,7 +1578,7 @@ class StockTestCase(
                         'company': company.id,
                         }, {
                         'product': product2.id,
-                        'uom': unit.id,
+                        'unit': unit.id,
                         'quantity': 1,
                         'from_location': supplier.id,
                         'to_location': storage.id,
@@ -1591,7 +1591,7 @@ class StockTestCase(
 
             Move.create([{
                         'product': product.id,
-                        'uom': unit.id,
+                        'unit': unit.id,
                         'quantity': 1,
                         'from_location': storage.id,
                         'to_location': supplier.id,
@@ -1600,7 +1600,7 @@ class StockTestCase(
                         'company': company.id,
                         }, {
                         'product': product2.id,
-                        'uom': unit.id,
+                        'unit': unit.id,
                         'quantity': 1,
                         'from_location': storage.id,
                         'to_location': supplier.id,
@@ -1635,7 +1635,7 @@ class StockTestCase(
         with set_company(company):
             Move.create([{
                         'product': product.id,
-                        'uom': unit.id,
+                        'unit': unit.id,
                         'quantity': 1,
                         'from_location': supplier.id,
                         'to_location': storage.id,
@@ -1648,7 +1648,7 @@ class StockTestCase(
 
             Move.create([{
                         'product': product.id,
-                        'uom': unit.id,
+                        'unit': unit.id,
                         'quantity': 1,
                         'from_location': storage.id,
                         'to_location': supplier.id,
@@ -1687,7 +1687,7 @@ class StockTestCase(
 
             moves = Move.create([{
                         'product': product.id,
-                        'uom': unit.id,
+                        'unit': unit.id,
                         'quantity': 1,
                         'from_location': lost_found.id,
                         'to_location': storage.id,

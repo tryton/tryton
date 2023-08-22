@@ -148,7 +148,7 @@ class ShipmentAssignManual(Wizard):
         if 'move' in fields:
             defaults['move'] = self.show.move.id
         if 'unit' in fields:
-            defaults['unit'] = self.show.move.uom.id
+            defaults['unit'] = self.show.move.unit.id
         if 'move_quantity' in fields:
             defaults['move_quantity'] = self.show.move.quantity
         return defaults
@@ -286,8 +286,8 @@ class ShipmentAssignManualShow(ModelView):
                         'stock_assign_manual.msg_invalid_quantity',
                         quantity=lang.format_number(
                             self.move_quantity, uom.digits)))
-            quantity = self.move.uom.round(self.quantity)
-            remainder = self.move.uom.round(self.move.quantity - quantity)
+            quantity = self.move.unit.round(self.quantity)
+            remainder = self.move.unit.round(self.move.quantity - quantity)
             self.move.quantity = quantity
             self.move.save()
             if remainder:
@@ -408,7 +408,7 @@ class ShipmentAssignedMove(ModelView):
 
     @fields.depends('move')
     def on_change_with_unit(self, name=None):
-        return self.move.uom if self.move else None
+        return self.move.unit if self.move else None
 
     @fields.depends('move')
     def on_change_with_move_quantity(self, name=None):

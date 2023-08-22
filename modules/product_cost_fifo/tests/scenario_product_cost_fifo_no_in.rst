@@ -50,7 +50,7 @@ Make 2 units of the product not available @ 60 and 80 ::
     >>> StockMove = Model.get('stock.move')
     >>> incoming_move = StockMove()
     >>> incoming_move.product = product
-    >>> incoming_move.uom = unit
+    >>> incoming_move.unit = unit
     >>> incoming_move.quantity = 1
     >>> incoming_move.from_location = supplier_loc
     >>> incoming_move.to_location = storage_loc
@@ -63,7 +63,7 @@ Make 2 units of the product not available @ 60 and 80 ::
 
     >>> incoming_move = StockMove()
     >>> incoming_move.product = product
-    >>> incoming_move.uom = unit
+    >>> incoming_move.unit = unit
     >>> incoming_move.quantity = 1
     >>> incoming_move.from_location = supplier_loc
     >>> incoming_move.to_location = storage_loc
@@ -79,7 +79,7 @@ Sell 1 unit @ 200::
     >>> StockMove = Model.get('stock.move')
     >>> outgoing_move = StockMove()
     >>> outgoing_move.product = product
-    >>> outgoing_move.uom = unit
+    >>> outgoing_move.unit = unit
     >>> outgoing_move.quantity = 1
     >>> outgoing_move.from_location = storage_loc
     >>> outgoing_move.to_location = customer_loc

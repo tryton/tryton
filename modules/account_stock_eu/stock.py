@@ -421,21 +421,22 @@ class Move(metaclass=PoolMeta):
                         self.company.intrastat_currency,
                         round=False), ndigits)
 
-    def _intrastat_quantity(self, uom):
+    def _intrastat_quantity(self, unit):
         pool = Pool()
         UoM = pool.get('product.uom')
-        if self.uom.category == uom.category:
-            return UoM.compute_qty(self.uom, self.quantity, uom, round=False)
+        if self.unit.category == unit.category:
+            return UoM.compute_qty(self.unit, self.quantity, unit, round=False)
         elif (getattr(self, 'secondary_unit', None)
-                and self.secondary_unit.category == uom.category):
+                and self.secondary_unit.category == unit.category):
             return UoM.compute_qty(
-                self.secondary_unit, self.secondary_quantity, uom, round=False)
+                self.secondary_unit, self.secondary_quantity, unit,
+                round=False)
         if (self.product.volume
-                and self.product.volume_uom.category == uom.category):
+                and self.product.volume_uom.category == unit.category):
             return UoM.compute_qty(
                 self.product.volume_uom,
                 self.internal_quantity * self.product.volume,
-                uom, round=False)
+                unit, round=False)
 
     def _intrastat_counterparty(self):
         pool = Pool()

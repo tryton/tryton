@@ -53,7 +53,7 @@ Fill warehouse::
    >>> move.product = product
    >>> move.from_location = supplier_loc
    >>> move.to_location = storage_loc
-   >>> move.uom = unit
+   >>> move.unit = unit
    >>> move.quantity = 10
    >>> move.effective_date = yesterday
    >>> move.unit_price = Decimal('10')
@@ -66,7 +66,7 @@ Forecast some moves::
    >>> move.product = product
    >>> move.from_location = storage_loc
    >>> move.to_location = customer_loc
-   >>> move.uom = unit
+   >>> move.unit = unit
    >>> move.quantity = 6
    >>> move.planned_date = tomorrow
    >>> move.unit_price = Decimal('20')
@@ -77,7 +77,7 @@ Forecast some moves::
    >>> move.product = product
    >>> move.from_location = supplier_loc
    >>> move.to_location = storage_loc
-   >>> move.uom = unit
+   >>> move.unit = unit
    >>> move.quantity = 5
    >>> move.planned_date = tomorrow
    >>> move.unit_price = Decimal('10')
@@ -88,7 +88,7 @@ Forecast some moves::
    >>> move.product = product
    >>> move.from_location = storage_loc
    >>> move.to_location = customer_loc
-   >>> move.uom = unit
+   >>> move.unit = unit
    >>> move.quantity = 3
    >>> move.planned_date = tomorrow
    >>> move.unit_price = Decimal('20')

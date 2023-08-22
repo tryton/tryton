@@ -61,7 +61,7 @@ class Move(metaclass=PoolMeta):
         for invoice_line in self.invoice_lines:
             if invoice_line.invoice_state != 'cancelled':
                 quantity += Uom.compute_qty(
-                    invoice_line.unit, invoice_line.quantity, self.uom)
+                    invoice_line.unit, invoice_line.quantity, self.unit)
         return quantity
 
     @classmethod
@@ -109,7 +109,7 @@ class Move(metaclass=PoolMeta):
                         line.invoice.currency, line.amount, self.currency)
                 if line.invoice.type == 'out' or not line.correction:
                     quantity += UoM.compute_qty(
-                        line.unit, line.quantity, self.uom)
+                        line.unit, line.quantity, self.unit)
         if quantity:
             unit_price = round_price(amount / Decimal(str(quantity)))
         return unit_price

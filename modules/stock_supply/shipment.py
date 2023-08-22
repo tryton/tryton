@@ -160,7 +160,7 @@ class ShipmentInternal(ModelSQL, ModelView):
                             planned_date=date,
                             product=product,
                             quantity=qty,
-                            uom=product.default_uom,
+                            unit=product.default_uom,
                             company=company,
                             ))
                 shipment.moves = shipment_moves

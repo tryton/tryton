@@ -139,9 +139,9 @@ class GiftCard(ModelSQL, ModelView):
             move = self.origin
             self.company = move.company
             self.product = move.product
-            if move.uom and move.unit_price:
+            if move.unit and move.unit_price:
                 self.value = UoM.compute_price(
-                    move.uom, move.unit_price, move.product.default_uom)
+                    move.unit, move.unit_price, move.product.default_uom)
                 self.currency = move.currency
         if self.value and self.currency:
             self.value = self.currency.round(self.value)

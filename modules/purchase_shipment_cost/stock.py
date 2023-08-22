@@ -173,8 +173,9 @@ class Move(metaclass=PoolMeta):
                 moves, quantity, type_):
             if (type_.startswith('in_')
                     and move.unit_shipment_cost):
-                shipment_cost = Uom.compute_price(move.uom,
-                    move.unit_shipment_cost, move.product.default_uom)
+                shipment_cost = Uom.compute_price(
+                    move.unit, move.unit_shipment_cost,
+                    move.product.default_uom)
                 shipment_cost = Currency.compute(move.currency,
                     shipment_cost, move.company.currency)
                 cost_price -= shipment_cost

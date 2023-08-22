@@ -53,7 +53,7 @@ class StockLotTestCase(CompanyTestMixin, ModuleTestCase):
             moves = Move.create([{
                         'product': product.id,
                         'lot': lot1.id,
-                        'uom': kg.id,
+                        'unit': kg.id,
                         'quantity': 5,
                         'from_location': supplier.id,
                         'to_location': storage.id,
@@ -63,7 +63,7 @@ class StockLotTestCase(CompanyTestMixin, ModuleTestCase):
                         }, {
                         'product': product.id,
                         'lot': lot2.id,
-                        'uom': kg.id,
+                        'unit': kg.id,
                         'quantity': 10,
                         'from_location': supplier.id,
                         'to_location': storage.id,
@@ -73,7 +73,7 @@ class StockLotTestCase(CompanyTestMixin, ModuleTestCase):
                         }, {
                         'product': product.id,
                         'lot': lot2.id,
-                        'uom': kg.id,
+                        'unit': kg.id,
                         'quantity': 2,
                         'from_location': storage.id,
                         'to_location': customer.id,
@@ -83,7 +83,7 @@ class StockLotTestCase(CompanyTestMixin, ModuleTestCase):
                         }, {
                         'product': product.id,
                         'lot': None,
-                        'uom': kg.id,
+                        'unit': kg.id,
                         'quantity': 3,
                         'from_location': supplier.id,
                         'to_location': storage.id,
@@ -148,7 +148,7 @@ class StockLotTestCase(CompanyTestMixin, ModuleTestCase):
             moves = Move.create([{
                         'product': product.id,
                         'lot': lot1.id,
-                        'uom': unit.id,
+                        'unit': unit.id,
                         'quantity': 5,
                         'from_location': supplier.id,
                         'to_location': storage.id,
@@ -160,7 +160,7 @@ class StockLotTestCase(CompanyTestMixin, ModuleTestCase):
                         }, {
                         'product': product.id,
                         'lot': lot2.id,
-                        'uom': unit.id,
+                        'unit': unit.id,
                         'quantity': 10,
                         'from_location': supplier.id,
                         'to_location': storage.id,
@@ -172,7 +172,7 @@ class StockLotTestCase(CompanyTestMixin, ModuleTestCase):
                         }, {
                         'product': product.id,
                         'lot': None,
-                        'uom': unit.id,
+                        'unit': unit.id,
                         'quantity': 3,
                         'from_location': supplier.id,
                         'to_location': storage.id,
@@ -224,11 +224,11 @@ class StockLotTestCase(CompanyTestMixin, ModuleTestCase):
         Move = pool.get('stock.move')
         Lot = pool.get('stock.lot')
 
-        uom, = Uom.search([('name', '=', 'Meter')])
+        unit, = Uom.search([('name', '=', 'Meter')])
         template = Template(
             name="Product",
             type='goods',
-            default_uom=uom,
+            default_uom=unit,
             )
         template.save()
         product = Product(template=template.id)
@@ -250,7 +250,7 @@ class StockLotTestCase(CompanyTestMixin, ModuleTestCase):
             moves = Move.create([{
                         'product': product.id,
                         'lot': lot1.id,
-                        'uom': uom.id,
+                        'unit': unit.id,
                         'quantity': 2,
                         'from_location': supplier.id,
                         'to_location': storage.id,
@@ -260,7 +260,7 @@ class StockLotTestCase(CompanyTestMixin, ModuleTestCase):
                         }, {
                         'product': product.id,
                         'lot': lot2.id,
-                        'uom': uom.id,
+                        'unit': unit.id,
                         'quantity': 3,
                         'from_location': supplier.id,
                         'to_location': storage.id,
@@ -270,7 +270,7 @@ class StockLotTestCase(CompanyTestMixin, ModuleTestCase):
                         }, {
                         'product': product.id,
                         'lot': None,
-                        'uom': uom.id,
+                        'unit': unit.id,
                         'quantity': 3,
                         'from_location': supplier.id,
                         'to_location': storage.id,
@@ -282,7 +282,7 @@ class StockLotTestCase(CompanyTestMixin, ModuleTestCase):
 
             move, = Move.create([{
                         'product': product.id,
-                        'uom': uom.id,
+                        'unit': unit.id,
                         'quantity': 10,
                         'from_location': storage.id,
                         'to_location': customer.id,

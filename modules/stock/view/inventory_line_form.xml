@@ -10,9 +10,9 @@ this repository contains the full copyright notices and license terms. -->
     <newline/>
 
     <label name="expected_quantity"/>
-    <field name="expected_quantity" symbol="uom"/>
+    <field name="expected_quantity" symbol="unit"/>
     <label name="quantity"/>
-    <field name="quantity" symbol="uom"/>
+    <field name="quantity" symbol="unit"/>
 
     <field name="moves" colspan="4"/>
 </form>

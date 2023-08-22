@@ -187,7 +187,7 @@ class Move(metaclass=PoolMeta):
         line.currency = currency
         line.product = self.product
         line.quantity = self.quantity
-        line.unit = self.uom
+        line.unit = self.unit
         line.stock_moves = [self]
         line.origin = self
         line.on_change_product()
@@ -214,7 +214,7 @@ class Move(metaclass=PoolMeta):
         line.currency = self.company.currency
         line.product = self.product
         line.quantity = self.quantity
-        line.unit = self.uom
+        line.unit = self.unit
         line.stock_moves = [self]
         line.origin = self
         line.on_change_product()

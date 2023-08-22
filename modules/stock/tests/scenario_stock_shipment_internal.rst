@@ -104,7 +104,7 @@ Create Internal Shipment from lost_found location::
     >>> move = StockMove()
     >>> move = lost_found_shipment.moves.new()
     >>> move.product = product
-    >>> move.uom = unit
+    >>> move.unit = unit
     >>> move.quantity = 2
     >>> move.from_location = lost_found_loc
     >>> move.to_location = internal_loc
