@@ -740,7 +740,7 @@ class ShipmentOutReturn(ShipmentCheckQuantity, metaclass=PoolMeta):
         return move
 
 
-class ShipmentInternal(metaclass=PoolMeta):
+class ShipmentInternal(ShipmentCheckQuantity, metaclass=PoolMeta):
     __name__ = 'stock.shipment.internal'
 
     def _sync_move_key(self, move):
