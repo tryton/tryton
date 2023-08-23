@@ -1,6 +1,7 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 import datetime
+from collections import defaultdict
 from copy import copy
 from functools import wraps
 
@@ -13,6 +14,7 @@ from trytond.model import (
 from trytond.model.exceptions import (
     AccessError, RequiredValidationError, ValidationError)
 from trytond.modules.stock import StockMixin
+from trytond.modules.stock.exceptions import ShipmentCheckQuantityWarning
 from trytond.pool import Pool, PoolMeta
 from trytond.pyson import Bool, Eval, Len
 from trytond.tools import grouped_slice
@@ -653,7 +655,59 @@ class MoveAddLotsStartLot(ModelView, LotMixin):
             }
 
 
-class ShipmentIn(metaclass=PoolMeta):
+class ShipmentCheckQuantity:
+    "Check quantities per lot between source and target moves"
+    __slots__ = ()
+
+    def check_quantity(self):
+        pool = Pool()
+        Warning = pool.get('res.user.warning')
+        Lang = pool.get('ir.lang')
+        lang = Lang.get()
+
+        super().check_quantity()
+
+        products_with_lot = set()
+        source_qties = defaultdict(float)
+        for move in self._check_quantity_source_moves:
+            if move.lot:
+                products_with_lot.add(move.product)
+                source_qties[move.lot] += move.internal_quantity
+
+        target_qties = defaultdict(float)
+        for move in self._check_quantity_target_moves:
+            if move.lot:
+                target_qties[move.lot] += move.internal_quantity
+
+        diffs = {}
+        for lot, incoming_qty in target_qties.items():
+            if (lot not in source_qties
+                    and lot.product not in products_with_lot):
+                continue
+            unit = lot.product.default_uom
+            incoming_qty = unit.round(incoming_qty)
+            inventory_qty = unit.round(source_qties.pop(lot, 0))
+            diff = inventory_qty - incoming_qty
+            if diff:
+                diffs[lot] = diff
+
+        if diffs:
+            warning_name = Warning.format(
+                'check_quantity_lot', [self])
+            if Warning.check(warning_name):
+                quantities = []
+                for lot, quantity in diffs.items():
+                    quantity = lang.format_number_symbol(
+                        quantity, lot.product.default_uom)
+                    quantities.append(f"{lot.rec_name}: {quantity}")
+                raise ShipmentCheckQuantityWarning(warning_name,
+                    gettext(
+                        'stock.msg_shipment_check_quantity',
+                        shipment=self.rec_name,
+                        quantities=', '.join(quantities)))
+
+
+class ShipmentIn(ShipmentCheckQuantity, metaclass=PoolMeta):
     __name__ = 'stock.shipment.in'
 
     def _get_inventory_move(self, incoming_move):
