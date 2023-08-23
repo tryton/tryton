@@ -1834,7 +1834,8 @@ class ShipmentOut(
         cls.write(shipments, {'planned_date': date})
 
 
-class ShipmentOutReturn(ShipmentMixin, Workflow, ModelSQL, ModelView):
+class ShipmentOutReturn(
+        ShipmentCheckQuantity, ShipmentMixin, Workflow, ModelSQL, ModelView):
     "Customer Return Shipment"
     __name__ = 'stock.shipment.out.return'
     _rec_name = 'number'
@@ -2219,7 +2220,12 @@ class ShipmentOutReturn(ShipmentMixin, Workflow, ModelSQL, ModelView):
         pool = Pool()
         Move = pool.get('stock.move')
         Date = pool.get('ir.date')
-        Move.do([m for s in shipments for m in s.inventory_moves])
+        inventory_moves = []
+        for shipment in shipments:
+            if shipment.warehouse_storage != shipment.warehouse_input:
+                shipment.check_quantity()
+            inventory_moves.extend(shipment.inventory_moves)
+        Move.do(inventory_moves)
         for company, c_shipments in groupby(
                 shipments, key=lambda s: s.company):
             with Transaction().set_context(company=company.id):
@@ -2227,6 +2233,14 @@ class ShipmentOutReturn(ShipmentMixin, Workflow, ModelSQL, ModelView):
             cls.write([s for s in c_shipments if not s.effective_date], {
                     'effective_date': today,
                     })
+
+    @property
+    def _check_quantity_source_moves(self):
+        return self.incoming_moves
+
+    @property
+    def _check_quantity_target_moves(self):
+        return self.inventory_moves
 
     @classmethod
     @ModelView.button
