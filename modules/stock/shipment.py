@@ -1565,7 +1565,7 @@ class ShipmentOut(ShipmentAssignMixin, Workflow, ModelSQL, ModelView):
         Move = pool.get('stock.move')
         for shipment in shipments:
             for move in shipment.inventory_moves:
-                if move.state != 'done':
+                if move.state not in {'done', 'cancelled'}:
                     raise AccessError(
                         gettext('stock.msg_shipment_pack_inventory_done',
                             shipment=shipment.rec_name))
