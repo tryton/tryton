@@ -717,7 +717,7 @@ class ShipmentIn(ShipmentCheckQuantity, metaclass=PoolMeta):
         return move
 
 
-class ShipmentOut(metaclass=PoolMeta):
+class ShipmentOut(ShipmentCheckQuantity, metaclass=PoolMeta):
     __name__ = 'stock.shipment.out'
 
     def _get_inventory_move(self, outgoing_move):
