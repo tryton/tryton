@@ -203,6 +203,8 @@ Let's pay the advance payment invoice::
     True
     >>> il1.unit_price
     Decimal('10.00')
+    >>> il1.taxes_date == today
+    True
     >>> il1.quantity
     -1.0
     >>> il2.product == product
