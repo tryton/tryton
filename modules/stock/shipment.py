@@ -20,6 +20,8 @@ from trytond.pyson import Bool, Eval, Id, If, TimeDelta
 from trytond.transaction import Transaction
 from trytond.wizard import Button, StateTransition, StateView, Wizard
 
+from .exceptions import ShipmentCheckQuantityWarning
+
 
 class ShipmentMixin:
     __slots__ = ()
@@ -187,7 +189,60 @@ class ShipmentAssignMixin(ShipmentMixin):
             return []
 
 
-class ShipmentIn(ShipmentMixin, Workflow, ModelSQL, ModelView):
+class ShipmentCheckQuantity:
+    "Check quantities per product between source and target moves"
+    __slots__ = ()
+
+    @property
+    def _check_quantity_source_moves(self):
+        raise NotImplementedError
+
+    @property
+    def _check_quantity_target_moves(self):
+        raise NotImplementedError
+
+    def check_quantity(self):
+        pool = Pool()
+        Warning = pool.get('res.user.warning')
+        Lang = pool.get('ir.lang')
+        lang = Lang.get()
+
+        source_qties = defaultdict(float)
+        for move in self._check_quantity_source_moves:
+            source_qties[move.product] += move.internal_quantity
+
+        target_qties = defaultdict(float)
+        for move in self._check_quantity_target_moves:
+            target_qties[move.product] += move.internal_quantity
+
+        diffs = {}
+        for product, incoming_qty in source_qties.items():
+            unit = product.default_uom
+            incoming_qty = unit.round(incoming_qty)
+            inventory_qty = unit.round(target_qties.pop(product, 0))
+            diff = inventory_qty - incoming_qty
+            if diff:
+                diffs[product] = diff
+        diffs.update(target_qties)
+
+        if diffs:
+            warning_name = Warning.format(
+                'check_quantity_product', [self])
+            if Warning.check(warning_name):
+                quantities = []
+                for product, quantity in diffs.items():
+                    quantity = lang.format_number_symbol(
+                        quantity, product.default_uom)
+                    quantities.append(f"{product.rec_name}: {quantity}")
+                raise ShipmentCheckQuantityWarning(warning_name,
+                    gettext(
+                        'stock.msg_shipment_check_quantity',
+                        shipment=self.rec_name,
+                        quantities=', '.join(quantities)))
+
+
+class ShipmentIn(
+        ShipmentCheckQuantity, ShipmentMixin, Workflow, ModelSQL, ModelView):
     "Supplier Shipment"
     __name__ = 'stock.shipment.in'
     _rec_name = 'number'
@@ -646,7 +701,12 @@ class ShipmentIn(ShipmentMixin, Workflow, ModelSQL, ModelView):
         pool = Pool()
         Move = pool.get('stock.move')
         Date = pool.get('ir.date')
-        Move.do([m for s in shipments for m in s.inventory_moves])
+        inventory_moves = []
+        for shipment in shipments:
+            if shipment.warehouse_storage != shipment.warehouse_input:
+                shipment.check_quantity()
+            inventory_moves.extend(shipment.inventory_moves)
+        Move.do(inventory_moves)
         for company, c_shipments in groupby(
                 shipments, key=lambda s: s.company):
             with Transaction().set_context(company=company.id):
@@ -654,6 +714,14 @@ class ShipmentIn(ShipmentMixin, Workflow, ModelSQL, ModelView):
             cls.write([s for s in c_shipments if not s.effective_date], {
                     'effective_date': today,
                     })
+
+    @property
+    def _check_quantity_source_moves(self):
+        return self.incoming_moves
+
+    @property
+    def _check_quantity_target_moves(self):
+        return self.inventory_moves
 
 
 class ShipmentInReturn(ShipmentAssignMixin, Workflow, ModelSQL, ModelView):

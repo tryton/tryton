@@ -46,3 +46,7 @@ class ProductCostPriceError(ValidationError):
 
 class ProductStockWarning(UserWarning):
     pass
+
+
+class ShipmentCheckQuantityWarning(UserWarning):
+    pass

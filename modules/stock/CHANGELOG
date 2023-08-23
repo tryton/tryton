@@ -1,3 +1,4 @@
+* Check inventory product quantities of supplier shipment
 * Store original planned date of shipments to compute delay
 * Store original planned date of moves to compute delay
 * Rename Uom to Unit for move and inventory

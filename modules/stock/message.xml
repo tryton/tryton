@@ -62,6 +62,9 @@ because the type does not support moves and location has existing moves.</field>
         <record model="ir.message" id="msg_shipment_delete_cancel">
             <field name="text">To delete shipment "%(shipment)s" you must cancel it.</field>
         </record>
+        <record model="ir.message" id="msg_shipment_check_quantity">
+            <field name="text">The quantities of shipment "%(shipment)s" are different by %(quantities)s.</field>
+        </record>
         <record model="ir.message" id="msg_inventory_delete_cancel">
             <field name="text">To delete inventory "%(inventory)s" you must cancel it.</field>
         </record>
