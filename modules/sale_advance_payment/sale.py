@@ -382,6 +382,7 @@ class Sale(metaclass=PoolMeta):
                     description=advance_line.description,
                     origin=advance_line,
                     taxes=advance_line.taxes,
+                    taxes_date=advance_line.tax_date,
                     )
                 recall_lines.append(line)
         return recall_lines
