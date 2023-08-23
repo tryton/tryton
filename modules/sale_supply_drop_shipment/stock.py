@@ -13,6 +13,7 @@ from trytond.model.exceptions import AccessError
 from trytond.modules.product import round_price
 from trytond.modules.purchase.stock import process_purchase
 from trytond.modules.sale.stock import process_sale
+from trytond.modules.stock.shipment import ShipmentCheckQuantity
 from trytond.pool import Pool, PoolMeta
 from trytond.pyson import Eval, Id, If
 from trytond.tools import grouped_slice
@@ -67,7 +68,7 @@ class ConfigurationSequence(metaclass=PoolMeta):
             return None
 
 
-class ShipmentDrop(Workflow, ModelSQL, ModelView):
+class ShipmentDrop(ShipmentCheckQuantity, Workflow, ModelSQL, ModelView):
     "Drop Shipment"
     __name__ = 'stock.shipment.drop'
     _rec_name = 'number'
@@ -552,16 +553,30 @@ class ShipmentDrop(Workflow, ModelSQL, ModelView):
         Move = pool.get('stock.move')
         Date = pool.get('ir.date')
         cls.set_cost(shipments)
-        Move.delete([
-                m for s in shipments for m in s.customer_moves
-                if not m.quantity])
-        Move.do([m for s in shipments for m in s.customer_moves])
+        customer_moves, to_delete = [], []
+        for shipment in shipments:
+            shipment.check_quantity()
+            for move in shipment.customer_moves:
+                if move.quantity:
+                    customer_moves.append(move)
+                else:
+                    to_delete.append(move)
+        Move.delete(to_delete)
+        Move.do(customer_moves)
         for company, shipments in groupby(shipments, key=lambda s: s.company):
             with Transaction().set_context(company=company.id):
                 today = Date.today()
             cls.write([s for s in shipments if not s.effective_date], {
                     'effective_date': today,
                     })
+
+    @property
+    def _check_quantity_source_moves(self):
+        return self.supplier_moves
+
+    @property
+    def _check_quantity_target_moves(self):
+        return self.customer_moves
 
 
 class Move(metaclass=PoolMeta):
