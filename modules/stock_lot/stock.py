@@ -730,7 +730,7 @@ class ShipmentOut(ShipmentCheckQuantity, metaclass=PoolMeta):
         return super()._sync_move_key(move) + (('lot', move.lot),)
 
 
-class ShipmentOutReturn(metaclass=PoolMeta):
+class ShipmentOutReturn(ShipmentCheckQuantity, metaclass=PoolMeta):
     __name__ = 'stock.shipment.out.return'
 
     def _get_inventory_move(self, incoming_move):
