@@ -2290,7 +2290,9 @@ class ShipmentOutReturn(
         cls.save(shipments)
 
 
-class ShipmentInternal(ShipmentAssignMixin, Workflow, ModelSQL, ModelView):
+class ShipmentInternal(
+        ShipmentCheckQuantity, ShipmentAssignMixin, Workflow, ModelSQL,
+        ModelView):
     "Internal Shipment"
     __name__ = 'stock.shipment.internal'
     _rec_name = 'number'
@@ -2893,7 +2895,12 @@ class ShipmentInternal(ShipmentAssignMixin, Workflow, ModelSQL, ModelView):
         pool = Pool()
         Move = pool.get('stock.move')
         Date = pool.get('ir.date')
-        Move.do([m for s in shipments for m in s.incoming_moves])
+        incoming_moves = []
+        for shipment in shipments:
+            if shipment.transit_location:
+                shipment.check_quantity()
+            incoming_moves.extend(shipment.incoming_moves)
+        Move.do(incoming_moves)
         for company, c_shipments in groupby(
                 shipments, key=lambda s: s.company):
             with Transaction().set_context(company=company.id):
@@ -2901,6 +2908,14 @@ class ShipmentInternal(ShipmentAssignMixin, Workflow, ModelSQL, ModelView):
             cls.write([s for s in c_shipments if not s.effective_date], {
                     'effective_date': today,
                     })
+
+    @property
+    def _check_quantity_source_moves(self):
+        return self.incoming_moves
+
+    @property
+    def _check_quantity_target_moves(self):
+        return self.outgoing_moves
 
     @classmethod
     @ModelView.button
