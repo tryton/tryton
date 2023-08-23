@@ -747,7 +747,7 @@ class ShipmentInternal(ShipmentCheckQuantity, metaclass=PoolMeta):
         return super()._sync_move_key(move) + (('lot', move.lot),)
 
 
-class ShipmentDrop(metaclass=PoolMeta):
+class ShipmentDrop(ShipmentCheckQuantity, metaclass=PoolMeta):
     __name__ = 'stock.shipment.drop'
 
     def _sync_move_key(self, move):
