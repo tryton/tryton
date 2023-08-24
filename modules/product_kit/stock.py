@@ -2,10 +2,26 @@
 # this repository contains the full copyright notices and license terms.
 from decimal import Decimal
 
-from trytond.model import fields
+from trytond.model import ModelView, Workflow, fields
 from trytond.modules.product import round_price
 from trytond.pool import Pool, PoolMeta
 from trytond.transaction import Transaction
+
+
+class ShipmentIn(metaclass=PoolMeta):
+    __name__ = 'stock.shipment.in'
+
+    @classmethod
+    @ModelView.button
+    @Workflow.transition('received')
+    def receive(cls, shipments):
+        pool = Pool()
+        PurchaseLineComponent = pool.get('purchase.line.component')
+        for shipment in shipments:
+            for move in shipment.incoming_moves:
+                if isinstance(move.origin, PurchaseLineComponent):
+                    move.origin.check_move_quantity()
+        super().receive(shipments)
 
 
 class Move(metaclass=PoolMeta):

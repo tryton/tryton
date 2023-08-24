@@ -123,6 +123,28 @@ class LineComponent(
         'Return the quantity that should be shipped'
         return abs(self.quantity)
 
+    def check_move_quantity(self):
+        from trytond.modules.purchase.exceptions import PurchaseMoveQuantity
+        pool = Pool()
+        Lang = pool.get('ir.lang')
+        Warning = pool.get('res.user.warning')
+        lang = Lang.get()
+        move_type = 'in' if self.quantity >= 0 else 'return'
+        quantity = (
+            self._get_move_quantity(move_type)
+            - self._get_shipped_quantity(move_type))
+        if quantity < 0:
+            warning_name = Warning.format(
+                'check_move_quantity', [self])
+            if Warning.check(warning_name):
+                raise PurchaseMoveQuantity(warning_name, gettext(
+                        'purchase.msg_purchase_line_move_quantity',
+                        line=self.rec_name,
+                        extra=lang.format_number_symbol(
+                            -quantity, self.unit),
+                        quantity=lang.format_number_symbol(
+                            self.quantity, self.unit)))
+
 
 class LineComponentIgnoredMove(ModelSQL):
     'Purchase Line Component - Ignored Move'
