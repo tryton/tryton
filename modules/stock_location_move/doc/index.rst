@@ -2,7 +2,7 @@ Stock Location Move Module
 ##########################
 
 The stock location move module allows to define some *Locations* as movable
-(like palette).
+(like pallet).
 
 Such locations can be moved using an *Internal Shipment*. The parent location
 is changed for the destination location when the shipment is done. If there is
