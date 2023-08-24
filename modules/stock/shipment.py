@@ -1110,7 +1110,9 @@ class ShipmentInReturn(ShipmentAssignMixin, Workflow, ModelSQL, ModelView):
         cls.write(shipments, {'planned_date': date})
 
 
-class ShipmentOut(ShipmentAssignMixin, Workflow, ModelSQL, ModelView):
+class ShipmentOut(
+        ShipmentCheckQuantity, ShipmentAssignMixin, Workflow, ModelSQL,
+        ModelView):
     "Customer Shipment"
     __name__ = 'stock.shipment.out'
     _rec_name = 'number'
@@ -1563,15 +1565,30 @@ class ShipmentOut(ShipmentAssignMixin, Workflow, ModelSQL, ModelView):
     def pack(cls, shipments):
         pool = Pool()
         Move = pool.get('stock.move')
+        outgoing_moves, to_delete = [], []
         for shipment in shipments:
             for move in shipment.inventory_moves:
                 if move.state not in {'done', 'cancelled'}:
                     raise AccessError(
                         gettext('stock.msg_shipment_pack_inventory_done',
                             shipment=shipment.rec_name))
-        Move.delete([m for s in shipments for m in s.outgoing_moves
-            if not m.quantity])
-        Move.assign([m for s in shipments for m in s.outgoing_moves])
+            if shipment.warehouse_storage != shipment.warehouse_output:
+                shipment.check_quantity()
+            for move in shipment.outgoing_moves:
+                if move.quantity:
+                    outgoing_moves.append(move)
+                else:
+                    to_delete.append(move)
+        Move.delete(to_delete)
+        Move.assign(outgoing_moves)
+
+    @property
+    def _check_quantity_source_moves(self):
+        return self.inventory_moves
+
+    @property
+    def _check_quantity_target_moves(self):
+        return self.outgoing_moves
 
     def _sync_move_key(self, move):
         return (
