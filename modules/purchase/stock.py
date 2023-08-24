@@ -68,6 +68,12 @@ class ShipmentIn(metaclass=PoolMeta):
     @Workflow.transition('received')
     @process_purchase('incoming_moves')
     def receive(cls, shipments):
+        pool = Pool()
+        PurchaseLine = pool.get('purchase.line')
+        for shipment in shipments:
+            for move in shipment.incoming_moves:
+                if isinstance(move.origin, PurchaseLine):
+                    move.origin.check_move_quantity()
         super(ShipmentIn, cls).receive(shipments)
 
     @classmethod

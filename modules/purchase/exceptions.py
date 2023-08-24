@@ -13,5 +13,9 @@ class PurchaseQuotationError(ValidationError):
     pass
 
 
+class PurchaseMoveQuantity(UserWarning):
+    pass
+
+
 class PartyLocationError(UserError):
     pass
