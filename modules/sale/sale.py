@@ -30,7 +30,8 @@ from trytond.wizard import (
     Button, StateAction, StateTransition, StateView, Wizard)
 
 from .exceptions import (
-    PartyLocationError, SaleQuotationError, SaleValidationError)
+    PartyLocationError, SaleMoveQuantity, SaleQuotationError,
+    SaleValidationError)
 
 
 def get_shipments_returns(model_name):
@@ -1852,6 +1853,27 @@ class SaleLine(TaxableMixin, sequence_ordered(), ModelSQL, ModelView):
                 quantity += Uom.compute_qty(
                     move.unit, move.quantity, self.unit)
         return quantity
+
+    def check_move_quantity(self):
+        pool = Pool()
+        Lang = pool.get('ir.lang')
+        Warning = pool.get('res.user.warning')
+        lang = Lang.get()
+        move_type = 'in' if self.quantity >= 0 else 'return'
+        quantity = (
+            self._get_move_quantity(move_type)
+            - self._get_shipped_quantity(move_type))
+        if quantity < 0:
+            warning_name = Warning.format(
+                'check_move_quantity', [self])
+            if Warning.check(warning_name):
+                raise SaleMoveQuantity(warning_name, gettext(
+                        'sale.msg_sale_line_move_quantity',
+                        line=self.rec_name,
+                        extra=lang.format_number_symbol(
+                            -quantity, self.unit),
+                        quantity=lang.format_number_symbol(
+                            self.quantity, self.unit)))
 
     def _get_move_invoice_lines(self, shipment_type):
         'Return the invoice lines that should be shipped'

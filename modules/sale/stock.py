@@ -87,6 +87,12 @@ class ShipmentOutReturn(metaclass=PoolMeta):
     @Workflow.transition('received')
     @process_sale('incoming_moves')
     def receive(cls, shipments):
+        pool = Pool()
+        SaleLine = pool.get('sale.line')
+        for shipment in shipments:
+            for move in shipment.incoming_moves:
+                if isinstance(move.origin, SaleLine):
+                    move.origin.check_move_quantity()
         super(ShipmentOutReturn, cls).receive(shipments)
 
 

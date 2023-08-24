@@ -39,6 +39,9 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.message" id="msg_sale_line_delete_cancel_draft">
             <field name="text">To delete line "%(line)s" you must cancel or reset to draft sale "%(sale)s".</field>
         </record>
+        <record model="ir.message" id="msg_sale_line_move_quantity">
+            <field name="text">The sale line "%(line)s" is moving %(extra)s in addition to the %(quantity)s ordered.</field>
+        </record>
         <record model="ir.message" id="msg_sale_modify_header_draft">
             <field name="text">To modify the header of sale "%(sale)s", it must be in "draft" state.</field>
         </record>
