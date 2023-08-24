@@ -26,6 +26,7 @@ def register():
         sale.LineComponent,
         sale.LineComponentIgnoredMove,
         sale.LineComponentRecreatedMove,
+        stock.ShipmentOutReturn,
         stock.MoveSale,
         account.InvoiceLineSale,
         module='product_kit', type_='model', depends=['sale'])

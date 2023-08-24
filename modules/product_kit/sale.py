@@ -132,6 +132,28 @@ class LineComponent(
                         invoice_line.quantity, self.line.unit)
             return self.quantity * quantity / self.line.quantity
 
+    def check_move_quantity(self):
+        from trytond.modules.sale.exceptions import SaleMoveQuantity
+        pool = Pool()
+        Lang = pool.get('ir.lang')
+        Warning = pool.get('res.user.warning')
+        lang = Lang.get()
+        move_type = 'in' if self.quantity >= 0 else 'return'
+        quantity = (
+            self._get_move_quantity(move_type)
+            - self._get_shipped_quantity(move_type))
+        if quantity < 0:
+            warning_name = Warning.format(
+                'check_move_quantity', [self])
+            if Warning.check(warning_name):
+                raise SaleMoveQuantity(warning_name, gettext(
+                        'sale.msg_sale_line_move_quantity',
+                        line=self.rec_name,
+                        extra=lang.format_number_symbol(
+                            -quantity, self.unit),
+                        quantity=lang.format_number_symbol(
+                            self.quantity, self.unit)))
+
 
 class LineComponentIgnoredMove(ModelSQL):
     'Sale Line Component - Ignored Move'

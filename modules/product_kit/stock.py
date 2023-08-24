@@ -24,6 +24,22 @@ class ShipmentIn(metaclass=PoolMeta):
         super().receive(shipments)
 
 
+class ShipmentOutReturn(metaclass=PoolMeta):
+    __name__ = 'stock.shipment.out.return'
+
+    @classmethod
+    @ModelView.button
+    @Workflow.transition('received')
+    def receive(cls, shipments):
+        pool = Pool()
+        SaleLineComponent = pool.get('sale.line.component')
+        for shipment in shipments:
+            for move in shipment.incoming_moves:
+                if isinstance(move.origin, SaleLineComponent):
+                    move.origin.check_move_quantity()
+        super().receive(shipments)
+
+
 class Move(metaclass=PoolMeta):
     __name__ = 'stock.move'
 
