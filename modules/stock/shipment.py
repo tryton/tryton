@@ -1369,7 +1369,7 @@ class ShipmentOut(ShipmentAssignMixin, Workflow, ModelSQL, ModelView):
         def active(move):
             return move.state != 'cancelled'
 
-        moves = []
+        moves, imoves = [], []
         for shipment in shipments:
             if shipment.warehouse_storage == shipment.warehouse_output:
                 # Do not have inventory moves
@@ -1377,6 +1377,7 @@ class ShipmentOut(ShipmentAssignMixin, Workflow, ModelSQL, ModelView):
 
             outgoing_moves = {m: m for m in shipment.outgoing_moves}
             inventory_qty = defaultdict(lambda: defaultdict(float))
+            inventory_moves = defaultdict(lambda: defaultdict(list))
             for move in filter(active, shipment.outgoing_moves):
                 key = shipment._sync_move_key(move)
                 inventory_qty[move][key] = 0
@@ -1387,6 +1388,7 @@ class ShipmentOut(ShipmentAssignMixin, Workflow, ModelSQL, ModelView):
                     move.uom, move.quantity,
                     move.product.default_uom, round=False)
                 inventory_qty[outgoing_move][key] += qty_default_uom
+                inventory_moves[outgoing_move][key].append(move)
 
             for outgoing_move in inventory_qty:
                 if outgoing_move:
@@ -1402,6 +1404,9 @@ class ShipmentOut(ShipmentAssignMixin, Workflow, ModelSQL, ModelView):
                         move = shipment._sync_outgoing_move(outgoing_move)
                         for name, value in key:
                             setattr(move, name, value)
+                        for imove in inventory_moves[outgoing_move][key]:
+                            imove.origin = move
+                            imoves.append(imove)
                     qty = Uom.compute_qty(
                         move.product.default_uom, qty,
                         move.uom)
@@ -1409,6 +1414,7 @@ class ShipmentOut(ShipmentAssignMixin, Workflow, ModelSQL, ModelView):
                         move.quantity = qty
                     moves.append(move)
         Move.save(moves)
+        Move.save(imoves)
 
     @classmethod
     @ModelView.button
