@@ -96,6 +96,12 @@ Assign the shipment::
     >>> len(shipment_out.outgoing_moves)
     1
 
+Check the inventory moves origin::
+
+    >>> outgoing_move, = shipment_out.outgoing_moves
+    >>> all(m.origin == outgoing_move for m in shipment_out.inventory_moves)
+    True
+
 Try to pick without lot::
 
     >>> shipment_out.click('pick')  # doctest: +IGNORE_EXCEPTION_DETAIL
@@ -128,3 +134,26 @@ Pick the shipment::
     ...     lot_quantities[number] += move.quantity
     >>> sorted(lot_quantities.items())
     [('', 0.0), ('00001', 7.0), ('00002', 3.0)]
+
+Check the inventory moves have an outgoing move origin with the same lot::
+
+    >>> all(m.lot == m.origin.lot for m in shipment_out.inventory_moves)
+    True
+
+Pack the shipment and return to pick::
+
+    >>> shipment_out.click('pack')
+    >>> shipment_out.state
+    'packed'
+    >>> len(shipment_out.outgoing_moves)
+    2
+    >>> shipment_out.click('pick')
+    >>> shipment_out.state
+    'picked'
+    >>> len(shipment_out.outgoing_moves)
+    2
+
+Check the inventory moves still have an outgoing move origin with the same lot::
+
+    >>> all(m.lot == m.origin.lot for m in shipment_out.inventory_moves)
+    True
