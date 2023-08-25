@@ -1405,8 +1405,9 @@ class PurchaseLine(sequence_ordered(), ModelSQL, ModelView):
 
     def _get_invoice_not_line(self):
         'Return if the not line should be invoiced'
-        return (self.purchase.invoice_method == 'order'
-            and not self.invoice_lines)
+        return (
+            self.purchase.invoice_method == 'order'
+            and not self.purchase.invoices)
 
     def _get_invoice_line_quantity(self):
         'Return the quantity that should be invoiced'
