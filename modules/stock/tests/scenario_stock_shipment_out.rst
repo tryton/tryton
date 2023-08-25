@@ -250,7 +250,20 @@ Finish the shipment::
     >>> shipment_out.click('assign_try')
     True
     >>> shipment_out.click('pick')
+    >>> len(shipment_out.inventory_moves)
+    1
+    >>> len(shipment_out.outgoing_moves)
+    1
     >>> shipment_out.click('pack')
+    >>> shipment_out.click('pick')
+    >>> len(shipment_out.inventory_moves)
+    1
+    >>> len(shipment_out.outgoing_moves)
+    1
+    >>> shipment_out.click('pack')
+
+Finish the shipment::
+
     >>> shipment_out.click('done')
     >>> shipment_out.state
     'done'
