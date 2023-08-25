@@ -1526,7 +1526,9 @@ class SaleLine(TaxableMixin, sequence_ordered(), ModelSQL, ModelView):
 
     def _get_invoice_not_line(self):
         'Return if the not line should be invoiced'
-        return self.sale.invoice_method == 'order' and not self.invoice_lines
+        return (
+            self.sale.invoice_method == 'order'
+            and not self.sale.invoices)
 
     def _get_invoice_line_quantity(self):
         'Return the quantity that should be invoiced'
