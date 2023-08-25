@@ -485,9 +485,14 @@ class BudgetLine(BudgetLineMixin, ModelSQL, ModelView):
         cls.name.states['invisible'] |= Eval('account_type')
         cls.name.depends.add('account_type')
         t = cls.__table__()
-        cls._sql_constraints.append(
-            ('budget_account_unique', Unique(t, t.budget, t.account),
-                'account_budget.msg_budget_line_budget_account_unique'))
+        cls._sql_constraints.extend([
+                ('budget_account_unique', Unique(t, t.budget, t.account),
+                    'account_budget.msg_budget_line_budget_account_unique'),
+                ('budget_account_type_unique',
+                    Unique(t, t.budget, t.account_type),
+                    'account_budget.'
+                    'msg_budget_line_budget_account_type_unique'),
+                ])
         cls._buttons.update({
             'create_periods': {
                 'invisible': Bool(Eval('periods', [1])),

@@ -6,6 +6,9 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.message" id="msg_budget_line_budget_account_unique">
             <field name="text">The account must be unique for each budget.</field>
         </record>
+        <record model="ir.message" id="msg_budget_line_budget_account_type_unique">
+            <field name="text">The account type must be unique for each budget.</field>
+        </record>
         <record model="ir.message" id="msg_budget_line_period_budget_line_period_unique">
             <field name="text">The period must be unique for each budget line.</field>
         </record>
