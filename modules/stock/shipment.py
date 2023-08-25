@@ -2675,13 +2675,14 @@ class ShipmentInternal(ShipmentAssignMixin, Workflow, ModelSQL, ModelView):
         def active(move):
             return move.state != 'cancelled'
 
-        moves = []
+        moves, omoves = [], []
         for shipment in shipments:
             if not shipment.transit_location:
                 continue
 
             incoming_moves = {m: m for m in shipment.incoming_moves}
-            outgoing_qty = defaultdict(lambda: defaultdict(lambda: 0))
+            outgoing_qty = defaultdict(lambda: defaultdict(float))
+            outgoing_moves = defaultdict(lambda: defaultdict(list))
             for move in filter(active, shipment.incoming_moves):
                 key = shipment._sync_move_key(move)
                 outgoing_qty[move][key] = 0
@@ -2692,6 +2693,7 @@ class ShipmentInternal(ShipmentAssignMixin, Workflow, ModelSQL, ModelView):
                     move.uom, move.quantity,
                     move.product.default_uom, round=False)
                 outgoing_qty[incoming_move][key] += qty_default_uom
+                outgoing_moves[incoming_move][key].append(move)
 
             for incoming_move in outgoing_qty:
                 if incoming_move:
@@ -2703,13 +2705,18 @@ class ShipmentInternal(ShipmentAssignMixin, Workflow, ModelSQL, ModelView):
                         move = shipment._sync_incoming_move(incoming_move)
                         for name, value in key:
                             setattr(move, name, value)
+                        for omove in outgoing_moves[incoming_move][key]:
+                            omove.origin = move
+                            omoves.append(omove)
                     qty = Uom.compute_qty(
                         move.product.default_uom, qty,
                         move.uom)
                     if move.quantity != qty:
                         move.quantity = qty
-                        moves.append(move)
+                    moves.append(move)
+        # Save incoming moves first to get id for outgoing moves
         Move.save(moves)
+        Move.save(omoves)
 
     @classmethod
     def _set_transit(cls, shipments):
