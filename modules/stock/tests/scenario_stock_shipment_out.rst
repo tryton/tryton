@@ -6,7 +6,7 @@ Imports::
 
     >>> import datetime as dt
     >>> from decimal import Decimal
-    >>> from proteus import Model, Wizard
+    >>> from proteus import Model, Report
     >>> from trytond.tests.tools import activate_modules, set_user
     >>> from trytond.modules.company.tests.tools import create_company, \
     ...     get_company
@@ -184,6 +184,9 @@ Ignore non assigned moves and pack shipment::
     >>> sum([m.quantity for m in shipment_out.inventory_moves]) == \
     ...     sum([m.quantity for m in shipment_out.outgoing_moves])
     True
+
+    >>> delivery_note = Report('stock.shipment.out.delivery_note')
+    >>> _ = delivery_note.execute([shipment_out])
 
 Set the state as Done::
 
