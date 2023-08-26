@@ -6,7 +6,7 @@ Imports::
 
     >>> import datetime as dt
     >>> from decimal import Decimal
-    >>> from proteus import Model, Wizard
+    >>> from proteus import Model, Report
     >>> from trytond.tests.tools import activate_modules, set_user
     >>> from trytond.modules.company.tests.tools import create_company, \
     ...     get_company
@@ -93,6 +93,9 @@ Create Internal Shipment::
     'waiting'
     >>> shipment.assigned_by
     >>> shipment.done_by
+
+    >>> report = Report('stock.shipment.internal.report')
+    >>> _ = report.execute([shipment])
 
 Create Internal Shipment from lost_found location::
 

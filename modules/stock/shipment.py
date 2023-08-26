@@ -2466,6 +2466,7 @@ class ShipmentInternal(
             ('cancelled', 'Cancelled'),
             ], "State", readonly=True, sort=False,
         help="The current state of the shipment.")
+    state_string = state.translated('state')
 
     @classmethod
     def __setup__(cls):
