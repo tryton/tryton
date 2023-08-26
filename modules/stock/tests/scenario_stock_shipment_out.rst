@@ -163,6 +163,9 @@ Ignore non assigned moves and pack shipment::
     >>> shipment_out.packed_by
     >>> shipment_out.done_by
 
+    >>> picking_list = Report('stock.shipment.out.picking_list')
+    >>> _ = picking_list.execute([shipment_out])
+
     >>> shipment_out.click('pick')
     >>> shipment_out.picked_by == employee
     True
