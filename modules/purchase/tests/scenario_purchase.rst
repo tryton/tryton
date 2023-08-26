@@ -191,8 +191,8 @@ Purchase 5 products::
 
 Invoice line must be linked to stock move::
 
-    >>> _, invoice_line1, invoice_line2 = sorted(invoice.lines,
-    ...     key=lambda l: l.quantity or 0)
+    >>> invoice_line1, invoice_line2 = sorted(
+    ...     invoice.lines, key=lambda l: l.quantity or 0)
     >>> stock_move1, stock_move2 = sorted(purchase.moves,
     ...     key=lambda m: m.quantity)
     >>> invoice_line1.stock_moves == [stock_move1]
@@ -440,8 +440,8 @@ Checking the invoice::
     >>> mix_invoice.type
     'in'
     >>> len(mix_invoice.lines)
-    3
-    >>> sorted(l.quantity for l in mix_invoice.lines if l.quantity)
+    2
+    >>> sorted(l.quantity for l in mix_invoice.lines)
     [-2.0, 7.0]
     >>> mix_invoice.invoice_date = today
     >>> mix_invoice.click('post')

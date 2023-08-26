@@ -1630,6 +1630,9 @@ class Line(sequence_ordered(), ModelSQL, ModelView):
         AccountConfiguration = pool.get('account.configuration')
         account_config = AccountConfiguration(1)
 
+        if self.type != 'line':
+            return []
+
         invoice_line = InvoiceLine()
         invoice_line.type = self.type
         invoice_line.currency = self.currency
@@ -1637,11 +1640,6 @@ class Line(sequence_ordered(), ModelSQL, ModelView):
         invoice_line.description = self.description
         invoice_line.note = self.note
         invoice_line.origin = self
-        if self.type != 'line':
-            if self._get_invoice_not_line():
-                return [invoice_line]
-            else:
-                return []
 
         quantity = (self._get_invoice_line_quantity()
             - self._get_invoiced_quantity())
@@ -1681,12 +1679,6 @@ class Line(sequence_ordered(), ModelSQL, ModelView):
                         purchase=self.purchase.rec_name))
         invoice_line.stock_moves = self._get_invoice_line_moves()
         return [invoice_line]
-
-    def _get_invoice_not_line(self):
-        'Return if the not line should be invoiced'
-        return (
-            self.purchase.invoice_method in {'order', 'manual'}
-            and not self.purchase.invoices)
 
     def _get_invoice_line_quantity(self):
         'Return the quantity that should be invoiced'

@@ -1,3 +1,4 @@
+* Do not invoice non purchase line
 * Rename UOM to Unit for product supplier
 * Use price from last purchase as product price
 * Add a button to create invoices manually

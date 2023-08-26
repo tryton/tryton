@@ -122,7 +122,7 @@ Confirm purchase::
 Check secondary unit on invoice::
 
     >>> invoice, = purchase.invoices
-    >>> _, line = invoice.lines
+    >>> line, = invoice.lines
     >>> line.secondary_unit == kg
     True
     >>> line.secondary_quantity
