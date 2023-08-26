@@ -627,7 +627,7 @@ class BTreeTranslator(IndexMixin, IndexTranslatorInterface):
         return score
 
     @classmethod
-    def _get_expressions(cls, index):
+    def _get_indexed_expressions(cls, index):
         return [
             (e, u) for e, u in index.expressions
             if u.__class__.__name__ in {'Equality', 'Range'}]
@@ -660,7 +660,7 @@ class TrigramTranslator(IndexMixin, IndexTranslatorInterface):
         return score
 
     @classmethod
-    def _get_expressions(cls, index):
+    def _get_indexed_expressions(cls, index):
         return [
             (e, u) for e, u in index.expressions
             if u.__class__.__name__ == 'Similarity']
