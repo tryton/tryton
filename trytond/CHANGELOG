@@ -1,3 +1,4 @@
+* Create user applications as validated from user preferences
 * Support GIN index with btree_gin PostgreSQL extension
 * Add a canonicalize function for domains
 * Enforce record rules when reading only non SQL fields (#12428)

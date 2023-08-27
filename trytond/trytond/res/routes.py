@@ -42,7 +42,7 @@ def user_application(request, pool):
             user_id = None
         data['user'] = user_id
         data.pop('key', None)
-        data.pop('state', None)
+        data['state'] = 'requested'
         application, = UserApplication.create([data])
         key = application.key
         UserApplication.delete(UserApplication.search([

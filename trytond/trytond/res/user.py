@@ -1164,7 +1164,7 @@ class UserApplication(Workflow, ModelSQL, ModelView):
 
     @classmethod
     def default_state(cls):
-        return 'requested'
+        return 'validated'
 
     @classmethod
     @ModelView.button
