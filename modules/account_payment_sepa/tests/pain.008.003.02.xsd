@@ -2,6 +2,7 @@
 <!-- Mit XMLSpy v2008 rel. 2 (http://www.altova.com) von Wenzel (SIZ Bonn) bearbeitet -->
 <!-- Version gemäß DFÜ-Abkommen Anlage 3, Version 2.7, gültig ab November 2013 mit Umsetzung von IBAN Only gemäß EPC SDD Core IG 7.0 bzw. SDD B2B IG 5.0 , zudem Einbau der COR1-Option durch Erweiterung Local Instrument und Erweiterung Service Level auf Externe Codeliste-->
 <!-- Mit XMLSpy v2008 rel. 2 sp2 (http://www.altova.com) am 29.11.2012 von der SIZ GmbH bearbeitet -->
+<!--Under the ISO 20022 Intellectual Property Right Policy https://www.iso20022.org/intellectual-property-rights-->
 <xs:schema xmlns="urn:iso:std:iso:20022:tech:xsd:pain.008.003.02" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="urn:iso:std:iso:20022:tech:xsd:pain.008.003.02" elementFormDefault="qualified">
 	<xs:element name="Document" type="Document"/>
 	<xs:complexType name="AccountIdentificationSEPA">

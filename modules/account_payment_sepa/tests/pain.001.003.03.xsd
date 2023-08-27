@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!-- Version gemäß DFÜ-Abkommen Anlage 3, Version 2.7, gültig ab November 2013 mit Umsetzung von IBAN Only gemäß EPC SCT 7.0, zudem Erweiterung Service Level auf Externe Codeliste-->
 <!-- Mit XMLSpy v2008 am 29.11.2012 von der SIZ GmbH bearbeitet -->
+<!--Under the ISO 20022 Intellectual Property Right Policy https://www.iso20022.org/intellectual-property-rights-->
 <xs:schema xmlns="urn:iso:std:iso:20022:tech:xsd:pain.001.003.03" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="urn:iso:std:iso:20022:tech:xsd:pain.001.003.03" elementFormDefault="qualified">
 	<xs:element name="Document" type="Document"/>
 	<xs:complexType name="AccountIdentificationSEPA">
