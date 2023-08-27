@@ -343,7 +343,7 @@ class Payment(metaclass=PoolMeta):
                 else:
                     mandate = None
             else:
-                for mandate in payment.party.sepa_mandates:
+                for mandate in payment.party.sepa_mandates_for(payment):
                     if mandate.is_valid:
                         break
                 else:

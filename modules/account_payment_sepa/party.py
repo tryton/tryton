@@ -70,6 +70,11 @@ class Party(metaclass=PoolMeta):
                     party=self.rec_name,
                     type=type))
 
+    def sepa_mandates_for(self, payment):
+        for mandate in self.sepa_mandates:
+            if mandate.company == payment.company:
+                yield mandate
+
 
 class PartyIdentifier(metaclass=PoolMeta):
     __name__ = 'party.identifier'
