@@ -98,7 +98,9 @@ class Translation(ModelSQL, ModelView):
                 Index(
                     table,
                     (table.type, Index.Equality()),
-                    (table.name, Index.Equality())),
+                    (table.name, Index.Equality()),
+                    (table.lang, Index.Equality()),
+                    (table.fuzzy, Index.Equality())),
                 Index(
                     table,
                     (table.res_id, Index.Equality()),
