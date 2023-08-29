@@ -288,7 +288,7 @@ class Product(StockMixin, object, metaclass=PoolMeta):
             cls.write(*to_write)
 
     def recompute_cost_price_fixed(self, start=None):
-        return self.cost_price
+        return self.cost_price or Decimal(0)
 
     @classmethod
     def _domain_moves_cost(cls):
