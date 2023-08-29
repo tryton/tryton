@@ -8,7 +8,7 @@ from trytond.tests.test_tryton import ModuleTestCase
 class ProductKitTestCase(CompanyTestMixin, ModuleTestCase):
     'Test Product Kit module'
     module = 'product_kit'
-    extras = ['sale', 'purchase']
+    extras = ['sale', 'purchase', 'sale_amendment', 'purchase_amendment']
 
 
 del ModuleTestCase

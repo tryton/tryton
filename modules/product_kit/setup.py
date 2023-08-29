@@ -56,7 +56,9 @@ tests_require = [
     get_require_version('trytond_account_invoice_stock'),
     get_require_version('trytond_company'),
     get_require_version('trytond_purchase'),
+    get_require_version('trytond_purchase_amendment'),
     get_require_version('trytond_sale'),
+    get_require_version('trytond_sale_amendment'),
     get_require_version('trytond_stock'),
     ]
 
