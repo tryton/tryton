@@ -425,6 +425,7 @@ def handle_shipment_exception_mixin(prefix):
 
 
 class AmendmentLineMixin:
+    __slots__ = ()
 
     def _apply_line(self, record, line):
         pool = Pool()
