@@ -247,7 +247,7 @@ class Product(StockMixin, object, metaclass=PoolMeta):
             cls.write(*to_write)
 
     def recompute_cost_price_fixed(self):
-        return self.cost_price
+        return self.cost_price or Decimal(0)
 
     def recompute_cost_price_average(self):
         pool = Pool()
