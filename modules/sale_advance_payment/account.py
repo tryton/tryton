@@ -61,6 +61,10 @@ class Invoice(metaclass=PoolMeta):
 class InvoiceLine(metaclass=PoolMeta):
     __name__ = 'account.invoice.line'
 
+    advance_payment_recalled_lines = fields.One2Many(
+        'account.invoice.line', 'origin', "Advance Payment Recalled Lines",
+        readonly=True)
+
     @classmethod
     def _account_domain(cls, type_):
         domain = super()._account_domain(type_)
@@ -81,3 +85,9 @@ class InvoiceLine(metaclass=PoolMeta):
     def _get_origin(cls):
         return (super(InvoiceLine, cls)._get_origin()
             + ['sale.advance_payment.condition'])
+
+    @classmethod
+    def copy(cls, lines, default=None):
+        default = default.copy() if default is not None else {}
+        default.setdefault('advance_payment_recalled_lines')
+        return super().copy(lines, default=default)

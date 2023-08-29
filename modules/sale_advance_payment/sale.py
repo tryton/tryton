@@ -1,7 +1,7 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 from decimal import Decimal
-from itertools import chain, groupby
+from itertools import chain
 
 from simpleeval import simple_eval
 
@@ -352,25 +352,15 @@ class Sale(metaclass=PoolMeta):
         InvoiceLine = pool.get('account.invoice.line')
 
         recall_lines = []
-        advance_lines = InvoiceLine.search([
-                ('type', '=', 'line'),
-                ('origin', 'in', [str(c)
-                        for c in self.advance_payment_conditions]),
-                ('invoice.state', '=', 'paid'),
-                ])
-        recalled_lines = InvoiceLine.search([
-                ('type', '=', 'line'),
-                ('origin', 'in', [str(al) for al in advance_lines]),
-                ('invoice.state', '!=', 'cancelled'),
-                ],
-            order=[('origin', None)])
-        recalled_lines = {
-            k: list(v) for k, v in groupby(recalled_lines, lambda l: l.origin)}
+        advance_lines = [
+            l
+            for c in self.advance_payment_conditions
+            for l in c.invoice_lines
+            if l.type == 'line' and l.invoice.state == 'paid']
         for advance_line in advance_lines:
             amount = advance_line.amount
-            if advance_line in recalled_lines:
-                for recalled_line in recalled_lines[advance_line]:
-                    amount += recalled_line.amount
+            for recalled_line in advance_line.advance_payment_recalled_lines:
+                amount += recalled_line.amount
             if amount:
                 line = InvoiceLine(
                     invoice=invoice,
