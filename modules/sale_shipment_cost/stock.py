@@ -99,7 +99,7 @@ class ShipmentCostSaleMixin:
         fieldname = 'shipment_cost_method'
         return Sale.fields_get([fieldname])[fieldname]['selection']
 
-    def get_cost_invoice_line(self, invoice):
+    def get_cost_invoice_line(self, invoice, origin=None):
         pool = Pool()
         Currency = pool.get('currency.currency')
         InvoiceLine = pool.get('account.invoice.line')
@@ -111,7 +111,7 @@ class ShipmentCostSaleMixin:
             return
         product = self.carrier.carrier_product
 
-        invoice_line = InvoiceLine(invoice=invoice)
+        invoice_line = InvoiceLine(invoice=invoice, origin=origin)
         invoice_line.on_change_invoice()
         invoice_line.type = 'line'
         invoice_line.quantity = 1  # XXX
@@ -207,8 +207,8 @@ class ShipmentOut(ShipmentCostSaleMixin, metaclass=PoolMeta):
     def _shipment_cost_currency_date(self):
         return self.effective_date
 
-    def get_cost_invoice_line(self, invoice):
-        invoice_line = super().get_cost_invoice_line(invoice)
+    def get_cost_invoice_line(self, invoice, origin=None):
+        invoice_line = super().get_cost_invoice_line(invoice, origin=origin)
         if invoice_line:
             invoice_line.cost_shipments = [self]
         return invoice_line

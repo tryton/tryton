@@ -159,8 +159,8 @@ class Carriage_Sale(ShipmentCostSaleMixin, metaclass=PoolMeta):
     def _shipment_cost_currency_date(self):
         return self.shipment.effective_date
 
-    def get_cost_invoice_line(self, invoice):
-        invoice_line = super().get_cost_invoice_line(invoice)
+    def get_cost_invoice_line(self, invoice, origin=None):
+        invoice_line = super().get_cost_invoice_line(invoice, origin=origin)
         if invoice_line:
             invoice_line.cost_shipment_carriages = [self]
         return invoice_line

@@ -414,9 +414,8 @@ class Line(metaclass=PoolMeta):
                 if (shipment.state == 'done'
                         and shipment.id not in shipment_cost_invoiced):
                     invoice_line = shipment.get_cost_invoice_line(
-                        self.sale._get_invoice_sale())
+                        self.sale._get_invoice_sale(), origin=self)
                     if invoice_line:
-                        invoice_line.origin = self
                         lines.append(invoice_line)
                         shipment_cost_invoiced.append(shipment.id)
         return lines
