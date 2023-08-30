@@ -101,7 +101,7 @@ class WinForm(NoModal, InfoBar):
             self.but_new.set_always_show_image(True)
             self.but_new.set_accel_path('<tryton>/Form/New', self.accel_group)
 
-        if self.save_current:
+        if self.save_current and not readonly:
             self.but_ok = Gtk.Button(label=_('_Save'), use_underline=True)
             self.but_ok.set_image(common.IconFactory.get_image(
                     'tryton-save', Gtk.IconSize.BUTTON))
@@ -353,7 +353,7 @@ class WinForm(NoModal, InfoBar):
         deletable = True
         if self.screen.current_record:
             deletable = self.screen.current_record.deletable
-        readonly = self.screen.group.readonly
+        readonly = self.screen.readonly or self.screen.group.readonly
         if position >= 1:
             name = str(position)
             if self.domain is not None:
@@ -401,7 +401,7 @@ class WinForm(NoModal, InfoBar):
         cancel_responses = [
             Gtk.ResponseType.CANCEL, Gtk.ResponseType.DELETE_EVENT]
         self.screen.current_view.set_value()
-        readonly = self.screen.group.readonly
+        readonly = self.screen.readonly or self.screen.group.readonly
         if (response_id not in cancel_responses
                 and not readonly
                 and self.screen.current_record is not None):
