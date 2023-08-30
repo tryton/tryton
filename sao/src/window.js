@@ -179,8 +179,7 @@
                 }
             });
 
-            var readonly = (this.screen.attributes.readonly ||
-                    this.screen.group.readonly);
+            var readonly = this.screen.readonly || this.screen.group.readonly;
 
             this.but_ok = null;
             this.but_new = null;
@@ -223,7 +222,7 @@
                 }));
             }
 
-            if (this.save_current) {
+            if (this.save_current && !readonly) {
                 this.but_ok = jQuery('<button/>', {
                     'class': 'btn btn-primary',
                     'type': 'submit',
@@ -396,7 +395,7 @@
             var name = '_';
             var access = Sao.common.MODELACCESS.get(this.screen.model_name);
             var deletable = this.screen.deletable;
-            var readonly = this.screen.group.readonly || this.screen.readonly;
+            var readonly = this.screen.readonly || this.screen.group.readonly;
             if (position >= 1) {
                 name = position;
                 if (this.domain) {
@@ -486,7 +485,7 @@
         response: function(response_id) {
             var result;
             this.screen.current_view.set_value();
-            var readonly = this.screen.group.readonly;
+            var readonly = this.screen.readonly || this.screen.group.readonly;
             if (~['RESPONSE_OK', 'RESPONSE_ACCEPT'].indexOf(response_id) &&
                     !readonly &&
                     this.screen.current_record) {
