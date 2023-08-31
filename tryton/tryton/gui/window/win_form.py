@@ -76,11 +76,11 @@ class WinForm(NoModal, InfoBar):
 
         self._initial_value = None
         self.view_type = view_type
-        if view_type == 'form':
+        if view_type == 'form' and not readonly:
             if new:
                 label, icon = _("Delete"), 'tryton-delete'
             else:
-                label, icon = _("Cancel"), 'tryton-cancel'
+                label, icon = _("Discard changes"), 'tryton-cancel'
                 record = self.screen.current_record
                 self._initial_value = record.get_on_change_value()
                 if record.parent and record.parent_name in record.group.fields:
@@ -94,15 +94,20 @@ class WinForm(NoModal, InfoBar):
             self.but_cancel.set_always_show_image(True)
 
         if new and self.many:
+            if self.save_current and not readonly:
+                label = _("Save and New")
+            else:
+                label = _("Add and New")
             self.but_new = self.win.add_button(
-                set_underline(_("New")), Gtk.ResponseType.ACCEPT)
+                set_underline(label), Gtk.ResponseType.ACCEPT)
             self.but_new.set_image(common.IconFactory.get_image(
                     'tryton-create', Gtk.IconSize.BUTTON))
             self.but_new.set_always_show_image(True)
             self.but_new.set_accel_path('<tryton>/Form/New', self.accel_group)
 
         if self.save_current and not readonly:
-            self.but_ok = Gtk.Button(label=_('_Save'), use_underline=True)
+            self.but_ok = Gtk.Button(
+                label=set_underline(_("Save")), use_underline=True)
             self.but_ok.set_image(common.IconFactory.get_image(
                     'tryton-save', Gtk.IconSize.BUTTON))
             self.but_ok.set_always_show_image(True)
@@ -110,11 +115,15 @@ class WinForm(NoModal, InfoBar):
             self.but_ok.set_can_default(True)
             self.but_ok.show()
             self.win.add_action_widget(self.but_ok, Gtk.ResponseType.OK)
-            if not new:
-                self.but_ok.props.sensitive = False
         else:
+            if readonly or view_type == 'tree':
+                label = _("Close")
+            elif new:
+                label = _("Add")
+            else:
+                label = _("Apply changes")
             self.but_ok = self.win.add_button(
-                set_underline(_("OK")), Gtk.ResponseType.OK)
+                set_underline(label), Gtk.ResponseType.OK)
             self.but_ok.set_image(common.IconFactory.get_image(
                     'tryton-ok', Gtk.IconSize.BUTTON))
             self.but_ok.set_always_show_image(True)
@@ -345,7 +354,6 @@ class WinForm(NoModal, InfoBar):
         win.show()
 
     def record_message(self, position, size, *args):
-        self.set_buttons_sensitive()
         if self.view_type != 'tree':
             return
         name = '_'
@@ -380,16 +388,7 @@ class WinForm(NoModal, InfoBar):
         self.label.set_text(line)
 
     def record_modified(self, *args):
-        self.set_buttons_sensitive()
         self.info_bar_refresh()
-
-    def set_buttons_sensitive(self):
-        modified = self.screen.modified()
-        # Keep sensible as change could have been trigger by a Many2One edition
-        sensitive = modified or self.but_ok.props.sensitive
-        self.but_ok.props.sensitive = sensitive
-        self.win.set_default_response(
-            Gtk.ResponseType.OK if sensitive else Gtk.ResponseType.CANCEL)
 
     def close(self, widget):
         widget.stop_emission_by_name('close')

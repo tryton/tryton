@@ -186,12 +186,12 @@
 
             this._initial_value = null;
             this.view_type = view_type;
-            if (view_type == 'form') {
-                var button_text;
+            if ((view_type == 'form') && !readonly) {
+                let label;
                 if (kwargs.new_) {
-                    button_text = Sao.i18n.gettext('Delete');
+                    label = Sao.i18n.gettext('Delete');
                 } else {
-                    button_text = Sao.i18n.gettext('Cancel');
+                    label = Sao.i18n.gettext("Discard changes");
                     var record = this.screen.current_record;
                     this._initial_value = record.get_on_change_value();
                     if (record.group.parent &&
@@ -206,37 +206,49 @@
                 dialog.footer.append(jQuery('<button/>', {
                     'class': 'btn btn-link',
                     'type': 'button',
-                    'title': button_text,
-                }).text(button_text).click(() => {
+                    'title': label,
+                }).text(label).click(() => {
                     this.response('RESPONSE_CANCEL');
                 }));
             }
 
             if (kwargs.new_ && this.many) {
+                let label;
+                if (this.save_current && !readonly) {
+                    label = Sao.i18n.gettext("Save and New");
+                } else {
+                    label = Sao.i18n.gettext("Add and New");
+                }
                 dialog.footer.append(jQuery('<button/>', {
                     'class': 'btn btn-default',
                     'type': 'button',
-                    'title': Sao.i18n.gettext("New"),
-                }).text(Sao.i18n.gettext('New')).click(() => {
+                    'title': label,
+                }).text(label).click(() => {
                     this.response('RESPONSE_ACCEPT');
                 }));
             }
 
             if (this.save_current && !readonly) {
+                let label = Sao.i18n.gettext("Save");
                 this.but_ok = jQuery('<button/>', {
                     'class': 'btn btn-primary',
                     'type': 'submit',
-                    'title': Sao.i18n.gettext("Save"),
-                }).text(Sao.i18n.gettext('Save')).appendTo(dialog.footer);
-                if (!kwargs.new_) {
-                    this.but_ok.addClass('disabled');
-                }
+                    'title': label,
+                }).text(label).appendTo(dialog.footer);
             } else {
+                let label;
+                if (readonly || (view_type == 'tree')) {
+                    label = Sao.i18n.gettext("Close");
+                } else if (kwargs.new_) {
+                    label = Sao.i18n.gettext("Add");
+                } else {
+                    label = Sao.i18n.gettext("Apply changes");
+                }
                 this.but_ok = jQuery('<button/>', {
                     'class': 'btn btn-primary',
                     'type': 'submit',
-                    'title': Sao.i18n.gettext("OK"),
-                }).text(Sao.i18n.gettext('OK')).appendTo(dialog.footer);
+                    'title': label,
+                }).text(label).appendTo(dialog.footer);
             }
             dialog.content.submit(e => {
                 e.preventDefault();
@@ -388,7 +400,6 @@
             });
         },
         record_message: function(position, size) {
-            this.set_buttons_sensitive();
             if (this.view_type != 'tree') {
                 return;
             }
@@ -420,13 +431,7 @@
             this.label.text(message).attr('title', message);
         },
         record_modified: function() {
-            this.set_buttons_sensitive();
             this.info_bar.refresh();
-        },
-        set_buttons_sensitive: function() {
-            if (this.but_ok.hasClass('disabled') && this.screen.modified()) {
-                this.but_ok.removeClass('disabled');
-            }
         },
         add: function() {
             var domain = jQuery.extend([], this.domain);
