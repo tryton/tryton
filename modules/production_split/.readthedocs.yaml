@@ -3,5 +3,8 @@ build:
   os: ubuntu-22.04
   tools:
     python: "3"
+python:
+  install:
+    - requirements: modules/trytond_production_split/doc/requirements-doc.txt
 sphinx:
   configuration: modules/production_split/doc/conf.py

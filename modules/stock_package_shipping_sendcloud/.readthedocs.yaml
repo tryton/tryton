@@ -3,5 +3,8 @@ build:
   os: ubuntu-22.04
   tools:
     python: "3"
+python:
+  install:
+    - requirements: modules/trytond_stock_package_shipping_sendcloud/doc/requirements-doc.txt
 sphinx:
   configuration: modules/stock_package_shipping_sendcloud/doc/conf.py

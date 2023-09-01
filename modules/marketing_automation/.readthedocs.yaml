@@ -3,5 +3,8 @@ build:
   os: ubuntu-22.04
   tools:
     python: "3"
+python:
+  install:
+    - requirements: modules/trytond_marketing_automation/doc/requirements-doc.txt
 sphinx:
   configuration: modules/marketing_automation/doc/conf.py

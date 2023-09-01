@@ -60,10 +60,3 @@ Contents
    modules/index
    tutorial/index
    releases
-
-Indices, glossary and tables
-============================
-
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`

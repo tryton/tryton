@@ -3,5 +3,8 @@ build:
   os: ubuntu-22.04
   tools:
     python: "3"
+python:
+  install:
+    - requirements: modules/trytond_sale_promotion_coupon/doc/requirements-doc.txt
 sphinx:
   configuration: modules/sale_promotion_coupon/doc/conf.py

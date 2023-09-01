@@ -3,5 +3,8 @@ build:
   os: ubuntu-22.04
   tools:
     python: "3"
+python:
+  install:
+    - requirements: modules/trytond_stock_supply_production/doc/requirements-doc.txt
 sphinx:
   configuration: modules/stock_supply_production/doc/conf.py

@@ -27,9 +27,10 @@ def get_info():
     info = dict(config.items('tryton'))
 
     result = subprocess.run(
-        [sys.executable, 'setup.py', '--name'],
+        [sys.executable, 'setup.py', '--name', '--description'],
         stdout=subprocess.PIPE, check=True, cwd=module_dir)
-    info['name'] = result.stdout.decode('utf-8').strip()
+    info['name'], info['description'] = (
+        result.stdout.decode('utf-8').strip().splitlines())
 
     result = subprocess.run(
         [sys.executable, 'setup.py', '--version'],
@@ -40,8 +41,14 @@ def get_info():
     minor_version = int(minor_version)
     if minor_version % 2:
         info['series'] = 'latest'
+        {%- if not cookiecutter.prefix %}
+        info['branch'] = 'branch/default'
+        {%- endif %}
     else:
         info['series'] = '.'.join(version.split('.', 2)[:2])
+        {%- if not cookiecutter.prefix %}
+        info['branch'] = 'branch/' + info['series']
+        {%- endif %}
 
     for key in {'depends', 'extras_depend'}:
         info[key] = info.get(key, '').strip().splitlines()
@@ -53,12 +60,27 @@ def get_info():
 
 info = get_info()
 
+html_theme = 'sphinx_book_theme'
+{%- if not cookiecutter.prefix %}
+html_theme_options = {
+    'repository_provider': 'gitlab',
+    'repository_url': 'https://code.tryton.org/tryton',
+    'repository_branch': info['branch'],
+    'use_source_button': True,
+    'use_edit_page_button': True,
+    'use_repository_button': True,
+    'use_download_button': False,
+    'path_to_docs': 'modules/{{ cookiecutter.module_name }}/doc',
+    }
+{%- endif %}
+html_title = info['description']
 master_doc = 'index'
 project = info['name']
 release = version = info['series']
 default_role = 'ref'
 highlight_language = 'none'
 extensions = [
+    'sphinx_copybutton',
     'sphinx.ext.intersphinx',
     ]
 intersphinx_mapping = {

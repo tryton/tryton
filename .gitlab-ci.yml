@@ -57,6 +57,7 @@ documentation:
     paths:
       - .cache/pip/http
   before_script:
+    - pip install -r "${PACKAGE}/${DOC_DIR}/requirements-doc.txt"
     - pip install sphinx-lint rstcheck[sphinx]
   script:
     - cd "${PACKAGE}"

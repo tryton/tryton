@@ -3,5 +3,8 @@ build:
   os: ubuntu-22.04
   tools:
     python: "3"
+python:
+  install:
+    - requirements: modules/trytond_account_payment_clearing/doc/requirements-doc.txt
 sphinx:
   configuration: modules/account_payment_clearing/doc/conf.py

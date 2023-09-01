@@ -3,6 +3,13 @@ build:
   os: ubuntu-22.04
   tools:
     python: "3"
+python:
+  install:
+    {%- if not cookiecutter.prefix %}
+    - requirements: modules/{{ cookiecutter.package_name }}/doc/requirements-doc.txt
+    {%- else %}
+    - requirements: doc/requirements-doc.txt
+    {%- endif %}
 sphinx:
   {%- if not cookiecutter.prefix %}
   configuration: modules/{{ cookiecutter.module_name }}/doc/conf.py

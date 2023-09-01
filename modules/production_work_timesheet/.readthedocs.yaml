@@ -3,5 +3,8 @@ build:
   os: ubuntu-22.04
   tools:
     python: "3"
+python:
+  install:
+    - requirements: modules/trytond_production_work_timesheet/doc/requirements-doc.txt
 sphinx:
   configuration: modules/production_work_timesheet/doc/conf.py

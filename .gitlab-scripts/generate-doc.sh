@@ -5,6 +5,10 @@ OUTPUTDIR=`realpath "${1}"`
 mkdir -p "${OUTPUTDIR}"
 export DOC_BASE_URL=$OUTPUTDIR
 
+find . -name 'cookiecutter*' -prune -o -path '*/doc/requirements-doc.txt' -print | while read path; do
+    pip install -r "${path}"
+done
+
 (find . -name 'cookiecutter*' -prune -o -path '*/doc/conf.py' -print | while read path; do
     path=`dirname "${path}"`
     path=`dirname "${path}"`
