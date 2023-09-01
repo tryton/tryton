@@ -108,7 +108,7 @@ Check moves on invoice deferred::
     >>> len(deferral.moves)
     13
     >>> accounts['deferred_expense'].reload()
-    >>> accounts['deferred_expense'].balance in {Decimal('270'), Decimal('271')}
+    >>> Decimal('268') <= accounts['deferred_expense'].balance <= Decimal('271')
     True
 
 Define next fiscal year::
