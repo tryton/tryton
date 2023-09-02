@@ -168,6 +168,8 @@ class SaleShipmentCost(metaclass=PoolMeta):
                 carrier = None
             # Use id to get proper context
             self.carrier = carrier.id if carrier else None
+            if not self.carrier:
+                self.shipment_cost_method = None
 
 
 class Line(metaclass=PoolMeta):
