@@ -5,6 +5,6 @@ build:
     python: "3"
 python:
   install:
-    - requirements: modules/trytond_stock_package_shipping_mygls/doc/requirements-doc.txt
+    - requirements: modules/stock_package_shipping_mygls/doc/requirements-doc.txt
 sphinx:
   configuration: modules/stock_package_shipping_mygls/doc/conf.py

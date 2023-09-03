@@ -5,6 +5,6 @@ build:
     python: "3"
 python:
   install:
-    - requirements: modules/trytond_project_invoice/doc/requirements-doc.txt
+    - requirements: modules/project_invoice/doc/requirements-doc.txt
 sphinx:
   configuration: modules/project_invoice/doc/conf.py

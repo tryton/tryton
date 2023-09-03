@@ -5,6 +5,6 @@ build:
     python: "3"
 python:
   install:
-    - requirements: modules/trytond_account_credit_limit/doc/requirements-doc.txt
+    - requirements: modules/account_credit_limit/doc/requirements-doc.txt
 sphinx:
   configuration: modules/account_credit_limit/doc/conf.py

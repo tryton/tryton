@@ -6,7 +6,7 @@ build:
 python:
   install:
     {%- if not cookiecutter.prefix %}
-    - requirements: modules/{{ cookiecutter.package_name }}/doc/requirements-doc.txt
+    - requirements: modules/{{ cookiecutter.module_name }}/doc/requirements-doc.txt
     {%- else %}
     - requirements: doc/requirements-doc.txt
     {%- endif %}

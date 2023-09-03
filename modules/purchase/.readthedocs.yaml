@@ -5,6 +5,6 @@ build:
     python: "3"
 python:
   install:
-    - requirements: modules/trytond_purchase/doc/requirements-doc.txt
+    - requirements: modules/purchase/doc/requirements-doc.txt
 sphinx:
   configuration: modules/purchase/doc/conf.py

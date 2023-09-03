@@ -5,6 +5,6 @@ build:
     python: "3"
 python:
   install:
-    - requirements: modules/trytond_edocument_unece/doc/requirements-doc.txt
+    - requirements: modules/edocument_unece/doc/requirements-doc.txt
 sphinx:
   configuration: modules/edocument_unece/doc/conf.py

@@ -5,6 +5,6 @@ build:
     python: "3"
 python:
   install:
-    - requirements: modules/trytond_purchase_request_quotation/doc/requirements-doc.txt
+    - requirements: modules/purchase_request_quotation/doc/requirements-doc.txt
 sphinx:
   configuration: modules/purchase_request_quotation/doc/conf.py

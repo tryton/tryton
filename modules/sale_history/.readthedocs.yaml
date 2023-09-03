@@ -5,6 +5,6 @@ build:
     python: "3"
 python:
   install:
-    - requirements: modules/trytond_sale_history/doc/requirements-doc.txt
+    - requirements: modules/sale_history/doc/requirements-doc.txt
 sphinx:
   configuration: modules/sale_history/doc/conf.py

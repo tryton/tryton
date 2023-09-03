@@ -5,6 +5,6 @@ build:
     python: "3"
 python:
   install:
-    - requirements: modules/trytond_dashboard/doc/requirements-doc.txt
+    - requirements: modules/dashboard/doc/requirements-doc.txt
 sphinx:
   configuration: modules/dashboard/doc/conf.py

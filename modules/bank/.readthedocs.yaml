@@ -5,6 +5,6 @@ build:
     python: "3"
 python:
   install:
-    - requirements: modules/trytond_bank/doc/requirements-doc.txt
+    - requirements: modules/bank/doc/requirements-doc.txt
 sphinx:
   configuration: modules/bank/doc/conf.py

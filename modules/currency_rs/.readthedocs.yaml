@@ -5,6 +5,6 @@ build:
     python: "3"
 python:
   install:
-    - requirements: modules/trytond_currency_rs/doc/requirements-doc.txt
+    - requirements: modules/currency_rs/doc/requirements-doc.txt
 sphinx:
   configuration: modules/currency_rs/doc/conf.py

@@ -5,6 +5,6 @@ build:
     python: "3"
 python:
   install:
-    - requirements: modules/trytond_carrier_percentage/doc/requirements-doc.txt
+    - requirements: modules/carrier_percentage/doc/requirements-doc.txt
 sphinx:
   configuration: modules/carrier_percentage/doc/conf.py

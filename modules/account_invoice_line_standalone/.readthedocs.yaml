@@ -5,6 +5,6 @@ build:
     python: "3"
 python:
   install:
-    - requirements: modules/trytond_account_invoice_line_standalone/doc/requirements-doc.txt
+    - requirements: modules/account_invoice_line_standalone/doc/requirements-doc.txt
 sphinx:
   configuration: modules/account_invoice_line_standalone/doc/conf.py

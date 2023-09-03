@@ -5,6 +5,6 @@ build:
     python: "3"
 python:
   install:
-    - requirements: modules/trytond_account_fr_chorus/doc/requirements-doc.txt
+    - requirements: modules/account_fr_chorus/doc/requirements-doc.txt
 sphinx:
   configuration: modules/account_fr_chorus/doc/conf.py

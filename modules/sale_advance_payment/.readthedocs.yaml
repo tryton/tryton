@@ -5,6 +5,6 @@ build:
     python: "3"
 python:
   install:
-    - requirements: modules/trytond_sale_advance_payment/doc/requirements-doc.txt
+    - requirements: modules/sale_advance_payment/doc/requirements-doc.txt
 sphinx:
   configuration: modules/sale_advance_payment/doc/conf.py

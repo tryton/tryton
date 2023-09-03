@@ -5,6 +5,6 @@ build:
     python: "3"
 python:
   install:
-    - requirements: modules/trytond_analytic_sale/doc/requirements-doc.txt
+    - requirements: modules/analytic_sale/doc/requirements-doc.txt
 sphinx:
   configuration: modules/analytic_sale/doc/conf.py

@@ -5,6 +5,6 @@ build:
     python: "3"
 python:
   install:
-    - requirements: modules/trytond_stock_shipment_cost_weight/doc/requirements-doc.txt
+    - requirements: modules/stock_shipment_cost_weight/doc/requirements-doc.txt
 sphinx:
   configuration: modules/stock_shipment_cost_weight/doc/conf.py

@@ -5,6 +5,6 @@ build:
     python: "3"
 python:
   install:
-    - requirements: modules/trytond_google_maps/doc/requirements-doc.txt
+    - requirements: modules/google_maps/doc/requirements-doc.txt
 sphinx:
   configuration: modules/google_maps/doc/conf.py

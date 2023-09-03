@@ -5,6 +5,6 @@ build:
     python: "3"
 python:
   install:
-    - requirements: modules/trytond_product_classification_taxonomic/doc/requirements-doc.txt
+    - requirements: modules/product_classification_taxonomic/doc/requirements-doc.txt
 sphinx:
   configuration: modules/product_classification_taxonomic/doc/conf.py

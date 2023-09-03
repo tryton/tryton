@@ -5,6 +5,6 @@ build:
     python: "3"
 python:
   install:
-    - requirements: modules/trytond_account_dunning_letter/doc/requirements-doc.txt
+    - requirements: modules/account_dunning_letter/doc/requirements-doc.txt
 sphinx:
   configuration: modules/account_dunning_letter/doc/conf.py

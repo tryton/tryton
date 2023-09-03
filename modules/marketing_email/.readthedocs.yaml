@@ -5,6 +5,6 @@ build:
     python: "3"
 python:
   install:
-    - requirements: modules/trytond_marketing_email/doc/requirements-doc.txt
+    - requirements: modules/marketing_email/doc/requirements-doc.txt
 sphinx:
   configuration: modules/marketing_email/doc/conf.py

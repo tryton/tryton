@@ -5,6 +5,6 @@ build:
     python: "3"
 python:
   install:
-    - requirements: modules/trytond_web_shortener/doc/requirements-doc.txt
+    - requirements: modules/web_shortener/doc/requirements-doc.txt
 sphinx:
   configuration: modules/web_shortener/doc/conf.py

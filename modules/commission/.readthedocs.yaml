@@ -5,6 +5,6 @@ build:
     python: "3"
 python:
   install:
-    - requirements: modules/trytond_commission/doc/requirements-doc.txt
+    - requirements: modules/commission/doc/requirements-doc.txt
 sphinx:
   configuration: modules/commission/doc/conf.py
