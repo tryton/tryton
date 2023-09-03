@@ -256,6 +256,7 @@ check-template-modules:
         - ${PACKAGE}/doc/**/*
         - ${PACKAGE}/tryton.cfg
         - ${PACKAGE}/CHANGELOG
+        - ${PACKAGE}/.readthedocs.yaml
       allow_failure: true
 
 trigger-doc-build-readthedocs:
