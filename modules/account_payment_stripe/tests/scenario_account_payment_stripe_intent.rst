@@ -85,6 +85,7 @@ Register card::
     ...         })
     >>> setup_intent = stripe.SetupIntent.confirm(
     ...     customer.stripe_setup_intent_id,
+    ...     return_url='http://localhost/',
     ...     payment_method=payment_method)
     >>> cron_update_intent, = Cron.find([
     ...     ('method', '=', 'account.payment.stripe.customer|stripe_intent_update'),
