@@ -172,16 +172,16 @@ this repository contains the full copyright notices and license terms. -->
             <field name="group" ref="account.group_account_admin"/>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="True"/>
-            <field name="perm_create" eval="True"/>
-            <field name="perm_delete" eval="True"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
         </record>
         <record model="ir.model.access" id="access_payment_group_payment">
             <field name="model" search="[('model', '=', 'account.payment.group')]"/>
             <field name="group" ref="group_payment"/>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="True"/>
-            <field name="perm_create" eval="True"/>
-            <field name="perm_delete" eval="True"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
         </record>
 
         <record model="ir.model.button" id="payment_group_succeed_button">
