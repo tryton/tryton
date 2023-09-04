@@ -223,11 +223,6 @@ class Screen:
                     ofields[symbol] = fields[symbol]
             fields = ofields
 
-        if 'active' in view_tree['fields']:
-            self.screen_container.but_active.show()
-        else:
-            self.screen_container.but_active.hide()
-
         # Add common fields
         for name, string, type_ in (
                 ('id', _('ID'), 'integer'),
@@ -295,7 +290,8 @@ class Screen:
             self.offset = 0
 
         context = self.context
-        if self.screen_container.but_active.get_active():
+        if (self.screen_container.but_active.props.visible
+                and self.screen_container.but_active.get_active()):
             context['active_test'] = False
         ids = []
         while True:
@@ -352,7 +348,8 @@ class Screen:
         else:
             domain = self.domain
 
-        if self.screen_container.but_active.get_active():
+        if (self.screen_container.but_active.props.visible
+                and self.screen_container.but_active.get_active()):
             if domain:
                 domain = [domain, ('active', '=', False)]
             else:
@@ -973,6 +970,15 @@ class Screen:
                 bool(self.group
                     or (self.current_view.view_type != 'form')
                     or self.current_record))
+            if self.current_view.view_type == 'tree':
+                view_tree = self.fields_view_tree.get(
+                    self.current_view.view_id, {})
+                if 'active' in view_tree['fields']:
+                    self.screen_container.but_active.show()
+                else:
+                    self.screen_container.but_active.hide()
+            else:
+                self.screen_container.but_active.hide()
             if set_cursor:
                 self.set_cursor(reset_view=False)
         self.set_tree_state()
