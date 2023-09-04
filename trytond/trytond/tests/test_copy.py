@@ -169,6 +169,14 @@ class CopyTestCase(unittest.TestCase):
 
         self.assertSequenceEqual(record_copy.many2many, [target])
 
+    @with_transaction()
+    def test_copy_empty(self):
+        "Test copy without records"
+        pool = Pool()
+        Copy = pool.get('test.copy')
+
+        self.assertEqual(Copy.copy([]), [])
+
 
 def suite():
     return unittest.TestLoader().loadTestsFromTestCase(CopyTestCase)

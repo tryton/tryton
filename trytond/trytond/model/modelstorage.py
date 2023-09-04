@@ -381,7 +381,8 @@ class ModelStorage(Model):
                             to_write.append(id2new_records[data['id']])
                             to_write.append(
                                 convert_data(fields_translate, data))
-                        cls.write(*to_write)
+                        if to_write:
+                            cls.write(*to_write)
         return new_records
 
     @classmethod
