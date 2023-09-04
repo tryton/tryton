@@ -296,6 +296,14 @@ class CopyTestCase(unittest.TestCase):
         new_record, = TestAccess.copy([record])
         self.assertNotEqual(new_record.id, record.id)
 
+    @with_transaction()
+    def test_copy_empty(self):
+        "Test copy without records"
+        pool = Pool()
+        Copy = pool.get('test.copy')
+
+        self.assertEqual(Copy.copy([]), [])
+
 
 class CopyTranslationTestCase(TranslationTestCase):
     "Test copy translation"
@@ -339,3 +347,11 @@ class CopyTranslationTestCase(TranslationTestCase):
         with Transaction().set_context(language=self.other_language):
             record_copies = Translate.browse(record_copies)
             self.assertEqual({r.name for r in record_copies}, {"Bar"})
+
+    @with_transaction()
+    def test_copy_empty(self):
+        "Test copy without records"
+        pool = Pool()
+        Copy = pool.get('test.copy.translate')
+
+        self.assertEqual(Copy.copy([]), [])
