@@ -1037,7 +1037,8 @@
             var domain = this.search_domain(search_string, true);
 
             var context = this.context;
-            if (this.screen_container.but_active.hasClass('active')) {
+            if ((this.screen_container.but_active.css('display') != 'none') &&
+                this.screen_container.but_active.hasClass('active')) {
                 context.active_test = false;
             }
             const search = () => {
@@ -1118,7 +1119,8 @@
             } else {
                 domain = this.domain;
             }
-            if (this.screen_container.but_active.hasClass('active')) {
+            if ((this.screen_container.but_active.css('display') != 'none') &&
+                this.screen_container.but_active.hasClass('active')) {
                 if (!jQuery.isEmptyObject(domain)) {
                     domain = [domain, ['active', '=', false]];
                 } else {
@@ -1337,6 +1339,17 @@
                             view.el.parent().length)) {
                         deferreds.push(view.display());
                     }
+                }
+                if (this.current_view.view_type == 'tree') {
+                    let view_tree = this.fields_view_tree[
+                        this.current_view.view_id] || {};
+                    if ('active' in view_tree.fields) {
+                        this.screen_container.but_active.show();
+                    } else {
+                        this.screen_container.but_active.hide();
+                    }
+                } else {
+                    this.screen_container.but_active.hide();
                 }
             }
             return jQuery.when.apply(jQuery, deferreds).then(
@@ -1763,12 +1776,6 @@
                     }
                 });
                 fields = dom_fields;
-            }
-
-            if ('active' in view_tree.fields) {
-                this.screen_container.but_active.show();
-            } else {
-                this.screen_container.but_active.hide();
             }
 
             // Add common fields
