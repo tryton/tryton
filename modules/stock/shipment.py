@@ -2180,6 +2180,8 @@ class ShipmentInternal(Workflow, ModelSQL, ModelView):
                 if m.state != 'done'
                 and m.from_location != shipment.transit_location
                 and m.to_location != shipment.transit_location]
+            if not moves:
+                continue
             Move.copy(moves, default={
                     'from_location': shipment.transit_location.id,
                     'planned_date': shipment.planned_date,
