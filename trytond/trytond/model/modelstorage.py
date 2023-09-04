@@ -496,7 +496,8 @@ class ModelStorage(Model):
                             to_write.append(
                                 convert_data(
                                     fields_translate, data, default_values))
-                        cls.write(*to_write)
+                        if to_write:
+                            cls.write(*to_write)
         return new_records
 
     @classmethod
