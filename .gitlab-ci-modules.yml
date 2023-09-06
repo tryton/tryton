@@ -1759,6 +1759,28 @@ test-modules-google_maps-postgresql:
     PACKAGE: modules/google_maps
     TAG_PATTERN: '/^google_maps-.*/'
 
+check-doc-modules-inbound_email:
+  extends: .check-doc
+  variables:
+    PACKAGE: modules/inbound_email
+
+trigger-doc-build-modules-inbound_email:
+  extends: .trigger-doc-build
+  variables:
+    PACKAGE: modules/inbound_email
+
+test-modules-inbound_email-sqlite:
+  extends: .test-sqlite
+  variables:
+    PACKAGE: modules/inbound_email
+    TAG_PATTERN: '/^inbound_email-.*/'
+
+test-modules-inbound_email-postgresql:
+  extends: .test-postgresql
+  variables:
+    PACKAGE: modules/inbound_email
+    TAG_PATTERN: '/^inbound_email-.*/'
+
 check-doc-modules-incoterm:
   extends: .check-doc
   variables:

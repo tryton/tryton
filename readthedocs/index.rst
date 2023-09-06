@@ -110,6 +110,9 @@ Referential
 Administration
 ^^^^^^^^^^^^^^
 
+`Inbound Email </projects/modules-inbound-email/en/latest>`_
+   Receive email.
+
 `Resource </projects/server/en/latest/modules/res>`_
     Manage users and groups.
 

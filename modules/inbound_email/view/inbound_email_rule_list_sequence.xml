@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tree sequence="sequence">
+    <field name="inbox" expand="1"/>
+    <field name="origin" expand="1"/>
+    <field name="destination" expand="1"/>
+    <field name="subject" expand="1"/>
+    <field name="attachment_name" expand="1"/>
+    <field name="action" expand="2"/>
+</tree>

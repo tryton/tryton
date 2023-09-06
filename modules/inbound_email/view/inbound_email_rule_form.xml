@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<form>
+    <label name="inbox"/>
+    <field name="inbox" colspan="3"/>
+
+    <label name="origin"/>
+    <field name="origin"/>
+    <label name="destination"/>
+    <field name="destination"/>
+
+    <label name="subject"/>
+    <field name="subject" colspan="3"/>
+
+    <label name="attachment_name"/>
+    <field name="attachment_name" colspan="3"/>
+
+    <group name="headers" expandable="0" col="1" colspan="4">
+        <field name="headers"/>
+    </group>
+
+    <label name="action"/>
+    <field name="action" colspan="3"/>
+</form>

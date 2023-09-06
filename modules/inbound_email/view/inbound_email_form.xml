@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<form col="2">
+    <label name="inbox"/>
+    <field name="inbox"/>
+
+    <label name="id"/>
+    <field name="id"/>
+
+    <label name="data_type"/>
+    <field name="data_type"/>
+
+    <label name="data"/>
+    <field name="data"/>
+
+    <label name="rule"/>
+    <field name="rule"/>
+
+    <label name="result"/>
+    <field name="result"/>
+
+    <button name="process" colspan="2"/>
+</form>

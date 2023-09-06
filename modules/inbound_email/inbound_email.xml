@@ -1,0 +1,155 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data>
+        <menuitem
+            parent="ir.menu_administration"
+            name="Inbound Email"
+            sequence="50"
+            id="menu_inbound_email"/>
+
+        <record model="ir.ui.view" id="inbound_email_inbox_view_form">
+            <field name="model">inbound.email.inbox</field>
+            <field name="type">form</field>
+            <field name="name">inbound_email_inbox_form</field>
+        </record>
+
+        <record model="ir.ui.view" id="inbound_email_inbox_view_list">
+            <field name="model">inbound.email.inbox</field>
+            <field name="type">tree</field>
+            <field name="name">inbound_email_inbox_list</field>
+        </record>
+
+        <record model="ir.action.act_window" id="act_inbound_email_inbox_form">
+            <field name="name">Inbox</field>
+            <field name="res_model">inbound.email.inbox</field>
+        </record>
+        <record model="ir.action.act_window.view" id="act_inbound_email_inbox_form_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="inbound_email_inbox_view_list"/>
+            <field name="act_window" ref="act_inbound_email_inbox_form"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_inbound_email_inbox_form_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="inbound_email_inbox_view_form"/>
+            <field name="act_window" ref="act_inbound_email_inbox_form"/>
+        </record>
+        <menuitem
+            parent="menu_inbound_email"
+            action="act_inbound_email_inbox_form"
+            sequence="10"
+            id="menu_inbound_email_inbox_form"/>
+
+        <record model="ir.model.button" id="inbound_email_inbox_new_identifier_button">
+            <field name="name">new_identifier</field>
+            <field name="string">New URL</field>
+            <field name="confirm">This action will make the previous URL unusable. Do you want to continue?</field>
+            <field name="model" search="[('model', '=', 'inbound.email.inbox')]"/>
+        </record>
+
+        <record model="ir.model.access" id="access_inbound_email_inbox">
+            <field name="model" search="[('model', '=', 'inbound.email.inbox')]"/>
+            <field name="perm_read" eval="False"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_inbound_email_inbox_group_admin">
+            <field name="model" search="[('model', '=', 'inbound.email.inbox')]"/>
+            <field name="group" ref="res.group_admin"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
+
+        <record model="ir.ui.view" id="inbound_email_view_form">
+            <field name="model">inbound.email</field>
+            <field name="type">form</field>
+            <field name="name">inbound_email_form</field>
+        </record>
+
+        <record model="ir.ui.view" id="inbound_email_view_list">
+            <field name="model">inbound.email</field>
+            <field name="type">tree</field>
+            <field name="name">inbound_email_list</field>
+        </record>
+
+        <record model="ir.action.act_window" id="act_inbound_email_form_relate">
+            <field name="name">E-mails</field>
+            <field name="res_model">inbound.email</field>
+            <field name="domain" eval="[('inbox', 'in', Eval('active_ids', []))]" pyson="1"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_inbound_email_form_relate_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="inbound_email_view_list"/>
+            <field name="act_window" ref="act_inbound_email_form_relate"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_inbound_email_form_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="inbound_email_view_form"/>
+            <field name="act_window" ref="act_inbound_email_form_relate"/>
+        </record>
+        <record model="ir.action.keyword" id="act_inbound_email_form_relate_keyword">
+            <field name="keyword">form_relate</field>
+            <field name="model">inbound.email.inbox,-1</field>
+            <field name="action" ref="act_inbound_email_form_relate"/>
+        </record>
+
+        <record model="ir.model.access" id="access_inbound_email">
+            <field name="model" search="[('model', '=', 'inbound.email')]"/>
+            <field name="perm_read" eval="False"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_inbound_email_group_admin">
+            <field name="model" search="[('model', '=', 'inbound.email')]"/>
+            <field name="group" ref="res.group_admin"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+
+        <record model="ir.model.button" id="inbound_email_process_button">
+            <field name="name">process</field>
+            <field name="string">Process</field>
+            <field name="model" search="[('model', '=', 'inbound.email')]"/>
+        </record>
+
+        <record model="ir.ui.view" id="inbound_email_rule_view_form">
+            <field name="model">inbound.email.rule</field>
+            <field name="type">form</field>
+            <field name="name">inbound_email_rule_form</field>
+        </record>
+
+        <record model="ir.ui.view" id="inbound_email_rule_view_list">
+            <field name="model">inbound.email.rule</field>
+            <field name="type">tree</field>
+            <field name="priority" eval="10"/>
+            <field name="name">inbound_email_rule_list</field>
+        </record>
+
+        <record model="ir.ui.view" id="inbound_email_rule_view_list_sequence">
+            <field name="model">inbound.email.rule</field>
+            <field name="type">tree</field>
+            <field name="priority" eval="20"/>
+            <field name="name">inbound_email_rule_list_sequence</field>
+        </record>
+
+        <record model="ir.ui.view" id="inbound_email_rule_header_view_form">
+            <field name="model">inbound.email.rule.header</field>
+            <field name="type">form</field>
+            <field name="name">inbound_email_rule_header_form</field>
+        </record>
+
+        <record model="ir.ui.view" id="inbound_email_rule_header_view_list">
+            <field name="model">inbound.email.rule.header</field>
+            <field name="type">tree</field>
+            <field name="priority" eval="10"/>
+            <field name="name">inbound_email_rule_header_list</field>
+        </record>
+    </data>
+</tryton>
