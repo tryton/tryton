@@ -12,6 +12,9 @@ from sql.functions import Abs
 
 from trytond.i18n import gettext
 from trytond.model import ModelSQL, ModelView, fields
+from trytond.modules.account.exceptions import (
+    CancelWarning, DelegateLineWarning, GroupLineWarning,
+    RescheduleLineWarning)
 from trytond.modules.company.model import CompanyValueMixin
 from trytond.modules.currency.fields import Monetary
 from trytond.pool import Pool, PoolMeta
@@ -485,6 +488,104 @@ class ConfigurationPaymentGroupSequence(ModelSQL, CompanyValueMixin):
                 'account_payment', 'sequence_account_payment_group')
         except KeyError:
             return None
+
+
+class MoveCancel(metaclass=PoolMeta):
+    __name__ = 'account.move.cancel'
+
+    def transition_cancel(self):
+        pool = Pool()
+        Warning = pool.get('res.user.warning')
+        moves_w_payments = []
+        for move in self.records:
+            for line in move.lines:
+                if any(p.state != 'failed' for p in line.payments):
+                    moves_w_payments.append(move)
+                    break
+        if moves_w_payments:
+            names = ', '.join(
+                m.rec_name for m in moves_w_payments[:5])
+            if len(moves_w_payments) > 5:
+                names += '...'
+            key = Warning.format('cancel_payments', moves_w_payments)
+            if Warning.check(key):
+                raise CancelWarning(
+                    key, gettext(
+                        'account_payment.msg_move_cancel_payments',
+                        moves=names))
+        return super().transition_cancel()
+
+
+class MoveLineGroup(metaclass=PoolMeta):
+    __name__ = 'account.move.line.group'
+
+    def do_group(self, action):
+        pool = Pool()
+        Warning = pool.get('res.user.warning')
+        lines_w_payments = []
+        for line in self.records:
+            if any(p.state != 'failed' for p in line.payments):
+                lines_w_payments.append(line)
+        if lines_w_payments:
+            names = ', '.join(
+                m.rec_name for m in lines_w_payments[:5])
+            if len(lines_w_payments) > 5:
+                names += '...'
+            key = Warning.format('group_payments', lines_w_payments)
+            if Warning.check(key):
+                raise GroupLineWarning(
+                    key, gettext(
+                        'account_payment.msg_move_line_group_payments',
+                        lines=names))
+        return super().do_group(action)
+
+
+class MoveLineReschedule(metaclass=PoolMeta):
+    __name__ = 'account.move.line.reschedule'
+
+    def do_reschedule(self, action):
+        pool = Pool()
+        Warning = pool.get('res.user.warning')
+        lines_w_payments = []
+        for line in self.records:
+            if any(p.state != 'failed' for p in line.payments):
+                lines_w_payments.append(line)
+        if lines_w_payments:
+            names = ', '.join(
+                m.rec_name for m in lines_w_payments[:5])
+            if len(lines_w_payments) > 5:
+                names += '...'
+            key = Warning.format('reschedule_payments', lines_w_payments)
+            if Warning.check(key):
+                raise RescheduleLineWarning(
+                    key, gettext(
+                        'account_payment.msg_move_line_reschedule_payments',
+                        lines=names))
+        return super().do_reschedule(action)
+
+
+class MoveLineDelegate(metaclass=PoolMeta):
+    __name__ = 'account.move.line.delegate'
+
+    def do_delegate(self, action):
+        pool = Pool()
+        Warning = pool.get('res.user.warning')
+        lines_w_payments = []
+        for line in self.records:
+            if any(p.state != 'failed' for p in line.payments):
+                lines_w_payments.append(line)
+        if lines_w_payments:
+            names = ', '.join(
+                m.rec_name for m in lines_w_payments[:5])
+            if len(lines_w_payments) > 5:
+                names += '...'
+            key = Warning.format('delegate_payments', lines_w_payments)
+            if Warning.check(key):
+                raise DelegateLineWarning(
+                    key, gettext(
+                        'account_payment.msg_move_line_delegate_payments',
+                        lines=names))
+        return super().do_delegate(action)
 
 
 class Invoice(metaclass=PoolMeta):

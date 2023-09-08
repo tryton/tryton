@@ -97,9 +97,21 @@ class GroupLineError(UserError):
     pass
 
 
+class GroupLineWarning(UserWarning):
+    pass
+
+
 class RescheduleLineError(UserError):
     pass
 
 
+class RescheduleLineWarning(UserWarning):
+    pass
+
+
 class DelegateLineError(UserError):
+    pass
+
+
+class DelegateLineWarning(UserWarning):
     pass

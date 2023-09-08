@@ -34,6 +34,10 @@ def register():
         payment.ProcessPayment,
         account.CreateDirectDebit,
         account.PayLine,
+        account.MoveCancel,
+        account.MoveLineGroup,
+        account.MoveLineReschedule,
+        account.MoveLineDelegate,
         party.Replace,
         party.Erase,
         module='account_payment', type_='wizard')
