@@ -1821,6 +1821,7 @@ class SaleLine(TaxableMixin, sequence_ordered(), ModelSQL, ModelView):
         move.planned_date = self.planned_shipping_date
         move.invoice_lines = self._get_move_invoice_lines(shipment_type)
         move.origin = self
+        move.origin_planned_date = move.planned_date
         return move
 
     def _get_move_quantity(self, shipment_type):

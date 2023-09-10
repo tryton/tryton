@@ -116,6 +116,7 @@ class LineComponent(
             move.currency = self.line.purchase.currency
         move.planned_date = self.line.planned_delivery_date
         move.origin = self
+        move.origin_planned_date = move.planned_date
         return move
 
     def _get_move_quantity(self, shipment_type):

@@ -18,7 +18,7 @@ from trytond.model import (
 from trytond.model.exceptions import AccessError
 from trytond.modules.product import price_digits, round_price
 from trytond.pool import Pool
-from trytond.pyson import Bool, Eval, If
+from trytond.pyson import Bool, Eval, If, TimeDelta
 from trytond.tools import grouped_slice, reduce_ids
 from trytond.transaction import Transaction, without_check_access
 
@@ -229,6 +229,9 @@ class Move(Workflow, ModelSQL, ModelView):
             'readonly': Eval('state') != 'draft',
             },
         help="The source of the stock move.")
+    origin_planned_date = fields.Date(
+        "Origin Planned Date", readonly=True,
+        help="When the stock was expected to be moved originally.")
     planned_date = fields.Date(
         "Planned Date",
         states={
@@ -248,6 +251,15 @@ class Move(Workflow, ModelSQL, ModelView):
                 | Eval('_parent_shipment')),
             },
         help="When the stock was actually moved.")
+    delay = fields.Function(
+        fields.TimeDelta(
+            "Delay",
+            states={
+                'invisible': (
+                    ~Eval('origin_planned_date')
+                    & ~Eval('planned_date')),
+                }),
+        'get_delay')
     state = fields.Selection([
         ('staging', 'Staging'),
         ('draft', 'Draft'),
@@ -423,6 +435,20 @@ class Move(Workflow, ModelSQL, ModelView):
     @staticmethod
     def default_planned_date():
         return Transaction().context.get('planned_date')
+
+    def get_delay(self, name):
+        pool = Pool()
+        Date = pool.get('ir.date')
+        planned_date = self.origin_planned_date or self.planned_date
+        if planned_date is not None:
+            if self.effective_date:
+                return self.effective_date - planned_date
+            elif self.planned_date:
+                return self.planned_date - planned_date
+            else:
+                with Transaction().set_context(company=self.company.id):
+                    today = Date.today()
+                return today - planned_date
 
     @staticmethod
     def default_state():
@@ -649,6 +675,9 @@ class Move(Workflow, ModelSQL, ModelView):
     def view_attributes(cls):
         return super().view_attributes() + [
             ('/tree', 'visual', If(Eval('state') == 'cancelled', 'muted', '')),
+            ('/tree/field[@name="delay"]', 'visual',
+                If(Eval('delay', datetime.timedelta()) > TimeDelta(),
+                    'danger', '')),
             ]
 
     @property
