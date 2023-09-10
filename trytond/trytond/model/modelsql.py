@@ -794,11 +794,11 @@ class ModelSQL(ModelStorage):
         new_ids = []
         vlist = [v.copy() for v in vlist]
 
-        def db_insert(columns, vlist, fields):
+        def db_insert(columns, vlist, column_names):
             if transaction.database.has_multirow_insert():
                 vlist = (
                     s for s in grouped_slice(
-                        vlist, in_max // (len(fields) or 1)))
+                        vlist, in_max // (len(column_names) or 1)))
             else:
                 vlist = ([v] for v in vlist)
 
@@ -846,14 +846,14 @@ class ModelSQL(ModelStorage):
                     with transaction.new_transaction():
                         for value in values:
                             skip = len(['create_uid', 'create_date'])
-                            recomposed = dict(zip(fields, value[skip:]))
+                            recomposed = dict(zip(column_names, value[skip:]))
                             raise_func(
                                 exception, recomposed, transaction=transaction)
                     raise
 
         to_insert = []
         previous_columns = [table.create_uid, table.create_date]
-        previous_column_names = set()
+        previous_column_names = []
 
         for values in vlist:
             # Clean values
@@ -888,7 +888,7 @@ class ModelSQL(ModelStorage):
                     defaults_cache.update(default_values)
             values.update(missing_defaults[values_schema])
 
-            current_column_names = set()
+            current_column_names = []
             current_columns = [table.create_uid, table.create_date]
             current_values = [transaction.user, CurrentTimestamp()]
 
@@ -898,7 +898,7 @@ class ModelSQL(ModelStorage):
                 if not hasattr(field, 'set'):
                     current_columns.append(Column(table, fname))
                     current_values.append(field.sql_format(value))
-                    current_column_names.add(fname)
+                    current_column_names.append(fname)
 
             if current_column_names != previous_column_names:
                 if to_insert:
