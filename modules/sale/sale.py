@@ -896,6 +896,7 @@ class Sale(
             planned_date = max(m.planned_date for m in moves)
         return (
             ('planned_date', planned_date),
+            ('origin_planned_date', planned_date),
             ('warehouse', line.warehouse.id),
             )
 

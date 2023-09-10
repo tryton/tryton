@@ -35,6 +35,27 @@ because the type does not support moves and location has existing moves.</field>
         <record model="ir.message" id="msg_period_close_assigned_move">
             <field name="text">You cannot close periods with assigned moves in it.</field>
         </record>
+        <record model="ir.message" id="msg_shipment_planned_date">
+            <field name="text">Planned Date</field>
+        </record>
+        <record model="ir.message" id="msg_shipment_planned_date_help">
+            <field name="text">When the stock operation is expected to be completed.</field>
+        </record>
+        <record model="ir.message" id="msg_shipment_origin_planned_date">
+            <field name="text">Origin Planned Date</field>
+        </record>
+        <record model="ir.message" id="msg_shipment_origin_planned_date_help">
+            <field name="text">When the stock operation was initially expected to be completed.</field>
+        </record>
+        <record model="ir.message" id="msg_shipment_effective_date">
+            <field name="text">Effective Date</field>
+        </record>
+        <record model="ir.message" id="msg_shipment_effective_date_help">
+            <field name="text">When the stock operation was actually completed.</field>
+        </record>
+        <record model="ir.message" id="msg_shipment_delay">
+            <field name="text">Delay</field>
+        </record>
         <record model="ir.message" id="msg_shipment_pack_inventory_done">
             <field name="text">To pack shipment "%(shipment)s" you must do the inventory moves.</field>
         </record>

@@ -60,7 +60,13 @@ class Sale(metaclass=PoolMeta):
             order = self._get_grouped_shipment_order(Shipment)
             grouped_shipments = Shipment.search(domain, order=order, limit=1)
             if grouped_shipments:
+                origin_planned_date = shipment.origin_planned_date
                 shipment, = grouped_shipments
+                if origin_planned_date:
+                    if not shipment.origin_planned_date:
+                        shipment.origin_planned_date = origin_planned_date
+                    elif shipment.origin_planned_date > origin_planned_date:
+                        shipment.origin_planned_date = origin_planned_date
         return shipment
 
     @classmethod

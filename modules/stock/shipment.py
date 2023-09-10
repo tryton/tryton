@@ -9,14 +9,14 @@ from sql import Null
 from sql.conditionals import Coalesce
 from sql.functions import CharLength
 
-from trytond.i18n import gettext
+from trytond.i18n import gettext, lazy_gettext
 from trytond.model import (
     Index, ModelSQL, ModelView, Workflow, dualmethod, fields, sort)
 from trytond.model.exceptions import AccessError
 from trytond.modules.company import CompanyReport
 from trytond.modules.company.model import employee_field, set_employee
 from trytond.pool import Pool
-from trytond.pyson import Bool, Eval, Id, If
+from trytond.pyson import Bool, Eval, Id, If, TimeDelta
 from trytond.transaction import Transaction
 from trytond.wizard import Button, StateTransition, StateView, Wizard
 
@@ -24,10 +24,66 @@ from trytond.wizard import Button, StateTransition, StateView, Wizard
 class ShipmentMixin:
     __slots__ = ()
 
+    planned_date = fields.Date(
+        lazy_gettext('stock.msg_shipment_planned_date'),
+        states={
+            'readonly': ~Eval('state').in_(['request', 'draft']),
+            },
+        help=lazy_gettext('stock.msg_shipment_planned_date_help'))
+    origin_planned_date = fields.Date(
+        lazy_gettext('stock.msg_shipment_origin_planned_date'),
+        readonly=True,
+        help=lazy_gettext('stock.msg_shipment_origin_planned_date_help'))
+    effective_date = fields.Date(
+        lazy_gettext('stock.msg_shipment_effective_date'),
+        states={
+            'readonly': Eval('state').in_(['cancelled', 'done']),
+            },
+        help=lazy_gettext('stock.msg_shipment_effective_date_help'))
+    delay = fields.Function(
+        fields.TimeDelta(
+            lazy_gettext('stock.msg_shipment_delay'),
+            states={
+                'invisible': (
+                    ~Eval('origin_planned_date')
+                    & ~Eval('planned_date')),
+                }),
+        'get_delay')
+
+    @classmethod
+    def __setup__(cls):
+        super().__setup__()
+        cls._order = [
+            ('effective_date', 'ASC NULLS LAST'),
+            ('id', 'ASC'),
+            ]
+
+    @classmethod
+    def order_effective_date(cls, tables):
+        table, _ = tables[None]
+        return [Coalesce(table.effective_date, table.planned_date)]
+
+    def get_delay(self, name):
+        pool = Pool()
+        Date = pool.get('ir.date')
+        planned_date = self.origin_planned_date or self.planned_date
+        if planned_date is not None:
+            if self.effective_date:
+                return self.effective_date - planned_date
+            elif self.planned_date:
+                return self.planned_date - planned_date
+            else:
+                with Transaction().set_context(company=self.company.id):
+                    today = Date.today()
+                return today - planned_date
+
     @classmethod
     def view_attributes(cls):
         return super().view_attributes() + [
             ('/tree', 'visual', If(Eval('state') == 'cancelled', 'muted', '')),
+            ('/tree/field[@name="delay"]', 'visual',
+                If(Eval('delay', datetime.timedelta()) > TimeDelta(),
+                    'danger', '')),
             ]
 
 
@@ -135,15 +191,7 @@ class ShipmentIn(ShipmentMixin, Workflow, ModelSQL, ModelView):
     "Supplier Shipment"
     __name__ = 'stock.shipment.in'
     _rec_name = 'number'
-    effective_date = fields.Date('Effective Date',
-        states={
-            'readonly': Eval('state').in_(['cancelled', 'done']),
-            },
-        help="When the stock was actually received.")
-    planned_date = fields.Date('Planned Date', states={
-            'readonly': Eval('state') != 'draft',
-            },
-        help="When the stock is expected to be received.")
+
     company = fields.Many2One(
         'company.company', "Company", required=True,
         states={
@@ -614,16 +662,6 @@ class ShipmentInReturn(ShipmentAssignMixin, Workflow, ModelSQL, ModelView):
     _rec_name = 'number'
     _assign_moves_field = 'moves'
 
-    effective_date = fields.Date('Effective Date',
-        states={
-            'readonly': Eval('state').in_(['cancelled', 'done']),
-            },
-        help="When the stock was actually returned.")
-    planned_date = fields.Date('Planned Date',
-        states={
-            'readonly': Eval('state') != 'draft',
-            },
-        help="When the stock is expected to be returned.")
     company = fields.Many2One(
         'company.company', "Company", required=True,
         states={
@@ -790,11 +828,6 @@ class ShipmentInReturn(ShipmentAssignMixin, Workflow, ModelSQL, ModelView):
     def order_number(cls, tables):
         table, _ = tables[None]
         return [CharLength(table.number), table.number]
-
-    @classmethod
-    def order_effective_date(cls, tables):
-        table, _ = tables[None]
-        return [Coalesce(table.effective_date, table.planned_date)]
 
     @staticmethod
     def default_state():
@@ -1014,16 +1047,6 @@ class ShipmentOut(ShipmentAssignMixin, Workflow, ModelSQL, ModelView):
     __name__ = 'stock.shipment.out'
     _rec_name = 'number'
     _assign_moves_field = 'moves'
-    effective_date = fields.Date('Effective Date',
-        states={
-            'readonly': Eval('state').in_(['cancelled', 'done']),
-            },
-        help="When the stock was actually sent.")
-    planned_date = fields.Date('Planned Date',
-        states={
-            'readonly': Eval('state') != 'draft',
-            },
-        help="When the stock is expected to be sent.")
     company = fields.Many2One(
         'company.company', "Company", required=True,
         states={
@@ -1179,10 +1202,6 @@ class ShipmentOut(ShipmentAssignMixin, Workflow, ModelSQL, ModelView):
                             'draft', 'waiting', 'assigned',
                             'picked', 'packed'])),
                 })
-        cls._order = [
-            ('effective_date', 'ASC NULLS LAST'),
-            ('id', 'ASC'),
-            ]
         cls._transitions |= set((
                 ('draft', 'waiting'),
                 ('waiting', 'assigned'),
@@ -1300,11 +1319,6 @@ class ShipmentOut(ShipmentAssignMixin, Workflow, ModelSQL, ModelView):
     def order_number(cls, tables):
         table, _ = tables[None]
         return [CharLength(table.number), table.number]
-
-    @classmethod
-    def order_effective_date(cls, tables):
-        table, _ = tables[None]
-        return [Coalesce(table.effective_date, table.planned_date)]
 
     @staticmethod
     def default_state():
@@ -1739,16 +1753,6 @@ class ShipmentOutReturn(ShipmentMixin, Workflow, ModelSQL, ModelView):
     "Customer Return Shipment"
     __name__ = 'stock.shipment.out.return'
     _rec_name = 'number'
-    effective_date = fields.Date('Effective Date',
-        states={
-            'readonly': Eval('state').in_(['cancelled', 'done']),
-            },
-        help="When the stock was returned.")
-    planned_date = fields.Date('Planned Date',
-        states={
-            'readonly': Eval('state') != 'draft',
-            },
-        help="When the stock is expected to be returned.")
     company = fields.Many2One(
         'company.company', "Company", required=True,
         states={
@@ -1887,10 +1891,6 @@ class ShipmentOutReturn(ShipmentMixin, Workflow, ModelSQL, ModelView):
                     (t.state, Index.Equality()),
                     where=t.state.in_(['draft', 'received'])),
                 })
-        cls._order = [
-            ('effective_date', 'ASC NULLS LAST'),
-            ('id', 'ASC'),
-            ]
         cls._transitions |= set((
                 ('draft', 'received'),
                 ('received', 'done'),
@@ -1958,11 +1958,6 @@ class ShipmentOutReturn(ShipmentMixin, Workflow, ModelSQL, ModelView):
     def order_number(cls, tables):
         table, _ = tables[None]
         return [CharLength(table.number), table.number]
-
-    @classmethod
-    def order_effective_date(cls, tables):
-        table, _ = tables[None]
-        return [Coalesce(table.effective_date, table.planned_date)]
 
     @staticmethod
     def default_state():
@@ -2201,16 +2196,6 @@ class ShipmentInternal(ShipmentAssignMixin, Workflow, ModelSQL, ModelView):
     __name__ = 'stock.shipment.internal'
     _rec_name = 'number'
     _assign_moves_field = 'moves'
-    effective_date = fields.Date('Effective Date',
-        states={
-            'readonly': Eval('state').in_(['cancelled', 'done']),
-            },
-        help="When the shipment was actually completed.")
-    planned_date = fields.Date('Planned Date',
-        states={
-            'readonly': ~Eval('state').in_(['request', 'draft']),
-            },
-        help="When the shipment is expected to be completed.")
     effective_start_date = fields.Date('Effective Start Date',
         domain=[
             If(Eval('effective_start_date') & Eval('effective_date'),
@@ -2396,10 +2381,6 @@ class ShipmentInternal(ShipmentAssignMixin, Workflow, ModelSQL, ModelView):
                             'request', 'draft', 'waiting',
                             'assigned', 'shipped'])),
                 })
-        cls._order = [
-            ('effective_date', 'ASC NULLS LAST'),
-            ('id', 'ASC'),
-            ]
         cls._transitions |= set((
                 ('request', 'draft'),
                 ('draft', 'waiting'),
