@@ -128,7 +128,7 @@ class Function(Field):
                 if isinstance(name, str):
                     return convert_dict(values)
                 else:
-                    return {k: convert_dict(v, k) for k, v in values.items()}
+                    return {n: convert_dict(values[n], n) for n in name}
             else:
                 return {r.id: convert(method(r, name)) for r in records}
 
