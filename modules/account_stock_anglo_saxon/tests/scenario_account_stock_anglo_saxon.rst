@@ -369,6 +369,7 @@ Now we will use a product with different unit of measure::
     >>> purchase_line = purchase.lines.new()
     >>> purchase_line.product = product_by5
     >>> purchase_line.quantity = 1.0
+    >>> purchase_line.unit_price = Decimal('5.0000')
     >>> purchase.click('quote')
     >>> purchase.click('confirm')
 

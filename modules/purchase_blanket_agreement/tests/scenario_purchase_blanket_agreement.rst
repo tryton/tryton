@@ -63,6 +63,9 @@ Create products::
     >>> template.list_price = Decimal('10.000')
     >>> template.purchasable = True
     >>> template.account_category = account_category
+    >>> product_supplier = template.product_suppliers.new(party=supplier)
+    >>> ps_price = product_supplier.prices.new()
+    >>> ps_price.unit_price = Decimal('8.0000')
     >>> template.save()
     >>> product1, = template.products
     >>> product1.cost_price = Decimal('8.000')

@@ -91,8 +91,6 @@ Create product::
     >>> template.list_price = Decimal('10')
     >>> template.cost_price_method = 'average'
     >>> template.account_category = account_category
-    >>> product, = template.products
-    >>> product.cost_price = Decimal('5')
     >>> template.save()
     >>> product, = template.products
 
@@ -134,6 +132,7 @@ Purchase 5 products::
     >>> purchase.lines.append(purchase_line)
     >>> purchase_line.product = product
     >>> purchase_line.quantity = 5.0
+    >>> purchase_line.unit_price = Decimal('5.0000')
     >>> purchase.click('quote')
     >>> purchase.click('confirm')
     >>> purchase.click('process')

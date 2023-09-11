@@ -158,9 +158,11 @@ Purchase composed and kit products::
     >>> line = purchase.lines.new()
     >>> line.product = composed_product
     >>> line.quantity = 1
+    >>> line.unit_price = Decimal('5.0000')
     >>> line = purchase.lines.new()
     >>> line.product = kit
     >>> line.quantity = 2
+    >>> line.unit_price = Decimal('26.0000')
     >>> purchase.click('quote')
     >>> len(purchase.lines)
     4

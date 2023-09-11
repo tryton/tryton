@@ -81,9 +81,10 @@ Create Supplier Service::
     >>> template.list_price = Decimal(20)
     >>> template.account_category = account_category
     >>> service, = template.products
-    >>> service.cost_price = Decimal(20)
     >>> service_supplier = template.product_suppliers.new()
     >>> service_supplier.party = supplier
+    >>> service_supplier_price = service_supplier.prices.new()
+    >>> service_supplier_price.unit_price = Decimal('20.0000')
     >>> template.save()
     >>> service, = template.products
     >>> service_supplier, = template.product_suppliers
