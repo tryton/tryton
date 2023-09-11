@@ -13,6 +13,10 @@ class OverpayWarning(UserWarning):
     pass
 
 
+class ReconciledWarning(UserWarning):
+    pass
+
+
 class PaymentValidationError(ValidationError):
     pass
 

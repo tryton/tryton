@@ -23,7 +23,7 @@ from trytond.tools import (
 from trytond.transaction import Transaction
 from trytond.wizard import StateAction, Wizard
 
-from .exceptions import OverpayWarning
+from .exceptions import OverpayWarning, ReconciledWarning
 
 KINDS = [
     ('payable', 'Payable'),
@@ -577,14 +577,14 @@ class Payment(Workflow, ModelSQL, ModelView):
     @Workflow.transition('submitted')
     @set_employee('submitted_by')
     def submit(cls, payments):
-        pass
+        cls._check_reconciled(payments)
 
     @classmethod
     @ModelView.button
     @Workflow.transition('approved')
     @set_employee('approved_by')
     def approve(cls, payments):
-        pass
+        cls._check_reconciled(payments)
 
     @classmethod
     @ModelView.button_action('account_payment.act_process_payments')
@@ -616,6 +616,8 @@ class Payment(Workflow, ModelSQL, ModelView):
     @Workflow.transition('processing')
     def proceed(cls, payments):
         assert all(p.group for p in payments)
+        cls._check_reconciled(
+            [p for p in payments if p.state not in {'succeeded', 'failed'}])
 
     @classmethod
     @ModelView.button
@@ -630,6 +632,20 @@ class Payment(Workflow, ModelSQL, ModelView):
     @set_employee('failed_by')
     def fail(cls, payments):
         pass
+
+    @classmethod
+    def _check_reconciled(cls, payments):
+        pool = Pool()
+        Warning = pool.get('res.user.warning')
+        for payment in payments:
+            if payment.line and payment.line.reconciliation:
+                key = Warning.format('submit_reconciled', [payment])
+                if Warning.check(key):
+                    raise ReconciledWarning(
+                        key, gettext(
+                            'account_payment.msg_payment_reconciled',
+                            payment=payment.rec_name,
+                            line=payment.line.rec_name))
 
 
 class ProcessPayment(Wizard):

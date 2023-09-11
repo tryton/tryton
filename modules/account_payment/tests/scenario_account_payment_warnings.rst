@@ -42,6 +42,7 @@ Create chart of accounts::
     >>> accounts = get_accounts(company)
 
     >>> expense_journal, = Journal.find([('code', '=', 'EXP')])
+    >>> cash_journal, = Journal.find([('code', '=', 'CASH')])
 
 Create payment journal::
 
@@ -119,3 +120,27 @@ Try to delegate line::
     Traceback (most recent call last):
         ...
     DelegateLineWarning: ...
+
+Reconcile line and try to submit::
+
+    >>> move = Move()
+    >>> move.journal = cash_journal
+    >>> _ = move.lines.new(
+    ...     account=accounts['payable'], party=supplier,
+    ...     debit=Decimal('100.00'))
+    >>> _ = move.lines.new(
+    ...     account=accounts['cash'],
+    ...     credit=Decimal('100.00'))
+    >>> move.click('post')
+    >>> move.state
+    'posted'
+
+    >>> cash_line, = [l for l in move.lines if l.account == accounts['payable']]
+    >>> reconcile = Wizard('account.move.reconcile_lines', [payment.line, cash_line])
+    >>> reconcile.state
+    'end'
+
+    >>> payment.click('submit')  # doctest: +IGNORE_EXCEPTION_DETAIL
+    Traceback (most recent call last):
+        ...
+    ReconciledWarning: ...
