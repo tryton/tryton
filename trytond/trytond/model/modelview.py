@@ -808,7 +808,8 @@ class ModelView(Model):
                 continue
             if field._type in ('many2one', 'one2one', 'reference'):
                 if value:
-                    if isinstance(value, ModelStorage):
+                    if (isinstance(value, ModelStorage)
+                            and value.id and value.id >= 0):
                         changed['%s.' % fname] = {
                             'rec_name': value.rec_name,
                             }
