@@ -1,5 +1,8 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
+
+from decimal import Decimal
+
 from trytond.i18n import gettext
 from trytond.model import ModelSQL, ModelView, fields
 from trytond.modules.product import round_price
@@ -59,7 +62,10 @@ class Line(order_line_mixin('purchase'), metaclass=PoolMeta):
     def get_component_order_line(self, component, **values):
         values = values.copy()
         values['purchase'] = self.purchase
-        return super().get_component_order_line(component, **values)
+        line = super().get_component_order_line(component, **values)
+        if line.unit_price is None:
+            line.unit_price = round_price(Decimal(0))
+        return line
 
     @classmethod
     def get_move_product_types(cls):

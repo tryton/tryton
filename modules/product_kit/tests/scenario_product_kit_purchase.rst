@@ -259,7 +259,7 @@ Check unit price of moves::
     >>> shipment.reload()
     >>> invoice.reload()
     >>> sorted([m.unit_price for m in shipment.incoming_moves])
-    [Decimal('5.0000'), Decimal('5.0000'), Decimal('9.4545'), Decimal('14.1818')]
+    [Decimal('0.0000'), Decimal('5.0000'), Decimal('9.4545'), Decimal('14.1818')]
 
 Check backorder moves::
 
