@@ -230,3 +230,11 @@ Prevent changing root of account with entries::
     >>> analytic_account.save()
     >>> analytic_account.code
     '1'
+
+Prevent changing type of analytic account with lines::
+
+    >>> analytic_account.type = 'view'
+    >>> analytic_account.save()  # doctest: +IGNORE_EXCEPTION_DETAIL
+    Traceback (most recent call last):
+        ...
+    AccountValidationError: ...
