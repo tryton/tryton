@@ -143,7 +143,7 @@ class Account(
     @classmethod
     def check_move_domain(cls, accounts, field_names):
         pool = Pool()
-        Line = pool.get('account.move.line')
+        Line = pool.get('analytic_account.line')
         if field_names and 'type' not in field_names:
             return
         accounts = [
