@@ -34,16 +34,19 @@ from trytond.model import (
     ModelSingleton, ModelSQL, ModelStorage, ModelView, Workflow, fields)
 from trytond.model.fields import Function
 from trytond.pool import Pool, isregisteredby
+from trytond.protocols.wrappers import Response
 from trytond.pyson import PYSONDecoder, PYSONEncoder
 from trytond.tools import file_open, find_dir, is_instance_method
 from trytond.transaction import Transaction, TransactionError
 from trytond.wizard import StateAction, StateView
+from trytond.wsgi import app
 
 __all__ = [
     'CONTEXT',
     'Client',
     'DB_NAME',
     'ModuleTestCase',
+    'RouteTestCase',
     'USER',
     'activate_module',
     'doctest_checker',
@@ -239,8 +242,7 @@ def with_transaction(user=1, context=None):
     return decorator
 
 
-class ModuleTestCase(unittest.TestCase):
-    'Trytond Test Case'
+class _DBTestCase(unittest.TestCase):
     module = None
     extras = None
     language = 'en'
@@ -252,12 +254,16 @@ class ModuleTestCase(unittest.TestCase):
         if cls.extras:
             modules.extend(cls.extras)
         activate_module(modules, lang=cls.language)
-        super(ModuleTestCase, cls).setUpClass()
+        super().setUpClass()
 
     @classmethod
     def tearDownClass(cls):
-        super(ModuleTestCase, cls).tearDownClass()
+        super().tearDownClass()
         drop_db()
+
+
+class ModuleTestCase(_DBTestCase):
+    "Tryton Module Test Case"
 
     @with_transaction()
     def test_rec_name(self):
@@ -921,6 +927,27 @@ class ModuleTestCase(unittest.TestCase):
                         subdir='modules', mode='rb') as fp:
                     tree = etree.parse(fp)
                 validator.assertValid(tree)
+
+
+class RouteTestCase(_DBTestCase):
+    "Tryton Route Test Case"
+
+    @classmethod
+    def setUpClass(cls):
+        super().setUpClass()
+        with Transaction().start(DB_NAME, 1):
+            cls.setUpDatabase()
+
+    @classmethod
+    def setUpDatabase(cls):
+        pass
+
+    @property
+    def db_name(self):
+        return DB_NAME
+
+    def client(self):
+        return Client(app, Response)
 
 
 def db_exist(name=DB_NAME):

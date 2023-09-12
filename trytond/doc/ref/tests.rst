@@ -42,9 +42,56 @@ ModuleTestCase
 
    Name of the tested module.
 
+.. attribute:: ModuleTestCase.extras
+
+   A list of extra modules to activate
+
+.. attribute:: ModuleTestCase.language
+
+   The language to activate.
+   Default value is ``en``.
+
+RouteTestCase
+-------------
+
+.. class:: RouteTestCase()
+
+   A subclass of `unittest.TestCase`_ to test Tryton routes.
+
+   It creates a temporary database with the module activated in setUpClass_ and
+   drops it in the tearDownClass_ method.
+
+.. attribute:: RouteTestCase.module
+
+   Name of the tested module.
+
+.. attribute:: RouteTestCase.extras
+
+   A list of extra modules to activate
+
+.. attribute:: RouteTestCase.language
+
+   The language to activate.
+   Default value is ``en``.
+
+.. attribute:: RouteTestCase.db_name
+
+   Returns the name of the database
+
+.. classmethod:: RouteTestCase.setUpDatabase()
+
+   A method called by setUpClass_ after activating the modules in a
+   :class:`~trytond.transaction.Transaction`.
+   It is used to setup data in the database.
+
+.. method:: RouteTestCase.client()
+
+   Return a client to simulate requests to the WSGI application.
+
 .. _`unittest.TestCase`: https://docs.python.org/library/unittest.html#test-cases
 .. _setUpClass: https://docs.python.org/library/unittest.html#unittest.TestCase.setUpClass
 .. _tearDownClass: https://docs.python.org/library/unittest.html#unittest.TestCase.tearDownClass
+
 
 Helpers
 -------
