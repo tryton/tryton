@@ -277,7 +277,7 @@ class Sale(IdentifierMixin, metaclass=PoolMeta):
             for move in line.moves:
                 if move.state == 'done':
                     quantity -= Uom.compute_qty(
-                        move.uom, move.quantity, line.unit)
+                        move.unit, move.quantity, line.unit)
             quantity = min(fulfillable_quantity, quantity)
             if quantity > 0:
                 yield {

@@ -149,7 +149,7 @@ class Move(metaclass=PoolMeta):
             return
         identifier = self.origin.shopify_identifier
         quantity = int(Uom.compute_qty(
-                self.uom, self.quantity, self.origin.unit))
+                self.unit, self.quantity, self.origin.unit))
         for fulfillment_order in fulfillment_orders:
             if fulfillment_order.assigned_location_id != location_id:
                 continue
