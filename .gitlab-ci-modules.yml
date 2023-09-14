@@ -1737,6 +1737,28 @@ test-modules-document_incoming_invoice-postgresql:
     PACKAGE: modules/document_incoming_invoice
     TAG_PATTERN: '/^document_incoming_invoice-.*/'
 
+check-doc-modules-document_incoming_ocr:
+  extends: .check-doc
+  variables:
+    PACKAGE: modules/document_incoming_ocr
+
+trigger-doc-build-modules-document_incoming_ocr:
+  extends: .trigger-doc-build
+  variables:
+    PACKAGE: modules/document_incoming_ocr
+
+test-modules-document_incoming_ocr-sqlite:
+  extends: .test-sqlite
+  variables:
+    PACKAGE: modules/document_incoming_ocr
+    TAG_PATTERN: '/^document_incoming_ocr-.*/'
+
+test-modules-document_incoming_ocr-postgresql:
+  extends: .test-postgresql
+  variables:
+    PACKAGE: modules/document_incoming_ocr
+    TAG_PATTERN: '/^document_incoming_ocr-.*/'
+
 check-doc-modules-edocument_uncefact:
   extends: .check-doc
   variables:
