@@ -1715,6 +1715,28 @@ test-modules-document_incoming-postgresql:
     PACKAGE: modules/document_incoming
     TAG_PATTERN: '/^document_incoming-.*/'
 
+check-doc-modules-document_incoming_invoice:
+  extends: .check-doc
+  variables:
+    PACKAGE: modules/document_incoming_invoice
+
+trigger-doc-build-modules-document_incoming_invoice:
+  extends: .trigger-doc-build
+  variables:
+    PACKAGE: modules/document_incoming_invoice
+
+test-modules-document_incoming_invoice-sqlite:
+  extends: .test-sqlite
+  variables:
+    PACKAGE: modules/document_incoming_invoice
+    TAG_PATTERN: '/^document_incoming_invoice-.*/'
+
+test-modules-document_incoming_invoice-postgresql:
+  extends: .test-postgresql
+  variables:
+    PACKAGE: modules/document_incoming_invoice
+    TAG_PATTERN: '/^document_incoming_invoice-.*/'
+
 check-doc-modules-edocument_uncefact:
   extends: .check-doc
   variables:

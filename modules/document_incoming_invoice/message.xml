@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data grouped="1">
+        <record model="ir.message" id="msg_supplier_invoice_company">
+            <field name="text">To process document "%(document)s" you must set a company on it.</field>
+        </record>
+    </data>
+</tryton>
