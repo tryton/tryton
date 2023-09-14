@@ -1186,7 +1186,7 @@ class SaleLine(TaxableMixin, sequence_ordered(), ModelSQL, ModelView):
         "Actual Quantity", digits='unit', readonly=True,
         domain=[
             If(Eval('type') != 'line',
-                ('quantity', '=', None),
+                ('actual_quantity', '=', None),
                 ()),
             ],
         states={
