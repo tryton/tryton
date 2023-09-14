@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<form>
+    <label name="name"/>
+    <field name="data" filename_visible="1"/>
+    <label name="active"/>
+    <field name="active"/>
+
+    <label name="parent"/>
+    <field name="parent"/>
+    <newline/>
+
+    <label name="source"/>
+    <field name="source"/>
+    <label name="company"/>
+    <field name="company"/>
+
+    <label name="type"/>
+    <field name="type"/>
+    <newline/>
+
+    <label name="result"/>
+    <field name="result" colspan="3"/>
+
+    <notebook>
+        <page name="data">
+            <field name="data" widget="document" colspan="4"/>
+        </page>
+        <page name="children">
+            <field name="children" colspan="4"/>
+        </page>
+    </notebook>
+
+    <label name="state"/>
+    <field name="state"/>
+    <group col="-1" colspan="2" id="buttons">
+        <button name="cancel" icon="tryton-cancel"/>
+        <button name="draft" icon="tryton-undo"/>
+        <button name="split_wizard" icon="tryton-document-incoming-split"/>
+        <button name="process" icon="tryton-ok"/>
+        <button name="proceed" icon="tryton-refresh"/>
+    </group>
+</form>

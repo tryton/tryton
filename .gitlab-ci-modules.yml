@@ -1693,6 +1693,28 @@ test-modules-dashboard-postgresql:
     PACKAGE: modules/dashboard
     TAG_PATTERN: '/^dashboard-.*/'
 
+check-doc-modules-document_incoming:
+  extends: .check-doc
+  variables:
+    PACKAGE: modules/document_incoming
+
+trigger-doc-build-modules-document_incoming:
+  extends: .trigger-doc-build
+  variables:
+    PACKAGE: modules/document_incoming
+
+test-modules-document_incoming-sqlite:
+  extends: .test-sqlite
+  variables:
+    PACKAGE: modules/document_incoming
+    TAG_PATTERN: '/^document_incoming-.*/'
+
+test-modules-document_incoming-postgresql:
+  extends: .test-postgresql
+  variables:
+    PACKAGE: modules/document_incoming
+    TAG_PATTERN: '/^document_incoming-.*/'
+
 check-doc-modules-edocument_uncefact:
   extends: .check-doc
   variables:

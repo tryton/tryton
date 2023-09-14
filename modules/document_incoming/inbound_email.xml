@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data depends="inbound_email">
+        <record model="ir.ui.view" id="inbound_email_rule_view_form">
+            <field name="model">inbound.email.rule</field>
+            <field name="inherit" ref="inbound_email.inbound_email_rule_view_form"/>
+            <field name="name">inbound_email_rule_form</field>
+        </record>
+    </data>
+</tryton>
