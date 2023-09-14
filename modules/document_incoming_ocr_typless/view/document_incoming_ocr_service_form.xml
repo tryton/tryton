@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<data>
+    <xpath expr="//separator[@id='criteria']" position="before">
+        <newline/>
+        <label name="typless_api_key"/>
+        <field name="typless_api_key" widget="password"/>
+        <label name="typless_document_type"/>
+        <field name="typless_document_type"/>
+        <newline/>
+    </xpath>
+</data>

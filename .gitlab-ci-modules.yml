@@ -1759,6 +1759,28 @@ test-modules-document_incoming_ocr-postgresql:
     PACKAGE: modules/document_incoming_ocr
     TAG_PATTERN: '/^document_incoming_ocr-.*/'
 
+check-doc-modules-document_incoming_ocr_typless:
+  extends: .check-doc
+  variables:
+    PACKAGE: modules/document_incoming_ocr_typless
+
+trigger-doc-build-modules-document_incoming_ocr_typless:
+  extends: .trigger-doc-build
+  variables:
+    PACKAGE: modules/document_incoming_ocr_typless
+
+test-modules-document_incoming_ocr_typless-sqlite:
+  extends: .test-sqlite
+  variables:
+    PACKAGE: modules/document_incoming_ocr_typless
+    TAG_PATTERN: '/^document_incoming_ocr_typless-.*/'
+
+test-modules-document_incoming_ocr_typless-postgresql:
+  extends: .test-postgresql
+  variables:
+    PACKAGE: modules/document_incoming_ocr_typless
+    TAG_PATTERN: '/^document_incoming_ocr_typless-.*/'
+
 check-doc-modules-edocument_uncefact:
   extends: .check-doc
   variables:
