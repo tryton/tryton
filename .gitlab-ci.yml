@@ -207,6 +207,7 @@ check-template-modules:
   extends: .test-db
   variables:
     DATABASE: postgresql
+    DB_CACHE: postgresql://
     POSTGRESQL_URI: postgresql://postgres@postgresql:5432/
     POSTGRES_HOST_AUTH_METHOD: trust
   services:
