@@ -110,8 +110,8 @@ class MoveLineGroup(MoveLineMixin, ModelSQL, ModelView):
     move_origin = fields.Function(fields.Reference(
             "Move Origin", selection='get_move_origin'),
         'get_move_field', searcher='search_move_field')
-    move_description = fields.Function(fields.Char(
-            "Move Description"),
+    move_description_used = fields.Function(
+        fields.Char("Move Description"),
         'get_move_field', searcher='search_move_field')
     move_state = fields.Function(fields.Selection(
             'get_move_states', "Move State"),

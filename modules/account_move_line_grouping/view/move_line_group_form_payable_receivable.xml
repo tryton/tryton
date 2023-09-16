@@ -17,8 +17,8 @@ this repository contains the full copyright notices and license terms. -->
     <label name="move_origin"/>
     <field name="move_origin"/>
 
-    <label name="move_description"/>
-    <field name="move_description" colspan="3"/>
+    <label name="move_description_used"/>
+    <field name="move_description_used" colspan="3"/>
 
     <field name="lines" colspan="4" view_ids="account.move_line_view_list_payable_receivable"/>
 </form>

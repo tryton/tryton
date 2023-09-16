@@ -21,7 +21,7 @@ from trytond.pool import Pool
 from trytond.pyson import Bool, Eval, If, PYSONEncoder
 from trytond.report import Report
 from trytond.rpc import RPC
-from trytond.tools import grouped_slice, reduce_ids
+from trytond.tools import firstline, grouped_slice, reduce_ids
 from trytond.transaction import Transaction, check_access
 from trytond.wizard import (
     Button, StateAction, StateTransition, StateView, Wizard)
@@ -39,7 +39,48 @@ _LINE_STATES = {
     }
 
 
-class Move(ModelSQL, ModelView):
+class DescriptionOriginMixin:
+    __slots__ = ()
+
+    description_used = fields.Function(
+        fields.Char("Description", states=_MOVE_STATES),
+        'on_change_with_description_used',
+        setter='set_description_used',
+        searcher='search_description_used')
+
+    @fields.depends('description', 'origin')
+    def on_change_with_description_used(self, name=None):
+        description = self.description
+        if not description and hasattr(self.origin, 'description'):
+            description = firstline(self.origin.description or '')
+        return description
+
+    @classmethod
+    def set_description_used(cls, moves, name, value):
+        moves = [m for m in moves if m.description_used != value]
+        if moves:
+            cls.write(moves, {'description': value})
+
+    @classmethod
+    def search_description_used(cls, name, clause):
+        pool = Pool()
+        domain = ['OR', [
+                ('description', '!=', None),
+                ('description', '!=', ''),
+                ('description', *clause[1:]),
+                ],
+            ]
+        for origin, _ in cls.get_origin():
+            if not origin:
+                continue
+            Model = pool.get(origin)
+            if 'description' in Model._fields:
+                domain.append(
+                    ('origin.description', *clause[1:3], origin, *clause[3:]))
+        return domain
+
+
+class Move(DescriptionOriginMixin, ModelSQL, ModelView):
     'Account Move'
     __name__ = 'account.move'
     _rec_name = 'number'
@@ -800,7 +841,7 @@ class MoveLineMixin:
         return [('account.rec_name',) + tuple(clause[1:])]
 
 
-class Line(MoveLineMixin, ModelSQL, ModelView):
+class Line(DescriptionOriginMixin, MoveLineMixin, ModelSQL, ModelView):
     'Account Move Line'
     __name__ = 'account.move.line'
 
@@ -870,9 +911,10 @@ class Line(MoveLineMixin, ModelSQL, ModelView):
         fields.Reference("Move Origin", selection='get_move_origin'),
         'get_move_field', searcher='search_move_field')
     description = fields.Char('Description', states=_states)
-    move_description = fields.Function(fields.Char('Move Description',
-            states=_states),
-        'get_move_field', setter='set_move_field',
+    move_description_used = fields.Function(
+        fields.Char("Move Description", states=_states),
+        'get_move_field',
+        setter='set_move_field',
         searcher='search_move_field')
     amount_second_currency = Monetary(
         "Amount Second Currency",

@@ -31,6 +31,7 @@ from .common import ActivePeriodMixin, ContextCompanyMixin, PeriodMixin
 from .exceptions import (
     AccountValidationError, ChartWarning, FiscalYearNotFoundError,
     SecondCurrencyError)
+from .move import DescriptionOriginMixin
 
 
 def TypeMixin(template=False):
@@ -2322,7 +2323,7 @@ class OpenGeneralLedgerAccountParty(Wizard):
         return action, {}
 
 
-class GeneralLedgerLine(ModelSQL, ModelView):
+class GeneralLedgerLine(DescriptionOriginMixin, ModelSQL, ModelView):
     'General Ledger Line'
     __name__ = 'account.general_ledger.line'
 
@@ -2354,7 +2355,10 @@ class GeneralLedgerLine(ModelSQL, ModelView):
         'get_balance')
     origin = fields.Reference('Origin', selection='get_origin')
     description = fields.Char('Description')
-    move_description = fields.Char('Move Description')
+    move_description_used = fields.Function(
+        fields.Char("Move Description"),
+        'get_move_field',
+        searcher='search_move_field')
     amount_second_currency = Monetary(
         "Amount Second Currency",
         currency='second_currency', digits='second_currency')
@@ -2375,6 +2379,7 @@ class GeneralLedgerLine(ModelSQL, ModelView):
         super(GeneralLedgerLine, cls).__setup__()
         cls.__access__.add('account')
         cls._order.insert(0, ('date', 'ASC'))
+        cls.description_used.setter = None
 
     @classmethod
     def table_query(cls):
@@ -2424,6 +2429,24 @@ class GeneralLedgerLine(ModelSQL, ModelView):
         return line.join(move, condition=line.move == move.id
             ).join(account, condition=line.account == account.id
                 ).select(*columns, where=line_query)
+
+    def get_move_field(self, name):
+        field = getattr(self.__class__, name)
+        if name.startswith('move_'):
+            name = name[5:]
+        value = getattr(self.move, name)
+        if isinstance(value, ModelSQL):
+            if field._type == 'reference':
+                return str(value)
+            return value.id
+        return value
+
+    @classmethod
+    def search_move_field(cls, name, clause):
+        nested = clause[0][len(name):]
+        if name.startswith('move_'):
+            name = name[5:]
+        return [('move.' + name + nested, *clause[1:])]
 
     def get_currency(self, name):
         return self.company.currency.id

@@ -24,8 +24,8 @@ this repository contains the full copyright notices and license terms. -->
     <field name="move_origin"/>
     <label name="origin"/>
     <field name="origin"/>
-    <label name="description"/>
-    <field name="description" colspan="3"/>
+    <label name="description_used"/>
+    <field name="description_used" colspan="3"/>
     <notebook colspan="4">
         <page string="Other Info" id="info">
             <label name="date"/>
