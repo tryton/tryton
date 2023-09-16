@@ -6,6 +6,7 @@ import glob
 import hashlib
 import inspect
 import json
+import multiprocessing
 import operator
 import os
 import pathlib
@@ -69,6 +70,16 @@ else:
     DB_NAME = 'test_' + str(int(time.time()))
 os.environ['DB_NAME'] = DB_NAME
 DB_CACHE = os.environ.get('DB_CACHE')
+
+
+def _cpu_count():
+    try:
+        return multiprocessing.cpu_count()
+    except NotImplementedError:
+        return 1
+
+
+DB_CACHE_JOBS = os.environ.get('DB_CACHE_JOBS', str(_cpu_count()))
 
 
 def activate_module(modules, lang='en'):
@@ -202,7 +213,7 @@ def _pg_restore(cache_file):
         with Transaction().start(
                 None, 0, close=True, autocommit=True) as transaction:
             transaction.database.create(transaction.connection, DB_NAME)
-        cmd = ['pg_restore', '-d', DB_NAME]
+        cmd = ['pg_restore', '-d', DB_NAME, '-j', DB_CACHE_JOBS]
         options, env = _pg_options()
         cmd.extend(options)
         cmd.append(cache_file)
@@ -233,7 +244,8 @@ def _pg_dump(cache_file):
     def dump_on_file():
         if os.path.exists(cache_file):
             return False
-        cmd = ['pg_dump', '-f', cache_file, '-F', 'c']
+        # Use directory format to support multiple processes
+        cmd = ['pg_dump', '-f', cache_file, '-F', 'd', '-j', DB_CACHE_JOBS]
         options, env = _pg_options()
         cmd.extend(options)
         cmd.append(DB_NAME)
