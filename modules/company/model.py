@@ -54,7 +54,7 @@ def employee_field(string, states=None, company='company'):
             })
 
 
-def set_employee(field, company='company'):
+def set_employee(field, company='company', when='after'):
     def decorator(func):
         @functools.wraps(func)
         def wrapper(cls, records, *args, **kwargs):
@@ -62,7 +62,8 @@ def set_employee(field, company='company'):
             User = pool.get('res.user')
             user = User(Transaction().user)
 
-            result = func(cls, records, *args, **kwargs)
+            if when == 'after':
+                result = func(cls, records, *args, **kwargs)
             employee = user.employee
             if employee:
                 emp_company = employee.company
@@ -72,17 +73,24 @@ def set_employee(field, company='company'):
                         and getattr(r, company) == emp_company], {
                         field: employee.id,
                         })
+            if when == 'before':
+                result = func(cls, records, *args, **kwargs)
             return result
         return wrapper
+    assert when in {'before', 'after'}
     return decorator
 
 
-def reset_employee(*fields):
+def reset_employee(*fields, when='after'):
     def decorator(func):
         @functools.wraps(func)
         def wrapper(cls, records, *args, **kwargs):
-            result = func(cls, records, *args, **kwargs)
+            if when == 'after':
+                result = func(cls, records, *args, **kwargs)
             cls.write(records, {f: None for f in fields})
+            if when == 'before':
+                result = func(cls, records, *args, **kwargs)
             return result
         return wrapper
+    assert when in {'before', 'after'}
     return decorator

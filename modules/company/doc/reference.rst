@@ -35,7 +35,7 @@ Employee Fields
    :param company: The name of the field that contains the company.
    :return: The employee Many2One field.
 
-.. decorator:: trytond.modules.company.model.set_employee(field, [company])
+.. decorator:: trytond.modules.company.model.set_employee(field, [company[, when]])
 
    Used to decorate methods which need to record the employee that last
    ran them.
@@ -47,8 +47,12 @@ Employee Fields
    :param company:
       The name of the field that contains the company.
       Defaults to 'company'.
+   :param when:
+      Define if the field is set 'after' calling the decorated method or
+      'before'.
+      Default to 'after'.
 
-.. decorator:: trytond.modules.company.model.reset_employee(*fields)
+.. decorator:: trytond.modules.company.model.reset_employee(\*fields[, when])
 
    Used to decorate methods which indicate that the document is now in a
    state where the action has not yet been performed, so the
@@ -56,6 +60,10 @@ Employee Fields
 
    :param fields:
       The names of the fields that should have the employee removed.
+   :param when:
+      Define if the field is set 'after' calling the decorated method or
+      'before'.
+      Default to 'after'.
 
 Company Reports
 ===============
