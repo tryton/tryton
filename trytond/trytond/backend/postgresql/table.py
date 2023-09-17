@@ -132,6 +132,11 @@ class TableHandler(TableHandlerInterface):
                 and not cls.table_exist(new_name)):
             cursor.execute(SQL('ALTER TABLE {} RENAME TO {}').format(
                     Identifier(old_name), Identifier(new_name)))
+        # Migrate from 6.6: rename old sequence
+        old_sequence = old_name + '_id_seq'
+        new_sequence = new_name + '_id_seq'
+        transaction.database.sequence_rename(
+            transaction.connection, old_sequence, new_sequence)
         # Rename history table
         old_history = old_name + "__history"
         new_history = new_name + "__history"
