@@ -2179,10 +2179,12 @@ class GeneralLedgerAccountContext(ModelView):
         FiscalYear = pool.get('account.fiscalyear')
         Period = pool.get('account.period')
         context = Transaction().context
-        if context.get('fiscalyear', -1) >= 0:
-            return context['fiscalyear']
-        elif context.get('period', -1) >= 0:
-            period = Period(context['period'])
+        fiscalyear_id = context.get('fiscalyear')
+        period_id = context.get('period')
+        if fiscalyear_id is not None and fiscalyear_id >= 0:
+            return fiscalyear_id
+        elif period_id is not None and period_id >= 0:
+            period = Period(period_id)
             return period.fiscalyear.id
         else:
             try:
