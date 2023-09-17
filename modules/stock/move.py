@@ -1038,7 +1038,7 @@ class Move(Workflow, ModelSQL, ModelView):
         def default_values(values):
             def get_value(name):
                 def get_default(data):
-                    return values[data['id']][name]
+                    return values[data['id']].get(name, data[name])
                 return get_default
             default = {}
             for name in set().union(*(v.keys() for v in values.values())):
