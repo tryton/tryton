@@ -25,7 +25,7 @@ from trytond.modules.company.model import (
 from trytond.modules.currency.fields import Monetary
 from trytond.modules.product import price_digits
 from trytond.pool import Pool
-from trytond.pyson import Bool, Eval, If
+from trytond.pyson import Bool, Eval, Id, If
 from trytond.report import Report
 from trytond.rpc import RPC
 from trytond.tools import firstline, grouped_slice, reduce_ids, slugify
@@ -96,9 +96,18 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin, InvoiceReportMixin):
     reference = fields.Char(
         "Reference",
         states={
-            'readonly': Eval('has_report_cache', False),
-        })
-    description = fields.Char('Description', size=None, states=_states)
+            'readonly': (
+                Eval('has_report_cache', False)
+                & ~Id('account', 'group_account_admin').in_(
+                    Eval('context', {}).get('groups', []))),
+            })
+    description = fields.Char("Description", size=None,
+        states={
+            'readonly': (
+                (Eval('state') != 'draft')
+                & ~Id('account', 'group_account_admin').in_(
+                    Eval('context', {}).get('groups', []))),
+            })
     validated_by = employee_field(
         "Validated By",
         states=['validated', 'posted', 'paid', 'cancelled'])
@@ -235,7 +244,13 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin, InvoiceReportMixin):
                 (Eval('state') != 'draft')
                 | ~Eval('account')),
             })
-    comment = fields.Text('Comment', states=_states)
+    comment = fields.Text("Comment",
+        states={
+            'readonly': (
+                (Eval('state') != 'draft')
+                & ~Id('account', 'group_account_admin').in_(
+                    Eval('context', {}).get('groups', []))),
+            })
     origins = fields.Function(fields.Char('Origins'), 'get_origins')
     untaxed_amount = fields.Function(Monetary(
             "Untaxed", currency='currency', digits='currency'),
@@ -352,8 +367,8 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin, InvoiceReportMixin):
                 })
         cls._check_modify_exclude = {
             'state', 'alternative_payees', 'payment_lines',
-            'move', 'cancel_move', 'additional_moves',
-            'invoice_report_cache', 'invoice_report_format',
+            'move', 'cancel_move', 'additional_moves', 'description',
+            'invoice_report_cache', 'invoice_report_format', 'comment',
             'total_amount_cache', 'tax_amount_cache', 'untaxed_amount_cache',
             'lines', 'reference', 'invoice_report_cache_id',
             'invoice_report_revisions'}
