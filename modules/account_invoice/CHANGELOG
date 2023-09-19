@@ -1,3 +1,4 @@
+* Allow refreshing invoice report cache
 * Set employee who validates and posts invoices
 * Allow modification of invoice references when report is not cached
 * Add cache on invoice's amounts

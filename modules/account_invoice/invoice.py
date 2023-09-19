@@ -5,6 +5,7 @@ from collections import defaultdict, namedtuple
 from decimal import Decimal
 from itertools import chain, combinations, groupby
 
+from genshi.template.text import TextTemplate
 from sql import Literal, Null
 from sql.aggregate import Sum
 from sql.conditionals import Coalesce
@@ -27,7 +28,7 @@ from trytond.pool import Pool
 from trytond.pyson import Bool, Eval, If
 from trytond.report import Report
 from trytond.rpc import RPC
-from trytond.tools import firstline, grouped_slice, reduce_ids
+from trytond.tools import firstline, grouped_slice, reduce_ids, slugify
 from trytond.transaction import Transaction
 from trytond.wizard import (
     Button, StateAction, StateTransition, StateView, Wizard)
@@ -45,7 +46,17 @@ else:
     store_prefix = None
 
 
-class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
+class InvoiceReportMixin:
+    __slots__ = ()
+
+    invoice_report_cache = fields.Binary(
+        "Invoice Report", readonly=True,
+        file_id=file_id, store_prefix=store_prefix)
+    invoice_report_cache_id = fields.Char("Invoice Report ID", readonly=True)
+    invoice_report_format = fields.Char("Invoice Report Format", readonly=True)
+
+
+class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin, InvoiceReportMixin):
     'Invoice'
     __name__ = 'account.invoice'
     _rec_name = 'number'
@@ -291,10 +302,12 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
     amount_to_pay = fields.Function(Monetary(
             "Amount to Pay", currency='currency', digits='currency'),
         'get_amount_to_pay')
-    invoice_report_cache = fields.Binary('Invoice Report', readonly=True,
-        file_id=file_id, store_prefix=store_prefix)
-    invoice_report_cache_id = fields.Char('Invoice Report ID', readonly=True)
-    invoice_report_format = fields.Char('Invoice Report Format', readonly=True)
+    invoice_report_revisions = fields.One2Many(
+        'account.invoice.report.revision', 'invoice',
+        "Invoice Report Revisions", readonly=True,
+        states={
+            'invisible': ~Eval('invoice_report_revisions'),
+            })
     allow_cancel = fields.Function(
         fields.Boolean("Allow Cancel Invoice"), 'get_allow_cancel')
     has_payment_method = fields.Function(
@@ -342,7 +355,8 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
             'move', 'cancel_move', 'additional_moves',
             'invoice_report_cache', 'invoice_report_format',
             'total_amount_cache', 'tax_amount_cache', 'untaxed_amount_cache',
-            'lines', 'reference'}
+            'lines', 'reference', 'invoice_report_cache_id',
+            'invoice_report_revisions'}
         cls._order = [
             ('number', 'DESC NULLS FIRST'),
             ('id', 'DESC'),
@@ -1248,6 +1262,26 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
     def get_tax_identifier(self):
         "Return the default computed tax identifier"
         return self.company.party.tax_identifier
+
+    @property
+    def invoice_report_versioned(self):
+        return self.state in {'posted', 'paid'} and self.type == 'out'
+
+    def create_invoice_report_revision(self):
+        pool = Pool()
+        InvoiceReportRevision = pool.get('account.invoice.report.revision')
+        if not self.invoice_report_versioned:
+            return
+        invoice_report_revision = InvoiceReportRevision(
+            invoice=self,
+            invoice_report_cache=self.invoice_report_cache,
+            invoice_report_cache_id=self.invoice_report_cache_id,
+            invoice_report_format=self.invoice_report_format)
+        self.invoice_report_revisions += (invoice_report_revision,)
+        self.invoice_report_cache = None
+        self.invoice_report_cache_id = None
+        self.invoice_report_format = None
+        return invoice_report_revision
 
     @property
     def is_modifiable(self):
@@ -3066,6 +3100,70 @@ class PaymentMethod(DeactivableMixin, ModelSQL, ModelView):
         return Transaction().context.get('company')
 
 
+class InvoiceReportRevision(ModelSQL, ModelView, InvoiceReportMixin):
+    "Invoice Report Revision"
+    __name__ = 'account.invoice.report.revision'
+    invoice = fields.Many2One(
+        'account.invoice', "Invoice", required=True, ondelete='CASCADE')
+    date = fields.DateTime("Date", required=True, readonly=True)
+    filename = fields.Function(fields.Char("File Name"), 'get_filename')
+
+    @classmethod
+    def __setup__(cls):
+        super().__setup__()
+        cls.__access__.add('invoice')
+        cls._order.insert(0, ('date', 'DESC'))
+        cls.invoice_report_cache.filename = 'filename'
+
+    @classmethod
+    def default_date(cls):
+        return dt.datetime.now()
+
+    @classmethod
+    def get_filename(cls, revisions, name):
+        pool = Pool()
+        ActionReport = pool.get('ir.action.report')
+
+        action_report, = ActionReport.search([
+                ('report_name', '=', 'account.invoice'),
+                ], limit=1)
+
+        action_report_name = action_report.name[:100]
+        if action_report.record_name:
+            template = TextTemplate(action_report.record_name)
+        else:
+            template = None
+        filenames = {}
+        for revision in revisions:
+            invoice = revision.invoice
+            if template:
+                record_name = template.generate(record=invoice).render()
+            else:
+                record_name = invoice.rec_name
+            filename = '-'.join([action_report_name, record_name])
+            filenames[revision.id] = (
+                f'{slugify(filename)}.{revision.invoice_report_format}')
+        return filenames
+
+
+class RefreshInvoiceReport(Wizard):
+    "Refresh Invoice Report"
+    __name__ = 'account.invoice.refresh_invoice_report'
+    start_state = 'archive'
+    archive = StateTransition()
+    print_ = StateAction('account_invoice.report_invoice')
+
+    def transition_archive(self):
+        for record in self.records:
+            record.create_invoice_report_revision()
+        self.model.save(self.records)
+        return 'print_'
+
+    def do_print_(self, action):
+        ids = [r.id for r in self.records]
+        return action, {'ids': ids}
+
+
 class InvoiceReport(Report):
     __name__ = 'account.invoice'
 
@@ -3086,10 +3184,7 @@ class InvoiceReport(Report):
                 invoice.invoice_report_cache)
         else:
             result = super()._execute(records, header, data, action)
-            # If the invoice is posted or paid and the report not saved in
-            # invoice_report_cache there was an error somewhere. So we save it
-            # now in invoice_report_cache
-            if invoice.state in {'posted', 'paid'} and invoice.type == 'out':
+            if invoice.invoice_report_versioned:
                 format_, data = result
                 if isinstance(data, str):
                     data = bytes(data, 'utf-8')
