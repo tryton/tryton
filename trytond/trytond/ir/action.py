@@ -250,7 +250,8 @@ class ActionKeyword(ModelSQL, ModelView):
         Action = pool.get('ir.action')
         Menu = pool.get('ir.ui.menu')
         ModelAccess = pool.get('ir.model.access')
-        key = (keyword, tuple(value))
+        user = Transaction().user
+        key = (user, keyword, tuple(value))
         keywords = cls._get_keyword_cache.get(key)
         if keywords is not None:
             return keywords
