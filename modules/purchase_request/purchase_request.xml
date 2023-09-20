@@ -166,8 +166,7 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
         <record model="ir.model.access" id="access_purchase_purchase_request">
-            <field name="model" search="[('model', '=',
-                'purchase.purchase')]"/>
+            <field name="model" search="[('model', '=', 'purchase.purchase')]"/>
             <field name="group" ref="group_purchase_request"/>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="False"/>
