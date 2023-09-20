@@ -25,10 +25,5 @@ this repository contains the full copyright notices and license terms. -->
             <field name="string">Recall Deposit</field>
             <field name="model" search="[('model', '=', 'account.invoice')]"/>
         </record>
-        <record model="ir.model.button-res.group"
-                id="invoice_recall_deposit_button_group_account">
-            <field name="button" ref="invoice_recall_deposit_button"/>
-            <field name="group" ref="account.group_account"/>
-        </record>
     </data>
 </tryton>

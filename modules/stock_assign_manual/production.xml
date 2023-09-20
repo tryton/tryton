@@ -14,10 +14,6 @@ this repository contains the full copyright notices and license terms. -->
             <field name="string">Manual Assign</field>
             <field name="model" search="[('model', '=', 'production')]"/>
         </record>
-        <record model="ir.model.button-res.group" id="production_assign_manual_wizard_button_group_stock">
-            <field name="button" ref="production_assign_manual_wizard_button"/>
-            <field name="group" ref="production.group_production"/>
-        </record>
 
         <record model="ir.action.wizard" id="wizard_production_assign_manual">
             <field name="name">Manual Assign Production</field>

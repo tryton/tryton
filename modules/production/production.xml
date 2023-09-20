@@ -222,22 +222,12 @@ this repository contains the full copyright notices and license terms. -->
             <field name="model"
                 search="[('model', '=', 'production')]"/>
         </record>
-        <record model="ir.model.button-res.group"
-            id="production_cancel_button_group_production">
-            <field name="button" ref="production_cancel_button"/>
-            <field name="group" ref="group_production"/>
-        </record>
 
         <record model="ir.model.button" id="production_draft_button">
             <field name="name">draft</field>
             <field name="string">Draft</field>
             <field name="model"
                 search="[('model', '=', 'production')]"/>
-        </record>
-        <record model="ir.model.button-res.group"
-            id="production_draft_button_group_production">
-            <field name="button" ref="production_draft_button"/>
-            <field name="group" ref="group_production"/>
         </record>
 
         <record model="ir.model.button" id="production_wait_button">
@@ -246,22 +236,12 @@ this repository contains the full copyright notices and license terms. -->
             <field name="model"
                 search="[('model', '=', 'production')]"/>
         </record>
-        <record model="ir.model.button-res.group"
-            id="production_wait_button_group_production">
-            <field name="button" ref="production_wait_button"/>
-            <field name="group" ref="group_production"/>
-        </record>
 
         <record model="ir.model.button" id="production_run_button">
             <field name="name">run</field>
             <field name="string">Run</field>
             <field name="model"
                 search="[('model', '=', 'production')]"/>
-        </record>
-        <record model="ir.model.button-res.group"
-            id="production_run_button_group_production">
-            <field name="button" ref="production_run_button"/>
-            <field name="group" ref="group_production"/>
         </record>
 
         <record model="ir.model.button" id="production_done_button">
@@ -271,21 +251,11 @@ this repository contains the full copyright notices and license terms. -->
             <field name="model"
                 search="[('model', '=', 'production')]"/>
         </record>
-        <record model="ir.model.button-res.group"
-            id="production_done_button_group_production">
-            <field name="button" ref="production_done_button"/>
-            <field name="group" ref="group_production"/>
-        </record>
 
         <record model="ir.model.button" id="production_assign_try_button">
             <field name="name">assign_try</field>
             <field name="model"
                 search="[('model', '=', 'production')]"/>
-        </record>
-        <record model="ir.model.button-res.group"
-            id="production_assign_try_button_group_production">
-            <field name="button" ref="production_assign_try_button"/>
-            <field name="group" ref="group_production"/>
         </record>
 
         <record model="ir.model.button" id="production_assign_force_button">
@@ -304,11 +274,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="string">Assign</field>
             <field name="model" search="[('model', '=', 'production')]"/>
         </record>
-        <record model="ir.model.button-res.group"
-                id="production_assign_wizard_button_group_stock">
-            <field name="button" ref="production_assign_wizard_button"/>
-            <field name="group" ref="stock.group_stock"/>
-        </record>
+
         <record model="ir.model.button" id="production_reset_bom_button">
             <field name="name">reset_bom</field>
             <field name="string">Reset to BOM</field>

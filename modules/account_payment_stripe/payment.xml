@@ -104,19 +104,11 @@ this repository contains the full copyright notices and license terms. -->
             <field name="string">Draft</field>
             <field name="model" search="[('model', '=', 'account.payment.stripe.refund')]"/>
         </record>
-        <record model="ir.model.button-res.group" id="refund_draft_button_group_payment">
-            <field name="button" ref="refund_draft_button"/>
-            <field name="group" ref="account_payment.group_payment"/>
-        </record>
 
         <record model="ir.model.button" id="refund_submit_button">
             <field name="name">submit</field>
             <field name="string">Submit</field>
             <field name="model" search="[('model', '=', 'account.payment.stripe.refund')]"/>
-        </record>
-        <record model="ir.model.button-res.group" id="refund_submit_button_group_payment">
-            <field name="button" ref="refund_submit_button"/>
-            <field name="group" ref="account_payment.group_payment"/>
         </record>
 
         <record model="ir.model.button" id="refund_approve_button">

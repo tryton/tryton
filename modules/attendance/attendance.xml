@@ -176,19 +176,11 @@ this repository contains the full copyright notices and license terms. -->
             <field name="string">Draft</field>
             <field name="model" search="[('model', '=', 'attendance.period')]"/>
         </record>
-        <record model="ir.model.button-res.group" id="period_draft_button_group_employee_admin">
-            <field name="button" ref="period_draft_button"/>
-            <field name="group" ref="group_attendance_admin"/>
-        </record>
 
         <record model="ir.model.button" id="period_close_button">
             <field name="name">close</field>
             <field name="string">Close</field>
             <field name="model" search="[('model', '=', 'attendance.period')]"/>
-        </record>
-        <record model="ir.model.button-res.group" id="period_close_button_group_employee_admin">
-            <field name="button" ref="period_close_button"/>
-            <field name="group" ref="group_attendance_admin"/>
         </record>
 
         <record model="ir.ui.view" id="sheet_line_view_form">

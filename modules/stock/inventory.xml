@@ -118,22 +118,12 @@ this repository contains the full copyright notices and license terms. -->
             <field name="confirm">Are you sure you want to confirm the inventory?</field>
             <field name="model" search="[('model', '=', 'stock.inventory')]"/>
         </record>
-        <record model="ir.model.button-res.group"
-            id="inventory_confirm_button_group_stock">
-            <field name="button" ref="inventory_confirm_button"/>
-            <field name="group" ref="group_stock"/>
-        </record>
 
         <record model="ir.model.button" id="inventory_cancel_button">
             <field name="name">cancel</field>
             <field name="string">Cancel</field>
             <field name="confirm">Are you sure you want to cancel the inventory?</field>
             <field name="model" search="[('model', '=', 'stock.inventory')]"/>
-        </record>
-        <record model="ir.model.button-res.group"
-            id="inventory_cancel_button_group_stock">
-            <field name="button" ref="inventory_cancel_button"/>
-            <field name="group" ref="group_stock"/>
         </record>
 
         <record model="ir.model.button" id="inventory_complete_lines_button">

@@ -210,29 +210,17 @@ this repository contains the full copyright notices and license terms. -->
             <field name="string">Cancel</field>
             <field name="model" search="[('model', '=', 'sale.complaint')]"/>
         </record>
-        <record model="ir.model.button-res.group" id="complaint_cancel_button_group_sale">
-            <field name="button" ref="complaint_cancel_button"/>
-            <field name="group" ref="sale.group_sale"/>
-        </record>
 
         <record model="ir.model.button" id="complaint_draft_button">
             <field name="name">draft</field>
             <field name="string">Draft</field>
             <field name="model" search="[('model', '=', 'sale.complaint')]"/>
         </record>
-        <record model="ir.model.button-res.group" id="complaint_draft_button_group_sale">
-            <field name="button" ref="complaint_draft_button"/>
-            <field name="group" ref="sale.group_sale"/>
-        </record>
 
         <record model="ir.model.button" id="complaint_wait_button">
             <field name="name">wait</field>
             <field name="string">Wait</field>
             <field name="model" search="[('model', '=', 'sale.complaint')]"/>
-        </record>
-        <record model="ir.model.button-res.group" id="complaint_wait_button_group_sale">
-            <field name="button" ref="complaint_wait_button"/>
-            <field name="group" ref="sale.group_sale"/>
         </record>
 
         <record model="ir.model.button" id="complaint_approve_button">
