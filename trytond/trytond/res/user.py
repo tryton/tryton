@@ -640,20 +640,22 @@ class User(avatar_mixin(100, 'login'), DeactivableMixin, ModelSQL, ModelView):
     @classmethod
     def get_groups(cls, name=None):
         '''
-        Return a list of all group ids for the user
+        Return an ordered tuple of all group ids for the user
         '''
-        user = Transaction().user
+        pool = Pool()
+        UserGroup = pool.get('res.user-res.group')
+        transaction = Transaction()
+        user = transaction.user
         groups = cls._get_groups_cache.get(user)
         if groups is not None:
             return groups
-        pool = Pool()
-        UserGroup = pool.get('res.user-res.group')
-        cursor = Transaction().connection.cursor()
+        cursor = transaction.connection.cursor()
         user_group = UserGroup.user_group_all_table()
         cursor.execute(*user_group.select(
                 user_group.group,
-                where=user_group.user == user))
-        groups = [g for g, in cursor]
+                where=user_group.user == user,
+                order_by=[user_group.group.asc]))
+        groups = tuple(g for g, in cursor)
         cls._get_groups_cache.set(user, groups)
         return groups
 
