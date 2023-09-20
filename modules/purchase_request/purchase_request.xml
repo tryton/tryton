@@ -8,6 +8,12 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">Purchase Request</field>
         </record>
 
+        <record model="res.user-res.group"
+            id="user_admin_group_purchase_request">
+            <field name="user" ref="res.user_admin"/>
+            <field name="group" ref="group_purchase_request"/>
+        </record>
+
         <record model="ir.ui.view" id="purchase_request_view_form">
             <field name="model">purchase.request</field>
             <field name="type">form</field>
@@ -157,12 +163,6 @@ this repository contains the full copyright notices and license terms. -->
             <field name="perm_write" eval="True"/>
             <field name="perm_create" eval="False"/>
             <field name="perm_delete" eval="True"/>
-        </record>
-
-        <record model="res.user-res.group"
-            id="user_admin_group_purchase_request">
-            <field name="user" ref="res.user_admin"/>
-            <field name="group" ref="group_purchase_request"/>
         </record>
 
         <record model="ir.model.access" id="access_purchase_purchase_request">
