@@ -22,8 +22,8 @@ this repository contains the full copyright notices and license terms. -->
     <label name="currency_exchange_journal" string="Journal"/>
     <field name="currency_exchange_journal" widget="selection"/>
     <newline/>
-    <label name="currency_exchange_credit_account" string="Credit Account"/>
-    <field name="currency_exchange_credit_account"/>
     <label name="currency_exchange_debit_account" string="Debit Account"/>
     <field name="currency_exchange_debit_account"/>
+    <label name="currency_exchange_credit_account" string="Credit Account"/>
+    <field name="currency_exchange_credit_account"/>
 </form>
