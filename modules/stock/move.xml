@@ -171,10 +171,5 @@ this repository contains the full copyright notices and license terms. -->
             <field name="model">product.template,-1</field>
             <field name="action" ref="act_product_moves"/>
         </record>
-        <record model="ir.action-res.group" id="act_product_moves-group_stock">
-            <field name="action" ref="act_product_moves"/>
-            <field name="group" ref="group_stock"/>
-        </record>
-
     </data>
 </tryton>

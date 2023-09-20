@@ -195,13 +195,6 @@ this repository contains the full copyright notices and license terms. -->
             <field name="model">purchase.request,-1</field>
             <field name="action" ref="act_open_purchase_form"/>
         </record>
-        <record model="ir.action-res.group"
-            id="act_open_purchase_form_group_purchase">
-            <field name="action" ref="act_open_purchase_form"/>
-            <field name="group" ref="purchase.group_purchase"/>
-        </record>
-
-
     </data>
 </tryton>
 
