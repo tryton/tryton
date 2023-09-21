@@ -4,5 +4,5 @@ this repository contains the full copyright notices and license terms. -->
 <tree>
     <field name="name" expand="1"/>
     <field name="resource" expand="1"/>
-    <field name="create_uid"/>
+    <field name="user"/>
 </tree>

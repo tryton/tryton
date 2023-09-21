@@ -12,5 +12,8 @@ this repository contains the full copyright notices and license terms. -->
     <label name="records"/>
     <field name="records"/>
 
+    <label name="user"/>
+    <field name="user"/>
+
     <field name="export_fields" colspan="4"/>
 </form>

@@ -215,8 +215,7 @@ class WinExport(WinCSV):
     def fill_predefwin(self):
         try:
             exports = RPCExecute(
-                'model', 'ir.export', 'search_read',
-                [('resource', '=', self.model)], 0, None, None,
+                'model', 'ir.export', 'get', self.model,
                 ['name', 'header', 'records', 'export_fields.name'],
                 context=self.context)
         except RPCException:
@@ -265,15 +264,13 @@ class WinExport(WinCSV):
                 values.update({
                         'name': name,
                         'resource': self.model,
-                        'export_fields': [
-                            ('create', [{'name': x, } for x in fields])],
+                        'export_fields': [{'name': x, } for x in fields],
                         })
-                pref_id, = RPCExecute(
-                    'model', 'ir.export', 'create', [values],
-                    context=self.context)
+                pref_id = RPCExecute(
+                    'model', 'ir.export', 'set', values, context=self.context)
             else:
                 RPCExecute(
-                    'model', 'ir.export', 'update', [pref_id], values, fields,
+                    'model', 'ir.export', 'update', pref_id, values, fields,
                     context=self.context)
         except RPCException:
             return
@@ -293,8 +290,8 @@ class WinExport(WinCSV):
             return None
         export_id = model.get_value(i, 0)
         try:
-            RPCExecute('model', 'ir.export', 'delete', [export_id],
-                context=self.context)
+            RPCExecute(
+                'model', 'ir.export', 'unset', export_id, context=self.context)
         except RPCException:
             return
         clear_cache('model.%s.view_toolbar_get' % self.model)

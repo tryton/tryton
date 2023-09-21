@@ -1943,10 +1943,12 @@
         },
         fill_predefwin: function() {
             Sao.rpc({
-                'method': 'model.ir.export.search_read',
+                'method': 'model.ir.export.get',
                 'params': [
-                    [['resource', '=', this.screen.model_name]], 0, null, null,
-                    ['name', 'header', 'records', 'export_fields.name'], {}],
+                    this.screen.model_name,
+                    ['name', 'header', 'records', 'export_fields.name'],
+                    this.context,
+                ],
             }, this.session).done(exports => {
                 for (const export_ of exports) {
                     this.predef_exports[export_.id] = {
@@ -2000,16 +2002,15 @@
                 if (!pref_id) {
                     values.name = name;
                     values.resource = this.screen.model_name;
-                    values.export_fields = [
-                        ['create', fields.map(f => ({'name': f}))]];
+                    values.export_fields = fields.map(f => ({'name': f}));
                     prm = Sao.rpc({
-                        method: 'model.ir.export.create',
-                        params: [[values], this.context],
-                    }, this.session).then(([id]) => id);
+                        method: 'model.ir.export.set',
+                        params: [values, this.context],
+                    }, this.session);
                 } else {
                     prm = Sao.rpc({
                         method: 'model.ir.export.update',
-                        params: [[pref_id], values, fields, this.context],
+                        params: [pref_id, values, fields, this.context],
                     }, this.session).then(() =>  pref_id);
                 }
                 return prm.then(pref_id => {
@@ -2048,8 +2049,8 @@
             }
             var export_id = jQuery(selection).attr('export_id');
             Sao.rpc({
-                'method': 'model.ir.export.delete',
-                'params': [[export_id], {}]
+                'method': 'model.ir.export.unset',
+                'params': [export_id, this.context]
             }, this.session).then(() => {
                 this.session.cache.clear(
                     'model.' + this.screen.model_name + '.view_toolbar_get');
