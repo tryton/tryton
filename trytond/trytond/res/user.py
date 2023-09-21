@@ -1113,7 +1113,7 @@ class UserApplication(Workflow, ModelSQL, ModelView):
 
     key = fields.Char("Key", required=True, strip=False)
     user = fields.Many2One('res.user', "User")
-    application = fields.Selection([], "Application")
+    application = fields.Selection([], "Application", required=True)
     state = fields.Selection([
             ('requested', "Requested"),
             ('validated', "Validated"),
