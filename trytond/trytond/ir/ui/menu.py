@@ -272,9 +272,9 @@ class UIMenuFavorite(sequence_ordered(), ModelSQL, ModelView):
     def __setup__(cls):
         super(UIMenuFavorite, cls).__setup__()
         cls.__rpc__.update({
-                'get': RPC(),
-                'set': RPC(readonly=False),
-                'unset': RPC(readonly=False),
+                'get': RPC(check_access=False),
+                'set': RPC(check_access=False, readonly=False),
+                'unset': RPC(check_access=False, readonly=False),
                 })
 
     @staticmethod
