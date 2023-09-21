@@ -634,7 +634,7 @@ class User(avatar_mixin(100, 'login'), DeactivableMixin, ModelSQL, ModelView):
         return res
 
     @classmethod
-    def get_groups(cls, name=None):
+    def get_groups(cls):
         '''
         Return an ordered tuple of all group ids for the user
         '''
