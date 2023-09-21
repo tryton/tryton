@@ -606,7 +606,9 @@ class ViewSearch(ModelSQL, ModelView):
     def __setup__(cls):
         super(ViewSearch, cls).__setup__()
         cls.__rpc__.update({
-                'get_search': RPC(),
+                'get': RPC(check_access=False),
+                'set': RPC(check_access=False, readonly=False),
+                'unset': RPC(check_access=False, readonly=False),
                 })
 
     @classmethod
@@ -660,10 +662,14 @@ class ViewSearch(ModelSQL, ModelView):
                             search=search.rec_name)) from exception
 
     @classmethod
-    def get_search(cls):
+    def get(cls):
         decoder = PYSONDecoder()
-        searches = cls.search_read(
-            [], order=[('model', 'ASC'), ('name', 'ASC')],
+        user = Transaction().user
+        searches = cls.search_read(['OR',
+                ('user', '=', user),
+                ('user', '=', None),
+                ],
+            order=[('model', 'ASC'), ('name', 'ASC')],
             fields_names=['id', 'name', 'model', 'domain', '_delete'])
         result = {}
         for search in searches:
@@ -673,3 +679,22 @@ class ViewSearch(ModelSQL, ModelView):
                     decoder.decode(search['domain']),
                     search['_delete']))
         return result
+
+    @classmethod
+    def set(cls, name, model, domain):
+        user = Transaction().user
+        search, = cls.create([{
+                    'name': name,
+                    'model': model,
+                    'domain': domain,
+                    'user': user,
+                    }])
+        return search.id
+
+    @classmethod
+    def unset(cls, id):
+        user = Transaction().user
+        cls.delete(cls.search([
+                    ('id', '=', id),
+                    ('user', '=', user),
+                    ]))

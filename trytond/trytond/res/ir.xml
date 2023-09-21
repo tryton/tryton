@@ -388,57 +388,20 @@ this repository contains the full copyright notices and license terms. -->
             <field name="perm_delete" eval="True" />
         </record>
 
-        <record model="ir.rule.group" id="rule_group_view_search">
-            <field name="name">Own view search</field>
-            <field name="model"
-                search="[('model', '=', 'ir.ui.view_search')]"/>
-            <field name="global_p" eval="False"/>
-            <field name="default_p" eval="True"/>
-            <field name="perm_read" eval="True"/>
-            <field name="perm_write" eval="True"/>
-            <field name="perm_create" eval="True"/>
-            <field name="perm_delete" eval="True"/>
+        <record model="ir.model.access" id="access_ir_ui_view_search">
+            <field name="model" search="[('model', '=', 'ir.ui.view_search')]" />
+            <field name="perm_read" eval="False" />
+            <field name="perm_write" eval="False" />
+            <field name="perm_create" eval="False" />
+            <field name="perm_delete" eval="False" />
         </record>
-        <record model="ir.rule" id="rule_group_view_search1">
-            <field name="domain"
-                eval="[('user', '=', Eval('user', {}).get('id', -1))]"
-                pyson="1"/>
-            <field name="rule_group" ref="rule_group_view_search"/>
-        </record>
-
-        <record model="ir.rule.group" id="rule_group_view_search_common">
-            <field name="name">Common view search</field>
-            <field name="model" search="[('model', '=', 'ir.ui.view_search')]"/>
-            <field name="global_p" eval="False"/>
-            <field name="default_p" eval="True"/>
-            <field name="perm_read" eval="True"/>
-            <field name="perm_write" eval="False"/>
-            <field name="perm_create" eval="False"/>
-            <field name="perm_delete" eval="False"/>
-        </record>
-        <record model="ir.rule" id="rule_group_view_search_common1">
-            <field
-                name="domain"
-                eval="[('user', '=', None)]"
-                pyson="1"/>
-            <field name="rule_group" ref="rule_group_view_search_common"/>
-        </record>
-
-        <record model="ir.rule.group" id="rule_group_view_search_admin">
-            <field name="name">Any view search</field>
-            <field name="model"
-                search="[('model', '=', 'ir.ui.view_search')]"/>
-            <field name="global_p" eval="False"/>
-            <field name="default_p" eval="False"/>
-            <field name="perm_read" eval="True"/>
-            <field name="perm_write" eval="True"/>
-            <field name="perm_create" eval="True"/>
-            <field name="perm_delete" eval="True"/>
-        </record>
-        <record model="ir.rule.group-res.group"
-            id="rule_group_view_search_admin_group_admin">
-            <field name="rule_group" ref="rule_group_view_search_admin"/>
-            <field name="group" ref="group_admin"/>
+        <record model="ir.model.access" id="access_ir_ui_view_search_admin">
+            <field name="model" search="[('model', '=', 'ir.ui.view_search')]" />
+            <field name="group" ref="res.group_admin" />
+            <field name="perm_read" eval="True" />
+            <field name="perm_write" eval="True" />
+            <field name="perm_create" eval="True" />
+            <field name="perm_delete" eval="True" />
         </record>
 
         <record model="ir.model.access" id="access_message">

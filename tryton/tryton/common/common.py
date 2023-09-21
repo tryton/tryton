@@ -323,9 +323,8 @@ class ViewSearch(object):
 
     def load_searches(self):
         try:
-            self.searches = rpc.execute('model', 'ir.ui.view_search',
-                'get_search', rpc.CONTEXT)
-        except TrytonServerError:
+            self.searches = RPCExecute('model', 'ir.ui.view_search', 'get')
+        except RPCException:
             self.searches = {}
 
     def __getitem__(self, model):
@@ -333,19 +332,16 @@ class ViewSearch(object):
 
     def add(self, model, name, domain):
         try:
-            id_, = RPCExecute('model', 'ir.ui.view_search',
-                'create', [{
-                        'model': model,
-                        'name': name,
-                        'domain': self.encoder.encode(domain),
-                        }])
+            id_ = RPCExecute(
+                'model', 'ir.ui.view_search', 'set',
+                name, model, self.encoder.encode(domain))
         except RPCException:
             return
         self.searches.setdefault(model, []).append((id_, name, domain, True))
 
     def remove(self, model, id_):
         try:
-            RPCExecute('model', 'ir.ui.view_search', 'delete', [id_])
+            RPCExecute('model', 'ir.ui.view_search', 'unset', id_)
         except RPCException:
             return
         for i, domain in enumerate(self.searches[model]):

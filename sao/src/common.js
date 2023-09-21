@@ -583,7 +583,7 @@
         load_searches: function() {
             this.searches = {};
             return Sao.rpc({
-                'method': 'model.ir.ui.view_search.get_search',
+                'method': 'model.ir.ui.view_search.get',
                 'params': [{}]
             }, Sao.Session.current_session).then(searches => {
                 this.searches = searches;
@@ -594,14 +594,9 @@
         },
         add: function(model, name, domain) {
             return Sao.rpc({
-                'method': 'model.ir.ui.view_search.create',
-                'params': [[{
-                    'model': model,
-                    'name': name,
-                    'domain': this.encoder.encode(domain)
-                }], {}]
-            }, Sao.Session.current_session).then(ids => {
-                var id = ids[0];
+                'method': 'model.ir.ui.view_search.set',
+                'params': [name, model, this.encoder.encode(domain), {}],
+            }, Sao.Session.current_session).then(id => {
                 if (this.searches[model] === undefined) {
                     this.searches[model] = [];
                 }
@@ -610,8 +605,8 @@
         },
         remove: function(model, id) {
             return Sao.rpc({
-                'method': 'model.ir.ui.view_search.delete',
-                'params': [[id], {}]
+                'method': 'model.ir.ui.view_search.unset',
+                'params': [id, {}]
             }, Sao.Session.current_session).then(() => {
                 for (var i = 0; i < this.searches[model].length; i++) {
                     var domain = this.searches[model][i];
