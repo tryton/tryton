@@ -424,32 +424,6 @@ this repository contains the full copyright notices and license terms. -->
             <field name="group" ref="group_admin"/>
         </record>
 
-        <record model="ir.rule.group" id="rule_group_session">
-            <field name="name">Own session</field>
-            <field name="model"
-                search="[('model', '=', 'ir.session')]"/>
-            <field name="global_p" eval="True"/>
-        </record>
-        <record model="ir.rule" id="rule_session1">
-            <field name="domain"
-                eval="[('create_uid', '=', Eval('user', {}).get('id', -1))]"
-                pyson="1"/>
-            <field name="rule_group" ref="rule_group_session"/>
-        </record>
-
-        <record model="ir.rule.group" id="rule_group_session_wizard">
-            <field name="name">Own session</field>
-            <field name="model"
-                search="[('model', '=', 'ir.session.wizard')]"/>
-            <field name="global_p" eval="True"/>
-        </record>
-        <record model="ir.rule" id="rule_session_wizard1">
-            <field name="domain"
-                eval="[('create_uid', '=', Eval('user', {}).get('id', -1))]"
-                pyson="1"/>
-            <field name="rule_group" ref="rule_group_session_wizard"/>
-        </record>
-
         <record model="ir.rule.group" id="rule_group_ui_menu_favorite">
             <field name="name">Own favorite</field>
             <field name="model"
