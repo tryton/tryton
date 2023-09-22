@@ -64,8 +64,6 @@ class Group(DeactivableMixin, tree(), ModelSQL, ModelView):
         pool = Pool()
         # Restart the cache for get_groups
         pool.get('res.user')._get_groups_cache.clear()
-        # Restart the cache for view
-        ModelView._fields_view_get_cache.clear()
 
     @classmethod
     def copy(cls, groups, default=None):

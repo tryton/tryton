@@ -226,7 +226,10 @@ class ModelView(Model):
            - fields: a dictionary with the definition of each field in the view
            - field_childs: the name of the childs field for tree
         '''
-        key = (cls.__name__, view_id, view_type, level)
+        pool = Pool()
+        User = pool.get('res.user')
+
+        key = (User.get_groups(), cls.__name__, view_id, view_type, level)
         result = cls._fields_view_get_cache.get(key)
         if result:
             return result

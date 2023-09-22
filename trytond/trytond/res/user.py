@@ -414,8 +414,6 @@ class User(avatar_mixin(100, 'login'), DeactivableMixin, ModelSQL, ModelView):
             if cls.__name__ in cache:
                 for user in all_users:
                     cache[cls.__name__].pop(user.id, None)
-        # Restart the cache
-        ModelView._fields_view_get_cache.clear()
 
     @classmethod
     def delete(cls, users):
@@ -1017,8 +1015,6 @@ class UserGroup(ModelSQL):
         pool = Pool()
         # Restart the cache for get_groups
         pool.get('res.user')._get_groups_cache.clear()
-        # Restart the cache for view
-        ModelView._fields_view_get_cache.clear()
         return records
 
     @classmethod
@@ -1027,8 +1023,6 @@ class UserGroup(ModelSQL):
         pool = Pool()
         # Restart the cache for get_groups
         pool.get('res.user')._get_groups_cache.clear()
-        # Restart the cache for view
-        ModelView._fields_view_get_cache.clear()
 
     @classmethod
     def delete(cls, groups):
@@ -1036,8 +1030,6 @@ class UserGroup(ModelSQL):
         pool = Pool()
         # Restart the cache for get_groups
         pool.get('res.user')._get_groups_cache.clear()
-        # Restart the cache for view
-        ModelView._fields_view_get_cache.clear()
 
     @classmethod
     def user_group_all_table(cls):

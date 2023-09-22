@@ -226,14 +226,12 @@ class ActionKeyword(ModelSQL, ModelView):
 
     @classmethod
     def delete(cls, keywords):
-        ModelView._fields_view_get_cache.clear()
         ModelView._view_toolbar_get_cache.clear()
         cls._get_keyword_cache.clear()
         super(ActionKeyword, cls).delete(keywords)
 
     @classmethod
     def create(cls, vlist):
-        ModelView._fields_view_get_cache.clear()
         ModelView._view_toolbar_get_cache.clear()
         cls._get_keyword_cache.clear()
         new_vlist = []
@@ -248,7 +246,6 @@ class ActionKeyword(ModelSQL, ModelView):
         for keywords, values in zip(actions, actions):
             args.extend((keywords, cls._convert_vals(values)))
         super(ActionKeyword, cls).write(*args)
-        ModelView._fields_view_get_cache.clear()
         ModelView._view_toolbar_get_cache.clear()
         cls._get_keyword_cache.clear()
 
@@ -390,7 +387,6 @@ class ActionMixin(ModelSQL):
     @classmethod
     def create(cls, vlist):
         pool = Pool()
-        ModelView._fields_view_get_cache.clear()
         ModelView._view_toolbar_get_cache.clear()
         Action = pool.get('ir.action')
         ir_action = cls.__table__()
@@ -435,14 +431,12 @@ class ActionMixin(ModelSQL):
         pool = Pool()
         ActionKeyword = pool.get('ir.action.keyword')
         super(ActionMixin, cls).write(records, values, *args)
-        ModelView._fields_view_get_cache.clear()
         ModelView._view_toolbar_get_cache.clear()
         ActionKeyword._get_keyword_cache.clear()
 
     @classmethod
     def delete(cls, records):
         pool = Pool()
-        ModelView._fields_view_get_cache.clear()
         ModelView._view_toolbar_get_cache.clear()
         Action = pool.get('ir.action')
         actions = [x.action for x in records]
