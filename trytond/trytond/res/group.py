@@ -62,8 +62,6 @@ class Group(DeactivableMixin, tree(), ModelSQL, ModelView):
     def write(cls, *args):
         super().write(*args)
         pool = Pool()
-        # Restart the cache on the domain_get method
-        pool.get('ir.rule')._domain_get_cache.clear()
         # Restart the cache for get_groups
         pool.get('res.user')._get_groups_cache.clear()
         # Restart the cache for view

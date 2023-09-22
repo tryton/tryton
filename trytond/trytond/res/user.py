@@ -417,8 +417,6 @@ class User(avatar_mixin(100, 'login'), DeactivableMixin, ModelSQL, ModelView):
         # Restart the cache for domain_get method
         pool = Pool()
         pool.get('ir.rule')._domain_get_cache.clear()
-        # Restart the cache for get_groups
-        cls._get_groups_cache.clear()
         # Restart the cache
         ModelView._fields_view_get_cache.clear()
 
