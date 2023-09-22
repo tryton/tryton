@@ -419,10 +419,6 @@ class User(avatar_mixin(100, 'login'), DeactivableMixin, ModelSQL, ModelView):
         pool.get('ir.rule')._domain_get_cache.clear()
         # Restart the cache for get_groups
         cls._get_groups_cache.clear()
-        # Restart the cache of check
-        pool.get('ir.model.access')._get_access_cache.clear()
-        # Restart the cache of check
-        pool.get('ir.model.field.access')._get_access_cache.clear()
         # Restart the cache
         ModelView._fields_view_get_cache.clear()
 
@@ -1028,9 +1024,7 @@ class UserGroup(ModelSQL):
         pool.get('ir.rule')._domain_get_cache.clear()
         # Restart the cache for get_groups
         pool.get('res.user')._get_groups_cache.clear()
-        # Restart the cache for model access and view
-        pool.get('ir.model.access')._get_access_cache.clear()
-        pool.get('ir.model.field.access')._get_access_cache.clear()
+        # Restart the cache for view
         ModelView._fields_view_get_cache.clear()
         return records
 
@@ -1042,9 +1036,7 @@ class UserGroup(ModelSQL):
         pool.get('ir.rule')._domain_get_cache.clear()
         # Restart the cache for get_groups
         pool.get('res.user')._get_groups_cache.clear()
-        # Restart the cache for model access and view
-        pool.get('ir.model.access')._get_access_cache.clear()
-        pool.get('ir.model.field.access')._get_access_cache.clear()
+        # Restart the cache for view
         ModelView._fields_view_get_cache.clear()
 
     @classmethod
@@ -1055,9 +1047,7 @@ class UserGroup(ModelSQL):
         pool.get('ir.rule')._domain_get_cache.clear()
         # Restart the cache for get_groups
         pool.get('res.user')._get_groups_cache.clear()
-        # Restart the cache for model access and view
-        pool.get('ir.model.access')._get_access_cache.clear()
-        pool.get('ir.model.field.access')._get_access_cache.clear()
+        # Restart the cache for view
         ModelView._fields_view_get_cache.clear()
 
     @classmethod

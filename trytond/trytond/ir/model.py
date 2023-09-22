@@ -532,18 +532,16 @@ class ModelAccess(DeactivableMixin, ModelSQL, ModelView):
 
         pool = Pool()
         Model = pool.get('ir.model')
-        UserGroup = pool.get('res.user-res.group')
-        Group = pool.get('res.group')
+        User = pool.get('res.user')
         cursor = Transaction().connection.cursor()
-        user = Transaction().user
         model_access = cls.__table__()
         ir_model = Model.__table__()
-        user_group = UserGroup.user_group_all_table()
-        group = Group.__table__()
+
+        groups = User.get_groups()
 
         access = {}
         for model in models:
-            maccess = cls._get_access_cache.get((user, model), default=-1)
+            maccess = cls._get_access_cache.get((groups, model), default=-1)
             if maccess == -1:
                 break
             access[model] = maccess
@@ -578,10 +576,6 @@ class ModelAccess(DeactivableMixin, ModelSQL, ModelView):
                 access[model] = default
         cursor.execute(*model_access.join(ir_model, 'LEFT',
                 condition=model_access.model == ir_model.id
-                ).join(user_group, 'LEFT',
-                condition=user_group.group == model_access.group
-                ).join(group, 'LEFT',
-                condition=model_access.group == group.id
                 ).select(
                 ir_model.model,
                 Max(Case(
@@ -598,9 +592,7 @@ class ModelAccess(DeactivableMixin, ModelSQL, ModelView):
                         else_=0)),
                 where=ir_model.model.in_(all_models)
                 & (model_access.active == Literal(True))
-                & ((
-                        (user_group.user == user)
-                        & (group.active == Literal(True)))
+                & (model_access.group.in_(groups or [-1])
                     | (model_access.group == Null)),
                 group_by=ir_model.model))
         raw_access = {
@@ -615,7 +607,7 @@ class ModelAccess(DeactivableMixin, ModelSQL, ModelView):
                     default=access[model][perm])
                 for perm in ['read', 'write', 'create', 'delete']}
         for model, maccess in access.items():
-            cls._get_access_cache.set((user, model), maccess)
+            cls._get_access_cache.set((groups, model), maccess)
         return access
 
     @classmethod
@@ -755,18 +747,16 @@ class ModelFieldAccess(DeactivableMixin, ModelSQL, ModelView):
         pool = Pool()
         Model = pool.get('ir.model')
         ModelField = pool.get('ir.model.field')
-        UserGroup = pool.get('res.user-res.group')
-        Group = pool.get('res.group')
-        user = Transaction().user
+        User = pool.get('res.user')
         field_access = cls.__table__()
         ir_model = Model.__table__()
         model_field = ModelField.__table__()
-        user_group = UserGroup.user_group_all_table()
-        group = Group.__table__()
+
+        groups = User.get_groups()
 
         accesses = {}
         for model in models:
-            maccesses = cls._get_access_cache.get((user, model))
+            maccesses = cls._get_access_cache.get((groups, model))
             if maccesses is None:
                 break
             accesses[model] = maccesses
@@ -780,10 +770,6 @@ class ModelFieldAccess(DeactivableMixin, ModelSQL, ModelView):
                 condition=field_access.field == model_field.id
                 ).join(ir_model,
                 condition=model_field.model == ir_model.id
-                ).join(user_group, 'LEFT',
-                condition=user_group.group == field_access.group
-                ).join(group, 'LEFT',
-                condition=field_access.group == group.id
                 ).select(
                 ir_model.model,
                 model_field.name,
@@ -801,15 +787,13 @@ class ModelFieldAccess(DeactivableMixin, ModelSQL, ModelView):
                         else_=0)),
                 where=ir_model.model.in_(models)
                 & (field_access.active == Literal(True))
-                & ((
-                        (user_group.user == user)
-                        & (group.active == Literal(True)))
+                & (field_access.group.in_(groups or [-1])
                     | (field_access.group == Null)),
                 group_by=[ir_model.model, model_field.name]))
         for m, f, r, w, c, d in cursor:
             accesses[m][f] = {'read': r, 'write': w, 'create': c, 'delete': d}
         for model, maccesses in accesses.items():
-            cls._get_access_cache.set((user, model), maccesses)
+            cls._get_access_cache.set((groups, model), maccesses)
         return accesses
 
     @classmethod
