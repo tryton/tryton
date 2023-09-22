@@ -922,7 +922,6 @@ class ModelButton(DeactivableMixin, ModelSQL, ModelView):
     @classmethod
     def delete(cls, buttons):
         super(ModelButton, cls).delete(buttons)
-        # Restart the cache for get_groups and get_rules
         cls._rules_cache.clear()
         cls._reset_cache.clear()
         cls._view_attributes_cache.clear()
