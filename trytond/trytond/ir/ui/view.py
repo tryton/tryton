@@ -5,7 +5,7 @@ import os
 
 from lxml import etree
 
-from trytond.cache import Cache
+from trytond.cache import Cache, MemoryCache
 from trytond.i18n import gettext
 from trytond.model import Index, ModelSQL, ModelView, fields
 from trytond.model.exceptions import ValidationError
@@ -65,7 +65,7 @@ class View(ModelSQL, ModelView):
     domain = fields.Char('Domain', states={
             'invisible': ~Eval('inherit'),
             }, depends=['inherit'])
-    _get_rng_cache = Cache('ir_ui_view.get_rng', context=False)
+    _get_rng_cache = MemoryCache('ir_ui_view.get_rng', context=False)
     _view_get_cache = Cache('ir_ui_view.view_get')
     __module_index = None
 
