@@ -165,7 +165,8 @@ class ActionKeyword(ModelSQL, ModelView):
     model = fields.Reference('Model', selection='models_get')
     action = fields.Many2One('ir.action', 'Action',
         ondelete='CASCADE')
-    _get_keyword_cache = Cache('ir_action_keyword.get_keyword')
+    _get_keyword_cache = Cache(
+        'ir_action_keyword.get_keyword', context=False)
 
     @classmethod
     def __setup__(cls):
@@ -259,7 +260,7 @@ class ActionKeyword(ModelSQL, ModelView):
         ModelAccess = pool.get('ir.model.access')
         User = pool.get('res.user')
         groups = User.get_groups()
-        key = (groups, keyword, tuple(value))
+        key = (Transaction().language, groups, keyword, tuple(value))
         keywords = cls._get_keyword_cache.get(key)
         if keywords is not None:
             return keywords
