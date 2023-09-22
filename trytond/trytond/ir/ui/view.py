@@ -65,7 +65,7 @@ class View(ModelSQL, ModelView):
     domain = fields.Char('Domain', states={
             'invisible': ~Eval('inherit'),
             }, depends=['inherit'])
-    _get_rng_cache = Cache('ir_ui_view.get_rng')
+    _get_rng_cache = Cache('ir_ui_view.get_rng', context=False)
     _view_get_cache = Cache('ir_ui_view.view_get')
     __module_index = None
 
