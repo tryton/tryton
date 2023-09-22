@@ -684,6 +684,7 @@ class Translation(ModelSQL, ModelView):
         cls._translation_cache.clear()
         cls._translation_report_cache.clear()
         ModelView._fields_view_get_cache.clear()
+        ModelView._view_toolbar_get_cache.clear()
         return super(Translation, cls).delete(translations)
 
     @classmethod
@@ -698,6 +699,7 @@ class Translation(ModelSQL, ModelView):
         cls._translation_cache.clear()
         cls._translation_report_cache.clear()
         ModelView._fields_view_get_cache.clear()
+        ModelView._view_toolbar_get_cache.clear()
         vlist = [x.copy() for x in vlist]
 
         for vals in vlist:
@@ -718,6 +720,7 @@ class Translation(ModelSQL, ModelView):
         cls._translation_cache.clear()
         cls._translation_report_cache.clear()
         ModelView._fields_view_get_cache.clear()
+        ModelView._view_toolbar_get_cache.clear()
         return super(Translation, cls).write(*args)
 
     @classmethod
