@@ -61,7 +61,8 @@ class ModelView(Model):
     """
     __slots__ = ()
     _fields_view_get_cache = Cache('modelview.fields_view_get')
-    _view_toolbar_get_cache = Cache('modelview.view_toolbar_get')
+    _view_toolbar_get_cache = Cache(
+        'modelview.view_toolbar_get', context=False)
 
     @classmethod
     def __setup__(cls):
@@ -321,7 +322,9 @@ class ModelView(Model):
         Action = pool.get('ir.action.keyword')
         Export = pool.get('ir.export')
         Email = pool.get('ir.email.template')
-        key = cls.__name__
+        User = pool.get('res.user')
+        groups = User.get_groups()
+        key = (Transaction().language, groups, cls.__name__)
         result = cls._view_toolbar_get_cache.get(key)
         if result:
             return result
