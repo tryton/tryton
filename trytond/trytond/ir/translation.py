@@ -30,6 +30,7 @@ from trytond.transaction import (
 from trytond.wizard import (
     Button, StateAction, StateTransition, StateView, Wizard)
 
+from .action import ACTION_SELECTION
 from .lang import get_parent_language as get_parent
 
 TRANSLATION_TYPE = [
@@ -42,6 +43,7 @@ TRANSLATION_TYPE = [
     ('help', 'Help'),
 ]
 INTERNAL_LANG = 'en'
+ACTION_MODELS = {'ir.action'} | dict(ACTION_SELECTION).keys()
 
 
 class OverriddenError(UserError):
@@ -674,60 +676,51 @@ class Translation(ModelSQL, ModelView):
 
     @classmethod
     def delete(cls, translations):
-        pool = Pool()
-        Message = pool.get('ir.message')
-        Model = pool.get('ir.model')
-        ModelField = pool.get('ir.model.field')
-        ActionKeyword = pool.get('ir.action.keyword')
-        Message._message_cache.clear()
-        Model._get_names_cache.clear()
-        ModelField._get_name_cache.clear()
-        ActionKeyword._get_keyword_cache.clear()
-        cls._translation_cache.clear()
-        cls._translation_report_cache.clear()
-        ModelView._fields_view_get_cache.clear()
-        ModelView._view_toolbar_get_cache.clear()
-        return super(Translation, cls).delete(translations)
+        cls.__clear_cache_for(translations)
+        return super().delete(translations)
 
     @classmethod
     def create(cls, vlist):
-        pool = Pool()
-        Message = pool.get('ir.message')
-        Model = pool.get('ir.model')
-        ModelField = pool.get('ir.model.field')
-        ActionKeyword = pool.get('ir.action.keyword')
-        Message._message_cache.clear()
-        Model._get_names_cache.clear()
-        ModelField._get_name_cache.clear()
-        ActionKeyword._get_keyword_cache.clear()
-        cls._translation_cache.clear()
-        cls._translation_report_cache.clear()
-        ModelView._fields_view_get_cache.clear()
-        ModelView._view_toolbar_get_cache.clear()
         vlist = [x.copy() for x in vlist]
 
         for vals in vlist:
             if not vals.get('module'):
                 if Transaction().context.get('module'):
                     vals['module'] = Transaction().context['module']
-        return super(Translation, cls).create(vlist)
+        translations = super().create(vlist)
+        cls.__clear_cache_for(translations)
+        return translations
 
     @classmethod
     def write(cls, *args):
-        pool = Pool()
-        Message = pool.get('ir.message')
-        Model = pool.get('ir.model')
-        ModelField = pool.get('ir.model.field')
-        ActionKeyword = pool.get('ir.action.keyword')
-        Message._message_cache.clear()
-        Model._get_names_cache.clear()
-        ModelField._get_name_cache.clear()
-        ActionKeyword._get_keyword_cache.clear()
+        super().write(*args)
+        translations = sum(args[0:None:2], [])
+        cls.__clear_cache_for(translations)
+
+    @classmethod
+    def __clear_cache_for(cls, translations):
         cls._translation_cache.clear()
         cls._translation_report_cache.clear()
-        ModelView._fields_view_get_cache.clear()
-        ModelView._view_toolbar_get_cache.clear()
-        return super(Translation, cls).write(*args)
+        types = {t.type for t in translations}
+        models = {t.model for t in translations}
+        cls._clear_cache_for(types, models)
+
+    @classmethod
+    def _clear_cache_for(cls, types, models):
+        pool = Pool()
+        if 'field' in types and 'ir.message' in models:
+            pool.get('ir.message')._message_cache.clear()
+        if 'field' in types and 'ir.model' in models:
+            pool.get('ir.model')._get_names_cache.clear()
+        if 'field' in types and 'ir.model.field' in models:
+            pool.get('ir.model.field')._get_name_cache.clear()
+        if 'field' in types and ACTION_MODELS & models:
+            pool.get('ir.action.keyword')._get_keyword_cache.clear()
+            ModelView._view_toolbar_get_cache.clear()
+        if 'field' in types and {'ir.export', 'ir.email.template'} & models:
+            ModelView._view_toolbar_get_cache.clear()
+        if 'view' in types:
+            ModelView._fields_view_get_cache.clear()
 
     @classmethod
     def extra_model_data(cls, model_data):
