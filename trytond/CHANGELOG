@@ -1,3 +1,4 @@
+* Remove user from contextual key of Cache
 * Remove user from evaluation context of rule domain
 * Allow customizing context per model for rule
 * Use multiple jobs to dump and restore a test database

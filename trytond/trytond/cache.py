@@ -109,7 +109,7 @@ class BaseCache(object):
             for k in (self.__class__.context_ignored_keys
                     | self.context_ignored_keys):
                 context.pop(k, None)
-            return (key, Transaction().user, freeze(context))
+            return (key, freeze(context))
         return key
 
     def get(self, key, default=None):
