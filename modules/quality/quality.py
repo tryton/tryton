@@ -784,7 +784,8 @@ class Inspect(Wizard):
             values[fieldname] = value
 
         if 'points' in fields:
-            values['points'] = values['points'] or {}
+            # Convert ImmutableDict to dict
+            values['points'] = dict(values['points'] or {})
             for point in inspection.control.points:
                 values['points'].setdefault(point.name)
         return values
