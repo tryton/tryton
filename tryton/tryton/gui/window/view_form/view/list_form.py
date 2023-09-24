@@ -146,15 +146,17 @@ class ViewListForm(View):
         if not nodes:
             return
         nodes = {n[0] for n in nodes}
-        self.listbox.handler_block_by_func(self.select_nodes)
-        self.listbox.unselect_all()
-        for idx, view_form in enumerate(self._view_forms):
-            if view_form.record.id in nodes:
-                row = self.listbox.get_row_at_index(idx)
-                if not row:
-                    continue
-                self.listbox.select_row(row)
-        self.listbox.handler_unblock_by_func(self.select_nodes)
+        self.listbox.handler_block_by_func(self._row_selected)
+        try:
+            self.listbox.unselect_all()
+            for idx, view_form in enumerate(self._view_forms):
+                if view_form.record.id in nodes:
+                    row = self.listbox.get_row_at_index(idx)
+                    if not row:
+                        continue
+                    self.listbox.select_row(row)
+        finally:
+            self.listbox.handler_unblock_by_func(self._row_selected)
 
     def _row_selected(self, listbox, row):
         previous_record = self.record
@@ -197,11 +199,11 @@ class ViewListForm(View):
             return
         # unselect_all triggers a loop in _row_selected if the record is not
         # valid
-        self.listbox.handler_block_by_func(self._select_show_row)
+        self.listbox.handler_block_by_func(self._row_selected)
         try:
             self.listbox.unselect_all()
         finally:
-            self.listbox.handler_unblock_by_func(self._select_show_row)
+            self.listbox.handler_unblock_by_func(self._row_selected)
         row = self.listbox.get_row_at_index(index)
         if not row or not row.get_realized():
             return
