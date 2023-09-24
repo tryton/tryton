@@ -2,7 +2,7 @@
 # this repository contains the full copyright notices and license terms.
 from decimal import Decimal
 from simpleeval import simple_eval
-from itertools import chain
+from itertools import chain, groupby
 
 from trytond.pool import Pool, PoolMeta
 from trytond.model import (
@@ -376,24 +376,37 @@ class Sale(metaclass=PoolMeta):
 
         recall_lines = []
         advance_lines = InvoiceLine.search([
+                ('type', '=', 'line'),
                 ('origin', 'in', [str(c)
                         for c in self.advance_payment_conditions]),
                 ('invoice.state', '=', 'paid'),
                 ])
+        recalled_lines = InvoiceLine.search([
+                ('type', '=', 'line'),
+                ('origin', 'in', [str(al) for al in advance_lines]),
+                ('invoice.state', '!=', 'cancelled'),
+                ],
+            order=[('origin', 'DESC')])
+        recalled_lines = {
+            k: list(v) for k, v in groupby(recalled_lines, lambda l: l.origin)}
         for advance_line in advance_lines:
-            line = InvoiceLine(
-                invoice=invoice,
-                company=invoice.company,
-                type=advance_line.type,
-                quantity=advance_line.quantity,
-                account=advance_line.account,
-                unit_price=-advance_line.amount,
-                description=advance_line.description,
-                origin=advance_line,
-                taxes=advance_line.taxes,
-                )
-            recall_lines.append(line)
-
+            amount = advance_line.amount
+            if advance_line in recalled_lines:
+                for recalled_line in recalled_lines[advance_line]:
+                    amount += recalled_line.amount
+            if amount:
+                line = InvoiceLine(
+                    invoice=invoice,
+                    company=invoice.company,
+                    type='line',
+                    quantity=-1,
+                    account=advance_line.account,
+                    unit_price=amount,
+                    description=advance_line.description,
+                    origin=advance_line,
+                    taxes=advance_line.taxes,
+                    )
+                recall_lines.append(line)
         return recall_lines
 
     def create_invoice(self):
