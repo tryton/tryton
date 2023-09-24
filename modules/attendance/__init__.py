@@ -3,13 +3,14 @@
 
 from trytond.pool import Pool
 
-from . import attendance
+from . import attendance, ir
 
 __all__ = ['register']
 
 
 def register():
     Pool.register(
+        ir.Rule,
         attendance.Line,
         attendance.Period,
         attendance.SheetLine,

@@ -2,6 +2,7 @@
 # this repository contains the full copyright notices and license terms.
 from sql import Null
 
+from trytond.cache import Cache
 from trytond.model import ModelSQL, fields
 from trytond.pool import Pool, PoolMeta
 from trytond.pyson import Eval
@@ -18,6 +19,28 @@ class UserCompany(ModelSQL):
         'company.company', "Company",
         ondelete='CASCADE', required=True)
 
+    @classmethod
+    def create(cls, vlist):
+        pool = Pool()
+        User = pool.get('res.user')
+        records = super().create(vlist)
+        User._get_companies_cache.clear()
+        return records
+
+    @classmethod
+    def write(cls, *args):
+        pool = Pool()
+        User = pool.get('res.user')
+        super().write(*args)
+        User._get_companies_cache.clear()
+
+    @classmethod
+    def delete(cls, records):
+        pool = Pool()
+        User = pool.get('res.user')
+        super().delete(records)
+        User._get_companies_cache.clear()
+
 
 class UserEmployee(ModelSQL):
     'User - Employee'
@@ -26,6 +49,28 @@ class UserEmployee(ModelSQL):
         'res.user', "User", ondelete='CASCADE', required=True)
     employee = fields.Many2One(
         'company.employee', "Employee", ondelete='CASCADE', required=True)
+
+    @classmethod
+    def create(cls, vlist):
+        pool = Pool()
+        User = pool.get('res.user')
+        records = super().create(vlist)
+        User._get_employees_cache.clear()
+        return records
+
+    @classmethod
+    def write(cls, *args):
+        pool = Pool()
+        User = pool.get('res.user')
+        super().write(*args)
+        User._get_employees_cache.clear()
+
+    @classmethod
+    def delete(cls, records):
+        pool = Pool()
+        User = pool.get('res.user')
+        super().delete(records)
+        User._get_employees_cache.clear()
 
 
 class User(metaclass=PoolMeta):
@@ -57,6 +102,8 @@ class User(metaclass=PoolMeta):
             ('all', "All"),
             ], "Company Filter",
         help="Define records of which companies are shown.")
+    _get_companies_cache = Cache(__name__ + '.get_companies', context=False)
+    _get_employees_cache = Cache(__name__ + '.get_employees', context=False)
 
     @classmethod
     def __setup__(cls):
@@ -141,6 +188,50 @@ class User(metaclass=PoolMeta):
         return res
 
     @classmethod
+    def get_companies(cls):
+        '''
+        Return an ordered tuple of company ids for the user
+        '''
+        transaction = Transaction()
+        user_id = transaction.user
+        companies = cls._get_companies_cache.get(user_id)
+        if companies is not None:
+            return companies
+        with transaction.set_user(0):
+            user = cls(user_id)
+        if user.company_filter == 'one':
+            companies = [user.company.id] if user.company else []
+        elif user.company_filter == 'all':
+            companies = [c.id for c in user.companies]
+        else:
+            companies = []
+        companies = tuple(companies)
+        cls._get_companies_cache.set(user_id, companies)
+        return companies
+
+    @classmethod
+    def get_employees(cls):
+        '''
+        Return an ordered tuple of employee ids for the user
+        '''
+        transaction = Transaction()
+        user_id = transaction.user
+        employees = cls._get_employees_cache.get(user_id)
+        if employees is not None:
+            return employees
+        with transaction.set_user(0):
+            user = cls(user_id)
+        if user.company_filter == 'one':
+            employees = [user.employee.id] if user.employee else []
+        elif user.company_filter == 'all':
+            employees = [e.id for e in user.employees]
+        else:
+            employees = []
+        employees = tuple(employees)
+        cls._get_employees_cache.set(user_id, employees)
+        return employees
+
+    @classmethod
     def read(cls, ids, fields_names):
         user_id = Transaction().user
         if user_id == 0 and 'user' in Transaction().context:
@@ -189,8 +280,6 @@ class User(metaclass=PoolMeta):
 
     @classmethod
     def write(cls, *args):
-        pool = Pool()
-        Rule = pool.get('ir.rule')
-        super(User, cls).write(*args)
-        # Restart the cache on the domain_get method
-        Rule._domain_get_cache.clear()
+        super().write(*args)
+        cls._get_companies_cache.clear()
+        cls._get_employees_cache.clear()

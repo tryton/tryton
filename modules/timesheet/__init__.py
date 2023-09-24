@@ -2,13 +2,14 @@
 # this repository contains the full copyright notices and license terms.
 from trytond.pool import Pool
 
-from . import line, routes, user, work
+from . import ir, line, routes, user, work
 
 __all__ = ['register', 'routes']
 
 
 def register():
     Pool.register(
+        ir.Rule,
         work.Work,
         work.WorkContext,
         line.Line,

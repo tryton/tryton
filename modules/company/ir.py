@@ -1,10 +1,9 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
-from trytond.model import (
-    EvalEnvironment, ModelSQL, ModelView, dualmethod, fields)
+from trytond.model import ModelSQL, ModelView, dualmethod, fields
 from trytond.pool import Pool, PoolMeta
 from trytond.tools import timezone as tz
-from trytond.transaction import Transaction, without_check_access
+from trytond.transaction import Transaction
 
 
 class Sequence(metaclass=PoolMeta):
@@ -49,46 +48,21 @@ class Rule(metaclass=PoolMeta):
     def __setup__(cls):
         super().__setup__()
         cls.domain.help += (
-            '\n- "employee" from the current user'
-            '\n- "employees" as list of ids from the current user'
             '\n- "companies" as list of ids from the current user')
 
     @classmethod
     def _get_cache_key(cls, model_name):
+        pool = Pool()
+        User = pool.get('res.user')
         key = super()._get_cache_key(model_name)
-        # XXX Use company from context instead of browse to prevent infinite
-        # loop, but the cache is cleared when User is written.
-        context = Transaction().context
-        return key + (
-            context.get('company'),
-            context.get('employee'),
-            context.get('company_filter'),
-            )
+        return (*key, User.get_companies())
 
     @classmethod
     def _get_context(cls, model_name):
         pool = Pool()
         User = pool.get('res.user')
-        Employee = pool.get('company.employee')
         context = super()._get_context(model_name)
-        # Use root to avoid infinite loop when accessing user attributes
-        user_id = Transaction().user
-        with Transaction().set_user(0):
-            user = User(user_id)
-        if user.employee:
-            with without_check_access(), \
-                    Transaction().set_context(_datetime=None):
-                context['employee'] = EvalEnvironment(
-                    Employee(user.employee.id), Employee)
-        if user.company_filter == 'one':
-            context['companies'] = [user.company.id] if user.company else []
-            context['employees'] = [user.employee.id] if user.employee else []
-        elif user.company_filter == 'all':
-            context['companies'] = [c.id for c in user.companies]
-            context['employees'] = [e.id for e in user.employees]
-        else:
-            context['companies'] = []
-            context['employees'] = []
+        context['companies'] = User.get_companies()
         return context
 
 

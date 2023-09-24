@@ -1,3 +1,4 @@
+* Remove employee and employees from evaluation context of rule domain
 * Define when set or reset employee field
 
 Version 6.8.0 - 2023-05-01

@@ -3,11 +3,12 @@
 
 from trytond.pool import Pool
 
-from . import purchase
+from . import ir, purchase
 
 
 def register():
     Pool.register(
+        ir.Rule,
         purchase.PurchaseRequest,
         purchase.PurchaseRequisition,
         purchase.PurchaseRequisitionLine,
