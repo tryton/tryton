@@ -213,6 +213,9 @@ class Product(metaclass=PoolMeta):
         pattern['product'] = None
         yield from self.template.product_suppliers_used(**pattern)
 
+    def _get_purchase_unit_price(self, quantity=0):
+        return
+
     @classmethod
     def get_purchase_price(cls, products, quantity=0):
         '''
@@ -249,7 +252,7 @@ class Product(metaclass=PoolMeta):
         last_purchase_prices = cls.get_last_purchase_price_uom(products)
 
         for product in products:
-            unit_price = None
+            unit_price = product._get_purchase_unit_price(quantity=quantity)
             default_uom = product.default_uom
             default_currency = currency
             if not uom or default_uom.category != uom.category:
@@ -277,9 +280,10 @@ class Product(metaclass=PoolMeta):
                             unit_price = Currency.compute(
                                 default_currency, unit_price, currency,
                                 round=False)
-                    unit_price = round_price(unit_price)
             if unit_price is None:
                 unit_price = last_purchase_prices[product.id]
+            else:
+                unit_price = round_price(unit_price)
             prices[product.id] = unit_price
         return prices
 
