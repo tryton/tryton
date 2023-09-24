@@ -50,7 +50,6 @@ Fill a purchase without price list::
     >>> purchase_line = purchase.lines.new()
     >>> purchase_line.product = product
     >>> purchase_line.unit_price
-    Decimal('15.0000')
 
 Create a price list and assign it to supplier::
 

@@ -107,6 +107,7 @@ Purchase with analytic accounts::
     >>> entry.account = analytic_account
     >>> purchase_line.product = product
     >>> purchase_line.quantity = 5
+    >>> purchase_line.unit_price = Decimal('5.0000')
     >>> purchase.click('quote')
     >>> purchase.click('confirm')
     >>> purchase.state
@@ -133,6 +134,7 @@ Purchase with an empty analytic account::
     >>> entry, = purchase_line.analytic_accounts
     >>> purchase_line.product = product
     >>> purchase_line.quantity = 5
+    >>> purchase_line.unit_price = Decimal('5.0000')
     >>> purchase.click('quote')
     >>> purchase.click('confirm')
     >>> purchase.state

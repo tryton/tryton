@@ -81,8 +81,6 @@ Create product::
     >>> template.list_price = Decimal('10')
     >>> template.cost_price_method = 'fixed'
     >>> template.account_category = account_category
-    >>> product, = template.products
-    >>> product.cost_price = Decimal('5')
     >>> template.save()
     >>> product, = template.products
 
@@ -103,14 +101,17 @@ Purchase 5 products::
     >>> purchase.lines.append(purchase_line)
     >>> purchase_line.product = product
     >>> purchase_line.quantity = 2.0
+    >>> purchase_line.unit_price = Decimal('5.0000')
     >>> purchase_line = PurchaseLine()
     >>> purchase.lines.append(purchase_line)
     >>> purchase_line.product = product
     >>> purchase_line.quantity = 3.0
+    >>> purchase_line.unit_price = Decimal('5.0000')
     >>> purchase_line = PurchaseLine()
     >>> purchase.lines.append(purchase_line)
     >>> purchase_line.product = product
     >>> purchase_line.quantity = 4.0
+    >>> purchase_line.unit_price = Decimal('5.0000')
     >>> purchase_line = PurchaseLine()
     >>> purchase.lines.append(purchase_line)
     >>> purchase_line.type = 'subtotal'

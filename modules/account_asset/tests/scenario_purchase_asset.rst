@@ -92,9 +92,11 @@ Purchase an asset mixed with services::
     >>> line = purchase.lines.new()
     >>> line.product = asset_product
     >>> line.quantity = 1
+    >>> line.unit_price = Decimal('500.0000')
     >>> line = purchase.lines.new()
     >>> line.product = service_product
     >>> line.quantity = 1
+    >>> line.unit_price = Decimal('5.0000')
     >>> purchase.click('quote')
     >>> purchase.click('confirm')
     >>> purchase.click('process')
