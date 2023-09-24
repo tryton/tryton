@@ -999,7 +999,7 @@
         get_eval: function() {
             var value = {};
             for (var key in this.model.fields) {
-                if (!this.model.fields.hasOwnProperty(key) && this.id >= 0)
+                if (!this._loaded.hasOwnProperty(key) && this.id >= 0)
                     continue;
                 value[key] = this.model.fields[key].get_eval(this);
             }
