@@ -54,8 +54,8 @@ class Rule(metaclass=PoolMeta):
             '\n- "companies" as list of ids from the current user')
 
     @classmethod
-    def _get_cache_key(cls):
-        key = super(Rule, cls)._get_cache_key()
+    def _get_cache_key(cls, model_name):
+        key = super()._get_cache_key(model_name)
         # XXX Use company from context instead of browse to prevent infinite
         # loop, but the cache is cleared when User is written.
         context = Transaction().context
@@ -66,11 +66,11 @@ class Rule(metaclass=PoolMeta):
             )
 
     @classmethod
-    def _get_context(cls):
+    def _get_context(cls, model_name):
         pool = Pool()
         User = pool.get('res.user')
         Employee = pool.get('company.employee')
-        context = super()._get_context()
+        context = super()._get_context(model_name)
         # Use root to avoid infinite loop when accessing user attributes
         user_id = Transaction().user
         with Transaction().set_user(0):

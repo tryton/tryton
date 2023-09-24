@@ -132,8 +132,8 @@ class Rule(ModelSQL, ModelView):
     def check_domain(cls, rules, field_names=None):
         if field_names and 'domain' not in field_names:
             return
-        ctx = cls._get_context()
         for rule in rules:
+            ctx = cls._get_context(rule.rule_group.model.model)
             try:
                 value = PYSONDecoder(ctx).decode(rule.domain)
             except Exception:
@@ -149,8 +149,8 @@ class Rule(ModelSQL, ModelView):
                     raise DomainError(gettext(
                             'ir.msg_rule_invalid_domain', name=rule.rec_name))
 
-    @staticmethod
-    def _get_context():
+    @classmethod
+    def _get_context(cls, model_name):
         User = Pool().get('res.user')
         transaction = Transaction()
         user_id = transaction.user
@@ -163,8 +163,8 @@ class Rule(ModelSQL, ModelView):
             'groups': User.get_groups()
             }
 
-    @staticmethod
-    def _get_cache_key():
+    @classmethod
+    def _get_cache_key(cls, model_name):
         # _datetime value will be added to the domain
         return (Transaction().user, Transaction().context.get('_datetime'))
 
@@ -243,10 +243,11 @@ class Rule(ModelSQL, ModelView):
 
         clause = defaultdict(lambda: ['OR'])
         clause_global = defaultdict(lambda: ['OR'])
-        decoder = PYSONDecoder(cls._get_context())
         # Use root user without context to prevent recursion
         with transaction.set_user(0), transaction.set_context(user=0):
             for rule in cls.browse(ids):
+                decoder = PYSONDecoder(
+                    cls._get_context(rule.rule_group.model.model))
                 assert rule.domain, ('Rule domain empty,'
                     'check if migration was done')
                 dom = decoder.decode(rule.domain)
@@ -276,7 +277,7 @@ class Rule(ModelSQL, ModelView):
 
         assert mode in cls.modes
 
-        key = (model_name, mode) + cls._get_cache_key()
+        key = (model_name, mode) + cls._get_cache_key(model_name)
         domain = cls._domain_get_cache.get(key, False)
         if domain is not False:
             return domain

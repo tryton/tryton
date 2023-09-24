@@ -1,3 +1,4 @@
+* Allow customizing context per model for rule
 * Use multiple jobs to dump and restore a test database
 * Support database cache as template for tests
 * Add route test case
