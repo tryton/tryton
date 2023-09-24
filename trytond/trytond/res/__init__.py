@@ -33,6 +33,7 @@ def register():
         ir.ModelButtonClick,
         ir.RuleGroup,
         ir.RuleGroupGroup,
+        ir.Rule,
         ir.SequenceType,
         ir.SequenceTypeGroup,
         ir.Export,

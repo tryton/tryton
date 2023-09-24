@@ -5,6 +5,7 @@ from trytond.cache import Cache
 from trytond.model import DeactivableMixin, ModelSQL, fields
 from trytond.pool import Pool, PoolMeta
 from trytond.pyson import Eval
+from trytond.transaction import Transaction
 
 
 class UIMenu(metaclass=PoolMeta):
@@ -21,25 +22,6 @@ class UIMenuGroup(ModelSQL):
         required=True)
     group = fields.Many2One('res.group', 'Group', ondelete='CASCADE',
         required=True)
-
-    @classmethod
-    def create(cls, vlist):
-        res = super(UIMenuGroup, cls).create(vlist)
-        # Restart the cache on the domain_get method
-        Pool().get('ir.rule')._domain_get_cache.clear()
-        return res
-
-    @classmethod
-    def write(cls, records, values, *args):
-        super(UIMenuGroup, cls).write(records, values, *args)
-        # Restart the cache on the domain_get method
-        Pool().get('ir.rule')._domain_get_cache.clear()
-
-    @classmethod
-    def delete(cls, records):
-        super(UIMenuGroup, cls).delete(records)
-        # Restart the cache on the domain_get method
-        Pool().get('ir.rule')._domain_get_cache.clear()
 
 
 class ActionGroup(ModelSQL):
@@ -58,8 +40,6 @@ class ActionGroup(ModelSQL):
             if vals.get('action'):
                 vals['action'] = Action.get_action_id(vals['action'])
         res = super(ActionGroup, cls).create(vlist)
-        # Restart the cache on the domain_get method
-        Pool().get('ir.rule')._domain_get_cache.clear()
         return res
 
     @classmethod
@@ -73,14 +53,6 @@ class ActionGroup(ModelSQL):
                 values['action'] = Action.get_action_id(values['action'])
             args.extend((records, values))
         super(ActionGroup, cls).write(*args)
-        # Restart the cache on the domain_get method
-        Pool().get('ir.rule')._domain_get_cache.clear()
-
-    @classmethod
-    def delete(cls, records):
-        super(ActionGroup, cls).delete(records)
-        # Restart the cache on the domain_get method
-        Pool().get('ir.rule')._domain_get_cache.clear()
 
 
 class Action(metaclass=PoolMeta):
@@ -237,6 +209,24 @@ class RuleGroupGroup(ModelSQL):
         required=True)
 
 
+class Rule(metaclass=PoolMeta):
+    __name__ = 'ir.rule'
+
+    @classmethod
+    def _get_context(cls, model_name):
+        context = super()._get_context(model_name)
+        if model_name in {'res.user.warning', 'res.user.application'}:
+            context['user_id'] = Transaction().user
+        return context
+
+    @classmethod
+    def _get_cache_key(cls, model_name):
+        key = super()._get_cache_key(model_name)
+        if model_name in {'res.user.warning', 'res.user.application'}:
+            key = (*key, Transaction().user)
+        return key
+
+
 class SequenceType(metaclass=PoolMeta):
     __name__ = 'ir.sequence.type'
     groups = fields.Many2Many('ir.sequence.type-res.group', 'sequence_type',
@@ -251,28 +241,6 @@ class SequenceTypeGroup(ModelSQL):
         ondelete='CASCADE', required=True)
     group = fields.Many2One('res.group', 'User Groups',
         ondelete='CASCADE', required=True)
-
-    @classmethod
-    def delete(cls, records):
-        Rule = Pool().get('ir.rule')
-        super(SequenceTypeGroup, cls).delete(records)
-        # Restart the cache on the domain_get method of ir.rule
-        Rule._domain_get_cache.clear()
-
-    @classmethod
-    def create(cls, vlist):
-        Rule = Pool().get('ir.rule')
-        res = super(SequenceTypeGroup, cls).create(vlist)
-        # Restart the cache on the domain_get method of ir.rule
-        Rule._domain_get_cache.clear()
-        return res
-
-    @classmethod
-    def write(cls, records, values, *args):
-        Rule = Pool().get('ir.rule')
-        super(SequenceTypeGroup, cls).write(records, values, *args)
-        # Restart the cache on the domain_get method
-        Rule._domain_get_cache.clear()
 
 
 class Export(metaclass=PoolMeta):

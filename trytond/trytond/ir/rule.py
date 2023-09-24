@@ -6,13 +6,11 @@ from sql import Literal
 
 from trytond.cache import Cache
 from trytond.i18n import gettext
-from trytond.model import (
-    Check, EvalEnvironment, Index, ModelSQL, ModelView, fields)
+from trytond.model import Check, Index, ModelSQL, ModelView, fields
 from trytond.model.exceptions import ValidationError
 from trytond.pool import Pool
 from trytond.pyson import PYSONDecoder
-from trytond.transaction import (
-    Transaction, inactive_records, without_check_access)
+from trytond.transaction import Transaction, inactive_records
 
 
 class DomainError(ValidationError):
@@ -108,7 +106,6 @@ class Rule(ModelSQL, ModelView):
        required=True, ondelete="CASCADE")
     domain = fields.Char('Domain', required=True,
         help="Domain is evaluated with a PYSON context containing:"
-        '\n- "user" as the current user'
         '\n- "groups" as list of ids from the current user')
     _domain_get_cache = Cache('ir_rule.domain_get', context=False)
 
@@ -151,22 +148,18 @@ class Rule(ModelSQL, ModelView):
 
     @classmethod
     def _get_context(cls, model_name):
-        User = Pool().get('res.user')
-        transaction = Transaction()
-        user_id = transaction.user
-        with transaction.set_context(_datetime=None), \
-                without_check_access(), \
-                transaction.set_user(0):
-            user = EvalEnvironment(User(user_id), User)
+        pool = Pool()
+        User = pool.get('res.user')
         return {
-            'user': user,
             'groups': User.get_groups()
             }
 
     @classmethod
     def _get_cache_key(cls, model_name):
+        pool = Pool()
+        User = pool.get('res.user')
         # _datetime value will be added to the domain
-        return (Transaction().user, Transaction().context.get('_datetime'))
+        return (Transaction().context.get('_datetime'), User.get_groups())
 
     @classmethod
     def get(cls, model_name, mode='read'):
@@ -175,15 +168,16 @@ class Rule(ModelSQL, ModelView):
         RuleGroup = pool.get('ir.rule.group')
         Model = pool.get('ir.model')
         RuleGroup_Group = pool.get('ir.rule.group-res.group')
-        User_Group = pool.get('res.user-res.group')
+        User = pool.get('res.user')
         rule_table = cls.__table__()
         rule_group = RuleGroup.__table__()
         rule_group_group = RuleGroup_Group.__table__()
-        user_group = User_Group.user_group_all_table()
         model = Model.__table__()
         transaction = Transaction()
 
         assert mode in cls.modes
+
+        groups = User.get_groups()
 
         model_names = []
         model2field = defaultdict(list)
@@ -205,25 +199,19 @@ class Rule(ModelSQL, ModelView):
         update_model_names(pool.get(model_name))
 
         cursor = transaction.connection.cursor()
-        user_id = transaction.user
         # root user above constraint
-        if user_id == 0:
+        if transaction.user == 0:
             return {}, {}
         cursor.execute(*rule_table.join(rule_group,
                 condition=rule_group.id == rule_table.rule_group
                 ).join(model,
                 condition=rule_group.model == model.id
+                ).join(rule_group_group, 'LEFT',
+                condition=rule_group_group.rule_group == rule_group.id
                 ).select(rule_table.id,
                 where=(model.model.in_(model_names))
                 & (getattr(rule_group, 'perm_%s' % mode) == Literal(True))
-                & (rule_group.id.in_(
-                        rule_group_group.join(
-                            user_group,
-                            condition=(rule_group_group.group
-                                == user_group.group)
-                            ).select(rule_group_group.rule_group,
-                            where=user_group.user == user_id)
-                        )
+                & (rule_group_group.group.in_(groups or [-1])
                     | (rule_group.default_p == Literal(True))
                     | (rule_group.global_p == Literal(True))
                     )))
@@ -232,13 +220,12 @@ class Rule(ModelSQL, ModelView):
         # Test if there is no rule_group that have no rule
         cursor.execute(*rule_group.join(model,
                 condition=rule_group.model == model.id
+                ).join(rule_group_group, 'LEFT',
+                condition=rule_group_group.rule_group == rule_group.id
                 ).select(rule_group.id,
                 where=(model.model.in_(model_names))
                 & ~rule_group.id.in_(rule_table.select(rule_table.rule_group))
-                & rule_group.id.in_(rule_group_group.join(user_group,
-                        condition=rule_group_group.group == user_group.group
-                        ).select(rule_group_group.rule_group,
-                        where=user_group.user == user_id))))
+                & rule_group_group.group.in_(groups or [-1])))
         no_rules = cursor.fetchone()
 
         clause = defaultdict(lambda: ['OR'])

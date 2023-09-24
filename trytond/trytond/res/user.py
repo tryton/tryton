@@ -414,9 +414,6 @@ class User(avatar_mixin(100, 'login'), DeactivableMixin, ModelSQL, ModelView):
             if cls.__name__ in cache:
                 for user in all_users:
                     cache[cls.__name__].pop(user.id, None)
-        # Restart the cache for domain_get method
-        pool = Pool()
-        pool.get('ir.rule')._domain_get_cache.clear()
         # Restart the cache
         ModelView._fields_view_get_cache.clear()
 
@@ -1018,8 +1015,6 @@ class UserGroup(ModelSQL):
     def create(cls, vlist):
         records = super().create(vlist)
         pool = Pool()
-        # Restart the cache on the domain_get method
-        pool.get('ir.rule')._domain_get_cache.clear()
         # Restart the cache for get_groups
         pool.get('res.user')._get_groups_cache.clear()
         # Restart the cache for view
@@ -1030,8 +1025,6 @@ class UserGroup(ModelSQL):
     def write(cls, groups, values, *args):
         super().write(groups, values, *args)
         pool = Pool()
-        # Restart the cache on the domain_get method
-        pool.get('ir.rule')._domain_get_cache.clear()
         # Restart the cache for get_groups
         pool.get('res.user')._get_groups_cache.clear()
         # Restart the cache for view
@@ -1041,8 +1034,6 @@ class UserGroup(ModelSQL):
     def delete(cls, groups):
         super().delete(groups)
         pool = Pool()
-        # Restart the cache on the domain_get method
-        pool.get('ir.rule')._domain_get_cache.clear()
         # Restart the cache for get_groups
         pool.get('res.user')._get_groups_cache.clear()
         # Restart the cache for view
