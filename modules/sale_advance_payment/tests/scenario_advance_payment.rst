@@ -202,7 +202,9 @@ Let's pay the advance payment invoice::
     >>> il1.account == advance_payment_account
     True
     >>> il1.unit_price
-    Decimal('-10.00')
+    Decimal('10.00')
+    >>> il1.quantity
+    -1.0
     >>> il2.product == product
     True
     >>> il2.unit_price
