@@ -1074,6 +1074,22 @@ class Warning_(ModelSQL, ModelView):
     always = fields.Boolean('Always')
 
     @classmethod
+    def __setup__(cls):
+        super().__setup__()
+        cls.__access__.add('user')
+        cls.__rpc__.update(
+            skip=RPC(check_access=False, readonly=False),
+            )
+
+    @classmethod
+    def skip(cls, name, always=False):
+        cls.create([{
+                    'name': name,
+                    'user': Transaction().user,
+                    'always': always,
+                    }])
+
+    @classmethod
     def format(cls, name, records):
         key = '|'.join(map(str, records)).encode('utf-8')
         return '%s.%s' % (hashlib.md5(key).hexdigest(), name)
