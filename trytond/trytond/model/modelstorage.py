@@ -22,7 +22,8 @@ from trytond.i18n import gettext, lazy_gettext
 from trytond.pool import Pool
 from trytond.pyson import PYSON, PYSONDecoder, PYSONEncoder
 from trytond.rpc import RPC
-from trytond.tools import grouped_slice, is_instance_method, reduce_domain
+from trytond.tools import (
+    grouped_slice, is_instance_method, likify, reduce_domain)
 from trytond.tools.domain_inversion import domain_inversion, eval_domain
 from trytond.tools.domain_inversion import parse as domain_parse
 from trytond.transaction import (
@@ -676,9 +677,8 @@ class ModelStorage(Model):
         '''
         Yield tuples (record, name, icon) for text
         '''
-        # TODO improve search clause
         for record in cls.search([
-                    ('rec_name', 'ilike', '%%%s%%' % text),
+                    ('rec_name', 'ilike', likify(text)),
                     ]):
             yield record, record.rec_name, None
 
