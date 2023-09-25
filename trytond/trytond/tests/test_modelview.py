@@ -714,3 +714,35 @@ class ModelView(unittest.TestCase):
                 'name': "Test Button Action",
                 'url': 'https://www.example.net',
                 })
+
+    @with_transaction()
+    def test_autocomplete(self):
+        "Test autocomplete"
+        pool = Pool()
+        Model = pool.get('test.modelview.autocomplete')
+
+        self.assertEqual(Model.autocomplete('test'), [])
+
+    @with_transaction()
+    def test_autocomplete_storage(self):
+        "Test autocomplete storage"
+        pool = Pool()
+        Model = pool.get('test.modelview.autocomplete.storage')
+
+        foo, bar = Model.create([{'name': 'foo'}, {'name': 'bar'}])
+
+        self.assertEqual(Model.autocomplete('test'), [])
+        self.assertEqual(
+            Model.autocomplete('foo'),
+            [{'name': 'foo', 'id': foo.id}])
+        self.assertEqual(
+            Model.autocomplete(''), [
+                {'name': 'foo', 'id': foo.id},
+                {'name': 'bar', 'id': bar.id}])
+        self.assertEqual(Model.autocomplete('foo', [('id', '!=', foo.id)]), [])
+        self.assertEqual(
+            Model.autocomplete('', limit=1), [{'name': 'foo', 'id': foo.id}])
+        self.assertEqual(
+            Model.autocomplete('', order=[('name', 'ASC')]), [
+                {'name': 'bar', 'id': bar.id},
+                {'name': 'foo', 'id': foo.id}])

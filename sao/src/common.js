@@ -3842,7 +3842,7 @@
     Sao.common.get_completion = function(el, source,
             match_selected, action_activated, search, create) {
         var format = function(content) {
-            return content.rec_name;
+            return content.name;
         };
         var completion = new Sao.common.InputCompletion(
                 el, source, match_selected, format);
@@ -3862,16 +3862,15 @@
             domain = field.get_domain(record);
         }
         var context = field.get_search_context(record);
-        var likify = new Sao.common.DomainParser().likify;
-        domain = [['rec_name', 'ilike', likify(search_text)], domain];
 
         var order = field.get_search_order(record);
         var sao_model = new Sao.Model(model);
-        return sao_model.execute('search_read',
-                [domain, 0, Sao.config.limit, order, ['rec_name']], context).fail(function() {
-                    Sao.Logger.warning(
-                        "Unable to search for completion of %s", model);
-                });
+        return sao_model.execute(
+            'autocomplete',
+            [search_text, domain, Sao.config.limit, order], context).fail(function() {
+                Sao.Logger.warning(
+                    "Unable to search for completion of %s", model);
+            });
     };
 
     Sao.common.Paned = Sao.class_(Object, {

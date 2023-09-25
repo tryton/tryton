@@ -6,7 +6,6 @@ import logging
 from gi.repository import GLib, Gtk
 
 from tryton.common import RPCExecute
-from tryton.common.domain_parser import likify
 from tryton.config import CONFIG
 from tryton.exceptions import TrytonError, TrytonServerError
 
@@ -45,7 +44,6 @@ def update_completion(entry, record, field, model, domain=None):
         if domain is None:
             domain = field.domain_get(record)
         context = field.get_search_context(record)
-        domain = [('rec_name', 'ilike', likify(search_text)), domain]
         order = field.get_search_order(record)
 
         def callback(results):
@@ -57,13 +55,14 @@ def update_completion(entry, record, field, model, domain=None):
                 return False
             completion_model.clear()
             for result in results:
-                completion_model.append([result['rec_name'], result['id']])
+                completion_model.append([result['name'], result['id']])
             completion_model.search_text = search_text
             # Force display of popup
             entry.emit('changed')
         try:
-            RPCExecute('model', model, 'search_read', domain, 0,
-                CONFIG['client.limit'], order, ['rec_name'], context=context,
+            RPCExecute(
+                'model', model, 'autocomplete', search_text, domain,
+                CONFIG['client.limit'], order, context=context,
                 process_exception=False, callback=callback)
         except Exception:
             logger.warning(

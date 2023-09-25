@@ -11,7 +11,7 @@ from trytond.i18n import gettext
 from trytond.pool import Pool
 from trytond.pyson import PYSONEncoder
 from trytond.rpc import RPC, RPCReturnException
-from trytond.tools import is_instance_method
+from trytond.tools import is_instance_method, likify
 from trytond.transaction import Transaction, check_access, without_check_access
 
 from . import fields
@@ -75,6 +75,7 @@ class ModelView(Model):
         cls.__rpc__['on_change_notify'] = RPC(instantiate=0)
         cls.__rpc__['on_scan_code'] = RPC(
             instantiate=0, result=on_change_result)
+        cls.__rpc__['autocomplete'] = RPC()
         cls._buttons = {}
 
         fields_ = {}
@@ -801,6 +802,19 @@ class ModelView(Model):
 
     def on_scan_code(self, code):
         pass
+
+    @classmethod
+    def autocomplete(cls, text, domain=None, limit=None, order=None):
+        from .modelstorage import ModelStorage
+        result = []
+        if domain is None:
+            domain = []
+        domain = [domain, ('rec_name', 'ilike', likify(text))]
+        if issubclass(cls, ModelStorage):
+            result = cls.search_read(
+                domain, limit=limit, order=order, fields_names=['rec_name'])
+            result = [{'id': r['id'], 'name': r['rec_name']} for r in result]
+        return result
 
     @property
     def _changed_values(self):

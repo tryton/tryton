@@ -239,6 +239,13 @@ Instance methods:
       When extended, this method must be decorated by
       :meth:`~trytond.model.fields.depends` with the fields used.
 
+.. method:: ModelView.autocomplete(text[, domain[, limit[, order]]])
+
+   Return a list of dictionary for records completing ``text``.
+   The dictionary is composed of ``id`` and ``name``.
+
+   The client call this method to provide completion.
+
 ModelStorage
 ============
 

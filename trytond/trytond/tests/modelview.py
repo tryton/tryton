@@ -275,6 +275,18 @@ class ModelViewStatesDepends(ModelView):
     quux = fields.Char("Quux")
 
 
+class ModelViewAutocomplete(ModelView):
+    "ModelView Autocomplete"
+    __name__ = 'test.modelview.autocomplete'
+
+    name = fields.Char("Name")
+
+
+class ModelViewAutocompleteStorage(ModelSQL, ModelViewAutocomplete):
+    "ModelView Autocomplete Storage"
+    __name__ = 'test.modelview.autocomplete.storage'
+
+
 def register(module):
     Pool.register(
         ModelViewChangedValues,
@@ -296,4 +308,6 @@ def register(module):
         ModelViewViewAttributes,
         ModelViewViewAttributesDepends,
         ModelViewStatesDepends,
+        ModelViewAutocomplete,
+        ModelViewAutocompleteStorage,
         module=module, type_='model')
