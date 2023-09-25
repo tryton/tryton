@@ -253,6 +253,16 @@ def is_full_text(value, escape='\\'):
     return value.startswith('%') == value.endswith('%')
 
 
+def likify(string, escape='\\'):
+    if not string:
+        return '%'
+    escaped = string.replace(escape + '%', '').replace(escape + '_', '')
+    if '%' in escaped or '_' in escaped:
+        return string
+    else:
+        return '%' + string + '%'
+
+
 _slugify_strip_re = re.compile(r'[^\w\s-]')
 _slugify_hyphenate_re = re.compile(r'[-\s]+')
 

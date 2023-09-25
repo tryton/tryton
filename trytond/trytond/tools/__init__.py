@@ -15,7 +15,7 @@ except ImportError:
 from .decimal_ import decistmt
 from .misc import (
     escape_wildcard, file_open, find_dir, find_path, firstline,
-    get_smtp_server, grouped_slice, is_full_text, is_instance_method,
+    get_smtp_server, grouped_slice, is_full_text, is_instance_method, likify,
     lstrip_wildcard, reduce_domain, reduce_ids, remove_forbidden_chars,
     resolve, rstrip_wildcard, slugify, sortable_values, sql_pairing,
     strip_wildcard, unescape_wildcard)
@@ -50,6 +50,7 @@ __all__ = [
     grouped_slice,
     is_full_text,
     is_instance_method,
+    likify,
     lstrip_wildcard,
     reduce_domain,
     reduce_ids,

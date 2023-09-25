@@ -13,7 +13,7 @@ import sql.operators
 
 from trytond.tools import (
     decimal_, escape_wildcard, file_open, firstline, grouped_slice,
-    is_full_text, is_instance_method, lstrip_wildcard, reduce_domain,
+    is_full_text, is_instance_method, likify, lstrip_wildcard, reduce_domain,
     reduce_ids, remove_forbidden_chars, rstrip_wildcard, slugify,
     sortable_values, strip_wildcard, timezone, unescape_wildcard)
 from trytond.tools.domain_inversion import (
@@ -251,6 +251,19 @@ class ToolsTestCase(unittest.TestCase):
                 ]:
             with self.subTest(value=value):
                 self.assertEqual(is_full_text(value), result)
+
+    def test_likify(self):
+        "Test likify"
+        for value, result in [
+                ('', '%'),
+                ('foo', '%foo%'),
+                ('foo%', 'foo%'),
+                ('f_o', 'f_o'),
+                ('%foo%', '%foo%'),
+                ('foo\\_bar', '%foo\\_bar%'),
+                ]:
+            with self.subTest(value=value):
+                self.assertEqual(likify(value), result)
 
     def test_slugify(self):
         "Test slugify"

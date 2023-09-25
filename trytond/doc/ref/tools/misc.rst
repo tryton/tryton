@@ -36,6 +36,10 @@ Miscellaneous
    This is the case when the value starts and ends with a ``%`` or does not
    contain any wild cards.
 
+.. function:: likify(string[, escape])
+
+   Convert the string for full text if it does not contain any wild cards.
+
 .. function:: sql_pairing(x, y)
 
    Return an SQL expression that pairs SQL integers x and y.
