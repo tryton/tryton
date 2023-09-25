@@ -283,6 +283,88 @@ class ModelTestCase(unittest.TestCase):
         self.assertEqual(record.name, 'foo')
         self.assertEqual(record_copied.name, 'bar')
 
+    @with_transaction()
+    def test_default_get(self):
+        "Test default_get"
+        pool = Pool()
+        Model = pool.get('test.model.default')
+
+        self.assertEqual(
+            Model.default_get(['name', 'description']), {
+                'description': "Test",
+                })
+
+    @with_transaction()
+    def test_default_get_with_context(self):
+        "Test default_get with context"
+        pool = Pool()
+        Model = pool.get('test.model.default')
+
+        with Transaction().set_context(default_name="foo"):
+            self.assertEqual(
+                Model.default_get(['name']), {
+                    'name': "foo",
+                    })
+
+    @with_transaction()
+    def test_default_get_with_context_and_method(self):
+        "Test default_get with context and method"
+        pool = Pool()
+        Model = pool.get('test.model.default')
+
+        with Transaction().set_context(default_description="foo"):
+            self.assertEqual(
+                Model.default_get(['description']), {
+                    'description': "foo",
+                    })
+
+    @with_transaction()
+    def test_default_get_with_context_rec_name(self):
+        "Test default_get with context rec_name"
+        pool = Pool()
+        Model = pool.get('test.model.default')
+
+        with Transaction().set_context(default_rec_name="foo"):
+            self.assertEqual(
+                Model.default_get(['name']), {
+                    'name': "foo",
+                    })
+
+    @with_transaction()
+    def test_default_get_with_rec_name(self):
+        "Test default_get with rec_name"
+        pool = Pool()
+        Model = pool.get('test.model.default')
+        Target = pool.get('test.model')
+
+        target = Target(name="Target")
+        target.save()
+
+        with Transaction().set_context(default_target=target.id):
+            self.assertEqual(
+                Model.default_get(['target'], with_rec_name=True), {
+                    'target': target.id,
+                    'target.': {
+                        'rec_name': "Target",
+                        },
+                    })
+
+    @with_transaction()
+    def test_default_get_without_rec_name(self):
+        "Test default_get without rec_name"
+        pool = Pool()
+        Model = pool.get('test.model.default')
+        Target = pool.get('test.model')
+
+        target = Target(name="Target")
+        target.save()
+
+        with Transaction().set_context(default_target=target.id):
+            self.assertEqual(
+                Model.default_get(['target'], with_rec_name=False), {
+                    'target': target.id,
+                    })
+
 
 class ModelTranslationTestCase(unittest.TestCase):
     "Test Model translation"

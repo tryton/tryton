@@ -136,8 +136,9 @@ class Model(URLMixin, PoolBase, metaclass=ModelMeta):
         '''
         pool = Pool()
         value = {}
+        context = Transaction().context
 
-        default_rec_name = Transaction().context.get('default_rec_name')
+        default_rec_name = context.get('default_rec_name')
         if (default_rec_name
                 and cls._rec_name in cls._fields
                 and cls._rec_name in fields_names):
@@ -145,7 +146,10 @@ class Model(URLMixin, PoolBase, metaclass=ModelMeta):
 
         # get the default values defined in the object
         for field_name in fields_names:
-            if field_name in cls._defaults:
+            default_name = f'default_{field_name}'
+            if field_name in cls._fields and default_name in context:
+                value[field_name] = context.get(default_name)
+            elif field_name in cls._defaults:
                 value[field_name] = cls._defaults[field_name]()
             field = cls._fields[field_name]
             if (field._type == 'boolean'

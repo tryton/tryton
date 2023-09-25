@@ -55,6 +55,19 @@ class ModelContextParent(Model):
             })
 
 
+class ModelDefault(Model):
+    "Model with default"
+    __name__ = 'test.model.default'
+
+    name = fields.Char("Name")
+    description = fields.Char("Description")
+    target = fields.Many2One('test.model', "Target")
+
+    @classmethod
+    def default_description(cls):
+        return "Test"
+
+
 class Singleton(ModelSingleton, ModelSQL):
     'Singleton'
     __name__ = 'test.singleton'
@@ -155,6 +168,7 @@ def register(module):
         ModelChildChild,
         ModelContext,
         ModelContextParent,
+        ModelDefault,
         Singleton,
         URLObject,
         Model4Union1,

@@ -90,6 +90,9 @@ Class methods:
    The ``default_rec_name`` key in the context can be used to define the value
    of the :attr:`~Model._rec_name` field.
 
+   The ``default_<field name>`` keys in the context can be used to define the
+   value of the field.
+
 .. classmethod:: Model.fields_get([fields_names[, level]])
 
    Return the definition of each field on the model.
