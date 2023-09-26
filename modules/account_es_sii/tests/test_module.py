@@ -88,7 +88,7 @@ class AccountEsSiiTestCase(ModuleTestCase):
 
         for type_, code, value in [
                 ('eu_vat', 'ES00000000T', {'NIF': '00000000T'}),
-                ('es_nif', '00000000T', {'NIF': '00000000T'}),
+                ('es_vat', '00000000T', {'NIF': '00000000T'}),
                 ('eu_vat', 'BE0897290877', {
                         'IDOtro': {
                             'ID': 'BE0897290877',
@@ -103,7 +103,7 @@ class AccountEsSiiTestCase(ModuleTestCase):
                             'CodigoPais': 'GR',
                             }
                         }),
-                ('ad_nrt', 'L709604E', {
+                ('ad_vat', 'L709604E', {
                         'IDOtro': {
                             'ID': 'ADL709604E',
                             'IDType': '06',
@@ -208,7 +208,7 @@ class AccountEsSiiTestCase(ModuleTestCase):
             fiscalyear.es_sii_send_invoices = True
             fiscalyear.save()
 
-            party = create_party('Customer', 'es_nif', '00000000T')
+            party = create_party('Customer', 'es_vat', '00000000T')
             tax, = Tax.search([
                     ('company', '=', company.id),
                     ('name', '=', 'IVA Exento (bienes)'),

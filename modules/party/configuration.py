@@ -7,7 +7,7 @@ from trytond.model.exceptions import AccessError
 from trytond.pool import Pool
 from trytond.pyson import Id
 
-from .party import IDENTIFIER_TYPES
+from .party import IDENTIFIER_TYPES, replace_vat
 
 party_sequence = fields.Many2One('ir.sequence', 'Party Sequence',
     domain=[
@@ -28,6 +28,16 @@ class Configuration(ModelSingleton, ModelSQL, ModelView, MultiValueMixin):
         IDENTIFIER_TYPES, "Identifier Types",
         help="Defines which identifier types are available.\n"
         "Leave empty for all of them.")
+
+    @classmethod
+    def __register__(cls, module):
+        super().__register__(module)
+
+        # Migration from 6.8: Use vat alias
+        configuration = cls(1)
+        if configuration.identifier_types:
+            configuration.identifier_types = list(map(
+                    replace_vat, configuration.identifier_types))
 
     @classmethod
     def default_party_sequence(cls, **pattern):

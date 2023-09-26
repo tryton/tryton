@@ -75,7 +75,7 @@ class PartyIdentifier(metaclass=PoolMeta):
     sepa_es_suffix = fields.Char(
         "SEPA Suffix", size=3,
         states={
-            'invisible': Eval('type') != 'es_nif',
+            'invisible': Eval('type') != 'es_vat',
             })
 
     @classmethod
@@ -101,7 +101,7 @@ class PartyIdentifier(metaclass=PoolMeta):
             identifier['SchmeNm'] = {'Prtry': 'SEPA'}
         elif self.type == 'be_vat':
             identifier['Issr'] = 'KBO-BCE'
-        elif self.type == 'es_nif':
+        elif self.type == 'es_vat':
             identifier['Id'] += self.sepa_es_suffix or '000'
         return identifier
 

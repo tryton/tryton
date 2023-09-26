@@ -56,7 +56,7 @@ INITIATOR_IDS = [
     (None, ''),
     ('eu_at_02', "SEPA Creditor Identifier"),
     ('be_vat', "Belgian Enterprise Number"),
-    ('es_nif', "Spanish VAT Number"),
+    ('es_vat', "Spanish VAT Number"),
     ]
 
 

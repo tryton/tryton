@@ -341,6 +341,81 @@ class PartyCategory(ModelSQL):
         'party.category', "Category", ondelete='CASCADE', required=True)
 
 
+IDENTIFIER_VAT = [
+    'ad_nrt',
+    'al_nipt',
+    'ar_cuit',
+    'at_uid',
+    'au_abn',
+    'br_cnpj',
+    'by_unp',
+    'ca_bn',
+    'cl_rut',
+    'cn_uscc',
+    'co_nit',
+    'cr_cpj',
+    'cz_dic',
+    'dk_cvr',
+    'do_rnc',
+    'dz_nif',
+    'ec_ruc',
+    'ee_kmkr',
+    'eg_tn',
+    'es_nif',
+    'fi_alv',
+    'fo_vn',
+    'fr_tva',
+    'gh_tin',
+    'gn_nifp',
+    'gt_nit',
+    'hr_oib',
+    'hu_anum',
+    'id_npwp',
+    'il_hp',
+    'in_gstin',
+    'is_vsk',
+    'it_iva',
+    'jp_cn',
+    'ke_pin',
+    'kr_brn',
+    'lt_pvm',
+    'lu_tva',
+    'lv_pvn',
+    'ma_ice',
+    'mc_tva',
+    'me_pib',
+    'mk_edb',
+    'mx_rfc',
+    'nl_btw',
+    'no_mva',
+    'nz_ird',
+    'pe_ruc',
+    'pl_nip',
+    'pt_nif',
+    'py_ruc',
+    'ro_cf',
+    'rs_pib',
+    'ru_inn',
+    'sg_uen',
+    'si_ddv',
+    'sk_dph',
+    'sm_coe',
+    'sv_nit',
+    'tn_mf',
+    'tr_vkn',
+    'tw_ubn',
+    'uy_rut',
+    've_rif',
+    'vn_mst',
+    ]
+
+
+def replace_vat(code):
+    if code in IDENTIFIER_VAT:
+        code = code.split('_', 1)[0] + '_vat'
+    return code
+
+
 IDENTIFIER_TYPES = [
     ('ad_nrt', "Andorra Tax Number"),
     ('al_nipt', "Albanian VAT Number"),
@@ -505,6 +580,10 @@ IDENTIFIER_TYPES = [
     ('za_tin', "South African Tax Identification Number"),
     ]
 
+IDENTIFIER_TYPES = list(map(
+        lambda x: (replace_vat(x[0]), x[1]),
+        IDENTIFIER_TYPES))
+
 TAX_IDENTIFIER_TYPES = [
     'ad_nrt',
     'al_nipt',
@@ -586,6 +665,8 @@ TAX_IDENTIFIER_TYPES = [
     'za_tin',
     ]
 
+TAX_IDENTIFIER_TYPES = list(map(replace_vat, TAX_IDENTIFIER_TYPES))
+
 
 class Identifier(sequence_ordered(), DeactivableMixin, ModelSQL, ModelView):
     'Party Identifier'
@@ -620,6 +701,13 @@ class Identifier(sequence_ordered(), DeactivableMixin, ModelSQL, ModelView):
         # Migration from 5.8: Rename cn_rit into cn_ric
         cursor.execute(*table.update([table.type], ['cn_ric'],
                 where=(table.type == 'cn_rit')))
+
+        # Migration from 6.8: Use vat alias
+        for old in IDENTIFIER_VAT:
+            new = replace_vat(old)
+            cursor.execute(*table.update(
+                    [table.type], [new],
+                    where=table.type == old))
 
     @classmethod
     def get_types(cls):
