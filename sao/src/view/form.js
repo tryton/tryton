@@ -2766,12 +2766,19 @@ function eval_pyson(value){
                 return;
             }
         },
-        new_: function(evt) {
+        new_: function(defaults=null) {
             var model = this.get_model();
             if (!model || ! Sao.common.MODELACCESS.get(model).create) {
                 return;
             }
             var screen = this.get_screen(true);
+            if (defaults) {
+                defaults = jQuery.extend({}, defaults);
+            } else {
+                defaults = {};
+            }
+            defaults.rec_name = this.entry.val();
+
             const callback = result => {
                 if (result) {
                     var rec_name_prm = screen.current_record.rec_name();
@@ -2782,12 +2789,11 @@ function eval_pyson(value){
                     });
                 }
             };
-            var rec_name = this.entry.val();
             screen.switch_view().done(() => {
                 var win = new Sao.Window.Form(screen, callback, {
                     new_: true,
                     save_current: true,
-                    rec_name: rec_name
+                    defaults: defaults,
                 });
             });
         },
@@ -3217,7 +3223,7 @@ function eval_pyson(value){
                 'title': Sao.i18n.gettext("New"),
             }).append(Sao.common.ICONFACTORY.get_icon_img('tryton-create')
             ).appendTo(buttons);
-            this.but_new.click(disable_during(this.new_.bind(this)));
+            this.but_new.click(disable_during(() => this.new_(this)));
 
             this.but_open = jQuery('<button/>', {
                 'class': 'btn btn-default btn-sm',
@@ -3519,19 +3525,27 @@ function eval_pyson(value){
             }
             this.screen.remove(false, true, false);
         },
-        new_: function(event_) {
+        new_: function(defaults=null) {
             if (!Sao.common.MODELACCESS.get(this.screen.model_name).create) {
                 return;
             }
+            if (this.attributes.add_remove) {
+                if (defaults) {
+                    defaults = jQuery.extend({}, defaults);
+                } else {
+                    defaults = {};
+                }
+                defaults.rec_name = this.wid_text.val();
+            }
             this.validate().done(() => {
                 if (this.attributes.product) {
-                    this.new_product();
+                    this.new_product(defaults);
                 } else {
-                    this.new_single();
+                    this.new_single(defaults);
                 }
             });
         },
-        new_single: function() {
+        new_single: function(defaults=null) {
             var sequence = this._sequence();
             const update_sequence = () => {
                 if (sequence) {
@@ -3549,17 +3563,18 @@ function eval_pyson(value){
                 field_size -= this.field.get_eval(record).length;
                 var win = new Sao.Window.Form(this.screen, update_sequence, {
                     new_: true,
+                    defaults: defaults,
                     many: field_size,
                 });
             }
         },
-        new_product: function() {
+        new_product: function(defaults=null) {
             var fields = this.attributes.product.split(',');
             var product = {};
             var screen = this.screen;
 
             screen.new_(false).then(first => {
-                first.default_get().then(default_ => {
+                first.default_get(defaults).then(default_ => {
                     first.set_default(default_);
 
                     const search_set = () => {
@@ -3661,7 +3676,7 @@ function eval_pyson(value){
         key_press: function(event_) {
             if (event_.which == Sao.common.F3_KEYCODE) {
                 event_.preventDefault();
-                this.new_(event_);
+                this.new_();
             } else if (event_.which ==  Sao.common.F2_KEYCODE) {
                 event_.preventDefault();
                 this.add(event_);
@@ -4052,8 +4067,15 @@ function eval_pyson(value){
                 new Sao.Window.Form(screen, callback);
             });
         },
-        new_: function() {
+        new_: function(defauts=null) {
             var screen = this._get_screen_form();
+            if (defaults) {
+                defaults = jQuery.extend({}, defaults);
+            } else {
+                defaults = {};
+            }
+            defaults.rec_name = this.entry.val();
+
             const callback = result => {
                 if (result) {
                     var record = screen.current_record;
@@ -4061,12 +4083,11 @@ function eval_pyson(value){
                 }
                 this.entry.val('');
             };
-            var text = this.entry.val();
             screen.switch_view().done(() => {
                 new Sao.Window.Form(screen, callback, {
                     'new_': true,
                     'save_current': true,
-                    rec_name: text,
+                    'defaults': defaults,
                 });
             });
         },

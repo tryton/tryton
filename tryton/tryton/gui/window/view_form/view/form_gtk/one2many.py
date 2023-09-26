@@ -119,7 +119,7 @@ class One2Many(Widget):
 
         self.but_new = Gtk.Button(can_focus=False)
         tooltips.set_tip(self.but_new, _('Create a new record'))
-        self.but_new.connect('clicked', self._sig_new)
+        self.but_new.connect('clicked', lambda *a: self._sig_new())
         self.but_new.add(common.IconFactory.get_image(
                 'tryton-create', Gtk.IconSize.SMALL_TOOLBAR))
         self.but_new.set_relief(Gtk.ReliefStyle.NONE)
@@ -210,7 +210,7 @@ class One2Many(Widget):
     def on_keypress(self, widget, event):
         if ((event.keyval == Gdk.KEY_F3)
                 and self.but_new.get_property('sensitive')):
-            self._sig_new(widget)
+            self._sig_new()
             return True
         if event.keyval == Gdk.KEY_F2:
             if widget == self.screen.widget:
@@ -353,18 +353,21 @@ class One2Many(Widget):
                 if sequence:
                     return sequence
 
-    def _sig_new(self, *args):
+    def _sig_new(self, defaults=None):
         if not self.create_access:
             return
         if not self._validate():
             return
+        if self.attrs.get('add_remove'):
+            defaults = defaults.copy() if defaults is not None else {}
+            defaults['rec_name'] = self.wid_text.get_text()
 
         if self.attrs.get('product'):
-            self._new_product()
+            self._new_product(defaults)
         else:
-            self._new_single()
+            self._new_single(defaults)
 
-    def _new_single(self):
+    def _new_single(self, defaults=None):
         sequence = self._sequence()
 
         def update_sequence():
@@ -379,15 +382,16 @@ class One2Many(Widget):
         else:
             field_size = self.record.expr_eval(self.attrs.get('size')) or -1
             field_size -= len(self.field.get_eval(self.record)) + 1
-            WinForm(self.screen, lambda a: update_sequence(), new=True,
-                many=field_size)
+            WinForm(
+                self.screen, lambda a: update_sequence(), new=True,
+                defaults=defaults, many=field_size)
 
-    def _new_product(self):
+    def _new_product(self, defaults=None):
         fields = self.attrs['product'].split(',')
         product = {}
 
         first = self.screen.new(default=False)
-        default = first.default_get()
+        default = first.default_get(defaults=defaults)
         first.set_default(default)
 
         def search_set(*args):

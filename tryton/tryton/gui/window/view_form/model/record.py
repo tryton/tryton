@@ -374,10 +374,12 @@ class Record:
             self.parent.save(force_reload=force_reload)
         return self.id
 
-    def default_get(self, rec_name=None):
+    def default_get(self, defaults=None):
         if len(self.group.fields):
             context = self.get_context()
-            context.setdefault('default_rec_name', rec_name)
+            if defaults is not None:
+                for name, value in defaults.items():
+                    context.setdefault(f'default_{name}', value)
             try:
                 vals = RPCExecute('model', self.model_name, 'default_get',
                     list(self.group.fields.keys()), context=context)

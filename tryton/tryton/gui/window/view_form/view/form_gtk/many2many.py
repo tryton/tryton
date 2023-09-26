@@ -230,8 +230,10 @@ class Many2Many(Widget):
                 self.screen.display()
         WinForm(screen, callback)
 
-    def _sig_new(self):
+    def _sig_new(self, defaults=None):
         screen = self._get_screen_form()
+        defaults = defaults.copy() if defaults is not None else {}
+        defaults['rec_name'] = self.wid_text.get_text()
 
         def callback(result):
             self.focus_out = True
@@ -242,8 +244,8 @@ class Many2Many(Widget):
             self.wid_text.grab_focus()
 
         self.focus_out = False
-        WinForm(screen, callback, new=True, save_current=True,
-            rec_name=self.wid_text.get_text())
+        WinForm(
+            screen, callback, new=True, save_current=True, defaults=defaults)
 
     def _readonly_set(self, value):
         self._readonly = value

@@ -378,10 +378,10 @@ class Group(list):
         if changed:
             self.record_modified()
 
-    def new(self, default=True, obj_id=None, rec_name=None):
+    def new(self, default=True, obj_id=None, defaults=None):
         record = Record(self.model_name, obj_id, group=self)
         if default:
-            record.default_get(rec_name=rec_name)
+            record.default_get(defaults=defaults)
         return record
 
     def unremove(self, record, modified=True):

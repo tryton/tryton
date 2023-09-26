@@ -161,11 +161,13 @@ class Many2One(Widget):
             exclude_field=self.attrs.get('relation_field'),
             breadcrumb=breadcrumb)
 
-    def sig_new(self, *args):
+    def sig_new(self, defaults=None):
         if not self.create_access:
             return
         self.focus_out = False
         screen = self.get_screen(search=True)
+        defaults = defaults.copy() if defaults is not None else {}
+        defaults['rec_name'] = self.wid_text.get_text()
 
         def callback(result):
             if result:
@@ -173,8 +175,8 @@ class Many2One(Widget):
                     self.value_from_id(screen.current_record.id,
                         screen.current_record.rec_name()))
             self.focus_out = True
-        WinForm(screen, callback, new=True, save_current=True,
-            rec_name=self.wid_text.get_text())
+        WinForm(
+            screen, callback, new=True, save_current=True, defaults=defaults)
 
     def sig_edit(self, entry=None, icon_pos=None, *args):
         if entry:
@@ -243,7 +245,7 @@ class Many2One(Widget):
         if (event.keyval == Gdk.KEY_F3
                 and editable
                 and self.create_access):
-            self.sig_new(widget, event)
+            self.sig_new()
             return True
         elif event.keyval == Gdk.KEY_F2 and self.read_access:
             self.sig_edit(widget)

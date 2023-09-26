@@ -1499,7 +1499,7 @@
                 return this.current_record.id;
             }
         },
-        new_: function(default_=true, rec_name=null) {
+        new_: function(default_=true, defaults=null) {
             var previous_view = this.current_view;
             var prm = jQuery.when();
             if (this.current_view.view_type == 'calendar') {
@@ -1518,10 +1518,10 @@
                 } else {
                     group = this.group;
                 }
-                var record = group.new_(false, undefined, rec_name);
+                var record = group.new_(false);
                 var prm;
                 if (default_) {
-                    prm = record.default_get(rec_name);
+                    prm = record.default_get(defaults);
                 } else {
                     prm = jQuery.when();
                 }

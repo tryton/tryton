@@ -123,11 +123,11 @@
                 }
             }
         };
-        array.new_ = function(default_, id, rec_name) {
+        array.new_ = function(default_, id, defaults=null) {
             var record = new Sao.Record(this.model, id);
             record.group = this;
             if (default_) {
-                record.default_get(rec_name);
+                record.default_get(defaults);
             }
             return record;
         };
@@ -919,11 +919,13 @@
         field_set_client: function(name, value, force_change) {
             this.model.fields[name].set_client(this, value, force_change);
         },
-        default_get: function(rec_name) {
+        default_get: function(defaults=null) {
             if (!jQuery.isEmptyObject(this.model.fields)) {
                 var context = this.get_context();
-                if (context.default_rec_name === undefined) {
-                    context.default_rec_name = rec_name;
+                if (defaults) {
+                    for (const name in defaults) {
+                        Sao.setdefault(context, `default_${name}` ,defaults[name]);
+                    }
                 }
                 var prm = this.model.execute('default_get',
                         [Object.keys(this.model.fields)], context);

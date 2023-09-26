@@ -640,7 +640,7 @@ class Screen:
 
         return view
 
-    def new(self, default=True, rec_name=None):
+    def new(self, default=True, defaults=None):
         previous_view = self.current_view
         if self.current_view.view_type == 'calendar':
             selected_date = self.current_view.get_selected_date()
@@ -652,7 +652,7 @@ class Screen:
             group = self.current_record.group
         else:
             group = self.group
-        record = group.new(default, rec_name=rec_name)
+        record = group.new(default, defaults=defaults)
         group.add(record, self.new_position)
         if previous_view.view_type == 'calendar':
             previous_view.set_default_date(record, selected_date)

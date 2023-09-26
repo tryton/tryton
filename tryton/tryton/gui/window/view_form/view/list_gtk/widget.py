@@ -882,7 +882,8 @@ class M2O(GenericText):
         changed(editable)
         return False
 
-    def open_remote(self, record, create=True, changed=False, text=None,
+    def open_remote(
+            self, record, create=True, changed=False, text=None, defaults=None,
             callback=None):
         field = record.group.fields[self.attrs['name']]
         model = self.get_model(record, field)
@@ -923,8 +924,11 @@ class M2O(GenericText):
             screen.load([target_id])
             WinForm(screen, open_callback, save_current=True)
         else:
-            WinForm(screen, open_callback, new=True, save_current=True,
-                rec_name=text)
+            defaults = defaults.copy() if defaults is not None else {}
+            defaults['rec_name'] = text
+            WinForm(
+                screen, open_callback, new=True, save_current=True,
+                defaults=defaults)
 
     def search_remote(self, record, field, text, callback=None):
         model = self.get_model(record, field)
