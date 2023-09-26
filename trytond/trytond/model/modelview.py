@@ -813,7 +813,9 @@ class ModelView(Model):
         if issubclass(cls, ModelStorage):
             result = cls.search_read(
                 domain, limit=limit, order=order, fields_names=['rec_name'])
-            result = [{'id': r['id'], 'name': r['rec_name']} for r in result]
+            result = [
+                {'id': r['id'], 'name': r['rec_name'], 'defaults': None}
+                for r in result]
         return result
 
     @property

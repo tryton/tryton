@@ -734,15 +734,16 @@ class ModelView(unittest.TestCase):
         self.assertEqual(Model.autocomplete('test'), [])
         self.assertEqual(
             Model.autocomplete('foo'),
-            [{'name': 'foo', 'id': foo.id}])
+            [{'name': 'foo', 'id': foo.id, 'defaults': None}])
         self.assertEqual(
             Model.autocomplete(''), [
-                {'name': 'foo', 'id': foo.id},
-                {'name': 'bar', 'id': bar.id}])
+                {'name': 'foo', 'id': foo.id, 'defaults': None},
+                {'name': 'bar', 'id': bar.id, 'defaults': None}])
         self.assertEqual(Model.autocomplete('foo', [('id', '!=', foo.id)]), [])
         self.assertEqual(
-            Model.autocomplete('', limit=1), [{'name': 'foo', 'id': foo.id}])
+            Model.autocomplete('', limit=1),
+            [{'name': 'foo', 'id': foo.id, 'defaults': None}])
         self.assertEqual(
             Model.autocomplete('', order=[('name', 'ASC')]), [
-                {'name': 'bar', 'id': bar.id},
-                {'name': 'foo', 'id': foo.id}])
+                {'name': 'bar', 'id': bar.id, 'defaults': None},
+                {'name': 'foo', 'id': foo.id, 'defaults': None}])

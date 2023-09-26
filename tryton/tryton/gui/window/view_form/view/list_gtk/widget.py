@@ -979,14 +979,25 @@ class M2O(GenericText):
 
     def _completion_match_selected(
             self, completion, model, iter_, record, field, model_name):
-        rec_name, record_id = model.get(iter_, 0, 1)
-        field.set_client(
-            record, self.value_from_id(model_name, record_id, rec_name))
+        rec_name, record_id, defaults = model.get(iter_, 0, 1, 2)
+        if record_id is not None:
+            field.set_client(
+                record, self.value_from_id(model_name, record_id, rec_name))
 
-        completion.get_entry().set_text(rec_name)
-        completion_model = completion.get_model()
-        completion_model.clear()
-        completion_model.search_text = rec_name
+            completion.get_entry().set_text(rec_name)
+            completion_model = completion.get_model()
+            completion_model.clear()
+            completion_model.search_text = rec_name
+        else:
+            entry = completion.get_entry()
+            entry.handler_block(entry.editing_done_id)
+
+            def callback():
+                entry.handler_unblock(entry.editing_done_id)
+                entry.set_text(field.get_client(record))
+            self.open_remote(
+                record, create=True, text=entry.get_text(), defaults=defaults,
+                callback=callback)
         return True
 
     def _update_completion(self, entry, record, field):

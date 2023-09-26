@@ -245,9 +245,13 @@ Instance methods:
 .. method:: ModelView.autocomplete(text[, domain[, limit[, order]]])
 
    Return a list of dictionary for records completing ``text``.
-   The dictionary is composed of ``id`` and ``name``.
+   The dictionary is composed of ``id``, ``name`` and ``defaults``.
 
    The client call this method to provide completion.
+
+   .. note::
+      The ``defaults`` is used when ``id`` is empty to get the default values
+      for the record to create.
 
 ModelStorage
 ============

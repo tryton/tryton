@@ -564,14 +564,17 @@ class One2Many(Widget):
         return True
 
     def _completion_match_selected(self, completion, model, iter_):
-        record_id, = model.get(iter_, 1)
-        self.screen.load([record_id], modified=True)
-        self.wid_text.set_text('')
-        self.wid_text.grab_focus()
+        record_id, defaults = model.get(iter_, 1, 2)
+        if record_id is not None:
+            self.screen.load([record_id], modified=True)
+            self.wid_text.set_text('')
+            self.wid_text.grab_focus()
 
-        completion_model = self.wid_completion.get_model()
-        completion_model.clear()
-        completion_model.search_text = self.wid_text.get_text()
+            completion_model = self.wid_completion.get_model()
+            completion_model.clear()
+            completion_model.search_text = self.wid_text.get_text()
+        else:
+            self._sig_new(defaults)
         return True
 
     def _update_completion(self, widget):

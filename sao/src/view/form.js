@@ -2515,6 +2515,7 @@ function eval_pyson(value){
                     group,
                     this._update_completion.bind(this),
                     this._completion_match_selected.bind(this));
+                this.entry.completion = this.wid_completion;
             }
             this.el.change(this.focus_out.bind(this));
             this._readonly = false;
@@ -2908,9 +2909,13 @@ function eval_pyson(value){
                     this.entry, record, field, model);
         },
         _completion_match_selected: function(value) {
-            this.record.field_set_client(this.field_name,
+            if (value.id !== null) {
+                this.record.field_set_client(this.field_name,
                     this.value_from_id(
                         value.id, value.rec_name), true);
+            } else {
+                this.new_(value.defaults);
+            }
         },
         _completion_action_activated: function(action) {
             if (action == 'search') {
@@ -3188,6 +3193,7 @@ function eval_pyson(value){
                         this._completion_match_selected.bind(this),
                         this._completion_action_activated.bind(this),
                         this.read_access, this.create_access);
+                    this.wid_text.completion = this.wid_completion;
                 }
 
                 buttons =  jQuery('<div/>', {
@@ -3749,8 +3755,12 @@ function eval_pyson(value){
                 this.wid_text, this.record, this.field, model, domain);
         },
         _completion_match_selected: function(value) {
-            this.screen.group.load([value.id], true);
-            this.wid_text.val('');
+            if (value.id !== null) {
+                this.screen.group.load([value.id], true);
+                this.wid_text.val('');
+            } else {
+                this.new_(value.defaults);
+            }
         },
         _completion_action_activated: function(action) {
             if (action == 'search') {
@@ -3813,6 +3823,7 @@ function eval_pyson(value){
                     this._completion_match_selected.bind(this),
                     this._completion_action_activated.bind(this),
                     this.read_access, this.create_access);
+                this.entry.completion = this.wid_completion;
             }
 
             var buttons = jQuery('<div/>', {
@@ -4106,8 +4117,12 @@ function eval_pyson(value){
                 this.entry, this.record, this.field, model, domain);
         },
         _completion_match_selected: function(value) {
-            this.screen.group.load([value.id], true);
-            this.entry.val('');
+            if (value.id !== null) {
+                this.screen.group.load([value.id], true);
+                this.entry.val('');
+            } else {
+                this.new_(value.defaults);
+            }
         },
         _completion_action_activated: function(action) {
             if (action == 'search') {
@@ -4754,6 +4769,7 @@ function eval_pyson(value){
                     group,
                     this._update_completion.bind(this),
                     this._completion_match_selected.bind(this));
+                this.wid_text.completion = this.wid_completion;
             }
 
             this.but_add = jQuery('<button/>', {

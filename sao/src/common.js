@@ -3740,15 +3740,15 @@
                 Sao.common.set_overflow(this.input, 'show');
             });
         },
-        set_actions: function(action_activated, search, create) {
+        set_actions: function(action_activated, search=true, create=true) {
             if (action_activated !== undefined) {
                 this.action_activated = action_activated;
             }
             var actions = [];
-            if (search || search == undefined) {
+            if (search) {
                 actions.push(['search', Sao.i18n.gettext('Search...')]);
             }
-            if (create || create == undefined) {
+            if (create) {
                 actions.push(['create', Sao.i18n.gettext('Create...')]);
             }
             this.menu.find('li.action').remove();
@@ -3840,7 +3840,7 @@
     });
 
     Sao.common.get_completion = function(el, source,
-            match_selected, action_activated, search, create) {
+            match_selected, action_activated, search=true, create=true) {
         var format = function(content) {
             return content.name;
         };
@@ -3849,6 +3849,7 @@
         if (action_activated) {
             completion.set_actions(action_activated, search, create);
         }
+        completion._allow_create = create;
         return completion;
     };
 
@@ -3867,7 +3868,20 @@
         var sao_model = new Sao.Model(model);
         return sao_model.execute(
             'autocomplete',
-            [search_text, domain, Sao.config.limit, order], context).fail(function() {
+            [search_text, domain, Sao.config.limit, order], context)
+        .then(
+            function(result) {
+                return result.filter((value) => {
+                    return value.id || entry.completion._allow_create;
+                }).map((value) => {
+                    if (value.id === null) {
+                        value.name = Sao.i18n.gettext(
+                            'Create "%1"...', value.name);
+                    }
+                    return value;
+                });
+            },
+            function() {
                 Sao.Logger.warning(
                     "Unable to search for completion of %s", model);
             });

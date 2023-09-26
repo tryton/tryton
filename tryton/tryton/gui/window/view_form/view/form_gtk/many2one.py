@@ -347,15 +347,18 @@ class Many2One(Widget):
         self.wid_text.set_completion(self.wid_completion)
 
     def _completion_match_selected(self, completion, model, iter_):
-        rec_name, record_id = model.get(iter_, 0, 1)
-        # GTK on win32 doesn't like synchronous call to set_client
-        # because it triggers a display which reset the completion
-        GLib.idle_add(self.field.set_client, self.record,
-            self.value_from_id(record_id, rec_name), True)
+        rec_name, record_id, defaults = model.get(iter_, 0, 1, 2)
+        if record_id is not None:
+            # GTK on win32 doesn't like synchronous call to set_client
+            # because it triggers a display which reset the completion
+            GLib.idle_add(self.field.set_client, self.record,
+                self.value_from_id(record_id, rec_name), True)
 
-        completion_model = self.wid_completion.get_model()
-        completion_model.clear()
-        completion_model.search_text = rec_name
+            completion_model = self.wid_completion.get_model()
+            completion_model.clear()
+            completion_model.search_text = rec_name
+        else:
+            self.sig_new(defaults)
         return True
 
     def _update_completion(self, widget):

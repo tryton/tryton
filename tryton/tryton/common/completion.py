@@ -17,13 +17,14 @@ def get_completion(search=True, create=True):
     "Return a EntryCompletion"
     completion = Gtk.EntryCompletion()
     completion.set_match_func(lambda *a: True)
-    completion.set_model(Gtk.ListStore(str, int))
+    completion.set_model(Gtk.ListStore(str, object, object))
     completion.set_text_column(0)
     completion.props.popup_set_width = False
     if search:
         completion.insert_action_markup(0, _('<i>Search...</i>'))
     if create:
         completion.insert_action_markup(1, _('<i>Create...</i>'))
+    completion._allow_create = create
     return completion
 
 
@@ -34,7 +35,8 @@ def update_completion(entry, record, field, model, domain=None):
             return False
         if search_text != entry.get_text():
             return False
-        completion_model = entry.get_completion().get_model()
+        completion = entry.get_completion()
+        completion_model = completion.get_model()
         if not search_text or not model:
             completion_model.clear()
             completion_model.search_text = search_text
@@ -55,7 +57,13 @@ def update_completion(entry, record, field, model, domain=None):
                 return False
             completion_model.clear()
             for result in results:
-                completion_model.append([result['name'], result['id']])
+                if result['id'] is not None or completion._allow_create:
+                    if result['id'] is None:
+                        name = _('Create "%s"...') % result['name']
+                    else:
+                        name = result['name']
+                    completion_model.append((
+                            name, result['id'], result['defaults']))
             completion_model.search_text = search_text
             # Force display of popup
             entry.emit('changed')
