@@ -278,7 +278,7 @@ class TableHandler(TableHandlerInterface):
     def drop_constraint(self, ident, table=None):
         warnings.warn('Unable to drop constraint with SQLite backend')
 
-    def set_indexes(self, indexes):
+    def set_indexes(self, indexes, concurrently=False):
         cursor = Transaction().connection.cursor()
         old = set(self._indexes)
         for index in indexes:

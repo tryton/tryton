@@ -516,7 +516,7 @@ class ModelSQL(ModelStorage):
                             [h_table.write_date], [None]))
 
     @classmethod
-    def _update_sql_indexes(cls):
+    def _update_sql_indexes(cls, concurrently=False):
         def no_subset(index):
             for j in cls._sql_indexes:
                 if j != index and index < j:
@@ -525,11 +525,11 @@ class ModelSQL(ModelStorage):
         if not callable(cls.table_query):
             table_h = cls.__table_handler__()
             indexes = filter(no_subset, cls._sql_indexes)
-            table_h.set_indexes(indexes)
+            table_h.set_indexes(indexes, concurrently=concurrently)
             if cls._history:
                 history_th = cls.__table_handler__(history=True)
                 indexes = filter(no_subset, cls._history_sql_indexes)
-                history_th.set_indexes(indexes)
+                history_th.set_indexes(indexes, concurrently=concurrently)
 
     @classmethod
     def _update_history_table(cls):

@@ -246,13 +246,16 @@ def load_module_graph(graph, pool, update=None, lang=None, indexes=True):
 
         pool.setup_mixin()
 
+        def create_indexes(concurrently):
+            for model_name in models_with_indexes:
+                model = pool.get(model_name)
+                if model._sql_indexes:
+                    logger.info('index:update %s', model_name)
+                    model._update_sql_indexes(concurrently=concurrently)
+
         if update:
             if indexes:
-                for model_name in models_with_indexes:
-                    model = pool.get(model_name)
-                    if model._sql_indexes:
-                        logger.info('index:create %s', model_name)
-                        model._update_sql_indexes()
+                create_indexes(concurrently=False)
                 transaction.commit()
             else:
                 logger.info('index:skipping indexes creation')
@@ -262,6 +265,9 @@ def load_module_graph(graph, pool, update=None, lang=None, indexes=True):
                     logger.info('history:update %s', model.__name__)
                     model._update_history_table()
             transaction.commit()
+        elif indexes:
+            with transaction.new_transaction(autocommit=True):
+                create_indexes(concurrently=True)
 
         # Vacuum :
         while modules_todo:

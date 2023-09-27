@@ -494,7 +494,7 @@ class TableHandler(TableHandlerInterface):
                 Identifier(self.table_name), Identifier(ident)))
         self._update_definitions(constraints=True)
 
-    def set_indexes(self, indexes):
+    def set_indexes(self, indexes, concurrently=False):
         cursor = Transaction().connection.cursor()
         old = set(self._indexes)
         for index in indexes:
@@ -504,7 +504,18 @@ class TableHandler(TableHandlerInterface):
                 name = '_'.join([self.table_name, name])
                 name = 'idx_' + self.convert_name(name, reserved=len('idx_'))
                 cursor.execute(
-                    SQL('CREATE INDEX IF NOT EXISTS {} ON {} USING {}').format(
+                    'SELECT idx.indisvalid '
+                    'FROM pg_index idx '
+                    'JOIN pg_class cls ON cls.oid = idx.indexrelid '
+                    'WHERE cls.relname = %s',
+                    (name,))
+                if (idx_valid := cursor.fetchone()) and not idx_valid[0]:
+                    cursor.execute(
+                        SQL("DROP INDEX {}").format(Identifier(name)))
+                cursor.execute(
+                    SQL('CREATE INDEX {} IF NOT EXISTS {} ON {} USING {}')
+                    .format(
+                        SQL('CONCURRENTLY' if concurrently else ''),
                         Identifier(name),
                         Identifier(self.table_name),
                         query),

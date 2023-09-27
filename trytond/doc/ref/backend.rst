@@ -304,10 +304,13 @@ TableHandler
    Drop the named ``ident`` constraint.
    ``table`` can be used to alter another table.
 
-.. method:: TableHandler.set_indexes(indexes)
+.. method:: TableHandler.set_indexes(indexes[, concurrently])
 
    Create the :class:`indexes <trytond.model.Index>` if possible and drop
    others having ``idx_`` as prefix or ``_index`` as suffix.
+
+   If ``concurrently`` is set indexes are created concurrently if possible.
+   It defaults to ``False``.
 
 .. method:: TableHandler.drop_column(column_name)
 
