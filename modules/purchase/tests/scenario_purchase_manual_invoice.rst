@@ -68,7 +68,7 @@ Purchase with manual invoice method::
     >>> purchase.click('quote')
     >>> purchase.click('confirm')
     >>> purchase.state
-    'done'
+    'processing'
     >>> purchase.invoice_state
     'none'
     >>> len(purchase.invoices)
