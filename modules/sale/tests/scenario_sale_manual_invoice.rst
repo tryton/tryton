@@ -68,7 +68,7 @@ Sale with manual invoice method::
     >>> sale.click('quote')
     >>> sale.click('confirm')
     >>> sale.state
-    'done'
+    'processing'
     >>> sale.invoice_state
     'none'
     >>> len(sale.invoices)

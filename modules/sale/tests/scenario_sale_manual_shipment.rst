@@ -56,7 +56,7 @@ Sale with manual shipment method::
     >>> sale.click('quote')
     >>> sale.click('confirm')
     >>> sale.state
-    'done'
+    'processing'
     >>> len(sale.shipments)
     0
 
