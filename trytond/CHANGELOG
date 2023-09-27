@@ -1,3 +1,4 @@
+* Allow skipping index creation
 * Add assert methods to test tools
 * Set ELLIPSIS option flag on doctest
 * Set IGNORE_EXCEPTION_DETAIL option flag on doctest

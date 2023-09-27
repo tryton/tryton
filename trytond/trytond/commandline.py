@@ -107,6 +107,9 @@ def get_parser_admin():
         "-u", "--update", dest="update", nargs='+', default=[],
         metavar='MODULE',
         help="activate or update a module").completer = module_completer
+    parser.add_argument(
+        "--indexes", dest="indexes", action=argparse.BooleanOptionalAction,
+        default=None, help="update indexes")
     parser.add_argument("--all", dest="update", action="append_const",
         const="ir", help="update all activated modules")
     parser.add_argument("--activate-dependencies", dest="activatedeps",

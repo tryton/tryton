@@ -132,7 +132,7 @@ def load_translations(pool, node, languages):
         Translation.translation_import(language, module, files)
 
 
-def load_module_graph(graph, pool, update=None, lang=None):
+def load_module_graph(graph, pool, update=None, lang=None, indexes=True):
     # Prevent to import backend when importing module
     from trytond.cache import Cache
     from trytond.ir.lang import get_parent_language
@@ -247,12 +247,15 @@ def load_module_graph(graph, pool, update=None, lang=None):
         pool.setup_mixin()
 
         if update:
-            for model_name in models_with_indexes:
-                model = pool.get(model_name)
-                if model._sql_indexes:
-                    logger.info('index:create %s', model_name)
-                    model._update_sql_indexes()
-            transaction.commit()
+            if indexes:
+                for model_name in models_with_indexes:
+                    model = pool.get(model_name)
+                    if model._sql_indexes:
+                        logger.info('index:create %s', model_name)
+                        model._update_sql_indexes()
+                transaction.commit()
+            else:
+                logger.info('index:skipping indexes creation')
             for model_name in models_to_update_history:
                 model = pool.get(model_name)
                 if model._history:
@@ -310,7 +313,8 @@ def register_classes(with_test=False):
 
 
 def load_modules(
-        database_name, pool, update=None, lang=None, activatedeps=False):
+        database_name, pool, update=None, lang=None, indexes=True,
+        activatedeps=False):
     # Do not import backend when importing module
     res = True
     if update:
@@ -343,7 +347,7 @@ def load_modules(
                         raise
                     update += e.missings
 
-            load_module_graph(graph, pool, update, lang)
+            load_module_graph(graph, pool, update, lang, indexes)
 
             Configuration = pool.get('ir.configuration')
             Configuration(1).check()

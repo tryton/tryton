@@ -22,6 +22,8 @@ parser = commandline.get_parser_admin()
 if argcomplete:
     argcomplete.autocomplete(parser)
 options = parser.parse_args()
+if options.indexes is None:
+    options.indexes = bool(options.update)
 config.update_etc(options.configfile)
 commandline.config_log(options)
 
