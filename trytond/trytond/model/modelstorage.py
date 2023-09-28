@@ -1819,7 +1819,8 @@ class ModelStorage(Model):
             # create browse records for 'remote' models
             no_local_cache = {'binary'}
             if not transaction.readonly:
-                no_local_cache |= {'one2one', 'one2many', 'many2many'}
+                no_local_cache |= {
+                    'one2one', 'one2many', 'many2many', 'reference'}
             for data in read_data:
                 id_ = data['id']
                 to_delete = set()
