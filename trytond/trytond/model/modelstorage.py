@@ -1667,7 +1667,8 @@ class ModelStorage(Model):
                 read_data = self.read(list(index.keys()), list(ffields.keys()))
                 read_data.sort(key=lambda r: index[r['id']])
             # create browse records for 'remote' models
-            no_local_cache = {'one2one', 'one2many', 'many2many', 'binary'}
+            no_local_cache = {
+                'one2one', 'one2many', 'many2many', 'binary', 'reference'}
             for data in read_data:
                 id_ = data['id']
                 to_delete = set()
