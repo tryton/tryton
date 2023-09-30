@@ -34,7 +34,7 @@ class MoveTemplate(DeactivableMixin, ModelSQL, ModelView):
             },
         depends={'company'})
     description = fields.Char('Description',
-        help="Keyword values substitutions are identified "
+        help="Keyword value substitutions are identified "
         "by braces ('{' and '}').")
     lines = fields.One2Many('account.move.line.template', 'move', 'Lines',
         domain=[
@@ -192,7 +192,7 @@ class MoveLineTemplate(ModelSQL, ModelView):
     party_required = fields.Function(fields.Boolean('Party Required'),
         'on_change_with_party_required')
     description = fields.Char('Description',
-        help="Keywords values substitutions are identified "
+        help="Keyword value substitutions are identified "
         "by braces ('{' and '}').")
     taxes = fields.One2Many('account.tax.line.template', 'line', 'Taxes')
 
