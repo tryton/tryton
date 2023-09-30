@@ -53,7 +53,7 @@ class Request(_Request):
             if self.url is None or isinstance(self.url, str):
                 url = self.url
             else:
-                url = self.url.decode(self.url_charset)
+                url = self.url.decode(getattr(self, 'url_charset', 'utf-8'))
             auth = self.authorization
             if auth:
                 args.append("%s@%s" % (
