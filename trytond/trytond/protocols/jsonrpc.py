@@ -126,7 +126,8 @@ class JSONRequest(Request):
             try:
                 return json.loads(
                     self.decoded_data.decode(
-                        self.charset, self.encoding_errors),
+                        getattr(self, 'charset', 'utf-8'),
+                        getattr(self, 'encoding_errors', 'replace')),
                     object_hook=JSONDecoder())
             except Exception:
                 raise BadRequest('Unable to read JSON request')
