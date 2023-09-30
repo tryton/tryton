@@ -1,3 +1,4 @@
+* Autocomplete party from European VAT number
 * Use vat alias for party identifier
 * Add Belgian BIS Number identifier
 * Add Belgian National Number identifier

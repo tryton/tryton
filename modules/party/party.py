@@ -1,10 +1,14 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
+
+import logging
+
 import stdnum.exceptions
 from sql import Column, Literal
 from sql.aggregate import Min
 from sql.functions import CharLength
 from stdnum import get_cc_module
+from stdnum.eu.vat import MEMBER_STATES as EU_MEMBER_STATES
 
 from trytond.i18n import gettext
 from trytond.model import (
@@ -20,6 +24,8 @@ from trytond.wizard import Button, StateTransition, StateView, Wizard
 from .contact_mechanism import _PHONE_TYPES, _ContactMechanismMixin
 from .exceptions import (
     EraseError, InvalidIdentifierCode, SimilarityWarning, VIESUnavailable)
+
+logger = logging.getLogger(__name__)
 
 
 class Party(
@@ -321,6 +327,86 @@ class Party(
                     if getattr(address, type):
                         return address
         return default_address
+
+    @classmethod
+    def autocomplete(cls, text, domain=None, limit=None, order=None):
+        pool = Pool()
+        Configuration = pool.get('party.configuration')
+        configuration = Configuration(1)
+
+        result = super().autocomplete(
+            text, domain=domain, limit=limit, order=order)
+
+        identifier_types = dict(configuration.get_identifier_types())
+
+        def add(type, code):
+            result.append({
+                    'id': None,
+                    'name': code,
+                    'defaults': {
+                        'identifiers': [{
+                                'type': type,
+                                'code': code,
+                                }],
+                        },
+                    })
+
+        eu_vat = get_cc_module('eu', 'vat')
+        if 'eu_vat' in identifier_types and eu_vat.is_valid(text):
+            code = eu_vat.compact(text)
+            add('eu_vat', code)
+        else:
+            for country in eu_vat.guess_country(text):
+                if 'eu_vat' in identifier_types:
+                    code = eu_vat.compact(country + text)
+                    add('eu_vat', code)
+                elif f'{country}_vat' in identifier_types:
+                    vat = get_cc_module(country, 'vat')
+                    code = vat.compact(text)
+                    add(f'{country}_vat', code)
+        return result
+
+    @classmethod
+    def default_get(cls, fields_names, with_rec_name=True):
+        pool = Pool()
+        Country = pool.get('country.country')
+
+        values = super().default_get(fields_names, with_rec_name=with_rec_name)
+        eu_vat = get_cc_module('eu', 'vat')
+        eu_types = {'eu_vat'} | {f'{m}_vat' for m in EU_MEMBER_STATES}
+        for identifier in values.get('identifiers') or []:
+            if identifier.get('type') in eu_types and identifier.get('code'):
+                code = identifier['code']
+                if identifier['type'] != 'eu_vat':
+                    code = identifier['type'][2:] + code
+                try:
+                    result = eu_vat.check_vies(code)
+                except Exception:
+                    print('exception', code)
+                    logger.debug(
+                        f"Fail to check {identifier['code']}", exc_info=True)
+                    continue
+                if result['valid']:
+                    values['name'] = result['name']
+                    for address in values.get('addresses') or []:
+                        if not address:
+                            break
+                    else:
+                        address = {}
+                        values.setdefault('addresses', []).insert(0, address)
+                    address['street'] = result['address']
+                    country_code = code[:2]
+                    countries = Country.search([
+                            ('code', 'ilike', country_code),
+                            ], limit=1)
+                    if countries:
+                        country, = countries
+                        address['country'] = country.id
+                        if with_rec_name:
+                            address.setdefault('country.', {})['rec_name'] = (
+                                country.rec_name)
+                    break
+        return values
 
 
 class PartyLang(ModelSQL, ValueMixin):

@@ -1,6 +1,9 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 import unittest
+from unittest.mock import patch
+
+from stdnum import get_cc_module
 
 try:
     import phonenumbers
@@ -99,6 +102,102 @@ class PartyTestCase(PartyCheckEraseMixin, ModuleTestCase):
         self.assertRaises(Exception, Party.write, [party2], {
                 'code': code,
                 })
+
+    @with_transaction()
+    def test_party_autocomplete_eu_vat(self):
+        "Test party autocomplete eu_vat"
+        pool = Pool()
+        Party = pool.get('party.party')
+
+        self.assertEqual(
+            Party.autocomplete('BE500923836'), [{
+                    'id': None,
+                    'name': 'BE0500923836',
+                    'defaults': {
+                        'identifiers': [{
+                                'type': 'eu_vat',
+                                'code': 'BE0500923836',
+                                }],
+                        },
+                    }])
+
+    @with_transaction()
+    def test_party_autocomplete_eu_vat_without_country(self):
+        "Test party autocomplete eu_vat without country"
+        pool = Pool()
+        Party = pool.get('party.party')
+
+        self.assertIn({
+                'id': None,
+                'name': 'BE0500923836',
+                'defaults': {
+                    'identifiers': [{
+                            'type': 'eu_vat',
+                            'code': 'BE0500923836',
+                            }],
+                    },
+                },
+            Party.autocomplete('500923836'))
+
+    @with_transaction()
+    def test_party_autocomplete_be_vat(self):
+        "Test party autocomplete be_vat"
+        pool = Pool()
+        Party = pool.get('party.party')
+        Configuration = pool.get('party.configuration')
+
+        configuration = Configuration(1)
+        configuration.identifier_types = ['be_vat']
+        configuration.save()
+
+        self.assertEqual(
+            Party.autocomplete('BE500923836'), [{
+                    'id': None,
+                    'name': '0500923836',
+                    'defaults': {
+                        'identifiers': [{
+                                'type': 'be_vat',
+                                'code': '0500923836',
+                                }],
+                        },
+                    }])
+
+    @with_transaction()
+    def test_party_default_get_eu_vat(self):
+        "Test party default_get eu_vat"
+        pool = Pool()
+        Party = pool.get('party.party')
+        Country = pool.get('country.country')
+
+        belgium = Country(code='BE', name="Belgium")
+        belgium.save()
+
+        eu_vat = get_cc_module('eu', 'vat')
+        with patch.object(eu_vat, 'check_vies') as check_vies:
+            check_vies.return_value = {
+                'valid': True,
+                'name': "Tryton Foundation",
+                'address': "Street",
+                }
+            with Transaction().set_context(default_identifiers=[{
+                            'type': 'eu_vat',
+                            'code': 'BE0500923836',
+                            }]):
+                self.assertEqual(
+                    Party.default_get(['name', 'addresses', 'identifiers']), {
+                        'name': "Tryton Foundation",
+                        'addresses': [{
+                                'street': "Street",
+                                'country': belgium.id,
+                                'country.': {
+                                    'rec_name': "🇧🇪 Belgium",
+                                    },
+                                }],
+                        'identifiers': [{
+                                'type': 'eu_vat',
+                                'code': 'BE0500923836',
+                                }],
+                        })
 
     @with_transaction()
     def test_address(self):
