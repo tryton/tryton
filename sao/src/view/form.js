@@ -724,11 +724,7 @@ function eval_pyson(value){
                         break;
                     }
                 }
-                if (empty) {
-                    e.addClass('hidden');
-                } else {
-                    e.removeClass('hidden');
-                }
+                e.toggleClass('form-empty', empty);
                 return empty;
             };
             for (i = 0; i < grid_cols.length; i++) {
