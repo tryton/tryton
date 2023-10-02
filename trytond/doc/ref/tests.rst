@@ -24,6 +24,8 @@ Tests
    In case database does not exist and the ``DB_CACHE`` environment variable is
    set then Tryton restores a backup found in the directory pointed by
    ``DB_CACHE``.
+   ``DB_CACHE`` can also be set to the value ``postgresql://``, in that case
+   Tryton create the database using the template found on the server.
    Otherwise it procees to the creation of the database and the activation of
    the module.
 

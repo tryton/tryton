@@ -3,6 +3,7 @@
 # this repository contains the full copyright notices and license terms.
 import doctest
 import glob
+import hashlib
 import inspect
 import json
 import operator
@@ -114,11 +115,10 @@ def restore_db_cache(name):
     result = False
     if DB_CACHE:
         cache_file = _db_cache_file(DB_CACHE, name)
-        if os.path.exists(cache_file):
-            if backend.name == 'sqlite':
-                result = _sqlite_copy(cache_file, restore=True)
-            elif backend.name == 'postgresql':
-                result = _pg_restore(cache_file)
+        if backend.name == 'sqlite':
+            result = _sqlite_copy(cache_file, restore=True)
+        elif backend.name == 'postgresql':
+            result = _pg_restore(cache_file)
     if result:
         Pool(DB_NAME).init()
     return result
@@ -126,22 +126,31 @@ def restore_db_cache(name):
 
 def backup_db_cache(name):
     if DB_CACHE:
-        if not os.path.exists(DB_CACHE):
+        if (not DB_CACHE.startswith('postgresql://')
+                and not os.path.exists(DB_CACHE)):
             os.makedirs(DB_CACHE)
         cache_file = _db_cache_file(DB_CACHE, name)
-        if not os.path.exists(cache_file):
-            if backend.name == 'sqlite':
-                _sqlite_copy(cache_file)
-            elif backend.name == 'postgresql':
-                _pg_dump(cache_file)
+        if backend.name == 'sqlite':
+            _sqlite_copy(cache_file)
+        elif backend.name == 'postgresql':
+            _pg_dump(cache_file)
 
 
 def _db_cache_file(path, name):
-    return os.path.join(path, '%s-%s.dump' % (name, backend.name))
+    if DB_CACHE.startswith('postgresql://'):
+        hash_name = hashlib.shake_128(name.encode('utf8')).hexdigest(
+            (63 - len('test-')) // 2)
+        return f"{DB_CACHE}/test-{hash_name}"
+    else:
+        return os.path.join(path, '%s-%s.dump' % (name, backend.name))
 
 
 def _sqlite_copy(file_, restore=False):
     import sqlite3 as sqlite
+
+    if ((restore and not os.path.exists(file_))
+            or (not restore and os.path.exists(file_))):
+        return False
 
     with Transaction().start(DB_NAME, 0) as transaction, \
             sqlite.connect(file_) as conn2:
@@ -175,44 +184,68 @@ def _pg_options():
 
 
 def _pg_restore(cache_file):
-    with Transaction().start(
-            None, 0, close=True, autocommit=True) as transaction:
-        transaction.database.create(transaction.connection, DB_NAME)
-    cmd = ['pg_restore', '-d', DB_NAME]
-    options, env = _pg_options()
-    cmd.extend(options)
-    cmd.append(cache_file)
-    try:
-        return not subprocess.call(cmd, env=env)
-    except OSError:
-        cache_name, _ = os.path.splitext(os.path.basename(cache_file))
-        cache_name = backend.TableHandler.convert_name(cache_name)
+    def restore_from_template():
+        cache_name = cache_file[len(DB_CACHE) + 1:]
+        if not db_exist(cache_name):
+            return False
         with Transaction().start(
                 None, 0, close=True, autocommit=True) as transaction:
-            transaction.database.drop(transaction.connection, DB_NAME)
+            if db_exist(DB_NAME):
+                transaction.database.drop(transaction.connection, DB_NAME)
             transaction.database.create(
                 transaction.connection, DB_NAME, cache_name)
         return True
 
+    def restore_from_file():
+        if not os.path.exists(cache_file):
+            return False
+        with Transaction().start(
+                None, 0, close=True, autocommit=True) as transaction:
+            transaction.database.create(transaction.connection, DB_NAME)
+        cmd = ['pg_restore', '-d', DB_NAME]
+        options, env = _pg_options()
+        cmd.extend(options)
+        cmd.append(cache_file)
+        return not subprocess.call(cmd, env=env)
+
+    if cache_file.startswith('postgresql://'):
+        return restore_from_template()
+    else:
+        try:
+            return restore_from_file()
+        except OSError:
+            return restore_from_template()
+
 
 def _pg_dump(cache_file):
-    cmd = ['pg_dump', '-f', cache_file, '-F', 'c']
-    options, env = _pg_options()
-    cmd.extend(options)
-    cmd.append(DB_NAME)
-    try:
-        return not subprocess.call(cmd, env=env)
-    except OSError:
-        cache_name, _ = os.path.splitext(os.path.basename(cache_file))
-        cache_name = backend.TableHandler.convert_name(cache_name)
+    def dump_on_template():
+        cache_name = cache_file[len(DB_CACHE) + 1:]
+        if db_exist(cache_name):
+            return False
         # Ensure any connection is left open
         backend.Database(DB_NAME).close()
         with Transaction().start(
                 None, 0, close=True, autocommit=True) as transaction:
             transaction.database.create(
                 transaction.connection, cache_name, DB_NAME)
-        open(cache_file, 'a').close()
         return True
+
+    def dump_on_file():
+        if os.path.exists(cache_file):
+            return False
+        cmd = ['pg_dump', '-f', cache_file, '-F', 'c']
+        options, env = _pg_options()
+        cmd.extend(options)
+        cmd.append(DB_NAME)
+        return not subprocess.call(cmd, env=env)
+
+    if cache_file.startswith('postgresql://'):
+        dump_on_template()
+    else:
+        try:
+            return dump_on_file()
+        except OSError:
+            return dump_on_template()
 
 
 def with_transaction(user=1, context=None):
