@@ -381,14 +381,10 @@ function eval_pyson(value){
                             widget.display();
                         }
                     }
-                })
-                .done(() => {
-                    var record = this.record;
-                    var j, prm;
                     var promesses = [];
-                    for (j in this.state_widgets) {
+                    for (const j in this.state_widgets) {
                         var state_widget = this.state_widgets[j];
-                        prm = state_widget.set_state(record);
+                        var prm = state_widget.set_state(record);
                         if (prm) {
                             promesses.push(prm);
                         }
