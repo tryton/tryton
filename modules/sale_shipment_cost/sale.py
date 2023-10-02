@@ -270,10 +270,10 @@ class Sale(metaclass=PoolMeta):
         ShipmentCostSale = pool.get('stock.shipment.cost_sale')
         cost = self.shipment_cost_amount
         shipments = self._cost_shipments
-        sum_ = sum(s.cost_used for s in shipments)
+        sum_ = sum(s.cost_used for s in shipments if s.cost_used)
         for shipment in shipments:
             if sum_:
-                factor = shipment.cost_used / sum_
+                factor = (shipment.cost_used or 0) / sum_
             else:
                 factor = Decimal(1) / len(shipments)
             yield ShipmentCostSale(
