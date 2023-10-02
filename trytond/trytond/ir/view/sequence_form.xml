@@ -14,20 +14,22 @@ this repository contains the full copyright notices and license terms. -->
     <field name="suffix"/>
     <label name="type"/>
     <field name="type"/>
-    <group string="Incremental" id="incremental" colspan="4">
-        <label name="padding"/>
-        <field name="padding" />
-        <label name="number_increment"/>
-        <field name="number_increment"/>
-        <label name="number_next"/>
-        <field name="number_next"/>
-    </group>
-    <group string="Timestamp" id="timestamp" colspan="4">
-        <label name="timestamp_rounding"/>
-        <field name="timestamp_rounding"/>
-        <label name="timestamp_offset"/>
-        <field name="timestamp_offset"/>
-        <label name="last_timestamp"/>
-        <field name="last_timestamp"/>
-    </group>
+    <label name="preview"/>
+    <field name="preview"/>
+
+    <label name="padding"/>
+    <field name="padding" />
+    <label name="number_increment"/>
+    <field name="number_increment"/>
+    <label name="number_next"/>
+    <field name="number_next"/>
+    <newline/>
+
+    <label name="timestamp_rounding"/>
+    <field name="timestamp_rounding"/>
+    <label name="timestamp_offset"/>
+    <field name="timestamp_offset"/>
+    <label name="last_timestamp"/>
+    <field name="last_timestamp"/>
+    <newline/>
 </form>

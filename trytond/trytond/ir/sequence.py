@@ -106,6 +106,7 @@ class Sequence(DeactivableMixin, ModelSQL, ModelView):
             'required': Eval('type').in_(
                 ['decimal timestamp', 'hexadecimal timestamp']),
             }, depends=['type'])
+    preview = fields.Function(fields.Char("Preview"), 'on_change_with_preview')
 
     @classmethod
     def __setup__(cls):
@@ -337,8 +338,9 @@ class Sequence(DeactivableMixin, ModelSQL, ModelView):
         '''
         pool = Pool()
         Date = pool.get('ir.date')
+        context = Transaction().context
         if not date:
-            date = Date.today()
+            date = context.get('date') or Date.today()
 
         class CustomFormatter(dict):
 
@@ -373,10 +375,10 @@ class Sequence(DeactivableMixin, ModelSQL, ModelView):
                     f"Unknown substitution format {format_}")
             return value
 
-    @staticmethod
-    def _timestamp(sequence):
-        return int((time.time() - sequence.timestamp_offset)
-                / sequence.timestamp_rounding)
+    @fields.depends('timestamp_offset', 'timestamp_rounding')
+    def _timestamp(self):
+        return int(
+            (time.time() - self.timestamp_offset) / self.timestamp_rounding)
 
     @classmethod
     def _get_sequence(cls, sequence):
@@ -386,6 +388,9 @@ class Sequence(DeactivableMixin, ModelSQL, ModelView):
                 cursor.execute('SELECT nextval(\'"%s"\')'
                     % sequence._sql_sequence_name)
                 number_next, = cursor.fetchone()
+                # clean cache
+                Transaction().counter += 1
+                sequence._local_cache.pop(sequence.id, None)
             else:
                 # Pre-fetch number_next
                 number_next = sequence.number_next_internal
@@ -394,16 +399,30 @@ class Sequence(DeactivableMixin, ModelSQL, ModelView):
                         'number_next_internal': (number_next
                             + sequence.number_increment),
                         })
-            return '%%0%sd' % sequence.padding % number_next
+            return f'{number_next:0>{sequence.padding}d}'
         elif sequence.type in ('decimal timestamp', 'hexadecimal timestamp'):
             timestamp = sequence.last_timestamp
             while timestamp == sequence.last_timestamp:
-                timestamp = cls._timestamp(sequence)
+                timestamp = sequence._timestamp()
             cls.write([sequence], {
                 'last_timestamp': timestamp,
                 })
             if sequence.type == 'decimal timestamp':
-                return '%d' % timestamp
+                return f'{timestamp:d}'
+            else:
+                return hex(timestamp)[2:].upper()
+        return ''
+
+    @fields.depends('type', 'padding', 'number_next', methods=['_timestamp'])
+    def _get_preview_sequence(self):
+        if self.type == 'incremental':
+            number_next = self.number_next or 0
+            padding = self.padding or 0
+            return f'{number_next:0>{padding}d}'
+        elif self.type in {'decimal timestamp', 'hexadecimal timestamp'}:
+            timestamp = self._timestamp()
+            if self.type == 'decimal timestamp':
+                return f'{timestamp:d}'
             else:
                 return hex(timestamp)[2:].upper()
         return ''
@@ -420,11 +439,18 @@ class Sequence(DeactivableMixin, ModelSQL, ModelView):
             raise MissingError(gettext('ir.msg_sequence_missing'))
         if _lock:
             self.lock()
-        date = Transaction().context.get('date')
         return '%s%s%s' % (
-            cls._process(sequence.prefix, date=date),
+            cls._process(sequence.prefix),
             cls._get_sequence(sequence),
-            cls._process(sequence.suffix, date=date),
+            cls._process(sequence.suffix),
+            )
+
+    @fields.depends('prefix', 'suffix', methods=['_get_preview_sequence'])
+    def on_change_with_preview(self, name=None):
+        return '%s%s%s' % (
+            self._process(self.prefix),
+            self._get_preview_sequence(),
+            self._process(self.suffix),
             )
 
 

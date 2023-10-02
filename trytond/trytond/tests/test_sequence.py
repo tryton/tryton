@@ -40,19 +40,23 @@ class SequenceTestCase(unittest.TestCase):
                     'type': 'incremental',
                     }])
         self.assertEqual(sequence.number_next, 1)
+        self.assertEqual(sequence.preview, '1')
         self.assertEqual(sequence.get(), '1')
 
         Sequence.write([sequence], {
                 'number_increment': 10,
                 })
         self.assertEqual(sequence.number_next, 2)
+        self.assertEqual(sequence.preview, '2')
         self.assertEqual(sequence.get(), '2')
+        self.assertEqual(sequence.preview, '12')
         self.assertEqual(sequence.get(), '12')
 
         Sequence.write([sequence], {
                 'padding': 3,
                 })
         self.assertEqual(sequence.number_next, 22)
+        self.assertEqual(sequence.preview, '022')
         self.assertEqual(sequence.get(), '022')
 
     @with_transaction()
@@ -72,6 +76,7 @@ class SequenceTestCase(unittest.TestCase):
                     'suffix': '',
                     'type': 'decimal timestamp',
                     }])
+        self.assertTrue(sequence.preview)
         timestamp = sequence.get()
         self.assertEqual(timestamp, str(sequence.last_timestamp))
 
@@ -101,6 +106,7 @@ class SequenceTestCase(unittest.TestCase):
                     'suffix': '',
                     'type': 'hexadecimal timestamp',
                     }])
+        self.assertTrue(sequence.preview)
         timestamp = sequence.get()
         self.assertEqual(timestamp,
             hex(int(sequence.last_timestamp))[2:].upper())
@@ -131,6 +137,7 @@ class SequenceTestCase(unittest.TestCase):
                     'suffix': '/suffix',
                     'type': 'incremental',
                     }])
+        self.assertEqual(sequence.preview, 'prefix/1/suffix')
         self.assertEqual(sequence.get(),
             'prefix/1/suffix')
 
@@ -139,6 +146,8 @@ class SequenceTestCase(unittest.TestCase):
                 'suffix': '/${day}.${month}.${year}',
                 })
         with Transaction().set_context(date=datetime.date(2010, 8, 15)):
+            self.assertEqual(
+                Sequence(sequence).preview, '2010-08-15/2/15.08.2010')
             self.assertEqual(sequence.get(), '2010-08-15/2/15.08.2010')
 
 
