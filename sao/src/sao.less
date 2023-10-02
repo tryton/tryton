@@ -629,25 +629,17 @@ img.icon {
 .form {
     width: 100%;
     .form-container, .form-hcontainer, .form-vcontainer {
-        display: inline-table;
+        display: grid;
     }
-    table.form-container > tbody > tr > td {
+    .form-item {
+        display: flex;
         padding: 2px;
-    }
-    table.form-hcontainer > tbody > tr > td {
-        padding-top: 0px;
-        padding-bottom: 0px;
 
-        > .btn {
-            margin-top: 2px;
-            margin-bottom: 2px;
+        &.hidden {
+            padding: 0px;
         }
     }
-    table.form-vcontainer > tbody > tr > td {
-        padding-left: 0px;
-        padding-right: 0px;
-    }
-    td.form-label {
+    .form-label {
         white-space: pre;
     }
     .form-char, .form-password, .form-integer, .form-float, .form-date,
@@ -795,6 +787,49 @@ img.icon {
             vertical-align: middle;
         }
     }
+
+    .xexpand {
+        width: 100%;
+    }
+
+    .xfill {
+        justify-content: stretch;
+    }
+
+    .yexpand {
+        height: 100%;
+    }
+
+    .xalign-start {
+        justify-self: start;
+        justify-content: start;
+    }
+
+    .xalign-center {
+        justify-self: center;
+        justify-content: center;
+    }
+
+    .xalign-end {
+        justify-self: end;
+        justify-content: end;
+    }
+
+    .yalign-start {
+        align-items: start;
+    }
+
+    .yalign-center {
+        align-items: center;
+    }
+
+    .yalign-end {
+        align-items: end;
+    }
+
+    .yfill {
+        align-self: stretch;
+    }
 }
 
 .form-binary, .editabletree-binary {
@@ -910,6 +945,16 @@ input.column-boolean {
     }
     .form-link {
         display: none;
+    }
+
+    .form {
+        .form-container, .form-hcontainer, .form-vcontainer {
+            display: block;
+        }
+    }
+
+    .xalign-center, .xalign-end {
+        text-align: start;
     }
 }
 

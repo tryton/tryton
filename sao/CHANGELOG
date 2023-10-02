@@ -1,3 +1,4 @@
+* Use grid layout for form container
 * Support scanning code
 * Reset search offset when domain has changed
 * Add a canonicalize function for domains
