@@ -5,7 +5,7 @@ Stock Shipment In Scenario
 Imports::
 
     >>> from decimal import Decimal
-    >>> from proteus import Model
+    >>> from proteus import Model, Report
     >>> from trytond.tests.tools import activate_modules
     >>> from trytond.modules.company.tests.tools import (
     ...     create_company, get_company)
@@ -78,6 +78,9 @@ Receive the shipment::
     1
     >>> all(m.state == 'draft' for m in shipment.inventory_moves)
     True
+
+    >>> restocking_list = Report('stock.shipment.in.restocking_list')
+    >>> _ = restocking_list.execute([shipment])
 
 Change inventory quantity and try to finish::
 
