@@ -1442,6 +1442,16 @@ class SaleLine(TaxableMixin, sequence_ordered(), ModelSQL, ModelView):
         context['taxes'] = [t.id for t in self.taxes or []]
         return context
 
+    @fields.depends(
+        'sale', '_parent_sale.party', '_parent_sale.invoice_party',
+        methods=['compute_taxes', 'on_change_with_amount'])
+    def on_change_sale(self):
+        party = None
+        if self.sale:
+            party = self.sale.invoice_party or self.sale.party
+        self.taxes = self.compute_taxes(party)
+        self.amount = self.on_change_with_amount()
+
     @fields.depends('product', 'unit', 'sale',
         '_parent_sale.party', '_parent_sale.invoice_party',
         methods=['compute_taxes', 'compute_unit_price',
@@ -1464,20 +1474,23 @@ class SaleLine(TaxableMixin, sequence_ordered(), ModelSQL, ModelView):
         self.type = 'line'
         self.amount = self.on_change_with_amount()
 
-    @fields.depends('product', 'company', methods=['_get_tax_rule_pattern'])
+    @fields.depends(
+        'product',
+        methods=['on_change_with_company', '_get_tax_rule_pattern'])
     def compute_taxes(self, party):
         pool = Pool()
         AccountConfiguration = pool.get('account.configuration')
 
+        company = self.on_change_with_company()
         taxes = set()
         pattern = self._get_tax_rule_pattern()
         taxes_used = []
         if self.product:
             taxes_used = self.product.customer_taxes_used
-        elif self.company:
+        elif company:
             account_config = AccountConfiguration(1)
             account = account_config.get_multivalue(
-                'default_category_account_revenue', company=self.company.id)
+                'default_category_account_revenue', company=company.id)
             if account:
                 taxes_used = account.taxes
         for tax in taxes_used:
