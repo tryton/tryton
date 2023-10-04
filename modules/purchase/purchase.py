@@ -1402,6 +1402,16 @@ class Line(sequence_ordered(), ModelSQL, ModelView):
             'company': (self.company.id if self.company else -1),
             }
 
+    @fields.depends(
+        'purchase', '_parent_purchase.party', '_parent_purchase.invoice_party',
+        methods=['compute_taxes', 'on_change_with_amount'])
+    def on_change_purchase(self):
+        party = None
+        if self.purchase:
+            party = self.purchase.invoice_party or self.purchase.party
+        self.taxes = self.compute_taxes(party)
+        self.amount = self.on_change_with_amount()
+
     @fields.depends('product', 'unit', 'purchase',
         '_parent_purchase.party', '_parent_purchase.invoice_party',
         'product_supplier', methods=['compute_taxes', 'compute_unit_price',
@@ -1433,19 +1443,23 @@ class Line(sequence_ordered(), ModelSQL, ModelView):
         self.type = 'line'
         self.amount = self.on_change_with_amount()
 
-    @fields.depends('product', 'company', methods=['_get_tax_rule_pattern'])
+    @fields.depends(
+        'product',
+        methods=['on_change_with_company', '_get_tax_rule_pattern'])
     def compute_taxes(self, party):
         pool = Pool()
         AccountConfiguration = pool.get('account.configuration')
+
+        company = self.on_change_with_company()
         taxes = set()
         pattern = self._get_tax_rule_pattern()
         taxes_used = []
         if self.product:
             taxes_used = self.product.supplier_taxes_used
-        elif self.company:
+        elif company:
             account_config = AccountConfiguration(1)
             account = account_config.get_multivalue(
-                'default_category_account_expense', company=self.company.id)
+                'default_category_account_expense', company=company.id)
             if account:
                 taxes_used = account.taxes
         for tax in taxes_used:
