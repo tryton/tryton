@@ -8792,3 +8792,4 @@ b247ffff5dc9ac5fdb7c17771dc13be2753a7332 trytond-6.6.13
 f7cd59f6e239e205a7dbfd20e6f6a93a235624e4 purchase-6.6.4
 ff41132fc823d15a1db104cd6eba1104565d4385 product_kit-6.6.7
 6f3209e7327d897167d2db87e2d1cd7ded2ffeb2 edocument_uncefact-6.6.1
+2e5504a7ac954c07c6562ae439b1f76a5a504afa account_payment_stripe-6.6.3
