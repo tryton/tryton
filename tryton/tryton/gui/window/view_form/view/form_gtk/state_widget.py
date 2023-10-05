@@ -50,6 +50,8 @@ class Label(StateMixin, Gtk.Label):
         readonly = ((field and field.attrs.get('readonly'))
                 or state_changes.get('readonly', not bool(field)))
         common.apply_label_attributes(self, readonly, required)
+        self.set_max_width_chars(80)
+        self.set_line_wrap(True)
 
 
 class VBox(StateMixin, Gtk.VBox):
