@@ -1185,6 +1185,8 @@ class ModifyCostPrice(Wizard):
 
     def get_revision(self, Revision):
         return Revision(
+            template=None,
+            product=None,
             company=Transaction().context.get('company'),
             date=self.start.date,
             cost_price=self.start.cost_price,
@@ -1284,7 +1286,7 @@ class CostPriceRevision(ModelSQL, ModifyCostPriceStart):
             raise ProductCostPriceError(
                 gettext('stock.msg_invalid_cost_price',
                     cost_price=self.cost_price,
-                    product=product.rec_name,
+                    product=product.rec_name if product else '',
                     exception=exception)) from exception
         if not isinstance(amount, Decimal):
             raise ProductCostPriceError(
