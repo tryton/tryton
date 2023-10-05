@@ -2374,6 +2374,8 @@ class GeneralLedgerLine(ModelSQL, ModelView):
         account_ids, party_ids = set(), set()
         for r in records:
             account_parties[r.id] = None
+            if not r.party:
+                continue
             account_party2ids[r.account.id, r.party.id].append(r.id)
             account_ids.add(r.account.id)
             party_ids.add(r.party.id)
