@@ -165,6 +165,14 @@ attlist.button &= attribute confirm { text }?
 attlist.button &= attribute name { text }
 attlist.button &= attribute states { text }?
 attlist.button &=
+  [ a:defaultValue = "0" ] attribute yexpand { "0" | "1" }?
+attlist.button &=
+  [ a:defaultValue = "0" ] attribute yfill { "0" | "1" }?
+attlist.button &=
+  [ a:defaultValue = "1" ] attribute xexpand { "0" | "1" }?
+attlist.button &=
+  [ a:defaultValue = "0" ] attribute xfill { "0" | "1" }?
+attlist.button &=
     [ a:defaultValue="action" ]
     attribute keyword { "relate" | "print" | "action" }?
 attlist.button &= [ a:defaultValue = "0" ] attribute rule { "0" | "1" }?

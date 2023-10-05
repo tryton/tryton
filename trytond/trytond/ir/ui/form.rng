@@ -873,6 +873,50 @@
   </define>
   <define name="attlist.button" combine="interleave">
     <optional>
+      <attribute a:defaultValue="0">
+        <name ns="">yexpand</name>
+        <choice>
+          <value>0</value>
+          <value>1</value>
+        </choice>
+      </attribute>
+    </optional>
+  </define>
+  <define name="attlist.button" combine="interleave">
+    <optional>
+      <attribute a:defaultValue="0">
+        <name ns="">yfill</name>
+        <choice>
+          <value>0</value>
+          <value>1</value>
+        </choice>
+      </attribute>
+    </optional>
+  </define>
+  <define name="attlist.button" combine="interleave">
+    <optional>
+      <attribute a:defaultValue="1">
+        <name ns="">xexpand</name>
+        <choice>
+          <value>0</value>
+          <value>1</value>
+        </choice>
+      </attribute>
+    </optional>
+  </define>
+  <define name="attlist.button" combine="interleave">
+    <optional>
+      <attribute a:defaultValue="0">
+        <name ns="">xfill</name>
+        <choice>
+          <value>0</value>
+          <value>1</value>
+        </choice>
+      </attribute>
+    </optional>
+  </define>
+  <define name="attlist.button" combine="interleave">
+    <optional>
       <attribute a:defaultValue="action">
         <name ns="">keyword</name>
         <choice>
