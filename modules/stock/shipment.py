@@ -1061,7 +1061,8 @@ class ShipmentOut(ShipmentAssignMixin, Workflow, ModelSQL, ModelView):
                 ],
             states={
                 'readonly': Eval('state').in_(
-                    ['draft', 'assigned', 'packed', 'done', 'cancelled']),
+                    ['draft', 'assigned', 'picked', 'packed', 'done',
+                     'cancelled']),
                 'invisible': (
                     Eval('warehouse_storage') == Eval('warehouse_output')),
                 },
