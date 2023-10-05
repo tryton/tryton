@@ -568,7 +568,6 @@ class Statement(Workflow, ModelSQL, ModelView):
             date=key['date'],
             origin=self,
             company=self.company,
-            description=str(key['number']),
             )
 
     def _get_move_line(self, amount, amount_second_currency, lines):
@@ -583,19 +582,12 @@ class Statement(Workflow, ModelSQL, ModelView):
             second_currency = None
             amount_second_currency = None
 
-        descriptions = {l.description for l in lines}
-        if len(descriptions) == 1:
-            description, = descriptions
-        else:
-            description = ''
-
         return MoveLine(
             debit=abs(amount) if amount < 0 else 0,
             credit=abs(amount) if amount > 0 else 0,
             account=self.journal.account,
             second_currency=second_currency,
             amount_second_currency=amount_second_currency,
-            description=description,
             )
 
     @classmethod
@@ -1041,7 +1033,6 @@ class Line(origin_mixin(_states), sequence_ordered(), ModelSQL, ModelView):
 
         return MoveLine(
             origin=self,
-            description=self.description,
             debit=amount < zero and -amount or zero,
             credit=amount >= zero and amount or zero,
             account=self.account,

@@ -240,17 +240,13 @@ Test posted moves::
 
     >>> statement_line = statement.lines[0]
     >>> move = statement_line.move
-    >>> move.description
-    '0001'
-    >>> sorted((l.description for l in move.lines))
+    >>> sorted((l.description_used or '' for l in move.lines))
     ['', 'description', 'other description']
 
     >>> statement_line = statement.lines[2]
     >>> move = statement_line.move
-    >>> move.description
-    '0002'
-    >>> sorted((l.description for l in move.lines))
-    ['description', 'description']
+    >>> sorted((l.description_used or '' for l in move.lines))
+    ['', 'description']
 
 Test invoice state::
 
