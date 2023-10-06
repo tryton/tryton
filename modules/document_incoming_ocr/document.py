@@ -97,11 +97,12 @@ class IncomingSupplierInvoice(metaclass=PoolMeta):
             currency = invoice_data.get('currency')
             if currency:
                 try:
-                    invoice.currency, = Currency.search([
+                    currency, = Currency.search([
                             ('code', '=', currency),
                             ])
                 except ValueError:
                     logger.debug(f"Cannot find currency '{currency}'")
+                invoice.currency = currency.id
 
             invoice.reference = invoice_data.get('number')
             invoice.description = invoice_data.get('description')
@@ -175,11 +176,12 @@ class IncomingSupplierInvoice(metaclass=PoolMeta):
         product_name = line_data.get('product_name')
         if product_name:
             try:
-                line.product, = Product.search([
+                product, = Product.search([
                         ('rec_name', 'ilike', product_name),
                         ])
             except ValueError:
                 logger.debug(f"Cannot find product '{product_name}'")
+            line.product = product.id
             line.on_change_product()
         else:
             line.product = None
@@ -245,7 +247,7 @@ class IncomingSupplierInvoice(metaclass=PoolMeta):
         invoice_tax = InvoiceTax(invoice=invoice, manual=True)
 
         try:
-            invoice_tax.tax, = Tax.search([
+            tax, = Tax.search([
                     ['OR',
                         ('group', '=', None),
                         ('group.kind', 'in', ['purchase', 'both']),
@@ -258,6 +260,7 @@ class IncomingSupplierInvoice(metaclass=PoolMeta):
         except ValueError:
             logger.debug(f"Cannot find tax for '{parsed_tax}'")
             return
+        invoice_tax.tax = tax.id
         invoice_tax.on_change_tax()
 
         base = parsed_tax.get('base')
@@ -378,7 +381,7 @@ class IncomingSupplierInvoicePurchase(metaclass=PoolMeta):
                 index = bisect.bisect_left(quantities, line.quantity, key=key)
                 if index >= len(quantities):
                     index = -1
-                line.origin = quantities[index][1]
+                line.origin = str(quantities[index][1])
         return line
 
 
