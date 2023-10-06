@@ -190,6 +190,7 @@ class IncomingSupplierInvoice(metaclass=PoolMeta):
             if line.description:
                 similar_lines = InvoiceLine.search([
                         ('description', 'ilike', line.description),
+                        ('invoice.company', '=', invoice.company),
                         ('invoice.type', '=', invoice.type),
                         ('invoice.state', 'in',
                             ['validated', 'posted', 'paid']),
@@ -366,6 +367,7 @@ class IncomingSupplierInvoicePurchase(metaclass=PoolMeta):
             else:
                 numbers = re.split(r'[ ,;]', line_data['purchase_orders'])
             purchase_lines = PurchaseLine.search([
+                    ('purchase.company', '=', invoice.company),
                     ('purchase.rec_name', 'in', numbers),
                     ('type', '=', 'line'),
                     ('product', '=', line.product.id),
