@@ -129,8 +129,8 @@ Create an initial cash session::
     >>> transfer, = session.transfers
     >>> transfer.state
     'posted'
-    >>> bool(transfer.move)
-    True
+    >>> transfer.move.state
+    'posted'
     >>> accounts['bank'].reload()
     >>> accounts['bank'].balance
     Decimal('-100.00')

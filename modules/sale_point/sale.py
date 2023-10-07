@@ -1285,6 +1285,7 @@ class POSCashTransfer(Workflow, ModelSQL, ModelView):
             transfer.move = move
             moves.append(move)
         Move.save(moves)
+        Move.post(moves)
         cls.save(transfers)
 
     def get_move(self, account):
