@@ -3,6 +3,7 @@
 import unittest
 from unittest.mock import Mock
 
+from trytond import backend
 from trytond.tests.test_tryton import CONTEXT, DB_NAME, USER, activate_module
 from trytond.transaction import Transaction
 
@@ -121,3 +122,26 @@ class TransactionTestCase(unittest.TestCase):
         dm.tpc_vote.assert_not_called()
         dm.tpc_abort.assert_called_once_with(transaction)
         dm.tpc_finish.assert_not_called()
+
+    @unittest.skipUnless(backend.name == 'postgresql', "Test pg_settings")
+    def test_postgresl_statement_timeout(self):
+        get_timeout = (
+            "SELECT setting FROM pg_settings "
+            "WHERE name='statement_timeout'")
+
+        with Transaction().start(DB_NAME, USER) as transaction:
+            cursor = transaction.connection.cursor()
+            cursor.execute(get_timeout)
+            self.assertEqual('0', cursor.fetchone()[0])
+
+        with Transaction().start(DB_NAME, USER, timeout=1) as transaction:
+            cursor = transaction.connection.cursor()
+            cursor.execute(get_timeout)
+            self.assertEqual('1000', cursor.fetchone()[0])
+
+    @unittest.skipUnless(backend.name == 'postgresql', "Use pg_sleep")
+    def test_postgresql_statement_timeout_exception(self):
+        with self.assertRaises(backend.DatabaseTimeoutError):
+            with Transaction().start(DB_NAME, USER, timeout=1) as transaction:
+                cursor = transaction.connection.cursor()
+                cursor.execute("SELECT pg_sleep(2)")

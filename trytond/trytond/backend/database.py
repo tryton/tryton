@@ -6,6 +6,7 @@ from sql import For
 
 DatabaseIntegrityError = None
 DatabaseOperationalError = None
+DatabaseTimeoutError = None
 
 SQLType = namedtuple('SQLType', 'base type')
 
@@ -26,7 +27,8 @@ class DatabaseInterface(object):
     def connect(self):
         raise NotImplementedError
 
-    def get_connection(self, autocommit=False, readonly=False):
+    def get_connection(
+            self, autocommit=False, readonly=False, statement_timeout=None):
         raise NotImplementedError
 
     def put_connection(self, connection, close=False):

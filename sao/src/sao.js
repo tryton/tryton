@@ -1021,7 +1021,7 @@ var Sao = {
             }
             return ir_model.execute('global_search',
                     [text, Sao.config.limit, Sao.main_menu_screen.model_name],
-                    Sao.main_menu_screen.context)
+                    Sao.main_menu_screen.context, true, false)
                 .then(s_results => {
                     var results = [];
                     for (const result of s_results) {

@@ -184,7 +184,8 @@ def _dispatch(request, pool, *args, **kwargs):
         if count:
             time.sleep(0.02 * (retry - count))
         with Transaction().start(
-                pool.database_name, user, readonly=rpc.readonly,
+                pool.database_name, user,
+                readonly=rpc.readonly, timeout=rpc.timeout,
                 **transaction_extras) as transaction:
             try:
                 c_args, c_kwargs, transaction.context, transaction.timestamp \
@@ -207,6 +208,9 @@ def _dispatch(request, pool, *args, **kwargs):
                 transaction.tasks.clear()
                 e.fix(transaction_extras)
                 continue
+            except backend.DatabaseTimeoutError:
+                logger.warning(log_message, *log_args, exc_info=True)
+                abort(HTTPStatus.REQUEST_TIMEOUT)
             except backend.DatabaseOperationalError:
                 if count < retry and not rpc.readonly:
                     transaction.rollback()

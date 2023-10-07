@@ -7,6 +7,7 @@ from gi.repository import Gtk
 import tryton.common as common
 from tryton.action import Action
 from tryton.config import CONFIG
+from tryton.exceptions import TrytonServerError
 from tryton.pyson import PYSONDecoder
 
 
@@ -189,14 +190,16 @@ class Link(StateMixin, Gtk.Button):
                         ['AND', domain, tab_domain], 0, 100, context=context,
                         callback=functools.partial(
                             self._set_count, idx=i, current=self._current,
-                            counter=counter, label=label))
+                            counter=counter, label=label),
+                        process_exception=False)
             else:
                 common.RPCExecute(
                     'model', action['res_model'], 'search_count',
                     domain, 0, 100, context=context,
                     callback=functools.partial(
                         self._set_count, current=self._current,
-                        counter=counter, label=label))
+                        counter=counter, label=label),
+                    process_exception=False)
 
     def _set_count(self, value, idx=0, current=None, counter=None, label=''):
         if current != self._current or not self.get_parent():
@@ -206,7 +209,7 @@ class Link(StateMixin, Gtk.Button):
             if count > 99:
                 count = '99+'
             counter[idx] = count
-        except common.RPCException:
+        except (common.RPCException, TrytonServerError):
             pass
         self._set_label_counter(label, counter)
 

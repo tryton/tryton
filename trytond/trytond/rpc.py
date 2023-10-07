@@ -21,11 +21,12 @@ class RPC(object):
 
     __slots__ = (
         'readonly', 'instantiate', 'decorator', 'result',
-        'check_access', 'fresh_session', 'unique', 'cache')
+        'check_access', 'fresh_session', 'unique', 'cache', 'timeout')
 
     def __init__(
             self, readonly=True, instantiate=None, decorator=None, result=None,
-            check_access=True, fresh_session=False, unique=True, cache=None):
+            check_access=True, fresh_session=False, unique=True, cache=None,
+            timeout=None):
         self.readonly = readonly
         self.instantiate = instantiate
         self.decorator = decorator
@@ -40,6 +41,7 @@ class RPC(object):
             if not isinstance(cache, RPCCache):
                 cache = RPCCache(**cache)
         self.cache = cache
+        self.timeout = timeout
 
     def convert(self, obj, *args, **kwargs):
         args = list(args)
