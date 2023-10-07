@@ -721,9 +721,11 @@
         if (!(selection instanceof Array) &&
                 !(key in this._values2selection)) {
             if (!jQuery.isEmptyObject(this.attributes.selection_change_with)) {
-                prm = this.model.execute(selection, [value]);
+                prm = this.model.execute(
+                    selection, [value], {}, true, false);
             } else {
-                prm = this.model.execute(selection, []);
+                prm = this.model.execute(
+                    selection, [], {}, true, false);
             }
             prm = prm.then(selection => {
                 this._values2selection[key] = selection;

@@ -29,13 +29,18 @@ from trytond.transaction import Transaction
 
 __all__ = [
     'Database',
-    'DatabaseIntegrityError', 'DatabaseDataError', 'DatabaseOperationalError']
+    'DatabaseIntegrityError', 'DatabaseDataError', 'DatabaseOperationalError',
+    'DatabaseTimeoutError']
 logger = logging.getLogger(__name__)
 
 _default_name = config.get('database', 'default_name', default=':memory:')
 
 
 class DatabaseDataError(DatabaseError):
+    pass
+
+
+class DatabaseTimeoutError(Exception):
     pass
 
 
@@ -445,7 +450,8 @@ class Database(DatabaseInterface):
         db_uri = urllib.parse.urlunparse(db_uri)
         return db_uri.replace('sqlite', 'file', 1)
 
-    def get_connection(self, autocommit=False, readonly=False):
+    def get_connection(
+            self, autocommit=False, readonly=False, statement_timeout=None):
         if self._conn is None:
             self.connect()
         if autocommit:

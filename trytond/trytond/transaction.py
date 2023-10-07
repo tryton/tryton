@@ -159,7 +159,7 @@ class Transaction(object):
         return cache
 
     def start(self, database_name, user, readonly=False, context=None,
-            close=False, autocommit=False, **extras):
+            close=False, autocommit=False, timeout=None, **extras):
         '''
         Start transaction
         '''
@@ -197,7 +197,7 @@ class Transaction(object):
                 if count:
                     time.sleep(0.002 * (_retry - count))
                 self.connection = database.get_connection(readonly=readonly,
-                    autocommit=autocommit)
+                    autocommit=autocommit, statement_timeout=timeout)
                 try:
                     lock_tables = extras.get('_lock_tables', [])
                     for table in lock_tables:

@@ -23,7 +23,8 @@ from tryton.common import RPCContextReload, RPCException, RPCExecute
 from tryton.common.cellrendererclickablepixbuf import (
     CellRendererClickablePixbuf)
 from tryton.config import CONFIG, TRYTON_ICON, get_config_dir
-from tryton.exceptions import TrytonError, TrytonServerUnavailable
+from tryton.exceptions import (
+    TrytonError, TrytonServerError, TrytonServerUnavailable)
 from tryton.gui.window import Window
 from tryton.jsonrpc import object_hook
 from tryton.pyson import PYSONDecoder
@@ -375,7 +376,7 @@ class Main(Gtk.Application):
             def set_result(result):
                 try:
                     result = result()
-                except RPCException:
+                except (RPCException, TrytonServerError):
                     result = []
                 if search_text != widget.get_text():
                     if callback:
@@ -401,7 +402,8 @@ class Main(Gtk.Application):
 
             RPCExecute('model', 'ir.model', 'global_search', search_text,
                 CONFIG['client.limit'], self.menu_screen.model_name,
-                context=self.menu_screen.context, callback=set_result)
+                context=self.menu_screen.context, callback=set_result,
+                process_exception=False)
             return False
 
         def changed(widget):

@@ -1226,7 +1226,7 @@
             try {
                 result = this.model.execute(
                     'autocomplete_' + fieldname, [values], this.get_context(),
-                    false);
+                    false, false);
             } catch (e) {
                 result = [];
             }
