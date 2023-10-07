@@ -7,8 +7,8 @@ this repository contains the full copyright notices and license terms. -->
             <field name="text">Sendcloud webservice call failed with the following error message:
 %(message)s</field>
         </record>
-        <record model="ir.message" id="msg_shipment_has_reference_number">
-            <field name="text">You cannot create a shipping label for shipment "%(shipment)s" because it already has a reference number.</field>
+        <record model="ir.message" id="msg_shipment_has_shipping_reference_number">
+            <field name="text">You cannot create a shipping label for shipment "%(shipment)s" because it already has a shipping reference number.</field>
         </record>
     </data>
 </tryton>

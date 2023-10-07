@@ -99,10 +99,10 @@ class CreateShippingSendcloud(Wizard):
         Package = pool.get('stock.package')
 
         shipment = self.record
-        if shipment.reference:
+        if shipment.shipping_reference:
             raise AccessError(
                 gettext('stock_package_shipping_sendcloud'
-                    '.msg_shipment_has_reference_number',
+                    '.msg_shipment_has_shipping_reference_number',
                     shipment=shipment.rec_name))
 
         credential = shipment.get_sendcloud_credential()
@@ -130,8 +130,8 @@ class CreateShippingSendcloud(Wizard):
             package.shipping_label_mimetype = carrier.shipping_label_mimetype
             package.shipping_reference = parcel['tracking_number']
             package.sendcloud_shipping_tracking_url = parcel['tracking_url']
-            if not shipment.reference:
-                shipment.reference = (
+            if not shipment.shipping_reference:
+                shipment.shipping_reference = (
                     parcel['colli_tracking_number']
                     or parcel['tracking_number'])
         Package.save(packages)

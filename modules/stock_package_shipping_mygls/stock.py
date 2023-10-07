@@ -148,10 +148,10 @@ class ShipmentCreateShippingMyGLS(Wizard):
         Package = pool.get('stock.package')
 
         shipment = self.record
-        if shipment.reference:
+        if shipment.shipping_reference:
             raise AccessError(
                 gettext('stock_package_shipping_mygls'
-                    '.msg_shipment_has_reference_number',
+                    '.msg_shipment_has_shipping_reference_number',
                     shipment=shipment.rec_name))
 
         credential = shipment.get_mygls_credential()
@@ -204,8 +204,8 @@ class ShipmentCreateShippingMyGLS(Wizard):
             package.shipping_label = fields.Binary.cast(label.getvalue())
             package.shipping_label_mimetype = carrier.shipping_label_mimetype
             package.shipping_reference = info.ParcelNumber
-            if not shipment.reference:
-                shipment.reference = info.ParcelNumber
+            if not shipment.shipping_reference:
+                shipment.shipping_reference = info.ParcelNumber
         Package.save(packages)
         shipment.save()
 

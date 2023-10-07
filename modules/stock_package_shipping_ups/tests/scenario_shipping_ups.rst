@@ -218,7 +218,7 @@ Create the packs and ship the shipment::
 
     >>> create_shipping = shipment.click('create_shipping')
     >>> shipment.reload()
-    >>> shipment.reference != ''
+    >>> bool(shipment.shipping_reference)
     True
     >>> pack, = shipment.root_packages
     >>> pack.shipping_label is not None
@@ -235,5 +235,5 @@ Create the packs and ship the shipment::
 Because there is only one box, the pack shipping number is also the shipment
 identification number::
 
-    >>> pack.shipping_reference == shipment.reference
+    >>> pack.shipping_reference == shipment.shipping_reference
     True

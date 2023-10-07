@@ -29,7 +29,7 @@ class Package(metaclass=PoolMeta):
 
     shipping_reference = fields.Char('Shipping Reference',
         states={
-            'readonly': Eval('_parent_shipment', {}).get('carrier', False),
+            'readonly': Eval('has_shipping_service', False),
             })
     shipping_label = fields.Binary(
         "Shipping Label", readonly=True,
@@ -45,6 +45,9 @@ class Package(metaclass=PoolMeta):
                 'invisible': ~Eval('shipping_tracking_url'),
                 }),
         'get_shipping_tracking_url')
+    has_shipping_service = fields.Function(
+        fields.Boolean("Has Shipping Service"),
+        'on_change_with_has_shipping_service')
 
     def get_shipping_tracking_url(self, name):
         return
@@ -52,6 +55,7 @@ class Package(metaclass=PoolMeta):
     @classmethod
     def __setup__(cls):
         super().__setup__()
+        cls.shipping_reference.search_unaccented = False
         cls._buttons.update(
             print_shipping_label={
                 'invisible': ~Eval('shipping_label'),
@@ -88,6 +92,13 @@ class Package(metaclass=PoolMeta):
                     columns=columns,
                     values=values))
 
+    @fields.depends('shipment')
+    def on_change_with_has_shipping_service(self, name=None):
+        return bool(
+            self.shipment
+            and getattr(self.shipment, 'carrier', None)
+            and getattr(self.shipment.carrier, 'shipping_service', None))
+
     @classmethod
     def search_rec_name(cls, name, clause):
         _, operator, value = clause
@@ -119,26 +130,59 @@ class Package(metaclass=PoolMeta):
 
 class ShippingMixin:
     __slots__ = ()
+
+    shipping_reference = fields.Char(
+        "Shipping Reference",
+        states={
+            'readonly': Eval('has_shipping_service', False),
+            })
     shipping_description = fields.Char('Shipping Description',
         states={
             'readonly': Eval('state').in_(['done', 'packed'])
             })
+    has_shipping_service = fields.Function(
+        fields.Boolean("Has Shipping Service"),
+        'on_change_with_has_shipping_service')
 
     @classmethod
     def __setup__(cls):
         super().__setup__()
+        cls.shipping_reference.search_unaccented = False
         cls._buttons.update({
                 'create_shipping': {
-                    'invisible': (Eval('reference', False)
+                    'invisible': (Eval('shipping_reference', False)
                         | ~Eval('carrier', False)),
-                    'readonly': (Eval('reference', False)
+                    'readonly': (Eval('shipping_reference', False)
                         | ~Eval('root_packages', False)
                         | ~Eval('carrier', False)
                         | ~Eval('state').in_(['packed', 'done'])),
-                    'depends': ['state', 'carrier', 'reference',
+                    'depends': [
+                        'state', 'carrier', 'shipping_reference',
                         'root_packages'],
                     },
                 })
+
+    @classmethod
+    def __register__(cls, module):
+        table = cls.__table__()
+        table_h = cls.__table_handler__(module)
+        cursor = Transaction().connection.cursor()
+
+        fill_shiping_reference = (
+            table_h.column_exist('reference')
+            and not table_h.column_exist('shipping_reference'))
+
+        super().__register__(module)
+
+        # Migration from 6.8: fill shipping_reference
+        if fill_shiping_reference:
+            cursor.execute(*table.update(
+                    [table.shipping_reference],
+                    [table.reference]))
+
+    @fields.depends('carrier')
+    def on_change_with_has_shipping_service(self, name=None):
+        return bool(self.carrier and self.carrier.shipping_service)
 
     @classmethod
     def search_rec_name(cls, name, clause):
@@ -150,7 +194,7 @@ class ShippingMixin:
         domain = super().search_rec_name(name, clause)
         return [bool_op,
             domain,
-            ('reference', *clause[1:]),
+            ('shipping_reference', *clause[1:]),
             ]
 
     @classmethod

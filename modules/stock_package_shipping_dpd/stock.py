@@ -121,7 +121,7 @@ class CreateDPDShipping(Wizard):
         Package = pool.get('stock.package')
 
         shipment = self.record
-        if shipment.reference:
+        if shipment.shipping_reference:
             raise AccessError(
                 gettext('stock_package_shipping_dpd'
                     '.msg_shipment_has_reference_number',
@@ -186,7 +186,7 @@ class CreateDPDShipping(Wizard):
             new_pdf.write(new_label)
             labels.append(new_label)
 
-        shipment.reference = response.mpsId
+        shipment.shipping_reference = response.mpsId
         parcels = response.parcelInformation
         for package, label, parcel in zip_longest(packages, labels, parcels):
             package.shipping_label = fields.Binary.cast(label.getvalue())

@@ -2,7 +2,11 @@
 <!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
 this repository contains the full copyright notices and license terms. -->
 <data>
-    <xpath expr="/form/notebook" position="after">
+    <xpath expr="//field[@name='carrier']" position="after">
+        <label name="shipping_reference"/>
+        <field name="shipping_reference"/>
+        <newline/>
+
         <label name="shipping_description"/>
         <field name="shipping_description" colspan="3"/>
     </xpath>

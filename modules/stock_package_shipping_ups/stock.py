@@ -164,10 +164,10 @@ class CreateShippingUPS(Wizard):
         Package = pool.get('stock.package')
 
         shipment = self.record
-        if shipment.reference:
+        if shipment.shipping_reference:
             raise AccessError(
                 gettext('stock_package_shipping_ups'
-                    '.msg_shipment_has_reference_number',
+                    '.msg_shipment_has_shipping_reference_number',
                     shipment=shipment.rec_name))
 
         credential = self.get_credential(shipment)
@@ -210,7 +210,8 @@ class CreateShippingUPS(Wizard):
                     message=response_status['Description']))
 
         shipment_results = shipment_response['ShipmentResults']
-        shipment.reference = shipment_results['ShipmentIdentificationNumber']
+        shipment.shipping_reference = (
+            shipment_results['ShipmentIdentificationNumber'])
         ups_packages = shipment_results['PackageResults']
         if len(packages) == 1:
             # In case only one package is requested UPS returns a dictionnary

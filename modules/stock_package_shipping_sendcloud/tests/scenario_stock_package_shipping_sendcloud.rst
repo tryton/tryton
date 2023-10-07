@@ -212,7 +212,7 @@ Create the packages and ship the shipment::
 
     >>> create_shipping = shipment.click('create_shipping')
     >>> shipment.reload()
-    >>> bool(shipment.reference)
+    >>> bool(shipment.shipping_reference)
     True
     >>> pack, = shipment.root_packages
     >>> bool(pack.sendcloud_shipping_id)

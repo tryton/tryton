@@ -195,7 +195,7 @@ Create the packages and ship the shipment::
 
     >>> create_shipping = shipment.click('create_shipping')
     >>> shipment.reload()
-    >>> bool(shipment.reference)
+    >>> bool(shipment.shipping_reference)
     True
     >>> pack, _ = shipment.root_packages
     >>> pack.shipping_label is not None
