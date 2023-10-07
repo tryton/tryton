@@ -5,7 +5,6 @@ from decimal import Decimal
 from itertools import groupby
 
 from sql.conditionals import Coalesce
-from sql.functions import CharLength
 
 from trytond.i18n import gettext
 from trytond.model import Index, ModelSQL, ModelView, Workflow, fields
@@ -13,7 +12,7 @@ from trytond.model.exceptions import AccessError
 from trytond.modules.product import round_price
 from trytond.modules.purchase.stock import process_purchase
 from trytond.modules.sale.stock import process_sale
-from trytond.modules.stock.shipment import ShipmentCheckQuantity
+from trytond.modules.stock.shipment import ShipmentCheckQuantity, ShipmentMixin
 from trytond.pool import Pool, PoolMeta
 from trytond.pyson import Eval, Id, If
 from trytond.tools import grouped_slice
@@ -68,25 +67,15 @@ class ConfigurationSequence(metaclass=PoolMeta):
             return None
 
 
-class ShipmentDrop(ShipmentCheckQuantity, Workflow, ModelSQL, ModelView):
+class ShipmentDrop(
+        ShipmentCheckQuantity, ShipmentMixin, Workflow, ModelSQL, ModelView):
     "Drop Shipment"
     __name__ = 'stock.shipment.drop'
-    _rec_name = 'number'
-    effective_date = fields.Date(
-        "Effective Date",
-        states={
-            'readonly': Eval('state').in_(['cancelled', 'done']),
-            },
-        help="When the stock was actually sent.")
-    planned_date = fields.Date('Planned Date', states={
-            'readonly': Eval('state') != 'draft',
-            })
+
     company = fields.Many2One('company.company', 'Company', required=True,
         states={
             'readonly': Eval('state') != 'draft',
             })
-    reference = fields.Char(
-        "Reference", help="The external identifiers for the shipment.")
     supplier = fields.Many2One('party.party', 'Supplier', required=True,
         states={
             'readonly': (((Eval('state') != 'draft')
@@ -147,9 +136,6 @@ class ShipmentDrop(ShipmentCheckQuantity, Workflow, ModelSQL, ModelView):
             'readonly': Eval('state') != 'shipped',
             },
         depends={'customer'})
-    number = fields.Char(
-        "Number", readonly=True,
-        help="The main identifier for the shipment.")
     state = fields.Selection([
             ('draft', 'Draft'),
             ('waiting', 'Waiting'),
@@ -177,12 +163,9 @@ class ShipmentDrop(ShipmentCheckQuantity, Workflow, ModelSQL, ModelView):
 
     @classmethod
     def __setup__(cls):
-        cls.number.search_unaccented = False
-        cls.reference.search_unaccented = False
         super(ShipmentDrop, cls).__setup__()
         t = cls.__table__()
         cls._sql_indexes.update({
-                Index(t, (t.reference, Index.Similarity())),
                 Index(
                     t, (t.state, Index.Equality()),
                     where=t.state.in_(['draft', 'waiting', 'shipped'])),
@@ -226,11 +209,6 @@ class ShipmentDrop(ShipmentCheckQuantity, Workflow, ModelSQL, ModelView):
                     'depends': ['state'],
                     },
                 })
-
-    @classmethod
-    def order_number(cls, tables):
-        table, _ = tables[None]
-        return [CharLength(table.number), table.number]
 
     @classmethod
     def order_effective_date(cls, tables):

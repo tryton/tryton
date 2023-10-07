@@ -26,6 +26,13 @@ from .exceptions import ShipmentCheckQuantityWarning
 class ShipmentMixin:
     __slots__ = ()
 
+    _rec_name = 'number'
+    number = fields.Char(
+        "Number", readonly=True,
+        help="The main identifier for the shipment.")
+    reference = fields.Char(
+        "Reference",
+        help="The external identifier for the shipment.")
     planned_date = fields.Date(
         lazy_gettext('stock.msg_shipment_planned_date'),
         states={
@@ -54,11 +61,22 @@ class ShipmentMixin:
 
     @classmethod
     def __setup__(cls):
+        cls.number.search_unaccented = False
+        cls.reference.search_unaccented = False
         super().__setup__()
+        t = cls.__table__()
+        cls._sql_indexes.update({
+                Index(t, (t.reference, Index.Similarity())),
+                })
         cls._order = [
             ('effective_date', 'ASC NULLS LAST'),
             ('id', 'ASC'),
             ]
+
+    @classmethod
+    def order_number(cls, tables):
+        table, _ = tables[None]
+        return [CharLength(table.number), table.number]
 
     @classmethod
     def order_effective_date(cls, tables):
@@ -80,6 +98,19 @@ class ShipmentMixin:
                 return today - planned_date
 
     @classmethod
+    def search_rec_name(cls, name, clause):
+        _, operator, value = clause
+        if operator.startswith('!') or operator.startswith('not '):
+            bool_op = 'AND'
+        else:
+            bool_op = 'OR'
+        domain = [bool_op,
+            ('number', operator, value),
+            ('reference', operator, value),
+            ]
+        return domain
+
+    @classmethod
     def view_attributes(cls):
         return super().view_attributes() + [
             ('/tree', 'visual', If(Eval('state') == 'cancelled', 'muted', '')),
@@ -87,6 +118,12 @@ class ShipmentMixin:
                 If(Eval('delay', datetime.timedelta()) > TimeDelta(),
                     'danger', '')),
             ]
+
+    @classmethod
+    def copy(cls, shipments, default=None):
+        default = default.copy() if default is not None else {}
+        default.setdefault('number')
+        return super().copy(shipments, default=default)
 
 
 class ShipmentAssignMixin(ShipmentMixin):
@@ -245,7 +282,6 @@ class ShipmentIn(
         ShipmentCheckQuantity, ShipmentMixin, Workflow, ModelSQL, ModelView):
     "Supplier Shipment"
     __name__ = 'stock.shipment.in'
-    _rec_name = 'number'
 
     company = fields.Many2One(
         'company.company', "Company", required=True,
@@ -253,8 +289,6 @@ class ShipmentIn(
             'readonly': Eval('state') != 'draft',
             },
         help="The company the shipment is associated with.")
-    reference = fields.Char(
-        "Reference", help="The supplier's identifier for the shipment.")
     supplier = fields.Many2One('party.party', 'Supplier',
         states={
             'readonly': (((Eval('state') != 'draft')
@@ -370,9 +404,6 @@ class ShipmentIn(
     moves = fields.One2Many('stock.move', 'shipment', 'Moves',
         domain=[('company', '=', Eval('company'))], readonly=True)
     origins = fields.Function(fields.Char('Origins'), 'get_origins')
-    number = fields.Char(
-        "Number", readonly=True,
-        help="The main identifier for the shipment.")
     received_by = employee_field("Received By")
     done_by = employee_field("Done By")
     state = fields.Selection([
@@ -385,12 +416,9 @@ class ShipmentIn(
 
     @classmethod
     def __setup__(cls):
-        cls.number.search_unaccented = False
-        cls.reference.search_unaccented = False
         super(ShipmentIn, cls).__setup__()
         t = cls.__table__()
         cls._sql_indexes.update({
-                Index(t, (t.reference, Index.Similarity())),
                 Index(
                     t,
                     (t.state, Index.Equality()),
@@ -453,11 +481,6 @@ class ShipmentIn(
                     location.storage_location,
                     where=location.id == sql_table.warehouse),
                 where=sql_table.warehouse_storage == Null))
-
-    @classmethod
-    def order_number(cls, tables):
-        table, _ = tables[None]
-        return [CharLength(table.number), table.number]
 
     @classmethod
     def order_effective_date(cls, tables):
@@ -597,7 +620,6 @@ class ShipmentIn(
             default = {}
         else:
             default = default.copy()
-        default.setdefault('number', None)
         default.setdefault('received_by', None)
         default.setdefault('done_by', None)
         return super(ShipmentIn, cls).copy(shipments, default=default)
@@ -723,7 +745,6 @@ class ShipmentIn(
 class ShipmentInReturn(ShipmentAssignMixin, Workflow, ModelSQL, ModelView):
     "Supplier Return Shipment"
     __name__ = 'stock.shipment.in.return'
-    _rec_name = 'number'
     _assign_moves_field = 'moves'
 
     company = fields.Many2One(
@@ -732,11 +753,6 @@ class ShipmentInReturn(ShipmentAssignMixin, Workflow, ModelSQL, ModelView):
             'readonly': Eval('state') != 'draft',
             },
         help="The company the shipment is associated with.")
-    number = fields.Char(
-        "Number", readonly=True,
-        help="The main identifier for the shipment.")
-    reference = fields.Char(
-        "Reference", help="The supplier's identifier for the shipment.")
     supplier = fields.Many2One('party.party', 'Supplier',
         states={
             'readonly': (((Eval('state') != 'draft')
@@ -814,12 +830,9 @@ class ShipmentInReturn(ShipmentAssignMixin, Workflow, ModelSQL, ModelView):
 
     @classmethod
     def __setup__(cls):
-        cls.number.search_unaccented = False
-        cls.reference.search_unaccented = False
         super(ShipmentInReturn, cls).__setup__()
         t = cls.__table__()
         cls._sql_indexes.update({
-                Index(t, (t.reference, Index.Similarity())),
                 Index(
                     t,
                     (t.state, Index.Equality()),
@@ -883,11 +896,6 @@ class ShipmentInReturn(ShipmentAssignMixin, Workflow, ModelSQL, ModelView):
         cursor.execute(*sql_table.update(
                 [sql_table.state], ['cancelled'],
                 where=sql_table.state == 'cancel'))
-
-    @classmethod
-    def order_number(cls, tables):
-        table, _ = tables[None]
-        return [CharLength(table.number), table.number]
 
     @staticmethod
     def default_state():
@@ -977,7 +985,6 @@ class ShipmentInReturn(ShipmentAssignMixin, Workflow, ModelSQL, ModelView):
             default = {}
         else:
             default = default.copy()
-        default.setdefault('number', None)
         default.setdefault('assigned_by', None)
         default.setdefault('done_by', None)
         return super(ShipmentInReturn, cls).copy(shipments, default=default)
@@ -1107,7 +1114,6 @@ class ShipmentOut(
         ModelView):
     "Customer Shipment"
     __name__ = 'stock.shipment.out'
-    _rec_name = 'number'
     _assign_moves_field = 'moves'
     company = fields.Many2One(
         'company.company', "Company", required=True,
@@ -1142,8 +1148,6 @@ class ShipmentOut(
                     ]),
             ],
         help="Where the stock is sent to.")
-    reference = fields.Char(
-        "Reference", help="The customer's identifier for the shipment.")
     warehouse = fields.Many2One('stock.location', "Warehouse", required=True,
         states={
             'readonly': ((Eval('state') != 'draft')
@@ -1229,9 +1233,6 @@ class ShipmentOut(
     moves = fields.One2Many('stock.move', 'shipment', 'Moves',
         domain=[('company', '=', Eval('company'))], readonly=True)
     origins = fields.Function(fields.Char('Origins'), 'get_origins')
-    number = fields.Char(
-        "Number", readonly=True,
-        help="The main identifier for the shipment.")
     picked_by = employee_field("Picked By")
     packed_by = employee_field("Packed By")
     done_by = employee_field("Done By")
@@ -1248,12 +1249,9 @@ class ShipmentOut(
 
     @classmethod
     def __setup__(cls):
-        cls.number.search_unaccented = False
-        cls.reference.search_unaccented = False
         super(ShipmentOut, cls).__setup__()
         t = cls.__table__()
         cls._sql_indexes.update({
-                Index(t, (t.reference, Index.Similarity())),
                 Index(
                     t,
                     (t.state, Index.Equality()),
@@ -1373,11 +1371,6 @@ class ShipmentOut(
                     location.output_location,
                     where=location.id == sql_table.warehouse),
                 where=sql_table.warehouse_output == Null))
-
-    @classmethod
-    def order_number(cls, tables):
-        table, _ = tables[None]
-        return [CharLength(table.number), table.number]
 
     @staticmethod
     def default_state():
@@ -1753,7 +1746,6 @@ class ShipmentOut(
             default = {}
         else:
             default = default.copy()
-        default.setdefault('number', None)
         default.setdefault('picked_by', None)
         default.setdefault('packed_by', None)
         default.setdefault('done_by', None)
@@ -1827,7 +1819,7 @@ class ShipmentOutReturn(
         ShipmentCheckQuantity, ShipmentMixin, Workflow, ModelSQL, ModelView):
     "Customer Return Shipment"
     __name__ = 'stock.shipment.out.return'
-    _rec_name = 'number'
+
     company = fields.Many2One(
         'company.company', "Company", required=True,
         states={
@@ -1852,8 +1844,6 @@ class ShipmentOutReturn(
             'readonly': Eval('state') != 'draft',
             }, domain=[('party', '=', Eval('customer'))],
         help="The address the customer can be contacted at.")
-    reference = fields.Char(
-        "Reference", help="The customer's identifier for the shipment.")
     warehouse = fields.Many2One('stock.location', "Warehouse", required=True,
         states={
             'readonly': ((Eval('state') != 'draft')
@@ -1936,9 +1926,6 @@ class ShipmentOutReturn(
     moves = fields.One2Many('stock.move', 'shipment', 'Moves',
         domain=[('company', '=', Eval('company'))], readonly=True)
     origins = fields.Function(fields.Char('Origins'), 'get_origins')
-    number = fields.Char(
-        "Number", readonly=True,
-        help="The main identifier for the shipment.")
     received_by = employee_field("Received By")
     done_by = employee_field("Done By")
     state = fields.Selection([
@@ -1951,12 +1938,9 @@ class ShipmentOutReturn(
 
     @classmethod
     def __setup__(cls):
-        cls.number.search_unaccented = False
-        cls.reference.search_unaccented = False
         super(ShipmentOutReturn, cls).__setup__()
         t = cls.__table__()
         cls._sql_indexes.update({
-                Index(t, (t.reference, Index.Similarity())),
                 Index(
                     t,
                     (t.state, Index.Equality()),
@@ -2024,11 +2008,6 @@ class ShipmentOutReturn(
                     location.storage_location,
                     where=location.id == sql_table.warehouse),
                 where=sql_table.warehouse_storage == Null))
-
-    @classmethod
-    def order_number(cls, tables):
-        table, _ = tables[None]
-        return [CharLength(table.number), table.number]
 
     @staticmethod
     def default_state():
@@ -2154,7 +2133,6 @@ class ShipmentOutReturn(
         if default is None:
             default = {}
         default = default.copy()
-        default.setdefault('number', None)
         default.setdefault('received_by', None)
         default.setdefault('done_by', None)
         return super(ShipmentOutReturn, cls).copy(shipments, default=default)
@@ -2280,7 +2258,6 @@ class ShipmentInternal(
         ModelView):
     "Internal Shipment"
     __name__ = 'stock.shipment.internal'
-    _rec_name = 'number'
     _assign_moves_field = 'moves'
     effective_start_date = fields.Date('Effective Start Date',
         domain=[
@@ -2309,11 +2286,6 @@ class ShipmentInternal(
             'readonly': ~Eval('state').in_(['request', 'draft']),
             },
         help="The company the shipment is associated with.")
-    number = fields.Char(
-        "Number", readonly=True,
-        help="The main identifier for the shipment.")
-    reference = fields.Char(
-        "Reference", help="The external identifiers for the shipment.")
     from_location = fields.Many2One('stock.location', "From Location",
         required=True, states={
             'readonly': (~Eval('state').in_(['request', 'draft'])
@@ -2451,12 +2423,9 @@ class ShipmentInternal(
 
     @classmethod
     def __setup__(cls):
-        cls.number.search_unaccented = False
-        cls.reference.search_unaccented = False
         super(ShipmentInternal, cls).__setup__()
         t = cls.__table__()
         cls._sql_indexes.update({
-                Index(t, (t.reference, Index.Similarity())),
                 Index(
                     t,
                     (t.state, Index.Equality()),
@@ -2536,11 +2505,6 @@ class ShipmentInternal(
         cursor.execute(*sql_table.update(
                 [sql_table.state], ['cancelled'],
                 where=sql_table.state == 'cancel'))
-
-    @classmethod
-    def order_number(cls, tables):
-        table, _ = tables[None]
-        return [CharLength(table.number), table.number]
 
     @classmethod
     def order_effective_date(cls, tables):
@@ -2682,7 +2646,6 @@ class ShipmentInternal(
                 shipment_field, name='to_location'))
         default.setdefault('moves.planned_date', partial(
                 shipment_field, name='planned_date'))
-        default.setdefault('number', None)
         default.setdefault('assigned_by', None)
         default.setdefault('shipped_by', None)
         default.setdefault('done_by', None)
