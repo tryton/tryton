@@ -38,7 +38,7 @@ class PurchaseRequest(ModelSQL, ModelView):
             'company': Eval('company', -1),
             },
         depends={'company'})
-    description = fields.Text('Description', readonly=True, states=STATES)
+    description = fields.Text('Description', readonly=True)
     summary = fields.Function(fields.Char('Summary'), 'on_change_with_summary')
     party = fields.Many2One(
         'party.party', "Party", states=STATES,
