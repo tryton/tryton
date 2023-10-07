@@ -133,10 +133,7 @@ class OrderPoint(ModelSQL, ModelView):
         points. I.E. no two order point with opposite location for the
         same product and same company.
         """
-        internals = cls.search([
-                ('id', 'in', [o.id for o in orders]),
-                ('type', '=', 'internal'),
-                ])
+        internals = cls.browse([o for o in orders if o.type == 'internal'])
         if not internals:
             return
 
