@@ -2698,6 +2698,7 @@ function eval_pyson(value){
                 this.record.field_set_client(this.field_name,
                         this.value_from_id(null, ''));
                 this.entry.val('');
+                this.focus();
                 return;
             }
             if (this.has_target(value)) {
