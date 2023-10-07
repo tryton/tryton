@@ -232,26 +232,27 @@ class Rule(ModelSQL, ModelView):
         clause_global = defaultdict(lambda: ['OR'])
         # Use root user without context to prevent recursion
         with transaction.set_user(0), transaction.set_context(user=0):
-            for rule in cls.browse(ids):
-                decoder = PYSONDecoder(
-                    cls._get_context(rule.rule_group.model.model))
-                assert rule.domain, ('Rule domain empty,'
-                    'check if migration was done')
-                dom = decoder.decode(rule.domain)
-                target_model = rule.rule_group.model.model
-                if target_model in model2field:
-                    target_dom = ['OR']
-                    for field in model2field[target_model]:
-                        target_dom.append((field, 'where', dom))
-                    dom = target_dom
-                if rule.rule_group.global_p:
-                    clause_global[rule.rule_group].append(dom)
-                else:
-                    clause[rule.rule_group].append(dom)
+            rules = cls.browse(ids)
+        for rule in rules:
+            decoder = PYSONDecoder(
+                cls._get_context(rule.rule_group.model.model))
+            assert rule.domain, ('Rule domain empty,'
+                'check if migration was done')
+            dom = decoder.decode(rule.domain)
+            target_model = rule.rule_group.model.model
+            if target_model in model2field:
+                target_dom = ['OR']
+                for field in model2field[target_model]:
+                    target_dom.append((field, 'where', dom))
+                dom = target_dom
+            if rule.rule_group.global_p:
+                clause_global[rule.rule_group].append(dom)
+            else:
+                clause[rule.rule_group].append(dom)
 
-            if no_rules:
-                group_id = no_rules[0]
-                clause[RuleGroup(group_id)] = []
+        if no_rules:
+            group_id = no_rules[0]
+            clause[RuleGroup(group_id)] = []
 
         return clause, clause_global
 
