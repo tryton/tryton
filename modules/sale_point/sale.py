@@ -880,11 +880,13 @@ class POSCashSession(Workflow, ModelSQL, ModelView):
             return self.point.company.currency.id
 
     @classmethod
+    @ModelView.button
     @Workflow.transition('open')
     def open(cls, sessions):
         pass
 
     @classmethod
+    @ModelView.button
     @Workflow.transition('closed')
     def close(cls, sessions):
         pool = Pool()
@@ -912,6 +914,7 @@ class POSCashSession(Workflow, ModelSQL, ModelView):
         super().delete(sessions)
 
     @classmethod
+    @ModelView.button
     @Workflow.transition('posted')
     def post(cls, sessions):
         pool = Pool()
