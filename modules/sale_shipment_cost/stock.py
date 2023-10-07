@@ -231,5 +231,6 @@ class ShipmentOut(ShipmentCostSaleMixin, metaclass=PoolMeta):
             shipment.cost = None
             shipment.cost_sale = None
             shipment.cost_sale_currency = None
+            shipment.cost_sales = None
         cls.save(shipments)
         super().cancel(shipments)

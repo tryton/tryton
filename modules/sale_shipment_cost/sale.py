@@ -262,7 +262,7 @@ class Sale(metaclass=PoolMeta):
     @property
     def _cost_shipments(self):
         "Return the shipments to apply cost sale"
-        return list(self.shipments)
+        return [s for s in self.shipments if s.state != 'cancelled']
 
     def _get_shipment_costs(self):
         "Yield shipment costs"
