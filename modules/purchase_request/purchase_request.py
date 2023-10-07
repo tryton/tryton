@@ -29,8 +29,7 @@ class PurchaseRequest(ModelSQL, ModelView):
 
     product = fields.Many2One('product.product', 'Product',
         select=True, readonly=True, domain=[('purchasable', '=', True)])
-    description = fields.Text('Description', readonly=True,
-        states=STATES, depends=DEPENDS)
+    description = fields.Text('Description', readonly=True)
     party = fields.Many2One('party.party', 'Party', select=True, states=STATES,
         depends=DEPENDS)
     quantity = fields.Float('Quantity', required=True, states=STATES,
