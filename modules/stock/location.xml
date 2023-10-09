@@ -21,6 +21,37 @@ this repository contains the full copyright notices and license terms. -->
             <field name="priority" eval="10"/>
             <field name="name">location_list</field>
         </record>
+        <record model="ir.ui.view" id="location_view_list_warehouse">
+            <field name="model">stock.location</field>
+            <field name="type">tree</field>
+            <field name="priority" eval="20"/>
+            <field name="name">location_tree</field>
+        </record>
+
+        <record model="ir.action.act_window" id="act_warehouse_list">
+            <field name="name">Warehouses</field>
+            <field name="res_model">stock.location</field>
+            <field
+                name="context"
+                eval="{'with_childs': True, 'stock_skip_warehouse': False}"
+                pyson="1"/>
+            <field name="domain" eval="[('type', '=', 'warehouse')]" pyson="1"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_warehouse_list_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="location_view_list_warehouse"/>
+            <field name="act_window" ref="act_warehouse_list"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_warehouse_list_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="location_view_form"/>
+            <field name="act_window" ref="act_warehouse_list"/>
+        </record>
+        <menuitem
+            parent="menu_stock"
+            action="act_warehouse_list"
+            sequence="30"
+            id="menu_warehouse_list"/>
 
         <record model="ir.action.act_window" id="act_location_tree">
             <field name="name">Locations</field>
