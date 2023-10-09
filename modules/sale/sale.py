@@ -1765,8 +1765,9 @@ class SaleLine(TaxableMixin, sequence_ordered(), ModelSQL, ModelView):
             if invoice_line.type != 'line':
                 continue
             if invoice_line not in skips:
-                quantity += Uom.compute_qty(invoice_line.unit,
-                    invoice_line.quantity, self.unit)
+                quantity += Uom.compute_qty(
+                    invoice_line.unit or self.unit, invoice_line.quantity,
+                    self.unit)
         return quantity
 
     def _get_invoice_line_moves(self):
@@ -1839,8 +1840,9 @@ class SaleLine(TaxableMixin, sequence_ordered(), ModelSQL, ModelView):
             for invoice_line in self.invoice_lines:
                 if (invoice_line.invoice
                         and invoice_line.invoice.state == 'paid'):
-                    quantity += Uom.compute_qty(invoice_line.unit,
-                        invoice_line.quantity, self.unit)
+                    quantity += Uom.compute_qty(
+                        invoice_line.unit or self.unit, invoice_line.quantity,
+                        self.unit)
             return quantity
 
     def _get_shipped_quantity(self, shipment_type):
@@ -1884,13 +1886,14 @@ class SaleLine(TaxableMixin, sequence_ordered(), ModelSQL, ModelView):
             moved_quantity *= -1
         invoiced_quantity = 0
         for invoice_line in self.invoice_lines:
-            if (
-                    (not invoice_line.invoice
-                        or invoice_line.invoice.state != 'cancelled')
-                    and self.unit and invoice_line.unit):
-                invoiced_quantity += Uom.compute_qty(
-                    invoice_line.unit, invoice_line.quantity, self.unit,
-                    round=False)
+            if (not invoice_line.invoice
+                    or invoice_line.invoice.state != 'cancelled'):
+                if self.unit:
+                    invoiced_quantity += Uom.compute_qty(
+                        invoice_line.unit or self.unit, invoice_line.quantity,
+                        self.unit, round=False)
+                else:
+                    invoiced_quantity += invoice_line.quantity
         actual_quantity = max(moved_quantity, invoiced_quantity, key=abs)
         if self.unit:
             actual_quantity = self.unit.round(actual_quantity)
