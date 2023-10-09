@@ -633,7 +633,7 @@ class _BinaryIcon(Cell):
 
 
 class _BinarySave(_BinaryIcon):
-    icon_name = 'tryton-save'
+    icon_name = 'tryton-download'
 
     def __init__(self, binary):
         super().__init__(binary)

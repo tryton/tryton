@@ -38,7 +38,7 @@ class CellRendererBinary(Gtk.CellRenderer):
         for key, icon in (
                 ('select', 'tryton-search'),
                 ('open', 'tryton-open'),
-                ('save', 'tryton-save'),
+                ('save', 'tryton-download'),
                 ('clear', 'tryton-clear')):
             img_sensitive = IconFactory.get_pixbuf(
                 icon, Gtk.IconSize.SMALL_TOOLBAR)

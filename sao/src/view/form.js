@@ -4142,7 +4142,7 @@ function eval_pyson(value){
                 'type': 'button',
                 'aria-label': Sao.i18n.gettext("Save As"),
                 'title': Sao.i18n.gettext("Save As..."),
-            }).append(Sao.common.ICONFACTORY.get_icon_img('tryton-save')
+            }).append(Sao.common.ICONFACTORY.get_icon_img('tryton-download')
             ).appendTo(group);
             this.but_save_as.click(this.save_as.bind(this));
 

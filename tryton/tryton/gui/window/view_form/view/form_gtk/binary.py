@@ -28,7 +28,7 @@ class BinaryMixin(Widget):
 
         self.but_save_as = Gtk.Button()
         self.but_save_as.set_image(common.IconFactory.get_image(
-                'tryton-save', Gtk.IconSize.SMALL_TOOLBAR))
+                'tryton-download', Gtk.IconSize.SMALL_TOOLBAR))
         self.but_save_as.set_relief(Gtk.ReliefStyle.NONE)
         self.but_save_as.connect('clicked', self.save_as)
         tooltips.set_tip(self.but_save_as, _('Save As...'))

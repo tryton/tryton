@@ -2855,7 +2855,7 @@
                     'class': 'btn btn-default btn-sm',
                     'type': 'button',
                     'title': Sao.i18n.gettext("Save As..."),
-                }).append(Sao.common.ICONFACTORY.get_icon_img('tryton-save')
+                }).append(Sao.common.ICONFACTORY.get_icon_img('tryton-download')
                 ).appendTo(cell)
                     .click(record, event => {
                         // Prevent editable tree to start edition
