@@ -862,9 +862,7 @@ class ModelStorage(Model):
                             column=column,
                             **Relation.__names__()))
                 else:
-                    res.extend(res2)
-            if len(res):
-                res = [('add', [x.id for x in res])]
+                    res.append(res2[0].id)
             return res
 
         def get_one2one(relation, value, column):
@@ -935,10 +933,10 @@ class ModelStorage(Model):
                             **klass.__names__(field))) from e
                 res_ids.append(db_id)
             if ftype == 'many2many' and res_ids:
-                return [('add', res_ids)]
+                return res_ids
             elif ftype == 'reference' and res_ids:
                 return '%s,%s' % (relation, str(res_ids[0]))
-            return res_ids and res_ids[0] or False
+            return res_ids[0]
 
         def dispatch(create, write, row, Relation=cls):
             id_ = row.pop('id', None)
@@ -1027,6 +1025,7 @@ class ModelStorage(Model):
             translate = {}
             todo = set()
             prefix_len = len(prefix)
+            many2many = set()
             # Import normal fields_names
             for i, field in enumerate(fields_names):
                 if i >= len(line):
@@ -1039,8 +1038,11 @@ class ModelStorage(Model):
                 if is_prefix_len and field[-1].endswith(':id'):
                     field_name = field[-1][:-3]
                     ftype = fields_def[field_name]['type']
-                    row[field[0][:-3]] = get_by_id(
-                        value, ftype, field_name, klass, column)
+                    res = get_by_id(value, ftype, field_name, klass, column)
+                    if ftype == 'many2many':
+                        res = [('add', res)] if res else []
+                        many2many.add(field_name)
+                    row[field[0][:-3]] = res
                 elif is_prefix_len and ':lang=' in field[-1]:
                     field_name, lang = field[-1].split(':lang=')
                     translate.setdefault(lang, {})[field_name] = value or False
@@ -1058,8 +1060,10 @@ class ModelStorage(Model):
                         res = get_many2one(
                             this_field_def['relation'], value, column)
                     elif field_type == 'many2many':
+                        many2many.add(field_name)
                         res = get_many2many(
                             this_field_def['relation'], value, column)
+                        res = [('add', res)] if res else []
                     elif field_type == 'one2one':
                         res = get_one2one(
                             this_field_def['relation'], value, column)
@@ -1068,9 +1072,19 @@ class ModelStorage(Model):
                     else:
                         res = convert(
                             value, field_type, field_name, klass, column)
-                    row[field[-1]] = res
+                    row[field_name] = res
                 elif prefix == field[0:prefix_len]:
                     todo.add(field[prefix_len])
+
+            if 'id' in row:
+                record = klass(row['id'])
+                for field_name in many2many:
+                    row[field_name].insert(
+                        0, ('remove',
+                            [x.id for x in getattr(record, field_name)]))
+            else:
+                record = None
+
             # Import one2many fields
             nbrmax = 1
             for field in todo:
@@ -1103,6 +1117,13 @@ class ModelStorage(Model):
                     row[field].append(('create', create))
                 if write:
                     row[field].append(('write',) + tuple(write))
+                if record:
+                    written = set(map(int, sum(write[0:None:2], [])))
+                    delete = [
+                        r.id for r in getattr(record, field)
+                        if r.id not in written]
+                    row[field].append(('delete', delete))
+
             if prefix_len == 0:
                 for i in range(max(nbrmax, 1)):
                     data.pop(0)

@@ -569,14 +569,50 @@ class ImportDataTestCase(unittest.TestCase):
         self.assertEqual(record.name, "bar")
 
     @with_transaction()
+    def test_update_many2many(self):
+        "Test update many2many"
+        pool = Pool()
+        Many2many = pool.get('test.import_data.many2many')
+        Target = pool.get('test.import_data.many2many.target')
+
+        record = Many2many(many2many=[{'name': "Foo"}])
+        record.save()
+        target = Target(name="Bar")
+        target.save()
+
+        count = Many2many.import_data(
+            ['id', 'many2many'],
+            [[record.id, "Bar"]])
+
+        self.assertEqual(count, 1)
+        self.assertEqual([m.name for m in record.many2many], ["Bar"])
+
+    @with_transaction()
+    def test_update_many2many_id(self):
+        "Test update many2many with id"
+        pool = Pool()
+        Many2many = pool.get('test.import_data.many2many')
+
+        record = Many2many(many2many=[{'name': "Foo"}])
+        record.save()
+
+        count = Many2many.import_data(
+            ['id', 'many2many:id'],
+            [[record.id, 'tests.import_data_many2many_target_test1']])
+
+        self.assertEqual(count, 1)
+        self.assertEqual([m.name for m in record.many2many], ["Test 1"])
+
+    @with_transaction()
     def test_update_one2many(self):
         "Test update one2many"
         pool = Pool()
         One2many = pool.get('test.import_data.one2many')
         Target = pool.get('test.import_data.one2many.target')
-        record = One2many(name="test", one2many=[Target(name="foo")])
+        record = One2many(name="test", one2many=[
+                Target(name="foo"), Target(name="test")])
         record.save()
-        target, = record.one2many
+        target, _ = record.one2many
 
         count = One2many.import_data(
             ['id', 'one2many/id', 'one2many/name'],
@@ -586,3 +622,4 @@ class ImportDataTestCase(unittest.TestCase):
         self.assertEqual(count, 1)
         self.assertEqual(len(record.one2many), 2)
         self.assertEqual([t.name for t in record.one2many], ["bar", "baz"])
+        self.assertFalse(Target.search([('name', '=', "test")]))
