@@ -12,6 +12,8 @@ Imports::
     >>> from trytond.modules.account.tests.tools import create_fiscalyear, \
     ...     create_chart, get_accounts
 
+    >>> party_required = globals().get('party_required', True)
+
 Activate modules::
 
     >>> config = activate_modules('account')
@@ -41,6 +43,9 @@ Create chart of accounts::
     >>> expense = accounts['expense']
     >>> cash = accounts['cash']
 
+    >>> receivable.party_required = party_required
+    >>> receivable.save()
+
 Create parties::
 
     >>> customer = Party(name='Customer')
@@ -65,7 +70,8 @@ Create Moves to reconcile::
     >>> line = move.lines.new()
     >>> line.account = receivable
     >>> line.debit = Decimal(42)
-    >>> line.party = customer
+    >>> if line.account.party_required:
+    ...     line.party = customer
     >>> move.save()
 
     >>> move = Move()
@@ -78,7 +84,8 @@ Create Moves to reconcile::
     >>> line = move.lines.new()
     >>> line.account = receivable
     >>> line.credit = Decimal(40)
-    >>> line.party = customer
+    >>> if line.account.party_required:
+    ...     line.party = customer
     >>> move.save()
 
 Create a write off method::
@@ -109,7 +116,7 @@ Run Reconcile wizard::
 
     >>> reconcile = Wizard('account.reconcile')
     >>> reconcile.execute('next_')
-    >>> reconcile.form.party == customer
+    >>> reconcile.form.party == (customer if party_required else None)
     True
     >>> reconcile.form.write_off_amount
     Decimal('0.00')
