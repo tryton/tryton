@@ -2136,7 +2136,7 @@ class Reconcile(Wizard):
                 )
         where = ((line.reconciliation == Null)
             & (line.account == account.id)
-            & (line.party == party.id if party else None))
+            & (line.party == (party.id if party else None)))
         currency_expr = Coalesce(line.second_currency, account.currency.id)
         if currency:
             where &= (currency_expr == currency.id)
