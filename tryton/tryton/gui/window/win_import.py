@@ -147,8 +147,9 @@ class WinImport(WinCSV):
                     name = self.fields[word][0]
                     field = word
                 else:
-                    common.warning(_('Error processing the file at field %s.')
-                        % word, _('Error'))
+                    common.warning(
+                        _('Unknown column header "%s"') % word,
+                        _('Error'))
                     return True
                 num = self.model2.append()
                 self.model2.set(num, 0, name, 1, field)

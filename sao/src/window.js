@@ -1599,9 +1599,8 @@
             }
             else {
                 Sao.common.warning.run(
-                    Sao.i18n.gettext(
-                        'Error processing the file at field %1.', word),
-                        Sao.i18n.gettext('Error'));
+                    Sao.i18n.gettext('Unknown column header "%1"', word),
+                    Sao.i18n.gettext('Error'));
                 return false;
             }
             var node = jQuery('<li/>', {
