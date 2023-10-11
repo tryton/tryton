@@ -5,10 +5,13 @@ import importlib
 import itertools
 import logging
 import os
-import sys
 from collections import defaultdict
 from glob import iglob
-from importlib.machinery import SOURCE_SUFFIXES, FileFinder, SourceFileLoader
+
+try:
+    import pkg_resources
+except ImportError:
+    pkg_resources = None
 
 from sql import Table
 from sql.functions import CurrentTimestamp
@@ -43,40 +46,6 @@ def update_egg_modules():
 
 
 update_egg_modules()
-
-
-def import_module(name, fullname=None):
-    if fullname is None:
-        fullname = 'trytond.modules.' + name
-    try:
-        module = importlib.import_module(fullname)
-    except ImportError:
-        if name not in EGG_MODULES:
-            raise
-        ep = EGG_MODULES[name]
-        # Can not use ep.load because modules are declared in an importable
-        # path and it can not import submodule.
-        path = os.path.join(
-            ep.dist.location, *ep.module_name.split('.')[:-1])
-        if not os.path.isdir(path):
-            # Find module in path
-            for path in sys.path:
-                path = os.path.join(
-                    path, *ep.module_name.split('.')[:-1])
-                if os.path.isdir(os.path.join(path, name)):
-                    break
-            else:
-                # When testing modules from setuptools location is the
-                # module directory
-                path = os.path.dirname(ep.dist.location)
-        spec = FileFinder(
-            path, (SourceFileLoader, SOURCE_SUFFIXES)
-            ).find_spec(fullname)
-        if spec.loader:
-            module = spec.loader.load_module()
-        else:
-            raise
-    return module
 
 
 def get_module_info(name):
@@ -139,20 +108,19 @@ class Node(list):
         super(Node, self).append(node)
 
 
-def create_graph(module_list):
-    module_list = set(module_list)
+def create_graph(modules):
     all_deps = set()
     graph = Graph()
-    for module in module_list:
+    for module in modules:
         info = get_module_info(module)
         deps = info.get('depends', []) + [
-            d for d in info.get('extras_depend', []) if d in module_list]
+            d for d in info.get('extras_depend', []) if d in modules]
         node = graph.add(module, deps)
         assert node.info is None
         node.info = info
         all_deps.update(deps)
 
-    missing = all_deps - module_list
+    missing = all_deps - modules
     if missing:
         raise MissingDependenciesException(list(missing))
     return graph
@@ -323,8 +291,8 @@ def load_module_graph(graph, pool, update=None, lang=None):
     logger.info('all modules loaded')
 
 
-def get_module_list(with_test=False):
-    module_list = set()
+def get_modules(with_test=False):
+    modules = {'ir', 'res'}
     if os.path.exists(MODULES_PATH) and os.path.isdir(MODULES_PATH):
         for file in os.listdir(MODULES_PATH):
             if file.startswith('.'):
@@ -332,14 +300,13 @@ def get_module_list(with_test=False):
             if file == '__pycache__':
                 continue
             if os.path.isdir(OPJ(MODULES_PATH, file)):
-                module_list.add(file)
-    update_egg_modules()
-    module_list.update(EGG_MODULES.keys())
-    module_list.add('ir')
-    module_list.add('res')
+                modules.add(file)
+    if pkg_resources:
+        for ep in pkg_resources.iter_entry_points('trytond.modules'):
+            modules.add(ep.name)
     if with_test:
-        module_list.add('tests')
-    return list(module_list)
+        modules.add('tests')
+    return modules
 
 
 def register_classes(with_test=False):
@@ -354,19 +321,19 @@ def register_classes(with_test=False):
         import trytond.tests
         trytond.tests.register()
 
-    for node in create_graph(get_module_list(with_test=with_test)):
-        module = node.name
-        logger.info('%s:registering classes', module)
+    for node in create_graph(get_modules(with_test=with_test)):
+        module_name = node.name
+        logger.info('%s:registering classes', module_name)
 
-        if module in ('ir', 'res', 'tests'):
-            MODULES.append(module)
+        if module_name in ('ir', 'res', 'tests'):
+            MODULES.append(module_name)
             continue
 
-        the_module = import_module(module)
+        module = importlib.import_module(f'trytond.modules.{module_name}')
         # Some modules register nothing in the Pool
-        if hasattr(the_module, 'register'):
-            the_module.register()
-        MODULES.append(module)
+        if hasattr(module, 'register'):
+            module.register()
+        MODULES.append(module_name)
 
 
 def load_modules(
@@ -392,12 +359,12 @@ def load_modules(
                 cursor.execute(*ir_module.select(ir_module.name,
                         where=ir_module.state.in_(('activated', 'to upgrade',
                                 'to remove'))))
-            module_list = [name for (name,) in cursor]
+            modules = {name for (name,) in cursor}
             graph = None
             while graph is None:
-                module_list += update
+                modules.update(update)
                 try:
-                    graph = create_graph(module_list)
+                    graph = create_graph(modules)
                 except MissingDependenciesException as e:
                     if not activatedeps:
                         raise

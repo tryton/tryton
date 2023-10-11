@@ -33,7 +33,7 @@ if options.coroutine:
     from gevent import monkey
     monkey.patch_all()
 
-from trytond.modules import get_module_info, get_module_list
+from trytond.modules import get_module_info, get_modules
 from trytond.pool import Pool
 # Import trytond things after it is configured
 from trytond.wsgi import app
@@ -67,7 +67,7 @@ with commandline.pidfile(options):
     else:
         ssl_args = {}
     if options.dev and not options.coroutine:
-        for module in get_module_list():
+        for module in get_modules():
             info = get_module_info(module)
             for ext in ['xml',
                     'fodt', 'odt', 'fodp', 'odp', 'fods', 'ods', 'fodg', 'odg',

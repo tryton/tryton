@@ -239,7 +239,7 @@ class Lang(DeactivableMixin, ModelSQL, ModelView):
         modules = Module.search([
                     ('state', '=', 'activated'),
                     ])
-        modules = [m.name for m in modules]
+        modules = {m.name for m in modules}
         for node in create_graph(modules):
             load_translations(pool, node, codes)
 

@@ -8,7 +8,6 @@ import importlib
 import io
 import os
 import re
-import sys
 import types
 import unicodedata
 import warnings
@@ -32,7 +31,6 @@ def file_open(name, mode="r", subdir='modules', encoding=None):
 
 def find_path(name, subdir='modules', _test=os.path.isfile):
     "Return path from the root directory, using subdir folder"
-    from trytond.modules import EGG_MODULES
     root_path = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
     def secure_join(root, *paths):
@@ -43,45 +41,31 @@ def find_path(name, subdir='modules', _test=os.path.isfile):
             raise IOError("Permission denied: %s" % name)
         return path
 
-    egg_name = False
-    if subdir == 'modules':
-        module_name = name.split(os.sep)[0]
-        if module_name in EGG_MODULES:
-            epoint = EGG_MODULES[module_name]
-            location = os.path.dirname(epoint.load().__file__)
-            mod_path = os.path.join(location,
-                    *epoint.module_name.split('.')[:-1])
-            mod_path = os.path.abspath(mod_path)
-            egg_name = secure_join(mod_path, name)
-            if not _test(egg_name):
-                # Find module in path
-                for path in sys.path:
-                    mod_path = os.path.join(path,
-                            *epoint.module_name.split('.')[:-1])
-                    mod_path = os.path.abspath(mod_path)
-                    egg_name = secure_join(mod_path, name)
-                    if _test(egg_name):
-                        break
-                if not _test(egg_name):
-                    # When testing modules from setuptools location is the
-                    # module directory
-                    egg_name = secure_join(
-                        os.path.dirname(location), name)
-
     if subdir:
-        if (subdir == 'modules'
-                and (name.startswith('ir' + os.sep)
-                    or name.startswith('res' + os.sep)
-                    or name.startswith('tests' + os.sep))):
-            name = secure_join(root_path, name)
+        if subdir == 'modules':
+            try:
+                module_name, module_path = name.split(os.sep, 1)
+            except ValueError:
+                module_name, module_path = name, None
+            if module_name in {'ir', 'res', 'tests'}:
+                path = secure_join(root_path, module_name, module_path)
+            else:
+                try:
+                    module = importlib.import_module(
+                        f'trytond.modules.{module_name}')
+                except ModuleNotFoundError:
+                    path = secure_join(root_path, subdir, name)
+                else:
+                    path = os.path.dirname(module.__file__)
+                    if module_path:
+                        path = secure_join(path, module_path)
         else:
-            name = secure_join(root_path, subdir, name)
+            path = secure_join(root_path, subdir, name)
     else:
-        name = secure_join(root_path, name)
+        path = secure_join(root_path, name)
 
-    for path in [name, egg_name]:
-        if path and _test(path):
-            return path
+    if _test(path):
+        return path
     else:
         raise FileNotFoundError("No such file or directory: %r" % name)
 

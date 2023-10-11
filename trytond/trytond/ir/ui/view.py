@@ -221,9 +221,9 @@ class View(ModelSQL, ModelView):
 
     @property
     def _module_index(self):
-        from trytond.modules import create_graph, get_module_list
+        from trytond.modules import create_graph, get_modules
         if self.__class__.__module_index is None:
-            graph = create_graph(get_module_list(with_test=Pool.test))
+            graph = create_graph(get_modules(with_test=Pool.test))
             modules = [m.name for m in graph]
             self.__class__.__module_index = {
                 m: i for i, m in enumerate(reversed(modules))}

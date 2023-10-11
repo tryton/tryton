@@ -25,8 +25,8 @@ def database_completer(parsed_args, **kwargs):
 
 
 def module_completer(**kwargs):
-    from trytond.modules import get_module_list
-    return get_module_list()
+    from trytond.modules import get_modules
+    return get_modules()
 
 
 def language_completer(**kwargs):

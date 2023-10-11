@@ -10,7 +10,7 @@ from trytond.exceptions import UserError
 from trytond.i18n import gettext
 from trytond.model import ModelSQL, ModelView, Unique, fields, sequence_ordered
 from trytond.model.exceptions import AccessError
-from trytond.modules import get_module_info, get_module_list
+from trytond.modules import get_module_info, get_modules
 from trytond.pool import Pool
 from trytond.pyson import Eval
 from trytond.rpc import RPC
@@ -243,7 +243,7 @@ class Module(ModelSQL, ModelView):
         "Update the list of available modules"
         pool = Pool()
         Dependency = pool.get('ir.module.dependency')
-        module_names = get_module_list(with_test=Pool.test)
+        module_names = get_modules(with_test=Pool.test)
         for sub_module_names in grouped_slice(module_names):
             cls.delete(cls.search([
                         ('state', '!=', 'activated'),
