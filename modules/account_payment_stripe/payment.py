@@ -42,6 +42,7 @@ stripe.max_network_retries = config.getint(
     'account_payment_stripe', 'max_network_retries', default=3)
 
 RETRY_CODES = {'lock_timeout', 'token_in_use'}
+STRIPE_VERSION = '2023-08-16'
 
 
 class Journal(metaclass=PoolMeta):
@@ -419,6 +420,7 @@ class Payment(StripeCustomerMethodMixin, CheckoutMixin, metaclass=PoolMeta):
             idempotency_key = 'payment_intent-%s' % self.stripe_idempotency_key
         params = {
             'api_key': self.journal.stripe_account.secret_key,
+            'stripe_version': STRIPE_VERSION,
             'amount': self.stripe_amount,
             'currency': self.currency.code,
             'capture_method': 'automatic' if self.stripe_capture else 'manual',
@@ -531,6 +533,7 @@ class Payment(StripeCustomerMethodMixin, CheckoutMixin, metaclass=PoolMeta):
             idempotency_key = 'charge-%s' % self.stripe_idempotency_key
         return {
             'api_key': self.journal.stripe_account.secret_key,
+            'stripe_version': STRIPE_VERSION,
             'amount': self.stripe_amount,
             'currency': self.currency.code,
             'capture': bool(self.stripe_capture),
@@ -573,7 +576,8 @@ class Payment(StripeCustomerMethodMixin, CheckoutMixin, metaclass=PoolMeta):
         def capture_charge(payment):
             charge = stripe.Charge.retrieve(
                 payment.stripe_charge_id,
-                api_key=payment.journal.stripe_account.secret_key)
+                api_key=payment.journal.stripe_account.secret_key,
+                stripe_version=STRIPE_VERSION)
             charge.capture(**payment._capture_parameters())
             payment.stripe_captured = charge.captured
             payment.save()
@@ -584,6 +588,7 @@ class Payment(StripeCustomerMethodMixin, CheckoutMixin, metaclass=PoolMeta):
             stripe.PaymentIntent.capture(
                 payment.stripe_payment_intent_id,
                 api_key=payment.journal.stripe_account.secret_key,
+                stripe_version=STRIPE_VERSION,
                 **params)
             payment.stripe_captured = True
             payment.save()
@@ -635,7 +640,8 @@ class Payment(StripeCustomerMethodMixin, CheckoutMixin, metaclass=PoolMeta):
         try:
             return stripe.PaymentIntent.retrieve(
                 self.stripe_payment_intent_id,
-                api_key=self.journal.stripe_account.secret_key)
+                api_key=self.journal.stripe_account.secret_key,
+                stripe_version=STRIPE_VERSION)
         except (stripe.error.RateLimitError,
                 stripe.error.APIConnectionError) as e:
             logger.warning(str(e))
@@ -852,6 +858,7 @@ class Refund(Workflow, ModelSQL, ModelView):
             try:
                 rf = stripe.Refund.create(
                     api_key=refund.payment.journal.stripe_account.secret_key,
+                    stripe_version=STRIPE_VERSION,
                     **refund._refund_parameters())
             except (stripe.error.RateLimitError,
                     stripe.error.APIConnectionError) as e:
@@ -969,6 +976,7 @@ class Account(ModelSQL, ModelView):
             while True:
                 events = stripe.Event.list(
                     api_key=account.secret_key,
+                    stripe_version=STRIPE_VERSION,
                     ending_before=account.last_event,
                     limit=100)
                 if not events:
@@ -1132,8 +1140,10 @@ class Account(ModelSQL, ModelView):
                 ('stripe_charge_id', '=', source['charge']),
                 ])
         if not payments:
-            charge = stripe.Charge.retrieve(source['charge'],
-                api_key=self.secret_key)
+            charge = stripe.Charge.retrieve(
+                source['charge'],
+                api_key=self.secret_key,
+                stripe_version=STRIPE_VERSION)
             if charge.payment_intent:
                 payments = Payment.search([
                         ('stripe_payment_intent_id', '=',
@@ -1157,8 +1167,10 @@ class Account(ModelSQL, ModelView):
                 ('stripe_charge_id', '=', source['charge']),
                 ])
         if not payments:
-            charge = stripe.Charge.retrieve(source['charge'],
-                api_key=self.secret_key)
+            charge = stripe.Charge.retrieve(
+                source['charge'],
+                api_key=self.secret_key,
+                stripe_version=STRIPE_VERSION)
             if charge.payment_intent:
                 payments = Payment.search([
                         ('stripe_payment_intent_id', '=',
@@ -1430,7 +1442,8 @@ class Customer(CheckoutMixin, DeactivableMixin, ModelSQL, ModelView):
             if customer.stripe_setup_intent_id:
                 continue
             setup_intent = stripe.SetupIntent.create(
-                api_key=customer.stripe_account.secret_key)
+                api_key=customer.stripe_account.secret_key,
+                stripe_version=STRIPE_VERSION)
             customer.stripe_setup_intent_id = setup_intent.id
         return super().stripe_checkout(customers)
 
@@ -1457,6 +1470,7 @@ class Customer(CheckoutMixin, DeactivableMixin, ModelSQL, ModelView):
             try:
                 cu = stripe.Customer.create(
                     api_key=customer.stripe_account.secret_key,
+                    stripe_version=STRIPE_VERSION,
                     source=customer.stripe_token,
                     **customer._customer_parameters())
             except (stripe.error.RateLimitError,
@@ -1500,6 +1514,7 @@ class Customer(CheckoutMixin, DeactivableMixin, ModelSQL, ModelView):
                 stripe.Customer.modify(
                     customer.stripe_customer_id,
                     api_key=customer.stripe_account.secret_key,
+                    stripe_version=STRIPE_VERSION,
                     **customer._customer_parameters()
                     )
             except (stripe.error.RateLimitError,
@@ -1533,6 +1548,7 @@ class Customer(CheckoutMixin, DeactivableMixin, ModelSQL, ModelView):
             try:
                 cu = stripe.Customer.retrieve(
                     api_key=customer.stripe_account.secret_key,
+                    stripe_version=STRIPE_VERSION,
                     id=customer.stripe_customer_id)
                 cu.delete()
             except (stripe.error.RateLimitError,
@@ -1555,6 +1571,7 @@ class Customer(CheckoutMixin, DeactivableMixin, ModelSQL, ModelView):
         try:
             return stripe.Customer.retrieve(
                 api_key=self.stripe_account.secret_key,
+                stripe_version=STRIPE_VERSION,
                 id=self.stripe_customer_id,
                 **params)
         except (stripe.error.RateLimitError,
@@ -1612,12 +1629,14 @@ class Customer(CheckoutMixin, DeactivableMixin, ModelSQL, ModelView):
             if source in dict(self.payment_methods()):
                 stripe.PaymentMethod.detach(
                     source,
-                    api_key=self.stripe_account.secret_key)
+                    api_key=self.stripe_account.secret_key,
+                    stripe_version=STRIPE_VERSION)
             else:
                 stripe.Customer.delete_source(
                     self.stripe_customer_id,
                     source,
-                    api_key=self.stripe_account.secret_key)
+                    api_key=self.stripe_account.secret_key,
+                    stripe_version=STRIPE_VERSION)
         except (stripe.error.RateLimitError,
                 stripe.error.APIConnectionError) as e:
             logger.warning(str(e))
@@ -1634,6 +1653,7 @@ class Customer(CheckoutMixin, DeactivableMixin, ModelSQL, ModelView):
             try:
                 payment_methods = stripe.PaymentMethod.list(
                     api_key=self.stripe_account.secret_key,
+                    stripe_version=STRIPE_VERSION,
                     customer=self.stripe_customer_id,
                     type='card')
             except (stripe.error.RateLimitError,
@@ -1664,7 +1684,8 @@ class Customer(CheckoutMixin, DeactivableMixin, ModelSQL, ModelView):
         try:
             return stripe.SetupIntent.retrieve(
                 self.stripe_setup_intent_id,
-                api_key=self.stripe_account.secret_key)
+                api_key=self.stripe_account.secret_key,
+                stripe_version=STRIPE_VERSION)
         except (stripe.error.RateLimitError,
                 stripe.error.APIConnectionError) as e:
             logger.warning(str(e))
@@ -1701,10 +1722,12 @@ class Customer(CheckoutMixin, DeactivableMixin, ModelSQL, ModelView):
                         stripe.PaymentMethod.attach(
                             setup_intent.payment_method,
                             customer=customer.stripe_customer_id,
-                            api_key=customer.stripe_account.secret_key)
+                            api_key=customer.stripe_account.secret_key,
+                            stripe_version=STRIPE_VERSION)
                     else:
                         cu = stripe.Customer.create(
                             api_key=customer.stripe_account.secret_key,
+                            stripe_version=STRIPE_VERSION,
                             payment_method=setup_intent.payment_method,
                             **customer._customer_parameters())
                         customer.stripe_customer_id = cu.id
@@ -1740,6 +1763,7 @@ class Customer(CheckoutMixin, DeactivableMixin, ModelSQL, ModelView):
             try:
                 payment_methods = stripe.PaymentMethod.list(
                     api_key=self.stripe_account.secret_key,
+                    stripe_version=STRIPE_VERSION,
                     customer=customer.id,
                     type='card')
             except (stripe.error.RateLimitError,
