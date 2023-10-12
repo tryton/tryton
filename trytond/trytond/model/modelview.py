@@ -480,7 +480,7 @@ class ModelView(Model):
                 field_depends |= field.edition_depends
             if 'context' in field_depends and 'context' not in cls._fields:
                 field_depends.discard('context')
-            for depend in field_depends:
+            for depend in (field_depends - fields_to_remove):
                 if depend not in fields_def:
                     fields_def[depend] = {'name': depend}
                     field_names.append(depend)
