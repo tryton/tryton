@@ -540,7 +540,7 @@ class ModelView(Model):
                 field = cls._fields[field_name]
             else:
                 continue
-            for depend in field.depends:
+            for depend in (set(field.depends) - fields_to_remove):
                 if depend not in fields_def:
                     fields_def[depend] = {'name': depend}
                     field_names.append(depend)
