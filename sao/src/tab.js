@@ -1041,7 +1041,7 @@
                         }
                         new Sao.Window.Revision(
                             revisions, revision, set_revision(revisions));
-                    });
+                    }.bind(this));
             }.bind(this));
         },
         update_revision: function() {
