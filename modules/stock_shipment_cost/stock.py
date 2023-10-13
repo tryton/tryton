@@ -204,7 +204,7 @@ class ShipmentOutCostMixin(ShipmentCostMixin):
         costs = {}
         for move in self.shipment_cost_moves:
             move_cost = (
-                move.cost_price * Decimal(str(move.internal_quantity)))
+                (move.cost_price or 0) * Decimal(str(move.internal_quantity)))
             costs[move] = move_cost
             sum_ += move_cost
 
