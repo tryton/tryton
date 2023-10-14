@@ -1,11 +1,15 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
+
+from collections import defaultdict
+
 from sql.conditionals import Coalesce
 
 from trytond.i18n import lazy_gettext
 from trytond.model import Index, ModelSQL, ModelStorage, ModelView, fields
 from trytond.pool import Pool
 from trytond.pyson import Eval
+from trytond.tools import grouped_slice
 from trytond.transaction import Transaction, without_check_access
 
 __all__ = ['ResourceAccessMixin', 'ResourceMixin', 'resource_copy']
@@ -60,6 +64,41 @@ class ResourceAccessMixin(ModelStorage):
     def _convert_check_access(cls, model, mode):
         return [
             (model, {'create': 'write', 'delete': 'write'}.get(mode, mode))]
+
+    @classmethod
+    def search(
+            cls, domain, offset=0, limit=None, order=None, count=False,
+            query=False):
+        transaction = Transaction()
+        result = super().search(
+            domain, offset=offset, limit=limit, order=order,
+            count=False if not query else count, query=query)
+        if not query and transaction.user and transaction.check_access:
+            records = result
+            resources = defaultdict(set)
+            allowed = set()
+            with without_check_access():
+                records = cls.browse(records)
+            for record in records:
+                if record.resource:
+                    resources[record.resource.__class__].add(
+                        record.resource.id)
+
+            for Model, ids in resources.items():
+                for sub_ids in grouped_slice(ids):
+                    allowed.update(Model.search([
+                                ('id', 'in', list(sub_ids)),
+                                ]))
+
+            records = [
+                r for r in records
+                if not r.resource or r.resource in allowed]
+            if count:
+                result = len(records)
+            else:
+                # re-browse to have same context
+                result = cls.browse(records)
+        return result
 
     @classmethod
     def read(cls, ids, fields_names):

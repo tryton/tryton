@@ -78,3 +78,28 @@ class ResourceTestCase(unittest.TestCase):
 
         note = Note(note.id)
         self.assertEqual(user_note.write_date, write_date)
+
+    @with_transaction()
+    def test_resources_rule(self):
+        "Test resources rules are applied on search"
+        pool = Pool()
+        Note = pool.get('ir.note')
+        Warning = pool.get('res.user.warning')
+
+        warning1 = Warning(user=0, name="root")
+        warning1.save()
+        note1 = Note(resource=warning1)
+        note1.save()
+        warning2 = Warning(user=1, name="admin")
+        warning2.save()
+        note2 = Note(resource=warning2)
+        note2.save()
+
+        with Transaction().set_context(_check_access=True):
+            notes = Note.search([])
+            count = Note.search([], count=True)
+            query = Note.search([], query=True)
+
+            self.assertEqual(notes, [note2])
+            self.assertEqual(count, 1)
+            self.assertTrue(query)
