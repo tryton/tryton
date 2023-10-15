@@ -50,6 +50,22 @@ this repository contains the full copyright notices and license terms. -->
             sequence="10"
             id="menu_tariff_code_form"/>
 
+        <record model="ir.model.access" id="access_tariff_code">
+            <field name="model" search="[('model', '=', 'customs.tariff.code')]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_tariff_code_admin">
+            <field name="model" search="[('model', '=', 'customs.tariff.code')]"/>
+            <field name="group" ref="group_customs_admin"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
+
         <record model="ir.ui.view" id="duty_rate_view_form">
             <field name="model">customs.duty.rate</field>
             <field name="type">form</field>
@@ -98,5 +114,21 @@ this repository contains the full copyright notices and license terms. -->
             action="act_duty_rate_form"
             sequence="20"
             id="menu_duty_rate_form"/>
+
+        <record model="ir.model.access" id="access_duty_rate">
+            <field name="model" search="[('model', '=', 'customs.duty.rate')]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_duty_rate_admin">
+            <field name="model" search="[('model', '=', 'customs.duty.rate')]"/>
+            <field name="group" ref="group_customs_admin"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
     </data>
 </tryton>
