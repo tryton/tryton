@@ -6,7 +6,6 @@ this repository contains the full copyright notices and license terms. -->
         expr="/tree/field[@name='invoice']"
         position="before">
         <field name="company" expand="1" optional="1"/>
-        <field name="party" expand="1"/>
         <field name="invoice_type"/>
     </xpath>
 </data>
