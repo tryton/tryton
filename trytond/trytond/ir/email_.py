@@ -186,11 +186,12 @@ class Email(ResourceAccessMixin, ModelSQL, ModelView):
             body=body,
             resource=record)
         email.save()
-        attachments_ = []
-        for name, data in files:
-            attachments_.append(
-                Attachment(resource=email, name=name, data=data))
-        Attachment.save(attachments_)
+        if files:
+            attachments_ = []
+            for name, data in files:
+                attachments_.append(
+                    Attachment(resource=email, name=name, data=data))
+            Attachment.save(attachments_)
         return email
 
     @classmethod
