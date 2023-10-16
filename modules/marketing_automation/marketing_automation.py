@@ -369,6 +369,7 @@ class Activity(ModelSQL, ModelView):
                     [(name, 'in', events + [None])],
                     domain)
             field.domain = [domain]
+            field.depends.add('parent_action')
 
     @classmethod
     def view_attributes(cls):
