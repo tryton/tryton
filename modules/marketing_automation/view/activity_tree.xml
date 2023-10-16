@@ -6,7 +6,13 @@ this repository contains the full copyright notices and license terms. -->
     <field name="on"/>
     <field name="delay"/>
     <field name="action"/>
-    <field name="record_count"/>
-    <field name="email_opened"/>
-    <field name="email_clicked"/>
+    <field name="email_open_rate" factor="100">
+        <suffix string="%" name="email_open_rate"/>
+    </field>
+    <field name="email_click_rate" factor="100">
+        <suffix string="%" name="email_click_rate"/>
+    </field>
+    <field name="email_click_through_rate" factor="100">
+        <suffix string="%" name="email_click_through_rate"/>
+    </field>
 </tree>

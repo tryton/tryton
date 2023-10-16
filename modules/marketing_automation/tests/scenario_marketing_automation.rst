@@ -183,6 +183,16 @@ Trigger open email and reminder after delay::
     >>> root_activity.reload()
     >>> root_activity.email_opened
     1
+    >>> root_activity.email_opened
+    1
+    >>> root_activity.email_clicked
+    0
+    >>> root_activity.email_open_rate
+    1.0
+    >>> root_activity.email_click_rate
+    0.0
+    >>> root_activity.email_click_through_rate
+    0.0
 
     >>> email_reminder, = RecordActivity.find([
     ...         ('record', '=', record.id),
@@ -207,8 +217,18 @@ Trigger click email::
     >>> clicked_activity.state
     'done'
     >>> root_activity.reload()
+    >>> root_activity.record_count
+    1
+    >>> root_activity.email_opened
+    1
     >>> root_activity.email_clicked
     1
+    >>> root_activity.email_open_rate
+    1.0
+    >>> root_activity.email_click_rate
+    1.0
+    >>> root_activity.email_click_through_rate
+    1.0
 
     >>> not_clicked_activity, = RecordActivity.find([
     ...         ('record', '=', record.id),

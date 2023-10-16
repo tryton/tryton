@@ -361,6 +361,28 @@ class Activity(ModelSQL, ModelView):
                 }),
         'get_record_count')
 
+    email_open_rate = fields.Function(
+        fields.Float(
+            "E-mail Open Rate",
+            states={
+                'invisible': Eval('action') != 'send_email',
+                }),
+        'get_rate')
+    email_click_rate = fields.Function(
+        fields.Float(
+            "E-mail Click Rate",
+            states={
+                'invisible': Eval('action') != 'send_email',
+                }),
+        'get_rate')
+    email_click_through_rate = fields.Function(
+        fields.Float(
+            "E-mail Click-Through Rate",
+            states={
+                'invisible': Eval('action') != 'send_email',
+                }),
+        'get_rate')
+
     @classmethod
     def __setup__(cls):
         super().__setup__()
@@ -454,6 +476,21 @@ class Activity(ModelSQL, ModelView):
                 if 'email_clicked' in count:
                     count['email_clicked'][id_] = email_clicked
         return count
+
+    @classmethod
+    def get_rate(cls, activities, names):
+        rates = {name: defaultdict(float) for name in names}
+        for activity in activities:
+            if 'email_open_rate' in names and activity.record_count:
+                rates['email_open_rate'][activity.id] = round(
+                    activity.email_opened / activity.record_count, 2)
+            if 'email_click_rate' in names and activity.record_count:
+                rates['email_click_rate'][activity.id] = round(
+                    activity.email_clicked / activity.record_count, 2)
+            if 'email_click_through_rate' in names and activity.email_opened:
+                rates['email_click_through_rate'][activity.id] = round(
+                    activity.email_clicked / activity.email_opened, 2)
+        return rates
 
     @classmethod
     def validate_fields(cls, activities, fields_names):
