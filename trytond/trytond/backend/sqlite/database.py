@@ -77,6 +77,8 @@ class SQLiteExtract(Function):
 def date_trunc(_type, date):
     if not _type:
         return date
+    if date is None:
+        return None
     for format_ in [
             '%Y-%m-%d %H:%M:%S.%f',
             '%Y-%m-%d %H:%M:%S',
