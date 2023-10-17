@@ -111,6 +111,8 @@ Trigger scenario::
     1
     >>> scenario.record_count_blocked
     0
+    >>> scenario.block_rate
+    0.0
 
 Check email sent::
 

@@ -74,6 +74,9 @@ class Scenario(Workflow, ModelSQL, ModelView):
         fields.Integer("Records"), 'get_record_count')
     record_count_blocked = fields.Function(
         fields.Integer("Records Blocked"), 'get_record_count')
+    block_rate = fields.Function(
+        fields.Float("Block Rate"),
+        'get_rate')
     unsubscribable = fields.Boolean(
         "Unsubscribable",
         help="If checked parties are also unsubscribed from the scenario.")
@@ -168,6 +171,15 @@ class Scenario(Workflow, ModelSQL, ModelView):
             except Exception:
                 pass
         return count
+
+    @classmethod
+    def get_rate(cls, scenarios, names):
+        rates = {name: defaultdict(float) for name in names}
+        for scenario in scenarios:
+            if 'block_rate' in names and scenario.record_count:
+                rates['block_rate'][scenario.id] = round(
+                    scenario.record_count_blocked / scenario.record_count, 2)
+        return rates
 
     @classmethod
     def validate_fields(cls, scenarios, field_names):

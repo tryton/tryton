@@ -83,6 +83,14 @@ Trigger scenario::
     >>> record, = Record.find([])
     >>> assertEqual(record.record, sale)
 
+    >>> scenario.reload()
+    >>> scenario.record_count
+    1
+    >>> scenario.record_count_blocked
+    0
+    >>> scenario.block_rate
+    0.0
+
 Block and unsubscribe::
 
     >>> record.click('block')
@@ -90,6 +98,14 @@ Block and unsubscribe::
     True
     >>> party.reload()
     >>> assertEqual(party.marketing_scenario_unsubscribed, [scenario])
+
+    >>> scenario.reload()
+    >>> scenario.record_count
+    1
+    >>> scenario.record_count_blocked
+    1
+    >>> scenario.block_rate
+    1.0
 
 Create a new sale::
 

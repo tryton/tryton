@@ -5,7 +5,8 @@ this repository contains the full copyright notices and license terms. -->
     <field name="name" expand="2"/>
     <field name="model" expand="1"/>
     <field name="unsubscribable" optional="0"/>
-    <field name="record_count"/>
-    <field name="record_count_blocked"/>
+    <field name="block_rate" factor="100">
+        <suffix string="%" name="block_rate"/>
+    </field>
     <field name="state"/>
 </tree>
