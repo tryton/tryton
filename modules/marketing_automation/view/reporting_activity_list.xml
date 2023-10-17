@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tree>
+    <field name="date"/>
+    <field name="activity" expand="2"/>
+    <field name="record_count" sum="1"/>
+    <field name="email_opened" sum="1"/>
+    <field name="email_clicked" sum="1"/>
+    <field name="email_open_rate" factor="100">
+        <suffix string="%" name="email_open_rate"/>
+    </field>
+    <field name="email_click_rate" factor="100">
+        <suffix string="%" name="email_click_rate"/>
+    </field>
+    <field name="email_click_through_rate" factor="100">
+        <suffix string="%" name="email_click_through_rate"/>
+    </field>
+</tree>

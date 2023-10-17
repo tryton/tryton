@@ -26,6 +26,8 @@ Activate modules::
     >>> config = activate_modules('marketing_automation')
 
     >>> Email = Model.get('ir.email')
+    >>> ReportingScenario = Model.get('marketing.automation.reporting.scenario')
+    >>> ReportingActivity = Model.get('marketing.automation.reporting.activity')
 
 Create a party::
 
@@ -114,6 +116,14 @@ Trigger scenario::
     >>> scenario.block_rate
     0.0
 
+    >>> reporting, = ReportingScenario.find([])
+    >>> reporting.record_count
+    1
+    >>> reporting.record_count_blocked
+    0
+    >>> reporting.block_rate
+    0.0
+
 Check email sent::
 
     >>> ShortenedURL = Model.get('web.shortened_url')
@@ -196,6 +206,24 @@ Trigger open email and reminder after delay::
     >>> root_activity.email_click_through_rate
     0.0
 
+    >>> reporting, = ReportingActivity.find([
+    ...         ('activity', '=', root_activity.id),
+    ...         ])
+    >>> reporting.activity_action
+    'send_email'
+    >>> reporting.record_count
+    1
+    >>> reporting.email_opened
+    1
+    >>> reporting.email_clicked
+    0
+    >>> reporting.email_open_rate
+    1.0
+    >>> reporting.email_click_rate
+    0.0
+    >>> reporting.email_click_through_rate
+    0.0
+
     >>> email_reminder, = RecordActivity.find([
     ...         ('record', '=', record.id),
     ...         ('activity', '=', email_reminder.id),
@@ -230,6 +258,20 @@ Trigger click email::
     >>> root_activity.email_click_rate
     1.0
     >>> root_activity.email_click_through_rate
+    1.0
+
+    >>> reporting.reload()
+    >>> reporting.record_count
+    1
+    >>> reporting.email_opened
+    1
+    >>> reporting.email_clicked
+    1
+    >>> reporting.email_open_rate
+    1.0
+    >>> reporting.email_click_rate
+    1.0
+    >>> reporting.email_click_through_rate
     1.0
 
     >>> not_clicked_activity, = RecordActivity.find([

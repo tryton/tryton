@@ -3,7 +3,9 @@
 
 from trytond.pool import Pool
 
-from . import ir, marketing_automation, party, routes, sale, web
+from . import (
+    ir, marketing_automation, marketing_automation_reporting, party, routes,
+    sale, web)
 
 __all__ = ['register', 'routes']
 
@@ -16,6 +18,9 @@ def register():
         marketing_automation.Activity,
         marketing_automation.Record,
         marketing_automation.RecordActivity,
+        marketing_automation_reporting.Context,
+        marketing_automation_reporting.Scenario,
+        marketing_automation_reporting.Activity,
         party.Party,
         party.PartyUnsubscribedScenario,
         web.ShortenedURL,
