@@ -7,6 +7,7 @@ import unittest
 from sql import Literal, Select, functions
 from sql.functions import CurrentTimestamp, DateTrunc, ToChar
 
+from trytond.model import fields
 from trytond.tests.test_tryton import activate_module, with_transaction
 from trytond.transaction import Transaction
 
@@ -171,3 +172,13 @@ class BackendTestCase(unittest.TestCase):
                     cursor.execute(*Select([DateTrunc(type_, date)]))
                     value, = cursor.fetchone()
                     self.assertEqual(str(value), str(result))
+
+    @with_transaction()
+    def test_function_date_trunc_null(self):
+        "test DateTrunc function with NULL"
+        cursor = Transaction().connection.cursor()
+        date = fields.Date("Test")
+
+        cursor.execute(*Select([DateTrunc('month', date.sql_cast(None))]))
+        value, = cursor.fetchone()
+        self.assertEqual(value, None)
