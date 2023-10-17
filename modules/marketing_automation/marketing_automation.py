@@ -811,6 +811,7 @@ class RecordActivity(Workflow, ModelSQL, ModelView):
         "At",
         states={
             'readonly': Eval('state') != 'waiting',
+            'required': Eval('state') == 'done',
             })
     email_opened = fields.Boolean(
         "E-Mail Opened",
