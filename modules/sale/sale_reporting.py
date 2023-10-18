@@ -31,7 +31,7 @@ __all__ = ['Context',
 
 def pairwise(iterable):
     a, b = tee(iterable)
-    next(b)
+    next(b, None)
     return zip_longest(a, b)
 
 
