@@ -26,7 +26,7 @@ from trytond.wizard import StateAction, StateTransition, Wizard
 
 def pairwise(iterable):
     a, b = tee(iterable)
-    next(b)
+    next(b, None)
     return zip_longest(a, b)
 
 
