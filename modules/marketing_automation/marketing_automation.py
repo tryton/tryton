@@ -146,7 +146,7 @@ class Scenario(Workflow, ModelSQL, ModelView):
             else:
                 others.append(scenario)
 
-        count = {name: dict.fromkeys(map(int, scenarios)) for name in names}
+        count = {name: defaultdict(int) for name in names}
         for sub in grouped_slice(others):
             cursor.execute(*record.select(
                     record.scenario,
@@ -436,8 +436,7 @@ class Activity(ModelSQL, ModelView):
         record_activity = RecordActivity.__table__()
         cursor = Transaction().connection.cursor()
 
-        count = {name: dict.fromkeys(map(int, activities), 0)
-            for name in names}
+        count = {name: defaultdict(int) for name in names}
         for sub in grouped_slice(activities):
             cursor.execute(*record_activity.select(
                     record_activity.activity,
