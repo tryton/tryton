@@ -7,6 +7,9 @@ this repository contains the full copyright notices and license terms. -->
     <label name="amount"/>
     <field name="amount"/>
 
+    <label name="braintree_transaction_id"/>
+    <field name="braintree_transaction_id" colspan="3"/>
+
     <label name="braintree_error_message"/>
     <field name="braintree_error_message" colspan="3" yexpand="0" height="80"/>
 
