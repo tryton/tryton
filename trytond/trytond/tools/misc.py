@@ -14,7 +14,7 @@ import warnings
 from array import array
 from collections.abc import Sized
 from functools import wraps
-from itertools import islice
+from itertools import islice, tee, zip_longest
 
 from sql import Literal
 from sql.conditionals import Case
@@ -172,6 +172,12 @@ def grouped_slice(records, count=None):
         records = list(records)
     for i in range(0, len(records), count):
         yield islice(records, i, i + count)
+
+
+def pairwise_longest(iterable):
+    a, b = tee(iterable)
+    next(b, None)
+    return zip_longest(a, b)
 
 
 def is_instance_method(cls, method):

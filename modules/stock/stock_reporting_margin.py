@@ -3,7 +3,6 @@
 
 from collections import defaultdict
 from decimal import Decimal
-from itertools import tee, zip_longest
 
 from sql import Literal, Null, With
 from sql.aggregate import Max, Min, Sum
@@ -21,14 +20,8 @@ from trytond.model import ModelSQL, ModelView, fields, sum_tree
 from trytond.modules.currency.fields import Monetary
 from trytond.pool import Pool
 from trytond.pyson import Eval, If
-from trytond.tools import grouped_slice, reduce_ids
+from trytond.tools import grouped_slice, pairwise_longest, reduce_ids
 from trytond.transaction import Transaction
-
-
-def pairwise(iterable):
-    a, b = tee(iterable)
-    next(b, None)
-    return zip_longest(a, b)
 
 
 class Abstract(ModelSQL, ModelView):
@@ -211,7 +204,7 @@ class Abstract(ModelSQL, ModelView):
     @property
     def time_series_all(self):
         delta = self._period_delta()
-        for ts, next_ts in pairwise(self.time_series or []):
+        for ts, next_ts in pairwise_longest(self.time_series or []):
             yield ts
             if delta and next_ts:
                 date = ts.date + delta

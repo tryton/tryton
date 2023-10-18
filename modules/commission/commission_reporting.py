@@ -1,6 +1,5 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
-from itertools import tee, zip_longest
 
 from dateutil.relativedelta import relativedelta
 
@@ -18,13 +17,8 @@ from trytond.modules.currency.fields import Monetary
 from trytond.modules.product import price_digits
 from trytond.pool import Pool
 from trytond.pyson import Eval, If
+from trytond.tools import pairwise_longest
 from trytond.transaction import Transaction
-
-
-def pairwise(iterable):
-    a, b = tee(iterable)
-    next(b, None)
-    return zip_longest(a, b)
 
 
 class Agent(ModelView, ModelSQL):
@@ -121,7 +115,7 @@ class Agent(ModelView, ModelSQL):
     @property
     def time_series_all(self):
         delta = self._period_delta()
-        for ts, next_ts in pairwise(self.time_series or []):
+        for ts, next_ts in pairwise_longest(self.time_series or []):
             yield ts
             if delta and next_ts:
                 date = ts.date + delta

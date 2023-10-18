@@ -13,9 +13,10 @@ import sql.operators
 
 from trytond.tools import (
     decimal_, escape_wildcard, file_open, firstline, grouped_slice,
-    is_full_text, is_instance_method, likify, lstrip_wildcard, reduce_domain,
-    reduce_ids, remove_forbidden_chars, rstrip_wildcard, slugify,
-    sortable_values, strip_wildcard, timezone, unescape_wildcard)
+    is_full_text, is_instance_method, likify, lstrip_wildcard,
+    pairwise_longest, reduce_domain, reduce_ids, remove_forbidden_chars,
+    rstrip_wildcard, slugify, sortable_values, strip_wildcard, timezone,
+    unescape_wildcard)
 from trytond.tools.domain_inversion import (
     canonicalize, concat, domain_inversion, eval_domain,
     extract_reference_models, localize_domain, merge, parse,
@@ -127,6 +128,15 @@ class ToolsTestCase(unittest.TestCase):
         self.assertEqual(
             list(map(list, grouped_slice((x for x in range(10)), 5))),
             [[0, 1, 2, 3, 4], [5, 6, 7, 8, 9]])
+
+    def test_pairwise_longest(self):
+        "Test pairwise_longest"
+        self.assertEqual(
+            list(pairwise_longest(range(3))), [(0, 1), (1, 2), (2, None)])
+
+    def test_pairwise_longest_empty(self):
+        "Test pairwise_longest empty"
+        self.assertEqual(list(pairwise_longest([])), [])
 
     def test_is_instance_method(self):
         'Test is_instance_method'

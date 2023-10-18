@@ -16,6 +16,14 @@ Miscellaneous
 
    Return the path of the named directory in subdir from root directory.
 
+.. function:: pairwise_longest(iterable)
+
+   Return successive overlapping pairs taken from the input iterable.
+
+   The number of 2-tuples in the output iterator will be the number of inputs
+   and ends with the ``None``.
+   It will be empty if the input iterable has fewer than two values.
+
 .. function:: resolve(name)
 
    Resolve a dotted name to a global object.
