@@ -24,7 +24,7 @@ from trytond.i18n import lazy_gettext
 
 def pairwise(iterable):
     a, b = tee(iterable)
-    next(b)
+    next(b, None)
     return zip_longest(a, b)
 
 
