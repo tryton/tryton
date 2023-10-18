@@ -10,9 +10,11 @@ this repository contains the full copyright notices and license terms. -->
     <label name="reason"/>
     <field name="reason"/>
 
+    <label name="stripe_refund_id"/>
+    <field name="stripe_refund_id" colspan="3"/>
+
     <label name="stripe_error_message"/>
-    <field name="stripe_error_message"/>
-    <newline/>
+    <field name="stripe_error_message" colspan="3"/>
 
     <label name="stripe_error_code"/>
     <field name="stripe_error_code"/>
