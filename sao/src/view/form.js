@@ -3221,7 +3221,7 @@ function eval_pyson(value){
                 'title': Sao.i18n.gettext("New"),
             }).append(Sao.common.ICONFACTORY.get_icon_img('tryton-create')
             ).appendTo(buttons);
-            this.but_new.click(disable_during(() => this.new_(this)));
+            this.but_new.click(disable_during(() => this.new_()));
 
             this.but_open = jQuery('<button/>', {
                 'class': 'btn btn-default btn-sm',
