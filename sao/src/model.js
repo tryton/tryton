@@ -843,11 +843,14 @@
                         (field instanceof Sao.field.Reference)) {
                     related = name + '.';
                     this._values[related] = values[related] || {};
-                } else if (((field instanceof Sao.field.Selection) ||
-                    (field instanceof Sao.field.MultiSelection)) &&
-                    (name + ':string' in values)) {
+                } else if ((field instanceof Sao.field.Selection) ||
+                    (field instanceof Sao.field.MultiSelection)) {
                     related = name + ':string';
-                    this._values[related] = values[related];
+                    if (name + ':string' in values) {
+                        this._values[related] = values[related];
+                    } else {
+                        delete this._values[related];
+                    }
                 }
                 this.model.fields[name].set(this, value);
                 this._loaded[name] = true;
@@ -1807,10 +1810,16 @@
     });
 
     Sao.field.Selection = Sao.class_(Sao.field.Field, {
-        _default: null
+        _default: null,
+        set_client: function(record, value, force_change) {
+            // delete before trigger the display
+            delete record._values[this.name + ':string'];
+            Sao.field.Selection._super.set_client.call(
+                this, record, value, force_change);
+        }
     });
 
-    Sao.field.MultiSelection = Sao.class_(Sao.field.Field, {
+    Sao.field.MultiSelection = Sao.class_(Sao.field.Selection, {
         _default: null,
         get: function(record) {
             var value = Sao.field.MultiSelection._super.get.call(this, record);

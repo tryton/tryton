@@ -484,11 +484,14 @@ class Record:
             if isinstance(field, (fields.M2OField, fields.ReferenceField)):
                 related = fieldname + '.'
                 self.value[related] = val.get(related) or {}
-            elif (isinstance(field, (
-                            fields.SelectionField, fields.MultiSelectionField))
-                    and fieldname + ':string' in val):
+            elif isinstance(field, (
+                        fields.SelectionField,
+                        fields.MultiSelectionField)):
                 related = fieldname + ':string'
-                self.value[related] = val[related]
+                if fieldname + ':string' in val:
+                    self.value[related] = val[related]
+                else:
+                    self.value.pop(related, None)
             self.group.fields[fieldname].set(self, value)
             self._loaded.add(fieldname)
             fieldnames.append(fieldname)

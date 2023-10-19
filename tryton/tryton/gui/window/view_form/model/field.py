@@ -240,8 +240,12 @@ class SelectionField(Field):
 
     _default = None
 
+    def set_client(self, record, value, force_change=False):
+        record.value.pop(self.name + ':string', None)
+        super().set_client(record, value, force_change=force_change)
 
-class MultiSelectionField(Field):
+
+class MultiSelectionField(SelectionField):
 
     _default = None
 
