@@ -2505,19 +2505,57 @@ this repository contains the full copyright notices and license terms. -->
 
         <record model="account.tax.rule.line.template" id="fptt_intra_purchase_normal">
             <field name="rule" ref="fp_intra_purchase"/>
+            <field name="origin_tax" ref="iva_sop_21"/>
             <field name="tax" ref="iva_sop_intracomunitario"/>
             <field name="group" ref="tax_group_purchase"/>
         </record>
 
         <record model="account.tax.rule.line.template" id="fptt_intra_purchase_service">
             <field name="rule" ref="fp_intra_purchase"/>
+            <field name="origin_tax" ref="iva_sop_21_servicios"/>
             <field name="tax" ref="iva_sop_intracomunitario_servicios"/>
             <field name="group" ref="tax_group_purchase_service"/>
         </record>
 
+        <record model="account.tax.rule.line.template" id="fptt_intra_purchase_10">
+            <field name="rule" ref="fp_intra_purchase"/>
+            <field name="origin_tax" ref="iva_sop_10"/>
+            <field name="tax" ref="iva_sop_intracomunitario_10"/>
+            <field name="group" ref="tax_group_purchase"/>
+        </record>
+
+        <record model="account.tax.rule.line.template" id="fptt_intra_purchase_10_service">
+            <field name="rule" ref="fp_intra_purchase"/>
+            <field name="origin_tax" ref="iva_sop_10_servicios"/>
+            <field name="tax" ref="iva_sop_intracomunitario_servicios_10"/>
+            <field name="group" ref="tax_group_purchase_service"/>
+        </record>
+
+        <record model="account.tax.rule.line.template" id="fptt_intra_purchase_4">
+            <field name="rule" ref="fp_intra_purchase"/>
+            <field name="origin_tax" ref="iva_sop_4"/>
+            <field name="tax" ref="iva_sop_intracomunitario_4"/>
+            <field name="group" ref="tax_group_purchase"/>
+        </record>
+
         <record model="account.tax.rule.line.template" id="fptt_intra_purchase_investment">
             <field name="rule" ref="fp_intra_purchase"/>
+            <field name="origin_tax" ref="iva_sop_21_inv"/>
             <field name="tax" ref="iva_sop_intracomunitario_inv"/>
+            <field name="group" ref="tax_group_purchase_investment"/>
+        </record>
+
+        <record model="account.tax.rule.line.template" id="fptt_intra_purchase_investment_10">
+            <field name="rule" ref="fp_intra_purchase"/>
+            <field name="origin_tax" ref="iva_sop_10_inv"/>
+            <field name="tax" ref="iva_sop_intracomunitario_inv_10"/>
+            <field name="group" ref="tax_group_purchase_investment"/>
+        </record>
+
+        <record model="account.tax.rule.line.template" id="fptt_intra_purchase_investment_4">
+            <field name="rule" ref="fp_intra_purchase"/>
+            <field name="origin_tax" ref="iva_sop_4_inv"/>
+            <field name="tax" ref="iva_sop_intracomunitario_inv_4"/>
             <field name="group" ref="tax_group_purchase_investment"/>
         </record>
 
