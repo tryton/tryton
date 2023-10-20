@@ -90,7 +90,7 @@ class Lot(DeactivableMixin, ModelSQL, ModelView, LotMixin, StockMixin):
         fields.Many2One(
             'product.uom', "Default UoM",
             help="The default Unit of Measure."),
-        'on_change_with_default_uom')
+        'on_change_with_default_uom', searcher='search_default_uom')
 
     @classmethod
     def __setup__(cls):
@@ -128,6 +128,11 @@ class Lot(DeactivableMixin, ModelSQL, ModelView, LotMixin, StockMixin):
     @fields.depends('product')
     def on_change_with_default_uom(self, name=None):
         return self.product.default_uom if self.product else None
+
+    @classmethod
+    def search_default_uom(cls, name, clause):
+        nested = clause[0][len(name):]
+        return [('product.' + name + nested, *clause[1:])]
 
     @classmethod
     def copy(cls, lots, default=None):
