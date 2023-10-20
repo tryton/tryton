@@ -84,7 +84,7 @@ class Lot(DeactivableMixin, ModelSQL, ModelView, LotMixin, StockMixin):
         'get_quantity', searcher='search_quantity')
     default_uom = fields.Function(
         fields.Many2One('product.uom', "Default UOM"),
-        'on_change_with_default_uom')
+        'on_change_with_default_uom', searcher='search_default_uom')
     default_uom_digits = fields.Function(fields.Integer("Default Unit Digits"),
         'on_change_with_default_uom_digits')
 
@@ -129,6 +129,11 @@ class Lot(DeactivableMixin, ModelSQL, ModelView, LotMixin, StockMixin):
     def on_change_with_default_uom_digits(self, name=None):
         if self.product:
             return self.product.default_uom.digits
+
+    @classmethod
+    def search_default_uom(cls, name, clause):
+        nested = clause[0][len(name):]
+        return [('product.' + name + nested, *clause[1:])]
 
     @classmethod
     def copy(cls, lots, default=None):
