@@ -451,9 +451,11 @@ class Invoice(metaclass=PoolMeta):
     def _post(cls, invoices):
         pool = Pool()
         InvoiceDeferred = pool.get('account.invoice.deferred')
+        # defer invoices only the first time post is called
+        invoices_to_defer = [i for i in invoices if not i.move]
         super()._post(invoices)
         deferrals = []
-        for invoice in invoices:
+        for invoice in invoices_to_defer:
             for line in invoice.lines:
                 if line.deferrable and line.defer_from and line.defer_to:
                     deferral = InvoiceDeferred(
