@@ -46,7 +46,7 @@ from trytond.exceptions import LoginException, RateLimitException, UserError
 from trytond.i18n import gettext
 from trytond.model import (
     DeactivableMixin, Index, ModelSQL, ModelView, Unique, Workflow,
-    avatar_mixin, fields)
+    avatar_mixin, dualmethod, fields)
 from trytond.model.exceptions import ValidationError
 from trytond.pool import Pool
 from trytond.pyson import Bool, Eval, PYSONEncoder
@@ -293,7 +293,7 @@ class User(avatar_mixin(100, 'login'), DeactivableMixin, ModelSQL, ModelView):
                 if test and password.lower() == test.lower():
                     raise PasswordError(gettext(message))
 
-    @classmethod
+    @dualmethod
     @ModelView.button
     def reset_password(cls, users, length=8, from_=None):
         length = max(length, config.getint('password', 'length', default=0))
