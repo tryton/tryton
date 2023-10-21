@@ -623,9 +623,9 @@ class Dunning(metaclass=PoolMeta):
 
     @classmethod
     def search_active(cls, name, clause):
-        if tuple(clause[1:]) in {('=', True), ('!=', False)}:
+        if tuple(clause[1:]) in [('=', True), ('!=', False)]:
             domain = ('line.payment_amount', '>', 0)
-        elif tuple(clause[1:]) in {('=', False), ('!=', True)}:
+        elif tuple(clause[1:]) in [('=', False), ('!=', True)]:
             domain = ('line.payment_amount', '<=', 0)
         else:
             domain = []
