@@ -7,7 +7,9 @@ from trytond.tests.test_tryton import ModuleTestCase
 class AccountTestCase(ModuleTestCase):
     'Test Account Es module'
     module = 'account_es'
-    extras = ['account_asset', 'account_payment_sepa', 'sale_advance_payment']
+    extras = [
+        'account_asset', 'account_payment_sepa', 'sale_advance_payment',
+        'sale_gift_card']
 
 
 del ModuleTestCase

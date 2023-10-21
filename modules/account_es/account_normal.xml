@@ -184,6 +184,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="sequence" eval="60"/>
             <field name="statement">balance</field>
             <field name="assets" eval="True"/>
+            <field name="gift_card" depends="sale_gift_card" eval="True"/>
         </record>
         <record id="es_balance_efectivo_normal" model="account.account.type.template">
             
@@ -284,6 +285,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="sequence" eval="60"/>
             <field name="statement">balance</field>
             <field name="unearned_revenue" depends="sale_advance_payment" eval="True"/>
+            <field name="gift_card" depends="sale_gift_card" eval="True"/>
         </record>
         <record id="es_balance_deuda_caracteristicas_especiales_corto_plazo_normal" model="account.account.type.template">
             <field name="name">VII. Deuda con características especiales a corto plazo</field>

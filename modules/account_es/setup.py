@@ -52,6 +52,7 @@ tests_require = [
     get_require_version('trytond_account_asset'),
     get_require_version('trytond_account_payment_sepa'),
     get_require_version('trytond_sale_advance_payment'),
+    get_require_version('trytond_sale_gift_card'),
     ]
 
 setup(name=name,
