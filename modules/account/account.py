@@ -1787,7 +1787,7 @@ class _GeneralLedgerAccount(ActivePeriodMixin, ModelSQL, ModelView):
         context = Transaction().context
         if context.get('start_period') or context.get('end_period'):
             period_ids = cls.get_period_ids(name)
-        elif context.get('from_date') or context.get('end_date'):
+        elif context.get('from_date') or context.get('to_date'):
             from_date, to_date = cls.get_dates(name)
         else:
             if name.startswith('start_'):
