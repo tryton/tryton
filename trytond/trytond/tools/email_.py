@@ -30,10 +30,17 @@ def set_from_header(message, sender, from_):
 
 
 try:
+    from dns.exception import DNSException
     from email_validator import EmailNotValidError, caching_resolver
     from email_validator import validate_email as _validate_email
 
-    resolver = caching_resolver()
+    try:
+        resolver = caching_resolver()
+    except DNSException:
+        if Pool.test:
+            resolver = None
+        else:
+            raise
 
     def validate_email(email):
         emailinfo = _validate_email(

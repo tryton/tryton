@@ -160,7 +160,7 @@ setup(name=name,
         'barcode': ['python-barcode[images]'],
         'qrcode': ['qrcode[pil]', 'webcolors'],
         'completion': ['argcomplete'],
-        'email-validation': ['email-validator >= 2'],
+        'email-validation': ['email-validator >= 2', 'dnspython'],
         },
     zip_safe=False,
     cmdclass={
