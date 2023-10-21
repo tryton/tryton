@@ -1180,6 +1180,8 @@ class Line(ModelSQL, ModelView):
 
         reconciliations = []
         for lines in lines_list:
+            if not lines:
+                continue
             for line in lines:
                 if line.reconciliation:
                     cls.raise_user_error('already_reconciled',
