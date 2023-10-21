@@ -25,6 +25,7 @@ class Party(metaclass=PoolMeta):
         currency = user.company.currency
 
         sales = Sale.search([
+                ('company', '=', user.company.id),
                 ('party', 'in', [p.id for p in parties]),
                 ('state', 'in', ['confirmed', 'processing']),
                 ])
