@@ -1535,6 +1535,8 @@ class Line(DescriptionOriginMixin, MoveLineMixin, ModelSQL, ModelView):
         reconciliations = []
         to_post = []
         for lines in lines_list:
+            if not lines:
+                continue
             for line in lines:
                 if line.reconciliation:
                     raise AccessError(
