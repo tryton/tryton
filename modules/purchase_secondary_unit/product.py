@@ -16,7 +16,7 @@ class PurchaseSecondaryMixin:
         domain=[
             ('category', '!=', Eval('default_uom_category')),
             ],
-        help="The second Unit of Measure for purchases.")
+        help="The secondary Unit of Measure for purchases.")
     purchase_secondary_uom_factor = fields.Float(
         "Purchase Secondary UoM Factor", digits=uom_conversion_digits,
         states={
