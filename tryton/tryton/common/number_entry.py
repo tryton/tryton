@@ -2,6 +2,7 @@
 # this repository contains the full copyright notices and license terms.
 import gettext
 import locale
+from decimal import Decimal
 
 from gi.repository import Gdk, GObject, Gtk
 
@@ -52,11 +53,12 @@ class NumberEntry(Gtk.Entry, Gtk.Editable):
         value = None
         if text not in ['-', self.__decimal_point]:
             try:
-                value = locale.atof(text)
+                value = Decimal(locale.atof(text))
             except ValueError:
                 return position
         if (value and self.__digits is not None
-                and round(value, self.__digits) != value):
+                and (round(value, self.__digits) != value
+                    or value.as_tuple().exponent < -self.__digits)):
             return position
         buffer_.insert_text(position, new_text, len(new_text))
         return position + len(new_text)

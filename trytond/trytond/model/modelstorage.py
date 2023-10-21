@@ -1307,13 +1307,10 @@ class ModelStorage(Model):
                             or not digits
                             or any(d is None for d in digits)):
                         return
-                    if isinstance(value, Decimal):
-                        exp = Decimal('.'.join(['0', '0' * digits[1]]))
-                        if value.quantize(exp) != value:
-                            raise_error(value)
-                    else:
-                        if not (round(value, digits[1]) == float(value)):
-                            raise_error(value)
+                    if (round(value, digits[1]) != value
+                            or (isinstance(value, Decimal)
+                                and value.as_tuple().exponent < -digits[1])):
+                        raise_error(value)
                 # validate digits
                 if getattr(field, 'digits', None):
                     if is_pyson(field.digits):
