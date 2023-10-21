@@ -1400,6 +1400,8 @@ class Line(MoveLineMixin, ModelSQL, ModelView):
 
         reconciliations = []
         for lines in lines_list:
+            if not lines:
+                continue
             for line in lines:
                 if line.reconciliation:
                     raise AccessError(
