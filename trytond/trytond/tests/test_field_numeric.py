@@ -168,6 +168,17 @@ class FieldNumericTestCase(unittest.TestCase):
                         }])
 
     @with_transaction()
+    def test_create_trailing_zero_digits_invalid(self):
+        "Test create numeric with invalid trailing zero digits"
+        Numeric = Pool().get('test.numeric_digits')
+
+        with self.assertRaises(DigitsValidationError):
+            Numeric.create([{
+                    'digits': 1,
+                    'numeric': Decimal('1.10'),
+                    }])
+
+    @with_transaction()
     def test_search_equals(self):
         "Test search numeric equals"
         Numeric = Pool().get('test.numeric')
