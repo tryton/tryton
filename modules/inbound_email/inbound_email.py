@@ -120,7 +120,7 @@ class Email(ModelSQL, ModelView):
             ('postmark', "Postmark"),
             ('raw', "Raw"),
             ('sendgrid', "SendGrid"),
-            ], "Data Type", required=True, readonly=True)
+            ], "Data Type", required=True, readonly=True, translate=False)
     rule = fields.Many2One('inbound.email.rule', "Rule", readonly=True)
     result = fields.Reference("Result", selection='get_models', readonly=True)
 
