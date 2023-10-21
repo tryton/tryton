@@ -144,6 +144,16 @@ class Journal(metaclass=PoolMeta):
                     values=['eu_at_02'],
                     where=column == 'sepa'))
 
+        # Migration from 6.8: es_nif renamed into es_vat
+        cursor.execute(*sql_table.update(
+                [sql_table.sepa_payable_initiator_id],
+                ['es_vat'],
+                where=sql_table.sepa_payable_initiator_id == 'es_nif'))
+        cursor.execute(*sql_table.update(
+                [sql_table.sepa_receivable_initiator_id],
+                ['es_vat'],
+                where=sql_table.sepa_receivable_initiator_id == 'es_nif'))
+
     @classmethod
     def default_company_party(cls):
         pool = Pool()
