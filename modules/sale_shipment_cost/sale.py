@@ -356,9 +356,9 @@ class Sale(metaclass=PoolMeta):
         cost_line.amount = cost_line.on_change_with_amount()
         return cost_line
 
-    @property
-    def _shipment_grouping_fields(self):
-        return super()._shipment_grouping_fields + ('cost_method', 'carrier')
+    def _get_shipment_grouping_fields(self, shipment):
+        return super()._get_shipment_grouping_fields(shipment) + (
+            'cost_method', 'carrier')
 
     @property
     def shipment_cost_amount(self):
