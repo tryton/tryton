@@ -128,6 +128,6 @@ class Sale(metaclass=PoolMeta):
                 date=self._invoice_term_date)
         return invoice
 
-    @property
-    def _invoice_grouping_fields(self):
-        return super()._invoice_grouping_fields + ('invoice_date',)
+    def _get_invoice_grouping_fields(self, invoice):
+        return super()._get_invoice_grouping_fields(invoice) + (
+            'invoice_date',)
