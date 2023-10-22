@@ -298,7 +298,7 @@ class ServerProxy(xmlrpc.client.ServerProxy):
             self.__transport.close()
             raise
         if response['id'] != id_:
-            raise ResponseError('Invalid response id (%s) excpected %s' %
+            raise ResponseError('Invalid response id (%s) expected %s' %
                 (response['id'], id_))
         if response.get('error'):
             raise Fault(*response['error'])
