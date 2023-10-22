@@ -187,6 +187,9 @@ class LotTrace(ModelSQL, ModelView):
         depends=['company'])
     lot = fields.Many2One('stock.lot', "Lot")
 
+    from_location = fields.Many2One('stock.location', "From Location")
+    to_location = fields.Many2One('stock.location', "To Location")
+
     quantity = fields.Float("Quantity", digits='unit')
     unit = fields.Many2One('product.uom', "Unit")
 
@@ -230,6 +233,8 @@ class LotTrace(ModelSQL, ModelView):
             move.write_date.as_('write_date'),
             move.product.as_('product'),
             move.lot.as_('lot'),
+            move.from_location.as_('from_location'),
+            move.to_location.as_('to_location'),
             move.quantity.as_('quantity'),
             move.unit.as_('unit'),
             move.company.as_('company'),
