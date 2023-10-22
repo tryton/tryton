@@ -211,7 +211,7 @@ class LotTrace(ModelSQL, ModelView):
     @classmethod
     def __setup__(cls):
         super().__setup__()
-        cls._order.insert(0, ('date', 'ASC'))
+        cls._order.insert(0, ('date', None))
 
     @classmethod
     def table_query(cls):
@@ -265,7 +265,7 @@ class LotTrace(ModelSQL, ModelView):
 
     @classmethod
     def _trace_move_order_key(cls, move):
-        return (move.effective_date,)
+        return (move.effective_date, move.id)
 
     def get_upward_traces(self, name):
         return list(map(int, sorted(filter(
@@ -278,7 +278,7 @@ class LotTrace(ModelSQL, ModelView):
     def get_downward_traces(self, name):
         return list(map(int, sorted(filter(
                         self._is_trace_move, self._get_downward_traces()),
-                    key=self._trace_move_order_key)))
+                    key=self._trace_move_order_key, reverse=True)))
 
     def _get_downward_traces(self):
         return set()

@@ -113,6 +113,10 @@ this repository contains the full copyright notices and license terms. -->
                 name="domain"
                 eval="[('lot', 'in', Eval('active_ids', []))]"
                 pyson="1"/>
+            <field
+                name="order"
+                eval="[('date', 'ASC'), ('id', 'ASC')]"
+                pyson="1"/>
         </record>
         <record model="ir.action.act_window.view" id="act_lot_trace_upward_relate_view1">
             <field name="sequence" eval="10"/>
@@ -131,6 +135,10 @@ this repository contains the full copyright notices and license terms. -->
             <field
                 name="domain"
                 eval="[('lot', 'in', Eval('active_ids', []))]"
+                pyson="1"/>
+            <field
+                name="order"
+                eval="[('date', 'DESC'), ('id', 'DESC')]"
                 pyson="1"/>
         </record>
         <record model="ir.action.act_window.view" id="act_lot_trace_downward_relate_view1">
