@@ -1377,13 +1377,15 @@ class SaleLine(TaxableMixin, sequence_ordered(), ModelSQL, ModelView):
         if not self.unit or self.unit.category != category:
             self.unit = self.product.sale_uom
 
-        self.unit_price = self.compute_unit_price()
+            self.unit_price = self.compute_unit_price()
 
-        self.type = 'line'
         self.amount = self.on_change_with_amount()
 
-    @fields.depends('product', methods=['_get_tax_rule_pattern'])
+    @fields.depends('type', 'product', methods=['_get_tax_rule_pattern'])
     def compute_taxes(self, party):
+        if self.type != 'line':
+            return []
+
         taxes = set()
         pattern = self._get_tax_rule_pattern()
         for tax in self.product.customer_taxes_used:

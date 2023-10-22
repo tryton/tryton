@@ -1347,13 +1347,15 @@ class Line(sequence_ordered(), ModelSQL, ModelView):
                 and self.product_supplier not in product_suppliers):
             self.product_supplier = None
 
-        self.unit_price = self.compute_unit_price()
+            self.unit_price = self.compute_unit_price()
 
-        self.type = 'line'
         self.amount = self.on_change_with_amount()
 
-    @fields.depends('product', methods=['_get_tax_rule_pattern'])
+    @fields.depends('type', 'product', methods=['_get_tax_rule_pattern'])
     def compute_taxes(self, party):
+        if self.type != 'line':
+            return []
+
         taxes = set()
         pattern = self._get_tax_rule_pattern()
         for tax in self.product.supplier_taxes_used:
