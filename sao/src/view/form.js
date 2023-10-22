@@ -560,9 +560,14 @@ function eval_pyson(value){
             if (xexpand === undefined) xexpand = 1;
 
             // CSS grid elements are 1-indexed
-            if ((this.col > 0) && ((this._col + colspan) > (this.col + 1))) {
-                this._col = 1;
-                this._row += 1;
+            if (this.col > 0) {
+                if (colspan > this.col) {
+                    colspan = this.col;
+                }
+                if ((this._col + colspan) > (this.col + 1)) {
+                    this._col = 1;
+                    this._row += 1;
+                }
             }
 
             var el;
