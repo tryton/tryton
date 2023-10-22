@@ -26,11 +26,17 @@
         }
 
         var timeoutID = Sao.common.processing.show();
+        const id_ = Sao.rpc.id++;
 
         var ajax_success = function(data, status_, query) {
             if (data === null) {
                 Sao.common.warning.run('',
                         Sao.i18n.gettext('Unable to reach the server.'))
+                    .always(dfd.reject);
+            } else if (data.id != id_) {
+                Sao.common.warning.run('',
+                    Sao.i18n.gettext(
+                        `Invalid response id (${data.id}) expected ${id_}`))
                     .always(dfd.reject);
             } else if (data.error && !process_exception) {
                 console.debug(`RPC error calling ${args}: ${data.error[0]}: ${data.error[1]}.`);
@@ -151,7 +157,7 @@
             },
             'contentType': 'application/json',
             'data': JSON.stringify(Sao.rpc.prepareObject({
-                'id': Sao.rpc.id++,
+                'id': id_,
                 'method': args.method,
                 'params': params
             })),
