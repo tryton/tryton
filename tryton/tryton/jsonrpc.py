@@ -3,6 +3,7 @@
 import base64
 import datetime
 import errno
+import gettext
 import hashlib
 import http.client
 import json
@@ -22,6 +23,7 @@ __all__ = ["ResponseError", "Fault", "ProtocolError", "Transport",
 CONNECT_TIMEOUT = 5
 DEFAULT_TIMEOUT = None
 logger = logging.getLogger(__name__)
+_ = gettext.gettext
 
 
 def deepcopy(obj):
@@ -298,7 +300,8 @@ class ServerProxy(xmlrpc.client.ServerProxy):
             self.__transport.close()
             raise
         if response['id'] != id_:
-            raise ResponseError('Invalid response id (%s) expected %s' %
+            raise ResponseError(
+                _("Invalid response id (%s) expected %s") %
                 (response['id'], id_))
         if response.get('error'):
             raise Fault(*response['error'])
