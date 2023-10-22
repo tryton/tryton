@@ -82,6 +82,7 @@ Create a sale with a line::
     >>> sale_line = sale.lines.new()
     >>> sale_line.product = product
     >>> sale_line.quantity = 3
+    >>> sale_line_comment = sale.lines.new(type='comment')
     >>> sale.save()
     >>> sale.untaxed_amount, sale.tax_amount, sale.total_amount
     (Decimal('30.00'), Decimal('3.00'), Decimal('33.00'))
