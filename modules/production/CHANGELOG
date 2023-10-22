@@ -1,3 +1,4 @@
+* Add support for Python 3.12
 * Rename Uom to Unit for bill of material
 * Rename Uom to Unit for production
 * Reschedule planned date for late productions

@@ -1,3 +1,4 @@
+* Add support for Python 3.12
 * Support create record from autocomplete
 * Support scanning code
 * Reset search offset when domain has changed

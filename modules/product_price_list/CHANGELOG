@@ -1,3 +1,4 @@
+* Add support for Python 3.12
 * Define the value of 'unit_price' on price list
 * Remove unit price to compute price list
 * Remove party to compute price list

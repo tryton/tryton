@@ -1,3 +1,4 @@
+* Add support for Python 3.12
 * Add menu entry to list warehouses
 * Check outgoing product quantities for internal shipment
 * Check inventory product quantities for customer return shipment

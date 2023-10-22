@@ -1,3 +1,4 @@
+* Add support for Python 3.12
 * Autocomplete party from European VAT number
 * Use vat alias for party identifier
 * Add Belgian BIS Number identifier

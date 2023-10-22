@@ -1,3 +1,4 @@
+* Add support for Python 3.12
 * Compute stock quantity based on shipping date
 
 Version 6.8.0 - 2023-05-01

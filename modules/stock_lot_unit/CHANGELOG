@@ -1,3 +1,4 @@
+* Add support for Python 3.12
 * Rename Lot Unit to Lot UoM for product
 
 Version 6.8.0 - 2023-05-01

@@ -1,3 +1,4 @@
+* Add support for Python 3.12
 * Grant read access for account group to stock move
 
 Version 6.8.0 - 2023-05-01

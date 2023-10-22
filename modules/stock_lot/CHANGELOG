@@ -1,3 +1,4 @@
+* Add support for Python 3.12
 * Check customer lot quantities for drop shipment
 * Check outgoing lot quantities for internal shipment
 * Check inventory lot quantities for customer return shipment

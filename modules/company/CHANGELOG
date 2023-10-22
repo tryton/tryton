@@ -1,3 +1,4 @@
+* Add support for Python 3.12
 * Remove employee and employees from evaluation context of rule domain
 * Define when set or reset employee field
 

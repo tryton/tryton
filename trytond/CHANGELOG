@@ -1,3 +1,4 @@
+* Add support for Python 3.12
 * Support default values for autocomplete
 * Support default value from context
 * Add autocomplete method on ModelView

@@ -1,3 +1,4 @@
+* Add support for Python 3.12
 * Use origin description as fallback description
 * Post write-off and exchange moves when reconcile posted lines
 * Post cancelled, grouped, rescheduled and delegated moves

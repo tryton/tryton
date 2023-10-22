@@ -1,3 +1,4 @@
+* Add support for Python 3.12
 * Warn when submitting, approving or proceeding payment with reconciled line
 * Warn when cancelling, grouping, rescheduling or delegating move line with payment
 * Mark Payment as succeeded or failed when imported in statement

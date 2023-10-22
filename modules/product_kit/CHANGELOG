@@ -1,3 +1,4 @@
+* Add support for Python 3.12
 * Add warning when receiving too much component goods from sale return
 * Add warning when receiving too much component goods from purchase
 

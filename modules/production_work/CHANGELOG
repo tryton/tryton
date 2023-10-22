@@ -1,3 +1,4 @@
+* Add support for Python 3.12
 * Add employee on cycles for running and done states
 * Display cost of works
 

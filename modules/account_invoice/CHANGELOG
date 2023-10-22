@@ -1,3 +1,4 @@
+* Add support for Python 3.12
 * Always allow editing invoice reference, description and comment by accounting administrator
 * Allow refreshing invoice report cache
 * Set employee who validates and posts invoices

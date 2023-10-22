@@ -1,3 +1,4 @@
+* Add support for Python 3.12
 * Add warning when receiving too much goods from purchase
 * Require unit price only for confirmed purchase
 * Do not invoice non purchase line
