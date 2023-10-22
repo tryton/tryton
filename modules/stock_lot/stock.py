@@ -273,7 +273,13 @@ class LotTrace(ModelSQL, ModelView):
                     key=self._trace_move_order_key)))
 
     def _get_upward_traces(self):
-        return set()
+        pool = Pool()
+        Move = pool.get('stock.move')
+        return set(Move.search([
+                    ('lot', '=', self.lot.id),
+                    ('from_location', '=', self.to_location),
+                    ('effective_date', '>=', self.date),
+                    ]))
 
     def get_downward_traces(self, name):
         return list(map(int, sorted(filter(
@@ -281,7 +287,13 @@ class LotTrace(ModelSQL, ModelView):
                     key=self._trace_move_order_key, reverse=True)))
 
     def _get_downward_traces(self):
-        return set()
+        pool = Pool()
+        Move = pool.get('stock.move')
+        return set(Move.search([
+                    ('lot', '=', self.lot.id),
+                    ('to_location', '=', self.from_location),
+                    ('effective_date', '<=', self.date),
+                    ]))
 
 
 class LotByLocationContext(ModelView):
