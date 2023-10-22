@@ -483,7 +483,7 @@ class ProductSupplierPrice(
     def default_quantity():
         return 0.0
 
-    @fields.depends('product_supplier', '_parent_product_supplier.product')
+    @fields.depends('product_supplier', '_parent_product_supplier.uom')
     def on_change_with_uom(self, name=None):
         if self.product_supplier and self.product_supplier.uom:
             return self.product_supplier.uom.id
