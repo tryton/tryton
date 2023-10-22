@@ -310,6 +310,7 @@ class POSSale(Workflow, ModelSQL, ModelView, TaxableMixin):
 
     @classmethod
     @ModelView.button
+    @Workflow.transition('open')
     def open(cls, sales):
         pass
 
