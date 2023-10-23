@@ -87,7 +87,7 @@ class TransactionTestCase(unittest.TestCase):
         dm.tpc_begin.assert_called_once_with(transaction)
         dm.commit.assert_called_once_with(transaction)
         dm.tpc_vote.assert_called_once_with(transaction)
-        dm.tpc_abort.not_called()
+        dm.tpc_abort.assert_not_called()
         dm.tpc_finish.assert_called_once_with(transaction)
 
         # Failing in the datamanager
