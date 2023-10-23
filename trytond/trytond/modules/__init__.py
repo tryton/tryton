@@ -9,9 +9,9 @@ from collections import defaultdict
 from glob import iglob
 
 try:
-    import pkg_resources
+    from backports.entry_points_selectable import entry_points
 except ImportError:
-    pkg_resources = None
+    from importlib.metadata import entry_points
 
 from sql import Table
 from sql.functions import CurrentTimestamp
@@ -37,12 +37,8 @@ EGG_MODULES = {}
 
 def update_egg_modules():
     global EGG_MODULES
-    try:
-        import pkg_resources
-        for ep in pkg_resources.iter_entry_points('trytond.modules'):
-            EGG_MODULES[ep.name] = ep
-    except ImportError:
-        pass
+    for ep in entry_points().select(group='trytond.modules'):
+        EGG_MODULES[ep.name] = ep
 
 
 update_egg_modules()
@@ -301,9 +297,8 @@ def get_modules(with_test=False):
                 continue
             if os.path.isdir(OPJ(MODULES_PATH, file)):
                 modules.add(file)
-    if pkg_resources:
-        for ep in pkg_resources.iter_entry_points('trytond.modules'):
-            modules.add(ep.name)
+    for ep in entry_points().select(group='trytond.modules'):
+        modules.add(ep.name)
     if with_test:
         modules.add('tests')
     return modules

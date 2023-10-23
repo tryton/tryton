@@ -4,9 +4,9 @@ import importlib
 import urllib.parse
 
 try:
-    import pkg_resources
+    from backports.entry_points_selectable import entry_points
 except ImportError:
-    pkg_resources = None
+    from importlib.metadata import entry_points
 
 from trytond.config import config
 
@@ -21,9 +21,7 @@ _modname = 'trytond.backend.%s' % name
 try:
     _module = importlib.import_module(_modname)
 except ImportError:
-    if not pkg_resources:
-        raise
-    for ep in pkg_resources.iter_entry_points('trytond.backend', name):
+    for ep in entry_points().select(group='trytond.backend', name=name):
         try:
             _module = ep.load()
             break

@@ -227,14 +227,25 @@ if not isinstance(CURRENT_DIR, str):
 
 PIXMAPS_DIR = os.path.join(CURRENT_DIR, 'data', 'pixmaps', 'tryton')
 if not os.path.isdir(PIXMAPS_DIR):
-    # do not import when frozen
-    import pkg_resources
-    PIXMAPS_DIR = pkg_resources.resource_filename(
-        'tryton', 'data/pixmaps/tryton')
+    try:
+        import importlib.resources
+        ref = importlib.resources.files('tryton') / 'data/pixmaps/tryton'
+        with importlib.resources.as_file(ref) as path:
+            PIXMAPS_DIR = path
+    except ImportError:
+        import pkg_resources
+        PIXMAPS_DIR = pkg_resources.resource_filename(
+            'tryton', 'data/pixmaps/tryton')
 SOUNDS_DIR = os.path.join(CURRENT_DIR, 'data', 'sounds')
 if not os.path.isdir(SOUNDS_DIR):
-    import pkg_resources
-    SOUNDS_DIR = pkg_resources.resource_filename('tryton', 'data/sounds')
+    try:
+        import importlib.resources
+        ref = importlib.resources.files('tryton') / 'data/sounds'
+        with importlib.resources.as_file(ref) as path:
+            SOUNDS_DIR = path
+    except ImportError:
+        import pkg_resources
+        SOUNDS_DIR = pkg_resources.resource_filename('tryton', 'data/sounds')
 
 TRYTON_ICON = GdkPixbuf.Pixbuf.new_from_file(
     os.path.join(PIXMAPS_DIR, 'tryton-icon.png'))

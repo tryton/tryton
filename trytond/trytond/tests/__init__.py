@@ -2,9 +2,9 @@
 # this repository contains the full copyright notices and license terms.
 
 try:
-    import pkg_resources
+    from backports.entry_points_selectable import entry_points
 except ImportError:
-    pkg_resources = None
+    from importlib.metadata import entry_points
 
 
 def register():
@@ -60,9 +60,7 @@ def register():
     wizard.register('tests')
     workflow.register('tests')
 
-    if pkg_resources is not None:
-        entry_points = pkg_resources.iter_entry_points('trytond.tests')
-        for test_ep in entry_points:
-            test_module = test_ep.load()
-            if hasattr(test_module, 'register'):
-                test_module.register('tests')
+    for test_ep in entry_points().select(group='trytond.tests'):
+        test_module = test_ep.load()
+        if hasattr(test_module, 'register'):
+            test_module.register('tests')

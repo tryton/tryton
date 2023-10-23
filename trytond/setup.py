@@ -143,6 +143,7 @@ setup(name=name,
         'werkzeug >= 0.12',
         'passlib >= 1.7.0',
         'pytz;python_version<"3.9"',
+        'backports.entry-points-selectable;python_version<"3.10"',
         ],
     extras_require={
         'test': tests_require,

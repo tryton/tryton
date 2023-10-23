@@ -154,10 +154,15 @@ def setlang(lang=None, locale_dict=None):
     "Set language"
     locale_dir = os.path.join(CURRENT_DIR, 'data/locale')
     if not os.path.isdir(locale_dir):
-        # do not import when frozen
-        import pkg_resources
-        locale_dir = pkg_resources.resource_filename(
-            'tryton', 'data/locale')
+        try:
+            import importlib.resources
+            ref = importlib.files('tryton') / 'data/locale'
+            with importlib.resources.as_file(ref) as path:
+                locale_dir = path
+        except ImportError:
+            import pkg_resources
+            locale_dir = pkg_resources.resource_filename(
+                'tryton', 'data/locale')
     if lang:
         encoding = locale.getdefaultlocale()[1]
         if not encoding:

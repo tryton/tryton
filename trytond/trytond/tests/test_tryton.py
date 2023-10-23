@@ -20,11 +20,6 @@ from fnmatch import fnmatchcase
 from functools import reduce, wraps
 from itertools import chain
 
-try:
-    import pkg_resources
-except ImportError:
-    pkg_resources = None
-
 from lxml import etree
 from sql import Table
 from werkzeug.test import Client
