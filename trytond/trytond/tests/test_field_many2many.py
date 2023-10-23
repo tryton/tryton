@@ -455,7 +455,7 @@ class FieldMany2ManyTestCase(unittest.TestCase, CommonTestCaseMixin):
         pool = Pool()
         Many2Many = pool.get('test.many2many_domain')
 
-        with self.assertRaisesRegexp(
+        with self.assertRaisesRegex(
                 DomainValidationError,
                 'The value ".*,.*" for field "Targets" '
                 'in ".*" of "Many2Many Domain"'):

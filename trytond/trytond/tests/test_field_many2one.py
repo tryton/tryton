@@ -78,7 +78,7 @@ class FieldMany2OneTestCase(unittest.TestCase):
         Many2One = pool.get('test.many2one_domainvalidation')
         target, = Target.create([{'value': 1}])
 
-        with self.assertRaisesRegexp(
+        with self.assertRaisesRegex(
                 DomainValidationError,
                 'The value "%s" for field "many2one" '
                 'in ".*" of "Many2One Domain Validation"' % target.rec_name):

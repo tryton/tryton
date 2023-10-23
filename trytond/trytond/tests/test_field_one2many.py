@@ -572,7 +572,7 @@ class FieldOne2ManyTestCase(
         pool = Pool()
         One2Many = pool.get('test.one2many_domain')
 
-        with self.assertRaisesRegexp(
+        with self.assertRaisesRegex(
                 DomainValidationError,
                 'The value ".*,.*" for field "Targets" '
                 'in ".*" of "One2Many Domain"'):

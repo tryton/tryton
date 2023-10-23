@@ -482,7 +482,7 @@ class FieldReferenceTestCase(unittest.TestCase):
         target.save()
 
         reference = Reference(reference=target)
-        with self.assertRaisesRegexp(
+        with self.assertRaisesRegex(
                 DomainValidationError,
                 'The value "%s" for field "Reference" '
                 'in ".*" of "Reference Domain Validation"' % target.rec_name):
