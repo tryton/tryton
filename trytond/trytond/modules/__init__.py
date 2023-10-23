@@ -32,17 +32,6 @@ MODULES_PATH = os.path.abspath(os.path.dirname(__file__))
 
 MODULES = []
 
-EGG_MODULES = {}
-
-
-def update_egg_modules():
-    global EGG_MODULES
-    for ep in entry_points().select(group='trytond.modules'):
-        EGG_MODULES[ep.name] = ep
-
-
-update_egg_modules()
-
 
 def get_module_info(name):
     "Return the content of the tryton.cfg"
