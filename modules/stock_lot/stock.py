@@ -5,7 +5,7 @@ from collections import defaultdict
 from copy import copy
 from functools import wraps
 
-from sql import Column
+from sql import Column, Null
 from sql.functions import CharLength
 
 from trytond.i18n import gettext
@@ -221,7 +221,7 @@ class LotTrace(ModelSQL, ModelView):
         return (
             move.select(
                 *cls._columns(move),
-                where=move.state == 'done'))
+                where=(move.lot != Null) & (move.state == 'done')))
 
     @classmethod
     def _columns(cls, move):
