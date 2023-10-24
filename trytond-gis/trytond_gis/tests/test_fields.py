@@ -20,10 +20,11 @@ class TestGeographicFields(unittest.TestCase):
         pool = Pool()
 
         GISPoint = pool.get('test.gis.point')
+        point = {'dimension': 2, 'geometry_type': 'POINT'}
+        point = GISPoint.fields_get(['point'])['point']
 
-        self.assertDictContainsSubset(
-            {'dimension': 2, 'geometry_type': 'POINT'},
-            GISPoint.fields_get(['point'])['point'])
+        self.assertEqual(point['dimension'], 2)
+        self.assertEqual(point['geometry_type'], 'POINT')
 
     @with_transaction()
     def test_create_save(self):
@@ -39,7 +40,8 @@ class TestGeographicFields(unittest.TestCase):
         point, = GISPoint.create([{
                     'point': point_a,
                     }])
-        self.assertDictContainsSubset(point_a, point.point)
+        for key in point_a:
+            self.assertEqual(point.point[key], point_a[key])
 
         point_b = {
             'meta': {'srid': 4326},
@@ -50,7 +52,8 @@ class TestGeographicFields(unittest.TestCase):
         point.save()
 
         reload_point = GISPoint(point.id)
-        self.assertDictContainsSubset(point_b, reload_point.point)
+        for key in point_b:
+            self.assertEqual(reload_point.point[key], point_b[key])
 
         point.point = Null
         point.save()
@@ -88,7 +91,8 @@ class TestGeographicFields(unittest.TestCase):
                 ])
         self.assertEqual(len(points), 2)
         for point in points:
-            self.assertDictContainsSubset(point_a, point.point)
+            for key in point_a:
+                self.assertEqual(point.point[key], point_a[key])
 
         points = GISPoint.search([
                 ('point', '!=', point_a),
