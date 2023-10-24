@@ -89,9 +89,18 @@ Prevent over ship 13 products::
         ...
     OverShipmentWarning: ...
 
+Cancel shipment and recreate::
+
+    >>> shipment.click('cancel')
+    >>> shipment.state
+    'cancelled'
+
+    >>> handle_shipment_exception = Wizard('sale.handle.shipment.exception', [sale])
+    >>> handle_shipment_exception.execute('handle')
+
 Over ship 12 products::
 
-    >>> shipment.click('wait')
+    >>> shipment, = [s for s in sale.shipments if s.state != 'cancelled']
     >>> shipment.click('draft')
     >>> move, = shipment.outgoing_moves
     >>> move.quantity = 12
@@ -105,4 +114,4 @@ No new shipment as shipped inside tolerance::
 
     >>> sale.reload()
     >>> len(sale.shipments)
-    1
+    2
