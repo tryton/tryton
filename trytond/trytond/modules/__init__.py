@@ -169,6 +169,9 @@ def load_module_graph(graph, pool, update=None, lang=None, indexes=True):
             logger.info(module)
             classes = pool.fill(module, modules)
             if update:
+                # Clear all caches to prevent _record with wrong schema to
+                # linger
+                transaction.cache.clear()
                 pool.setup(classes)
             package_state = module2state.get(module, 'not activated')
             if (is_module_to_install(module, update)
@@ -223,26 +226,20 @@ def load_module_graph(graph, pool, update=None, lang=None, indexes=True):
                                 ]))
                 module2state[module] = 'activated'
 
-            # Rollback cache changes to prevent dead lock on ir.cache table
-            Cache.rollback(transaction)
-            transaction.commit()
-            # Clear the cache so that the transaction has an empty cache
-            # from now on. The cache is not empty because the rollback might
-            # have filled it with old data from before the transaction
-            # started.
-            Cache.clear_all()
-            # Clear transaction cache to update default_factory
-            transaction.cache.clear()
-
         if not update:
             pool.setup()
         else:
+            # As the caches are cleared at the end of the process there's
+            # no need to do it here.
+            # It may deadlock on the ir_cache SELECT if the table schema has
+            # been modified
+            Cache._reset.clear()
+            transaction.commit()
             # Remove unknown models and fields
             Model = pool.get('ir.model')
             Model.clean()
             ModelField = pool.get('ir.model.field')
             ModelField.clean()
-            transaction.commit()
 
         pool.setup_mixin()
 
@@ -256,7 +253,6 @@ def load_module_graph(graph, pool, update=None, lang=None, indexes=True):
         if update:
             if indexes:
                 create_indexes(concurrently=False)
-                transaction.commit()
             else:
                 logger.info('index:skipping indexes creation')
             for model_name in models_to_update_history:
