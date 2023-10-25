@@ -936,25 +936,10 @@ class Screen:
     def load(self, ids, set_cursor=True, modified=False, position=-1):
         self.group.load(ids, modified=modified, position=position)
         self.current_view.reset()
-        if ids and self.current_view.view_type != 'calendar':
-            self.display(ids[0])
-        else:
-            self.current_record = None
-            self.display()
-        if set_cursor:
-            self.set_cursor()
+        self.current_record = None
+        self.display(set_cursor=set_cursor)
 
-    def display(self, res_id=None, set_cursor=False):
-        if res_id:
-            self.current_record = self.group.get(res_id)
-        else:
-            if (self.current_record
-                    and self.current_record in self.current_record.group):
-                pass
-            elif self.group and self.current_view.view_type == 'form':
-                self.current_record = self.group[0]
-            else:
-                self.current_record = None
+    def display(self, set_cursor=False):
         if self.views:
             self.search_active(self.current_view.view_type
                 in ('tree', 'graph', 'calendar'))

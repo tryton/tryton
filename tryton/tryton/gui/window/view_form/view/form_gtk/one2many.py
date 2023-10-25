@@ -494,7 +494,7 @@ class One2Many(Widget):
             if result:
                 ids = [x[0] for x in result]
                 self.screen.load(ids, modified=True)
-                self.screen.display(res_id=ids[0])
+                self.screen.display()
                 if sequence:
                     self.screen.group.set_sequence(
                         field=sequence, position=self.screen.new_position)

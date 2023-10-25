@@ -1319,22 +1319,10 @@
             this.group.load(ids, modified, position);
             this.current_view.reset();
             this.current_record = null;
-            return this.display().then(() => {
-                if (set_cursor) {
-                    this.set_cursor();
-                }
-            });
+            return this.display(set_cursor);
         },
         display: function(set_cursor) {
             var deferreds = [];
-            if (this.current_record &&
-                    ~this.current_record.group.indexOf(this.current_record)) {
-            } else if (this.group && this.group.length &&
-                (this.current_view.view_type == 'form')) {
-                this.current_record = this.group[0];
-            } else {
-                this.current_record = null;
-            }
             if (this.views) {
                 var search_prm = this.search_active(
                         ~['tree', 'graph', 'calendar'].indexOf(

@@ -344,7 +344,7 @@ class WinForm(NoModal, InfoBar):
             if result:
                 ids = [x[0] for x in result]
                 self.screen.load(ids, modified=True)
-                self.screen.display(res_id=ids[0])
+                self.screen.display()
             self.screen.set_cursor()
             self.wid_text.set_text('')
 
