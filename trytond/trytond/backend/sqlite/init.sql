@@ -1,7 +1,11 @@
 CREATE TABLE ir_configuration (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     language VARCHAR,
-    hostname VARCHAR
+    hostname VARCHAR,
+    create_date TIMESTAMP,
+    create_uid INTEGER,
+    write_date TIMESTAMP,
+    write_uid INTEGER
 );
 
 CREATE TABLE ir_model (
@@ -9,7 +13,11 @@ CREATE TABLE ir_model (
     model VARCHAR,
     name VARCHAR,
     info TEXT,
-    module VARCHAR
+    module VARCHAR,
+    create_date TIMESTAMP,
+    create_uid INTEGER,
+    write_date TIMESTAMP,
+    write_uid INTEGER
 );
 
 CREATE TABLE ir_model_field (
@@ -21,7 +29,11 @@ CREATE TABLE ir_model_field (
     ttype VARCHAR,
     help TEXT,
     module VARCHAR,
-    "access" BOOLEAN
+    "access" BOOLEAN,
+    create_date TIMESTAMP,
+    create_uid INTEGER,
+    write_date TIMESTAMP,
+    write_uid INTEGER
 );
 
 
@@ -31,14 +43,28 @@ CREATE TABLE ir_ui_view (
     "type" VARCHAR,
     data TEXT,
     field_childs VARCHAR,
-    priority INTEGER
+    priority INTEGER,
+    domain VARCHAR,
+    inherit INTEGER,
+    module VARCHAR,
+    name VARCHAR,
+    create_date TIMESTAMP,
+    create_uid INTEGER,
+    write_date TIMESTAMP,
+    write_uid INTEGER
 );
 
 CREATE TABLE ir_ui_menu (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     parent INTEGER,
     name VARCHAR,
-    icon VARCHAR
+    icon VARCHAR,
+    active BOOLEAN,
+    sequence INTEGER,
+    create_date TIMESTAMP,
+    create_uid INTEGER,
+    write_date TIMESTAMP,
+    write_uid INTEGER
 );
 
 CREATE TABLE ir_translation (
@@ -50,7 +76,12 @@ CREATE TABLE ir_translation (
     value TEXT,
     "type" VARCHAR,
     module VARCHAR,
-    fuzzy BOOLEAN
+    fuzzy BOOLEAN,
+    overriding_module VARCHAR,
+    create_date TIMESTAMP,
+    create_uid INTEGER,
+    write_date TIMESTAMP,
+    write_uid INTEGER
 );
 
 CREATE TABLE ir_lang (
@@ -60,7 +91,29 @@ CREATE TABLE ir_lang (
     translatable BOOLEAN,
     parent VARCHAR,
     active BOOLEAN,
-    direction VARCHAR
+    direction VARCHAR,
+    am VARCHAR,
+    pm VARCHAR,
+    "date" VARCHAR,
+    grouping VARCHAR,
+    decimal_point VARCHAR,
+    thousands_sep VARCHAR,
+    mon_grouping VARCHAR,
+    mon_decimal_point VARCHAR,
+    mon_thousands_sep VARCHAR,
+    p_sign_posn INTEGER,
+    n_sign_posn INTEGER,
+    positive_sign VARCHAR,
+    negative_sign VARCHAR,
+    p_cs_precedes BOOLEAN,
+    n_cs_precedes BOOLEAN,
+    p_sep_by_space BOOLEAN,
+    n_sep_by_space BOOLEAN,
+    pg_text_search VARCHAR,
+    create_date TIMESTAMP,
+    create_uid INTEGER,
+    write_date TIMESTAMP,
+    write_uid INTEGER
 );
 
 CREATE TABLE res_user (
@@ -68,7 +121,18 @@ CREATE TABLE res_user (
     name VARCHAR,
     active BOOLEAN,
     login VARCHAR,
-    password VARCHAR
+    password VARCHAR,
+    email VARCHAR,
+    language INTEGER,
+    menu INTEGER,
+    password_hash VARCHAR,
+    password_reset VARCHAR,
+    password_reset_expire TIMESTAMP,
+    signature TEXT,
+    create_date TIMESTAMP,
+    create_uid INTEGER,
+    write_date TIMESTAMP,
+    write_uid INTEGER
 );
 
 INSERT INTO res_user (id, login, password, name, active) VALUES (0, 'root', NULL, 'Root', 0);
@@ -81,7 +145,13 @@ CREATE TABLE res_group (
 CREATE TABLE "res_user-res_group" (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     "user" INTEGER,
-    "group" INTEGER
+    "group" INTEGER,
+    active BOOLEAN,
+    parent INTEGER,
+    create_date TIMESTAMP,
+    create_uid INTEGER,
+    write_date TIMESTAMP,
+    write_uid INTEGER
 );
 
 CREATE TABLE ir_module (
@@ -107,5 +177,9 @@ CREATE TABLE ir_module_dependency (
 CREATE TABLE ir_cache (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     name VARCHAR,
-    "timestamp" TIMESTAMP
+    "timestamp" TIMESTAMP,
+    create_date TIMESTAMP,
+    create_uid INTEGER,
+    write_date TIMESTAMP,
+    write_uid INTEGER
 );
