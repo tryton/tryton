@@ -61,7 +61,7 @@ documentation:
     - pip install sphinx-lint rstcheck[sphinx]
   script:
     - cd "${PACKAGE}"
-    - python -m sphinx -T -E -W -n -b html ${DOC_DIR} _build/html
+    - python -m sphinx -T -E -W -n -b html -D html_theme_options.navigation_with_keys=False ${DOC_DIR} _build/html
     - python -m sphinxlint ${DOC_DIR}
     - rstcheck --recursive ${DOC_DIR}
     - |
