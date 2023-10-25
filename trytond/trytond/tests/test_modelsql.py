@@ -10,7 +10,7 @@ from unittest.mock import call, patch
 from trytond import backend
 from trytond.exceptions import ConcurrencyException
 from trytond.model.exceptions import (
-    ForeignKeyError, RequiredValidationError, SQLConstraintError)
+    AccessError, ForeignKeyError, RequiredValidationError, SQLConstraintError)
 from trytond.model.modelsql import split_subquery_domain
 from trytond.pool import Pool
 from trytond.tests.test_tryton import (
@@ -37,6 +37,15 @@ class ModelSQLTestCase(unittest.TestCase):
         self.assertEqual(
             sorted(values, key=lambda v: v['id']),
             [{'id': foo.id, 'name': "Foo"}, {'id': bar.id, 'name': "Bar"}])
+
+    @with_transaction()
+    def test_read_no_exist(self):
+        "Test read ids that does not exist"
+        pool = Pool()
+        Model = pool.get('test.modelsql.read')
+
+        with self.assertRaises(AccessError):
+            Model.read([42], ['name'])
 
     @with_transaction()
     def test_read_context_id(self):
@@ -509,6 +518,23 @@ class ModelSQLTestCase(unittest.TestCase):
         err = cm.exception
         self.assertIn(TargetModel.name.string, err.message)
         self.assertIn(TargetModel.__doc__, err.message)
+
+    @with_transaction()
+    def test_write_no_exist(self):
+        "Test write on ids that does not exist"
+        pool = Pool()
+        Model = pool.get('test.modelsql.write')
+
+        with self.assertRaises(AccessError):
+            Model.write([Model(42)], {'name': 'foo'})
+
+    @with_transaction()
+    def test_delete_no_exist(self):
+        "Test delete ids that does not exist"
+        pool = Pool()
+        Model = pool.get('test.modelsql.delete')
+
+        Model.delete([Model(42)])
 
     @with_transaction()
     def test_foreign_key_cascade(self):

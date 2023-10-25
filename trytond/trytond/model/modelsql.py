@@ -1081,8 +1081,6 @@ class ModelSQL(ModelStorage):
                         order_by=history_order, limit=history_limit))
                 fetchall = list(cursor_dict(cursor))
                 if not len(fetchall) == len({}.fromkeys(sub_ids)):
-                    cls.__check_domain_rule(
-                        ids, 'read', nodomain='ir.msg_read_error')
                     cls.__check_domain_rule(ids, 'read')
                     raise RuntimeError("Undetected access error")
                 result.extend(fetchall)
@@ -1311,8 +1309,7 @@ class ModelSQL(ModelStorage):
         table = cls.__table__()
 
         cls.__check_timestamp(all_ids)
-        cls.__check_domain_rule(
-            all_ids, 'write', nodomain='ir.msg_write_error')
+        cls.__check_domain_rule(all_ids, 'write')
 
         fields_to_set = {}
         actions = iter((records, values) + args)
@@ -1535,7 +1532,7 @@ class ModelSQL(ModelStorage):
         cls._update_mptt(list(tree_ids.keys()), list(tree_ids.values()))
 
     @classmethod
-    def __check_domain_rule(cls, ids, mode, nodomain=None):
+    def __check_domain_rule(cls, ids, mode):
         pool = Pool()
         Rule = pool.get('ir.rule')
         Model = pool.get('ir.model')
@@ -1582,36 +1579,41 @@ class ModelSQL(ModelStorage):
                         sub_ids.difference([x for x, in cursor]))
             return result
 
+        domains = []
+        if mode in {'read', 'write'}:
+            domains.append([])
         domain = Rule.domain_get(cls.__name__, mode=mode)
-        if not domain and not nodomain:
-            return
-        wrong_ids = test_domain(ids, domain)
-        if wrong_ids:
-            model = cls.__name__
-            if Model:
-                model = Model.get_name(cls.__name__)
-            ids = ', '.join(map(str, ids[:5]))
-            if len(wrong_ids) > 5:
-                ids += '...'
-            if domain:
-                rules = []
-                clause, clause_global = Rule.get(cls.__name__, mode=mode)
-                if clause:
-                    dom = list(clause.values())
-                    dom.insert(0, 'OR')
-                    if test_domain(wrong_ids, dom):
-                        rules.extend(clause.keys())
+        if domain:
+            domains.append(domain)
+        for domain in domains:
+            wrong_ids = test_domain(ids, domain)
+            if wrong_ids:
+                model = cls.__name__
+                if Model:
+                    model = Model.get_name(cls.__name__)
+                ids = ', '.join(map(str, ids[:5]))
+                if len(wrong_ids) > 5:
+                    ids += '...'
+                if domain:
+                    rules = []
+                    clause, clause_global = Rule.get(cls.__name__, mode=mode)
+                    if clause:
+                        dom = list(clause.values())
+                        dom.insert(0, 'OR')
+                        if test_domain(wrong_ids, dom):
+                            rules.extend(clause.keys())
 
-                for rule, dom in clause_global.items():
-                    if test_domain(wrong_ids, dom):
-                        rules.append(rule)
+                    for rule, dom in clause_global.items():
+                        if test_domain(wrong_ids, dom):
+                            rules.append(rule)
 
-                msg = gettext(
-                    'ir.msg_%s_rule_error' % mode, ids=ids, model=model,
-                    rules='\n'.join(r.name for r in rules))
-            else:
-                msg = gettext(nodomain, ids=ids, model=model)
-            raise AccessError(msg)
+                    msg = gettext(
+                        f'ir.msg_{mode}_rule_error', ids=ids, model=model,
+                        rules='\n'.join(r.name for r in rules))
+                else:
+                    msg = gettext(
+                        f'ir.msg_{mode}_error', ids=ids, model=model)
+                raise AccessError(msg)
 
     @classmethod
     def __search_query(cls, domain, count, query, order):

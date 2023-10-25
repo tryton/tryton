@@ -56,6 +56,18 @@ class ModelSQLCreate(ModelSQL):
     integer = fields.Integer("Integer")
 
 
+class ModelSQLWrite(ModelSQL):
+    "ModelSQL to test write"
+    __name__ = 'test.modelsql.write'
+    name = fields.Char("Name")
+
+
+class ModelSQLDelete(ModelSQL):
+    "ModelSQL to test delete"
+    __name__ = 'test.modelsql.delete'
+    name = fields.Char("Name")
+
+
 class ModelSQLFieldSet(ModelSQL):
     'Model to test field set'
     __name__ = 'test.modelsql.field_set'
@@ -248,6 +260,8 @@ def register(module):
         ModelSQLRequiredField,
         ModelSQLTimestamp,
         ModelSQLCreate,
+        ModelSQLWrite,
+        ModelSQLDelete,
         ModelSQLFieldSet,
         ModelSQLOne2Many,
         ModelSQLOne2ManyTarget,
