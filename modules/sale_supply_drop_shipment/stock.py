@@ -15,7 +15,6 @@ from trytond.modules.sale.stock import process_sale
 from trytond.modules.stock.shipment import ShipmentCheckQuantity, ShipmentMixin
 from trytond.pool import Pool, PoolMeta
 from trytond.pyson import Eval, Id, If
-from trytond.tools import grouped_slice
 from trytond.transaction import Transaction
 
 
@@ -468,37 +467,19 @@ class ShipmentDrop(
     @Workflow.transition('waiting')
     def wait(cls, shipments):
         pool = Pool()
-        PurchaseRequest = pool.get('purchase.request')
-        SaleLine = pool.get('sale.line')
+        PurchaseLine = pool.get('purchase.line')
         Move = pool.get('stock.move')
-
-        requests = []
-        for sub_lines in grouped_slice([m.origin.id for s in shipments
-                    for m in s.supplier_moves if m.origin]):
-            requests += PurchaseRequest.search([
-                    ('purchase_line', 'in', list(sub_lines)),
-                    ])
-        pline2requests = defaultdict(list)
-        for request in requests:
-            pline2requests[request.purchase_line].append(request)
-        sale_lines = []
-        for sub_requests in grouped_slice([r.id for r in requests]):
-            sale_lines += SaleLine.search([
-                    ('purchase_request', 'in', list(sub_requests)),
-                    ])
-        request2slines = defaultdict(list)
-        for sale_line in sale_lines:
-            request2slines[sale_line.purchase_request].append(sale_line)
 
         to_save = []
         for shipment in shipments:
             for s_move in shipment.supplier_moves:
-                if not s_move.origin:
+                if not isinstance(s_move.origin, PurchaseLine):
                     continue
-                for request in pline2requests[s_move.origin]:
-                    for sale_line in request2slines[request]:
+                p_line = s_move.origin
+                for request in p_line.requests:
+                    for sale_line in request.sale_lines:
                         for c_move in sale_line.moves:
-                            if (c_move.state not in ('cancelled', 'done')
+                            if (c_move.state not in {'cancelled', 'done'}
                                     and not c_move.shipment
                                     and c_move.from_location.type == 'drop'):
                                 c_move.shipment = shipment
