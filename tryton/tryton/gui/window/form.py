@@ -571,6 +571,8 @@ class Form(TabContent):
 
         name = str(position) if position else '_'
         selected = len(self.screen.selected_records)
+        view_type = self.screen.current_view.view_type
+        has_views = self.screen.number_of_views > 1
         if selected > 1:
             name += '#%i' % selected
         for button_id in ['print', 'relate', 'email', 'open', 'attach']:
@@ -584,7 +586,8 @@ class Form(TabContent):
                     b.attrs.get('keyword', 'action') == action_type
                     for b in self.screen.get_buttons())
             set_sensitive(button_id, bool(position) and can_be_sensitive)
-        set_sensitive('switch', self.screen.number_of_views > 1)
+        set_sensitive(
+            'switch', (position or view_type == 'form') and has_views)
         set_sensitive('remove', self.screen.deletable)
         set_sensitive('previous', self.screen.has_prev())
         set_sensitive('next', self.screen.has_next())

@@ -46,13 +46,13 @@ class One2Many(Widget):
 
         tooltips = common.Tooltips()
 
-        but_switch = Gtk.Button(can_focus=False)
-        tooltips.set_tip(but_switch, _('Switch'))
-        but_switch.connect('clicked', self.switch_view)
-        but_switch.add(common.IconFactory.get_image(
+        self.but_switch = Gtk.Button(can_focus=False)
+        tooltips.set_tip(self.but_switch, _('Switch'))
+        self.but_switch.connect('clicked', self.switch_view)
+        self.but_switch.add(common.IconFactory.get_image(
                 'tryton-switch', Gtk.IconSize.SMALL_TOOLBAR))
-        but_switch.set_relief(Gtk.ReliefStyle.NONE)
-        hbox.pack_start(but_switch, expand=False, fill=False, padding=0)
+        self.but_switch.set_relief(Gtk.ReliefStyle.NONE)
+        hbox.pack_start(self.but_switch, expand=False, fill=False, padding=0)
 
         self.but_pre = Gtk.Button(can_focus=False)
         tooltips.set_tip(self.but_pre, _('Previous'))
@@ -182,8 +182,6 @@ class One2Many(Widget):
         if self.attrs.get('add_remove'):
             self.wid_text.connect('key_press_event', self.on_keypress)
 
-        but_switch.props.sensitive = self.screen.number_of_views > 1
-
     def get_access(self, type_):
         model = self.attrs['relation']
         if model:
@@ -297,7 +295,11 @@ class One2Many(Widget):
             first = self._position <= 1
             last = self._position >= self._length
         deletable = self.screen.deletable
+        view_type = self.screen.current_view.view_type
+        has_views = self.screen.number_of_views > 1
 
+        self.but_switch.set_sensitive(
+            (self._position or view_type == 'form') and has_views)
         self.but_new.set_sensitive(bool(
                 not self._readonly
                 and self.create_access

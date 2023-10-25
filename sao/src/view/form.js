@@ -3291,8 +3291,6 @@ function eval_pyson(value){
                 // Use keydown to not receive focus-in TAB
                 this.wid_text.on('keydown', this.key_press.bind(this));
             }
-
-            this.but_switch.prop('disabled', this.screen.number_of_views <= 0);
         },
         get_access: function(type) {
             var model = this.attributes.relation;
@@ -3356,6 +3354,12 @@ function eval_pyson(value){
                 size_limit = false;
             }
             var deletable = this.screen.deletable;
+            const view_type = this.screen.current_view.view_type;
+            const has_views = this.screen.number_of_views > 1;
+
+            this.but_switch.prop(
+                'disabled',
+                !((this._position || (view_type == 'form')) && has_views));
             this.but_new.prop(
                 'disabled',
                 this._readonly ||

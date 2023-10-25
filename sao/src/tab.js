@@ -1440,6 +1440,8 @@
                     name += '#' + selected;
                 }
             }
+            const view_type = this.screen.current_view.view_type;
+            const has_views = this.screen.number_of_views > 1;
             var buttons = ['print', 'relate', 'email', 'attach'];
             for (const button_id of buttons) {
                 const button = this.buttons[button_id];
@@ -1458,7 +1460,8 @@
                 }
                 set_sensitive(button_id, position && can_be_sensitive);
             }
-            set_sensitive('switch_', this.screen.number_of_views > 1);
+            set_sensitive(
+                'switch_', (position || (view_type == 'form')) && has_views);
             set_sensitive('delete_', this.screen.deletable);
             set_sensitive('previous', this.screen.has_previous());
             set_sensitive('next', this.screen.has_next());
