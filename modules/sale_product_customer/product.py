@@ -22,7 +22,10 @@ class ProductCustomer(
                 ('products', '=', Eval('product')),
                 ()),
             If(Eval('active'), ('active', '=', True), ()),
-            ])
+            ],
+        states={
+            'readonly': Eval('id', -1) >= 0,
+            })
     product = fields.Many2One(
         'product.product', "Variant",
         domain=[
@@ -30,9 +33,15 @@ class ProductCustomer(
                 ('template', '=', Eval('template')),
                 ()),
             If(Eval('active'), ('active', '=', True), ()),
-            ])
-    party = fields.Many2One('party.party', "Customer", required=True,
-        ondelete='CASCADE')
+            ],
+        states={
+            'readonly': Eval('id', -1) >= 0,
+            })
+    party = fields.Many2One(
+        'party.party', "Customer", required=True, ondelete='CASCADE',
+        states={
+            'readonly': Eval('id', -1) >= 0,
+            })
     name = fields.Char("Name", translate=True)
     code = fields.Char("Code")
 
