@@ -330,6 +330,9 @@ class ProductSupplier(
                 ()),
             If(Eval('active'), ('active', '=', True), ()),
             ],
+        states={
+            'readonly': Eval('id', -1) >= 0,
+            },
         context={
             'company': Eval('company', -1),
             },
@@ -342,12 +345,18 @@ class ProductSupplier(
                 ()),
             If(Eval('active'), ('active', '=', True), ()),
             ],
+        states={
+            'readonly': Eval('id', -1) >= 0,
+            },
         context={
             'company': Eval('company', -1),
             },
         depends={'company'})
     party = fields.Many2One(
         'party.party', 'Supplier', required=True, ondelete='CASCADE',
+        states={
+            'readonly': Eval('id', -1) >= 0,
+            },
         context={
             'company': Eval('company', -1),
             },
