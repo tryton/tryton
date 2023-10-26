@@ -58,7 +58,9 @@ class SaleOpportunity(
         depends=['party', 'company'])
     address = fields.Many2One(
         'party.address', "Address", states=_states_stop,
-        domain=[('party', '=', Eval('party'))])
+        domain=[('party', '=', Eval('party'))],
+        help="The default address for the invoice and shipment.\n"
+        "Leave empty to use the default values.")
     company = fields.Many2One(
         'company.company', "Company", required=True,
         states={
@@ -341,21 +343,25 @@ class SaleOpportunity(
         '''
         Return sale for an opportunity
         '''
-        Sale = Pool().get('sale.sale')
-        return Sale(
+        pool = Pool()
+        Sale = pool.get('sale.sale')
+        sale = Sale(
             description=self.description,
             party=self.party,
             contact=self.contact,
-            payment_term=self.payment_term,
             company=self.company,
-            invoice_address=self.address,
-            shipment_address=self.address,
-            currency=self.currency,
             comment=self.comment,
             sale_date=None,
             origin=self,
             warehouse=Sale.default_warehouse(),
             )
+        sale.on_change_party()
+        if self.address:
+            sale.invoice_address = sale.shipment_address = self.address
+        if self.payment_term:
+            sale.payment_term = self.payment_term
+        sale.currency = self.currency
+        return sale
 
     def create_sale(self):
         '''
