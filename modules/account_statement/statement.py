@@ -231,21 +231,9 @@ class Statement(Workflow, ModelSQL, ModelView):
 
     @fields.depends('origins', 'lines', 'journal', 'company')
     def on_change_origins(self):
-        if not self.journal or not self.origins or not self.company:
-            return
-        if self.journal.currency != self.company.currency:
-            return
-
-        invoices = set()
-        for line in self.lines:
-            if (line.invoice
-                    and line.invoice.currency == self.company.currency):
-                invoices.add(line.invoice)
-        for origin in self.origins:
-            for line in origin.lines:
-                if (line.invoice
-                        and line.invoice.currency == self.company.currency):
-                    invoices.add(line.invoice)
+        invoices = {l.invoice for l in self.lines if l.invoice}
+        invoices.update(
+            l.invoice for o in self.origins for l in o.lines if l.invoice)
         invoice_id2amount_to_pay = {}
         for invoice in invoices:
             if invoice.type == 'out':
