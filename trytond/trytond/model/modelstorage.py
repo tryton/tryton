@@ -39,7 +39,6 @@ _cache_count_timeout = config.getint(
     'cache', 'count_timeout', default=60 * 60 * 24)
 _cache_count_clear = config.getint(
     'cache', 'count_clear', default=1000)
-_request_timeout = config.getint('request', 'timeout', default=0)
 
 
 def local_cache(Model, transaction=None):
@@ -137,15 +136,11 @@ class ModelStorage(Model):
                     'delete': RPC(readonly=False, instantiate=0),
                     'copy': RPC(readonly=False, instantiate=0, unique=False,
                         result=lambda r: list(map(int, r))),
-                    'search': RPC(
-                        result=lambda r: list(map(int, r)),
-                        timeout=_request_timeout),
-                    'search_count': RPC(timeout=_request_timeout),
-                    'search_read': RPC(timeout=_request_timeout),
-                    'resources': RPC(
-                        instantiate=0, unique=False,
-                        timeout=_request_timeout),
-                    'export_data_domain': RPC(timeout=_request_timeout),
+                    'search': RPC(result=lambda r: list(map(int, r))),
+                    'search_count': RPC(),
+                    'search_read': RPC(),
+                    'resources': RPC(instantiate=0, unique=False),
+                    'export_data_domain': RPC(),
                     'export_data': RPC(instantiate=0, unique=False),
                     'import_data': RPC(readonly=False),
                     })

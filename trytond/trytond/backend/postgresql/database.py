@@ -26,7 +26,6 @@ from psycopg2 import DataError as DatabaseDataError
 from psycopg2 import IntegrityError as DatabaseIntegrityError
 from psycopg2 import OperationalError as DatabaseOperationalError
 from psycopg2 import ProgrammingError
-from psycopg2.errors import QueryCanceled as DatabaseTimeoutError
 from psycopg2.extras import register_default_json, register_default_jsonb
 from sql import Cast, Flavor, For, Table
 from sql.conditionals import Coalesce
@@ -39,8 +38,7 @@ from trytond.tools.gevent import is_gevent_monkey_patched
 
 __all__ = [
     'Database',
-    'DatabaseIntegrityError', 'DatabaseDataError', 'DatabaseOperationalError',
-    'DatabaseTimeoutError']
+    'DatabaseIntegrityError', 'DatabaseDataError', 'DatabaseOperationalError']
 
 logger = logging.getLogger(__name__)
 
@@ -256,8 +254,7 @@ class Database(DatabaseInterface):
     def connect(self):
         return self
 
-    def get_connection(
-            self, autocommit=False, readonly=False, statement_timeout=None):
+    def get_connection(self, autocommit=False, readonly=False):
         retry = max(config.getint('database', 'retry'), _maxconn)
         for count in range(retry, -1, -1):
             try:
@@ -277,13 +274,8 @@ class Database(DatabaseInterface):
                     isolation_level=ISOLATION_LEVEL_REPEATABLE_READ,
                     readonly=readonly,
                     autocommit=autocommit)
-                with conn.cursor() as cur:
-                    if statement_timeout:
-                        cur.execute('SET statement_timeout=%s' %
-                            (statement_timeout * 1000))
-                    else:
-                        # Detect disconnection
-                        cur.execute('SELECT 1')
+                # Detect disconnection
+                conn.cursor().execute('SELECT 1')
             except DatabaseOperationalError:
                 self._connpool.putconn(conn, close=True)
                 continue
@@ -291,7 +283,6 @@ class Database(DatabaseInterface):
         return conn
 
     def put_connection(self, connection, close=False):
-        connection.reset()
         self._connpool.putconn(connection, close=close)
 
     def close(self):

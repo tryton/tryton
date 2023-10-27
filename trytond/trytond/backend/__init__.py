@@ -12,8 +12,7 @@ from trytond.config import config
 
 __all__ = [
     'name', 'Database', 'TableHandler',
-    'DatabaseIntegrityError', 'DatabaseDataError', 'DatabaseOperationalError',
-    'DatabaseTimeoutError']
+    'DatabaseIntegrityError', 'DatabaseDataError', 'DatabaseOperationalError']
 
 
 name = urllib.parse.urlparse(config.get('database', 'uri', default='')).scheme
@@ -35,5 +34,4 @@ Database = _module.Database
 DatabaseIntegrityError = _module.DatabaseIntegrityError
 DatabaseDataError = _module.DatabaseDataError
 DatabaseOperationalError = _module.DatabaseOperationalError
-DatabaseTimeoutError = _module.DatabaseTimeoutError
 TableHandler = _module.TableHandler

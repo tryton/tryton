@@ -1068,8 +1068,7 @@
                             (ids.length == this.limit)) {
                             count_prm = this.model.execute(
                                 'search_count',
-                                [domain, 0, this.count_limit], context,
-                                true, false)
+                                [domain, 0, this.count_limit], context)
                                 .then(count => {
                                     this.search_count = count;
                                     return this.search_count;
@@ -1820,10 +1819,10 @@
                     values[p] = null;
                 }
                 selection = this.model.execute(props.selection,
-                        [values], undefined, false, true);
+                        [values], undefined, false);
             } else {
                 selection = this.model.execute(props.selection,
-                        [], undefined, false, true);
+                        [], undefined, false);
             }
             return selection.sort(function(a, b) {
                 return a[1].localeCompare(b[1]);

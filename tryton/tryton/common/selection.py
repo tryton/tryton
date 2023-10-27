@@ -30,13 +30,10 @@ class SelectionMixin(object):
                 and key not in self._values2selection):
             try:
                 if self.attrs.get('selection_change_with'):
-                    selection = RPCExecute(
-                        'model', self.model_name, selection, value,
-                        process_exception=False)
+                    selection = RPCExecute('model', self.model_name, selection,
+                        value)
                 else:
-                    selection = RPCExecute(
-                        'model', self.model_name, selection,
-                        process_exception=False)
+                    selection = RPCExecute('model', self.model_name, selection)
             except RPCException:
                 selection = []
             self._values2selection[key] = selection

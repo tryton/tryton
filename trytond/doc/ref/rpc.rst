@@ -4,7 +4,7 @@
 RPC
 ===
 
-.. class:: RPC([readonly[, instantiate[, [decorator, result[, check_access[, unique[, fresh_session[, cache[, timeout]]]]]]]]])
+.. class:: RPC([readonly[, instantiate[, [decorator, result[, check_access[, unique[, fresh_session[, cache]]]]]]]])
 
    Define the behavior of Remote Procedure Call.
 
@@ -45,12 +45,6 @@ Instance attributes are:
 .. attribute:: RPC.cache
 
    A :class:`RPCCache` instance to compute the cache duration for the answer.
-
-.. attribute:: RPC.timeout
-
-   The timeout in second for the call.
-   ``0`` or ``None`` means no timeout is applied.
-   Default is ``None``.
 
 
 RPCCache

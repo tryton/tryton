@@ -21,7 +21,6 @@ from tryton.common import (
 from tryton.common.domain_inversion import canonicalize
 from tryton.common.domain_parser import DomainParser
 from tryton.config import CONFIG
-from tryton.exceptions import TrytonServerError
 from tryton.gui.window.infobar import InfoBar
 from tryton.gui.window.view_form.model.group import Group
 from tryton.gui.window.view_form.view import View
@@ -309,9 +308,8 @@ class Screen:
                 try:
                     self.search_count = RPCExecute(
                         'model', self.model_name, 'search_count',
-                        domain, 0, self.count_limit, context=context,
-                        process_exception=False)
-                except (RPCException, TrytonServerError):
+                        domain, 0, self.count_limit, context=context)
+                except RPCException:
                     self.search_count = 0
             else:
                 self.search_count = len(ids)

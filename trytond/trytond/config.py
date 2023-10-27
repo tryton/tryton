@@ -70,7 +70,6 @@ class TrytonConfigParser(configparser.ConfigParser):
         self.set('request', 'max_size', str(2 * 1024 * 1024))
         self.set('request', 'max_size_authenticated',
             str(2 * 1024 * 1024 * 1024))
-        self.set('request', 'timeout', str(60))
         self.add_section('cache')
         self.set('cache', 'transaction', '10')
         self.set('cache', 'model', '200')

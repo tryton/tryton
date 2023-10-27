@@ -271,13 +271,6 @@ The maximum size in bytes of an authenticated request (zero means no limit).
 
 Default: 2GB
 
-timeout
-~~~~~~~
-
-The timeout in seconds before aborting requests that have their execution time
-depending on the parameters.
-
-Default: ``60``
 
 cache
 -----

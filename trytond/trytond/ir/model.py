@@ -13,7 +13,6 @@ from sql.conditionals import Case
 from sql.operators import Equal
 
 from trytond.cache import Cache
-from trytond.config import config
 from trytond.i18n import gettext
 from trytond.model import (
     DeactivableMixin, EvalEnvironment, Exclude, Index, ModelSingleton,
@@ -32,7 +31,6 @@ from trytond.wizard import Button, StateAction, StateView, Wizard
 from .resource import ResourceAccessMixin
 
 logger = logging.getLogger(__name__)
-_request_timeout = config.getint('request', 'timeout', default=0)
 
 
 class ConditionError(ValidationError):
@@ -79,7 +77,7 @@ class Model(ModelSQL, ModelView):
                 'list_history': RPC(),
                 'get_notification': RPC(),
                 'get_names': RPC(),
-                'global_search': RPC(timeout=_request_timeout),
+                'global_search': RPC(),
                 })
 
     @classmethod

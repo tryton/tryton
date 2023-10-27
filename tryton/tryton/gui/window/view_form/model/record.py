@@ -5,7 +5,6 @@ import logging
 import tryton.common as common
 from tryton.common import RPCException, RPCExecute
 from tryton.config import CONFIG
-from tryton.exceptions import TrytonServerError
 from tryton.pyson import PYSONDecoder
 
 from . import field as fields
@@ -678,9 +677,8 @@ class Record:
         try:
             res = RPCExecute(
                 'model', self.model_name,
-                'autocomplete_' + fieldname, args, context=self.get_context(),
-                process_exception=False)
-        except (RPCException, TrytonServerError):
+                'autocomplete_' + fieldname, args, context=self.get_context())
+        except RPCException:
             # ensure res is a list
             res = []
         self.autocompletion[fieldname] = res

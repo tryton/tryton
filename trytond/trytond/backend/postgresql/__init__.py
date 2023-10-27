@@ -3,10 +3,9 @@
 
 from .database import (
     Database, DatabaseDataError, DatabaseIntegrityError,
-    DatabaseOperationalError, DatabaseTimeoutError)
+    DatabaseOperationalError)
 from .table import TableHandler
 
 __all__ = [
     Database, TableHandler,
-    DatabaseIntegrityError, DatabaseDataError, DatabaseOperationalError,
-    DatabaseTimeoutError]
+    DatabaseIntegrityError, DatabaseDataError, DatabaseOperationalError]

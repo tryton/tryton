@@ -113,11 +113,6 @@
         };
 
         var ajax_error = function(query, status_, error) {
-            if (!process_exception) {
-                console.debug(`RPC error calling ${args}: ${status_}: ${error}.`);
-                dfd.reject();
-                return;
-            }
             if (query.status == 401) {
                 //Try to relog
                 Sao.Session.renew(session).then(function() {
@@ -128,11 +123,6 @@
                         dfd.resolve();
                     }
                 }, dfd.reject);
-            } else if (query.status == 408) {
-                Sao.common.message.run(
-                    Sao.i18n.gettext('Request times out. Try again later.'),
-                    'tryton-error')
-                    .always(dfd.reject);
             } else if (query.status == 429) {
                 Sao.common.message.run(
                     Sao.i18n.gettext('Too many requests. Try again later.'),
