@@ -760,6 +760,7 @@ class POSCashSession(Workflow, ModelSQL, ModelView):
         "End Amount", currency='currency', digits='currency', required=True,
         states={
             'required': Eval('state').in_(['closed', 'posted']),
+            'readonly': Eval('state') != 'open',
             })
     state = fields.Selection([
             ('open', "Open"),
