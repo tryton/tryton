@@ -746,7 +746,7 @@ class POSCashSession(Workflow, ModelSQL, ModelView):
             ('point', '=', Eval('point', -1)),
             ],
         states={
-            'readonly': ~Eval('point'),
+            'readonly': ~Eval('point') | (Eval('state') != 'open'),
             })
     start_amount = fields.Function(
         Monetary("Start Amount", currency='currency', digits='currency'),
