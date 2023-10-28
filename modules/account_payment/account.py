@@ -61,16 +61,23 @@ class MoveLine(metaclass=PoolMeta):
         super(MoveLine, cls).__setup__()
         cls._buttons.update({
                 'pay': {
-                    'invisible': ~Eval('payment_kind').in_(
-                        list(dict(KINDS).keys())),
+                    'invisible': (
+                        ~Eval('payment_kind').in_(list(dict(KINDS).keys()))
+                        | Eval('reconciliation')),
                     'depends': ['payment_kind'],
                     },
                 'payment_block': {
-                    'invisible': Eval('payment_blocked', False),
+                    'invisible': (
+                        ~Eval('payment_kind').in_(list(dict(KINDS).keys()))
+                        | Eval('reconciliation')
+                        | Eval('payment_blocked', False)),
                     'depends': ['payment_blocked'],
                     },
                 'payment_unblock': {
-                    'invisible': ~Eval('payment_blocked', False),
+                    'invisible': (
+                        ~Eval('payment_kind').in_(list(dict(KINDS).keys()))
+                        | Eval('reconciliation')
+                        | ~Eval('payment_blocked', False)),
                     'depends': ['payment_blocked'],
                     },
                 })
