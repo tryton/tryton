@@ -2,6 +2,7 @@
 # this repository contains the full copyright notices and license terms.
 import datetime
 import unittest
+from unittest.mock import patch
 
 from trytond import backend
 from trytond.model.exceptions import AccessError
@@ -250,7 +251,17 @@ class HistoryTestCase(unittest.TestCase):
         self.assertEqual(history.value, 2)
 
     @with_transaction()
+    def test_search_historical_records_no_window_functions(self):
+        database = Transaction().database
+        with patch.object(database, 'has_window_functions') as has_wf:
+            has_wf.return_value = False
+            self._test_search_historical_records()
+
+    @with_transaction()
     def test_search_historical_records(self):
+        self._test_search_historical_records()
+
+    def _test_search_historical_records(self):
         pool = Pool()
         History = pool.get('test.history')
         transaction = Transaction()
