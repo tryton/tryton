@@ -4,7 +4,7 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "field:account.configuration,sepa_mandate_sequence:"
 msgid "SEPA Mandate Sequence"
-msgstr "SEPA Mandaatvolgorde"
+msgstr "SEPA Mandaat Reeks"
 
 msgctxt "field:account.configuration.sepa_mandate_sequence,company:"
 msgid "Company"
@@ -13,7 +13,7 @@ msgstr "Bedrijf"
 msgctxt ""
 "field:account.configuration.sepa_mandate_sequence,sepa_mandate_sequence:"
 msgid "SEPA Mandate Sequence"
-msgstr "SEPA Mandaatvolgorde"
+msgstr "SEPA Mandaat Reeks"
 
 msgctxt "field:account.payment,sepa_end_to_end_id:"
 msgid "SEPA End To End ID"
@@ -349,7 +349,7 @@ msgstr "Annuleren"
 
 msgctxt "model:ir.model.button,string:message_do_button"
 msgid "Do"
-msgstr "Do"
+msgstr "Doe"
 
 msgctxt "model:ir.model.button,string:message_draft_button"
 msgid "Draft"

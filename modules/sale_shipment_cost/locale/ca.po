@@ -42,6 +42,26 @@ msgctxt "field:sale.sale,shipment_cost_method:"
 msgid "Shipment Cost Method"
 msgstr "Mètode de cost enviament"
 
+msgctxt "field:sale.sale,shipment_costs:"
+msgid "Shipment Costs"
+msgstr "Costos d'enviament"
+
+msgctxt "field:stock.shipment.cost_sale,amount:"
+msgid "Amount"
+msgstr "Import"
+
+msgctxt "field:stock.shipment.cost_sale,currency:"
+msgid "Currency"
+msgstr "Moneda"
+
+msgctxt "field:stock.shipment.cost_sale,sale:"
+msgid "Sale"
+msgstr "Venda"
+
+msgctxt "field:stock.shipment.cost_sale,shipment:"
+msgid "Shipment"
+msgstr "Albarà"
+
 msgctxt "field:stock.shipment.out,cost_invoice_line:"
 msgid "Cost Invoice Line"
 msgstr "Cost de la línia de factura"
@@ -64,6 +84,10 @@ msgstr "Moneda de cost de la venda"
 
 msgctxt "field:stock.shipment.out,cost_sale_used:"
 msgid "Cost Sale"
+msgstr "Cost de la venda"
+
+msgctxt "field:stock.shipment.out,cost_sales:"
+msgid "Cost Sales"
 msgstr "Cost de la venda"
 
 msgctxt "field:stock.shipment.out,shipment_cost_sale_readonly:"
@@ -99,6 +123,10 @@ msgstr ""
 "Per facturar el cost de l'enviament \"%(shipment)s\" heu de definir un "
 "compte d'ingressos pel producte \"%(product)s\"."
 
+msgctxt "model:stock.shipment.cost_sale,name:"
+msgid "Shipment Cost Sale"
+msgstr "Cost de venda dels enviaments"
+
 msgctxt "selection:sale.sale,shipment_cost_method:"
 msgid "None"
 msgstr "Cap"
@@ -110,6 +138,10 @@ msgstr "Al processar"
 msgctxt "selection:sale.sale,shipment_cost_method:"
 msgid "On Shipment"
 msgstr "Al enviar-ho"
+
+msgctxt "selection:stock.shipment.cost_sale,shipment:"
+msgid "Customer"
+msgstr "Client"
 
 msgctxt "view:sale.promotion:"
 msgid "Shipment Cost Included"

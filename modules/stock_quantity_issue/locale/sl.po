@@ -16,7 +16,7 @@ msgstr ""
 
 msgctxt "field:stock.quantity.issue,origin:"
 msgid "Origin"
-msgstr ""
+msgstr "Izvor"
 
 msgctxt "field:stock.quantity.issue,planned_date:"
 msgid "Planned Date"
@@ -28,7 +28,7 @@ msgstr ""
 
 msgctxt "field:stock.quantity.issue,processed_by:"
 msgid "Processed by"
-msgstr ""
+msgstr "Obdelal"
 
 msgctxt "field:stock.quantity.issue,products:"
 msgid "Products"

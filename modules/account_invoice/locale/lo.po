@@ -113,6 +113,10 @@ msgctxt "field:account.invoice,has_payment_method:"
 msgid "Has Payment Method"
 msgstr "Test Payment Term"
 
+msgctxt "field:account.invoice,has_report_cache:"
+msgid "Has Report Cached"
+msgstr ""
+
 msgctxt "field:account.invoice,invoice_address:"
 msgid "Invoice Address"
 msgstr "ທີ່ຢູ່"
@@ -133,6 +137,11 @@ msgstr "ສະຫຼຸບໃບເກັບເງິນ"
 msgctxt "field:account.invoice,invoice_report_format:"
 msgid "Invoice Report Format"
 msgstr "ຮູບແບບສະຫຼຸບໃບເກັບເງິນ"
+
+#, fuzzy
+msgctxt "field:account.invoice,invoice_report_revisions:"
+msgid "Invoice Report Revisions"
+msgstr "ສະຫຼຸບໃບເກັບເງິນ"
 
 msgctxt "field:account.invoice,journal:"
 msgid "Journal"
@@ -183,6 +192,11 @@ msgctxt "field:account.invoice,payment_term_date:"
 msgid "Payment Term Date"
 msgstr "ຮູບແບບການຈ່າຍ"
 
+#, fuzzy
+msgctxt "field:account.invoice,posted_by:"
+msgid "Posted By"
+msgstr "ແຈ້ງແລ້ວ"
+
 msgctxt "field:account.invoice,reconciled:"
 msgid "Reconciled"
 msgstr "ພິສູດຍອດແລ້ວ"
@@ -209,6 +223,11 @@ msgctxt "field:account.invoice,tax_amount:"
 msgid "Tax"
 msgstr "ອາກອນ"
 
+#, fuzzy
+msgctxt "field:account.invoice,tax_amount_cache:"
+msgid "Tax Cache"
+msgstr "ລະຫັດພາສີ"
+
 msgctxt "field:account.invoice,tax_identifier:"
 msgid "Tax Identifier"
 msgstr ""
@@ -219,6 +238,11 @@ msgstr "ຮ່ວງພາສີ"
 
 msgctxt "field:account.invoice,total_amount:"
 msgid "Total"
+msgstr "ລວມທັງໝົດ"
+
+#, fuzzy
+msgctxt "field:account.invoice,total_amount_cache:"
+msgid "Total Cache"
 msgstr "ລວມທັງໝົດ"
 
 msgctxt "field:account.invoice,type:"
@@ -232,6 +256,16 @@ msgstr "ປະເພດ"
 msgctxt "field:account.invoice,untaxed_amount:"
 msgid "Untaxed"
 msgstr "ມູນຄ່າບໍ່ລວມອາກອນ"
+
+#, fuzzy
+msgctxt "field:account.invoice,untaxed_amount_cache:"
+msgid "Untaxed Cache"
+msgstr "ມູນຄ່າບໍ່ລວມອາກອນ"
+
+#, fuzzy
+msgctxt "field:account.invoice,validated_by:"
+msgid "Validated By"
+msgstr "ກວດສອບແລ້ວ"
 
 #, fuzzy
 msgctxt "field:account.invoice-account.move.line,invoice:"
@@ -364,7 +398,7 @@ msgid "Product"
 msgstr "ຜະລິດຕະພັນ"
 
 msgctxt "field:account.invoice.line,product_uom_category:"
-msgid "Product Uom Category"
+msgid "Product UoM Category"
 msgstr ""
 
 msgctxt "field:account.invoice.line,quantity:"
@@ -631,6 +665,36 @@ msgctxt "field:account.invoice.payment_term.test.result,date:"
 msgid "Date"
 msgstr "ວັນທີ:"
 
+#, fuzzy
+msgctxt "field:account.invoice.report.revision,date:"
+msgid "Date"
+msgstr "ວັນທີ:"
+
+#, fuzzy
+msgctxt "field:account.invoice.report.revision,filename:"
+msgid "File Name"
+msgstr "ຊື່"
+
+#, fuzzy
+msgctxt "field:account.invoice.report.revision,invoice:"
+msgid "Invoice"
+msgstr "ໃບເກັບເງິນ"
+
+#, fuzzy
+msgctxt "field:account.invoice.report.revision,invoice_report_cache:"
+msgid "Invoice Report"
+msgstr "ສະຫຼຸບໃບເກັບເງິນ"
+
+#, fuzzy
+msgctxt "field:account.invoice.report.revision,invoice_report_cache_id:"
+msgid "Invoice Report ID"
+msgstr "ສະຫຼຸບໃບເກັບເງິນ"
+
+#, fuzzy
+msgctxt "field:account.invoice.report.revision,invoice_report_format:"
+msgid "Invoice Report Format"
+msgstr "ຮູບແບບສະຫຼຸບໃບເກັບເງິນ"
+
 msgctxt "field:account.invoice.tax,account:"
 msgid "Account"
 msgstr "ບັນຊີ"
@@ -740,6 +804,10 @@ msgctxt "help:account.invoice.credit.start,with_refund:"
 msgid "If true, the current invoice(s) will be cancelled."
 msgstr ""
 
+msgctxt "help:account.invoice.line,product_uom_category:"
+msgid "The category of Unit of Measure for the product."
+msgstr ""
+
 msgctxt "help:account.invoice.line,taxes_date:"
 msgid ""
 "The date at which the taxes are computed.\n"
@@ -831,6 +899,11 @@ msgctxt "model:account.invoice.payment_term.test.result,name:"
 msgid "Test Payment Term"
 msgstr "Test Payment Term"
 
+#, fuzzy
+msgctxt "model:account.invoice.report.revision,name:"
+msgid "Invoice Report Revision"
+msgstr "ສະຫຼຸບໃບເກັບເງິນ"
+
 msgctxt "model:account.invoice.tax,name:"
 msgid "Invoice Tax"
 msgstr "ອາກອນໃບເກັບເງິນ"
@@ -877,6 +950,11 @@ msgstr "ຮ່ວງຈ່າຍ"
 msgctxt "model:ir.action,name:credit"
 msgid "Credit"
 msgstr "ມີ"
+
+#, fuzzy
+msgctxt "model:ir.action,name:refresh_invoice_report_wizard"
+msgid "Invoice (revised)"
+msgstr "ລາຍການ"
 
 #, fuzzy
 msgctxt "model:ir.action,name:report_invoice"
@@ -1386,6 +1464,10 @@ msgctxt "view:account.invoice.payment_term.line:"
 msgid "%"
 msgstr "%"
 
+msgctxt "view:account.invoice.report.revision:"
+msgid "Time"
+msgstr ""
+
 msgctxt "view:account.invoice:"
 msgid "Invoice"
 msgstr "ໃບເກັບເງິນ"
@@ -1401,21 +1483,6 @@ msgstr "ການຈ່າຍ"
 msgctxt "view:account.invoice:"
 msgid "Tax Identifier:"
 msgstr ""
-
-#, fuzzy
-msgctxt "view:account.move.line:"
-msgid "Amount Second Currency"
-msgstr "ມູນຄ່າສະກຸນເງິນທີສອງ"
-
-#, fuzzy
-msgctxt "view:account.move.line:"
-msgid "Credit"
-msgstr "ມີ"
-
-#, fuzzy
-msgctxt "view:account.move.line:"
-msgid "Debit"
-msgstr "ໜີ້"
 
 #, fuzzy
 msgctxt "view:company.company:"

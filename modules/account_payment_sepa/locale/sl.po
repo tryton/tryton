@@ -4,7 +4,7 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "field:account.configuration,sepa_mandate_sequence:"
 msgid "SEPA Mandate Sequence"
-msgstr "Štetje SEPA soglasij"
+msgstr "Številčna serija SEPA soglasij"
 
 msgctxt "field:account.configuration.sepa_mandate_sequence,company:"
 msgid "Company"
@@ -13,7 +13,7 @@ msgstr "Družba"
 msgctxt ""
 "field:account.configuration.sepa_mandate_sequence,sepa_mandate_sequence:"
 msgid "SEPA Mandate Sequence"
-msgstr "Štetje SEPA soglasij"
+msgstr "Številčna serija SEPA soglasij"
 
 msgctxt "field:account.payment,sepa_end_to_end_id:"
 msgid "SEPA End To End ID"
@@ -34,7 +34,7 @@ msgstr "Soglasje"
 
 msgctxt "field:account.payment,sepa_mandate_sequence_type:"
 msgid "Mandate Sequence Type"
-msgstr "Vrsta štetja soglasij"
+msgstr "Vrsta številčne serije soglasij"
 
 msgctxt "field:account.payment,sepa_return_reason_code:"
 msgid "Return Reason Code"
@@ -55,7 +55,7 @@ msgstr "SEPA sporočilo"
 
 msgctxt "field:account.payment.journal,company_party:"
 msgid "Company Party"
-msgstr "Družba"
+msgstr "Partner družba"
 
 msgctxt "field:account.payment.journal,sepa_bank_account_number:"
 msgid "Bank Account Number"
@@ -138,7 +138,7 @@ msgstr "Stanje"
 
 msgctxt "field:account.payment.sepa.mandate,type:"
 msgid "Type"
-msgstr "Tip"
+msgstr "Vrsta"
 
 msgctxt "field:account.payment.sepa.message,company:"
 msgid "Company"
@@ -146,20 +146,19 @@ msgstr "Družba"
 
 msgctxt "field:account.payment.sepa.message,filename:"
 msgid "Filename"
-msgstr "Datoteka"
+msgstr "Ime datoteke"
 
 msgctxt "field:account.payment.sepa.message,message:"
 msgid "Message"
 msgstr "Sporočilo"
 
-#, fuzzy
 msgctxt "field:account.payment.sepa.message,message_file_id:"
 msgid "Message File ID"
-msgstr "Sporočilo"
+msgstr "ID datoteke sporočila"
 
 msgctxt "field:account.payment.sepa.message,origin:"
 msgid "Origin"
-msgstr "Poreklo"
+msgstr "Izvor"
 
 msgctxt "field:account.payment.sepa.message,state:"
 msgid "State"
@@ -167,7 +166,7 @@ msgstr "Stanje"
 
 msgctxt "field:account.payment.sepa.message,type:"
 msgid "Type"
-msgstr "Tip"
+msgstr "Vrsta"
 
 msgctxt "field:party.identifier,sepa_es_suffix:"
 msgid "SEPA Suffix"
@@ -196,7 +195,7 @@ msgstr ""
 
 msgctxt "model:account.configuration.sepa_mandate_sequence,name:"
 msgid "Account Configuration SEPA Mandate Sequence"
-msgstr "Konfiguracija štetja SEPA soglasij"
+msgstr "Konfiguracija številčne serije SEPA soglasij"
 
 msgctxt "model:account.payment.sepa.mandate,name:"
 msgid "SEPA Mandate"
@@ -370,7 +369,7 @@ msgstr "Do"
 
 msgctxt "model:ir.model.button,string:message_draft_button"
 msgid "Draft"
-msgstr "Draft"
+msgstr "Osnutek"
 
 msgctxt "model:ir.model.button,string:message_wait_button"
 msgid "Wait"

@@ -3,20 +3,28 @@ msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "field:account.configuration,chorus_login:"
-msgid "Chorus Login"
-msgstr "Chorus-aanmelding"
+msgid "Login"
+msgstr "Inlognaam"
 
 msgctxt "field:account.configuration,chorus_password:"
-msgid "Chorus Password"
-msgstr "Chorus wachtwoord"
+msgid "Password"
+msgstr "Wachtwoord"
+
+msgctxt "field:account.configuration,chorus_piste_client_id:"
+msgid "Piste Client ID"
+msgstr "Piste klant ID"
+
+msgctxt "field:account.configuration,chorus_piste_client_secret:"
+msgid "Piste Client Secret"
+msgstr "Piste klant sleutel"
 
 msgctxt "field:account.configuration,chorus_service:"
-msgid "Chorus Service"
-msgstr "Chorus Dienst"
+msgid "Service"
+msgstr "Dienst"
 
 msgctxt "field:account.configuration,chorus_syntax:"
-msgid "Chorus Syntax"
-msgstr "Syntaxis van chorus"
+msgid "Syntax"
+msgstr "Syntax"
 
 msgctxt "field:account.credential.chorus,chorus_login:"
 msgid "Login"
@@ -26,6 +34,14 @@ msgctxt "field:account.credential.chorus,chorus_password:"
 msgid "Password"
 msgstr "Paswoord"
 
+msgctxt "field:account.credential.chorus,chorus_piste_client_id:"
+msgid "Piste Client ID"
+msgstr "Piste klant ID"
+
+msgctxt "field:account.credential.chorus,chorus_piste_client_secret:"
+msgid "Piste Client Secret"
+msgstr "Piste klant sleutel"
+
 msgctxt "field:account.credential.chorus,chorus_service:"
 msgid "Service"
 msgstr "Diensten"
@@ -34,9 +50,21 @@ msgctxt "field:account.credential.chorus,company:"
 msgid "Company"
 msgstr "Bedrijf"
 
+msgctxt "field:account.invoice.chorus,data:"
+msgid "Data"
+msgstr "Gegevens"
+
+msgctxt "field:account.invoice.chorus,data_file_id:"
+msgid "Data File ID"
+msgstr "Gegevens bestand ID"
+
 msgctxt "field:account.invoice.chorus,date:"
 msgid "Date"
 msgstr "Datum"
+
+msgctxt "field:account.invoice.chorus,filename:"
+msgid "Filename"
+msgstr "Bestandsnaam"
 
 msgctxt "field:account.invoice.chorus,invoice:"
 msgid "Invoice"
@@ -45,6 +73,10 @@ msgstr "Factuur"
 msgctxt "field:account.invoice.chorus,number:"
 msgid "Number"
 msgstr "Nummer"
+
+msgctxt "field:account.invoice.chorus,state:"
+msgid "State"
+msgstr "Status"
 
 msgctxt "field:account.invoice.chorus,syntax:"
 msgid "Syntax"
@@ -70,6 +102,26 @@ msgctxt "model:ir.action,name:act_invoice_chorus_form"
 msgid "Chorus"
 msgstr "Chorus"
 
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_invoice_chorus_form_domain_all"
+msgid "All"
+msgstr "Alle"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_invoice_chorus_form_domain_draft"
+msgid "Draft"
+msgstr "Concept"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_invoice_chorus_form_domain_exception"
+msgid "Exception"
+msgstr "Uitzondering"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_invoice_chorus_form_domain_sent"
+msgid "Sent"
+msgstr "Verzonden"
+
 msgctxt "model:ir.message,text:msg_invoice_address_no_siret"
 msgid ""
 "To create a Chorus invoice for \"%(invoice)s\", you must set a SIRET on "
@@ -87,6 +139,14 @@ msgstr ""
 msgctxt "model:ir.message,text:msg_invoice_unique"
 msgid "You can create only one Chorus invoice per invoice."
 msgstr "U kunt slechts één Chorus-factuur per factuur maken."
+
+msgctxt "model:ir.model.button,string:invoice_chorus_send_button"
+msgid "Send"
+msgstr "Verzenden"
+
+msgctxt "model:ir.model.button,string:invoice_chorus_update_button"
+msgid "Update"
+msgstr "Bijwerken"
 
 msgctxt "model:ir.ui.menu,name:menu_invoice_chorus_form"
 msgid "Chorus"
@@ -108,9 +168,29 @@ msgctxt "selection:account.credential.chorus,chorus_service:"
 msgid "Qualification"
 msgstr "Kwalificatie"
 
+msgctxt "selection:account.invoice.chorus,state:"
+msgid "Done"
+msgstr "Afgerond"
+
+msgctxt "selection:account.invoice.chorus,state:"
+msgid "Draft"
+msgstr "Concept"
+
+msgctxt "selection:account.invoice.chorus,state:"
+msgid "Exception"
+msgstr "Uitzondering"
+
+msgctxt "selection:account.invoice.chorus,state:"
+msgid "Sent"
+msgstr "Verzonden"
+
 msgctxt "selection:ir.cron,method:"
 msgid "Send invoices to Chorus"
 msgstr "Verzend facturen naar Chorus"
+
+msgctxt "selection:ir.cron,method:"
+msgid "Update invoices from Chorus"
+msgstr "Facturen van Chorus bijwerken"
 
 msgctxt "view:account.configuration:"
 msgid "Chorus"

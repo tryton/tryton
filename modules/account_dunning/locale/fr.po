@@ -126,7 +126,7 @@ msgstr "Depuis combien de temps la relance est au niveau."
 
 msgctxt "help:account.dunning,blocked:"
 msgid "Check to block further levels of the procedure."
-msgstr "Cocher pour bloquer d'autres niveaux de procédure."
+msgstr "Cochez pour bloquer d'autres niveaux de procédure."
 
 msgctxt "help:account.dunning,company:"
 msgid "Make the dunning belong to the company."

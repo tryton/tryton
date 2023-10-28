@@ -38,8 +38,9 @@ msgctxt "field:customs.duty.rate,type:"
 msgid "Type"
 msgstr "Tipas"
 
+#, fuzzy
 msgctxt "field:customs.duty.rate,uom:"
-msgid "Uom"
+msgid "UoM"
 msgstr "Mato vienetas"
 
 msgctxt "field:customs.tariff.code,code:"
@@ -159,6 +160,10 @@ msgstr "Tarifų kodai"
 
 msgctxt "field:product.template,tariff_codes_category:"
 msgid "Use Category's Tariff Codes"
+msgstr ""
+
+msgctxt "help:customs.duty.rate,uom:"
+msgid "The Unit of Measure."
 msgstr ""
 
 msgctxt "help:customs.tariff.code,code:"

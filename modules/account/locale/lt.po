@@ -1034,6 +1034,11 @@ msgid "Description"
 msgstr "Aprašymas"
 
 #, fuzzy
+msgctxt "field:account.general_ledger.line,description_used:"
+msgid "Description"
+msgstr "Aprašymas"
+
+#, fuzzy
 msgctxt "field:account.general_ledger.line,internal_balance:"
 msgid "Internal Balance"
 msgstr "Bandomasis balansas"
@@ -1042,7 +1047,8 @@ msgctxt "field:account.general_ledger.line,move:"
 msgid "Move"
 msgstr "Operacija"
 
-msgctxt "field:account.general_ledger.line,move_description:"
+#, fuzzy
+msgctxt "field:account.general_ledger.line,move_description_used:"
 msgid "Move Description"
 msgstr "Operacijos aprašymas"
 
@@ -1252,6 +1258,11 @@ msgctxt "field:account.move,description:"
 msgid "Description"
 msgstr "Aprašymas"
 
+#, fuzzy
+msgctxt "field:account.move,description_used:"
+msgid "Description"
+msgstr "Aprašymas"
+
 msgctxt "field:account.move,journal:"
 msgid "Journal"
 msgstr "Žurnalas"
@@ -1340,6 +1351,11 @@ msgid "Description"
 msgstr "Aprašymas"
 
 #, fuzzy
+msgctxt "field:account.move.line,description_used:"
+msgid "Description"
+msgstr "Aprašymas"
+
+#, fuzzy
 msgctxt "field:account.move.line,has_maturity_date:"
 msgid "Has Maturity Date"
 msgstr "Mokėjimo terminas"
@@ -1356,7 +1372,8 @@ msgctxt "field:account.move.line,move:"
 msgid "Move"
 msgstr "Operacija"
 
-msgctxt "field:account.move.line,move_description:"
+#, fuzzy
+msgctxt "field:account.move.line,move_description_used:"
 msgid "Move Description"
 msgstr "Operacijos aprašymas"
 
@@ -1632,10 +1649,6 @@ msgctxt "field:account.move.template,company:"
 msgid "Company"
 msgstr "Organizacija"
 
-msgctxt "field:account.move.template,date:"
-msgid "Date"
-msgstr "Data"
-
 msgctxt "field:account.move.template,description:"
 msgid "Description"
 msgstr "Aprašymas"
@@ -1655,6 +1668,11 @@ msgstr "Eilutės"
 msgctxt "field:account.move.template,name:"
 msgid "Name"
 msgstr "Pavadinimas"
+
+#, fuzzy
+msgctxt "field:account.move.template.create.template,date:"
+msgid "Effective Date"
+msgstr "Faktinė data"
 
 msgctxt "field:account.move.template.create.template,period:"
 msgid "Period"
@@ -2327,6 +2345,26 @@ msgctxt "field:account.update_chart.start,account:"
 msgid "Root Account"
 msgstr "Pagrindinė koresponduojanti sąskaita"
 
+#, fuzzy
+msgctxt "field:company.company,payable:"
+msgid "Payable"
+msgstr "Mokėtinas"
+
+#, fuzzy
+msgctxt "field:company.company,payable_today:"
+msgid "Payable Today"
+msgstr "Šiandien mokėtina suma"
+
+#, fuzzy
+msgctxt "field:company.company,receivable:"
+msgid "Receivable"
+msgstr "Gautinas"
+
+#, fuzzy
+msgctxt "field:company.company,receivable_today:"
+msgid "Receivable Today"
+msgstr "Šiandien gautina suma"
+
 msgctxt "field:party.party,account_payable:"
 msgid "Account Payable"
 msgstr "Mokėtinų sumų koresponduojanti sąskaita"
@@ -2561,11 +2599,12 @@ msgctxt "help:account.move.line.template,amount:"
 msgid "A python expression that will be evaluated with the keywords."
 msgstr "Išraiška Python kalba, kuri turi būti atlikta su raktiniais žodžiais."
 
+#, fuzzy
 msgctxt "help:account.move.line.template,description:"
-msgid "Keywords values substitutions are identified by braces ('{' and '}')."
+msgid "Keyword value substitutions are identified by braces ('{' and '}')."
 msgstr ""
-"Pakeičiamieji raktiniai žodžiai atpažįstami pagal riestinius skliaustus ('{'"
-" and '}')."
+"Raktažodžių verčių pakaitos yra atpažįstamos pagal riestinius skliaustus "
+"('{' and '}')."
 
 msgctxt "help:account.move.line.template,party:"
 msgid "The name of the 'Party' keyword."
@@ -2579,12 +2618,9 @@ msgctxt "help:account.move.reconciliation,delegate_to:"
 msgid "The line to which the reconciliation status is delegated."
 msgstr "Eilutė, su kuria vyksta sudengimas."
 
-msgctxt "help:account.move.template,date:"
-msgid "Leave empty for today."
-msgstr "Palikite tuščią šiandienai."
-
+#, fuzzy
 msgctxt "help:account.move.template,description:"
-msgid "Keyword values substitutions are identified by braces ('{' and '}')."
+msgid "Keyword value substitutions are identified by braces ('{' and '}')."
 msgstr ""
 "Raktažodžių verčių pakaitos yra atpažįstamos pagal riestinius skliaustus "
 "('{' and '}')."
@@ -3204,8 +3240,9 @@ msgctxt "model:ir.action,name:act_reconcile_lines"
 msgid "Reconcile Lines"
 msgstr "Sudengimo eilutės"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_reconcile_writeoff_form"
-msgid "WriteOff Methods"
+msgid "Write-off Methods"
 msgstr "Nurašymo metodai"
 
 msgctxt "model:ir.action,name:act_renew_fiscalyear"
@@ -3706,6 +3743,36 @@ msgstr ""
 "Norint sudengti eilutę \"%(line)s\", turite jos koresponduojančioje "
 "sąskaitoje \"%(account)s\" nurodyti, kad ši sąskaita yra sudengiama."
 
+#, fuzzy
+msgctxt ""
+"model:ir.message,text:msg_reconciliation_currency_exchange_credit_account_missing"
+msgid ""
+"To reconcile lines, you must define a currency exchange credit account for "
+"\"%(company)s\"."
+msgstr ""
+"Norint tęsti, reikia nurodyti kontrahento \"%(party)s\" gautinų sumų "
+"koresponduojančią sąskaitą."
+
+#, fuzzy
+msgctxt ""
+"model:ir.message,text:msg_reconciliation_currency_exchange_debit_account_missing"
+msgid ""
+"To reconcile lines, you must define a currency exchange debit account for "
+"\"%(company)s\"."
+msgstr ""
+"Norint tęsti, reikia nurodyti kontrahento \"%(party)s\" gautinų sumų "
+"koresponduojančią sąskaitą."
+
+#, fuzzy
+msgctxt ""
+"model:ir.message,text:msg_reconciliation_currency_exchange_journal_missing"
+msgid ""
+"To reconcile lines, you must define a currency exchange journal for "
+"\"%(company)s\"."
+msgstr ""
+"Norint tęsti, reikia nurodyti kontrahento \"%(party)s\" gautinų sumų "
+"koresponduojančią sąskaitą."
+
 msgctxt "model:ir.message,text:msg_reconciliation_delete_delegated"
 msgid ""
 "The reconciliation \"%(reconciliation)s\" is delegated to the line \"%(line)s\".\n"
@@ -3750,6 +3817,12 @@ msgid ""
 msgstr ""
 "Norint sudengti eilutes, jos turi turėti tą patį debetą \"%(debit)s\" ir "
 "kreditą \"%(credit)s\"."
+
+msgctxt "model:ir.message,text:msg_reconciliation_write_off_missing"
+msgid ""
+"To reconcile lines with \"%(amount)s\" write-off, you must select a write-"
+"off method."
+msgstr ""
 
 msgctxt "model:ir.message,text:msg_reopen_fiscalyear_later"
 msgid ""
@@ -4076,8 +4149,9 @@ msgctxt "model:ir.ui.menu,name:menu_reconcile"
 msgid "Reconcile Accounts"
 msgstr "Sudengti koresponduojančias sąskaitas"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_reconcile_writeoff_form"
-msgid "WriteOff Methods"
+msgid "Write-off Methods"
 msgstr "Nurašymo metodai"
 
 msgctxt "model:ir.ui.menu,name:menu_renew_fiscalyear"
@@ -4573,8 +4647,8 @@ msgstr "Eilutei"
 
 #, fuzzy
 msgctxt "selection:account.fiscalyear,state:"
-msgid "Close"
-msgstr "Close"
+msgid "Closed"
+msgstr "Uždaryta"
 
 msgctxt "selection:account.fiscalyear,state:"
 msgid "Locked"
@@ -4638,8 +4712,8 @@ msgstr "Write-Off"
 
 #, fuzzy
 msgctxt "selection:account.journal.period,state:"
-msgid "Close"
-msgstr "Close"
+msgid "Closed"
+msgstr "Uždaryta"
 
 msgctxt "selection:account.journal.period,state:"
 msgid "Open"
@@ -4701,8 +4775,8 @@ msgstr "Kontrahentas"
 
 #, fuzzy
 msgctxt "selection:account.period,state:"
-msgid "Close"
-msgstr "Close"
+msgid "Closed"
+msgstr "Uždaryta"
 
 msgctxt "selection:account.period,state:"
 msgid "Locked"
@@ -4941,31 +5015,6 @@ msgctxt "view:account.fiscalyear:"
 msgid "Sequences"
 msgstr "Numeruotės"
 
-msgctxt "view:account.general_ledger.account:"
-msgid "Credit"
-msgstr "Kreditas"
-
-msgctxt "view:account.general_ledger.account:"
-msgid "Debit"
-msgstr "Debetas"
-
-#, fuzzy
-msgctxt "view:account.general_ledger.account:"
-msgid "End Balance"
-msgstr "Aged Balance"
-
-msgctxt "view:account.general_ledger.account:"
-msgid "Start Balance"
-msgstr "Pradinis balansas"
-
-msgctxt "view:account.general_ledger.line:"
-msgid "Credit"
-msgstr "Kreditas"
-
-msgctxt "view:account.general_ledger.line:"
-msgid "Debit"
-msgstr "Debetas"
-
 #, fuzzy
 msgctxt "view:account.journal.period:"
 msgid "Close"
@@ -4993,14 +5042,6 @@ msgstr "Kita informacija"
 msgctxt "view:account.move.line:"
 msgid "Balance"
 msgstr "Balansas"
-
-msgctxt "view:account.move.line:"
-msgid "Credit"
-msgstr "Kreditas"
-
-msgctxt "view:account.move.line:"
-msgid "Debit"
-msgstr "Debetas"
 
 msgctxt "view:account.move.line:"
 msgid "Other Info"
@@ -5032,6 +5073,16 @@ msgstr "Pagrindinė informacija"
 msgctxt "view:account.update_chart.succeed:"
 msgid "Chart of accounts updated successfully."
 msgstr ""
+
+#, fuzzy
+msgctxt "view:company.company:"
+msgid "Account"
+msgstr "Koresponduojanti sąskaita"
+
+#, fuzzy
+msgctxt "view:company.company:"
+msgid "Accounting"
+msgstr "Apskaita"
 
 #, fuzzy
 msgctxt "view:party.party:"

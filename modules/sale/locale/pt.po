@@ -101,8 +101,9 @@ msgctxt "field:product.product,sale_price_uom:"
 msgid "Sale Price"
 msgstr "Preço de Venda"
 
+#, fuzzy
 msgctxt "field:product.product,sale_uom:"
-msgid "Sale UOM"
+msgid "Sale UoM"
 msgstr "UDM para venda"
 
 #, fuzzy
@@ -152,8 +153,9 @@ msgctxt "field:product.template,salable:"
 msgid "Salable"
 msgstr "Vendável"
 
+#, fuzzy
 msgctxt "field:product.template,sale_uom:"
-msgid "Sale UOM"
+msgid "Sale UoM"
 msgstr "UM para venda"
 
 msgctxt "field:sale.configuration,sale_invoice_method:"
@@ -270,8 +272,9 @@ msgctxt "field:sale.line,product:"
 msgid "Product"
 msgstr "Produto"
 
+#, fuzzy
 msgctxt "field:sale.line,product_uom_category:"
-msgid "Product Uom Category"
+msgid "Product UoM Category"
 msgstr "Categoria da UDM do Produto"
 
 msgctxt "field:sale.line,quantity:"
@@ -731,10 +734,18 @@ msgid ""
 "If empty the default lead time from the configuration is used."
 msgstr ""
 
+msgctxt "help:product.product,sale_uom:"
+msgid "The default Unit of Measure for sales."
+msgstr ""
+
 msgctxt "help:product.template,lead_time:"
 msgid ""
 "The time from confirming the sales order to sending the products.\n"
 "If empty the default lead time from the configuration is used."
+msgstr ""
+
+msgctxt "help:product.template,sale_uom:"
+msgid "The default Unit of Measure for sales."
 msgstr ""
 
 msgctxt "help:sale.configuration,sale_process_after:"
@@ -748,6 +759,10 @@ msgid ""
 "The selected invoices will be recreated. The other ones will be ignored."
 msgstr ""
 "As faturas escolhidas serão recriadas. As demais faturas serão ignoradas"
+
+msgctxt "help:sale.line,product_uom_category:"
+msgid "The category of Unit of Measure for the product."
+msgstr ""
 
 msgctxt "help:sale.sale,shipping_date:"
 msgid "When the shipping of goods should start."
@@ -1023,6 +1038,12 @@ msgid ""
 "\"%(sale)s\"."
 msgstr ""
 
+msgctxt "model:ir.message,text:msg_sale_line_move_quantity"
+msgid ""
+"The sale line \"%(line)s\" is moving %(extra)s in addition to the "
+"%(quantity)s ordered."
+msgstr ""
+
 msgctxt "model:ir.message,text:msg_sale_line_tax_unique"
 msgid "A tax can be added only once to a sale line."
 msgstr ""
@@ -1111,6 +1132,16 @@ msgstr "Handle Invoice Exception"
 msgctxt "model:ir.model.button,string:sale_handle_shipment_exception_button"
 msgid "Handle Shipment Exception"
 msgstr "Handle Shipment Exception"
+
+#, fuzzy
+msgctxt "model:ir.model.button,string:sale_manual_invoice_button"
+msgid "Create Invoice"
+msgstr "Recriar faturas"
+
+#, fuzzy
+msgctxt "model:ir.model.button,string:sale_manual_shipment_button"
+msgid "Create Shipment"
+msgstr "Remessas"
 
 msgctxt "model:ir.model.button,string:sale_modify_header_button"
 msgid "Modify Header"
@@ -1638,78 +1669,6 @@ msgstr "Observação"
 msgctxt "view:sale.line:"
 msgid "Taxes"
 msgstr "Impostos"
-
-#, fuzzy
-msgctxt "view:sale.reporting.country.subdivision.time_series:"
-msgid "Number"
-msgstr "Número"
-
-msgctxt "view:sale.reporting.country.subdivision.time_series:"
-msgid "Revenue"
-msgstr ""
-
-#, fuzzy
-msgctxt "view:sale.reporting.country.time_series:"
-msgid "Number"
-msgstr "Número"
-
-msgctxt "view:sale.reporting.country.time_series:"
-msgid "Revenue"
-msgstr ""
-
-#, fuzzy
-msgctxt "view:sale.reporting.customer.category.time_series:"
-msgid "Number"
-msgstr "Número"
-
-msgctxt "view:sale.reporting.customer.category.time_series:"
-msgid "Revenue"
-msgstr ""
-
-#, fuzzy
-msgctxt "view:sale.reporting.customer.time_series:"
-msgid "Number"
-msgstr "Número"
-
-msgctxt "view:sale.reporting.customer.time_series:"
-msgid "Revenue"
-msgstr ""
-
-#, fuzzy
-msgctxt "view:sale.reporting.main.time_series:"
-msgid "Number"
-msgstr "Número"
-
-msgctxt "view:sale.reporting.main.time_series:"
-msgid "Revenue"
-msgstr ""
-
-#, fuzzy
-msgctxt "view:sale.reporting.main:"
-msgid "Number"
-msgstr "Número"
-
-msgctxt "view:sale.reporting.main:"
-msgid "Revenue"
-msgstr ""
-
-#, fuzzy
-msgctxt "view:sale.reporting.product.category.time_series:"
-msgid "Number"
-msgstr "Número"
-
-msgctxt "view:sale.reporting.product.category.time_series:"
-msgid "Revenue"
-msgstr ""
-
-#, fuzzy
-msgctxt "view:sale.reporting.product.time_series:"
-msgid "Number"
-msgstr "Número"
-
-msgctxt "view:sale.reporting.product.time_series:"
-msgid "Revenue"
-msgstr ""
 
 #, fuzzy
 msgctxt "view:sale.return_sale.start:"

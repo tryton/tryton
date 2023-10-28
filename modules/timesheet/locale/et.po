@@ -392,14 +392,6 @@ msgctxt "selection:res.user.application,application:"
 msgid "Timesheet"
 msgstr "Töögraafik"
 
-msgctxt "view:timesheet.hours_employee:"
-msgid "Duration"
-msgstr "Kestvus"
-
-msgctxt "view:timesheet.line:"
-msgid "Duration"
-msgstr "Kestvus"
-
 msgctxt "wizard_button:timesheet.line.enter,start,end:"
 msgid "Cancel"
 msgstr "Tühista"

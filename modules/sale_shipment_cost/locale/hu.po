@@ -45,6 +45,30 @@ msgctxt "field:sale.sale,shipment_cost_method:"
 msgid "Shipment Cost Method"
 msgstr ""
 
+#, fuzzy
+msgctxt "field:sale.sale,shipment_costs:"
+msgid "Shipment Costs"
+msgstr "Szállítási díj kiszámlázása"
+
+msgctxt "field:stock.shipment.cost_sale,amount:"
+msgid "Amount"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:stock.shipment.cost_sale,currency:"
+msgid "Currency"
+msgstr "Költség"
+
+#, fuzzy
+msgctxt "field:stock.shipment.cost_sale,sale:"
+msgid "Sale"
+msgstr "Költség"
+
+#, fuzzy
+msgctxt "field:stock.shipment.cost_sale,shipment:"
+msgid "Shipment"
+msgstr "szállítmányonként"
+
 msgctxt "field:stock.shipment.out,cost_invoice_line:"
 msgid "Cost Invoice Line"
 msgstr ""
@@ -73,6 +97,11 @@ msgid "Cost Sale"
 msgstr "Számlázandó díj"
 
 #, fuzzy
+msgctxt "field:stock.shipment.out,cost_sales:"
+msgid "Cost Sales"
+msgstr "Költség"
+
+#, fuzzy
 msgctxt "field:stock.shipment.out,shipment_cost_sale_readonly:"
 msgid "Shipment Cost Sale Read Only"
 msgstr "Szállítási díj kiszámlázása"
@@ -98,6 +127,11 @@ msgid ""
 "revenue for product \"%(product)s\"."
 msgstr ""
 
+#, fuzzy
+msgctxt "model:stock.shipment.cost_sale,name:"
+msgid "Shipment Cost Sale"
+msgstr "Szállítási díj kiszámlázása"
+
 msgctxt "selection:sale.sale,shipment_cost_method:"
 msgid "None"
 msgstr "nem lesz továbbszámlázva"
@@ -109,6 +143,10 @@ msgstr "rendelésenként"
 msgctxt "selection:sale.sale,shipment_cost_method:"
 msgid "On Shipment"
 msgstr "szállítmányonként"
+
+msgctxt "selection:stock.shipment.cost_sale,shipment:"
+msgid "Customer"
+msgstr ""
 
 msgctxt "view:sale.promotion:"
 msgid "Shipment Cost Included"

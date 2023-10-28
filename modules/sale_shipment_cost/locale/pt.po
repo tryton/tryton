@@ -45,6 +45,30 @@ msgctxt "field:sale.sale,shipment_cost_method:"
 msgid "Shipment Cost Method"
 msgstr "Método de custo de remessa"
 
+#, fuzzy
+msgctxt "field:sale.sale,shipment_costs:"
+msgid "Shipment Costs"
+msgstr "Custo de remessa"
+
+msgctxt "field:stock.shipment.cost_sale,amount:"
+msgid "Amount"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:stock.shipment.cost_sale,currency:"
+msgid "Currency"
+msgstr "Moeda de custo"
+
+#, fuzzy
+msgctxt "field:stock.shipment.cost_sale,sale:"
+msgid "Sale"
+msgstr "Custo"
+
+#, fuzzy
+msgctxt "field:stock.shipment.cost_sale,shipment:"
+msgid "Shipment"
+msgstr "Na remessa"
+
 msgctxt "field:stock.shipment.out,cost_invoice_line:"
 msgid "Cost Invoice Line"
 msgstr "Linha de custo da fatura"
@@ -75,6 +99,11 @@ msgid "Cost Sale"
 msgstr "Custo"
 
 #, fuzzy
+msgctxt "field:stock.shipment.out,cost_sales:"
+msgid "Cost Sales"
+msgstr "Custo"
+
+#, fuzzy
 msgctxt "field:stock.shipment.out,shipment_cost_sale_readonly:"
 msgid "Shipment Cost Sale Read Only"
 msgstr "Método de custo de remessa"
@@ -100,6 +129,11 @@ msgid ""
 "revenue for product \"%(product)s\"."
 msgstr ""
 
+#, fuzzy
+msgctxt "model:stock.shipment.cost_sale,name:"
+msgid "Shipment Cost Sale"
+msgstr "Custo de remessa"
+
 msgctxt "selection:sale.sale,shipment_cost_method:"
 msgid "None"
 msgstr ""
@@ -111,6 +145,10 @@ msgstr "No pedido"
 msgctxt "selection:sale.sale,shipment_cost_method:"
 msgid "On Shipment"
 msgstr "Na remessa"
+
+msgctxt "selection:stock.shipment.cost_sale,shipment:"
+msgid "Customer"
+msgstr ""
 
 #, fuzzy
 msgctxt "view:sale.promotion:"

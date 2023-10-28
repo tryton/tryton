@@ -22,17 +22,17 @@ msgctxt "field:carrier.credential.ups,account_number:"
 msgid "Account Number"
 msgstr ""
 
+msgctxt "field:carrier.credential.ups,client_id:"
+msgid "Client ID"
+msgstr ""
+
+msgctxt "field:carrier.credential.ups,client_secret:"
+msgid "Client Secret"
+msgstr ""
+
 msgctxt "field:carrier.credential.ups,company:"
 msgid "Company"
 msgstr "Organizacija"
-
-msgctxt "field:carrier.credential.ups,license:"
-msgid "License"
-msgstr ""
-
-msgctxt "field:carrier.credential.ups,password:"
-msgid "Password"
-msgstr ""
 
 msgctxt "field:carrier.credential.ups,server:"
 msgid "Server"
@@ -41,10 +41,6 @@ msgstr ""
 msgctxt "field:carrier.credential.ups,use_metric:"
 msgid "Use Metric"
 msgstr ""
-
-msgctxt "field:carrier.credential.ups,user_id:"
-msgid "User ID"
-msgstr "Naudotojo ID"
 
 msgctxt "field:stock.package.type,ups_code:"
 msgid "UPS Code"

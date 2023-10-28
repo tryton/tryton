@@ -382,14 +382,6 @@ msgctxt "selection:res.user.application,application:"
 msgid "Timesheet"
 msgstr ""
 
-msgctxt "view:timesheet.hours_employee:"
-msgid "Duration"
-msgstr ""
-
-msgctxt "view:timesheet.line:"
-msgid "Duration"
-msgstr ""
-
 msgctxt "wizard_button:timesheet.line.enter,start,end:"
 msgid "Cancel"
 msgstr "Batal"

@@ -27,6 +27,11 @@ msgctxt "field:production.work,company:"
 msgid "Company"
 msgstr "Учет.орг."
 
+#, fuzzy
+msgctxt "field:production.work,cost:"
+msgid "Cost"
+msgstr "Стоимость"
+
 msgctxt "field:production.work,cycles:"
 msgid "Cycles"
 msgstr ""
@@ -106,14 +111,33 @@ msgid "Name"
 msgstr "Правило оплаты"
 
 #, fuzzy
+msgctxt "field:production.work.cycle,cancelled_by:"
+msgid "Cancelled By"
+msgstr "Отмененно"
+
+#, fuzzy
+msgctxt "field:production.work.cycle,company:"
+msgid "Company"
+msgstr "Учет.орг."
+
+#, fuzzy
 msgctxt "field:production.work.cycle,cost:"
 msgid "Cost"
 msgstr "Стоимость"
 
 #, fuzzy
+msgctxt "field:production.work.cycle,done_by:"
+msgid "Done By"
+msgstr "Выполнено"
+
+#, fuzzy
 msgctxt "field:production.work.cycle,duration:"
 msgid "Duration"
 msgstr "Продолжительность"
+
+msgctxt "field:production.work.cycle,run_by:"
+msgid "Run By"
+msgstr ""
 
 #, fuzzy
 msgctxt "field:production.work.cycle,state:"

@@ -405,14 +405,6 @@ msgctxt "selection:res.user.application,application:"
 msgid "Timesheet"
 msgstr "Időtartam"
 
-msgctxt "view:timesheet.hours_employee:"
-msgid "Duration"
-msgstr "Időtartam"
-
-msgctxt "view:timesheet.line:"
-msgid "Duration"
-msgstr "Időtartam"
-
 msgctxt "wizard_button:timesheet.line.enter,start,end:"
 msgid "Cancel"
 msgstr "Mégse"

@@ -22,20 +22,19 @@ msgstr "Privzet konto prihodkov"
 
 msgctxt "field:account.create_chart.properties,category_account_expense:"
 msgid "Default Expense Account"
-msgstr ""
+msgstr "Privzet konto stroškov"
 
 msgctxt "field:account.create_chart.properties,category_account_revenue:"
 msgid "Default Revenue Account"
-msgstr ""
+msgstr "Privzet konto prihodkov"
 
-#, fuzzy
 msgctxt "field:analytic_account.rule,product:"
 msgid "Product"
 msgstr "Izdelek"
 
 msgctxt "field:analytic_account.rule,product_category:"
 msgid "Product Category"
-msgstr ""
+msgstr "Kategorija izdelka"
 
 msgctxt "field:product.category,account_expense:"
 msgid "Account Expense"
@@ -69,10 +68,9 @@ msgctxt "field:product.category,supplier_taxes:"
 msgid "Supplier Taxes"
 msgstr "Davki za dobavitelje"
 
-#, fuzzy
 msgctxt "field:product.category,supplier_taxes_deductible_rate:"
 msgid "Supplier Taxes Deductible Rate"
-msgstr "Uporabljeni davki dobavitelja"
+msgstr "Stopnja odbitnega davka dobavitelja"
 
 msgctxt "field:product.category,supplier_taxes_used:"
 msgid "Supplier Taxes Used"
@@ -122,12 +120,10 @@ msgctxt "field:product.template,account_category:"
 msgid "Account Category"
 msgstr "Kategorija konta"
 
-#, fuzzy
 msgctxt "field:product.template-product.category.account,category:"
 msgid "Category"
 msgstr "Kategorija"
 
-#, fuzzy
 msgctxt "field:product.template-product.category.account,template:"
 msgid "Template"
 msgstr "Predloga"
@@ -136,7 +132,6 @@ msgctxt "help:product.category,account_parent:"
 msgid "Use the accounts defined on the parent category."
 msgstr "Uporabi konte, določene v matični kategoriji"
 
-#, fuzzy
 msgctxt "help:product.category,accounting:"
 msgid "Check to indicate the category is used for accounting."
 msgstr "Označite, če uporabljate davke iz računovodske kategorije."
@@ -155,19 +150,19 @@ msgstr "Upoštevani davki iz matične kategorije."
 
 msgctxt "model:ir.message,text:msg_missing_account"
 msgid "There is no \"%(field)s\" defined for \"%(name)s\"."
-msgstr ""
+msgstr "Za \"%(name)s\" ni definirano polje \"%(field)s\"."
 
 msgctxt "model:ir.message,text:msg_missing_taxes"
 msgid "There is no account category defined on product \"%(name)s\"."
-msgstr ""
+msgstr "Izdelek \"%(name)s\" nima definirane računovodske kategorije."
 
 msgctxt "model:ir.rule.group,name:rule_group_category_accounting"
 msgid "Any category"
-msgstr ""
+msgstr "Katera koli kategorija"
 
 msgctxt "model:ir.rule.group,name:rule_group_category_default"
 msgid "Not accounting category"
-msgstr ""
+msgstr "Ni računovodska kategorija"
 
 msgctxt "model:product.category-customer-account.tax,name:"
 msgid "Category - Customer Tax"
@@ -183,18 +178,16 @@ msgstr "Konto v kategoriji"
 
 msgctxt "model:product.template-product.category.account,name:"
 msgid "Template - Account Category"
-msgstr ""
+msgstr "Predloga - Računovodska kategorija"
 
 msgctxt "model:res.group,name:group_account_product_admin"
 msgid "Account Product Administration"
-msgstr ""
+msgstr "Administracija računovodskih postavk"
 
-#, fuzzy
 msgctxt "view:account.configuration:"
 msgid "Product"
 msgstr "Izdelek"
 
-#, fuzzy
 msgctxt "view:account.create_chart.properties:"
 msgid "Category"
 msgstr "Kategorija"

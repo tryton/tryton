@@ -23,6 +23,11 @@ msgctxt "field:production.work,company:"
 msgid "Company"
 msgstr "Ettevõte"
 
+#, fuzzy
+msgctxt "field:production.work,cost:"
+msgid "Cost"
+msgstr "Kulu"
+
 msgctxt "field:production.work,cycles:"
 msgid "Cycles"
 msgstr "Tsükkel"
@@ -87,13 +92,32 @@ msgctxt "field:production.work.center.category,name:"
 msgid "Name"
 msgstr "Nimetus"
 
+#, fuzzy
+msgctxt "field:production.work.cycle,cancelled_by:"
+msgid "Cancelled By"
+msgstr "Tühistatud"
+
+#, fuzzy
+msgctxt "field:production.work.cycle,company:"
+msgid "Company"
+msgstr "Ettevõte"
+
 msgctxt "field:production.work.cycle,cost:"
 msgid "Cost"
 msgstr "Kulu"
 
+#, fuzzy
+msgctxt "field:production.work.cycle,done_by:"
+msgid "Done By"
+msgstr "Tehtud"
+
 msgctxt "field:production.work.cycle,duration:"
 msgid "Duration"
 msgstr "Kestvus"
+
+msgctxt "field:production.work.cycle,run_by:"
+msgid "Run By"
+msgstr ""
 
 msgctxt "field:production.work.cycle,state:"
 msgid "State"

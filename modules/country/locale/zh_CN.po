@@ -16,11 +16,11 @@ msgstr "数字代码"
 
 msgctxt "field:country.country,flag:"
 msgid "Flag"
-msgstr ""
+msgstr "国旗"
 
 msgctxt "field:country.country,members:"
 msgid "Members"
-msgstr ""
+msgstr "成员"
 
 msgctxt "field:country.country,name:"
 msgid "Name"
@@ -28,102 +28,87 @@ msgstr "名称"
 
 msgctxt "field:country.country,organizations:"
 msgid "Organizations"
-msgstr ""
+msgstr "组织"
 
-#, fuzzy
 msgctxt "field:country.country,region:"
 msgid "Region"
-msgstr "北极地区"
+msgstr "地区"
 
 msgctxt "field:country.country,subdivisions:"
 msgid "Subdivisions"
 msgstr "行政区划"
 
-#, fuzzy
 msgctxt "field:country.organization,code:"
 msgid "Code"
-msgstr "编码"
+msgstr "代码"
 
-#, fuzzy
 msgctxt "field:country.organization,countries:"
 msgid "Countries"
 msgstr "国家"
 
 msgctxt "field:country.organization,members:"
 msgid "Members"
-msgstr ""
+msgstr "成员"
 
-#, fuzzy
 msgctxt "field:country.organization,name:"
 msgid "Name"
 msgstr "名称"
 
-#, fuzzy
 msgctxt "field:country.organization.member,active:"
 msgid "Active"
 msgstr "启用"
 
-#, fuzzy
 msgctxt "field:country.organization.member,country:"
 msgid "Country"
 msgstr "国家"
 
-#, fuzzy
 msgctxt "field:country.organization.member,from_date:"
 msgid "From Date"
-msgstr "写入日期"
+msgstr "起始日期"
 
 msgctxt "field:country.organization.member,organization:"
 msgid "Organization"
-msgstr ""
+msgstr "组织"
 
 msgctxt "field:country.organization.member,to_date:"
 msgid "To Date"
-msgstr ""
+msgstr "结束日期"
 
-#, fuzzy
 msgctxt "field:country.postal_code,city:"
 msgid "City"
 msgstr "城市"
 
-#, fuzzy
 msgctxt "field:country.postal_code,country:"
 msgid "Country"
 msgstr "国家"
 
 msgctxt "field:country.postal_code,postal_code:"
 msgid "Postal Code"
-msgstr ""
+msgstr "邮政编码"
 
-#, fuzzy
 msgctxt "field:country.postal_code,subdivision:"
 msgid "Subdivision"
 msgstr "行政区划"
 
-#, fuzzy
 msgctxt "field:country.region,code_numeric:"
 msgid "Numeric Code"
 msgstr "数字代码"
 
-#, fuzzy
 msgctxt "field:country.region,countries:"
 msgid "Countries"
 msgstr "国家"
 
-#, fuzzy
 msgctxt "field:country.region,name:"
 msgid "Name"
 msgstr "名称"
 
-#, fuzzy
 msgctxt "field:country.region,parent:"
 msgid "Parent"
 msgstr "上级"
 
-#, fuzzy
 msgctxt "field:country.region,subregions:"
 msgid "Subregions"
-msgstr "Southern Region"
+msgstr "子区域"
 
 msgctxt "field:country.subdivision,code:"
 msgid "Code"
@@ -135,7 +120,7 @@ msgstr "国家"
 
 msgctxt "field:country.subdivision,flag:"
 msgid "Flag"
-msgstr ""
+msgstr "国旗"
 
 msgctxt "field:country.subdivision,name:"
 msgid "Name"
@@ -167,19 +152,19 @@ msgstr "国家的主要标识符."
 
 msgctxt "help:country.postal_code,city:"
 msgid "The city associated with the postal code."
-msgstr ""
+msgstr "与邮政编码关联的城市。"
 
 msgctxt "help:country.postal_code,country:"
 msgid "The country that contains the postal code."
-msgstr ""
+msgstr "包含邮政编码的国家。"
 
 msgctxt "help:country.postal_code,subdivision:"
 msgid "The subdivision where the postal code is."
-msgstr ""
+msgstr "邮政编码所在的行政区划。"
 
 msgctxt "help:country.region,code_numeric:"
 msgid "UN M49 region code."
-msgstr ""
+msgstr "UN M49地区代码。"
 
 msgctxt "help:country.subdivision,code:"
 msgid "The ISO code of the subdivision."
@@ -187,7 +172,7 @@ msgstr "ISO 行政区划代码."
 
 msgctxt "help:country.subdivision,country:"
 msgid "The country where this subdivision is."
-msgstr ""
+msgstr "该行政区划所在的国家。"
 
 msgctxt "help:country.subdivision,name:"
 msgid "The main identifier of the subdivision."
@@ -195,7 +180,7 @@ msgstr "此行政区划的主标识符"
 
 msgctxt "help:country.subdivision,parent:"
 msgid "Add subdivision below the parent."
-msgstr ""
+msgstr "在父区划下方添加子区划。"
 
 msgctxt "model:country.country,name:"
 msgid "Country"
@@ -203,267 +188,235 @@ msgstr "国家"
 
 msgctxt "model:country.organization,name:"
 msgid "Organization"
-msgstr ""
+msgstr "组织"
 
 msgctxt "model:country.organization,name:organization_amu"
 msgid "Arab Maghreb Union"
-msgstr ""
+msgstr "阿拉伯马格里布联盟"
 
 msgctxt "model:country.organization,name:organization_apec"
 msgid "Asia-Pacific Economic Cooperation"
-msgstr ""
+msgstr "亚太经济合作组织"
 
 msgctxt "model:country.organization,name:organization_asean"
 msgid "Association of Southeast Asian Nations"
-msgstr ""
+msgstr "东南亚国家联盟"
 
 msgctxt "model:country.organization,name:organization_benelux"
 msgid "Benelux Union"
-msgstr ""
+msgstr "比荷卢联盟"
 
 msgctxt "model:country.organization,name:organization_can"
 msgid "Andean Community"
-msgstr ""
+msgstr "安第斯共同体"
 
 msgctxt "model:country.organization,name:organization_caricom"
 msgid "Caribbean Community"
-msgstr ""
+msgstr "加勒比共同体"
 
 msgctxt "model:country.organization,name:organization_cemac"
 msgid "Economic and Monetary Community of Central Africa"
-msgstr ""
+msgstr "中部非洲经济和货币共同体"
 
 msgctxt "model:country.organization,name:organization_cen-sad"
 msgid "Community of Sahel–Saharan States"
-msgstr ""
+msgstr "萨赫勒-撒哈拉国家共同体"
 
 msgctxt "model:country.organization,name:organization_comesa"
 msgid "Common Market for Eastern and Southern Africa"
-msgstr ""
+msgstr "东部和南部非洲共同市场"
 
 msgctxt "model:country.organization,name:organization_eac"
 msgid "East African Community"
-msgstr ""
+msgstr "东非共同体"
 
 msgctxt "model:country.organization,name:organization_eccas"
 msgid "Economic Community of Central African States"
-msgstr ""
+msgstr "中非国家经济共同体"
 
 msgctxt "model:country.organization,name:organization_ecowas"
 msgid "Economic Community of West African States"
-msgstr ""
+msgstr "西非国家经济共同体"
 
-#, fuzzy
 msgctxt "model:country.organization,name:organization_eu"
 msgid "European Union"
-msgstr "La Union"
+msgstr "欧洲联盟"
 
 msgctxt "model:country.organization,name:organization_gcc"
 msgid "Cooperation Council for the Arab States of the Gulf"
-msgstr ""
+msgstr "海湾阿拉伯国家合作委员会"
 
 msgctxt "model:country.organization,name:organization_igad"
 msgid "Intergovernmental Authority on Development"
-msgstr ""
+msgstr "政府间发展管理局"
 
-#, fuzzy
 msgctxt "model:country.organization,name:organization_mercosur"
 msgid "Southern Common Market"
-msgstr "南莱特"
+msgstr "南方共同市场"
 
 msgctxt "model:country.organization,name:organization_nafta"
 msgid "North American Free Trade Agreement"
-msgstr ""
+msgstr "北美自由贸易协定"
 
 msgctxt "model:country.organization,name:organization_sadc"
 msgid "Southern African Development Community"
-msgstr ""
+msgstr "南部非洲发展共同体"
 
 msgctxt "model:country.organization,name:organization_safta"
 msgid "South Asian Free Trade Area"
-msgstr ""
+msgstr "南亚自由贸易区"
 
 msgctxt "model:country.organization.member,name:"
 msgid "Organization Member"
-msgstr ""
+msgstr "组织成员"
 
 msgctxt "model:country.postal_code,name:"
 msgid "Postal Code"
-msgstr ""
+msgstr "邮政编码"
 
-#, fuzzy
 msgctxt "model:country.region,name:"
 msgid "Region"
-msgstr "北极地区"
+msgstr "地区"
 
-#, fuzzy
 msgctxt "model:country.region,name:region_africa"
 msgid "Africa"
-msgstr "南非"
+msgstr "非洲"
 
-#, fuzzy
 msgctxt "model:country.region,name:region_americas"
 msgid "Americas"
-msgstr "美属萨摩亚"
+msgstr "美洲"
 
-#, fuzzy
 msgctxt "model:country.region,name:region_antarctica"
 msgid "Antarctica"
 msgstr "南极洲"
 
 msgctxt "model:country.region,name:region_asia"
 msgid "Asia"
-msgstr ""
+msgstr "亚洲"
 
-#, fuzzy
 msgctxt "model:country.region,name:region_australia_new_zealand"
 msgid "Australia and New Zealand"
-msgstr "新西兰"
+msgstr "澳大利亚和新西兰"
 
 msgctxt "model:country.region,name:region_caribbean"
 msgid "Caribbean"
-msgstr ""
+msgstr "加勒比海地区"
 
-#, fuzzy
 msgctxt "model:country.region,name:region_central_america"
 msgid "Central America"
-msgstr "Central Abaco"
+msgstr "中美洲"
 
-#, fuzzy
 msgctxt "model:country.region,name:region_central_asia"
 msgid "Central Asia"
-msgstr "Central Abaco"
+msgstr "中亚"
 
-#, fuzzy
 msgctxt "model:country.region,name:region_channel_islands"
 msgid "Channel Islands"
-msgstr "莱恩群岛"
+msgstr "海峡群岛"
 
-#, fuzzy
 msgctxt "model:country.region,name:region_eastern_africa"
 msgid "Eastern Africa"
-msgstr "Eastern Equatoria"
+msgstr "东非"
 
-#, fuzzy
 msgctxt "model:country.region,name:region_eastern_asia"
 msgid "Eastern Asia"
-msgstr "东开普省"
+msgstr "东亚"
 
-#, fuzzy
 msgctxt "model:country.region,name:region_eastern_europe"
 msgid "Eastern Europe"
-msgstr "东开普省"
+msgstr "东欧"
 
 msgctxt "model:country.region,name:region_europe"
 msgid "Europe"
-msgstr ""
+msgstr "欧洲"
 
-#, fuzzy
 msgctxt "model:country.region,name:region_latin_america_caribbean"
 msgid "Latin America and the Caribbean"
-msgstr "圣文森特和格林纳丁斯"
+msgstr "拉丁美洲和加勒比地区"
 
-#, fuzzy
 msgctxt "model:country.region,name:region_melanesia"
 msgid "Melanesia"
-msgstr "马六甲"
+msgstr "美拉尼西亚"
 
-#, fuzzy
 msgctxt "model:country.region,name:region_micronesia"
 msgid "Micronesia"
-msgstr "米西奥内斯省"
+msgstr "密克罗尼西亚"
 
 msgctxt "model:country.region,name:region_middle_africa"
 msgid "Middle Africa"
-msgstr ""
+msgstr "中非"
 
-#, fuzzy
 msgctxt "model:country.region,name:region_north_america"
 msgid "North America"
-msgstr "南非"
+msgstr "北美洲"
 
-#, fuzzy
 msgctxt "model:country.region,name:region_northern_africa"
 msgid "Northern Africa"
-msgstr "南非"
+msgstr "北非"
 
-#, fuzzy
 msgctxt "model:country.region,name:region_northern_america"
 msgid "Northern America"
-msgstr "北萨马"
+msgstr "北美洲"
 
-#, fuzzy
 msgctxt "model:country.region,name:region_northern_europe"
 msgid "Northern Europe"
-msgstr "北开普省"
+msgstr "北欧"
 
-#, fuzzy
 msgctxt "model:country.region,name:region_oceania"
 msgid "Oceania"
-msgstr "Chania"
+msgstr "大洋洲"
 
-#, fuzzy
 msgctxt "model:country.region,name:region_polynesia"
 msgid "Polynesia"
-msgstr "法属玻利尼西亚"
+msgstr "波利尼西亚"
 
-#, fuzzy
 msgctxt "model:country.region,name:region_south-eastern_asia"
 msgid "South-eastern Asia"
-msgstr "西北省"
+msgstr "东南亚"
 
-#, fuzzy
 msgctxt "model:country.region,name:region_south_america"
 msgid "South America"
 msgstr "南非"
 
-#, fuzzy
 msgctxt "model:country.region,name:region_southern_africa"
 msgid "Southern Africa"
 msgstr "南非"
 
-#, fuzzy
 msgctxt "model:country.region,name:region_southern_asia"
 msgid "Southern Asia"
-msgstr "Southern"
+msgstr "南欧"
 
-#, fuzzy
 msgctxt "model:country.region,name:region_southern_europe"
 msgid "Southern Europe"
-msgstr "Southern"
+msgstr "南欧"
 
-#, fuzzy
 msgctxt "model:country.region,name:region_sub-saharan_africa"
 msgid "Sub-Saharan Africa"
-msgstr "南非"
+msgstr "撒哈拉以南非洲"
 
-#, fuzzy
 msgctxt "model:country.region,name:region_western_africa"
 msgid "Western Africa"
-msgstr "西澳大利亚州"
+msgstr "西非"
 
-#, fuzzy
 msgctxt "model:country.region,name:region_western_asia"
 msgid "Western Asia"
-msgstr "西澳大利亚州"
+msgstr "西亚"
 
-#, fuzzy
 msgctxt "model:country.region,name:region_western_europe"
 msgid "Western Europe"
-msgstr "西开普省"
+msgstr "西欧"
 
 msgctxt "model:country.region,name:region_world"
 msgid "World"
-msgstr ""
+msgstr "世界"
 
 msgctxt "model:country.subdivision,name:"
 msgid "Subdivision"
 msgstr "行政区划"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_country_by_region"
 msgid "Countries by Region"
-msgstr "Central Region"
+msgstr "中部地区"
 
 msgctxt "model:ir.action,name:act_country_form"
 msgid "Countries"
@@ -471,22 +424,20 @@ msgstr "国家"
 
 msgctxt "model:ir.action,name:act_organization_form"
 msgid "Organizations"
-msgstr ""
+msgstr "组织"
 
 msgctxt "model:ir.action,name:act_postal_code_form"
 msgid "Postal Codes"
-msgstr ""
+msgstr "邮政编码"
 
 msgctxt "model:ir.action,name:act_region_form"
 msgid "Regions"
-msgstr ""
+msgstr "地区"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_region_tree"
 msgid "Areas"
-msgstr "阿尔塔州"
+msgstr "区域"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_country"
 msgid "Countries"
 msgstr "国家"
@@ -497,16 +448,15 @@ msgstr "国家"
 
 msgctxt "model:ir.ui.menu,name:menu_organization_form"
 msgid "Organizations"
-msgstr ""
+msgstr "组织"
 
 msgctxt "model:ir.ui.menu,name:menu_region_form"
 msgid "Regions"
-msgstr ""
+msgstr "地区"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_region_tree"
 msgid "Areas"
-msgstr "阿尔塔州"
+msgstr "区域"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Administration"
@@ -528,10 +478,9 @@ msgctxt "selection:country.subdivision,type:"
 msgid "Administrative atoll"
 msgstr ""
 
-#, fuzzy
 msgctxt "selection:country.subdivision,type:"
 msgid "Administrative precinct"
-msgstr "行政区"
+msgstr ""
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Arctic Region"
@@ -565,10 +514,9 @@ msgctxt "selection:country.subdivision,type:"
 msgid "Autonomous Region"
 msgstr ""
 
-#, fuzzy
 msgctxt "selection:country.subdivision,type:"
 msgid "Autonomous city in north africa"
-msgstr "自治区"
+msgstr ""
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Autonomous communities"
@@ -614,10 +562,9 @@ msgctxt "selection:country.subdivision,type:"
 msgid "Canton"
 msgstr ""
 
-#, fuzzy
 msgctxt "selection:country.subdivision,type:"
 msgid "Capital"
-msgstr "卡皮斯"
+msgstr ""
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Capital District"
@@ -635,10 +582,9 @@ msgctxt "selection:country.subdivision,type:"
 msgid "Capital city"
 msgstr ""
 
-#, fuzzy
 msgctxt "selection:country.subdivision,type:"
 msgid "Chain (of islands)"
-msgstr "开曼群岛"
+msgstr ""
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Chains (of islands)"
@@ -652,10 +598,9 @@ msgctxt "selection:country.subdivision,type:"
 msgid "City corporation"
 msgstr ""
 
-#, fuzzy
 msgctxt "selection:country.subdivision,type:"
 msgid "City municipality"
-msgstr "内罗毕区"
+msgstr ""
 
 msgctxt "selection:country.subdivision,type:"
 msgid "City with county rights"
@@ -705,10 +650,9 @@ msgctxt "selection:country.subdivision,type:"
 msgid "District council area"
 msgstr ""
 
-#, fuzzy
 msgctxt "selection:country.subdivision,type:"
 msgid "District municipality"
-msgstr "内罗毕区"
+msgstr ""
 
 msgctxt "selection:country.subdivision,type:"
 msgid "District with special status"
@@ -750,15 +694,13 @@ msgctxt "selection:country.subdivision,type:"
 msgid "Federal Territories"
 msgstr ""
 
-#, fuzzy
 msgctxt "selection:country.subdivision,type:"
 msgid "Federal Territory"
-msgstr "北领地"
+msgstr ""
 
-#, fuzzy
 msgctxt "selection:country.subdivision,type:"
 msgid "Federal capital territory"
-msgstr "澳大利亚首都特区"
+msgstr ""
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Free municipal consortium"
@@ -821,10 +763,9 @@ msgctxt "selection:country.subdivision,type:"
 msgid "London borough"
 msgstr ""
 
-#, fuzzy
 msgctxt "selection:country.subdivision,type:"
 msgid "Metropolitan administration"
-msgstr "管理员"
+msgstr ""
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Metropolitan cities"
@@ -894,10 +835,9 @@ msgctxt "selection:country.subdivision,type:"
 msgid "Overseas territorial collectivity"
 msgstr ""
 
-#, fuzzy
 msgctxt "selection:country.subdivision,type:"
 msgid "Overseas territory"
-msgstr "北领地"
+msgstr ""
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Pakistan administered area"
@@ -907,10 +847,9 @@ msgctxt "selection:country.subdivision,type:"
 msgid "Parish"
 msgstr ""
 
-#, fuzzy
 msgctxt "selection:country.subdivision,type:"
 msgid "Popularate"
-msgstr "Papua Barat"
+msgstr ""
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Popularates"
@@ -956,10 +895,9 @@ msgctxt "selection:country.subdivision,type:"
 msgid "Republican City"
 msgstr ""
 
-#, fuzzy
 msgctxt "selection:country.subdivision,type:"
 msgid "Rural municipality"
-msgstr "内罗毕区"
+msgstr ""
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Self-governed part"
@@ -977,10 +915,9 @@ msgctxt "selection:country.subdivision,type:"
 msgid "Special Region"
 msgstr ""
 
-#, fuzzy
 msgctxt "selection:country.subdivision,type:"
 msgid "Special administrative city"
-msgstr "行政区域"
+msgstr ""
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Special administrative region"
@@ -1018,10 +955,9 @@ msgctxt "selection:country.subdivision,type:"
 msgid "Territory"
 msgstr ""
 
-#, fuzzy
 msgctxt "selection:country.subdivision,type:"
 msgid "Town"
-msgstr "Hope Town"
+msgstr ""
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Town council"
@@ -1051,19 +987,17 @@ msgctxt "selection:country.subdivision,type:"
 msgid "Urban community"
 msgstr ""
 
-#, fuzzy
 msgctxt "selection:country.subdivision,type:"
 msgid "Urban municipality"
-msgstr "内罗毕区"
+msgstr ""
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Voivodship"
 msgstr ""
 
-#, fuzzy
 msgctxt "selection:country.subdivision,type:"
 msgid "Ward"
-msgstr "Wardak"
+msgstr ""
 
 msgctxt "selection:country.subdivision,type:"
 msgid "zone"

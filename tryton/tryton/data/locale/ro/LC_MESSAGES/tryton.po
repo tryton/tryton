@@ -144,6 +144,10 @@ msgstr "<i>Căutare...</i>"
 msgid "<i>Create...</i>"
 msgstr "<i>Creare...</i>"
 
+#, fuzzy, python-format
+msgid "Create \"%s\"..."
+msgstr "Creat de"
+
 msgid "Value"
 msgstr "Valoare"
 
@@ -290,6 +294,9 @@ msgstr "Salvare stare arbore"
 
 msgid "Spell Checking"
 msgstr "Verificare ortografia"
+
+msgid "Play Sound for Code Scanner"
+msgstr ""
 
 msgid "PDA Mode"
 msgstr "Modul PDA"
@@ -445,6 +452,15 @@ msgstr "Mutați-vă cel mai jos"
 msgid "Move to parent"
 msgstr "Mutare la parinte"
 
+msgid "Edition"
+msgstr "Modificare"
+
+msgid "Copy selected rows"
+msgstr "Copiere rînduri selectate"
+
+msgid "Insert copied rows"
+msgstr "Inserați rânduri copiate"
+
 msgid "Select all"
 msgstr "Selectare tot"
 
@@ -490,6 +506,12 @@ msgstr "Dimitrios Moustos"
 #, python-format
 msgid "Attachments (%s)"
 msgstr "Atașamente (%s)"
+
+msgid "Code Scanner"
+msgstr ""
+
+msgid "Code"
+msgstr ""
 
 msgid "Profile Editor"
 msgstr "Editor de profil"
@@ -915,14 +937,24 @@ msgstr "Legătură"
 msgid "Delete"
 msgstr "Ștergere"
 
-msgid "New"
-msgstr "Nou"
+msgid "Discard changes"
+msgstr ""
 
-msgid "Switch"
-msgstr "Schimba"
+msgid "Save and New"
+msgstr ""
+
+#, fuzzy
+msgid "Add and New"
+msgstr "Adaugă valoare"
 
 msgid "Add"
 msgstr "Adăuga"
+
+msgid "Apply changes"
+msgstr ""
+
+msgid "Switch"
+msgstr "Schimba"
 
 msgid "Remove <Del>"
 msgstr "Eliminare <Del>"
@@ -959,8 +991,8 @@ msgid "Detection failed"
 msgstr "Detecție eșuată"
 
 #, python-format
-msgid "Error processing the file at field %s."
-msgstr "Eroare la procesarea fișierului în câmpul %s."
+msgid "Unknown column header \"%s\""
+msgstr ""
 
 msgid "Error"
 msgstr "Eroare"
@@ -978,6 +1010,9 @@ msgstr "înregistrări %d importate."
 
 msgid "Search"
 msgstr "Căutare"
+
+msgid "New"
+msgstr "Nou"
 
 #, python-format
 msgid "Search %s"
@@ -1021,6 +1056,9 @@ msgstr "Pre-validare"
 
 msgid ":"
 msgstr ":"
+
+msgid "Scan"
+msgstr ""
 
 msgid "Image Size"
 msgstr "Marimea imaginii"

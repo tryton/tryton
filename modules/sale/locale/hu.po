@@ -99,8 +99,9 @@ msgctxt "field:product.product,sale_price_uom:"
 msgid "Sale Price"
 msgstr "Listaár"
 
+#, fuzzy
 msgctxt "field:product.product,sale_uom:"
-msgid "Sale UOM"
+msgid "Sale UoM"
 msgstr "Értékesítési ME"
 
 msgctxt "field:product.sale.context,company:"
@@ -144,8 +145,9 @@ msgctxt "field:product.template,salable:"
 msgid "Salable"
 msgstr "Eladható"
 
+#, fuzzy
 msgctxt "field:product.template,sale_uom:"
-msgid "Sale UOM"
+msgid "Sale UoM"
 msgstr "Értékesítési ME"
 
 msgctxt "field:sale.configuration,sale_invoice_method:"
@@ -259,8 +261,9 @@ msgctxt "field:sale.line,product:"
 msgid "Product"
 msgstr "Termék"
 
+#, fuzzy
 msgctxt "field:sale.line,product_uom_category:"
-msgid "Product Uom Category"
+msgid "Product UoM Category"
 msgstr "Mértékegység kategória"
 
 msgctxt "field:sale.line,quantity:"
@@ -734,6 +737,10 @@ msgstr ""
 "Az átfutási idő a vevői rendelés jóváhagyásától az áru kiszállításáig.\n"
 "Ha üres, a termékbeállításoknál megadott átfutási időt használja a rendszer."
 
+msgctxt "help:product.product,sale_uom:"
+msgid "The default Unit of Measure for sales."
+msgstr ""
+
 msgctxt "help:product.template,lead_time:"
 msgid ""
 "The time from confirming the sales order to sending the products.\n"
@@ -741,6 +748,10 @@ msgid ""
 msgstr ""
 "Az átfutási idő a vevői rendelés jóváhagyásától az áru kiszállításáig.\n"
 "Ha üres, a termékbeállításoknál megadott átfutási időt használja a rendszer."
+
+msgctxt "help:product.template,sale_uom:"
+msgid "The default Unit of Measure for sales."
+msgstr ""
 
 msgctxt "help:sale.configuration,sale_process_after:"
 msgid ""
@@ -754,6 +765,10 @@ msgid ""
 msgstr ""
 "A kiválasztott számlákat újra létrehozza a rendszer. A többi figyelmen kívül"
 " hagyja."
+
+msgctxt "help:sale.line,product_uom_category:"
+msgid "The category of Unit of Measure for the product."
+msgstr ""
 
 msgctxt "help:sale.sale,shipping_date:"
 msgid "When the shipping of goods should start."
@@ -1011,6 +1026,12 @@ msgid ""
 "\"%(sale)s\"."
 msgstr ""
 
+msgctxt "model:ir.message,text:msg_sale_line_move_quantity"
+msgid ""
+"The sale line \"%(line)s\" is moving %(extra)s in addition to the "
+"%(quantity)s ordered."
+msgstr ""
+
 msgctxt "model:ir.message,text:msg_sale_line_tax_unique"
 msgid "A tax can be added only once to a sale line."
 msgstr ""
@@ -1096,6 +1117,16 @@ msgstr "Visszautasított számla kezelése"
 msgctxt "model:ir.model.button,string:sale_handle_shipment_exception_button"
 msgid "Handle Shipment Exception"
 msgstr "Visszautasított szállítmány kezelése"
+
+#, fuzzy
+msgctxt "model:ir.model.button,string:sale_manual_invoice_button"
+msgid "Create Invoice"
+msgstr "Számla"
+
+#, fuzzy
+msgctxt "model:ir.model.button,string:sale_manual_shipment_button"
+msgid "Create Shipment"
+msgstr "Szállítmányok"
 
 msgctxt "model:ir.model.button,string:sale_modify_header_button"
 msgid "Modify Header"
@@ -1612,86 +1643,6 @@ msgstr "Jegyzetek"
 msgctxt "view:sale.line:"
 msgid "Taxes"
 msgstr "Adók"
-
-#, fuzzy
-msgctxt "view:sale.reporting.country.subdivision.time_series:"
-msgid "Number"
-msgstr "Szám"
-
-#, fuzzy
-msgctxt "view:sale.reporting.country.subdivision.time_series:"
-msgid "Revenue"
-msgstr "Árbevétel"
-
-#, fuzzy
-msgctxt "view:sale.reporting.country.time_series:"
-msgid "Number"
-msgstr "Szám"
-
-#, fuzzy
-msgctxt "view:sale.reporting.country.time_series:"
-msgid "Revenue"
-msgstr "Árbevétel"
-
-#, fuzzy
-msgctxt "view:sale.reporting.customer.category.time_series:"
-msgid "Number"
-msgstr "Szám"
-
-#, fuzzy
-msgctxt "view:sale.reporting.customer.category.time_series:"
-msgid "Revenue"
-msgstr "Árbevétel"
-
-#, fuzzy
-msgctxt "view:sale.reporting.customer.time_series:"
-msgid "Number"
-msgstr "Szám"
-
-#, fuzzy
-msgctxt "view:sale.reporting.customer.time_series:"
-msgid "Revenue"
-msgstr "Árbevétel"
-
-#, fuzzy
-msgctxt "view:sale.reporting.main.time_series:"
-msgid "Number"
-msgstr "Szám"
-
-#, fuzzy
-msgctxt "view:sale.reporting.main.time_series:"
-msgid "Revenue"
-msgstr "Árbevétel"
-
-#, fuzzy
-msgctxt "view:sale.reporting.main:"
-msgid "Number"
-msgstr "Szám"
-
-#, fuzzy
-msgctxt "view:sale.reporting.main:"
-msgid "Revenue"
-msgstr "Árbevétel"
-
-#, fuzzy
-msgctxt "view:sale.reporting.product.category.time_series:"
-msgid "Number"
-msgstr "Szám"
-
-#, fuzzy
-msgctxt "view:sale.reporting.product.category.time_series:"
-msgid "Revenue"
-msgstr "Árbevétel"
-
-#, fuzzy
-msgctxt "view:sale.reporting.product.time_series:"
-msgid "Number"
-msgstr "Szám"
-
-#, fuzzy
-msgctxt "view:sale.reporting.product.time_series:"
-msgid "Revenue"
-msgstr "Árbevétel"
 
 msgctxt "view:sale.return_sale.start:"
 msgid "Are you sure to return these/this sale(s)?"

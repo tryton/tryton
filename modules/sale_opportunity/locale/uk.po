@@ -431,80 +431,12 @@ msgctxt "selection:sale.opportunity.reporting.context,period:"
 msgid "Year"
 msgstr ""
 
-msgctxt "view:sale.opportunity.reporting.conversion.employee.time_series:"
-msgid "Lost"
-msgstr ""
-
-msgctxt "view:sale.opportunity.reporting.conversion.employee.time_series:"
-msgid "Won"
-msgstr ""
-
-msgctxt "view:sale.opportunity.reporting.conversion.employee.time_series:"
-msgid "Won Amount"
-msgstr ""
-
-msgctxt "view:sale.opportunity.reporting.conversion.time_series:"
-msgid "Lost"
-msgstr ""
-
-msgctxt "view:sale.opportunity.reporting.conversion.time_series:"
-msgid "Won"
-msgstr ""
-
-msgctxt "view:sale.opportunity.reporting.conversion.time_series:"
-msgid "Won Amount"
-msgstr ""
-
 msgctxt "view:sale.opportunity.reporting.conversion:"
 msgid "%"
 msgstr ""
 
-msgctxt "view:sale.opportunity.reporting.conversion:"
-msgid "Lost"
-msgstr ""
-
-msgctxt "view:sale.opportunity.reporting.conversion:"
-msgid "Won"
-msgstr ""
-
-msgctxt "view:sale.opportunity.reporting.conversion:"
-msgid "Won Amount"
-msgstr ""
-
-msgctxt "view:sale.opportunity.reporting.main.time_series:"
-msgid "Amount"
-msgstr ""
-
-msgctxt "view:sale.opportunity.reporting.main.time_series:"
-msgid "Converted"
-msgstr ""
-
-msgctxt "view:sale.opportunity.reporting.main.time_series:"
-msgid "Converted Amount"
-msgstr ""
-
-msgctxt "view:sale.opportunity.reporting.main.time_series:"
-msgid "Number"
-msgstr ""
-
 msgctxt "view:sale.opportunity.reporting.main:"
 msgid "%"
-msgstr ""
-
-msgctxt "view:sale.opportunity.reporting.main:"
-msgid "Amount"
-msgstr ""
-
-msgctxt "view:sale.opportunity.reporting.main:"
-msgid "Converted"
-msgstr ""
-
-msgctxt "view:sale.opportunity.reporting.main:"
-msgid "Converted Amount"
-msgstr ""
-
-msgctxt "view:sale.opportunity.reporting.main:"
-msgid "Number"
 msgstr ""
 
 msgctxt "view:sale.opportunity:"

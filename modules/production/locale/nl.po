@@ -4,11 +4,11 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "field:product.product,boms:"
 msgid "BOMs"
-msgstr "stuklijsten"
+msgstr "Stuklijsten"
 
 msgctxt "field:product.product,producible:"
 msgid "Producible"
-msgstr "produceerbaar"
+msgstr "Produceerbaar"
 
 msgctxt "field:product.product,production_lead_times:"
 msgid "Lead Times"
@@ -16,7 +16,7 @@ msgstr "Doorlooptijden"
 
 msgctxt "field:product.product-production.bom,bom:"
 msgid "BOM"
-msgstr "stuklijst"
+msgstr "Stuklijst"
 
 msgctxt "field:product.product-production.bom,product:"
 msgid "Product"
@@ -24,7 +24,7 @@ msgstr "Product"
 
 msgctxt "field:product.template,producible:"
 msgid "Producible"
-msgstr "produceerbaar"
+msgstr "Produceerbaar"
 
 msgctxt "field:production,assigned_by:"
 msgid "Assigned By"
@@ -32,7 +32,7 @@ msgstr "Toegewezen door"
 
 msgctxt "field:production,bom:"
 msgid "BOM"
-msgstr "stuklijst"
+msgstr "Stuklijst"
 
 msgctxt "field:production,company:"
 msgid "Company"
@@ -45,10 +45,6 @@ msgstr "Kosten"
 msgctxt "field:production,done_by:"
 msgid "Done By"
 msgstr "Gedaan door"
-
-msgctxt "field:production,effective_date:"
-msgid "Effective Date"
-msgstr "Effectieve datum"
 
 msgctxt "field:production,effective_start_date:"
 msgid "Effective Start Date"
@@ -72,15 +68,11 @@ msgstr "Oorsprong"
 
 msgctxt "field:production,outputs:"
 msgid "Outputs"
-msgstr "uitgang (output)"
+msgstr "Uitvoer"
 
 msgctxt "field:production,partially_assigned:"
 msgid "Partially Assigned"
 msgstr "Gedeeltelijk toegewezen"
-
-msgctxt "field:production,planned_date:"
-msgid "Planned Date"
-msgstr "Geplande datum"
 
 msgctxt "field:production,planned_start_date:"
 msgid "Planned Start Date"
@@ -106,13 +98,13 @@ msgctxt "field:production,state:"
 msgid "State"
 msgstr "Status"
 
-msgctxt "field:production,uom:"
-msgid "Uom"
-msgstr "maateenheid"
+msgctxt "field:production,unit:"
+msgid "Unit"
+msgstr "Maateenheid"
 
 msgctxt "field:production,uom_category:"
-msgid "Uom Category"
-msgstr "maateenheid categorie"
+msgid "UoM Category"
+msgstr "Maateenheid categorie"
 
 msgctxt "field:production,warehouse:"
 msgid "Warehouse"
@@ -132,11 +124,11 @@ msgstr "Gegenereerde producten"
 
 msgctxt "field:production.bom,outputs:"
 msgid "Outputs"
-msgstr "uitgang (output)"
+msgstr "Uitvoer"
 
 msgctxt "field:production.bom.input,bom:"
 msgid "BOM"
-msgstr "stuklijst"
+msgstr "Stuklijst"
 
 msgctxt "field:production.bom.input,product:"
 msgid "Product"
@@ -146,17 +138,17 @@ msgctxt "field:production.bom.input,quantity:"
 msgid "Quantity"
 msgstr "Hoeveelheid"
 
-msgctxt "field:production.bom.input,uom:"
-msgid "Uom"
-msgstr "meeteenheid"
+msgctxt "field:production.bom.input,unit:"
+msgid "Unit"
+msgstr "Maateenheid"
 
 msgctxt "field:production.bom.input,uom_category:"
 msgid "Uom Category"
-msgstr "maateenheid categorie"
+msgstr "Maateenheid categorie"
 
 msgctxt "field:production.bom.output,bom:"
 msgid "BOM"
-msgstr "stuklijst"
+msgstr "Stuklijst"
 
 msgctxt "field:production.bom.output,product:"
 msgid "Product"
@@ -166,17 +158,17 @@ msgctxt "field:production.bom.output,quantity:"
 msgid "Quantity"
 msgstr "Hoeveelheid"
 
-msgctxt "field:production.bom.output,uom:"
-msgid "Uom"
-msgstr "maateenheid"
+msgctxt "field:production.bom.output,unit:"
+msgid "Unit"
+msgstr "Maateenheid"
 
 msgctxt "field:production.bom.output,uom_category:"
 msgid "Uom Category"
-msgstr "maateenheid categorie"
+msgstr "Maateenheid categorie"
 
 msgctxt "field:production.bom.tree,childs:"
 msgid "Childs"
-msgstr "onderliggen niveau (child)"
+msgstr "Onderliggend niveau"
 
 msgctxt "field:production.bom.tree,product:"
 msgid "Product"
@@ -186,13 +178,13 @@ msgctxt "field:production.bom.tree,quantity:"
 msgid "Quantity"
 msgstr "Hoeveelheid"
 
-msgctxt "field:production.bom.tree,uom:"
-msgid "Uom"
-msgstr "maateenheid"
+msgctxt "field:production.bom.tree,unit:"
+msgid "Unit"
+msgstr "Maateenheid"
 
 msgctxt "field:production.bom.tree.open.start,bom:"
 msgid "BOM"
-msgstr "stuklijst"
+msgstr "Stuklijst"
 
 msgctxt "field:production.bom.tree.open.start,category:"
 msgid "Category"
@@ -206,13 +198,13 @@ msgctxt "field:production.bom.tree.open.start,quantity:"
 msgid "Quantity"
 msgstr "Hoeveelheid"
 
-msgctxt "field:production.bom.tree.open.start,uom:"
+msgctxt "field:production.bom.tree.open.start,unit:"
 msgid "Unit"
-msgstr "Eenheid"
+msgstr "Maateenheid"
 
 msgctxt "field:production.bom.tree.open.tree,bom_tree:"
 msgid "BOM Tree"
-msgstr "stuklijst boom structuur"
+msgstr "Stuklijst boom structuur"
 
 msgctxt "field:production.configuration,production_sequence:"
 msgid "Production Sequence"
@@ -229,7 +221,7 @@ msgstr "Productiereeks"
 
 msgctxt "field:production.lead_time,bom:"
 msgid "BOM"
-msgstr "stuklijst"
+msgstr "Stuklijst"
 
 msgctxt "field:production.lead_time,lead_time:"
 msgid "Lead Time"
@@ -245,7 +237,7 @@ msgstr "Productie"
 
 msgctxt "field:stock.location,production_output_location:"
 msgid "Production Output"
-msgstr "Productie output"
+msgstr "Productie uitvoer"
 
 msgctxt "field:stock.location,production_picking_location:"
 msgid "Production Picking"
@@ -257,7 +249,7 @@ msgstr "Productie input"
 
 msgctxt "field:stock.lot.trace,production_output:"
 msgid "Production Output"
-msgstr "Productie output"
+msgstr "Productie uitvoer"
 
 msgctxt "field:stock.move,production:"
 msgid "Production"
@@ -269,11 +261,23 @@ msgstr "Kostprijs bijgewerkt"
 
 msgctxt "field:stock.move,production_input:"
 msgid "Production Input"
-msgstr "Productie-invoer"
+msgstr "Productie invoer"
 
 msgctxt "field:stock.move,production_output:"
 msgid "Production Output"
-msgstr "Productie output"
+msgstr "Productie uitvoer"
+
+msgctxt "help:production,number:"
+msgid "The main identifier for the shipment."
+msgstr "De hoofd identificatie voor de zending."
+
+msgctxt "help:production,reference:"
+msgid "The external identifier for the shipment."
+msgstr "De externe referentie voor de zending."
+
+msgctxt "help:production,uom_category:"
+msgid "The category of Unit of Measure."
+msgstr "De categorie van de maateenheid."
 
 msgctxt "help:stock.location,production_output_location:"
 msgid ""
@@ -293,15 +297,15 @@ msgstr ""
 
 msgctxt "model:ir.action,name:act_bom_form"
 msgid "BOM"
-msgstr "stuklijst"
+msgstr "Stuklijst"
 
 msgctxt "model:ir.action,name:act_bom_list"
 msgid "BOMs"
-msgstr "stuklijsten"
+msgstr "Stuklijsten"
 
 msgctxt "model:ir.action,name:act_product_in_bom"
 msgid "BOMs"
-msgstr "stuklijsten"
+msgstr "Stuklijsten"
 
 msgctxt "model:ir.action,name:act_production_calendar"
 msgid "Productions"
@@ -356,12 +360,12 @@ msgstr "Concept"
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_production_list_domain_requests"
 msgid "Requests"
-msgstr "verzoeken"
+msgstr "Verzoeken"
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_production_list_domain_running"
 msgid "Running"
-msgstr "in uitvoering"
+msgstr "In uitvoering"
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_production_list_domain_waiting"
@@ -399,7 +403,7 @@ msgstr "Annuleer"
 
 msgctxt "model:ir.model.button,string:production_done_button"
 msgid "Done"
-msgstr "Klaar"
+msgstr "Gereed"
 
 msgctxt "model:ir.model.button,string:production_draft_button"
 msgid "Draft"
@@ -411,11 +415,11 @@ msgstr "Terugzetten naar stuklijst"
 
 msgctxt "model:ir.model.button,string:production_run_button"
 msgid "Run"
-msgstr "uitvoeren"
+msgstr "Uitvoeren"
 
 msgctxt "model:ir.model.button,string:production_wait_button"
 msgid "Wait"
-msgstr "wachten"
+msgstr "Wachten"
 
 msgctxt "model:ir.rule.group,name:rule_group_production_companies"
 msgid "User in companies"
@@ -431,11 +435,11 @@ msgstr "Productie"
 
 msgctxt "model:ir.ui.menu,name:menu_bom_list"
 msgid "BOMs"
-msgstr "stuklijsten"
+msgstr "Stuklijsten"
 
 msgctxt "model:ir.ui.menu,name:menu_configuration"
 msgid "Configuration"
-msgstr "Instellingen"
+msgstr "Configuratie"
 
 msgctxt "model:ir.ui.menu,name:menu_production"
 msgid "Productions"
@@ -455,7 +459,7 @@ msgstr "Producties"
 
 msgctxt "model:product.product-production.bom,name:"
 msgid "Product - BOM"
-msgstr "Product - stocklijst"
+msgstr "Product - stuklijst"
 
 msgctxt "model:production,name:"
 msgid "Production"
@@ -519,7 +523,7 @@ msgstr "Productions opnieuw plannen"
 
 msgctxt "selection:ir.cron,method:"
 msgid "Set Cost from Moves"
-msgstr "Stel kosten in van beweging"
+msgstr "Stel kosten vast aan de hand van voorraadbewegingen"
 
 msgctxt "selection:production,state:"
 msgid "Assigned"
@@ -531,7 +535,7 @@ msgstr "Geannuleerd"
 
 msgctxt "selection:production,state:"
 msgid "Done"
-msgstr "Klaar"
+msgstr "Gereed"
 
 msgctxt "selection:production,state:"
 msgid "Draft"
@@ -543,7 +547,7 @@ msgstr "Verzoek"
 
 msgctxt "selection:production,state:"
 msgid "Running"
-msgstr "in uitvoering"
+msgstr "In uitvoering"
 
 msgctxt "selection:production,state:"
 msgid "Waiting"
@@ -579,4 +583,4 @@ msgstr "Sluiten"
 
 msgctxt "wizard_button:production.bom.tree.open,tree,start:"
 msgid "Change"
-msgstr "wijzigen"
+msgstr "Wijzigen"

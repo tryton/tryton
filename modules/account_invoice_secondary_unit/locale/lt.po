@@ -2,8 +2,9 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
+#, fuzzy
 msgctxt "field:account.invoice.line,product_secondary_uom_category:"
-msgid "Product Secondary UOM Category"
+msgid "Product Secondary UoM Category"
 msgstr "Prekės antrojo matavimo vieneto kategorija"
 
 msgctxt "field:account.invoice.line,secondary_quantity:"
@@ -17,6 +18,10 @@ msgstr "Antrasis vienetas"
 msgctxt "field:account.invoice.line,secondary_unit_price:"
 msgid "Secondary Unit Price"
 msgstr "Antrojo vieneto kaina"
+
+msgctxt "help:account.invoice.line,product_secondary_uom_category:"
+msgid "The category of secondary Unit of Measure for the product."
+msgstr ""
 
 msgctxt "view:account.invoice.line:"
 msgid "Quantity:"

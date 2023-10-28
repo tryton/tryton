@@ -39,7 +39,7 @@ msgid "Type"
 msgstr ""
 
 msgctxt "field:customs.duty.rate,uom:"
-msgid "Uom"
+msgid "UoM"
 msgstr ""
 
 msgctxt "field:customs.tariff.code,code:"
@@ -155,6 +155,10 @@ msgstr ""
 
 msgctxt "field:product.template,tariff_codes_category:"
 msgid "Use Category's Tariff Codes"
+msgstr ""
+
+msgctxt "help:customs.duty.rate,uom:"
+msgid "The Unit of Measure."
 msgstr ""
 
 msgctxt "help:customs.tariff.code,code:"

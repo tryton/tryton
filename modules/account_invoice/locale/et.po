@@ -112,6 +112,10 @@ msgctxt "field:account.invoice,has_payment_method:"
 msgid "Has Payment Method"
 msgstr "Maksemeetod"
 
+msgctxt "field:account.invoice,has_report_cache:"
+msgid "Has Report Cached"
+msgstr ""
+
 msgctxt "field:account.invoice,invoice_address:"
 msgid "Invoice Address"
 msgstr "Arve aadress"
@@ -131,6 +135,11 @@ msgstr "Arve aruande ID"
 msgctxt "field:account.invoice,invoice_report_format:"
 msgid "Invoice Report Format"
 msgstr "Arve aruande formaat"
+
+#, fuzzy
+msgctxt "field:account.invoice,invoice_report_revisions:"
+msgid "Invoice Report Revisions"
+msgstr "Arve aruanne"
 
 msgctxt "field:account.invoice,journal:"
 msgid "Journal"
@@ -181,6 +190,11 @@ msgctxt "field:account.invoice,payment_term_date:"
 msgid "Payment Term Date"
 msgstr "Maksetingimused"
 
+#, fuzzy
+msgctxt "field:account.invoice,posted_by:"
+msgid "Posted By"
+msgstr "Postitatud"
+
 msgctxt "field:account.invoice,reconciled:"
 msgid "Reconciled"
 msgstr "Tasakaalustatud"
@@ -206,6 +220,10 @@ msgctxt "field:account.invoice,tax_amount:"
 msgid "Tax"
 msgstr "Maks"
 
+msgctxt "field:account.invoice,tax_amount_cache:"
+msgid "Tax Cache"
+msgstr ""
+
 msgctxt "field:account.invoice,tax_identifier:"
 msgid "Tax Identifier"
 msgstr "Maksutunnus"
@@ -216,6 +234,11 @@ msgstr "Maksu read"
 
 msgctxt "field:account.invoice,total_amount:"
 msgid "Total"
+msgstr "Kokku"
+
+#, fuzzy
+msgctxt "field:account.invoice,total_amount_cache:"
+msgid "Total Cache"
 msgstr "Kokku"
 
 msgctxt "field:account.invoice,type:"
@@ -229,6 +252,16 @@ msgstr "Tüüp"
 msgctxt "field:account.invoice,untaxed_amount:"
 msgid "Untaxed"
 msgstr "Maksuvaba"
+
+#, fuzzy
+msgctxt "field:account.invoice,untaxed_amount_cache:"
+msgid "Untaxed Cache"
+msgstr "Maksuvaba"
+
+#, fuzzy
+msgctxt "field:account.invoice,validated_by:"
+msgid "Validated By"
+msgstr "Kontrollitud"
 
 msgctxt "field:account.invoice-account.move.line,invoice:"
 msgid "Invoice"
@@ -348,8 +381,9 @@ msgctxt "field:account.invoice.line,product:"
 msgid "Product"
 msgstr "Toode"
 
+#, fuzzy
 msgctxt "field:account.invoice.line,product_uom_category:"
-msgid "Product Uom Category"
+msgid "Product UoM Category"
 msgstr "Toote mõõtühiku kategooria"
 
 msgctxt "field:account.invoice.line,quantity:"
@@ -592,6 +626,36 @@ msgctxt "field:account.invoice.payment_term.test.result,date:"
 msgid "Date"
 msgstr "Kuupäev"
 
+#, fuzzy
+msgctxt "field:account.invoice.report.revision,date:"
+msgid "Date"
+msgstr "Kuupäev"
+
+#, fuzzy
+msgctxt "field:account.invoice.report.revision,filename:"
+msgid "File Name"
+msgstr "Nimetus"
+
+#, fuzzy
+msgctxt "field:account.invoice.report.revision,invoice:"
+msgid "Invoice"
+msgstr "Arve"
+
+#, fuzzy
+msgctxt "field:account.invoice.report.revision,invoice_report_cache:"
+msgid "Invoice Report"
+msgstr "Arve aruanne"
+
+#, fuzzy
+msgctxt "field:account.invoice.report.revision,invoice_report_cache_id:"
+msgid "Invoice Report ID"
+msgstr "Arve aruande ID"
+
+#, fuzzy
+msgctxt "field:account.invoice.report.revision,invoice_report_format:"
+msgid "Invoice Report Format"
+msgstr "Arve aruande formaat"
+
 msgctxt "field:account.invoice.tax,account:"
 msgid "Account"
 msgstr "Konto"
@@ -696,6 +760,10 @@ msgctxt "help:account.invoice.credit.start,with_refund:"
 msgid "If true, the current invoice(s) will be cancelled."
 msgstr "Kui vastab tõele, siis antud arve(d) tühistatakse."
 
+msgctxt "help:account.invoice.line,product_uom_category:"
+msgid "The category of Unit of Measure for the product."
+msgstr ""
+
 msgctxt "help:account.invoice.line,taxes_date:"
 msgid ""
 "The date at which the taxes are computed.\n"
@@ -780,6 +848,11 @@ msgctxt "model:account.invoice.payment_term.test.result,name:"
 msgid "Test Payment Term"
 msgstr "Testi maksetingimust"
 
+#, fuzzy
+msgctxt "model:account.invoice.report.revision,name:"
+msgid "Invoice Report Revision"
+msgstr "Arve aruanne"
+
 msgctxt "model:account.invoice.tax,name:"
 msgid "Invoice Tax"
 msgstr "Arve maks"
@@ -822,6 +895,11 @@ msgstr "Tasumisele kuuluvad read"
 msgctxt "model:ir.action,name:credit"
 msgid "Credit"
 msgstr "Kreedit"
+
+#, fuzzy
+msgctxt "model:ir.action,name:refresh_invoice_report_wizard"
+msgid "Invoice (revised)"
+msgstr "Arve rida"
 
 msgctxt "model:ir.action,name:report_invoice"
 msgid "Invoice"
@@ -1338,6 +1416,10 @@ msgctxt "view:account.invoice.payment_term.line:"
 msgid "%"
 msgstr "%"
 
+msgctxt "view:account.invoice.report.revision:"
+msgid "Time"
+msgstr ""
+
 msgctxt "view:account.invoice:"
 msgid "Invoice"
 msgstr "Arve"
@@ -1353,18 +1435,6 @@ msgstr "Tasumine"
 msgctxt "view:account.invoice:"
 msgid "Tax Identifier:"
 msgstr "Maksu tunnus:"
-
-msgctxt "view:account.move.line:"
-msgid "Amount Second Currency"
-msgstr "Väärtus teises valuutas"
-
-msgctxt "view:account.move.line:"
-msgid "Credit"
-msgstr "Kreedit"
-
-msgctxt "view:account.move.line:"
-msgid "Debit"
-msgstr "Deebet"
 
 #, fuzzy
 msgctxt "view:company.company:"

@@ -148,6 +148,10 @@ msgstr "<i>Zoek...</i>"
 msgid "<i>Create...</i>"
 msgstr "<i>Maak...</i>"
 
+#, python-format
+msgid "Create \"%s\"..."
+msgstr "Maak \"%s\"..."
+
 msgid "Value"
 msgstr "Waarde"
 
@@ -294,6 +298,9 @@ msgstr "Boomstatus opslaan"
 
 msgid "Spell Checking"
 msgstr "Spellingscontrole uitvoeren"
+
+msgid "Play Sound for Code Scanner"
+msgstr "Geluid afspelen bij barcode scanner"
 
 msgid "PDA Mode"
 msgstr "PDA-modus"
@@ -449,6 +456,15 @@ msgstr "Naar het einde"
 msgid "Move to parent"
 msgstr "Naar bovenliggend niveau"
 
+msgid "Edition"
+msgstr "Bewerking"
+
+msgid "Copy selected rows"
+msgstr "Kopieer geselecteerde regels"
+
+msgid "Insert copied rows"
+msgstr "Gekopieerde regels invoegen"
+
 msgid "Select all"
 msgstr "Alles selecteren"
 
@@ -495,6 +511,12 @@ msgstr "Bert Defoor"
 msgid "Attachments (%s)"
 msgstr "Bijlagen (%s)"
 
+msgid "Code Scanner"
+msgstr "Barcode scanner"
+
+msgid "Code"
+msgstr "Barcode"
+
 msgid "Profile Editor"
 msgstr "Profiel-editor"
 
@@ -526,7 +548,7 @@ msgid "Could not connect to the server."
 msgstr "Kan geen verbinding maken met server."
 
 msgid "Login"
-msgstr "Inlognaam"
+msgstr "Inloggen"
 
 msgid "_Cancel"
 msgstr "_Annuleer"
@@ -919,14 +941,23 @@ msgstr "Koppeling"
 msgid "Delete"
 msgstr "Verwijderen"
 
-msgid "New"
-msgstr "Nieuw"
+msgid "Discard changes"
+msgstr "Wijzigingen ongedaan maken"
 
-msgid "Switch"
-msgstr "Omschakelen"
+msgid "Save and New"
+msgstr "Opslaan en nieuw"
+
+msgid "Add and New"
+msgstr "Toevoegen en nieuw"
 
 msgid "Add"
 msgstr "Toevoegen"
+
+msgid "Apply changes"
+msgstr "Wijzigingen opslaan"
+
+msgid "Switch"
+msgstr "Omschakelen"
 
 msgid "Remove <Del>"
 msgstr "Verwijder <Del>"
@@ -963,8 +994,8 @@ msgid "Detection failed"
 msgstr "Detecteren faalde"
 
 #, python-format
-msgid "Error processing the file at field %s."
-msgstr "Fout bij het verwerken van het bestand op veld %s."
+msgid "Unknown column header \"%s\""
+msgstr "Onbekende kolomkop \"%s\""
 
 msgid "Error"
 msgstr "Fout"
@@ -982,6 +1013,9 @@ msgstr "%d record geïmporteerd."
 
 msgid "Search"
 msgstr "Zoeken"
+
+msgid "New"
+msgstr "Nieuw"
 
 #, python-format
 msgid "Search %s"
@@ -1025,6 +1059,9 @@ msgstr "Pre-validatie"
 
 msgid ":"
 msgstr ":"
+
+msgid "Scan"
+msgstr "Scannen"
 
 msgid "Image Size"
 msgstr "Afbeeldingsgrootte"

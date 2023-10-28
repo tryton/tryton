@@ -17,6 +17,11 @@ msgctxt "field:product.price_list,name:"
 msgid "Name"
 msgstr "ຊື່"
 
+#, fuzzy
+msgctxt "field:product.price_list,price:"
+msgid "Price"
+msgstr "ລາຍການລາຄາ"
+
 msgctxt "field:product.price_list,tax_included:"
 msgid "Tax Included"
 msgstr ""
@@ -62,6 +67,10 @@ msgstr ""
 
 msgctxt "help:product.price_list,name:"
 msgid "The main identifier of the price list."
+msgstr ""
+
+msgctxt "help:product.price_list,price:"
+msgid "The value used for 'unit_price'."
 msgstr ""
 
 msgctxt "help:product.price_list,tax_included:"
@@ -123,6 +132,14 @@ msgstr "ລາຍການລາຄາ"
 
 msgctxt "model:product.price_list.line,name:"
 msgid "Price List Line"
+msgstr ""
+
+msgctxt "selection:product.price_list,price:"
+msgid "Cost Price"
+msgstr ""
+
+msgctxt "selection:product.price_list,price:"
+msgid "List price"
 msgstr ""
 
 #, fuzzy

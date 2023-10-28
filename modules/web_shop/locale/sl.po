@@ -4,218 +4,220 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "field:product.attribute,web_shops:"
 msgid "Web Shops"
-msgstr ""
+msgstr "Spletne trgovine"
 
 msgctxt "field:product.category,web_shops:"
 msgid "Web Shops"
-msgstr ""
+msgstr "Spletne trgovine"
 
 msgctxt "field:product.image,web_shop:"
 msgid "Web Shop"
-msgstr ""
+msgstr "Spletna trgovina"
 
 msgctxt "field:product.product,web_shop_description:"
 msgid "Web Shop Description"
-msgstr ""
+msgstr "Opis spletne trgovine"
 
 msgctxt "field:product.product,web_shops:"
 msgid "Web Shops"
-msgstr ""
+msgstr "Spletne trgovine"
 
 msgctxt "field:product.template,web_shop_description:"
 msgid "Web Shop Description"
-msgstr ""
+msgstr "Opis spletne trgovine"
 
 msgctxt "field:sale.sale,web_id:"
 msgid "Web ID"
-msgstr ""
+msgstr "Spletni ID"
 
 msgctxt "field:sale.sale,web_shop:"
 msgid "Web Shop"
-msgstr ""
+msgstr "Spletna trgovina"
 
 msgctxt "field:web.shop,attributes:"
 msgid "Attributes"
-msgstr ""
+msgstr "Atributi"
 
 msgctxt "field:web.shop,attributes_removed:"
 msgid "Attributes Removed"
-msgstr ""
+msgstr "Odstranjeni atributi"
 
 msgctxt "field:web.shop,categories:"
 msgid "Categories"
-msgstr ""
+msgstr "Kategorije"
 
 msgctxt "field:web.shop,categories_removed:"
 msgid "Categories Removed"
-msgstr ""
+msgstr "Odstranjene kategorije"
 
 msgctxt "field:web.shop,company:"
 msgid "Company"
-msgstr ""
+msgstr "Družba"
 
 msgctxt "field:web.shop,currency:"
 msgid "Currency"
-msgstr ""
+msgstr "Valuta"
 
 msgctxt "field:web.shop,guest_party:"
 msgid "Guest Party"
-msgstr ""
+msgstr "Partner gost"
 
 msgctxt "field:web.shop,language:"
 msgid "Language"
-msgstr ""
+msgstr "Jezik"
 
 msgctxt "field:web.shop,name:"
 msgid "Name"
-msgstr ""
+msgstr "Naziv"
 
 msgctxt "field:web.shop,products:"
 msgid "Products"
-msgstr ""
+msgstr "Izdelki"
 
 msgctxt "field:web.shop,products_removed:"
 msgid "Products Removed"
-msgstr ""
+msgstr "Odstranjeni izdeleki"
 
 msgctxt "field:web.shop,type:"
 msgid "Type"
-msgstr ""
+msgstr "Vrsta"
 
 msgctxt "field:web.shop,warehouses:"
 msgid "Warehouses"
-msgstr ""
+msgstr "Skladišča"
 
 msgctxt "field:web.shop-product.attribute,attribute:"
 msgid "Attribute"
-msgstr ""
+msgstr "Atribut"
 
 msgctxt "field:web.shop-product.attribute,shop:"
 msgid "Shop"
-msgstr ""
+msgstr "Trgovina"
 
 msgctxt "field:web.shop-product.category,category:"
 msgid "Category"
-msgstr ""
+msgstr "Kategorija"
 
 msgctxt "field:web.shop-product.category,shop:"
 msgid "Shop"
-msgstr ""
+msgstr "Trgovina"
 
 msgctxt "field:web.shop-product.product,product:"
 msgid "Product"
-msgstr ""
+msgstr "Izdelek"
 
 msgctxt "field:web.shop-product.product,shop:"
 msgid "Shop"
-msgstr ""
+msgstr "Trgovina"
 
 msgctxt "field:web.shop-stock.location,shop:"
 msgid "Shop"
-msgstr ""
+msgstr "Trgovina"
 
 msgctxt "field:web.shop-stock.location,warehouse:"
 msgid "Warehouse"
-msgstr ""
+msgstr "Skladišče"
 
 msgctxt "field:web.user,invoice_address:"
 msgid "Invoice Address"
-msgstr ""
+msgstr "Naslov za račun"
 
 msgctxt "field:web.user,shipment_address:"
 msgid "Shipment Address"
-msgstr ""
+msgstr "Naslov za dobavo"
 
 msgctxt "help:product.attribute,web_shops:"
 msgid "The list of web shops on which the attribute is published."
-msgstr ""
+msgstr "Seznam spletnih trgovin na katerih je atribut objavljen."
 
 msgctxt "help:product.category,web_shops:"
 msgid "The list of web shops on which the category is published."
-msgstr ""
+msgstr "Seznam spletnih trgovin na katerih je kategorija objavljena."
 
 msgctxt "help:product.product,web_shops:"
 msgid "The list of web shops on which the product is published."
-msgstr ""
+msgstr "Seznam spletnih trgovin na katerih je izdelek objavljen."
 
 msgctxt "help:web.shop,attributes:"
 msgid "The list of attributes to publish."
-msgstr ""
+msgstr "Seznam atributov za objavo."
 
 msgctxt "help:web.shop,attributes_removed:"
 msgid "The list of attributes to unpublish."
-msgstr ""
+msgstr "Seznam atributov za odstranitev iz objave."
 
 msgctxt "help:web.shop,categories:"
 msgid "The list of categories to publish."
-msgstr ""
+msgstr "Seznam kategorij za objavo."
 
 msgctxt "help:web.shop,categories_removed:"
 msgid "The list of categories to unpublish."
-msgstr ""
+msgstr "Seznam kategorij za odstranitev iz objave."
 
 msgctxt "help:web.shop,products:"
 msgid "The list of products to publish."
-msgstr ""
+msgstr "Seznam izdelekov za objavo."
 
 msgctxt "help:web.shop,products_removed:"
 msgid "The list of products to unpublish."
-msgstr ""
+msgstr "Seznam izdelekov za odstranitev iz objave."
 
 msgctxt "help:web.shop,type:"
 msgid "The front-end used for the web shop."
-msgstr ""
+msgstr "Frontend, ki ga uporablja spletna trgovina."
 
 msgctxt "model:ir.action,name:act_shop"
 msgid "Web Shops"
-msgstr ""
+msgstr "Spletne trgovine"
 
 msgctxt "model:ir.message,text:msg_sale_invalid_party"
 msgid ""
 "To process the sale \"%(sale)s\" you must select another party instead of "
 "the guest \"%(party)s\"."
 msgstr ""
+"Za obdelavo prodajne naloga \"%(sale)s\" je potrebno namesto partnerja gosta"
+" \"%(party)s\" izbrati drugega partnerja."
 
 msgctxt "model:ir.message,text:msg_sale_web_id_unique"
 msgid "The web ID on the sale must be unique."
-msgstr ""
+msgstr "Spletni ID na prodajnem nalogu mora biti edinstven."
 
 msgctxt "model:ir.message,text:msg_shop_name_unique"
 msgid "The web shop name must be unique."
-msgstr ""
+msgstr "Naziv spletne trgovine mora biti edinstven."
 
 msgctxt "model:ir.rule.group,name:rule_group_shop_companies"
 msgid "User in companies"
-msgstr ""
+msgstr "Uporabnik v družbah"
 
 msgctxt "model:ir.ui.menu,name:menu_shop"
 msgid "Web Shops"
-msgstr ""
+msgstr "Spletne trgovine"
 
 msgctxt "model:web.shop,name:"
 msgid "Web Shop"
-msgstr ""
+msgstr "Spletna trgovina"
 
 msgctxt "model:web.shop-product.attribute,name:"
 msgid "Web Shop - Attribute"
-msgstr ""
+msgstr "Spletna trgovina - Atribut"
 
 msgctxt "model:web.shop-product.category,name:"
 msgid "Web Shop - Product Category"
-msgstr ""
+msgstr "Spletna trgovina - Kategorija izdeleka"
 
 msgctxt "model:web.shop-product.product,name:"
 msgid "Web Shop - Product"
-msgstr ""
+msgstr "Spletna trgovina - Izdelek"
 
 msgctxt "model:web.shop-stock.location,name:"
 msgid "Web Shop - Warehouse"
-msgstr ""
+msgstr "Spleetna trgovina - Skladišče"
 
 msgctxt "view:product.template:"
 msgid "Edit"
-msgstr ""
+msgstr "Uredi"
 
 msgctxt "view:web.shop:"
 msgid "Products"
-msgstr ""
+msgstr "Izdeleki"

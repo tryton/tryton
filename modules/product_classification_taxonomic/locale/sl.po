@@ -48,51 +48,43 @@ msgstr "Nadtakson"
 
 msgctxt "field:product.taxon,rank:"
 msgid "Type"
-msgstr "Tip"
+msgstr "Vrsta"
 
 msgctxt "field:product.taxon,selectable:"
 msgid "Selectable"
 msgstr "Izbirno"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_cultivar_form"
 msgid "Cultivars"
-msgstr "Cultivars"
+msgstr "Kultivarji"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_cultivar_group_form"
 msgid "Groups"
 msgstr "Skupine"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_taxon_form"
 msgid "Taxons"
-msgstr "Taxons"
+msgstr "Taksoni"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_taxon_tree"
 msgid "Taxons"
-msgstr "Taxons"
+msgstr "Taksoni"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_cultivar"
 msgid "Cultivars"
-msgstr "Cultivars"
+msgstr "Kultivarji"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_cultivar_group"
 msgid "Groups"
 msgstr "Skupine"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_taxon"
 msgid "Taxons"
-msgstr "Taxons"
+msgstr "Taksoni"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_taxon_tree"
 msgid "Taxons"
-msgstr "Taxons"
+msgstr "Taksoni"
 
 msgctxt "model:product.cultivar,name:"
 msgid "Cultivar"

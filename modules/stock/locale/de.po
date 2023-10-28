@@ -50,6 +50,10 @@ msgctxt "field:party.party.location,supplier_location:"
 msgid "Supplier Location"
 msgstr "Lagerort Lieferant"
 
+msgctxt "field:product.by_location.context,company:"
+msgid "Company"
+msgstr "Unternehmen"
+
 msgctxt "field:product.by_location.context,forecast_date:"
 msgid "At Date"
 msgstr "Ermittlungsdatum"
@@ -222,9 +226,9 @@ msgctxt "field:stock.inventory.count.quantity,total_quantity:"
 msgid "Total Quantity"
 msgstr "Ermittelte Gesamtmenge"
 
-msgctxt "field:stock.inventory.count.quantity,uom:"
-msgid "UOM"
-msgstr "Maßeinheit"
+msgctxt "field:stock.inventory.count.quantity,unit:"
+msgid "Unit"
+msgstr "Einheit"
 
 msgctxt "field:stock.inventory.count.search,search:"
 msgid "Search"
@@ -262,9 +266,9 @@ msgctxt "field:stock.inventory.line,quantity:"
 msgid "Actual Quantity"
 msgstr "Ermittelte Menge"
 
-msgctxt "field:stock.inventory.line,uom:"
-msgid "UOM"
-msgstr "Maßeinheit"
+msgctxt "field:stock.inventory.line,unit:"
+msgid "Unit"
+msgstr "Einheit"
 
 msgctxt "field:stock.location,address:"
 msgid "Address"
@@ -327,12 +331,8 @@ msgid "Quantity"
 msgstr "Menge"
 
 msgctxt "field:stock.location,quantity_uom:"
-msgid "Quantity UOM"
-msgstr "Maßeinheit Menge"
-
-msgctxt "field:stock.location,quantity_uom_digits:"
-msgid "Quantity UOM Digits"
-msgstr "Nachkommastellen Maßeinheit Menge"
+msgid "Quantity UoM"
+msgstr "Menge Maßeinheit"
 
 msgctxt "field:stock.location,right:"
 msgid "Right"
@@ -343,8 +343,8 @@ msgid "Storage"
 msgstr "Lager"
 
 msgctxt "field:stock.location,type:"
-msgid "Location type"
-msgstr "Lagertyp"
+msgid "Type"
+msgstr "Typ"
 
 msgctxt "field:stock.location,warehouse:"
 msgid "Warehouse"
@@ -398,6 +398,10 @@ msgctxt "field:stock.move,currency:"
 msgid "Currency"
 msgstr "Währung"
 
+msgctxt "field:stock.move,delay:"
+msgid "Delay"
+msgstr "Verzögerung"
+
 msgctxt "field:stock.move,effective_date:"
 msgid "Effective Date"
 msgstr "Effektives Datum"
@@ -414,6 +418,10 @@ msgctxt "field:stock.move,origin:"
 msgid "Origin"
 msgstr "Herkunft"
 
+msgctxt "field:stock.move,origin_planned_date:"
+msgid "Origin Planned Date"
+msgstr "Ursprünglich Geplantes Datum"
+
 msgctxt "field:stock.move,planned_date:"
 msgid "Planned Date"
 msgstr "Geplantes Datum"
@@ -422,9 +430,13 @@ msgctxt "field:stock.move,product:"
 msgid "Product"
 msgstr "Artikel"
 
+msgctxt "field:stock.move,product_cost_price:"
+msgid "Product Cost Price"
+msgstr "Artikel Einstandspreis"
+
 msgctxt "field:stock.move,product_uom_category:"
-msgid "Product Uom Category"
-msgstr "Maßeinheitenkategorie"
+msgid "Product UoM Category"
+msgstr "Artikel Maßeinheitenkategorie"
 
 msgctxt "field:stock.move,quantity:"
 msgid "Quantity"
@@ -442,6 +454,10 @@ msgctxt "field:stock.move,to_location:"
 msgid "To Location"
 msgstr "Zu Lagerort"
 
+msgctxt "field:stock.move,unit:"
+msgid "Unit"
+msgstr "Einheit"
+
 msgctxt "field:stock.move,unit_price:"
 msgid "Unit Price"
 msgstr "Einzelpreis"
@@ -457,10 +473,6 @@ msgstr "Einzelpreis erforderlich"
 msgctxt "field:stock.move,unit_price_updated:"
 msgid "Unit Price Updated"
 msgstr "Einzelpreis aktualisiert"
-
-msgctxt "field:stock.move,uom:"
-msgid "Uom"
-msgstr "Einheit"
 
 msgctxt "field:stock.period,caches:"
 msgid "Caches"
@@ -509,6 +521,10 @@ msgstr "Artikel"
 msgctxt "field:stock.product_quantities_warehouse,quantity:"
 msgid "Quantity"
 msgstr "Menge"
+
+msgctxt "field:stock.product_quantities_warehouse.context,company:"
+msgid "Company"
+msgstr "Unternehmen"
 
 msgctxt ""
 "field:stock.product_quantities_warehouse.context,stock_skip_warehouse:"
@@ -571,12 +587,8 @@ msgid "Cost Value"
 msgstr "Kosten"
 
 msgctxt "field:stock.products_by_locations,default_uom:"
-msgid "Default UOM"
-msgstr "Standardeinheit"
-
-msgctxt "field:stock.products_by_locations,default_uom_digits:"
-msgid "Default UOM Digits"
-msgstr "Standardmaßeinheit Nachkommastellen"
+msgid "Default UoM"
+msgstr "Standardmaßeinheit"
 
 msgctxt "field:stock.products_by_locations,forecast_quantity:"
 msgid "Forecast Quantity"
@@ -589,6 +601,10 @@ msgstr "Artikel"
 msgctxt "field:stock.products_by_locations,quantity:"
 msgid "Quantity"
 msgstr "Menge"
+
+msgctxt "field:stock.products_by_locations.context,company:"
+msgid "Company"
+msgstr "Unternehmen"
 
 msgctxt "field:stock.products_by_locations.context,forecast_date:"
 msgid "At Date"
@@ -708,11 +724,7 @@ msgstr "Kontaktadresse"
 
 msgctxt "field:stock.shipment.in,done_by:"
 msgid "Done By"
-msgstr "Erledigt durch"
-
-msgctxt "field:stock.shipment.in,effective_date:"
-msgid "Effective Date"
-msgstr "Effektives Datum"
+msgstr "Erledigt von"
 
 msgctxt "field:stock.shipment.in,incoming_moves:"
 msgid "Incoming Moves"
@@ -733,10 +745,6 @@ msgstr "Nummer"
 msgctxt "field:stock.shipment.in,origins:"
 msgid "Origins"
 msgstr "Herkünfte"
-
-msgctxt "field:stock.shipment.in,planned_date:"
-msgid "Planned Date"
-msgstr "Geplantes Datum"
 
 msgctxt "field:stock.shipment.in,received_by:"
 msgid "Received By"
@@ -784,11 +792,7 @@ msgstr "Lieferadresse"
 
 msgctxt "field:stock.shipment.in.return,done_by:"
 msgid "Done By"
-msgstr "Erledigt durch"
-
-msgctxt "field:stock.shipment.in.return,effective_date:"
-msgid "Effective Date"
-msgstr "Effektives Datum"
+msgstr "Erledigt von"
 
 msgctxt "field:stock.shipment.in.return,from_location:"
 msgid "From Location"
@@ -809,10 +813,6 @@ msgstr "Herkünfte"
 msgctxt "field:stock.shipment.in.return,partially_assigned:"
 msgid "Partially Assigned"
 msgstr "Teilweise Reserviert"
-
-msgctxt "field:stock.shipment.in.return,planned_date:"
-msgid "Planned Date"
-msgstr "Geplantes Datum"
 
 msgctxt "field:stock.shipment.in.return,reference:"
 msgid "Reference"
@@ -844,11 +844,7 @@ msgstr "Unternehmen"
 
 msgctxt "field:stock.shipment.internal,done_by:"
 msgid "Done By"
-msgstr "Erledigt durch"
-
-msgctxt "field:stock.shipment.internal,effective_date:"
-msgid "Effective Date"
-msgstr "Effektives Datum"
+msgstr "Erledigt von"
 
 msgctxt "field:stock.shipment.internal,effective_start_date:"
 msgid "Effective Start Date"
@@ -877,10 +873,6 @@ msgstr "Ausgehende Warenbewegungen"
 msgctxt "field:stock.shipment.internal,partially_assigned:"
 msgid "Partially Assigned"
 msgstr "Teilweise Reserviert"
-
-msgctxt "field:stock.shipment.internal,planned_date:"
-msgid "Planned Date"
-msgstr "Geplantes Datum"
 
 msgctxt "field:stock.shipment.internal,planned_start_date:"
 msgid "Planned Start Date"
@@ -928,11 +920,7 @@ msgstr "Lieferadresse"
 
 msgctxt "field:stock.shipment.out,done_by:"
 msgid "Done By"
-msgstr "Erledigt durch"
-
-msgctxt "field:stock.shipment.out,effective_date:"
-msgid "Effective Date"
-msgstr "Effektives Datum"
+msgstr "Erledigt von"
 
 msgctxt "field:stock.shipment.out,inventory_moves:"
 msgid "Inventory Moves"
@@ -965,10 +953,6 @@ msgstr "Teilweise Reserviert"
 msgctxt "field:stock.shipment.out,picked_by:"
 msgid "Picked By"
 msgstr "Kommissioniert durch"
-
-msgctxt "field:stock.shipment.out,planned_date:"
-msgid "Planned Date"
-msgstr "Geplantes Datum"
 
 msgctxt "field:stock.shipment.out,reference:"
 msgid "Reference"
@@ -1008,11 +992,7 @@ msgstr "Lagerort Kunde"
 
 msgctxt "field:stock.shipment.out.return,done_by:"
 msgid "Done By"
-msgstr "Erledigt durch"
-
-msgctxt "field:stock.shipment.out.return,effective_date:"
-msgid "Effective Date"
-msgstr "Effektives Datum"
+msgstr "Erledigt von"
 
 msgctxt "field:stock.shipment.out.return,incoming_moves:"
 msgid "Incoming Moves"
@@ -1033,10 +1013,6 @@ msgstr "Nummer"
 msgctxt "field:stock.shipment.out.return,origins:"
 msgid "Origins"
 msgstr "Herkünfte"
-
-msgctxt "field:stock.shipment.out.return,planned_date:"
-msgid "Planned Date"
-msgstr "Geplantes Datum"
 
 msgctxt "field:stock.shipment.out.return,received_by:"
 msgid "Received By"
@@ -1216,9 +1192,9 @@ msgctxt "help:stock.inventory.count.quantity,total_quantity:"
 msgid "The total amount of the line counted so far."
 msgstr "Die bisher gezählte Menge der Inventurpositionen."
 
-msgctxt "help:stock.inventory.count.quantity,uom:"
+msgctxt "help:stock.inventory.count.quantity,unit:"
 msgid "The unit in which the quantities are specified."
-msgstr "Die Maßeinheit in der die Menge angegeben wird."
+msgstr "Die Maßeinheit in der die Menge angegeben ist."
 
 msgctxt "help:stock.inventory.count.search,search:"
 msgid "The item that's counted."
@@ -1236,9 +1212,9 @@ msgctxt "help:stock.inventory.line,quantity:"
 msgid "The actual quantity found in the location."
 msgstr "Die tatsächliche gezählte Menge für den Lagerort."
 
-msgctxt "help:stock.inventory.line,uom:"
+msgctxt "help:stock.inventory.line,unit:"
 msgid "The unit in which the quantity is specified."
-msgstr "Die Maßeinheit in der die Menge angegeben wird."
+msgstr "Die Maßeinheit in der die Menge angegeben ist."
 
 msgctxt "help:stock.location,childs:"
 msgid "Used to add structure below the location."
@@ -1290,6 +1266,10 @@ msgctxt "help:stock.location,quantity:"
 msgid "The amount of stock in the location."
 msgstr "Der Lagerbestand im Lagerort."
 
+msgctxt "help:stock.location,quantity_uom:"
+msgid "The Unit of Measure for the quantities."
+msgstr "Die Maßeinheit für die Mengen."
+
 msgctxt "help:stock.location,storage_location:"
 msgid "The top level location where stock is stored."
 msgstr "Die oberste Ebene der Lagerzone in der Ware gelagert wird."
@@ -1327,6 +1307,10 @@ msgctxt "help:stock.move,origin:"
 msgid "The source of the stock move."
 msgstr "Die Herkunft der Warenbewegung."
 
+msgctxt "help:stock.move,origin_planned_date:"
+msgid "When the stock was expected to be moved originally."
+msgstr "Zeitpunkt an dem die Warenbewegung ursprünglich stattfinden sollte."
+
 msgctxt "help:stock.move,planned_date:"
 msgid "When the stock is expected to be moved."
 msgstr "Zeitpunkt an dem die Warenbewegung voraussichtlich stattfinden soll."
@@ -1334,6 +1318,18 @@ msgstr "Zeitpunkt an dem die Warenbewegung voraussichtlich stattfinden soll."
 msgctxt "help:stock.move,product:"
 msgid "The product that the move is associated with."
 msgstr "Der Artikel für den die Lagerwegung erfasst wird."
+
+msgctxt "help:stock.move,product_cost_price:"
+msgid ""
+"The cost price of the product when different from the cost price of the "
+"move."
+msgstr ""
+"Der Einstandspreis des Artikels sofern er vom Einstandspreis der "
+"Warenbewegung abweicht."
+
+msgctxt "help:stock.move,product_uom_category:"
+msgid "The category of Unit of Measure for the product."
+msgstr "Die Kategorie der Maßeinheit des Artikels."
 
 msgctxt "help:stock.move,quantity:"
 msgid "The amount of stock moved."
@@ -1351,13 +1347,13 @@ msgctxt "help:stock.move,to_location:"
 msgid "Where the stock is moved to."
 msgstr "Lagerort zu dem die Ware bewegt wird."
 
+msgctxt "help:stock.move,unit:"
+msgid "The unit in which the quantity is specified."
+msgstr "Die Maßeinheit in der die Menge angegeben ist."
+
 msgctxt "help:stock.move,unit_price_company:"
 msgid "Unit price in company currency."
 msgstr "Einzelpreis in Unternehmenswährung."
-
-msgctxt "help:stock.move,uom:"
-msgid "The unit in which the quantity is specified."
-msgstr "Die Maßheit in der die Menge angegeben ist."
 
 msgctxt "help:stock.period,company:"
 msgid "The company the stock period is associated with."
@@ -1379,6 +1375,10 @@ msgstr "Auswählen, um nur die Menge der Lagerzone zu verwenden."
 msgctxt "help:stock.product_quantities_warehouse.context,warehouse:"
 msgid "The warehouse for which the quantities will be calculated."
 msgstr "Der Logistikstandort für den die Mengen berechnet werden."
+
+msgctxt "help:stock.products_by_locations,default_uom:"
+msgid "The default Unit of Measure."
+msgstr "Die Standardmaßeinheit."
 
 msgctxt "help:stock.products_by_locations.context,forecast_date:"
 msgid ""
@@ -1410,10 +1410,6 @@ msgctxt "help:stock.shipment.in,contact_address:"
 msgid "The address at which the supplier can be contacted."
 msgstr "Der Lieferant kann unter dieser Adresse kontaktiert werden."
 
-msgctxt "help:stock.shipment.in,effective_date:"
-msgid "When the stock was actually received."
-msgstr "Zeitpunkt an dem die Ware tatsächlich angenommen wurde."
-
 msgctxt "help:stock.shipment.in,incoming_moves:"
 msgid "The moves that bring the stock into the warehouse."
 msgstr "Die Warenbewegungen für den Wareneingang."
@@ -1426,13 +1422,9 @@ msgctxt "help:stock.shipment.in,number:"
 msgid "The main identifier for the shipment."
 msgstr "Das Hauptidentifizierungsmerkmal der Lieferung."
 
-msgctxt "help:stock.shipment.in,planned_date:"
-msgid "When the stock is expected to be received."
-msgstr "Zeitpunkt an dem der Wareneingang erwartet wird."
-
 msgctxt "help:stock.shipment.in,reference:"
-msgid "The supplier's identifier for the shipment."
-msgstr "Das Identifizierungsmerkmal des Lieferanten für die Lieferung."
+msgid "The external identifier for the shipment."
+msgstr "Das externe Identifizierungsmerkmal der Lieferung."
 
 msgctxt "help:stock.shipment.in,state:"
 msgid "The current state of the shipment."
@@ -1454,10 +1446,6 @@ msgctxt "help:stock.shipment.in.return,delivery_address:"
 msgid "Where the stock is sent to."
 msgstr "Adresse an die Ware aus dem Lager geliefert wird."
 
-msgctxt "help:stock.shipment.in.return,effective_date:"
-msgid "When the stock was actually returned."
-msgstr "Zeitpunkt an dem die Ware tatsächlich zurückgesandt wurde."
-
 msgctxt "help:stock.shipment.in.return,from_location:"
 msgid "Where the stock is moved from."
 msgstr "Lagerort aus dem die Ware entnommen wird."
@@ -1470,15 +1458,9 @@ msgctxt "help:stock.shipment.in.return,number:"
 msgid "The main identifier for the shipment."
 msgstr "Das Hauptidentifizierungsmerkmal für die Lieferung."
 
-msgctxt "help:stock.shipment.in.return,planned_date:"
-msgid "When the stock is expected to be returned."
-msgstr ""
-"Zeitpunkt an dem die Warenrückgaben an den Lieferanten planmäßig erfolgen "
-"soll."
-
 msgctxt "help:stock.shipment.in.return,reference:"
-msgid "The supplier's identifier for the shipment."
-msgstr "Das Identifizierungsmerkmal des Lieferanten für die Lieferung."
+msgid "The external identifier for the shipment."
+msgstr "Das externe Identifizierungsmerkmal der Lieferung."
 
 msgctxt "help:stock.shipment.in.return,state:"
 msgid "The current state of the shipment."
@@ -1495,10 +1477,6 @@ msgstr "Der Lagerort zu dem die Ware bewegt wird."
 msgctxt "help:stock.shipment.internal,company:"
 msgid "The company the shipment is associated with."
 msgstr "Das Unternehmen für das die Lieferung erfasst wird."
-
-msgctxt "help:stock.shipment.internal,effective_date:"
-msgid "When the shipment was actually completed."
-msgstr "Zeitpunkt an dem die Lieferung tatsächlich erledigt wurde."
 
 msgctxt "help:stock.shipment.internal,effective_start_date:"
 msgid "When the stock was actually sent."
@@ -1524,17 +1502,13 @@ msgctxt "help:stock.shipment.internal,outgoing_moves:"
 msgid "The moves that send the stock out."
 msgstr "Die Warenbewegungen für den Warenversand."
 
-msgctxt "help:stock.shipment.internal,planned_date:"
-msgid "When the shipment is expected to be completed."
-msgstr "Zeitpunkt an dem die Lieferung planmäßig erledigt sein soll."
-
 msgctxt "help:stock.shipment.internal,planned_start_date:"
 msgid "When the stock is expected to be sent."
 msgstr "Zeitpunkt an dem die Ware planmäßig versandt werden soll."
 
 msgctxt "help:stock.shipment.internal,reference:"
-msgid "The external identifiers for the shipment."
-msgstr "Das externe Identifizierungsmerkmal für die Lieferung."
+msgid "The external identifier for the shipment."
+msgstr "Das externe Identifizierungsmerkmal der Lieferung."
 
 msgctxt "help:stock.shipment.internal,state:"
 msgid "The current state of the shipment."
@@ -1567,10 +1541,6 @@ msgctxt "help:stock.shipment.out,delivery_address:"
 msgid "Where the stock is sent to."
 msgstr "Adresse an die Ware aus dem Lager geliefert wird."
 
-msgctxt "help:stock.shipment.out,effective_date:"
-msgid "When the stock was actually sent."
-msgstr "Zeitpunkt an dem die Ware tatsächlich versandt wurde."
-
 msgctxt "help:stock.shipment.out,inventory_moves:"
 msgid "The moves that pick the stock from the storage area."
 msgstr ""
@@ -1584,13 +1554,9 @@ msgctxt "help:stock.shipment.out,outgoing_moves:"
 msgid "The moves that send the stock to the customer."
 msgstr "Die Warenbewegungen mit denen die Ware an den Kunden versandt wird."
 
-msgctxt "help:stock.shipment.out,planned_date:"
-msgid "When the stock is expected to be sent."
-msgstr "Zeitpunkt an dem die Ware planmäßig versandt werden soll."
-
 msgctxt "help:stock.shipment.out,reference:"
-msgid "The customer's identifier for the shipment."
-msgstr "Das Identifizierungsmerkmal des Kunden für die Lieferung."
+msgid "The external identifier for the shipment."
+msgstr "Das externe Identifizierungsmerkmal der Lieferung."
 
 msgctxt "help:stock.shipment.out,state:"
 msgid "The current state of the shipment."
@@ -1612,10 +1578,6 @@ msgctxt "help:stock.shipment.out.return,customer:"
 msgid "The party that purchased the stock."
 msgstr "Die Partei die Waren aus dem Lager kauft."
 
-msgctxt "help:stock.shipment.out.return,effective_date:"
-msgid "When the stock was returned."
-msgstr "Zeitpunkt an dem die Ware tatsächlich zurückgegeben wurde."
-
 msgctxt "help:stock.shipment.out.return,incoming_moves:"
 msgid "The moves that bring the stock into the warehouse."
 msgstr ""
@@ -1631,13 +1593,9 @@ msgctxt "help:stock.shipment.out.return,number:"
 msgid "The main identifier for the shipment."
 msgstr "Das Hauptidentifizierungsmerkmal der Lieferung."
 
-msgctxt "help:stock.shipment.out.return,planned_date:"
-msgid "When the stock is expected to be returned."
-msgstr "Zeitpunkt an dem die Ware planmäßig zurückgegeben werden soll."
-
 msgctxt "help:stock.shipment.out.return,reference:"
-msgid "The customer's identifier for the shipment."
-msgstr "Das Identifizierungsmerkmal des Kunden für die Lieferung."
+msgid "The external identifier for the shipment."
+msgstr "Das externe Identifizierungsmerkmal der Lieferung."
 
 msgctxt "help:stock.shipment.out.return,state:"
 msgid "The current state of the shipment."
@@ -1762,6 +1720,10 @@ msgstr "Warenrücknahmen (von Kunden)"
 msgctxt "model:ir.action,name:act_stock_configuration_form"
 msgid "Configuration"
 msgstr "Einstellungen"
+
+msgctxt "model:ir.action,name:act_warehouse_list"
+msgid "Warehouses"
+msgstr "Logistikstandorte"
 
 msgctxt "model:ir.action,name:report_shipment_in_restocking_list"
 msgid "Restocking List"
@@ -1985,6 +1947,14 @@ msgstr ""
 "Ungültiger Einstandspreis \"%(cost_price)s\" für Artikel \"%(product)s\" mit"
 " Ausnahme \"%(exception)s\"."
 
+msgctxt "model:ir.message,text:msg_invalid_cost_price_not_number"
+msgid ""
+"The value \"%(value)s\" of \"%(cost_price)s\" for product \"%(product)s\" is"
+" not a number."
+msgstr ""
+"Der Wert \"%(value)s\" des Einstandspreises \"%(cost_price)s\" für den "
+"Artikel \"%(product)s\" ist keine Nummer."
+
 msgctxt "model:ir.message,text:msg_inventory_count_create_line"
 msgid "No existing line found for \"%(search)s\"."
 msgstr "Keine Position für \"%(search)s\" gefunden."
@@ -2133,8 +2103,8 @@ msgstr ""
 
 msgctxt "model:ir.message,text:msg_product_change_default_uom"
 msgid ""
-"You cannot change the default UOM of a product which is associated with "
-"stock moves."
+"You cannot change the default unit of measure of a product which is "
+"associated with stock moves."
 msgstr ""
 "Die Standardmaßeinheit kann nicht für Artikel geändert werden, denen "
 "Warenbewegungen zugeordnet sind."
@@ -2163,17 +2133,50 @@ msgstr ""
 "Es wird empfohlen, vor der Deaktivierung des Artikels den Bestand aus den "
 "Lagerorten zu entfernen."
 
+msgctxt "model:ir.message,text:msg_shipment_check_quantity"
+msgid ""
+"The quantities of shipment \"%(shipment)s\" are different by %(quantities)s."
+msgstr "Die Mengen der Lieferung \"%(shipment)s\" weichen um %(quantities)s ab."
+
+msgctxt "model:ir.message,text:msg_shipment_delay"
+msgid "Delay"
+msgstr "Verzögerung"
+
 msgctxt "model:ir.message,text:msg_shipment_delete_cancel"
 msgid "To delete shipment \"%(shipment)s\" you must cancel it."
 msgstr ""
 "Damit die Lieferung \"%(shipment)s\" gelöscht werden kann, muss sie zuerst "
 "annulliert werden."
 
+msgctxt "model:ir.message,text:msg_shipment_effective_date"
+msgid "Effective Date"
+msgstr "Effektives Datum"
+
+msgctxt "model:ir.message,text:msg_shipment_effective_date_help"
+msgid "When the stock operation was actually completed."
+msgstr "Zeitpunkt an dem die Lieferung tatsächlich erledigt wurde."
+
+msgctxt "model:ir.message,text:msg_shipment_origin_planned_date"
+msgid "Origin Planned Date"
+msgstr "Ursprünglich Geplantes Datum"
+
+msgctxt "model:ir.message,text:msg_shipment_origin_planned_date_help"
+msgid "When the stock operation was initially expected to be completed."
+msgstr "Zeitpunkt an dem die Lieferung ursprünglich erledigt sein sollte."
+
 msgctxt "model:ir.message,text:msg_shipment_pack_inventory_done"
 msgid "To pack shipment \"%(shipment)s\" you must do the inventory moves."
 msgstr ""
 "Damit die Lieferung \"%(shipment)s\" gepackt werden kann, müssen zuerst die "
 "Warenbewegungen zur Bestandsänderung ausgeführt werden."
+
+msgctxt "model:ir.message,text:msg_shipment_planned_date"
+msgid "Planned Date"
+msgstr "Geplantes Datum"
+
+msgctxt "model:ir.message,text:msg_shipment_planned_date_help"
+msgid "When the stock operation is expected to be completed."
+msgstr "Zeitpunkt an dem die Logistikaufgabe planmäßig erledigt sein soll."
 
 msgctxt "model:ir.message,text:msg_stock_reporting_company"
 msgid "Company"
@@ -2583,6 +2586,10 @@ msgctxt "model:ir.ui.menu,name:menu_stock_configuration"
 msgid "Configuration"
 msgstr "Einstellungen"
 
+msgctxt "model:ir.ui.menu,name:menu_warehouse_list"
+msgid "Warehouses"
+msgstr "Logistikstandorte"
+
 msgctxt "model:party.party-delivered_to-stock.location,name:"
 msgid "Party Delivered to Warehouse"
 msgstr "Partei Lieferung an Logistikstandort"
@@ -2784,12 +2791,20 @@ msgid "/"
 msgstr "/"
 
 msgctxt "report:stock.shipment.in.restocking_list:"
-msgid ":"
-msgstr ":"
+msgid "Cancelled"
+msgstr "Annulliert"
+
+msgctxt "report:stock.shipment.in.restocking_list:"
+msgid "Draft"
+msgstr "Entwurf"
 
 msgctxt "report:stock.shipment.in.restocking_list:"
 msgid "From Location"
 msgstr "Von Lagerort"
+
+msgctxt "report:stock.shipment.in.restocking_list:"
+msgid "N°:"
+msgstr "N°:"
 
 msgctxt "report:stock.shipment.in.restocking_list:"
 msgid "Planned Date:"
@@ -2812,10 +2827,6 @@ msgid "Restocking List"
 msgstr "Einlagerungsliste"
 
 msgctxt "report:stock.shipment.in.restocking_list:"
-msgid "Shipment Number"
-msgstr "Lieferscheinnummer"
-
-msgctxt "report:stock.shipment.in.restocking_list:"
 msgid "Supplier:"
 msgstr "Lieferant:"
 
@@ -2832,10 +2843,6 @@ msgid "/"
 msgstr "/"
 
 msgctxt "report:stock.shipment.internal.report:"
-msgid ":"
-msgstr ":"
-
-msgctxt "report:stock.shipment.internal.report:"
 msgid "From Location"
 msgstr "Von Lagerort"
 
@@ -2846,6 +2853,10 @@ msgstr "Von Lagerort:"
 msgctxt "report:stock.shipment.internal.report:"
 msgid "Internal Shipment"
 msgstr "Interne Lieferung"
+
+msgctxt "report:stock.shipment.internal.report:"
+msgid "N°:"
+msgstr "N°:"
 
 msgctxt "report:stock.shipment.internal.report:"
 msgid "Planned Date:"
@@ -2864,10 +2875,6 @@ msgid "Reference:"
 msgstr "Referenz:"
 
 msgctxt "report:stock.shipment.internal.report:"
-msgid "Shipment Number"
-msgstr "Lieferscheinnummer"
-
-msgctxt "report:stock.shipment.internal.report:"
 msgid "To Location"
 msgstr "Zu Lagerort"
 
@@ -2878,6 +2885,10 @@ msgstr "Zu Lagerort:"
 msgctxt "report:stock.shipment.out.delivery_note:"
 msgid "/"
 msgstr "/"
+
+msgctxt "report:stock.shipment.out.delivery_note:"
+msgid "Cancelled"
+msgstr "Annulliert"
 
 msgctxt "report:stock.shipment.out.delivery_note:"
 msgid "Customer Code:"
@@ -2892,6 +2903,18 @@ msgid "Delivery Note"
 msgstr "Lieferschein"
 
 msgctxt "report:stock.shipment.out.delivery_note:"
+msgid "Draft"
+msgstr "Entwurf"
+
+msgctxt "report:stock.shipment.out.delivery_note:"
+msgid "Location:"
+msgstr "Lagerort:"
+
+msgctxt "report:stock.shipment.out.delivery_note:"
+msgid "N°:"
+msgstr "N°:"
+
+msgctxt "report:stock.shipment.out.delivery_note:"
 msgid "Product"
 msgstr "Artikel"
 
@@ -2903,25 +2926,33 @@ msgctxt "report:stock.shipment.out.delivery_note:"
 msgid "Reference:"
 msgstr "Referenz:"
 
-msgctxt "report:stock.shipment.out.delivery_note:"
-msgid "Shipment Number:"
-msgstr "Lieferscheinnummer:"
-
 msgctxt "report:stock.shipment.out.picking_list:"
 msgid "/"
 msgstr "/"
 
 msgctxt "report:stock.shipment.out.picking_list:"
-msgid ":"
-msgstr ":"
+msgid "Cancelled"
+msgstr "Annulliert"
 
 msgctxt "report:stock.shipment.out.picking_list:"
 msgid "Customer:"
 msgstr "Kunde:"
 
 msgctxt "report:stock.shipment.out.picking_list:"
+msgid "Done"
+msgstr "Erledigt"
+
+msgctxt "report:stock.shipment.out.picking_list:"
+msgid "Draft"
+msgstr "Entwurf"
+
+msgctxt "report:stock.shipment.out.picking_list:"
 msgid "From Location"
 msgstr "Von Lagerort"
+
+msgctxt "report:stock.shipment.out.picking_list:"
+msgid "N°:"
+msgstr "N°:"
 
 msgctxt "report:stock.shipment.out.picking_list:"
 msgid "Picking List"
@@ -2944,10 +2975,6 @@ msgid "Reference:"
 msgstr "Referenz:"
 
 msgctxt "report:stock.shipment.out.picking_list:"
-msgid "Shipment Number"
-msgstr "Lieferscheinnummer"
-
-msgctxt "report:stock.shipment.out.picking_list:"
 msgid "To Location"
 msgstr "Zu Lagerort"
 
@@ -2964,16 +2991,24 @@ msgid ":"
 msgstr ":"
 
 msgctxt "report:stock.shipment.out.return.restocking_list:"
+msgid "Cancelled"
+msgstr "Annulliert"
+
+msgctxt "report:stock.shipment.out.return.restocking_list:"
 msgid "Customer"
 msgstr "Kunde"
+
+msgctxt "report:stock.shipment.out.return.restocking_list:"
+msgid "Draft"
+msgstr "Entwurf"
 
 msgctxt "report:stock.shipment.out.return.restocking_list:"
 msgid "From Location"
 msgstr "Von Lagerort"
 
 msgctxt "report:stock.shipment.out.return.restocking_list:"
-msgid "Number"
-msgstr "Nummer"
+msgid "N°:"
+msgstr "N°:"
 
 msgctxt "report:stock.shipment.out.return.restocking_list:"
 msgid "Planned Date:"
@@ -2994,10 +3029,6 @@ msgstr "Referenz:"
 msgctxt "report:stock.shipment.out.return.restocking_list:"
 msgid "Restocking List"
 msgstr "Einlagerungsliste"
-
-msgctxt "report:stock.shipment.out.return.restocking_list:"
-msgid "Shipment"
-msgstr "Lieferung"
 
 msgctxt "report:stock.shipment.out.return.restocking_list:"
 msgid "To Location"
@@ -3307,21 +3338,9 @@ msgctxt "view:stock.move:"
 msgid "Other Info"
 msgstr "Sonstiges"
 
-msgctxt "view:stock.products_by_locations:"
-msgid "Cost Value"
-msgstr "Kosten"
-
 msgctxt "view:stock.reporting.margin.category.time_series:"
 msgid "%"
 msgstr "%"
-
-msgctxt "view:stock.reporting.margin.category.time_series:"
-msgid "Cost"
-msgstr "Kosten"
-
-msgctxt "view:stock.reporting.margin.category.time_series:"
-msgid "Revenue"
-msgstr "Umsatz"
 
 msgctxt "view:stock.reporting.margin.category.tree:"
 msgid "%"
@@ -3331,25 +3350,9 @@ msgctxt "view:stock.reporting.margin.main.time_series:"
 msgid "%"
 msgstr "%"
 
-msgctxt "view:stock.reporting.margin.main.time_series:"
-msgid "Cost"
-msgstr "Kosten"
-
-msgctxt "view:stock.reporting.margin.main.time_series:"
-msgid "Revenue"
-msgstr "Umsatz"
-
 msgctxt "view:stock.reporting.margin.main:"
 msgid "%"
 msgstr "%"
-
-msgctxt "view:stock.reporting.margin.main:"
-msgid "Cost"
-msgstr "Kosten"
-
-msgctxt "view:stock.reporting.margin.main:"
-msgid "Revenue"
-msgstr "Umsatz"
 
 msgctxt "view:stock.shipment.assign.partial:"
 msgid "Unable to assign these products:"

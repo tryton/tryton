@@ -24,7 +24,7 @@ msgstr "产品"
 
 msgctxt "field:product.configuration,default_cost_price_method:"
 msgid "Default Cost Method"
-msgstr "默认的成本法"
+msgstr "默认成本法"
 
 msgctxt "field:product.configuration,product_sequence:"
 msgid "Variant Sequence"
@@ -37,7 +37,7 @@ msgstr "产品序列"
 msgctxt ""
 "field:product.configuration.default_cost_price_method,default_cost_price_method:"
 msgid "Default Cost Method"
-msgstr "默认的成本法"
+msgstr "默认成本法"
 
 msgctxt "field:product.cost_price,company:"
 msgid "Company"
@@ -128,16 +128,12 @@ msgid "Cost Prices"
 msgstr "成本价"
 
 msgctxt "field:product.product,default_uom:"
-msgid "Default UOM"
+msgid "Default UoM"
 msgstr "默认计量单位"
 
 msgctxt "field:product.product,default_uom_category:"
-msgid "Default UOM Category"
+msgid "Default UoM Category"
 msgstr "默认计量单位类别"
-
-msgctxt "field:product.product,default_uom_digits:"
-msgid "Default Unit Digits"
-msgstr "默认计量单位有效数字"
 
 msgctxt "field:product.product,description:"
 msgid "Description"
@@ -212,16 +208,12 @@ msgid "Cost Price Methods"
 msgstr "成本价法"
 
 msgctxt "field:product.template,default_uom:"
-msgid "Default UOM"
+msgid "Default UoM"
 msgstr "默认计量单位"
 
 msgctxt "field:product.template,default_uom_category:"
-msgid "Default UOM Category"
+msgid "Default UoM Category"
 msgstr "默认计量单位类别"
-
-msgctxt "field:product.template,default_uom_digits:"
-msgid "Default Unit Digits"
-msgstr "默认计量单位有效数字"
 
 msgctxt "field:product.template,list_price:"
 msgid "List Price"
@@ -352,15 +344,19 @@ msgstr "用于计算成本价的方法."
 
 msgctxt "help:product.product,default_uom:"
 msgid ""
-"The standard unit of measure for the product.\n"
+"The standard Unit of Measure for the product.\n"
 "Used internally when calculating the stock levels of goods and assets."
 msgstr ""
 "产品的标准计量单位.\n"
 "在计算货物和资产的库存水平时内部使用."
 
+msgctxt "help:product.product,default_uom_category:"
+msgid "The category of the default Unit of Measure."
+msgstr "默认计量单位类别。"
+
 msgctxt "help:product.product,identifiers:"
 msgid "Other identifiers associated with the variant."
-msgstr "变体的其它标识符."
+msgstr "其它标识符(产品变体相关)。"
 
 msgctxt "help:product.product,list_price:"
 msgid "The standard price the product is sold at."
@@ -399,11 +395,15 @@ msgstr "用于计算成本价的方法."
 
 msgctxt "help:product.template,default_uom:"
 msgid ""
-"The standard unit of measure for the product.\n"
+"The standard Unit of Measure for the product.\n"
 "Used internally when calculating the stock levels of goods and assets."
 msgstr ""
 "产品标准计量单位.\n"
 "在计算货物和资产的库存水平时内部使用."
+
+msgctxt "help:product.template,default_uom_category:"
+msgid "The category of the default Unit of Measure."
+msgstr "默认计量单位类别。"
 
 msgctxt "help:product.template,list_price:"
 msgid "The standard price the product is sold at."
@@ -461,7 +461,6 @@ msgctxt "model:ir.action,name:act_category_tree"
 msgid "Categories"
 msgstr "类别"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_product_configuration_form"
 msgid "Configuration"
 msgstr "设置"
@@ -482,7 +481,6 @@ msgctxt "model:ir.action,name:act_template_form"
 msgid "Products"
 msgstr "产品"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_uom_category_form"
 msgid "Categories"
 msgstr "类别"
@@ -499,32 +497,31 @@ msgctxt "model:ir.message,text:msg_product_code_unique"
 msgid "Code of active product must be unique."
 msgstr "已启用产品的代码不能重复."
 
-#, fuzzy
 msgctxt "model:ir.message,text:msg_uom_decrease_digits"
-msgid "You cannot decrease the digits of UOM \"%(uom)s\"."
-msgstr "你不能修改计量单位 \"%(uom)s\" 的换算率."
+msgid "You cannot decrease the digits of the unit of measure \"%(uom)s\"."
+msgstr "不能减少计量单位 \"%(uom)s\" 的位数。"
 
 msgctxt "model:ir.message,text:msg_uom_incompatible_factor_rate"
-msgid "Incompatible factor and rate values on UOM \"%(uom)s\"."
+msgid "Incompatible factor and rate values on unit of measure\"%(uom)s\"."
 msgstr "与计量单位 \"%(uom)s\" 不兼容的换算因子和换算率."
 
 msgctxt "model:ir.message,text:msg_uom_modify_category"
-msgid "You cannot modify the category of UOM \"%(uom)s\"."
-msgstr "你不能改变计量单位 \"%(uom)s\" 的类别."
+msgid "You cannot modify the category of the unit of measure \"%(uom)s\"."
+msgstr "不能改变计量单位 \"%(uom)s\" 的类别."
 
 msgctxt "model:ir.message,text:msg_uom_modify_factor"
-msgid "You cannot modify the factor of UOM \"%(uom)s\"."
-msgstr "你不能编辑计量单位 \"%(uom)s\" 的换算因子."
+msgid "You cannot modify the factor of the unit of measure \"%(uom)s\"."
+msgstr "不能更改计量单位 \"%(uom)s\" 的换算因子."
 
 msgctxt "model:ir.message,text:msg_uom_modify_options"
 msgid ""
-"If the UOM is still not used, you can delete it otherwise you can deactivate"
-" it and create a new one."
-msgstr "如果计量单位一直没有使用过，你可以删除。否则你可以停用它并且新建一个。"
+"If the unit of measure is still not used, you can delete it otherwise you "
+"can deactivate it and create a new one."
+msgstr "从未使用过的计量单位可以删除，否则只能停用后再新建。"
 
 msgctxt "model:ir.message,text:msg_uom_modify_rate"
-msgid "You cannot modify the rate of UOM \"%(uom)s\"."
-msgstr "你不能修改计量单位 \"%(uom)s\" 的换算率."
+msgid "You cannot modify the rate of the unit of measure\"%(uom)s\"."
+msgstr "不能修改计量单位 \"%(uom)s\" 的换算率."
 
 msgctxt "model:ir.message,text:msg_uom_no_zero_factor_rate"
 msgid "Rate and factor can not be both equal to zero."
@@ -554,7 +551,6 @@ msgctxt "model:ir.ui.menu,name:menu_configuration"
 msgid "Configuration"
 msgstr "设置"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_main_product"
 msgid "Products"
 msgstr "产品"
@@ -563,14 +559,13 @@ msgctxt "model:ir.ui.menu,name:menu_product"
 msgid "Variants"
 msgstr "变体"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_product_configuration"
 msgid "Configuration"
 msgstr "设置"
 
 msgctxt "model:ir.ui.menu,name:menu_reporting"
 msgid "Reporting"
-msgstr ""
+msgstr "报告"
 
 msgctxt "model:ir.ui.menu,name:menu_template"
 msgid "Products"
@@ -640,7 +635,6 @@ msgctxt "model:product.uom,name:uom_carat"
 msgid "Carat"
 msgstr "克拉"
 
-#, fuzzy
 msgctxt "model:product.uom,name:uom_centimeter"
 msgid "Centimeter"
 msgstr "厘米"
@@ -667,19 +661,19 @@ msgstr "天"
 
 msgctxt "model:product.uom,name:uom_energy_joule"
 msgid "Joule"
-msgstr ""
+msgstr "焦耳"
 
 msgctxt "model:product.uom,name:uom_energy_kwh"
 msgid "Kilowatt-hour"
-msgstr ""
+msgstr "千瓦时"
 
 msgctxt "model:product.uom,name:uom_energy_megajoule"
 msgid "Megajoule"
-msgstr ""
+msgstr "兆焦耳"
 
 msgctxt "model:product.uom,name:uom_energy_mwh"
 msgid "Megawatt-hour"
-msgstr ""
+msgstr "兆瓦时"
 
 msgctxt "model:product.uom,name:uom_foot"
 msgid "Foot"
@@ -743,7 +737,7 @@ msgstr "英镑"
 
 msgctxt "model:product.uom,name:uom_second"
 msgid "Second"
-msgstr "秒钟"
+msgstr "秒"
 
 msgctxt "model:product.uom,name:uom_square_centimeter"
 msgid "Square centimeter"
@@ -807,19 +801,19 @@ msgstr "d"
 
 msgctxt "model:product.uom,symbol:uom_energy_joule"
 msgid "J"
-msgstr ""
+msgstr "J"
 
 msgctxt "model:product.uom,symbol:uom_energy_kwh"
 msgid "kW⋅h"
-msgstr ""
+msgstr "kW⋅h"
 
 msgctxt "model:product.uom,symbol:uom_energy_megajoule"
 msgid "MJ"
-msgstr ""
+msgstr "MJ"
 
 msgctxt "model:product.uom,symbol:uom_energy_mwh"
 msgid "MW⋅h"
-msgstr ""
+msgstr "MW⋅h"
 
 msgctxt "model:product.uom,symbol:uom_foot"
 msgid "ft"
@@ -919,7 +913,7 @@ msgstr "计量单位类别"
 
 msgctxt "model:product.uom.category,name:uom_cat_energy"
 msgid "Energy"
-msgstr ""
+msgstr "能量"
 
 msgctxt "model:product.uom.category,name:uom_cat_length"
 msgid "Length"

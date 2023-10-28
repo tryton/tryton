@@ -355,6 +355,10 @@ msgctxt "model:ir.export-write-res.group,name:"
 msgid "Export Modification Group"
 msgstr ""
 
+msgctxt "model:ir.message,text:msg_email_invalid"
+msgid "The email address \"%(email)s\" for \"%(user)s\" is not valid."
+msgstr ""
+
 msgctxt "model:ir.message,text:msg_password_email"
 msgid "The password cannot be the same as user's email address."
 msgstr "Salasõna ei tohi olla sama mis kasutaja e-maili aadress."
@@ -409,34 +413,6 @@ msgctxt "model:ir.rule.group,name:rule_group_action"
 msgid "User in groups"
 msgstr "Kasutaja gruppides"
 
-msgctxt "model:ir.rule.group,name:rule_group_export_any"
-msgid "Any export"
-msgstr ""
-
-msgctxt "model:ir.rule.group,name:rule_group_export_line_any"
-msgid "Any export"
-msgstr ""
-
-#, fuzzy
-msgctxt "model:ir.rule.group,name:rule_group_export_line_read"
-msgid "User in groups"
-msgstr "Kasutaja gruppides"
-
-#, fuzzy
-msgctxt "model:ir.rule.group,name:rule_group_export_line_write"
-msgid "User in modification groups"
-msgstr "Kasutaja gruppides"
-
-#, fuzzy
-msgctxt "model:ir.rule.group,name:rule_group_export_read"
-msgid "User in groups"
-msgstr "Kasutaja gruppides"
-
-#, fuzzy
-msgctxt "model:ir.rule.group,name:rule_group_export_write"
-msgid "User in modification groups"
-msgstr "Kasutaja gruppides"
-
 msgctxt "model:ir.rule.group,name:rule_group_menu"
 msgid "User in groups"
 msgstr "Kasutaja gruppides"
@@ -449,18 +425,6 @@ msgctxt "model:ir.rule.group,name:rule_group_sequence_strict"
 msgid "User in groups"
 msgstr "Kasutaja gruppides"
 
-msgctxt "model:ir.rule.group,name:rule_group_session"
-msgid "Own session"
-msgstr "Oma sessioon"
-
-msgctxt "model:ir.rule.group,name:rule_group_session_wizard"
-msgid "Own session"
-msgstr "Oma sessioon"
-
-msgctxt "model:ir.rule.group,name:rule_group_ui_menu_favorite"
-msgid "Own favorite"
-msgstr "Oma sessioon"
-
 msgctxt "model:ir.rule.group,name:rule_group_user_application"
 msgid "Own user application"
 msgstr "Oma kasutaja aplikatsioon"
@@ -472,19 +436,6 @@ msgstr "Kõigi kasutajate aplikatsioon"
 msgctxt "model:ir.rule.group,name:rule_group_user_warning"
 msgid "Own warning"
 msgstr "Oma teavitus"
-
-msgctxt "model:ir.rule.group,name:rule_group_view_search"
-msgid "Own view search"
-msgstr "Oma vaate otsing"
-
-msgctxt "model:ir.rule.group,name:rule_group_view_search_admin"
-msgid "Any view search"
-msgstr "Kõigi vaate otsing"
-
-#, fuzzy
-msgctxt "model:ir.rule.group,name:rule_group_view_search_common"
-msgid "Common view search"
-msgstr "Oma vaate otsing"
 
 msgctxt "model:ir.rule.group-res.group,name:"
 msgid "Rule Group - Group"

@@ -250,6 +250,10 @@ msgstr "ຄົ້ນຫາ..."
 msgid "Create..."
 msgstr "ສ້າງ..."
 
+#, fuzzy
+msgid "Create \"%1\"..."
+msgstr "ສ້າງ..."
+
 msgid "Download"
 msgstr "ດາວໂຫຼດ"
 
@@ -461,6 +465,9 @@ msgstr "ກ່ອນ-ການກວດສອບ"
 msgid ":"
 msgstr ":"
 
+msgid "Scan"
+msgstr ""
+
 msgid "Translate"
 msgstr "ແປ"
 
@@ -529,17 +536,20 @@ msgstr ""
 msgid "%1%"
 msgstr "%1%"
 
-msgid ": "
-msgstr ": "
+msgid "Menu"
+msgstr ""
 
-msgid "Customize"
+msgid "Copy"
+msgstr ""
+
+msgid "#ERROR"
 msgstr ""
 
 msgid "More"
 msgstr "ເພີ່ມຕື່ມ"
 
-msgid "#ERROR"
-msgstr ""
+msgid ": "
+msgstr ": "
 
 msgid "Today"
 msgstr ""
@@ -564,6 +574,19 @@ msgstr "ເລືອກການດຳເນີນການ"
 
 msgid "No action defined."
 msgstr "ບໍ່ມີການດຳເນີນການໃດຖືກກຳນົດໄວ້!"
+
+msgid "Discard changes"
+msgstr ""
+
+msgid "Save and New"
+msgstr ""
+
+#, fuzzy
+msgid "Add and New"
+msgstr "ເພີ່ມຊື່ຊ່ອງຂໍ້ມູນ"
+
+msgid "Apply changes"
+msgstr ""
 
 msgid "Attachments (%1)"
 msgstr "ຄັດຕິດ(%1)"
@@ -641,8 +664,8 @@ msgstr "ທ່ານຕ້ອງໄດ້ເລືອກຟາຍລ໌ທີ່
 msgid "Detection failed"
 msgstr ""
 
-msgid "Error processing the file at field %1."
-msgstr "ມີຂໍ້ຜິດພາດໃນການປະມວນຜົນຟາຍລ໌ ໃນຊ່ອງຂໍ້ມູນ %1."
+msgid "Unknown column header \"%1\""
+msgstr ""
 
 msgid "Error"
 msgstr "ຜິດພາດ"
@@ -745,6 +768,15 @@ msgstr ""
 #, fuzzy
 msgid "Remove File"
 msgstr "ເອົາອອກ"
+
+msgid "Code Scanner"
+msgstr ""
+
+msgid "Code"
+msgstr ""
+
+msgid "Toggle Sound"
+msgstr ""
 
 msgid "Wizard"
 msgstr "ນໍາພາສ້າງ"

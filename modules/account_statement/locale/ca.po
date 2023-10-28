@@ -315,8 +315,8 @@ msgid "Statements"
 msgstr "Extractes"
 
 msgctxt "model:ir.action,name:act_statement_journal_form"
-msgid "Journals"
-msgstr "Diaris"
+msgid "Statement Journals"
+msgstr "Diaris d'extracte"
 
 msgctxt "model:ir.action,name:act_statement_line_move"
 msgid "Statement Lines"
@@ -482,8 +482,8 @@ msgid "Import Statement"
 msgstr "Importa extracte"
 
 msgctxt "model:ir.ui.menu,name:menu_statement_journal_form"
-msgid "Journals"
-msgstr "Diaris"
+msgid "Statement Journals"
+msgstr "Diaris d'extracte"
 
 msgctxt "model:ir.ui.menu,name:menu_statements"
 msgid "Statements"
@@ -572,14 +572,6 @@ msgstr "Saldo"
 msgctxt "selection:account.statement.journal,validation:"
 msgid "Number of Lines"
 msgstr "Nombre de línies"
-
-msgctxt "view:account.statement.line:"
-msgid "Amount"
-msgstr "Import"
-
-msgctxt "view:account.statement.origin:"
-msgid "Amount"
-msgstr "Import"
 
 msgctxt "view:account.statement:"
 msgid "Other Info"

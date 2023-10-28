@@ -316,9 +316,10 @@ msgctxt "model:ir.action,name:act_statement_form"
 msgid "Statements"
 msgstr ""
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_statement_journal_form"
-msgid "Journals"
-msgstr "Jurnal-Jurnal"
+msgid "Statement Journals"
+msgstr "Pernyataan"
 
 msgctxt "model:ir.action,name:act_statement_line_move"
 msgid "Statement Lines"
@@ -471,9 +472,10 @@ msgctxt "model:ir.ui.menu,name:menu_statement_import"
 msgid "Import Statement"
 msgstr ""
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_statement_journal_form"
-msgid "Journals"
-msgstr "Jurnal-Jurnal"
+msgid "Statement Journals"
+msgstr "Pernyataan"
 
 msgctxt "model:ir.ui.menu,name:menu_statements"
 msgid "Statements"
@@ -562,14 +564,6 @@ msgstr "Saldo"
 msgctxt "selection:account.statement.journal,validation:"
 msgid "Number of Lines"
 msgstr ""
-
-msgctxt "view:account.statement.line:"
-msgid "Amount"
-msgstr "Jumlah"
-
-msgctxt "view:account.statement.origin:"
-msgid "Amount"
-msgstr "Jumlah"
 
 msgctxt "view:account.statement:"
 msgid "Other Info"

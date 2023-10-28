@@ -153,7 +153,7 @@ msgstr ""
 
 msgctxt "model:ir.action,name:act_rule_form"
 msgid "Rules"
-msgstr ""
+msgstr "Pravila"
 
 msgctxt "model:ir.model.button,string:statement_apply_rules_button"
 msgid "Apply Rules"
@@ -161,11 +161,11 @@ msgstr ""
 
 msgctxt "model:ir.rule.group,name:rule_group_rule_companies"
 msgid "User in companies"
-msgstr ""
+msgstr "Uporabnik v družbah"
 
 msgctxt "model:ir.ui.menu,name:menu_rule_form"
 msgid "Rules"
-msgstr ""
+msgstr "Pravila"
 
 #, fuzzy
 msgctxt "view:account.statement.rule.information:"

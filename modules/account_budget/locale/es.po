@@ -279,6 +279,10 @@ msgctxt "model:ir.action,name:wizard_budget_line_create_periods"
 msgid "Create Periods"
 msgstr "Crear periodos"
 
+msgctxt "model:ir.message,text:msg_budget_line_budget_account_type_unique"
+msgid "The account type must be unique for each budget."
+msgstr "La tipo de cuenta debe ser único para cada presupuesto."
+
 msgctxt "model:ir.message,text:msg_budget_line_budget_account_unique"
 msgid "The account must be unique for each budget."
 msgstr "La cuenta debe ser única para cada presupuesto."
@@ -339,18 +343,6 @@ msgstr "%"
 msgctxt "view:account.budget.line.period:"
 msgid "%"
 msgstr "%"
-
-msgctxt "view:account.budget.line.period:"
-msgid "Actual Amount"
-msgstr "Importe real"
-
-msgctxt "view:account.budget.line.period:"
-msgid "Ratio"
-msgstr "Ratio"
-
-msgctxt "view:account.budget.line.period:"
-msgid "Total Amount"
-msgstr "Importe total"
 
 msgctxt "view:account.budget.line:"
 msgid "%"

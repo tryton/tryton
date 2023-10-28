@@ -28,7 +28,7 @@ msgstr "Vertraging"
 
 msgctxt "field:marketing.automation.activity,email_clicked:"
 msgid "E-Mails Clicked"
-msgstr "E-mails geklikt"
+msgstr "E-mails Geklikt"
 
 msgctxt "field:marketing.automation.activity,email_from:"
 msgid "From"
@@ -104,7 +104,7 @@ msgstr "Op"
 
 msgctxt "field:marketing.automation.record.activity,email_clicked:"
 msgid "E-Mail Clicked"
-msgstr "E-mails geklikt"
+msgstr "E-mail Geklikt"
 
 msgctxt "field:marketing.automation.record.activity,email_opened:"
 msgid "E-Mail Opened"
@@ -331,7 +331,7 @@ msgstr ""
 
 msgctxt "model:ir.model.button,string:record_activity_on_email_clicked_button"
 msgid "E-Mail Clicked"
-msgstr "E-mails geklikt"
+msgstr "E-mail Geklikt"
 
 msgctxt "model:ir.model.button,string:record_activity_on_email_opened_button"
 msgid "E-Mail Opened"
@@ -409,7 +409,7 @@ msgstr "E-mail verzenden"
 
 msgctxt "selection:marketing.automation.activity,event:"
 msgid "E-Mail Clicked"
-msgstr "E-mails geklikt"
+msgstr "E-mail Geklikt"
 
 msgctxt "selection:marketing.automation.activity,event:"
 msgid "E-Mail Opened"
@@ -417,7 +417,7 @@ msgstr "E-mails geopend"
 
 msgctxt "selection:marketing.automation.activity,on:"
 msgid "E-Mail Clicked"
-msgstr "E-mails geklikt"
+msgstr "E-mail Geklikt"
 
 msgctxt "selection:marketing.automation.activity,on:"
 msgid "E-Mail Not Clicked"

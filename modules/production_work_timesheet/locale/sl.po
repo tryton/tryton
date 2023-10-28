@@ -14,10 +14,9 @@ msgctxt "field:production.work,timesheet_lines:"
 msgid "Timesheet Lines"
 msgstr "Postavke evidence"
 
-#, fuzzy
 msgctxt "field:production.work,timesheet_work:"
 msgid "Timesheet Work"
-msgstr "Evidentirane naloge"
+msgstr "Evidentirano delo"
 
 msgctxt "field:production.work,timesheet_works:"
 msgid "Timesheet Works"

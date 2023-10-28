@@ -38,8 +38,9 @@ msgctxt "field:customs.duty.rate,type:"
 msgid "Type"
 msgstr "نوع"
 
+#, fuzzy
 msgctxt "field:customs.duty.rate,uom:"
-msgid "Uom"
+msgid "UoM"
 msgstr "واحد اندازی گیری"
 
 msgctxt "field:customs.tariff.code,code:"
@@ -160,6 +161,10 @@ msgstr "کدهای تعرفه"
 msgctxt "field:product.template,tariff_codes_category:"
 msgid "Use Category's Tariff Codes"
 msgstr "استفاده از دسته بندی کدهای تعرفه"
+
+msgctxt "help:customs.duty.rate,uom:"
+msgid "The Unit of Measure."
+msgstr ""
 
 #, fuzzy
 msgctxt "help:customs.tariff.code,code:"

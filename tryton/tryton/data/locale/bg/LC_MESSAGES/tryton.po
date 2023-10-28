@@ -154,6 +154,10 @@ msgstr ""
 msgid "<i>Create...</i>"
 msgstr ""
 
+#, python-format
+msgid "Create \"%s\"..."
+msgstr ""
+
 #, fuzzy
 msgid "Value"
 msgstr "Лъжа"
@@ -316,6 +320,9 @@ msgstr "Запазване на състояние разгърнато дърв
 msgid "Spell Checking"
 msgstr "Проверка на правопис"
 
+msgid "Play Sound for Code Scanner"
+msgstr ""
+
 msgid "PDA Mode"
 msgstr ""
 
@@ -476,6 +483,17 @@ msgstr ""
 msgid "Move to parent"
 msgstr ""
 
+#, fuzzy
+msgid "Edition"
+msgstr "Редактиране"
+
+#, fuzzy
+msgid "Copy selected rows"
+msgstr "Копиране на избрания текст"
+
+msgid "Insert copied rows"
+msgstr ""
+
 msgid "Select all"
 msgstr ""
 
@@ -521,6 +539,12 @@ msgstr ""
 #, fuzzy, python-format
 msgid "Attachments (%s)"
 msgstr "Прикачен файл(%s)"
+
+msgid "Code Scanner"
+msgstr ""
+
+msgid "Code"
+msgstr ""
 
 msgid "Profile Editor"
 msgstr "Редактор на профили"
@@ -981,14 +1005,23 @@ msgstr "Връзка"
 msgid "Delete"
 msgstr "Изтриване"
 
-msgid "New"
-msgstr "Нов"
+msgid "Discard changes"
+msgstr ""
 
-msgid "Switch"
-msgstr "Превключване"
+msgid "Save and New"
+msgstr ""
+
+msgid "Add and New"
+msgstr ""
 
 msgid "Add"
 msgstr "Добавяне"
+
+msgid "Apply changes"
+msgstr ""
+
+msgid "Switch"
+msgstr "Превключване"
 
 msgid "Remove <Del>"
 msgstr "Изтриване <Del>"
@@ -1027,8 +1060,8 @@ msgid "Detection failed"
 msgstr ""
 
 #, python-format
-msgid "Error processing the file at field %s."
-msgstr "Грешка при обработка на файл при поле %s"
+msgid "Unknown column header \"%s\""
+msgstr ""
 
 msgid "Error"
 msgstr "Грешка"
@@ -1046,6 +1079,9 @@ msgstr "%d записи вмъкнати!"
 
 msgid "Search"
 msgstr "Търсене"
+
+msgid "New"
+msgstr "Нов"
 
 #, python-format
 msgid "Search %s"
@@ -1095,6 +1131,9 @@ msgstr ""
 
 msgid ":"
 msgstr ":"
+
+msgid "Scan"
+msgstr ""
 
 msgid "Image Size"
 msgstr "Размер на изображение"

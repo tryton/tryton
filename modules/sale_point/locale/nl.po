@@ -20,7 +20,7 @@ msgstr "Bruto prijs"
 
 msgctxt "field:product.product,gross_prices:"
 msgid "Gross Prices"
-msgstr "Bruto prijs"
+msgstr "Bruto prijzen"
 
 msgctxt "field:product.template,gross_price:"
 msgid "Gross Price"
@@ -28,7 +28,7 @@ msgstr "Bruto prijs"
 
 msgctxt "field:product.template,gross_prices:"
 msgid "Gross Prices"
-msgstr "Bruto prijs"
+msgstr "Bruto prijzen"
 
 msgctxt "field:sale.point,address:"
 msgid "Address"
@@ -453,10 +453,10 @@ msgstr ""
 "De verkoop \"%(sale)s\" is geannuleerd, er mag dus geen betaald bedrag "
 "geboekt zijn."
 
-msgctxt "model:ir.message,text:msg_sale_amount_to_pay_done_paid"
+msgctxt "model:ir.message,text:msg_sale_amount_to_pay_done_posted"
 msgid "The sale \"%(sale)s\" is done so cannot have an amount to pay."
 msgstr ""
-"De verkoop \"%(sale)s\" is afgerond en mag dus geen te betalen bedrag "
+"De verkoop \"%(sale)s\" is afgerond en kan dus geen te betalen bedrag "
 "hebben."
 
 msgctxt "model:ir.message,text:msg_sale_delete_numbered"

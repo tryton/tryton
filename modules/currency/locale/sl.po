@@ -2,41 +2,38 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-#, fuzzy
 msgctxt "field:currency.cron,currencies:"
 msgid "Currencies"
-msgstr "Currencies"
+msgstr "Valute"
 
-#, fuzzy
 msgctxt "field:currency.cron,currency:"
 msgid "Currency"
 msgstr "Valuta"
 
 msgctxt "field:currency.cron,day:"
 msgid "Day of Month"
-msgstr ""
+msgstr "Dan v mesecu"
 
 msgctxt "field:currency.cron,frequency:"
 msgid "Frequency"
-msgstr ""
+msgstr "Rednost"
 
 msgctxt "field:currency.cron,last_update:"
 msgid "Last Update"
-msgstr ""
+msgstr "Zadnja posodobitev"
 
 msgctxt "field:currency.cron,source:"
 msgid "Source"
-msgstr ""
+msgstr "Izvor"
 
 msgctxt "field:currency.cron,weekday:"
 msgid "Day of Week"
-msgstr ""
+msgstr "Dan v tednu"
 
 msgctxt "field:currency.cron-currency.currency,cron:"
 msgid "Cron"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:currency.cron-currency.currency,currency:"
 msgid "Currency"
 msgstr "Valuta"
@@ -47,7 +44,7 @@ msgstr "Oznaka"
 
 msgctxt "field:currency.currency,digits:"
 msgid "Digits"
-msgstr ""
+msgstr "Decimalke"
 
 msgctxt "field:currency.currency,name:"
 msgid "Name"
@@ -87,59 +84,59 @@ msgstr "Tečaj"
 
 msgctxt "help:currency.cron,currencies:"
 msgid "The currencies to update the rate."
-msgstr ""
+msgstr "Valute za posodobitev tečaja."
 
 msgctxt "help:currency.cron,currency:"
 msgid "The base currency to fetch rate."
-msgstr ""
+msgstr "Osnovna valuta za pridobitev tečaja."
 
 msgctxt "help:currency.cron,frequency:"
 msgid "How frequently rates must be updated."
-msgstr ""
+msgstr "Kako pogosto se posodobi tečajna lista."
 
 msgctxt "help:currency.cron,source:"
 msgid "The external source for rates."
-msgstr ""
+msgstr "Zunanji vir tečajne liste."
 
 msgctxt "help:currency.currency,code:"
 msgid "The 3 chars ISO currency code."
-msgstr ""
+msgstr "3-črkovna ISO oznaka valute."
 
 msgctxt "help:currency.currency,digits:"
 msgid "The number of digits to display after the decimal separator."
-msgstr ""
+msgstr "Število decimalnih mest, ki se prikažejo po decimalnem ločilu."
 
 msgctxt "help:currency.currency,name:"
 msgid "The main identifier of the currency."
-msgstr ""
+msgstr "Glavni identifikator valute."
 
 msgctxt "help:currency.currency,numeric_code:"
 msgid "The 3 digits ISO currency code."
-msgstr ""
+msgstr "3-številčna ISO koda valute."
 
 msgctxt "help:currency.currency,rates:"
 msgid "Add floating exchange rates for the currency."
-msgstr ""
+msgstr "Dodaj plavajoče tečaje za valuto."
 
 msgctxt "help:currency.currency,rounding:"
 msgid "The minimum amount which can be represented in this currency."
-msgstr ""
+msgstr "Minimalni znesek v valuti."
 
 msgctxt "help:currency.currency,symbol:"
 msgid "The symbol used for currency formating."
-msgstr ""
+msgstr "Simbol uporabljen za oblikovanje valute."
 
 msgctxt "help:currency.currency.rate,currency:"
 msgid "The currency on which the rate applies."
-msgstr ""
+msgstr "Valuta povezana s tečajem."
 
 msgctxt "help:currency.currency.rate,date:"
 msgid "From when the rate applies."
-msgstr ""
+msgstr "Od kdaj velja tečaj."
 
 msgctxt "help:currency.currency.rate,rate:"
 msgid "The floating exchange rate used to convert the currency."
-msgstr ""
+msgstr "Plavajoči tečaj uporabljen za pretvorbo valute."
 
 #, fuzzy
 msgctxt "model:currency.cron,name:"
@@ -154,77 +151,69 @@ msgctxt "model:currency.currency,name:"
 msgid "Currency"
 msgstr "Valuta"
 
-#, fuzzy
 msgctxt "model:currency.currency.rate,name:"
 msgid "Currency Rate"
-msgstr "Trenutni tečaj"
+msgstr "Valutni tečaj"
 
 msgctxt "model:ir.action,name:act_cron_form"
 msgid "Scheduled Rate Updates"
-msgstr ""
+msgstr "Urnik posodobitve tečajev"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_currency_form"
 msgid "Currencies"
-msgstr "Currencies"
+msgstr "Valute"
 
 msgctxt "model:ir.message,text:msg_currency_rate_positive"
 msgid "A currency rate must be positive."
-msgstr ""
+msgstr "Valutni tečaj mora biti pozitiven."
 
-#, fuzzy
 msgctxt "model:ir.message,text:msg_currency_unique_rate_date"
 msgid "A currency can only have one rate by date."
 msgstr "Valuta ima lahko samo en tečaj na dan."
 
-#, fuzzy
 msgctxt "model:ir.message,text:msg_no_rate"
 msgid "No rate found for currency \"%(currency)s\" on \"%(date)s\"."
-msgstr "Za valuto \"%(currency)s\" na dan \"%(date)s\" tečaja ni možno najti."
+msgstr "Za valuto \"%(currency)s\" na dan \"%(date)s\" tečaja ni bilo mogoče najti."
 
 msgctxt "model:ir.model.button,string:cron_run_button"
 msgid "Run"
-msgstr ""
+msgstr "Zaženi"
 
 msgctxt "model:ir.ui.menu,name:menu_cron_form"
 msgid "Scheduled Rate Updates"
-msgstr ""
+msgstr "Urnik posodobitve tečajev"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_currency"
 msgid "Currencies"
-msgstr "Currencies"
+msgstr "Valute"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_currency_form"
 msgid "Currencies"
-msgstr "Currencies"
+msgstr "Valute"
 
-#, fuzzy
 msgctxt "model:res.group,name:group_currency_admin"
 msgid "Currency Administration"
-msgstr "Currency Administration"
+msgstr "Skrbništvo valut"
 
 msgctxt "selection:currency.cron,frequency:"
 msgid "Daily"
-msgstr ""
+msgstr "Dnevno"
 
 msgctxt "selection:currency.cron,frequency:"
 msgid "Monthly"
-msgstr ""
+msgstr "Mesečno"
 
 msgctxt "selection:currency.cron,frequency:"
 msgid "Weekly"
-msgstr ""
+msgstr "Tedensko"
 
 msgctxt "selection:currency.cron,source:"
 msgid "European Central Bank"
-msgstr ""
+msgstr "Evropska centralna banka"
 
-#, fuzzy
 msgctxt "selection:ir.cron,method:"
 msgid "Update Currency Rates"
-msgstr "Trenutni tečaj"
+msgstr "Posodobi valutne tečaje"
 
 msgctxt "view:currency.currency:"
 msgid "Rates"

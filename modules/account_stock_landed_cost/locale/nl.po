@@ -53,7 +53,7 @@ msgstr "Producten"
 
 msgctxt "field:account.landed_cost,shipments:"
 msgid "Shipments"
-msgstr "Leveringen"
+msgstr "Zendingen"
 
 msgctxt "field:account.landed_cost,state:"
 msgid "State"
@@ -81,7 +81,7 @@ msgstr "Landed Cost"
 
 msgctxt "field:account.landed_cost-stock.shipment.in,shipment:"
 msgid "Shipment"
-msgstr "Leveringen"
+msgstr "Zending"
 
 msgctxt "field:account.landed_cost.show,cost:"
 msgid "Cost"

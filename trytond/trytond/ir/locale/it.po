@@ -2,6 +2,11 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
+#, fuzzy
+msgctxt "field:ir.action,action:"
+msgid "Action"
+msgstr "Azione"
+
 msgctxt "field:ir.action,icon:"
 msgid "Icon"
 msgstr "Icona"
@@ -669,9 +674,19 @@ msgctxt "field:ir.export,name:"
 msgid "Name"
 msgstr "Nome"
 
+#, fuzzy
+msgctxt "field:ir.export,records:"
+msgid "Records"
+msgstr "Record ID"
+
 msgctxt "field:ir.export,resource:"
 msgid "Resource"
 msgstr "Risorsa"
+
+#, fuzzy
+msgctxt "field:ir.export,user:"
+msgid "User"
+msgstr "Utente"
 
 msgctxt "field:ir.export.line,export:"
 msgid "Export"
@@ -1230,6 +1245,10 @@ msgctxt "field:ir.sequence,prefix:"
 msgid "Prefix"
 msgstr "Prefisso"
 
+msgctxt "field:ir.sequence,preview:"
+msgid "Preview"
+msgstr ""
+
 #, fuzzy
 msgctxt "field:ir.sequence,sequence_type:"
 msgid "Sequence Type"
@@ -1278,6 +1297,10 @@ msgstr "Padding del numero"
 msgctxt "field:ir.sequence.strict,prefix:"
 msgid "Prefix"
 msgstr "Prefisso"
+
+msgctxt "field:ir.sequence.strict,preview:"
+msgid "Preview"
+msgstr ""
 
 #, fuzzy
 msgctxt "field:ir.sequence.strict,sequence_type:"
@@ -1706,6 +1729,10 @@ msgctxt "help:ir.export,header:"
 msgid "Check to include field names on the export."
 msgstr ""
 
+msgctxt "help:ir.export,records:"
+msgid "The records on which the export runs."
+msgstr ""
+
 msgctxt "help:ir.lang,code:"
 msgid "RFC 4646 tag."
 msgstr ""
@@ -1775,7 +1802,6 @@ msgstr ""
 msgctxt "help:ir.rule,domain:"
 msgid ""
 "Domain is evaluated with a PYSON context containing:\n"
-"- \"user\" as the current user\n"
 "- \"groups\" as list of ids from the current user"
 msgstr ""
 "Il dominio è valutato con un context PYSON contenente \n"
@@ -1804,6 +1830,30 @@ msgid "The rule is satisfied if at least one test is True."
 msgstr ""
 "La regola ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¨ rispettata se almeno uno "
 "ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¨ True"
+
+msgctxt "help:ir.sequence,prefix:"
+msgid ""
+"The current date can be used formatted using strftime format suffixed with "
+"underscores: i.e: ${date_Y}"
+msgstr ""
+
+msgctxt "help:ir.sequence,suffix:"
+msgid ""
+"The current date can be used formatted using strftime format suffixed with "
+"underscores: i.e: ${date_Y}"
+msgstr ""
+
+msgctxt "help:ir.sequence.strict,prefix:"
+msgid ""
+"The current date can be used formatted using strftime format suffixed with "
+"underscores: i.e: ${date_Y}"
+msgstr ""
+
+msgctxt "help:ir.sequence.strict,suffix:"
+msgid ""
+"The current date can be used formatted using strftime format suffixed with "
+"underscores: i.e: ${date_Y}"
+msgstr ""
 
 msgctxt "help:ir.trigger,condition:"
 msgid ""
@@ -1923,7 +1973,7 @@ msgstr "Menu"
 
 #, fuzzy
 msgctxt "model:ir.action,name:act_message_form"
-msgid "Message"
+msgid "Messages"
 msgstr "Messaggio"
 
 #, fuzzy
@@ -3096,6 +3146,13 @@ msgstr ""
 "%(overriding_module)s."
 
 #, fuzzy
+msgctxt "model:ir.message,text:msg_trigger_exclusive"
+msgid ""
+"You can not select \"On Time\" and any other on the same time, they are "
+"mutually exclusive."
+msgstr "\"On Time\" e others si escludono a vicenda"
+
+#, fuzzy
 msgctxt "model:ir.message,text:msg_trigger_invalid_condition"
 msgid ""
 "Condition \"%(condition)s\" is not a valid PYSON expression for trigger "
@@ -3122,6 +3179,10 @@ msgid "Invalid domain or search criteria \"%(domain)s\" for search \"%(search)s\
 msgstr ""
 "Dominio o criterio di ricerca \"%(domain)s\" invalido nell'azione "
 "\"%(action)s\"."
+
+msgctxt "model:ir.message,text:msg_view_tree_optional_type"
+msgid "You cannot store optional on view \"%(view)s\"."
+msgstr ""
 
 #, fuzzy
 msgctxt "model:ir.message,text:msg_write_error"
@@ -3478,7 +3539,7 @@ msgstr "Menu"
 
 #, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_message_form"
-msgid "Message"
+msgid "Messages"
 msgstr "Messaggio"
 
 #, fuzzy
@@ -3653,6 +3714,26 @@ msgstr "Vista ad albero dello stato"
 msgctxt "model:ir.ui.view_tree_width,name:"
 msgid "View Tree Width"
 msgstr "Vista ad albero dell'ampiezza"
+
+#, fuzzy
+msgctxt "selection:ir.action,action:"
+msgid "Report"
+msgstr "Report"
+
+#, fuzzy
+msgctxt "selection:ir.action,action:"
+msgid "URL"
+msgstr "URLs"
+
+#, fuzzy
+msgctxt "selection:ir.action,action:"
+msgid "Window"
+msgstr "Finestra"
+
+#, fuzzy
+msgctxt "selection:ir.action,action:"
+msgid "Wizard"
+msgstr "Wizards"
 
 msgctxt "selection:ir.action,records:"
 msgid "Listed"
@@ -3882,6 +3963,15 @@ msgctxt "selection:ir.error,state:"
 msgid "Solved"
 msgstr ""
 
+msgctxt "selection:ir.export,records:"
+msgid "Listed"
+msgstr ""
+
+#, fuzzy
+msgctxt "selection:ir.export,records:"
+msgid "Selected"
+msgstr "Nodi selezionati"
+
 msgctxt "selection:ir.lang,direction:"
 msgid "Left-to-right"
 msgstr "Sinistra-destra"
@@ -4041,25 +4131,9 @@ msgctxt "selection:ir.ui.view,type:"
 msgid "Tree"
 msgstr "Tree"
 
-msgctxt "view:ir.action.act_window:"
-msgid "General"
-msgstr "Generale"
-
 msgctxt "view:ir.action.report:"
 msgid "Edit"
 msgstr ""
-
-msgctxt "view:ir.action.report:"
-msgid "General"
-msgstr "Generale"
-
-msgctxt "view:ir.action.url:"
-msgid "General"
-msgstr "Generale"
-
-msgctxt "view:ir.action.wizard:"
-msgid "General"
-msgstr "Generale"
 
 msgctxt "view:ir.action:"
 msgid "General"
@@ -4219,42 +4293,6 @@ msgstr ""
 "La regola ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¨ rispettata se almeno uno "
 "ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¨ True"
 
-msgctxt "view:ir.sequence:"
-msgid "${day}"
-msgstr "$ {giorno}"
-
-msgctxt "view:ir.sequence:"
-msgid "${month}"
-msgstr "$ {mese}"
-
-msgctxt "view:ir.sequence:"
-msgid "${year}"
-msgstr "$ {anno}"
-
-msgctxt "view:ir.sequence:"
-msgid "Day:"
-msgstr "Giorno:"
-
-msgctxt "view:ir.sequence:"
-msgid "Incremental"
-msgstr "Incrementale"
-
-msgctxt "view:ir.sequence:"
-msgid "Legend (Placeholders for prefix, suffix)"
-msgstr "Legenda (segnaposto per prefisso, suffisso)"
-
-msgctxt "view:ir.sequence:"
-msgid "Month:"
-msgstr "Mese:"
-
-msgctxt "view:ir.sequence:"
-msgid "Timestamp"
-msgstr "Marca Temporale"
-
-msgctxt "view:ir.sequence:"
-msgid "Year:"
-msgstr "Anno:"
-
 msgctxt "view:ir.translation.clean.start:"
 msgid "Clean Translations?"
 msgstr "Pulire le traduzioni?"
@@ -4271,6 +4309,11 @@ msgstr "Sincronizza Traduzioni?"
 msgctxt "view:ir.translation.set.succeed:"
 msgid "Translations set successfully."
 msgstr "La traduzionedev'essere unica"
+
+#, fuzzy
+msgctxt "view:ir.ui.menu:"
+msgid "Actions"
+msgstr "Actions"
 
 msgctxt "wizard_button:ir.lang.config,start,end:"
 msgid "Cancel"

@@ -2,6 +2,11 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
+#, fuzzy
+msgctxt "field:ir.action,action:"
+msgid "Action"
+msgstr "اقدام"
+
 msgctxt "field:ir.action,icon:"
 msgid "Icon"
 msgstr "آیکون"
@@ -672,9 +677,19 @@ msgctxt "field:ir.export,name:"
 msgid "Name"
 msgstr "نام"
 
+#, fuzzy
+msgctxt "field:ir.export,records:"
+msgid "Records"
+msgstr "شناسه رکورد"
+
 msgctxt "field:ir.export,resource:"
 msgid "Resource"
 msgstr "منبع"
+
+#, fuzzy
+msgctxt "field:ir.export,user:"
+msgid "User"
+msgstr "کاربر"
 
 msgctxt "field:ir.export.line,export:"
 msgid "Export"
@@ -1227,6 +1242,10 @@ msgctxt "field:ir.sequence,prefix:"
 msgid "Prefix"
 msgstr "پیشوند"
 
+msgctxt "field:ir.sequence,preview:"
+msgid "Preview"
+msgstr ""
+
 #, fuzzy
 msgctxt "field:ir.sequence,sequence_type:"
 msgid "Sequence Type"
@@ -1275,6 +1294,10 @@ msgstr "تعداد پدینگ"
 msgctxt "field:ir.sequence.strict,prefix:"
 msgid "Prefix"
 msgstr "پیشوند"
+
+msgctxt "field:ir.sequence.strict,preview:"
+msgid "Preview"
+msgstr ""
 
 #, fuzzy
 msgctxt "field:ir.sequence.strict,sequence_type:"
@@ -1707,6 +1730,10 @@ msgctxt "help:ir.export,header:"
 msgid "Check to include field names on the export."
 msgstr ""
 
+msgctxt "help:ir.export,records:"
+msgid "The records on which the export runs."
+msgstr ""
+
 msgctxt "help:ir.lang,code:"
 msgid "RFC 4646 tag."
 msgstr ""
@@ -1775,7 +1802,6 @@ msgstr "وقتی کار شروع می شود."
 msgctxt "help:ir.rule,domain:"
 msgid ""
 "Domain is evaluated with a PYSON context containing:\n"
-"- \"user\" as the current user\n"
 "- \"groups\" as list of ids from the current user"
 msgstr ""
 "دامنه ارزیابی شده با یک متن PYSON حاوی :\n"
@@ -1803,6 +1829,30 @@ msgstr ""
 msgctxt "help:ir.rule.group,rules:"
 msgid "The rule is satisfied if at least one test is True."
 msgstr "اگر حداقل یک آزمون درست باشد،این قانون راضی کننده است"
+
+msgctxt "help:ir.sequence,prefix:"
+msgid ""
+"The current date can be used formatted using strftime format suffixed with "
+"underscores: i.e: ${date_Y}"
+msgstr ""
+
+msgctxt "help:ir.sequence,suffix:"
+msgid ""
+"The current date can be used formatted using strftime format suffixed with "
+"underscores: i.e: ${date_Y}"
+msgstr ""
+
+msgctxt "help:ir.sequence.strict,prefix:"
+msgid ""
+"The current date can be used formatted using strftime format suffixed with "
+"underscores: i.e: ${date_Y}"
+msgstr ""
+
+msgctxt "help:ir.sequence.strict,suffix:"
+msgid ""
+"The current date can be used formatted using strftime format suffixed with "
+"underscores: i.e: ${date_Y}"
+msgstr ""
 
 msgctxt "help:ir.trigger,condition:"
 msgid ""
@@ -1914,9 +1964,10 @@ msgctxt "model:ir.action,name:act_menu_tree"
 msgid "Menu"
 msgstr "منو"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_message_form"
-msgid "Message"
-msgstr "پیام"
+msgid "Messages"
+msgstr "پیام ها"
 
 msgctxt "model:ir.action,name:act_model_access_form"
 msgid "Models Access"
@@ -3018,6 +3069,13 @@ msgstr ""
 "شما نمیتوانید ترجمه: \"%s\" را صادر کنید، چراکه آن توسط ماژول: \"%s\" لغو "
 "شده است."
 
+#, fuzzy
+msgctxt "model:ir.message,text:msg_trigger_exclusive"
+msgid ""
+"You can not select \"On Time\" and any other on the same time, they are "
+"mutually exclusive."
+msgstr "\"سر وقت\" و دیگران متقابلاً انحصاری میباشند!"
+
 msgctxt "model:ir.message,text:msg_trigger_invalid_condition"
 msgid ""
 "Condition \"%(condition)s\" is not a valid PYSON expression for trigger "
@@ -3039,6 +3097,10 @@ msgstr "XML غیرمعتبر برای مشاهده \"%s\"."
 msgctxt "model:ir.message,text:msg_view_search_invalid_domain"
 msgid "Invalid domain or search criteria \"%(domain)s\" for search \"%(search)s\"."
 msgstr "نام دامنه یا معیارهای جستجوی: \"%s\" در اقدام: \"%s\" معتبر نیست."
+
+msgctxt "model:ir.message,text:msg_view_tree_optional_type"
+msgid "You cannot store optional on view \"%(view)s\"."
+msgstr ""
 
 #, fuzzy
 msgctxt "model:ir.message,text:msg_write_error"
@@ -3387,10 +3449,9 @@ msgctxt "model:ir.ui.menu,name:menu_menu_list"
 msgid "Menu"
 msgstr "منو"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_message_form"
-msgid "Message"
-msgstr "پیام"
+msgid "Messages"
+msgstr "پیام ها"
 
 msgctxt "model:ir.ui.menu,name:menu_model_access_form"
 msgid "Models Access"
@@ -3537,6 +3598,26 @@ msgstr "نمایش حالت درختی"
 msgctxt "model:ir.ui.view_tree_width,name:"
 msgid "View Tree Width"
 msgstr "عرض نمایش درختی"
+
+#, fuzzy
+msgctxt "selection:ir.action,action:"
+msgid "Report"
+msgstr "گزارش"
+
+#, fuzzy
+msgctxt "selection:ir.action,action:"
+msgid "URL"
+msgstr "آدرس های اینترنتی"
+
+#, fuzzy
+msgctxt "selection:ir.action,action:"
+msgid "Window"
+msgstr "پنجره"
+
+#, fuzzy
+msgctxt "selection:ir.action,action:"
+msgid "Wizard"
+msgstr "دستیارها"
 
 msgctxt "selection:ir.action,records:"
 msgid "Listed"
@@ -3766,6 +3847,15 @@ msgctxt "selection:ir.error,state:"
 msgid "Solved"
 msgstr ""
 
+msgctxt "selection:ir.export,records:"
+msgid "Listed"
+msgstr ""
+
+#, fuzzy
+msgctxt "selection:ir.export,records:"
+msgid "Selected"
+msgstr "گره های انتخاب شده"
+
 msgctxt "selection:ir.lang,direction:"
 msgid "Left-to-right"
 msgstr "چپ به راست"
@@ -3925,25 +4015,9 @@ msgctxt "selection:ir.ui.view,type:"
 msgid "Tree"
 msgstr "درخت"
 
-msgctxt "view:ir.action.act_window:"
-msgid "General"
-msgstr "عمومی"
-
 msgctxt "view:ir.action.report:"
 msgid "Edit"
 msgstr ""
-
-msgctxt "view:ir.action.report:"
-msgid "General"
-msgstr "عمومی"
-
-msgctxt "view:ir.action.url:"
-msgid "General"
-msgstr "عمومی"
-
-msgctxt "view:ir.action.wizard:"
-msgid "General"
-msgstr "عمومی"
 
 msgctxt "view:ir.action:"
 msgid "General"
@@ -4101,42 +4175,6 @@ msgctxt "view:ir.rule.group:"
 msgid "The rule is satisfied if at least one test is True."
 msgstr "اگر حداقل یک آزمون درست باشد،این قانون راضی کننده است"
 
-msgctxt "view:ir.sequence:"
-msgid "${day}"
-msgstr "${day}"
-
-msgctxt "view:ir.sequence:"
-msgid "${month}"
-msgstr "${month}"
-
-msgctxt "view:ir.sequence:"
-msgid "${year}"
-msgstr "${year}"
-
-msgctxt "view:ir.sequence:"
-msgid "Day:"
-msgstr "روز:"
-
-msgctxt "view:ir.sequence:"
-msgid "Incremental"
-msgstr "افزایشی"
-
-msgctxt "view:ir.sequence:"
-msgid "Legend (Placeholders for prefix, suffix)"
-msgstr "افسانه (متغیرهایی برای پیشوند، پسوند)"
-
-msgctxt "view:ir.sequence:"
-msgid "Month:"
-msgstr "ماه:"
-
-msgctxt "view:ir.sequence:"
-msgid "Timestamp"
-msgstr "برچسب زمان"
-
-msgctxt "view:ir.sequence:"
-msgid "Year:"
-msgstr "سال:"
-
 msgctxt "view:ir.translation.clean.start:"
 msgid "Clean Translations?"
 msgstr "پاک کردن ترجمه؟"
@@ -4153,6 +4191,11 @@ msgstr "همگام سازی ترجمه ها؟"
 msgctxt "view:ir.translation.set.succeed:"
 msgid "Translations set successfully."
 msgstr "ترجمه باید منحصر به فرد باشد"
+
+#, fuzzy
+msgctxt "view:ir.ui.menu:"
+msgid "Actions"
+msgstr "اقدامات"
 
 #, fuzzy
 msgctxt "wizard_button:ir.lang.config,start,end:"

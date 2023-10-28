@@ -22,17 +22,17 @@ msgctxt "field:carrier.credential.ups,account_number:"
 msgid "Account Number"
 msgstr "Número de compte"
 
+msgctxt "field:carrier.credential.ups,client_id:"
+msgid "Client ID"
+msgstr "ID Client"
+
+msgctxt "field:carrier.credential.ups,client_secret:"
+msgid "Client Secret"
+msgstr "Secret client"
+
 msgctxt "field:carrier.credential.ups,company:"
 msgid "Company"
 msgstr "Empresa"
-
-msgctxt "field:carrier.credential.ups,license:"
-msgid "License"
-msgstr "Llicència"
-
-msgctxt "field:carrier.credential.ups,password:"
-msgid "Password"
-msgstr "Contrasenya"
 
 msgctxt "field:carrier.credential.ups,server:"
 msgid "Server"
@@ -41,10 +41,6 @@ msgstr "Servidor"
 msgctxt "field:carrier.credential.ups,use_metric:"
 msgid "Use Metric"
 msgstr "Usa mètric"
-
-msgctxt "field:carrier.credential.ups,user_id:"
-msgid "User ID"
-msgstr "Identificador usuari"
 
 msgctxt "field:stock.package.type,ups_code:"
 msgid "UPS Code"

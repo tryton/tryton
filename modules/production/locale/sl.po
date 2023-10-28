@@ -49,10 +49,6 @@ msgctxt "field:production,done_by:"
 msgid "Done By"
 msgstr "Done"
 
-msgctxt "field:production,effective_date:"
-msgid "Effective Date"
-msgstr "Dejanski datum"
-
 msgctxt "field:production,effective_start_date:"
 msgid "Effective Start Date"
 msgstr "Dejanski začetek"
@@ -71,7 +67,7 @@ msgstr "Številka"
 
 msgctxt "field:production,origin:"
 msgid "Origin"
-msgstr ""
+msgstr "Izvor"
 
 msgctxt "field:production,outputs:"
 msgid "Outputs"
@@ -81,10 +77,6 @@ msgstr "Izhodi"
 msgctxt "field:production,partially_assigned:"
 msgid "Partially Assigned"
 msgstr "Assigned"
-
-msgctxt "field:production,planned_date:"
-msgid "Planned Date"
-msgstr "Načrtovan datum"
 
 msgctxt "field:production,planned_start_date:"
 msgid "Planned Start Date"
@@ -110,12 +102,14 @@ msgctxt "field:production,state:"
 msgid "State"
 msgstr "Stanje"
 
-msgctxt "field:production,uom:"
-msgid "Uom"
-msgstr "ME"
+#, fuzzy
+msgctxt "field:production,unit:"
+msgid "Unit"
+msgstr "enota"
 
+#, fuzzy
 msgctxt "field:production,uom_category:"
-msgid "Uom Category"
+msgid "UoM Category"
 msgstr "Kategorija ME"
 
 msgctxt "field:production,warehouse:"
@@ -150,9 +144,10 @@ msgctxt "field:production.bom.input,quantity:"
 msgid "Quantity"
 msgstr "Količina"
 
-msgctxt "field:production.bom.input,uom:"
-msgid "Uom"
-msgstr "ME"
+#, fuzzy
+msgctxt "field:production.bom.input,unit:"
+msgid "Unit"
+msgstr "enota"
 
 msgctxt "field:production.bom.input,uom_category:"
 msgid "Uom Category"
@@ -170,9 +165,10 @@ msgctxt "field:production.bom.output,quantity:"
 msgid "Quantity"
 msgstr "Količina"
 
-msgctxt "field:production.bom.output,uom:"
-msgid "Uom"
-msgstr "ME"
+#, fuzzy
+msgctxt "field:production.bom.output,unit:"
+msgid "Unit"
+msgstr "enota"
 
 msgctxt "field:production.bom.output,uom_category:"
 msgid "Uom Category"
@@ -190,9 +186,10 @@ msgctxt "field:production.bom.tree,quantity:"
 msgid "Quantity"
 msgstr "Količina"
 
-msgctxt "field:production.bom.tree,uom:"
-msgid "Uom"
-msgstr "ME"
+#, fuzzy
+msgctxt "field:production.bom.tree,unit:"
+msgid "Unit"
+msgstr "enota"
 
 msgctxt "field:production.bom.tree.open.start,bom:"
 msgid "BOM"
@@ -210,7 +207,8 @@ msgctxt "field:production.bom.tree.open.start,quantity:"
 msgid "Quantity"
 msgstr "Količina"
 
-msgctxt "field:production.bom.tree.open.start,uom:"
+#, fuzzy
+msgctxt "field:production.bom.tree.open.start,unit:"
 msgid "Unit"
 msgstr "enota"
 
@@ -229,7 +227,7 @@ msgstr "Družba"
 msgctxt ""
 "field:production.configuration.production_sequence,production_sequence:"
 msgid "Production Sequence"
-msgstr "Štetje proizvodnih nalogov"
+msgstr "Številčna serija proizvodnih nalogov"
 
 msgctxt "field:production.lead_time,bom:"
 msgid "BOM"
@@ -284,6 +282,18 @@ msgctxt "field:stock.move,production_output:"
 msgid "Production Output"
 msgstr "Izhod proizvodnega naloga"
 
+msgctxt "help:production,number:"
+msgid "The main identifier for the shipment."
+msgstr ""
+
+msgctxt "help:production,reference:"
+msgid "The external identifier for the shipment."
+msgstr ""
+
+msgctxt "help:production,uom_category:"
+msgid "The category of Unit of Measure."
+msgstr ""
+
 msgctxt "help:stock.location,production_output_location:"
 msgid ""
 "Where the produced goods are stored.\n"
@@ -316,10 +326,9 @@ msgctxt "model:ir.action,name:act_production_calendar"
 msgid "Productions"
 msgstr "Productions"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_production_configuration_form"
 msgid "Configuration"
-msgstr "Configuration"
+msgstr "Konfiguracija"
 
 #, fuzzy
 msgctxt "model:ir.action,name:act_production_list"
@@ -458,10 +467,9 @@ msgctxt "model:ir.ui.menu,name:menu_bom_list"
 msgid "BOMs"
 msgstr "BOMs"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_configuration"
 msgid "Configuration"
-msgstr "Configuration"
+msgstr "Konfiguracija"
 
 #, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_production"
@@ -473,10 +481,9 @@ msgctxt "model:ir.ui.menu,name:menu_production_calendar"
 msgid "Productions"
 msgstr "Productions"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_production_configuration"
 msgid "Configuration"
-msgstr "Configuration"
+msgstr "Konfiguracija"
 
 #, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_production_list"
@@ -521,7 +528,7 @@ msgstr "Proizvodna konfiguracija"
 
 msgctxt "model:production.configuration.production_sequence,name:"
 msgid "Production Configuration Production Sequence"
-msgstr "Konfiguracija štetja proizvodnih nalogov"
+msgstr "Konfiguracija številčne serije proizvodnih nalogov"
 
 msgctxt "model:production.lead_time,name:"
 msgid "Production Lead Time"

@@ -1,4 +1,5 @@
 #
+#, fuzzy
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
@@ -16,7 +17,7 @@ msgstr ""
 
 msgctxt "field:sale.configuration,product_recommendation_size:"
 msgid "Size"
-msgstr ""
+msgstr "Velikost"
 
 msgctxt ""
 "field:sale.configuration.product_recommendation,product_recommendation_method:"
@@ -26,7 +27,7 @@ msgstr ""
 msgctxt ""
 "field:sale.configuration.product_recommendation,product_recommendation_size:"
 msgid "Size"
-msgstr ""
+msgstr "Velikost"
 
 msgctxt "field:sale.point.sale,recommended_products:"
 msgid "Recommended Products"

@@ -2,6 +2,10 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
+msgctxt "field:ir.action,action:"
+msgid "Action"
+msgstr "Aktion"
+
 msgctxt "field:ir.action,icon:"
 msgid "Icon"
 msgstr "Icon"
@@ -638,9 +642,17 @@ msgctxt "field:ir.export,name:"
 msgid "Name"
 msgstr "Name Export"
 
+msgctxt "field:ir.export,records:"
+msgid "Records"
+msgstr "Datensätze"
+
 msgctxt "field:ir.export,resource:"
 msgid "Resource"
 msgstr "Ressource"
+
+msgctxt "field:ir.export,user:"
+msgid "User"
+msgstr "Benutzer"
 
 msgctxt "field:ir.export.line,export:"
 msgid "Export"
@@ -1186,6 +1198,10 @@ msgctxt "field:ir.sequence,prefix:"
 msgid "Prefix"
 msgstr "Präfix"
 
+msgctxt "field:ir.sequence,preview:"
+msgid "Preview"
+msgstr "Vorschau"
+
 msgctxt "field:ir.sequence,sequence_type:"
 msgid "Sequence Type"
 msgstr "Nummernkreistyp"
@@ -1233,6 +1249,10 @@ msgstr "Feste Länge (Vornullen)"
 msgctxt "field:ir.sequence.strict,prefix:"
 msgid "Prefix"
 msgstr "Präfix"
+
+msgctxt "field:ir.sequence.strict,preview:"
+msgid "Preview"
+msgstr "Vorschau"
 
 msgctxt "field:ir.sequence.strict,sequence_type:"
 msgid "Sequence Type"
@@ -1652,6 +1672,10 @@ msgctxt "help:ir.export,header:"
 msgid "Check to include field names on the export."
 msgstr "Aktivieren, um die Feldnamen in den Export aufzunehmen."
 
+msgctxt "help:ir.export,records:"
+msgid "The records on which the export runs."
+msgstr "Zu exportierende Datensätze."
+
 msgctxt "help:ir.lang,code:"
 msgid "RFC 4646 tag."
 msgstr "RFC 4646 Tag."
@@ -1720,11 +1744,9 @@ msgstr "Wann die Aufgabe gestartet werden kann."
 msgctxt "help:ir.rule,domain:"
 msgid ""
 "Domain is evaluated with a PYSON context containing:\n"
-"- \"user\" as the current user\n"
 "- \"groups\" as list of ids from the current user"
 msgstr ""
 "Wertebereich (Domain) wird ausgewertet mit einem PYSON Kontext, der enthält:\n"
-"- \"user\" als der aktuelle Benutzer\n"
 "- \"groups\" als Liste von IDs der Gruppen des aktuellen Benutzers"
 
 msgctxt "help:ir.rule.group,default_p:"
@@ -1749,6 +1771,38 @@ msgctxt "help:ir.rule.group,rules:"
 msgid "The rule is satisfied if at least one test is True."
 msgstr ""
 "Die Regel wird gültig bewertet, wenn wenigstens ein Test positiv (True) ist."
+
+msgctxt "help:ir.sequence,prefix:"
+msgid ""
+"The current date can be used formatted using strftime format suffixed with "
+"underscores: i.e: ${date_Y}"
+msgstr ""
+"Das aktuelle Datum kann über das Anhängen eines Unterstrichs und einer "
+"strftime-Formatbeschreibung formatiert werden: z.B. ${date_Y}"
+
+msgctxt "help:ir.sequence,suffix:"
+msgid ""
+"The current date can be used formatted using strftime format suffixed with "
+"underscores: i.e: ${date_Y}"
+msgstr ""
+"Das aktuelle Datum kann über das Anhängen eines Unterstrichs und einer "
+"strftime-Formatbeschreibung formatiert werden: z.B. ${date_Y}"
+
+msgctxt "help:ir.sequence.strict,prefix:"
+msgid ""
+"The current date can be used formatted using strftime format suffixed with "
+"underscores: i.e: ${date_Y}"
+msgstr ""
+"Das aktuelle Datum kann über das Anhängen eines Unterstrichs und einer "
+"strftime-Formatbeschreibung formatiert werden: z.B. ${date_Y}"
+
+msgctxt "help:ir.sequence.strict,suffix:"
+msgid ""
+"The current date can be used formatted using strftime format suffixed with "
+"underscores: i.e: ${date_Y}"
+msgstr ""
+"Das aktuelle Datum kann über das Anhängen eines Unterstrichs und einer "
+"strftime-Formatbeschreibung formatiert werden: z.B. ${date_Y}"
 
 # https://de.wikipedia.org/wiki/Datenbanktrigger
 msgctxt "help:ir.trigger,condition:"
@@ -1856,8 +1910,8 @@ msgid "Menu"
 msgstr "Menü"
 
 msgctxt "model:ir.action,name:act_message_form"
-msgid "Message"
-msgstr "Nachricht"
+msgid "Messages"
+msgstr "Nachrichten"
 
 msgctxt "model:ir.action,name:act_model_access_form"
 msgid "Models Access"
@@ -2947,6 +3001,14 @@ msgstr ""
 "Übersetzung %(name)s kann nicht exportiert werden, weil sie durch Modul "
 "%(overriding_module)s überschrieben wurde."
 
+msgctxt "model:ir.message,text:msg_trigger_exclusive"
+msgid ""
+"You can not select \"On Time\" and any other on the same time, they are "
+"mutually exclusive."
+msgstr ""
+"\"Zeitgesteuert\" und die restlichen Optionen schließen sich gegenseitig "
+"aus."
+
 # https://de.wikipedia.org/wiki/Datenbanktrigger
 msgctxt "model:ir.message,text:msg_trigger_invalid_condition"
 msgid ""
@@ -2973,6 +3035,10 @@ msgid "Invalid domain or search criteria \"%(domain)s\" for search \"%(search)s\
 msgstr ""
 "Ungültiger Wertebereich (Domain) oder ungültige Suchkriterien \"%(domain)s\""
 " für Suche \"%(search)s\"."
+
+msgctxt "model:ir.message,text:msg_view_tree_optional_type"
+msgid "You cannot store optional on view \"%(view)s\"."
+msgstr "Es kann keine optionale Spalte in Sicht \"%(view)s\" gespeichert werden."
 
 msgctxt "model:ir.message,text:msg_write_error"
 msgid ""
@@ -3316,8 +3382,8 @@ msgid "Menu"
 msgstr "Menü"
 
 msgctxt "model:ir.ui.menu,name:menu_message_form"
-msgid "Message"
-msgstr "Nachricht"
+msgid "Messages"
+msgstr "Nachrichten"
 
 msgctxt "model:ir.ui.menu,name:menu_model_access_form"
 msgid "Models Access"
@@ -3463,6 +3529,22 @@ msgstr "Sicht Baumansicht"
 msgctxt "model:ir.ui.view_tree_width,name:"
 msgid "View Tree Width"
 msgstr "Spaltenbreiten Sicht"
+
+msgctxt "selection:ir.action,action:"
+msgid "Report"
+msgstr "Bericht"
+
+msgctxt "selection:ir.action,action:"
+msgid "URL"
+msgstr "URL"
+
+msgctxt "selection:ir.action,action:"
+msgid "Window"
+msgstr "Separates Fenster"
+
+msgctxt "selection:ir.action,action:"
+msgid "Wizard"
+msgstr "Assistent"
 
 msgctxt "selection:ir.action,records:"
 msgid "Listed"
@@ -3664,6 +3746,14 @@ msgctxt "selection:ir.error,state:"
 msgid "Solved"
 msgstr "Behoben"
 
+msgctxt "selection:ir.export,records:"
+msgid "Listed"
+msgstr "Aufgelistete"
+
+msgctxt "selection:ir.export,records:"
+msgid "Selected"
+msgstr "Ausgewählte"
+
 msgctxt "selection:ir.lang,direction:"
 msgid "Left-to-right"
 msgstr "Links-nach-Rechts"
@@ -3820,25 +3910,9 @@ msgctxt "selection:ir.ui.view,type:"
 msgid "Tree"
 msgstr "Baum"
 
-msgctxt "view:ir.action.act_window:"
-msgid "General"
-msgstr "Allgemein"
-
 msgctxt "view:ir.action.report:"
 msgid "Edit"
 msgstr "Bearbeiten"
-
-msgctxt "view:ir.action.report:"
-msgid "General"
-msgstr "Allgemein"
-
-msgctxt "view:ir.action.url:"
-msgid "General"
-msgstr "Allgemein"
-
-msgctxt "view:ir.action.wizard:"
-msgid "General"
-msgstr "Allgemein"
 
 msgctxt "view:ir.action:"
 msgid "General"
@@ -3991,42 +4065,6 @@ msgstr ""
 "Die Regel wird als gültig bewertet, wenn wenigstens ein Test positiv (True) "
 "ist."
 
-msgctxt "view:ir.sequence:"
-msgid "${day}"
-msgstr "${day}"
-
-msgctxt "view:ir.sequence:"
-msgid "${month}"
-msgstr "${month}"
-
-msgctxt "view:ir.sequence:"
-msgid "${year}"
-msgstr "${year}"
-
-msgctxt "view:ir.sequence:"
-msgid "Day:"
-msgstr "Tag:"
-
-msgctxt "view:ir.sequence:"
-msgid "Incremental"
-msgstr "Inkrementell"
-
-msgctxt "view:ir.sequence:"
-msgid "Legend (Placeholders for prefix, suffix)"
-msgstr "Legende (Platzhalter für Präfix, Suffix)"
-
-msgctxt "view:ir.sequence:"
-msgid "Month:"
-msgstr "Monat:"
-
-msgctxt "view:ir.sequence:"
-msgid "Timestamp"
-msgstr "Zeitstempel"
-
-msgctxt "view:ir.sequence:"
-msgid "Year:"
-msgstr "Jahr:"
-
 msgctxt "view:ir.translation.clean.start:"
 msgid "Clean Translations?"
 msgstr "Übersetzung bereinigen?"
@@ -4042,6 +4080,10 @@ msgstr "Übersetzungen aktualisieren?"
 msgctxt "view:ir.translation.set.succeed:"
 msgid "Translations set successfully."
 msgstr "Übersetzungen erfolgreich aktualisiert."
+
+msgctxt "view:ir.ui.menu:"
+msgid "Actions"
+msgstr "Aktionen"
 
 msgctxt "wizard_button:ir.lang.config,start,end:"
 msgid "Cancel"

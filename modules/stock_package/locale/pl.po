@@ -18,10 +18,6 @@ msgctxt "field:stock.package,children:"
 msgid "Children"
 msgstr "Podrzędne paczki"
 
-msgctxt "field:stock.package,code:"
-msgid "Code"
-msgstr "Kod"
-
 msgctxt "field:stock.package,company:"
 msgid "Company"
 msgstr ""
@@ -32,7 +28,7 @@ msgstr ""
 
 #, fuzzy
 msgctxt "field:stock.package,height_uom:"
-msgid "Height UOM"
+msgid "Height UoM"
 msgstr "Paczka"
 
 msgctxt "field:stock.package,length:"
@@ -41,12 +37,16 @@ msgstr ""
 
 #, fuzzy
 msgctxt "field:stock.package,length_uom:"
-msgid "Length UOM"
+msgid "Length UoM"
 msgstr "Paczka"
 
 msgctxt "field:stock.package,moves:"
 msgid "Moves"
 msgstr "Ruchy"
+
+msgctxt "field:stock.package,number:"
+msgid "Number"
+msgstr ""
 
 #, fuzzy
 msgctxt "field:stock.package,packaging_volume:"
@@ -55,7 +55,7 @@ msgstr "Paczka"
 
 #, fuzzy
 msgctxt "field:stock.package,packaging_volume_uom:"
-msgid "Packaging Volume UOM"
+msgid "Packaging Volume UoM"
 msgstr "Paczka"
 
 #, fuzzy
@@ -65,7 +65,7 @@ msgstr "Paczka"
 
 #, fuzzy
 msgctxt "field:stock.package,packaging_weight_uom:"
-msgid "Packaging Weight UOM"
+msgid "Packaging Weight UoM"
 msgstr "Paczka"
 
 msgctxt "field:stock.package,parent:"
@@ -90,7 +90,7 @@ msgstr ""
 
 #, fuzzy
 msgctxt "field:stock.package,width_uom:"
-msgid "Width UOM"
+msgid "Width UoM"
 msgstr "Paczka"
 
 msgctxt "field:stock.package.type,height:"
@@ -99,7 +99,7 @@ msgstr ""
 
 #, fuzzy
 msgctxt "field:stock.package.type,height_uom:"
-msgid "Height UOM"
+msgid "Height UoM"
 msgstr "Paczka"
 
 msgctxt "field:stock.package.type,length:"
@@ -108,7 +108,7 @@ msgstr ""
 
 #, fuzzy
 msgctxt "field:stock.package.type,length_uom:"
-msgid "Length UOM"
+msgid "Length UoM"
 msgstr "Paczka"
 
 msgctxt "field:stock.package.type,name:"
@@ -122,7 +122,7 @@ msgstr "Paczka"
 
 #, fuzzy
 msgctxt "field:stock.package.type,packaging_volume_uom:"
-msgid "Packaging Volume UOM"
+msgid "Packaging Volume UoM"
 msgstr "Paczka"
 
 #, fuzzy
@@ -132,7 +132,7 @@ msgstr "Paczka"
 
 #, fuzzy
 msgctxt "field:stock.package.type,packaging_weight_uom:"
-msgid "Packaging Weight UOM"
+msgid "Packaging Weight UoM"
 msgstr "Paczka"
 
 msgctxt "field:stock.package.type,width:"
@@ -141,7 +141,7 @@ msgstr ""
 
 #, fuzzy
 msgctxt "field:stock.package.type,width_uom:"
-msgid "Width UOM"
+msgid "Width UoM"
 msgstr "Paczka"
 
 msgctxt "field:stock.shipment.in.return,packages:"
@@ -164,40 +164,80 @@ msgctxt "help:stock.package,height:"
 msgid "The height of the package."
 msgstr ""
 
+msgctxt "help:stock.package,height_uom:"
+msgid "The Unit of Measure for the package height."
+msgstr ""
+
 msgctxt "help:stock.package,length:"
 msgid "The length of the package."
+msgstr ""
+
+msgctxt "help:stock.package,length_uom:"
+msgid "The Unit of Measure for the package length."
 msgstr ""
 
 msgctxt "help:stock.package,packaging_volume:"
 msgid "The volume of the package."
 msgstr ""
 
+msgctxt "help:stock.package,packaging_volume_uom:"
+msgid "The Unit of Measure for the packaging volume."
+msgstr ""
+
 msgctxt "help:stock.package,packaging_weight:"
 msgid "The weight of the package when empty."
+msgstr ""
+
+msgctxt "help:stock.package,packaging_weight_uom:"
+msgid "The Unit of Measure for the packaging weight."
 msgstr ""
 
 msgctxt "help:stock.package,width:"
 msgid "The width of the package."
 msgstr ""
 
+msgctxt "help:stock.package,width_uom:"
+msgid "The Unit of Measure for the package width."
+msgstr ""
+
 msgctxt "help:stock.package.type,height:"
 msgid "The height of the package."
+msgstr ""
+
+msgctxt "help:stock.package.type,height_uom:"
+msgid "The Unit of Measure for the package height."
 msgstr ""
 
 msgctxt "help:stock.package.type,length:"
 msgid "The length of the package."
 msgstr ""
 
+msgctxt "help:stock.package.type,length_uom:"
+msgid "The Unit of Measure for the package length."
+msgstr ""
+
 msgctxt "help:stock.package.type,packaging_volume:"
 msgid "The volume of the package."
+msgstr ""
+
+msgctxt "help:stock.package.type,packaging_volume_uom:"
+msgid "The Unit of Measure for the packaging volume."
 msgstr ""
 
 msgctxt "help:stock.package.type,packaging_weight:"
 msgid "The weight of the package when empty."
 msgstr ""
 
+msgctxt "help:stock.package.type,packaging_weight_uom:"
+msgid "The Unit of Measure for the packaging weight."
+msgstr ""
+
 msgctxt "help:stock.package.type,width:"
 msgid "The width of the package."
+msgstr ""
+
+msgctxt "help:stock.package.type,width_uom:"
+msgid "The Unit of Measure for the package width."
 msgstr ""
 
 #, fuzzy

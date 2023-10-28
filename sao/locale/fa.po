@@ -262,6 +262,10 @@ msgstr "جستجو..."
 msgid "Create..."
 msgstr "ایجاد..."
 
+#, fuzzy
+msgid "Create \"%1\"..."
+msgstr "ایجاد..."
+
 msgid "Download"
 msgstr "دانلود"
 
@@ -473,6 +477,9 @@ msgstr "پیش-اعتبارسنجی"
 msgid ":"
 msgstr ":"
 
+msgid "Scan"
+msgstr ""
+
 msgid "Translate"
 msgstr "ترجمه"
 
@@ -543,17 +550,20 @@ msgstr ""
 msgid "%1%"
 msgstr "%1%"
 
-msgid ": "
-msgstr ": "
+msgid "Menu"
+msgstr ""
 
-msgid "Customize"
+msgid "Copy"
+msgstr ""
+
+msgid "#ERROR"
 msgstr ""
 
 msgid "More"
 msgstr "بیشتر"
 
-msgid "#ERROR"
-msgstr ""
+msgid ": "
+msgstr ": "
 
 msgid "Today"
 msgstr "امروز"
@@ -578,6 +588,19 @@ msgstr "انتخاب اقدام شما"
 
 msgid "No action defined."
 msgstr "اقدامی تعریف نشده."
+
+msgid "Discard changes"
+msgstr ""
+
+msgid "Save and New"
+msgstr ""
+
+#, fuzzy
+msgid "Add and New"
+msgstr "اضافه کردن نام های فیلد"
+
+msgid "Apply changes"
+msgstr ""
 
 msgid "Attachments (%1)"
 msgstr "پیوست ها(1%)"
@@ -655,8 +678,8 @@ msgstr "شما باید ابتدا فایل ورودی را انتخاب کنی�
 msgid "Detection failed"
 msgstr ""
 
-msgid "Error processing the file at field %1."
-msgstr "خطای پردازش فایل واقع در فیلد : \"%1\"."
+msgid "Unknown column header \"%1\""
+msgstr ""
 
 msgid "Error"
 msgstr "خطا"
@@ -763,6 +786,15 @@ msgstr ""
 #, fuzzy
 msgid "Remove File"
 msgstr "حذف"
+
+msgid "Code Scanner"
+msgstr ""
+
+msgid "Code"
+msgstr ""
+
+msgid "Toggle Sound"
+msgstr ""
 
 msgid "Wizard"
 msgstr "دستیار نصب"

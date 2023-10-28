@@ -25,7 +25,7 @@ msgstr "Družba"
 
 msgctxt "field:carrier.credential.dpd,depot:"
 msgid "Depot"
-msgstr "Skladišče"
+msgstr "Depot"
 
 msgctxt "field:carrier.credential.dpd,password:"
 msgid "Password"
@@ -41,7 +41,7 @@ msgstr "Žeton"
 
 msgctxt "field:carrier.credential.dpd,user_id:"
 msgid "User ID"
-msgstr "Uporabnik"
+msgstr "ID uporabnika"
 
 msgctxt "help:carrier,dpd_notification:"
 msgid ""
@@ -77,10 +77,10 @@ msgstr ""
 "\n"
 "%(message)s"
 
-msgctxt "model:ir.message,text:msg_shipment_has_reference_number"
+msgctxt "model:ir.message,text:msg_shipment_has_shipping_reference_number"
 msgid ""
 "You cannot create shipping for shipment \"%(shipment)s\" because it has "
-"already a reference number."
+"already a shipping reference number."
 msgstr ""
 
 msgctxt "model:ir.message,text:msg_warehouse_address_required"
@@ -96,7 +96,7 @@ msgstr "DPD Credentials"
 
 msgctxt "selection:carrier,dpd_notification:"
 msgid "E-Mail"
-msgstr ""
+msgstr "E-pošta"
 
 msgctxt "selection:carrier,dpd_notification:"
 msgid "SMS"

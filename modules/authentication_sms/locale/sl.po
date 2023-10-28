@@ -16,21 +16,19 @@ msgstr "Uporabnik"
 
 msgctxt "field:res.user.login.sms_code,user_id:"
 msgid "User ID"
-msgstr "Uporabnik"
+msgstr "ID uporabnika"
 
-#, fuzzy
 msgctxt "help:res.user,mobile:"
 msgid "Phone number that supports receiving SMS."
-msgstr "Telefonska številka, ki prejema SMS"
+msgstr "Telefonska številka, ki omogoča prejem SMS."
 
-#, fuzzy
 msgctxt "model:ir.message,text:msg_sms_text"
 msgid "%(name)s code %(code)s"
 msgstr "%(name)s šifra %(code)s"
 
 msgctxt "model:ir.message,text:msg_user_sms_code"
 msgid "SMS Code for %(login)s"
-msgstr ""
+msgstr "SMS koda za %(login)s"
 
 msgctxt "model:res.user.login.sms_code,name:"
 msgid "SMS Code"

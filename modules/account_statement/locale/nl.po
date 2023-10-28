@@ -315,8 +315,8 @@ msgid "Statements"
 msgstr "Bankafschriften"
 
 msgctxt "model:ir.action,name:act_statement_journal_form"
-msgid "Journals"
-msgstr "Dagboeken"
+msgid "Statement Journals"
+msgstr "logboek van verklaringen (neergelegde verkaringen)"
 
 msgctxt "model:ir.action,name:act_statement_line_move"
 msgid "Statement Lines"
@@ -490,8 +490,8 @@ msgid "Import Statement"
 msgstr "Importeer bankafschrift"
 
 msgctxt "model:ir.ui.menu,name:menu_statement_journal_form"
-msgid "Journals"
-msgstr "Dagboeken"
+msgid "Statement Journals"
+msgstr "dagboek Bankafschriften"
 
 msgctxt "model:ir.ui.menu,name:menu_statements"
 msgid "Statements"
@@ -580,14 +580,6 @@ msgstr "Balans"
 msgctxt "selection:account.statement.journal,validation:"
 msgid "Number of Lines"
 msgstr "Aantal regels"
-
-msgctxt "view:account.statement.line:"
-msgid "Amount"
-msgstr "Bedrag"
-
-msgctxt "view:account.statement.origin:"
-msgid "Amount"
-msgstr "Bedrag"
 
 msgctxt "view:account.statement:"
 msgid "Other Info"

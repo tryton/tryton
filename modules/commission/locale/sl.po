@@ -54,7 +54,7 @@ msgstr "Stanje računa"
 
 msgctxt "field:commission,origin:"
 msgid "Origin"
-msgstr "Poreklo"
+msgstr "Izvor"
 
 msgctxt "field:commission,product:"
 msgid "Product"
@@ -62,7 +62,7 @@ msgstr "Izdelek"
 
 msgctxt "field:commission,type_:"
 msgid "Type"
-msgstr "Tip"
+msgstr "Vrsta"
 
 msgctxt "field:commission.agent,company:"
 msgid "Company"
@@ -90,7 +90,7 @@ msgstr ""
 
 msgctxt "field:commission.agent,type_:"
 msgid "Type"
-msgstr "Tip"
+msgstr "Vrsta"
 
 #, fuzzy
 msgctxt "field:commission.agent.selection,agent:"
@@ -136,7 +136,7 @@ msgstr "Do"
 
 msgctxt "field:commission.create_invoice.ask,type_:"
 msgid "Type"
-msgstr "Tip"
+msgstr "Vrsta"
 
 msgctxt "field:commission.plan,commission_method:"
 msgid "Commission Method"
@@ -257,7 +257,7 @@ msgstr "Datum"
 #, fuzzy
 msgctxt "field:commission.reporting.context,type:"
 msgid "Type"
-msgstr "Tip"
+msgstr "Vrsta"
 
 #, fuzzy
 msgctxt "field:party.party,agents:"
@@ -577,10 +577,9 @@ msgctxt "model:ir.ui.menu,name:menu_commission_form"
 msgid "Commissions"
 msgstr "Commissions"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_configuration"
 msgid "Configuration"
-msgstr "Configuration"
+msgstr "Konfiguracija"
 
 #, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_plan_form"
@@ -589,7 +588,7 @@ msgstr "Načrt"
 
 msgctxt "model:ir.ui.menu,name:menu_reporting"
 msgid "Reporting"
-msgstr ""
+msgstr "Poročanje"
 
 #, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_reporting_commission"
@@ -646,7 +645,7 @@ msgstr "Zastopanec za"
 
 msgctxt "selection:commission.create_invoice.ask,type_:"
 msgid "Both"
-msgstr "Vse"
+msgstr "Oboje"
 
 msgctxt "selection:commission.create_invoice.ask,type_:"
 msgid "Incoming"

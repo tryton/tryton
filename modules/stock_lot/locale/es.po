@@ -32,12 +32,8 @@ msgid "Lot"
 msgstr "Lote"
 
 msgctxt "field:stock.lot,default_uom:"
-msgid "Default UOM"
+msgid "Default UoM"
 msgstr "UdM por defecto"
-
-msgctxt "field:stock.lot,default_uom_digits:"
-msgid "Default Unit Digits"
-msgstr "Decimales de unidad por defecto"
 
 msgctxt "field:stock.lot,forecast_quantity:"
 msgid "Forecast Quantity"
@@ -108,12 +104,8 @@ msgid "At Date"
 msgstr "A la fecha"
 
 msgctxt "field:stock.lots_by_locations,default_uom:"
-msgid "Default UOM"
+msgid "Default UoM"
 msgstr "UdM por defecto"
-
-msgctxt "field:stock.lots_by_locations,default_uom_digits:"
-msgid "Default UOM Digits"
-msgstr "Decimales de la UdM por defecto"
 
 msgctxt "field:stock.lots_by_locations,forecast_quantity:"
 msgid "Forecast Quantity"
@@ -142,6 +134,10 @@ msgstr "Ubicaciones"
 msgctxt "field:stock.lots_by_warehouse.context,stock_date_end:"
 msgid "At Date"
 msgstr "A la fecha"
+
+msgctxt "field:stock.lots_by_warehouse.context,stock_skip_warehouse:"
+msgid "Only storage zone"
+msgstr "Solo zona de almacenamiento"
 
 msgctxt "field:stock.lots_by_warehouse.context,warehouse:"
 msgid "Warehouse"
@@ -239,6 +235,10 @@ msgctxt "help:product.template,lot_sequence:"
 msgid "The sequence used to automatically number lots."
 msgstr "La secuencia usada para numerar automáticamente los lotes."
 
+msgctxt "help:stock.lot,default_uom:"
+msgid "The default Unit of Measure."
+msgstr "La unidad de medida por defecto."
+
 msgctxt "help:stock.lots_by_location.context,forecast_date:"
 msgid ""
 "Allow to compute expected stock quantities for this date.\n"
@@ -249,6 +249,10 @@ msgstr ""
 "* Un valor vacío es una fecha infinita en el futuro.\n"
 "* Una fecha en el pasado proporcionará valores históricos."
 
+msgctxt "help:stock.lots_by_locations,default_uom:"
+msgid "The default Unit of Measure."
+msgstr "La unidad de medida por defecto."
+
 msgctxt "help:stock.lots_by_warehouse.context,forecast_date:"
 msgid ""
 "Allow to compute expected stock quantities for this date.\n"
@@ -258,6 +262,10 @@ msgstr ""
 "Permite calcular las cantidades previstas para esta fecha.\n"
 "* Un valor vacío es una fecha infinita en el futuro.\n"
 "* Una fecha en el pasado proporcionará valores históricos."
+
+msgctxt "help:stock.lots_by_warehouse.context,stock_skip_warehouse:"
+msgid "Check to use only the quantity of the storage zone."
+msgstr "Marcar para usar solo la cantidad de la zona de almacenamiento."
 
 msgctxt "help:stock.move.add.lots.start,duplicate_lot_number:"
 msgid "The number of times the lot must be duplicated."

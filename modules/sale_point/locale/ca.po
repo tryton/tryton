@@ -451,7 +451,7 @@ msgstr ""
 "La venda %(sale)s\" està cancel·lada, de manera que no pot tenir import "
 "pagat."
 
-msgctxt "model:ir.message,text:msg_sale_amount_to_pay_done_paid"
+msgctxt "model:ir.message,text:msg_sale_amount_to_pay_done_posted"
 msgid "The sale \"%(sale)s\" is done so cannot have an amount to pay."
 msgstr ""
 "La venda \"%(sale)s\" està finalitzada, de manera que no pot tenir un import"

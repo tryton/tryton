@@ -66,7 +66,7 @@ msgstr "Identificador Vue Storefront"
 
 msgctxt "model:web.shop.vsf_identifier,name:"
 msgid "Web Shop Vue Storefront Identifier"
-msgstr "Identificador tenda web Vue Storefront"
+msgstr "Identificador botiga web Vue Storefront"
 
 msgctxt "selection:ir.cron,method:"
 msgid "Update Vue Storefront"

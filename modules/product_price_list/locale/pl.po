@@ -14,6 +14,11 @@ msgctxt "field:product.price_list,name:"
 msgid "Name"
 msgstr "Nazwa"
 
+#, fuzzy
+msgctxt "field:product.price_list,price:"
+msgid "Price"
+msgstr "Cennik"
+
 msgctxt "field:product.price_list,tax_included:"
 msgid "Tax Included"
 msgstr "Z podatkiem"
@@ -57,6 +62,10 @@ msgstr ""
 msgctxt "help:product.price_list,name:"
 msgid "The main identifier of the price list."
 msgstr "Główny identyfikator cennika."
+
+msgctxt "help:product.price_list,price:"
+msgid "The value used for 'unit_price'."
+msgstr ""
 
 msgctxt "help:product.price_list,tax_included:"
 msgid "Check if result's formula includes taxes."
@@ -118,6 +127,14 @@ msgstr "Cennik"
 msgctxt "model:product.price_list.line,name:"
 msgid "Price List Line"
 msgstr "Wiersz cennika"
+
+msgctxt "selection:product.price_list,price:"
+msgid "Cost Price"
+msgstr ""
+
+msgctxt "selection:product.price_list,price:"
+msgid "List price"
+msgstr ""
 
 #, fuzzy
 msgctxt "selection:product.price_list,unit:"

@@ -1056,6 +1056,11 @@ msgid "Description"
 msgstr "شرح"
 
 #, fuzzy
+msgctxt "field:account.general_ledger.line,description_used:"
+msgid "Description"
+msgstr "شرح"
+
+#, fuzzy
 msgctxt "field:account.general_ledger.line,internal_balance:"
 msgid "Internal Balance"
 msgstr "تراز آزمایشی"
@@ -1064,7 +1069,8 @@ msgctxt "field:account.general_ledger.line,move:"
 msgid "Move"
 msgstr "جابجایی"
 
-msgctxt "field:account.general_ledger.line,move_description:"
+#, fuzzy
+msgctxt "field:account.general_ledger.line,move_description_used:"
 msgid "Move Description"
 msgstr "توضیحات جابجایی"
 
@@ -1274,6 +1280,11 @@ msgctxt "field:account.move,description:"
 msgid "Description"
 msgstr "شرح"
 
+#, fuzzy
+msgctxt "field:account.move,description_used:"
+msgid "Description"
+msgstr "شرح"
+
 msgctxt "field:account.move,journal:"
 msgid "Journal"
 msgstr "روزنامه"
@@ -1362,6 +1373,11 @@ msgid "Description"
 msgstr "شرح"
 
 #, fuzzy
+msgctxt "field:account.move.line,description_used:"
+msgid "Description"
+msgstr "شرح"
+
+#, fuzzy
 msgctxt "field:account.move.line,has_maturity_date:"
 msgid "Has Maturity Date"
 msgstr "تاریخ سررسید"
@@ -1378,7 +1394,8 @@ msgctxt "field:account.move.line,move:"
 msgid "Move"
 msgstr "جابجایی"
 
-msgctxt "field:account.move.line,move_description:"
+#, fuzzy
+msgctxt "field:account.move.line,move_description_used:"
 msgid "Move Description"
 msgstr "توضیحات جابجایی"
 
@@ -1655,10 +1672,6 @@ msgctxt "field:account.move.template,company:"
 msgid "Company"
 msgstr "شرکت"
 
-msgctxt "field:account.move.template,date:"
-msgid "Date"
-msgstr "تاریخ"
-
 msgctxt "field:account.move.template,description:"
 msgid "Description"
 msgstr "شرح"
@@ -1678,6 +1691,11 @@ msgstr "سطرها"
 msgctxt "field:account.move.template,name:"
 msgid "Name"
 msgstr "نام"
+
+#, fuzzy
+msgctxt "field:account.move.template.create.template,date:"
+msgid "Effective Date"
+msgstr "تاریخ موثر"
 
 msgctxt "field:account.move.template.create.template,period:"
 msgid "Period"
@@ -2351,6 +2369,26 @@ msgctxt "field:account.update_chart.start,account:"
 msgid "Root Account"
 msgstr "حساب ریشه"
 
+#, fuzzy
+msgctxt "field:company.company,payable:"
+msgid "Payable"
+msgstr "پرداختی"
+
+#, fuzzy
+msgctxt "field:company.company,payable_today:"
+msgid "Payable Today"
+msgstr "پرداختی امروز"
+
+#, fuzzy
+msgctxt "field:company.company,receivable:"
+msgid "Receivable"
+msgstr "دریافتی"
+
+#, fuzzy
+msgctxt "field:company.company,receivable_today:"
+msgid "Receivable Today"
+msgstr "دریافتی امروز"
+
 msgctxt "field:party.party,account_payable:"
 msgid "Account Payable"
 msgstr "حساب پرداختی"
@@ -2595,8 +2633,9 @@ msgctxt "help:account.move.line.template,amount:"
 msgid "A python expression that will be evaluated with the keywords."
 msgstr "یک عبارت پایتون که با کلمات کلیدی ارزیابی می شود."
 
+#, fuzzy
 msgctxt "help:account.move.line.template,description:"
-msgid "Keywords values substitutions are identified by braces ('{' and '}')."
+msgid "Keyword value substitutions are identified by braces ('{' and '}')."
 msgstr "مقادیر کلمات کلیدی جایگزین توسط براکت ('{' و '}') معرفی میشوند."
 
 msgctxt "help:account.move.line.template,party:"
@@ -2612,12 +2651,9 @@ msgctxt "help:account.move.reconciliation,delegate_to:"
 msgid "The line to which the reconciliation status is delegated."
 msgstr ""
 
-msgctxt "help:account.move.template,date:"
-msgid "Leave empty for today."
-msgstr "برای امروز خالی بگذارید."
-
+#, fuzzy
 msgctxt "help:account.move.template,description:"
-msgid "Keyword values substitutions are identified by braces ('{' and '}')."
+msgid "Keyword value substitutions are identified by braces ('{' and '}')."
 msgstr "مقادیر کلمات کلیدی جایگزین توسط براکت ('{' و '}') معرفی میشوند."
 
 msgctxt "help:account.reconcile.start,automatic:"
@@ -3246,8 +3282,9 @@ msgctxt "model:ir.action,name:act_reconcile_lines"
 msgid "Reconcile Lines"
 msgstr "تطبیق دادن سطرها"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_reconcile_writeoff_form"
-msgid "WriteOff Methods"
+msgid "Write-off Methods"
 msgstr "روش های قلم زدن"
 
 msgctxt "model:ir.action,name:act_renew_fiscalyear"
@@ -3747,6 +3784,36 @@ msgstr ""
 "برای مطابقت سطر: \"%(line)s\" شماباید حساب : \"%(account)s\" را بعنوان قابل "
 "مطابقت تنظیم کنید."
 
+#, fuzzy
+msgctxt ""
+"model:ir.message,text:msg_reconciliation_currency_exchange_credit_account_missing"
+msgid ""
+"To reconcile lines, you must define a currency exchange credit account for "
+"\"%(company)s\"."
+msgstr ""
+"برای ادامه، شما باید یک حساب قابل دریافت برای نهاد/سازمان : "
+"\"%(نهاد/سازمان)s\" تعریف کنید."
+
+#, fuzzy
+msgctxt ""
+"model:ir.message,text:msg_reconciliation_currency_exchange_debit_account_missing"
+msgid ""
+"To reconcile lines, you must define a currency exchange debit account for "
+"\"%(company)s\"."
+msgstr ""
+"برای ادامه، شما باید یک حساب قابل دریافت برای نهاد/سازمان : "
+"\"%(نهاد/سازمان)s\" تعریف کنید."
+
+#, fuzzy
+msgctxt ""
+"model:ir.message,text:msg_reconciliation_currency_exchange_journal_missing"
+msgid ""
+"To reconcile lines, you must define a currency exchange journal for "
+"\"%(company)s\"."
+msgstr ""
+"برای ادامه، شما باید یک حساب قابل دریافت برای نهاد/سازمان : "
+"\"%(نهاد/سازمان)s\" تعریف کنید."
+
 msgctxt "model:ir.message,text:msg_reconciliation_delete_delegated"
 msgid ""
 "The reconciliation \"%(reconciliation)s\" is delegated to the line \"%(line)s\".\n"
@@ -3786,6 +3853,15 @@ msgid ""
 msgstr ""
 "برای مطابقت دادن سطرها، آنها باید دارای مقدار بدهی: \"%(debit)s\" و اعتبار: "
 "\"%(credit)s\" باشند."
+
+#, fuzzy
+msgctxt "model:ir.message,text:msg_reconciliation_write_off_missing"
+msgid ""
+"To reconcile lines with \"%(amount)s\" write-off, you must select a write-"
+"off method."
+msgstr ""
+"برای ایجاد یک سطر در حساب:\"%(account)s\"،شما باید یک نهاد/سازمان روی "
+"سطر:\"%(line)s\" تنظیم کنید."
 
 msgctxt "model:ir.message,text:msg_reopen_fiscalyear_later"
 msgid ""
@@ -4096,8 +4172,9 @@ msgctxt "model:ir.ui.menu,name:menu_reconcile"
 msgid "Reconcile Accounts"
 msgstr "تطبیق دادن حساب ها"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_reconcile_writeoff_form"
-msgid "WriteOff Methods"
+msgid "Write-off Methods"
 msgstr "روش های قلم زدن"
 
 msgctxt "model:ir.ui.menu,name:menu_renew_fiscalyear"
@@ -4580,8 +4657,9 @@ msgctxt "selection:account.configuration.tax_rounding,tax_rounding:"
 msgid "Per Line"
 msgstr "در هر خط"
 
+#, fuzzy
 msgctxt "selection:account.fiscalyear,state:"
-msgid "Close"
+msgid "Closed"
 msgstr "بسته"
 
 msgctxt "selection:account.fiscalyear,state:"
@@ -4638,8 +4716,9 @@ msgctxt "selection:account.journal,type:"
 msgid "Write-Off"
 msgstr "قلم زده شده"
 
+#, fuzzy
 msgctxt "selection:account.journal.period,state:"
-msgid "Close"
+msgid "Closed"
 msgstr "بسته"
 
 msgctxt "selection:account.journal.period,state:"
@@ -4700,8 +4779,9 @@ msgctxt "selection:account.move.template.keyword,type_:"
 msgid "Party"
 msgstr "نهاد/سازمان"
 
+#, fuzzy
 msgctxt "selection:account.period,state:"
-msgid "Close"
+msgid "Closed"
 msgstr "بسته"
 
 msgctxt "selection:account.period,state:"
@@ -4938,30 +5018,6 @@ msgctxt "view:account.fiscalyear:"
 msgid "Sequences"
 msgstr "ترتیب ها"
 
-msgctxt "view:account.general_ledger.account:"
-msgid "Credit"
-msgstr "بستانکاری"
-
-msgctxt "view:account.general_ledger.account:"
-msgid "Debit"
-msgstr "بدهی"
-
-msgctxt "view:account.general_ledger.account:"
-msgid "End Balance"
-msgstr "پایان تراز"
-
-msgctxt "view:account.general_ledger.account:"
-msgid "Start Balance"
-msgstr "شروع تراز"
-
-msgctxt "view:account.general_ledger.line:"
-msgid "Credit"
-msgstr "بستانکاری"
-
-msgctxt "view:account.general_ledger.line:"
-msgid "Debit"
-msgstr "بدهی"
-
 msgctxt "view:account.journal.period:"
 msgid "Close"
 msgstr "بسته"
@@ -4987,14 +5043,6 @@ msgstr "سایر اطلاعات"
 msgctxt "view:account.move.line:"
 msgid "Balance"
 msgstr "تراز"
-
-msgctxt "view:account.move.line:"
-msgid "Credit"
-msgstr "بستانکاری"
-
-msgctxt "view:account.move.line:"
-msgid "Debit"
-msgstr "بدهی"
 
 msgctxt "view:account.move.line:"
 msgid "Other Info"
@@ -5023,6 +5071,16 @@ msgstr "اطلاعات عمومی"
 msgctxt "view:account.update_chart.succeed:"
 msgid "Chart of accounts updated successfully."
 msgstr ""
+
+#, fuzzy
+msgctxt "view:company.company:"
+msgid "Account"
+msgstr "حساب"
+
+#, fuzzy
+msgctxt "view:company.company:"
+msgid "Accounting"
+msgstr "حسابداری"
 
 msgctxt "view:party.party:"
 msgid "Account"

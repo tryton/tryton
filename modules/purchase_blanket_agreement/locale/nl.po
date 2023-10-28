@@ -88,8 +88,8 @@ msgid "Supplier's Product"
 msgstr "Product van de leverancier"
 
 msgctxt "field:purchase.blanket_agreement.line,product_uom_category:"
-msgid "Product UOM Category"
-msgstr "Categorie product maateenheid"
+msgid "Product UoM Category"
+msgstr "Product maateenheid categorie"
 
 msgctxt "field:purchase.blanket_agreement.line,purchase_lines:"
 msgid "Purchase Lines"
@@ -126,6 +126,10 @@ msgstr "Algemene overeenkomst regel"
 msgctxt "field:purchase.purchase,blanket_agreements:"
 msgid "Blanket Agreements"
 msgstr "Algemene overeenkomsten"
+
+msgctxt "help:purchase.blanket_agreement.line,product_uom_category:"
+msgid "The category of Unit of Measure for the product."
+msgstr "De categorie van de maateenheid van het product."
 
 msgctxt "model:ir.action,name:act_purchase_blanket_agreement"
 msgid "Blanket Agreements"

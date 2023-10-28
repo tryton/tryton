@@ -14,17 +14,13 @@ msgctxt "field:purchase.request,computed_quantity:"
 msgid "Computed Quantity"
 msgstr "Quantité calculée"
 
-msgctxt "field:purchase.request,computed_uom:"
-msgid "Computed UOM"
-msgstr "UDM calculée"
+msgctxt "field:purchase.request,computed_unit:"
+msgid "Computed Unit"
+msgstr "Unité calculée"
 
 msgctxt "field:purchase.request,default_uom:"
-msgid "Default UOM"
+msgid "Default UoM"
 msgstr "UDM par défaut"
-
-msgctxt "field:purchase.request,default_uom_digits:"
-msgid "Default UOM Digits"
-msgstr "Décimales d'UDM par défaut"
 
 msgctxt "field:purchase.request,description:"
 msgid "Description"
@@ -47,8 +43,8 @@ msgid "Product"
 msgstr "Produit"
 
 msgctxt "field:purchase.request,product_uom_category:"
-msgid "Product Uom Category"
-msgstr "Catégorie d'unité de mesure"
+msgid "Product UoM Category"
+msgstr "Catégorie d'UDM du produit"
 
 msgctxt "field:purchase.request,purchase:"
 msgid "Purchase"
@@ -86,13 +82,9 @@ msgctxt "field:purchase.request,supply_date:"
 msgid "Expected Supply Date"
 msgstr "Date d'approvisionnement attendue"
 
-msgctxt "field:purchase.request,uom:"
-msgid "UOM"
-msgstr "UDM"
-
-msgctxt "field:purchase.request,uom_digits:"
-msgid "UOM Digits"
-msgstr "Décimales d'UDM"
+msgctxt "field:purchase.request,unit:"
+msgid "Unit"
+msgstr "Unité"
 
 msgctxt "field:purchase.request,warehouse:"
 msgid "Warehouse"
@@ -117,6 +109,14 @@ msgstr "Fournisseur"
 msgctxt "field:purchase.request.create_purchase.ask_party,product:"
 msgid "Product"
 msgstr "Produit"
+
+msgctxt "help:purchase.request,default_uom:"
+msgid "The default Unit of Measure."
+msgstr "L'unité de mesure par défaut."
+
+msgctxt "help:purchase.request,product_uom_category:"
+msgid "The category of Unit of Measure for the product."
+msgstr "La catégorie d'Unité De Mesure pour le produit."
 
 msgctxt "model:ir.action,name:act_open_purchase_form"
 msgid "Purchases"
@@ -217,7 +217,7 @@ msgstr "Annulée"
 
 msgctxt "selection:purchase.request,state:"
 msgid "Done"
-msgstr "Fait"
+msgstr "Effectuée"
 
 msgctxt "selection:purchase.request,state:"
 msgid "Draft"

@@ -6,30 +6,6 @@ msgctxt "field:account.configuration,dunning_email_fallback:"
 msgid "Fall-back User"
 msgstr "Értesítés hiba esetén"
 
-msgctxt "field:account.dunning.email.log,date:"
-msgid "Date"
-msgstr "Dátum"
-
-msgctxt "field:account.dunning.email.log,dunning:"
-msgid "Dunning"
-msgstr "Fizetési felszólítás"
-
-msgctxt "field:account.dunning.email.log,level:"
-msgid "Level"
-msgstr "Szint"
-
-msgctxt "field:account.dunning.email.log,recipients:"
-msgid "Recipients"
-msgstr "Címzettek"
-
-msgctxt "field:account.dunning.email.log,recipients_hidden:"
-msgid "Hidden Recipients"
-msgstr "Rejtett másolatot kaptak"
-
-msgctxt "field:account.dunning.email.log,recipients_secondary:"
-msgid "Secondary Recipients"
-msgstr "Másolatot kaptak"
-
 msgctxt "field:account.dunning.level,email_contact_mechanism:"
 msgid "Contact Mechanism"
 msgstr "Kapcsolatfelvételi mód"
@@ -45,6 +21,11 @@ msgstr "E-mail sablon"
 msgctxt "field:account.dunning.level,send_email:"
 msgid "Send Email"
 msgstr "E-mail küldése"
+
+#, fuzzy
+msgctxt "field:ir.email,dunning_level:"
+msgid "Level"
+msgstr "Szint"
 
 msgctxt "help:account.configuration,dunning_email_fallback:"
 msgid "User notified when no e-mail is found to send the dunning"
@@ -62,14 +43,6 @@ msgctxt "help:account.dunning.level,email_from:"
 msgid "Leave empty for the value defined in the configuration file."
 msgstr ""
 "Hagyja üresen, ha a rendszerbeállításokban megadottat szeretné használni."
-
-msgctxt "model:account.dunning.email.log,name:"
-msgid "Dunning Email Log"
-msgstr "Fizetési felszólítás e-mail naplója"
-
-msgctxt "model:ir.action,name:act_log"
-msgid "Email Logs"
-msgstr "Felszólítás e-mailek naplója"
 
 msgctxt "model:ir.action,name:report_email"
 msgid "Dunning Email"
@@ -110,10 +83,6 @@ msgstr "Hivatkozás"
 msgctxt "report:account.dunning.letter:"
 msgid "Reminder Notice"
 msgstr "Fizetési felszólítás"
-
-msgctxt "view:account.dunning.email.log:"
-msgid "Time"
-msgstr "Időpont"
 
 msgctxt "view:account.dunning.level:"
 msgid "E-mail"

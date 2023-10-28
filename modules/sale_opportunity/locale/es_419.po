@@ -460,92 +460,14 @@ msgid "Year"
 msgstr ""
 
 #, fuzzy
-msgctxt "view:sale.opportunity.reporting.conversion.employee.time_series:"
-msgid "Lost"
-msgstr "Perdida"
-
-#, fuzzy
-msgctxt "view:sale.opportunity.reporting.conversion.employee.time_series:"
-msgid "Won"
-msgstr "Ganada"
-
-msgctxt "view:sale.opportunity.reporting.conversion.employee.time_series:"
-msgid "Won Amount"
-msgstr ""
-
-#, fuzzy
-msgctxt "view:sale.opportunity.reporting.conversion.time_series:"
-msgid "Lost"
-msgstr "Perdida"
-
-#, fuzzy
-msgctxt "view:sale.opportunity.reporting.conversion.time_series:"
-msgid "Won"
-msgstr "Ganada"
-
-msgctxt "view:sale.opportunity.reporting.conversion.time_series:"
-msgid "Won Amount"
-msgstr ""
-
-#, fuzzy
 msgctxt "view:sale.opportunity.reporting.conversion:"
 msgid "%"
 msgstr "%"
 
 #, fuzzy
-msgctxt "view:sale.opportunity.reporting.conversion:"
-msgid "Lost"
-msgstr "Perdida"
-
-#, fuzzy
-msgctxt "view:sale.opportunity.reporting.conversion:"
-msgid "Won"
-msgstr "Ganada"
-
-msgctxt "view:sale.opportunity.reporting.conversion:"
-msgid "Won Amount"
-msgstr ""
-
-msgctxt "view:sale.opportunity.reporting.main.time_series:"
-msgid "Amount"
-msgstr ""
-
-#, fuzzy
-msgctxt "view:sale.opportunity.reporting.main.time_series:"
-msgid "Converted"
-msgstr "Creado por usuario"
-
-#, fuzzy
-msgctxt "view:sale.opportunity.reporting.main.time_series:"
-msgid "Converted Amount"
-msgstr "Creado por usuario"
-
-msgctxt "view:sale.opportunity.reporting.main.time_series:"
-msgid "Number"
-msgstr ""
-
-#, fuzzy
 msgctxt "view:sale.opportunity.reporting.main:"
 msgid "%"
 msgstr "%"
-
-msgctxt "view:sale.opportunity.reporting.main:"
-msgid "Amount"
-msgstr ""
-
-#, fuzzy
-msgctxt "view:sale.opportunity.reporting.main:"
-msgid "Converted"
-msgstr "Creado por usuario"
-
-#, fuzzy
-msgctxt "view:sale.opportunity.reporting.main:"
-msgid "Converted Amount"
-msgstr "Creado por usuario"
-
-msgctxt "view:sale.opportunity.reporting.main:"
-msgid "Number"
-msgstr ""
 
 msgctxt "view:sale.opportunity:"
 msgid "%"

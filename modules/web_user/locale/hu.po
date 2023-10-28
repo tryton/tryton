@@ -87,6 +87,10 @@ msgctxt "model:ir.action,name:report_email_validation"
 msgid "Email Validation"
 msgstr "E-mail cím ellenőrzés"
 
+msgctxt "model:ir.message,text:msg_user_email_invalid"
+msgid "The email address \"%(email)s\" for \"%(user)s\" is not valid."
+msgstr ""
+
 msgctxt "model:ir.message,text:msg_user_email_unique"
 msgid "E-mail of active web user must be unique."
 msgstr "Nem lehet több aktív webes felhasználónak ugyanaz az e-mail címe."

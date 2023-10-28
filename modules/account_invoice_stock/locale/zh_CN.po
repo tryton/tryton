@@ -4,48 +4,48 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "field:account.invoice,shipments:"
 msgid "Shipments"
-msgstr ""
+msgstr "收发货"
 
 msgctxt "field:account.invoice.line,correction:"
 msgid "Correction"
-msgstr ""
+msgstr "校正"
 
 msgctxt "field:account.invoice.line,shipments:"
 msgid "Shipments"
-msgstr ""
+msgstr "收发货"
 
 msgctxt "field:account.invoice.line,stock_moves:"
 msgid "Stock Moves"
-msgstr ""
+msgstr "库存移动"
 
 msgctxt "field:account.invoice.line,warehouse:"
 msgid "Warehouse"
-msgstr ""
+msgstr "仓库"
 
 msgctxt "field:account.invoice.line-stock.move,invoice_line:"
 msgid "Invoice Line"
-msgstr ""
+msgstr "原始凭证明细"
 
 msgctxt "field:account.invoice.line-stock.move,stock_move:"
 msgid "Stock Move"
-msgstr ""
+msgstr "库存移动"
 
 msgctxt "field:stock.move,invoice_lines:"
 msgid "Invoice Lines"
-msgstr ""
+msgstr "原始凭证明细"
 
 msgctxt "field:stock.move,invoice_types:"
 msgid "Invoice Types"
-msgstr ""
+msgstr "原始凭证类型"
 
 msgctxt "help:account.invoice.line,correction:"
 msgid "Check to correct price of already posted invoice."
-msgstr ""
+msgstr "检查已过帐发票的正确价格。"
 
 msgctxt "model:account.invoice.line-stock.move,name:"
 msgid "Invoice Line - Stock Move"
-msgstr ""
+msgstr "原始凭证明细 - 库存移动"
 
 msgctxt "view:account.invoice.line:"
 msgid "Stock"
-msgstr ""
+msgstr "库存"

@@ -8,27 +8,27 @@ msgstr "Coût des expéditions"
 
 msgctxt "field:party.party,sale_shipment_cost_method:"
 msgid "Shipment Cost Method"
-msgstr "Méthode de coût d'expédition"
+msgstr "Méthode des frais d'expédition"
 
 msgctxt "field:party.party.sale_method,sale_shipment_cost_method:"
 msgid "Sale Shipment Cost Method"
-msgstr "Méthode de coût de l'expédition de vente"
+msgstr "Méthode de vente des frais d'expédition"
 
 msgctxt "field:sale.configuration,sale_shipment_cost_method:"
 msgid "Sale Shipment Cost Method"
-msgstr "Méthode de coût de l'expédition de vente"
+msgstr "Méthode de vente des frais d'expédition"
 
 msgctxt "field:sale.configuration.sale_method,sale_shipment_cost_method:"
 msgid "Sale Shipment Cost Method"
-msgstr "Méthode de coût de l'expédition de vente"
+msgstr "Méthode de vente des frais d'expédition"
 
 msgctxt "field:sale.line,shipment_cost:"
 msgid "Shipment Cost"
-msgstr "Coût d'expédition"
+msgstr "Frais d'expédition"
 
 msgctxt "field:sale.promotion,amount_shipment_cost_included:"
 msgid "Amount with Shipment Cost Included"
-msgstr "Montant avec coût d'expédition inclus"
+msgstr "Montant avec frais d'expédition inclus"
 
 msgctxt "field:sale.sale,available_carriers:"
 msgid "Available Carriers"
@@ -40,7 +40,27 @@ msgstr "Transporteur"
 
 msgctxt "field:sale.sale,shipment_cost_method:"
 msgid "Shipment Cost Method"
-msgstr "Méthode de coût d'expédition"
+msgstr "Méthode de frais d'expédition"
+
+msgctxt "field:sale.sale,shipment_costs:"
+msgid "Shipment Costs"
+msgstr "Frais d'expédition"
+
+msgctxt "field:stock.shipment.cost_sale,amount:"
+msgid "Amount"
+msgstr "Montant"
+
+msgctxt "field:stock.shipment.cost_sale,currency:"
+msgid "Currency"
+msgstr "Devise"
+
+msgctxt "field:stock.shipment.cost_sale,sale:"
+msgid "Sale"
+msgstr "Vente"
+
+msgctxt "field:stock.shipment.cost_sale,shipment:"
+msgid "Shipment"
+msgstr "Expédition"
 
 msgctxt "field:stock.shipment.out,cost_invoice_line:"
 msgid "Cost Invoice Line"
@@ -66,16 +86,20 @@ msgctxt "field:stock.shipment.out,cost_sale_used:"
 msgid "Cost Sale"
 msgstr "Coût de la vente"
 
+msgctxt "field:stock.shipment.out,cost_sales:"
+msgid "Cost Sales"
+msgstr "Coût des ventes"
+
 msgctxt "field:stock.shipment.out,shipment_cost_sale_readonly:"
 msgid "Shipment Cost Sale Read Only"
-msgstr "Coût de vente d'expédition en lecture seule"
+msgstr "Vente des frais d'expédition en lecture seule"
 
 msgctxt "help:party.party,sale_shipment_cost_method:"
 msgid ""
 "The default shipment cost method for the customer.\n"
 "Leave empty to use the default value from the configuration."
 msgstr ""
-"La méthode de coût d'expédition par défaut pour le client.\n"
+"La méthode de frais d'expédition par défaut pour le client.\n"
 "Laissez vide pour utiliser la valeur par défaut de la configuration."
 
 msgctxt "model:ir.message,text:msg_sale_carrier_required_for_quotation"
@@ -96,8 +120,12 @@ msgid ""
 "To invoice shipment cost of \"%(shipment)s\", you must define an account "
 "revenue for product \"%(product)s\"."
 msgstr ""
-"Pour facturer le coût de l'expédition « %(shipment)s », vous devez définir "
-"un compte de produits pour le produit « %(product)s »."
+"Pour facturer les frais d'expédition de « %(shipment)s », vous devez définir"
+" un compte de produits pour le produit « %(product)s »."
+
+msgctxt "model:stock.shipment.cost_sale,name:"
+msgid "Shipment Cost Sale"
+msgstr "Vente des frais d'expédition"
 
 msgctxt "selection:sale.sale,shipment_cost_method:"
 msgid "None"
@@ -111,6 +139,10 @@ msgctxt "selection:sale.sale,shipment_cost_method:"
 msgid "On Shipment"
 msgstr "À l'expédition"
 
+msgctxt "selection:stock.shipment.cost_sale,shipment:"
+msgid "Customer"
+msgstr "Client"
+
 msgctxt "view:sale.promotion:"
 msgid "Shipment Cost Included"
-msgstr "Coût d'expédition inclus"
+msgstr "Frais d'expédition inclus"

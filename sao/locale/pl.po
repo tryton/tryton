@@ -261,6 +261,10 @@ msgstr "Szukaj..."
 msgid "Create..."
 msgstr "Utwórz..."
 
+#, fuzzy
+msgid "Create \"%1\"..."
+msgstr "Utwórz..."
+
 msgid "Download"
 msgstr "Pobierz"
 
@@ -463,6 +467,9 @@ msgstr "Wstępna walidacja"
 msgid ":"
 msgstr ":"
 
+msgid "Scan"
+msgstr ""
+
 msgid "Translate"
 msgstr "Przetłumacz"
 
@@ -531,17 +538,20 @@ msgstr "Wybierz język"
 msgid "%1%"
 msgstr "%1%"
 
-msgid ": "
-msgstr ": "
+msgid "Menu"
+msgstr ""
 
-msgid "Customize"
+msgid "Copy"
+msgstr ""
+
+msgid "#ERROR"
 msgstr ""
 
 msgid "More"
 msgstr "Więcej"
 
-msgid "#ERROR"
-msgstr ""
+msgid ": "
+msgstr ": "
 
 msgid "Today"
 msgstr "Dzisiaj"
@@ -566,6 +576,19 @@ msgstr "Wybierz akcję"
 
 msgid "No action defined."
 msgstr "Brak zdefiniowanej akcji."
+
+msgid "Discard changes"
+msgstr ""
+
+msgid "Save and New"
+msgstr ""
+
+#, fuzzy
+msgid "Add and New"
+msgstr "Dodaj nazwy pól"
+
+msgid "Apply changes"
+msgstr ""
 
 msgid "Attachments (%1)"
 msgstr "Załączniki (%1)"
@@ -640,8 +663,8 @@ msgstr "Wybierz plik do zaimportowania."
 msgid "Detection failed"
 msgstr ""
 
-msgid "Error processing the file at field %1."
-msgstr "Błąd przetwarzania pliku w polu %1."
+msgid "Unknown column header \"%1\""
+msgstr ""
 
 msgid "Error"
 msgstr "Błąd"
@@ -743,6 +766,15 @@ msgstr "Wyślij"
 #, fuzzy
 msgid "Remove File"
 msgstr "Usuń"
+
+msgid "Code Scanner"
+msgstr ""
+
+msgid "Code"
+msgstr ""
+
+msgid "Toggle Sound"
+msgstr ""
 
 msgid "Wizard"
 msgstr "Kreator"

@@ -110,6 +110,10 @@ msgctxt "field:account.invoice,has_payment_method:"
 msgid "Has Payment Method"
 msgstr "Metode pembayaran"
 
+msgctxt "field:account.invoice,has_report_cache:"
+msgid "Has Report Cached"
+msgstr ""
+
 msgctxt "field:account.invoice,invoice_address:"
 msgid "Invoice Address"
 msgstr "Alamat Faktur"
@@ -129,6 +133,11 @@ msgstr "ID Laporan Faktur"
 msgctxt "field:account.invoice,invoice_report_format:"
 msgid "Invoice Report Format"
 msgstr "Format Laporan Faktur"
+
+#, fuzzy
+msgctxt "field:account.invoice,invoice_report_revisions:"
+msgid "Invoice Report Revisions"
+msgstr "Laporan Faktur"
 
 msgctxt "field:account.invoice,journal:"
 msgid "Journal"
@@ -179,6 +188,11 @@ msgctxt "field:account.invoice,payment_term_date:"
 msgid "Payment Term Date"
 msgstr "Masa Pembayaran"
 
+#, fuzzy
+msgctxt "field:account.invoice,posted_by:"
+msgid "Posted By"
+msgstr "Bukukan"
+
 msgctxt "field:account.invoice,reconciled:"
 msgid "Reconciled"
 msgstr ""
@@ -203,6 +217,10 @@ msgctxt "field:account.invoice,tax_amount:"
 msgid "Tax"
 msgstr "Pajak"
 
+msgctxt "field:account.invoice,tax_amount_cache:"
+msgid "Tax Cache"
+msgstr ""
+
 msgctxt "field:account.invoice,tax_identifier:"
 msgid "Tax Identifier"
 msgstr "NPWP"
@@ -213,6 +231,11 @@ msgstr "Baris Pajak"
 
 msgctxt "field:account.invoice,total_amount:"
 msgid "Total"
+msgstr "Total"
+
+#, fuzzy
+msgctxt "field:account.invoice,total_amount_cache:"
+msgid "Total Cache"
 msgstr "Total"
 
 msgctxt "field:account.invoice,type:"
@@ -226,6 +249,15 @@ msgstr "Jenis"
 msgctxt "field:account.invoice,untaxed_amount:"
 msgid "Untaxed"
 msgstr ""
+
+msgctxt "field:account.invoice,untaxed_amount_cache:"
+msgid "Untaxed Cache"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:account.invoice,validated_by:"
+msgid "Validated By"
+msgstr "Sahih"
 
 msgctxt "field:account.invoice-account.move.line,invoice:"
 msgid "Invoice"
@@ -344,7 +376,7 @@ msgid "Product"
 msgstr "Produk"
 
 msgctxt "field:account.invoice.line,product_uom_category:"
-msgid "Product Uom Category"
+msgid "Product UoM Category"
 msgstr ""
 
 msgctxt "field:account.invoice.line,quantity:"
@@ -584,6 +616,36 @@ msgctxt "field:account.invoice.payment_term.test.result,date:"
 msgid "Date"
 msgstr "Tanggal"
 
+#, fuzzy
+msgctxt "field:account.invoice.report.revision,date:"
+msgid "Date"
+msgstr "Tanggal"
+
+#, fuzzy
+msgctxt "field:account.invoice.report.revision,filename:"
+msgid "File Name"
+msgstr "Nama"
+
+#, fuzzy
+msgctxt "field:account.invoice.report.revision,invoice:"
+msgid "Invoice"
+msgstr "Faktur"
+
+#, fuzzy
+msgctxt "field:account.invoice.report.revision,invoice_report_cache:"
+msgid "Invoice Report"
+msgstr "Laporan Faktur"
+
+#, fuzzy
+msgctxt "field:account.invoice.report.revision,invoice_report_cache_id:"
+msgid "Invoice Report ID"
+msgstr "ID Laporan Faktur"
+
+#, fuzzy
+msgctxt "field:account.invoice.report.revision,invoice_report_format:"
+msgid "Invoice Report Format"
+msgstr "Format Laporan Faktur"
+
 msgctxt "field:account.invoice.tax,account:"
 msgid "Account"
 msgstr "Akun"
@@ -686,6 +748,10 @@ msgctxt "help:account.invoice.credit.start,with_refund:"
 msgid "If true, the current invoice(s) will be cancelled."
 msgstr "Jika benar, faktur saat ini akan dibatalkan."
 
+msgctxt "help:account.invoice.line,product_uom_category:"
+msgid "The category of Unit of Measure for the product."
+msgstr ""
+
 msgctxt "help:account.invoice.line,taxes_date:"
 msgid ""
 "The date at which the taxes are computed.\n"
@@ -770,6 +836,11 @@ msgctxt "model:account.invoice.payment_term.test.result,name:"
 msgid "Test Payment Term"
 msgstr ""
 
+#, fuzzy
+msgctxt "model:account.invoice.report.revision,name:"
+msgid "Invoice Report Revision"
+msgstr "Laporan Faktur"
+
 msgctxt "model:account.invoice.tax,name:"
 msgid "Invoice Tax"
 msgstr ""
@@ -812,6 +883,11 @@ msgstr "Baris yang Harus Dibayar"
 msgctxt "model:ir.action,name:credit"
 msgid "Credit"
 msgstr "Kredit"
+
+#, fuzzy
+msgctxt "model:ir.action,name:refresh_invoice_report_wizard"
+msgid "Invoice (revised)"
+msgstr "Baris Faktur"
 
 msgctxt "model:ir.action,name:report_invoice"
 msgid "Invoice"
@@ -1309,6 +1385,10 @@ msgctxt "view:account.invoice.payment_term.line:"
 msgid "%"
 msgstr "%"
 
+msgctxt "view:account.invoice.report.revision:"
+msgid "Time"
+msgstr ""
+
 msgctxt "view:account.invoice:"
 msgid "Invoice"
 msgstr "Faktur"
@@ -1324,18 +1404,6 @@ msgstr "Pembayaran"
 msgctxt "view:account.invoice:"
 msgid "Tax Identifier:"
 msgstr "NPWP:"
-
-msgctxt "view:account.move.line:"
-msgid "Amount Second Currency"
-msgstr ""
-
-msgctxt "view:account.move.line:"
-msgid "Credit"
-msgstr "Kredit"
-
-msgctxt "view:account.move.line:"
-msgid "Debit"
-msgstr "Debit"
 
 msgctxt "view:company.company:"
 msgid "Invoice"

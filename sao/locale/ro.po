@@ -242,6 +242,10 @@ msgstr "Căutare..."
 msgid "Create..."
 msgstr "Creare..."
 
+#, fuzzy
+msgid "Create \"%1\"..."
+msgstr "Creare..."
+
 msgid "Download"
 msgstr "Descarca"
 
@@ -442,6 +446,9 @@ msgstr "Pre-validare"
 msgid ":"
 msgstr ":"
 
+msgid "Scan"
+msgstr ""
+
 msgid "Translate"
 msgstr "Traducere"
 
@@ -509,17 +516,20 @@ msgstr "Alegere limbă"
 msgid "%1%"
 msgstr "%1%"
 
-msgid ": "
-msgstr ": "
+msgid "Menu"
+msgstr ""
 
-msgid "Customize"
-msgstr "Personalizați"
+msgid "Copy"
+msgstr ""
+
+msgid "#ERROR"
+msgstr "#EROARE"
 
 msgid "More"
 msgstr "Mai multe"
 
-msgid "#ERROR"
-msgstr "#EROARE"
+msgid ": "
+msgstr ": "
 
 msgid "Today"
 msgstr "Astăzi"
@@ -544,6 +554,19 @@ msgstr "Selectați acțiunea"
 
 msgid "No action defined."
 msgstr "Nicio acțiune definită."
+
+msgid "Discard changes"
+msgstr ""
+
+msgid "Save and New"
+msgstr ""
+
+#, fuzzy
+msgid "Add and New"
+msgstr "Adăugare denumire de câmp"
+
+msgid "Apply changes"
+msgstr ""
 
 msgid "Attachments (%1)"
 msgstr "Atașamente (%1)"
@@ -614,8 +637,8 @@ msgstr "Mai întâi trebuie să selectați un fișier de import."
 msgid "Detection failed"
 msgstr "Detecție eșuată"
 
-msgid "Error processing the file at field %1."
-msgstr "Eroare la procesarea fișierului la câmpul %1."
+msgid "Unknown column header \"%1\""
+msgstr ""
 
 msgid "Error"
 msgstr "Eroare"
@@ -712,6 +735,15 @@ msgstr "Trimite"
 
 msgid "Remove File"
 msgstr "Eliminare Fişier"
+
+msgid "Code Scanner"
+msgstr ""
+
+msgid "Code"
+msgstr ""
+
+msgid "Toggle Sound"
+msgstr ""
 
 msgid "Wizard"
 msgstr "Asistent"

@@ -51,10 +51,6 @@ msgctxt "field:production,done_by:"
 msgid "Done By"
 msgstr "Done"
 
-msgctxt "field:production,effective_date:"
-msgid "Effective Date"
-msgstr ""
-
 msgctxt "field:production,effective_start_date:"
 msgid "Effective Start Date"
 msgstr ""
@@ -84,10 +80,6 @@ msgctxt "field:production,partially_assigned:"
 msgid "Partially Assigned"
 msgstr "Assigned"
 
-msgctxt "field:production,planned_date:"
-msgid "Planned Date"
-msgstr ""
-
 msgctxt "field:production,planned_start_date:"
 msgid "Planned Start Date"
 msgstr ""
@@ -112,12 +104,12 @@ msgctxt "field:production,state:"
 msgid "State"
 msgstr ""
 
-msgctxt "field:production,uom:"
-msgid "Uom"
+msgctxt "field:production,unit:"
+msgid "Unit"
 msgstr ""
 
 msgctxt "field:production,uom_category:"
-msgid "Uom Category"
+msgid "UoM Category"
 msgstr ""
 
 msgctxt "field:production,warehouse:"
@@ -153,8 +145,8 @@ msgctxt "field:production.bom.input,quantity:"
 msgid "Quantity"
 msgstr ""
 
-msgctxt "field:production.bom.input,uom:"
-msgid "Uom"
+msgctxt "field:production.bom.input,unit:"
+msgid "Unit"
 msgstr ""
 
 msgctxt "field:production.bom.input,uom_category:"
@@ -174,8 +166,8 @@ msgctxt "field:production.bom.output,quantity:"
 msgid "Quantity"
 msgstr ""
 
-msgctxt "field:production.bom.output,uom:"
-msgid "Uom"
+msgctxt "field:production.bom.output,unit:"
+msgid "Unit"
 msgstr ""
 
 msgctxt "field:production.bom.output,uom_category:"
@@ -194,8 +186,8 @@ msgctxt "field:production.bom.tree,quantity:"
 msgid "Quantity"
 msgstr ""
 
-msgctxt "field:production.bom.tree,uom:"
-msgid "Uom"
+msgctxt "field:production.bom.tree,unit:"
+msgid "Unit"
 msgstr ""
 
 #, fuzzy
@@ -215,7 +207,7 @@ msgctxt "field:production.bom.tree.open.start,quantity:"
 msgid "Quantity"
 msgstr ""
 
-msgctxt "field:production.bom.tree.open.start,uom:"
+msgctxt "field:production.bom.tree.open.start,unit:"
 msgid "Unit"
 msgstr ""
 
@@ -290,6 +282,18 @@ msgstr ""
 
 msgctxt "field:stock.move,production_output:"
 msgid "Production Output"
+msgstr ""
+
+msgctxt "help:production,number:"
+msgid "The main identifier for the shipment."
+msgstr ""
+
+msgctxt "help:production,reference:"
+msgid "The external identifier for the shipment."
+msgstr ""
+
+msgctxt "help:production,uom_category:"
+msgid "The category of Unit of Measure."
 msgstr ""
 
 msgctxt "help:stock.location,production_output_location:"

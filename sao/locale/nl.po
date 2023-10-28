@@ -114,7 +114,7 @@ msgid "Too many requests. Try again later."
 msgstr "Te veel verzoeken. Probeer het later nog eens."
 
 msgid "Login"
-msgstr "Inlognaam"
+msgstr "Inloggen"
 
 msgid "Database"
 msgstr "Database"
@@ -234,13 +234,16 @@ msgid "Report Bug"
 msgstr "Programmafout melden"
 
 msgid "Processing"
-msgstr "Verwerking"
+msgstr "In behandeling"
 
 msgid "Search..."
 msgstr "Zoeken..."
 
 msgid "Create..."
 msgstr "Maak ..."
+
+msgid "Create \"%1\"..."
+msgstr "Maak \"%1\"..."
 
 msgid "Download"
 msgstr "Download"
@@ -442,6 +445,9 @@ msgstr "Pre-validatie"
 msgid ":"
 msgstr ":"
 
+msgid "Scan"
+msgstr "Scannen"
+
 msgid "Translate"
 msgstr "Vertalen"
 
@@ -509,17 +515,20 @@ msgstr "Kies een taal"
 msgid "%1%"
 msgstr "%1%"
 
-msgid ": "
-msgstr ": "
+msgid "Menu"
+msgstr "Menu"
 
-msgid "Customize"
-msgstr "Aanpassen"
+msgid "Copy"
+msgstr "Kopieer"
+
+msgid "#ERROR"
+msgstr "#FOUT"
 
 msgid "More"
 msgstr "Meer"
 
-msgid "#ERROR"
-msgstr "#FOUT"
+msgid ": "
+msgstr ": "
 
 msgid "Today"
 msgstr "Vandaag"
@@ -544,6 +553,18 @@ msgstr "Selecteer een actie"
 
 msgid "No action defined."
 msgstr "Geen actie gedefinieerd."
+
+msgid "Discard changes"
+msgstr "Wijzigingen ongedaan maken"
+
+msgid "Save and New"
+msgstr "Opslaan en nieuw"
+
+msgid "Add and New"
+msgstr "Toevoegen en nieuw"
+
+msgid "Apply changes"
+msgstr "Wijzigingen opslaan"
 
 msgid "Attachments (%1)"
 msgstr "Bijlagen (%1)"
@@ -614,8 +635,8 @@ msgstr "U moet eerst een importbestand selecteren."
 msgid "Detection failed"
 msgstr "Detecteren faalde"
 
-msgid "Error processing the file at field %1."
-msgstr "Fout bij verwerken van het bestand op veld %1."
+msgid "Unknown column header \"%1\""
+msgstr "Onbekende kolomkop \"%1\""
 
 msgid "Error"
 msgstr "Fout"
@@ -710,6 +731,15 @@ msgstr "Verzenden"
 
 msgid "Remove File"
 msgstr "Bestand verwijderen"
+
+msgid "Code Scanner"
+msgstr "Barcode scanner"
+
+msgid "Code"
+msgstr "Barcode"
+
+msgid "Toggle Sound"
+msgstr "Schakel geluid"
 
 msgid "Wizard"
 msgstr "Assistent"

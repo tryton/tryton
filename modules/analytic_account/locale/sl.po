@@ -20,7 +20,7 @@ msgstr "Družba"
 
 msgctxt "field:analytic.account.entry,origin:"
 msgid "Origin"
-msgstr "Poreklo"
+msgstr "Izvor"
 
 msgctxt "field:analytic.account.entry,root:"
 msgid "Root Analytic"
@@ -84,14 +84,12 @@ msgstr "Stanje"
 
 msgctxt "field:analytic_account.account,type:"
 msgid "Type"
-msgstr "Tip"
+msgstr "Vrsta"
 
-#, fuzzy
 msgctxt "field:analytic_account.account.context,end_date:"
 msgid "End Date"
 msgstr "Končni datum"
 
-#, fuzzy
 msgctxt "field:analytic_account.account.context,start_date:"
 msgid "Start Date"
 msgstr "Začetni datum"
@@ -124,7 +122,6 @@ msgctxt "field:analytic_account.line,credit:"
 msgid "Credit"
 msgstr "Kredit"
 
-#, fuzzy
 msgctxt "field:analytic_account.line,currency:"
 msgid "Currency"
 msgstr "Valuta"
@@ -177,7 +174,6 @@ msgctxt "model:analytic_account.account,name:"
 msgid "Analytic Account"
 msgstr "Analitični konto"
 
-#, fuzzy
 msgctxt "model:analytic_account.account.context,name:"
 msgid "Open Chart of Accounts"
 msgstr "Odpri kontni načrt"
@@ -194,111 +190,109 @@ msgctxt "model:analytic_account.rule,name:"
 msgid "Analytic Rule"
 msgstr "Analitično pravilo"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_account_list"
 msgid "Accounts"
-msgstr "Konto"
+msgstr "Konti"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_account_tree"
 msgid "Accounts"
-msgstr "Konto"
+msgstr "Konti"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_account_tree_chart"
 msgid "Chart of Analytic Accounts"
-msgstr "Open Chart of Analytic Accounts"
+msgstr "Odpri analitični kontni načrt"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_line_form"
 msgid "Analytic Lines"
-msgstr "Analytic Lines"
+msgstr "Analitične postavke"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_move_line_form_completion"
 msgid "Analytic Lines to Complete"
-msgstr "Analytic Lines to Complete"
+msgstr "Analitične postavke za dokončanje"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_open_account"
 msgid "Open Account"
-msgstr "Open Account"
+msgstr "Odpri konto"
 
 msgctxt "model:ir.action,name:act_rule_form"
 msgid "Rules"
+msgstr "Pravila"
+
+msgctxt "model:ir.message,text:msg_account_wrong_type_line"
+msgid ""
+"You cannot change the type of account \"%(account)s\" because it has move "
+"lines."
 msgstr ""
+"Ne morete spremeniti vrste računa \"%(account)s\", ker že ima knjižene "
+"postavke."
 
 msgctxt "model:ir.message,text:msg_analytic_account_root_change"
 msgid ""
 "You cannot change the root of the analytic account \"%(account)s\" which is "
 "associated with analytic account entry."
 msgstr ""
+"Ne morete spremeniti korena analitičnega konta \"%(account)s\", ki je "
+"povezan z vnosom analitičnega konta."
 
 msgctxt "model:ir.message,text:msg_invalid_distribution"
 msgid ""
 "To save account \"%(account)s\" the sum of their distributions must be "
 "100%%."
 msgstr ""
+"Če želite shraniti konto \"%(account)s\", mora biti vsota njihovih "
+"porazdelitev 100 %%."
 
-#, fuzzy
 msgctxt "model:ir.message,text:msg_root_origin_unique"
 msgid "Only one account is allowed by analytic root and origin."
-msgstr "Dovoljen je samo en konto na analitični koren in poreklo."
+msgstr "Dovoljen je samo en konto na analitični koren in vir."
 
-#, fuzzy
 msgctxt "model:ir.model.button,string:line_apply_analytic_rules_button"
 msgid "Apply Analytic Rules"
-msgstr "Analytic Rules"
+msgstr "Uporabi analitična pravila"
 
 msgctxt "model:ir.rule.group,name:rule_group_account_companies"
 msgid "User in companies"
-msgstr ""
+msgstr "Uporabnik v družbah"
 
 msgctxt "model:ir.rule.group,name:rule_group_entry_companies"
 msgid "User in companies"
-msgstr ""
+msgstr "Uporabnik v družbah"
 
 msgctxt "model:ir.rule.group,name:rule_group_line_companies"
 msgid "User in companies"
-msgstr ""
+msgstr "Uporabnik v družbah"
 
 msgctxt "model:ir.rule.group,name:rule_group_rule_companies"
 msgid "User in companies"
-msgstr ""
+msgstr "Uporabnik v družbah"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_account_list"
 msgid "Accounts"
-msgstr "Konto"
+msgstr "Konti"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_account_tree"
 msgid "Accounts"
-msgstr "Konto"
+msgstr "Konti"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_account_tree_chart"
 msgid "Chart of Analytic Accounts"
-msgstr "Open Chart of Analytic Accounts"
+msgstr "Odpri analitični kontni načrt"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_analytic_account_configuration"
 msgid "Analytic"
 msgstr "Analitično"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_completion"
 msgid "Analytic Lines to Complete"
-msgstr "Analytic Lines to Complete"
+msgstr "Analitične postavke za dokončanje"
 
 msgctxt "model:ir.ui.menu,name:menu_rule_form"
 msgid "Rules"
-msgstr ""
+msgstr "Pravila"
 
-#, fuzzy
 msgctxt "model:res.group,name:group_analytic_admin"
 msgid "Analytic Administration"
-msgstr "Analytic Administration"
+msgstr "Analitična administracija"
 
 msgctxt "selection:account.move.line,analytic_state:"
 msgid "Draft"
@@ -340,14 +334,6 @@ msgctxt "view:account.move.line:"
 msgid "Analytic"
 msgstr "Analitično"
 
-msgctxt "view:account.move.line:"
-msgid "Credit"
-msgstr "Kredit"
-
-msgctxt "view:account.move.line:"
-msgid "Debit"
-msgstr "Debet"
-
 msgctxt "view:analytic_account.account.distribution:"
 msgid "%"
 msgstr "%"
@@ -358,4 +344,4 @@ msgstr "Splošno"
 
 msgctxt "view:analytic_account.account:"
 msgid "Notes"
-msgstr "Opombe"
+msgstr "Zapiski"

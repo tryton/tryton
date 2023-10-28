@@ -11,12 +11,8 @@ msgid "Price List"
 msgstr "Prijslijst"
 
 msgctxt "field:carrier,weight_uom:"
-msgid "Weight Uom"
-msgstr "maateenheid gewicht"
-
-msgctxt "field:carrier,weight_uom_digits:"
-msgid "Weight Uom Digits"
-msgstr "maateenheid gewicht decimalen"
+msgid "Weight UoM"
+msgstr "Maateenheid gewicht"
 
 msgctxt "field:carrier.weight_price_list,carrier:"
 msgid "Carrier"
@@ -34,6 +30,10 @@ msgctxt "field:carrier.weight_price_list,weight:"
 msgid "Weight"
 msgstr "Gewicht"
 
+msgctxt "field:carrier.weight_price_list,weight_uom:"
+msgid "Weight UoM"
+msgstr "Maateenheid gewicht"
+
 msgctxt "help:carrier,weight_currency:"
 msgid "The currency of the price."
 msgstr "De valuta van de prijs."
@@ -49,8 +49,8 @@ msgstr ""
 "De regel met gewicht 0 wordt gebruikt als standaard prijs."
 
 msgctxt "help:carrier,weight_uom:"
-msgid "The unit of weight criteria of the price list."
-msgstr "De gewichtseenheid criteria van de prijslijst."
+msgid "The Unit of Measure of weight criteria for the price list."
+msgstr "De maateenheid van gewichtscriteria voor de prijslijst."
 
 msgctxt "help:carrier.weight_price_list,carrier:"
 msgid "The carrier that the price list belongs to."
@@ -63,6 +63,10 @@ msgstr "De prijs van de transport service."
 msgctxt "help:carrier.weight_price_list,weight:"
 msgid "The lower limit for the price."
 msgstr "De ondergrens voor de prijs."
+
+msgctxt "help:carrier.weight_price_list,weight_uom:"
+msgid "The Unit of Measure of the weight."
+msgstr "De maateenheid van het gewicht."
 
 msgctxt "model:carrier.weight_price_list,name:"
 msgid "Carrier Weight Price List"

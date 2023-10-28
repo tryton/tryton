@@ -4,206 +4,206 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "field:account.configuration,default_category_account_expense:"
 msgid "Default Account Expense"
-msgstr ""
+msgstr "默认帐户支出"
 
 msgctxt "field:account.configuration,default_category_account_revenue:"
 msgid "Default Account Revenue"
-msgstr ""
+msgstr "默认账户收入"
 
 msgctxt ""
 "field:account.configuration.default_account,default_category_account_expense:"
 msgid "Default Account Expense"
-msgstr ""
+msgstr "默认帐户支出"
 
 msgctxt ""
 "field:account.configuration.default_account,default_category_account_revenue:"
 msgid "Default Account Revenue"
-msgstr ""
+msgstr "默认帐户收入"
 
 msgctxt "field:account.create_chart.properties,category_account_expense:"
 msgid "Default Expense Account"
-msgstr ""
+msgstr "默认支出帐户"
 
 msgctxt "field:account.create_chart.properties,category_account_revenue:"
 msgid "Default Revenue Account"
-msgstr ""
+msgstr "默认收入帐户"
 
 msgctxt "field:analytic_account.rule,product:"
 msgid "Product"
-msgstr ""
+msgstr "产品"
 
 msgctxt "field:analytic_account.rule,product_category:"
 msgid "Product Category"
-msgstr ""
+msgstr "产品类别"
 
 msgctxt "field:product.category,account_expense:"
 msgid "Account Expense"
-msgstr ""
+msgstr "账户支出"
 
 msgctxt "field:product.category,account_parent:"
 msgid "Use Parent's accounts"
-msgstr ""
+msgstr "使用父类别帐户"
 
 msgctxt "field:product.category,account_revenue:"
 msgid "Account Revenue"
-msgstr ""
+msgstr "账户收入"
 
 msgctxt "field:product.category,accounting:"
 msgid "Accounting"
-msgstr ""
+msgstr "会计"
 
 msgctxt "field:product.category,accounts:"
 msgid "Accounts"
-msgstr ""
+msgstr "账户"
 
 msgctxt "field:product.category,customer_taxes:"
 msgid "Customer Taxes"
-msgstr ""
+msgstr "客户税"
 
 msgctxt "field:product.category,customer_taxes_used:"
 msgid "Customer Taxes Used"
-msgstr ""
+msgstr "在用客户税"
 
 msgctxt "field:product.category,supplier_taxes:"
 msgid "Supplier Taxes"
-msgstr ""
+msgstr "供应商税"
 
 msgctxt "field:product.category,supplier_taxes_deductible_rate:"
 msgid "Supplier Taxes Deductible Rate"
-msgstr ""
+msgstr "供应商可抵扣税率"
 
 msgctxt "field:product.category,supplier_taxes_used:"
 msgid "Supplier Taxes Used"
-msgstr ""
+msgstr "在用供应商税"
 
 msgctxt "field:product.category,taxes_parent:"
 msgid "Use the Parent's Taxes"
-msgstr ""
+msgstr "使用父类别税"
 
 msgctxt "field:product.category-customer-account.tax,category:"
 msgid "Category"
-msgstr ""
+msgstr "类别"
 
 msgctxt "field:product.category-customer-account.tax,tax:"
 msgid "Tax"
-msgstr ""
+msgstr "税"
 
 msgctxt "field:product.category-supplier-account.tax,category:"
 msgid "Category"
-msgstr ""
+msgstr "类别"
 
 msgctxt "field:product.category-supplier-account.tax,tax:"
 msgid "Tax"
-msgstr ""
+msgstr "税"
 
 msgctxt "field:product.category.account,account_expense:"
 msgid "Account Expense"
-msgstr ""
+msgstr "账户支出"
 
 msgctxt "field:product.category.account,account_revenue:"
 msgid "Account Revenue"
-msgstr ""
+msgstr "账户收入"
 
 msgctxt "field:product.category.account,category:"
 msgid "Category"
-msgstr ""
+msgstr "类别"
 
 msgctxt "field:product.category.account,company:"
 msgid "Company"
-msgstr ""
+msgstr "公司"
 
 msgctxt "field:product.product,account_category:"
 msgid "Account Category"
-msgstr ""
+msgstr "账户类别"
 
 msgctxt "field:product.template,account_category:"
 msgid "Account Category"
-msgstr ""
+msgstr "账户类别"
 
 msgctxt "field:product.template-product.category.account,category:"
 msgid "Category"
-msgstr ""
+msgstr "类别"
 
 msgctxt "field:product.template-product.category.account,template:"
 msgid "Template"
-msgstr ""
+msgstr "模板"
 
 msgctxt "help:product.category,account_parent:"
 msgid "Use the accounts defined on the parent category."
-msgstr ""
+msgstr "使用父类别定义的帐户。"
 
 msgctxt "help:product.category,accounting:"
 msgid "Check to indicate the category is used for accounting."
-msgstr ""
+msgstr "勾选标明此类别用于记帐。"
 
 msgctxt "help:product.category,customer_taxes:"
 msgid "The taxes to apply when selling products of this category."
-msgstr ""
+msgstr "销售此类产品时适用的税费。"
 
 msgctxt "help:product.category,supplier_taxes:"
 msgid "The taxes to apply when purchasing products of this category."
-msgstr ""
+msgstr "购买此类产品时适用的税费。"
 
 msgctxt "help:product.category,taxes_parent:"
 msgid "Use the taxes defined on the parent category."
-msgstr ""
+msgstr "使用父类别定义的税。"
 
 msgctxt "model:ir.message,text:msg_missing_account"
 msgid "There is no \"%(field)s\" defined for \"%(name)s\"."
-msgstr ""
+msgstr "\"%(name)s\" 没有定义字段 \"%(field)s\"。"
 
 msgctxt "model:ir.message,text:msg_missing_taxes"
 msgid "There is no account category defined on product \"%(name)s\"."
-msgstr ""
+msgstr "产品 \"%(name)s\" 没有定义帐户类别。"
 
 msgctxt "model:ir.rule.group,name:rule_group_category_accounting"
 msgid "Any category"
-msgstr ""
+msgstr "任意类别"
 
 msgctxt "model:ir.rule.group,name:rule_group_category_default"
 msgid "Not accounting category"
-msgstr ""
+msgstr "无会计类别"
 
 msgctxt "model:product.category-customer-account.tax,name:"
 msgid "Category - Customer Tax"
-msgstr ""
+msgstr "类别 - 客户税"
 
 msgctxt "model:product.category-supplier-account.tax,name:"
 msgid "Category - Supplier Tax"
-msgstr ""
+msgstr "类别 - 供应商税"
 
 msgctxt "model:product.category.account,name:"
 msgid "Category Account"
-msgstr ""
+msgstr "类别账户"
 
 msgctxt "model:product.template-product.category.account,name:"
 msgid "Template - Account Category"
-msgstr ""
+msgstr "模板 - 账户类别"
 
 msgctxt "model:res.group,name:group_account_product_admin"
 msgid "Account Product Administration"
-msgstr ""
+msgstr "帐户产品管理"
 
 msgctxt "view:account.configuration:"
 msgid "Product"
-msgstr ""
+msgstr "产品"
 
 msgctxt "view:account.create_chart.properties:"
 msgid "Category"
-msgstr ""
+msgstr "类别"
 
 msgctxt "view:product.category:"
 msgid "Accounting"
-msgstr ""
+msgstr "会计"
 
 msgctxt "view:product.category:"
 msgid "Accounts"
-msgstr ""
+msgstr "账户"
 
 msgctxt "view:product.category:"
 msgid "Taxes"
-msgstr ""
+msgstr "税"
 
 msgctxt "view:product.template:"
 msgid "Accounting"
-msgstr ""
+msgstr "会计"

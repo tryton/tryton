@@ -3,35 +3,35 @@ msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "field:product.product,purchase_secondary_uom:"
-msgid "Purchase Secondary UOM"
+msgid "Purchase Secondary UoM"
 msgstr ""
 
 msgctxt "field:product.product,purchase_secondary_uom_category:"
-msgid "Purchase Secondary UOM Category"
+msgid "Purchase Secondary UoM Category"
 msgstr ""
 
 msgctxt "field:product.product,purchase_secondary_uom_factor:"
-msgid "Purchase Secondary UOM Factor"
+msgid "Purchase Secondary UoM Factor"
 msgstr ""
 
 msgctxt "field:product.product,purchase_secondary_uom_rate:"
-msgid "Purchase Secondary UOM Rate"
+msgid "Purchase Secondary UoM Rate"
 msgstr ""
 
 msgctxt "field:product.template,purchase_secondary_uom:"
-msgid "Purchase Secondary UOM"
+msgid "Purchase Secondary UoM"
 msgstr ""
 
 msgctxt "field:product.template,purchase_secondary_uom_category:"
-msgid "Purchase Secondary UOM Category"
+msgid "Purchase Secondary UoM Category"
 msgstr ""
 
 msgctxt "field:product.template,purchase_secondary_uom_factor:"
-msgid "Purchase Secondary UOM Factor"
+msgid "Purchase Secondary UoM Factor"
 msgstr ""
 
 msgctxt "field:product.template,purchase_secondary_uom_rate:"
-msgid "Purchase Secondary UOM Rate"
+msgid "Purchase Secondary UoM Rate"
 msgstr ""
 
 msgctxt ""
@@ -40,7 +40,7 @@ msgid "Product Secondary UOM Category"
 msgstr ""
 
 msgctxt "field:purchase.line,product_secondary_uom_category:"
-msgid "Product Secondary UOM Category"
+msgid "Product Secondary UoM Category"
 msgstr ""
 
 msgctxt "field:purchase.line,secondary_quantity:"
@@ -56,35 +56,39 @@ msgid "Secondary Unit Price"
 msgstr ""
 
 msgctxt "field:purchase.line,secondary_uom_factor:"
-msgid "Secondary UOM Factor"
+msgid "Secondary UoM Factor"
 msgstr ""
 
 msgctxt "field:purchase.line,secondary_uom_rate:"
-msgid "Secondary UOM Rate"
+msgid "Secondary UoM Rate"
 msgstr ""
 
 msgctxt "field:purchase.product_supplier,default_uom_category:"
-msgid "Default UOM Category"
+msgid "Default UoM Category"
 msgstr ""
 
 msgctxt "field:purchase.product_supplier,purchase_secondary_uom:"
-msgid "Purchase Secondary UOM"
+msgid "Purchase Secondary UoM"
 msgstr ""
 
 msgctxt "field:purchase.product_supplier,purchase_secondary_uom_category:"
-msgid "Purchase Secondary UOM Category"
+msgid "Purchase Secondary UoM Category"
 msgstr ""
 
 msgctxt "field:purchase.product_supplier,purchase_secondary_uom_factor:"
-msgid "Purchase Secondary UOM Factor"
+msgid "Purchase Secondary UoM Factor"
 msgstr ""
 
 msgctxt "field:purchase.product_supplier,purchase_secondary_uom_rate:"
-msgid "Purchase Secondary UOM Rate"
+msgid "Purchase Secondary UoM Rate"
 msgstr ""
 
 msgctxt "field:purchase.requisition.line,product_secondary_uom_category:"
-msgid "Product Secondary UOM Category"
+msgid "Product Secondary UoM Category"
+msgstr ""
+
+msgctxt "help:product.product,purchase_secondary_uom:"
+msgid "The second Unit of Measure for purchases."
 msgstr ""
 
 msgctxt "help:product.product,purchase_secondary_uom_factor:"
@@ -99,6 +103,10 @@ msgid ""
 "coefficient (purchase unit) = 1 (secondary unit)"
 msgstr ""
 
+msgctxt "help:product.template,purchase_secondary_uom:"
+msgid "The second Unit of Measure for purchases."
+msgstr ""
+
 msgctxt "help:product.template,purchase_secondary_uom_factor:"
 msgid ""
 "The coefficient for the formula:\n"
@@ -111,6 +119,30 @@ msgid ""
 "coefficient (purchase unit) = 1 (secondary unit)"
 msgstr ""
 
+msgctxt "help:purchase.blanket_agreement.line,product_secondary_uom_category:"
+msgid "The category of secondary Unit of Measure for the product."
+msgstr ""
+
+msgctxt "help:purchase.line,product_secondary_uom_category:"
+msgid "The category of secondary Unit of Measure for the product."
+msgstr ""
+
+msgctxt "help:purchase.line,secondary_uom_factor:"
+msgid "The factor for the secondary Unit of Measure."
+msgstr ""
+
+msgctxt "help:purchase.line,secondary_uom_rate:"
+msgid "The rate for the secondary Unit of Measure."
+msgstr ""
+
+msgctxt "help:purchase.product_supplier,default_uom_category:"
+msgid "The category of the default Unit of Measure."
+msgstr ""
+
+msgctxt "help:purchase.product_supplier,purchase_secondary_uom:"
+msgid "The second Unit of Measure for purchases."
+msgstr ""
+
 msgctxt "help:purchase.product_supplier,purchase_secondary_uom_factor:"
 msgid ""
 "The coefficient for the formula:\n"
@@ -121,6 +153,10 @@ msgctxt "help:purchase.product_supplier,purchase_secondary_uom_rate:"
 msgid ""
 "The coefficient for the formula:\n"
 "coefficient (purchase unit) = 1 (secondary unit)"
+msgstr ""
+
+msgctxt "help:purchase.requisition.line,product_secondary_uom_category:"
+msgid "The category of secondary Unit of Measure for the product."
 msgstr ""
 
 msgctxt "model:ir.message,text:msg_secondary_uom_incompatible_factor_rate"

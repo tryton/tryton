@@ -998,6 +998,11 @@ msgid "Description"
 msgstr "Megjegyzés"
 
 #, fuzzy
+msgctxt "field:account.general_ledger.line,description_used:"
+msgid "Description"
+msgstr "Megjegyzés"
+
+#, fuzzy
 msgctxt "field:account.general_ledger.line,internal_balance:"
 msgid "Internal Balance"
 msgstr "Trial Balance"
@@ -1006,7 +1011,8 @@ msgctxt "field:account.general_ledger.line,move:"
 msgid "Move"
 msgstr "Bizonylat"
 
-msgctxt "field:account.general_ledger.line,move_description:"
+#, fuzzy
+msgctxt "field:account.general_ledger.line,move_description_used:"
 msgid "Move Description"
 msgstr "Megjegyzés (bizonylat)"
 
@@ -1214,6 +1220,11 @@ msgctxt "field:account.move,description:"
 msgid "Description"
 msgstr "Megjegyzés"
 
+#, fuzzy
+msgctxt "field:account.move,description_used:"
+msgid "Description"
+msgstr "Megjegyzés"
+
 msgctxt "field:account.move,journal:"
 msgid "Journal"
 msgstr "Napló"
@@ -1301,6 +1312,11 @@ msgid "Description"
 msgstr "Megjegyzés"
 
 #, fuzzy
+msgctxt "field:account.move.line,description_used:"
+msgid "Description"
+msgstr "Megjegyzés"
+
+#, fuzzy
 msgctxt "field:account.move.line,has_maturity_date:"
 msgid "Has Maturity Date"
 msgstr "Esedékesség"
@@ -1317,7 +1333,8 @@ msgctxt "field:account.move.line,move:"
 msgid "Move"
 msgstr "Bizonylat"
 
-msgctxt "field:account.move.line,move_description:"
+#, fuzzy
+msgctxt "field:account.move.line,move_description_used:"
 msgid "Move Description"
 msgstr "Megjegyzés (bizonylat)"
 
@@ -1592,10 +1609,6 @@ msgctxt "field:account.move.template,company:"
 msgid "Company"
 msgstr "Cég"
 
-msgctxt "field:account.move.template,date:"
-msgid "Date"
-msgstr "Dátum"
-
 msgctxt "field:account.move.template,description:"
 msgid "Description"
 msgstr "Megjegyzés"
@@ -1615,6 +1628,11 @@ msgstr "Tételek"
 msgctxt "field:account.move.template,name:"
 msgid "Name"
 msgstr "Név"
+
+#, fuzzy
+msgctxt "field:account.move.template.create.template,date:"
+msgid "Effective Date"
+msgstr "Befejezés dátuma"
 
 msgctxt "field:account.move.template.create.template,period:"
 msgid "Period"
@@ -2281,6 +2299,26 @@ msgctxt "field:account.update_chart.start,account:"
 msgid "Root Account"
 msgstr "Számlatükör"
 
+#, fuzzy
+msgctxt "field:company.company,payable:"
+msgid "Payable"
+msgstr "Kötelezettségek"
+
+#, fuzzy
+msgctxt "field:company.company,payable_today:"
+msgid "Payable Today"
+msgstr "Kötelezettségek ma"
+
+#, fuzzy
+msgctxt "field:company.company,receivable:"
+msgid "Receivable"
+msgstr "Követelések"
+
+#, fuzzy
+msgctxt "field:company.company,receivable_today:"
+msgid "Receivable Today"
+msgstr "Követelések ma"
+
 msgctxt "field:party.party,account_payable:"
 msgid "Account Payable"
 msgstr "Szállítói számla"
@@ -2518,8 +2556,9 @@ msgctxt "help:account.move.line.template,amount:"
 msgid "A python expression that will be evaluated with the keywords."
 msgstr ""
 
+#, fuzzy
 msgctxt "help:account.move.line.template,description:"
-msgid "Keywords values substitutions are identified by braces ('{' and '}')."
+msgid "Keyword value substitutions are identified by braces ('{' and '}')."
 msgstr ""
 "A helyettesítendő kulcsszavakat kapcsos zárójelek { és } közé kell tenni."
 
@@ -2535,12 +2574,9 @@ msgctxt "help:account.move.reconciliation,delegate_to:"
 msgid "The line to which the reconciliation status is delegated."
 msgstr ""
 
-msgctxt "help:account.move.template,date:"
-msgid "Leave empty for today."
-msgstr "Hagyja üresen a mai naphoz."
-
+#, fuzzy
 msgctxt "help:account.move.template,description:"
-msgid "Keyword values substitutions are identified by braces ('{' and '}')."
+msgid "Keyword value substitutions are identified by braces ('{' and '}')."
 msgstr ""
 "A helyettesítendő kulcsszavakat kapcsos zárójelek { és } közé kell tenni."
 
@@ -3177,8 +3213,9 @@ msgctxt "model:ir.action,name:act_reconcile_lines"
 msgid "Reconcile Lines"
 msgstr "Reconcile Lines"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_reconcile_writeoff_form"
-msgid "WriteOff Methods"
+msgid "Write-off Methods"
 msgstr "Leírási szabályok"
 
 msgctxt "model:ir.action,name:act_renew_fiscalyear"
@@ -3612,6 +3649,33 @@ msgstr ""
 "Ahhoz, hogy a „%(line)s” tételt le tudja egyeztetni, engedélyeznie kell a "
 "„%(account)s” számlán az egyeztetéseket."
 
+#, fuzzy
+msgctxt ""
+"model:ir.message,text:msg_reconciliation_currency_exchange_credit_account_missing"
+msgid ""
+"To reconcile lines, you must define a currency exchange credit account for "
+"\"%(company)s\"."
+msgstr ""
+"A továbblépés előtt adja meg a(z) „%(party)s” ügyfél követelések számláját."
+
+#, fuzzy
+msgctxt ""
+"model:ir.message,text:msg_reconciliation_currency_exchange_debit_account_missing"
+msgid ""
+"To reconcile lines, you must define a currency exchange debit account for "
+"\"%(company)s\"."
+msgstr ""
+"A továbblépés előtt adja meg a(z) „%(party)s” ügyfél követelések számláját."
+
+#, fuzzy
+msgctxt ""
+"model:ir.message,text:msg_reconciliation_currency_exchange_journal_missing"
+msgid ""
+"To reconcile lines, you must define a currency exchange journal for "
+"\"%(company)s\"."
+msgstr ""
+"A továbblépés előtt adja meg a(z) „%(party)s” ügyfél követelések számláját."
+
 msgctxt "model:ir.message,text:msg_reconciliation_delete_delegated"
 msgid ""
 "The reconciliation \"%(reconciliation)s\" is delegated to the line \"%(line)s\".\n"
@@ -3647,6 +3711,12 @@ msgid ""
 msgstr ""
 "Ahhoz, hogy a tételeket le tudja egyeztetni, a %(debit)s tartozik oldali "
 "összegnek meg kell egyezni a %(credit)s követel oldali összeggel."
+
+msgctxt "model:ir.message,text:msg_reconciliation_write_off_missing"
+msgid ""
+"To reconcile lines with \"%(amount)s\" write-off, you must select a write-"
+"off method."
+msgstr ""
 
 msgctxt "model:ir.message,text:msg_reopen_fiscalyear_later"
 msgid ""
@@ -3969,8 +4039,9 @@ msgctxt "model:ir.ui.menu,name:menu_reconcile"
 msgid "Reconcile Accounts"
 msgstr "Számlák egyeztetése"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_reconcile_writeoff_form"
-msgid "WriteOff Methods"
+msgid "Write-off Methods"
 msgstr "Leírási szabályok"
 
 msgctxt "model:ir.ui.menu,name:menu_renew_fiscalyear"
@@ -4446,8 +4517,9 @@ msgctxt "selection:account.configuration.tax_rounding,tax_rounding:"
 msgid "Per Line"
 msgstr "soronként"
 
+#, fuzzy
 msgctxt "selection:account.fiscalyear,state:"
-msgid "Close"
+msgid "Closed"
 msgstr "lezárt"
 
 msgctxt "selection:account.fiscalyear,state:"
@@ -4502,8 +4574,9 @@ msgctxt "selection:account.journal,type:"
 msgid "Write-Off"
 msgstr "leírás (amortizáció)"
 
+#, fuzzy
 msgctxt "selection:account.journal.period,state:"
-msgid "Close"
+msgid "Closed"
 msgstr "lezárt"
 
 msgctxt "selection:account.journal.period,state:"
@@ -4565,8 +4638,9 @@ msgctxt "selection:account.move.template.keyword,type_:"
 msgid "Party"
 msgstr "ügyfél"
 
+#, fuzzy
 msgctxt "selection:account.period,state:"
-msgid "Close"
+msgid "Closed"
 msgstr "lezárt"
 
 msgctxt "selection:account.period,state:"
@@ -4801,30 +4875,6 @@ msgctxt "view:account.fiscalyear:"
 msgid "Sequences"
 msgstr "Sorszámozások"
 
-msgctxt "view:account.general_ledger.account:"
-msgid "Credit"
-msgstr "Követel"
-
-msgctxt "view:account.general_ledger.account:"
-msgid "Debit"
-msgstr "Tartozik"
-
-msgctxt "view:account.general_ledger.account:"
-msgid "End Balance"
-msgstr "Záró egyenleg"
-
-msgctxt "view:account.general_ledger.account:"
-msgid "Start Balance"
-msgstr "Nyitó egyenleg"
-
-msgctxt "view:account.general_ledger.line:"
-msgid "Credit"
-msgstr "Követel"
-
-msgctxt "view:account.general_ledger.line:"
-msgid "Debit"
-msgstr "Tartozik"
-
 msgctxt "view:account.journal.period:"
 msgid "Close"
 msgstr "Lezárás"
@@ -4850,14 +4900,6 @@ msgstr "Egyéb info"
 msgctxt "view:account.move.line:"
 msgid "Balance"
 msgstr "Egyenleg"
-
-msgctxt "view:account.move.line:"
-msgid "Credit"
-msgstr "Követel"
-
-msgctxt "view:account.move.line:"
-msgid "Debit"
-msgstr "Tartozik"
 
 msgctxt "view:account.move.line:"
 msgid "Other Info"
@@ -4886,6 +4928,16 @@ msgstr "Általános információ"
 msgctxt "view:account.update_chart.succeed:"
 msgid "Chart of accounts updated successfully."
 msgstr "A számlatükör frissítése sikerült."
+
+#, fuzzy
+msgctxt "view:company.company:"
+msgid "Account"
+msgstr "Számla"
+
+#, fuzzy
+msgctxt "view:company.company:"
+msgid "Accounting"
+msgstr "Pénzügy"
 
 msgctxt "view:party.party:"
 msgid "Account"

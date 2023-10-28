@@ -50,6 +50,10 @@ msgctxt "field:party.party.location,supplier_location:"
 msgid "Supplier Location"
 msgstr "Locaţia Furnizor"
 
+msgctxt "field:product.by_location.context,company:"
+msgid "Company"
+msgstr "Companie"
+
 msgctxt "field:product.by_location.context,forecast_date:"
 msgid "At Date"
 msgstr "La Data"
@@ -222,9 +226,10 @@ msgctxt "field:stock.inventory.count.quantity,total_quantity:"
 msgid "Total Quantity"
 msgstr "Cantitate Totală"
 
-msgctxt "field:stock.inventory.count.quantity,uom:"
-msgid "UOM"
-msgstr "UM"
+#, fuzzy
+msgctxt "field:stock.inventory.count.quantity,unit:"
+msgid "Unit"
+msgstr "Unitate"
 
 msgctxt "field:stock.inventory.count.search,search:"
 msgid "Search"
@@ -262,9 +267,10 @@ msgctxt "field:stock.inventory.line,quantity:"
 msgid "Actual Quantity"
 msgstr "Cantitate Reala"
 
-msgctxt "field:stock.inventory.line,uom:"
-msgid "UOM"
-msgstr "UM"
+#, fuzzy
+msgctxt "field:stock.inventory.line,unit:"
+msgid "Unit"
+msgstr "Unitate"
 
 msgctxt "field:stock.location,address:"
 msgid "Address"
@@ -326,13 +332,10 @@ msgctxt "field:stock.location,quantity:"
 msgid "Quantity"
 msgstr "Cantitate"
 
+#, fuzzy
 msgctxt "field:stock.location,quantity_uom:"
-msgid "Quantity UOM"
+msgid "Quantity UoM"
 msgstr "Cantitate UM"
-
-msgctxt "field:stock.location,quantity_uom_digits:"
-msgid "Quantity UOM Digits"
-msgstr "Cantitate UM Zecimale"
 
 msgctxt "field:stock.location,right:"
 msgid "Right"
@@ -343,8 +346,8 @@ msgid "Storage"
 msgstr "Depozitare"
 
 msgctxt "field:stock.location,type:"
-msgid "Location type"
-msgstr "Tip Locație"
+msgid "Type"
+msgstr "Tip"
 
 msgctxt "field:stock.location,warehouse:"
 msgid "Warehouse"
@@ -398,6 +401,10 @@ msgctxt "field:stock.move,currency:"
 msgid "Currency"
 msgstr "Valută"
 
+msgctxt "field:stock.move,delay:"
+msgid "Delay"
+msgstr ""
+
 msgctxt "field:stock.move,effective_date:"
 msgid "Effective Date"
 msgstr "Data Efectivă"
@@ -414,6 +421,11 @@ msgctxt "field:stock.move,origin:"
 msgid "Origin"
 msgstr "Origine"
 
+#, fuzzy
+msgctxt "field:stock.move,origin_planned_date:"
+msgid "Origin Planned Date"
+msgstr "Data Planificată"
+
 msgctxt "field:stock.move,planned_date:"
 msgid "Planned Date"
 msgstr "Data Planificată"
@@ -422,8 +434,13 @@ msgctxt "field:stock.move,product:"
 msgid "Product"
 msgstr "Produs"
 
+msgctxt "field:stock.move,product_cost_price:"
+msgid "Product Cost Price"
+msgstr "Revizuirea prețului costului produsului"
+
+#, fuzzy
 msgctxt "field:stock.move,product_uom_category:"
-msgid "Product Uom Category"
+msgid "Product UoM Category"
 msgstr "Categorie UM Produs"
 
 msgctxt "field:stock.move,quantity:"
@@ -442,6 +459,11 @@ msgctxt "field:stock.move,to_location:"
 msgid "To Location"
 msgstr "Spre Locație"
 
+#, fuzzy
+msgctxt "field:stock.move,unit:"
+msgid "Unit"
+msgstr "Unitate"
+
 msgctxt "field:stock.move,unit_price:"
 msgid "Unit Price"
 msgstr "Preț unitar"
@@ -458,13 +480,9 @@ msgctxt "field:stock.move,unit_price_updated:"
 msgid "Unit Price Updated"
 msgstr "Preț Unitar Actualizat"
 
-msgctxt "field:stock.move,uom:"
-msgid "Uom"
-msgstr "Um"
-
 msgctxt "field:stock.period,caches:"
 msgid "Caches"
-msgstr ""
+msgstr "Cache-urile"
 
 msgctxt "field:stock.period,company:"
 msgid "Company"
@@ -509,6 +527,10 @@ msgstr "Produs"
 msgctxt "field:stock.product_quantities_warehouse,quantity:"
 msgid "Quantity"
 msgstr "Cantitate"
+
+msgctxt "field:stock.product_quantities_warehouse.context,company:"
+msgid "Company"
+msgstr "Companie"
 
 msgctxt ""
 "field:stock.product_quantities_warehouse.context,stock_skip_warehouse:"
@@ -570,13 +592,10 @@ msgctxt "field:stock.products_by_locations,cost_value:"
 msgid "Cost Value"
 msgstr "Valoare Cost"
 
+#, fuzzy
 msgctxt "field:stock.products_by_locations,default_uom:"
-msgid "Default UOM"
+msgid "Default UoM"
 msgstr "UM Implicită"
-
-msgctxt "field:stock.products_by_locations,default_uom_digits:"
-msgid "Default UOM Digits"
-msgstr "Zecimale Implicite UM"
 
 msgctxt "field:stock.products_by_locations,forecast_quantity:"
 msgid "Forecast Quantity"
@@ -589,6 +608,10 @@ msgstr "Produs"
 msgctxt "field:stock.products_by_locations,quantity:"
 msgid "Quantity"
 msgstr "Cantitate"
+
+msgctxt "field:stock.products_by_locations.context,company:"
+msgid "Company"
+msgstr "Companie"
 
 msgctxt "field:stock.products_by_locations.context,forecast_date:"
 msgid "At Date"
@@ -646,7 +669,6 @@ msgctxt "field:stock.reporting.margin.context,to_date:"
 msgid "To Date"
 msgstr "Până la Data"
 
-#, fuzzy
 msgctxt "field:stock.reporting.margin.main,time_series:"
 msgid "Time Series"
 msgstr "Seria de timp"
@@ -711,10 +733,6 @@ msgctxt "field:stock.shipment.in,done_by:"
 msgid "Done By"
 msgstr "Făcut De"
 
-msgctxt "field:stock.shipment.in,effective_date:"
-msgid "Effective Date"
-msgstr "Data Efectivă"
-
 msgctxt "field:stock.shipment.in,incoming_moves:"
 msgid "Incoming Moves"
 msgstr "Mișcări Intrare"
@@ -734,10 +752,6 @@ msgstr "Număr"
 msgctxt "field:stock.shipment.in,origins:"
 msgid "Origins"
 msgstr "Origine"
-
-msgctxt "field:stock.shipment.in,planned_date:"
-msgid "Planned Date"
-msgstr "Data Planificată"
 
 msgctxt "field:stock.shipment.in,received_by:"
 msgid "Received By"
@@ -787,10 +801,6 @@ msgctxt "field:stock.shipment.in.return,done_by:"
 msgid "Done By"
 msgstr "Făcut De"
 
-msgctxt "field:stock.shipment.in.return,effective_date:"
-msgid "Effective Date"
-msgstr "Data Efectivă"
-
 msgctxt "field:stock.shipment.in.return,from_location:"
 msgid "From Location"
 msgstr "Din locație"
@@ -810,10 +820,6 @@ msgstr "Origine"
 msgctxt "field:stock.shipment.in.return,partially_assigned:"
 msgid "Partially Assigned"
 msgstr "Parțial Atribuit"
-
-msgctxt "field:stock.shipment.in.return,planned_date:"
-msgid "Planned Date"
-msgstr "Data Planificată"
 
 msgctxt "field:stock.shipment.in.return,reference:"
 msgid "Reference"
@@ -847,10 +853,6 @@ msgctxt "field:stock.shipment.internal,done_by:"
 msgid "Done By"
 msgstr "Făcut De"
 
-msgctxt "field:stock.shipment.internal,effective_date:"
-msgid "Effective Date"
-msgstr "Data Efectivă"
-
 msgctxt "field:stock.shipment.internal,effective_start_date:"
 msgid "Effective Start Date"
 msgstr "Data de Pornire Efectivă"
@@ -878,10 +880,6 @@ msgstr "Mișcări Ieșire"
 msgctxt "field:stock.shipment.internal,partially_assigned:"
 msgid "Partially Assigned"
 msgstr "Parțial Atribuit"
-
-msgctxt "field:stock.shipment.internal,planned_date:"
-msgid "Planned Date"
-msgstr "Data Planificată"
 
 msgctxt "field:stock.shipment.internal,planned_start_date:"
 msgid "Planned Start Date"
@@ -931,10 +929,6 @@ msgctxt "field:stock.shipment.out,done_by:"
 msgid "Done By"
 msgstr "Făcut De"
 
-msgctxt "field:stock.shipment.out,effective_date:"
-msgid "Effective Date"
-msgstr "Data Efectivă"
-
 msgctxt "field:stock.shipment.out,inventory_moves:"
 msgid "Inventory Moves"
 msgstr "Mișcări Inventar"
@@ -966,10 +960,6 @@ msgstr "Parțial Atribuit"
 msgctxt "field:stock.shipment.out,picked_by:"
 msgid "Picked By"
 msgstr "Colectat De"
-
-msgctxt "field:stock.shipment.out,planned_date:"
-msgid "Planned Date"
-msgstr "Data Planificată"
 
 msgctxt "field:stock.shipment.out,reference:"
 msgid "Reference"
@@ -1011,10 +1001,6 @@ msgctxt "field:stock.shipment.out.return,done_by:"
 msgid "Done By"
 msgstr "Făcut De"
 
-msgctxt "field:stock.shipment.out.return,effective_date:"
-msgid "Effective Date"
-msgstr "Data Efectivă"
-
 msgctxt "field:stock.shipment.out.return,incoming_moves:"
 msgid "Incoming Moves"
 msgstr "Mișcări Intrare"
@@ -1034,10 +1020,6 @@ msgstr "Număr"
 msgctxt "field:stock.shipment.out.return,origins:"
 msgid "Origins"
 msgstr "Origine"
-
-msgctxt "field:stock.shipment.out.return,planned_date:"
-msgid "Planned Date"
-msgstr "Data Planificată"
 
 msgctxt "field:stock.shipment.out.return,received_by:"
 msgid "Received By"
@@ -1213,7 +1195,8 @@ msgctxt "help:stock.inventory.count.quantity,total_quantity:"
 msgid "The total amount of the line counted so far."
 msgstr "Suma totală din rândurile numărate până acum."
 
-msgctxt "help:stock.inventory.count.quantity,uom:"
+#, fuzzy
+msgctxt "help:stock.inventory.count.quantity,unit:"
 msgid "The unit in which the quantities are specified."
 msgstr "Unitatea în care este specificată cantitatea."
 
@@ -1233,7 +1216,8 @@ msgctxt "help:stock.inventory.line,quantity:"
 msgid "The actual quantity found in the location."
 msgstr "Cantitatea faptică găsită în locaţie."
 
-msgctxt "help:stock.inventory.line,uom:"
+#, fuzzy
+msgctxt "help:stock.inventory.line,unit:"
 msgid "The unit in which the quantity is specified."
 msgstr "Unitatea în care este exprimată cantitatea."
 
@@ -1285,6 +1269,10 @@ msgctxt "help:stock.location,quantity:"
 msgid "The amount of stock in the location."
 msgstr "Cantitatea de stoc în locaţie."
 
+msgctxt "help:stock.location,quantity_uom:"
+msgid "The Unit of Measure for the quantities."
+msgstr ""
+
 msgctxt "help:stock.location,storage_location:"
 msgid "The top level location where stock is stored."
 msgstr "Locația de nivel superior în care este stocat stocul."
@@ -1321,6 +1309,11 @@ msgctxt "help:stock.move,origin:"
 msgid "The source of the stock move."
 msgstr "Sursa mişcării de stoc."
 
+#, fuzzy
+msgctxt "help:stock.move,origin_planned_date:"
+msgid "When the stock was expected to be moved originally."
+msgstr "Când se aşteaptă să se mute stocul."
+
 msgctxt "help:stock.move,planned_date:"
 msgid "When the stock is expected to be moved."
 msgstr "Când se aşteaptă să se mute stocul."
@@ -1328,6 +1321,16 @@ msgstr "Când se aşteaptă să se mute stocul."
 msgctxt "help:stock.move,product:"
 msgid "The product that the move is associated with."
 msgstr "Produsul cu care este asociată mişcarea."
+
+msgctxt "help:stock.move,product_cost_price:"
+msgid ""
+"The cost price of the product when different from the cost price of the "
+"move."
+msgstr ""
+
+msgctxt "help:stock.move,product_uom_category:"
+msgid "The category of Unit of Measure for the product."
+msgstr ""
 
 msgctxt "help:stock.move,quantity:"
 msgid "The amount of stock moved."
@@ -1345,13 +1348,14 @@ msgctxt "help:stock.move,to_location:"
 msgid "Where the stock is moved to."
 msgstr "Unde este mutat stocul."
 
+#, fuzzy
+msgctxt "help:stock.move,unit:"
+msgid "The unit in which the quantity is specified."
+msgstr "Unitatea în care este exprimată cantitatea."
+
 msgctxt "help:stock.move,unit_price_company:"
 msgid "Unit price in company currency."
 msgstr "Preţul unitar în valuta companiei."
-
-msgctxt "help:stock.move,uom:"
-msgid "The unit in which the quantity is specified."
-msgstr "Unitatea în care este exprimată cantitatea."
 
 msgctxt "help:stock.period,company:"
 msgid "The company the stock period is associated with."
@@ -1373,6 +1377,10 @@ msgstr "Bifaţi pentru a folosi numai cantitatea zonei de stocare."
 msgctxt "help:stock.product_quantities_warehouse.context,warehouse:"
 msgid "The warehouse for which the quantities will be calculated."
 msgstr "Depozitul pentru care vor fi calculate cantităţile."
+
+msgctxt "help:stock.products_by_locations,default_uom:"
+msgid "The default Unit of Measure."
+msgstr ""
 
 msgctxt "help:stock.products_by_locations.context,forecast_date:"
 msgid ""
@@ -1404,10 +1412,6 @@ msgctxt "help:stock.shipment.in,contact_address:"
 msgid "The address at which the supplier can be contacted."
 msgstr "Adresa la care poate fi contactat furnizorul."
 
-msgctxt "help:stock.shipment.in,effective_date:"
-msgid "When the stock was actually received."
-msgstr "Când stocul a fost recepţionat faptic."
-
 msgctxt "help:stock.shipment.in,incoming_moves:"
 msgid "The moves that bring the stock into the warehouse."
 msgstr "Mişcările care aduc stocul în depozit."
@@ -1420,13 +1424,10 @@ msgctxt "help:stock.shipment.in,number:"
 msgid "The main identifier for the shipment."
 msgstr "Identificatorul principal pentru expediere."
 
-msgctxt "help:stock.shipment.in,planned_date:"
-msgid "When the stock is expected to be received."
-msgstr "Când se aşteaptă să sosească stocul."
-
+#, fuzzy
 msgctxt "help:stock.shipment.in,reference:"
-msgid "The supplier's identifier for the shipment."
-msgstr "Identificatorul furnizorului pentru expediere."
+msgid "The external identifier for the shipment."
+msgstr "Identificatori externi ai expedierii."
 
 msgctxt "help:stock.shipment.in,state:"
 msgid "The current state of the shipment."
@@ -1448,10 +1449,6 @@ msgctxt "help:stock.shipment.in.return,delivery_address:"
 msgid "Where the stock is sent to."
 msgstr "Unde este trimis stocul."
 
-msgctxt "help:stock.shipment.in.return,effective_date:"
-msgid "When the stock was actually returned."
-msgstr "Când stocul a fost returnat faptic."
-
 msgctxt "help:stock.shipment.in.return,from_location:"
 msgid "Where the stock is moved from."
 msgstr "De unde a fost mutat stocul."
@@ -1464,13 +1461,10 @@ msgctxt "help:stock.shipment.in.return,number:"
 msgid "The main identifier for the shipment."
 msgstr "Identificatorul principal pentru expediere."
 
-msgctxt "help:stock.shipment.in.return,planned_date:"
-msgid "When the stock is expected to be returned."
-msgstr "Când se aşteaptă sa se returneze stocul."
-
+#, fuzzy
 msgctxt "help:stock.shipment.in.return,reference:"
-msgid "The supplier's identifier for the shipment."
-msgstr "Identificatorul furnizorului pentru expediere."
+msgid "The external identifier for the shipment."
+msgstr "Identificatori externi ai expedierii."
 
 msgctxt "help:stock.shipment.in.return,state:"
 msgid "The current state of the shipment."
@@ -1487,10 +1481,6 @@ msgstr "Unde este mutat stocul."
 msgctxt "help:stock.shipment.internal,company:"
 msgid "The company the shipment is associated with."
 msgstr "Compania cu care este asociată expedierea."
-
-msgctxt "help:stock.shipment.internal,effective_date:"
-msgid "When the shipment was actually completed."
-msgstr "Când s-a completat expedierea faptic."
 
 msgctxt "help:stock.shipment.internal,effective_start_date:"
 msgid "When the stock was actually sent."
@@ -1516,16 +1506,13 @@ msgctxt "help:stock.shipment.internal,outgoing_moves:"
 msgid "The moves that send the stock out."
 msgstr "Mişcările care trimit stocul."
 
-msgctxt "help:stock.shipment.internal,planned_date:"
-msgid "When the shipment is expected to be completed."
-msgstr "Când se aşteaptă să se completeze expediere."
-
 msgctxt "help:stock.shipment.internal,planned_start_date:"
 msgid "When the stock is expected to be sent."
 msgstr "Când se aşteaptă să se trimită stocul."
 
+#, fuzzy
 msgctxt "help:stock.shipment.internal,reference:"
-msgid "The external identifiers for the shipment."
+msgid "The external identifier for the shipment."
 msgstr "Identificatori externi ai expedierii."
 
 msgctxt "help:stock.shipment.internal,state:"
@@ -1557,10 +1544,6 @@ msgctxt "help:stock.shipment.out,delivery_address:"
 msgid "Where the stock is sent to."
 msgstr "Unde este trimis stocul."
 
-msgctxt "help:stock.shipment.out,effective_date:"
-msgid "When the stock was actually sent."
-msgstr "Când stocul a fost trimis faptic."
-
 msgctxt "help:stock.shipment.out,inventory_moves:"
 msgid "The moves that pick the stock from the storage area."
 msgstr "Mişcările care iau stocul de la zona de stocare."
@@ -1573,13 +1556,10 @@ msgctxt "help:stock.shipment.out,outgoing_moves:"
 msgid "The moves that send the stock to the customer."
 msgstr "Mişcările care trimit stocul la client."
 
-msgctxt "help:stock.shipment.out,planned_date:"
-msgid "When the stock is expected to be sent."
-msgstr "Când se aşteaptă să se trimită stocul."
-
+#, fuzzy
 msgctxt "help:stock.shipment.out,reference:"
-msgid "The customer's identifier for the shipment."
-msgstr "Identificatorul clientului pentru expediere."
+msgid "The external identifier for the shipment."
+msgstr "Identificatori externi ai expedierii."
 
 msgctxt "help:stock.shipment.out,state:"
 msgid "The current state of the shipment."
@@ -1601,10 +1581,6 @@ msgctxt "help:stock.shipment.out.return,customer:"
 msgid "The party that purchased the stock."
 msgstr "Partea care a achiziţionat stocul."
 
-msgctxt "help:stock.shipment.out.return,effective_date:"
-msgid "When the stock was returned."
-msgstr "Când a fost returnat stocul."
-
 msgctxt "help:stock.shipment.out.return,incoming_moves:"
 msgid "The moves that bring the stock into the warehouse."
 msgstr "Mişcările care aduc stocul în depozit."
@@ -1617,13 +1593,10 @@ msgctxt "help:stock.shipment.out.return,number:"
 msgid "The main identifier for the shipment."
 msgstr "Identificatorul principal pentru expediere."
 
-msgctxt "help:stock.shipment.out.return,planned_date:"
-msgid "When the stock is expected to be returned."
-msgstr "Când se aşteaptă sa se returneze stocul."
-
+#, fuzzy
 msgctxt "help:stock.shipment.out.return,reference:"
-msgid "The customer's identifier for the shipment."
-msgstr "Identificatorul al clientului pentru expediere."
+msgid "The external identifier for the shipment."
+msgstr "Identificatori externi ai expedierii."
 
 msgctxt "help:stock.shipment.out.return,state:"
 msgid "The current state of the shipment."
@@ -1748,6 +1721,11 @@ msgstr "Retururi Client"
 msgctxt "model:ir.action,name:act_stock_configuration_form"
 msgid "Configuration"
 msgstr "Configurare"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_warehouse_list"
+msgid "Warehouses"
+msgstr "Depozite"
 
 msgctxt "model:ir.action,name:report_shipment_in_restocking_list"
 msgid "Restocking List"
@@ -1971,6 +1949,15 @@ msgstr ""
 "Cost invalid \"%(cost_price)s\" pentru produs \"%(product)s\" cu excepţia "
 "\"%(exception)s\"."
 
+#, fuzzy
+msgctxt "model:ir.message,text:msg_invalid_cost_price_not_number"
+msgid ""
+"The value \"%(value)s\" of \"%(cost_price)s\" for product \"%(product)s\" is"
+" not a number."
+msgstr ""
+"Cost invalid \"%(cost_price)s\" pentru produs \"%(product)s\" cu excepţia "
+"\"%(exception)s\"."
+
 msgctxt "model:ir.message,text:msg_inventory_count_create_line"
 msgid "No existing line found for \"%(search)s\"."
 msgstr "Nu s-a găsit un rând existent pentru \"%(search)s\"."
@@ -2005,7 +1992,6 @@ msgid ""
 "a parent of location \"%(location)s\"."
 msgstr ""
 
-#, fuzzy
 msgctxt "model:ir.message,text:msg_inventory_missing_empty_quantity"
 msgid ""
 "To confirm the inventory \"%(inventory)s\" you must select an option for "
@@ -2105,10 +2091,11 @@ msgid ""
 "You must use the \"Modify Cost Price\" wizard."
 msgstr ""
 
+#, fuzzy
 msgctxt "model:ir.message,text:msg_product_change_default_uom"
 msgid ""
-"You cannot change the default UOM of a product which is associated with "
-"stock moves."
+"You cannot change the default unit of measure of a product which is "
+"associated with stock moves."
 msgstr ""
 "Nu se poate schimba Unitatea de Masură implicită a unui produs asociat cu "
 "mutari de stoc."
@@ -2136,9 +2123,38 @@ msgstr ""
 "Este recomandată lichidarea stocurilor din locațiile de depozitare înaintea "
 "dezactivării produsului."
 
+msgctxt "model:ir.message,text:msg_shipment_check_quantity"
+msgid ""
+"The quantities of shipment \"%(shipment)s\" are different by %(quantities)s."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_shipment_delay"
+msgid "Delay"
+msgstr ""
+
 msgctxt "model:ir.message,text:msg_shipment_delete_cancel"
 msgid "To delete shipment \"%(shipment)s\" you must cancel it."
 msgstr ""
+
+#, fuzzy
+msgctxt "model:ir.message,text:msg_shipment_effective_date"
+msgid "Effective Date"
+msgstr "Data Efectivă"
+
+#, fuzzy
+msgctxt "model:ir.message,text:msg_shipment_effective_date_help"
+msgid "When the stock operation was actually completed."
+msgstr "Când s-a completat expedierea faptic."
+
+#, fuzzy
+msgctxt "model:ir.message,text:msg_shipment_origin_planned_date"
+msgid "Origin Planned Date"
+msgstr "Data Planificată"
+
+#, fuzzy
+msgctxt "model:ir.message,text:msg_shipment_origin_planned_date_help"
+msgid "When the stock operation was initially expected to be completed."
+msgstr "Când se aşteaptă să se completeze expediere."
 
 #, fuzzy
 msgctxt "model:ir.message,text:msg_shipment_pack_inventory_done"
@@ -2146,6 +2162,16 @@ msgid "To pack shipment \"%(shipment)s\" you must do the inventory moves."
 msgstr ""
 "Pentru a șterge rând inventar \"%(line)s\" trebuie anulat inventarul "
 "\"%(inventory)s\"."
+
+#, fuzzy
+msgctxt "model:ir.message,text:msg_shipment_planned_date"
+msgid "Planned Date"
+msgstr "Data Planificată"
+
+#, fuzzy
+msgctxt "model:ir.message,text:msg_shipment_planned_date_help"
+msgid "When the stock operation is expected to be completed."
+msgstr "Când se aşteaptă să se completeze expediere."
 
 msgctxt "model:ir.message,text:msg_stock_reporting_company"
 msgid "Company"
@@ -2556,6 +2582,11 @@ msgid "Configuration"
 msgstr "Configurare"
 
 #, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_warehouse_list"
+msgid "Warehouses"
+msgstr "Depozite"
+
+#, fuzzy
 msgctxt "model:party.party-delivered_to-stock.location,name:"
 msgid "Party Delivered to Warehouse"
 msgstr "Depozit Curent"
@@ -2756,13 +2787,23 @@ msgctxt "report:stock.shipment.in.restocking_list:"
 msgid "/"
 msgstr "/"
 
+#, fuzzy
 msgctxt "report:stock.shipment.in.restocking_list:"
-msgid ":"
-msgstr ":"
+msgid "Cancelled"
+msgstr "Anulat"
+
+#, fuzzy
+msgctxt "report:stock.shipment.in.restocking_list:"
+msgid "Draft"
+msgstr "Draft"
 
 msgctxt "report:stock.shipment.in.restocking_list:"
 msgid "From Location"
 msgstr "Din Locaţie"
+
+msgctxt "report:stock.shipment.in.restocking_list:"
+msgid "N°:"
+msgstr ""
 
 msgctxt "report:stock.shipment.in.restocking_list:"
 msgid "Planned Date:"
@@ -2785,10 +2826,6 @@ msgid "Restocking List"
 msgstr "Lista de reaprovizionare"
 
 msgctxt "report:stock.shipment.in.restocking_list:"
-msgid "Shipment Number"
-msgstr "Număr Aviz"
-
-msgctxt "report:stock.shipment.in.restocking_list:"
 msgid "Supplier:"
 msgstr "Furnizor:"
 
@@ -2805,10 +2842,6 @@ msgid "/"
 msgstr "/"
 
 msgctxt "report:stock.shipment.internal.report:"
-msgid ":"
-msgstr ":"
-
-msgctxt "report:stock.shipment.internal.report:"
 msgid "From Location"
 msgstr "Din locație"
 
@@ -2819,6 +2852,10 @@ msgstr "Din Locaţie:"
 msgctxt "report:stock.shipment.internal.report:"
 msgid "Internal Shipment"
 msgstr "Expediere Interna"
+
+msgctxt "report:stock.shipment.internal.report:"
+msgid "N°:"
+msgstr ""
 
 msgctxt "report:stock.shipment.internal.report:"
 msgid "Planned Date:"
@@ -2837,10 +2874,6 @@ msgid "Reference:"
 msgstr "Referinţă:"
 
 msgctxt "report:stock.shipment.internal.report:"
-msgid "Shipment Number"
-msgstr "Număr Aviz"
-
-msgctxt "report:stock.shipment.internal.report:"
 msgid "To Location"
 msgstr "Spre Locație"
 
@@ -2851,6 +2884,11 @@ msgstr "Spre Locație:"
 msgctxt "report:stock.shipment.out.delivery_note:"
 msgid "/"
 msgstr "/"
+
+#, fuzzy
+msgctxt "report:stock.shipment.out.delivery_note:"
+msgid "Cancelled"
+msgstr "Anulat"
 
 msgctxt "report:stock.shipment.out.delivery_note:"
 msgid "Customer Code:"
@@ -2864,6 +2902,20 @@ msgctxt "report:stock.shipment.out.delivery_note:"
 msgid "Delivery Note"
 msgstr "Aviz de Însoţire a Mărfii"
 
+#, fuzzy
+msgctxt "report:stock.shipment.out.delivery_note:"
+msgid "Draft"
+msgstr "Draft"
+
+#, fuzzy
+msgctxt "report:stock.shipment.out.delivery_note:"
+msgid "Location:"
+msgstr "Locație"
+
+msgctxt "report:stock.shipment.out.delivery_note:"
+msgid "N°:"
+msgstr ""
+
 msgctxt "report:stock.shipment.out.delivery_note:"
 msgid "Product"
 msgstr "Produs"
@@ -2876,25 +2928,36 @@ msgctxt "report:stock.shipment.out.delivery_note:"
 msgid "Reference:"
 msgstr "Referinţă:"
 
-msgctxt "report:stock.shipment.out.delivery_note:"
-msgid "Shipment Number:"
-msgstr "Număr Aviz:"
-
 msgctxt "report:stock.shipment.out.picking_list:"
 msgid "/"
 msgstr "/"
 
+#, fuzzy
 msgctxt "report:stock.shipment.out.picking_list:"
-msgid ":"
-msgstr ":"
+msgid "Cancelled"
+msgstr "Anulat"
 
 msgctxt "report:stock.shipment.out.picking_list:"
 msgid "Customer:"
 msgstr "Client:"
 
+#, fuzzy
+msgctxt "report:stock.shipment.out.picking_list:"
+msgid "Done"
+msgstr "Terminat"
+
+#, fuzzy
+msgctxt "report:stock.shipment.out.picking_list:"
+msgid "Draft"
+msgstr "Draft"
+
 msgctxt "report:stock.shipment.out.picking_list:"
 msgid "From Location"
 msgstr "Din Locaţie"
+
+msgctxt "report:stock.shipment.out.picking_list:"
+msgid "N°:"
+msgstr ""
 
 msgctxt "report:stock.shipment.out.picking_list:"
 msgid "Picking List"
@@ -2917,10 +2980,6 @@ msgid "Reference:"
 msgstr "Referinţă:"
 
 msgctxt "report:stock.shipment.out.picking_list:"
-msgid "Shipment Number"
-msgstr "Număr Aviz"
-
-msgctxt "report:stock.shipment.out.picking_list:"
 msgid "To Location"
 msgstr "Spre Locație"
 
@@ -2936,17 +2995,27 @@ msgctxt "report:stock.shipment.out.return.restocking_list:"
 msgid ":"
 msgstr ":"
 
+#, fuzzy
+msgctxt "report:stock.shipment.out.return.restocking_list:"
+msgid "Cancelled"
+msgstr "Anulat"
+
 msgctxt "report:stock.shipment.out.return.restocking_list:"
 msgid "Customer"
 msgstr "Client"
+
+#, fuzzy
+msgctxt "report:stock.shipment.out.return.restocking_list:"
+msgid "Draft"
+msgstr "Draft"
 
 msgctxt "report:stock.shipment.out.return.restocking_list:"
 msgid "From Location"
 msgstr "Din locație"
 
 msgctxt "report:stock.shipment.out.return.restocking_list:"
-msgid "Number"
-msgstr "Număr"
+msgid "N°:"
+msgstr ""
 
 msgctxt "report:stock.shipment.out.return.restocking_list:"
 msgid "Planned Date:"
@@ -2967,10 +3036,6 @@ msgstr "Referinţă:"
 msgctxt "report:stock.shipment.out.return.restocking_list:"
 msgid "Restocking List"
 msgstr "Lista de reaprovizionare"
-
-msgctxt "report:stock.shipment.out.return.restocking_list:"
-msgid "Shipment"
-msgstr "Expediere"
 
 msgctxt "report:stock.shipment.out.return.restocking_list:"
 msgid "To Location"
@@ -3285,21 +3350,9 @@ msgctxt "view:stock.move:"
 msgid "Other Info"
 msgstr "Alte Informaţii"
 
-msgctxt "view:stock.products_by_locations:"
-msgid "Cost Value"
-msgstr "Valoare Cost"
-
 msgctxt "view:stock.reporting.margin.category.time_series:"
 msgid "%"
 msgstr "%"
-
-msgctxt "view:stock.reporting.margin.category.time_series:"
-msgid "Cost"
-msgstr "Cost"
-
-msgctxt "view:stock.reporting.margin.category.time_series:"
-msgid "Revenue"
-msgstr "Venituri"
 
 msgctxt "view:stock.reporting.margin.category.tree:"
 msgid "%"
@@ -3309,25 +3362,9 @@ msgctxt "view:stock.reporting.margin.main.time_series:"
 msgid "%"
 msgstr "%"
 
-msgctxt "view:stock.reporting.margin.main.time_series:"
-msgid "Cost"
-msgstr "Cost"
-
-msgctxt "view:stock.reporting.margin.main.time_series:"
-msgid "Revenue"
-msgstr "Venituri"
-
 msgctxt "view:stock.reporting.margin.main:"
 msgid "%"
 msgstr "%"
-
-msgctxt "view:stock.reporting.margin.main:"
-msgid "Cost"
-msgstr "Cost"
-
-msgctxt "view:stock.reporting.margin.main:"
-msgid "Revenue"
-msgstr "Venituri"
 
 msgctxt "view:stock.shipment.assign.partial:"
 msgid "Unable to assign these products:"

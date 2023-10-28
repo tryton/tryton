@@ -10,13 +10,17 @@ msgctxt "field:account.account.type.template,unearned_revenue:"
 msgid "Unearned Revenue"
 msgstr "Ingresos no meritados"
 
+msgctxt "field:account.invoice.line,advance_payment_recalled_lines:"
+msgid "Advance Payment Recalled Lines"
+msgstr "Línea de plazo de pago por adelantado descontadas"
+
 msgctxt "field:sale.advance_payment.condition,account:"
 msgid "Account"
 msgstr "Cuenta"
 
 msgctxt "field:sale.advance_payment.condition,amount:"
 msgid "Amount"
-msgstr "Cantidad"
+msgstr "Importe"
 
 msgctxt "field:sale.advance_payment.condition,block_shipping:"
 msgid "Block Shipping"
@@ -160,7 +164,7 @@ msgstr ""
 
 msgctxt "model:ir.action,name:act_advance_invoice_form"
 msgid "Advance Invoices"
-msgstr "Facturas adelantadas"
+msgstr "Facturas por adelantado"
 
 msgctxt "model:ir.action,name:act_advance_payment_term_form"
 msgid "Advance Payment Terms"

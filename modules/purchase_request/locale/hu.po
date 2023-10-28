@@ -14,17 +14,15 @@ msgctxt "field:purchase.request,computed_quantity:"
 msgid "Computed Quantity"
 msgstr "Kiszámított mennyiség"
 
-msgctxt "field:purchase.request,computed_uom:"
-msgid "Computed UOM"
+#, fuzzy
+msgctxt "field:purchase.request,computed_unit:"
+msgid "Computed Unit"
 msgstr "Kiszámított mennyiség ME-e"
 
+#, fuzzy
 msgctxt "field:purchase.request,default_uom:"
-msgid "Default UOM"
+msgid "Default UoM"
 msgstr "Alapegység"
-
-msgctxt "field:purchase.request,default_uom_digits:"
-msgid "Default UOM Digits"
-msgstr ""
 
 msgctxt "field:purchase.request,description:"
 msgid "Description"
@@ -46,8 +44,9 @@ msgctxt "field:purchase.request,product:"
 msgid "Product"
 msgstr "Termék"
 
+#, fuzzy
 msgctxt "field:purchase.request,product_uom_category:"
-msgid "Product Uom Category"
+msgid "Product UoM Category"
 msgstr "Mértékegység kategória"
 
 msgctxt "field:purchase.request,purchase:"
@@ -86,12 +85,8 @@ msgctxt "field:purchase.request,supply_date:"
 msgid "Expected Supply Date"
 msgstr "Várható leszállítási dátum"
 
-msgctxt "field:purchase.request,uom:"
-msgid "UOM"
-msgstr "Mértékegység"
-
-msgctxt "field:purchase.request,uom_digits:"
-msgid "UOM Digits"
+msgctxt "field:purchase.request,unit:"
+msgid "Unit"
 msgstr ""
 
 msgctxt "field:purchase.request,warehouse:"
@@ -117,6 +112,14 @@ msgstr "Szállító"
 msgctxt "field:purchase.request.create_purchase.ask_party,product:"
 msgid "Product"
 msgstr "Termék"
+
+msgctxt "help:purchase.request,default_uom:"
+msgid "The default Unit of Measure."
+msgstr ""
+
+msgctxt "help:purchase.request,product_uom_category:"
+msgid "The category of Unit of Measure for the product."
+msgstr ""
 
 msgctxt "model:ir.action,name:act_open_purchase_form"
 msgid "Purchases"

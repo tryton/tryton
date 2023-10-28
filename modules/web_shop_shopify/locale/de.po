@@ -19,7 +19,7 @@ msgid "SKU"
 msgstr "SKU"
 
 msgctxt "field:product.product,shopify_uom:"
-msgid "Shopify UOM"
+msgid "Shopify UoM"
 msgstr "Shopify Maßeinheit"
 
 msgctxt "field:product.shopify_inventory_item,product:"
@@ -27,7 +27,7 @@ msgid "Product"
 msgstr "Artikel"
 
 msgctxt "field:product.template,shopify_uom:"
-msgid "Shopify UOM"
+msgid "Shopify UoM"
 msgstr "Shopify Maßeinheit"
 
 msgctxt "field:sale.sale,shopify_tax_adjustment:"
@@ -105,6 +105,14 @@ msgstr "Journal"
 msgctxt "field:web.shop.shopify_payment_journal,shop:"
 msgid "Shop"
 msgstr "Webshop"
+
+msgctxt "help:product.product,shopify_uom:"
+msgid "The Unit of Measure of the product on Shopify."
+msgstr "Die Maßeinheit des Artikels bei Shopify."
+
+msgctxt "help:product.template,shopify_uom:"
+msgid "The Unit of Measure of the product on Shopify."
+msgstr "Die Maßeinheit des Artikels bei Shopify."
 
 msgctxt "help:web.shop,shopify_webhook_endpoint_order:"
 msgid "The URL to be called by Shopify for Order events."
@@ -211,8 +219,8 @@ msgstr ""
 
 msgctxt "model:ir.message,text:msg_product_shopify_uom_digits"
 msgid ""
-"To update product \"%(product)s\" on Shopify, you must use an UOM without "
-"digits."
+"To update product \"%(product)s\" on Shopify, you must use an unit of "
+"measure without digits."
 msgstr ""
 "Damit der Artikel \"%(product)s\" auf Shopify aktualisiert werden kann, muss"
 " eine Maßeinheit ohne Nachkommastellen verwendet werden."

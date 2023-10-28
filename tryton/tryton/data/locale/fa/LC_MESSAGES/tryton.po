@@ -151,6 +151,10 @@ msgstr "<i>جستجو...</i>"
 msgid "<i>Create...</i>"
 msgstr "<i>ایجاد...</i>"
 
+#, fuzzy, python-format
+msgid "Create \"%s\"..."
+msgstr "<i>ایجاد...</i>"
+
 msgid "Value"
 msgstr "مقدار"
 
@@ -299,6 +303,9 @@ msgstr "ذخیره حالت درختی"
 
 msgid "Spell Checking"
 msgstr "غلط ‌یاب املایی"
+
+msgid "Play Sound for Code Scanner"
+msgstr ""
 
 msgid "PDA Mode"
 msgstr "حالت PDA"
@@ -460,6 +467,17 @@ msgstr "حرکت به انتها"
 msgid "Move to parent"
 msgstr "انتقال به منبع"
 
+#, fuzzy
+msgid "Edition"
+msgstr "ویرایش"
+
+#, fuzzy
+msgid "Copy selected rows"
+msgstr "کپی متن انتخابی"
+
+msgid "Insert copied rows"
+msgstr ""
+
 msgid "Select all"
 msgstr "انتخاب همه"
 
@@ -505,6 +523,12 @@ msgstr "پرویز همایون نژاد"
 #, python-format
 msgid "Attachments (%s)"
 msgstr "پیوستها (%s)"
+
+msgid "Code Scanner"
+msgstr ""
+
+msgid "Code"
+msgstr ""
 
 msgid "Profile Editor"
 msgstr "ویرایشگر پروفایل"
@@ -949,14 +973,24 @@ msgstr "پیوند"
 msgid "Delete"
 msgstr "حذف"
 
-msgid "New"
-msgstr "جدید"
+msgid "Discard changes"
+msgstr ""
 
-msgid "Switch"
-msgstr "تعویض"
+msgid "Save and New"
+msgstr ""
+
+#, fuzzy
+msgid "Add and New"
+msgstr "افزودن مقدار"
 
 msgid "Add"
 msgstr "افزودن"
+
+msgid "Apply changes"
+msgstr ""
+
+msgid "Switch"
+msgstr "تعویض"
 
 msgid "Remove <Del>"
 msgstr "حذف <Del>"
@@ -993,8 +1027,8 @@ msgid "Detection failed"
 msgstr ""
 
 #, python-format
-msgid "Error processing the file at field %s."
-msgstr "خطای پردازش فایل واقع در فیلد : \"%s\"."
+msgid "Unknown column header \"%s\""
+msgstr ""
 
 msgid "Error"
 msgstr "خطا"
@@ -1012,6 +1046,9 @@ msgstr "%d پرونده ها وارد شدند."
 
 msgid "Search"
 msgstr "جستجو"
+
+msgid "New"
+msgstr "جدید"
 
 #, python-format
 msgid "Search %s"
@@ -1059,6 +1096,9 @@ msgstr "پیش-اعتبارسنجی"
 
 msgid ":"
 msgstr ":"
+
+msgid "Scan"
+msgstr ""
 
 msgid "Image Size"
 msgstr "اندازه تصویر"

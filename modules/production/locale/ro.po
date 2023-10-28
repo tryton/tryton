@@ -46,10 +46,6 @@ msgctxt "field:production,done_by:"
 msgid "Done By"
 msgstr ""
 
-msgctxt "field:production,effective_date:"
-msgid "Effective Date"
-msgstr ""
-
 msgctxt "field:production,effective_start_date:"
 msgid "Effective Start Date"
 msgstr ""
@@ -78,10 +74,6 @@ msgctxt "field:production,partially_assigned:"
 msgid "Partially Assigned"
 msgstr ""
 
-msgctxt "field:production,planned_date:"
-msgid "Planned Date"
-msgstr ""
-
 msgctxt "field:production,planned_start_date:"
 msgid "Planned Start Date"
 msgstr ""
@@ -106,13 +98,14 @@ msgctxt "field:production,state:"
 msgid "State"
 msgstr ""
 
-msgctxt "field:production,uom:"
-msgid "Uom"
+msgctxt "field:production,unit:"
+msgid "Unit"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:production,uom_category:"
-msgid "Uom Category"
-msgstr ""
+msgid "UoM Category"
+msgstr "Categorie"
 
 msgctxt "field:production,warehouse:"
 msgid "Warehouse"
@@ -146,8 +139,8 @@ msgctxt "field:production.bom.input,quantity:"
 msgid "Quantity"
 msgstr "Cantitate"
 
-msgctxt "field:production.bom.input,uom:"
-msgid "Uom"
+msgctxt "field:production.bom.input,unit:"
+msgid "Unit"
 msgstr ""
 
 msgctxt "field:production.bom.input,uom_category:"
@@ -166,8 +159,8 @@ msgctxt "field:production.bom.output,quantity:"
 msgid "Quantity"
 msgstr ""
 
-msgctxt "field:production.bom.output,uom:"
-msgid "Uom"
+msgctxt "field:production.bom.output,unit:"
+msgid "Unit"
 msgstr ""
 
 msgctxt "field:production.bom.output,uom_category:"
@@ -186,8 +179,8 @@ msgctxt "field:production.bom.tree,quantity:"
 msgid "Quantity"
 msgstr ""
 
-msgctxt "field:production.bom.tree,uom:"
-msgid "Uom"
+msgctxt "field:production.bom.tree,unit:"
+msgid "Unit"
 msgstr ""
 
 msgctxt "field:production.bom.tree.open.start,bom:"
@@ -206,7 +199,7 @@ msgctxt "field:production.bom.tree.open.start,quantity:"
 msgid "Quantity"
 msgstr "Cantitate"
 
-msgctxt "field:production.bom.tree.open.start,uom:"
+msgctxt "field:production.bom.tree.open.start,unit:"
 msgid "Unit"
 msgstr ""
 
@@ -280,6 +273,18 @@ msgctxt "field:stock.move,production_output:"
 msgid "Production Output"
 msgstr ""
 
+msgctxt "help:production,number:"
+msgid "The main identifier for the shipment."
+msgstr ""
+
+msgctxt "help:production,reference:"
+msgid "The external identifier for the shipment."
+msgstr ""
+
+msgctxt "help:production,uom_category:"
+msgid "The category of Unit of Measure."
+msgstr ""
+
 msgctxt "help:stock.location,production_output_location:"
 msgid ""
 "Where the produced goods are stored.\n"
@@ -306,7 +311,7 @@ msgstr ""
 
 msgctxt "model:ir.action,name:act_production_calendar"
 msgid "Productions"
-msgstr ""
+msgstr "Producţie"
 
 msgctxt "model:ir.action,name:act_production_configuration_form"
 msgid "Configuration"
@@ -314,7 +319,7 @@ msgstr "Configurare"
 
 msgctxt "model:ir.action,name:act_production_list"
 msgid "Productions"
-msgstr ""
+msgstr "Producţie"
 
 msgctxt "model:ir.action,name:wizard_bom_tree_open"
 msgid "BOM Tree"
@@ -436,14 +441,13 @@ msgctxt "model:ir.ui.menu,name:menu_configuration"
 msgid "Configuration"
 msgstr "Configurare"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_production"
 msgid "Productions"
-msgstr "Produs"
+msgstr "Producţie"
 
 msgctxt "model:ir.ui.menu,name:menu_production_calendar"
 msgid "Productions"
-msgstr ""
+msgstr "Producţie"
 
 #, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_production_configuration"
@@ -452,7 +456,7 @@ msgstr "Configurație"
 
 msgctxt "model:ir.ui.menu,name:menu_production_list"
 msgid "Productions"
-msgstr ""
+msgstr "Producţie"
 
 msgctxt "model:product.product-production.bom,name:"
 msgid "Product - BOM"
@@ -510,15 +514,13 @@ msgctxt "model:stock.location,name:location_production"
 msgid "Production"
 msgstr ""
 
-#, fuzzy
 msgctxt "selection:ir.cron,method:"
 msgid "Assign Productions"
-msgstr "Produs"
+msgstr "Atribuire Producţie"
 
-#, fuzzy
 msgctxt "selection:ir.cron,method:"
 msgid "Reschedule Productions"
-msgstr "Produs"
+msgstr "Reprogramare Producţie"
 
 msgctxt "selection:ir.cron,method:"
 msgid "Set Cost from Moves"

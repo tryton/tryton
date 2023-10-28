@@ -14,17 +14,13 @@ msgctxt "field:purchase.request,computed_quantity:"
 msgid "Computed Quantity"
 msgstr "Berechnete Menge"
 
-msgctxt "field:purchase.request,computed_uom:"
-msgid "Computed UOM"
+msgctxt "field:purchase.request,computed_unit:"
+msgid "Computed Unit"
 msgstr "Berechnete Maßeinheit"
 
 msgctxt "field:purchase.request,default_uom:"
-msgid "Default UOM"
-msgstr "Standardeinheit"
-
-msgctxt "field:purchase.request,default_uom_digits:"
-msgid "Default UOM Digits"
-msgstr "Standardmaßeinheit Nachkommastellen"
+msgid "Default UoM"
+msgstr "Standardmaßeinheit"
 
 msgctxt "field:purchase.request,description:"
 msgid "Description"
@@ -47,7 +43,7 @@ msgid "Product"
 msgstr "Artikel"
 
 msgctxt "field:purchase.request,product_uom_category:"
-msgid "Product Uom Category"
+msgid "Product UoM Category"
 msgstr "Maßeinheitenkategorie"
 
 msgctxt "field:purchase.request,purchase:"
@@ -86,13 +82,9 @@ msgctxt "field:purchase.request,supply_date:"
 msgid "Expected Supply Date"
 msgstr "Voraussichtliches Anlieferungsdatum"
 
-msgctxt "field:purchase.request,uom:"
-msgid "UOM"
-msgstr "Maßeinheit"
-
-msgctxt "field:purchase.request,uom_digits:"
-msgid "UOM Digits"
-msgstr "Maßeinheit Nachkommastellen"
+msgctxt "field:purchase.request,unit:"
+msgid "Unit"
+msgstr "Einheit"
 
 msgctxt "field:purchase.request,warehouse:"
 msgid "Warehouse"
@@ -117,6 +109,14 @@ msgstr "Lieferant"
 msgctxt "field:purchase.request.create_purchase.ask_party,product:"
 msgid "Product"
 msgstr "Artikel"
+
+msgctxt "help:purchase.request,default_uom:"
+msgid "The default Unit of Measure."
+msgstr "Die Standardmaßeinheit."
+
+msgctxt "help:purchase.request,product_uom_category:"
+msgid "The category of Unit of Measure for the product."
+msgstr "Die Kategorie der Maßeinheit des Artikels."
 
 msgctxt "model:ir.action,name:act_open_purchase_form"
 msgid "Purchases"

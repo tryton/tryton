@@ -85,7 +85,7 @@ msgstr "Betaalinformatie nummer"
 msgctxt ""
 "model:account.statement.origin.information,string:information_processing_identification"
 msgid "Processing Identification"
-msgstr "Uitvoeringsnummer"
+msgstr "Behandelingsnummer"
 
 msgctxt ""
 "model:account.statement.origin.information,string:information_remittance_information"

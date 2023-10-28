@@ -328,10 +328,6 @@ msgctxt "model:account.payment.journal,name:"
 msgid "Payment Journal"
 msgstr ""
 
-msgctxt "model:account.payment.process.start,name:"
-msgid "Process Payment"
-msgstr ""
-
 msgctxt "model:ir.action,name:act_move_line_form"
 msgid "Lines to Pay"
 msgstr ""
@@ -353,18 +349,29 @@ msgid "Payments"
 msgstr "Pembayaran-Pembayaran"
 
 #, fuzzy
+msgctxt "model:ir.action,name:act_payment_form_payable"
+msgid "Payable Payments"
+msgstr "Proses Pembayaran?"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_payment_form_receivable"
+msgid "Receivable Payments"
+msgstr "Piutang"
+
+#, fuzzy
 msgctxt "model:ir.action,name:act_payment_form_relate_party"
 msgid "Payments"
 msgstr "Pembayaran"
 
 #, fuzzy
 msgctxt "model:ir.action,name:act_payment_group_form"
-msgid "Groups"
-msgstr "Kelompok"
+msgid "Payment Groups"
+msgstr "Pembayaran"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_payment_journal_form"
-msgid "Journals"
-msgstr "Jurnal-Jurnal"
+msgid "Payment Journals"
+msgstr "Pembayaran"
 
 msgctxt "model:ir.action,name:act_process_payments"
 msgid "Process Payments"
@@ -385,38 +392,78 @@ msgctxt ""
 msgid "Receivable"
 msgstr "Piutang"
 
-msgctxt "model:ir.action.act_window.domain,name:act_payment_form_domain_all"
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_payment_form_group_open_domain_all"
 msgid "All"
-msgstr ""
-
-msgctxt "model:ir.action.act_window.domain,name:act_payment_form_domain_draft"
-msgid "Draft"
-msgstr "Rancangan"
-
-msgctxt ""
-"model:ir.action.act_window.domain,name:act_payment_form_domain_failed"
-msgid "Failed"
-msgstr "Gagal"
-
-msgctxt ""
-"model:ir.action.act_window.domain,name:act_payment_form_domain_processing"
-msgid "Processing"
-msgstr ""
-
-msgctxt ""
-"model:ir.action.act_window.domain,name:act_payment_form_domain_suceeded"
-msgid "Succeeded"
 msgstr ""
 
 #, fuzzy
 msgctxt ""
-"model:ir.action.act_window.domain,name:act_payment_form_domain_to_approve"
+"model:ir.action.act_window.domain,name:act_payment_form_group_open_domain_failed"
+msgid "Failed"
+msgstr "Gagal"
+
+#, fuzzy
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_payment_form_group_open_domain_processing"
+msgid "Processing"
+msgstr "Proses"
+
+#, fuzzy
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_payment_form_group_open_domain_succeeded"
+msgid "Succeeded"
+msgstr "Berhasil"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_payment_form_payable_domain_all"
+msgid "All"
+msgstr ""
+
+#, fuzzy
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_payment_form_payable_domain_draft"
+msgid "Draft"
+msgstr "Rancangan"
+
+#, fuzzy
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_payment_form_payable_domain_processing"
+msgid "Processing"
+msgstr "Proses"
+
+#, fuzzy
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_payment_form_payable_domain_to_approve"
 msgid "To Approve"
 msgstr "Setuju"
 
 #, fuzzy
 msgctxt ""
-"model:ir.action.act_window.domain,name:act_payment_form_domain_to_process"
+"model:ir.action.act_window.domain,name:act_payment_form_payable_domain_to_process"
+msgid "To Process"
+msgstr "Proses"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_payment_form_receivable_domain_all"
+msgid "All"
+msgstr ""
+
+#, fuzzy
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_payment_form_receivable_domain_draft"
+msgid "Draft"
+msgstr "Rancangan"
+
+#, fuzzy
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_payment_form_receivable_domain_processing"
+msgid "Processing"
+msgstr "Proses"
+
+#, fuzzy
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_payment_form_receivable_domain_to_process"
 msgid "To Process"
 msgstr "Proses"
 
@@ -438,6 +485,30 @@ msgstr ""
 "Anda tidak dapat manghapus pihak \"%(party)s\" selagi ada pembayaran yang "
 "tertunda dengan perusahaan \"%(company)s\"."
 
+msgctxt "model:ir.message,text:msg_move_cancel_payments"
+msgid ""
+"The moves \"%(moves)s\" contain lines with payments, you may want to cancel "
+"them before cancelling."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_move_line_delegate_payments"
+msgid ""
+"The lines \"%(lines)s\" have payments, you may want to cancel them before "
+"delegating."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_move_line_group_payments"
+msgid ""
+"The lines \"%(lines)s\" have payments, you may want to cancel them before "
+"grouping."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_move_line_reschedule_payments"
+msgid ""
+"The lines \"%(lines)s\" have payments, you may want to cancel them before "
+"rescheduling."
+msgstr ""
+
 msgctxt "model:ir.message,text:msg_pay_line_blocked"
 msgid "Line \"%(line)s\" is blocked for payment."
 msgstr ""
@@ -456,9 +527,18 @@ msgctxt "model:ir.message,text:msg_payment_overpay"
 msgid "Payment \"%(payment)s\" overpays line \"%(line)s\"."
 msgstr ""
 
-msgctxt "model:ir.model.button,string:move_line_pay_button"
-msgid "Pay Lines"
+msgctxt "model:ir.message,text:msg_payment_reconciled"
+msgid "The line \"%(line)s\" of payment \"%(payment)s\" is already reconciled."
 msgstr ""
+
+msgctxt "model:ir.model.button,confirm:payment_process_wizard_button"
+msgid "Are you sure you want to process the payments?"
+msgstr ""
+
+#, fuzzy
+msgctxt "model:ir.model.button,string:move_line_pay_button"
+msgid "Pay"
+msgstr "Bayar"
 
 msgctxt "model:ir.model.button,string:move_line_payment_block_button"
 msgid "Block"
@@ -488,6 +568,11 @@ msgstr "Berhasil"
 #, fuzzy
 msgctxt "model:ir.model.button,string:payment_proceed_button"
 msgid "Processing"
+msgstr "Proses"
+
+#, fuzzy
+msgctxt "model:ir.model.button,string:payment_process_wizard_button"
+msgid "Process"
 msgstr "Proses"
 
 msgctxt "model:ir.model.button,string:payment_submit_button"
@@ -540,18 +625,25 @@ msgctxt "model:ir.ui.menu,name:menu_payment_configuration"
 msgid "Payments"
 msgstr "Pembayaran"
 
-msgctxt "model:ir.ui.menu,name:menu_payment_form"
-msgid "Payments"
-msgstr "Pembayaran"
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_payment_form_payable"
+msgid "Payable Payments"
+msgstr "Proses Pembayaran?"
+
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_payment_form_receivable"
+msgid "Receivable Payments"
+msgstr "Piutang"
 
 #, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_payment_group_form"
-msgid "Groups"
-msgstr "Kelompok"
+msgid "Payment Groups"
+msgstr "Pembayaran"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_payment_journal_form"
-msgid "Journals"
-msgstr "Jurnal-Jurnal"
+msgid "Payment Journals"
+msgstr "Pembayaran"
 
 msgctxt "model:ir.ui.menu,name:menu_payments"
 msgid "Payments"
@@ -659,10 +751,6 @@ msgctxt "view:account.payment.group:"
 msgid "Total Amount"
 msgstr "Jumlah"
 
-msgctxt "view:account.payment.process.start:"
-msgid "Process Payments?"
-msgstr "Proses Pembayaran?"
-
 msgctxt "view:account.payment:"
 msgid "Description"
 msgstr "Deskripsi"
@@ -696,11 +784,3 @@ msgstr "Batal"
 msgctxt "wizard_button:account.move.line.pay,start,next_:"
 msgid "Pay"
 msgstr "Bayar"
-
-msgctxt "wizard_button:account.payment.process,start,end:"
-msgid "Cancel"
-msgstr "Batal"
-
-msgctxt "wizard_button:account.payment.process,start,process:"
-msgid "Process"
-msgstr "Proses"

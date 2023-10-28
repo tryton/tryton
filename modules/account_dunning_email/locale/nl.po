@@ -6,30 +6,6 @@ msgctxt "field:account.configuration,dunning_email_fallback:"
 msgid "Fall-back User"
 msgstr "Terugval gebruiker"
 
-msgctxt "field:account.dunning.email.log,date:"
-msgid "Date"
-msgstr "Datum"
-
-msgctxt "field:account.dunning.email.log,dunning:"
-msgid "Dunning"
-msgstr "Aanmaning"
-
-msgctxt "field:account.dunning.email.log,level:"
-msgid "Level"
-msgstr "Niveau"
-
-msgctxt "field:account.dunning.email.log,recipients:"
-msgid "Recipients"
-msgstr "Ontvangers"
-
-msgctxt "field:account.dunning.email.log,recipients_hidden:"
-msgid "Hidden Recipients"
-msgstr "Verborgen ontvangers"
-
-msgctxt "field:account.dunning.email.log,recipients_secondary:"
-msgid "Secondary Recipients"
-msgstr "Secundaire ontvangers"
-
 msgctxt "field:account.dunning.level,email_contact_mechanism:"
 msgid "Contact Mechanism"
 msgstr "Contactmogelijkheid"
@@ -45,6 +21,10 @@ msgstr "Email template"
 msgctxt "field:account.dunning.level,send_email:"
 msgid "Send Email"
 msgstr "Verstuur e-mail"
+
+msgctxt "field:ir.email,dunning_level:"
+msgid "Level"
+msgstr "Niveau"
 
 msgctxt "help:account.configuration,dunning_email_fallback:"
 msgid "User notified when no e-mail is found to send the dunning"
@@ -62,14 +42,6 @@ msgctxt "help:account.dunning.level,email_from:"
 msgid "Leave empty for the value defined in the configuration file."
 msgstr ""
 "Laat leeg voor de waarde die is gedefinieerd in het configuratiebestand."
-
-msgctxt "model:account.dunning.email.log,name:"
-msgid "Dunning Email Log"
-msgstr "Aanmanings-Email logboek"
-
-msgctxt "model:ir.action,name:act_log"
-msgid "Email Logs"
-msgstr "Email Logboek"
 
 msgctxt "model:ir.action,name:report_email"
 msgid "Dunning Email"
@@ -110,10 +82,6 @@ msgstr "Referentie"
 msgctxt "report:account.dunning.letter:"
 msgid "Reminder Notice"
 msgstr "Herinnering"
-
-msgctxt "view:account.dunning.email.log:"
-msgid "Time"
-msgstr "Tijd"
 
 msgctxt "view:account.dunning.level:"
 msgid "E-mail"

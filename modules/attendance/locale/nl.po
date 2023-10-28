@@ -206,7 +206,7 @@ msgstr "Aanwezigheid"
 
 msgctxt "model:ir.ui.menu,name:menu_configuration"
 msgid "Configuration"
-msgstr "Instellingen"
+msgstr "Configuratie"
 
 msgctxt "model:ir.ui.menu,name:menu_main_attendance"
 msgid "Attendance"

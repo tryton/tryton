@@ -484,99 +484,14 @@ msgid "Year"
 msgstr "Ano"
 
 #, fuzzy
-msgctxt "view:sale.opportunity.reporting.conversion.employee.time_series:"
-msgid "Lost"
-msgstr "Perdida"
-
-#, fuzzy
-msgctxt "view:sale.opportunity.reporting.conversion.employee.time_series:"
-msgid "Won"
-msgstr "Ganhou"
-
-#, fuzzy
-msgctxt "view:sale.opportunity.reporting.conversion.employee.time_series:"
-msgid "Won Amount"
-msgstr "Montante Ganho"
-
-#, fuzzy
-msgctxt "view:sale.opportunity.reporting.conversion.time_series:"
-msgid "Lost"
-msgstr "Perdida"
-
-#, fuzzy
-msgctxt "view:sale.opportunity.reporting.conversion.time_series:"
-msgid "Won"
-msgstr "Ganhou"
-
-#, fuzzy
-msgctxt "view:sale.opportunity.reporting.conversion.time_series:"
-msgid "Won Amount"
-msgstr "Montante Ganho"
-
-#, fuzzy
 msgctxt "view:sale.opportunity.reporting.conversion:"
 msgid "%"
 msgstr "%"
 
 #, fuzzy
-msgctxt "view:sale.opportunity.reporting.conversion:"
-msgid "Lost"
-msgstr "Perdida"
-
-#, fuzzy
-msgctxt "view:sale.opportunity.reporting.conversion:"
-msgid "Won"
-msgstr "Ganhou"
-
-#, fuzzy
-msgctxt "view:sale.opportunity.reporting.conversion:"
-msgid "Won Amount"
-msgstr "Montante Ganho"
-
-#, fuzzy
-msgctxt "view:sale.opportunity.reporting.main.time_series:"
-msgid "Amount"
-msgstr "Quantidade"
-
-#, fuzzy
-msgctxt "view:sale.opportunity.reporting.main.time_series:"
-msgid "Converted"
-msgstr "Convertido"
-
-#, fuzzy
-msgctxt "view:sale.opportunity.reporting.main.time_series:"
-msgid "Converted Amount"
-msgstr "Montante Convertido"
-
-#, fuzzy
-msgctxt "view:sale.opportunity.reporting.main.time_series:"
-msgid "Number"
-msgstr "Número"
-
-#, fuzzy
 msgctxt "view:sale.opportunity.reporting.main:"
 msgid "%"
 msgstr "%"
-
-#, fuzzy
-msgctxt "view:sale.opportunity.reporting.main:"
-msgid "Amount"
-msgstr "Quantidade"
-
-#, fuzzy
-msgctxt "view:sale.opportunity.reporting.main:"
-msgid "Converted"
-msgstr "Convertido"
-
-#, fuzzy
-msgctxt "view:sale.opportunity.reporting.main:"
-msgid "Converted Amount"
-msgstr "Montante Convertido"
-
-#, fuzzy
-msgctxt "view:sale.opportunity.reporting.main:"
-msgid "Number"
-msgstr "Número"
 
 msgctxt "view:sale.opportunity:"
 msgid "%"

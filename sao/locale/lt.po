@@ -249,6 +249,9 @@ msgstr ""
 msgid "Create..."
 msgstr ""
 
+msgid "Create \"%1\"..."
+msgstr ""
+
 msgid "Download"
 msgstr "Atsisiųsti"
 
@@ -453,6 +456,9 @@ msgstr "Išankstinis patikrinimas"
 msgid ":"
 msgstr ":"
 
+msgid "Scan"
+msgstr ""
+
 msgid "Translate"
 msgstr ""
 
@@ -521,18 +527,21 @@ msgstr "Pasirinkti kalbą"
 msgid "%1%"
 msgstr ""
 
-#, fuzzy
-msgid ": "
-msgstr ": "
+msgid "Menu"
+msgstr ""
 
-msgid "Customize"
+msgid "Copy"
+msgstr ""
+
+msgid "#ERROR"
 msgstr ""
 
 msgid "More"
 msgstr ""
 
-msgid "#ERROR"
-msgstr ""
+#, fuzzy
+msgid ": "
+msgstr ": "
 
 msgid "Today"
 msgstr "Šiandien"
@@ -557,6 +566,18 @@ msgstr "Pasirinkite veiksmą"
 
 msgid "No action defined."
 msgstr "Nėra apibrėžtų veiksmų."
+
+msgid "Discard changes"
+msgstr ""
+
+msgid "Save and New"
+msgstr ""
+
+msgid "Add and New"
+msgstr ""
+
+msgid "Apply changes"
+msgstr ""
 
 msgid "Attachments (%1)"
 msgstr ""
@@ -632,7 +653,7 @@ msgstr "Jūs pirmiausiai turite pasirinkti importo failą."
 msgid "Detection failed"
 msgstr ""
 
-msgid "Error processing the file at field %1."
+msgid "Unknown column header \"%1\""
 msgstr ""
 
 msgid "Error"
@@ -732,6 +753,15 @@ msgid "Send"
 msgstr ""
 
 msgid "Remove File"
+msgstr ""
+
+msgid "Code Scanner"
+msgstr ""
+
+msgid "Code"
+msgstr ""
+
+msgid "Toggle Sound"
 msgstr ""
 
 msgid "Wizard"

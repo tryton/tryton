@@ -453,10 +453,10 @@ msgstr ""
 "Der Verkauf \"%(sale)s\" wurde annulliert und darf daher keinen gezahlten "
 "Betrag erfasst haben."
 
-msgctxt "model:ir.message,text:msg_sale_amount_to_pay_done_paid"
+msgctxt "model:ir.message,text:msg_sale_amount_to_pay_done_posted"
 msgid "The sale \"%(sale)s\" is done so cannot have an amount to pay."
 msgstr ""
-"Der Verkauf \"%(sale)s\" ist erledigt und darf daher keinen zahlbaren Betrag"
+"Der Verkauf \"%(sale)s\" ist erledigt und kann daher keinen zahlbaren Betrag"
 " haben."
 
 msgctxt "model:ir.message,text:msg_sale_delete_numbered"

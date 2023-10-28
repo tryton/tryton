@@ -103,10 +103,6 @@ msgctxt "field:stock.shipment.drop,delivery_address:"
 msgid "Delivery Address"
 msgstr "Indirizzo di spedizione"
 
-msgctxt "field:stock.shipment.drop,effective_date:"
-msgid "Effective Date"
-msgstr "Decorrenza"
-
 msgctxt "field:stock.shipment.drop,moves:"
 msgid "Moves"
 msgstr "Movimenti"
@@ -114,10 +110,6 @@ msgstr "Movimenti"
 msgctxt "field:stock.shipment.drop,number:"
 msgid "Number"
 msgstr ""
-
-msgctxt "field:stock.shipment.drop,planned_date:"
-msgid "Planned Date"
-msgstr "Data prevista"
 
 msgctxt "field:stock.shipment.drop,reference:"
 msgid "Reference"
@@ -135,12 +127,12 @@ msgctxt "field:stock.shipment.drop,supplier_moves:"
 msgid "Supplier Moves"
 msgstr "Movimenti fornitore"
 
-msgctxt "help:stock.shipment.drop,effective_date:"
-msgid "When the stock was actually sent."
-msgstr ""
-
 msgctxt "help:stock.shipment.drop,number:"
 msgid "The main identifier for the shipment."
+msgstr ""
+
+msgctxt "help:stock.shipment.drop,reference:"
+msgid "The external identifier for the shipment."
 msgstr ""
 
 #, fuzzy

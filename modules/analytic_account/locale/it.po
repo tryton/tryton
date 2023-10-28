@@ -225,6 +225,12 @@ msgctxt "model:ir.action,name:act_rule_form"
 msgid "Rules"
 msgstr ""
 
+msgctxt "model:ir.message,text:msg_account_wrong_type_line"
+msgid ""
+"You cannot change the type of account \"%(account)s\" because it has move "
+"lines."
+msgstr ""
+
 msgctxt "model:ir.message,text:msg_analytic_account_root_change"
 msgid ""
 "You cannot change the root of the analytic account \"%(account)s\" which is "
@@ -338,14 +344,6 @@ msgstr "Vista"
 msgctxt "view:account.move.line:"
 msgid "Analytic"
 msgstr "Analitico"
-
-msgctxt "view:account.move.line:"
-msgid "Credit"
-msgstr "AVERE"
-
-msgctxt "view:account.move.line:"
-msgid "Debit"
-msgstr "DARE"
 
 msgctxt "view:analytic_account.account.distribution:"
 msgid "%"

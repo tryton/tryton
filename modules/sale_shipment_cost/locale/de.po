@@ -42,6 +42,26 @@ msgctxt "field:sale.sale,shipment_cost_method:"
 msgid "Shipment Cost Method"
 msgstr "Lieferkostenmethode"
 
+msgctxt "field:sale.sale,shipment_costs:"
+msgid "Shipment Costs"
+msgstr "Lieferkosten"
+
+msgctxt "field:stock.shipment.cost_sale,amount:"
+msgid "Amount"
+msgstr "Betrag"
+
+msgctxt "field:stock.shipment.cost_sale,currency:"
+msgid "Currency"
+msgstr "Währung"
+
+msgctxt "field:stock.shipment.cost_sale,sale:"
+msgid "Sale"
+msgstr "Verkauf"
+
+msgctxt "field:stock.shipment.cost_sale,shipment:"
+msgid "Shipment"
+msgstr "Lieferung"
+
 msgctxt "field:stock.shipment.out,cost_invoice_line:"
 msgid "Cost Invoice Line"
 msgstr "Rechnungsposition Kosten"
@@ -64,6 +84,10 @@ msgstr "Währung Kosten Verkauf"
 
 msgctxt "field:stock.shipment.out,cost_sale_used:"
 msgid "Cost Sale"
+msgstr "Kosten Verkauf"
+
+msgctxt "field:stock.shipment.out,cost_sales:"
+msgid "Cost Sales"
 msgstr "Kosten Verkauf"
 
 msgctxt "field:stock.shipment.out,shipment_cost_sale_readonly:"
@@ -99,6 +123,10 @@ msgstr ""
 "Damit die Lieferkosten von \"%(shipment)s\" abgerechnet werden können, muss "
 "zuerst einer Ertragskonto für Artikel \"%(product)s\" konfiguriert werden."
 
+msgctxt "model:stock.shipment.cost_sale,name:"
+msgid "Shipment Cost Sale"
+msgstr "Lieferkosten Verkauf"
+
 msgctxt "selection:sale.sale,shipment_cost_method:"
 msgid "None"
 msgstr "Keine"
@@ -110,6 +138,10 @@ msgstr "Pro Auftrag"
 msgctxt "selection:sale.sale,shipment_cost_method:"
 msgid "On Shipment"
 msgstr "Pro Lieferung"
+
+msgctxt "selection:stock.shipment.cost_sale,shipment:"
+msgid "Customer"
+msgstr "Kunde"
 
 msgctxt "view:sale.promotion:"
 msgid "Shipment Cost Included"

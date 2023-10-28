@@ -10,6 +10,10 @@ msgctxt "field:account.account.type.template,unearned_revenue:"
 msgid "Unearned Revenue"
 msgstr "Ontvangen vooruitbetalingen"
 
+msgctxt "field:account.invoice.line,advance_payment_recalled_lines:"
+msgid "Advance Payment Recalled Lines"
+msgstr "Herroepen regels voor vooruitbetalingen"
+
 msgctxt "field:sale.advance_payment.condition,account:"
 msgid "Account"
 msgstr "Rekening"
@@ -112,7 +116,7 @@ msgstr "Regel"
 
 msgctxt "field:sale.sale,advance_payment_conditions:"
 msgid "Advance Payment Conditions"
-msgstr "Vooruitbetalingsvoorwaarden"
+msgstr "Voorwaarden Vooruitbetaling"
 
 msgctxt "field:sale.sale,advance_payment_invoices:"
 msgid "Advance Payment Invoices"
@@ -186,7 +190,7 @@ msgstr "betalingsvoorwaarden voorschotfacturen"
 
 msgctxt "model:sale.advance_payment.condition,name:"
 msgid "Advance Payment Condition"
-msgstr "Vooruitbetalingsvoorwaarden"
+msgstr "Voorwaarde Vooruitbetaling"
 
 msgctxt "model:sale.advance_payment_term,name:"
 msgid "Advance Payment Term"

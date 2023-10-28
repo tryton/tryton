@@ -1,5 +1,4 @@
 #
-#, fuzzy
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
@@ -246,7 +245,7 @@ msgstr "Open"
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_quality_alert_form_domain_processing"
 msgid "Processing"
-msgstr "Uitvoering"
+msgstr "In behandeling"
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_quality_inspection_form_domain_all"
@@ -339,7 +338,7 @@ msgstr "Kwaliteit Inspectie"
 
 msgctxt "model:ir.ui.menu,name:menu_configuration"
 msgid "Configuration"
-msgstr "Instellingen"
+msgstr "Configuratie"
 
 msgctxt "model:ir.ui.menu,name:menu_quality"
 msgid "Quality"
@@ -407,7 +406,7 @@ msgstr "Open"
 
 msgctxt "selection:quality.alert,state:"
 msgid "Processing"
-msgstr "Uitvoering"
+msgstr "In behandeling"
 
 msgctxt "selection:quality.alert,state:"
 msgid "Resolved"

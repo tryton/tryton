@@ -36,21 +36,19 @@ msgstr "重置密码令牌过期"
 
 msgctxt "field:web.user,secondary_parties:"
 msgid "Secondary Parties"
-msgstr ""
+msgstr "第二参与者"
 
-#, fuzzy
 msgctxt "field:web.user-party.party.secondary,party:"
 msgid "Party"
 msgstr "参与者"
 
-#, fuzzy
 msgctxt "field:web.user-party.party.secondary,user:"
 msgid "User"
 msgstr "用户"
 
 msgctxt "field:web.user.authenticate.attempt,device_cookie:"
 msgid "Device Cookie"
-msgstr ""
+msgstr "设备 Cookie"
 
 msgctxt "field:web.user.authenticate.attempt,ip_address:"
 msgid "IP Address"
@@ -76,7 +74,6 @@ msgctxt "model:ir.action,name:act_user_form"
 msgid "Web Users"
 msgstr "Web 用户"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_user_form_party"
 msgid "Web Users"
 msgstr "Web 用户"
@@ -88,6 +85,10 @@ msgstr "重置密码"
 msgctxt "model:ir.action,name:report_email_validation"
 msgid "Email Validation"
 msgstr "电子邮件验证"
+
+msgctxt "model:ir.message,text:msg_user_email_invalid"
+msgid "The email address \"%(email)s\" for \"%(user)s\" is not valid."
+msgstr "用户 \"%(user)s\" 的电子邮件地址 \"%(email)s\" 无效。"
 
 msgctxt "model:ir.message,text:msg_user_email_unique"
 msgid "E-mail of active web user must be unique."
@@ -113,10 +114,9 @@ msgctxt "model:web.user,name:"
 msgid "Web User"
 msgstr "Web 用户"
 
-#, fuzzy
 msgctxt "model:web.user-party.party.secondary,name:"
 msgid "Web User - Secondary Party"
-msgstr "web 用户会话"
+msgstr "web 用户 - 第二参与者"
 
 msgctxt "model:web.user.authenticate.attempt,name:"
 msgid "Web User Authenticate Attempt"
@@ -140,17 +140,16 @@ msgstr "重置密码"
 
 msgctxt "report:web.user.email_reset_password:"
 msgid "The link will expire in [1:%(datetime)s]."
-msgstr ""
+msgstr "链接过期时间： [1:%(datetime)s]。"
 
-#, fuzzy
 msgctxt "report:web.user.email_reset_password:"
 msgid ""
 "We received a request to reset the password for your account: %(email)s"
-msgstr "我们收到了重置你的帐户密码的请求,"
+msgstr "我们收到了重置你的帐户 %(email)s 的密码的请求"
 
 msgctxt "report:web.user.email_validation:"
 msgid "%(email)s"
-msgstr ""
+msgstr "%(email)s"
 
 msgctxt "report:web.user.email_validation:"
 msgid "Button is not working? Paste this into your browser:"

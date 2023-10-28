@@ -34,11 +34,7 @@ msgid "Lot"
 msgstr "Serija"
 
 msgctxt "field:stock.lot,default_uom:"
-msgid "Default UOM"
-msgstr ""
-
-msgctxt "field:stock.lot,default_uom_digits:"
-msgid "Default Unit Digits"
+msgid "Default UoM"
 msgstr ""
 
 msgctxt "field:stock.lot,forecast_quantity:"
@@ -114,11 +110,7 @@ msgid "At Date"
 msgstr "Na dan"
 
 msgctxt "field:stock.lots_by_locations,default_uom:"
-msgid "Default UOM"
-msgstr ""
-
-msgctxt "field:stock.lots_by_locations,default_uom_digits:"
-msgid "Default UOM Digits"
+msgid "Default UoM"
 msgstr ""
 
 #, fuzzy
@@ -155,6 +147,10 @@ msgstr "Lokacija"
 msgctxt "field:stock.lots_by_warehouse.context,stock_date_end:"
 msgid "At Date"
 msgstr "Na dan"
+
+msgctxt "field:stock.lots_by_warehouse.context,stock_skip_warehouse:"
+msgid "Only storage zone"
+msgstr ""
 
 msgctxt "field:stock.lots_by_warehouse.context,warehouse:"
 msgid "Warehouse"
@@ -246,7 +242,7 @@ msgstr "Izdelek"
 #, fuzzy
 msgctxt "help:product.product,lot_required:"
 msgid "The type of location for which lot is required."
-msgstr "Tip lokacije, za katero je serija obvezna"
+msgstr "Vrsta lokacije, za katero je serija obvezna"
 
 msgctxt "help:product.product,lot_sequence:"
 msgid "The sequence used to automatically number lots."
@@ -255,10 +251,14 @@ msgstr ""
 #, fuzzy
 msgctxt "help:product.template,lot_required:"
 msgid "The type of location for which lot is required."
-msgstr "Tip lokacije, za katero je serija obvezna"
+msgstr "Vrsta lokacije, za katero je serija obvezna"
 
 msgctxt "help:product.template,lot_sequence:"
 msgid "The sequence used to automatically number lots."
+msgstr ""
+
+msgctxt "help:stock.lot,default_uom:"
+msgid "The default Unit of Measure."
 msgstr ""
 
 msgctxt "help:stock.lots_by_location.context,forecast_date:"
@@ -271,6 +271,10 @@ msgstr ""
 "* Prazno polje pomeni neskončno v prihodnost.\n"
 "* Pretekli datum daje zgodovino zaloge."
 
+msgctxt "help:stock.lots_by_locations,default_uom:"
+msgid "The default Unit of Measure."
+msgstr ""
+
 #, fuzzy
 msgctxt "help:stock.lots_by_warehouse.context,forecast_date:"
 msgid ""
@@ -281,6 +285,10 @@ msgstr ""
 "Omogoča izračun predvidenih zalog na ta dan.\n"
 "* Prazno polje pomeni neskončno v prihodnost.\n"
 "* Pretekli datum daje zgodovino zaloge."
+
+msgctxt "help:stock.lots_by_warehouse.context,stock_skip_warehouse:"
+msgid "Check to use only the quantity of the storage zone."
+msgstr ""
 
 msgctxt "help:stock.move.add.lots.start,duplicate_lot_number:"
 msgid "The number of times the lot must be duplicated."

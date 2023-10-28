@@ -6,10 +6,9 @@ msgctxt "field:sale.extra,company:"
 msgid "Company"
 msgstr "Družba"
 
-#, fuzzy
 msgctxt "field:sale.extra,currency:"
 msgid "Currency"
-msgstr "Decimalke"
+msgstr "Valuta"
 
 msgctxt "field:sale.extra,end_date:"
 msgid "End Date"
@@ -35,10 +34,9 @@ msgctxt "field:sale.extra,start_date:"
 msgid "Start Date"
 msgstr "Začetni datum"
 
-#, fuzzy
 msgctxt "field:sale.extra.line,currency:"
 msgid "Currency"
-msgstr "Decimalke"
+msgstr "Valuta"
 
 msgctxt "field:sale.extra.line,extra:"
 msgid "Extra"
@@ -72,24 +70,21 @@ msgctxt "field:sale.line,extra:"
 msgid "Extra"
 msgstr "Dodatno"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_extra_form"
 msgid "Extras"
-msgstr "Extras"
+msgstr "Dodatno"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_extra_relate"
 msgid "Sale Extras"
-msgstr "Sale Extras"
+msgstr "Prodaja dodatno"
 
 msgctxt "model:ir.rule.group,name:rule_group_extra_companies"
 msgid "User in companies"
-msgstr ""
+msgstr "Uporabnik v družbah"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_extra"
 msgid "Extras"
-msgstr "Extras"
+msgstr "Dodatno"
 
 msgctxt "model:sale.extra,name:"
 msgid "Sale Extra"

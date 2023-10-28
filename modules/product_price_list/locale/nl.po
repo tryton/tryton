@@ -14,6 +14,10 @@ msgctxt "field:product.price_list,name:"
 msgid "Name"
 msgstr "Naam"
 
+msgctxt "field:product.price_list,price:"
+msgid "Price"
+msgstr "Prijs"
+
 msgctxt "field:product.price_list,tax_included:"
 msgid "Tax Included"
 msgstr "Inclusief belasting"
@@ -61,6 +65,10 @@ msgstr ""
 msgctxt "help:product.price_list,name:"
 msgid "The main identifier of the price list."
 msgstr "De hoofdidentificatie van de prijslijst."
+
+msgctxt "help:product.price_list,price:"
+msgid "The value used for 'unit_price'."
+msgstr "De waarde die wordt gebruikt voor 'unit_price'."
 
 msgctxt "help:product.price_list,tax_included:"
 msgid "Check if result's formula includes taxes."
@@ -125,6 +133,14 @@ msgstr "Prijslijst"
 msgctxt "model:product.price_list.line,name:"
 msgid "Price List Line"
 msgstr "Prijslijst regel"
+
+msgctxt "selection:product.price_list,price:"
+msgid "Cost Price"
+msgstr "Kostprijs"
+
+msgctxt "selection:product.price_list,price:"
+msgid "List price"
+msgstr "Catalogusprijs"
 
 msgctxt "selection:product.price_list,unit:"
 msgid "Product Default"

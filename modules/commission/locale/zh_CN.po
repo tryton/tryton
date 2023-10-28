@@ -576,7 +576,7 @@ msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_reporting"
 msgid "Reporting"
-msgstr ""
+msgstr "报告"
 
 #, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_reporting_commission"

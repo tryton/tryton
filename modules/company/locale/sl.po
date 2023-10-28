@@ -44,11 +44,11 @@ msgstr "Začetni datum"
 
 msgctxt "field:company.employee,subordinates:"
 msgid "Subordinates"
-msgstr ""
+msgstr "Podrejeni"
 
 msgctxt "field:company.employee,supervisor:"
 msgid "Supervisor"
-msgstr ""
+msgstr "Nadzornik"
 
 msgctxt "field:ir.cron,companies:"
 msgid "Companies"
@@ -74,7 +74,6 @@ msgctxt "field:party.configuration.party_lang,company:"
 msgid "Company"
 msgstr "Družba"
 
-#, fuzzy
 msgctxt "field:party.contact_mechanism.language,company:"
 msgid "Company"
 msgstr "Družba"
@@ -91,10 +90,9 @@ msgctxt "field:res.user,company:"
 msgid "Current Company"
 msgstr "Trenutna družba"
 
-#, fuzzy
 msgctxt "field:res.user,company_filter:"
 msgid "Company Filter"
-msgstr "Družbe"
+msgstr "Filter družbe"
 
 msgctxt "field:res.user,employee:"
 msgid "Current Employee"
@@ -104,12 +102,10 @@ msgctxt "field:res.user,employees:"
 msgid "Employees"
 msgstr "Zaposlenci"
 
-#, fuzzy
 msgctxt "field:res.user-company.company,company:"
 msgid "Company"
 msgstr "Družba"
 
-#, fuzzy
 msgctxt "field:res.user-company.company,user:"
 msgid "User"
 msgstr "Uporabnik"
@@ -158,43 +154,35 @@ msgctxt "help:company.employee,start_date:"
 msgid "When the employee joins the company."
 msgstr "Datum, ko zaposlenec vstopi v družbo."
 
-#, fuzzy
 msgctxt "help:company.employee,subordinates:"
 msgid "The employees to be overseen by this employee."
-msgstr "Partner, ki predstavlja zaposlenca."
+msgstr "Zaposlenci, ki jih nadzira ta zaposlenec."
 
-#, fuzzy
 msgctxt "help:company.employee,supervisor:"
 msgid "The employee who oversees this employee."
-msgstr "Partner, ki predstavlja zaposlenca."
+msgstr "Zaposlenec, ki nadzira tega zaposlenca."
 
-#, fuzzy
 msgctxt "help:ir.cron,companies:"
 msgid "Companies registered for this cron."
-msgstr "Družbe, registrirana na ta razporejevalnik"
+msgstr "Družbe, registrirane na ta razporejevalnik."
 
 msgctxt "help:ir.rule,domain:"
 msgid ""
 "\n"
-"- \"employee\" from the current user\n"
-"- \"employees\" as list of ids from the current user\n"
 "- \"companies\" as list of ids from the current user"
 msgstr ""
 
-#, fuzzy
 msgctxt "help:ir.sequence,company:"
 msgid "Restricts the sequence usage to the company."
 msgstr "Omeji uporabo šifranta na družbo."
 
-#, fuzzy
 msgctxt "help:ir.sequence.strict,company:"
 msgid "Restricts the sequence usage to the company."
 msgstr "Omeji uporabo šifranta na družbo."
 
-#, fuzzy
 msgctxt "help:res.user,companies:"
 msgid "The companies that the user has access to."
-msgstr "Dodeli dostop preko uporabniškega imena izbranim zaposlencem."
+msgstr "Družbe do katerih lahko ta zaposlenec dostopa."
 
 msgctxt "help:res.user,company:"
 msgid "Select the company to work for."
@@ -202,7 +190,7 @@ msgstr "Izberite družbo za delo."
 
 msgctxt "help:res.user,company_filter:"
 msgid "Define records of which companies are shown."
-msgstr ""
+msgstr "Opredeli zapise na katerih so družbe prikazane."
 
 msgctxt "help:res.user,employee:"
 msgid "Select the employee to make the user behave as such."
@@ -224,71 +212,61 @@ msgctxt "model:company.employee,name:"
 msgid "Employee"
 msgstr "Zaposlenec"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_company_config"
 msgid "Configure Company"
-msgstr "Configure Company"
+msgstr "Nastavi družbo"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_company_list"
 msgid "Companies"
-msgstr "Companies"
+msgstr "Družbe"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_employee_form"
 msgid "Employees"
-msgstr "Employees"
+msgstr "Zaposlenci"
 
 msgctxt "model:ir.action,name:act_employee_subordinates"
 msgid "Supervised by"
-msgstr ""
+msgstr "Nadzornik"
 
-#, fuzzy
 msgctxt "model:ir.action,name:report_letter"
 msgid "Letter"
-msgstr "Letter"
+msgstr "Pismo"
 
 msgctxt "model:ir.cron-company.company,name:"
 msgid "Cron - Company"
 msgstr "Razporejevalnik - Družba"
 
-#, fuzzy
 msgctxt "model:ir.rule.group,name:rule_group_sequence_companies"
 msgid "User in companies"
-msgstr "Razporejevalnik - Družba"
+msgstr "Uporabnik v družbah"
 
-#, fuzzy
 msgctxt "model:ir.rule.group,name:rule_group_sequence_strict_companies"
 msgid "User in companies"
-msgstr "Razporejevalnik - Družba"
+msgstr "Uporabnik v družbah"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_company"
 msgid "Companies"
 msgstr "Družbe"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_company_list"
 msgid "Companies"
-msgstr "Companies"
+msgstr "Družbe"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_employee_form"
 msgid "Employees"
-msgstr "Employees"
+msgstr "Zaposlenci"
 
 msgctxt "model:res.group,name:group_company_admin"
 msgid "Company Administration"
-msgstr ""
+msgstr "Skrbništvo družb"
 
 msgctxt "model:res.group,name:group_employee_admin"
 msgid "Employee Administration"
-msgstr ""
+msgstr "Skrbništvo zaposlencev"
 
-#, fuzzy
 msgctxt "model:res.user-company.company,name:"
 msgid "User - Company"
-msgstr "Razporejevalnik - Družba"
+msgstr "Uporabnik - Družba"
 
 msgctxt "model:res.user-company.employee,name:"
 msgid "User - Employee"
@@ -312,12 +290,11 @@ msgstr "Zadeva:"
 
 msgctxt "selection:res.user,company_filter:"
 msgid "All"
-msgstr ""
+msgstr "Vse"
 
-#, fuzzy
 msgctxt "selection:res.user,company_filter:"
 msgid "Current"
-msgstr "Valuta"
+msgstr "Trenutno"
 
 msgctxt "view:company.company.config.start:"
 msgid "You can now add your company into the system."

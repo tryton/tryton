@@ -338,8 +338,8 @@ msgstr "Statements"
 
 #, fuzzy
 msgctxt "model:ir.action,name:act_statement_journal_form"
-msgid "Journals"
-msgstr "Registro"
+msgid "Statement Journals"
+msgstr "Statement Journals"
 
 #, fuzzy
 msgctxt "model:ir.action,name:act_statement_line_move"
@@ -501,8 +501,8 @@ msgstr "Import Statement"
 
 #, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_statement_journal_form"
-msgid "Journals"
-msgstr "Registro"
+msgid "Statement Journals"
+msgstr "Registri documenti"
 
 #, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_statements"
@@ -596,15 +596,6 @@ msgstr "Saldo"
 msgctxt "selection:account.statement.journal,validation:"
 msgid "Number of Lines"
 msgstr "Numero di righe"
-
-msgctxt "view:account.statement.line:"
-msgid "Amount"
-msgstr "Importo"
-
-#, fuzzy
-msgctxt "view:account.statement.origin:"
-msgid "Amount"
-msgstr "Importo"
 
 msgctxt "view:account.statement:"
 msgid "Other Info"

@@ -10,13 +10,10 @@ msgctxt "field:carrier,weight_price_list:"
 msgid "Price List"
 msgstr "لیست قیمت"
 
+#, fuzzy
 msgctxt "field:carrier,weight_uom:"
-msgid "Weight Uom"
+msgid "Weight UoM"
 msgstr "واحد اندازی گیری وزن"
-
-msgctxt "field:carrier,weight_uom_digits:"
-msgid "Weight Uom Digits"
-msgstr "ارقام واحد وزن"
 
 msgctxt "field:carrier.weight_price_list,carrier:"
 msgid "Carrier"
@@ -35,6 +32,11 @@ msgctxt "field:carrier.weight_price_list,weight:"
 msgid "Weight"
 msgstr "وزن"
 
+#, fuzzy
+msgctxt "field:carrier.weight_price_list,weight_uom:"
+msgid "Weight UoM"
+msgstr "واحد اندازی گیری وزن"
+
 msgctxt "help:carrier,weight_currency:"
 msgid "The currency of the price."
 msgstr "واحد ارز قیمت."
@@ -46,8 +48,9 @@ msgid ""
 "The line with weight of 0 is used as default price."
 msgstr ""
 
+#, fuzzy
 msgctxt "help:carrier,weight_uom:"
-msgid "The unit of weight criteria of the price list."
+msgid "The Unit of Measure of weight criteria for the price list."
 msgstr "شاخص واحد اندازه گیری وزن لیست قیمت."
 
 msgctxt "help:carrier.weight_price_list,carrier:"
@@ -62,6 +65,11 @@ msgstr "قیمت خدمات حمل ونقل."
 msgctxt "help:carrier.weight_price_list,weight:"
 msgid "The lower limit for the price."
 msgstr "حد بالا برای قیمت."
+
+#, fuzzy
+msgctxt "help:carrier.weight_price_list,weight_uom:"
+msgid "The Unit of Measure of the weight."
+msgstr "شاخص واحد اندازه گیری وزن لیست قیمت."
 
 msgctxt "model:carrier.weight_price_list,name:"
 msgid "Carrier Weight Price List"

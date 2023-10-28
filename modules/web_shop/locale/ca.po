@@ -4,27 +4,27 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "field:product.attribute,web_shops:"
 msgid "Web Shops"
-msgstr "Tendes web"
+msgstr "Botiga web"
 
 msgctxt "field:product.category,web_shops:"
 msgid "Web Shops"
-msgstr "Tendes web"
+msgstr "Botigues web"
 
 msgctxt "field:product.image,web_shop:"
 msgid "Web Shop"
-msgstr "Tenda Web"
+msgstr "Botiga Web"
 
 msgctxt "field:product.product,web_shop_description:"
 msgid "Web Shop Description"
-msgstr "Descripció tenda web"
+msgstr "Descripció botiga web"
 
 msgctxt "field:product.product,web_shops:"
 msgid "Web Shops"
-msgstr "Tendes web"
+msgstr "Botigues web"
 
 msgctxt "field:product.template,web_shop_description:"
 msgid "Web Shop Description"
-msgstr "Descripció tenda web"
+msgstr "Descripció botiga web"
 
 msgctxt "field:sale.sale,web_id:"
 msgid "Web ID"
@@ -32,7 +32,7 @@ msgstr "ID Web"
 
 msgctxt "field:sale.sale,web_shop:"
 msgid "Web Shop"
-msgstr "Tenda Web"
+msgstr "Botiga Web"
 
 msgctxt "field:web.shop,attributes:"
 msgid "Attributes"
@@ -92,7 +92,7 @@ msgstr "Atribut"
 
 msgctxt "field:web.shop-product.attribute,shop:"
 msgid "Shop"
-msgstr "Tenda"
+msgstr "Botiga"
 
 msgctxt "field:web.shop-product.category,category:"
 msgid "Category"
@@ -100,7 +100,7 @@ msgstr "Categoria"
 
 msgctxt "field:web.shop-product.category,shop:"
 msgid "Shop"
-msgstr "Tenda"
+msgstr "Botiga"
 
 msgctxt "field:web.shop-product.product,product:"
 msgid "Product"
@@ -108,11 +108,11 @@ msgstr "Producte"
 
 msgctxt "field:web.shop-product.product,shop:"
 msgid "Shop"
-msgstr "Tenda"
+msgstr "Botiga"
 
 msgctxt "field:web.shop-stock.location,shop:"
 msgid "Shop"
-msgstr "Tenda"
+msgstr "Botiga"
 
 msgctxt "field:web.shop-stock.location,warehouse:"
 msgid "Warehouse"
@@ -128,15 +128,15 @@ msgstr "Adreça d'enviament"
 
 msgctxt "help:product.attribute,web_shops:"
 msgid "The list of web shops on which the attribute is published."
-msgstr "La llista de tendes online on s'ha publicat l'atribut."
+msgstr "La llista de botigues online on s'ha publicat l'atribut."
 
 msgctxt "help:product.category,web_shops:"
 msgid "The list of web shops on which the category is published."
-msgstr "La llista de tendes on esta publicada la categoria."
+msgstr "La llista de botigues on esta publicada la categoria."
 
 msgctxt "help:product.product,web_shops:"
 msgid "The list of web shops on which the product is published."
-msgstr "La llista de tendes on esta publicat el producte."
+msgstr "La llista de botigues on esta publicat el producte."
 
 msgctxt "help:web.shop,attributes:"
 msgid "The list of attributes to publish."
@@ -152,23 +152,23 @@ msgstr "La llsita de categories a publicar."
 
 msgctxt "help:web.shop,categories_removed:"
 msgid "The list of categories to unpublish."
-msgstr "La llsita de categories a despublicar."
+msgstr "La llista de categories a despublicar."
 
 msgctxt "help:web.shop,products:"
 msgid "The list of products to publish."
-msgstr "La llsita de productes a publicar."
+msgstr "La llista de productes a publicar."
 
 msgctxt "help:web.shop,products_removed:"
 msgid "The list of products to unpublish."
-msgstr "La llsita de productes a despublicar."
+msgstr "La llista de productes a despublicar."
 
 msgctxt "help:web.shop,type:"
 msgid "The front-end used for the web shop."
-msgstr "El front-end utiltizat per aquesta tenda."
+msgstr "El front-end utiltizat per aquesta botiga."
 
 msgctxt "model:ir.action,name:act_shop"
 msgid "Web Shops"
-msgstr "Tendes web"
+msgstr "Botigues web"
 
 msgctxt "model:ir.message,text:msg_sale_invalid_party"
 msgid ""
@@ -180,11 +180,11 @@ msgstr ""
 
 msgctxt "model:ir.message,text:msg_sale_web_id_unique"
 msgid "The web ID on the sale must be unique."
-msgstr "El ID de la tenda web ha de ser únic."
+msgstr "El ID de la botiga web ha de ser únic."
 
 msgctxt "model:ir.message,text:msg_shop_name_unique"
 msgid "The web shop name must be unique."
-msgstr "El nom de la tenda ha de ser únic."
+msgstr "El nom de la botiga web ha de ser únic."
 
 msgctxt "model:ir.rule.group,name:rule_group_shop_companies"
 msgid "User in companies"
@@ -192,27 +192,27 @@ msgstr "Usuari a les empreses"
 
 msgctxt "model:ir.ui.menu,name:menu_shop"
 msgid "Web Shops"
-msgstr "Tendes web"
+msgstr "Botigues web"
 
 msgctxt "model:web.shop,name:"
 msgid "Web Shop"
-msgstr "Tenda Web"
+msgstr "Botiga Web"
 
 msgctxt "model:web.shop-product.attribute,name:"
 msgid "Web Shop - Attribute"
-msgstr "Tenda Web - Atribut"
+msgstr "Botiga Web - Atribut"
 
 msgctxt "model:web.shop-product.category,name:"
 msgid "Web Shop - Product Category"
-msgstr "Tenda web - Categoria de producte"
+msgstr "Botiga web - Categoria de producte"
 
 msgctxt "model:web.shop-product.product,name:"
 msgid "Web Shop - Product"
-msgstr "Tenda web - Producte"
+msgstr "Botiga web - Producte"
 
 msgctxt "model:web.shop-stock.location,name:"
 msgid "Web Shop - Warehouse"
-msgstr "Tenda web - Magatzem"
+msgstr "Botiga web - Magatzem"
 
 msgctxt "view:product.template:"
 msgid "Edit"

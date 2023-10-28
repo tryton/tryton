@@ -153,6 +153,10 @@ msgstr "<i>Keresés...</i>"
 msgid "<i>Create...</i>"
 msgstr "<i>Új rekord...</i>"
 
+#, fuzzy, python-format
+msgid "Create \"%s\"..."
+msgstr "Létrehozta"
+
 msgid "Value"
 msgstr "Érték"
 
@@ -300,6 +304,9 @@ msgstr "Listák testreszabásának mentése"
 
 msgid "Spell Checking"
 msgstr "Helyesírás ellenőrzés"
+
+msgid "Play Sound for Code Scanner"
+msgstr ""
 
 msgid "PDA Mode"
 msgstr "Tablet mód"
@@ -456,6 +463,17 @@ msgstr "Utolsó rekordra ugrás"
 msgid "Move to parent"
 msgstr "Szülőrekordra ugrás"
 
+#, fuzzy
+msgid "Edition"
+msgstr "Módosítás"
+
+#, fuzzy
+msgid "Copy selected rows"
+msgstr "Kijelölt szöveg másolása"
+
+msgid "Insert copied rows"
+msgstr ""
+
 msgid "Select all"
 msgstr "Mind kijelölése"
 
@@ -501,6 +519,12 @@ msgstr ""
 #, python-format
 msgid "Attachments (%s)"
 msgstr "Mellékletek (%s)"
+
+msgid "Code Scanner"
+msgstr ""
+
+msgid "Code"
+msgstr ""
 
 msgid "Profile Editor"
 msgstr "Profilszerkesztő"
@@ -930,14 +954,24 @@ msgstr "Hivatkozás"
 msgid "Delete"
 msgstr "Töröl"
 
-msgid "New"
-msgstr "Új"
+msgid "Discard changes"
+msgstr ""
 
-msgid "Switch"
-msgstr "Nézet váltása"
+msgid "Save and New"
+msgstr ""
+
+#, fuzzy
+msgid "Add and New"
+msgstr "Érték hozzáadása"
 
 msgid "Add"
 msgstr "Hozzáad"
+
+msgid "Apply changes"
+msgstr ""
+
+msgid "Switch"
+msgstr "Nézet váltása"
 
 msgid "Remove <Del>"
 msgstr "Mező eltávolítása<Entf>"
@@ -974,8 +1008,8 @@ msgid "Detection failed"
 msgstr ""
 
 #, python-format
-msgid "Error processing the file at field %s."
-msgstr "Nem sikerült feldolgozni a fájlt, mert a %s mezőnél hiba van."
+msgid "Unknown column header \"%s\""
+msgstr ""
 
 msgid "Error"
 msgstr "Hiba"
@@ -993,6 +1027,9 @@ msgstr "%d rekord betöltve."
 
 msgid "Search"
 msgstr "Keresés"
+
+msgid "New"
+msgstr "Új"
 
 #, python-format
 msgid "Search %s"
@@ -1037,6 +1074,9 @@ msgstr "Adatkitöltés ellenőrzése"
 
 msgid ":"
 msgstr ":"
+
+msgid "Scan"
+msgstr ""
 
 msgid "Image Size"
 msgstr "Kép mérete"

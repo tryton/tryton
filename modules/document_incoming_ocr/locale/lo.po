@@ -1,0 +1,66 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:document.incoming,ocr_service:"
+msgid "OCR Service"
+msgstr ""
+
+msgctxt "field:document.incoming.ocr.service,company:"
+msgid "Company"
+msgstr ""
+
+msgctxt "field:document.incoming.ocr.service,document_type:"
+msgid "Type"
+msgstr ""
+
+msgctxt "field:document.incoming.ocr.service,source:"
+msgid "Source"
+msgstr ""
+
+msgctxt "field:document.incoming.ocr.service,type:"
+msgid "Type"
+msgstr ""
+
+msgctxt "help:document.incoming.ocr.service,company:"
+msgid ""
+"The company for which the service is used.\n"
+"Leave empty for any company."
+msgstr ""
+
+msgctxt "help:document.incoming.ocr.service,document_type:"
+msgid ""
+"The document type to match.\n"
+"Leave empty for any type."
+msgstr ""
+
+msgctxt "help:document.incoming.ocr.service,source:"
+msgid ""
+"The regular expression to match the document source.\n"
+"Leave empty to allow any source."
+msgstr ""
+
+msgctxt "model:document.incoming.ocr.service,name:"
+msgid "Incoming Document OCR Service"
+msgstr ""
+
+msgctxt "model:ir.action,name:act_document_incoming_ocr_service_form"
+msgid "OCR Services"
+msgstr ""
+
+msgctxt "model:ir.model.button,string:document_incoming_proceed_button"
+msgid "Send Feedback"
+msgstr ""
+
+msgctxt ""
+"model:ir.rule.group,name:rule_group_document_incoming_ocr_service_companies"
+msgid "User in companies"
+msgstr ""
+
+msgctxt "model:ir.ui.menu,name:menu_document_incoming_ocr_service_form"
+msgid "OCR Services"
+msgstr ""
+
+msgctxt "view:document.incoming.ocr.service:"
+msgid "Criteria"
+msgstr ""

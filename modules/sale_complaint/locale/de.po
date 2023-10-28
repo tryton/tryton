@@ -370,10 +370,6 @@ msgctxt "selection:sale.complaint.action,action:"
 msgid "Create Sale Return"
 msgstr "Rücknahme erstellen"
 
-msgctxt "view:sale.complaint.action:"
-msgid "Amount"
-msgstr "Betrag"
-
 msgctxt "view:sale.complaint:"
 msgid "Complaint"
 msgstr "Reklamation"

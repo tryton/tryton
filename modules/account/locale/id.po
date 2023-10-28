@@ -986,6 +986,11 @@ msgid "Description"
 msgstr "Deskripsi"
 
 #, fuzzy
+msgctxt "field:account.general_ledger.line,description_used:"
+msgid "Description"
+msgstr "Deskripsi"
+
+#, fuzzy
 msgctxt "field:account.general_ledger.line,internal_balance:"
 msgid "Internal Balance"
 msgstr "Neraca Saldo"
@@ -994,7 +999,8 @@ msgctxt "field:account.general_ledger.line,move:"
 msgid "Move"
 msgstr "Perpindahan"
 
-msgctxt "field:account.general_ledger.line,move_description:"
+#, fuzzy
+msgctxt "field:account.general_ledger.line,move_description_used:"
 msgid "Move Description"
 msgstr "Deskripsi Pindah"
 
@@ -1202,6 +1208,11 @@ msgctxt "field:account.move,description:"
 msgid "Description"
 msgstr "Deskripsi"
 
+#, fuzzy
+msgctxt "field:account.move,description_used:"
+msgid "Description"
+msgstr "Deskripsi"
+
 msgctxt "field:account.move,journal:"
 msgid "Journal"
 msgstr "Jurnal"
@@ -1288,6 +1299,11 @@ msgid "Description"
 msgstr "Deskripsi"
 
 #, fuzzy
+msgctxt "field:account.move.line,description_used:"
+msgid "Description"
+msgstr "Deskripsi"
+
+#, fuzzy
 msgctxt "field:account.move.line,has_maturity_date:"
 msgid "Has Maturity Date"
 msgstr "Tanggal Jatuh tempo"
@@ -1305,7 +1321,8 @@ msgctxt "field:account.move.line,move:"
 msgid "Move"
 msgstr "Perpindahan"
 
-msgctxt "field:account.move.line,move_description:"
+#, fuzzy
+msgctxt "field:account.move.line,move_description_used:"
 msgid "Move Description"
 msgstr "Deskripsi Pindah"
 
@@ -1567,10 +1584,6 @@ msgctxt "field:account.move.template,company:"
 msgid "Company"
 msgstr "Perusahaan"
 
-msgctxt "field:account.move.template,date:"
-msgid "Date"
-msgstr "Tanggal"
-
 msgctxt "field:account.move.template,description:"
 msgid "Description"
 msgstr "Deskripsi"
@@ -1590,6 +1603,11 @@ msgstr "Baris"
 msgctxt "field:account.move.template,name:"
 msgid "Name"
 msgstr "Nama"
+
+#, fuzzy
+msgctxt "field:account.move.template.create.template,date:"
+msgid "Effective Date"
+msgstr "Tanggal Efektif"
 
 msgctxt "field:account.move.template.create.template,period:"
 msgid "Period"
@@ -2248,6 +2266,26 @@ msgctxt "field:account.update_chart.start,account:"
 msgid "Root Account"
 msgstr ""
 
+#, fuzzy
+msgctxt "field:company.company,payable:"
+msgid "Payable"
+msgstr "Utang"
+
+#, fuzzy
+msgctxt "field:company.company,payable_today:"
+msgid "Payable Today"
+msgstr "Utang Hari Ini"
+
+#, fuzzy
+msgctxt "field:company.company,receivable:"
+msgid "Receivable"
+msgstr "Piutang"
+
+#, fuzzy
+msgctxt "field:company.company,receivable_today:"
+msgid "Receivable Today"
+msgstr "Piutang Hari Ini"
+
 msgctxt "field:party.party,account_payable:"
 msgid "Account Payable"
 msgstr "Akun Utang Usaha"
@@ -2465,7 +2503,7 @@ msgid "A python expression that will be evaluated with the keywords."
 msgstr ""
 
 msgctxt "help:account.move.line.template,description:"
-msgid "Keywords values substitutions are identified by braces ('{' and '}')."
+msgid "Keyword value substitutions are identified by braces ('{' and '}')."
 msgstr ""
 
 msgctxt "help:account.move.line.template,party:"
@@ -2480,12 +2518,8 @@ msgctxt "help:account.move.reconciliation,delegate_to:"
 msgid "The line to which the reconciliation status is delegated."
 msgstr ""
 
-msgctxt "help:account.move.template,date:"
-msgid "Leave empty for today."
-msgstr "Biarkan kosong untuk hari ini."
-
 msgctxt "help:account.move.template,description:"
-msgid "Keyword values substitutions are identified by braces ('{' and '}')."
+msgid "Keyword value substitutions are identified by braces ('{' and '}')."
 msgstr ""
 
 msgctxt "help:account.reconcile.start,automatic:"
@@ -3097,7 +3131,7 @@ msgid "Reconcile Lines"
 msgstr ""
 
 msgctxt "model:ir.action,name:act_reconcile_writeoff_form"
-msgid "WriteOff Methods"
+msgid "Write-off Methods"
 msgstr ""
 
 msgctxt "model:ir.action,name:act_renew_fiscalyear"
@@ -3551,6 +3585,29 @@ msgid ""
 "reconcilable."
 msgstr ""
 
+#, fuzzy
+msgctxt ""
+"model:ir.message,text:msg_reconciliation_currency_exchange_credit_account_missing"
+msgid ""
+"To reconcile lines, you must define a currency exchange credit account for "
+"\"%(company)s\"."
+msgstr "Untuk melanjutkan, Anda harus membuat periode untuk tanggal \"%(date)s\"."
+
+#, fuzzy
+msgctxt ""
+"model:ir.message,text:msg_reconciliation_currency_exchange_debit_account_missing"
+msgid ""
+"To reconcile lines, you must define a currency exchange debit account for "
+"\"%(company)s\"."
+msgstr "Untuk melanjutkan, Anda harus membuat periode untuk tanggal \"%(date)s\"."
+
+msgctxt ""
+"model:ir.message,text:msg_reconciliation_currency_exchange_journal_missing"
+msgid ""
+"To reconcile lines, you must define a currency exchange journal for "
+"\"%(company)s\"."
+msgstr ""
+
 msgctxt "model:ir.message,text:msg_reconciliation_delete_delegated"
 msgid ""
 "The reconciliation \"%(reconciliation)s\" is delegated to the line \"%(line)s\".\n"
@@ -3583,6 +3640,12 @@ msgctxt "model:ir.message,text:msg_reconciliation_unbalanced"
 msgid ""
 "To reconcile lines, they must have the same debit \"%(debit)s\" and credit "
 "\"%(credit)s\"."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_reconciliation_write_off_missing"
+msgid ""
+"To reconcile lines with \"%(amount)s\" write-off, you must select a write-"
+"off method."
 msgstr ""
 
 msgctxt "model:ir.message,text:msg_reopen_fiscalyear_later"
@@ -3901,7 +3964,7 @@ msgid "Reconcile Accounts"
 msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_reconcile_writeoff_form"
-msgid "WriteOff Methods"
+msgid "Write-off Methods"
 msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_renew_fiscalyear"
@@ -4365,8 +4428,9 @@ msgctxt "selection:account.configuration.tax_rounding,tax_rounding:"
 msgid "Per Line"
 msgstr ""
 
+#, fuzzy
 msgctxt "selection:account.fiscalyear,state:"
-msgid "Close"
+msgid "Closed"
 msgstr "Tutup"
 
 msgctxt "selection:account.fiscalyear,state:"
@@ -4421,8 +4485,9 @@ msgctxt "selection:account.journal,type:"
 msgid "Write-Off"
 msgstr ""
 
+#, fuzzy
 msgctxt "selection:account.journal.period,state:"
-msgid "Close"
+msgid "Closed"
 msgstr "Tutup"
 
 msgctxt "selection:account.journal.period,state:"
@@ -4481,8 +4546,9 @@ msgctxt "selection:account.move.template.keyword,type_:"
 msgid "Party"
 msgstr "Pihak"
 
+#, fuzzy
 msgctxt "selection:account.period,state:"
-msgid "Close"
+msgid "Closed"
 msgstr "Tutup"
 
 msgctxt "selection:account.period,state:"
@@ -4716,30 +4782,6 @@ msgctxt "view:account.fiscalyear:"
 msgid "Sequences"
 msgstr "Urutan-Urutan"
 
-msgctxt "view:account.general_ledger.account:"
-msgid "Credit"
-msgstr "Kredit"
-
-msgctxt "view:account.general_ledger.account:"
-msgid "Debit"
-msgstr "Debit"
-
-msgctxt "view:account.general_ledger.account:"
-msgid "End Balance"
-msgstr "Saldo Akhir"
-
-msgctxt "view:account.general_ledger.account:"
-msgid "Start Balance"
-msgstr "Saldo Awal"
-
-msgctxt "view:account.general_ledger.line:"
-msgid "Credit"
-msgstr "Kredit"
-
-msgctxt "view:account.general_ledger.line:"
-msgid "Debit"
-msgstr "Debit"
-
 msgctxt "view:account.journal.period:"
 msgid "Close"
 msgstr "Tutup"
@@ -4764,14 +4806,6 @@ msgstr "Info Lain"
 msgctxt "view:account.move.line:"
 msgid "Balance"
 msgstr "Saldo"
-
-msgctxt "view:account.move.line:"
-msgid "Credit"
-msgstr "Kredit"
-
-msgctxt "view:account.move.line:"
-msgid "Debit"
-msgstr "Debit"
 
 msgctxt "view:account.move.line:"
 msgid "Other Info"
@@ -4800,6 +4834,16 @@ msgstr "Informasi Umum"
 msgctxt "view:account.update_chart.succeed:"
 msgid "Chart of accounts updated successfully."
 msgstr "Bagan akun berhasil diperbaharui."
+
+#, fuzzy
+msgctxt "view:company.company:"
+msgid "Account"
+msgstr "Akun"
+
+#, fuzzy
+msgctxt "view:company.company:"
+msgid "Accounting"
+msgstr "Akuntansi"
 
 msgctxt "view:party.party:"
 msgid "Account"

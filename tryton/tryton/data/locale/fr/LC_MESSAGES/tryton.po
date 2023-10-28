@@ -101,7 +101,7 @@ msgid "Write Anyway"
 msgstr "Écraser"
 
 msgid "Save your current version"
-msgstr "Sauver votre version actuelle"
+msgstr "Enregistrer votre version actuelle"
 
 #, python-format
 msgid "Compare: %s"
@@ -149,6 +149,10 @@ msgstr "<i>Recherche...</i>"
 
 msgid "<i>Create...</i>"
 msgstr "<i>Créer...</i>"
+
+#, python-format
+msgid "Create \"%s\"..."
+msgstr "Créer « %s »..."
 
 msgid "Value"
 msgstr "Valeur"
@@ -292,10 +296,13 @@ msgid "Save Column Width"
 msgstr "Enregistrer la largeur de colonne"
 
 msgid "Save Tree State"
-msgstr "Sauver l'état des arbres"
+msgstr "Enregistrer l'état des arbres"
 
 msgid "Spell Checking"
 msgstr "Vérifier l'orthographe"
+
+msgid "Play Sound for Code Scanner"
+msgstr "Jouer du son pour le scanner de code"
 
 msgid "PDA Mode"
 msgstr "Mode PDA"
@@ -331,7 +338,7 @@ msgid "Manage..."
 msgstr "Gérer..."
 
 msgid "Action"
-msgstr "Actions"
+msgstr "Action"
 
 msgid ""
 "The following action requires to close all tabs.\n"
@@ -451,6 +458,15 @@ msgstr "Déplacer en bas"
 msgid "Move to parent"
 msgstr "Déplacer au parent"
 
+msgid "Edition"
+msgstr "Édition"
+
+msgid "Copy selected rows"
+msgstr "Copier les lignes sélectionnées"
+
+msgid "Insert copied rows"
+msgstr "Insérer des lignes copiées"
+
 msgid "Select all"
 msgstr "Tout sélectionner"
 
@@ -498,6 +514,12 @@ msgstr ""
 #, python-format
 msgid "Attachments (%s)"
 msgstr "Attachements (%s)"
+
+msgid "Code Scanner"
+msgstr "Scanner de codes"
+
+msgid "Code"
+msgstr "Code"
 
 msgid "Profile Editor"
 msgstr "Éditeur de profil"
@@ -635,14 +657,14 @@ msgid "Working now on the duplicated record(s)."
 msgstr "Sur les enregistrement(s) dupliqué(s) maintenant."
 
 msgid "Record saved."
-msgstr "Enregistrement sauvegardé."
+msgstr "Entrée enregistrée."
 
 msgid ""
 "This record has been modified\n"
 "do you want to save it?"
 msgstr ""
-"Cet enregistrement a été modifié\n"
-"voulez-vous le sauvegarder ?"
+"Cet entrée a été modifiée\n"
+"voulez-vous l'enregistrer ?"
 
 msgid "Launch action"
 msgstr "Lancer une action"
@@ -752,10 +774,10 @@ msgid "Create a new record"
 msgstr "Créer un nouvel enregistrement"
 
 msgid "_Save"
-msgstr "_Sauver"
+msgstr "Enregi_strer"
 
 msgid "Save this record"
-msgstr "Sauver cet enregistrement"
+msgstr "Enregistrer cette entrée"
 
 msgid "_Reload/Undo"
 msgstr "_Recharger/Annuler"
@@ -855,7 +877,7 @@ msgid "CSV Export: %s"
 msgstr "Export CSV : %s"
 
 msgid "_Save Export"
-msgstr "_Sauver l'exportation"
+msgstr "Enregi_strer l'export"
 
 msgid "_URL Export"
 msgstr "_URL d'exportation"
@@ -873,7 +895,7 @@ msgid "Open"
 msgstr "Ouvrir"
 
 msgid "Save"
-msgstr "Sauver"
+msgstr "Enregistrer"
 
 msgid "Listed Records"
 msgstr "Enregistrements listés"
@@ -908,11 +930,11 @@ msgstr "Surcharger la définition « %s » ?"
 
 #, python-format
 msgid "%d record saved."
-msgstr "%d enregistrement sauvé."
+msgstr "%d entrée enregistrée."
 
 #, python-format
 msgid "%d records saved."
-msgstr "%d enregistrements sauvés."
+msgstr "%d entrées enregistrées."
 
 msgid "Export failed"
 msgstr "L'export a échoué"
@@ -923,14 +945,23 @@ msgstr "Lien"
 msgid "Delete"
 msgstr "Supprimer"
 
-msgid "New"
-msgstr "Nouveau"
+msgid "Discard changes"
+msgstr "Annuler les modifications"
 
-msgid "Switch"
-msgstr "Basculer"
+msgid "Save and New"
+msgstr "Enregistrer et nouveau"
+
+msgid "Add and New"
+msgstr "Ajouter et nouveau"
 
 msgid "Add"
 msgstr "Ajouter"
+
+msgid "Apply changes"
+msgstr "Appliquer les modifications"
+
+msgid "Switch"
+msgstr "Basculer"
 
 msgid "Remove <Del>"
 msgstr "Supprimer <Del>"
@@ -967,8 +998,8 @@ msgid "Detection failed"
 msgstr "La détection a échoué"
 
 #, python-format
-msgid "Error processing the file at field %s."
-msgstr "Erreur lors du traitement du fichier du champ %s."
+msgid "Unknown column header \"%s\""
+msgstr "En-tête de colonne inconnu « %s »"
 
 msgid "Error"
 msgstr "Erreur"
@@ -986,6 +1017,9 @@ msgstr "%d enregistrements importés."
 
 msgid "Search"
 msgstr "Rechercher"
+
+msgid "New"
+msgstr "Nouveau"
 
 #, python-format
 msgid "Search %s"
@@ -1029,6 +1063,9 @@ msgstr "Pré-validation"
 
 msgid ":"
 msgstr " :"
+
+msgid "Scan"
+msgstr "Scanner"
 
 msgid "Image Size"
 msgstr "Taille de l'image"
@@ -1165,8 +1202,7 @@ msgid "Fuzzy"
 msgstr "Floue"
 
 msgid "You need to save the record before adding translations."
-msgstr ""
-"Vous devez sauvegarder l'enregistrement avant d'ajouter des traductions."
+msgstr "Vous devez enregistrer l'entrée avant d'ajouter des traductions."
 
 msgid "No other language available."
 msgstr "Pas d'autre langue disponible."

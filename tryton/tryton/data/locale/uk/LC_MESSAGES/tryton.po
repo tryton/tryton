@@ -147,6 +147,10 @@ msgstr "<i>Пошук...</i>"
 msgid "<i>Create...</i>"
 msgstr "<i>Створити...</i>"
 
+#, fuzzy, python-format
+msgid "Create \"%s\"..."
+msgstr "<i>Створити...</i>"
+
 msgid "Value"
 msgstr "Значення"
 
@@ -294,6 +298,9 @@ msgstr "Зберегти стан дерев"
 
 msgid "Spell Checking"
 msgstr "Перевірка правопису"
+
+msgid "Play Sound for Code Scanner"
+msgstr ""
 
 msgid "PDA Mode"
 msgstr "Спрощений режим"
@@ -450,6 +457,17 @@ msgstr "Перемістити на кінець"
 msgid "Move to parent"
 msgstr "Перемістити до батька"
 
+#, fuzzy
+msgid "Edition"
+msgstr "Редагувати"
+
+#, fuzzy
+msgid "Copy selected rows"
+msgstr "Копіювати виділений текст"
+
+msgid "Insert copied rows"
+msgstr ""
+
 msgid "Select all"
 msgstr "Вибрати всі"
 
@@ -497,6 +515,12 @@ msgstr ""
 #, python-format
 msgid "Attachments (%s)"
 msgstr "Вкладення (%s)"
+
+msgid "Code Scanner"
+msgstr ""
+
+msgid "Code"
+msgstr ""
 
 msgid "Profile Editor"
 msgstr "Редактор профілів"
@@ -922,14 +946,24 @@ msgstr "Посилання"
 msgid "Delete"
 msgstr "Видалити"
 
-msgid "New"
-msgstr "Новий"
+msgid "Discard changes"
+msgstr ""
 
-msgid "Switch"
-msgstr "Переключити"
+msgid "Save and New"
+msgstr ""
+
+#, fuzzy
+msgid "Add and New"
+msgstr "Додати значення"
 
 msgid "Add"
 msgstr "Додати"
+
+msgid "Apply changes"
+msgstr ""
+
+msgid "Switch"
+msgstr "Переключити"
 
 msgid "Remove <Del>"
 msgstr "Видалити <Del>"
@@ -966,8 +1000,8 @@ msgid "Detection failed"
 msgstr "Помилка визначення"
 
 #, python-format
-msgid "Error processing the file at field %s."
-msgstr "Помилка обробки файлу в полі %s."
+msgid "Unknown column header \"%s\""
+msgstr ""
 
 msgid "Error"
 msgstr "Помилка"
@@ -985,6 +1019,9 @@ msgstr "%d записів імпортовано."
 
 msgid "Search"
 msgstr "Пошук"
+
+msgid "New"
+msgstr "Новий"
 
 #, python-format
 msgid "Search %s"
@@ -1028,6 +1065,9 @@ msgstr "Попередня перевірка"
 
 msgid ":"
 msgstr ":"
+
+msgid "Scan"
+msgstr ""
 
 msgid "Image Size"
 msgstr "Розмір зображення"

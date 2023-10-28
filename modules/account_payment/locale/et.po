@@ -338,10 +338,6 @@ msgctxt "model:account.payment.journal,name:"
 msgid "Payment Journal"
 msgstr "Tasumise andmik"
 
-msgctxt "model:account.payment.process.start,name:"
-msgid "Process Payment"
-msgstr "Protsessi tasumised"
-
 msgctxt "model:ir.action,name:act_move_line_form"
 msgid "Lines to Pay"
 msgstr "Tasumisele kuuluvad read"
@@ -363,19 +359,27 @@ msgid "Payments"
 msgstr "Tasumised"
 
 #, fuzzy
+msgctxt "model:ir.action,name:act_payment_form_payable"
+msgid "Payable Payments"
+msgstr "Protsessi tasumised"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_payment_form_receivable"
+msgid "Receivable Payments"
+msgstr "Nõue"
+
+#, fuzzy
 msgctxt "model:ir.action,name:act_payment_form_relate_party"
 msgid "Payments"
 msgstr "Tasumised"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_payment_group_form"
-msgid "Groups"
-msgstr "Grupp"
+msgid "Payment Groups"
+msgstr "Tasumiste grupp"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_payment_journal_form"
-msgid "Journals"
-msgstr "Andmikud"
+msgid "Payment Journals"
+msgstr "Tasumiste andmik"
 
 msgctxt "model:ir.action,name:act_process_payments"
 msgid "Process Payments"
@@ -396,38 +400,81 @@ msgctxt ""
 msgid "Receivable"
 msgstr "Nõue"
 
-msgctxt "model:ir.action.act_window.domain,name:act_payment_form_domain_all"
+#, fuzzy
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_payment_form_group_open_domain_all"
 msgid "All"
 msgstr "Kõik"
 
-msgctxt "model:ir.action.act_window.domain,name:act_payment_form_domain_draft"
-msgid "Draft"
-msgstr "Mustand"
-
+#, fuzzy
 msgctxt ""
-"model:ir.action.act_window.domain,name:act_payment_form_domain_failed"
+"model:ir.action.act_window.domain,name:act_payment_form_group_open_domain_failed"
 msgid "Failed"
 msgstr "Ebaõnnestunud"
 
+#, fuzzy
 msgctxt ""
-"model:ir.action.act_window.domain,name:act_payment_form_domain_processing"
+"model:ir.action.act_window.domain,name:act_payment_form_group_open_domain_processing"
 msgid "Processing"
 msgstr "Protsessimine"
 
+#, fuzzy
 msgctxt ""
-"model:ir.action.act_window.domain,name:act_payment_form_domain_suceeded"
+"model:ir.action.act_window.domain,name:act_payment_form_group_open_domain_succeeded"
 msgid "Succeeded"
 msgstr "Õnnestunud"
 
 #, fuzzy
 msgctxt ""
-"model:ir.action.act_window.domain,name:act_payment_form_domain_to_approve"
+"model:ir.action.act_window.domain,name:act_payment_form_payable_domain_all"
+msgid "All"
+msgstr "Kõik"
+
+#, fuzzy
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_payment_form_payable_domain_draft"
+msgid "Draft"
+msgstr "Mustand"
+
+#, fuzzy
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_payment_form_payable_domain_processing"
+msgid "Processing"
+msgstr "Protsessimine"
+
+#, fuzzy
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_payment_form_payable_domain_to_approve"
 msgid "To Approve"
 msgstr "Kinnita"
 
 #, fuzzy
 msgctxt ""
-"model:ir.action.act_window.domain,name:act_payment_form_domain_to_process"
+"model:ir.action.act_window.domain,name:act_payment_form_payable_domain_to_process"
+msgid "To Process"
+msgstr "Protsessi"
+
+#, fuzzy
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_payment_form_receivable_domain_all"
+msgid "All"
+msgstr "Kõik"
+
+#, fuzzy
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_payment_form_receivable_domain_draft"
+msgid "Draft"
+msgstr "Mustand"
+
+#, fuzzy
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_payment_form_receivable_domain_processing"
+msgid "Processing"
+msgstr "Protsessimine"
+
+#, fuzzy
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_payment_form_receivable_domain_to_process"
 msgid "To Process"
 msgstr "Protsessi"
 
@@ -450,6 +497,30 @@ msgstr ""
 "Osapoolt \"%(osapooli)\" ei saa kustutada kuni neil on ootel tasumised "
 "ettevõttega \"%(ettevõtetega)\""
 
+msgctxt "model:ir.message,text:msg_move_cancel_payments"
+msgid ""
+"The moves \"%(moves)s\" contain lines with payments, you may want to cancel "
+"them before cancelling."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_move_line_delegate_payments"
+msgid ""
+"The lines \"%(lines)s\" have payments, you may want to cancel them before "
+"delegating."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_move_line_group_payments"
+msgid ""
+"The lines \"%(lines)s\" have payments, you may want to cancel them before "
+"grouping."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_move_line_reschedule_payments"
+msgid ""
+"The lines \"%(lines)s\" have payments, you may want to cancel them before "
+"rescheduling."
+msgstr ""
+
 msgctxt "model:ir.message,text:msg_pay_line_blocked"
 msgid "Line \"%(line)s\" is blocked for payment."
 msgstr "Rida \"%(read)\" on tasumiseks blokeeritud"
@@ -468,9 +539,18 @@ msgctxt "model:ir.message,text:msg_payment_overpay"
 msgid "Payment \"%(payment)s\" overpays line \"%(line)s\"."
 msgstr ""
 
+msgctxt "model:ir.message,text:msg_payment_reconciled"
+msgid "The line \"%(line)s\" of payment \"%(payment)s\" is already reconciled."
+msgstr ""
+
+msgctxt "model:ir.model.button,confirm:payment_process_wizard_button"
+msgid "Are you sure you want to process the payments?"
+msgstr ""
+
+#, fuzzy
 msgctxt "model:ir.model.button,string:move_line_pay_button"
-msgid "Pay Lines"
-msgstr "Maksa read"
+msgid "Pay"
+msgstr "Maksa"
 
 msgctxt "model:ir.model.button,string:move_line_payment_block_button"
 msgid "Block"
@@ -501,6 +581,11 @@ msgstr "Õnnestunud"
 msgctxt "model:ir.model.button,string:payment_proceed_button"
 msgid "Processing"
 msgstr "Protsessimine"
+
+#, fuzzy
+msgctxt "model:ir.model.button,string:payment_process_wizard_button"
+msgid "Process"
+msgstr "Protsessi"
 
 msgctxt "model:ir.model.button,string:payment_submit_button"
 msgid "Submit"
@@ -552,19 +637,23 @@ msgctxt "model:ir.ui.menu,name:menu_payment_configuration"
 msgid "Payments"
 msgstr "Tasumised"
 
-msgctxt "model:ir.ui.menu,name:menu_payment_form"
-msgid "Payments"
-msgstr "Tasumised"
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_payment_form_payable"
+msgid "Payable Payments"
+msgstr "Protsessi tasumised"
 
 #, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_payment_form_receivable"
+msgid "Receivable Payments"
+msgstr "Nõue"
+
 msgctxt "model:ir.ui.menu,name:menu_payment_group_form"
-msgid "Groups"
-msgstr "Grupp"
+msgid "Payment Groups"
+msgstr "Tasumise grupp"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_payment_journal_form"
-msgid "Journals"
-msgstr "Andmikud"
+msgid "Payment Journals"
+msgstr "Tasumise andmik"
 
 msgctxt "model:ir.ui.menu,name:menu_payments"
 msgid "Payments"
@@ -675,10 +764,6 @@ msgctxt "view:account.payment.group:"
 msgid "Total Amount"
 msgstr "Väärtus"
 
-msgctxt "view:account.payment.process.start:"
-msgid "Process Payments?"
-msgstr "Protsessin tasumisi?"
-
 msgctxt "view:account.payment:"
 msgid "Description"
 msgstr "Selgitus"
@@ -712,11 +797,3 @@ msgstr "Tühista"
 msgctxt "wizard_button:account.move.line.pay,start,next_:"
 msgid "Pay"
 msgstr "Maksa"
-
-msgctxt "wizard_button:account.payment.process,start,end:"
-msgid "Cancel"
-msgstr "Tühista"
-
-msgctxt "wizard_button:account.payment.process,start,process:"
-msgid "Process"
-msgstr "Protsessi"

@@ -1,0 +1,187 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:inbound.email,data:"
+msgid "Data"
+msgstr "Datos"
+
+msgctxt "field:inbound.email,data_id:"
+msgid "Data ID"
+msgstr "ID Datos"
+
+msgctxt "field:inbound.email,data_type:"
+msgid "Data Type"
+msgstr "Tipo datos"
+
+msgctxt "field:inbound.email,inbox:"
+msgid "Inbox"
+msgstr "Bandeja de entrada"
+
+msgctxt "field:inbound.email,result:"
+msgid "Result"
+msgstr "Resultado"
+
+msgctxt "field:inbound.email,rule:"
+msgid "Rule"
+msgstr "Regla"
+
+msgctxt "field:inbound.email.inbox,endpoint:"
+msgid "Endpoint"
+msgstr "Punto final"
+
+msgctxt "field:inbound.email.inbox,identifier:"
+msgid "Identifier"
+msgstr "Identificador"
+
+msgctxt "field:inbound.email.inbox,name:"
+msgid "Name"
+msgstr "Nombre"
+
+msgctxt "field:inbound.email.inbox,rules:"
+msgid "Rules"
+msgstr "Reglas"
+
+msgctxt "field:inbound.email.rule,action:"
+msgid "Action"
+msgstr "Acción"
+
+msgctxt "field:inbound.email.rule,attachment_name:"
+msgid "Attachment Name"
+msgstr "Nombre del adjunto"
+
+msgctxt "field:inbound.email.rule,destination:"
+msgid "Destination"
+msgstr "Destino"
+
+msgctxt "field:inbound.email.rule,headers:"
+msgid "Headers"
+msgstr "Cabeceras"
+
+msgctxt "field:inbound.email.rule,inbox:"
+msgid "Inbox"
+msgstr "Bandeja de entrada"
+
+msgctxt "field:inbound.email.rule,origin:"
+msgid "Origin"
+msgstr "Origen"
+
+msgctxt "field:inbound.email.rule,subject:"
+msgid "Subject"
+msgstr "Asunto"
+
+msgctxt "field:inbound.email.rule.header,name:"
+msgid "Name"
+msgstr "Nombre"
+
+msgctxt "field:inbound.email.rule.header,rule:"
+msgid "Rule"
+msgstr "Regla"
+
+msgctxt "field:inbound.email.rule.header,value:"
+msgid "Value"
+msgstr "Valor"
+
+msgctxt "help:inbound.email.inbox,endpoint:"
+msgid "The URL where the emails must be posted."
+msgstr "La URL a la que se deben enviar los correos electrónicos."
+
+msgctxt "help:inbound.email.inbox,rules:"
+msgid "The action of the first matching line is run."
+msgstr "La acción de la primera linea coincidente se ejecutará."
+
+msgctxt "help:inbound.email.rule,attachment_name:"
+msgid "A regular expression to match any attachment name."
+msgstr "Una expresión regular que coincida con algún nombre del adjunto."
+
+msgctxt "help:inbound.email.rule,destination:"
+msgid "A regular expression to match any receiver email addresses."
+msgstr ""
+"Una expresión regular a coincidir con algún correo electrónico del "
+"destinatario."
+
+msgctxt "help:inbound.email.rule,origin:"
+msgid "A regular expression to match the sender email address."
+msgstr ""
+"Una expresión regular a coincidir con elcorreo electrónico del remitente."
+
+msgctxt "help:inbound.email.rule,subject:"
+msgid "A regular expression to match the subject."
+msgstr "Una expresión regular a coincidir con el asunto."
+
+msgctxt "help:inbound.email.rule.header,name:"
+msgid "The name of the header."
+msgstr "El nombre de la cabecera."
+
+msgctxt "help:inbound.email.rule.header,value:"
+msgid "A regular expression to match the header value."
+msgstr "Una expresión regular a coincidir con el valor de la cabecera."
+
+msgctxt "model:inbound.email,name:"
+msgid "Inbound Email"
+msgstr "Correo electrónico entrante"
+
+msgctxt "model:inbound.email.inbox,name:"
+msgid "Inbound Email Inbox"
+msgstr "Buzón de correo electrónico entrante"
+
+msgctxt "model:inbound.email.rule,name:"
+msgid "Inbound Email Rule"
+msgstr "Regla de correo electrónico"
+
+msgctxt "model:inbound.email.rule.header,name:"
+msgid "Inbound Email Rule Header"
+msgstr "Cabeceras de las reglas de correo electrónico entrante"
+
+msgctxt "model:ir.action,name:act_inbound_email_form_relate"
+msgid "E-mails"
+msgstr "Correos electrónicos"
+
+msgctxt "model:ir.action,name:act_inbound_email_inbox_form"
+msgid "Inbox"
+msgstr "Bandeja de entrada"
+
+msgctxt ""
+"model:ir.model.button,confirm:inbound_email_inbox_new_identifier_button"
+msgid ""
+"This action will make the previous URL unusable. Do you want to continue?"
+msgstr ""
+"Esta acción provocara que la URL anterior deje de funcionar. ¿Desea "
+"continuar?"
+
+msgctxt ""
+"model:ir.model.button,string:inbound_email_inbox_new_identifier_button"
+msgid "New URL"
+msgstr "Nueva URL"
+
+msgctxt "model:ir.model.button,string:inbound_email_process_button"
+msgid "Process"
+msgstr "Procesar"
+
+msgctxt "model:ir.ui.menu,name:menu_inbound_email"
+msgid "Inbound Email"
+msgstr "Correo electrónico entrante"
+
+msgctxt "model:ir.ui.menu,name:menu_inbound_email_inbox_form"
+msgid "Inbox"
+msgstr "Bandeja de entrada"
+
+msgctxt "selection:inbound.email,data_type:"
+msgid "MailPace"
+msgstr "MailPace"
+
+msgctxt "selection:inbound.email,data_type:"
+msgid "Mailchimp"
+msgstr "Mailchimp"
+
+msgctxt "selection:inbound.email,data_type:"
+msgid "Postmark"
+msgstr "Postmark"
+
+msgctxt "selection:inbound.email,data_type:"
+msgid "Raw"
+msgstr "En crudo"
+
+msgctxt "selection:inbound.email,data_type:"
+msgid "SendGrid"
+msgstr "SendGrid"

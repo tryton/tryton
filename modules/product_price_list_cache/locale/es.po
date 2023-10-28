@@ -1,0 +1,40 @@
+#
+#, fuzzy
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:product.price_list.cache,pattern:"
+msgid "Pattern"
+msgstr "Patrón"
+
+msgctxt "field:product.price_list.cache,price_list:"
+msgid "Price List"
+msgstr "Tarifa"
+
+msgctxt "field:product.price_list.cache,product:"
+msgid "Product"
+msgstr "Producto"
+
+msgctxt "field:product.price_list.cache,raw_unit_prices:"
+msgid "Unit Prices"
+msgstr "Precios unitarios"
+
+msgctxt "field:product.price_list.cache,uom:"
+msgid "UoM"
+msgstr "UdM"
+
+msgctxt "field:product.product,cached_price_lists:"
+msgid "Cached Price Lists"
+msgstr "Tarifas en cache"
+
+msgctxt "help:product.price_list.cache,uom:"
+msgid "The Unit of Measure."
+msgstr "La unidad de medida."
+
+msgctxt "model:product.price_list.cache,name:"
+msgid "Price List Cache"
+msgstr "Cache de tarifas"
+
+msgctxt "selection:ir.cron,method:"
+msgid "Fill Product Price List Cache"
+msgstr "Actualizar la cache de tarifas"

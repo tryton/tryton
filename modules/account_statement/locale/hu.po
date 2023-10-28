@@ -318,9 +318,10 @@ msgctxt "model:ir.action,name:act_statement_form"
 msgid "Statements"
 msgstr "Bankszámlakivonatok"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_statement_journal_form"
-msgid "Journals"
-msgstr "Számlakivonat naplók"
+msgid "Statement Journals"
+msgstr "Statement Journals"
 
 msgctxt "model:ir.action,name:act_statement_line_move"
 msgid "Statement Lines"
@@ -470,9 +471,10 @@ msgctxt "model:ir.ui.menu,name:menu_statement_import"
 msgid "Import Statement"
 msgstr "Bankszámlakivonat beolvasása"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_statement_journal_form"
-msgid "Journals"
-msgstr "Számlakivonat naplók"
+msgid "Statement Journals"
+msgstr "Statement Journals"
 
 msgctxt "model:ir.ui.menu,name:menu_statements"
 msgid "Statements"
@@ -561,14 +563,6 @@ msgstr "záróegyenleg alapján"
 msgctxt "selection:account.statement.journal,validation:"
 msgid "Number of Lines"
 msgstr "sorok száma alapján"
-
-msgctxt "view:account.statement.line:"
-msgid "Amount"
-msgstr "Összeg"
-
-msgctxt "view:account.statement.origin:"
-msgid "Amount"
-msgstr "Összeg"
 
 msgctxt "view:account.statement:"
 msgid "Other Info"

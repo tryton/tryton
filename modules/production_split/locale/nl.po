@@ -10,17 +10,21 @@ msgctxt "field:production.split.start,quantity:"
 msgid "Quantity"
 msgstr "Hoeveelheid"
 
-msgctxt "field:production.split.start,uom:"
-msgid "Uom"
-msgstr "maateenheid"
+msgctxt "field:production.split.start,unit:"
+msgid "Unit"
+msgstr "Maateenheid"
 
 msgctxt "field:production.split.start,uom_category:"
-msgid "Uom Category"
-msgstr "maateenheid categorie"
+msgid "UoM Category"
+msgstr "Maateenheid categorie"
 
 msgctxt "help:production.split.start,count:"
 msgid "The limit number of productions"
 msgstr "Het limiet aantal producties"
+
+msgctxt "help:production.split.start,uom_category:"
+msgid "The category of Unit of Measure."
+msgstr "De categorie van de maateenheid."
 
 msgctxt "model:ir.action,name:wizard_split_production"
 msgid "Split Production"

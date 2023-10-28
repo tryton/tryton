@@ -539,7 +539,7 @@ msgstr "commissies"
 
 msgctxt "model:ir.ui.menu,name:menu_configuration"
 msgid "Configuration"
-msgstr "Instellingen"
+msgstr "Configuratie"
 
 msgctxt "model:ir.ui.menu,name:menu_plan_form"
 msgid "Plans"

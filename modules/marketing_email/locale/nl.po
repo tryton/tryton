@@ -117,6 +117,10 @@ msgctxt ""
 msgid "Sending"
 msgstr "Bezig met verzenden"
 
+msgctxt "model:ir.message,text:msg_email_invalid"
+msgid "The email address \"%(email)s\" for \"%(record)s\" is not valid."
+msgstr "Het email adres \"%(email)s\" voor \"%(record)s\" is not geldig."
+
 msgctxt "model:ir.message,text:msg_email_list_unique"
 msgid "Email addresses can only be subscribed once to each list."
 msgstr ""
@@ -217,10 +221,6 @@ msgstr "Bezig met verzenden"
 msgctxt "selection:marketing.email.message,state:"
 msgid "Sent"
 msgstr "Verzonden"
-
-msgctxt "view:marketing.email.list:"
-msgid "Subscribed"
-msgstr "Geabonneerd"
 
 msgctxt "view:marketing.email.message:"
 msgid "Edit"

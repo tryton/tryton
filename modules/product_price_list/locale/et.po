@@ -14,6 +14,11 @@ msgctxt "field:product.price_list,name:"
 msgid "Name"
 msgstr "Nimetus"
 
+#, fuzzy
+msgctxt "field:product.price_list,price:"
+msgid "Price"
+msgstr "Hinnakiri"
+
 msgctxt "field:product.price_list,tax_included:"
 msgid "Tax Included"
 msgstr "Sisaldab maksu"
@@ -56,6 +61,10 @@ msgstr ""
 
 msgctxt "help:product.price_list,name:"
 msgid "The main identifier of the price list."
+msgstr ""
+
+msgctxt "help:product.price_list,price:"
+msgid "The value used for 'unit_price'."
 msgstr ""
 
 msgctxt "help:product.price_list,tax_included:"
@@ -116,6 +125,14 @@ msgstr "Hinnakiri"
 msgctxt "model:product.price_list.line,name:"
 msgid "Price List Line"
 msgstr "Hinnakirja rida"
+
+msgctxt "selection:product.price_list,price:"
+msgid "Cost Price"
+msgstr ""
+
+msgctxt "selection:product.price_list,price:"
+msgid "List price"
+msgstr ""
 
 #, fuzzy
 msgctxt "selection:product.price_list,unit:"

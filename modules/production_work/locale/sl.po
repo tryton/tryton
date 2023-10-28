@@ -8,20 +8,23 @@ msgstr "Delovni center"
 
 msgctxt "field:production,works:"
 msgid "Works"
-msgstr "Naloge"
+msgstr "Dela"
 
 msgctxt "field:production.routing.operation,work_center_category:"
 msgid "Work Center Category"
 msgstr "Kategorija delovnega centra"
 
-#, fuzzy
 msgctxt "field:production.work,active_cycles:"
 msgid "Active Cycles"
-msgstr "Po ciklu"
+msgstr "Aktivni cikli"
 
 msgctxt "field:production.work,company:"
 msgid "Company"
 msgstr "Družba"
+
+msgctxt "field:production.work,cost:"
+msgid "Cost"
+msgstr "Strošek"
 
 msgctxt "field:production.work,cycles:"
 msgid "Cycles"
@@ -87,13 +90,29 @@ msgctxt "field:production.work.center.category,name:"
 msgid "Name"
 msgstr "Naziv"
 
+msgctxt "field:production.work.cycle,cancelled_by:"
+msgid "Cancelled By"
+msgstr "Preklical"
+
+msgctxt "field:production.work.cycle,company:"
+msgid "Company"
+msgstr "Družba"
+
 msgctxt "field:production.work.cycle,cost:"
 msgid "Cost"
 msgstr "Strošek"
 
+msgctxt "field:production.work.cycle,done_by:"
+msgid "Done By"
+msgstr "Končal"
+
 msgctxt "field:production.work.cycle,duration:"
 msgid "Duration"
 msgstr "Trajanje"
+
+msgctxt "field:production.work.cycle,run_by:"
+msgid "Run By"
+msgstr "Zagnal"
 
 msgctxt "field:production.work.cycle,state:"
 msgid "State"
@@ -103,116 +122,109 @@ msgctxt "field:production.work.cycle,work:"
 msgid "Work"
 msgstr "Naloga"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_work_center_category_list"
 msgid "Work Center Categories"
-msgstr "Work Center Categories"
+msgstr "Kategorije delovnih centrov"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_work_center_list"
 msgid "Work Centers"
-msgstr "Work Centers"
+msgstr "Delovni centri"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_work_center_tree"
 msgid "Work Centers"
-msgstr "Work Centers"
+msgstr "Delovni centri"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_work_list"
 msgid "Works"
-msgstr "Works"
+msgstr "Dela"
 
-#, fuzzy
 msgctxt "model:ir.action.act_window.domain,name:act_work_list_domain_all"
 msgid "All"
-msgstr "All"
+msgstr "Vse"
 
-#, fuzzy
 msgctxt "model:ir.action.act_window.domain,name:act_work_list_domain_draft"
 msgid "Draft"
-msgstr "Draft"
+msgstr "Osnutek"
 
-#, fuzzy
 msgctxt "model:ir.action.act_window.domain,name:act_work_list_domain_request"
 msgid "Request"
-msgstr "Request"
+msgstr "Zahtevek"
 
-#, fuzzy
 msgctxt "model:ir.action.act_window.domain,name:act_work_list_domain_running"
 msgid "Running"
-msgstr "Running"
+msgstr "V izvajanju"
 
-#, fuzzy
 msgctxt "model:ir.action.act_window.domain,name:act_work_list_domain_waiting"
 msgid "Waiting"
-msgstr "Waiting"
+msgstr "V čakanju"
 
 msgctxt "model:ir.message,text:msg_delete_request"
 msgid "To delete work \"%(work)s\" it must be in the \"request\" or \"draft\" state."
 msgstr ""
+"Če želite izbrisati delo »%(work)s«, mora biti v stanju »Zahtevek« ali "
+"»Osnutek«."
 
 msgctxt "model:ir.message,text:msg_do_finished_work"
 msgid "To complete production \"%(production)s\", work \"%(work)s\" must be finished."
 msgstr ""
+"Za dokončanje proizvodnje \"%(production)s\" mora biti dokončano delo "
+"\"%(work)s\"."
 
 msgctxt "model:ir.message,text:msg_missing_work_center"
 msgid ""
 "Could not find a work center of category \"%(category)s\" under "
 "\"%(parent)s\"."
 msgstr ""
+"Ni bilo mogoče najti delovnega centra kategorije \"%(category)s\" pod "
+"\"%(parent)s\"."
 
 msgctxt "model:ir.model.button,string:work_cycle_cancel_button"
 msgid "Cancel"
-msgstr "Cancel"
+msgstr "Prekliči"
 
 msgctxt "model:ir.model.button,string:work_cycle_do_button"
 msgid "Do"
-msgstr "Do"
+msgstr "Izvedi"
 
 msgctxt "model:ir.model.button,string:work_cycle_run_button"
 msgid "Run"
-msgstr "Run"
+msgstr "Zaženi"
 
 msgctxt "model:ir.model.button,string:work_start_button"
 msgid "Start"
-msgstr ""
+msgstr "Začetek"
 
 msgctxt "model:ir.model.button,string:work_stop_button"
 msgid "Stop"
-msgstr ""
+msgstr "Ustavi"
 
 msgctxt "model:ir.rule.group,name:rule_group_work_center_companies"
 msgid "User in companies"
-msgstr ""
+msgstr "Uporabnik v družbah"
 
 msgctxt "model:ir.rule.group,name:rule_group_work_companies"
 msgid "User in companies"
-msgstr ""
+msgstr "Uporabnik v družbah"
 
 msgctxt "model:ir.rule.group,name:rule_group_work_cycle_companies"
 msgid "User in companies"
-msgstr ""
+msgstr "Uporabnik v družbah"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_work_center_category_list"
 msgid "Work Center Categories"
-msgstr "Work Center Categories"
+msgstr "Kategorije delovnih centrov"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_work_center_list"
 msgid "Work Centers"
-msgstr "Work Centers"
+msgstr "Delovni centri"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_work_center_tree"
 msgid "Work Centers"
-msgstr "Work Centers"
+msgstr "Delovni centri"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_work_list"
 msgid "Works"
-msgstr "Works"
+msgstr "Dela"
 
 msgctxt "model:production.work,name:"
 msgid "Production Work"

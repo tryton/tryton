@@ -88,8 +88,8 @@ msgid "Supplier's Product"
 msgstr "Produit du fournisseur"
 
 msgctxt "field:purchase.blanket_agreement.line,product_uom_category:"
-msgid "Product UOM Category"
-msgstr "Catégorie d'UdM de produit"
+msgid "Product UoM Category"
+msgstr "Catégorie d'UDM du produit"
 
 msgctxt "field:purchase.blanket_agreement.line,purchase_lines:"
 msgid "Purchase Lines"
@@ -126,6 +126,10 @@ msgstr "Ligne de contrat-cadre"
 msgctxt "field:purchase.purchase,blanket_agreements:"
 msgid "Blanket Agreements"
 msgstr "Contrats-cadres"
+
+msgctxt "help:purchase.blanket_agreement.line,product_uom_category:"
+msgid "The category of Unit of Measure for the product."
+msgstr "La catégorie d'Unité De Mesure pour le produit."
 
 msgctxt "model:ir.action,name:act_purchase_blanket_agreement"
 msgid "Blanket Agreements"

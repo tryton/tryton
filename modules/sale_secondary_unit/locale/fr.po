@@ -3,43 +3,43 @@ msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "field:product.product,sale_secondary_uom:"
-msgid "Sale Secondary UOM"
+msgid "Sale Secondary UoM"
 msgstr "UDM secondaire de vente"
 
 msgctxt "field:product.product,sale_secondary_uom_category:"
-msgid "Sale Secondary UOM Category"
-msgstr "Catégorie d'unité de mesure secondaire de vente"
+msgid "Sale Secondary UoM Category"
+msgstr "Catégorie d'UDM secondaire de vente"
 
 msgctxt "field:product.product,sale_secondary_uom_factor:"
-msgid "Sale Secondary UOM Factor"
-msgstr "Facture d'unité de mesure secondaire de vente"
+msgid "Sale Secondary UoM Factor"
+msgstr "Facteur d'UDM secondaire de vente"
 
 msgctxt "field:product.product,sale_secondary_uom_rate:"
-msgid "Sale Secondary UOM Rate"
+msgid "Sale Secondary UoM Rate"
 msgstr "Taux d'UDM secondaire de vente"
 
 msgctxt "field:product.template,sale_secondary_uom:"
-msgid "Sale Secondary UOM"
+msgid "Sale Secondary UoM"
 msgstr "UDM secondaire de vente"
 
 msgctxt "field:product.template,sale_secondary_uom_category:"
-msgid "Sale Secondary UOM Category"
-msgstr "Catégorie d'unité de mesure secondaire de vente"
+msgid "Sale Secondary UoM Category"
+msgstr "Catégorie d'UDM secondaire de vente"
 
 msgctxt "field:product.template,sale_secondary_uom_factor:"
-msgid "Sale Secondary UOM Factor"
+msgid "Sale Secondary UoM Factor"
 msgstr "Facteur d'UDM secondaire de vente"
 
 msgctxt "field:product.template,sale_secondary_uom_rate:"
-msgid "Sale Secondary UOM Rate"
+msgid "Sale Secondary UoM Rate"
 msgstr "Taux d'UDM secondaire de vente"
 
 msgctxt "field:sale.blanket_agreement.line,product_secondary_uom_category:"
-msgid "Product Secondary UOM Category"
+msgid "Product Secondary UoM Category"
 msgstr "Catégorie d'UDM secondaire du produit"
 
 msgctxt "field:sale.line,product_secondary_uom_category:"
-msgid "Product Secondary UOM Category"
+msgid "Product Secondary UoM Category"
 msgstr "Catégorie d'UDM secondaire du produit"
 
 msgctxt "field:sale.line,secondary_quantity:"
@@ -55,32 +55,36 @@ msgid "Secondary Unit Price"
 msgstr "Prix unitaire secondaire"
 
 msgctxt "field:sale.line,secondary_uom_factor:"
-msgid "Secondary UOM Factor"
+msgid "Secondary UoM Factor"
 msgstr "Facteur d'UDM secondaire"
 
 msgctxt "field:sale.line,secondary_uom_rate:"
-msgid "Secondary UOM Rate"
+msgid "Secondary UoM Rate"
 msgstr "Taux d'UDM secondaire"
 
 msgctxt "field:sale.product_customer,default_uom_category:"
-msgid "Default UOM Category"
+msgid "Default UoM Category"
 msgstr "Catégorie d'UDM par défaut"
 
 msgctxt "field:sale.product_customer,sale_secondary_uom:"
-msgid "Sale Secondary UOM"
+msgid "Sale Secondary UoM"
 msgstr "UDM secondaire de vente"
 
 msgctxt "field:sale.product_customer,sale_secondary_uom_category:"
-msgid "Sale Secondary UOM Category"
-msgstr "Catégorie d'unité de mesure secondaire de vente"
+msgid "Sale Secondary UoM Category"
+msgstr "Catégorie d'UDM secondaire de vente"
 
 msgctxt "field:sale.product_customer,sale_secondary_uom_factor:"
-msgid "Sale Secondary UOM Factor"
-msgstr "Facture d'unité de mesure secondaire de vente"
+msgid "Sale Secondary UoM Factor"
+msgstr "Facteur d'UDM secondaire de vente"
 
 msgctxt "field:sale.product_customer,sale_secondary_uom_rate:"
-msgid "Sale Secondary UOM Rate"
+msgid "Sale Secondary UoM Rate"
 msgstr "Taux d'UDM secondaire de vente"
+
+msgctxt "help:product.product,sale_secondary_uom:"
+msgid "The secondary Unit of Measure for sales."
+msgstr "L'Unité De Mesure secondaire pour les ventes."
 
 msgctxt "help:product.product,sale_secondary_uom_factor:"
 msgid ""
@@ -98,6 +102,10 @@ msgstr ""
 "Le coefficient pour la formule :\n"
 "coefficient (unité de vente) = 1 (unité secondaire)"
 
+msgctxt "help:product.template,sale_secondary_uom:"
+msgid "The secondary Unit of Measure for sales."
+msgstr "L'Unité De Mesure secondaire pour les ventes."
+
 msgctxt "help:product.template,sale_secondary_uom_factor:"
 msgid ""
 "The coefficient for the formula:\n"
@@ -113,6 +121,30 @@ msgid ""
 msgstr ""
 "Le coefficient pour la formule :\n"
 "coefficient (unité de vente) = 1 (unité secondaire)"
+
+msgctxt "help:sale.blanket_agreement.line,product_secondary_uom_category:"
+msgid "The category of the secondary Unit of Measure for the product."
+msgstr "La catégorie d'Unité De Mesure secondaire pour le produit."
+
+msgctxt "help:sale.line,product_secondary_uom_category:"
+msgid "The category of secondary Unit of Measure for the product."
+msgstr "La catégorie d'unité de mesure secondaire pour le produit."
+
+msgctxt "help:sale.line,secondary_uom_factor:"
+msgid "The factor for the secondary Unit of Measure."
+msgstr "Le facteur pour l'Unité De Mesure secondaire."
+
+msgctxt "help:sale.line,secondary_uom_rate:"
+msgid "The rate for the secondary Unit of Measure."
+msgstr "Le taux pour l’Unité De Mesure secondaire."
+
+msgctxt "help:sale.product_customer,default_uom_category:"
+msgid "The category of default Unit of Measure."
+msgstr "La catégorie de l'Unité De Mesure par défaut."
+
+msgctxt "help:sale.product_customer,sale_secondary_uom:"
+msgid "The secondary Unit of Measure for sales."
+msgstr "L'Unité De Mesure secondaire pour les ventes."
 
 msgctxt "help:sale.product_customer,sale_secondary_uom_factor:"
 msgid ""

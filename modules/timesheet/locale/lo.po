@@ -402,14 +402,6 @@ msgctxt "selection:res.user.application,application:"
 msgid "Timesheet"
 msgstr "ຕາຕະລາງເຮັດວຽກ"
 
-msgctxt "view:timesheet.hours_employee:"
-msgid "Duration"
-msgstr "ກຳນົດເວລາ"
-
-msgctxt "view:timesheet.line:"
-msgid "Duration"
-msgstr "ກຳນົດເວລາ"
-
 msgctxt "wizard_button:timesheet.line.enter,start,end:"
 msgid "Cancel"
 msgstr "ຍົກເລີກ"

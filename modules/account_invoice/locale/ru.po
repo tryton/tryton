@@ -117,6 +117,10 @@ msgctxt "field:account.invoice,has_payment_method:"
 msgid "Has Payment Method"
 msgstr "Test Payment Term"
 
+msgctxt "field:account.invoice,has_report_cache:"
+msgid "Has Report Cached"
+msgstr ""
+
 msgctxt "field:account.invoice,invoice_address:"
 msgid "Invoice Address"
 msgstr "Адрес для инвойса"
@@ -137,6 +141,11 @@ msgstr "Отчет Инвойса"
 msgctxt "field:account.invoice,invoice_report_format:"
 msgid "Invoice Report Format"
 msgstr "Формат отчета Инвойса"
+
+#, fuzzy
+msgctxt "field:account.invoice,invoice_report_revisions:"
+msgid "Invoice Report Revisions"
+msgstr "Отчет Инвойса"
 
 msgctxt "field:account.invoice,journal:"
 msgid "Journal"
@@ -188,6 +197,11 @@ msgctxt "field:account.invoice,payment_term_date:"
 msgid "Payment Term Date"
 msgstr "Правило оплаты"
 
+#, fuzzy
+msgctxt "field:account.invoice,posted_by:"
+msgid "Posted By"
+msgstr "Отправлен"
+
 msgctxt "field:account.invoice,reconciled:"
 msgid "Reconciled"
 msgstr "Сверено"
@@ -214,6 +228,11 @@ msgctxt "field:account.invoice,tax_amount:"
 msgid "Tax"
 msgstr "Налог"
 
+#, fuzzy
+msgctxt "field:account.invoice,tax_amount_cache:"
+msgid "Tax Cache"
+msgstr "Код налога"
+
 msgctxt "field:account.invoice,tax_identifier:"
 msgid "Tax Identifier"
 msgstr ""
@@ -224,6 +243,11 @@ msgstr "Строки налога"
 
 msgctxt "field:account.invoice,total_amount:"
 msgid "Total"
+msgstr "Итого"
+
+#, fuzzy
+msgctxt "field:account.invoice,total_amount_cache:"
+msgid "Total Cache"
 msgstr "Итого"
 
 msgctxt "field:account.invoice,type:"
@@ -237,6 +261,16 @@ msgstr "Тип"
 msgctxt "field:account.invoice,untaxed_amount:"
 msgid "Untaxed"
 msgstr "Без налога"
+
+#, fuzzy
+msgctxt "field:account.invoice,untaxed_amount_cache:"
+msgid "Untaxed Cache"
+msgstr "Без налога"
+
+#, fuzzy
+msgctxt "field:account.invoice,validated_by:"
+msgid "Validated By"
+msgstr "Утвержденный"
 
 msgctxt "field:account.invoice-account.move.line,invoice:"
 msgid "Invoice"
@@ -358,8 +392,9 @@ msgctxt "field:account.invoice.line,product:"
 msgid "Product"
 msgstr "Продукт"
 
+#, fuzzy
 msgctxt "field:account.invoice.line,product_uom_category:"
-msgid "Product Uom Category"
+msgid "Product UoM Category"
 msgstr "Категория ед. измерения продукции"
 
 msgctxt "field:account.invoice.line,quantity:"
@@ -616,6 +651,36 @@ msgctxt "field:account.invoice.payment_term.test.result,date:"
 msgid "Date"
 msgstr "Дата"
 
+#, fuzzy
+msgctxt "field:account.invoice.report.revision,date:"
+msgid "Date"
+msgstr "Дата"
+
+#, fuzzy
+msgctxt "field:account.invoice.report.revision,filename:"
+msgid "File Name"
+msgstr "Правило оплаты"
+
+#, fuzzy
+msgctxt "field:account.invoice.report.revision,invoice:"
+msgid "Invoice"
+msgstr "Инвойс"
+
+#, fuzzy
+msgctxt "field:account.invoice.report.revision,invoice_report_cache:"
+msgid "Invoice Report"
+msgstr "Отчет Инвойса"
+
+#, fuzzy
+msgctxt "field:account.invoice.report.revision,invoice_report_cache_id:"
+msgid "Invoice Report ID"
+msgstr "Отчет Инвойса"
+
+#, fuzzy
+msgctxt "field:account.invoice.report.revision,invoice_report_format:"
+msgid "Invoice Report Format"
+msgstr "Формат отчета Инвойса"
+
 msgctxt "field:account.invoice.tax,account:"
 msgid "Account"
 msgstr "Счет"
@@ -727,6 +792,10 @@ msgctxt "help:account.invoice.credit.start,with_refund:"
 msgid "If true, the current invoice(s) will be cancelled."
 msgstr "Если истинно, то текущий инвойс будет оплачен."
 
+msgctxt "help:account.invoice.line,product_uom_category:"
+msgid "The category of Unit of Measure for the product."
+msgstr ""
+
 msgctxt "help:account.invoice.line,taxes_date:"
 msgid ""
 "The date at which the taxes are computed.\n"
@@ -814,6 +883,11 @@ msgctxt "model:account.invoice.payment_term.test.result,name:"
 msgid "Test Payment Term"
 msgstr "Test Payment Term"
 
+#, fuzzy
+msgctxt "model:account.invoice.report.revision,name:"
+msgid "Invoice Report Revision"
+msgstr "Отчет Инвойса"
+
 msgctxt "model:account.invoice.tax,name:"
 msgid "Invoice Tax"
 msgstr "Налог по инвойсу"
@@ -860,6 +934,11 @@ msgstr "Строки к оплате"
 msgctxt "model:ir.action,name:credit"
 msgid "Credit"
 msgstr "Credit"
+
+#, fuzzy
+msgctxt "model:ir.action,name:refresh_invoice_report_wizard"
+msgid "Invoice (revised)"
+msgstr "Строка инвойса"
 
 #, fuzzy
 msgctxt "model:ir.action,name:report_invoice"
@@ -1380,6 +1459,10 @@ msgctxt "view:account.invoice.payment_term.line:"
 msgid "%"
 msgstr "%"
 
+msgctxt "view:account.invoice.report.revision:"
+msgid "Time"
+msgstr ""
+
 msgctxt "view:account.invoice:"
 msgid "Invoice"
 msgstr "Инвойс"
@@ -1395,18 +1478,6 @@ msgstr "Оплата"
 msgctxt "view:account.invoice:"
 msgid "Tax Identifier:"
 msgstr ""
-
-msgctxt "view:account.move.line:"
-msgid "Amount Second Currency"
-msgstr "Сумма во второй валюте"
-
-msgctxt "view:account.move.line:"
-msgid "Credit"
-msgstr "Кредит"
-
-msgctxt "view:account.move.line:"
-msgid "Debit"
-msgstr "Дебет"
 
 #, fuzzy
 msgctxt "view:company.company:"

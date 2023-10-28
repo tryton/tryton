@@ -14,17 +14,13 @@ msgctxt "field:purchase.request,computed_quantity:"
 msgid "Computed Quantity"
 msgstr "Quantitat calculada"
 
-msgctxt "field:purchase.request,computed_uom:"
-msgid "Computed UOM"
-msgstr "UdM calculada"
+msgctxt "field:purchase.request,computed_unit:"
+msgid "Computed Unit"
+msgstr "Unitat calculada"
 
 msgctxt "field:purchase.request,default_uom:"
-msgid "Default UOM"
+msgid "Default UoM"
 msgstr "UdM per defecte"
-
-msgctxt "field:purchase.request,default_uom_digits:"
-msgid "Default UOM Digits"
-msgstr "Decimals de la UdM per defecte"
 
 msgctxt "field:purchase.request,description:"
 msgid "Description"
@@ -47,7 +43,7 @@ msgid "Product"
 msgstr "Producte"
 
 msgctxt "field:purchase.request,product_uom_category:"
-msgid "Product Uom Category"
+msgid "Product UoM Category"
 msgstr "Categoria UdM del producte"
 
 msgctxt "field:purchase.request,purchase:"
@@ -86,13 +82,9 @@ msgctxt "field:purchase.request,supply_date:"
 msgid "Expected Supply Date"
 msgstr "Data subministre estimada"
 
-msgctxt "field:purchase.request,uom:"
-msgid "UOM"
-msgstr "UdM"
-
-msgctxt "field:purchase.request,uom_digits:"
-msgid "UOM Digits"
-msgstr "Decimals de la UdM"
+msgctxt "field:purchase.request,unit:"
+msgid "Unit"
+msgstr "Unitat"
 
 msgctxt "field:purchase.request,warehouse:"
 msgid "Warehouse"
@@ -117,6 +109,14 @@ msgstr "Proveïdor"
 msgctxt "field:purchase.request.create_purchase.ask_party,product:"
 msgid "Product"
 msgstr "Producte"
+
+msgctxt "help:purchase.request,default_uom:"
+msgid "The default Unit of Measure."
+msgstr "La unitat de mesura per defecte."
+
+msgctxt "help:purchase.request,product_uom_category:"
+msgid "The category of Unit of Measure for the product."
+msgstr "La categoria de la unitat de mesura del producte."
 
 msgctxt "model:ir.action,name:act_open_purchase_form"
 msgid "Purchases"

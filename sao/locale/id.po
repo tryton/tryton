@@ -242,6 +242,9 @@ msgstr ""
 msgid "Create..."
 msgstr ""
 
+msgid "Create \"%1\"..."
+msgstr ""
+
 msgid "Download"
 msgstr "Unduh"
 
@@ -440,6 +443,9 @@ msgstr ""
 msgid ":"
 msgstr ":"
 
+msgid "Scan"
+msgstr ""
+
 msgid "Translate"
 msgstr ""
 
@@ -507,17 +513,20 @@ msgstr "Pilih bahasa"
 msgid "%1%"
 msgstr "%1%"
 
-msgid ": "
-msgstr ": "
+msgid "Menu"
+msgstr ""
 
-msgid "Customize"
+msgid "Copy"
+msgstr ""
+
+msgid "#ERROR"
 msgstr ""
 
 msgid "More"
 msgstr ""
 
-msgid "#ERROR"
-msgstr ""
+msgid ": "
+msgstr ": "
 
 msgid "Today"
 msgstr "Hari ini"
@@ -542,6 +551,18 @@ msgstr "Pilih tindakan Anda"
 
 msgid "No action defined."
 msgstr "Tidak ada tindakan yang ditentukan."
+
+msgid "Discard changes"
+msgstr ""
+
+msgid "Save and New"
+msgstr ""
+
+msgid "Add and New"
+msgstr ""
+
+msgid "Apply changes"
+msgstr ""
 
 msgid "Attachments (%1)"
 msgstr ""
@@ -612,7 +633,7 @@ msgstr ""
 msgid "Detection failed"
 msgstr ""
 
-msgid "Error processing the file at field %1."
+msgid "Unknown column header \"%1\""
 msgstr ""
 
 msgid "Error"
@@ -706,6 +727,15 @@ msgstr "Kirim"
 
 msgid "Remove File"
 msgstr "Hapus Berkas"
+
+msgid "Code Scanner"
+msgstr ""
+
+msgid "Code"
+msgstr ""
+
+msgid "Toggle Sound"
+msgstr ""
 
 msgid "Wizard"
 msgstr "Wisaya"

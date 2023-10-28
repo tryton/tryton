@@ -69,10 +69,9 @@ msgctxt ""
 msgid "The default credit limit amount for new customers."
 msgstr ""
 
-#, fuzzy
 msgctxt "help:account.dunning.level,credit_limit:"
 msgid "Has reached the credit limit."
-msgstr "Je odobreni limit dosežen?"
+msgstr "Kreditni limit presežen."
 
 msgctxt "model:account.configuration.default_credit_limit_amount,name:"
 msgid "Account Configuration Default Credit Limit Amount"

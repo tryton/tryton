@@ -38,8 +38,9 @@ msgctxt "field:customs.duty.rate,type:"
 msgid "Type"
 msgstr "Tüüp"
 
+#, fuzzy
 msgctxt "field:customs.duty.rate,uom:"
-msgid "Uom"
+msgid "UoM"
 msgstr "Mõõtühik"
 
 msgctxt "field:customs.tariff.code,code:"
@@ -160,6 +161,10 @@ msgstr "Tariifi koodid"
 msgctxt "field:product.template,tariff_codes_category:"
 msgid "Use Category's Tariff Codes"
 msgstr "Kasuta kategooria tariifi koode"
+
+msgctxt "help:customs.duty.rate,uom:"
+msgid "The Unit of Measure."
+msgstr ""
 
 msgctxt "help:customs.tariff.code,code:"
 msgid "The code from Harmonized System of Nomenclature."

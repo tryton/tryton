@@ -87,8 +87,8 @@ msgid "Sale Price"
 msgstr "Verkoopprijs"
 
 msgctxt "field:product.product,sale_uom:"
-msgid "Sale UOM"
-msgstr "Verkoop maateeheid"
+msgid "Sale UoM"
+msgstr "Verkoop maateenheid"
 
 msgctxt "field:product.sale.context,company:"
 msgid "Company"
@@ -131,8 +131,8 @@ msgid "Salable"
 msgstr "Verkoopbaar"
 
 msgctxt "field:product.template,sale_uom:"
-msgid "Sale UOM"
-msgstr "Verkoop maateeheid"
+msgid "Sale UoM"
+msgstr "Verkoop maateenheid"
 
 msgctxt "field:sale.configuration,sale_invoice_method:"
 msgid "Sale Invoice Method"
@@ -243,8 +243,8 @@ msgid "Product"
 msgstr "Product"
 
 msgctxt "field:sale.line,product_uom_category:"
-msgid "Product Uom Category"
-msgstr "Categorie mateneenheid"
+msgid "Product UoM Category"
+msgstr "Maateenheid categorie product"
 
 msgctxt "field:sale.line,quantity:"
 msgid "Quantity"
@@ -690,6 +690,10 @@ msgstr ""
 "De tijd tussen de bevestiging van de verkooporder en het verzenden van de producten.\n"
 "Indien leeg wordt de standaard doorlooptijd uit de configuratie gebruikt."
 
+msgctxt "help:product.product,sale_uom:"
+msgid "The default Unit of Measure for sales."
+msgstr "De standaard maateenheid voor verkopen."
+
 msgctxt "help:product.template,lead_time:"
 msgid ""
 "The time from confirming the sales order to sending the products.\n"
@@ -697,6 +701,10 @@ msgid ""
 msgstr ""
 "De tijd tussen de bevestiging van de verkooporder en het verzenden van de producten.\n"
 "Indien leeg wordt de standaard doorlooptijd uit de configuratie gebruikt."
+
+msgctxt "help:product.template,sale_uom:"
+msgid "The default Unit of Measure for sales."
+msgstr "De standaard maateenheid voor verkopen."
 
 msgctxt "help:sale.configuration,sale_process_after:"
 msgid ""
@@ -712,6 +720,10 @@ msgid ""
 msgstr ""
 "De geselecteerde facturen worden opnieuw aangemaakt. De rest wordt "
 "genegeerd."
+
+msgctxt "help:sale.line,product_uom_category:"
+msgid "The category of Unit of Measure for the product."
+msgstr "De categorie van de maateenheid van het product."
 
 msgctxt "help:sale.sale,shipping_date:"
 msgid "When the shipping of goods should start."
@@ -823,7 +835,7 @@ msgstr "Verkopen"
 
 msgctxt "model:ir.action,name:act_shipment_form"
 msgid "Shipments"
-msgstr "Leveringen"
+msgstr "Zendingen"
 
 msgctxt "model:ir.action,name:report_sale"
 msgid "Sale"
@@ -874,7 +886,7 @@ msgstr "Uitzondering"
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_sale_form_domain_processing"
 msgid "Processing"
-msgstr "Verwerking"
+msgstr "In behandeling"
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_sale_form_domain_quotation"
@@ -963,6 +975,14 @@ msgid ""
 msgstr ""
 "Om regel \"%(line)s\" te verwijderen, moet u de verkoop \"%(sale)s\" "
 "annuleren of terug zetten naar concept."
+
+msgctxt "model:ir.message,text:msg_sale_line_move_quantity"
+msgid ""
+"The sale line \"%(line)s\" is moving %(extra)s in addition to the "
+"%(quantity)s ordered."
+msgstr ""
+"De verkoopregel \"%(line)s\" verplaatst naast het bestelde aantal %(aantal)s"
+" nog %(extra)s."
 
 msgctxt "model:ir.message,text:msg_sale_line_tax_unique"
 msgid "A tax can be added only once to a sale line."
@@ -1062,6 +1082,14 @@ msgctxt "model:ir.model.button,string:sale_handle_shipment_exception_button"
 msgid "Handle Shipment Exception"
 msgstr "Afhandelen zending uitzondering"
 
+msgctxt "model:ir.model.button,string:sale_manual_invoice_button"
+msgid "Create Invoice"
+msgstr "Maak factuur"
+
+msgctxt "model:ir.model.button,string:sale_manual_shipment_button"
+msgid "Create Shipment"
+msgstr "Maak zending"
+
 msgctxt "model:ir.model.button,string:sale_modify_header_button"
 msgid "Modify Header"
 msgstr "Wijzig kop"
@@ -1149,7 +1177,7 @@ msgstr "Verkoop"
 
 msgctxt "model:ir.ui.menu,name:menu_configuration"
 msgid "Configuration"
-msgstr "Instellingen"
+msgstr "Configuratie"
 
 msgctxt "model:ir.ui.menu,name:menu_customer"
 msgid "Associated to Sales"
@@ -1493,7 +1521,7 @@ msgstr "Geen"
 
 msgctxt "selection:sale.sale,shipment_state:"
 msgid "Partially Shipped"
-msgstr "Gedeeltelijk Verzonden"
+msgstr "Gedeeltelijk verzonden"
 
 msgctxt "selection:sale.sale,shipment_state:"
 msgid "Sent"
@@ -1521,7 +1549,7 @@ msgstr "Concept"
 
 msgctxt "selection:sale.sale,state:"
 msgid "Processing"
-msgstr "Verwerking"
+msgstr "In behandeling"
 
 msgctxt "selection:sale.sale,state:"
 msgid "Quotation"
@@ -1562,70 +1590,6 @@ msgstr "Notities"
 msgctxt "view:sale.line:"
 msgid "Taxes"
 msgstr "Belastingen"
-
-msgctxt "view:sale.reporting.country.subdivision.time_series:"
-msgid "Number"
-msgstr "Nummer"
-
-msgctxt "view:sale.reporting.country.subdivision.time_series:"
-msgid "Revenue"
-msgstr "Omzet"
-
-msgctxt "view:sale.reporting.country.time_series:"
-msgid "Number"
-msgstr "Nummer"
-
-msgctxt "view:sale.reporting.country.time_series:"
-msgid "Revenue"
-msgstr "Omzet"
-
-msgctxt "view:sale.reporting.customer.category.time_series:"
-msgid "Number"
-msgstr "Nummer"
-
-msgctxt "view:sale.reporting.customer.category.time_series:"
-msgid "Revenue"
-msgstr "Omzet"
-
-msgctxt "view:sale.reporting.customer.time_series:"
-msgid "Number"
-msgstr "Nummer"
-
-msgctxt "view:sale.reporting.customer.time_series:"
-msgid "Revenue"
-msgstr "Omzet"
-
-msgctxt "view:sale.reporting.main.time_series:"
-msgid "Number"
-msgstr "Nummer"
-
-msgctxt "view:sale.reporting.main.time_series:"
-msgid "Revenue"
-msgstr "Omzet"
-
-msgctxt "view:sale.reporting.main:"
-msgid "Number"
-msgstr "Nummer"
-
-msgctxt "view:sale.reporting.main:"
-msgid "Revenue"
-msgstr "Omzet"
-
-msgctxt "view:sale.reporting.product.category.time_series:"
-msgid "Number"
-msgstr "Nummer"
-
-msgctxt "view:sale.reporting.product.category.time_series:"
-msgid "Revenue"
-msgstr "Omzet"
-
-msgctxt "view:sale.reporting.product.time_series:"
-msgid "Number"
-msgstr "Nummer"
-
-msgctxt "view:sale.reporting.product.time_series:"
-msgid "Revenue"
-msgstr "Omzet"
 
 msgctxt "view:sale.return_sale.start:"
 msgid "Are you sure to return these/this sale(s)?"

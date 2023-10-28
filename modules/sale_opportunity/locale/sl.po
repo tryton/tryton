@@ -4,11 +4,11 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "field:sale.configuration,sale_opportunity_sequence:"
 msgid "Opportunity Sequence"
-msgstr "Štetje priložnosti"
+msgstr "Številčna serija priložnosti"
 
 msgctxt "field:sale.configuration.sequence,sale_opportunity_sequence:"
 msgid "Opportunity Sequence"
-msgstr "Štetje priložnosti"
+msgstr "Številčna serija priložnosti"
 
 msgctxt "field:sale.opportunity,address:"
 msgid "Address"
@@ -73,7 +73,7 @@ msgstr "Partner"
 
 msgctxt "field:sale.opportunity,payment_term:"
 msgid "Payment Term"
-msgstr "Plačilni rok"
+msgstr "Pogoji plačila"
 
 msgctxt "field:sale.opportunity,reference:"
 msgid "Reference"
@@ -370,12 +370,12 @@ msgstr ""
 
 msgctxt "model:ir.rule.group,name:rule_group_reporting_main_companies"
 msgid "User in companies"
-msgstr ""
+msgstr "Uporabnik v družbah"
 
 msgctxt ""
 "model:ir.rule.group,name:rule_group_reporting_main_time_series_companies"
 msgid "User in companies"
-msgstr ""
+msgstr "Uporabnik v družbah"
 
 #, fuzzy
 msgctxt "model:ir.sequence,name:sequence_sale_opportunity"
@@ -485,99 +485,14 @@ msgid "Year"
 msgstr "Leto"
 
 #, fuzzy
-msgctxt "view:sale.opportunity.reporting.conversion.employee.time_series:"
-msgid "Lost"
-msgstr "Zapravljeno"
-
-#, fuzzy
-msgctxt "view:sale.opportunity.reporting.conversion.employee.time_series:"
-msgid "Won"
-msgstr "Dobljeno"
-
-#, fuzzy
-msgctxt "view:sale.opportunity.reporting.conversion.employee.time_series:"
-msgid "Won Amount"
-msgstr "Dobljeni znesek"
-
-#, fuzzy
-msgctxt "view:sale.opportunity.reporting.conversion.time_series:"
-msgid "Lost"
-msgstr "Zapravljeno"
-
-#, fuzzy
-msgctxt "view:sale.opportunity.reporting.conversion.time_series:"
-msgid "Won"
-msgstr "Dobljeno"
-
-#, fuzzy
-msgctxt "view:sale.opportunity.reporting.conversion.time_series:"
-msgid "Won Amount"
-msgstr "Dobljeni znesek"
-
-#, fuzzy
 msgctxt "view:sale.opportunity.reporting.conversion:"
 msgid "%"
 msgstr "%"
 
 #, fuzzy
-msgctxt "view:sale.opportunity.reporting.conversion:"
-msgid "Lost"
-msgstr "Zapravljeno"
-
-#, fuzzy
-msgctxt "view:sale.opportunity.reporting.conversion:"
-msgid "Won"
-msgstr "Dobljeno"
-
-#, fuzzy
-msgctxt "view:sale.opportunity.reporting.conversion:"
-msgid "Won Amount"
-msgstr "Dobljeni znesek"
-
-#, fuzzy
-msgctxt "view:sale.opportunity.reporting.main.time_series:"
-msgid "Amount"
-msgstr "Znesek"
-
-#, fuzzy
-msgctxt "view:sale.opportunity.reporting.main.time_series:"
-msgid "Converted"
-msgstr "Pretvorjeno"
-
-#, fuzzy
-msgctxt "view:sale.opportunity.reporting.main.time_series:"
-msgid "Converted Amount"
-msgstr "Pretvorjen znesek"
-
-#, fuzzy
-msgctxt "view:sale.opportunity.reporting.main.time_series:"
-msgid "Number"
-msgstr "Številka"
-
-#, fuzzy
 msgctxt "view:sale.opportunity.reporting.main:"
 msgid "%"
 msgstr "%"
-
-#, fuzzy
-msgctxt "view:sale.opportunity.reporting.main:"
-msgid "Amount"
-msgstr "Znesek"
-
-#, fuzzy
-msgctxt "view:sale.opportunity.reporting.main:"
-msgid "Converted"
-msgstr "Pretvorjeno"
-
-#, fuzzy
-msgctxt "view:sale.opportunity.reporting.main:"
-msgid "Converted Amount"
-msgstr "Pretvorjen znesek"
-
-#, fuzzy
-msgctxt "view:sale.opportunity.reporting.main:"
-msgid "Number"
-msgstr "Številka"
 
 msgctxt "view:sale.opportunity:"
 msgid "%"

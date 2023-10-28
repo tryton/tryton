@@ -1,4 +1,5 @@
 #
+#, fuzzy
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
@@ -439,7 +440,7 @@ msgctxt "model:ir.message,text:msg_sale_amount_paid_cancelled"
 msgid "The sale \"%(sale)s\" is cancelled so cannot have amount paid."
 msgstr ""
 
-msgctxt "model:ir.message,text:msg_sale_amount_to_pay_done_paid"
+msgctxt "model:ir.message,text:msg_sale_amount_to_pay_done_posted"
 msgid "The sale \"%(sale)s\" is done so cannot have an amount to pay."
 msgstr ""
 
@@ -517,7 +518,7 @@ msgstr ""
 
 msgctxt "model:ir.rule.group,name:rule_group_payment_method_companies"
 msgid "User in companies"
-msgstr ""
+msgstr "公司用户"
 
 msgctxt "model:ir.rule.group,name:rule_group_point_sale_companies"
 msgid "User in companies"

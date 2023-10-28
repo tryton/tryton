@@ -1,0 +1,188 @@
+#
+#, fuzzy
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:inbound.email,data:"
+msgid "Data"
+msgstr "Podatki"
+
+msgctxt "field:inbound.email,data_id:"
+msgid "Data ID"
+msgstr "ID podatka"
+
+msgctxt "field:inbound.email,data_type:"
+msgid "Data Type"
+msgstr "Vrsta podatka"
+
+msgctxt "field:inbound.email,inbox:"
+msgid "Inbox"
+msgstr "Prejeto"
+
+msgctxt "field:inbound.email,result:"
+msgid "Result"
+msgstr "Rezultat"
+
+msgctxt "field:inbound.email,rule:"
+msgid "Rule"
+msgstr "Pravilo"
+
+msgctxt "field:inbound.email.inbox,endpoint:"
+msgid "Endpoint"
+msgstr ""
+
+msgctxt "field:inbound.email.inbox,identifier:"
+msgid "Identifier"
+msgstr "Identifikator"
+
+msgctxt "field:inbound.email.inbox,name:"
+msgid "Name"
+msgstr "Naziv"
+
+msgctxt "field:inbound.email.inbox,rules:"
+msgid "Rules"
+msgstr "Pravila"
+
+msgctxt "field:inbound.email.rule,action:"
+msgid "Action"
+msgstr "Ukrep"
+
+msgctxt "field:inbound.email.rule,attachment_name:"
+msgid "Attachment Name"
+msgstr "Ime priloge"
+
+msgctxt "field:inbound.email.rule,destination:"
+msgid "Destination"
+msgstr "Cilj"
+
+msgctxt "field:inbound.email.rule,headers:"
+msgid "Headers"
+msgstr "Glave"
+
+msgctxt "field:inbound.email.rule,inbox:"
+msgid "Inbox"
+msgstr "Prejeto"
+
+msgctxt "field:inbound.email.rule,origin:"
+msgid "Origin"
+msgstr "Vir"
+
+msgctxt "field:inbound.email.rule,subject:"
+msgid "Subject"
+msgstr "Zadeva"
+
+msgctxt "field:inbound.email.rule.header,name:"
+msgid "Name"
+msgstr "Naziv"
+
+msgctxt "field:inbound.email.rule.header,rule:"
+msgid "Rule"
+msgstr "Pravilo"
+
+msgctxt "field:inbound.email.rule.header,value:"
+msgid "Value"
+msgstr "Vrednost"
+
+msgctxt "help:inbound.email.inbox,endpoint:"
+msgid "The URL where the emails must be posted."
+msgstr ""
+
+msgctxt "help:inbound.email.inbox,rules:"
+msgid "The action of the first matching line is run."
+msgstr "Izvede se ukrep prve ujemajoče se vrstice."
+
+msgctxt "help:inbound.email.rule,attachment_name:"
+msgid "A regular expression to match any attachment name."
+msgstr ""
+
+msgctxt "help:inbound.email.rule,destination:"
+msgid "A regular expression to match any receiver email addresses."
+msgstr ""
+
+msgctxt "help:inbound.email.rule,origin:"
+msgid "A regular expression to match the sender email address."
+msgstr ""
+
+msgctxt "help:inbound.email.rule,subject:"
+msgid "A regular expression to match the subject."
+msgstr ""
+
+msgctxt "help:inbound.email.rule.header,name:"
+msgid "The name of the header."
+msgstr "Naziv glave."
+
+msgctxt "help:inbound.email.rule.header,value:"
+msgid "A regular expression to match the header value."
+msgstr ""
+
+msgctxt "model:inbound.email,name:"
+msgid "Inbound Email"
+msgstr "Vhodna e-pošta"
+
+msgctxt "model:inbound.email.inbox,name:"
+msgid "Inbound Email Inbox"
+msgstr "Prejeta vhodna e-pošta"
+
+msgctxt "model:inbound.email.rule,name:"
+msgid "Inbound Email Rule"
+msgstr "Pravilo za vhodno e-pošto"
+
+msgctxt "model:inbound.email.rule.header,name:"
+msgid "Inbound Email Rule Header"
+msgstr "Pravilo za glavo vhodno e-pošto"
+
+msgctxt "model:ir.action,name:act_inbound_email_form_relate"
+msgid "E-mails"
+msgstr "E-pošte"
+
+msgctxt "model:ir.action,name:act_inbound_email_inbox_form"
+msgid "Inbox"
+msgstr "Prejeto"
+
+msgctxt ""
+"model:ir.model.button,confirm:inbound_email_inbox_new_identifier_button"
+msgid ""
+"This action will make the previous URL unusable. Do you want to continue?"
+msgstr ""
+
+msgctxt ""
+"model:ir.model.button,string:inbound_email_inbox_new_identifier_button"
+msgid "New URL"
+msgstr "Nov URL"
+
+msgctxt "model:ir.model.button,string:inbound_email_process_button"
+msgid "Process"
+msgstr "Obdelaj"
+
+msgctxt "model:ir.ui.menu,name:menu_inbound_email"
+msgid "Inbound Email"
+msgstr "Vhodna e-pošta"
+
+msgctxt "model:ir.ui.menu,name:menu_inbound_email_inbox_form"
+msgid "Inbox"
+msgstr "Prejeto"
+
+#, fuzzy
+msgctxt "selection:inbound.email,data_type:"
+msgid "MailPace"
+msgstr "MailPace"
+
+#, fuzzy
+msgctxt "selection:inbound.email,data_type:"
+msgid "Mailchimp"
+msgstr "Mailchimp"
+
+#, fuzzy
+msgctxt "selection:inbound.email,data_type:"
+msgid "Postmark"
+msgstr "Postmark"
+
+#, fuzzy
+msgctxt "selection:inbound.email,data_type:"
+msgid "Raw"
+msgstr "Raw"
+
+#, fuzzy
+msgctxt "selection:inbound.email,data_type:"
+msgid "SendGrid"
+msgstr "SendGrid"

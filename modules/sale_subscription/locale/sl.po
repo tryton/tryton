@@ -9,11 +9,11 @@ msgstr "Subscription Services"
 
 msgctxt "field:sale.configuration,subscription_sequence:"
 msgid "Subscription Sequence"
-msgstr "Štetje naročnin"
+msgstr "Številčna serija naročnin"
 
 msgctxt "field:sale.configuration.sequence,subscription_sequence:"
 msgid "Subscription Sequence"
-msgstr "Štetje naročnin"
+msgstr "Številčna serija naročnin"
 
 msgctxt "field:sale.subscription,company:"
 msgid "Company"

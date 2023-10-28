@@ -49,7 +49,7 @@ msgstr "Retourzendingen"
 
 msgctxt "field:account.shipment_cost,shipments:"
 msgid "Shipments"
-msgstr "Leveringen"
+msgstr "Zendingen"
 
 msgctxt "field:account.shipment_cost,state:"
 msgid "State"

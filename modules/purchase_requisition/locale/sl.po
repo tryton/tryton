@@ -4,11 +4,11 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "field:purchase.configuration,purchase_requisition_sequence:"
 msgid "Purchase Requisition Sequence"
-msgstr "Štetje naročilnic"
+msgstr "Številčna serija naročilnic"
 
 msgctxt "field:purchase.configuration.sequence,purchase_requisition_sequence:"
 msgid "Purchase Requisition Sequence"
-msgstr "Štetje naročilnic"
+msgstr "Številčna serija naročilnic"
 
 #, fuzzy
 msgctxt "field:purchase.requisition,approved_by:"
@@ -83,7 +83,7 @@ msgstr "Izdelek"
 
 #, fuzzy
 msgctxt "field:purchase.requisition.line,product_uom_category:"
-msgid "Product UOM Category"
+msgid "Product UoM Category"
 msgstr "Katerogija ME izdelka"
 
 msgctxt "field:purchase.requisition.line,purchase_requests:"
@@ -117,6 +117,10 @@ msgstr "Enota"
 msgctxt "field:purchase.requisition.line,unit_price:"
 msgid "Unit Price"
 msgstr "Cena"
+
+msgctxt "help:purchase.requisition.line,product_uom_category:"
+msgid "The category of Unit of Measure for the product."
+msgstr ""
 
 #, fuzzy
 msgctxt "model:ir.action,name:act_open_purchase_request_form"
@@ -257,7 +261,7 @@ msgstr "V pripravi"
 
 msgctxt "selection:purchase.requisition,state:"
 msgid "Processing"
-msgstr "Obdelava"
+msgstr "V obdelavi"
 
 msgctxt "selection:purchase.requisition,state:"
 msgid "Rejected"

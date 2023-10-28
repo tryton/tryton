@@ -112,6 +112,10 @@ msgctxt "field:account.invoice,has_payment_method:"
 msgid "Has Payment Method"
 msgstr "روش پرداخت"
 
+msgctxt "field:account.invoice,has_report_cache:"
+msgid "Has Report Cached"
+msgstr ""
+
 msgctxt "field:account.invoice,invoice_address:"
 msgid "Invoice Address"
 msgstr "آدرس صورتحساب"
@@ -131,6 +135,11 @@ msgstr "شناسه گزارش صورت حساب"
 msgctxt "field:account.invoice,invoice_report_format:"
 msgid "Invoice Report Format"
 msgstr "فرمت گزارش فاکتور"
+
+#, fuzzy
+msgctxt "field:account.invoice,invoice_report_revisions:"
+msgid "Invoice Report Revisions"
+msgstr "گزارش صورت حساب"
 
 msgctxt "field:account.invoice,journal:"
 msgid "Journal"
@@ -181,6 +190,11 @@ msgctxt "field:account.invoice,payment_term_date:"
 msgid "Payment Term Date"
 msgstr "نحوه پرداخت"
 
+#, fuzzy
+msgctxt "field:account.invoice,posted_by:"
+msgid "Posted By"
+msgstr "ارسال شده"
+
 msgctxt "field:account.invoice,reconciled:"
 msgid "Reconciled"
 msgstr "مغایرت گیری شده"
@@ -207,6 +221,11 @@ msgctxt "field:account.invoice,tax_amount:"
 msgid "Tax"
 msgstr "مالیات"
 
+#, fuzzy
+msgctxt "field:account.invoice,tax_amount_cache:"
+msgid "Tax Cache"
+msgstr "کد مالیات"
+
 msgctxt "field:account.invoice,tax_identifier:"
 msgid "Tax Identifier"
 msgstr "شناسه مالیاتی"
@@ -217,6 +236,11 @@ msgstr "خطوط مالیات"
 
 msgctxt "field:account.invoice,total_amount:"
 msgid "Total"
+msgstr "مجموع"
+
+#, fuzzy
+msgctxt "field:account.invoice,total_amount_cache:"
+msgid "Total Cache"
 msgstr "مجموع"
 
 msgctxt "field:account.invoice,type:"
@@ -230,6 +254,16 @@ msgstr "نوع"
 msgctxt "field:account.invoice,untaxed_amount:"
 msgid "Untaxed"
 msgstr "بدون اعمال مالیات"
+
+#, fuzzy
+msgctxt "field:account.invoice,untaxed_amount_cache:"
+msgid "Untaxed Cache"
+msgstr "بدون اعمال مالیات"
+
+#, fuzzy
+msgctxt "field:account.invoice,validated_by:"
+msgid "Validated By"
+msgstr "تایید شده"
 
 msgctxt "field:account.invoice-account.move.line,invoice:"
 msgid "Invoice"
@@ -349,8 +383,9 @@ msgctxt "field:account.invoice.line,product:"
 msgid "Product"
 msgstr "محصول"
 
+#, fuzzy
 msgctxt "field:account.invoice.line,product_uom_category:"
-msgid "Product Uom Category"
+msgid "Product UoM Category"
 msgstr "دسته بندی واحد اندازه گیری محصول"
 
 msgctxt "field:account.invoice.line,quantity:"
@@ -593,6 +628,36 @@ msgctxt "field:account.invoice.payment_term.test.result,date:"
 msgid "Date"
 msgstr "تاریخ"
 
+#, fuzzy
+msgctxt "field:account.invoice.report.revision,date:"
+msgid "Date"
+msgstr "تاریخ"
+
+#, fuzzy
+msgctxt "field:account.invoice.report.revision,filename:"
+msgid "File Name"
+msgstr "نام"
+
+#, fuzzy
+msgctxt "field:account.invoice.report.revision,invoice:"
+msgid "Invoice"
+msgstr "صورت حساب"
+
+#, fuzzy
+msgctxt "field:account.invoice.report.revision,invoice_report_cache:"
+msgid "Invoice Report"
+msgstr "گزارش صورت حساب"
+
+#, fuzzy
+msgctxt "field:account.invoice.report.revision,invoice_report_cache_id:"
+msgid "Invoice Report ID"
+msgstr "شناسه گزارش صورت حساب"
+
+#, fuzzy
+msgctxt "field:account.invoice.report.revision,invoice_report_format:"
+msgid "Invoice Report Format"
+msgstr "فرمت گزارش فاکتور"
+
 msgctxt "field:account.invoice.tax,account:"
 msgid "Account"
 msgstr "حساب"
@@ -697,6 +762,10 @@ msgctxt "help:account.invoice.credit.start,with_refund:"
 msgid "If true, the current invoice(s) will be cancelled."
 msgstr "اگر درست باشد، صورتحساب های فعلی پرداخت خواهد شد."
 
+msgctxt "help:account.invoice.line,product_uom_category:"
+msgid "The category of Unit of Measure for the product."
+msgstr ""
+
 msgctxt "help:account.invoice.line,taxes_date:"
 msgid ""
 "The date at which the taxes are computed.\n"
@@ -781,6 +850,11 @@ msgctxt "model:account.invoice.payment_term.test.result,name:"
 msgid "Test Payment Term"
 msgstr "شرایط پرداخت آزمایشی"
 
+#, fuzzy
+msgctxt "model:account.invoice.report.revision,name:"
+msgid "Invoice Report Revision"
+msgstr "گزارش صورت حساب"
+
 msgctxt "model:account.invoice.tax,name:"
 msgid "Invoice Tax"
 msgstr "مالیات صورتحساب"
@@ -823,6 +897,11 @@ msgstr "خطوط پرداخت"
 msgctxt "model:ir.action,name:credit"
 msgid "Credit"
 msgstr "بستانکاری"
+
+#, fuzzy
+msgctxt "model:ir.action,name:refresh_invoice_report_wizard"
+msgid "Invoice (revised)"
+msgstr "خط صورتحساب"
 
 msgctxt "model:ir.action,name:report_invoice"
 msgid "Invoice"
@@ -1345,6 +1424,10 @@ msgctxt "view:account.invoice.payment_term.line:"
 msgid "%"
 msgstr "%"
 
+msgctxt "view:account.invoice.report.revision:"
+msgid "Time"
+msgstr ""
+
 msgctxt "view:account.invoice:"
 msgid "Invoice"
 msgstr "صورت حساب"
@@ -1360,18 +1443,6 @@ msgstr "پرداخت"
 msgctxt "view:account.invoice:"
 msgid "Tax Identifier:"
 msgstr "شناسه مالیاتی:"
-
-msgctxt "view:account.move.line:"
-msgid "Amount Second Currency"
-msgstr "مقدار ارز دوم"
-
-msgctxt "view:account.move.line:"
-msgid "Credit"
-msgstr "بستانکاری"
-
-msgctxt "view:account.move.line:"
-msgid "Debit"
-msgstr "بدهی"
 
 #, fuzzy
 msgctxt "view:company.company:"

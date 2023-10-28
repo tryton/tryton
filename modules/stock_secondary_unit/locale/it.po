@@ -2,8 +2,9 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
+#, fuzzy
 msgctxt "field:stock.move,product_secondary_uom_category:"
-msgid "Product Secondary UOM Category"
+msgid "Product Secondary UoM Category"
 msgstr "Categoria UdM secondaria prodotto"
 
 msgctxt "field:stock.move,secondary_quantity:"
@@ -17,6 +18,10 @@ msgstr "Unità secondaria"
 msgctxt "field:stock.move,secondary_unit_price:"
 msgid "Secondary Unit Price"
 msgstr "Prezzo unitario secondario"
+
+msgctxt "help:stock.move,product_secondary_uom_category:"
+msgid "The category of secondary Unit of Measure for the product."
+msgstr ""
 
 msgctxt "view:stock.move:"
 msgid "Quantity:"

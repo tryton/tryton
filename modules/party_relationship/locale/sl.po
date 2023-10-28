@@ -8,20 +8,19 @@ msgstr "Razmerja"
 
 msgctxt "field:party.relation,active:"
 msgid "Active"
-msgstr ""
+msgstr "Aktivno"
 
 msgctxt "field:party.relation,end_date:"
 msgid "End Date"
-msgstr ""
+msgstr "Končni datum"
 
 msgctxt "field:party.relation,from_:"
 msgid "From"
 msgstr "Od"
 
-#, fuzzy
 msgctxt "field:party.relation,start_date:"
 msgid "Start Date"
-msgstr "Zapisano"
+msgstr "Začetni datum"
 
 msgctxt "field:party.relation,to:"
 msgid "To"
@@ -29,24 +28,23 @@ msgstr "Do"
 
 msgctxt "field:party.relation,type:"
 msgid "Type"
-msgstr "Tip"
+msgstr "Vrsta"
 
 msgctxt "field:party.relation.all,active:"
 msgid "Active"
-msgstr ""
+msgstr "Aktivno"
 
 msgctxt "field:party.relation.all,end_date:"
 msgid "End Date"
-msgstr ""
+msgstr "Končni datum"
 
 msgctxt "field:party.relation.all,from_:"
 msgid "From"
 msgstr "Od"
 
-#, fuzzy
 msgctxt "field:party.relation.all,start_date:"
 msgid "Start Date"
-msgstr "Zapisano"
+msgstr "Začetni datum"
 
 msgctxt "field:party.relation.all,to:"
 msgid "To"
@@ -54,7 +52,7 @@ msgstr "Do"
 
 msgctxt "field:party.relation.all,type:"
 msgid "Type"
-msgstr "Tip"
+msgstr "Vrsta"
 
 msgctxt "field:party.relation.type,name:"
 msgid "Name"
@@ -66,7 +64,7 @@ msgstr "Obratno razmerje"
 
 msgctxt "field:party.relation.type,usages:"
 msgid "Usages"
-msgstr ""
+msgstr "Uporaba"
 
 msgctxt "help:party.relation.type,name:"
 msgid "The main identifier of the relation type."
@@ -76,25 +74,21 @@ msgctxt "help:party.relation.type,reverse:"
 msgid "Create automatically the reverse relation."
 msgstr "Samodejno izdelava obratnega razmerja."
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_relation_all"
 msgid "Relations"
 msgstr "Razmerja"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_relation_type"
 msgid "Relation Types"
-msgstr "Relation Types"
+msgstr "Vrsta razmerja"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_relation_all"
 msgid "Relations"
 msgstr "Razmerja"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_relation_type"
 msgid "Relation Types"
-msgstr "Relation Types"
+msgstr "Vrsta razmerja"
 
 msgctxt "model:party.relation,name:"
 msgid "Party Relation"

@@ -2,177 +2,186 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-#, fuzzy
 msgctxt "field:ir.email,notification_email:"
 msgid "Notification Email"
-msgstr "Notification Emails"
+msgstr "E-poštna obvestila"
 
-#, fuzzy
 msgctxt "field:ir.email,notification_trigger:"
 msgid "Notification Trigger"
-msgstr "Notification Emails"
+msgstr "Prožilec obvestil"
 
 msgctxt "field:ir.trigger,notification_email:"
 msgid "Email Notification"
-msgstr ""
+msgstr "E-poštno obvestilo"
 
-#, fuzzy
 msgctxt "field:ir.trigger,notification_email_required:"
 msgid "Notification Email Required"
-msgstr "Notification Emails"
+msgstr "E-poštno obvestilo je obvezno"
 
 msgctxt "field:notification.email,attachments:"
 msgid "Attachments"
-msgstr ""
+msgstr "Priloge"
 
 msgctxt "field:notification.email,contact_mechanism:"
 msgid "Contact Mechanism"
-msgstr ""
+msgstr "Kotaktna informacija"
 
 msgctxt "field:notification.email,content:"
 msgid "Content"
-msgstr ""
+msgstr "Vsebina"
 
 msgctxt "field:notification.email,fallback_recipients:"
 msgid "Recipients Fallback User"
-msgstr ""
+msgstr "Nadomestni uporabnik prejemnikov"
 
 msgctxt "field:notification.email,fallback_recipients_hidden:"
 msgid "Hidden Recipients Fallback User"
-msgstr ""
+msgstr "Nadomestni uporabnik skritih prejemnikov"
 
 msgctxt "field:notification.email,fallback_recipients_secondary:"
 msgid "Secondary Recipients Fallback User"
-msgstr ""
+msgstr "Nadomestni uporabnik sekundarnih prejemnikov"
 
 msgctxt "field:notification.email,from_:"
 msgid "From"
-msgstr ""
+msgstr "Od"
 
 msgctxt "field:notification.email,model:"
 msgid "Model"
-msgstr ""
+msgstr "Model"
 
 msgctxt "field:notification.email,recipients:"
 msgid "Recipients"
-msgstr ""
+msgstr "Prejemniki"
 
 msgctxt "field:notification.email,recipients_hidden:"
 msgid "Hidden Recipients"
-msgstr ""
+msgstr "Skriti prejemniki"
 
 msgctxt "field:notification.email,recipients_secondary:"
 msgid "Secondary Recipients"
-msgstr ""
+msgstr "Sekundarni prejemniki"
 
 msgctxt "field:notification.email,send_after:"
 msgid "Send After"
-msgstr ""
+msgstr "Pošlji čez"
 
 msgctxt "field:notification.email,subject:"
 msgid "Subject"
-msgstr ""
+msgstr "Zadeva"
 
 msgctxt "field:notification.email,triggers:"
 msgid "Triggers"
-msgstr ""
+msgstr "Prožilci"
 
 msgctxt "field:notification.email.attachment,model:"
 msgid "Model"
-msgstr ""
+msgstr "Model"
 
 msgctxt "field:notification.email.attachment,notification:"
 msgid "Notification"
-msgstr ""
+msgstr "Obvestilo"
 
 msgctxt "field:notification.email.attachment,report:"
 msgid "Report"
-msgstr ""
+msgstr "Poročilo"
 
 msgctxt "help:notification.email,attachments:"
 msgid "The reports used as attachments."
-msgstr ""
+msgstr "Poročila uporabljena kot priloge."
 
 msgctxt "help:notification.email,contact_mechanism:"
 msgid "Define which email to use from the party's contact mechanisms"
 msgstr ""
+"V kontaktnih mehanizmih partnerja določite, kateri e-poštni naslov želite "
+"uporabiti"
 
 msgctxt "help:notification.email,content:"
 msgid "The report used as email template."
-msgstr ""
+msgstr "Poročilo uporabljeno kot e-poštna predloga."
 
 msgctxt "help:notification.email,fallback_recipients:"
 msgid "User notified when no recipients e-mail is found"
 msgstr ""
+"Uporabnik, ki naj bo obveščen, ko ni najden noben e-poštni naslov prejemnika"
 
 msgctxt "help:notification.email,fallback_recipients_hidden:"
 msgid "User notified when no hidden recipients e-mail is found"
 msgstr ""
+"Uporabnik, ki naj bo obveščen, ko ni najden e-poštni naslov skritega "
+"prejemnika"
 
 msgctxt "help:notification.email,fallback_recipients_secondary:"
 msgid "User notified when no secondary recipients e-mail is found"
 msgstr ""
+"Uporabnik, ki naj bo obveščen, ko ni najden e-poštni naslov sekundarnega "
+"prejemnika"
 
 msgctxt "help:notification.email,from_:"
 msgid "Leave empty for the value defined in the configuration file."
 msgstr ""
+"Pustite prazno za privzeto vrednost opredeljeno v konfiguracijski datoteki."
 
 msgctxt "help:notification.email,recipients:"
 msgid "The field that contains the recipient(s)."
-msgstr ""
+msgstr "Polje, ki vsebuje prejemnike."
 
 msgctxt "help:notification.email,recipients_hidden:"
 msgid "The field that contains the hidden recipient(s)."
-msgstr ""
+msgstr "Polje, ki vsebuje skrite prejemnike."
 
 msgctxt "help:notification.email,recipients_secondary:"
 msgid "The field that contains the secondary recipient(s)."
-msgstr ""
+msgstr "Polje, ki vsebuje sekundarne prejemnike."
 
 msgctxt "help:notification.email,send_after:"
 msgid ""
 "The delay after which the email must be sent.\n"
 "Applied if a worker queue is activated."
 msgstr ""
+"Zakasnitev, po izteku katere se pošlje e-pošta.\n"
+"V veljavi, če je delovna vrsta aktivna."
 
 msgctxt "help:notification.email,subject:"
 msgid ""
 "The Genshi syntax can be used with 'record' in the evaluation context.\n"
 "If empty the report name will be used."
 msgstr ""
+"Sintakso Genshi lahko uporabite z 'record' v kontekstu vrednotenja.\n"
+"Če je prazno, bo uporabljeno ime poročila."
 
 msgctxt "help:notification.email,triggers:"
 msgid "Add a trigger for the notification."
-msgstr ""
+msgstr "Dodajte prožilec za obvestilo."
 
 msgctxt "model:ir.action,name:act_email_form"
 msgid "Notification Emails"
-msgstr "Notification Emails"
+msgstr "E-poštna obvestila"
 
 msgctxt "model:ir.action,name:act_ir_email_form_relate_notification"
 msgid "E-mails"
-msgstr ""
+msgstr "E-pošte"
 
 msgctxt "model:ir.message,text:msg_notification_invalid_subject"
 msgid ""
 "Invalid e-mail subject in notification \"%(notification)s\" with exception "
 "\"%(exception)s\"."
 msgstr ""
+"Neveljavna zadeva e-pošte v obvestilu »%(notification)s«. Napaka "
+"»%(exception)s«."
 
 msgctxt "model:ir.ui.menu,name:menu_email_form"
 msgid "Notification Emails"
-msgstr "Notification Emails"
+msgstr "E-poštna obvestila"
 
-#, fuzzy
 msgctxt "model:notification.email,name:"
 msgid "Email Notification"
-msgstr "Notification Emails"
+msgstr "E-poštna obvestila"
 
 msgctxt "model:notification.email.attachment,name:"
 msgid "Email Notification Attachment"
-msgstr ""
+msgstr "Priloga e-poštnemu obvestilu"
 
-#, fuzzy
 msgctxt "selection:ir.trigger,action:"
 msgid "Email Notification"
-msgstr "Notification Emails"
+msgstr "E-poštna obvestila"

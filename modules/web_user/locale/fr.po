@@ -86,6 +86,10 @@ msgctxt "model:ir.action,name:report_email_validation"
 msgid "Email Validation"
 msgstr "E-mail de validation"
 
+msgctxt "model:ir.message,text:msg_user_email_invalid"
+msgid "The email address \"%(email)s\" for \"%(user)s\" is not valid."
+msgstr "L'adresse e-mail « %(email)s » pour « %(user)s » n'est pas valide."
+
 msgctxt "model:ir.message,text:msg_user_email_unique"
 msgid "E-mail of active web user must be unique."
 msgstr "L’E-mail d'un utilisateur web actif doit être unique."

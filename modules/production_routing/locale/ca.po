@@ -16,7 +16,7 @@ msgstr "Ruta"
 
 msgctxt "field:production.routing,boms:"
 msgid "BOMs"
-msgstr "LdMs"
+msgstr "Llistes de materials"
 
 msgctxt "field:production.routing,name:"
 msgid "Name"
@@ -28,7 +28,7 @@ msgstr "Etapes"
 
 msgctxt "field:production.routing-production.bom,bom:"
 msgid "BOM"
-msgstr "LdM"
+msgstr "Llista de materials"
 
 msgctxt "field:production.routing-production.bom,routing:"
 msgid "Routing"
@@ -68,7 +68,7 @@ msgstr "Ruta"
 
 msgctxt "model:production.routing-production.bom,name:"
 msgid "Routing - BOM"
-msgstr "Ruta - LdM"
+msgstr "Ruta - LLista de Materials"
 
 msgctxt "model:production.routing.operation,name:"
 msgid "Operation"

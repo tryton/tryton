@@ -319,10 +319,9 @@ msgctxt "model:ir.action,name:act_statement_form"
 msgid "Statements"
 msgstr "Aruanded"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_statement_journal_form"
-msgid "Journals"
-msgstr "Andmik"
+msgid "Statement Journals"
+msgstr "Aruande andmikud"
 
 msgctxt "model:ir.action,name:act_statement_line_move"
 msgid "Statement Lines"
@@ -476,10 +475,9 @@ msgctxt "model:ir.ui.menu,name:menu_statement_import"
 msgid "Import Statement"
 msgstr "Impordi aruanded"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_statement_journal_form"
-msgid "Journals"
-msgstr "Andmik"
+msgid "Statement Journals"
+msgstr "Aruande andmik"
 
 msgctxt "model:ir.ui.menu,name:menu_statements"
 msgid "Statements"
@@ -570,14 +568,6 @@ msgstr "Saldo"
 msgctxt "selection:account.statement.journal,validation:"
 msgid "Number of Lines"
 msgstr "Ridade arv"
-
-msgctxt "view:account.statement.line:"
-msgid "Amount"
-msgstr "Summa"
-
-msgctxt "view:account.statement.origin:"
-msgid "Amount"
-msgstr "Summa"
 
 msgctxt "view:account.statement:"
 msgid "Other Info"

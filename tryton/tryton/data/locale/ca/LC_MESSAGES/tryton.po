@@ -148,6 +148,10 @@ msgstr "<i>Cerca...</i>"
 msgid "<i>Create...</i>"
 msgstr "<i>Crea...</i>"
 
+#, python-format
+msgid "Create \"%s\"..."
+msgstr "Crea \"%s\"..."
+
 msgid "Value"
 msgstr "Valor"
 
@@ -294,6 +298,9 @@ msgstr "Desa l'estat de l'arbre"
 
 msgid "Spell Checking"
 msgstr "Correcció ortogràfica"
+
+msgid "Play Sound for Code Scanner"
+msgstr "Activa el so del escàner de codis"
 
 msgid "PDA Mode"
 msgstr "Mode PDA"
@@ -449,6 +456,15 @@ msgstr "Mou al final"
 msgid "Move to parent"
 msgstr "Mou al pare"
 
+msgid "Edition"
+msgstr "Edita"
+
+msgid "Copy selected rows"
+msgstr "Copia les files seleccionades"
+
+msgid "Insert copied rows"
+msgstr "Inserta les files copiades"
+
 msgid "Select all"
 msgstr "Selecciona tot"
 
@@ -494,6 +510,12 @@ msgstr "Sergi Almacellas Abellana"
 #, python-format
 msgid "Attachments (%s)"
 msgstr "Adjunts (%s)"
+
+msgid "Code Scanner"
+msgstr "Escàner de codis"
+
+msgid "Code"
+msgstr "Codi"
 
 msgid "Profile Editor"
 msgstr "Editor de perfils"
@@ -919,14 +941,23 @@ msgstr "Enllaç"
 msgid "Delete"
 msgstr "Elimina"
 
-msgid "New"
-msgstr "Nou"
+msgid "Discard changes"
+msgstr "Descartar els canvis"
 
-msgid "Switch"
-msgstr "Canvia la vista"
+msgid "Save and New"
+msgstr "Guarda i nou"
+
+msgid "Add and New"
+msgstr "Afegeix i nou"
 
 msgid "Add"
 msgstr "Afegeix"
+
+msgid "Apply changes"
+msgstr "Aplica canvis"
+
+msgid "Switch"
+msgstr "Canvia la vista"
 
 msgid "Remove <Del>"
 msgstr "Elimina <Supr>"
@@ -963,8 +994,8 @@ msgid "Detection failed"
 msgstr "Ha fallat la detecció"
 
 #, python-format
-msgid "Error processing the file at field %s."
-msgstr "S'ha produït un error en processar el fitxer en el camp %s."
+msgid "Unknown column header \"%s\""
+msgstr "Capçalera de columan desconeguda: \"%s\""
 
 msgid "Error"
 msgstr "Error"
@@ -982,6 +1013,9 @@ msgstr "S'han importat %d registres."
 
 msgid "Search"
 msgstr "Cerca"
+
+msgid "New"
+msgstr "Nou"
 
 #, python-format
 msgid "Search %s"
@@ -1025,6 +1059,9 @@ msgstr "Prevalidació"
 
 msgid ":"
 msgstr ":"
+
+msgid "Scan"
+msgstr "Escaneja"
 
 msgid "Image Size"
 msgstr "Mida de la imatge"

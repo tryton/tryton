@@ -124,11 +124,11 @@ msgstr "Progression total estimée pour ce travail et ses sous-travaux."
 
 msgctxt "help:project.work.status,count:"
 msgid "Check to show the number of works in this status."
-msgstr "Cocher pour montrer le nombre de travaux dans ce statut."
+msgstr "Cochez pour montrer le nombre de travaux dans ce statut."
 
 msgctxt "help:project.work.status,default:"
 msgid "Check to use as default status for the type."
-msgstr "Cocher pour utiliser comme status par défaut pour ce type."
+msgstr "Cochez pour utiliser comme statut par défaut pour le type."
 
 msgctxt "help:project.work.status,progress:"
 msgid "The minimum progress required for this status."
@@ -252,11 +252,11 @@ msgstr "Statut de travail"
 
 msgctxt "model:project.work.status,name:work_done_status"
 msgid "Done"
-msgstr "Terminés"
+msgstr "Terminé"
 
 msgctxt "model:project.work.status,name:work_open_status"
 msgid "Open"
-msgstr "Ouverts"
+msgstr "Ouvert"
 
 msgctxt "model:res.group,name:group_project_admin"
 msgid "Project Administration"

@@ -4,11 +4,11 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "field:account.account.type,fixed_asset:"
 msgid "Fixed Asset"
-msgstr ""
+msgstr "Osnovna sredstva"
 
 msgctxt "field:account.account.type.template,fixed_asset:"
 msgid "Fixed Asset"
-msgstr ""
+msgstr "Osnovna sredstva"
 
 msgctxt "field:account.asset,account_journal:"
 msgid "Journal"
@@ -22,24 +22,21 @@ msgctxt "field:account.asset,company:"
 msgid "Company"
 msgstr "Družba"
 
-#, fuzzy
 msgctxt "field:account.asset,currency:"
 msgid "Currency"
-msgstr "Decimalke"
+msgstr "Valuta"
 
 msgctxt "field:account.asset,customer_invoice_line:"
 msgid "Customer Invoice Line"
 msgstr "Postavka računa kupca"
 
-#, fuzzy
 msgctxt "field:account.asset,depreciated_amount:"
 msgid "Depreciated Amount"
 msgstr "Amortizacijski konto"
 
-#, fuzzy
 msgctxt "field:account.asset,depreciating_value:"
 msgid "Depreciating Value"
-msgstr "Depreciation Table"
+msgstr "Amortizljiva vrednost"
 
 msgctxt "field:account.asset,depreciation_method:"
 msgid "Depreciation Method"
@@ -83,7 +80,7 @@ msgstr "Preostala vrednost"
 
 msgctxt "field:account.asset,revisions:"
 msgid "Revisions"
-msgstr ""
+msgstr "Popravki"
 
 msgctxt "field:account.asset,start_date:"
 msgid "Start Date"
@@ -137,10 +134,9 @@ msgctxt "field:account.asset.line,asset:"
 msgid "Asset"
 msgstr "Sredstvo"
 
-#, fuzzy
 msgctxt "field:account.asset.line,currency:"
 msgid "Currency"
-msgstr "Decimalke"
+msgstr "Valuta"
 
 msgctxt "field:account.asset.line,date:"
 msgid "Date"
@@ -166,36 +162,30 @@ msgctxt "field:account.asset.print_depreciation_table.start,start_date:"
 msgid "Start Date"
 msgstr "Začetni datum"
 
-#, fuzzy
 msgctxt "field:account.asset.revision,asset:"
 msgid "Asset"
 msgstr "Sredstvo"
 
-#, fuzzy
 msgctxt "field:account.asset.revision,currency:"
 msgid "Currency"
-msgstr "Decimalke"
+msgstr "Valuta"
 
-#, fuzzy
 msgctxt "field:account.asset.revision,description:"
 msgid "Description"
-msgstr "Amortizacija"
+msgstr "Opis"
 
-#, fuzzy
 msgctxt "field:account.asset.revision,end_date:"
 msgid "End Date"
-msgstr "Datum amortizacije"
+msgstr "Končni datum"
 
 msgctxt "field:account.asset.revision,origin:"
 msgid "Origin"
-msgstr ""
+msgstr "Izvor"
 
-#, fuzzy
 msgctxt "field:account.asset.revision,residual_value:"
 msgid "Residual Value"
 msgstr "Preostala vrednost"
 
-#, fuzzy
 msgctxt "field:account.asset.revision,value:"
 msgid "Asset Value"
 msgstr "Vrednost sredstva"
@@ -226,47 +216,43 @@ msgstr "Datum naslednje amortizacije"
 
 msgctxt "field:account.configuration,asset_bymonth:"
 msgid "Month"
-msgstr ""
+msgstr "Mesec"
 
 msgctxt "field:account.configuration,asset_bymonthday:"
 msgid "Day of the Month"
-msgstr ""
+msgstr "Dan meseca"
 
-#, fuzzy
 msgctxt "field:account.configuration,asset_frequency:"
 msgid "Asset Depreciation Frequency"
-msgstr "Amortizacijska tabela sredstev - Začetek"
+msgstr "Rednost amortizacije sredstva"
 
 msgctxt "field:account.configuration,asset_sequence:"
 msgid "Asset Reference Sequence"
-msgstr "Štetje sredstev"
+msgstr "Številčna serija sredstev"
 
 msgctxt "field:account.configuration.asset_date,asset_bymonth:"
 msgid "Month"
-msgstr ""
+msgstr "Mesec"
 
 msgctxt "field:account.configuration.asset_date,asset_bymonthday:"
 msgid "Day of the Month"
-msgstr ""
+msgstr "Dan meseca"
 
-#, fuzzy
 msgctxt "field:account.configuration.asset_date,company:"
 msgid "Company"
 msgstr "Družba"
 
-#, fuzzy
 msgctxt "field:account.configuration.asset_frequency,asset_frequency:"
 msgid "Asset Depreciation Frequency"
-msgstr "Amortizacijska tabela sredstev - Začetek"
+msgstr "Rednost amortizacije sredstva"
 
-#, fuzzy
 msgctxt "field:account.configuration.asset_frequency,company:"
 msgid "Company"
 msgstr "Družba"
 
 msgctxt "field:account.configuration.asset_sequence,asset_sequence:"
 msgid "Asset Reference Sequence"
-msgstr "Štetje sredstev"
+msgstr "Številčna serija sredstev"
 
 msgctxt "field:account.configuration.asset_sequence,company:"
 msgid "Company"
@@ -314,15 +300,15 @@ msgstr "Trajanje amortizacije"
 
 msgctxt "help:account.asset,depreciated_amount:"
 msgid "The amount already depreciated at the start date."
-msgstr ""
+msgstr "Amortizirana vrednost na začetni datum."
 
 msgctxt "help:account.asset,depreciating_value:"
 msgid "The value of the asset at the start date."
-msgstr ""
+msgstr "Vrednost sredstva na začetni datum."
 
 msgctxt "help:account.asset,value:"
 msgid "The value of the asset when purchased."
-msgstr ""
+msgstr "Vrednost sredstva ob pridobitvi."
 
 msgctxt "help:account.asset.update.show_depreciation,date:"
 msgid ""
@@ -342,7 +328,7 @@ msgstr ""
 
 msgctxt "help:account.configuration,asset_frequency:"
 msgid "The default depreciation frequency for new assets."
-msgstr ""
+msgstr "Privzeta rednost amortizacije novih sredstev."
 
 msgctxt "help:account.configuration.asset_date,asset_bymonth:"
 msgid "The month to create the depreciation moves."
@@ -396,16 +382,16 @@ msgstr "Prikaz amortizacije pri popravku sredstev"
 #, fuzzy
 msgctxt "model:account.configuration.asset_date,name:"
 msgid "Account Configuration Asset Date"
-msgstr "Konfiguracija štetja sredstev"
+msgstr "Konfiguracija številčne serije sredstev"
 
 #, fuzzy
 msgctxt "model:account.configuration.asset_frequency,name:"
 msgid "Account Configuration Asset Frequency"
-msgstr "Konfiguracija štetja sredstev"
+msgstr "Konfiguracija številčne serije sredstev"
 
 msgctxt "model:account.configuration.asset_sequence,name:"
 msgid "Account Configuration Asset Sequence"
-msgstr "Konfiguracija štetja sredstev"
+msgstr "Konfiguracija številčne serije sredstev"
 
 #, fuzzy
 msgctxt "model:account.journal,name:journal_asset"
@@ -795,7 +781,7 @@ msgstr "Amortizacijski konto"
 
 msgctxt "view:account.configuration:"
 msgid "Sequence"
-msgstr "Štetje"
+msgstr "Številčna serija"
 
 msgctxt "view:product.template:"
 msgid "Depreciation"

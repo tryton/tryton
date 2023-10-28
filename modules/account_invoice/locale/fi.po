@@ -111,6 +111,10 @@ msgctxt "field:account.invoice,has_payment_method:"
 msgid "Has Payment Method"
 msgstr "Test Payment Term"
 
+msgctxt "field:account.invoice,has_report_cache:"
+msgid "Has Report Cached"
+msgstr ""
+
 msgctxt "field:account.invoice,invoice_address:"
 msgid "Invoice Address"
 msgstr ""
@@ -130,6 +134,11 @@ msgstr ""
 msgctxt "field:account.invoice,invoice_report_format:"
 msgid "Invoice Report Format"
 msgstr ""
+
+#, fuzzy
+msgctxt "field:account.invoice,invoice_report_revisions:"
+msgid "Invoice Report Revisions"
+msgstr "Invoice"
 
 msgctxt "field:account.invoice,journal:"
 msgid "Journal"
@@ -181,6 +190,11 @@ msgctxt "field:account.invoice,payment_term_date:"
 msgid "Payment Term Date"
 msgstr "Payment Terms"
 
+#, fuzzy
+msgctxt "field:account.invoice,posted_by:"
+msgid "Posted By"
+msgstr "Posted"
+
 msgctxt "field:account.invoice,reconciled:"
 msgid "Reconciled"
 msgstr ""
@@ -205,6 +219,10 @@ msgctxt "field:account.invoice,tax_amount:"
 msgid "Tax"
 msgstr ""
 
+msgctxt "field:account.invoice,tax_amount_cache:"
+msgid "Tax Cache"
+msgstr ""
+
 msgctxt "field:account.invoice,tax_identifier:"
 msgid "Tax Identifier"
 msgstr ""
@@ -215,6 +233,10 @@ msgstr ""
 
 msgctxt "field:account.invoice,total_amount:"
 msgid "Total"
+msgstr ""
+
+msgctxt "field:account.invoice,total_amount_cache:"
+msgid "Total Cache"
 msgstr ""
 
 msgctxt "field:account.invoice,type:"
@@ -228,6 +250,15 @@ msgstr ""
 msgctxt "field:account.invoice,untaxed_amount:"
 msgid "Untaxed"
 msgstr ""
+
+msgctxt "field:account.invoice,untaxed_amount_cache:"
+msgid "Untaxed Cache"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:account.invoice,validated_by:"
+msgid "Validated By"
+msgstr "Validated"
 
 #, fuzzy
 msgctxt "field:account.invoice-account.move.line,invoice:"
@@ -348,7 +379,7 @@ msgid "Product"
 msgstr ""
 
 msgctxt "field:account.invoice.line,product_uom_category:"
-msgid "Product Uom Category"
+msgid "Product UoM Category"
 msgstr ""
 
 msgctxt "field:account.invoice.line,quantity:"
@@ -590,6 +621,34 @@ msgctxt "field:account.invoice.payment_term.test.result,date:"
 msgid "Date"
 msgstr ""
 
+msgctxt "field:account.invoice.report.revision,date:"
+msgid "Date"
+msgstr ""
+
+msgctxt "field:account.invoice.report.revision,filename:"
+msgid "File Name"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:account.invoice.report.revision,invoice:"
+msgid "Invoice"
+msgstr "Invoice"
+
+#, fuzzy
+msgctxt "field:account.invoice.report.revision,invoice_report_cache:"
+msgid "Invoice Report"
+msgstr "Invoice"
+
+#, fuzzy
+msgctxt "field:account.invoice.report.revision,invoice_report_cache_id:"
+msgid "Invoice Report ID"
+msgstr "Invoice"
+
+#, fuzzy
+msgctxt "field:account.invoice.report.revision,invoice_report_format:"
+msgid "Invoice Report Format"
+msgstr "Invoice"
+
 msgctxt "field:account.invoice.tax,account:"
 msgid "Account"
 msgstr ""
@@ -697,6 +756,10 @@ msgctxt "help:account.invoice.credit.start,with_refund:"
 msgid "If true, the current invoice(s) will be cancelled."
 msgstr ""
 
+msgctxt "help:account.invoice.line,product_uom_category:"
+msgid "The category of Unit of Measure for the product."
+msgstr ""
+
 msgctxt "help:account.invoice.line,taxes_date:"
 msgid ""
 "The date at which the taxes are computed.\n"
@@ -785,6 +848,11 @@ msgctxt "model:account.invoice.payment_term.test.result,name:"
 msgid "Test Payment Term"
 msgstr "Test Payment Term"
 
+#, fuzzy
+msgctxt "model:account.invoice.report.revision,name:"
+msgid "Invoice Report Revision"
+msgstr "Invoice"
+
 msgctxt "model:account.invoice.tax,name:"
 msgid "Invoice Tax"
 msgstr ""
@@ -825,6 +893,11 @@ msgstr ""
 msgctxt "model:ir.action,name:credit"
 msgid "Credit"
 msgstr "Credit"
+
+#, fuzzy
+msgctxt "model:ir.action,name:refresh_invoice_report_wizard"
+msgid "Invoice (revised)"
+msgstr "Invoices"
 
 msgctxt "model:ir.action,name:report_invoice"
 msgid "Invoice"
@@ -1317,6 +1390,10 @@ msgctxt "view:account.invoice.payment_term.line:"
 msgid "%"
 msgstr "%"
 
+msgctxt "view:account.invoice.report.revision:"
+msgid "Time"
+msgstr ""
+
 #, fuzzy
 msgctxt "view:account.invoice:"
 msgid "Invoice"
@@ -1332,19 +1409,6 @@ msgstr ""
 
 msgctxt "view:account.invoice:"
 msgid "Tax Identifier:"
-msgstr ""
-
-msgctxt "view:account.move.line:"
-msgid "Amount Second Currency"
-msgstr ""
-
-#, fuzzy
-msgctxt "view:account.move.line:"
-msgid "Credit"
-msgstr "Credit"
-
-msgctxt "view:account.move.line:"
-msgid "Debit"
 msgstr ""
 
 #, fuzzy

@@ -58,7 +58,6 @@ msgctxt "field:ir.export-write-res.group,group:"
 msgid "Group"
 msgstr "组"
 
-#, fuzzy
 msgctxt "field:ir.model.button,groups:"
 msgid "Groups"
 msgstr "用户组"
@@ -79,7 +78,6 @@ msgctxt "field:ir.model.button.rule,group:"
 msgid "Group"
 msgstr "组"
 
-#, fuzzy
 msgctxt "field:ir.rule.group,groups:"
 msgid "Groups"
 msgstr "用户组"
@@ -104,7 +102,6 @@ msgctxt "field:ir.sequence.type-res.group,sequence_type:"
 msgid "Sequence Type"
 msgstr "序列类型"
 
-#, fuzzy
 msgctxt "field:ir.ui.menu,groups:"
 msgid "Groups"
 msgstr "用户组"
@@ -139,7 +136,7 @@ msgstr "名称"
 
 msgctxt "field:res.group,parent:"
 msgid "Parent"
-msgstr ""
+msgstr "上级组"
 
 msgctxt "field:res.group,rule_groups:"
 msgid "Rules"
@@ -159,7 +156,7 @@ msgstr "应用"
 
 msgctxt "field:res.user,avatar_badge_url:"
 msgid "Avatar Badge URL"
-msgstr ""
+msgstr "头像徽章URL"
 
 msgctxt "field:res.user,email:"
 msgid "Email"
@@ -259,16 +256,15 @@ msgstr "用户"
 
 msgctxt "field:res.user.device,cookie:"
 msgid "Cookie"
-msgstr ""
+msgstr "Cookie"
 
-#, fuzzy
 msgctxt "field:res.user.device,login:"
 msgid "Login"
 msgstr "登录"
 
 msgctxt "field:res.user.login.attempt,device_cookie:"
 msgid "Device Cookie"
-msgstr ""
+msgstr "设备 Cookie"
 
 msgctxt "field:res.user.login.attempt,ip_address:"
 msgid "IP Address"
@@ -308,7 +304,7 @@ msgstr "允许编辑此类型序列的用户组."
 
 msgctxt "help:res.group,parent:"
 msgid "The group to inherit accesses from."
-msgstr ""
+msgstr "从中继承访问权限的用户组。"
 
 msgctxt "help:res.user,actions:"
 msgid "Actions that will be run at login."
@@ -342,6 +338,10 @@ msgctxt "model:ir.export-write-res.group,name:"
 msgid "Export Modification Group"
 msgstr "导出功能调整组"
 
+msgctxt "model:ir.message,text:msg_email_invalid"
+msgid "The email address \"%(email)s\" for \"%(user)s\" is not valid."
+msgstr "对于用户 \"%(user)s\" 来说，电子邮件地址 \"%(email)s\" 无效。"
+
 msgctxt "model:ir.message,text:msg_password_email"
 msgid "The password cannot be the same as user's email address."
 msgstr "密码不能与用户的电子邮件地址相同."
@@ -352,7 +352,7 @@ msgstr "密码已被禁止."
 
 msgctxt "model:ir.message,text:msg_password_length"
 msgid "The password must have at least %(length)i characters."
-msgstr ""
+msgstr "密码必须至少 %(length)i 个字符。"
 
 msgctxt "model:ir.message,text:msg_password_login"
 msgid "The password cannot be the same as user's login."
@@ -396,30 +396,6 @@ msgctxt "model:ir.rule.group,name:rule_group_action"
 msgid "User in groups"
 msgstr "组中的用户"
 
-msgctxt "model:ir.rule.group,name:rule_group_export_any"
-msgid "Any export"
-msgstr "任意导出"
-
-msgctxt "model:ir.rule.group,name:rule_group_export_line_any"
-msgid "Any export"
-msgstr "任意导出"
-
-msgctxt "model:ir.rule.group,name:rule_group_export_line_read"
-msgid "User in groups"
-msgstr "组用户"
-
-msgctxt "model:ir.rule.group,name:rule_group_export_line_write"
-msgid "User in modification groups"
-msgstr "修改组中的用户"
-
-msgctxt "model:ir.rule.group,name:rule_group_export_read"
-msgid "User in groups"
-msgstr "用户组"
-
-msgctxt "model:ir.rule.group,name:rule_group_export_write"
-msgid "User in modification groups"
-msgstr "修改组中的用户"
-
 msgctxt "model:ir.rule.group,name:rule_group_menu"
 msgid "User in groups"
 msgstr "组中的用户"
@@ -432,18 +408,6 @@ msgctxt "model:ir.rule.group,name:rule_group_sequence_strict"
 msgid "User in groups"
 msgstr "组中的用户"
 
-msgctxt "model:ir.rule.group,name:rule_group_session"
-msgid "Own session"
-msgstr "自己的会话"
-
-msgctxt "model:ir.rule.group,name:rule_group_session_wizard"
-msgid "Own session"
-msgstr "自己的会话"
-
-msgctxt "model:ir.rule.group,name:rule_group_ui_menu_favorite"
-msgid "Own favorite"
-msgstr "自己的爱好"
-
 msgctxt "model:ir.rule.group,name:rule_group_user_application"
 msgid "Own user application"
 msgstr "自己的用户应用程序"
@@ -455,18 +419,6 @@ msgstr "任意的用户应用程序"
 msgctxt "model:ir.rule.group,name:rule_group_user_warning"
 msgid "Own warning"
 msgstr "自己的警告"
-
-msgctxt "model:ir.rule.group,name:rule_group_view_search"
-msgid "Own view search"
-msgstr "自己的视图搜索"
-
-msgctxt "model:ir.rule.group,name:rule_group_view_search_admin"
-msgid "Any view search"
-msgstr "任意的视图搜索"
-
-msgctxt "model:ir.rule.group,name:rule_group_view_search_common"
-msgid "Common view search"
-msgstr "公共的视图搜索"
 
 msgctxt "model:ir.rule.group-res.group,name:"
 msgid "Rule Group - Group"
@@ -522,7 +474,7 @@ msgstr "用户初始化配置"
 
 msgctxt "model:res.user.device,name:"
 msgid "User Device"
-msgstr ""
+msgstr "用户设备"
 
 msgctxt "model:res.user.login.attempt,name:"
 msgid "Login Attempt"
@@ -536,7 +488,6 @@ msgctxt "report:res.user.email_reset_password:"
 msgid "Reset Password"
 msgstr "重置密码"
 
-#, fuzzy
 msgctxt "report:res.user.email_reset_password:"
 msgid ""
 "The password for your account, [1:%(login)s], has been reset.[2:]\n"
@@ -551,10 +502,9 @@ msgstr ""
 "                [6:tryton://%(host)s/%(database)s][7:]\n"
 "                [8:%(host)s/#%(database)s]"
 
-#, fuzzy
 msgctxt "report:res.user.email_reset_password:"
 msgid "The password will expire in [1:%(datetime)s]."
-msgstr "密码将在 [1:%(datetime)s UTC] 过期."
+msgstr "密码将在 [1:%(datetime)s ] 过期."
 
 msgctxt "selection:res.user.application,state:"
 msgid "Cancelled"

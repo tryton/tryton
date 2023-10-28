@@ -1,0 +1,32 @@
+#
+#, fuzzy
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:document.incoming.ocr.service,typless_api_key:"
+msgid "API Key"
+msgstr "API sleutel"
+
+msgctxt "field:document.incoming.ocr.service,typless_document_type:"
+msgid "Document Type"
+msgstr "Soort document"
+
+msgctxt "help:document.incoming.ocr.service,typless_api_key:"
+msgid "The standard token from Typless settings page."
+msgstr "De standaard token van de Typless configuratie pagina."
+
+msgctxt "help:document.incoming.ocr.service,typless_document_type:"
+msgid "The name of the document type on Typless."
+msgstr "De naam van het soort document op Typless."
+
+msgctxt "model:ir.message,text:msg_typless_webserver_error"
+msgid ""
+"Typless webservice call failed with the following error message:\n"
+"%(message)s"
+msgstr ""
+"Aanroepen van de Typless webservice is mislukt met de volgende foutmelding:\n"
+"%(message)s"
+
+msgctxt "selection:document.incoming.ocr.service,type:"
+msgid "Typless"
+msgstr "Typless"

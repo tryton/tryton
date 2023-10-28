@@ -10,17 +10,22 @@ msgctxt "field:production.split.start,quantity:"
 msgid "Quantity"
 msgstr "Miktar"
 
-msgctxt "field:production.split.start,uom:"
-msgid "Uom"
-msgstr "Ölçü Birimi"
+msgctxt "field:production.split.start,unit:"
+msgid "Unit"
+msgstr ""
 
+#, fuzzy
 msgctxt "field:production.split.start,uom_category:"
-msgid "Uom Category"
+msgid "UoM Category"
 msgstr "Ölçü Birimi Kategorisi"
 
 msgctxt "help:production.split.start,count:"
 msgid "The limit number of productions"
 msgstr "Üretimler sayısı limiti"
+
+msgctxt "help:production.split.start,uom_category:"
+msgid "The category of Unit of Measure."
+msgstr ""
 
 #, fuzzy
 msgctxt "model:ir.action,name:wizard_split_production"

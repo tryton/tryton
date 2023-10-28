@@ -1,0 +1,69 @@
+#
+#, fuzzy
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:document.incoming,ocr_service:"
+msgid "OCR Service"
+msgstr "Storitev OCR"
+
+msgctxt "field:document.incoming.ocr.service,company:"
+msgid "Company"
+msgstr "Družba"
+
+msgctxt "field:document.incoming.ocr.service,document_type:"
+msgid "Type"
+msgstr "Vrsta"
+
+msgctxt "field:document.incoming.ocr.service,source:"
+msgid "Source"
+msgstr "Izvor"
+
+msgctxt "field:document.incoming.ocr.service,type:"
+msgid "Type"
+msgstr "Vrsta"
+
+msgctxt "help:document.incoming.ocr.service,company:"
+msgid ""
+"The company for which the service is used.\n"
+"Leave empty for any company."
+msgstr ""
+"Družba, ki uporablja storitev.\n"
+"Pustite prazno za vse družbe."
+
+msgctxt "help:document.incoming.ocr.service,document_type:"
+msgid ""
+"The document type to match.\n"
+"Leave empty for any type."
+msgstr ""
+
+msgctxt "help:document.incoming.ocr.service,source:"
+msgid ""
+"The regular expression to match the document source.\n"
+"Leave empty to allow any source."
+msgstr ""
+
+msgctxt "model:document.incoming.ocr.service,name:"
+msgid "Incoming Document OCR Service"
+msgstr "Storitev OCR vhodnih dokumentov"
+
+msgctxt "model:ir.action,name:act_document_incoming_ocr_service_form"
+msgid "OCR Services"
+msgstr "Storitve OCR"
+
+msgctxt "model:ir.model.button,string:document_incoming_proceed_button"
+msgid "Send Feedback"
+msgstr "Pošlji povratno informacijo"
+
+msgctxt ""
+"model:ir.rule.group,name:rule_group_document_incoming_ocr_service_companies"
+msgid "User in companies"
+msgstr "Uporabnik v družbah"
+
+msgctxt "model:ir.ui.menu,name:menu_document_incoming_ocr_service_form"
+msgid "OCR Services"
+msgstr "Storitve OCR"
+
+msgctxt "view:document.incoming.ocr.service:"
+msgid "Criteria"
+msgstr "Kriterij"

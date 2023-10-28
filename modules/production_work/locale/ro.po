@@ -22,6 +22,11 @@ msgctxt "field:production.work,company:"
 msgid "Company"
 msgstr "Companie"
 
+#, fuzzy
+msgctxt "field:production.work,cost:"
+msgid "Cost"
+msgstr "Cost"
+
 msgctxt "field:production.work,cycles:"
 msgid "Cycles"
 msgstr ""
@@ -86,13 +91,30 @@ msgctxt "field:production.work.center.category,name:"
 msgid "Name"
 msgstr "Denumire"
 
+msgctxt "field:production.work.cycle,cancelled_by:"
+msgid "Cancelled By"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:production.work.cycle,company:"
+msgid "Company"
+msgstr "Companie"
+
 msgctxt "field:production.work.cycle,cost:"
 msgid "Cost"
 msgstr "Cost"
 
+msgctxt "field:production.work.cycle,done_by:"
+msgid "Done By"
+msgstr ""
+
 msgctxt "field:production.work.cycle,duration:"
 msgid "Duration"
 msgstr "Durata"
+
+msgctxt "field:production.work.cycle,run_by:"
+msgid "Run By"
+msgstr ""
 
 msgctxt "field:production.work.cycle,state:"
 msgid "State"
@@ -116,11 +138,11 @@ msgstr ""
 
 msgctxt "model:ir.action,name:act_work_list"
 msgid "Works"
-msgstr ""
+msgstr "Manopera"
 
 msgctxt "model:ir.action.act_window.domain,name:act_work_list_domain_all"
 msgid "All"
-msgstr ""
+msgstr "Toate"
 
 msgctxt "model:ir.action.act_window.domain,name:act_work_list_domain_draft"
 msgid "Draft"

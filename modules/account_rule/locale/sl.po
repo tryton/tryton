@@ -1,79 +1,80 @@
 #
+#, fuzzy
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "field:account.account.rule,account:"
 msgid "Substitution Account"
-msgstr ""
+msgstr "Nadomestni konto"
 
 msgctxt "field:account.account.rule,company:"
 msgid "Company"
-msgstr ""
+msgstr "Družba"
 
 msgctxt "field:account.account.rule,end_date:"
 msgid "Ending Date"
-msgstr ""
+msgstr "Končni datum"
 
 msgctxt "field:account.account.rule,origin_account:"
 msgid "Original Account"
-msgstr ""
+msgstr "Izvorni konto"
 
 msgctxt "field:account.account.rule,return_:"
 msgid "Return"
-msgstr ""
+msgstr "Vračilo"
 
 msgctxt "field:account.account.rule,start_date:"
 msgid "Starting Date"
-msgstr ""
+msgstr "Začetni datum"
 
 msgctxt "field:account.account.rule,tax:"
 msgid "Tax"
-msgstr ""
+msgstr "Davek"
 
 msgctxt "field:account.account.rule,type:"
 msgid "Type"
-msgstr ""
+msgstr "Vrsta"
 
 msgctxt "field:account.account.rule,warehouse:"
 msgid "Warehouse"
-msgstr ""
+msgstr "Skladišče"
 
 msgctxt "help:account.account.rule,return_:"
 msgid "Check to limit to return operation."
-msgstr ""
+msgstr "Izberite, da pravilo konta omejite na izvajanje vračil."
 
 msgctxt "model:account.account.rule,name:"
 msgid "Account Rule"
-msgstr ""
+msgstr "Pravilo konta"
 
 msgctxt "model:ir.action,name:act_account_rule_form"
 msgid "Account Rules"
-msgstr ""
+msgstr "Pravila konta"
 
 msgctxt "model:ir.rule.group,name:rule_group_account_rule_companies"
 msgid "User in companies"
-msgstr ""
+msgstr "Uporabniki v družbah"
 
 msgctxt "model:ir.ui.menu,name:menu_account_rule_form"
 msgid "Account Rules"
-msgstr ""
+msgstr "Pravila konta"
 
 msgctxt "selection:account.account.rule,type:"
 msgid "Expense"
-msgstr ""
+msgstr "Odhodek"
 
 msgctxt "selection:account.account.rule,type:"
 msgid "Payable"
-msgstr ""
+msgstr "Dolg"
 
 msgctxt "selection:account.account.rule,type:"
 msgid "Receivable"
-msgstr ""
+msgstr "Terjatev"
 
 msgctxt "selection:account.account.rule,type:"
 msgid "Revenue"
-msgstr ""
+msgstr "Prihodek"
 
 msgctxt "selection:account.account.rule,type:"
 msgid "Stock"
-msgstr ""
+msgstr "Zaloga"

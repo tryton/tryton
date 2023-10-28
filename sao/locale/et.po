@@ -255,6 +255,10 @@ msgstr "Otsi..."
 msgid "Create..."
 msgstr "Loo..."
 
+#, fuzzy
+msgid "Create \"%1\"..."
+msgstr "Loo..."
+
 msgid "Download"
 msgstr "Allalaadimine"
 
@@ -465,6 +469,9 @@ msgstr "Eelkontroll"
 msgid ":"
 msgstr ":"
 
+msgid "Scan"
+msgstr ""
+
 msgid "Translate"
 msgstr "Tõlgi"
 
@@ -533,17 +540,20 @@ msgstr "Vali keel"
 msgid "%1%"
 msgstr "%1%"
 
-msgid ": "
-msgstr ": "
+msgid "Menu"
+msgstr ""
 
-msgid "Customize"
+msgid "Copy"
+msgstr ""
+
+msgid "#ERROR"
 msgstr ""
 
 msgid "More"
 msgstr "Lisaks"
 
-msgid "#ERROR"
-msgstr ""
+msgid ": "
+msgstr ": "
 
 msgid "Today"
 msgstr "Täna"
@@ -568,6 +578,19 @@ msgstr "Vali toiming"
 
 msgid "No action defined."
 msgstr "Toiming kirjeldamata."
+
+msgid "Discard changes"
+msgstr ""
+
+msgid "Save and New"
+msgstr ""
+
+#, fuzzy
+msgid "Add and New"
+msgstr "Lisa välja nimed"
+
+msgid "Apply changes"
+msgstr ""
 
 msgid "Attachments (%1)"
 msgstr "Manused (%1)"
@@ -645,8 +668,8 @@ msgstr "Vali imporditav fail"
 msgid "Detection failed"
 msgstr ""
 
-msgid "Error processing the file at field %1."
-msgstr "Faili töötlemisel tekkis väljal %1 viga."
+msgid "Unknown column header \"%1\""
+msgstr ""
 
 msgid "Error"
 msgstr "Viga"
@@ -753,6 +776,15 @@ msgstr ""
 #, fuzzy
 msgid "Remove File"
 msgstr "Eemalda"
+
+msgid "Code Scanner"
+msgstr ""
+
+msgid "Code"
+msgstr ""
+
+msgid "Toggle Sound"
+msgstr ""
 
 msgid "Wizard"
 msgstr "Nõustaja"

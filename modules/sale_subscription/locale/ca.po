@@ -140,7 +140,7 @@ msgstr "Servei"
 
 msgctxt "field:sale.subscription.line,service_unit_category:"
 msgid "Service Unit Category"
-msgstr "Categoria d'unitat del servei"
+msgstr "Categoria de la unitat del servei"
 
 msgctxt "field:sale.subscription.line,start_date:"
 msgid "Start Date"

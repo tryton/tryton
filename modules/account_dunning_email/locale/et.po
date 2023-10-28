@@ -6,30 +6,6 @@ msgctxt "field:account.configuration,dunning_email_fallback:"
 msgid "Fall-back User"
 msgstr "Reserv kasutaja"
 
-msgctxt "field:account.dunning.email.log,date:"
-msgid "Date"
-msgstr "Kuupäev"
-
-msgctxt "field:account.dunning.email.log,dunning:"
-msgid "Dunning"
-msgstr "Meenutus"
-
-msgctxt "field:account.dunning.email.log,level:"
-msgid "Level"
-msgstr "Tase"
-
-msgctxt "field:account.dunning.email.log,recipients:"
-msgid "Recipients"
-msgstr "Saaja"
-
-msgctxt "field:account.dunning.email.log,recipients_hidden:"
-msgid "Hidden Recipients"
-msgstr "Peidetud saaja"
-
-msgctxt "field:account.dunning.email.log,recipients_secondary:"
-msgid "Secondary Recipients"
-msgstr "Teine saaja"
-
 msgctxt "field:account.dunning.level,email_contact_mechanism:"
 msgid "Contact Mechanism"
 msgstr "Kontakteerumise moodus"
@@ -46,6 +22,11 @@ msgctxt "field:account.dunning.level,send_email:"
 msgid "Send Email"
 msgstr "Saada e-mail"
 
+#, fuzzy
+msgctxt "field:ir.email,dunning_level:"
+msgid "Level"
+msgstr "Tase"
+
 msgctxt "help:account.configuration,dunning_email_fallback:"
 msgid "User notified when no e-mail is found to send the dunning"
 msgstr "Kasutaja, keda teavitatakse, kui puudub e-mail millele saata meenutus"
@@ -58,14 +39,6 @@ msgstr ""
 msgctxt "help:account.dunning.level,email_from:"
 msgid "Leave empty for the value defined in the configuration file."
 msgstr "Jäta tühjaks, et rakenduks väärtus mis on määratud seadistuse failis."
-
-msgctxt "model:account.dunning.email.log,name:"
-msgid "Dunning Email Log"
-msgstr "Meenutuse emaili logi"
-
-msgctxt "model:ir.action,name:act_log"
-msgid "Email Logs"
-msgstr "E-maili logi"
 
 msgctxt "model:ir.action,name:report_email"
 msgid "Dunning Email"
@@ -106,10 +79,6 @@ msgstr "Viide"
 msgctxt "report:account.dunning.letter:"
 msgid "Reminder Notice"
 msgstr "Meeldetuletuse teade"
-
-msgctxt "view:account.dunning.email.log:"
-msgid "Time"
-msgstr "Aeg"
 
 msgctxt "view:account.dunning.level:"
 msgid "E-mail"

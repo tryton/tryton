@@ -151,6 +151,10 @@ msgstr "<i>Cerca...</i>"
 msgid "<i>Create...</i>"
 msgstr "<i>Crea...</i>"
 
+#, fuzzy, python-format
+msgid "Create \"%s\"..."
+msgstr "<i>Crea...</i>"
+
 msgid "Value"
 msgstr "Valore"
 
@@ -299,6 +303,9 @@ msgstr "Salva diagramma ad albero"
 
 msgid "Spell Checking"
 msgstr "Controllo ortogbrafico"
+
+msgid "Play Sound for Code Scanner"
+msgstr ""
 
 msgid "PDA Mode"
 msgstr "Modalità PDA"
@@ -455,6 +462,17 @@ msgstr "Vai alla fine"
 msgid "Move to parent"
 msgstr "Muoviti sul padre"
 
+#, fuzzy
+msgid "Edition"
+msgstr "Modifica"
+
+#, fuzzy
+msgid "Copy selected rows"
+msgstr "Copia il testo selezionato"
+
+msgid "Insert copied rows"
+msgstr ""
+
 msgid "Select all"
 msgstr "Seleziona tutto"
 
@@ -500,6 +518,12 @@ msgstr "Luca Cristaldi"
 #, python-format
 msgid "Attachments (%s)"
 msgstr "Allegati (%s)"
+
+msgid "Code Scanner"
+msgstr ""
+
+msgid "Code"
+msgstr ""
 
 msgid "Profile Editor"
 msgstr "Editor del profilo"
@@ -934,15 +958,25 @@ msgstr ""
 msgid "Delete"
 msgstr "Elimina"
 
-msgid "New"
-msgstr "Nuovo"
+msgid "Discard changes"
+msgstr ""
 
-msgid "Switch"
-msgstr "Cambia"
+msgid "Save and New"
+msgstr ""
+
+#, fuzzy
+msgid "Add and New"
+msgstr "Aggiungi valore"
 
 #, fuzzy
 msgid "Add"
 msgstr "Profilo"
+
+msgid "Apply changes"
+msgstr ""
+
+msgid "Switch"
+msgstr "Cambia"
 
 msgid "Remove <Del>"
 msgstr ""
@@ -981,8 +1015,8 @@ msgid "Detection failed"
 msgstr ""
 
 #, python-format
-msgid "Error processing the file at field %s."
-msgstr "Errore nel processare il file nel campo %s."
+msgid "Unknown column header \"%s\""
+msgstr ""
 
 msgid "Error"
 msgstr "Errore"
@@ -1000,6 +1034,9 @@ msgstr "%d record importati."
 
 msgid "Search"
 msgstr "Ricerca"
+
+msgid "New"
+msgstr "Nuovo"
 
 #, python-format
 msgid "Search %s"
@@ -1046,6 +1083,9 @@ msgstr ""
 
 msgid ":"
 msgstr ":"
+
+msgid "Scan"
+msgstr ""
 
 msgid "Image Size"
 msgstr "Dimensione immagine"

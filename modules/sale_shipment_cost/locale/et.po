@@ -45,6 +45,30 @@ msgctxt "field:sale.sale,shipment_cost_method:"
 msgid "Shipment Cost Method"
 msgstr "Saadetise kulu meetod"
 
+#, fuzzy
+msgctxt "field:sale.sale,shipment_costs:"
+msgid "Shipment Costs"
+msgstr "Saadetise kulu"
+
+msgctxt "field:stock.shipment.cost_sale,amount:"
+msgid "Amount"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:stock.shipment.cost_sale,currency:"
+msgid "Currency"
+msgstr "Kulu valuuta"
+
+#, fuzzy
+msgctxt "field:stock.shipment.cost_sale,sale:"
+msgid "Sale"
+msgstr "Kulu"
+
+#, fuzzy
+msgctxt "field:stock.shipment.cost_sale,shipment:"
+msgid "Shipment"
+msgstr "Lähetusel"
+
 msgctxt "field:stock.shipment.out,cost_invoice_line:"
 msgid "Cost Invoice Line"
 msgstr "Kuluarve rida"
@@ -72,6 +96,11 @@ msgstr "Kulu valuuta"
 #, fuzzy
 msgctxt "field:stock.shipment.out,cost_sale_used:"
 msgid "Cost Sale"
+msgstr "Kulu"
+
+#, fuzzy
+msgctxt "field:stock.shipment.out,cost_sales:"
+msgid "Cost Sales"
 msgstr "Kulu"
 
 #, fuzzy
@@ -103,6 +132,11 @@ msgstr ""
 "Lähetuse \"%(shipment)s\" kulu arveldamiseks tuleb määrata toote "
 "\"%(product)s\" tulukonto."
 
+#, fuzzy
+msgctxt "model:stock.shipment.cost_sale,name:"
+msgid "Shipment Cost Sale"
+msgstr "Saadetise kulu"
+
 msgctxt "selection:sale.sale,shipment_cost_method:"
 msgid "None"
 msgstr ""
@@ -114,6 +148,10 @@ msgstr "Tellimusel"
 msgctxt "selection:sale.sale,shipment_cost_method:"
 msgid "On Shipment"
 msgstr "Lähetusel"
+
+msgctxt "selection:stock.shipment.cost_sale,shipment:"
+msgid "Customer"
+msgstr ""
 
 #, fuzzy
 msgctxt "view:sale.promotion:"

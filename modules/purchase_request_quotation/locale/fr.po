@@ -84,8 +84,8 @@ msgid "Product"
 msgstr "Produit"
 
 msgctxt "field:purchase.request.quotation.line,product_uom_category:"
-msgid "Product Uom Category"
-msgstr "Catégorie d'unité de mesure de produit"
+msgid "Product UoM Category"
+msgstr "Catégorie d'UDM du produit"
 
 msgctxt "field:purchase.request.quotation.line,quantity:"
 msgid "Quantity"
@@ -139,6 +139,10 @@ msgctxt "help:purchase.request.quotation,revision:"
 msgid "Number incremented each time the quotation is sent."
 msgstr "Un nombre incrémenté chaque fois que le devis est envoyé."
 
+msgctxt "help:purchase.request.quotation.line,product_uom_category:"
+msgid "The category of Unit of Measure for the product."
+msgstr "La catégorie d'Unité De Mesure pour le produit."
+
 msgctxt "help:purchase.request.quotation.line,request:"
 msgid "The request which this line belongs to."
 msgstr "La demande à laquelle la ligne appartient."
@@ -162,6 +166,16 @@ msgstr "Devis de demande d'achat"
 msgctxt "model:ir.action,name:wizard_create_quotation"
 msgid "Create Quotation"
 msgstr "Créer les devis"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_purchase_request_form_domain_quotation"
+msgid "Quotation"
+msgstr "Devis"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_purchase_request_form_domain_received"
+msgid "Received"
+msgstr "Reçus"
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_purchase_request_quotation_form_view1_domain_all"

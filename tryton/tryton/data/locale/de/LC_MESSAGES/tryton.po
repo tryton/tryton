@@ -150,6 +150,10 @@ msgstr "<i>Suche...</i>"
 msgid "<i>Create...</i>"
 msgstr "<i>Erstelle...</i>"
 
+#, python-format
+msgid "Create \"%s\"..."
+msgstr "Erstelle \"%s\" …"
+
 msgid "Value"
 msgstr "Wert"
 
@@ -296,6 +300,9 @@ msgstr "Menüansicht speichern"
 
 msgid "Spell Checking"
 msgstr "Rechtschreibkorrektur"
+
+msgid "Play Sound for Code Scanner"
+msgstr "Ton für Barcode Scanner wiedergeben"
 
 msgid "PDA Mode"
 msgstr "Einspaltiger Modus"
@@ -451,6 +458,15 @@ msgstr "Zum Ende bewegen"
 msgid "Move to parent"
 msgstr "Zum übergeordneten Datensatz bewegen"
 
+msgid "Edition"
+msgstr "Bearbeitung"
+
+msgid "Copy selected rows"
+msgstr "Ausgewählte Zeilen kopieren"
+
+msgid "Insert copied rows"
+msgstr "Kopierte Zeilen einfügen"
+
 msgid "Select all"
 msgstr "Alle auswählen"
 
@@ -500,6 +516,12 @@ msgstr ""
 #, python-format
 msgid "Attachments (%s)"
 msgstr "Anhänge (%s)"
+
+msgid "Code Scanner"
+msgstr "Barcode Scanner"
+
+msgid "Code"
+msgstr "Code"
 
 msgid "Profile Editor"
 msgstr "Profilbearbeitung"
@@ -926,14 +948,23 @@ msgstr "Verknüpfung"
 msgid "Delete"
 msgstr "Löschen"
 
-msgid "New"
-msgstr "Neu"
+msgid "Discard changes"
+msgstr "Änderungen verwerfen"
 
-msgid "Switch"
-msgstr "Ansicht wechseln"
+msgid "Save and New"
+msgstr "Speichern und Neu"
+
+msgid "Add and New"
+msgstr "Hinzufügen und Neu"
 
 msgid "Add"
 msgstr "Hinzufügen"
+
+msgid "Apply changes"
+msgstr "Änderungen anwenden"
+
+msgid "Switch"
+msgstr "Ansicht wechseln"
 
 msgid "Remove <Del>"
 msgstr "Entfernen <Entf>"
@@ -970,8 +1001,8 @@ msgid "Detection failed"
 msgstr "Lesen der Datei fehlgeschlagen"
 
 #, python-format
-msgid "Error processing the file at field %s."
-msgstr "Fehler bei der Verarbeitung der Datei in Feld %s."
+msgid "Unknown column header \"%s\""
+msgstr "Unbekannte Spaltenüberschrift \"%s\""
 
 msgid "Error"
 msgstr "Fehler"
@@ -989,6 +1020,9 @@ msgstr "%d Datensätze importiert."
 
 msgid "Search"
 msgstr "Suchen"
+
+msgid "New"
+msgstr "Neu"
 
 #, python-format
 msgid "Search %s"
@@ -1032,6 +1066,9 @@ msgstr "Vorvalidierung"
 
 msgid ":"
 msgstr ":"
+
+msgid "Scan"
+msgstr "Scannen"
 
 msgid "Image Size"
 msgstr "Bildgröße"

@@ -42,6 +42,26 @@ msgctxt "field:sale.sale,shipment_cost_method:"
 msgid "Shipment Cost Method"
 msgstr "Método de coste envío"
 
+msgctxt "field:sale.sale,shipment_costs:"
+msgid "Shipment Costs"
+msgstr "Costes de envío"
+
+msgctxt "field:stock.shipment.cost_sale,amount:"
+msgid "Amount"
+msgstr "Importe"
+
+msgctxt "field:stock.shipment.cost_sale,currency:"
+msgid "Currency"
+msgstr "Moneda"
+
+msgctxt "field:stock.shipment.cost_sale,sale:"
+msgid "Sale"
+msgstr "Venta"
+
+msgctxt "field:stock.shipment.cost_sale,shipment:"
+msgid "Shipment"
+msgstr "Albarán"
+
 msgctxt "field:stock.shipment.out,cost_invoice_line:"
 msgid "Cost Invoice Line"
 msgstr "Coste de la línea de factura"
@@ -64,6 +84,10 @@ msgstr "Moneda del coste de la venta"
 
 msgctxt "field:stock.shipment.out,cost_sale_used:"
 msgid "Cost Sale"
+msgstr "Coste de la venta"
+
+msgctxt "field:stock.shipment.out,cost_sales:"
+msgid "Cost Sales"
 msgstr "Coste de la venta"
 
 msgctxt "field:stock.shipment.out,shipment_cost_sale_readonly:"
@@ -99,6 +123,10 @@ msgstr ""
 "Para facturar el coste de envío del albarán %(shipment)s\", debe definir una"
 " cuenta de ingresos para el producto \"%(product)s\"."
 
+msgctxt "model:stock.shipment.cost_sale,name:"
+msgid "Shipment Cost Sale"
+msgstr "Costes de venta de los envíos"
+
 msgctxt "selection:sale.sale,shipment_cost_method:"
 msgid "None"
 msgstr "Ninguno"
@@ -110,6 +138,10 @@ msgstr "En el pedido"
 msgctxt "selection:sale.sale,shipment_cost_method:"
 msgid "On Shipment"
 msgstr "En el albarán"
+
+msgctxt "selection:stock.shipment.cost_sale,shipment:"
+msgid "Customer"
+msgstr "Cliente"
 
 msgctxt "view:sale.promotion:"
 msgid "Shipment Cost Included"

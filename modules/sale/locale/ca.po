@@ -87,7 +87,7 @@ msgid "Sale Price"
 msgstr "Preu de venda"
 
 msgctxt "field:product.product,sale_uom:"
-msgid "Sale UOM"
+msgid "Sale UoM"
 msgstr "UdM de venda"
 
 msgctxt "field:product.sale.context,company:"
@@ -131,7 +131,7 @@ msgid "Salable"
 msgstr "Vendible"
 
 msgctxt "field:product.template,sale_uom:"
-msgid "Sale UOM"
+msgid "Sale UoM"
 msgstr "UdM de venda"
 
 msgctxt "field:sale.configuration,sale_invoice_method:"
@@ -243,7 +243,7 @@ msgid "Product"
 msgstr "Producte"
 
 msgctxt "field:sale.line,product_uom_category:"
-msgid "Product Uom Category"
+msgid "Product UoM Category"
 msgstr "Categoria UdM del producte"
 
 msgctxt "field:sale.line,quantity:"
@@ -690,6 +690,10 @@ msgstr ""
 "El temps desde que es confirma la comanda fins que s'envien els productes.\n"
 "Si es deixa en blanc s'utilitza el temps d'enviament per defecte de la configuració."
 
+msgctxt "help:product.product,sale_uom:"
+msgid "The default Unit of Measure for sales."
+msgstr "La unitat de mesura per defecte per les vendes."
+
 msgctxt "help:product.template,lead_time:"
 msgid ""
 "The time from confirming the sales order to sending the products.\n"
@@ -697,6 +701,10 @@ msgid ""
 msgstr ""
 "El temps desde que es confirma la comanda fins que s'envien els productes.\n"
 "Si es deixa en blanc s'utilitza el temps d'enviament per defecte de la configuració."
+
+msgctxt "help:product.template,sale_uom:"
+msgid "The default Unit of Measure for sales."
+msgstr "La unitat de mesura per defecte per les vendes."
 
 msgctxt "help:sale.configuration,sale_process_after:"
 msgid ""
@@ -711,6 +719,10 @@ msgid ""
 "The selected invoices will be recreated. The other ones will be ignored."
 msgstr ""
 "Les factures seleccionades seran recreades. Les altres seran ignorades."
+
+msgctxt "help:sale.line,product_uom_category:"
+msgid "The category of Unit of Measure for the product."
+msgstr "La categoria de la unitat de mesura del producte."
 
 msgctxt "help:sale.sale,shipping_date:"
 msgid "When the shipping of goods should start."
@@ -964,6 +976,14 @@ msgstr ""
 "Per eliminar la línia \"%(line)s\" heu de cancel·lar o restablir a esborrany"
 " la venda \"%(sale)s\"."
 
+msgctxt "model:ir.message,text:msg_sale_line_move_quantity"
+msgid ""
+"The sale line \"%(line)s\" is moving %(extra)s in addition to the "
+"%(quantity)s ordered."
+msgstr ""
+"La línia de venda \"%(line)s\" està movent %(extra)s a més dels %(quantity)s"
+" demanats."
+
 msgctxt "model:ir.message,text:msg_sale_line_tax_unique"
 msgid "A tax can be added only once to a sale line."
 msgstr "Un impost només es pot afegir una vegada a una línia de venda."
@@ -1060,6 +1080,14 @@ msgstr "Gestiona excepció de factura"
 msgctxt "model:ir.model.button,string:sale_handle_shipment_exception_button"
 msgid "Handle Shipment Exception"
 msgstr "Gestiona excepció d'enviament"
+
+msgctxt "model:ir.model.button,string:sale_manual_invoice_button"
+msgid "Create Invoice"
+msgstr "Recrea factura"
+
+msgctxt "model:ir.model.button,string:sale_manual_shipment_button"
+msgid "Create Shipment"
+msgstr "Crea Albarà"
 
 msgctxt "model:ir.model.button,string:sale_modify_header_button"
 msgid "Modify Header"
@@ -1561,70 +1589,6 @@ msgstr "Notes"
 msgctxt "view:sale.line:"
 msgid "Taxes"
 msgstr "Impostos"
-
-msgctxt "view:sale.reporting.country.subdivision.time_series:"
-msgid "Number"
-msgstr "Número"
-
-msgctxt "view:sale.reporting.country.subdivision.time_series:"
-msgid "Revenue"
-msgstr "Ingressos"
-
-msgctxt "view:sale.reporting.country.time_series:"
-msgid "Number"
-msgstr "Número"
-
-msgctxt "view:sale.reporting.country.time_series:"
-msgid "Revenue"
-msgstr "Ingressos"
-
-msgctxt "view:sale.reporting.customer.category.time_series:"
-msgid "Number"
-msgstr "Número"
-
-msgctxt "view:sale.reporting.customer.category.time_series:"
-msgid "Revenue"
-msgstr "Ingressos"
-
-msgctxt "view:sale.reporting.customer.time_series:"
-msgid "Number"
-msgstr "Número"
-
-msgctxt "view:sale.reporting.customer.time_series:"
-msgid "Revenue"
-msgstr "Ingressos"
-
-msgctxt "view:sale.reporting.main.time_series:"
-msgid "Number"
-msgstr "Número"
-
-msgctxt "view:sale.reporting.main.time_series:"
-msgid "Revenue"
-msgstr "Ingressos"
-
-msgctxt "view:sale.reporting.main:"
-msgid "Number"
-msgstr "Número"
-
-msgctxt "view:sale.reporting.main:"
-msgid "Revenue"
-msgstr "Ingressos"
-
-msgctxt "view:sale.reporting.product.category.time_series:"
-msgid "Number"
-msgstr "Número"
-
-msgctxt "view:sale.reporting.product.category.time_series:"
-msgid "Revenue"
-msgstr "Ingressos"
-
-msgctxt "view:sale.reporting.product.time_series:"
-msgid "Number"
-msgstr "Número"
-
-msgctxt "view:sale.reporting.product.time_series:"
-msgid "Revenue"
-msgstr "Ingressos"
 
 msgctxt "view:sale.return_sale.start:"
 msgid "Are you sure to return these/this sale(s)?"

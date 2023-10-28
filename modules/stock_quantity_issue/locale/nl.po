@@ -96,7 +96,7 @@ msgstr "Open"
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_quantity_issue_form_domain_processing"
 msgid "Processing"
-msgstr "Verwerken"
+msgstr "In behandeling"
 
 msgctxt "model:ir.message,text:msg_issue_solve_product_forecast_quantity"
 msgid ""
@@ -157,7 +157,7 @@ msgstr "Open"
 
 msgctxt "selection:stock.quantity.issue,state:"
 msgid "Processing"
-msgstr "Verwerken"
+msgstr "In behandeling"
 
 msgctxt "selection:stock.quantity.issue,state:"
 msgid "Solved"

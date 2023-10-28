@@ -1,0 +1,72 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:document.incoming,ocr_service:"
+msgid "OCR Service"
+msgstr "OCR Schrifterkennungsdienst"
+
+msgctxt "field:document.incoming.ocr.service,company:"
+msgid "Company"
+msgstr "Unternehmen"
+
+msgctxt "field:document.incoming.ocr.service,document_type:"
+msgid "Type"
+msgstr "Typ"
+
+msgctxt "field:document.incoming.ocr.service,source:"
+msgid "Source"
+msgstr "Quelle"
+
+msgctxt "field:document.incoming.ocr.service,type:"
+msgid "Type"
+msgstr "Typ"
+
+msgctxt "help:document.incoming.ocr.service,company:"
+msgid ""
+"The company for which the service is used.\n"
+"Leave empty for any company."
+msgstr ""
+"Das Unternehmen für das der Service genutzt wird.\n"
+"Leer lassen für alle Unternehmen."
+
+msgctxt "help:document.incoming.ocr.service,document_type:"
+msgid ""
+"The document type to match.\n"
+"Leave empty for any type."
+msgstr ""
+"Auswahl des passenden Dokumententyps.\n"
+"Leer lassen für jeden Typ."
+
+msgctxt "help:document.incoming.ocr.service,source:"
+msgid ""
+"The regular expression to match the document source.\n"
+"Leave empty to allow any source."
+msgstr ""
+"Der reguläre Ausdruck dem die Dokumentenquelle entsprechen muss.\n"
+"Leer lassen um jede Dokumentenquelle zuzulassen."
+
+msgctxt "model:document.incoming.ocr.service,name:"
+msgid "Incoming Document OCR Service"
+msgstr "Eingehendes Dokument OCR Schrifterkennungsdienst"
+
+msgctxt "model:ir.action,name:act_document_incoming_ocr_service_form"
+msgid "OCR Services"
+msgstr "OCR Schrifterkennungsservice"
+
+msgctxt "model:ir.model.button,string:document_incoming_proceed_button"
+msgid "Send Feedback"
+msgstr "Feedback senden"
+
+msgctxt ""
+"model:ir.rule.group,name:rule_group_document_incoming_ocr_service_companies"
+msgid "User in companies"
+msgstr "Benutzer in Unternehmen"
+
+msgctxt "model:ir.ui.menu,name:menu_document_incoming_ocr_service_form"
+msgid "OCR Services"
+msgstr "OCR Schrifterkennungsservice"
+
+msgctxt "view:document.incoming.ocr.service:"
+msgid "Criteria"
+msgstr "Kriterien"

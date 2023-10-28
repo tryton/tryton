@@ -101,8 +101,9 @@ msgctxt "field:product.product,sale_price_uom:"
 msgid "Sale Price"
 msgstr "Prodajna cena"
 
+#, fuzzy
 msgctxt "field:product.product,sale_uom:"
-msgid "Sale UOM"
+msgid "Sale UoM"
 msgstr "Prodajna ME"
 
 #, fuzzy
@@ -120,10 +121,9 @@ msgctxt "field:product.sale.context,customer:"
 msgid "Customer"
 msgstr "Kupci"
 
-#, fuzzy
 msgctxt "field:product.sale.context,locations:"
 msgid "Warehouses"
-msgstr "Skladišče"
+msgstr "Skladišča"
 
 #, fuzzy
 msgctxt "field:product.sale.context,quantity:"
@@ -152,8 +152,9 @@ msgctxt "field:product.template,salable:"
 msgid "Salable"
 msgstr "Za prodajo"
 
+#, fuzzy
 msgctxt "field:product.template,sale_uom:"
-msgid "Sale UOM"
+msgid "Sale UoM"
 msgstr "Prodajna ME"
 
 msgctxt "field:sale.configuration,sale_invoice_method:"
@@ -166,7 +167,7 @@ msgstr ""
 
 msgctxt "field:sale.configuration,sale_sequence:"
 msgid "Sale Sequence"
-msgstr "Štetje prodajnih nalogov"
+msgstr "Številčna serija prodajnih nalogov"
 
 msgctxt "field:sale.configuration,sale_shipment_method:"
 msgid "Sale Shipment Method"
@@ -186,7 +187,7 @@ msgstr "Družba"
 
 msgctxt "field:sale.configuration.sequence,sale_sequence:"
 msgid "Sale Sequence"
-msgstr "Štetje prodajnih nalogov"
+msgstr "Številčna serija prodajnih nalogov"
 
 msgctxt "field:sale.handle.invoice.exception.ask,domain_invoices:"
 msgid "Domain Invoices"
@@ -270,8 +271,9 @@ msgctxt "field:sale.line,product:"
 msgid "Product"
 msgstr "Izdelek"
 
+#, fuzzy
 msgctxt "field:sale.line,product_uom_category:"
-msgid "Product Uom Category"
+msgid "Product UoM Category"
 msgstr "Katerogija EM izdelka"
 
 msgctxt "field:sale.line,quantity:"
@@ -309,7 +311,7 @@ msgstr "Na lokacijo"
 
 msgctxt "field:sale.line,type:"
 msgid "Type"
-msgstr "Tip"
+msgstr "Vrsta"
 
 msgctxt "field:sale.line,unit:"
 msgid "Unit"
@@ -580,7 +582,7 @@ msgstr "Številka"
 
 msgctxt "field:sale.sale,origin:"
 msgid "Origin"
-msgstr "Poreklo"
+msgstr "Izvor"
 
 msgctxt "field:sale.sale,party:"
 msgid "Party"
@@ -592,7 +594,7 @@ msgstr "Jezik partnerja"
 
 msgctxt "field:sale.sale,payment_term:"
 msgid "Payment Term"
-msgstr "Plačilni rok"
+msgstr "Pogoji plačila"
 
 #, fuzzy
 msgctxt "field:sale.sale,quoted_by:"
@@ -731,10 +733,18 @@ msgid ""
 "If empty the default lead time from the configuration is used."
 msgstr ""
 
+msgctxt "help:product.product,sale_uom:"
+msgid "The default Unit of Measure for sales."
+msgstr ""
+
 msgctxt "help:product.template,lead_time:"
 msgid ""
 "The time from confirming the sales order to sending the products.\n"
 "If empty the default lead time from the configuration is used."
+msgstr ""
+
+msgctxt "help:product.template,sale_uom:"
+msgid "The default Unit of Measure for sales."
 msgstr ""
 
 msgctxt "help:sale.configuration,sale_process_after:"
@@ -748,24 +758,26 @@ msgid ""
 "The selected invoices will be recreated. The other ones will be ignored."
 msgstr "Izbrani računi bodo ponovno izdelani, ostali bodo prezrti."
 
+msgctxt "help:sale.line,product_uom_category:"
+msgid "The category of Unit of Measure for the product."
+msgstr ""
+
 msgctxt "help:sale.sale,shipping_date:"
 msgid "When the shipping of goods should start."
 msgstr ""
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_invoice_form"
 msgid "Invoices"
-msgstr "Invoices"
+msgstr "Računi"
 
 #, fuzzy
 msgctxt "model:ir.action,name:act_open_customer"
 msgid "Parties associated to Sales"
 msgstr "Parties associated to Sales"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_product"
 msgid "Products"
-msgstr "Izdelek"
+msgstr "Izdelki"
 
 msgctxt "model:ir.action,name:act_reporting_country_subdivision_time_series"
 msgid "Sales per Subdivision"
@@ -841,15 +853,13 @@ msgctxt "model:ir.action,name:act_reporting_region_tree"
 msgid "Sales per Region"
 msgstr "Sales per Region"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_return_form"
 msgid "Returns"
-msgstr "Returns"
+msgstr "Vračila"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_sale_configuration_form"
 msgid "Configuration"
-msgstr "Configuration"
+msgstr "Konfiguracija"
 
 #, fuzzy
 msgctxt "model:ir.action,name:act_sale_form"
@@ -876,24 +886,22 @@ msgctxt "model:ir.action,name:act_sale_relate_simple"
 msgid "Sales"
 msgstr "Prodajni nalogi"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_shipment_form"
 msgid "Shipments"
-msgstr "Shipments"
+msgstr "Pošiljke"
 
 #, fuzzy
 msgctxt "model:ir.action,name:report_sale"
 msgid "Sale"
 msgstr "Sale"
 
-#, fuzzy
 msgctxt "model:ir.action,name:wizard_invoice_handle_exception"
 msgid "Handle Invoice Exception"
-msgstr "Handle Invoice Exception"
+msgstr "Obravnavaj napako računa"
 
 msgctxt "model:ir.action,name:wizard_modify_header"
 msgid "Modify Header"
-msgstr "Modify Header"
+msgstr "Uredi glavo zapisa"
 
 #, fuzzy
 msgctxt "model:ir.action,name:wizard_reporting_country_tree_open"
@@ -910,10 +918,9 @@ msgctxt "model:ir.action,name:wizard_return_sale"
 msgid "Return Sale"
 msgstr "Return Sale"
 
-#, fuzzy
 msgctxt "model:ir.action,name:wizard_shipment_handle_exception"
 msgid "Handle Shipment Exception"
-msgstr "Handle Shipment Exception"
+msgstr "Obravnavaj napako dobavnice"
 
 #, fuzzy
 msgctxt "model:ir.action.act_window.domain,name:act_sale_form_domain_all"
@@ -1022,6 +1029,12 @@ msgid ""
 "\"%(sale)s\"."
 msgstr ""
 
+msgctxt "model:ir.message,text:msg_sale_line_move_quantity"
+msgid ""
+"The sale line \"%(line)s\" is moving %(extra)s in addition to the "
+"%(quantity)s ordered."
+msgstr ""
+
 msgctxt "model:ir.message,text:msg_sale_line_tax_unique"
 msgid "A tax can be added only once to a sale line."
 msgstr ""
@@ -1111,6 +1124,16 @@ msgctxt "model:ir.model.button,string:sale_handle_shipment_exception_button"
 msgid "Handle Shipment Exception"
 msgstr "Handle Shipment Exception"
 
+#, fuzzy
+msgctxt "model:ir.model.button,string:sale_manual_invoice_button"
+msgid "Create Invoice"
+msgstr "Ponovno izdelani računi"
+
+#, fuzzy
+msgctxt "model:ir.model.button,string:sale_manual_shipment_button"
+msgid "Create Shipment"
+msgstr "Pošiljke"
+
 msgctxt "model:ir.model.button,string:sale_modify_header_button"
 msgid "Modify Header"
 msgstr "Modify Header"
@@ -1158,12 +1181,12 @@ msgstr ""
 
 msgctxt "model:ir.rule.group,name:rule_group_reporting_main_companies"
 msgid "User in companies"
-msgstr ""
+msgstr "Uporabnik v družbah"
 
 msgctxt ""
 "model:ir.rule.group,name:rule_group_reporting_main_time_series_companies"
 msgid "User in companies"
-msgstr ""
+msgstr "Uporabnik v družbah"
 
 msgctxt ""
 "model:ir.rule.group,name:rule_group_reporting_product_category_companies"
@@ -1177,12 +1200,12 @@ msgstr ""
 
 msgctxt "model:ir.rule.group,name:rule_group_reporting_product_companies"
 msgid "User in companies"
-msgstr ""
+msgstr "Uporabnik v družbah"
 
 msgctxt ""
 "model:ir.rule.group,name:rule_group_reporting_product_time_series_companies"
 msgid "User in companies"
-msgstr ""
+msgstr "Uporabnik v družbah"
 
 msgctxt "model:ir.rule.group,name:rule_group_sale_companies"
 msgid "User in companies"
@@ -1198,24 +1221,22 @@ msgctxt "model:ir.sequence.type,name:sequence_type_sale"
 msgid "Sale"
 msgstr "Sale"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_configuration"
 msgid "Configuration"
-msgstr "Configuration"
+msgstr "Konfiguracija"
 
 #, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_customer"
 msgid "Associated to Sales"
 msgstr "Parties associated to Sales"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_product"
 msgid "Products"
-msgstr "Izdelek"
+msgstr "Izdelki"
 
 msgctxt "model:ir.ui.menu,name:menu_reporting"
 msgid "Reporting"
-msgstr "Reporting"
+msgstr "Poročanje"
 
 msgctxt "model:ir.ui.menu,name:menu_reporting_sale"
 msgid "Sales"
@@ -1226,10 +1247,9 @@ msgctxt "model:ir.ui.menu,name:menu_sale"
 msgid "Sales"
 msgstr "Sales"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_sale_configuration"
 msgid "Configuration"
-msgstr "Configuration"
+msgstr "Konfiguracija"
 
 #, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_sale_form"
@@ -1278,7 +1298,7 @@ msgstr "Konfiguracija načina prodaje"
 
 msgctxt "model:sale.configuration.sequence,name:"
 msgid "Sale Configuration Sequence"
-msgstr "Konfiguracija štetja prodaje"
+msgstr "Konfiguracija številčne serije prodaje"
 
 msgctxt "model:sale.handle.invoice.exception.ask,name:"
 msgid "Handle Invoice Exception"
@@ -1594,7 +1614,7 @@ msgstr "V pripravi"
 
 msgctxt "selection:sale.sale,state:"
 msgid "Processing"
-msgstr "Obdelava"
+msgstr "V obdelavi"
 
 msgctxt "selection:sale.sale,state:"
 msgid "Quotation"
@@ -1632,83 +1652,11 @@ msgstr "Splošno"
 
 msgctxt "view:sale.line:"
 msgid "Notes"
-msgstr "Opombe"
+msgstr "Zapiski"
 
 msgctxt "view:sale.line:"
 msgid "Taxes"
 msgstr "Davki"
-
-#, fuzzy
-msgctxt "view:sale.reporting.country.subdivision.time_series:"
-msgid "Number"
-msgstr "Številka"
-
-msgctxt "view:sale.reporting.country.subdivision.time_series:"
-msgid "Revenue"
-msgstr ""
-
-#, fuzzy
-msgctxt "view:sale.reporting.country.time_series:"
-msgid "Number"
-msgstr "Številka"
-
-msgctxt "view:sale.reporting.country.time_series:"
-msgid "Revenue"
-msgstr ""
-
-#, fuzzy
-msgctxt "view:sale.reporting.customer.category.time_series:"
-msgid "Number"
-msgstr "Številka"
-
-msgctxt "view:sale.reporting.customer.category.time_series:"
-msgid "Revenue"
-msgstr ""
-
-#, fuzzy
-msgctxt "view:sale.reporting.customer.time_series:"
-msgid "Number"
-msgstr "Številka"
-
-msgctxt "view:sale.reporting.customer.time_series:"
-msgid "Revenue"
-msgstr ""
-
-#, fuzzy
-msgctxt "view:sale.reporting.main.time_series:"
-msgid "Number"
-msgstr "Številka"
-
-msgctxt "view:sale.reporting.main.time_series:"
-msgid "Revenue"
-msgstr ""
-
-#, fuzzy
-msgctxt "view:sale.reporting.main:"
-msgid "Number"
-msgstr "Številka"
-
-msgctxt "view:sale.reporting.main:"
-msgid "Revenue"
-msgstr ""
-
-#, fuzzy
-msgctxt "view:sale.reporting.product.category.time_series:"
-msgid "Number"
-msgstr "Številka"
-
-msgctxt "view:sale.reporting.product.category.time_series:"
-msgid "Revenue"
-msgstr ""
-
-#, fuzzy
-msgctxt "view:sale.reporting.product.time_series:"
-msgid "Number"
-msgstr "Številka"
-
-msgctxt "view:sale.reporting.product.time_series:"
-msgid "Revenue"
-msgstr ""
 
 #, fuzzy
 msgctxt "view:sale.return_sale.start:"

@@ -152,6 +152,10 @@ msgstr "<i>Buscar...</i>"
 msgid "<i>Create...</i>"
 msgstr "<i>Crear...</i>"
 
+#, python-format
+msgid "Create \"%s\"..."
+msgstr "Crear \"%s\"..."
+
 msgid "Value"
 msgstr "Valor"
 
@@ -298,6 +302,9 @@ msgstr "Guardar estado de expansión del árbol"
 
 msgid "Spell Checking"
 msgstr "Corrección ortográfica"
+
+msgid "Play Sound for Code Scanner"
+msgstr "Activar el sonido del escáner de códigos"
 
 msgid "PDA Mode"
 msgstr "Modo PDA"
@@ -453,6 +460,15 @@ msgstr "Mover al final"
 msgid "Move to parent"
 msgstr "Mover al padre"
 
+msgid "Edition"
+msgstr "Editar"
+
+msgid "Copy selected rows"
+msgstr "Copiar filas seleccionadas"
+
+msgid "Insert copied rows"
+msgstr "Insertar filas copiadas"
+
 msgid "Select all"
 msgstr "Seleccionar todo"
 
@@ -498,6 +514,12 @@ msgstr "Sergi Almacellas Abellana"
 #, python-format
 msgid "Attachments (%s)"
 msgstr "Adjuntos (%s)"
+
+msgid "Code Scanner"
+msgstr "Escáner de códigos"
+
+msgid "Code"
+msgstr "Código"
 
 msgid "Profile Editor"
 msgstr "Editor de perfiles"
@@ -923,14 +945,23 @@ msgstr "Enlace"
 msgid "Delete"
 msgstr "Eliminar"
 
-msgid "New"
-msgstr "Nuevo"
+msgid "Discard changes"
+msgstr "Descartar cambios"
 
-msgid "Switch"
-msgstr "Cambiar"
+msgid "Save and New"
+msgstr "Guardar y nuevo"
+
+msgid "Add and New"
+msgstr "Añadir y nuevo"
 
 msgid "Add"
 msgstr "Añadir"
+
+msgid "Apply changes"
+msgstr "Aplicar cambios"
+
+msgid "Switch"
+msgstr "Cambiar"
 
 msgid "Remove <Del>"
 msgstr "Eliminar <Supr>"
@@ -967,8 +998,8 @@ msgid "Detection failed"
 msgstr "Ha fallado la detección"
 
 #, python-format
-msgid "Error processing the file at field %s."
-msgstr "Se ha producido un error al procesar el archivo en el campo %s."
+msgid "Unknown column header \"%s\""
+msgstr "Cabecera de columna desconocida: \"%s\""
 
 msgid "Error"
 msgstr "Error"
@@ -986,6 +1017,9 @@ msgstr "Se han importado %d registros."
 
 msgid "Search"
 msgstr "Buscar"
+
+msgid "New"
+msgstr "Nuevo"
 
 #, python-format
 msgid "Search %s"
@@ -1029,6 +1063,9 @@ msgstr "Prevalidación"
 
 msgid ":"
 msgstr ":"
+
+msgid "Scan"
+msgstr "Escanear"
 
 msgid "Image Size"
 msgstr "Tamaño de la imagen"

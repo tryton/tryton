@@ -339,10 +339,6 @@ msgctxt "model:account.payment.journal,name:"
 msgid "Payment Journal"
 msgstr "روزنامه پرداخت"
 
-msgctxt "model:account.payment.process.start,name:"
-msgid "Process Payment"
-msgstr "روند پرداخت"
-
 msgctxt "model:ir.action,name:act_move_line_form"
 msgid "Lines to Pay"
 msgstr "خطوط برای پرداخت"
@@ -364,19 +360,27 @@ msgid "Payments"
 msgstr "پرداخت ها"
 
 #, fuzzy
+msgctxt "model:ir.action,name:act_payment_form_payable"
+msgid "Payable Payments"
+msgstr "پردازش پرداخت ها"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_payment_form_receivable"
+msgid "Receivable Payments"
+msgstr "قابل دریافت"
+
+#, fuzzy
 msgctxt "model:ir.action,name:act_payment_form_relate_party"
 msgid "Payments"
 msgstr "پرداخت ها"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_payment_group_form"
-msgid "Groups"
-msgstr "گروه"
+msgid "Payment Groups"
+msgstr "گروه های پرداخت"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_payment_journal_form"
-msgid "Journals"
-msgstr "روزنامه ها"
+msgid "Payment Journals"
+msgstr "روزنامه های پرداخت"
 
 msgctxt "model:ir.action,name:act_process_payments"
 msgid "Process Payments"
@@ -397,38 +401,81 @@ msgctxt ""
 msgid "Receivable"
 msgstr "قابل دریافت"
 
-msgctxt "model:ir.action.act_window.domain,name:act_payment_form_domain_all"
+#, fuzzy
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_payment_form_group_open_domain_all"
 msgid "All"
 msgstr "همه"
 
-msgctxt "model:ir.action.act_window.domain,name:act_payment_form_domain_draft"
-msgid "Draft"
-msgstr "پیش‌نویس"
-
+#, fuzzy
 msgctxt ""
-"model:ir.action.act_window.domain,name:act_payment_form_domain_failed"
+"model:ir.action.act_window.domain,name:act_payment_form_group_open_domain_failed"
 msgid "Failed"
 msgstr "ناموفق"
 
+#, fuzzy
 msgctxt ""
-"model:ir.action.act_window.domain,name:act_payment_form_domain_processing"
+"model:ir.action.act_window.domain,name:act_payment_form_group_open_domain_processing"
 msgid "Processing"
 msgstr "در حال پردازش"
 
+#, fuzzy
 msgctxt ""
-"model:ir.action.act_window.domain,name:act_payment_form_domain_suceeded"
+"model:ir.action.act_window.domain,name:act_payment_form_group_open_domain_succeeded"
 msgid "Succeeded"
 msgstr "موفق شد"
 
 #, fuzzy
 msgctxt ""
-"model:ir.action.act_window.domain,name:act_payment_form_domain_to_approve"
+"model:ir.action.act_window.domain,name:act_payment_form_payable_domain_all"
+msgid "All"
+msgstr "همه"
+
+#, fuzzy
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_payment_form_payable_domain_draft"
+msgid "Draft"
+msgstr "پیش‌نویس"
+
+#, fuzzy
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_payment_form_payable_domain_processing"
+msgid "Processing"
+msgstr "در حال پردازش"
+
+#, fuzzy
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_payment_form_payable_domain_to_approve"
 msgid "To Approve"
 msgstr "Approve"
 
 #, fuzzy
 msgctxt ""
-"model:ir.action.act_window.domain,name:act_payment_form_domain_to_process"
+"model:ir.action.act_window.domain,name:act_payment_form_payable_domain_to_process"
+msgid "To Process"
+msgstr "پردازش"
+
+#, fuzzy
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_payment_form_receivable_domain_all"
+msgid "All"
+msgstr "همه"
+
+#, fuzzy
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_payment_form_receivable_domain_draft"
+msgid "Draft"
+msgstr "پیش‌نویس"
+
+#, fuzzy
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_payment_form_receivable_domain_processing"
+msgid "Processing"
+msgstr "در حال پردازش"
+
+#, fuzzy
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_payment_form_receivable_domain_to_process"
 msgid "To Process"
 msgstr "پردازش"
 
@@ -451,6 +498,30 @@ msgstr ""
 "شما نمیتوانید نهاد/سازمان : \"%(party)s\" را حذف کنید در حالی که آنها در "
 "انتظار پرداخت با شرکت: \"%(company)s\" هستند."
 
+msgctxt "model:ir.message,text:msg_move_cancel_payments"
+msgid ""
+"The moves \"%(moves)s\" contain lines with payments, you may want to cancel "
+"them before cancelling."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_move_line_delegate_payments"
+msgid ""
+"The lines \"%(lines)s\" have payments, you may want to cancel them before "
+"delegating."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_move_line_group_payments"
+msgid ""
+"The lines \"%(lines)s\" have payments, you may want to cancel them before "
+"grouping."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_move_line_reschedule_payments"
+msgid ""
+"The lines \"%(lines)s\" have payments, you may want to cancel them before "
+"rescheduling."
+msgstr ""
+
 msgctxt "model:ir.message,text:msg_pay_line_blocked"
 msgid "Line \"%(line)s\" is blocked for payment."
 msgstr "سطر: \"%(line)s\"برای پرداخت مسدود شده است."
@@ -471,9 +542,18 @@ msgctxt "model:ir.message,text:msg_payment_overpay"
 msgid "Payment \"%(payment)s\" overpays line \"%(line)s\"."
 msgstr "پرداخت : \"%s\" سطر: \"%s\" را بیش از مقدار پرداخت می کند."
 
+msgctxt "model:ir.message,text:msg_payment_reconciled"
+msgid "The line \"%(line)s\" of payment \"%(payment)s\" is already reconciled."
+msgstr ""
+
+msgctxt "model:ir.model.button,confirm:payment_process_wizard_button"
+msgid "Are you sure you want to process the payments?"
+msgstr ""
+
+#, fuzzy
 msgctxt "model:ir.model.button,string:move_line_pay_button"
-msgid "Pay Lines"
-msgstr "Pay Lines"
+msgid "Pay"
+msgstr "پرداخت"
 
 msgctxt "model:ir.model.button,string:move_line_payment_block_button"
 msgid "Block"
@@ -504,6 +584,11 @@ msgstr "Succeed"
 msgctxt "model:ir.model.button,string:payment_proceed_button"
 msgid "Processing"
 msgstr "در حال پردازش"
+
+#, fuzzy
+msgctxt "model:ir.model.button,string:payment_process_wizard_button"
+msgid "Process"
+msgstr "پردازش"
 
 msgctxt "model:ir.model.button,string:payment_submit_button"
 msgid "Submit"
@@ -551,19 +636,23 @@ msgctxt "model:ir.ui.menu,name:menu_payment_configuration"
 msgid "Payments"
 msgstr "پرداخت ها"
 
-msgctxt "model:ir.ui.menu,name:menu_payment_form"
-msgid "Payments"
-msgstr "پرداخت ها"
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_payment_form_payable"
+msgid "Payable Payments"
+msgstr "پردازش پرداخت ها"
 
 #, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_payment_form_receivable"
+msgid "Receivable Payments"
+msgstr "قابل دریافت"
+
 msgctxt "model:ir.ui.menu,name:menu_payment_group_form"
-msgid "Groups"
-msgstr "گروه"
+msgid "Payment Groups"
+msgstr "گروه های پرداخت"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_payment_journal_form"
-msgid "Journals"
-msgstr "روزنامه ها"
+msgid "Payment Journals"
+msgstr "روزنامه های پرداخت"
 
 msgctxt "model:ir.ui.menu,name:menu_payments"
 msgid "Payments"
@@ -674,10 +763,6 @@ msgctxt "view:account.payment.group:"
 msgid "Total Amount"
 msgstr "مقدار"
 
-msgctxt "view:account.payment.process.start:"
-msgid "Process Payments?"
-msgstr "پردازش پرداخت ها؟"
-
 msgctxt "view:account.payment:"
 msgid "Description"
 msgstr "شرح"
@@ -714,11 +799,3 @@ msgstr "انصراف"
 msgctxt "wizard_button:account.move.line.pay,start,next_:"
 msgid "Pay"
 msgstr "پرداخت"
-
-msgctxt "wizard_button:account.payment.process,start,end:"
-msgid "Cancel"
-msgstr "انصراف"
-
-msgctxt "wizard_button:account.payment.process,start,process:"
-msgid "Process"
-msgstr "پردازش"

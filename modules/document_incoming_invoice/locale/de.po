@@ -1,0 +1,25 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:account.invoice,documents_incoming:"
+msgid "Incoming Documents"
+msgstr "Eingehende Dokumente"
+
+msgctxt "field:document.incoming.configuration,default_supplier:"
+msgid "Default Supplier"
+msgstr "Voreinstellung Lieferant"
+
+msgctxt "model:ir.message,text:msg_supplier_invoice_company"
+msgid "To process document \"%(document)s\" you must set a company on it."
+msgstr ""
+"Um das Dokument \"%(document)s\" zu verarbeiten muss ein Unternehmen erfasst"
+" werden."
+
+msgctxt "selection:document.incoming,type:"
+msgid "Supplier Invoice"
+msgstr "Lieferantenrechnung"
+
+msgctxt "view:document.incoming.configuration:"
+msgid "Supplier Invoice"
+msgstr "Lieferantenrechnung"

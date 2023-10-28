@@ -95,7 +95,7 @@ msgstr "Izbira špediterja"
 
 msgctxt "model:ir.ui.menu,name:menu_configuration"
 msgid "Configuration"
-msgstr ""
+msgstr "Konfiguracija"
 
 #, fuzzy
 msgctxt "model:res.group,name:group_carrier_admin"

@@ -14,17 +14,14 @@ msgctxt "field:purchase.request,computed_quantity:"
 msgid "Computed Quantity"
 msgstr "Quantidade Calculada"
 
-msgctxt "field:purchase.request,computed_uom:"
-msgid "Computed UOM"
+#, fuzzy
+msgctxt "field:purchase.request,computed_unit:"
+msgid "Computed Unit"
 msgstr "UDM Calculada"
 
 #, fuzzy
 msgctxt "field:purchase.request,default_uom:"
-msgid "Default UOM"
-msgstr "Dígitos Decimais Padrões da UDM"
-
-msgctxt "field:purchase.request,default_uom_digits:"
-msgid "Default UOM Digits"
+msgid "Default UoM"
 msgstr "Dígitos Decimais Padrões da UDM"
 
 msgctxt "field:purchase.request,description:"
@@ -48,7 +45,7 @@ msgid "Product"
 msgstr "Produto"
 
 msgctxt "field:purchase.request,product_uom_category:"
-msgid "Product Uom Category"
+msgid "Product UoM Category"
 msgstr ""
 
 msgctxt "field:purchase.request,purchase:"
@@ -88,13 +85,9 @@ msgctxt "field:purchase.request,supply_date:"
 msgid "Expected Supply Date"
 msgstr "Data Esperada de Abastecimento"
 
-msgctxt "field:purchase.request,uom:"
-msgid "UOM"
-msgstr "UDM"
-
-msgctxt "field:purchase.request,uom_digits:"
-msgid "UOM Digits"
-msgstr "Dígitos Decimais da UDM"
+msgctxt "field:purchase.request,unit:"
+msgid "Unit"
+msgstr ""
 
 msgctxt "field:purchase.request,warehouse:"
 msgid "Warehouse"
@@ -119,6 +112,14 @@ msgstr "Fornecedor"
 msgctxt "field:purchase.request.create_purchase.ask_party,product:"
 msgid "Product"
 msgstr "Produto"
+
+msgctxt "help:purchase.request,default_uom:"
+msgid "The default Unit of Measure."
+msgstr ""
+
+msgctxt "help:purchase.request,product_uom_category:"
+msgid "The category of Unit of Measure for the product."
+msgstr ""
 
 #, fuzzy
 msgctxt "model:ir.action,name:act_open_purchase_form"

@@ -250,6 +250,10 @@ msgstr "Keresés..."
 msgid "Create..."
 msgstr "Létrehozás..."
 
+#, fuzzy
+msgid "Create \"%1\"..."
+msgstr "Létrehozás..."
+
 msgid "Download"
 msgstr "Letöltés"
 
@@ -450,6 +454,9 @@ msgstr "Adatkitöltés ellenőrzése"
 msgid ":"
 msgstr ":"
 
+msgid "Scan"
+msgstr ""
+
 msgid "Translate"
 msgstr "Fordítás"
 
@@ -518,17 +525,20 @@ msgstr ""
 msgid "%1%"
 msgstr ""
 
-msgid ": "
-msgstr ": "
+msgid "Menu"
+msgstr ""
 
-msgid "Customize"
+msgid "Copy"
+msgstr ""
+
+msgid "#ERROR"
 msgstr ""
 
 msgid "More"
 msgstr ""
 
-msgid "#ERROR"
-msgstr ""
+msgid ": "
+msgstr ": "
 
 msgid "Today"
 msgstr "Ma"
@@ -552,6 +562,19 @@ msgid "Select your action"
 msgstr "Válasszon műveletet"
 
 msgid "No action defined."
+msgstr ""
+
+msgid "Discard changes"
+msgstr ""
+
+msgid "Save and New"
+msgstr ""
+
+#, fuzzy
+msgid "Add and New"
+msgstr "Mezőnevek hozzáadása"
+
+msgid "Apply changes"
 msgstr ""
 
 msgid "Attachments (%1)"
@@ -627,7 +650,7 @@ msgstr "Először adja meg a betöltendő fájlt."
 msgid "Detection failed"
 msgstr ""
 
-msgid "Error processing the file at field %1."
+msgid "Unknown column header \"%1\""
 msgstr ""
 
 msgid "Error"
@@ -726,6 +749,15 @@ msgstr "Küldés"
 
 msgid "Remove File"
 msgstr "Fájl eltávolítása"
+
+msgid "Code Scanner"
+msgstr ""
+
+msgid "Code"
+msgstr ""
+
+msgid "Toggle Sound"
+msgstr ""
 
 msgid "Wizard"
 msgstr ""

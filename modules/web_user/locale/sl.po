@@ -4,15 +4,15 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "field:web.user,email:"
 msgid "E-mail"
-msgstr "e-naslov"
+msgstr "E-pošta"
 
 msgctxt "field:web.user,email_token:"
 msgid "E-mail Token"
-msgstr "Žeton e-naslova"
+msgstr "Žeton e-pošte"
 
 msgctxt "field:web.user,email_valid:"
 msgid "E-mail Valid"
-msgstr "e-naslov veljaven"
+msgstr "E-pošta veljavna"
 
 msgctxt "field:web.user,party:"
 msgid "Party"
@@ -36,29 +36,27 @@ msgstr "Zapadlost ponastavitvenga žetona"
 
 msgctxt "field:web.user,secondary_parties:"
 msgid "Secondary Parties"
-msgstr ""
+msgstr "Sekundarni partnerji"
 
-#, fuzzy
 msgctxt "field:web.user-party.party.secondary,party:"
 msgid "Party"
 msgstr "Partner"
 
-#, fuzzy
 msgctxt "field:web.user-party.party.secondary,user:"
 msgid "User"
 msgstr "Uporabnik"
 
 msgctxt "field:web.user.authenticate.attempt,device_cookie:"
 msgid "Device Cookie"
-msgstr ""
+msgstr "Piškotek naprave"
 
 msgctxt "field:web.user.authenticate.attempt,ip_address:"
 msgid "IP Address"
-msgstr ""
+msgstr "IP naslov"
 
 msgctxt "field:web.user.authenticate.attempt,ip_network:"
 msgid "IP Network"
-msgstr ""
+msgstr "IP omrežje"
 
 msgctxt "field:web.user.authenticate.attempt,login:"
 msgid "Login"
@@ -72,33 +70,33 @@ msgctxt "field:web.user.session,user:"
 msgid "User"
 msgstr "Uporabnik"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_user_form"
 msgid "Web Users"
-msgstr "Web Users"
+msgstr "Spletni uporabniki"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_user_form_party"
 msgid "Web Users"
-msgstr "Web Users"
+msgstr "Spletni uporabniki"
 
-#, fuzzy
 msgctxt "model:ir.action,name:report_email_reset_password"
 msgid "Reset Password"
-msgstr "Reset Password"
+msgstr "Ponastavi gesla"
 
-#, fuzzy
 msgctxt "model:ir.action,name:report_email_validation"
 msgid "Email Validation"
-msgstr "Email Validation"
+msgstr "Preverjanje e-poštnega naslova"
+
+msgctxt "model:ir.message,text:msg_user_email_invalid"
+msgid "The email address \"%(email)s\" for \"%(user)s\" is not valid."
+msgstr "E-poštni naslov \"%(email)s\" uporabnika \"%(user)s\" ni veljaven."
 
 msgctxt "model:ir.message,text:msg_user_email_unique"
 msgid "E-mail of active web user must be unique."
-msgstr ""
+msgstr "E-poštni naslov aktivnega spletnega uporabnika mora biti edinstven."
 
 msgctxt "model:ir.message,text:msg_user_session_key_unique"
 msgid "Web user session key must be unique."
-msgstr ""
+msgstr "Ključ seje spletnega uporabnika mora biti edinstven."
 
 msgctxt "model:ir.model.button,string:user_reset_password_button"
 msgid "Reset Password"
@@ -106,21 +104,19 @@ msgstr "Reset Password"
 
 msgctxt "model:ir.model.button,string:user_validate_email_button"
 msgid "Validate E-mail"
-msgstr "Validate E-mail"
+msgstr "Potrdi e-pošto"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_user_form"
 msgid "Web Users"
-msgstr "Web Users"
+msgstr "Spletni uporabniki"
 
 msgctxt "model:web.user,name:"
 msgid "Web User"
 msgstr "Spletni uporabnik"
 
-#, fuzzy
 msgctxt "model:web.user-party.party.secondary,name:"
 msgid "Web User - Secondary Party"
-msgstr "Seja spletnega uporabnika"
+msgstr "Spletni uporabnik - sekundarni partner"
 
 msgctxt "model:web.user.authenticate.attempt,name:"
 msgid "Web User Authenticate Attempt"
@@ -144,21 +140,20 @@ msgstr "Ponastavitev gesla"
 
 msgctxt "report:web.user.email_reset_password:"
 msgid "The link will expire in [1:%(datetime)s]."
-msgstr ""
+msgstr "Povezava bo potekla čez [1:%(datetime)s]."
 
-#, fuzzy
 msgctxt "report:web.user.email_reset_password:"
 msgid ""
 "We received a request to reset the password for your account: %(email)s"
-msgstr "Prejeli smo zahtevek za ponastavitev gesla vašega računa,"
+msgstr "Prejeli smo zahtevek za ponastavitev gesla vašega računa: %(email)s"
 
 msgctxt "report:web.user.email_validation:"
 msgid "%(email)s"
-msgstr ""
+msgstr "%(email)s"
 
 msgctxt "report:web.user.email_validation:"
 msgid "Button is not working? Paste this into your browser:"
-msgstr "Gumb ne deluje? Prilepite sledeče v vaš brskalnik:"
+msgstr "Gumb ne deluje? Prilepite to povezavo v vaš brskalnik:"
 
 msgctxt "report:web.user.email_validation:"
 msgid "Email Validation"

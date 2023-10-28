@@ -484,99 +484,14 @@ msgid "Year"
 msgstr "Година"
 
 #, fuzzy
-msgctxt "view:sale.opportunity.reporting.conversion.employee.time_series:"
-msgid "Lost"
-msgstr "Изгубен"
-
-#, fuzzy
-msgctxt "view:sale.opportunity.reporting.conversion.employee.time_series:"
-msgid "Won"
-msgstr "Уон"
-
-#, fuzzy
-msgctxt "view:sale.opportunity.reporting.conversion.employee.time_series:"
-msgid "Won Amount"
-msgstr "Сума"
-
-#, fuzzy
-msgctxt "view:sale.opportunity.reporting.conversion.time_series:"
-msgid "Lost"
-msgstr "Изгубен"
-
-#, fuzzy
-msgctxt "view:sale.opportunity.reporting.conversion.time_series:"
-msgid "Won"
-msgstr "Уон"
-
-#, fuzzy
-msgctxt "view:sale.opportunity.reporting.conversion.time_series:"
-msgid "Won Amount"
-msgstr "Сума"
-
-#, fuzzy
 msgctxt "view:sale.opportunity.reporting.conversion:"
 msgid "%"
 msgstr "%"
 
 #, fuzzy
-msgctxt "view:sale.opportunity.reporting.conversion:"
-msgid "Lost"
-msgstr "Изгубен"
-
-#, fuzzy
-msgctxt "view:sale.opportunity.reporting.conversion:"
-msgid "Won"
-msgstr "Уон"
-
-#, fuzzy
-msgctxt "view:sale.opportunity.reporting.conversion:"
-msgid "Won Amount"
-msgstr "Сума"
-
-#, fuzzy
-msgctxt "view:sale.opportunity.reporting.main.time_series:"
-msgid "Amount"
-msgstr "Сума"
-
-#, fuzzy
-msgctxt "view:sale.opportunity.reporting.main.time_series:"
-msgid "Converted"
-msgstr "Конвертиран"
-
-#, fuzzy
-msgctxt "view:sale.opportunity.reporting.main.time_series:"
-msgid "Converted Amount"
-msgstr "Конвертирана сума"
-
-#, fuzzy
-msgctxt "view:sale.opportunity.reporting.main.time_series:"
-msgid "Number"
-msgstr "Номер"
-
-#, fuzzy
 msgctxt "view:sale.opportunity.reporting.main:"
 msgid "%"
 msgstr "%"
-
-#, fuzzy
-msgctxt "view:sale.opportunity.reporting.main:"
-msgid "Amount"
-msgstr "Сума"
-
-#, fuzzy
-msgctxt "view:sale.opportunity.reporting.main:"
-msgid "Converted"
-msgstr "Конвертиран"
-
-#, fuzzy
-msgctxt "view:sale.opportunity.reporting.main:"
-msgid "Converted Amount"
-msgstr "Конвертирана сума"
-
-#, fuzzy
-msgctxt "view:sale.opportunity.reporting.main:"
-msgid "Number"
-msgstr "Номер"
 
 #, fuzzy
 msgctxt "view:sale.opportunity:"

@@ -48,7 +48,7 @@ msgstr "Boolean"
 
 msgctxt "field:account.statement.rule.information,char:"
 msgid "Char"
-msgstr "Tekst"
+msgstr "Karakters"
 
 msgctxt "field:account.statement.rule.information,float_high:"
 msgid "Float High"

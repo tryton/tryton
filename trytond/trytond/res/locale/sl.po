@@ -2,7 +2,6 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-#, fuzzy
 msgctxt "field:ir.action,groups:"
 msgid "Groups"
 msgstr "Skupine"
@@ -15,60 +14,50 @@ msgctxt "field:ir.action-res.group,group:"
 msgid "Group"
 msgstr "Skupina"
 
-#, fuzzy
 msgctxt "field:ir.action.act_window,groups:"
 msgid "Groups"
 msgstr "Skupine"
 
-#, fuzzy
 msgctxt "field:ir.action.keyword,groups:"
 msgid "Groups"
 msgstr "Skupine"
 
-#, fuzzy
 msgctxt "field:ir.action.report,groups:"
 msgid "Groups"
 msgstr "Skupine"
 
-#, fuzzy
 msgctxt "field:ir.action.url,groups:"
 msgid "Groups"
 msgstr "Skupine"
 
-#, fuzzy
 msgctxt "field:ir.action.wizard,groups:"
 msgid "Groups"
 msgstr "Skupine"
 
-#, fuzzy
 msgctxt "field:ir.export,groups:"
 msgid "Groups"
 msgstr "Skupine"
 
-#, fuzzy
 msgctxt "field:ir.export,write_groups:"
 msgid "Modification Groups"
-msgstr "Ukrep - Skupina"
+msgstr "Skupine z dovoljenjem za spremembe"
 
 msgctxt "field:ir.export-res.group,export:"
 msgid "Export"
-msgstr ""
+msgstr "Izvoz"
 
-#, fuzzy
 msgctxt "field:ir.export-res.group,group:"
 msgid "Group"
 msgstr "Skupina"
 
 msgctxt "field:ir.export-write-res.group,export:"
 msgid "Export"
-msgstr ""
+msgstr "Izvoz"
 
-#, fuzzy
 msgctxt "field:ir.export-write-res.group,group:"
 msgid "Group"
 msgstr "Skupina"
 
-#, fuzzy
 msgctxt "field:ir.model.button,groups:"
 msgid "Groups"
 msgstr "Skupine"
@@ -89,7 +78,6 @@ msgctxt "field:ir.model.button.rule,group:"
 msgid "Group"
 msgstr "Skupina"
 
-#, fuzzy
 msgctxt "field:ir.rule.group,groups:"
 msgid "Groups"
 msgstr "Skupine"
@@ -112,9 +100,8 @@ msgstr "Uporabniške skupine"
 
 msgctxt "field:ir.sequence.type-res.group,sequence_type:"
 msgid "Sequence Type"
-msgstr "Tip štetja"
+msgstr "Vrsta številčne serije"
 
-#, fuzzy
 msgctxt "field:ir.ui.menu,groups:"
 msgid "Groups"
 msgstr "Skupine"
@@ -149,7 +136,7 @@ msgstr "Naziv"
 
 msgctxt "field:res.group,parent:"
 msgid "Parent"
-msgstr ""
+msgstr "Matična skupina"
 
 msgctxt "field:res.group,rule_groups:"
 msgid "Rules"
@@ -169,7 +156,7 @@ msgstr "Aplikacije"
 
 msgctxt "field:res.user,avatar_badge_url:"
 msgid "Avatar Badge URL"
-msgstr ""
+msgstr "URL avatar značke"
 
 msgctxt "field:res.user,email:"
 msgid "Email"
@@ -207,14 +194,13 @@ msgctxt "field:res.user,password_hash:"
 msgid "Password Hash"
 msgstr "Zgoščena vrednost gesla"
 
-#, fuzzy
 msgctxt "field:res.user,password_reset:"
 msgid "Reset Password"
-msgstr "Reset Password"
+msgstr "Ponastavi geslo"
 
 msgctxt "field:res.user,password_reset_expire:"
 msgid "Reset Password Expire"
-msgstr ""
+msgstr "Potek ponastavitve gesla"
 
 msgctxt "field:res.user,pyson_menu:"
 msgid "PySON Menu"
@@ -270,24 +256,23 @@ msgstr "Uporabnik"
 
 msgctxt "field:res.user.device,cookie:"
 msgid "Cookie"
-msgstr ""
+msgstr "Piškotek"
 
-#, fuzzy
 msgctxt "field:res.user.device,login:"
 msgid "Login"
 msgstr "Prijava"
 
 msgctxt "field:res.user.login.attempt,device_cookie:"
 msgid "Device Cookie"
-msgstr ""
+msgstr "Piškotek naprave"
 
 msgctxt "field:res.user.login.attempt,ip_address:"
 msgid "IP Address"
-msgstr ""
+msgstr "IP naslov"
 
 msgctxt "field:res.user.login.attempt,ip_network:"
 msgid "IP Network"
-msgstr ""
+msgstr "IP omrežje"
 
 msgctxt "field:res.user.login.attempt,login:"
 msgid "Login"
@@ -307,103 +292,97 @@ msgstr "Uporabnik"
 
 msgctxt "help:ir.export,groups:"
 msgid "The user groups that can use the export."
-msgstr ""
+msgstr "Ta uporabniška skupina lahko uporablja izvoze."
 
 msgctxt "help:ir.export,write_groups:"
 msgid "The user groups that can modify the export."
-msgstr ""
+msgstr "Ta uporabniška skupina lahko ureja izvoze."
 
-#, fuzzy
 msgctxt "help:ir.sequence.type,groups:"
 msgid "Groups allowed to edit the sequences of this type."
-msgstr "Skupine, ki omogočajo urejanje ta oštevilčenja"
+msgstr "Skupine, ki omogočajo urejanje šifrantov te vrste."
 
 msgctxt "help:res.group,parent:"
 msgid "The group to inherit accesses from."
-msgstr ""
+msgstr "Skupina od katere se deduje dostop."
 
-#, fuzzy
 msgctxt "help:res.user,actions:"
 msgid "Actions that will be run at login."
-msgstr "Ukrepi, ki se zaženejo ob prijavi"
+msgstr "Ukrepi, ki se zaženejo ob prijavi."
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_group_form"
 msgid "Groups"
-msgstr "Groups"
+msgstr "Skupine"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_user_config"
 msgid "Configure Users"
-msgstr "Configure Users"
+msgstr "Nastavi uporabnike"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_user_form"
 msgid "Users"
-msgstr "Users"
+msgstr "Uporabniki"
 
 msgctxt "model:ir.action,name:report_email_reset_password"
 msgid "Reset Password"
-msgstr "Reset Password"
+msgstr "Ponastavi gesla"
 
 msgctxt "model:ir.action-res.group,name:"
 msgid "Action - Group"
 msgstr "Ukrep - Skupina"
 
-#, fuzzy
 msgctxt "model:ir.export-res.group,name:"
 msgid "Export Group"
-msgstr "Uporabniške skupine"
+msgstr "Skupina izvoz"
 
 msgctxt "model:ir.export-write-res.group,name:"
 msgid "Export Modification Group"
-msgstr ""
+msgstr "Skupina urejanje izvozov"
 
-#, fuzzy
+msgctxt "model:ir.message,text:msg_email_invalid"
+msgid "The email address \"%(email)s\" for \"%(user)s\" is not valid."
+msgstr "E-poštni naslov \"%(email)s\" uporabnika \"%(user)s\" ni veljaven."
+
 msgctxt "model:ir.message,text:msg_password_email"
 msgid "The password cannot be the same as user's email address."
-msgstr "Geslo mora biti različno od elektronskega naslova uporabnika."
+msgstr "Geslo se mora razlikovati od uporabnikovega e-poštnega naslova."
 
-#, fuzzy
 msgctxt "model:ir.message,text:msg_password_forbidden"
 msgid "The password is forbidden."
-msgstr "Geslo je prepovedano."
+msgstr "To geslo ni dovoljeno."
 
 msgctxt "model:ir.message,text:msg_password_length"
 msgid "The password must have at least %(length)i characters."
-msgstr ""
+msgstr "Geslo mora vsebovati najmanj %(length)i znakov."
 
-#, fuzzy
 msgctxt "model:ir.message,text:msg_password_login"
 msgid "The password cannot be the same as user's login."
-msgstr "Geslo mora biti različno od uporabnikove prijave."
+msgstr "Geslo se mora razlikovati od uporabnikovega prijavnega imena."
 
-#, fuzzy
 msgctxt "model:ir.message,text:msg_password_name"
 msgid "The password cannot be the same as user's name."
-msgstr "Geslo mora biti različno od uporabniškega imena."
+msgstr "Geslo se mora razlikovati od uporabniškega imena."
 
 msgctxt "model:ir.message,text:msg_user_delete_forbidden"
 msgid ""
 "For logging purposes users cannot be deleted, instead they should be "
 "deactivated."
-msgstr ""
+msgstr "Uporabnika ni mogoče izbrisati, namesto tega naj se jih deaktivira."
 
 msgctxt "model:ir.message,text:msg_user_password"
 msgid "Password for %(login)s"
-msgstr ""
+msgstr "Geslo za %(login)s"
 
 msgctxt "model:ir.model.button,help:user_reset_password_button"
 msgid "Send by email a new temporary password to the user"
-msgstr "Send by email a new temporary password to the user"
+msgstr "Pošlji uporabniku novo začasno geslo preko elektronske pošte"
 
 msgctxt "model:ir.model.button,string:user_application_cancel_button"
 msgid "Cancel"
-msgstr "Cancel"
+msgstr "Prekliči"
 
 msgctxt "model:ir.model.button,string:user_application_validate_button"
 msgid "Validate"
-msgstr "Validate"
+msgstr "Potrdi"
 
 msgctxt "model:ir.model.button,string:user_reset_password_button"
 msgid "Reset Password"
@@ -415,81 +394,31 @@ msgstr "Model Gumb - Skupina"
 
 msgctxt "model:ir.rule.group,name:rule_group_action"
 msgid "User in groups"
-msgstr ""
-
-msgctxt "model:ir.rule.group,name:rule_group_export_any"
-msgid "Any export"
-msgstr ""
-
-msgctxt "model:ir.rule.group,name:rule_group_export_line_any"
-msgid "Any export"
-msgstr ""
-
-#, fuzzy
-msgctxt "model:ir.rule.group,name:rule_group_export_line_read"
-msgid "User in groups"
-msgstr "Uporabniške skupine"
-
-msgctxt "model:ir.rule.group,name:rule_group_export_line_write"
-msgid "User in modification groups"
-msgstr ""
-
-#, fuzzy
-msgctxt "model:ir.rule.group,name:rule_group_export_read"
-msgid "User in groups"
-msgstr "Uporabniške skupine"
-
-msgctxt "model:ir.rule.group,name:rule_group_export_write"
-msgid "User in modification groups"
-msgstr ""
+msgstr "Uporabnik v skupinah"
 
 msgctxt "model:ir.rule.group,name:rule_group_menu"
 msgid "User in groups"
-msgstr ""
+msgstr "Uporabnik v skupinah"
 
 msgctxt "model:ir.rule.group,name:rule_group_sequence"
 msgid "User in groups"
-msgstr ""
+msgstr "Uporabnik v skupinah"
 
 msgctxt "model:ir.rule.group,name:rule_group_sequence_strict"
 msgid "User in groups"
-msgstr ""
-
-msgctxt "model:ir.rule.group,name:rule_group_session"
-msgid "Own session"
-msgstr ""
-
-msgctxt "model:ir.rule.group,name:rule_group_session_wizard"
-msgid "Own session"
-msgstr ""
-
-msgctxt "model:ir.rule.group,name:rule_group_ui_menu_favorite"
-msgid "Own favorite"
-msgstr ""
+msgstr "Uporabnik v skupinah"
 
 msgctxt "model:ir.rule.group,name:rule_group_user_application"
 msgid "Own user application"
-msgstr ""
+msgstr "Lastne uporabniške aplikacije"
 
 msgctxt "model:ir.rule.group,name:rule_group_user_application_admin"
 msgid "Any user application"
-msgstr ""
+msgstr "Vse uporabniške aplikacije"
 
 msgctxt "model:ir.rule.group,name:rule_group_user_warning"
 msgid "Own warning"
-msgstr ""
-
-msgctxt "model:ir.rule.group,name:rule_group_view_search"
-msgid "Own view search"
-msgstr ""
-
-msgctxt "model:ir.rule.group,name:rule_group_view_search_admin"
-msgid "Any view search"
-msgstr ""
-
-msgctxt "model:ir.rule.group,name:rule_group_view_search_common"
-msgid "Common view search"
-msgstr ""
+msgstr "Lastno opozorilo"
 
 msgctxt "model:ir.rule.group-res.group,name:"
 msgid "Rule Group - Group"
@@ -497,22 +426,19 @@ msgstr "Skupina pravila - Skupina"
 
 msgctxt "model:ir.sequence.type-res.group,name:"
 msgid "Sequence Type - Group"
-msgstr "Tip štetja - Skupina"
+msgstr "Vrsta številčne serije - Skupina"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_group_form"
 msgid "Groups"
-msgstr "Groups"
+msgstr "Skupine"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_res"
 msgid "Users"
-msgstr "Users"
+msgstr "Uporabniki"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_user_form"
 msgid "Users"
-msgstr "Users"
+msgstr "Uporabniki"
 
 msgctxt "model:ir.ui.menu-res.group,name:"
 msgid "UI Menu - Group"
@@ -522,10 +448,9 @@ msgctxt "model:res.group,name:"
 msgid "Group"
 msgstr "Skupina"
 
-#, fuzzy
 msgctxt "model:res.group,name:group_admin"
 msgid "Administration"
-msgstr "Administration"
+msgstr "Skrbnik"
 
 msgctxt "model:res.user,name:"
 msgid "User"
@@ -549,7 +474,7 @@ msgstr "Začetna nastavitev uporabnika"
 
 msgctxt "model:res.user.device,name:"
 msgid "User Device"
-msgstr ""
+msgstr "Uporabniška naprava"
 
 msgctxt "model:res.user.login.attempt,name:"
 msgid "Login Attempt"
@@ -559,10 +484,9 @@ msgctxt "model:res.user.warning,name:"
 msgid "User Warning"
 msgstr "Uporabniško opozorilo"
 
-#, fuzzy
 msgctxt "report:res.user.email_reset_password:"
 msgid "Reset Password"
-msgstr "Reset Password"
+msgstr "Ponastavitev gesla"
 
 msgctxt "report:res.user.email_reset_password:"
 msgid ""
@@ -572,10 +496,15 @@ msgid ""
 "                [6:tryton://%(host)s/%(database)s][7:]\n"
 "                [8:%(http_host)s/#%(database)s]"
 msgstr ""
+"Geslo za vaš uporabniški račun, [1:%(login)s], je bilo ponastavljeno.[2:]\n"
+"                V uporabniških nastavitvah si morate nastaviti novo geslo.[3:]\n"
+"                Povežete se lahko s tem začasnim geslom [4:%(password)s] to[5:]\n"
+"                [6:tryton://%(host)s/%(database)s][7:]\n"
+"                [8:%(http_host)s/#%(database)s]"
 
 msgctxt "report:res.user.email_reset_password:"
 msgid "The password will expire in [1:%(datetime)s]."
-msgstr ""
+msgstr "Geslo poteče v [1:%(datetime)s]."
 
 msgctxt "selection:res.user.application,state:"
 msgid "Cancelled"
@@ -591,13 +520,12 @@ msgstr "Odobreno"
 
 msgctxt "view:res.group:"
 msgid "Access Permissions"
-msgstr "Dostop"
+msgstr "Dovoljenja za dostop"
 
 msgctxt "view:res.group:"
 msgid "Members"
 msgstr "Člani"
 
-#, fuzzy
 msgctxt "view:res.user.config.start:"
 msgid "Be careful that the login must be unique."
 msgstr "Upoštevajte, da mora biti prijava edinstvena."
@@ -608,7 +536,7 @@ msgstr "Sedaj lahko v sistem dodajate uporabnike."
 
 msgctxt "view:res.user:"
 msgid "Access Permissions"
-msgstr "Dostop"
+msgstr "Dovoljenja za dostop"
 
 msgctxt "view:res.user:"
 msgid "Actions"
@@ -640,4 +568,4 @@ msgstr "Dodaj"
 
 msgctxt "wizard_button:res.user.config,user,end:"
 msgid "End"
-msgstr "Zapri"
+msgstr "Zaključi"

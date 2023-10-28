@@ -229,7 +229,7 @@ msgstr "Import"
 
 msgctxt "model:ir.message,text:msg_sale_opportunity_reporting_amount_trend"
 msgid "Amount Trend"
-msgstr "Tendènciaimport"
+msgstr "Tendència import"
 
 msgctxt "model:ir.message,text:msg_sale_opportunity_reporting_conversion_rate"
 msgid "Conversion Rate"
@@ -432,81 +432,13 @@ msgctxt "selection:sale.opportunity.reporting.context,period:"
 msgid "Year"
 msgstr "Any"
 
-msgctxt "view:sale.opportunity.reporting.conversion.employee.time_series:"
-msgid "Lost"
-msgstr "Perdudes"
-
-msgctxt "view:sale.opportunity.reporting.conversion.employee.time_series:"
-msgid "Won"
-msgstr "Guanyades"
-
-msgctxt "view:sale.opportunity.reporting.conversion.employee.time_series:"
-msgid "Won Amount"
-msgstr "Import guanyades"
-
-msgctxt "view:sale.opportunity.reporting.conversion.time_series:"
-msgid "Lost"
-msgstr "Perdudes"
-
-msgctxt "view:sale.opportunity.reporting.conversion.time_series:"
-msgid "Won"
-msgstr "Guanyades"
-
-msgctxt "view:sale.opportunity.reporting.conversion.time_series:"
-msgid "Won Amount"
-msgstr "Import guanyades"
-
 msgctxt "view:sale.opportunity.reporting.conversion:"
 msgid "%"
 msgstr "%"
 
-msgctxt "view:sale.opportunity.reporting.conversion:"
-msgid "Lost"
-msgstr "Perdudes"
-
-msgctxt "view:sale.opportunity.reporting.conversion:"
-msgid "Won"
-msgstr "Guanyades"
-
-msgctxt "view:sale.opportunity.reporting.conversion:"
-msgid "Won Amount"
-msgstr "Import guanyades"
-
-msgctxt "view:sale.opportunity.reporting.main.time_series:"
-msgid "Amount"
-msgstr "Import"
-
-msgctxt "view:sale.opportunity.reporting.main.time_series:"
-msgid "Converted"
-msgstr "Convertides"
-
-msgctxt "view:sale.opportunity.reporting.main.time_series:"
-msgid "Converted Amount"
-msgstr "Import convertides"
-
-msgctxt "view:sale.opportunity.reporting.main.time_series:"
-msgid "Number"
-msgstr "Número"
-
 msgctxt "view:sale.opportunity.reporting.main:"
 msgid "%"
 msgstr "%"
-
-msgctxt "view:sale.opportunity.reporting.main:"
-msgid "Amount"
-msgstr "Import"
-
-msgctxt "view:sale.opportunity.reporting.main:"
-msgid "Converted"
-msgstr "Convertides"
-
-msgctxt "view:sale.opportunity.reporting.main:"
-msgid "Converted Amount"
-msgstr "Import convertides"
-
-msgctxt "view:sale.opportunity.reporting.main:"
-msgid "Number"
-msgstr "Número"
 
 msgctxt "view:sale.opportunity:"
 msgid "%"

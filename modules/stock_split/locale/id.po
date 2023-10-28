@@ -10,12 +10,12 @@ msgctxt "field:stock.move.split.start,quantity:"
 msgid "Quantity"
 msgstr ""
 
-msgctxt "field:stock.move.split.start,uom:"
-msgid "Uom"
+msgctxt "field:stock.move.split.start,unit:"
+msgid "Unit"
 msgstr ""
 
 msgctxt "field:stock.move.split.start,uom_category:"
-msgid "Uom Category"
+msgid "UoM Category"
 msgstr ""
 
 msgctxt "field:stock.shipment.split.start,domain_moves:"
@@ -28,6 +28,10 @@ msgstr "Perpindahan"
 
 msgctxt "help:stock.move.split.start,count:"
 msgid "The limit number of moves."
+msgstr ""
+
+msgctxt "help:stock.move.split.start,uom_category:"
+msgid "The category of Unit of Measure."
 msgstr ""
 
 msgctxt "help:stock.shipment.split.start,moves:"

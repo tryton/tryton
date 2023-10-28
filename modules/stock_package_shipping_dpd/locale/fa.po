@@ -73,10 +73,11 @@ msgstr ""
 "تماس با وب سرویس DPD با پیغام خطای زیر انجام نشد :\n"
 "\"%s\""
 
-msgctxt "model:ir.message,text:msg_shipment_has_reference_number"
+#, fuzzy
+msgctxt "model:ir.message,text:msg_shipment_has_shipping_reference_number"
 msgid ""
 "You cannot create shipping for shipment \"%(shipment)s\" because it has "
-"already a reference number."
+"already a shipping reference number."
 msgstr ""
 "شما نمی توانید حمل و نقل را برای حمل و نقل :\"%(shipment)s\" ایجاد کنید زیرا"
 " قبلا یک شماره مرجع است."

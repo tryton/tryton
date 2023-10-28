@@ -24,7 +24,7 @@ msgstr "Producte"
 
 msgctxt "field:product.component,product_unit_category:"
 msgid "Product Unit Category"
-msgstr "Categoria d'unitats del producte"
+msgstr "Categoria de les unitats del producte"
 
 msgctxt "field:product.component,quantity:"
 msgid "Quantity"
@@ -96,7 +96,7 @@ msgstr "Producte"
 
 msgctxt "field:purchase.line.component,product_unit_category:"
 msgid "Product Unit Category"
-msgstr "Categoria d'unitats del producte"
+msgstr "Categoria de les unitats del producte"
 
 msgctxt "field:purchase.line.component,quantity:"
 msgid "Quantity"
@@ -180,7 +180,7 @@ msgstr "Producte"
 
 msgctxt "field:sale.line.component,product_unit_category:"
 msgid "Product Unit Category"
-msgstr "Categoria d'unitats del producte"
+msgstr "Categoria de les unitats del producte"
 
 msgctxt "field:sale.line.component,quantity:"
 msgid "Quantity"

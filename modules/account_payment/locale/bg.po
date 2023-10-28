@@ -369,11 +369,6 @@ msgid "Payment Journal"
 msgstr "Payment Journals"
 
 #, fuzzy
-msgctxt "model:account.payment.process.start,name:"
-msgid "Process Payment"
-msgstr "Process Payments"
-
-#, fuzzy
 msgctxt "model:ir.action,name:act_move_line_form"
 msgid "Lines to Pay"
 msgstr "Редове за плащане"
@@ -398,19 +393,27 @@ msgid "Payments"
 msgstr "Плащане"
 
 #, fuzzy
+msgctxt "model:ir.action,name:act_payment_form_payable"
+msgid "Payable Payments"
+msgstr "Process Payments"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_payment_form_receivable"
+msgid "Receivable Payments"
+msgstr "За получаване"
+
+#, fuzzy
 msgctxt "model:ir.action,name:act_payment_form_relate_party"
 msgid "Payments"
 msgstr "Плащане"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_payment_group_form"
-msgid "Groups"
-msgstr "Група"
+msgid "Payment Groups"
+msgstr "Payment Groups"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_payment_journal_form"
-msgid "Journals"
-msgstr "Дневник"
+msgid "Payment Journals"
+msgstr "Payment Journals"
 
 msgctxt "model:ir.action,name:act_process_payments"
 msgid "Process Payments"
@@ -432,41 +435,81 @@ msgctxt ""
 msgid "Receivable"
 msgstr "За получаване"
 
-msgctxt "model:ir.action.act_window.domain,name:act_payment_form_domain_all"
+#, fuzzy
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_payment_form_group_open_domain_all"
 msgid "All"
 msgstr "All"
 
 #, fuzzy
-msgctxt "model:ir.action.act_window.domain,name:act_payment_form_domain_draft"
-msgid "Draft"
-msgstr "Проект"
-
 msgctxt ""
-"model:ir.action.act_window.domain,name:act_payment_form_domain_failed"
+"model:ir.action.act_window.domain,name:act_payment_form_group_open_domain_failed"
 msgid "Failed"
 msgstr "Failed"
 
 #, fuzzy
 msgctxt ""
-"model:ir.action.act_window.domain,name:act_payment_form_domain_processing"
+"model:ir.action.act_window.domain,name:act_payment_form_group_open_domain_processing"
 msgid "Processing"
 msgstr "Обработване"
 
 #, fuzzy
 msgctxt ""
-"model:ir.action.act_window.domain,name:act_payment_form_domain_suceeded"
+"model:ir.action.act_window.domain,name:act_payment_form_group_open_domain_succeeded"
 msgid "Succeeded"
 msgstr "Succeeded"
 
 #, fuzzy
 msgctxt ""
-"model:ir.action.act_window.domain,name:act_payment_form_domain_to_approve"
+"model:ir.action.act_window.domain,name:act_payment_form_payable_domain_all"
+msgid "All"
+msgstr "All"
+
+#, fuzzy
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_payment_form_payable_domain_draft"
+msgid "Draft"
+msgstr "Проект"
+
+#, fuzzy
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_payment_form_payable_domain_processing"
+msgid "Processing"
+msgstr "Обработване"
+
+#, fuzzy
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_payment_form_payable_domain_to_approve"
 msgid "To Approve"
 msgstr "Approve"
 
 #, fuzzy
 msgctxt ""
-"model:ir.action.act_window.domain,name:act_payment_form_domain_to_process"
+"model:ir.action.act_window.domain,name:act_payment_form_payable_domain_to_process"
+msgid "To Process"
+msgstr "Обработване"
+
+#, fuzzy
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_payment_form_receivable_domain_all"
+msgid "All"
+msgstr "All"
+
+#, fuzzy
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_payment_form_receivable_domain_draft"
+msgid "Draft"
+msgstr "Проект"
+
+#, fuzzy
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_payment_form_receivable_domain_processing"
+msgid "Processing"
+msgstr "Обработване"
+
+#, fuzzy
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_payment_form_receivable_domain_to_process"
 msgid "To Process"
 msgstr "Обработване"
 
@@ -487,6 +530,30 @@ msgid ""
 "company \"%(company)s\"."
 msgstr ""
 
+msgctxt "model:ir.message,text:msg_move_cancel_payments"
+msgid ""
+"The moves \"%(moves)s\" contain lines with payments, you may want to cancel "
+"them before cancelling."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_move_line_delegate_payments"
+msgid ""
+"The lines \"%(lines)s\" have payments, you may want to cancel them before "
+"delegating."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_move_line_group_payments"
+msgid ""
+"The lines \"%(lines)s\" have payments, you may want to cancel them before "
+"grouping."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_move_line_reschedule_payments"
+msgid ""
+"The lines \"%(lines)s\" have payments, you may want to cancel them before "
+"rescheduling."
+msgstr ""
+
 msgctxt "model:ir.message,text:msg_pay_line_blocked"
 msgid "Line \"%(line)s\" is blocked for payment."
 msgstr ""
@@ -505,9 +572,18 @@ msgctxt "model:ir.message,text:msg_payment_overpay"
 msgid "Payment \"%(payment)s\" overpays line \"%(line)s\"."
 msgstr ""
 
+msgctxt "model:ir.message,text:msg_payment_reconciled"
+msgid "The line \"%(line)s\" of payment \"%(payment)s\" is already reconciled."
+msgstr ""
+
+msgctxt "model:ir.model.button,confirm:payment_process_wizard_button"
+msgid "Are you sure you want to process the payments?"
+msgstr ""
+
+#, fuzzy
 msgctxt "model:ir.model.button,string:move_line_pay_button"
-msgid "Pay Lines"
-msgstr "Pay Lines"
+msgid "Pay"
+msgstr "Плащане"
 
 msgctxt "model:ir.model.button,string:move_line_payment_block_button"
 msgid "Block"
@@ -537,6 +613,11 @@ msgstr "Succeed"
 #, fuzzy
 msgctxt "model:ir.model.button,string:payment_proceed_button"
 msgid "Processing"
+msgstr "Обработване"
+
+#, fuzzy
+msgctxt "model:ir.model.button,string:payment_process_wizard_button"
+msgid "Process"
 msgstr "Обработване"
 
 msgctxt "model:ir.model.button,string:payment_submit_button"
@@ -587,19 +668,22 @@ msgid "Payments"
 msgstr "Плащане"
 
 #, fuzzy
-msgctxt "model:ir.ui.menu,name:menu_payment_form"
-msgid "Payments"
-msgstr "Плащане"
+msgctxt "model:ir.ui.menu,name:menu_payment_form_payable"
+msgid "Payable Payments"
+msgstr "Process Payments"
 
 #, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_payment_form_receivable"
+msgid "Receivable Payments"
+msgstr "За получаване"
+
 msgctxt "model:ir.ui.menu,name:menu_payment_group_form"
-msgid "Groups"
-msgstr "Група"
+msgid "Payment Groups"
+msgstr "Payment Groups"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_payment_journal_form"
-msgid "Journals"
-msgstr "Дневник"
+msgid "Payment Journals"
+msgstr "Payment Journals"
 
 #, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_payments"
@@ -725,11 +809,6 @@ msgid "Total Amount"
 msgstr "Сума"
 
 #, fuzzy
-msgctxt "view:account.payment.process.start:"
-msgid "Process Payments?"
-msgstr "Process Payments"
-
-#, fuzzy
 msgctxt "view:account.payment:"
 msgid "Description"
 msgstr "Описание"
@@ -768,13 +847,3 @@ msgstr "Отказване"
 msgctxt "wizard_button:account.move.line.pay,start,next_:"
 msgid "Pay"
 msgstr "Плащане"
-
-#, fuzzy
-msgctxt "wizard_button:account.payment.process,start,end:"
-msgid "Cancel"
-msgstr "Отказване"
-
-#, fuzzy
-msgctxt "wizard_button:account.payment.process,start,process:"
-msgid "Process"
-msgstr "Обработване"

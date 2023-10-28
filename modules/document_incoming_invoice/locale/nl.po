@@ -1,0 +1,26 @@
+#
+#, fuzzy
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:account.invoice,documents_incoming:"
+msgid "Incoming Documents"
+msgstr "Inkomende documenten"
+
+msgctxt "field:document.incoming.configuration,default_supplier:"
+msgid "Default Supplier"
+msgstr "Standaard leverancier"
+
+msgctxt "model:ir.message,text:msg_supplier_invoice_company"
+msgid "To process document \"%(document)s\" you must set a company on it."
+msgstr ""
+"Om document \"%(document)s\" te verwerken, moet er een bedrijf ingesteld "
+"worden."
+
+msgctxt "selection:document.incoming,type:"
+msgid "Supplier Invoice"
+msgstr "Leverancier factuur"
+
+msgctxt "view:document.incoming.configuration:"
+msgid "Supplier Invoice"
+msgstr "Leverancier factuur"

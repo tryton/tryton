@@ -1044,6 +1044,11 @@ msgid "Description"
 msgstr "Kulum"
 
 #, fuzzy
+msgctxt "field:account.general_ledger.line,description_used:"
+msgid "Description"
+msgstr "Kulum"
+
+#, fuzzy
 msgctxt "field:account.general_ledger.line,internal_balance:"
 msgid "Internal Balance"
 msgstr "Proovibilanss"
@@ -1052,7 +1057,8 @@ msgctxt "field:account.general_ledger.line,move:"
 msgid "Move"
 msgstr "Kanne"
 
-msgctxt "field:account.general_ledger.line,move_description:"
+#, fuzzy
+msgctxt "field:account.general_ledger.line,move_description_used:"
 msgid "Move Description"
 msgstr "Kande kirjeldus"
 
@@ -1262,6 +1268,11 @@ msgctxt "field:account.move,description:"
 msgid "Description"
 msgstr "Kulum"
 
+#, fuzzy
+msgctxt "field:account.move,description_used:"
+msgid "Description"
+msgstr "Kulum"
+
 msgctxt "field:account.move,journal:"
 msgid "Journal"
 msgstr "Andmik"
@@ -1350,6 +1361,11 @@ msgid "Description"
 msgstr "Selgitus"
 
 #, fuzzy
+msgctxt "field:account.move.line,description_used:"
+msgid "Description"
+msgstr "Kulum"
+
+#, fuzzy
 msgctxt "field:account.move.line,has_maturity_date:"
 msgid "Has Maturity Date"
 msgstr "Aegumise kuupäev"
@@ -1366,9 +1382,10 @@ msgctxt "field:account.move.line,move:"
 msgid "Move"
 msgstr "Kanne"
 
-msgctxt "field:account.move.line,move_description:"
+#, fuzzy
+msgctxt "field:account.move.line,move_description_used:"
 msgid "Move Description"
-msgstr "Kande selgitus"
+msgstr "Kande kirjeldus"
 
 msgctxt "field:account.move.line,move_origin:"
 msgid "Move Origin"
@@ -1641,10 +1658,6 @@ msgctxt "field:account.move.template,company:"
 msgid "Company"
 msgstr "Ettevõte"
 
-msgctxt "field:account.move.template,date:"
-msgid "Date"
-msgstr "Kuupäev"
-
 msgctxt "field:account.move.template,description:"
 msgid "Description"
 msgstr "Selgitus"
@@ -1664,6 +1677,11 @@ msgstr "Read"
 msgctxt "field:account.move.template,name:"
 msgid "Name"
 msgstr "Nimetus"
+
+#, fuzzy
+msgctxt "field:account.move.template.create.template,date:"
+msgid "Effective Date"
+msgstr "Kehtiv alates"
 
 msgctxt "field:account.move.template.create.template,period:"
 msgid "Period"
@@ -2336,6 +2354,26 @@ msgctxt "field:account.update_chart.start,account:"
 msgid "Root Account"
 msgstr "Aluskonto"
 
+#, fuzzy
+msgctxt "field:company.company,payable:"
+msgid "Payable"
+msgstr "Tasumine"
+
+#, fuzzy
+msgctxt "field:company.company,payable_today:"
+msgid "Payable Today"
+msgstr "Tasumine täna"
+
+#, fuzzy
+msgctxt "field:company.company,receivable:"
+msgid "Receivable"
+msgstr "Laekumine"
+
+#, fuzzy
+msgctxt "field:company.company,receivable_today:"
+msgid "Receivable Today"
+msgstr "Laekumine täna"
+
 msgctxt "field:party.party,account_payable:"
 msgid "Account Payable"
 msgstr "Võlgade konto"
@@ -2574,8 +2612,9 @@ msgctxt "help:account.move.line.template,amount:"
 msgid "A python expression that will be evaluated with the keywords."
 msgstr "Pythoni tunnus, mis määratakse võtmetunnuseks."
 
+#, fuzzy
 msgctxt "help:account.move.line.template,description:"
-msgid "Keywords values substitutions are identified by braces ('{' and '}')."
+msgid "Keyword value substitutions are identified by braces ('{' and '}')."
 msgstr ""
 "Võtme tunnuste väärtuste asendused defineerida sümbolite vahel ('{' ja '}')"
 
@@ -2592,12 +2631,9 @@ msgctxt "help:account.move.reconciliation,delegate_to:"
 msgid "The line to which the reconciliation status is delegated."
 msgstr "Rida millele nettimise staatus on delegeeritud"
 
-msgctxt "help:account.move.template,date:"
-msgid "Leave empty for today."
-msgstr "Tänase kuupäeva puhul jäta tühjaks"
-
+#, fuzzy
 msgctxt "help:account.move.template,description:"
-msgid "Keyword values substitutions are identified by braces ('{' and '}')."
+msgid "Keyword value substitutions are identified by braces ('{' and '}')."
 msgstr ""
 "Võtme tunnuste väärtuste asendused defineerida sümbolite vahel ('{' ja '}')"
 
@@ -3226,8 +3262,9 @@ msgctxt "model:ir.action,name:act_reconcile_lines"
 msgid "Reconcile Lines"
 msgstr "Saldeeri read"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_reconcile_writeoff_form"
-msgid "WriteOff Methods"
+msgid "Write-off Methods"
 msgstr "Mahakandmise meetodid"
 
 msgctxt "model:ir.action,name:act_renew_fiscalyear"
@@ -3713,6 +3750,30 @@ msgid ""
 "reconcilable."
 msgstr "Rea \"%(ridade)\" nettimiseks tuleb konto \"%(kontod)\" määrata netitavaks."
 
+#, fuzzy
+msgctxt ""
+"model:ir.message,text:msg_reconciliation_currency_exchange_credit_account_missing"
+msgid ""
+"To reconcile lines, you must define a currency exchange credit account for "
+"\"%(company)s\"."
+msgstr "Jätkamiseks määra osapoolele \"%(osapooltele)\" nõude konto."
+
+#, fuzzy
+msgctxt ""
+"model:ir.message,text:msg_reconciliation_currency_exchange_debit_account_missing"
+msgid ""
+"To reconcile lines, you must define a currency exchange debit account for "
+"\"%(company)s\"."
+msgstr "Jätkamiseks määra osapoolele \"%(osapooltele)\" nõude konto."
+
+#, fuzzy
+msgctxt ""
+"model:ir.message,text:msg_reconciliation_currency_exchange_journal_missing"
+msgid ""
+"To reconcile lines, you must define a currency exchange journal for "
+"\"%(company)s\"."
+msgstr "Jätkamiseks määra osapoolele \"%(osapooltele)\" nõude konto."
+
 msgctxt "model:ir.message,text:msg_reconciliation_delete_delegated"
 msgid ""
 "The reconciliation \"%(reconciliation)s\" is delegated to the line \"%(line)s\".\n"
@@ -3746,6 +3807,13 @@ msgid ""
 "To reconcile lines, they must have the same debit \"%(debit)s\" and credit "
 "\"%(credit)s\"."
 msgstr ""
+
+#, fuzzy
+msgctxt "model:ir.message,text:msg_reconciliation_write_off_missing"
+msgid ""
+"To reconcile lines with \"%(amount)s\" write-off, you must select a write-"
+"off method."
+msgstr "Kontole \"%(kontodele)\" rea lisamiseks tuleb määrata tüüp või see avada."
 
 msgctxt "model:ir.message,text:msg_reopen_fiscalyear_later"
 msgid ""
@@ -4073,8 +4141,9 @@ msgctxt "model:ir.ui.menu,name:menu_reconcile"
 msgid "Reconcile Accounts"
 msgstr "Saldeeri kontos"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_reconcile_writeoff_form"
-msgid "WriteOff Methods"
+msgid "Write-off Methods"
 msgstr "Mahakandmise meetodid"
 
 msgctxt "model:ir.ui.menu,name:menu_renew_fiscalyear"
@@ -4555,9 +4624,10 @@ msgctxt "selection:account.configuration.tax_rounding,tax_rounding:"
 msgid "Per Line"
 msgstr "Rea kohta"
 
+#, fuzzy
 msgctxt "selection:account.fiscalyear,state:"
-msgid "Close"
-msgstr "Sulge"
+msgid "Closed"
+msgstr "Suletud"
 
 msgctxt "selection:account.fiscalyear,state:"
 msgid "Locked"
@@ -4613,9 +4683,10 @@ msgctxt "selection:account.journal,type:"
 msgid "Write-Off"
 msgstr "Maha kandmine"
 
+#, fuzzy
 msgctxt "selection:account.journal.period,state:"
-msgid "Close"
-msgstr "Sulge"
+msgid "Closed"
+msgstr "Suletud"
 
 msgctxt "selection:account.journal.period,state:"
 msgid "Open"
@@ -4675,9 +4746,10 @@ msgctxt "selection:account.move.template.keyword,type_:"
 msgid "Party"
 msgstr "Osapool"
 
+#, fuzzy
 msgctxt "selection:account.period,state:"
-msgid "Close"
-msgstr "Sulge"
+msgid "Closed"
+msgstr "Suletud"
 
 msgctxt "selection:account.period,state:"
 msgid "Locked"
@@ -4911,30 +4983,6 @@ msgctxt "view:account.fiscalyear:"
 msgid "Sequences"
 msgstr "Järjestused"
 
-msgctxt "view:account.general_ledger.account:"
-msgid "Credit"
-msgstr "Kreedit"
-
-msgctxt "view:account.general_ledger.account:"
-msgid "Debit"
-msgstr "Deebet"
-
-msgctxt "view:account.general_ledger.account:"
-msgid "End Balance"
-msgstr "Lõppsaldo"
-
-msgctxt "view:account.general_ledger.account:"
-msgid "Start Balance"
-msgstr "Algsaldo"
-
-msgctxt "view:account.general_ledger.line:"
-msgid "Credit"
-msgstr "Kreedit"
-
-msgctxt "view:account.general_ledger.line:"
-msgid "Debit"
-msgstr "Deebet"
-
 msgctxt "view:account.journal.period:"
 msgid "Close"
 msgstr "Sulge"
@@ -4960,14 +5008,6 @@ msgstr "Muu info"
 msgctxt "view:account.move.line:"
 msgid "Balance"
 msgstr "Saldo"
-
-msgctxt "view:account.move.line:"
-msgid "Credit"
-msgstr "Kreedit"
-
-msgctxt "view:account.move.line:"
-msgid "Debit"
-msgstr "Deebet"
 
 msgctxt "view:account.move.line:"
 msgid "Other Info"
@@ -4996,6 +5036,16 @@ msgstr "Üldinformatsioon"
 msgctxt "view:account.update_chart.succeed:"
 msgid "Chart of accounts updated successfully."
 msgstr ""
+
+#, fuzzy
+msgctxt "view:company.company:"
+msgid "Account"
+msgstr "Konto"
+
+#, fuzzy
+msgctxt "view:company.company:"
+msgid "Accounting"
+msgstr "Raamatupidamine"
 
 msgctxt "view:party.party:"
 msgid "Account"

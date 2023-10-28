@@ -20,11 +20,11 @@ msgstr ""
 
 msgctxt "field:quality.alert,origin:"
 msgid "Origin"
-msgstr ""
+msgstr "Izvor"
 
 msgctxt "field:quality.alert,processed_by:"
 msgid "Processed by"
-msgstr ""
+msgstr "Obdelal"
 
 msgctxt "field:quality.alert,resolved_by:"
 msgid "Resolved by"
@@ -52,7 +52,7 @@ msgstr ""
 
 msgctxt "field:quality.configuration.sequence,company:"
 msgid "Company"
-msgstr ""
+msgstr "Družba"
 
 msgctxt "field:quality.configuration.sequence,inspection_sequence:"
 msgid "Inspection Sequence"
@@ -60,7 +60,7 @@ msgstr ""
 
 msgctxt "field:quality.control,company:"
 msgid "Company"
-msgstr ""
+msgstr "Družba"
 
 msgctxt "field:quality.control,frequency:"
 msgid "Frequency"
@@ -140,7 +140,7 @@ msgstr ""
 
 msgctxt "field:quality.inspection,processed_by:"
 msgid "Processed by"
-msgstr ""
+msgstr "Obdelal"
 
 msgctxt "field:quality.inspection,state:"
 msgid "State"
@@ -172,7 +172,7 @@ msgstr ""
 
 msgctxt "model:ir.action,name:act_quality_configuration_form"
 msgid "Configuration"
-msgstr ""
+msgstr "Konfiguracija"
 
 msgctxt "model:ir.action,name:act_quality_control_form"
 msgid "Controls"
@@ -334,7 +334,7 @@ msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_configuration"
 msgid "Configuration"
-msgstr ""
+msgstr "Konfiguracija"
 
 msgctxt "model:ir.ui.menu,name:menu_quality"
 msgid "Quality"
@@ -346,7 +346,7 @@ msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_quality_configuration"
 msgid "Configuration"
-msgstr ""
+msgstr "Konfiguracija"
 
 msgctxt "model:ir.ui.menu,name:menu_quality_control"
 msgid "Controls"

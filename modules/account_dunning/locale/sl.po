@@ -17,7 +17,7 @@ msgstr "Aktivno"
 
 msgctxt "field:account.dunning,age:"
 msgid "Age"
-msgstr ""
+msgstr "Starost"
 
 msgctxt "field:account.dunning,amount:"
 msgid "Amount"
@@ -29,18 +29,16 @@ msgstr "Znesek v drugi valuti"
 
 msgctxt "field:account.dunning,blocked:"
 msgid "Blocked"
-msgstr "Zamrznjeno"
+msgstr "Blokiran"
 
 msgctxt "field:account.dunning,company:"
 msgid "Company"
 msgstr "Družba"
 
-#, fuzzy
 msgctxt "field:account.dunning,currency:"
 msgid "Currency"
-msgstr "Decimalke"
+msgstr "Valuta"
 
-#, fuzzy
 msgctxt "field:account.dunning,date:"
 msgid "Date"
 msgstr "Datum"

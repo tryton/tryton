@@ -2,21 +2,33 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
+#, fuzzy
 msgctxt "field:account.configuration,chorus_login:"
-msgid "Chorus Login"
-msgstr "Chorus kasutajanimi"
+msgid "Login"
+msgstr "Logi sisse"
 
+#, fuzzy
 msgctxt "field:account.configuration,chorus_password:"
-msgid "Chorus Password"
-msgstr "Chorus parool"
+msgid "Password"
+msgstr "Parool"
 
+msgctxt "field:account.configuration,chorus_piste_client_id:"
+msgid "Piste Client ID"
+msgstr ""
+
+msgctxt "field:account.configuration,chorus_piste_client_secret:"
+msgid "Piste Client Secret"
+msgstr ""
+
+#, fuzzy
 msgctxt "field:account.configuration,chorus_service:"
-msgid "Chorus Service"
-msgstr "Chorus teenus"
+msgid "Service"
+msgstr "Teenus"
 
+#, fuzzy
 msgctxt "field:account.configuration,chorus_syntax:"
-msgid "Chorus Syntax"
-msgstr "Chorus süntaks"
+msgid "Syntax"
+msgstr "Süntaks"
 
 msgctxt "field:account.credential.chorus,chorus_login:"
 msgid "Login"
@@ -26,6 +38,14 @@ msgctxt "field:account.credential.chorus,chorus_password:"
 msgid "Password"
 msgstr "Parool"
 
+msgctxt "field:account.credential.chorus,chorus_piste_client_id:"
+msgid "Piste Client ID"
+msgstr ""
+
+msgctxt "field:account.credential.chorus,chorus_piste_client_secret:"
+msgid "Piste Client Secret"
+msgstr ""
+
 msgctxt "field:account.credential.chorus,chorus_service:"
 msgid "Service"
 msgstr "Teenus"
@@ -34,9 +54,21 @@ msgctxt "field:account.credential.chorus,company:"
 msgid "Company"
 msgstr "Ettevõte"
 
+msgctxt "field:account.invoice.chorus,data:"
+msgid "Data"
+msgstr ""
+
+msgctxt "field:account.invoice.chorus,data_file_id:"
+msgid "Data File ID"
+msgstr ""
+
 msgctxt "field:account.invoice.chorus,date:"
 msgid "Date"
 msgstr "Kuupäev"
+
+msgctxt "field:account.invoice.chorus,filename:"
+msgid "Filename"
+msgstr ""
 
 msgctxt "field:account.invoice.chorus,invoice:"
 msgid "Invoice"
@@ -45,6 +77,10 @@ msgstr "Arve"
 msgctxt "field:account.invoice.chorus,number:"
 msgid "Number"
 msgstr "Number"
+
+msgctxt "field:account.invoice.chorus,state:"
+msgid "State"
+msgstr ""
 
 msgctxt "field:account.invoice.chorus,syntax:"
 msgid "Syntax"
@@ -70,6 +106,26 @@ msgctxt "model:ir.action,name:act_invoice_chorus_form"
 msgid "Chorus"
 msgstr "Chorus"
 
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_invoice_chorus_form_domain_all"
+msgid "All"
+msgstr ""
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_invoice_chorus_form_domain_draft"
+msgid "Draft"
+msgstr ""
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_invoice_chorus_form_domain_exception"
+msgid "Exception"
+msgstr ""
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_invoice_chorus_form_domain_sent"
+msgid "Sent"
+msgstr ""
+
 msgctxt "model:ir.message,text:msg_invoice_address_no_siret"
 msgid ""
 "To create a Chorus invoice for \"%(invoice)s\", you must set a SIRET on "
@@ -85,6 +141,14 @@ msgstr "Chorus arvet \"%(arveid)\" ei saa kustutada kuna see \"(%need)\" on saad
 msgctxt "model:ir.message,text:msg_invoice_unique"
 msgid "You can create only one Chorus invoice per invoice."
 msgstr "Luua saab ainult ühe Chorus arve programmi arve kohta"
+
+msgctxt "model:ir.model.button,string:invoice_chorus_send_button"
+msgid "Send"
+msgstr ""
+
+msgctxt "model:ir.model.button,string:invoice_chorus_update_button"
+msgid "Update"
+msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_invoice_chorus_form"
 msgid "Chorus"
@@ -106,8 +170,29 @@ msgctxt "selection:account.credential.chorus,chorus_service:"
 msgid "Qualification"
 msgstr "Kvalifikatsioon"
 
+msgctxt "selection:account.invoice.chorus,state:"
+msgid "Done"
+msgstr ""
+
+msgctxt "selection:account.invoice.chorus,state:"
+msgid "Draft"
+msgstr ""
+
+msgctxt "selection:account.invoice.chorus,state:"
+msgid "Exception"
+msgstr ""
+
+msgctxt "selection:account.invoice.chorus,state:"
+msgid "Sent"
+msgstr ""
+
 msgctxt "selection:ir.cron,method:"
 msgid "Send invoices to Chorus"
+msgstr "Saada arved Chorusesse"
+
+#, fuzzy
+msgctxt "selection:ir.cron,method:"
+msgid "Update invoices from Chorus"
 msgstr "Saada arved Chorusesse"
 
 msgctxt "view:account.configuration:"

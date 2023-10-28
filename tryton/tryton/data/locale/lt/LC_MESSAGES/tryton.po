@@ -151,6 +151,10 @@ msgstr "<i>Ieškoti...</i>"
 msgid "<i>Create...</i>"
 msgstr "<i>Sukurti...</i>"
 
+#, fuzzy, python-format
+msgid "Create \"%s\"..."
+msgstr "Sukūręs naudotojas"
+
 msgid "Value"
 msgstr "Reikšmė"
 
@@ -299,6 +303,9 @@ msgstr "Įsiminti hierarchinio sąrašo būseną"
 
 msgid "Spell Checking"
 msgstr "Rašybos klaidų tikrinimas"
+
+msgid "Play Sound for Code Scanner"
+msgstr ""
 
 msgid "PDA Mode"
 msgstr "PDA režimas"
@@ -457,6 +464,17 @@ msgstr "Perkelti į apačią"
 msgid "Move to parent"
 msgstr "Perkelti į motininį"
 
+#, fuzzy
+msgid "Edition"
+msgstr "Keisti"
+
+#, fuzzy
+msgid "Copy selected rows"
+msgstr "Kopijuoti pažymėtą tekstą"
+
+msgid "Insert copied rows"
+msgstr ""
+
 msgid "Select all"
 msgstr "Pasirinkti viską"
 
@@ -502,6 +520,12 @@ msgstr "Mindaugas"
 #, python-format
 msgid "Attachments (%s)"
 msgstr "Priedai (%s)"
+
+msgid "Code Scanner"
+msgstr ""
+
+msgid "Code"
+msgstr ""
 
 msgid "Profile Editor"
 msgstr "Profilių tvarkymas"
@@ -944,14 +968,24 @@ msgstr "Nuoroda"
 msgid "Delete"
 msgstr "Naikinti"
 
-msgid "New"
-msgstr "Naujas"
+msgid "Discard changes"
+msgstr ""
 
-msgid "Switch"
-msgstr "Perjungti"
+msgid "Save and New"
+msgstr ""
+
+#, fuzzy
+msgid "Add and New"
+msgstr "Pridėti reikšmę"
 
 msgid "Add"
 msgstr "Pridėti"
+
+msgid "Apply changes"
+msgstr ""
+
+msgid "Switch"
+msgstr "Perjungti"
 
 msgid "Remove <Del>"
 msgstr "Šalinti <Del>"
@@ -988,8 +1022,8 @@ msgid "Detection failed"
 msgstr ""
 
 #, python-format
-msgid "Error processing the file at field %s."
-msgstr "Klaida apdorojant failą ties lauku %s."
+msgid "Unknown column header \"%s\""
+msgstr ""
 
 msgid "Error"
 msgstr "Klaida"
@@ -1007,6 +1041,9 @@ msgstr "%d įrašai importuoti."
 
 msgid "Search"
 msgstr "Ieškoti"
+
+msgid "New"
+msgstr "Naujas"
 
 #, python-format
 msgid "Search %s"
@@ -1051,6 +1088,9 @@ msgstr "Išankstinis patikrinimas"
 
 msgid ":"
 msgstr ":"
+
+msgid "Scan"
+msgstr ""
 
 msgid "Image Size"
 msgstr "Paveikslėlio dydis"

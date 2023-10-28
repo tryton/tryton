@@ -2,6 +2,11 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
+#, fuzzy
+msgctxt "field:ir.action,action:"
+msgid "Action"
+msgstr "Дія"
+
 msgctxt "field:ir.action,icon:"
 msgid "Icon"
 msgstr "Піктограма"
@@ -640,9 +645,19 @@ msgctxt "field:ir.export,name:"
 msgid "Name"
 msgstr "Найменування"
 
+#, fuzzy
+msgctxt "field:ir.export,records:"
+msgid "Records"
+msgstr "Записи"
+
 msgctxt "field:ir.export,resource:"
 msgid "Resource"
 msgstr "Ресурс"
+
+#, fuzzy
+msgctxt "field:ir.export,user:"
+msgid "User"
+msgstr "Користувач"
 
 msgctxt "field:ir.export.line,export:"
 msgid "Export"
@@ -1191,6 +1206,10 @@ msgctxt "field:ir.sequence,prefix:"
 msgid "Prefix"
 msgstr "Префікс"
 
+msgctxt "field:ir.sequence,preview:"
+msgid "Preview"
+msgstr ""
+
 msgctxt "field:ir.sequence,sequence_type:"
 msgid "Sequence Type"
 msgstr "Тип послідовності"
@@ -1238,6 +1257,10 @@ msgstr "Кількість цифр"
 msgctxt "field:ir.sequence.strict,prefix:"
 msgid "Prefix"
 msgstr "Префікс"
+
+msgctxt "field:ir.sequence.strict,preview:"
+msgid "Preview"
+msgstr ""
 
 msgctxt "field:ir.sequence.strict,sequence_type:"
 msgid "Sequence Type"
@@ -1655,6 +1678,11 @@ msgctxt "help:ir.export,header:"
 msgid "Check to include field names on the export."
 msgstr ""
 
+#, fuzzy
+msgctxt "help:ir.export,records:"
+msgid "The records on which the export runs."
+msgstr "Записи, над якими виконується дія."
+
 msgctxt "help:ir.lang,code:"
 msgid "RFC 4646 tag."
 msgstr ""
@@ -1722,7 +1750,6 @@ msgstr "Коли завдання можна розпочати."
 msgctxt "help:ir.rule,domain:"
 msgid ""
 "Domain is evaluated with a PYSON context containing:\n"
-"- \"user\" as the current user\n"
 "- \"groups\" as list of ids from the current user"
 msgstr ""
 "Домен оцінюється за контекстом PYSON, що містить:\n"
@@ -1747,6 +1774,30 @@ msgstr "Відображається, коли виникла помилка д�
 msgctxt "help:ir.rule.group,rules:"
 msgid "The rule is satisfied if at least one test is True."
 msgstr "Правило задовольняється, якщо принаймні один тест істинний."
+
+msgctxt "help:ir.sequence,prefix:"
+msgid ""
+"The current date can be used formatted using strftime format suffixed with "
+"underscores: i.e: ${date_Y}"
+msgstr ""
+
+msgctxt "help:ir.sequence,suffix:"
+msgid ""
+"The current date can be used formatted using strftime format suffixed with "
+"underscores: i.e: ${date_Y}"
+msgstr ""
+
+msgctxt "help:ir.sequence.strict,prefix:"
+msgid ""
+"The current date can be used formatted using strftime format suffixed with "
+"underscores: i.e: ${date_Y}"
+msgstr ""
+
+msgctxt "help:ir.sequence.strict,suffix:"
+msgid ""
+"The current date can be used formatted using strftime format suffixed with "
+"underscores: i.e: ${date_Y}"
+msgstr ""
 
 msgctxt "help:ir.trigger,condition:"
 msgid ""
@@ -1852,8 +1903,9 @@ msgctxt "model:ir.action,name:act_menu_tree"
 msgid "Menu"
 msgstr "Меню"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_message_form"
-msgid "Message"
+msgid "Messages"
 msgstr "Повідомлення"
 
 msgctxt "model:ir.action,name:act_model_access_form"
@@ -2940,6 +2992,12 @@ msgstr ""
 "Ви не можете експортувати переклад \"%(name)s\", оскільки він був "
 "перевизначений модулем \"%(overriding_module)s\"."
 
+msgctxt "model:ir.message,text:msg_trigger_exclusive"
+msgid ""
+"You can not select \"On Time\" and any other on the same time, they are "
+"mutually exclusive."
+msgstr ""
+
 msgctxt "model:ir.message,text:msg_trigger_invalid_condition"
 msgid ""
 "Condition \"%(condition)s\" is not a valid PYSON expression for trigger "
@@ -2963,6 +3021,10 @@ msgstr "Недійсний XML для перегляду \"%(name)s\"."
 msgctxt "model:ir.message,text:msg_view_search_invalid_domain"
 msgid "Invalid domain or search criteria \"%(domain)s\" for search \"%(search)s\"."
 msgstr "Недійсний домен або критерії пошуку \"%(domain)s\" для пошуку \"%(search)s\"."
+
+msgctxt "model:ir.message,text:msg_view_tree_optional_type"
+msgid "You cannot store optional on view \"%(view)s\"."
+msgstr ""
 
 #, fuzzy
 msgctxt "model:ir.message,text:msg_write_error"
@@ -3305,8 +3367,9 @@ msgctxt "model:ir.ui.menu,name:menu_menu_list"
 msgid "Menu"
 msgstr "Меню"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_message_form"
-msgid "Message"
+msgid "Messages"
 msgstr "Повідомлення"
 
 msgctxt "model:ir.ui.menu,name:menu_model_access_form"
@@ -3452,6 +3515,26 @@ msgstr "Стан дерев"
 msgctxt "model:ir.ui.view_tree_width,name:"
 msgid "View Tree Width"
 msgstr "Ширини колонок"
+
+#, fuzzy
+msgctxt "selection:ir.action,action:"
+msgid "Report"
+msgstr "Звіт"
+
+#, fuzzy
+msgctxt "selection:ir.action,action:"
+msgid "URL"
+msgstr "URL-адреси"
+
+#, fuzzy
+msgctxt "selection:ir.action,action:"
+msgid "Window"
+msgstr "Вікно"
+
+#, fuzzy
+msgctxt "selection:ir.action,action:"
+msgid "Wizard"
+msgstr "Майстри"
 
 msgctxt "selection:ir.action,records:"
 msgid "Listed"
@@ -3673,6 +3756,16 @@ msgctxt "selection:ir.error,state:"
 msgid "Solved"
 msgstr "Вирішено"
 
+#, fuzzy
+msgctxt "selection:ir.export,records:"
+msgid "Listed"
+msgstr "Перераховані"
+
+#, fuzzy
+msgctxt "selection:ir.export,records:"
+msgid "Selected"
+msgstr "Вибрані"
+
 msgctxt "selection:ir.lang,direction:"
 msgid "Left-to-right"
 msgstr "Зліва-направо"
@@ -3832,25 +3925,9 @@ msgctxt "selection:ir.ui.view,type:"
 msgid "Tree"
 msgstr "Дерево"
 
-msgctxt "view:ir.action.act_window:"
-msgid "General"
-msgstr "Загальний"
-
 msgctxt "view:ir.action.report:"
 msgid "Edit"
 msgstr "Редагувати"
-
-msgctxt "view:ir.action.report:"
-msgid "General"
-msgstr "Загальний"
-
-msgctxt "view:ir.action.url:"
-msgid "General"
-msgstr "Загальний"
-
-msgctxt "view:ir.action.wizard:"
-msgid "General"
-msgstr "Загальний"
 
 msgctxt "view:ir.action:"
 msgid "General"
@@ -4005,42 +4082,6 @@ msgctxt "view:ir.rule.group:"
 msgid "The rule is satisfied if at least one test is True."
 msgstr "Правило задовольняється, якщо принаймні один тест істинний."
 
-msgctxt "view:ir.sequence:"
-msgid "${day}"
-msgstr "${day}"
-
-msgctxt "view:ir.sequence:"
-msgid "${month}"
-msgstr "${month}"
-
-msgctxt "view:ir.sequence:"
-msgid "${year}"
-msgstr "${year}"
-
-msgctxt "view:ir.sequence:"
-msgid "Day:"
-msgstr "День:"
-
-msgctxt "view:ir.sequence:"
-msgid "Incremental"
-msgstr "Інкрементальний"
-
-msgctxt "view:ir.sequence:"
-msgid "Legend (Placeholders for prefix, suffix)"
-msgstr "Легенда (заповнювачі для префікса, суфікса)"
-
-msgctxt "view:ir.sequence:"
-msgid "Month:"
-msgstr "Місяць:"
-
-msgctxt "view:ir.sequence:"
-msgid "Timestamp"
-msgstr "Часова позначка"
-
-msgctxt "view:ir.sequence:"
-msgid "Year:"
-msgstr "Рік:"
-
 msgctxt "view:ir.translation.clean.start:"
 msgid "Clean Translations?"
 msgstr "Очистити переклади?"
@@ -4056,6 +4097,11 @@ msgstr "Синхронізувати переклади?"
 msgctxt "view:ir.translation.set.succeed:"
 msgid "Translations set successfully."
 msgstr "Переклади успішно встановлено."
+
+#, fuzzy
+msgctxt "view:ir.ui.menu:"
+msgid "Actions"
+msgstr "Дії"
 
 msgctxt "wizard_button:ir.lang.config,start,end:"
 msgid "Cancel"

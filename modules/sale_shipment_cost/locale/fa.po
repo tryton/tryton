@@ -45,6 +45,30 @@ msgctxt "field:sale.sale,shipment_cost_method:"
 msgid "Shipment Cost Method"
 msgstr "متد هزینه حمل و نقل"
 
+#, fuzzy
+msgctxt "field:sale.sale,shipment_costs:"
+msgid "Shipment Costs"
+msgstr "هزینه حمل ونقل"
+
+msgctxt "field:stock.shipment.cost_sale,amount:"
+msgid "Amount"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:stock.shipment.cost_sale,currency:"
+msgid "Currency"
+msgstr "واحد پول هزینه"
+
+#, fuzzy
+msgctxt "field:stock.shipment.cost_sale,sale:"
+msgid "Sale"
+msgstr "هزینه"
+
+#, fuzzy
+msgctxt "field:stock.shipment.cost_sale,shipment:"
+msgid "Shipment"
+msgstr "در حمل ونقل"
+
 msgctxt "field:stock.shipment.out,cost_invoice_line:"
 msgid "Cost Invoice Line"
 msgstr "سطر هزینه صورتحساب"
@@ -72,6 +96,11 @@ msgstr "واحد پول هزینه"
 #, fuzzy
 msgctxt "field:stock.shipment.out,cost_sale_used:"
 msgid "Cost Sale"
+msgstr "هزینه"
+
+#, fuzzy
+msgctxt "field:stock.shipment.out,cost_sales:"
+msgid "Cost Sales"
 msgstr "هزینه"
 
 #, fuzzy
@@ -107,6 +136,11 @@ msgstr ""
 "برای صورتحساب هزینه حمل و نقل :\"%(shipment)s\"شما باید یک حساب درآمد برای "
 "محصول :\"%(product)s\" تعریف کنید."
 
+#, fuzzy
+msgctxt "model:stock.shipment.cost_sale,name:"
+msgid "Shipment Cost Sale"
+msgstr "هزینه حمل ونقل"
+
 msgctxt "selection:sale.sale,shipment_cost_method:"
 msgid "None"
 msgstr ""
@@ -118,6 +152,10 @@ msgstr "در دستور"
 msgctxt "selection:sale.sale,shipment_cost_method:"
 msgid "On Shipment"
 msgstr "در حمل ونقل"
+
+msgctxt "selection:stock.shipment.cost_sale,shipment:"
+msgid "Customer"
+msgstr ""
 
 #, fuzzy
 msgctxt "view:sale.promotion:"

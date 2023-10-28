@@ -138,7 +138,7 @@ msgid ""
 "You can not change the SII setting for period \"%(period)s\" because there "
 "are already posted invoices."
 msgstr ""
-"No podeu canviar la configuració SII del període \"%(period)\"s perquè ja te"
+"No podeu canviar la configuració SII del període \"%(period)s\" perquè ja te"
 " factures comptabilitzades."
 
 msgctxt "model:ir.message,text:msg_missing_sii_url"

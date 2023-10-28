@@ -324,8 +324,8 @@ msgstr "Estado de cuenta"
 
 #, fuzzy
 msgctxt "model:ir.action,name:act_statement_journal_form"
-msgid "Journals"
-msgstr "Libro diario"
+msgid "Statement Journals"
+msgstr "Libro diario de estado de cuenta"
 
 #, fuzzy
 msgctxt "model:ir.action,name:act_statement_line_move"
@@ -483,8 +483,8 @@ msgstr ""
 
 #, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_statement_journal_form"
-msgid "Journals"
-msgstr "Libro diario"
+msgid "Statement Journals"
+msgstr "Libro diario de estado de cuenta"
 
 #, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_statements"
@@ -578,14 +578,6 @@ msgstr "Saldo"
 
 msgctxt "selection:account.statement.journal,validation:"
 msgid "Number of Lines"
-msgstr ""
-
-msgctxt "view:account.statement.line:"
-msgid "Amount"
-msgstr ""
-
-msgctxt "view:account.statement.origin:"
-msgid "Amount"
 msgstr ""
 
 msgctxt "view:account.statement:"

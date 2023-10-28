@@ -2,41 +2,38 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-#, fuzzy
 msgctxt "field:currency.cron,currencies:"
 msgid "Currencies"
 msgstr "货币"
 
-#, fuzzy
 msgctxt "field:currency.cron,currency:"
 msgid "Currency"
 msgstr "货币"
 
 msgctxt "field:currency.cron,day:"
 msgid "Day of Month"
-msgstr ""
+msgstr "每月某天"
 
 msgctxt "field:currency.cron,frequency:"
 msgid "Frequency"
-msgstr ""
+msgstr "频率"
 
 msgctxt "field:currency.cron,last_update:"
 msgid "Last Update"
-msgstr ""
+msgstr "上次更新"
 
 msgctxt "field:currency.cron,source:"
 msgid "Source"
-msgstr ""
+msgstr "来源"
 
 msgctxt "field:currency.cron,weekday:"
 msgid "Day of Week"
-msgstr ""
+msgstr "每周某天"
 
 msgctxt "field:currency.cron-currency.currency,cron:"
 msgid "Cron"
-msgstr ""
+msgstr "计划任务"
 
-#, fuzzy
 msgctxt "field:currency.cron-currency.currency,currency:"
 msgid "Currency"
 msgstr "货币"
@@ -85,24 +82,21 @@ msgctxt "field:currency.currency.rate,rate:"
 msgid "Rate"
 msgstr "汇率"
 
-#, fuzzy
 msgctxt "help:currency.cron,currencies:"
 msgid "The currencies to update the rate."
-msgstr "适用汇率的货币."
+msgstr "需要更新汇率的货币。"
 
-#, fuzzy
 msgctxt "help:currency.cron,currency:"
 msgid "The base currency to fetch rate."
-msgstr "适用汇率的货币."
+msgstr "需要获取汇率的基础货币。"
 
-#, fuzzy
 msgctxt "help:currency.cron,frequency:"
 msgid "How frequently rates must be updated."
-msgstr "货币汇率必须为正数."
+msgstr "多长事件须更新一次汇率。"
 
 msgctxt "help:currency.cron,source:"
 msgid "The external source for rates."
-msgstr ""
+msgstr "汇率外部来源。"
 
 msgctxt "help:currency.currency,code:"
 msgid "The 3 chars ISO currency code."
@@ -144,14 +138,13 @@ msgctxt "help:currency.currency.rate,rate:"
 msgid "The floating exchange rate used to convert the currency."
 msgstr "用于转换货币的浮动汇率."
 
-#, fuzzy
 msgctxt "model:currency.cron,name:"
 msgid "Currency Cron"
-msgstr "货币"
+msgstr "货币 Cron"
 
 msgctxt "model:currency.cron-currency.currency,name:"
 msgid "Currency Cron - Currency"
-msgstr ""
+msgstr "货币 Cron - 货币"
 
 msgctxt "model:currency.currency,name:"
 msgid "Currency"
@@ -163,7 +156,7 @@ msgstr "当日汇率"
 
 msgctxt "model:ir.action,name:act_cron_form"
 msgid "Scheduled Rate Updates"
-msgstr ""
+msgstr "汇率更新计划"
 
 msgctxt "model:ir.action,name:act_currency_form"
 msgid "Currencies"
@@ -183,13 +176,12 @@ msgstr "按日期 \"%(date)s\"， 没有发现货币 \"%(currency)s\" 对应的�
 
 msgctxt "model:ir.model.button,string:cron_run_button"
 msgid "Run"
-msgstr ""
+msgstr "运行"
 
 msgctxt "model:ir.ui.menu,name:menu_cron_form"
 msgid "Scheduled Rate Updates"
-msgstr ""
+msgstr "汇率更新计划"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_currency"
 msgid "Currencies"
 msgstr "货币"
@@ -204,24 +196,23 @@ msgstr "货币管理"
 
 msgctxt "selection:currency.cron,frequency:"
 msgid "Daily"
-msgstr ""
+msgstr "日"
 
 msgctxt "selection:currency.cron,frequency:"
 msgid "Monthly"
-msgstr ""
+msgstr "月"
 
 msgctxt "selection:currency.cron,frequency:"
 msgid "Weekly"
-msgstr ""
+msgstr "周"
 
 msgctxt "selection:currency.cron,source:"
 msgid "European Central Bank"
-msgstr ""
+msgstr "欧洲央行"
 
-#, fuzzy
 msgctxt "selection:ir.cron,method:"
 msgid "Update Currency Rates"
-msgstr "当日汇率"
+msgstr "更新汇率"
 
 msgctxt "view:currency.currency:"
 msgid "Rates"

@@ -40,7 +40,7 @@ msgstr "Entrepôt"
 
 msgctxt "help:account.account.rule,return_:"
 msgid "Check to limit to return operation."
-msgstr "Cocher pour limiter aux opérations de retour."
+msgstr "Cochez pour limiter aux opérations de retour."
 
 msgctxt "model:account.account.rule,name:"
 msgid "Account Rule"

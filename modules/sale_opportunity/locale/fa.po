@@ -471,99 +471,14 @@ msgid "Year"
 msgstr "سال"
 
 #, fuzzy
-msgctxt "view:sale.opportunity.reporting.conversion.employee.time_series:"
-msgid "Lost"
-msgstr "گم شده"
-
-#, fuzzy
-msgctxt "view:sale.opportunity.reporting.conversion.employee.time_series:"
-msgid "Won"
-msgstr "برد"
-
-#, fuzzy
-msgctxt "view:sale.opportunity.reporting.conversion.employee.time_series:"
-msgid "Won Amount"
-msgstr "مقدار برد"
-
-#, fuzzy
-msgctxt "view:sale.opportunity.reporting.conversion.time_series:"
-msgid "Lost"
-msgstr "گم شده"
-
-#, fuzzy
-msgctxt "view:sale.opportunity.reporting.conversion.time_series:"
-msgid "Won"
-msgstr "برد"
-
-#, fuzzy
-msgctxt "view:sale.opportunity.reporting.conversion.time_series:"
-msgid "Won Amount"
-msgstr "مقدار برد"
-
-#, fuzzy
 msgctxt "view:sale.opportunity.reporting.conversion:"
 msgid "%"
 msgstr "%"
 
 #, fuzzy
-msgctxt "view:sale.opportunity.reporting.conversion:"
-msgid "Lost"
-msgstr "گم شده"
-
-#, fuzzy
-msgctxt "view:sale.opportunity.reporting.conversion:"
-msgid "Won"
-msgstr "برد"
-
-#, fuzzy
-msgctxt "view:sale.opportunity.reporting.conversion:"
-msgid "Won Amount"
-msgstr "مقدار برد"
-
-#, fuzzy
-msgctxt "view:sale.opportunity.reporting.main.time_series:"
-msgid "Amount"
-msgstr "مقدار"
-
-#, fuzzy
-msgctxt "view:sale.opportunity.reporting.main.time_series:"
-msgid "Converted"
-msgstr "تبدیل شده"
-
-#, fuzzy
-msgctxt "view:sale.opportunity.reporting.main.time_series:"
-msgid "Converted Amount"
-msgstr "مقدار تبدیل شده"
-
-#, fuzzy
-msgctxt "view:sale.opportunity.reporting.main.time_series:"
-msgid "Number"
-msgstr "شماره"
-
-#, fuzzy
 msgctxt "view:sale.opportunity.reporting.main:"
 msgid "%"
 msgstr "%"
-
-#, fuzzy
-msgctxt "view:sale.opportunity.reporting.main:"
-msgid "Amount"
-msgstr "مقدار"
-
-#, fuzzy
-msgctxt "view:sale.opportunity.reporting.main:"
-msgid "Converted"
-msgstr "تبدیل شده"
-
-#, fuzzy
-msgctxt "view:sale.opportunity.reporting.main:"
-msgid "Converted Amount"
-msgstr "مقدار تبدیل شده"
-
-#, fuzzy
-msgctxt "view:sale.opportunity.reporting.main:"
-msgid "Number"
-msgstr "شماره"
 
 msgctxt "view:sale.opportunity:"
 msgid "%"

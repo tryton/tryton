@@ -93,9 +93,10 @@ msgctxt "field:product.product,sale_price_uom:"
 msgid "Sale Price"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:product.product,sale_uom:"
-msgid "Sale UOM"
-msgstr ""
+msgid "Sale UoM"
+msgstr "Sales"
 
 msgctxt "field:product.sale.context,company:"
 msgid "Company"
@@ -139,9 +140,10 @@ msgctxt "field:product.template,salable:"
 msgid "Salable"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:product.template,sale_uom:"
-msgid "Sale UOM"
-msgstr ""
+msgid "Sale UoM"
+msgstr "Sales"
 
 msgctxt "field:sale.configuration,sale_invoice_method:"
 msgid "Sale Invoice Method"
@@ -255,9 +257,10 @@ msgctxt "field:sale.line,product:"
 msgid "Product"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:sale.line,product_uom_category:"
-msgid "Product Uom Category"
-msgstr ""
+msgid "Product UoM Category"
+msgstr "Sales per Category"
 
 msgctxt "field:sale.line,quantity:"
 msgid "Quantity"
@@ -717,10 +720,18 @@ msgid ""
 "If empty the default lead time from the configuration is used."
 msgstr ""
 
+msgctxt "help:product.product,sale_uom:"
+msgid "The default Unit of Measure for sales."
+msgstr ""
+
 msgctxt "help:product.template,lead_time:"
 msgid ""
 "The time from confirming the sales order to sending the products.\n"
 "If empty the default lead time from the configuration is used."
+msgstr ""
+
+msgctxt "help:product.template,sale_uom:"
+msgid "The default Unit of Measure for sales."
 msgstr ""
 
 msgctxt "help:sale.configuration,sale_process_after:"
@@ -734,6 +745,10 @@ msgid ""
 "The selected invoices will be recreated. The other ones will be ignored."
 msgstr ""
 
+msgctxt "help:sale.line,product_uom_category:"
+msgid "The category of Unit of Measure for the product."
+msgstr ""
+
 msgctxt "help:sale.sale,shipping_date:"
 msgid "When the shipping of goods should start."
 msgstr ""
@@ -744,7 +759,7 @@ msgstr "发票"
 
 msgctxt "model:ir.action,name:act_open_customer"
 msgid "Parties associated to Sales"
-msgstr "Parties associated to Sales"
+msgstr "参与者(销售相关)"
 
 #, fuzzy
 msgctxt "model:ir.action,name:act_product"
@@ -995,6 +1010,12 @@ msgid ""
 "\"%(sale)s\"."
 msgstr ""
 
+msgctxt "model:ir.message,text:msg_sale_line_move_quantity"
+msgid ""
+"The sale line \"%(line)s\" is moving %(extra)s in addition to the "
+"%(quantity)s ordered."
+msgstr ""
+
 msgctxt "model:ir.message,text:msg_sale_line_tax_unique"
 msgid "A tax can be added only once to a sale line."
 msgstr ""
@@ -1082,6 +1103,16 @@ msgctxt "model:ir.model.button,string:sale_handle_shipment_exception_button"
 msgid "Handle Shipment Exception"
 msgstr "Handle Shipment Exception"
 
+#, fuzzy
+msgctxt "model:ir.model.button,string:sale_manual_invoice_button"
+msgid "Create Invoice"
+msgstr "Invoices"
+
+#, fuzzy
+msgctxt "model:ir.model.button,string:sale_manual_shipment_button"
+msgid "Create Shipment"
+msgstr "Shipments"
+
 msgctxt "model:ir.model.button,string:sale_modify_header_button"
 msgid "Modify Header"
 msgstr "Modify Header"
@@ -1129,12 +1160,12 @@ msgstr ""
 
 msgctxt "model:ir.rule.group,name:rule_group_reporting_main_companies"
 msgid "User in companies"
-msgstr ""
+msgstr "公司中的用户"
 
 msgctxt ""
 "model:ir.rule.group,name:rule_group_reporting_main_time_series_companies"
 msgid "User in companies"
-msgstr ""
+msgstr "公司中的用户"
 
 msgctxt ""
 "model:ir.rule.group,name:rule_group_reporting_product_category_companies"
@@ -1148,12 +1179,12 @@ msgstr ""
 
 msgctxt "model:ir.rule.group,name:rule_group_reporting_product_companies"
 msgid "User in companies"
-msgstr ""
+msgstr "公司中的用户"
 
 msgctxt ""
 "model:ir.rule.group,name:rule_group_reporting_product_time_series_companies"
 msgid "User in companies"
-msgstr ""
+msgstr "公司中的用户"
 
 msgctxt "model:ir.rule.group,name:rule_group_sale_companies"
 msgid "User in companies"
@@ -1173,10 +1204,9 @@ msgctxt "model:ir.ui.menu,name:menu_configuration"
 msgid "Configuration"
 msgstr "设置"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_customer"
 msgid "Associated to Sales"
-msgstr "Parties associated to Sales"
+msgstr "销售相关"
 
 #, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_product"
@@ -1185,7 +1215,7 @@ msgstr "Sales per Product"
 
 msgctxt "model:ir.ui.menu,name:menu_reporting"
 msgid "Reporting"
-msgstr "报表"
+msgstr "报告"
 
 msgctxt "model:ir.ui.menu,name:menu_reporting_sale"
 msgid "Sales"
@@ -1615,70 +1645,6 @@ msgstr "注释"
 
 msgctxt "view:sale.line:"
 msgid "Taxes"
-msgstr ""
-
-msgctxt "view:sale.reporting.country.subdivision.time_series:"
-msgid "Number"
-msgstr ""
-
-msgctxt "view:sale.reporting.country.subdivision.time_series:"
-msgid "Revenue"
-msgstr ""
-
-msgctxt "view:sale.reporting.country.time_series:"
-msgid "Number"
-msgstr ""
-
-msgctxt "view:sale.reporting.country.time_series:"
-msgid "Revenue"
-msgstr ""
-
-msgctxt "view:sale.reporting.customer.category.time_series:"
-msgid "Number"
-msgstr ""
-
-msgctxt "view:sale.reporting.customer.category.time_series:"
-msgid "Revenue"
-msgstr ""
-
-msgctxt "view:sale.reporting.customer.time_series:"
-msgid "Number"
-msgstr ""
-
-msgctxt "view:sale.reporting.customer.time_series:"
-msgid "Revenue"
-msgstr ""
-
-msgctxt "view:sale.reporting.main.time_series:"
-msgid "Number"
-msgstr ""
-
-msgctxt "view:sale.reporting.main.time_series:"
-msgid "Revenue"
-msgstr ""
-
-msgctxt "view:sale.reporting.main:"
-msgid "Number"
-msgstr ""
-
-msgctxt "view:sale.reporting.main:"
-msgid "Revenue"
-msgstr ""
-
-msgctxt "view:sale.reporting.product.category.time_series:"
-msgid "Number"
-msgstr ""
-
-msgctxt "view:sale.reporting.product.category.time_series:"
-msgid "Revenue"
-msgstr ""
-
-msgctxt "view:sale.reporting.product.time_series:"
-msgid "Number"
-msgstr ""
-
-msgctxt "view:sale.reporting.product.time_series:"
-msgid "Revenue"
 msgstr ""
 
 msgctxt "view:sale.return_sale.start:"

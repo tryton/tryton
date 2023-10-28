@@ -12,4 +12,4 @@ msgstr "Non-déductible"
 
 msgctxt "help:account.tax.template,non_deductible:"
 msgid "Check to always include the tax amount as expense."
-msgstr "Cocher pour toujours inclure le montant de la taxe comme dépense."
+msgstr "Cochez pour toujours inclure le montant de la taxe comme dépense."

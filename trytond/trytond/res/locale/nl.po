@@ -338,6 +338,10 @@ msgctxt "model:ir.export-write-res.group,name:"
 msgid "Export Modification Group"
 msgstr "Exporteer modificatiegroep"
 
+msgctxt "model:ir.message,text:msg_email_invalid"
+msgid "The email address \"%(email)s\" for \"%(user)s\" is not valid."
+msgstr "Het email adres \"%(email)s\" voor \"%(user)s\" is niet geldig."
+
 msgctxt "model:ir.message,text:msg_password_email"
 msgid "The password cannot be the same as user's email address."
 msgstr ""
@@ -383,7 +387,7 @@ msgstr "Annuleer"
 
 msgctxt "model:ir.model.button,string:user_application_validate_button"
 msgid "Validate"
-msgstr "Bevestigen"
+msgstr "Valideren"
 
 msgctxt "model:ir.model.button,string:user_reset_password_button"
 msgid "Reset Password"
@@ -397,30 +401,6 @@ msgctxt "model:ir.rule.group,name:rule_group_action"
 msgid "User in groups"
 msgstr "Gebruiker in groepen"
 
-msgctxt "model:ir.rule.group,name:rule_group_export_any"
-msgid "Any export"
-msgstr "Elke export"
-
-msgctxt "model:ir.rule.group,name:rule_group_export_line_any"
-msgid "Any export"
-msgstr "Elke export"
-
-msgctxt "model:ir.rule.group,name:rule_group_export_line_read"
-msgid "User in groups"
-msgstr "Gebruiker in groepen"
-
-msgctxt "model:ir.rule.group,name:rule_group_export_line_write"
-msgid "User in modification groups"
-msgstr "Gebruiker in modificatiegroepen"
-
-msgctxt "model:ir.rule.group,name:rule_group_export_read"
-msgid "User in groups"
-msgstr "Gebruiker in groepen"
-
-msgctxt "model:ir.rule.group,name:rule_group_export_write"
-msgid "User in modification groups"
-msgstr "Gebruiker in modificatiegroepen"
-
 msgctxt "model:ir.rule.group,name:rule_group_menu"
 msgid "User in groups"
 msgstr "Gebruiker in groepen"
@@ -433,18 +413,6 @@ msgctxt "model:ir.rule.group,name:rule_group_sequence_strict"
 msgid "User in groups"
 msgstr "Gebruiker in groepen"
 
-msgctxt "model:ir.rule.group,name:rule_group_session"
-msgid "Own session"
-msgstr "Eigen sessie"
-
-msgctxt "model:ir.rule.group,name:rule_group_session_wizard"
-msgid "Own session"
-msgstr "Eigen sessie"
-
-msgctxt "model:ir.rule.group,name:rule_group_ui_menu_favorite"
-msgid "Own favorite"
-msgstr "Eigen favoriet(en)"
-
 msgctxt "model:ir.rule.group,name:rule_group_user_application"
 msgid "Own user application"
 msgstr "Eigen gebruikersapplicatie"
@@ -456,18 +424,6 @@ msgstr "Elke gebruikerstoepassing"
 msgctxt "model:ir.rule.group,name:rule_group_user_warning"
 msgid "Own warning"
 msgstr "Eigen waarschuwing"
-
-msgctxt "model:ir.rule.group,name:rule_group_view_search"
-msgid "Own view search"
-msgstr "Eigen zoek weergave"
-
-msgctxt "model:ir.rule.group,name:rule_group_view_search_admin"
-msgid "Any view search"
-msgstr "Elke weergave zoeken"
-
-msgctxt "model:ir.rule.group,name:rule_group_view_search_common"
-msgid "Common view search"
-msgstr "Gemeenschappelijke zoekfunctie"
 
 msgctxt "model:ir.rule.group-res.group,name:"
 msgid "Rule Group - Group"

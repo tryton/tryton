@@ -2,6 +2,10 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
+msgctxt "field:ir.action,action:"
+msgid "Action"
+msgstr "Acțiune"
+
 msgctxt "field:ir.action,icon:"
 msgid "Icon"
 msgstr "Pictogramă"
@@ -138,7 +142,6 @@ msgctxt "field:ir.action.act_window.view,act_window:"
 msgid "Action"
 msgstr "Acțiune"
 
-#, fuzzy
 msgctxt "field:ir.action.act_window.view,model:"
 msgid "Model"
 msgstr "Model"
@@ -195,10 +198,9 @@ msgctxt "field:ir.action.report,name:"
 msgid "Name"
 msgstr "Denumire"
 
-#, fuzzy
 msgctxt "field:ir.action.report,record_name:"
 msgid "Record Name"
-msgstr "ID de înregistrare"
+msgstr "Denumire Înregistrare"
 
 msgctxt "field:ir.action.report,records:"
 msgid "Records"
@@ -374,7 +376,7 @@ msgstr "Tip"
 
 msgctxt "field:ir.avatar,cache:"
 msgid "Cache"
-msgstr ""
+msgstr "Cache"
 
 #, fuzzy
 msgctxt "field:ir.avatar,copy_to_resources:"
@@ -392,7 +394,7 @@ msgstr "Imagine"
 
 msgctxt "field:ir.avatar,image_id:"
 msgid "Image ID"
-msgstr ""
+msgstr "ID imagine"
 
 msgctxt "field:ir.avatar,last_modification:"
 msgid "Last Modification"
@@ -408,11 +410,11 @@ msgstr "Resursă"
 
 msgctxt "field:ir.avatar,uuid:"
 msgid "UUID"
-msgstr ""
+msgstr "UUID"
 
 msgctxt "field:ir.avatar.cache,avatar:"
 msgid "Avatar"
-msgstr ""
+msgstr "Poza Profil"
 
 msgctxt "field:ir.avatar.cache,image:"
 msgid "Image"
@@ -420,7 +422,7 @@ msgstr "Imagine"
 
 msgctxt "field:ir.avatar.cache,image_id:"
 msgid "Image ID"
-msgstr ""
+msgstr "ID imagine"
 
 msgctxt "field:ir.avatar.cache,size:"
 msgid "Size"
@@ -558,10 +560,9 @@ msgctxt "field:ir.email.template,model_name:"
 msgid "Model Name"
 msgstr "Nume Model"
 
-#, fuzzy
 msgctxt "field:ir.email.template,name:"
 msgid "Name"
-msgstr "Denumire"
+msgstr "Nume"
 
 msgctxt "field:ir.email.template,recipients:"
 msgid "Recipients"
@@ -613,7 +614,7 @@ msgstr "Mesaj"
 
 msgctxt "field:ir.error,origin:"
 msgid "Origin"
-msgstr ""
+msgstr "Origine"
 
 msgctxt "field:ir.error,processed_by:"
 msgid "Processed by"
@@ -621,14 +622,12 @@ msgstr "Procesat de"
 
 msgctxt "field:ir.error,solved_by:"
 msgid "Solved by"
-msgstr ""
+msgstr "Rezolvată de"
 
-#, fuzzy
 msgctxt "field:ir.error,state:"
 msgid "State"
 msgstr "Stare"
 
-#, fuzzy
 msgctxt "field:ir.error,summary:"
 msgid "Summary"
 msgstr "Rezumat"
@@ -645,9 +644,18 @@ msgctxt "field:ir.export,name:"
 msgid "Name"
 msgstr "Denumire"
 
+msgctxt "field:ir.export,records:"
+msgid "Records"
+msgstr "Înregistrări"
+
 msgctxt "field:ir.export,resource:"
 msgid "Resource"
 msgstr "Resursă"
+
+#, fuzzy
+msgctxt "field:ir.export,user:"
+msgid "User"
+msgstr "Utilizator"
 
 msgctxt "field:ir.export.line,export:"
 msgid "Export"
@@ -976,18 +984,16 @@ msgstr "Acțiune"
 
 msgctxt "field:ir.model.log,event:"
 msgid "Event"
-msgstr ""
+msgstr "Eveniment"
 
-#, fuzzy
 msgctxt "field:ir.model.log,resource:"
 msgid "Resource"
 msgstr "Resursă"
 
 msgctxt "field:ir.model.log,target:"
 msgid "Target"
-msgstr ""
+msgstr "Ţintă"
 
-#, fuzzy
 msgctxt "field:ir.model.log,user:"
 msgid "User"
 msgstr "Utilizator"
@@ -1056,14 +1062,13 @@ msgctxt "field:ir.module.dependency,state:"
 msgid "State"
 msgstr "Stare"
 
-#, fuzzy
 msgctxt "field:ir.note,copy_to_resources:"
 msgid "Copy to Resources"
-msgstr "Resursă"
+msgstr "Copiere la Resurse"
 
 msgctxt "field:ir.note,copy_to_resources_visible:"
 msgid "Copy to Resources Visible"
-msgstr ""
+msgstr "Copiere la Resurse Vizibile"
 
 msgctxt "field:ir.note,last_modification:"
 msgid "Last Modification"
@@ -1197,10 +1202,13 @@ msgctxt "field:ir.sequence,prefix:"
 msgid "Prefix"
 msgstr "Prefix"
 
-#, fuzzy
+msgctxt "field:ir.sequence,preview:"
+msgid "Preview"
+msgstr ""
+
 msgctxt "field:ir.sequence,sequence_type:"
 msgid "Sequence Type"
-msgstr "Tipuri de secvență"
+msgstr "Tip de secvență"
 
 msgctxt "field:ir.sequence,suffix:"
 msgid "Suffix"
@@ -1245,6 +1253,10 @@ msgstr "Căptușirea numărului"
 msgctxt "field:ir.sequence.strict,prefix:"
 msgid "Prefix"
 msgstr "Prefix"
+
+msgctxt "field:ir.sequence.strict,preview:"
+msgid "Preview"
+msgstr ""
 
 #, fuzzy
 msgctxt "field:ir.sequence.strict,sequence_type:"
@@ -1323,10 +1335,9 @@ msgctxt "field:ir.translation.export.result,file:"
 msgid "File"
 msgstr "Fişier"
 
-#, fuzzy
 msgctxt "field:ir.translation.export.result,filename:"
 msgid "Filename"
-msgstr "Fişier"
+msgstr "Denumire Fişier"
 
 msgctxt "field:ir.translation.export.result,language:"
 msgid "Language"
@@ -1394,7 +1405,7 @@ msgstr "ID de înregistrare"
 
 msgctxt "field:ir.trigger.log,trigger:"
 msgid "Trigger"
-msgstr ""
+msgstr "Declanșatoare"
 
 msgctxt "field:ir.ui.icon,icon:"
 msgid "Icon"
@@ -1567,7 +1578,7 @@ msgstr "Lăţime"
 
 msgctxt "help:ir.action,records:"
 msgid "The records on which the action runs."
-msgstr ""
+msgstr "Înregistrările pe care se desfășoară acțiunea."
 
 msgctxt "help:ir.action.act_window,context_domain:"
 msgid "Part of the domain that will be evaluated on each refresh."
@@ -1579,7 +1590,7 @@ msgstr "Limită implicită pentru vizualizarea listei."
 
 msgctxt "help:ir.action.act_window,records:"
 msgid "The records on which the action runs."
-msgstr ""
+msgstr "Înregistrările pe care se desfășoară acțiunea."
 
 msgctxt "help:ir.action.act_window,search_value:"
 msgid "Default search criteria for the list view."
@@ -1601,7 +1612,7 @@ msgstr ""
 
 msgctxt "help:ir.action.report,records:"
 msgid "The records on which the action runs."
-msgstr ""
+msgstr "Înregistrările pe care se desfășoară acțiunea."
 
 msgctxt "help:ir.action.report,single:"
 msgid "Check if the template works only for one record."
@@ -1613,11 +1624,11 @@ msgstr "Debifeați pentru a dezactiva traducerile pentru acest raport."
 
 msgctxt "help:ir.action.url,records:"
 msgid "The records on which the action runs."
-msgstr ""
+msgstr "Înregistrările pe care se desfășoară acțiunea."
 
 msgctxt "help:ir.action.wizard,records:"
 msgid "The records on which the action runs."
-msgstr ""
+msgstr "Înregistrările pe care se desfășoară acțiunea."
 
 msgctxt "help:ir.action.wizard,window:"
 msgid "Run wizard in a new window."
@@ -1664,6 +1675,10 @@ msgstr ""
 
 msgctxt "help:ir.export,header:"
 msgid "Check to include field names on the export."
+msgstr ""
+
+msgctxt "help:ir.export,records:"
+msgid "The records on which the export runs."
 msgstr ""
 
 msgctxt "help:ir.lang,code:"
@@ -1734,7 +1749,6 @@ msgstr "Când sarcina poate începe."
 msgctxt "help:ir.rule,domain:"
 msgid ""
 "Domain is evaluated with a PYSON context containing:\n"
-"- \"user\" as the current user\n"
 "- \"groups\" as list of ids from the current user"
 msgstr ""
 "Domeniul este evaluat cu un context PYSON care conține:\n"
@@ -1760,6 +1774,30 @@ msgstr ""
 msgctxt "help:ir.rule.group,rules:"
 msgid "The rule is satisfied if at least one test is True."
 msgstr "Regula este satisfăcută dacă cel puțin un test este adevărat."
+
+msgctxt "help:ir.sequence,prefix:"
+msgid ""
+"The current date can be used formatted using strftime format suffixed with "
+"underscores: i.e: ${date_Y}"
+msgstr ""
+
+msgctxt "help:ir.sequence,suffix:"
+msgid ""
+"The current date can be used formatted using strftime format suffixed with "
+"underscores: i.e: ${date_Y}"
+msgstr ""
+
+msgctxt "help:ir.sequence.strict,prefix:"
+msgid ""
+"The current date can be used formatted using strftime format suffixed with "
+"underscores: i.e: ${date_Y}"
+msgstr ""
+
+msgctxt "help:ir.sequence.strict,suffix:"
+msgid ""
+"The current date can be used formatted using strftime format suffixed with "
+"underscores: i.e: ${date_Y}"
+msgstr ""
 
 msgctxt "help:ir.trigger,condition:"
 msgid ""
@@ -1863,8 +1901,9 @@ msgctxt "model:ir.action,name:act_menu_tree"
 msgid "Menu"
 msgstr "Meniu"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_message_form"
-msgid "Message"
+msgid "Messages"
 msgstr "Mesaj"
 
 msgctxt "model:ir.action,name:act_model_access_form"
@@ -2939,6 +2978,12 @@ msgid ""
 "by module \"%(overriding_module)s\"."
 msgstr ""
 
+msgctxt "model:ir.message,text:msg_trigger_exclusive"
+msgid ""
+"You can not select \"On Time\" and any other on the same time, they are "
+"mutually exclusive."
+msgstr ""
+
 msgctxt "model:ir.message,text:msg_trigger_invalid_condition"
 msgid ""
 "Condition \"%(condition)s\" is not a valid PYSON expression for trigger "
@@ -2959,6 +3004,10 @@ msgstr ""
 msgctxt "model:ir.message,text:msg_view_search_invalid_domain"
 msgid "Invalid domain or search criteria \"%(domain)s\" for search \"%(search)s\"."
 msgstr "Domeniu nevalid din schema \"% (schema) s\"."
+
+msgctxt "model:ir.message,text:msg_view_tree_optional_type"
+msgid "You cannot store optional on view \"%(view)s\"."
+msgstr ""
 
 #, fuzzy
 msgctxt "model:ir.message,text:msg_write_error"
@@ -3306,7 +3355,7 @@ msgstr ""
 
 #, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_message_form"
-msgid "Message"
+msgid "Messages"
 msgstr "Mesaj"
 
 msgctxt "model:ir.ui.menu,name:menu_model_access_form"
@@ -3454,6 +3503,26 @@ msgstr ""
 msgctxt "model:ir.ui.view_tree_width,name:"
 msgid "View Tree Width"
 msgstr ""
+
+#, fuzzy
+msgctxt "selection:ir.action,action:"
+msgid "Report"
+msgstr "Raport"
+
+#, fuzzy
+msgctxt "selection:ir.action,action:"
+msgid "URL"
+msgstr "URL-uri"
+
+#, fuzzy
+msgctxt "selection:ir.action,action:"
+msgid "Window"
+msgstr "Fereastră"
+
+#, fuzzy
+msgctxt "selection:ir.action,action:"
+msgid "Wizard"
+msgstr "Asistenți"
 
 msgctxt "selection:ir.action,records:"
 msgid "Listed"
@@ -3681,6 +3750,15 @@ msgctxt "selection:ir.error,state:"
 msgid "Solved"
 msgstr ""
 
+msgctxt "selection:ir.export,records:"
+msgid "Listed"
+msgstr ""
+
+#, fuzzy
+msgctxt "selection:ir.export,records:"
+msgid "Selected"
+msgstr "Noduri selectate"
+
 msgctxt "selection:ir.lang,direction:"
 msgid "Left-to-right"
 msgstr ""
@@ -3840,25 +3918,9 @@ msgctxt "selection:ir.ui.view,type:"
 msgid "Tree"
 msgstr ""
 
-msgctxt "view:ir.action.act_window:"
-msgid "General"
-msgstr ""
-
 msgctxt "view:ir.action.report:"
 msgid "Edit"
 msgstr ""
-
-msgctxt "view:ir.action.report:"
-msgid "General"
-msgstr ""
-
-msgctxt "view:ir.action.url:"
-msgid "General"
-msgstr "General"
-
-msgctxt "view:ir.action.wizard:"
-msgid "General"
-msgstr "General"
 
 msgctxt "view:ir.action:"
 msgid "General"
@@ -4012,42 +4074,6 @@ msgctxt "view:ir.rule.group:"
 msgid "The rule is satisfied if at least one test is True."
 msgstr ""
 
-msgctxt "view:ir.sequence:"
-msgid "${day}"
-msgstr ""
-
-msgctxt "view:ir.sequence:"
-msgid "${month}"
-msgstr ""
-
-msgctxt "view:ir.sequence:"
-msgid "${year}"
-msgstr ""
-
-msgctxt "view:ir.sequence:"
-msgid "Day:"
-msgstr ""
-
-msgctxt "view:ir.sequence:"
-msgid "Incremental"
-msgstr ""
-
-msgctxt "view:ir.sequence:"
-msgid "Legend (Placeholders for prefix, suffix)"
-msgstr ""
-
-msgctxt "view:ir.sequence:"
-msgid "Month:"
-msgstr ""
-
-msgctxt "view:ir.sequence:"
-msgid "Timestamp"
-msgstr "Ștampila de timp"
-
-msgctxt "view:ir.sequence:"
-msgid "Year:"
-msgstr ""
-
 msgctxt "view:ir.translation.clean.start:"
 msgid "Clean Translations?"
 msgstr ""
@@ -4063,6 +4089,11 @@ msgstr ""
 msgctxt "view:ir.translation.set.succeed:"
 msgid "Translations set successfully."
 msgstr ""
+
+#, fuzzy
+msgctxt "view:ir.ui.menu:"
+msgid "Actions"
+msgstr "Acțiuni"
 
 msgctxt "wizard_button:ir.lang.config,start,end:"
 msgid "Cancel"

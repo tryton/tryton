@@ -6,20 +6,17 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 msgid "Are your sure to leave?"
 msgstr "您确定要离开吗？"
 
-#, fuzzy
 msgid "Incompatible version of the server."
-msgstr "无法连接服务器."
+msgstr "服务器版本不兼容。"
 
 msgid "Version mismatch"
-msgstr ""
+msgstr "版本不匹配"
 
-#, fuzzy
 msgid "Could not connect to the server."
 msgstr "无法连接服务器."
 
-#, fuzzy
 msgid "Connection error"
-msgstr "创建者"
+msgstr "连接错误"
 
 msgid "Favorites"
 msgstr "收藏(_V)"
@@ -93,16 +90,16 @@ msgid "Show this help"
 msgstr "显示此帮助"
 
 msgid "Show/Hide access keys"
-msgstr ""
+msgstr "显示/隐藏访问关键字"
 
 msgid "Help"
-msgstr ""
+msgstr "帮助"
 
 msgid "Close"
 msgstr "关闭"
 
 msgid "Documentation..."
-msgstr ""
+msgstr "文档..."
 
 msgid "Keyboard shortcuts"
 msgstr "键盘快捷键"
@@ -128,12 +125,11 @@ msgstr "数据库"
 msgid "User name"
 msgstr "用户名"
 
-#, fuzzy
 msgid "Login with"
 msgstr "登录"
 
 msgid "Not found."
-msgstr ""
+msgstr "无符合条件的数据."
 
 msgid "Your selection:"
 msgstr "已选择:"
@@ -178,13 +174,13 @@ msgid "Yes"
 msgstr "是"
 
 msgid "True"
-msgstr "True"
+msgstr "真"
 
 msgid "t"
 msgstr "t"
 
 msgid "False"
-msgstr "False"
+msgstr "假"
 
 msgid "Message: "
 msgstr "信息: "
@@ -249,6 +245,9 @@ msgstr "查找..."
 msgid "Create..."
 msgstr "新建..."
 
+msgid "Create \"%1\"..."
+msgstr "新建 \"%1\"..."
+
 msgid "Download"
 msgstr "下载"
 
@@ -256,14 +255,13 @@ msgid "..."
 msgstr "..."
 
 msgid "Bold"
-msgstr ""
+msgstr "粗体"
 
 msgid "Italic"
-msgstr ""
+msgstr "斜体"
 
-#, fuzzy
 msgid "Underline"
-msgstr "回滚"
+msgstr "下划线"
 
 msgid "Font"
 msgstr "字体"
@@ -272,16 +270,16 @@ msgid "Size"
 msgstr "大小"
 
 msgid "Justify Right"
-msgstr ""
+msgstr "右对齐"
 
 msgid "Justify Left"
-msgstr ""
+msgstr "最对齐"
 
 msgid "Justify Center"
-msgstr ""
+msgstr "居中"
 
 msgid "Justify Full"
-msgstr ""
+msgstr "两端对齐"
 
 msgid "Switch view"
 msgstr "切换视图"
@@ -302,7 +300,7 @@ msgid "Reload"
 msgstr "重载"
 
 msgid "View Logs..."
-msgstr "查看日志..."
+msgstr "浏览日志..."
 
 msgid "Show revisions..."
 msgstr "显示修订版本..."
@@ -372,9 +370,8 @@ msgstr "需要选择一条记录."
 msgid "Add..."
 msgstr "添加..."
 
-#, fuzzy
 msgid "Preview"
-msgstr "向前"
+msgstr "预览"
 
 msgid "Template"
 msgstr "模板"
@@ -451,6 +448,9 @@ msgstr "预校验"
 msgid ":"
 msgstr ":"
 
+msgid "Scan"
+msgstr "扫码"
+
 msgid "Translate"
 msgstr "翻译"
 
@@ -508,9 +508,8 @@ msgstr "选择..."
 msgid "Clear"
 msgstr "清除"
 
-#, fuzzy
 msgid "Open..."
-msgstr "打开"
+msgstr "打开..."
 
 msgid "Choose a language"
 msgstr "选择一种语言"
@@ -519,29 +518,32 @@ msgstr "选择一种语言"
 msgid "%1%"
 msgstr "%1%"
 
-msgid ": "
-msgstr ": "
+msgid "Menu"
+msgstr "菜单"
 
-msgid "Customize"
-msgstr ""
+msgid "Copy"
+msgstr "复制"
+
+msgid "#ERROR"
+msgstr "#错误"
 
 msgid "More"
 msgstr "更多"
 
-msgid "#ERROR"
-msgstr ""
+msgid ": "
+msgstr ": "
 
 msgid "Today"
 msgstr "今天"
 
 msgid "Month"
-msgstr "月"
+msgstr "月视图"
 
 msgid "Week"
 msgstr "周"
 
 msgid "Day"
-msgstr "天"
+msgstr "日视图"
 
 msgid ",..."
 msgstr ",..."
@@ -555,19 +557,29 @@ msgstr "选择一项操作"
 msgid "No action defined."
 msgstr "没有定义任何操作 ."
 
+msgid "Discard changes"
+msgstr "放弃更改"
+
+msgid "Save and New"
+msgstr "保存和新建"
+
+msgid "Add and New"
+msgstr "添加和新建"
+
+msgid "Apply changes"
+msgstr "应用更改"
+
 msgid "Attachments (%1)"
 msgstr "附件(%1)"
 
 msgid "Notes (%1)"
 msgstr "注释(%s)"
 
-#, fuzzy
 msgid "Logs (%1)"
-msgstr "注释(%s)"
+msgstr "日志 (%1)"
 
-#, fuzzy
 msgid "Model:"
-msgstr "模型: "
+msgstr "模型:"
 
 msgid "ID:"
 msgstr "标识:"
@@ -578,13 +590,11 @@ msgstr "创建者:"
 msgid "Created at:"
 msgstr "创建日期:"
 
-#, fuzzy
 msgid "Last Modified by:"
-msgstr "修改者"
+msgstr "上次修改人:"
 
-#, fuzzy
 msgid "Last Modified at:"
-msgstr "修改于"
+msgstr "上次修改时间:"
 
 msgid "Search %1"
 msgstr "搜索 %1"
@@ -626,22 +636,20 @@ msgid "You must select an import file first."
 msgstr "必须先选择要导入的文件."
 
 msgid "Detection failed"
-msgstr ""
+msgstr "检测失败"
 
-msgid "Error processing the file at field %1."
-msgstr "处理字段 %s 对应的文件时出错."
+msgid "Unknown column header \"%1\""
+msgstr "未知表头\"%1\""
 
 msgid "Error"
 msgstr "错误"
 
-#, fuzzy
 msgid "Import failed"
-msgstr "导入"
+msgstr "导入失败"
 
-#, fuzzy
 msgid "%1 record imported"
 msgid_plural "%1 records imported"
-msgstr[0] "%1 (记录名称)"
+msgstr[0] "%1 记录已导入"
 
 msgid "CSV Export: %1"
 msgstr "CSV导出：%s"
@@ -682,9 +690,8 @@ msgstr "%1 (字符串)"
 msgid "%1 (model name)"
 msgstr "%1 (模型名称)"
 
-#, fuzzy
 msgid "%1/Record Name"
-msgstr "%1 (记录名称)"
+msgstr "%1/记录名称"
 
 msgid "What is the name of this export?"
 msgstr "导出设置的名称是?"
@@ -692,10 +699,9 @@ msgstr "导出设置的名称是?"
 msgid "Override %1 definition?"
 msgstr "覆盖 %1 的定义?"
 
-#, fuzzy
 msgid "%1 record saved"
 msgid_plural "%1 records saved"
-msgstr[0] "记录保存成功."
+msgstr[0] "%1 记录保存成功"
 
 msgid "E-mail %1"
 msgstr "电子邮件 %1"
@@ -719,14 +725,22 @@ msgid "Attachments"
 msgstr "附件"
 
 msgid "Files"
-msgstr ""
+msgstr "文件"
 
 msgid "Send"
 msgstr "发送"
 
-#, fuzzy
 msgid "Remove File"
-msgstr "删除"
+msgstr "删除文件"
+
+msgid "Code Scanner"
+msgstr "代码扫描仪"
+
+msgid "Code"
+msgstr "代码"
+
+msgid "Toggle Sound"
+msgstr "切换声音"
 
 msgid "Wizard"
 msgstr "向导"

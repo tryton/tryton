@@ -2,6 +2,18 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
+msgctxt "field:account.invoice.line,project_invoice_progresses:"
+msgid "Project Invoice Progresses"
+msgstr ""
+
+msgctxt "field:account.invoice.line,project_invoice_timesheet_duration:"
+msgid "Project Invoice Timesheet Duration"
+msgstr ""
+
+msgctxt "field:account.invoice.line,project_invoice_works:"
+msgid "Project Invoice Works"
+msgstr ""
+
 msgctxt "field:project.work,amount_to_invoice:"
 msgid "Amount to Invoice"
 msgstr ""
@@ -69,9 +81,33 @@ msgctxt "model:ir.action,name:open_invoice"
 msgid "Invoices"
 msgstr "Faktur-Faktur"
 
-msgctxt "model:ir.message,text:msg_delete_invoiced_line"
-msgid "You cannot delete an invoiced line."
+msgctxt "model:ir.message,text:msg_invoiced_timesheet_line_delete"
+msgid ""
+"You cannot delete timesheet line \"%(line)s\" because it has been invoiced."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_invoiced_timesheet_line_modify_duration"
+msgid ""
+"You cannot modify the duration of timesheet line \"%(line)s\" because it has"
+" been invoiced."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_invoiced_timesheet_line_modify_work"
+msgid ""
+"You cannot modify the work of timesheet line \"%(line)s\" because it has "
+"been invoiced."
+msgstr ""
+
+#, fuzzy
+msgctxt "model:ir.message,text:msg_invoiced_work_delete"
+msgid "You cannot delete work \"%(work)s\" because it has been invoiced."
 msgstr "Anda tidak dapat menghapus baris yang ditagih."
+
+msgctxt "model:ir.message,text:msg_invoiced_work_modify_effort"
+msgid ""
+"You cannot modify the effort of work \"%(work)s\" because it has been "
+"invoiced."
+msgstr ""
 
 msgctxt "model:ir.message,text:msg_missing_account_revenue"
 msgid "To invoice work \"%(work)s\" you must configure a default account revenue."
@@ -85,14 +121,16 @@ msgctxt "model:ir.message,text:msg_missing_party"
 msgid "There is no party on work \"%(work)s\"."
 msgstr ""
 
-msgctxt "model:ir.message,text:msg_modify_invoiced_line"
-msgid "You cannot modify an invoiced line."
-msgstr ""
-
 msgctxt "model:ir.message,text:msg_product_missing_account_revenue"
 msgid ""
 "To invoice work \"%(work)s\" you must define an account revenue for product "
 "\"%(product)s\"."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_project_invoice_line_quantity"
+msgid ""
+"The quantity of project invoice line \"%(invoice_line)s\" must be "
+"\"%(quantity)s\"."
 msgstr ""
 
 msgctxt "model:ir.model.button,string:work_invoice_button"

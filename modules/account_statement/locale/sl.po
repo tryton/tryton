@@ -101,7 +101,7 @@ msgstr "Družba"
 
 msgctxt "field:account.statement.journal,company_party:"
 msgid "Company Party"
-msgstr ""
+msgstr "Partner družbe"
 
 msgctxt "field:account.statement.journal,currency:"
 msgid "Currency"
@@ -153,10 +153,9 @@ msgctxt "field:account.statement.line,number:"
 msgid "Number"
 msgstr "Številka"
 
-#, fuzzy
 msgctxt "field:account.statement.line,origin:"
 msgid "Origin"
-msgstr "Origins"
+msgstr "Izvor"
 
 msgctxt "field:account.statement.line,party:"
 msgid "Party"
@@ -343,8 +342,8 @@ msgstr "Statements"
 
 #, fuzzy
 msgctxt "model:ir.action,name:act_statement_journal_form"
-msgid "Journals"
-msgstr "Dnevnik"
+msgid "Statement Journals"
+msgstr "Statement Journals"
 
 #, fuzzy
 msgctxt "model:ir.action,name:act_statement_line_move"
@@ -506,8 +505,8 @@ msgstr "Import Statement"
 
 #, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_statement_journal_form"
-msgid "Journals"
-msgstr "Dnevnik"
+msgid "Statement Journals"
+msgstr "Statement Journals"
 
 #, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_statements"
@@ -601,15 +600,6 @@ msgstr "Bilanca"
 msgctxt "selection:account.statement.journal,validation:"
 msgid "Number of Lines"
 msgstr "Število postavk"
-
-msgctxt "view:account.statement.line:"
-msgid "Amount"
-msgstr "Znesek"
-
-#, fuzzy
-msgctxt "view:account.statement.origin:"
-msgid "Amount"
-msgstr "Znesek"
 
 msgctxt "view:account.statement:"
 msgid "Other Info"

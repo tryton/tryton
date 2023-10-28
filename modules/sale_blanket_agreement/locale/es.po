@@ -83,7 +83,7 @@ msgid "Product"
 msgstr "Producto"
 
 msgctxt "field:sale.blanket_agreement.line,product_uom_category:"
-msgid "Product UOM Category"
+msgid "Product UoM Category"
 msgstr "Categoría UdM del producto"
 
 msgctxt "field:sale.blanket_agreement.line,quantity:"
@@ -121,6 +121,10 @@ msgstr "Linea de acuerdo general"
 msgctxt "field:sale.sale,blanket_agreements:"
 msgid "Blanket Agreements"
 msgstr "Acuerdos generales"
+
+msgctxt "help:sale.blanket_agreement.line,product_uom_category:"
+msgid "The category of Unit of Measure for the product."
+msgstr "La categoría de la unidad de medida del producto."
 
 msgctxt "model:ir.action,name:act_sale_blanket_agreement"
 msgid "Blanket Agreements"

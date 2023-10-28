@@ -109,6 +109,10 @@ msgctxt "field:account.invoice,has_payment_method:"
 msgid "Has Payment Method"
 msgstr "Fizetési mód"
 
+msgctxt "field:account.invoice,has_report_cache:"
+msgid "Has Report Cached"
+msgstr ""
+
 msgctxt "field:account.invoice,invoice_address:"
 msgid "Invoice Address"
 msgstr "Számlázási cím"
@@ -128,6 +132,11 @@ msgstr ""
 msgctxt "field:account.invoice,invoice_report_format:"
 msgid "Invoice Report Format"
 msgstr ""
+
+#, fuzzy
+msgctxt "field:account.invoice,invoice_report_revisions:"
+msgid "Invoice Report Revisions"
+msgstr "Megjegyzés"
 
 msgctxt "field:account.invoice,journal:"
 msgid "Journal"
@@ -177,6 +186,11 @@ msgctxt "field:account.invoice,payment_term_date:"
 msgid "Payment Term Date"
 msgstr "Fizetési feltétel dátuma"
 
+#, fuzzy
+msgctxt "field:account.invoice,posted_by:"
+msgid "Posted By"
+msgstr "lekönyvelt"
+
 msgctxt "field:account.invoice,reconciled:"
 msgid "Reconciled"
 msgstr ""
@@ -201,6 +215,10 @@ msgctxt "field:account.invoice,tax_amount:"
 msgid "Tax"
 msgstr "Adó"
 
+msgctxt "field:account.invoice,tax_amount_cache:"
+msgid "Tax Cache"
+msgstr ""
+
 msgctxt "field:account.invoice,tax_identifier:"
 msgid "Tax Identifier"
 msgstr "Adóazonosító"
@@ -211,6 +229,11 @@ msgstr "Adóbontás"
 
 msgctxt "field:account.invoice,total_amount:"
 msgid "Total"
+msgstr "Összesen"
+
+#, fuzzy
+msgctxt "field:account.invoice,total_amount_cache:"
+msgid "Total Cache"
 msgstr "Összesen"
 
 msgctxt "field:account.invoice,type:"
@@ -224,6 +247,16 @@ msgstr "Típus"
 msgctxt "field:account.invoice,untaxed_amount:"
 msgid "Untaxed"
 msgstr "Nettó"
+
+#, fuzzy
+msgctxt "field:account.invoice,untaxed_amount_cache:"
+msgid "Untaxed Cache"
+msgstr "Nettó"
+
+#, fuzzy
+msgctxt "field:account.invoice,validated_by:"
+msgid "Validated By"
+msgstr "jóváhagyott"
 
 msgctxt "field:account.invoice-account.move.line,invoice:"
 msgid "Invoice"
@@ -342,8 +375,9 @@ msgctxt "field:account.invoice.line,product:"
 msgid "Product"
 msgstr "Termék"
 
+#, fuzzy
 msgctxt "field:account.invoice.line,product_uom_category:"
-msgid "Product Uom Category"
+msgid "Product UoM Category"
 msgstr "Mértékegység kategória"
 
 msgctxt "field:account.invoice.line,quantity:"
@@ -583,6 +617,36 @@ msgctxt "field:account.invoice.payment_term.test.result,date:"
 msgid "Date"
 msgstr "Dátum"
 
+#, fuzzy
+msgctxt "field:account.invoice.report.revision,date:"
+msgid "Date"
+msgstr "Dátum"
+
+#, fuzzy
+msgctxt "field:account.invoice.report.revision,filename:"
+msgid "File Name"
+msgstr "Név"
+
+#, fuzzy
+msgctxt "field:account.invoice.report.revision,invoice:"
+msgid "Invoice"
+msgstr "Számla"
+
+#, fuzzy
+msgctxt "field:account.invoice.report.revision,invoice_report_cache:"
+msgid "Invoice Report"
+msgstr "Számlázó ügyfél"
+
+#, fuzzy
+msgctxt "field:account.invoice.report.revision,invoice_report_cache_id:"
+msgid "Invoice Report ID"
+msgstr "Számlázó ügyfél"
+
+#, fuzzy
+msgctxt "field:account.invoice.report.revision,invoice_report_format:"
+msgid "Invoice Report Format"
+msgstr "Számlázás állapota"
+
 msgctxt "field:account.invoice.tax,account:"
 msgid "Account"
 msgstr "Számla"
@@ -688,6 +752,10 @@ msgctxt "help:account.invoice.credit.start,with_refund:"
 msgid "If true, the current invoice(s) will be cancelled."
 msgstr ""
 
+msgctxt "help:account.invoice.line,product_uom_category:"
+msgid "The category of Unit of Measure for the product."
+msgstr ""
+
 msgctxt "help:account.invoice.line,taxes_date:"
 msgid ""
 "The date at which the taxes are computed.\n"
@@ -774,6 +842,11 @@ msgctxt "model:account.invoice.payment_term.test.result,name:"
 msgid "Test Payment Term"
 msgstr "Fizetési feltétel szimuláció"
 
+#, fuzzy
+msgctxt "model:account.invoice.report.revision,name:"
+msgid "Invoice Report Revision"
+msgstr "Megjegyzés"
+
 msgctxt "model:account.invoice.tax,name:"
 msgid "Invoice Tax"
 msgstr ""
@@ -816,6 +889,11 @@ msgstr "Fizetendő tételek"
 msgctxt "model:ir.action,name:credit"
 msgid "Credit"
 msgstr "Jóváírás"
+
+#, fuzzy
+msgctxt "model:ir.action,name:refresh_invoice_report_wizard"
+msgid "Invoice (revised)"
+msgstr "Számlasor"
 
 msgctxt "model:ir.action,name:report_invoice"
 msgid "Invoice"
@@ -1304,6 +1382,10 @@ msgctxt "view:account.invoice.payment_term.line:"
 msgid "%"
 msgstr "%"
 
+msgctxt "view:account.invoice.report.revision:"
+msgid "Time"
+msgstr ""
+
 msgctxt "view:account.invoice:"
 msgid "Invoice"
 msgstr "Számla"
@@ -1319,18 +1401,6 @@ msgstr "Fizetés"
 msgctxt "view:account.invoice:"
 msgid "Tax Identifier:"
 msgstr "Adóazonosító:"
-
-msgctxt "view:account.move.line:"
-msgid "Amount Second Currency"
-msgstr "Összeg devizában"
-
-msgctxt "view:account.move.line:"
-msgid "Credit"
-msgstr "Követel"
-
-msgctxt "view:account.move.line:"
-msgid "Debit"
-msgstr "Tartozik"
 
 msgctxt "view:company.company:"
 msgid "Invoice"

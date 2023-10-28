@@ -352,6 +352,10 @@ msgctxt "model:ir.export-write-res.group,name:"
 msgid "Export Modification Group"
 msgstr "Galinčių taisyti eksportavimą grupė"
 
+msgctxt "model:ir.message,text:msg_email_invalid"
+msgid "The email address \"%(email)s\" for \"%(user)s\" is not valid."
+msgstr ""
+
 msgctxt "model:ir.message,text:msg_password_email"
 msgid "The password cannot be the same as user's email address."
 msgstr "Slaptažodis negali būti toks pat, kaip naudotojo el.pašto adresas."
@@ -408,31 +412,6 @@ msgctxt "model:ir.rule.group,name:rule_group_action"
 msgid "User in groups"
 msgstr "Naudotojo grupės"
 
-msgctxt "model:ir.rule.group,name:rule_group_export_any"
-msgid "Any export"
-msgstr "Bet koks eksportavimas"
-
-msgctxt "model:ir.rule.group,name:rule_group_export_line_any"
-msgid "Any export"
-msgstr "Bet koks eksportavimas"
-
-msgctxt "model:ir.rule.group,name:rule_group_export_line_read"
-msgid "User in groups"
-msgstr "Naudotojo grupės"
-
-msgctxt "model:ir.rule.group,name:rule_group_export_line_write"
-msgid "User in modification groups"
-msgstr "Naudotojo grupės su taisymo teise"
-
-#, fuzzy
-msgctxt "model:ir.rule.group,name:rule_group_export_read"
-msgid "User in groups"
-msgstr "Naudotojo grupės"
-
-msgctxt "model:ir.rule.group,name:rule_group_export_write"
-msgid "User in modification groups"
-msgstr "Naudotojo grupės su taisymo teise"
-
 msgctxt "model:ir.rule.group,name:rule_group_menu"
 msgid "User in groups"
 msgstr "Naudotojo grupės"
@@ -445,18 +424,6 @@ msgctxt "model:ir.rule.group,name:rule_group_sequence_strict"
 msgid "User in groups"
 msgstr "Naudotojo grupės"
 
-msgctxt "model:ir.rule.group,name:rule_group_session"
-msgid "Own session"
-msgstr ""
-
-msgctxt "model:ir.rule.group,name:rule_group_session_wizard"
-msgid "Own session"
-msgstr ""
-
-msgctxt "model:ir.rule.group,name:rule_group_ui_menu_favorite"
-msgid "Own favorite"
-msgstr ""
-
 msgctxt "model:ir.rule.group,name:rule_group_user_application"
 msgid "Own user application"
 msgstr ""
@@ -467,18 +434,6 @@ msgstr "Bet kuri naudotojo programa"
 
 msgctxt "model:ir.rule.group,name:rule_group_user_warning"
 msgid "Own warning"
-msgstr ""
-
-msgctxt "model:ir.rule.group,name:rule_group_view_search"
-msgid "Own view search"
-msgstr ""
-
-msgctxt "model:ir.rule.group,name:rule_group_view_search_admin"
-msgid "Any view search"
-msgstr ""
-
-msgctxt "model:ir.rule.group,name:rule_group_view_search_common"
-msgid "Common view search"
 msgstr ""
 
 msgctxt "model:ir.rule.group-res.group,name:"

@@ -106,6 +106,10 @@ msgctxt "field:stock.shipment.carriage,cost_sale_used:"
 msgid "Cost Sale"
 msgstr "Kosten Verkauf"
 
+msgctxt "field:stock.shipment.carriage,cost_sales:"
+msgid "Cost Sales"
+msgstr "Kosten Verkäufe"
+
 msgctxt "field:stock.shipment.carriage,cost_used:"
 msgid "Cost"
 msgstr "Kosten"
@@ -264,6 +268,10 @@ msgstr "Nachgelagert"
 msgctxt "selection:stock.shipment.carriage,type:"
 msgid "Before"
 msgstr "Vorgelagert"
+
+msgctxt "selection:stock.shipment.cost_sale,shipment:"
+msgid "Carriage"
+msgstr "Beförderung"
 
 msgctxt "view:sale.sale:"
 msgid "Carriages"

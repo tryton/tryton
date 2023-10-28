@@ -1,0 +1,73 @@
+#
+#, fuzzy
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:document.incoming,ocr_service:"
+msgid "OCR Service"
+msgstr "OCR service"
+
+msgctxt "field:document.incoming.ocr.service,company:"
+msgid "Company"
+msgstr "Bedrijf"
+
+msgctxt "field:document.incoming.ocr.service,document_type:"
+msgid "Type"
+msgstr "Soort"
+
+msgctxt "field:document.incoming.ocr.service,source:"
+msgid "Source"
+msgstr "Bron"
+
+msgctxt "field:document.incoming.ocr.service,type:"
+msgid "Type"
+msgstr "Soort"
+
+msgctxt "help:document.incoming.ocr.service,company:"
+msgid ""
+"The company for which the service is used.\n"
+"Leave empty for any company."
+msgstr ""
+"Het bedrijf waarvoor de dienst wordt gebruikt.\n"
+"Laat leeg voor elk bedrijf."
+
+msgctxt "help:document.incoming.ocr.service,document_type:"
+msgid ""
+"The document type to match.\n"
+"Leave empty for any type."
+msgstr ""
+"Het bijpassende soort document.\n"
+"Laat leeg voor elke soort."
+
+msgctxt "help:document.incoming.ocr.service,source:"
+msgid ""
+"The regular expression to match the document source.\n"
+"Leave empty to allow any source."
+msgstr ""
+"De reguliere expressie die overeenkomt met de documentbron.\n"
+"Laat leeg om elke bron toe te staan."
+
+msgctxt "model:document.incoming.ocr.service,name:"
+msgid "Incoming Document OCR Service"
+msgstr "OCR service voor inkomende documenten"
+
+msgctxt "model:ir.action,name:act_document_incoming_ocr_service_form"
+msgid "OCR Services"
+msgstr "OCR services"
+
+msgctxt "model:ir.model.button,string:document_incoming_proceed_button"
+msgid "Send Feedback"
+msgstr "Feedback verzenden"
+
+msgctxt ""
+"model:ir.rule.group,name:rule_group_document_incoming_ocr_service_companies"
+msgid "User in companies"
+msgstr "Gebruiker in bedrijven"
+
+msgctxt "model:ir.ui.menu,name:menu_document_incoming_ocr_service_form"
+msgid "OCR Services"
+msgstr "OCR services"
+
+msgctxt "view:document.incoming.ocr.service:"
+msgid "Criteria"
+msgstr "Criteria"

@@ -299,7 +299,7 @@ msgstr "Convertir en vente"
 
 msgctxt "model:ir.model.button,string:opportunity_lead_button"
 msgid "Set as Lead"
-msgstr "Reconvertir en contact"
+msgstr "Reconvertir en prospect"
 
 msgctxt "model:ir.model.button,string:opportunity_lost_button"
 msgid "Mark as Lost"
@@ -408,7 +408,7 @@ msgstr "Convertie"
 
 msgctxt "selection:sale.opportunity,state:"
 msgid "Lead"
-msgstr "Contact"
+msgstr "Prospect"
 
 msgctxt "selection:sale.opportunity,state:"
 msgid "Lost"
@@ -434,81 +434,13 @@ msgctxt "selection:sale.opportunity.reporting.context,period:"
 msgid "Year"
 msgstr "Année"
 
-msgctxt "view:sale.opportunity.reporting.conversion.employee.time_series:"
-msgid "Lost"
-msgstr "Perdues"
-
-msgctxt "view:sale.opportunity.reporting.conversion.employee.time_series:"
-msgid "Won"
-msgstr "Gagnées"
-
-msgctxt "view:sale.opportunity.reporting.conversion.employee.time_series:"
-msgid "Won Amount"
-msgstr "Montant gagné"
-
-msgctxt "view:sale.opportunity.reporting.conversion.time_series:"
-msgid "Lost"
-msgstr "Perdues"
-
-msgctxt "view:sale.opportunity.reporting.conversion.time_series:"
-msgid "Won"
-msgstr "Gagnées"
-
-msgctxt "view:sale.opportunity.reporting.conversion.time_series:"
-msgid "Won Amount"
-msgstr "Montant gagné"
-
 msgctxt "view:sale.opportunity.reporting.conversion:"
 msgid "%"
 msgstr "%"
 
-msgctxt "view:sale.opportunity.reporting.conversion:"
-msgid "Lost"
-msgstr "Perdues"
-
-msgctxt "view:sale.opportunity.reporting.conversion:"
-msgid "Won"
-msgstr "Gagnées"
-
-msgctxt "view:sale.opportunity.reporting.conversion:"
-msgid "Won Amount"
-msgstr "Montant gagné"
-
-msgctxt "view:sale.opportunity.reporting.main.time_series:"
-msgid "Amount"
-msgstr "Montant"
-
-msgctxt "view:sale.opportunity.reporting.main.time_series:"
-msgid "Converted"
-msgstr "Converties"
-
-msgctxt "view:sale.opportunity.reporting.main.time_series:"
-msgid "Converted Amount"
-msgstr "Montant converti"
-
-msgctxt "view:sale.opportunity.reporting.main.time_series:"
-msgid "Number"
-msgstr "Nombre"
-
 msgctxt "view:sale.opportunity.reporting.main:"
 msgid "%"
 msgstr "%"
-
-msgctxt "view:sale.opportunity.reporting.main:"
-msgid "Amount"
-msgstr "Montant"
-
-msgctxt "view:sale.opportunity.reporting.main:"
-msgid "Converted"
-msgstr "Converties"
-
-msgctxt "view:sale.opportunity.reporting.main:"
-msgid "Converted Amount"
-msgstr "Montant converti"
-
-msgctxt "view:sale.opportunity.reporting.main:"
-msgid "Number"
-msgstr "Nombre"
 
 msgctxt "view:sale.opportunity:"
 msgid "%"
@@ -516,4 +448,4 @@ msgstr "%"
 
 msgctxt "view:sale.opportunity:"
 msgid "Lead/Opportunity"
-msgstr "Contact / Opportunité"
+msgstr "Prospect / Opportunité"

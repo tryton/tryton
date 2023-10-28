@@ -74,6 +74,11 @@ msgctxt "field:party.party.supplier_lead_time,supplier_lead_time:"
 msgid "Lead Time"
 msgstr ""
 
+#, fuzzy
+msgctxt "field:product.product,last_purchase_price_uom:"
+msgid "Last Purchase Price"
+msgstr "Ostuhind"
+
 msgctxt "field:product.product,product_suppliers:"
 msgid "Suppliers"
 msgstr "Hankijad"
@@ -86,8 +91,9 @@ msgctxt "field:product.product,purchase_price_uom:"
 msgid "Purchase Price"
 msgstr "Ostuhind"
 
+#, fuzzy
 msgctxt "field:product.product,purchase_uom:"
-msgid "Purchase UOM"
+msgid "Purchase UoM"
 msgstr "Ostuühik"
 
 msgctxt "field:product.template,product_suppliers:"
@@ -98,8 +104,9 @@ msgctxt "field:product.template,purchasable:"
 msgid "Purchasable"
 msgstr "Ostetav"
 
+#, fuzzy
 msgctxt "field:product.template,purchase_uom:"
-msgid "Purchase UOM"
+msgid "Purchase UoM"
 msgstr "Ostuühik"
 
 msgctxt "field:purchase.configuration,purchase_invoice_method:"
@@ -220,8 +227,9 @@ msgctxt "field:purchase.line,product_supplier:"
 msgid "Supplier's Product"
 msgstr "Hankija toode"
 
+#, fuzzy
 msgctxt "field:purchase.line,product_uom_category:"
-msgid "Product Uom Category"
+msgid "Product UoM Category"
 msgstr "Toote mõõtühiku kategooria"
 
 msgctxt "field:purchase.line,purchase:"
@@ -335,9 +343,10 @@ msgctxt "field:purchase.product_supplier,template:"
 msgid "Product"
 msgstr "Toode"
 
-msgctxt "field:purchase.product_supplier,uom:"
-msgid "UOM"
-msgstr ""
+#, fuzzy
+msgctxt "field:purchase.product_supplier,unit:"
+msgid "Unit"
+msgstr "Ühik"
 
 #, fuzzy
 msgctxt "field:purchase.product_supplier.price,currency:"
@@ -352,13 +361,14 @@ msgctxt "field:purchase.product_supplier.price,quantity:"
 msgid "Quantity"
 msgstr "Kogus"
 
+#, fuzzy
+msgctxt "field:purchase.product_supplier.price,unit:"
+msgid "Unit"
+msgstr "Ühik"
+
 msgctxt "field:purchase.product_supplier.price,unit_price:"
 msgid "Unit Price"
 msgstr "Ühiku hind"
-
-msgctxt "field:purchase.product_supplier.price,uom:"
-msgid "UOM"
-msgstr ""
 
 msgctxt "field:purchase.purchase,comment:"
 msgid "Comment"
@@ -613,6 +623,16 @@ msgid ""
 "Used if no lead time is set on the product supplier."
 msgstr ""
 
+#, fuzzy
+msgctxt "help:product.product,purchase_uom:"
+msgid "The default Unit of Measure for purchases."
+msgstr "Vaikimisi tarnekuupäev igale reale."
+
+#, fuzzy
+msgctxt "help:product.template,purchase_uom:"
+msgid "The default Unit of Measure for purchases."
+msgstr "Vaikimisi tarnekuupäev igale reale."
+
 msgctxt "help:purchase.configuration,purchase_process_after:"
 msgid ""
 "The grace period during which confirmed purchase can still be reset to draft.\n"
@@ -632,6 +652,10 @@ msgctxt "help:purchase.line,delivery_date_edit:"
 msgid "Check to edit the delivery date."
 msgstr "Vali, et muuta tarnekuupäeva."
 
+msgctxt "help:purchase.line,product_uom_category:"
+msgid "The category of Unit of Measure for the product."
+msgstr ""
+
 msgctxt "help:purchase.product_supplier,lead_time:"
 msgid ""
 "The time from confirming the purchase order to receiving the products.\n"
@@ -649,7 +673,7 @@ msgctxt "help:purchase.product_supplier.price,quantity:"
 msgid "Minimal quantity."
 msgstr "Miinimumkogus"
 
-msgctxt "help:purchase.product_supplier.price,uom:"
+msgctxt "help:purchase.product_supplier.price,unit:"
 msgid "The unit in which the quantity is specified."
 msgstr ""
 
@@ -831,8 +855,8 @@ msgstr ""
 
 msgctxt "model:ir.message,text:msg_change_purchase_uom"
 msgid ""
-"You are trying to change the purchase UoM on which the purchase prices are "
-"based."
+"You are trying to change the purchase unit of measurer on which the purchase"
+" prices are based."
 msgstr ""
 
 msgctxt "model:ir.message,text:msg_erase_party_pending_purchase"
@@ -861,6 +885,12 @@ msgctxt "model:ir.message,text:msg_purchase_line_delete_cancel_draft"
 msgid ""
 "To delete line \"%(line)s\" you must cancel or reset to draft purchase "
 "\"%(purchase)s\"."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_purchase_line_move_quantity"
+msgid ""
+"The purchase line \"%(line)s\" is moving %(extra)s in addition to the "
+"%(quantity)s ordered."
 msgstr ""
 
 msgctxt "model:ir.message,text:msg_purchase_line_tax_unique"
@@ -957,6 +987,11 @@ msgctxt ""
 "model:ir.model.button,string:purchase_hande_shipment_exception_button"
 msgid "Handle Shipment Exception"
 msgstr "Käsitle lähetuse erandit"
+
+#, fuzzy
+msgctxt "model:ir.model.button,string:purchase_manual_invoice_button"
+msgid "Create Invoice"
+msgstr "Taasloo arved"
 
 msgctxt "model:ir.model.button,string:purchase_modify_header_button"
 msgid "Modify Header"
@@ -1408,42 +1443,6 @@ msgstr "Muu info"
 msgctxt "view:purchase.purchase:"
 msgid "Purchase"
 msgstr "Ost"
-
-msgctxt "view:purchase.reporting.main.time_series:"
-msgid "Expense"
-msgstr ""
-
-#, fuzzy
-msgctxt "view:purchase.reporting.main.time_series:"
-msgid "Number"
-msgstr "Number"
-
-msgctxt "view:purchase.reporting.main:"
-msgid "Expense"
-msgstr ""
-
-#, fuzzy
-msgctxt "view:purchase.reporting.main:"
-msgid "Number"
-msgstr "Number"
-
-msgctxt "view:purchase.reporting.product.time_series:"
-msgid "Expense"
-msgstr ""
-
-#, fuzzy
-msgctxt "view:purchase.reporting.product.time_series:"
-msgid "Number"
-msgstr "Number"
-
-msgctxt "view:purchase.reporting.supplier.time_series:"
-msgid "Expense"
-msgstr ""
-
-#, fuzzy
-msgctxt "view:purchase.reporting.supplier.time_series:"
-msgid "Number"
-msgstr "Number"
 
 msgctxt "view:purchase.return_purchase.start:"
 msgid "Are you sure to return these/this purchase(s)?"

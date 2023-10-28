@@ -315,8 +315,8 @@ msgid "Statements"
 msgstr "Auszüge"
 
 msgctxt "model:ir.action,name:act_statement_journal_form"
-msgid "Journals"
-msgstr "Journale"
+msgid "Statement Journals"
+msgstr "Kontoauszugsjournale"
 
 msgctxt "model:ir.action,name:act_statement_line_move"
 msgid "Statement Lines"
@@ -492,8 +492,8 @@ msgid "Import Statement"
 msgstr "Kontoauszug importieren"
 
 msgctxt "model:ir.ui.menu,name:menu_statement_journal_form"
-msgid "Journals"
-msgstr "Journale"
+msgid "Statement Journals"
+msgstr "Kontoauszugsjournale"
 
 msgctxt "model:ir.ui.menu,name:menu_statements"
 msgid "Statements"
@@ -582,14 +582,6 @@ msgstr "Saldo"
 msgctxt "selection:account.statement.journal,validation:"
 msgid "Number of Lines"
 msgstr "Anzahl der Positionen"
-
-msgctxt "view:account.statement.line:"
-msgid "Amount"
-msgstr "Betrag"
-
-msgctxt "view:account.statement.origin:"
-msgid "Amount"
-msgstr "Betrag"
 
 msgctxt "view:account.statement:"
 msgid "Other Info"

@@ -82,7 +82,7 @@ msgid "Product"
 msgstr ""
 
 msgctxt "field:stock.forecast.line,product_uom_category:"
-msgid "Product Uom Category"
+msgid "Product UoM Category"
 msgstr ""
 
 msgctxt "field:stock.forecast.line,quantity:"
@@ -93,8 +93,8 @@ msgctxt "field:stock.forecast.line,quantity_executed:"
 msgid "Quantity Executed"
 msgstr ""
 
-msgctxt "field:stock.forecast.line,uom:"
-msgid "UOM"
+msgctxt "field:stock.forecast.line,unit:"
+msgid "Unit"
 msgstr ""
 
 msgctxt "field:stock.forecast.line-stock.move,line:"
@@ -103,6 +103,10 @@ msgstr ""
 
 msgctxt "field:stock.forecast.line-stock.move,move:"
 msgid "Move"
+msgstr ""
+
+msgctxt "help:stock.forecast.line,product_uom_category:"
+msgid "The category of Unit of Measure for the product."
 msgstr ""
 
 msgctxt "model:ir.action,name:act_forecast_form"

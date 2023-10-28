@@ -84,7 +84,7 @@ msgid "Product"
 msgstr "Producto"
 
 msgctxt "field:purchase.request.quotation.line,product_uom_category:"
-msgid "Product Uom Category"
+msgid "Product UoM Category"
 msgstr "Categoría de UdM del producto"
 
 msgctxt "field:purchase.request.quotation.line,quantity:"
@@ -139,6 +139,10 @@ msgctxt "help:purchase.request.quotation,revision:"
 msgid "Number incremented each time the quotation is sent."
 msgstr "Número incrementado cada vez que se envía el presupuesto."
 
+msgctxt "help:purchase.request.quotation.line,product_uom_category:"
+msgid "The category of Unit of Measure for the product."
+msgstr "La categoría de la unidad de medida del producto."
+
 msgctxt "help:purchase.request.quotation.line,request:"
 msgid "The request which this line belongs to."
 msgstr "La solicitud a la que pertenece esta línea."
@@ -162,6 +166,16 @@ msgstr "Presupuesto de solicitud de compra"
 msgctxt "model:ir.action,name:wizard_create_quotation"
 msgid "Create Quotation"
 msgstr "Crear presupuesto"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_purchase_request_form_domain_quotation"
+msgid "Quotation"
+msgstr "Presupuesto"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_purchase_request_form_domain_received"
+msgid "Received"
+msgstr "Recibido"
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_purchase_request_quotation_form_view1_domain_all"
@@ -336,7 +350,7 @@ msgstr "Presupuesto preferido:"
 
 msgctxt "view:purchase.request:"
 msgid "Quotations"
-msgstr "Presupuesto"
+msgstr "Presupuestos"
 
 msgctxt ""
 "wizard_button:purchase.request.quotation.create,ask_suppliers,create_quotations:"

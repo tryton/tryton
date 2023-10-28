@@ -27,6 +27,11 @@ msgctxt "field:production.work,company:"
 msgid "Company"
 msgstr "Társaság"
 
+#, fuzzy
+msgctxt "field:production.work,cost:"
+msgid "Cost"
+msgstr "Költség"
+
 msgctxt "field:production.work,cycles:"
 msgid "Cycles"
 msgstr ""
@@ -106,14 +111,33 @@ msgid "Name"
 msgstr "Név"
 
 #, fuzzy
+msgctxt "field:production.work.cycle,cancelled_by:"
+msgid "Cancelled By"
+msgstr "Cancel"
+
+#, fuzzy
+msgctxt "field:production.work.cycle,company:"
+msgid "Company"
+msgstr "Társaság"
+
+#, fuzzy
 msgctxt "field:production.work.cycle,cost:"
 msgid "Cost"
 msgstr "Költség"
 
 #, fuzzy
+msgctxt "field:production.work.cycle,done_by:"
+msgid "Done By"
+msgstr "Kész"
+
+#, fuzzy
 msgctxt "field:production.work.cycle,duration:"
 msgid "Duration"
 msgstr "Időtartam"
+
+msgctxt "field:production.work.cycle,run_by:"
+msgid "Run By"
+msgstr ""
 
 #, fuzzy
 msgctxt "field:production.work.cycle,state:"

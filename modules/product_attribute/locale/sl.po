@@ -63,10 +63,9 @@ msgctxt "help:product.template,attribute_set:"
 msgid "Select a set of attributes to apply on the variants."
 msgstr ""
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_attribute_form"
 msgid "Attributes"
-msgstr "Attributes"
+msgstr "Atributi"
 
 #, fuzzy
 msgctxt "model:ir.action,name:act_attribute_set_form"
@@ -77,10 +76,9 @@ msgctxt "model:ir.message,text:msg_label_value"
 msgid "%(label)s: %(value)s"
 msgstr ""
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_attribute"
 msgid "Attributes"
-msgstr "Attributes"
+msgstr "Atributi"
 
 #, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_attribute_set"

@@ -14,19 +14,17 @@ msgctxt "model:account.invoice.correct.start,name:"
 msgid "Correct Invoice"
 msgstr "Popravek računa"
 
-#, fuzzy
 msgctxt "model:ir.action,name:wizard_invoice_correct"
 msgid "Correct"
-msgstr "Correct"
+msgstr "Popravek"
 
 msgctxt "model:ir.model.button,string:invoice_correct_button"
 msgid "Correct"
-msgstr "Correct"
+msgstr "Popravek"
 
-#, fuzzy
 msgctxt "view:account.invoice.correct.start:"
 msgid "Choose lines to correct:"
-msgstr "Izberi postavke za popravit"
+msgstr "Izberite vrstice za popravek:"
 
 msgctxt "wizard_button:account.invoice.correct,start,correct:"
 msgid "Correct"

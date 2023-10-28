@@ -70,7 +70,7 @@ msgstr "Stroški"
 #, fuzzy
 msgctxt "model:ir.message,text:msg_fee_dunning_level_unique"
 msgid "Fee must be unique by dunning and level."
-msgstr "Strošek mora biti unikaten po izterjavi in stopnji"
+msgstr "Strošek mora biti edinstven po izterjavi in stopnji"
 
 #, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_dunning_fee_form"

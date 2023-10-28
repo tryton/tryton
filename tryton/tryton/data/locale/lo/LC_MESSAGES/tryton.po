@@ -154,6 +154,10 @@ msgstr "<i>ຊອກຫາ...</i>"
 msgid "<i>Create...</i>"
 msgstr "<i>ສ້າງ...</i>"
 
+#, fuzzy, python-format
+msgid "Create \"%s\"..."
+msgstr "<i>ສ້າງ...</i>"
+
 msgid "Value"
 msgstr "ຄ່າ"
 
@@ -309,6 +313,9 @@ msgstr "ບັນທຶກ ສະຖານະ ໂຄງສ້າງ"
 
 msgid "Spell Checking"
 msgstr "ກວດສອບການສະກົດຄຳ"
+
+msgid "Play Sound for Code Scanner"
+msgstr ""
 
 msgid "PDA Mode"
 msgstr ""
@@ -474,6 +481,17 @@ msgstr "ຍ້າຍລົງລຸ່ມ"
 msgid "Move to parent"
 msgstr "ຍ້າຍໄປຫາບັນຊີແມ່"
 
+#, fuzzy
+msgid "Edition"
+msgstr "ແກ້ໄຂ"
+
+#, fuzzy
+msgid "Copy selected rows"
+msgstr "ກ່າຍເອົາຂໍ້ຄວາມທີ່ເລືອກໄວ້"
+
+msgid "Insert copied rows"
+msgstr ""
+
 msgid "Select all"
 msgstr "ເລືອກທັງໝົດ"
 
@@ -519,6 +537,12 @@ msgstr ""
 #, python-format
 msgid "Attachments (%s)"
 msgstr "ເອກະສານຄັດຕິດ (%s)"
+
+msgid "Code Scanner"
+msgstr ""
+
+msgid "Code"
+msgstr ""
 
 msgid "Profile Editor"
 msgstr "ຂໍ້ມູນລາຍລະອຽດບັນນາທິການ"
@@ -963,14 +987,24 @@ msgstr "ເຊື່ອມໂຍງ"
 msgid "Delete"
 msgstr "ລືບ"
 
-msgid "New"
-msgstr "ສ້າງໃໝ່"
+msgid "Discard changes"
+msgstr ""
 
-msgid "Switch"
-msgstr "ສະຫຼັບ"
+msgid "Save and New"
+msgstr ""
+
+#, fuzzy
+msgid "Add and New"
+msgstr "ເພີ່ມຄ່າ"
 
 msgid "Add"
 msgstr "ເພີ່ມ"
+
+msgid "Apply changes"
+msgstr ""
+
+msgid "Switch"
+msgstr "ສະຫຼັບ"
 
 msgid "Remove <Del>"
 msgstr "ເອົາອອກ"
@@ -1007,8 +1041,8 @@ msgid "Detection failed"
 msgstr ""
 
 #, python-format
-msgid "Error processing the file at field %s."
-msgstr "ປະມວນຜົນ ຟາຍລ໌ ຜິດພາດ ໃນຊ່ອງຂໍ້ມູນ %s."
+msgid "Unknown column header \"%s\""
+msgstr ""
 
 msgid "Error"
 msgstr "ຜິດພາດ"
@@ -1026,6 +1060,9 @@ msgstr "ບັນດາແຖວຂໍ້ມູນ %d ຖືກນໍາເຂ�
 
 msgid "Search"
 msgstr "ຊອກຫາ"
+
+msgid "New"
+msgstr "ສ້າງໃໝ່"
 
 #, python-format
 msgid "Search %s"
@@ -1073,6 +1110,9 @@ msgstr "ກ່ອນ-ການກວດສອບ"
 
 msgid ":"
 msgstr ":"
+
+msgid "Scan"
+msgstr ""
 
 msgid "Image Size"
 msgstr "ຂະໜາດຮູບ"

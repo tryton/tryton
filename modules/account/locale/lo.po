@@ -1074,6 +1074,11 @@ msgid "Description"
 msgstr "ເນື້ອໃນລາຍການ"
 
 #, fuzzy
+msgctxt "field:account.general_ledger.line,description_used:"
+msgid "Description"
+msgstr "ເນື້ອໃນລາຍການ"
+
+#, fuzzy
 msgctxt "field:account.general_ledger.line,internal_balance:"
 msgid "Internal Balance"
 msgstr "Trial Balance"
@@ -1082,7 +1087,8 @@ msgctxt "field:account.general_ledger.line,move:"
 msgid "Move"
 msgstr "ເຄື່ອນໄຫວ"
 
-msgctxt "field:account.general_ledger.line,move_description:"
+#, fuzzy
+msgctxt "field:account.general_ledger.line,move_description_used:"
 msgid "Move Description"
 msgstr "ລາຍລະອຽດການເຄື່ອນໄຫວ"
 
@@ -1302,6 +1308,11 @@ msgctxt "field:account.move,description:"
 msgid "Description"
 msgstr "ເນື້ອໃນລາຍການ"
 
+#, fuzzy
+msgctxt "field:account.move,description_used:"
+msgid "Description"
+msgstr "ເນື້ອໃນລາຍການ"
+
 msgctxt "field:account.move,journal:"
 msgid "Journal"
 msgstr "ບັນຊີປະຈໍາວັນ"
@@ -1390,6 +1401,11 @@ msgid "Description"
 msgstr "ເນື້ອໃນລາຍການ"
 
 #, fuzzy
+msgctxt "field:account.move.line,description_used:"
+msgid "Description"
+msgstr "ເນື້ອໃນລາຍການ"
+
+#, fuzzy
 msgctxt "field:account.move.line,has_maturity_date:"
 msgid "Has Maturity Date"
 msgstr "ວັນທີຄົບກຳນົດໜີ້"
@@ -1406,7 +1422,8 @@ msgctxt "field:account.move.line,move:"
 msgid "Move"
 msgstr "ເຄື່ອນໄຫວ"
 
-msgctxt "field:account.move.line,move_description:"
+#, fuzzy
+msgctxt "field:account.move.line,move_description_used:"
 msgid "Move Description"
 msgstr "ລາຍລະອຽດການເຄື່ອນໄຫວ"
 
@@ -1690,10 +1707,6 @@ msgctxt "field:account.move.template,company:"
 msgid "Company"
 msgstr "ສຳນັກງານ/ຫ້ອງການ"
 
-msgctxt "field:account.move.template,date:"
-msgid "Date"
-msgstr "ວັນທີ"
-
 msgctxt "field:account.move.template,description:"
 msgid "Description"
 msgstr "ເນື້ອໃນລາຍການ"
@@ -1713,6 +1726,11 @@ msgstr "ລາຍການ"
 msgctxt "field:account.move.template,name:"
 msgid "Name"
 msgstr "ຊື່"
+
+#, fuzzy
+msgctxt "field:account.move.template.create.template,date:"
+msgid "Effective Date"
+msgstr "ວັນທີມີຜົນ"
 
 msgctxt "field:account.move.template.create.template,period:"
 msgid "Period"
@@ -2408,6 +2426,26 @@ msgctxt "field:account.update_chart.start,account:"
 msgid "Root Account"
 msgstr "ບັນຊີຕົ້ນ"
 
+#, fuzzy
+msgctxt "field:company.company,payable:"
+msgid "Payable"
+msgstr "ຕ້ອງຈ່າຍ"
+
+#, fuzzy
+msgctxt "field:company.company,payable_today:"
+msgid "Payable Today"
+msgstr "ຕ້ອງຈ່າຍມື້ນີ້"
+
+#, fuzzy
+msgctxt "field:company.company,receivable:"
+msgid "Receivable"
+msgstr "ຕ້ອງຮັບ"
+
+#, fuzzy
+msgctxt "field:company.company,receivable_today:"
+msgid "Receivable Today"
+msgstr "ຕ້ອງຮັບມື້ນີ້"
+
 msgctxt "field:party.party,account_payable:"
 msgid "Account Payable"
 msgstr "ບັນຊີໜີ້ຕ້ອງສົ່ງ"
@@ -2657,7 +2695,7 @@ msgstr ""
 
 #, fuzzy
 msgctxt "help:account.move.line.template,description:"
-msgid "Keywords values substitutions are identified by braces ('{' and '}')."
+msgid "Keyword value substitutions are identified by braces ('{' and '}')."
 msgstr "ຄຳສັບລະຫັດທີ່ເອົາມາໃຊ້ແທນ ໄດ້ລະບຸບອກໄວ້ດ້ວຍ ວົງປີກກາ ('{' and '}')"
 
 msgctxt "help:account.move.line.template,party:"
@@ -2674,13 +2712,8 @@ msgid "The line to which the reconciliation status is delegated."
 msgstr ""
 
 #, fuzzy
-msgctxt "help:account.move.template,date:"
-msgid "Leave empty for today."
-msgstr "ມື້ນີ້ໃຫ້ປະເປົ່າ"
-
-#, fuzzy
 msgctxt "help:account.move.template,description:"
-msgid "Keyword values substitutions are identified by braces ('{' and '}')."
+msgid "Keyword value substitutions are identified by braces ('{' and '}')."
 msgstr "ຄຳສັບລະຫັດທີ່ເອົາມາໃຊ້ແທນ ໄດ້ລະບຸບອກໄວ້ດ້ວຍ ວົງປີກກາ ('{' and '}')"
 
 msgctxt "help:account.reconcile.start,automatic:"
@@ -3343,9 +3376,10 @@ msgctxt "model:ir.action,name:act_reconcile_lines"
 msgid "Reconcile Lines"
 msgstr "Reconcile Lines"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_reconcile_writeoff_form"
-msgid "WriteOff Methods"
-msgstr ""
+msgid "Write-off Methods"
+msgstr "ເພີກຖອນ"
 
 #, fuzzy
 msgctxt "model:ir.action,name:act_renew_fiscalyear"
@@ -3797,6 +3831,27 @@ msgid ""
 "reconcilable."
 msgstr ""
 
+msgctxt ""
+"model:ir.message,text:msg_reconciliation_currency_exchange_credit_account_missing"
+msgid ""
+"To reconcile lines, you must define a currency exchange credit account for "
+"\"%(company)s\"."
+msgstr ""
+
+msgctxt ""
+"model:ir.message,text:msg_reconciliation_currency_exchange_debit_account_missing"
+msgid ""
+"To reconcile lines, you must define a currency exchange debit account for "
+"\"%(company)s\"."
+msgstr ""
+
+msgctxt ""
+"model:ir.message,text:msg_reconciliation_currency_exchange_journal_missing"
+msgid ""
+"To reconcile lines, you must define a currency exchange journal for "
+"\"%(company)s\"."
+msgstr ""
+
 msgctxt "model:ir.message,text:msg_reconciliation_delete_delegated"
 msgid ""
 "The reconciliation \"%(reconciliation)s\" is delegated to the line \"%(line)s\".\n"
@@ -3835,6 +3890,12 @@ msgctxt "model:ir.message,text:msg_reconciliation_unbalanced"
 msgid ""
 "To reconcile lines, they must have the same debit \"%(debit)s\" and credit "
 "\"%(credit)s\"."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_reconciliation_write_off_missing"
+msgid ""
+"To reconcile lines with \"%(amount)s\" write-off, you must select a write-"
+"off method."
 msgstr ""
 
 msgctxt "model:ir.message,text:msg_reopen_fiscalyear_later"
@@ -4178,9 +4239,10 @@ msgctxt "model:ir.ui.menu,name:menu_reconcile"
 msgid "Reconcile Accounts"
 msgstr "Reconcile Accounts"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_reconcile_writeoff_form"
-msgid "WriteOff Methods"
-msgstr ""
+msgid "Write-off Methods"
+msgstr "ເພີກຖອນ"
 
 #, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_renew_fiscalyear"
@@ -4676,9 +4738,10 @@ msgctxt "selection:account.configuration.tax_rounding,tax_rounding:"
 msgid "Per Line"
 msgstr "ຕໍ່ລາຍການ"
 
+#, fuzzy
 msgctxt "selection:account.fiscalyear,state:"
-msgid "Close"
-msgstr "ອັດ"
+msgid "Closed"
+msgstr "Close"
 
 msgctxt "selection:account.fiscalyear,state:"
 msgid "Locked"
@@ -4740,9 +4803,10 @@ msgctxt "selection:account.journal,type:"
 msgid "Write-Off"
 msgstr "ເພີກຖອນ"
 
+#, fuzzy
 msgctxt "selection:account.journal.period,state:"
-msgid "Close"
-msgstr "ອັດ"
+msgid "Closed"
+msgstr "Close"
 
 msgctxt "selection:account.journal.period,state:"
 msgid "Open"
@@ -4802,9 +4866,10 @@ msgctxt "selection:account.move.template.keyword,type_:"
 msgid "Party"
 msgstr "ພາກສ່ວນ"
 
+#, fuzzy
 msgctxt "selection:account.period,state:"
-msgid "Close"
-msgstr "ອັດ"
+msgid "Closed"
+msgstr "Close"
 
 msgctxt "selection:account.period,state:"
 msgid "Locked"
@@ -5054,30 +5119,6 @@ msgctxt "view:account.fiscalyear:"
 msgid "Sequences"
 msgstr "ລຳດັບ"
 
-msgctxt "view:account.general_ledger.account:"
-msgid "Credit"
-msgstr "ມີ"
-
-msgctxt "view:account.general_ledger.account:"
-msgid "Debit"
-msgstr "ໜີ້"
-
-msgctxt "view:account.general_ledger.account:"
-msgid "End Balance"
-msgstr "ຍອດຍົກໄປ"
-
-msgctxt "view:account.general_ledger.account:"
-msgid "Start Balance"
-msgstr "ຍອດຍົກມາ"
-
-msgctxt "view:account.general_ledger.line:"
-msgid "Credit"
-msgstr "ມີ"
-
-msgctxt "view:account.general_ledger.line:"
-msgid "Debit"
-msgstr "ໜີ້"
-
 #, fuzzy
 msgctxt "view:account.journal.period:"
 msgid "Close"
@@ -5107,14 +5148,6 @@ msgid "Balance"
 msgstr "ດຸນດ່ຽງ"
 
 msgctxt "view:account.move.line:"
-msgid "Credit"
-msgstr "ມີ"
-
-msgctxt "view:account.move.line:"
-msgid "Debit"
-msgstr "ໜີ້"
-
-msgctxt "view:account.move.line:"
 msgid "Other Info"
 msgstr "ຂໍ້ມູນອື່ນໆ"
 
@@ -5141,6 +5174,16 @@ msgstr "ຂໍ້ມູນທົ່ວໄປ"
 msgctxt "view:account.update_chart.succeed:"
 msgid "Chart of accounts updated successfully."
 msgstr ""
+
+#, fuzzy
+msgctxt "view:company.company:"
+msgid "Account"
+msgstr "ບັນຊີ"
+
+#, fuzzy
+msgctxt "view:company.company:"
+msgid "Accounting"
+msgstr "ການບັນຊີ"
 
 msgctxt "view:party.party:"
 msgid "Account"

@@ -48,10 +48,6 @@ msgctxt "field:production,done_by:"
 msgid "Done By"
 msgstr "Done"
 
-msgctxt "field:production,effective_date:"
-msgid "Effective Date"
-msgstr "Учетная дата"
-
 msgctxt "field:production,effective_start_date:"
 msgid "Effective Start Date"
 msgstr ""
@@ -82,10 +78,6 @@ msgctxt "field:production,partially_assigned:"
 msgid "Partially Assigned"
 msgstr "Assigned"
 
-msgctxt "field:production,planned_date:"
-msgid "Planned Date"
-msgstr "Плановая дата"
-
 msgctxt "field:production,planned_start_date:"
 msgid "Planned Start Date"
 msgstr ""
@@ -110,12 +102,14 @@ msgctxt "field:production,state:"
 msgid "State"
 msgstr "Состояние"
 
-msgctxt "field:production,uom:"
-msgid "Uom"
-msgstr "Ед.изм."
+#, fuzzy
+msgctxt "field:production,unit:"
+msgid "Unit"
+msgstr "Единица измерения"
 
+#, fuzzy
 msgctxt "field:production,uom_category:"
-msgid "Uom Category"
+msgid "UoM Category"
 msgstr "Категория ед. измерения"
 
 msgctxt "field:production,warehouse:"
@@ -150,9 +144,10 @@ msgctxt "field:production.bom.input,quantity:"
 msgid "Quantity"
 msgstr "Кол-во"
 
-msgctxt "field:production.bom.input,uom:"
-msgid "Uom"
-msgstr "Ед.изм."
+#, fuzzy
+msgctxt "field:production.bom.input,unit:"
+msgid "Unit"
+msgstr "Единица измерения"
 
 msgctxt "field:production.bom.input,uom_category:"
 msgid "Uom Category"
@@ -170,9 +165,10 @@ msgctxt "field:production.bom.output,quantity:"
 msgid "Quantity"
 msgstr "Кол-во"
 
-msgctxt "field:production.bom.output,uom:"
-msgid "Uom"
-msgstr "Ед.изм."
+#, fuzzy
+msgctxt "field:production.bom.output,unit:"
+msgid "Unit"
+msgstr "Единица измерения"
 
 msgctxt "field:production.bom.output,uom_category:"
 msgid "Uom Category"
@@ -190,9 +186,10 @@ msgctxt "field:production.bom.tree,quantity:"
 msgid "Quantity"
 msgstr "Кол-во"
 
-msgctxt "field:production.bom.tree,uom:"
-msgid "Uom"
-msgstr "Ед.изм."
+#, fuzzy
+msgctxt "field:production.bom.tree,unit:"
+msgid "Unit"
+msgstr "Единица измерения"
 
 msgctxt "field:production.bom.tree.open.start,bom:"
 msgid "BOM"
@@ -210,7 +207,8 @@ msgctxt "field:production.bom.tree.open.start,quantity:"
 msgid "Quantity"
 msgstr "Кол-во"
 
-msgctxt "field:production.bom.tree.open.start,uom:"
+#, fuzzy
+msgctxt "field:production.bom.tree.open.start,unit:"
 msgid "Unit"
 msgstr "Единица измерения"
 
@@ -287,6 +285,18 @@ msgstr "Исходные для производства"
 msgctxt "field:stock.move,production_output:"
 msgid "Production Output"
 msgstr "Готовая продукция производства"
+
+msgctxt "help:production,number:"
+msgid "The main identifier for the shipment."
+msgstr ""
+
+msgctxt "help:production,reference:"
+msgid "The external identifier for the shipment."
+msgstr ""
+
+msgctxt "help:production,uom_category:"
+msgid "The category of Unit of Measure."
+msgstr ""
 
 msgctxt "help:stock.location,production_output_location:"
 msgid ""

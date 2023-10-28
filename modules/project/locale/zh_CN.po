@@ -88,7 +88,7 @@ msgstr "默认"
 
 msgctxt "field:project.work.status,name:"
 msgid "Name"
-msgstr "姓名"
+msgstr "名称"
 
 msgctxt "field:project.work.status,progress:"
 msgid "Progress"
@@ -217,7 +217,7 @@ msgstr "项目"
 
 msgctxt "model:ir.ui.menu,name:menu_reporting"
 msgid "Reporting"
-msgstr ""
+msgstr "报告"
 
 msgctxt "model:ir.ui.menu,name:menu_task_form"
 msgid "Tasks"

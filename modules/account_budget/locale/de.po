@@ -287,6 +287,10 @@ msgctxt "model:ir.action,name:wizard_budget_line_create_periods"
 msgid "Create Periods"
 msgstr "Budgetpositionszeiträume erstellen"
 
+msgctxt "model:ir.message,text:msg_budget_line_budget_account_type_unique"
+msgid "The account type must be unique for each budget."
+msgstr "Ein Kontentyp kann nur einmal pro Budget verwendet werden."
+
 msgctxt "model:ir.message,text:msg_budget_line_budget_account_unique"
 msgid "The account must be unique for each budget."
 msgstr "Ein Konto kann nur einmal pro Budget verwendet werden."
@@ -348,18 +352,6 @@ msgstr "%"
 msgctxt "view:account.budget.line.period:"
 msgid "%"
 msgstr "%"
-
-msgctxt "view:account.budget.line.period:"
-msgid "Actual Amount"
-msgstr "IST-Betrag"
-
-msgctxt "view:account.budget.line.period:"
-msgid "Ratio"
-msgstr "Anteil"
-
-msgctxt "view:account.budget.line.period:"
-msgid "Total Amount"
-msgstr "SOLL-Betrag (kumuliert)"
 
 msgctxt "view:account.budget.line:"
 msgid "%"

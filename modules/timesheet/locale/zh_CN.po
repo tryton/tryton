@@ -338,7 +338,7 @@ msgstr "输入行"
 
 msgctxt "model:ir.ui.menu,name:menu_reporting"
 msgid "Reporting"
-msgstr "报表"
+msgstr "报告"
 
 msgctxt "model:ir.ui.menu,name:menu_timesheet"
 msgid "Timesheet"
@@ -391,14 +391,6 @@ msgstr "工作环境"
 msgctxt "selection:res.user.application,application:"
 msgid "Timesheet"
 msgstr "时间表"
-
-msgctxt "view:timesheet.hours_employee:"
-msgid "Duration"
-msgstr "持续时间"
-
-msgctxt "view:timesheet.line:"
-msgid "Duration"
-msgstr "持续时间"
 
 msgctxt "wizard_button:timesheet.line.enter,start,end:"
 msgid "Cancel"

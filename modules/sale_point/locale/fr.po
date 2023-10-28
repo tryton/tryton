@@ -453,10 +453,10 @@ msgid "The sale \"%(sale)s\" is cancelled so cannot have amount paid."
 msgstr ""
 "La vente « %(sale)s » est annulée et ne peut donc pas avoir de montant payé."
 
-msgctxt "model:ir.message,text:msg_sale_amount_to_pay_done_paid"
+msgctxt "model:ir.message,text:msg_sale_amount_to_pay_done_posted"
 msgid "The sale \"%(sale)s\" is done so cannot have an amount to pay."
 msgstr ""
-"La vente « %(sale)s » est faite et ne peut donc pas avoir de montant à "
+"La vente « %(sale)s » est faite et donc ne peut pas avoir de montant à "
 "payer."
 
 msgctxt "model:ir.message,text:msg_sale_delete_numbered"
@@ -610,7 +610,7 @@ msgstr "Paiement PDV"
 
 msgctxt "model:sale.point.payment.method,name:"
 msgid "POS Payment Method"
-msgstr "Méthodes de paiement PDV"
+msgstr "Méthode de paiement PDV"
 
 msgctxt "model:sale.point.sale,name:"
 msgid "POS Sale"

@@ -521,7 +521,7 @@ msgstr ""
 
 msgctxt "report:account.payment.stripe.email_checkout:"
 msgid "Button is not working? Paste this into your browser:"
-msgstr ""
+msgstr "Gumb ne deluje? Prilepite to povezavo v vaš brskalnik:"
 
 #, fuzzy
 msgctxt "report:account.payment.stripe.email_checkout:"

@@ -60,7 +60,7 @@ msgstr "Ciljna količina"
 
 msgctxt "field:stock.order_point,type:"
 msgid "Type"
-msgstr "Tip"
+msgstr "Vrsta"
 
 msgctxt "field:stock.order_point,unit:"
 msgid "Unit"
@@ -68,12 +68,11 @@ msgstr "enota"
 
 msgctxt "field:stock.order_point,warehouse_location:"
 msgid "Warehouse Location"
-msgstr "Skladišče"
+msgstr "Lokacija skladišča"
 
-#, fuzzy
 msgctxt "field:stock.supply.start,warehouses:"
 msgid "Warehouses"
-msgstr "Skladišče"
+msgstr "Skladišča"
 
 #, fuzzy
 msgctxt "help:stock.location,overflowing_location:"
@@ -201,7 +200,7 @@ msgstr "Nabavni nalog"
 
 msgctxt "view:stock.order_point:"
 msgid "Order Point Type"
-msgstr "Tip točke naročanja"
+msgstr "Vrsta točke naročanja"
 
 msgctxt "view:stock.order_point:"
 msgid "Product Info"

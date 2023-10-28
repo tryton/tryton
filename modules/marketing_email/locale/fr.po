@@ -115,6 +115,10 @@ msgctxt ""
 msgid "Sending"
 msgstr "Envoi en cours"
 
+msgctxt "model:ir.message,text:msg_email_invalid"
+msgid "The email address \"%(email)s\" for \"%(record)s\" is not valid."
+msgstr "L'adresse e-mail « %(email)s » pour « %(record)s » n'est pas valide."
+
 msgctxt "model:ir.message,text:msg_email_list_unique"
 msgid "Email addresses can only be subscribed once to each list."
 msgstr ""
@@ -214,10 +218,6 @@ msgstr "Envoi en cours"
 msgctxt "selection:marketing.email.message,state:"
 msgid "Sent"
 msgstr "Envoyé"
-
-msgctxt "view:marketing.email.list:"
-msgid "Subscribed"
-msgstr "Abonné"
 
 msgctxt "view:marketing.email.message:"
 msgid "Edit"

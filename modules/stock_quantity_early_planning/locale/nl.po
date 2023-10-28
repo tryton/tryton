@@ -91,7 +91,7 @@ msgstr "Open"
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_quantity_early_plan_form_domain_processing"
 msgid "Processing"
-msgstr "Verwerken"
+msgstr "In behandeling"
 
 msgctxt "model:ir.model.button,string:quantity_early_plan_close_button"
 msgid "Close"
@@ -143,7 +143,7 @@ msgstr "Open"
 
 msgctxt "selection:stock.quantity.early_plan,state:"
 msgid "Processing"
-msgstr "Verwerken"
+msgstr "In behandeling"
 
 msgctxt "view:stock.quantity.early_plan.generate.start:"
 msgid "Generate Stock Quantity Early Planning?"

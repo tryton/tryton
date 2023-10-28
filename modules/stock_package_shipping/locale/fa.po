@@ -6,6 +6,11 @@ msgctxt "field:carrier,shipping_service:"
 msgid "Shipping Service"
 msgstr "خدمات حمل ونقل"
 
+#, fuzzy
+msgctxt "field:stock.package,has_shipping_service:"
+msgid "Has Shipping Service"
+msgstr "خدمات حمل ونقل"
+
 msgctxt "field:stock.package,shipping_label:"
 msgid "Shipping Label"
 msgstr "برچسب حمل ونقل"
@@ -33,13 +38,33 @@ msgid "Carrier"
 msgstr ""
 
 #, fuzzy
+msgctxt "field:stock.shipment.in.return,has_shipping_service:"
+msgid "Has Shipping Service"
+msgstr "خدمات حمل ونقل"
+
+#, fuzzy
 msgctxt "field:stock.shipment.in.return,shipping_description:"
 msgid "Shipping Description"
 msgstr "شرح حمل ونقل"
 
+#, fuzzy
+msgctxt "field:stock.shipment.in.return,shipping_reference:"
+msgid "Shipping Reference"
+msgstr "مرجع حمل ونقل"
+
+#, fuzzy
+msgctxt "field:stock.shipment.out,has_shipping_service:"
+msgid "Has Shipping Service"
+msgstr "خدمات حمل ونقل"
+
 msgctxt "field:stock.shipment.out,shipping_description:"
 msgid "Shipping Description"
 msgstr "شرح حمل ونقل"
+
+#, fuzzy
+msgctxt "field:stock.shipment.out,shipping_reference:"
+msgid "Shipping Reference"
+msgstr "مرجع حمل ونقل"
 
 msgctxt "model:ir.action,name:act_create_shipping_wizard"
 msgid "Create Shipping"

@@ -1,5 +1,4 @@
 #
-#, fuzzy
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
@@ -17,7 +16,7 @@ msgstr "Description"
 
 msgctxt "field:quality.alert,number:"
 msgid "Number"
-msgstr "Nombre"
+msgstr "Numéro"
 
 msgctxt "field:quality.alert,origin:"
 msgid "Origin"
@@ -121,7 +120,7 @@ msgstr "Échouée par"
 
 msgctxt "field:quality.inspection,number:"
 msgid "Number"
-msgstr "Nombre"
+msgstr "Numéro"
 
 msgctxt "field:quality.inspection,origin:"
 msgid "Origin"
@@ -487,4 +486,4 @@ msgstr "Passer"
 
 msgctxt "wizard_button:quality.inspect,inspection,save:"
 msgid "Save"
-msgstr "Sauver"
+msgstr "Enregistrer"

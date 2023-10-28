@@ -246,6 +246,9 @@ msgstr "Suche..."
 msgid "Create..."
 msgstr "Erstellen..."
 
+msgid "Create \"%1\"..."
+msgstr "Erstelle \"%1\" …"
+
 msgid "Download"
 msgstr "Herunterladen"
 
@@ -446,6 +449,9 @@ msgstr "Vorvalidierung"
 msgid ":"
 msgstr ":"
 
+msgid "Scan"
+msgstr "Scannen"
+
 msgid "Translate"
 msgstr "Übersetzen"
 
@@ -515,17 +521,20 @@ msgstr "Sprache auswählen"
 msgid "%1%"
 msgstr "%1%"
 
-msgid ": "
-msgstr ": "
+msgid "Menu"
+msgstr "Menü"
 
-msgid "Customize"
-msgstr "Anpassen"
+msgid "Copy"
+msgstr "Kopieren"
+
+msgid "#ERROR"
+msgstr "#FEHLER"
 
 msgid "More"
 msgstr "Mehr"
 
-msgid "#ERROR"
-msgstr "#FEHLER"
+msgid ": "
+msgstr ": "
 
 msgid "Today"
 msgstr "Heute"
@@ -550,6 +559,18 @@ msgstr "Aktion wählen"
 
 msgid "No action defined."
 msgstr "Keine Aktion definiert."
+
+msgid "Discard changes"
+msgstr "Änderungen verwerfen"
+
+msgid "Save and New"
+msgstr "Speichern und Neu"
+
+msgid "Add and New"
+msgstr "Hinzufügen und Neu"
+
+msgid "Apply changes"
+msgstr "Änderungen anwenden"
 
 msgid "Attachments (%1)"
 msgstr "Anhänge (%1)"
@@ -620,8 +641,8 @@ msgstr "Es muss zuerst eine Importdatei ausgewählt werden."
 msgid "Detection failed"
 msgstr "Lesen der Datei fehlgeschlagen"
 
-msgid "Error processing the file at field %1."
-msgstr "Fehler bei der Verarbeitung der Datei in Feld %1."
+msgid "Unknown column header \"%1\""
+msgstr "Unbekannte Spaltenüberschrift \"%1\""
 
 msgid "Error"
 msgstr "Fehler"
@@ -716,6 +737,15 @@ msgstr "Senden"
 
 msgid "Remove File"
 msgstr "Datei entfernen"
+
+msgid "Code Scanner"
+msgstr "Barcode Scanner"
+
+msgid "Code"
+msgstr "Code"
+
+msgid "Toggle Sound"
+msgstr "Ton ein-/ausschalten"
 
 msgid "Wizard"
 msgstr "Assistent"

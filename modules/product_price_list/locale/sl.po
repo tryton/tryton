@@ -14,13 +14,18 @@ msgctxt "field:product.price_list,name:"
 msgid "Name"
 msgstr "Naziv"
 
+#, fuzzy
+msgctxt "field:product.price_list,price:"
+msgid "Price"
+msgstr "Cenik"
+
 msgctxt "field:product.price_list,tax_included:"
 msgid "Tax Included"
 msgstr "Davek vključen"
 
 msgctxt "field:product.price_list,unit:"
 msgid "Unit"
-msgstr ""
+msgstr "Enota"
 
 msgctxt "field:product.price_list.line,category:"
 msgid "Category"
@@ -46,18 +51,25 @@ msgctxt "help:product.price_list,company:"
 msgid ""
 "Make the price list belong to the company.\n"
 "It defines the currency of the price list."
-msgstr "Poveži cenik z družbo, ki s tem določa tudi valuto cenika."
+msgstr ""
+"Poveži cenik z družbo.\n"
+"S tem se določi valuta cenika."
 
-#, fuzzy
 msgctxt "help:product.price_list,lines:"
 msgid ""
 "Add price formulas for different criteria.\n"
 "The first matching line is used."
-msgstr "Dodaj formule cen za različne kriterije."
+msgstr ""
+"Dodaj formule cen za različne kriterije.\n"
+"Uporabljena bo prva vrstica, ki se ujema."
 
 msgctxt "help:product.price_list,name:"
 msgid "The main identifier of the price list."
 msgstr "Glavni identifikator cenika."
+
+msgctxt "help:product.price_list,price:"
+msgid "The value used for 'unit_price'."
+msgstr ""
 
 msgctxt "help:product.price_list,tax_included:"
 msgid "Check if result's formula includes taxes."
@@ -65,13 +77,12 @@ msgstr "Označite, če formula vključuje davek."
 
 msgctxt "help:product.price_list,unit:"
 msgid "The unit in which the quantity is expressed."
-msgstr ""
+msgstr "Enota v kateri je izražena količina."
 
 msgctxt "help:product.price_list.line,category:"
 msgid "Apply only to products of this category."
 msgstr "Upoštevaj samo pri izdelkih te kategorije."
 
-#, fuzzy
 msgctxt "help:product.price_list.line,formula:"
 msgid ""
 "Python expression that will be evaluated with:\n"
@@ -79,8 +90,10 @@ msgid ""
 "- cost_price: the cost price of the product\n"
 "- list_price: the list price of the product"
 msgstr ""
-"Pythonski izraz, preračunan z:\n"
-"- unit_price: izvorna cena"
+"Python spremenljivke, ki jih lahko uporabite za izračun:\n"
+"- unit_price: izvorna cena\n"
+"- cost_price: nabavna cena\n"
+"- list_price: priporočena prodajna cena"
 
 msgctxt "help:product.price_list.line,price_list:"
 msgid "The price list to which the line belongs."
@@ -94,12 +107,10 @@ msgctxt "help:product.price_list.line,quantity:"
 msgid "Apply only when quantity is greater."
 msgstr "Upoštevaj samo, ko je količina večja."
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_price_list_form"
 msgid "Price Lists"
-msgstr "Price Lists"
+msgstr "Ceniki"
 
-#, fuzzy
 msgctxt "model:ir.message,text:msg_invalid_formula"
 msgid ""
 "Invalid formula \"%(formula)s\" in price list line \"%(line)s\" with "
@@ -110,12 +121,11 @@ msgstr ""
 
 msgctxt "model:ir.rule.group,name:rule_group_price_list_companies"
 msgid "User in companies"
-msgstr ""
+msgstr "Uporabnik v družbah"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_price_list"
 msgid "Price Lists"
-msgstr "Price Lists"
+msgstr "Ceniki"
 
 msgctxt "model:product.price_list,name:"
 msgid "Price List"
@@ -125,7 +135,14 @@ msgctxt "model:product.price_list.line,name:"
 msgid "Price List Line"
 msgstr "Postavka cenika"
 
-#, fuzzy
+msgctxt "selection:product.price_list,price:"
+msgid "Cost Price"
+msgstr ""
+
+msgctxt "selection:product.price_list,price:"
+msgid "List price"
+msgstr ""
+
 msgctxt "selection:product.price_list,unit:"
 msgid "Product Default"
-msgstr "Izdelek"
+msgstr "Privzeto za produkt"

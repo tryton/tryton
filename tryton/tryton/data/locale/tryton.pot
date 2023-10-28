@@ -140,6 +140,10 @@ msgstr ""
 msgid "<i>Create...</i>"
 msgstr ""
 
+#, python-format
+msgid "Create \"%s\"..."
+msgstr ""
+
 msgid "Value"
 msgstr ""
 
@@ -285,6 +289,9 @@ msgid "Save Tree State"
 msgstr ""
 
 msgid "Spell Checking"
+msgstr ""
+
+msgid "Play Sound for Code Scanner"
 msgstr ""
 
 msgid "PDA Mode"
@@ -439,6 +446,15 @@ msgstr ""
 msgid "Move to parent"
 msgstr ""
 
+msgid "Edition"
+msgstr ""
+
+msgid "Copy selected rows"
+msgstr ""
+
+msgid "Insert copied rows"
+msgstr ""
+
 msgid "Select all"
 msgstr ""
 
@@ -483,6 +499,12 @@ msgstr ""
 
 #, python-format
 msgid "Attachments (%s)"
+msgstr ""
+
+msgid "Code Scanner"
+msgstr ""
+
+msgid "Code"
 msgstr ""
 
 msgid "Profile Editor"
@@ -907,13 +929,22 @@ msgstr ""
 msgid "Delete"
 msgstr ""
 
-msgid "New"
+msgid "Discard changes"
 msgstr ""
 
-msgid "Switch"
+msgid "Save and New"
+msgstr ""
+
+msgid "Add and New"
 msgstr ""
 
 msgid "Add"
+msgstr ""
+
+msgid "Apply changes"
+msgstr ""
+
+msgid "Switch"
 msgstr ""
 
 msgid "Remove <Del>"
@@ -951,7 +982,7 @@ msgid "Detection failed"
 msgstr ""
 
 #, python-format
-msgid "Error processing the file at field %s."
+msgid "Unknown column header \"%s\""
 msgstr ""
 
 msgid "Error"
@@ -969,6 +1000,9 @@ msgid "%d records imported."
 msgstr ""
 
 msgid "Search"
+msgstr ""
+
+msgid "New"
 msgstr ""
 
 #, python-format
@@ -1012,6 +1046,9 @@ msgid "Pre-validation"
 msgstr ""
 
 msgid ":"
+msgstr ""
+
+msgid "Scan"
 msgstr ""
 
 msgid "Image Size"

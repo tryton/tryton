@@ -12,7 +12,7 @@ msgstr "Moneda"
 
 msgctxt "field:project.work,list_price:"
 msgid "List Price"
-msgstr "Preu de llista"
+msgstr "Preu de venda"
 
 msgctxt "field:project.work,product:"
 msgid "Product"

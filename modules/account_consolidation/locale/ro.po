@@ -1,4 +1,5 @@
 #
+#, fuzzy
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
@@ -132,7 +133,7 @@ msgstr ""
 
 msgctxt "model:ir.action,name:act_consolidation_balance_sheet_tree"
 msgid "Consolidated Balance Sheet"
-msgstr ""
+msgstr "Bilanţ Prescurtat"
 
 msgctxt "model:ir.action,name:act_consolidation_income_statement_tree"
 msgid "Consolidated Income Statement"
@@ -160,7 +161,7 @@ msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_open_consolidation_balance_sheet"
 msgid "Consolidated Balance Sheet"
-msgstr ""
+msgstr "Bilanţ Prescurtat"
 
 msgctxt "model:ir.ui.menu,name:menu_open_consolidation_income_statement"
 msgid "Consolidated Income Statement"
@@ -172,7 +173,7 @@ msgstr ""
 
 msgctxt "report:account.consolidation.statement:"
 msgid "Balance Sheet"
-msgstr ""
+msgstr "Bilanţ"
 
 msgctxt "report:account.consolidation.statement:"
 msgid "Companies:"

@@ -12,19 +12,15 @@ msgstr "公司"
 
 msgctxt "field:purchase.request,computed_quantity:"
 msgid "Computed Quantity"
-msgstr "计算的数量"
+msgstr "计算用量"
 
-msgctxt "field:purchase.request,computed_uom:"
-msgid "Computed UOM"
-msgstr "计算计量单位"
+msgctxt "field:purchase.request,computed_unit:"
+msgid "Computed Unit"
+msgstr "计算用量单位"
 
 msgctxt "field:purchase.request,default_uom:"
-msgid "Default UOM"
+msgid "Default UoM"
 msgstr "默认计量单位"
-
-msgctxt "field:purchase.request,default_uom_digits:"
-msgid "Default UOM Digits"
-msgstr "默认计量单位有效数字"
 
 msgctxt "field:purchase.request,description:"
 msgid "Description"
@@ -47,7 +43,7 @@ msgid "Product"
 msgstr "产品"
 
 msgctxt "field:purchase.request,product_uom_category:"
-msgid "Product Uom Category"
+msgid "Product UoM Category"
 msgstr "产品计量单位类别"
 
 msgctxt "field:purchase.request,purchase:"
@@ -80,19 +76,15 @@ msgstr "供应日库存"
 
 msgctxt "field:purchase.request,summary:"
 msgid "Summary"
-msgstr ""
+msgstr "总结"
 
 msgctxt "field:purchase.request,supply_date:"
 msgid "Expected Supply Date"
 msgstr "预计供货日期"
 
-msgctxt "field:purchase.request,uom:"
-msgid "UOM"
-msgstr "计量单位"
-
-msgctxt "field:purchase.request,uom_digits:"
-msgid "UOM Digits"
-msgstr "计量单位有效数字"
+msgctxt "field:purchase.request,unit:"
+msgid "Unit"
+msgstr "单位"
 
 msgctxt "field:purchase.request,warehouse:"
 msgid "Warehouse"
@@ -118,12 +110,18 @@ msgctxt "field:purchase.request.create_purchase.ask_party,product:"
 msgid "Product"
 msgstr "产品"
 
-#, fuzzy
+msgctxt "help:purchase.request,default_uom:"
+msgid "The default Unit of Measure."
+msgstr "默认计量单位。"
+
+msgctxt "help:purchase.request,product_uom_category:"
+msgid "The category of Unit of Measure for the product."
+msgstr "产品计量单位类别。"
+
 msgctxt "model:ir.action,name:act_open_purchase_form"
 msgid "Purchases"
 msgstr "采购"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_open_request_form"
 msgid "Purchase Requests"
 msgstr "采购申请"
@@ -184,7 +182,6 @@ msgctxt ""
 msgid "Handle Purchase Cancellation"
 msgstr "取消采购处理"
 
-#, fuzzy
 msgctxt "model:ir.rule.group,name:rule_group_purchase_request_companies"
 msgid "User in companies"
 msgstr "公司中的用户"

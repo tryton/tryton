@@ -208,7 +208,7 @@ msgstr "Gebruiker in het bedrijf"
 
 msgctxt "model:ir.ui.menu,name:menu_configuration"
 msgid "Configuration"
-msgstr "Instellingen"
+msgstr "Configuratie"
 
 msgctxt "model:ir.ui.menu,name:menu_project"
 msgid "Projects"

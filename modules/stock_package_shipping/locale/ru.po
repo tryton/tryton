@@ -6,6 +6,10 @@ msgctxt "field:carrier,shipping_service:"
 msgid "Shipping Service"
 msgstr ""
 
+msgctxt "field:stock.package,has_shipping_service:"
+msgid "Has Shipping Service"
+msgstr ""
+
 msgctxt "field:stock.package,shipping_label:"
 msgid "Shipping Label"
 msgstr ""
@@ -32,13 +36,31 @@ msgctxt "field:stock.shipment.in.return,carrier:"
 msgid "Carrier"
 msgstr ""
 
+msgctxt "field:stock.shipment.in.return,has_shipping_service:"
+msgid "Has Shipping Service"
+msgstr ""
+
 msgctxt "field:stock.shipment.in.return,shipping_description:"
 msgid "Shipping Description"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:stock.shipment.in.return,shipping_reference:"
+msgid "Shipping Reference"
+msgstr "Shipping"
+
+msgctxt "field:stock.shipment.out,has_shipping_service:"
+msgid "Has Shipping Service"
 msgstr ""
 
 msgctxt "field:stock.shipment.out,shipping_description:"
 msgid "Shipping Description"
 msgstr ""
+
+#, fuzzy
+msgctxt "field:stock.shipment.out,shipping_reference:"
+msgid "Shipping Reference"
+msgstr "Shipping"
 
 msgctxt "model:ir.action,name:act_create_shipping_wizard"
 msgid "Create Shipping"

@@ -8,7 +8,7 @@ msgstr "Méthode d'affectation des coûts de transport"
 
 msgctxt "field:stock.move,unit_shipment_cost:"
 msgid "Unit Shipment Cost"
-msgstr "Coût d'expédition unitaire"
+msgstr "Frais d'expédition unitaire"
 
 msgctxt "field:stock.shipment.in,carrier:"
 msgid "Carrier"
@@ -36,7 +36,7 @@ msgstr "Coût"
 
 msgctxt "field:stock.shipment.in,shipment_cost_readonly:"
 msgid "Shipment Cost Read Only"
-msgstr "Coût d'expédition en lecture seule"
+msgstr "Frais d'expédition en lecture seule"
 
 msgctxt "help:stock.shipment.in,cost_edit:"
 msgid "Check to edit the cost."

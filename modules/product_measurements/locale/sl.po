@@ -8,7 +8,7 @@ msgstr "Višina"
 
 #, fuzzy
 msgctxt "field:product.product,height_uom:"
-msgid "Height UOM"
+msgid "Height UoM"
 msgstr "ME za višino"
 
 msgctxt "field:product.product,length:"
@@ -17,7 +17,7 @@ msgstr "Dolžina"
 
 #, fuzzy
 msgctxt "field:product.product,length_uom:"
-msgid "Length UOM"
+msgid "Length UoM"
 msgstr "ME za dolžino"
 
 msgctxt "field:product.product,volume:"
@@ -26,7 +26,7 @@ msgstr "Prostornina"
 
 #, fuzzy
 msgctxt "field:product.product,volume_uom:"
-msgid "Volume UOM"
+msgid "Volume UoM"
 msgstr "Enota prostornine"
 
 msgctxt "field:product.product,weight:"
@@ -35,7 +35,7 @@ msgstr "Teža"
 
 #, fuzzy
 msgctxt "field:product.product,weight_uom:"
-msgid "Weight UOM"
+msgid "Weight UoM"
 msgstr "ME za težo"
 
 msgctxt "field:product.product,width:"
@@ -44,7 +44,7 @@ msgstr "Širina"
 
 #, fuzzy
 msgctxt "field:product.product,width_uom:"
-msgid "Width UOM"
+msgid "Width UoM"
 msgstr "ME za širino"
 
 msgctxt "field:product.template,height:"
@@ -53,7 +53,7 @@ msgstr "Višina"
 
 #, fuzzy
 msgctxt "field:product.template,height_uom:"
-msgid "Height UOM"
+msgid "Height UoM"
 msgstr "ME za višino"
 
 msgctxt "field:product.template,length:"
@@ -62,7 +62,7 @@ msgstr "Dolžina"
 
 #, fuzzy
 msgctxt "field:product.template,length_uom:"
-msgid "Length UOM"
+msgid "Length UoM"
 msgstr "ME za dolžino"
 
 msgctxt "field:product.template,volume:"
@@ -71,7 +71,7 @@ msgstr "Prostornina"
 
 #, fuzzy
 msgctxt "field:product.template,volume_uom:"
-msgid "Volume UOM"
+msgid "Volume UoM"
 msgstr "Enota prostornine"
 
 msgctxt "field:product.template,weight:"
@@ -80,7 +80,7 @@ msgstr "Teža"
 
 #, fuzzy
 msgctxt "field:product.template,weight_uom:"
-msgid "Weight UOM"
+msgid "Weight UoM"
 msgstr "ME za težo"
 
 msgctxt "field:product.template,width:"
@@ -89,47 +89,87 @@ msgstr "Širina"
 
 #, fuzzy
 msgctxt "field:product.template,width_uom:"
-msgid "Width UOM"
+msgid "Width UoM"
 msgstr "ME za širino"
 
 msgctxt "help:product.product,height:"
-msgid "Height for 1 default UOM."
+msgid "Height for 1 default unit of measure."
+msgstr ""
+
+msgctxt "help:product.product,height_uom:"
+msgid "The Unit of Measure for the height."
 msgstr ""
 
 msgctxt "help:product.product,length:"
-msgid "Length for 1 default UOM."
+msgid "Length for 1 default unit of measure."
+msgstr ""
+
+msgctxt "help:product.product,length_uom:"
+msgid "The Unit of Measure for the length."
 msgstr ""
 
 msgctxt "help:product.product,volume:"
-msgid "Volume for 1 default UOM."
+msgid "Volume for 1 default unit of measure."
+msgstr ""
+
+msgctxt "help:product.product,volume_uom:"
+msgid "The Unit of Measure for the volume."
 msgstr ""
 
 msgctxt "help:product.product,weight:"
-msgid "Weight for 1 default UOM."
+msgid "Weight for 1 default unit of measure."
+msgstr ""
+
+msgctxt "help:product.product,weight_uom:"
+msgid "The Unit of Measure for the weight."
 msgstr ""
 
 msgctxt "help:product.product,width:"
-msgid "Width for 1 default UOM."
+msgid "Width for 1 default unit of measure."
+msgstr ""
+
+msgctxt "help:product.product,width_uom:"
+msgid "The Unit of Measure for the width."
 msgstr ""
 
 msgctxt "help:product.template,height:"
-msgid "Height for 1 default UOM."
+msgid "Height for 1 default unit of measure."
+msgstr ""
+
+msgctxt "help:product.template,height_uom:"
+msgid "The Unit of Measure for the height."
 msgstr ""
 
 msgctxt "help:product.template,length:"
-msgid "Length for 1 default UOM."
+msgid "Length for 1 default unit of measure."
+msgstr ""
+
+msgctxt "help:product.template,length_uom:"
+msgid "The Unit of Measure for the length."
 msgstr ""
 
 msgctxt "help:product.template,volume:"
-msgid "Volume for 1 default UOM."
+msgid "Volume for 1 default unit of measure."
+msgstr ""
+
+msgctxt "help:product.template,volume_uom:"
+msgid "The Unit of Measure for the volume."
 msgstr ""
 
 msgctxt "help:product.template,weight:"
-msgid "Weight for 1 default UOM."
+msgid "Weight for 1 default unit of measure."
+msgstr ""
+
+msgctxt "help:product.template,weight_uom:"
+msgid "The Unit of Measure for the weight."
 msgstr ""
 
 msgctxt "help:product.template,width:"
-msgid "Width for 1 default UOM."
+msgid "Width for 1 default unit of measure."
+msgstr ""
+
+msgctxt "help:product.template,width_uom:"
+msgid "The Unit of Measure for the width."
 msgstr ""
 
 msgctxt "view:product.template:"
@@ -137,5 +177,5 @@ msgid "Measurements"
 msgstr "Mere"
 
 msgctxt "view:product.template:"
-msgid "Measurements for 1 default UOM."
+msgid "Measurements for 1 default UoM."
 msgstr ""

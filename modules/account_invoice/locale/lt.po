@@ -112,6 +112,10 @@ msgctxt "field:account.invoice,has_payment_method:"
 msgid "Has Payment Method"
 msgstr "Mokėjimo būdas"
 
+msgctxt "field:account.invoice,has_report_cache:"
+msgid "Has Report Cached"
+msgstr ""
+
 msgctxt "field:account.invoice,invoice_address:"
 msgid "Invoice Address"
 msgstr "Juridinis adresas"
@@ -131,6 +135,11 @@ msgstr "Sąskaitos faktūros ataskaitos ID"
 msgctxt "field:account.invoice,invoice_report_format:"
 msgid "Invoice Report Format"
 msgstr "Sąskaitos faktūros ataskaitos formatas"
+
+#, fuzzy
+msgctxt "field:account.invoice,invoice_report_revisions:"
+msgid "Invoice Report Revisions"
+msgstr "Sąskaitos faktūros ataskaita"
 
 msgctxt "field:account.invoice,journal:"
 msgid "Journal"
@@ -181,6 +190,11 @@ msgctxt "field:account.invoice,payment_term_date:"
 msgid "Payment Term Date"
 msgstr "Mokėjimo sąlygos"
 
+#, fuzzy
+msgctxt "field:account.invoice,posted_by:"
+msgid "Posted By"
+msgstr "Įtraukta į apskaitą"
+
 msgctxt "field:account.invoice,reconciled:"
 msgid "Reconciled"
 msgstr "Sudengta"
@@ -206,6 +220,10 @@ msgctxt "field:account.invoice,tax_amount:"
 msgid "Tax"
 msgstr "PVM"
 
+msgctxt "field:account.invoice,tax_amount_cache:"
+msgid "Tax Cache"
+msgstr ""
+
 msgctxt "field:account.invoice,tax_identifier:"
 msgid "Tax Identifier"
 msgstr "Mokesčių mokėtojo identifikatorius"
@@ -216,6 +234,11 @@ msgstr "Mokesčių eilutės"
 
 msgctxt "field:account.invoice,total_amount:"
 msgid "Total"
+msgstr "Viso su PVM"
+
+#, fuzzy
+msgctxt "field:account.invoice,total_amount_cache:"
+msgid "Total Cache"
 msgstr "Viso su PVM"
 
 msgctxt "field:account.invoice,type:"
@@ -229,6 +252,16 @@ msgstr "Tipas"
 msgctxt "field:account.invoice,untaxed_amount:"
 msgid "Untaxed"
 msgstr "Viso"
+
+#, fuzzy
+msgctxt "field:account.invoice,untaxed_amount_cache:"
+msgid "Untaxed Cache"
+msgstr "Viso"
+
+#, fuzzy
+msgctxt "field:account.invoice,validated_by:"
+msgid "Validated By"
+msgstr "Patvirtinta"
 
 msgctxt "field:account.invoice-account.move.line,invoice:"
 msgid "Invoice"
@@ -348,8 +381,9 @@ msgctxt "field:account.invoice.line,product:"
 msgid "Product"
 msgstr "Prekė"
 
+#, fuzzy
 msgctxt "field:account.invoice.line,product_uom_category:"
-msgid "Product Uom Category"
+msgid "Product UoM Category"
 msgstr "Prekės mato vieneto kategorija"
 
 msgctxt "field:account.invoice.line,quantity:"
@@ -592,6 +626,36 @@ msgctxt "field:account.invoice.payment_term.test.result,date:"
 msgid "Date"
 msgstr "Data"
 
+#, fuzzy
+msgctxt "field:account.invoice.report.revision,date:"
+msgid "Date"
+msgstr "Data"
+
+#, fuzzy
+msgctxt "field:account.invoice.report.revision,filename:"
+msgid "File Name"
+msgstr "Pavadinimas"
+
+#, fuzzy
+msgctxt "field:account.invoice.report.revision,invoice:"
+msgid "Invoice"
+msgstr "Sąskaita faktūra"
+
+#, fuzzy
+msgctxt "field:account.invoice.report.revision,invoice_report_cache:"
+msgid "Invoice Report"
+msgstr "Sąskaitos faktūros ataskaita"
+
+#, fuzzy
+msgctxt "field:account.invoice.report.revision,invoice_report_cache_id:"
+msgid "Invoice Report ID"
+msgstr "Sąskaitos faktūros ataskaitos ID"
+
+#, fuzzy
+msgctxt "field:account.invoice.report.revision,invoice_report_format:"
+msgid "Invoice Report Format"
+msgstr "Sąskaitos faktūros ataskaitos formatas"
+
 msgctxt "field:account.invoice.tax,account:"
 msgid "Account"
 msgstr "Koresponduojanti sąskaita"
@@ -695,6 +759,10 @@ msgctxt "help:account.invoice.credit.start,with_refund:"
 msgid "If true, the current invoice(s) will be cancelled."
 msgstr "Jei teisinga, ši sąskaita faktūra bus anuliuota."
 
+msgctxt "help:account.invoice.line,product_uom_category:"
+msgid "The category of Unit of Measure for the product."
+msgstr ""
+
 msgctxt "help:account.invoice.line,taxes_date:"
 msgid ""
 "The date at which the taxes are computed.\n"
@@ -779,6 +847,11 @@ msgctxt "model:account.invoice.payment_term.test.result,name:"
 msgid "Test Payment Term"
 msgstr "Tikrinti mokėjimo sąlygą"
 
+#, fuzzy
+msgctxt "model:account.invoice.report.revision,name:"
+msgid "Invoice Report Revision"
+msgstr "Sąskaitos faktūros ataskaita"
+
 msgctxt "model:account.invoice.tax,name:"
 msgid "Invoice Tax"
 msgstr "Sąskaitos faktūros mokesčiai"
@@ -822,6 +895,11 @@ msgstr "Eilutės apmokėjimui"
 msgctxt "model:ir.action,name:credit"
 msgid "Credit"
 msgstr "Kreditas"
+
+#, fuzzy
+msgctxt "model:ir.action,name:refresh_invoice_report_wizard"
+msgid "Invoice (revised)"
+msgstr "Sąskaitos faktūros eilutė"
 
 msgctxt "model:ir.action,name:report_invoice"
 msgid "Invoice"
@@ -1307,6 +1385,10 @@ msgctxt "view:account.invoice.payment_term.line:"
 msgid "%"
 msgstr "%"
 
+msgctxt "view:account.invoice.report.revision:"
+msgid "Time"
+msgstr ""
+
 msgctxt "view:account.invoice:"
 msgid "Invoice"
 msgstr "Sąskaita faktūra"
@@ -1322,18 +1404,6 @@ msgstr "Mokėjimas"
 msgctxt "view:account.invoice:"
 msgid "Tax Identifier:"
 msgstr "Mokesčių mokėtojo identifikatorius:"
-
-msgctxt "view:account.move.line:"
-msgid "Amount Second Currency"
-msgstr "Suma antrąja valiuta"
-
-msgctxt "view:account.move.line:"
-msgid "Credit"
-msgstr "Kreditas"
-
-msgctxt "view:account.move.line:"
-msgid "Debit"
-msgstr "Debetas"
 
 msgctxt "view:company.company:"
 msgid "Invoice"

@@ -92,7 +92,7 @@ msgstr "Selectie"
 
 msgctxt "model:ir.ui.menu,name:menu_configuration"
 msgid "Configuration"
-msgstr "Instellingen"
+msgstr "Configuratie"
 
 msgctxt "model:res.group,name:group_carrier_admin"
 msgid "Carrier Administration"

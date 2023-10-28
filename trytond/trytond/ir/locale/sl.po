@@ -2,6 +2,10 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
+msgctxt "field:ir.action,action:"
+msgid "Action"
+msgstr "Ukrep"
+
 msgctxt "field:ir.action,icon:"
 msgid "Icon"
 msgstr "Ikona"
@@ -14,14 +18,13 @@ msgctxt "field:ir.action,name:"
 msgid "Name"
 msgstr "Naziv"
 
-#, fuzzy
 msgctxt "field:ir.action,records:"
 msgid "Records"
-msgstr "ID zapisa"
+msgstr "Zapisi"
 
 msgctxt "field:ir.action,type:"
 msgid "Type"
-msgstr "Tip"
+msgstr "Vrsta"
 
 msgctxt "field:ir.action,usage:"
 msgid "Usage"
@@ -53,7 +56,7 @@ msgstr "Kontekstni model"
 
 msgctxt "field:ir.action.act_window,domain:"
 msgid "Domain Value"
-msgstr "Domena"
+msgstr "Vrednost domene"
 
 msgctxt "field:ir.action.act_window,domains:"
 msgid "Domains"
@@ -95,10 +98,9 @@ msgctxt "field:ir.action.act_window,pyson_search_value:"
 msgid "PySON Search Criteria"
 msgstr "PySON kriterij iskanja"
 
-#, fuzzy
 msgctxt "field:ir.action.act_window,records:"
 msgid "Records"
-msgstr "ID zapisa"
+msgstr "Zapisi"
 
 msgctxt "field:ir.action.act_window,res_model:"
 msgid "Model"
@@ -110,7 +112,7 @@ msgstr "Kriterij iskanja"
 
 msgctxt "field:ir.action.act_window,type:"
 msgid "Type"
-msgstr "Tip"
+msgstr "Vrsta"
 
 msgctxt "field:ir.action.act_window,usage:"
 msgid "Usage"
@@ -140,7 +142,6 @@ msgctxt "field:ir.action.act_window.view,act_window:"
 msgid "Action"
 msgstr "Ukrep"
 
-#, fuzzy
 msgctxt "field:ir.action.act_window.view,model:"
 msgid "Model"
 msgstr "Model"
@@ -197,15 +198,13 @@ msgctxt "field:ir.action.report,name:"
 msgid "Name"
 msgstr "Naziv"
 
-#, fuzzy
 msgctxt "field:ir.action.report,record_name:"
 msgid "Record Name"
-msgstr "Ime"
+msgstr "Naziv zapisa"
 
-#, fuzzy
 msgctxt "field:ir.action.report,records:"
 msgid "Records"
-msgstr "ID zapisa"
+msgstr "Zapisi"
 
 msgctxt "field:ir.action.report,report:"
 msgid "Path"
@@ -221,7 +220,7 @@ msgstr "Vsebina"
 
 msgctxt "field:ir.action.report,report_content_html:"
 msgid "Content HTML"
-msgstr ""
+msgstr "HTML vsebina"
 
 msgctxt "field:ir.action.report,report_content_name:"
 msgid "Content Name"
@@ -239,14 +238,13 @@ msgctxt "field:ir.action.report,template_extension:"
 msgid "Template Extension"
 msgstr "Končnica predloge"
 
-#, fuzzy
 msgctxt "field:ir.action.report,translatable:"
 msgid "Translatable"
 msgstr "Prevedljivo"
 
 msgctxt "field:ir.action.report,type:"
 msgid "Type"
-msgstr "Tip"
+msgstr "Vrsta"
 
 msgctxt "field:ir.action.report,usage:"
 msgid "Usage"
@@ -268,14 +266,13 @@ msgctxt "field:ir.action.url,name:"
 msgid "Name"
 msgstr "Naziv"
 
-#, fuzzy
 msgctxt "field:ir.action.url,records:"
 msgid "Records"
-msgstr "ID zapisa"
+msgstr "Zapisi"
 
 msgctxt "field:ir.action.url,type:"
 msgid "Type"
-msgstr "Tip"
+msgstr "Vrsta"
 
 msgctxt "field:ir.action.url,url:"
 msgid "Action Url"
@@ -305,14 +302,13 @@ msgctxt "field:ir.action.wizard,name:"
 msgid "Name"
 msgstr "Naziv"
 
-#, fuzzy
 msgctxt "field:ir.action.wizard,records:"
 msgid "Records"
-msgstr "ID zapisa"
+msgstr "Zapisi"
 
 msgctxt "field:ir.action.wizard,type:"
 msgid "Type"
-msgstr "Tip"
+msgstr "Vrsta"
 
 msgctxt "field:ir.action.wizard,usage:"
 msgid "Usage"
@@ -326,14 +322,13 @@ msgctxt "field:ir.action.wizard,wiz_name:"
 msgid "Wizard name"
 msgstr "Ime okna"
 
-#, fuzzy
 msgctxt "field:ir.attachment,copy_to_resources:"
 msgid "Copy to Resources"
-msgstr "Vir"
+msgstr "Kopiraj v vire"
 
 msgctxt "field:ir.attachment,copy_to_resources_visible:"
 msgid "Copy to Resources Visible"
-msgstr ""
+msgstr "Kopiraj v vidne vire"
 
 msgctxt "field:ir.attachment,data:"
 msgid "Data"
@@ -377,65 +372,59 @@ msgstr "Povzetek"
 
 msgctxt "field:ir.attachment,type:"
 msgid "Type"
-msgstr "Tip"
+msgstr "Vrsta"
 
-#, fuzzy
 msgctxt "field:ir.avatar,cache:"
 msgid "Cache"
 msgstr "Predpomnilnik"
 
-#, fuzzy
 msgctxt "field:ir.avatar,copy_to_resources:"
 msgid "Copy to Resources"
-msgstr "Vir"
+msgstr "Kopiraj v vire"
 
-#, fuzzy
 msgctxt "field:ir.avatar,copy_to_resources_visible:"
 msgid "Copy to Resources Visible"
-msgstr "Vir"
+msgstr "Kopiraj v vidne vire"
 
 msgctxt "field:ir.avatar,image:"
 msgid "Image"
-msgstr ""
+msgstr "Podoba"
 
 msgctxt "field:ir.avatar,image_id:"
 msgid "Image ID"
-msgstr ""
+msgstr "ID podobe"
 
-#, fuzzy
 msgctxt "field:ir.avatar,last_modification:"
 msgid "Last Modification"
 msgstr "Zadnja sprememba"
 
-#, fuzzy
 msgctxt "field:ir.avatar,last_user:"
 msgid "Last User"
 msgstr "Zadnji uporabnik"
 
-#, fuzzy
 msgctxt "field:ir.avatar,resource:"
 msgid "Resource"
 msgstr "Vir"
 
 msgctxt "field:ir.avatar,uuid:"
 msgid "UUID"
-msgstr ""
+msgstr "UUID"
 
 msgctxt "field:ir.avatar.cache,avatar:"
 msgid "Avatar"
-msgstr ""
+msgstr "Avatar"
 
 msgctxt "field:ir.avatar.cache,image:"
 msgid "Image"
-msgstr ""
+msgstr "Podoba"
 
 msgctxt "field:ir.avatar.cache,image_id:"
 msgid "Image ID"
-msgstr ""
+msgstr "ID podobe"
 
 msgctxt "field:ir.avatar.cache,size:"
 msgid "Size"
-msgstr ""
+msgstr "Velikost"
 
 msgctxt "field:ir.cache,name:"
 msgid "Name"
@@ -447,47 +436,43 @@ msgstr "Časovni žig"
 
 msgctxt "field:ir.calendar.day,abbreviation:"
 msgid "Abbreviation"
-msgstr ""
+msgstr "Okrajšava"
 
 msgctxt "field:ir.calendar.day,index:"
 msgid "Index"
-msgstr ""
+msgstr "Indeks"
 
-#, fuzzy
 msgctxt "field:ir.calendar.day,name:"
 msgid "Name"
 msgstr "Naziv"
 
 msgctxt "field:ir.calendar.month,abbreviation:"
 msgid "Abbreviation"
-msgstr ""
+msgstr "Okrajšava"
 
 msgctxt "field:ir.calendar.month,index:"
 msgid "Index"
-msgstr ""
+msgstr "Indeks"
 
-#, fuzzy
 msgctxt "field:ir.calendar.month,name:"
 msgid "Name"
 msgstr "Naziv"
 
 msgctxt "field:ir.configuration,hostname:"
 msgid "Hostname"
-msgstr ""
+msgstr "Ime gostitelja"
 
 msgctxt "field:ir.configuration,language:"
 msgid "language"
-msgstr "Jezik"
+msgstr "jezik"
 
-#, fuzzy
 msgctxt "field:ir.cron,day:"
 msgid "Day"
-msgstr "Dnevi"
+msgstr "Dan"
 
-#, fuzzy
 msgctxt "field:ir.cron,hour:"
 msgid "Hour"
-msgstr "Ure"
+msgstr "Ura"
 
 msgctxt "field:ir.cron,interval_number:"
 msgid "Interval Number"
@@ -495,168 +480,152 @@ msgstr "Število intervalov"
 
 msgctxt "field:ir.cron,interval_type:"
 msgid "Interval Type"
-msgstr ""
+msgstr "Vrsta intervala"
 
 msgctxt "field:ir.cron,method:"
 msgid "Method"
-msgstr ""
+msgstr "Metoda"
 
-#, fuzzy
 msgctxt "field:ir.cron,minute:"
 msgid "Minute"
-msgstr "Minute"
+msgstr "Minuta"
 
 msgctxt "field:ir.cron,next_call:"
 msgid "Next Call"
 msgstr "Naslednji zagon"
 
-#, fuzzy
 msgctxt "field:ir.cron,timezone:"
 msgid "Timezone"
-msgstr "Čas"
+msgstr "Časovni pas"
 
 msgctxt "field:ir.cron,weekday:"
 msgid "Day of Week"
-msgstr ""
+msgstr "Dan v tednu"
 
 msgctxt "field:ir.email,addresses:"
 msgid "Addresses"
-msgstr ""
+msgstr "Naslovi"
 
 msgctxt "field:ir.email,at:"
 msgid "At"
-msgstr ""
+msgstr "Ob"
 
 msgctxt "field:ir.email,body:"
 msgid "Body"
-msgstr ""
+msgstr "Telo besedila"
 
 msgctxt "field:ir.email,recipients:"
 msgid "Recipients"
-msgstr ""
+msgstr "Prejemniki"
 
 msgctxt "field:ir.email,recipients_hidden:"
 msgid "Hidden Recipients"
-msgstr ""
+msgstr "Skriti prejemniki"
 
 msgctxt "field:ir.email,recipients_secondary:"
 msgid "Secondary Recipients"
-msgstr ""
+msgstr "Sekundarni prejemniki"
 
-#, fuzzy
 msgctxt "field:ir.email,resource:"
 msgid "Resource"
 msgstr "Vir"
 
 msgctxt "field:ir.email,subject:"
 msgid "Subject"
-msgstr ""
+msgstr "Zadeva"
 
-#, fuzzy
 msgctxt "field:ir.email,user:"
 msgid "User"
 msgstr "Uporabnik"
 
 msgctxt "field:ir.email.address,address:"
 msgid "Address"
-msgstr ""
+msgstr "Naslov"
 
-#, fuzzy
 msgctxt "field:ir.email.address,email:"
 msgid "E-mail"
 msgstr "E-pošta"
 
 msgctxt "field:ir.email.template,body:"
 msgid "Body"
-msgstr ""
+msgstr "Telo besedila"
 
-#, fuzzy
 msgctxt "field:ir.email.template,model:"
 msgid "Model"
 msgstr "Model"
 
-#, fuzzy
 msgctxt "field:ir.email.template,model_name:"
 msgid "Model Name"
-msgstr "Ime modela"
+msgstr "Naziv modela"
 
-#, fuzzy
 msgctxt "field:ir.email.template,name:"
 msgid "Name"
 msgstr "Naziv"
 
 msgctxt "field:ir.email.template,recipients:"
 msgid "Recipients"
-msgstr ""
+msgstr "Prejemniki"
 
 msgctxt "field:ir.email.template,recipients_hidden:"
 msgid "Hidden Recipients"
-msgstr ""
+msgstr "Skriti prejemniki"
 
 msgctxt "field:ir.email.template,recipients_hidden_pyson:"
 msgid "Hidden Recipients"
-msgstr ""
+msgstr "Skriti prejemniki"
 
 msgctxt "field:ir.email.template,recipients_pyson:"
 msgid "Recipients"
-msgstr ""
+msgstr "Prejemniki"
 
 msgctxt "field:ir.email.template,recipients_secondary:"
 msgid "Secondary Recipients"
-msgstr ""
+msgstr "Sekundarni prejemniki"
 
 msgctxt "field:ir.email.template,recipients_secondary_pyson:"
 msgid "Secondary Recipients"
-msgstr ""
+msgstr "Sekundarni prejemniki"
 
-#, fuzzy
 msgctxt "field:ir.email.template,reports:"
 msgid "Reports"
-msgstr "Reports"
+msgstr "Poročila"
 
 msgctxt "field:ir.email.template,subject:"
 msgid "Subject"
-msgstr ""
+msgstr "Zadeva"
 
-#, fuzzy
 msgctxt "field:ir.email.template-ir.action.report,report:"
 msgid "Report"
 msgstr "Poročilo"
 
-#, fuzzy
 msgctxt "field:ir.email.template-ir.action.report,template:"
 msgid "Template"
-msgstr "Končnica predloge"
+msgstr "Predloga"
 
-#, fuzzy
 msgctxt "field:ir.error,description:"
 msgid "Description"
 msgstr "Opis"
 
-#, fuzzy
 msgctxt "field:ir.error,message:"
 msgid "Message"
 msgstr "Sporočilo"
 
 msgctxt "field:ir.error,origin:"
 msgid "Origin"
-msgstr ""
+msgstr "Izvor"
 
-#, fuzzy
 msgctxt "field:ir.error,processed_by:"
 msgid "Processed by"
-msgstr "Izdelal"
+msgstr "Obdelal"
 
 msgctxt "field:ir.error,solved_by:"
 msgid "Solved by"
-msgstr ""
+msgstr "Rešil"
 
-#, fuzzy
 msgctxt "field:ir.error,state:"
 msgid "State"
 msgstr "Stanje"
 
-#, fuzzy
 msgctxt "field:ir.error,summary:"
 msgid "Summary"
 msgstr "Povzetek"
@@ -667,15 +636,23 @@ msgstr "Polja"
 
 msgctxt "field:ir.export,header:"
 msgid "Header"
-msgstr ""
+msgstr "Glava"
 
 msgctxt "field:ir.export,name:"
 msgid "Name"
 msgstr "Naziv"
 
+msgctxt "field:ir.export,records:"
+msgid "Records"
+msgstr "Zapisi"
+
 msgctxt "field:ir.export,resource:"
 msgid "Resource"
 msgstr "Vir"
+
+msgctxt "field:ir.export,user:"
+msgid "User"
+msgstr "Uporabnik"
 
 msgctxt "field:ir.export.line,export:"
 msgid "Export"
@@ -687,7 +664,7 @@ msgstr "Naziv"
 
 msgctxt "field:ir.lang,am:"
 msgid "AM"
-msgstr ""
+msgstr "Dopoldne"
 
 msgctxt "field:ir.lang,code:"
 msgid "Code"
@@ -709,32 +686,29 @@ msgctxt "field:ir.lang,grouping:"
 msgid "Grouping"
 msgstr "Združevanje"
 
-#, fuzzy
 msgctxt "field:ir.lang,mon_decimal_point:"
 msgid "Decimal Separator"
-msgstr "Decimalna vejica"
+msgstr "Decimalno ločilo"
 
-#, fuzzy
 msgctxt "field:ir.lang,mon_grouping:"
 msgid "Grouping"
 msgstr "Združevanje"
 
-#, fuzzy
 msgctxt "field:ir.lang,mon_thousands_sep:"
 msgid "Thousands Separator"
-msgstr "Ločevalec tisočic"
+msgstr "Ločilo tisočic"
 
 msgctxt "field:ir.lang,n_cs_precedes:"
 msgid "Negative Currency Symbol Precedes"
-msgstr ""
+msgstr "Negativna vrednost z vodilnim simbolom"
 
 msgctxt "field:ir.lang,n_sep_by_space:"
 msgid "Negative Separate by Space"
-msgstr ""
+msgstr "Negativna vrednost, ločena s presledkom"
 
 msgctxt "field:ir.lang,n_sign_posn:"
 msgid "Negative Sign Position"
-msgstr ""
+msgstr "Položaj negativnega predznaka"
 
 msgctxt "field:ir.lang,name:"
 msgid "Name"
@@ -742,35 +716,35 @@ msgstr "Naziv"
 
 msgctxt "field:ir.lang,negative_sign:"
 msgid "Negative Sign"
-msgstr ""
+msgstr "Negativni predznak"
 
 msgctxt "field:ir.lang,p_cs_precedes:"
 msgid "Positive Currency Symbol Precedes"
-msgstr ""
+msgstr "Pozitivna vrednost z vodilnim simbolom"
 
 msgctxt "field:ir.lang,p_sep_by_space:"
 msgid "Positive Separate by Space"
-msgstr ""
+msgstr "Pozitivna vrednost, ločena s presledkom"
 
 msgctxt "field:ir.lang,p_sign_posn:"
 msgid "Positive Sign Position"
-msgstr ""
+msgstr "Položaj pozitivnega predznaka"
 
 msgctxt "field:ir.lang,parent:"
 msgid "Parent Code"
-msgstr ""
+msgstr "Koda matičnega zapisa"
 
 msgctxt "field:ir.lang,pg_text_search:"
 msgid "PostgreSQL Text Search Configuration"
-msgstr ""
+msgstr "Konfiguracija iskanja po besedilu PostgreSQL"
 
 msgctxt "field:ir.lang,pm:"
 msgid "PM"
-msgstr ""
+msgstr "Popoldne"
 
 msgctxt "field:ir.lang,positive_sign:"
 msgid "Positive Sign"
-msgstr ""
+msgstr "Pozitivni predznak"
 
 msgctxt "field:ir.lang,thousands_sep:"
 msgid "Thousands Separator"
@@ -780,15 +754,13 @@ msgctxt "field:ir.lang,translatable:"
 msgid "Translatable"
 msgstr "Prevedljivo"
 
-#, fuzzy
 msgctxt "field:ir.lang.config.start,languages:"
 msgid "Languages"
-msgstr "Languages"
+msgstr "Jeziki"
 
-#, fuzzy
 msgctxt "field:ir.message,text:"
 msgid "Text"
-msgstr "Naprej"
+msgstr "Besedilo"
 
 msgctxt "field:ir.model,fields:"
 msgid "Fields"
@@ -804,7 +776,7 @@ msgstr "Informacije"
 
 msgctxt "field:ir.model,model:"
 msgid "Model Name"
-msgstr "Ime modela"
+msgstr "Naziv modela"
 
 msgctxt "field:ir.model,module:"
 msgid "Module"
@@ -848,9 +820,8 @@ msgstr "Kliki"
 
 msgctxt "field:ir.model.button,confirm:"
 msgid "Confirm"
-msgstr ""
+msgstr "Potrdi"
 
-#, fuzzy
 msgctxt "field:ir.model.button,help:"
 msgid "Help"
 msgstr "Pomoč"
@@ -877,7 +848,7 @@ msgstr "Pravila"
 
 msgctxt "field:ir.model.button,string:"
 msgid "Label"
-msgstr ""
+msgstr "Napis"
 
 msgctxt "field:ir.model.button-button.reset,button:"
 msgid "Button"
@@ -943,10 +914,9 @@ msgctxt "field:ir.model.data,values:"
 msgid "Values"
 msgstr "Vrednosti"
 
-#, fuzzy
 msgctxt "field:ir.model.field,access:"
 msgid "Access"
-msgstr "Access"
+msgstr "Dostop"
 
 msgctxt "field:ir.model.field,field_description:"
 msgid "Field Description"
@@ -1004,25 +974,22 @@ msgctxt "field:ir.model.field.access,perm_write:"
 msgid "Write Access"
 msgstr "Pisanje"
 
-#, fuzzy
 msgctxt "field:ir.model.log,action:"
 msgid "Action"
 msgstr "Ukrep"
 
 msgctxt "field:ir.model.log,event:"
 msgid "Event"
-msgstr ""
+msgstr "Dogodek"
 
-#, fuzzy
 msgctxt "field:ir.model.log,resource:"
 msgid "Resource"
 msgstr "Vir"
 
 msgctxt "field:ir.model.log,target:"
 msgid "Target"
-msgstr ""
+msgstr "Tarča"
 
-#, fuzzy
 msgctxt "field:ir.model.log,user:"
 msgid "User"
 msgstr "Uporabnik"
@@ -1063,10 +1030,9 @@ msgctxt "field:ir.module.activate_upgrade.start,module_info:"
 msgid "Modules to update"
 msgstr "Moduli za posodobitev"
 
-#, fuzzy
 msgctxt "field:ir.module.config.start,modules:"
 msgid "Modules"
-msgstr "Modules"
+msgstr "Moduli"
 
 msgctxt "field:ir.module.config_wizard.item,action:"
 msgid "Action"
@@ -1092,14 +1058,13 @@ msgctxt "field:ir.module.dependency,state:"
 msgid "State"
 msgstr "Stanje"
 
-#, fuzzy
 msgctxt "field:ir.note,copy_to_resources:"
 msgid "Copy to Resources"
-msgstr "Vir"
+msgstr "Kopiraj v vire"
 
 msgctxt "field:ir.note,copy_to_resources_visible:"
 msgid "Copy to Resources Visible"
-msgstr ""
+msgstr "Kopiraj v vidne vire"
 
 msgctxt "field:ir.note,last_modification:"
 msgid "Last Modification"
@@ -1127,41 +1092,39 @@ msgstr "Neprebrano"
 
 msgctxt "field:ir.note.read,note:"
 msgid "Note"
-msgstr "Zabeležka"
+msgstr "Zapisek"
 
 msgctxt "field:ir.note.read,user:"
 msgid "User"
 msgstr "Uporabnik"
 
-#, fuzzy
 msgctxt "field:ir.queue,data:"
 msgid "Data"
 msgstr "Podatki"
 
 msgctxt "field:ir.queue,dequeued_at:"
 msgid "Dequeued at"
-msgstr ""
+msgstr "Odstranjeno iz vrste ob"
 
 msgctxt "field:ir.queue,enqueued_at:"
 msgid "Enqueued at"
-msgstr ""
+msgstr "Dodano v vrsto ob"
 
 msgctxt "field:ir.queue,expected_at:"
 msgid "Expected at"
-msgstr ""
+msgstr "Pričakovano ob"
 
 msgctxt "field:ir.queue,finished_at:"
 msgid "Finished at"
-msgstr ""
+msgstr "Končano ob"
 
-#, fuzzy
 msgctxt "field:ir.queue,name:"
 msgid "Name"
 msgstr "Naziv"
 
 msgctxt "field:ir.queue,scheduled_at:"
 msgid "Scheduled at"
-msgstr ""
+msgstr "Načrtovano ob"
 
 msgctxt "field:ir.rule,domain:"
 msgid "Domain"
@@ -1213,7 +1176,7 @@ msgstr "Zadnji časovni žig"
 
 msgctxt "field:ir.sequence,name:"
 msgid "Sequence Name"
-msgstr "Naziv"
+msgstr "Naziv številčne serije"
 
 msgctxt "field:ir.sequence,number_increment:"
 msgid "Increment Number"
@@ -1235,10 +1198,13 @@ msgctxt "field:ir.sequence,prefix:"
 msgid "Prefix"
 msgstr "Predpona"
 
-#, fuzzy
+msgctxt "field:ir.sequence,preview:"
+msgid "Preview"
+msgstr "Predogled"
+
 msgctxt "field:ir.sequence,sequence_type:"
 msgid "Sequence Type"
-msgstr "Sequence Types"
+msgstr "Vrsta šifrantov"
 
 msgctxt "field:ir.sequence,suffix:"
 msgid "Suffix"
@@ -1254,7 +1220,7 @@ msgstr "Zaokroževanje časovnega žiga"
 
 msgctxt "field:ir.sequence,type:"
 msgid "Type"
-msgstr "Tip"
+msgstr "Vrsta"
 
 msgctxt "field:ir.sequence.strict,last_timestamp:"
 msgid "Last Timestamp"
@@ -1262,7 +1228,7 @@ msgstr "Zadnji časovni žig"
 
 msgctxt "field:ir.sequence.strict,name:"
 msgid "Sequence Name"
-msgstr "Naziv"
+msgstr "Naziv številčne serije"
 
 msgctxt "field:ir.sequence.strict,number_increment:"
 msgid "Increment Number"
@@ -1284,10 +1250,13 @@ msgctxt "field:ir.sequence.strict,prefix:"
 msgid "Prefix"
 msgstr "Predpona"
 
-#, fuzzy
+msgctxt "field:ir.sequence.strict,preview:"
+msgid "Preview"
+msgstr "Predogled"
+
 msgctxt "field:ir.sequence.strict,sequence_type:"
 msgid "Sequence Type"
-msgstr "Sequence Types"
+msgstr "Vrste šifrantov"
 
 msgctxt "field:ir.sequence.strict,suffix:"
 msgid "Suffix"
@@ -1303,11 +1272,11 @@ msgstr "Zaokroževanje časovnega žiga"
 
 msgctxt "field:ir.sequence.strict,type:"
 msgid "Type"
-msgstr "Tip"
+msgstr "Vrsta"
 
 msgctxt "field:ir.sequence.type,name:"
 msgid "Sequence Name"
-msgstr "Naziv"
+msgstr "Naziv številčne serije"
 
 msgctxt "field:ir.session,key:"
 msgid "Key"
@@ -1335,7 +1304,7 @@ msgstr "Modul"
 
 msgctxt "field:ir.translation,name:"
 msgid "Field Name"
-msgstr "Polje"
+msgstr "Naziv polja"
 
 msgctxt "field:ir.translation,overriding_module:"
 msgid "Overriding Module"
@@ -1347,11 +1316,11 @@ msgstr "ID vira"
 
 msgctxt "field:ir.translation,src:"
 msgid "Source"
-msgstr "Original"
+msgstr "Izvor"
 
 msgctxt "field:ir.translation,type:"
 msgid "Type"
-msgstr "Tip"
+msgstr "Vrsta"
 
 msgctxt "field:ir.translation,value:"
 msgid "Translation Value"
@@ -1361,17 +1330,14 @@ msgctxt "field:ir.translation.export.result,file:"
 msgid "File"
 msgstr "Datoteka"
 
-#, fuzzy
 msgctxt "field:ir.translation.export.result,filename:"
 msgid "Filename"
-msgstr "Datoteka"
+msgstr "Ime datoteke"
 
-#, fuzzy
 msgctxt "field:ir.translation.export.result,language:"
 msgid "Language"
 msgstr "Jezik"
 
-#, fuzzy
 msgctxt "field:ir.translation.export.result,module:"
 msgid "Module"
 msgstr "Modul"
@@ -1388,7 +1354,6 @@ msgctxt "field:ir.translation.update.start,language:"
 msgid "Language"
 msgstr "Jezik"
 
-#, fuzzy
 msgctxt "field:ir.trigger,action:"
 msgid "Action"
 msgstr "Ukrep"
@@ -1531,7 +1496,7 @@ msgstr "Prioriteta"
 
 msgctxt "field:ir.ui.view,type:"
 msgid "View Type"
-msgstr "Vrsta"
+msgstr "Vrsta pogleda"
 
 msgctxt "field:ir.ui.view_search,domain:"
 msgid "Domain"
@@ -1549,25 +1514,21 @@ msgctxt "field:ir.ui.view_search,user:"
 msgid "User"
 msgstr "Uporabnik"
 
-#, fuzzy
 msgctxt "field:ir.ui.view_tree_optional,field:"
 msgid "Field"
 msgstr "Polje"
 
-#, fuzzy
 msgctxt "field:ir.ui.view_tree_optional,user:"
 msgid "User"
 msgstr "Uporabnik"
 
-#, fuzzy
 msgctxt "field:ir.ui.view_tree_optional,value:"
 msgid "Value"
-msgstr "Vrednosti"
+msgstr "Vrednost"
 
-#, fuzzy
 msgctxt "field:ir.ui.view_tree_optional,view_id:"
 msgid "View ID"
-msgstr "Pogled"
+msgstr "ID pogleda"
 
 msgctxt "field:ir.ui.view_tree_state,child_name:"
 msgid "Child Name"
@@ -1611,35 +1572,31 @@ msgstr "Širina"
 
 msgctxt "help:ir.action,records:"
 msgid "The records on which the action runs."
-msgstr ""
+msgstr "Zapisi na katerih se izvede ukrep."
 
-#, fuzzy
 msgctxt "help:ir.action.act_window,context_domain:"
 msgid "Part of the domain that will be evaluated on each refresh."
-msgstr "Del domene, ki se ovrednoti ob vsaki osvežitvi"
+msgstr "Del domene, ki se ovrednoti ob vsaki osvežitvi."
 
-#, fuzzy
 msgctxt "help:ir.action.act_window,limit:"
 msgid "Default limit for the list view."
-msgstr "Privzeta meja za naštevni pogled"
+msgstr "Privzeta omejitev za pogled seznama."
 
 msgctxt "help:ir.action.act_window,records:"
 msgid "The records on which the action runs."
-msgstr ""
+msgstr "Zapisi na katerih se izvede ukrep."
 
-#, fuzzy
 msgctxt "help:ir.action.act_window,search_value:"
 msgid "Default search criteria for the list view."
-msgstr "Privzeti iskalni kriterij za naštevni pogled"
+msgstr "Privzeti iskalni kriterij za pogled seznama."
 
-#, fuzzy
 msgctxt "help:ir.action.report,extension:"
 msgid ""
 "Leave empty for the same as template, see LibreOffice documentation for "
 "compatible format."
 msgstr ""
 "Za enako končnico kot v predlogi pustite prazno. Za združljiv format glejte "
-"navodila za unoconv."
+"navodila za LibreOffice."
 
 msgctxt "help:ir.action.report,record_name:"
 msgid ""
@@ -1649,7 +1606,7 @@ msgstr ""
 
 msgctxt "help:ir.action.report,records:"
 msgid "The records on which the action runs."
-msgstr ""
+msgstr "Zapisi na katerih se izvede ukrep."
 
 msgctxt "help:ir.action.report,single:"
 msgid "Check if the template works only for one record."
@@ -1657,85 +1614,79 @@ msgstr "Označi, če predloga poročila velja za posamezen zapis."
 
 msgctxt "help:ir.action.report,translatable:"
 msgid "Uncheck to disable translations for this report."
-msgstr ""
+msgstr "Želite onemogočiti prevode za to poročilo?"
 
 msgctxt "help:ir.action.url,records:"
 msgid "The records on which the action runs."
-msgstr ""
+msgstr "Zapisi na katerih se izvede ukrep."
 
 msgctxt "help:ir.action.wizard,records:"
 msgid "The records on which the action runs."
-msgstr ""
+msgstr "Zapisi na katerih se izvede ukrep."
 
-#, fuzzy
 msgctxt "help:ir.action.wizard,window:"
 msgid "Run wizard in a new window."
-msgstr "Zaženi čarovnika v novem oknu"
+msgstr "Zaženi čarovnika v novem oknu."
 
 msgctxt "help:ir.email.template,recipients:"
 msgid "The field that contains the recipient(s)."
-msgstr ""
+msgstr "Polje, ki vsebuje prejemnika oz. prejemnike."
 
 msgctxt "help:ir.email.template,recipients_hidden:"
 msgid "The field that contains the secondary recipient(s)."
-msgstr ""
+msgstr "Polje, ki vsebuje sekundarne prejemnike."
 
-#, fuzzy
 msgctxt "help:ir.email.template,recipients_hidden_pyson:"
 msgid ""
 "A PYSON expression that generates a list of hidden recipients with the "
 "record represented by \"self\"."
 msgstr ""
-"Pythonski stavek, ki se preračuna z zapisom, dostopnim preko \"self\".\n"
-"Če je stavek resničen, se sproži pravilo."
+"PYSON stavek, ki vrne seznam skritih prejemnikov. Zapis je predstavljen z "
+"besedo \"self\"."
 
-#, fuzzy
 msgctxt "help:ir.email.template,recipients_pyson:"
 msgid ""
 "A PYSON expression that generates a list of recipients with the record "
 "represented by \"self\"."
 msgstr ""
-"Pythonski stavek, ki se preračuna z zapisom, dostopnim preko \"self\".\n"
-"Če je stavek resničen, se sproži pravilo."
 
 msgctxt "help:ir.email.template,recipients_secondary:"
 msgid "The field that contains the secondary recipient(s)."
-msgstr ""
+msgstr "Polje, ki vsebuje sekundarne prejemnike."
 
-#, fuzzy
 msgctxt "help:ir.email.template,recipients_secondary_pyson:"
 msgid ""
 "A PYSON expression that generates a list of secondary recipients with the "
 "record represented by \"self\"."
 msgstr ""
-"Pythonski stavek, ki se preračuna z zapisom, dostopnim preko \"self\".\n"
-"Če je stavek resničen, se sproži pravilo."
 
 msgctxt "help:ir.export,header:"
 msgid "Check to include field names on the export."
-msgstr ""
+msgstr "Označite za izvoz imen polj."
+
+msgctxt "help:ir.export,records:"
+msgid "The records on which the export runs."
+msgstr "Zapisi, ki naj se izvozijo."
 
 msgctxt "help:ir.lang,code:"
 msgid "RFC 4646 tag."
-msgstr ""
+msgstr "RFC 4646 značka."
 
 msgctxt "help:ir.lang,parent:"
 msgid "Code of the exceptional parent"
 msgstr ""
 
-#, fuzzy
 msgctxt "help:ir.model,module:"
 msgid "Module in which this model is defined."
-msgstr "Modul, v katerem je ta model določen"
+msgstr "Modul, v katerem je ta model določen."
 
 msgctxt "help:ir.model.button,confirm:"
 msgid "Text to ask user confirmation when clicking the button."
 msgstr ""
 
-#, fuzzy
 msgctxt "help:ir.model.button,reset_by:"
 msgid "Button that should reset the rules."
-msgstr "Gumb, ki ponastavlja pravila"
+msgstr "Gumb, ki ponastavlja pravila."
 
 msgctxt "help:ir.model.button.rule,condition:"
 msgid ""
@@ -1747,11 +1698,11 @@ msgstr ""
 
 msgctxt "help:ir.model.data,db_id:"
 msgid "The id of the record in the database."
-msgstr "Id zapisa v zbirki podatkov"
+msgstr "Id zapisa v zbirki podatkov."
 
 msgctxt "help:ir.model.data,fs_id:"
 msgid "The id of the record as known on the file system."
-msgstr "Id zapisa, viden v datotečnem sistemu"
+msgstr "Id zapisa, viden na datotečnem sistemu."
 
 msgctxt "help:ir.model.field,access:"
 msgid ""
@@ -1759,10 +1710,9 @@ msgid ""
 "against the relation of the field."
 msgstr ""
 
-#, fuzzy
 msgctxt "help:ir.model.field,module:"
 msgid "Module in which this field is defined."
-msgstr "Modul, v katerem je to polje določeno"
+msgstr "Modul, v katerem je to polje določeno."
 
 msgctxt "help:ir.model.print_model_graph.start,filter:"
 msgid ""
@@ -1778,38 +1728,57 @@ msgctxt "help:ir.queue,scheduled_at:"
 msgid "When the task can start."
 msgstr ""
 
-#, fuzzy
 msgctxt "help:ir.rule,domain:"
 msgid ""
 "Domain is evaluated with a PYSON context containing:\n"
-"- \"user\" as the current user\n"
 "- \"groups\" as list of ids from the current user"
 msgstr ""
 "Domena je ovrednotena s PYSON kontekstom, ki vsebuje:\n"
-"- \"user\" kot trenutni uporabnik"
+"- \"groups\" kot seznam ID-jev skupin trenutnega uporabnika"
 
-#, fuzzy
 msgctxt "help:ir.rule.group,default_p:"
 msgid "Add this rule to all users by default."
-msgstr "Privzeto dodaj to pravilo vsem uporabnikom"
+msgstr "Dodaj to pravilo kot privzeto vsem uporabnikom."
 
-#, fuzzy
 msgctxt "help:ir.rule.group,global_p:"
 msgid ""
 "Make the rule global \n"
 "so every users must follow this rule."
 msgstr ""
 "Naredi pravilo globalno,\n"
-"tako da ga mora vsak uporabnik upoštevati"
+"tako da ga mora vsak uporabnik upoštevati."
 
 msgctxt "help:ir.rule.group,name:"
 msgid "Displayed to users when access error is raised for this rule."
 msgstr ""
 
-#, fuzzy
 msgctxt "help:ir.rule.group,rules:"
 msgid "The rule is satisfied if at least one test is True."
-msgstr "Pravilu je zadoščeno, če je vsaj en preizkus resničen"
+msgstr "Pravilu je zadoščeno, če je vsaj en preizkus resničen."
+
+msgctxt "help:ir.sequence,prefix:"
+msgid ""
+"The current date can be used formatted using strftime format suffixed with "
+"underscores: i.e: ${date_Y}"
+msgstr ""
+
+msgctxt "help:ir.sequence,suffix:"
+msgid ""
+"The current date can be used formatted using strftime format suffixed with "
+"underscores: i.e: ${date_Y}"
+msgstr ""
+
+msgctxt "help:ir.sequence.strict,prefix:"
+msgid ""
+"The current date can be used formatted using strftime format suffixed with "
+"underscores: i.e: ${date_Y}"
+msgstr ""
+
+msgctxt "help:ir.sequence.strict,suffix:"
+msgid ""
+"The current date can be used formatted using strftime format suffixed with "
+"underscores: i.e: ${date_Y}"
+msgstr ""
 
 msgctxt "help:ir.trigger,condition:"
 msgid ""
@@ -1835,287 +1804,233 @@ msgstr ""
 "Nastavi minimalno časovno zakasnitev za klic \"Funkcija ukrepa\" pri istem zapisu.\n"
 "Pusti prazno za brez zakasnitve."
 
-#, fuzzy
 msgctxt "help:ir.ui.view_search,domain:"
 msgid "The PYSON domain."
-msgstr "PYSON domena"
+msgstr "PYSON domena."
 
 msgctxt "model:ir.action,name:"
 msgid "Action"
 msgstr "Ukrep"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_action_act_window_form"
 msgid "Window Actions"
-msgstr "Window Actions"
+msgstr "Ukrepi okna"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_action_form"
 msgid "Actions"
-msgstr "Actions"
+msgstr "Ukrepi"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_action_report_form"
 msgid "Reports"
-msgstr "Reports"
+msgstr "Poročila"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_action_url_form"
 msgid "URLs"
-msgstr "URLs"
+msgstr "URL-ji"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_action_wizard_form"
 msgid "Wizards"
-msgstr "Wizards"
+msgstr "Čarovniki"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_attachment_form"
 msgid "Attachments"
-msgstr "Attachments"
+msgstr "Priloge"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_config_wizard_item_form"
 msgid "Config Wizard Items"
-msgstr "Config Wizard Items"
+msgstr "Elementi konfiguracijskega čarovnika"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_cron_form"
 msgid "Actions"
-msgstr "Actions"
+msgstr "Ukrepi"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_email_form"
 msgid "E-mails"
-msgstr "E-pošta"
+msgstr "E-pošte"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_email_form_relate"
 msgid "E-mail Archives"
-msgstr "E-pošta"
+msgstr "Arhiv e-pošte"
 
 msgctxt "model:ir.action,name:act_email_template_form"
 msgid "E-mail Templates"
-msgstr ""
+msgstr "E-poštne predloge"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_error_form"
 msgid "Errors"
-msgstr "Napaka"
+msgstr "Napake"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_export_form"
 msgid "Exports"
-msgstr "Exports"
+msgstr "Izvozi"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_icon_form"
 msgid "Icons"
-msgstr "Icons"
+msgstr "Ikone"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_lang_config"
 msgid "Configure Languages"
-msgstr "Configure Modules"
+msgstr "Nastavi jezike"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_lang_form"
 msgid "Languages"
-msgstr "Languages"
+msgstr "Jeziki"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_menu_list"
 msgid "Menu"
-msgstr "Menu"
+msgstr "Meni"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_menu_tree"
 msgid "Menu"
-msgstr "Menu"
+msgstr "Meni"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_message_form"
-msgid "Message"
-msgstr "Sporočilo"
+msgid "Messages"
+msgstr "Sporočila"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_model_access_form"
 msgid "Models Access"
-msgstr "Models Access"
+msgstr "Dostop do modelov"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_model_access_form_relate_model"
 msgid "Access"
-msgstr "Access"
+msgstr "Dostop"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_model_button_click_form_relate_model_button"
 msgid "Clicks"
-msgstr "Clicks"
+msgstr "Kliki"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_model_button_form"
 msgid "Buttons"
-msgstr "Buttons"
+msgstr "Gumbi"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_model_data_form"
 msgid "Data"
-msgstr "Data"
+msgstr "Podatki"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_model_field_access_form"
 msgid "Fields Access"
-msgstr "Fields Access"
+msgstr "Dostop do polj"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_model_field_access_form_relate_field"
 msgid "Access"
-msgstr "Access"
+msgstr "Dostop"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_model_fields_form"
 msgid "Fields"
-msgstr "Fields"
+msgstr "Polja"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_model_form"
 msgid "Models"
-msgstr "Models"
+msgstr "Modeli"
 
 msgctxt "model:ir.action,name:act_model_log_form"
 msgid "Logs"
-msgstr ""
+msgstr "Dnevniki"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_module_activate_upgrade"
 msgid "Perform Pending Activation/Upgrade"
-msgstr "Perform Pending Activation/Upgrade"
+msgstr "Izvedite čakajočo aktivacijo oz. nadgradnjo"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_module_config"
 msgid "Configure Modules"
-msgstr "Configure Modules"
+msgstr "Nastavi module"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_module_config_wizard"
 msgid "Module Configuration"
-msgstr "Module Configuration"
+msgstr "Konfiguracija modula"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_module_form"
 msgid "Modules"
-msgstr "Modules"
+msgstr "Moduli"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_note_form"
 msgid "Notes"
-msgstr "Notes"
+msgstr "Zapiski"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_rule_group_form"
 msgid "Record Rules"
-msgstr "Record Rules"
+msgstr "Pravila zapisov"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_sequence_form"
 msgid "Sequences"
-msgstr "Sequences"
+msgstr "Šifranti"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_sequence_strict_form"
 msgid "Sequences Strict"
-msgstr "Sequences Strict"
+msgstr "Strogi šifranti"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_sequence_type_form"
 msgid "Types"
-msgstr "Tip"
+msgstr "Vrste"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_translation_clean"
 msgid "Clean Translations"
-msgstr "Clean Translations"
+msgstr "Počisti prevode"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_translation_export"
 msgid "Export Translations"
-msgstr "Export Translations"
+msgstr "Izvozi prevode"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_translation_form"
 msgid "Translations"
-msgstr "Translations"
+msgstr "Prevodi"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_translation_report"
 msgid "Translations"
-msgstr "Translations"
+msgstr "Prevodi"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_translation_set"
 msgid "Set Translations"
-msgstr "Set Translations"
+msgstr "Nastavi prevode"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_translation_update"
 msgid "Synchronize Translations"
-msgstr "Synchronize Translations"
+msgstr "Uskladi prevode"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_trigger_form"
 msgid "Triggers"
-msgstr "Triggers"
+msgstr "Prožilci"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_view_form"
 msgid "Views"
-msgstr "Views"
+msgstr "Pogledi"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_view_search"
 msgid "View Search"
-msgstr "View Search"
+msgstr "Iskanje pogledov"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_view_show"
 msgid "Show View"
-msgstr "Show View"
+msgstr "Prikaži pogled"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_view_tree_optional_form"
 msgid "View Tree Optional"
-msgstr "Stanje drevesnega pogleda"
+msgstr "Izbirni pogled seznama"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_view_tree_state"
 msgid "Tree State"
-msgstr "Tree State"
+msgstr "Stanje drevesa"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_view_tree_width_form"
 msgid "View Tree Width"
-msgstr "View Tree Width"
+msgstr "Širina pogleda drevesa"
 
-#, fuzzy
 msgctxt "model:ir.action,name:print_model_graph"
 msgid "Graph"
-msgstr "Graph"
+msgstr "Graf"
 
-#, fuzzy
 msgctxt "model:ir.action,name:report_model_graph"
 msgid "Graph"
-msgstr "Graph"
+msgstr "Graf"
 
-#, fuzzy
 msgctxt "model:ir.action,name:report_model_workflow_graph"
 msgid "Workflow Graph"
-msgstr "Workflow Graph"
+msgstr "Graf poteka dela"
 
-#, fuzzy
 msgctxt "model:ir.action,name:wizard_translation_report"
 msgid "Translations"
-msgstr "Translations"
+msgstr "Prevodi"
 
 msgctxt "model:ir.action.act_window,name:"
 msgid "Action act window"
@@ -2125,12 +2040,10 @@ msgctxt "model:ir.action.act_window.domain,name:"
 msgid "Action act window domain"
 msgstr "Domena okna za ukrepe"
 
-#, fuzzy
 msgctxt "model:ir.action.act_window.domain,name:act_error_form_domain_all"
 msgid "All"
-msgstr "All"
+msgstr "Vse"
 
-#, fuzzy
 msgctxt "model:ir.action.act_window.domain,name:act_error_form_domain_open"
 msgid "Open"
 msgstr "Odprto"
@@ -2138,31 +2051,27 @@ msgstr "Odprto"
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_error_form_domain_processing"
 msgid "Processing"
-msgstr ""
+msgstr "V obdelavi"
 
-#, fuzzy
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_model_data_form_domain_all"
 msgid "All"
-msgstr "All"
+msgstr "Vse"
 
-#, fuzzy
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_model_data_form_domain_out_of_sync"
 msgid "Out of Sync"
-msgstr "Out of Sync"
+msgstr "Ni usklajeno"
 
-#, fuzzy
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_translation_form_domain_local"
 msgid "Local"
-msgstr "Local"
+msgstr "Lokalno"
 
-#, fuzzy
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_translation_form_domain_module"
 msgid "Modules"
-msgstr "Modules"
+msgstr "Moduli"
 
 msgctxt "model:ir.action.act_window.view,name:"
 msgid "Action act window view"
@@ -2190,11 +2099,11 @@ msgstr "Priloga"
 
 msgctxt "model:ir.avatar,name:"
 msgid "Avatar"
-msgstr ""
+msgstr "Avatar"
 
 msgctxt "model:ir.avatar.cache,name:"
 msgid "Avatar Cache"
-msgstr ""
+msgstr "Predpomnilnik avatarja"
 
 msgctxt "model:ir.cache,name:"
 msgid "Cache"
@@ -2202,165 +2111,163 @@ msgstr "Predpomnilnik"
 
 msgctxt "model:ir.calendar.day,abbreviation:Friday"
 msgid "Fri"
-msgstr ""
+msgstr "Pet"
 
 msgctxt "model:ir.calendar.day,abbreviation:Monday"
 msgid "Mon"
-msgstr ""
+msgstr "Pon"
 
 msgctxt "model:ir.calendar.day,abbreviation:Saturday"
 msgid "Sat"
-msgstr ""
+msgstr "Sob"
 
 msgctxt "model:ir.calendar.day,abbreviation:Sunday"
 msgid "Sun"
-msgstr ""
+msgstr "Ned"
 
 msgctxt "model:ir.calendar.day,abbreviation:Thursday"
 msgid "Thu"
-msgstr ""
+msgstr "Čet"
 
 msgctxt "model:ir.calendar.day,abbreviation:Tuesday"
 msgid "Tue"
-msgstr ""
+msgstr "Tor"
 
 msgctxt "model:ir.calendar.day,abbreviation:Wednesday"
 msgid "Wed"
-msgstr ""
+msgstr "Sre"
 
-#, fuzzy
 msgctxt "model:ir.calendar.day,name:"
 msgid "Day"
-msgstr "Dnevi"
+msgstr "Dan"
 
 msgctxt "model:ir.calendar.day,name:Friday"
 msgid "Friday"
-msgstr ""
+msgstr "Petek"
 
 msgctxt "model:ir.calendar.day,name:Monday"
 msgid "Monday"
-msgstr ""
+msgstr "Ponedeljek"
 
 msgctxt "model:ir.calendar.day,name:Saturday"
 msgid "Saturday"
-msgstr ""
+msgstr "Sobota"
 
 msgctxt "model:ir.calendar.day,name:Sunday"
 msgid "Sunday"
-msgstr ""
+msgstr "Nedelja"
 
 msgctxt "model:ir.calendar.day,name:Thursday"
 msgid "Thursday"
-msgstr ""
+msgstr "Četrtek"
 
 msgctxt "model:ir.calendar.day,name:Tuesday"
 msgid "Tuesday"
-msgstr ""
+msgstr "Torek"
 
 msgctxt "model:ir.calendar.day,name:Wednesday"
 msgid "Wednesday"
-msgstr ""
+msgstr "Sreda"
 
 msgctxt "model:ir.calendar.month,abbreviation:April"
 msgid "Apr"
-msgstr ""
+msgstr "Apr"
 
 msgctxt "model:ir.calendar.month,abbreviation:August"
 msgid "Aug"
-msgstr ""
+msgstr "Avg"
 
 msgctxt "model:ir.calendar.month,abbreviation:December"
 msgid "Dec"
-msgstr ""
+msgstr "Dec"
 
 msgctxt "model:ir.calendar.month,abbreviation:February"
 msgid "Feb"
-msgstr ""
+msgstr "Feb"
 
 msgctxt "model:ir.calendar.month,abbreviation:January"
 msgid "Jan"
-msgstr ""
+msgstr "Jan"
 
 msgctxt "model:ir.calendar.month,abbreviation:July"
 msgid "Jul"
-msgstr ""
+msgstr "Jul"
 
 msgctxt "model:ir.calendar.month,abbreviation:June"
 msgid "Jun"
-msgstr ""
+msgstr "Jun"
 
 msgctxt "model:ir.calendar.month,abbreviation:March"
 msgid "Mar"
-msgstr ""
+msgstr "Mar"
 
 msgctxt "model:ir.calendar.month,abbreviation:May"
 msgid "May"
-msgstr ""
+msgstr "Maj"
 
 msgctxt "model:ir.calendar.month,abbreviation:November"
 msgid "Nov"
-msgstr ""
+msgstr "Nov"
 
 msgctxt "model:ir.calendar.month,abbreviation:October"
 msgid "Oct"
-msgstr ""
+msgstr "Okt"
 
 msgctxt "model:ir.calendar.month,abbreviation:September"
 msgid "Sep"
-msgstr ""
+msgstr "Sep"
 
-#, fuzzy
 msgctxt "model:ir.calendar.month,name:"
 msgid "Month"
-msgstr "Meseci"
+msgstr "Mesec"
 
 msgctxt "model:ir.calendar.month,name:April"
 msgid "April"
-msgstr ""
+msgstr "April"
 
 msgctxt "model:ir.calendar.month,name:August"
 msgid "August"
-msgstr ""
+msgstr "Avgust"
 
 msgctxt "model:ir.calendar.month,name:December"
 msgid "December"
-msgstr ""
+msgstr "December"
 
 msgctxt "model:ir.calendar.month,name:February"
 msgid "February"
-msgstr ""
+msgstr "Februar"
 
 msgctxt "model:ir.calendar.month,name:January"
 msgid "January"
-msgstr ""
+msgstr "Januar"
 
 msgctxt "model:ir.calendar.month,name:July"
 msgid "July"
-msgstr ""
+msgstr "Julij"
 
 msgctxt "model:ir.calendar.month,name:June"
 msgid "June"
-msgstr ""
+msgstr "Junij"
 
 msgctxt "model:ir.calendar.month,name:March"
 msgid "March"
-msgstr ""
+msgstr "Marec"
 
 msgctxt "model:ir.calendar.month,name:May"
 msgid "May"
-msgstr ""
+msgstr "Maj"
 
 msgctxt "model:ir.calendar.month,name:November"
 msgid "November"
-msgstr ""
+msgstr "November"
 
 msgctxt "model:ir.calendar.month,name:October"
 msgid "October"
-msgstr ""
+msgstr "Oktober"
 
 msgctxt "model:ir.calendar.month,name:September"
 msgid "September"
-msgstr ""
+msgstr "September"
 
 msgctxt "model:ir.configuration,name:"
 msgid "Configuration"
@@ -2374,24 +2281,22 @@ msgctxt "model:ir.date,name:"
 msgid "Date"
 msgstr "Datum"
 
-#, fuzzy
 msgctxt "model:ir.email,name:"
 msgid "Email"
 msgstr "E-pošta"
 
 msgctxt "model:ir.email.address,name:"
 msgid "Email Address"
-msgstr ""
+msgstr "E-poštni naslov"
 
 msgctxt "model:ir.email.template,name:"
 msgid "Email Template"
-msgstr ""
+msgstr "E-poštna predloga"
 
 msgctxt "model:ir.email.template-ir.action.report,name:"
 msgid "Email Template - Report"
-msgstr ""
+msgstr "E-poštna predloga - Poročilo"
 
-#, fuzzy
 msgctxt "model:ir.error,name:"
 msgid "Error"
 msgstr "Napaka"
@@ -2408,183 +2313,156 @@ msgctxt "model:ir.lang,name:"
 msgid "Language"
 msgstr "Jezik"
 
-#, fuzzy
 msgctxt "model:ir.lang,name:lang_bg"
 msgid "Bulgarian"
-msgstr "Bulgarian"
+msgstr "Bolgarščina"
 
-#, fuzzy
 msgctxt "model:ir.lang,name:lang_ca"
 msgid "Català"
-msgstr "Català"
+msgstr "Katalonščina"
 
-#, fuzzy
 msgctxt "model:ir.lang,name:lang_cs"
 msgid "Czech"
-msgstr "Czech"
+msgstr "Češčina"
 
-#, fuzzy
 msgctxt "model:ir.lang,name:lang_de"
 msgid "German"
-msgstr "German"
+msgstr "Nemščina"
 
-#, fuzzy
 msgctxt "model:ir.lang,name:lang_en"
 msgid "English"
-msgstr "English"
+msgstr "Angleščina"
 
-#, fuzzy
 msgctxt "model:ir.lang,name:lang_es"
 msgid "Spanish"
-msgstr "Spanish"
+msgstr "Španščina"
 
-#, fuzzy
 msgctxt "model:ir.lang,name:lang_es_419"
 msgid "Spanish (Latin American)"
-msgstr "Spanish (Latin American)"
+msgstr "Španščina (Latinska amerika)"
 
 msgctxt "model:ir.lang,name:lang_et"
 msgid "Estonian"
-msgstr ""
+msgstr "Estonščina"
 
 msgctxt "model:ir.lang,name:lang_fa"
 msgid "Persian"
-msgstr ""
+msgstr "Perzijščina"
 
 msgctxt "model:ir.lang,name:lang_fi"
 msgid "Finnish"
-msgstr ""
+msgstr "Finščina"
 
-#, fuzzy
 msgctxt "model:ir.lang,name:lang_fr"
 msgid "French"
-msgstr "French"
+msgstr "Francoščina"
 
-#, fuzzy
 msgctxt "model:ir.lang,name:lang_hu"
 msgid "Hungarian"
-msgstr "Hungarian"
+msgstr "Madžarščina"
 
 msgctxt "model:ir.lang,name:lang_id"
 msgid "Indonesian"
-msgstr ""
+msgstr "Indonezijščina"
 
-#, fuzzy
 msgctxt "model:ir.lang,name:lang_it"
 msgid "Italian"
-msgstr "Italian"
+msgstr "Italijanščina"
 
-#, fuzzy
 msgctxt "model:ir.lang,name:lang_lo"
 msgid "Lao"
-msgstr "Lao"
+msgstr "Laoščina"
 
-#, fuzzy
 msgctxt "model:ir.lang,name:lang_lt"
 msgid "Lithuanian"
-msgstr "Lithuanian"
+msgstr "Litovščina"
 
-#, fuzzy
 msgctxt "model:ir.lang,name:lang_nl"
 msgid "Dutch"
-msgstr "Dutch"
+msgstr "Nizozemščina"
 
-#, fuzzy
 msgctxt "model:ir.lang,name:lang_pl"
 msgid "Polish"
-msgstr "Polish"
+msgstr "Poljščina"
 
 msgctxt "model:ir.lang,name:lang_pt"
 msgid "Portuguese"
-msgstr ""
+msgstr "Portugalščina"
 
 msgctxt "model:ir.lang,name:lang_ro"
 msgid "Romanian"
-msgstr ""
+msgstr "Romunščina"
 
-#, fuzzy
 msgctxt "model:ir.lang,name:lang_ru"
 msgid "Russian"
-msgstr "Russian"
+msgstr "Ruščina"
 
-#, fuzzy
 msgctxt "model:ir.lang,name:lang_sl"
 msgid "Slovenian"
-msgstr "Slovenian"
+msgstr "Slovenščina"
 
 msgctxt "model:ir.lang,name:lang_tr"
 msgid "Turkish"
-msgstr ""
+msgstr "Turščina"
 
 msgctxt "model:ir.lang,name:lang_uk"
 msgid "Ukrainian"
-msgstr ""
+msgstr "Ukrajinščina"
 
-#, fuzzy
 msgctxt "model:ir.lang,name:lang_zh_CN"
 msgid "Chinese Simplified"
-msgstr "Chinese Simplified"
+msgstr "Kitajščina (poenostavljena)"
 
-#, fuzzy
 msgctxt "model:ir.lang.config.start,name:"
 msgid "Configure languages"
-msgstr "Configure Modules"
+msgstr "Nastavi jezike"
 
-#, fuzzy
 msgctxt "model:ir.message,name:"
 msgid "Message"
 msgstr "Sporočilo"
 
-#, fuzzy
 msgctxt "model:ir.message,text:msg_ID"
 msgid "ID"
 msgstr "ID"
 
 msgctxt "model:ir.message,text:msg_access_button_error"
 msgid "Calling button \"%(button)s on \"%(model)s\" is not allowed."
-msgstr ""
+msgstr "Klic gumba \"%(button)s\" na modelu \"%(model)s\" ni dovoljen."
 
 msgctxt "model:ir.message,text:msg_access_rule_error"
 msgid "You are not allowed to access \"%(model)s\"."
-msgstr ""
+msgstr "Nimate dostopa do modela \"%(model)s\"."
 
 msgctxt "model:ir.message,text:msg_access_rule_field_error"
 msgid "You are not allowed to access \"%(model)s.%(field)s\"."
-msgstr ""
+msgstr "Nimate dostopa do \"%(model)s.%(field)s\"."
 
-#, fuzzy
 msgctxt "model:ir.message,text:msg_access_wizard_error"
 msgid "You are not allowed to execute wizard \"%(wizard)s\"."
-msgstr "You are not allowed to delete this record."
+msgstr "Nimate dovoljenja za zagon čarovnika \"%(wizard)s\"."
 
-#, fuzzy
 msgctxt "model:ir.message,text:msg_access_wizard_model_error"
 msgid "You are not allowed to execute wizard \"%(wizard)s\" on \"%(model)s\"."
-msgstr "You are not allowed to delete this record."
+msgstr "Nimate dovoljenja za zagon čarovnika \"%(wizard)s\" na modelu \"%(model)s\"."
 
-#, fuzzy
 msgctxt "model:ir.message,text:msg_action_invalid_context"
 msgid "Invalid context \"%(context)s\" for action \"%(action)s\"."
 msgstr "Neveljaven kontekst \"%(context)s\" pri ukrepu \"%(action)s\"."
 
-#, fuzzy
 msgctxt "model:ir.message,text:msg_action_invalid_domain"
 msgid "Invalid domain or search criteria \"%(domain)s\" for action \"%(action)s\"."
 msgstr ""
 "Neveljavna domena ali iskalni kriterij \"%(domain)s\" pri ukrepu "
 "\"%(action)s\"."
 
-#, fuzzy
 msgctxt "model:ir.message,text:msg_action_invalid_views"
 msgid "Invalid view \"%(view)s\" for action \"%(action)s\"."
 msgstr "Neveljaven pogled \"%(view)s\" za ukrep \"%(action)s\"."
 
-#, fuzzy
 msgctxt "model:ir.message,text:msg_action_wrong_wizard_model"
 msgid "Wrong wizard model in keyword action \"%(name)s\"."
-msgstr "Napačen model čarovnika v ukrepu ključne besede \"%s\"."
+msgstr ""
 
-#, fuzzy
 msgctxt "model:ir.message,text:msg_active"
 msgid "Active"
 msgstr "Aktivno"
@@ -2593,157 +2471,142 @@ msgctxt "model:ir.message,text:msg_active_help"
 msgid "Uncheck to exclude from future use."
 msgstr ""
 
-#, fuzzy
 msgctxt "model:ir.message,text:msg_attachments"
 msgid "Attachments"
-msgstr "Attachments"
+msgstr "Priloge"
 
 msgctxt "model:ir.message,text:msg_avatar"
 msgid "Avatar"
-msgstr ""
+msgstr "Avatar"
 
 msgctxt "model:ir.message,text:msg_avatar_resource_unique"
 msgid "Only one avatar is allowed per resource."
-msgstr ""
+msgstr "Dovoljen je le en avatar na vir."
 
-#, fuzzy
 msgctxt "model:ir.message,text:msg_avatar_size_unique"
 msgid "The size of an avatar must be unique."
-msgstr "Ime modula mora biti enolično."
+msgstr "Velikost avatarja mora biti edinstvena."
 
 msgctxt "model:ir.message,text:msg_avatar_url"
 msgid "Avatar URL"
-msgstr ""
+msgstr "URL avatarja"
 
 msgctxt "model:ir.message,text:msg_avatars"
 msgid "Avatars"
-msgstr ""
+msgstr "Avatarji"
 
-#, fuzzy
 msgctxt "model:ir.message,text:msg_base_config_record"
 msgid "This record is part of the base configuration."
-msgstr "This record is part of the base configuration."
+msgstr "Ta zapis je del osnovne konfiguracije."
 
-#, fuzzy
 msgctxt "model:ir.message,text:msg_button_name_unique"
 msgid "The name of the button must be unique per model."
-msgstr "Ime modula mora biti enolično."
+msgstr "Naziv gumba mora biti edinstven na modelu."
 
 msgctxt "model:ir.message,text:msg_create_rule_error"
 msgid ""
 "You are not allowed to create records of \"%(model)s\" because they fail on at least one of these rules:\n"
 "%(rules)s"
 msgstr ""
+"Nimate dovoljenja za ustvarjanja zapisov na modelu \"%(model)s\", saj ne ustreza vsaj enemu od pravil:\n"
+"%(rules)s"
 
-#, fuzzy
 msgctxt "model:ir.message,text:msg_created_at"
 msgid "Created at"
-msgstr "Izdelano"
+msgstr "Ustvarjeno ob"
 
-#, fuzzy
 msgctxt "model:ir.message,text:msg_created_by"
 msgid "Created by"
-msgstr "Izdelal"
+msgstr "Ustvaril"
 
 msgctxt "model:ir.message,text:msg_delete_rule_error"
 msgid ""
 "You are not allowed to delete records \"%(ids)s\" of \"%(model)s\" because of at lease one of those rules:\n"
 "%(rules)s"
 msgstr ""
+"Nimate dovoljenja za brisanje zapisov na modelu \"%(model)s\", saj ne ustreza vsaj enemu od pravil:\n"
+"%(rules)s"
 
-#, fuzzy
 msgctxt "model:ir.message,text:msg_delete_xml_record"
 msgid "You are not allowed to delete the record \"%(record)s\" of \"%(model)s\"."
-msgstr "You are not allowed to delete this record."
+msgstr "Nimate dovoljenja za brisanje zapisa \"%(record)s\" na modelu \"%(model)s\"."
 
-#, fuzzy
 msgctxt "model:ir.message,text:msg_dict_no"
 msgid "No"
-msgstr "Zabeležka"
+msgstr "Ne"
 
-#, fuzzy
 msgctxt "model:ir.message,text:msg_dict_schema_boolean"
 msgid "Boolean"
-msgstr "Počisti"
+msgstr "Logična vrednost"
 
 msgctxt "model:ir.message,text:msg_dict_schema_char"
 msgid "Char"
-msgstr ""
+msgstr "Znakovno polje"
 
-#, fuzzy
 msgctxt "model:ir.message,text:msg_dict_schema_date"
 msgid "Date"
 msgstr "Datum"
 
-#, fuzzy
 msgctxt "model:ir.message,text:msg_dict_schema_datetime"
 msgid "DateTime"
-msgstr "Datum"
+msgstr "DatumČas"
 
 msgctxt "model:ir.message,text:msg_dict_schema_digits"
 msgid "Digits"
-msgstr ""
+msgstr "Decimalke"
 
-#, fuzzy
 msgctxt "model:ir.message,text:msg_dict_schema_domain"
 msgid "Domain"
 msgstr "Domena"
 
 msgctxt "model:ir.message,text:msg_dict_schema_float"
 msgid "Float"
-msgstr ""
+msgstr "Plavajoča vejica"
 
-#, fuzzy
 msgctxt "model:ir.message,text:msg_dict_schema_help"
 msgid "Help"
 msgstr "Pomoč"
 
-#, fuzzy
 msgctxt "model:ir.message,text:msg_dict_schema_help_selection"
 msgid "Help Selection"
-msgstr "Izbor"
+msgstr "Izbira besedila pomoči"
 
 msgctxt "model:ir.message,text:msg_dict_schema_help_selection_help"
 msgid "The key followed by the help text separated by a \":\", one per line."
 msgstr ""
 
-#, fuzzy
 msgctxt "model:ir.message,text:msg_dict_schema_help_selection_json"
 msgid "Help Selection JSON"
-msgstr "Izbor"
+msgstr "Izbira JSON pomoči"
 
 msgctxt "model:ir.message,text:msg_dict_schema_integer"
 msgid "Integer"
-msgstr ""
+msgstr "Celo število"
 
 msgctxt "model:ir.message,text:msg_dict_schema_invalid_domain"
 msgid "Invalid domain in schema \"%(schema)s\"."
-msgstr ""
+msgstr "Neveljavna domena v shemi \"%(schema)s\"."
 
-#, fuzzy
 msgctxt "model:ir.message,text:msg_dict_schema_invalid_help_selection"
 msgid "Invalid help selection in schema \"%(schema)s\"."
-msgstr "Neveljavna definicija epošte na izpisu \"%s\"."
+msgstr "Neveljavna izbira pomoči v shemi \"%(schema)s\"."
 
 msgctxt "model:ir.message,text:msg_dict_schema_invalid_selection"
 msgid "Invalid selection in schema \"%(schema)s\"."
-msgstr ""
+msgstr "Neveljavna izbira v shemi \"%(schema)s\"."
 
-#, fuzzy
 msgctxt "model:ir.message,text:msg_dict_schema_multiselection"
 msgid "MultiSelection"
-msgstr "Izbor"
+msgstr "Večkratni izbor"
 
-#, fuzzy
 msgctxt "model:ir.message,text:msg_dict_schema_name"
 msgid "Name"
 msgstr "Naziv"
 
 msgctxt "model:ir.message,text:msg_dict_schema_numeric"
 msgid "Numeric"
-msgstr ""
+msgstr "Numerično"
 
-#, fuzzy
 msgctxt "model:ir.message,text:msg_dict_schema_selection"
 msgid "Selection"
 msgstr "Izbor"
@@ -2752,15 +2615,13 @@ msgctxt "model:ir.message,text:msg_dict_schema_selection_help"
 msgid "A couple of key and label separated by \":\" per line."
 msgstr ""
 
-#, fuzzy
 msgctxt "model:ir.message,text:msg_dict_schema_selection_json"
 msgid "Selection JSON"
-msgstr "Izbor"
+msgstr "Izbor JSON"
 
-#, fuzzy
 msgctxt "model:ir.message,text:msg_dict_schema_selection_sorted"
 msgid "Selection Sorted"
-msgstr "Izbor"
+msgstr "Razvrščen izbor"
 
 msgctxt "model:ir.message,text:msg_dict_schema_selection_sorted_help"
 msgid "If the selection must be sorted on label."
@@ -2768,58 +2629,47 @@ msgstr ""
 
 msgctxt "model:ir.message,text:msg_dict_schema_string"
 msgid "String"
-msgstr ""
+msgstr "Niz znakov"
 
-#, fuzzy
 msgctxt "model:ir.message,text:msg_dict_schema_type"
 msgid "Type"
-msgstr "Tip"
+msgstr "Vrsta"
 
 msgctxt "model:ir.message,text:msg_dict_yes"
 msgid "Yes"
-msgstr ""
+msgstr "Da"
 
-#, fuzzy
 msgctxt "model:ir.message,text:msg_digits_validation_record"
 msgid ""
 "The number of digits in the value \"%(value)r\" for field \"%(field)s\" in "
 "\"%(record)s\" of \"%(model)s\" exceeds the limit of \"%(digits)i\"."
 msgstr ""
-"The value \"%(value)s\" of field \"%(field)s\" on \"%(model)s\" exceeds the "
-"digits limit of \"%(digits)s\"."
 
-#, fuzzy
 msgctxt "model:ir.message,text:msg_domain_validation_record"
 msgid ""
 "The value \"%(value)s\" for field \"%(field)s\" in \"%(record)s\" of "
 "\"%(model)s\" is not valid according to its domain."
 msgstr ""
-"The value of the field \"%(field)s\" on \"%(model)s\" is not valid according"
-" to its domain."
 
-#, fuzzy
 msgctxt "model:ir.message,text:msg_edited_at"
 msgid "Edited at"
-msgstr "Izdelano"
+msgstr "Urejeno ob"
 
-#, fuzzy
 msgctxt "model:ir.message,text:msg_edited_by"
 msgid "Edited by"
-msgstr "Izdelal"
+msgstr "Uredil"
 
-#, fuzzy
 msgctxt "model:ir.message,text:msg_email_template_invalid_body"
 msgid ""
 "Invalid body in e-mail template \"%(template)s\" with exception "
 "\"%(exception)s\"."
-msgstr "Neveljaven kontekst \"%(context)s\" pri ukrepu \"%(action)s\"."
+msgstr ""
 
-#, fuzzy
 msgctxt "model:ir.message,text:msg_email_template_invalid_field_pyson"
 msgid ""
 "Invalid PYSON %(field)s in e-mail template \"%(template)s\" with exception "
 "\"%(exception)s\"."
-msgstr "Neveljaven kontekst \"%(context)s\" pri ukrepu \"%(action)s\"."
+msgstr ""
 
 msgctxt "model:ir.message,text:msg_email_template_invalid_field_pyson_type"
 msgid ""
@@ -2827,29 +2677,25 @@ msgid ""
 "list."
 msgstr ""
 
-#, fuzzy
 msgctxt "model:ir.message,text:msg_email_template_invalid_subject"
 msgid ""
 "Invalid subject in e-mail template \"%(template)s\" with exception "
 "\"%(exception)s\"."
-msgstr "Neveljaven kontekst \"%(context)s\" pri ukrepu \"%(action)s\"."
+msgstr ""
 
 msgctxt "model:ir.message,text:msg_field_model_name"
 msgid "%(field)s (model name)"
-msgstr ""
+msgstr "%(field)s (naziv modela)"
 
 msgctxt "model:ir.message,text:msg_field_string"
 msgid "%(field)s (string)"
-msgstr ""
+msgstr "%(field)s (niz znakov)"
 
-#, fuzzy
 msgctxt "model:ir.message,text:msg_forbidden_char_validation_record"
 msgid ""
 "The value \"%(value)s\" for field \"%(field)s\" in \"%(record)s\" of "
 "\"%(model)s\" contains some invalid chars \"%(chars)s\"."
 msgstr ""
-"The time value \"%(value)s\" of field \"%(field)s\" on \"%(model)s\" is not "
-"valid."
 
 msgctxt "model:ir.message,text:msg_foreign_model_exist"
 msgid ""
@@ -2857,76 +2703,63 @@ msgid ""
 "\"%(field)s\" of \"%(model)s\"."
 msgstr ""
 
-#, fuzzy
 msgctxt "model:ir.message,text:msg_foreign_model_missing"
 msgid "The value \"%(value)s\" for field \"%(field)s\" in \"%(model)s\" does not exist."
-msgstr "The value \"%(value)s\" of field \"%(field)s\" on \"%(model)s\" doesn't exist."
+msgstr ""
 
 msgctxt "model:ir.message,text:msg_html_editor_save_fail"
 msgid "Failed to save, please retry."
-msgstr ""
+msgstr "Shranjevanje ni uspelo, poskusite znova."
 
 msgctxt "model:ir.message,text:msg_id_positive"
 msgid "ID must be positive."
-msgstr ""
+msgstr "ID mora biti pozitiven."
 
-#, fuzzy
 msgctxt "model:ir.message,text:msg_language_code_unique"
 msgid "The code on language must be unique."
-msgstr "Model mora biti unikaten."
+msgstr "Koda na jeziku mora biti edinstvena."
 
-#, fuzzy
 msgctxt "model:ir.message,text:msg_language_default_translatable"
 msgid "The default language \"%(language)s\" must be translatable."
-msgstr "Privzeti jezik mora biti prevedljiv."
+msgstr "Privzeti jezik \"%(language)s\" mora biti prevedljiv."
 
-#, fuzzy
 msgctxt "model:ir.message,text:msg_language_delete_default"
 msgid "The default language \"%(language)s\" can not be deleted."
-msgstr "Privzetega jezika ni možno brisati."
+msgstr "Privzetega jezika \"%(language)s\" ni mogoče izbrisati."
 
-#, fuzzy
 msgctxt "model:ir.message,text:msg_language_invalid_date"
 msgid "Invalid date format \"%(format)s\" for language \"%(language)s\"."
-msgstr "Neveljaven format datuma \"%(format)s\" pri jeziku \"%(language)s\"."
+msgstr "Neveljaven format datuma \"%(format)s\" za jezik \"%(language)s\"."
 
-#, fuzzy
 msgctxt "model:ir.message,text:msg_language_invalid_grouping"
 msgid "Invalid grouping \"%(grouping)s\" for language \"%(language)s\"."
-msgstr "Neveljavno združevanje \"%(grouping)s\" po jeziku \"%(language)s\"."
+msgstr ""
 
-#, fuzzy
 msgctxt "model:ir.message,text:msg_model_invalid_condition"
 msgid ""
 "The condition \"%(condition)s\" is not a valid PYSON expression for button "
 "rule \"%(rule)s\"."
 msgstr ""
-"Pogoj \"%(condition)s\" na gumbnem pravilu \"%(rule)s\" ni veljaven PYSON "
-"izraz."
 
-#, fuzzy
 msgctxt "model:ir.message,text:msg_module_deactivate_dependency"
 msgid ""
 "Some activated modules depend on the ones you are trying to deactivate:"
 msgstr ""
 "Nekateri aktivirani moduli so odvisni od modulov, ki jih želiš deaktivirati:"
 
-#, fuzzy
 msgctxt "model:ir.message,text:msg_module_delete_state"
 msgid ""
 "You can not remove a module that is activated or that is about to be "
 "activated."
-msgstr "Modula, ki je ali bo aktiviran, ni mogoče odstraniti"
+msgstr "Modula, ki je oz. bo aktiviran, ni mogoče odstraniti."
 
-#, fuzzy
 msgctxt "model:ir.message,text:msg_notes"
 msgid "Notes"
-msgstr "Notes"
+msgstr "Zapiski"
 
-#, fuzzy
 msgctxt "model:ir.message,text:msg_read_error"
 msgid "You are trying to read records \"%(ids)s\" of \"%(model)s\" that don't exist."
-msgstr "You are not allowed to delete this record."
+msgstr "Poskušate brisati zapise \"%(ids)s\" modela \"%(model)s\", ki ne obstajajo."
 
 msgctxt "model:ir.message,text:msg_read_rule_error"
 msgid ""
@@ -2934,36 +2767,33 @@ msgid ""
 "%(rules)s"
 msgstr ""
 
-#, fuzzy
 msgctxt "model:ir.message,text:msg_record_name"
 msgid "Record Name"
-msgstr "Ime"
+msgstr "Naziv zapisa"
 
-#, fuzzy
 msgctxt "model:ir.message,text:msg_recursion_error"
 msgid ""
 "Recursion error: Record \"%(rec_name)s\" with parent \"%(parent_rec_name)s\""
 " was configured as ancestor of itself."
 msgstr ""
-"Recursion error: Record \"%(rec_name)s\" with parent \"%(parent_rec_name)s\""
-" was configured as ancestor of itself."
 
-#, fuzzy
 msgctxt "model:ir.message,text:msg_reference_syntax_error"
 msgid ""
 "Syntax error for reference: %(value)r in \"%(field)s\" of \"%(model)s\" "
 "(%(column)s)."
-msgstr "Syntax error for reference %r in %s"
+msgstr ""
+"Napaka v sintaksi za referenco: %(value)r v polju \"%(field)s\" na modelu "
+"\"%(model)s\" (%(column)s)."
 
-#, fuzzy
 msgctxt "model:ir.message,text:msg_relation_not_found"
 msgid "Relation not found: %(value)r in \"%(model)s\" (%(column)s)."
-msgstr "Relation not found: %r in %s"
+msgstr ""
+"Relacije ni bilo mogoče najti: %(value)r na modelu \"%(model)s\" "
+"(%(column)s)."
 
-#, fuzzy
 msgctxt "model:ir.message,text:msg_report_invalid_email"
 msgid "Invalid email definition for report \"%(name)s\"."
-msgstr "Neveljavna definicija epošte na izpisu \"%s\"."
+msgstr "Neveljavna opredelitev e-pošte na poročilu \"%s\"."
 
 #, fuzzy
 msgctxt "model:ir.message,text:msg_report_invalid_record_name"
@@ -2972,43 +2802,35 @@ msgid ""
 "\"%(exception)s\"."
 msgstr "Neveljaven kontekst \"%(context)s\" pri ukrepu \"%(action)s\"."
 
-#, fuzzy
 msgctxt "model:ir.message,text:msg_required_validation"
 msgid "A value is required for field \"%(field)s\" in \"%(model)s\"."
-msgstr "Missing search function on field \"%s\"."
+msgstr "Vrednost je zahtevana za polje \"%(field)s\" na modelu \"%(model)s\"."
 
-#, fuzzy
 msgctxt "model:ir.message,text:msg_required_validation_record"
 msgid "A value is required for field \"%(field)s\" in \"%(record)s\" of \"%(model)s\"."
-msgstr "The value \"%(value)s\" of field \"%(field)s\" on \"%(model)s\" doesn't exist."
+msgstr ""
 
 msgctxt "model:ir.message,text:msg_resource_copy_help"
 msgid "The resources to which this record must be copied."
 msgstr ""
 
-#, fuzzy
 msgctxt "model:ir.message,text:msg_rule_invalid_domain"
 msgid "Invalid domain in rule \"%(name)s\"."
-msgstr "Neveljavna domena pri pravilu \"%s\""
+msgstr "Neveljavna domena pri pravilu \"%(name)s\"."
 
-#, fuzzy
 msgctxt "model:ir.message,text:msg_search_function_missing"
 msgid "Missing search function for field \"%(field)s\" in \"%(model)s\"."
-msgstr "Missing search function on field \"%s\"."
+msgstr ""
 
-#, fuzzy
 msgctxt "model:ir.message,text:msg_selection_validation_record"
 msgid ""
 "The value \"%(value)s\" for field \"%(field)s\" in \"%(record)s\" of "
 "\"%(model)s\" is not one of the allowed options."
 msgstr ""
-"The value \"%(value)s\" of field \"%(field)s\" on \"%(model)s\" is not in "
-"the selection."
 
-#, fuzzy
 msgctxt "model:ir.message,text:msg_sequence"
 msgid "Sequence"
-msgstr "Zap.št."
+msgstr "Številčna serija"
 
 msgctxt "model:ir.message,text:msg_sequence_change_sequence_type"
 msgid ""
@@ -3016,32 +2838,28 @@ msgid ""
 "sequence."
 msgstr ""
 
-#, fuzzy
 msgctxt "model:ir.message,text:msg_sequence_invalid_number_increment_next"
 msgid ""
 "Invalid \"Increment Number\" (%(number_increment)s) or \"Next Number\" "
 "(%(number_next)s) with exception \"%(exception)s\"."
-msgstr "Neveljaven kontekst \"%(context)s\" pri ukrepu \"%(action)s\"."
+msgstr ""
 
-#, fuzzy
 msgctxt "model:ir.message,text:msg_sequence_invalid_prefix"
 msgid "Invalid prefix \"%(affix)s\" for sequence \"%(sequence)s\"."
-msgstr "Neveljavna predpona \"%(prefix)s\" pri štetju \"%(sequence)s\"."
+msgstr "Neveljavna predpona \"%(affix)s\" na številčni seriji \"%(sequence)s\"."
 
-#, fuzzy
 msgctxt "model:ir.message,text:msg_sequence_invalid_suffix"
 msgid "Invalid suffix \"%(affix)s\" for sequence \"%(sequence)s\"."
-msgstr "Neveljavna pripona \"%(suffix)s\" pri štetju \"%(sequence)s\"."
+msgstr "Neveljavna pripona \"%(affix)s\" pri številčni seriji \"%(sequence)s\"."
 
-#, fuzzy
 msgctxt "model:ir.message,text:msg_sequence_last_timestamp_future"
 msgid "The \"Last Timestamp\" cannot be in the future for sequence \"%s\"."
-msgstr "Zadnji časovni žig pri štetju \"%s\" ne more biti v prihodnosti."
+msgstr ""
+"Zadnji časovni žig pri številčni seriji \"%s\" ne more biti v prihodnosti."
 
-#, fuzzy
 msgctxt "model:ir.message,text:msg_sequence_missing"
 msgid "Missing sequence."
-msgstr "Manjka zaporedna številka."
+msgstr "Manjkajoči šifrant."
 
 msgctxt "model:ir.message,text:msg_setter_function_missing"
 msgid "Missing setter function for field \"%(field)s\" in \"%(model)s\"."
@@ -3049,74 +2867,72 @@ msgstr ""
 
 msgctxt "model:ir.message,text:msg_singleton"
 msgid "Only one singleton can be created."
-msgstr ""
+msgstr "Obstaja lahko le en singleton."
 
-#, fuzzy
 msgctxt "model:ir.message,text:msg_size_validation"
 msgid ""
 "The value \"%(value)s\" for field \"%(field)s\" in \"%(model)s\" is too long"
 " (%(size)i > %(max_size)i)."
-msgstr "The value \"%(value)s\" of field \"%(field)s\" on \"%(model)s\" doesn't exist."
+msgstr ""
 
-#, fuzzy
 msgctxt "model:ir.message,text:msg_size_validation_record"
 msgid ""
 "The value \"%(value)s\" for field \"%(field)s\" in \"%(record)s\" of "
 "\"%(model)s\" is too long (%(size)i > %(max_size)i)."
-msgstr "The value \"%(value)s\" of field \"%(field)s\" on \"%(model)s\" doesn't exist."
+msgstr ""
 
-#, fuzzy
 msgctxt "model:ir.message,text:msg_time_format_validation_record"
 msgid ""
 "The time value \"%(value)s\" for field \"%(field)s\" in \"%(record)s\" of "
 "\"%(model)s\" is not valid."
 msgstr ""
-"The time value \"%(value)s\" of field \"%(field)s\" on \"%(model)s\" is not "
-"valid."
 
 msgctxt "model:ir.message,text:msg_timedelta_M"
 msgid "M"
-msgstr ""
+msgstr "M"
 
 msgctxt "model:ir.message,text:msg_timedelta_Y"
 msgid "Y"
-msgstr ""
+msgstr "L"
 
 msgctxt "model:ir.message,text:msg_timedelta_d"
 msgid "d"
-msgstr ""
+msgstr "d"
 
 msgctxt "model:ir.message,text:msg_timedelta_h"
 msgid "h"
-msgstr ""
+msgstr "h"
 
 msgctxt "model:ir.message,text:msg_timedelta_m"
 msgid "m"
-msgstr ""
+msgstr "m"
 
 msgctxt "model:ir.message,text:msg_timedelta_s"
 msgid "s"
-msgstr ""
+msgstr "s"
 
 msgctxt "model:ir.message,text:msg_timedelta_w"
 msgid "w"
-msgstr ""
+msgstr "t"
 
-#, fuzzy
 msgctxt "model:ir.message,text:msg_too_many_relations_found"
 msgid "Too many relations found: %(value)r in \"%(model)s\" (%(column)s)."
-msgstr "Too many relations found: %r in %s"
+msgstr "Preveč relacij v modelu: %(value)r na modelu \"%(model)s\" (%(column)s)."
 
-#, fuzzy
 msgctxt "model:ir.message,text:msg_translation_overridden"
 msgid ""
 "You can not export translation \"%(name)s\" because it has been overridden "
 "by module \"%(overriding_module)s\"."
 msgstr ""
-"Prevoda %(name)s ni možno izvoziti, ker je prepisan prevod od modula "
-"%(overriding_module)s"
+"Prevoda \"%(name)s\" ni mogoče izvoziti, ker je prepisan s prevodom modula "
+"\"%(overriding_module)s\"."
 
-#, fuzzy
+msgctxt "model:ir.message,text:msg_trigger_exclusive"
+msgid ""
+"You can not select \"On Time\" and any other on the same time, they are "
+"mutually exclusive."
+msgstr "\"Točno ob času\" in ostale možnosti so med seboj izključujoče."
+
 msgctxt "model:ir.message,text:msg_trigger_invalid_condition"
 msgid ""
 "Condition \"%(condition)s\" is not a valid PYSON expression for trigger "
@@ -3125,31 +2941,31 @@ msgstr ""
 "Pogoj \"%(condition)s\" na prožilniku \"%(trigger)s\" ni veljaven PYSON "
 "izraz."
 
-#, fuzzy
 msgctxt "model:ir.message,text:msg_value_syntax_error"
 msgid ""
 "Syntax error for value: %(value)r in \"%(field)s\" of \"%(model)s\" "
 "(%(column)s)."
-msgstr "The value \"%(value)s\" of field \"%(field)s\" on \"%(model)s\" doesn't exist."
+msgstr ""
 
-#, fuzzy
 msgctxt "model:ir.message,text:msg_view_invalid_xml"
 msgid "Invalid XML for view \"%(name)s\"."
-msgstr "Neveljaven XML za pogled \"%s\"."
+msgstr "Neveljaven XML za pogled \"%(name)s\"."
 
-#, fuzzy
 msgctxt "model:ir.message,text:msg_view_search_invalid_domain"
 msgid "Invalid domain or search criteria \"%(domain)s\" for search \"%(search)s\"."
 msgstr ""
-"Neveljavna domena ali iskalni kriterij \"%(domain)s\" pri ukrepu "
-"\"%(action)s\"."
+"Neveljavna domena ali iskalni kriterij \"%(domain)s\" pri iskanju "
+"\"%(search)s\"."
 
-#, fuzzy
+msgctxt "model:ir.message,text:msg_view_tree_optional_type"
+msgid "You cannot store optional on view \"%(view)s\"."
+msgstr ""
+
 msgctxt "model:ir.message,text:msg_write_error"
 msgid ""
 "You are trying to write to records \"%(ids)s\" of \"%(model)s\" that don't "
 "exist."
-msgstr "You are not allowed to delete this record."
+msgstr ""
 
 msgctxt "model:ir.message,text:msg_write_rule_error"
 msgid ""
@@ -3157,12 +2973,11 @@ msgid ""
 "%(rules)s"
 msgstr ""
 
-#, fuzzy
 msgctxt "model:ir.message,text:msg_write_xml_record"
 msgid ""
 "You are not allowed to modify the field \"%(field)s\" in \"%(record)s\" of "
 "\"%(model)s\"."
-msgstr "The value \"%(value)s\" of field \"%(field)s\" on \"%(model)s\" doesn't exist."
+msgstr ""
 
 msgctxt "model:ir.message,text:msg_xml_id_syntax_error"
 msgid ""
@@ -3194,29 +3009,25 @@ msgctxt "model:ir.model.button,string:cron_run_once_button"
 msgid "Run Once"
 msgstr "Run Once"
 
-#, fuzzy
 msgctxt "model:ir.model.button,string:error_open_button"
 msgid "Open"
 msgstr "Odprto"
 
-#, fuzzy
 msgctxt "model:ir.model.button,string:error_process_button"
 msgid "Process"
-msgstr "Access"
+msgstr "Procesiraj"
 
 msgctxt "model:ir.model.button,string:error_solve_button"
 msgid "Solve"
-msgstr ""
+msgstr "Razreši"
 
-#, fuzzy
 msgctxt "model:ir.model.button,string:lang_load_translations_button"
 msgid "Load translations"
-msgstr "Čiščenje prevodov"
+msgstr "Naloži prevode"
 
-#, fuzzy
 msgctxt "model:ir.model.button,string:lang_unload_translations_button"
 msgid "Unload translations"
-msgstr "Čiščenje prevodov"
+msgstr "Razloži prevode"
 
 msgctxt "model:ir.model.button,string:model_data_sync_button"
 msgid "Sync"
@@ -3274,10 +3085,9 @@ msgctxt "model:ir.model.field.access,name:"
 msgid "Model Field Access"
 msgstr "Dostop do polj"
 
-#, fuzzy
 msgctxt "model:ir.model.log,name:"
 msgid "Log"
-msgstr "Lao"
+msgstr "Dnevnik"
 
 msgctxt "model:ir.model.print_model_graph.start,name:"
 msgid "Print Model Graph"
@@ -3295,10 +3105,9 @@ msgctxt "model:ir.module.activate_upgrade.start,name:"
 msgid "Module Activate Upgrade Start"
 msgstr "Začetek aktivacije modula"
 
-#, fuzzy
 msgctxt "model:ir.module.config.start,name:"
 msgid "Configure Modules"
-msgstr "Configure Modules"
+msgstr "Nastavi module"
 
 msgctxt "model:ir.module.config_wizard.done,name:"
 msgid "Module Config Wizard Done"
@@ -3322,7 +3131,7 @@ msgstr "Odvisen modul"
 
 msgctxt "model:ir.note,name:"
 msgid "Note"
-msgstr "Zabeležka"
+msgstr "Zapisek"
 
 msgctxt "model:ir.note.read,name:"
 msgid "Note Read"
@@ -3330,7 +3139,7 @@ msgstr "Prebrana zabeležka"
 
 msgctxt "model:ir.queue,name:"
 msgid "Queue"
-msgstr ""
+msgstr "Delovna vrsta"
 
 msgctxt "model:ir.rule,name:"
 msgid "Rule"
@@ -3342,7 +3151,7 @@ msgstr "Skupina pravil"
 
 msgctxt "model:ir.sequence,name:"
 msgid "Sequence"
-msgstr "Štetje"
+msgstr "Številčna serija"
 
 msgctxt "model:ir.sequence.strict,name:"
 msgid "Sequence Strict"
@@ -3350,7 +3159,7 @@ msgstr "Strogo štetje"
 
 msgctxt "model:ir.sequence.type,name:"
 msgid "Sequence type"
-msgstr "Tip štetja"
+msgstr "Vrsta številčne serije"
 
 msgctxt "model:ir.session,name:"
 msgid "Session"
@@ -3408,252 +3217,205 @@ msgctxt "model:ir.ui.menu,name:"
 msgid "UI menu"
 msgstr "Meni uporabniškega vmesnika"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_act_action"
 msgid "Actions"
-msgstr "Actions"
+msgstr "Ukrepi"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_action"
 msgid "Actions"
-msgstr "Actions"
+msgstr "Ukrepi"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_action_act_window"
 msgid "Window Actions"
-msgstr "Window Actions"
+msgstr "Ukrepi okna"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_action_report_form"
 msgid "Reports"
-msgstr "Reports"
+msgstr "Poročila"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_action_url"
 msgid "URLs"
-msgstr "URLs"
+msgstr "URL-ji"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_action_wizard"
 msgid "Wizards"
-msgstr "Wizards"
+msgstr "Čarovniki"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_administration"
 msgid "Administration"
-msgstr "Administration"
+msgstr "Administracija"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_attachment_form"
 msgid "Attachments"
-msgstr "Attachments"
+msgstr "Priloge"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_config_wizard_item_form"
 msgid "Config Wizard Items"
-msgstr "Config Wizard Items"
+msgstr "Elementi konfiguracijskega čarovnika"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_cron_form"
 msgid "Actions"
-msgstr "Actions"
+msgstr "Ukrepi"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_email_form"
 msgid "E-mails"
-msgstr "E-pošta"
+msgstr "E-pošte"
 
 msgctxt "model:ir.ui.menu,name:menu_email_template_form"
 msgid "E-mail Templates"
-msgstr ""
+msgstr "E-poštne predloge"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_error_form"
 msgid "Errors"
-msgstr "Napaka"
+msgstr "Napake"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_export_form"
 msgid "Exports"
-msgstr "Exports"
+msgstr "Izvozi"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_icon_form"
 msgid "Icons"
-msgstr "Icons"
+msgstr "Ikone"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_ir_sequence_type"
 msgid "Types"
-msgstr "Tip"
+msgstr "Vrste"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_lang_form"
 msgid "Languages"
-msgstr "Languages"
+msgstr "Jeziki"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_localization"
 msgid "Localization"
-msgstr "Localization"
+msgstr "Lokalizacija"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_menu_list"
 msgid "Menu"
-msgstr "Menu"
+msgstr "Meni"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_message_form"
-msgid "Message"
-msgstr "Sporočilo"
+msgid "Messages"
+msgstr "Sporočila"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_model_access_form"
 msgid "Models Access"
-msgstr "Models Access"
+msgstr "Dostop do modelov"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_model_button_form"
 msgid "Buttons"
-msgstr "Buttons"
+msgstr "Gumbi"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_model_data_form"
 msgid "Data"
-msgstr "Data"
+msgstr "Podatki"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_model_field_access_form"
 msgid "Fields Access"
-msgstr "Fields Access"
+msgstr "Dostop do polj"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_model_form"
 msgid "Models"
-msgstr "Models"
+msgstr "Modeli"
 
 msgctxt "model:ir.ui.menu,name:menu_model_log_form"
 msgid "Logs"
-msgstr ""
+msgstr "Dnevniki"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_models"
 msgid "Models"
-msgstr "Models"
+msgstr "Modeli"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_module_activate_upgrade"
 msgid "Perform Pending Activation/Upgrade"
-msgstr "Perform Pending Activation/Upgrade"
+msgstr "Izvedite čakajočo aktivacijo oz. nadgradnjo"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_module_form"
 msgid "Modules"
-msgstr "Modules"
+msgstr "Moduli"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_modules"
 msgid "Modules"
-msgstr "Modules"
+msgstr "Moduli"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_note_form"
 msgid "Notes"
-msgstr "Notes"
+msgstr "Zapiski"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_rule_group_form"
 msgid "Record Rules"
-msgstr "Record Rules"
+msgstr "Pravila zapisov"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_scheduler"
 msgid "Scheduler"
-msgstr "Scheduler"
+msgstr "Razporejevalnik"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_sequence_form"
 msgid "Sequences"
-msgstr "Sequences"
+msgstr "Šifranti"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_sequence_strict_form"
 msgid "Sequences Strict"
-msgstr "Sequences Strict"
+msgstr "Strogi šifranti"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_sequences"
 msgid "Sequences"
-msgstr "Sequences"
+msgstr "Šifranti"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_translation_clean"
 msgid "Clean Translations"
-msgstr "Clean Translations"
+msgstr "Počisti prevode"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_translation_export"
 msgid "Export Translations"
-msgstr "Export Translations"
+msgstr "Izvozi prevode"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_translation_form"
 msgid "Translations"
-msgstr "Translations"
+msgstr "Prevodi"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_translation_set"
 msgid "Set Translations"
-msgstr "Set Translations"
+msgstr "Nastavi prevode"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_translation_update"
 msgid "Synchronize Translations"
-msgstr "Synchronize Translations"
+msgstr "Uskladi prevode"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_trigger_form"
 msgid "Triggers"
-msgstr "Triggers"
+msgstr "Prožilci"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_ui"
 msgid "User Interface"
-msgstr "User Interface"
+msgstr "Uporabniški vmesnik"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_view"
 msgid "Views"
-msgstr "Views"
+msgstr "Pogledi"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_view_search"
 msgid "View Search"
-msgstr "View Search"
+msgstr "Iskanje pogledov"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_view_tree_optional"
 msgid "View Tree Optional"
-msgstr "Stanje drevesnega pogleda"
+msgstr "Izbirni pogled seznama"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_view_tree_state"
 msgid "Tree State"
-msgstr "Tree State"
+msgstr "Stanje drevesa"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_view_tree_width"
 msgid "View Tree Width"
-msgstr "View Tree Width"
+msgstr "Širina pogleda drevesa"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:model_model_fields_form"
 msgid "Fields"
-msgstr "Fields"
+msgstr "Polja"
 
 msgctxt "model:ir.ui.menu.favorite,name:"
 msgid "Menu Favorite"
-msgstr "Priljubljeno"
+msgstr "Priljubljene"
 
 msgctxt "model:ir.ui.view,name:"
 msgid "View"
@@ -3665,12 +3427,11 @@ msgstr "Prikaz pogleda"
 
 msgctxt "model:ir.ui.view_search,name:"
 msgid "View Search"
-msgstr "Iskalni zaznamki"
+msgstr "Iskanje pogledov"
 
-#, fuzzy
 msgctxt "model:ir.ui.view_tree_optional,name:"
 msgid "View Tree Optional"
-msgstr "Stanje drevesnega pogleda"
+msgstr "Izbirni pogled seznama"
 
 msgctxt "model:ir.ui.view_tree_state,name:"
 msgid "View Tree State"
@@ -3678,65 +3439,71 @@ msgstr "Stanje drevesnega pogleda"
 
 msgctxt "model:ir.ui.view_tree_width,name:"
 msgid "View Tree Width"
-msgstr "Velikost dreves"
+msgstr "Širina pogleda drevesa"
+
+msgctxt "selection:ir.action,action:"
+msgid "Report"
+msgstr "Poročilo"
+
+msgctxt "selection:ir.action,action:"
+msgid "URL"
+msgstr "URL"
+
+msgctxt "selection:ir.action,action:"
+msgid "Window"
+msgstr "Okno"
+
+msgctxt "selection:ir.action,action:"
+msgid "Wizard"
+msgstr "Čarovnik"
 
 msgctxt "selection:ir.action,records:"
 msgid "Listed"
-msgstr ""
+msgstr "Na seznamu"
 
-#, fuzzy
 msgctxt "selection:ir.action,records:"
 msgid "Selected"
-msgstr "Izbrani vozli"
+msgstr "Izbrani"
 
-#, fuzzy
 msgctxt "selection:ir.action,type:"
 msgid "Report"
 msgstr "Poročilo"
 
-#, fuzzy
 msgctxt "selection:ir.action,type:"
 msgid "URL"
-msgstr "URLs"
+msgstr "URL"
 
-#, fuzzy
 msgctxt "selection:ir.action,type:"
 msgid "Window"
 msgstr "Okno"
 
-#, fuzzy
 msgctxt "selection:ir.action,type:"
 msgid "Wizard"
-msgstr "Wizards"
+msgstr "Čarovnik"
 
 msgctxt "selection:ir.action.act_window,records:"
 msgid "Listed"
-msgstr ""
+msgstr "Na seznamu"
 
-#, fuzzy
 msgctxt "selection:ir.action.act_window,records:"
 msgid "Selected"
-msgstr "Izbrani vozli"
+msgstr "Izbrani"
 
-#, fuzzy
 msgctxt "selection:ir.action.act_window,type:"
 msgid "Report"
 msgstr "Poročilo"
 
-#, fuzzy
 msgctxt "selection:ir.action.act_window,type:"
 msgid "URL"
-msgstr "URLs"
+msgstr "URL"
 
-#, fuzzy
 msgctxt "selection:ir.action.act_window,type:"
 msgid "Window"
 msgstr "Okno"
 
-#, fuzzy
 msgctxt "selection:ir.action.act_window,type:"
 msgid "Wizard"
-msgstr "Wizards"
+msgstr "Čarovnik"
 
 msgctxt "selection:ir.action.keyword,keyword:"
 msgid "Action form"
@@ -3760,90 +3527,75 @@ msgstr "Izpis"
 
 msgctxt "selection:ir.action.report,records:"
 msgid "Listed"
-msgstr ""
+msgstr "Na seznamu"
 
-#, fuzzy
 msgctxt "selection:ir.action.report,records:"
 msgid "Selected"
-msgstr "Izbrani vozli"
+msgstr "Izbrani"
 
-#, fuzzy
 msgctxt "selection:ir.action.report,type:"
 msgid "Report"
 msgstr "Poročilo"
 
-#, fuzzy
 msgctxt "selection:ir.action.report,type:"
 msgid "URL"
-msgstr "URLs"
+msgstr "URL"
 
-#, fuzzy
 msgctxt "selection:ir.action.report,type:"
 msgid "Window"
 msgstr "Okno"
 
-#, fuzzy
 msgctxt "selection:ir.action.report,type:"
 msgid "Wizard"
-msgstr "Wizards"
+msgstr "Čarovnik"
 
 msgctxt "selection:ir.action.url,records:"
 msgid "Listed"
-msgstr ""
+msgstr "Na seznamu"
 
-#, fuzzy
 msgctxt "selection:ir.action.url,records:"
 msgid "Selected"
-msgstr "Izbrani vozli"
+msgstr "Izbrani"
 
-#, fuzzy
 msgctxt "selection:ir.action.url,type:"
 msgid "Report"
 msgstr "Poročilo"
 
-#, fuzzy
 msgctxt "selection:ir.action.url,type:"
 msgid "URL"
-msgstr "URLs"
+msgstr "URL"
 
-#, fuzzy
 msgctxt "selection:ir.action.url,type:"
 msgid "Window"
 msgstr "Okno"
 
-#, fuzzy
 msgctxt "selection:ir.action.url,type:"
 msgid "Wizard"
-msgstr "Wizards"
+msgstr "Čarovnik"
 
 msgctxt "selection:ir.action.wizard,records:"
 msgid "Listed"
-msgstr ""
+msgstr "Na seznamu"
 
-#, fuzzy
 msgctxt "selection:ir.action.wizard,records:"
 msgid "Selected"
-msgstr "Izbrani vozli"
+msgstr "Izbrani"
 
-#, fuzzy
 msgctxt "selection:ir.action.wizard,type:"
 msgid "Report"
 msgstr "Poročilo"
 
-#, fuzzy
 msgctxt "selection:ir.action.wizard,type:"
 msgid "URL"
-msgstr "URLs"
+msgstr "URL"
 
-#, fuzzy
 msgctxt "selection:ir.action.wizard,type:"
 msgid "Window"
 msgstr "Okno"
 
-#, fuzzy
 msgctxt "selection:ir.action.wizard,type:"
 msgid "Wizard"
-msgstr "Wizards"
+msgstr "Čarovnik"
 
 msgctxt "selection:ir.attachment,type:"
 msgid "Data"
@@ -3875,38 +3627,43 @@ msgstr "Tedni"
 
 msgctxt "selection:ir.cron,method:"
 msgid "Clean Errors"
-msgstr ""
+msgstr "Počisti napake"
 
-#, fuzzy
 msgctxt "selection:ir.cron,method:"
 msgid "Clean Task Queue"
-msgstr "Prevodi uspešno počiščeni!"
+msgstr "Počisti čakalno vrsto nalog"
 
 msgctxt "selection:ir.cron,method:"
 msgid "Run On Time Triggers"
-msgstr ""
+msgstr "Zaženi ob časovnih prožilcih"
 
-#, fuzzy
 msgctxt "selection:ir.error,origin:"
 msgid "Action"
 msgstr "Ukrep"
 
 msgctxt "selection:ir.error,origin:"
 msgid "Task"
-msgstr ""
+msgstr "Naloga"
 
-#, fuzzy
 msgctxt "selection:ir.error,state:"
 msgid "Open"
 msgstr "Odprto"
 
 msgctxt "selection:ir.error,state:"
 msgid "Processing"
-msgstr ""
+msgstr "V obdelavi"
 
 msgctxt "selection:ir.error,state:"
 msgid "Solved"
-msgstr ""
+msgstr "Rešeno"
+
+msgctxt "selection:ir.export,records:"
+msgid "Listed"
+msgstr "Na seznamu"
+
+msgctxt "selection:ir.export,records:"
+msgid "Selected"
+msgstr "Izbrani"
 
 msgctxt "selection:ir.lang,direction:"
 msgid "Left-to-right"
@@ -3916,28 +3673,25 @@ msgctxt "selection:ir.lang,direction:"
 msgid "Right-to-left"
 msgstr "Z desne proti levi"
 
-#, fuzzy
 msgctxt "selection:ir.model.log,event:"
 msgid "Clicked on"
-msgstr "Kliki"
+msgstr "Kliki na"
 
-#, fuzzy
 msgctxt "selection:ir.model.log,event:"
 msgid "Deleted"
-msgstr "Ob brisanju"
+msgstr "Izbrisano"
 
 msgctxt "selection:ir.model.log,event:"
 msgid "Launched"
-msgstr ""
+msgstr "Zagnano"
 
 msgctxt "selection:ir.model.log,event:"
 msgid "Modified"
-msgstr ""
+msgstr "Spremenjeno"
 
-#, fuzzy
 msgctxt "selection:ir.model.log,event:"
 msgid "Transitioned to"
-msgstr "Prevod"
+msgstr "Prehod v"
 
 msgctxt "selection:ir.module,state:"
 msgid "Activated"
@@ -4061,31 +3815,15 @@ msgstr "Diagram"
 
 msgctxt "selection:ir.ui.view,type:"
 msgid "List Form"
-msgstr ""
+msgstr "Seznam obrazcev"
 
 msgctxt "selection:ir.ui.view,type:"
 msgid "Tree"
 msgstr "Drevo"
 
-msgctxt "view:ir.action.act_window:"
-msgid "General"
-msgstr "Splošno"
-
 msgctxt "view:ir.action.report:"
 msgid "Edit"
-msgstr ""
-
-msgctxt "view:ir.action.report:"
-msgid "General"
-msgstr "Splošno"
-
-msgctxt "view:ir.action.url:"
-msgid "General"
-msgstr "Splošno"
-
-msgctxt "view:ir.action.wizard:"
-msgid "General"
-msgstr "Splošno"
+msgstr "Uredi"
 
 msgctxt "view:ir.action:"
 msgid "General"
@@ -4093,29 +3831,27 @@ msgstr "Splošno"
 
 msgctxt "view:ir.attachment:"
 msgid "Document"
-msgstr ""
+msgstr "Dokument"
 
 msgctxt "view:ir.attachment:"
 msgid "Last Modification Time"
-msgstr "Zadnja sprememba"
+msgstr "Čas zadnje spremembe"
 
 msgctxt "view:ir.cron:"
 msgid "At"
-msgstr ""
+msgstr "Ob"
 
 msgctxt "view:ir.cron:"
 msgid "Every"
-msgstr ""
+msgstr "Vsak"
 
-#, fuzzy
 msgctxt "view:ir.cron:"
 msgid "Next Call Date"
-msgstr "Naslednji zagon"
+msgstr "Naslednji datum zagona"
 
-#, fuzzy
 msgctxt "view:ir.cron:"
 msgid "Next Call Time"
-msgstr "Naslednji zagon"
+msgstr "Naslednji čas zagona"
 
 msgctxt "view:ir.cron:"
 msgid "Run Once"
@@ -4123,23 +3859,23 @@ msgstr "Enkratni zagon"
 
 msgctxt "view:ir.email.template:"
 msgid "Hidden Recipients:"
-msgstr ""
+msgstr "Skriti prejemniki:"
 
 msgctxt "view:ir.email.template:"
 msgid "Recipients:"
-msgstr ""
+msgstr "Prejemniki:"
 
 msgctxt "view:ir.email.template:"
 msgid "Secondary Recipients:"
-msgstr ""
+msgstr "Sekundarni prejemniki:"
 
 msgctxt "view:ir.error:"
 msgid "Origin"
-msgstr ""
+msgstr "Izvor"
 
 msgctxt "view:ir.lang.config.start:"
 msgid "You can now load additional translations to the system."
-msgstr ""
+msgstr "Zdaj lahko naložite dodatne prevode v sistem."
 
 msgctxt "view:ir.lang:"
 msgid "Date Formatting"
@@ -4147,26 +3883,23 @@ msgstr "Datumski format"
 
 msgctxt "view:ir.lang:"
 msgid "Monetary Formatting"
-msgstr ""
+msgstr "Formatiranje valute"
 
 msgctxt "view:ir.lang:"
 msgid "Numbers Formatting"
 msgstr "Številčni format"
 
-#, fuzzy
 msgctxt "view:ir.model.log:"
 msgid "Date"
 msgstr "Datum"
 
-#, fuzzy
 msgctxt "view:ir.model.log:"
 msgid "Hour"
-msgstr "Ure"
+msgstr "Ura"
 
-#, fuzzy
 msgctxt "view:ir.model.log:"
 msgid "at"
-msgstr "Pot"
+msgstr "ob"
 
 msgctxt "view:ir.module.activate_upgrade.done:"
 msgid "The modules have been upgraded / activated."
@@ -4182,11 +3915,11 @@ msgstr "Sistem bo nadgrajen."
 
 msgctxt "view:ir.module.config.start:"
 msgid "You can now activate additional modules to the system."
-msgstr ""
+msgstr "Zdaj lahko aktivirate dodatne module v sistem."
 
 msgctxt "view:ir.module.config_wizard.done:"
 msgid "The configuration is done."
-msgstr "Konfiguracija modulov zaključena"
+msgstr "Nastavitev modulov zaključena."
 
 msgctxt "view:ir.module.config_wizard.first:"
 msgid ""
@@ -4230,52 +3963,14 @@ msgctxt "view:ir.note:"
 msgid "User"
 msgstr "Uporabnik"
 
-#, fuzzy
 msgctxt "view:ir.rule.group:"
 msgid ""
 "If there is no test defined, the rule is always satisfied if not global."
-msgstr "Če pogoj ni določen, bo pravilo vedno veljavno, če ni globalno"
+msgstr "Če pogoj ni določen, bo pravilo vedno veljavno, če ni globalno."
 
-#, fuzzy
 msgctxt "view:ir.rule.group:"
 msgid "The rule is satisfied if at least one test is True."
-msgstr "Pravilo je veljavno, če je vsaj en pogoj pravilen"
-
-msgctxt "view:ir.sequence:"
-msgid "${day}"
-msgstr "${day}"
-
-msgctxt "view:ir.sequence:"
-msgid "${month}"
-msgstr "${month}"
-
-msgctxt "view:ir.sequence:"
-msgid "${year}"
-msgstr "${year}"
-
-msgctxt "view:ir.sequence:"
-msgid "Day:"
-msgstr "Dan:"
-
-msgctxt "view:ir.sequence:"
-msgid "Incremental"
-msgstr "Prirastno"
-
-msgctxt "view:ir.sequence:"
-msgid "Legend (Placeholders for prefix, suffix)"
-msgstr "Napotek (prostornik za predpono, pripono)"
-
-msgctxt "view:ir.sequence:"
-msgid "Month:"
-msgstr "Mesec:"
-
-msgctxt "view:ir.sequence:"
-msgid "Timestamp"
-msgstr "Časovni žig"
-
-msgctxt "view:ir.sequence:"
-msgid "Year:"
-msgstr "Leto:"
+msgstr "Pravilu je zadoščeno, če je vsaj en pogoj pravilen."
 
 msgctxt "view:ir.translation.clean.start:"
 msgid "Clean Translations?"
@@ -4283,25 +3978,27 @@ msgstr "Počistim prevode?"
 
 msgctxt "view:ir.translation.clean.succeed:"
 msgid "Translations cleaned successfully."
-msgstr ""
+msgstr "Prevodi uspešno počiščeni."
 
 msgctxt "view:ir.translation.set.start:"
 msgid "Synchronize Translations?"
 msgstr "Sinhroniziram prevode?"
 
-#, fuzzy
 msgctxt "view:ir.translation.set.succeed:"
 msgid "Translations set successfully."
-msgstr "Prevod mora biti unikaten."
+msgstr "Prevodi uspešno nastavljeni."
 
-#, fuzzy
+msgctxt "view:ir.ui.menu:"
+msgid "Actions"
+msgstr "Ukrepi"
+
 msgctxt "wizard_button:ir.lang.config,start,end:"
 msgid "Cancel"
 msgstr "Prekliči"
 
 msgctxt "wizard_button:ir.lang.config,start,load:"
 msgid "Load"
-msgstr ""
+msgstr "Naloži"
 
 msgctxt "wizard_button:ir.model.print_model_graph,start,end:"
 msgid "Cancel"
@@ -4311,7 +4008,6 @@ msgctxt "wizard_button:ir.model.print_model_graph,start,print_:"
 msgid "Print"
 msgstr "Natisni"
 
-#, fuzzy
 msgctxt "wizard_button:ir.module.activate_upgrade,done,next_:"
 msgid "OK"
 msgstr "V redu"
@@ -4324,12 +4020,10 @@ msgctxt "wizard_button:ir.module.activate_upgrade,start,upgrade:"
 msgid "Start Upgrade"
 msgstr "Nadgradi"
 
-#, fuzzy
 msgctxt "wizard_button:ir.module.config,start,activate:"
 msgid "Activate"
-msgstr "Aktivirano"
+msgstr "Aktiviraj"
 
-#, fuzzy
 msgctxt "wizard_button:ir.module.config,start,end:"
 msgid "Cancel"
 msgstr "Prekliči"

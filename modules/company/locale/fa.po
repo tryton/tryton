@@ -176,8 +176,6 @@ msgstr "شرکت های ثبت شده برای این برنامه وظیفه"
 msgctxt "help:ir.rule,domain:"
 msgid ""
 "\n"
-"- \"employee\" from the current user\n"
-"- \"employees\" as list of ids from the current user\n"
 "- \"companies\" as list of ids from the current user"
 msgstr ""
 

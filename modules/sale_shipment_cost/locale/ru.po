@@ -42,6 +42,29 @@ msgctxt "field:sale.sale,shipment_cost_method:"
 msgid "Shipment Cost Method"
 msgstr ""
 
+#, fuzzy
+msgctxt "field:sale.sale,shipment_costs:"
+msgid "Shipment Costs"
+msgstr "Стоимость"
+
+msgctxt "field:stock.shipment.cost_sale,amount:"
+msgid "Amount"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:stock.shipment.cost_sale,currency:"
+msgid "Currency"
+msgstr "Стоимость"
+
+#, fuzzy
+msgctxt "field:stock.shipment.cost_sale,sale:"
+msgid "Sale"
+msgstr "Стоимость"
+
+msgctxt "field:stock.shipment.cost_sale,shipment:"
+msgid "Shipment"
+msgstr ""
+
 msgctxt "field:stock.shipment.out,cost_invoice_line:"
 msgid "Cost Invoice Line"
 msgstr ""
@@ -69,6 +92,11 @@ msgctxt "field:stock.shipment.out,cost_sale_used:"
 msgid "Cost Sale"
 msgstr "Стоимость"
 
+#, fuzzy
+msgctxt "field:stock.shipment.out,cost_sales:"
+msgid "Cost Sales"
+msgstr "Стоимость"
+
 msgctxt "field:stock.shipment.out,shipment_cost_sale_readonly:"
 msgid "Shipment Cost Sale Read Only"
 msgstr ""
@@ -94,6 +122,11 @@ msgid ""
 "revenue for product \"%(product)s\"."
 msgstr ""
 
+#, fuzzy
+msgctxt "model:stock.shipment.cost_sale,name:"
+msgid "Shipment Cost Sale"
+msgstr "Стоимость"
+
 msgctxt "selection:sale.sale,shipment_cost_method:"
 msgid "None"
 msgstr ""
@@ -104,6 +137,10 @@ msgstr ""
 
 msgctxt "selection:sale.sale,shipment_cost_method:"
 msgid "On Shipment"
+msgstr ""
+
+msgctxt "selection:stock.shipment.cost_sale,shipment:"
+msgid "Customer"
 msgstr ""
 
 msgctxt "view:sale.promotion:"

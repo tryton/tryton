@@ -151,6 +151,10 @@ msgstr "<i>Otsi...</i>"
 msgid "<i>Create...</i>"
 msgstr "<i>Loo...</i>"
 
+#, fuzzy, python-format
+msgid "Create \"%s\"..."
+msgstr "<i>Loo...</i>"
+
 msgid "Value"
 msgstr "Väärtus"
 
@@ -299,6 +303,9 @@ msgstr "Salvesta puu olek"
 
 msgid "Spell Checking"
 msgstr "Õigekirja kontroll"
+
+msgid "Play Sound for Code Scanner"
+msgstr ""
 
 msgid "PDA Mode"
 msgstr "PDA reziim"
@@ -456,6 +463,17 @@ msgstr "Liigu lõppu"
 msgid "Move to parent"
 msgstr ""
 
+#, fuzzy
+msgid "Edition"
+msgstr "Muuda"
+
+#, fuzzy
+msgid "Copy selected rows"
+msgstr "Kopeeri valitud tekst"
+
+msgid "Insert copied rows"
+msgstr ""
+
 msgid "Select all"
 msgstr "Vali kõik"
 
@@ -501,6 +519,12 @@ msgstr ""
 #, python-format
 msgid "Attachments (%s)"
 msgstr "Manused (%s)"
+
+msgid "Code Scanner"
+msgstr ""
+
+msgid "Code"
+msgstr ""
 
 msgid "Profile Editor"
 msgstr "Profiili muutmine"
@@ -943,14 +967,24 @@ msgstr "Link"
 msgid "Delete"
 msgstr "Kustuta"
 
-msgid "New"
-msgstr "Uus"
+msgid "Discard changes"
+msgstr ""
 
-msgid "Switch"
-msgstr "Vaheta"
+msgid "Save and New"
+msgstr ""
+
+#, fuzzy
+msgid "Add and New"
+msgstr "Lisa väärtus"
 
 msgid "Add"
 msgstr "Lisa"
+
+msgid "Apply changes"
+msgstr ""
+
+msgid "Switch"
+msgstr "Vaheta"
 
 msgid "Remove <Del>"
 msgstr "Eemalda <Del>"
@@ -987,8 +1021,8 @@ msgid "Detection failed"
 msgstr ""
 
 #, python-format
-msgid "Error processing the file at field %s."
-msgstr "Faili töötlemisel tekkis väljal %s viga."
+msgid "Unknown column header \"%s\""
+msgstr ""
 
 msgid "Error"
 msgstr "Viga"
@@ -1006,6 +1040,9 @@ msgstr "%d kirjed imporditud."
 
 msgid "Search"
 msgstr "Otsi"
+
+msgid "New"
+msgstr "Uus"
 
 #, python-format
 msgid "Search %s"
@@ -1053,6 +1090,9 @@ msgstr "Eelkontroll"
 
 msgid ":"
 msgstr ":"
+
+msgid "Scan"
+msgstr ""
 
 msgid "Image Size"
 msgstr "Pildi suurus"

@@ -4,51 +4,51 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "field:timesheet.hours_employee,duration:"
 msgid "Duration"
-msgstr ""
+msgstr "Durata"
 
 msgctxt "field:timesheet.hours_employee,employee:"
 msgid "Employee"
-msgstr ""
+msgstr "Angajat"
 
 msgctxt "field:timesheet.hours_employee.context,end_date:"
 msgid "End Date"
-msgstr ""
+msgstr "Data Sfărşit"
 
 msgctxt "field:timesheet.hours_employee.context,start_date:"
 msgid "Start Date"
-msgstr ""
+msgstr "Data Început"
 
 msgctxt "field:timesheet.hours_employee_monthly,duration:"
 msgid "Duration"
-msgstr ""
+msgstr "Durata"
 
 msgctxt "field:timesheet.hours_employee_monthly,employee:"
 msgid "Employee"
-msgstr ""
+msgstr "Angajat"
 
 msgctxt "field:timesheet.hours_employee_monthly,month:"
 msgid "Month"
-msgstr ""
+msgstr "Luna"
 
 msgctxt "field:timesheet.hours_employee_monthly,year:"
 msgid "Year"
-msgstr ""
+msgstr "An"
 
 msgctxt "field:timesheet.hours_employee_weekly,duration:"
 msgid "Duration"
-msgstr ""
+msgstr "Durata"
 
 msgctxt "field:timesheet.hours_employee_weekly,employee:"
 msgid "Employee"
-msgstr ""
+msgstr "Angajat"
 
 msgctxt "field:timesheet.hours_employee_weekly,week:"
 msgid "Week"
-msgstr ""
+msgstr "Săptămâna"
 
 msgctxt "field:timesheet.hours_employee_weekly,year:"
 msgid "Year"
-msgstr ""
+msgstr "An"
 
 msgctxt "field:timesheet.line,company:"
 msgid "Company"
@@ -64,19 +64,19 @@ msgstr "Descriere"
 
 msgctxt "field:timesheet.line,duration:"
 msgid "Duration"
-msgstr ""
+msgstr "Durata"
 
 msgctxt "field:timesheet.line,employee:"
 msgid "Employee"
-msgstr ""
+msgstr "Angajat"
 
 msgctxt "field:timesheet.line,uuid:"
 msgid "UUID"
-msgstr ""
+msgstr "UUID"
 
 msgctxt "field:timesheet.line,work:"
 msgid "Work"
-msgstr ""
+msgstr "Muncă"
 
 msgctxt "field:timesheet.line.enter.start,date:"
 msgid "Date"
@@ -92,11 +92,11 @@ msgstr "Companie"
 
 msgctxt "field:timesheet.work,duration:"
 msgid "Timesheet Duration"
-msgstr ""
+msgstr "Durata Foaie Pontaj"
 
 msgctxt "field:timesheet.work,name:"
 msgid "Name"
-msgstr ""
+msgstr "Nume"
 
 msgctxt "field:timesheet.work,origin:"
 msgid "Origin"
@@ -104,71 +104,71 @@ msgstr "Origine"
 
 msgctxt "field:timesheet.work,timesheet_end_date:"
 msgid "Timesheet End"
-msgstr ""
+msgstr "Foaie Pontaj Sfârșit"
 
 msgctxt "field:timesheet.work,timesheet_lines:"
 msgid "Timesheet Lines"
-msgstr ""
+msgstr "Rânduri Foaie Pontaj"
 
 msgctxt "field:timesheet.work,timesheet_start_date:"
 msgid "Timesheet Start"
-msgstr ""
+msgstr "Foaie Pontaj Început"
 
 msgctxt "field:timesheet.work,work:"
 msgid "Work"
-msgstr ""
+msgstr "Muncă"
 
 msgctxt "field:timesheet.work.context,from_date:"
 msgid "From Date"
-msgstr ""
+msgstr "De la Data"
 
 msgctxt "field:timesheet.work.context,to_date:"
 msgid "To Date"
-msgstr ""
+msgstr "Până la Data"
 
 msgctxt "help:timesheet.line,company:"
 msgid "The company on which the time is spent."
-msgstr ""
+msgstr "Compania al cărei timp a fost folosit."
 
 msgctxt "help:timesheet.line,date:"
 msgid "When the time is spent."
-msgstr ""
+msgstr "Când a fost folosit timp."
 
 msgctxt "help:timesheet.line,description:"
 msgid "Additional description of the work done."
-msgstr ""
+msgstr "Descriere adițională al muncii efectuate."
 
 msgctxt "help:timesheet.line,employee:"
 msgid "The employee who spends the time."
-msgstr ""
+msgstr "Angajatul care foloseşte timp."
 
 msgctxt "help:timesheet.line,work:"
 msgid "The work on which the time is spent."
-msgstr ""
+msgstr "Muncă pe care este cheltuit timp."
 
 msgctxt "help:timesheet.line.enter.start,date:"
 msgid "When the time is spent."
-msgstr ""
+msgstr "Când este folosit timp."
 
 msgctxt "help:timesheet.line.enter.start,employee:"
 msgid "The employee who spends the time."
-msgstr ""
+msgstr "Angajatul care foloseşte timp."
 
 msgctxt "help:timesheet.work,company:"
 msgid "Make the work belong to the company."
-msgstr ""
+msgstr "Atribuire Muncă la compania."
 
 msgctxt "help:timesheet.work,duration:"
 msgid "Total time spent on this work."
-msgstr ""
+msgstr "Timp total folosit pentru muncă."
 
 msgctxt "help:timesheet.work,name:"
 msgid "The main identifier of the work."
-msgstr ""
+msgstr "Identificatorul principal pentru muncă."
 
 msgctxt "help:timesheet.work,origin:"
 msgid "Use to relate the time spent to other records."
-msgstr ""
+msgstr "Utilizaţi pentru a lega timpul folosit de alte înregistrări."
 
 msgctxt "help:timesheet.work,timesheet_end_date:"
 msgid "Restrict adding lines after the date."
@@ -216,19 +216,19 @@ msgstr ""
 
 msgctxt "model:ir.action,name:act_work_list"
 msgid "Works"
-msgstr ""
+msgstr "Manopera"
 
 msgctxt "model:ir.action,name:act_work_report"
 msgid "Works"
-msgstr ""
+msgstr "Manopera"
 
 msgctxt "model:ir.action.act_window.domain,name:act_work_list_domain_all"
 msgid "All"
-msgstr ""
+msgstr "Toate"
 
 msgctxt "model:ir.action.act_window.domain,name:act_work_list_domain_open"
 msgid "Open"
-msgstr ""
+msgstr "Deschis"
 
 msgctxt "model:ir.message,text:msg_line_duration_positive"
 msgid "The duration of line \"%(line)s\" must be positive."
@@ -378,14 +378,6 @@ msgstr ""
 
 msgctxt "selection:res.user.application,application:"
 msgid "Timesheet"
-msgstr ""
-
-msgctxt "view:timesheet.hours_employee:"
-msgid "Duration"
-msgstr ""
-
-msgctxt "view:timesheet.line:"
-msgid "Duration"
 msgstr ""
 
 msgctxt "wizard_button:timesheet.line.enter,start,end:"

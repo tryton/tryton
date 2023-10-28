@@ -154,6 +154,10 @@ msgstr ""
 msgid "<i>Create...</i>"
 msgstr ""
 
+#, python-format
+msgid "Create \"%s\"..."
+msgstr ""
+
 #, fuzzy
 msgid "Value"
 msgstr "Nepravda"
@@ -320,6 +324,9 @@ msgstr ""
 msgid "Spell Checking"
 msgstr "Kontrola pravopisu"
 
+msgid "Play Sound for Code Scanner"
+msgstr ""
+
 msgid "PDA Mode"
 msgstr ""
 
@@ -479,6 +486,17 @@ msgstr ""
 msgid "Move to parent"
 msgstr ""
 
+#, fuzzy
+msgid "Edition"
+msgstr "Akce"
+
+#, fuzzy
+msgid "Copy selected rows"
+msgstr "Kopírovat vybraný text"
+
+msgid "Insert copied rows"
+msgstr ""
+
 msgid "Select all"
 msgstr ""
 
@@ -524,6 +542,12 @@ msgstr ""
 #, fuzzy, python-format
 msgid "Attachments (%s)"
 msgstr "Příloha(%s)"
+
+msgid "Code Scanner"
+msgstr ""
+
+msgid "Code"
+msgstr ""
 
 msgid "Profile Editor"
 msgstr ""
@@ -997,14 +1021,23 @@ msgstr "Odkaz"
 msgid "Delete"
 msgstr "Smazat"
 
-msgid "New"
-msgstr "_Nový"
+msgid "Discard changes"
+msgstr ""
 
-msgid "Switch"
-msgstr "Přepnout"
+msgid "Save and New"
+msgstr ""
+
+msgid "Add and New"
+msgstr ""
 
 msgid "Add"
 msgstr "Přidat"
+
+msgid "Apply changes"
+msgstr ""
+
+msgid "Switch"
+msgstr "Přepnout"
 
 msgid "Remove <Del>"
 msgstr ""
@@ -1045,9 +1078,9 @@ msgstr "Nejprve je nutné vybrat soubor pro import!"
 msgid "Detection failed"
 msgstr ""
 
-#, fuzzy, python-format
-msgid "Error processing the file at field %s."
-msgstr "Chyba při zpracování souboru u pole %s.\n"
+#, python-format
+msgid "Unknown column header \"%s\""
+msgstr ""
 
 msgid "Error"
 msgstr "Chyba"
@@ -1065,6 +1098,9 @@ msgstr "%d záznamů načteno!"
 
 msgid "Search"
 msgstr "Hledat"
+
+msgid "New"
+msgstr "_Nový"
 
 #, python-format
 msgid "Search %s"
@@ -1112,6 +1148,9 @@ msgstr ""
 
 msgid ":"
 msgstr ":"
+
+msgid "Scan"
+msgstr ""
 
 msgid "Image Size"
 msgstr "Velikost obrázku"

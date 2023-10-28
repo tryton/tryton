@@ -517,6 +517,11 @@ msgstr ""
 "Особи мають різні податкові ідентифікатори: \"%(source_code)s\" та "
 "\"%(destination_code)s\"."
 
+#, fuzzy
+msgctxt "model:ir.message,text:msg_email_invalid"
+msgid "The email address \"%(email)s\" for party \"%(party)s\" is not valid."
+msgstr "Код %(type)s \"%(code)s\" для особи \"%(party)s\" не є коректним."
+
 msgctxt "model:ir.message,text:msg_erase_active_party"
 msgid "Party \"%(party)s\" cannot be erased because they are still active."
 msgstr "Особу \"%(party)s\" не можна видалити, тому що вона все ще активна."
@@ -681,6 +686,11 @@ msgctxt "selection:party.configuration,identifier_types:"
 msgid "Albanian VAT Number"
 msgstr "Албанський номер платника ПДВ"
 
+#, fuzzy
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Algerian Tax Number"
+msgstr "Німецький податковий номер"
+
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "Andorra Tax Number"
 msgstr "Андорра, податковий номер"
@@ -725,9 +735,19 @@ msgctxt "selection:party.configuration,identifier_types:"
 msgid "Belarus VAT Number"
 msgstr "Білоруський номер платника ПДВ"
 
+#, fuzzy
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Belgian BIS Number"
+msgstr "Болгарський номер платника ПДВ"
+
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "Belgian Enterprise Number"
 msgstr "Бельгійський номер підприємства"
+
+#, fuzzy
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Belgian National Number"
+msgstr "Чилійський національний податковий номер"
 
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "Brazillian Company Identifier"
@@ -849,6 +869,11 @@ msgctxt "selection:party.configuration,identifier_types:"
 msgid "Ecuadorian Tax Identification"
 msgstr "Еквадорський податковий номер"
 
+#, fuzzy
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Egyptian Tax Registration Number"
+msgstr "Український індивідуальний податковий номер"
+
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "English Unique Pupil Number"
 msgstr "Англійський унікальний номер учня"
@@ -868,6 +893,15 @@ msgstr "Естонський номер платника ПДВ"
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "European VAT Number"
 msgstr "Європейський номер платника ПДВ"
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "European VAT on e-Commerce - One Stop Shop"
+msgstr ""
+
+#, fuzzy
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Faroese Tax Number"
+msgstr "Мальтійський номер платника ПДВ"
 
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "Finnish Association Identifier"
@@ -925,6 +959,11 @@ msgctxt "selection:party.configuration,identifier_types:"
 msgid "German VAT Number"
 msgstr "Німецький номер платника ПДВ"
 
+#, fuzzy
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Ghanaian Taxpayer Identification Number"
+msgstr "США, ідентифікаційний податковий номер"
+
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "Greek Social Security Number"
 msgstr "Грецький номер соціального страхування"
@@ -936,6 +975,11 @@ msgstr "Грецький номер платника ПДВ"
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "Guatemala Tax Number"
 msgstr "Гватемала, податковий номер"
+
+#, fuzzy
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Guinean Tax Number"
+msgstr "Німецький податковий номер"
 
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "Hungarian VAT Number"
@@ -956,6 +1000,15 @@ msgstr "Індійський цифровий ідентифікаційний �
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "Indian Income Tax Identifier"
 msgstr "Індійський податковий номер"
+
+#, fuzzy
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Indian VAT number"
+msgstr "Індонезійський номер платника ПДВ"
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Indian Voter ID"
+msgstr ""
 
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "Indonesian VAT Number"
@@ -1005,6 +1058,11 @@ msgctxt "selection:party.configuration,identifier_types:"
 msgid "Luxembourgian VAT Number"
 msgstr "Люксембурзький номер платника ПДВ"
 
+#, fuzzy
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Macedonian Tax Number"
+msgstr "Мексиканський податковий номер"
+
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "Malaysian National Registration Identity Card Number"
 msgstr "Номер посвідчення особи національного реєстру Малайзії"
@@ -1029,6 +1087,11 @@ msgctxt "selection:party.configuration,identifier_types:"
 msgid "Monacan VAT Number"
 msgstr "Монаканський номер платника ПДВ"
 
+#, fuzzy
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Moroccan Tax Number"
+msgstr "Мексиканський податковий номер"
+
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "New Zealand Inland Revenue Department Number"
 msgstr "Нова Зеландія, номер Департаменту внутрішніх доходів"
@@ -1044,6 +1107,11 @@ msgstr "Норвезький номер організації"
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "Norwegian VAT Number"
 msgstr "Норвезький номер платника ПДВ"
+
+#, fuzzy
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Pakistani Computerised National Identity Card Number"
+msgstr "Номер посвідчення особи національного реєстру Малайзії"
 
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "Paraguay Tax Number"
@@ -1068,6 +1136,11 @@ msgstr "Польський реєстр економічних одиниць"
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "Polish VAT Number"
 msgstr "Польський номер платника ПДВ"
+
+#, fuzzy
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Portuguese Identity Number"
+msgstr "Португальський номер платника ПДВ"
 
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "Portuguese VAT Number"
@@ -1108,6 +1181,16 @@ msgstr "Словацький номер народження"
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "Slovak VAT Number"
 msgstr "Словацький номер платника ПДВ"
+
+#, fuzzy
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Slovenian Corporate Registration Number"
+msgstr "Південна Корея, реєстраційний номер для бізнесу"
+
+#, fuzzy
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Slovenian Unique Master Citizen Number"
+msgstr "Датський номер громадянина"
 
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "Slovenian VAT Number"
@@ -1168,6 +1251,25 @@ msgstr "Швейцарський номер соціального страху�
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "Swiss VAT Number"
 msgstr "Швейцарський номер платника ПДВ"
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Thai Memorandum of Association Number"
+msgstr ""
+
+#, fuzzy
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Thai Personal Identification Number"
+msgstr "Турецький особистий ідентифікаційний номер"
+
+#, fuzzy
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Thai Taxpayer Identification Number"
+msgstr "США, ідентифікаційний податковий номер"
+
+#, fuzzy
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Tunisian Tax Number"
+msgstr "Аргентинський податковий номер"
 
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "Turkish Personal Identification Number"

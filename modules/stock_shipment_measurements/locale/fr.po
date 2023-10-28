@@ -3,24 +3,24 @@ msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "field:stock.configuration,measurement_volume_uom:"
-msgid "Measurement Volume Uom"
-msgstr "Mesure de volume UDM"
+msgid "Measurement Volume UoM"
+msgstr "UDM de mesure de volume"
 
 msgctxt "field:stock.configuration,measurement_weight_uom:"
-msgid "Measurement Weight Uom"
-msgstr "Mesure de poids UDM"
+msgid "Measurement Weight UoM"
+msgstr "UDM de mesure de poids"
 
 msgctxt "field:stock.configuration.measurement,company:"
 msgid "Company"
 msgstr "Société"
 
 msgctxt "field:stock.configuration.measurement,measurement_volume_uom:"
-msgid "Measurement Volume Uom"
-msgstr "Mesure de volume UDM"
+msgid "Measurement Volume UoM"
+msgstr "UDM de mesure de volume"
 
 msgctxt "field:stock.configuration.measurement,measurement_weight_uom:"
-msgid "Measurement Weight Uom"
-msgstr "Mesure de poids UDM"
+msgid "Measurement Weight UoM"
+msgstr "UDM de mesure de poids"
 
 msgctxt "field:stock.move,internal_volume:"
 msgid "Internal Volume"
@@ -35,8 +35,8 @@ msgid "Additional Weight"
 msgstr "Poids supplémentaire"
 
 msgctxt "field:stock.package,additional_weight_uom:"
-msgid "Additional Weight Uom"
-msgstr "Poids supplémentaire UDM"
+msgid "Additional Weight UoM"
+msgstr "UDM de poids supplémentaire"
 
 msgctxt "field:stock.package,total_volume:"
 msgid "Total Volume"
@@ -51,7 +51,7 @@ msgid "Volume"
 msgstr "Volume"
 
 msgctxt "field:stock.package,volume_uom:"
-msgid "Volume Uom"
+msgid "Volume UoM"
 msgstr "UDM de volume"
 
 msgctxt "field:stock.package,weight:"
@@ -59,7 +59,7 @@ msgid "Weight"
 msgstr "Poids"
 
 msgctxt "field:stock.package,weight_uom:"
-msgid "Weight Uom"
+msgid "Weight UoM"
 msgstr "UDM de poids"
 
 msgctxt "field:stock.shipment.in,volume:"
@@ -67,7 +67,7 @@ msgid "Volume"
 msgstr "Volume"
 
 msgctxt "field:stock.shipment.in,volume_uom:"
-msgid "Volume Uom"
+msgid "Volume UoM"
 msgstr "UDM de volume"
 
 msgctxt "field:stock.shipment.in,weight:"
@@ -75,7 +75,7 @@ msgid "Weight"
 msgstr "Poids"
 
 msgctxt "field:stock.shipment.in,weight_uom:"
-msgid "Weight Uom"
+msgid "Weight UoM"
 msgstr "UDM de poids"
 
 msgctxt "field:stock.shipment.in.return,packages_volume:"
@@ -91,7 +91,7 @@ msgid "Volume"
 msgstr "Volume"
 
 msgctxt "field:stock.shipment.in.return,volume_uom:"
-msgid "Volume Uom"
+msgid "Volume UoM"
 msgstr "UDM de volume"
 
 msgctxt "field:stock.shipment.in.return,weight:"
@@ -99,7 +99,7 @@ msgid "Weight"
 msgstr "Poids"
 
 msgctxt "field:stock.shipment.in.return,weight_uom:"
-msgid "Weight Uom"
+msgid "Weight UoM"
 msgstr "UDM de poids"
 
 msgctxt "field:stock.shipment.out,packages_volume:"
@@ -115,7 +115,7 @@ msgid "Volume"
 msgstr "Volume"
 
 msgctxt "field:stock.shipment.out,volume_uom:"
-msgid "Volume Uom"
+msgid "Volume UoM"
 msgstr "UDM de volume"
 
 msgctxt "field:stock.shipment.out,weight:"
@@ -123,7 +123,7 @@ msgid "Weight"
 msgstr "Poids"
 
 msgctxt "field:stock.shipment.out,weight_uom:"
-msgid "Weight Uom"
+msgid "Weight UoM"
 msgstr "UDM de poids"
 
 msgctxt "field:stock.shipment.out.return,volume:"
@@ -131,7 +131,7 @@ msgid "Volume"
 msgstr "Volume"
 
 msgctxt "field:stock.shipment.out.return,volume_uom:"
-msgid "Volume Uom"
+msgid "Volume UoM"
 msgstr "UDM de volume"
 
 msgctxt "field:stock.shipment.out.return,weight:"
@@ -139,8 +139,16 @@ msgid "Weight"
 msgstr "Poids"
 
 msgctxt "field:stock.shipment.out.return,weight_uom:"
-msgid "Weight Uom"
+msgid "Weight UoM"
 msgstr "UDM de poids"
+
+msgctxt "help:stock.configuration,measurement_volume_uom:"
+msgid "The default Unit of Measure for volume."
+msgstr "L'Unité De Mesure par défaut pour le volume."
+
+msgctxt "help:stock.configuration,measurement_weight_uom:"
+msgid "The default Unit of Measure for weight."
+msgstr "L'Unité De Mesure par défaut pour le poids."
 
 msgctxt "help:stock.move,internal_volume:"
 msgid "The volume of the moved product in liter."
@@ -154,6 +162,10 @@ msgctxt "help:stock.package,additional_weight:"
 msgid "The weight to add to the packages."
 msgstr "Le poids à ajouter aux emballages."
 
+msgctxt "help:stock.package,additional_weight_uom:"
+msgid "The Unit of Measure for additional weight."
+msgstr "L'Unité De Mesure pour le poids supplémentaire."
+
 msgctxt "help:stock.package,total_volume:"
 msgid "The total volume of the packages."
 msgstr "Le volume total des emballages."
@@ -166,17 +178,33 @@ msgctxt "help:stock.package,volume:"
 msgid "The total volume of the record's moves."
 msgstr "Le volume total des mouvements de l'enregistrement."
 
+msgctxt "help:stock.package,volume_uom:"
+msgid "The Unit of Measure of volume."
+msgstr "L'Unité De Mesure du volume."
+
 msgctxt "help:stock.package,weight:"
 msgid "The total weight of the record's moves."
 msgstr "Le poids total des mouvements de l'enregistrement."
+
+msgctxt "help:stock.package,weight_uom:"
+msgid "The Unit of Measure of weight."
+msgstr "L'Unité De Mesure du poids."
 
 msgctxt "help:stock.shipment.in,volume:"
 msgid "The total volume of the record's moves."
 msgstr "Le volume total des mouvements de l'enregistrement."
 
+msgctxt "help:stock.shipment.in,volume_uom:"
+msgid "The Unit of Measure of volume."
+msgstr "L'Unité De Mesure du volume."
+
 msgctxt "help:stock.shipment.in,weight:"
 msgid "The total weight of the record's moves."
 msgstr "Le poids total des mouvements de l'enregistrement."
+
+msgctxt "help:stock.shipment.in,weight_uom:"
+msgid "The Unit of Measure of weight."
+msgstr "L'Unité De Mesure du poids."
 
 msgctxt "help:stock.shipment.in.return,packages_volume:"
 msgid "The total volume of the packages."
@@ -190,9 +218,17 @@ msgctxt "help:stock.shipment.in.return,volume:"
 msgid "The total volume of the record's moves."
 msgstr "Le volume total des mouvements de l'enregistrement."
 
+msgctxt "help:stock.shipment.in.return,volume_uom:"
+msgid "The Unit of Measure of volume."
+msgstr "L'Unité De Mesure du volume."
+
 msgctxt "help:stock.shipment.in.return,weight:"
 msgid "The total weight of the record's moves."
 msgstr "Le poids total des mouvements de l'enregistrement."
+
+msgctxt "help:stock.shipment.in.return,weight_uom:"
+msgid "The Unit of Measure of weight."
+msgstr "L'Unité De Mesure du poids."
 
 msgctxt "help:stock.shipment.out,packages_volume:"
 msgid "The total volume of the packages."
@@ -206,17 +242,33 @@ msgctxt "help:stock.shipment.out,volume:"
 msgid "The total volume of the record's moves."
 msgstr "Le volume total des mouvements de l'enregistrement."
 
+msgctxt "help:stock.shipment.out,volume_uom:"
+msgid "The Unit of Measure of volume."
+msgstr "L'Unité De Mesure du volume."
+
 msgctxt "help:stock.shipment.out,weight:"
 msgid "The total weight of the record's moves."
 msgstr "Le poids total des mouvements de l'enregistrement."
+
+msgctxt "help:stock.shipment.out,weight_uom:"
+msgid "The Unit of Measure of weight."
+msgstr "L'Unité De Mesure du poids."
 
 msgctxt "help:stock.shipment.out.return,volume:"
 msgid "The total volume of the record's moves."
 msgstr "Le volume total des mouvements de l'enregistrement."
 
+msgctxt "help:stock.shipment.out.return,volume_uom:"
+msgid "The Unit of Measure of volume."
+msgstr "L'Unité De Mesure du volume."
+
 msgctxt "help:stock.shipment.out.return,weight:"
 msgid "The total weight of the record's moves."
 msgstr "Le poids total des mouvements de l'enregistrement."
+
+msgctxt "help:stock.shipment.out.return,weight_uom:"
+msgid "The Unit of Measure of weight."
+msgstr "L'Unité De Mesure du poids."
 
 msgctxt "model:stock.configuration.measurement,name:"
 msgid "Stock Configuration Measurement"

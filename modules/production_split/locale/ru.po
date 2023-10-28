@@ -12,18 +12,21 @@ msgctxt "field:production.split.start,quantity:"
 msgid "Quantity"
 msgstr "Кол-во"
 
-#, fuzzy
-msgctxt "field:production.split.start,uom:"
-msgid "Uom"
-msgstr "Ед.изм."
+msgctxt "field:production.split.start,unit:"
+msgid "Unit"
+msgstr ""
 
 #, fuzzy
 msgctxt "field:production.split.start,uom_category:"
-msgid "Uom Category"
+msgid "UoM Category"
 msgstr "Категория ед. измерения"
 
 msgctxt "help:production.split.start,count:"
 msgid "The limit number of productions"
+msgstr ""
+
+msgctxt "help:production.split.start,uom_category:"
+msgid "The category of Unit of Measure."
 msgstr ""
 
 msgctxt "model:ir.action,name:wizard_split_production"

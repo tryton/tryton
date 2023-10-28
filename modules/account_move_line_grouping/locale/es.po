@@ -66,7 +66,7 @@ msgctxt "field:account.move.line.group,move:"
 msgid "Move"
 msgstr "Asiento"
 
-msgctxt "field:account.move.line.group,move_description:"
+msgctxt "field:account.move.line.group,move_description_used:"
 msgid "Move Description"
 msgstr "Descripción del asiento"
 
@@ -137,14 +137,6 @@ msgstr "Abrir cuenta de asiento (Agrupada)"
 msgctxt "view:account.move.line.group:"
 msgid "Balance"
 msgstr "Saldo"
-
-msgctxt "view:account.move.line.group:"
-msgid "Credit"
-msgstr "Haber"
-
-msgctxt "view:account.move.line.group:"
-msgid "Debit"
-msgstr "Debe"
 
 msgctxt "view:account.move.line.group:"
 msgid "Other Info"

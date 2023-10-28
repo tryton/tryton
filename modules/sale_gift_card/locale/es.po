@@ -186,10 +186,16 @@ msgctxt ""
 msgid "Sent"
 msgstr "Enviada"
 
+msgctxt "model:ir.message,text:msg_gift_card_email_invalid"
+msgid "The email address \"%(email)s\" for \"%(card)s\" is not valid."
+msgstr "El correo electrónico \"%(email)s\" de la tarjeta \"%(card)s\" no es valido."
+
 msgctxt "model:ir.message,text:msg_gift_card_invalid_uom"
-msgid "The default UOM for the gift card \"%(template)s\" must be \"%(unit)s\"."
+msgid ""
+"The default unit of measure for the gift card \"%(template)s\" must be "
+"\"%(unit)s\"."
 msgstr ""
-"La UdM por defecto para la tarjeta de regalo \"%(template)s\" tiene que ser "
+"La unidad de medida de la tarjeta de regalo \"%(template)s\" debe ser "
 "\"%(unit)s\"."
 
 msgctxt "model:ir.message,text:msg_gift_card_move_quantity"

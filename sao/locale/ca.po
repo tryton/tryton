@@ -242,6 +242,9 @@ msgstr "Cerca..."
 msgid "Create..."
 msgstr "Crea..."
 
+msgid "Create \"%1\"..."
+msgstr "Crea \"%1\"..."
+
 msgid "Download"
 msgstr "Baixa"
 
@@ -442,6 +445,9 @@ msgstr "Prevalidació"
 msgid ":"
 msgstr ":"
 
+msgid "Scan"
+msgstr "Escaneja"
+
 msgid "Translate"
 msgstr "Tradueix"
 
@@ -509,17 +515,20 @@ msgstr "Escull un idioma"
 msgid "%1%"
 msgstr "%1%"
 
-msgid ": "
-msgstr ": "
+msgid "Menu"
+msgstr "Menú"
 
-msgid "Customize"
-msgstr "Personalitza"
+msgid "Copy"
+msgstr "Copia"
+
+msgid "#ERROR"
+msgstr "#ERROR"
 
 msgid "More"
 msgstr "Més"
 
-msgid "#ERROR"
-msgstr "#ERROR"
+msgid ": "
+msgstr ": "
 
 msgid "Today"
 msgstr "Avui"
@@ -544,6 +553,18 @@ msgstr "Seleccioneu la vostra acció"
 
 msgid "No action defined."
 msgstr "No s'ha definit cap acció."
+
+msgid "Discard changes"
+msgstr "Descartar els canvis"
+
+msgid "Save and New"
+msgstr "Guarda i nou"
+
+msgid "Add and New"
+msgstr "Afegeix i nou"
+
+msgid "Apply changes"
+msgstr "Aplica canvis"
 
 msgid "Attachments (%1)"
 msgstr "Adjunts (%1)"
@@ -614,8 +635,8 @@ msgstr "Primer heu de seleccionar un fitxer a importar."
 msgid "Detection failed"
 msgstr "Ha fallat la detecció"
 
-msgid "Error processing the file at field %1."
-msgstr "S'ha produït un error al processar el fitxer al camp %1."
+msgid "Unknown column header \"%1\""
+msgstr "Capçalera de columna desconeguda: \"%1\""
 
 msgid "Error"
 msgstr "Error"
@@ -710,6 +731,15 @@ msgstr "Envia"
 
 msgid "Remove File"
 msgstr "Elimina fitxer"
+
+msgid "Code Scanner"
+msgstr "Escàner de codis"
+
+msgid "Code"
+msgstr "Codi"
+
+msgid "Toggle Sound"
+msgstr "Alterna so"
 
 msgid "Wizard"
 msgstr "Assistent"

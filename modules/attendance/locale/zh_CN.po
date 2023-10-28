@@ -166,7 +166,7 @@ msgstr ""
 
 msgctxt "model:ir.rule.group,name:rule_group_period_companies"
 msgid "User in companies"
-msgstr ""
+msgstr "公司中的用户"
 
 msgctxt "model:ir.rule.group,name:rule_group_sheet"
 msgid "Own attendance sheet"

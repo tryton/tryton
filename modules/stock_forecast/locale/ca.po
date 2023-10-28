@@ -12,7 +12,7 @@ msgstr "Empresa"
 
 msgctxt "field:stock.forecast,destination:"
 msgid "Destination"
-msgstr "Destinació"
+msgstr "Destí"
 
 msgctxt "field:stock.forecast,from_date:"
 msgid "From Date"
@@ -79,7 +79,7 @@ msgid "Product"
 msgstr "Producte"
 
 msgctxt "field:stock.forecast.line,product_uom_category:"
-msgid "Product Uom Category"
+msgid "Product UoM Category"
 msgstr "Categoria UdM del producte"
 
 msgctxt "field:stock.forecast.line,quantity:"
@@ -90,9 +90,9 @@ msgctxt "field:stock.forecast.line,quantity_executed:"
 msgid "Quantity Executed"
 msgstr "Quantitats executades"
 
-msgctxt "field:stock.forecast.line,uom:"
-msgid "UOM"
-msgstr "UdM"
+msgctxt "field:stock.forecast.line,unit:"
+msgid "Unit"
+msgstr "Unitat"
 
 msgctxt "field:stock.forecast.line-stock.move,line:"
 msgid "Forecast Line"
@@ -101,6 +101,10 @@ msgstr "Línia de previsió"
 msgctxt "field:stock.forecast.line-stock.move,move:"
 msgid "Move"
 msgstr "Moviment"
+
+msgctxt "help:stock.forecast.line,product_uom_category:"
+msgid "The category of Unit of Measure for the product."
+msgstr "La categoria de la unitat de mesura del producte."
 
 msgctxt "model:ir.action,name:act_forecast_form"
 msgid "Forecasts"

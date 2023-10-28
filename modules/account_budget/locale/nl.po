@@ -283,6 +283,10 @@ msgctxt "model:ir.action,name:wizard_budget_line_create_periods"
 msgid "Create Periods"
 msgstr "Maak Periodes"
 
+msgctxt "model:ir.message,text:msg_budget_line_budget_account_type_unique"
+msgid "The account type must be unique for each budget."
+msgstr "Het soort grootboekrekening moet uniek zijn voor elk budget."
+
 msgctxt "model:ir.message,text:msg_budget_line_budget_account_unique"
 msgid "The account must be unique for each budget."
 msgstr "De grootboekrekening moet uniek zijn voor elk budget."
@@ -343,18 +347,6 @@ msgstr "%"
 msgctxt "view:account.budget.line.period:"
 msgid "%"
 msgstr "%"
-
-msgctxt "view:account.budget.line.period:"
-msgid "Actual Amount"
-msgstr "Werkelijk bedrag"
-
-msgctxt "view:account.budget.line.period:"
-msgid "Ratio"
-msgstr "Verhouding"
-
-msgctxt "view:account.budget.line.period:"
-msgid "Total Amount"
-msgstr "Totaal bedrag"
 
 msgctxt "view:account.budget.line:"
 msgid "%"

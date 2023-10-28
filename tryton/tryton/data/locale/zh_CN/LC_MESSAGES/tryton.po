@@ -18,7 +18,7 @@ msgid "specify the log level: DEBUG, INFO, WARNING, ERROR, CRITICAL"
 msgstr "设置日志级别: DEBUG, INFO, WARNING, ERROR, CRITICAL"
 
 msgid "specify the file used to output logging information"
-msgstr ""
+msgstr "指定用于输出日志记录信息的文件"
 
 msgid "specify the login user"
 msgstr "设置登录用户"
@@ -27,7 +27,7 @@ msgid "specify the server hostname:port"
 msgstr "设置服务器主机名:端口号"
 
 msgid "disable thread usage"
-msgstr ""
+msgstr "禁用线程"
 
 #, python-format
 msgid "Unable to set locale %s"
@@ -126,18 +126,15 @@ msgstr "有新版本可用！"
 msgid "Download"
 msgstr "下载"
 
-#, fuzzy
 msgid "Could not get a session."
-msgstr "无法连接服务器."
+msgstr "无法获取会话。"
 
 msgid "Too many requests. Try again later."
 msgstr "请求太多，请稍后重试."
 
-#, fuzzy
 msgid "Not found."
 msgstr "无符合条件的数据."
 
-#, fuzzy
 msgid "Not Found."
 msgstr "无符合条件的数据."
 
@@ -149,6 +146,10 @@ msgstr "<i>查找...</i>"
 
 msgid "<i>Create...</i>"
 msgstr "<i>创建...</i>"
+
+#, python-format
+msgid "Create \"%s\"..."
+msgstr "创建 \"%s\"..."
 
 msgid "Value"
 msgstr "值"
@@ -175,13 +176,13 @@ msgid "y"
 msgstr "y"
 
 msgid "True"
-msgstr "True"
+msgstr "真"
 
 msgid "t"
 msgstr "t"
 
 msgid "False"
-msgstr "False"
+msgstr "假"
 
 msgid "Digits"
 msgstr "有效数字位数"
@@ -195,9 +196,8 @@ msgstr "模板"
 msgid "Edit..."
 msgstr "编辑..."
 
-#, fuzzy
 msgid "View Logs..."
-msgstr "日志(_V)..."
+msgstr "浏览日志..."
 
 msgid "Attachments..."
 msgstr "附件..."
@@ -221,7 +221,7 @@ msgid "E-Mail..."
 msgstr "用电子邮件发送..."
 
 msgid "Bold"
-msgstr "加粗"
+msgstr "粗体"
 
 msgid "Italic"
 msgstr "斜体"
@@ -298,6 +298,9 @@ msgstr "保存导航状态"
 msgid "Spell Checking"
 msgstr "开启拼写检查"
 
+msgid "Play Sound for Code Scanner"
+msgstr "为代码扫描仪播放声音"
+
 msgid "PDA Mode"
 msgstr "PDA 模式"
 
@@ -310,9 +313,8 @@ msgstr "检查版本"
 msgid "Options"
 msgstr "选项(_O)"
 
-#, fuzzy
 msgid "Documentation..."
-msgstr "操作..."
+msgstr "文档..."
 
 msgid "Keyboard Shortcuts..."
 msgstr "快捷键(K)..."
@@ -321,7 +323,7 @@ msgid "About..."
 msgstr "关于(_A)..."
 
 msgid "Help"
-msgstr "帮助(_H)"
+msgstr "帮助"
 
 msgid "No result found."
 msgstr "无符合条件的数据."
@@ -453,6 +455,15 @@ msgstr "移到底部"
 msgid "Move to parent"
 msgstr "上一级"
 
+msgid "Edition"
+msgstr "编辑"
+
+msgid "Copy selected rows"
+msgstr "复制所选行"
+
+msgid "Insert copied rows"
+msgstr "插入复制的行"
+
 msgid "Select all"
 msgstr "全选"
 
@@ -499,6 +510,12 @@ msgstr "翻译者 - 贡献"
 msgid "Attachments (%s)"
 msgstr "附件 (%s)"
 
+msgid "Code Scanner"
+msgstr "代码扫描仪"
+
+msgid "Code"
+msgstr "代码"
+
 msgid "Profile Editor"
 msgstr "配置编辑器"
 
@@ -524,7 +541,7 @@ msgid "Username:"
 msgstr "用户名:"
 
 msgid "Incompatible version of the server."
-msgstr "服务器版本与客户端不兼容."
+msgstr "服务器版本不兼容。"
 
 msgid "Could not connect to the server."
 msgstr "无法连接服务器."
@@ -582,18 +599,16 @@ msgid "Attachments"
 msgstr "附件"
 
 msgid "Files"
-msgstr ""
+msgstr "文件"
 
 msgid "Send"
 msgstr "发送"
 
-#, fuzzy
 msgid "Select File"
-msgstr "全选"
+msgstr "选择文件"
 
-#, fuzzy
 msgid "Remove File"
-msgstr "删除 <Del>"
+msgstr "删除文件"
 
 msgid "Select"
 msgstr "选择"
@@ -601,9 +616,8 @@ msgstr "选择"
 msgid "Add..."
 msgstr "添加..."
 
-#, fuzzy
 msgid "Preview"
-msgstr "向前"
+msgstr "预览"
 
 msgid "Previous"
 msgstr "向前"
@@ -702,13 +716,11 @@ msgstr "创建者:"
 msgid "Created at:"
 msgstr "创建日期:"
 
-#, fuzzy
 msgid "Last Modified by:"
-msgstr "最近更改:"
+msgstr "上次修改人:"
 
-#, fuzzy
 msgid "Last Modified at:"
-msgstr "最近更改日期:"
+msgstr "上次修改时间:"
 
 #, python-format
 msgid "Notes (%s)"
@@ -900,9 +912,9 @@ msgstr "%s (字符串)"
 msgid "%s (model name)"
 msgstr "%s (模型名称)"
 
-#, fuzzy, python-format
+#, python-format
 msgid "%s/Record Name"
-msgstr "%s (记录名称)"
+msgstr "%s/记录名称"
 
 msgid "What is the name of this export?"
 msgstr "导出设置的名称是?"
@@ -920,7 +932,7 @@ msgid "%d records saved."
 msgstr "%d 记录保存成功."
 
 msgid "Export failed"
-msgstr ""
+msgstr "导出失败"
 
 msgid "Link"
 msgstr "链接"
@@ -928,14 +940,23 @@ msgstr "链接"
 msgid "Delete"
 msgstr "删除"
 
-msgid "New"
-msgstr "新建"
+msgid "Discard changes"
+msgstr "放弃更改"
 
-msgid "Switch"
-msgstr "切换"
+msgid "Save and New"
+msgstr "保存和新建"
+
+msgid "Add and New"
+msgstr "添加和新建"
 
 msgid "Add"
 msgstr "添加"
+
+msgid "Apply changes"
+msgstr "应用更改"
+
+msgid "Switch"
+msgstr "切换"
 
 msgid "Remove <Del>"
 msgstr "删除 <Del>"
@@ -969,17 +990,17 @@ msgid "You must select an import file first."
 msgstr "必须先选择要导入的文件."
 
 msgid "Detection failed"
-msgstr ""
+msgstr "检测失败"
 
 #, python-format
-msgid "Error processing the file at field %s."
-msgstr "处理字段 %s 时出错."
+msgid "Unknown column header \"%s\""
+msgstr "未知表头 \"%s\""
 
 msgid "Error"
 msgstr "错误"
 
 msgid "Import failed"
-msgstr ""
+msgstr "导入失败"
 
 #, python-format
 msgid "%d record imported."
@@ -992,6 +1013,9 @@ msgstr "%d 条记录导入成功."
 msgid "Search"
 msgstr "查找"
 
+msgid "New"
+msgstr "新建"
+
 #, python-format
 msgid "Search %s"
 msgstr "查找 %s"
@@ -1002,9 +1026,8 @@ msgstr "向导"
 msgid "ID"
 msgstr "标识"
 
-#, fuzzy
 msgid "Created by"
-msgstr "创建者:"
+msgstr "创建者"
 
 msgid "Created at"
 msgstr "创建日期"
@@ -1035,6 +1058,9 @@ msgstr "预校验"
 
 msgid ":"
 msgstr ":"
+
+msgid "Scan"
+msgstr "扫码"
 
 msgid "Image Size"
 msgstr "图片尺寸"
@@ -1103,12 +1129,11 @@ msgid "next year"
 msgstr "下一年度"
 
 msgid "Day"
-msgstr ""
+msgstr "日视图"
 
 msgid "Week"
 msgstr "周"
 
-#, fuzzy
 msgid "Month"
 msgstr "月视图"
 
@@ -1178,7 +1203,7 @@ msgid "No other language available."
 msgstr "没有其他可翻译语言."
 
 msgid "#ERROR"
-msgstr ""
+msgstr "#错误"
 
 msgid "Translate view"
 msgstr "翻译视图"

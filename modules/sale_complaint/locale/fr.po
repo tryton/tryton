@@ -364,15 +364,11 @@ msgstr "En attente"
 
 msgctxt "selection:sale.complaint.action,action:"
 msgid "Create Credit Note"
-msgstr "Créer une note de crédit"
+msgstr "Créer un avoir"
 
 msgctxt "selection:sale.complaint.action,action:"
 msgid "Create Sale Return"
 msgstr "Créer un retour de vente"
-
-msgctxt "view:sale.complaint.action:"
-msgid "Amount"
-msgstr "Montant"
 
 msgctxt "view:sale.complaint:"
 msgid "Complaint"

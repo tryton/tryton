@@ -86,6 +86,10 @@ msgctxt "model:ir.action,name:report_email_validation"
 msgid "Email Validation"
 msgstr "Validació correu electrònic"
 
+msgctxt "model:ir.message,text:msg_user_email_invalid"
+msgid "The email address \"%(email)s\" for \"%(user)s\" is not valid."
+msgstr "El correu electrònic \"%(email)s\" de l'usuari \"%(user)s\" no es vàlid."
+
 msgctxt "model:ir.message,text:msg_user_email_unique"
 msgid "E-mail of active web user must be unique."
 msgstr "El correu electrònic de l'usuari web ha de ser únic."

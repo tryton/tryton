@@ -84,7 +84,7 @@ msgid "Product"
 msgstr "Product"
 
 msgctxt "field:purchase.request.quotation.line,product_uom_category:"
-msgid "Product Uom Category"
+msgid "Product UoM Category"
 msgstr "Poduct maateenheid categorie"
 
 msgctxt "field:purchase.request.quotation.line,quantity:"
@@ -139,6 +139,10 @@ msgctxt "help:purchase.request.quotation,revision:"
 msgid "Number incremented each time the quotation is sent."
 msgstr "Nummer dat verhoogd wordt elke keer een offerte verzonden wordt ."
 
+msgctxt "help:purchase.request.quotation.line,product_uom_category:"
+msgid "The category of Unit of Measure for the product."
+msgstr "De categorie van de maateenheid van het product."
+
 msgctxt "help:purchase.request.quotation.line,request:"
 msgid "The request which this line belongs to."
 msgstr "Het verzoek waartoe deze regel behoort."
@@ -162,6 +166,16 @@ msgstr "Aankoopaanvraag Offertes"
 msgctxt "model:ir.action,name:wizard_create_quotation"
 msgid "Create Quotation"
 msgstr "Offerte maken"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_purchase_request_form_domain_quotation"
+msgid "Quotation"
+msgstr "Offerte"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_purchase_request_form_domain_received"
+msgid "Received"
+msgstr "Ontvangen"
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_purchase_request_quotation_form_view1_domain_all"

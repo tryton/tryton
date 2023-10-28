@@ -2,17 +2,17 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-msgctxt "field:product.product,lot_unit:"
-msgid "Lot Unit"
+msgctxt "field:product.product,lot_uom:"
+msgid "Lot UoM"
 msgstr "Unitat del lot"
 
-msgctxt "field:product.template,lot_unit:"
-msgid "Lot Unit"
+msgctxt "field:product.template,lot_uom:"
+msgid "Lot UoM"
 msgstr "Unitat del lot"
 
 msgctxt "field:stock.lot,product_default_uom_category:"
 msgid "Default Product UoM Category"
-msgstr "Categoria UdM del producte"
+msgstr "Categoria UdM del producte per defecte"
 
 msgctxt "field:stock.lot,unit:"
 msgid "Unit"
@@ -24,7 +24,7 @@ msgstr "Quantitat unitària"
 
 msgctxt "field:stock.move.add.lots.start.lot,product_default_uom_category:"
 msgid "Default Product UoM Category"
-msgstr "Categoria UdM del producte"
+msgstr "Categoria UdM del producte per defecte"
 
 msgctxt "field:stock.move.add.lots.start.lot,unit:"
 msgid "Unit"
@@ -34,13 +34,13 @@ msgctxt "field:stock.move.add.lots.start.lot,unit_quantity:"
 msgid "Unit Quantity"
 msgstr "Quantitat unitària"
 
-msgctxt "help:product.product,lot_unit:"
-msgid "The default unit for lot."
-msgstr "La unitat per defecte del lot."
+msgctxt "help:product.product,lot_uom:"
+msgid "The default unit of measurer for lot."
+msgstr "La unitat de mesuera per defecte del lot."
 
-msgctxt "help:product.template,lot_unit:"
-msgid "The default unit for lot."
-msgstr "La unitat per defecte del lot."
+msgctxt "help:product.template,lot_uom:"
+msgid "The default unit of measurer for lot."
+msgstr "La unitat de mesuera per defecte del lot."
 
 msgctxt "help:stock.lot,unit:"
 msgid "The biggest unit for the lot."

@@ -10,6 +10,10 @@ msgctxt "field:account.account.type.template,unearned_revenue:"
 msgid "Unearned Revenue"
 msgstr ""
 
+msgctxt "field:account.invoice.line,advance_payment_recalled_lines:"
+msgid "Advance Payment Recalled Lines"
+msgstr ""
+
 msgctxt "field:sale.advance_payment.condition,account:"
 msgid "Account"
 msgstr "Akun"

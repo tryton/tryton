@@ -1,83 +1,86 @@
 #
+#, fuzzy
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "field:company.company,cost_price_warehouse:"
 msgid "Cost Price per Warehouse"
-msgstr ""
+msgstr "Stroškovna cena po skladišču"
 
 msgctxt "field:ir.cron,warehouses:"
 msgid "Warehouses"
-msgstr ""
+msgstr "Skladišča"
 
 msgctxt "field:ir.cron-stock.warehouse,cron:"
 msgid "Cron"
-msgstr ""
+msgstr "Časovni razporejevalnik"
 
 msgctxt "field:ir.cron-stock.warehouse,warehouse:"
 msgid "Warehouse"
-msgstr ""
+msgstr "Skladišče"
 
 msgctxt "field:product.configuration,cost_price_warehouse:"
 msgid "Cost Price per Warehouse"
-msgstr ""
+msgstr "Stroškovna cena po skladišču"
 
 msgctxt "field:product.configuration.cost_price_warehouse,company:"
 msgid "Company"
-msgstr ""
+msgstr "Družba"
 
 msgctxt ""
 "field:product.configuration.cost_price_warehouse,cost_price_warehouse:"
 msgid "Cost Price per Warehouse"
-msgstr ""
+msgstr "Stroškovna cena po skladišču"
 
 msgctxt "field:product.cost_price,warehouse:"
 msgid "Warehouse"
-msgstr ""
+msgstr "Skladišče"
 
 msgctxt "field:product.cost_price,warehouse_required:"
 msgid "Warehouse Required"
-msgstr ""
+msgstr "Skladišče obvezno"
 
 msgctxt "field:product.cost_price.revision,warehouse:"
 msgid "Warehouse"
-msgstr ""
+msgstr "Skladišče"
 
 msgctxt "field:product.cost_price.revision,warehouse_required:"
 msgid "Warehouse Required"
-msgstr ""
+msgstr "Skladišče obvezno"
 
 msgctxt "field:stock.location,cost_warehouse:"
 msgid "Cost Warehouse"
-msgstr ""
+msgstr "Stroškovno skladišče"
 
 msgctxt "help:company.company,cost_price_warehouse:"
 msgid "Compute product cost price for each warehouse."
-msgstr ""
+msgstr "Izračunajte nabavno ceno izdelka za vsako skladišče."
 
 msgctxt "help:ir.cron,warehouses:"
 msgid "Warehouses registered for this cron."
-msgstr ""
+msgstr "Skladišča, registrirana na ta časovni razporejevalnik."
 
 msgctxt "help:product.configuration,cost_price_warehouse:"
 msgid "Compute product cost price for each warehouse."
-msgstr ""
+msgstr "Izračunajte nabavno ceno izdelka za vsako skladišče."
 
 msgctxt ""
 "help:product.configuration.cost_price_warehouse,cost_price_warehouse:"
 msgid "Compute product cost price for each warehouse."
-msgstr ""
+msgstr "Izračunajte nabavno ceno izdelka za vsako skladišče."
 
 msgctxt "model:ir.cron-stock.warehouse,name:"
 msgid "Cron - Warehouse"
-msgstr ""
+msgstr "Časovni razporejevalnik - Skladišče"
 
 msgctxt "model:ir.message,text:msg_move_storage_location_same_warehouse"
 msgid ""
 "To move products between \"%(from_)s\" and \"%(to)s\", you must use the "
 "internal shipment transit location."
 msgstr ""
+"Za premik izdelkov med »%(from_)s« in »%(to)s« morate uporabiti interno "
+"tranzitno lokacijo pošiljke."
 
 msgctxt "model:product.configuration.cost_price_warehouse,name:"
 msgid "Product Configuration Cost Price per Warehouse"
-msgstr ""
+msgstr "Konfiguracija izdelka - Nabavna cena po skladišču"

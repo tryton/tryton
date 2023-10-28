@@ -106,6 +106,10 @@ msgctxt "field:stock.shipment.carriage,cost_sale_used:"
 msgid "Cost Sale"
 msgstr ""
 
+msgctxt "field:stock.shipment.carriage,cost_sales:"
+msgid "Cost Sales"
+msgstr ""
+
 msgctxt "field:stock.shipment.carriage,cost_used:"
 msgid "Cost"
 msgstr "Costo"
@@ -257,6 +261,11 @@ msgstr ""
 msgctxt "selection:stock.shipment.carriage,type:"
 msgid "Before"
 msgstr ""
+
+#, fuzzy
+msgctxt "selection:stock.shipment.cost_sale,shipment:"
+msgid "Carriage"
+msgstr "Vettore"
 
 msgctxt "view:sale.sale:"
 msgid "Carriages"

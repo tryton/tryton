@@ -8,7 +8,7 @@ msgstr "Copii"
 
 msgctxt "field:project.work,comment:"
 msgid "Comment"
-msgstr ""
+msgstr "Comentariu"
 
 msgctxt "field:project.work,company:"
 msgid "Company"
@@ -140,19 +140,19 @@ msgstr ""
 
 msgctxt "model:ir.action,name:act_open_child_work"
 msgid "Tasks"
-msgstr ""
+msgstr "Sarcini"
 
 msgctxt "model:ir.action,name:act_project_form"
 msgid "Projects"
-msgstr ""
+msgstr "Proiecte"
 
 msgctxt "model:ir.action,name:act_project_tree"
 msgid "Projects"
-msgstr ""
+msgstr "Proiecte"
 
 msgctxt "model:ir.action,name:act_task_form"
 msgid "Tasks"
-msgstr ""
+msgstr "Sarcini"
 
 msgctxt "model:ir.action,name:act_timesheet_line_form_work"
 msgid "Timesheet Lines"
@@ -204,15 +204,15 @@ msgstr "Configurare"
 
 msgctxt "model:ir.ui.menu,name:menu_project"
 msgid "Projects"
-msgstr ""
+msgstr "Proiecte"
 
 msgctxt "model:ir.ui.menu,name:menu_project_form"
 msgid "Projects"
-msgstr ""
+msgstr "Proiecte"
 
 msgctxt "model:ir.ui.menu,name:menu_project_tree"
 msgid "Projects"
-msgstr ""
+msgstr "Proiecte"
 
 msgctxt "model:ir.ui.menu,name:menu_reporting"
 msgid "Reporting"
@@ -220,7 +220,7 @@ msgstr "Raportare"
 
 msgctxt "model:ir.ui.menu,name:menu_task_form"
 msgid "Tasks"
-msgstr ""
+msgstr "Sarcini"
 
 msgctxt "model:ir.ui.menu,name:menu_work_list"
 msgid "Works Efforts"
@@ -260,7 +260,7 @@ msgstr ""
 
 msgctxt "selection:project.work,type:"
 msgid "Task"
-msgstr ""
+msgstr "Sarcina"
 
 msgctxt "view:project.work.status:"
 msgid "%"

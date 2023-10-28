@@ -411,16 +411,6 @@ msgctxt "selection:res.user.application,application:"
 msgid "Timesheet"
 msgstr "Управление на графици"
 
-#, fuzzy
-msgctxt "view:timesheet.hours_employee:"
-msgid "Duration"
-msgstr "Продължителност"
-
-#, fuzzy
-msgctxt "view:timesheet.line:"
-msgid "Duration"
-msgstr "Продължителност"
-
 msgctxt "wizard_button:timesheet.line.enter,start,end:"
 msgid "Cancel"
 msgstr "Отказ"

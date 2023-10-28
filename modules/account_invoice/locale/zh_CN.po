@@ -4,7 +4,7 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "field:account.configuration,default_customer_payment_term:"
 msgid "Default Customer Payment Term"
-msgstr "默认客户付款方式"
+msgstr "默认客户付款条件"
 
 msgctxt "field:account.configuration.default_payment_term,company:"
 msgid "Company"
@@ -13,7 +13,7 @@ msgstr "公司"
 msgctxt ""
 "field:account.configuration.default_payment_term,default_customer_payment_term:"
 msgid "Default Customer Payment Term"
-msgstr "默认客户付款方式"
+msgstr "默认客户付款条件"
 
 msgctxt "field:account.fiscalyear,invoice_sequences:"
 msgid "Invoice Sequences"
@@ -57,7 +57,7 @@ msgstr "记账日期"
 
 msgctxt "field:account.invoice,additional_moves:"
 msgid "Additional Moves"
-msgstr ""
+msgstr "附加记账凭证"
 
 msgctxt "field:account.invoice,allow_cancel:"
 msgid "Allow Cancel Invoice"
@@ -65,7 +65,7 @@ msgstr "允许取消原始凭证"
 
 msgctxt "field:account.invoice,alternative_payees:"
 msgid "Alternative Payee"
-msgstr ""
+msgstr "备选收款人"
 
 msgctxt "field:account.invoice,amount_to_pay:"
 msgid "Amount to Pay"
@@ -103,10 +103,13 @@ msgctxt "field:account.invoice,description:"
 msgid "Description"
 msgstr "描述"
 
-#, fuzzy
 msgctxt "field:account.invoice,has_payment_method:"
 msgid "Has Payment Method"
-msgstr "支付方式"
+msgstr "有支付方式"
+
+msgctxt "field:account.invoice,has_report_cache:"
+msgid "Has Report Cached"
+msgstr "已缓存报表"
 
 msgctxt "field:account.invoice,invoice_address:"
 msgid "Invoice Address"
@@ -127,6 +130,10 @@ msgstr "原始票据报告ID"
 msgctxt "field:account.invoice,invoice_report_format:"
 msgid "Invoice Report Format"
 msgstr "原始凭证报告格式"
+
+msgctxt "field:account.invoice,invoice_report_revisions:"
+msgid "Invoice Report Revisions"
+msgstr "原始凭证报告修订"
 
 msgctxt "field:account.invoice,journal:"
 msgid "Journal"
@@ -172,10 +179,13 @@ msgctxt "field:account.invoice,payment_term:"
 msgid "Payment Term"
 msgstr "支付方式"
 
-#, fuzzy
 msgctxt "field:account.invoice,payment_term_date:"
 msgid "Payment Term Date"
-msgstr "支付方式"
+msgstr "付款期限"
+
+msgctxt "field:account.invoice,posted_by:"
+msgid "Posted By"
+msgstr "入账人"
 
 msgctxt "field:account.invoice,reconciled:"
 msgid "Reconciled"
@@ -201,6 +211,10 @@ msgctxt "field:account.invoice,tax_amount:"
 msgid "Tax"
 msgstr "税"
 
+msgctxt "field:account.invoice,tax_amount_cache:"
+msgid "Tax Cache"
+msgstr "税缓存"
+
 msgctxt "field:account.invoice,tax_identifier:"
 msgid "Tax Identifier"
 msgstr "税号"
@@ -212,6 +226,10 @@ msgstr "税明细"
 msgctxt "field:account.invoice,total_amount:"
 msgid "Total"
 msgstr "合计"
+
+msgctxt "field:account.invoice,total_amount_cache:"
+msgid "Total Cache"
+msgstr "合计缓存"
 
 msgctxt "field:account.invoice,type:"
 msgid "Type"
@@ -225,6 +243,14 @@ msgctxt "field:account.invoice,untaxed_amount:"
 msgid "Untaxed"
 msgstr "未征税"
 
+msgctxt "field:account.invoice,untaxed_amount_cache:"
+msgid "Untaxed Cache"
+msgstr "未征税缓存"
+
+msgctxt "field:account.invoice,validated_by:"
+msgid "Validated By"
+msgstr "验证人"
+
 msgctxt "field:account.invoice-account.move.line,invoice:"
 msgid "Invoice"
 msgstr "原始凭证"
@@ -233,10 +259,9 @@ msgctxt "field:account.invoice-account.move.line,invoice_account:"
 msgid "Invoice Account"
 msgstr "原始凭证账户"
 
-#, fuzzy
 msgctxt "field:account.invoice-account.move.line,invoice_alternative_payees:"
 msgid "Invoice Alternative Payees"
-msgstr "原始凭证付款"
+msgstr "原始凭证备选收款人"
 
 msgctxt "field:account.invoice-account.move.line,invoice_party:"
 msgid "Invoice Party"
@@ -246,23 +271,21 @@ msgctxt "field:account.invoice-account.move.line,line:"
 msgid "Payment Line"
 msgstr "支付明细"
 
-#, fuzzy
 msgctxt "field:account.invoice-additional-account.move,invoice:"
 msgid "Invoice"
 msgstr "原始凭证"
 
 msgctxt "field:account.invoice-additional-account.move,move:"
 msgid "Additional Move"
-msgstr ""
+msgstr "附加记账凭证"
 
-#, fuzzy
 msgctxt "field:account.invoice.alternative_payee,invoice:"
 msgid "Invoice"
 msgstr "原始凭证"
 
 msgctxt "field:account.invoice.alternative_payee,party:"
 msgid "Payee"
-msgstr ""
+msgstr "收款人"
 
 msgctxt "field:account.invoice.credit.start,invoice_date:"
 msgid "Invoice Date"
@@ -300,12 +323,10 @@ msgctxt "field:account.invoice.line,invoice:"
 msgid "Invoice"
 msgstr "原始凭证"
 
-#, fuzzy
 msgctxt "field:account.invoice.line,invoice_description:"
 msgid "Invoice Description"
-msgstr "描述"
+msgstr "原始凭证说明"
 
-#, fuzzy
 msgctxt "field:account.invoice.line,invoice_party:"
 msgid "Party"
 msgstr "参与者"
@@ -343,7 +364,7 @@ msgid "Product"
 msgstr "产品"
 
 msgctxt "field:account.invoice.line,product_uom_category:"
-msgid "Product Uom Category"
+msgid "Product UoM Category"
 msgstr "产品计量单位类别"
 
 msgctxt "field:account.invoice.line,quantity:"
@@ -362,10 +383,9 @@ msgctxt "field:account.invoice.line,taxes_date:"
 msgid "Taxes Date"
 msgstr "税日期"
 
-#, fuzzy
 msgctxt "field:account.invoice.line,taxes_deductible_rate:"
 msgid "Taxes Deductible Rate"
-msgstr "税日期"
+msgstr "免税率"
 
 msgctxt "field:account.invoice.line,type:"
 msgid "Type"
@@ -399,7 +419,6 @@ msgctxt "field:account.invoice.pay.ask,company:"
 msgid "Company"
 msgstr "公司"
 
-#, fuzzy
 msgctxt "field:account.invoice.pay.ask,currency:"
 msgid "Currency"
 msgstr "货币"
@@ -454,11 +473,11 @@ msgstr "原始凭证账户"
 
 msgctxt "field:account.invoice.pay.start,payee:"
 msgid "Payee"
-msgstr ""
+msgstr "收款人"
 
 msgctxt "field:account.invoice.pay.start,payees:"
 msgid "Payees"
-msgstr ""
+msgstr "收款人"
 
 msgctxt "field:account.invoice.pay.start,payment_method:"
 msgid "Payment Method"
@@ -482,7 +501,7 @@ msgstr "日记账"
 
 msgctxt "field:account.invoice.payment.method,name:"
 msgid "Name"
-msgstr "姓名"
+msgstr "名称"
 
 msgctxt "field:account.invoice.payment_term,description:"
 msgid "Description"
@@ -494,7 +513,7 @@ msgstr "明细"
 
 msgctxt "field:account.invoice.payment_term,name:"
 msgid "Name"
-msgstr "姓名"
+msgstr "名称"
 
 msgctxt "field:account.invoice.payment_term.line,amount:"
 msgid "Amount"
@@ -584,6 +603,30 @@ msgctxt "field:account.invoice.payment_term.test.result,date:"
 msgid "Date"
 msgstr "日期"
 
+msgctxt "field:account.invoice.report.revision,date:"
+msgid "Date"
+msgstr "日期"
+
+msgctxt "field:account.invoice.report.revision,filename:"
+msgid "File Name"
+msgstr "文件名"
+
+msgctxt "field:account.invoice.report.revision,invoice:"
+msgid "Invoice"
+msgstr "原始凭证"
+
+msgctxt "field:account.invoice.report.revision,invoice_report_cache:"
+msgid "Invoice Report"
+msgstr "原始凭证报告"
+
+msgctxt "field:account.invoice.report.revision,invoice_report_cache_id:"
+msgid "Invoice Report ID"
+msgstr "原始票据报告ID"
+
+msgctxt "field:account.invoice.report.revision,invoice_report_format:"
+msgid "Invoice Report Format"
+msgstr "原始凭证报告格式"
+
 msgctxt "field:account.invoice.tax,account:"
 msgid "Account"
 msgstr "账户"
@@ -642,7 +685,7 @@ msgstr "取消客户原始凭证"
 
 msgctxt "field:company.company,purchase_taxes_expense:"
 msgid "Purchase Taxes as Expense"
-msgstr ""
+msgstr "作为支出的购置税"
 
 msgctxt "field:party.address,invoice:"
 msgid "Invoice"
@@ -676,18 +719,21 @@ msgctxt "field:party.party.payment_term,supplier_payment_term:"
 msgid "Supplier Payment Term"
 msgstr "供应商付款条件"
 
-#, fuzzy
 msgctxt "help:account.invoice,payment_term_date:"
 msgid ""
 "The date from which the payment term is calculated.\n"
 "Leave empty to use the invoice date."
 msgstr ""
-"计算税款的日期。\n"
-"会计日期留空。"
+"计算付款期限的日期。\n"
+"保留为空以使用发票日期。"
 
 msgctxt "help:account.invoice.credit.start,with_refund:"
 msgid "If true, the current invoice(s) will be cancelled."
 msgstr "如果为真，当前原始凭证将被取消。"
+
+msgctxt "help:account.invoice.line,product_uom_category:"
+msgid "The category of Unit of Measure for the product."
+msgstr "产品计量单位类别。"
 
 msgctxt "help:account.invoice.line,taxes_date:"
 msgid ""
@@ -703,7 +749,7 @@ msgstr "允许取消客户记账凭证。"
 
 msgctxt "help:company.company,purchase_taxes_expense:"
 msgid "Check to book purchase taxes as expense."
-msgstr ""
+msgstr "检查以将购置税作为费用入账。"
 
 msgctxt "model:account.configuration.default_payment_term,name:"
 msgid "Account Configuration Default Payment Term"
@@ -721,15 +767,13 @@ msgctxt "model:account.invoice-account.move.line,name:"
 msgid "Invoice - Payment Line"
 msgstr "原始凭证 - 付款明细"
 
-#, fuzzy
 msgctxt "model:account.invoice-additional-account.move,name:"
 msgid "Invoice Additional Move"
-msgstr "原始凭证地址"
+msgstr "原始凭证附加记账凭证"
 
-#, fuzzy
 msgctxt "model:account.invoice.alternative_payee,name:"
 msgid "Invoice Alternative Payee"
-msgstr "原始凭证状态"
+msgstr "原始凭证备选收款人"
 
 msgctxt "model:account.invoice.credit.start,name:"
 msgid "Credit Invoice"
@@ -775,14 +819,17 @@ msgctxt "model:account.invoice.payment_term.test.result,name:"
 msgid "Test Payment Term"
 msgstr "测试付款条件"
 
+msgctxt "model:account.invoice.report.revision,name:"
+msgid "Invoice Report Revision"
+msgstr "原始凭证报告修订"
+
 msgctxt "model:account.invoice.tax,name:"
 msgid "Invoice Tax"
 msgstr "原始凭证税"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_delegate_lines_to_pay_wizard"
 msgid "Delegate Lines to Pay"
-msgstr "待支付明细"
+msgstr "委托待支付明细"
 
 msgctxt "model:ir.action,name:act_invoice_form"
 msgid "Invoices"
@@ -790,16 +837,15 @@ msgstr "发票"
 
 msgctxt "model:ir.action,name:act_invoice_in_form"
 msgid "Supplier Invoices"
-msgstr "Supplier Invoices"
+msgstr "供应商原始凭证"
 
 msgctxt "model:ir.action,name:act_invoice_out_form"
 msgid "Customer Invoices"
-msgstr "Customer Invoices"
+msgstr "客户原始凭证"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_invoice_relate"
 msgid "Invoices"
-msgstr "发票"
+msgstr "原始凭证"
 
 msgctxt "model:ir.action,name:act_payment_method_form"
 msgid "Invoice Payment Methods"
@@ -807,28 +853,31 @@ msgstr "原始凭证付款方式"
 
 msgctxt "model:ir.action,name:act_payment_term_form"
 msgid "Payment Terms"
-msgstr "Payment Terms"
+msgstr "付款条件"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_reschedule_lines_to_pay_wizard"
 msgid "Reschedule Lines to Pay"
-msgstr "待支付明细"
+msgstr "重新安排待支付明细"
 
 msgctxt "model:ir.action,name:credit"
 msgid "Credit"
-msgstr "Credit"
+msgstr "抵扣"
+
+msgctxt "model:ir.action,name:refresh_invoice_report_wizard"
+msgid "Invoice (revised)"
+msgstr "原始凭证(已修订)"
 
 msgctxt "model:ir.action,name:report_invoice"
 msgid "Invoice"
-msgstr "Invoice"
+msgstr "原始凭证"
 
 msgctxt "model:ir.action,name:wizard_pay"
 msgid "Pay Invoice"
-msgstr "Pay Invoice"
+msgstr "付款原始凭证"
 
 msgctxt "model:ir.action,name:wizard_payment_term_test"
 msgid "Test Payment Term"
-msgstr "Test Payment Term"
+msgstr "测试付款条件"
 
 msgctxt "model:ir.action.act_window.domain,name:act_invoice_in_domain_all"
 msgid "All"
@@ -836,11 +885,11 @@ msgstr "全部"
 
 msgctxt "model:ir.action.act_window.domain,name:act_invoice_in_domain_draft"
 msgid "Draft"
-msgstr "Draft"
+msgstr "草案"
 
 msgctxt "model:ir.action.act_window.domain,name:act_invoice_in_domain_posted"
 msgid "Posted"
-msgstr "Posted"
+msgstr "已入账"
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_invoice_in_domain_validated"
@@ -853,44 +902,42 @@ msgstr "全部"
 
 msgctxt "model:ir.action.act_window.domain,name:act_invoice_out_domain_draft"
 msgid "Draft"
-msgstr "Draft"
+msgstr "草案"
 
 msgctxt "model:ir.action.act_window.domain,name:act_invoice_out_domain_posted"
 msgid "Posted"
-msgstr "Posted"
+msgstr "已入账"
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_invoice_out_domain_validated"
 msgid "Validated"
 msgstr "已验证"
 
-#, fuzzy
 msgctxt "model:ir.action.act_window.domain,name:act_invoice_relate_all"
 msgid "All"
 msgstr "全部"
 
-#, fuzzy
 msgctxt "model:ir.action.act_window.domain,name:act_invoice_relate_paid"
 msgid "Paid"
 msgstr "已支付"
 
 msgctxt "model:ir.action.act_window.domain,name:act_invoice_relate_pending"
 msgid "Pending"
-msgstr ""
+msgstr "待定"
 
 msgctxt "model:ir.message,text:msg_cancel_invoice_move"
 msgid "The moves \"%(moves)s\" have the posted invoices \"%(invoices)s\" as origin."
-msgstr ""
+msgstr "记账凭证 \"%(moves)s\" 已经将入账原始凭证 \"%(invoices)s\" 作为缘由。"
 
 msgctxt "model:ir.message,text:msg_cancel_invoice_move_description"
 msgid ""
 "Cancelling them will reconcile the move lines thus paying the invoices. You "
 "might want to cancel the invoices first."
-msgstr ""
+msgstr "取消它们后，对记账凭证会进行对账操作，从而按原始凭证支付。最好先把原始凭证取消。"
 
 msgctxt "model:ir.message,text:msg_close_period_non_posted_invoices"
 msgid "To close the periods you must post the invoices \"%(invoices)s\"."
-msgstr ""
+msgstr "关闭分期之前，需要将原始凭证 \"%(invoices)s\" 入账。"
 
 msgctxt "model:ir.message,text:msg_erase_party_pending_invoice"
 msgid ""
@@ -910,7 +957,7 @@ msgstr "无法取消客户原始凭证 \"%(invoice)s\"，因为它已过帐并�
 
 msgctxt "model:ir.message,text:msg_invoice_date_future"
 msgid "The invoices \"%(invoices)s\" have an invoice date in the future."
-msgstr ""
+msgstr "原始凭证 \"%(invoices)s\" 的日期指向未来。"
 
 msgctxt "model:ir.message,text:msg_invoice_delete_cancel"
 msgid "To delete invoice \"%(invoice)s\" you must cancel it."
@@ -920,12 +967,11 @@ msgctxt "model:ir.message,text:msg_invoice_delete_numbered"
 msgid "You cannot delete invoice \"%(invoice)s\" because it has a number."
 msgstr "无法删除原始凭证 \"%(invoice)s\" ，因为它包含序号。"
 
-#, fuzzy
 msgctxt "model:ir.message,text:msg_invoice_line_create_draft"
 msgid ""
 "You cannot add lines to invoice \"%(invoice)s\" because it is no longer in a"
 " draft state."
-msgstr "无法给原始凭证 \"%(invoice)s\" 添加明细，因为它已经入账，付款或者取消。"
+msgstr "原始凭证 \"%(invoice)s\" 非草案状态，无法添加明细。"
 
 msgctxt "model:ir.message,text:msg_invoice_line_modify"
 msgid ""
@@ -933,10 +979,9 @@ msgid ""
 "posted, paid or cancelled."
 msgstr "无法更改明细 \"%(line)s\"，因为原始凭证 \"%(invoice)s\" 它已经入账，付款或者取消。"
 
-#, fuzzy
 msgctxt "model:ir.message,text:msg_invoice_line_tax_unique"
 msgid "A tax can be added only once to an invoice line."
-msgstr "一条付款明细只能链接到一张原始凭证。"
+msgstr "税款只能添加到发票明细一次。"
 
 msgctxt "model:ir.message,text:msg_invoice_modify"
 msgid ""
@@ -950,22 +995,20 @@ msgid ""
 "\"%(fiscalyear)s\"."
 msgstr "要对 \"%(invoice)s\" 入账，必须在会计年度 \"%(fiscalyear)s\" 上定义一个序列。"
 
-#, fuzzy
 msgctxt "model:ir.message,text:msg_invoice_number_after"
 msgid ""
 "To number the invoice \"%(invoice)s\", you must set an invoice date after "
 "\"%(date)s\" because the sequence \"%(sequence)s\" has already been used for"
 " invoice \"%(after_invoice)s\"."
 msgstr ""
-"若要为发票 \"%(invoice)s\" 编号，必须将会计日期设置在 \"%(date)s\" 之后，因为序列 \"%(sequence)s\" "
+"若要为原始凭证 \"%(invoice)s\" 编号，必须将凭证日期设置在 \"%(date)s\" 之后，因为序列 \"%(sequence)s\" "
 "已用于发票 \"%(after_invoice)s\"。"
 
-#, fuzzy
 msgctxt "model:ir.message,text:msg_invoice_overpay_paid"
 msgid ""
 "You cannot overpay invoice \"%(invoice)s\" because there is no more left to "
 "pay."
-msgstr "无法退还凭证 \"%(invoice)s\" ，因为它未过帐。"
+msgstr "无法超额支付原始凭证 \"%(invoice)s\"，因为已无剩余付款。"
 
 msgctxt "model:ir.message,text:msg_invoice_pay_amount_greater_amount_to_pay"
 msgid ""
@@ -989,19 +1032,17 @@ msgstr "原始凭证 \"%(invoice)s\" 上的付款明细金额不能大于凭证�
 
 msgctxt "model:ir.message,text:msg_invoice_payment_term_date_past"
 msgid "The invoice \"%(invoice)s\" generates a payment date \"%(date)s\" in the past."
-msgstr ""
+msgstr "原始凭证 \"%(invoice)s\" 生成的付款日期 \"%(date)s\" 指向过去。"
 
-#, fuzzy
 msgctxt "model:ir.message,text:msg_invoice_similar"
 msgid "The invoice \"%(invoice)s\" is similar to invoice \"%(similar)s\"."
-msgstr "删除原始凭证 \"%(invoice)s\" 之前必须先取消它。"
+msgstr "原始凭证 \"%(invoice)s\" 原始凭证 \"%(similar)s\" 相似。"
 
-#, fuzzy
 msgctxt "model:ir.message,text:msg_invoice_tax_create"
 msgid ""
 "You cannot add taxes to invoice \"%(invoice)s\" because it is no longer in a"
 " draft state."
-msgstr "无法给原始凭证 \"%(invoice)s\" 添加税，因为它已经入账，付款或者取消。"
+msgstr "非草案状态，无法给原始凭证 \"%(invoice)s\" 添加税。"
 
 msgctxt "model:ir.message,text:msg_invoice_tax_invalid"
 msgid ""
@@ -1041,27 +1082,27 @@ msgstr "确定要将这张原始票据入账？"
 
 msgctxt "model:ir.model.button,help:invoice_cancel_button"
 msgid "Cancel the invoice"
-msgstr "Cancel the invoice"
+msgstr "取消原始凭证"
 
 msgctxt "model:ir.model.button,help:invoice_validate_button"
 msgid "Also known as Pro Forma"
-msgstr "Also known as Pro Forma"
+msgstr "也称为 Pro Forma"
 
 msgctxt "model:ir.model.button,string:invoice_cancel_button"
 msgid "Cancel"
-msgstr "Cancel"
+msgstr "取消"
 
 msgctxt "model:ir.model.button,string:invoice_delegate_lines_to_pay_button"
 msgid "Modify Payee"
-msgstr ""
+msgstr "修改收款人"
 
 msgctxt "model:ir.model.button,string:invoice_draft_button"
 msgid "Draft"
-msgstr "Draft"
+msgstr "草案"
 
 msgctxt "model:ir.model.button,string:invoice_pay_button"
 msgid "Pay"
-msgstr "Pay"
+msgstr "支付"
 
 msgctxt "model:ir.model.button,string:invoice_post_button"
 msgid "Post"
@@ -1069,51 +1110,47 @@ msgstr "Post"
 
 msgctxt "model:ir.model.button,string:invoice_process_button"
 msgid "Process"
-msgstr ""
+msgstr "处理"
 
 msgctxt "model:ir.model.button,string:invoice_reschedule_lines_to_pay_button"
 msgid "Reschedule"
-msgstr ""
+msgstr "重新安排"
 
 msgctxt "model:ir.model.button,string:invoice_validate_button"
 msgid "Validate"
-msgstr "Validate"
+msgstr "验证"
 
-#, fuzzy
 msgctxt "model:ir.rule.group,name:rule_group_invoice_companies"
 msgid "User in companies"
 msgstr "公司用户"
 
-#, fuzzy
 msgctxt "model:ir.rule.group,name:rule_group_invoice_line_companies"
 msgid "User in companies"
 msgstr "公司用户"
 
-#, fuzzy
 msgctxt "model:ir.rule.group,name:rule_group_invoice_sequence_companies"
 msgid "User in companies"
 msgstr "公司用户"
 
-#, fuzzy
 msgctxt "model:ir.rule.group,name:rule_group_payment_method_companies"
 msgid "User in companies"
 msgstr "公司用户"
 
 msgctxt "model:ir.sequence.type,name:sequence_type_account_invoice"
 msgid "Invoice"
-msgstr "Invoice"
+msgstr "原始凭证"
 
 msgctxt "model:ir.ui.menu,name:menu_invoice_in_form"
 msgid "Supplier Invoices"
-msgstr "Supplier Invoices"
+msgstr "供应商原始凭证"
 
 msgctxt "model:ir.ui.menu,name:menu_invoice_out_form"
 msgid "Customer Invoices"
-msgstr "Customer Invoices"
+msgstr "客户原始凭证"
 
 msgctxt "model:ir.ui.menu,name:menu_invoices"
 msgid "Invoices"
-msgstr "Invoices"
+msgstr "原始凭证"
 
 msgctxt "model:ir.ui.menu,name:menu_payment_method_form"
 msgid "Invoice Payment Methods"
@@ -1121,15 +1158,15 @@ msgstr "原始票据付款方式"
 
 msgctxt "model:ir.ui.menu,name:menu_payment_term_form"
 msgid "Payment Terms"
-msgstr "Payment Terms"
+msgstr "付款条件"
 
 msgctxt "model:ir.ui.menu,name:menu_payment_term_test"
 msgid "Test Payment Term"
-msgstr "Test Payment Term"
+msgstr "测试付款条件"
 
 msgctxt "model:ir.ui.menu,name:menu_payment_terms_configuration"
 msgid "Payment Terms"
-msgstr "Payment Terms"
+msgstr "付款条件"
 
 msgctxt "model:party.party.payment_term,name:"
 msgid "Party Payment Term"
@@ -1153,7 +1190,7 @@ msgstr "日期"
 
 msgctxt "report:account.invoice:"
 msgid "Date:"
-msgstr "日期"
+msgstr "日期:"
 
 msgctxt "report:account.invoice:"
 msgid "Description"
@@ -1291,7 +1328,6 @@ msgctxt "view:account.invoice.credit.start:"
 msgid "Are you sure to credit these/this invoice(s)?"
 msgstr "确定要记入这些/这张原始凭证的贷方吗？"
 
-#, fuzzy
 msgctxt "view:account.invoice.line:"
 msgid "%"
 msgstr "%"
@@ -1307,6 +1343,10 @@ msgstr "注释"
 msgctxt "view:account.invoice.payment_term.line:"
 msgid "%"
 msgstr "%"
+
+msgctxt "view:account.invoice.report.revision:"
+msgid "Time"
+msgstr "时间"
 
 msgctxt "view:account.invoice:"
 msgid "Invoice"
@@ -1324,18 +1364,6 @@ msgctxt "view:account.invoice:"
 msgid "Tax Identifier:"
 msgstr "税号:"
 
-msgctxt "view:account.move.line:"
-msgid "Amount Second Currency"
-msgstr "第二货币金额"
-
-msgctxt "view:account.move.line:"
-msgid "Credit"
-msgstr "贷方"
-
-msgctxt "view:account.move.line:"
-msgid "Debit"
-msgstr "借方"
-
 msgctxt "view:company.company:"
 msgid "Invoice"
 msgstr "原始发票"
@@ -1344,10 +1372,9 @@ msgctxt "view:party.party:"
 msgid "Payment Terms"
 msgstr "支付条件"
 
-#, fuzzy
 msgctxt "wizard_button:account.invoice.credit,start,credit:"
 msgid "Credit"
-msgstr "Credit"
+msgstr "抵扣"
 
 msgctxt "wizard_button:account.invoice.credit,start,end:"
 msgid "Cancel"

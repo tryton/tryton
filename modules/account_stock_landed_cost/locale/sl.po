@@ -4,7 +4,7 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "field:account.configuration,landed_cost_sequence:"
 msgid "Landed Cost Sequence"
-msgstr "Štetje raztovora"
+msgstr "Številčna serija raztovora"
 
 msgctxt "field:account.configuration.landed_cost_sequence,company:"
 msgid "Company"
@@ -13,7 +13,7 @@ msgstr "Družba"
 msgctxt ""
 "field:account.configuration.landed_cost_sequence,landed_cost_sequence:"
 msgid "Landed Cost Sequence"
-msgstr "Štetje raztovora"
+msgstr "Številčna serija raztovora"
 
 msgctxt "field:account.invoice.line,landed_cost:"
 msgid "Landed Cost"
@@ -123,7 +123,7 @@ msgstr ""
 
 msgctxt "model:account.configuration.landed_cost_sequence,name:"
 msgid "Account Configuration Landed Cost Sequence"
-msgstr "Konfiguracija štetja raztovora"
+msgstr "Konfiguracija številčne serije raztovora"
 
 msgctxt "model:account.landed_cost,name:"
 msgid "Landed Cost"
@@ -260,7 +260,7 @@ msgstr "Raztovor"
 
 msgctxt "view:account.configuration:"
 msgid "Sequence"
-msgstr "Štetje"
+msgstr "Številčna serija"
 
 #, fuzzy
 msgctxt "wizard_button:account.landed_cost.post,show,end:"

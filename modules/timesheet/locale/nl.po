@@ -304,7 +304,7 @@ msgstr "Gebruiker in het bedrijf"
 
 msgctxt "model:ir.ui.menu,name:menu_configuration"
 msgid "Configuration"
-msgstr "Instellingen"
+msgstr "Configuratie"
 
 msgctxt "model:ir.ui.menu,name:menu_hours_employee"
 msgid "Hours per Employee"
@@ -381,14 +381,6 @@ msgstr "Werk context"
 msgctxt "selection:res.user.application,application:"
 msgid "Timesheet"
 msgstr "Tijdsregistratie"
-
-msgctxt "view:timesheet.hours_employee:"
-msgid "Duration"
-msgstr "Duur"
-
-msgctxt "view:timesheet.line:"
-msgid "Duration"
-msgstr "Duur"
 
 msgctxt "wizard_button:timesheet.line.enter,start,end:"
 msgid "Cancel"

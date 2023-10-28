@@ -27,13 +27,13 @@ msgid "Logout"
 msgstr "Déconnexion"
 
 msgid "Action"
-msgstr "Actions"
+msgstr "Action"
 
 msgid "New"
 msgstr "Nouveau"
 
 msgid "Save"
-msgstr "Sauver"
+msgstr "Enregistrer"
 
 msgid "Switch"
 msgstr "Basculer"
@@ -218,7 +218,7 @@ msgid "\"Compare\" to see the modified version;"
 msgstr "« Comparer » pour voir la nouvelle version ;"
 
 msgid "\"Write Anyway\" to save your current version."
-msgstr "« Écraser » pour sauver vos modifications."
+msgstr "« Écraser » pour enregistrer votre version actuelle."
 
 msgid "Compare"
 msgstr "Comparer"
@@ -243,6 +243,9 @@ msgstr "Recherche..."
 
 msgid "Create..."
 msgstr "Créer..."
+
+msgid "Create \"%1\"..."
+msgstr "Créer « %1 »..."
 
 msgid "Download"
 msgstr "Télécharger"
@@ -290,7 +293,7 @@ msgid "Create a new record"
 msgstr "Créer un nouvel enregistrement"
 
 msgid "Save this record"
-msgstr "Sauver cet enregistrement"
+msgstr "Enregistrer cette entrée"
 
 msgid "Reload"
 msgstr "Recharger"
@@ -339,11 +342,11 @@ msgid ""
 "This record has been modified\n"
 "do you want to save it?"
 msgstr ""
-"Cet enregistrement a été modifié\n"
-"voulez-vous le sauvegarder ?"
+"Cet entrée a été modifiée\n"
+"voulez-vous l'enregistrer ?"
 
 msgid "Record saved."
-msgstr "Enregistrement sauvegardé."
+msgstr "Entrée enregistrée."
 
 msgid "Working now on the duplicated record(s)."
 msgstr "Sur les enregistrement(s) dupliqué(s) maintenant."
@@ -444,6 +447,9 @@ msgstr "Pré-validation"
 msgid ":"
 msgstr " :"
 
+msgid "Scan"
+msgstr "Scanner"
+
 msgid "Translate"
 msgstr "Traduire"
 
@@ -454,8 +460,7 @@ msgid "Fuzzy"
 msgstr "Floue"
 
 msgid "You need to save the record before adding translations."
-msgstr ""
-"Vous devez sauvegarder l'enregistrement avant d'ajouter des traductions."
+msgstr "Vous devez enregistrer l'entrée avant d'ajouter des traductions."
 
 msgid "No other language available."
 msgstr "Pas d'autre langue disponible."
@@ -512,17 +517,20 @@ msgstr "Choisir une langue"
 msgid "%1%"
 msgstr "%1%"
 
-msgid ": "
-msgstr " : "
+msgid "Menu"
+msgstr "Menu"
 
-msgid "Customize"
-msgstr "Personnaliser"
+msgid "Copy"
+msgstr "Copier"
+
+msgid "#ERROR"
+msgstr "#ERREUR"
 
 msgid "More"
 msgstr "Plus"
 
-msgid "#ERROR"
-msgstr "#ERREUR"
+msgid ": "
+msgstr " : "
 
 msgid "Today"
 msgstr "Aujourd'hui"
@@ -547,6 +555,18 @@ msgstr "Sélectionnez votre action"
 
 msgid "No action defined."
 msgstr "Pas d'action définie."
+
+msgid "Discard changes"
+msgstr "Annuler les modifications"
+
+msgid "Save and New"
+msgstr "Enregistrer et nouveau"
+
+msgid "Add and New"
+msgstr "Ajouter et nouveau"
+
+msgid "Apply changes"
+msgstr "Appliquer les modifications"
 
 msgid "Attachments (%1)"
 msgstr "Attachements (%1)"
@@ -617,8 +637,8 @@ msgstr "Vous devez d'abord sélectionner un fichier d'import."
 msgid "Detection failed"
 msgstr "La détection a échoué"
 
-msgid "Error processing the file at field %1."
-msgstr "Erreur lors du traitement du fichier du champ %1."
+msgid "Unknown column header \"%1\""
+msgstr "En-tête de colonne inconnu « %1 »"
 
 msgid "Error"
 msgstr "Erreur"
@@ -635,7 +655,7 @@ msgid "CSV Export: %1"
 msgstr "Export CSV : %1"
 
 msgid "Save Export"
-msgstr "Sauver l'exportation"
+msgstr "Enregistrer l'export"
 
 msgid "URL Export"
 msgstr "URL d'exportation"
@@ -681,8 +701,8 @@ msgstr "Surcharger la définition %1 ?"
 
 msgid "%1 record saved"
 msgid_plural "%1 records saved"
-msgstr[0] "%1 enregistrement sauvegardé"
-msgstr[1] "%1 enregistrements sauvegardés"
+msgstr[0] "%1 entrée enregistrée"
+msgstr[1] "%1 entrées enregistrées"
 
 msgid "E-mail %1"
 msgstr "E-mail %1"
@@ -713,6 +733,15 @@ msgstr "Envoyer"
 
 msgid "Remove File"
 msgstr "Supprimer le fichier"
+
+msgid "Code Scanner"
+msgstr "Scanner de codes"
+
+msgid "Code"
+msgstr "Code"
+
+msgid "Toggle Sound"
+msgstr "Basculer le son"
 
 msgid "Wizard"
 msgstr "Assistant"

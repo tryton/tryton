@@ -3,43 +3,43 @@ msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "field:product.product,sale_secondary_uom:"
-msgid "Sale Secondary UOM"
+msgid "Sale Secondary UoM"
 msgstr "Verkoop Secundaire maateenheid"
 
 msgctxt "field:product.product,sale_secondary_uom_category:"
-msgid "Sale Secondary UOM Category"
-msgstr "Verkoop Secundaire UOM-categorie"
+msgid "Sale Secondary UoM Category"
+msgstr "Verkoop secundaire maateenheid categorie"
 
 msgctxt "field:product.product,sale_secondary_uom_factor:"
-msgid "Sale Secondary UOM Factor"
-msgstr "secundaire maateenheid factor"
-
-msgctxt "field:product.product,sale_secondary_uom_rate:"
-msgid "Sale Secondary UOM Rate"
-msgstr "Verkoop Secundair maateenheid-tarief"
-
-msgctxt "field:product.template,sale_secondary_uom:"
-msgid "Sale Secondary UOM"
-msgstr "Verkoop Secundaire maateenheid"
-
-msgctxt "field:product.template,sale_secondary_uom_category:"
-msgid "Sale Secondary UOM Category"
+msgid "Sale Secondary UoM Factor"
 msgstr "Verkoop secundaire maateenheid factor"
 
+msgctxt "field:product.product,sale_secondary_uom_rate:"
+msgid "Sale Secondary UoM Rate"
+msgstr "Verkoop Secundaire maateenheid verhouding"
+
+msgctxt "field:product.template,sale_secondary_uom:"
+msgid "Sale Secondary UoM"
+msgstr "Verkoop secundaire maateenheid"
+
+msgctxt "field:product.template,sale_secondary_uom_category:"
+msgid "Sale Secondary UoM Category"
+msgstr "Verkoop secundaire maateenheid categorie"
+
 msgctxt "field:product.template,sale_secondary_uom_factor:"
-msgid "Sale Secondary UOM Factor"
-msgstr "Verkoop Secundaire maateenheid-factor"
+msgid "Sale Secondary UoM Factor"
+msgstr "Verkoop secundaire maateenheid factor"
 
 msgctxt "field:product.template,sale_secondary_uom_rate:"
-msgid "Sale Secondary UOM Rate"
-msgstr "Verkoop Secundair maateenheid-tarief"
+msgid "Sale Secondary UoM Rate"
+msgstr "Verkoop Secundaire maateenheid verhouding"
 
 msgctxt "field:sale.blanket_agreement.line,product_secondary_uom_category:"
-msgid "Product Secondary UOM Category"
+msgid "Product Secondary UoM Category"
 msgstr "Product secundaire maateenheid categorie"
 
 msgctxt "field:sale.line,product_secondary_uom_category:"
-msgid "Product Secondary UOM Category"
+msgid "Product Secondary UoM Category"
 msgstr "Product secundaire maateenheid categorie"
 
 msgctxt "field:sale.line,secondary_quantity:"
@@ -55,32 +55,36 @@ msgid "Secondary Unit Price"
 msgstr "secundaire eenheidsprijs"
 
 msgctxt "field:sale.line,secondary_uom_factor:"
-msgid "Secondary UOM Factor"
-msgstr "secundaire maateenheid factor"
+msgid "Secondary UoM Factor"
+msgstr "Secundaire maateenheid factor"
 
 msgctxt "field:sale.line,secondary_uom_rate:"
-msgid "Secondary UOM Rate"
-msgstr "secundaire maateenheid waarde"
+msgid "Secondary UoM Rate"
+msgstr "Secundaire maateenheid verhouding"
 
 msgctxt "field:sale.product_customer,default_uom_category:"
-msgid "Default UOM Category"
-msgstr "Standaard maateenheid-categorie"
+msgid "Default UoM Category"
+msgstr "Standaard maateenheid categorie"
 
 msgctxt "field:sale.product_customer,sale_secondary_uom:"
-msgid "Sale Secondary UOM"
-msgstr "Verkoop Secundaire maateenheid"
+msgid "Sale Secondary UoM"
+msgstr "Verkoop secundaire maateenheid"
 
 msgctxt "field:sale.product_customer,sale_secondary_uom_category:"
-msgid "Sale Secondary UOM Category"
+msgid "Sale Secondary UoM Category"
 msgstr "Verkoop secundaire maateenheid categorie"
 
 msgctxt "field:sale.product_customer,sale_secondary_uom_factor:"
-msgid "Sale Secondary UOM Factor"
-msgstr "Verkoop Secundaire maateenheid-factor"
+msgid "Sale Secondary UoM Factor"
+msgstr "Verkoop secundaire maateenheid factor"
 
 msgctxt "field:sale.product_customer,sale_secondary_uom_rate:"
-msgid "Sale Secondary UOM Rate"
-msgstr "Verkoop Secundair maateenheid-tarief"
+msgid "Sale Secondary UoM Rate"
+msgstr "Verkoop secundaire maateenheid verhouding"
+
+msgctxt "help:product.product,sale_secondary_uom:"
+msgid "The secondary Unit of Measure for sales."
+msgstr "De secundaire maateenheid voor verkoop."
 
 msgctxt "help:product.product,sale_secondary_uom_factor:"
 msgid ""
@@ -98,6 +102,10 @@ msgstr ""
 "De coëfficiënt voor de formule:\n"
 "coëfficiënt (verkoopeenheid) = 1 (secundaire eenheid)"
 
+msgctxt "help:product.template,sale_secondary_uom:"
+msgid "The secondary Unit of Measure for sales."
+msgstr "De secundaire maateenheid voor verkoop."
+
 msgctxt "help:product.template,sale_secondary_uom_factor:"
 msgid ""
 "The coefficient for the formula:\n"
@@ -113,6 +121,30 @@ msgid ""
 msgstr ""
 "De coëfficiënt voor de formule:\n"
 "coëfficiënt (verkoopeenheid) = 1 (secundaire eenheid)"
+
+msgctxt "help:sale.blanket_agreement.line,product_secondary_uom_category:"
+msgid "The category of the secondary Unit of Measure for the product."
+msgstr "De categorie van de secundaire maateenheid van het product."
+
+msgctxt "help:sale.line,product_secondary_uom_category:"
+msgid "The category of secondary Unit of Measure for the product."
+msgstr "De categorie van de secundaire maateenheid van het product."
+
+msgctxt "help:sale.line,secondary_uom_factor:"
+msgid "The factor for the secondary Unit of Measure."
+msgstr "De factor voor de secundaire maateenheid."
+
+msgctxt "help:sale.line,secondary_uom_rate:"
+msgid "The rate for the secondary Unit of Measure."
+msgstr "De verhouding voor de secundaire maateenheid."
+
+msgctxt "help:sale.product_customer,default_uom_category:"
+msgid "The category of default Unit of Measure."
+msgstr "De categorie van de standaard maateenheid."
+
+msgctxt "help:sale.product_customer,sale_secondary_uom:"
+msgid "The secondary Unit of Measure for sales."
+msgstr "De secundaire maateenheid voor verkoop."
 
 msgctxt "help:sale.product_customer,sale_secondary_uom_factor:"
 msgid ""

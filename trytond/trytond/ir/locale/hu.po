@@ -2,6 +2,11 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
+#, fuzzy
+msgctxt "field:ir.action,action:"
+msgid "Action"
+msgstr "Művelet"
+
 msgctxt "field:ir.action,icon:"
 msgid "Icon"
 msgstr "Ikon"
@@ -658,9 +663,19 @@ msgctxt "field:ir.export,name:"
 msgid "Name"
 msgstr "Név"
 
+#, fuzzy
+msgctxt "field:ir.export,records:"
+msgid "Records"
+msgstr "Adat ID"
+
 msgctxt "field:ir.export,resource:"
 msgid "Resource"
 msgstr "Erőforrás"
+
+#, fuzzy
+msgctxt "field:ir.export,user:"
+msgid "User"
+msgstr "Felhasználó"
 
 msgctxt "field:ir.export.line,export:"
 msgid "Export"
@@ -1214,6 +1229,10 @@ msgctxt "field:ir.sequence,prefix:"
 msgid "Prefix"
 msgstr "Előtag"
 
+msgctxt "field:ir.sequence,preview:"
+msgid "Preview"
+msgstr ""
+
 #, fuzzy
 msgctxt "field:ir.sequence,sequence_type:"
 msgid "Sequence Type"
@@ -1262,6 +1281,10 @@ msgstr "Szám hossza (hány karakter széles)"
 msgctxt "field:ir.sequence.strict,prefix:"
 msgid "Prefix"
 msgstr "Előtag"
+
+msgctxt "field:ir.sequence.strict,preview:"
+msgid "Preview"
+msgstr ""
 
 #, fuzzy
 msgctxt "field:ir.sequence.strict,sequence_type:"
@@ -1686,6 +1709,10 @@ msgctxt "help:ir.export,header:"
 msgid "Check to include field names on the export."
 msgstr ""
 
+msgctxt "help:ir.export,records:"
+msgid "The records on which the export runs."
+msgstr ""
+
 msgctxt "help:ir.lang,code:"
 msgid "RFC 4646 tag."
 msgstr ""
@@ -1752,7 +1779,6 @@ msgstr ""
 msgctxt "help:ir.rule,domain:"
 msgid ""
 "Domain is evaluated with a PYSON context containing:\n"
-"- \"user\" as the current user\n"
 "- \"groups\" as list of ids from the current user"
 msgstr ""
 "Az értékterület egy PYSON Kontexttel van kiértékelve, mely tartalmaz:\n"
@@ -1780,6 +1806,30 @@ msgstr ""
 msgctxt "help:ir.rule.group,rules:"
 msgid "The rule is satisfied if at least one test is True."
 msgstr "A szabály akkor érvényes, ha legalább egy teszt pozitív"
+
+msgctxt "help:ir.sequence,prefix:"
+msgid ""
+"The current date can be used formatted using strftime format suffixed with "
+"underscores: i.e: ${date_Y}"
+msgstr ""
+
+msgctxt "help:ir.sequence,suffix:"
+msgid ""
+"The current date can be used formatted using strftime format suffixed with "
+"underscores: i.e: ${date_Y}"
+msgstr ""
+
+msgctxt "help:ir.sequence.strict,prefix:"
+msgid ""
+"The current date can be used formatted using strftime format suffixed with "
+"underscores: i.e: ${date_Y}"
+msgstr ""
+
+msgctxt "help:ir.sequence.strict,suffix:"
+msgid ""
+"The current date can be used formatted using strftime format suffixed with "
+"underscores: i.e: ${date_Y}"
+msgstr ""
 
 #, fuzzy
 msgctxt "help:ir.trigger,condition:"
@@ -1893,9 +1943,10 @@ msgctxt "model:ir.action,name:act_menu_tree"
 msgid "Menu"
 msgstr "Menü"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_message_form"
-msgid "Message"
-msgstr ""
+msgid "Messages"
+msgstr "Használat"
 
 #, fuzzy
 msgctxt "model:ir.action,name:act_model_access_form"
@@ -3029,6 +3080,13 @@ msgstr ""
 "keresztül vannak átírva."
 
 #, fuzzy
+msgctxt "model:ir.message,text:msg_trigger_exclusive"
+msgid ""
+"You can not select \"On Time\" and any other on the same time, they are "
+"mutually exclusive."
+msgstr "\"Időzített\" a többi opció egymást kizárja!"
+
+#, fuzzy
 msgctxt "model:ir.message,text:msg_trigger_invalid_condition"
 msgid ""
 "Condition \"%(condition)s\" is not a valid PYSON expression for trigger "
@@ -3055,6 +3113,10 @@ msgid "Invalid domain or search criteria \"%(domain)s\" for search \"%(search)s\
 msgstr ""
 "Érvénytelen értéktartomány (Domain) vagy keresési kritérium "
 "\"%(domain)s\"akcióban \"%(action)s\"."
+
+msgctxt "model:ir.message,text:msg_view_tree_optional_type"
+msgid "You cannot store optional on view \"%(view)s\"."
+msgstr ""
 
 #, fuzzy
 msgctxt "model:ir.message,text:msg_write_error"
@@ -3413,7 +3475,7 @@ msgstr "Menü"
 
 #, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_message_form"
-msgid "Message"
+msgid "Messages"
 msgstr "Használat"
 
 #, fuzzy
@@ -3580,6 +3642,26 @@ msgstr "Oszlop széles nézet"
 msgctxt "model:ir.ui.view_tree_width,name:"
 msgid "View Tree Width"
 msgstr "Oszlopszéles nézet"
+
+#, fuzzy
+msgctxt "selection:ir.action,action:"
+msgid "Report"
+msgstr "Nyomtatvány"
+
+#, fuzzy
+msgctxt "selection:ir.action,action:"
+msgid "URL"
+msgstr "URLs"
+
+#, fuzzy
+msgctxt "selection:ir.action,action:"
+msgid "Window"
+msgstr "Ablak"
+
+#, fuzzy
+msgctxt "selection:ir.action,action:"
+msgid "Wizard"
+msgstr "Wizards"
 
 msgctxt "selection:ir.action,records:"
 msgid "Listed"
@@ -3808,6 +3890,15 @@ msgctxt "selection:ir.error,state:"
 msgid "Solved"
 msgstr ""
 
+msgctxt "selection:ir.export,records:"
+msgid "Listed"
+msgstr ""
+
+#, fuzzy
+msgctxt "selection:ir.export,records:"
+msgid "Selected"
+msgstr "Kiválasztott folyószámla"
+
 msgctxt "selection:ir.lang,direction:"
 msgid "Left-to-right"
 msgstr "Balról jobbra"
@@ -3967,25 +4058,9 @@ msgctxt "selection:ir.ui.view,type:"
 msgid "Tree"
 msgstr "Fa"
 
-msgctxt "view:ir.action.act_window:"
-msgid "General"
-msgstr "Általános"
-
 msgctxt "view:ir.action.report:"
 msgid "Edit"
 msgstr "Módosítás"
-
-msgctxt "view:ir.action.report:"
-msgid "General"
-msgstr "Általános"
-
-msgctxt "view:ir.action.url:"
-msgid "General"
-msgstr "Általános"
-
-msgctxt "view:ir.action.wizard:"
-msgid "General"
-msgstr "Általános"
 
 msgctxt "view:ir.action:"
 msgid "General"
@@ -4147,42 +4222,6 @@ msgctxt "view:ir.rule.group:"
 msgid "The rule is satisfied if at least one test is True."
 msgstr "A szabály akkor érvényes, ha legalább egy teszt pozitív"
 
-msgctxt "view:ir.sequence:"
-msgid "${day}"
-msgstr "${day}"
-
-msgctxt "view:ir.sequence:"
-msgid "${month}"
-msgstr "${month}"
-
-msgctxt "view:ir.sequence:"
-msgid "${year}"
-msgstr "${year}"
-
-msgctxt "view:ir.sequence:"
-msgid "Day:"
-msgstr "Nap:"
-
-msgctxt "view:ir.sequence:"
-msgid "Incremental"
-msgstr "Növekvő"
-
-msgctxt "view:ir.sequence:"
-msgid "Legend (Placeholders for prefix, suffix)"
-msgstr "Előtagban, utótagban használható változók"
-
-msgctxt "view:ir.sequence:"
-msgid "Month:"
-msgstr "Hónap:"
-
-msgctxt "view:ir.sequence:"
-msgid "Timestamp"
-msgstr "Időbélyeg"
-
-msgctxt "view:ir.sequence:"
-msgid "Year:"
-msgstr "Év:"
-
 #, fuzzy
 msgctxt "view:ir.translation.clean.start:"
 msgid "Clean Translations?"
@@ -4199,6 +4238,11 @@ msgstr "Szinkronizáljam a fordításokat?"
 msgctxt "view:ir.translation.set.succeed:"
 msgid "Translations set successfully."
 msgstr "A fordítás sikeresen be lett állítva."
+
+#, fuzzy
+msgctxt "view:ir.ui.menu:"
+msgid "Actions"
+msgstr "Műveletek"
 
 msgctxt "wizard_button:ir.lang.config,start,end:"
 msgid "Cancel"

@@ -2,6 +2,11 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
+#, fuzzy
+msgctxt "field:ir.action,action:"
+msgid "Action"
+msgstr "Toiming"
+
 msgctxt "field:ir.action,icon:"
 msgid "Icon"
 msgstr "Ikoon"
@@ -667,9 +672,19 @@ msgctxt "field:ir.export,name:"
 msgid "Name"
 msgstr "Nimi"
 
+#, fuzzy
+msgctxt "field:ir.export,records:"
+msgid "Records"
+msgstr "Kirjed"
+
 msgctxt "field:ir.export,resource:"
 msgid "Resource"
 msgstr "Ressurss"
+
+#, fuzzy
+msgctxt "field:ir.export,user:"
+msgid "User"
+msgstr "Kasutaja"
 
 msgctxt "field:ir.export.line,export:"
 msgid "Export"
@@ -1222,6 +1237,10 @@ msgctxt "field:ir.sequence,prefix:"
 msgid "Prefix"
 msgstr "Eesliide"
 
+msgctxt "field:ir.sequence,preview:"
+msgid "Preview"
+msgstr ""
+
 #, fuzzy
 msgctxt "field:ir.sequence,sequence_type:"
 msgid "Sequence Type"
@@ -1270,6 +1289,10 @@ msgstr ""
 msgctxt "field:ir.sequence.strict,prefix:"
 msgid "Prefix"
 msgstr "Eesliide"
+
+msgctxt "field:ir.sequence.strict,preview:"
+msgid "Preview"
+msgstr ""
 
 #, fuzzy
 msgctxt "field:ir.sequence.strict,sequence_type:"
@@ -1689,6 +1712,10 @@ msgctxt "help:ir.export,header:"
 msgid "Check to include field names on the export."
 msgstr ""
 
+msgctxt "help:ir.export,records:"
+msgid "The records on which the export runs."
+msgstr ""
+
 msgctxt "help:ir.lang,code:"
 msgid "RFC 4646 tag."
 msgstr ""
@@ -1753,7 +1780,6 @@ msgstr "Millal saab ülesandega alustada."
 msgctxt "help:ir.rule,domain:"
 msgid ""
 "Domain is evaluated with a PYSON context containing:\n"
-"- \"user\" as the current user\n"
 "- \"groups\" as list of ids from the current user"
 msgstr ""
 
@@ -1779,6 +1805,30 @@ msgstr "Näidatakse kasutajale kui rakendub ligipääsu vea reegel"
 msgctxt "help:ir.rule.group,rules:"
 msgid "The rule is satisfied if at least one test is True."
 msgstr "Reegli nõuded on täidetud, kui vähemalt üks test on õige"
+
+msgctxt "help:ir.sequence,prefix:"
+msgid ""
+"The current date can be used formatted using strftime format suffixed with "
+"underscores: i.e: ${date_Y}"
+msgstr ""
+
+msgctxt "help:ir.sequence,suffix:"
+msgid ""
+"The current date can be used formatted using strftime format suffixed with "
+"underscores: i.e: ${date_Y}"
+msgstr ""
+
+msgctxt "help:ir.sequence.strict,prefix:"
+msgid ""
+"The current date can be used formatted using strftime format suffixed with "
+"underscores: i.e: ${date_Y}"
+msgstr ""
+
+msgctxt "help:ir.sequence.strict,suffix:"
+msgid ""
+"The current date can be used formatted using strftime format suffixed with "
+"underscores: i.e: ${date_Y}"
+msgstr ""
 
 msgctxt "help:ir.trigger,condition:"
 msgid ""
@@ -1883,9 +1933,10 @@ msgctxt "model:ir.action,name:act_menu_tree"
 msgid "Menu"
 msgstr "Menüü"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_message_form"
-msgid "Message"
-msgstr "Sõnum"
+msgid "Messages"
+msgstr "Sõnumid"
 
 msgctxt "model:ir.action,name:act_model_access_form"
 msgid "Models Access"
@@ -2983,6 +3034,12 @@ msgstr ""
 "Ei saa eksportida tõlkeid \"%(name)s\", kuna need on kirjutatud üle mooduli "
 "\"%(overriding_module)s\" poolt."
 
+msgctxt "model:ir.message,text:msg_trigger_exclusive"
+msgid ""
+"You can not select \"On Time\" and any other on the same time, they are "
+"mutually exclusive."
+msgstr ""
+
 msgctxt "model:ir.message,text:msg_trigger_invalid_condition"
 msgid ""
 "Condition \"%(condition)s\" is not a valid PYSON expression for trigger "
@@ -3004,6 +3061,10 @@ msgstr "Vaate \"%(name)s\" jaoks sobimatu XML."
 msgctxt "model:ir.message,text:msg_view_search_invalid_domain"
 msgid "Invalid domain or search criteria \"%(domain)s\" for search \"%(search)s\"."
 msgstr "Lubamatu eesliide \"%(affix)s\" järjestusele \"%(sequence)s\"."
+
+msgctxt "model:ir.message,text:msg_view_tree_optional_type"
+msgid "You cannot store optional on view \"%(view)s\"."
+msgstr ""
 
 #, fuzzy
 msgctxt "model:ir.message,text:msg_write_error"
@@ -3351,10 +3412,9 @@ msgctxt "model:ir.ui.menu,name:menu_menu_list"
 msgid "Menu"
 msgstr "Menüü"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_message_form"
-msgid "Message"
-msgstr "Sõnum"
+msgid "Messages"
+msgstr "Sõnumid"
 
 msgctxt "model:ir.ui.menu,name:menu_model_access_form"
 msgid "Models Access"
@@ -3501,6 +3561,26 @@ msgstr "Vaata puu olekut"
 msgctxt "model:ir.ui.view_tree_width,name:"
 msgid "View Tree Width"
 msgstr "Näita puu laiust"
+
+#, fuzzy
+msgctxt "selection:ir.action,action:"
+msgid "Report"
+msgstr "Aruanne"
+
+#, fuzzy
+msgctxt "selection:ir.action,action:"
+msgid "URL"
+msgstr "URLid"
+
+#, fuzzy
+msgctxt "selection:ir.action,action:"
+msgid "Window"
+msgstr "Aken"
+
+#, fuzzy
+msgctxt "selection:ir.action,action:"
+msgid "Wizard"
+msgstr "Nõustajad"
 
 msgctxt "selection:ir.action,records:"
 msgid "Listed"
@@ -3730,6 +3810,15 @@ msgctxt "selection:ir.error,state:"
 msgid "Solved"
 msgstr ""
 
+msgctxt "selection:ir.export,records:"
+msgid "Listed"
+msgstr ""
+
+#, fuzzy
+msgctxt "selection:ir.export,records:"
+msgid "Selected"
+msgstr "Valitud sõlmed"
+
 msgctxt "selection:ir.lang,direction:"
 msgid "Left-to-right"
 msgstr "Vasakult paremale"
@@ -3889,25 +3978,9 @@ msgctxt "selection:ir.ui.view,type:"
 msgid "Tree"
 msgstr "Puu"
 
-msgctxt "view:ir.action.act_window:"
-msgid "General"
-msgstr "Üldine"
-
 msgctxt "view:ir.action.report:"
 msgid "Edit"
 msgstr "Muuda"
-
-msgctxt "view:ir.action.report:"
-msgid "General"
-msgstr "Üldine"
-
-msgctxt "view:ir.action.url:"
-msgid "General"
-msgstr "Üldine"
-
-msgctxt "view:ir.action.wizard:"
-msgid "General"
-msgstr "Üldine"
 
 msgctxt "view:ir.action:"
 msgid "General"
@@ -4061,42 +4134,6 @@ msgctxt "view:ir.rule.group:"
 msgid "The rule is satisfied if at least one test is True."
 msgstr "Reegel kehtib, kui vähemasti üks test õnnestub."
 
-msgctxt "view:ir.sequence:"
-msgid "${day}"
-msgstr "${day}"
-
-msgctxt "view:ir.sequence:"
-msgid "${month}"
-msgstr "${month}"
-
-msgctxt "view:ir.sequence:"
-msgid "${year}"
-msgstr "${year}"
-
-msgctxt "view:ir.sequence:"
-msgid "Day:"
-msgstr "Päev:"
-
-msgctxt "view:ir.sequence:"
-msgid "Incremental"
-msgstr "Kasvav"
-
-msgctxt "view:ir.sequence:"
-msgid "Legend (Placeholders for prefix, suffix)"
-msgstr ""
-
-msgctxt "view:ir.sequence:"
-msgid "Month:"
-msgstr "Kuu:"
-
-msgctxt "view:ir.sequence:"
-msgid "Timestamp"
-msgstr "Ajatempel"
-
-msgctxt "view:ir.sequence:"
-msgid "Year:"
-msgstr "Aasta:"
-
 msgctxt "view:ir.translation.clean.start:"
 msgid "Clean Translations?"
 msgstr "Eemaldada tõlked?"
@@ -4112,6 +4149,11 @@ msgstr "Sünkroonida tõlked?"
 msgctxt "view:ir.translation.set.succeed:"
 msgid "Translations set successfully."
 msgstr ""
+
+#, fuzzy
+msgctxt "view:ir.ui.menu:"
+msgid "Actions"
+msgstr "Toimingud"
 
 msgctxt "wizard_button:ir.lang.config,start,end:"
 msgid "Cancel"

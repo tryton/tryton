@@ -1,0 +1,210 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:document.incoming,children:"
+msgid "Children"
+msgstr "Untergeordnet"
+
+msgctxt "field:document.incoming,company:"
+msgid "Company"
+msgstr "Unternehmen"
+
+msgctxt "field:document.incoming,data:"
+msgid "Data"
+msgstr "Daten"
+
+msgctxt "field:document.incoming,file_id:"
+msgid "File ID"
+msgstr "Datei ID"
+
+msgctxt "field:document.incoming,mime_type:"
+msgid "MIME Type"
+msgstr "MIME-Typ"
+
+msgctxt "field:document.incoming,name:"
+msgid "Name"
+msgstr "Name"
+
+msgctxt "field:document.incoming,parent:"
+msgid "Parent"
+msgstr "Übergeordnet"
+
+msgctxt "field:document.incoming,parsed_data:"
+msgid "Parsed Data"
+msgstr "Erkannte Daten"
+
+msgctxt "field:document.incoming,result:"
+msgid "Result"
+msgstr "Ergebnis"
+
+msgctxt "field:document.incoming,source:"
+msgid "Source"
+msgstr "Quelle"
+
+msgctxt "field:document.incoming,state:"
+msgid "State"
+msgstr "Status"
+
+msgctxt "field:document.incoming,type:"
+msgid "Type"
+msgstr "Typ"
+
+msgctxt "field:document.incoming.split.start,data:"
+msgid "Data"
+msgstr "Daten"
+
+msgctxt "field:document.incoming.split.start,pages:"
+msgid "Pages"
+msgstr "Seiten"
+
+msgctxt "field:inbound.email.rule,document_incoming_company:"
+msgid "Company"
+msgstr "Unternehmen"
+
+msgctxt "field:inbound.email.rule,document_incoming_process:"
+msgid "Process"
+msgstr "Verarbeiten"
+
+msgctxt "field:inbound.email.rule,document_incoming_type:"
+msgid "Type"
+msgstr "Typ"
+
+msgctxt "help:document.incoming.split.start,pages:"
+msgid ""
+"List pages to split.\n"
+"Ex: 1-3,4,5-6"
+msgstr ""
+"Liste zur Seitentrennung.\n"
+"Zum Beispiel: 1-3,4,5-6"
+
+msgctxt "model:document.incoming,name:"
+msgid "Incoming Document"
+msgstr "Eingehendes Dokument"
+
+msgctxt "model:document.incoming.configuration,name:"
+msgid "Incoming Document Configuration"
+msgstr "Eingehendes Dokument Einstellungen"
+
+msgctxt "model:document.incoming.split.start,name:"
+msgid "Split Incoming Document"
+msgstr "Eingehendes Dokument Trennen"
+
+msgctxt "model:ir.action,name:act_document_incoming_configuration_form"
+msgid "Incoming Configuration"
+msgstr "Eingehende Dokumente Einstellungen"
+
+msgctxt "model:ir.action,name:act_document_incoming_form"
+msgid "Incoming Documents"
+msgstr "Eingehende Dokumente"
+
+msgctxt "model:ir.action,name:wizard_document_incoming_split"
+msgid "Split Incoming Document"
+msgstr "Eingehendes Dokument Trennen"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_document_incoming_form_domain_all"
+msgid "All"
+msgstr "Alle"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_document_incoming_form_domain_draft"
+msgid "Draft"
+msgstr "Entwurf"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_document_incoming_form_domain_processing"
+msgid "Processing"
+msgstr "In Ausführung"
+
+msgctxt "model:ir.message,text:msg_document_split_invalid_pages"
+msgid "Invalid pages \"%(expression)s\" with exception \"%(exception)s\"."
+msgstr "Ungültige Seiten \"%(expression)s\" mit Fehler \"%(exception)s\"."
+
+msgctxt "model:ir.model.button,string:document_incoming_cancel_button"
+msgid "Cancel"
+msgstr "Abbrechen"
+
+msgctxt "model:ir.model.button,string:document_incoming_draft_button"
+msgid "Draft"
+msgstr "Entwurf"
+
+msgctxt "model:ir.model.button,string:document_incoming_extract_email_button"
+msgid "Extract Email"
+msgstr "E-Mail extrahieren"
+
+msgctxt "model:ir.model.button,string:document_incoming_proceed_button"
+msgid "Proceed"
+msgstr "Fortfahren"
+
+msgctxt "model:ir.model.button,string:document_incoming_process_button"
+msgid "Process"
+msgstr "Ausführen"
+
+msgctxt "model:ir.model.button,string:document_incoming_split_wizard_button"
+msgid "Split"
+msgstr "Aufteilen"
+
+msgctxt "model:ir.rule.group,name:rule_group_document_incoming_companies"
+msgid "User in companies"
+msgstr "Benutzer in Unternehmen"
+
+msgctxt "model:ir.ui.menu,name:menu_configuration"
+msgid "Configuration"
+msgstr "Einstellungen"
+
+msgctxt "model:ir.ui.menu,name:menu_document"
+msgid "Documents"
+msgstr "Dokumente"
+
+msgctxt "model:ir.ui.menu,name:menu_document_incoming"
+msgid "Incoming Documents"
+msgstr "Eingehende Dokumente"
+
+msgctxt "model:ir.ui.menu,name:menu_ocument_incoming_configuration"
+msgid "Incoming Configuration"
+msgstr "Eingehende Dokumente Einstellungen"
+
+msgctxt "model:res.group,name:group_document_incoming"
+msgid "Document Incoming"
+msgstr "Eingehende Dokumente"
+
+msgctxt "model:res.group,name:group_document_incoming_admin"
+msgid "Document Incoming Administrator"
+msgstr "Eingehende Dokumente Administration"
+
+msgctxt "selection:document.incoming,state:"
+msgid "Cancelled"
+msgstr "Annulliert"
+
+msgctxt "selection:document.incoming,state:"
+msgid "Done"
+msgstr "Erledigt"
+
+msgctxt "selection:document.incoming,state:"
+msgid "Draft"
+msgstr "Entwurf"
+
+msgctxt "selection:document.incoming,state:"
+msgid "Processing"
+msgstr "In Ausführung"
+
+msgctxt "selection:document.incoming,type:"
+msgid "Unknown"
+msgstr "Unbekannt"
+
+msgctxt "selection:inbound.email.rule,action:"
+msgid "Incoming Document"
+msgstr "Eingehendes Dokument"
+
+msgctxt "selection:res.user.application,application:"
+msgid "Incoming Document"
+msgstr "Eingehende Dokumente"
+
+msgctxt "wizard_button:document.incoming.split,start,end:"
+msgid "Cancel"
+msgstr "Abbrechen"
+
+msgctxt "wizard_button:document.incoming.split,start,split:"
+msgid "Split"
+msgstr "Aufteilen"

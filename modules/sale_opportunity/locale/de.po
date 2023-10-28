@@ -435,81 +435,13 @@ msgctxt "selection:sale.opportunity.reporting.context,period:"
 msgid "Year"
 msgstr "Jahr"
 
-msgctxt "view:sale.opportunity.reporting.conversion.employee.time_series:"
-msgid "Lost"
-msgstr "Verloren"
-
-msgctxt "view:sale.opportunity.reporting.conversion.employee.time_series:"
-msgid "Won"
-msgstr "Gewonnen"
-
-msgctxt "view:sale.opportunity.reporting.conversion.employee.time_series:"
-msgid "Won Amount"
-msgstr "Gewonnener Betrag"
-
-msgctxt "view:sale.opportunity.reporting.conversion.time_series:"
-msgid "Lost"
-msgstr "Verloren"
-
-msgctxt "view:sale.opportunity.reporting.conversion.time_series:"
-msgid "Won"
-msgstr "Gewonnen"
-
-msgctxt "view:sale.opportunity.reporting.conversion.time_series:"
-msgid "Won Amount"
-msgstr "Gewonnener Betrag"
-
 msgctxt "view:sale.opportunity.reporting.conversion:"
 msgid "%"
 msgstr "%"
 
-msgctxt "view:sale.opportunity.reporting.conversion:"
-msgid "Lost"
-msgstr "Verloren"
-
-msgctxt "view:sale.opportunity.reporting.conversion:"
-msgid "Won"
-msgstr "Gewonnen"
-
-msgctxt "view:sale.opportunity.reporting.conversion:"
-msgid "Won Amount"
-msgstr "Gewonnener Betrag"
-
-msgctxt "view:sale.opportunity.reporting.main.time_series:"
-msgid "Amount"
-msgstr "Betrag"
-
-msgctxt "view:sale.opportunity.reporting.main.time_series:"
-msgid "Converted"
-msgstr "Umgewandelt"
-
-msgctxt "view:sale.opportunity.reporting.main.time_series:"
-msgid "Converted Amount"
-msgstr "Umgewandelter Betrag"
-
-msgctxt "view:sale.opportunity.reporting.main.time_series:"
-msgid "Number"
-msgstr "Anzahl"
-
 msgctxt "view:sale.opportunity.reporting.main:"
 msgid "%"
 msgstr "%"
-
-msgctxt "view:sale.opportunity.reporting.main:"
-msgid "Amount"
-msgstr "Betrag"
-
-msgctxt "view:sale.opportunity.reporting.main:"
-msgid "Converted"
-msgstr "Umgewandelt"
-
-msgctxt "view:sale.opportunity.reporting.main:"
-msgid "Converted Amount"
-msgstr "Umgewandelter Betrag"
-
-msgctxt "view:sale.opportunity.reporting.main:"
-msgid "Number"
-msgstr "Anzahl"
 
 msgctxt "view:sale.opportunity:"
 msgid "%"

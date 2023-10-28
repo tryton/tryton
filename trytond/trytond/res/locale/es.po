@@ -338,6 +338,10 @@ msgctxt "model:ir.export-write-res.group,name:"
 msgid "Export Modification Group"
 msgstr "Grupos de modificación de exportación"
 
+msgctxt "model:ir.message,text:msg_email_invalid"
+msgid "The email address \"%(email)s\" for \"%(user)s\" is not valid."
+msgstr "El correo electrónico \"%(email)s\" del usuario \"%(user)s\" no es valido."
+
 msgctxt "model:ir.message,text:msg_password_email"
 msgid "The password cannot be the same as user's email address."
 msgstr "La contraseña no puede ser la misma que el correo del usuario."
@@ -396,30 +400,6 @@ msgctxt "model:ir.rule.group,name:rule_group_action"
 msgid "User in groups"
 msgstr "Usuario en grupos"
 
-msgctxt "model:ir.rule.group,name:rule_group_export_any"
-msgid "Any export"
-msgstr "Cualquier exportación"
-
-msgctxt "model:ir.rule.group,name:rule_group_export_line_any"
-msgid "Any export"
-msgstr "Cualquier exportación"
-
-msgctxt "model:ir.rule.group,name:rule_group_export_line_read"
-msgid "User in groups"
-msgstr "Usuario en grupos"
-
-msgctxt "model:ir.rule.group,name:rule_group_export_line_write"
-msgid "User in modification groups"
-msgstr "Usuario en los grupos de modificación"
-
-msgctxt "model:ir.rule.group,name:rule_group_export_read"
-msgid "User in groups"
-msgstr "Usuario en grupos"
-
-msgctxt "model:ir.rule.group,name:rule_group_export_write"
-msgid "User in modification groups"
-msgstr "Usuario en los grupos de modificación"
-
 msgctxt "model:ir.rule.group,name:rule_group_menu"
 msgid "User in groups"
 msgstr "Usuario en grupos"
@@ -432,18 +412,6 @@ msgctxt "model:ir.rule.group,name:rule_group_sequence_strict"
 msgid "User in groups"
 msgstr "Usuario en grupos"
 
-msgctxt "model:ir.rule.group,name:rule_group_session"
-msgid "Own session"
-msgstr "Sesión propia"
-
-msgctxt "model:ir.rule.group,name:rule_group_session_wizard"
-msgid "Own session"
-msgstr "Sesión propia"
-
-msgctxt "model:ir.rule.group,name:rule_group_ui_menu_favorite"
-msgid "Own favorite"
-msgstr "Favorito propio"
-
 msgctxt "model:ir.rule.group,name:rule_group_user_application"
 msgid "Own user application"
 msgstr "Aplicación de usuario propia"
@@ -455,18 +423,6 @@ msgstr "Cualquier aplicación de usuario"
 msgctxt "model:ir.rule.group,name:rule_group_user_warning"
 msgid "Own warning"
 msgstr "Advertencia propia"
-
-msgctxt "model:ir.rule.group,name:rule_group_view_search"
-msgid "Own view search"
-msgstr "Vista de búsqueda propia"
-
-msgctxt "model:ir.rule.group,name:rule_group_view_search_admin"
-msgid "Any view search"
-msgstr "Cualquier vista de búsqueda"
-
-msgctxt "model:ir.rule.group,name:rule_group_view_search_common"
-msgid "Common view search"
-msgstr "Vista de búsqueda común"
 
 msgctxt "model:ir.rule.group-res.group,name:"
 msgid "Rule Group - Group"

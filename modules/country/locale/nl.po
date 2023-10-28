@@ -696,7 +696,7 @@ msgstr "Federale gebieden"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Federal Territory"
-msgstr "Federale gebieden"
+msgstr "Federaal gebied"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Federal capital territory"

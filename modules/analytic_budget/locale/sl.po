@@ -36,7 +36,7 @@ msgstr ""
 
 msgctxt "field:analytic_account.budget.copy.start,company:"
 msgid "Company"
-msgstr ""
+msgstr "Družba"
 
 msgctxt "field:analytic_account.budget.copy.start,end_date:"
 msgid "End Date"
@@ -76,7 +76,7 @@ msgstr ""
 
 msgctxt "field:analytic_account.budget.line,company:"
 msgid "Company"
-msgstr ""
+msgstr "Družba"
 
 msgctxt "field:analytic_account.budget.line,currency:"
 msgid "Currency"
@@ -168,7 +168,7 @@ msgstr ""
 
 msgctxt "model:ir.action,name:act_budget_line_form"
 msgid "Budget Lines"
-msgstr ""
+msgstr "Vrstice finančnih načrtov"
 
 msgctxt "model:ir.action,name:act_budget_report"
 msgid "Analytic Budgets"
@@ -176,7 +176,7 @@ msgstr ""
 
 msgctxt "model:ir.action,name:wizard_budget_copy"
 msgid "Copy Budget"
-msgstr ""
+msgstr "Kopiraj finančni načrt"
 
 msgctxt "model:ir.model.button,string:budget_copy_button"
 msgid "Copy"

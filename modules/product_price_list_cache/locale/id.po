@@ -1,0 +1,39 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:product.price_list.cache,pattern:"
+msgid "Pattern"
+msgstr ""
+
+msgctxt "field:product.price_list.cache,price_list:"
+msgid "Price List"
+msgstr ""
+
+msgctxt "field:product.price_list.cache,product:"
+msgid "Product"
+msgstr ""
+
+msgctxt "field:product.price_list.cache,raw_unit_prices:"
+msgid "Unit Prices"
+msgstr ""
+
+msgctxt "field:product.price_list.cache,uom:"
+msgid "UoM"
+msgstr ""
+
+msgctxt "field:product.product,cached_price_lists:"
+msgid "Cached Price Lists"
+msgstr ""
+
+msgctxt "help:product.price_list.cache,uom:"
+msgid "The Unit of Measure."
+msgstr ""
+
+msgctxt "model:product.price_list.cache,name:"
+msgid "Price List Cache"
+msgstr ""
+
+msgctxt "selection:ir.cron,method:"
+msgid "Fill Product Price List Cache"
+msgstr ""

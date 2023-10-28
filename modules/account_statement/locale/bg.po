@@ -352,8 +352,8 @@ msgstr "Всички отчети"
 
 #, fuzzy
 msgctxt "model:ir.action,name:act_statement_journal_form"
-msgid "Journals"
-msgstr "Дневник"
+msgid "Statement Journals"
+msgstr "Statement Journals"
 
 #, fuzzy
 msgctxt "model:ir.action,name:act_statement_line_move"
@@ -514,8 +514,8 @@ msgstr "Import Statement"
 
 #, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_statement_journal_form"
-msgid "Journals"
-msgstr "Дневник"
+msgid "Statement Journals"
+msgstr "Statement Journals"
 
 #, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_statements"
@@ -622,15 +622,6 @@ msgstr "Баланс"
 msgctxt "selection:account.statement.journal,validation:"
 msgid "Number of Lines"
 msgstr ""
-
-msgctxt "view:account.statement.line:"
-msgid "Amount"
-msgstr "Сума"
-
-#, fuzzy
-msgctxt "view:account.statement.origin:"
-msgid "Amount"
-msgstr "Сума"
 
 msgctxt "view:account.statement:"
 msgid "Other Info"

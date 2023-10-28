@@ -90,10 +90,11 @@ msgstr ""
 "La chiamata al servizio web Sendcloud non è fallita con il seguente messaggio di errore:\n"
 "%(message)s"
 
-msgctxt "model:ir.message,text:msg_shipment_has_reference_number"
+#, fuzzy
+msgctxt "model:ir.message,text:msg_shipment_has_shipping_reference_number"
 msgid ""
 "You cannot create a shipping label for shipment \"%(shipment)s\" because it "
-"already has a reference number."
+"already has a shipping reference number."
 msgstr ""
 "Non puoi creare un'etichetta di spedizione per la spedizione "
 "\"%(shipment)s\" perché ha già un numero di riferimento."

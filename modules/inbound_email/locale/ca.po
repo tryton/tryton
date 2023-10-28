@@ -1,0 +1,188 @@
+#
+#, fuzzy
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:inbound.email,data:"
+msgid "Data"
+msgstr "Dades"
+
+msgctxt "field:inbound.email,data_id:"
+msgid "Data ID"
+msgstr "ID Dades"
+
+msgctxt "field:inbound.email,data_type:"
+msgid "Data Type"
+msgstr "Tipus dades"
+
+msgctxt "field:inbound.email,inbox:"
+msgid "Inbox"
+msgstr "Safata d'entrada"
+
+msgctxt "field:inbound.email,result:"
+msgid "Result"
+msgstr "Resultat"
+
+msgctxt "field:inbound.email,rule:"
+msgid "Rule"
+msgstr "Regla"
+
+msgctxt "field:inbound.email.inbox,endpoint:"
+msgid "Endpoint"
+msgstr "Punt final"
+
+msgctxt "field:inbound.email.inbox,identifier:"
+msgid "Identifier"
+msgstr "Identificador"
+
+msgctxt "field:inbound.email.inbox,name:"
+msgid "Name"
+msgstr "Nom"
+
+msgctxt "field:inbound.email.inbox,rules:"
+msgid "Rules"
+msgstr "Regles"
+
+msgctxt "field:inbound.email.rule,action:"
+msgid "Action"
+msgstr "Acció"
+
+msgctxt "field:inbound.email.rule,attachment_name:"
+msgid "Attachment Name"
+msgstr "Nom de l'adjunt"
+
+msgctxt "field:inbound.email.rule,destination:"
+msgid "Destination"
+msgstr "Destí"
+
+msgctxt "field:inbound.email.rule,headers:"
+msgid "Headers"
+msgstr "Capçaleres"
+
+msgctxt "field:inbound.email.rule,inbox:"
+msgid "Inbox"
+msgstr "Safata d'entrada"
+
+msgctxt "field:inbound.email.rule,origin:"
+msgid "Origin"
+msgstr "Origen"
+
+msgctxt "field:inbound.email.rule,subject:"
+msgid "Subject"
+msgstr "Asumpte"
+
+msgctxt "field:inbound.email.rule.header,name:"
+msgid "Name"
+msgstr "Nom"
+
+msgctxt "field:inbound.email.rule.header,rule:"
+msgid "Rule"
+msgstr "Regla"
+
+msgctxt "field:inbound.email.rule.header,value:"
+msgid "Value"
+msgstr "Valor"
+
+msgctxt "help:inbound.email.inbox,endpoint:"
+msgid "The URL where the emails must be posted."
+msgstr "La URL a la que s'han d'enviar els correus electrónics."
+
+msgctxt "help:inbound.email.inbox,rules:"
+msgid "The action of the first matching line is run."
+msgstr "S'executarà l'acció de la primera línia coincident."
+
+msgctxt "help:inbound.email.rule,attachment_name:"
+msgid "A regular expression to match any attachment name."
+msgstr "Una expresió regular a coincidir amb algún nom del adjunt."
+
+msgctxt "help:inbound.email.rule,destination:"
+msgid "A regular expression to match any receiver email addresses."
+msgstr ""
+"Una expresió regular a coincidir amb algún correu electrònic del "
+"destinatari."
+
+msgctxt "help:inbound.email.rule,origin:"
+msgid "A regular expression to match the sender email address."
+msgstr ""
+"Una expresió regular a coincidir amb el correu electrònic del remitent."
+
+msgctxt "help:inbound.email.rule,subject:"
+msgid "A regular expression to match the subject."
+msgstr "Una expresió regular a coincidir amb l'assumpte."
+
+msgctxt "help:inbound.email.rule.header,name:"
+msgid "The name of the header."
+msgstr "El nom de la capçalera."
+
+msgctxt "help:inbound.email.rule.header,value:"
+msgid "A regular expression to match the header value."
+msgstr "Una expresió regular a coincidir amb el valor de la capçalera."
+
+msgctxt "model:inbound.email,name:"
+msgid "Inbound Email"
+msgstr "Correu electrònic entrant"
+
+msgctxt "model:inbound.email.inbox,name:"
+msgid "Inbound Email Inbox"
+msgstr "Safata del correu electrònic entrant"
+
+msgctxt "model:inbound.email.rule,name:"
+msgid "Inbound Email Rule"
+msgstr "Regla de correu electrònic"
+
+msgctxt "model:inbound.email.rule.header,name:"
+msgid "Inbound Email Rule Header"
+msgstr "Capçaleres de les regles de correu electrònic entrant"
+
+msgctxt "model:ir.action,name:act_inbound_email_form_relate"
+msgid "E-mails"
+msgstr "Correus electrònics"
+
+msgctxt "model:ir.action,name:act_inbound_email_inbox_form"
+msgid "Inbox"
+msgstr "Safata d'entrada"
+
+msgctxt ""
+"model:ir.model.button,confirm:inbound_email_inbox_new_identifier_button"
+msgid ""
+"This action will make the previous URL unusable. Do you want to continue?"
+msgstr ""
+"Aquesta acció provocarà que la URL anterior deixi de funcionar. Voleu "
+"continuar?"
+
+msgctxt ""
+"model:ir.model.button,string:inbound_email_inbox_new_identifier_button"
+msgid "New URL"
+msgstr "Nova URL"
+
+msgctxt "model:ir.model.button,string:inbound_email_process_button"
+msgid "Process"
+msgstr "Processa"
+
+msgctxt "model:ir.ui.menu,name:menu_inbound_email"
+msgid "Inbound Email"
+msgstr "Correu electrònic entrant"
+
+msgctxt "model:ir.ui.menu,name:menu_inbound_email_inbox_form"
+msgid "Inbox"
+msgstr "Safata d'entrada"
+
+msgctxt "selection:inbound.email,data_type:"
+msgid "MailPace"
+msgstr "MailPace"
+
+msgctxt "selection:inbound.email,data_type:"
+msgid "Mailchimp"
+msgstr "Mailchimp"
+
+msgctxt "selection:inbound.email,data_type:"
+msgid "Postmark"
+msgstr "Postmark"
+
+msgctxt "selection:inbound.email,data_type:"
+msgid "Raw"
+msgstr "En cru"
+
+msgctxt "selection:inbound.email,data_type:"
+msgid "SendGrid"
+msgstr "SendGrid"

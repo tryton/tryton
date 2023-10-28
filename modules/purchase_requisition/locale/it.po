@@ -84,7 +84,7 @@ msgstr "Prodotto"
 
 #, fuzzy
 msgctxt "field:purchase.requisition.line,product_uom_category:"
-msgid "Product UOM Category"
+msgid "Product UoM Category"
 msgstr "Udm categoria del prodotto"
 
 msgctxt "field:purchase.requisition.line,purchase_requests:"
@@ -118,6 +118,10 @@ msgstr "Unità"
 msgctxt "field:purchase.requisition.line,unit_price:"
 msgid "Unit Price"
 msgstr "Prezzo Unitario"
+
+msgctxt "help:purchase.requisition.line,product_uom_category:"
+msgid "The category of Unit of Measure for the product."
+msgstr ""
 
 msgctxt "model:ir.action,name:act_open_purchase_request_form"
 msgid "Requests"

@@ -83,8 +83,9 @@ msgctxt "field:purchase.request.quotation.line,product:"
 msgid "Product"
 msgstr "Prodotto"
 
+#, fuzzy
 msgctxt "field:purchase.request.quotation.line,product_uom_category:"
-msgid "Product Uom Category"
+msgid "Product UoM Category"
 msgstr "Categotia UdM prodotto"
 
 msgctxt "field:purchase.request.quotation.line,quantity:"
@@ -139,6 +140,10 @@ msgctxt "help:purchase.request.quotation,revision:"
 msgid "Number incremented each time the quotation is sent."
 msgstr ""
 
+msgctxt "help:purchase.request.quotation.line,product_uom_category:"
+msgid "The category of Unit of Measure for the product."
+msgstr ""
+
 msgctxt "help:purchase.request.quotation.line,request:"
 msgid "The request which this line belongs to."
 msgstr ""
@@ -163,6 +168,17 @@ msgstr "Purchase Request Quotation"
 msgctxt "model:ir.action,name:wizard_create_quotation"
 msgid "Create Quotation"
 msgstr "Crea preventivo"
+
+#, fuzzy
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_purchase_request_form_domain_quotation"
+msgid "Quotation"
+msgstr "Quotations"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_purchase_request_form_domain_received"
+msgid "Received"
+msgstr ""
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_purchase_request_quotation_form_view1_domain_all"

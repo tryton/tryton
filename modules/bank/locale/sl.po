@@ -48,7 +48,7 @@ msgstr "Račun skrčeno"
 
 msgctxt "field:bank.account.number,type:"
 msgid "Type"
-msgstr "Tip"
+msgstr "Vrsta"
 
 msgctxt "field:party.party,bank_accounts:"
 msgid "Bank Accounts"
@@ -56,7 +56,7 @@ msgstr "Bančni računi"
 
 msgctxt "help:bank,bic:"
 msgid "Bank/Business Identifier Code."
-msgstr "Bančna/poslovna identifikacijska šifra"
+msgstr "Bančna/poslovna identifikacijska šifra (BIC)."
 
 msgctxt "help:bank.account,bank:"
 msgid "The bank where the account is open."
@@ -86,55 +86,49 @@ msgctxt "model:bank.account.number,name:"
 msgid "Bank Account Number"
 msgstr "Številka bančnega računa"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_bank_account_form"
 msgid "Accounts"
-msgstr "Accounts"
+msgstr "Bančni računi"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_bank_form"
 msgid "Banks"
-msgstr "Banks"
+msgstr "Banke"
 
 msgctxt "model:ir.message,text:msg_account_iban_invalid_bic"
 msgid "The BIC of \"%(account)s\" is not valid with the \"%(bic)s\" from IBAN."
-msgstr ""
+msgstr "BIC \"%(bic)\" računa \"%(account)s\" ni veljaven za IBAN."
 
 msgctxt "model:ir.message,text:msg_account_iban_unique"
 msgid "Account can have only one IBAN."
-msgstr ""
+msgstr "Bančni račun sme imeti samo en IBAN."
 
 msgctxt "model:ir.message,text:msg_invalid_bic"
 msgid "The BIC \"%(bic)s\" is not valid."
-msgstr ""
+msgstr "BIC \"%(bic)s\" ni veljaven."
 
 msgctxt "model:ir.message,text:msg_invalid_iban"
 msgid "IBAN \"%(number)s\" is not valid."
-msgstr ""
+msgstr "IBAN \"%(number)s\" ni veljaven."
 
 msgctxt "model:ir.message,text:msg_number_iban_unique"
 msgid "IBAN must be unique."
-msgstr ""
+msgstr "IBAN mora biti edinstven."
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_bank_account_form"
 msgid "Accounts"
-msgstr "Accounts"
+msgstr "Bančni računi"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_bank_form"
 msgid "Banks"
-msgstr "Banks"
+msgstr "Banke"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_banking"
 msgid "Banking"
-msgstr "Banking"
+msgstr "Bančno poslovanje"
 
-#, fuzzy
 msgctxt "model:res.group,name:group_bank_admin"
 msgid "Bank Administration"
-msgstr "Bank Administration"
+msgstr "Skrbništvo bank"
 
 msgctxt "selection:bank.account.number,type:"
 msgid "IBAN"
@@ -144,7 +138,6 @@ msgctxt "selection:bank.account.number,type:"
 msgid "Other"
 msgstr "Drugo"
 
-#, fuzzy
 msgctxt "view:bank.account:"
 msgid "Number"
 msgstr "Številka"

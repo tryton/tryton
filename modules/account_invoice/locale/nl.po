@@ -107,6 +107,10 @@ msgctxt "field:account.invoice,has_payment_method:"
 msgid "Has Payment Method"
 msgstr "Heeft Betalingsmethode"
 
+msgctxt "field:account.invoice,has_report_cache:"
+msgid "Has Report Cached"
+msgstr "Rapport opgeslagen in cache"
+
 msgctxt "field:account.invoice,invoice_address:"
 msgid "Invoice Address"
 msgstr "Factuuradres"
@@ -126,6 +130,10 @@ msgstr "Factuurrapport-ID"
 msgctxt "field:account.invoice,invoice_report_format:"
 msgid "Invoice Report Format"
 msgstr "Opmaak factuuroverzicht"
+
+msgctxt "field:account.invoice,invoice_report_revisions:"
+msgid "Invoice Report Revisions"
+msgstr "Factuur rapport revisies"
 
 msgctxt "field:account.invoice,journal:"
 msgid "Journal"
@@ -175,6 +183,10 @@ msgctxt "field:account.invoice,payment_term_date:"
 msgid "Payment Term Date"
 msgstr "Betalingstermijn datum"
 
+msgctxt "field:account.invoice,posted_by:"
+msgid "Posted By"
+msgstr "Geboekt door"
+
 msgctxt "field:account.invoice,reconciled:"
 msgid "Reconciled"
 msgstr "Afgeletterd"
@@ -199,6 +211,10 @@ msgctxt "field:account.invoice,tax_amount:"
 msgid "Tax"
 msgstr "Belasting"
 
+msgctxt "field:account.invoice,tax_amount_cache:"
+msgid "Tax Cache"
+msgstr "Belasting Cache"
+
 msgctxt "field:account.invoice,tax_identifier:"
 msgid "Tax Identifier"
 msgstr "Belasting identificatie"
@@ -211,6 +227,10 @@ msgctxt "field:account.invoice,total_amount:"
 msgid "Total"
 msgstr "Totaal"
 
+msgctxt "field:account.invoice,total_amount_cache:"
+msgid "Total Cache"
+msgstr "Totaal Cache"
+
 msgctxt "field:account.invoice,type:"
 msgid "Type"
 msgstr "Soort"
@@ -222,6 +242,14 @@ msgstr "Soort"
 msgctxt "field:account.invoice,untaxed_amount:"
 msgid "Untaxed"
 msgstr "Onbelast"
+
+msgctxt "field:account.invoice,untaxed_amount_cache:"
+msgid "Untaxed Cache"
+msgstr "Onbelast Cache"
+
+msgctxt "field:account.invoice,validated_by:"
+msgid "Validated By"
+msgstr "Gevalideerd door"
 
 msgctxt "field:account.invoice-account.move.line,invoice:"
 msgid "Invoice"
@@ -336,8 +364,8 @@ msgid "Product"
 msgstr "Product"
 
 msgctxt "field:account.invoice.line,product_uom_category:"
-msgid "Product Uom Category"
-msgstr "Product eenheidsmaten categorie"
+msgid "Product UoM Category"
+msgstr "Product eenheidsmaat categorie"
 
 msgctxt "field:account.invoice.line,quantity:"
 msgid "Quantity"
@@ -575,6 +603,30 @@ msgctxt "field:account.invoice.payment_term.test.result,date:"
 msgid "Date"
 msgstr "Datum"
 
+msgctxt "field:account.invoice.report.revision,date:"
+msgid "Date"
+msgstr "Datum"
+
+msgctxt "field:account.invoice.report.revision,filename:"
+msgid "File Name"
+msgstr "Bestandsnaam"
+
+msgctxt "field:account.invoice.report.revision,invoice:"
+msgid "Invoice"
+msgstr "Factuur"
+
+msgctxt "field:account.invoice.report.revision,invoice_report_cache:"
+msgid "Invoice Report"
+msgstr "Factuur rapport"
+
+msgctxt "field:account.invoice.report.revision,invoice_report_cache_id:"
+msgid "Invoice Report ID"
+msgstr "Factuur rapport ID"
+
+msgctxt "field:account.invoice.report.revision,invoice_report_format:"
+msgid "Invoice Report Format"
+msgstr "Opmaak factuur rapport"
+
 msgctxt "field:account.invoice.tax,account:"
 msgid "Account"
 msgstr "Grootboekrekening"
@@ -679,6 +731,10 @@ msgctxt "help:account.invoice.credit.start,with_refund:"
 msgid "If true, the current invoice(s) will be cancelled."
 msgstr "Bij activering worden de huidige factu(u)r(en) geannuleerd."
 
+msgctxt "help:account.invoice.line,product_uom_category:"
+msgid "The category of Unit of Measure for the product."
+msgstr "De categorie van de maateenheid voor het product."
+
 msgctxt "help:account.invoice.line,taxes_date:"
 msgid ""
 "The date at which the taxes are computed.\n"
@@ -763,6 +819,10 @@ msgctxt "model:account.invoice.payment_term.test.result,name:"
 msgid "Test Payment Term"
 msgstr "Test betalingstermijn"
 
+msgctxt "model:account.invoice.report.revision,name:"
+msgid "Invoice Report Revision"
+msgstr "Factuur rapport revisie"
+
 msgctxt "model:account.invoice.tax,name:"
 msgid "Invoice Tax"
 msgstr "Belasting factuur"
@@ -802,6 +862,10 @@ msgstr "Te betalen regels herplannen"
 msgctxt "model:ir.action,name:credit"
 msgid "Credit"
 msgstr "Crediteren"
+
+msgctxt "model:ir.action,name:refresh_invoice_report_wizard"
+msgid "Invoice (revised)"
+msgstr "Factuur (gereviseerd)"
 
 msgctxt "model:ir.action,name:report_invoice"
 msgid "Invoice"
@@ -1096,7 +1160,7 @@ msgstr "Herplannen"
 
 msgctxt "model:ir.model.button,string:invoice_validate_button"
 msgid "Validate"
-msgstr "Bevestigen"
+msgstr "Valideren"
 
 msgctxt "model:ir.rule.group,name:rule_group_invoice_companies"
 msgid "User in companies"
@@ -1322,6 +1386,10 @@ msgctxt "view:account.invoice.payment_term.line:"
 msgid "%"
 msgstr "%"
 
+msgctxt "view:account.invoice.report.revision:"
+msgid "Time"
+msgstr "Tijd"
+
 msgctxt "view:account.invoice:"
 msgid "Invoice"
 msgstr "Factuur"
@@ -1337,18 +1405,6 @@ msgstr "Betaling"
 msgctxt "view:account.invoice:"
 msgid "Tax Identifier:"
 msgstr "Belasting identificatie:"
-
-msgctxt "view:account.move.line:"
-msgid "Amount Second Currency"
-msgstr "Bedrag secundaire valuta"
-
-msgctxt "view:account.move.line:"
-msgid "Credit"
-msgstr "Credit"
-
-msgctxt "view:account.move.line:"
-msgid "Debit"
-msgstr "Debet"
 
 msgctxt "view:company.company:"
 msgid "Invoice"

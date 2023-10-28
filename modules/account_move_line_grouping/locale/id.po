@@ -66,7 +66,7 @@ msgctxt "field:account.move.line.group,move:"
 msgid "Move"
 msgstr ""
 
-msgctxt "field:account.move.line.group,move_description:"
+msgctxt "field:account.move.line.group,move_description_used:"
 msgid "Move Description"
 msgstr ""
 
@@ -137,14 +137,6 @@ msgstr ""
 msgctxt "view:account.move.line.group:"
 msgid "Balance"
 msgstr ""
-
-msgctxt "view:account.move.line.group:"
-msgid "Credit"
-msgstr "Kredit"
-
-msgctxt "view:account.move.line.group:"
-msgid "Debit"
-msgstr "Debit"
 
 msgctxt "view:account.move.line.group:"
 msgid "Other Info"

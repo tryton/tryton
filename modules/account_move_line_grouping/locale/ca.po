@@ -66,7 +66,7 @@ msgctxt "field:account.move.line.group,move:"
 msgid "Move"
 msgstr "Assentament"
 
-msgctxt "field:account.move.line.group,move_description:"
+msgctxt "field:account.move.line.group,move_description_used:"
 msgid "Move Description"
 msgstr "Descripció de l'assentament"
 
@@ -137,14 +137,6 @@ msgstr "Obre assentaments comptables (Agrupats)"
 msgctxt "view:account.move.line.group:"
 msgid "Balance"
 msgstr "Saldo"
-
-msgctxt "view:account.move.line.group:"
-msgid "Credit"
-msgstr "Haver"
-
-msgctxt "view:account.move.line.group:"
-msgid "Debit"
-msgstr "Deure"
 
 msgctxt "view:account.move.line.group:"
 msgid "Other Info"

@@ -83,7 +83,7 @@ msgid "Product"
 msgstr "Producte"
 
 msgctxt "field:sale.blanket_agreement.line,product_uom_category:"
-msgid "Product UOM Category"
+msgid "Product UoM Category"
 msgstr "Categoria UdM del producte"
 
 msgctxt "field:sale.blanket_agreement.line,quantity:"
@@ -121,6 +121,10 @@ msgstr "Línia d'acord general"
 msgctxt "field:sale.sale,blanket_agreements:"
 msgid "Blanket Agreements"
 msgstr "Acords generals"
+
+msgctxt "help:sale.blanket_agreement.line,product_uom_category:"
+msgid "The category of Unit of Measure for the product."
+msgstr "La categoria de la unitat de mesura del producte."
 
 msgctxt "model:ir.action,name:act_sale_blanket_agreement"
 msgid "Blanket Agreements"
@@ -164,7 +168,7 @@ msgid ""
 "To change the unit of agreement line \"%(line)s\", you must choose one "
 "compatible with the existing sale lines."
 msgstr ""
-"Per canviar l'unitat de la línia d'acord \"%(line)s\", heu d'escollir una "
+"Per canviar la unitat de la línia d'acord \"%(line)s\", heu d'escollir una "
 "compatible amb les línies de venda existents."
 
 msgctxt "model:ir.message,text:msg_quantity_greater_remaining"

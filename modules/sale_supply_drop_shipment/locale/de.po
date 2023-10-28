@@ -99,10 +99,6 @@ msgctxt "field:stock.shipment.drop,delivery_address:"
 msgid "Delivery Address"
 msgstr "Lieferadresse"
 
-msgctxt "field:stock.shipment.drop,effective_date:"
-msgid "Effective Date"
-msgstr "Effektives Datum"
-
 msgctxt "field:stock.shipment.drop,moves:"
 msgid "Moves"
 msgstr "Warenbewegungen"
@@ -110,10 +106,6 @@ msgstr "Warenbewegungen"
 msgctxt "field:stock.shipment.drop,number:"
 msgid "Number"
 msgstr "Nummer"
-
-msgctxt "field:stock.shipment.drop,planned_date:"
-msgid "Planned Date"
-msgstr "Geplantes Datum"
 
 msgctxt "field:stock.shipment.drop,reference:"
 msgid "Reference"
@@ -131,13 +123,13 @@ msgctxt "field:stock.shipment.drop,supplier_moves:"
 msgid "Supplier Moves"
 msgstr "Warenbewegungen von Lieferanten"
 
-msgctxt "help:stock.shipment.drop,effective_date:"
-msgid "When the stock was actually sent."
-msgstr "Zeitpunkt an dem die Ware tatsächlich versandt wurde."
-
 msgctxt "help:stock.shipment.drop,number:"
 msgid "The main identifier for the shipment."
 msgstr "Das Hauptidentifizierungsmerkmal für die Lieferung."
+
+msgctxt "help:stock.shipment.drop,reference:"
+msgid "The external identifier for the shipment."
+msgstr "Das externe Identifizierungsmerkmal der Lieferung."
 
 msgctxt "model:ir.action,name:act_purchase_drop_shipment_form"
 msgid "Drop Shipments"

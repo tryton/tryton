@@ -376,7 +376,7 @@ msgstr "mislukt"
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_refund_form_domain_processing"
 msgid "Processing"
-msgstr "Verwerken"
+msgstr "In behandeling"
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_refund_form_domain_suceeded"
@@ -529,7 +529,7 @@ msgstr "mislukt"
 
 msgctxt "selection:account.payment.stripe.refund,state:"
 msgid "Processing"
-msgstr "Verwerken"
+msgstr "In behandeling"
 
 msgctxt "selection:account.payment.stripe.refund,state:"
 msgid "Submitted"

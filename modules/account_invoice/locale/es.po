@@ -107,6 +107,10 @@ msgctxt "field:account.invoice,has_payment_method:"
 msgid "Has Payment Method"
 msgstr "Tiene método de pago"
 
+msgctxt "field:account.invoice,has_report_cache:"
+msgid "Has Report Cached"
+msgstr "Tiene informe guardado"
+
 msgctxt "field:account.invoice,invoice_address:"
 msgid "Invoice Address"
 msgstr "Dirección de facturación"
@@ -126,6 +130,10 @@ msgstr "Identificador informe factura"
 msgctxt "field:account.invoice,invoice_report_format:"
 msgid "Invoice Report Format"
 msgstr "Formato del informe factura"
+
+msgctxt "field:account.invoice,invoice_report_revisions:"
+msgid "Invoice Report Revisions"
+msgstr "Revisiones Informe factura"
 
 msgctxt "field:account.invoice,journal:"
 msgid "Journal"
@@ -175,6 +183,10 @@ msgctxt "field:account.invoice,payment_term_date:"
 msgid "Payment Term Date"
 msgstr "Fecha del plazo de pago"
 
+msgctxt "field:account.invoice,posted_by:"
+msgid "Posted By"
+msgstr "Contabilizada por"
+
 msgctxt "field:account.invoice,reconciled:"
 msgid "Reconciled"
 msgstr "Conciliado"
@@ -199,6 +211,10 @@ msgctxt "field:account.invoice,tax_amount:"
 msgid "Tax"
 msgstr "Impuesto"
 
+msgctxt "field:account.invoice,tax_amount_cache:"
+msgid "Tax Cache"
+msgstr "Impuestos precalculados"
+
 msgctxt "field:account.invoice,tax_identifier:"
 msgid "Tax Identifier"
 msgstr "Identificador fiscal"
@@ -211,6 +227,10 @@ msgctxt "field:account.invoice,total_amount:"
 msgid "Total"
 msgstr "Total"
 
+msgctxt "field:account.invoice,total_amount_cache:"
+msgid "Total Cache"
+msgstr "Total precalculado"
+
 msgctxt "field:account.invoice,type:"
 msgid "Type"
 msgstr "Tipo"
@@ -222,6 +242,14 @@ msgstr "Tipo"
 msgctxt "field:account.invoice,untaxed_amount:"
 msgid "Untaxed"
 msgstr "Base imponible"
+
+msgctxt "field:account.invoice,untaxed_amount_cache:"
+msgid "Untaxed Cache"
+msgstr "Base imponible precalculada"
+
+msgctxt "field:account.invoice,validated_by:"
+msgid "Validated By"
+msgstr "Validada por"
 
 msgctxt "field:account.invoice-account.move.line,invoice:"
 msgid "Invoice"
@@ -336,8 +364,8 @@ msgid "Product"
 msgstr "Producto"
 
 msgctxt "field:account.invoice.line,product_uom_category:"
-msgid "Product Uom Category"
-msgstr "Categoría UdM del producto"
+msgid "Product UoM Category"
+msgstr "Categoría de UdM del producto"
 
 msgctxt "field:account.invoice.line,quantity:"
 msgid "Quantity"
@@ -575,6 +603,30 @@ msgctxt "field:account.invoice.payment_term.test.result,date:"
 msgid "Date"
 msgstr "Fecha"
 
+msgctxt "field:account.invoice.report.revision,date:"
+msgid "Date"
+msgstr "Fecha"
+
+msgctxt "field:account.invoice.report.revision,filename:"
+msgid "File Name"
+msgstr "Nombre del archivo"
+
+msgctxt "field:account.invoice.report.revision,invoice:"
+msgid "Invoice"
+msgstr "Factura"
+
+msgctxt "field:account.invoice.report.revision,invoice_report_cache:"
+msgid "Invoice Report"
+msgstr "Informe factura"
+
+msgctxt "field:account.invoice.report.revision,invoice_report_cache_id:"
+msgid "Invoice Report ID"
+msgstr "Identificador informe factura"
+
+msgctxt "field:account.invoice.report.revision,invoice_report_format:"
+msgid "Invoice Report Format"
+msgstr "Formato del informe factura"
+
 msgctxt "field:account.invoice.tax,account:"
 msgid "Account"
 msgstr "Cuenta"
@@ -679,6 +731,10 @@ msgctxt "help:account.invoice.credit.start,with_refund:"
 msgid "If true, the current invoice(s) will be cancelled."
 msgstr "Si está marcada, se cancelaran las facturas seleccionadas."
 
+msgctxt "help:account.invoice.line,product_uom_category:"
+msgid "The category of Unit of Measure for the product."
+msgstr "La categoría de la unidad de medida del producto."
+
 msgctxt "help:account.invoice.line,taxes_date:"
 msgid ""
 "The date at which the taxes are computed.\n"
@@ -763,6 +819,10 @@ msgctxt "model:account.invoice.payment_term.test.result,name:"
 msgid "Test Payment Term"
 msgstr "Probar plazo de pago"
 
+msgctxt "model:account.invoice.report.revision,name:"
+msgid "Invoice Report Revision"
+msgstr "Revisión Informe factura"
+
 msgctxt "model:account.invoice.tax,name:"
 msgid "Invoice Tax"
 msgstr "Impuesto de factura"
@@ -802,6 +862,10 @@ msgstr "Reprogramar líneas a pagar"
 msgctxt "model:ir.action,name:credit"
 msgid "Credit"
 msgstr "Abonar"
+
+msgctxt "model:ir.action,name:refresh_invoice_report_wizard"
+msgid "Invoice (revised)"
+msgstr "Factura (Revisada)"
 
 msgctxt "model:ir.action,name:report_invoice"
 msgid "Invoice"
@@ -877,7 +941,7 @@ msgstr ""
 
 msgctxt "model:ir.message,text:msg_close_period_non_posted_invoices"
 msgid "To close the periods you must post the invoices \"%(invoices)s\"."
-msgstr "Para cerrar los periodos debe contabilizar las facturas \"%(facturas)s\"."
+msgstr "Para cerrar los periodos debe contabilizar las facturas \"%(invoices)s\"."
 
 msgctxt "model:ir.message,text:msg_erase_party_pending_invoice"
 msgid ""
@@ -1000,7 +1064,7 @@ msgstr ""
 
 msgctxt "model:ir.message,text:msg_invoice_similar"
 msgid "The invoice \"%(invoice)s\" is similar to invoice \"%(similar)s\"."
-msgstr "La factura \"%(invoices)s\" es similar a la factura \"%(similar)s\"."
+msgstr "La factura \"%(invoice)s\" es similar a la factura \"%(similar)s\"."
 
 msgctxt "model:ir.message,text:msg_invoice_tax_create"
 msgid ""
@@ -1318,6 +1382,10 @@ msgctxt "view:account.invoice.payment_term.line:"
 msgid "%"
 msgstr "%"
 
+msgctxt "view:account.invoice.report.revision:"
+msgid "Time"
+msgstr "Hora"
+
 msgctxt "view:account.invoice:"
 msgid "Invoice"
 msgstr "Factura"
@@ -1333,18 +1401,6 @@ msgstr "Pago"
 msgctxt "view:account.invoice:"
 msgid "Tax Identifier:"
 msgstr "Identificador fiscal:"
-
-msgctxt "view:account.move.line:"
-msgid "Amount Second Currency"
-msgstr "Importe moneda secundaria"
-
-msgctxt "view:account.move.line:"
-msgid "Credit"
-msgstr "Haber"
-
-msgctxt "view:account.move.line:"
-msgid "Debit"
-msgstr "Debe"
 
 msgctxt "view:company.company:"
 msgid "Invoice"

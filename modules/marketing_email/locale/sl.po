@@ -1,236 +1,238 @@
 #
+#, fuzzy
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "field:marketing.email,email:"
 msgid "E-mail"
-msgstr ""
+msgstr "E-pošta"
 
 msgctxt "field:marketing.email,email_token:"
 msgid "E-mail Token"
-msgstr ""
+msgstr "E-poštni žeton"
 
 msgctxt "field:marketing.email,list_:"
 msgid "List"
-msgstr ""
+msgstr "Seznam"
 
 msgctxt "field:marketing.email,party:"
 msgid "Party"
-msgstr ""
+msgstr "Partner"
 
 msgctxt "field:marketing.email,web_user:"
 msgid "Web User"
-msgstr ""
+msgstr "Spletni uporabnik"
 
 msgctxt "field:marketing.email.list,emails:"
 msgid "Emails"
-msgstr ""
+msgstr "E-poštni naslovi"
 
 msgctxt "field:marketing.email.list,language:"
 msgid "Language"
-msgstr ""
+msgstr "Jezik"
 
 msgctxt "field:marketing.email.list,name:"
 msgid "Name"
-msgstr ""
+msgstr "Naziv"
 
 msgctxt "field:marketing.email.list,subscribed:"
 msgid "Subscribed"
-msgstr ""
+msgstr "Naročen"
 
 msgctxt "field:marketing.email.message,content:"
 msgid "Content"
-msgstr ""
+msgstr "Vsebina"
 
 msgctxt "field:marketing.email.message,from_:"
 msgid "From"
-msgstr ""
+msgstr "Od"
 
 msgctxt "field:marketing.email.message,list_:"
 msgid "List"
-msgstr ""
+msgstr "Seznam"
 
 msgctxt "field:marketing.email.message,state:"
 msgid "State"
-msgstr ""
+msgstr "Stanje"
 
 msgctxt "field:marketing.email.message,title:"
 msgid "Title"
-msgstr ""
+msgstr "Napis"
 
 msgctxt "field:marketing.email.message,urls:"
 msgid "URLs"
-msgstr ""
+msgstr "URL-ji"
 
 msgctxt "field:marketing.email.send_test,email:"
 msgid "E-Mail"
-msgstr ""
+msgstr "E-pošta"
 
 msgctxt "field:marketing.email.send_test,list_:"
 msgid "List"
-msgstr ""
+msgstr "Seznam"
 
 msgctxt "field:marketing.email.send_test,message:"
 msgid "Message"
-msgstr ""
+msgstr "Sporočilo"
 
 msgctxt "help:marketing.email.message,from_:"
 msgid "Leave empty for the value defined in the configuration file."
 msgstr ""
+"Pustite prazno za privzeto vrednost opredeljeno v konfiguracijski datoteki."
 
 msgctxt "model:ir.action,name:act_email_list_form"
 msgid "Mailing Lists"
-msgstr ""
+msgstr "Elektronski poštni seznami"
 
 msgctxt "model:ir.action,name:act_email_message_form"
 msgid "Messages"
-msgstr ""
+msgstr "Sporočila"
 
 msgctxt "model:ir.action,name:act_email_relate_list"
 msgid "E-mails"
-msgstr ""
+msgstr "E-pošte"
 
 msgctxt "model:ir.action,name:report_email_subscribe"
 msgid "Subscribe Request"
-msgstr ""
+msgstr "Zahteva za naročnino"
 
 msgctxt "model:ir.action,name:report_email_unsubscribe"
 msgid "Unsubscribe Request"
-msgstr ""
+msgstr "Zahteva za odjavo"
 
 msgctxt "model:ir.action,name:wizard_send_test"
 msgid "Send Test"
-msgstr ""
+msgstr "Test pošiljanja"
 
 msgctxt "model:ir.action.act_window.domain,name:act_email_message_form_all"
 msgid "All"
-msgstr ""
+msgstr "Vse"
 
 msgctxt "model:ir.action.act_window.domain,name:act_email_message_form_draft"
 msgid "Draft"
-msgstr ""
+msgstr "Osnutek"
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_email_message_form_sending"
 msgid "Sending"
-msgstr ""
+msgstr "V pošiljanju"
+
+msgctxt "model:ir.message,text:msg_email_invalid"
+msgid "The email address \"%(email)s\" for \"%(record)s\" is not valid."
+msgstr "E-poštni naslov \"%(email)s\" za \"%(record)s\" ni veljaven."
 
 msgctxt "model:ir.message,text:msg_email_list_unique"
 msgid "Email addresses can only be subscribed once to each list."
-msgstr ""
+msgstr "E-poštni naslov sme biti naročen samo enkrat na posameznem seznamu."
 
 msgctxt "model:ir.message,text:msg_message_invalid_content"
 msgid "Invalid content in message \"%(message)s\" with exception \"%(exception)s\"."
-msgstr ""
+msgstr "Sporočilo \"%(message)s\" ima neveljavno vsebino. Napaka: \"%(exception)s\"."
 
 msgctxt "model:ir.model.button,string:message_draft_button"
 msgid "Draft"
-msgstr ""
+msgstr "Osnutek"
 
 msgctxt "model:ir.model.button,string:message_send_button"
 msgid "Send"
-msgstr ""
+msgstr "Pošlji"
 
 msgctxt "model:ir.model.button,string:message_send_test_button"
 msgid "Send Test"
-msgstr ""
+msgstr "Test pošiljanja"
 
 msgctxt "model:ir.ui.menu,name:menu_email_list_form"
 msgid "Mailing Lists"
-msgstr ""
+msgstr "Elektronski poštni seznami"
 
 msgctxt "model:marketing.email,name:"
 msgid "Marketing E-mail"
-msgstr ""
+msgstr "Marketinška e-pošta"
 
 msgctxt "model:marketing.email.list,name:"
 msgid "Marketing Mailing List"
-msgstr ""
+msgstr "Marketinški elektronski poštni seznam"
 
 msgctxt "model:marketing.email.message,name:"
 msgid "Marketing E-mail Message"
-msgstr ""
+msgstr "Marketinško e-poštno sporočilo"
 
 msgctxt "model:marketing.email.send_test,name:"
 msgid "Send Test E-mail"
-msgstr ""
+msgstr "Pošlji testno e-pošto"
 
 msgctxt "report:marketing.email.subscribe:"
 msgid "Button is not working? Paste this into your browser:"
-msgstr ""
+msgstr "Gumb ne deluje? Prilepite to povezavo v vaš brskalnik:"
 
 msgctxt "report:marketing.email.subscribe:"
 msgid "If you received this email by mistake, just ignore it."
-msgstr ""
+msgstr "Če ste po pomoti prejeli to sporočilo, ga preprosto prezrite."
 
 msgctxt "report:marketing.email.subscribe:"
 msgid "Just one more step..."
-msgstr ""
+msgstr "Samo še en korak..."
 
 msgctxt "report:marketing.email.subscribe:"
 msgid "Subscribe to"
-msgstr ""
+msgstr "Prijava na"
 
 msgctxt "report:marketing.email.subscribe:"
 msgid "Subscription Request"
-msgstr ""
+msgstr "Zahteva za prijavo"
 
 msgctxt "report:marketing.email.unsubscribe:"
 msgid "Button is not working? Paste this into your browser:"
-msgstr ""
+msgstr "Gumb ne deluje? Prilepite to povezavo v vaš brskalnik:"
 
 msgctxt "report:marketing.email.unsubscribe:"
 msgid "If you received this email by mistake, just ignore it."
-msgstr ""
+msgstr "Če ste po pomoti prejeli to sporočilo, ga preprosto prezrite."
 
 msgctxt "report:marketing.email.unsubscribe:"
 msgid "Just one more step..."
-msgstr ""
+msgstr "Samo še en korak..."
 
 msgctxt "report:marketing.email.unsubscribe:"
 msgid "Request to Unsubscribe"
-msgstr ""
+msgstr "Zahteva za odjavo"
 
 msgctxt "report:marketing.email.unsubscribe:"
 msgid "Unsubscribe from"
-msgstr ""
+msgstr "Odjava od"
 
 msgctxt "selection:ir.cron,method:"
 msgid "Send Marketing Messages"
-msgstr ""
+msgstr "Pošlji marketinška sporočila"
 
 msgctxt "selection:marketing.email.message,state:"
 msgid "Draft"
-msgstr ""
+msgstr "Osnutek"
 
 msgctxt "selection:marketing.email.message,state:"
 msgid "Sending"
-msgstr ""
+msgstr "V pošiljanju"
 
 msgctxt "selection:marketing.email.message,state:"
 msgid "Sent"
-msgstr ""
-
-msgctxt "view:marketing.email.list:"
-msgid "Subscribed"
-msgstr ""
+msgstr "Poslano"
 
 msgctxt "view:marketing.email.message:"
 msgid "Edit"
-msgstr ""
+msgstr "Uredi"
 
 msgctxt "view:marketing.email.message:"
 msgid "To:"
-msgstr ""
+msgstr "Za:"
 
 msgctxt "view:marketing.email.send_test:"
 msgid "To:"
-msgstr ""
+msgstr "Za:"
 
 msgctxt "wizard_button:marketing.email.send_test,start,end:"
 msgid "Cancel"
-msgstr ""
+msgstr "Prekliči"
 
 msgctxt "wizard_button:marketing.email.send_test,start,send:"
 msgid "Send"
-msgstr ""
+msgstr "Pošlji"

@@ -10,16 +10,21 @@ msgctxt "field:production.split.start,quantity:"
 msgid "Quantity"
 msgstr "Ilość"
 
-msgctxt "field:production.split.start,uom:"
-msgid "Uom"
-msgstr "Jm"
+msgctxt "field:production.split.start,unit:"
+msgid "Unit"
+msgstr ""
 
+#, fuzzy
 msgctxt "field:production.split.start,uom_category:"
-msgid "Uom Category"
+msgid "UoM Category"
 msgstr "Kategoria jednostki miary"
 
 msgctxt "help:production.split.start,count:"
 msgid "The limit number of productions"
+msgstr ""
+
+msgctxt "help:production.split.start,uom_category:"
+msgid "The category of Unit of Measure."
 msgstr ""
 
 #, fuzzy

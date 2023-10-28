@@ -1,4 +1,5 @@
 #
+#, fuzzy
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
@@ -66,7 +67,7 @@ msgstr ""
 
 msgctxt "field:sale.gift_card,origin:"
 msgid "Origin"
-msgstr ""
+msgstr "Izvor"
 
 msgctxt "field:sale.gift_card,product:"
 msgid "Product"
@@ -186,8 +187,14 @@ msgctxt ""
 msgid "Sent"
 msgstr ""
 
+msgctxt "model:ir.message,text:msg_gift_card_email_invalid"
+msgid "The email address \"%(email)s\" for \"%(card)s\" is not valid."
+msgstr ""
+
 msgctxt "model:ir.message,text:msg_gift_card_invalid_uom"
-msgid "The default UOM for the gift card \"%(template)s\" must be \"%(unit)s\"."
+msgid ""
+"The default unit of measure for the gift card \"%(template)s\" must be "
+"\"%(unit)s\"."
 msgstr ""
 
 msgctxt "model:ir.message,text:msg_gift_card_move_quantity"

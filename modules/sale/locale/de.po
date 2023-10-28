@@ -87,7 +87,7 @@ msgid "Sale Price"
 msgstr "Verkaufspreis"
 
 msgctxt "field:product.product,sale_uom:"
-msgid "Sale UOM"
+msgid "Sale UoM"
 msgstr "Maßeinheit Verkauf"
 
 msgctxt "field:product.sale.context,company:"
@@ -131,7 +131,7 @@ msgid "Salable"
 msgstr "Verkäuflich"
 
 msgctxt "field:product.template,sale_uom:"
-msgid "Sale UOM"
+msgid "Sale UoM"
 msgstr "Maßeinheit Verkauf"
 
 msgctxt "field:sale.configuration,sale_invoice_method:"
@@ -243,7 +243,7 @@ msgid "Product"
 msgstr "Artikel"
 
 msgctxt "field:sale.line,product_uom_category:"
-msgid "Product Uom Category"
+msgid "Product UoM Category"
 msgstr "Maßeinheitenkategorie"
 
 msgctxt "field:sale.line,quantity:"
@@ -690,6 +690,10 @@ msgstr ""
 "Die Zeit zwischen der Auftragsbestätigung und dem Versand der Ware.\n"
 "Wenn leer wird die Standardbeschaffungszeit aus den Einstellungen benutzt."
 
+msgctxt "help:product.product,sale_uom:"
+msgid "The default Unit of Measure for sales."
+msgstr "Die Standardmaßeinheit für Verkäufe."
+
 msgctxt "help:product.template,lead_time:"
 msgid ""
 "The time from confirming the sales order to sending the products.\n"
@@ -697,6 +701,10 @@ msgid ""
 msgstr ""
 "Die Zeit zwischen der Auftragsbestätigung und dem Versand der Ware.\n"
 "Wenn leer wird die Standardbeschaffungszeit aus den Einstellungen benutzt."
+
+msgctxt "help:product.template,sale_uom:"
+msgid "The default Unit of Measure for sales."
+msgstr "Die Standardmaßeinheit für Verkäufe."
 
 msgctxt "help:sale.configuration,sale_process_after:"
 msgid ""
@@ -712,6 +720,10 @@ msgid ""
 msgstr ""
 "Die ausgewählten Rechnungen werden neu erstellt. Alle anderen werden "
 "ignoriert."
+
+msgctxt "help:sale.line,product_uom_category:"
+msgid "The category of Unit of Measure for the product."
+msgstr "Die Maßeinheitenkategorie für den Artikel."
 
 msgctxt "help:sale.sale,shipping_date:"
 msgid "When the shipping of goods should start."
@@ -968,6 +980,14 @@ msgstr ""
 "der Verkauf \"%(sale)s\" annulliert oder auf den Entwurfsstatus "
 "zurückgesetzt werden."
 
+msgctxt "model:ir.message,text:msg_sale_line_move_quantity"
+msgid ""
+"The sale line \"%(line)s\" is moving %(extra)s in addition to the "
+"%(quantity)s ordered."
+msgstr ""
+"Für Verkaufsposition \"%(line)s\" werden %(extra)s mehr bewegt als die "
+"bestellte Menge von %(quantity)s."
+
 msgctxt "model:ir.message,text:msg_sale_line_tax_unique"
 msgid "A tax can be added only once to a sale line."
 msgstr ""
@@ -1065,6 +1085,14 @@ msgstr "Rechnungsvorbehalt bearbeiten"
 msgctxt "model:ir.model.button,string:sale_handle_shipment_exception_button"
 msgid "Handle Shipment Exception"
 msgstr "Liefervorbehalt bearbeiten"
+
+msgctxt "model:ir.model.button,string:sale_manual_invoice_button"
+msgid "Create Invoice"
+msgstr "Rechnung erstellen"
+
+msgctxt "model:ir.model.button,string:sale_manual_shipment_button"
+msgid "Create Shipment"
+msgstr "Lieferung erstellen"
 
 msgctxt "model:ir.model.button,string:sale_modify_header_button"
 msgid "Modify Header"
@@ -1566,70 +1594,6 @@ msgstr "Notizen"
 msgctxt "view:sale.line:"
 msgid "Taxes"
 msgstr "Steuern"
-
-msgctxt "view:sale.reporting.country.subdivision.time_series:"
-msgid "Number"
-msgstr "Anzahl"
-
-msgctxt "view:sale.reporting.country.subdivision.time_series:"
-msgid "Revenue"
-msgstr "Umsatz"
-
-msgctxt "view:sale.reporting.country.time_series:"
-msgid "Number"
-msgstr "Anzahl"
-
-msgctxt "view:sale.reporting.country.time_series:"
-msgid "Revenue"
-msgstr "Umsatz"
-
-msgctxt "view:sale.reporting.customer.category.time_series:"
-msgid "Number"
-msgstr "Anzahl"
-
-msgctxt "view:sale.reporting.customer.category.time_series:"
-msgid "Revenue"
-msgstr "Umsatz"
-
-msgctxt "view:sale.reporting.customer.time_series:"
-msgid "Number"
-msgstr "Anzahl"
-
-msgctxt "view:sale.reporting.customer.time_series:"
-msgid "Revenue"
-msgstr "Umsatz"
-
-msgctxt "view:sale.reporting.main.time_series:"
-msgid "Number"
-msgstr "Anzahl"
-
-msgctxt "view:sale.reporting.main.time_series:"
-msgid "Revenue"
-msgstr "Umsatz"
-
-msgctxt "view:sale.reporting.main:"
-msgid "Number"
-msgstr "Anzahl"
-
-msgctxt "view:sale.reporting.main:"
-msgid "Revenue"
-msgstr "Umsatz"
-
-msgctxt "view:sale.reporting.product.category.time_series:"
-msgid "Number"
-msgstr "Anzahl"
-
-msgctxt "view:sale.reporting.product.category.time_series:"
-msgid "Revenue"
-msgstr "Umsatz"
-
-msgctxt "view:sale.reporting.product.time_series:"
-msgid "Number"
-msgstr "Anzahl"
-
-msgctxt "view:sale.reporting.product.time_series:"
-msgid "Revenue"
-msgstr "Umsatz"
 
 msgctxt "view:sale.return_sale.start:"
 msgid "Are you sure to return these/this sale(s)?"

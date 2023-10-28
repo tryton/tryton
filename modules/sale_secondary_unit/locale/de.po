@@ -3,43 +3,43 @@ msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "field:product.product,sale_secondary_uom:"
-msgid "Sale Secondary UOM"
+msgid "Sale Secondary UoM"
 msgstr "Verkauf Zweitmaßeinheit"
 
 msgctxt "field:product.product,sale_secondary_uom_category:"
-msgid "Sale Secondary UOM Category"
+msgid "Sale Secondary UoM Category"
 msgstr "Verkauf Zweitmaßeinheitenkategorie"
 
 msgctxt "field:product.product,sale_secondary_uom_factor:"
-msgid "Sale Secondary UOM Factor"
+msgid "Sale Secondary UoM Factor"
 msgstr "Verkauf Zweitmaßeinheit Faktor"
 
 msgctxt "field:product.product,sale_secondary_uom_rate:"
-msgid "Sale Secondary UOM Rate"
+msgid "Sale Secondary UoM Rate"
 msgstr "Verkauf Zweitmaßeinheit Kehrwert Faktor"
 
 msgctxt "field:product.template,sale_secondary_uom:"
-msgid "Sale Secondary UOM"
+msgid "Sale Secondary UoM"
 msgstr "Verkauf Zweitmaßeinheit"
 
 msgctxt "field:product.template,sale_secondary_uom_category:"
-msgid "Sale Secondary UOM Category"
+msgid "Sale Secondary UoM Category"
 msgstr "Verkauf Zweitmaßeinheitenkategorie"
 
 msgctxt "field:product.template,sale_secondary_uom_factor:"
-msgid "Sale Secondary UOM Factor"
+msgid "Sale Secondary UoM Factor"
 msgstr "Verkauf Zweitmaßeinheit Faktor"
 
 msgctxt "field:product.template,sale_secondary_uom_rate:"
-msgid "Sale Secondary UOM Rate"
+msgid "Sale Secondary UoM Rate"
 msgstr "Verkauf Zweitmaßeinheit Kehrwert Faktor"
 
 msgctxt "field:sale.blanket_agreement.line,product_secondary_uom_category:"
-msgid "Product Secondary UOM Category"
+msgid "Product Secondary UoM Category"
 msgstr "Artikel Zweitmaßeinheitenkategorie"
 
 msgctxt "field:sale.line,product_secondary_uom_category:"
-msgid "Product Secondary UOM Category"
+msgid "Product Secondary UoM Category"
 msgstr "Artikel Zweitmaßeinheitenkategorie"
 
 msgctxt "field:sale.line,secondary_quantity:"
@@ -55,32 +55,36 @@ msgid "Secondary Unit Price"
 msgstr "Zweiteinzelpreis"
 
 msgctxt "field:sale.line,secondary_uom_factor:"
-msgid "Secondary UOM Factor"
+msgid "Secondary UoM Factor"
 msgstr "Zweitmaßeinheit Faktor"
 
 msgctxt "field:sale.line,secondary_uom_rate:"
-msgid "Secondary UOM Rate"
+msgid "Secondary UoM Rate"
 msgstr "Zweitmaßeinheit Kehrwert Faktor"
 
 msgctxt "field:sale.product_customer,default_uom_category:"
-msgid "Default UOM Category"
-msgstr "Standardkategorie Maßeinheit"
+msgid "Default UoM Category"
+msgstr "Standard Maßeinheitenkategorie"
 
 msgctxt "field:sale.product_customer,sale_secondary_uom:"
-msgid "Sale Secondary UOM"
+msgid "Sale Secondary UoM"
 msgstr "Verkauf Zweitmaßeinheit"
 
 msgctxt "field:sale.product_customer,sale_secondary_uom_category:"
-msgid "Sale Secondary UOM Category"
+msgid "Sale Secondary UoM Category"
 msgstr "Verkauf Zweitmaßeinheitenkategorie"
 
 msgctxt "field:sale.product_customer,sale_secondary_uom_factor:"
-msgid "Sale Secondary UOM Factor"
+msgid "Sale Secondary UoM Factor"
 msgstr "Verkauf Zweitmaßeinheit Faktor"
 
 msgctxt "field:sale.product_customer,sale_secondary_uom_rate:"
-msgid "Sale Secondary UOM Rate"
+msgid "Sale Secondary UoM Rate"
 msgstr "Verkauf Zweitmaßeinheit Kehrwert Faktor"
+
+msgctxt "help:product.product,sale_secondary_uom:"
+msgid "The secondary Unit of Measure for sales."
+msgstr "Die Zweitmaßeinheit für Verkäufe."
 
 msgctxt "help:product.product,sale_secondary_uom_factor:"
 msgid ""
@@ -98,6 +102,10 @@ msgstr ""
 "Der Koeffizient für die Formel:\n"
 "Koeffizient (Verkaufseinheit) = 1 (Zweitmaßeinheit)"
 
+msgctxt "help:product.template,sale_secondary_uom:"
+msgid "The secondary Unit of Measure for sales."
+msgstr "Die Zeitmaßeinheit für Verkäufe."
+
 msgctxt "help:product.template,sale_secondary_uom_factor:"
 msgid ""
 "The coefficient for the formula:\n"
@@ -113,6 +121,30 @@ msgid ""
 msgstr ""
 "Der Koeffizient für die Formel:\n"
 "Koeffizient (Verkaufseinheit) = 1 (Zweitmaßeinheit)"
+
+msgctxt "help:sale.blanket_agreement.line,product_secondary_uom_category:"
+msgid "The category of the secondary Unit of Measure for the product."
+msgstr "Die Kategorie für die Zweitmaßeinheit des Artikels."
+
+msgctxt "help:sale.line,product_secondary_uom_category:"
+msgid "The category of secondary Unit of Measure for the product."
+msgstr "Die Kategorie für die Zweitmaßeinheit des Artikels."
+
+msgctxt "help:sale.line,secondary_uom_factor:"
+msgid "The factor for the secondary Unit of Measure."
+msgstr "Der Faktor für die Zweitmaßeinheit."
+
+msgctxt "help:sale.line,secondary_uom_rate:"
+msgid "The rate for the secondary Unit of Measure."
+msgstr "Der Kehrwert Faktor für die Zweitmaßeinheit."
+
+msgctxt "help:sale.product_customer,default_uom_category:"
+msgid "The category of default Unit of Measure."
+msgstr "Die Kategorie der Standardmaßeinheit."
+
+msgctxt "help:sale.product_customer,sale_secondary_uom:"
+msgid "The secondary Unit of Measure for sales."
+msgstr "Die Zweitmaßeinheit für Verkäufe."
 
 msgctxt "help:sale.product_customer,sale_secondary_uom_factor:"
 msgid ""

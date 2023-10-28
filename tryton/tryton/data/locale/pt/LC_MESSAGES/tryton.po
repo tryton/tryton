@@ -153,6 +153,10 @@ msgstr "<i>Buscar...</i>"
 msgid "<i>Create...</i>"
 msgstr "<i>Criar...</i>"
 
+#, fuzzy, python-format
+msgid "Create \"%s\"..."
+msgstr "<i>Criar...</i>"
+
 msgid "Value"
 msgstr "Valor"
 
@@ -301,6 +305,9 @@ msgstr "Gravar Estado da Árvore"
 
 msgid "Spell Checking"
 msgstr "Verificar Ortografia"
+
+msgid "Play Sound for Code Scanner"
+msgstr ""
 
 msgid "PDA Mode"
 msgstr "Modo dispositivo portátil"
@@ -457,6 +464,17 @@ msgstr "Mover para o final"
 msgid "Move to parent"
 msgstr "Mover para o pai"
 
+#, fuzzy
+msgid "Edition"
+msgstr "Editar"
+
+#, fuzzy
+msgid "Copy selected rows"
+msgstr "Copiar o texto selecionado"
+
+msgid "Insert copied rows"
+msgstr ""
+
 msgid "Select all"
 msgstr "Selecionar todos"
 
@@ -504,6 +522,12 @@ msgstr ""
 #, python-format
 msgid "Attachments (%s)"
 msgstr "Anexos (%s)"
+
+msgid "Code Scanner"
+msgstr ""
+
+msgid "Code"
+msgstr ""
 
 msgid "Profile Editor"
 msgstr "Editor de Perfil"
@@ -948,14 +972,24 @@ msgstr "Vínculo"
 msgid "Delete"
 msgstr "Apagar"
 
-msgid "New"
-msgstr "Novo"
+msgid "Discard changes"
+msgstr ""
 
-msgid "Switch"
-msgstr "Alternar"
+msgid "Save and New"
+msgstr ""
+
+#, fuzzy
+msgid "Add and New"
+msgstr "Adicionar valor"
 
 msgid "Add"
 msgstr "Adicionar"
+
+msgid "Apply changes"
+msgstr ""
+
+msgid "Switch"
+msgstr "Alternar"
 
 msgid "Remove <Del>"
 msgstr "Remover <Del>"
@@ -992,8 +1026,8 @@ msgid "Detection failed"
 msgstr ""
 
 #, python-format
-msgid "Error processing the file at field %s."
-msgstr "Erro ao processar o arquivo no campo %s."
+msgid "Unknown column header \"%s\""
+msgstr ""
 
 msgid "Error"
 msgstr "Erro"
@@ -1011,6 +1045,9 @@ msgstr "%d registros importados."
 
 msgid "Search"
 msgstr "Busca"
+
+msgid "New"
+msgstr "Novo"
 
 #, python-format
 msgid "Search %s"
@@ -1058,6 +1095,9 @@ msgstr "Pré-validação"
 
 msgid ":"
 msgstr ":"
+
+msgid "Scan"
+msgstr ""
 
 msgid "Image Size"
 msgstr "Tamanho da imagem"

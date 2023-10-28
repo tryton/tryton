@@ -22,6 +22,10 @@ msgctxt "field:production.work,company:"
 msgid "Company"
 msgstr "Empresa"
 
+msgctxt "field:production.work,cost:"
+msgid "Cost"
+msgstr "Coste"
+
 msgctxt "field:production.work,cycles:"
 msgid "Cycles"
 msgstr "Ciclos"
@@ -86,13 +90,29 @@ msgctxt "field:production.work.center.category,name:"
 msgid "Name"
 msgstr "Nombre"
 
+msgctxt "field:production.work.cycle,cancelled_by:"
+msgid "Cancelled By"
+msgstr "Cancelado por"
+
+msgctxt "field:production.work.cycle,company:"
+msgid "Company"
+msgstr "Empresa"
+
 msgctxt "field:production.work.cycle,cost:"
 msgid "Cost"
 msgstr "Coste"
 
+msgctxt "field:production.work.cycle,done_by:"
+msgid "Done By"
+msgstr "Finalizado por"
+
 msgctxt "field:production.work.cycle,duration:"
 msgid "Duration"
 msgstr "Duración"
+
+msgctxt "field:production.work.cycle,run_by:"
+msgid "Run By"
+msgstr "Ejecutado por"
 
 msgctxt "field:production.work.cycle,state:"
 msgid "State"

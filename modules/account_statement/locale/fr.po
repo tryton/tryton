@@ -315,8 +315,8 @@ msgid "Statements"
 msgstr "Relevés"
 
 msgctxt "model:ir.action,name:act_statement_journal_form"
-msgid "Journals"
-msgstr "Journaux"
+msgid "Statement Journals"
+msgstr "Journaux de relevés"
 
 msgctxt "model:ir.action,name:act_statement_line_move"
 msgid "Statement Lines"
@@ -484,8 +484,8 @@ msgid "Import Statement"
 msgstr "Importer un relevé"
 
 msgctxt "model:ir.ui.menu,name:menu_statement_journal_form"
-msgid "Journals"
-msgstr "Journaux"
+msgid "Statement Journals"
+msgstr "Journaux de relevés"
 
 msgctxt "model:ir.ui.menu,name:menu_statements"
 msgid "Statements"
@@ -574,14 +574,6 @@ msgstr "Balance"
 msgctxt "selection:account.statement.journal,validation:"
 msgid "Number of Lines"
 msgstr "Nombre de lignes"
-
-msgctxt "view:account.statement.line:"
-msgid "Amount"
-msgstr "Montant"
-
-msgctxt "view:account.statement.origin:"
-msgid "Amount"
-msgstr "Montant"
 
 msgctxt "view:account.statement:"
 msgid "Other Info"

@@ -42,6 +42,26 @@ msgctxt "field:sale.sale,shipment_cost_method:"
 msgid "Shipment Cost Method"
 msgstr "verzendingskost methode"
 
+msgctxt "field:sale.sale,shipment_costs:"
+msgid "Shipment Costs"
+msgstr "Verzendkosten"
+
+msgctxt "field:stock.shipment.cost_sale,amount:"
+msgid "Amount"
+msgstr "Bedrag"
+
+msgctxt "field:stock.shipment.cost_sale,currency:"
+msgid "Currency"
+msgstr "Valuta"
+
+msgctxt "field:stock.shipment.cost_sale,sale:"
+msgid "Sale"
+msgstr "Verkoop"
+
+msgctxt "field:stock.shipment.cost_sale,shipment:"
+msgid "Shipment"
+msgstr "Zending"
+
 msgctxt "field:stock.shipment.out,cost_invoice_line:"
 msgid "Cost Invoice Line"
 msgstr "Kostenfactuurregel"
@@ -65,6 +85,10 @@ msgstr "Valuta kosten verkoop"
 msgctxt "field:stock.shipment.out,cost_sale_used:"
 msgid "Cost Sale"
 msgstr "Kosten verkoop"
+
+msgctxt "field:stock.shipment.out,cost_sales:"
+msgid "Cost Sales"
+msgstr "Kosten verkopen"
 
 msgctxt "field:stock.shipment.out,shipment_cost_sale_readonly:"
 msgid "Shipment Cost Sale Read Only"
@@ -99,6 +123,10 @@ msgstr ""
 "Om verzendingskosten van \"%(shipment)s\" te factureren, moet u een "
 "omzetrekening definiëren voor product \"%(product)s\"."
 
+msgctxt "model:stock.shipment.cost_sale,name:"
+msgid "Shipment Cost Sale"
+msgstr "Verzendkosten verkoop"
+
 msgctxt "selection:sale.sale,shipment_cost_method:"
 msgid "None"
 msgstr "Geen"
@@ -110,6 +138,10 @@ msgstr "Op bestelling"
 msgctxt "selection:sale.sale,shipment_cost_method:"
 msgid "On Shipment"
 msgstr "Bij verzending"
+
+msgctxt "selection:stock.shipment.cost_sale,shipment:"
+msgid "Customer"
+msgstr "Klant"
 
 msgctxt "view:sale.promotion:"
 msgid "Shipment Cost Included"

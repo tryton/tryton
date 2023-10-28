@@ -157,6 +157,10 @@ msgstr "<i>Поиск...</i>"
 msgid "<i>Create...</i>"
 msgstr "<i>Создать...</i>"
 
+#, fuzzy, python-format
+msgid "Create \"%s\"..."
+msgstr "<i>Создать...</i>"
+
 #, fuzzy
 msgid "Value"
 msgstr "Добавить значение"
@@ -318,6 +322,9 @@ msgstr "Запомнить состояние дерева"
 
 msgid "Spell Checking"
 msgstr "Проверка орфографии"
+
+msgid "Play Sound for Code Scanner"
+msgstr ""
 
 msgid "PDA Mode"
 msgstr ""
@@ -481,6 +488,17 @@ msgstr ""
 msgid "Move to parent"
 msgstr ""
 
+#, fuzzy
+msgid "Edition"
+msgstr "Редактировать"
+
+#, fuzzy
+msgid "Copy selected rows"
+msgstr "Скопировать выделенный текст"
+
+msgid "Insert copied rows"
+msgstr ""
+
 msgid "Select all"
 msgstr ""
 
@@ -526,6 +544,12 @@ msgstr ""
 #, python-format
 msgid "Attachments (%s)"
 msgstr "Вложений (%s)"
+
+msgid "Code Scanner"
+msgstr ""
+
+msgid "Code"
+msgstr ""
 
 msgid "Profile Editor"
 msgstr "Редактор профилей"
@@ -984,14 +1008,24 @@ msgstr "Ссылка"
 msgid "Delete"
 msgstr "Удалить"
 
-msgid "New"
-msgstr "Новый"
+msgid "Discard changes"
+msgstr ""
 
-msgid "Switch"
-msgstr "Переключить"
+msgid "Save and New"
+msgstr ""
+
+#, fuzzy
+msgid "Add and New"
+msgstr "Добавить значение"
 
 msgid "Add"
 msgstr "Добавить"
+
+msgid "Apply changes"
+msgstr ""
+
+msgid "Switch"
+msgstr "Переключить"
 
 msgid "Remove <Del>"
 msgstr "Удалить <Del>"
@@ -1030,8 +1064,8 @@ msgid "Detection failed"
 msgstr ""
 
 #, python-format
-msgid "Error processing the file at field %s."
-msgstr "Ошибка при обработке файла на поле %s."
+msgid "Unknown column header \"%s\""
+msgstr ""
 
 msgid "Error"
 msgstr "Ошибка"
@@ -1049,6 +1083,9 @@ msgstr "%d записей импортировано!"
 
 msgid "Search"
 msgstr "Поиск"
+
+msgid "New"
+msgstr "Новый"
 
 #, python-format
 msgid "Search %s"
@@ -1097,6 +1134,9 @@ msgstr ""
 
 msgid ":"
 msgstr ":"
+
+msgid "Scan"
+msgstr ""
 
 msgid "Image Size"
 msgstr "Размер изображения"

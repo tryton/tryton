@@ -246,6 +246,10 @@ msgstr "Пошук..."
 msgid "Create..."
 msgstr "Створити..."
 
+#, fuzzy
+msgid "Create \"%1\"..."
+msgstr "Створити..."
+
 msgid "Download"
 msgstr "Завантажити"
 
@@ -446,6 +450,9 @@ msgstr "Попередня перевірка"
 msgid ":"
 msgstr ":"
 
+msgid "Scan"
+msgstr ""
+
 msgid "Translate"
 msgstr "Перекласти"
 
@@ -513,17 +520,20 @@ msgstr "Вибрати мову"
 msgid "%1%"
 msgstr "%1%"
 
-msgid ": "
-msgstr ": "
+msgid "Menu"
+msgstr ""
 
-msgid "Customize"
-msgstr "Налаштувати"
+msgid "Copy"
+msgstr ""
+
+msgid "#ERROR"
+msgstr ""
 
 msgid "More"
 msgstr "Додатково"
 
-msgid "#ERROR"
-msgstr ""
+msgid ": "
+msgstr ": "
 
 msgid "Today"
 msgstr "Сьогодні"
@@ -548,6 +558,19 @@ msgstr "Виберіть дію"
 
 msgid "No action defined."
 msgstr "Ніяких дій не визначено."
+
+msgid "Discard changes"
+msgstr ""
+
+msgid "Save and New"
+msgstr ""
+
+#, fuzzy
+msgid "Add and New"
+msgstr "Додати імена полів"
+
+msgid "Apply changes"
+msgstr ""
 
 msgid "Attachments (%1)"
 msgstr "Вкладення (%1)"
@@ -622,8 +645,8 @@ msgstr "Спочатку потрібно вибрати файл імпорту
 msgid "Detection failed"
 msgstr "Помилка визначення"
 
-msgid "Error processing the file at field %1."
-msgstr "Помилка обробки файлу в полі %1."
+msgid "Unknown column header \"%1\""
+msgstr ""
 
 msgid "Error"
 msgstr "Помилка"
@@ -721,6 +744,15 @@ msgstr "Надіслати"
 
 msgid "Remove File"
 msgstr "Видалити файл"
+
+msgid "Code Scanner"
+msgstr ""
+
+msgid "Code"
+msgstr ""
+
+msgid "Toggle Sound"
+msgstr ""
 
 msgid "Wizard"
 msgstr "Майстер"

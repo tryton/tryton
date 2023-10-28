@@ -11,11 +11,7 @@ msgid "Price List"
 msgstr "Lista de precios"
 
 msgctxt "field:carrier,weight_uom:"
-msgid "Weight Uom"
-msgstr ""
-
-msgctxt "field:carrier,weight_uom_digits:"
-msgid "Weight Uom Digits"
+msgid "Weight UoM"
 msgstr ""
 
 msgctxt "field:carrier.weight_price_list,carrier:"
@@ -34,6 +30,10 @@ msgctxt "field:carrier.weight_price_list,weight:"
 msgid "Weight"
 msgstr ""
 
+msgctxt "field:carrier.weight_price_list,weight_uom:"
+msgid "Weight UoM"
+msgstr ""
+
 msgctxt "help:carrier,weight_currency:"
 msgid "The currency of the price."
 msgstr ""
@@ -46,7 +46,7 @@ msgid ""
 msgstr ""
 
 msgctxt "help:carrier,weight_uom:"
-msgid "The unit of weight criteria of the price list."
+msgid "The Unit of Measure of weight criteria for the price list."
 msgstr ""
 
 msgctxt "help:carrier.weight_price_list,carrier:"
@@ -59,6 +59,10 @@ msgstr ""
 
 msgctxt "help:carrier.weight_price_list,weight:"
 msgid "The lower limit for the price."
+msgstr ""
+
+msgctxt "help:carrier.weight_price_list,weight_uom:"
+msgid "The Unit of Measure of the weight."
 msgstr ""
 
 msgctxt "model:carrier.weight_price_list,name:"

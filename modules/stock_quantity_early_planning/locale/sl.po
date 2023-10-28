@@ -44,7 +44,7 @@ msgstr ""
 
 msgctxt "field:stock.quantity.early_plan,origin:"
 msgid "Origin"
-msgstr ""
+msgstr "Izvor"
 
 msgctxt "field:stock.quantity.early_plan,planned_date:"
 msgid "Planned Date"
@@ -52,7 +52,7 @@ msgstr ""
 
 msgctxt "field:stock.quantity.early_plan,processed_by:"
 msgid "Processed by"
-msgstr ""
+msgstr "Obdelal"
 
 msgctxt "field:stock.quantity.early_plan,state:"
 msgid "State"

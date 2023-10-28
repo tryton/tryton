@@ -6,30 +6,6 @@ msgctxt "field:account.configuration,dunning_email_fallback:"
 msgid "Fall-back User"
 msgstr "کاربر عقب افتاده"
 
-msgctxt "field:account.dunning.email.log,date:"
-msgid "Date"
-msgstr "تاریخ"
-
-msgctxt "field:account.dunning.email.log,dunning:"
-msgid "Dunning"
-msgstr "دانینگ"
-
-msgctxt "field:account.dunning.email.log,level:"
-msgid "Level"
-msgstr "سطح"
-
-msgctxt "field:account.dunning.email.log,recipients:"
-msgid "Recipients"
-msgstr "گیرندگان"
-
-msgctxt "field:account.dunning.email.log,recipients_hidden:"
-msgid "Hidden Recipients"
-msgstr "گیرنده گان پنهان"
-
-msgctxt "field:account.dunning.email.log,recipients_secondary:"
-msgid "Secondary Recipients"
-msgstr "گیرندگان ثانویه"
-
 msgctxt "field:account.dunning.level,email_contact_mechanism:"
 msgid "Contact Mechanism"
 msgstr "مکانیزم تماس"
@@ -46,6 +22,11 @@ msgctxt "field:account.dunning.level,send_email:"
 msgid "Send Email"
 msgstr "ارسال ایمیل"
 
+#, fuzzy
+msgctxt "field:ir.email,dunning_level:"
+msgid "Level"
+msgstr "سطح"
+
 msgctxt "help:account.configuration,dunning_email_fallback:"
 msgid "User notified when no e-mail is found to send the dunning"
 msgstr "ابلاغ شده به کاربر هنگامی که هیچ ایمیلی برای بازپرداخت ارسال نشده"
@@ -57,14 +38,6 @@ msgstr "تعریف کدام ایمیل را از مکانیسم های تماس 
 msgctxt "help:account.dunning.level,email_from:"
 msgid "Leave empty for the value defined in the configuration file."
 msgstr "برای مقدار تعریف شده در فایل پیکربندی خالی بگذارید."
-
-msgctxt "model:account.dunning.email.log,name:"
-msgid "Dunning Email Log"
-msgstr "گزارش ایمیل دانینگ"
-
-msgctxt "model:ir.action,name:act_log"
-msgid "Email Logs"
-msgstr "گزارشات ایمیل"
 
 msgctxt "model:ir.action,name:report_email"
 msgid "Dunning Email"
@@ -105,10 +78,6 @@ msgstr "مرجع"
 msgctxt "report:account.dunning.letter:"
 msgid "Reminder Notice"
 msgstr "متن یادآوری"
-
-msgctxt "view:account.dunning.email.log:"
-msgid "Time"
-msgstr "زمان"
 
 msgctxt "view:account.dunning.level:"
 msgid "E-mail"

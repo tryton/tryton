@@ -3,7 +3,7 @@ msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "field:account.invoice.line,product_secondary_uom_category:"
-msgid "Product Secondary UOM Category"
+msgid "Product Secondary UoM Category"
 msgstr "Artikel Zweitmaßeinheitenkategorie"
 
 msgctxt "field:account.invoice.line,secondary_quantity:"
@@ -17,6 +17,10 @@ msgstr "Zweitmaßeinheit"
 msgctxt "field:account.invoice.line,secondary_unit_price:"
 msgid "Secondary Unit Price"
 msgstr "Zweiteinzelpreis"
+
+msgctxt "help:account.invoice.line,product_secondary_uom_category:"
+msgid "The category of secondary Unit of Measure for the product."
+msgstr "Die Kategorie für die Zweitmaßeinheit des Artikels."
 
 msgctxt "view:account.invoice.line:"
 msgid "Quantity:"

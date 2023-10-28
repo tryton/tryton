@@ -14,6 +14,11 @@ msgctxt "field:product.price_list,name:"
 msgid "Name"
 msgstr "Denumire"
 
+#, fuzzy
+msgctxt "field:product.price_list,price:"
+msgid "Price"
+msgstr "Listă de prețuri"
+
 msgctxt "field:product.price_list,tax_included:"
 msgid "Tax Included"
 msgstr "Taxă inclusă"
@@ -61,6 +66,10 @@ msgstr ""
 msgctxt "help:product.price_list,name:"
 msgid "The main identifier of the price list."
 msgstr "Identificatorul principal al listei de prețuri."
+
+msgctxt "help:product.price_list,price:"
+msgid "The value used for 'unit_price'."
+msgstr ""
 
 msgctxt "help:product.price_list,tax_included:"
 msgid "Check if result's formula includes taxes."
@@ -125,6 +134,14 @@ msgstr "Listă de prețuri"
 msgctxt "model:product.price_list.line,name:"
 msgid "Price List Line"
 msgstr "Rândul al listei de prețuri"
+
+msgctxt "selection:product.price_list,price:"
+msgid "Cost Price"
+msgstr ""
+
+msgctxt "selection:product.price_list,price:"
+msgid "List price"
+msgstr ""
 
 msgctxt "selection:product.price_list,unit:"
 msgid "Product Default"

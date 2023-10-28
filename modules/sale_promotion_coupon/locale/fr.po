@@ -64,7 +64,7 @@ msgstr ""
 
 msgctxt "help:sale.promotion.coupon,per_party:"
 msgid "Check to count usage per party."
-msgstr "Cocher pour compter l'utilisation par tiers."
+msgstr "Cochez pour compter l'utilisation par tiers."
 
 msgctxt "model:ir.message,text:msg_duplicate_numbers"
 msgid "The coupons numbered \"%(numbers)s\" are duplicated."

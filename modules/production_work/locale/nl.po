@@ -22,6 +22,10 @@ msgctxt "field:production.work,company:"
 msgid "Company"
 msgstr "Bedrijf"
 
+msgctxt "field:production.work,cost:"
+msgid "Cost"
+msgstr "Kosten"
+
 msgctxt "field:production.work,cycles:"
 msgid "Cycles"
 msgstr "cyclisch"
@@ -86,13 +90,29 @@ msgctxt "field:production.work.center.category,name:"
 msgid "Name"
 msgstr "Naam"
 
+msgctxt "field:production.work.cycle,cancelled_by:"
+msgid "Cancelled By"
+msgstr "Geannuleerd Door"
+
+msgctxt "field:production.work.cycle,company:"
+msgid "Company"
+msgstr "Bedrijf"
+
 msgctxt "field:production.work.cycle,cost:"
 msgid "Cost"
 msgstr "Kosten"
 
+msgctxt "field:production.work.cycle,done_by:"
+msgid "Done By"
+msgstr "Afgerond Door"
+
 msgctxt "field:production.work.cycle,duration:"
 msgid "Duration"
 msgstr "Looptijd"
+
+msgctxt "field:production.work.cycle,run_by:"
+msgid "Run By"
+msgstr "Uitgevoerd Door"
 
 msgctxt "field:production.work.cycle,state:"
 msgid "State"
@@ -164,7 +184,7 @@ msgstr "Annuleer"
 
 msgctxt "model:ir.model.button,string:work_cycle_do_button"
 msgid "Do"
-msgstr "Do"
+msgstr "Doe"
 
 msgctxt "model:ir.model.button,string:work_cycle_run_button"
 msgid "Run"
