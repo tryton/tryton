@@ -744,8 +744,9 @@ class Line(origin_mixin(_states), sequence_ordered(), ModelSQL, ModelView):
             },
         states=_states,
         context={'with_payment': False})
-    origin = fields.Many2One('account.statement.origin', 'Origin',
-        readonly=True,
+    origin = fields.Many2One(
+        'account.statement.origin', 'Origin', readonly=True,
+        ondelete='RESTRICT',
         states={
             'invisible': ~Bool(Eval('origin')),
             },
@@ -929,6 +930,18 @@ class Line(origin_mixin(_states), sequence_ordered(), ModelSQL, ModelView):
     @classmethod
     def search_rec_name(cls, name, clause):
         return [('statement.rec_name',) + tuple(clause[1:])]
+
+    @classmethod
+    def delete(cls, lines):
+        for line in lines:
+            if line.statement_state not in {'cancelled', 'draft'}:
+                raise AccessError(
+                    gettext(
+                        'account_statement.'
+                        'msg_statement_line_delete_cancel_draft',
+                        line=line.rec_name,
+                        sale=line.statement.rec_name))
+        super().delete(lines)
 
     @classmethod
     def copy(cls, lines, default=None):
@@ -1172,6 +1185,18 @@ class Origin(origin_mixin(_states), ModelSQL, ModelView):
                     table.amount - Coalesce(Sum(line.amount), 0), value),
                 group_by=table.id))
         return [('id', 'in', query)]
+
+    @classmethod
+    def delete(cls, origins):
+        for origin in origins:
+            if origin.statement_state not in {'cancelled', 'draft'}:
+                raise AccessError(
+                    gettext(
+                        'account_statement.'
+                        'msg_statement_origin_delete_cancel_draft',
+                        origin=origin.rec_name,
+                        sale=origin.statement.rec_name))
+        super().delete(origins)
 
     @classmethod
     def copy(cls, origins, default=None):
