@@ -1305,6 +1305,20 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
             default = {}
         else:
             default = default.copy()
+
+        alternative_payees2copy = set()
+        for invoice in invoices:
+            if len(invoice.alternative_payees) == 1:
+                parties = {l.party for l in invoice.lines_to_pay}
+                if parties <= set(invoice.alternative_payees):
+                    alternative_payees2copy.add(invoice.id)
+
+        def copy_alternative_payees(data):
+            if data['id'] in alternative_payees2copy:
+                return data.get('alternative_payees', [])
+            else:
+                return []
+
         default.setdefault('number', None)
         default.setdefault('sequence')
         default.setdefault('move', None)
@@ -1313,6 +1327,7 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
         default.setdefault('invoice_report_cache', None)
         default.setdefault('invoice_report_cache_id', None)
         default.setdefault('invoice_report_format', None)
+        default.setdefault('alternative_payees', copy_alternative_payees)
         default.setdefault('payment_lines', None)
         default.setdefault('invoice_date', None)
         default.setdefault('accounting_date', None)
