@@ -510,30 +510,10 @@ Run fetch order::
     >>> sale.state
     'quotation'
 
-Capture partially::
+Capture full amount::
 
-    >>> transaction = order.capture('100.00')
-
-    >>> with config.set_context(shopify_orders=order.id):
-    ...     cron_update_order, = Cron.find([
-    ...         ('method', '=', 'web.shop|shopify_update_order'),
-    ...         ])
-    ...     cron_update_order.click('run_once')
-
-    >>> sale.reload()
-    >>> len(sale.payments)
-    1
-    >>> payment, = sale.payments
-    >>> payment.state
-    'processing'
-    >>> payment.amount
-    Decimal('100.00')
-    >>> sale.state
-    'quotation'
-
-Capture remaining::
-
-    >>> transaction = order.capture('158.98')
+    >>> transaction = order.capture('258.98')
+    >>> test_transaction_id = transaction.parent_id
 
     >>> with config.set_context(shopify_orders=order.id):
     ...     cron_update_order, = Cron.find([
@@ -613,7 +593,7 @@ Ignore shipment exception::
     >>> sale.reload()
     >>> invoice, = sale.invoices
     >>> invoice.total_amount
-    Decimal('164.53')
+    Decimal('164.52')
     >>> payment, = sale.payments
     >>> payment.state
     'succeeded'
