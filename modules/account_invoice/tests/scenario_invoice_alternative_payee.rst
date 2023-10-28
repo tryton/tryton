@@ -88,6 +88,12 @@ Post customer invoice::
     >>> party3.receivable
     Decimal('0.0')
 
+Copying invoice with single alternative payee is kept::
+
+    >>> duplicate_inv, = invoice.duplicate()
+    >>> duplicate_inv.alternative_payees == invoice.alternative_payees
+    True
+
 Set another payee::
 
     >>> delegate = Wizard(
@@ -129,3 +135,9 @@ Pay the invoice::
     1
     >>> len(invoice.reconciliation_lines)
     1
+
+Copying invoice with many alternative payees remove them::
+
+    >>> duplicate_inv, = invoice.duplicate()
+    >>> duplicate_inv.alternative_payees
+    []
