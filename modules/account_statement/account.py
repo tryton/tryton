@@ -1,7 +1,7 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 from trytond.i18n import gettext
-from trytond.model import ModelView
+from trytond.model import ModelView, dualmethod
 from trytond.modules.account.exceptions import PostError
 from trytond.pool import Pool, PoolMeta
 
@@ -22,7 +22,7 @@ class Move(metaclass=PoolMeta):
     def _get_origin(cls):
         return super(Move, cls)._get_origin() + ['account.statement']
 
-    @classmethod
+    @dualmethod
     @ModelView.button
     def post(cls, moves):
         pool = Pool()

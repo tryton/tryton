@@ -6,7 +6,7 @@ from itertools import groupby
 from sql import Literal, Null
 
 from trytond.i18n import gettext
-from trytond.model import ModelSQL, ModelView, Workflow, fields
+from trytond.model import ModelSQL, ModelView, Workflow, dualmethod, fields
 from trytond.pool import Pool, PoolMeta
 from trytond.pyson import Eval
 from trytond.tools import sortable_values
@@ -192,7 +192,7 @@ class TaxLine(metaclass=PoolMeta):
 class Move(metaclass=PoolMeta):
     __name__ = 'account.move'
 
-    @classmethod
+    @dualmethod
     @ModelView.button
     def post(cls, moves):
         pool = Pool()

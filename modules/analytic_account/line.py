@@ -6,7 +6,7 @@ from itertools import groupby
 
 from sql import Literal
 
-from trytond.model import Check, Index, ModelSQL, ModelView, fields
+from trytond.model import Check, Index, ModelSQL, ModelView, dualmethod, fields
 from trytond.modules.currency.fields import Monetary
 from trytond.pool import Pool, PoolMeta
 from trytond.pyson import Eval, PYSONEncoder
@@ -140,7 +140,7 @@ class Line(ModelSQL, ModelView):
 class Move(metaclass=PoolMeta):
     __name__ = 'account.move'
 
-    @classmethod
+    @dualmethod
     @ModelView.button
     def post(cls, moves):
         pool = Pool()
