@@ -140,13 +140,13 @@
             if (this.indexOf(record) < 0) {
                 this.splice(position, 0, record);
             }
-            for (var record_rm in this.record_removed) {
+            for (var record_rm of this.record_removed) {
                 if (record_rm.id == record.id) {
                     this.record_removed.splice(
                             this.record_removed.indexOf(record_rm), 1);
                 }
             }
-            for (var record_del in this.record_deleted) {
+            for (var record_del of this.record_deleted) {
                 if (record_del.id == record.id) {
                     this.record_deleted.splice(
                             this.record_deleted.indexOf(record_del), 1);
