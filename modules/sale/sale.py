@@ -1231,13 +1231,15 @@ class SaleLine(sequence_ordered(), ModelSQL, ModelView):
                 self.unit_price = self.unit_price.quantize(
                     Decimal(1) / 10 ** self.__class__.unit_price.digits[1])
 
-    @fields.depends(methods=['on_change_quantity'])
+    @fields.depends(methods=['on_change_quantity', 'on_change_with_amount'])
     def on_change_unit(self):
         self.on_change_quantity()
+        self.amount = self.on_change_with_amount()
 
-    @fields.depends(methods=['on_change_quantity'])
+    @fields.depends(methods=['on_change_quantity', 'on_change_with_amount'])
     def on_change_taxes(self):
         self.on_change_quantity()
+        self.amount = self.on_change_with_amount()
 
     @fields.depends('type', 'quantity', 'unit_price', 'unit', 'sale',
         '_parent_sale.currency')
