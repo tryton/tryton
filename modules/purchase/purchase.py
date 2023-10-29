@@ -1403,9 +1403,15 @@ class Line(sequence_ordered(), ModelSQL, ModelView):
             if self.unit_price:
                 self.unit_price = round_price(self.unit_price)
 
-    @fields.depends(methods=['on_change_quantity'])
+    @fields.depends(methods=['on_change_quantity', 'on_change_with_amount'])
     def on_change_unit(self):
         self.on_change_quantity()
+        self.amount = self.on_change_with_amount()
+
+    @fields.depends(methods=['on_change_quantity', 'on_change_with_amount'])
+    def on_change_taxes(self):
+        self.on_change_quantity()
+        self.amount = self.on_change_with_amount()
 
     @fields.depends('description')
     def on_change_with_summary(self, name=None):
