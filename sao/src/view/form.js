@@ -2686,7 +2686,6 @@ function eval_pyson(value){
             if (!model || !Sao.common.MODELACCESS.get(model).read) {
                 return;
             }
-            var win;
             var record = this.record;
             var value = record.field_get(this.field_name);
 
@@ -2726,7 +2725,8 @@ function eval_pyson(value){
                 };
                 screen.switch_view().done(() => {
                     screen.load([m2o_id]);
-                    win = new Sao.Window.Form(screen, callback, {
+                    screen.current_record = screen.group.get(m2o_id);
+                    new Sao.Window.Form(screen, callback, {
                         save_current: true,
                     });
                 });
@@ -2747,7 +2747,7 @@ function eval_pyson(value){
                     }
                 };
                 var parser = new Sao.common.DomainParser();
-                win = new Sao.Window.Search(
+                new Sao.Window.Search(
                     model, callback, {
                             sel_multi: false,
                             context: context,
@@ -3433,9 +3433,9 @@ function eval_pyson(value){
                 var new_group = record.field_get_client(this.field_name);
                 if (new_group != this.screen.group) {
                     this.screen.set_group(new_group);
-                    if ((this.screen.current_view.view_type == 'tree') &&
-                            this.screen.current_view.editable) {
-                        this.screen.current_record = null;
+                    if ((this.screen.current_view.view_type == 'form') &&
+                        this.screen.group.length) {
+                        this.screen.current_record = this.screen.group[0];
                     }
                 }
                 var domain = [];
@@ -4076,6 +4076,8 @@ function eval_pyson(value){
             };
             screen.switch_view().done(() => {
                 screen.load([this.screen.current_record.id]);
+                screen.current_record = screen.group.get(
+                    this.screen.current_record.id);
                 new Sao.Window.Form(screen, callback);
             });
         },

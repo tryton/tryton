@@ -178,7 +178,6 @@ class Many2Many(Widget):
             if result:
                 ids = [x[0] for x in result]
                 self.screen.load(ids, modified=True)
-                self.screen.display()
             self.screen.set_cursor()
             self.wid_text.set_text('')
         win = WinSearch(self.attrs['relation'], callback, sel_multi=True,
@@ -220,6 +219,7 @@ class Many2Many(Widget):
         # save of the record will trigger the save of the parent
         screen = self._get_screen_form()
         screen.load([self.screen.current_record.id])
+        screen.current_record = screen.group.get(self.screen.current_record.id)
 
         def callback(result):
             if result:

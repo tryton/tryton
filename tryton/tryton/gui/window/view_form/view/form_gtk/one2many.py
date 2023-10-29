@@ -496,7 +496,6 @@ class One2Many(Widget):
             if result:
                 ids = [x[0] for x in result]
                 self.screen.load(ids, modified=True)
-                self.screen.display()
                 if sequence:
                     self.screen.group.set_sequence(
                         field=sequence, position=self.screen.new_position)
@@ -540,9 +539,9 @@ class One2Many(Widget):
 
         if id(self.screen.group) != id(new_group):
             self.screen.group = new_group
-            if (self.screen.current_view.view_type == 'tree') \
-                    and self.screen.current_view.editable:
-                self.screen.current_record = None
+            if (self.screen.current_view.view_type == 'form'
+                    and self.screen.group):
+                self.screen.current_record = self.screen.group[0]
         domain = []
         size_limit = None
         if self.record:

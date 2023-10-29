@@ -34,7 +34,7 @@ def populate(menu, model, record, title='', field=None, context=None):
         if isinstance(record, int):
             screen = Screen(model, context=context)
             screen.load([record])
-            record = screen.current_record
+            record = screen.group.get(record)
         return record
 
     def id_(record):

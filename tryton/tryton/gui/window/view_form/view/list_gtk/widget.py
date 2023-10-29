@@ -922,6 +922,7 @@ class M2O(GenericText):
                 callback()
         if target_id and target_id >= 0:
             screen.load([target_id])
+            screen.current_record = screen.group.get(target_id)
             WinForm(screen, open_callback, save_current=True)
         else:
             defaults = defaults.copy() if defaults is not None else {}

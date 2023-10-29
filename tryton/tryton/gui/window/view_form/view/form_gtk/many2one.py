@@ -200,8 +200,10 @@ class Many2One(Widget):
             return
 
         if self.has_target(value):
+            m2o_id = self.id_from_value(self.field.get(self.record))
             screen = self.get_screen()
-            screen.load([self.id_from_value(self.field.get(self.record))])
+            screen.load([m2o_id])
+            screen.current_record = screen.group.get(m2o_id)
 
             def callback(result):
                 if result:
