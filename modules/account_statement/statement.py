@@ -13,7 +13,7 @@ from sql.operators import Concat
 from trytond.config import config
 from trytond.i18n import gettext
 from trytond.model import (
-    DictSchemaMixin, Index, ModelSQL, ModelView, Workflow, fields,
+    Check, DictSchemaMixin, Index, ModelSQL, ModelView, Workflow, fields,
     sequence_ordered)
 from trytond.model.exceptions import AccessError
 from trytond.modules.company import CompanyReport
@@ -643,6 +643,9 @@ def origin_mixin(_states):
         company = fields.Function(
             fields.Many2One('company.company', "Company"),
             'on_change_with_company', searcher='search_company')
+        company_currency = fields.Function(
+            fields.Many2One('currency.currency', "Company Currency"),
+            'on_change_with_company_currency')
         number = fields.Char("Number")
         date = fields.Date(
             "Date", required=True, states=_states)
@@ -651,6 +654,25 @@ def origin_mixin(_states):
             states=_states)
         currency = fields.Function(fields.Many2One(
                 'currency.currency', "Currency"), 'on_change_with_currency')
+        amount_second_currency = Monetary(
+            "Amount Second Currency",
+            currency='second_currency', digits='second_currency',
+            states={
+                'required': Bool(Eval('second_currency')),
+                'readonly': _states['readonly'],
+                })
+        second_currency = fields.Many2One(
+            'currency.currency', "Second Currency",
+            domain=[
+                ('id', '!=', Eval('currency', -1)),
+                If(Eval('currency', -1) != Eval('company_currency', -1),
+                    ('id', '=', Eval('company_currency', -1)),
+                    ()),
+                ],
+            states={
+                'required': Bool(Eval('amount_second_currency')),
+                'readonly': _states['readonly'],
+                })
         party = fields.Many2One(
             'party.party', "Party", states=_states,
             context={
@@ -700,6 +722,10 @@ def origin_mixin(_states):
         def search_company(cls, name, clause):
             return [('statement.' + clause[0],) + tuple(clause[1:])]
 
+        @fields.depends('statement', '_parent_statement.company')
+        def on_change_with_company_currency(self, name=None):
+            return self.statement.company.currency if self.statement else None
+
         @fields.depends('statement', '_parent_statement.journal')
         def on_change_with_currency(self, name=None):
             if self.statement and self.statement.journal:
@@ -727,7 +753,10 @@ class Line(origin_mixin(_states), sequence_ordered(), ModelSQL, ModelView):
         domain={
             'account.invoice': [
                 ('company', '=', Eval('company', -1)),
-                ('currency', '=', Eval('currency', -1)),
+                If(Eval('second_currency'),
+                    ('currency', '=', Eval('second_currency', -1)),
+                    ('currency', '=', Eval('currency', -1))
+                    ),
                 If(Bool(Eval('party')),
                     ['OR',
                         ('party', '=', Eval('party', -1)),
@@ -760,6 +789,7 @@ class Line(origin_mixin(_states), sequence_ordered(), ModelSQL, ModelView):
     @classmethod
     def __setup__(cls):
         super(Line, cls).__setup__()
+        table = cls.__table__()
         cls.date.states = {
             'readonly': (
                 (Eval('statement_state') != 'draft')
@@ -770,6 +800,14 @@ class Line(origin_mixin(_states), sequence_ordered(), ModelSQL, ModelView):
             'required': (Eval('party_required', False)
                 & (Eval('statement_state') == 'draft')),
             }
+        cls._sql_constraints += [
+            ('second_currency_sign',
+                Check(
+                    table,
+                    Coalesce(table.amount_second_currency, 0)
+                    * table.amount >= 0),
+                'account_statement.msg_statement_line_second_currency_sign'),
+            ]
 
     @classmethod
     def __register__(cls, module):
@@ -1019,23 +1057,28 @@ class Line(origin_mixin(_states), sequence_ordered(), ModelSQL, ModelView):
         pool = Pool()
         MoveLine = pool.get('account.move.line')
         Currency = Pool().get('currency.currency')
-        zero = Decimal("0.0")
         if not self.amount:
             return
-        with Transaction().set_context(date=self.date):
-            amount = Currency.compute(self.statement.journal.currency,
-                self.amount, self.statement.company.currency)
-        if self.statement.journal.currency != self.statement.company.currency:
-            second_currency = self.statement.journal.currency.id
-            amount_second_currency = -self.amount
+        if self.second_currency == self.company_currency:
+            amount = self.amount_second_currency
         else:
-            amount_second_currency = None
+            with Transaction().set_context(date=self.date):
+                amount = Currency.compute(
+                    self.currency, self.amount, self.company_currency)
+        if self.currency != self.company_currency:
+            second_currency = self.currency
+            amount_second_currency = -self.amount
+        elif self.second_currency:
+            second_currency = self.second_currency
+            amount_second_currency = -self.amount_second_currency
+        else:
             second_currency = None
+            amount_second_currency = None
 
         return MoveLine(
             origin=self,
-            debit=amount < zero and -amount or zero,
-            credit=amount >= zero and amount or zero,
+            debit=abs(amount) if amount < 0 else 0,
+            credit=abs(amount) if amount > 0 else 0,
             account=self.account,
             party=self.party if self.account.party_required else None,
             second_currency=second_currency,
@@ -1059,6 +1102,10 @@ class LineGroup(ModelSQL, ModelView):
         "Amount", currency='currency', digits='currency')
     currency = fields.Function(fields.Many2One('currency.currency',
             'Currency'), 'get_currency')
+    amount_second_currency = Monetary(
+        "Amount Second Currency",
+        currency='second_currency', digits='second_currency')
+    second_currency = fields.Many2One('currency.currency', "Second Currency")
     party = fields.Many2One('party.party', 'Party')
     move = fields.Many2One('account.move', 'Move')
 
@@ -1076,6 +1123,7 @@ class LineGroup(ModelSQL, ModelView):
             Max(line.number).as_('number'),
             Max(line.date).as_('date'),
             Sum(line.amount).as_('amount'),
+            Sum(line.amount_second_currency).as_('amount_second_currency'),
             Max(line.party).as_('party'),
             ]
 
@@ -1093,6 +1141,7 @@ class LineGroup(ModelSQL, ModelView):
             move.create_date,
             move.write_uid,
             move.write_date,
+            line.second_currency,
             ]
 
         columns = (std_columns + [move.id.as_('move')]

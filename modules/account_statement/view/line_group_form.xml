@@ -6,13 +6,16 @@ this repository contains the full copyright notices and license terms. -->
     <field name="statement"/>
     <label name="journal"/>
     <field name="journal" widget="selection"/>
+
     <label name="number"/>
     <field name="number"/>
     <label name="date"/>
     <field name="date"/>
+
     <label name="amount"/>
     <field name="amount"/>
-    <newline/>
+    <label name="amount_second_currency"/>
+    <field name="amount_second_currency"/>
 
     <label name="party"/>
     <field name="party"/>

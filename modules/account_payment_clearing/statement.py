@@ -81,7 +81,9 @@ class StatementLine(metaclass=PoolMeta):
             ]
         cls.related_to.domain['account.payment.group'] = [
             ('company', '=', Eval('company', -1)),
-            ('currency', '=', Eval('currency', -1)),
+            If(Eval('second_currency'),
+                ('currency', '=', Eval('second_currency', -1)),
+                ('currency', '=', Eval('currency', -1))),
             If(Eval('statement_state') == 'draft',
                 ('clearing_reconciled', '!=', True),
                 ()),

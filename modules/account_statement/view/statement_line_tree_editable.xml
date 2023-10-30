@@ -6,6 +6,7 @@ this repository contains the full copyright notices and license terms. -->
     <field name="number"/>
     <field name="date"/>
     <field name="amount" sum="1"/>
+    <field name="amount_second_currency" optional="1"/>
     <field name="party" expand="1"/>
     <field name="related_to" expand="1"/>
     <field name="account" expand="1"/>

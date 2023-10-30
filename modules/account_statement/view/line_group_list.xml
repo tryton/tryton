@@ -7,6 +7,7 @@ this repository contains the full copyright notices and license terms. -->
     <field name="number"/>
     <field name="date"/>
     <field name="amount"/>
+    <field name="amount_second_currency" optional="1"/>
     <field name="party"/>
     <field name="move"/>
 </tree>

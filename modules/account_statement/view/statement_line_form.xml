@@ -8,19 +8,29 @@ this repository contains the full copyright notices and license terms. -->
     <field name="number"/>
     <label name="sequence"/>
     <field name="sequence"/>
+
     <label name="date"/>
     <field name="date"/>
     <label name="amount"/>
     <field name="amount"/>
+
+    <label name="amount_second_currency"/>
+    <field name="amount_second_currency"/>
+    <label name="second_currency"/>
+    <field name="second_currency"/>
+
     <label name="party"/>
     <field name="party"/>
     <label name="account"/>
     <field name="account"/>
+
     <label name="related_to"/>
     <field name="related_to"/>
     <newline/>
+
     <label name="description"/>
     <field name="description" colspan="3"/>
+
     <label name="move"/>
     <field name="move"/>
     <label name="origin"/>

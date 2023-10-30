@@ -6,20 +6,31 @@ this repository contains the full copyright notices and license terms. -->
     <field name="statement"/>
     <label name="company"/>
     <field name="company"/>
+
     <label name="number"/>
     <field name="number"/>
     <label name="date"/>
     <field name="date"/>
+
     <label name="amount"/>
     <field name="amount"/>
     <label name="pending_amount"/>
     <field name="pending_amount"/>
+
+    <label name="amount_second_currency"/>
+    <field name="amount_second_currency"/>
+    <label name="second_currency"/>
+    <field name="second_currency"/>
+
     <label name="party"/>
     <field name="party"/>
     <label name="account"/>
     <field name="account"/>
+
     <label name="description"/>
     <field name="description" colspan="3"/>
+
     <field name="information" colspan="4"/>
+
     <field name="lines" colspan="4"/>
 </form>

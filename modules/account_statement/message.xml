@@ -36,6 +36,9 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.message" id="msg_statement_post_pending_amount">
             <field name="text">To post statement "%(statement)s" you must create lines for pending %(amount)s of origin "%(origin)s".</field>
         </record>
+        <record model="ir.message" id="msg_statement_line_second_currency_sign">
+            <field name="text">You must set the same sign for second currency than amount.</field>
+        </record>
         <record model="ir.message" id="msg_statement_line_delete_cancel_draft">
             <field name="text">To delete line "%(line)s" you must cancel or reset to draft statement "%(statement)s".</field>
         </record>
