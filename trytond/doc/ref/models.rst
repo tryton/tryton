@@ -573,6 +573,11 @@ Class attributes are:
    A :py:class:`set <set>` containing the :class:`Index` that are created on
    the table.
 
+.. attribute:: ModelSQL._history_sql_indexes
+
+   A :py:class:`set <set>` containing the :class:`Index` that are created on
+   the history table.
+
 Class methods:
 
 .. classmethod:: ModelSQL.__table__()

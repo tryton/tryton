@@ -287,6 +287,7 @@ class ModelSQL(ModelStorage):
 
         cls._sql_constraints = []
         cls._sql_indexes = set()
+        cls._history_sql_indexes = set()
         if not callable(cls.table_query):
             table = cls.__table__()
             cls._sql_constraints.append(
@@ -307,10 +308,11 @@ class ModelSQL(ModelStorage):
                     })
         if cls._history:
             history_table = cls.__table_history__()
-            cls._sql_indexes.add(
-                Index(
-                    history_table,
-                    (history_table.id, Index.Equality())))
+            cls._history_sql_indexes.update({
+                    Index(
+                        history_table,
+                        (history_table.id, Index.Equality())),
+                    })
 
     @classmethod
     def __post_setup__(cls):
@@ -515,6 +517,10 @@ class ModelSQL(ModelStorage):
             table_h = cls.__table_handler__()
             indexes = filter(no_subset, cls._sql_indexes)
             table_h.set_indexes(indexes)
+            if cls._history:
+                history_th = cls.__table_handler__(history=True)
+                indexes = filter(no_subset, cls._history_sql_indexes)
+                history_th.set_indexes(indexes)
 
     @classmethod
     def _update_history_table(cls):
