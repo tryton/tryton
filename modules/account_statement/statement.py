@@ -973,7 +973,7 @@ class Line(origin_mixin(_states), sequence_ordered(), ModelSQL, ModelView):
                 to_reconcile.clear()
 
             if move_line.second_currency:
-                amount = move_line.amount_second_currency
+                amount = -move_line.amount_second_currency
                 currency = move_line.second_currency
             else:
                 amount = move_line.credit - move_line.debit
