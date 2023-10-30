@@ -156,18 +156,18 @@
             if (this.indexOf(record) < 0) {
                 this.splice(position, 0, record);
             }
-            for (var record_rm in this.record_removed) {
+            this.record_removed.forEach(function(record_rm) {
                 if (record_rm.id == record.id) {
                     this.record_removed.splice(
                             this.record_removed.indexOf(record_rm), 1);
                 }
-            }
-            for (var record_del in this.record_deleted) {
+            });
+            this.record_deleted.forEach(function(record_del) {
                 if (record_del.id == record.id) {
                     this.record_deleted.splice(
                             this.record_deleted.indexOf(record_del), 1);
                 }
-            }
+            });
             record._changed.id = true;
             if (changed) {
                 this.changed();
