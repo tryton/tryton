@@ -1,3 +1,7 @@
+
+Version 7.0.0 - 2023-10-30
+--------------------------
+* Bug fixes (see mercurial logs for details)
 * Add support for Python 3.12
 * Rename Lot Unit to Lot UoM for product
 

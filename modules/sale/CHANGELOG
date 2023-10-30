@@ -1,3 +1,7 @@
+
+Version 7.0.0 - 2023-10-30
+--------------------------
+* Bug fixes (see mercurial logs for details)
 * Add support for Python 3.12
 * Add warning when receiving too much goods from sale return
 * Do not invoice non sale line

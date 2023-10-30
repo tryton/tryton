@@ -1,3 +1,7 @@
+
+Version 7.0.0 - 2023-10-30
+--------------------------
+* Bug fixes (see mercurial logs for details)
 * Add support for Python 3.12
 * Check customer lot quantities for drop shipment
 * Check outgoing lot quantities for internal shipment
