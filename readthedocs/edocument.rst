@@ -5,8 +5,8 @@
 Electronic Document
 ===================
 
-`UN/CEFACT </projects/modules-edocument-uncefact/en/latest>`_
+`UN/CEFACT </projects/modules-edocument-uncefact/en/7.0>`_
     Supports UN/CEFACT format.
 
-`UNECE </projects/modules-edocument-unece/en/latest>`_
+`UNECE </projects/modules-edocument-unece/en/7.0>`_
     Adds UNECE codes.
