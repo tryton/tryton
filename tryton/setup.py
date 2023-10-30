@@ -141,7 +141,7 @@ dist = setup(name=name,
         ],
     extras_require={
         'calendar': ['GooCalendar>=0.7'],
-        'sound': 'playsound',
+        'sound': ['playsound'],
         },
     zip_safe=False,
     **args
