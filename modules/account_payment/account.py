@@ -685,7 +685,10 @@ class Statement(metaclass=PoolMeta):
             for date, payments in to_fail.items():
                 with Transaction().set_context(clearing_date=date):
                     Payment.fail(Payment.browse(payments))
-        payments = set.union(*to_success.values(), *to_fail.values())
+        if to_success or to_fail:
+            payments = set.union(*to_success.values(), *to_fail.values())
+        else:
+            payments = []
         return list(payments)
 
 
