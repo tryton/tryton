@@ -449,7 +449,7 @@ class FloatField(Field):
             value /= factor
             digits = self.digits(record)
             if digits:
-                value = round(value, digits[0])
+                value = round(value, digits[1])
             value = self.convert(value)
         return value
 
