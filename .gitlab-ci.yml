@@ -250,7 +250,7 @@ check-template-modules:
   stage: build
   image: ${CI_DEPENDENCY_PROXY_GROUP_IMAGE_PREFIX}/tryton/ci
   script:
-    - .gitlab-scripts/trigger-readthedocs.py -c "${RTD_CONFIG}" -p "${PACKAGE}" -b "${CI_COMMIT_BRANCH#branch/}"
+    - .gitlab-scripts/trigger-readthedocs.py -c "${RTD_CONFIG}" -p "${PACKAGE}" -b default "${CI_COMMIT_BRANCH#branch/}"
   rules:
     - if: $CI_COMMIT_BRANCH =~ /^branch\/.*/
       changes:
