@@ -2,7 +2,7 @@
 # this repository contains the full copyright notices and license terms.
 import gettext
 import locale
-from decimal import Decimal
+from decimal import Decimal, InvalidOperation
 
 from gi.repository import Gdk, GObject, Gtk
 
@@ -62,7 +62,7 @@ class NumberEntry(Gtk.Entry, Gtk.Editable):
         if text not in ['-', self.__decimal_point, self.__thousands_sep]:
             try:
                 value = Decimal(locale.delocalize(text, self.monetary))
-            except ValueError:
+            except (ValueError, InvalidOperation):
                 return position
         if (value and self.__digits is not None
                 and (round(value, self.__digits) != value
