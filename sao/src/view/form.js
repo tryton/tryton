@@ -3328,7 +3328,7 @@ function eval_pyson(value){
         },
         set_readonly: function(readonly) {
             Sao.View.Form.One2Many._super.set_readonly.call(this, readonly);
-            this._set_button_sensitive();
+            this.prm.done(() => this._set_button_sensitive());
             this._set_label_state();
         },
         set_required: function(required) {
@@ -3416,9 +3416,9 @@ function eval_pyson(value){
         display: function() {
             Sao.View.Form.One2Many._super.display.call(this);
 
-            this._set_button_sensitive();
-
             this.prm.done(() => {
+                this._set_button_sensitive();
+
                 var record = this.record;
                 var field = this.field;
 
@@ -3711,7 +3711,7 @@ function eval_pyson(value){
             }
             var message = name + ' / ' + Sao.common.humanize(size);
             this.label.text(message).attr('title', message);
-            this._set_button_sensitive();
+            this.prm.done(() => this._set_button_sensitive());
         },
         validate: function() {
             var prm = jQuery.Deferred();
