@@ -1322,6 +1322,9 @@ class SaleLine(TaxableMixin, sequence_ordered(), ModelSQL, ModelView):
         states={
             'invisible': ~Eval('invoice_lines'),
             })
+    invoice_progress = fields.Function(
+        fields.Float("Invoice Progress", digits=(1, 4)),
+        'get_invoice_progress')
     moves = fields.One2Many(
         'stock.move', 'origin', "Moves", readonly=True,
         states={
@@ -1388,6 +1391,33 @@ class SaleLine(TaxableMixin, sequence_ordered(), ModelSQL, ModelView):
             self.product = None
             self.unit = None
             self.taxes = None
+
+    @property
+    def _invoice_remaining_quantity(self):
+        "Compute the remaining quantity to be paid"
+        pool = Pool()
+        UoM = pool.get('product.uom')
+        if self.type != 'line':
+            return
+        skips = set(self.sale.invoices_ignored)
+        quantity = self.quantity
+        for invoice_line in self.invoice_lines:
+            if invoice_line.type != 'line':
+                continue
+            if (invoice_line.invoice.state == 'paid'
+                    or invoice_line.invoice in skips):
+                quantity -= UoM.compute_qty(
+                    invoice_line.unit or self.unit, invoice_line.quantity,
+                    self.unit)
+        return quantity
+
+    def get_invoice_progress(self, name):
+        progress = None
+        quantity = self._invoice_remaining_quantity
+        if quantity is not None and self.quantity:
+            progress = round((self.quantity - quantity) / self.quantity, 4)
+            progress = max(0, min(1, progress))
+        return progress
 
     @property
     def _move_remaining_quantity(self):
