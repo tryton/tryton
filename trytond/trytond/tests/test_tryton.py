@@ -132,9 +132,8 @@ def restore_db_cache(name):
 
 def backup_db_cache(name):
     if DB_CACHE:
-        if (not DB_CACHE.startswith('postgresql://')
-                and not os.path.exists(DB_CACHE)):
-            os.makedirs(DB_CACHE)
+        if not DB_CACHE.startswith('postgresql://'):
+            os.makedirs(DB_CACHE, exist_ok=True)
         cache_file = _db_cache_file(DB_CACHE, name)
         if backend.name == 'sqlite':
             _sqlite_copy(cache_file)
