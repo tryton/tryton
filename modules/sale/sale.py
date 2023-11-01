@@ -645,10 +645,10 @@ class Sale(
         '''
         Return the shipment state for the sale.
         '''
-        if self.moves:
-            if any(l.moves_exception for l in self.lines):
-                return 'exception'
-            elif all(l.moves_progress >= 1.0 for l in self.lines
+        if any(l.moves_exception for l in self.lines):
+            return 'exception'
+        elif any(m.state != 'cancelled' for m in self.moves):
+            if all(l.moves_progress >= 1.0 for l in self.lines
                     if l.moves_progress is not None):
                 return 'sent'
             elif any(l.moves_progress for l in self.lines):

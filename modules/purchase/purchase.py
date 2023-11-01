@@ -594,10 +594,10 @@ class Purchase(
         '''
         Return the shipment state for the purchase.
         '''
-        if self.moves:
-            if any(l.moves_exception for l in self.lines):
-                return 'exception'
-            elif all(l.moves_progress >= 1 for l in self.lines
+        if any(l.moves_exception for l in self.lines):
+            return 'exception'
+        elif any(m.state != 'cancelled' for m in self.moves):
+            if all(l.moves_progress >= 1 for l in self.lines
                     if l.moves_progress is not None):
                 return 'received'
             elif any(l.moves_progress for l in self.lines):
