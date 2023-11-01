@@ -961,12 +961,16 @@ class Sale(
     def is_done(self):
         return ((self.invoice_state == 'paid'
                 or (self.invoice_state == 'none'
-                    and all(not l.quantity
-                        for l in self.lines if l.type == 'line')))
+                    and all(
+                        l.invoice_progress >= 1
+                        for l in self.lines
+                        if l.invoice_progress is not None)))
             and (self.shipment_state == 'sent'
                 or (self.shipment_state == 'none'
-                    and all(l.product.type == 'service'
-                        for l in self.lines if l.product))))
+                    and all(
+                        l.moves_progress >= 1
+                        for l in self.lines
+                        if l.moves_progress is not None))))
 
     @classmethod
     def delete(cls, sales):
