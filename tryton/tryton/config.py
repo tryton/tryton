@@ -62,8 +62,7 @@ def get_config_dir():
     return os.path.join(get_config_root(), __version__.rsplit('.', 1)[0])
 
 
-if not os.path.isdir(get_config_dir()):
-    os.makedirs(get_config_dir(), 0o700)
+os.makedirs(get_config_dir(), mode=0o700, exist_ok=True)
 
 
 class ConfigManager(object):
