@@ -214,6 +214,8 @@ class SalePromotion(
             return pattern
         quantity = 0
         for line in sale.lines:
+            if line.type != 'line':
+                continue
             if self.is_valid_sale_line(line):
                 quantity += Uom.compute_qty(line.unit, line.quantity,
                     self.unit)
