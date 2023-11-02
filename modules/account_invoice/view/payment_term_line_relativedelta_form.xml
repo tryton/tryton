@@ -6,16 +6,22 @@ this repository contains the full copyright notices and license terms. -->
     <field name="line"/>
     <label name="sequence"/>
     <field name="sequence"/>
-    <label name="months"/>
-    <field name="months"/>
+
+    <label id="help" string="Operations are applied in this displayed order." colspan="4" xalign="0"/>
+
     <label name="month"/>
     <field name="month" widget="selection"/>
+    <label name="months"/>
+    <field name="months"/>
+
     <label name="weeks"/>
-    <field name="weeks"/>
-    <label name="weekday"/>
-    <field name="weekday" widget="selection"/>
-    <label name="days"/>
-    <field name="days"/>
+    <field name="weeks" colspan="3"/>
+
     <label name="day"/>
     <field name="day"/>
+    <label name="days"/>
+    <field name="days"/>
+
+    <label name="weekday"/>
+    <field name="weekday" widget="selection" colspan="3"/>
 </form>

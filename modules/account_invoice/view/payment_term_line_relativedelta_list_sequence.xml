@@ -3,10 +3,10 @@
 this repository contains the full copyright notices and license terms. -->
 <tree sequence="sequence">
     <field name="line"/>
-    <field name="months"/>
     <field name="month" widget="selection"/>
+    <field name="months"/>
     <field name="weeks"/>
-    <field name="weekday" widget="selection"/>
-    <field name="days"/>
     <field name="day"/>
+    <field name="days"/>
+    <field name="weekday" widget="selection"/>
 </tree>
