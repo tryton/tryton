@@ -8803,3 +8803,4 @@ c9a6d1e8c1a46b7a32af18a8f779bf2ffc9f4d0d tryton-6.6.12
 ad4ae29aa31aad631088c83419cfd167da512f0a stock_shipment_cost-6.6.1
 a1172057aa0299f5e80265c3c75642e4e2fc951f stock_lot-6.6.2
 9a2bfc92bce7b9bcde04ab040526bc03ea52c7e5 sale_subscription-6.6.3
+6f6525c834bc9f853069c63129d45d0501128689 sale_shipment_tolerance-6.6.1
