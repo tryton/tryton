@@ -8907,3 +8907,4 @@ af076168c6612dd8939f48071330e562fea44530 quality-6.8.1
 1c706fa9e901f68b05a8280c9b1a457a7c60eaaa account_statement-6.8.1
 5295acd97ce861f63314f987e8e3dfa30575b158 account_payment_stripe-6.8.2
 dbe684576df6c6ccc70967e4d5b7f6964f135824 account_payment-6.8.1
+1975c7e72d775ad1d19e3e22e529fa6422560f7e account_invoice_line_standalone-6.8.1
