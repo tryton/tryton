@@ -8816,3 +8816,4 @@ bfba4a45b7aafed46f2c929fa9872a22fb1b8441 commission-6.6.3
 cf9f5043de18f915a3982bc905faa29ef802a91a account_payment_stripe-6.6.4
 3f3ef1ce1617c40e0b722aeb91ef76a30043e86a account_payment-6.6.1
 5e6c86e3d551ec28c78e720c2948b11e7f5f828e account_invoice_line_standalone-6.6.1
+377fea019316d1feb3d696d34f9780e3d76446f0 account_invoice_defer-6.6.2
