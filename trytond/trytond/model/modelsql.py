@@ -1804,8 +1804,14 @@ class ModelSQL(ModelStorage):
                 return row['_datetime'], row['__id']
 
             ids_history = {}
+            create_dates = {}
             for row in rows:
                 key = history_key(row)
+                if row['id'] in create_dates:
+                    if row['_datetime'] < create_dates[row['id']]:
+                        create_dates[row['id']] = row['_datetime']
+                else:
+                    create_dates[row['id']] = row['_datetime']
                 if row['id'] in ids_history:
                     if key < ids_history[row['id']]:
                         continue
@@ -1814,23 +1820,31 @@ class ModelSQL(ModelStorage):
             to_delete = set()
             history = cls.__table_history__()
             for sub_ids in grouped_slice([r['id'] for r in rows]):
+                sub_ids = list(sub_ids)
                 where = reduce_ids(history.id, sub_ids)
+                min_date = min(create_dates[r_id] for r_id in sub_ids)
                 cursor.execute(*history.select(
                         history.id.as_('id'),
                         history.write_date.as_('write_date'),
+                        (history.create_date == Null).as_('deleted'),
                         where=where
                         & (history.write_date != Null)
-                        & (history.create_date == Null)
+                        & (Coalesce(history.write_date, history.create_date)
+                            >= min_date)
                         & (history.write_date
                             <= transaction.context['_datetime'])))
-                for deleted_id, delete_date in cursor:
-                    history_date, _ = ids_history[deleted_id]
+                for h_id, write_date, deleted in cursor:
+                    if h_id in to_delete:
+                        continue
+                    history_date, _ = ids_history[h_id]
                     if isinstance(history_date, str):
                         strptime = datetime.datetime.strptime
                         format_ = '%Y-%m-%d %H:%M:%S.%f'
                         history_date = strptime(history_date, format_)
-                    if history_date <= delete_date:
-                        to_delete.add(deleted_id)
+                    if history_date < write_date:
+                        to_delete.add(h_id)
+                    elif history_date == write_date and deleted:
+                        to_delete.add(h_id)
 
             return filter(lambda r: history_key(r) == ids_history[r['id']]
                 and r['id'] not in to_delete, rows)
