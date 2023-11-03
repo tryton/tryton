@@ -8023,3 +8023,4 @@ e8e080b468795abfcbb9bbafcc47e0510c9b230f sale_shipment_tolerance-6.0.1
 a0da4efc5404376fc33186796b5b6a8586168efa purchase_request-6.0.5
 5b7dd6daa9ffb4f63edca1892a867d49d5bc935e purchase-6.0.13
 9e604f61532e8df8457c0ff058a65fa4eab3060d account_payment_stripe-6.0.8
+0c7829fa0b75e3d40f706ab8eb8663dd4581644c account_invoice_defer-6.0.5
