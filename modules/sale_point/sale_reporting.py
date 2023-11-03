@@ -40,7 +40,7 @@ class AbstractMixin:
         return [
             line.product.as_('product'),
             line.quantity.as_('quantity'),
-            line.unit_gross_price.as_('unit_price'),
+            line.unit_list_price.as_('unit_price'),
             Concat('sale.point.sale,', line.sale).as_('order'),
             sale.date.as_('date'),
             sale.company.as_('company'),
