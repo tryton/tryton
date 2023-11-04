@@ -12,21 +12,21 @@ except NameError:
 
 if hasattr(sys, 'frozen'):
     prefix = os.path.dirname(sys.executable)
+    share = os.path.join(prefix, 'share')
     os.environ['GTK_EXE_PREFIX'] = prefix
     os.environ['GTK_DATA_PREFIX'] = prefix
     os.environ['EV_BACKENDS_DIR'] = prefix
-    os.environ['XDG_DATA_DIRS'] = os.path.join(prefix, 'share')
-    etc = os.path.join(prefix, 'etc')
+    os.environ['XDG_DATA_DIRS'] = share
     os.environ['GDK_PIXBUF_MODULE_FILE'] = os.path.join(
-            etc, 'gtk-3.0', 'gdk-pixbuf.loaders')
+            share, 'gtk-3.0', 'gdk-pixbuf.loaders')
     os.environ['GTK_IM_MODULE_FILE'] = os.path.join(
-            etc, 'gtk-3.0', 'gtk.immodules')
+            share, 'gtk-3.0', 'gtk.immodules')
     os.environ['GI_TYPELIB_PATH'] = os.path.join(
             prefix, 'lib', 'girepository-1.0')
     os.environ.setdefault('SSL_CERT_FILE',
-        os.path.join(etc, 'ssl', 'cert.pem'))
+        os.path.join(share, 'ssl', 'cert.pem'))
     os.environ.setdefault('SSL_CERT_DIR',
-        os.path.join(etc, 'ssl', 'certs'))
+        os.path.join(share, 'ssl', 'certs'))
 
     if sys.platform == 'win32':
         # cx_freeze >= 5 put python modules under lib directory

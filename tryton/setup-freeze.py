@@ -38,9 +38,9 @@ include_files = [
     (os.path.join(sys.prefix, 'share', 'icons', 'Adwaita'),
         os.path.join('share', 'icons', 'Adwaita')),
     (os.path.join(sys.platform, 'gtk-3.0', 'gtk.immodules'),
-        os.path.join('etc', 'gtk-3.0', 'gtk.immodules')),
+        os.path.join('share', 'gtk-3.0', 'gtk.immodules')),
     (os.path.join(sys.platform, 'gtk-3.0', 'gdk-pixbuf.loaders'),
-        os.path.join('etc', 'gtk-3.0', 'gdk-pixbuf.loaders')),
+        os.path.join('share', 'gtk-3.0', 'gdk-pixbuf.loaders')),
     ]
 
 required_gi_namespaces = [
@@ -113,10 +113,10 @@ for lib in required_libs:
 
 ssl_paths = ssl.get_default_verify_paths()
 include_files.append(
-    (ssl_paths.openssl_cafile, os.path.join('etc', 'ssl', 'cert.pem')))
+    (ssl_paths.openssl_cafile, os.path.join('share', 'ssl', 'cert.pem')))
 if os.path.exists(ssl_paths.openssl_capath):
     include_files.append(
-        (ssl_paths.openssl_capath, os.path.join('etc', 'ssl', 'certs')))
+        (ssl_paths.openssl_capath, os.path.join('share', 'ssl', 'certs')))
 
 version = Popen(
     './setup.py --version', stdout=PIPE, shell=True, encoding='utf-8'
