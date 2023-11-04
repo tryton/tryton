@@ -18,6 +18,8 @@ Activate modules::
 
     >>> config = activate_modules('sale_opportunity')
 
+    >>> Sale = Model.get('sale.sale')
+
 Create company::
 
     >>> _ = create_company()
@@ -126,15 +128,14 @@ Add a line::
 Convert to sale::
 
     >>> set_user(sale_user)
-    >>> opportunity.click('convert')
+    >>> sale, = opportunity.click('convert')
     >>> opportunity.state
     'converted'
+    >>> sale.origin == opportunity
+    True
 
 Find the sale::
 
-    >>> Sale = Model.get('sale.sale')
-    >>> sale, = Sale.find(
-    ...     [('origin', '=', 'sale.opportunity,%s' % opportunity.id)])
     >>> line, = sale.lines
     >>> line.product == product
     True

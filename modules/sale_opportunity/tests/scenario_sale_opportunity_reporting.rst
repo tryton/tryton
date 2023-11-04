@@ -65,14 +65,13 @@ Create leads and opportunities::
     >>> opportunity.employee = employee2
     >>> opportunity.end_date = today
     >>> opportunity.click('opportunity')
-    >>> opportunity.click('convert')
+    >>> sale, = opportunity.click('convert')
 
     >>> opportunity = Opportunity(party=customer1)
     >>> opportunity.amount = Decimal('700.00')
     >>> opportunity.employee = employee1
     >>> opportunity.click('opportunity')
-    >>> opportunity.click('convert')
-    >>> sale, = opportunity.sales
+    >>> sale, = opportunity.click('convert')
     >>> line = sale.lines.new()
     >>> line.quantity = 1
     >>> line.unit_price = Decimal('800.00')

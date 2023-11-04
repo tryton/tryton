@@ -398,7 +398,7 @@ class SaleOpportunity(
         pass
 
     @classmethod
-    @ModelView.button
+    @ModelView.button_action('sale.act_sale_form')
     @Workflow.transition('converted')
     @set_employee('converted_by')
     def convert(cls, opportunities):
@@ -408,6 +408,9 @@ class SaleOpportunity(
         Sale.save(sales)
         for sale in sales:
             sale.origin.copy_resources_to(sale)
+        return {
+            'res_id': [s.id for s in sales],
+            }
 
     @property
     def is_forecast(self):
