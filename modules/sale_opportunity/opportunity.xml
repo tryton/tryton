@@ -168,6 +168,10 @@ this repository contains the full copyright notices and license terms. -->
             <field name="string">Convert to Sale</field>
             <field name="model" search="[('model', '=', 'sale.opportunity')]"/>
         </record>
+        <record model="ir.model.button-res.group" id="opportunity_convert_button_group_sale">
+            <field name="button" ref="opportunity_convert_button"/>
+            <field name="group" ref="sale.group_sale"/>
+        </record>
 
         <record model="ir.model.button" id="opportunity_lost_button">
             <field name="name">lost</field>

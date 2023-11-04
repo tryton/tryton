@@ -125,13 +125,13 @@ Add a line::
 
 Convert to sale::
 
+    >>> set_user(sale_user)
     >>> opportunity.click('convert')
     >>> opportunity.state
     'converted'
 
 Find the sale::
 
-    >>> set_user(sale_user)
     >>> Sale = Model.get('sale.sale')
     >>> sale, = Sale.find(
     ...     [('origin', '=', 'sale.opportunity,%s' % opportunity.id)])
