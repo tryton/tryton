@@ -18,6 +18,8 @@ from trytond.transaction import Transaction
 from trytond.pool import Pool
 from trytond.tools import reduce_ids, grouped_slice
 
+from trytond.modules.product import round_price
+
 from .exceptions import ForecastValidationError
 
 
@@ -460,6 +462,7 @@ class ForecastLine(ModelSQL, ModelView):
             unit_price = self.product.list_price
             unit_price = Uom.compute_price(self.product.default_uom,
                 unit_price, self.uom)
+            unit_price = round_price(unit_price)
 
         moves = []
         for day, qty in distribution.items():
