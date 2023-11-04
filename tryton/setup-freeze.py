@@ -31,8 +31,6 @@ include_files = [
         os.path.join('lib', 'gdk-pixbuf-2.0')),
     (os.path.join(sys.prefix, 'lib', 'evince'),
         os.path.join('lib', 'evince')),
-    (os.path.join(sys.prefix, 'share', 'locale'),
-        os.path.join('share', 'locale')),
     (os.path.join(sys.prefix, 'share', 'icons', 'Adwaita'),
         os.path.join('share', 'icons', 'Adwaita')),
     (os.path.join(sys.platform, 'gtk-3.0', 'gtk.immodules'),
