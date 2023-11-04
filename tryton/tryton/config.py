@@ -159,8 +159,6 @@ class ConfigManager(object):
 
 CONFIG = ConfigManager()
 CURRENT_DIR = os.path.dirname(__file__)
-if hasattr(sys, 'frozen'):
-    CURRENT_DIR = os.path.dirname(sys.executable)
 if not isinstance(CURRENT_DIR, str):
     CURRENT_DIR = str(CURRENT_DIR, sys.getfilesystemencoding())
 
