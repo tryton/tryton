@@ -156,7 +156,7 @@ def setlang(lang=None, locale_dict=None):
     if not os.path.isdir(locale_dir):
         try:
             import importlib.resources
-            ref = importlib.files('tryton') / 'data/locale'
+            ref = importlib.resources.files('tryton') / 'data/locale'
             with importlib.resources.as_file(ref) as path:
                 locale_dir = path
         except ImportError:
