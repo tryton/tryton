@@ -9,9 +9,6 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.message" id="msg_no_open_period_date">
             <field name="text">To continue, you must reopen the period "%(period)s" of company "%(company)s" for the date "%(date)s".</field>
         </record>
-        <record model="ir.message" id="msg_modify_delete_period_moves">
-            <field name="text">You cannot modify or delete period "%(period)s" because it contains moves.</field>
-        </record>
         <record model="ir.message" id="msg_create_period_closed_fiscalyear">
             <field name="text">You cannot create a period in fiscal year "%(fiscalyear)s" because it is closed.</field>
         </record>

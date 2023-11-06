@@ -273,17 +273,6 @@ class Period(Workflow, ModelSQL, ModelView):
             return period
 
     @classmethod
-    def _check(cls, periods):
-        Move = Pool().get('account.move')
-        moves = Move.search([
-                ('period', 'in', [p.id for p in periods]),
-                ], limit=1)
-        if moves:
-            raise AccessError(
-                gettext('account.msg_modify_delete_period_moves',
-                    period=moves[0].period.rec_name))
-
-    @classmethod
     def search(cls, args, offset=0, limit=None, order=None, count=False,
             query=False):
         args = args[:]
@@ -362,7 +351,6 @@ class Period(Workflow, ModelSQL, ModelView):
 
     @classmethod
     def delete(cls, periods):
-        cls._check(periods)
         super(Period, cls).delete(periods)
         cls._find_cache.clear()
 
