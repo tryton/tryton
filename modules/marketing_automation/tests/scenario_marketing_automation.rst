@@ -115,6 +115,8 @@ Trigger scenario::
     0
     >>> scenario.block_rate
     0.0
+    >>> bool(scenario.block_rate_trend)
+    True
 
     >>> reporting, = ReportingScenario.find([])
     >>> reporting.record_count
@@ -201,10 +203,16 @@ Trigger open email and reminder after delay::
     0
     >>> root_activity.email_open_rate
     1.0
+    >>> bool(root_activity.email_open_rate_trend)
+    True
     >>> root_activity.email_click_rate
     0.0
+    >>> bool(root_activity.email_click_rate_trend)
+    True
     >>> root_activity.email_click_through_rate
     0.0
+    >>> bool(root_activity.email_click_through_rate_trend)
+    True
 
     >>> reporting, = ReportingActivity.find([
     ...         ('activity', '=', root_activity.id),

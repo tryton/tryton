@@ -8,5 +8,6 @@ this repository contains the full copyright notices and license terms. -->
     <field name="block_rate" factor="100">
         <suffix string="%" name="block_rate"/>
     </field>
+    <field name="block_rate_trend" expand="1"/>
     <field name="state"/>
 </tree>

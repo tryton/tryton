@@ -9,10 +9,13 @@ this repository contains the full copyright notices and license terms. -->
     <field name="email_open_rate" factor="100">
         <suffix string="%" name="email_open_rate"/>
     </field>
+    <field name="email_open_rate_trend" expand="1"/>
     <field name="email_click_rate" factor="100">
         <suffix string="%" name="email_click_rate"/>
     </field>
+    <field name="email_open_rate_trend" expand="1"/>
     <field name="email_click_through_rate" factor="100">
         <suffix string="%" name="email_click_through_rate"/>
     </field>
+    <field name="email_click_through_rate_trend" expand="1"/>
 </tree>

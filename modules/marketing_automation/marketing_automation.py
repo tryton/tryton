@@ -13,6 +13,8 @@ from functools import partial
 from urllib.parse import (
     parse_qsl, quote, urlencode, urljoin, urlsplit, urlunsplit)
 
+from dateutil.relativedelta import relativedelta
+
 try:
     import html2text
 except ImportError:
@@ -23,6 +25,11 @@ from genshi.template import MarkupTemplate, TextTemplate
 from sql import Literal
 from sql.aggregate import Count
 
+try:
+    import pygal
+except ImportError:
+    pygal = None
+
 from trytond.config import config
 from trytond.i18n import gettext
 from trytond.model import (
@@ -32,7 +39,7 @@ from trytond.pool import Pool
 from trytond.pyson import Eval, If, PYSONDecoder, TimeDelta
 from trytond.report import Report
 from trytond.sendmail import SMTPDataManager, sendmail_transactional
-from trytond.tools import grouped_slice, reduce_ids
+from trytond.tools import grouped_slice, pairwise_longest, reduce_ids
 from trytond.tools.email_ import convert_ascii_email, set_from_header
 from trytond.transaction import Transaction
 from trytond.url import http_host
@@ -59,7 +66,56 @@ def _formataddr(name, email):
     return formataddr((name, convert_ascii_email(email)))
 
 
-class Scenario(Workflow, ModelSQL, ModelView):
+def trend_mixin(model_name, field_name):
+    class TrendMixin:
+        __slots__ = ()
+
+        def get_trend(self, name):
+            name = name[:-len('_trend')]
+            if pygal:
+                chart = pygal.Line()
+                chart.add('', [
+                        getattr(ts, name, 0) or 0
+                        for ts in self.trends])
+                return chart.render_sparktext()
+
+        @property
+        def trends(self):
+            pool = Pool()
+            Model = pool.get(model_name)
+            Date = pool.get('ir.date')
+
+            delta = self._trend_period_delta()
+            date = Date.today()
+            date -= 10 * delta
+
+            records = Model.search([
+                    ('date', '>=', date),
+                    (field_name, '=', self.id),
+                    ],
+                order=[('date', 'ASC')])
+            for record, next_record in pairwise_longest(records):
+                yield record
+                if delta and next_record:
+                    date = record.date + delta
+                    while date < next_record.date:
+                        yield None
+                        date += delta
+
+        @classmethod
+        def _trend_period_delta(cls):
+            context = Transaction().context
+            return {
+                'year': relativedelta(years=1),
+                'month': relativedelta(months=1),
+                'day': relativedelta(days=1),
+                }.get(context.get('period', 'month'))
+    return TrendMixin
+
+
+class Scenario(
+        trend_mixin('marketing.automation.reporting.scenario', 'scenario'),
+        Workflow, ModelSQL, ModelView):
     "Marketing Scenario"
     __name__ = 'marketing.automation.scenario'
 
@@ -77,6 +133,9 @@ class Scenario(Workflow, ModelSQL, ModelView):
     block_rate = fields.Function(
         fields.Float("Block Rate"),
         'get_rate')
+    block_rate_trend = fields.Function(
+        fields.Char("Block Rate Trend"),
+        'get_trend')
     unsubscribable = fields.Boolean(
         "Unsubscribable",
         help="If checked parties are also unsubscribed from the scenario.")
@@ -273,7 +332,9 @@ class Scenario(Workflow, ModelSQL, ModelView):
             RecordActivity.save(record_activities)
 
 
-class Activity(ModelSQL, ModelView):
+class Activity(
+        trend_mixin('marketing.automation.reporting.activity', 'activity'),
+        ModelSQL, ModelView):
     "Marketing Activity"
     __name__ = 'marketing.automation.activity'
 
@@ -380,6 +441,13 @@ class Activity(ModelSQL, ModelView):
                 'invisible': Eval('action') != 'send_email',
                 }),
         'get_rate')
+    email_open_rate_trend = fields.Function(
+        fields.Char(
+            "E-mail Open Rate Trend",
+            states={
+                'invisible': Eval('action') != 'send_email',
+                }),
+        'get_trend')
     email_click_rate = fields.Function(
         fields.Float(
             "E-mail Click Rate",
@@ -387,6 +455,13 @@ class Activity(ModelSQL, ModelView):
                 'invisible': Eval('action') != 'send_email',
                 }),
         'get_rate')
+    email_click_rate_trend = fields.Function(
+        fields.Char(
+            "E-mail Click Rate Trend",
+            states={
+                'invisible': Eval('action') != 'send_email',
+                }),
+        'get_trend')
     email_click_through_rate = fields.Function(
         fields.Float(
             "E-mail Click-Through Rate",
@@ -394,6 +469,13 @@ class Activity(ModelSQL, ModelView):
                 'invisible': Eval('action') != 'send_email',
                 }),
         'get_rate')
+    email_click_through_rate_trend = fields.Function(
+        fields.Char(
+            "E-mail Click-Through Rate Trend",
+            states={
+                'invisible': Eval('action') != 'send_email',
+                }),
+        'get_trend')
 
     @classmethod
     def __setup__(cls):
