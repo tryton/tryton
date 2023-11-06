@@ -7,7 +7,8 @@ from decimal import Decimal
 from dateutil.relativedelta import relativedelta
 
 from trytond.exceptions import UserError
-from trytond.modules.account.exceptions import FiscalYearDatesError
+from trytond.modules.account.exceptions import (
+    FiscalYearDatesError, PeriodDatesError)
 from trytond.modules.account.tax import TaxableMixin
 from trytond.modules.company.tests import (
     CompanyTestMixin, PartyCompanyCheckEraseMixin, create_company, set_company)
@@ -309,6 +310,27 @@ class AccountTestCase(
                 end_date=datetime.date(2021, 12, 31))
             with self.assertRaises(FiscalYearDatesError):
                 earlier_fiscalyear.save()
+
+    @with_transaction()
+    def test_change_fiscalyear_dates_with_periods(self):
+        "Test change fiscal year dates"
+        company = create_company()
+        with set_company(company):
+            fiscalyear = get_fiscalyear(
+                company,
+                start_date=datetime.date(2023, 1, 1),
+                end_date=datetime.date(2023, 12, 31))
+            fiscalyear.save()
+            fiscalyear.create_period([fiscalyear])
+
+            # Extend
+            fiscalyear.end_date = datetime.date(2024, 5, 31)
+            fiscalyear.save()
+
+            # Shorten
+            with self.assertRaises(PeriodDatesError):
+                fiscalyear.end_date = datetime.date(2023, 5, 31)
+                fiscalyear.save()
 
     @with_transaction()
     def test_account_debit_credit(self):

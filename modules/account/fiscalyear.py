@@ -115,6 +115,7 @@ class FiscalYear(Workflow, ModelSQL, ModelView):
         super().validate_fields(fiscalyears, field_names)
         cls.check_dates(fiscalyears, field_names)
         cls.check_post_move_sequence(fiscalyears, field_names)
+        cls.check_period_dates(fiscalyears, field_names)
 
     @classmethod
     def check_dates(cls, fiscalyears, field_names=None):
@@ -173,6 +174,15 @@ class FiscalYear(Workflow, ModelSQL, ModelView):
                         'account.msg_fiscalyear_different_post_move_sequence',
                         first=fiscalyear.rec_name,
                         second=years[0].rec_name))
+
+    @classmethod
+    def check_period_dates(cls, fiscalyears, field_names=None):
+        pool = Pool()
+        Period = pool.get('account.period')
+        if field_names and not (field_names & {'start_date', 'end_date'}):
+            return
+        periods = [p for f in fiscalyears for p in f.periods]
+        Period.check_fiscalyear_dates(periods, field_names={'fiscalyear'})
 
     @classmethod
     def create(cls, vlist):
