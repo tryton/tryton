@@ -485,6 +485,7 @@ class ShipmentDrop(Workflow, ModelSQL, ModelView):
                 unit_price = UoM.compute_price(
                     s_move.product.default_uom, s_move.product.list_price,
                     s_move.uom)
+                unit_price = round_price(unit_price)
                 new_customer_move = shipment._get_customer_move(s_move)
                 new_customer_move.quantity = out_quantity
                 new_customer_move.unit_price = unit_price
