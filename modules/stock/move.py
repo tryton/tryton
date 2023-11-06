@@ -810,8 +810,10 @@ class Move(Workflow, ModelSQL, ModelView):
         # Use ordered dict to optimize cache alignment
         products, uoms = OrderedDict(), OrderedDict()
         for vals in vlist:
-            products[vals['product']] = None
-            uoms[vals['uom']] = None
+            if vals.get('product') is not None:
+                products[vals['product']] = None
+            if vals.get('uom') is not None:
+                uoms[vals['uom']] = None
         id2product = {p.id: p for p in Product.browse(products.keys())}
         id2uom = {u.id: u for u in Uom.browse(uoms.keys())}
         for vals in vlist:
