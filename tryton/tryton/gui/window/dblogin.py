@@ -7,8 +7,8 @@ import logging
 import os
 import re
 import shutil
-import tempfile
 import threading
+from tempfile import NamedTemporaryFile
 
 from gi.repository import GLib, GObject, Gtk
 
@@ -501,7 +501,7 @@ class DBLogin(object):
             # reset self.profiles as parsing errors may leave wrong data in
             # the parser
             self.profiles = configparser.ConfigParser()
-            with tempfile.NamedTemporaryFile(
+            with NamedTemporaryFile(
                     delete=False, prefix='profiles_', suffix='.cfg',
                     dir=config_dir) as temp_file:
                 temp_name = temp_file.name

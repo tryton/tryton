@@ -6,7 +6,6 @@ import locale
 import logging
 import math
 import os
-import tempfile
 from decimal import Decimal
 from itertools import chain
 
@@ -14,7 +13,8 @@ import tryton.common as common
 from tryton.common import (
     EvalEnvironment, RPCException, RPCExecute, concat, domain_inversion,
     eval_domain, extract_reference_models, filter_leaf, inverse_leaf,
-    localize_domain, merge, prepare_reference_domain, simplify, unique_value)
+    localize_domain, merge, prepare_reference_domain, simplify, tempfile,
+    unique_value)
 from tryton.common.htmltextbuffer import guess_decode
 from tryton.config import CONFIG
 from tryton.pyson import PYSONDecoder

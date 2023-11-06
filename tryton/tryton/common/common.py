@@ -9,7 +9,6 @@ import os
 import platform
 import re
 import subprocess
-import tempfile
 import unicodedata
 import xml.etree.ElementTree as ET
 from collections import defaultdict
@@ -50,6 +49,7 @@ from tryton import __version__
 from tryton.exceptions import TrytonError, TrytonServerError
 from tryton.pyson import PYSONEncoder
 
+from . import tempfile
 from .underline import set_underline
 from .widget_style import widget_class
 

@@ -7,7 +7,6 @@ import gettext
 import json
 import locale
 import os
-import tempfile
 import urllib.parse
 from itertools import zip_longest
 from numbers import Number
@@ -15,7 +14,7 @@ from numbers import Number
 from gi.repository import Gdk, GObject, Gtk
 
 import tryton.common as common
-from tryton.common import RPCException, RPCExecute
+from tryton.common import RPCException, RPCExecute, tempfile
 from tryton.config import CONFIG
 from tryton.gui.window.win_csv import WinCSV
 from tryton.jsonrpc import JSONEncoder

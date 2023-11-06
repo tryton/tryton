@@ -8,7 +8,7 @@ import optparse
 import os
 import shutil
 import sys
-import tempfile
+from tempfile import NamedTemporaryFile
 
 from gi.repository import GdkPixbuf
 
@@ -185,7 +185,7 @@ class ConfigManager(object):
             parser.read([self.rcfile])
         except configparser.Error:
             config_dir = os.path.dirname(self.rcfile)
-            with tempfile.NamedTemporaryFile(
+            with NamedTemporaryFile(
                     delete=False, prefix='tryton_', suffix='.conf',
                     dir=config_dir) as temp_file:
                 temp_name = temp_file.name

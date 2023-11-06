@@ -5,7 +5,6 @@ import csv
 import gettext
 import locale
 import os
-import tempfile
 from itertools import zip_longest
 
 from gi.repository import Gdk, GLib, Gtk
@@ -13,7 +12,7 @@ from gi.repository import Gdk, GLib, Gtk
 import tryton.common as common
 from tryton import plugins
 from tryton.action import Action
-from tryton.common import RPCException, RPCExecute, sur, sur_3b
+from tryton.common import RPCException, RPCExecute, sur, sur_3b, tempfile
 from tryton.common.common import selection as selection_
 from tryton.common.popup_menu import popup
 from tryton.common.underline import set_underline
