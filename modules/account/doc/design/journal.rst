@@ -13,6 +13,9 @@ what sequence is then used to number the account move.
 Among the journal's properties is a type.
 This limits where the journal can be used.
 
+When the system needs a journal, it chooses the first journal from the ordered
+list that matches the requested criteria.
+
 .. seealso::
 
    The journals can be found by opening the main menu item:
