@@ -333,6 +333,44 @@ class AccountTestCase(
                 fiscalyear.save()
 
     @with_transaction()
+    def test_change_period_dates_with_move(self):
+        "Test change period dates"
+        pool = Pool()
+        Period = pool.get('account.period')
+        Move = pool.get('account.move')
+        Journal = pool.get('account.journal')
+        company = create_company()
+        with set_company(company):
+            create_chart(company)
+            fiscalyear = get_fiscalyear(company)
+            fiscalyear.save()
+
+            period = Period(
+                fiscalyear=fiscalyear,
+                type='adjustment',
+                name="Period",
+                start_date=fiscalyear.start_date,
+                end_date=fiscalyear.start_date)
+            period.save()
+
+            journal, = Journal.search([], limit=1)
+
+            move, = Move.create([{
+                        'period': period.id,
+                        'journal': journal.id,
+                        'date': period.start_date,
+                        }])
+
+            # Extend
+            period.end_date = fiscalyear.end_date
+            period.save()
+
+            # Shorten
+            with self.assertRaises(PeriodDatesError):
+                period.start_date = fiscalyear.end_date
+                period.save()
+
+    @with_transaction()
     def test_account_debit_credit(self):
         'Test account debit/credit'
         pool = Pool()

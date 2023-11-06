@@ -33,6 +33,9 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.message" id="msg_period_fiscalyear_dates">
             <field name="text">The dates for period "%(period)s" must be between the dates of its fiscal year "%(fiscalyear)s".</field>
         </record>
+        <record model="ir.message" id="msg_period_move_dates">
+            <field name="text">The dates for period "%(period)s" must include the date "%(move_date)s" of move "%(move)s".</field>
+        </record>
 
         <record model="ir.message" id="msg_journal_period_unique">
             <field name="text">You can create only one journal per period.</field>

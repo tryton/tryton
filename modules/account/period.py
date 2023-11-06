@@ -8,6 +8,7 @@ from trytond.model import Index, ModelSQL, ModelView, Workflow, fields
 from trytond.model.exceptions import AccessError
 from trytond.pool import Pool
 from trytond.pyson import Eval, Id
+from trytond.tools import grouped_slice
 from trytond.transaction import Transaction
 
 from .exceptions import (
@@ -122,6 +123,7 @@ class Period(Workflow, ModelSQL, ModelView):
         super().validate_fields(periods, field_names)
         cls.check_dates(periods, field_names)
         cls.check_fiscalyear_dates(periods, field_names)
+        cls.check_move_dates(periods, field_names)
         cls.check_post_move_sequence(periods, field_names)
 
     @classmethod
@@ -170,6 +172,34 @@ class Period(Workflow, ModelSQL, ModelView):
                     gettext('account.msg_period_fiscalyear_dates',
                         period=period.rec_name,
                         fiscalyear=fiscalyear.rec_name))
+
+    @classmethod
+    def check_move_dates(cls, periods, field_names=None):
+        pool = Pool()
+        Move = pool.get('account.move')
+        Lang = pool.get('ir.lang')
+        if field_names and not (field_names & {'start_date', 'end_date'}):
+            return
+        lang = Lang.get()
+
+        for sub_periods in grouped_slice(periods):
+            domain = ['OR']
+            for period in sub_periods:
+                domain.append([
+                        ('period', '=', period.id),
+                        ['OR',
+                            ('date', '<', period.start_date),
+                            ('date', '>', period.end_date),
+                            ],
+                        ])
+            moves = Move.search(domain, limit=1)
+            if moves:
+                move, = moves
+                raise PeriodDatesError(
+                    gettext('account.msg_period_move_dates',
+                        period=move.period.rec_name,
+                        move=move.rec_name,
+                        move_date=lang.strftime(move.date)))
 
     @classmethod
     def check_post_move_sequence(cls, periods, field_names=None):
@@ -305,15 +335,6 @@ class Period(Workflow, ModelSQL, ModelView):
         actions = iter(args)
         args = []
         for periods, values in zip(actions, actions):
-            for key, value in values.items():
-                if key in ('start_date', 'end_date', 'fiscalyear'):
-                    def modified(period):
-                        if key in ['start_date', 'end_date']:
-                            return getattr(period, key) != value
-                        else:
-                            return period.fiscalyear .id != value
-                    cls._check(list(filter(modified, periods)))
-                    break
             if values.get('state') == 'open':
                 for period in periods:
                     if period.fiscalyear.state != 'open':
