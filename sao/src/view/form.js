@@ -833,7 +833,7 @@ function eval_pyson(value){
         hide: function() {
             Sao.View.Form.Page._super.hide.call(this);
             if (this.el.hasClass('active')) {
-                this.el.next(':visible').find('a').tab('show');
+                this.el.siblings(':visible').first().find('a').tab('show');
             }
         }
     });
