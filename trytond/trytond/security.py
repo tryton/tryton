@@ -1,6 +1,9 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
+import datetime as dt
 import logging
+import random
+import time
 
 from trytond import backend
 from trytond.config import config
@@ -74,6 +77,36 @@ def logout(dbname, user, session, context=None):
     else:
         logger.error("logout failed for '%s' from '%s' on database '%s'",
             user, _get_remote_addr(context), dbname)
+
+
+def reset_password(dbname, user, context=None):
+    now = dt.datetime.now()
+    # Prevent guessing code execution path
+    time.sleep(random.random())
+    for count in range(config.getint('database', 'retry'), -1, -1):
+        with Transaction().start(dbname, 0, context=context):
+            pool = _get_pool(dbname)
+            User = pool.get('res.user')
+            try:
+                users = User.search([
+                        ('login', '=', user),
+                        ])
+                if not users:
+                    logger.info("Reset password for unknown user: %s", user)
+                    break
+                else:
+                    user, = users
+                if user.password_reset and user.password_reset_expire > now:
+                    logger.info(
+                        "Password reset already exists for user: %s", user)
+                else:
+                    user.reset_password()
+                    logger.info("Password reset for user: %s", user)
+                break
+            except backend.DatabaseOperationalError:
+                if count:
+                    continue
+                raise
 
 
 def check(dbname, user, session, context=None):

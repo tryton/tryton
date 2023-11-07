@@ -36,6 +36,7 @@ def rpc(request, database_name):
     methods = {
         'common.db.login': login,
         'common.db.logout': logout,
+        'common.db.reset_password': reset_password,
         'system.listMethods': list_method,
         'system.methodHelp': help_method,
         'system.methodSignature': lambda *a: 'signatures not supported',
@@ -70,6 +71,24 @@ def logout(request, database_name):
     security.logout(
         database_name, auth.get('userid'), auth.get('session'),
         context={'_request': request.context})
+
+
+def reset_password(request, database_name, user, language=None):
+    authentications = config.get(
+        'session', 'authentications', default='password').split(',')
+    if not any('password' in m.split('+') for m in authentications):
+        abort(HTTPStatus.FORBIDDEN)
+    context = {
+        'language': language,
+        '_request': request.context,
+        }
+    try:
+        security.reset_password(database_name, user, context=context)
+    except backend.DatabaseOperationalError:
+        logger.error('fail to connect to %s', database_name, exc_info=True)
+        abort(HTTPStatus.NOT_FOUND)
+    except RateLimitException:
+        abort(HTTPStatus.TOO_MANY_REQUESTS)
 
 
 @app.route('/', methods=['POST'])
