@@ -302,7 +302,6 @@ class User(avatar_mixin(100, 'login'), DeactivableMixin, ModelSQL, ModelView):
             user.password_reset_expire = (
                 datetime.datetime.now() + datetime.timedelta(
                     seconds=config.getint('password', 'reset_timeout')))
-            user.password = None
         cls.save(users)
         _send_email(from_, users, cls.get_email_reset_password)
 
@@ -759,7 +758,7 @@ class User(avatar_mixin(100, 'login'), DeactivableMixin, ModelSQL, ModelView):
                                     'password_hash': new_hash,
                                     })
                 return user_id
-        elif user_id and password_reset:
+        if user_id and password_reset:
             if password_reset == parameters['password']:
                 return user_id
 

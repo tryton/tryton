@@ -162,7 +162,7 @@ class UserTestCase(unittest.TestCase):
 
         self.assertEqual(len(user.password_reset), 8)
         self.assertTrue(user.password_reset_expire)
-        self.assertIsNone(password_hash)
+        self.check_user('user', '12345')
         self.check_user('user', user.password_reset)
 
     @with_transaction()
@@ -180,25 +180,6 @@ class UserTestCase(unittest.TestCase):
         user.password_reset_expire = (
             datetime.datetime.now() - datetime.timedelta(10))
         user.save()
-        self.assertFalse(User.get_login('user', {
-                    'password': user.password_reset,
-                    }))
-
-    @with_transaction()
-    def test_reset_password_with_password(self):
-        "Test reset password not working when password is set"
-        pool = Pool()
-        User = pool.get('res.user')
-
-        user = User(login='user', email='user@example.com')
-        user.save()
-
-        with patch.object(user_module, 'sendmail_transactional'):
-            User.reset_password([user], length=8)
-
-        user.password = '12345'
-        user.save()
-        self.check_user('user', '12345')
         self.assertFalse(User.get_login('user', {
                     'password': user.password_reset,
                     }))
