@@ -145,6 +145,24 @@ def logout():
     _USER = None
 
 
+def reset_password():
+    from tryton import common
+    host = CONFIG['login.host']
+    hostname = common.get_hostname(host)
+    port = common.get_port(host)
+    database = CONFIG['login.db']
+    username = CONFIG['login.login']
+    language = CONFIG['client.lang']
+    if not all([host, database, username]):
+        return
+    try:
+        connection = ServerProxy(hostname, port)
+        logger.info('common.db.reset_password(%s, %s)', (username, language))
+        connection.common.db.reset_password(username, language)
+    except Fault as exception:
+        logger.debug(exception.faultCode)
+
+
 def execute(*args):
     global CONNECTION, _USER
     if CONNECTION is None:

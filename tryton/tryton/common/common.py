@@ -1103,7 +1103,7 @@ class Login(object):
                 if exception.faultCode != 'LoginException':
                     raise
                 name, msg, type = exception.args
-                value = getattr(self, 'get_%s' % type)(msg)
+                value = getattr(self, 'get_%s' % type)(msg, name)
                 if value is None:
                     raise TrytonError('QueryCanceled')
                 parameters[name] = value
@@ -1112,12 +1112,35 @@ class Login(object):
                 return
 
     @classmethod
-    def get_char(cls, message):
+    def get_char(cls, message, name):
         return ask(message)
 
     @classmethod
-    def get_password(cls, message):
-        return ask(message, visibility=False)
+    def get_password(cls, message_, name):
+        class AskPasswordDialog(AskDialog):
+            def build_dialog(self, *args, **kwargs):
+                tooltips = Tooltips()
+                dialog = super().build_dialog(*args, **kwargs)
+                box = dialog.get_message_area()
+                button = Gtk.Button.new_with_label(
+                    _("Reset forgotten password"))
+                button.set_alignment(0, 0.5)
+                button.set_relief(Gtk.ReliefStyle.NONE)
+                tooltips.set_tip(
+                    button, _("Send you an email to reset your password."))
+                button.connect('clicked', self.reset_password)
+                box.pack_start(button, False, False, 0)
+                return dialog
+
+            def reset_password(self, button):
+                rpc.reset_password()
+                message(
+                    _("A request to reset your password has been sent.\n"
+                        "Please check your mailbox."))
+                self.entry.grab_focus()
+        if name == 'password':
+            ask = AskPasswordDialog()
+        return ask(message_, visibility=False)
 
 
 class Logout:

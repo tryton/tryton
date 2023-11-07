@@ -87,6 +87,23 @@
             }
             return prm;
         },
+        do_reset_password: function() {
+            if (!this.login) {
+                return jQuery.when();
+            }
+            const args = {
+                'id': 0,
+                'method': 'common.db.reset_password',
+                'params': [this.login, Sao.i18n.getlang()],
+            };
+            return jQuery.ajax({
+                'contentType': 'application/json',
+                'data': JSON.stringify(args),
+                'dataType': 'json',
+                'url': '/' + this.database + '/',
+                'type': 'post',
+            });
+        },
         reload_context: function() {
             var args = {
                 'method': 'model.res.user.get_preferences',
@@ -518,7 +535,37 @@
             return Sao.common.ask.run(message, name);
         },
         get_password: function(message, name) {
-            return Sao.common.ask.run(message, name, false);
+            const session = this.session;
+            const AskPasswordDialog = Sao.class_(Sao.common.AskDialog, {
+                build_dialog: function(question, name, visibility, prm) {
+                    const dialog = AskPasswordDialog._super.build_dialog.call(
+                        this, question, name, visibility, prm);
+                    jQuery('<button/>', {
+                        'class': 'btn btn-link btn-sm pull-left',
+                        'type': 'button',
+                        'title': Sao.i18n.gettext(
+                            "Send you an email to reset your password."),
+                    }).text("Reset forgotten password").click(() => {
+                        session.do_reset_password().then(() => {
+                            return Sao.common.message.run(Sao.i18n.gettext(
+                                "A request to reset your password has been sent.\n" +
+                                "Please check your mailbox."));
+                        }).then(() => {
+                            dialog.modal.find('input,select')
+                                .filter(':visible').first().focus();
+                        });
+                    }).prependTo(dialog.footer);
+                    dialog.modal.find('.modal-dialog').removeClass('modal-sm');
+                    return dialog;
+                },
+            });
+            var ask;
+            if (name == 'password') {
+                ask = new AskPasswordDialog();
+            } else {
+                ask = Sao.common.ask;
+            }
+            return ask.run(message, name, false);
         },
     });
 
