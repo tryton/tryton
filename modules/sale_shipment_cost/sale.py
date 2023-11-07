@@ -317,8 +317,8 @@ class Sale(metaclass=PoolMeta):
         return cost_line
 
     def _get_shipment_grouping_fields(self, shipment):
-        return super()._get_shipment_grouping_fields(shipment) + (
-            'cost_method', 'carrier')
+        return super()._get_shipment_grouping_fields(shipment) + [
+            'cost_method', 'carrier']
 
     @property
     def shipment_cost_amount(self):
