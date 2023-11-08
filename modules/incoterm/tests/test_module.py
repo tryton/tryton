@@ -11,7 +11,7 @@ class IncotermTestCase(CompanyTestMixin, ModuleTestCase):
     extras = [
         'carrier', 'company', 'purchase', 'purchase_request_quotation',
         'sale', 'sale_shipment_cost', 'sale_opportunity',
-        'sale_invoice_grouping', 'stock', 'account_invoice',
+        'sale_shipment_grouping', 'stock', 'account_invoice',
         'account_invoice_stock']
 
 
