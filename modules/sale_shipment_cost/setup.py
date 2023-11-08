@@ -50,7 +50,9 @@ requires.append(get_require_version('trytond'))
 tests_require = [
     get_require_version('proteus'),
     ]
-for dep in ['account', 'party', 'stock', 'sale_promotion']:
+for dep in [
+        'account', 'party', 'stock', 'sale_promotion',
+        'sale_shipment_grouping']:
     tests_require.append(get_require_version('trytond_%s' % dep))
 
 setup(name=name,
