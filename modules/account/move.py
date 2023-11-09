@@ -803,7 +803,7 @@ class MoveLineMixin:
                         window=Window(
                             [line.party, currency],
                             order_by=[
-                                line.maturity_date.asc,
+                                Coalesce(line.maturity_date, move.date).asc,
                                 move.date.desc,
                                 line.id.desc,
                                 ]))
@@ -1207,6 +1207,20 @@ class Line(DescriptionOriginMixin, MoveLineMixin, ModelSQL, ModelView):
     def on_change_with_move_state(self, name=None):
         if self.move:
             return self.move.state
+
+    @classmethod
+    def order_maturity_date(self, tables):
+        pool = Pool()
+        Move = pool.get('account.move')
+        table, _ = tables[None]
+        if 'move' not in tables:
+            move = Move.__table__()
+            tables['move'] = {
+                None: (move, table.move == move.id),
+                }
+        else:
+            move, _ = tables['move'][None]
+        return [Coalesce(table.maturity_date, move.date)]
 
     @fields.depends('account')
     def on_change_with_has_maturity_date(self, name=None):
