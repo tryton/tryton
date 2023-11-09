@@ -18,8 +18,8 @@ this repository contains the full copyright notices and license terms. -->
     <label name="name"/>
     <field name="name"/>
     <newline/>
-    <label name="street"/>
-    <field name="street" colspan="3"/>
+    <label name="street" yalign="0"/>
+    <field name="street" colspan="3" height="80"/>
     <newline/>
     <label name="postal_code"/>
     <field name="postal_code"/>
