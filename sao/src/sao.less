@@ -599,12 +599,13 @@ img.icon {
         cursor: pointer;
         > img {
             float: left;
-            margin-right: 5px;
+            margin-right: 1em;
             [dir="rtl"] & {
                 float: right;
-                margin-left: 5px;
+                margin-left: 1em;
             }
-            width: 1em;
+            width: unit(@line-height-base, em);
+            height: unit(@line-height-base, em);
         }
     }
     label {
