@@ -1471,11 +1471,14 @@
         default_row_activate: function() {
             if ((this.current_view.view_type == 'tree') &&
                     (this.current_view.attributes.keyword_open == 1)) {
-                Sao.Action.exec_keyword('tree_open', {
-                    'model': this.model_name,
-                    'id': this.get_id(),
-                    'ids': [this.get_id()]
-                }, this.local_context, false);
+                const id = this.get_id();
+                if (id) {
+                    Sao.Action.exec_keyword('tree_open', {
+                        'model': this.model_name,
+                        'id': this.get_id(),
+                        'ids': [this.get_id()]
+                    }, this.local_context, false);
+                }
             } else {
                 if (!this.modified()) {
                     this.switch_view('form');
