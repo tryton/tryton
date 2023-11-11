@@ -824,6 +824,7 @@ var Sao = {
             view.table.removeClass('table table-bordered');
             view.table.addClass('no-responsive');
             view.table.find('thead').hide();
+            view.table.find('colgroup > col.tree-menu').css('width', 0);
             var gs = new Sao.GlobalSearch();
             jQuery('#global-search').empty();
             jQuery('#global-search').append(gs.el);
