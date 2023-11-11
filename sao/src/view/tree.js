@@ -1562,6 +1562,11 @@
                 this.expander.children().html('&nbsp;');
                 this.expander.on('click keypress',
                         Sao.common.click_press(this.toggle_row.bind(this)));
+                this.expander.dblclick((evt) => {
+                    // prevent calling switch_row on td
+                    evt.preventDefault();
+                    evt.stopImmediatePropagation();
+                });
             }
 
             for (var i = 0; i < this.tree.columns.length; i++) {
