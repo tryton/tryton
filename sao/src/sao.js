@@ -716,11 +716,14 @@ var Sao = {};
 
     Sao.main_menu_row_activate = function() {
         var screen = Sao.main_menu_screen;
-        // ids is not defined to prevent to add suffix
-        return Sao.Action.exec_keyword('tree_open', {
-            'model': screen.model_name,
-            'id': screen.get_id(),
-        }, null, false);
+        var id = screen.get_id();
+        if (id) {
+            // ids is not defined to prevent to add suffix
+            Sao.Action.exec_keyword('tree_open', {
+                'model': screen.model_name,
+                'id': screen.get_id(),
+            }, null, false);
+        }
     };
 
     Sao.menu = function(preferences) {
