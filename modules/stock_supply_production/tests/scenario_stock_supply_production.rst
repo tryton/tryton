@@ -75,7 +75,7 @@ Create needs for product::
     >>> Warning(user=config.user, name=key).save()
     >>> move.click('do')
 
-The is no production request::
+There is no production request::
 
     >>> Production = Model.get('production')
     >>> Production.find([])
@@ -117,7 +117,7 @@ Create production request::
     >>> create_pr = Wizard('stock.supply')
     >>> create_pr.execute('create_')
 
-The is no more production request::
+There is no more production request::
 
     >>> Production = Model.get('production')
     >>> Production.find([])
