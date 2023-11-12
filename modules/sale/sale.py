@@ -1318,7 +1318,7 @@ class SaleLine(TaxableMixin, sequence_ordered(), ModelSQL, ModelView):
             self.unit = self.product.sale_uom
             self.unit_digits = self.product.sale_uom.digits
 
-            self.unit_price = self.compute_unit_price()
+        self.unit_price = self.compute_unit_price()
 
         self.amount = self.on_change_with_amount()
 
