@@ -1377,7 +1377,7 @@ class SaleLine(TaxableMixin, sequence_ordered(), ModelSQL, ModelView):
         if not self.unit or self.unit.category != category:
             self.unit = self.product.sale_uom
 
-            self.unit_price = self.compute_unit_price()
+        self.unit_price = self.compute_unit_price()
 
         self.amount = self.on_change_with_amount()
 

@@ -1347,7 +1347,7 @@ class Line(sequence_ordered(), ModelSQL, ModelView):
                 and self.product_supplier not in product_suppliers):
             self.product_supplier = None
 
-            self.unit_price = self.compute_unit_price()
+        self.unit_price = self.compute_unit_price()
 
         self.amount = self.on_change_with_amount()
 
