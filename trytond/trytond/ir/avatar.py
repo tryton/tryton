@@ -90,7 +90,7 @@ class Avatar(ImageMixin, ResourceMixin, ModelSQL):
         if self.image_id or self.image:
             url_base = config.get('web', 'avatar_base', default='')
             return urljoin(
-                url_base, quote('/avatar/%(database)s/%(uuid)s' % {
+                url_base, quote('avatar/%(database)s/%(uuid)s' % {
                         'database': Base64Converter(None).to_url(
                             Transaction().database.name),
                         'uuid': self.uuid,

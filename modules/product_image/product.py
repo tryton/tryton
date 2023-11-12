@@ -16,7 +16,7 @@ from trytond.pool import PoolMeta
 from trytond.pyson import Bool, Eval, If
 from trytond.tools import slugify
 from trytond.transaction import Transaction
-from trytond.url import http_host
+from trytond.url import http_base
 from trytond.wsgi import Base64Converter
 
 from .exceptions import ImageValidationError
@@ -77,7 +77,7 @@ class ImageURLMixin:
         url_base = config.get(
             'product', 'image_base', default='')
         url_external_base = config.get(
-            'product', 'image_base', default=http_host())
+            'product', 'image_base', default=http_base())
         return self._image_url(
             url_external_base if _external else url_base, **args)
 

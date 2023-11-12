@@ -66,6 +66,16 @@ hostname
 Defines the hostname to use when generating a URL when there is no request
 context available, for example during a cron job.
 
+.. _config-web.root_path:
+
+root_path
+~~~~~~~~~
+
+Defines the prefix that the WSGI application is mounted under (with trailing slash).
+This must be the same as the ``SCRIPT_NAME`` set by the WSGI server.
+
+The default value is: ``/``.
+
 .. _config-web.root:
 
 root

@@ -30,7 +30,7 @@ from trytond.tools import pairwise_longest
 from trytond.tools.chart import sparkline
 from trytond.tools.email_ import format_address, has_rcpt, set_from_header
 from trytond.transaction import Transaction
-from trytond.url import http_host
+from trytond.url import http_base
 from trytond.wsgi import Base64Converter
 
 from .exceptions import ConditionError, DomainError, TemplateError
@@ -636,7 +636,7 @@ class Activity(
         Email = pool.get('ir.email')
         record = record_activity.record
         url_base = config.get(
-            'marketing', 'automation_base', default=http_host())
+            'marketing', 'automation_base', default=http_base())
         url_open = urljoin(url_base, '/m/empty.gif')
 
         with Transaction().set_context(language=record.language):

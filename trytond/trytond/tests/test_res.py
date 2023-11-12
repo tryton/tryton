@@ -35,7 +35,7 @@ class ResTestCase(ModuleTestCase):
 
         self.assertEqual(len(user.avatars), 1)
         self.assertIsNotNone(user.avatar)
-        self.assertRegex(user.avatar_url, r'/avatar/.*/([0-9a-fA-F]{12})')
+        self.assertRegex(user.avatar_url, r'avatar/.*/([0-9a-fA-F]{12})')
 
     @with_transaction()
     def test_user_warning(self):

@@ -26,7 +26,7 @@ from trytond.tools.email_ import (
     EmailNotValidError, format_address, normalize_email, set_from_header,
     validate_email)
 from trytond.transaction import Transaction, inactive_records
-from trytond.url import http_host
+from trytond.url import http_base
 from trytond.wizard import Button, StateTransition, StateView, Wizard
 
 from .exceptions import EMailValidationError, TemplateError
@@ -430,7 +430,7 @@ class Message(Workflow, ModelSQL, ModelView):
         spy_pixel = config.getboolean(
             'marketing', 'email_spy_pixel', default=False)
 
-        url_base = config.get('marketing', 'email_base', default=http_host())
+        url_base = config.get('marketing', 'email_base', default=http_base())
         url_open = urljoin(url_base, '/m/empty.gif')
 
         @lru_cache(None)

@@ -1,3 +1,4 @@
+* Support mounting application under a prefix
 * Send emails on chat messages
 * Add path attribute on XML fields to specfiy a relative path value
 * Allow to include subdirectories in tryton.cfg

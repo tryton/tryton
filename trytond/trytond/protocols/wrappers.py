@@ -200,6 +200,7 @@ class Request(_Request):
             'http_host': self.environ.get('HTTP_HOST'),
             'scheme': self.scheme,
             'is_secure': self.is_secure,
+            'root_path': self.root_path,
             }
 
 
