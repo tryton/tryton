@@ -451,11 +451,11 @@ var Sao = {
     Sao.set_url = function(path, name) {
         var session = Sao.Session.current_session;
         if (session) {
-            var url = '#' + session.database;
+            var url = session.database;
             if (path) {
                 url += '/' + path;
             }
-            window.location = url;
+            window.location.hash = url;
         }
         Sao.set_title(name);
     };

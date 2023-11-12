@@ -2429,7 +2429,7 @@
             query_string = query_string.map(function(param) {
                 return param.map(encodeURIComponent).join('=');
             }).join('&');
-            this.button_url.attr('href', '/' + path.join('/') + '?' + query_string);
+            this.button_url.attr('href', path.join('/') + '?' + query_string);
         },
     });
 

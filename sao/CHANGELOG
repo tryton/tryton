@@ -1,3 +1,4 @@
+* Use relative path for server requests
 * Use cookie to store session
 * Move the logout entry and add a help entry to the notification menu
 * Add visual hint on widget of modified field

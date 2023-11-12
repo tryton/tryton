@@ -5010,7 +5010,7 @@ function eval_pyson(value){
             if (!record || (record.id < 0)) {
                 uri = '';
             } else {
-                uri = '/' + record.model.session.database +
+                uri = record.model.session.database +
                     '/ir/html/' + record.model.name + '/' + record.id + '/' +
                     this.field_name;
                 uri += '?language=' + encodeURIComponent(

@@ -58,7 +58,7 @@
                 'contentType': 'application/json',
                 'data': JSON.stringify({}),
                 'dataType': 'json',
-                'url': `/${this.database}/session/logout`,
+                'url': `${this.database}/session/logout`,
                 'type': 'post',
             });
             this.unstore();
@@ -189,7 +189,7 @@
                 'params': []
             }),
             'dataType': 'json',
-            'url': '/',
+            'url': '.',
             'type': 'post',
             'complete': [function() {
                 Sao.common.processing.hide(timeoutID);
@@ -295,7 +295,7 @@
                     dfd.resolve(session);
                     dialog.modal.remove();
                     if (database_url() != database) {
-                        window.location = '#' + database;
+                        window.location.hash = database;
                     }
                 }, function() {
                     disable_form(false);
@@ -314,10 +314,11 @@
                 return;
             }
             disable_form();
-            var host = window.location.protocol + '//' + window.location.host;
-            var next = new URL(host + '/');
+            const base = (
+                window.location.protocol + '//' + window.location.host + window.location.pathname);
+            var next = new URL(base);
             next.searchParams.append('login_service', evt.data);
-            var url = new URL(host + '/' + database + evt.data);
+            var url = new URL(base + database + evt.data);
             url.searchParams.append('next', next.href);
             var service_window = window.open(url.href, '_blank', 'popup=1');
             const timer = window.setInterval(() => {
@@ -330,7 +331,7 @@
                         dfd.resolve(session);
                         dialog.modal.remove();
                         if (database_url() != database) {
-                            window.location = '#' + database;
+                            window.location.hash = database;
                         }
                     } else {
                         disable_form(false);
@@ -449,7 +450,7 @@
                 'contentType': 'application/json',
                 'data': JSON.stringify(data),
                 'dataType': 'json',
-                'url': `/${this.session.database}/session/login`,
+                'url': `${this.session.database}/session/login`,
                 'type': 'post',
                 'complete': [function() {
                     Sao.common.processing.hide(timeoutID);
@@ -601,7 +602,7 @@
                 'params': []
             }),
             'dataType': 'json',
-            'url': '/',
+            'url': '.',
             'type': 'post',
             'complete': [function() {
                 Sao.common.processing.hide(timeoutID);
@@ -623,7 +624,7 @@
                 'params': []
             }),
             'dataType': 'json',
-            'url': '/',
+            'url': '.',
             'type': 'post',
             'complete': [function() {
                 Sao.common.processing.hide(timeoutID);

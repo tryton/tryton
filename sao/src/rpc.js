@@ -178,7 +178,7 @@
                 'params': params
             })),
             'dataType': 'json',
-            'url': '/' + (session.database || '') + '/',
+            'url': (session.database || '.') + '/',
             'type': 'post',
             'complete': [function() {
                 Sao.common.processing.hide(timeoutID);
