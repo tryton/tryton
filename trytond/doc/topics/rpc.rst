@@ -6,7 +6,7 @@ Remote Procedure Call
 
 There are two protocols supported by trytond: `JSON-RPC`_ (Version 1.0) and
 `XML-RPC`_.
-The URL of the calls must end with the database name with a trailing '/'.
+The format of the URL to call is ``<database name>/rpc/``.
 
 The available methods are:
 

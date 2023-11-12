@@ -189,7 +189,7 @@
                 'params': []
             }),
             'dataType': 'json',
-            'url': '.',
+            'url': 'rpc/',
             'type': 'post',
             'complete': [function() {
                 Sao.common.processing.hide(timeoutID);
@@ -602,7 +602,7 @@
                 'params': []
             }),
             'dataType': 'json',
-            'url': '.',
+            'url': 'rpc/',
             'type': 'post',
             'complete': [function() {
                 Sao.common.processing.hide(timeoutID);
@@ -624,7 +624,7 @@
                 'params': []
             }),
             'dataType': 'json',
-            'url': '.',
+            'url': 'rpc/',
             'type': 'post',
             'complete': [function() {
                 Sao.common.processing.hide(timeoutID);

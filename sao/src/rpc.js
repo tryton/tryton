@@ -178,7 +178,7 @@
                 'params': params
             })),
             'dataType': 'json',
-            'url': (session.database || '.') + '/#' + args.method,
+            'url': (session.database || '.') + '/rpc/#' + args.method,
             'type': 'post',
             'complete': [function() {
                 Sao.common.processing.hide(timeoutID);

@@ -25,7 +25,7 @@ __all__ = ['register_authentication_service']
 logger = logging.getLogger(__name__)
 
 
-@app.route('/<string:database_name>/', methods=['POST'])
+@app.route('/<string:database_name>/rpc/', methods=['POST'])
 def rpc(request, database_name):
     methods = {
         'common.db.login': login,
@@ -110,7 +110,7 @@ def reset_password(request, database_name, user, language=None):
         abort(HTTPStatus.TOO_MANY_REQUESTS)
 
 
-@app.route('/', methods=['POST'])
+@app.route('/rpc/', methods=['POST'])
 def root(request, *args):
     methods = {
         'common.server.version': lambda *a: __series__,
