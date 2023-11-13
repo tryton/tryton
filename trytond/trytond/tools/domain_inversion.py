@@ -424,12 +424,13 @@ def concat(*domains, **kwargs):
     return simplify(merge(result))
 
 
-def unique_value(domain):
+def unique_value(domain, single_value=True):
     "Return if unique, the field and the value"
     if (isinstance(domain, list)
             and len(domain) == 1):
         name, operator, value, *model = domain[0]
-        if operator == '=' or (operator == 'in' and len(value) == 1):
+        if (operator == '='
+                or (single_value and operator == 'in' and len(value) == 1)):
             value = value if operator == '=' else value[0]
             count = 0
             if model and name.endswith('.id'):
