@@ -134,19 +134,11 @@
                         dfd.resolve();
                     }
                 }, dfd.reject);
-            } else if (query.status == 408) {
-                Sao.common.message.run(
-                    Sao.i18n.gettext('Request times out. Try again later.'),
-                    'tryton-error')
-                    .always(dfd.reject);
-            } else if (query.status == 429) {
-                Sao.common.message.run(
-                    Sao.i18n.gettext('Too many requests. Try again later.'),
-                    'tryton-error')
-                    .always(dfd.reject);
             } else {
-                Sao.common.error.run(status_, error)
-                    .always(dfd.reject);
+                var err_msg = `[${query.status}] ${error}`;
+                Sao.common.message.run(
+                    Sao.i18n.gettext('Error: "%1". Try again later.', err_msg),
+                    'tryton-error').always(dfd.reject);
             }
         };
 

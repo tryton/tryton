@@ -1014,16 +1014,11 @@ def process_exception(exception, *args, **kwargs):
                     PLOCK.release()
                 if args:
                     return rpc_execute(*args)
-        elif exception.faultCode == str(int(HTTPStatus.REQUEST_TIMEOUT)):
+        elif exception.faultCode in map(str, HTTPStatus):
+            err_msg = '[%s] %s' % (exception.faultCode, exception.faultString)
             message(
-                _("Request times out. Try again later."),
+                _('Error "%s". Try again later.') % err_msg,
                 msg_type=Gtk.MessageType.ERROR)
-        elif exception.faultCode == str(int(HTTPStatus.TOO_MANY_REQUESTS)):
-            message(
-                _('Too many requests. Try again later.'),
-                msg_type=Gtk.MessageType.ERROR)
-        elif exception.faultCode == str(int(HTTPStatus.NOT_FOUND)):
-            message(_("Not found."), msg_type=Gtk.MessageType.ERROR)
         else:
             error(exception, exception.faultString)
     else:
