@@ -238,8 +238,9 @@ class Transaction(object):
                         else:
                             self.rollback()
                     finally:
-                        self.database.put_connection(
-                            self.connection, self.close)
+                        if self.connection:
+                            self.database.put_connection(
+                                self.connection, self.close)
                 finally:
                     self.database = None
                     self.readonly = False
@@ -357,7 +358,8 @@ class Transaction(object):
             datamanager.tpc_abort(self)
         Cache.rollback(self)
         self._clear_log_records()
-        self.connection.rollback()
+        if self.connection:
+            self.connection.rollback()
 
     def join(self, datamanager):
         try:

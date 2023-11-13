@@ -24,6 +24,7 @@ except ImportError:
     PYDATE, PYDATETIME, PYTIME, PYINTERVAL = None, None, None, None
 from psycopg2 import DataError as DatabaseDataError
 from psycopg2 import IntegrityError as DatabaseIntegrityError
+from psycopg2 import InterfaceError
 from psycopg2 import OperationalError as DatabaseOperationalError
 from psycopg2 import ProgrammingError
 from psycopg2.errors import QueryCanceled as DatabaseTimeoutError
@@ -291,7 +292,10 @@ class Database(DatabaseInterface):
         return conn
 
     def put_connection(self, connection, close=False):
-        connection.reset()
+        try:
+            connection.reset()
+        except InterfaceError:
+            pass
         self._connpool.putconn(connection, close=close)
 
     def close(self):
