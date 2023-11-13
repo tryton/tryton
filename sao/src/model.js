@@ -1515,6 +1515,7 @@
 
     Sao.field.Field = Sao.class_(Object, {
         _default: null,
+        _single_value: true,
         init: function(description) {
             this.description = description;
             this.name = description.name;
@@ -1687,12 +1688,13 @@
             } else {
                 let [screen_domain, _] = this.get_domains(
                     record, pre_validate);
-                var uniques = inversion.unique_value(domain);
+                var uniques = inversion.unique_value(
+                    domain, this._single_value);
                 var unique = uniques[0];
                 var leftpart = uniques[1];
                 var value = uniques[2];
                 let unique_from_screen = inversion.unique_value(
-                    screen_domain)[0];
+                    screen_domain, this._single_value)[0];
                 if (this._is_empty(record) &&
                     !is_required &&
                     !is_invisible &&
@@ -1780,6 +1782,7 @@
 
     Sao.field.MultiSelection = Sao.class_(Sao.field.Selection, {
         _default: null,
+        _single_value: false,
         get: function(record) {
             var value = Sao.field.MultiSelection._super.get.call(this, record);
             if (jQuery.isEmptyObject(value)) {
@@ -2159,6 +2162,7 @@
             Sao.field.One2Many._super.init.call(this, description);
         },
         _default: null,
+        _single_value: false,
         _set_value: function(record, value, default_, modified) {
             this._set_default_value(record);
             var group = record._values[this.name];
@@ -2769,6 +2773,7 @@
 
     Sao.field.Dict = Sao.class_(Sao.field.Field, {
         _default: {},
+        _single_value: false,
         init: function(description) {
             Sao.field.Dict._super.init.call(this, description);
             this.schema_model = new Sao.Model(description.schema_model);

@@ -2791,6 +2791,7 @@
         QUnit.ok(compare(unique_value(domain), [false, null, null]));
         domain = [['a', 'in', [1]]];
         QUnit.ok(compare(unique_value(domain), [true, 'a', 1]));
+        QUnit.ok(compare(unique_value(domain, false), [false, null, null]));
         domain = [['a', 'in', [1, 2]]];
         QUnit.ok(compare(unique_value(domain), [false, null, null]));
         domain = [['a', 'in', []]];

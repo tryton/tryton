@@ -744,6 +744,8 @@ class DomainInversionTestCase(unittest.TestCase):
 
         domain = [['a', 'in', [1]]]
         self.assertEqual(unique_value(domain), (True, 'a', 1))
+        self.assertEqual(
+            unique_value(domain, single_value=False), (False, None, None))
 
         domain = [['a', 'in', [1, 2]]]
         self.assertEqual(unique_value(domain), (False, None, None))
