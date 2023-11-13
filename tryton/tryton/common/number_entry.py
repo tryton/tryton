@@ -53,7 +53,7 @@ class NumberEntry(Gtk.Entry, Gtk.Editable):
         value = None
         if text not in ['-', self.__decimal_point]:
             try:
-                value = Decimal(locale.atof(text))
+                value = Decimal(str(locale.atof(text)))
             except (ValueError, InvalidOperation):
                 return position
         if (value and self.__digits is not None
