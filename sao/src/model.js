@@ -835,6 +835,7 @@
                 }
                 if (this.model.fields[name] instanceof Sao.field.One2Many) {
                     later[name] = value;
+                    continue;
                 }
                 const field = this.model.fields[name];
                 var related;
