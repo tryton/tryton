@@ -881,6 +881,7 @@
                 }
                 if (this.model.fields[name] instanceof Sao.field.One2Many) {
                     later[name] = value;
+                    continue;
                 }
                 if ((this.model.fields[name] instanceof Sao.field.Many2One) ||
                         (this.model.fields[name] instanceof Sao.field.Reference)) {
