@@ -468,6 +468,7 @@ class Record(SignalEvent):
         for fieldname, value in later.items():
             self.group.fields[fieldname].set(self, value)
             self._loaded.add(fieldname)
+            fieldnames.append(fieldname)
         if validate:
             self.validate(fieldnames, softvalidation=True)
         if signal:

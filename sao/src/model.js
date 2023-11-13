@@ -895,6 +895,7 @@
                 value = later[name];
                 this.model.fields[name].set(this, value);
                 this._loaded[name] = true;
+                fieldnames.push(name);
             }
             if (validate) {
                 this.validate(fieldnames, true, false, false);
