@@ -1301,7 +1301,7 @@ class Button(Cell):
         states = record.expr_eval(self.attrs.get('states', {}))
         invisible = states.get('invisible', False)
         cell.set_property('visible', not invisible)
-        readonly = states.get('readonly', False)
+        readonly = record.readonly or states.get('readonly', False)
         cell.set_property('sensitive', not readonly)
         parent = record.parent if record else None
         while parent:
