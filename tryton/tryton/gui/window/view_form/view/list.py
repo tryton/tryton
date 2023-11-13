@@ -1132,10 +1132,12 @@ class ViewTree(View):
             elif name == self.screen.exclude_field:
                 column.set_visible(False)
             else:
+                field = self.group.fields.get(name)
                 inv_domain = domain_inversion(domain, name)
                 if not isinstance(inv_domain, bool):
                     inv_domain = simplify(inv_domain)
-                unique, _, _ = unique_value(inv_domain)
+                unique, _, _ = unique_value(
+                    inv_domain, single_value=field._single_value)
                 column.set_visible(not unique or bool(self.children_field))
         if self.children_field:
             for i, column in enumerate(self.treeview.get_columns()):

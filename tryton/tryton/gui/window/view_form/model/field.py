@@ -30,6 +30,7 @@ class Field(object):
     set_client: save the value from the widget
     '''
     _default = None
+    _single_value = True
 
     @staticmethod
     def get_field(ctype):
@@ -111,8 +112,10 @@ class Field(object):
             invalid = 'domain'
         else:
             screen_domain, _ = self.domains_get(record, pre_validate)
-            unique, leftpart, value = unique_value(domain)
-            unique_from_screen, _, _ = unique_value(screen_domain)
+            unique, leftpart, value = unique_value(
+                domain, single_value=self._single_value)
+            unique_from_screen, _, _ = unique_value(
+                screen_domain, single_value=self._single_value)
             if (self._is_empty(record)
                     and not is_required
                     and not is_invisible
@@ -248,6 +251,7 @@ class SelectionField(Field):
 class MultiSelectionField(SelectionField):
 
     _default = None
+    _single_value = False
 
     def get(self, record):
         value = super().get(record)
@@ -601,6 +605,7 @@ class O2MField(Field):
     '''
 
     _default = None
+    _single_value = False
 
     def __init__(self, attrs):
         super(O2MField, self).__init__(attrs)
@@ -1112,6 +1117,7 @@ class BinaryField(Field):
 class DictField(Field):
 
     _default = {}
+    _single_value = False
 
     def __init__(self, attrs):
         super(DictField, self).__init__(attrs)

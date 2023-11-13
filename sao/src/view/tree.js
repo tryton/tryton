@@ -879,11 +879,13 @@
                     visible_columns -= 1;
                     column.set_visible(false);
                 } else {
+                    const field = this.screen.model.fields[name];
                     var inv_domain = inversion.domain_inversion(domain, name);
                     if (typeof inv_domain != 'boolean') {
                         inv_domain = inversion.simplify(inv_domain);
                     }
-                    var unique = inversion.unique_value(inv_domain)[0];
+                    var unique = inversion.unique_value(
+                        inv_domain, field._single_value)[0];
                     if (unique && jQuery.isEmptyObject(this.children_field)) {
                         visible_columns -= 1;
                         column.set_visible(false);

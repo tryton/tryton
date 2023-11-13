@@ -2755,12 +2755,12 @@
             }
             return this.simplify(this.merge(result));
         },
-        unique_value: function(domain) {
+        unique_value: function(domain, single_value=true) {
             if ((domain instanceof Array) &&
                     (domain.length == 1)) {
                 let [name, operator, value, ...model] = domain[0];
                 if (operator == '=' ||
-                    (operator == 'in' && value.length == 1)) {
+                    (single_value && operator == 'in' && value.length == 1)) {
                     value = operator == '=' ? value : value[0];
                     var count = 0;
                     if (model.length && name.endsWith('.id')) {
