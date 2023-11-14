@@ -504,15 +504,13 @@ class DictWidget(Widget):
     def add_new_keys(self, ids):
         new_keys = self.field.add_new_keys(ids, self.record)
         self.send_modified()
-        focus = False
-        for key_name in new_keys:
-            if key_name not in self.fields:
-                self.add_line(key_name)
-                if not focus:
-                    # Use idle add because it can be called from the callback
-                    # of WinSearch while the popup is still there
-                    GLib.idle_add(self.fields[key_name].widget.grab_focus)
-                    focus = True
+        value = self.field.get_client(self.record)
+        value.update({k: None for k in new_keys})
+        self.display()
+
+        # Use idle add because it can be called from the callback
+        # of WinSearch while the popup is still there
+        GLib.idle_add(self.fields[new_keys[0]].widget.grab_focus)
 
     def _sig_remove(self, button, key, modified=True):
         self.fields[key].disconnect_signals()
@@ -558,7 +556,7 @@ class DictWidget(Widget):
                     not self._readonly
                     and self.attrs.get('delete', True)))
 
-    def add_line(self, key):
+    def add_line(self, key, position):
         key_schema = self.field.keys[key]
         self.fields[key] = DICT_ENTRIES[key_schema['type']](key, self)
         field = self.fields[key]
@@ -566,8 +564,8 @@ class DictWidget(Widget):
         label = Gtk.Label(
             label=set_underline(text),
             use_underline=True, halign=Gtk.Align.END)
-        self.grid.attach_next_to(
-            label, None, Gtk.PositionType.BOTTOM, 1, 1)
+        self.grid.insert_row(position)
+        self.grid.attach(label, 0, position, 1, 1)
         label.set_mnemonic_widget(field.widget)
         label.show()
         hbox = Gtk.HBox(hexpand=True)
@@ -604,6 +602,11 @@ class DictWidget(Widget):
             self.field.add_keys(list(new_key_names), self.record)
         decoder = PYSONDecoder()
 
+        # We remove first the old keys in order to keep the order when
+        # inserting the new ones
+        for key in set(self.fields.keys()) - set(value.keys()):
+            self._sig_remove(None, key, modified=False)
+
         def filter_func(item):
             key, value = item
             return key in self.field.keys
@@ -612,9 +615,10 @@ class DictWidget(Widget):
             key, value = item
             return self.field.keys[key]['sequence'] or 0
 
-        for key, val in sorted(filter(filter_func, value.items()), key=key):
+        for position, (key, val) in enumerate(
+                sorted(filter(filter_func, value.items()), key=key)):
             if key not in self.fields:
-                self.add_line(key)
+                self.add_line(key, position)
             widget = self.fields[key]
             widget.set_value(val)
             widget.set_readonly(self._readonly)
@@ -622,8 +626,6 @@ class DictWidget(Widget):
                 self.field.keys[key].get('domain') or '[]')
             widget_class(
                 widget.widget, 'invalid', not eval_domain(key_domain, value))
-        for key in set(self.fields.keys()) - set(value.keys()):
-            self._sig_remove(None, key, modified=False)
 
         self._set_button_sensitive()
 

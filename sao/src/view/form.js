@@ -4830,16 +4830,13 @@ function eval_pyson(value){
             field.add_new_keys(ids, this.record)
                 .then(new_names => {
                     this.send_modified();
-                    var focus = false;
-                    for (const name of new_names) {
-                        if (!(name in this.fields)) {
-                            this.add_line(name);
-                            if (!focus) {
-                                this.fields[name].input.focus();
-                                focus = true;
-                            }
-                        }
+                    var value = this.field.get_client(this.record);
+                    for (const key of new_names) {
+                        value[key] = null;
                     }
+                    this._display().then(() => {
+                        this.fields[new_names[0]].input.focus();
+                    });
                 });
         },
         remove: function(key, modified=true) {
@@ -4902,7 +4899,7 @@ function eval_pyson(value){
                 button.prop('disabled', this._readonly || !delete_);
             }
         },
-        add_line: function(key) {
+        add_line: function(key, position) {
             var field, row;
             var key_schema = this.field.keys[key];
             this.fields[key] = field = new (
@@ -4928,9 +4925,20 @@ function eval_pyson(value){
                 this.remove(key, true);
             });
 
-            row.appendTo(this.container);
+            var previous = null;
+            if (position > 0) {
+                previous = this.container.children().eq(position - 1);
+            }
+            if (previous) {
+                previous.after(row);
+            } else {
+                this.container.prepend(row);
+            }
         },
         display: function() {
+            this._display();
+        },
+        _display: function() {
             Sao.View.Form.Dict._super.display.call(this);
 
             var record = this.record;
@@ -4976,13 +4984,23 @@ function eval_pyson(value){
                             return 0;
                         }
                     });
+                // We remove first the old keys in order to keep the order
+                // inserting the new ones
+                var removed_key_names = Object.keys(this.fields).filter(
+                        function(e) {
+                            return !(e in value);
+                        });
+                for (i = 0, len = removed_key_names.length; i < len; i++) {
+                    key = removed_key_names[i];
+                    this.remove(key, false);
+                }
                 var decoder = new Sao.PYSON.Decoder();
                 var inversion = new Sao.common.DomainInversion();
                 for (i = 0, len = keys.length; i < len; i++) {
                     key = keys[i];
                     var val = value[key];
                     if (!this.fields[key]) {
-                        this.add_line(key);
+                        this.add_line(key, i);
                     }
                     var widget = this.fields[key];
                     widget.set_value(val);
@@ -4997,16 +5015,9 @@ function eval_pyson(value){
                         }
                     }
                 }
-                var removed_key_names = Object.keys(this.fields).filter(
-                        function(e) {
-                            return !(e in value);
-                        });
-                for (i = 0, len = removed_key_names.length; i < len; i++) {
-                    key = removed_key_names[i];
-                    this.remove(key, false);
-                }
             });
             this._set_button_sensitive();
+            return prm;
         },
         _update_completion: function(text) {
             if (this.wid_text.prop('disabled')) {
