@@ -12,4 +12,5 @@ Product Image
 The *Product Image* concept store images for a `Product
 <product:concept-product>`.
 The images are stored as `JPEGs <https://en.wikipedia.org/wiki/JPEG>`_ format
-and with a maximal horizontal and vertical size of 2048 pixels.
+and with a maximal horizontal and vertical size of `image_size_max
+<config-product-image_size_max>`.

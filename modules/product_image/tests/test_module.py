@@ -14,8 +14,8 @@ class ProductImageTestCase(ModuleTestCase):
     module = 'product_image'
 
     @with_transaction()
-    def test_image(self):
-        "Test image"
+    def test_image_square(self):
+        "Test image square"
         pool = Pool()
         Image = pool.get('product.image')
         Template = pool.get('product.template')
@@ -39,6 +39,55 @@ class ProductImageTestCase(ModuleTestCase):
 
         img = PIL.Image.open(io.BytesIO(image.get(size=100)))
         self.assertEqual(img.size, (100, 100))
+
+        img = PIL.Image.open(io.BytesIO(image.get(size=(150, 200))))
+        self.assertEqual(img.size, (150, 150))
+
+    @with_transaction()
+    def test_image_non_square(self):
+        "Test image non square"
+        pool = Pool()
+        Image = pool.get('product.image')
+        Template = pool.get('product.template')
+        Uom = pool.get('product.uom')
+
+        template = Template(name="Template")
+        template.default_uom, = Uom.search([], limit=1)
+        template.save()
+
+        image = Image(template=template)
+        image.image = urllib.request.urlopen(
+            'https://picsum.photos/200/400').read()
+        image.save()
+
+        self.assertEqual(template.image_url, None)
+        template.code = "CODE"
+        template.save()
+        self.assertRegex(
+            template.image_url,
+            r'/product/image/CODE/.*/Template\?s=64')
+
+        img = PIL.Image.open(io.BytesIO(image.get(size=100)))
+        self.assertEqual(img.size, (50, 100))
+
+        img = PIL.Image.open(io.BytesIO(image.get(size=(100, 200))))
+        self.assertEqual(img.size, (100, 200))
+
+    @with_transaction()
+    def test_round_size(self):
+        "Test round size"
+        pool = Pool()
+        Image = pool.get('product.image')
+        for size, result in [
+                (1, 1),
+                (2, 2),
+                (19, 20),
+                (45, 50),
+                (101, 128),
+                (129, 150),
+                ]:
+            with self.subTest(size=size):
+                self.assertEqual(Image._round_size(size), result)
 
     @with_transaction()
     def test_get_image_url(self):

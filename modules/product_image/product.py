@@ -22,6 +22,7 @@ if config.getboolean('product', 'image_filestore', default=False):
 else:
     file_id = None
     store_prefix = None
+SIZE_MAX = config.getint('product', 'image_size_max', default=2048)
 URL_BASE = config.get('product', 'image_base', default='')
 URL_EXTERNAL_BASE = config.get('product', 'image_base', default=http_host())
 
@@ -157,15 +158,21 @@ class Image(ImageMixin, sequence_ordered(), ModelSQL, ModelView, MatchMixin):
         super().write(*args)
         cls.clear_cache(sum(args[0:None:2], []))
 
-    def get(self, size=400):
-        size = min((
+    @classmethod
+    def _round_size(cls, size):
+        return min((
                 2 ** math.ceil(math.log2(size)),
                 10 * math.ceil(size / 10) if size <= 100
                 else 50 * math.ceil(size / 50)))
-        if not (0 < size <= 2048):
-            raise ValueError("Invalid size")
+
+    def get(self, size=400):
+        if isinstance(size, int):
+            size = (size, size)
+        size = tuple(map(self._round_size, size))
+        if not all(0 < s <= SIZE_MAX for s in size):
+            raise ValueError(f"Invalid size {size}")
         for cache in self.cache:
-            if cache.size == size:
+            if (cache.width, cache.height) == size:
                 return cache.image
         with Transaction().new_transaction():
             cache = self._store_cache(size, self._resize(size))
@@ -178,15 +185,7 @@ class Image(ImageMixin, sequence_ordered(), ModelSQL, ModelView, MatchMixin):
     def convert(cls, image, **_params):
         data = io.BytesIO()
         img = PIL.Image.open(io.BytesIO(image))
-        width, height = img.size
-        size = min(width, height)
-        img = img.crop((
-                (width - size) // 2,
-                (height - size) // 2,
-                (width + size) // 2,
-                (height + size) // 2))
-        if size > 2048:
-            img = img.resize((2048, 2048))
+        img.thumbnail((SIZE_MAX, SIZE_MAX))
         if img.mode in {'RGBA', 'P'}:
             img = img.convert('RGB')
         img.save(data, format='jpeg', optimize=True, **_params)
@@ -195,17 +194,24 @@ class Image(ImageMixin, sequence_ordered(), ModelSQL, ModelView, MatchMixin):
     def _resize(self, size=64, **_params):
         data = io.BytesIO()
         img = PIL.Image.open(io.BytesIO(self.image))
-        img = img.resize((size, size))
+        if isinstance(size, int):
+            size = (size, size)
+        img.thumbnail(size)
         img.save(data, format='jpeg', optimize=True, **_params)
         return data.getvalue()
 
     def _store_cache(self, size, image):
         pool = Pool()
         Cache = pool.get('product.image.cache')
+        if isinstance(size, int):
+            width = height = size
+        else:
+            width, height = size
         return Cache(
             product_image=self,
             image=image,
-            size=size)
+            width=width,
+            height=height)
 
     @classmethod
     def clear_cache(cls, images):
@@ -220,19 +226,40 @@ class ImageCache(ImageMixin, ModelSQL):
     __name__ = 'product.image.cache'
     product_image = fields.Many2One(
         'product.image', "Product Image", required=True, ondelete='CASCADE')
-    size = fields.Integer(
-        "Size", required=True,
+    width = fields.Integer(
+        "Width", required=True,
         domain=[
-            ('size', '>', 0),
-            ('size', '<=', 2048),
+            ('width', '>', 0),
+            ('width', '<=', SIZE_MAX),
+            ])
+    height = fields.Integer(
+        "Height", required=True,
+        domain=[
+            ('height', '>', 0),
+            ('height', '<=', SIZE_MAX),
             ])
 
     @classmethod
     def __setup__(cls):
         super().__setup__()
         t = cls.__table__()
-        cls._sql_constraints = [
-            ('size_unique', Unique(t, t.product_image, t.size),
+        cls._sql_constraints += [
+            ('dimension_unique', Unique(t, t.product_image, t.width, t.height),
                 'ir.msg_product_image_size_unique'),
             ]
-        cls._order.append(('size', 'ASC'))
+
+    @classmethod
+    def __register__(cls, module):
+        cursor = Transaction().connection.cursor()
+        table = cls.__table__()
+        table_h = cls.__table_handler__(module)
+
+        super().__register__(module)
+
+        # Migration from 7.0: split size into width and height
+        table_h.drop_constraint('size_unique')
+        if table_h.column_exist('size'):
+            cursor.execute(*table.update(
+                    [table.width, table.height],
+                    [table.size, table.size]))
+            table_h.drop_column('size')

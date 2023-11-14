@@ -62,7 +62,16 @@ def _image(request, pool, record):
         size = int(request.args.get('s', 400))
     except ValueError:
         abort(HTTPStatus.BAD_REQUEST)
-    response = Response(image.get(size), mimetype='image/jpeg')
+    try:
+        width = int(request.args.get('w', size))
+    except ValueError:
+        abort(HTTPStatus.BAD_REQUEST)
+    try:
+        height = int(request.args.get('h', size))
+    except ValueError:
+        abort(HTTPStatus.BAD_REQUEST)
+
+    response = Response(image.get((width, height)), mimetype='image/jpeg')
     response.headers['Cache-Control'] = (
         'max-age=%s, public' % TIMEOUT)
     response.add_etag()

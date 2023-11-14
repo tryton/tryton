@@ -24,6 +24,16 @@ This value is only used when the `image_filestore
 
 The default value is: ``None``
 
+.. _config-product-image_size_max:
+
+``image_size_max``
+==================
+
+The is the maximal horizontal and vertical size in pixels for the stored
+images.
+
+The default value is: ``2048``
+
 ``image_base``
 ==============
 
