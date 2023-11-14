@@ -364,14 +364,13 @@ class Form(TabContent):
                     ('remove', access['delete']),
                     ('copy', access['create']),
                     ('import', access['create']),
-                    ('action', access['write'] and not self.screen.readonly),
                     ]:
                 if name in self.buttons:
                     self.buttons[name].props.sensitive = sensitive
                 if name in self.menu_buttons:
                     self.menu_buttons[name].props.sensitive = sensitive
         else:
-            for name in ['new', 'save', 'remove', 'copy', 'import', 'action']:
+            for name in ['new', 'save', 'remove', 'copy', 'import']:
                 if name in self.buttons:
                     self.buttons[name].props.sensitive = False
                 if name in self.menu_buttons:
