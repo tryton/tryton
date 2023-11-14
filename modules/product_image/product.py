@@ -48,10 +48,16 @@ class ImageURLMixin:
                         }))
             if args:
                 size = args.pop('s', None)
+                width = args.pop('w', None)
+                height = args.pop('h', None)
                 index = args.pop('i', None)
                 args = {k: int(bool(v)) for k, v in args.items()}
                 if size:
                     args['s'] = size
+                if width:
+                    args['w'] = width
+                if height:
+                    args['h'] = height
                 if index is not None:
                     args['i'] = index
                 url += '?' + urlencode(args)
