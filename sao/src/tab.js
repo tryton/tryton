@@ -1037,7 +1037,6 @@
                     ['delete_', access.delete],
                     ['copy', access.create],
                     ['import', access.create],
-                    ['action', access.write && !this.screen.readonly],
                 ]);
                 for (const [name, access] of accesses) {
                     if (this.buttons[name]) {
@@ -1050,7 +1049,7 @@
                 }
             } else {
                 for (const name of [
-                    'new_', 'save', 'delete_', 'copy', 'import', 'action']) {
+                    'new_', 'save', 'delete_', 'copy', 'import']) {
                     if (this.buttons[name]) {
                         this.buttons[name].prop('disabled', true);
                     }
