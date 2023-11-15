@@ -510,6 +510,17 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin, InvoiceReportMixin):
     def default_company():
         return Transaction().context.get('company')
 
+    @fields.depends(
+        'company', 'tax_identifier', methods=['on_change_with_company_party'])
+    def on_change_company(self):
+        company_party = self.on_change_with_company_party()
+        if self.company:
+            if self.tax_identifier:
+                if self.tax_identifier.party != company_party:
+                    self.tax_identifier = None
+        else:
+            self.tax_identifier = None
+
     @fields.depends('company')
     def on_change_with_company_party(self, name=None):
         return self.company.party if self.company else None
@@ -544,7 +555,6 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin, InvoiceReportMixin):
 
     @fields.depends('party', 'type', methods=['_update_account'])
     def on_change_party(self):
-        self.invoice_address = None
         if self.party:
             self.invoice_address = self.party.address_get(type='invoice')
             self.party_tax_identifier = self.party.tax_identifier
@@ -555,8 +565,10 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin, InvoiceReportMixin):
                 self.account = self.party.account_payable_used
                 self.payment_term = self.party.supplier_payment_term
         else:
-            self.payment_term = None
+            self.invoice_address = None
             self.account = None
+            self.payment_term = None
+            self.party_tax_identifier = None
         self._update_account()
 
     @fields.depends(methods=['_update_account'])
