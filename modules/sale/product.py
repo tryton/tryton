@@ -161,8 +161,8 @@ class Product(metaclass=PoolMeta):
             uom = Uom(context['uom'])
 
         currency = None
-        if Transaction().context.get('currency'):
-            currency = Currency(Transaction().context.get('currency'))
+        if context.get('currency'):
+            currency = Currency(context.get('currency'))
         company = None
         if context.get('company'):
             company = Company(context['company'])
