@@ -1861,5 +1861,64 @@ class AccountTestCase(
                     Account.search([('name', '=', 'Main Cash')], count=True),
                     1)
 
+    @with_transaction()
+    def test_update_chart_new_parent(self):
+        "Test update chart of accounts with new parent"
+        pool = Pool()
+        ModelData = pool.get('ir.model.data')
+        TypeTemplate = pool.get('account.account.type.template')
+        Type = pool.get('account.account.type')
+        AccountTemplate = pool.get('account.account.template')
+        Account = pool.get('account.account')
+        UpdateChart = pool.get('account.update_chart', type='wizard')
+
+        company = create_company()
+        with set_company(company):
+            create_chart(company, True)
+
+        with Transaction().set_user(0):
+            root_type_template = TypeTemplate(ModelData.get_id(
+                    'account', 'account_type_template_minimal_en'))
+
+            type_template, = TypeTemplate.search([
+                    ('parent', '!=', None),
+                    ('parent', 'child_of', [root_type_template.id]),
+                    ], limit=1)
+            new_type_template, = TypeTemplate.copy([type_template])
+            type_template.parent = new_type_template
+            type_template.save()
+
+            root_template = AccountTemplate(ModelData.get_id(
+                    'account', 'account_template_root_en'))
+
+            account_template, = AccountTemplate.search([
+                    ('parent', '!=', None),
+                    ('parent', 'child_of', [root_template.id]),
+                    ], limit=1)
+            new_account_template, = AccountTemplate.copy([account_template])
+            account_template.parent = new_account_template
+            account_template.save()
+
+        with set_company(company):
+            account, = Account.search([('parent', '=', None)])
+            session_id, _, _ = UpdateChart.create()
+            update_chart = UpdateChart(session_id)
+            update_chart.start.account = account
+            update_chart.transition_update()
+
+            new_type, = Type.search(
+                [('template', '=', new_type_template.id)])
+            type, = Type.search(
+                [('template', '=', type_template.id)])
+
+            self.assertEqual(type.parent, new_type)
+
+            new_account, = Account.search(
+                [('template', '=', new_account_template.id)])
+            account, = Account.search(
+                [('template', '=', account_template.id)])
+
+            self.assertEqual(account.parent, new_account)
+
 
 del ModuleTestCase

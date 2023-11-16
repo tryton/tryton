@@ -434,8 +434,11 @@ class Type(
                 if child.template:
                     if not child.template_override:
                         if child.template.parent:
+                            # Fallback to current parent
+                            # to keep under the same root
                             parent = template2type.get(
-                                child.template.parent.id)
+                                child.template.parent.id,
+                                child.parent)
                         else:
                             parent = None
                         old_parent = (
@@ -3301,14 +3304,16 @@ class UpdateChart(Wizard):
         account = Account(self.start.account.id)
         company = account.company
 
-        # Update account types
         template2type = {}
+        # Update account types
         account.type.update_type(template2type=template2type)
         # Create missing account types
         if account.type.template:
             account.type.template.create_type(
                 company.id,
                 template2type=template2type)
+            # Update again to set new parent
+            account.type.update_type(template2type=template2type)
 
         # Update accounts
         template2account = {}
@@ -3333,6 +3338,11 @@ class UpdateChart(Wizard):
                 account.template.id, account.company.id,
                 template2account=template2account,
                 template2tax=template2tax)
+            # Update again to set new parent
+            Tax.update_tax(
+                company.id,
+                template2account=template2account,
+                template2tax=template2tax)
 
         # Update tax codes
         template2tax_code = {}
@@ -3343,6 +3353,10 @@ class UpdateChart(Wizard):
         if account.template:
             TaxCodeTemplate.create_tax_code(
                 account.template.id, company.id,
+                template2tax_code=template2tax_code)
+            # Update again to set new parent
+            TaxCode.update_tax_code(
+                company.id,
                 template2tax_code=template2tax_code)
 
         # Update tax code lines
@@ -3360,7 +3374,7 @@ class UpdateChart(Wizard):
                 template2tax_code=template2tax_code,
                 template2tax_code_line=template2tax_code_line)
 
-        # Update taxes and replaced_by on accounts
+        # Update parent, taxes and replaced_by on accounts
         account.update_account2(template2account, template2tax)
 
         # Update tax rules
