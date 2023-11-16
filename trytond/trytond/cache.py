@@ -151,7 +151,7 @@ class MemoryCache(BaseCache):
     A key value LRU cache with size limit.
     """
     _reset = WeakKeyDictionary()
-    _clean_last = dt.datetime.now()
+    _clean_last = None
     _default_lower = Transaction.monotonic_time()
     _listener = {}
     _listener_lock = defaultdict(threading.Lock)
@@ -228,6 +228,10 @@ class MemoryCache(BaseCache):
 
     @classmethod
     def sync(cls, transaction):
+        if cls._clean_last is None:
+            cls._clean_last = dt.datetime.now()
+            return
+
         database = transaction.database
         dbname = database.name
         if not _clear_timeout and database.has_channel():

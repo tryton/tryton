@@ -6,10 +6,6 @@ import os
 import urllib.parse
 from getpass import getuser
 
-import __main__ as main
-
-from . import status
-
 __all__ = ['config', 'get_hostname', 'get_port', 'split_netloc',
     'parse_listen', 'parse_uri']
 logger = logging.getLogger(__name__)
@@ -169,6 +165,3 @@ class TrytonConfigParser(configparser.ConfigParser):
 
 
 config = TrytonConfigParser()
-
-if os.path.basename(getattr(main, '__file__', '')) != 'trytond-stat':
-    status.start(config.get('database', 'path'))
