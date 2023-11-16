@@ -219,8 +219,8 @@ class Form(TabContent):
         class Preview():
             def record_message(self, position, length, *args):
                 label.set_text('(%s/%s)' % (position or '_', length))
-                but_prev.set_sensitive(position and position > 1)
-                but_next.set_sensitive(position and position < length)
+                but_prev.set_sensitive(screen.has_prev())
+                but_next.set_sensitive(screen.has_next())
         screen.windows.append(Preview())
 
         vbox.pack_start(screen.widget, expand=True, fill=True, padding=0)

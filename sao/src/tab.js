@@ -1283,8 +1283,8 @@
             preview.record_message = function(position, length) {
                 var text = (position || '_') + '/' + length;
                 label.text(text).attr('title', text);
-                but_prev.prop('disabled', !position || position <= 1);
-                but_next.prop('disabled', !position || position >= length);
+                but_prev.prop('disabled', !screen.has_previous());
+                but_next.prop('disabled', !screen.has_next());
             };
             screen.windows.push(preview);
 
