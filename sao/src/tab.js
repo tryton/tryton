@@ -1309,7 +1309,13 @@
             if (!Sao.common.compare(this.attachment_screen.domain, domain) ||
                 force) {
                 this.attachment_screen.domain = domain;
-                this.attachment_screen.search_filter();
+                this.attachment_screen.search_filter().then(() => {
+                    const group = this.attachment_screen.group;
+                    if (group.length) {
+                        this.attachment_screen.current_record = group[0];
+                        this.attachment_screen.display();
+                    }
+                });
             }
         },
         note: function() {

@@ -240,6 +240,10 @@ class Form(TabContent):
         if self.attachment_screen.domain != domain or force:
             self.attachment_screen.domain = domain
             self.attachment_screen.search_filter()
+            group = self.attachment_screen.group
+            if group:
+                self.attachment_screen.current_record = group[0]
+                self.attachment_screen.display()
 
     def sig_note(self, widget=None):
         record = self.screen.current_record
