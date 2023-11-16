@@ -13,7 +13,8 @@ Sale
 
 The *Sale* concept is used to manage the selling process.
 Each sale, at any time, can be in one of several different states.
-A sale progress though these states until it is either done or gets cancelled.
+A sale progresses through these states until it is either done or gets
+cancelled.
 When some of these state changes happen the
 `Employee <company:model-company.employee>` that triggered the state change
 is also recorded.
