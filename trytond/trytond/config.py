@@ -1,12 +1,9 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
-import __main__ as main
 import configparser
 import logging
 import os
 import urllib.parse
-
-from . import status
 
 __all__ = ['config', 'get_hostname', 'get_port', 'split_netloc',
     'parse_listen', 'parse_uri']
@@ -159,6 +156,3 @@ class TrytonConfigParser(configparser.ConfigParser):
 
 
 config = TrytonConfigParser()
-
-if os.path.basename(getattr(main, '__file__', '')) != 'trytond-stat':
-    status.start(config.get('database', 'path'))
