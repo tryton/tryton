@@ -292,8 +292,8 @@ class TaxCode(
                 if child.template:
                     if not child.template_override:
                         if child.template.parent:
-                            parent = template2tax_code[
-                                child.template.parent.id]
+                            parent = template2tax_code.get(
+                                child.template.parent.id)
                         else:
                             parent = None
                         old_parent = (
@@ -1172,7 +1172,7 @@ class Tax(sequence_ordered(), ModelSQL, ModelView, DeactivableMixin):
                 if child.template:
                     if not child.template_override:
                         if child.template.parent:
-                            parent = template2tax[child.template.parent.id]
+                            parent = template2tax.get(child.template.parent.id)
                         else:
                             parent = None
                         old_parent = (
