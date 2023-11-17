@@ -302,13 +302,9 @@ class Sale(metaclass=PoolMeta):
         pool = Pool()
         Date = pool.get('ir.date')
         Currency = pool.get('currency.currency')
-        Line = pool.get('sale.line')
-        stockable = any(
-            line.quantity >= 0 for line in self.lines
-            if line.type == 'line'
-            and line.product
-            and line.product.type in Line.get_move_product_types())
-        if stockable:
+        movable = any(
+            line.quantity >= 0 for line in self.lines if line.movable)
+        if movable:
             with Transaction().set_context(self._get_carrier_context(carrier)):
                 cost, currency_id = carrier.get_sale_price()
             if cost is not None:

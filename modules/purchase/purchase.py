@@ -735,7 +735,7 @@ class Purchase(
         for line in self.lines:
             if (not line.to_location
                     and line.product
-                    and line.product.type in line.get_move_product_types()):
+                    and line.movable):
                 raise PurchaseQuotationError(
                     gettext('purchase.msg_warehouse_required_for_quotation',
                         purchase=self.rec_name))
@@ -1289,19 +1289,43 @@ class Line(sequence_ordered(), ModelSQL, ModelView):
             })
     moves_recreated = fields.Many2Many(
         'purchase.line-recreated-stock.move', 'purchase_line', 'move',
-        "Recreated Stock Moves", readonly=True)
-    moves_exception = fields.Function(
-        fields.Boolean("Moves Exception"), 'get_moves_exception')
-    moves_progress = fields.Function(
-        fields.Float("Moves Progress", digits=(1, 4)),
+        "Recreated Moves", readonly=True,
+        states={
+            'invisible': ~Eval('moves_recreated'),
+            })
+    moves_exception = fields.Function(fields.Boolean(
+            "Moves Exception",
+            states={
+                'invisible': ~Eval('movable'),
+                }),
+        'get_moves_exception')
+    moves_progress = fields.Function(fields.Float(
+            "Moves Progress", digits=(1, 4),
+            states={
+                'invisible': ~Eval('movable'),
+                }),
         'get_moves_progress')
     warehouse = fields.Function(fields.Many2One(
-            'stock.location', "Warehouse"),
+            'stock.location', "Warehouse",
+            states={
+                'invisible': ~Eval('movable'),
+                }),
         'on_change_with_warehouse')
-    from_location = fields.Function(fields.Many2One('stock.location',
-            'From Location'), 'get_from_location')
-    to_location = fields.Function(fields.Many2One('stock.location',
-            'To Location'), 'get_to_location')
+    from_location = fields.Function(fields.Many2One(
+            'stock.location', "From Location",
+            states={
+                'invisible': ~Eval('movable'),
+                }),
+        'get_from_location')
+    to_location = fields.Function(fields.Many2One(
+            'stock.location', "To Location",
+            states={
+                'invisible': ~Eval('movable'),
+                }),
+        'get_to_location')
+    movable = fields.Function(
+        fields.Boolean("Movable"), 'on_change_with_movable')
+
     delivery_date = fields.Function(fields.Date('Delivery Date',
             states={
                 'invisible': Eval('type') != 'line',
@@ -1355,12 +1379,6 @@ class Line(sequence_ordered(), ModelSQL, ModelView):
     currency = fields.Function(
         fields.Many2One('currency.currency', 'Currency'),
         'on_change_with_currency')
-
-    @classmethod
-    def get_move_product_types(cls):
-        pool = Pool()
-        Move = pool.get('stock.move')
-        return Move.get_product_types()
 
     @classmethod
     def __setup__(cls):
@@ -1668,6 +1686,13 @@ class Line(sequence_ordered(), ModelSQL, ModelView):
                 return self.purchase.warehouse.input_location.id
         elif self.purchase.party.supplier_location:
             return self.purchase.party.supplier_location.id
+
+    @fields.depends('product')
+    def on_change_with_movable(self, name=None):
+        pool = Pool()
+        Move = pool.get('stock.move')
+        if self.product:
+            return self.product.type in Move.get_product_types()
 
     @fields.depends('moves', methods=['planned_delivery_date'])
     def on_change_with_delivery_date(self, name=None):

@@ -835,7 +835,7 @@ class Sale(
                 location = line.to_location
             if ((not location or not line.warehouse)
                     and line.product
-                    and line.product.type in line.get_move_product_types()):
+                    and line.movable):
                 raise SaleQuotationError(
                     gettext('sale.msg_sale_warehouse_required_for_quotation',
                         sale=self.rec_name))
@@ -1402,20 +1402,45 @@ class SaleLine(TaxableMixin, sequence_ordered(), ModelSQL, ModelView):
         states={
             'invisible': ~Eval('moves_ignored', []),
             })
-    moves_recreated = fields.Many2Many('sale.line-recreated-stock.move',
-            'sale_line', 'move', 'Recreated Stock Moves', readonly=True)
-    moves_exception = fields.Function(
-        fields.Boolean("Moves Exception"), 'get_moves_exception')
-    moves_progress = fields.Function(
-        fields.Float("Moves Progress", digits=(1, 4)),
+    moves_recreated = fields.Many2Many(
+        'sale.line-recreated-stock.move', 'sale_line', 'move',
+        "Recreated Moves", readonly=True,
+        states={
+            'invisible': ~Eval('moves_recreated'),
+            })
+    moves_exception = fields.Function(fields.Boolean(
+            "Moves Exception",
+            states={
+                'invisible': ~Eval('movable'),
+                }),
+        'get_moves_exception')
+    moves_progress = fields.Function(fields.Float(
+            "Moves Progress", digits=(1, 4),
+            states={
+                'invisible': ~Eval('movable'),
+                }),
         'get_moves_progress')
     warehouse = fields.Function(fields.Many2One(
-            'stock.location', "Warehouse"),
+            'stock.location', "Warehouse",
+            states={
+                'invisible': ~Eval('movable'),
+                }),
         'on_change_with_warehouse')
-    from_location = fields.Function(fields.Many2One('stock.location',
-            'From Location'), 'get_from_location')
-    to_location = fields.Function(fields.Many2One('stock.location',
-            'To Location'), 'get_to_location')
+    from_location = fields.Function(fields.Many2One(
+            'stock.location', "From Location",
+            states={
+                'invisible': ~Eval('movable'),
+                }),
+        'get_from_location')
+    to_location = fields.Function(fields.Many2One(
+            'stock.location', "To Location",
+            states={
+                'invisible': ~Eval('movable'),
+                }),
+        'get_to_location')
+    movable = fields.Function(
+        fields.Boolean("Movable"), 'on_change_with_movable')
+
     shipping_date = fields.Function(fields.Date('Shipping Date',
             states={
                 'invisible': Eval('type') != 'line',
@@ -1437,12 +1462,6 @@ class SaleLine(TaxableMixin, sequence_ordered(), ModelSQL, ModelView):
     sale_date = fields.Function(
         fields.Date("Sale Date"),
         'on_change_with_sale_date', searcher='search_sale_date')
-
-    @classmethod
-    def get_move_product_types(cls):
-        pool = Pool()
-        Move = pool.get('stock.move')
-        return Move.get_product_types()
 
     @classmethod
     def __setup__(cls):
@@ -1737,6 +1756,17 @@ class SaleLine(TaxableMixin, sequence_ordered(), ModelSQL, ModelView):
         else:
             if self.warehouse:
                 return self.warehouse.input_location.id
+
+    @classmethod
+    def movable_types(cls):
+        pool = Pool()
+        Move = pool.get('stock.move')
+        return Move.get_product_types()
+
+    @fields.depends('product')
+    def on_change_with_movable(self, name=None):
+        if self.product:
+            return self.product.type in self.movable_types()
 
     @fields.depends('moves', methods=['planned_shipping_date'])
     def on_change_with_shipping_date(self, name=None):

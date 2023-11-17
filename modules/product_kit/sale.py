@@ -62,10 +62,8 @@ class Line(order_line_mixin('sale'), metaclass=PoolMeta):
         return super().get_component_order_line(component, **values)
 
     @classmethod
-    def get_move_product_types(cls):
-        types = super().get_move_product_types()
-        types.append('kit')
-        return types
+    def movable_types(cls):
+        return super().movable_types() + ['kit']
 
 
 class LineComponent(
