@@ -310,9 +310,8 @@ class ShopifyInventoryItem(IdentifiersMixin, ModelSQL, ModelView):
     def get_shopify(self, shop):
         pool = Pool()
         Product = pool.get('product.product')
-        Move = pool.get('stock.move')
-        # TODO: replace with product_types from sale line
-        move_types = Move.get_product_types()
+        SaleLine = pool.get('sale.line')
+        movable_types = SaleLine.movable_types()
 
         shopify_id = self.get_shopify_identifier(shop)
         inventory_item = None
@@ -333,8 +332,8 @@ class ShopifyInventoryItem(IdentifiersMixin, ModelSQL, ModelView):
             inventory_item = shopify.InventoryItem.find(
                 variant.inventory_item_id)
         inventory_item.tracked = (
-            self.product.type in move_types and not self.product.consumable)
-        inventory_item.requires_shipping = self.product.type in move_types
+            self.product.type in movable_types and not self.product.consumable)
+        inventory_item.requires_shipping = self.product.type in movable_types
         return inventory_item
 
 
