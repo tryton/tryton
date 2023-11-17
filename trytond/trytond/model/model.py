@@ -244,11 +244,15 @@ class Model(URLMixin, PoolBase, metaclass=ModelMeta):
         IrModelField = pool.get('ir.model.field')
 
         def format_value(value):
+            ffield = getattr(cls, field, None)
             if isinstance(value, Model):
                 try:
                     return value.rec_name
                 except Exception:
                     return str(value.id)
+            elif ffield and ffield._type in {'selection', 'multiselection'}:
+                selection = ffield.get_selection(cls, field, record)
+                return ffield.get_selection_string(selection, value)
             else:
                 return str(value)
 

@@ -205,6 +205,34 @@ class ModelTestCase(unittest.TestCase):
                 'record': record.id, 'value': "Test"})
 
     @with_transaction()
+    def test_names_value_selection(self):
+        "test __names__ with selection value"
+        pool = Pool()
+        Model = pool.get('test.model')
+
+        record = Model(selection='foo')
+        names = Model.__names__(field='selection', record=record)
+
+        self.assertEqual(
+            names, {
+                'model': "Model", 'field': "Selection",
+                'record': record.id, 'value': "Foo"})
+
+    @with_transaction()
+    def test_names_value_multiselection(self):
+        "test __names__ with multiselection value"
+        pool = Pool()
+        Model = pool.get('test.model')
+
+        record = Model(multiselection=['foo', 'bar'])
+        names = Model.__names__(field='multiselection', record=record)
+
+        self.assertEqual(
+            names, {
+                'model': "Model", 'field': "MultiSelection",
+                'record': record.id, 'value': "Foo, Bar"})
+
+    @with_transaction()
     def test_names_value_list(self):
         "Test __names__ with value as list"
         pool = Pool()

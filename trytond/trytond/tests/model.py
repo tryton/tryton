@@ -10,6 +10,15 @@ class Model(ModelSQL):
     'Model'
     __name__ = 'test.model'
     name = fields.Char('Name')
+    selection = fields.Selection([
+            ('foo', "Foo"),
+            ('bar', "Bar"),
+            (None, ""),
+            ], "Selection")
+    multiselection = fields.MultiSelection([
+            ('foo', "Foo"),
+            ('bar', "Bar"),
+            ], "MultiSelection")
 
 
 class ModelParent(Model):
