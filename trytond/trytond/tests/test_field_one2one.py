@@ -123,7 +123,7 @@ class FieldOne2OneTestCase(unittest.TestCase):
         with self.assertRaisesRegex(
                 DomainValidationError,
                 'The value "%s" for field "One2One" '
-                'in ".*" of "One2One"' % target.rec_name):
+                'in record ".*" of "One2One"' % target.rec_name):
             One2One.create([{
                         'one2one': target.id,
                         }])

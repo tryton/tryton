@@ -116,7 +116,7 @@ class FieldIntegerTestCase(unittest.TestCase):
         with self.assertRaisesRegex(
                 DomainValidationError,
                 'The value "10" for field "Integer" '
-                'in ".*" of "Integer Domain"'):
+                'in record ".*" of "Integer Domain"'):
             Integer.create([{
                         'integer': 10,
                         }])

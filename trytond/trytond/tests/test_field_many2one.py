@@ -81,7 +81,8 @@ class FieldMany2OneTestCase(unittest.TestCase):
         with self.assertRaisesRegex(
                 DomainValidationError,
                 'The value "%s" for field "many2one" '
-                'in ".*" of "Many2One Domain Validation"' % target.rec_name):
+                'in record ".*" of "Many2One Domain Validation"' %
+                target.rec_name):
             Many2One.create([{
                         'many2one': target.id,
                         }])

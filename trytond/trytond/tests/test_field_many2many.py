@@ -458,7 +458,7 @@ class FieldMany2ManyTestCase(unittest.TestCase, CommonTestCaseMixin):
         with self.assertRaisesRegex(
                 DomainValidationError,
                 'The value ".*,.*" for field "Targets" '
-                'in ".*" of "Many2Many Domain"'):
+                'in record ".*" of "Many2Many Domain"'):
             Many2Many.create([{
                         'targets': [
                             ('create', [{'value': 10}, {'value': None}]),

@@ -575,7 +575,7 @@ class FieldOne2ManyTestCase(
         with self.assertRaisesRegex(
                 DomainValidationError,
                 'The value ".*,.*" for field "Targets" '
-                'in ".*" of "One2Many Domain"'):
+                'in record ".*" of "One2Many Domain"'):
             One2Many.create([{
                         'targets': [
                             ('create', [{'value': 10}, {'value': None}]),
