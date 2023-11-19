@@ -94,7 +94,7 @@ As we defined a new dependency, we must refresh the installation with:
 
 .. code-block:: console
 
-   $ python -m pip install --editable opportunity
+   $ python -m pip install --use-pep517 --editable opportunity
 
 Now we can activate the ``opportunity`` module and its dependencies:
 
