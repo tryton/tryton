@@ -13,7 +13,7 @@ Let's create a virtual environment inside your working directory:
 
 .. code-block:: console
 
-   $ python -m venv .venv
+   $ python3 -m venv .venv
    $ source .venv/bin/activate
    $ python -m pip install --upgrade pip
 
@@ -25,7 +25,7 @@ First we install cookiecutter_ and mercurial_ with:
 
 .. code-block:: console
 
-   $ python -m pip install cookiecutter mercurial
+   $ python3 -m pip install cookiecutter mercurial
 
 Setup module
 ------------
@@ -58,7 +58,7 @@ Now we can install the new module in editable mode:
 
 .. code-block:: console
 
-   $ python -m pip install --use-pep517 --editable opportunity
+   $ python3 -m pip install --use-pep517 --editable opportunity
 
 Continue with :ref:`initializing the database <tutorial-module-setup-database>`
 

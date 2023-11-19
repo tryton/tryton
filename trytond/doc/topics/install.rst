@@ -19,20 +19,20 @@ There are three options to install Tryton:
 
       .. code-block:: console
 
-         $ python -m pip install trytond
+         $ python3 -m pip install trytond
 
       You can also install for example the ``sale`` module with:
 
       .. code-block:: console
 
-         $ python -m pip install trytond_sale
+         $ python3 -m pip install trytond_sale
 
     * Without installation, you need to make sure you have all the dependencies
       installed and then run:
 
       .. code-block:: console
 
-         $ python bin/trytond
+         $ python3 bin/trytond
 
       You can register modules by linking them into the ``trytond/modules``
       folder.

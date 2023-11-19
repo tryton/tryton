@@ -59,19 +59,19 @@ You can run a specific test file using ``unittest`` command line like:
 
 .. code-block:: console
 
-   $ python -m unittest trytond.tests.test_tools
+   $ python3 -m unittest trytond.tests.test_tools
 
 To run all trytond's tests using discover of ``unittest`` with:
 
 .. code-block:: console
 
-   $ python -m unittest discover -s trytond.tests
+   $ python3 -m unittest discover -s trytond.tests
 
 To run all modules tests:
 
 .. code-block:: console
 
-   $ python -m unittest discover -s trytond.modules
+   $ python3 -m unittest discover -s trytond.modules
 
 
 Running your module's tests
@@ -81,7 +81,7 @@ You just need to replace the directory path with the one of your module:
 
 .. code-block:: console
 
-   $ python -m unittest discover -s trytond.modules.my_module.tests
+   $ python3 -m unittest discover -s trytond.modules.my_module.tests
 
 Extending trytond's tests
 -------------------------
