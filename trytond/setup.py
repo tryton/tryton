@@ -53,7 +53,7 @@ else:
     download_url = 'http://downloads.tryton.org/%s.%s/' % (
         major_version, minor_version)
 
-tests_require = ['pillow']
+tests_require = ['pillow', 'pydot']
 
 setup(name=name,
     version=version,

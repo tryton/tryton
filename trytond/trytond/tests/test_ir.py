@@ -1,6 +1,7 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 import datetime
+import shutil
 import unittest
 from decimal import Decimal
 from unittest.mock import ANY, Mock, patch
@@ -9,6 +10,10 @@ try:
     import zoneinfo
 except ImportError:
     zoneinfo = None
+try:
+    import pydot
+except ImportError:
+    pydot = None
 
 from dateutil.relativedelta import relativedelta
 
@@ -550,6 +555,24 @@ class IrCronTestCase(unittest.TestCase):
         cron = self._get_cron()
 
         self.assertIsInstance(cron.get_timezone('timezone'), str)
+
+    @unittest.skipUnless(
+            pydot and shutil.which('dot'), "pydot is needed to generate graph")
+    @with_transaction()
+    def test_workflow_graph(self):
+        "Test workflow graph"
+        pool = Pool()
+        Model = pool.get('ir.model')
+        ModelWorkflowGraph = pool.get('ir.model.workflow_graph', type='report')
+
+        model, = Model.search([('model', '=', 'ir.error')])
+
+        oext, content, print_, filename = (
+                ModelWorkflowGraph.execute([model.id], {}))
+        self.assertEqual(oext, 'png')
+        self.assertTrue(content)
+        self.assertFalse(print_)
+        self.assertEqual(filename, "Workflow Graph")
 
 
 del ModuleTestCase
