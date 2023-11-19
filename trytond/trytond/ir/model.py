@@ -1537,10 +1537,12 @@ class ModelWorkflowGraph(Report):
             state_field = getattr(Model, Model._transition_state)
             for state, _ in state_field.selection:
                 node = pydot.Node(
-                    '"%s"' % state, shape='octagon', label=state)
+                    f'"{record.model}--{state}"', shape='octagon', label=state)
                 subgraph.add_node(node)
 
             for from_, to in Model._transitions:
-                edge = pydot.Edge('"%s"' % from_, '"%s"' % to,
-                    arrowhead='normal')
+                edge = pydot.Edge(
+                        f'"{record.model}--{from_}"',
+                        f'"{record.model}--{to}"',
+                        arrowhead='normal')
                 subgraph.add_edge(edge)
