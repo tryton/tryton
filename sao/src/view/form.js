@@ -425,7 +425,9 @@ function eval_pyson(value){
             if (record) {
                 return record.on_scan_code(
                     code, this.attributes.scan_code_depends || []).done(() => {
-                        this.el.parents('form').submit();
+                        if (this.attributes.scan_code == 'submit') {
+                            this.el.parents('form').submit();
+                        }
                     });
             } else {
                 return jQuery.when();
