@@ -19,7 +19,8 @@ Setting your current company and employee
 
 If you want to change your current `Company <model-company.company>` or
 `Employee <model-company.employee>`, you should do this by opening your
-preferences and selecting the desired company and employee.
+preferences and selecting the desired company and employee from the list the
+administrator has predefined for your `User <trytond:model-res.user>`.
 
 .. note::
 
