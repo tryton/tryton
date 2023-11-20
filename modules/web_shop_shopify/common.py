@@ -29,8 +29,10 @@ class IdentifierMixin:
 
     @classmethod
     def set_shopify_identifier(cls, records, name, value):
+        if value is not None:
+            value = int(value) - (1 << 63)
         cls.write(records, {
-                'shopify_identifier_signed': int(value) - (1 << 63),
+                'shopify_identifier_signed': value,
                 })
 
     @classmethod
