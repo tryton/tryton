@@ -78,6 +78,15 @@ class Move(metaclass=PoolMeta):
             if product_location.match(pattern):
                 return product_location.location
 
+    @property
+    def _default_pick_location(self):
+        location = super()._default_pick_location
+        if self.product.consumable:
+            if ((product_location := self.get_product_location())
+                    and product_location.type != 'view'):
+                location = product_location
+        return location
+
 
 class ShipmentIn(metaclass=PoolMeta):
     __name__ = 'stock.shipment.in'
