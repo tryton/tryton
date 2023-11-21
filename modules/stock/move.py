@@ -989,11 +989,17 @@ class Move(Workflow, ModelSQL, ModelView):
             else:
                 to_pick.append((key, available_qty))
                 needed_qty -= available_qty
-        # Force assignation for consumables:
-        if self.product.consumable and self.from_location.type != 'view':
-            to_pick.append(((self.from_location,), needed_qty))
+        if default_location := self._default_pick_location:
+            to_pick.append(((default_location,), needed_qty))
             return to_pick
         return to_pick
+
+    @property
+    def _default_pick_location(self):
+        "The location to pick by default"
+        # Force assignation for consumables:
+        if self.product.consumable and self.from_location.type != 'view':
+            return self.from_location
 
     @classmethod
     def assign_try(cls, moves, with_childs=True, grouping=('product',)):
