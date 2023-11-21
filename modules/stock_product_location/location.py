@@ -56,7 +56,14 @@ class Move(metaclass=PoolMeta):
     __name__ = 'stock.move'
 
     def set_product_location(self, field='to_location', **pattern):
+        "Set the product location on the field"
         assert field in {'from_location', 'to_location'}
+        location = self.get_product_location(**pattern)
+        if location:
+            setattr(self, field, location)
+
+    def get_product_location(self, **pattern):
+        "Return the product location for the move"
         if getattr(self, 'shipment', None):
             pattern.setdefault('warehouse', self.shipment.warehouse.id)
         elif getattr(self, 'production', None):
@@ -69,8 +76,7 @@ class Move(metaclass=PoolMeta):
         locations = self.product.locations + self.product.template.locations
         for product_location in locations:
             if product_location.match(pattern):
-                setattr(self, field, product_location.location)
-                break
+                return product_location.location
 
 
 class ShipmentIn(metaclass=PoolMeta):
