@@ -200,17 +200,26 @@ class AccountNumber(DeactivableMixin, sequence_ordered(), ModelSQL, ModelView):
         super().__setup__()
         table = cls.__table__()
         cls._sql_constraints += [
-            ('number_iban_exclude',
+            ('number_iban_active_exclude',
                 Exclude(table, (table.number_compact, Equal),
-                    where=table.type == 'iban'),
+                    where=(table.type == 'iban') & table.active),
                 'bank.msg_number_iban_unique'),
-            ('account_iban_exclude',
+            ('account_iban_active_exclude',
                 Exclude(table, (table.account, Equal),
-                    where=table.type == 'iban'),
+                    where=(table.type == 'iban') & table.active),
                 'bank.msg_account_iban_unique'),
             ]
         cls.__access__.add('account')
         cls._order.insert(0, ('account', 'ASC'))
+
+    @classmethod
+    def __register__(cls, module):
+        table_h = cls.__table_handler__(module)
+        super().__register__(module)
+
+        # Migration from 7.0: replace iban exclude
+        table_h.drop_constraint('number_iban_exclude')
+        table_h.drop_constraint('account_iban_exclude')
 
     @classmethod
     def default_type(cls):
