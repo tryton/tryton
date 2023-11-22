@@ -41,3 +41,5 @@ if db_names:
         threads.append(thread)
     for thread in threads:
         thread.join()
+
+assert len(threads := threading.enumerate()) == 1, f"len({threads}) != 1"
