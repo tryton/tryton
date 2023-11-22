@@ -253,20 +253,6 @@ class AccountNumber(DeactivableMixin, sequence_ordered(), ModelSQL, ModelView):
             else self.number)
 
     @classmethod
-    def search_rec_name(cls, name, clause):
-        _, operator, operand, *extra = clause
-        if operator.startswith('!') or operator.startswith('not '):
-            bool_op = 'AND'
-        else:
-            bool_op = 'OR'
-        number_value = operand
-        if operator.endswith('like') and is_full_text(operand):
-            number_value = lstrip_wildcard(operand)
-        return [bool_op,
-            ('number', operator, number_value, *extra),
-            ]
-
-    @classmethod
     def create(cls, vlist):
         vlist = [v.copy() for v in vlist]
         for values in vlist:
