@@ -82,17 +82,20 @@ The record rules are conditions that records must meet for the user to be
 granted permission to use them.
 They are defined by records of ``ir.rule.group`` which contains:
 
-    - a model on which it applies
-    - the permissions granted
-    - a set of user groups to which the rule applies
-    - a global flag to always enforce
-    - a default flag to add to all users
-    - a list of ``ir.rule`` with a :ref:`domain <topics-domain>` to select the
-      records to which the rule applies.
+    - The model the rule applies to.
+    - The type of permissions to be granted.
+    - A set of user groups to which the rule applies.
+    - A global flag to always enforce the rule even if there are other rules
+      that are less restrictive.
+    - A default flag to apply the rule, by default, to all users.
+      This then allows other less restrictive rules, that apply to the user,
+      to grant them additional permissions.
+    - A list of ``ir.rule`` records, each with a :ref:`domain <topics-domain>`
+      that is used to select the records to which the rule applies.
 
 A rule group matches a record if the record is validated by at least one of the
 domains.
-The access is granted to a record:
+Access is only granted to a record:
 
     - if the user belongs to a group which has at least one matching rule group
       that has the permission,
@@ -101,7 +104,9 @@ The access is granted to a record:
 
     - or if there is a global matching rule group with the permission.
 
-Otherwise the access is denied if there is any matching rule group.
+    - or if there are no matching rule groups and no global rule groups for
+      the model.
+
 
 .. note::
     Records for which the user has no ``read`` access are filtered out from the
