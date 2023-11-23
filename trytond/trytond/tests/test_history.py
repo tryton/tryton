@@ -250,6 +250,52 @@ class HistoryTestCase(unittest.TestCase):
         self.assertEqual(history.value, 2)
 
     @with_transaction()
+    def test_search_historical_records(self):
+        pool = Pool()
+        History = pool.get('test.history')
+        transaction = Transaction()
+
+        first = History(value=1)
+        first.save()
+        first_stamp = first.create_date
+        # Commit so that further call are at a different timestamp
+        transaction.commit()
+
+        second = History(value=1)
+        first.value = 2
+        History.save([first, second])
+        second_stamp = second.create_date
+        transaction.commit()
+
+        third = History(value=1)
+        second.value = 2
+        History.delete([first])
+        History.save([second, third])
+        third_stamp = third.create_date
+        transaction.commit()
+
+        third.value = 2
+        History.delete([second])
+        third.save()
+        transaction.commit()
+
+        for test_name, timestamp, expected_1, expected_2 in [
+                ('min', datetime.datetime.min, [], []),
+                ('first', first_stamp, [first], []),
+                ('second', second_stamp, [second], [first]),
+                ('third', third_stamp, [third], [second]),
+                ('max', datetime.datetime.max, [], [third]),
+                ('no history', None, [], [third]),
+                ]:
+            with Transaction().set_context(_datetime=timestamp):
+                with self.subTest(f"{test_name} ('value', '=', 1)"):
+                    records = History.search([('value', '=', 1)])
+                    self.assertEqual(records, expected_1)
+                with self.subTest(f"{test_name} ('value', '=', 2)"):
+                    records = History.search([('value', '=', 2)])
+                    self.assertEqual(records, expected_2)
+
+    @with_transaction()
     def test_ordered_search(self):
         'Test ordered search of history models'
         pool = Pool()
