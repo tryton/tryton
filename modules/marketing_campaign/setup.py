@@ -55,6 +55,7 @@ tests_require = [
     get_require_version('trytond_sale'),
     get_require_version('trytond_sale_opportunity'),
     get_require_version('trytond_sale_point'),
+    get_require_version('trytond_web_shortener'),
     ]
 
 setup(name=name,

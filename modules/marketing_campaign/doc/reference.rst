@@ -31,4 +31,10 @@ Campaign
 
    Yield the field names of the :class:`Parameter` fields.
 
+.. class:: MarketingCampaignUTM
+
+   The *MarketingCampaignUTM* is a mixin_ that helps to add UTM_ parameters to
+   URL.
+
 .. _mixin: https://en.wikipedia.org/wiki/Mixin
+.. _UTM: https://en.wikipedia.org/wiki/UTM_parameters

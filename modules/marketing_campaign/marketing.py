@@ -1,6 +1,8 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 
+from urllib.parse import parse_qsl, urlencode, urlparse, urlunparse
+
 from sql.functions import Lower
 from sql.operators import Equal
 
@@ -76,6 +78,38 @@ class Medium(Parameter):
 class Source(Parameter):
     "Marketing Source"
     __name__ = 'marketing.source'
+
+
+class MarketingCampaignUTM:
+    __slots__ = ()
+
+    @property
+    def utm_campaign(self):
+        if campaign := getattr(self, 'marketing_campaign', None):
+            return campaign.name
+
+    @property
+    def utm_medium(self):
+        if medium := getattr(self, 'marketing_medium', None):
+            return medium.name
+
+    @property
+    def utm_source(self):
+        if source := getattr(self, 'marketing_source', None):
+            return source.name
+
+    def add_utm_parameters(self, url):
+        params = {}
+        for name in ['utm_campaign', 'utm_medium', 'utm_source']:
+            if value := getattr(self, name):
+                params[name] = value
+        if params:
+            url_parts = list(urlparse(url))
+            query = dict(parse_qsl(url_parts[4]))
+            query.update(params)
+            url_parts[4] = urlencode(query)
+            url = urlunparse(url_parts)
+        return url
 
 
 class MarketingCampaignMixin(Model):

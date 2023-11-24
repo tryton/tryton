@@ -13,10 +13,11 @@ try:
 except ImportError:
     OpportunityAbstract = None
 
-from . import marketing, sale, sale_opportunity_reporting, sale_reporting
-from .marketing import MarketingCampaignMixin, Parameter
+from . import marketing, sale, sale_opportunity_reporting, sale_reporting, web
+from .marketing import MarketingCampaignMixin, MarketingCampaignUTM, Parameter
 
-__all__ = ['register', 'Parameter', 'MarketingCampaignMixin']
+__all__ = [
+    'register', 'Parameter', 'MarketingCampaignMixin', 'MarketingCampaignUTM']
 
 
 def register():
@@ -41,6 +42,9 @@ def register():
     Pool.register(
         sale.POSSale,
         module='marketing_campaign', type_='model', depends=['sale_point'])
+    Pool.register(
+        web.ShortenedURL,
+        module='marketing_campaign', type_='model', depends=['web_shortener'])
     if SaleAbstract:
         Pool.register_mixin(
             sale_reporting.AbstractMarketingCampaign, SaleAbstract,
