@@ -98,6 +98,12 @@ this repository contains the full copyright notices and license terms. -->
             action="act_source_form"
             sequence="50"
             id="menu_source_form"/>
-
+    </data>
+    <data depends="marketing_email">
+        <record model="ir.ui.view" id="email_message_view_form">
+            <field name="model">marketing.email.message</field>
+            <field name="inherit" ref="marketing_email.email_message_view_form"/>
+            <field name="name">campaign_mixin_form</field>
+        </record>
     </data>
 </tryton>

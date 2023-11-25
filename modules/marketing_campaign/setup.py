@@ -52,6 +52,7 @@ requires.append(get_require_version('trytond'))
 
 tests_require = [
     get_require_version('proteus'),
+    get_require_version('trytond_marketing_email'),
     get_require_version('trytond_sale'),
     get_require_version('trytond_sale_opportunity'),
     get_require_version('trytond_sale_point'),

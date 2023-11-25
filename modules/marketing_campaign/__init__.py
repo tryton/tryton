@@ -45,6 +45,10 @@ def register():
     Pool.register(
         web.ShortenedURL,
         module='marketing_campaign', type_='model', depends=['web_shortener'])
+    Pool.register(
+        marketing.EmailMessage,
+        module='marketing_campaign', type_='model',
+        depends=['marketing_email'])
     if SaleAbstract:
         Pool.register_mixin(
             sale_reporting.AbstractMarketingCampaign, SaleAbstract,

@@ -155,3 +155,7 @@ class MarketingCampaignMixin(Model):
                         default.setdefault(
                             fname + '.', {})['rec_name'] = target.rec_name
         return default
+
+
+class EmailMessage(MarketingCampaignUTM, MarketingCampaignMixin):
+    __name__ = 'marketing.email.message'

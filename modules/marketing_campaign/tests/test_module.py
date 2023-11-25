@@ -12,7 +12,9 @@ from trytond.tests.test_tryton import ModuleTestCase, with_transaction
 class MarketingCampaignTestCase(ModuleTestCase):
     "Test Marketing Campaign module"
     module = 'marketing_campaign'
-    extras = ['sale', 'sale_opportunity', 'sale_point', 'web_shortener']
+    extras = [
+        'marketing_email', 'sale', 'sale_opportunity', 'sale_point',
+        'web_shortener']
 
     @with_transaction()
     def test_shortened_url_add_utm(self):
