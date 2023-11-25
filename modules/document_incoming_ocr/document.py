@@ -181,8 +181,10 @@ class IncomingSupplierInvoice(metaclass=PoolMeta):
                         ])
             except ValueError:
                 logger.debug(f"Cannot find product '{product_name}'")
-            line.product = product.id
-            line.on_change_product()
+                line.product = None
+            else:
+                line.product = product.id
+                line.on_change_product()
         else:
             line.product = None
         line.description = line_data.get('description')
