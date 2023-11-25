@@ -16,8 +16,8 @@ class Parameter(DeactivableMixin, ModelSQL, ModelView):
 
     @classmethod
     def __setup__(cls):
-        t = cls.__table__()
         super().__setup__()
+        t = cls.__table__()
         cls._sql_constraints += [
             ('name_unique', Exclude(t, (Lower(t.name), Equal)),
                 'marketing_campaign.msg_parameter_name_unique'),
