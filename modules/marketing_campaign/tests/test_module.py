@@ -13,8 +13,8 @@ class MarketingCampaignTestCase(ModuleTestCase):
     "Test Marketing Campaign module"
     module = 'marketing_campaign'
     extras = [
-        'marketing_email', 'sale', 'sale_opportunity', 'sale_point',
-        'web_shortener']
+        'marketing_email', 'marketing_automation', 'sale', 'sale_opportunity',
+        'sale_point', 'web_shortener']
 
     @with_transaction()
     def test_shortened_url_add_utm(self):

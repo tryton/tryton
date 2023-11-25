@@ -49,6 +49,11 @@ def register():
         marketing.EmailMessage,
         module='marketing_campaign', type_='model',
         depends=['marketing_email'])
+    Pool.register(
+        marketing.AutomationActivity,
+        marketing.AutomationRecordActivity,
+        module='marketing_campaign', type_='model',
+        depends=['marketing_automation'])
     if SaleAbstract:
         Pool.register_mixin(
             sale_reporting.AbstractMarketingCampaign, SaleAbstract,

@@ -9,6 +9,7 @@ from sql.operators import Equal
 from trytond.i18n import lazy_gettext
 from trytond.model import (
     DeactivableMixin, Exclude, Model, ModelSQL, ModelView, fields)
+from trytond.pool import PoolMeta
 from trytond.transaction import Transaction, inactive_records
 
 
@@ -159,3 +160,26 @@ class MarketingCampaignMixin(Model):
 
 class EmailMessage(MarketingCampaignUTM, MarketingCampaignMixin):
     __name__ = 'marketing.email.message'
+
+
+class AutomationActivity(MarketingCampaignMixin):
+    __name__ = 'marketing.automation.activity'
+
+
+class AutomationRecordActivity(MarketingCampaignUTM, metaclass=PoolMeta):
+    __name__ = 'marketing.automation.record.activity'
+
+    @property
+    def utm_campaign(self):
+        if campaign := getattr(self.activity, 'marketing_campaign', None):
+            return campaign.name
+
+    @property
+    def utm_medium(self):
+        if medium := getattr(self.activity, 'marketing_medium', None):
+            return medium.name
+
+    @property
+    def utm_source(self):
+        if source := getattr(self.activity, 'marketing_source', None):
+            return source.name
