@@ -110,6 +110,9 @@ Referential
 Administration
 ^^^^^^^^^^^^^^
 
+:ref:`Document Incoming <index-document-incoming>`
+   Process incoming document.
+
 `Inbound Email </projects/modules-inbound-email/en/latest>`_
    Receive email.
 
