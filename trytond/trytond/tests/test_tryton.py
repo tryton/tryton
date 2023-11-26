@@ -142,12 +142,11 @@ def backup_db_cache(name):
 
 
 def _db_cache_file(path, name):
+    hash_name = hashlib.shake_128(name.encode('utf8')).hexdigest(40 // 2)
     if DB_CACHE.startswith('postgresql://'):
-        hash_name = hashlib.shake_128(name.encode('utf8')).hexdigest(
-            (63 - len('test-')) // 2)
         return f"{DB_CACHE}/test-{hash_name}"
     else:
-        return os.path.join(path, '%s-%s.dump' % (name, backend.name))
+        return os.path.join(path, f'{hash_name}-{backend.name}.dump')
 
 
 def _sqlite_copy(file_, restore=False):
