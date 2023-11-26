@@ -3,6 +3,7 @@
 # this repository contains the full copyright notices and license terms.
 import doctest
 import glob
+import hashlib
 import inspect
 import operator
 import os
@@ -131,7 +132,8 @@ def backup_db_cache(name):
 
 
 def _db_cache_file(path, name):
-    return os.path.join(path, '%s-%s.dump' % (name, backend.name))
+    hash_name = hashlib.shake_128(name.encode('utf8')).hexdigest(40 // 2)
+    return os.path.join(path, '%s-%s.dump' % (hash_name, backend.name))
 
 
 def _sqlite_copy(file_, restore=False):
