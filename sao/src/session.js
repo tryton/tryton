@@ -172,7 +172,7 @@
                     'sao_device_cookies', JSON.stringify(device_cookies));
             });
             renew_prm.fail(() => {
-                Sao.error("Cannot renew device cookie");
+                Sao.Logger.error("Cannot renew device cookie");
             });
         }
     });
