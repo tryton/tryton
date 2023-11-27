@@ -347,8 +347,7 @@ class TestPaymentTermView(ModelView):
                         date=date,
                         amount=amount,
                         currency=self.currency))
-        self.result = result
-        return self._changed_values.get('result', [])
+        return result
 
 
 class TestPaymentTermViewResult(ModelView):
