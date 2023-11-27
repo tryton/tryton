@@ -3199,7 +3199,7 @@
                             return img_url;
                         })
                         .fail(() => {
-                            Sao.error("Unknown icon %s", icon_name);
+                            Sao.Logger.error("Unknown icon %s", icon_name);
                         });
                 }
             });
