@@ -132,7 +132,7 @@ class CreateShippingSendcloud(Wizard):
             package.sendcloud_shipping_tracking_url = parcel['tracking_url']
             if not shipment.shipping_reference:
                 shipment.shipping_reference = (
-                    parcel['colli_tracking_number']
+                    parcel.get('colli_tracking_number')
                     or parcel['tracking_number'])
         Package.save(packages)
         shipment.save()
