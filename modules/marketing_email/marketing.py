@@ -7,7 +7,7 @@ from email.header import Header
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 from email.utils import formataddr, getaddresses
-from functools import lru_cache
+from functools import lru_cache, partial
 from urllib.parse import (
     parse_qs, parse_qsl, urlencode, urljoin, urlsplit, urlunsplit)
 
@@ -508,7 +508,9 @@ class Message(Workflow, ModelSQL, ModelView):
             template = MarkupTemplate(message.content)
             for email in (emails or message.list_.emails):
                 content = (template
-                    .generate(email=email)
+                    .generate(
+                        email=email,
+                        short=partial(short, record=message))
                     .filter(convert_href(message))
                     .render())
 

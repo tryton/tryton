@@ -9,6 +9,7 @@ from email.header import Header
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 from email.utils import formataddr, getaddresses
+from functools import partial
 from urllib.parse import (
     parse_qsl, quote, urlencode, urljoin, urlsplit, urlunsplit)
 
@@ -593,6 +594,7 @@ class Activity(ModelSQL, ModelView):
                 yield kind, data, pos
 
         context = self.email_context(record)
+        context['short'] = partial(short, event='on_email_clicked')
         title = (TextTemplate(translated.email_title)
             .generate(**context)
             .render())
