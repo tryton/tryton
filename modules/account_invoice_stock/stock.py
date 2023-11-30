@@ -111,7 +111,9 @@ class Move(metaclass=PoolMeta):
                     quantity += UoM.compute_qty(
                         line.unit, line.quantity, self.uom)
         if quantity:
-            unit_price = round_price(amount / Decimal(str(quantity)))
+            unit_price = amount / Decimal(str(quantity))
+        if unit_price is not None:
+            unit_price = round_price(unit_price)
         return unit_price
 
 
