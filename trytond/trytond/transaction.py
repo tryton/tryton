@@ -318,7 +318,8 @@ class Transaction(object):
         self._clear_log_records()
 
     def _clear_log_records(self):
-        self.log_records.clear()
+        if self.log_records:
+            self.log_records.clear()
 
     def commit(self):
         from trytond.cache import Cache
