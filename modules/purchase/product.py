@@ -63,10 +63,7 @@ class Template(metaclass=PoolMeta):
                     })]
 
     def product_suppliers_used(self, **pattern):
-        # Skip rules to test pattern on all records
-        with Transaction().set_user(0):
-            template = self.__class__(self)
-        for product_supplier in template.product_suppliers:
+        for product_supplier in self.product_suppliers:
             if product_supplier.match(pattern):
                 yield product_supplier
 
@@ -204,10 +201,7 @@ class Product(metaclass=PoolMeta):
         return prices
 
     def product_suppliers_used(self, **pattern):
-        # Skip rules to test pattern on all records
-        with Transaction().set_user(0):
-            product = self.__class__(self)
-        for product_supplier in product.product_suppliers:
+        for product_supplier in self.product_suppliers:
             if product_supplier.match(pattern):
                 yield product_supplier
         pattern['product'] = None

@@ -51,12 +51,11 @@ class Erase(metaclass=PoolMeta):
 
         super().check_erase(party)
 
-        with Transaction().set_user(0):
-            companies = Company.search([])
-            for company in companies:
-                with Transaction().set_context(company=company.id):
-                    party = Party(party.id)
-                    self.check_erase_company(party, company)
+        companies = Company.search([])
+        for company in companies:
+            with Transaction().set_context(company=company.id):
+                party = Party(party.id)
+                self.check_erase_company(party, company)
 
     def check_erase_company(self, party, company):
         pass

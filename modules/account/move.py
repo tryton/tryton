@@ -2485,6 +2485,7 @@ class CancelMoves(Wizard):
         Move = pool.get('account.move')
         Warning = pool.get('res.user.warning')
         Unreconcile = pool.get('account.move.unreconcile_lines', type='wizard')
+        transaction = Transaction()
 
         moves = self.records
         moves_w_delegation = {
@@ -2505,8 +2506,7 @@ class CancelMoves(Wizard):
         to_post = []
         for move in moves:
             if moves_w_delegation.get(move):
-                # Skip further warnings
-                with Transaction().set_user(0):
+                with transaction.set_context(_skip_warnings=True):
                     Unreconcile.make_unreconciliation(moves_w_delegation[move])
             default = self.default_cancel(move)
             cancel_move = move.cancel(

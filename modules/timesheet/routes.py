@@ -5,7 +5,7 @@ import datetime
 from trytond.protocols.wrappers import (
     Response, abort, allow_null_origin, user_application, with_pool,
     with_transaction)
-from trytond.transaction import Transaction
+from trytond.transaction import Transaction, without_check_access
 from trytond.wsgi import app
 
 timesheet_application = user_application('timesheet')
@@ -123,7 +123,7 @@ def timesheet(request, pool, line=None):
                 Line.write(lines, data)
         return line.to_json()
     else:
-        with Transaction().set_user(0):
+        with without_check_access():
             lines = Line.search([('id', '=', line)])
         if lines:
             line, = lines

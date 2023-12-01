@@ -1319,12 +1319,10 @@ class ModelStorage(Model):
             if relations:
                 for sub_relations in grouped_slice(relations):
                     sub_relations = set(sub_relations)
-                    # Use root user to skip access rules
-                    with Transaction().set_user(0):
-                        finds = Relation.search(['AND',
-                                [('id', 'in', [r.id for r in sub_relations])],
-                                domain,
-                                ])
+                    finds = Relation.search(['AND',
+                            [('id', 'in', [r.id for r in sub_relations])],
+                            domain,
+                            ])
                     invalid_relations = sub_relations - set(finds)
                     if Relation == cls and field._type not in {
                             'many2one', 'one2many', 'many2many', 'one2one',

@@ -15,7 +15,8 @@ from trytond.modules.product import price_digits, round_price
 from trytond.pool import Pool
 from trytond.pyson import Eval, If, TimeDelta
 from trytond.tools import grouped_slice
-from trytond.transaction import Transaction, inactive_records
+from trytond.transaction import (
+    Transaction, inactive_records, without_check_access)
 
 from .exceptions import LocationValidationError
 
@@ -254,16 +255,14 @@ class Location(DeactivableMixin, tree(), ModelSQL, ModelView):
             return
         invalid_move_types = ['warehouse', 'view']
         if self.type in invalid_move_types:
-            # Use root to compute for all companies
-            with Transaction().set_user(0):
-                moves = Move.search([
-                        ['OR',
-                            ('to_location', '=', self.id),
-                            ('from_location', '=', self.id),
-                            ],
-                        ('state', 'not in', ['staging', 'draft']),
+            moves = Move.search([
+                    ['OR',
+                        ('to_location', '=', self.id),
+                        ('from_location', '=', self.id),
                         ],
-                    order=[], limit=1)
+                    ('state', 'not in', ['staging', 'draft']),
+                    ],
+                order=[], limit=1)
             if moves:
                 raise LocationValidationError(
                     gettext('stock.msg_location_invalid_type_for_moves',
@@ -291,9 +290,7 @@ class Location(DeactivableMixin, tree(), ModelSQL, ModelView):
         if not locations:
             return []
         location_ids = list(map(int, locations))
-        # Use root to compute for all companies
-        # and ensures inactive locations are in the query
-        with Transaction().set_user(0), inactive_records():
+        with without_check_access(), inactive_records():
             query = Move.compute_quantities_query(
                 location_ids, with_childs=True)
             quantities = Move.compute_quantities(

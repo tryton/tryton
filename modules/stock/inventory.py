@@ -177,6 +177,7 @@ class Inventory(Workflow, ModelSQL, ModelView):
         Move = pool.get('stock.move')
         Date = pool.get('ir.date')
         Warning = pool.get('res.user.warning')
+        transaction = Transaction()
         today_cache = {}
 
         def in_future(inventory):
@@ -213,8 +214,7 @@ class Inventory(Workflow, ModelSQL, ModelView):
                     moves.append(move)
         if moves:
             Move.save(moves)
-            # Skip MoveFutureWarning as it is newly created moves
-            with Transaction().set_user(0):
+            with transaction.set_context(_skip_warnings=True):
                 Move.do(moves)
 
     @classmethod

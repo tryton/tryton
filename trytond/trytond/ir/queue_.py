@@ -10,7 +10,8 @@ from trytond.config import config
 from trytond.model import Index, ModelSQL, fields
 from trytond.pool import Pool
 from trytond.tools import grouped_slice
-from trytond.transaction import Transaction, inactive_records
+from trytond.transaction import (
+    Transaction, inactive_records, without_check_access)
 
 has_worker = config.getboolean('queue', 'worker', default=False)
 clean_days = config.getint('queue', 'clean_days', default=30)
@@ -66,7 +67,7 @@ class Queue(ModelSQL):
         transaction = Transaction()
         database = transaction.database
         cursor = transaction.connection.cursor()
-        with transaction.set_user(0):
+        with without_check_access():
             record, = cls.create([{
                         'name': name,
                         'data': data,

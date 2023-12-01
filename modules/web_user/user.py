@@ -37,7 +37,7 @@ from trytond.res.user import CRYPT_CONTEXT, LoginAttempt
 from trytond.sendmail import sendmail_transactional
 from trytond.tools.email_ import (
     EmailNotValidError, normalize_email, set_from_header, validate_email)
-from trytond.transaction import Transaction
+from trytond.transaction import Transaction, without_check_access
 
 from .exceptions import UserValidationError
 
@@ -217,8 +217,8 @@ class User(avatar_mixin(100), DeactivableMixin, ModelSQL, ModelView):
             if valid:
                 if new_hash:
                     logger.info("Update password hash for %s", user.id)
-                    with Transaction().new_transaction() as transaction:
-                        with transaction.set_user(0):
+                    with Transaction().new_transaction():
+                        with without_check_access():
                             cls.write([cls(user.id)], {
                                     'password_hash': new_hash,
                                     })

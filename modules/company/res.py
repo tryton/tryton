@@ -197,8 +197,7 @@ class User(metaclass=PoolMeta):
         companies = cls._get_companies_cache.get(user_id)
         if companies is not None:
             return companies
-        with transaction.set_user(0):
-            user = cls(user_id)
+        user = cls(user_id)
         if user.company_filter == 'one':
             companies = [user.company.id] if user.company else []
         elif user.company_filter == 'all':
@@ -219,8 +218,7 @@ class User(metaclass=PoolMeta):
         employees = cls._get_employees_cache.get(user_id)
         if employees is not None:
             return employees
-        with transaction.set_user(0):
-            user = cls(user_id)
+        user = cls(user_id)
         if user.company_filter == 'one':
             employees = [user.employee.id] if user.employee else []
         elif user.company_filter == 'all':

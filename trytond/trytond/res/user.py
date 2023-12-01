@@ -56,7 +56,7 @@ from trytond.sendmail import sendmail_transactional
 from trytond.tools import grouped_slice
 from trytond.tools.email_ import (
     EmailNotValidError, normalize_email, set_from_header, validate_email)
-from trytond.transaction import Transaction
+from trytond.transaction import Transaction, without_check_access
 from trytond.url import host, http_host
 from trytond.wizard import Button, StateTransition, StateView, Wizard
 
@@ -329,7 +329,7 @@ class User(avatar_mixin(100, 'login'), DeactivableMixin, ModelSQL, ModelView):
         timeout = datetime.timedelta(
             seconds=config.getint('session', 'max_age'))
         result = dict((u.id, 0) for u in users)
-        with Transaction().set_user(0):
+        with without_check_access():
             for sub_ids in grouped_slice(users):
                 sessions = Session.search([
                         ('create_uid', 'in', sub_ids),
@@ -753,8 +753,8 @@ class User(avatar_mixin(100, 'login'), DeactivableMixin, ModelSQL, ModelView):
             if valid:
                 if new_hash:
                     logger.info("Update password hash for %s", user_id)
-                    with Transaction().new_transaction() as transaction:
-                        with transaction.set_user(0):
+                    with Transaction().new_transaction():
+                        with without_check_access():
                             cls.write([cls(user_id)], {
                                     'password_hash': new_hash,
                                     })

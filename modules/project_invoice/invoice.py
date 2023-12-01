@@ -11,7 +11,7 @@ from trytond.modules.account_invoice.exceptions import (
     InvoiceLineValidationError)
 from trytond.pool import Pool, PoolMeta
 from trytond.tools import grouped_slice, reduce_ids
-from trytond.transaction import Transaction
+from trytond.transaction import Transaction, without_check_access
 
 
 class InvoiceLine(metaclass=PoolMeta):
@@ -114,14 +114,13 @@ class InvoiceLine(metaclass=PoolMeta):
         pool = Pool()
         WorkInvoicedProgress = pool.get('project.work.invoiced_progress')
 
-        # Delete progress using root to skip access rule
         progress = []
         for sub_ids in grouped_slice([l.id for l in lines]):
             progress += WorkInvoicedProgress.search([
                     ('invoice_line', 'in', sub_ids),
                     ])
         if progress:
-            with Transaction().set_user(0):
+            with without_check_access():
                 WorkInvoicedProgress.delete(progress)
 
         super(InvoiceLine, cls).delete(lines)

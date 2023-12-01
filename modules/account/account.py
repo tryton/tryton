@@ -3138,9 +3138,7 @@ class CreateChart(Wizard):
         transaction = Transaction()
 
         company = self.account.company
-        # Skip access rule
-        with transaction.set_user(0):
-            accounts = Account.search([('company', '=', company.id)], limit=1)
+        accounts = Account.search([('company', '=', company.id)], limit=1)
         if accounts:
             key = 'duplicated_chart.%d' % company.id
             if Warning.check(key):
