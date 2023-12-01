@@ -37,8 +37,11 @@ class Database(PGDatabase):
         params['dsn'] = uri._replace(scheme='postgresql').geturl()
         return params
 
-    def get_connection(self, autocommit=False, readonly=False):
-        conn = super(Database, self).get_connection(autocommit, readonly)
+    def get_connection(
+            self, autocommit=False, readonly=False, statement_timeout=None):
+        conn = super().get_connection(
+            autocommit=autocommit, readonly=readonly,
+            statement_timeout=statement_timeout)
 
         if self._GIS_OIDS is None:
             cursor = conn.cursor()
