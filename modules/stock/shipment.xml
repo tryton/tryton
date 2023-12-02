@@ -550,6 +550,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.model.button" id="shipment_in_cancel_button">
             <field name="name">cancel</field>
             <field name="string">Cancel</field>
+            <field name="confirm">Are you sure you want to cancel the shipment?</field>
             <field name="model"
                 search="[('model', '=', 'stock.shipment.in')]"/>
         </record>
@@ -603,6 +604,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.model.button" id="shipment_out_cancel_button">
             <field name="name">cancel</field>
             <field name="string">Cancel</field>
+            <field name="confirm">Are your sure you want to cancel the shipment?</field>
             <field name="model"
                 search="[('model', '=', 'stock.shipment.out')]"/>
         </record>
@@ -693,6 +695,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.model.button" id="shipment_internal_cancel_button">
             <field name="name">cancel</field>
             <field name="string">Cancel</field>
+            <field name="confirm">Are you sure you want to cancel the shipment?</field>
             <field name="model"
                 search="[('model', '=', 'stock.shipment.internal')]"/>
         </record>
@@ -782,6 +785,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.model.button" id="shipment_out_return_cancel_button">
             <field name="name">cancel</field>
             <field name="string">Cancel</field>
+            <field name="confirm">Are you sure you want to cancel the shipment?</field>
             <field name="model"
                 search="[('model', '=', 'stock.shipment.out.return')]"/>
         </record>
@@ -835,6 +839,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.model.button" id="shipment_in_return_cancel_button">
             <field name="name">cancel</field>
             <field name="string">Cancel</field>
+            <field name="confirm">Are you sure you want to cancel the shipment?</field>
             <field name="model"
                 search="[('model', '=', 'stock.shipment.in.return')]"/>
         </record>
