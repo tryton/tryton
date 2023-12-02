@@ -24,6 +24,8 @@ Imports::
     >>> from trytond.modules.account_invoice.tests.tools import (
     ...     set_fiscalyear_invoice_sequences)
 
+    >>> FETCH_SLEEP, MAX_SLEEP = 1, 10
+
 Activate modules::
 
     >>> config = activate_modules([
@@ -190,7 +192,11 @@ Run fetch order::
     ...     cron_fetch_order, = Cron.find([
     ...         ('method', '=', 'web.shop|shopify_fetch_order'),
     ...         ])
-    ...     cron_fetch_order.click('run_once')
+    ...     for _ in range(MAX_SLEEP):
+    ...         cron_fetch_order.click('run_once')
+    ...         if Sale.find([]):
+    ...             break
+    ...         time.sleep(FETCH_SLEEP)
 
     >>> sale, = Sale.find([])
     >>> len(sale.lines)
