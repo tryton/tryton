@@ -18,7 +18,7 @@ Imports::
 
     >>> today = dt.date.today()
 
-    >>> FETCH_SLEEP = 1
+    >>> FETCH_SLEEP, MAX_SLEEP = 1, 10
 
 Activate modules::
 
@@ -121,9 +121,12 @@ Process the payment::
     >>> payment.state
     'processing'
 
-    >>> time.sleep(FETCH_SLEEP)
-    >>> cron_fetch_events.click('run_once')
-    >>> payment.reload()
+    >>> for _ in range(MAX_SLEEP):
+    ...     cron_fetch_events.click('run_once')
+    ...     payment.reload()
+    ...     if payment.state == 'succeeded':
+    ...         break
+    ...     time.sleep(FETCH_SLEEP)
     >>> payment.state
     'succeeded'
     >>> bool(payment.stripe_captured)
@@ -226,9 +229,12 @@ Make payment with customer::
     >>> payment.state
     'processing'
 
-    >>> time.sleep(FETCH_SLEEP)
-    >>> cron_fetch_events.click('run_once')
-    >>> payment.reload()
+    >>> for _ in range(MAX_SLEEP):
+    ...     cron_fetch_events.click('run_once')
+    ...     payment.reload()
+    ...     if payment.state == 'succeeded':
+    ...         break
+    ...     time.sleep(FETCH_SLEEP)
     >>> payment.state
     'succeeded'
 
@@ -300,9 +306,12 @@ Capture lower amount::
     >>> payment.state
     'processing'
 
-    >>> time.sleep(FETCH_SLEEP)
-    >>> cron_fetch_events.click('run_once')
-    >>> payment.reload()
+    >>> for _ in range(MAX_SLEEP):
+    ...     cron_fetch_events.click('run_once')
+    ...     payment.reload()
+    ...     if payment.state == 'succeeded':
+    ...         break
+    ...     time.sleep(FETCH_SLEEP)
     >>> payment.state
     'succeeded'
     >>> bool(payment.stripe_captured)
@@ -320,10 +329,13 @@ Refund some amount::
     ...     ('method', '=', 'account.payment.stripe.refund|stripe_create'),
     ...     ])
     >>> cron_refund_create.click('run_once')
-    >>> time.sleep(FETCH_SLEEP)
-    >>> cron_fetch_events.click('run_once')
 
-    >>> payment.reload()
+    >>> for _ in range(MAX_SLEEP):
+    ...     cron_fetch_events.click('run_once')
+    ...     payment.reload()
+    ...     if payment.amount == Decimal('2.00'):
+    ...         break
+    ...     time.sleep(FETCH_SLEEP)
     >>> payment.amount
     Decimal('2.00')
     >>> payment.state
@@ -340,10 +352,13 @@ Simulate charge.refunded event with full amount::
     >>> refund.click('submit')
     >>> refund.click('approve')
     >>> cron_refund_create.click('run_once')
-    >>> time.sleep(FETCH_SLEEP)
-    >>> cron_fetch_events.click('run_once')
 
-    >>> payment.reload()
+    >>> for _ in range(MAX_SLEEP):
+    ...     cron_fetch_events.click('run_once')
+    ...     payment.reload()
+    ...     if payment.amount == Decimal('0.00'):
+    ...         break
+    ...     time.sleep(FETCH_SLEEP)
     >>> payment.amount
     Decimal('0.00')
     >>> payment.state
@@ -360,8 +375,12 @@ Try to refund more::
     >>> refund.click('submit')
     >>> refund.click('approve')
     >>> cron_refund_create.click('run_once')
-    >>> time.sleep(FETCH_SLEEP)
-    >>> cron_fetch_events.click('run_once')
-    >>> refund.reload()
+
+    >>> for _ in range(MAX_SLEEP):
+    ...     cron_fetch_events.click('run_once')
+    ...     refund.reload()
+    ...     if refund.state == 'failed':
+    ...         break
+    ...     time.sleep(FETCH_SLEEP)
     >>> refund.state
     'failed'
