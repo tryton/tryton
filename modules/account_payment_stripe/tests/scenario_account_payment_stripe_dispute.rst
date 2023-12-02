@@ -18,7 +18,7 @@ Imports::
 
     >>> today = dt.date.today()
 
-    >>> FETCH_SLEEP = 1
+    >>> FETCH_SLEEP, MAX_SLEEP = 1, 10
 
 Activate modules::
 
@@ -104,9 +104,12 @@ Create fully disputed payment::
     >>> payment.state
     'processing'
 
-    >>> time.sleep(FETCH_SLEEP)
-    >>> cron_fetch_events.click('run_once')
-    >>> payment.reload()
+    >>> for _ in range(MAX_SLEEP):
+    ...     cron_fetch_events.click('run_once')
+    ...     payment.reload()
+    ...     if payment.state == 'succeeded':
+    ...         break
+    ...     time.sleep(FETCH_SLEEP)
     >>> payment.state
     'succeeded'
     >>> bool(payment.stripe_captured)
@@ -195,9 +198,12 @@ Create partial disputed payment::
     >>> payment.state
     'processing'
 
-    >>> time.sleep(FETCH_SLEEP)
-    >>> cron_fetch_events.click('run_once')
-    >>> payment.reload()
+    >>> for _ in range(MAX_SLEEP):
+    ...     cron_fetch_events.click('run_once')
+    ...     payment.reload()
+    ...     if payment.state == 'succeeded':
+    ...         break
+    ...     time.sleep(FETCH_SLEEP)
     >>> payment.state
     'succeeded'
     >>> bool(payment.stripe_captured)
@@ -264,9 +270,12 @@ Create won disputed payment::
     >>> payment.state
     'processing'
 
-    >>> time.sleep(FETCH_SLEEP)
-    >>> cron_fetch_events.click('run_once')
-    >>> payment.reload()
+    >>> for _ in range(MAX_SLEEP):
+    ...     cron_fetch_events.click('run_once')
+    ...     payment.reload()
+    ...     if payment.state == 'succeeded':
+    ...         break
+    ...     time.sleep(FETCH_SLEEP)
     >>> payment.state
     'succeeded'
     >>> bool(payment.stripe_captured)
@@ -278,9 +287,12 @@ Simulate charge.dispute.closed event::
     >>> dispute = stripe.Dispute.modify(charge.dispute,
     ...     evidence={'uncategorized_text': 'winning_evidence'})
 
-    >>> time.sleep(FETCH_SLEEP)
-    >>> cron_fetch_events.click('run_once')
-    >>> payment.reload()
+    >>> for _ in range(MAX_SLEEP):
+    ...     cron_fetch_events.click('run_once')
+    ...     payment.reload()
+    ...     if payment.state == 'succeeded':
+    ...         break
+    ...     time.sleep(FETCH_SLEEP)
     >>> payment.state
     'succeeded'
     >>> payment.amount
