@@ -24,6 +24,8 @@ Imports::
     >>> from trytond.modules.account_invoice.tests.tools import (
     ...     set_fiscalyear_invoice_sequences)
 
+    >>> FETCH_SLEEP, MAX_SLEEP = 1, 10
+
 Activate modules::
 
     >>> config = activate_modules([
@@ -358,7 +360,11 @@ Check inventory item::
     >>> inventory_items = ProductInventoryItem.find([])
     >>> inventory_item_ids = [i.shopify_identifier
     ...     for inv in inventory_items for i in inv.shopify_identifiers]
-    >>> inventory_levels = location.inventory_levels()
+    >>> for _ in range(MAX_SLEEP):
+    ...     inventory_levels = location.inventory_levels()
+    ...     if inventory_levels:
+    ...         break
+    ...     time.sleep(FETCH_SLEEP)
     >>> sorted(l.available for l in inventory_levels
     ...     if l.available and l.inventory_item_id in inventory_item_ids)
     [5, 10]
@@ -627,7 +633,7 @@ Clean up::
     >>> for category in ShopifyIdentifier.find(
     ...         [('record', 'like', 'product.category,%')]):
     ...     shopify.CustomCollection.find(category.shopify_identifier).destroy()
-    >>> time.sleep(1)
+    >>> time.sleep(FETCH_SLEEP)
     >>> customer.destroy()
 
     >>> shopify.ShopifyResource.clear_session()
