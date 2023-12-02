@@ -170,9 +170,7 @@ Create the purchase then cancel it::
     >>> create_purchase.execute('start')
     >>> pr.state
     'purchased'
-
-    >>> Purchase = Model.get('purchase.purchase')
-    >>> purchase, = Purchase.find()
+    >>> (purchase,), = create_purchase.actions
     >>> purchase.click('cancel')
     >>> pr.reload()
     >>> pr.state
@@ -192,8 +190,7 @@ Recreate a purchase and cancel it again::
     ...     [pr])
     >>> pr.state
     'purchased'
-
-    >>> purchase, = Purchase.find([('state', '=', 'draft')])
+    >>> (purchase,), = create_purchase.actions
     >>> purchase.click('cancel')
     >>> pr.reload()
     >>> pr.state
@@ -240,9 +237,7 @@ Create the purchase with a unique line::
     >>> create_purchase.execute('start')
     >>> pr.state
     'purchased'
-
-    >>> Purchase = Model.get('purchase.purchase')
-    >>> purchase, = Purchase.find([('state', '=', 'draft')])
+    >>> (purchase,), = create_purchase.actions
     >>> len(purchase.lines)
     1
     >>> line, = purchase.lines

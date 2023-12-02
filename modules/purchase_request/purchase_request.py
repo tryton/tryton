@@ -15,7 +15,8 @@ from trytond.pool import Pool
 from trytond.pyson import Bool, Eval, If
 from trytond.tools import firstline, sortable_values
 from trytond.transaction import Transaction
-from trytond.wizard import Button, StateTransition, StateView, Wizard
+from trytond.wizard import (
+    Button, StateAction, StateTransition, StateView, Wizard)
 
 STATES = {
     'readonly': Eval('state') != 'draft',
@@ -359,6 +360,7 @@ class CreatePurchase(Wizard):
             Button('Cancel', 'end', 'tryton-cancel'),
             Button('Continue', 'start', 'tryton-forward', default=True),
             ])
+    open_ = StateAction('purchase.act_purchase_form')
 
     def default_ask_party(self, fields):
         for request in self.records:
@@ -475,7 +477,7 @@ class CreatePurchase(Wizard):
         Purchase.save(purchases)
         Line.save(lines)
         Request.set_purchased(requests)
-        return 'end'
+        return 'open_'
 
     @classmethod
     def compute_purchase_line(cls, key, requests, purchase):
@@ -507,6 +509,14 @@ class CreatePurchase(Wizard):
         return sum(
             compute_qty(r.unit, r.quantity, unit, round=False)
             for r in requests)
+
+    def do_open_(self, action):
+        purchase_ids = list({
+                r.purchase.id for r in self.records if r.purchase})
+        action['domains'] = []
+        return action, {
+            'res_id': purchase_ids,
+            }
 
     def end(self):
         return 'reload'
