@@ -149,7 +149,10 @@ class One2Many(Field):
 
         if (not isinstance(field, Function)
                 or hasattr(Target, 'order_' + self.field)):
-            order = [(self.field, None)]
+            if field._type == 'reference':
+                order = [(self.field, None)]
+            else:
+                order = [(self.field + '.id', None)]
         else:
             order = []
         if self.order:

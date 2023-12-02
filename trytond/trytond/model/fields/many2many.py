@@ -143,7 +143,10 @@ class Many2Many(Field):
 
         if (not isinstance(origin_field, Function)
                 or hasattr(Relation, 'order_' + self.field)):
-            order = [(self.origin, None)]
+            if origin_field._type == 'reference':
+                order = [(self.origin, None)]
+            else:
+                order = [(self.origin + '.id', None)]
         else:
             order = []
         if self.order is None:
