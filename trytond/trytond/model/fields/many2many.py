@@ -15,7 +15,6 @@ from .field import (
     Field, context_validate, domain_method, domain_validate, get_eval_fields,
     instanciate_values, instantiate_context, search_order_validate,
     size_validate)
-from .function import Function
 
 
 class Many2Many(Field):
@@ -141,8 +140,7 @@ class Many2Many(Field):
         Relation = self.get_relation()
         origin_field = Relation._fields[self.origin]
 
-        if (not isinstance(origin_field, Function)
-                or hasattr(Relation, 'order_' + self.field)):
+        if origin_field.sortable(Relation):
             if origin_field._type == 'reference':
                 order = [(self.origin, None)]
             else:

@@ -17,7 +17,6 @@ from .field import (
     Field, context_validate, domain_method, domain_validate, get_eval_fields,
     instanciate_values, instantiate_context, search_order_validate,
     size_validate)
-from .function import Function
 
 _subquery_threshold = config.getint('database', 'subquery_threshold')
 
@@ -147,8 +146,7 @@ class One2Many(Field):
         for i in ids:
             res[i] = []
 
-        if (not isinstance(field, Function)
-                or hasattr(Target, 'order_' + self.field)):
+        if field.sortable(Target):
             if field._type == 'reference':
                 order = [(self.field, None)]
             else:
