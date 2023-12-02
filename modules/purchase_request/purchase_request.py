@@ -201,10 +201,7 @@ class PurchaseRequest(ModelSQL, ModelView):
 
     @property
     def currency(self):
-        currency = self.company.currency
-        if self.party and self.party.supplier_currency:
-            currency = self.party.supplier_currency
-        return currency
+        return
 
     @classmethod
     def default_state(cls):
@@ -383,10 +380,8 @@ class CreatePurchase(Wizard):
         return (
             ('company', request.company),
             ('party', request.party),
-            ('payment_term', request.party.supplier_payment_term),
             ('warehouse', request.warehouse),
             ('currency', request.currency),
-            ('invoice_address', request.party.address_get(type='invoice')),
             )
 
     def _group_purchase_line_key(self, request):
@@ -465,6 +460,7 @@ class CreatePurchase(Wizard):
             purchase = Purchase(purchase_date=purchase_date)
             for f, v in key.items():
                 setattr(purchase, f, v)
+            purchase.on_change_party()
             purchases.append(purchase)
             for line_key, line_requests in groupby(
                     grouped_requests, key=self._group_purchase_line_key):
