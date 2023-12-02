@@ -18,7 +18,7 @@ Imports::
 
     >>> today = dt.date.today()
 
-    >>> FETCH_SLEEP = 1
+    >>> FETCH_SLEEP, MAX_SLEEP = 1, 10
 
 Activate modules::
 
@@ -122,9 +122,12 @@ Process off-session the payment::
     >>> payment.state
     'processing'
 
-    >>> time.sleep(FETCH_SLEEP)
-    >>> cron_fetch_events.click('run_once')
-    >>> payment.reload()
+    >>> for _ in range(MAX_SLEEP):
+    ...     cron_fetch_events.click('run_once')
+    ...     payment.reload()
+    ...     if payment.state == 'succeeded':
+    ...         break
+    ...     time.sleep(FETCH_SLEEP)
     >>> payment.state
     'succeeded'
     >>> bool(payment.stripe_captured)
@@ -143,9 +146,12 @@ Refund the payment::
     ...     ])
     >>> cron_refund_create.click('run_once')
 
-    >>> time.sleep(FETCH_SLEEP)
-    >>> cron_fetch_events.click('run_once')
-    >>> payment.reload()
+    >>> for _ in range(MAX_SLEEP):
+    ...     cron_fetch_events.click('run_once')
+    ...     payment.reload()
+    ...     if payment.state == 'failed':
+    ...         break
+    ...     time.sleep(FETCH_SLEEP)
     >>> payment.state
     'failed'
 
@@ -171,8 +177,11 @@ Cancel payment intent::
 
     >>> _ = stripe.PaymentIntent.cancel(payment.stripe_payment_intent_id)
 
-    >>> time.sleep(FETCH_SLEEP)
-    >>> cron_fetch_events.click('run_once')
-    >>> payment.reload()
+    >>> for _ in range(MAX_SLEEP):
+    ...     cron_fetch_events.click('run_once')
+    ...     payment.reload()
+    ...     if payment.state == 'failed':
+    ...         break
+    ...     time.sleep(FETCH_SLEEP)
     >>> payment.state
     'failed'
