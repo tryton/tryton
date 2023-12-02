@@ -16,6 +16,8 @@ Imports::
     >>> from trytond.modules.account.tests.tools import create_fiscalyear, \
     ...     create_chart, get_accounts
 
+    >>> FETCH_SLEEP, MAX_SLEEP = 1, 10
+
 Activate modules::
 
     >>> config = activate_modules('account_payment_stripe')
@@ -102,9 +104,12 @@ Create fully disputed payment::
     >>> payment.state
     'processing'
 
-    >>> time.sleep(1)
-    >>> cron_fetch_events.click('run_once')
-    >>> payment.reload()
+    >>> for _ in range(MAX_SLEEP):
+    ...     cron_fetch_events.click('run_once')
+    ...     payment.reload()
+    ...     if payment.state == 'succeeded':
+    ...         break
+    ...     time.sleep(FETCH_SLEEP)
     >>> payment.state
     'succeeded'
     >>> bool(payment.stripe_captured)
@@ -195,9 +200,12 @@ Create partial disputed payment::
     >>> payment.state
     'processing'
 
-    >>> time.sleep(1)
-    >>> cron_fetch_events.click('run_once')
-    >>> payment.reload()
+    >>> for _ in range(MAX_SLEEP):
+    ...     cron_fetch_events.click('run_once')
+    ...     payment.reload()
+    ...     if payment.state == 'succeeded':
+    ...         break
+    ...     time.sleep(FETCH_SLEEP)
     >>> payment.state
     'succeeded'
     >>> bool(payment.stripe_captured)
@@ -266,9 +274,12 @@ Create won disputed payment::
     >>> payment.state
     'processing'
 
-    >>> time.sleep(1)
-    >>> cron_fetch_events.click('run_once')
-    >>> payment.reload()
+    >>> for _ in range(MAX_SLEEP):
+    ...     cron_fetch_events.click('run_once')
+    ...     payment.reload()
+    ...     if payment.state == 'succeeded':
+    ...         break
+    ...     time.sleep(FETCH_SLEEP)
     >>> payment.state
     'succeeded'
     >>> bool(payment.stripe_captured)
@@ -280,9 +291,12 @@ Simulate charge.dispute.closed event::
     >>> dispute = stripe.Dispute.modify(charge.dispute,
     ...     evidence={'uncategorized_text': 'winning_evidence'})
 
-    >>> time.sleep(1)
-    >>> cron_fetch_events.click('run_once')
-    >>> payment.reload()
+    >>> for _ in range(MAX_SLEEP):
+    ...     cron_fetch_events.click('run_once')
+    ...     payment.reload()
+    ...     if payment.state == 'succeeded':
+    ...         break
+    ...     time.sleep(FETCH_SLEEP)
     >>> payment.state
     'succeeded'
     >>> payment.amount
