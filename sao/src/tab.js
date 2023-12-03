@@ -292,8 +292,9 @@
             return toolbar;
         },
         show: function() {
-            jQuery('#tablist').find('a[href="#' + this.id + '"]')
-                .tab('show')[0].scrollIntoView();
+            Sao.common.scrollIntoViewIfNeeded(
+                jQuery('#tablist').find('a[href="#' + this.id + '"]')
+                .tab('show'));
         },
         close: function() {
             var tabs = jQuery('#tabs');
@@ -378,8 +379,8 @@
         }
         for (const other of Sao.Tab.tabs) {
             if (other.compare(attributes)) {
-                tablist.find('a[href="#' + other.id + '"]')
-                    .tab('show')[0].scrollIntoView();
+                Sao.common.scrollIntoViewIfNeeded(
+                    tablist.find('a[href="#' + other.id + '"]').tab('show'));
                 return;
             }
         }
@@ -436,7 +437,7 @@
         tab_link.on('shown.bs.tab', function(evt) {
             tabs.scrollTop(jQuery(evt.target).data('scrollTop') || 0);
         });
-        tab_link.tab('show')[0].scrollIntoView();
+        Sao.common.scrollIntoViewIfNeeded(tab_link.tab('show'));
         tabs.trigger('ready');
     };
 

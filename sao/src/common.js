@@ -76,12 +76,14 @@
 
     Sao.common.scrollIntoViewIfNeeded = function(element) {
         element = element[0];
-        var rect = element.getBoundingClientRect();
-        if (rect.bottom > window.innerHeight) {
-            element.scrollIntoView(false);
-        }
-        if (rect.top < 0) {
-            element.scrollIntoView();
+        if (element) {
+            var rect = element.getBoundingClientRect();
+            if (rect.bottom > window.innerHeight) {
+                element.scrollIntoView(false);
+            }
+            if (rect.top < 0) {
+                element.scrollIntoView();
+            }
         }
     };
 
