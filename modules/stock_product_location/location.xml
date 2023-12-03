@@ -13,5 +13,22 @@ this repository contains the full copyright notices and license terms. -->
             <field name="type">tree</field>
             <field name="name">product_location_tree</field>
         </record>
+
+        <record model="ir.model.access" id="access_stock_product_location">
+            <field name="model" search="[('model', '=', 'stock.product.location')]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+
+        <record model="ir.model.access" id="access_stock_product_location_stock_admin">
+            <field name="model" search="[('model', '=', 'stock.product.location')]"/>
+            <field name="group" ref="stock.group_stock_admin"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
     </data>
 </tryton>
