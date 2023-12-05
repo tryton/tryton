@@ -45,7 +45,7 @@ class Sale(metaclass=PoolMeta):
         if self.currency:
             amounts = [amount]
             if self.payment_term and self.company:
-                with Transaction().set_company(company=self.company.id):
+                with Transaction().set_context(company=self.company.id):
                     today = Date.today()
                 try:
                     term_lines = self.payment_term.compute(
