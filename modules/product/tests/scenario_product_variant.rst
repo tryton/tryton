@@ -60,3 +60,26 @@ Change template code::
     >>> template.save()
     >>> sorted([p.code for p in template.products])
     ['PRD001', 'PRD002']
+
+Create template with trailing space in code::
+
+    >>> template = ProductTemplate()
+    >>> template.name = "Product"
+    >>> template.code = "TRAILING "
+    >>> template.default_uom = unit
+    >>> template.save()
+    >>> product, = template.products
+    >>> product.code
+    'TRAILING'
+
+Create product with leading space in code::
+
+    >>> template = ProductTemplate()
+    >>> template.name = "Product"
+    >>> template.default_uom = unit
+    >>> product, = template.products
+    >>> product.suffix_code = " LEADING"
+    >>> template.save()
+    >>> product, = template.products
+    >>> product.code
+    'LEADING'
