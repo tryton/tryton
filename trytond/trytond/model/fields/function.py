@@ -126,18 +126,15 @@ class Function(Field):
             if not instance_method:
                 values = method(records, name)
                 if isinstance(name, str):
-                    return convert_dict(values)
+                    return convert_dict(values, name)
                 else:
                     return {n: convert_dict(values[n], n) for n in name}
             else:
-                return {r.id: convert(method(r, name)) for r in records}
+                return {r.id: convert(method(r, name), name) for r in records}
 
-        def convert(value, name=None):
+        def convert(value, name):
             from ..model import Model as BaseModel
-            if name:
-                field = Model._fields[name]._field
-            else:
-                field = self._field
+            field = Model._fields[name]._field
             if field._type in {'many2one', 'one2one', 'reference'}:
                 if isinstance(value, BaseModel):
                     if field._type == 'reference':
@@ -149,7 +146,7 @@ class Function(Field):
                     value = [int(r) for r in value]
             return value
 
-        def convert_dict(values, name=None):
+        def convert_dict(values, name):
             # Keep the same class
             values = values.copy()
             values.update((k, convert(v, name)) for k, v in values.items())
