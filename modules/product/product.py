@@ -667,6 +667,13 @@ class Product(
         for product in products:
             code = ''.join(filter(None, [
                         product.prefix_code, product.suffix_code]))
+            if cls.code.strip:
+                if cls.code.strip == 'leading':
+                    code = code.lstrip()
+                elif cls.code.strip == 'trailing':
+                    code = code.rstrip()
+                else:
+                    code = code.strip()
             if not code:
                 code = None
             if code != product.code:
