@@ -283,6 +283,20 @@ class BlanketAgreement(Workflow, ModelSQL, ModelView):
     def default_state(cls):
         return 'draft'
 
+    @property
+    def full_number(self):
+        return self.number
+
+    def get_rec_name(self, name):
+        items = []
+        if self.full_number:
+            items.append(self.full_number)
+        if self.reference:
+            items.append('[%s]' % self.reference)
+        if not items:
+            items.append('(%s)' % self.id)
+        return ' '.join(items)
+
     @classmethod
     def search_rec_name(cls, name, clause):
         _, operator, value = clause
