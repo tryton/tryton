@@ -255,4 +255,4 @@ Create an inventory and check rec_name::
     >>> inventory.empty_quantity = 'keep'
     >>> inventory.save()
     >>> inventory.rec_name
-    '[6] Storage Zone @ 01/31/2023'
+    '[6] [STO] Storage Zone @ 01/31/2023'

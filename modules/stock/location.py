@@ -369,6 +369,12 @@ class Location(DeactivableMixin, tree(), ModelSQL, ModelView):
         if self.warehouse:
             return self.warehouse.lost_found_location
 
+    def get_rec_name(self, name):
+        if self.code:
+            return f'[{self.code}] {self.name}'
+        else:
+            return self.name
+
     @classmethod
     def search_rec_name(cls, name, clause):
         if clause[1].startswith('!') or clause[1].startswith('not '):
