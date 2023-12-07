@@ -278,16 +278,27 @@
             if (this.buttons.next) {
                 this.buttons.next.addClass('hidden-xs');
             }
-            toolbar.find('.btn-toolbar > .btn-group').last()
-                .addClass( 'hidden-xs')
+            toolbar.find('.btn-toolbar > .btn-group').slice(-2, -1)
+                .addClass('hidden-xs')
                 .find('.dropdown')
                 .on('show.bs.dropdown', function() {
                     jQuery(this).parents('.btn-group')
-                        .removeClass( 'hidden-xs');
+                        .removeClass('hidden-xs');
                 })
                 .on('hide.bs.dropdown', function() {
                     jQuery(this).parents('.btn-group')
                         .addClass('hidden-xs');
+                });
+            toolbar.find('.btn-toolbar > .btn-group').last()
+                .addClass('hidden-xs hidden-sm')
+                .find('.dropdown')
+                .on('show.bs.dropdown', function() {
+                    jQuery(this).parents('.btn-group')
+                        .removeClass('hidden-xs hidden-sm');
+                })
+                .on('hide.bs.dropdown', function() {
+                    jQuery(this).parents('.btn-group')
+                        .addClass('hidden-xs hidden-sm');
                 });
             return toolbar;
         },
@@ -564,11 +575,11 @@
                 this.buttons[menu_action[0]] = button;
                 dropdown
                     .on('show.bs.dropdown', function() {
-                        jQuery(this).parents('.btn-group').removeClass(
-                            'hidden-xs');
+                        jQuery(this).parents('.btn-group')
+                            .removeClass('hidden-xs hidden-sm');
                     }).on('hide.bs.dropdown', function() {
-                        jQuery(this).parents('.btn-group').addClass(
-                            'hidden-xs');
+                        jQuery(this).parents('.btn-group')
+                            .addClass('hidden-xs hidden-sm');
                     });
                 var menu = dropdown.find('.dropdown-menu');
                 button.click(function() {
