@@ -969,6 +969,7 @@
         },
         search: function() {
             var search_entry = this.screen.screen_container.search_entry;
+            search_entry.parents('.filter-box').toggleClass('hidden-xs');
             if (search_entry.is(':visible')) {
                 window.setTimeout(function() {
                     search_entry.focus();
