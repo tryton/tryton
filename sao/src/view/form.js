@@ -4266,10 +4266,15 @@ function eval_pyson(value){
                     });
                     url = window.URL.createObjectURL(blob);
                 }
-                this.object.attr('data', url);
-                this.object.get(0).onload = function() {
+                // duplicate object to force refresh on buggy browsers
+                var object = this.object.clone();
+                object.attr('data', url);
+                object.get(0).onload = function() {
                     window.URL.revokeObjectURL(url);
                 };
+                object.attr('data', url);
+                this.object.replaceWith(object);
+                this.object = object;
             }.bind(this));
         },
     });
