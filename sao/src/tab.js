@@ -174,7 +174,7 @@
             }).append(jQuery('<div/>', {
                 'class': 'container-fluid navbar-inverse'
             }).append(jQuery('<div/>', {
-                'class': 'dropdown navbar-header navbar-left flip'
+                'class': 'dropdown navbar-left flip'
             }).append(jQuery('<a/>', {
                 'href': "#",
                 'class': "navbar-brand dropdown-toggle",
