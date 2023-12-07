@@ -4536,12 +4536,16 @@ function eval_pyson(value){
                     });
                     url = window.URL.createObjectURL(blob);
                 }
+                // duplicate object to force refresh on buggy browsers
+                const object = this.object.clone();
                 // set onload before data to be always called
-                this.object.get(0).onload = function() {
+                object.get(0).onload = function() {
                     this.onload = null;
                     window.URL.revokeObjectURL(url);
                 };
-                this.object.attr('data', url);
+                object.attr('data', url);
+                this.object.replaceWith(object);
+                this.object = object;
             });
         },
     });
