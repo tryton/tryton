@@ -10,8 +10,13 @@
             this.buttons = {};
             this.menu_buttons = {};
             this.id = 'tab-' + Sao.Tab.counter++;
-            this.name = '';
             this.name_el = jQuery('<span/>');
+            this.name_short_el = jQuery('<span/>', {
+                'class': 'hidden-xs hidden-sm',
+            }).appendTo(this.name_el);
+            this.name_long_el = jQuery('<span/>', {
+                'class': 'hidden-md hidden-lg',
+            }).appendTo(this.name_el);
             this.view_prm = jQuery.when();
         },
         menu_def: function() {
@@ -118,6 +123,8 @@
 
             var toolbar = this.create_toolbar().appendTo(this.el);
             this.title = toolbar.find('.title');
+            this.title_short = toolbar.find('.title-short');
+            this.title_long = toolbar.find('.title-long');
 
             this.main = jQuery('<div/>', {
                 'class': 'panel-body row',
@@ -184,9 +191,13 @@
                 'aria-haspopup': true
             }).append(jQuery('<span/>', {
                 'class': 'title'
+            }).append(jQuery('<span/>', {
+                'class': 'title-long hidden-xs hidden-sm',
+            })).append(jQuery('<span/>', {
+                'class': 'title-short hidden-md hidden-lg',
             })).append(jQuery('<span/>', {
                 'class': 'caret'
-            }))).append(jQuery('<ul/>', {
+            })))).append(jQuery('<ul/>', {
                 'class': 'dropdown-menu',
                 'role': 'menu'
             })).append(jQuery('<button/>', {
@@ -336,9 +347,17 @@
             return jQuery.when();
         },
         set_name: function(name) {
-            this.name = name;
-            this.name_el.text(name.split(' / ').pop());
+            this.name_short_el.text(name.split(' / ').pop());
+            this.name_long_el.text(name);
             this.name_el.attr('title', name);
+            this.title_short.text(this.name_short);
+            this.title_long.text(this.name_long);
+        },
+        get name_short() {
+            return this.name_short_el.text();
+        },
+        get name_long() {
+            return this.name_long_el.text();
         },
         get_url: function() {
         },
@@ -416,7 +435,7 @@
             'data-toggle': 'tab',
             'href': '#' + tab.id
         }).on('show.bs.tab', function() {
-            Sao.set_url(tab.get_url(), tab.name.split(' / ').pop());
+            Sao.set_url(tab.get_url(), tab.name_long.split(' / ').pop());
         })
         .append(jQuery('<button/>', {
             'class': 'close',
@@ -488,7 +507,6 @@
             if (!name) {
                 name = Sao.common.MODELNAME.get(model_name);
             }
-            this.set_name(name);
             if (attributes.res_id) {
                 if (attributes.hasOwnProperty('tab_domain')) {
                     delete attributes.tab_domain;
@@ -500,12 +518,14 @@
             this.screen = screen;
             this.info_bar = new Sao.Window.InfoBar();
             this.create_tabcontent();
+            this.set_name(name);
 
             this.attachment_screen = null;
 
             screen.switch_callback = () => {
                 if (this === Sao.Tab.tabs.get_current()) {
-                    Sao.set_url(this.get_url(), this.name.split(' / ').pop());
+                    Sao.set_url(
+                        this.get_url(), this.name_long.split(' / ').pop());
                 }
             };
 
@@ -1017,21 +1037,25 @@
         },
         update_revision: function() {
             var revision = this.screen.context._datetime;
-            var label, title;
+            var label_short, label_long, title;
             if (revision) {
                 var date_format = Sao.common.date_format(
                     this.screen.context.date_format);
                 var time_format = '%H:%M:%S.%f';
                 var revision_label = ' @ ' + Sao.common.format_datetime(
                     date_format + ' ' + time_format, revision);
-                label = Sao.common.ellipsize(
-                    this.name, 80 - revision_label.length) + revision_label;
-                title = this.name + revision_label;
+                label_long = Sao.common.ellipsize(
+                    this.name_long, 80 - revision_label.length) + revision_label;
+                label_short = Sao.common.ellipsize(
+                    this.name_short, 80 - revision_label.length) + revision_label;
+                title = this.name_long + revision_label;
             } else {
-                label = Sao.common.ellipsize(this.name, 80);
-                title = this.name;
+                label_long = Sao.common.ellipsize(this.name_long, 80);
+                label_short = Sao.common.ellipsize(this.name_short, 80);
+                title = this.name_long;
             }
-            this.title.text(label);
+            this.title_short.text(label_short);
+            this.title_long.text(label_long);
             this.title.attr('title', title);
             this.set_buttons_sensitive();
         },
@@ -1348,7 +1372,7 @@
                     if (!record || (record.id < 0)) {
                         return;
                     }
-                    var title = this.title.text();
+                    var title = this.name_short;
                     this.screen.model.execute(
                         'view_toolbar_get', [], this.screen.context)
                         .then(function(toolbars) {
@@ -1526,7 +1550,7 @@
         export: function(){
             this.modified_save().then(() => {
                 new Sao.Window.Export(
-                    this.title.text(), this.screen,
+                    this.name_short, this.screen,
                     this.screen.current_view.get_fields());
             });
         },
@@ -1577,7 +1601,7 @@
             if (!Sao.common.MODELACCESS.get(this.screen.model_name).create) {
                 return;
             }
-            new Sao.Window.Import(this.title.text(), this.screen);
+            new Sao.Window.Import(this.name_short, this.screen);
         },
         get_url: function() {
             return this.screen.get_url(this.name);
@@ -1597,7 +1621,6 @@
             if (!name) {
                 name = Sao.common.MODELNAME.get(this.model);
             }
-            this.name = name;
             this.dialogs = [];
             this.board = null;
             UIView = new Sao.Model('ir.ui.view');
@@ -1618,8 +1641,7 @@
                 this.content.append(this.board.el);
             });
             this.create_tabcontent();
-            this.set_name(this.name);
-            this.title.text(this.name_el.text());
+            this.set_name(name);
         },
         compare: function(attributes) {
             if (!attributes) {
@@ -1656,10 +1678,9 @@
         init: function(wizard) {
             Sao.Tab.Wizard._super.init.call(this);
             this.wizard = wizard;
-            this.set_name(wizard.name);
             wizard.tab = this;
             this.create_tabcontent();
-            this.title.text(this.name_el.text());
+            this.set_name(wizard.name);
             this.content.remove();
             this.content = wizard.form;
             this.main.css('padding-top', 0).append(wizard.form);
