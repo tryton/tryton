@@ -4,7 +4,7 @@ from trytond.model import ModelSQL, ValueMixin, fields
 from trytond.pool import Pool, PoolMeta
 
 dunning_procedure = fields.Many2One(
-    'account.dunning.procedure', "Dunning Procedure")
+    'account.dunning.procedure', "Dunning Procedure", ondelete='RESTRICT')
 
 
 class Party(metaclass=PoolMeta):

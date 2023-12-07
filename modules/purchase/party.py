@@ -9,7 +9,7 @@ from trytond.pool import Pool, PoolMeta
 from trytond.pyson import Eval, TimeDelta
 
 supplier_currency = fields.Many2One(
-    'currency.currency', "Supplier Currency",
+    'currency.currency', "Supplier Currency", ondelete='RESTRICT',
     help="Default currency for purchases from this party.")
 supplier_lead_time = fields.TimeDelta(
     "Lead Time",

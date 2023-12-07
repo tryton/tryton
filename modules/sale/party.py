@@ -10,7 +10,7 @@ from trytond.pyson import Eval
 from trytond.transaction import Transaction
 
 customer_currency = fields.Many2One(
-    'currency.currency', "Customer Currency",
+    'currency.currency', "Customer Currency", ondelete='RESTRICT',
     help="Default currency for sales to this party.")
 
 

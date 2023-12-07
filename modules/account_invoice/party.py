@@ -6,9 +6,11 @@ from trytond.modules.party.exceptions import EraseError
 from trytond.pool import Pool, PoolMeta
 
 customer_payment_term = fields.Many2One(
-    'account.invoice.payment_term', "Customer Payment Term")
+    'account.invoice.payment_term', "Customer Payment Term",
+    ondelete='RESTRICT')
 supplier_payment_term = fields.Many2One(
-    'account.invoice.payment_term', "Supplier Payment Term")
+    'account.invoice.payment_term', "Supplier Payment Term",
+    ondelete='RESTRICT')
 
 
 class Address(metaclass=PoolMeta):

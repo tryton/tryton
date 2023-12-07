@@ -51,7 +51,7 @@ class PartySalePriceList(ModelSQL, CompanyValueMixin):
             },
         depends={'company'})
     sale_price_list = fields.Many2One(
-        'product.price_list', "Sale Price List",
+        'product.price_list', "Sale Price List", ondelete='RESTRICT',
         domain=[
             ('company', '=', Eval('company', -1)),
             ])

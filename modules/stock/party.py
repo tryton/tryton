@@ -7,10 +7,12 @@ from trytond.pool import Pool, PoolMeta
 from trytond.transaction import Transaction
 
 supplier_location = fields.Many2One(
-    'stock.location', "Supplier Location", domain=[('type', '=', 'supplier')],
+    'stock.location', "Supplier Location",
+    ondelete='RESTRICT', domain=[('type', '=', 'supplier')],
     help="The default source location for stock received from the party.")
 customer_location = fields.Many2One(
-    'stock.location', "Customer Location", domain=[('type', '=', 'customer')],
+    'stock.location', "Customer Location",
+    ondelete='RESTRICT', domain=[('type', '=', 'customer')],
     help="The default destination location for stock sent to the party.")
 
 
