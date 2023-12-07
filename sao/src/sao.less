@@ -152,6 +152,51 @@ html[theme="default"] {
 #menu, #tabs {
     margin-top: 5px;
     padding-bottom: 5px;
+
+    .navbar-brand {
+        .title {
+            display: inline-block;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+    }
+}
+
+@media screen and (max-width: @screen-md-max) {
+    #menu, #tabs {
+        .navbar-brand {
+            .title {
+                max-width: 180px;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: @screen-sm-max) {
+    #menu, #tabs {
+        .navbar-brand {
+            .title {
+                max-width: 170px;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: @screen-xs-max) {
+    #menu, #tabs {
+        padding-left: 0;
+        padding-right: 0;
+
+        .navbar-brand {
+            padding-left: 0;
+            padding-right: 0;
+
+            .title {
+                max-width: 70px;
+            }
+        }
+    }
 }
 
 #menu {
@@ -276,6 +321,11 @@ html.accesskey {
         position: sticky;
         top: 0px;
         z-index: @zindex-navbar - 1;
+
+        .close {
+            margin-right: 5px;
+            margin-left: 5px;
+        }
     }
 
     .navbar-text {
@@ -318,6 +368,13 @@ html.accesskey {
                 width: 50%;
             }
         }
+    }
+}
+
+@media screen and (max-width: @screen-xs-max) {
+    nav.toolbar {
+        padding-left: 0;
+        padding-right: 0;
     }
 }
 

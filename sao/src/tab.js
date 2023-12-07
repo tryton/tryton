@@ -12,10 +12,10 @@
             this.id = 'tab-' + Sao.Tab.counter++;
             this.name_el = jQuery('<span/>');
             this.name_short_el = jQuery('<span/>', {
-                'class': 'hidden-xs hidden-sm',
+                'class': 'hidden-xs hidden-sm hidden-md',
             }).appendTo(this.name_el);
             this.name_long_el = jQuery('<span/>', {
-                'class': 'hidden-md hidden-lg',
+                'class': 'hidden-lg',
             }).appendTo(this.name_el);
             this.view_prm = jQuery.when();
         },
@@ -192,12 +192,12 @@
             }).append(jQuery('<span/>', {
                 'class': 'title'
             }).append(jQuery('<span/>', {
-                'class': 'title-long hidden-xs hidden-sm',
+                'class': 'title-long hidden-xs hidden-sm hidden-md',
             })).append(jQuery('<span/>', {
-                'class': 'title-short hidden-md hidden-lg',
-            })).append(jQuery('<span/>', {
+                'class': 'title-short hidden-lg',
+            }))).append(jQuery('<span/>', {
                 'class': 'caret'
-            })))).append(jQuery('<ul/>', {
+            }))).append(jQuery('<ul/>', {
                 'class': 'dropdown-menu',
                 'role': 'menu'
             })).append(jQuery('<button/>', {
@@ -210,7 +210,7 @@
             }).append('&times;')).click(() => {
                 this.close();
             }))).append(jQuery('<div/>', {
-                'class': 'btn-toolbar navbar-right flip',
+                'class': 'btn-toolbar navbar-right pull-right flip',
                 'role': 'toolbar'
             })));
             this.set_menu(toolbar.find('ul[role*="menu"]'));
