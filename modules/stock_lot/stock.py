@@ -464,7 +464,8 @@ class Move(metaclass=PoolMeta):
             move.check_lot()
 
     @classmethod
-    def assign_try(cls, moves, with_childs=True, grouping=('product',)):
+    def assign_try(
+            cls, moves, with_childs=True, grouping=('product',), pblc=None):
         if 'lot' not in grouping:
             moves_with_lot, moves_without_lot = [], []
             for move in moves:
@@ -473,11 +474,14 @@ class Move(metaclass=PoolMeta):
                 else:
                     moves_without_lot.append(move)
             success = super().assign_try(
-                moves_with_lot, with_childs, grouping=grouping + ('lot',))
+                moves_with_lot, with_childs=with_childs,
+                grouping=grouping + ('lot',), pblc=pblc)
             success &= super().assign_try(
-                moves_without_lot, with_childs, grouping=grouping)
+                moves_without_lot, with_childs=with_childs,
+                grouping=grouping, pblc=pblc)
         else:
-            success = super().assign_try(moves, with_childs, grouping)
+            success = super().assign_try(
+                moves, with_childs=with_childs, grouping=grouping, pblc=pblc)
         return success
 
 

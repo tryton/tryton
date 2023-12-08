@@ -5,7 +5,7 @@ from collections import defaultdict
 from itertools import groupby
 from operator import attrgetter
 
-from trytond.model import Model, fields
+from trytond.model import fields
 from trytond.pool import Pool, PoolMeta
 from trytond.pyson import Eval
 from trytond.transaction import Transaction
@@ -234,42 +234,14 @@ class Line(metaclass=PoolMeta):
     def assign_supplied(self, quantities, grouping=('product',)):
         '''
         Assign supplied move
-
-        location_quantities will be updated according to assigned
-        quantities.
+        The quantities will be updated according to assigned quantities.
         '''
         pool = Pool()
-        Uom = pool.get('product.uom')
         Move = pool.get('stock.move')
         ShipmentOut = pool.get('stock.shipment.out')
-        Location = pool.get('stock.location')
 
         if self.supply_state != 'supplied':
             return
-
-        def get_key(move, location_id):
-            key = (location_id,)
-            for field in grouping:
-                value = getattr(move, field)
-                if isinstance(value, Model):
-                    value = value.id
-                key += (value,)
-            return key
-
-        def get_values(key, location_name):
-            yield location_name, key[0]
-            for field, value in zip(grouping, key[1:]):
-                if value is not None and '.' not in field:
-                    yield field, value
-
-        def match(key, pattern):
-            for k, p in zip(key, pattern):
-                if p is None or k == p:
-                    continue
-                else:
-                    return False
-            else:
-                return True
 
         moves = set()
         for move in self.moves:
@@ -283,69 +255,6 @@ class Line(metaclass=PoolMeta):
                     if inv_move.product == self.product:
                         moves.add(inv_move)
 
-        child_locations = {}
-        to_write = []
-        to_assign = []
-        for move in moves:
-            if move.state != 'draft':
-                continue
-
-            childs = child_locations.get(move.from_location)
-            if childs is None:
-                childs = Location.search([
-                        ('parent', 'child_of', [move.from_location.id]),
-                        ('type', '!=', 'view'),
-                        ])
-                child_locations[move.from_location] = childs
-            # Prevent picking from the destination location
-            try:
-                childs.remove(move.to_location)
-            except ValueError:
-                pass
-            # Try first to pick from source location
-            try:
-                childs.remove(move.from_location)
-                childs.insert(0, move.from_location)
-            except ValueError:
-                # from_location may be a view
-                pass
-            qties_converted = []
-            for key, quantity in quantities.items():
-                move_key = get_key(move, key[0])
-                if match(key, move_key):
-                    qty = Uom.compute_qty(
-                        move.product.default_uom, quantity, move.unit,
-                        round=False)
-                    qties_converted.append((key, qty))
-
-            location_qties = move.sort_quantities(
-                qties_converted, childs, grouping)
-            to_pick = move.pick_product(location_qties)
-
-            picked_qties = sum(qty for _, qty in to_pick)
-            if picked_qties < move.quantity:
-                first = False
-                Move.write([move], {
-                        'quantity': move.quantity - picked_qties,
-                        })
-            else:
-                first = True
-            for key, qty in to_pick:
-                values = dict(get_values(key, 'from_location'))
-                values['quantity'] = move.unit.round(qty)
-                if first:
-                    to_write.extend([[move], values])
-                    to_assign.append(move)
-                    first = False
-                else:
-                    with Transaction().set_context(_stock_move_split=True):
-                        to_assign.extend(Move.copy([move], default=values))
-
-                qty_default_uom = Uom.compute_qty(
-                    move.unit, qty, move.product.default_uom, round=False)
-
-                quantities[key] -= qty_default_uom
-        if to_write:
-            Move.write(*to_write)
-        if to_assign:
-            Move.assign(to_assign)
+        Move.assign_try(list(moves), grouping=grouping, pblc={
+                self.company.id: quantities,
+                })

@@ -1002,9 +1002,12 @@ class Move(Workflow, ModelSQL, ModelView):
             return self.from_location
 
     @classmethod
-    def assign_try(cls, moves, with_childs=True, grouping=('product',)):
+    def assign_try(
+            cls, moves, with_childs=True, grouping=('product',), pblc=None):
         '''
         Try to assign moves.
+        It uses pblc as product by location by company if provided otherwise it
+        computes based on today.
         It will split the moves to assign as much possible.
         Return True if succeed or False if not.
         '''
@@ -1027,26 +1030,27 @@ class Move(Workflow, ModelSQL, ModelView):
             locations = list(set((m.from_location for m in moves)))
         location_ids = [l.id for l in locations]
         product_ids = list(set((m.product.id for m in moves)))
-        companies = {m.company for m in moves}
         stock_date_end = Date.today()
 
-        pblc = {}
-        for company in companies:
-            with Transaction().set_context(company=company.id):
-                stock_date_end = Date.today()
+        if pblc is None:
+            pblc = {}
+            companies = {m.company for m in moves}
+            for company in companies:
+                with Transaction().set_context(company=company.id):
+                    stock_date_end = Date.today()
 
-            cls._assign_try_lock(
-                product_ids, location_ids, [company.id],
-                stock_date_end, grouping)
+                cls._assign_try_lock(
+                    product_ids, location_ids, [company.id],
+                    stock_date_end, grouping)
 
-            with Transaction().set_context(
-                    stock_date_end=stock_date_end,
-                    stock_assign=True,
-                    company=company.id):
-                pblc[company.id] = Product.products_by_location(
-                    location_ids,
-                    grouping=grouping,
-                    grouping_filter=(product_ids,))
+                with Transaction().set_context(
+                        stock_date_end=stock_date_end,
+                        stock_assign=True,
+                        company=company.id):
+                    pblc[company.id] = Product.products_by_location(
+                        location_ids,
+                        grouping=grouping,
+                        grouping_filter=(product_ids,))
 
         def get_key(move, location_id):
             key = (location_id,)
