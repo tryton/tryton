@@ -242,6 +242,7 @@ class Line(metaclass=PoolMeta):
         Uom = pool.get('product.uom')
         Move = pool.get('stock.move')
         ShipmentOut = pool.get('stock.shipment.out')
+        Location = pool.get('stock.location')
 
         if self.supply_state != 'supplied':
             return
@@ -281,11 +282,33 @@ class Line(metaclass=PoolMeta):
                 for inv_move in inventory_moves:
                     if inv_move.product == self.product:
                         moves.add(inv_move)
+
+        child_locations = {}
         to_write = []
         to_assign = []
         for move in moves:
             if move.state != 'draft':
                 continue
+
+            childs = child_locations.get(move.from_location)
+            if childs is None:
+                childs = Location.search([
+                        ('parent', 'child_of', [move.from_location.id]),
+                        ('type', '!=', 'view'),
+                        ])
+                child_locations[move.from_location] = childs
+            # Prevent picking from the destination location
+            try:
+                childs.remove(move.to_location)
+            except ValueError:
+                pass
+            # Try first to pick from source location
+            try:
+                childs.remove(move.from_location)
+                childs.insert(0, move.from_location)
+            except ValueError:
+                # from_location may be a view
+                pass
             qties_converted = []
             for key, quantity in quantities.items():
                 move_key = get_key(move, key[0])
@@ -294,7 +317,10 @@ class Line(metaclass=PoolMeta):
                         move.product.default_uom, quantity, move.uom,
                         round=False)
                     qties_converted.append((key, qty))
-            to_pick = move.pick_product(qties_converted)
+
+            location_qties = move.sort_quantities(
+                qties_converted, childs, grouping)
+            to_pick = move.pick_product(location_qties)
 
             picked_qties = sum(qty for _, qty in to_pick)
             if picked_qties < move.quantity:
