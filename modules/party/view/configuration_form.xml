@@ -7,6 +7,6 @@ this repository contains the full copyright notices and license terms. -->
     <label name="party_lang"/>
     <field name="party_lang" widget="selection"/>
 
-    <label name="identifier_types"/>
-    <field name="identifier_types"/>
+    <separator name="identifier_types" colspan="4"/>
+    <field name="identifier_types" colspan="4" height="200"/>
 </form>
