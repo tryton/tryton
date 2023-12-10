@@ -1131,8 +1131,8 @@ class ViewTree(View):
                 column.set_visible(False)
             elif name == self.screen.exclude_field:
                 column.set_visible(False)
-            else:
-                field = self.group.fields.get(name)
+            elif name in self.group.fields:
+                field = self.group.fields[name]
                 inv_domain = domain_inversion(domain, name)
                 if not isinstance(inv_domain, bool):
                     inv_domain = simplify(inv_domain)
