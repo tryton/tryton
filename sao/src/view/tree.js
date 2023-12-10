@@ -878,7 +878,7 @@
                 } else if (name === this.screen.exclude_field) {
                     visible_columns -= 1;
                     column.set_visible(false);
-                } else {
+                } else if (name in this.screen.model.fields) {
                     const field = this.screen.model.fields[name];
                     var inv_domain = inversion.domain_inversion(domain, name);
                     if (typeof inv_domain != 'boolean') {
