@@ -260,7 +260,7 @@ class ShipmentCheckQuantity:
             diff = inventory_qty - incoming_qty
             if diff:
                 diffs[product] = diff
-        diffs.update(target_qties)
+        diffs.update((k, v) for k, v in target_qties.items() if v)
 
         if diffs:
             warning_name = Warning.format(
