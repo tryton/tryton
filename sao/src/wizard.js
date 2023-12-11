@@ -37,42 +37,42 @@
             this.context.active_ids = this.ids;
             this.context.active_model = this.model;
             this.context.action_id = this.action_id;
-            Sao.rpc({
+            return Sao.rpc({
                 'method': 'wizard.' + this.action + '.create',
                 'params': [this.session.context]
             }, this.session).then(result => {
                 this.session_id = result[0];
                 this.start_state = this.state = result[1];
                 this.end_state = result[2];
-                this.process();
+                return this.process();
             }, () => {
                 this.destroy();
             });
         },
         process: function() {
             if (this.__processing || this.__waiting_response) {
-                return;
+                return jQuery.when();
             }
             var process = function() {
                 if (this.state == this.end_state) {
-                    this.end();
-                    return;
+                    return this.end();
                 }
                 var ctx = jQuery.extend({}, this.context);
                 var data = {};
                 if (this.screen) {
                     data[this.screen_state] = this.screen.get_on_change_value();
                 }
-                Sao.rpc({
+                return Sao.rpc({
                     'method': 'wizard.' + this.action + '.execute',
                     'params': [this.session_id, data, this.state, ctx]
                 }, this.session).then(result => {
+                    var prms = [];
                     if (result.view) {
                         this.clean();
                         var view = result.view;
                         this.update(view.fields_view, view.buttons);
 
-                        this.screen.new_(false).then(() => {
+                        prms.push(this.screen.new_(false).then(() => {
                             this.screen.current_record.set_default(
                                 view.defaults || {})
                                 .then(() => {
@@ -81,7 +81,7 @@
                                     this.update_buttons();
                                     this.screen.set_cursor();
                                 });
-                        });
+                        }));
 
                         this.screen_state = view.state;
                         this.__waiting_response = true;
@@ -90,6 +90,7 @@
                     }
 
                     const execute_actions = () => {
+                        var prms = [];
                         if (result.actions) {
                             for (const action of result.actions) {
                                 var context = jQuery.extend({}, this.context);
@@ -98,24 +99,26 @@
                                 delete context.active_ids;
                                 delete context.active_model;
                                 delete context.action_id;
-                                Sao.Action.execute(
-                                    action[0], action[1], context);
+                                prms.push(Sao.Action.execute(
+                                    action[0], action[1], context));
                             }
                         }
+                        return jQuery.when.apply(jQuery, prms);
                     };
 
                     if (this.state == this.end_state) {
-                        this.end().then(execute_actions);
+                        prms.push(this.end().then(execute_actions));
                     } else {
-                        execute_actions();
+                        prms.push(execute_actions());
                     }
                     this.__processing = false;
+                    return jQuery.when.apply(jQuery, prms);
                 }, result => {
                     // TODO end for server error.
                     this.__processing = false;
                 });
             };
-            process.call(this);
+            return process.call(this);
         },
         destroy: function(action) {
             // TODO
@@ -203,7 +206,7 @@
         } else {
             win = new Sao.Wizard.Dialog(attributes.name);
         }
-        win.run(attributes);
+        return win.run(attributes);
     };
 
     Sao.Wizard.Form = Sao.class_(Sao.Wizard, {

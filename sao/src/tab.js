@@ -420,7 +420,7 @@
         } else {
             tab = new Sao.Tab.Board(attributes);
         }
-        tab.view_prm.done(function() {
+        return tab.view_prm.then(function() {
             Sao.Tab.add(tab);
         });
     };
