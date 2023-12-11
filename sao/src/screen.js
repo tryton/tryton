@@ -1922,18 +1922,22 @@
         button: function(attributes) {
             var ids;
             const process_action = action => {
-                return this.reload(ids, true).then(() => {
-                    if (typeof action == 'string') {
-                        this.client_action(action);
-                    }
-                    else if (action) {
-                        Sao.Action.execute(action, {
-                            model: this.model_name,
-                            id: this.current_record.id,
-                            ids: ids
-                        }, null, this.context, true);
-                    }
-                });
+                if (typeof action == 'string') {
+                    return this.reload(ids, true).then(() => {
+                        return this.client_action(action);
+                    });
+                }
+                else if (action) {
+                    return Sao.Action.execute(action, {
+                        model: this.model_name,
+                        id: this.current_record.id,
+                        ids: ids
+                    }, null, this.context, true).always(() => {
+                        return this.reload(ids, true);
+                    });
+                } else {
+                    return this.reload(ids, true);
+                }
             };
 
             var selected_records = this.current_view.selected_records;
@@ -2005,42 +2009,42 @@
             var access = Sao.common.MODELACCESS.get(this.model_name);
             if (action == 'new') {
                 if (access.create) {
-                    this.new_();
+                    return this.new_();
                 }
             } else if (action == 'delete') {
                 if (access['delete'] && (
                         this.current_record ? this.current_record.deletable :
                         true)) {
-                    this.remove(!this.group.parent, false, !this.group.parent);
+                    return this.remove(!this.group.parent, false, !this.group.parent);
                 }
             } else if (action == 'remove') {
                 if (access.write && access.read && this.group.parent) {
-                    this.remove(false, true, false);
+                    return this.remove(false, true, false);
                 }
             } else if (action == 'copy') {
                 if (access.create) {
-                    this.copy();
+                    return this.copy();
                 }
             } else if (action == 'next') {
-                this.display_next();
+                return this.display_next();
             } else if (action == 'previous') {
-                this.display_previous();
+                return this.display_previous();
             } else if (action == 'close') {
                 Sao.Tab.tabs.close_current();
             } else if (action.startsWith('switch')) {
-                this.switch_view.apply(this, action.split(' ', 3).slice(1));
+                return this.switch_view.apply(this, action.split(' ', 3).slice(1));
             } else if (action == 'reload') {
                 if (~['tree', 'graph', 'calendar'].indexOf(this.current_view.view_type) &&
                         !this.group.parent) {
-                    this.search_filter();
+                    return this.search_filter();
                 }
             } else if (action == 'reload menu') {
-                Sao.Session.current_session.reload_context()
+                return Sao.Session.current_session.reload_context()
                     .then(function() {
                         Sao.menu();
                     });
             } else if (action == 'reload context') {
-                Sao.Session.current_session.reload_context();
+                return Sao.Session.current_session.reload_context();
             }
         },
         get_url: function(name) {
