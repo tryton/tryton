@@ -802,6 +802,7 @@ class M2O(GenericText):
         if renderer is None and int(attrs.get('completion', 1)):
             renderer = partial(CellRendererTextCompletion, self.set_completion)
         super(M2O, self).__init__(view, attrs, renderer=renderer)
+        self._popup = False
 
     def get_model(self, record, field):
         return self.attrs['relation']
@@ -830,7 +831,8 @@ class M2O(GenericText):
         if model and common.get_toplevel_window().get_focus():
             field = record[self.attrs['name']]
             win = self.search_remote(record, field, text, callback=callback)
-            win.show()
+            if win:
+                win.show()
 
     def editing_started(self, cell, editable, path):
         super(M2O, self).editing_started(cell, editable, path)
@@ -899,7 +901,9 @@ class M2O(GenericText):
         domain = field.domain_get(record)
         context = field.get_context(record)
         if not create and changed:
-            self.search_remote(record, field, text, callback=callback).show()
+            win = self.search_remote(record, field, text, callback=callback)
+            if win:
+                win.show()
             return
         target_id = self.id_from_value(field.get(record))
 
@@ -939,6 +943,11 @@ class M2O(GenericText):
         access = common.MODELACCESS[model]
         create_access = int(self.attrs.get('create', 1)) and access['create']
 
+        if self._popup:
+            return
+        else:
+            self._popup = True
+
         def search_callback(found):
             value = None
             if found:
@@ -946,6 +955,7 @@ class M2O(GenericText):
                 field.set_client(record, value)
             if callback:
                 callback()
+            self._popup = False
         win = WinSearch(model, search_callback, sel_multi=False,
             context=context, domain=domain,
             order=order, view_ids=self.attrs.get('view_ids', '').split(','),

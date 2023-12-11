@@ -48,7 +48,6 @@ class Many2Many(Widget):
         self.wid_text.set_placeholder_text(_('Search'))
         self.wid_text.set_property('width_chars', 13)
         self.wid_text.connect('focus-out-event', self._focus_out)
-        self.focus_out = True
         hbox.pack_start(self.wid_text, expand=True, fill=True, padding=0)
 
         if int(self.attrs.get('completion', 1)):
@@ -113,6 +112,8 @@ class Many2Many(Widget):
         self.screen.widget.connect('key_press_event', self.on_keypress)
         self.wid_text.connect('key_press_event', self.on_keypress)
 
+        self._popup = False
+
     def on_keypress(self, widget, event):
         editable = self.wid_text.get_editable()
         activate_keys = [Gdk.KEY_Tab, Gdk.KEY_ISO_Left_Tab]
@@ -161,8 +162,6 @@ class Many2Many(Widget):
         return int(self.attrs.get('create', 1)) and self.get_access('create')
 
     def _sig_add(self, *args):
-        if not self.focus_out:
-            return
         domain = self.field.domain_get(self.record)
         add_remove = self.record.expr_eval(self.attrs.get('add_remove'))
         if add_remove:
@@ -171,15 +170,18 @@ class Many2Many(Widget):
         order = self.field.get_search_order(self.record)
         value = self.wid_text.get_text()
 
-        self.focus_out = False
+        if self._popup:
+            return
+        else:
+            self._popup = True
 
         def callback(result):
-            self.focus_out = True
             if result:
                 ids = [x[0] for x in result]
                 self.screen.load(ids, modified=True)
             self.screen.set_cursor()
             self.wid_text.set_text('')
+            self._popup = False
         win = WinSearch(self.attrs['relation'], callback, sel_multi=True,
             context=context, domain=domain, order=order,
             view_ids=self.attrs.get('view_ids', '').split(','),
@@ -215,6 +217,10 @@ class Many2Many(Widget):
     def _sig_edit(self):
         if not self.screen.current_record:
             return
+        if self._popup:
+            return
+        else:
+            self._popup = True
         # Create a new screen that is not linked to the parent otherwise on the
         # save of the record will trigger the save of the parent
         screen = self._get_screen_form()
@@ -231,22 +237,26 @@ class Many2Many(Widget):
                     self.screen.current_record.modified_fields.setdefault('id')
                 # Force a display to clear the CellCache
                 self.screen.display()
+            self._popup = False
         WinForm(screen, callback)
 
     def _sig_new(self, defaults=None):
+        if self._popup:
+            return
+        else:
+            self._popup = True
         screen = self._get_screen_form()
         defaults = defaults.copy() if defaults is not None else {}
         defaults['rec_name'] = self.wid_text.get_text()
 
         def callback(result):
-            self.focus_out = True
             if result:
                 record = screen.current_record
                 self.screen.load([record.id], modified=True)
             self.wid_text.set_text('')
             self.wid_text.grab_focus()
+            self._popup = False
 
-        self.focus_out = False
         WinForm(
             screen, callback, new=True, save_current=True, defaults=defaults)
 

@@ -75,7 +75,6 @@ class One2Many(Widget):
 
         hbox.pack_start(Gtk.VSeparator(), expand=False, fill=True, padding=0)
 
-        self.focus_out = True
         self.wid_completion = None
         if attrs.get('add_remove'):
 
@@ -181,6 +180,8 @@ class One2Many(Widget):
         self.screen.widget.connect('key_press_event', self.on_keypress)
         if self.attrs.get('add_remove'):
             self.wid_text.connect('key_press_event', self.on_keypress)
+
+        self._popup = False
 
     def get_access(self, type_):
         model = self.attrs['relation']
@@ -370,12 +371,17 @@ class One2Many(Widget):
             self._new_single(defaults)
 
     def _new_single(self, defaults=None):
+        if self._popup:
+            return
+        else:
+            self._popup = True
         sequence = self._sequence()
 
         def update_sequence():
             if sequence:
                 self.screen.group.set_sequence(
                     field=sequence, position=self.screen.new_position)
+            self._popup = False
 
         if self.screen.current_view.creatable:
             self.screen.new()
@@ -392,6 +398,10 @@ class One2Many(Widget):
         fields = self.attrs['product'].split(',')
         product = {}
 
+        if self._popup:
+            return
+        else:
+            self._popup = True
         first = self.screen.new(default=False)
         default = first.default_get(defaults=defaults)
         first.set_default(default)
@@ -420,6 +430,7 @@ class One2Many(Widget):
             win_search.show()
 
         def make_product():
+            self._popup = False
             self.screen.group.remove(first, remove=True)
             if not product:
                 return
@@ -448,7 +459,14 @@ class One2Many(Widget):
             return
         record = self.screen.current_record
         if record:
-            WinForm(self.screen, lambda a: None)
+            if self._popup:
+                return
+            else:
+                self._popup = True
+
+            def callback(result):
+                self._popup = False
+            WinForm(self.screen, callback)
 
     def _sig_next(self, widget):
         if not self._validate():
@@ -475,8 +493,6 @@ class One2Many(Widget):
         self.screen.unremove()
 
     def _sig_add(self, *args):
-        if not self.focus_out:
-            return
         if not self.write_access or not self.read_access:
             return
         self.view.set_value()
@@ -487,12 +503,14 @@ class One2Many(Widget):
         domain = ['OR', domain, ('id', 'in', removed_ids)]
         text = self.wid_text.get_text()
 
-        self.focus_out = False
+        if self._popup:
+            return
+        else:
+            self._popup = True
 
         sequence = self._sequence()
 
         def callback(result):
-            self.focus_out = True
             if result:
                 ids = [x[0] for x in result]
                 self.screen.load(ids, modified=True)
@@ -501,6 +519,7 @@ class One2Many(Widget):
                         field=sequence, position=self.screen.new_position)
             self.screen.set_cursor()
             self.wid_text.set_text('')
+            self._popup = False
 
         order = self.field.get_search_order(self.record)
         win = WinSearch(self.attrs['relation'], callback, sel_multi=True,

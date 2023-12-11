@@ -2521,6 +2521,7 @@ function eval_pyson(value){
             }
             this.el.change(this.focus_out.bind(this));
             this._readonly = false;
+            this._popup = false;
         },
         get_screen: function(search) {
             var domain = this.field.get_domain(this.record);
@@ -2703,6 +2704,11 @@ function eval_pyson(value){
                 this.focus();
                 return;
             }
+            if (this._popup) {
+                return;
+            } else {
+                this._popup = true;
+            }
             if (this.has_target(value)) {
                 var m2o_id =
                     this.id_from_value(record.field_get(this.field_name));
@@ -2727,6 +2733,7 @@ function eval_pyson(value){
                                 value, true);
                         });
                     }
+                    this._popup = false;
                 };
                 screen.switch_view().done(() => {
                     screen.load([m2o_id]);
@@ -2750,6 +2757,7 @@ function eval_pyson(value){
                         this.record.field_set_client(this.field_name,
                                 value, true);
                     }
+                    this._popup = false;
                 };
                 var parser = new Sao.common.DomainParser();
                 new Sao.Window.Search(
@@ -2768,11 +2776,17 @@ function eval_pyson(value){
                         });
                 return;
             }
+            this._popup = false;
         },
         new_: function(defaults=null) {
             var model = this.get_model();
             if (!model || ! Sao.common.MODELACCESS.get(model).create) {
                 return;
+            }
+            if (this._popup) {
+                return;
+            } else {
+                this._popup = true;
             }
             var screen = this.get_screen(true);
             if (defaults) {
@@ -2791,6 +2805,7 @@ function eval_pyson(value){
                         this.record.field_set_client(this.field_name, value);
                     });
                 }
+                this._popup = false;
             };
             screen.switch_view().done(() => {
                 var win = new Sao.Window.Form(screen, callback, {
@@ -2846,6 +2861,11 @@ function eval_pyson(value){
             var value = record.field_get(this.field_name);
             var sao_model = new Sao.Model(model);
 
+            if (this._popup) {
+                return;
+            } else {
+                this._popup = true;
+            }
             if (model && !this.has_target(value)) {
                 var text = this.entry.val();
                 if (!this._readonly && (text ||
@@ -2865,6 +2885,7 @@ function eval_pyson(value){
                         } else {
                             this.entry.val('');
                         }
+                        this._popup = false;
                     };
                     var parser = new Sao.common.DomainParser();
                     var win = new Sao.Window.Search(
@@ -2882,8 +2903,10 @@ function eval_pyson(value){
                                 title: this.attributes.string,
                                 exclude_field: this.attributes.relation_field,
                             });
+                    return;
                 }
             }
+            this._popup = false;
         },
         _set_completion: function() {
             if (this.wid_completion) {
@@ -3296,6 +3319,8 @@ function eval_pyson(value){
                 // Use keydown to not receive focus-in TAB
                 this.wid_text.on('keydown', this.key_press.bind(this));
             }
+
+            this._popup = false;
         },
         get_access: function(type) {
             var model = this.attributes.relation;
@@ -3491,6 +3516,12 @@ function eval_pyson(value){
             domain = ['OR', domain, ['id', 'in', removed_ids]];
             var text = this.wid_text.val();
 
+            if (this._popup) {
+                return;
+            } else {
+                this._popup = true;
+            }
+
             var sequence = this._sequence();
 
             const callback = result => {
@@ -3512,6 +3543,7 @@ function eval_pyson(value){
                     this.screen.set_cursor();
                 });
                 this.wid_text.val('');
+                this._popup = false;
             };
             var parser = new Sao.common.DomainParser();
             var order = this.field.get_search_order(this.record);
@@ -3558,12 +3590,18 @@ function eval_pyson(value){
             });
         },
         new_single: function(defaults=null) {
+            if (this._popup) {
+                return;
+            } else {
+                this._popup = true;
+            }
             var sequence = this._sequence();
             const update_sequence = () => {
                 if (sequence) {
                     this.screen.group.set_sequence(
                         sequence, this.screen.new_position);
                 }
+                this._popup = false;
             };
             if (this.screen.current_view.creatable) {
                 this.screen.new_().then(update_sequence);
@@ -3584,6 +3622,12 @@ function eval_pyson(value){
             var fields = this.attributes.product.split(',');
             var product = {};
             var screen = this.screen;
+
+            if (this._popup) {
+                return;
+            } else {
+                this._popup = true;
+            }
 
             screen.new_(false).then(first => {
                 first.default_get(defaults).then(default_ => {
@@ -3622,6 +3666,7 @@ function eval_pyson(value){
                     };
 
                     const make_product = () => {
+                        this._popup = false;
                         screen.group.remove(first, true);
                         if (jQuery.isEmptyObject(product)) {
                             return;
@@ -3681,7 +3726,14 @@ function eval_pyson(value){
             return this.validate().then(() => {
                 var record = this.screen.current_record;
                 if (record) {
-                    var win = new Sao.Window.Form(this.screen, function() {});
+                    if (this._popup) {
+                        return;
+                    } else {
+                        this._popup = true;
+                    }
+                    var win = new Sao.Window.Form(this.screen, () => {
+                        this._popup = false;
+                    });
                 }
             });
         },
@@ -3884,6 +3936,7 @@ function eval_pyson(value){
             this.prm = this.screen.switch_view('tree').done(() => {
                 this.content.append(this.screen.screen_container.el);
             });
+            this._popup = false;
         },
         get_access: function(type) {
             var model = this.attributes.relation;
@@ -3993,6 +4046,12 @@ function eval_pyson(value){
             var order = this.field.get_search_order(this.record);
             var value = this.entry.val();
 
+            if (this._popup) {
+                return;
+            } else {
+                this._popup = true;
+            }
+
             const callback = result => {
                 if (!jQuery.isEmptyObject(result)) {
                     var ids = [];
@@ -4004,6 +4063,7 @@ function eval_pyson(value){
                     this.screen.display();
                 }
                 this.entry.val('');
+                this._popup = false;
             };
             var parser = new Sao.common.DomainParser();
             var win = new Sao.Window.Search(this.attributes.relation,
@@ -4068,6 +4128,11 @@ function eval_pyson(value){
             if (jQuery.isEmptyObject(this.screen.current_record)) {
                 return;
             }
+            if (this._popup) {
+                return;
+            } else {
+                this._popup = true;
+            }
             // Create a new screen that is not linked to the parent otherwise
             // on the save of the record will trigger the save of the parent
             var screen = this._get_screen_form();
@@ -4082,6 +4147,7 @@ function eval_pyson(value){
                         }
                     });
                 }
+                this._popup = false;
             };
             screen.switch_view().done(() => {
                 screen.load([this.screen.current_record.id]);
@@ -4091,6 +4157,11 @@ function eval_pyson(value){
             });
         },
         new_: function(defauts=null) {
+            if (this._popup) {
+                return;
+            } else {
+                this._popup = true;
+            }
             var screen = this._get_screen_form();
             if (defaults) {
                 defaults = jQuery.extend({}, defaults);
@@ -4105,6 +4176,7 @@ function eval_pyson(value){
                     this.screen.group.load([record.id], true);
                 }
                 this.entry.val('');
+                this._popup = false;
             };
             screen.switch_view().done(() => {
                 new Sao.Window.Form(screen, callback, {
@@ -4801,6 +4873,7 @@ function eval_pyson(value){
 
             this._readonly = false;
             this._record_id = null;
+            this._popup = false;
         },
         _required_el: function() {
             return this.wid_text;
@@ -4813,6 +4886,12 @@ function eval_pyson(value){
             var value = this.wid_text.val();
             var domain = this.field.get_domain(this.record);
 
+            if (this._popup) {
+                return;
+            } else {
+                this._popup = true;
+            }
+
             const callback = result => {
                 if (!jQuery.isEmptyObject(result)) {
                     var ids = result.map(function(e) {
@@ -4821,6 +4900,7 @@ function eval_pyson(value){
                     this.add_new_keys(ids);
                 }
                 this.wid_text.val('');
+                this._popup = false;
             };
 
             var parser = new Sao.common.DomainParser();

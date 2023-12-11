@@ -37,7 +37,7 @@ class Many2One(Widget):
             lambda x, y: self._focus_out())
         self.wid_text.connect('changed', self.sig_changed)
         self.changed = True
-        self.focus_out = True
+        self._popup = False
 
         if int(self.attrs.get('completion', 1)):
             self.wid_text.connect('changed', self._update_completion)
@@ -103,13 +103,16 @@ class Many2One(Widget):
         model = self.get_model()
         if not model or not common.MODELACCESS[model]['read']:
             return
-        if not self.focus_out or not self.field:
+        if not self.field:
             return
         self.changed = False
         value = self.field.get(self.record)
         model = self.get_model()
 
-        self.focus_out = False
+        if self._popup:
+            return
+        else:
+            self._popup = True
         if model and not self.has_target(value):
             if (not self._readonly
                     and (self.wid_text.get_text()
@@ -126,7 +129,7 @@ class Many2One(Widget):
                             self.value_from_id(*result[0]), force_change=True)
                     else:
                         self.wid_text.set_text('')
-                    self.focus_out = True
+                    self._popup = False
                     self.changed = True
 
                 win = WinSearch(model, callback, sel_multi=False,
@@ -139,7 +142,7 @@ class Many2One(Widget):
                 win.screen.search_filter(quote(text))
                 win.show()
                 return
-        self.focus_out = True
+        self._popup = False
         self.changed = True
         return
 
@@ -164,7 +167,10 @@ class Many2One(Widget):
     def sig_new(self, defaults=None):
         if not self.create_access:
             return
-        self.focus_out = False
+        if self._popup:
+            return
+        else:
+            self._popup = True
         screen = self.get_screen(search=True)
         defaults = defaults.copy() if defaults is not None else {}
         defaults['rec_name'] = self.wid_text.get_text()
@@ -174,7 +180,7 @@ class Many2One(Widget):
                 self.field.set_client(self.record,
                     self.value_from_id(screen.current_record.id,
                         screen.current_record.rec_name()))
-            self.focus_out = True
+            self._popup = False
         WinForm(
             screen, callback, new=True, save_current=True, defaults=defaults)
 
@@ -184,10 +190,9 @@ class Many2One(Widget):
         model = self.get_model()
         if not model or not common.MODELACCESS[model]['read']:
             return
-        if not self.focus_out or not self.field:
+        if not self.field:
             return
         self.changed = False
-        self.focus_out = False
         value = self.field.get(self.record)
 
         if (icon_pos == Gtk.EntryIconPosition.SECONDARY
@@ -196,9 +201,12 @@ class Many2One(Widget):
             self.field.set_client(self.record, self.value_from_id(None, ''))
             self.wid_text.set_text('')
             self.changed = True
-            self.focus_out = True
             return
 
+        if self._popup:
+            return
+        else:
+            self._popup = True
         if self.has_target(value):
             m2o_id = self.id_from_value(self.field.get(self.record))
             screen = self.get_screen()
@@ -211,7 +219,7 @@ class Many2One(Widget):
                         self.value_from_id(screen.current_record.id,
                             screen.current_record.rec_name()),
                         force_change=True)
-                self.focus_out = True
+                self._popup = False
                 self.changed = True
             WinForm(screen, callback, save_current=True)
             return
@@ -225,7 +233,7 @@ class Many2One(Widget):
                 if result:
                     self.field.set_client(self.record,
                         self.value_from_id(*result[0]), force_change=True)
-                self.focus_out = True
+                self._popup = False
                 self.changed = True
             win = WinSearch(model, callback, sel_multi=False,
                 context=context, domain=domain, order=order,
@@ -236,7 +244,7 @@ class Many2One(Widget):
             win.screen.search_filter(quote(text))
             win.show()
             return
-        self.focus_out = True
+        self._popup = False
         self.changed = True
 
     def sig_key_press(self, widget, event, *args):

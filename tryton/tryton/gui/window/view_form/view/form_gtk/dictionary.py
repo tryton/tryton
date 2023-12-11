@@ -470,6 +470,7 @@ class DictWidget(Widget):
 
         self._readonly = False
         self._record_id = None
+        self._popup = False
 
     @property
     def _invalid_widget(self):
@@ -491,10 +492,16 @@ class DictWidget(Widget):
         value = self.wid_text.get_text()
         domain = self.field.domain_get(self.record)
 
+        if self._popup:
+            return
+        else:
+            self._popup = True
+
         def callback(result):
             if result:
                 self.add_new_keys([r[0] for r in result])
             self.wid_text.set_text('')
+            self._popup = False
 
         win = WinSearch(self.schema_model, callback, sel_multi=True,
             context=context, domain=domain, new=False)
