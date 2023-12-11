@@ -3,13 +3,6 @@
 this repository contains the full copyright notices and license terms. -->
 <tryton>
     <data>
-        <record model="ir.ui.view" id="invoice_line_invoice_type">
-            <field name="model">account.invoice.line</field>
-            <field name="type">tree</field>
-            <field name="priority" eval="30"/>
-            <field name="name">invoice_line_tree_invoice_type</field>
-        </record>
-
         <record model="ir.action.act_window" id="act_purchase_invoice_line_relate">
             <field name="name">Invoice Lines</field>
             <field name="res_model">account.invoice.line</field>
