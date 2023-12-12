@@ -2436,10 +2436,6 @@
             if (!domain.length) {
                 return [0, domain];
             } else if (this.is_leaf(domain)) {
-                if (domain[2] === null) {
-                    domain = domain.slice();
-                    domain[2] = Number.NEGATIVE_INFINITY;
-                }
                 return [1, domain];
             } else if (~['AND', 'OR'].indexOf(domain)) {
                 return [0, domain];

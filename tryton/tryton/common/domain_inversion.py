@@ -288,10 +288,7 @@ def _sort_key(domain):
     if not domain:
         return (0, tuple())
     elif is_leaf(domain):
-        if domain[2] is None:
-            domain = list(domain).copy()
-            domain[2] = float('-inf')
-        return (1, tuple(domain))
+        return (1, tuple((type(x).__name__, x) for x in domain))
     elif domain in ['AND', 'OR']:
         return (0, domain)
     else:
