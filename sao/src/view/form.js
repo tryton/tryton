@@ -1635,7 +1635,7 @@ function eval_pyson(value){
             if (record) {
                 length = record.expr_eval(this.attributes.size);
                 if (length > 0) {
-                    width = null;
+                    width = (length + 5) + 'ch';
                 }
             }
             this.input.val(this.get_client_value());
@@ -2053,6 +2053,7 @@ function eval_pyson(value){
             if (this.width !== null){
                 this.input_text.css('width', this.width + 'ch');
                 this.input.css('width', (this.width + 5) + 'ch');
+                this.group.css('width', (this.width + 5) + 'ch');
             }
             if (field) {
                 value = field.get_client(record, this.factor, this.grouping);
