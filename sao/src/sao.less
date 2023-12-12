@@ -5,6 +5,7 @@
 @import "sao-variables";
 html[theme="default"] {
     @import "theme";
+    user-select: none;
 }
 
 // Fix double rtl prefix
@@ -486,13 +487,9 @@ img.icon {
 
 .list-form {
     overflow-y: auto;
-    -moz-user-select: none;
-    -webkit-user-select: none;
 }
 
 .treeview {
-    -moz-user-select: none;
-    -webkit-user-select: none;
     overflow-x: auto;
 
     > table.tree {
