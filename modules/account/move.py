@@ -1106,7 +1106,7 @@ class Line(DescriptionOriginMixin, MoveLineMixin, ModelSQL, ModelView):
     def on_change_move(self):
         if self.move:
             if not self.debit and not self.credit:
-                total = sum(l.debit - l.credit
+                total = sum((l.debit or 0) - (l.credit or 0)
                     for l in getattr(self.move, 'lines', []))
                 self.debit = -total if total < 0 else Decimal(0)
                 self.credit = total if total > 0 else Decimal(0)
@@ -1177,7 +1177,8 @@ class Line(DescriptionOriginMixin, MoveLineMixin, ModelSQL, ModelView):
         'Set correct sign to amount_second_currency'
         if self.amount_second_currency:
             self.amount_second_currency = \
-                self.amount_second_currency.copy_sign(self.debit - self.credit)
+                self.amount_second_currency.copy_sign(
+                    (self.debit or 0) - (self.credit or 0))
 
     @fields.depends('account')
     def on_change_account(self):
@@ -2441,9 +2442,11 @@ class ReconcileShow(ModelView):
         if self.currency:
             for line in self.lines:
                 if line.second_currency == self.currency:
-                    amount += line.amount_second_currency
+                    amount += (
+                        line.amount_second_currency or 0)
                 elif line.currency == self.currency:
-                    amount += line.debit - line.credit
+                    amount += (
+                        (line.debit or 0) - (line.credit or 0))
             amount = self.currency.round(amount)
         self.write_off_amount = amount
 
