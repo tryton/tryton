@@ -1853,7 +1853,6 @@ class ModelStorage(Model):
                     if fname not in self._local_cache[id_]:
                         self._local_cache[id_][fname] = fvalue
                     if (field._type in no_local_cache
-                            or field.context
                             or getattr(field, 'datetime_field', None)
                             or (isinstance(field, fields.Function)
                                 and (not transaction.readonly
