@@ -209,6 +209,9 @@ html[theme="default"] {
     margin-top: 5px;
     .treeview {
         height: auto;
+        .cell {
+            user-select: none;
+        }
     }
 }
 [dir="rtl"] #menu {
@@ -620,6 +623,7 @@ img.icon {
     .cell {
         display: flex;
         justify-content: space-between;
+        user-select: text;
 
         > * {
             align-self: center;
