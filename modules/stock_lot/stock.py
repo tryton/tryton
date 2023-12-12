@@ -295,8 +295,7 @@ class Move(metaclass=PoolMeta):
 
     def check_lot(self):
         "Check if lot is required"
-        if (self.state == 'done'
-                and self.internal_quantity
+        if (self.internal_quantity
                 and not self.lot
                 and self.product.lot_is_required(
                     self.from_location, self.to_location)):
@@ -305,8 +304,9 @@ class Move(metaclass=PoolMeta):
                     product=self.product.rec_name))
 
     @classmethod
-    def validate(cls, moves):
-        super(Move, cls).validate(moves)
+    @ModelView.button
+    def do(cls, moves):
+        super().do(moves)
         for move in moves:
             move.check_lot()
 
