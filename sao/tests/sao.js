@@ -3140,9 +3140,11 @@
                 ['AND', ['bar', '=', 2], ['baz', '=', 3]]],
                 ['OR', ['foo', '=', null], ['foo', '=', 1],
                     ['AND', ['bar', '=', 2], ['baz', '=', 3]]]],
+            [[['foo', '=', 'bar'], ['foo', '=', null]],
+                [['foo', '=', 'bar'], ['foo', '=', null]]],
         ];
         for (const [domain, expected] of tests) {
-            QUnit.deepEqual(expected, sort(domain));
+            QUnit.deepEqual(sort(domain), expected);
         }
     });
 

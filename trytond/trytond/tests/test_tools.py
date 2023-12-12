@@ -1146,6 +1146,8 @@ class DomainInversionTestCase(unittest.TestCase):
                     ['AND', ('bar', '=', 2), ('baz', '=', 3)]],
                     ['OR', ('foo', '=', None), ('foo', '=', 1),
                         ['AND', ('bar', '=', 2), ('baz', '=', 3)]]),
+                ([('foo', '=', 'bar'), ('foo', '=', None)],
+                    [('foo', '=', None), ('foo', '=', 'bar')]),
                 ]:
             with self.subTest(domain=domain):
                 self.assertEqual(sort(domain), expected)
