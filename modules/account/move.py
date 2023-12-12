@@ -829,7 +829,7 @@ class Line(ModelSQL, ModelView):
     def on_change_move(self):
         if self.move:
             if not self.debit and not self.credit:
-                total = sum(l.debit - l.credit
+                total = sum((l.debit or 0) - (l.credit or 0)
                     for l in getattr(self.move, 'lines', []))
                 self.debit = -total if total < 0 else Decimal(0)
                 self.credit = total if total > 0 else Decimal(0)
@@ -911,7 +911,8 @@ class Line(ModelSQL, ModelView):
         'Set correct sign to amount_second_currency'
         if self.amount_second_currency:
             self.amount_second_currency = \
-                self.amount_second_currency.copy_sign(self.debit - self.credit)
+                self.amount_second_currency.copy_sign(
+                    (self.debit or 0) - (self.credit or 0))
 
     @fields.depends('account')
     def on_change_account(self):
@@ -1911,7 +1912,9 @@ class ReconcileShow(ModelView):
     def on_change_with_write_off_amount(self, name=None):
         digits = self.currency_digits or 0
         exp = Decimal(str(10.0 ** -digits))
-        amount = sum(((l.debit - l.credit) for l in self.lines), Decimal(0))
+        amount = sum(
+            (((l.debit or 0) - (l.credit or 0)) for l in self.lines),
+            Decimal(0))
         return amount.quantize(exp)
 
     @fields.depends('company')
