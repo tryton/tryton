@@ -85,15 +85,29 @@ class HandlePurchaseCancellationException(metaclass=PoolMeta):
         pool = Pool()
         SaleLine = pool.get('sale.line')
         Move = pool.get('stock.move')
+        Shipment = pool.get('stock.shipment.out')
 
         next_state = super(HandlePurchaseCancellationException,
             self).transition_cancel_request()
         moves = []
+        shipments = set()
         for sub_ids in grouped_slice(list(map(int, self.records))):
             sale_lines = SaleLine.search([
                     ('purchase_request', 'in', sub_ids),
                     ])
-            moves += [m for line in sale_lines for m in line.moves]
+            for sale_line in sale_lines:
+                moves.extend(sale_line.moves)
+                for shipment in sale_line.sale.shipments:
+                    if shipment.state in ['draft', 'waiting']:
+                        shipments.add(shipment)
         if moves:
+            shipments_waiting = [s for s in shipments if s.state == 'waiting']
+            Shipment.draft(shipments)  # clear inventory moves
             Move.cancel(moves)
+            Shipment.wait([
+                    s for s in shipments_waiting
+                    if any(m.state != 'cancelled' for m in s.outgoing_moves)])
+            Shipment.cancel([
+                    s for s in shipments_waiting
+                    if all(m.state == 'cancelled' for m in s.outgoing_moves)])
         return next_state
