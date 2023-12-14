@@ -232,7 +232,7 @@ def order_line_mixin(prefix):
                 progress = 0
                 for component in self.components:
                     progress += component.moves_progress
-                progress = round(progress / len(self.components))
+                progress = round(progress / len(self.components), 4)
             return progress
 
         def _get_invoice_line_quantity(self):
