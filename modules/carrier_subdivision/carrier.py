@@ -41,7 +41,7 @@ class Selection(metaclass=PoolMeta):
         "the carrier delivers to.\n"
         "Leave empty to allow delivery to any postal code.")
 
-    def match(self, pattern):
+    def match(self, pattern, match_none=False):
         pool = Pool()
         Subdivision = pool.get('country.subdivision')
 
@@ -78,4 +78,4 @@ class Selection(metaclass=PoolMeta):
             if (self.to_postal_code is not None
                     and not re.search(self.to_postal_code, to_postal_code)):
                 return False
-        return super().match(pattern)
+        return super().match(pattern, match_none=match_none)
