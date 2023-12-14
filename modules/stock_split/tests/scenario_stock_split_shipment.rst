@@ -71,9 +71,9 @@ Create shipment with 2 lines::
 Set to waiting and go back to draft to get inventory moves::
 
     >>> shipment1.click('wait')
-    >>> shipment1.click('draft')
     >>> len(shipment1.inventory_moves)
     2
+    >>> shipment1.click('draft')
 
 Split shipment::
 

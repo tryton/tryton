@@ -639,7 +639,8 @@ class ShipmentIn(
         move.quantity = incoming_move.quantity
         move.from_location = incoming_move.to_location
         move.to_location = self.warehouse_storage
-        move.state = Move.default_state()
+        move.state = (
+            'staging' if incoming_move.state == 'staging' else 'draft')
         move.planned_date = max(
             filter(None, [self._move_planned_date[1], today]))
         move.company = incoming_move.company
@@ -692,7 +693,7 @@ class ShipmentIn(
         Move.draft([m for s in shipments for m in s.incoming_moves
                 if m.state != 'staging'])
         Move.delete([m for s in shipments for m in s.inventory_moves
-                if m.state in ('draft', 'cancelled')])
+                if m.state in {'staging', 'draft', 'cancelled'}])
 
     @classmethod
     @ModelView.button
@@ -1447,9 +1448,10 @@ class ShipmentOut(
     @Workflow.transition('draft')
     def draft(cls, shipments):
         Move = Pool().get('stock.move')
-        Move.draft([m for s in shipments
-                for m in s.inventory_moves + s.outgoing_moves
+        Move.draft([m for s in shipments for m in s.outgoing_moves
                 if m.state != 'staging'])
+        Move.delete([m for s in shipments for m in s.inventory_moves
+                if m.state in {'staging', 'draft', 'cancelled'}])
 
     @classmethod
     @ModelView.button
@@ -2158,7 +2160,7 @@ class ShipmentOutReturn(
         Move.draft([m for s in shipments for m in s.incoming_moves
                 if m.state != 'staging'])
         Move.delete([m for s in shipments for m in s.inventory_moves
-                if m.state in ('draft', 'cancelled')])
+                if m.state in {'staging', 'draft', 'cancelled'}])
 
     @classmethod
     @ModelView.button
@@ -2228,7 +2230,8 @@ class ShipmentOutReturn(
         move.quantity = incoming_move.quantity
         move.from_location = incoming_move.to_location
         move.to_location = self.warehouse_storage
-        move.state = Move.default_state()
+        move.state = (
+            'staging' if incoming_move.state == 'staging' else 'draft')
         move.planned_date = max(
             filter(None, [self._get_move_planned_date()[1], today]))
         move.company = incoming_move.company
@@ -2670,6 +2673,8 @@ class ShipmentInternal(
             )
         if template:
             move.origin = template.origin
+            move.state = (
+                'staging' if template.state == 'staging' else 'draft')
         if move.on_change_with_unit_price_required():
             if template:
                 move.unit_price = template.unit_price

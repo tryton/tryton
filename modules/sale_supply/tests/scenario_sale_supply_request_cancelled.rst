@@ -114,10 +114,7 @@ Handle cancellation exception::
     'cancelled'
 
     >>> shipment.reload()
-    >>> move, = shipment.outgoing_moves
-    >>> move.state
-    'cancelled'
-    >>> move, = shipment.inventory_moves
+    >>> move, = shipment.moves
     >>> move.state
     'cancelled'
     >>> shipment.state
