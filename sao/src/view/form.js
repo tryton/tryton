@@ -3828,8 +3828,12 @@ function eval_pyson(value){
             var callback = function(result) {
                 if (result) {
                     screen.current_record.save().done(function() {
+                        var added = 'id' in this.screen.current_record.modified_fields;
                         // Force a reload on next display
                         this.screen.current_record.cancel();
+                        if (added) {
+                            this.screen.current_record.modified_fields.id = true;
+                        }
                     }.bind(this));
                 }
             }.bind(this);

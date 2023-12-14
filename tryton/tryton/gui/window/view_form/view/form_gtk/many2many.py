@@ -211,8 +211,11 @@ class Many2Many(Widget):
         def callback(result):
             if result:
                 screen.current_record.save()
+                added = 'id' in self.screen.current_record.modified_fields
                 # Force a reload on next display
                 self.screen.current_record.cancel()
+                if added:
+                    self.screen.current_record.modified_fields.setdefault('id')
                 # Force a display to clear the CellCache
                 self.screen.display()
         WinForm(screen, callback)
