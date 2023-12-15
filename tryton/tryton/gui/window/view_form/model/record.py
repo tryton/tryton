@@ -623,7 +623,8 @@ class Record:
                 later.add(fieldname)
                 continue
             fieldnames.add(fieldname)
-            values.update(self._get_on_change_args(on_change_with))
+            values.update(
+                self._get_on_change_args(on_change_with + [fieldname]))
             if isinstance(self.group.fields[fieldname], (fields.M2OField,
                         fields.ReferenceField)):
                 self.value.pop(fieldname + '.', None)
@@ -648,7 +649,8 @@ class Record:
             for fieldname in later:
                 on_change_with = self.group.fields[fieldname].attrs.get(
                         'on_change_with')
-                values.update(self._get_on_change_args(on_change_with))
+                values.update(
+                    self._get_on_change_args(on_change_with + [fieldname]))
             try:
                 if len(later) == 1 or 'id' not in values:
                     changed = {}
