@@ -1169,7 +1169,7 @@ class Model(object):
                 later.add(field)
                 continue
             to_change.add(field)
-            values.update(self._on_change_args(on_change_with))
+            values.update(self._on_change_args(on_change_with + [field]))
         if to_change:
             context = self._context
             changes = getattr(self._proxy, 'on_change_with')(values,
@@ -1179,7 +1179,7 @@ class Model(object):
             values = {}
             for field in later:
                 on_change_with = self._fields[field]['on_change_with']
-                values.update(self._on_change_args(on_change_with))
+                values.update(self._on_change_args(on_change_with + [field]))
             context = self._context
             changes = getattr(self._proxy, 'on_change_with')(
                 values, list(later), context)
