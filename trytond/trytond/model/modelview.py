@@ -863,6 +863,8 @@ class ModelView(Model):
                 targets = value
                 if fname in init_values:
                     init_targets = init_values._get(fname)
+                elif isinstance(field, fields.Function):
+                    init_targets = []
                 else:
                     init_targets = getattr(init_record, fname, [])
                 value = collections.defaultdict(list)

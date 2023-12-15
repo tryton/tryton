@@ -110,6 +110,22 @@ class ModelView(unittest.TestCase):
                 })
 
     @with_transaction()
+    def test_changed_values_2many_function(self):
+        "Test changed values for xxx2many function field"
+        pool = Pool()
+        Model = pool.get('test.modelview.changed_values')
+
+        with patch.object(
+                Model, 'on_change_with_m2m_function') as on_change_with:
+            on_change_with.return_value = [42]
+            record = Model()
+            record.m2m_function = record.on_change_with_m2m_function()
+
+            self.assertEqual(record._changed_values, {
+                    'm2m_function': {'add': [(0, {'id': 42})]},
+                    })
+
+    @with_transaction()
     def test_changed_values_stored(self):
         "Test stored changed values"
         pool = Pool()
