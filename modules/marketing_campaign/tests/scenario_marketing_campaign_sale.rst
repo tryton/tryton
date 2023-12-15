@@ -104,13 +104,14 @@ Create an opportunity and convert to sale::
     >>> opportunity.click('opportunity')
     >>> opportunity.state
     'opportunity'
-    >>> opportunity.click('convert')
+    >>> sale, = opportunity.click('convert')
     >>> opportunity.state
     'converted'
+    >>> opportunity.sales == [sale]
+    True
 
 Check and confirm sale::
 
-    >>> sale, = opportunity.sales
     >>> sale.marketing_campaign.name
     'campaign'
     >>> sale.marketing_medium.name
