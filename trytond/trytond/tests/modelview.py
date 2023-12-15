@@ -25,6 +25,12 @@ class ModelViewChangedValues(ModelView):
             ], "MultiSelection")
     dictionary = fields.Dict(
         'test.modelview.changed_values.dictionary', "Dictionary")
+    m2m_function = fields.Function(fields.Many2Many(
+            'test.modelview.changed_values.target', None, None, "Targets"),
+        'on_change_with_m2m_function')
+
+    def on_change_with_m2m_function(self, name=None):
+        return
 
 
 class ModelViewChangedValuesDictSchema(DictSchemaMixin, ModelSQL):
