@@ -85,10 +85,11 @@ Each `Invoice <model-account.invoice>` tracks how much still needs to be paid.
 Once an invoice has been fully paid it automatically updates its state to
 indicate that it is now paid.
 
-If you are manually registering payments against invoices, then you can use
-the invoice's :guilabel:`Pay` button to run the
-`Pay Invoice <wizard-account.invoice.pay>` wizard and register a cash payment
-against the invoice.
+If you are manually registering payments against invoices, you must configure
+at least one `Payment Method <model-account.invoice.payment.method>` then you
+can use the invoice's :guilabel:`Pay` button to run the `Pay Invoice
+<wizard-account.invoice.pay>` wizard and register a cash payment against the
+invoice.
 
 When doing this you will need to have already setup an appropriate
 `Invoice Payment Method <model-account.invoice.payment.method>`.
