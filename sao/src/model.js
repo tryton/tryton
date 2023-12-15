@@ -1121,7 +1121,8 @@
                 }
                 fieldnames[fieldname] = true;
                 values = jQuery.extend(values,
-                        this._get_on_change_args(on_change_with));
+                    this._get_on_change_args(
+                        on_change_with.concat([fieldname])));
                 if ((this.model.fields[fieldname] instanceof
                             Sao.field.Many2One) ||
                         (this.model.fields[fieldname] instanceof
@@ -1152,7 +1153,8 @@
             for (fieldname in later) {
                 on_change_with = this.model.fields[fieldname]
                     .description.on_change_with;
-                values = this._get_on_change_args(on_change_with);
+                values = this._get_on_change_args(
+                    on_change_with.concat([fieldname]));
                 try {
                     result = this.model.execute(
                         'on_change_with_' + fieldname,
