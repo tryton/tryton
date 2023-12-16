@@ -153,7 +153,7 @@ msgstr "<i>Loo...</i>"
 
 #, fuzzy, python-format
 msgid "Create \"%s\"..."
-msgstr "<i>Loo...</i>"
+msgstr "Loo \"%s\"..."
 
 msgid "Value"
 msgstr "Väärtus"

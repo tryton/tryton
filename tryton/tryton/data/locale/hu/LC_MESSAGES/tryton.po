@@ -155,7 +155,7 @@ msgstr "<i>Új rekord...</i>"
 
 #, fuzzy, python-format
 msgid "Create \"%s\"..."
-msgstr "Létrehozta"
+msgstr "\"%s\" létrehozása..."
 
 msgid "Value"
 msgstr "Érték"

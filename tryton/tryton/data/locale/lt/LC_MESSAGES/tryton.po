@@ -153,7 +153,7 @@ msgstr "<i>Sukurti...</i>"
 
 #, fuzzy, python-format
 msgid "Create \"%s\"..."
-msgstr "Sukūręs naudotojas"
+msgstr "Sukurti „%s“..."
 
 msgid "Value"
 msgstr "Reikšmė"

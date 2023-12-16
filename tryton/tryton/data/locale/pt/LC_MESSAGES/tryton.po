@@ -155,7 +155,7 @@ msgstr "<i>Criar...</i>"
 
 #, fuzzy, python-format
 msgid "Create \"%s\"..."
-msgstr "<i>Criar...</i>"
+msgstr "Crie \"%s\"..."
 
 msgid "Value"
 msgstr "Valor"

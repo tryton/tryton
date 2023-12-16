@@ -156,7 +156,7 @@ msgstr "<i>ສ້າງ...</i>"
 
 #, fuzzy, python-format
 msgid "Create \"%s\"..."
-msgstr "<i>ສ້າງ...</i>"
+msgstr "ສ້າງ \"%s\"..."
 
 msgid "Value"
 msgstr "ຄ່າ"
