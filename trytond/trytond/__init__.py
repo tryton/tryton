@@ -8,7 +8,7 @@ from email import charset
 import __main__
 from lxml import etree, objectify
 
-__version__ = "6.8.8"
+__version__ = "6.8.9"
 
 os.environ.setdefault(
     'TRYTOND_APPNAME',
