@@ -196,32 +196,38 @@ class Transport(xmlrpc.client.SafeTransport):
         ssl_ctx = ssl.create_default_context(cafile=self.__ca_certs)
 
         def http_connection():
-            self._connection = host, http.client.HTTPConnection(chost,
-                timeout=CONNECT_TIMEOUT)
-            self._connection[1].connect()
-            sock = self._connection[1].sock
-            sock.setsockopt(socket.SOL_SOCKET, socket.SO_KEEPALIVE, 1)
+            connection = http.client.HTTPConnection(
+                chost, timeout=CONNECT_TIMEOUT)
+            self._connection = host, connection
+            connection.connect()
+            sock = connection.sock
+            if sock:
+                sock.setsockopt(socket.SOL_SOCKET, socket.SO_KEEPALIVE, 1)
+            return connection
 
         def https_connection(allow_http=False):
-            self._connection = host, http.client.HTTPSConnection(chost,
-                timeout=CONNECT_TIMEOUT, context=ssl_ctx)
+            connection = http.client.HTTPSConnection(
+                chost, timeout=CONNECT_TIMEOUT, context=ssl_ctx)
+            self._connection = host, connection
             try:
-                self._connection[1].connect()
-                sock = self._connection[1].sock
-                sock.setsockopt(socket.SOL_SOCKET, socket.SO_KEEPALIVE, 1)
-                try:
-                    peercert = sock.getpeercert(True)
-                except socket.error:
-                    peercert = None
+                connection.connect()
+                sock = connection.sock
+                if sock:
+                    sock.setsockopt(socket.SOL_SOCKET, socket.SO_KEEPALIVE, 1)
+                    try:
+                        peercert = sock.getpeercert(True)
+                    except socket.error:
+                        peercert = None
 
                 def format_hash(value):
                     return reduce(lambda x, y: x + y[1].upper()
                         + ((y[0] % 2 and y[0] + 1 < len(value)) and ':' or ''),
                         enumerate(value), '')
-                return format_hash(hashlib.sha1(peercert).hexdigest())
+                return connection, format_hash(
+                    hashlib.sha1(peercert).hexdigest())
             except (socket.error, ssl.SSLError, ssl.CertificateError):
                 if allow_http:
-                    http_connection()
+                    return http_connection(), None
                 else:
                     raise
 
@@ -229,17 +235,19 @@ class Transport(xmlrpc.client.SafeTransport):
         if (self.__fingerprints is not None
                 and self.__fingerprints.exists(chost)):
             if self.__fingerprints.get(chost):
-                fingerprint = https_connection()
+                connection, fingerprint = https_connection()
             else:
-                http_connection()
+                connection = http_connection()
         else:
-            fingerprint = https_connection(allow_http=True)
+            connection, fingerprint = https_connection(allow_http=True)
 
         if self.__fingerprints is not None:
             self.__fingerprints.set(chost, fingerprint)
-        self._connection[1].timeout = DEFAULT_TIMEOUT
-        self._connection[1].sock.settimeout(DEFAULT_TIMEOUT)
-        return self._connection[1]
+        connection.timeout = DEFAULT_TIMEOUT
+        sock = connection.sock
+        if sock:
+            sock.settimeout(DEFAULT_TIMEOUT)
+        return connection
 
 
 class ServerProxy(xmlrpc.client.ServerProxy):
