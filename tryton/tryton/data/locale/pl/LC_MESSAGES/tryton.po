@@ -152,7 +152,7 @@ msgstr "<i>Utwórz...</i>"
 
 #, fuzzy, python-format
 msgid "Create \"%s\"..."
-msgstr "Utworzył"
+msgstr "Utwórz „%s”..."
 
 msgid "Value"
 msgstr "Wartość"

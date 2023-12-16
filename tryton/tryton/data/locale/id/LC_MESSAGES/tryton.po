@@ -147,7 +147,7 @@ msgstr "<i>Buat...</i>"
 
 #, fuzzy, python-format
 msgid "Create \"%s\"..."
-msgstr "<i>Buat...</i>"
+msgstr "Buat \"%s\"..."
 
 msgid "Value"
 msgstr "Nilai"
