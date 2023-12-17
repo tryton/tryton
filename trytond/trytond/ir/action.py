@@ -150,8 +150,9 @@ class Action(DeactivableMixin, ModelSQL, ModelView):
         return actions
 
     def get_action_value(self):
-        return self.get_action_values(
-            self.type, [self.get_action_id(self.id)])[0]
+        action_id = self.get_action_id(self.id)
+        if action_id is not None:
+            return self.get_action_values(self.type, [action_id])[0]
 
 
 class ActionKeyword(ModelSQL, ModelView):
