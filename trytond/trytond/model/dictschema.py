@@ -134,7 +134,7 @@ class DictSchemaMixin(object):
     @classmethod
     def check_selection(cls, schemas, field_names=None):
         if field_names and not (field_names & {
-                    'type_', 'selection_json', 'help_selection_json'}):
+                    'type_', 'selection', 'help_selection'}):
             return
         for schema in schemas:
             if schema.type_ not in {'selection', 'multiselection'}:
