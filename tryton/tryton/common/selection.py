@@ -91,6 +91,8 @@ class SelectionMixin(object):
                 self._domain_cache[domain_cache_key] = selection
             else:
                 selection = []
+                if self.nullable_widget:
+                    selection.append((None, ''))
                 help_ = {}
                 self._last_domain = None
             self.selection = selection[:]
