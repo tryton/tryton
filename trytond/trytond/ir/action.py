@@ -18,7 +18,8 @@ from trytond.pool import Pool
 from trytond.pyson import PYSON, Eval, PYSONDecoder, PYSONEncoder
 from trytond.rpc import RPC
 from trytond.tools import file_open
-from trytond.transaction import Transaction, inactive_records
+from trytond.transaction import (
+    Transaction, inactive_records, without_check_access)
 
 if not config.get('html', 'plugins-ir.action.report-report_content_html'):
     config.set(
@@ -99,6 +100,7 @@ class Action(DeactivableMixin, ModelSQL, ModelView):
 
     @classmethod
     @inactive_records
+    @without_check_access
     def get_action_id(cls, action_id):
         pool = Pool()
         if cls.search([
