@@ -1405,6 +1405,12 @@ class SaleLine(TaxableMixin, sequence_ordered(), ModelSQL, ModelView):
             return
         skips = set(self.sale.invoices_ignored)
         quantity = self.quantity
+        if self.sale.invoice_method == 'shipment':
+            moves_ignored = set(self.moves_ignored)
+            for move in self.moves:
+                if move in moves_ignored:
+                    quantity -= UoM.compute_qty(
+                        move.unit, move.quantity, self.unit)
         for invoice_line in self.invoice_lines:
             if invoice_line.type != 'line':
                 continue
@@ -1434,6 +1440,15 @@ class SaleLine(TaxableMixin, sequence_ordered(), ModelSQL, ModelView):
             return
         skips = set(self.moves_ignored)
         quantity = abs(self.quantity)
+        if self.sale.shipment_method == 'invoice':
+            invoices_ignored = set(self.sale.invoices_ignored)
+            for invoice_line in self.invoice_lines:
+                if invoice_line.type != 'line':
+                    continue
+                if invoice_line.invoice in invoices_ignored:
+                    quantity -= Uom.compute_qty(
+                        invoice_line.unit or self.unit, invoice_line.quantity,
+                        self.unit)
         for move in self.moves:
             if move.state == 'done' or move in skips:
                 quantity -= Uom.compute_qty(

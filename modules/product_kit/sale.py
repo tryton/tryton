@@ -132,6 +132,23 @@ class LineComponent(
                         invoice_line.quantity, self.line.unit)
             return self.quantity * quantity / self.line.quantity
 
+    @property
+    def _move_remaining_quantity(self):
+        pool = Pool()
+        UoM = pool.get('product.uom')
+        quantity = super()._move_remaining_quantity
+        if self.line.sale.shipment_method == 'invoice':
+            invoices_ignored = set(self.line.sale.invoices_ignored)
+            ratio = self.get_moved_ratio()
+            if ratio:
+                for invoice_line in self.line.invoice_lines:
+                    if invoice_line.invoice in invoices_ignored:
+                        quantity -= UoM.compute_qty(
+                            invoice_line.unit * self.line.unit,
+                            invoice_line.quantity / ratio,
+                            self.line.unit)
+        return quantity
+
     def check_move_quantity(self):
         from trytond.modules.sale.exceptions import SaleMoveQuantity
         pool = Pool()

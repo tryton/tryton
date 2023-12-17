@@ -1330,6 +1330,12 @@ class Line(sequence_ordered(), ModelSQL, ModelView):
             return
         skips = set(self.purchase.invoices_ignored)
         quantity = self.quantity
+        if self.purchase.invoice_method == 'shipment':
+            moves_ignored = set(self.moves_ignored)
+            for move in self.moves:
+                if move in moves_ignored:
+                    quantity -= UoM.compute_qty(
+                        move.unit, move.quantity, self.unit)
         for invoice_line in self.invoice_lines:
             if invoice_line.type != 'line':
                 continue
