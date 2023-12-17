@@ -749,8 +749,12 @@
                     }
                 }.bind(this));
                 prm.fail(function() {
+                    var selection = [];
+                    if (this.nullable_widget) {
+                        selection.push([null, '']);
+                    }
                     this._last_domain = null;
-                    this.selection = [];
+                    this.selection = selection;
                     if (callback) {
                         callback(this.selection, this.help);
                     }
