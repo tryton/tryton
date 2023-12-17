@@ -490,6 +490,8 @@ class M2OField(Field):
                     self.name + '.', {}).get('rec_name', '')
             else:
                 rec_name = ''
+        if value and value < 0 and self.name != record.parent_name:
+            value, rec_name = None, ''
         record.value.setdefault(self.name + '.', {})['rec_name'] = rec_name
         super(M2OField, self).set_client(record, value,
             force_change=force_change)

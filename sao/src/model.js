@@ -2073,6 +2073,10 @@
                     rec_name = '';
                 }
             }
+            if ((value < 0) && (this.name != record.group.parent_name)) {
+                value = null;
+                rec_name = '';
+            }
             Sao.setdefault(
                 record._values, this.name + '.', {}).rec_name = rec_name;
             Sao.field.Many2One._super.set_client.call(this, record, value,
