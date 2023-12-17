@@ -860,6 +860,9 @@
         if (!this.attributes.relation) {
             return jQuery.when([]);
         }
+        if (value === null) {
+            return jQuery.when([null, '']);
+        }
         for (var i = 0, len = this.inactive_selection.length; i < len; i++) {
             if (value == this.inactive_selection[i][0]) {
                 return jQuery.when(this.inactive_selection[i]);
