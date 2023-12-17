@@ -121,6 +121,8 @@ class SelectionMixin(object):
     def get_inactive_selection(self, value):
         if 'relation' not in self.attrs:
             return ''
+        if value is None:
+            return ''
         for val, text in self.inactive_selection:
             if str(val) == str(value):
                 return text
