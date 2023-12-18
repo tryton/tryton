@@ -56,7 +56,7 @@ class Sale(metaclass=PoolMeta):
         ShipmentOut = pool.get('stock.shipment.out')
 
         requests, lines = [], []
-        moves_to_draft, shipments_to_wait = [], []
+        moves_to_draft, shipments_to_wait = [], set()
         for sale in sales:
             reqs, lns = sale.create_purchase_requests(product_quantities)
             requests.extend(reqs)
@@ -64,7 +64,8 @@ class Sale(metaclass=PoolMeta):
 
             moves, shipments = sale.create_move_from_supply()
             moves_to_draft.extend(moves)
-            shipments_to_wait.extend(shipments)
+            shipments_to_wait.update(shipments)
+        shipments_to_wait = ShipmentOut.browse(list(shipments_to_wait))
         PurchaseRequest.save(requests)
         Line.save(lines)
         Move.draft(moves_to_draft)
