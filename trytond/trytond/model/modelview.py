@@ -507,6 +507,8 @@ class ModelView(Model):
             tree, encoding='utf-8', pretty_print=False).decode('utf-8')
         # Do not call fields_def without fields as it returns all fields
         if fields_def:
+            # Prevent clients calling fields_view_get to get 'id' definition
+            fields_def.setdefault('id', {'name': 'id'})
             fields2 = cls.fields_get(list(fields_def.keys()), level=level)
         else:
             fields2 = {}

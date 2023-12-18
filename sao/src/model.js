@@ -2202,23 +2202,45 @@
                 for (const val of value) {
                     for (const fieldname in val) {
                         if (!(fieldname in group.model.fields) &&
-                                (!~fieldname.indexOf('.'))) {
+                                (!~fieldname.indexOf('.')) &&
+                                (!fieldname.startsWith('_'))) {
                             field_names.add(fieldname);
                         }
                     }
                 }
-                if (field_names.size) {
+                var attr_fields = Object.values(this.description.views || {})
+                    .map(v => v.fields)
+                    .reduce((acc, elem) => {
+                        for (const field in elem) {
+                            acc[field] = elem[field];
+                        }
+                        return acc;
+                    }, {});
+                var fields = {};
+                for (const n of field_names) {
+                    if (n in attr_fields) {
+                        fields[n] = attr_fields[n];
+                    }
+                }
+
+                var to_fetch = Array.from(field_names).filter(k => !(k in attr_fields));
+                if (to_fetch.length) {
                     var args = {
                         'method': 'model.' + this.description.relation +
                             '.fields_get',
-                        'params': [Array.from(field_names), context]
+                        'params': [to_fetch, context]
                     };
-                    var fields;
                     try {
-                        fields = Sao.rpc(args, record.model.session, false);
+                        var rpc_fields = Sao.rpc(
+                            args, record.model.session, false);
+                        for (const [key, value] of Object.entries(rpc_fields)) {
+                            fields[key] = value;
+                        }
                     } catch (e) {
                         return;
                     }
+                }
+                if (!jQuery.isEmptyObject(fields)) {
                     group.add_fields(fields);
                 }
             }

@@ -611,7 +611,7 @@ class ModelView(unittest.TestCase):
 
         fields = DependsDepends.fields_view_get(view_type='form')['fields']
 
-        self.assertEqual(fields.keys(), {'foo', 'bar', 'baz'})
+        self.assertEqual(fields.keys(), {'id', 'foo', 'bar', 'baz'})
 
     @with_transaction(context={'_check_access': True})
     def test_button_depends_access(self):

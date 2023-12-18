@@ -2,9 +2,11 @@
 # this repository contains the full copyright notices and license terms.
 import datetime
 import decimal
+import functools
 import locale
 import logging
 import math
+import operator
 import os
 from decimal import Decimal
 from itertools import chain
@@ -712,13 +714,25 @@ class O2MField(Field):
         if mode == 'list values':
             context = self.get_context(record)
             field_names = set(f for v in value for f in v
-                if f not in group.fields and '.' not in f)
-            if field_names:
+                if (f not in group.fields
+                    and '.' not in f
+                    and ':' not in f
+                    and not f.startswith('_')))
+            attr_fields = functools.reduce(
+                operator.or_,
+                (v['fields'] for v in self.attrs.get('views', {}).values()),
+                {})
+            fields = {n: attr_fields[n]
+                for n in field_names
+                if n in attr_fields}
+            if to_fetch := (field_names - attr_fields.keys()):
                 try:
-                    fields = RPCExecute('model', self.attrs['relation'],
-                        'fields_get', list(field_names), context=context)
+                    fields |= RPCExecute('model', self.attrs['relation'],
+                        'fields_get', list(to_fetch), context=context)
                 except RPCException:
                     return
+
+            if fields:
                 group.load_fields(fields)
 
         if mode == 'list ids':
