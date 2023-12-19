@@ -130,7 +130,10 @@ class AdvancePaymentTermLineAccount(ModelSQL, CompanyValueMixin):
 
     line = fields.Many2One(
         'sale.advance_payment_term.line', "Line",
-        required=True, ondelete='CASCADE')
+        required=True, ondelete='CASCADE',
+        context={
+            'company': Eval('company', -1),
+            })
     account = fields.Many2One(
         'account.account', "Account", required=True,
         domain=[
