@@ -217,9 +217,8 @@ class AdvancePaymentCondition(ModelSQL, ModelView):
 
     def create_invoice(self):
         invoice = self.sale._get_invoice_sale()
-        invoice.invoice_date = self.sale.sale_date
-        if self.invoice_delay:
-            invoice.invoice_date += self.invoice_delay
+        if self.invoice_delay is not None:
+            invoice.invoice_date = self.sale.sale_date + self.invoice_delay
         invoice.payment_term = None
 
         invoice_lines = self.get_invoice_advance_payment_lines(invoice)
