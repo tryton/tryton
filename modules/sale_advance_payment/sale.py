@@ -189,6 +189,7 @@ class AdvancePaymentCondition(ModelSQL, ModelView):
     def __setup__(cls):
         super(AdvancePaymentCondition, cls).__setup__()
         cls._order.insert(0, ('amount', 'ASC'))
+        cls.__access__.add('sale')
 
     @classmethod
     def get_sale_states(cls):
