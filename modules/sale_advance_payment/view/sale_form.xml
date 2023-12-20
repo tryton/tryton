@@ -2,11 +2,11 @@
 <!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
 this repository contains the full copyright notices and license terms. -->
 <data>
-    <xpath
-        expr="//page[@id='other']/field[@name='shipment_method']"
-        position="after">
-        <label name="advance_payment_term"/>
-        <field name="advance_payment_term"/>
-        <field name="advance_payment_conditions" colspan="4"/>
+    <xpath expr="//page[@id='sale']" position="after">
+        <page name="advance_payment_term">
+            <label name="advance_payment_term"/>
+            <field name="advance_payment_term"/>
+            <field name="advance_payment_conditions" colspan="4"/>
+        </page>
     </xpath>
 </data>
