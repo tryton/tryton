@@ -585,3 +585,9 @@ class Move(metaclass=PoolMeta):
             ('origin.purchase.customer' + clause[0][len(name):],
                 *clause[1:3], 'purchase.line', *clause[3:]),
             ]
+
+    @classmethod
+    def copy(cls, moves, default=None):
+        default = default.copy() if default is not None else {}
+        default.setdefault('moves_drop')
+        return super().copy(moves, default=default)
