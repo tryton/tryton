@@ -382,7 +382,15 @@ class ModelStorage(Model):
         else:
             default = default.copy()
 
-        def is_readonly(Model):
+        def is_readonly(field):
+            if field.readonly:
+                return True
+            if hasattr(field, 'get_relation'):
+                Model = field.get_relation()
+            elif hasattr(field, 'get_target'):
+                Model = field.get_target()
+            else:
+                return False
             return (not issubclass(Model, ModelStorage)
                 or callable(getattr(Model, 'table_query', None)))
 
@@ -424,14 +432,14 @@ class ModelStorage(Model):
                     except Exception:
                         pass
                 elif ftype in ('one2many',):
-                    if is_readonly(field.get_target()):
+                    if is_readonly(field):
                         del data[field_name]
                     elif data[field_name]:
                         data[field_name] = [(
                                 'copy', data[field_name],
                                 get_default(field_name))]
                 elif ftype == 'many2many':
-                    if is_readonly(pool.get(field.relation_name)):
+                    if is_readonly(field):
                         del data[field_name]
                     elif data[field_name]:
                         data[field_name] = [('add', data[field_name])]

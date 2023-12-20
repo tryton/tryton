@@ -390,6 +390,13 @@ Class methods:
 
    New records are returned following the input order.
 
+   .. note::
+
+      The :class:`~fields.One2Many` and :class:`~fields.Many2Many` relation
+      fields are not copied if their :attr:`~fields.Field.readonly` attribute
+      is ``True`` or if their relationional :class:`Model` is not a
+      :class:`ModelStorage` or if it has a :meth:`ModelSQL.table_query`.
+
 .. classmethod:: ModelStorage.search(domain[, offset[, limit[, order[, count]]]])
 
    Return a list of records that match the :ref:`domain <topics-domain>`.

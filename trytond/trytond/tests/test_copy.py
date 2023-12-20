@@ -2,6 +2,7 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 import unittest
+from unittest.mock import patch
 
 from trytond.model import fields
 from trytond.model.exceptions import AccessError
@@ -93,6 +94,22 @@ class CopyTestCase(unittest.TestCase):
                 [x.name for x in one2many_copy.one2many])
 
     @with_transaction()
+    def test_one2many_readonly(self):
+        "Test copy one2many readonly"
+        pool = Pool()
+        Model = pool.get('test.copy.one2many')
+        Target = pool.get('test.copy.one2many.target')
+
+        record = Model(name="Test")
+        record.one2many = [Target(name="Target")]
+        record.save()
+
+        with patch.object(Model.one2many, 'readonly', True):
+            copy, = Model.copy([record])
+
+            self.assertEqual(copy.one2many, ())
+
+    @with_transaction()
     def test_one2many_default(self):
         "Test copy one2many with default"
         pool = Pool()
@@ -156,6 +173,22 @@ class CopyTestCase(unittest.TestCase):
             self.assertEqual(many2many.many2many, many2many_copy.many2many)
             self.assertEqual([x.name for x in many2many.many2many],
                 [x.name for x in many2many_copy.many2many])
+
+    @with_transaction()
+    def test_many2many_readonly(self):
+        "test copy many2many readonly"
+        pool = Pool()
+        Model = pool.get('test.copy.many2many')
+        Target = pool.get('test.copy.many2many.target')
+
+        record = Model(name="Test")
+        record.many2many = [Target(name="Target")]
+        record.save()
+
+        with patch.object(Model.many2many, 'readonly', True):
+            copy, = Model.copy([record])
+
+            self.assertEqual(copy.many2many, ())
 
     @with_transaction()
     def test_many2many_default(self):

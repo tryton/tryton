@@ -1,3 +1,4 @@
+* Do not copy readonly relational fields
 * Support list of single value in sortable_values tools
 * Allow resetting password of user via RPC
 * Support cached_property on object with __slots__
