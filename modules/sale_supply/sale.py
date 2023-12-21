@@ -83,13 +83,14 @@ class Line(metaclass=PoolMeta):
 
     def get_supply_state(self, name):
         if self.purchase_request is not None:
-            purchase_line = self.purchase_request.purchase_line
-            if purchase_line is not None:
-                purchase = purchase_line.purchase
-                if purchase.state == 'cancelled':
-                    return 'cancelled'
-                elif purchase.state in ('processing', 'done'):
-                    return 'supplied'
+            if self.purchase_request.state == 'cancelled':
+                return 'cancelled'
+            else:
+                purchase_line = self.purchase_request.purchase_line
+                if purchase_line is not None:
+                    purchase = purchase_line.purchase
+                    if purchase.state in {'processing', 'done'}:
+                        return 'supplied'
             return 'requested'
         return ''
 
