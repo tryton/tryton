@@ -10,6 +10,7 @@ this repository contains the full copyright notices and license terms. -->
     <field name="party" expand="2" optional="0"/>
     <field name="purchase_date"/>
     <field name="stock_level" symbol="default_uom" optional="0"/>
+    <field name="origin" optional="0"/>
     <field name="state"/>
     <button name="create_purchase" multiple="1"/>
 </tree>
