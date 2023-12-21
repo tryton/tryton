@@ -104,8 +104,39 @@ Cancel purchase::
     >>> purchase_request.reload()
     >>> purchase_request.state
     'exception'
+    >>> shipment.reload()
+    >>> [m.state for m in shipment.moves]
+    ['staging', 'staging']
 
-Handle cancellation exception::
+Reset exception::
+
+    >>> handle_purchase = purchase_request.click(
+    ...     'handle_purchase_cancellation_exception')
+    >>> handle_purchase.execute('reset')
+
+    >>> purchase_request.state
+    'draft'
+    >>> shipment.reload()
+    >>> [m.state for m in shipment.moves]
+    ['staging', 'staging']
+
+Cancel again purchase::
+
+    >>> create_purchase = Wizard(
+    ...     'purchase.request.create_purchase', [purchase_request])
+    >>> purchase = purchase_request.purchase
+    >>> purchase.click('cancel')
+    >>> purchase.state
+    'cancelled'
+
+    >>> purchase_request.reload()
+    >>> purchase_request.state
+    'exception'
+    >>> shipment.reload()
+    >>> [m.state for m in shipment.moves]
+    ['staging', 'staging']
+
+Cancel request::
 
     >>> handle_purchase = purchase_request.click(
     ...     'handle_purchase_cancellation_exception')
