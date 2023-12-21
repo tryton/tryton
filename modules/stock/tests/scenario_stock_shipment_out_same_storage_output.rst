@@ -14,6 +14,8 @@ Activate modules::
 
     >>> config = activate_modules('stock')
 
+    >>> Move = Model.get('stock.move')
+
 Create company::
 
     >>> _ = create_company()
@@ -79,6 +81,35 @@ Set the shipment state to waiting::
     1
     >>> len(shipment_out.inventory_moves)
     0
+
+Try to assign::
+
+    >>> shipment_out.click('assign_try')
+    >>> shipment_out.state
+    'waiting'
+    >>> move, = shipment_out.outgoing_moves
+    >>> move.state
+    'draft'
+
+Fill storage location::
+
+    >>> move = Move()
+    >>> move.from_location = warehouse_loc.lost_found_location
+    >>> move.to_location = storage_loc
+    >>> move.product = product
+    >>> move.quantity = 1
+    >>> move.click('do')
+    >>> move.state
+    'done'
+
+Try to assign again::
+
+    >>> shipment_out.click('assign_try')
+    >>> shipment_out.state
+    'assigned'
+    >>> move, = shipment_out.outgoing_moves
+    >>> move.state
+    'assigned'
 
 Pack the shipment::
 

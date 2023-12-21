@@ -1267,7 +1267,7 @@ class ShipmentOut(
                 ('waiting', 'assigned'),
                 ('waiting', 'picked'),
                 ('assigned', 'picked'),
-                ('waiting', 'packed'),
+                ('assigned', 'packed'),
                 ('picked', 'packed'),
                 ('packed', 'done'),
                 ('packed', 'waiting'),
@@ -1324,7 +1324,7 @@ class ShipmentOut(
                 'pack': {
                     'invisible': If(
                         Eval('warehouse_storage') == Eval('warehouse_output'),
-                        Eval('state') != 'waiting',
+                        Eval('state') != 'assigned',
                         Eval('state') != 'picked'),
                     'depends': [
                         'state', 'warehouse_storage', 'warehouse_output'],
@@ -1333,9 +1333,7 @@ class ShipmentOut(
                     'invisible': Eval('state') != 'packed',
                     },
                 'assign_wizard': {
-                    'invisible': ((Eval('state') != 'waiting')
-                        | (Eval('warehouse_storage')
-                            == Eval('warehouse_output'))),
+                    'invisible': Eval('state') != 'waiting',
                     },
                 'assign_try': {},
                 'assign_force': {},
@@ -1775,7 +1773,10 @@ class ShipmentOut(
 
     @property
     def assign_moves(self):
-        return self.inventory_moves
+        if self.warehouse_storage != self.warehouse_output:
+            return self.inventory_moves
+        else:
+            return self.outgoing_moves
 
     @dualmethod
     @ModelView.button
@@ -1783,8 +1784,7 @@ class ShipmentOut(
         Move = Pool().get('stock.move')
         shipments = [
             s for s in shipments
-            if s.state == 'waiting'
-            and s.warehouse_storage != s.warehouse_output]
+            if s.state == 'waiting']
         to_assign = [
             m for s in shipments for m in s.assign_moves
             if m.assignation_required]
