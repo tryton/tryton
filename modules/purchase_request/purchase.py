@@ -20,8 +20,12 @@ def process_request(func):
         pool = Pool()
         Request = pool.get('purchase.request')
         func(cls, purchases)
-        requests = [r for p in purchases for l in p.lines for r in l.requests]
-        Request.update_state(requests)
+        with without_check_access():
+            requests = [
+                r for p in cls.browse(purchases)
+                for l in p.lines
+                for r in l.requests]
+            Request.update_state(requests)
     return wrapper
 
 
@@ -77,10 +81,10 @@ class Purchase(metaclass=PoolMeta):
         super(Purchase, cls).cancel(purchases)
 
     @classmethod
+    @ModelView.button
     @process_request
-    @Workflow.transition('done')
-    def do(cls, purchases):
-        super(Purchase, cls).do(purchases)
+    def process(cls, purchases):
+        super().process(purchases)
 
 
 class Line(metaclass=PoolMeta):

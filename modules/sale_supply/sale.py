@@ -51,25 +51,18 @@ class Sale(metaclass=PoolMeta):
     def _process_supply(cls, sales, product_quantities):
         pool = Pool()
         Line = pool.get('sale.line')
-        Move = pool.get('stock.move')
         PurchaseRequest = pool.get('purchase.request')
-        ShipmentOut = pool.get('stock.shipment.out')
 
         requests, lines = [], []
-        moves_to_draft, shipments_to_wait = [], set()
         for sale in sales:
             reqs, lns = sale.create_purchase_requests(product_quantities)
             requests.extend(reqs)
             lines.extend(lns)
 
-            moves, shipments = sale.create_move_from_supply()
-            moves_to_draft.extend(moves)
-            shipments_to_wait.update(shipments)
-        shipments_to_wait = ShipmentOut.browse(list(shipments_to_wait))
         PurchaseRequest.save(requests)
         Line.save(lines)
-        Move.draft(moves_to_draft)
-        ShipmentOut.wait(shipments_to_wait)
+
+        cls._update_moves_from_supply(sales)
 
     def create_purchase_requests(self, product_quantities):
         requests, lines = [], []
@@ -83,19 +76,46 @@ class Sale(metaclass=PoolMeta):
             lines.append(line)
         return requests, lines
 
-    def create_move_from_supply(self):
-        'Set to draft move linked to supply'
+    @classmethod
+    def _update_moves_from_supply(cls, sales):
         pool = Pool()
-        ShipmentOut = pool.get('stock.shipment.out')
-        moves = []
-        for line in self.lines:
-            if line.supply_state in {'supplied', 'cancelled'}:
-                for move in line.moves:
-                    if move.state == 'staging':
-                        moves.append(move)
-        shipments = {m.shipment for m in moves
-            if isinstance(m.shipment, ShipmentOut)}
-        return moves, shipments
+        Shipment = pool.get('stock.shipment.out')
+        Move = pool.get('stock.move')
+
+        shipments = set()
+
+        def add_shipment(shipment):
+            if (isinstance(shipment, Shipment)
+                    and shipment.state in {'draft', 'waiting'}):
+                shipments.add(shipment)
+
+        moves_to_draft, moves_to_cancel = [], []
+        for sale in sales:
+            for line in sale.lines:
+                if line.supply_state == 'supplied':
+                    for move in line.moves:
+                        if move.state == 'staging':
+                            moves_to_draft.append(move)
+                            add_shipment(move.shipment)
+                elif line.supply_state == 'cancelled':
+                    for move in line.moves:
+                        moves_to_cancel.append(move)
+                        add_shipment(move.shipment)
+        if moves_to_draft:
+            Move.draft(moves_to_draft)
+        shipments = Shipment.browse(shipments)
+        shipments_waiting = [s for s in shipments if s.state == 'waiting']
+        if shipments:
+            Shipment.draft(shipments)  # clear inventory moves
+        if moves_to_cancel:
+            Move.cancel(moves_to_cancel)
+        if shipments:
+            Shipment.wait([
+                    s for s in shipments_waiting
+                    if any(m.state != 'cancelled' for m in s.moves)])
+            Shipment.cancel([
+                    s for s in shipments
+                    if all(m.state == 'cancelled' for m in s.moves)])
 
 
 class Line(metaclass=PoolMeta):
