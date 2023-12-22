@@ -798,7 +798,7 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin, InvoiceReportMixin):
         return lines
 
     def get_reconciliation_lines(self, name):
-        if self.state != 'paid':
+        if not self.move:
             return
         lines = set()
         for move in chain([self.move], self.additional_moves):
