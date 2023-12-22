@@ -354,7 +354,7 @@
                 'role': 'menuitem',
                 'href': '#',
                 'tabindex': -1,
-            }).text(' ' + Sao.i18n.gettext("Copy"))
+            }).text(' ' + Sao.i18n.gettext("Copy Selected Rows"))
                 .prepend(
                     Sao.common.ICONFACTORY.get_icon_img('tryton-copy', {
                         'aria-hidden': 'true',

@@ -901,11 +901,11 @@ class ViewTree(View):
                 # Outside row
                 return False
             menu = Gtk.Menu()
-            copy_item = Gtk.MenuItem(label=_('Copy'))
+            copy_item = Gtk.MenuItem(label=_("Copy Rows"))
             copy_item.connect('activate', lambda x: self.on_copy())
             menu.append(copy_item)
             if self.editable:
-                paste_item = Gtk.MenuItem(label=_('Paste'))
+                paste_item = Gtk.MenuItem(label=_("Paste Rows"))
                 paste_item.connect('activate', lambda x: self.on_paste())
                 menu.append(paste_item)
 
