@@ -325,7 +325,7 @@ function eval_pyson(value){
                     field = record.model.fields[fname];
                     fields.push([
                         fname,
-                        field.description.loading || 'eager' == 'eager',
+                        (field.description.loading || 'eager') == 'eager',
                         field.views.size,
                     ]);
                 }
