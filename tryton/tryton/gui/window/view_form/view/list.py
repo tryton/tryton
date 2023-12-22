@@ -1,10 +1,12 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
+import csv
 import gettext
 import json
 import locale
 import sys
 from functools import wraps
+from io import StringIO
 
 from gi.repository import Gdk, GLib, GObject, Gtk
 from pygtkcompat.generictreemodel import GenericTreeModel
@@ -720,27 +722,28 @@ class ViewTree(View):
                 record.cancel()
             iter_ = model.iter_next(iter_)
 
-    def on_copy(self):
+    def on_copy(self, columns=None):
+        if columns is None:
+            columns = self.treeview.get_columns()
+
+        def copy_foreach(treemodel, path, iter, add):
+            record = treemodel.get_value(iter, 0)
+            values = []
+            for col in columns:
+                if not col.get_visible() or not col.name:
+                    continue
+                widget = self.get_column_widget(col)
+                values.append(widget.get_textual_value(record))
+            add(values)
+
         for clipboard_type in [
                 Gdk.SELECTION_CLIPBOARD, Gdk.SELECTION_PRIMARY]:
             clipboard = self.treeview.get_clipboard(clipboard_type)
             selection = self.treeview.get_selection()
-            data = []
-            selection.selected_foreach(self.copy_foreach, data)
-            clipboard.set_text('\n'.join(data), -1)
-
-    def copy_foreach(self, treemodel, path, iter, data):
-        record = treemodel.get_value(iter, 0)
-        values = []
-        for col in self.treeview.get_columns():
-            if not col.get_visible() or not col.name:
-                continue
-            widget = self.get_column_widget(col)
-            values.append('"'
-                + str(widget.get_textual_value(record)).replace('"', '""')
-                + '"')
-        data.append('\t'.join(values))
-        return
+            data = StringIO()
+            writer = csv.writer(data, delimiter='\t', lineterminator='\n')
+            selection.selected_foreach(copy_foreach, writer.writerow)
+            clipboard.set_text(data.getvalue(), -1)
 
     def on_paste(self):
         if not self.editable:
@@ -900,10 +903,25 @@ class ViewTree(View):
             except TypeError:
                 # Outside row
                 return False
+            selection = treeview.get_selection()
             menu = Gtk.Menu()
-            copy_item = Gtk.MenuItem(label=_("Copy Rows"))
-            copy_item.connect('activate', lambda x: self.on_copy())
-            menu.append(copy_item)
+            if selection.count_selected_rows():
+                if selection.count_selected_rows() == 1:
+                    copy_item = Gtk.MenuItem(label=_("Copy"))
+                    copy_item.connect(
+                        'activate', lambda x: self.on_copy([col]))
+                    menu.append(copy_item)
+                    copy_row_label = _("Copy Row")
+                else:
+                    copy_row_label = _("Copy Rows")
+                    if col:
+                        copy_column_item = Gtk.MenuItem(label=_("Copy Column"))
+                        copy_column_item.connect(
+                            'activate', lambda x: self.on_copy(columns=[col]))
+                        menu.append(copy_column_item)
+                copy_row_item = Gtk.MenuItem(label=copy_row_label)
+                copy_row_item.connect('activate', lambda x: self.on_copy())
+                menu.append(copy_row_item)
             if self.editable:
                 paste_item = Gtk.MenuItem(label=_("Paste Rows"))
                 paste_item.connect('activate', lambda x: self.on_paste())
@@ -939,7 +957,6 @@ class ViewTree(View):
                         menu, model, record_id, title=label, field=field,
                         context=context)
 
-            selection = treeview.get_selection()
             if selection.count_selected_rows() == 1:
                 group = self.group
                 if selection.get_mode() == Gtk.SelectionMode.SINGLE:

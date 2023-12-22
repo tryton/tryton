@@ -1,3 +1,4 @@
+* Add contextual menu to copy cell and column
 * Allow resetting forgotten password
 * Clean temporary files and directories at exit
 
