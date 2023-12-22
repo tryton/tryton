@@ -749,19 +749,14 @@ class ViewTree(View):
         if not self.editable:
             return
 
-        def unquote(value):
-            if value[:1] == '"' and value[-1:] == '"':
-                return value[1:-1]
-            return value
-        data = []
+        reader = None
         for clipboard_type in [
                 Gdk.SELECTION_CLIPBOARD, Gdk.SELECTION_PRIMARY]:
             clipboard = self.treeview.get_clipboard(clipboard_type)
             text = clipboard.wait_for_text()
             if not text:
                 continue
-            data = [[unquote(v) for v in l.split('\t')]
-                for l in text.splitlines()]
+            reader = csv.reader(StringIO(text), delimiter='\t')
             break
         col = self.treeview.get_cursor()[1]
         columns = [c for c in self.treeview.get_columns()
@@ -777,7 +772,7 @@ class ViewTree(View):
             group = self.group
             idx = len(group)
         default = None
-        for line in data:
+        for line in reader:
             if idx >= len(group):
                 record = group.new(default=False)
                 if default is None:
