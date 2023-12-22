@@ -2717,7 +2717,7 @@ class InvoiceLine(sequence_ordered(), ModelSQL, ModelView, TaxableMixin):
         for invoice in Invoice.browse(list(invoice_ids)):
             if invoice.state != 'draft':
                 raise AccessError(
-                    gettext('account_invoice.msg_invoice_line_create',
+                    gettext('account_invoice.msg_invoice_line_create_draft',
                         invoice=invoice.rec_name))
         return super(InvoiceLine, cls).create(vlist)
 
