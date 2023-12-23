@@ -159,5 +159,5 @@ class TextBufferLimitSize(Gtk.TextBuffer):
     def do_insert_text(self, iter, text, length):
         free_chars = self.max_length - self.get_char_count()
         text = text[0:free_chars]
-        length = len(text)
+        length = len(text.encode('utf-8'))
         return Gtk.TextBuffer.do_insert_text(self, iter, text, length)

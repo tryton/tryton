@@ -71,8 +71,9 @@ class NumberEntry(Gtk.Entry, Gtk.Editable):
                 return position
         except InvalidOperation:
             return position
-        buffer_.insert_text(position, new_text, len(new_text))
-        return position + len(new_text)
+        length = len(new_text.encode('utf-8'))
+        buffer_.insert_text(position, new_text, length)
+        return position + length
 
     def __key_press_event(self, event):
         for name in ['KP_Decimal', 'KP_Separator']:
