@@ -19,6 +19,7 @@ from trytond.model import (
     DeactivableMixin, Index, ModelSQL, ModelView, Unique, Workflow, dualmethod,
     fields, sequence_ordered)
 from trytond.model.exceptions import AccessError
+from trytond.modules.account.exceptions import AccountMissing
 from trytond.modules.account.tax import TaxableMixin
 from trytond.modules.company.model import (
     employee_field, reset_employee, set_employee)
@@ -1093,17 +1094,24 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin, InvoiceReportMixin):
         MoveLine = pool.get('account.move.line')
         line = MoveLine()
         if self.currency != self.company.currency:
-            with Transaction().set_context(date=self.currency_date):
-                line.amount_second_currency = Currency.compute(
-                    self.company.currency, amount, self.currency)
+            line.amount_second_currency = amount
             line.second_currency = self.currency
+            with Transaction().set_context(date=self.currency_date):
+                amount = Currency.compute(
+                    self.currency, amount, self.company.currency)
         else:
             line.amount_second_currency = None
             line.second_currency = None
-        if amount <= 0:
-            line.debit, line.credit = -amount, 0
+        if amount >= 0:
+            if self.type == 'out':
+                line.debit, line.credit = amount, 0
+            else:
+                line.debit, line.credit = 0, amount
         else:
-            line.debit, line.credit = 0, amount
+            if self.type == 'out':
+                line.debit, line.credit = 0, -amount
+            else:
+                line.debit, line.credit = -amount, 0
         if line.amount_second_currency:
             line.amount_second_currency = (
                 line.amount_second_currency.copy_sign(
@@ -1116,6 +1124,34 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin, InvoiceReportMixin):
                 line.party = self.party
         line.maturity_date = date
         line.description = self.description
+        return line
+
+    def _get_exchange_move_line(self, amount):
+        pool = Pool()
+        Configuration = pool.get('account.configuration')
+        MoveLine = pool.get('account.move.line')
+        configuration = Configuration(1)
+        line = MoveLine()
+        line.debit = -amount if amount < 0 else 0
+        line.credit = amount if amount > 0 else 0
+        if line.credit:
+            line.account = configuration.get_multivalue(
+                'currency_exchange_credit_account', company=self.company.id)
+            if not line.account:
+                raise AccountMissing(gettext(
+                        'account_invoice.'
+                        'msg_invoice_currency_exchange_credit_account_missing',
+                        invoice=self.rec_name,
+                        company=self.company.rec_name))
+        else:
+            line.account = configuration.get_multivalue(
+                'currency_exchange_debit_account', company=self.company.id)
+            if not line.account:
+                raise AccountMissing(gettext(
+                        'account_invoice.'
+                        'msg_invoice_currency_exchange_debit_account_missing',
+                        invoice=self.rec_name,
+                        company=self.company.rec_name))
         return line
 
     def get_move(self):
@@ -1140,25 +1176,23 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin, InvoiceReportMixin):
         for tax in self.taxes:
             move_lines += tax.get_move_lines()
 
-        total = sum(l.debit - l.credit for l in move_lines)
+        remainder = sum(l.debit - l.credit for l in move_lines)
         if self.payment_term:
             payment_date = self.payment_term_date or self.invoice_date or today
             term_lines = self.payment_term.compute(
-                total, self.company.currency, payment_date)
+                self.total_amount, self.currency, payment_date)
         else:
-            term_lines = [(self.payment_term_date or today, total)]
-        if self.currency != self.company.currency:
-            remainder_total_currency = self.total_amount.copy_sign(total)
-        else:
-            remainder_total_currency = 0
+            term_lines = [(self.payment_term_date or today, self.total_amount)]
         past_payment_term_dates = []
         for date, amount in term_lines:
             line = self._get_move_line(date, amount)
-            if line.amount_second_currency:
-                remainder_total_currency += line.amount_second_currency
             move_lines.append(line)
+            remainder += line.debit - line.credit
             if self.type == 'out' and date < today:
                 past_payment_term_dates.append(date)
+        if self.currency != self.company.currency and remainder:
+            line = self._get_exchange_move_line(remainder)
+            move_lines.append(line)
         if any(past_payment_term_dates):
             lang = Lang.get()
             warning_key = Warning.format('invoice_payment_term', [self])
@@ -1168,9 +1202,6 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin, InvoiceReportMixin):
                         '.msg_invoice_payment_term_date_past',
                         invoice=self.rec_name,
                         date=lang.strftime(min(past_payment_term_dates))))
-        if not self.currency.is_zero(remainder_total_currency):
-            move_lines[-1].amount_second_currency -= \
-                remainder_total_currency
 
         accounting_date = self.accounting_date or self.invoice_date or today
         period = Period.find(self.company, date=accounting_date)

@@ -87,6 +87,12 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.message" id="msg_cancel_invoice_move_description">
             <field name="text">Cancelling them will reconcile the move lines thus paying the invoices. You might want to cancel the invoices first.</field>
         </record>
+        <record model="ir.message" id="msg_invoice_currency_exchange_credit_account_missing">
+            <field name="text">To post invoice "%(invoice)s", you must define a currency exchange credit account for "%(company)s".</field>
+        </record>
+        <record model="ir.message" id="msg_invoice_currency_exchange_debit_account_missing">
+            <field name="text">To pose invoice "%(invoice)s", you must define a currency exchange debit account for "%(company)s".</field>
+        </record>
     </data>
 </tryton>
 
