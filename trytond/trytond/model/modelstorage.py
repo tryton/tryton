@@ -701,8 +701,7 @@ class ModelStorage(Model):
                 _transaction_cache=transaction_cache,
                 _transaction=transaction) for x in ids]
 
-    @staticmethod
-    def __export_row(record, fields_names):
+    def __export_row(self, fields_names):
         pool = Pool()
         lines = []
         data = ['' for x in range(len(fields_names))]
@@ -711,7 +710,7 @@ class ModelStorage(Model):
             fields_tree = fields_names[fpos]
             if not fields_tree:
                 continue
-            value = record
+            value = self
             i = 0
             while i < len(fields_tree):
                 if not isinstance(value, ModelStorage):
@@ -740,8 +739,8 @@ class ModelStorage(Model):
                         break
                     done.append(child_fields_names)
                     for child_record in value:
-                        child_lines = ModelStorage.__export_row(child_record,
-                                child_fields_names)
+                        child_lines = child_record.__export_row(
+                            child_fields_names)
                         if first:
                             if child_lines:
                                 for child_fpos in range(len(fields_names)):
@@ -796,7 +795,7 @@ class ModelStorage(Model):
         if header:
             data.append(cls._convert_field_names(fields_names))
         for record in records:
-            data += cls.__export_row(record, fields_names)
+            data += record.__export_row(fields_names)
         return data
 
     @classmethod
