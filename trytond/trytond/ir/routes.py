@@ -259,7 +259,7 @@ def data(request, pool, model):
 
         try:
             if domain and isinstance(domain[0], (int, float)):
-                rows = Model.export_data(domain, fields_names)
+                rows = Model.export_data(Model.browse(domain), fields_names)
             else:
                 rows = Model.export_data_domain(
                     domain, fields_names,
