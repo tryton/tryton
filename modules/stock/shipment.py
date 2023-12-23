@@ -570,7 +570,7 @@ class ShipmentIn(
             # Update planned_date only for later to not be too optimistic if
             # the shipment is not directly received.
             incoming_moves_to_write = [m for m in shipment.incoming_moves
-                if (m.state not in ('assigned', 'done', 'cancelled')
+                if (m.state not in {'done', 'cancelled'}
                     and ((m.planned_date or datetime.date.max)
                         < (incoming_date or datetime.date.max)))]
             if incoming_moves_to_write:
@@ -578,7 +578,7 @@ class ShipmentIn(
                             'planned_date': incoming_date,
                             }))
             inventory_moves_to_write = [m for m in shipment.inventory_moves
-                if (m.state not in ('assigned', 'done', 'cancelled')
+                if (m.state not in {'done', 'cancelled'}
                     and ((m.planned_date or datetime.date.max)
                         < (inventory_date or datetime.date.max)))]
             if inventory_moves_to_write:
@@ -931,7 +931,7 @@ class ShipmentInReturn(ShipmentAssignMixin, Workflow, ModelSQL, ModelView):
         to_write = []
         for shipment in shipments:
             moves = [m for m in shipment.moves
-                    if (m.state not in ('assigned', 'done', 'cancelled')
+                    if (m.state not in {'done', 'cancelled'}
                         and m.planned_date != shipment._move_planned_date)]
             if moves:
                 to_write.extend((moves, {
@@ -1701,7 +1701,7 @@ class ShipmentOut(
         for shipment in shipments:
             outgoing_date, inventory_date = shipment._move_planned_date
             out_moves_to_write = [x for x in shipment.outgoing_moves
-                    if (x.state not in ('assigned', 'done', 'cancelled')
+                    if (x.state not in {'done', 'cancelled'}
                         and x.planned_date != outgoing_date)]
             if out_moves_to_write:
                 to_write.extend((out_moves_to_write, {
@@ -1709,7 +1709,7 @@ class ShipmentOut(
                         }))
 
             inv_moves_to_write = [x for x in shipment.inventory_moves
-                    if (x.state not in ('assigned', 'done', 'cancelled')
+                    if (x.state not in {'done', 'cancelled'}
                         and x.planned_date != inventory_date)]
             if inv_moves_to_write:
                 to_write.extend((inv_moves_to_write, {
@@ -2086,14 +2086,14 @@ class ShipmentOutReturn(
             dates = shipment._get_move_planned_date()
             incoming_date, inventory_date = dates
             incoming_moves_to_write = [x for x in shipment.incoming_moves
-                if (x.state not in ('assigned', 'done', 'cancelled')
+                if (x.state not in {'done', 'cancelled'}
                     and x.planned_date != incoming_date)]
             if incoming_moves_to_write:
                 to_write.extend((incoming_moves_to_write, {
                             'planned_date': incoming_date,
                             }))
             inventory_moves_to_write = [x for x in shipment.inventory_moves
-                if (x.state not in ('assigned', 'done', 'cancelled')
+                if (x.state not in {'done', 'cancelled'}
                     and x.planned_date != inventory_date)]
             if inventory_moves_to_write:
                 to_write.extend((inventory_moves_to_write, {
@@ -2919,7 +2919,7 @@ class ShipmentInternal(
                     and shipment.state not in {'request', 'draft'}):
                 outgoing_date, incoming_date = dates
                 outgoing_moves = [m for m in shipment.outgoing_moves
-                    if (m.state not in ('assigned', 'done', 'cancelled')
+                    if (m.state not in {'done', 'cancelled'}
                         and m.planned_date != outgoing_date)]
                 if outgoing_moves:
                     to_write.append(outgoing_moves)
@@ -2927,7 +2927,7 @@ class ShipmentInternal(
                             'planned_date': outgoing_date,
                             })
                 incoming_moves = [m for m in shipment.incoming_moves
-                    if (m.state not in ('assigned', 'done', 'cancelled')
+                    if (m.state not in {'done', 'cancelled'}
                         and m.planned_date != incoming_date)]
                 if incoming_moves:
                     to_write.append(incoming_moves)
@@ -2937,7 +2937,7 @@ class ShipmentInternal(
             else:
                 planned_start_date = shipment.planned_start_date
                 moves = [m for m in shipment.moves
-                    if (m.state not in {'assigned', 'done', 'cancelled'}
+                    if (m.state not in {'done', 'cancelled'}
                         and m.planned_date != planned_start_date)]
                 if moves:
                     to_write.append(moves)
