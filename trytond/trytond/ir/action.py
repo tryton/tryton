@@ -265,7 +265,7 @@ class ActionKeyword(ModelSQL, ModelView):
         if keywords is not None:
             return keywords
         keywords = []
-        model, model_id = value
+        model, record_id = value
 
         clause = [
             ('keyword', '=', keyword),
@@ -274,12 +274,12 @@ class ActionKeyword(ModelSQL, ModelView):
                 ('model', '=', None),
                 ],
             ]
-        if model_id >= 0:
+        if record_id is not None and record_id >= 0:
             clause = ['OR',
                 clause,
                 [
                     ('keyword', '=', keyword),
-                    ('model', '=', model + ',' + str(model_id)),
+                    ('model', '=', model + ',' + str(record_id)),
                     ],
                 ]
         clause = [clause, ('action.active', '=', True)]
@@ -297,8 +297,9 @@ class ActionKeyword(ModelSQL, ModelView):
                     continue
                 value['keyword'] = keyword
                 keywords.append(value)
-        if keyword == 'tree_open' and model == Menu.__name__:
-            menu = Menu(model_id)
+        if (record_id is not None
+                and keyword == 'tree_open' and model == Menu.__name__):
+            menu = Menu(record_id)
             for value in keywords:
                 if value['type'] == 'ir.action.act_window':
                     if len(keywords) == 1:
