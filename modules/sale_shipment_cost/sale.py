@@ -2,6 +2,8 @@
 # this repository contains the full copyright notices and license terms.
 from decimal import Decimal
 
+from sql import Null
+
 from trytond.i18n import gettext
 from trytond.model import ModelView, Workflow, fields
 from trytond.modules.product import price_digits, round_price
@@ -90,10 +92,19 @@ class Sale(metaclass=PoolMeta):
 
     @classmethod
     def __register__(cls, module):
+        cursor = Transaction().connection.cursor()
+        table = cls.__table__()
+
         super().__register__(module)
         table_h = cls.__table_handler__(module)
         # Migration from 5.8: remove required on shipment_cost_method
         table_h.not_null_action('shipment_cost_method', 'remove')
+
+        # Migration from 6.6: shipment_cost_method domain
+        cursor.execute(*table.update(
+                [table.shipment_cost_method],
+                [Null],
+                where=(table.carrier == Null) & (table.state != 'draft')))
 
     @classmethod
     def default_shipment_cost_method(cls, **pattern):
