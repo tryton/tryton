@@ -129,5 +129,5 @@ class Sale(metaclass=PoolMeta):
         return invoice
 
     def _get_invoice_grouping_fields(self, invoice):
-        return super()._get_invoice_grouping_fields(invoice) + [
-            'invoice_date']
+        return super()._get_invoice_grouping_fields(invoice) | {
+            'invoice_date'}

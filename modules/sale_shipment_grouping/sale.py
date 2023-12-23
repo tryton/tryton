@@ -16,14 +16,14 @@ class Sale(metaclass=PoolMeta):
 
     @property
     def _shipment_grouping_state(self):
-        return ['draft', 'waiting']
+        return {'draft', 'waiting'}
 
     def _get_shipment_grouping_fields(self, shipment):
         pool = Pool()
         ShipmentOut = pool.get('stock.shipment.out')
-        fields = ['customer', 'company', 'warehouse']
+        fields = {'customer', 'company', 'warehouse'}
         if isinstance(shipment, ShipmentOut):
-            fields.append('delivery_address')
+            fields.add('delivery_address')
         return fields
 
     def _get_grouped_shipment_planned_date(self, shipment):
@@ -38,7 +38,7 @@ class Sale(metaclass=PoolMeta):
         Shipment = shipment.__class__
         shipment_domain = [
             ('moves.origin', 'like', 'sale.line,%'),
-            ('state', 'in', self._shipment_grouping_state),
+            ('state', 'in', list(self._shipment_grouping_state)),
             ]
         shipment_domain += self._get_grouped_shipment_planned_date(shipment)
         fields = self._get_shipment_grouping_fields(shipment)

@@ -29,8 +29,8 @@ class IncotermTestCase(CompanyTestMixin, ModuleTestCase):
 
         fields = sale._get_shipment_grouping_fields(shipment)
 
-        self.assertLessEqual({'incoterm', 'incoterm_location'}, set(fields))
-        self.assertLessEqual(set(fields), ShipmentOut._fields.keys())
+        self.assertLessEqual({'incoterm', 'incoterm_location'}, fields)
+        self.assertLessEqual(fields, ShipmentOut._fields.keys())
 
 
 del ModuleTestCase

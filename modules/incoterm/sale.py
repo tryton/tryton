@@ -32,8 +32,8 @@ class Sale(IncotermAvailableMixin, metaclass=PoolMeta):
         return shipment
 
     def _get_shipment_grouping_fields(self, shipment):
-        return super()._get_shipment_grouping_fields(shipment) + [
-            'incoterm', 'incoterm_location']
+        return super()._get_shipment_grouping_fields(shipment) | {
+            'incoterm', 'incoterm_location'}
 
     @property
     @fields.depends('company', 'warehouse', 'shipment_address')

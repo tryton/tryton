@@ -24,8 +24,8 @@ class SaleShipmentCostTestCase(ModuleTestCase):
 
         fields = sale._get_shipment_grouping_fields(shipment)
 
-        self.assertLessEqual({'cost_method', 'carrier'}, set(fields))
-        self.assertLessEqual(set(fields), ShipmentOut._fields.keys())
+        self.assertLessEqual({'cost_method', 'carrier'}, fields)
+        self.assertLessEqual(fields, ShipmentOut._fields.keys())
 
 
 del ModuleTestCase

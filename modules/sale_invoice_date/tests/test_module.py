@@ -25,7 +25,7 @@ class SaleInvoiceDateTestCase(ModuleTestCase):
         fields = sale._get_invoice_grouping_fields(invoice)
 
         self.assertIn('invoice_date', fields)
-        self.assertLessEqual(set(fields), Invoice._fields.keys())
+        self.assertLessEqual(fields, Invoice._fields.keys())
 
 
 del ModuleTestCase
