@@ -1928,8 +1928,7 @@ class TestTaxView(ModelView, TaxableMixin):
             for taxline in self._get_taxes():
                 del taxline['manual']
                 result.append(Result(**taxline))
-        self.result = result
-        return self._changed_values.get('result', [])
+        return result
 
 
 class TestTaxViewResult(ModelView):
