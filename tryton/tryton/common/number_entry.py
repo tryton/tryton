@@ -59,9 +59,12 @@ class NumberEntry(Gtk.Entry, Gtk.Editable):
                 value = Decimal(str(value))
             except (ValueError, InvalidOperation):
                 return position
-        if (value and self.__digits is not None
-                and (round(value, self.__digits) != value
-                    or value.as_tuple().exponent < -self.__digits)):
+        try:
+            if (value and self.__digits is not None
+                    and (round(value, self.__digits) != value
+                        or value.as_tuple().exponent < -self.__digits)):
+                return position
+        except InvalidOperation:
             return position
         buffer_.insert_text(position, new_text, len(new_text))
         return position + len(new_text)
