@@ -674,14 +674,14 @@ class Production(ShipmentAssignMixin, Workflow, ModelSQL, ModelView):
             dates = production._get_move_planned_date()
             input_date, output_date = dates
             inputs = [m for m in production.inputs
-                    if m.state not in ('assigned', 'done', 'cancelled')]
+                    if m.state not in {'done', 'cancelled'}]
             if inputs:
                 to_write.append(inputs)
                 to_write.append({
                         'planned_date': input_date,
                         })
             outputs = [m for m in production.outputs
-                    if m.state not in ('assigned', 'done', 'cancelled')]
+                    if m.state not in {'done', 'cancelled'}]
             if outputs:
                 to_write.append(outputs)
                 to_write.append({
