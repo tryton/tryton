@@ -27,9 +27,9 @@ from trytond.wizard import (
     Button, StateAction, StateTransition, StateView, Wizard)
 
 from .exceptions import (
-    CancelDelegatedWarning, CancelWarning, DelegateLineError, GroupLineError,
-    PeriodNotFoundError, PostError, ReconciliationDeleteWarning,
-    ReconciliationError, RescheduleLineError)
+    AccountMissing, CancelDelegatedWarning, CancelWarning, DelegateLineError,
+    GroupLineError, JournalMissing, PeriodNotFoundError, PostError,
+    ReconciliationDeleteWarning, ReconciliationError, RescheduleLineError)
 
 _MOVE_STATES = {
     'readonly': Eval('state') == 'posted',
@@ -1715,7 +1715,7 @@ class Line(DescriptionOriginMixin, MoveLineMixin, ModelSQL, ModelView):
         move.journal = configuration.get_multivalue(
             'currency_exchange_journal', company=company.id)
         if not move.journal:
-            raise ReconciliationError(gettext(
+            raise JournalMissing(gettext(
                     'account.'
                     'msg_reconciliation_currency_exchange_journal_missing',
                     company=company.rec_name))
@@ -1739,7 +1739,7 @@ class Line(DescriptionOriginMixin, MoveLineMixin, ModelSQL, ModelView):
             line.account = configuration.get_multivalue(
                 'currency_exchange_credit_account', company=company.id)
             if not line.account:
-                raise ReconciliationError(gettext(
+                raise AccountMissing(gettext(
                         'account.'
                         'msg_reconciliation_currency_exchange_'
                         'credit_account_missing',
@@ -1748,7 +1748,7 @@ class Line(DescriptionOriginMixin, MoveLineMixin, ModelSQL, ModelView):
             line.account = configuration.get_multivalue(
                 'currency_exchange_debit_account', company=company.id)
             if not line.account:
-                raise ReconciliationError(gettext(
+                raise AccountMissing(gettext(
                         'account.'
                         'msg_reconciliation_currency_exchange_'
                         'debit_account_missing',

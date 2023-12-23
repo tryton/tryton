@@ -49,6 +49,10 @@ class FiscalYearReOpenError(UserError):
     pass
 
 
+class JournalMissing(UserError):
+    pass
+
+
 class AccountMissing(UserError):
     pass
 
