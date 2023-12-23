@@ -33,6 +33,10 @@ class DefaultLeadTime(ModelSQL, ValueMixin):
     __name__ = 'product.configuration.default_lead_time'
     default_lead_time = default_lead_time
 
+    @classmethod
+    def default_default_lead_time(cls, **pattern):
+        return datetime.timedelta(0)
+
 
 class Template(metaclass=PoolMeta):
     __name__ = 'product.template'
