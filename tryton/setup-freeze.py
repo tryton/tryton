@@ -119,7 +119,7 @@ if os.path.exists(ssl_paths.openssl_capath):
         (ssl_paths.openssl_capath, os.path.join('etc', 'ssl', 'certs')))
 
 version = Popen(
-    './setup.py --version', stdout=PIPE, shell=True, encoding='utf-8'
+    'python3 ./setup.py --version', stdout=PIPE, shell=True, encoding='utf-8'
     ).stdout.read()
 version = version.strip()
 
