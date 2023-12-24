@@ -5,9 +5,6 @@ Usage
 Customer and supplier invoices can be found under the
 :menuselection:`Financial --> Invoices` menu item.
 
-.. toctree::
-   :maxdepth: 1
-
-   prepare
-   process
-   amend
+.. include:: prepare.inc.rst
+.. include:: process.inc.rst
+.. include:: amend.inc.rst
