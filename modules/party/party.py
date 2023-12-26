@@ -10,6 +10,7 @@ from sql.functions import CharLength
 from stdnum import get_cc_module
 from stdnum.eu.vat import MEMBER_STATES as EU_MEMBER_STATES
 
+from trytond import backend
 from trytond.i18n import gettext
 from trytond.model import (
     DeactivableMixin, Index, ModelSQL, ModelView, MultiValueMixin, Unique,
@@ -432,11 +433,16 @@ class PartyLang(ModelSQL, ValueMixin):
 class PartyCategory(ModelSQL):
     'Party - Category'
     __name__ = 'party.party-party.category'
-    _table = 'party_category_rel'
     party = fields.Many2One(
         'party.party', "Party", ondelete='CASCADE', required=True)
     category = fields.Many2One(
         'party.category', "Category", ondelete='CASCADE', required=True)
+
+    @classmethod
+    def __register__(cls, module):
+        # Migration from 7.0: rename to standard name
+        backend.TableHandler.table_rename('party_category_rel', cls._table)
+        super().__register__(module)
 
 
 IDENTIFIER_VAT = [

@@ -9,6 +9,7 @@ from sql import Null
 from sql.aggregate import Sum
 from sql.conditionals import Coalesce
 
+from trytond import backend
 from trytond.i18n import gettext
 from trytond.model import Index, ModelSQL, ModelView, Unique, Workflow, fields
 from trytond.model.exceptions import AccessError
@@ -524,12 +525,18 @@ class ForecastLine(ModelSQL, ModelView):
 class ForecastLineMove(ModelSQL):
     'ForecastLine - Move'
     __name__ = 'stock.forecast.line-stock.move'
-    _table = 'forecast_line_stock_move_rel'
     line = fields.Many2One(
         'stock.forecast.line', "Forecast Line",
         ondelete='CASCADE', required=True)
     move = fields.Many2One(
         'stock.move', "Move", ondelete='CASCADE', required=True)
+
+    @classmethod
+    def __register__(cls, module):
+        # Migration from 7.0: rename to standard name
+        backend.TableHandler.table_rename(
+            'forecast_line_stock_move_rel', cls._table)
+        super().__register__(module)
 
 
 class ForecastCompleteAsk(ModelView):

@@ -4,6 +4,7 @@ from functools import wraps
 
 from sql import Null
 
+from trytond import backend
 from trytond.i18n import gettext
 from trytond.model import ModelSQL, fields
 from trytond.modules.company.model import (
@@ -279,7 +280,6 @@ class CategoryAccount(ModelSQL, CompanyValueMixin):
 class CategoryCustomerTax(ModelSQL):
     'Category - Customer Tax'
     __name__ = 'product.category-customer-account.tax'
-    _table = 'product_category_customer_taxes_rel'
     category = fields.Many2One(
         'product.category', "Category", ondelete='CASCADE', required=True)
     tax = fields.Many2One('account.tax', 'Tax', ondelete='RESTRICT',
@@ -289,12 +289,18 @@ class CategoryCustomerTax(ModelSQL):
     def __setup__(cls):
         super().__setup__()
         cls.__access__.add('tax')
+
+    @classmethod
+    def __register__(cls, module):
+        # Migration from 7.0: rename to standard name
+        backend.TableHandler.table_rename(
+            'product_category_customer_taxes_rel', cls._table)
+        super().__register__(module)
 
 
 class CategorySupplierTax(ModelSQL):
     'Category - Supplier Tax'
     __name__ = 'product.category-supplier-account.tax'
-    _table = 'product_category_supplier_taxes_rel'
     category = fields.Many2One(
         'product.category', "Category", ondelete='CASCADE', required=True)
     tax = fields.Many2One('account.tax', 'Tax', ondelete='RESTRICT',
@@ -304,6 +310,13 @@ class CategorySupplierTax(ModelSQL):
     def __setup__(cls):
         super().__setup__()
         cls.__access__.add('tax')
+
+    @classmethod
+    def __register__(cls, module):
+        # Migration from 7.0: rename to standard name
+        backend.TableHandler.table_rename(
+            'product_category_supplier_taxes_rel', cls._table)
+        super().__register__(module)
 
 
 class Template(CompanyMultiValueMixin, metaclass=PoolMeta):

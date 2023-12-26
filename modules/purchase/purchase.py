@@ -10,6 +10,7 @@ from sql import Literal, Null
 from sql.aggregate import Count
 from sql.functions import CharLength
 
+from trytond import backend
 from trytond.i18n import gettext
 from trytond.ir.attachment import AttachmentCopyMixin
 from trytond.ir.note import NoteCopyMixin
@@ -1036,21 +1037,33 @@ class Purchase(
 class PurchaseIgnoredInvoice(ModelSQL):
     'Purchase - Ignored Invoice'
     __name__ = 'purchase.purchase-ignored-account.invoice'
-    _table = 'purchase_invoice_ignored_rel'
     purchase = fields.Many2One(
         'purchase.purchase', "Purchase", ondelete='CASCADE', required=True)
     invoice = fields.Many2One(
         'account.invoice', "Invoice", ondelete='RESTRICT', required=True)
+
+    @classmethod
+    def __register__(cls, module):
+        # Migration from 7.0: rename to standard name
+        backend.TableHandler.table_rename(
+            'purchase_invoice_ignored_rel', cls._table)
+        super().__register__(module)
 
 
 class PurchaseRecreatedInvoice(ModelSQL):
     'Purchase - Recreated Invoice'
     __name__ = 'purchase.purchase-recreated-account.invoice'
-    _table = 'purchase_invoice_recreated_rel'
     purchase = fields.Many2One(
         'purchase.purchase', "Purchase", ondelete='CASCADE', required=True)
     invoice = fields.Many2One(
         'account.invoice', "Invoice", ondelete='RESTRICT', required=True)
+
+    @classmethod
+    def __register__(cls, module):
+        # Migration from 7.0: rename to standard name
+        backend.TableHandler.table_rename(
+            'purchase_invoice_recreated_rel', cls._table)
+        super().__register__(module)
 
 
 class Line(sequence_ordered(), ModelSQL, ModelView):
@@ -2013,7 +2026,6 @@ class Line(sequence_ordered(), ModelSQL, ModelView):
 class LineTax(ModelSQL):
     'Purchase Line - Tax'
     __name__ = 'purchase.line-account.tax'
-    _table = 'purchase_line_account_tax'
     line = fields.Many2One(
         'purchase.line', "Purchase Line", ondelete='CASCADE', required=True,
         domain=[('type', '=', 'line')])
@@ -2030,25 +2042,44 @@ class LineTax(ModelSQL):
                 'purchase.msg_purchase_line_tax_unique'),
             ]
 
+    @classmethod
+    def __register__(cls, module):
+        # Migration from 7.0: rename to standard name
+        backend.TableHandler.table_rename(
+            'purchase_line_account_tax', cls._table)
+        super().__register__(module)
+
 
 class LineIgnoredMove(ModelSQL):
     'Purchase Line - Ignored Move'
     __name__ = 'purchase.line-ignored-stock.move'
-    _table = 'purchase_line_moves_ignored_rel'
     purchase_line = fields.Many2One(
         'purchase.line', "Purchase Line", ondelete='CASCADE', required=True)
     move = fields.Many2One(
         'stock.move', "Move", ondelete='RESTRICT', required=True)
+
+    @classmethod
+    def __register__(cls, module):
+        # Migration from 7.0: rename to standard name
+        backend.TableHandler.table_rename(
+            'purchase_line_moves_ignored_rel', cls._table)
+        super().__register__(module)
 
 
 class LineRecreatedMove(ModelSQL):
     'Purchase Line - Ignored Move'
     __name__ = 'purchase.line-recreated-stock.move'
-    _table = 'purchase_line_moves_recreated_rel'
     purchase_line = fields.Many2One(
         'purchase.line', "Purchase Line", ondelete='CASCADE', required=True)
     move = fields.Many2One(
         'stock.move', "Move", ondelete='RESTRICT', required=True)
+
+    @classmethod
+    def __register__(cls, module):
+        # Migration from 7.0: rename to standard name
+        backend.TableHandler.table_rename(
+            'purchase_line_moves_recreated_rel', cls._table)
+        super().__register__(module)
 
 
 class PurchaseReport(CompanyReport):

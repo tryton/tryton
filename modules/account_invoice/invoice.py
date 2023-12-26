@@ -2868,7 +2868,6 @@ class InvoiceLine(sequence_ordered(), ModelSQL, ModelView, TaxableMixin):
 class InvoiceLineTax(ModelSQL):
     'Invoice Line - Tax'
     __name__ = 'account.invoice.line-account.tax'
-    _table = 'account_invoice_line_account_tax'
     line = fields.Many2One(
         'account.invoice.line', "Invoice Line",
         ondelete='CASCADE', required=True)
@@ -2883,6 +2882,13 @@ class InvoiceLineTax(ModelSQL):
             ('line_tax_unique', Unique(t, t.line, t.tax),
                 'account_invoice.msg_invoice_line_tax_unique'),
             ]
+
+    @classmethod
+    def __register__(cls, module):
+        # Migration from 7.0: rename to standard name
+        backend.TableHandler.table_rename(
+            'account_invoice_line_account_tax', cls._table)
+        super().__register__(module)
 
 
 class InvoiceTax(sequence_ordered(), ModelSQL, ModelView):

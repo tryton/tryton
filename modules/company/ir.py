@@ -1,5 +1,7 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
+
+from trytond import backend
 from trytond.model import ModelSQL, ModelView, dualmethod, fields
 from trytond.pool import Pool, PoolMeta
 from trytond.tools import timezone as tz
@@ -91,11 +93,16 @@ class Cron(metaclass=PoolMeta):
 class CronCompany(ModelSQL):
     'Cron - Company'
     __name__ = 'ir.cron-company.company'
-    _table = 'cron_company_rel'
     cron = fields.Many2One(
         'ir.cron', "Cron", ondelete='CASCADE', required=True)
     company = fields.Many2One(
         'company.company', "Company", ondelete='CASCADE', required=True)
+
+    @classmethod
+    def __register__(cls, module):
+        # Migration from 7.0: rename to standard name
+        backend.TableHandler.table_rename('cron_company_rel', cls._table)
+        super().__register__(module)
 
 
 class EmailTemplate(metaclass=PoolMeta):

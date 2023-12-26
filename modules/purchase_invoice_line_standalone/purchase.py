@@ -1,5 +1,7 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
+
+from trytond import backend
 from trytond.model import ModelSQL, fields
 from trytond.pool import Pool, PoolMeta
 
@@ -70,12 +72,18 @@ class Purchase(metaclass=PoolMeta):
 class PurchaseIgnoredInvoiceLine(ModelSQL):
     'Purchase - Ignored Invoice Line'
     __name__ = 'purchase.purchase-ignored-account.invoice.line'
-    _table = 'purchase_invoice_line_ignored_rel'
     purchase = fields.Many2One(
         'purchase.purchase', "Purchase", ondelete='CASCADE', required=True)
     invoice = fields.Many2One(
         'account.invoice.line', "Invoice Line",
         ondelete='RESTRICT', required=True)
+
+    @classmethod
+    def __register__(cls, module):
+        # Migration from 7.0: rename to standard name
+        backend.TableHandler.table_rename(
+            'purchase_invoice_line_ignored_rel', cls._table)
+        super().__register__(module)
 
 
 class HandleInvoiceException(metaclass=PoolMeta):

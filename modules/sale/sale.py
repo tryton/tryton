@@ -10,6 +10,7 @@ from itertools import chain, groupby
 from sql import Null
 from sql.functions import CharLength
 
+from trytond import backend
 from trytond.i18n import gettext
 from trytond.ir.attachment import AttachmentCopyMixin
 from trytond.ir.note import NoteCopyMixin
@@ -1173,21 +1174,33 @@ class Sale(
 class SaleIgnoredInvoice(ModelSQL):
     'Sale - Ignored Invoice'
     __name__ = 'sale.sale-ignored-account.invoice'
-    _table = 'sale_invoice_ignored_rel'
     sale = fields.Many2One(
         'sale.sale', "Sale", ondelete='CASCADE', required=True)
     invoice = fields.Many2One(
         'account.invoice', "Invoice", ondelete='RESTRICT', required=True)
+
+    @classmethod
+    def __register__(cls, module):
+        # Migration from 7.0: rename to standard name
+        backend.TableHandler.table_rename(
+            'sale_invoice_ignored_rel', cls._table)
+        super().__register__(module)
 
 
 class SaleRecreatedInvoice(ModelSQL):
     'Sale - Recreated Invoice'
     __name__ = 'sale.sale-recreated-account.invoice'
-    _table = 'sale_invoice_recreated_rel'
     sale = fields.Many2One(
         'sale.sale', "Sale", ondelete='CASCADE', required=True)
     invoice = fields.Many2One(
         'account.invoice', "Invoice", ondelete='RESTRICT', required=True)
+
+    @classmethod
+    def __register__(cls, module):
+        # Migration from 7.0: rename to standard name
+        backend.TableHandler.table_rename(
+            'sale_invoice_recreated_rel', cls._table)
+        super().__register__(module)
 
 
 class SaleLine(TaxableMixin, sequence_ordered(), ModelSQL, ModelView):
@@ -2066,7 +2079,6 @@ class SaleLine(TaxableMixin, sequence_ordered(), ModelSQL, ModelView):
 class SaleLineTax(ModelSQL):
     'Sale Line - Tax'
     __name__ = 'sale.line-account.tax'
-    _table = 'sale_line_account_tax'
     line = fields.Many2One(
         'sale.line', "Sale Line", ondelete='CASCADE', required=True)
     tax = fields.Many2One(
@@ -2081,25 +2093,43 @@ class SaleLineTax(ModelSQL):
                 'sale.msg_sale_line_tax_unique'),
             ]
 
+    @classmethod
+    def __register__(cls, module):
+        # Migration from 7.0: rename to standard name
+        backend.TableHandler.table_rename('sale_line_account_tax', cls._table)
+        super().__register__(module)
+
 
 class SaleLineIgnoredMove(ModelSQL):
     'Sale Line - Ignored Move'
     __name__ = 'sale.line-ignored-stock.move'
-    _table = 'sale_line_moves_ignored_rel'
     sale_line = fields.Many2One(
         'sale.line', "Sale Line", ondelete='CASCADE', required=True)
     move = fields.Many2One(
         'stock.move', "Move", ondelete='RESTRICT', required=True)
+
+    @classmethod
+    def __register__(cls, module):
+        # Migration from 7.0: rename to standard name
+        backend.TableHandler.table_rename(
+            'sale_line_moves_ignored_rel', cls._table)
+        super().__register__(module)
 
 
 class SaleLineRecreatedMove(ModelSQL):
     'Sale Line - Recreated Move'
     __name__ = 'sale.line-recreated-stock.move'
-    _table = 'sale_line_moves_recreated_rel'
     sale_line = fields.Many2One(
         'sale.line', "Sale Line", ondelete='CASCADE', required=True)
     move = fields.Many2One(
         'stock.move', "Move", ondelete='RESTRICT', required=True)
+
+    @classmethod
+    def __register__(cls, module):
+        # Migration from 7.0: rename to standard name
+        backend.TableHandler.table_rename(
+            'sale_line_moves_recreated_rel', cls._table)
+        super().__register__(module)
 
 
 class SaleReport(CompanyReport):

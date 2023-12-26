@@ -834,13 +834,19 @@ class AccountTemplate(
 class AccountTemplateTaxTemplate(ModelSQL):
     'Account Template - Tax Template'
     __name__ = 'account.account.template-account.tax.template'
-    _table = 'account_account_template_tax_rel'
     account = fields.Many2One(
         'account.account.template', "Account Template",
         ondelete='CASCADE', required=True)
     tax = fields.Many2One(
         'account.tax.template', "Tax Template",
         ondelete='RESTRICT', required=True)
+
+    @classmethod
+    def __register__(cls, module):
+        # Migration from 7.0: rename to standard name
+        backend.TableHandler.table_rename(
+            'account_account_template_tax_rel', cls._table)
+        super().__register__(module)
 
 
 class Account(
@@ -1806,11 +1812,17 @@ class AccountDeferral(ModelSQL, ModelView):
 class AccountTax(ModelSQL):
     'Account - Tax'
     __name__ = 'account.account-account.tax'
-    _table = 'account_account_tax_rel'
     account = fields.Many2One(
         'account.account', "Account", ondelete='CASCADE', required=True)
     tax = fields.Many2One(
         'account.tax', "Tax", ondelete='RESTRICT', required=True)
+
+    @classmethod
+    def __register__(cls, module):
+        # Migration from 7.0: rename to standard name
+        backend.TableHandler.table_rename(
+            'account_account_tax_rel', cls._table)
+        super().__register__(module)
 
 
 class AccountContext(ModelView):
