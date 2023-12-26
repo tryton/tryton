@@ -1535,7 +1535,7 @@ class ShipmentOut(
         Move = pool.get('stock.move')
         Move.delete([
                 m for s in shipments for m in s.inventory_moves
-                if m.state == 'staging'])
+                if m.state == 'staging' or not m.quantity])
         Move.do([m for s in shipments for m in s.inventory_moves])
         Move.draft([m for s in shipments for m in s.outgoing_moves])
         cls._sync_inventory_to_outgoing(shipments, quantity=True)
