@@ -181,7 +181,7 @@ Ignore non assigned moves and pack shipment::
     >>> len(shipment_out.outgoing_moves)
     1
     >>> len(shipment_out.inventory_moves)
-    2
+    1
     >>> shipment_out.inventory_moves[0].state
     'done'
     >>> sum([m.quantity for m in shipment_out.inventory_moves]) == \
@@ -209,7 +209,7 @@ Set the state as Done::
     >>> len(shipment_out.outgoing_moves)
     1
     >>> len(shipment_out.inventory_moves)
-    2
+    1
     >>> shipment_out.inventory_moves[0].state
     'done'
     >>> sum([m.quantity for m in shipment_out.inventory_moves]) == \
