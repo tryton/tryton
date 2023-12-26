@@ -40,7 +40,7 @@ class StockForecastTestCase(CompanyTestMixin, ModuleTestCase):
 
             self.assertEqual(
                 forecast.rec_name,
-                "Warehouse → Customer @ [01/01/2023 - 03/31/2023]")
+                "[WH] Warehouse → [CUS] Customer @ [01/01/2023 - 03/31/2023]")
             self.assertEqual(forecasts, [forecast])
 
     @with_transaction()
