@@ -28,7 +28,8 @@ STATES = {
     'readonly': Eval('state').in_(['cancelled', 'assigned', 'done']),
 }
 LOCATION_DOMAIN = [
-    If(Eval('state').in_(['staging', 'draft', 'cancelled']),
+    If(Eval('state').in_(['staging', 'draft', 'cancelled'])
+        | ((Eval('state') == 'assigned') & ~Eval('quantity')),
         ('type', 'not in', ['warehouse']),
         ('type', 'not in', ['warehouse', 'view'])),
     If(~Eval('state').in_(['done', 'cancelled']),
@@ -876,7 +877,8 @@ class Move(Workflow, ModelSQL, ModelView):
     @classmethod
     def delete(cls, moves):
         for move in moves:
-            if move.state not in {'staging', 'draft', 'cancelled'}:
+            if (move.state not in {'staging', 'draft', 'cancelled'}
+                    and move.quantity):
                 raise AccessError(
                     gettext('stock.msg_move_delete_draft_cancel',
                         move=move.rec_name))
