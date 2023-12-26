@@ -126,7 +126,7 @@ class BOMInput(ModelSQL, ModelView):
 class BOMOutput(BOMInput):
     "Bill of Material Output"
     __name__ = 'production.bom.output'
-    _table = 'production_bom_output'  # Needed to override BOMInput._table
+    _table = None  # Needed to override BOMInput._table
 
     def compute_quantity(self, factor):
         return self.unit.floor(self.quantity * factor)
