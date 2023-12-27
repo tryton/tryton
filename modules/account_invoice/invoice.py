@@ -31,7 +31,7 @@ from trytond.rpc import RPC
 from trytond.tools import firstline, grouped_slice, reduce_ids, slugify
 from trytond.transaction import Transaction
 from trytond.wizard import (
-    Button, StateAction, StateTransition, StateView, Wizard)
+    Button, StateAction, StateReport, StateTransition, StateView, Wizard)
 
 from .exceptions import (
     InvoiceFutureWarning, InvoiceNumberError, InvoicePaymentTermDateWarning,
@@ -3184,7 +3184,7 @@ class RefreshInvoiceReport(Wizard):
     __name__ = 'account.invoice.refresh_invoice_report'
     start_state = 'archive'
     archive = StateTransition()
-    print_ = StateAction('account_invoice.report_invoice')
+    print_ = StateReport('account.invoice')
 
     def transition_archive(self):
         for record in self.records:
