@@ -262,6 +262,8 @@ class User(avatar_mixin(100, 'login'), DeactivableMixin, ModelSQL, ModelView):
         for user in users:
             to_write.extend([[user], {
                         'password_hash': cls.hash_password(value),
+                        'password_reset': None,
+                        'password_reset_expire': None,
                         }])
         cls.write(*to_write)
 
