@@ -14,5 +14,5 @@ Document Incoming
 `OCR </projects/modules-document-incoming-ocr/en/latest>`_
    Basis to interact with OCR services.
 
-`OCR Typless </projects/modules-document-incoming-ocr-typless>`_
+`OCR Typless </projects/modules-document-incoming-ocr-typless/en/latest>`_
    Integrates with Typless services.
