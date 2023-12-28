@@ -1,22 +1,8 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 
-import doctest
-import glob
-import os
-
-from trytond.tests.test_tryton import doctest_checker, doctest_teardown
+from trytond.tests.test_tryton import load_doc_tests
 
 
-def load_tests(loader, tests, pattern):
-    cwd = os.getcwd()
-    try:
-        os.chdir(os.path.dirname(__file__))
-        for scenario in glob.glob('*.rst'):
-            tests.addTests(doctest.DocFileSuite(
-                    scenario, tearDown=doctest_teardown, encoding='utf-8',
-                    checker=doctest_checker,
-                    optionflags=doctest.REPORT_ONLY_FIRST_FAILURE))
-    finally:
-        os.chdir(cwd)
-    return tests
+def load_tests(*args, **kwargs):
+    return load_doc_tests(__name__, __file__, *args, **kwargs)

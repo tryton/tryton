@@ -35,7 +35,7 @@ Try erase active party::
     >>> erase = Wizard('party.erase', models=[party])
     >>> erase.form.party == party
     True
-    >>> erase.execute('erase')  # doctest: +IGNORE_EXCEPTION_DETAIL
+    >>> erase.execute('erase')
     Traceback (most recent call last):
         ...
     EraseError: ...

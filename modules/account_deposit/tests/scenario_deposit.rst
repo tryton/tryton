@@ -96,7 +96,7 @@ Recall too much::
 
     >>> deposit_line.unit_price = Decimal('-200.00')
     >>> deposit_line.save()
-    >>> invoice.click('post')  # doctest: +IGNORE_EXCEPTION_DETAIL
+    >>> invoice.click('post')
     Traceback (most recent call last):
         ...
     DepositError: ...

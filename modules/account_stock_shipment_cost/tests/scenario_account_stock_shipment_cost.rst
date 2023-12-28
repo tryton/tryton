@@ -203,7 +203,7 @@ Add a second shipment cost to 1 shipment::
     ...     post_shipment_cost.execute('post')
     ... except SamePartiesWarning as warning:
     ...     _, (key, *_) = warning.args
-    ...     raise  # doctest: +IGNORE_EXCEPTION_DETAIL
+    ...     raise
     Traceback (most recent call last):
         ...
     SamePartiesWarning: ...

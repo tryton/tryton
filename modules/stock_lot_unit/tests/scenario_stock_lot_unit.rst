@@ -132,7 +132,7 @@ Let's ship now two times the same lot::
     >>> move1.lot = lot
     >>> move2.lot = lot
     >>> shipment.save()
-    >>> shipment.click('pick')  # doctest: +IGNORE_EXCEPTION_DETAIL
+    >>> shipment.click('pick')
     Traceback (most recent call last):
         ...
     LotUnitQuantityError: ...
@@ -156,7 +156,7 @@ Now let's ship one move with a quantity bigger than lot unit quantity::
     >>> shipment.click('assign_try')
     >>> move, = shipment.inventory_moves
     >>> move.lot = lot
-    >>> shipment.click('pick')  # doctest: +IGNORE_EXCEPTION_DETAIL
+    >>> shipment.click('pick')
     Traceback (most recent call last):
         ...
     LotUnitQuantityError: ...
@@ -175,7 +175,7 @@ Make an inventory::
     >>> line.lot = lot
     >>> line.quantity = 3
     >>> inventory.save()
-    >>> inventory.click('confirm')  # doctest: +IGNORE_EXCEPTION_DETAIL
+    >>> inventory.click('confirm')
     Traceback (most recent call last):
         ...
     LotUnitQuantityError: ...

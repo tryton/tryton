@@ -98,7 +98,7 @@ Receive cash::
 
 Can not close the period::
 
-    >>> period.click('close')  # doctest: +IGNORE_EXCEPTION_DETAIL
+    >>> period.click('close')
     Traceback (most recent call last):
         ...
     ClosePeriodWarning: ...

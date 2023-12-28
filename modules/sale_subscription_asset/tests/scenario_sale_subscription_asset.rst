@@ -100,7 +100,7 @@ Subscribe::
     >>> line.quantity = 1
 
     >>> subscription.click('quote')
-    >>> subscription.click('run')  # doctest: +IGNORE_EXCEPTION_DETAIL
+    >>> subscription.click('run')
     Traceback (most recent call last):
         ...
     RequiredValidationError: ...
@@ -134,7 +134,7 @@ Creating an overlapping line won't work::
     >>> line.start_date = datetime.date(2017, 1, 1)
     >>> line.quantity = 1
     >>> line.asset_lot = lot1
-    >>> overlapping.save()  # doctest: +IGNORE_EXCEPTION_DETAIL
+    >>> overlapping.save()
     Traceback (most recent call last):
         ...
     ValidationError: ....

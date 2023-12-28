@@ -135,7 +135,7 @@ Try to change product with incompatible unit::
     >>> blanket_agreement.click('draft')
     >>> line, = blanket_agreement.lines
     >>> line.product = product2
-    >>> blanket_agreement.save()  # doctest: +IGNORE_EXCEPTION_DETAIL
+    >>> blanket_agreement.save()
     Traceback (most recent call last):
         ...
     UOMValidationError: ...
@@ -145,7 +145,7 @@ Try to change product with incompatible unit::
 
 Try to close blanket agreement with remaining quantity::
 
-    >>> blanket_agreement.click('close')  # doctest: +IGNORE_EXCEPTION_DETAIL
+    >>> blanket_agreement.click('close')
     Traceback (most recent call last):
         ...
     BlanketAgreementClosingWarning: ...
@@ -164,7 +164,7 @@ Try to sale more than remaining::
     >>> sale_line.unit_price
     Decimal('9.0000')
     >>> sale_line.quantity = 20
-    >>> sale.click('quote')  # doctest: +IGNORE_EXCEPTION_DETAIL
+    >>> sale.click('quote')
     Traceback (most recent call last):
         ...
     BlanketAgreementQuantityWarning: ...

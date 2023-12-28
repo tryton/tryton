@@ -1,3 +1,4 @@
+* Set IGNORE_EXCEPTION_DETAIL option flag on doctest
 * Add timeout parameter on RPC definitions
 
 Version 7.0.0 - 2023-10-30

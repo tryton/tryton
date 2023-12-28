@@ -205,7 +205,7 @@ A warning is raised when creating an invoice with same reference::
     >>> line.product = product
     >>> line.quantity = 1
     >>> line.unit_price = Decimal('20')
-    >>> invoice.click('post') # doctest: +IGNORE_EXCEPTION_DETAIL
+    >>> invoice.click('post')
     Traceback (most recent call last):
         ...
     InvoiceSimilarWarning: ...

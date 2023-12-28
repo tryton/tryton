@@ -104,7 +104,7 @@ Check the inventory moves origin::
 
 Try to pick without lot::
 
-    >>> shipment_out.click('pick')  # doctest: +IGNORE_EXCEPTION_DETAIL
+    >>> shipment_out.click('pick')
     Traceback (most recent call last):
         ...
     RequiredValidationError: ...

@@ -178,7 +178,7 @@ Try to set invalid ratio::
 
     >>> period = pl_budget.periods[0]
     >>> period.ratio = Decimal('0.1')
-    >>> budget.save()  # doctest: +IGNORE_EXCEPTION_DETAIL
+    >>> budget.save()
     Traceback (most recent call last):
         ...
     BudgetValidationError: ...

@@ -34,7 +34,7 @@ The identifier code is computed when set::
 
 An Error is raised for invalid code::
 
-    >>> product.save() # doctest: +IGNORE_EXCEPTION_DETAIL
+    >>> product.save()
     Traceback (most recent call last):
         ...
     InvalidIdentifierCode: ...

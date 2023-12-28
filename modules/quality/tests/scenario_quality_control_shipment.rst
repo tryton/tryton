@@ -76,7 +76,7 @@ Receive product which fails quality inspection::
     >>> inspection.state
     'failed'
 
-    >>> shipment.click('receive')  # doctest: +IGNORE_EXCEPTION_DETAIL
+    >>> shipment.click('receive')
     Traceback (most recent call last):
         ...
     InspectionError: ...

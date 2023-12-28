@@ -83,7 +83,7 @@ Post invoice and cancel the created move::
     'posted'
     >>> cancel_move = Wizard('account.move.cancel', [invoice.move])
     >>> cancel_move.form.description = 'Cancel'
-    >>> cancel_move.execute('cancel')  # doctest: +IGNORE_EXCEPTION_DETAIL
+    >>> cancel_move.execute('cancel')
     Traceback (most recent call last):
         ...
     CancelInvoiceMoveWarning: ...

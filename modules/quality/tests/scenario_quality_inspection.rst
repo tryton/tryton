@@ -75,7 +75,7 @@ Create a partial inspection::
     >>> inspection = Inspection()
     >>> inspection.control = control
     >>> inspection.points = {'boolean': True}
-    >>> inspection.click('process')  # doctest: +IGNORE_EXCEPTION_DETAIL
+    >>> inspection.click('process')
     Traceback (most recent call last):
         ...
     InspectionValidationError: ...

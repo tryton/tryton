@@ -58,7 +58,7 @@ Create invoice::
 Posting an invoice in the future raises a warning::
 
     >>> invoice.invoice_date = tomorrow
-    >>> invoice.click('post')  # doctest: +IGNORE_EXCEPTION_DETAIL
+    >>> invoice.click('post')
     Traceback (most recent call last):
         ...
     InvoiceFutureWarning: ...

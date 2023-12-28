@@ -85,7 +85,7 @@ Pay line::
 Try to cancel move::
 
     >>> cancel_move = Wizard('account.move.cancel', [move])
-    >>> cancel_move.execute('cancel')  # doctest: +IGNORE_EXCEPTION_DETAIL
+    >>> cancel_move.execute('cancel')
     Traceback (most recent call last):
         ...
     CancelWarning: ...
@@ -94,7 +94,7 @@ Try to group lines::
 
     >>> line2, = [l for l in move2.lines if l.account == accounts['payable']]
     >>> group_line = Wizard('account.move.line.group', [line, line2])
-    >>> group_line.execute('group')  # doctest: +IGNORE_EXCEPTION_DETAIL
+    >>> group_line.execute('group')
     Traceback (most recent call last):
         ...
     GroupLineWarning: ...
@@ -107,7 +107,7 @@ Try to reschedule line::
     >>> reschedule_line.form.interval = 1
     >>> reschedule_line.form.amount = Decimal('50.00')
     >>> reschedule_line.execute('preview')
-    >>> reschedule_line.execute('reschedule')  # doctest: +IGNORE_EXCEPTION_DETAIL
+    >>> reschedule_line.execute('reschedule')
     Traceback (most recent call last):
         ...
     RescheduleLineWarning: ...
@@ -116,7 +116,7 @@ Try to delegate line::
 
     >>> delegate_line = Wizard('account.move.line.delegate', [line])
     >>> delegate_line.form.party = supplier2
-    >>> delegate_line.execute('delegate')  # doctest: +IGNORE_EXCEPTION_DETAIL
+    >>> delegate_line.execute('delegate')
     Traceback (most recent call last):
         ...
     DelegateLineWarning: ...
@@ -140,7 +140,7 @@ Reconcile line and try to submit::
     >>> reconcile.state
     'end'
 
-    >>> payment.click('submit')  # doctest: +IGNORE_EXCEPTION_DETAIL
+    >>> payment.click('submit')
     Traceback (most recent call last):
         ...
     ReconciledWarning: ...

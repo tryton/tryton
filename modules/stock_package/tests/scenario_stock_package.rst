@@ -107,7 +107,7 @@ Package products::
     2
     >>> package_child.moves.append(moves[0])
 
-    >>> shipment_out.save()  # doctest: +IGNORE_EXCEPTION_DETAIL
+    >>> shipment_out.save()
     Traceback (most recent call last):
         ...
     PackageValidationError: ...
@@ -116,7 +116,7 @@ Package products::
     >>> package1.packaging_volume
     0.96
 
-    >>> shipment_out.click('pack')  # doctest: +IGNORE_EXCEPTION_DETAIL
+    >>> shipment_out.click('pack')
     Traceback (most recent call last):
         ...
     PackageError: ...

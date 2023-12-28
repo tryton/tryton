@@ -279,7 +279,7 @@ Create the purchase without product::
 
 It's not possible to delete a purchase linked to a purchase_request::
 
-    >>> pr.purchase_line.purchase.delete()  # doctest: +IGNORE_EXCEPTION_DETAIL
+    >>> pr.purchase_line.purchase.delete()
     Traceback (most recent call last):
         ...
     AccessError: ...

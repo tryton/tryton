@@ -211,7 +211,7 @@ Validate statement::
 Try posting a move::
 
     >>> statement_line = statement.lines[0]
-    >>> statement_line.move.click('post')  # doctest: +IGNORE_EXCEPTION_DETAIL
+    >>> statement_line.move.click('post')
     Traceback (most recent call last):
         ...
     trytond.modules.account.exceptions.PostError: ...
@@ -360,7 +360,7 @@ Testing the use of an invoice in multiple statements::
     >>> statement_line.related_to = customer_invoice4
     >>> statement2.save()
 
-    >>> statement1.click('validate_statement') # doctest: +IGNORE_EXCEPTION_DETAIL
+    >>> statement1.click('validate_statement')
     Traceback (most recent call last):
         ...
     StatementValidateWarning: ...
@@ -396,7 +396,7 @@ Testing balance validation::
     >>> line.amount = Decimal('60.00')
     >>> line.account = receivable
     >>> line.party = customer
-    >>> statement.click('validate_statement')  # doctest: +IGNORE_EXCEPTION_DETAIL
+    >>> statement.click('validate_statement')
     Traceback (most recent call last):
         ...
     StatementValidateError: ...
@@ -425,7 +425,7 @@ Testing amount validation::
     >>> line.amount = Decimal('50.00')
     >>> line.account = receivable
     >>> line.party = customer
-    >>> statement.click('validate_statement')  # doctest: +IGNORE_EXCEPTION_DETAIL
+    >>> statement.click('validate_statement')
     Traceback (most recent call last):
         ...
     StatementValidateError: ...
@@ -454,7 +454,7 @@ Test number of lines validation::
     >>> line.amount = Decimal('50.00')
     >>> line.account = receivable
     >>> line.party = customer
-    >>> statement.click('validate_statement')  # doctest: +IGNORE_EXCEPTION_DETAIL
+    >>> statement.click('validate_statement')
     Traceback (most recent call last):
         ...
     StatementValidateError: ...

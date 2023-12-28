@@ -99,7 +99,7 @@ Create a partial payment::
 
 Attempt to put sale back to draft::
 
-    >>> sale.click('draft')  # doctest: +IGNORE_EXCEPTION_DETAIL
+    >>> sale.click('draft')
     Traceback (most recent call last):
         ...
     AccessError: ...
@@ -108,7 +108,7 @@ Attempt to put sale back to draft::
 
 Attempt to cancel sale::
 
-    >>> sale.click('cancel')  # doctest: +IGNORE_EXCEPTION_DETAIL
+    >>> sale.click('cancel')
     Traceback (most recent call last):
         ...
     AccessError: ...
@@ -133,7 +133,7 @@ Attempt to add a second payment to draft sale::
     >>> payment.party = sale.party
     >>> payment.origin = sale
     >>> payment.amount = Decimal('30.00')
-    >>> payment.save()  # doctest: +IGNORE_EXCEPTION_DETAIL
+    >>> payment.save()
     Traceback (most recent call last):
         ...
     DomainValidationError: ...
@@ -152,7 +152,7 @@ Attempt to add a second payment to the cancelled sale::
     >>> payment.party = sale.party
     >>> payment.origin = sale
     >>> payment.amount = Decimal('30.00')
-    >>> payment.save()  # doctest: +IGNORE_EXCEPTION_DETAIL
+    >>> payment.save()
     Traceback (most recent call last):
         ...
     DomainValidationError: ...

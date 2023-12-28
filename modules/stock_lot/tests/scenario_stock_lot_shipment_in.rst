@@ -82,7 +82,7 @@ Change lot and try to finish::
     >>> incoming_move.lot == lot1
     True
     >>> incoming_move.lot = lot2
-    >>> shipment.click('done')  # doctest: +IGNORE_EXCEPTION_DETAIL
+    >>> shipment.click('done')
     Traceback (most recent call last):
         ...
     ShipmentCheckQuantityWarning: ...

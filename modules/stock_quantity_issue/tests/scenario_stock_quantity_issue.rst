@@ -129,7 +129,7 @@ Check quantity issues::
 Apply best planned date to first shipment::
 
     >>> issue1.click('process')
-    >>> issue1.click('solve')  #doctest: +IGNORE_EXCEPTION_DETAIL
+    >>> issue1.click('solve')
     Traceback (most recent call last):
         ...
     QuantityIssueError: ...

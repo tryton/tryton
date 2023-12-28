@@ -70,7 +70,7 @@ Create a statement with origins::
 
 Statement can not be posted until all origins are finished::
 
-    >>> statement.click('post')  # doctest: +IGNORE_EXCEPTION_DETAIL
+    >>> statement.click('post')
     Traceback (most recent call last):
         ...
     StatementPostError: ...

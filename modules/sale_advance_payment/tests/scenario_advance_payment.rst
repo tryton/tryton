@@ -248,7 +248,7 @@ Let's try to pack it::
     >>> shipment.click('wait')
     >>> shipment.click('assign_try')
     >>> shipment.click('pick')
-    >>> shipment.click('pack')  # doctest: +IGNORE_EXCEPTION_DETAIL
+    >>> shipment.click('pack')
     Traceback (most recent call last):
         ...
     ShippingBlocked: ...

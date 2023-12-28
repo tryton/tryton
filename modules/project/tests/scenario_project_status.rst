@@ -51,7 +51,7 @@ Try to complete project without task::
     >>> project.status = done
     >>> project.progress
     1.0
-    >>> project.save()  # doctest: +IGNORE_EXCEPTION_DETAIL
+    >>> project.save()
     Traceback (most recent call last):
         ...
     WorkProgressValidationError: ...
@@ -64,7 +64,7 @@ Try to re-open task without project::
 
     >>> task = Work(task.id)
     >>> task.progress = 0.5
-    >>> task.save()  # doctest: +IGNORE_EXCEPTION_DETAIL
+    >>> task.save()
     Traceback (most recent call last):
         ...
     WorkProgressValidationError: ...
@@ -72,7 +72,7 @@ Try to re-open task without project::
 Change progress with updating status::
 
     >>> project.progress = 0.8
-    >>> project.save()  # doctest: +IGNORE_EXCEPTION_DETAIL
+    >>> project.save()
     Traceback (most recent call last):
         ...
     WorkProgressValidationError: ...

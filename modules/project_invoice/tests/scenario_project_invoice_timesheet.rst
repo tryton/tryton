@@ -232,7 +232,7 @@ Try to change invoice line quantity::
     >>> TimesheetLine = Model.get('timesheet.line')
     >>> line = TimesheetLine(line.id)
     >>> line.invoice_line.quantity = 5
-    >>> line.invoice_line.save()  # doctest: +IGNORE_EXCEPTION_DETAIL
+    >>> line.invoice_line.save()
     Traceback (most recent call last):
         ...
     InvoiceLineValidationError: ...

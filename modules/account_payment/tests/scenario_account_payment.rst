@@ -195,7 +195,7 @@ Try to pay blocked line::
 
     >>> pay_line = Wizard('account.move.line.pay', [line])
     >>> pay_line.execute('next_')
-    >>> pay_line.execute('next_')  # doctest: +IGNORE_EXCEPTION_DETAIL
+    >>> pay_line.execute('next_')
     Traceback (most recent call last):
         ...
     BlockedWarning: ...

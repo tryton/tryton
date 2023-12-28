@@ -80,7 +80,7 @@ Try to post invoice on first period::
     >>> line.account = accounts['revenue']
     >>> invoice.save()
 
-    >>> invoice.click('post')  # doctest: +IGNORE_EXCEPTION_DETAIL
+    >>> invoice.click('post')
     Traceback (most recent call last):
         ...
     InvoiceNumberError: ...

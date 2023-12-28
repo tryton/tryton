@@ -145,7 +145,7 @@ Depreciate the asset::
 Trying to close the period to check error::
 
     >>> period = supplier_invoice.move.period
-    >>> period.click('close') # doctest: +IGNORE_EXCEPTION_DETAIL
+    >>> period.click('close')
     Traceback (most recent call last):
         ...
     AccessError: ...
@@ -180,7 +180,7 @@ Update the asset::
     >>> update.form.next_depreciation_date == (supplier_invoice.invoice_date
     ...     + relativedelta(months=4, days=-1))
     True
-    >>> update.execute('create_move')  # doctest: +IGNORE_EXCEPTION_DETAIL
+    >>> update.execute('create_move')
     Traceback (most recent call last):
         ...
     ValueError: ...

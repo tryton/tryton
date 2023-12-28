@@ -149,7 +149,7 @@ Cancelling the delegation move::
    ...   cancel.execute('cancel')
    ... except CancelDelegatedWarning as warning:
    ...   _, (key, *_) = warning.args
-   ...   raise  # doctest: +IGNORE_EXCEPTION_DETAIL
+   ...   raise
    Traceback (most recent call last):
       ...
    CancelDelegatedWarning: ...

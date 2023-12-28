@@ -61,7 +61,7 @@ Can not set quantity below minimal::
 
     >>> line, = sale.lines
     >>> line.quantity = 0.05
-    >>> sale.save()  # doctest: +IGNORE_EXCEPTION_DETAIL
+    >>> sale.save()
     Traceback (most recent call last):
         ...
     SaleValidationError: ...
@@ -70,7 +70,7 @@ Can not set quantity different than rounding::
 
     >>> line, = sale.lines
     >>> line.quantity = 1.01
-    >>> sale.save()  # doctest: +IGNORE_EXCEPTION_DETAIL
+    >>> sale.save()
     Traceback (most recent call last):
         ...
     SaleValidationError: ...
@@ -86,7 +86,7 @@ Can not set quantity below minimal::
 
     >>> line, = sale.lines
     >>> line.quantity = 50
-    >>> sale.save()  # doctest: +IGNORE_EXCEPTION_DETAIL
+    >>> sale.save()
     Traceback (most recent call last):
         ...
     SaleValidationError: ...
@@ -95,7 +95,7 @@ Can not set quantity different than rounding::
 
     >>> line, = sale.lines
     >>> line.quantity = 505
-    >>> sale.save()  # doctest: +IGNORE_EXCEPTION_DETAIL
+    >>> sale.save()
     Traceback (most recent call last):
         ...
     SaleValidationError: ...

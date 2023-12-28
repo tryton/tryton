@@ -76,7 +76,7 @@ You can't create attendances in closed periods::
     >>> attendance.employee = employee
     >>> attendance.at = now
     >>> attendance.type = 'in'
-    >>> attendance.save() # doctest: +IGNORE_EXCEPTION_DETAIL
+    >>> attendance.save()
     Traceback (most recent call last):
         ...
     PeriodClosedError: ...

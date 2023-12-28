@@ -202,7 +202,7 @@ Try to change invoice line quantity::
     >>> task = ProjectWork(task.id)
     >>> invoice_line = task.invoiced_progress[0].invoice_line
     >>> invoice_line.quantity = 2.
-    >>> invoice_line.save()  # doctest: +IGNORE_EXCEPTION_DETAIL
+    >>> invoice_line.save()
     Traceback (most recent call last):
         ...
     InvoiceLineValidationError: ...

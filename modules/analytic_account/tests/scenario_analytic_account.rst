@@ -220,7 +220,7 @@ Prevent changing root of account with entries::
     >>> root2 = AnalyticAccount(type='root', name="Root2")
     >>> root2.save()
     >>> analytic_account.root = root2
-    >>> analytic_account.save()  # doctest: +IGNORE_EXCEPTION_DETAIL
+    >>> analytic_account.save()
     Traceback (most recent call last):
         ...
     AccessError: ...
@@ -234,7 +234,7 @@ Prevent changing root of account with entries::
 Prevent changing type of analytic account with lines::
 
     >>> analytic_account.type = 'view'
-    >>> analytic_account.save()  # doctest: +IGNORE_EXCEPTION_DETAIL
+    >>> analytic_account.save()
     Traceback (most recent call last):
         ...
     AccountValidationError: ...

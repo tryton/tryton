@@ -69,7 +69,7 @@ Count inventory::
 
     >>> count.form.search = product
 
-    >>> count.execute('quantity')  # doctest: +IGNORE_EXCEPTION_DETAIL
+    >>> count.execute('quantity')
     Traceback (most recent call last):
         ...
     InventoryCountWarning: ...

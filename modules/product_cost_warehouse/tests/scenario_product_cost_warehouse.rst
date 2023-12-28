@@ -143,7 +143,7 @@ Forbid direct move between warehouses::
     >>> move.unit_price = product.cost_price
     >>> move.currency = company.currency
     >>> move.save()
-    >>> move.click('do')  # doctest: +IGNORE_EXCEPTION_DETAIL
+    >>> move.click('do')
     Traceback (most recent call last):
         ...
     MoveValidationError: ...

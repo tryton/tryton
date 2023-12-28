@@ -164,7 +164,7 @@ Try sale without incoterm::
     >>> line.product = product
     >>> line.quantity = 1
     >>> sale.incoterm = None
-    >>> sale.click('quote')  # doctest: +IGNORE_EXCEPTION_DETAIL
+    >>> sale.click('quote')
     Traceback (most recent call last):
         ...
     SaleQuotationError: ...
@@ -173,7 +173,7 @@ Try sale with incoterm::
 
     >>> sale.incoterm, = Incoterm.find([
     ...         ('code', '=', 'CIF'), ('version', '=', '2020')])
-    >>> sale.click('quote')  # doctest: +IGNORE_EXCEPTION_DETAIL
+    >>> sale.click('quote')
     Traceback (most recent call last):
         ...
     RequiredValidationError: ...

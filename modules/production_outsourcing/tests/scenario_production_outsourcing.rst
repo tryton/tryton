@@ -151,7 +151,7 @@ Try to do the production with pending purchase::
     >>> production.click('wait')
     >>> production.click('assign_force')
     >>> production.click('run')
-    >>> production.click('done')  # doctest: +IGNORE_EXCEPTION_DETAIL
+    >>> production.click('done')
     Traceback (most recent call last):
         ...
     PurchaseWarning: ...

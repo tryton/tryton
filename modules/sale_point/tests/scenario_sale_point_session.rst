@@ -169,7 +169,7 @@ Check the new session::
 
 Try to close::
 
-    >>> session.click('close')  # doctest: +IGNORE_EXCEPTION_DETAIL
+    >>> session.click('close')
     Traceback (most recent call last):
         ...
     SessionValidationError: ...

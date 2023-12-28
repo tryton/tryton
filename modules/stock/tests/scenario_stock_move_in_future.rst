@@ -58,7 +58,7 @@ A warning is raised when doing a move in the future::
     >>> move.quantity = 2
     >>> move.unit_price = Decimal('1')
     >>> move.save()
-    >>> move.click('do')  # doctest: +IGNORE_EXCEPTION_DETAIL
+    >>> move.click('do')
     Traceback (most recent call last):
         ...
     MoveFutureWarning: ...

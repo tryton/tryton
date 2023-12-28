@@ -134,7 +134,7 @@ Create purchase requisition without product and description::
     >>> requisition_line.description = None
     >>> requisition_line.supplier = supplier
     >>> requisition_line.unit_price = Decimal('10')
-    >>> requisition.click('wait')  # doctest: +IGNORE_EXCEPTION_DETAIL
+    >>> requisition.click('wait')
     Traceback (most recent call last):
         ...
     RequiredValidationError: ...
@@ -142,7 +142,7 @@ Create purchase requisition without product and description::
 Create purchase requisition without product and quantity::
 
     >>> requisition_line.description = 'Description'
-    >>> requisition.click('wait')  # doctest: +IGNORE_EXCEPTION_DETAIL
+    >>> requisition.click('wait')
     Traceback (most recent call last):
         ...
     RequiredValidationError: ...
@@ -153,7 +153,7 @@ Create purchase requisition with product goods and without warehouse::
     >>> requisition_line.product = product
     >>> requisition_line.description = 'Requisition Test'
     >>> requisition_line.quantity = 2.0
-    >>> requisition.click('wait')  # doctest: +IGNORE_EXCEPTION_DETAIL
+    >>> requisition.click('wait')
     Traceback (most recent call last):
         ...
     RequiredValidationError: ...
@@ -171,7 +171,7 @@ Approve workflow by requisition user raise an exception because he's not in
 approval_group::
 
     >>> set_user(requisition_user)
-    >>> requisition.click('approve')  # doctest: +IGNORE_EXCEPTION_DETAIL
+    >>> requisition.click('approve')
     Traceback (most recent call last):
         ...
     AccessButtonError: ...
@@ -180,7 +180,7 @@ Approve workflow by purchaser raise an exception because he's not in
 approval_group::
 
     >>> set_user(purchase_user)
-    >>> requisition.click('approve')  # doctest: +IGNORE_EXCEPTION_DETAIL
+    >>> requisition.click('approve')
     Traceback (most recent call last):
         ...
     AccessButtonError: ...
@@ -271,7 +271,7 @@ Confirm the purchase order::
 Try to delete requisition done::
 
     >>> set_user(requisition_user)
-    >>> PurchaseRequisition.delete([requisition])  # doctest: +IGNORE_EXCEPTION_DETAIL
+    >>> PurchaseRequisition.delete([requisition])
     Traceback (most recent call last):
         ...
     AccessError: ...

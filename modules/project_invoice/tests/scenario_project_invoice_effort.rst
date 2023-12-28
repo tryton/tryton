@@ -199,7 +199,7 @@ Try to change invoice line quantity::
     >>> ProjectWork = Model.get('project.work')
     >>> task = ProjectWork(task.id)
     >>> task.invoice_line.quantity = 1
-    >>> task.invoice_line.save()  # doctest: +IGNORE_EXCEPTION_DETAIL
+    >>> task.invoice_line.save()
     Traceback (most recent call last):
         ...
     InvoiceLineValidationError: ...

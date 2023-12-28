@@ -66,7 +66,7 @@ Assign pallet from wrong location::
     >>> shipment.to_location = storage2
     >>> shipment.locations.append(Location(pallet.id))
     >>> shipment.click('wait')
-    >>> shipment.click('assign_try')  # doctest: +IGNORE_EXCEPTION_DETAIL
+    >>> shipment.click('assign_try')
     Traceback (most recent call last):
         ...
     DomainValidationError: ...
@@ -88,7 +88,7 @@ Concurrently move pallet::
     >>> shipment1.click('assign_try')
     >>> shipment1.state
     'assigned'
-    >>> shipment2.click('assign_try')  # doctest: +IGNORE_EXCEPTION_DETAIL
+    >>> shipment2.click('assign_try')
     Traceback (most recent call last):
         ...
     AssignError: ...
