@@ -221,7 +221,7 @@ Create the packs and ship the shipment::
     'application/pdf'
     >>> pack.shipping_reference is not None
     True
-    >>> pack.shipping_tracking_url.startswith('https://tracking.dpd.de/status/')
-    True
+    >>> pack.shipping_tracking_url
+    'https://tracking.dpd.de/status/...'
     >>> pack.shipping_tracking_url.endswith(pack.shipping_reference)
     True

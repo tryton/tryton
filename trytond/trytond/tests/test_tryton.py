@@ -1126,7 +1126,7 @@ def load_doc_tests(name, path, loader, tests, pattern):
                         tearDown=doctest_teardown, encoding='utf-8',
                         checker=doctest_checker,
                         optionflags=doctest.REPORT_ONLY_FIRST_FAILURE
-                        | doctest.IGNORE_EXCEPTION_DETAIL))
+                        | doctest.ELLIPSIS | doctest.IGNORE_EXCEPTION_DETAIL))
     finally:
         os.chdir(cwd)
     return tests

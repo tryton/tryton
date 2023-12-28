@@ -137,7 +137,7 @@ Generate VAT Book::
     >>> with file_open('account_es/tests/vat_book.csv', 'rb') as f:
     ...     content == f.read()
     True
-    >>> name.startswith('VAT Book')
-    True
+    >>> name
+    'VAT Book-...'
     >>> extension
     'csv'

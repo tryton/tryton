@@ -219,8 +219,8 @@ Make payment with customer::
     >>> payment.save()
     >>> _, source = Payment.get_stripe_customer_sources(payment.id, config.context)
     >>> source_id, source_name = source
-    >>> source_name == 'Visa ****1881 12/%s' % (today.year + 1)
-    True
+    >>> source_name
+    'Visa ****1881 12/...'
     >>> payment.stripe_customer_source = source_id
     >>> payment.click('submit')
     >>> payment.state

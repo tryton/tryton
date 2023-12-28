@@ -133,5 +133,5 @@ Generate aeat 303 report::
     >>> with file_open('account_es/tests/303_compensate.txt') as f:
     ...     content == f.read()
     True
-    >>> name.startswith('AEAT Model 303')
-    True
+    >>> name
+    'AEAT Model 303-2018-02'

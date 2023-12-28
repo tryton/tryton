@@ -170,8 +170,8 @@ Generate aeat reports::
     >>> with file_open('account_es/tests/111.txt') as f:
     ...     content == f.read()
     True
-    >>> name.startswith('AEAT Model 111')
-    True
+    >>> name
+    'AEAT Model 111-2018-01'
 
     >>> aeat = Wizard('account.reporting.aeat')
     >>> aeat.form.report = '115'
@@ -184,8 +184,8 @@ Generate aeat reports::
     >>> with file_open('account_es/tests/115.txt') as f:
     ...     content == f.read()
     True
-    >>> name.startswith('AEAT Model 115')
-    True
+    >>> name
+    'AEAT Model 115-2018-01'
 
     >>> aeat = Wizard('account.reporting.aeat')
     >>> aeat.form.report = '303'
@@ -197,8 +197,8 @@ Generate aeat reports::
     >>> with file_open('account_es/tests/303.txt') as f:
     ...     content == f.read()
     True
-    >>> name.startswith('AEAT Model 303')
-    True
+    >>> name
+    'AEAT Model 303-2018-01'
 
     >>> VatList = Model.get('account.reporting.vat_list_es')
     >>> context = {
@@ -214,8 +214,8 @@ Generate aeat reports::
     >>> with file_open('account_es/tests/347.txt') as f:
     ...     content == f.read()
     True
-    >>> name.startswith('AEAT Model 347')
-    True
+    >>> name
+    'AEAT Model 347-...'
 
     >>> ECOperationList = Model.get('account.reporting.es_ec_operation_list')
     >>> context = {
@@ -232,8 +232,8 @@ Generate aeat reports::
     >>> with file_open('account_es/tests/349.txt') as f:
     ...     content == f.read()
     True
-    >>> name.startswith('AEAT Model 349')
-    True
+    >>> name
+    'AEAT Model 349-...'
 
 
 Only one tax of intracomunitary invoices is included on VAT Book::

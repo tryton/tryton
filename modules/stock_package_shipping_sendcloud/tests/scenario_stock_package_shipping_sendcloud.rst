@@ -223,8 +223,8 @@ Create the packages and ship the shipment::
     'application/pdf'
     >>> pack.shipping_reference is not None
     True
-    >>> pack.shipping_tracking_url.startswith('http')
-    True
+    >>> pack.shipping_tracking_url
+    'http...'
 
 Clean up::
 
