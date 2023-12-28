@@ -40,7 +40,7 @@ class Line(metaclass=PoolMeta):
         if self.sale.invoice_method == 'shipment':
             for move in self.moves_ignored:
                 quantity -= UoM.compute_qty(
-                    move.uom, move.quantity, self.unit, round=False)
+                    move.unit, move.quantity, self.unit, round=False)
         for invoice_line in self.invoice_lines:
             if invoice_line.invoice in self.sale.invoices_ignored:
                 quantity -= UoM.compute_qty(
