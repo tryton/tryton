@@ -11,7 +11,7 @@ from dateutil.relativedelta import relativedelta
 from sql import Column, Literal, Null, Union, With
 from sql.aggregate import Count, Max, Min, Sum
 from sql.conditionals import Coalesce
-from sql.functions import Ceil, CurrentTimestamp, DateTrunc, Log, Power
+from sql.functions import Ceil, CurrentTimestamp, DateTrunc, Log, Power, Round
 from sql.operators import Concat
 
 from trytond.i18n import lazy_gettext
@@ -38,10 +38,8 @@ class Abstract(ModelSQL):
         'get_trend')
     time_series = None
 
-    currency = fields.Function(fields.Many2One(
-            'currency.currency',
-            lazy_gettext("sale.msg_sale_reporting_currency")),
-        'get_currency')
+    currency = fields.Many2One(
+        'currency.currency', lazy_gettext("sale.msg_sale_reporting_currency"))
 
     @classmethod
     def table_query(cls):
@@ -101,6 +99,7 @@ class Abstract(ModelSQL):
         tables['line'] = line = Union(*(
                 l(len(lines), i, company) for i, l in enumerate(lines)))
         tables['line.company'] = company = Company.__table__()
+        tables['line.company.currency'] = currency = Currency.__table__()
         withs = {}
         currency_sale = With(query=Currency.currency_rate_sql())
         withs['currency_sale'] = currency_sale
@@ -115,6 +114,7 @@ class Abstract(ModelSQL):
                     | (currency_sale.end_date > line.date))
                 )
             .join(company, condition=line.company == company.id)
+            .join(currency, condition=company.currency == currency.id)
             .join(currency_company,
                 condition=(company.currency == currency_company.currency)
                 & (currency_company.start_date <= line.date)
@@ -126,12 +126,14 @@ class Abstract(ModelSQL):
     @classmethod
     def _columns(cls, tables, withs):
         line = tables['line']
+        currency = tables['line.company.currency']
         currency_company = withs['currency_company']
         currency_sale = withs['currency_sale']
 
-        revenue = cls.revenue.sql_cast(
-            Sum(line.quantity * line.unit_price
-                * currency_company.rate / currency_sale.rate))
+        revenue = Round(cls.revenue.sql_cast(
+                Sum(line.quantity * line.unit_price
+                    * currency_company.rate / currency_sale.rate)),
+            currency.digits)
         return [
             cls._column_id(tables, withs).as_('id'),
             Literal(0).as_('create_uid'),
@@ -141,6 +143,7 @@ class Abstract(ModelSQL):
             line.company.as_('company'),
             revenue.as_('revenue'),
             Count(line.order, distinct=True).as_('number'),
+            line.currency.as_('currency'),
             ]
 
     @classmethod
@@ -151,7 +154,8 @@ class Abstract(ModelSQL):
     @classmethod
     def _group_by(cls, tables, withs):
         line = tables['line']
-        return [line.company]
+        currency = tables['line.company.currency']
+        return [line.company, line.currency, currency.digits]
 
     @classmethod
     def _where(cls, tables, withs):
@@ -207,9 +211,6 @@ class Abstract(ModelSQL):
             chart.add('', [getattr(ts, name) if ts else 0
                     for ts in self.time_series_all])
             return chart.render_sparktext()
-
-    def get_currency(self, name):
-        return self.company.currency.id
 
 
 class AbstractTimeseries(Abstract):
