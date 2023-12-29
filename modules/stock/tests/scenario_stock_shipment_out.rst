@@ -176,10 +176,8 @@ Ignore non assigned moves and pack shipment::
     >>> shipment_out.packed_by == employee
     True
     >>> shipment_out.done_by
-    >>> all(m.state == 'assigned' for m in shipment_out.outgoing_moves)
-    True
-    >>> len(shipment_out.outgoing_moves)
-    1
+    >>> [m.state for m in shipment_out.outgoing_moves]
+    ['assigned']
     >>> len(shipment_out.inventory_moves)
     1
     >>> shipment_out.inventory_moves[0].state
@@ -196,8 +194,8 @@ Set the state as Done::
     >>> shipment_out.click('done')
     >>> shipment_out.done_by == employee
     True
-    >>> all(m.state == 'done' for m in shipment_out.outgoing_moves)
-    True
+    >>> [m.state for m in shipment_out.outgoing_moves]
+    ['done']
     >>> planned_dates = [m.planned_date for m in
     ...     shipment_out.outgoing_moves]
     >>> planned_dates == [today]

@@ -123,8 +123,8 @@ Receive remaining line::
     ...         ('reconciliation', '=', None),
     ...         ])
     >>> reconcile_lines = Wizard('account.move.reconcile_lines', lines)
-    >>> reconcile_lines.state == 'end'
-    True
+    >>> reconcile_lines.state
+    'end'
 
     >>> invoice.reload()
     >>> invoice.state

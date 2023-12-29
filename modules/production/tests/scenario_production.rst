@@ -131,11 +131,11 @@ Make a production::
     >>> production.quantity = 2
     >>> production.planned_start_date == yesterday
     True
-    >>> sorted([i.quantity for i in production.inputs]) == [10, 300]
-    True
+    >>> sorted([i.quantity for i in production.inputs])
+    [10.0, 300.0]
     >>> output, = production.outputs
-    >>> output.quantity == 2
-    True
+    >>> output.quantity
+    2.0
     >>> production.save()
     >>> production.cost
     Decimal('25.0000')
@@ -152,24 +152,24 @@ Test reset bom button::
     ...     change=[
     ...         'bom', 'product', 'unit', 'quantity',
     ...         'inputs', 'outputs', 'company', 'warehouse', 'location'])
-    >>> sorted([i.quantity for i in production.inputs]) == [10, 300]
-    True
+    >>> sorted([i.quantity for i in production.inputs])
+    [10.0, 300.0]
     >>> output, = production.outputs
-    >>> output.quantity == 2
-    True
+    >>> output.quantity
+    2.0
 
 Do the production::
 
     >>> production.click('assign_try')
     >>> production.state
     'assigned'
-    >>> all(i.state == 'assigned' for i in production.inputs)
-    True
+    >>> {i.state for i in production.inputs}
+    {'assigned'}
     >>> production.click('run')
-    >>> all(i.state == 'done' for i in production.inputs)
-    True
-    >>> len(set(i.effective_date == today for i in production.inputs))
-    1
+    >>> {i.state for i in production.inputs}
+    {'done'}
+    >>> {i.effective_date == today for i in production.inputs}
+    {True}
     >>> production.click('done')
     >>> output, = production.outputs
     >>> output.state
@@ -179,8 +179,8 @@ Do the production::
     >>> output.unit_price
     Decimal('12.5000')
     >>> with config.set_context(locations=[storage.id]):
-    ...     Product(product.id).quantity == 2
-    True
+    ...     Product(product.id).quantity
+    2.0
 
 Make a production with effective date yesterday and running the day before::
 
@@ -195,8 +195,8 @@ Make a production with effective date yesterday and running the day before::
     >>> production.click('assign_try')
     >>> production.click('run')
     >>> production.reload()
-    >>> all(i.effective_date == before_yesterday for i in production.inputs)
-    True
+    >>> {i.effective_date == before_yesterday for i in production.inputs}
+    {True}
     >>> production.click('done')
     >>> production.reload()
     >>> output, = production.outputs

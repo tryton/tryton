@@ -108,8 +108,8 @@ Reconcile lines::
     >>> Line = Model.get('account.move.line')
     >>> lines = Line.find([('account', '=', receivable.id)])
     >>> reconcile_lines = Wizard('account.move.reconcile_lines', lines)
-    >>> reconcile_lines.state == 'end'
-    True
+    >>> reconcile_lines.state
+    'end'
 
 Can close the period::
 

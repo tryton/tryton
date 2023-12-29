@@ -132,8 +132,8 @@ Pay 1 term of the invoice::
     >>> reconcile_lines = Wizard('account.move.reconcile_lines',
     ...     [payment_line, term1],
     ...     context={'payment_date': period.start_date})
-    >>> reconcile_lines.state == 'end'
-    True
+    >>> reconcile_lines.state
+    'end'
 
 Check tax codes::
 

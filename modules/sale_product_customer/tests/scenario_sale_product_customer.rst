@@ -69,5 +69,5 @@ Count product linked to customer::
     >>> ProductCustomer = Model.get('sale.product_customer')
     >>> products = ProductCustomer.find(
     ...     [('party', '=', customer.id)])
-    >>> len(products) == 2
-    True
+    >>> len(products)
+    2

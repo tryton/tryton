@@ -149,8 +149,8 @@ With reconciliation::
     >>> reconcile2, = [l for l in move.lines if l.account == receivable]
     >>> reconcile_lines = Wizard('account.move.reconcile_lines',
     ...     [reconcile1, reconcile2])
-    >>> reconcile_lines.state == 'end'
-    True
+    >>> reconcile_lines.state
+    'end'
     >>> reconcile_date = reconcile1.reconciliation.create_date
 
 Balance non-deferral::

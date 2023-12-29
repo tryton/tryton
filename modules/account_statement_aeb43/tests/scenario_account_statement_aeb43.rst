@@ -93,8 +93,8 @@ Check Statement::
     >>> statement.number_of_lines
     1
     >>> origin, = statement.origins
-    >>> origin.date == datetime.date(2018, 3, 19)
-    True
+    >>> origin.date
+    datetime.date(2018, 3, 19)
     >>> origin.amount
     Decimal('-10.98')
     >>> origin.description

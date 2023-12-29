@@ -70,14 +70,10 @@ Receive the shipment::
     >>> shipment.click('receive')
     >>> shipment.state
     'received'
-    >>> len(shipment.incoming_moves)
-    1
-    >>> all(m.state == 'done' for m in shipment.incoming_moves)
-    True
-    >>> len(shipment.inventory_moves)
-    1
-    >>> all(m.state == 'draft' for m in shipment.inventory_moves)
-    True
+    >>> [m.state for m in shipment.incoming_moves]
+    ['done']
+    >>> [m.state for m in shipment.inventory_moves]
+    ['draft']
 
     >>> restocking_list = Report('stock.shipment.in.restocking_list')
     >>> _ = restocking_list.execute([shipment])
@@ -118,7 +114,5 @@ Finish the shipment::
     'done'
     >>> len(shipment.incoming_moves)
     1
-    >>> len(shipment.inventory_moves)
-    1
-    >>> all(m.state == 'done' for m in shipment.inventory_moves)
-    True
+    >>> [m.state for m in shipment.inventory_moves]
+    ['done']

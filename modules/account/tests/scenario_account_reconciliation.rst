@@ -85,8 +85,8 @@ Reconcile Lines without writeoff::
 
     >>> reconcile_lines = Wizard('account.move.reconcile_lines',
     ...     [reconcile1, reconcile2])
-    >>> reconcile_lines.state == 'end'
-    True
+    >>> reconcile_lines.state
+    'end'
     >>> reconcile1.reload()
     >>> reconcile2.reload()
     >>> reconcile1.reconciliation == reconcile2.reconciliation != None
@@ -98,8 +98,8 @@ Unreconcile lines::
 
     >>> unreconcile_lines = Wizard(
     ...     'account.move.unreconcile_lines', [reconcile1])
-    >>> unreconcile_lines.state == 'end'
-    True
+    >>> unreconcile_lines.state
+    'end'
     >>> reconcile1.reload()
     >>> reconcile1.reconciliation
     >>> reconcile2.reload()
@@ -111,8 +111,8 @@ Reconcile general ledger lines::
     >>> gl_reconcile2 = GLLine(reconcile2.id)
     >>> reconcile_lines = Wizard('account.move.reconcile_lines',
     ...     [gl_reconcile1, gl_reconcile2])
-    >>> reconcile_lines.state == 'end'
-    True
+    >>> reconcile_lines.state
+    'end'
     >>> gl_reconcile1.reload()
     >>> gl_reconcile2.reload()
     >>> gl_reconcile1.reconciliation == gl_reconcile2.reconciliation != None
@@ -122,8 +122,8 @@ Unreconcile general ledger, lines::
 
     >>> unreconcile_lines = Wizard(
     ...     'account.move.unreconcile_lines', [gl_reconcile1])
-    >>> unreconcile_lines.state == 'end'
-    True
+    >>> unreconcile_lines.state
+    'end'
     >>> gl_reconcile1.reload()
     >>> gl_reconcile1.reconciliation
     >>> gl_reconcile2.reload()
@@ -178,8 +178,8 @@ Reconcile Lines with write-off::
 
     >>> reconcile_lines = Wizard('account.move.reconcile_lines',
     ...     [reconcile1, reconcile2])
-    >>> reconcile_lines.form_state == 'writeoff'
-    True
+    >>> reconcile_lines.form_state
+    'writeoff'
     >>> reconcile_lines.form.writeoff = writeoff_method
     >>> reconcile_lines.execute('reconcile')
     >>> reconcile1.reload()

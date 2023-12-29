@@ -355,7 +355,7 @@ class Sale(metaclass=PoolMeta):
             sequence=sequence,
             type='line',
             product=product,
-            quantity=1,  # XXX
+            quantity=1.,  # XXX
             unit=product.sale_uom,
             shipment_cost=shipment_cost,
             )

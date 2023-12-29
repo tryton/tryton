@@ -67,10 +67,10 @@ Check attendance time sheet::
 
     >>> Sheet = Model.get('attendance.sheet')
     >>> sheet, = Sheet.find([('date', '=', dt.date(2020, 4, 1))])
-    >>> sheet.duration == dt.timedelta(hours=8)
-    True
-    >>> sheet.timesheet_duration == dt.timedelta(hours=7)
-    True
+    >>> sheet.duration
+    datetime.timedelta(seconds=28800)
+    >>> sheet.timesheet_duration
+    datetime.timedelta(seconds=25200)
 
     >>> if backend.name != 'sqlite':
     ...     sheet, = Sheet.find([('date', '=', dt.date(2020, 4, 2))])
