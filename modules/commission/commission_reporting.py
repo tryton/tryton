@@ -10,7 +10,7 @@ except ImportError:
 from sql import Literal, Null
 from sql.aggregate import Count, Min, Sum
 from sql.conditionals import Coalesce
-from sql.functions import CurrentTimestamp, DateTrunc
+from sql.functions import CurrentTimestamp, DateTrunc, Round
 
 from trytond.model import ModelSQL, ModelView, fields
 from trytond.modules.currency.fields import Monetary
@@ -37,8 +37,7 @@ class Agent(ModelView, ModelSQL):
     time_series = fields.One2Many(
         'commission.reporting.agent.time_series', 'agent', "Time Series")
 
-    currency = fields.Function(fields.Many2One(
-            'currency.currency', "Currency"), 'get_currency')
+    currency = fields.Many2One('currency.currency', "Currency")
 
     @classmethod
     def table_query(cls):
@@ -54,19 +53,24 @@ class Agent(ModelView, ModelSQL):
         pool = Pool()
         Commission = pool.get('commission')
         Agent = pool.get('commission.agent')
+        Currency = pool.get('currency.currency')
 
         tables = {}
         tables['commission'] = commission = Commission.__table__()
         tables['commission.agent'] = agent = Agent.__table__()
+        tables['commission.agent.currency'] = currency = Currency.__table__()
         withs = {}
 
         from_item = (commission
-            .join(agent, condition=commission.agent == agent.id))
+            .join(agent, condition=commission.agent == agent.id)
+            .join(currency, condition=agent.currency == currency.id))
         return from_item, tables, withs
 
     @classmethod
     def _columns(cls, tables, withs):
         commission = tables['commission']
+        agent = tables['commission.agent']
+        currency = tables['commission.agent.currency']
         return [
             cls._column_id(tables, withs).as_('id'),
             Literal(0).as_('create_uid'),
@@ -74,9 +78,12 @@ class Agent(ModelView, ModelSQL):
             cls.write_uid.sql_cast(Literal(Null)).as_('write_uid'),
             cls.write_date.sql_cast(Literal(Null)).as_('write_date'),
             commission.agent.as_('agent'),
+            agent.currency.as_('currency'),
             Count(commission.id, distinct=True).as_('number'),
-            Sum(Coalesce(commission.base_amount, 0)).as_('base_amount'),
-            Sum(commission.amount).as_('amount'),
+            Round(
+                Sum(Coalesce(commission.base_amount, 0)),
+                currency.digits).as_('base_amount'),
+            Round(Sum(commission.amount), currency.digits).as_('amount'),
             ]
 
     @classmethod
@@ -87,7 +94,9 @@ class Agent(ModelView, ModelSQL):
     @classmethod
     def _group_by(cls, tables, withs):
         commission = tables['commission']
-        return [commission.agent]
+        agent = tables['commission.agent']
+        currency = tables['commission.agent.currency']
+        return [commission.agent, agent.currency, currency.digits]
 
     @classmethod
     def _where(cls, tables, withs):
@@ -140,9 +149,6 @@ class Agent(ModelView, ModelSQL):
                     getattr(ts, name, 0) or 0
                     for ts in self.time_series_all])
             return chart.render_sparktext()
-
-    def get_currency(self, name):
-        return self.agent.currency.id
 
     def get_rec_name(self, name):
         return self.agent.rec_name
