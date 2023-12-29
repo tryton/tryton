@@ -816,7 +816,7 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin, InvoiceReportMixin):
         Currency = pool.get('currency.currency')
         Date = pool.get('ir.date')
 
-        res = dict((x.id, Decimal(0)) for x in invoices)
+        amounts = defaultdict(Decimal)
         for company, grouped_invoices in groupby(
                 invoices, key=lambda i: i.company):
             with Transaction().set_context(company=company.id):
@@ -846,14 +846,14 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin, InvoiceReportMixin):
                         amount_currency += line.amount_second_currency
                     else:
                         amount += line.debit - line.credit
-                if amount != Decimal(0):
+                if amount:
                     with Transaction().set_context(date=invoice.currency_date):
                         amount_currency += Currency.compute(
                             invoice.company.currency, amount, invoice.currency)
                 if invoice.type == 'in' and amount_currency:
                     amount_currency *= -1
-                res[invoice.id] = amount_currency
-        return res
+                amounts[invoice.id] = amount_currency
+        return amounts
 
     @classmethod
     def search_total_amount(cls, name, clause):
