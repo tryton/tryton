@@ -7,7 +7,7 @@ Imports::
     >>> import datetime as dt
     >>> from decimal import Decimal
     >>> from proteus import Model, Wizard
-    >>> from trytond.tests.tools import activate_modules
+    >>> from trytond.tests.tools import activate_modules, assertEqual
     >>> from trytond.modules.currency.tests.tools import get_currency
     >>> from trytond.modules.company.tests.tools import create_company, \
     ...     get_company
@@ -112,8 +112,7 @@ Succeed payment::
     >>> succeed.execute('succeed')
     >>> payment.state
     'succeeded'
-    >>> payment.clearing_move.date == first
-    True
+    >>> assertEqual(payment.clearing_move.date, first)
     >>> payment.clearing_move.state
     'draft'
     >>> bool(payment.clearing_reconciled)
@@ -252,10 +251,8 @@ Create a line for the payment::
     >>> line = statement.lines.new(date=today)
     >>> line.amount = Decimal('-50.00')
     >>> line.related_to = payment
-    >>> line.party == supplier
-    True
-    >>> line.account == bank_clearing
-    True
+    >>> assertEqual(line.party, supplier)
+    >>> assertEqual(line.account, bank_clearing)
 
 Remove the party must remove payment::
 
@@ -309,8 +306,7 @@ Create a statement that reimburse the payment group::
     ...     )
     >>> line = statement.lines.new(date=today)
     >>> line.related_to = payment.group
-    >>> line.account == bank_clearing
-    True
+    >>> assertEqual(line.account, bank_clearing)
     >>> line.amount = Decimal('50.00')
 
     >>> statement.click('validate_statement')
@@ -453,10 +449,8 @@ Create statement for the payment::
     >>> line = statement.lines.new(date=yesterday)
     >>> line.amount = Decimal('-50.00')
     >>> line.related_to = payment
-    >>> line.party == supplier
-    True
-    >>> line.account == bank_clearing
-    True
+    >>> assertEqual(line.party, supplier)
+    >>> assertEqual(line.account, bank_clearing)
     >>> statement.save()
 
 Validate statement and check the payment is confirmed::
@@ -477,5 +471,4 @@ Validate statement and check the payment is confirmed::
     >>> debit_line, = [l for l in payment.clearing_move.lines if l.debit > 0]
     >>> debit_line.debit
     Decimal('50.00')
-    >>> debit_line.date == yesterday
-    True
+    >>> assertEqual(debit_line.date, yesterday)

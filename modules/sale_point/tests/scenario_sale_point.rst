@@ -7,7 +7,7 @@ Imports::
     >>> from decimal import Decimal
 
     >>> from proteus import Model, Wizard
-    >>> from trytond.tests.tools import activate_modules
+    >>> from trytond.tests.tools import activate_modules, assertEqual
     >>> from trytond.modules.company.tests.tools import (
     ...     create_company, get_company)
     >>> from trytond.modules.account.tests.tools import (
@@ -162,8 +162,7 @@ Overpay by terminal::
     >>> payment.form.amount = Decimal('6100.00')
     >>> payment.execute('pay')
 
-    >>> payment.form.method == cash_method
-    True
+    >>> assertEqual(payment.form.method, cash_method)
     >>> payment.form.amount
     Decimal('-64.00')
     >>> payment.execute('pay')
@@ -182,14 +181,11 @@ Check stock move::
     >>> move, = StockMove.find([
     ...     ('origin.sale', '=', sale.id, 'sale.point.sale.line')
     ...     ])
-    >>> move.product == goods
-    True
+    >>> assertEqual(move.product, goods)
     >>> move.quantity
     500.0
-    >>> move.from_location == storage_loc
-    True
-    >>> move.to_location == customer_loc
-    True
+    >>> assertEqual(move.from_location, storage_loc)
+    >>> assertEqual(move.to_location, customer_loc)
     >>> move.state
     'done'
 

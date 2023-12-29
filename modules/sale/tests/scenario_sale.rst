@@ -7,7 +7,7 @@ Imports::
     >>> from decimal import Decimal
     >>> from operator import attrgetter
     >>> from proteus import Model, Wizard, Report
-    >>> from trytond.tests.tools import activate_modules, set_user
+    >>> from trytond.tests.tools import activate_modules, set_user, assertEqual
     >>> from trytond.modules.company.tests.tools import create_company, \
     ...     get_company
     >>> from trytond.modules.account.tests.tools import create_fiscalyear, \
@@ -160,13 +160,11 @@ Sale 5 products::
     >>> sale.click('quote')
     >>> sale.untaxed_amount, sale.tax_amount, sale.total_amount
     (Decimal('50.00'), Decimal('5.00'), Decimal('55.00'))
-    >>> sale.quoted_by == employee
-    True
+    >>> assertEqual(sale.quoted_by, employee)
     >>> sale.click('confirm')
     >>> sale.untaxed_amount, sale.tax_amount, sale.total_amount
     (Decimal('50.00'), Decimal('5.00'), Decimal('55.00'))
-    >>> sale.confirmed_by == employee
-    True
+    >>> assertEqual(sale.confirmed_by, employee)
     >>> sale.state
     'processing'
     >>> sale.shipment_state
@@ -176,11 +174,9 @@ Sale 5 products::
     >>> len(sale.shipments), len(sale.shipment_returns), len(sale.invoices)
     (1, 0, 1)
     >>> invoice, = sale.invoices
-    >>> invoice.origins == sale.rec_name
-    True
+    >>> assertEqual(invoice.origins, sale.rec_name)
     >>> shipment, = sale.shipments
-    >>> shipment.origins == sale.rec_name
-    True
+    >>> assertEqual(shipment.origins, sale.rec_name)
 
 Invoice line must be linked to stock move::
 
@@ -188,19 +184,15 @@ Invoice line must be linked to stock move::
     ...     invoice.lines, key=lambda l: l.quantity or 0)
     >>> stock_move1, stock_move2 = sorted(shipment.outgoing_moves,
     ...     key=lambda m: m.quantity or 0)
-    >>> invoice_line1.stock_moves == [stock_move1]
-    True
-    >>> stock_move1.invoice_lines == [invoice_line1]
-    True
-    >>> invoice_line2.stock_moves == [stock_move2]
-    True
-    >>> stock_move2.invoice_lines == [invoice_line2]
-    True
+    >>> assertEqual(invoice_line1.stock_moves, [stock_move1])
+    >>> assertEqual(stock_move1.invoice_lines, [invoice_line1])
+    >>> assertEqual(invoice_line2.stock_moves, [stock_move2])
+    >>> assertEqual(stock_move2.invoice_lines, [invoice_line2])
 
 Check actual quantity::
 
-    >>> all(l.quantity == l.actual_quantity for l in sale.lines)
-    True
+    >>> for line in sale.lines:
+    ...     assertEqual(line.quantity, line.actual_quantity)
 
 Post invoice and check no new invoices::
 
@@ -288,10 +280,8 @@ Open customer invoice::
 
 Invoice lines must be linked to each stock moves::
 
-    >>> invoice_line1.stock_moves == [stock_move1]
-    True
-    >>> invoice_line2.stock_moves == [stock_move2]
-    True
+    >>> assertEqual(invoice_line1.stock_moves, [stock_move1])
+    >>> assertEqual(invoice_line2.stock_moves, [stock_move2])
 
 Check second invoices::
 
@@ -356,8 +346,7 @@ Stock moves must be linked to invoice line::
     >>> stock_move, = shipment.outgoing_moves
     >>> stock_move.quantity
     4.0
-    >>> stock_move.invoice_lines == [invoice_line]
-    True
+    >>> assertEqual(stock_move.invoice_lines, [invoice_line])
 
 Ship 3 products::
 
@@ -634,8 +623,7 @@ Return sales using the wizard::
     >>> returned_sale, = Sale.find([
     ...     ('state', '=', 'draft'),
     ...     ])
-    >>> returned_sale.origin == sale_to_return
-    True
+    >>> assertEqual(returned_sale.origin, sale_to_return)
     >>> sorted([x.quantity or 0 for x in returned_sale.lines])
     [-1.0, 0]
 
@@ -683,8 +671,7 @@ invoices::
     >>> sale.click('confirm')
     >>> invoice, = sale.invoices
     >>> invoice_line, = invoice.lines
-    >>> invoice_line.stock_moves == []
-    True
+    >>> assertEqual(invoice_line.stock_moves, [])
     >>> invoice_line.quantity = 5.0
     >>> invoice.click('post')
     >>> pay = invoice.click('pay')

@@ -6,7 +6,7 @@ Imports::
 
     >>> from decimal import Decimal
     >>> from proteus import config, Model, Wizard
-    >>> from trytond.tests.tools import activate_modules
+    >>> from trytond.tests.tools import activate_modules, assertEqual
     >>> from trytond.modules.company.tests.tools import create_company, \
     ...     get_company
 
@@ -82,8 +82,7 @@ Let's ship a product with a lot::
 
     >>> Lot = Model.get('stock.lot')
     >>> lot = Lot(number='00001', product=product)
-    >>> lot.unit == unit
-    True
+    >>> assertEqual(lot.unit, unit)
     >>> lot.unit_quantity
     1.0
     >>> lot.save()

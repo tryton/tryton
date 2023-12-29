@@ -7,7 +7,7 @@ Imports::
     >>> from decimal import Decimal
 
     >>> from proteus import Model, Wizard
-    >>> from trytond.tests.tools import activate_modules
+    >>> from trytond.tests.tools import activate_modules, assertEqual
     >>> from trytond.modules.company.tests.tools import (
     ...     create_company, get_company)
     >>> from trytond.modules.account.tests.tools import (
@@ -104,9 +104,6 @@ Test rules with a sale::
     'processing'
 
     >>> invoice, = sale.invoices
-    >>> invoice.lines[0].account == account_revenue1
-    True
-    >>> invoice.lines[1].account == account_revenue2
-    True
-    >>> invoice.lines[2].account == account_revenue3
-    True
+    >>> assertEqual(invoice.lines[0].account, account_revenue1)
+    >>> assertEqual(invoice.lines[1].account, account_revenue2)
+    >>> assertEqual(invoice.lines[2].account, account_revenue3)

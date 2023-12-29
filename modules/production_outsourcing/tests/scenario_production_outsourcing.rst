@@ -6,7 +6,7 @@ Imports::
 
     >>> from decimal import Decimal
     >>> from proteus import Model, Wizard
-    >>> from trytond.tests.tools import activate_modules
+    >>> from trytond.tests.tools import activate_modules, assertEqual
     >>> from trytond.modules.company.tests.tools import create_company, \
     ...     get_company
     >>> from trytond.modules.account.tests.tools import create_chart, \
@@ -107,8 +107,7 @@ Create Routing::
     >>> routing = Routing(name="Supplier")
     >>> routing.supplier = supplier
     >>> routing.supplier_service = service
-    >>> routing.supplier_service_supplier == service_supplier
-    True
+    >>> assertEqual(routing.supplier_service_supplier, service_supplier)
     >>> routing.supplier_quantity = 2
     >>> routing.boms.append(bom)
     >>> routing.save()
@@ -131,10 +130,8 @@ Make a production::
     >>> production.state
     'waiting'
     >>> purchase_line, = production.purchase_lines
-    >>> purchase_line.product == service
-    True
-    >>> purchase_line.product_supplier == service_supplier
-    True
+    >>> assertEqual(purchase_line.product, service)
+    >>> assertEqual(purchase_line.product_supplier, service_supplier)
     >>> purchase_line.quantity
     20.0
     >>> production.cost

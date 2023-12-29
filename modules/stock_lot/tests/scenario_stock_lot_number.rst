@@ -6,7 +6,7 @@ Imports::
 
     >>> from decimal import Decimal
     >>> from proteus import Model
-    >>> from trytond.tests.tools import activate_modules
+    >>> from trytond.tests.tools import activate_modules, assertEqual
 
 Activate modules::
 
@@ -35,8 +35,7 @@ Create product::
     >>> unit, = ProductUom.find([('name', '=', 'Unit')])
 
     >>> template = ProductTemplate()
-    >>> template.lot_sequence == sequence
-    True
+    >>> assertEqual(template.lot_sequence, sequence)
     >>> template.name = 'Product'
     >>> template.default_uom = unit
     >>> template.type = 'goods'

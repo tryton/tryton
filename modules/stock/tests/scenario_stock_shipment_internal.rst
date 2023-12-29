@@ -7,7 +7,7 @@ Imports::
     >>> import datetime as dt
     >>> from decimal import Decimal
     >>> from proteus import Model, Report
-    >>> from trytond.tests.tools import activate_modules, set_user
+    >>> from trytond.tests.tools import activate_modules, set_user, assertEqual
     >>> from trytond.modules.company.tests.tools import create_company, \
     ...     get_company
 
@@ -123,15 +123,13 @@ Create Internal Shipment from lost_found location::
 Check that now we can finish the older shipment::
 
     >>> shipment.click('assign_try')
-    >>> shipment.assigned_by == employee
-    True
+    >>> assertEqual(shipment.assigned_by, employee)
     >>> shipment.done_by
 
     >>> shipment.click('done')
     >>> shipment.state
     'done'
-    >>> shipment.done_by == employee
-    True
+    >>> assertEqual(shipment.done_by, employee)
 
 Duplicate Internal Shipment::
 
@@ -150,5 +148,4 @@ Reschedule shipment::
     >>> cron.interval_type = 'months'
     >>> cron.click('run_once')
     >>> shipment_copy.reload()
-    >>> shipment_copy.planned_date == today
-    True
+    >>> assertEqual(shipment_copy.planned_date, today)

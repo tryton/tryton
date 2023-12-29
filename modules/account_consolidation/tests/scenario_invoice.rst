@@ -8,7 +8,7 @@ Imports::
 
     >>> from proteus import Model
 
-    >>> from trytond.tests.tools import activate_modules
+    >>> from trytond.tests.tools import activate_modules, assertEqual
     >>> from trytond.modules.account.tests.tools import (
     ...     create_fiscalyear, create_chart, get_accounts)
     >>> from trytond.modules.account_invoice.tests.tools import (
@@ -61,7 +61,5 @@ Create invoice::
 
 Check consolidation company::
 
-    >>> invoice.consolidation_company == saber
-    True
-    >>> invoice.move.consolidation_company == saber
-    True
+    >>> assertEqual(invoice.consolidation_company, saber)
+    >>> assertEqual(invoice.move.consolidation_company, saber)

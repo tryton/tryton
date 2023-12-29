@@ -7,7 +7,7 @@ Imports::
     >>> import datetime as dt
     >>> from decimal import Decimal
     >>> from proteus import Model, Wizard, Report
-    >>> from trytond.tests.tools import activate_modules
+    >>> from trytond.tests.tools import activate_modules, assertEqual
     >>> from trytond.tools import file_open
     >>> from trytond.modules.company.tests.tools import (
     ...     create_company, get_company)
@@ -119,15 +119,13 @@ Generate VAT Book::
     >>> len(records)
     3
     >>> tax_record = [r for r in records if not r.surcharge_tax][0]
-    >>> tax_record.party == party
-    True
+    >>> assertEqual(tax_record.party, party)
     >>> tax_record.base_amount
     Decimal('100.00')
     >>> tax_record.tax_amount
     Decimal('21.00')
     >>> surcharge_tax_record = [r for r in records if r.surcharge_tax][0]
-    >>> surcharge_tax_record.party == surcharge_party
-    True
+    >>> assertEqual(surcharge_tax_record.party, surcharge_party)
     >>> surcharge_tax_record.base_amount
     Decimal('50.00')
     >>> surcharge_tax_record.tax_amount
@@ -135,8 +133,7 @@ Generate VAT Book::
     >>> surcharge_tax_record.surcharge_tax_amount
     Decimal('2.60')
     >>> with file_open('account_es/tests/vat_book.csv', 'rb') as f:
-    ...     content == f.read()
-    True
+    ...     assertEqual(content, f.read())
     >>> name
     'VAT Book-...'
     >>> extension

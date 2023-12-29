@@ -8,7 +8,7 @@ Imports::
     >>> from decimal import Decimal
     >>> from operator import attrgetter
     >>> from proteus import Model, Wizard, Report
-    >>> from trytond.tests.tools import activate_modules
+    >>> from trytond.tests.tools import activate_modules, assertEqual
     >>> from trytond.modules.company.tests.tools import create_company, \
     ...     get_company
     >>> from trytond.modules.account.tests.tools import create_fiscalyear, \
@@ -235,5 +235,4 @@ Create the packs and ship the shipment::
 Because there is only one box, the pack shipping number is also the shipment
 identification number::
 
-    >>> pack.shipping_reference == shipment.shipping_reference
-    True
+    >>> assertEqual(pack.shipping_reference, shipment.shipping_reference)

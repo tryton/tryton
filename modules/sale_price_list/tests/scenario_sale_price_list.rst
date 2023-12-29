@@ -7,7 +7,7 @@ Imports::
     >>> import datetime
     >>> from decimal import Decimal
     >>> from proteus import Model, Wizard
-    >>> from trytond.tests.tools import activate_modules, set_user
+    >>> from trytond.tests.tools import activate_modules, set_user, assertEqual
     >>> from trytond.modules.company.tests.tools import create_company, \
     ...     get_company
     >>> from trytond.modules.account.tests.tools import create_fiscalyear, \
@@ -129,8 +129,7 @@ Use the price list on sale::
     >>> Sale = Model.get('sale.sale')
     >>> sale = Sale()
     >>> sale.party = customer
-    >>> sale.price_list == price_list
-    True
+    >>> assertEqual(sale.price_list, price_list)
     >>> sale.payment_term = payment_term
     >>> sale_line = sale.lines.new()
     >>> sale_line.product = product
@@ -163,5 +162,4 @@ Use the sale price list on sale::
 
     >>> set_user(sale_user)
     >>> sale.party = customer_without_price_list
-    >>> sale.price_list == sale_price_list
-    True
+    >>> assertEqual(sale.price_list, sale_price_list)

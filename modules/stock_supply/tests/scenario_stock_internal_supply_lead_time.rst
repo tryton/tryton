@@ -7,7 +7,7 @@ Imports::
     >>> import datetime as dt
     >>> from decimal import Decimal
     >>> from proteus import Model, Wizard
-    >>> from trytond.tests.tools import activate_modules
+    >>> from trytond.tests.tools import activate_modules, assertEqual
     >>> from trytond.modules.company.tests.tools import create_company, \
     ...     get_company
 
@@ -115,30 +115,24 @@ Execute internal supply::
     2
     >>> first, second = shipments
 
-    >>> first.planned_date == today
-    True
+    >>> assertEqual(first.planned_date, today)
     >>> first.state
     'request'
     >>> len(first.moves)
     1
     >>> move, = first.moves
-    >>> move.from_location == warehouse_loc.storage_location
-    True
-    >>> move.to_location == sec_warehouse_loc.storage_location
-    True
+    >>> assertEqual(move.from_location, warehouse_loc.storage_location)
+    >>> assertEqual(move.to_location, sec_warehouse_loc.storage_location)
     >>> move.quantity
     15.0
 
-    >>> second.planned_date == tomorrow
-    True
+    >>> assertEqual(second.planned_date, tomorrow)
     >>> second.state
     'request'
     >>> len(second.moves)
     1
     >>> move, = second.moves
-    >>> move.from_location == warehouse_loc.storage_location
-    True
-    >>> move.to_location == sec_warehouse_loc.storage_location
-    True
+    >>> assertEqual(move.from_location, warehouse_loc.storage_location)
+    >>> assertEqual(move.to_location, sec_warehouse_loc.storage_location)
     >>> move.quantity
     10.0

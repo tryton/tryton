@@ -6,7 +6,7 @@ Imports::
 
     >>> from proteus import Model, Wizard
     >>> from decimal import Decimal
-    >>> from trytond.tests.tools import activate_modules
+    >>> from trytond.tests.tools import activate_modules, assertEqual
     >>> from trytond.modules.company.tests.tools import create_company, \
     ...     get_company
     >>> from trytond.modules.account.tests.tools import create_fiscalyear, \
@@ -88,8 +88,7 @@ Create a sale with a line::
 Change the party::
 
     >>> modify_header = purchase.click('modify_header')
-    >>> modify_header.form.party == supplier
-    True
+    >>> assertEqual(modify_header.form.party, supplier)
     >>> modify_header.form.party = another
     >>> modify_header.execute('modify')
 

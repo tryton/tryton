@@ -6,7 +6,8 @@ Imports::
 
     >>> from decimal import Decimal
     >>> from proteus import Model, Wizard
-    >>> from trytond.tests.tools import activate_modules
+    >>> from trytond.tests.tools import (
+    ...     activate_modules, assertEqual, assertTrue)
     >>> from trytond.modules.company.tests.tools import create_company, \
     ...     get_company
     >>> from trytond.modules.account.tests.tools import create_fiscalyear, \
@@ -89,8 +90,8 @@ Reconcile Lines without writeoff::
     'end'
     >>> reconcile1.reload()
     >>> reconcile2.reload()
-    >>> reconcile1.reconciliation == reconcile2.reconciliation != None
-    True
+    >>> assertEqual(reconcile1.reconciliation, reconcile2.reconciliation)
+    >>> assertTrue(reconcile1.reconciliation)
     >>> len(reconcile1.reconciliation.lines)
     2
 
@@ -115,8 +116,8 @@ Reconcile general ledger lines::
     'end'
     >>> gl_reconcile1.reload()
     >>> gl_reconcile2.reload()
-    >>> gl_reconcile1.reconciliation == gl_reconcile2.reconciliation != None
-    True
+    >>> assertEqual(gl_reconcile1.reconciliation, gl_reconcile2.reconciliation)
+    >>> assertTrue(gl_reconcile1.reconciliation)
 
 Unreconcile general ledger, lines::
 
@@ -184,15 +185,14 @@ Reconcile Lines with write-off::
     >>> reconcile_lines.execute('reconcile')
     >>> reconcile1.reload()
     >>> reconcile2.reload()
-    >>> reconcile1.reconciliation == reconcile2.reconciliation != None
-    True
+    >>> assertEqual(reconcile1.reconciliation, reconcile2.reconciliation)
+    >>> assertTrue(reconcile1.reconciliation)
     >>> len(reconcile1.reconciliation.lines)
     3
     >>> writeoff_line1, = [l for l in reconcile1.reconciliation.lines
     ...     if l.credit == Decimal(3)]
     >>> writeoff_line2, = [l for l in writeoff_line1.move.lines
     ...     if l != writeoff_line1]
-    >>> writeoff_line2.account == expense
-    True
+    >>> assertEqual(writeoff_line2.account, expense)
     >>> writeoff_line2.debit
     Decimal('3.0')

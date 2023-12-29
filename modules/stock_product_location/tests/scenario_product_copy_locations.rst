@@ -6,7 +6,7 @@ Imports::
 
     >>> from decimal import Decimal
     >>> from proteus import Model
-    >>> from trytond.tests.tools import activate_modules
+    >>> from trytond.tests.tools import activate_modules, assertEqual
     >>> from trytond.modules.company.tests.tools import create_company, \
     ...     get_company
 
@@ -53,8 +53,7 @@ Create a product with suppliers::
     >>> product_location = product.locations.new()
     >>> product_location.warehouse = warehouse_loc
     >>> product_location.location = child_loc
-    >>> product_location.template == template
-    True
+    >>> assertEqual(product_location.template, template)
     >>> product.save()
 
 Location is copied when copying the template::

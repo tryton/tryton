@@ -7,7 +7,7 @@ Imports::
     >>> import datetime as dt
     >>> from decimal import Decimal
     >>> from proteus import Model, Wizard
-    >>> from trytond.tests.tools import activate_modules
+    >>> from trytond.tests.tools import activate_modules, assertEqual
     >>> from trytond.modules.company.tests.tools import create_company, \
     ...     get_company
 
@@ -171,10 +171,8 @@ Confirm the inventory::
     >>> move, = line_p1.moves
     >>> move.quantity
     1.0
-    >>> move.from_location == lost_found_loc
-    True
-    >>> move.to_location == inventory.location
-    True
+    >>> assertEqual(move.from_location, lost_found_loc)
+    >>> assertEqual(move.to_location, inventory.location)
     >>> line_p2.reload()
     >>> len(line_p2.moves)
     0
@@ -231,10 +229,8 @@ Add quantity of consumable product::
     >>> move, = line.moves
     >>> move.quantity
     5.0
-    >>> move.from_location == lost_found_loc
-    True
-    >>> move.to_location == inventory.location
-    True
+    >>> assertEqual(move.from_location, lost_found_loc)
+    >>> assertEqual(move.to_location, inventory.location)
 
 Create an inventory that should be empty after completion::
 

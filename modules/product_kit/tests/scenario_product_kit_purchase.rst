@@ -7,7 +7,7 @@ Imports::
     >>> import datetime as dt
     >>> from decimal import Decimal
     >>> from proteus import Model, Wizard
-    >>> from trytond.tests.tools import activate_modules
+    >>> from trytond.tests.tools import activate_modules, assertEqual
     >>> from trytond.modules.company.tests.tools import (
     ...     create_company, get_company)
     >>> from trytond.modules.account.tests.tools import (
@@ -192,8 +192,7 @@ Check invoice::
 
     >>> invoice, = purchase.invoices
     >>> line, = invoice.lines
-    >>> line.product == service
-    True
+    >>> assertEqual(line.product, service)
 
 Check stock moves::
 

@@ -7,7 +7,7 @@ Imports::
     >>> import datetime as dt
     >>> from decimal import Decimal
     >>> from proteus import Model, Wizard
-    >>> from trytond.tests.tools import activate_modules
+    >>> from trytond.tests.tools import activate_modules, assertEqual
     >>> from trytond.modules.company.tests.tools import create_company, \
     ...     get_company
     >>> from trytond.modules.account.tests.tools import (
@@ -84,7 +84,5 @@ Apply rules on statement::
     2
     >>> sorted([l.amount for l in statement.lines])
     [Decimal('5.00'), Decimal('45.00')]
-    >>> {l.account for l in statement.lines} == {tax, receivable}
-    True
-    >>> {l.party for l in statement.lines}  == {None, customer}
-    True
+    >>> assertEqual({l.account for l in statement.lines}, {tax, receivable})
+    >>> assertEqual({l.party for l in statement.lines}, {None, customer})

@@ -7,7 +7,7 @@ Imports::
     >>> import datetime as dt
     >>> from decimal import Decimal
     >>> from proteus import Model
-    >>> from trytond.tests.tools import activate_modules
+    >>> from trytond.tests.tools import activate_modules, assertEqual
     >>> from trytond.modules.company.tests.tools import create_company
 
     >>> today = dt.date.today()
@@ -129,22 +129,16 @@ Make a production::
 
 Test storage location of the warehouse::
 
-    >> warehouse_loc.storage_location == storage_loc
-    True
+    >> assertEqual(warehouse_loc.storage_location, storage_loc)
 
 Test locations of the production inputs::
 
-    >>> all([input_.from_location == storage_loc for \
-    ...      input_ in production.inputs])
-    True
-    >>> all([input_.to_location == production_loc for \
-    ...      input_ in production.inputs])
-    True
+    >>> for input_ in production.inputs:
+    ...     assertEqual(input_.from_location, storage_loc)
+    ...     assertEqual(input_.to_location, production_loc)
 
 Test location of the production output::
 
     >>> output, = production.outputs
-    >>> output.from_location == production_loc
-    True
-    >>> output.to_location == child_loc
-    True
+    >>> assertEqual(output.from_location, production_loc)
+    >>> assertEqual(output.to_location, child_loc)

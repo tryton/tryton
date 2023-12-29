@@ -7,7 +7,7 @@ Imports::
     >>> import datetime as dt
     >>> from decimal import Decimal
     >>> from proteus import Model, Wizard
-    >>> from trytond.tests.tools import activate_modules, set_user
+    >>> from trytond.tests.tools import activate_modules, set_user, assertEqual
     >>> from trytond.modules.company.tests.tools import create_company, \
     ...     get_company
 
@@ -186,16 +186,12 @@ Make a production::
 Test works::
 
     >>> work1, work2 = production.works
-    >>> work1.operation == operation1
-    True
-    >>> work1.work_center == center1
-    True
+    >>> assertEqual(work1.operation, operation1)
+    >>> assertEqual(work1.work_center, center1)
     >>> work1.state
     'request'
-    >>> work2.operation == operation2
-    True
-    >>> work2.work_center == center2
-    True
+    >>> assertEqual(work2.operation, operation2)
+    >>> assertEqual(work2.work_center, center2)
     >>> work2.state
     'request'
 
@@ -220,23 +216,20 @@ Run works::
     >>> cycle1.click('run')
     >>> cycle1.state
     'running'
-    >>> cycle1.run_by == employee
-    True
+    >>> assertEqual(cycle1.run_by, employee)
     >>> work1.reload()
     >>> work1.state
     'running'
     >>> cycle1.click('do')
     >>> cycle1.state
     'done'
-    >>> cycle1.done_by == employee
-    True
+    >>> assertEqual(cycle1.done_by, employee)
     >>> work1.reload()
     >>> work1.state
     'finished'
     >>> cycle2 = work2.cycles.new()
     >>> cycle2.click('cancel')
-    >>> cycle2.cancelled_by == employee
-    True
+    >>> assertEqual(cycle2.cancelled_by, employee)
     >>> cycle2.state
     'cancelled'
     >>> work2.reload()

@@ -7,7 +7,7 @@ Imports::
     >>> import datetime as dt
     >>> from decimal import Decimal
     >>> from proteus import Model, Report
-    >>> from trytond.tests.tools import activate_modules, set_user
+    >>> from trytond.tests.tools import activate_modules, set_user, assertEqual
     >>> from trytond.modules.company.tests.tools import create_company, \
     ...     get_company
 
@@ -107,12 +107,9 @@ Set the shipment state to waiting::
     2
     >>> len(shipment_out.inventory_moves)
     2
-    >>> sorted(
-    ...     [m.origin for m in shipment_out.inventory_moves],
-    ...     key=lambda m: m.id) == \
-    ...     sorted(
-    ...     [m for m in shipment_out.outgoing_moves], key=lambda m: m.id)
-    True
+    >>> assertEqual(
+    ...     {m.origin for m in shipment_out.inventory_moves},
+    ...     {m for m in shipment_out.outgoing_moves})
 
 Make 1 unit of the product available::
 
@@ -167,14 +164,12 @@ Ignore non assigned moves and pack shipment::
     >>> _ = picking_list.execute([shipment_out])
 
     >>> shipment_out.click('pick')
-    >>> shipment_out.picked_by == employee
-    True
+    >>> assertEqual(shipment_out.picked_by, employee)
     >>> shipment_out.packed_by
     >>> shipment_out.done_by
 
     >>> shipment_out.click('pack')
-    >>> shipment_out.packed_by == employee
-    True
+    >>> assertEqual(shipment_out.packed_by, employee)
     >>> shipment_out.done_by
     >>> [m.state for m in shipment_out.outgoing_moves]
     ['assigned']
@@ -182,9 +177,8 @@ Ignore non assigned moves and pack shipment::
     1
     >>> shipment_out.inventory_moves[0].state
     'done'
-    >>> sum([m.quantity for m in shipment_out.inventory_moves]) == \
-    ...     sum([m.quantity for m in shipment_out.outgoing_moves])
-    True
+    >>> assertEqual(sum([m.quantity for m in shipment_out.inventory_moves]),
+    ...     sum([m.quantity for m in shipment_out.outgoing_moves]))
 
     >>> delivery_note = Report('stock.shipment.out.delivery_note')
     >>> _ = delivery_note.execute([shipment_out])
@@ -192,14 +186,12 @@ Ignore non assigned moves and pack shipment::
 Set the state as Done::
 
     >>> shipment_out.click('done')
-    >>> shipment_out.done_by == employee
-    True
+    >>> assertEqual(shipment_out.done_by, employee)
     >>> [m.state for m in shipment_out.outgoing_moves]
     ['done']
     >>> planned_dates = [m.planned_date for m in
     ...     shipment_out.outgoing_moves]
-    >>> planned_dates == [today]
-    True
+    >>> assertEqual(planned_dates, [today])
     >>> effective_dates = [m.effective_date for m in
     ...     shipment_out.outgoing_moves]
     >>> len(set(effective_dates))
@@ -210,9 +202,8 @@ Set the state as Done::
     1
     >>> shipment_out.inventory_moves[0].state
     'done'
-    >>> sum([m.quantity for m in shipment_out.inventory_moves]) == \
-    ...     sum([m.quantity for m in shipment_out.outgoing_moves])
-    True
+    >>> assertEqual(sum([m.quantity for m in shipment_out.inventory_moves]),
+    ...     sum([m.quantity for m in shipment_out.outgoing_moves]))
 
 Create Shipment Out with effective date::
 
@@ -271,11 +262,9 @@ Finish the shipment::
     >>> shipment_out.state
     'done'
     >>> outgoing_move, = shipment_out.outgoing_moves
-    >>> outgoing_move.effective_date == yesterday
-    True
+    >>> assertEqual(outgoing_move.effective_date, yesterday)
     >>> inventory_move, = shipment_out.inventory_moves
-    >>> inventory_move.effective_date == yesterday
-    True
+    >>> assertEqual(inventory_move.effective_date, yesterday)
 
 Reschedule shipment::
 
@@ -289,5 +278,4 @@ Reschedule shipment::
     >>> cron.interval_type = 'months'
     >>> cron.click('run_once')
     >>> shipment_copy.reload()
-    >>> shipment_copy.planned_date == today
-    True
+    >>> assertEqual(shipment_copy.planned_date, today)

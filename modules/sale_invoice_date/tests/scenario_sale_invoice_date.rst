@@ -10,7 +10,7 @@ Imports::
     >>> from dateutil.relativedelta import relativedelta
 
     >>> from proteus import Model, Wizard
-    >>> from trytond.tests.tools import activate_modules
+    >>> from trytond.tests.tools import activate_modules, assertEqual
     >>> from trytond.modules.company.tests.tools import (
     ...     create_company, get_company)
     >>> from trytond.modules.account.tests.tools import (
@@ -86,8 +86,7 @@ Create product::
 Make a sale::
 
     >>> sale = Sale(party=customer)
-    >>> sale.invoice_term == invoice_term
-    True
+    >>> assertEqual(sale.invoice_term, invoice_term)
     >>> line = sale.lines.new()
     >>> line.product = product
     >>> line.quantity = 1
@@ -99,5 +98,4 @@ Make a sale::
 Check invoice date::
 
     >>> invoice, = sale.invoices
-    >>> invoice.invoice_date == end_month
-    True
+    >>> assertEqual(invoice.invoice_date, end_month)

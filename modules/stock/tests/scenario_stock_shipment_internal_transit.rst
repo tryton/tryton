@@ -8,7 +8,7 @@ Imports::
     >>> from decimal import Decimal
 
     >>> from proteus import Model, Wizard
-    >>> from trytond.tests.tools import activate_modules
+    >>> from trytond.tests.tools import activate_modules, assertEqual
     >>> from trytond.modules.company.tests.tools import (
     ...     create_company, get_company)
 
@@ -63,8 +63,7 @@ Create Internal Shipment with lead time::
     >>> shipment.to_location = warehouse2.storage_location
     >>> bool(shipment.transit_location)
     True
-    >>> shipment.planned_start_date == today
-    True
+    >>> assertEqual(shipment.planned_start_date, today)
     >>> move = shipment.moves.new()
     >>> move.product = product
     >>> move.quantity = 2
@@ -76,21 +75,15 @@ Create Internal Shipment with lead time::
     >>> outgoing_move, = shipment.outgoing_moves
     >>> outgoing_move.quantity
     2.0
-    >>> outgoing_move.from_location == shipment.from_location
-    True
-    >>> outgoing_move.to_location == shipment.transit_location
-    True
-    >>> outgoing_move.planned_date == today
-    True
+    >>> assertEqual(outgoing_move.from_location, shipment.from_location)
+    >>> assertEqual(outgoing_move.to_location, shipment.transit_location)
+    >>> assertEqual(outgoing_move.planned_date, today)
     >>> incoming_move, = shipment.incoming_moves
     >>> incoming_move.quantity
     2.0
-    >>> incoming_move.from_location == shipment.transit_location
-    True
-    >>> incoming_move.to_location == shipment.to_location
-    True
-    >>> incoming_move.planned_date == tomorrow
-    True
+    >>> assertEqual(incoming_move.from_location, shipment.transit_location)
+    >>> assertEqual(incoming_move.to_location, shipment.to_location)
+    >>> assertEqual(incoming_move.planned_date, tomorrow)
 
     >>> outgoing_move.quantity = 1
     >>> outgoing_move.save()
@@ -103,10 +96,8 @@ Create Internal Shipment with lead time::
     1.0
     >>> shipment.outgoing_moves[0].state
     'done'
-    >>> shipment.outgoing_moves[0].effective_date == yesterday
-    True
+    >>> assertEqual(shipment.outgoing_moves[0].effective_date, yesterday)
     >>> shipment.click('done')
     >>> shipment.incoming_moves[0].state
     'done'
-    >>> shipment.incoming_moves[0].effective_date == today
-    True
+    >>> assertEqual(shipment.incoming_moves[0].effective_date, today)

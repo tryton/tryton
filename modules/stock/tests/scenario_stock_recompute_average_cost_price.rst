@@ -7,7 +7,8 @@ Imports::
     >>> import datetime as dt
     >>> from decimal import Decimal
     >>> from proteus import Model, Wizard
-    >>> from trytond.tests.tools import activate_modules
+    >>> from trytond.tests.tools import (
+    ...     activate_modules, assertEqual, assertFalse)
     >>> from trytond.modules.company.tests.tools import create_company, \
     ...     get_company
 
@@ -135,12 +136,10 @@ Update unit price of a move::
     True
 
     >>> recompute = Wizard('product.recompute_cost_price', [product])
-    >>> recompute.form.from_ == move.effective_date
-    True
+    >>> assertEqual(recompute.form.from_, move.effective_date)
     >>> recompute.execute('recompute')
     >>> move.reload()
-    >>> bool(move.unit_price_updated)
-    False
+    >>> assertFalse(move.unit_price_updated)
     >>> [m.cost_price for m in StockMove.find([])]
     [Decimal('107.5000'), Decimal('130.0000'), Decimal('130.0000'), Decimal('100.0000')]
 

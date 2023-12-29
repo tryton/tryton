@@ -7,7 +7,7 @@ Imports::
     >>> import datetime
     >>> from decimal import Decimal
     >>> from proteus import config, Model, Wizard
-    >>> from trytond.tests.tools import activate_modules
+    >>> from trytond.tests.tools import activate_modules, assertEqual
     >>> from trytond.tools import file_open
     >>> from trytond.modules.company.tests.tools import create_company, \
     ...     get_company
@@ -80,8 +80,7 @@ Check Statement::
 
     >>> Statement = Model.get('account.statement')
     >>> statement, = Statement.find([])
-    >>> statement.journal == journal
-    True
+    >>> assertEqual(statement.journal, journal)
     >>> statement.number_of_lines
     1
     >>> statement.total_amount

@@ -7,7 +7,7 @@ Imports::
     >>> import datetime as dt
     >>> from decimal import Decimal
     >>> from proteus import Model, Wizard, Report
-    >>> from trytond.tests.tools import activate_modules
+    >>> from trytond.tests.tools import activate_modules, assertEqual
     >>> from trytond.tools import file_open
     >>> from trytond.modules.company.tests.tools import create_company, \
     ...     get_company
@@ -168,8 +168,7 @@ Generate aeat reports::
     >>> extension
     'txt'
     >>> with file_open('account_es/tests/111.txt') as f:
-    ...     content == f.read()
-    True
+    ...     assertEqual(content, f.read())
     >>> name
     'AEAT Model 111-2018-01'
 
@@ -182,8 +181,7 @@ Generate aeat reports::
     >>> extension
     'txt'
     >>> with file_open('account_es/tests/115.txt') as f:
-    ...     content == f.read()
-    True
+    ...     assertEqual(content, f.read())
     >>> name
     'AEAT Model 115-2018-01'
 
@@ -195,8 +193,7 @@ Generate aeat reports::
     >>> extension
     'txt'
     >>> with file_open('account_es/tests/303.txt') as f:
-    ...     content == f.read()
-    True
+    ...     assertEqual(content, f.read())
     >>> name
     'AEAT Model 303-2018-01'
 
@@ -212,8 +209,7 @@ Generate aeat reports::
     >>> extension
     'txt'
     >>> with file_open('account_es/tests/347.txt') as f:
-    ...     content == f.read()
-    True
+    ...     assertEqual(content, f.read())
     >>> name
     'AEAT Model 347-...'
 
@@ -230,8 +226,7 @@ Generate aeat reports::
     >>> extension
     'txt'
     >>> with file_open('account_es/tests/349.txt') as f:
-    ...     content == f.read()
-    True
+    ...     assertEqual(content, f.read())
     >>> name
     'AEAT Model 349-...'
 

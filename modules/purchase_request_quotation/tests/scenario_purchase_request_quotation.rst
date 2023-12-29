@@ -7,7 +7,7 @@ Imports::
     >>> import datetime as dt
     >>> from decimal import Decimal
     >>> from proteus import Model, Wizard, Report
-    >>> from trytond.tests.tools import activate_modules, set_user
+    >>> from trytond.tests.tools import activate_modules, set_user, assertEqual
     >>> from trytond.modules.company.tests.tools import (
     ...     create_company, get_company)
     >>> from trytond.modules.account.tests.tools import (
@@ -125,8 +125,7 @@ add another supplier::
     'draft'
     >>> create_quotation = Wizard(
     ...     'purchase.request.quotation.create', [purchase_request])
-    >>> [supplier] == create_quotation.form.suppliers
-    True
+    >>> assertEqual(create_quotation.form.suppliers, [supplier])
     >>> create_quotation.form.suppliers.append(Party(supplier2.id))
     >>> create_quotation.execute('create_quotations')
     >>> create_quotation.execute('end')
@@ -205,8 +204,7 @@ best price from quotations was selected (supplier2 price)::
     >>> purchase, = Purchase.find([
     ...         ('state', '=', 'draft'),
     ...         ])
-    >>> purchase.party == supplier2
-    True
+    >>> assertEqual(purchase.party, supplier2)
     >>> purchase.lines[0].unit_price
     Decimal('8.000')
 

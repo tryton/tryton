@@ -9,7 +9,7 @@ Imports::
     >>> import datetime as dt
 
     >>> from proteus import Model, Wizard
-    >>> from trytond.tests.tools import activate_modules
+    >>> from trytond.tests.tools import activate_modules, assertEqual
     >>> from trytond.modules.company.tests.tools import (
     ...     create_company, get_company)
 
@@ -139,27 +139,21 @@ Check early planning::
 
     >>> plan1, = QuantityEarlyPlan.find(
     ...     [('origin', '=', str(shipment_out1))])
-    >>> plan1.earlier_date == week2
-    True
-    >>> plan1.earliest_date == today
-    True
+    >>> assertEqual(plan1.earlier_date, week2)
+    >>> assertEqual(plan1.earliest_date, today)
     >>> plan1.earliest_percentage
     0.4
 
     >>> plan2, = QuantityEarlyPlan.find(
     ...     [('origin', '=', str(shipment_out2))])
-    >>> plan2.earlier_date == week2
-    True
-    >>> plan2.earliest_date == week2
-    True
+    >>> assertEqual(plan2.earlier_date, week2)
+    >>> assertEqual(plan2.earliest_date, week2)
     >>> plan2.earliest_percentage
     1.0
 
     >>> plan3, = QuantityEarlyPlan.find(
     ...     [('origin', '=', str(shipment_out3))])
-    >>> plan3.earlier_date == week4
-    True
-    >>> plan3.earliest_date == today
-    True
+    >>> assertEqual(plan3.earlier_date, week4)
+    >>> assertEqual(plan3.earliest_date, today)
     >>> plan3.earliest_percentage
     0.75

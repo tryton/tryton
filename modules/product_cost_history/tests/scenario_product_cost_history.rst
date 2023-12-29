@@ -8,7 +8,7 @@ Imports::
     >>> import time
     >>> from decimal import Decimal
     >>> from proteus import Model, Wizard
-    >>> from trytond.tests.tools import activate_modules
+    >>> from trytond.tests.tools import activate_modules, assertEqual
     >>> from trytond.modules.company.tests.tools import create_company, \
     ...     get_company
 
@@ -111,11 +111,10 @@ Check cost history::
     >>> order = [('date', 'ASC')]
     >>> [c.cost_price for c in ProductCostHistory.find([], order=order)]
     [Decimal('100.0000'), Decimal('120.0000'), Decimal('110.0000')]
-    >>> [c.date for c in ProductCostHistory.find([], order=order)] == [
+    >>> assertEqual([c.date for c in ProductCostHistory.find([], order=order)], [
     ...     today - dt.timedelta(days=2),
     ...     today - dt.timedelta(days=1),
-    ...     today]
-    True
+    ...     today])
 
 Check cost price history on product::
 

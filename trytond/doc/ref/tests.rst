@@ -163,3 +163,6 @@ Tools
 .. function:: set_user(user, config)
 
    Set the user of the ``config`` proteus connection to ``user``.
+
+The module exposes also all the assert methods of :py:class:`unittest.TestCase`
+that can be run doctest scenario.

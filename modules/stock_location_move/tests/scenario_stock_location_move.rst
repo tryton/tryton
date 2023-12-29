@@ -7,7 +7,7 @@ Imports::
     >>> import datetime as dt
 
     >>> from proteus import Model, Wizard
-    >>> from trytond.tests.tools import activate_modules
+    >>> from trytond.tests.tools import activate_modules, assertEqual
     >>> from trytond.modules.company.tests.tools import create_company, \
     ...     get_company
     >>> today = dt.date.today()
@@ -46,18 +46,15 @@ Move pallet from storage1 to storage2::
     >>> shipment.state
     'assigned'
     >>> pallet.reload()
-    >>> pallet.assigned_by == shipment
-    True
-    >>> pallet.parent == storage1
-    True
+    >>> assertEqual(pallet.assigned_by, shipment)
+    >>> assertEqual(pallet.parent, storage1)
 
     >>> shipment.click('done')
     >>> shipment.state
     'done'
     >>> pallet.reload()
     >>> pallet.assigned_by
-    >>> pallet.parent == storage2
-    True
+    >>> assertEqual(pallet.parent, storage2)
 
 Assign pallet from wrong location::
 
@@ -120,10 +117,8 @@ Move pallet from storage1 to storage2 with lead_time::
 
     >>> shipment.click('ship')
     >>> pallet.reload()
-    >>> pallet.parent == shipment.transit_location
-    True
+    >>> assertEqual(pallet.parent, shipment.transit_location)
 
     >>> shipment.click('done')
     >>> pallet.reload()
-    >>> pallet.parent == warehouse2.storage_location
-    True
+    >>> assertEqual(pallet.parent, warehouse2.storage_location)

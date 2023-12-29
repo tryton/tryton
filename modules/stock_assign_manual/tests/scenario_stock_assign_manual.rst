@@ -7,7 +7,7 @@ Imports::
     >>> import json
     >>> from decimal import Decimal
     >>> from proteus import Model, Wizard
-    >>> from trytond.tests.tools import activate_modules
+    >>> from trytond.tests.tools import activate_modules, assertEqual
     >>> from trytond.modules.company.tests.tools import (
     ...     create_company, get_company)
 
@@ -99,8 +99,7 @@ Make a customer shipment::
 Assign manually the first move::
 
     >>> assign_manual = shipment.click('assign_manual_wizard')
-    >>> assign_manual.form.move == shipment.inventory_moves[0]
-    True
+    >>> assertEqual(assign_manual.form.move, shipment.inventory_moves[0])
     >>> assign_manual.form.move_quantity
     2.0
     >>> assign_manual.form.place = json.dumps([storage_loc.id, product.id])
@@ -123,9 +122,8 @@ Shipment is not yet assigned::
     ['assigned', 'assigned', 'draft']
     >>> [m.quantity for m in shipment.inventory_moves if m.state == 'assigned']
     [1.0, 1.0]
-    >>> {m.from_location for m in shipment.inventory_moves
-    ...     if m.state == 'assigned'} == {storage_loc, storage_loc2}
-    True
+    >>> assertEqual({m.from_location for m in shipment.inventory_moves
+    ...     if m.state == 'assigned'}, {storage_loc, storage_loc2})
 
 Assign manually remaining move::
 

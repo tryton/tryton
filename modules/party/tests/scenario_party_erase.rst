@@ -5,7 +5,7 @@ Party Erase Scenario
 Imports::
 
     >>> from proteus import Model, Wizard
-    >>> from trytond.tests.tools import activate_modules
+    >>> from trytond.tests.tools import activate_modules, assertEqual
 
 Activate modules::
 
@@ -33,8 +33,7 @@ Create a party::
 Try erase active party::
 
     >>> erase = Wizard('party.erase', models=[party])
-    >>> erase.form.party == party
-    True
+    >>> assertEqual(erase.form.party, party)
     >>> erase.execute('erase')
     Traceback (most recent call last):
         ...
@@ -46,8 +45,7 @@ Erase inactive party::
     >>> party.save()
 
     >>> erase = Wizard('party.erase', models=[party])
-    >>> erase.form.party == party
-    True
+    >>> assertEqual(erase.form.party, party)
     >>> erase.execute('erase')
 
 Check fields have been erased::

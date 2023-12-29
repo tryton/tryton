@@ -5,7 +5,7 @@ Account Statement Sepa Scenario
 Imports::
 
     >>> from proteus import Model, Wizard
-    >>> from trytond.tests.tools import activate_modules
+    >>> from trytond.tests.tools import activate_modules, assertEqual
     >>> from trytond.tools import file_open
     >>> from trytond.modules.currency.tests.tools import get_currency
     >>> from trytond.modules.company.tests.tools import (
@@ -104,8 +104,7 @@ Check Statement::
     datetime.date(2009, 4, 29)
     >>> origin.amount
     Decimal('-100.00')
-    >>> origin.party == supplier
-    True
+    >>> assertEqual(origin.party, supplier)
     >>> origin.description
     >>> origin.information['camt_creditor_name']
     'Supplier'

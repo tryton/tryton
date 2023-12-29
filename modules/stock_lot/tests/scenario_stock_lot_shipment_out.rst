@@ -7,7 +7,7 @@ Imports::
     >>> import datetime as dt
     >>> from decimal import Decimal
     >>> from proteus import config, Model, Wizard
-    >>> from trytond.tests.tools import activate_modules
+    >>> from trytond.tests.tools import activate_modules, assertEqual
     >>> from trytond.modules.company.tests.tools import create_company, \
     ...     get_company
 
@@ -99,8 +99,8 @@ Assign the shipment::
 Check the inventory moves origin::
 
     >>> outgoing_move, = shipment_out.outgoing_moves
-    >>> all(m.origin == outgoing_move for m in shipment_out.inventory_moves)
-    True
+    >>> for move in shipment_out.inventory_moves:
+    ...     assertEqual(move.origin, outgoing_move)
 
 Try to pick without lot::
 
@@ -137,8 +137,8 @@ Pick the shipment::
 
 Check the inventory moves have an outgoing move origin with the same lot::
 
-    >>> all(m.lot == m.origin.lot for m in shipment_out.inventory_moves)
-    True
+    >>> for move in shipment_out.inventory_moves:
+    ...     assertEqual(move.lot, move.origin.lot)
 
 Pack the shipment and return to pick::
 
@@ -155,5 +155,5 @@ Pack the shipment and return to pick::
 
 Check the inventory moves still have an outgoing move origin with the same lot::
 
-    >>> all(m.lot == m.origin.lot for m in shipment_out.inventory_moves)
-    True
+    >>> for move in shipment_out.inventory_moves:
+    ...     assertEqual(move.lot, move.origin.lot)

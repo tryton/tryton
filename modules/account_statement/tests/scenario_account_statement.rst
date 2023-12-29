@@ -8,7 +8,7 @@ Imports::
     >>> from dateutil.relativedelta import relativedelta
     >>> from decimal import Decimal
     >>> from proteus import Model, Wizard, Report
-    >>> from trytond.tests.tools import activate_modules
+    >>> from trytond.tests.tools import activate_modules, assertEqual
     >>> from trytond.modules.company.tests.tools import create_company, \
     ...     get_company
     >>> from trytond.modules.account.tests.tools import create_fiscalyear, \
@@ -142,8 +142,7 @@ Received 180 from customer::
     >>> statement_line.date = today
     >>> statement_line.amount = Decimal('180')
     >>> statement_line.party = customer
-    >>> statement_line.account == receivable
-    True
+    >>> assertEqual(statement_line.account, receivable)
     >>> statement_line.related_to = customer_invoice1
     >>> statement_line.amount
     Decimal('100.00')
@@ -154,10 +153,8 @@ Received 180 from customer::
     '0001'
     >>> statement_line.description
     'description'
-    >>> statement_line.party == customer
-    True
-    >>> statement_line.account == receivable
-    True
+    >>> assertEqual(statement_line.party, customer)
+    >>> assertEqual(statement_line.account, receivable)
     >>> statement_line.description = 'other description'
     >>> statement_line.related_to = customer_invoice2
     >>> statement_line.amount
@@ -182,8 +179,7 @@ Paid 50 to supplier::
     >>> statement_line.date = today
     >>> statement_line.amount = Decimal('-60')
     >>> statement_line.party = supplier
-    >>> statement_line.account == payable
-    True
+    >>> assertEqual(statement_line.account, payable)
     >>> statement_line.related_to = supplier_invoice
     >>> statement_line.amount
     Decimal('-50.00')
@@ -309,8 +305,7 @@ Let's test the negative amount version of the supplier/customer invoices::
     >>> statement_line.account = receivable
     >>> statement_line.amount = Decimal(-120)
     >>> statement_line.related_to = customer_invoice3
-    >>> statement_line.related_to.id == customer_invoice3.id
-    True
+    >>> assertEqual(statement_line.related_to, customer_invoice3)
 
     >>> statement_line = StatementLine()
     >>> statement.lines.append(statement_line)

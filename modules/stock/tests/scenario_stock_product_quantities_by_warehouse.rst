@@ -8,7 +8,7 @@ Imports::
     >>> from decimal import Decimal
     >>> from proteus import Model, Wizard, Report
     >>> from trytond import backend
-    >>> from trytond.tests.tools import activate_modules
+    >>> from trytond.tests.tools import activate_modules, assertEqual
     >>> from trytond.modules.company.tests.tools import create_company, \
     ...     get_company
 
@@ -104,9 +104,8 @@ Check Product Quantities by Warehouse::
    ...   records = ProductQuantitiesByWarehouse.find([])
    >>> len(records)
    3
-   >>> [(r.date, r.quantity) for r in records] == [
-   ...      (yesterday, 10), (today, 10), (tomorrow, 6)]
-   True
+   >>> assertEqual([(r.date, r.quantity) for r in records],
+   ...      [(yesterday, 10), (today, 10), (tomorrow, 6)])
 
 Check Product Quantities by Warehouse Moves::
 
@@ -117,10 +116,10 @@ Check Product Quantities by Warehouse Moves::
     ...   records = ProductQuantitiesByWarehouseMove.find([])
     >>> len(records)
     4
-    >>> [(r.date, r.cumulative_quantity_start, r.quantity, r.cumulative_quantity_end)
-    ...         for r in records] == [
-    ...     (yesterday, 0, 10, 10),
+    >>> assertEqual([
+    ...     (r.date, r.cumulative_quantity_start, r.quantity, r.cumulative_quantity_end)
+    ...         for r in records],
+    ...     [(yesterday, 0, 10, 10),
     ...     (tomorrow, 10, -6, 4),
     ...     (tomorrow, 4, 5, 9),
-    ...     (tomorrow, 9, -3, 6)]
-    True
+    ...     (tomorrow, 9, -3, 6)])

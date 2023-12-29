@@ -7,7 +7,7 @@ Imports::
     >>> import datetime as dt
     >>> from decimal import Decimal
     >>> from proteus import Model, Wizard
-    >>> from trytond.tests.tools import activate_modules
+    >>> from trytond.tests.tools import activate_modules, assertEqual
     >>> from trytond.modules.company.tests.tools import create_company, \
     ...     get_company
 
@@ -129,8 +129,7 @@ Make a production::
     >>> production.product = product
     >>> production.bom = bom
     >>> production.quantity = 2
-    >>> production.planned_start_date == yesterday
-    True
+    >>> assertEqual(production.planned_start_date, yesterday)
     >>> sorted([i.quantity for i in production.inputs])
     [10.0, 300.0]
     >>> output, = production.outputs
@@ -168,14 +167,13 @@ Do the production::
     >>> production.click('run')
     >>> {i.state for i in production.inputs}
     {'done'}
-    >>> {i.effective_date == today for i in production.inputs}
-    {True}
+    >>> for input_ in production.inputs:
+    ...     assertEqual(input_.effective_date, today)
     >>> production.click('done')
     >>> output, = production.outputs
     >>> output.state
     'done'
-    >>> output.effective_date == production.effective_date
-    True
+    >>> assertEqual(output.effective_date, production.effective_date)
     >>> output.unit_price
     Decimal('12.5000')
     >>> with config.set_context(locations=[storage.id]):
@@ -195,14 +193,12 @@ Make a production with effective date yesterday and running the day before::
     >>> production.click('assign_try')
     >>> production.click('run')
     >>> production.reload()
-    >>> {i.effective_date == before_yesterday for i in production.inputs}
-    {True}
+    >>> for input_ in production.inputs:
+    ...     assertEqual(input_.effective_date, before_yesterday)
     >>> production.click('done')
     >>> production.reload()
     >>> output, = production.outputs
-    >>> output.effective_date == yesterday
-    True
-
+    >>> assertEqual(output.effective_date, yesterday)
 
 Make a production with a bom of zero quantity::
 
@@ -232,5 +228,4 @@ Reschedule productions::
     >>> cron.interval_type = 'months'
     >>> cron.click('run_once')
     >>> production.reload()
-    >>> production.planned_start_date == today
-    True
+    >>> assertEqual(production.planned_start_date, today)

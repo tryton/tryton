@@ -16,7 +16,7 @@ Imports::
     >>> from shopify.api_version import ApiVersion
 
     >>> from proteus import Model, Wizard
-    >>> from trytond.tests.tools import activate_modules
+    >>> from trytond.tests.tools import activate_modules, assertEqual
     >>> from trytond.modules.company.tests.tools import (
     ...     create_company, get_company)
     >>> from trytond.modules.account.tests.tools import (
@@ -206,14 +206,12 @@ Run fetch order::
     >>> line, = [l for l in sale.lines if l.product]
     >>> line.quantity
     2.0
-    >>> line.unit == unit
-    True
+    >>> assertEqual(line.unit, unit)
     >>> line.unit_price
     Decimal('100.0000')
     >>> line.secondary_quantity
     50.0
-    >>> line.secondary_unit == cm
-    True
+    >>> assertEqual(line.secondary_unit, cm)
     >>> line.secondary_unit_price
     Decimal('4.0000')
 

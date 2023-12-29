@@ -7,7 +7,7 @@ Imports::
     >>> import datetime as dt
     >>> from decimal import Decimal
     >>> from proteus import Model
-    >>> from trytond.tests.tools import activate_modules
+    >>> from trytond.tests.tools import activate_modules, assertEqual
     >>> from trytond.modules.currency.tests.tools import get_currency
     >>> from trytond.modules.company.tests.tools import create_company, \
     ...     get_company
@@ -103,8 +103,7 @@ EC Operation and VATList report uses company currency::
     ...     }
     >>> with config.set_context(context):
     ...     record, = VatList.find([])
-    >>> record.party == party
-    True
+    >>> assertEqual(record.party, party)
     >>> record.amount
     Decimal('121.00')
     >>> ECOperationList = Model.get('account.reporting.es_ec_operation_list')
@@ -115,8 +114,7 @@ EC Operation and VATList report uses company currency::
     ...     }
     >>> with config.set_context(context):
     ...     record, = ECOperationList.find([])
-    >>> record.party == supplier
-    True
+    >>> assertEqual(record.party, supplier)
     >>> record.amount
     Decimal('50.00')
     >>> VatBook = Model.get('account.reporting.vat_book_es')
@@ -127,8 +125,7 @@ EC Operation and VATList report uses company currency::
     ...     }
     >>> with config.set_context(context):
     ...     record, = VatBook.find([])
-    >>> record.party == party
-    True
+    >>> assertEqual(record.party, party)
     >>> record.base_amount
     Decimal('100.00')
     >>> record.tax_amount

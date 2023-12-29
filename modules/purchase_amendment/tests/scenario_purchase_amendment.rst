@@ -6,7 +6,7 @@ Imports::
 
     >>> from decimal import Decimal
     >>> from proteus import Model, Wizard
-    >>> from trytond.tests.tools import activate_modules
+    >>> from trytond.tests.tools import activate_modules, assertEqual
     >>> from trytond.modules.company.tests.tools import create_company, \
     ...     get_company
     >>> from trytond.modules.account.tests.tools import create_fiscalyear, \
@@ -101,8 +101,7 @@ Add an amendment::
     >>> line.action = 'payment_term'
     >>> line = amendment.lines.new()
     >>> line.action = 'party'
-    >>> line.party == supplier1
-    True
+    >>> assertEqual(line.party, supplier1)
     >>> line.party = supplier2
     >>> line = amendment.lines.new()
     >>> line.action = 'warehouse'
@@ -111,8 +110,7 @@ Add an amendment::
     >>> line = amendment.lines.new()
     >>> line.action = 'line'
     >>> line.line = purchase.lines[0]
-    >>> line.product == product1
-    True
+    >>> assertEqual(line.product, product1)
     >>> line.product = product2
     >>> line.quantity
     5.0
@@ -133,11 +131,9 @@ Validate amendment::
     >>> purchase.reload()
     >>> purchase.revision
     1
-    >>> purchase.party == supplier2
-    True
+    >>> assertEqual(purchase.party, supplier2)
     >>> line = purchase.lines[0]
-    >>> line.product == product2
-    True
+    >>> assertEqual(line.product, product2)
     >>> line.quantity
     4.0
     >>> line.unit_price
@@ -149,15 +145,13 @@ Validate amendment::
     Decimal('46.00')
 
     >>> move, = purchase.moves
-    >>> move.product == product2
-    True
+    >>> assertEqual(move.product, product2)
     >>> move.quantity
     4.0
 
     >>> invoice, = purchase.invoices
     >>> line = invoice.lines[0]
-    >>> line.product == product2
-    True
+    >>> assertEqual(line.product, product2)
     >>> line.quantity
     4.0
     >>> line.unit_price

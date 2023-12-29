@@ -6,7 +6,7 @@ Imports::
 
     >>> from decimal import Decimal
     >>> from proteus import Model, Wizard
-    >>> from trytond.tests.tools import activate_modules
+    >>> from trytond.tests.tools import activate_modules, assertEqual
     >>> from trytond.modules.company.tests.tools import create_company, \
     ...     get_company
 
@@ -94,14 +94,11 @@ Execute internal supply::
     >>> shipment.state
     'request'
     >>> move, = shipment.moves
-    >>> move.product.id == product.id
-    True
+    >>> assertEqual(move.product, product)
     >>> move.quantity
     40.0
-    >>> move.from_location.id == overflowed_storage_loc.id
-    True
-    >>> move.to_location.id == overflow_loc.id
-    True
+    >>> assertEqual(move.from_location, overflowed_storage_loc)
+    >>> assertEqual(move.to_location, overflow_loc)
 
 Using an overflow location
 --------------------------
@@ -132,11 +129,8 @@ Execute internal supply::
     >>> shipment.state
     'request'
     >>> move, = shipment.moves
-    >>> move.product.id == product.id
-    True
+    >>> assertEqual(move.product, product)
     >>> move.quantity
     10.0
-    >>> move.from_location.id == sec_overflowed_storage_loc.id
-    True
-    >>> move.to_location.id == overflow_loc.id
-    True
+    >>> assertEqual(move.from_location, sec_overflowed_storage_loc)
+    >>> assertEqual(move.to_location, overflow_loc)

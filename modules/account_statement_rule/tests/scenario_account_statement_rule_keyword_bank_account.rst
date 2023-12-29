@@ -7,7 +7,7 @@ Imports::
     >>> import datetime as dt
     >>> from decimal import Decimal
     >>> from proteus import Model
-    >>> from trytond.tests.tools import activate_modules
+    >>> from trytond.tests.tools import activate_modules, assertEqual
     >>> from trytond.modules.company.tests.tools import (
     ...     create_company, get_company)
     >>> from trytond.modules.account.tests.tools import (
@@ -106,8 +106,7 @@ Apply rules on statement match::
 
     >>> statement.click('apply_rules')
     >>> line, = statement.lines
-    >>> line.party == customer
-    True
+    >>> assertEqual(line.party, customer)
 
     >>> statement.click('validate_statement')
     >>> statement.click('post')
@@ -135,7 +134,5 @@ Now a party is found::
     >>> line, = statement.lines
     >>> line.amount
     Decimal('50.00')
-    >>> line.party == customer
-    True
-    >>> line.account == accounts['receivable']
-    True
+    >>> assertEqual(line.party, customer)
+    >>> assertEqual(line.account, accounts['receivable'])

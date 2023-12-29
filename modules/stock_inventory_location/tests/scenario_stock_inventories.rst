@@ -5,7 +5,7 @@ Stock Inventories Scenario
 Imports::
 
     >>> from proteus import Model, Wizard
-    >>> from trytond.tests.tools import activate_modules
+    >>> from trytond.tests.tools import activate_modules, assertEqual
     >>> from trytond.modules.company.tests.tools import create_company
 
 Activate modules::
@@ -33,7 +33,6 @@ Create inventories::
     >>> inventories, = create.actions
     >>> len(inventories)
     2
-    >>> {i.location for i in inventories} == {storage_loc, storage_loc2}
-    True
+    >>> assertEqual({i.location for i in inventories}, {storage_loc, storage_loc2})
     >>> inventories[0].empty_quantity
     'keep'

@@ -6,7 +6,8 @@ Imports::
 
     >>> from decimal import Decimal
     >>> from proteus import Model, Wizard
-    >>> from trytond.tests.tools import activate_modules
+    >>> from trytond.tests.tools import (
+    ...     activate_modules, assertEqual, assertTrue)
     >>> from trytond.modules.currency.tests.tools import get_currency
     >>> from trytond.modules.company.tests.tools import create_company
     >>> from trytond.modules.account.tests.tools import (
@@ -107,8 +108,8 @@ Reconcile lines::
     >>> reconcile_lines.state
     'end'
 
-    >>> reconcile1.reconciliation == reconcile2.reconciliation != None
-    True
+    >>> assertEqual(reconcile1.reconciliation, reconcile2.reconciliation)
+    >>> assertTrue(reconcile1.reconciliation)
     >>> reconciliation, = Reconciliation.find([])
     >>> len(reconciliation.lines)
     3

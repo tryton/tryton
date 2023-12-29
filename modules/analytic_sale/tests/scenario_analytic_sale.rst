@@ -7,7 +7,7 @@ Imports::
     >>> from decimal import Decimal
     >>> from operator import attrgetter
     >>> from proteus import Model, Wizard, Report
-    >>> from trytond.tests.tools import activate_modules, set_user
+    >>> from trytond.tests.tools import activate_modules, set_user, assertEqual
     >>> from trytond.modules.company.tests.tools import create_company, \
     ...     get_company
     >>> from trytond.modules.account.tests.tools import create_fiscalyear, \
@@ -103,8 +103,7 @@ Sale with analytic accounts::
     >>> sale.invoice_method = 'order'
     >>> sale_line = sale.lines.new()
     >>> entry, = sale_line.analytic_accounts
-    >>> entry.root == root
-    True
+    >>> assertEqual(entry.root, root)
     >>> entry.account = analytic_account
     >>> sale_line.product = product
     >>> sale_line.quantity = 5
@@ -119,8 +118,7 @@ Check analytic accounts on invoice::
     >>> invoice = Invoice(sale.invoices[0].id)
     >>> invoice_line, = invoice.lines
     >>> entry, = invoice_line.analytic_accounts
-    >>> entry.account == analytic_account
-    True
+    >>> assertEqual(entry.account, analytic_account)
 
 Sale with an empty analytic account::
 

@@ -7,7 +7,7 @@ Imports::
     >>> from dateutil.relativedelta import relativedelta
     >>> from decimal import Decimal
     >>> from proteus import Model
-    >>> from trytond.tests.tools import activate_modules
+    >>> from trytond.tests.tools import activate_modules, assertEqual
     >>> from trytond.modules.company.tests.tools import create_company, \
     ...     get_company
     >>> from trytond.modules.account.tests.tools import create_fiscalyear, \
@@ -164,18 +164,16 @@ Check sale reporting per customer::
     >>> len(reports)
     2
     >>> with config.set_context(context=context):
-    ...     sorted((r.customer.id, r.number, r.revenue) for r in reports) == \
-    ...     sorted([(customer1.id, 1, Decimal('30')),
-    ...             (customer2.id, 1, Decimal('10'))])
-    True
+    ...     assertEqual({(r.customer.id, r.number, r.revenue) for r in reports},
+    ...         {(customer1.id, 1, Decimal('30')),
+    ...             (customer2.id, 1, Decimal('10'))})
     >>> len(time_series)
     2
     >>> with config.set_context(context=context):
-    ...     sorted((r.customer.id, r.date, r.number, r.revenue)
-    ...         for r in time_series) == sorted(
-    ...     [(customer1.id, sale1.sale_date.replace(day=1), 1, Decimal('30')),
-    ...     (customer2.id, sale2.sale_date.replace(day=1), 1, Decimal('10'))])
-    True
+    ...     assertEqual({(r.customer.id, r.date, r.number, r.revenue)
+    ...             for r in time_series},
+    ...         {(customer1.id, sale1.sale_date.replace(day=1), 1, Decimal('30')),
+    ...         (customer2.id, sale2.sale_date.replace(day=1), 1, Decimal('10'))})
 
 Check sale reporting per customer categories::
 
@@ -190,29 +188,26 @@ Check sale reporting per customer categories::
     >>> len(reports)
     3
     >>> with config.set_context(context=context):
-    ...     sorted((r.category.id, r.number, r.revenue) for r in reports) == \
-    ...     sorted([(party_category_child1.id, 1, Decimal('30')),
+    ...     assertEqual({(r.category.id, r.number, r.revenue) for r in reports},
+    ...     {(party_category_child1.id, 1, Decimal('30')),
     ...         (party_category_root2.id, 1, Decimal('30')),
-    ...         (party_category_child2.id, 1, Decimal('10'))])
-    True
+    ...         (party_category_child2.id, 1, Decimal('10'))})
     >>> len(time_series)
     3
     >>> with config.set_context(context=context):
-    ...     sorted((r.category.id, r.date, r.number, r.revenue)
-    ...         for r in time_series) == sorted(
-    ...     [(party_category_child1.id, sale1.sale_date.replace(day=1), 1, Decimal('30')),
+    ...     assertEqual({(r.category.id, r.date, r.number, r.revenue)
+    ...         for r in time_series},
+    ...     {(party_category_child1.id, sale1.sale_date.replace(day=1), 1, Decimal('30')),
     ...     (party_category_root2.id, sale1.sale_date.replace(day=1), 1, Decimal('30')),
-    ...     (party_category_child2.id, sale2.sale_date.replace(day=1), 1, Decimal('10'))])
-    True
+    ...     (party_category_child2.id, sale2.sale_date.replace(day=1), 1, Decimal('10'))})
     >>> len(tree)
     4
     >>> with config.set_context(context=context):
-    ...     sorted((r.name, r.revenue) for r in tree) == sorted([
-    ...         ('Root1', Decimal('40')),
+    ...     assertEqual({(r.name, r.revenue) for r in tree},
+    ...         {('Root1', Decimal('40')),
     ...         ('Child1', Decimal('30')),
     ...         ('Child2', Decimal('10')),
-    ...         ('Root2', Decimal('30'))])
-    True
+    ...         ('Root2', Decimal('30'))})
     >>> child1, = CustomerCategoryTree.find([('rec_name', '=', 'Child1')])
     >>> child1.rec_name
     'Child1'
@@ -227,19 +222,17 @@ Check sale reporting per product::
     >>> len(reports)
     2
     >>> with config.set_context(context=context):
-    ...     sorted((r.product.id, r.number, r.revenue) for r in reports) == \
-    ...     sorted([(product1.id, 2, Decimal('30')),
-    ...         (product2.id, 1, Decimal('10'))])
-    True
+    ...     assertEqual({(r.product.id, r.number, r.revenue) for r in reports},
+    ...     {(product1.id, 2, Decimal('30')),
+    ...         (product2.id, 1, Decimal('10'))})
     >>> len(time_series)
     3
     >>> with config.set_context(context=context):
-    ...     sorted((r.product.id, r.date, r.number, r.revenue)
-    ...         for r in time_series) == sorted(
-    ...     [(product1.id, sale1.sale_date.replace(day=1), 1, Decimal('20')),
+    ...     assertEqual({(r.product.id, r.date, r.number, r.revenue)
+    ...         for r in time_series},
+    ...     {(product1.id, sale1.sale_date.replace(day=1), 1, Decimal('20')),
     ...     (product2.id, sale1.sale_date.replace(day=1), 1, Decimal('10')),
-    ...     (product1.id, sale2.sale_date.replace(day=1), 1, Decimal('10'))])
-    True
+    ...     (product1.id, sale2.sale_date.replace(day=1), 1, Decimal('10'))})
 
 Check sale reporting per product categories::
 
@@ -254,35 +247,32 @@ Check sale reporting per product categories::
     >>> len(reports)
     4
     >>> with config.set_context(context=context):
-    ...     sorted((r.category.id, r.number, r.revenue) for r in reports) == \
-    ...     sorted([(category_child1.id, 2, Decimal('30')),
+    ...     assertEqual({(r.category.id, r.number, r.revenue) for r in reports},
+    ...     {(category_child1.id, 2, Decimal('30')),
     ...         (category_root2.id, 2, Decimal('30')),
     ...         (category_child2.id, 1, Decimal('10')),
-    ...         (account_category.id, 2, Decimal('40'))])
-    True
+    ...         (account_category.id, 2, Decimal('40'))})
     >>> len(time_series)
     7
     >>> with config.set_context(context=context):
-    ...     sorted((r.category.id, r.date, r.number, r.revenue)
-    ...         for r in time_series) == sorted(
-    ...     [(category_child1.id, sale1.sale_date.replace(day=1), 1, Decimal('20')),
+    ...     assertEqual({(r.category.id, r.date, r.number, r.revenue)
+    ...         for r in time_series},
+    ...     {(category_child1.id, sale1.sale_date.replace(day=1), 1, Decimal('20')),
     ...     (category_root2.id, sale1.sale_date.replace(day=1), 1, Decimal('20')),
     ...     (category_child2.id, sale1.sale_date.replace(day=1), 1, Decimal('10')),
     ...     (category_child1.id, sale2.sale_date.replace(day=1), 1, Decimal('10')),
     ...     (category_root2.id, sale2.sale_date.replace(day=1), 1, Decimal('10')),
     ...     (account_category.id, sale1.sale_date.replace(day=1), 1, Decimal('30')),
-    ...     (account_category.id, sale2.sale_date.replace(day=1), 1, Decimal('10'))])
-    True
+    ...     (account_category.id, sale2.sale_date.replace(day=1), 1, Decimal('10'))})
     >>> len(tree)
     5
     >>> with config.set_context(context=context):
-    ...     sorted((r.name, r.revenue) for r in tree) == sorted([
-    ...         ('Root1', Decimal('40')),
+    ...     assertEqual({(r.name, r.revenue) for r in tree},
+    ...         {('Root1', Decimal('40')),
     ...         ('Child1', Decimal('30')),
     ...         ('Child2', Decimal('10')),
     ...         ('Root2', Decimal('30')),
-    ...         ('Account Category', Decimal('40'))])
-    True
+    ...         ('Account Category', Decimal('40'))})
     >>> child1, = ProductCategoryTree.find([('rec_name', '=', 'Child1')])
     >>> child1.rec_name
     'Child1'
@@ -311,16 +301,14 @@ Check sale reporting per countries::
     >>> len(country_time_series)
     2
     >>> with config.set_context(context=context):
-    ...     sorted((r.country.id, r.date, r.number, r.revenue)
-    ...         for r in country_time_series) == sorted(
-    ...     [(country_us.id, sale1.sale_date.replace(day=1), 1, Decimal('30')),
-    ...     (country_us.id, sale2.sale_date.replace(day=1), 1, Decimal('10'))])
-    True
+    ...     assertEqual({(r.country.id, r.date, r.number, r.revenue)
+    ...         for r in country_time_series},
+    ...     {(country_us.id, sale1.sale_date.replace(day=1), 1, Decimal('30')),
+    ...     (country_us.id, sale2.sale_date.replace(day=1), 1, Decimal('10'))})
     >>> len(subdivision_time_series)
     2
     >>> with config.set_context(context=context):
-    ...     sorted((r.subdivision.id, r.date, r.number, r.revenue)
-    ...         for r in subdivision_time_series) == sorted(
-    ...     [(california.id, sale1.sale_date.replace(day=1), 1, Decimal('30')),
-    ...     (new_york.id, sale2.sale_date.replace(day=1), 1, Decimal('10'))])
-    True
+    ...     assertEqual({(r.subdivision.id, r.date, r.number, r.revenue)
+    ...         for r in subdivision_time_series},
+    ...     {(california.id, sale1.sale_date.replace(day=1), 1, Decimal('30')),
+    ...     (new_york.id, sale2.sale_date.replace(day=1), 1, Decimal('10'))})

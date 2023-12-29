@@ -7,7 +7,7 @@ Imports::
     >>> import datetime as dt
     >>> from decimal import Decimal
     >>> from proteus import Model, Wizard
-    >>> from trytond.tests.tools import activate_modules
+    >>> from trytond.tests.tools import activate_modules, assertEqual
     >>> from trytond.modules.company.tests.tools import create_company, \
     ...     get_company
     >>> from trytond.modules.account.tests.tools import create_fiscalyear, \
@@ -86,29 +86,23 @@ Partially pay line::
     >>> pay_line = Wizard('account.move.line.pay', [line])
     >>> pay_line.form.date = tomorrow
     >>> pay_line.execute('next_')
-    >>> pay_line.form.journal == payment_journal
-    True
+    >>> assertEqual(pay_line.form.journal, payment_journal)
     >>> pay_line.execute('next_')
     >>> payment, = Payment.find()
-    >>> payment.date == tomorrow
-    True
-    >>> payment.party == supplier
-    True
+    >>> assertEqual(payment.date, tomorrow)
+    >>> assertEqual(payment.party, supplier)
     >>> payment.amount
     Decimal('50.00')
     >>> payment.amount = Decimal('20.00')
     >>> payment.click('submit')
-    >>> payment.submitted_by == employee
-    True
+    >>> assertEqual(payment.submitted_by, employee)
     >>> payment.click('approve')
-    >>> payment.approved_by == employee
-    True
+    >>> assertEqual(payment.approved_by, employee)
     >>> payment.state
     'approved'
     >>> process_payment = payment.click('process_wizard')
     >>> group, = process_payment.actions[0]
-    >>> group.payments == [payment]
-    True
+    >>> assertEqual(group.payments, [payment])
     >>> payment.state
     'processing'
     >>> line.reload()
@@ -130,8 +124,7 @@ Success the payment and recheck the payment group::
 
     >>> group.click('succeed')
     >>> payment.reload()
-    >>> payment.succeeded_by == employee
-    True
+    >>> assertEqual(payment.succeeded_by, employee)
     >>> payment.state
     'succeeded'
     >>> group.reload()
@@ -146,8 +139,7 @@ Search for the completed payment::
     >>> group, = PaymentGroup.find([('payment_complete', '=', 'True')])
     >>> group.payment_complete
     True
-    >>> group.id == payment.group.id
-    True
+    >>> assertEqual(group, payment.group)
 
 Partially fail to pay the remaining::
 
@@ -165,8 +157,7 @@ Partially fail to pay the remaining::
     Decimal('0.00')
     >>> payment.reload()
     >>> payment.click('fail')
-    >>> payment.failed_by == employee
-    True
+    >>> assertEqual(payment.failed_by, employee)
     >>> payment.state
     'failed'
     >>> payment.group.payment_complete

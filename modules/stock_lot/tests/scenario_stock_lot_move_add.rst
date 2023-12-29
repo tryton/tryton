@@ -6,7 +6,7 @@ Imports::
 
     >>> from decimal import Decimal
     >>> from proteus import Model, Wizard
-    >>> from trytond.tests.tools import activate_modules
+    >>> from trytond.tests.tools import activate_modules, assertEqual
     >>> from trytond.modules.company.tests.tools import (
     ...     create_company, get_company)
 
@@ -60,12 +60,10 @@ Create a lot::
 Add few lots::
 
     >>> add_lots = move.click('add_lots_wizard')
-    >>> add_lots.form.product== product
-    True
+    >>> assertEqual(add_lots.form.product, product)
     >>> add_lots.form.quantity
     10.0
-    >>> add_lots.form.unit == unit
-    True
+    >>> assertEqual(add_lots.form.unit, unit)
     >>> add_lots.form.quantity_remaining
     10.0
 
@@ -90,8 +88,7 @@ Check moves::
     >>> move, = Move.find([('lot.number', '=', '02')])
     >>> move.quantity
     1.0
-    >>> move.lot == lot2
-    True
+    >>> assertEqual(move.lot, lot2)
     >>> move, = Move.find([('lot', '=', None)])
     >>> move.quantity
     7.0

@@ -8,7 +8,7 @@ Imports::
     >>> from decimal import Decimal
 
     >>> from proteus import Model, Wizard
-    >>> from trytond.tests.tools import activate_modules, set_user
+    >>> from trytond.tests.tools import activate_modules, set_user, assertEqual
     >>> from trytond.modules.company.tests.tools import (
     ...     create_company, get_company)
     >>> from trytond.modules.account.tests.tools import (
@@ -101,8 +101,7 @@ Fail the payment::
     >>> payment.click('submit')
     >>> process_payment = payment.click('process_wizard')
     >>> group, = process_payment.actions[0]
-    >>> group.payments == [payment]
-    True
+    >>> assertEqual(group.payments, [payment])
     >>> payment.click('fail')
     >>> payment.state
     'failed'
@@ -115,8 +114,7 @@ Create dunning::
     >>> create_dunning = Wizard('account.dunning.create')
     >>> create_dunning.execute('create_')
     >>> dunning, = Dunning.find([])
-    >>> dunning.line == line
-    True
+    >>> assertEqual(dunning.line, line)
 
 Recreate a payment::
 

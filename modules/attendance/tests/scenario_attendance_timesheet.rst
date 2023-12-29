@@ -8,7 +8,7 @@ Imports::
     >>> from dateutil.relativedelta import relativedelta
     >>> from proteus import Model
     >>> from trytond import backend
-    >>> from trytond.tests.tools import activate_modules
+    >>> from trytond.tests.tools import activate_modules, assertEqual
     >>> from trytond.modules.company.tests.tools import create_company, \
     ...     get_company
 
@@ -75,7 +75,4 @@ Check attendance time sheet::
     >>> if backend.name != 'sqlite':
     ...     sheet, = Sheet.find([('date', '=', dt.date(2020, 4, 2))])
     ...     sheet.duration
-    ...     sheet.timesheet_duration == dt.timedelta(hours=2)
-    ... else:
-    ...     True
-    True
+    ...     assertEqual(sheet.timesheet_duration, dt.timedelta(hours=2))

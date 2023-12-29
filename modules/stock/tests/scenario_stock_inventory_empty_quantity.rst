@@ -7,7 +7,7 @@ Imports::
     >>> import datetime as dt
     >>> from decimal import Decimal
     >>> from proteus import Model, Wizard
-    >>> from trytond.tests.tools import activate_modules
+    >>> from trytond.tests.tools import activate_modules, assertEqual
     >>> from trytond.modules.company.tests.tools import create_company, \
     ...     get_company
 
@@ -82,7 +82,5 @@ Creating an inventory with empty quantities creates and empty move::
     >>> move, = line.moves
     >>> move.quantity
     1.0
-    >>> move.from_location == inventory.location
-    True
-    >>> move.to_location == lost_found_loc
-    True
+    >>> assertEqual(move.from_location, inventory.location)
+    >>> assertEqual(move.to_location, lost_found_loc)

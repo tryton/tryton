@@ -9,7 +9,7 @@ Imports::
     >>> import datetime as dt
 
     >>> from proteus import Model, Wizard
-    >>> from trytond.tests.tools import activate_modules
+    >>> from trytond.tests.tools import activate_modules, assertEqual
     >>> from trytond.modules.company.tests.tools import (
     ...     create_company, get_company)
 
@@ -134,15 +134,12 @@ Check early planning::
 
     >>> plan, = QuantityEarlyPlan.find(
     ...     [('origin', '=', str(shipment_int1))])
-    >>> plan.earlier_date == week1
-    True
+    >>> assertEqual(plan.earlier_date, week1)
 
     >>> plan, = QuantityEarlyPlan.find(
     ...     [('origin', '=', str(shipment_int2))])
-    >>> plan.earlier_date == today
-    True
+    >>> assertEqual(plan.earlier_date, today)
 
     >>> plan, = QuantityEarlyPlan.find(
     ...     [('origin', '=', str(shipment_out))])
-    >>> plan.earlier_date == week1
-    True
+    >>> assertEqual(plan.earlier_date, week1)

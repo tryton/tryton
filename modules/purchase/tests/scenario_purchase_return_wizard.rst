@@ -6,7 +6,7 @@ Imports::
 
     >>> from decimal import Decimal
     >>> from proteus import Model, Wizard
-    >>> from trytond.tests.tools import activate_modules
+    >>> from trytond.tests.tools import activate_modules, assertEqual
     >>> from trytond.modules.company.tests.tools import create_company, \
     ...     get_company
     >>> from trytond.modules.account.tests.tools import create_fiscalyear, \
@@ -88,7 +88,6 @@ Return purchase using the wizard::
     >>> returned_purchase, = Purchase.find([
     ...     ('state', '=', 'draft'),
     ...     ])
-    >>> returned_purchase.origin == purchase_to_return
-    True
+    >>> assertEqual(returned_purchase.origin, purchase_to_return)
     >>> sorted([x.quantity or 0 for x in returned_purchase.lines])
     [-1.0, 0]

@@ -7,7 +7,7 @@ Imports::
     >>> import datetime as dt
     >>> from decimal import Decimal
     >>> from proteus import Model, Wizard
-    >>> from trytond.tests.tools import activate_modules
+    >>> from trytond.tests.tools import activate_modules, assertEqual
     >>> from trytond.modules.company.tests.tools import create_company, \
     ...     get_company
     >>> from trytond.modules.account.tests.tools import create_fiscalyear, \
@@ -72,8 +72,7 @@ Paying the line without date uses the maturity date::
     >>> pay_line.execute('next_')
     >>> pay_line.execute('next_')
     >>> payment, = Payment.find()
-    >>> payment.date == next_week
-    True
+    >>> assertEqual(payment.date, next_week)
 
 The date on the payment wizard is used for payment date::
 
@@ -83,5 +82,4 @@ The date on the payment wizard is used for payment date::
     >>> pay_line.execute('next_')
     >>> pay_line.execute('next_')
     >>> payment, = Payment.find()
-    >>> payment.date == tomorrow
-    True
+    >>> assertEqual(payment.date, tomorrow)

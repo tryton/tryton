@@ -7,7 +7,7 @@ Imports::
     >>> import datetime as dt
     >>> from decimal import Decimal
     >>> from proteus import Model, Wizard
-    >>> from trytond.tests.tools import activate_modules, set_user
+    >>> from trytond.tests.tools import activate_modules, set_user, assertEqual
     >>> from trytond.modules.company.tests.tools import create_company, \
     ...     get_company
     >>> from trytond.modules.account.tests.tools import (
@@ -76,8 +76,7 @@ The agent is assigned on quotation::
     >>> sale.click('quote')
     >>> sale.state
     'quotation'
-    >>> sale.agent == agent
-    True
+    >>> assertEqual(sale.agent, agent)
 
 Agent is not set for yesterday sales::
 
@@ -107,7 +106,5 @@ Creating a sale and test agent is assigned::
     >>> sale.click('quote')
     >>> sale.state
     'quotation'
-    >>> sale.quoted_by == employee
-    True
-    >>> sale.agent == agent
-    True
+    >>> assertEqual(sale.quoted_by, employee)
+    >>> assertEqual(sale.agent, agent)

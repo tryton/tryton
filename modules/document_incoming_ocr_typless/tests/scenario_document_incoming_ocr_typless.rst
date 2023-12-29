@@ -8,7 +8,7 @@ Imports::
     >>> from decimal import Decimal
 
     >>> from proteus import Model
-    >>> from trytond.tests.tools import activate_modules
+    >>> from trytond.tests.tools import activate_modules, assertEqual
     >>> from trytond.tools import file_open
     >>> from trytond.modules.account.tests.tools import (
     ...     create_chart, create_fiscalyear, get_accounts, create_tax)
@@ -97,8 +97,7 @@ Process document::
 
     >>> document.click('process')
     >>> invoice = document.result
-    >>> invoice.party == suppplier
-    True
+    >>> assertEqual(invoice.party, suppplier)
     >>> invoice.reference
     'INV-0007'
     >>> invoice.invoice_date
@@ -108,8 +107,7 @@ Process document::
     >>> len(invoice.lines)
     2
     >>> line_service, = [l for l in invoice.lines if l.product]
-    >>> line_service.product == service
-    True
+    >>> assertEqual(line_service.product, service)
     >>> line_service.quantity
     23.0
     >>> line_service.unit_price
@@ -125,8 +123,7 @@ Process document::
     [Decimal('5.75'), Decimal('40.00')]
     >>> sorted([t.base for t in invoice.taxes])
     [Decimal('57.50'), Decimal('200.00')]
-    >>> {t.tax for t in invoice.taxes} == {tax_10, tax_20}
-    True
+    >>> assertEqual({t.tax for t in invoice.taxes}, {tax_10, tax_20})
     >>> invoice.untaxed_amount
     Decimal('257.50')
     >>> invoice.tax_amount

@@ -6,7 +6,7 @@ Imports::
 
     >>> from decimal import Decimal
     >>> from proteus import Model, Wizard
-    >>> from trytond.tests.tools import activate_modules
+    >>> from trytond.tests.tools import activate_modules, assertEqual
     >>> from trytond.modules.company.tests.tools import create_company, \
     ...     get_company
     >>> from trytond.modules.account.tests.tools import create_fiscalyear, \
@@ -94,13 +94,10 @@ Cancel reversal Move::
     >>> line, _ = [l for l in move.lines if l.account == receivable]
     >>> cancel_move, = [l.move for l in line.reconciliation.lines
     ...     if l.move != move]
-    >>> cancel_move.origin == move
-    True
+    >>> assertEqual(cancel_move.origin, move)
     >>> cancel_move.description
     'Reversal'
-    >>> sorted([l.origin.id for l in cancel_move.lines]) == \
-    ...     sorted(map(int, move.lines))
-    True
+    >>> assertEqual({l.origin for l in cancel_move.lines}, set(move.lines))
     >>> revenue.reload()
     >>> revenue.credit
     Decimal('42.00')
@@ -132,13 +129,10 @@ Cancel Move::
     >>> line, _ = [l for l in move.lines if l.account == receivable]
     >>> cancel_move, = [l.move for l in line.reconciliation.lines
     ...     if l.move != move]
-    >>> cancel_move.origin == move
-    True
+    >>> assertEqual(cancel_move.origin, move)
     >>> cancel_move.description
     'Cancel'
-    >>> sorted([l.origin.id for l in cancel_move.lines]) == \
-    ...     sorted(map(int, move.lines))
-    True
+    >>> assertEqual({l.origin for l in cancel_move.lines}, set(move.lines))
     >>> revenue.reload()
     >>> revenue.credit
     Decimal('0.00')

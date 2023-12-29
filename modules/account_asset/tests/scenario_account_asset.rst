@@ -7,7 +7,7 @@ Imports::
     >>> from dateutil.relativedelta import relativedelta
     >>> from decimal import Decimal
     >>> from proteus import Model, Wizard
-    >>> from trytond.tests.tools import activate_modules
+    >>> from trytond.tests.tools import activate_modules, assertEqual
     >>> from trytond.modules.company.tests.tools import create_company, \
     ...     get_company
     >>> from trytond.modules.account.tests.tools import create_fiscalyear, \
@@ -94,8 +94,7 @@ Buy an asset::
     >>> invoice_line.product = asset_product
     >>> invoice_line.quantity = 1
     >>> invoice_line.unit_price = Decimal('1000')
-    >>> invoice_line.account == asset_account
-    True
+    >>> assertEqual(invoice_line.account, asset_account)
     >>> supplier_invoice.invoice_date = fiscalyear.start_date
     >>> supplier_invoice.click('post')
     >>> supplier_invoice.state
@@ -112,15 +111,12 @@ Depreciate the asset::
     >>> asset.supplier_invoice_line = invoice_line
     >>> asset.value
     Decimal('1000.00')
-    >>> asset.start_date == supplier_invoice.invoice_date
-    True
-    >>> asset.end_date == (supplier_invoice.invoice_date +
-    ...     relativedelta(years=2, days=-1))
-    True
+    >>> assertEqual(asset.start_date, supplier_invoice.invoice_date)
+    >>> assertEqual(asset.end_date, (supplier_invoice.invoice_date +
+    ...     relativedelta(years=2, days=-1)))
     >>> asset.quantity
     1.0
-    >>> asset.unit == unit
-    True
+    >>> assertEqual(asset.unit, unit)
     >>> asset.residual_value = Decimal('100')
     >>> asset.click('create_lines')
     >>> len(asset.lines)
@@ -173,12 +169,10 @@ Update the asset::
     Decimal('100.00')
     >>> update.form.date = (supplier_invoice.invoice_date
     ...     + relativedelta(months=2))
-    >>> update.form.latest_move_date == (supplier_invoice.invoice_date
-    ...     + relativedelta(months=3, days=-1))
-    True
-    >>> update.form.next_depreciation_date == (supplier_invoice.invoice_date
-    ...     + relativedelta(months=4, days=-1))
-    True
+    >>> assertEqual(update.form.latest_move_date, (supplier_invoice.invoice_date
+    ...     + relativedelta(months=3, days=-1)))
+    >>> assertEqual(update.form.next_depreciation_date, (supplier_invoice.invoice_date
+    ...     + relativedelta(months=4, days=-1)))
     >>> update.execute('create_move')
     Traceback (most recent call last):
         ...
@@ -239,14 +233,12 @@ Sale the asset::
     >>> invoice_line.asset = asset
     >>> invoice_line.quantity = 1
     >>> invoice_line.unit_price = Decimal('600')
-    >>> invoice_line.account == revenue
-    True
+    >>> assertEqual(invoice_line.account, revenue)
     >>> customer_invoice.click('post')
     >>> customer_invoice.state
     'posted'
     >>> asset.reload()
-    >>> asset.customer_invoice_line == customer_invoice.lines[0]
-    True
+    >>> assertEqual(asset.customer_invoice_line, customer_invoice.lines[0])
     >>> revenue.debit
     Decimal('860.72')
     >>> revenue.credit

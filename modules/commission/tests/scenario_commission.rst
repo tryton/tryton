@@ -7,7 +7,7 @@ Imports::
     >>> import datetime as dt
     >>> from decimal import Decimal
     >>> from proteus import Model, Wizard
-    >>> from trytond.tests.tools import activate_modules
+    >>> from trytond.tests.tools import activate_modules, assertEqual
     >>> from trytond.modules.company.tests.tools import create_company, \
     ...     get_company
     >>> from trytond.modules.account.tests.tools import create_fiscalyear, \
@@ -184,8 +184,8 @@ Pay invoice::
     >>> pay.state
     'end'
     >>> Commission = Model.get('commission')
-    >>> [c.date == tomorrow for c in Commission.find([])]
-    [True, True]
+    >>> for commission in Commission.find([]):
+    ...     assertEqual(commission.date, tomorrow)
 
 Create commission invoices::
 
@@ -199,11 +199,9 @@ Create commission invoices::
     ...         ])
     >>> invoice.total_amount
     Decimal('10.00')
-    >>> invoice.party == agent_party
-    True
+    >>> assertEqual(invoice.party, agent_party)
     >>> invoice_line, = invoice.lines
-    >>> invoice_line.product == commission_product
-    True
+    >>> assertEqual(invoice_line.product, commission_product)
 
     >>> invoice, = Invoice.find([
     ...         ('type', '=', 'out'),
@@ -225,8 +223,7 @@ Credit invoice::
     >>> credit = Wizard('account.invoice.credit', [invoice])
     >>> credit.execute('credit')
     >>> credit_note, = credit.actions[0]
-    >>> credit_note.agent == agent
-    True
+    >>> assertEqual(credit_note.agent, agent)
 
 Check commission reporting per agent::
 
@@ -241,8 +238,7 @@ Check commission reporting per agent::
     >>> reporting_agent.number
     1
 
-    >>> reporting_agent_timeseries.date == tomorrow
-    True
+    >>> assertEqual(reporting_agent_timeseries.date, tomorrow)
     >>> reporting_agent_timeseries.base_amount
     Decimal('100.00')
     >>> reporting_agent_timeseries.amount

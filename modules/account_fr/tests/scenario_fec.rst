@@ -9,7 +9,7 @@ Imports::
     >>> import io
     >>> from decimal import Decimal
     >>> from proteus import Model, Wizard
-    >>> from trytond.tests.tools import activate_modules
+    >>> from trytond.tests.tools import activate_modules, assertEqual
     >>> from trytond.modules.company.tests.tools import create_company, \
     ...     get_company
     >>> from trytond.modules.account.tests.tools import create_fiscalyear
@@ -200,8 +200,7 @@ Generate FEC::
     >>> template = template.format(
     ...         current_date=current_date,
     ...         )
-    >>> FEC.form.file.decode('utf-8') == template
-    True
+    >>> assertEqual(FEC.form.file.decode('utf-8'), template)
 
 Generate FEC for previous fiscal year::
 
@@ -210,5 +209,4 @@ Generate FEC for previous fiscal year::
     >>> FEC.execute('generate')
     >>> file = os.path.join(os.path.dirname(__file__), 'FEC-previous.csv')
     >>> with io.open(file, mode='rb') as fp:
-    ...     FEC.form.file.decode('utf-8') == fp.read().decode('utf-8')
-    True
+    ...     assertEqual(FEC.form.file.decode('utf-8'), fp.read().decode('utf-8'))

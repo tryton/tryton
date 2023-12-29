@@ -6,7 +6,7 @@ Imports::
 
     >>> import datetime as dt
     >>> from proteus import Model, Wizard
-    >>> from trytond.tests.tools import activate_modules
+    >>> from trytond.tests.tools import activate_modules, assertEqual
 
 Activate modules::
 
@@ -45,8 +45,7 @@ Set the role to the user::
 
     >>> len(user.groups)
     2
-    >>> user.groups == [groups[0], groups[1]]
-    True
+    >>> assertEqual(user.groups, [groups[0], groups[1]])
 
 Start the role in the future::
 

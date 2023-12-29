@@ -7,7 +7,7 @@ Imports::
     >>> import datetime as dt
     >>> from decimal import Decimal
     >>> from proteus import Model, Wizard
-    >>> from trytond.tests.tools import activate_modules
+    >>> from trytond.tests.tools import activate_modules, assertEqual
     >>> from trytond.modules.company.tests.tools import create_company, \
     ...     get_company
 
@@ -95,8 +95,7 @@ Test that to_location is child location on reception::
 
     >>> shipment_in.click('receive')
     >>> move, = shipment_in.inventory_moves
-    >>> move.to_location == child_loc
-    True
+    >>> assertEqual(move.to_location, child_loc)
 
 Create return shipment out::
 
@@ -122,5 +121,4 @@ Test that to_location is child location on reception::
 
     >>> shipment_out_return.click('receive')
     >>> move, = shipment_out_return.inventory_moves
-    >>> move.to_location == child_loc
-    True
+    >>> assertEqual(move.to_location, child_loc)

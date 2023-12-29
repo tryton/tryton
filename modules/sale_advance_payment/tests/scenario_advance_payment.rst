@@ -7,7 +7,7 @@ Imports::
     >>> import datetime as dt
     >>> from decimal import Decimal
     >>> from proteus import Model, Wizard
-    >>> from trytond.tests.tools import activate_modules
+    >>> from trytond.tests.tools import activate_modules, assertEqual
     >>> from trytond.modules.company.tests.tools import create_company, \
     ...     get_company
     >>> from trytond.modules.account.tests.tools import create_fiscalyear, \
@@ -135,8 +135,7 @@ As usual an invoice and a shipment has been created::
 
     >>> invoice, = sale.invoices
     >>> invoice_line, = invoice.lines
-    >>> invoice_line.account == revenue
-    True
+    >>> assertEqual(invoice_line.account, revenue)
     >>> invoice.total_amount
     Decimal('20.00')
     >>> len(sale.shipments)
@@ -164,12 +163,10 @@ The advance payment invoice has been created::
 
     >>> invoice, = sale.advance_payment_invoices
     >>> invoice_line, = invoice.lines
-    >>> invoice_line.account == advance_payment_account
-    True
+    >>> assertEqual(invoice_line.account, advance_payment_account)
     >>> invoice.total_amount
     Decimal('10.00')
-    >>> invoice.invoice_date == next_week
-    True
+    >>> assertEqual(invoice.invoice_date, next_week)
     >>> invoice.invoice_date = None
     >>> invoice.click('post')
     >>> sale.reload()
@@ -199,16 +196,13 @@ Let's pay the advance payment invoice::
     2
     >>> il1, il2 = sorted([il for il in invoice.lines],
     ...     key=lambda il: 1 if il.product else 0)
-    >>> il1.account == advance_payment_account
-    True
+    >>> assertEqual(il1.account, advance_payment_account)
     >>> il1.unit_price
     Decimal('10.00')
-    >>> il1.taxes_date == today
-    True
+    >>> assertEqual(il1.taxes_date, today)
     >>> il1.quantity
     -1.0
-    >>> il2.product == product
-    True
+    >>> assertEqual(il2.product, product)
     >>> il2.unit_price
     Decimal('20.0000')
     >>> il2.quantity
@@ -256,8 +250,7 @@ Let's try to pack it::
 Let's pay the advance payment invoice::
 
     >>> invoice, = sale.advance_payment_invoices
-    >>> invoice.invoice_date == next_week
-    True
+    >>> assertEqual(invoice.invoice_date, next_week)
     >>> invoice.invoice_date = None
     >>> invoice.click('post')
     >>> pay = invoice.click('pay')
@@ -316,8 +309,7 @@ There is no purchase request created yet::
 The advance payment invoice has been created, now pay it::
 
     >>> invoice, = sale.advance_payment_invoices
-    >>> invoice.invoice_date == next_week
-    True
+    >>> assertEqual(invoice.invoice_date, next_week)
     >>> invoice.invoice_date = None
     >>> invoice.click('post')
     >>> pay = invoice.click('pay')
@@ -404,8 +396,7 @@ it::
     >>> _, inv_recreated = sale.advance_payment_invoices
     >>> inv_recreated.total_amount
     Decimal('10.00')
-    >>> inv_recreated.invoice_date == next_week
-    True
+    >>> assertEqual(inv_recreated.invoice_date, next_week)
     >>> inv_recreated.invoice_date = None
     >>> inv_recreated.click('post')
     >>> pay = inv_recreated.click('pay')

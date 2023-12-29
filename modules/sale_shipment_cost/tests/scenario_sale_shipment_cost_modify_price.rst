@@ -6,7 +6,7 @@ Imports::
 
     >>> from decimal import Decimal
     >>> from proteus import Model
-    >>> from trytond.tests.tools import activate_modules
+    >>> from trytond.tests.tools import activate_modules, assertEqual
     >>> from trytond.modules.company.tests.tools import (
     ...     create_company, get_company)
 
@@ -79,8 +79,7 @@ Make a quote::
     >>> sale_line.quantity = 5.0
     >>> sale.click('quote')
     >>> cost_line = sale.lines[-1]
-    >>> cost_line.product == carrier_product
-    True
+    >>> assertEqual(cost_line.product, carrier_product)
     >>> cost_line.quantity
     1.0
     >>> cost_line.amount
@@ -93,8 +92,7 @@ Change the shipment cost price::
     >>> cost_line.unit_price = Decimal('2.00')
     >>> sale.click('quote')
     >>> cost_line = sale.lines[-1]
-    >>> cost_line.product == carrier_product
-    True
+    >>> assertEqual(cost_line.product, carrier_product)
     >>> cost_line.quantity
     1.0
     >>> cost_line.amount
@@ -108,8 +106,7 @@ Change the carrier price reset the cost line::
     >>> sale.click('draft')
     >>> sale.click('quote')
     >>> cost_line = sale.lines[-1]
-    >>> cost_line.product == carrier_product
-    True
+    >>> assertEqual(cost_line.product, carrier_product)
     >>> cost_line.quantity
     1.0
     >>> cost_line.amount

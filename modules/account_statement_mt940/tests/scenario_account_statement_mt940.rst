@@ -5,7 +5,7 @@ Account Statement MT940 Scenario
 Imports::
 
     >>> from proteus import Model, Wizard
-    >>> from trytond.tests.tools import activate_modules
+    >>> from trytond.tests.tools import activate_modules, assertEqual
     >>> from trytond.tools import file_open
     >>> from trytond.modules.currency.tests.tools import get_currency
     >>> from trytond.modules.company.tests.tools import (
@@ -110,8 +110,7 @@ Check Statement::
     datetime.date(2019, 7, 31)
     >>> origin.amount
     Decimal('100.00')
-    >>> origin.party == customer
-    True
+    >>> assertEqual(origin.party, customer)
     >>> origin.description
     '98.76.54.321 John Doe'
     >>> origin.information['mt940_reference']

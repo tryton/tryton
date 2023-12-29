@@ -6,7 +6,7 @@ Imports::
 
     >>> from decimal import Decimal
     >>> from proteus import Model
-    >>> from trytond.tests.tools import activate_modules
+    >>> from trytond.tests.tools import activate_modules, assertEqual
     >>> from trytond.modules.company.tests.tools import (
     ...     create_company, get_company)
 
@@ -79,8 +79,7 @@ Receive the shipment with one lot::
 Change lot and try to finish::
 
     >>> incoming_move, = shipment.inventory_moves
-    >>> incoming_move.lot == lot1
-    True
+    >>> assertEqual(incoming_move.lot, lot1)
     >>> incoming_move.lot = lot2
     >>> shipment.click('done')
     Traceback (most recent call last):

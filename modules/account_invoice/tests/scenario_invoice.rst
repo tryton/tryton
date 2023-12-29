@@ -8,7 +8,7 @@ Imports::
     >>> from decimal import Decimal
     >>> from operator import attrgetter
     >>> from proteus import Model, Wizard
-    >>> from trytond.tests.tools import activate_modules
+    >>> from trytond.tests.tools import activate_modules, assertEqual
     >>> from trytond.modules.company.tests.tools import create_company, \
     ...     get_company
     >>> from trytond.modules.account.tests.tools import create_fiscalyear, \
@@ -176,23 +176,20 @@ Create invoice::
 Test change tax::
 
     >>> tax_line, = invoice.taxes
-    >>> tax_line.tax == tax
-    True
+    >>> assertEqual(tax_line.tax, tax)
     >>> tax_line.tax = None
     >>> tax_line.tax = tax
 
 Validate invoice::
 
     >>> invoice.click('validate_invoice')
-    >>> invoice.validated_by == employee
-    True
+    >>> assertEqual(invoice.validated_by, employee)
 
 Post invoice::
 
     >>> invoice.invoice_date = today
     >>> invoice.click('post')
-    >>> invoice.posted_by == employee
-    True
+    >>> assertEqual(invoice.posted_by, employee)
     >>> invoice.state
     'posted'
     >>> invoice.tax_identifier.code
@@ -252,8 +249,8 @@ Credit invoice with refund::
     ...     ('type', '=', 'out'), ('id', '!=', invoice.id)])
     >>> credit_note.state
     'paid'
-    >>> all(line.taxes_date == today for line in credit_note.lines)
-    True
+    >>> for line in credit_note.lines:
+    ...     assertEqual(line.taxes_date, today)
     >>> receivable.reload()
     >>> receivable.debit
     Decimal('240.00')
@@ -370,16 +367,13 @@ Create some complex invoice and test its taxes base rounding::
     >>> invoice.save()
     >>> invoice.untaxed_amount
     Decimal('0.00')
-    >>> invoice.taxes[0].base == invoice.untaxed_amount
-    True
+    >>> assertEqual(invoice.taxes[0].base, invoice.untaxed_amount)
     >>> empty_invoice, found_invoice = Invoice.find(
     ...     [('untaxed_amount', '=', Decimal(0))], order=[('id', 'ASC')])
-    >>> found_invoice.id == invoice.id
-    True
+    >>> assertEqual(found_invoice, invoice)
     >>> empty_invoice, found_invoice = Invoice.find(
     ...     [('total_amount', '=', Decimal(0))], order=[('id', 'ASC')])
-    >>> found_invoice.id == invoice.id
-    True
+    >>> assertEqual(found_invoice, invoice)
 
 Clear company tax_identifier::
 

@@ -7,7 +7,7 @@ Imports::
     >>> from decimal import Decimal
 
     >>> from proteus import Model, Wizard
-    >>> from trytond.tests.tools import activate_modules
+    >>> from trytond.tests.tools import activate_modules, assertEqual
     >>> from trytond.modules.company.tests.tools import create_company, \
     ...     get_company
     >>> from trytond.modules.account.tests.tools import create_chart, \
@@ -154,19 +154,15 @@ Check supplier invoice line::
 
     >>> InvoiceLine = Model.get('account.invoice.line')
     >>> invoice_line, = InvoiceLine.find([('invoice_type', '=', 'in')])
-    >>> invoice_line.product == product
-    True
+    >>> assertEqual(invoice_line.product, product)
     >>> invoice_line.quantity
     4.0
-    >>> invoice_line.unit == unit
-    True
+    >>> assertEqual(invoice_line.unit, unit)
     >>> invoice_line.unit_price
     Decimal('4.0000')
-    >>> invoice_line.taxes == [supplier_tax]
-    True
+    >>> assertEqual(invoice_line.taxes, [supplier_tax])
     >>> move, = shipment.moves
-    >>> move.origin == invoice_line
-    True
+    >>> assertEqual(move.origin, invoice_line)
 
 Use supplier consignment stock for shipment out::
 
@@ -234,19 +230,15 @@ Use customer consignment stock::
 Check customer invoice line::
 
     >>> invoice_line, = InvoiceLine.find([('invoice_type', '=', 'out')])
-    >>> invoice_line.product == product
-    True
+    >>> assertEqual(invoice_line.product, product)
     >>> invoice_line.quantity
     1.0
-    >>> invoice_line.unit == unit
-    True
+    >>> assertEqual(invoice_line.unit, unit)
     >>> invoice_line.unit_price
     Decimal('10.0000')
-    >>> invoice_line.taxes == [customer_tax]
-    True
+    >>> assertEqual(invoice_line.taxes, [customer_tax])
     >>> move, = shipment.moves
-    >>> move.origin == invoice_line
-    True
+    >>> assertEqual(move.origin, invoice_line)
 
 Duplicate shipment clear origin::
 

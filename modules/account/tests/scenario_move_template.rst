@@ -7,7 +7,8 @@ Imports::
     >>> import datetime
     >>> from decimal import Decimal
     >>> from proteus import Model, Wizard
-    >>> from trytond.tests.tools import activate_modules
+    >>> from trytond.tests.tools import (
+    ...     activate_modules, assertEqual, assertLessEqual, assertGreaterEqual)
     >>> from trytond.modules.company.tests.tools import create_company, \
     ...     get_company
     >>> from trytond.modules.account.tests.tools import create_fiscalyear, \
@@ -95,23 +96,19 @@ Create Template::
 Create Move::
 
     >>> create_move = Wizard('account.move.template.create')
-    >>> create_move.form.date == today
-    True
+    >>> assertEqual(create_move.form.date, today)
     >>> period = create_move.form.period
-    >>> period.start_date <= today <= period.end_date
-    True
+    >>> assertLessEqual(period.start_date, today)
+    >>> assertGreaterEqual(period.end_date, today)
     >>> index = fiscalyear.periods.index(create_move.form.period)
     >>> next_period = fiscalyear.periods[index + 1]
     >>> create_move.form.date = next_period.start_date
-    >>> create_move.form.period == next_period
-    True
+    >>> assertEqual(create_move.form.period, next_period)
     >>> prev_period = fiscalyear.periods[index - 1]
     >>> create_move.form.period = prev_period
-    >>> create_move.form.date == prev_period.end_date
-    True
+    >>> assertEqual(create_move.form.date, prev_period.end_date)
     >>> create_move.form.period = next_period
-    >>> create_move.form.date == next_period.start_date
-    True
+    >>> assertEqual(create_move.form.date, next_period.start_date)
     >>> create_move.form.template = template
     >>> create_move.execute('keywords')
     >>> data = {}

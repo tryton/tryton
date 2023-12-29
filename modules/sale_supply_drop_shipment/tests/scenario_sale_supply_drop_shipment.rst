@@ -8,7 +8,7 @@ Imports::
     >>> from dateutil.relativedelta import relativedelta
     >>> from decimal import Decimal
     >>> from proteus import Model, Wizard
-    >>> from trytond.tests.tools import activate_modules, set_user
+    >>> from trytond.tests.tools import activate_modules, set_user, assertEqual
     >>> from trytond.modules.company.tests.tools import create_company, \
     ...     get_company
     >>> from trytond.modules.account.tests.tools import create_fiscalyear, \
@@ -171,10 +171,8 @@ Create Purchase from Request::
     >>> create_purchase = Wizard('purchase.request.create_purchase',
     ...     [purchase_request])
     >>> purchase, = Purchase.find()
-    >>> purchase.customer == customer
-    True
-    >>> purchase.delivery_address == sale.shipment_address
-    True
+    >>> assertEqual(purchase.customer, customer)
+    >>> assertEqual(purchase.delivery_address, sale.shipment_address)
     >>> purchase.payment_term = payment_term
     >>> purchase_line, = purchase.lines
     >>> purchase_line.unit_price = Decimal('3.0000')

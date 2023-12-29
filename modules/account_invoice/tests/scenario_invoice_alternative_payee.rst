@@ -7,7 +7,7 @@ Imports::
     >>> from decimal import Decimal
 
     >>> from proteus import Model, Wizard
-    >>> from trytond.tests.tools import activate_modules
+    >>> from trytond.tests.tools import activate_modules, assertEqual
     >>> from trytond.modules.company.tests.tools import (
     ...     create_company, get_company)
     >>> from trytond.modules.account.tests.tools import (
@@ -91,8 +91,7 @@ Post customer invoice::
 Copying invoice with single alternative payee is kept::
 
     >>> duplicate_inv, = invoice.duplicate()
-    >>> duplicate_inv.alternative_payees == invoice.alternative_payees
-    True
+    >>> assertEqual(duplicate_inv.alternative_payees, invoice.alternative_payees)
 
 Set another payee::
 

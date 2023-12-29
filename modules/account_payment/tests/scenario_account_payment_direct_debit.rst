@@ -8,7 +8,7 @@ Imports::
     >>> from decimal import Decimal
 
     >>> from proteus import Model, Wizard
-    >>> from trytond.tests.tools import activate_modules
+    >>> from trytond.tests.tools import activate_modules, assertEqual
     >>> from trytond.modules.company.tests.tools import (
     ...     create_company, get_company)
     >>> from trytond.modules.account.tests.tools import (
@@ -90,12 +90,9 @@ Create direct debit::
     >>> payment, = Payment.find([])
     >>> payment.amount
     Decimal('100.00')
-    >>> payment.party == customer1
-    True
-    >>> payment.date == tomorrow
-    True
-    >>> payment.journal == payment_journal
-    True
+    >>> assertEqual(payment.party, customer1)
+    >>> assertEqual(payment.date, tomorrow)
+    >>> assertEqual(payment.journal, payment_journal)
 
 Re-run create direct debit does nothing::
 
@@ -103,5 +100,4 @@ Re-run create direct debit does nothing::
     >>> create_direct_debit.form.date = after_tomorrow
     >>> create_direct_debit.execute('create_')
 
-    >>> Payment.find([]) == [payment]
-    True
+    >>> assertEqual(Payment.find([]), [payment])

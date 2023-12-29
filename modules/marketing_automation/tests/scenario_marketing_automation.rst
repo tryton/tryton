@@ -8,7 +8,8 @@ Imports::
     >>> from proteus import Model, Wizard
     >>> from proteus.config import get_config
     >>> from trytond.pyson import Eval, PYSONEncoder
-    >>> from trytond.tests.tools import activate_modules
+    >>> from trytond.tests.tools import (
+    ...     activate_modules, assertEqual, assertIn, assertTrue)
     >>> from trytond.tools import file_open
 
 Patch sendmail_transactional::
@@ -105,8 +106,7 @@ Trigger scenario::
 
     >>> Record = Model.get('marketing.automation.record')
     >>> record, = Record.find([])
-    >>> record.record == party
-    True
+    >>> assertEqual(record.record, party)
     >>> scenario.record_count
     1
     >>> scenario.record_count_blocked
@@ -138,24 +138,19 @@ Check email sent::
     >>> from_, to, msg = smtp_calls.call_args[0]
     >>> smtp_calls.reset_mock()
     >>> msg = msg.get_payload(0).get_payload(decode=True).decode('utf-8')
-    >>> to == [contact.value]
-    True
-    >>> re.search(r'Hello, (.*)!', msg).group(1) == party.name
-    True
+    >>> assertEqual(to, [contact.value])
+    >>> assertEqual(re.search(r'Hello, (.*)!', msg).group(1), party.name)
     >>> open_url.shortened_url in msg
     True
-    >>> open_url.record == record_activity
-    True
+    >>> assertEqual(open_url.record, record_activity)
     >>> open_url.method
     'marketing.automation.record.activity|on_email_opened'
     >>> click_url.shortened_url in msg
     True
-    >>> click_url.record == record_activity
-    True
+    >>> assertEqual(click_url.record, record_activity)
     >>> click_url.method
     'marketing.automation.record.activity|on_email_clicked'
-    >>> record.uuid in msg
-    True
+    >>> assertIn(record.uuid, msg)
 
     >>> email, = Email.find([])
     >>> email.recipients
@@ -164,10 +159,8 @@ Check email sent::
     'Hello'
     >>> email.resource == party
     True
-    >>> email.marketing_automation_activity == root_activity
-    True
-    >>> bool(email.marketing_automation_record)
-    True
+    >>> assertEqual(email.marketing_automation_activity, root_activity)
+    >>> assertTrue(email.marketing_automation_record)
 
 Trigger open email and reminder after delay::
 

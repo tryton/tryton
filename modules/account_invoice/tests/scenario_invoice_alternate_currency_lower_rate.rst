@@ -7,7 +7,7 @@ Imports::
     >>> import datetime as dt
     >>> from decimal import Decimal
     >>> from proteus import Model, Wizard
-    >>> from trytond.tests.tools import activate_modules
+    >>> from trytond.tests.tools import activate_modules, assertEqual
     >>> from trytond.modules.currency.tests.tools import get_currency
     >>> from trytond.modules.company.tests.tools import create_company, \
     ...     get_company
@@ -88,8 +88,7 @@ Pay the invoice::
     >>> pay = invoice.click('pay')
     >>> pay.form.amount
     Decimal('400.00')
-    >>> pay.form.currency == eur
-    True
+    >>> assertEqual(pay.form.currency, eur)
     >>> pay.form.payment_method = payment_method
     >>> pay.form.date = today
     >>> pay.execute('choice')

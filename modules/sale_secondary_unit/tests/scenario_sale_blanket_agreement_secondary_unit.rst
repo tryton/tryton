@@ -8,7 +8,7 @@ Imports::
     >>> from decimal import Decimal
 
     >>> from proteus import Model, Wizard
-    >>> from trytond.tests.tools import activate_modules
+    >>> from trytond.tests.tools import activate_modules, assertEqual
     >>> from trytond.modules.company.tests.tools import (
     ...     create_company, get_company)
     >>> from trytond.modules.account.tests.tools import (
@@ -87,24 +87,20 @@ Create sale blanket agreement::
 Create sale from blanket agreement::
 
     >>> create_sale = blanket_agreement.click('create_sale')
-    >>> create_sale.form.lines[0].unit == gr
-    True
+    >>> assertEqual(create_sale.form.lines[0].unit, gr)
     >>> create_sale.execute('create_sale')
 
     >>> sale, = create_sale.actions[0]
     >>> line, = sale.lines
-    >>> line.product == product
-    True
+    >>> assertEqual(line.product, product)
 
-    >>> line.secondary_unit == gr
-    True
+    >>> assertEqual(line.secondary_unit, gr)
     >>> line.secondary_quantity
     800.0
     >>> line.secondary_unit_price
     Decimal('9.0000')
 
-    >>> line.unit == unit
-    True
+    >>> assertEqual(line.unit, unit)
     >>> line.quantity
     8.0
     >>> line.unit_price

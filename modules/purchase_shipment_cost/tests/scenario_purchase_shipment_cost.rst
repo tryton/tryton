@@ -6,7 +6,7 @@ Imports::
 
     >>> from decimal import Decimal
     >>> from proteus import Model, Wizard
-    >>> from trytond.tests.tools import activate_modules
+    >>> from trytond.tests.tools import activate_modules, assertEqual
     >>> from trytond.modules.company.tests.tools import create_company, \
     ...     get_company
 
@@ -82,8 +82,7 @@ Receive a single product line::
     >>> shipment.carrier = carrier
     >>> shipment.cost_used
     Decimal('3.0000')
-    >>> shipment.cost_currency_used == company.currency
-    True
+    >>> assertEqual(shipment.cost_currency_used, company.currency)
     >>> shipment.click('receive')
     >>> shipment.state
     'received'

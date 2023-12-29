@@ -7,7 +7,8 @@ Imports::
     >>> import datetime as dt
     >>> from dateutil.relativedelta import relativedelta
     >>> from proteus import Model
-    >>> from trytond.tests.tools import activate_modules
+    >>> from trytond.tests.tools import (
+    ...     activate_modules, assertEqual, assertTrue)
     >>> from trytond.modules.company.tests.tools import create_company, \
     ...     get_company
     >>> now = dt.datetime.now()
@@ -44,10 +45,8 @@ Create an attendance record for the employee::
     >>> attendance.at = now
     >>> attendance.save()
 
-    >>> attendance.date == now.date()
-    True
-    >>> bool(attendance.rec_name)
-    True
+    >>> assertEqual(attendance.date, now.date())
+    >>> assertTrue(attendance.rec_name)
 
 When creating a new attendance the type is automatically set::
 
@@ -91,5 +90,4 @@ Update attendance date time, update its date::
     >>> attendance.at = next_week
     >>> attendance.save()
 
-    >>> attendance.date == next_week.date()
-    True
+    >>> assertEqual(attendance.date, next_week.date())

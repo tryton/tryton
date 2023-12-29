@@ -7,7 +7,7 @@ Imports::
     >>> import datetime as dt
     >>> from decimal import Decimal
     >>> from proteus import Model, Wizard
-    >>> from trytond.tests.tools import activate_modules
+    >>> from trytond.tests.tools import activate_modules, assertEqual
     >>> from trytond.modules.company.tests.tools import create_company, \
     ...     get_company
     >>> from trytond.modules.account.tests.tools import create_fiscalyear, \
@@ -122,8 +122,7 @@ Sale products with cost on shipment::
     >>> sale_line.quantity = 5.0
     >>> sale.click('quote')
     >>> cost_line = sale.lines[-1]
-    >>> cost_line.product == carrier_product
-    True
+    >>> assertEqual(cost_line.product, carrier_product)
     >>> cost_line.quantity
     1.0
     >>> cost_line.amount
@@ -141,20 +140,17 @@ Send products::
     >>> shipment, = sale.shipments
     >>> shipment.cost_method
     'shipment'
-    >>> shipment.carrier == carrier
-    True
+    >>> assertEqual(shipment.carrier, carrier)
     >>> shipment.cost_used
     Decimal('2.0000')
     >>> shipment.cost_sale_used
     Decimal('3.0000')
-    >>> shipment.cost_sale_currency_used == company.currency
-    True
+    >>> assertEqual(shipment.cost_sale_currency_used, company.currency)
     >>> move, = shipment.inventory_moves
     >>> move.quantity = 4
     >>> shipment.cost_sale_used
     Decimal('3.0000')
-    >>> shipment.cost_sale_currency_used == company.currency
-    True
+    >>> assertEqual(shipment.cost_sale_currency_used, company.currency)
     >>> shipment.state
     'waiting'
     >>> shipment.click('assign_force')
@@ -177,9 +173,8 @@ Check customer invoice::
 
     >>> sale.reload()
     >>> invoice, = sale.invoices
-    >>> sorted([l.product.id for l in invoice.lines]) == \
-    ...     sorted([product.id, carrier_product.id])
-    True
+    >>> assertEqual({l.product for l in invoice.lines},
+    ...     {product, carrier_product})
     >>> invoice.untaxed_amount
     Decimal('83.00')
 
@@ -211,8 +206,7 @@ Sale products with cost on order::
     >>> sale_line.quantity = 3.0
     >>> sale.click('quote')
     >>> cost_line = sale.lines[-1]
-    >>> cost_line.product == carrier_product
-    True
+    >>> assertEqual(cost_line.product, carrier_product)
     >>> cost_line.quantity
     1.0
     >>> cost_line.amount
@@ -227,8 +221,7 @@ Sale products with cost on order::
 Check customer shipment::
 
     >>> shipment, = sale.shipments
-    >>> shipment.carrier == carrier
-    True
+    >>> assertEqual(shipment.carrier, carrier)
 
 Check customer invoice::
 

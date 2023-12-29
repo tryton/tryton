@@ -7,7 +7,7 @@ Imports::
     >>> from decimal import Decimal
 
     >>> from proteus import Model, Wizard
-    >>> from trytond.tests.tools import activate_modules
+    >>> from trytond.tests.tools import activate_modules, assertEqual
     >>> from trytond.modules.currency.tests.tools import get_currency
     >>> from trytond.modules.company.tests.tools import (
     ...     create_company, get_company)
@@ -86,8 +86,7 @@ Create lines to delegate::
 Delegate lines::
 
     >>> delegate = Wizard('account.move.line.delegate', receivable_lines)
-    >>> delegate.form.journal == journal
-    True
+    >>> assertEqual(delegate.form.journal, journal)
     >>> delegate.form.party = party2
     >>> delegate.form.description = "Delegate lines"
     >>> delegate.execute('delegate')

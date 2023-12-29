@@ -6,7 +6,7 @@ Imports::
 
     >>> from decimal import Decimal
     >>> from proteus import Model
-    >>> from trytond.tests.tools import activate_modules
+    >>> from trytond.tests.tools import activate_modules, assertEqual
     >>> from trytond.modules.company.tests.tools import (
     ...     create_company, get_company)
 
@@ -119,9 +119,7 @@ Test right carrier is used on sale::
     >>> Sale = Model.get('sale.sale')
     >>> sale = Sale()
     >>> sale.party = customer
-    >>> sale.carrier == carrier
-    True
+    >>> assertEqual(sale.carrier, carrier)
     >>> sale.carrier = None
     >>> sale.party = other_customer
-    >>> sale.carrier == catalan_carrier
-    True
+    >>> assertEqual(sale.carrier, catalan_carrier)

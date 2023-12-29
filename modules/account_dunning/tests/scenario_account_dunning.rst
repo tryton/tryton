@@ -8,7 +8,8 @@ Imports::
     >>> from dateutil.relativedelta import relativedelta
     >>> from decimal import Decimal
     >>> from proteus import Model, Wizard
-    >>> from trytond.tests.tools import activate_modules, set_user
+    >>> from trytond.tests.tools import (
+    ...     activate_modules, set_user, assertEqual, assertTrue)
     >>> from trytond.modules.company.tests.tools import create_company, \
     ...     get_company
     >>> from trytond.modules.account.tests.tools import create_fiscalyear, \
@@ -165,14 +166,11 @@ Create dunnings on 5 days::
     >>> create_dunning.form.date = period.start_date + relativedelta(days=5)
     >>> create_dunning.execute('create_')
     >>> dunning, = Dunning.find([])
-    >>> dunning.procedure == procedure
-    True
-    >>> dunning.level == procedure.levels[0]
-    True
+    >>> assertEqual(dunning.procedure, procedure)
+    >>> assertEqual(dunning.level, procedure.levels[0])
     >>> dunning.state
     'draft'
-    >>> dunning.line == dunning_line
-    True
+    >>> assertEqual(dunning.line, dunning_line)
 
 Create dunnings on 30 days with draft dunning::
 
@@ -180,15 +178,12 @@ Create dunnings on 30 days with draft dunning::
     >>> create_dunning.form.date = period.start_date + relativedelta(days=30)
     >>> create_dunning.execute('create_')
     >>> dunning, = Dunning.find([])
-    >>> dunning.procedure == procedure
-    True
-    >>> dunning.level == procedure.levels[0]
-    True
+    >>> assertEqual(dunning.procedure, procedure)
+    >>> assertEqual(dunning.level, procedure.levels[0])
     >>> dunning.state
     'draft'
     >>> dunning.date
-    >>> dunning.line == dunning_line
-    True
+    >>> assertEqual(dunning.line, dunning_line)
 
 Process dunning::
 
@@ -209,16 +204,12 @@ Create dunnings on 30 days with blocked dunning::
     >>> create_dunning.form.date = period.start_date + relativedelta(days=30)
     >>> create_dunning.execute('create_')
     >>> dunning, = Dunning.find([])
-    >>> dunning.procedure == procedure
-    True
-    >>> dunning.level == procedure.levels[0]
-    True
+    >>> assertEqual(dunning.procedure, procedure)
+    >>> assertEqual(dunning.level, procedure.levels[0])
     >>> dunning.state
     'waiting'
-    >>> dunning.line == dunning_line
-    True
-    >>> bool(dunning.blocked)
-    True
+    >>> assertEqual(dunning.line, dunning_line)
+    >>> assertTrue(dunning.blocked)
     >>> dunning.blocked = False
     >>> dunning.save()
 
@@ -228,15 +219,12 @@ Create dunnings on 30 days::
     >>> create_dunning.form.date = period.start_date + relativedelta(days=30)
     >>> create_dunning.execute('create_')
     >>> dunning, = Dunning.find([])
-    >>> dunning.procedure == procedure
-    True
-    >>> dunning.level == procedure.levels[1]
-    True
+    >>> assertEqual(dunning.procedure, procedure)
+    >>> assertEqual(dunning.level, procedure.levels[1])
     >>> dunning.state
     'draft'
     >>> dunning.date
-    >>> dunning.line == dunning_line
-    True
+    >>> assertEqual(dunning.line, dunning_line)
 
 Pay dunning::
 

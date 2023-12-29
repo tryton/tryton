@@ -7,7 +7,7 @@ Imports::
     >>> from decimal import Decimal
 
     >>> from proteus import Model, Wizard
-    >>> from trytond.tests.tools import activate_modules
+    >>> from trytond.tests.tools import activate_modules, assertEqual
     >>> from trytond.modules.account.tests.tools import (
     ...     create_chart, get_accounts)
     >>> from trytond.modules.company.tests.tools import (
@@ -127,16 +127,14 @@ Sale products with cost on shipment::
 Check shipment::
 
     >>> shipment, = sale.shipments
-    >>> shipment.carrier == carrier1
-    True
+    >>> assertEqual(shipment.carrier, carrier1)
     >>> shipment.cost_used
     Decimal('2.0000')
     >>> shipment.cost_sale_used
     Decimal('3.0000')
 
     >>> carriage, = shipment.before_carriages
-    >>> carriage.carrier == carrier2
-    True
+    >>> assertEqual(carriage.carrier, carrier2)
     >>> carriage.cost_used
     Decimal('1.0000')
     >>> carriage.cost_sale_used

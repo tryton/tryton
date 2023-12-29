@@ -7,7 +7,7 @@ Imports::
     >>> from decimal import Decimal
 
     >>> from proteus import Model, Wizard
-    >>> from trytond.tests.tools import activate_modules
+    >>> from trytond.tests.tools import activate_modules, assertEqual
     >>> from trytond.modules.company.tests.tools import create_company, \
     ...     get_company
 
@@ -86,11 +86,9 @@ Split shipment::
     >>> shipment2, = Shipment.find([('id', '!=', shipment1.id)])
 
     >>> move, = shipment1.outgoing_moves
-    >>> move.id == move1.id
-    True
+    >>> assertEqual(move, move1)
     >>> len(shipment1.inventory_moves)
     0
 
     >>> move, = shipment2.outgoing_moves
-    >>> move.id == move2.id
-    True
+    >>> assertEqual(move, move2)

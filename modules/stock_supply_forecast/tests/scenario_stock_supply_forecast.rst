@@ -7,7 +7,7 @@ Imports::
     >>> import datetime as dt
     >>> from decimal import Decimal
     >>> from proteus import Model, Wizard
-    >>> from trytond.tests.tools import activate_modules
+    >>> from trytond.tests.tools import activate_modules, assertEqual
     >>> from trytond.modules.company.tests.tools import create_company, \
     ...     get_company
     >>> from trytond.modules.account.tests.tools import (create_chart,
@@ -94,7 +94,6 @@ There is a draft purchase request after confirming the forecast::
     >>> create_pr = Wizard('stock.supply')
     >>> create_pr.execute('create_')
     >>> pr, = PurchaseRequest.find([('state', '=', 'draft')])
-    >>> pr.product == product
-    True
+    >>> assertEqual(pr.product, product)
     >>> pr.quantity
     10.0

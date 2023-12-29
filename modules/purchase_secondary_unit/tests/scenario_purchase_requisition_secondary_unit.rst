@@ -8,7 +8,7 @@ Imports::
     >>> from decimal import Decimal
 
     >>> from proteus import Model, Wizard
-    >>> from trytond.tests.tools import activate_modules
+    >>> from trytond.tests.tools import activate_modules, assertEqual
     >>> from trytond.modules.company.tests.tools import (
     ...     create_company, get_company)
     >>> from trytond.modules.account.tests.tools import (
@@ -100,8 +100,7 @@ Create Purchase order from Request::
     >>> create_purchase.execute('start')
     >>> request.state
     'purchased'
-    >>> request.purchase_line.unit == unit
-    True
+    >>> assertEqual(request.purchase_line.unit, unit)
     >>> request.purchase_line.quantity
     3.0
     >>> request.purchase_line.unit_price

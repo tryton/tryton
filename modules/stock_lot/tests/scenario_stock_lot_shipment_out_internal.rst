@@ -8,7 +8,8 @@ Imports::
     >>> from decimal import Decimal
 
     >>> from proteus import Model
-    >>> from trytond.tests.tools import activate_modules
+    >>> from trytond.tests.tools import (
+    ...     activate_modules, assertEqual, assertTrue)
     >>> from trytond.modules.company.tests.tools import (
     ...     create_company, get_company)
 
@@ -62,10 +63,8 @@ Create Internal Shipment with lead time::
     >>> shipment.planned_date = tomorrow
     >>> shipment.from_location = warehouse1.storage_location
     >>> shipment.to_location = warehouse2.storage_location
-    >>> bool(shipment.transit_location)
-    True
-    >>> shipment.planned_start_date == today
-    True
+    >>> assertTrue(shipment.transit_location)
+    >>> assertEqual(shipment.planned_start_date, today)
     >>> move = shipment.moves.new()
     >>> move.product = product
     >>> move.quantity = 3
@@ -105,8 +104,8 @@ Assign the shipment::
 Check the inventory moves origin::
 
     >>> incoming_move, = shipment.incoming_moves
-    >>> all(m.origin == incoming_move for m in shipment.outgoing_moves)
-    True
+    >>> for move in shipment.outgoing_moves:
+    ...     assertEqual(move.origin, incoming_move)
 
 Set 2 lots::
 
@@ -136,5 +135,5 @@ Ship the shipment::
 
 Check the outgoing moves have an incoming move origin with the same lot::
 
-    >>> all(m.lot == m.origin.lot for m in shipment.outgoing_moves)
-    True
+    >>> for move in shipment.outgoing_moves:
+    ...     assertEqual(move.lot, move.origin.lot)

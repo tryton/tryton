@@ -7,7 +7,7 @@ Imports::
     >>> import datetime as dt
     >>> from decimal import Decimal
     >>> from proteus import Model, Wizard, Report
-    >>> from trytond.tests.tools import activate_modules
+    >>> from trytond.tests.tools import activate_modules, assertEqual
     >>> from trytond.modules.company.tests.tools import create_company, \
     ...     get_company
     >>> from trytond.modules.account.tests.tools import create_fiscalyear, \
@@ -99,17 +99,13 @@ Pending amount is used to fill all invoices::
     >>> line.related_to = customer_invoice1
     >>> line.amount
     Decimal('100.00')
-    >>> line.party == customer
-    True
-    >>> line.account == receivable
-    True
+    >>> assertEqual(line.party, customer)
+    >>> assertEqual(line.account, receivable)
     >>> origin.pending_amount
     Decimal('80.00')
     >>> line = origin.lines.new()
     >>> line.related_to = customer_invoice2
     >>> line.amount
     Decimal('80.00')
-    >>> line.party == customer
-    True
-    >>> line.account == receivable
-    True
+    >>> assertEqual(line.party, customer)
+    >>> assertEqual(line.account, receivable)

@@ -1,5 +1,8 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
+
+import unittest
+
 from proteus import Model, Wizard
 from proteus import config as pconfig
 
@@ -41,3 +44,10 @@ def set_user(user, config=None):
     User = Model.get('res.user', config=config)
     config.user = int(user)
     config._context = User.get_preferences(True, {})
+
+
+_dummy_test_case = unittest.TestCase()
+
+
+def __getattr__(name):
+    return getattr(_dummy_test_case, name)

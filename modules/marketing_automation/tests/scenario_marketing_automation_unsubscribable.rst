@@ -10,7 +10,7 @@ Imports::
     >>> from proteus.config import get_config
     >>> from trytond.modules.company.tests.tools import create_company
     >>> from trytond.pyson import Eval, PYSONEncoder
-    >>> from trytond.tests.tools import activate_modules
+    >>> from trytond.tests.tools import activate_modules, assertEqual
     >>> from trytond.tools import file_open
 
 Patch sendmail_transactional::
@@ -84,8 +84,7 @@ Trigger scenario::
     >>> cron_process.click('run_once')
 
     >>> record, = Record.find([])
-    >>> record.record == sale
-    True
+    >>> assertEqual(record.record, sale)
 
 Block and unsubscribe::
 
@@ -93,8 +92,7 @@ Block and unsubscribe::
     >>> bool(record.blocked)
     True
     >>> party.reload()
-    >>> party.marketing_scenario_unsubscribed == [scenario]
-    True
+    >>> assertEqual(party.marketing_scenario_unsubscribed, [scenario])
 
 Create a new sale::
 

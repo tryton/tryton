@@ -7,7 +7,7 @@ Imports::
     >>> import datetime as dt
     >>> from decimal import Decimal
     >>> from proteus import Model, Wizard, Report
-    >>> from trytond.tests.tools import activate_modules
+    >>> from trytond.tests.tools import activate_modules, assertEqual
     >>> from trytond.modules.company.tests.tools import create_company, \
     ...     get_company
     >>> from trytond.modules.account.tests.tools import create_fiscalyear, \
@@ -77,14 +77,11 @@ Statement can not be posted until all origins are finished::
     >>> statement.click('draft')
     >>> origin, = statement.origins
     >>> line = origin.lines.new()
-    >>> line.date == today
-    True
+    >>> assertEqual(line.date, today)
     >>> line.amount
     Decimal('50.00')
-    >>> line.party == customer
-    True
-    >>> line.account == receivable
-    True
+    >>> assertEqual(line.party, customer)
+    >>> assertEqual(line.account, receivable)
     >>> line.amount = Decimal('52.00')
     >>> line = origin.lines.new()
     >>> line.amount

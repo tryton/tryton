@@ -6,7 +6,7 @@ Imports::
 
     >>> from decimal import Decimal
     >>> from proteus import Model
-    >>> from trytond.tests.tools import activate_modules
+    >>> from trytond.tests.tools import activate_modules, assertEqual
     >>> from trytond.modules.company.tests.tools import create_company, \
     ...     get_company
 
@@ -44,8 +44,7 @@ Create a product with customers::
     >>> product, = template.products
     >>> product_customer = product.product_customers.new()
     >>> product_customer.party = customer
-    >>> product_customer.template == template
-    True
+    >>> assertEqual(product_customer.template, template)
     >>> product.save()
 
 Customer is copied when copying the template::

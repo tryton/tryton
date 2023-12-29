@@ -7,7 +7,7 @@ Imports::
     >>> import datetime as dt
     >>> from decimal import Decimal
     >>> from proteus import Model, Wizard
-    >>> from trytond.tests.tools import activate_modules
+    >>> from trytond.tests.tools import activate_modules, assertEqual
     >>> from trytond.modules.company.tests.tools import create_company, \
     ...     get_company
     >>> from trytond.modules.stock.exceptions import MoveFutureWarning
@@ -93,13 +93,12 @@ There is now a production request::
     2
     >>> {p.state for p in productions}
     {'request'}
-    >>> all(p.product == product for p in productions)
-    True
+    >>> for production in productions:
+    ...     assertEqual(production.product, product)
     >>> sum(p.quantity for p in productions)
     2.0
-    >>> sorted(p.planned_date for p in productions) == [
-    ...     today, today + dt.timedelta(days=9)]
-    True
+    >>> assertEqual(sorted(p.planned_date for p in productions),
+    ...     [today, today + dt.timedelta(days=9)])
 
 Create an order point negative minimal quantity::
 
@@ -138,8 +137,7 @@ There is now a production request::
     >>> production, = Production.find([])
     >>> production.state
     'request'
-    >>> production.product == product
-    True
+    >>> assertEqual(production.product, product)
     >>> production.quantity
     11.0
 
@@ -152,7 +150,6 @@ Using zero as minimal quantity also creates a production request::
     >>> production, = Production.find([])
     >>> production.state
     'request'
-    >>> production.product == product
-    True
+    >>> assertEqual(production.product, product)
     >>> production.quantity
     11.0

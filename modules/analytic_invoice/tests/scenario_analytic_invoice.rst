@@ -7,7 +7,7 @@ Imports::
     >>> from decimal import Decimal
     >>> from operator import attrgetter
     >>> from proteus import Model, Wizard
-    >>> from trytond.tests.tools import activate_modules
+    >>> from trytond.tests.tools import activate_modules, assertEqual
     >>> from trytond.modules.company.tests.tools import create_company, \
     ...     get_company
     >>> from trytond.modules.account.tests.tools import create_fiscalyear, \
@@ -88,8 +88,7 @@ Create invoice with analytic accounts::
     >>> invoice.payment_term = payment_term
     >>> line = invoice.lines.new()
     >>> entry, = line.analytic_accounts
-    >>> entry.root == root
-    True
+    >>> assertEqual(entry.root, root)
     >>> entry.account = analytic_account
     >>> line.product = product
     >>> line.quantity = 5

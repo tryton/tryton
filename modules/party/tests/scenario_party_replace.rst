@@ -5,7 +5,8 @@ Party Replace Scenario
 Imports::
 
     >>> from proteus import Model, Wizard
-    >>> from trytond.tests.tools import activate_modules
+    >>> from trytond.tests.tools import (
+    ...     activate_modules, assertEqual, assertFalse)
 
 Activate modules::
 
@@ -35,8 +36,7 @@ Create a second party similar party::
 Replace the second by the first party::
 
     >>> replace = Wizard('party.replace', models=[party2])
-    >>> replace.form.source == party2
-    True
+    >>> assertEqual(replace.form.source, party2)
     >>> replace.form.destination = party1
     >>> replace.execute('replace')
 
@@ -45,13 +45,9 @@ Replace the second by the first party::
     False
 
     >>> identifier2.reload()
-    >>> identifier2.party == party1
-    True
-    >>> bool(identifier2.active)
-    False
+    >>> assertEqual(identifier2.party, party1)
+    >>> assertFalse(identifier2.active)
 
     >>> address2.reload()
-    >>> address2.party == party1
-    True
-    >>> bool(address2.active)
-    False
+    >>> assertEqual(address2.party, party1)
+    >>> assertFalse(address2.active)

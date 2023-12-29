@@ -5,7 +5,7 @@ Account Statement OFX Scenario
 Imports::
 
     >>> from proteus import Model, Wizard
-    >>> from trytond.tests.tools import activate_modules
+    >>> from trytond.tests.tools import activate_modules, assertEqual
     >>> from trytond.tools import file_open
     >>> from trytond.modules.currency.tests.tools import get_currency
     >>> from trytond.modules.company.tests.tools import create_company, \
@@ -101,8 +101,7 @@ Check Statement::
     datetime.date(2018, 2, 21)
     >>> origin.amount
     Decimal('100.00')
-    >>> origin.party == michael_scott_paper
-    True
+    >>> assertEqual(origin.party, michael_scott_paper)
     >>> origin.description
     'COMMUNICATION'
     >>> origin.information['ofx_type']

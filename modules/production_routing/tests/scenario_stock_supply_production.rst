@@ -6,7 +6,7 @@ Imports::
 
     >>> from decimal import Decimal
     >>> from proteus import Model, Wizard
-    >>> from trytond.tests.tools import activate_modules
+    >>> from trytond.tests.tools import activate_modules, assertEqual
     >>> from trytond.modules.company.tests.tools import (
     ...     create_company, get_company)
 
@@ -75,5 +75,4 @@ There is now a production request with the routing::
 
     >>> Production = Model.get('production')
     >>> production, = Production.find([])
-    >>> production.routing == routing
-    True
+    >>> assertEqual(production.routing, routing)

@@ -12,7 +12,7 @@ Imports::
     >>> import stripe
 
     >>> from proteus import Model, Wizard
-    >>> from trytond.tests.tools import activate_modules
+    >>> from trytond.tests.tools import activate_modules, assertEqual
     >>> from trytond.modules.company.tests.tools import (
     ...     create_company, get_company)
 
@@ -104,8 +104,6 @@ Run cron::
     >>> cron_customer_create.click('run_once')
 
     >>> stripe_customer2.reload()
-    >>> stripe_customer2.identical_customers == [stripe_customer1]
-    True
+    >>> assertEqual(stripe_customer2.identical_customers, [stripe_customer1])
     >>> stripe_customer1.reload()
-    >>> stripe_customer1.identical_customers == [stripe_customer2]
-    True
+    >>> assertEqual(stripe_customer1.identical_customers, [stripe_customer2])

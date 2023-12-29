@@ -10,7 +10,7 @@ Imports::
     >>> from dateutil.relativedelta import relativedelta
 
     >>> from proteus import Model, Wizard
-    >>> from trytond.tests.tools import activate_modules
+    >>> from trytond.tests.tools import activate_modules, assertEqual
     >>> from trytond.modules.currency.tests.tools import get_currency
     >>> from trytond.modules.company.tests.tools import (
     ...     create_company, get_company)
@@ -89,14 +89,10 @@ Split line by amount::
     >>> reschedule.execute('preview')
 
     >>> term1, term2, term3, term4 = reschedule.form.terms
-    >>> term1.date == period.end_date
-    True
-    >>> term2.date == period.end_date + relativedelta(months=2)
-    True
-    >>> term3.date == period.end_date + relativedelta(months=4)
-    True
-    >>> term4.date == period.end_date + relativedelta(months=6)
-    True
+    >>> assertEqual(term1.date, period.end_date)
+    >>> assertEqual(term2.date, period.end_date + relativedelta(months=2))
+    >>> assertEqual(term3.date, period.end_date + relativedelta(months=4))
+    >>> assertEqual(term4.date, period.end_date + relativedelta(months=6))
     >>> term1.amount, term2.amount, term3.amount, term4.amount
     (Decimal('30.00'), Decimal('30.00'), Decimal('30.00'), Decimal('10.00'))
 
@@ -112,12 +108,9 @@ Split line by number::
 
     >>> reschedule.form.description = "Split 3 months"
     >>> term1, term2, term3 = reschedule.form.terms
-    >>> term1.date == period.end_date
-    True
-    >>> term2.date == period.end_date + relativedelta(months=1)
-    True
-    >>> term3.date == period.end_date + relativedelta(months=2)
-    True
+    >>> assertEqual(term1.date, period.end_date)
+    >>> assertEqual(term2.date, period.end_date + relativedelta(months=1))
+    >>> assertEqual(term3.date, period.end_date + relativedelta(months=2))
     >>> term1.amount, term2.amount, term3.amount
     (Decimal('33.33'), Decimal('33.33'), Decimal('33.34'))
     >>> term1.amount = Decimal('40.00')
@@ -143,15 +136,12 @@ Check receivable::
 
     >>> line1.debit, line1.amount
     (Decimal('36.00'), Decimal('40.00'))
-    >>> line1.maturity_date == period.end_date
-    True
+    >>> assertEqual(line1.maturity_date, period.end_date)
 
     >>> line2.debit, line2.amount
     (Decimal('27.00'), Decimal('30.00'))
-    >>> line2.maturity_date == period.end_date + relativedelta(months=1)
-    True
+    >>> assertEqual(line2.maturity_date, period.end_date + relativedelta(months=1))
 
     >>> line3.debit, line3.amount
     (Decimal('27.00'), Decimal('30.00'))
-    >>> line3.maturity_date == period.end_date + relativedelta(months=3)
-    True
+    >>> assertEqual(line3.maturity_date, period.end_date + relativedelta(months=3))

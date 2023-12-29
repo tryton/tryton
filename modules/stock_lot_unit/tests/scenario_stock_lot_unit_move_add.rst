@@ -6,7 +6,7 @@ Imports::
 
     >>> from decimal import Decimal
     >>> from proteus import Model, Wizard
-    >>> from trytond.tests.tools import activate_modules
+    >>> from trytond.tests.tools import activate_modules, assertEqual
     >>> from trytond.modules.company.tests.tools import create_company, \
     ...     get_company
 
@@ -67,8 +67,7 @@ Add a lot::
     5.0
     >>> lot.product = product  # proteus does not set reverse domain
     >>> lot.number = '01'
-    >>> lot.unit == unit
-    True
+    >>> assertEqual(lot.unit, unit)
     >>> lot.unit_quantity
     1.0
     >>> lot.quantity

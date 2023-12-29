@@ -7,7 +7,7 @@ Imports::
     >>> from dateutil.relativedelta import relativedelta
     >>> from decimal import Decimal
     >>> from proteus import Model
-    >>> from trytond.tests.tools import activate_modules
+    >>> from trytond.tests.tools import activate_modules, assertEqual
     >>> from trytond.modules.company.tests.tools import (
     ...     create_company, get_company)
     >>> from trytond.modules.account.tests.tools import (
@@ -107,20 +107,18 @@ Check purchase reporting per supplier::
     >>> len(reports)
     2
     >>> with config.set_context(context=context):
-    ...     sorted((r.supplier.id, r.number, r.expense) for r in reports) == \
-    ...     sorted([(supplier1.id, 1, Decimal('30')),
-    ...             (supplier2.id, 1, Decimal('10'))])
-    True
+    ...     assertEqual({(r.supplier.id, r.number, r.expense) for r in reports},
+    ...         {(supplier1.id, 1, Decimal('30')),
+    ...             (supplier2.id, 1, Decimal('10'))})
     >>> len(time_series)
     2
     >>> purchase1_ts_date = purchase1.purchase_date.replace(day=1)
     >>> purchase2_ts_date = purchase2.purchase_date.replace(day=1)
     >>> with config.set_context(context=context):
-    ...     sorted((r.supplier.id, r.date, r.number, r.expense)
-    ...         for r in time_series) == sorted(
-    ...     [(supplier1.id, purchase1_ts_date, 1, Decimal('30')),
-    ...     (supplier2.id, purchase2_ts_date, 1, Decimal('10'))])
-    True
+    ...     assertEqual({(r.supplier.id, r.date, r.number, r.expense)
+    ...         for r in time_series},
+    ...         {(supplier1.id, purchase1_ts_date, 1, Decimal('30')),
+    ...         (supplier2.id, purchase2_ts_date, 1, Decimal('10'))})
 
 Check purchase reporting per product without supplier::
 
@@ -139,15 +137,13 @@ Check purchase reporting per product with supplier::
     >>> len(reports)
     2
     >>> with config.set_context(context=context):
-    ...     sorted((r.product.id, r.number, r.expense) for r in reports) == \
-    ...     sorted([(product1.id, 1, Decimal('20')),
-    ...         (product2.id, 1, Decimal('10'))])
-    True
+    ...     assertEqual({(r.product.id, r.number, r.expense) for r in reports},
+    ...         {(product1.id, 1, Decimal('20')),
+    ...             (product2.id, 1, Decimal('10'))})
     >>> len(time_series)
     2
     >>> with config.set_context(context=context):
-    ...     sorted((r.product.id, r.date, r.number, r.expense)
-    ...         for r in time_series) == sorted(
-    ...     [(product1.id, purchase1_ts_date, 1, Decimal('20')),
-    ...     (product2.id, purchase1_ts_date, 1, Decimal('10'))])
-    True
+    ...     assertEqual({(r.product.id, r.date, r.number, r.expense)
+    ...         for r in time_series},
+    ...         {(product1.id, purchase1_ts_date, 1, Decimal('20')),
+    ...             (product2.id, purchase1_ts_date, 1, Decimal('10'))})

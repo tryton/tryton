@@ -7,7 +7,7 @@ Imports::
     >>> import datetime as dt
     >>> from decimal import Decimal
     >>> from proteus import Model
-    >>> from trytond.tests.tools import activate_modules
+    >>> from trytond.tests.tools import activate_modules, assertEqual
     >>> from trytond.modules.company.tests.tools import create_company, \
     ...     get_company
 
@@ -77,5 +77,4 @@ Reschedule shipment::
     >>> cron.interval_type = 'months'
     >>> cron.click('run_once')
     >>> shipment_return.reload()
-    >>> shipment_return.planned_date == today
-    True
+    >>> assertEqual(shipment_return.planned_date, today)

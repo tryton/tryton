@@ -6,7 +6,7 @@ Imports::
 
     >>> from decimal import Decimal
     >>> from proteus import Model, Wizard
-    >>> from trytond.tests.tools import activate_modules
+    >>> from trytond.tests.tools import activate_modules, assertEqual
     >>> from trytond.modules.company.tests.tools import (
     ...     create_company, get_company)
     >>> from trytond.modules.account.tests.tools import (
@@ -115,12 +115,9 @@ Check the production::
     >>> production, = Production.find([])
     >>> production.state
     'request'
-    >>> production.origin == sale.lines[0]
-    True
-    >>> production.product == product
-    True
-    >>> production.bom == bom
-    True
+    >>> assertEqual(production.origin, sale.lines[0])
+    >>> assertEqual(production.product, product)
+    >>> assertEqual(production.bom, bom)
     >>> production.quantity
     10.0
 

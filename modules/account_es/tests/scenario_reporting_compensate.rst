@@ -7,7 +7,7 @@ Imports::
     >>> import datetime as dt
     >>> from decimal import Decimal
     >>> from proteus import Model, Wizard
-    >>> from trytond.tests.tools import activate_modules
+    >>> from trytond.tests.tools import activate_modules, assertEqual
     >>> from trytond.tools import file_open
     >>> from trytond.modules.company.tests.tools import create_company, \
     ...     get_company
@@ -131,7 +131,6 @@ Generate aeat 303 report::
     >>> extension
     'txt'
     >>> with file_open('account_es/tests/303_compensate.txt') as f:
-    ...     content == f.read()
-    True
+    ...     assertEqual(content, f.read())
     >>> name
     'AEAT Model 303-2018-02'

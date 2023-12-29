@@ -14,7 +14,7 @@ Imports::
     ...     set_fiscalyear_invoice_sequences)
     >>> from trytond.modules.company.tests.tools import (
     ...     create_company, get_company)
-    >>> from trytond.tests.tools import activate_modules
+    >>> from trytond.tests.tools import activate_modules, assertEqual
 
 Activate modules::
 
@@ -107,8 +107,7 @@ Create an opportunity and convert to sale::
     >>> sale, = opportunity.click('convert')
     >>> opportunity.state
     'converted'
-    >>> opportunity.sales == [sale]
-    True
+    >>> assertEqual(opportunity.sales, [sale])
 
 Check and confirm sale::
 

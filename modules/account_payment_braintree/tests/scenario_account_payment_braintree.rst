@@ -10,7 +10,8 @@ Imports::
     >>> import braintree
     >>> from braintree.test.nonces import Nonces
     >>> from proteus import Model, Wizard
-    >>> from trytond.tests.tools import activate_modules
+    >>> from trytond.tests.tools import (
+    ...     activate_modules, assertEqual, assertTrue)
     >>> from trytond.modules.company.tests.tools import create_company, \
     ...     get_company
     >>> from trytond.modules.account.tests.tools import create_fiscalyear, \
@@ -109,10 +110,8 @@ Process the payment::
     >>> process_payment = payment.click('process_wizard')
     >>> payment.state
     'processing'
-    >>> bool(payment.braintree_payment_settled)
-    True
-    >>> payment.amount == amount
-    True
+    >>> assertTrue(payment.braintree_payment_settled)
+    >>> assertEqual(payment.amount, amount)
 
     >>> _ = gateway.testing.settle_transaction(payment.braintree_transaction_id)
 
@@ -127,8 +126,7 @@ Pull update::
     >>> payment.reload()
     >>> payment.state
     'succeeded'
-    >>> payment.amount == amount
-    True
+    >>> assertEqual(payment.amount, amount)
 
 Create a customer::
 
@@ -260,8 +258,7 @@ Refund some amount::
     >>> refund.state
     'processing'
     >>> payment.reload()
-    >>> payment.amount == amount
-    True
+    >>> assertEqual(payment.amount, amount)
 
     >>> _ = gateway.testing.settle_transaction(refund.braintree_transaction_id)
     >>> cron_refund_pull, = Cron.find([

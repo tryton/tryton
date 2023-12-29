@@ -7,7 +7,7 @@ Imports::
     >>> import datetime as dt
     >>> from decimal import Decimal
     >>> from proteus import Model, Wizard
-    >>> from trytond.tests.tools import activate_modules, set_user
+    >>> from trytond.tests.tools import activate_modules, set_user, assertEqual
     >>> from trytond.modules.company.tests.tools import (create_company,
     ...     get_company)
     >>> from trytond.modules.account.tests.tools import (create_chart,
@@ -201,18 +201,14 @@ Create Purchase order from Request::
     >>> pr, = PurchaseRequest.find([('state', '=', 'draft')])
     >>> pr.state
     'draft'
-    >>> pr.product == product
-    True
-    >>> pr.party == supplier
-    True
+    >>> assertEqual(pr.product, product)
+    >>> assertEqual(pr.party, supplier)
     >>> pr.quantity
     2.0
     >>> pr.computed_quantity
     2.0
-    >>> pr.supply_date == today
-    True
-    >>> pr.warehouse == warehouse_loc
-    True
+    >>> assertEqual(pr.supply_date, today)
+    >>> assertEqual(pr.warehouse, warehouse_loc)
     >>> create_purchase = Wizard('purchase.request.create_purchase', [pr])
     >>> pr.state
     'purchased'
@@ -308,10 +304,8 @@ Create purchase requisition with two different suppliers::
     >>> pr = PurchaseRequest.find([('state', '=', 'draft')])
     >>> len(pr)
     2
-    >>> pr[0].party == supplier2
-    True
-    >>> pr[1].party == supplier
-    True
+    >>> assertEqual(pr[0].party, supplier2)
+    >>> assertEqual(pr[1].party, supplier)
     >>> create_purchase = Wizard('purchase.request.create_purchase', pr)
     >>> purchase, = Purchase.find([
     ...         ('state', '=', 'draft'),

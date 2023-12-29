@@ -6,7 +6,7 @@ Imports::
 
     >>> from decimal import Decimal
     >>> from proteus import Model, Wizard
-    >>> from trytond.tests.tools import activate_modules
+    >>> from trytond.tests.tools import activate_modules, assertEqual
     >>> from trytond.modules.company.tests.tools import (
     ...     create_company, get_company)
     >>> from trytond.modules.account.tests.tools import (
@@ -129,10 +129,8 @@ Copy the budget without amounts::
     >>> copy_budget.form.factor = Decimal('1.2')
     >>> copy_budget.execute('copy')
     >>> new_budget, = copy_budget.actions[0]
-    >>> new_budget.start_date == next_period.start_date
-    True
-    >>> new_budget.end_date == next_period.end_date
-    True
+    >>> assertEqual(new_budget.start_date, next_period.start_date)
+    >>> assertEqual(new_budget.end_date, next_period.end_date)
     >>> analytic_budget, other_analytic_budget = new_budget.lines
     >>> analytic_budget.total_amount
     Decimal('-84.00')

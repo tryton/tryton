@@ -7,7 +7,7 @@ Imports::
     >>> import datetime as dt
     >>> from decimal import Decimal
     >>> from proteus import Model, Wizard
-    >>> from trytond.tests.tools import activate_modules
+    >>> from trytond.tests.tools import activate_modules, assertEqual
     >>> from trytond.modules.currency.tests.tools import get_currency
     >>> from trytond.modules.company.tests.tools import create_company, \
     ...     get_company
@@ -132,12 +132,10 @@ Group lines::
     >>> all(r.delegate_to for r in reconciliations)
     True
     >>> delegate_to = reconciliations[0].delegate_to
-    >>> delegate_to.account == receivable
-    True
+    >>> assertEqual(delegate_to.account, receivable)
     >>> delegate_to.debit
     Decimal('50')
-    >>> delegate_to.maturity_date == period.start_date + dt.timedelta(days=2)
-    True
+    >>> assertEqual(delegate_to.maturity_date, period.start_date + dt.timedelta(days=2))
     >>> delegate_to.move_description_used
     'Group lines'
 

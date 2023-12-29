@@ -6,7 +6,7 @@ Imports::
 
     >>> from decimal import Decimal
     >>> from proteus import Model, Wizard
-    >>> from trytond.tests.tools import activate_modules
+    >>> from trytond.tests.tools import activate_modules, assertEqual
     >>> from trytond.modules.company.tests.tools import create_company, \
     ...     get_company
     >>> from trytond.modules.account.tests.tools import create_chart, \
@@ -123,8 +123,7 @@ Check secondary unit on invoice::
 
     >>> invoice, = purchase.invoices
     >>> line, = invoice.lines
-    >>> line.secondary_unit == kg
-    True
+    >>> assertEqual(line.secondary_unit, kg)
     >>> line.secondary_quantity
     2.0
     >>> line.secondary_unit_price
@@ -133,8 +132,7 @@ Check secondary unit on invoice::
 Check secondary unit on move::
 
     >>> move, = purchase.moves
-    >>> move.secondary_unit == kg
-    True
+    >>> assertEqual(move.secondary_unit, kg)
     >>> move.secondary_quantity
     2.0
     >>> move.secondary_unit_price

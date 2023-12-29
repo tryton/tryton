@@ -9,7 +9,7 @@ Imports::
     >>> import datetime as dt
 
     >>> from proteus import Model, Wizard
-    >>> from trytond.tests.tools import activate_modules
+    >>> from trytond.tests.tools import activate_modules, assertEqual
     >>> from trytond.modules.company.tests.tools import (
     ...     create_company, get_company)
 
@@ -123,8 +123,7 @@ Check quantity issues::
     >>> product.quantity, product.forecast_quantity
     (0.0, -6.0)
 
-    >>> issue1.best_planned_date == week2
-    True
+    >>> assertEqual(issue1.best_planned_date, week2)
 
 Apply best planned date to first shipment::
 

@@ -5,7 +5,7 @@ Document Incoming Scenario
 Imports::
 
     >>> from proteus import Model
-    >>> from trytond.tests.tools import activate_modules
+    >>> from trytond.tests.tools import activate_modules, assertEqual
     >>> from trytond.tools import file_open
 
 Activate modules::
@@ -31,6 +31,5 @@ Process document::
     >>> document.state
     'done'
     >>> new_document = document.result
-    >>> new_document.data == document.data
-    True
+    >>> assertEqual(new_document.data, document.data)
     >>> new_document.type

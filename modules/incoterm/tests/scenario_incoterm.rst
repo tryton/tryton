@@ -6,7 +6,7 @@ Imports::
 
     >>> from decimal import Decimal
     >>> from proteus import Model, Wizard
-    >>> from trytond.tests.tools import activate_modules
+    >>> from trytond.tests.tools import activate_modules, assertEqual
     >>> from trytond.modules.company.tests.tools import (
     ...     create_company, get_company)
     >>> from trytond.modules.account.tests.tools import (
@@ -152,8 +152,7 @@ Test incoterms are deducted from sale::
     >>> sale.shipment_cost_method = None
     >>> sale.incoterm.rec_name
     'FCA (2020)'
-    >>> sale.incoterm_location == warehouse_address
-    True
+    >>> assertEqual(sale.incoterm_location, warehouse_address)
 
 Try sale without incoterm::
 
@@ -193,8 +192,7 @@ Test incoterm on shipment::
     >>> shipment, = sale.shipments
     >>> shipment.incoterm.rec_name
     'CIF (2020)'
-    >>> shipment.incoterm_location == port.addresses[0]
-    True
+    >>> assertEqual(shipment.incoterm_location, port.addresses[0])
 
 Test incoterm is set on purchase::
 

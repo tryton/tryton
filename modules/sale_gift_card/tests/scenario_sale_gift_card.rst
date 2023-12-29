@@ -7,7 +7,7 @@ Imports::
     >>> import re
     >>> from decimal import Decimal
     >>> from proteus import Model, Report
-    >>> from trytond.tests.tools import activate_modules
+    >>> from trytond.tests.tools import activate_modules, assertEqual
     >>> from trytond.modules.company.tests.tools import (
     ...     create_company, get_company)
     >>> from trytond.modules.account.tests.tools import (
@@ -129,8 +129,7 @@ Check gift cards::
     >>> len(cards)
     2
     >>> card = cards[-1]
-    >>> card.product == gift_card
-    True
+    >>> assertEqual(card.product, gift_card)
     >>> card.value
     Decimal('50.00')
     >>> bool(card.origin)
@@ -156,8 +155,7 @@ Check invoice::
 
     >>> invoice, = sale.invoices
     >>> line, = invoice.lines
-    >>> line.account == gift_card_revenue
-    True
+    >>> assertEqual(line.account, gift_card_revenue)
 
 Redeem a gift card to buy a product::
 
@@ -182,8 +180,7 @@ Redeem a gift card to buy a product::
 Check gift card::
 
     >>> card.reload()
-    >>> card.spent_on == sale
-    True
+    >>> assertEqual(card.spent_on, sale)
 
 Check the invoice::
 
@@ -195,5 +192,4 @@ Check the invoice::
     >>> gift_card_line, = [l for l in invoice.lines if l.product == gift_card]
     >>> gift_card_line.quantity
     -1.0
-    >>> gift_card_line.account == gift_card_revenue
-    True
+    >>> assertEqual(gift_card_line.account, gift_card_revenue)

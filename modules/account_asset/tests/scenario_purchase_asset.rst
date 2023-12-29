@@ -6,7 +6,7 @@ Imports::
 
     >>> from decimal import Decimal
     >>> from proteus import Model, Wizard
-    >>> from trytond.tests.tools import activate_modules
+    >>> from trytond.tests.tools import activate_modules, assertEqual
     >>> from trytond.modules.company.tests.tools import create_company, \
     ...     get_company
     >>> from trytond.modules.account.tests.tools import create_fiscalyear, \
@@ -102,7 +102,5 @@ Purchase an asset mixed with services::
     >>> purchase.click('process')
     >>> invoice, = purchase.invoices
     >>> asset_line, service_line = invoice.lines
-    >>> asset_line.account == asset_account
-    True
-    >>> service_line.account == expense
-    True
+    >>> assertEqual(asset_line.account, asset_account)
+    >>> assertEqual(service_line.account, expense)

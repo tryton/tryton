@@ -7,7 +7,7 @@ Imports::
     >>> from decimal import Decimal
 
     >>> from proteus import Model
-    >>> from trytond.tests.tools import activate_modules
+    >>> from trytond.tests.tools import activate_modules, assertEqual
     >>> from trytond.modules.company.tests.tools import create_company
     >>> from trytond.modules.account.tests.tools import (
     ...     create_chart, get_accounts, create_tax)
@@ -45,8 +45,7 @@ Create a sale without product::
 
     >>> sale = Sale(party=customer)
     >>> line = sale.lines.new()
-    >>> line.taxes == [tax]
-    True
+    >>> assertEqual(line.taxes, [tax])
     >>> line.quantity = 1
     >>> line.unit_price = Decimal('100.0000')
     >>> sale.click('quote')
@@ -62,5 +61,4 @@ Check invoice::
     >>> invoice.total_amount
     Decimal('110.00')
     >>> line, = invoice.lines
-    >>> line.account == accounts['revenue']
-    True
+    >>> assertEqual(line.account, accounts['revenue'])

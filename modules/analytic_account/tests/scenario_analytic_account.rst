@@ -6,7 +6,7 @@ Imports::
 
     >>> from decimal import Decimal
     >>> from proteus import Model, Wizard
-    >>> from trytond.tests.tools import activate_modules
+    >>> from trytond.tests.tools import activate_modules, assertEqual
     >>> from trytond.modules.company.tests.tools import create_company, \
     ...     get_company
     >>> from trytond.modules.account.tests.tools import create_fiscalyear, \
@@ -106,8 +106,7 @@ Cancel reversal move::
     True
     >>> cancel_move, = [l.move for l in line.reconciliation.lines
     ...     if l.move != move]
-    >>> cancel_move.origin == move
-    True
+    >>> assertEqual(cancel_move.origin, move)
     >>> analytic_account.reload()
     >>> analytic_account.credit
     Decimal('42.00')
@@ -138,8 +137,7 @@ Cancel move::
     True
     >>> cancel_move, = [l.move for l in line.reconciliation.lines
     ...     if l.move != move]
-    >>> cancel_move.origin == move
-    True
+    >>> assertEqual(cancel_move.origin, move)
     >>> analytic_account.reload()
     >>> analytic_account.credit
     Decimal('0.00')
@@ -165,12 +163,10 @@ Check analytic lines are created on posting::
     >>> move.click('post')
     >>> line, = [l for l in move.lines if l.analytic_lines]
     >>> analytic_line, = line.analytic_lines
-    >>> analytic_line.account == analytic_account2
-    True
+    >>> assertEqual(analytic_line.account, analytic_account2)
     >>> analytic_line.credit
     Decimal('73')
-    >>> analytic_line.date == analytic_line.move_line.date
-    True
+    >>> assertEqual(analytic_line.date, analytic_line.move_line.date)
 
 Prepare to balance non-deferral accounts::
 

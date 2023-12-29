@@ -16,7 +16,7 @@ Imports::
     >>> from shopify.api_version import ApiVersion
 
     >>> from proteus import Model, Wizard
-    >>> from trytond.tests.tools import activate_modules
+    >>> from trytond.tests.tools import activate_modules, assertEqual
     >>> from trytond.modules.company.tests.tools import (
     ...     create_company, get_company)
     >>> from trytond.modules.account.tests.tools import (
@@ -511,8 +511,7 @@ Run fetch order::
     'processing'
     >>> payment.amount
     Decimal('258.98')
-    >>> sale.carrier == carrier
-    True
+    >>> assertEqual(sale.carrier, carrier)
     >>> sale.state
     'quotation'
 
@@ -609,8 +608,7 @@ Correct taxes as partial invoice can get rounding gap::
     >>> tax_line, = invoice.taxes
     >>> tax_line.amount += payment.amount - invoice.total_amount
     >>> invoice.save()
-    >>> invoice.total_amount == payment.amount
-    True
+    >>> assertEqual(invoice.total_amount, payment.amount)
 
 Post invoice::
 

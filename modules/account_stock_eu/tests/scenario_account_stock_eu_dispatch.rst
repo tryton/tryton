@@ -10,7 +10,7 @@ Imports::
     >>> from decimal import Decimal
 
     >>> from proteus import Model, Wizard
-    >>> from trytond.tests.tools import activate_modules
+    >>> from trytond.tests.tools import activate_modules, assertEqual
     >>> from trytond.modules.currency.tests.tools import get_currency
     >>> from trytond.modules.company.tests.tools import (
     ...     create_company, get_company)
@@ -188,8 +188,7 @@ Send products to particular to France::
     >>> move.intrastat_country_of_origin.code
     'CN'
     >>> move.intrastat_vat
-    >>> move.intrastat_declaration.month == today.replace(day=1)
-    True
+    >>> assertEqual(move.intrastat_declaration.month, today.replace(day=1))
 
 
 Send products to US::
@@ -255,16 +254,14 @@ Send returned products to France::
     'CN'
     >>> move.intrastat_vat.code
     'FR40303265045'
-    >>> move.intrastat_declaration.month == today.replace(day=1)
-    True
+    >>> assertEqual(move.intrastat_declaration.month, today.replace(day=1))
 
 Check declaration::
 
     >>> declaration, = IntrastatDeclaration.find([])
     >>> declaration.country.code
     'BE'
-    >>> declaration.month == today.replace(day=1)
-    True
+    >>> assertEqual(declaration.month, today.replace(day=1))
     >>> declaration.state
     'opened'
 

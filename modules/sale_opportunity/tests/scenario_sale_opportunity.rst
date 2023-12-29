@@ -6,7 +6,7 @@ Imports::
 
     >>> from decimal import Decimal
     >>> from proteus import Model, Wizard
-    >>> from trytond.tests.tools import activate_modules, set_user
+    >>> from trytond.tests.tools import activate_modules, set_user, assertEqual
     >>> from trytond.modules.company.tests.tools import create_company, \
     ...     get_company
     >>> from trytond.modules.account.tests.tools import create_chart, \
@@ -131,14 +131,12 @@ Convert to sale::
     >>> sale, = opportunity.click('convert')
     >>> opportunity.state
     'converted'
-    >>> sale.origin == opportunity
-    True
+    >>> assertEqual(sale.origin, opportunity)
 
 Find the sale::
 
     >>> line, = sale.lines
-    >>> line.product == product
-    True
+    >>> assertEqual(line.product, product)
     >>> line.quantity
     10.0
 

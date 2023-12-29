@@ -5,7 +5,7 @@ Project Status Scenario
 Imports::
 
     >>> from proteus import Model
-    >>> from trytond.tests.tools import activate_modules
+    >>> from trytond.tests.tools import activate_modules, assertEqual
     >>> from trytond.modules.company.tests.tools import create_company
 
 Activate project::
@@ -30,11 +30,9 @@ Create a project with a task::
     >>> Work = Model.get('project.work')
 
     >>> project = Work(type='project', name="Project")
-    >>> project.status == open
-    True
+    >>> assertEqual(project.status, open)
     >>> task = project.children.new(name="Task")
-    >>> task.status == open
-    True
+    >>> assertEqual(task.status, open)
 
     >>> project.save()
     >>> task, = project.children
@@ -89,6 +87,5 @@ Re-open task::
 Copy the project::
 
     >>> project_copy, = project.duplicate()
-    >>> project_copy.status == open
-    True
+    >>> assertEqual(project_copy.status, open)
     >>> project_copy.progress

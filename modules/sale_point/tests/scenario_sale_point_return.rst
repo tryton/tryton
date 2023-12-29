@@ -7,7 +7,7 @@ Imports::
     >>> from decimal import Decimal
 
     >>> from proteus import Model, Wizard, Report
-    >>> from trytond.tests.tools import activate_modules
+    >>> from trytond.tests.tools import activate_modules, assertEqual
     >>> from trytond.modules.company.tests.tools import create_company, \
     ...     get_company
     >>> from trytond.modules.account.tests.tools import create_fiscalyear, \
@@ -143,12 +143,9 @@ Check stock move::
 
     >>> line, = sale.lines
     >>> move, = line.moves
-    >>> move.product == goods
-    True
-    >>> move.from_location == customer_loc
-    True
-    >>> move.to_location == input_loc
-    True
+    >>> assertEqual(move.product, goods)
+    >>> assertEqual(move.from_location, customer_loc)
+    >>> assertEqual(move.to_location, input_loc)
     >>> move.state
     'done'
 
