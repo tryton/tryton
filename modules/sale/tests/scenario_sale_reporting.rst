@@ -299,18 +299,15 @@ Check sale reporting per countries::
     ...     countries = CountryTree.find([])
     ...     country_time_series = CountryTimeseries.find([])
     ...     subdivision_time_series = SubdivisionTimeseries.find([])
-    >>> region.revenue == Decimal('40')
-    True
-    >>> region.parent.revenue == Decimal('40')
-    True
+    >>> region.revenue
+    Decimal('40.00')
+    >>> region.parent.revenue
+    Decimal('40.00')
     >>> len(countries)
     3
     >>> with config.set_context(context=context):
-    ...     sorted((c.region, c.number, c.revenue) for c in countries) == \
-    ...     sorted([('United States', 2, Decimal('40')),
-    ...         ('California', 1, Decimal('30')),
-    ...         ('New York', 1, Decimal('10'))])
-    True
+    ...     sorted((c.region, c.number, c.revenue) for c in countries)
+    [('California', 1, Decimal('30.00')), ('New York', 1, Decimal('10.00')), ('United States', 2, Decimal('40.00'))]
     >>> len(country_time_series)
     2
     >>> with config.set_context(context=context):

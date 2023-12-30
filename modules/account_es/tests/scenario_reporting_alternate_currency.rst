@@ -105,8 +105,8 @@ EC Operation and VATList report uses company currency::
     ...     record, = VatList.find([])
     >>> record.party == party
     True
-    >>> record.amount == Decimal('121.00')
-    True
+    >>> record.amount
+    Decimal('121.00')
     >>> ECOperationList = Model.get('account.reporting.es_ec_operation_list')
     >>> context = {
     ...     'company': company.id,
@@ -117,8 +117,8 @@ EC Operation and VATList report uses company currency::
     ...     record, = ECOperationList.find([])
     >>> record.party == supplier
     True
-    >>> record.amount == Decimal('50.00')
-    True
+    >>> record.amount
+    Decimal('50.00')
     >>> VatBook = Model.get('account.reporting.vat_book_es')
     >>> context = {
     ...     'company': company.id,
@@ -129,7 +129,7 @@ EC Operation and VATList report uses company currency::
     ...     record, = VatBook.find([])
     >>> record.party == party
     True
-    >>> record.base_amount == Decimal('100.00')
-    True
-    >>> record.tax_amount == Decimal('21.00')
-    True
+    >>> record.base_amount
+    Decimal('100.00')
+    >>> record.tax_amount
+    Decimal('21.00')

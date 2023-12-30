@@ -114,8 +114,8 @@ Check reporting margin::
     ...     time_series = MarginProductTimeseries.find([])
     >>> len(reports)
     2
-    >>> sorted([r.cost for r in reports]) == [Decimal('10.0000'), Decimal('40.0000')]
-    True
+    >>> sorted([r.cost for r in reports])
+    [Decimal('10.00'), Decimal('40.00')]
 
     >>> context['include_shipment_cost'] = True
     >>> with config.set_context(context=context):
@@ -123,5 +123,5 @@ Check reporting margin::
     ...     time_series = MarginProductTimeseries.find([])
     >>> len(reports)
     2
-    >>> sorted([r.cost for r in reports]) == [Decimal('11.0000'), Decimal('44.0000')]
-    True
+    >>> sorted([r.cost for r in reports])
+    [Decimal('11.00'), Decimal('44.00')]

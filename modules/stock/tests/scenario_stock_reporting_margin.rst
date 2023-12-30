@@ -139,11 +139,8 @@ Check reporting margin per product::
     >>> len(reports)
     2
     >>> report, = [r for r in reports if r.product == product]
-    >>> (report.quantity, report.cost, report.revenue,
-    ...     report.profit, report.margin) == (
-    ...     5, Decimal('100.00'), Decimal('170.00'),
-    ...     Decimal('70.00'), Decimal('0.4118'))
-    True
+    >>> (report.quantity, report.cost, report.revenue, report.profit, report.margin)
+    (5.0, Decimal('100.00'), Decimal('170.00'), Decimal('70.00'), Decimal('0.4118'))
     >>> len(time_series)
     3
     >>> with config.set_context(context=context):
@@ -217,8 +214,5 @@ Check reporting margin including lost::
     >>> len(reports)
     2
     >>> report, = [r for r in reports if r.product == product]
-    >>> (report.quantity, report.cost, report.revenue,
-    ...     report.profit, report.margin) == (
-    ...     6, Decimal('120.00'), Decimal('170.00'),
-    ...     Decimal('50.00'), Decimal('0.2941'))
-    True
+    >>> (report.quantity, report.cost, report.revenue, report.profit, report.margin)
+    (6.0, Decimal('120.00'), Decimal('170.00'), Decimal('50.00'), Decimal('0.2941'))

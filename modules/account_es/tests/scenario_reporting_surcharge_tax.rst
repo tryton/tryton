@@ -121,19 +121,19 @@ Generate VAT Book::
     >>> tax_record = [r for r in records if not r.surcharge_tax][0]
     >>> tax_record.party == party
     True
-    >>> tax_record.base_amount == Decimal('100.00')
-    True
-    >>> tax_record.tax_amount == Decimal('21.00')
-    True
+    >>> tax_record.base_amount
+    Decimal('100.00')
+    >>> tax_record.tax_amount
+    Decimal('21.00')
     >>> surcharge_tax_record = [r for r in records if r.surcharge_tax][0]
     >>> surcharge_tax_record.party == surcharge_party
     True
-    >>> surcharge_tax_record.base_amount == Decimal('50.00')
-    True
-    >>> surcharge_tax_record.tax_amount == Decimal('10.50')
-    True
-    >>> surcharge_tax_record.surcharge_tax_amount == Decimal('2.60')
-    True
+    >>> surcharge_tax_record.base_amount
+    Decimal('50.00')
+    >>> surcharge_tax_record.tax_amount
+    Decimal('10.50')
+    >>> surcharge_tax_record.surcharge_tax_amount
+    Decimal('2.60')
     >>> with file_open('account_es/tests/vat_book.csv', 'rb') as f:
     ...     content == f.read()
     True

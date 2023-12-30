@@ -196,8 +196,8 @@ Post the invoice and check amount to pay::
     >>> invoice.total_amount
     Decimal('100.00')
     >>> invoice.click('post')
-    >>> invoice.amount_to_pay == Decimal(0)
-    True
+    >>> invoice.amount_to_pay
+    Decimal('0')
     >>> invoice.state
     'paid'
 

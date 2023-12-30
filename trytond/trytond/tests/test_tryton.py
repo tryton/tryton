@@ -10,6 +10,7 @@ import multiprocessing
 import operator
 import os
 import pathlib
+import re
 import subprocess
 import sys
 import time
@@ -1097,7 +1098,23 @@ def doctest_teardown(test):
     return drop_db()
 
 
-doctest_checker = doctest.OutputChecker()
+STRIP_DECIMAL = doctest.register_optionflag('STRIP_DECIMAL')
+
+
+class OutputChecker(doctest.OutputChecker):
+
+    def check_output(self, want, got, optionflags):
+        if optionflags & STRIP_DECIMAL:
+            want = self._strip_decimal(want)
+            got = self._strip_decimal(got)
+        return super().check_output(want, got, optionflags)
+
+    def _strip_decimal(self, value):
+        return re.sub(
+            r"Decimal\s*\('(\d*\.\d*?)0+'\)", r"Decimal('\1')", value)
+
+
+doctest_checker = OutputChecker()
 
 
 def load_doc_tests(name, path, loader, tests, pattern):
@@ -1110,6 +1127,12 @@ def load_doc_tests(name, path, loader, tests, pattern):
     directory = os.path.dirname(path)
     # TODO: replace by glob root_dir in Python 3.10
     cwd = os.getcwd()
+    optionflags = (
+        doctest.REPORT_ONLY_FIRST_FAILURE
+        | doctest.ELLIPSIS
+        | doctest.IGNORE_EXCEPTION_DETAIL)
+    if backend.name == 'sqlite':
+        optionflags |= STRIP_DECIMAL
     try:
         os.chdir(directory)
         for scenario in filter(
@@ -1125,8 +1148,7 @@ def load_doc_tests(name, path, loader, tests, pattern):
                         scenario, package=name, globs=globs,
                         tearDown=doctest_teardown, encoding='utf-8',
                         checker=doctest_checker,
-                        optionflags=doctest.REPORT_ONLY_FIRST_FAILURE
-                        | doctest.ELLIPSIS | doctest.IGNORE_EXCEPTION_DETAIL))
+                        optionflags=optionflags))
     finally:
         os.chdir(cwd)
     return tests

@@ -150,17 +150,14 @@ Receive a single product line::
     >>> move_average.unit_price
     Decimal('8.0600')
     >>> stock_in.reload()
-    >>> (stock_in.debit, stock_in.credit) == \
-    ...     (Decimal('0.00'), Decimal('398.20'))
-    True
+    >>> (stock_in.debit, stock_in.credit)
+    (Decimal('0.00'), Decimal('398.20'))
     >>> expense.reload()
-    >>> (expense.debit, expense.credit) == \
-    ...     (Decimal('0.00'), Decimal('3.00'))
-    True
+    >>> (expense.debit, expense.credit)
+    (Decimal('0.00'), Decimal('3.00'))
     >>> stock.reload()
-    >>> (stock.debit, stock.credit) == \
-    ...     (Decimal('401.20'), Decimal('0.00'))
-    True
+    >>> (stock.debit, stock.credit)
+    (Decimal('401.20'), Decimal('0.00'))
 
 Receive many product lines::
 
@@ -181,18 +178,14 @@ Receive many product lines::
     >>> shipment.click('receive')
     >>> shipment.state
     'received'
-    >>> [move.unit_price for move in shipment.incoming_moves] == \
-    ...     [Decimal('8.3334'), Decimal('8.3333'), Decimal('8.3333')]
-    True
+    >>> [move.unit_price for move in shipment.incoming_moves]
+    [Decimal('8.3334'), Decimal('8.3333'), Decimal('8.3333')]
     >>> stock_in.reload()
-    >>> (stock_in.debit, stock_in.credit) == \
-    ...     (Decimal('0.00'), Decimal('467.20'))
-    True
+    >>> (stock_in.debit, stock_in.credit)
+    (Decimal('0.00'), Decimal('467.20'))
     >>> expense.reload()
-    >>> (expense.debit, expense.credit) == \
-    ...     (Decimal('0.00'), Decimal('6.00'))
-    True
+    >>> (expense.debit, expense.credit)
+    (Decimal('0.00'), Decimal('6.00'))
     >>> stock.reload()
-    >>> (stock.debit, stock.credit) == \
-    ...     (Decimal('473.20'), Decimal('0.00'))
-    True
+    >>> (stock.debit, stock.credit)
+    (Decimal('473.20'), Decimal('0.00'))

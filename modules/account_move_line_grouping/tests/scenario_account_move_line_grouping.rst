@@ -61,18 +61,18 @@ Create moves and reconciliation::
     >>> move.date = period.start_date
     >>> line = move.lines.new()
     >>> line.account = accounts['revenue']
-    >>> line.credit = Decimal(20)
+    >>> line.credit = Decimal('20.00')
     >>> line = move.lines.new()
     >>> line.account = accounts['revenue']
-    >>> line.credit = Decimal(22)
+    >>> line.credit = Decimal('22.00')
     >>> line = move.lines.new()
     >>> line.account = accounts['receivable']
-    >>> line.debit = Decimal(20)
+    >>> line.debit = Decimal('20.00')
     >>> line.party = party
     >>> line.maturity_date = period.end_date
     >>> line = move.lines.new()
     >>> line.account = accounts['receivable']
-    >>> line.debit = Decimal(22)
+    >>> line.debit = Decimal('22.00')
     >>> line.party = party
     >>> line.maturity_date = period.end_date
     >>> move.save()
@@ -82,11 +82,11 @@ Create moves and reconciliation::
     >>> move.journal = journal_cash
     >>> line = move.lines.new()
     >>> line.account = accounts['receivable']
-    >>> line.credit = Decimal(22)
+    >>> line.credit = Decimal('22.00')
     >>> line.party = party
     >>> line = move.lines.new()
     >>> line.account = accounts['cash']
-    >>> line.debit = Decimal(22)
+    >>> line.debit = Decimal('22.00')
     >>> move.save()
 
     >>> lines = Line.find([
@@ -107,8 +107,8 @@ Check lines grouped::
     ...         ('account', '=', accounts['receivable'].id),
     ...         ('debit', '=', Decimal('42')),
     ...         ])
-    >>> line.amount_reconciled == Decimal(22)
-    True
+    >>> line.amount_reconciled
+    Decimal('22.00')
     >>> if backend.name != 'sqlite':
     ...     line.partially_reconciled
     ... else:

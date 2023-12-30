@@ -187,12 +187,12 @@ Credit invoice::
     ...     [('type', '=', 'in'), ('id', '!=', invoice.id)])
     >>> credit_note.state
     'draft'
-    >>> credit_note.untaxed_amount == -invoice.untaxed_amount
-    True
-    >>> credit_note.tax_amount == -invoice.tax_amount
-    True
-    >>> credit_note.total_amount == -invoice.total_amount
-    True
+    >>> credit_note.untaxed_amount
+    Decimal('-110.00')
+    >>> credit_note.tax_amount
+    Decimal('-10.00')
+    >>> credit_note.total_amount
+    Decimal('-120.00')
 
 A warning is raised when creating an invoice with same reference::
 

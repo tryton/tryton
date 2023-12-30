@@ -97,27 +97,26 @@ Check opportunity reporting::
     >>> report, = reports
     >>> report.number
     5
-    >>> report.amount == Decimal('4500.00')
-    True
+    >>> report.amount
+    Decimal('4500.00')
     >>> report.converted
     2
     >>> report.conversion_rate
     0.4
-    >>> report.converted_amount == Decimal('1300.00')
-    True
+    >>> report.converted_amount
+    Decimal('1300.00')
 
     >>> report, = report.time_series
     >>> report.number
     5
-    >>> report.amount == Decimal('4500.00')
-    True
+    >>> report.amount
+    Decimal('4500.00')
     >>> report.converted
     2
     >>> report.conversion_rate
     0.4
-    >>> report.converted_amount == Decimal('1300.00')
-    True
-
+    >>> report.converted_amount
+    Decimal('1300.00')
 
 Check conversion reporting::
 
@@ -133,8 +132,8 @@ Check conversion reporting::
     1
     >>> report.winning_rate
     0.3333
-    >>> report.won_amount == Decimal('800.00')
-    True
+    >>> report.won_amount
+    Decimal('800.00')
     >>> report.lost
     1
     >>> len(report.time_series)

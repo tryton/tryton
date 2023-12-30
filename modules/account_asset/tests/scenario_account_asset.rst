@@ -101,9 +101,8 @@ Buy an asset::
     >>> supplier_invoice.state
     'posted'
     >>> invoice_line, = supplier_invoice.lines
-    >>> (asset_account.debit, asset_account.credit) == \
-    ...     (Decimal('1000'), Decimal('0'))
-    True
+    >>> (asset_account.debit, asset_account.credit)
+    (Decimal('1000.00'), Decimal('0.00'))
 
 Depreciate the asset::
 
@@ -126,8 +125,8 @@ Depreciate the asset::
     >>> asset.click('create_lines')
     >>> len(asset.lines)
     24
-    >>> [l.depreciation for l in asset.lines] == [Decimal('37.5')] * 24
-    True
+    >>> {l.depreciation for l in asset.lines}
+    {Decimal('37.50')}
     >>> asset.lines[0].actual_value
     Decimal('962.50')
     >>> asset.lines[0].accumulated_depreciation
@@ -194,10 +193,12 @@ Update the asset::
     >>> revision, = asset.revisions
     >>> revision.value
     Decimal('1100.00')
-    >>> [l.depreciation for l in asset.lines[:3]]
-    [Decimal('37.50'), Decimal('37.50'), Decimal('37.50')]
-    >>> [l.depreciation for l in asset.lines[3:-1]] == [Decimal('42.26')] * 20
-    True
+    >>> len(asset.lines)
+    24
+    >>> {l.depreciation for l in asset.lines[:3]}
+    {Decimal('37.50')}
+    >>> {l.depreciation for l in asset.lines[3:-1]}
+    {Decimal('42.26')}
     >>> asset.lines[-1].depreciation
     Decimal('42.30')
     >>> depreciation_account.reload()

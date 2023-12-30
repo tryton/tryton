@@ -122,5 +122,5 @@ Check sale reporting::
     >>> report, = reports
     >>> report.number
     1
-    >>> report.revenue == Decimal('12.00')
-    True
+    >>> report.revenue
+    Decimal('12.00')

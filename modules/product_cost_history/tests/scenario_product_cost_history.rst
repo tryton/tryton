@@ -109,9 +109,8 @@ Create some moves at different dates and with different cost::
 Check cost history::
 
     >>> order = [('date', 'ASC')]
-    >>> [c.cost_price for c in ProductCostHistory.find([], order=order)] == [
-    ...     Decimal('100.0000'), Decimal('120.0000'), Decimal('110.0000')]
-    True
+    >>> [c.cost_price for c in ProductCostHistory.find([], order=order)]
+    [Decimal('100.0000'), Decimal('120.0000'), Decimal('110.0000')]
     >>> [c.date for c in ProductCostHistory.find([], order=order)] == [
     ...     today - dt.timedelta(days=2),
     ...     today - dt.timedelta(days=1),
@@ -160,5 +159,5 @@ Update cost price::
 Check cost history::
 
     >>> history, = ProductCostHistory.find([('product', '=', service.id)])
-    >>> history.cost_price == Decimal('35.0000')
-    True
+    >>> history.cost_price
+    Decimal('35.0000')

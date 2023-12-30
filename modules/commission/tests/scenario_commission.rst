@@ -234,18 +234,18 @@ Check commission reporting per agent::
     ...     reporting_agent, = ReportingAgent.find([])
     ...     reporting_agent_timeseries, = ReportingAgentTimeseries.find([])
 
-    >>> reporting_agent.base_amount == Decimal('100.00')
-    True
-    >>> reporting_agent.amount == Decimal('10.0000')
-    True
+    >>> reporting_agent.base_amount
+    Decimal('100.00')
+    >>> reporting_agent.amount
+    Decimal('10.00')
     >>> reporting_agent.number
     1
 
     >>> reporting_agent_timeseries.date == tomorrow
     True
-    >>> reporting_agent_timeseries.base_amount == Decimal('100.00')
-    True
-    >>> reporting_agent_timeseries.amount == Decimal('10.00')
-    True
+    >>> reporting_agent_timeseries.base_amount
+    Decimal('100.00')
+    >>> reporting_agent_timeseries.amount
+    Decimal('10.00')
     >>> reporting_agent_timeseries.number
     1

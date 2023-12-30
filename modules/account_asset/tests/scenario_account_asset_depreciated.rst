@@ -84,12 +84,12 @@ Depreciate the asset::
     >>> asset.click('create_lines')
     >>> len(asset.lines)
     24
-    >>> [l.depreciation for l in asset.lines] == [Decimal('37.5')] * 24
-    True
-    >>> [l.acquired_value for l in asset.lines] == [Decimal('1500.00')] * 24
-    True
-    >>> [l.depreciable_basis for l in asset.lines] == [Decimal('900.00')] * 24
-    True
+    >>> {l.depreciation for l in asset.lines}
+    {Decimal('37.50')}
+    >>> {l.acquired_value for l in asset.lines}
+    {Decimal('1500.00')}
+    >>> {l.depreciable_basis for l in asset.lines}
+    {Decimal('900.00')}
     >>> asset.lines[0].actual_value
     Decimal('962.50')
     >>> asset.lines[0].accumulated_depreciation

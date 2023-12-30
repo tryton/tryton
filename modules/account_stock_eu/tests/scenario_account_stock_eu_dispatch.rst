@@ -280,8 +280,8 @@ Check declaration::
     '9403 10 51'
     >>> declaration_line.weight
     15.0
-    >>> declaration_line.value == Decimal('750.00')
-    True
+    >>> declaration_line.value
+    Decimal('750.00')
     >>> declaration_line.transaction.code
     '21'
     >>> declaration_line.additional_unit

@@ -145,17 +145,17 @@ Create a second sale::
 Check sale reporting::
 
     >>> report, = ReportingMain.find([])
-    >>> report.revenue == Decimal(110)
-    True
+    >>> report.revenue
+    Decimal('110.00')
 
     >>> with config.set_context(marketing_medium=sale.marketing_medium.id):
     ...     report, = ReportingMain.find([])
-    >>> report.revenue == Decimal(10)
-    True
+    >>> report.revenue
+    Decimal('10.00')
 
     >>> report, = ReportingMarketing.find([])
-    >>> report.revenue == Decimal(110)
-    True
+    >>> report.revenue
+    Decimal('110.00')
     >>> report.marketing_campaign
     >>> report.marketing_medium
     >>> report.marketing_source
@@ -164,9 +164,8 @@ Check sale reporting::
     ...     reports = ReportingMarketing.find([])
     >>> len(reports)
     2
-    >>> sorted((r.marketing_medium.name, r.revenue) for r in reports) == (
-    ...     [('phone', Decimal(10)), ('web', Decimal(100))])
-    True
+    >>> sorted((r.marketing_medium.name, r.revenue) for r in reports)
+    [('phone', Decimal('10.00')), ('web', Decimal('100.00'))]
 
     >>> with config.set_context(
     ...         group_by_marketing_campaign=True,

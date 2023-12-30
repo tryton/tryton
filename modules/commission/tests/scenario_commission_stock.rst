@@ -183,18 +183,18 @@ Check reporting margin::
     ...     }
     >>> with config.set_context(context=context):
     ...     report, = MarginProduct.find([])
-    >>> report.cost == Decimal('250.0000')
-    True
-    >>> report.revenue == Decimal('500.0000')
-    True
+    >>> report.cost
+    Decimal('250.00')
+    >>> report.revenue
+    Decimal('500.00')
 
     >>> context['include_commission'] = True
     >>> with config.set_context(context=context):
     ...     report, = MarginProduct.find([])
-    >>> report.cost == Decimal('275.0000')
-    True
-    >>> report.revenue == Decimal('500.0000')
-    True
+    >>> report.cost
+    Decimal('275.00')
+    >>> report.revenue
+    Decimal('500.00')
 
 Update commission amount::
 

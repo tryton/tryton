@@ -136,16 +136,16 @@ Create periods::
     >>> revenue_budget, expense_budget = pl_budget.children
     >>> len(pl_budget.periods)
     12
-    >>> all(p.total_amount == Decimal('-8.33') for p in pl_budget.periods)
-    True
+    >>> {p.total_amount for p in pl_budget.periods}
+    {Decimal('-8.33')}
     >>> len(revenue_budget.periods)
     12
-    >>> all(p.total_amount == Decimal('-12.50') for p in revenue_budget.periods)
-    True
+    >>> {p.total_amount for p in revenue_budget.periods}
+    {Decimal('-12.50')}
     >>> len(expense_budget.periods)
     12
-    >>> all(p.total_amount == Decimal('4.16') for p in expense_budget.periods)
-    True
+    >>> {p.total_amount for p in expense_budget.periods}
+    {Decimal('4.16')}
 
 Check the budget's periods::
 
