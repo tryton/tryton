@@ -20,3 +20,4 @@ def load_tests(loader, tests, pattern):
                 setUp=doctest_setup, tearDown=doctest_teardown,
                 encoding='utf-8',
                 optionflags=doctest.REPORT_ONLY_FIRST_FAILURE))
+    return tests
