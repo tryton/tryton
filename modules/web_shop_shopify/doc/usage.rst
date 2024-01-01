@@ -8,8 +8,8 @@ Configure Shopify Web Shop
 ==========================
 
 First you must create a new `custom app
-<https://help.shopify.com/en/manual/apps/app-types#custom-apps>`_ for your
-Shopify store with, as a minimum, the following permissions:
+<https://help.shopify.com/en/manual/apps/app-types>`_ for your Shopify store
+with, as a minimum, the following permissions:
 
    * Fulfillment services: Read and write
 
