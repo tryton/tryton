@@ -55,8 +55,10 @@ class StatementImport(metaclass=PoolMeta):
         statement = Statement()
         statement.name = mt940_statement.information
         statement.company = self.start.company
+        account, currency = (
+            self.mt940_statement_account_currency(mt940_statement))
         statement.journal = Journal.get_by_bank_account(
-            statement.company, mt940_statement.account)
+            statement.company, account)
         if not statement.journal:
             raise ImportStatementError(
                 gettext('account_statement.msg_import_no_journal',
@@ -82,6 +84,11 @@ class StatementImport(metaclass=PoolMeta):
             end_balance.amount - start_balance.amount)
         statement.number_of_lines = len(mt940_statement.transactions)
         return statement
+
+    def mt940_statement_account_currency(self, mt940_statement):
+        if self.start.mt940_bank == 'rabo':
+            return mt940_statement.account.split(' ', 1)
+        return mt940_statement.account, None
 
     def mt940_origin(self, mt940_statement, transaction):
         pool = Pool()
