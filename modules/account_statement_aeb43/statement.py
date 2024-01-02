@@ -55,6 +55,7 @@ class ImportStatement(metaclass=PoolMeta):
             }
         statement.company = self.start.company
         statement.journal = journal
+        statement.date = account.end_date
         statement.start_balance = account.initial_balance
         statement.end_balance = account.final_balance
         statement.number_of_lines = len(account.transactions)
