@@ -46,8 +46,7 @@ class ImportStatement(metaclass=PoolMeta):
                     account=account.iban))
 
         statement = Statement()
-        statement.name = '%(account)s@(%(start_date)s/%(end_date)s)' % {
-            'account': account.ccc,
+        statement.name = '%(start_date)s - %(end_date)s' % {
             'start_date': account.start_date,
             'end_date': account.end_date,
             }
