@@ -39,11 +39,14 @@ class ImportStatement(metaclass=PoolMeta):
         Statement = pool.get('account.statement')
         Journal = pool.get('account.statement.journal')
 
-        journal = Journal.get_by_bank_account(self.start.company, account.iban)
+        journal = Journal.get_by_bank_account(self.start.company, account.ccc)
+        if not journal:
+            journal = Journal.get_by_bank_account(
+                self.start.company, account.iban)
         if not journal:
             raise ImportStatementError(
                 gettext('account_statement.msg_import_no_journal',
-                    account=account.iban))
+                    account=account.ccc))
 
         statement = Statement()
         statement.name = '%(start_date)s - %(end_date)s' % {
