@@ -229,7 +229,6 @@ class AdvancePaymentCondition(ModelSQL, ModelView):
         if not invoice_lines:
             return None
         invoice.lines = invoice_lines
-        invoice.save()
         return invoice
 
     def get_invoice_advance_payment_lines(self, invoice):
@@ -378,17 +377,31 @@ class Sale(metaclass=PoolMeta):
                 recall_lines.append(line)
         return recall_lines
 
+    @classmethod
+    def _process_invoice(cls, sales):
+        pool = Pool()
+        Invoice = pool.get('account.invoice')
+        invoices = []
+        for sale in sales:
+            if (sale.advance_payment_eligible()
+                    and not sale.advance_payment_completed):
+                for condition in sale.advance_payment_conditions:
+                    invoice = condition.create_invoice()
+                    if invoice:
+                        invoices.append(invoice)
+        Invoice.save(invoices)
+
+        super()._process_invoice(sales)
+
     def create_invoice(self):
         invoice = super(Sale, self).create_invoice()
 
-        if self.advance_payment_eligible():
-            if not self.advance_payment_completed:
-                for condition in self.advance_payment_conditions:
-                    condition.create_invoice()
-            elif invoice is not None:
-                invoice.lines = (
-                    list(getattr(invoice, 'lines', ()))
-                    + self.get_recall_lines(invoice))
+        if (invoice is not None
+                and self.advance_payment_eligible()
+                and self.advance_payment_completed):
+            invoice.lines = (
+                list(getattr(invoice, 'lines', ()))
+                + self.get_recall_lines(invoice))
         return invoice
 
     def advance_payment_eligible(self, shipment_type=None):
