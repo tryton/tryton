@@ -379,9 +379,6 @@ class Sale(metaclass=PoolMeta):
         return recall_lines
 
     def create_invoice(self):
-        pool = Pool()
-        InvoiceLine = pool.get('account.invoice.line')
-
         invoice = super(Sale, self).create_invoice()
 
         if self.advance_payment_eligible():
@@ -389,14 +386,9 @@ class Sale(metaclass=PoolMeta):
                 for condition in self.advance_payment_conditions:
                     condition.create_invoice()
             elif invoice is not None:
-                invoice.save()
-                recall_lines = self.get_recall_lines(invoice)
-                if recall_lines:
-                    for line in recall_lines:
-                        line.invoice = invoice
-                    InvoiceLine.save(recall_lines)
-                    invoice.update_taxes()
-
+                invoice.lines = (
+                    list(getattr(invoice, 'lines', ()))
+                    + self.get_recall_lines(invoice))
         return invoice
 
     def advance_payment_eligible(self, shipment_type=None):
