@@ -398,6 +398,7 @@ class Sale(metaclass=PoolMeta):
                 for condition in self.advance_payment_conditions:
                     condition.create_invoice()
             elif invoice is not None:
+                invoice.save()
                 recall_lines = self.get_recall_lines(invoice)
                 if recall_lines:
                     for line in recall_lines:
