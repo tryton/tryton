@@ -108,6 +108,22 @@ class Move(metaclass=PoolMeta):
         if self.product and self.to_location:
             return self.product.get_place(self.to_location)
 
+    @fields.depends('from_place')
+    def on_change_with_from_location_name(self, name=None):
+        name = super().on_change_with_from_location_name(name=name)
+        if self.from_place:
+            name = ' @ '.join(
+                filter(None, [name, self.from_place.rec_name])).strip()
+        return name
+
+    @fields.depends('to_place')
+    def on_change_with_to_location_name(self, name=None):
+        name = super().on_change_with_to_location_name(name=name)
+        if self.to_place:
+            name = ' @ '.join(
+                filter(None, [name, self.to_place.rec_name])).strip()
+        return name
+
     @classmethod
     def create(cls, vlist):
         moves = super().create(vlist)

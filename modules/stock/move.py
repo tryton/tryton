@@ -213,11 +213,17 @@ class Move(Workflow, ModelSQL, ModelView):
         required=True, states=STATES,
         domain=LOCATION_DOMAIN,
         help="Where the stock is moved from.")
+    from_location_name = fields.Function(fields.Char(
+            "From Location"),
+        'on_change_with_from_location_name')
     to_location = fields.Many2One(
         'stock.location', "To Location",
         required=True, states=STATES,
         domain=LOCATION_DOMAIN,
         help="Where the stock is moved to.")
+    to_location_name = fields.Function(fields.Char(
+            "To Location"),
+        'on_change_with_to_location_name')
     shipment = fields.Reference(
         "Shipment", selection='get_shipment', readonly=True,
         states={
@@ -478,6 +484,16 @@ class Move(Workflow, ModelSQL, ModelView):
     @fields.depends('product')
     def on_change_with_product_uom_category(self, name=None):
         return self.product.default_uom_category if self.product else None
+
+    @fields.depends('from_location')
+    def on_change_with_from_location_name(self, name=None):
+        if self.from_location:
+            return self.from_location.rec_name
+
+    @fields.depends('to_location')
+    def on_change_with_to_location_name(self, name=None):
+        if self.to_location:
+            return self.to_location.rec_name
 
     @classmethod
     def get_unit_price_company(cls, moves, name):
