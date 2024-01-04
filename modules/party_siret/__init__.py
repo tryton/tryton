@@ -3,7 +3,7 @@
 
 from trytond.pool import Pool
 
-from . import address, party
+from . import address, company, party
 
 
 def register():
@@ -11,3 +11,6 @@ def register():
         party.Party,
         address.Address,
         module='party_siret', type_='model')
+    Pool.register(
+        company.Company,
+        module='party_siret', type_='model', depends=['company'])

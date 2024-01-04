@@ -710,7 +710,7 @@
   <style:master-page style:name="Standard" style:page-layout-name="pm1" draw:style-name="dp1">
    <style:header>
     <text:p text:style-name="P1"><text:placeholder text:placeholder-type="text">&lt;if test=&quot;invoice.company.header&quot;&gt;</text:placeholder></text:p>
-    <text:p text:style-name="P1"><text:placeholder text:placeholder-type="text">&lt;for each=&quot;line in invoice.company.header.split(&apos;\n&apos;)&quot;&gt;</text:placeholder></text:p>
+    <text:p text:style-name="P1"><text:placeholder text:placeholder-type="text">&lt;for each=&quot;line in invoice.company.header_used.split(&apos;\n&apos;)&quot;&gt;</text:placeholder></text:p>
     <text:p text:style-name="P1"><text:placeholder text:placeholder-type="text">&lt;line&gt;</text:placeholder></text:p>
     <text:p text:style-name="P1"><text:placeholder text:placeholder-type="text">&lt;/for&gt;</text:placeholder></text:p>
     <text:p text:style-name="P2"><text:placeholder text:placeholder-type="text">&lt;/if&gt;</text:placeholder></text:p>
@@ -718,7 +718,7 @@
    </style:header>
    <style:footer>
     <text:p text:style-name="P2"><text:placeholder text:placeholder-type="text">&lt;if test=&quot;invoice.company.footer&quot;&gt;</text:placeholder></text:p>
-    <text:p text:style-name="P2"><text:placeholder text:placeholder-type="text">&lt;for each=&quot;line in invoice.company.footer.split(&apos;\n&apos;)&quot;&gt;</text:placeholder></text:p>
+    <text:p text:style-name="P2"><text:placeholder text:placeholder-type="text">&lt;for each=&quot;line in invoice.company.footer_used.split(&apos;\n&apos;)&quot;&gt;</text:placeholder></text:p>
     <text:p text:style-name="P2"><text:placeholder text:placeholder-type="text">&lt;line&gt;</text:placeholder></text:p>
     <text:p text:style-name="P2"><text:placeholder text:placeholder-type="text">&lt;/for&gt;</text:placeholder></text:p>
     <text:p text:style-name="P2"><text:placeholder text:placeholder-type="text">&lt;/if&gt;</text:placeholder></text:p>

@@ -8,7 +8,7 @@
         <header style="text-align: center">
             <h3>${company.rec_name}</h3>
             <py:if test="company.header">
-            <p py:for="line in company.header.splitlines()">${line}</p>
+            <p py:for="line in company.header_used.splitlines()">${line}</p>
             </py:if>
         </header>
         <h1 style="text-align: center">Reminder Notice</h1>
@@ -74,7 +74,7 @@
         </table>
         <footer style="text-align: center">
             <py:if test="company.footer">
-            <p py:for="line in company.footer.splitlines()">${line}</p>
+            <p py:for="line in company.footer_used.splitlines()">${line}</p>
             </py:if>
         </footer>
         </py:for>

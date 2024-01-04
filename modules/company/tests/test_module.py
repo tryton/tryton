@@ -305,5 +305,29 @@ class CompanyTestCase(
                 root = User(0)
                 self.assertEqual(root.employee, employee)
 
+    @with_transaction()
+    def test_company_header(self):
+        "Test company header"
+        company = create_company()
+        company.party.email = 'company@example.com'
+        company.party.save()
+        company.header = "${name} - ${email}"
+        company.save()
+
+        self.assertEqual(
+            company.header_used, "Dunder Mifflin - company@example.com")
+
+    @with_transaction()
+    def test_company_footer(self):
+        "Test company footer"
+        company = create_company()
+        company.party.email = 'company@example.com'
+        company.party.save()
+        company.footer = "${name} - ${email}"
+        company.save()
+
+        self.assertEqual(
+            company.footer_used, "Dunder Mifflin - company@example.com")
+
 
 del ModuleTestCase

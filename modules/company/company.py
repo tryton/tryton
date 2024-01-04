@@ -1,5 +1,8 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
+
+from string import Template
+
 from trytond.model import ModelSQL, ModelView, fields
 from trytond.pool import Pool
 from trytond.pyson import Eval, If
@@ -13,6 +16,18 @@ TIMEZONES += [(None, '')]
 
 Transaction.cache_keys.update({'company', 'employee'})
 
+_SUBSTITUTION_HELP = (
+    "The following placeholders can be used:\n"
+    "- ${name}\n"
+    "- ${phone}\n"
+    "- ${mobile}\n"
+    "- ${fax}\n"
+    "- ${email}\n"
+    "- ${website}\n"
+    "- ${address}\n"
+    "- ${tax_identifier}\n"
+    )
+
 
 class Company(ModelSQL, ModelView):
     'Company'
@@ -20,15 +35,42 @@ class Company(ModelSQL, ModelView):
     party = fields.Many2One('party.party', 'Party', required=True,
             ondelete='CASCADE')
     header = fields.Text(
-        'Header', help="The text to display on report headers.")
+        'Header',
+        help="The text to display on report headers.\n" + _SUBSTITUTION_HELP)
     footer = fields.Text(
-        'Footer', help="The text to display on report footers.")
+        'Footer',
+        help="The text to display on report footers.\n" + _SUBSTITUTION_HELP)
     currency = fields.Many2One('currency.currency', 'Currency', required=True,
         help="The main currency for the company.")
     timezone = fields.Selection(TIMEZONES, 'Timezone', translate=False,
         help="Used to compute the today date.")
     employees = fields.One2Many('company.employee', 'company', 'Employees',
         help="Add employees to the company.")
+
+    @property
+    def header_used(self):
+        return Template(self.header or '').safe_substitute(self._substitutions)
+
+    @property
+    def footer_used(self):
+        return Template(self.footer or '').safe_substitute(self._substitutions)
+
+    @property
+    def _substitutions(self):
+        address = self.party.address_get()
+        tax_identifier = self.party.tax_identifier
+        return {
+            'name': self.party.name,
+            'phone': self.party.phone,
+            'mobile': self.party.mobile,
+            'fax': self.party.fax,
+            'email': self.party.email,
+            'website': self.party.website,
+            'address': (
+                ' '.join(address.full_address.splitlines())
+                if address else ''),
+            'tax_identifier': tax_identifier.code if tax_identifier else '',
+            }
 
     def get_rec_name(self, name):
         return self.party.rec_name

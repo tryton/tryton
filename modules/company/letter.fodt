@@ -350,7 +350,7 @@
   <style:master-page style:name="Standard" style:page-layout-name="pm1">
    <style:header>
     <text:p text:style-name="P1"><text:placeholder text:placeholder-type="text">&lt;if test=&quot;user.company.header&quot;&gt;</text:placeholder></text:p>
-    <text:p text:style-name="P1"><text:placeholder text:placeholder-type="text">&lt;for each=&quot;line in user.company.header.split(&apos;\n&apos;)&quot;&gt;</text:placeholder></text:p>
+    <text:p text:style-name="P1"><text:placeholder text:placeholder-type="text">&lt;for each=&quot;line in user.company.header_used.split(&apos;\n&apos;)&quot;&gt;</text:placeholder></text:p>
     <text:p text:style-name="P1"><text:placeholder text:placeholder-type="text">&lt;line&gt;</text:placeholder></text:p>
     <text:p text:style-name="P1"><text:placeholder text:placeholder-type="text">&lt;/for&gt;</text:placeholder></text:p>
     <text:p text:style-name="P2"><text:placeholder text:placeholder-type="text">&lt;/if&gt;</text:placeholder></text:p>
@@ -358,7 +358,7 @@
    </style:header>
    <style:footer>
     <text:p text:style-name="P2"><text:placeholder text:placeholder-type="text">&lt;if test=&quot;user.company.footer&quot;&gt;</text:placeholder></text:p>
-    <text:p text:style-name="P2"><text:placeholder text:placeholder-type="text">&lt;for each=&quot;line in user.company.footer.split(&apos;\n&apos;)&quot;&gt;</text:placeholder></text:p>
+    <text:p text:style-name="P2"><text:placeholder text:placeholder-type="text">&lt;for each=&quot;line in user.company.footer_used.split(&apos;\n&apos;)&quot;&gt;</text:placeholder></text:p>
     <text:p text:style-name="P2"><text:placeholder text:placeholder-type="text">&lt;line&gt;</text:placeholder></text:p>
     <text:p text:style-name="P2"><text:placeholder text:placeholder-type="text">&lt;/for&gt;</text:placeholder></text:p>
     <text:p text:style-name="P2"><text:placeholder text:placeholder-type="text">&lt;/if&gt;</text:placeholder></text:p>
