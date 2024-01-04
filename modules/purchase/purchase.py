@@ -123,6 +123,7 @@ class Purchase(
             },
         context={
             'company': Eval('company', -1),
+            'party_contact_mechanism_usage': 'invoice',
             },
         search_context={
             'related_party': Eval('party'),

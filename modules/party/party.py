@@ -178,15 +178,15 @@ class Party(
         return self.name
 
     def get_contact_mechanism(self, name):
-        for mechanism in self.contact_mechanisms:
-            if mechanism.type == name:
-                return mechanism.value
-        return ''
+        usage = Transaction().context.get('party_contact_mechanism_usage')
+        mechanism = self.contact_mechanism_get(name, usage)
+        return mechanism.value if mechanism else ''
 
     @classmethod
     def set_contact_mechanism(cls, parties, name, value):
         pool = Pool()
         ContactMechanism = pool.get('party.contact_mechanism')
+        usage = Transaction().context.get('party_contact_mechanism_usage')
         contact_mechanisms = []
         for party in parties:
             if getattr(party, name):
@@ -196,10 +196,22 @@ class Party(
                         party=party.rec_name,
                         field=type_string))
             if value:
-                contact_mechanisms.append(ContactMechanism(
+                contact_mechanism = None
+                if usage:
+                    for contact_mechanism in party.contact_mechanisms:
+                        if (contact_mechanism.type == name
+                                and contact_mechanism.value == value):
+                            break
+                    else:
+                        contact_mechanism = None
+                if not contact_mechanism:
+                    contact_mechanism = ContactMechanism(
                         party=party,
                         type=name,
-                        value=value))
+                        value=value)
+                if usage:
+                    setattr(contact_mechanism, usage, True)
+                contact_mechanisms.append(contact_mechanism)
         ContactMechanism.save(contact_mechanisms)
 
     @classmethod

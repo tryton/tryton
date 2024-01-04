@@ -74,12 +74,16 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin, InvoiceReportMixin):
                 _states['readonly']
                 | Eval('party', True)
                 | Eval('lines', [0])),
+            },
+        context={
+            'party_contact_mechanism_usage': 'invoice',
             })
     company_party = fields.Function(
         fields.Many2One(
             'party.party', "Company Party",
             context={
                 'company': Eval('company', -1),
+                'party_contact_mechanism_usage': 'invoice',
                 },
             depends={'company'}),
         'on_change_with_company_party')
@@ -143,6 +147,7 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin, InvoiceReportMixin):
         'party.party', 'Party', required=True, states=_states,
         context={
             'company': Eval('company', -1),
+            'party_contact_mechanism_usage': 'invoice',
             },
         depends={'company'})
     party_tax_identifier = fields.Many2One(
@@ -2134,6 +2139,7 @@ class InvoiceLine(sequence_ordered(), ModelSQL, ModelView, TaxableMixin):
             'party.party', "Party",
             context={
                 'company': Eval('company', -1),
+                'party_contact_mechanism_usage': 'invoice',
                 },
             depends=['company']),
         'on_change_with_invoice_party', searcher='search_invoice_party')
@@ -2158,6 +2164,7 @@ class InvoiceLine(sequence_ordered(), ModelSQL, ModelView, TaxableMixin):
             },
         context={
             'company': Eval('company', -1),
+            'party_contact_mechanism_usage': 'invoice',
             },
         depends={'company'})
     party_lang = fields.Function(fields.Char('Party Language'),
@@ -2167,7 +2174,10 @@ class InvoiceLine(sequence_ordered(), ModelSQL, ModelView, TaxableMixin):
         states=_states)
     company = fields.Many2One(
         'company.company', "Company", required=True,
-        states=_states)
+        states=_states,
+        context={
+            'party_contact_mechanism_usage': 'invoice',
+            })
     type = fields.Selection([
         ('line', 'Line'),
         ('subtotal', 'Subtotal'),

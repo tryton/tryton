@@ -290,6 +290,9 @@ class ShipmentIn(
         states={
             'readonly': Eval('state') != 'draft',
             },
+        context={
+            'party_contact_mechanism_usage': 'delivery',
+            },
         help="The company the shipment is associated with.")
     supplier = fields.Many2One('party.party', 'Supplier',
         states={
@@ -299,6 +302,7 @@ class ShipmentIn(
             }, required=True,
         context={
             'company': Eval('company', -1),
+            'party_contact_mechanism_usage': 'delivery',
             },
         depends={'company'},
         help="The party that supplied the stock.")
@@ -755,6 +759,9 @@ class ShipmentInReturn(ShipmentAssignMixin, Workflow, ModelSQL, ModelView):
         states={
             'readonly': Eval('state') != 'draft',
             },
+        context={
+            'party_contact_mechanism_usage': 'delivery',
+            },
         help="The company the shipment is associated with.")
     supplier = fields.Many2One('party.party', 'Supplier',
         states={
@@ -764,6 +771,7 @@ class ShipmentInReturn(ShipmentAssignMixin, Workflow, ModelSQL, ModelView):
             }, required=True,
         context={
             'company': Eval('company', -1),
+            'party_contact_mechanism_usage': 'delivery',
             },
         depends={'company'},
         help="The party that supplied the stock.")
@@ -1123,6 +1131,9 @@ class ShipmentOut(
         states={
             'readonly': Eval('state') != 'draft',
             },
+        context={
+            'party_contact_mechanism_usage': 'delivery',
+            },
         help="The company the shipment is associated with.")
     customer = fields.Many2One('party.party', 'Customer', required=True,
         states={
@@ -1131,6 +1142,7 @@ class ShipmentOut(
             },
         context={
             'company': Eval('company', -1),
+            'party_contact_mechanism_usage': 'delivery',
             },
         depends={'company'},
         help="The party that purchased the stock.")
@@ -1829,6 +1841,9 @@ class ShipmentOutReturn(
         states={
             'readonly': Eval('state') != 'draft',
             },
+        context={
+            'party_contact_mechanism_usage': 'delivery',
+            },
         help="The company the shipment is associated with.")
     customer = fields.Many2One('party.party', 'Customer', required=True,
         states={
@@ -1837,6 +1852,7 @@ class ShipmentOutReturn(
             },
         context={
             'company': Eval('company', -1),
+            'party_contact_mechanism_usage': 'delivery',
             },
         depends={'company'},
         help="The party that purchased the stock.")
@@ -2289,6 +2305,9 @@ class ShipmentInternal(
         'company.company', "Company", required=True,
         states={
             'readonly': ~Eval('state').in_(['request', 'draft']),
+            },
+        context={
+            'party_contact_mechanism_usage': 'delivery',
             },
         help="The company the shipment is associated with.")
     from_location = fields.Many2One('stock.location', "From Location",
