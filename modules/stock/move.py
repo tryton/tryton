@@ -19,7 +19,7 @@ from trytond.model.exceptions import AccessError
 from trytond.modules.product import price_digits, round_price
 from trytond.pool import Pool
 from trytond.pyson import Bool, Eval, If, TimeDelta
-from trytond.tools import grouped_slice, reduce_ids
+from trytond.tools import cached_property, grouped_slice, reduce_ids
 from trytond.transaction import Transaction, without_check_access
 
 from .exceptions import MoveFutureWarning, MoveOriginWarning
@@ -470,6 +470,10 @@ class Move(Workflow, ModelSQL, ModelView):
             if (not self.unit
                     or self.unit.category != default_uom.category):
                 self.unit = default_uom
+
+    @cached_property
+    def product_name(self):
+        return self.product.rec_name if self.product else ''
 
     @fields.depends('product')
     def on_change_with_product_uom_category(self, name=None):
