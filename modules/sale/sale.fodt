@@ -698,8 +698,8 @@
     </table:table-row>
     <table:table-row>
      <table:table-cell table:style-name="Table1.A5" office:value-type="string">
-      <text:p text:style-name="P20"><text:placeholder text:placeholder-type="text">&lt;if test=&quot;line.product&quot;&gt;</text:placeholder></text:p>
-      <text:p text:style-name="P20"><text:placeholder text:placeholder-type="text">&lt;line.product.rec_name&gt;</text:placeholder></text:p>
+      <text:p text:style-name="P20"><text:placeholder text:placeholder-type="text">&lt;if test=&quot;line.product_name&quot;&gt;</text:placeholder></text:p>
+      <text:p text:style-name="P20"><text:placeholder text:placeholder-type="text">&lt;line.product_name&gt;</text:placeholder></text:p>
       <text:p text:style-name="P20"><text:placeholder text:placeholder-type="text">&lt;/if&gt;</text:placeholder></text:p>
       <text:p text:style-name="P20"><text:placeholder text:placeholder-type="text">&lt;if test=&quot;line.description&quot;&gt;</text:placeholder></text:p>
       <text:p text:style-name="P20"><text:placeholder text:placeholder-type="text">&lt;for each=&quot;description in line.description.split(&apos;\n&apos;)&quot;&gt;</text:placeholder></text:p>

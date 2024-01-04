@@ -29,7 +29,8 @@ from trytond.pool import Pool
 from trytond.pyson import Bool, Eval, Id, If
 from trytond.report import Report
 from trytond.rpc import RPC
-from trytond.tools import firstline, grouped_slice, reduce_ids, slugify
+from trytond.tools import (
+    cached_property, firstline, grouped_slice, reduce_ids, slugify)
 from trytond.transaction import Transaction
 from trytond.wizard import (
     Button, StateAction, StateReport, StateTransition, StateView, Wizard)
@@ -2635,6 +2636,10 @@ class InvoiceLine(sequence_ordered(), ModelSQL, ModelView, TaxableMixin):
         category = self.product.default_uom.category
         if not self.unit or self.unit.category != category:
             self.unit = self.product.default_uom.id
+
+    @cached_property
+    def product_name(self):
+        return self.product.rec_name if self.product else ''
 
     @fields.depends('product')
     def on_change_with_product_uom_category(self, name=None):

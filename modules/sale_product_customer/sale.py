@@ -4,6 +4,7 @@
 from trytond.model import fields
 from trytond.pool import PoolMeta
 from trytond.pyson import Bool, Eval, If
+from trytond.tools import cached_property
 
 
 class Line(metaclass=PoolMeta):
@@ -61,6 +62,13 @@ class Line(metaclass=PoolMeta):
                 if len(self.product_customer.template.products) == 1:
                     self.product, = self.product_customer.template.products
         self.on_change_product()
+
+    @cached_property
+    def product_name(self):
+        name = super().product_name
+        if self.product_customer:
+            name = self.product_customer.rec_name
+        return name
 
 
 class AmendmentLine(metaclass=PoolMeta):

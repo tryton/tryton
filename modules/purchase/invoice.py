@@ -7,6 +7,7 @@ from trytond.model import ModelView, Workflow, fields
 from trytond.model.exceptions import AccessError
 from trytond.pool import Pool, PoolMeta
 from trytond.pyson import Eval
+from trytond.tools import cached_property
 from trytond.transaction import Transaction, without_check_access
 
 
@@ -109,6 +110,16 @@ class InvoiceLine(metaclass=PoolMeta):
         cls.origin.domain['purchase.line'] = [
             ('type', '=', Eval('type')),
             ]
+
+    @cached_property
+    def product_name(self):
+        pool = Pool()
+        PurchaseLine = pool.get('purchase.line')
+        name = super().product_name
+        if (isinstance(self.origin, PurchaseLine)
+                and self.origin.product_supplier):
+            name = self.origin.product_supplier.rec_name
+        return name
 
     @fields.depends('origin')
     def on_change_with_product_uom_category(self, name=None):

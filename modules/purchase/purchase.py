@@ -25,7 +25,7 @@ from trytond.modules.currency.fields import Monetary
 from trytond.modules.product import price_digits
 from trytond.pool import Pool
 from trytond.pyson import Bool, Eval, If, PYSONEncoder
-from trytond.tools import firstline
+from trytond.tools import cached_property, firstline
 from trytond.transaction import Transaction
 from trytond.wizard import (
     Button, StateAction, StateTransition, StateView, Wizard)
@@ -1466,6 +1466,15 @@ class Line(sequence_ordered(), ModelSQL, ModelView):
             self.unit_price = self.compute_unit_price()
 
         self.amount = self.on_change_with_amount()
+
+    @cached_property
+    def product_name(self):
+        if self.product_supplier:
+            return self.product_supplier.rec_name
+        elif self.product:
+            return self.product.rec_name
+        else:
+            return ''
 
     @fields.depends(
         'type', 'product',

@@ -25,7 +25,7 @@ from trytond.modules.currency.fields import Monetary
 from trytond.modules.product import price_digits
 from trytond.pool import Pool
 from trytond.pyson import Bool, Eval, If, PYSONEncoder
-from trytond.tools import firstline, sortable_values
+from trytond.tools import cached_property, firstline, sortable_values
 from trytond.transaction import Transaction
 from trytond.wizard import (
     Button, StateAction, StateTransition, StateView, Wizard)
@@ -1549,6 +1549,10 @@ class SaleLine(TaxableMixin, sequence_ordered(), ModelSQL, ModelView):
             self.unit_price = self.compute_unit_price()
 
         self.amount = self.on_change_with_amount()
+
+    @cached_property
+    def product_name(self):
+        return self.product.rec_name if self.product else ''
 
     @fields.depends(
         'type', 'product',
