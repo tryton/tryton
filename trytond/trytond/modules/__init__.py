@@ -5,10 +5,8 @@ import importlib
 import itertools
 import logging
 import os
-import sys
 from collections import defaultdict
 from glob import iglob
-from importlib.machinery import SOURCE_SUFFIXES, FileFinder, SourceFileLoader
 
 from sql import Table
 from sql.functions import CurrentTimestamp
@@ -54,28 +52,7 @@ def import_module(name, fullname=None):
         if name not in EGG_MODULES:
             raise
         ep = EGG_MODULES[name]
-        # Can not use ep.load because modules are declared in an importable
-        # path and it can not import submodule.
-        path = os.path.join(
-            ep.dist.location, *ep.module_name.split('.')[:-1])
-        if not os.path.isdir(path):
-            # Find module in path
-            for path in sys.path:
-                path = os.path.join(
-                    path, *ep.module_name.split('.')[:-1])
-                if os.path.isdir(os.path.join(path, name)):
-                    break
-            else:
-                # When testing modules from setuptools location is the
-                # module directory
-                path = os.path.dirname(ep.dist.location)
-        spec = FileFinder(
-            path, (SourceFileLoader, SOURCE_SUFFIXES)
-            ).find_spec(fullname)
-        if spec.loader:
-            module = spec.loader.load_module()
-        else:
-            raise
+        module = ep.load()
     return module
 
 
