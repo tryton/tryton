@@ -23,7 +23,6 @@ logger = logging.getLogger(__name__)
 ir_module = Table('ir_module')
 ir_model_data = Table('ir_model_data')
 
-OPJ = os.path.join
 MODULES_PATH = os.path.abspath(os.path.dirname(__file__))
 
 MODULES = []
@@ -200,7 +199,8 @@ def load_module_graph(graph, pool, update=None, lang=None):
                     filename = filename.replace('/', os.sep)
                     logger.info('%s:loading %s', module, filename)
                     # Feed the parser with xml content:
-                    with tools.file_open(OPJ(module, filename), 'rb') as fp:
+                    with tools.file_open(
+                            os.path.join(module, filename), 'rb') as fp:
                         tryton_parser.parse_xmlstream(fp)
 
                 modules_todo.append((module, list(tryton_parser.to_delete)))
