@@ -12,8 +12,8 @@ import sql
 import sql.operators
 
 from trytond.tools import (
-    decimal_, escape_wildcard, file_open, firstline, grouped_slice,
-    is_full_text, is_instance_method, likify, lstrip_wildcard,
+    cached_property, decimal_, escape_wildcard, file_open, firstline,
+    grouped_slice, is_full_text, is_instance_method, likify, lstrip_wildcard,
     pairwise_longest, reduce_domain, reduce_ids, remove_forbidden_chars,
     rstrip_wildcard, slugify, sortable_values, strip_wildcard, timezone,
     unescape_wildcard)
@@ -1212,6 +1212,58 @@ class QRCodeTestCase(unittest.TestCase):
         image = qrcode.generate_png("Tryton")
         self.assertIsInstance(image, BytesIO)
         self.assertIsNotNone(image.getvalue())
+
+
+class CachedProperty:
+    _count = 0
+
+    def get_count(self):
+        self._count += 1
+        return self._count
+
+    cached_count = cached_property(get_count)
+
+
+class CachedPropertySlots:
+    __slots__ = ('_count', '__weakref__')
+
+    def __init__(self):
+        self._count = 0
+
+    def get_count(self):
+        self._count += 1
+        return self._count
+
+    cached_count = cached_property(get_count)
+
+
+class CachedPropertyTestCase(unittest.TestCase):
+    "Test cached_property"
+
+    def test_cached_property_clear(self):
+        "Test clear cached property"
+        item = CachedProperty()
+
+        self.assertEqual(item.cached_count, 1)
+        del item.cached_count
+        self.assertEqual(item.cached_count, 2)
+
+    def test_cached_property_with_slots(self):
+        "Test cached property with slots"
+        item = CachedPropertySlots()
+
+        self.assertEqual(item.cached_count, 1)
+        self.assertEqual(item.cached_count, 1)
+        self.assertEqual(item.get_count(), 2)
+        self.assertEqual(item.cached_count, 1)
+
+    def test_cached_property_with_slots_clear(self):
+        "Test clear cached property with slots"
+        item = CachedPropertySlots()
+
+        self.assertEqual(item.cached_count, 1)
+        del item.cached_count
+        self.assertEqual(item.cached_count, 2)
 
 
 def load_tests(loader, tests, pattern):

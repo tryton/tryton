@@ -1,11 +1,8 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 import posixpath
-
-try:
-    from functools import cached_property
-except ImportError:
-    from werkzeug.utils import cached_property
+from functools import cached_property
+from weakref import WeakKeyDictionary
 
 try:
     from werkzeug.security import safe_join
@@ -20,6 +17,36 @@ from .misc import (
     reduce_domain, reduce_ids, remove_forbidden_chars, resolve,
     rstrip_wildcard, slugify, sortable_values, sql_pairing, strip_wildcard,
     unescape_wildcard)
+
+_NOT_FOUND = object()
+
+
+class cached_property(cached_property):
+    _cache = None
+
+    def __get__(self, instance, owner=None):
+        if instance is None:
+            return self
+        cache = getattr(instance, '__dict__', None)
+        if cache is None:  # __slots__
+            if self._cache is None:
+                self._cache = WeakKeyDictionary()
+            val = self._cache.get(instance, _NOT_FOUND)
+            if val is _NOT_FOUND:
+                self._cache[instance] = val = self.func(instance)
+            return val
+        else:
+            return super().__get__(instance, owner)
+
+    def __delete__(self, instance):
+        cache = getattr(instance, '__dict__', None)
+        try:
+            if cache:
+                del cache[self.attrname]
+            elif self._cache:
+                del self._cache[instance]
+        except KeyError:
+            pass
 
 
 class ClassProperty(property):

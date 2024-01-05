@@ -1,3 +1,4 @@
+* Support cached_property on object with __slots__
 * Allow creating indexes concurrently
 * Allow skipping index creation
 * Add assert methods to test tools
