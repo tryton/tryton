@@ -31,6 +31,7 @@ class Sale(metaclass=PoolMeta):
         get_warehouse = attrgetter('warehouse')
         for warehouse, sub_sales in groupby(
                 filter(get_warehouse, sales), key=get_warehouse):
+            sub_sales = list(sub_sales)
             products = {
                 l.product for s in sub_sales for l in s.lines
                 if l.product and l.product.supply_on_sale == 'stock_first'}
@@ -42,9 +43,11 @@ class Sale(metaclass=PoolMeta):
                     (p, min(p.quantity, p.forecast_quantity))
                     for p in Product.browse(products))
 
-        # purchase requests must be created before shipments to get information
-        # about requests during the shipments creation like the supplier
-        cls._process_supply(sales, product_quantities)
+            # purchase requests must be created before shipments to get
+            # information about requests during the shipments creation like the
+            # supplier
+            cls._process_supply(sub_sales, product_quantities)
+            product_quantities.clear()
         super()._process_shipment(sales)
 
     @classmethod
