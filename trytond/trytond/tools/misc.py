@@ -20,7 +20,28 @@ from sql import Literal
 from sql.conditionals import Case
 from sql.operators import Or
 
-from trytond.const import OPERATORS
+from trytond.const import MODULES_GROUP, OPERATORS
+
+try:
+    from backports.entry_points_selectable import entry_points as _entry_points
+except ImportError:
+    from importlib.metadata import entry_points as _entry_points
+_ENTRY_POINTS = None
+
+
+def entry_points():
+    global _ENTRY_POINTS
+    if _ENTRY_POINTS is None:
+        _ENTRY_POINTS = _entry_points()
+    return _ENTRY_POINTS
+
+
+def import_module(name):
+    try:
+        ep, = entry_points().select(group=MODULES_GROUP, name=name)
+    except ValueError:
+        return importlib.import_module(f'{MODULES_GROUP}.{name}')
+    return ep.load()
 
 
 def file_open(name, mode="r", subdir='modules', encoding=None):
@@ -51,8 +72,7 @@ def find_path(name, subdir='modules', _test=os.path.isfile):
                 path = secure_join(root_path, module_name, module_path)
             else:
                 try:
-                    module = importlib.import_module(
-                        f'trytond.modules.{module_name}')
+                    module = import_module(module_name)
                 except ModuleNotFoundError:
                     path = secure_join(root_path, subdir, name)
                 else:

@@ -14,11 +14,12 @@ except ImportError:
 
 from .decimal_ import decistmt
 from .misc import (
-    escape_wildcard, file_open, find_dir, find_path, firstline,
-    get_smtp_server, grouped_slice, is_full_text, is_instance_method, likify,
-    lstrip_wildcard, pairwise_longest, reduce_domain, reduce_ids,
-    remove_forbidden_chars, resolve, rstrip_wildcard, slugify, sortable_values,
-    sql_pairing, strip_wildcard, unescape_wildcard)
+    entry_points, escape_wildcard, file_open, find_dir, find_path, firstline,
+    get_smtp_server, grouped_slice, import_module, is_full_text,
+    is_instance_method, likify, lstrip_wildcard, pairwise_longest,
+    reduce_domain, reduce_ids, remove_forbidden_chars, resolve,
+    rstrip_wildcard, slugify, sortable_values, sql_pairing, strip_wildcard,
+    unescape_wildcard)
 
 
 class ClassProperty(property):
@@ -41,6 +42,7 @@ __all__ = [
     cached_property,
     cursor_dict,
     decistmt,
+    entry_points,
     escape_wildcard,
     file_open,
     find_dir,
@@ -48,6 +50,7 @@ __all__ = [
     firstline,
     get_smtp_server,
     grouped_slice,
+    import_module,
     is_full_text,
     is_instance_method,
     likify,
