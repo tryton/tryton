@@ -5,6 +5,7 @@ import functools
 from decimal import Decimal
 from itertools import groupby
 
+from sql import Null
 from sql.functions import CharLength
 
 from trytond.i18n import gettext
@@ -250,7 +251,9 @@ class BlanketAgreement(Workflow, ModelSQL, ModelView):
     @classmethod
     def order_number(cls, tables):
         table, _ = tables[None]
-        return [CharLength(table.number), table.number]
+        return [
+            ~((table.state == 'cancelled') & (table.state == Null)),
+            CharLength(table.number), table.number]
 
     @classmethod
     def default_currency(cls, **pattern):

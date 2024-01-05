@@ -5,7 +5,7 @@ from collections import defaultdict
 from decimal import Decimal
 from itertools import chain, groupby
 
-from sql import Literal
+from sql import Literal, Null
 from sql.aggregate import Count
 from sql.functions import CharLength
 
@@ -349,7 +349,9 @@ class Purchase(
     @classmethod
     def order_number(cls, tables):
         table, _ = tables[None]
-        return [CharLength(table.number), table.number]
+        return [
+            ~((table.state == 'cancelled') & (table.number == Null)),
+            CharLength(table.number), table.number]
 
     @classmethod
     def default_warehouse(cls):

@@ -4,6 +4,7 @@ import datetime
 from functools import wraps
 from itertools import groupby
 
+from sql import Null
 from sql.conditionals import Case
 from sql.functions import CharLength
 
@@ -178,7 +179,9 @@ class Quotation(Workflow, ModelSQL, ModelView):
     @classmethod
     def order_number(cls, tables):
         table, _ = tables[None]
-        return [CharLength(table.number), table.number]
+        return [
+            ~((table.state == 'cancelled') & (table.number == Null)),
+            CharLength(table.number), table.number]
 
     @classmethod
     def default_company(cls):

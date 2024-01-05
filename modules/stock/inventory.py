@@ -2,6 +2,7 @@
 # this repository contains the full copyright notices and license terms.
 from collections import defaultdict
 
+from sql import Null
 from sql.functions import CharLength
 
 from trytond.i18n import gettext
@@ -115,7 +116,9 @@ class Inventory(Workflow, ModelSQL, ModelView):
     @classmethod
     def order_number(cls, tables):
         table, _ = tables[None]
-        return [CharLength(table.number), table.number]
+        return [
+            ~((table.state == 'cancelled') & (table.number == Null)),
+            CharLength(table.number), table.number]
 
     @staticmethod
     def default_state():

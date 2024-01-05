@@ -5,6 +5,7 @@ from datetime import timedelta
 from decimal import Decimal
 from itertools import chain, groupby
 
+from sql import Null
 from sql.conditionals import Coalesce
 from sql.functions import CharLength
 
@@ -282,7 +283,9 @@ class Production(ShipmentAssignMixin, Workflow, ModelSQL, ModelView):
     @classmethod
     def order_number(cls, tables):
         table, _ = tables[None]
-        return [CharLength(table.number), table.number]
+        return [
+            ~((table.state == 'cancelled') & (table.number == Null)),
+            CharLength(table.number), table.number]
 
     @classmethod
     def order_effective_date(cls, tables):

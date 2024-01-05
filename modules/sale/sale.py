@@ -6,6 +6,7 @@ from decimal import Decimal
 from functools import partial
 from itertools import chain, groupby
 
+from sql import Null
 from sql.functions import CharLength
 
 from trytond.i18n import gettext
@@ -391,7 +392,9 @@ class Sale(
     @classmethod
     def order_number(cls, tables):
         table, _ = tables[None]
-        return [CharLength(table.number), table.number]
+        return [
+            ~((table.state == 'cancelled') & (table.number == Null)),
+            CharLength(table.number), table.number]
 
     @classmethod
     def default_payment_term(cls, **pattern):

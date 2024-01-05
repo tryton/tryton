@@ -4,6 +4,7 @@
 from collections import defaultdict
 from decimal import Decimal
 
+from sql import Null
 from sql.functions import CharLength
 
 from trytond.i18n import gettext
@@ -215,7 +216,9 @@ class Complaint(Workflow, ModelSQL, ModelView):
     @classmethod
     def order_number(cls, tables):
         table, _ = tables[None]
-        return [CharLength(table.number), table.number]
+        return [
+            ~((table.state == 'cancelled') & (table.number == Null)),
+            CharLength(table.number), table.number]
 
     @staticmethod
     def default_date():

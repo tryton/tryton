@@ -3,7 +3,7 @@
 from collections import defaultdict
 from decimal import Decimal
 
-from sql import Literal, Union
+from sql import Literal, Null, Union
 from sql.aggregate import Sum
 from sql.conditionals import Coalesce
 from sql.functions import CharLength
@@ -208,7 +208,9 @@ class POSSale(Workflow, ModelSQL, ModelView, TaxableMixin):
     @classmethod
     def order_number(cls, tables):
         table, _ = tables[None]
-        return [CharLength(table.number), table.number]
+        return [
+            ~((table.state == 'cancelled') & (table.number == Null)),
+            CharLength(table.number), table.number]
 
     @classmethod
     def default_company(cls):
