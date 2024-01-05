@@ -65,6 +65,7 @@ class Invoice(Model):
     def __init__(self, invoice):
         pool = Pool()
         Invoice = pool.get('account.invoice')
+        super().__init__()
         if int(invoice) >= 0:
             invoice = Invoice(int(invoice))
             with Transaction().set_context(language=invoice.party_lang):
