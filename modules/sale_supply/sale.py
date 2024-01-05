@@ -40,7 +40,7 @@ class Sale(metaclass=PoolMeta):
                     locations=locations, stock_date_end=None):
                 products = Product.browse(products)
                 product_quantities.update(
-                    (p, min(p.quantity, p.forecast_quantity))
+                    (p, p.forecast_quantity)
                     for p in Product.browse(products))
 
             # purchase requests must be created before shipments to get
