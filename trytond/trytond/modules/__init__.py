@@ -4,6 +4,7 @@ import configparser
 import itertools
 import logging
 import os
+import pkgutil
 from collections import defaultdict
 from glob import iglob
 
@@ -273,14 +274,7 @@ def load_module_graph(graph, pool, update=None, lang=None):
 
 def get_modules(with_test=False):
     modules = {'ir', 'res'}
-    if os.path.exists(MODULES_PATH) and os.path.isdir(MODULES_PATH):
-        for file in os.listdir(MODULES_PATH):
-            if file.startswith('.'):
-                continue
-            if file == '__pycache__':
-                continue
-            if os.path.isdir(OPJ(MODULES_PATH, file)):
-                modules.add(file)
+    modules.update((m.name for m in pkgutil.iter_modules([MODULES_PATH])))
     for ep in tools.entry_points().select(group=MODULES_GROUP):
         modules.add(ep.name)
     if with_test:
