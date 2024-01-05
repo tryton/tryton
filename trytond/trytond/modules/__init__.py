@@ -1,17 +1,11 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 import configparser
-import importlib
 import itertools
 import logging
 import os
 from collections import defaultdict
 from glob import iglob
-
-try:
-    from backports.entry_points_selectable import entry_points
-except ImportError:
-    from importlib.metadata import entry_points
 
 from sql import Table
 from sql.functions import CurrentTimestamp
@@ -19,6 +13,7 @@ from sql.functions import CurrentTimestamp
 import trytond.convert as convert
 import trytond.tools as tools
 from trytond.config import config
+from trytond.const import MODULES_GROUP
 from trytond.exceptions import MissingDependenciesException
 from trytond.transaction import Transaction
 
@@ -286,7 +281,7 @@ def get_modules(with_test=False):
                 continue
             if os.path.isdir(OPJ(MODULES_PATH, file)):
                 modules.add(file)
-    for ep in entry_points().select(group='trytond.modules'):
+    for ep in tools.entry_points().select(group=MODULES_GROUP):
         modules.add(ep.name)
     if with_test:
         modules.add('tests')
@@ -313,7 +308,7 @@ def register_classes(with_test=False):
             MODULES.append(module_name)
             continue
 
-        module = importlib.import_module(f'trytond.modules.{module_name}')
+        module = tools.import_module(module_name)
         # Some modules register nothing in the Pool
         if hasattr(module, 'register'):
             module.register()

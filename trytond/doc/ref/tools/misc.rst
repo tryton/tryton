@@ -4,6 +4,14 @@
 Miscellaneous
 =============
 
+.. function:: entry_points()
+
+   Return a collection of entry points.
+
+.. function:: import_module(name)
+
+   Import the named Tryton module.
+
 .. function:: file_open(name[, mode[, subdir[, encoding]]])
 
    Open the named file in subdir from the root directory.

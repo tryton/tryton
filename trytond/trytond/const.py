@@ -20,3 +20,4 @@ OPERATORS = (
     '<',
     '>',
     )
+MODULES_GROUP = 'trytond.modules'
