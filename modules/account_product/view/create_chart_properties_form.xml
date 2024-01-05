@@ -3,7 +3,7 @@
 this repository contains the full copyright notices and license terms. -->
 <data>
     <xpath expr="/form/field[@name='account_payable']" position="after">
-        <separator id="category" string="Category" colspan="4"/>
+        <separator id="product" string="Product" colspan="4"/>
         <label name="category_account_revenue"/>
         <field name="category_account_revenue"/>
         <label name="category_account_expense"/>
