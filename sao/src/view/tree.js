@@ -1114,7 +1114,11 @@
             if (!row || !this.children_field) {
                 return this.rows.length;
             }
-            return row.record._values[this.children_field].length;
+            if (row.record.is_loaded(this.children_field)) {
+                return row.record.field_get_client(this.children_field).length;
+            } else {
+                return 0;
+            }
         },
         set_cursor: function(new_, reset_view) {
             var i, root_group, path, row_path, row, column;
