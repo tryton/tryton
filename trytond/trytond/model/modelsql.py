@@ -1251,7 +1251,7 @@ class ModelSQL(ModelStorage):
             model = cls.__name__
             if Model:
                 model = Model.get_name(cls.__name__)
-            ids = ', '.join(map(str, ids[:5]))
+            ids = ', '.join(map(str, wrong_ids[:5]))
             if len(wrong_ids) > 5:
                 ids += '...'
             if domain:
