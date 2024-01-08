@@ -750,8 +750,11 @@ class Line(metaclass=PoolMeta):
         return [
             ('product', '=', Eval('product', -1)),
             If(Eval('product_supplier'),
-                ('product_supplier', '=', Eval('product_supplier')),
-                ()),
+                ['OR',
+                    ('product_supplier', '=', Eval('product_supplier')),
+                    ('product_supplier', '=', None),
+                    ],
+                []),
             ]
 
     @fields.depends(
@@ -803,11 +806,16 @@ class Line(metaclass=PoolMeta):
             self.blanket_agreement_line = None
 
     @fields.depends(
-        'blanket_agreement_line', 'product',
-        '_parent_blanket_agreement_line.product')
+        'blanket_agreement_line', 'product', 'product_supplier',
+        '_parent_blanket_agreement_line.product',
+        '_parent_blanket_agreement_line.product_supplier')
     def is_valid_product_for_blanket_agreement(self):
         if self.blanket_agreement_line:
-            return self.product == self.blanket_agreement_line.product
+            return (self.product == self.blanket_agreement_line.product
+                and (
+                    (self.product_supplier
+                        == self.blanket_agreement_line.product_supplier)
+                    or not self.product_supplier))
 
     def quantity_for_blanket_agreement(self, line, round=True):
         pool = Pool()
