@@ -128,8 +128,11 @@ class LineBlanketAgreement(metaclass=PoolMeta):
         return [
             super()._domain_blanket_agreemnt_line_product(),
             If(Eval('product_customer'),
-                ('product_customer', '=', Eval('product_customer')),
-                ()),
+                ['OR',
+                    ('product_customer', '=', Eval('product_customer')),
+                    ('product_customer', '=', None),
+                    ],
+                []),
             ]
 
     @fields.depends(
@@ -141,6 +144,15 @@ class LineBlanketAgreement(metaclass=PoolMeta):
             if not self.product_customer:
                 self.product_customer = line.product_customer
         super().on_change_blanket_agreement_line()
+
+    @fields.depends(
+        'product_customer', '_parent_blanket_agreement_line.product_customer')
+    def is_valid_product_for_blanket_agreement(self):
+        return (super().is_valid_product_for_blanket_agreement()
+            and (
+                (self.product_customer
+                    == self.blanket_agreement_line.product_customer)
+                or not self.product_customer))
 
 
 class BlanketAgreementLine(metaclass=PoolMeta):
