@@ -20,3 +20,7 @@ def register():
         invoice.DepositRecall,
         party.Erase,
         module='account_deposit', type_='wizard')
+    Pool.register(
+        account.Payment,
+        module='account_deposit', type_='model',
+        depends=['account_payment_clearing'])
