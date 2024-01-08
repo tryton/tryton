@@ -116,10 +116,6 @@ class Payment(metaclass=PoolMeta):
         domain=[
             ('closed', '!=', True),
             ('company', '=', Eval('company', -1)),
-            If(Eval('kind') == 'receivable',
-                ('type.receivable', '=', True),
-                ('type.payable', '=', True),
-                ),
             ['OR',
                 ('second_currency', '=', Eval('currency', None)),
                 [
@@ -176,6 +172,17 @@ class Payment(metaclass=PoolMeta):
         cls._buttons.update({
                 'succeed_wizard': cls._buttons['succeed'],
                 })
+        cls.account.domain = [
+            cls.account.domain,
+            cls._account_type_domain(),
+            ]
+
+    @classmethod
+    def _account_type_domain(cls):
+        return If(Eval('kind') == 'receivable',
+            ('type.receivable', '=', True),
+            ('type.payable', '=', True),
+            )
 
     @fields.depends('party', 'kind', 'date')
     def on_change_party(self):

@@ -10,6 +10,7 @@ class AccountDepositTestCase(
         PartyCompanyCheckEraseMixin, CompanyTestMixin, ModuleTestCase):
     'Test Account Deposit module'
     module = 'account_deposit'
+    extras = ['account_payment_clearing']
 
 
 del ModuleTestCase

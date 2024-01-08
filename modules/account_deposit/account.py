@@ -51,3 +51,14 @@ class Reconcile(metaclass=PoolMeta):
             _balanced = True
         return super().get_currencies(
             account, party, currency=None, _balanced=_balanced)
+
+
+class Payment(metaclass=PoolMeta):
+    __name__ = 'account.payment'
+
+    @classmethod
+    def _account_type_domain(cls):
+        return ['OR',
+            super()._account_type_domain(),
+            ('type.deposit', '=', True),
+            ]
