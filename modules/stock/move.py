@@ -1231,7 +1231,10 @@ class Move(Workflow, ModelSQL, ModelView):
         def get_column(name, table):
             if name == 'date':
                 return cls.effective_date.sql_cast(
-                    Coalesce(table.effective_date, table.planned_date))
+                    Coalesce(
+                        table.effective_date,
+                        Case((move.state == 'assigned', today), else_=Null),
+                        table.planned_date))
             else:
                 return Column(table, name)
 
@@ -1356,6 +1359,11 @@ class Move(Workflow, ModelSQL, ModelView):
         if not context.get('stock_date_end'):
             context['stock_date_end'] = datetime.date.max
 
+        move_date = Coalesce(
+            move.effective_date,
+            Case((move.state == 'assigned', today), else_=Null),
+            move.planned_date)
+
         # date end in the past or today: filter on state done
         if (context['stock_date_end'] < today
                 or (context['stock_date_end'] == today
@@ -1364,14 +1372,7 @@ class Move(Workflow, ModelSQL, ModelView):
             def state_date_clause(stock_assign):
                 return (move.state.in_(['done',
                         'assigned' if stock_assign else 'done'])
-                    & (
-                        (Coalesce(move.effective_date, move.planned_date)
-                            <= context['stock_date_end'])
-                        | (move.state == (
-                                'assigned'
-                                if not context.get('stock_date_start')
-                                else ''))
-                        ))
+                    & (move_date <= context['stock_date_end']))
             state_date_clause_in = state_date_clause(False)
             state_date_clause_out = state_date_clause(
                 context.get('stock_assign'))
@@ -1382,39 +1383,12 @@ class Move(Workflow, ModelSQL, ModelView):
             def state_date_clause(stock_assign):
                 return ((move.state.in_(['done',
                                 'assigned' if stock_assign else 'done'])
-                        & (
-                            (Coalesce(
-                                    move.effective_date,
-                                    move.planned_date,
-                                    datetime.date.max)
-                                <= today)
-                            | (move.state == (
-                                    'assigned'
-                                    if not context.get('stock_date_start')
-                                    else ''))
-                            )
-                        )
+                        & (move_date <= today))
                     | (move.state.in_(['done', 'assigned', 'draft'])
-                        & (
-                            (
-                                (Coalesce(
-                                        move.effective_date,
-                                        move.planned_date,
-                                        datetime.date.max)
-                                    <= context['stock_date_end'])
-                                & (Coalesce(
-                                        move.effective_date,
-                                        move.planned_date,
-                                        datetime.date.max)
-                                    >= today)
-                                )
-                            | (move.state == (
-                                    'assigned'
-                                    if not context.get('stock_date_start')
-                                    else ''))
-                            )
-                        )
-                    )
+                        & (Coalesce(move_date, datetime.date.max)
+                            <= context['stock_date_end'])
+                        & (Coalesce(move_date, datetime.date.max) >= today)
+                        ))
             state_date_clause_in = state_date_clause(False)
             state_date_clause_out = state_date_clause(
                 context.get('stock_assign'))
@@ -1423,10 +1397,7 @@ class Move(Workflow, ModelSQL, ModelView):
             if context['stock_date_start'] > today:
                 def state_date_clause():
                     return (move.state.in_(['done', 'assigned', 'draft'])
-                        & (Coalesce(
-                                move.effective_date,
-                                move.planned_date,
-                                datetime.date.max)
+                        & (Coalesce(move_date, datetime.date.max)
                             >= context['stock_date_start'])
                         )
                 state_date_clause_in &= state_date_clause()
@@ -1435,23 +1406,14 @@ class Move(Workflow, ModelSQL, ModelView):
                 def state_date_clause(stock_assign):
                     return ((
                             move.state.in_(['done', 'assigned', 'draft'])
-                            & (Coalesce(
-                                    move.effective_date,
-                                    move.planned_date,
-                                    datetime.date.max) >= today)
+                            & (Coalesce(move_date, datetime.date.max) >= today)
                             )
                         | (
                             move.state.in_(['done',
                                     'assigned' if stock_assign else 'done'])
-                            & (Coalesce(
-                                    move.effective_date,
-                                    move.planned_date,
-                                    datetime.date.max)
+                            & (Coalesce(move_date, datetime.date.max)
                                 >= context['stock_date_start'])
-                            & (Coalesce(
-                                    move.effective_date,
-                                    move.planned_date,
-                                    datetime.date.min) < today)
+                            & (Coalesce(move_date, datetime.date.min) < today)
                             )
                         )
                 state_date_clause_in &= state_date_clause(False)
@@ -1467,8 +1429,8 @@ class Move(Workflow, ModelSQL, ModelView):
                 period, = periods
 
                 def state_date_clause():
-                    return (Coalesce(move.effective_date, move.planned_date,
-                        datetime.date.max) > period.date)
+                    return (
+                        Coalesce(move_date, datetime.date.max) > period.date)
                 state_date_clause_in &= state_date_clause()
                 state_date_clause_out &= state_date_clause()
 
