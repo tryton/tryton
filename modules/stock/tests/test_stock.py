@@ -1379,12 +1379,36 @@ class StockTestCase(
                 self.assertDictEqual(pbl, {(storage.id, product.id): 5})
 
             with Transaction().set_context(
+                    stock_date_start=today - relativedelta(days=1),
+                    stock_date_end=today - relativedelta(days=1),
+                    stock_assign=True):
+                pbl = Product.products_by_location(
+                    [storage.id], grouping_filter=([product.id],))
+                self.assertDictEqual(pbl, {})
+
+            with Transaction().set_context(
+                    stock_date_start=today - relativedelta(days=1),
+                    stock_date_end=today,
+                    stock_assign=True):
+                pbl = Product.products_by_location(
+                    [storage.id], grouping_filter=([product.id],))
+                self.assertDictEqual(pbl, {(storage.id, product.id): 5})
+
+            with Transaction().set_context(
                     stock_date_start=today,
                     stock_date_end=today,
                     stock_assign=True):
                 pbl = Product.products_by_location(
                     [storage.id], grouping_filter=([product.id],))
-                self.assertDictEqual(pbl, {(storage.id, product.id): 10})
+                self.assertDictEqual(pbl, {(storage.id, product.id): 5})
+
+            with Transaction().set_context(
+                    stock_date_start=today,
+                    stock_date_end=today + relativedelta(days=1),
+                    stock_assign=True):
+                pbl = Product.products_by_location(
+                    [storage.id], grouping_filter=([product.id],))
+                self.assertDictEqual(pbl, {(storage.id, product.id): 5})
 
             with Transaction().set_context(
                     stock_date_start=today + relativedelta(days=1),
@@ -1392,7 +1416,7 @@ class StockTestCase(
                     stock_assign=True):
                 pbl = Product.products_by_location(
                     [storage.id], grouping_filter=([product.id],))
-                self.assertDictEqual(pbl, {(storage.id, product.id): -5})
+                self.assertDictEqual(pbl, {})
 
     @with_transaction()
     def test_location_inactive_without_move(self):
