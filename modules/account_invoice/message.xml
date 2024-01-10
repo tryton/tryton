@@ -91,7 +91,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="text">To post invoice "%(invoice)s", you must define a currency exchange credit account for "%(company)s".</field>
         </record>
         <record model="ir.message" id="msg_invoice_currency_exchange_debit_account_missing">
-            <field name="text">To pose invoice "%(invoice)s", you must define a currency exchange debit account for "%(company)s".</field>
+            <field name="text">To post invoice "%(invoice)s", you must define a currency exchange debit account for "%(company)s".</field>
         </record>
     </data>
 </tryton>
