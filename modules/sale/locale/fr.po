@@ -981,7 +981,7 @@ msgid ""
 "The sale line \"%(line)s\" is moving %(extra)s in addition to the "
 "%(quantity)s ordered."
 msgstr ""
-"La ligne de vente « %(line)s » déplace %(extra)s en plus des %(quantité)s "
+"La ligne de vente « %(line)s » déplace %(extra)s en plus des %(quantity)s "
 "commandées."
 
 msgctxt "model:ir.message,text:msg_sale_line_tax_unique"
