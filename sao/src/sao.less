@@ -722,17 +722,17 @@ img.icon {
         }
     }
     .form-text, .form-richtext {
-        > textarea {
-            min-height: 150px;
-            max-height: 300px;
+        > textarea, .richtext {
+            line-height: 2.5ex;
+            max-height: 50ex;
+            min-height: 12.5ex;
+            overflow: auto;
+            resize: vertical;
         }
     }
     .form-richtext {
         > .btn-toolbar {
             min-width: 450px;
-        }
-        .richtext {
-            min-height: 5em;
         }
     }
     .form-separator {
@@ -928,7 +928,11 @@ input.column-boolean {
 
 .email {
     .email-richtext {
-        min-height: 10em;
+        line-height: 2.5ex;
+        max-height: 50ex;
+        min-height: 12.5ex;
+        overflow: auto;
+        resize: vertical;
     }
     input[type='file'] {
         display: inline-block;
