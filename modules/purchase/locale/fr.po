@@ -860,7 +860,7 @@ msgid ""
 "The purchase line \"%(line)s\" is moving %(extra)s in addition to the "
 "%(quantity)s ordered."
 msgstr ""
-"La ligne d'achat « %(line)s » déplace %(extra)s en plus des %(quantité)s "
+"La ligne d'achat « %(line)s » déplace %(extra)s en plus des %(quantity)s "
 "commandées."
 
 msgctxt "model:ir.message,text:msg_purchase_line_tax_unique"
