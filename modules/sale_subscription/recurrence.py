@@ -279,8 +279,7 @@ class TestRecurrenceRuleSetView(ModelView):
             datetime = dt.datetime.combine(self.start_date, dt.time())
             for date in rruleset.xafter(datetime, self.count, inc=True):
                 result.append(Result(date=date.date()))
-        self.result = result
-        return self._changed_values.get('result', [])
+        return result
 
 
 class TestRecurrenceRuleSetViewResult(ModelView):
