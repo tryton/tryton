@@ -55,28 +55,40 @@ class Move(metaclass=PoolMeta):
     __name__ = 'stock.move'
 
     @property
-    def from_warehouse(self):
-        return super().from_warehouse or self.from_location.cost_warehouse
+    @fields.depends('from_location')
+    def from_cost_warehouse(self):
+        if self.from_location:
+            return (
+                self.from_location.warehouse
+                or self.from_location.cost_warehouse)
 
     @property
-    def to_warehouse(self):
-        return super().to_warehouse or self.to_location.cost_warehouse
+    @fields.depends('to_location')
+    def to_cost_warehouse(self):
+        if self.to_location:
+            return (
+                self.to_location.warehouse
+                or self.to_location.cost_warehouse)
 
-    @fields.depends('company', 'from_location', 'to_location')
+    @property
+    def cost_warehouse(self):
+        return self.from_cost_warehouse or self.to_cost_warehouse
+
+    @fields.depends(
+        'company', methods=['from_cost_warehouse', 'to_cost_warehouse'])
     def on_change_with_unit_price_required(self, name=None):
         required = super().on_change_with_unit_price_required(name=name)
         if (self.company and self.company.cost_price_warehouse
-                and self.from_location and self.to_location
-                and self.from_warehouse != self.to_warehouse):
+                and self.from_cost_warehouse != self.to_cost_warehouse):
             required = True
         return required
 
-    @fields.depends('company', 'from_location', 'to_location')
+    @fields.depends(
+        'company', methods=['from_cost_warehouse', 'to_cost_warehouse'])
     def on_change_with_cost_price_required(self, name=None):
         required = super().on_change_with_cost_price_required(name=name)
         if (self.company and self.company.cost_price_warehouse
-                and self.from_location and self.to_location
-                and self.from_warehouse != self.to_warehouse):
+                and self.from_cost_warehouse != self.to_cost_warehouse):
             required = True
         return required
 
@@ -88,8 +100,8 @@ class Move(metaclass=PoolMeta):
         prices = super().get_unit_price_company(moves, name)
         for move in moves:
             if (move.company.cost_price_warehouse
-                    and move.from_warehouse != move.to_warehouse
-                    and move.to_warehouse
+                    and move.from_cost_warehouse != move.to_cost_warehouse
+                    and move.to_cost_warehouse
                     and isinstance(move.shipment, ShipmentInternal)):
                 cost = total_qty = 0
                 for outgoing_move in move.shipment.outgoing_moves:
@@ -111,8 +123,8 @@ class Move(metaclass=PoolMeta):
         cost_price = super().get_cost_price(
             product_cost_price=product_cost_price)
         if (self.company.cost_price_warehouse
-                and self.from_warehouse != self.to_warehouse
-                and self.to_warehouse
+                and self.from_cost_warehouse != self.to_cost_warehouse
+                and self.to_cost_warehouse
                 and isinstance(self.shipment, ShipmentInternal)):
             cost_price = self.unit_price_company
         return cost_price
@@ -139,7 +151,7 @@ class Move(metaclass=PoolMeta):
                     and move.from_location != transit_location
                     and move.to_location.type == 'storage'
                     and move.to_location != transit_location):
-                if move.from_warehouse != move.to_warehouse:
+                if move.from_cost_warehouse != move.to_cost_warehouse:
                     raise MoveValidationError(gettext(
                             'product_cost_warehouse'
                             '.msg_move_storage_location_same_warehouse',
@@ -151,10 +163,10 @@ class Move(metaclass=PoolMeta):
         if (self.company.cost_price_warehouse
                 and self.from_location.type == 'storage'
                 and self.to_location.type == 'storage'
-                and self.from_warehouse != self.to_warehouse):
-            if self.from_warehouse:
+                and self.from_cost_warehouse != self.to_cost_warehouse):
+            if self.from_cost_warehouse:
                 cost_price = self._compute_product_cost_price('out')
-            elif self.to_warehouse:
+            elif self.to_cost_warehouse:
                 cost_price = self._compute_product_cost_price(
                     'in', self.unit_price_company)
         return cost_price, to_save
@@ -164,14 +176,14 @@ class Move(metaclass=PoolMeta):
         pattern = super()._cost_price_pattern
         if self.company.cost_price_warehouse:
             pattern['warehouse'] = (
-                self.warehouse.id if self.warehouse else None)
+                self.cost_warehouse.id if self.cost_warehouse else None)
         return pattern
 
     def _cost_price_key(self):
         key = super()._cost_price_key()
         if self.company.cost_price_warehouse:
             key += (('warehouse',
-                    (self.warehouse.id if self.warehouse else None)),
+                    (self.cost_warehouse.id if self.cost_warehouse else None)),
                 )
         return key
 
@@ -181,7 +193,7 @@ class Move(metaclass=PoolMeta):
         Location = pool.get('stock.location')
         context = super()._cost_price_context(moves)
         if moves[0].company.cost_price_warehouse:
-            warehouse = moves[0].warehouse
+            warehouse = moves[0].cost_warehouse
             locations = Location.search([
                     ('type', '=', 'storage'),
                     ['OR',
@@ -195,7 +207,7 @@ class Move(metaclass=PoolMeta):
         return context
 
     def get_fifo_move(self, quantity=0.0, date=None):
-        warehouse = self.warehouse.id if self.warehouse else None
+        warehouse = self.cost_warehouse.id if self.cost_warehouse else None
         with Transaction().set_context(warehouse=warehouse):
             return super().get_fifo_move(quantity=quantity, date=date)
 
@@ -204,10 +216,10 @@ class Move(metaclass=PoolMeta):
         if (self.company.cost_price_warehouse
                 and self.from_location.type == 'storage'
                 and self.to_location.type == 'storage'
-                and self.from_warehouse != self.to_warehouse):
-            if self.from_warehouse and not self.to_warehouse:
+                and self.from_cost_warehouse != self.to_cost_warehouse):
+            if self.from_cost_warehouse and not self.to_cost_warehouse:
                 type_ = 'out_warehouse'
-            elif not self.from_warehouse and self.to_warehouse:
+            elif not self.from_cost_warehouse and self.to_cost_warehouse:
                 type_ = 'in_warehouse'
         return type_
 
