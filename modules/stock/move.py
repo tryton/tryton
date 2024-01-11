@@ -683,11 +683,27 @@ class Move(Workflow, ModelSQL, ModelView):
 
     @property
     def from_warehouse(self):
-        return self.from_location.warehouse
+        pool = Pool()
+        ShipmentInternal = pool.get('stock.shipment.internal')
+        warehouse = self.from_location.warehouse
+        if (not warehouse
+                and isinstance(self.shipment, ShipmentInternal)
+                and self.from_location == getattr(
+                    self.shipment, 'transit_location', None)):
+            warehouse = self.shipment.from_location.warehouse
+        return warehouse
 
     @property
     def to_warehouse(self):
-        return self.to_location.warehouse
+        pool = Pool()
+        ShipmentInternal = pool.get('stock.shipment.internal')
+        warehouse = self.to_location.warehouse
+        if (not warehouse
+                and isinstance(self.shipment, ShipmentInternal)
+                and self.to_location == getattr(
+                    self.shipment, 'transit_location', None)):
+            warehouse = self.shipment.to_location.warehouse
+        return warehouse
 
     @property
     def warehouse(self):
