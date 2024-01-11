@@ -2760,10 +2760,11 @@
             return data;
         },
         get_data: function(record) {
-            var data = record._values[this.name] || [];
+            var data = record._values[this.name];
             var prm = jQuery.when(data);
             if (!(data instanceof Uint8Array) &&
-                (typeof(data) != 'string')) {
+                (typeof(data) != 'string') &&
+                (data !== null)) {
                 if (record.id < 0) {
                     return prm;
                 }
