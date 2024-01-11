@@ -4249,6 +4249,9 @@ function eval_pyson(value){
             }).append(this.input_select
             ).append(Sao.common.ICONFACTORY.get_icon_img('tryton-search')
             ).appendTo(group);
+            this.but_select
+                .on('dragover', false)
+                .on('drop', this.select_drop.bind(this));
 
             this.but_clear = jQuery('<button/>', {
                 'class': 'btn btn-default',
@@ -4291,6 +4294,36 @@ function eval_pyson(value){
                     filename_field.set_client(record, filename);
                 }
             }, !field.get_size);
+        },
+        select_drop: function(evt) {
+            evt.preventDefault();
+            evt.stopPropagation();
+            evt = evt.originalEvent;
+            var files = [];
+            if (evt.dataTransfer.items) {
+                Sao.Logger.debug("Select drop items:", evt.dataTransfer.items);
+                for (let i=0; i < evt.dataTransfer.items.length; i++) {
+                    let file = evt.dataTransfer.items[i].getAsFile();
+                    if (file) {
+                        files.push(file);
+                    }
+                }
+            } else {
+                for (let i=0; i < evt.dataTransfer.files.length; i++) {
+                    let file = evt.dataTransfer.files[i];
+                    if (file) {
+                        files.push(file);
+                    }
+                }
+            }
+            for (const file of files) {
+                Sao.common.get_file_data(file, (data, filename) => {
+                    this.field.set_client(this.record, data);
+                    if (this.filename_field) {
+                        this.filename_field.set_client(this.record, filename);
+                    }
+                });
+            }
         },
         open: function() {
             this.save_as();
@@ -4498,6 +4531,9 @@ function eval_pyson(value){
             this.image = jQuery('<img/>', {
                 'class': 'center-block'
             }).appendTo(this.el);
+            this.el
+                .on('dragover', false)
+                .on('drop', this.select_drop.bind(this));
             this.image.css('max-height', this.height);
             this.image.css('max-width', this.width);
             this.image.css('height', 'auto');
@@ -4518,11 +4554,20 @@ function eval_pyson(value){
                     'class': 'text-center caption',
                 }).append(group).appendTo(this.el);
             }
+            this._readonly = false;
         },
         set_readonly: function(readonly) {
             Sao.View.Form.Image._super.set_readonly.call(this, readonly);
+            this._readonly = readonly;
             this.but_select.prop('disabled', readonly);
             this.but_clear.prop('disabled', readonly);
+        },
+        select_drop: function(evt) {
+            if (this._readonly) {
+                return;
+            }
+            Sao.View.Form.Image._super.select_drop.call(this, evt);
+            this.update_img();
         },
         clear: function() {
             Sao.View.Form.Image._super.clear.call(this);
