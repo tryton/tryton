@@ -108,24 +108,20 @@ add another supplier::
     >>> assertEqual(create_quotation.form.suppliers, [supplier])
     >>> create_quotation.form.suppliers.append(Party(supplier2.id))
     >>> create_quotation.execute('create_quotations')
-    >>> create_quotation.execute('end')
+    >>> quotations = create_quotation.actions[0]
+    >>> len(quotations)
+    2
     >>> purchase_request.state
     'quotation'
 
 Check Quotation Lines (1 Request with 2 Suppliers = 2 Quotation Lines)::
 
-    >>> QuotationLine = Model.get('purchase.request.quotation.line')
-    >>> quotation_lines = QuotationLine.find(
-    ...     [('quotation_state', '=', 'draft')])
-    >>> len(quotation_lines)
-    2
+    >>> len(quotations[0].lines), len(quotations[1].lines)
+    (1, 1)
 
 Send Quotations::
 
     >>> Quotation = Model.get('purchase.request.quotation')
-    >>> quotations = Quotation.find([('state', '=', 'draft')])
-    >>> len(quotations)
-    2
     >>> for quotation in quotations:
     ...     quotation.click('send')
     >>> quotations = Quotation.find([('state', '=', 'sent')])

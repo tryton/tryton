@@ -17,7 +17,8 @@ from trytond.pool import Pool, PoolMeta
 from trytond.pyson import Bool, Eval, Id, If
 from trytond.tools import sortable_values
 from trytond.transaction import Transaction
-from trytond.wizard import Button, StateTransition, StateView, Wizard
+from trytond.wizard import (
+    Button, StateAction, StateTransition, StateView, Wizard)
 
 from .exceptions import PreviousQuotation
 
@@ -478,13 +479,8 @@ class CreatePurchaseRequestQuotation(Wizard):
             Button('Cancel', 'end', 'tryton-cancel'),
             Button('Process', 'create_quotations', 'tryton-ok', default=True),
             ])
-    create_quotations = StateTransition()
-    succeed = StateView(
-        'purchase.request.quotation.create.succeed',
-        'purchase_request_quotation.'
-        'purchase_request_quotation_create_succeed', [
-            Button('Close', 'end', 'tryton-close', True),
-            ])
+    create_quotations = StateAction(
+        'purchase_request_quotation.act_purchase_request_quotation_form')
 
     def transition_start(self):
         pool = Pool()
@@ -521,7 +517,7 @@ class CreatePurchaseRequestQuotation(Wizard):
     def _group_request_key(self, request):
         return (('company', request.company),)
 
-    def transition_create_quotations(self):
+    def do_create_quotations(self, action):
         pool = Pool()
         Quotation = pool.get('purchase.request.quotation')
         QuotationLine = pool.get('purchase.request.quotation.line')
@@ -547,8 +543,12 @@ class CreatePurchaseRequestQuotation(Wizard):
         QuotationLine.save(lines)
 
         self.model.update_state(requests)
-        self.succeed.number_quotations = len(quotations)
-        return 'succeed'
+        action['domain'] = []
+        if len(quotations) == 1:
+            action['views'].reverse()
+        return action, {
+            'res_id': list(map(int, quotations))
+            }
 
     def get_quotation(self, supplier, key):
         pool = Pool()

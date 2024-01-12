@@ -91,12 +91,6 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
         <record model="ir.ui.view"
-            id="purchase_request_quotation_create_succeed">
-            <field name="model">purchase.request.quotation.create.succeed</field>
-            <field name="type">form</field>
-            <field name="name">purchase_request_quotation_create_succeed_form</field>
-        </record>
-        <record model="ir.ui.view"
             id="purchase_request_quotation_create_ask_suppliers">
             <field name="model">purchase.request.quotation.create.ask_suppliers</field>
             <field name="type">form</field>
