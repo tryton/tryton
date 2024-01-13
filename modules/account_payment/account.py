@@ -143,12 +143,11 @@ class MoveLine(metaclass=PoolMeta):
             return self.currency.id
 
     def get_payment_kind(self, name):
-        if (self.account.type.receivable
-                and (self.debit > 0 or self.credit < 0)):
-            return 'receivable'
-        elif (self.account.type.payable
-                and (self.credit > 0 or self.debit < 0)):
-            return 'payable'
+        if self.account.type.receivable or self.account.type.payable:
+            if self.debit > 0 or self.credit < 0:
+                return 'receivable'
+            elif self.credit > 0 or self.debit < 0:
+                return 'payable'
 
     @classmethod
     def default_payment_blocked(cls):
