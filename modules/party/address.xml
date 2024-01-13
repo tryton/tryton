@@ -164,7 +164,6 @@ ${COUNTRY}</field>
 ${attn}
 ${name}
 ${street}
-${subdivision}
 ${CITY} ${SUBDIVISION} ${POSTAL_CODE}
 ${COUNTRY}</field>
         </record>
