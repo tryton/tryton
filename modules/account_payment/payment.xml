@@ -343,7 +343,7 @@ this repository contains the full copyright notices and license terms. -->
         <menuitem
             parent="menu_payments"
             action="act_payment_form_receivable"
-            sequence="10"
+            sequence="20"
             id="menu_payment_form_receivable"/>
 
         <record model="ir.action.act_window" id="act_payment_form_relate_party">
