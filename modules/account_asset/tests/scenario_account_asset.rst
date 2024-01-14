@@ -4,18 +4,18 @@ Account Asset Scenario
 
 Imports::
 
-    >>> from dateutil.relativedelta import relativedelta
     >>> from decimal import Decimal
+
+    >>> from dateutil.relativedelta import relativedelta
+
     >>> from proteus import Model, Wizard
+    >>> from trytond.modules.account.tests.tools import (
+    ...     create_chart, create_fiscalyear, get_accounts)
+    >>> from trytond.modules.account_asset.tests.tools import add_asset_accounts
+    >>> from trytond.modules.account_invoice.tests.tools import (
+    ...     create_payment_term, set_fiscalyear_invoice_sequences)
+    >>> from trytond.modules.company.tests.tools import create_company, get_company
     >>> from trytond.tests.tools import activate_modules, assertEqual
-    >>> from trytond.modules.company.tests.tools import create_company, \
-    ...     get_company
-    >>> from trytond.modules.account.tests.tools import create_fiscalyear, \
-    ...     create_chart, get_accounts
-    >>> from trytond.modules.account_invoice.tests.tools import \
-    ...     set_fiscalyear_invoice_sequences, create_payment_term
-    >>> from trytond.modules.account_asset.tests.tools \
-    ...     import add_asset_accounts
 
 Activate modules::
 
@@ -112,8 +112,8 @@ Depreciate the asset::
     >>> asset.value
     Decimal('1000.00')
     >>> assertEqual(asset.start_date, supplier_invoice.invoice_date)
-    >>> assertEqual(asset.end_date, (supplier_invoice.invoice_date +
-    ...     relativedelta(years=2, days=-1)))
+    >>> assertEqual(asset.end_date,
+    ...     (supplier_invoice.invoice_date + relativedelta(years=2, days=-1)))
     >>> asset.quantity
     1.0
     >>> assertEqual(asset.unit, unit)

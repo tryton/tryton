@@ -3,20 +3,17 @@ Marketing Automation Unsubscribable Scenario
 
 Imports::
 
-    >>> import datetime
-    >>> import re
+    >>> from unittest.mock import patch
 
-    >>> from proteus import Model, Wizard
-    >>> from proteus.config import get_config
+    >>> from proteus import Model
     >>> from trytond.modules.company.tests.tools import create_company
+    >>> from trytond.modules.marketing_automation import marketing_automation
     >>> from trytond.pyson import Eval, PYSONEncoder
     >>> from trytond.tests.tools import activate_modules, assertEqual
     >>> from trytond.tools import file_open
 
 Patch sendmail_transactional::
 
-    >>> from unittest.mock import patch
-    >>> from trytond.modules.marketing_automation import marketing_automation
     >>> smtp_calls = patch.object(
     ...     marketing_automation, 'sendmail_transactional').start()
     >>> manager = patch.object(

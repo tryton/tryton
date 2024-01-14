@@ -6,10 +6,10 @@ Imports::
 
     >>> import datetime as dt
     >>> from decimal import Decimal
+
     >>> from proteus import Model, Report
-    >>> from trytond.tests.tools import activate_modules, set_user, assertEqual
-    >>> from trytond.modules.company.tests.tools import create_company, \
-    ...     get_company
+    >>> from trytond.modules.company.tests.tools import create_company, get_company
+    >>> from trytond.tests.tools import activate_modules, assertEqual, set_user
 
     >>> today = dt.date.today()
     >>> yesterday = today - dt.timedelta(days=1)
@@ -88,7 +88,7 @@ Add two shipment lines of same product::
     >>> shipment_out.outgoing_moves.extend([StockMove(), StockMove()])
     >>> for move in shipment_out.outgoing_moves:
     ...     move.product = product
-    ...     move.unit =unit
+    ...     move.unit = unit
     ...     move.quantity = 1
     ...     move.from_location = output_loc
     ...     move.to_location = customer_loc
@@ -216,7 +216,7 @@ Create Shipment Out with effective date::
     >>> shipment_out.company = company
     >>> move = shipment_out.outgoing_moves.new()
     >>> move.product = product
-    >>> move.unit =unit
+    >>> move.unit = unit
     >>> move.quantity = 1
     >>> move.from_location = output_loc
     >>> move.to_location = customer_loc

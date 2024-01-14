@@ -6,11 +6,10 @@ Imports::
 
     >>> import datetime as dt
     >>> from decimal import Decimal
-    >>> from proteus import Model, Wizard
+
+    >>> from proteus import Model
+    >>> from trytond.modules.company.tests.tools import create_company, get_company
     >>> from trytond.tests.tools import activate_modules
-    >>> from trytond.exceptions import UserError
-    >>> from trytond.modules.company.tests.tools import create_company, \
-    ...     get_company
 
     >>> today = dt.date.today()
 
@@ -67,7 +66,7 @@ Add two shipment lines of same product::
     >>> shipment_out.outgoing_moves.extend([StockMove(), StockMove()])
     >>> for move in shipment_out.outgoing_moves:
     ...     move.product = product
-    ...     move.unit =unit
+    ...     move.unit = unit
     ...     move.quantity = 1
     ...     move.from_location = output_loc
     ...     move.to_location = customer_loc

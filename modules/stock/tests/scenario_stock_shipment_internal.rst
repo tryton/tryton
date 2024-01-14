@@ -6,10 +6,10 @@ Imports::
 
     >>> import datetime as dt
     >>> from decimal import Decimal
+
     >>> from proteus import Model, Report
-    >>> from trytond.tests.tools import activate_modules, set_user, assertEqual
-    >>> from trytond.modules.company.tests.tools import create_company, \
-    ...     get_company
+    >>> from trytond.modules.company.tests.tools import create_company, get_company
+    >>> from trytond.tests.tools import activate_modules, assertEqual, set_user
 
     >>> today = dt.date.today()
     >>> yesterday = today - dt.timedelta(days=1)

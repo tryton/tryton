@@ -7,15 +7,14 @@ Imports::
     >>> import os
     >>> import random
     >>> from decimal import Decimal
+
     >>> import braintree
     >>> from braintree.test.nonces import Nonces
-    >>> from proteus import Model, Wizard
-    >>> from trytond.tests.tools import (
-    ...     activate_modules, assertEqual, assertTrue)
-    >>> from trytond.modules.company.tests.tools import create_company, \
-    ...     get_company
-    >>> from trytond.modules.account.tests.tools import create_fiscalyear, \
-    ...     create_chart, get_accounts
+
+    >>> from proteus import Model
+    >>> from trytond.modules.account.tests.tools import create_chart, create_fiscalyear
+    >>> from trytond.modules.company.tests.tools import create_company, get_company
+    >>> from trytond.tests.tools import activate_modules, assertEqual, assertTrue
 
 Activate modules::
 

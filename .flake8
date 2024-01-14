@@ -1,3 +1,5 @@
 [flake8]
 ignore=E123,E124,E126,E128,E741,W503
 extend-exclude=cookiecutter-module
+per-file-ignores =
+    **/*/tests/scenario*.py:E302,E305

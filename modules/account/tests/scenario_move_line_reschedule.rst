@@ -4,18 +4,16 @@ Reschedule Lines Scenario
 
 Imports::
 
-    >>> import datetime as dt
     >>> from decimal import Decimal
 
     >>> from dateutil.relativedelta import relativedelta
 
     >>> from proteus import Model, Wizard
-    >>> from trytond.tests.tools import activate_modules, assertEqual
-    >>> from trytond.modules.currency.tests.tools import get_currency
-    >>> from trytond.modules.company.tests.tools import (
-    ...     create_company, get_company)
     >>> from trytond.modules.account.tests.tools import (
-    ...     create_fiscalyear, create_chart, get_accounts)
+    ...     create_chart, create_fiscalyear, get_accounts)
+    >>> from trytond.modules.company.tests.tools import create_company, get_company
+    >>> from trytond.modules.currency.tests.tools import get_currency
+    >>> from trytond.tests.tools import activate_modules, assertEqual
 
 Activate modules::
 

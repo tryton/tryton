@@ -5,12 +5,11 @@ Incoterm Scenario
 Imports::
 
     >>> from decimal import Decimal
-    >>> from proteus import Model, Wizard
+
+    >>> from proteus import Model
+    >>> from trytond.modules.account.tests.tools import create_chart, get_accounts
+    >>> from trytond.modules.company.tests.tools import create_company, get_company
     >>> from trytond.tests.tools import activate_modules, assertEqual
-    >>> from trytond.modules.company.tests.tools import (
-    ...     create_company, get_company)
-    >>> from trytond.modules.account.tests.tools import (
-    ...     create_chart, get_accounts)
 
 Activate modules::
 
@@ -136,7 +135,7 @@ Create carriers::
     >>> carrier.carrier_product = carrier_product
     >>> carrier.save()
     >>> carrier_waterway, = carrier.duplicate()
-    >>> carrier_waterway.mode= 'waterway'
+    >>> carrier_waterway.mode = 'waterway'
     >>> carrier_waterway.save()
 
 Test incoterms are deducted from sale::

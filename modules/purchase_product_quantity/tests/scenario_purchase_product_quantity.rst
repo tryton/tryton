@@ -7,11 +7,9 @@ Imports::
     >>> from decimal import Decimal
 
     >>> from proteus import Model, Wizard
-    >>> from trytond.tests.tools import activate_modules, set_user, assertEqual
-    >>> from trytond.modules.account.tests.tools import (
-    ...     create_chart, get_accounts)
-    >>> from trytond.modules.company.tests.tools import (
-    ...     create_company, get_company)
+    >>> from trytond.modules.account.tests.tools import create_chart, get_accounts
+    >>> from trytond.modules.company.tests.tools import create_company, get_company
+    >>> from trytond.tests.tools import activate_modules, assertEqual, set_user
 
 Activate modules::
 
@@ -90,7 +88,7 @@ Create the purchase request below minimal::
 Create purchase::
 
     >>> create_purchase = Wizard(
-    ...     'purchase.request.create_purchase',[purchase_request])
+    ...     'purchase.request.create_purchase', [purchase_request])
     >>> create_purchase.form.party = supplier
     >>> create_purchase.execute('start')
     >>> purchase_request.state
@@ -116,7 +114,7 @@ Create the purchase request wrong rounding::
 Create purchase::
 
     >>> create_purchase = Wizard(
-    ...     'purchase.request.create_purchase',[purchase_request])
+    ...     'purchase.request.create_purchase', [purchase_request])
     >>> create_purchase.form.party = supplier
     >>> create_purchase.execute('start')
     >>> purchase_request.state

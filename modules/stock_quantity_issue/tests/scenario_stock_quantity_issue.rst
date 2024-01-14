@@ -4,14 +4,12 @@ Stock Quantity Issue Scenario
 
 Imports::
 
+    >>> import datetime as dt
     >>> from decimal import Decimal
 
-    >>> import datetime as dt
-
-    >>> from proteus import Model, Wizard
+    >>> from proteus import Model
+    >>> from trytond.modules.company.tests.tools import create_company, get_company
     >>> from trytond.tests.tools import activate_modules, assertEqual
-    >>> from trytond.modules.company.tests.tools import (
-    ...     create_company, get_company)
 
     >>> today = dt.date.today()
     >>> week1 = today + dt.timedelta(weeks=1)

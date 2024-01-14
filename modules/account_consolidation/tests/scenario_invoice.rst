@@ -7,13 +7,12 @@ Imports::
     >>> from decimal import Decimal
 
     >>> from proteus import Model
-
-    >>> from trytond.tests.tools import activate_modules, assertEqual
     >>> from trytond.modules.account.tests.tools import (
-    ...     create_fiscalyear, create_chart, get_accounts)
+    ...     create_chart, create_fiscalyear, get_accounts)
     >>> from trytond.modules.account_invoice.tests.tools import (
     ...     set_fiscalyear_invoice_sequences)
     >>> from trytond.modules.company.tests.tools import create_company
+    >>> from trytond.tests.tools import activate_modules, assertEqual
 
 Activate modules::
 

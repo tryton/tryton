@@ -7,12 +7,11 @@ Imports::
     >>> from decimal import Decimal
 
     >>> from proteus import Model, Report
-
-    >>> from trytond.tests.tools import activate_modules, set_user
     >>> from trytond.modules.account.tests.tools import (
-    ...     create_fiscalyear, create_chart, get_accounts)
-    >>> from trytond.modules.currency.tests.tools import get_currency
+    ...     create_chart, create_fiscalyear, get_accounts)
     >>> from trytond.modules.company.tests.tools import create_company
+    >>> from trytond.modules.currency.tests.tools import get_currency
+    >>> from trytond.tests.tools import activate_modules, set_user
 
 Activate modules::
 

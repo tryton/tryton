@@ -10,10 +10,9 @@ Imports::
     >>> from decimal import Decimal
 
     >>> from proteus import Model, Wizard
-    >>> from trytond.tests.tools import activate_modules, assertEqual
+    >>> from trytond.modules.company.tests.tools import create_company, get_company
     >>> from trytond.modules.currency.tests.tools import get_currency
-    >>> from trytond.modules.company.tests.tools import (
-    ...     create_company, get_company)
+    >>> from trytond.tests.tools import activate_modules, assertEqual
 
     >>> today = dt.date.today()
 
@@ -23,7 +22,8 @@ Activate modules::
 
     >>> Country = Model.get('country.country')
     >>> IntrastatDeclaration = Model.get('account.stock.eu.intrastat.declaration')
-    >>> IntrastatDeclarationLine = Model.get('account.stock.eu.intrastat.declaration.line')
+    >>> IntrastatDeclarationLine = Model.get(
+    ...     'account.stock.eu.intrastat.declaration.line')
     >>> Organization = Model.get('country.organization')
     >>> Party = Model.get('party.party')
     >>> ProductTemplate = Model.get('product.template')

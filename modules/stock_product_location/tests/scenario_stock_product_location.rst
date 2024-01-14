@@ -6,10 +6,10 @@ Imports::
 
     >>> import datetime as dt
     >>> from decimal import Decimal
-    >>> from proteus import Model, Wizard
+
+    >>> from proteus import Model
+    >>> from trytond.modules.company.tests.tools import create_company, get_company
     >>> from trytond.tests.tools import activate_modules, assertEqual
-    >>> from trytond.modules.company.tests.tools import create_company, \
-    ...     get_company
 
     >>> today = dt.date.today()
 
@@ -109,10 +109,10 @@ Add one shipment return line::
 
     >>> move = shipment_out_return.incoming_moves.new()
     >>> move.product = product
-    >>> move.unit =unit
+    >>> move.unit = unit
     >>> move.quantity = 1
     >>> move.from_location = customer_loc
-    >>> move.to_location =  input_loc
+    >>> move.to_location = input_loc
     >>> move.company = company
     >>> move.unit_price = Decimal('1')
     >>> move.currency = company.currency

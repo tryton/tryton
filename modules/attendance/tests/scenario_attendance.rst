@@ -5,12 +5,13 @@ Attendance Scenario
 Imports::
 
     >>> import datetime as dt
+
     >>> from dateutil.relativedelta import relativedelta
+
     >>> from proteus import Model
-    >>> from trytond.tests.tools import (
-    ...     activate_modules, assertEqual, assertTrue)
-    >>> from trytond.modules.company.tests.tools import create_company, \
-    ...     get_company
+    >>> from trytond.modules.company.tests.tools import create_company, get_company
+    >>> from trytond.tests.tools import activate_modules, assertEqual, assertTrue
+
     >>> now = dt.datetime.now()
     >>> tomorrow = now + relativedelta(days=1)
     >>> next_week = now + relativedelta(days=7)

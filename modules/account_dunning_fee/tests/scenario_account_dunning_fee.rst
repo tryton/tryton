@@ -6,12 +6,12 @@ Imports::
 
     >>> import datetime as dt
     >>> from decimal import Decimal
-    >>> from proteus import config, Model, Wizard
+
+    >>> from proteus import Model, Wizard
+    >>> from trytond.modules.account.tests.tools import (
+    ...     create_chart, create_fiscalyear, get_accounts)
+    >>> from trytond.modules.company.tests.tools import create_company, get_company
     >>> from trytond.tests.tools import activate_modules
-    >>> from trytond.modules.company.tests.tools import create_company, \
-    ...     get_company
-    >>> from trytond.modules.account.tests.tools import create_fiscalyear, \
-    ...     create_chart, get_accounts
 
 Activate modules::
 
@@ -107,7 +107,7 @@ Create move::
     >>> move.period = period
     >>> move.journal = journal_revenue
     >>> move.date = period.start_date
-    >>> line  = move.lines.new()
+    >>> line = move.lines.new()
     >>> line.account = revenue
     >>> line.credit = Decimal(100)
     >>> line = move.lines.new()

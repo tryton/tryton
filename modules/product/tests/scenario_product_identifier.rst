@@ -4,8 +4,7 @@ Product Identifier Scenario
 
 Imports::
 
-    >>> from decimal import Decimal
-    >>> from proteus import Model, Wizard
+    >>> from proteus import Model
     >>> from trytond.tests.tools import activate_modules
 
 Activate modules::

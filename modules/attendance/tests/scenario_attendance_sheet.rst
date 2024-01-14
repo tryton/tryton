@@ -5,11 +5,10 @@ Attendance Sheet Scenario
 Imports::
 
     >>> import datetime as dt
-    >>> from dateutil.relativedelta import relativedelta
+
     >>> from proteus import Model
+    >>> from trytond.modules.company.tests.tools import create_company, get_company
     >>> from trytond.tests.tools import activate_modules
-    >>> from trytond.modules.company.tests.tools import create_company, \
-    ...     get_company
 
 Activate attendance.line module::
 

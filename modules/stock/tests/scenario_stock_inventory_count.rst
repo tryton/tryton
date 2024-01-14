@@ -5,10 +5,10 @@ Stock Inventory Count Scenario
 Imports::
 
     >>> from decimal import Decimal
-    >>> from proteus import Model, Wizard
+
+    >>> from proteus import Model
+    >>> from trytond.modules.company.tests.tools import create_company, get_company
     >>> from trytond.tests.tools import activate_modules
-    >>> from trytond.modules.company.tests.tools import create_company, \
-    ...     get_company
 
 Activate modules::
 
@@ -76,7 +76,7 @@ Count inventory::
 
     >>> Model.get('res.user.warning')(user=config.user,
     ...     name='stock.inventory,%s.product.product,%s.count_create' % (
-    ...     inventory.id, product.id)).save()
+    ...         inventory.id, product.id)).save()
     >>> count.execute('quantity')
     >>> count.form.quantity
     1.0
@@ -93,7 +93,7 @@ Count inventory::
     >>> count.form.search = product2
     >>> Model.get('res.user.warning')(user=config.user,
     ...     name='stock.inventory,%s.product.product,%s.count_create' % (
-    ...     inventory.id, product2.id)).save()
+    ...         inventory.id, product2.id)).save()
     >>> count.execute('quantity')
     >>> count.form.quantity
     >>> count.form.total_quantity

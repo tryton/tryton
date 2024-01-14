@@ -4,17 +4,17 @@ Account Payment Stripe Dispute Scenario
 
 Imports::
 
-    >>> import os
     >>> import datetime as dt
+    >>> import os
     >>> import time
     >>> from decimal import Decimal
+
     >>> import stripe
-    >>> from proteus import Model, Wizard
+
+    >>> from proteus import Model
+    >>> from trytond.modules.account.tests.tools import create_chart, create_fiscalyear
+    >>> from trytond.modules.company.tests.tools import create_company, get_company
     >>> from trytond.tests.tools import activate_modules
-    >>> from trytond.modules.company.tests.tools import create_company, \
-    ...     get_company
-    >>> from trytond.modules.account.tests.tools import create_fiscalyear, \
-    ...     create_chart, get_accounts
 
     >>> today = dt.date.today()
 

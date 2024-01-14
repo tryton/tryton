@@ -103,6 +103,8 @@ check-doc-readthedocs:
 
 .check-code:
   extends: .check
+  before_script:
+    - .gitlab-scripts/doctest2python.py
   rules:
     - if: $CI_MERGE_REQUEST_TARGET_BRANCH_NAME == $CI_DEFAULT_BRANCH
       when: always

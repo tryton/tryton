@@ -6,29 +6,26 @@ Imports::
 
     >>> import base64
     >>> from decimal import Decimal
-    >>> from unittest.mock import MagicMock, ANY, patch
+    >>> from unittest.mock import ANY, MagicMock, patch
 
     >>> from proteus import Model
+    >>> from trytond.modules.account.tests.tools import create_chart, get_accounts
+    >>> from trytond.modules.company.tests.tools import create_company, get_company
+    >>> from trytond.modules.web_shop_vue_storefront import web
+    >>> from trytond.modules.web_shop_vue_storefront.tests.tools import AnyDictWith
     >>> from trytond.tests.tools import activate_modules
-    >>> from trytond.modules.company.tests.tools import (
-    ...     create_company, get_company)
-    >>> from trytond.modules.account.tests.tools import (
-    ...     create_chart, get_accounts)
-
-    >>> from trytond.modules.web_shop_vue_storefront.tests.tools import (
-    ...     AnyDictWith)
 
     >>> pixel = base64.decodebytes(
-    ...     b'/9j/4AAQSkZJRgABAQEASABIAAD/2wBDAAUDBAQEAwUEBAQFBQUGBwwIBwcHBw8LCwkMEQ8SEhEP'
-    ...     b'ERETFhwXExQaFRERGCEYGh0dHx8fExciJCIeJBweHx7/wAALCAABAAEBAREA/8QAHwAAAQUBAQEB'
-    ...     b'AQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1Fh'
-    ...     b'ByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZ'
-    ...     b'WmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXG'
-    ...     b'x8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/9oACAEBAAA/APsuv//Z')
+    ...     b'/9j/4AAQSkZJRgABAQEASABIAAD/2wBDAAUDBAQEAwUEBAQFBQUGBwwIBwcHBw8LCwkMEQ8S'
+    ...     b'EhEPERETFhwXExQaFRERGCEYGh0dHx8fExciJCIeJBweHx7/wAALCAABAAEBAREA/8QAHwAA'
+    ...     b'AQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQR'
+    ...     b'BRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RF'
+    ...     b'RkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ip'
+    ...     b'qrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/9oACAEB'
+    ...     b'AAA/APsuv//Z')
 
 Patch elasticsearch::
 
-    >>> from trytond.modules.web_shop_vue_storefront import web
     >>> es = MagicMock()
     >>> _ = patch.object(
     ...     web, 'VSFElasticsearch', return_value=es).start()

@@ -5,15 +5,15 @@ Stock Shipment Cost Weight Scenario
 Imports::
 
     >>> from decimal import Decimal
-    >>> from proteus import Model, Wizard
+    >>> from unittest.mock import patch
+
+    >>> from proteus import Model
+    >>> from trytond.modules.company.tests.tools import create_company, get_company
+    >>> from trytond.modules.stock_shipment_cost.stock import ShipmentCostMixin
     >>> from trytond.tests.tools import activate_modules
-    >>> from trytond.modules.company.tests.tools import (
-    ...     create_company, get_company)
 
 Patch _get_shipment_cost::
 
-    >>> from unittest.mock import patch
-    >>> from trytond.modules.stock_shipment_cost.stock import ShipmentCostMixin
     >>> mock = patch.object(
     ...     ShipmentCostMixin, '_get_shipment_cost',
     ...     return_value=Decimal('8')).start()

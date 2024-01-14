@@ -5,8 +5,7 @@ Party Replace Scenario
 Imports::
 
     >>> from proteus import Model, Wizard
-    >>> from trytond.tests.tools import (
-    ...     activate_modules, assertEqual, assertFalse)
+    >>> from trytond.tests.tools import activate_modules, assertEqual, assertFalse
 
 Activate modules::
 

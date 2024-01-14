@@ -5,13 +5,11 @@ Account Statement Sepa Scenario
 Imports::
 
     >>> from proteus import Model, Wizard
+    >>> from trytond.modules.account.tests.tools import create_chart, get_accounts
+    >>> from trytond.modules.company.tests.tools import create_company, get_company
+    >>> from trytond.modules.currency.tests.tools import get_currency
     >>> from trytond.tests.tools import activate_modules, assertEqual
     >>> from trytond.tools import file_open
-    >>> from trytond.modules.currency.tests.tools import get_currency
-    >>> from trytond.modules.company.tests.tools import (
-    ...     create_company, get_company)
-    >>> from trytond.modules.account.tests.tools import (
-    ...     create_chart, get_accounts)
 
 Activate modules::
 
@@ -75,7 +73,8 @@ Create Statement Journal::
 Import CAMT.053 file::
 
     >>> statement_import = Wizard('account.statement.import')
-    >>> with file_open('account_statement_sepa/tests/camt.053.001.02.xml', mode='rb') as fp:
+    >>> with file_open(
+    ...         'account_statement_sepa/tests/camt.053.001.02.xml', mode='rb') as fp:
     ...     camt = fp.read()
     >>> statement_import.form.file_ = camt
     >>> statement_import.form.file_format = 'camt_053_001'

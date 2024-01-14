@@ -5,7 +5,8 @@ User Role Scenario
 Imports::
 
     >>> import datetime as dt
-    >>> from proteus import Model, Wizard
+
+    >>> from proteus import Model
     >>> from trytond.tests.tools import activate_modules, assertEqual
 
 Activate modules::

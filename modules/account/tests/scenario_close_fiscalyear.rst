@@ -10,12 +10,10 @@ Imports::
     >>> from dateutil.relativedelta import relativedelta
 
     >>> from proteus import Model, Wizard
-    >>> from trytond.tests.tools import activate_modules
-    >>> from trytond.modules.company.tests.tools import (
-    ...     create_company, get_company)
     >>> from trytond.modules.account.tests.tools import (
-    ...     create_fiscalyear, create_chart, get_accounts)
-    >>> from trytond.modules.currency.tests.tools import get_currency
+    ...     create_chart, create_fiscalyear, get_accounts)
+    >>> from trytond.modules.company.tests.tools import create_company, get_company
+    >>> from trytond.tests.tools import activate_modules
 
     >>> today = dt.date.today()
     >>> last_year = today - relativedelta(years=1)
@@ -52,8 +50,8 @@ Create chart of accounts::
 Prepare the closing settings for fiscalyear close::
 
     >>> journal_sequence, = Sequence.find([
-    ...        ('sequence_type.name', '=', "Account Journal"),
-    ...     ], limit=1)
+    ...         ('sequence_type.name', '=', "Account Journal"),
+    ...         ], limit=1)
     >>> journal_closing = Journal()
     >>> journal_closing.name = 'Closing'
     >>> journal_closing.code = 'CLO'

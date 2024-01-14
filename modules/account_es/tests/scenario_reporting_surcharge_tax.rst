@@ -6,15 +6,15 @@ Imports::
 
     >>> import datetime as dt
     >>> from decimal import Decimal
-    >>> from proteus import Model, Wizard, Report
-    >>> from trytond.tests.tools import activate_modules, assertEqual
-    >>> from trytond.tools import file_open
-    >>> from trytond.modules.company.tests.tools import (
-    ...     create_company, get_company)
+
+    >>> from proteus import Model, Report
     >>> from trytond.modules.account.tests.tools import (
-    ...     create_chart, get_accounts, create_fiscalyear)
+    ...     create_chart, create_fiscalyear, get_accounts)
     >>> from trytond.modules.account_invoice.tests.tools import (
     ...     set_fiscalyear_invoice_sequences)
+    >>> from trytond.modules.company.tests.tools import create_company, get_company
+    >>> from trytond.tests.tools import activate_modules, assertEqual
+    >>> from trytond.tools import file_open
 
 Activate modules::
 

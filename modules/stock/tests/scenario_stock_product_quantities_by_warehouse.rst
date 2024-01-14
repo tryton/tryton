@@ -6,11 +6,10 @@ Imports::
 
     >>> import datetime as dt
     >>> from decimal import Decimal
-    >>> from proteus import Model, Wizard, Report
-    >>> from trytond import backend
+
+    >>> from proteus import Model
+    >>> from trytond.modules.company.tests.tools import create_company, get_company
     >>> from trytond.tests.tools import activate_modules, assertEqual
-    >>> from trytond.modules.company.tests.tools import create_company, \
-    ...     get_company
 
     >>> today = dt.date.today()
     >>> yesterday = today - dt.timedelta(days=1)
@@ -100,8 +99,8 @@ Check Product Quantities by Warehouse::
 
    >>> ProductQuantitiesByWarehouse = Model.get('stock.product_quantities_warehouse')
    >>> with config.set_context(
-   ...      product_template=template.id, warehouse=warehouse_loc.id):
-   ...   records = ProductQuantitiesByWarehouse.find([])
+   ...         product_template=template.id, warehouse=warehouse_loc.id):
+   ...     records = ProductQuantitiesByWarehouse.find([])
    >>> len(records)
    3
    >>> assertEqual([(r.date, r.quantity) for r in records],
@@ -112,14 +111,16 @@ Check Product Quantities by Warehouse Moves::
     >>> ProductQuantitiesByWarehouseMove = Model.get(
     ...     'stock.product_quantities_warehouse.move')
     >>> with config.set_context(
-    ...      product_template=template.id, warehouse=warehouse_loc.id):
-    ...   records = ProductQuantitiesByWarehouseMove.find([])
+    ...         product_template=template.id, warehouse=warehouse_loc.id):
+    ...     records = ProductQuantitiesByWarehouseMove.find([])
     >>> len(records)
     4
     >>> assertEqual([
-    ...     (r.date, r.cumulative_quantity_start, r.quantity, r.cumulative_quantity_end)
+    ...         (r.date, r.cumulative_quantity_start, r.quantity,
+    ...             r.cumulative_quantity_end)
     ...         for r in records],
-    ...     [(yesterday, 0, 10, 10),
-    ...     (tomorrow, 10, -6, 4),
-    ...     (tomorrow, 4, 5, 9),
-    ...     (tomorrow, 9, -3, 6)])
+    ...     [
+    ...         (yesterday, 0, 10, 10),
+    ...         (tomorrow, 10, -6, 4),
+    ...         (tomorrow, 4, 5, 9),
+    ...         (tomorrow, 9, -3, 6)])

@@ -6,10 +6,10 @@ Imports::
 
     >>> import datetime as dt
     >>> from decimal import Decimal
+
     >>> from proteus import Model
+    >>> from trytond.modules.company.tests.tools import create_company, get_company
     >>> from trytond.tests.tools import activate_modules, assertEqual
-    >>> from trytond.modules.company.tests.tools import create_company, \
-    ...     get_company
 
     >>> today = dt.date.today()
     >>> yesterday = today - dt.timedelta(days=1)
@@ -58,7 +58,7 @@ Create Shipment In::
     >>> shipment_return.from_location = storage_loc
     >>> move = shipment_return.moves.new()
     >>> move.product = product
-    >>> move.unit =unit
+    >>> move.unit = unit
     >>> move.quantity = 1
     >>> move.from_location = storage_loc
     >>> move.to_location = supplier_loc

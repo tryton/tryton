@@ -4,16 +4,17 @@ Sale Reporting Scenario
 
 Imports::
 
-    >>> from dateutil.relativedelta import relativedelta
     >>> from decimal import Decimal
+
+    >>> from dateutil.relativedelta import relativedelta
+
     >>> from proteus import Model
+    >>> from trytond.modules.account.tests.tools import (
+    ...     create_chart, create_fiscalyear, get_accounts)
+    >>> from trytond.modules.account_invoice.tests.tools import (
+    ...     set_fiscalyear_invoice_sequences)
+    >>> from trytond.modules.company.tests.tools import create_company, get_company
     >>> from trytond.tests.tools import activate_modules, assertEqual
-    >>> from trytond.modules.company.tests.tools import create_company, \
-    ...     get_company
-    >>> from trytond.modules.account.tests.tools import create_fiscalyear, \
-    ...     create_chart, get_accounts
-    >>> from trytond.modules.account_invoice.tests.tools import \
-    ...     set_fiscalyear_invoice_sequences
 
 Activate modules::
 
@@ -57,9 +58,11 @@ Create party categories::
     >>> PartyCategory = Model.get('party.category')
     >>> party_category_root1 = PartyCategory(name="Root1")
     >>> party_category_root1.save()
-    >>> party_category_child1 = PartyCategory(name="Child1", parent=party_category_root1)
+    >>> party_category_child1 = PartyCategory(
+    ...     name="Child1", parent=party_category_root1)
     >>> party_category_child1.save()
-    >>> party_category_child2 = PartyCategory(name="Child2", parent=party_category_root1)
+    >>> party_category_child2 = PartyCategory(
+    ...     name="Child2", parent=party_category_root1)
     >>> party_category_child2.save()
     >>> party_category_root2 = PartyCategory(name="Root2")
     >>> party_category_root2.save()
@@ -195,11 +198,16 @@ Check sale reporting per customer categories::
     >>> len(time_series)
     3
     >>> with config.set_context(context=context):
-    ...     assertEqual({(r.category.id, r.date, r.number, r.revenue)
-    ...         for r in time_series},
-    ...     {(party_category_child1.id, sale1.sale_date.replace(day=1), 1, Decimal('30')),
-    ...     (party_category_root2.id, sale1.sale_date.replace(day=1), 1, Decimal('30')),
-    ...     (party_category_child2.id, sale2.sale_date.replace(day=1), 1, Decimal('10'))})
+    ...     assertEqual({
+    ...             (r.category.id, r.date, r.number, r.revenue)
+    ...             for r in time_series},
+    ...         {
+    ...             (party_category_child1.id, sale1.sale_date.replace(day=1),
+    ...                 1, Decimal('30')),
+    ...             (party_category_root2.id, sale1.sale_date.replace(day=1),
+    ...                 1, Decimal('30')),
+    ...             (party_category_child2.id, sale2.sale_date.replace(day=1),
+    ...                 1, Decimal('10'))})
     >>> len(tree)
     4
     >>> with config.set_context(context=context):

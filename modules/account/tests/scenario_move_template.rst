@@ -6,13 +6,14 @@ Imports::
 
     >>> import datetime
     >>> from decimal import Decimal
+
     >>> from proteus import Model, Wizard
+    >>> from trytond.modules.account.tests.tools import (
+    ...     create_chart, create_fiscalyear, create_tax, create_tax_code, get_accounts)
+    >>> from trytond.modules.company.tests.tools import create_company, get_company
     >>> from trytond.tests.tools import (
-    ...     activate_modules, assertEqual, assertLessEqual, assertGreaterEqual)
-    >>> from trytond.modules.company.tests.tools import create_company, \
-    ...     get_company
-    >>> from trytond.modules.account.tests.tools import create_fiscalyear, \
-    ...     create_chart, get_accounts, create_tax, create_tax_code
+    ...     activate_modules, assertEqual, assertGreaterEqual, assertLessEqual)
+
     >>> today = datetime.date.today()
 
 Activate modules::

@@ -8,12 +8,10 @@ Imports::
 
     >>> from proteus import Model, Wizard
     >>> from trytond import backend
-    >>> from trytond.tests.tools import activate_modules
-
     >>> from trytond.modules.account.tests.tools import (
-    ...     create_fiscalyear, create_chart, get_accounts)
-    >>> from trytond.modules.company.tests.tools import (
-    ...     create_company, get_company)
+    ...     create_chart, create_fiscalyear, get_accounts)
+    >>> from trytond.modules.company.tests.tools import create_company, get_company
+    >>> from trytond.tests.tools import activate_modules
 
 Activate modules::
 

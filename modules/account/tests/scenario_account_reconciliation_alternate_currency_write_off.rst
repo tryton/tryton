@@ -5,12 +5,13 @@ Account Reconciliation Alternate Currency with Write-Off
 Imports::
 
     >>> from decimal import Decimal
+
     >>> from proteus import Model, Wizard
-    >>> from trytond.tests.tools import activate_modules
-    >>> from trytond.modules.currency.tests.tools import get_currency
-    >>> from trytond.modules.company.tests.tools import create_company
     >>> from trytond.modules.account.tests.tools import (
-    ...     create_fiscalyear, create_chart, get_accounts)
+    ...     create_chart, create_fiscalyear, get_accounts)
+    >>> from trytond.modules.company.tests.tools import create_company
+    >>> from trytond.modules.currency.tests.tools import get_currency
+    >>> from trytond.tests.tools import activate_modules, assertTrue
 
     >>> post_moves = globals().get('post_moves', False)
 
@@ -122,8 +123,9 @@ Reconcile lines::
     >>> reconcile_lines.form.writeoff = write_off
     >>> reconcile_lines.execute('reconcile')
 
-    >>> reconcile1.reconciliation == reconcile2.reconciliation != None
+    >>> reconcile1.reconciliation == reconcile2.reconciliation
     True
+    >>> assertTrue(reconcile1.reconciliation)
     >>> reconciliation, = Reconciliation.find([])
     >>> len(reconciliation.lines)
     4

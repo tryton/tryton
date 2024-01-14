@@ -4,13 +4,13 @@ Sale Modify Header Scenario
 
 Imports::
 
-    >>> from proteus import Model, Wizard
     >>> from decimal import Decimal
+
+    >>> from proteus import Model
+    >>> from trytond.modules.account.tests.tools import (
+    ...     create_chart, create_tax, get_accounts)
+    >>> from trytond.modules.company.tests.tools import create_company, get_company
     >>> from trytond.tests.tools import activate_modules, assertEqual
-    >>> from trytond.modules.company.tests.tools import create_company, \
-    ...     get_company
-    >>> from trytond.modules.account.tests.tools import create_fiscalyear, \
-    ...     create_chart, create_tax, get_accounts
 
 Activate modules::
 

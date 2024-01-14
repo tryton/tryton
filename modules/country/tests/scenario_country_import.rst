@@ -5,8 +5,9 @@ Country Import
 Imports::
 
     >>> from proteus import Model
+    >>> from trytond.modules.country.scripts import (
+    ...     import_countries, import_postal_codes)
     >>> from trytond.tests.tools import activate_modules
-    >>> from trytond.modules.country.scripts import import_countries, import_postal_codes
 
 Activate modules::
 

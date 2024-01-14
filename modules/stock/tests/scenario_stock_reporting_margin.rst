@@ -6,10 +6,10 @@ Imports::
 
     >>> import datetime as dt
     >>> from decimal import Decimal
+
     >>> from proteus import Model
+    >>> from trytond.modules.company.tests.tools import create_company, get_company
     >>> from trytond.tests.tools import activate_modules, assertEqual
-    >>> from trytond.modules.company.tests.tools import (
-    ...     create_company, get_company)
 
     >>> today = dt.date.today()
     >>> yesterday = today - dt.timedelta(days=1)
@@ -148,12 +148,13 @@ Check reporting margin per product::
     ...             r.product.id, str(r.date), r.quantity, r.cost, r.revenue,
     ...             r.profit, r.margin)
     ...         for r in time_series},
-    ...     {(product.id, str(yesterday), 2, Decimal('40.00'), Decimal('80.00'),
-    ...         Decimal('40.00'), Decimal('0.5000')),
-    ...     (product.id, str(today), 3, Decimal('60.00'), Decimal('90.00'),
-    ...         Decimal('30.00'), Decimal('0.3333')),
-    ...     (product2.id, str(today), 2, Decimal('40.00'), Decimal('100.00'),
-    ...         Decimal('60.00'), Decimal('0.6000'))})
+    ...         {
+    ...             (product.id, str(yesterday), 2, Decimal('40.00'),
+    ...                 Decimal('80.00'), Decimal('40.00'), Decimal('0.5000')),
+    ...             (product.id, str(today), 3, Decimal('60.00'),
+    ...                 Decimal('90.00'), Decimal('30.00'), Decimal('0.3333')),
+    ...             (product2.id, str(today), 2, Decimal('40.00'),
+    ...                 Decimal('100.00'), Decimal('60.00'), Decimal('0.6000'))})
 
 Check reporting margin per categories::
 
@@ -178,14 +179,16 @@ Check reporting margin per categories::
     >>> len(time_series)
     3
     >>> with config.set_context(context=context):
-    ...     assertEqual({(r.category.id, str(r.date), r.cost, r.revenue, r.profit, r.margin)
-    ...         for r in time_series},
-    ...     {(category1.id, str(yesterday), Decimal('40.00'), Decimal('80.00'),
-    ...         Decimal('40.00'), Decimal('0.5000')),
-    ...     (category1.id, str(today), Decimal('60.00'), Decimal('90.00'),
-    ...         Decimal('30.00'), Decimal('0.3333')),
-    ...     (category2.id, str(today), Decimal('40.00'), Decimal('100.00'),
-    ...         Decimal('60.00'), Decimal('0.6000'))})
+    ...     assertEqual({
+    ...             (r.category.id, str(r.date), r.cost, r.revenue, r.profit, r.margin)
+    ...             for r in time_series},
+    ...         {
+    ...             (category1.id, str(yesterday), Decimal('40.00'), Decimal('80.00'),
+    ...                 Decimal('40.00'), Decimal('0.5000')),
+    ...             (category1.id, str(today), Decimal('60.00'), Decimal('90.00'),
+    ...                 Decimal('30.00'), Decimal('0.3333')),
+    ...             (category2.id, str(today), Decimal('40.00'), Decimal('100.00'),
+    ...                 Decimal('60.00'), Decimal('0.6000'))})
     >>> len(tree)
     3
     >>> with config.set_context(context=context):

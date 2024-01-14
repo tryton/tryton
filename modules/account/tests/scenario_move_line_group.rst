@@ -6,14 +6,14 @@ Imports::
 
     >>> import datetime as dt
     >>> from decimal import Decimal
+
     >>> from proteus import Model, Wizard
-    >>> from trytond.tests.tools import activate_modules, assertEqual
-    >>> from trytond.modules.currency.tests.tools import get_currency
-    >>> from trytond.modules.company.tests.tools import create_company, \
-    ...     get_company
-    >>> from trytond.modules.account.tests.tools import create_fiscalyear, \
-    ...     create_chart, get_accounts
     >>> from trytond.modules.account.exceptions import CancelDelegatedWarning
+    >>> from trytond.modules.account.tests.tools import (
+    ...     create_chart, create_fiscalyear, get_accounts)
+    >>> from trytond.modules.company.tests.tools import create_company, get_company
+    >>> from trytond.modules.currency.tests.tools import get_currency
+    >>> from trytond.tests.tools import activate_modules, assertEqual
 
 Activate modules::
 
@@ -135,7 +135,8 @@ Group lines::
     >>> assertEqual(delegate_to.account, receivable)
     >>> delegate_to.debit
     Decimal('50')
-    >>> assertEqual(delegate_to.maturity_date, period.start_date + dt.timedelta(days=2))
+    >>> assertEqual(
+    ...     delegate_to.maturity_date, period.start_date + dt.timedelta(days=2))
     >>> delegate_to.move_description_used
     'Group lines'
 
@@ -144,10 +145,10 @@ Cancelling the delegation move::
    >>> delegation_move = delegate_to.move
    >>> cancel = Wizard('account.move.cancel', [delegation_move])
    >>> try:
-   ...   cancel.execute('cancel')
+   ...     cancel.execute('cancel')
    ... except CancelDelegatedWarning as warning:
-   ...   _, (key, *_) = warning.args
-   ...   raise
+   ...     _, (key, *_) = warning.args
+   ...     raise
    Traceback (most recent call last):
       ...
    CancelDelegatedWarning: ...

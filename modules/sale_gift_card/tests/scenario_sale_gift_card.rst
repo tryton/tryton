@@ -4,19 +4,17 @@ Sale Gift Card Scenario
 
 Imports::
 
-    >>> import re
     >>> from decimal import Decimal
+    >>> from unittest.mock import patch
+
     >>> from proteus import Model, Report
+    >>> from trytond.modules.account.tests.tools import create_chart, get_accounts
+    >>> from trytond.modules.company.tests.tools import create_company, get_company
+    >>> from trytond.modules.sale_gift_card import sale
     >>> from trytond.tests.tools import activate_modules, assertEqual
-    >>> from trytond.modules.company.tests.tools import (
-    ...     create_company, get_company)
-    >>> from trytond.modules.account.tests.tools import (
-    ...     create_fiscalyear, create_chart, get_accounts)
 
 Patch sendmail_transactional::
 
-    >>> from unittest.mock import patch
-    >>> from trytond.modules.sale_gift_card import sale
     >>> smtp_calls = patch.object(
     ...     sale, 'sendmail_transactional').start()
 

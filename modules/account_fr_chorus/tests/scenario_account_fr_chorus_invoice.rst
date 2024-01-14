@@ -9,23 +9,22 @@ Imports::
     >>> import time
     >>> import uuid
     >>> from decimal import Decimal
+    >>> from unittest.mock import patch
 
     >>> from proteus import Model
-    >>> from trytond.tests.tools import activate_modules
-    >>> from trytond.modules.currency.tests.tools import get_currency
-    >>> from trytond.modules.company.tests.tools import (
-    ...     create_company, get_company)
     >>> from trytond.modules.account.tests.tools import (
-    ...     create_fiscalyear, create_chart, get_accounts)
+    ...     create_chart, create_fiscalyear, get_accounts)
     >>> from trytond.modules.account_invoice.tests.tools import (
     ...     set_fiscalyear_invoice_sequences)
+    >>> from trytond.modules.company.tests.tools import create_company, get_company
+    >>> from trytond.modules.currency.tests.tools import get_currency
+    >>> from trytond.modules.party.party import Identifier
+    >>> from trytond.tests.tools import activate_modules
 
     >>> today = dt.date.today()
 
 Patch SIRET validation::
 
-    >>> from unittest.mock import patch
-    >>> from trytond.modules.party.party import Identifier
     >>> mock = patch.object(
     ...     Identifier, 'check_code',
     ...     return_value=None).start()

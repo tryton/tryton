@@ -5,6 +5,7 @@ Currency Rate Update
 Imports::
 
     >>> import datetime as dt
+
     >>> from proteus import Model
     >>> from trytond.tests.tools import activate_modules
 

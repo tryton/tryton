@@ -4,7 +4,6 @@ Web Shop Shopify Scenario
 
 Imports::
 
-    >>> import datetime as dt
     >>> import os
     >>> import random
     >>> import string
@@ -15,14 +14,15 @@ Imports::
     >>> import shopify
     >>> from shopify.api_version import ApiVersion
 
-    >>> from proteus import Model, Wizard
-    >>> from trytond.tests.tools import activate_modules, assertEqual
-    >>> from trytond.modules.company.tests.tools import (
-    ...     create_company, get_company)
+    >>> from proteus import Model
     >>> from trytond.modules.account.tests.tools import (
-    ...     create_fiscalyear, create_chart, get_accounts, create_tax)
+    ...     create_chart, create_fiscalyear, create_tax, get_accounts)
     >>> from trytond.modules.account_invoice.tests.tools import (
     ...     set_fiscalyear_invoice_sequences)
+    >>> from trytond.modules.company.tests.tools import create_company, get_company
+    >>> from trytond.modules.web_shop_shopify.product import Template
+    >>> from trytond.modules.web_shop_shopify.web import Shop
+    >>> from trytond.tests.tools import activate_modules, assertEqual
 
     >>> FETCH_SLEEP, MAX_SLEEP = 1, 10
 
@@ -62,7 +62,6 @@ Activate modules::
 
 Set metafields to product::
 
-    >>> from trytond.modules.web_shop_shopify.product import Template
     >>> def get_shopify_metafields(self, shop):
     ...     return {
     ...         'global.test': {
@@ -72,7 +71,6 @@ Set metafields to product::
 
     >>> Template.get_shopify_metafields = get_shopify_metafields
 
-    >>> from trytond.modules.web_shop_shopify.web import Shop
     >>> def managed_metafields(self):
     ...     return {'global.test'}
 

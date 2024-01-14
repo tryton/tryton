@@ -6,12 +6,11 @@ Imports::
 
     >>> import datetime as dt
     >>> from decimal import Decimal
-    >>> from proteus import Model, Wizard, Report
-    >>> from trytond.tests.tools import activate_modules, set_user, assertEqual
-    >>> from trytond.modules.company.tests.tools import (
-    ...     create_company, get_company)
-    >>> from trytond.modules.account.tests.tools import (
-    ...     create_chart, get_accounts)
+
+    >>> from proteus import Model, Report, Wizard
+    >>> from trytond.modules.account.tests.tools import create_chart, get_accounts
+    >>> from trytond.modules.company.tests.tools import create_company, get_company
+    >>> from trytond.tests.tools import activate_modules, assertEqual, set_user
 
     >>> today = dt.date.today()
 
@@ -167,13 +166,13 @@ Suppliers will answer to quotation with their best unit price::
     >>> quotation, = Quotation.find([
     ...         ('state', '=', 'sent'),
     ...         ('supplier', '=', supplier.id)
-    ...     ])
+    ...         ])
     >>> quotation.lines[0].unit_price = Decimal('11.000')
     >>> quotation.click('receive')
     >>> quotation, = Quotation.find([
     ...         ('state', '=', 'sent'),
     ...         ('supplier', '=', supplier2.id)
-    ...     ])
+    ...         ])
     >>> quotation.lines[0].unit_price = Decimal('8.000')
     >>> quotation.click('receive')
 

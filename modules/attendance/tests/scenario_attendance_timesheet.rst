@@ -5,12 +5,11 @@ Attendance Timesheet Scenario
 Imports::
 
     >>> import datetime as dt
-    >>> from dateutil.relativedelta import relativedelta
+
     >>> from proteus import Model
     >>> from trytond import backend
+    >>> from trytond.modules.company.tests.tools import create_company, get_company
     >>> from trytond.tests.tools import activate_modules, assertEqual
-    >>> from trytond.modules.company.tests.tools import create_company, \
-    ...     get_company
 
 Activate attendance.line module::
 
@@ -57,7 +56,7 @@ Fill time sheet::
     >>> def spend(employee, work, date, duration):
     ...     timesheet = Timesheet(employee=employee, work=work)
     ...     timesheet.date = date
-    ...     timesheet.duration =duration
+    ...     timesheet.duration = duration
     ...     timesheet.save()
 
     >>> spend(employee, work, dt.date(2020, 4, 1), dt.timedelta(hours=7))

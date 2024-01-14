@@ -5,8 +5,8 @@ Currency Import
 Imports::
 
     >>> from proteus import Model
-    >>> from trytond.tests.tools import activate_modules
     >>> from trytond.modules.currency.scripts import import_currencies
+    >>> from trytond.tests.tools import activate_modules
 
 Activate modules::
 

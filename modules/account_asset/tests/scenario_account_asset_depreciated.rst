@@ -4,18 +4,18 @@ Account Asset Depreciated Scenario
 
 Imports::
 
-    >>> from dateutil.relativedelta import relativedelta
     >>> from decimal import Decimal
+
+    >>> from dateutil.relativedelta import relativedelta
+
     >>> from proteus import Model, Wizard
+    >>> from trytond.modules.account.tests.tools import (
+    ...     create_chart, create_fiscalyear, get_accounts)
+    >>> from trytond.modules.account_asset.tests.tools import add_asset_accounts
+    >>> from trytond.modules.account_invoice.tests.tools import (
+    ...     set_fiscalyear_invoice_sequences)
+    >>> from trytond.modules.company.tests.tools import create_company, get_company
     >>> from trytond.tests.tools import activate_modules
-    >>> from trytond.modules.company.tests.tools import create_company, \
-    ...     get_company
-    >>> from trytond.modules.account.tests.tools import create_fiscalyear, \
-    ...     create_chart, get_accounts
-    >>> from trytond.modules.account_invoice.tests.tools import \
-    ...     set_fiscalyear_invoice_sequences, create_payment_term
-    >>> from trytond.modules.account_asset.tests.tools \
-    ...     import add_asset_accounts
 
 Activate modules::
 
@@ -77,8 +77,8 @@ Depreciate the asset::
     >>> asset.depreciated_amount = Decimal('500.00')
     >>> asset.start_date = fiscalyear.start_date
     >>> asset.purchase_date = asset.start_date
-    >>> asset.end_date = (asset.start_date +
-    ...     relativedelta(years=2, days=-1))
+    >>> asset.end_date = (asset.start_date
+    ...     + relativedelta(years=2, days=-1))
     >>> asset.quantity = 1
     >>> asset.residual_value = Decimal('100')
     >>> asset.click('create_lines')
