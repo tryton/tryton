@@ -92,14 +92,14 @@ class Sale(metaclass=PoolMeta):
         moves_to_draft, moves_to_cancel = [], []
         for sale in sales:
             for line in sale.lines:
-                if line.supply_state == 'supplied':
-                    for move in line.moves:
-                        if move.state == 'staging':
+                for move in line.moves:
+                    if move.state == 'staging':
+                        if line.supply_state == 'supplied':
                             moves_to_draft.append(move)
-                            add_shipment(move.shipment)
-                elif line.supply_state == 'cancelled':
-                    for move in line.moves:
-                        moves_to_cancel.append(move)
+                        elif line.supply_state == 'cancelled':
+                            moves_to_cancel.append(move)
+                        else:
+                            continue
                         add_shipment(move.shipment)
         if moves_to_draft:
             Move.draft(moves_to_draft)
