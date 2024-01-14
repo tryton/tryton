@@ -19,6 +19,8 @@ Activate modules::
 
     >>> config = activate_modules(['account_cash_rounding', 'account_invoice'])
 
+    >>> Configuration = Model.get('account.configuration')
+
 Set alternate currencies::
 
     >>> currency = get_currency('USD')
@@ -41,6 +43,16 @@ Create chart of accounts::
     >>> AccountConfig = Model.get('account.configuration')
     >>> _ = create_chart(company)
     >>> accounts = get_accounts(company)
+
+Configure currency exchange::
+
+    >>> currency_exchange_account, = (
+    ...     accounts['revenue'].duplicate(
+    ...         default={'name': "Currency Exchange"}))
+    >>> configuration = Configuration(1)
+    >>> configuration.currency_exchange_debit_account = (
+    ...     currency_exchange_account)
+    >>> configuration.save()
 
 Set cash rounding::
 
@@ -98,6 +110,6 @@ Post invoice::
 
     >>> line_to_pay, = invoice.lines_to_pay
     >>> line_to_pay.debit, line_to_pay.credit
-    (Decimal('21.03'), Decimal('0'))
+    (Decimal('21.02'), Decimal('0'))
     >>> line_to_pay.amount_second_currency
     Decimal('42.05')
