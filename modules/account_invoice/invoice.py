@@ -1152,6 +1152,8 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin, InvoiceReportMixin):
                         'msg_invoice_currency_exchange_debit_account_missing',
                         invoice=self.rec_name,
                         company=self.company.rec_name))
+        line.amount_second_currency = None
+        line.second_currency = None
         return line
 
     def get_move(self):
