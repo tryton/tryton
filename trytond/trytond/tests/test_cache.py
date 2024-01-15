@@ -122,6 +122,15 @@ class MemoryCacheTestCase(unittest.TestCase):
         self.assertEqual(cache.get('foo'), 'bar')
 
     @with_transaction()
+    def test_memory_cache_mutable(self):
+        "Test MemoryCache with mutable value"
+        value = ['bar']
+        cache.set('foo', value)
+        value.remove('bar')
+
+        self.assertEqual(cache.get('foo'), ['bar'])
+
+    @with_transaction()
     def test_memory_cache_drop(self):
         "Test MemoryCache drop"
         cache.set('foo', 'bar')
