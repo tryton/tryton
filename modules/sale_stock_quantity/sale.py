@@ -15,6 +15,15 @@ from trytond.transaction import Transaction
 from .exceptions import StockQuantityError, StockQuantityWarning
 
 
+def sortable_values(func):
+    def wrapper(*args, **kwargs):
+        result = list(func(*args, **kwargs))
+        for i, value in enumerate(list(result)):
+            result[i] = (value is None, value)
+        return result
+    return wrapper
+
+
 class Sale(metaclass=PoolMeta):
     __name__ = 'sale.sale'
 
@@ -140,7 +149,7 @@ class Sale(metaclass=PoolMeta):
         w_getter = attrgetter('warehouse', 'shipping_date')
         w_products = {}
         for (warehouse, shipping_date), w_lines in groupby(
-                sorted(lines, key=w_getter), key=w_getter):
+                sorted(lines, key=sortable_values(w_getter)), key=w_getter):
             if shipping_date is None:
                 shipping_date = today
             w_products[warehouse] = products = {l.product for l in w_lines}
