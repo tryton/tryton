@@ -56,6 +56,10 @@ Miscellaneous
 
    Convert the string for full text if it does not contain any wild cards.
 
+.. function:: sortable_values(func)
+
+   Decorator that makes returned list of values sortable.
+
 .. function:: sql_pairing(x, y)
 
    Return an SQL expression that pairs SQL integers x and y.

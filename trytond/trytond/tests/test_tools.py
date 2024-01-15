@@ -283,7 +283,7 @@ class ToolsTestCase(unittest.TestCase):
         "Test hyphenate in slugify"
         self.assertEqual(slugify('foo bar', hyphenate='_'), 'foo_bar')
 
-    def test_sortable_values(self):
+    def test_sortable_values_couple(self):
         def key(values):
             return values
 
@@ -300,6 +300,25 @@ class ToolsTestCase(unittest.TestCase):
                 (('a', 1), ('b', 2)),
                 (('a', 1), ('b', 3)),
                 (('a', 1), ('b', None)),
+                ])
+
+    def test_sortable_values_single(self):
+        def key(values):
+            return values
+
+        values = [
+            (1, None),
+            (1, 3),
+            (1, 2),
+            ]
+
+        with self.assertRaises(TypeError):
+            sorted(values, key=key)
+        self.assertEqual(
+            sorted(values, key=sortable_values(key)), [
+                (1, 2),
+                (1, 3),
+                (1, None),
                 ])
 
     def test_firstline(self):

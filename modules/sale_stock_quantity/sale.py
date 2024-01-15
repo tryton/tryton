@@ -9,19 +9,10 @@ from operator import attrgetter
 from trytond.i18n import gettext
 from trytond.model import ModelView, Workflow, fields
 from trytond.pool import Pool, PoolMeta
-from trytond.tools import grouped_slice
+from trytond.tools import grouped_slice, sortable_values
 from trytond.transaction import Transaction
 
 from .exceptions import StockQuantityError, StockQuantityWarning
-
-
-def sortable_values(func):
-    def wrapper(*args, **kwargs):
-        result = list(func(*args, **kwargs))
-        for i, value in enumerate(list(result)):
-            result[i] = (value is None, value)
-        return result
-    return wrapper
 
 
 class Sale(metaclass=PoolMeta):

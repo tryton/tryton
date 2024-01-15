@@ -12,9 +12,9 @@ import types
 import unicodedata
 import warnings
 from array import array
-from collections.abc import Sized
+from collections.abc import Iterable, Sized
 from functools import wraps
-from itertools import islice, tee, zip_longest
+from itertools import chain, islice, tee, zip_longest
 
 from sql import Literal
 from sql.conditionals import Case
@@ -286,12 +286,14 @@ def slugify(value, hyphenate='-'):
 
 
 def sortable_values(func):
-    "Decorator that makes list of couple values sortable"
+    "Decorator that makes list of values sortable"
     @wraps(func)
     def wrapper(*args, **kwargs):
         result = list(func(*args, **kwargs))
-        for i, (name, value) in enumerate(list(result)):
-            result[i] = (name, value is None, value)
+        for i, value in enumerate(list(result)):
+            if not isinstance(value, Iterable):
+                value = [value]
+            result[i] = tuple(chain((k is None, k) for k in value))
         return result
     return wrapper
 
