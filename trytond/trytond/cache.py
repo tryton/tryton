@@ -8,6 +8,7 @@ import select
 import threading
 import time
 from collections import OrderedDict, defaultdict
+from copy import deepcopy
 from datetime import datetime
 from weakref import WeakKeyDictionary
 
@@ -175,7 +176,7 @@ class MemoryCache(BaseCache):
                 return default
             cache[key] = (expire, result)
             self.hit += 1
-            return result
+            return deepcopy(result)
         except (KeyError, TypeError):
             self.miss += 1
             return default
@@ -188,7 +189,7 @@ class MemoryCache(BaseCache):
         else:
             expire = None
         try:
-            cache[key] = (expire, value)
+            cache[key] = (expire, deepcopy(value))
         except TypeError:
             pass
         return value
