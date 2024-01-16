@@ -181,7 +181,7 @@ check-template-modules:
   before_script:
     - pip install tox
   script:
-    - tox -e "py${PYTHON_VERSION/./}" -c "${PACKAGE}" -vv -- -v --output-file junit.xml
+    - tox -e "py${PYTHON_VERSION/./}" -c "${PACKAGE}" -- -v --output-file junit.xml
   coverage: '/(?i)total.*? (100(?:\.0+)?\%|[1-9]?\d(?:\.\d+)?\%)$/'
   artifacts:
     reports:
@@ -198,7 +198,7 @@ check-template-modules:
   variables:
     DB_CACHE: /tmp/cache
   script:
-    - tox -e "py${PYTHON_VERSION/./}-${DATABASE}" -c "${PACKAGE}" -vv -- -v --output-file junit.xml
+    - tox -e "py${PYTHON_VERSION/./}-${DATABASE}" -c "${PACKAGE}" -- -v --output-file junit.xml
 
 .test-sqlite:
   extends: .test-db
@@ -224,7 +224,7 @@ check-template-modules:
     POSTGIS_URI: postgis://postgres@postgis:5432/
     POSTGRES_HOST_AUTH_METHOD: trust
   script:
-    - tox -e "py${PYTHON_VERSION/./}" -c "${PACKAGE}" -vv -- -v --output-file junit.xml
+    - tox -e "py${PYTHON_VERSION/./}" -c "${PACKAGE}" -- -v --output-file junit.xml
   services:
     - name: ${CI_DEPENDENCY_PROXY_GROUP_IMAGE_PREFIX}/postgis/postgis
       alias: postgis
