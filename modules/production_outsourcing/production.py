@@ -120,7 +120,7 @@ class Production(metaclass=PoolMeta):
         Currency = pool.get('currency.currency')
         cost = super(Production, self).get_cost(name)
         for line in self.purchase_lines:
-            if line.purchase.state != 'cancelled':
+            if line.purchase.state != 'cancelled' and line.amount:
                 cost += Currency.compute(
                     line.purchase.currency, line.amount,
                     self.company.currency, round=False)
