@@ -28,17 +28,17 @@ class Sale(metaclass=PoolMeta):
         Product = pool.get('product.product')
 
         product_quantities = defaultdict(float)
-        get_warehouse = attrgetter('warehouse')
-        for warehouse, sub_sales in groupby(
-                filter(get_warehouse, sales), key=get_warehouse):
+        for (company, warehouse), sub_sales in groupby(
+                filter(attrgetter('warehouse'), sales),
+                key=attrgetter('company', 'warehouse')):
             sub_sales = list(sub_sales)
             products = {
                 l.product for s in sub_sales for l in s.lines
                 if l.product and l.product.supply_on_sale == 'stock_first'}
             locations = [warehouse.id]
             with Transaction().set_context(
-                    locations=locations, stock_date_end=None):
-                products = Product.browse(products)
+                    company=company.id, locations=locations,
+                    stock_date_end=None):
                 product_quantities.update(
                     (p, p.forecast_quantity)
                     for p in Product.browse(products))
