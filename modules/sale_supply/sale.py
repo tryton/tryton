@@ -17,7 +17,7 @@ class Sale(metaclass=PoolMeta):
     def is_done(self):
         done = super(Sale, self).is_done()
         if done:
-            if any(l.supply_state in {'', 'requested'}
+            if any(l.supply_state == 'requested'
                     for l in self.lines if l.supply_on_sale):
                 return False
         return done
@@ -92,7 +92,8 @@ class Sale(metaclass=PoolMeta):
         ShipmentOut = pool.get('stock.shipment.out')
         moves = []
         for line in self.lines:
-            if line.supply_state in {'supplied', 'cancelled'}:
+            if (not line.has_supply
+                    or line.supply_state in {'supplied', 'cancelled'}):
                 for move in line.moves:
                     if move.state == 'staging':
                         moves.append(move)
@@ -176,7 +177,7 @@ class Line(metaclass=PoolMeta):
         if (move
                 and shipment_type == 'out'
                 and self.has_supply):
-            if self.supply_state in {'', 'requested'}:
+            if self.supply_state == 'requested':
                 move.state = 'staging'
         return move
 
