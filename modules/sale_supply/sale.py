@@ -17,7 +17,7 @@ class Sale(metaclass=PoolMeta):
     def is_done(self):
         done = super(Sale, self).is_done()
         if done:
-            if any(l.supply_state in {'', 'requested'}
+            if any(l.supply_state == 'requested'
                     for l in self.lines if l.supply_on_sale):
                 return False
         return done
@@ -61,7 +61,6 @@ class Sale(metaclass=PoolMeta):
             reqs, lns = sale.create_purchase_requests(product_quantities)
             requests.extend(reqs)
             lines.extend(lns)
-
         PurchaseRequest.save(requests)
         Line.save(lines)
 
@@ -97,7 +96,8 @@ class Sale(metaclass=PoolMeta):
             for line in sale.lines:
                 for move in line.moves:
                     if move.state == 'staging':
-                        if line.supply_state == 'supplied':
+                        if (not line.has_supply
+                                or line.supply_state == 'supplied'):
                             moves_to_draft.append(move)
                         elif line.supply_state == 'cancelled':
                             moves_to_cancel.append(move)
@@ -196,7 +196,7 @@ class Line(metaclass=PoolMeta):
         if (move
                 and shipment_type == 'out'
                 and self.has_supply):
-            if self.supply_state in {'', 'requested'}:
+            if self.supply_state == 'requested':
                 move.state = 'staging'
         return move
 
