@@ -142,28 +142,22 @@ class Party(
     def get_code_readonly(self, name):
         return True
 
-    @classmethod
-    def tax_identifier_types(cls):
-        return TAX_IDENTIFIER_TYPES
-
-    def get_tax_identifier(self, name):
-        types = self.tax_identifier_types()
+    def _get_identifier(self, name, types):
         for identifier in self.identifiers:
             if identifier.type in types:
                 return identifier.id
 
     @classmethod
-    def search_tax_identifier(cls, name, clause):
+    def _search_identifier(cls, name, clause, types):
         _, operator, value = clause
         nested = clause[0][len(name) + 1:]
-        types = cls.tax_identifier_types()
         domain = [
             ('identifiers', 'where', [
                     (nested or 'rec_name', operator, value),
                     ('type', 'in', types),
                     ]),
             ]
-        # Add party without tax identifier
+        # Add party without identifier
         if ((operator == '=' and value is None)
                 or (operator == 'in' and None in value)):
             domain = ['OR',
@@ -174,6 +168,19 @@ class Party(
                     ],
                 ]
         return domain
+
+    @classmethod
+    def tax_identifier_types(cls):
+        return TAX_IDENTIFIER_TYPES
+
+    def get_tax_identifier(self, name):
+        types = self.tax_identifier_types()
+        return self._get_identifier(name, types)
+
+    @classmethod
+    def search_tax_identifier(cls, name, clause):
+        types = cls.tax_identifier_types()
+        return cls._search_identifier(name, clause, types)
 
     def get_full_name(self, name):
         return self.name
