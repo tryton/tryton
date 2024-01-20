@@ -54,7 +54,7 @@ class TrytonConfigParser(configparser.ConfigParser):
         self.set('web', 'cache_timeout', str(60 * 60 * 12))
         self.add_section('database')
         self.set('database', 'uri',
-            os.environ.get('TRYTOND_DATABASE_URI', 'sqlite://'))
+            os.environ.get('TRYTOND_DATABASE_URI') or 'sqlite://')
         self.set('database', 'path', os.path.join(
                 os.path.expanduser('~'), 'db'))
         self.set('database', 'list', 'True')
