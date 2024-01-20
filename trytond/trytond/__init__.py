@@ -20,7 +20,7 @@ __version__ = "7.5.0"
 os.environ.setdefault(
     'TRYTOND_APPNAME',
     os.path.basename(getattr(__main__, '__file__', 'trytond')))
-os.environ.setdefault('TRYTOND_TZ', os.environ.get('TZ', 'UTC'))
+os.environ['TRYTOND_TZ'] = os.environ.get('TZ') or 'UTC'
 os.environ['TZ'] = 'UTC'
 if hasattr(time, 'tzset'):
     time.tzset()
