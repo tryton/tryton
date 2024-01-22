@@ -202,6 +202,8 @@ class _TrytondMethod(object):
                     (c_args, c_kwargs,
                         transaction.context, transaction.timestamp) \
                             = rpc.convert(self._object, *args, **kwargs)
+                    if self._config.skip_warning:
+                        transaction.context['_skip_warnings'] = True
                     meth = getattr(self._object, self._name)
                     if (rpc.instantiate is None
                             or not is_instance_method(
@@ -276,6 +278,7 @@ class TrytondConfig(Config):
         self.database_name = database_name
         self._user = user
         self.config_file = config_file
+        self.skip_warning = False
 
         Pool.start()
         self.pool = Pool(database_name)
