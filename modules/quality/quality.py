@@ -264,7 +264,8 @@ class ControlPoint(DictSchemaMixin, ModelSQL, ModelView):
     "Quality Control Point"
     __name__ = 'quality.control.point'
 
-    control = fields.Many2One('quality.control', "Control", required=True)
+    control = fields.Many2One(
+        'quality.control', "Control", required=True, ondelete='CASCADE')
     tolerance_lower = fields.Float(
         "Tolerance Lower",
         states={
