@@ -8,12 +8,14 @@ Imports::
 
     >>> from proteus import Model
     >>> from trytond.modules.account.tests.tools import create_chart, get_accounts
+    >>> from trytond.modules.account_invoice.tests.tools import create_payment_term
     >>> from trytond.modules.company.tests.tools import create_company, get_company
     >>> from trytond.tests.tools import activate_modules
 
 Activate modules::
 
-    >>> config = activate_modules(['account_cash_rounding', 'sale'])
+    >>> config = activate_modules(
+    ...     ['account_cash_rounding', 'account_invoice', 'sale'])
 
 Create company::
 
@@ -53,11 +55,17 @@ Create party::
     >>> party = Party(name='Party')
     >>> party.save()
 
+Create payment term::
+
+    >>> payment_term = create_payment_term()
+    >>> payment_term.save()
+
 Create sale::
 
     >>> Sale = Model.get('sale.sale')
     >>> sale = Sale()
     >>> sale.party = party
+    >>> sale.payment_term = payment_term
     >>> line = sale.lines.new()
     >>> line.quantity = 1
     >>> line.unit_price = Decimal('42.02')
