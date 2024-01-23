@@ -1,6 +1,18 @@
 API Reference
 *************
 
+Price
+=====
+
+.. data:: trytond.modules.product.price_digits
+
+   A :py:class:`tuple <tuple>` containing the digits to use to store unit
+   prices.
+
+.. function:: trytond.modules.product.round_price(value[, rounding])
+
+   Round the value following ``rounding`` to be stored as unit price.
+
 Product Deactivatable
 =====================
 
