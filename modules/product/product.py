@@ -583,8 +583,6 @@ class Product(
             tables['template'] = {
                 None: (template, product.template == template.id),
                 }
-        else:
-            template = tables['template']
         return cls.order_code(tables) + Template.name.convert_order('name',
             tables['template'], Template)
 
