@@ -8,10 +8,10 @@ from sql.aggregate import Count, Max
 
 from trytond.i18n import gettext
 from trytond.model import (
-    DeactivableMixin, Index, MatchMixin, ModelSQL, ModelView, fields,
-    sequence_ordered)
+    Index, MatchMixin, ModelSQL, ModelView, fields, sequence_ordered)
 from trytond.modules.currency.fields import Monetary
-from trytond.modules.product import price_digits, round_price
+from trytond.modules.product import (
+    ProductDeactivatableMixin, price_digits, round_price)
 from trytond.pool import Pool, PoolMeta
 from trytond.pyson import Bool, Eval, If, TimeDelta
 from trytond.tools import (
@@ -29,10 +29,7 @@ class Template(metaclass=PoolMeta):
         states={
             'invisible': (~Eval('purchasable', False)
                 | ~Eval('context', {}).get('company')),
-            },
-        domain=[
-            If(~Eval('active'), ('active', '=', False), ()),
-            ])
+            })
     purchase_uom = fields.Many2One(
         'product.uom', "Purchase UoM",
         states={
@@ -122,7 +119,6 @@ class Product(metaclass=PoolMeta):
         'purchase.product_supplier', 'product', "Suppliers",
         domain=[
             ('template', '=', Eval('template')),
-            If(~Eval('active'), ('active', '=', False), ()),
             ],
         states={
             'invisible': (~Eval('purchasable', False)
@@ -312,7 +308,8 @@ class Product(metaclass=PoolMeta):
 
 
 class ProductSupplier(
-        sequence_ordered(), DeactivableMixin, ModelSQL, ModelView, MatchMixin):
+        sequence_ordered(), ProductDeactivatableMixin, MatchMixin,
+        ModelSQL, ModelView):
     'Product Supplier'
     __name__ = 'purchase.product_supplier'
     template = fields.Many2One(
@@ -322,7 +319,6 @@ class ProductSupplier(
             If(Bool(Eval('product')),
                 ('products', '=', Eval('product')),
                 ()),
-            If(Eval('active'), ('active', '=', True), ()),
             ],
         states={
             'readonly': Eval('id', -1) >= 0,
@@ -337,7 +333,6 @@ class ProductSupplier(
             If(Bool(Eval('template')),
                 ('template', '=', Eval('template')),
                 ()),
-            If(Eval('active'), ('active', '=', True), ()),
             ],
         states={
             'readonly': Eval('id', -1) >= 0,

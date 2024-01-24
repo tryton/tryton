@@ -8,6 +8,7 @@ from importlib import import_module
 import stdnum
 import stdnum.exceptions
 from sql import Literal
+from sql.conditionals import Coalesce
 from sql.functions import CharLength
 from sql.operators import Equal
 
@@ -18,7 +19,7 @@ from trytond.model import (
 from trytond.modules.company.model import (
     CompanyMultiValueMixin, CompanyValueMixin)
 from trytond.pool import Pool
-from trytond.pyson import Eval, Get, If
+from trytond.pyson import Eval, Get
 from trytond.tools import is_full_text, lstrip_wildcard
 from trytond.transaction import Transaction
 
@@ -114,9 +115,6 @@ class Template(
         'template', 'category', "Categories", readonly=True)
     products = fields.One2Many(
         'product.product', 'template', "Variants",
-        domain=[
-            If(~Eval('active'), ('active', '=', False), ()),
-            ],
         help="The different variants the product comes in.")
 
     @classmethod
@@ -322,8 +320,64 @@ class TemplateFunction(fields.Function):
         return definition
 
 
+class TemplateDeactivatableMixin(DeactivableMixin):
+    __slots__ = ()
+
+    @classmethod
+    def _active_expression(cls, tables):
+        pool = Pool()
+        Template = pool.get('product.template')
+        table, _ = tables[None]
+        if 'template' not in tables:
+            template = Template.__table__()
+            tables['template'] = {
+                None: (template, table.template == template.id),
+                }
+        else:
+            template, _ = tables['template'][None]
+        return table.active & template.active
+
+    @classmethod
+    def domain_active(cls, domain, tables):
+        expression = cls._active_expression(tables)
+        _, operator, value = domain
+        if operator in {'=', '!='}:
+            if (operator == '=') != value:
+                expression = ~expression
+        elif operator in {'in', 'not in'}:
+            if True in value and False not in value:
+                pass
+            elif False in value and True not in value:
+                expression = ~expression
+            else:
+                expression = Literal(True)
+        else:
+            expression = Literal(True)
+        return expression
+
+
+class ProductDeactivatableMixin(TemplateDeactivatableMixin):
+    __slots__ = ()
+
+    @classmethod
+    def _active_expression(cls, tables):
+        pool = Pool()
+        Product = pool.get('product.product')
+        table, _ = tables[None]
+        if 'product' not in tables:
+            product = Product.__table__()
+            tables['product'] = {
+                None: (product, table.product == product.id),
+                }
+        else:
+            product, _ = tables['product'][None]
+        expression = super()._active_expression(tables)
+        return expression & Coalesce(product.active, expression)
+
+
 class Product(
-        DeactivableMixin, ModelSQL, ModelView, CompanyMultiValueMixin):
+        TemplateDeactivatableMixin, ModelSQL, ModelView,
+        CompanyMultiValueMixin):
     "Product Variant"
     __name__ = "product.product"
     _order_name = 'rec_name'
@@ -331,9 +385,6 @@ class Product(
         'product.template', "Product Template",
         required=True, ondelete='CASCADE',
         search_context={'default_products': False},
-        domain=[
-            If(Eval('active'), ('active', '=', True), ()),
-            ],
         help="The product that defines the common properties "
         "inherited by the variant.")
     code_readonly = fields.Function(fields.Boolean('Code Readonly'),

@@ -2,15 +2,16 @@
 # this repository contains the full copyright notices and license terms.
 
 from trytond.model import (
-    DeactivableMixin, MatchMixin, ModelSQL, ModelView, fields,
-    sequence_ordered)
+    MatchMixin, ModelSQL, ModelView, fields, sequence_ordered)
+from trytond.modules.product import ProductDeactivatableMixin
 from trytond.pool import Pool, PoolMeta
 from trytond.pyson import Bool, Eval, If
 from trytond.tools import is_full_text, lstrip_wildcard
 
 
 class ProductCustomer(
-        sequence_ordered(), DeactivableMixin, ModelSQL, ModelView, MatchMixin):
+        sequence_ordered(), ProductDeactivatableMixin, MatchMixin,
+        ModelSQL, ModelView):
     'Product Customer'
     __name__ = 'sale.product_customer'
 
@@ -21,7 +22,6 @@ class ProductCustomer(
             If(Bool(Eval('product')),
                 ('products', '=', Eval('product')),
                 ()),
-            If(Eval('active'), ('active', '=', True), ()),
             ],
         states={
             'readonly': Eval('id', -1) >= 0,
@@ -32,7 +32,6 @@ class ProductCustomer(
             If(Bool(Eval('template')),
                 ('template', '=', Eval('template')),
                 ()),
-            If(Eval('active'), ('active', '=', True), ()),
             ],
         states={
             'readonly': Eval('id', -1) >= 0,
@@ -93,10 +92,7 @@ class Template(metaclass=PoolMeta):
         'sale.product_customer', 'template', "Customers",
         states={
             'invisible': ~Eval('salable', False),
-            },
-        domain=[
-            If(~Eval('active'), ('active', '=', False), ()),
-            ])
+            })
 
     def product_customer_used(self, **pattern):
         for product_customer in self.product_customers:
@@ -135,7 +131,6 @@ class Product(metaclass=PoolMeta):
         'sale.product_customer', 'product', "Customers",
         domain=[
             ('template', '=', Eval('template')),
-            If(~Eval('active'), ('active', '=', False), ()),
             ],
         states={
             'invisible': ~Eval('salable', False),

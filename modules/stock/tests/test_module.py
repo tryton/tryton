@@ -11,6 +11,7 @@ from dateutil.relativedelta import relativedelta
 from trytond.exceptions import UserError, UserWarning
 from trytond.modules.company.tests import (
     CompanyTestMixin, PartyCompanyCheckEraseMixin, create_company, set_company)
+from trytond.modules.stock.exceptions import ProductStockWarning
 from trytond.pool import Pool
 from trytond.tests.test_tryton import ModuleTestCase, with_transaction
 from trytond.transaction import Transaction
@@ -1610,8 +1611,11 @@ class StockTestCase(
                         'currency': company.currency.id,
                         'company': company.id,
                         }])
-            with self.assertRaises(UserWarning):
+            with self.assertRaises(ProductStockWarning):
                 Product.write(products, {'active': False})
+
+            with self.assertRaises(ProductStockWarning):
+                Template.write([template], {'active': False})
 
             Move.create([{
                         'product': product.id,
@@ -1632,6 +1636,7 @@ class StockTestCase(
                         'currency': company.currency.id,
                         'company': company.id,
                         }])
+            Template.write([template], {'active': False})
             Product.write(products, {'active': False})
 
     @with_transaction()
@@ -1667,8 +1672,11 @@ class StockTestCase(
                         'currency': company.currency.id,
                         'company': company.id,
                         }])
-            with self.assertRaises(UserWarning):
+            with self.assertRaises(ProductStockWarning):
                 Product.write(products, {'active': False})
+
+            with self.assertRaises(ProductStockWarning):
+                Template.write([template], {'active': False})
 
             Move.create([{
                         'product': product.id,
@@ -1680,6 +1688,7 @@ class StockTestCase(
                         'currency': company.currency.id,
                         'company': company.id,
                         }])
+            Template.write([template], {'active': False})
             Product.write(products, {'active': False})
 
     @with_transaction()
