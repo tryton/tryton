@@ -40,7 +40,7 @@ def get_base_parser():
         version='%(prog)s ' + __version__)
     parser.add_argument("-c", "--config", dest="configfile", metavar='FILE',
         nargs='+', default=[os.environ.get('TRYTOND_CONFIG')],
-        help='Specify configuration files')
+        help="specify configuration files")
     return parser
 
 
@@ -48,7 +48,7 @@ def get_parser():
     parser = get_base_parser()
 
     parser.add_argument("-v", "--verbose", action='count',
-        dest="verbose", default=0, help="enable verbose mode")
+        dest="verbose", default=0, help="increase verbosity")
     parser.add_argument('--dev', dest='dev', action='store_true',
         help='enable development mode')
 
@@ -61,10 +61,10 @@ def get_parser():
     parser.add_argument(
         "-d", "--database", dest="database_names", nargs='+',
         default=db_names, metavar='DATABASE',
-        help="specify the database name").completer = database_completer
+        help="specify the database names").completer = database_completer
     parser.add_argument(
         "--logconf", dest="logconf", default=logging_config, metavar='FILE',
-        help="logging configuration file (ConfigParser format)")
+        help="set logging configuration file (ConfigParser format)")
 
     return parser
 
@@ -72,7 +72,7 @@ def get_parser():
 def get_parser_daemon():
     parser = get_parser()
     parser.add_argument("--pidfile", dest="pidfile", metavar='FILE',
-        help="file where the server pid will be stored")
+        help="set file to store the process id")
     parser.add_argument(
         "--coroutine", action="store_true", dest="coroutine",
         default=bool(os.environ.get('TRYTOND_COROUTINE', False)),
@@ -85,11 +85,11 @@ def get_parser_worker():
     parser.add_argument("--name", dest='name',
         help="work only on the named queue")
     parser.add_argument("-n", dest='processes', type=int,
-        help="number of processes to use")
+        help="set number of processes to use")
     parser.add_argument("--max", dest='maxtasksperchild', type=int,
-        help="number of tasks a worker process before being replaced")
+        help="set number of tasks a worker process before being replaced")
     parser.add_argument("-t", "--timeout", dest='timeout', default=60,
-        type=int, help="maximum timeout when waiting notification")
+        type=int, help="set maximum timeout when waiting notification")
     return parser
 
 
@@ -106,7 +106,7 @@ def get_parser_admin():
     parser.add_argument(
         "-u", "--update", dest="update", nargs='+', default=[],
         metavar='MODULE',
-        help="activate or update a module").completer = module_completer
+        help="activate or update modules").completer = module_completer
     parser.add_argument(
         "--indexes", dest="indexes", action=argparse.BooleanOptionalAction,
         default=None, help="update indexes")
@@ -114,22 +114,22 @@ def get_parser_admin():
         const="ir", help="update all activated modules")
     parser.add_argument("--activate-dependencies", dest="activatedeps",
         action="store_true",
-        help="Activate missing dependencies of updated modules")
+        help="activate missing dependencies of updated modules")
     parser.add_argument("--email", dest="email", help="set the admin email")
     parser.add_argument("-p", "--password", dest="password",
         action='store_true', help="set the admin password")
     parser.add_argument("--reset-password", dest='reset_password',
         action='store_true', help="reset the admin password")
     parser.add_argument("--test-email", dest='test_email',
-        help="Send a test email to the specified address.")
+        help="send a test email to the specified address")
     parser.add_argument("-m", "--update-modules-list", action="store_true",
-        dest="update_modules_list", help="Update list of tryton modules")
+        dest="update_modules_list", help="update the list of tryton modules")
     parser.add_argument(
         "-l", "--language", dest="languages", nargs='+',
         default=[], metavar='CODE',
-        help="Load language translations").completer = language_completer
+        help="load language translations").completer = language_completer
     parser.add_argument("--hostname", dest="hostname", default=None,
-        help="Limit database listing to the hostname")
+        help="limit database listing to the hostname")
     parser.add_argument("--validate", dest="validate", nargs='*',
         metavar='MODEL', help="validate records of models")
     parser.add_argument("--validate-percentage", dest="validate_percentage",
@@ -154,12 +154,12 @@ def get_parser_console():
         required=True, metavar='DATABASE',
         help="specify the database name").completer = database_completer
     parser.add_argument("--histsize", dest="histsize", type=int, default=500,
-        help="The number of commands to remember in the command history")
+        help="set the number of commands to remember in the command history")
     parser.add_argument("--readonly", dest="readonly", action='store_true',
-        help="Start a readonly transaction")
+        help="start a readonly transaction")
     parser.add_argument(
         "--lock-table", dest="lock_tables", nargs='+', default=[],
-        metavar='TABLE', help="Lock tables")
+        metavar='TABLE', help="lock tables")
     parser.epilog = "To store changes, `transaction.commit()` must be called."
     return parser
 
