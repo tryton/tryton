@@ -1,6 +1,5 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
-from email.header import Header
 
 from sql import Null
 from sql.functions import CharLength
@@ -198,7 +197,7 @@ class GiftCard(ModelSQL, ModelView):
                 'sale.gift_card.email', gift_card, languages)
             set_from_header(msg, from_cfg, from_ or from_cfg)
             msg['To'] = email
-            msg['Subject'] = Header(title, 'utf-8')
+            msg['Subject'] = title
             sendmail_transactional(from_cfg, [email], msg, strict=True)
 
 

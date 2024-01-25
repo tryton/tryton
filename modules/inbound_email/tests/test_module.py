@@ -3,9 +3,7 @@
 
 import json
 import uuid
-from email.mime.application import MIMEApplication
-from email.mime.multipart import MIMEMultipart
-from email.mime.text import MIMEText
+from email.message import EmailMessage
 from unittest.mock import patch
 
 from trytond.pool import Pool
@@ -20,20 +18,17 @@ class InboundEmailTestCase(ModuleTestCase):
     module = 'inbound_email'
 
     def get_message(self):
-        message = MIMEMultipart('mixed')
+        message = EmailMessage()
         message['From'] = "John Doe <john.doe@example.com>"
         message['To'] = (
             "Michael Scott <michael@example.com>, pam@example.com")
         message['Cc'] = 'jim@example.com'
         message['Subject'] = "The office"
 
-        text = MIMEText("Hello", 'plain')
-        message.attach(text)
-        attachment = MIMEApplication(b'bin')
-        attachment.add_header(
-            'Content-Disposition', 'attachment',
+        message.set_content("Hello")
+        message.add_attachment(
+            b'bin', maintype='application', subtype='octet-stream',
             filename='data.bin')
-        message.attach(attachment)
         return message
 
     def get_message_dict(self, headers):
@@ -42,7 +37,7 @@ class InboundEmailTestCase(ModuleTestCase):
             'to': ['michael@example.com', 'pam@example.com'],
             'cc': ['jim@example.com'],
             'subject': 'The office',
-            'text': 'Hello',
+            'text': 'Hello\n',
             'attachments': [{
                     'filename': 'data.bin',
                     'type': 'application/octet-stream',
@@ -169,7 +164,7 @@ class InboundEmailTestCase(ModuleTestCase):
                         'Email': 'jim@example.com',
                         }],
                 'Subject': 'The office',
-                'TextBody': 'Hello',
+                'TextBody': 'Hello\n',
                 'Attachments': [{
                         'Name': 'data.bin',
                         'Content': 'Ymlu',

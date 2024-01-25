@@ -20,7 +20,6 @@ except ImportError:
 import ipaddress
 import warnings
 from ast import literal_eval
-from email.header import Header
 from functools import wraps
 from itertools import groupby
 from operator import attrgetter
@@ -96,7 +95,7 @@ def _send_email(from_, users, email_func):
         msg, title = email_func(user)
         set_from_header(msg, from_cfg, from_ or from_cfg)
         msg['To'] = user.email
-        msg['Subject'] = Header(title, 'utf-8')
+        msg['Subject'] = title
         sendmail_transactional(from_cfg, [user.email], msg)
 
 

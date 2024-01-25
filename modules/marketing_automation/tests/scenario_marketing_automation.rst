@@ -151,7 +151,7 @@ Check email sent::
     1
     >>> from_, to, msg = smtp_calls.call_args[0]
     >>> smtp_calls.reset_mock()
-    >>> msg = msg.get_payload(0).get_payload(decode=True).decode('utf-8')
+    >>> msg = msg.get_body().get_content()
     >>> assertEqual(to, [contact.value])
     >>> assertEqual(re.search(r'Hello, (.*)!', msg).group(1), party.name)
     >>> open_url.shortened_url in msg

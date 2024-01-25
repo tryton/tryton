@@ -85,7 +85,7 @@ class NotificationEmailTestCase(CompanyTestMixin, ModuleTestCase):
         (3, 5, 0) <= sys.version_info < (3, 5, 2), "python bug #25195")
     @with_transaction()
     def test_notification_email(self):
-        "Test email notificiation is sent on trigger"
+        "Test email notification is sent on trigger"
         pool = Pool()
         User = pool.get('res.user')
         Trigger = pool.get('ir.trigger')
@@ -121,9 +121,8 @@ class NotificationEmailTestCase(CompanyTestMixin, ModuleTestCase):
             self.assertEqual(msg['Subject'], 'Notification Email')
             self.assertEqual(msg['To'], 'Administrator <user@example.com>')
             self.assertEqual(msg['Auto-Submitted'], 'auto-generated')
-            self.assertEqual(msg.get_content_type(), 'multipart/alternative')
             self.assertEqual(
-                msg.get_payload(0).get_payload(), 'Hello Michael Scott')
+                msg.get_body().get_content(), 'Hello Michael Scott\n')
 
         email, = Email.search([])
         self.assertEqual(email.recipients, 'Administrator <user@example.com>')
@@ -252,10 +251,8 @@ class NotificationEmailTestCase(CompanyTestMixin, ModuleTestCase):
         self.assertEqual(msg['Subject'], 'Notification Email')
         self.assertEqual(msg['To'], 'Administrator <user@example.com>')
         self.assertEqual(msg.get_content_type(), 'multipart/mixed')
-        self.assertEqual(
-            msg.get_payload(0).get_content_type(), 'multipart/alternative')
 
-        attachment = msg.get_payload(1)
+        attachment = list(msg.iter_attachments())[0]
         self.assertEqual(
             attachment.get_payload(None, True),
             b'attachment for Michael Scott')

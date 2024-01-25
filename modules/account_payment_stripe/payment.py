@@ -5,7 +5,6 @@ import logging
 import urllib.parse
 import uuid
 from decimal import Decimal
-from email.header import Header
 from itertools import groupby
 from operator import attrgetter
 
@@ -391,7 +390,7 @@ class Payment(StripeCustomerMethodMixin, CheckoutMixin, metaclass=PoolMeta):
             'account.payment.stripe.email_checkout', self, languages)
         set_from_header(msg, from_cfg, from_ or from_cfg)
         msg['To'] = ','.join(emails)
-        msg['Subject'] = Header(title, 'utf-8')
+        msg['Subject'] = title
         sendmail_transactional(from_cfg, emails, msg)
 
     def _emails_checkout(self):

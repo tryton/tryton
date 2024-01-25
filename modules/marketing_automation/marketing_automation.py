@@ -5,10 +5,9 @@ import logging
 import time
 import uuid
 from collections import defaultdict
-from email.header import Header
-from email.mime.multipart import MIMEMultipart
-from email.mime.text import MIMEText
-from email.utils import formataddr, getaddresses
+from email.headerregistry import Address
+from email.message import EmailMessage
+from email.utils import getaddresses
 from functools import partial
 from urllib.parse import (
     parse_qsl, quote, urlencode, urljoin, urlsplit, urlunsplit)
@@ -58,12 +57,6 @@ USE_SSL = bool(config.get('ssl', 'certificate'))
 URL_BASE = config.get('marketing', 'automation_base', default=http_host())
 URL_OPEN = urljoin(URL_BASE, '/m/empty.gif')
 logger = logging.getLogger(__name__)
-
-
-def _formataddr(name, email):
-    if name:
-        name = str(Header(name, 'utf-8'))
-    return formataddr((name, convert_ascii_email(email)))
 
 
 def trend_mixin(model_name, field_name):
@@ -659,9 +652,9 @@ class Activity(
         party = record.marketing_party
         contact = party.contact_mechanism_get('email')
         if contact and contact.email:
-            return _formataddr(
+            return Address(
                 contact.name or party.rec_name,
-                contact.email)
+                addr_spec=contact.email)
 
     def execute_send_email(
             self, record_activity, smtpd_datamanager=None, **kwargs):
@@ -736,19 +729,17 @@ class Activity(
 
         from_ = (config.get('marketing', 'email_from')
             or config.get('email', 'from'))
-        msg = MIMEMultipart('alternative')
+        msg = EmailMessage()
         set_from_header(msg, from_, translated.email_from or from_)
         msg['To'] = to
-        msg['Subject'] = Header(title, 'utf-8')
+        msg['Subject'] = title
+        msg.set_content(content, subtype='html')
         if html2text:
             converter = html2text.HTML2Text()
-            part = MIMEText(
-                converter.handle(content), 'plain', _charset='utf-8')
-            msg.attach(part)
-        part = MIMEText(content, 'html', _charset='utf-8')
-        msg.attach(part)
+            content_text = converter.handle(content)
+            msg.add_alternative(content_text, subtype='plain')
 
-        to_addrs = [a for _, a in getaddresses([to])]
+        to_addrs = [convert_ascii_email(a) for _, a in getaddresses([str(to)])]
         if to_addrs:
             sendmail_transactional(
                 from_, to_addrs, msg, datamanager=smtpd_datamanager)

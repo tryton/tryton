@@ -3,10 +3,9 @@
 import random
 import time
 from collections import defaultdict
-from email.header import Header
-from email.mime.multipart import MIMEMultipart
-from email.mime.text import MIMEText
-from email.utils import formataddr, getaddresses
+from email.headerregistry import Address
+from email.message import EmailMessage
+from email.utils import getaddresses
 from functools import lru_cache, partial
 from urllib.parse import (
     parse_qs, parse_qsl, urlencode, urljoin, urlsplit, urlunsplit)
@@ -48,12 +47,6 @@ if not config.get(
 
 URL_BASE = config.get('marketing', 'email_base', default=http_host())
 URL_OPEN = urljoin(URL_BASE, '/m/empty.gif')
-
-
-def _formataddr(name, email):
-    if name:
-        name = str(Header(name, 'utf-8'))
-    return formataddr((name, convert_ascii_email(email)))
 
 
 def _add_params(url, **params):
@@ -323,7 +316,7 @@ class EmailList(DeactivableMixin, ModelSQL, ModelView):
             msg, title = record.get_email_subscribe()
             set_from_header(msg, from_cfg, from_ or from_cfg)
             msg['To'] = record.email
-            msg['Subject'] = Header(title, 'utf-8')
+            msg['Subject'] = title
             sendmail_transactional(
                 from_cfg, [convert_ascii_email(record.email)], msg)
 
@@ -349,7 +342,7 @@ class EmailList(DeactivableMixin, ModelSQL, ModelView):
                 msg, title = record.get_email_unsubscribe()
                 set_from_header(msg, from_cfg, from_ or from_cfg)
                 msg['To'] = record.email
-                msg['Subject'] = Header(title, 'utf-8')
+                msg['Subject'] = title
                 sendmail_transactional(
                     from_cfg, [convert_ascii_email(record.email)], msg)
 
@@ -517,22 +510,20 @@ class Message(Workflow, ModelSQL, ModelView):
                 name = email.party.rec_name if email.party else ''
                 from_cfg = (config.get('marketing', 'email_from')
                     or config.get('email', 'from'))
-                to = _formataddr(name, email.email)
+                to = Address(name, addr_spec=email.email)
 
-                msg = MIMEMultipart('alternative')
+                msg = EmailMessage()
                 set_from_header(msg, from_cfg, message.from_ or from_cfg)
                 msg['To'] = to
-                msg['Subject'] = Header(message.title, 'utf-8')
+                msg['Subject'] = message.title
+                msg.set_content(content, subtype='html')
                 if html2text:
                     converter = html2text.HTML2Text()
-                    part = MIMEText(
-                        converter.handle(content), 'plain', _charset='utf-8')
-                    msg.attach(part)
-                part = MIMEText(content, 'html', _charset='utf-8')
-                msg.attach(part)
+                    content_text = converter.handle(content)
+                    msg.add_alternative(content_text, subtype='plain')
 
                 sendmail_transactional(
-                    from_cfg, getaddresses([to]), msg,
+                    from_cfg, getaddresses([str(to)]), msg,
                     datamanager=smtpd_datamanager)
         if not emails:
             cls.sent(messages)

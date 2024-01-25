@@ -3,12 +3,7 @@
 import heapq
 import mimetypes
 import re
-from email.encoders import encode_base64
-from email.header import Header
-from email.mime.application import MIMEApplication
-from email.mime.multipart import MIMEMultipart
-from email.mime.nonmultipart import MIMENonMultipart
-from email.mime.text import MIMEText
+from email.message import EmailMessage
 from email.utils import formataddr, getaddresses
 
 try:
@@ -109,12 +104,14 @@ class Email(ResourceAccessMixin, ModelSQL, ModelView):
         Model = pool.get(record[0])
         record = Model(record[1])
 
+        msg = EmailMessage()
+
         body_html = HTML_EMAIL % {
             'subject': subject,
             'body': body,
             'signature': user.signature or '',
             }
-        content = MIMEMultipart('alternative')
+        msg.set_content(body_html, subtype='html')
         if html2text:
             body_text = HTML_EMAIL % {
                 'subject': subject,
@@ -125,13 +122,8 @@ class Email(ResourceAccessMixin, ModelSQL, ModelView):
             body_text = converter.handle(body_text)
             if user.signature:
                 body_text += '\n-- \n' + converter.handle(user.signature)
-            part = MIMEText(body_text, 'plain', _charset='utf-8')
-            content.attach(part)
-        part = MIMEText(body_html, 'html', _charset='utf-8')
-        content.attach(part)
+            msg.add_alternative(body_text, subtype='plain')
         if files or reports or attachments:
-            msg = MIMEMultipart('mixed')
-            msg.attach(content)
             if files is None:
                 files = []
             else:
@@ -152,19 +144,15 @@ class Email(ResourceAccessMixin, ModelSQL, ModelView):
                 files += [
                     (a.name, a.data) for a in Attachment.browse(attachments)]
             for name, data in files:
-                mimetype, _ = mimetypes.guess_type(name)
-                if mimetype:
-                    attachment = MIMENonMultipart(*mimetype.split('/'))
-                    attachment.set_payload(data)
-                    encode_base64(attachment)
-                else:
-                    attachment = MIMEApplication(data)
-                attachment.add_header(
-                    'Content-Disposition', 'attachment',
+                ctype, _ = mimetypes.guess_type(name)
+                if not ctype:
+                    ctype = 'application/octet-stream'
+                maintype, subtype = ctype.split('/', 1)
+                msg.add_attachment(
+                    data,
+                    maintype=maintype,
+                    subtype=subtype,
                     filename=('utf-8', '', name))
-                msg.attach(attachment)
-        else:
-            msg = content
         from_ = config.get('email', 'from')
         set_from_header(msg, from_, user.email or from_)
         msg['To'] = ', '.join(
@@ -173,7 +161,7 @@ class Email(ResourceAccessMixin, ModelSQL, ModelView):
         msg['Cc'] = ', '.join(
             formataddr((n, convert_ascii_email(a)))
             for n, a in getaddresses([cc]))
-        msg['Subject'] = Header(subject, 'utf-8')
+        msg['Subject'] = subject
 
         to_addrs = list(filter(None, map(
                     str.strip,

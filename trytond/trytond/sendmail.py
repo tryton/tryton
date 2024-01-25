@@ -4,8 +4,7 @@ import logging
 import smtplib
 import ssl
 import time
-from email.message import Message
-from email.mime.text import MIMEText
+from email.message import EmailMessage, Message
 from email.utils import formatdate
 from urllib.parse import parse_qs, unquote_plus
 
@@ -78,7 +77,8 @@ def sendmail(from_addr, to_addrs, msg, server=None, strict=False):
 
 def send_test_email(to_addrs, server=None):
     from_ = config.get('email', 'from')
-    msg = MIMEText('Success!\nYour email settings work correctly.')
+    msg = EmailMessage()
+    msg.set_content('Success!\nYour email settings work correctly.')
     msg['From'] = from_
     msg['To'] = to_addrs
     msg['Subject'] = 'Tryton test email'

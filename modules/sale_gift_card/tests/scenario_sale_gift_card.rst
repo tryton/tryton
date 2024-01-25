@@ -139,8 +139,7 @@ Check gift cards::
     >>> from_, to, msg = smtp_calls.call_args[0]
     >>> to
     ['customer@example.com']
-    >>> msg = msg.get_payload(0).get_payload(decode=True).decode('utf-8')
-    >>> card.number in msg
+    >>> card.number in msg.get_body().get_content()
     True
 
 Print gift cards::

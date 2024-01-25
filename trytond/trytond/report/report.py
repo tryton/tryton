@@ -12,8 +12,7 @@ import time
 import unicodedata
 import warnings
 import zipfile
-from email.mime.multipart import MIMEMultipart
-from email.mime.text import MIMEText
+from email.message import EmailMessage
 from io import BytesIO
 from itertools import groupby
 
@@ -547,9 +546,9 @@ def get_email(report, record, languages):
         Report_ = pool.get(report_name, type='report')
     converter = None
     title = None
-    msg = MIMEMultipart('alternative')
+    msg = EmailMessage()
     msg.add_header('Content-Language', ', '.join(l.code for l in languages))
-    for language in languages:
+    for alternative, language in enumerate(languages):
         with Transaction().set_context(
                 language=language.code, with_rec_name=False):
             ext, content, _, title = Report_.execute(
@@ -557,14 +556,21 @@ def get_email(report, record, languages):
                     'action_id': report_id,
                     'language': language,
                     })
+        if ext == 'txt':
+            ext = 'plain'
+        if alternative:
+            msg.add_alternative(content, subtype=ext, params={
+                    'Content-Language': language.code,
+                    })
+        else:
+            msg.set_content(content, subtype=ext, params={
+                    'Content-Language': language.code,
+                    })
         if ext == 'html' and html2text:
             if not converter:
                 converter = html2text.HTML2Text()
-            part = MIMEText(
-                converter.handle(content), 'plain', _charset='utf-8')
-            part.add_header('Content-Language', language.code)
-            msg.attach(part)
-        part = MIMEText(content, ext, _charset='utf-8')
-        part.add_header('Content-Language', language.code)
-        msg.attach(part)
+            content_text = converter.handle(content)
+            msg.add_alternative(content_text, subtype='plain', params={
+                    'Content-Language': language.code,
+                    })
     return msg, title
