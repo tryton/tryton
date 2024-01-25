@@ -1,10 +1,7 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 import mimetypes
-from email.encoders import encode_base64
 from email.headerregistry import Address
-from email.mime.application import MIMEApplication
-from email.mime.nonmultipart import MIMENonMultipart
 from email.utils import getaddresses
 
 from genshi.template import TextTemplate
@@ -363,22 +360,3 @@ class EmailAttachment(ModelSQL):
         if isinstance(content, str):
             content = content.encode('utf-8')
         return name, content
-
-    @classmethod
-    def get_mime(cls, report, record, language):
-        name, content = cls.get(report, record, language)
-        mimetype, _ = mimetypes.guess_type(name)
-        if mimetype:
-            msg = MIMENonMultipart(*mimetype.split('/'))
-            msg.set_payload(content)
-            encode_base64(msg)
-        else:
-            msg = MIMEApplication(content)
-        if not isinstance(name, str):
-            name = name.encode('utf-8')
-        if not isinstance(language, str):
-            language = language.encode('utf-8')
-        msg.add_header(
-            'Content-Disposition', 'attachment',
-            filename=('utf-8', language, name))
-        return msg
