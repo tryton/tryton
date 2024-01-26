@@ -3676,7 +3676,7 @@
         el.closest('.modal-body').css('overflow', overflow);
         el.closest('.navbar-collapse.in').css('overflow-y', overflow);
         el.closest('.content-box').css('overflow-y', overflow);
-        el.closest('fieldset.form-group_').css('overflow', overflow);
+        el.parents('fieldset.form-group_').css('overflow', overflow);
         Sao.common.scrollIntoViewIfNeeded(el);
     };
 
