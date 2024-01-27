@@ -156,7 +156,7 @@ def reset_password():
     if not all([host, database, username]):
         return
     try:
-        connection = ServerProxy(hostname, port)
+        connection = ServerProxy(hostname, port, database)
         logger.info('common.db.reset_password(%s, %s)', (username, language))
         connection.common.db.reset_password(username, language)
     except Fault as exception:
