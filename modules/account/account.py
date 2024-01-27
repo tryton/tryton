@@ -2721,7 +2721,9 @@ class IncomeStatementContext(ModelView):
             ('start_date', '<=', (Eval('end_period_cmp'), 'start_date'))
             ],
         states={
-            'invisible': ~Eval('comparison', False),
+            'invisible': (
+                ~Eval('comparison', False)
+                | Eval('from_date_cmp', False) | Eval('to_date_cmp', False)),
             })
     end_period_cmp = fields.Many2One('account.period', 'End Period',
         domain=[
@@ -2729,7 +2731,9 @@ class IncomeStatementContext(ModelView):
             ('start_date', '>=', (Eval('start_period_cmp'), 'start_date')),
             ],
         states={
-            'invisible': ~Eval('comparison', False),
+            'invisible': (
+                ~Eval('comparison', False)
+                | Eval('from_date_cmp', False) | Eval('to_date_cmp', False)),
             })
     from_date_cmp = fields.Date("From Date",
         domain=[
@@ -2738,7 +2742,10 @@ class IncomeStatementContext(ModelView):
                 ()),
             ],
         states={
-            'invisible': ~Eval('comparison', False),
+            'invisible': (
+                ~Eval('comparison', False)
+                | Eval('start_period_cmp', False)
+                | Eval('end_period_cmp', False)),
             })
     to_date_cmp = fields.Date("To Date",
         domain=[
@@ -2747,7 +2754,10 @@ class IncomeStatementContext(ModelView):
                 ()),
             ],
         states={
-            'invisible': ~Eval('comparison', False),
+            'invisible': (
+                ~Eval('comparison', False)
+                | Eval('start_period_cmp', False)
+                | Eval('end_period_cmp', False)),
             })
 
     @classmethod
@@ -2780,6 +2790,8 @@ class IncomeStatementContext(ModelView):
         if not self.company:
             self.fiscalyear = None
             self.on_change_fiscalyear()
+            self.fiscalyear_cmp = None
+            self.on_change_fiscalyear_cmp()
         elif not self.fiscalyear or self.fiscalyear.company != self.company:
             try:
                 self.fiscalyear = FiscalYear.find(
@@ -2816,6 +2828,35 @@ class IncomeStatementContext(ModelView):
     def on_change_to_date(self):
         if self.to_date:
             self.start_period = self.end_period = None
+
+    @fields.depends('fiscalyear_cmp', 'start_period_cmp', 'end_period_cmp')
+    def on_change_fiscalyear_cmp(self):
+        if (self.start_period_cmp
+                and self.start_period_cmp.fiscalyear != self.fiscalyear):
+            self.start_period_cmp = None
+        if (self.end_period_cmp
+                and self.end_period_cmp.fiscalyear != self.fiscalyear):
+            self.end_period_cmp = None
+
+    @fields.depends('start_period_cmp')
+    def on_change_start_period_cmp(self):
+        if self.start_period_cmp:
+            self.from_date_cmp = self.to_date_cmp = None
+
+    @fields.depends('end_period_cmp')
+    def on_change_end_period_cmp(self):
+        if self.end_period_cmp:
+            self.from_date_cmp = self.to_date_cmp = None
+
+    @fields.depends('from_date_cmp')
+    def on_change_from_date_cmp(self):
+        if self.from_date_cmp:
+            self.start_period_cmp = self.end_period_cmp = None
+
+    @fields.depends('to_date_cmp')
+    def on_change_to_date_cmp(self):
+        if self.to_date_cmp:
+            self.start_period_cmp = self.end_period_cmp = None
 
     @classmethod
     def view_attributes(cls):
