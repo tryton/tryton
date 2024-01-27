@@ -324,8 +324,8 @@ class Report(URLMixin, PoolBase):
             loader = relatorio.reporting.MIMETemplateLoader()
             klass = loader.factories[loader.get_type(mimetype)]
             template = klass(BytesIO(report.report_content))
-            cls._callback_loader(report, template)
             report.set_template_cached(template)
+        cls._callback_loader(report, template)
         data = template.generate(**report_context).render()
         if hasattr(data, 'getvalue'):
             data = data.getvalue()
