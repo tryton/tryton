@@ -157,12 +157,12 @@ class Invoice(Model):
     @has_goods_assets
     def ship_to_trade_party(self):
         if self.invoice.type == 'out':
-            if getattr(self.invoice, 'sales'):
+            if getattr(self.invoice, 'sales', None):
                 sale = self.invoice.sales[0]  # XXX
                 if sale.shipment_party != self.buyer_trade_party:
                     return sale.shipment_party
         else:
-            if self.invoice.purchases:
+            if getattr(self.invoice, 'purchases', None):
                 purchase = self.invoice.purchases[0]  # XXX
                 address = purchase.warehouse.address
                 if (address and address.party != self.buyer_trade_party):
@@ -172,12 +172,12 @@ class Invoice(Model):
     @has_goods_assets
     def ship_to_trade_address(self):
         if self.invoice.type == 'out':
-            if getattr(self.invoice, 'sales'):
+            if getattr(self.invoice, 'sales', None):
                 sale = self.invoice.sales[0]  # XXX
                 if sale.shipment_party != self.buyer_trade_party:
                     return sale.shipment_address
         else:
-            if getattr(self.invoice, 'purchases'):
+            if getattr(self.invoice, 'purchases', None):
                 purchase = self.invoice.purchases[0]  # XXX
                 address = purchase.warehouse.address
                 if (address and address.party != self.buyer_trade_party):
@@ -187,7 +187,7 @@ class Invoice(Model):
     @has_goods_assets
     def ship_from_trade_party(self):
         if self.invoice.type == 'out':
-            if getattr(self.invoice, 'sales'):
+            if getattr(self.invoice, 'sales', None):
                 sale = self.invoice.sales[0]  # XXX
                 address = sale.warehouse.address
                 if address and address.party != self.seller_trade_party:
@@ -197,7 +197,7 @@ class Invoice(Model):
     @has_goods_assets
     def ship_from_trade_address(self):
         if self.invoice.type == 'out':
-            if getattr(self.invoice, 'sales'):
+            if getattr(self.invoice, 'sales', None):
                 sale = self.invoice.sales[0]  # XXX
                 address = sale.warehouse.address
                 if address and address.party != self.seller_trade_party:
