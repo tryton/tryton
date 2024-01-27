@@ -2228,9 +2228,18 @@ class GeneralLedgerAccountContext(ModelView):
 
     @fields.depends('company', 'fiscalyear', methods=['on_change_fiscalyear'])
     def on_change_company(self):
-        if self.fiscalyear and self.fiscalyear.company != self.company:
+        pool = Pool()
+        FiscalYear = pool.get('account.fiscalyear')
+        if not self.company:
             self.fiscalyear = None
             self.on_change_fiscalyear()
+        elif not self.fiscalyear or self.fiscalyear.company != self.company:
+            try:
+                self.fiscalyear = FiscalYear.find(
+                    self.company, test_state=False)
+                self.on_change_fiscalyear()
+            except FiscalYearNotFoundError:
+                pass
 
     @fields.depends('fiscalyear', 'start_period', 'end_period')
     def on_change_fiscalyear(self):
@@ -2766,9 +2775,18 @@ class IncomeStatementContext(ModelView):
 
     @fields.depends('company', 'fiscalyear', methods=['on_change_fiscalyear'])
     def on_change_company(self):
-        if self.fiscalyear and self.fiscalyear.company != self.company:
+        pool = Pool()
+        FiscalYear = pool.get('account.fiscalyear')
+        if not self.company:
             self.fiscalyear = None
             self.on_change_fiscalyear()
+        elif not self.fiscalyear or self.fiscalyear.company != self.company:
+            try:
+                self.fiscalyear = FiscalYear.find(
+                    self.company, test_state=False)
+                self.on_change_fiscalyear()
+            except FiscalYearNotFoundError:
+                pass
 
     @fields.depends('fiscalyear', 'start_period', 'end_period')
     def on_change_fiscalyear(self):
