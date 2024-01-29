@@ -572,11 +572,11 @@ class ModelAccess(DeactivableMixin, ModelSQL, ModelView):
             Model = pool.get(model)
             if callable(getattr(Model, 'table_query', None)):
                 maccess = access[model] = default_table_query.copy()
-                if Model.create != ModelSQL.create:
+                if Model.create.__func__ != ModelSQL.create.__func__:
                     maccess['create'] = default['create']
-                if Model.write != ModelSQL.write:
+                if Model.write.__func__ != ModelSQL.write.__func__:
                     maccess['write'] = default['write']
-                if Model.delete != ModelSQL.delete:
+                if Model.delete.__func__ != ModelSQL.delete.__func__:
                     maccess['delete'] = default['delete']
             elif issubclass(Model, ModelSingleton):
                 access[model] = default_singleton
