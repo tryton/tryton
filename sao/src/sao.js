@@ -1215,58 +1215,68 @@ var Sao = {
         }
     }
 
+    var _help_dialog = null;
+
     function help_dialog() {
-        var dialog = new Sao.Dialog(
-            Sao.i18n.gettext("Help"), 'help-dialog', 'md', true,
-            Sao.__version__);
-        jQuery('<button>', {
-            'class': 'close',
-            'data-dismiss': 'modal',
-            'aria-label': Sao.i18n.gettext("Close"),
-        }).append(jQuery('<span>', {
-            'aria-hidden': true,
-        }).append('&times;')).prependTo(dialog.header);
-        jQuery('<a/>', {
-            'class': 'btn btn-link',
-            'href': Sao.config.doc_url,
-            'target': '_blank',
-        }).text(Sao.i18n.gettext("Documentation..."))
-            .appendTo(dialog.footer);
-        jQuery('<h4/>')
-            .text(Sao.i18n.gettext("Keyboard shortcuts"))
-            .appendTo(dialog.body);
-        var row = jQuery('<div/>', {
-            'class': 'row'
-        }).appendTo(dialog.body);
-        var global_shortcuts_dl = jQuery('<dl/>', {
-            'class': 'dl-horizontal col-md-6'
-        }).append(jQuery('<h5/>')
-            .text(Sao.i18n.gettext('Global shortcuts')))
-            .appendTo(row);
-        var tab_shortcuts_dl = jQuery('<dl/>', {
-            'class': 'dl-horizontal col-md-6'
-        }).append(jQuery('<h5/>')
-            .text(Sao.i18n.gettext('Tab shortcuts')))
-            .appendTo(row);
+        Mousetrap.pause();
+        var dialog;
+        if (!_help_dialog) {
+            dialog = new Sao.Dialog(
+                Sao.i18n.gettext("Help"), 'help-dialog', 'md', true,
+                Sao.__version__);
+            jQuery('<button>', {
+                'class': 'close',
+                'data-dismiss': 'modal',
+                'aria-label': Sao.i18n.gettext("Close"),
+            }).append(jQuery('<span>', {
+                'aria-hidden': true,
+            }).append('&times;')).prependTo(dialog.header);
+            jQuery('<a/>', {
+                'class': 'btn btn-link',
+                'href': Sao.config.doc_url,
+                'target': '_blank',
+            }).text(Sao.i18n.gettext("Documentation..."))
+                .appendTo(dialog.footer);
+            jQuery('<h4/>')
+                .text(Sao.i18n.gettext("Keyboard shortcuts"))
+                .appendTo(dialog.body);
+            var row = jQuery('<div/>', {
+                'class': 'row'
+            }).appendTo(dialog.body);
+            var global_shortcuts_dl = jQuery('<dl/>', {
+                'class': 'dl-horizontal col-md-6'
+            }).append(jQuery('<h5/>')
+                .text(Sao.i18n.gettext('Global shortcuts')))
+                .appendTo(row);
+            var tab_shortcuts_dl = jQuery('<dl/>', {
+                'class': 'dl-horizontal col-md-6'
+            }).append(jQuery('<h5/>')
+                .text(Sao.i18n.gettext('Tab shortcuts')))
+                .appendTo(row);
 
-        for (const definition of shortcuts_defs()) {
-            var dt = jQuery('<dt/>').text(definition.label);
-            var dd = jQuery('<dd/>').append(jQuery('<kbd>')
-                .text(definition.shortcut));
-            var dest_dl;
-            if (definition.id) {
-                dest_dl = tab_shortcuts_dl;
-            } else {
-                dest_dl = global_shortcuts_dl;
+            for (const definition of shortcuts_defs()) {
+                var dt = jQuery('<dt/>').text(definition.label);
+                var dd = jQuery('<dd/>').append(jQuery('<kbd>')
+                    .text(definition.shortcut));
+                var dest_dl;
+                if (definition.id) {
+                    dest_dl = tab_shortcuts_dl;
+                } else {
+                    dest_dl = global_shortcuts_dl;
+                }
+                dt.appendTo(dest_dl);
+                dd.appendTo(dest_dl);
             }
-            dt.appendTo(dest_dl);
-            dd.appendTo(dest_dl);
+            dialog.modal.on('hidden.bs.modal', function() {
+                jQuery(this).remove();
+            });
+            _help_dialog = dialog;
+        } else {
+            dialog = _help_dialog;
         }
-        dialog.modal.on('hidden.bs.modal', function() {
-            jQuery(this).remove();
-        });
 
-        dialog.modal.modal('show');
+        dialog.modal.modal('toggle');
+        dialog.modal.one('shown.bs.modal hidden.bs.modal', Mousetrap.unpause);
         return false;
     }
 
