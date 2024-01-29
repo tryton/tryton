@@ -2080,7 +2080,8 @@
 
             Sao.View.Tree.RowEditable._super.select_row.call(this, event_);
 
-            if (!event_.shiftKey && !(event_.ctrlKey || event_.metaKey)) {
+            if (!event_.shiftKey && !(event_.ctrlKey || event_.metaKey) &&
+                (this.record === current_record)) {
                 this.tree.edit_row(this);
             }
         },
