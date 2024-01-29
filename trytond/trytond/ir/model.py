@@ -630,11 +630,18 @@ class ModelAccess(DeactivableMixin, ModelSQL, ModelView):
                 or (raise_exception and not transaction.check_access)):
             return True
 
+        User = pool.get('res.user')
+        Group = pool.get('res.group')
+
         access = cls.get_access([model_name])[model_name][mode]
         if not access and access is not None:
             if raise_exception:
-                raise AccessError(gettext(
-                        'ir.msg_access_rule_error', **Model.__names__()))
+                groups = Group.browse(User.get_groups())
+                raise AccessError(
+                    gettext('ir.msg_access_rule_error', **Model.__names__()),
+                    gettext(
+                        'ir.msg_context_groups',
+                        groups=', '.join(g.rec_name for g in groups)))
             else:
                 return False
         return True
@@ -821,6 +828,9 @@ class ModelFieldAccess(DeactivableMixin, ModelSQL, ModelView):
                 return dict((x, True) for x in fields)
             return True
 
+        User = pool.get('res.user')
+        Group = pool.get('res.group')
+
         accesses = dict((f, a[mode])
             for f, a in cls.get_access([model_name])[model_name].items())
         if access:
@@ -828,9 +838,14 @@ class ModelFieldAccess(DeactivableMixin, ModelSQL, ModelView):
         for field in fields:
             if not accesses.get(field, True):
                 if raise_exception:
+                    groups = Group.browse(User.get_groups())
                     raise AccessError(
-                        gettext('ir.msg_access_rule_field_error',
-                            **Model.__names__(field)))
+                        gettext(
+                            'ir.msg_access_rule_field_error',
+                            **Model.__names__(field)),
+                        gettext(
+                            'ir.msg_context_groups',
+                            groups=', '.join(g.rec_name for g in groups)))
                 else:
                     return False
         return True

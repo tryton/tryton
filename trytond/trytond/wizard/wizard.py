@@ -251,6 +251,7 @@ class Wizard(URLMixin, PoolBase):
         ModelAccess = pool.get('ir.model.access')
         ActionWizard = pool.get('ir.action.wizard')
         User = pool.get('res.user')
+        Group = pool.get('res.group')
         context = Transaction().context
 
         if Transaction().user == 0:
@@ -265,18 +266,28 @@ class Wizard(URLMixin, PoolBase):
             models = ActionWizard.get_models(
                 cls.__name__, action_id=context.get('action_id'))
             if model and models and model not in models:
-                raise AccessError(gettext(
+                groups = Group.browse(User.get_groups())
+                raise AccessError(
+                    gettext(
                         'ir.msg_access_wizard_model_error',
                         wizard=cls.__name__,
-                        model=model))
+                        model=model),
+                    gettext(
+                        'ir.msg_context_groups',
+                        groups=', '.join(g.rec_name for g in groups)))
             groups = set(User.get_groups())
             wizard_groups = ActionWizard.get_groups(cls.__name__,
                 action_id=context.get('action_id'))
             if wizard_groups:
                 if not groups & wizard_groups:
-                    raise AccessError(gettext(
+                    groups = Group.browse(User.get_groups())
+                    raise AccessError(
+                        gettext(
                             'ir.msg_access_wizard_error',
-                            name=cls.__name__))
+                            name=cls.__name__),
+                        gettext(
+                            'ir.msg_context_groups',
+                            groups=', '.join(g.rec_name for g in groups)))
             elif model and model != 'ir.ui.menu':
                 if (not callable(getattr(Model, 'table_query', None))
                         or Model.write.__func__ != ModelSQL.write.__func__):
