@@ -960,13 +960,15 @@ class Translation(
                     if (model in fs_id2prop
                             and res_id in fs_id2prop[model]):
                         res_id, noupdate = fs_id2prop[model][res_id]
+                    elif res_id:
+                        continue
 
                     if res_id:
                         try:
                             res_id = int(res_id)
                         except ValueError:
-                            res_id = None
-                    if not res_id:
+                            continue
+                    else:
                         res_id = -1
 
                     translation.res_id = res_id
