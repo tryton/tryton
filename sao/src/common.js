@@ -1577,6 +1577,7 @@
                 'multiselection': complete_selection,
                 'reference': complete_reference,
                 'datetime': complete_datetime,
+                'timestamp': complete_datetime,
                 'date': complete_date,
                 'time': complete_time
             };
@@ -1854,8 +1855,10 @@
                             operator = '=';
                         }
                     }
-                    if (~['integer', 'float', 'numeric', 'datetime', 'date',
-                            'time'].indexOf(field.type)) {
+                    if (~[
+                        'integer', 'float', 'numeric',
+                        'datetime', 'timestamp', 'date',
+                        'time'].indexOf(field.type)) {
                         if ((typeof value == 'string') && value.contains('..')) {
                             var values = value.split('..', 2);
                             var lvalue = this.convert_value(field, values[0], this.context);
@@ -2087,6 +2090,7 @@
                     }
                 }
             };
+            converts.timestamp = converts.datetime;
             var func = converts[field.type];
             if (func) {
                 return func();
@@ -2203,6 +2207,7 @@
                     }
                 }
             };
+            converts.timestamp = converts.datetime;
             if (value instanceof Array) {
                 return value.map(v => this.format_value(field, v)).join(';');
             } else {
