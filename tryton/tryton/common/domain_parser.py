@@ -296,6 +296,7 @@ def convert_value(field, value, context=None):
         'multiselection': convert_selection,
         'reference': convert_selection,
         'datetime': convert_datetime,
+        'timestamp': convert_datetime,
         'date': convert_date,
         'time': convert_time,
         'timedelta': convert_timedelta,
@@ -400,6 +401,7 @@ def format_value(field, value, target=None, context=None):
         'multiselection': format_selection,
         'reference': format_reference,
         'datetime': format_datetime,
+        'timestamp': format_datetime,
         'date': format_date,
         'time': format_time,
         'timedelta': format_timedelta,
@@ -463,6 +465,7 @@ def complete_value(field, value):
         'multiselection': complete_selection,
         'reference': complete_reference,
         'datetime': complete_datetime,
+        'timestamp': complete_datetime,
         'date': complete_date,
         'time': complete_time,
         }
@@ -850,8 +853,9 @@ class DomainParser(object):
                             operator = '!='
                         else:
                             operator = '='
-                    if field['type'] in ('integer', 'float', 'numeric',
-                            'datetime', 'date', 'time'):
+                    if field['type'] in {
+                            'integer', 'float', 'numeric',
+                            'datetime', 'timestamp', 'date', 'time'}:
                         if isinstance(value, str) and '..' in value:
                             lvalue, rvalue = value.split('..', 1)
                             lvalue = convert_value(field, lvalue, self.context)
