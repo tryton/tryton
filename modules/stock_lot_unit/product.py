@@ -16,7 +16,7 @@ class Template(metaclass=PoolMeta):
         states={
             'invisible': Eval('type') == 'service',
             },
-        help="The default unit of measurer for lot.")
+        help="The default unit of measure for lot.")
 
     @classmethod
     def __register__(cls, module_name):
