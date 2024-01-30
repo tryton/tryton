@@ -6,7 +6,8 @@ from collections import defaultdict
 from sql.conditionals import Coalesce
 
 from trytond.i18n import lazy_gettext
-from trytond.model import Index, ModelSQL, ModelStorage, ModelView, fields
+from trytond.model import (
+    Index, Model, ModelSQL, ModelStorage, ModelView, fields)
 from trytond.pool import Pool
 from trytond.pyson import Eval
 from trytond.tools import grouped_slice
@@ -80,13 +81,13 @@ class ResourceAccessMixin(ModelStorage):
             with without_check_access():
                 records = cls.browse(records)
             for record in records:
-                if record.resource:
+                if isinstance(record.resource, Model):
                     resources[record.resource.__class__].add(
                         record.resource.id)
 
-            for Model, ids in resources.items():
+            for RModel, ids in resources.items():
                 for sub_ids in grouped_slice(ids):
-                    allowed.update(Model.search([
+                    allowed.update(RModel.search([
                                 ('id', 'in', list(sub_ids)),
                                 ]))
 
