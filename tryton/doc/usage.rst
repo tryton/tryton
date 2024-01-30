@@ -446,8 +446,8 @@ A query is composed of search clauses.
 A clause is composed of a field name (with ``:`` at the end), an operator and a
 value.
 The field name is optional and defaults to the record name.
-The operator is also optional and defaults to ``like`` or ``equal`` depending
-on the type of the field.
+The operator is also optional and defaults to ``ilike`` or ``=`` depending on
+the type of the field.
 The default operator is ``=`` except for fields of type ``char``, ``text`` and
 ``many2one`` which is ``ilike``.
 
@@ -479,10 +479,6 @@ The following operators can be used:
 
    For example: ``Name: != Dwight``
 
-.. note::
-   The ``ilike`` operator is never explicit and ``%`` is appended to the value
-   to make it behaves like ``starts with``.
-
 Values
 ++++++
 
@@ -506,11 +502,16 @@ There are two wildcards:
    * ``%``: matches any string of zero or more characters.
    * ``_``: matches any single character.
 
-It is possible to escape special characters in values by using double quotes.
+It is possible to escape special characters in values by using double quotes or
+prepending ``\\``.
 
    For example: ``Name: "Michael:Scott"``
 
    Here it will search with the value ``Michael:Scott``.
+
+   Or: ``Name: Michael\\_Scott``
+
+   Here it will search with the value ``Michael\_Scott``.
 
 Clause composition
 ++++++++++++++++++
