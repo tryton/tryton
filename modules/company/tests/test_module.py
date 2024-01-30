@@ -1,6 +1,7 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 
+import datetime as dt
 from collections import defaultdict
 from contextlib import contextmanager
 
@@ -328,6 +329,87 @@ class CompanyTestCase(
 
         self.assertEqual(
             company.footer_used, "Dunder Mifflin - company@example.com")
+
+    @with_transaction()
+    def test_employee_active_no_dates(self):
+        "Test employee active with dates"
+        pool = Pool()
+        Employee = pool.get('company.employee')
+
+        company = create_company()
+        employee = create_employee(company, "Jim Halper")
+
+        self.assertEqual(employee.active, True)
+        self.assertEqual(Employee.search([
+                    ('active', '=', True),
+                    ]), [employee])
+        self.assertEqual(Employee.search([
+                    ('active', '!=', False),
+                    ]), [employee])
+        self.assertEqual(Employee.search([
+                    ('active', '=', False),
+                    ]), [])
+        self.assertEqual(Employee.search([
+                    ('active', '!=', True),
+                    ]), [])
+
+    @with_transaction()
+    def test_employee_active_start_date(self):
+        "Test employee active with start date"
+        pool = Pool()
+        Employee = pool.get('company.employee')
+
+        company = create_company()
+        employee = create_employee(company, "Jim Halper")
+        employee.start_date = dt.date.today()
+        employee.save()
+
+        with Transaction().set_context(date=employee.start_date):
+            self.assertEqual(Employee(employee).active, True)
+            self.assertEqual(Employee.search([
+                        ('active', '=', True),
+                        ]), [employee])
+        with Transaction().set_context(
+                date=employee.start_date - dt.timedelta(days=1)):
+            self.assertEqual(Employee(employee).active, False)
+            self.assertEqual(Employee.search([
+                        ('active', '=', True),
+                        ]), [])
+        with Transaction().set_context(
+                date=employee.start_date + dt.timedelta(days=1)):
+            self.assertEqual(Employee(employee).active, True)
+            self.assertEqual(Employee.search([
+                        ('active', '=', True),
+                        ]), [employee])
+
+    @with_transaction()
+    def test_employee_active_end_date(self):
+        "Test employee active with end date"
+        pool = Pool()
+        Employee = pool.get('company.employee')
+
+        company = create_company()
+        employee = create_employee(company, "Jim Halper")
+        employee.end_date = dt.date.today()
+        employee.save()
+
+        with Transaction().set_context(date=employee.end_date):
+            self.assertEqual(Employee(employee).active, True)
+            self.assertEqual(Employee.search([
+                        ('active', '=', True),
+                        ]), [employee])
+        with Transaction().set_context(
+                date=employee.end_date - dt.timedelta(days=1)):
+            self.assertEqual(Employee(employee).active, True)
+            self.assertEqual(Employee.search([
+                        ('active', '=', True),
+                        ]), [employee])
+        with Transaction().set_context(
+                date=employee.end_date + dt.timedelta(days=1)):
+            self.assertEqual(Employee(employee).active, False)
+            self.assertEqual(Employee.search([
+                        ('active', '=', True),
+                        ]), [])
 
 
 del ModuleTestCase

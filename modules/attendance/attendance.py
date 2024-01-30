@@ -34,6 +34,9 @@ class Line(ModelSQL, ModelView):
     company = fields.Many2One('company.company', "Company", required=True,
         help="The company which the employee attended.")
     employee = fields.Many2One('company.employee', "Employee", required=True,
+        search_context={
+            'active_test': False,
+            },
         domain=[
             ('company', '=', Eval('company')),
             ['OR',
