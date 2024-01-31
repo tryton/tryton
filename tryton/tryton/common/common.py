@@ -799,7 +799,7 @@ class ConcurrencyDialog(UniqueDialog):
         dialog = Gtk.MessageDialog(
             transient_for=parent, modal=True, destroy_with_parent=True,
             message_type=Gtk.MessageType.QUESTION,
-            buttons=Gtk.ButtonsType.NONE, text=_('Concurrency Exception'))
+            buttons=Gtk.ButtonsType.NONE, text=_("Concurrency Warning"))
         dialog.format_secondary_text(
             _('This record has been modified while you were editing it.'))
         cancel_button = dialog.add_button(

@@ -3284,12 +3284,7 @@
             dialog.body.append(jQuery('<div/>', {
                 'class': 'alert alert-info',
                 role: 'alert'
-            }).append(Sao.common.ICONFACTORY.get_icon_img(icon, {
-                'aria-hidden': true,
-            })).append(jQuery('<span/>', {
-                'class': 'sr-only'
-            }).text(Sao.i18n.gettext('Message: '))
-            ).append(jQuery('<span/>')
+            }).append(jQuery('<span/>')
                 .text(message)
                 .css('white-space', 'pre-wrap')));
             jQuery('<button/>', {
@@ -3318,12 +3313,7 @@
             var content = jQuery('<div/>', {
                 'class': 'alert alert-warning',
                 role: 'alert'
-            }).append(Sao.common.ICONFACTORY.get_icon_img('tryton-warning', {
-                'aria-hidden': true,
-            })).append(jQuery('<span/>', {
-                'class': 'sr-only'
-            }).text(Sao.i18n.gettext('Warning: '))
-            ).append(jQuery('<h4/>')
+            }).append(jQuery('<h4/>')
                 .text(title)
                 .css('white-space', 'pre-wrap'));
             if (message) {
@@ -3396,12 +3386,7 @@
             dialog.body.append(jQuery('<div/>', {
                 'class': 'alert alert-info',
                 role: 'alert'
-            }).append(Sao.common.ICONFACTORY.get_icon_img('tryton-info', {
-                'aria-hidden': true,
-            })).append(jQuery('<span/>', {
-                'class': 'sr-only'
-            }).text(Sao.i18n.gettext('Confirmation: '))
-            ).append(jQuery('<span/>')
+            }).append(jQuery('<span/>')
                 .text(message)
                 .css('white-space', 'pre-wrap')));
             return dialog;
@@ -3516,17 +3501,12 @@
         build_dialog: function(model, record_id, context, prm) {
             var dialog = Sao.common.ConcurrencyDialog._super.build_dialog.call(
                 this);
-            dialog.add_title(Sao.i18n.gettext('Concurrency Exception'));
+            dialog.add_title(Sao.i18n.gettext("Concurrency Warning"));
             dialog.body.append(jQuery('<div/>', {
                 'class': 'alert alert-info',
                 role: 'alert'
             }).append(jQuery('<p/>')
-                .append(Sao.common.ICONFACTORY.get_icon_img('tryton-info', {
-                    'aria-hidden': true,
-                })).append(jQuery('<span/>', {
-                    'class': 'sr-only'
-                }).text(Sao.i18n.gettext('Write Concurrency Warning: '))
-                ).text(Sao.i18n.gettext('This record has been modified ' +
+                .text(Sao.i18n.gettext('This record has been modified ' +
                 'while you were editing it.')))
                 .append(jQuery('<p/>').text(Sao.i18n.gettext('Choose:')))
                 .append(jQuery('<ul/>')
@@ -3592,12 +3572,7 @@
             dialog.body.append(jQuery('<div/>', {
                 'class': 'alert alert-danger',
                 role: 'alert'
-            }).append(Sao.common.ICONFACTORY.get_icon_img('tryton-error', {
-                'aria-hidden': true,
-            })).append(jQuery('<span/>', {
-                'class': 'sr-only'
-            }).text(Sao.i18n.gettext('Warning: '))
-            ).append(jQuery('<p/>')
+            }).append(jQuery('<p/>')
                 .append(jQuery('<pre/>')
                     .text(details)))
                 .append(jQuery('<p/>')
