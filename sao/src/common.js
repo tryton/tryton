@@ -3232,11 +3232,12 @@
     Sao.common.ICONFACTORY = new Sao.common.IconFactory();
 
     Sao.common.UniqueDialog = Sao.class_(Object, {
+        size: undefined,
         init: function() {
             this.running = false;
         },
         build_dialog: function() {
-            var dialog = new Sao.Dialog('', this.class_, undefined, false);
+            var dialog = new Sao.Dialog('', this.class_, this.size, false);
             return dialog;
         },
         run: function() {
@@ -3310,6 +3311,7 @@
 
     Sao.common.WarningDialog = Sao.class_(Sao.common.UniqueDialog, {
         class_: 'warning-dialog',
+        size: 'md',
         build_dialog: function(message, title, prm) {
             var dialog = Sao.common.WarningDialog._super.build_dialog.call(
                 this);
@@ -3345,6 +3347,7 @@
 
     Sao.common.UserWarningDialog = Sao.class_(Sao.common.WarningDialog, {
         class_: 'user-warning-dialog',
+        size: 'md',
         build_dialog: function(message, title, prm) {
             var dialog = Sao.common.UserWarningDialog._super.build_dialog.call(
                 this, message, title, prm);
@@ -3509,11 +3512,10 @@
 
     Sao.common.ConcurrencyDialog = Sao.class_(Sao.common.UniqueDialog, {
         class_: 'ask-dialog',
+        size: 'md',
         build_dialog: function(model, record_id, context, prm) {
             var dialog = Sao.common.ConcurrencyDialog._super.build_dialog.call(
                 this);
-            dialog.modal.find('.modal-dialog'
-                ).removeClass('modal-sm').addClass('modal-lg');
             dialog.add_title(Sao.i18n.gettext('Concurrency Exception'));
             dialog.body.append(jQuery('<div/>', {
                 'class': 'alert alert-info',
@@ -3582,11 +3584,10 @@
 
     Sao.common.ErrorDialog = Sao.class_(Sao.common.UniqueDialog, {
         class_: 'error-dialog',
+        size: 'lg',
         build_dialog: function(title, details, prm) {
             var dialog = Sao.common.ConcurrencyDialog._super.build_dialog.call(
                 this);
-            dialog.modal.find('.modal-dialog'
-                ).removeClass('modal-sm').addClass('modal-lg');
             dialog.add_title(Sao.i18n.gettext('Application Error'));
             dialog.body.append(jQuery('<div/>', {
                 'class': 'alert alert-danger',
