@@ -7,7 +7,7 @@ from copy import deepcopy
 from decimal import Decimal
 
 from simpleeval import InvalidExpression, simple_eval
-from sql import Literal, Select, Window, With
+from sql import Literal, Null, Select, Window, With
 from sql.aggregate import Max, Sum
 from sql.conditionals import Case, Coalesce
 from sql.functions import CurrentTimestamp
@@ -19,7 +19,7 @@ from trytond.model.exceptions import AccessError
 from trytond.modules.product import price_digits, round_price
 from trytond.pool import Pool, PoolMeta
 from trytond.pyson import Bool, Eval, If, PYSONEncoder
-from trytond.tools import decistmt, grouped_slice
+from trytond.tools import decistmt, grouped_slice, reduce_ids
 from trytond.tools import timezone as tz
 from trytond.transaction import Transaction, without_check_access
 from trytond.wizard import (
@@ -656,7 +656,10 @@ class ProductQuantitiesByWarehouse(ModelSQL, ModelView):
                 product_template = [product_template]
             product = Product.__table__()
             from_ = move.join(product, condition=move.product == product.id)
-            product_clause = product.template.in_(product_template or [-1])
+            if product_template:
+                product_clause = reduce_ids(product.template, product_template)
+            else:
+                product_clause = product.template == Null
             product_column = Concat('product.template,', product.template)
             products = [('product.template', i) for i in product_template]
         else:
@@ -665,7 +668,10 @@ class ProductQuantitiesByWarehouse(ModelSQL, ModelView):
                 product = []
             if isinstance(product, int):
                 product = [product]
-            product_clause = move.product.in_(product or [-1])
+            if product:
+                product_clause = reduce_ids(move.product, product)
+            else:
+                product_clause = move.product == Null
             product_column = Concat('product.product,', move.product)
             products = [('product.product', i) for i in product]
 
@@ -915,7 +921,10 @@ class ProductQuantitiesByWarehouseMove(ModelSQL, ModelView):
                 product_template = [product_template]
             product = Product.__table__()
             from_ = move.join(product, condition=move.product == product.id)
-            product_clause = product.template.in_(product_template or [-1])
+            if product_template:
+                product_clause = reduce_ids(product.template, product_template)
+            else:
+                product_clause = product.template == Null
             product_column = Concat('product.template,', product.template)
         else:
             product = context.get('product', -1)
@@ -923,7 +932,10 @@ class ProductQuantitiesByWarehouseMove(ModelSQL, ModelView):
                 product = -1
             if isinstance(product, int):
                 product = [product]
-            product_clause = move.product.in_(product or [-1])
+            if product:
+                product_clause = reduce_ids(move.product, product)
+            else:
+                product_clause = move.product == Null
             product_column = Concat('product.product,', move.product)
 
         if 'warehouse' in context:
