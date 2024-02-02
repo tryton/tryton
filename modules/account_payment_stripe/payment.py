@@ -1708,6 +1708,8 @@ class Customer(CheckoutMixin, DeactivableMixin, ModelSQL, ModelView):
                 name += ' ****' + card.last4
             if card.exp_month and card.exp_year:
                 name += ' %s/%s' % (card.exp_month, card.exp_year)
+        elif payment_method.type == 'sepa_debit':
+            name = '****' + payment_method.sepa_debit.last4
         return name
 
     @property
