@@ -1655,8 +1655,7 @@ class Customer(CheckoutMixin, DeactivableMixin, ModelSQL, ModelView):
                 payment_methods = stripe.PaymentMethod.list(
                     api_key=self.stripe_account.secret_key,
                     stripe_version=STRIPE_VERSION,
-                    customer=self.stripe_customer_id,
-                    type='card')
+                    customer=self.stripe_customer_id)
             except (stripe.error.RateLimitError,
                     stripe.error.APIConnectionError) as e:
                 logger.warning(str(e))
