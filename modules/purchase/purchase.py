@@ -1,6 +1,7 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 import datetime
+import math
 from collections import defaultdict
 from decimal import Decimal
 from itertools import chain, groupby
@@ -1338,7 +1339,8 @@ class Line(sequence_ordered(), ModelSQL, ModelView):
             for move in self.moves:
                 if move in moves_ignored:
                     quantity -= UoM.compute_qty(
-                        move.unit, move.quantity, self.unit)
+                        move.unit, math.copysign(move.quantity, self.quantity),
+                        self.unit)
         for invoice_line in self.invoice_lines:
             if invoice_line.type != 'line':
                 continue
