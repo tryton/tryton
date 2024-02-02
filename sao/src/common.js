@@ -3547,24 +3547,38 @@
 
     Sao.common.ErrorDialog = Sao.class_(Sao.common.UniqueDialog, {
         class_: 'error-dialog',
-        size: 'lg',
+        size: 'md',
         build_dialog: function(title, details, prm) {
             var dialog = Sao.common.ConcurrencyDialog._super.build_dialog.call(
                 this);
             dialog.add_title(Sao.i18n.gettext('Application Error'));
-            dialog.body.append(jQuery('<div/>', {
+            const alert_ = jQuery('<div/>', {
                 'class': 'alert alert-danger',
                 role: 'alert'
-            }).append(jQuery('<p/>')
-                .append(jQuery('<pre/>')
-                    .text(details)))
-                .append(jQuery('<p/>')
-                    .append(jQuery('<a/>', {
-                        'class': 'btn btn-link',
-                        href: Sao.config.bug_url,
-                        target: '_blank',
-                        rel: 'noreferrer noopener',
-                    }).text(Sao.i18n.gettext('Report Bug')))));
+            }).appendTo(dialog.body);
+            alert_.append(jQuery('<h4/>')
+                .text(title)
+                .css('white-space', 'pre-wrap'));
+            alert_.append(jQuery('<p/>').append(jQuery('<a/>', {
+                'class': 'btn btn-default',
+                role: 'button',
+                'data-toggle': 'collapse',
+                'data-target': '#error-detail',
+                'aria-expanded': false,
+                'aria-controls': '#error-detail',
+            }).text(Sao.i18n.gettext("Details"))));
+            alert_.append(jQuery('<p/>', {
+                'class': 'collapse',
+                id: 'error-detail',
+            }).append(jQuery('<pre/>', {
+                'class': 'pre-scrollable',
+            }).text(details)));
+            jQuery('<a/>', {
+                'class': 'btn btn-link',
+                href: Sao.config.bug_url,
+                target: '_blank',
+                rel: 'noreferrer noopener',
+            }).text(Sao.i18n.gettext('Report Bug')).appendTo(dialog.footer);
             jQuery('<button/>', {
                 'class': 'btn btn-primary',
                 'type': 'button',

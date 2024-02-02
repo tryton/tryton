@@ -844,7 +844,7 @@ class ErrorDialog(UniqueDialog):
         dialog = Gtk.MessageDialog(
             transient_for=parent, modal=True, destroy_with_parent=True,
             message_type=Gtk.MessageType.ERROR, buttons=Gtk.ButtonsType.NONE)
-        dialog.set_default_size(600, 400)
+        dialog.set_default_size(600, 200)
         dialog.set_position(Gtk.WindowPosition.CENTER)
 
         dialog.add_button(set_underline(_("Close")), Gtk.ResponseType.CANCEL)
@@ -859,6 +859,7 @@ class ErrorDialog(UniqueDialog):
         scrolledwindow.set_policy(
             Gtk.PolicyType.AUTOMATIC, Gtk.PolicyType.AUTOMATIC)
         scrolledwindow.set_shadow_type(Gtk.ShadowType.NONE)
+        scrolledwindow.set_min_content_height(300)
 
         viewport = Gtk.Viewport()
         viewport.set_shadow_type(Gtk.ShadowType.NONE)
@@ -870,8 +871,12 @@ class ErrorDialog(UniqueDialog):
 
         viewport.add(textview)
         scrolledwindow.add(viewport)
+        expander = Gtk.Expander()
+        expander.set_label(_("Details"))
+        expander.add(scrolledwindow)
+        expander.set_resize_toplevel(True)
         dialog.vbox.pack_start(
-            scrolledwindow, expand=True, fill=True, padding=0)
+            expander, expand=False, fill=True, padding=0)
 
         button_roundup = Gtk.LinkButton.new_with_label(
             CONFIG['bug.url'], _("Report Bug"))
