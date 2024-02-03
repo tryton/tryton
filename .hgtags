@@ -8061,3 +8061,4 @@ c7d4cac28deed5edccdbcd9b5bcbe76b15a36130 account_invoice-6.0.15
 02eb3188603d3dc40e31ec95c7aa989ff001424c stock-6.0.25
 aae29be5886a25bf37bcb0c2a71367544a15dd18 sale_advance_payment-6.0.3
 a01739949fb8104d6787428e134f0949f2048542 account_statement_aeb43-6.0.2
+de8c41e33a6d59d34d93e67fe8121b4ef63e046d account_payment_stripe-6.0.9
