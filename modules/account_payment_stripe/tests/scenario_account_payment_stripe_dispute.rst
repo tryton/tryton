@@ -294,7 +294,7 @@ Simulate charge.dispute.closed event::
     >>> for _ in range(MAX_SLEEP):
     ...     cron_fetch_events.click('run_once')
     ...     payment.reload()
-    ...     if payment.state == 'succeeded':
+    ...     if payment.stripe_dispute_status == 'won':
     ...         break
     ...     time.sleep(FETCH_SLEEP)
     >>> payment.state
