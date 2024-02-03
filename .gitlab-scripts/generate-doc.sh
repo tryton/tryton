@@ -5,9 +5,9 @@ OUTPUTDIR=`realpath "${1}"`
 mkdir -p "${OUTPUTDIR}"
 export DOC_BASE_URL=$OUTPUTDIR
 
-find . -name 'cookiecutter*' -prune -o -path '*/doc/requirements-doc.txt' -print | while read path; do
-    pip install -r "${path}"
-done
+requirements=$(mktemp /tmp/requirements-doc-XXXXXXXXXX.txt)
+find . -name 'cookiecutter*' -prune -o -path '*/doc/requirements-doc.txt' -exec cat {} + | sort | uniq > "${requirements}"
+pip install -r "${requirements}"
 
 (find . -name 'cookiecutter*' -prune -o -path '*/doc/conf.py' -print | while read path; do
     path=`dirname "${path}"`
