@@ -1272,6 +1272,9 @@
         QUnit.strictEqual(
             eval_pyson('Or(True, False).toString()'),
             "Or(true, false)", "eval_pyson('Or(True, False)').toString()");
+        QUnit.strictEqual(
+            eval_pyson('Eval("foo", {}).get("bar").toString()'),
+            'Get(Eval("foo", {}), "bar", "")');
     });
 
     var humanize_tests = [

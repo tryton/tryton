@@ -33,13 +33,13 @@
             throw 'NotImplementedError';
         },
         get: function(k, d='') {
-            return Sao.PYSON.Get(this, k, d);
+            return new Sao.PYSON.Get(this, k, d);
         },
         in_: function(obj) {
-            return Sao.PYSON.In(this, obj);
+            return new Sao.PYSON.In(this, obj);
         },
         contains: function(k) {
-            return Sao.PYSON.In(k, this);
+            return new Sao.PYSON.In(k, this);
         },
         toString: function() {
             var klass = this.pyson().__class__;
