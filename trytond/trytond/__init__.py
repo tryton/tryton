@@ -13,7 +13,7 @@ try:
 except ImportError:
     requests_utils = None
 
-__version__ = "7.0.6"
+__version__ = "7.0.7"
 
 os.environ.setdefault(
     'TRYTOND_APPNAME',
