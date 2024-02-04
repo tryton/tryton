@@ -5,8 +5,9 @@ import logging
 import random
 import selectors
 import signal
+import sys
 import time
-from multiprocessing import Pool as MPool
+from concurrent import futures
 from multiprocessing import cpu_count
 
 from sql import Flavor
@@ -23,10 +24,10 @@ logger = logging.getLogger(__name__)
 
 
 class Queue(object):
-    def __init__(self, database_name, mpool):
+    def __init__(self, database_name, executor):
         self.database = backend.Database(database_name).connect()
         self.connection = self.database.get_connection(autocommit=True)
-        self.mpool = mpool
+        self.executor = executor
 
     def pull(self, name=None):
         database_list = Pool.database_list()
@@ -38,15 +39,19 @@ class Queue(object):
         return Queue.pull(self.database, self.connection, name=name)
 
     def run(self, task_id):
-        return self.mpool.apply_async(run_task, (self.database.name, task_id))
+        return self.executor.submit(run_task, self.database.name, task_id)
 
 
 class TaskList(list):
     def filter(self):
         for t in list(self):
-            if t.ready():
+            if not t.running():
                 self.remove(t)
         return self
+
+
+def _noop():
+    pass
 
 
 def work(options):
@@ -58,10 +63,16 @@ def work(options):
     except NotImplementedError:
         processes = 1
     logger.info("start %d workers", processes)
-    mpool = MPool(
-        processes, initializer, (options.database_names,),
-        options.maxtasksperchild)
-    queues = [Queue(name, mpool) for name in options.database_names]
+    executor_options = dict(
+        max_workers=processes,
+        mp_context=None,
+        initializer=initializer,
+        initargs=(options.database_names,),
+        max_tasks_per_child=options.maxtasksperchild,
+        )
+    if sys.version_info < (3, 11):
+        del executor_options["max_tasks_per_child"]
+
 
     tasks = TaskList()
     selector = selectors.DefaultSelector()
@@ -73,7 +84,11 @@ def work(options):
             # Add some randomness to avoid concurrent pulling
             time.sleep(0.1 * random.random())
             while len(tasks.filter()) >= processes:
-                time.sleep(0.1)
+                futures.wait(tasks, return_when=futures.FIRST_COMPLETED)
+
+            # Probe process pool is still operative before pulling a new task
+            executor.submit(_noop).result()
+
             for queue in queues:
                 try:
                     task_id, next_ = queue.pull(options.name)
@@ -90,9 +105,8 @@ def work(options):
                     connection.poll()
                     while connection.notifies:
                         connection.notifies.pop(0)
-    except KeyboardInterrupt:
-        mpool.close()
     finally:
+        executor.shutdown()
         selector.close()
 
 

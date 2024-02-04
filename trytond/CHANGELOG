@@ -1,3 +1,4 @@
+* Remove trytond-worker max tasks per child option for Python <= 3.10
 * Do not copy readonly relational fields
 * Support list of single value in sortable_values tools
 * Allow resetting password of user via RPC

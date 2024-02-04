@@ -29,6 +29,8 @@ import trytond.worker as worker
 # Import after application is configured
 from trytond.pool import Pool
 
-with commandline.pidfile(options):
-    Pool.start()
-    worker.work(options)
+# Ensure main module can be safely imported by a new interpreter
+if __name__ == '__main__':
+    with commandline.pidfile(options):
+        Pool.start()
+        worker.work(options)
