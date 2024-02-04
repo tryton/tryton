@@ -604,7 +604,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.model.button" id="shipment_out_cancel_button">
             <field name="name">cancel</field>
             <field name="string">Cancel</field>
-            <field name="confirm">Are your sure you want to cancel the shipment?</field>
+            <field name="confirm">Are you sure you want to cancel the shipment?</field>
             <field name="model"
                 search="[('model', '=', 'stock.shipment.out')]"/>
         </record>
