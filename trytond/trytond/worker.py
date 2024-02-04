@@ -73,12 +73,15 @@ def work(options):
     if sys.version_info < (3, 11):
         del executor_options["max_tasks_per_child"]
 
+    with \
+            futures.ProcessPoolExecutor(**executor_options) as executor, \
+            selectors.DefaultSelector() as selector:
+        queues = [Queue(name, executor) for name in options.database_names]
+        tasks = TaskList()
 
-    tasks = TaskList()
-    selector = selectors.DefaultSelector()
-    for queue in queues:
-        selector.register(queue.connection, selectors.EVENT_READ)
-    try:
+        for queue in queues:
+            selector.register(queue.connection, selectors.EVENT_READ)
+
         while True:
             timeout = options.timeout
             # Add some randomness to avoid concurrent pulling
@@ -86,7 +89,8 @@ def work(options):
             while len(tasks.filter()) >= processes:
                 futures.wait(tasks, return_when=futures.FIRST_COMPLETED)
 
-            # Probe process pool is still operative before pulling a new task
+            # Probe process pool is still operative
+            # before pulling a new task
             executor.submit(_noop).result()
 
             for queue in queues:
@@ -105,9 +109,6 @@ def work(options):
                     connection.poll()
                     while connection.notifies:
                         connection.notifies.pop(0)
-    finally:
-        executor.shutdown()
-        selector.close()
 
 
 def initializer(database_names, worker=True):
