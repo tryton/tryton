@@ -30,5 +30,8 @@ import trytond.cron as cron
 from trytond.pool import Pool
 
 with commandline.pidfile(options):
-    Pool.start()
-    cron.run(options)
+    try:
+        Pool.start()
+        cron.run(options)
+    except KeyboardInterrupt:
+        pass

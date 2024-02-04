@@ -32,5 +32,8 @@ from trytond.pool import Pool
 # Ensure main module can be safely imported by a new interpreter
 if __name__ == '__main__':
     with commandline.pidfile(options):
-        Pool.start()
-        worker.work(options)
+        try:
+            Pool.start()
+            worker.work(options)
+        except (KeyboardInterrupt, SystemExit):
+            pass
