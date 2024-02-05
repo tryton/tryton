@@ -3,6 +3,7 @@
 from trytond.model import DeactivableMixin, ModelSQL, ModelView, Unique, fields
 from trytond.pool import Pool
 from trytond.pyson import Eval
+from trytond.rpc import RPC
 from trytond.transaction import Transaction
 
 
@@ -59,6 +60,10 @@ class Journal(DeactivableMixin, ModelSQL, ModelView):
                 Unique(t, t.bank_account, t.company),
                 'account_statement.msg_journal_bank_account_unique'),
             ]
+        cls.__rpc__.update(
+            get_by_bank_account=RPC(
+                result=lambda r: int(r) if r is not None else None),
+            )
 
     @staticmethod
     def default_currency():

@@ -8,7 +8,7 @@ Imports::
     >>> from trytond.modules.account.tests.tools import create_chart, get_accounts
     >>> from trytond.modules.company.tests.tools import create_company, get_company
     >>> from trytond.modules.currency.tests.tools import get_currency
-    >>> from trytond.tests.tools import activate_modules
+    >>> from trytond.tests.tools import activate_modules, assertEqual
 
 Activate modules::
 
@@ -64,3 +64,17 @@ Change currency of bank account::
     Traceback (most recent call last):
         ...
     AccountValidationError: ...
+
+Get journal by bank account::
+
+    >>> assertEqual(
+    ...     StatementJournal.get_by_bank_account(
+    ...         company.id, 'BE82068896274468', context={}),
+    ...     statement_journal.id)
+    >>> assertEqual(
+    ...     StatementJournal.get_by_bank_account(
+    ...         company.id, 'BE82068896274468', 'EUR', context={}),
+    ...     statement_journal.id)
+    >>> StatementJournal.get_by_bank_account(company.id, 'foo', context={})
+    >>> StatementJournal.get_by_bank_account(
+    ...     company.id, 'BE82068896274468', 'USD', context={})

@@ -1,3 +1,4 @@
+* Allow RPC on get_by_bank_account of statement journal
 * Search statement journal by bank account and currency
 * Support second currency on statement line
 
