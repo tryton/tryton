@@ -64,13 +64,14 @@ class Sale(metaclass=PoolMeta):
             reqs, lns = sale.create_purchase_requests(product_quantities)
             requests.extend(reqs)
             lines.extend(lns)
+        PurchaseRequest.save(requests)
+        Line.save(lines)
 
+        for sale in sales:
             moves, shipments = sale.create_move_from_supply()
             moves_to_draft.extend(moves)
             shipments_to_wait.update(shipments)
         shipments_to_wait = ShipmentOut.browse(list(shipments_to_wait))
-        PurchaseRequest.save(requests)
-        Line.save(lines)
         Move.draft(moves_to_draft)
         ShipmentOut.wait(shipments_to_wait)
 
