@@ -647,7 +647,8 @@ class ProductQuantitiesByWarehouse(ModelSQL, ModelView):
         Product = pool.get('product.product')
         Date = pool.get('ir.date')
         move = from_ = Move.__table__()
-        context = Transaction().context
+        transaction = Transaction()
+        context = transaction.context
         today = Date.today()
 
         if context.get('product_template') is not None:
@@ -657,6 +658,10 @@ class ProductQuantitiesByWarehouse(ModelSQL, ModelView):
             product = Product.__table__()
             from_ = move.join(product, condition=move.product == product.id)
             if product_template:
+                if len(product_template) > transaction.database.IN_MAX:
+                    raise AccessError(gettext(
+                            'stock.msg_product_quantities_max',
+                            max=transaction.database.IN_MAX))
                 product_clause = reduce_ids(product.template, product_template)
             else:
                 product_clause = product.template == Null
@@ -669,6 +674,10 @@ class ProductQuantitiesByWarehouse(ModelSQL, ModelView):
             if isinstance(product, int):
                 product = [product]
             if product:
+                if len(product) > transaction.database.IN_MAX:
+                    raise AccessError(gettext(
+                            'stock.msg_product_quantities_max',
+                            max=transaction.database.IN_MAX))
                 product_clause = reduce_ids(move.product, product)
             else:
                 product_clause = move.product == Null
@@ -922,6 +931,10 @@ class ProductQuantitiesByWarehouseMove(ModelSQL, ModelView):
             product = Product.__table__()
             from_ = move.join(product, condition=move.product == product.id)
             if product_template:
+                if len(product_template) > transaction.database.IN_MAX:
+                    raise AccessError(gettext(
+                            'stock.msg_product_quantities_max',
+                            max=transaction.database.IN_MAX))
                 product_clause = reduce_ids(product.template, product_template)
             else:
                 product_clause = product.template == Null
@@ -933,6 +946,10 @@ class ProductQuantitiesByWarehouseMove(ModelSQL, ModelView):
             if isinstance(product, int):
                 product = [product]
             if product:
+                if len(product) > transaction.database.IN_MAX:
+                    raise AccessError(gettext(
+                            'stock.msg_product_quantities_max',
+                            max=transaction.database.IN_MAX))
                 product_clause = reduce_ids(move.product, product)
             else:
                 product_clause = move.product == Null
