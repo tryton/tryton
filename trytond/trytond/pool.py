@@ -167,7 +167,7 @@ class Pool(object):
             try:
                 restart = not load_modules(
                     self.database_name, self, update=update, lang=lang,
-                    indexes=indexes)
+                    activatedeps=activatedeps, indexes=indexes)
             except Exception:
                 del self._pool[self.database_name]
                 self._modules = None
