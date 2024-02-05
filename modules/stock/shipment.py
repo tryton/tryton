@@ -407,8 +407,12 @@ class ShipmentIn(
                 },
             help="The moves that put the stock away into the storage area."),
         'get_inventory_moves', setter='set_inventory_moves')
-    moves = fields.One2Many('stock.move', 'shipment', 'Moves',
-        domain=[('company', '=', Eval('company'))], readonly=True)
+    moves = fields.One2Many(
+        'stock.move', 'shipment', "Moves",
+        domain=[('company', '=', Eval('company'))],
+        states={
+            'readonly': True,
+            })
     origins = fields.Function(fields.Char('Origins'), 'get_origins')
     received_by = employee_field("Received By")
     done_by = employee_field("Done By")
@@ -1245,8 +1249,12 @@ class ShipmentOut(
                 },
             help="The moves that pick the stock from the storage area."),
         'get_inventory_moves', setter='set_inventory_moves')
-    moves = fields.One2Many('stock.move', 'shipment', 'Moves',
-        domain=[('company', '=', Eval('company'))], readonly=True)
+    moves = fields.One2Many(
+        'stock.move', 'shipment', "Moves",
+        domain=[('company', '=', Eval('company'))],
+        states={
+            'readonly': True,
+            })
     origins = fields.Function(fields.Char('Origins'), 'get_origins')
     picked_by = employee_field("Picked By")
     packed_by = employee_field("Packed By")
@@ -1943,8 +1951,12 @@ class ShipmentOutReturn(
                 },
             help="The moves that put the stock away into the storage area."),
         'get_inventory_moves', setter='set_inventory_moves')
-    moves = fields.One2Many('stock.move', 'shipment', 'Moves',
-        domain=[('company', '=', Eval('company'))], readonly=True)
+    moves = fields.One2Many(
+        'stock.move', 'shipment', "Moves",
+        domain=[('company', '=', Eval('company'))],
+        states={
+            'readonly': True,
+            })
     origins = fields.Function(fields.Char('Origins'), 'get_origins')
     received_by = employee_field("Received By")
     done_by = employee_field("Done By")
