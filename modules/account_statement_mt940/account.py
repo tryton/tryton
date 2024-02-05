@@ -57,26 +57,15 @@ class StatementImport(metaclass=PoolMeta):
         statement.company = self.start.company
         account, currency = (
             self.mt940_statement_account_currency(mt940_statement))
+        start_balance = mt940_statement.start_balance
+        end_balance = mt940_statement.end_balance
         statement.journal = Journal.get_by_bank_account(
-            statement.company, account)
+            statement.company, account,
+            currency=currency or start_balance.currency)
         if not statement.journal:
             raise ImportStatementError(
                 gettext('account_statement.msg_import_no_journal',
                     account=mt940_statement.account))
-        start_balance = mt940_statement.start_balance
-        end_balance = mt940_statement.end_balance
-        if statement.journal.currency.code != start_balance.currency:
-            raise ImportStatementError(
-                gettext('account_statement.msg_import_wrong_currency',
-                    journal=statement.journal.rec_name,
-                    currency=start_balance.currency,
-                    journal_currency=statement.journal.currency.rec_name))
-        if statement.journal.currency.code != end_balance.currency:
-            raise ImportStatementError(
-                gettext('account_statement.msg_import_wrong_currency',
-                    journal=statement.journal.rec_name,
-                    currency=end_balance.currency,
-                    journal_currency=statement.journal.currency.rec_name))
         statement.date = end_balance.date
         statement.start_balance = start_balance.amount
         statement.end_balance = end_balance.amount

@@ -36,7 +36,10 @@ class Journal(DeactivableMixin, ModelSQL, ModelView):
         'bank.account', "Bank Account",
         domain=[
             ('owners.id', '=', Eval('company_party', -1)),
-            ('currency', '=', Eval('currency', -1)),
+            ['OR',
+                ('currency', '=', Eval('currency', -1)),
+                ('currency', '=', None),
+                ],
             ])
     account = fields.Many2One('account.account', "Account", required=True,
         domain=[
@@ -77,14 +80,20 @@ class Journal(DeactivableMixin, ModelSQL, ModelView):
         return 'balance'
 
     @classmethod
-    def get_by_bank_account(cls, company, number):
-        journals = cls.search([
-                ('company', '=', company),
-                ['OR',
-                    ('bank_account.numbers.number', '=', number),
-                    ('bank_account.numbers.number_compact', '=', number),
-                    ],
-                ])
+    def get_by_bank_account(cls, company, number, currency=None):
+        domain = [
+            ('company', '=', company),
+            ['OR',
+                ('bank_account.numbers.number', '=', number),
+                ('bank_account.numbers.number_compact', '=', number),
+                ],
+            ]
+        if currency:
+            domain.append(['OR',
+                    ('currency.code', '=', currency),
+                    ('currency.numeric_code', '=', currency),
+                    ])
+        journals = cls.search(domain)
         if journals:
             journal, = journals
             return journal

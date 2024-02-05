@@ -39,10 +39,11 @@ class ImportStatement(metaclass=PoolMeta):
         Statement = pool.get('account.statement')
         Journal = pool.get('account.statement.journal')
 
-        journal = Journal.get_by_bank_account(self.start.company, account.ccc)
+        journal = Journal.get_by_bank_account(
+            self.start.company, account.ccc, currency=account.currency)
         if not journal:
             journal = Journal.get_by_bank_account(
-                self.start.company, account.iban)
+                self.start.company, account.iban, currency=account.currency)
         if not journal:
             raise ImportStatementError(
                 gettext('account_statement.msg_import_no_journal',

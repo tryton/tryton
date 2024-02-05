@@ -3,11 +3,12 @@
 
 from trytond.pool import Pool
 
-from . import account, journal, party, statement
+from . import account, bank, journal, party, statement
 
 
 def register():
     Pool.register(
+        bank.Account,
         journal.Journal,
         statement.Statement,
         statement.Line,

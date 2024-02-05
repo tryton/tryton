@@ -59,20 +59,13 @@ class StatementImport(metaclass=PoolMeta):
         statement.name = camt_statement.findtext('./{*}Id')
         statement.company = self.start.company
         account_number = self.camt_account_number(camt_statement)
+        account_currency = self.camt_account_currency(camt_statement)
         statement.journal = Journal.get_by_bank_account(
-            statement.company, account_number)
+            statement.company, account_number, currency=account_currency)
         if not statement.journal:
             raise ImportStatementError(
                 gettext('account_statement.msg_import_no_journal',
                     account=account_number))
-        account_currency = self.camt_account_currency(camt_statement)
-        if (account_currency
-                and statement.journal.currency.code != account_currency):
-            raise ImportStatementError(
-                gettext('account_statement.msg_import_wrong_currency',
-                    journal=statement.journal.rec_name,
-                    currency=account_currency,
-                    journal_currency=statement.journal.currency.rec_name))
         statement.date = self.camt_statement_date(camt_statement)
         statement.start_balance, statement.end_balance = (
             self.camt_statement_balances(camt_statement))

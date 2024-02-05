@@ -7,6 +7,7 @@ Imports::
     >>> from proteus import Model, Wizard
     >>> from trytond.modules.account.tests.tools import create_chart, get_accounts
     >>> from trytond.modules.company.tests.tools import create_company, get_company
+    >>> from trytond.modules.currency.tests.tools import get_currency
     >>> from trytond.tests.tools import activate_modules, assertEqual
     >>> from trytond.tools import file_open
 
@@ -16,7 +17,10 @@ Activate modules::
 
 Create company::
 
-    >>> _ = create_company()
+    >>> eur = get_currency('EUR')
+    >>> eur.numeric_code = '978'
+    >>> eur.save()
+    >>> _ = create_company(currency=eur)
     >>> company = get_company()
 
 Create chart of accounts::

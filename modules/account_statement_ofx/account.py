@@ -42,17 +42,11 @@ class StatementImport(metaclass=PoolMeta):
         statement.name = ofx.trnuid
         statement.company = self.start.company
         statement.journal = Journal.get_by_bank_account(
-            statement.company, ofx_account.number)
+            statement.company, ofx_account.number, currency=ofx_account.curdef)
         if not statement.journal:
             raise ImportStatementError(
                 gettext('account_statement.msg_import_no_journal',
                     account=ofx_account.number))
-        if statement.journal.currency.code != ofx_account.curdef:
-            raise ImportStatementError(
-                gettext('account_statement.msg_import_wrong_currency',
-                    journal=statement.journal.rec_name,
-                    currency=statement.journal.currency.rec_name,
-                    journal_currency=ofx_account.curdef))
         if not isinstance(ofx_account.statement, ofxparse.Statement):
             raise ImportStatementError(
                 gettext('account_statement_ofx.msg_import_no_statement'))

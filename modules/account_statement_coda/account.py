@@ -41,17 +41,12 @@ class StatementImport(metaclass=PoolMeta):
         statement.name = coda_statement.new_sequence
         statement.company = self.start.company
         statement.journal = Journal.get_by_bank_account(
-            statement.company, coda_statement.account)
+            statement.company, coda_statement.account,
+            currency=coda_statement.account_currency)
         if not statement.journal:
             raise ImportStatementError(
                 gettext('account_statement.msg_import_no_journal',
                     account=coda_statement.account))
-        if statement.journal.currency.code != coda_statement.account_currency:
-            raise ImportStatementError(
-                gettext('account_statement.msg_import_wrong_currency',
-                    journal=statement.journal.rec_name,
-                    currency=coda_statement.account_currency,
-                    journal_currency=statement.journal.currency.rec_name))
         statement.date = coda_statement.creation_date
         statement.start_balance = coda_statement.old_balance
         statement.end_balance = coda_statement.new_balance
