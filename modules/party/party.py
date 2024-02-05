@@ -1093,7 +1093,8 @@ class Erase(Wizard):
     def transition_erase(self):
         pool = Pool()
         Party = pool.get('party.party')
-        cursor = Transaction().connection.cursor()
+        transaction = Transaction()
+        cursor = transaction.connection.cursor()
 
         resources = self.get_resources()
         parties = replacing = [self.ask.party]
@@ -1146,6 +1147,7 @@ class Erase(Wizard):
                                         Model.__name__ + ',%')
                                     & resource_field.sql_id(
                                         table.resource, Model).in_(query)))
+        transaction.counter += 1
         return 'end'
 
     def check_erase(self, party):
