@@ -142,6 +142,7 @@ class PurchaseRequest(metaclass=PoolMeta):
         products = set(products)
         reqs = cls.search([
                 ('state', '=', 'draft'),
+                ('purchase_line', '=', None),
                 ('company', '=', company.id),
                 ('origin', 'like', 'stock.order_point,%'),
                 ])
