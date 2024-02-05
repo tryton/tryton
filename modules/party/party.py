@@ -777,7 +777,8 @@ class Erase(Wizard):
     def transition_erase(self):
         pool = Pool()
         Party = pool.get('party.party')
-        cursor = Transaction().connection.cursor()
+        transaction = Transaction()
+        cursor = transaction.connection.cursor()
 
         def convert_from(table, tables):
             right, condition = tables[None]
@@ -841,6 +842,7 @@ class Erase(Wizard):
                                         Substring(table.resource,
                                             Position(',', table.resource)
                                             + Literal(1))).in_(query)))
+        transaction.counter += 1
         return 'end'
 
     def check_erase(self, party):
