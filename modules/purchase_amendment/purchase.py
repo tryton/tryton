@@ -160,7 +160,7 @@ class Amendment(Workflow, ModelSQL, ModelView):
     @classmethod
     def _stock_moves(cls, line):
         for move in line.moves:
-            if move.state == 'draft':
+            if move.state in {'staging', 'draft'}:
                 yield move
 
 
