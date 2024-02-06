@@ -800,7 +800,6 @@ def post_import(pool, module, to_delete):
     for mrec in mdata:
         model, db_id, fs_id = mrec.model, mrec.db_id, mrec.fs_id
 
-        logger.info('Deleting %s@%s from %s.%s', db_id, model, module, fs_id)
         try:
             # Deletion of the record
             try:
@@ -812,25 +811,27 @@ def post_import(pool, module, to_delete):
                 mdata_delete.append(mrec)
             else:
                 logger.warning(
-                    'Could not delete id %d of model %s because model no '
-                    'longer exists.', db_id, model)
-        except Exception:
+                    "could not delete %d@%s from %s.%s "
+                    "because model no longer exists",
+                    db_id, model, module, fs_id)
+        except Exception as e:
             transaction.rollback()
-            logger.error(
-                "Could not delete id %d from model %s.\n"
-                "There may be a relation that points to this resource "
-                "that must be manually fixed before restarting the update.",
-                db_id, model, exc_info=True)
+            logger.warning(
+                "could not delete %d@%s from %s.%s (%s).",
+                db_id, model, module, fs_id, e)
             if 'active' in Model._fields:
                 try:
                     Model.write([Model(db_id)], {
                             'active': False,
                             })
-                except Exception:
+                except Exception as e:
                     transaction.rollback()
                     logger.error(
-                        'Could not inactivate id: %d of model %s\n',
-                        db_id, model, exc_info=True)
+                        "could not deactivate %d@%s from %s.%s (%s)",
+                        db_id, model, module, fs_id, e)
+        else:
+            logger.info(
+                "deleted %s@%s from %s.%s", db_id, model, module, fs_id)
         transaction.commit()
 
     # Clean model_data:
