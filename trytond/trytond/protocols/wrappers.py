@@ -212,6 +212,7 @@ def with_transaction(readonly=None, user=0, context=None):
                     except backend.DatabaseOperationalError:
                         if count and not readonly_:
                             transaction.rollback()
+                            transaction.tasks.clear()
                             continue
                         logger.error('%s', request, exc_info=True)
                         raise
