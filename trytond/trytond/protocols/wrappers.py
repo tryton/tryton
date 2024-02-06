@@ -193,23 +193,36 @@ def with_pool(func):
         if database_name not in database_list:
             with Transaction().start(database_name, 0, readonly=True):
                 pool.init()
+
+        log_message = '%s in %i ms'
+
+        def duration():
+            return (time.monotonic() - started) * 1000
+        started = time.monotonic()
+
         try:
-            return func(request, pool, *args, **kwargs)
+            result = func(request, pool, *args, **kwargs)
         except exceptions.HTTPException:
-            logger.debug('%s', request, exc_info=True)
+            logger.info(
+                log_message, request, duration(),
+                exc_info=logger.isEnabledFor(logging.DEBUG))
             raise
         except (UserError, UserWarning) as e:
-            logger.debug('%s', request, exc_info=True)
+            logger.info(
+                log_message, request, duration(),
+                exc_info=logger.isEnabledFor(logging.DEBUG))
             if request.rpc_method:
                 raise
             else:
                 abort(HTTPStatus.BAD_REQUEST, e)
         except Exception as e:
-            logger.error('%s', request, exc_info=True)
+            logger.exception(log_message, request, duration())
             if request.rpc_method:
                 raise
             else:
                 abort(HTTPStatus.INTERNAL_SERVER_ERROR, e)
+        logger.info(log_message, request, duration())
+        return result
     return wrapper
 
 
@@ -255,6 +268,7 @@ def with_transaction(readonly=None, user=0, context=None):
                             transaction.rollback()
                             transaction.tasks.clear()
                             count += 1
+                            logger.debug("Retry: %i", count)
                             continue
                         raise
                     # Need to commit to unlock SQLite database
