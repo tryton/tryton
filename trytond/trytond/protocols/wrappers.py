@@ -247,11 +247,13 @@ def with_transaction(readonly=None, user=0, context=None):
                         result = func(request, pool, *args, **kwargs)
                     except TransactionError as e:
                         transaction.rollback()
+                        transaction.tasks.clear()
                         e.fix(transaction_extras)
                         continue
                     except backend.DatabaseOperationalError:
                         if count < retry and not readonly_:
                             transaction.rollback()
+                            transaction.tasks.clear()
                             count += 1
                             continue
                         raise
