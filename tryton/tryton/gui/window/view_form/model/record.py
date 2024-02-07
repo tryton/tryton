@@ -653,7 +653,7 @@ class Record:
             try:
                 if len(later) == 1 or 'id' not in values:
                     changed = {}
-                    for fieldname in fieldnames:
+                    for fieldname in later:
                         changed.update(RPCExecute(
                                 'model', self.model_name,
                                 'on_change_with_' + fieldname,
