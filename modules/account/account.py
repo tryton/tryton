@@ -954,8 +954,8 @@ class Account(
             ('company', '=', Eval('company')),
             ('parent', '=', None),
             ],
-        help="Default tax for manual encoding of move lines\n"
-        'for journal types: "expense" and "revenue".')
+        help="Default taxes for documents to be applied "
+        "when there is no other source.")
     replaced_by = fields.Many2One(
         'account.account', "Replaced By",
         domain=[('company', '=', Eval('company', -1))],
