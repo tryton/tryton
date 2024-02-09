@@ -187,7 +187,7 @@ class ShipmentAssignMixin(ShipmentMixin):
         return [
             ('company', '=', context.get('company')),
             ('state', '=', 'waiting'),
-            ('planned_date', '=', Date.today()),
+            ('planned_date', '<=', Date.today()),
             ]
 
     @classmethod
