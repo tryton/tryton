@@ -210,9 +210,12 @@ class ShipmentAssignMixin(ShipmentMixin):
             ]
 
     @classmethod
-    def assign_cron(cls):
-        shipments = cls.search(cls._get_assign_domain())
-        cls.assign_try(shipments)
+    def to_assign(cls):
+        return cls.search(cls._get_assign_domain())
+
+    @property
+    def assign_order_key(self):
+        return (self.planned_date, self.create_date)
 
     def get_partially_assigned(self, name):
         return (self.state != 'assigned'
