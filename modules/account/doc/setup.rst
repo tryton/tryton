@@ -62,3 +62,19 @@ smaller chunks.
 .. tip::
 
    Tryton also provides easy ways of `Creating additional fiscal years`.
+
+.. _Fill opening balance:
+
+Fill opening balance
+====================
+
+If your company already had a balance before the first :ref:`Fiscal Year
+<model-account.fiscalyear>` created in Tryton, you should `create a journal
+entry <Creating journal entries>` with one line for each `Account
+<model-account.account>` with the balance as credit or debit.
+
+.. tip::
+
+   It is best to use an adjustment `Period <model-account.period>` at the
+   begining the fiscal year and a ``Situation`` `Journal
+   <model-account.journal>`.
