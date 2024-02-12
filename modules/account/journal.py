@@ -156,7 +156,12 @@ class Journal(
 
     @classmethod
     def find(cls, pattern):
-        for journal in cls.search([]):
+        for journal in cls.search(
+                [],
+                order=[
+                    ('matching_sequence', 'ASC'),
+                    ('id', 'ASC'),
+                    ]):
             if journal.match(pattern):
                 return journal
 
