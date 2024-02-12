@@ -19,6 +19,12 @@ class Request(metaclass=PoolMeta):
         return super()._get_origin() | {'sale.sale'}
 
     @classmethod
+    def copy(cls, requests, default=None):
+        default = default.copy() if default is not None else {}
+        default.setdefault('sale_lines')
+        return super().copy(requests, default=default)
+
+    @classmethod
     def delete(cls, requests):
         pool = Pool()
         Sale = pool.get('sale.sale')
