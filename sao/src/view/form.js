@@ -907,7 +907,11 @@ function eval_pyson(value){
         hide: function() {
             Sao.View.Form.Page._super.hide.call(this);
             if (this.el.hasClass('active')) {
-                this.el.siblings(':visible').first().find('a').tab('show');
+                window.setTimeout(() => {
+                    if (this.el.hasClass('active') && this.el.is(':hidden')) {
+                        this.el.siblings(':visible').first().find('a').tab('show');
+                    }
+                });
             }
         }
     });
