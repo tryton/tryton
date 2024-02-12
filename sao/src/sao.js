@@ -414,7 +414,6 @@ var Sao = {
             }, session).then(function(preferences) {
                 var deferreds = [];
                 deferreds.push(Sao.common.MODELACCESS.load_models());
-                deferreds.push(Sao.common.ICONFACTORY.load_icons());
                 deferreds.push(Sao.common.MODELHISTORY.load_history());
                 deferreds.push(Sao.common.MODELNOTIFICATION.load_names());
                 deferreds.push(Sao.common.VIEW_SEARCH.load_searches());

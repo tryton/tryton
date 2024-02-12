@@ -3083,91 +3083,82 @@
 
     Sao.common.IconFactory = Sao.class_(Object, {
         batchnum: 10,
-        name2id: {},
-        loaded_icons: {},
-        tryton_icons: [],
-        register_prm: jQuery.when(),
-        load_icons: function(refresh) {
-            refresh = refresh || false;
+        _name2id: {},
+        _icons: {},
+        load_icons: function(refresh=false) {
+            const icon_model = new Sao.Model('ir.ui.icon');
+            var icons;
+            try {
+                icons = icon_model.execute('list_icons', [], {}, false);
+            } catch (e) {
+                icons = [];
+            }
+            const name2id = {};
+            for (const icon of icons) {
+                name2id[icon[1]] = icon[0];
+            }
+            this._name2id = name2id;
             if (!refresh) {
-                for (var icon_name in this.loaded_icons) {
-                    window.URL.revokeObjectURL(this.loaded_icons[icon_name]);
+                for (const icon_name in this._icons) {
+                    window.URL.revokeObjectURL(this._icons[icon_name]);
                 }
+                this._icons = {};
             }
-
-            var icon_model = new Sao.Model('ir.ui.icon');
-            return icon_model.execute('list_icons', [], {})
-            .then(icons => {
-                if (!refresh) {
-                    this.name2id = {};
-                    this.loaded_icons = {};
-                }
-                this.tryton_icons = [];
-
-                var icon_id, icon_name;
-                for (var i=0, len=icons.length; i < len; i++) {
-                    icon_id = icons[i][0];
-                    icon_name = icons[i][1];
-                    if (refresh && (icon_name in this.loaded_icons)) {
-                        continue;
-                    }
-                    this.tryton_icons.push([icon_id, icon_name]);
-                    this.name2id[icon_name] = icon_id;
-                }
-            });
+            return name2id;
         },
-        register_icon: function(icon_name) {
-            if (!icon_name) {
-                return jQuery.when();
-            } else if ((icon_name in this.loaded_icons) ||
-                    ~Sao.common.LOCAL_ICONS.indexOf(icon_name)) {
-                return jQuery.when();
+        _get_icon: function(icon_name) {
+            var url = this._icons[icon_name];
+            if (url !== undefined) {
+                return jQuery.when(url);
             }
-            if (this.register_prm.state() == 'pending') {
-                return this.register_prm.then(
-                    () => this.register_icon(icon_name));
+            if (~Sao.common.LOCAL_ICONS.indexOf(icon_name)) {
+                return jQuery.get('images/' + icon_name + '.svg', null, null, 'text')
+                    .then(icon => {
+                        var img_url = this._convert(icon);
+                        this._icons[icon_name] = img_url;
+                        return img_url;
+                    })
+                    .fail(() => {
+                        Sao.Logger.error("Unknown icon %s", icon_name);
+                        this._icons[icon_name] = null;
+                    });
             }
-            var loaded_prm;
-            if (!(icon_name in this.name2id)) {
-                loaded_prm = this.load_icons(true);
-            } else {
-                loaded_prm = jQuery.when();
+            var name2id = this._name2id;
+            if (!(icon_name in name2id)) {
+                name2id = this.load_icons(true);
+                if (!(name in name2id)) {
+                    Sao.Logger.error("Unknown icon %s", icon_name);
+                    this._icons[icon_name] = null;
+                    return jQuery.when();
+                }
             }
+            var ids = [];
+            for (const name in name2id) {
+                if ((!(name in this._icons)) || (name == icon_name)) {
+                    ids.push(name2id[name]);
+                }
+            }
+            const idx = ids.indexOf(name2id[icon_name]);
+            const from = Math.max(Math.round(idx - this.batchnum / 2), 0);
+            const to = Math.round(idx + this.batchnum / 2);
+            ids = ids.slice(from, to);
 
             var icon_model = new Sao.Model('ir.ui.icon');
-            this.register_prm = loaded_prm.then(() => {
-                const find_array = array => {
-                    var idx, l;
-                    for (idx=0, l=this.tryton_icons.length; idx < l; idx++) {
-                        var icon = this.tryton_icons[idx];
-                        if (Sao.common.compare(icon, array)) {
-                            break;
-                        }
-                    }
-                    return idx;
-                };
-                var idx = find_array([this.name2id[icon_name], icon_name]);
-                var from = Math.round(idx - this.batchnum / 2);
-                from = (from < 0) ? 0 : from;
-                var to = Math.round(idx + this.batchnum / 2);
-                var ids = [];
-                for (const e of this.tryton_icons.slice(from, to)) {
-                    ids.push(e[0]);
+            var icons;
+            try {
+                icons = icon_model.execute(
+                    'read', [ids, ['name', 'icon']], {}, false);
+            } catch(e) {
+                icons = [];
+            }
+            for (const icon of icons) {
+                const icon_url = this._convert(icon.icon);
+                this._icons[icon.name] = icon_url;
+                if (icon.name == icon_name) {
+                    url = icon_url;
                 }
-
-                var read_prm = icon_model.execute('read',
-                    [ids, ['name', 'icon']], {});
-                return read_prm.then(icons => {
-                    for (const icon of icons) {
-                        var img_url = this._convert(icon.icon);
-                        this.loaded_icons[icon.name] = img_url;
-                        delete this.name2id[icon.name];
-                        this.tryton_icons.splice(
-                            find_array([icon.id, icon.name]), 1);
-                    }
-                });
-            });
-            return this.register_prm;
+            }
+            return jQuery.when(url);
         },
         _convert: function(data) {
             var xml = jQuery.parseXML(data);
@@ -3181,21 +3172,7 @@
             if (!icon_name) {
                 return jQuery.when('');
             }
-            return this.register_icon(icon_name).then(() => {
-                if (icon_name in this.loaded_icons) {
-                    return this.loaded_icons[icon_name];
-                } else {
-                    return jQuery.get('images/' + icon_name + '.svg', null, null, 'text')
-                        .then(icon => {
-                            var img_url = this._convert(icon);
-                            this.loaded_icons[icon_name] = img_url;
-                            return img_url;
-                        })
-                        .fail(() => {
-                            Sao.Logger.error("Unknown icon %s", icon_name);
-                        });
-                }
-            });
+            return this._get_icon(icon_name);
         },
         get_icon_img: function(icon_name, attrs) {
             attrs = attrs || {};

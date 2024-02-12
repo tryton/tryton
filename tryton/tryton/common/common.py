@@ -11,7 +11,7 @@ import re
 import subprocess
 import unicodedata
 import xml.etree.ElementTree as ET
-from collections import defaultdict
+from collections import OrderedDict, defaultdict
 from decimal import Decimal
 from http.server import BaseHTTPRequestHandler, HTTPServer
 from pathlib import PurePath
@@ -60,8 +60,7 @@ logger = logging.getLogger(__name__)
 class IconFactory:
 
     batchnum = 10
-    _tryton_icons = []
-    _name2id = {}
+    _name2id = OrderedDict()
     _icons = {}
     _local_icons = {}
     _pixbufs = defaultdict(dict)
@@ -75,69 +74,61 @@ class IconFactory:
 
     @classmethod
     def load_icons(cls, refresh=False):
-        if not refresh:
-            cls._name2id.clear()
-            cls._icons.clear()
-        del cls._tryton_icons[:]
-
         try:
             icons = rpc.execute('model', 'ir.ui.icon', 'list_icons',
                 rpc.CONTEXT)
         except TrytonServerError:
             icons = []
-        for icon_id, icon_name in icons:
-            if refresh and icon_name in cls._icons:
-                continue
-            cls._tryton_icons.append((icon_id, icon_name))
-            cls._name2id[icon_name] = icon_id
+        cls._name2id = name2id = OrderedDict((n, i) for i, n in icons)
+        if not refresh:
+            cls._icons.clear()
+        return name2id
 
     @classmethod
-    def register_icon(cls, iconname):
-        # iconname might be '' when page do not define icon
-        if (not iconname
-                or iconname in cls._icons
-                or iconname in cls._local_icons):
-            return
-        if iconname not in cls._name2id:
-            cls.load_icons(refresh=True)
-        try:
-            icon_ref = (cls._name2id[iconname], iconname)
-        except KeyError:
-            logger.error(f"Unknown icon {iconname}")
-            cls._icons[iconname] = None
-            return
-        idx = cls._tryton_icons.index(icon_ref)
-        to_load = slice(max(0, idx - cls.batchnum // 2),
+    def _get_icon(cls, iconname):
+        data = cls._icons.get(iconname)
+        if data is not None:
+            return data
+        path = cls._local_icons.get(iconname)
+        if path is not None:
+            with open(path, 'rb') as fp:
+                return fp.read()
+
+        name2id = cls._name2id
+        if iconname not in name2id:
+            name2id = cls.load_icons(refresh=True)
+            if iconname not in name2id:
+                logger.error(f"Unknown icon {iconname}")
+                cls._icons[iconname] = None
+                return
+        names = [n for n in name2id if n not in cls._icons or n == iconname]
+        idx = names.index(iconname)
+        to_load = slice(
+            max(0, idx - cls.batchnum // 2),
             idx + cls.batchnum // 2)
-        ids = [e[0] for e in cls._tryton_icons[to_load]]
+        ids = [name2id[n] for n in names[to_load]]
         try:
             icons = rpc.execute('model', 'ir.ui.icon', 'read', ids,
                 ['name', 'icon'], rpc.CONTEXT)
         except TrytonServerError:
             icons = []
+        data = None
         for icon in icons:
             name = icon['name']
-            data = icon['icon'].encode('utf-8')
-            cls._icons[name] = data
-            cls._tryton_icons.remove((icon['id'], icon['name']))
-            del cls._name2id[icon['name']]
+            icondata = icon['icon'].encode('utf-8')
+            cls._icons[name] = icondata
+            if name == iconname:
+                data = icondata
+        return data
 
     @classmethod
     def get_pixbuf(cls, iconname, size=16, color=None, badge=None):
         if not iconname:
             return
         colors = CONFIG['icon.colors'].split(',')
-        cls.register_icon(iconname)
         if iconname not in cls._pixbufs[(size, badge)]:
-            data = None
-            if iconname in cls._icons:
-                data = cls._icons[iconname]
-            elif iconname in cls._local_icons:
-                path = cls._local_icons[iconname]
-                with open(path, 'rb') as fp:
-                    data = fp.read()
+            data = cls._get_icon(iconname)
             if not data:
-                logger.error("Unknown icon %s" % iconname)
                 return
             if not color:
                 color = colors[0]
