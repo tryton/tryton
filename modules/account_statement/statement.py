@@ -311,7 +311,7 @@ class Statement(Workflow, ModelSQL, ModelView):
                         new_line.invoice = None
                         line_offset += 1
                         lines.insert(index + line_offset, new_line)
-                        invoice_id2amount_to_pay[line.invoice.id] = 0
+                        invoice_id2amount_to_pay[line.invoice.id] = Decimal(0)
                         line.amount = amount_to_pay.copy_sign(line.amount)
                     else:
                         invoice_id2amount_to_pay[line.invoice.id] = (
