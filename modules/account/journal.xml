@@ -16,9 +16,18 @@ this repository contains the full copyright notices and license terms. -->
         </record>
         <record model="ir.ui.view" id="journal_view_tree">
             <field name="model">account.journal</field>
+            <field name="priority" eval="10"/>
             <field name="type">tree</field>
             <field name="name">journal_tree</field>
         </record>
+
+        <record model="ir.ui.view" id="journal_view_list_matching_sequence">
+            <field name="model">account.journal</field>
+            <field name="priority" eval="20"/>
+            <field name="type">tree</field>
+            <field name="name">journal_list_matching_sequence</field>
+        </record>
+
         <record model="ir.ui.view" id="journal_view_list_cash">
             <field name="model">account.journal</field>
             <field name="priority" eval="20"/>
@@ -29,10 +38,11 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.action.act_window" id="act_journal_form">
             <field name="name">Journals</field>
             <field name="res_model">account.journal</field>
+            <field name="order" eval="[('matching_sequence', 'ASC'), ('id', 'ASC')]" pyson="1"/>
         </record>
         <record model="ir.action.act_window.view" id="act_journal_form_view1">
             <field name="sequence" eval="10"/>
-            <field name="view" ref="journal_view_tree"/>
+            <field name="view" ref="journal_view_list_matching_sequence"/>
             <field name="act_window" ref="act_journal_form"/>
         </record>
         <record model="ir.action.act_window.view" id="act_journal_form_view2">
