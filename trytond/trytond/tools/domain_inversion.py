@@ -382,16 +382,18 @@ def unique_value(domain, single_value=True):
     if (isinstance(domain, list)
             and len(domain) == 1):
         name, operator, value, *model = domain[0]
-        if (operator == '='
-                or (single_value and operator == 'in' and len(value) == 1)):
-            value = value if operator == '=' else value[0]
-            count = 0
+        count = name.count('.')
+        if (
+                (operator == '='
+                    or (single_value
+                        and operator == 'in' and len(value) == 1))
+                and (not count
+                    or (count == 1 and model and name.endswith('.id')))):
+            value = value if operator == '=' and single_value else value[0]
             if model and name.endswith('.id'):
-                count = 1
                 model = model[0]
                 value = [model, value]
-            if name.count('.') == count:
-                return True, name, value
+            return True, name, value
     return False, None, None
 
 

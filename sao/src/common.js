@@ -2692,18 +2692,18 @@
             if ((domain instanceof Array) &&
                     (domain.length == 1)) {
                 let [name, operator, value, ...model] = domain[0];
-                if (operator == '=' ||
-                    (single_value && operator == 'in' && value.length == 1)) {
+                const count = name.split('.').length - 1;
+                if (
+                    (operator == '=' ||
+                        (single_value && operator == 'in' && value.length == 1)) &&
+                    (!count ||
+                        ((count === 1) && model.length && name.endsWith('.id')))) {
                     value = operator == '=' ? value : value[0];
-                    var count = 0;
                     if (model.length && name.endsWith('.id')) {
-                        count = 1;
                         model = model[0];
                         value = [model, value];
                     }
-                    if ((name.split('.').length - 1) == count) {
-                        return [true, name, value];
-                    }
+                    return [true, name, value];
                 }
             }
             return [false, null, null];
