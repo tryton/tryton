@@ -8,4 +8,7 @@ this repository contains the full copyright notices and license terms. -->
         <field name="company" expand="1" optional="1"/>
         <field name="invoice_type"/>
     </xpath>
+    <xpath expr="//field[@name='invoice']" position="before">
+        <field name="origin" expand="1" optional="1"/>
+    </xpath>
 </data>
