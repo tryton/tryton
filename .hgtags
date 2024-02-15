@@ -8961,3 +8961,4 @@ f214f9b8f2f52cfa41a4760ded0860df2f0dbcb4 sale_advance_payment-6.8.2
 db34edcd5df404ef88292cfa883e5f411ef7bb8a account_statement_aeb43-6.8.1
 b918c41b35af4d8e457d87e4fa622d314bed7798 account_payment_stripe-6.8.3
 74b367879d1032620f7c65ad23687ca8664c25d1 account_cash_rounding-6.8.1
+e493b6e5c4448c2743fcd328c87caf8b55e47639 trytond-6.8.12
