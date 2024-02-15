@@ -3,6 +3,9 @@
 
 from trytond.pool import Pool, PoolMeta
 
+_EMPLOYEES_RULE_MODELS = {
+    'attendance.line', 'attendance.sheet', 'attendance.sheet.line'}
+
 
 class Rule(metaclass=PoolMeta):
     __name__ = 'ir.rule'
@@ -12,7 +15,7 @@ class Rule(metaclass=PoolMeta):
         pool = Pool()
         User = pool.get('res.user')
         context = super()._get_context(model_name)
-        if model_name == 'attendance.line':
+        if model_name in _EMPLOYEES_RULE_MODELS:
             context['employees'] = User.get_employees()
         return context
 
@@ -21,6 +24,6 @@ class Rule(metaclass=PoolMeta):
         pool = Pool()
         User = pool.get('res.user')
         key = super()._get_cache_key(model_name)
-        if model_name == 'attendance.line':
+        if model_name in _EMPLOYEES_RULE_MODELS:
             key = (*key, User.get_employees())
         return key
