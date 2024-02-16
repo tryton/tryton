@@ -921,18 +921,22 @@ class CheckVIES(Wizard):
                     else:
                         parties_succeed.append(party.id)
                 except Exception as e:
-                    if hasattr(e, 'faultstring') \
-                            and hasattr(e.faultstring, 'find'):
-                        if e.faultstring.find('INVALID_INPUT'):
+                    for msg in e.args:
+                        if msg == 'INVALID_INPUT':
                             parties_failed.append(party.id)
-                            continue
-                        if e.faultstring.find('SERVICE_UNAVAILABLE') \
-                                or e.faultstring.find('MS_UNAVAILABLE') \
-                                or e.faultstring.find('TIMEOUT') \
-                                or e.faultstring.find('SERVER_BUSY'):
+                            break
+                        elif msg in {
+                                'SERVICE_UNAVAILABLE',
+                                'MS_UNAVAILABLE',
+                                'MS_MAX_CONCURRENT_REQ',
+                                'GLOBAL_MS_MAX_CONCURRENT_REQ',
+                                'TIMEOUT',
+                                'SERVER_BUSY',
+                                }:
                             raise VIESUnavailable(
                                 gettext('party.msg_vies_unavailable')) from e
-                    raise
+                    else:
+                        raise
         self.result.parties_succeed = parties_succeed
         self.result.parties_failed = parties_failed
         return 'result'
