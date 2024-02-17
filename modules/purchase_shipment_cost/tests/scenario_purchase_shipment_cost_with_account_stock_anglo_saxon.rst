@@ -157,7 +157,7 @@ Receive 4 products::
     >>> move, = shipment.incoming_moves
     >>> move.unit_price
     Decimal('5.7500')
-    >>> shipment.click('done')
+    >>> shipment.click('do')
     >>> shipment.state
     'done'
     >>> stock_in.reload()

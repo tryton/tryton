@@ -224,7 +224,7 @@ class Production(metaclass=PoolMeta):
     @classmethod
     @ModelView.button
     @Workflow.transition('done')
-    def done(cls, productions):
+    def do(cls, productions):
         pool = Pool()
         Warning = pool.get('res.user.warning')
 
@@ -242,4 +242,4 @@ class Production(metaclass=PoolMeta):
                     warning_name,
                     gettext('production_outsourcing.msg_pending_purchase_done',
                         productions=names))
-        super(Production, cls).done(productions)
+        super().do(productions)

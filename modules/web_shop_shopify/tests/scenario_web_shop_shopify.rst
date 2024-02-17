@@ -542,7 +542,7 @@ Make a partial shipment::
     >>> move.quantity = 3
     >>> shipment.click('pick')
     >>> shipment.click('pack')
-    >>> shipment.click('done')
+    >>> shipment.click('do')
     >>> shipment.state
     'done'
 

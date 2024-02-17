@@ -228,7 +228,7 @@ class Production(ShipmentAssignMixin, Workflow, ModelSQL, ModelView):
                     'invisible': Eval('state') != 'assigned',
                     'depends': ['state'],
                     },
-                'done': {
+                'do': {
                     'invisible': Eval('state') != 'running',
                     'depends': ['state'],
                     },
@@ -772,7 +772,7 @@ class Production(ShipmentAssignMixin, Workflow, ModelSQL, ModelView):
     @ModelView.button
     @Workflow.transition('done')
     @set_employee('done_by')
-    def done(cls, productions):
+    def do(cls, productions):
         pool = Pool()
         Move = pool.get('stock.move')
         Date = pool.get('ir.date')
@@ -873,7 +873,7 @@ class Production_Lot(metaclass=PoolMeta):
     @classmethod
     @ModelView.button
     @Workflow.transition('done')
-    def done(cls, productions):
+    def do(cls, productions):
         pool = Pool()
         Lot = pool.get('stock.lot')
         Move = pool.get('stock.move')
@@ -888,4 +888,4 @@ class Production_Lot(metaclass=PoolMeta):
                         moves.append(move)
         Lot.save(lots)
         Move.save(moves)
-        super().done(productions)
+        super().do(productions)

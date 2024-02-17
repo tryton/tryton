@@ -477,7 +477,7 @@ class ShipmentIn(
                     'invisible': Eval('state') != 'draft',
                     'depends': ['state'],
                     },
-                'done': {
+                'do': {
                     'invisible': Eval('state') != 'received',
                     'depends': ['state'],
                     },
@@ -730,13 +730,13 @@ class ShipmentIn(
         to_do = [s for s in shipments
             if s.warehouse_storage == s.warehouse_input]
         if to_do:
-            cls.done(to_do)
+            cls.do(to_do)
 
     @classmethod
     @ModelView.button
     @Workflow.transition('done')
     @set_employee('done_by')
-    def done(cls, shipments):
+    def do(cls, shipments):
         pool = Pool()
         Move = pool.get('stock.move')
         Date = pool.get('ir.date')
@@ -898,7 +898,7 @@ class ShipmentInReturn(ShipmentAssignMixin, Workflow, ModelSQL, ModelView):
                         'tryton-back', 'tryton-forward'),
                     'depends': ['state'],
                     },
-                'done': {
+                'do': {
                     'invisible': Eval('state') != 'assigned',
                     'depends': ['state'],
                     },
@@ -1045,7 +1045,7 @@ class ShipmentInReturn(ShipmentAssignMixin, Workflow, ModelSQL, ModelView):
     @ModelView.button
     @Workflow.transition('done')
     @set_employee('done_by')
-    def done(cls, shipments):
+    def do(cls, shipments):
         pool = Pool()
         Move = pool.get('stock.move')
         Date = pool.get('ir.date')
@@ -1349,7 +1349,7 @@ class ShipmentOut(
                     'depends': [
                         'state', 'warehouse_storage', 'warehouse_output'],
                     },
-                'done': {
+                'do': {
                     'invisible': Eval('state') != 'packed',
                     },
                 'assign_wizard': {
@@ -1682,7 +1682,7 @@ class ShipmentOut(
     @ModelView.button
     @Workflow.transition('done')
     @set_employee('done_by')
-    def done(cls, shipments):
+    def do(cls, shipments):
         pool = Pool()
         Move = pool.get('stock.move')
         Date = pool.get('ir.date')
@@ -1989,7 +1989,7 @@ class ShipmentOutReturn(
                     'invisible': Eval('state') != 'draft',
                     'depends': ['state'],
                     },
-                'done': {
+                'do': {
                     'invisible': Eval('state') != 'received',
                     'depends': ['state'],
                     },
@@ -2185,13 +2185,13 @@ class ShipmentOutReturn(
         to_do = [s for s in shipments
             if s.warehouse_storage == s.warehouse_input]
         if to_do:
-            cls.done(to_do)
+            cls.do(to_do)
 
     @classmethod
     @ModelView.button
     @Workflow.transition('done')
     @set_employee('done_by')
-    def done(cls, shipments):
+    def do(cls, shipments):
         pool = Pool()
         Move = pool.get('stock.move')
         Date = pool.get('ir.date')
@@ -2496,7 +2496,7 @@ class ShipmentInternal(
                         | ~Eval('transit_location')),
                     'depends': ['state', 'transit_location'],
                     },
-                'done': {
+                'do': {
                     'invisible': If(
                         ~Eval('transit_location'),
                         Eval('state') != 'assigned',
@@ -2844,7 +2844,7 @@ class ShipmentInternal(
     @ModelView.button
     @Workflow.transition('done')
     @set_employee('done_by')
-    def done(cls, shipments):
+    def do(cls, shipments):
         pool = Pool()
         Move = pool.get('stock.move')
         Date = pool.get('ir.date')

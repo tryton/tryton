@@ -273,7 +273,7 @@ Check production cost::
 
 Do the production::
 
-    >>> production.click('done')
+    >>> production.click('do')
     >>> production.state
     'done'
 

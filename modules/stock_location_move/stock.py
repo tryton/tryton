@@ -185,7 +185,7 @@ class ShipmentInternal(metaclass=PoolMeta):
     @ModelView.button
     @Workflow.transition('done')
     @clear_location_assignation
-    def done(cls, shipments):
+    def do(cls, shipments):
         pool = Pool()
         Location = pool.get('stock.location')
         to_write = []
@@ -198,7 +198,7 @@ class ShipmentInternal(metaclass=PoolMeta):
                     })
         if to_write:
             Location.write(*to_write)
-        super(ShipmentInternal, cls).done(shipments)
+        super().do(shipments)
 
     @classmethod
     @ModelView.button
@@ -244,8 +244,8 @@ class ShipmentOut(metaclass=PoolMeta):
     @ModelView.button
     @Workflow.transition('done')
     @deactivate_empty_location
-    def done(cls, shipments):
-        super(ShipmentOut, cls).done(shipments)
+    def do(cls, shipments):
+        super().do(shipments)
 
 
 class ShipmentInReturn(metaclass=PoolMeta):
@@ -255,8 +255,8 @@ class ShipmentInReturn(metaclass=PoolMeta):
     @ModelView.button
     @Workflow.transition('done')
     @deactivate_empty_location
-    def done(cls, shipments):
-        super(ShipmentInReturn, cls).done(shipments)
+    def do(cls, shipments):
+        super().do(shipments)
 
 
 class Supply(metaclass=PoolMeta):

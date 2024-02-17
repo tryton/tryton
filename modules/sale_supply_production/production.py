@@ -79,8 +79,8 @@ class Production(metaclass=PoolMeta):
     @ModelView.button
     @Workflow.transition('done')
     @process_sale_supply
-    def done(cls, productions):
-        super().done(productions)
+    def do(cls, productions):
+        super().do(productions)
 
         for production in productions:
             production.assign_supplied()

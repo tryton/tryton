@@ -43,6 +43,6 @@ this repository contains the full copyright notices and license terms. -->
         <button name="cancel" icon="tryton-cancel"/>
         <button name="draft" icon="tryton-clear"/>
         <button name="receive" icon="tryton-forward"/>
-        <button name="done" icon="tryton-ok"/>
+        <button name="do" icon="tryton-ok"/>
     </group>
 </form>

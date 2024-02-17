@@ -231,7 +231,7 @@ Receive partial shipment::
     ...     m.product: m for m in shipment.incoming_moves}
     >>> product2move[product2].quantity = 2.0
     >>> shipment.click('receive')
-    >>> shipment.click('done')
+    >>> shipment.click('do')
     >>> shipment.state
     'done'
 

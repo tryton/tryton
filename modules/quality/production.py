@@ -15,7 +15,7 @@ class Production(ControlledMixin, metaclass=PoolMeta):
         pattern['company'] = self.company.id
         if operation == 'run':
             pattern['products'] = {m.product.id for m in self.inputs}
-        elif operation == 'done':
+        elif operation == 'do':
             pattern['products'] = {m.product.id for m in self.outputs}
         return pattern
 
@@ -27,6 +27,6 @@ class Production(ControlledMixin, metaclass=PoolMeta):
 
     @classmethod
     @ModelView.button
-    @ControlledMixin.control('done', 'quality.wizard_production_inspect_done')
-    def done(cls, productions):
-        return super().done(productions)
+    @ControlledMixin.control('do', 'quality.wizard_production_inspect_do')
+    def do(cls, productions):
+        return super().do(productions)

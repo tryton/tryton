@@ -137,7 +137,7 @@ Send products to Belgium::
     >>> shipment.click('wait')
     >>> shipment.click('pick')
     >>> shipment.click('pack')
-    >>> shipment.click('done')
+    >>> shipment.click('do')
     >>> shipment.state
     'done'
 
@@ -161,7 +161,7 @@ Send products to particular to France::
     >>> shipment.click('wait')
     >>> shipment.click('pick')
     >>> shipment.click('pack')
-    >>> shipment.click('done')
+    >>> shipment.click('do')
     >>> shipment.state
     'done'
 
@@ -205,7 +205,7 @@ Send products to US::
     >>> shipment.click('wait')
     >>> shipment.click('pick')
     >>> shipment.click('pack')
-    >>> shipment.click('done')
+    >>> shipment.click('do')
     >>> shipment.state
     'done'
 
@@ -229,7 +229,7 @@ Send returned products to France::
     >>> move.currency = eur
     >>> shipment.click('wait')
     >>> shipment.click('assign_force')
-    >>> shipment.click('done')
+    >>> shipment.click('do')
     >>> shipment.state
     'done'
 

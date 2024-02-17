@@ -146,7 +146,7 @@ Start the production::
 
 Finish the production::
 
-    >>> production.click('done')
+    >>> production.click('do')
 
     >>> shipment.reload()
     >>> move, = shipment.outgoing_moves

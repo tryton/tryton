@@ -211,7 +211,7 @@ Receiving only 100 products::
     ...     if s.state == 'shipped']
 
     >>> set_user(stock_user)
-    >>> shipment.click('done')
+    >>> shipment.click('do')
     >>> shipment.state
     'done'
     >>> move, = shipment.customer_moves
@@ -364,7 +364,7 @@ from stock::
     >>> shipment.click('assign_force')
     >>> shipment.click('pick')
     >>> shipment.click('pack')
-    >>> shipment.click('done')
+    >>> shipment.click('do')
 
     >>> set_user(sale_user)
     >>> sale.reload()

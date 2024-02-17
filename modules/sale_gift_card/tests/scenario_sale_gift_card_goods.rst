@@ -116,7 +116,7 @@ Ship the gift card::
     >>> shipment.click('assign_force')
     >>> shipment.click('pick')
     >>> shipment.click('pack')
-    >>> shipment.click('done')
+    >>> shipment.click('do')
     Traceback (most recent call last):
         ...
     MoveGiftCardValidationError: ...
@@ -126,4 +126,4 @@ Ship the gift card::
     >>> gift_card.value
     Decimal('20.00')
     >>> move.save()
-    >>> shipment.click('done')
+    >>> shipment.click('do')

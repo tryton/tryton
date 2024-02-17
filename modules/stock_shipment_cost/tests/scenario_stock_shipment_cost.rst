@@ -88,7 +88,7 @@ Create a customer shipment::
     >>> shipment.cost_edit = True
     >>> shipment.cost_used = Decimal('5')
     >>> shipment.cost_currency_used = company.currency
-    >>> shipment.click('done')
+    >>> shipment.click('do')
     >>> shipment.state
     'done'
 

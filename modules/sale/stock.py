@@ -53,8 +53,8 @@ class ShipmentOut(metaclass=PoolMeta):
     @ModelView.button
     @Workflow.transition('done')
     @process_sale('outgoing_moves')
-    def done(cls, shipments):
-        super(ShipmentOut, cls).done(shipments)
+    def do(cls, shipments):
+        super().do(shipments)
 
     @classmethod
     @ModelView.button

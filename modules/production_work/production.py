@@ -94,7 +94,7 @@ class Production(metaclass=PoolMeta):
     @classmethod
     @ModelView.button
     @Workflow.transition('done')
-    def done(cls, productions):
+    def do(cls, productions):
         pool = Pool()
         Work = pool.get('production.work')
         for production in productions:
@@ -104,7 +104,7 @@ class Production(metaclass=PoolMeta):
                         gettext('production_work.msg_do_finished_work',
                             production=production.rec_name,
                             work=work.rec_name))
-        super(Production, cls).done(productions)
+        super().do(productions)
         Work.set_state([w for p in productions for w in p.works])
 
     @classmethod

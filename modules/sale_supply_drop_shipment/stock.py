@@ -203,7 +203,7 @@ class ShipmentDrop(
                     'invisible': Eval('state') != 'waiting',
                     'depends': ['state'],
                     },
-                'done': {
+                'do': {
                     'invisible': Eval('state') != 'shipped',
                     'depends': ['state'],
                     },
@@ -504,7 +504,7 @@ class ShipmentDrop(
     @ModelView.button
     @Workflow.transition('done')
     @process_sale('customer_moves')
-    def done(cls, shipments):
+    def do(cls, shipments):
         pool = Pool()
         Move = pool.get('stock.move')
         Date = pool.get('ir.date')

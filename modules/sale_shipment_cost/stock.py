@@ -216,12 +216,12 @@ class ShipmentOut(ShipmentCostSaleMixin, metaclass=PoolMeta):
     @classmethod
     @ModelView.button
     @Workflow.transition('done')
-    def done(cls, shipments):
+    def do(cls, shipments):
         for shipment in shipments:
             shipment.cost_sale = shipment.cost_sale_used
             shipment.cost_sale_currency = shipment.cost_sale_currency_used
         cls.save(shipments)
-        super().done(shipments)
+        super().do(shipments)
 
     @classmethod
     @ModelView.button

@@ -83,7 +83,7 @@ Change inventory quantity and try to finish::
 
     >>> inventory_move, = shipment.inventory_moves
     >>> inventory_move.quantity = 11
-    >>> shipment.click('done')
+    >>> shipment.click('do')
     Traceback (most recent call last):
         ...
     ShipmentCheckQuantityWarning: ...
@@ -100,7 +100,7 @@ Add extra product to inventory and try to finish::
     >>> move.quantity = 1
     >>> move.from_location = input_loc
     >>> move.to_location = storage_loc
-    >>> shipment.click('done')
+    >>> shipment.click('do')
     Traceback (most recent call last):
         ...
     ShipmentCheckQuantityWarning: ...
@@ -110,7 +110,7 @@ Add extra product to inventory and try to finish::
 
 Finish the shipment::
 
-    >>> shipment.click('done')
+    >>> shipment.click('do')
     >>> shipment.state
     'done'
     >>> len(shipment.incoming_moves)

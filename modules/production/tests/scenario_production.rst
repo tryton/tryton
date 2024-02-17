@@ -171,7 +171,7 @@ Do the production::
     {'done'}
     >>> for input_ in production.inputs:
     ...     assertEqual(input_.effective_date, today)
-    >>> production.click('done')
+    >>> production.click('do')
     >>> output, = production.outputs
     >>> output.state
     'done'
@@ -197,7 +197,7 @@ Make a production with effective date yesterday and running the day before::
     >>> production.reload()
     >>> for input_ in production.inputs:
     ...     assertEqual(input_.effective_date, before_yesterday)
-    >>> production.click('done')
+    >>> production.click('do')
     >>> production.reload()
     >>> output, = production.outputs
     >>> assertEqual(output.effective_date, yesterday)

@@ -13,8 +13,8 @@ class ShipmentIn(metaclass=PoolMeta):
     @classmethod
     @ModelView.button
     @Workflow.transition('done')
-    def done(cls, shipments):
-        super(ShipmentIn, cls).done(shipments)
+    def do(cls, shipments):
+        super().do(shipments)
 
         # Assigned sale move lines
         for shipment in shipments:

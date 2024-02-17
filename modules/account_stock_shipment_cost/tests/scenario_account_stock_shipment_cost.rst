@@ -112,7 +112,7 @@ Ship twice 10 unit of the product::
     >>> shipment1.click('assign_force')
     >>> shipment1.click('pick')
     >>> shipment1.click('pack')
-    >>> shipment1.click('done')
+    >>> shipment1.click('do')
     >>> shipment1.state
     'done'
 
@@ -121,7 +121,7 @@ Ship twice 10 unit of the product::
     >>> shipment2.click('assign_force')
     >>> shipment2.click('pick')
     >>> shipment2.click('pack')
-    >>> shipment2.click('done')
+    >>> shipment2.click('do')
     >>> shipment2.state
     'done'
 

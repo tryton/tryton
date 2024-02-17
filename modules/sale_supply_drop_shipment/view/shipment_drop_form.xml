@@ -35,6 +35,6 @@ this repository contains the full copyright notices and license terms. -->
         <button name="draft"/>
         <button name="wait" icon="tryton-forward"/>
         <button name="ship" icon="tryton-forward"/>
-        <button name="done" icon="tryton-ok"/>
+        <button name="do" icon="tryton-ok"/>
     </group>
 </form>

@@ -438,8 +438,8 @@ class ShipmentOut(PackageMixin, object, metaclass=PoolMeta):
     @classmethod
     @ModelView.button
     @Workflow.transition('done')
-    def done(cls, shipments):
-        super(ShipmentOut, cls).done(shipments)
+    def do(cls, shipments):
+        super().do(shipments)
         cls.check_packages(shipments)
 
     @property
@@ -485,8 +485,8 @@ class ShipmentInReturn(PackageMixin, object, metaclass=PoolMeta):
     @classmethod
     @ModelView.button
     @Workflow.transition('done')
-    def done(cls, shipments):
-        super(ShipmentInReturn, cls).done(shipments)
+    def do(cls, shipments):
+        super().do(shipments)
         cls.check_packages(shipments)
 
     @property

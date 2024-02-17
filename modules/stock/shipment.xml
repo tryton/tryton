@@ -569,8 +569,8 @@ this repository contains the full copyright notices and license terms. -->
 
         <record model="ir.model.button" id="shipment_in_done_button">
             <field name="model">stock.shipment.in</field>
-            <field name="name">done</field>
-            <field name="string">Done</field>
+            <field name="name">do</field>
+            <field name="string">Complete</field>
         </record>
 
         <record model="ir.model.access" id="access_shipment_out">
@@ -630,8 +630,8 @@ this repository contains the full copyright notices and license terms. -->
 
         <record model="ir.model.button" id="shipment_out_done_button">
             <field name="model">stock.shipment.out</field>
-            <field name="name">done</field>
-            <field name="string">Done</field>
+            <field name="name">do</field>
+            <field name="string">Complete</field>
             <field name="confirm">Are you sure you want to complete the shipment?</field>
         </record>
 
@@ -701,8 +701,8 @@ this repository contains the full copyright notices and license terms. -->
 
         <record model="ir.model.button" id="shipment_internal_done_button">
             <field name="model">stock.shipment.internal</field>
-            <field name="name">done</field>
-            <field name="string">Done</field>
+            <field name="name">do</field>
+            <field name="string">Complete</field>
         </record>
 
         <record model="ir.model.button" id="shipment_internal_assign_try_button">
@@ -784,8 +784,8 @@ this repository contains the full copyright notices and license terms. -->
 
         <record model="ir.model.button" id="shipment_out_return_done_button">
             <field name="model">stock.shipment.out.return</field>
-            <field name="name">done</field>
-            <field name="string">Done</field>
+            <field name="name">do</field>
+            <field name="string">Complete</field>
         </record>
 
         <record model="ir.model.access" id="access_shipment_in_return">
@@ -833,8 +833,8 @@ this repository contains the full copyright notices and license terms. -->
 
         <record model="ir.model.button" id="shipment_in_return_done_button">
             <field name="model">stock.shipment.in.return</field>
-            <field name="name">done</field>
-            <field name="string">Done</field>
+            <field name="name">do</field>
+            <field name="string">Complete</field>
             <field name="confirm">Are you sure you want to complete the shipment?</field>
         </record>
 

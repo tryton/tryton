@@ -125,7 +125,7 @@ Transfer 1 product between warehouses::
     >>> accounts['stock'].balance
     Decimal('0.00')
 
-    >>> shipment.click('done')
+    >>> shipment.click('do')
     >>> shipment.state
     'done'
     >>> accounts['stock'].reload()

@@ -147,7 +147,7 @@ Try to do the production with pending purchase::
     >>> production.click('wait')
     >>> production.click('assign_force')
     >>> production.click('run')
-    >>> production.click('done')
+    >>> production.click('do')
     Traceback (most recent call last):
         ...
     PurchaseWarning: ...
@@ -161,4 +161,4 @@ Validate the purchase::
 
 Do the production::
 
-    >>> production.click('done')
+    >>> production.click('do')

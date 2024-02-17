@@ -141,7 +141,7 @@ Receive 9 products::
     >>> shipment.incoming_moves.append(move)
     >>> move.quantity = 5.0
     >>> shipment.click('receive')
-    >>> shipment.click('done')
+    >>> shipment.click('do')
     >>> shipment.state
     'done'
     >>> stock_in.reload()
@@ -213,7 +213,7 @@ Send 5 products::
     >>> shipment.click('pack')
     >>> shipment.state
     'packed'
-    >>> shipment.click('done')
+    >>> shipment.click('do')
     >>> shipment.state
     'done'
     >>> stock_out.reload()
@@ -315,7 +315,7 @@ Create Drop Shipment Move::
 
     >>> shipment, = sale.drop_shipments
     >>> shipment.click('ship')
-    >>> shipment.click('done')
+    >>> shipment.click('do')
     >>> shipment.state
     'done'
 
@@ -367,7 +367,7 @@ Create Drop Shipment Move::
 
     >>> shipment, = sale.drop_shipments
     >>> shipment.click('ship')
-    >>> shipment.click('done')
+    >>> shipment.click('do')
     >>> shipment.state
     'done'
 

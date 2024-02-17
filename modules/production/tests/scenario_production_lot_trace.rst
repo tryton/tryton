@@ -74,7 +74,7 @@ Make a production::
     >>> production.click('wait')
     >>> production.click('assign_force')
     >>> production.click('run')
-    >>> production.click('done')
+    >>> production.click('do')
     >>> production.state
     'done'
 

@@ -119,7 +119,7 @@ Create Internal Shipment from lost_found location::
     >>> lost_found_shipment.click('assign_try')
     >>> lost_found_shipment.state
     'assigned'
-    >>> lost_found_shipment.click('done')
+    >>> lost_found_shipment.click('do')
     >>> lost_found_shipment.state
     'done'
 
@@ -129,7 +129,7 @@ Check that now we can finish the older shipment::
     >>> assertEqual(shipment.assigned_by, employee)
     >>> shipment.done_by
 
-    >>> shipment.click('done')
+    >>> shipment.click('do')
     >>> shipment.state
     'done'
     >>> assertEqual(shipment.done_by, employee)

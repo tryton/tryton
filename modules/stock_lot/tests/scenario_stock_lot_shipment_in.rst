@@ -81,7 +81,7 @@ Change lot and try to finish::
     >>> incoming_move, = shipment.inventory_moves
     >>> assertEqual(incoming_move.lot, lot1)
     >>> incoming_move.lot = lot2
-    >>> shipment.click('done')
+    >>> shipment.click('do')
     Traceback (most recent call last):
         ...
     ShipmentCheckQuantityWarning: ...
@@ -91,6 +91,6 @@ Change lot and try to finish::
 
 Finish the shipment::
 
-    >>> shipment.click('done')
+    >>> shipment.click('do')
     >>> shipment.state
     'done'
