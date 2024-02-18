@@ -4,11 +4,6 @@ check-doc-modules-account:
   variables:
     PACKAGE: modules/account
 
-trigger-doc-build-modules-account:
-  extends: .trigger-doc-build
-  variables:
-    PACKAGE: modules/account
-
 test-modules-account-sqlite:
   extends: .test-sqlite
   variables:
@@ -23,11 +18,6 @@ test-modules-account-postgresql:
 
 check-doc-modules-account_asset:
   extends: .check-doc
-  variables:
-    PACKAGE: modules/account_asset
-
-trigger-doc-build-modules-account_asset:
-  extends: .trigger-doc-build
   variables:
     PACKAGE: modules/account_asset
 
@@ -48,11 +38,6 @@ check-doc-modules-account_be:
   variables:
     PACKAGE: modules/account_be
 
-trigger-doc-build-modules-account_be:
-  extends: .trigger-doc-build
-  variables:
-    PACKAGE: modules/account_be
-
 test-modules-account_be-sqlite:
   extends: .test-sqlite
   variables:
@@ -67,11 +52,6 @@ test-modules-account_be-postgresql:
 
 check-doc-modules-account_budget:
   extends: .check-doc
-  variables:
-    PACKAGE: modules/account_budget
-
-trigger-doc-build-modules-account_budget:
-  extends: .trigger-doc-build
   variables:
     PACKAGE: modules/account_budget
 
@@ -92,11 +72,6 @@ check-doc-modules-account_cash_rounding:
   variables:
     PACKAGE: modules/account_cash_rounding
 
-trigger-doc-build-modules-account_cash_rounding:
-  extends: .trigger-doc-build
-  variables:
-    PACKAGE: modules/account_cash_rounding
-
 test-modules-account_cash_rounding-sqlite:
   extends: .test-sqlite
   variables:
@@ -111,11 +86,6 @@ test-modules-account_cash_rounding-postgresql:
 
 check-doc-modules-account_consolidation:
   extends: .check-doc
-  variables:
-    PACKAGE: modules/account_consolidation
-
-trigger-doc-build-modules-account_consolidation:
-  extends: .trigger-doc-build
   variables:
     PACKAGE: modules/account_consolidation
 
@@ -136,11 +106,6 @@ check-doc-modules-account_credit_limit:
   variables:
     PACKAGE: modules/account_credit_limit
 
-trigger-doc-build-modules-account_credit_limit:
-  extends: .trigger-doc-build
-  variables:
-    PACKAGE: modules/account_credit_limit
-
 test-modules-account_credit_limit-sqlite:
   extends: .test-sqlite
   variables:
@@ -155,11 +120,6 @@ test-modules-account_credit_limit-postgresql:
 
 check-doc-modules-account_de_skr03:
   extends: .check-doc
-  variables:
-    PACKAGE: modules/account_de_skr03
-
-trigger-doc-build-modules-account_de_skr03:
-  extends: .trigger-doc-build
   variables:
     PACKAGE: modules/account_de_skr03
 
@@ -180,11 +140,6 @@ check-doc-modules-account_deposit:
   variables:
     PACKAGE: modules/account_deposit
 
-trigger-doc-build-modules-account_deposit:
-  extends: .trigger-doc-build
-  variables:
-    PACKAGE: modules/account_deposit
-
 test-modules-account_deposit-sqlite:
   extends: .test-sqlite
   variables:
@@ -199,11 +154,6 @@ test-modules-account_deposit-postgresql:
 
 check-doc-modules-account_dunning:
   extends: .check-doc
-  variables:
-    PACKAGE: modules/account_dunning
-
-trigger-doc-build-modules-account_dunning:
-  extends: .trigger-doc-build
   variables:
     PACKAGE: modules/account_dunning
 
@@ -224,11 +174,6 @@ check-doc-modules-account_dunning_email:
   variables:
     PACKAGE: modules/account_dunning_email
 
-trigger-doc-build-modules-account_dunning_email:
-  extends: .trigger-doc-build
-  variables:
-    PACKAGE: modules/account_dunning_email
-
 test-modules-account_dunning_email-sqlite:
   extends: .test-sqlite
   variables:
@@ -243,11 +188,6 @@ test-modules-account_dunning_email-postgresql:
 
 check-doc-modules-account_dunning_fee:
   extends: .check-doc
-  variables:
-    PACKAGE: modules/account_dunning_fee
-
-trigger-doc-build-modules-account_dunning_fee:
-  extends: .trigger-doc-build
   variables:
     PACKAGE: modules/account_dunning_fee
 
@@ -268,11 +208,6 @@ check-doc-modules-account_dunning_letter:
   variables:
     PACKAGE: modules/account_dunning_letter
 
-trigger-doc-build-modules-account_dunning_letter:
-  extends: .trigger-doc-build
-  variables:
-    PACKAGE: modules/account_dunning_letter
-
 test-modules-account_dunning_letter-sqlite:
   extends: .test-sqlite
   variables:
@@ -287,11 +222,6 @@ test-modules-account_dunning_letter-postgresql:
 
 check-doc-modules-account_es:
   extends: .check-doc
-  variables:
-    PACKAGE: modules/account_es
-
-trigger-doc-build-modules-account_es:
-  extends: .trigger-doc-build
   variables:
     PACKAGE: modules/account_es
 
@@ -312,11 +242,6 @@ check-doc-modules-account_es_sii:
   variables:
     PACKAGE: modules/account_es_sii
 
-trigger-doc-build-modules-account_es_sii:
-  extends: .trigger-doc-build
-  variables:
-    PACKAGE: modules/account_es_sii
-
 test-modules-account_es_sii-sqlite:
   extends: .test-sqlite
   variables:
@@ -331,11 +256,6 @@ test-modules-account_es_sii-postgresql:
 
 check-doc-modules-account_eu:
   extends: .check-doc
-  variables:
-    PACKAGE: modules/account_eu
-
-trigger-doc-build-modules-account_eu:
-  extends: .trigger-doc-build
   variables:
     PACKAGE: modules/account_eu
 
@@ -356,11 +276,6 @@ check-doc-modules-account_fr:
   variables:
     PACKAGE: modules/account_fr
 
-trigger-doc-build-modules-account_fr:
-  extends: .trigger-doc-build
-  variables:
-    PACKAGE: modules/account_fr
-
 test-modules-account_fr-sqlite:
   extends: .test-sqlite
   variables:
@@ -375,11 +290,6 @@ test-modules-account_fr-postgresql:
 
 check-doc-modules-account_fr_chorus:
   extends: .check-doc
-  variables:
-    PACKAGE: modules/account_fr_chorus
-
-trigger-doc-build-modules-account_fr_chorus:
-  extends: .trigger-doc-build
   variables:
     PACKAGE: modules/account_fr_chorus
 
@@ -400,11 +310,6 @@ check-doc-modules-account_invoice:
   variables:
     PACKAGE: modules/account_invoice
 
-trigger-doc-build-modules-account_invoice:
-  extends: .trigger-doc-build
-  variables:
-    PACKAGE: modules/account_invoice
-
 test-modules-account_invoice-sqlite:
   extends: .test-sqlite
   variables:
@@ -419,11 +324,6 @@ test-modules-account_invoice-postgresql:
 
 check-doc-modules-account_invoice_correction:
   extends: .check-doc
-  variables:
-    PACKAGE: modules/account_invoice_correction
-
-trigger-doc-build-modules-account_invoice_correction:
-  extends: .trigger-doc-build
   variables:
     PACKAGE: modules/account_invoice_correction
 
@@ -444,11 +344,6 @@ check-doc-modules-account_invoice_defer:
   variables:
     PACKAGE: modules/account_invoice_defer
 
-trigger-doc-build-modules-account_invoice_defer:
-  extends: .trigger-doc-build
-  variables:
-    PACKAGE: modules/account_invoice_defer
-
 test-modules-account_invoice_defer-sqlite:
   extends: .test-sqlite
   variables:
@@ -463,11 +358,6 @@ test-modules-account_invoice_defer-postgresql:
 
 check-doc-modules-account_invoice_history:
   extends: .check-doc
-  variables:
-    PACKAGE: modules/account_invoice_history
-
-trigger-doc-build-modules-account_invoice_history:
-  extends: .trigger-doc-build
   variables:
     PACKAGE: modules/account_invoice_history
 
@@ -488,11 +378,6 @@ check-doc-modules-account_invoice_line_standalone:
   variables:
     PACKAGE: modules/account_invoice_line_standalone
 
-trigger-doc-build-modules-account_invoice_line_standalone:
-  extends: .trigger-doc-build
-  variables:
-    PACKAGE: modules/account_invoice_line_standalone
-
 test-modules-account_invoice_line_standalone-sqlite:
   extends: .test-sqlite
   variables:
@@ -507,11 +392,6 @@ test-modules-account_invoice_line_standalone-postgresql:
 
 check-doc-modules-account_invoice_secondary_unit:
   extends: .check-doc
-  variables:
-    PACKAGE: modules/account_invoice_secondary_unit
-
-trigger-doc-build-modules-account_invoice_secondary_unit:
-  extends: .trigger-doc-build
   variables:
     PACKAGE: modules/account_invoice_secondary_unit
 
@@ -532,11 +412,6 @@ check-doc-modules-account_invoice_stock:
   variables:
     PACKAGE: modules/account_invoice_stock
 
-trigger-doc-build-modules-account_invoice_stock:
-  extends: .trigger-doc-build
-  variables:
-    PACKAGE: modules/account_invoice_stock
-
 test-modules-account_invoice_stock-sqlite:
   extends: .test-sqlite
   variables:
@@ -551,11 +426,6 @@ test-modules-account_invoice_stock-postgresql:
 
 check-doc-modules-account_invoice_watermark:
   extends: .check-doc
-  variables:
-    PACKAGE: modules/account_invoice_watermark
-
-trigger-doc-build-modules-account_invoice_watermark:
-  extends: .trigger-doc-build
   variables:
     PACKAGE: modules/account_invoice_watermark
 
@@ -576,11 +446,6 @@ check-doc-modules-account_move_line_grouping:
   variables:
     PACKAGE: modules/account_move_line_grouping
 
-trigger-doc-build-modules-account_move_line_grouping:
-  extends: .trigger-doc-build
-  variables:
-    PACKAGE: modules/account_move_line_grouping
-
 test-modules-account_move_line_grouping-sqlite:
   extends: .test-sqlite
   variables:
@@ -595,11 +460,6 @@ test-modules-account_move_line_grouping-postgresql:
 
 check-doc-modules-account_payment:
   extends: .check-doc
-  variables:
-    PACKAGE: modules/account_payment
-
-trigger-doc-build-modules-account_payment:
-  extends: .trigger-doc-build
   variables:
     PACKAGE: modules/account_payment
 
@@ -620,11 +480,6 @@ check-doc-modules-account_payment_braintree:
   variables:
     PACKAGE: modules/account_payment_braintree
 
-trigger-doc-build-modules-account_payment_braintree:
-  extends: .trigger-doc-build
-  variables:
-    PACKAGE: modules/account_payment_braintree
-
 test-modules-account_payment_braintree-sqlite:
   extends: .test-sqlite
   variables:
@@ -639,11 +494,6 @@ test-modules-account_payment_braintree-postgresql:
 
 check-doc-modules-account_payment_clearing:
   extends: .check-doc
-  variables:
-    PACKAGE: modules/account_payment_clearing
-
-trigger-doc-build-modules-account_payment_clearing:
-  extends: .trigger-doc-build
   variables:
     PACKAGE: modules/account_payment_clearing
 
@@ -664,11 +514,6 @@ check-doc-modules-account_payment_sepa:
   variables:
     PACKAGE: modules/account_payment_sepa
 
-trigger-doc-build-modules-account_payment_sepa:
-  extends: .trigger-doc-build
-  variables:
-    PACKAGE: modules/account_payment_sepa
-
 test-modules-account_payment_sepa-sqlite:
   extends: .test-sqlite
   variables:
@@ -683,11 +528,6 @@ test-modules-account_payment_sepa-postgresql:
 
 check-doc-modules-account_payment_sepa_cfonb:
   extends: .check-doc
-  variables:
-    PACKAGE: modules/account_payment_sepa_cfonb
-
-trigger-doc-build-modules-account_payment_sepa_cfonb:
-  extends: .trigger-doc-build
   variables:
     PACKAGE: modules/account_payment_sepa_cfonb
 
@@ -708,11 +548,6 @@ check-doc-modules-account_payment_stripe:
   variables:
     PACKAGE: modules/account_payment_stripe
 
-trigger-doc-build-modules-account_payment_stripe:
-  extends: .trigger-doc-build
-  variables:
-    PACKAGE: modules/account_payment_stripe
-
 test-modules-account_payment_stripe-sqlite:
   extends: .test-sqlite
   variables:
@@ -727,11 +562,6 @@ test-modules-account_payment_stripe-postgresql:
 
 check-doc-modules-account_product:
   extends: .check-doc
-  variables:
-    PACKAGE: modules/account_product
-
-trigger-doc-build-modules-account_product:
-  extends: .trigger-doc-build
   variables:
     PACKAGE: modules/account_product
 
@@ -752,11 +582,6 @@ check-doc-modules-account_receivable_rule:
   variables:
     PACKAGE: modules/account_receivable_rule
 
-trigger-doc-build-modules-account_receivable_rule:
-  extends: .trigger-doc-build
-  variables:
-    PACKAGE: modules/account_receivable_rule
-
 test-modules-account_receivable_rule-sqlite:
   extends: .test-sqlite
   variables:
@@ -771,11 +596,6 @@ test-modules-account_receivable_rule-postgresql:
 
 check-doc-modules-account_rule:
   extends: .check-doc
-  variables:
-    PACKAGE: modules/account_rule
-
-trigger-doc-build-modules-account_rule:
-  extends: .trigger-doc-build
   variables:
     PACKAGE: modules/account_rule
 
@@ -796,11 +616,6 @@ check-doc-modules-account_statement:
   variables:
     PACKAGE: modules/account_statement
 
-trigger-doc-build-modules-account_statement:
-  extends: .trigger-doc-build
-  variables:
-    PACKAGE: modules/account_statement
-
 test-modules-account_statement-sqlite:
   extends: .test-sqlite
   variables:
@@ -815,11 +630,6 @@ test-modules-account_statement-postgresql:
 
 check-doc-modules-account_statement_aeb43:
   extends: .check-doc
-  variables:
-    PACKAGE: modules/account_statement_aeb43
-
-trigger-doc-build-modules-account_statement_aeb43:
-  extends: .trigger-doc-build
   variables:
     PACKAGE: modules/account_statement_aeb43
 
@@ -840,11 +650,6 @@ check-doc-modules-account_statement_coda:
   variables:
     PACKAGE: modules/account_statement_coda
 
-trigger-doc-build-modules-account_statement_coda:
-  extends: .trigger-doc-build
-  variables:
-    PACKAGE: modules/account_statement_coda
-
 test-modules-account_statement_coda-sqlite:
   extends: .test-sqlite
   variables:
@@ -859,11 +664,6 @@ test-modules-account_statement_coda-postgresql:
 
 check-doc-modules-account_statement_mt940:
   extends: .check-doc
-  variables:
-    PACKAGE: modules/account_statement_mt940
-
-trigger-doc-build-modules-account_statement_mt940:
-  extends: .trigger-doc-build
   variables:
     PACKAGE: modules/account_statement_mt940
 
@@ -884,11 +684,6 @@ check-doc-modules-account_statement_ofx:
   variables:
     PACKAGE: modules/account_statement_ofx
 
-trigger-doc-build-modules-account_statement_ofx:
-  extends: .trigger-doc-build
-  variables:
-    PACKAGE: modules/account_statement_ofx
-
 test-modules-account_statement_ofx-sqlite:
   extends: .test-sqlite
   variables:
@@ -903,11 +698,6 @@ test-modules-account_statement_ofx-postgresql:
 
 check-doc-modules-account_statement_rule:
   extends: .check-doc
-  variables:
-    PACKAGE: modules/account_statement_rule
-
-trigger-doc-build-modules-account_statement_rule:
-  extends: .trigger-doc-build
   variables:
     PACKAGE: modules/account_statement_rule
 
@@ -928,11 +718,6 @@ check-doc-modules-account_statement_sepa:
   variables:
     PACKAGE: modules/account_statement_sepa
 
-trigger-doc-build-modules-account_statement_sepa:
-  extends: .trigger-doc-build
-  variables:
-    PACKAGE: modules/account_statement_sepa
-
 test-modules-account_statement_sepa-sqlite:
   extends: .test-sqlite
   variables:
@@ -947,11 +732,6 @@ test-modules-account_statement_sepa-postgresql:
 
 check-doc-modules-account_stock_anglo_saxon:
   extends: .check-doc
-  variables:
-    PACKAGE: modules/account_stock_anglo_saxon
-
-trigger-doc-build-modules-account_stock_anglo_saxon:
-  extends: .trigger-doc-build
   variables:
     PACKAGE: modules/account_stock_anglo_saxon
 
@@ -972,11 +752,6 @@ check-doc-modules-account_stock_continental:
   variables:
     PACKAGE: modules/account_stock_continental
 
-trigger-doc-build-modules-account_stock_continental:
-  extends: .trigger-doc-build
-  variables:
-    PACKAGE: modules/account_stock_continental
-
 test-modules-account_stock_continental-sqlite:
   extends: .test-sqlite
   variables:
@@ -991,11 +766,6 @@ test-modules-account_stock_continental-postgresql:
 
 check-doc-modules-account_stock_eu:
   extends: .check-doc
-  variables:
-    PACKAGE: modules/account_stock_eu
-
-trigger-doc-build-modules-account_stock_eu:
-  extends: .trigger-doc-build
   variables:
     PACKAGE: modules/account_stock_eu
 
@@ -1016,11 +786,6 @@ check-doc-modules-account_stock_landed_cost:
   variables:
     PACKAGE: modules/account_stock_landed_cost
 
-trigger-doc-build-modules-account_stock_landed_cost:
-  extends: .trigger-doc-build
-  variables:
-    PACKAGE: modules/account_stock_landed_cost
-
 test-modules-account_stock_landed_cost-sqlite:
   extends: .test-sqlite
   variables:
@@ -1035,11 +800,6 @@ test-modules-account_stock_landed_cost-postgresql:
 
 check-doc-modules-account_stock_landed_cost_weight:
   extends: .check-doc
-  variables:
-    PACKAGE: modules/account_stock_landed_cost_weight
-
-trigger-doc-build-modules-account_stock_landed_cost_weight:
-  extends: .trigger-doc-build
   variables:
     PACKAGE: modules/account_stock_landed_cost_weight
 
@@ -1060,11 +820,6 @@ check-doc-modules-account_stock_shipment_cost:
   variables:
     PACKAGE: modules/account_stock_shipment_cost
 
-trigger-doc-build-modules-account_stock_shipment_cost:
-  extends: .trigger-doc-build
-  variables:
-    PACKAGE: modules/account_stock_shipment_cost
-
 test-modules-account_stock_shipment_cost-sqlite:
   extends: .test-sqlite
   variables:
@@ -1079,11 +834,6 @@ test-modules-account_stock_shipment_cost-postgresql:
 
 check-doc-modules-account_stock_shipment_cost_weight:
   extends: .check-doc
-  variables:
-    PACKAGE: modules/account_stock_shipment_cost_weight
-
-trigger-doc-build-modules-account_stock_shipment_cost_weight:
-  extends: .trigger-doc-build
   variables:
     PACKAGE: modules/account_stock_shipment_cost_weight
 
@@ -1104,11 +854,6 @@ check-doc-modules-account_tax_cash:
   variables:
     PACKAGE: modules/account_tax_cash
 
-trigger-doc-build-modules-account_tax_cash:
-  extends: .trigger-doc-build
-  variables:
-    PACKAGE: modules/account_tax_cash
-
 test-modules-account_tax_cash-sqlite:
   extends: .test-sqlite
   variables:
@@ -1123,11 +868,6 @@ test-modules-account_tax_cash-postgresql:
 
 check-doc-modules-account_tax_non_deductible:
   extends: .check-doc
-  variables:
-    PACKAGE: modules/account_tax_non_deductible
-
-trigger-doc-build-modules-account_tax_non_deductible:
-  extends: .trigger-doc-build
   variables:
     PACKAGE: modules/account_tax_non_deductible
 
@@ -1148,11 +888,6 @@ check-doc-modules-account_tax_rule_country:
   variables:
     PACKAGE: modules/account_tax_rule_country
 
-trigger-doc-build-modules-account_tax_rule_country:
-  extends: .trigger-doc-build
-  variables:
-    PACKAGE: modules/account_tax_rule_country
-
 test-modules-account_tax_rule_country-sqlite:
   extends: .test-sqlite
   variables:
@@ -1167,11 +902,6 @@ test-modules-account_tax_rule_country-postgresql:
 
 check-doc-modules-analytic_account:
   extends: .check-doc
-  variables:
-    PACKAGE: modules/analytic_account
-
-trigger-doc-build-modules-analytic_account:
-  extends: .trigger-doc-build
   variables:
     PACKAGE: modules/analytic_account
 
@@ -1192,11 +922,6 @@ check-doc-modules-analytic_budget:
   variables:
     PACKAGE: modules/analytic_budget
 
-trigger-doc-build-modules-analytic_budget:
-  extends: .trigger-doc-build
-  variables:
-    PACKAGE: modules/analytic_budget
-
 test-modules-analytic_budget-sqlite:
   extends: .test-sqlite
   variables:
@@ -1211,11 +936,6 @@ test-modules-analytic_budget-postgresql:
 
 check-doc-modules-analytic_invoice:
   extends: .check-doc
-  variables:
-    PACKAGE: modules/analytic_invoice
-
-trigger-doc-build-modules-analytic_invoice:
-  extends: .trigger-doc-build
   variables:
     PACKAGE: modules/analytic_invoice
 
@@ -1236,11 +956,6 @@ check-doc-modules-analytic_purchase:
   variables:
     PACKAGE: modules/analytic_purchase
 
-trigger-doc-build-modules-analytic_purchase:
-  extends: .trigger-doc-build
-  variables:
-    PACKAGE: modules/analytic_purchase
-
 test-modules-analytic_purchase-sqlite:
   extends: .test-sqlite
   variables:
@@ -1255,11 +970,6 @@ test-modules-analytic_purchase-postgresql:
 
 check-doc-modules-analytic_sale:
   extends: .check-doc
-  variables:
-    PACKAGE: modules/analytic_sale
-
-trigger-doc-build-modules-analytic_sale:
-  extends: .trigger-doc-build
   variables:
     PACKAGE: modules/analytic_sale
 
@@ -1280,11 +990,6 @@ check-doc-modules-attendance:
   variables:
     PACKAGE: modules/attendance
 
-trigger-doc-build-modules-attendance:
-  extends: .trigger-doc-build
-  variables:
-    PACKAGE: modules/attendance
-
 test-modules-attendance-sqlite:
   extends: .test-sqlite
   variables:
@@ -1299,11 +1004,6 @@ test-modules-attendance-postgresql:
 
 check-doc-modules-authentication_saml:
   extends: .check-doc
-  variables:
-    PACKAGE: modules/authentication_saml
-
-trigger-doc-build-modules-authentication_saml:
-  extends: .trigger-doc-build
   variables:
     PACKAGE: modules/authentication_saml
 
@@ -1324,11 +1024,6 @@ check-doc-modules-authentication_sms:
   variables:
     PACKAGE: modules/authentication_sms
 
-trigger-doc-build-modules-authentication_sms:
-  extends: .trigger-doc-build
-  variables:
-    PACKAGE: modules/authentication_sms
-
 test-modules-authentication_sms-sqlite:
   extends: .test-sqlite
   variables:
@@ -1343,11 +1038,6 @@ test-modules-authentication_sms-postgresql:
 
 check-doc-modules-bank:
   extends: .check-doc
-  variables:
-    PACKAGE: modules/bank
-
-trigger-doc-build-modules-bank:
-  extends: .trigger-doc-build
   variables:
     PACKAGE: modules/bank
 
@@ -1368,11 +1058,6 @@ check-doc-modules-carrier:
   variables:
     PACKAGE: modules/carrier
 
-trigger-doc-build-modules-carrier:
-  extends: .trigger-doc-build
-  variables:
-    PACKAGE: modules/carrier
-
 test-modules-carrier-sqlite:
   extends: .test-sqlite
   variables:
@@ -1387,11 +1072,6 @@ test-modules-carrier-postgresql:
 
 check-doc-modules-carrier_carriage:
   extends: .check-doc
-  variables:
-    PACKAGE: modules/carrier_carriage
-
-trigger-doc-build-modules-carrier_carriage:
-  extends: .trigger-doc-build
   variables:
     PACKAGE: modules/carrier_carriage
 
@@ -1412,11 +1092,6 @@ check-doc-modules-carrier_percentage:
   variables:
     PACKAGE: modules/carrier_percentage
 
-trigger-doc-build-modules-carrier_percentage:
-  extends: .trigger-doc-build
-  variables:
-    PACKAGE: modules/carrier_percentage
-
 test-modules-carrier_percentage-sqlite:
   extends: .test-sqlite
   variables:
@@ -1431,11 +1106,6 @@ test-modules-carrier_percentage-postgresql:
 
 check-doc-modules-carrier_subdivision:
   extends: .check-doc
-  variables:
-    PACKAGE: modules/carrier_subdivision
-
-trigger-doc-build-modules-carrier_subdivision:
-  extends: .trigger-doc-build
   variables:
     PACKAGE: modules/carrier_subdivision
 
@@ -1456,11 +1126,6 @@ check-doc-modules-carrier_weight:
   variables:
     PACKAGE: modules/carrier_weight
 
-trigger-doc-build-modules-carrier_weight:
-  extends: .trigger-doc-build
-  variables:
-    PACKAGE: modules/carrier_weight
-
 test-modules-carrier_weight-sqlite:
   extends: .test-sqlite
   variables:
@@ -1475,11 +1140,6 @@ test-modules-carrier_weight-postgresql:
 
 check-doc-modules-commission:
   extends: .check-doc
-  variables:
-    PACKAGE: modules/commission
-
-trigger-doc-build-modules-commission:
-  extends: .trigger-doc-build
   variables:
     PACKAGE: modules/commission
 
@@ -1500,11 +1160,6 @@ check-doc-modules-commission_waiting:
   variables:
     PACKAGE: modules/commission_waiting
 
-trigger-doc-build-modules-commission_waiting:
-  extends: .trigger-doc-build
-  variables:
-    PACKAGE: modules/commission_waiting
-
 test-modules-commission_waiting-sqlite:
   extends: .test-sqlite
   variables:
@@ -1519,11 +1174,6 @@ test-modules-commission_waiting-postgresql:
 
 check-doc-modules-company:
   extends: .check-doc
-  variables:
-    PACKAGE: modules/company
-
-trigger-doc-build-modules-company:
-  extends: .trigger-doc-build
   variables:
     PACKAGE: modules/company
 
@@ -1544,11 +1194,6 @@ check-doc-modules-company_work_time:
   variables:
     PACKAGE: modules/company_work_time
 
-trigger-doc-build-modules-company_work_time:
-  extends: .trigger-doc-build
-  variables:
-    PACKAGE: modules/company_work_time
-
 test-modules-company_work_time-sqlite:
   extends: .test-sqlite
   variables:
@@ -1563,11 +1208,6 @@ test-modules-company_work_time-postgresql:
 
 check-doc-modules-country:
   extends: .check-doc
-  variables:
-    PACKAGE: modules/country
-
-trigger-doc-build-modules-country:
-  extends: .trigger-doc-build
   variables:
     PACKAGE: modules/country
 
@@ -1588,11 +1228,6 @@ check-doc-modules-currency:
   variables:
     PACKAGE: modules/currency
 
-trigger-doc-build-modules-currency:
-  extends: .trigger-doc-build
-  variables:
-    PACKAGE: modules/currency
-
 test-modules-currency-sqlite:
   extends: .test-sqlite
   variables:
@@ -1607,11 +1242,6 @@ test-modules-currency-postgresql:
 
 check-doc-modules-currency_ro:
   extends: .check-doc
-  variables:
-    PACKAGE: modules/currency_ro
-
-trigger-doc-build-modules-currency_ro:
-  extends: .trigger-doc-build
   variables:
     PACKAGE: modules/currency_ro
 
@@ -1632,11 +1262,6 @@ check-doc-modules-currency_rs:
   variables:
     PACKAGE: modules/currency_rs
 
-trigger-doc-build-modules-currency_rs:
-  extends: .trigger-doc-build
-  variables:
-    PACKAGE: modules/currency_rs
-
 test-modules-currency_rs-sqlite:
   extends: .test-sqlite
   variables:
@@ -1651,11 +1276,6 @@ test-modules-currency_rs-postgresql:
 
 check-doc-modules-customs:
   extends: .check-doc
-  variables:
-    PACKAGE: modules/customs
-
-trigger-doc-build-modules-customs:
-  extends: .trigger-doc-build
   variables:
     PACKAGE: modules/customs
 
@@ -1676,11 +1296,6 @@ check-doc-modules-dashboard:
   variables:
     PACKAGE: modules/dashboard
 
-trigger-doc-build-modules-dashboard:
-  extends: .trigger-doc-build
-  variables:
-    PACKAGE: modules/dashboard
-
 test-modules-dashboard-sqlite:
   extends: .test-sqlite
   variables:
@@ -1695,11 +1310,6 @@ test-modules-dashboard-postgresql:
 
 check-doc-modules-document_incoming:
   extends: .check-doc
-  variables:
-    PACKAGE: modules/document_incoming
-
-trigger-doc-build-modules-document_incoming:
-  extends: .trigger-doc-build
   variables:
     PACKAGE: modules/document_incoming
 
@@ -1720,11 +1330,6 @@ check-doc-modules-document_incoming_invoice:
   variables:
     PACKAGE: modules/document_incoming_invoice
 
-trigger-doc-build-modules-document_incoming_invoice:
-  extends: .trigger-doc-build
-  variables:
-    PACKAGE: modules/document_incoming_invoice
-
 test-modules-document_incoming_invoice-sqlite:
   extends: .test-sqlite
   variables:
@@ -1739,11 +1344,6 @@ test-modules-document_incoming_invoice-postgresql:
 
 check-doc-modules-document_incoming_ocr:
   extends: .check-doc
-  variables:
-    PACKAGE: modules/document_incoming_ocr
-
-trigger-doc-build-modules-document_incoming_ocr:
-  extends: .trigger-doc-build
   variables:
     PACKAGE: modules/document_incoming_ocr
 
@@ -1764,11 +1364,6 @@ check-doc-modules-document_incoming_ocr_typless:
   variables:
     PACKAGE: modules/document_incoming_ocr_typless
 
-trigger-doc-build-modules-document_incoming_ocr_typless:
-  extends: .trigger-doc-build
-  variables:
-    PACKAGE: modules/document_incoming_ocr_typless
-
 test-modules-document_incoming_ocr_typless-sqlite:
   extends: .test-sqlite
   variables:
@@ -1783,11 +1378,6 @@ test-modules-document_incoming_ocr_typless-postgresql:
 
 check-doc-modules-edocument_uncefact:
   extends: .check-doc
-  variables:
-    PACKAGE: modules/edocument_uncefact
-
-trigger-doc-build-modules-edocument_uncefact:
-  extends: .trigger-doc-build
   variables:
     PACKAGE: modules/edocument_uncefact
 
@@ -1808,11 +1398,6 @@ check-doc-modules-edocument_unece:
   variables:
     PACKAGE: modules/edocument_unece
 
-trigger-doc-build-modules-edocument_unece:
-  extends: .trigger-doc-build
-  variables:
-    PACKAGE: modules/edocument_unece
-
 test-modules-edocument_unece-sqlite:
   extends: .test-sqlite
   variables:
@@ -1827,11 +1412,6 @@ test-modules-edocument_unece-postgresql:
 
 check-doc-modules-google_maps:
   extends: .check-doc
-  variables:
-    PACKAGE: modules/google_maps
-
-trigger-doc-build-modules-google_maps:
-  extends: .trigger-doc-build
   variables:
     PACKAGE: modules/google_maps
 
@@ -1852,11 +1432,6 @@ check-doc-modules-inbound_email:
   variables:
     PACKAGE: modules/inbound_email
 
-trigger-doc-build-modules-inbound_email:
-  extends: .trigger-doc-build
-  variables:
-    PACKAGE: modules/inbound_email
-
 test-modules-inbound_email-sqlite:
   extends: .test-sqlite
   variables:
@@ -1871,11 +1446,6 @@ test-modules-inbound_email-postgresql:
 
 check-doc-modules-incoterm:
   extends: .check-doc
-  variables:
-    PACKAGE: modules/incoterm
-
-trigger-doc-build-modules-incoterm:
-  extends: .trigger-doc-build
   variables:
     PACKAGE: modules/incoterm
 
@@ -1896,11 +1466,6 @@ check-doc-modules-ldap_authentication:
   variables:
     PACKAGE: modules/ldap_authentication
 
-trigger-doc-build-modules-ldap_authentication:
-  extends: .trigger-doc-build
-  variables:
-    PACKAGE: modules/ldap_authentication
-
 test-modules-ldap_authentication-sqlite:
   extends: .test-sqlite
   variables:
@@ -1915,11 +1480,6 @@ test-modules-ldap_authentication-postgresql:
 
 check-doc-modules-marketing:
   extends: .check-doc
-  variables:
-    PACKAGE: modules/marketing
-
-trigger-doc-build-modules-marketing:
-  extends: .trigger-doc-build
   variables:
     PACKAGE: modules/marketing
 
@@ -1940,11 +1500,6 @@ check-doc-modules-marketing_automation:
   variables:
     PACKAGE: modules/marketing_automation
 
-trigger-doc-build-modules-marketing_automation:
-  extends: .trigger-doc-build
-  variables:
-    PACKAGE: modules/marketing_automation
-
 test-modules-marketing_automation-sqlite:
   extends: .test-sqlite
   variables:
@@ -1959,11 +1514,6 @@ test-modules-marketing_automation-postgresql:
 
 check-doc-modules-marketing_campaign:
   extends: .check-doc
-  variables:
-    PACKAGE: modules/marketing_campaign
-
-trigger-doc-build-modules-marketing_campaign:
-  extends: .trigger-doc-build
   variables:
     PACKAGE: modules/marketing_campaign
 
@@ -1984,11 +1534,6 @@ check-doc-modules-marketing_email:
   variables:
     PACKAGE: modules/marketing_email
 
-trigger-doc-build-modules-marketing_email:
-  extends: .trigger-doc-build
-  variables:
-    PACKAGE: modules/marketing_email
-
 test-modules-marketing_email-sqlite:
   extends: .test-sqlite
   variables:
@@ -2003,11 +1548,6 @@ test-modules-marketing_email-postgresql:
 
 check-doc-modules-notification_email:
   extends: .check-doc
-  variables:
-    PACKAGE: modules/notification_email
-
-trigger-doc-build-modules-notification_email:
-  extends: .trigger-doc-build
   variables:
     PACKAGE: modules/notification_email
 
@@ -2028,11 +1568,6 @@ check-doc-modules-party:
   variables:
     PACKAGE: modules/party
 
-trigger-doc-build-modules-party:
-  extends: .trigger-doc-build
-  variables:
-    PACKAGE: modules/party
-
 test-modules-party-sqlite:
   extends: .test-sqlite
   variables:
@@ -2047,11 +1582,6 @@ test-modules-party-postgresql:
 
 check-doc-modules-party_avatar:
   extends: .check-doc
-  variables:
-    PACKAGE: modules/party_avatar
-
-trigger-doc-build-modules-party_avatar:
-  extends: .trigger-doc-build
   variables:
     PACKAGE: modules/party_avatar
 
@@ -2072,11 +1602,6 @@ check-doc-modules-party_relationship:
   variables:
     PACKAGE: modules/party_relationship
 
-trigger-doc-build-modules-party_relationship:
-  extends: .trigger-doc-build
-  variables:
-    PACKAGE: modules/party_relationship
-
 test-modules-party_relationship-sqlite:
   extends: .test-sqlite
   variables:
@@ -2091,11 +1616,6 @@ test-modules-party_relationship-postgresql:
 
 check-doc-modules-party_siret:
   extends: .check-doc
-  variables:
-    PACKAGE: modules/party_siret
-
-trigger-doc-build-modules-party_siret:
-  extends: .trigger-doc-build
   variables:
     PACKAGE: modules/party_siret
 
@@ -2116,11 +1636,6 @@ check-doc-modules-product:
   variables:
     PACKAGE: modules/product
 
-trigger-doc-build-modules-product:
-  extends: .trigger-doc-build
-  variables:
-    PACKAGE: modules/product
-
 test-modules-product-sqlite:
   extends: .test-sqlite
   variables:
@@ -2135,11 +1650,6 @@ test-modules-product-postgresql:
 
 check-doc-modules-product_attribute:
   extends: .check-doc
-  variables:
-    PACKAGE: modules/product_attribute
-
-trigger-doc-build-modules-product_attribute:
-  extends: .trigger-doc-build
   variables:
     PACKAGE: modules/product_attribute
 
@@ -2160,11 +1670,6 @@ check-doc-modules-product_classification:
   variables:
     PACKAGE: modules/product_classification
 
-trigger-doc-build-modules-product_classification:
-  extends: .trigger-doc-build
-  variables:
-    PACKAGE: modules/product_classification
-
 test-modules-product_classification-sqlite:
   extends: .test-sqlite
   variables:
@@ -2179,11 +1684,6 @@ test-modules-product_classification-postgresql:
 
 check-doc-modules-product_classification_taxonomic:
   extends: .check-doc
-  variables:
-    PACKAGE: modules/product_classification_taxonomic
-
-trigger-doc-build-modules-product_classification_taxonomic:
-  extends: .trigger-doc-build
   variables:
     PACKAGE: modules/product_classification_taxonomic
 
@@ -2204,11 +1704,6 @@ check-doc-modules-product_cost_fifo:
   variables:
     PACKAGE: modules/product_cost_fifo
 
-trigger-doc-build-modules-product_cost_fifo:
-  extends: .trigger-doc-build
-  variables:
-    PACKAGE: modules/product_cost_fifo
-
 test-modules-product_cost_fifo-sqlite:
   extends: .test-sqlite
   variables:
@@ -2223,11 +1718,6 @@ test-modules-product_cost_fifo-postgresql:
 
 check-doc-modules-product_cost_history:
   extends: .check-doc
-  variables:
-    PACKAGE: modules/product_cost_history
-
-trigger-doc-build-modules-product_cost_history:
-  extends: .trigger-doc-build
   variables:
     PACKAGE: modules/product_cost_history
 
@@ -2248,11 +1738,6 @@ check-doc-modules-product_cost_warehouse:
   variables:
     PACKAGE: modules/product_cost_warehouse
 
-trigger-doc-build-modules-product_cost_warehouse:
-  extends: .trigger-doc-build
-  variables:
-    PACKAGE: modules/product_cost_warehouse
-
 test-modules-product_cost_warehouse-sqlite:
   extends: .test-sqlite
   variables:
@@ -2267,11 +1752,6 @@ test-modules-product_cost_warehouse-postgresql:
 
 check-doc-modules-product_image:
   extends: .check-doc
-  variables:
-    PACKAGE: modules/product_image
-
-trigger-doc-build-modules-product_image:
-  extends: .trigger-doc-build
   variables:
     PACKAGE: modules/product_image
 
@@ -2292,11 +1772,6 @@ check-doc-modules-product_image_attribute:
   variables:
     PACKAGE: modules/product_image_attribute
 
-trigger-doc-build-modules-product_image_attribute:
-  extends: .trigger-doc-build
-  variables:
-    PACKAGE: modules/product_image_attribute
-
 test-modules-product_image_attribute-sqlite:
   extends: .test-sqlite
   variables:
@@ -2311,11 +1786,6 @@ test-modules-product_image_attribute-postgresql:
 
 check-doc-modules-product_kit:
   extends: .check-doc
-  variables:
-    PACKAGE: modules/product_kit
-
-trigger-doc-build-modules-product_kit:
-  extends: .trigger-doc-build
   variables:
     PACKAGE: modules/product_kit
 
@@ -2336,11 +1806,6 @@ check-doc-modules-product_measurements:
   variables:
     PACKAGE: modules/product_measurements
 
-trigger-doc-build-modules-product_measurements:
-  extends: .trigger-doc-build
-  variables:
-    PACKAGE: modules/product_measurements
-
 test-modules-product_measurements-sqlite:
   extends: .test-sqlite
   variables:
@@ -2355,11 +1820,6 @@ test-modules-product_measurements-postgresql:
 
 check-doc-modules-product_price_list:
   extends: .check-doc
-  variables:
-    PACKAGE: modules/product_price_list
-
-trigger-doc-build-modules-product_price_list:
-  extends: .trigger-doc-build
   variables:
     PACKAGE: modules/product_price_list
 
@@ -2380,11 +1840,6 @@ check-doc-modules-product_price_list_cache:
   variables:
     PACKAGE: modules/product_price_list_cache
 
-trigger-doc-build-modules-product_price_list_cache:
-  extends: .trigger-doc-build
-  variables:
-    PACKAGE: modules/product_price_list_cache
-
 test-modules-product_price_list_cache-sqlite:
   extends: .test-sqlite
   variables:
@@ -2399,11 +1854,6 @@ test-modules-product_price_list_cache-postgresql:
 
 check-doc-modules-product_price_list_dates:
   extends: .check-doc
-  variables:
-    PACKAGE: modules/product_price_list_dates
-
-trigger-doc-build-modules-product_price_list_dates:
-  extends: .trigger-doc-build
   variables:
     PACKAGE: modules/product_price_list_dates
 
@@ -2424,11 +1874,6 @@ check-doc-modules-product_price_list_parent:
   variables:
     PACKAGE: modules/product_price_list_parent
 
-trigger-doc-build-modules-product_price_list_parent:
-  extends: .trigger-doc-build
-  variables:
-    PACKAGE: modules/product_price_list_parent
-
 test-modules-product_price_list_parent-sqlite:
   extends: .test-sqlite
   variables:
@@ -2443,11 +1888,6 @@ test-modules-product_price_list_parent-postgresql:
 
 check-doc-modules-production:
   extends: .check-doc
-  variables:
-    PACKAGE: modules/production
-
-trigger-doc-build-modules-production:
-  extends: .trigger-doc-build
   variables:
     PACKAGE: modules/production
 
@@ -2468,11 +1908,6 @@ check-doc-modules-production_outsourcing:
   variables:
     PACKAGE: modules/production_outsourcing
 
-trigger-doc-build-modules-production_outsourcing:
-  extends: .trigger-doc-build
-  variables:
-    PACKAGE: modules/production_outsourcing
-
 test-modules-production_outsourcing-sqlite:
   extends: .test-sqlite
   variables:
@@ -2487,11 +1922,6 @@ test-modules-production_outsourcing-postgresql:
 
 check-doc-modules-production_routing:
   extends: .check-doc
-  variables:
-    PACKAGE: modules/production_routing
-
-trigger-doc-build-modules-production_routing:
-  extends: .trigger-doc-build
   variables:
     PACKAGE: modules/production_routing
 
@@ -2512,11 +1942,6 @@ check-doc-modules-production_split:
   variables:
     PACKAGE: modules/production_split
 
-trigger-doc-build-modules-production_split:
-  extends: .trigger-doc-build
-  variables:
-    PACKAGE: modules/production_split
-
 test-modules-production_split-sqlite:
   extends: .test-sqlite
   variables:
@@ -2531,11 +1956,6 @@ test-modules-production_split-postgresql:
 
 check-doc-modules-production_work:
   extends: .check-doc
-  variables:
-    PACKAGE: modules/production_work
-
-trigger-doc-build-modules-production_work:
-  extends: .trigger-doc-build
   variables:
     PACKAGE: modules/production_work
 
@@ -2556,11 +1976,6 @@ check-doc-modules-production_work_timesheet:
   variables:
     PACKAGE: modules/production_work_timesheet
 
-trigger-doc-build-modules-production_work_timesheet:
-  extends: .trigger-doc-build
-  variables:
-    PACKAGE: modules/production_work_timesheet
-
 test-modules-production_work_timesheet-sqlite:
   extends: .test-sqlite
   variables:
@@ -2575,11 +1990,6 @@ test-modules-production_work_timesheet-postgresql:
 
 check-doc-modules-project:
   extends: .check-doc
-  variables:
-    PACKAGE: modules/project
-
-trigger-doc-build-modules-project:
-  extends: .trigger-doc-build
   variables:
     PACKAGE: modules/project
 
@@ -2600,11 +2010,6 @@ check-doc-modules-project_invoice:
   variables:
     PACKAGE: modules/project_invoice
 
-trigger-doc-build-modules-project_invoice:
-  extends: .trigger-doc-build
-  variables:
-    PACKAGE: modules/project_invoice
-
 test-modules-project_invoice-sqlite:
   extends: .test-sqlite
   variables:
@@ -2619,11 +2024,6 @@ test-modules-project_invoice-postgresql:
 
 check-doc-modules-project_plan:
   extends: .check-doc
-  variables:
-    PACKAGE: modules/project_plan
-
-trigger-doc-build-modules-project_plan:
-  extends: .trigger-doc-build
   variables:
     PACKAGE: modules/project_plan
 
@@ -2644,11 +2044,6 @@ check-doc-modules-project_revenue:
   variables:
     PACKAGE: modules/project_revenue
 
-trigger-doc-build-modules-project_revenue:
-  extends: .trigger-doc-build
-  variables:
-    PACKAGE: modules/project_revenue
-
 test-modules-project_revenue-sqlite:
   extends: .test-sqlite
   variables:
@@ -2663,11 +2058,6 @@ test-modules-project_revenue-postgresql:
 
 check-doc-modules-purchase:
   extends: .check-doc
-  variables:
-    PACKAGE: modules/purchase
-
-trigger-doc-build-modules-purchase:
-  extends: .trigger-doc-build
   variables:
     PACKAGE: modules/purchase
 
@@ -2688,11 +2078,6 @@ check-doc-modules-purchase_amendment:
   variables:
     PACKAGE: modules/purchase_amendment
 
-trigger-doc-build-modules-purchase_amendment:
-  extends: .trigger-doc-build
-  variables:
-    PACKAGE: modules/purchase_amendment
-
 test-modules-purchase_amendment-sqlite:
   extends: .test-sqlite
   variables:
@@ -2707,11 +2092,6 @@ test-modules-purchase_amendment-postgresql:
 
 check-doc-modules-purchase_blanket_agreement:
   extends: .check-doc
-  variables:
-    PACKAGE: modules/purchase_blanket_agreement
-
-trigger-doc-build-modules-purchase_blanket_agreement:
-  extends: .trigger-doc-build
   variables:
     PACKAGE: modules/purchase_blanket_agreement
 
@@ -2732,11 +2112,6 @@ check-doc-modules-purchase_history:
   variables:
     PACKAGE: modules/purchase_history
 
-trigger-doc-build-modules-purchase_history:
-  extends: .trigger-doc-build
-  variables:
-    PACKAGE: modules/purchase_history
-
 test-modules-purchase_history-sqlite:
   extends: .test-sqlite
   variables:
@@ -2751,11 +2126,6 @@ test-modules-purchase_history-postgresql:
 
 check-doc-modules-purchase_invoice_line_standalone:
   extends: .check-doc
-  variables:
-    PACKAGE: modules/purchase_invoice_line_standalone
-
-trigger-doc-build-modules-purchase_invoice_line_standalone:
-  extends: .trigger-doc-build
   variables:
     PACKAGE: modules/purchase_invoice_line_standalone
 
@@ -2776,11 +2146,6 @@ check-doc-modules-purchase_price_list:
   variables:
     PACKAGE: modules/purchase_price_list
 
-trigger-doc-build-modules-purchase_price_list:
-  extends: .trigger-doc-build
-  variables:
-    PACKAGE: modules/purchase_price_list
-
 test-modules-purchase_price_list-sqlite:
   extends: .test-sqlite
   variables:
@@ -2795,11 +2160,6 @@ test-modules-purchase_price_list-postgresql:
 
 check-doc-modules-purchase_product_quantity:
   extends: .check-doc
-  variables:
-    PACKAGE: modules/purchase_product_quantity
-
-trigger-doc-build-modules-purchase_product_quantity:
-  extends: .trigger-doc-build
   variables:
     PACKAGE: modules/purchase_product_quantity
 
@@ -2820,11 +2180,6 @@ check-doc-modules-purchase_request:
   variables:
     PACKAGE: modules/purchase_request
 
-trigger-doc-build-modules-purchase_request:
-  extends: .trigger-doc-build
-  variables:
-    PACKAGE: modules/purchase_request
-
 test-modules-purchase_request-sqlite:
   extends: .test-sqlite
   variables:
@@ -2839,11 +2194,6 @@ test-modules-purchase_request-postgresql:
 
 check-doc-modules-purchase_request_quotation:
   extends: .check-doc
-  variables:
-    PACKAGE: modules/purchase_request_quotation
-
-trigger-doc-build-modules-purchase_request_quotation:
-  extends: .trigger-doc-build
   variables:
     PACKAGE: modules/purchase_request_quotation
 
@@ -2864,11 +2214,6 @@ check-doc-modules-purchase_requisition:
   variables:
     PACKAGE: modules/purchase_requisition
 
-trigger-doc-build-modules-purchase_requisition:
-  extends: .trigger-doc-build
-  variables:
-    PACKAGE: modules/purchase_requisition
-
 test-modules-purchase_requisition-sqlite:
   extends: .test-sqlite
   variables:
@@ -2883,11 +2228,6 @@ test-modules-purchase_requisition-postgresql:
 
 check-doc-modules-purchase_secondary_unit:
   extends: .check-doc
-  variables:
-    PACKAGE: modules/purchase_secondary_unit
-
-trigger-doc-build-modules-purchase_secondary_unit:
-  extends: .trigger-doc-build
   variables:
     PACKAGE: modules/purchase_secondary_unit
 
@@ -2908,11 +2248,6 @@ check-doc-modules-purchase_shipment_cost:
   variables:
     PACKAGE: modules/purchase_shipment_cost
 
-trigger-doc-build-modules-purchase_shipment_cost:
-  extends: .trigger-doc-build
-  variables:
-    PACKAGE: modules/purchase_shipment_cost
-
 test-modules-purchase_shipment_cost-sqlite:
   extends: .test-sqlite
   variables:
@@ -2927,11 +2262,6 @@ test-modules-purchase_shipment_cost-postgresql:
 
 check-doc-modules-quality:
   extends: .check-doc
-  variables:
-    PACKAGE: modules/quality
-
-trigger-doc-build-modules-quality:
-  extends: .trigger-doc-build
   variables:
     PACKAGE: modules/quality
 
@@ -2952,11 +2282,6 @@ check-doc-modules-sale:
   variables:
     PACKAGE: modules/sale
 
-trigger-doc-build-modules-sale:
-  extends: .trigger-doc-build
-  variables:
-    PACKAGE: modules/sale
-
 test-modules-sale-sqlite:
   extends: .test-sqlite
   variables:
@@ -2971,11 +2296,6 @@ test-modules-sale-postgresql:
 
 check-doc-modules-sale_advance_payment:
   extends: .check-doc
-  variables:
-    PACKAGE: modules/sale_advance_payment
-
-trigger-doc-build-modules-sale_advance_payment:
-  extends: .trigger-doc-build
   variables:
     PACKAGE: modules/sale_advance_payment
 
@@ -2996,11 +2316,6 @@ check-doc-modules-sale_amendment:
   variables:
     PACKAGE: modules/sale_amendment
 
-trigger-doc-build-modules-sale_amendment:
-  extends: .trigger-doc-build
-  variables:
-    PACKAGE: modules/sale_amendment
-
 test-modules-sale_amendment-sqlite:
   extends: .test-sqlite
   variables:
@@ -3015,11 +2330,6 @@ test-modules-sale_amendment-postgresql:
 
 check-doc-modules-sale_blanket_agreement:
   extends: .check-doc
-  variables:
-    PACKAGE: modules/sale_blanket_agreement
-
-trigger-doc-build-modules-sale_blanket_agreement:
-  extends: .trigger-doc-build
   variables:
     PACKAGE: modules/sale_blanket_agreement
 
@@ -3040,11 +2350,6 @@ check-doc-modules-sale_complaint:
   variables:
     PACKAGE: modules/sale_complaint
 
-trigger-doc-build-modules-sale_complaint:
-  extends: .trigger-doc-build
-  variables:
-    PACKAGE: modules/sale_complaint
-
 test-modules-sale_complaint-sqlite:
   extends: .test-sqlite
   variables:
@@ -3059,11 +2364,6 @@ test-modules-sale_complaint-postgresql:
 
 check-doc-modules-sale_credit_limit:
   extends: .check-doc
-  variables:
-    PACKAGE: modules/sale_credit_limit
-
-trigger-doc-build-modules-sale_credit_limit:
-  extends: .trigger-doc-build
   variables:
     PACKAGE: modules/sale_credit_limit
 
@@ -3084,11 +2384,6 @@ check-doc-modules-sale_discount:
   variables:
     PACKAGE: modules/sale_discount
 
-trigger-doc-build-modules-sale_discount:
-  extends: .trigger-doc-build
-  variables:
-    PACKAGE: modules/sale_discount
-
 test-modules-sale_discount-sqlite:
   extends: .test-sqlite
   variables:
@@ -3103,11 +2398,6 @@ test-modules-sale_discount-postgresql:
 
 check-doc-modules-sale_extra:
   extends: .check-doc
-  variables:
-    PACKAGE: modules/sale_extra
-
-trigger-doc-build-modules-sale_extra:
-  extends: .trigger-doc-build
   variables:
     PACKAGE: modules/sale_extra
 
@@ -3128,11 +2418,6 @@ check-doc-modules-sale_gift_card:
   variables:
     PACKAGE: modules/sale_gift_card
 
-trigger-doc-build-modules-sale_gift_card:
-  extends: .trigger-doc-build
-  variables:
-    PACKAGE: modules/sale_gift_card
-
 test-modules-sale_gift_card-sqlite:
   extends: .test-sqlite
   variables:
@@ -3147,11 +2432,6 @@ test-modules-sale_gift_card-postgresql:
 
 check-doc-modules-sale_history:
   extends: .check-doc
-  variables:
-    PACKAGE: modules/sale_history
-
-trigger-doc-build-modules-sale_history:
-  extends: .trigger-doc-build
   variables:
     PACKAGE: modules/sale_history
 
@@ -3172,11 +2452,6 @@ check-doc-modules-sale_invoice_date:
   variables:
     PACKAGE: modules/sale_invoice_date
 
-trigger-doc-build-modules-sale_invoice_date:
-  extends: .trigger-doc-build
-  variables:
-    PACKAGE: modules/sale_invoice_date
-
 test-modules-sale_invoice_date-sqlite:
   extends: .test-sqlite
   variables:
@@ -3191,11 +2466,6 @@ test-modules-sale_invoice_date-postgresql:
 
 check-doc-modules-sale_invoice_grouping:
   extends: .check-doc
-  variables:
-    PACKAGE: modules/sale_invoice_grouping
-
-trigger-doc-build-modules-sale_invoice_grouping:
-  extends: .trigger-doc-build
   variables:
     PACKAGE: modules/sale_invoice_grouping
 
@@ -3216,11 +2486,6 @@ check-doc-modules-sale_opportunity:
   variables:
     PACKAGE: modules/sale_opportunity
 
-trigger-doc-build-modules-sale_opportunity:
-  extends: .trigger-doc-build
-  variables:
-    PACKAGE: modules/sale_opportunity
-
 test-modules-sale_opportunity-sqlite:
   extends: .test-sqlite
   variables:
@@ -3235,11 +2500,6 @@ test-modules-sale_opportunity-postgresql:
 
 check-doc-modules-sale_payment:
   extends: .check-doc
-  variables:
-    PACKAGE: modules/sale_payment
-
-trigger-doc-build-modules-sale_payment:
-  extends: .trigger-doc-build
   variables:
     PACKAGE: modules/sale_payment
 
@@ -3260,11 +2520,6 @@ check-doc-modules-sale_point:
   variables:
     PACKAGE: modules/sale_point
 
-trigger-doc-build-modules-sale_point:
-  extends: .trigger-doc-build
-  variables:
-    PACKAGE: modules/sale_point
-
 test-modules-sale_point-sqlite:
   extends: .test-sqlite
   variables:
@@ -3279,11 +2534,6 @@ test-modules-sale_point-postgresql:
 
 check-doc-modules-sale_price_list:
   extends: .check-doc
-  variables:
-    PACKAGE: modules/sale_price_list
-
-trigger-doc-build-modules-sale_price_list:
-  extends: .trigger-doc-build
   variables:
     PACKAGE: modules/sale_price_list
 
@@ -3304,11 +2554,6 @@ check-doc-modules-sale_product_customer:
   variables:
     PACKAGE: modules/sale_product_customer
 
-trigger-doc-build-modules-sale_product_customer:
-  extends: .trigger-doc-build
-  variables:
-    PACKAGE: modules/sale_product_customer
-
 test-modules-sale_product_customer-sqlite:
   extends: .test-sqlite
   variables:
@@ -3323,11 +2568,6 @@ test-modules-sale_product_customer-postgresql:
 
 check-doc-modules-sale_product_quantity:
   extends: .check-doc
-  variables:
-    PACKAGE: modules/sale_product_quantity
-
-trigger-doc-build-modules-sale_product_quantity:
-  extends: .trigger-doc-build
   variables:
     PACKAGE: modules/sale_product_quantity
 
@@ -3348,11 +2588,6 @@ check-doc-modules-sale_product_recommendation:
   variables:
     PACKAGE: modules/sale_product_recommendation
 
-trigger-doc-build-modules-sale_product_recommendation:
-  extends: .trigger-doc-build
-  variables:
-    PACKAGE: modules/sale_product_recommendation
-
 test-modules-sale_product_recommendation-sqlite:
   extends: .test-sqlite
   variables:
@@ -3367,11 +2602,6 @@ test-modules-sale_product_recommendation-postgresql:
 
 check-doc-modules-sale_product_recommendation_association_rule:
   extends: .check-doc
-  variables:
-    PACKAGE: modules/sale_product_recommendation_association_rule
-
-trigger-doc-build-modules-sale_product_recommendation_association_rule:
-  extends: .trigger-doc-build
   variables:
     PACKAGE: modules/sale_product_recommendation_association_rule
 
@@ -3392,11 +2622,6 @@ check-doc-modules-sale_promotion:
   variables:
     PACKAGE: modules/sale_promotion
 
-trigger-doc-build-modules-sale_promotion:
-  extends: .trigger-doc-build
-  variables:
-    PACKAGE: modules/sale_promotion
-
 test-modules-sale_promotion-sqlite:
   extends: .test-sqlite
   variables:
@@ -3411,11 +2636,6 @@ test-modules-sale_promotion-postgresql:
 
 check-doc-modules-sale_promotion_coupon:
   extends: .check-doc
-  variables:
-    PACKAGE: modules/sale_promotion_coupon
-
-trigger-doc-build-modules-sale_promotion_coupon:
-  extends: .trigger-doc-build
   variables:
     PACKAGE: modules/sale_promotion_coupon
 
@@ -3436,11 +2656,6 @@ check-doc-modules-sale_promotion_coupon_payment:
   variables:
     PACKAGE: modules/sale_promotion_coupon_payment
 
-trigger-doc-build-modules-sale_promotion_coupon_payment:
-  extends: .trigger-doc-build
-  variables:
-    PACKAGE: modules/sale_promotion_coupon_payment
-
 test-modules-sale_promotion_coupon_payment-sqlite:
   extends: .test-sqlite
   variables:
@@ -3455,11 +2670,6 @@ test-modules-sale_promotion_coupon_payment-postgresql:
 
 check-doc-modules-sale_secondary_unit:
   extends: .check-doc
-  variables:
-    PACKAGE: modules/sale_secondary_unit
-
-trigger-doc-build-modules-sale_secondary_unit:
-  extends: .trigger-doc-build
   variables:
     PACKAGE: modules/sale_secondary_unit
 
@@ -3480,11 +2690,6 @@ check-doc-modules-sale_shipment_cost:
   variables:
     PACKAGE: modules/sale_shipment_cost
 
-trigger-doc-build-modules-sale_shipment_cost:
-  extends: .trigger-doc-build
-  variables:
-    PACKAGE: modules/sale_shipment_cost
-
 test-modules-sale_shipment_cost-sqlite:
   extends: .test-sqlite
   variables:
@@ -3499,11 +2704,6 @@ test-modules-sale_shipment_cost-postgresql:
 
 check-doc-modules-sale_shipment_grouping:
   extends: .check-doc
-  variables:
-    PACKAGE: modules/sale_shipment_grouping
-
-trigger-doc-build-modules-sale_shipment_grouping:
-  extends: .trigger-doc-build
   variables:
     PACKAGE: modules/sale_shipment_grouping
 
@@ -3524,11 +2724,6 @@ check-doc-modules-sale_shipment_tolerance:
   variables:
     PACKAGE: modules/sale_shipment_tolerance
 
-trigger-doc-build-modules-sale_shipment_tolerance:
-  extends: .trigger-doc-build
-  variables:
-    PACKAGE: modules/sale_shipment_tolerance
-
 test-modules-sale_shipment_tolerance-sqlite:
   extends: .test-sqlite
   variables:
@@ -3543,11 +2738,6 @@ test-modules-sale_shipment_tolerance-postgresql:
 
 check-doc-modules-sale_stock_quantity:
   extends: .check-doc
-  variables:
-    PACKAGE: modules/sale_stock_quantity
-
-trigger-doc-build-modules-sale_stock_quantity:
-  extends: .trigger-doc-build
   variables:
     PACKAGE: modules/sale_stock_quantity
 
@@ -3568,11 +2758,6 @@ check-doc-modules-sale_subscription:
   variables:
     PACKAGE: modules/sale_subscription
 
-trigger-doc-build-modules-sale_subscription:
-  extends: .trigger-doc-build
-  variables:
-    PACKAGE: modules/sale_subscription
-
 test-modules-sale_subscription-sqlite:
   extends: .test-sqlite
   variables:
@@ -3587,11 +2772,6 @@ test-modules-sale_subscription-postgresql:
 
 check-doc-modules-sale_subscription_asset:
   extends: .check-doc
-  variables:
-    PACKAGE: modules/sale_subscription_asset
-
-trigger-doc-build-modules-sale_subscription_asset:
-  extends: .trigger-doc-build
   variables:
     PACKAGE: modules/sale_subscription_asset
 
@@ -3612,11 +2792,6 @@ check-doc-modules-sale_supply:
   variables:
     PACKAGE: modules/sale_supply
 
-trigger-doc-build-modules-sale_supply:
-  extends: .trigger-doc-build
-  variables:
-    PACKAGE: modules/sale_supply
-
 test-modules-sale_supply-sqlite:
   extends: .test-sqlite
   variables:
@@ -3631,11 +2806,6 @@ test-modules-sale_supply-postgresql:
 
 check-doc-modules-sale_supply_drop_shipment:
   extends: .check-doc
-  variables:
-    PACKAGE: modules/sale_supply_drop_shipment
-
-trigger-doc-build-modules-sale_supply_drop_shipment:
-  extends: .trigger-doc-build
   variables:
     PACKAGE: modules/sale_supply_drop_shipment
 
@@ -3656,11 +2826,6 @@ check-doc-modules-sale_supply_production:
   variables:
     PACKAGE: modules/sale_supply_production
 
-trigger-doc-build-modules-sale_supply_production:
-  extends: .trigger-doc-build
-  variables:
-    PACKAGE: modules/sale_supply_production
-
 test-modules-sale_supply_production-sqlite:
   extends: .test-sqlite
   variables:
@@ -3675,11 +2840,6 @@ test-modules-sale_supply_production-postgresql:
 
 check-doc-modules-stock:
   extends: .check-doc
-  variables:
-    PACKAGE: modules/stock
-
-trigger-doc-build-modules-stock:
-  extends: .trigger-doc-build
   variables:
     PACKAGE: modules/stock
 
@@ -3700,11 +2860,6 @@ check-doc-modules-stock_assign_manual:
   variables:
     PACKAGE: modules/stock_assign_manual
 
-trigger-doc-build-modules-stock_assign_manual:
-  extends: .trigger-doc-build
-  variables:
-    PACKAGE: modules/stock_assign_manual
-
 test-modules-stock_assign_manual-sqlite:
   extends: .test-sqlite
   variables:
@@ -3719,11 +2874,6 @@ test-modules-stock_assign_manual-postgresql:
 
 check-doc-modules-stock_consignment:
   extends: .check-doc
-  variables:
-    PACKAGE: modules/stock_consignment
-
-trigger-doc-build-modules-stock_consignment:
-  extends: .trigger-doc-build
   variables:
     PACKAGE: modules/stock_consignment
 
@@ -3744,11 +2894,6 @@ check-doc-modules-stock_forecast:
   variables:
     PACKAGE: modules/stock_forecast
 
-trigger-doc-build-modules-stock_forecast:
-  extends: .trigger-doc-build
-  variables:
-    PACKAGE: modules/stock_forecast
-
 test-modules-stock_forecast-sqlite:
   extends: .test-sqlite
   variables:
@@ -3763,11 +2908,6 @@ test-modules-stock_forecast-postgresql:
 
 check-doc-modules-stock_inventory_location:
   extends: .check-doc
-  variables:
-    PACKAGE: modules/stock_inventory_location
-
-trigger-doc-build-modules-stock_inventory_location:
-  extends: .trigger-doc-build
   variables:
     PACKAGE: modules/stock_inventory_location
 
@@ -3788,11 +2928,6 @@ check-doc-modules-stock_location_move:
   variables:
     PACKAGE: modules/stock_location_move
 
-trigger-doc-build-modules-stock_location_move:
-  extends: .trigger-doc-build
-  variables:
-    PACKAGE: modules/stock_location_move
-
 test-modules-stock_location_move-sqlite:
   extends: .test-sqlite
   variables:
@@ -3807,11 +2942,6 @@ test-modules-stock_location_move-postgresql:
 
 check-doc-modules-stock_location_sequence:
   extends: .check-doc
-  variables:
-    PACKAGE: modules/stock_location_sequence
-
-trigger-doc-build-modules-stock_location_sequence:
-  extends: .trigger-doc-build
   variables:
     PACKAGE: modules/stock_location_sequence
 
@@ -3832,11 +2962,6 @@ check-doc-modules-stock_lot:
   variables:
     PACKAGE: modules/stock_lot
 
-trigger-doc-build-modules-stock_lot:
-  extends: .trigger-doc-build
-  variables:
-    PACKAGE: modules/stock_lot
-
 test-modules-stock_lot-sqlite:
   extends: .test-sqlite
   variables:
@@ -3851,11 +2976,6 @@ test-modules-stock_lot-postgresql:
 
 check-doc-modules-stock_lot_sled:
   extends: .check-doc
-  variables:
-    PACKAGE: modules/stock_lot_sled
-
-trigger-doc-build-modules-stock_lot_sled:
-  extends: .trigger-doc-build
   variables:
     PACKAGE: modules/stock_lot_sled
 
@@ -3876,11 +2996,6 @@ check-doc-modules-stock_lot_unit:
   variables:
     PACKAGE: modules/stock_lot_unit
 
-trigger-doc-build-modules-stock_lot_unit:
-  extends: .trigger-doc-build
-  variables:
-    PACKAGE: modules/stock_lot_unit
-
 test-modules-stock_lot_unit-sqlite:
   extends: .test-sqlite
   variables:
@@ -3895,11 +3010,6 @@ test-modules-stock_lot_unit-postgresql:
 
 check-doc-modules-stock_package:
   extends: .check-doc
-  variables:
-    PACKAGE: modules/stock_package
-
-trigger-doc-build-modules-stock_package:
-  extends: .trigger-doc-build
   variables:
     PACKAGE: modules/stock_package
 
@@ -3920,11 +3030,6 @@ check-doc-modules-stock_package_shipping:
   variables:
     PACKAGE: modules/stock_package_shipping
 
-trigger-doc-build-modules-stock_package_shipping:
-  extends: .trigger-doc-build
-  variables:
-    PACKAGE: modules/stock_package_shipping
-
 test-modules-stock_package_shipping-sqlite:
   extends: .test-sqlite
   variables:
@@ -3939,11 +3044,6 @@ test-modules-stock_package_shipping-postgresql:
 
 check-doc-modules-stock_package_shipping_dpd:
   extends: .check-doc
-  variables:
-    PACKAGE: modules/stock_package_shipping_dpd
-
-trigger-doc-build-modules-stock_package_shipping_dpd:
-  extends: .trigger-doc-build
   variables:
     PACKAGE: modules/stock_package_shipping_dpd
 
@@ -3964,11 +3064,6 @@ check-doc-modules-stock_package_shipping_mygls:
   variables:
     PACKAGE: modules/stock_package_shipping_mygls
 
-trigger-doc-build-modules-stock_package_shipping_mygls:
-  extends: .trigger-doc-build
-  variables:
-    PACKAGE: modules/stock_package_shipping_mygls
-
 test-modules-stock_package_shipping_mygls-sqlite:
   extends: .test-sqlite
   variables:
@@ -3983,11 +3078,6 @@ test-modules-stock_package_shipping_mygls-postgresql:
 
 check-doc-modules-stock_package_shipping_sendcloud:
   extends: .check-doc
-  variables:
-    PACKAGE: modules/stock_package_shipping_sendcloud
-
-trigger-doc-build-modules-stock_package_shipping_sendcloud:
-  extends: .trigger-doc-build
   variables:
     PACKAGE: modules/stock_package_shipping_sendcloud
 
@@ -4008,11 +3098,6 @@ check-doc-modules-stock_package_shipping_ups:
   variables:
     PACKAGE: modules/stock_package_shipping_ups
 
-trigger-doc-build-modules-stock_package_shipping_ups:
-  extends: .trigger-doc-build
-  variables:
-    PACKAGE: modules/stock_package_shipping_ups
-
 test-modules-stock_package_shipping_ups-sqlite:
   extends: .test-sqlite
   variables:
@@ -4027,11 +3112,6 @@ test-modules-stock_package_shipping_ups-postgresql:
 
 check-doc-modules-stock_product_location:
   extends: .check-doc
-  variables:
-    PACKAGE: modules/stock_product_location
-
-trigger-doc-build-modules-stock_product_location:
-  extends: .trigger-doc-build
   variables:
     PACKAGE: modules/stock_product_location
 
@@ -4052,11 +3132,6 @@ check-doc-modules-stock_quantity_early_planning:
   variables:
     PACKAGE: modules/stock_quantity_early_planning
 
-trigger-doc-build-modules-stock_quantity_early_planning:
-  extends: .trigger-doc-build
-  variables:
-    PACKAGE: modules/stock_quantity_early_planning
-
 test-modules-stock_quantity_early_planning-sqlite:
   extends: .test-sqlite
   variables:
@@ -4071,11 +3146,6 @@ test-modules-stock_quantity_early_planning-postgresql:
 
 check-doc-modules-stock_quantity_issue:
   extends: .check-doc
-  variables:
-    PACKAGE: modules/stock_quantity_issue
-
-trigger-doc-build-modules-stock_quantity_issue:
-  extends: .trigger-doc-build
   variables:
     PACKAGE: modules/stock_quantity_issue
 
@@ -4096,11 +3166,6 @@ check-doc-modules-stock_secondary_unit:
   variables:
     PACKAGE: modules/stock_secondary_unit
 
-trigger-doc-build-modules-stock_secondary_unit:
-  extends: .trigger-doc-build
-  variables:
-    PACKAGE: modules/stock_secondary_unit
-
 test-modules-stock_secondary_unit-sqlite:
   extends: .test-sqlite
   variables:
@@ -4115,11 +3180,6 @@ test-modules-stock_secondary_unit-postgresql:
 
 check-doc-modules-stock_shipment_cost:
   extends: .check-doc
-  variables:
-    PACKAGE: modules/stock_shipment_cost
-
-trigger-doc-build-modules-stock_shipment_cost:
-  extends: .trigger-doc-build
   variables:
     PACKAGE: modules/stock_shipment_cost
 
@@ -4140,11 +3200,6 @@ check-doc-modules-stock_shipment_cost_weight:
   variables:
     PACKAGE: modules/stock_shipment_cost_weight
 
-trigger-doc-build-modules-stock_shipment_cost_weight:
-  extends: .trigger-doc-build
-  variables:
-    PACKAGE: modules/stock_shipment_cost_weight
-
 test-modules-stock_shipment_cost_weight-sqlite:
   extends: .test-sqlite
   variables:
@@ -4159,11 +3214,6 @@ test-modules-stock_shipment_cost_weight-postgresql:
 
 check-doc-modules-stock_shipment_measurements:
   extends: .check-doc
-  variables:
-    PACKAGE: modules/stock_shipment_measurements
-
-trigger-doc-build-modules-stock_shipment_measurements:
-  extends: .trigger-doc-build
   variables:
     PACKAGE: modules/stock_shipment_measurements
 
@@ -4184,11 +3234,6 @@ check-doc-modules-stock_split:
   variables:
     PACKAGE: modules/stock_split
 
-trigger-doc-build-modules-stock_split:
-  extends: .trigger-doc-build
-  variables:
-    PACKAGE: modules/stock_split
-
 test-modules-stock_split-sqlite:
   extends: .test-sqlite
   variables:
@@ -4203,11 +3248,6 @@ test-modules-stock_split-postgresql:
 
 check-doc-modules-stock_supply:
   extends: .check-doc
-  variables:
-    PACKAGE: modules/stock_supply
-
-trigger-doc-build-modules-stock_supply:
-  extends: .trigger-doc-build
   variables:
     PACKAGE: modules/stock_supply
 
@@ -4228,11 +3268,6 @@ check-doc-modules-stock_supply_day:
   variables:
     PACKAGE: modules/stock_supply_day
 
-trigger-doc-build-modules-stock_supply_day:
-  extends: .trigger-doc-build
-  variables:
-    PACKAGE: modules/stock_supply_day
-
 test-modules-stock_supply_day-sqlite:
   extends: .test-sqlite
   variables:
@@ -4247,11 +3282,6 @@ test-modules-stock_supply_day-postgresql:
 
 check-doc-modules-stock_supply_forecast:
   extends: .check-doc
-  variables:
-    PACKAGE: modules/stock_supply_forecast
-
-trigger-doc-build-modules-stock_supply_forecast:
-  extends: .trigger-doc-build
   variables:
     PACKAGE: modules/stock_supply_forecast
 
@@ -4272,11 +3302,6 @@ check-doc-modules-stock_supply_production:
   variables:
     PACKAGE: modules/stock_supply_production
 
-trigger-doc-build-modules-stock_supply_production:
-  extends: .trigger-doc-build
-  variables:
-    PACKAGE: modules/stock_supply_production
-
 test-modules-stock_supply_production-sqlite:
   extends: .test-sqlite
   variables:
@@ -4291,11 +3316,6 @@ test-modules-stock_supply_production-postgresql:
 
 check-doc-modules-timesheet:
   extends: .check-doc
-  variables:
-    PACKAGE: modules/timesheet
-
-trigger-doc-build-modules-timesheet:
-  extends: .trigger-doc-build
   variables:
     PACKAGE: modules/timesheet
 
@@ -4316,11 +3336,6 @@ check-doc-modules-timesheet_cost:
   variables:
     PACKAGE: modules/timesheet_cost
 
-trigger-doc-build-modules-timesheet_cost:
-  extends: .trigger-doc-build
-  variables:
-    PACKAGE: modules/timesheet_cost
-
 test-modules-timesheet_cost-sqlite:
   extends: .test-sqlite
   variables:
@@ -4335,11 +3350,6 @@ test-modules-timesheet_cost-postgresql:
 
 check-doc-modules-user_role:
   extends: .check-doc
-  variables:
-    PACKAGE: modules/user_role
-
-trigger-doc-build-modules-user_role:
-  extends: .trigger-doc-build
   variables:
     PACKAGE: modules/user_role
 
@@ -4360,11 +3370,6 @@ check-doc-modules-web_shop:
   variables:
     PACKAGE: modules/web_shop
 
-trigger-doc-build-modules-web_shop:
-  extends: .trigger-doc-build
-  variables:
-    PACKAGE: modules/web_shop
-
 test-modules-web_shop-sqlite:
   extends: .test-sqlite
   variables:
@@ -4379,11 +3384,6 @@ test-modules-web_shop-postgresql:
 
 check-doc-modules-web_shop_shopify:
   extends: .check-doc
-  variables:
-    PACKAGE: modules/web_shop_shopify
-
-trigger-doc-build-modules-web_shop_shopify:
-  extends: .trigger-doc-build
   variables:
     PACKAGE: modules/web_shop_shopify
 
@@ -4404,11 +3404,6 @@ check-doc-modules-web_shop_vue_storefront:
   variables:
     PACKAGE: modules/web_shop_vue_storefront
 
-trigger-doc-build-modules-web_shop_vue_storefront:
-  extends: .trigger-doc-build
-  variables:
-    PACKAGE: modules/web_shop_vue_storefront
-
 test-modules-web_shop_vue_storefront-sqlite:
   extends: .test-sqlite
   variables:
@@ -4423,11 +3418,6 @@ test-modules-web_shop_vue_storefront-postgresql:
 
 check-doc-modules-web_shop_vue_storefront_stripe:
   extends: .check-doc
-  variables:
-    PACKAGE: modules/web_shop_vue_storefront_stripe
-
-trigger-doc-build-modules-web_shop_vue_storefront_stripe:
-  extends: .trigger-doc-build
   variables:
     PACKAGE: modules/web_shop_vue_storefront_stripe
 
@@ -4448,11 +3438,6 @@ check-doc-modules-web_shortener:
   variables:
     PACKAGE: modules/web_shortener
 
-trigger-doc-build-modules-web_shortener:
-  extends: .trigger-doc-build
-  variables:
-    PACKAGE: modules/web_shortener
-
 test-modules-web_shortener-sqlite:
   extends: .test-sqlite
   variables:
@@ -4467,11 +3452,6 @@ test-modules-web_shortener-postgresql:
 
 check-doc-modules-web_user:
   extends: .check-doc
-  variables:
-    PACKAGE: modules/web_user
-
-trigger-doc-build-modules-web_user:
-  extends: .trigger-doc-build
   variables:
     PACKAGE: modules/web_user
 

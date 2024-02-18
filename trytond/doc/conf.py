@@ -6,11 +6,12 @@ import os
 base_url = os.environ.get('DOC_BASE_URL')
 if base_url:
     modules_url = base_url + '/modules-{module}/'
-    trytond_url = base_url + '/server/'
+    tryton_url = base_url + '/client-desktop/'
+    proteus_url = base_url + '/client-library/'
 else:
-    modules_url = (
-        'https://docs.tryton.org/projects/modules-{module}/en/{series}/')
-    trytond_url = 'https://docs.tryton.org/projects/server/en/{series}/'
+    modules_url = 'https://docs.tryton.org/${series}/modules-{module}/'
+    tryton_url = 'https://docs.tryton.org/${series}/client-desktop/'
+    proteus_url = 'https://docs.tryton.org/${series}/client-library/'
 
 
 def get_info():
@@ -72,4 +73,4 @@ intersphinx_mapping = {
     }
 linkcheck_ignore = [r'/.*', r'https://demo.tryton.org/*']
 
-del get_info, info, base_url, modules_url, trytond_url
+del get_info, info, base_url, modules_url, tryton_url, proteus_url

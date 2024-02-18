@@ -342,7 +342,7 @@ var Sao = {
     } else {
         doc_version = doc_version.join('.');
     }
-    Sao.config.doc_url = `https://docs.tryton.org/en/${doc_version}`;
+    Sao.config.doc_url = `https://docs.tryton.org/${doc_version}`;
     Sao.config.bug_url = 'https://bugs.tryton.org/';
     Sao.config.title = 'Tryton';
     Sao.config.icon_colors = '#267f82,#3e4950,#e78e42'.split(',');
