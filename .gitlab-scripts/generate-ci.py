@@ -12,11 +12,6 @@ check-doc-${name}:
   variables:
     PACKAGE: ${package}
 
-trigger-doc-build-${name}:
-  extends: .trigger-doc-build
-  variables:
-    PACKAGE: ${package}
-
 test-${name}-sqlite:
   extends: .test-sqlite
   variables:

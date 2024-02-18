@@ -99,7 +99,7 @@ class ConfigManager(object):
             'graph.color': '#3465a4',
             'image.max_size': 10 ** 6,
             'image.cache_size': 1024,
-            'doc.url': 'https://docs.tryton.org/en/%(version)s',
+            'doc.url': 'https://docs.tryton.org/%(version)s',
             'bug.url': 'https://bugs.tryton.org/',
             'download.url': 'https://downloads.tryton.org/',
             'download.frequency': 60 * 60 * 8,

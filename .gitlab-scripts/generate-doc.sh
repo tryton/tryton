@@ -3,7 +3,9 @@ set -eu
 
 OUTPUTDIR=`realpath "${1}"`
 mkdir -p "${OUTPUTDIR}"
-export DOC_BASE_URL=$OUTPUTDIR
+: ${DOC_BASE_URL:=${OUTPUTDIR}}
+: ${MAX_PROCS:=$(( `nproc` * 2 ))}
+export DOC_BASE_URL
 
 requirements=$(mktemp /tmp/requirements-doc-XXXXXXXXXX.txt)
 find . -name 'cookiecutter*' -prune -o -path '*/doc/requirements-doc.txt' -exec cat {} + | sort | uniq > "${requirements}"
@@ -22,8 +24,10 @@ pip install -r "${requirements}"
         package="client-library"
     elif [ "${package}" = "trytond-gis" ]; then
         package="backend-gis"
+    elif [ "${package}" = "." ]; then
+        package=""
     else
         package="modules-${package}"
     fi
     echo "${path}/doc" "${OUTPUTDIR}/${package}"
-done) | xargs --max-args=2 --max-procs=$(( `nproc` * 2)) python -m sphinx -Q -T -E -b html
+done) | xargs --max-args=2 --max-procs=${MAX_PROCS} python -m sphinx -Q -T -E -b html
