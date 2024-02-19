@@ -637,17 +637,23 @@ class Production(ShipmentAssignMixin, Workflow, ModelSQL, ModelView):
         Move.save(moves)
 
     @classmethod
-    def create(cls, vlist):
-        Config = Pool().get('production.configuration')
+    def set_number(cls, productions):
+        '''
+        Fill the number field with the production sequence
+        '''
+        pool = Pool()
+        Config = pool.get('production.configuration')
 
-        vlist = [x.copy() for x in vlist]
         config = Config(1)
-        default_company = cls.default_company()
-        for values in vlist:
-            if values.get('number') is None:
-                values['number'] = config.get_multivalue(
+        for production in productions:
+            if not production.number:
+                production.number = config.get_multivalue(
                     'production_sequence',
-                    company=values.get('company', default_company)).get()
+                    company=production.company.id).get()
+        cls.save(productions)
+
+    @classmethod
+    def create(cls, vlist):
         productions = super(Production, cls).create(vlist)
         for production in productions:
             production._set_move_planned_date()
@@ -732,6 +738,7 @@ class Production(ShipmentAssignMixin, Workflow, ModelSQL, ModelView):
     @Workflow.transition('waiting')
     def wait(cls, productions):
         pool = Pool()
+        cls.set_number(productions)
         Move = pool.get('stock.move')
         Move.draft([m for p in productions
                 for m in p.inputs + p.outputs])

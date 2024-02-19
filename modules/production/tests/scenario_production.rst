@@ -9,7 +9,7 @@ Imports::
 
     >>> from proteus import Model
     >>> from trytond.modules.company.tests.tools import create_company, get_company
-    >>> from trytond.tests.tools import activate_modules, assertEqual
+    >>> from trytond.tests.tools import activate_modules, assertEqual, assertNotEqual
 
     >>> today = dt.date.today()
     >>> yesterday = today - dt.timedelta(days=1)
@@ -138,9 +138,11 @@ Make a production::
     >>> production.save()
     >>> production.cost
     Decimal('25.0000')
+    >>> production.number
     >>> production.click('wait')
     >>> production.state
     'waiting'
+    >>> assertNotEqual(production.number, None)
 
 Test reset bom button::
 
