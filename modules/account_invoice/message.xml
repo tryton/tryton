@@ -78,6 +78,9 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.message" id="msg_invoice_date_future">
             <field name="text">The invoices "%(invoices)s" have an invoice date in the future.</field>
         </record>
+        <record model="ir.message" id="msg_invoice_default_taxes">
+            <field name="text">The invoice "%(invoice)s" does not have the default taxes for %(lines)s.</field>
+        </record>
         <record model="ir.message" id="msg_invoice_similar">
             <field name="text">The invoice "%(invoice)s" is similar to invoice "%(similar)s".</field>
         </record>
