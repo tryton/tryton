@@ -9,7 +9,8 @@ Imports::
 
     >>> from proteus import Model, Report
     >>> from trytond.modules.company.tests.tools import create_company, get_company
-    >>> from trytond.tests.tools import activate_modules, assertEqual, set_user
+    >>> from trytond.tests.tools import (
+    ...     activate_modules, assertEqual, assertNotEqual, set_user)
 
     >>> today = dt.date.today()
     >>> yesterday = today - dt.timedelta(days=1)
@@ -96,6 +97,7 @@ Add two shipment lines of same product::
     ...     move.unit_price = Decimal('1')
     ...     move.currency = company.currency
     >>> shipment_out.save()
+    >>> shipment_out.number
     >>> shipment_out.picked_by
     >>> shipment_out.packed_by
     >>> shipment_out.done_by
@@ -103,6 +105,9 @@ Add two shipment lines of same product::
 Set the shipment state to waiting::
 
     >>> shipment_out.click('wait')
+    >>> shipment_out.state
+    'waiting'
+    >>> assertNotEqual(shipment_out.number, None)
     >>> len(shipment_out.outgoing_moves)
     2
     >>> len(shipment_out.inventory_moves)

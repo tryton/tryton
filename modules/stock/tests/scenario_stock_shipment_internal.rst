@@ -9,7 +9,8 @@ Imports::
 
     >>> from proteus import Model, Report
     >>> from trytond.modules.company.tests.tools import create_company, get_company
-    >>> from trytond.tests.tools import activate_modules, assertEqual, set_user
+    >>> from trytond.tests.tools import (
+    ...     activate_modules, assertEqual, assertNotEqual, set_user)
 
     >>> today = dt.date.today()
     >>> yesterday = today - dt.timedelta(days=1)
@@ -82,12 +83,14 @@ Create Internal Shipment::
     >>> move.to_location = storage_loc
     >>> move.currency = company.currency
     >>> shipment.save()
+    >>> shipment.number
     >>> shipment.assigned_by
     >>> shipment.done_by
 
     >>> shipment.click('wait')
     >>> shipment.state
     'waiting'
+    >>> assertNotEqual(shipment.number, None)
     >>> shipment.click('assign_try')
     >>> shipment.state
     'waiting'

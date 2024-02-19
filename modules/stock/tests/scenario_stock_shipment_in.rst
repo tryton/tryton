@@ -8,7 +8,7 @@ Imports::
 
     >>> from proteus import Model, Report
     >>> from trytond.modules.company.tests.tools import create_company, get_company
-    >>> from trytond.tests.tools import activate_modules
+    >>> from trytond.tests.tools import activate_modules, assertNotEqual
 
 Activate modules::
 
@@ -59,6 +59,7 @@ Create a shipment::
     >>> move.unit_price = Decimal('5')
     >>> move.currency = company.currency
     >>> shipment.save()
+    >>> assertNotEqual(shipment.number, None)
 
     >>> len(shipment.incoming_moves)
     1
