@@ -18,7 +18,7 @@ Imports::
 
     >>> today = dt.date.today()
 
-    >>> FETCH_SLEEP, MAX_SLEEP = 1, 10
+    >>> FETCH_SLEEP, MAX_SLEEP = 1, 100
 
 Activate modules::
 
