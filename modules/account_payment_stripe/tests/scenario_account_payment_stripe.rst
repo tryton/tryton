@@ -16,7 +16,7 @@ Imports::
     >>> from trytond.modules.account.tests.tools import create_fiscalyear, \
     ...     create_chart, get_accounts
 
-    >>> FETCH_SLEEP, MAX_SLEEP = 1, 10
+    >>> FETCH_SLEEP, MAX_SLEEP = 1, 100
 
 Activate modules::
 
