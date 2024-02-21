@@ -4,7 +4,7 @@ import heapq
 import mimetypes
 import re
 from email.message import EmailMessage
-from email.utils import formataddr, getaddresses
+from email.utils import getaddresses
 
 try:
     import html2text
@@ -22,7 +22,8 @@ from trytond.report import Report
 from trytond.rpc import RPC
 from trytond.sendmail import send_message_transactional
 from trytond.tools import escape_wildcard
-from trytond.tools.email_ import convert_ascii_email, set_from_header
+from trytond.tools.email_ import (
+    convert_ascii_email, format_address, set_from_header)
 from trytond.tools.string_ import StringMatcher
 from trytond.transaction import Transaction
 
@@ -41,11 +42,6 @@ escapesre = re.compile(r'[\\"]')
 
 class EmailTemplateError(ValidationError):
     pass
-
-
-def _get_emails(value):
-    "Return list of email from the comma separated list"
-    return [e for n, e in getaddresses([value]) if e]
 
 
 def _formataddr(pair):
@@ -158,30 +154,14 @@ class Email(ResourceAccessMixin, ModelSQL, ModelView):
                     filename=('utf-8', '', name))
         from_ = config.get('email', 'from')
         set_from_header(msg, from_, user.email or from_)
-        msg['To'] = ', '.join(
-            formataddr((n, convert_ascii_email(a)))
-            for n, a in getaddresses([to]))
-        msg['Cc'] = ', '.join(
-            formataddr((n, convert_ascii_email(a)))
-            for n, a in getaddresses([cc]))
-        msg['Bcc'] = ', '.join(
-            formataddr((n, convert_ascii_email(a)))
-            for n, a in getaddresses([bcc]))
+        msg['To'] = [format_address(a, n) for n, a in getaddresses([to])]
+        msg['Cc'] = [format_address(a, n) for n, a in getaddresses([cc])]
+        msg['Bcc'] = [format_address(a, n) for n, a in getaddresses([bcc])]
         msg['Subject'] = subject
 
-        to_addrs = list(filter(None, map(
-                    str.strip,
-                    _get_emails(to) + _get_emails(cc) + _get_emails(bcc))))
         send_message_transactional(msg, strict=True)
 
-        email = cls(
-            recipients=msg['To'],
-            recipients_secondary=msg['Cc'],
-            recipients_hidden=msg['Bcc'],
-            addresses=[{'address': a} for a in to_addrs],
-            subject=subject,
-            body=body,
-            resource=record)
+        email = cls.from_message(msg, body=body, resource=record)
         email.save()
         if files:
             attachments_ = []
@@ -235,6 +215,18 @@ class Email(ResourceAccessMixin, ModelSQL, ModelView):
                     domain,
                     ], order=[]):
             yield user.name, user.email
+
+    @classmethod
+    def from_message(cls, msg, **values):
+        to_addrs = [e for _, e in getaddresses(
+                filter(None, (msg['To'], msg['Cc'], msg['Bcc'])))]
+        return cls(
+            recipients=msg['To'],
+            recipients_secondary=msg['Cc'],
+            recipients_hidden=msg['Bcc'],
+            addresses=[{'address': a} for a in to_addrs],
+            subject=msg['Subject'],
+            **values)
 
 
 class EmailAddress(ModelSQL):

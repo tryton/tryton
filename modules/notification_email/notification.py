@@ -1,7 +1,6 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 import mimetypes
-from email.headerregistry import Address
 from email.utils import getaddresses
 
 from genshi.template import TextTemplate
@@ -13,7 +12,7 @@ from trytond.pool import Pool
 from trytond.pyson import Eval, TimeDelta
 from trytond.report import get_email
 from trytond.sendmail import SMTPDataManager, send_message_transactional
-from trytond.tools.email_ import set_from_header
+from trytond.tools.email_ import format_address, has_rcpt, set_from_header
 from trytond.transaction import Transaction
 
 from .exceptions import TemplateError
@@ -157,7 +156,10 @@ class Email(ModelSQL, ModelView):
         pool = Pool()
         EmailTemplate = pool.get('ir.email.template')
         with Transaction().set_context(usage=self.contact_mechanism):
-            return EmailTemplate.get_addresses(value)
+            # reformat addresses with encoding
+            return [
+                format_address(e, n)
+                for n, e in getaddresses(EmailTemplate.get_addresses(value))]
 
     def _get_languages(self, value):
         pool = Pool()
@@ -199,12 +201,12 @@ class Email(ModelSQL, ModelView):
                     filename=('utf-8', '', name))
 
         set_from_header(msg, sender, from_)
-        msg['To'] = [Address(n, addr_spec=a) for n, a in getaddresses(to)]
-        msg['Cc'] = [Address(n, addr_spec=a) for n, a in getaddresses(cc)]
-        msg['Bcc'] = [Address(n, addr_spec=a) for n, a in getaddresses(bcc)]
+        msg['To'] = to
+        msg['Cc'] = cc
+        msg['Bcc'] = bcc
         msg['Subject'] = title
         msg['Auto-Submitted'] = 'auto-generated'
-        return msg, title
+        return msg
 
     @classmethod
     def trigger(cls, records, trigger):
@@ -243,18 +245,11 @@ class Email(ModelSQL, ModelView):
             cc, cc_languages = self._get_cc(record)
             bcc, bcc_languages = self._get_bcc(record)
             languages = to_languages | cc_languages | bcc_languages
-            msg, title = self.get_email(record, from_, to, cc, bcc, languages)
-            to_addrs = [e for _, e in getaddresses(
-                    filter(None, (msg['To'], msg['Cc'], msg['Bcc'])))]
-            if to_addrs:
+            msg = self.get_email(record, from_, to, cc, bcc, languages)
+            if has_rcpt(msg):
                 send_message_transactional(msg, datamanager=datamanager)
-                emails.append(Email(
-                        recipients=msg['To'],
-                        recipients_secondary=msg['Cc'],
-                        recipients_hidden=msg['Bcc'],
-                        addresses=[{'address': a} for a in to_addrs],
-                        subject=title,
-                        resource=record,
+                emails.append(Email.from_message(
+                        msg, resource=record,
                         notification_email=trigger.notification_email,
                         notification_trigger=trigger))
         Email.save(emails)

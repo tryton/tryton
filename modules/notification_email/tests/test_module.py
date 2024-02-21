@@ -237,7 +237,7 @@ class NotificationEmailTestCase(CompanyTestMixin, ModuleTestCase):
 
         user, = User.create([{'name': "Michael Scott", 'login': "msc"}])
 
-        msg, title = notification_email.get_email(
+        msg = notification_email.get_email(
             user, FROM, ['Administrator <user@example.com>'], [], [], [en])
 
         self.assertEqual(msg['From'], FROM)
@@ -275,7 +275,7 @@ class NotificationEmailTestCase(CompanyTestMixin, ModuleTestCase):
 
         user, = User.create([{'name': "Michael Scott", 'login': "msc"}])
 
-        msg, title = notification_email.get_email(
+        msg = notification_email.get_email(
             user, FROM, ['Administrator <user@example.com>'], [], [], [en])
 
         self.assertEqual(msg['Subject'], 'Notification for Michael Scott')
@@ -311,7 +311,7 @@ class NotificationEmailTestCase(CompanyTestMixin, ModuleTestCase):
                     'language': es.id,
                     }])
 
-        msg, title = notification_email.get_email(
+        msg = notification_email.get_email(
             user, FROM, ['Administrator <user@example.com>'], [], [], [es])
 
         self.assertEqual(msg['Subject'], 'Notificación para Michael Scott')

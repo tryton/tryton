@@ -389,7 +389,7 @@ class Payment(StripeCustomerMethodMixin, CheckoutMixin, metaclass=PoolMeta):
         msg, title = get_email(
             'account.payment.stripe.email_checkout', self, languages)
         set_from_header(msg, from_cfg, from_ or from_cfg)
-        msg['To'] = ','.join(emails)
+        msg['To'] = emails
         msg['Subject'] = title
         send_message_transactional(msg)
 

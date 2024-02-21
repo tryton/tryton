@@ -1,6 +1,7 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
-from email.utils import parseaddr
+from email.header import Header
+from email.utils import formataddr, parseaddr
 
 from trytond.pool import Pool
 
@@ -27,6 +28,10 @@ def set_from_header(message, sender, from_):
             message['Reply-To'] = from_
     else:
         message['From'] = from_
+
+
+def has_rcpt(msg):
+    return any((msg['To'], msg['Cc'], msg['Bcc']))
 
 
 try:
@@ -80,3 +85,9 @@ except ImportError:
 
     class EmailNotValidError(Exception):
         pass
+
+
+def format_address(email, name=None):
+    if name:
+        name = str(Header(name, 'utf-8'))
+    return formataddr((name, convert_ascii_email(email)))
