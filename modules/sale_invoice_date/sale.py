@@ -119,8 +119,8 @@ class Sale(metaclass=PoolMeta):
     def _invoice_term_date(self):
         return
 
-    def _get_invoice_sale(self):
-        invoice = super()._get_invoice_sale()
+    def _get_invoice(self):
+        invoice = super()._get_invoice()
         if self.invoice_term:
             invoice.invoice_date = self.invoice_term.get_date(
                 date=self._invoice_term_date)

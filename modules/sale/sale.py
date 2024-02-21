@@ -971,7 +971,7 @@ class Sale(
             sale.total_amount_cache = sale.total_amount
         cls.save(sales)
 
-    def _get_invoice_sale(self):
+    def _get_invoice(self):
         'Return invoice'
         pool = Pool()
         Invoice = pool.get('account.invoice')
@@ -1002,7 +1002,7 @@ class Sale(
         if not invoice_lines:
             return
 
-        invoice = self._get_invoice_sale()
+        invoice = self._get_invoice()
         if getattr(invoice, 'lines', None):
             invoice_lines = list(invoice.lines) + invoice_lines
         invoice.lines = invoice_lines

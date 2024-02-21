@@ -121,7 +121,7 @@ class Line(metaclass=PoolMeta):
             for shipment in self.sale.shipments:
                 if (shipment.state == 'done'
                         and shipment.id not in shipment_cost_invoiced):
-                    invoice = self.sale._get_invoice_sale()
+                    invoice = self.sale._get_invoice()
                     for carriage in shipment.carriages:
                         # XXX: self is not necessary linked to carriage
                         invoice_line = carriage.get_cost_sale_invoice_line(
