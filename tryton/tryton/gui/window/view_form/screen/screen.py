@@ -1301,13 +1301,13 @@ class Screen:
         if name:
             query_string.append(
                 ('name', json.dumps(name, separators=(',', ':'))))
-        if self.screen_container.tab_domain:
-            query_string.append(('tab_domain', json.dumps(
-                        self.screen_container.tab_domain,
-                        cls=JSONEncoder, separators=(',', ':'))))
         path = [CONFIG['login.db'], 'model', self.model_name]
         view_ids = [v.view_id for v in self.views] + self.view_ids
         if self.current_view.view_type != 'form':
+            if self.screen_container.tab_domain:
+                query_string.append(('tab_domain', json.dumps(
+                            self.screen_container.tab_domain,
+                            cls=JSONEncoder, separators=(',', ':'))))
             if self.search_value:
                 search_value = self.search_value
             else:

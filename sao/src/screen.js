@@ -2069,14 +2069,14 @@
             if (name) {
                 query_string.push(['name', dumps(name)]);
             }
-            if (!jQuery.isEmptyObject(this.attributes.tab_domain)) {
-                query_string.push([
-                    'tab_domain', dumps(this.attributes.tab_domain)]);
-            }
             var path = ['model', this.model_name];
             var view_ids = this.views.map(
                 function(v) {return v.view_id;}).concat(this.view_ids);
             if (this.current_view.view_type != 'form') {
+                if (!jQuery.isEmptyObject(this.attributes.tab_domain)) {
+                    query_string.push([
+                        'tab_domain', dumps(this.attributes.tab_domain)]);
+                }
                 var search_value;
                 if (this.attributes.search_value) {
                     search_value = this.attributes.search_value;
