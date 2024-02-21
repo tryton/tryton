@@ -100,7 +100,7 @@ class Sale(metaclass=PoolMeta):
             ('shipment', "On Shipment"),
             ], "Shipment Cost Method",
         domain=[
-            If(~Eval('carrier') & (Eval('state') != 'draft'),
+            If(~Eval('carrier') & ~Eval('state').in_(['draft', 'cancelled']),
                 ('shipment_cost_method', '=', None),
                 ()),
             ],
