@@ -72,7 +72,7 @@ class Purchase(metaclass=PoolMeta):
             amount = sum(map(self.currency.cash_round, amounts))
         return amount
 
-    def _get_invoice_purchase(self):
-        invoice = super()._get_invoice_purchase()
+    def _get_invoice(self):
+        invoice = super()._get_invoice()
         invoice.cash_rounding = self.cash_rounding
         return invoice

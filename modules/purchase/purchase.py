@@ -813,7 +813,7 @@ class Purchase(
             purchase.total_amount_cache = purchase.total_amount
         cls.save(purchases)
 
-    def _get_invoice_purchase(self):
+    def _get_invoice(self):
         'Return invoice'
         pool = Pool()
         Invoice = pool.get('account.invoice')
@@ -844,7 +844,7 @@ class Purchase(
         if not invoice_lines:
             return
 
-        invoice = self._get_invoice_purchase()
+        invoice = self._get_invoice()
         if getattr(invoice, 'lines', None):
             invoice_lines = list(invoice.lines) + invoice_lines
         invoice.lines = invoice_lines
