@@ -20,7 +20,7 @@ from trytond.pool import Pool
 from trytond.pyson import Bool, Eval, PYSONDecoder
 from trytond.report import Report
 from trytond.rpc import RPC
-from trytond.sendmail import sendmail_transactional
+from trytond.sendmail import send_message_transactional
 from trytond.tools import escape_wildcard
 from trytond.tools.email_ import convert_ascii_email, set_from_header
 from trytond.tools.string_ import StringMatcher
@@ -161,17 +161,20 @@ class Email(ResourceAccessMixin, ModelSQL, ModelView):
         msg['Cc'] = ', '.join(
             formataddr((n, convert_ascii_email(a)))
             for n, a in getaddresses([cc]))
+        msg['Bcc'] = ', '.join(
+            formataddr((n, convert_ascii_email(a)))
+            for n, a in getaddresses([bcc]))
         msg['Subject'] = subject
 
         to_addrs = list(filter(None, map(
                     str.strip,
                     _get_emails(to) + _get_emails(cc) + _get_emails(bcc))))
-        sendmail_transactional(from_, to_addrs, msg, strict=True)
+        send_message_transactional(msg, strict=True)
 
         email = cls(
-            recipients=to,
-            recipients_secondary=cc,
-            recipients_hidden=bcc,
+            recipients=msg['To'],
+            recipients_secondary=msg['Cc'],
+            recipients_hidden=msg['Bcc'],
             addresses=[{'address': a} for a in to_addrs],
             subject=subject,
             body=body,

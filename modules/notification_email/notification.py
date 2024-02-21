@@ -12,8 +12,8 @@ from trytond.model import ModelSQL, ModelView, fields
 from trytond.pool import Pool
 from trytond.pyson import Eval, TimeDelta
 from trytond.report import get_email
-from trytond.sendmail import SMTPDataManager, sendmail_transactional
-from trytond.tools.email_ import convert_ascii_email, set_from_header
+from trytond.sendmail import SMTPDataManager, send_message_transactional
+from trytond.tools.email_ import set_from_header
 from trytond.transaction import Transaction
 
 from .exceptions import TemplateError
@@ -171,9 +171,12 @@ class Email(ModelSQL, ModelView):
 
         # TODO order languages to get default as last one for title
         msg, title = get_email(self.content, record, languages)
-        language = list(languages)[-1]
+        if languages:
+            language = list(languages)[-1].code
+        else:
+            language = None
         from_ = sender
-        with Transaction().set_context(language=language.code):
+        with Transaction().set_context(language=language):
             notification = self.__class__(self.id)
             if notification.from_:
                 from_ = notification.from_
@@ -184,7 +187,7 @@ class Email(ModelSQL, ModelView):
 
         if self.attachments:
             for report in self.attachments:
-                name, data = Attachment.get(report, record, language.code)
+                name, data = Attachment.get(report, record, language)
                 ctype, _ = mimetypes.guess_type(name)
                 if not ctype:
                     ctype = 'application/octet-stream'
@@ -198,6 +201,7 @@ class Email(ModelSQL, ModelView):
         set_from_header(msg, sender, from_)
         msg['To'] = [Address(n, addr_spec=a) for n, a in getaddresses(to)]
         msg['Cc'] = [Address(n, addr_spec=a) for n, a in getaddresses(cc)]
+        msg['Bcc'] = [Address(n, addr_spec=a) for n, a in getaddresses(bcc)]
         msg['Subject'] = title
         msg['Auto-Submitted'] = 'auto-generated'
         return msg, title
@@ -239,17 +243,15 @@ class Email(ModelSQL, ModelView):
             cc, cc_languages = self._get_cc(record)
             bcc, bcc_languages = self._get_bcc(record)
             languages = to_languages | cc_languages | bcc_languages
-            to_addrs = [
-                convert_ascii_email(e) for _, e in getaddresses(to + cc + bcc)]
+            msg, title = self.get_email(record, from_, to, cc, bcc, languages)
+            to_addrs = [e for _, e in getaddresses(
+                    filter(None, (msg['To'], msg['Cc'], msg['Bcc'])))]
             if to_addrs:
-                msg, title = self.get_email(
-                    record, from_, to, cc, bcc, languages)
-                sendmail_transactional(
-                    from_, to_addrs, msg, datamanager=datamanager)
+                send_message_transactional(msg, datamanager=datamanager)
                 emails.append(Email(
-                        recipients=', '.join(to),
-                        recipients_secondary=', '.join(cc),
-                        recipients_hidden=', '.join(bcc),
+                        recipients=msg['To'],
+                        recipients_secondary=msg['Cc'],
+                        recipients_hidden=msg['Bcc'],
                         addresses=[{'address': a} for a in to_addrs],
                         subject=title,
                         resource=record,

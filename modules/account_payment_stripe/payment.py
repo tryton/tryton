@@ -26,7 +26,7 @@ from trytond.pool import Pool, PoolMeta
 from trytond.pyson import Eval, TimeDelta
 from trytond.report import Report, get_email
 from trytond.rpc import RPC
-from trytond.sendmail import sendmail_transactional
+from trytond.sendmail import send_message_transactional
 from trytond.tools import sql_pairing
 from trytond.tools.email_ import set_from_header
 from trytond.transaction import Transaction
@@ -391,7 +391,7 @@ class Payment(StripeCustomerMethodMixin, CheckoutMixin, metaclass=PoolMeta):
         set_from_header(msg, from_cfg, from_ or from_cfg)
         msg['To'] = ','.join(emails)
         msg['Subject'] = title
-        sendmail_transactional(from_cfg, emails, msg)
+        send_message_transactional(msg)
 
     def _emails_checkout(self):
         emails = []

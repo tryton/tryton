@@ -8,7 +8,7 @@ from trytond.model import fields
 from trytond.pool import Pool, PoolMeta
 from trytond.pyson import Bool, Eval
 from trytond.report import get_email
-from trytond.sendmail import SMTPDataManager, sendmail_transactional
+from trytond.sendmail import SMTPDataManager, send_message_transactional
 from trytond.tools.email_ import convert_ascii_email, set_from_header
 from trytond.transaction import Transaction
 from trytond.wizard import StateTransition
@@ -143,15 +143,14 @@ class Dunning(metaclass=PoolMeta):
             languages.add(lang)
 
         msg, title = self._email(from_, to, cc, bcc, languages)
-        to_addrs = [e for _, e in getaddresses(to + cc + bcc)]
+        addr_fields = filter(None, (msg['To'], msg['Cc'], msg['Bcc']))
+        to_addrs = [e for _, e in getaddresses(addr_fields)]
         if to_addrs:
-            if not pool.test:
-                sendmail_transactional(
-                    from_, to_addrs, msg, datamanager=datamanager)
+            send_message_transactional(msg, datamanager=datamanager)
             return Email(
-                recipients=', '.join(to),
-                recipients_secondary=', '.join(cc),
-                recipients_hidden=', '.join(bcc),
+                recipients=msg['To'],
+                recipients_secondary=msg['Cc'],
+                recipients_hidden=msg['Bcc'],
                 addresses=[{'address': a} for a in to_addrs],
                 subject=title,
                 resource=self,

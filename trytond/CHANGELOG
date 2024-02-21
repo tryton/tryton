@@ -1,3 +1,4 @@
+* Add send_message methods
 * Store model on ir.rule.group
 * Store model on ir.model.button
 * Store model and field name on ir.model.field.access

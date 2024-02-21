@@ -14,10 +14,10 @@ Imports::
     ...     activate_modules, assertEqual, assertIn, assertTrue)
     >>> from trytond.tools import file_open
 
-Patch sendmail_transactional::
+Patch send_message_transactional::
 
     >>> smtp_calls = patch.object(
-    ...     marketing_automation, 'sendmail_transactional').start()
+    ...     marketing_automation, 'send_message_transactional').start()
     >>> manager = patch.object(
     ...     marketing_automation, 'SMTPDataManager').start()
 
@@ -149,10 +149,9 @@ Check email sent::
 
     >>> smtp_calls.call_count
     1
-    >>> from_, to, msg = smtp_calls.call_args[0]
+    >>> msg, = smtp_calls.call_args[0]
     >>> smtp_calls.reset_mock()
     >>> msg = msg.get_body().get_content()
-    >>> assertEqual(to, [contact.value])
     >>> assertEqual(re.search(r'Hello, (.*)!', msg).group(1), party.name)
     >>> open_url.shortened_url in msg
     True

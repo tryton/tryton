@@ -37,7 +37,7 @@ from trytond.model import (
 from trytond.pool import Pool
 from trytond.pyson import Eval, If, PYSONDecoder, TimeDelta
 from trytond.report import Report
-from trytond.sendmail import SMTPDataManager, sendmail_transactional
+from trytond.sendmail import SMTPDataManager, send_message_transactional
 from trytond.tools import grouped_slice, pairwise_longest, reduce_ids
 from trytond.tools.email_ import convert_ascii_email, set_from_header
 from trytond.transaction import Transaction
@@ -741,11 +741,12 @@ class Activity(
 
         to_addrs = [convert_ascii_email(a) for _, a in getaddresses([str(to)])]
         if to_addrs:
-            sendmail_transactional(
-                from_, to_addrs, msg, datamanager=smtpd_datamanager)
+            send_message_transactional(msg, datamanager=smtpd_datamanager)
 
             email = Email(
-                recipients=to,
+                recipients=msg['To'],
+                recipients_secondary=msg['Cc'],
+                recipients_hidden=msg['Bcc'],
                 addresses=[{'address': a} for a in to_addrs],
                 subject=title,
                 resource=record.record,

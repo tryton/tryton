@@ -3,7 +3,7 @@
 import datetime as dt
 import sys
 import unittest
-from unittest.mock import ANY, patch
+from unittest.mock import patch
 
 from trytond.config import config
 
@@ -104,14 +104,13 @@ class NotificationEmailTestCase(CompanyTestMixin, ModuleTestCase):
                     }])
 
         with patch.object(
-                notification_module, 'sendmail_transactional') as sendmail, \
+                notification_module,
+                'send_message_transactional') as send_message, \
                 patch.object(notification_module, 'SMTPDataManager'):
             user, = User.create([{'name': "Michael Scott", 'login': "msc"}])
             self.run_tasks()
-            sendmail.assert_called_once_with(
-                FROM, ['user@example.com'], ANY,
-                datamanager=ANY)
-            _, _, msg = sendmail.call_args[0]
+            send_message.assert_called_once()
+            msg, = send_message.call_args[0]
             self.assertEqual(msg['From'], FROM)
             self.assertEqual(msg['Subject'], 'Notification Email')
             self.assertEqual(msg['To'], 'Administrator <user@example.com>')
@@ -156,16 +155,15 @@ class NotificationEmailTestCase(CompanyTestMixin, ModuleTestCase):
                     }])
 
         with patch.object(
-                notification_module, 'sendmail_transactional') as sendmail, \
+                notification_module,
+                'send_message_transactional') as send_message, \
                 patch.object(notification_module, 'SMTPDataManager'):
             user, = User.create([{
                         'name': "Michael Scott",
                         'login': "msc",
                         'email': 'msc@example.com'}])
             self.run_tasks()
-            sendmail.assert_called_once_with(
-                FROM, ['msc@example.com'], ANY,
-                datamanager=ANY)
+            send_message.assert_called_once()
 
         email, = Email.search([])
         self.assertEqual(email.recipients, 'Michael Scott <msc@example.com>')
@@ -200,14 +198,14 @@ class NotificationEmailTestCase(CompanyTestMixin, ModuleTestCase):
                     }])
 
         with patch.object(
-                notification_module, 'sendmail_transactional') as sendmail, \
+                notification_module,
+                'send_message_transactional') as send_message, \
                 patch.object(notification_module, 'SMTPDataManager'):
             User.create([{'name': "Michael Scott", 'login': "msc"}])
             self.run_tasks(1)
-            sendmail.assert_not_called()
+            send_message.assert_not_called()
             self.run_tasks()
-            sendmail.assert_called_once_with(
-                FROM, ['user@example.com'], ANY, datamanager=ANY)
+            send_message.assert_called_once()
 
     @with_transaction()
     def test_notification_email_attachment(self):
@@ -355,14 +353,13 @@ class NotificationEmailTestCase(CompanyTestMixin, ModuleTestCase):
                     }])
 
         with patch.object(
-                notification_module, 'sendmail_transactional') as sendmail, \
+                notification_module,
+                'send_message_transactional') as send_message, \
                 patch.object(notification_module, 'SMTPDataManager'):
             User.create([{'name': "Michael Scott", 'login': "msc"}])
             self.run_tasks()
-            sendmail.assert_called_once_with(
-                FROM, ['fallback@example.com'], ANY,
-                datamanager=ANY)
-            _, _, msg = sendmail.call_args[0]
+            send_message.assert_called_once()
+            msg, = send_message.call_args[0]
             self.assertEqual(msg['To'], 'Fallback <fallback@example.com>')
 
     @with_transaction()
@@ -393,11 +390,12 @@ class NotificationEmailTestCase(CompanyTestMixin, ModuleTestCase):
                     }])
 
         with patch.object(
-                notification_module, 'get_email') as get_email, \
+                notification_module,
+                'send_message_transactional') as send_message_transactional, \
                 patch.object(notification_module, 'SMTPDataManager'):
             User.create([{'name': "Michael Scott", 'login': "msc"}])
             self.run_tasks()
-            get_email.assert_not_called()
+            send_message_transactional.assert_not_called()
 
 
 del ModuleTestCase

@@ -6,12 +6,21 @@ Imports::
 
     >>> import datetime
     >>> from decimal import Decimal
+    >>> from unittest.mock import patch
 
     >>> from proteus import Model, Wizard
     >>> from trytond.modules.account.tests.tools import (
     ...     create_chart, create_fiscalyear, get_accounts)
+    >>> from trytond.modules.account_dunning_email import account
     >>> from trytond.modules.company.tests.tools import create_company, get_company
     >>> from trytond.tests.tools import activate_modules, assertEqual
+
+Patch send_message_transactional::
+
+    >>> smtp_calls = patch.object(
+    ...     account, 'send_message_transactional').start()
+    >>> manager = patch.object(
+    ...     account, 'SMTPDataManager').start()
 
 Activate modules::
 

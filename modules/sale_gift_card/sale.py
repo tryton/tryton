@@ -13,7 +13,7 @@ from trytond.modules.currency.fields import Monetary
 from trytond.pool import Pool, PoolMeta
 from trytond.pyson import Bool, Eval, Id
 from trytond.report import Report, get_email
-from trytond.sendmail import sendmail_transactional
+from trytond.sendmail import send_message_transactional
 from trytond.tools.email_ import (
     EmailNotValidError, set_from_header, validate_email)
 from trytond.transaction import Transaction
@@ -198,7 +198,7 @@ class GiftCard(ModelSQL, ModelView):
             set_from_header(msg, from_cfg, from_ or from_cfg)
             msg['To'] = email
             msg['Subject'] = title
-            sendmail_transactional(from_cfg, [email], msg, strict=True)
+            send_message_transactional(msg, strict=True)
 
 
 class GiftCardReport(Report):
