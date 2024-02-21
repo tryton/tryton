@@ -925,6 +925,9 @@
         get number_of_views() {
             return this.views.length + this.view_to_load.length;
         },
+        get view_index() {
+            return this.views.indexOf(this.current_view);
+        },
         switch_view: function(
             view_type=null, view_id=null, creatable=null, display=true) {
             if (view_id !== null) {
@@ -1001,9 +1004,8 @@
                         return this.add_view_id(view_id, view_type)
                             .then(set_current_view);
                     } else {
-                        var i = this.views.indexOf(this.current_view);
                         this.current_view = this.views[
-                            (i + 1) % this.views.length];
+                            (this.view_index + 1) % this.views.length];
                     }
                     if (found()) {
                         break;

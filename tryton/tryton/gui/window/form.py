@@ -105,7 +105,9 @@ class Form(TabContent):
     def compare(self, model, attributes):
         if not attributes:
             return False
-        return (self.model == model
+        return (
+            self.screen.view_index == 0
+            and self.model == model
             and self.res_id == attributes.get('res_id')
             and self.attributes.get('domain') == attributes.get('domain')
             and self.attributes.get('view_ids') == attributes.get('view_ids')
