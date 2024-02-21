@@ -733,11 +733,14 @@ class Activity(
         set_from_header(msg, from_, translated.email_from or from_)
         msg['To'] = to
         msg['Subject'] = title
-        msg.set_content(content, subtype='html')
         if html2text:
             converter = html2text.HTML2Text()
             content_text = converter.handle(content)
             msg.add_alternative(content_text, subtype='plain')
+        if msg.is_multipart():
+            msg.add_alternative(content, subtype='html')
+        else:
+            msg.set_content(content, subtype='html')
 
         to_addrs = [convert_ascii_email(a) for _, a in getaddresses([str(to)])]
         if to_addrs:

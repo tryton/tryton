@@ -512,11 +512,14 @@ class Message(Workflow, ModelSQL, ModelView):
                 set_from_header(msg, from_cfg, message.from_ or from_cfg)
                 msg['To'] = to
                 msg['Subject'] = message.title
-                msg.set_content(content, subtype='html')
                 if html2text:
                     converter = html2text.HTML2Text()
                     content_text = converter.handle(content)
                     msg.add_alternative(content_text, subtype='plain')
+                if msg.is_multipart():
+                    msg.add_alternative(content, subtype='html')
+                else:
+                    msg.set_content(content, subtype='html')
 
                 send_message_transactional(msg, datamanager=smtpd_datamanager)
         if not emails:

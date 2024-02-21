@@ -111,7 +111,6 @@ class Email(ResourceAccessMixin, ModelSQL, ModelView):
             'body': body,
             'signature': user.signature or '',
             }
-        msg.set_content(body_html, subtype='html')
         if html2text:
             body_text = HTML_EMAIL % {
                 'subject': subject,
@@ -123,6 +122,10 @@ class Email(ResourceAccessMixin, ModelSQL, ModelView):
             if user.signature:
                 body_text += '\n-- \n' + converter.handle(user.signature)
             msg.add_alternative(body_text, subtype='plain')
+        if msg.is_multipart():
+            msg.add_alternative(body_html, subtype='html')
+        else:
+            msg.set_content(body_html, subtype='html')
         if files or reports or attachments:
             if files is None:
                 files = []
