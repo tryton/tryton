@@ -248,21 +248,14 @@
     };
 
     Sao.common.parse_time = function(format, value) {
-        if (!value) {
-            return null;
+        var date = moment(value, Sao.common.moment_format(format));
+        if (date.isValid()) {
+            date = Sao.Time(
+                date.hour(), date.minute(), date.second(), date.millisecond());
+        } else {
+            date = null;
         }
-        var getNumber = function(pattern) {
-            var i = format.indexOf(pattern);
-            if (~i) {
-                var number = parseInt(value.slice(i, i + pattern.length), 10);
-                if (!isNaN(number)) {
-                    return number;
-                }
-            }
-            return 0;
-        };
-        return Sao.Time(getNumber('%H'), getNumber('%M'), getNumber('%S'),
-                getNumber('%f'));
+        return date;
     };
 
     Sao.common.format_date = function(date_format, date) {

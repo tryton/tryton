@@ -1853,9 +1853,9 @@
         };
         [
         ['12:30:00', Sao.Time(12, 30, 0)],
-        ['test', Sao.Time(0, 0, 0)]
         ].forEach(test_valueOf_func, field);
         [
+        ['test', null],
         [null, null]
         ].forEach(test_func, field);
 
