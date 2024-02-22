@@ -27,6 +27,16 @@ class View(
         fields.fmany2one(
             'model_ref', 'model', 'ir.model,model', "Model",
             ondelete='CASCADE'),
+        fields.fmany2one(
+            'field_children', 'field_childs,model',
+            'ir.model.field,name,model',
+            "Children Field",
+            domain=[
+                ('model', '=', Eval('model')),
+                ],
+            states={
+                'invisible': Eval('type') != 'tree',
+                }),
         ModelSQL, ModelView):
     "View"
     __name__ = 'ir.ui.view'

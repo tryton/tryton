@@ -12,8 +12,8 @@ this repository contains the full copyright notices and license terms. -->
     <field name="domain" widget="pyson"/>
     <label name="priority"/>
     <field name="priority"/>
-    <label name="field_childs"/>
-    <field name="field_childs"/>
+    <label name="field_children"/>
+    <field name="field_children"/>
     <label name="module"/>
     <field name="module"/>
     <label name="name"/>
