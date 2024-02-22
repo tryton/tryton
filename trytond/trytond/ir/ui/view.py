@@ -392,10 +392,19 @@ class ShowView(Wizard):
             ])
 
 
-class ViewTreeWidth(ModelSQL, ModelView):
+class ViewTreeWidth(
+        fields.fmany2one(
+            'model_ref', 'model', 'ir.model,model', "Model",
+            required=True, ondelete='CASCADE'),
+        fields.fmany2one(
+            'field_ref', 'field,model', 'ir.model.field,name,model', "Field",
+            required=True, ondelete='CASCADE',
+            domain=[
+                ('model', '=', Eval('model')),
+                ]),
+        ModelSQL, ModelView):
     "View Tree Width"
     __name__ = 'ir.ui.view_tree_width'
-    _rec_name = 'model'
     model = fields.Char('Model', required=True)
     field = fields.Char('Field', required=True)
     user = fields.Many2One('res.user', 'User', required=True,
@@ -415,6 +424,21 @@ class ViewTreeWidth(ModelSQL, ModelView):
                 (table.user, Index.Equality()),
                 (table.model, Index.Equality()),
                 (table.field, Index.Equality())))
+
+    def get_rec_name(self, name):
+        return f'{self.field_ref.rec_name} @ {self.model_ref.rec_name}'
+
+    @classmethod
+    def search_rec_name(cls, name, clause):
+        operator = clause[1]
+        if operator.startswith('!') or operator.startswith('not '):
+            bool_op = 'AND'
+        else:
+            bool_op = 'OR'
+        return [bool_op,
+            ('model_ref.rec_name', *clause[1:]),
+            ('field_ref.rec_name', *clause[1:]),
+            ]
 
     @classmethod
     def delete(cls, records):
