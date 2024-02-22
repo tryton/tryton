@@ -454,7 +454,7 @@ class ModelSQL(ModelStorage):
                     # migration from 3.6
                     table.drop_fk(field_name)
                 elif ref:
-                    table.add_fk(field_name, ref, field.ondelete)
+                    table.add_fk(field_name, ref, on_delete=field.ondelete)
 
             required = field.required
             # Do not set 'NOT NULL' for Binary field as the database column

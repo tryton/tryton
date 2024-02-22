@@ -70,10 +70,10 @@ class TableHandlerInterface(object):
     def add_column(self, column_name, abstract_type, default=None, comment=''):
         raise NotImplementedError
 
-    def add_fk(self, column_name, reference, on_delete=None):
+    def add_fk(self, columns, reference, ref_columns=None, on_delete=None):
         raise NotImplementedError
 
-    def drop_fk(self, column_name, table=None):
+    def drop_fk(self, columns, ref_columns=None, table=None):
         raise NotImplementedError
 
     def not_null_action(self, column_name, action='add'):

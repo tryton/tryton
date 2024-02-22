@@ -279,15 +279,16 @@ TableHandler
    The ``default`` is a method that return the value to fill the new column.
    ``comment`` set as comment for the column.
 
-.. method:: TableHandler.add_fk(column_name, reference[, on_delete])
+.. method:: TableHandler.add_fk(columns, reference[, ref_columns[, on_delete])
 
-   Add a foreign key constraint on the named column to target the ``reference``
-   table name.
+   Add a foreign key constraint on the named columns to target the
+   ``ref_columns`` of ``reference`` table name.
    ``on_delete`` defines the method to use when foreign record is deleted.
 
-.. method:: TableHandler.drop_fk(column_name[, table])
+.. method:: TableHandler.drop_fk(columns[, ref_columns[, table])
 
-   Drop the foreign key constrant on the named column.
+   Drop the foreign key constraint on the named columns targeting the
+   ``ref_columns``.
    ``table`` can be used to alter another table.
 
 .. method:: TableHandler.not_null_action(column_name[, action])

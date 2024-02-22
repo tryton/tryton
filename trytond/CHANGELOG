@@ -1,3 +1,4 @@
+* Allow creation of foreign key on non primary key
 * Include context information in access error
 * Remove trytond-worker max tasks per child option for Python <= 3.10
 * Do not copy readonly relational fields

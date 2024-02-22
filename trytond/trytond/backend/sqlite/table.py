@@ -255,10 +255,10 @@ class TableHandler(TableHandlerInterface):
 
         self._update_definitions(columns=True)
 
-    def add_fk(self, column_name, reference, on_delete=None):
+    def add_fk(self, columns, reference, ref_columns=None, on_delete=None):
         warnings.warn('Unable to add foreign key with SQLite backend')
 
-    def drop_fk(self, column_name, table=None):
+    def drop_fk(self, columns=None, ref_columns=None, table=None):
         warnings.warn('Unable to drop foreign key with SQLite backend')
 
     def not_null_action(self, column_name, action='add'):
