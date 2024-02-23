@@ -22,7 +22,7 @@ CREATE TABLE ir_model (
 
 CREATE TABLE ir_model_field (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
-    model INTEGER,
+    model VARCHAR,
     name VARCHAR,
     relation VARCHAR,
     field_description VARCHAR,

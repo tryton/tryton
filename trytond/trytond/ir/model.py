@@ -61,8 +61,7 @@ class Model(ModelSQL, ModelView):
     module = fields.Char('Module',
        help="Module in which this model is defined.", readonly=True)
     global_search_p = fields.Boolean('Global Search')
-    fields = fields.One2Many('ir.model.field', 'model', 'Fields',
-       required=True)
+    fields = fields.One2Many('ir.model.field', 'model_ref', "Fields")
     _get_names_cache = Cache('ir.model.get_names')
 
     @classmethod
@@ -221,7 +220,11 @@ class Model(ModelSQL, ModelView):
         return cls.get_names().get(model, model)
 
 
-class ModelField(ModelSQL, ModelView):
+class ModelField(
+        fields.fmany2one(
+            'model_ref', 'model', 'ir.model,model', "Model",
+            required=True, ondelete='CASCADE'),
+        ModelSQL, ModelView):
     "Model field"
     __name__ = 'ir.model.field'
     name = fields.Char('Name', required=True,
@@ -234,12 +237,11 @@ class ModelField(ModelSQL, ModelView):
             'readonly': Bool(Eval('module')),
             },
         depends=['module'])
-    model = fields.Many2One('ir.model', 'Model', required=True,
-        ondelete='CASCADE',
+    model = fields.Char(
+        "Model", required=True,
         states={
             'readonly': Bool(Eval('module')),
-            },
-        depends=['module'])
+            })
     field_description = fields.Char('Field Description', translate=True,
         loading='lazy',
         states={
@@ -272,7 +274,7 @@ class ModelField(ModelSQL, ModelView):
     @classmethod
     def __setup__(cls):
         super(ModelField, cls).__setup__()
-        cls.__access__.add('model')
+        cls.__access__.add('model_ref')
         table = cls.__table__()
         cls._sql_constraints += [
             ('name_model_uniq', Unique(table, table.name, table.model),
@@ -281,17 +283,37 @@ class ModelField(ModelSQL, ModelView):
         cls._order.insert(0, ('name', 'ASC'))
 
     @classmethod
-    def register(cls, model, module_name, model_id):
+    def __register__(cls, module):
         pool = Pool()
         Model = pool.get('ir.model')
+        transaction = Transaction()
+        cursor = transaction.connection.cursor()
+        table_h = cls.__table_handler__(module)
+        table = cls.__table__()
+        model = Model.__table__()
+
+        # Migration from 7.0: model as char
+        if (table_h.column_exist('model')
+                and table_h.column_is_type('model', 'INTEGER')):
+            table_h.column_rename('model', '_temp_model')
+            table_h.add_column('model', 'VARCHAR')
+            cursor.execute(*table.update(
+                    [table.model], [model.model],
+                    from_=[model],
+                    where=table._temp_model == model.id))
+            table_h.drop_column('_temp_model')
+
+        super().__register__(module)
+
+    @classmethod
+    def register(cls, model, module_name, model_id):
         cursor = Transaction().connection.cursor()
 
         ir_model_field = cls.__table__()
-        ir_model = Model.__table__()
 
-        cursor.execute(*ir_model_field.join(ir_model,
-                condition=ir_model_field.model == ir_model.id
-                ).select(ir_model_field.id.as_('id'),
+        cursor.execute(*ir_model_field
+            .select(
+                ir_model_field.id.as_('id'),
                 ir_model_field.name.as_('name'),
                 ir_model_field.field_description.as_('field_description'),
                 ir_model_field.ttype.as_('ttype'),
@@ -299,7 +321,7 @@ class ModelField(ModelSQL, ModelView):
                 ir_model_field.module.as_('module'),
                 ir_model_field.help.as_('help'),
                 ir_model_field.access.as_('access'),
-                where=ir_model.model == model.__name__))
+                where=ir_model_field.model == model.__name__))
         model_fields = {f['name']: f for f in cursor_dict(cursor)}
 
         for field_name, field in model._fields.items():
@@ -312,28 +334,41 @@ class ModelField(ModelSQL, ModelView):
             access = field_name in model.__access__
 
             if field_name not in model_fields:
-                cursor.execute(*ir_model_field.insert(
-                        [ir_model_field.model, ir_model_field.name,
+                cursor.execute(*ir_model_field.insert([
+                            ir_model_field.model,
+                            ir_model_field.name,
                             ir_model_field.field_description,
-                            ir_model_field.ttype, ir_model_field.relation,
-                            ir_model_field.help, ir_model_field.module,
-                            ir_model_field.access],
-                        [[
-                                model_id, field_name,
+                            ir_model_field.ttype,
+                            ir_model_field.relation,
+                            ir_model_field.help,
+                            ir_model_field.module,
+                            ir_model_field.access,
+                            ], [[
+                                model.__name__,
+                                field_name,
                                 field.string,
-                                field._type, relation,
-                                field.help, module_name,
-                                access]]))
+                                field._type,
+                                relation,
+                                field.help,
+                                module_name,
+                                access,
+                                ]]))
             elif (model_fields[field_name]['field_description'] != field.string
                     or model_fields[field_name]['ttype'] != field._type
                     or model_fields[field_name]['relation'] != relation
                     or model_fields[field_name]['help'] != field.help
                     or model_fields[field_name]['access'] != access):
-                cursor.execute(*ir_model_field.update(
-                        [ir_model_field.field_description,
-                            ir_model_field.ttype, ir_model_field.relation,
-                            ir_model_field.help, ir_model_field.access],
-                        [field.string, field._type, relation, field.help,
+                cursor.execute(*ir_model_field.update([
+                            ir_model_field.field_description,
+                            ir_model_field.ttype,
+                            ir_model_field.relation,
+                            ir_model_field.help,
+                            ir_model_field.access,
+                            ], [
+                            field.string,
+                            field._type,
+                            relation,
+                            field.help,
                             access],
                         where=(ir_model_field.id
                             == model_fields[field_name]['id'])))
@@ -341,14 +376,11 @@ class ModelField(ModelSQL, ModelView):
     @classmethod
     def clean(cls):
         pool = Pool()
-        IrModel = pool.get('ir.model')
         transaction = Transaction()
         cursor = transaction.connection.cursor()
-        ir_model = IrModel.__table__()
         ir_model_field = cls.__table__()
-        cursor.execute(*ir_model_field
-            .join(ir_model, condition=ir_model_field.model == ir_model.id)
-            .select(ir_model.model, ir_model_field.name, ir_model_field.id))
+        cursor.execute(*ir_model_field.select(
+                ir_model_field.model, ir_model_field.name, ir_model_field.id))
         for model, field, id_ in cursor:
             Model = pool.get(model)
             if field not in Model._fields:
@@ -407,7 +439,6 @@ class ModelField(ModelSQL, ModelView):
     def read(cls, ids, fields_names):
         pool = Pool()
         Translation = pool.get('ir.translation')
-        Model = pool.get('ir.model')
 
         to_delete = []
         if Transaction().context.get('language'):
@@ -425,46 +456,27 @@ class ModelField(ModelSQL, ModelView):
         if (Transaction().context.get('language')
                 and ('field_description' in fields_names
                     or 'help' in fields_names)):
-            model_ids = set()
-            for rec in res:
-                if isinstance(rec['model'], (list, tuple)):
-                    model_ids.add(rec['model'][0])
-                else:
-                    model_ids.add(rec['model'])
-            model_ids = list(model_ids)
-            cursor = Transaction().connection.cursor()
-            model = Model.__table__()
-            cursor.execute(*model.select(model.id, model.model,
-                    where=model.id.in_(model_ids)))
-            id2model = dict(cursor)
-
             trans_args = []
             for rec in res:
-                if isinstance(rec['model'], (list, tuple)):
-                    model_id = rec['model'][0]
-                else:
-                    model_id = rec['model']
                 if 'field_description' in fields_names:
-                    trans_args.append((id2model[model_id] + ',' + rec['name'],
-                        'field', Transaction().language, None))
+                    trans_args.append((
+                            rec['model'] + ',' + rec['name'],
+                            'field', Transaction().language, None))
                 if 'help' in fields_names:
-                    trans_args.append((id2model[model_id] + ',' + rec['name'],
+                    trans_args.append((
+                            rec['model'] + ',' + rec['name'],
                             'help', Transaction().language, None))
             Translation.get_sources(trans_args)
             for rec in res:
-                if isinstance(rec['model'], (list, tuple)):
-                    model_id = rec['model'][0]
-                else:
-                    model_id = rec['model']
                 if 'field_description' in fields_names:
                     res_trans = Translation.get_source(
-                            id2model[model_id] + ',' + rec['name'],
+                            rec['model'] + ',' + rec['name'],
                             'field', Transaction().language)
                     if res_trans:
                         rec['field_description'] = res_trans
                 if 'help' in fields_names:
                     res_trans = Translation.get_source(
-                            id2model[model_id] + ',' + rec['name'],
+                            rec['model'] + ',' + rec['name'],
                             'help', Transaction().language)
                     if res_trans:
                         rec['help'] = res_trans
@@ -760,11 +772,9 @@ class ModelFieldAccess(DeactivableMixin, ModelSQL, ModelView):
                     lambda: defaultdict(lambda: True)))
 
         pool = Pool()
-        Model = pool.get('ir.model')
         ModelField = pool.get('ir.model.field')
         User = pool.get('res.user')
         field_access = cls.__table__()
-        ir_model = Model.__table__()
         model_field = ModelField.__table__()
 
         groups = User.get_groups()
@@ -783,10 +793,8 @@ class ModelFieldAccess(DeactivableMixin, ModelSQL, ModelView):
         cursor = Transaction().connection.cursor()
         cursor.execute(*field_access.join(model_field,
                 condition=field_access.field == model_field.id
-                ).join(ir_model,
-                condition=model_field.model == ir_model.id
                 ).select(
-                ir_model.model,
+                model_field.model,
                 model_field.name,
                 Max(Case(
                         (field_access.perm_read == Literal(True), 1),
@@ -800,11 +808,11 @@ class ModelFieldAccess(DeactivableMixin, ModelSQL, ModelView):
                 Max(Case(
                         (field_access.perm_delete == Literal(True), 1),
                         else_=0)),
-                where=ir_model.model.in_(models)
+                where=model_field.model.in_(models)
                 & (field_access.active == Literal(True))
                 & (field_access.group.in_(groups or [-1])
                     | (field_access.group == Null)),
-                group_by=[ir_model.model, model_field.name]))
+                group_by=[model_field.model, model_field.name]))
         for m, f, r, w, c, d in cursor:
             accesses[m][f] = {'read': r, 'write': w, 'create': c, 'delete': d}
         for model, maccesses in accesses.items():

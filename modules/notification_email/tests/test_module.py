@@ -34,16 +34,11 @@ class NotificationEmailTestCase(CompanyTestMixin, ModuleTestCase):
 
     def _setup_notification(self, recipient_field='create_uid'):
         pool = Pool()
-        Model = pool.get('ir.model')
         ModelField = pool.get('ir.model.field')
         Action = pool.get('ir.action')
         Report = pool.get('ir.action.report')
         User = pool.get('res.user')
         NotificationEmail = pool.get('notification.email')
-
-        model, = Model.search([
-                ('model', '=', User.__name__),
-                ])
 
         action = Action(name="Notification Email", type='ir.action.report')
         action.save()
@@ -52,7 +47,7 @@ class NotificationEmailTestCase(CompanyTestMixin, ModuleTestCase):
         report.action = action
         report.template_extension = 'txt'
         report.report_content = b'Hello ${records[0].name}'
-        report.model = model.model
+        report.model = User.__name__
         report.save()
 
         user = User(Transaction().user)
@@ -61,7 +56,7 @@ class NotificationEmailTestCase(CompanyTestMixin, ModuleTestCase):
 
         notification_email = NotificationEmail()
         notification_email.recipients, = ModelField.search([
-                ('model.model', '=', model.model),
+                ('model', '=', User.__name__),
                 ('name', '=', recipient_field),
                 ])
         notification_email.content = report

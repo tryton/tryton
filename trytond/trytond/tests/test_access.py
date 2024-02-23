@@ -430,7 +430,7 @@ class _ModelFieldAccessTestCase(unittest.TestCase):
         pool = Pool()
         Field = pool.get('ir.model.field')
         field1, = Field.search([
-                ('model.model', '=', 'test.access'),
+                ('model', '=', 'test.access'),
                 ('name', '=', name),
                 ])
         return field1
@@ -925,7 +925,7 @@ class ModelFieldAccessReadTestCase(_ModelFieldAccessTestCase):
         Field = pool.get('ir.model.field')
         FieldAccess = pool.get('ir.model.field.access')
         field, = Field.search([
-                ('model.model', '=', 'test.access.relate'),
+                ('model', '=', 'test.access.relate'),
                 ('name', '=', 'value'),
                 ])
         FieldAccess.create([{
@@ -947,7 +947,7 @@ class ModelFieldAccessReadTestCase(_ModelFieldAccessTestCase):
         Field = pool.get('ir.model.field')
         FieldAccess = pool.get('ir.model.field.access')
         field, = Field.search([
-                ('model.model', '=', 'test.access.relate'),
+                ('model', '=', 'test.access.relate'),
                 ('name', '=', 'value'),
                 ])
         FieldAccess.create([{
@@ -974,7 +974,7 @@ class ModelFieldAccessReadTestCase(_ModelFieldAccessTestCase):
         Field = pool.get('ir.model.field')
         FieldAccess = pool.get('ir.model.field.access')
         field, = Field.search([
-                ('model.model', '=', 'test.access.relate'),
+                ('model', '=', 'test.access.relate'),
                 ('name', '=', 'parent'),
                 ])
         FieldAccess.create([{
@@ -992,7 +992,7 @@ class ModelFieldAccessReadTestCase(_ModelFieldAccessTestCase):
         Field = pool.get('ir.model.field')
         FieldAccess = pool.get('ir.model.field.access')
         field, = Field.search([
-                ('model.model', '=', 'test.access.relate'),
+                ('model', '=', 'test.access.relate'),
                 ('name', '=', 'parent'),
                 ])
         FieldAccess.create([{

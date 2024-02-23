@@ -34,7 +34,7 @@ class Email(ModelSQL, ModelView):
     recipients = fields.Many2One(
         'ir.model.field', "Recipients",
         domain=[
-            ('model.model', '=', Eval('model')),
+            ('model', '=', Eval('model')),
             ],
         help="The field that contains the recipient(s).")
     fallback_recipients = fields.Many2One(
@@ -49,7 +49,7 @@ class Email(ModelSQL, ModelView):
     recipients_secondary = fields.Many2One(
         'ir.model.field', "Secondary Recipients",
         domain=[
-            ('model.model', '=', Eval('model')),
+            ('model', '=', Eval('model')),
             ],
         help="The field that contains the secondary recipient(s).")
     fallback_recipients_secondary = fields.Many2One(
@@ -64,7 +64,7 @@ class Email(ModelSQL, ModelView):
     recipients_hidden = fields.Many2One(
         'ir.model.field', "Hidden Recipients",
         domain=[
-            ('model.model', '=', Eval('model')),
+            ('model', '=', Eval('model')),
             ],
         help="The field that contains the hidden recipient(s).")
     fallback_recipients_hidden = fields.Many2One(

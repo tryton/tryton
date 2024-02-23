@@ -314,11 +314,11 @@ class EmailTemplate(ModelSQL, ModelView):
                 ]:
             field = getattr(cls, field)
             field.domain = [
-                ('model', '=', Eval('model')),
+                ('model_ref.id', '=', Eval('model', -1)),
                 ['OR',
                     ('relation', 'in', cls.email_models()),
                     [
-                        ('model.model', 'in', cls.email_models()),
+                        ('model', 'in', cls.email_models()),
                         ('name', '=', 'id'),
                         ],
                     ]

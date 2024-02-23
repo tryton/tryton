@@ -66,7 +66,7 @@ class IrTestCase(ModuleTestCase):
 
         field, = ModelField.search([
                 ('field_description', '=', "Name"),
-                ('model.model', '=', 'ir.lang'),
+                ('model', '=', 'ir.lang'),
                 ('module', '=', 'ir'),
                 ])
         self.assertEqual(field.field_description, "Name")
@@ -79,7 +79,7 @@ class IrTestCase(ModuleTestCase):
 
         fields = ModelField.search([
                 ('field_description', 'in', ["Name", "Code"]),
-                ('model.model', '=', 'ir.lang'),
+                ('model', '=', 'ir.lang'),
                 ('module', '=', 'ir'),
                 ])
         self.assertEqual(
@@ -93,7 +93,7 @@ class IrTestCase(ModuleTestCase):
 
         field, = ModelField.search([
                 ('field_description', '=', "ID"),
-                ('model.model', '=', 'ir.lang'),
+                ('model', '=', 'ir.lang'),
                 ('module', '=', 'ir'),
                 ])
         self.assertEqual(field.field_description, "ID")
@@ -392,7 +392,7 @@ class IrTestCase(ModuleTestCase):
         admin.save()
         model, = IrModel.search([('model', '=', 'res.user')])
         field, = IrModelField.search([
-                ('model', '=', model.id),
+                ('model', '=', 'res.user'),
                 ('name', '=', 'id'),
                 ])
 
@@ -427,7 +427,7 @@ class IrTestCase(ModuleTestCase):
         admin.save()
         model, = IrModel.search([('model', '=', 'res.user')])
         field, = IrModelField.search([
-                ('model', '=', model.id),
+                ('model', '=', 'res.user'),
                 ('name', '=', 'id'),
                 ])
 
@@ -453,7 +453,7 @@ class IrTestCase(ModuleTestCase):
         admin.save()
         model, = IrModel.search([('model', '=', 'res.user')])
         field, = IrModelField.search([
-                ('model', '=', model.id),
+                ('model', '=', 'res.user'),
                 ('name', '=', 'id'),
                 ])
 
