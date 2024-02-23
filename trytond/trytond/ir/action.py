@@ -939,7 +939,7 @@ class ActionActWindowView(
     view = fields.Many2One(
         'ir.ui.view', "View", required=True, ondelete='CASCADE',
         domain=[
-            ('model', '=', Eval('model')),
+            ('model', '=', Eval('model', None)),
             ])
     act_window = fields.Many2One('ir.action.act_window', 'Action',
             ondelete='CASCADE')

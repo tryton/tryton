@@ -23,10 +23,13 @@ class XMLError(ValidationError):
     pass
 
 
-class View(ModelSQL, ModelView):
+class View(
+        fields.fmany2one(
+            'model_ref', 'model', 'ir.model,model', "Model",
+            ondelete='CASCADE'),
+        ModelSQL, ModelView):
     "View"
     __name__ = 'ir.ui.view'
-    _rec_name = 'model'
     model = fields.Char('Model', states={
             'required': Eval('type') != 'board',
             })
@@ -102,8 +105,12 @@ class View(ModelSQL, ModelView):
 
     def get_rec_name(self, name):
         return '%s (%s)' % (
-            self.model,
+            self.model_ref.rec_name,
             self.inherit.rec_name if self.inherit else self.type_string)
+
+    @classmethod
+    def search_rec_name(cls, name, clause):
+        return [('model_ref.rec_name', *clause[1:])]
 
     @classmethod
     @ModelView.button_action('ir.act_view_show')
