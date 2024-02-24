@@ -1264,7 +1264,11 @@ class ModelButtonReset(ModelSQL):
         required=True, ondelete='CASCADE')
 
 
-class ModelData(ModelSQL, ModelView):
+class ModelData(
+        fields.fmany2one(
+            'model_ref', 'model', 'ir.model,model', "Model",
+            required=True, ondelete='CASCADE'),
+        ModelSQL, ModelView):
     "Model data"
     __name__ = 'ir.model.data'
     fs_id = fields.Char('Identifier on File System', required=True,
