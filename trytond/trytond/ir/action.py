@@ -735,7 +735,14 @@ class ActionReport(
                         exception=exception)) from exception
 
 
-class ActionActWindow(ActionMixin, ModelSQL, ModelView):
+class ActionActWindow(
+        fields.fmany2one(
+            'res_model_ref', 'res_model', 'ir.model,model', "Model",
+            ondelete='CASCADE'),
+        fields.fmany2one(
+            'context_model_ref', 'context_model', 'ir.model,model',
+            "Context Model", ondelete='CASCADE'),
+        ActionMixin, ModelSQL, ModelView):
     "Action act window"
     __name__ = 'ir.action.act_window'
     domain = fields.Char('Domain Value')

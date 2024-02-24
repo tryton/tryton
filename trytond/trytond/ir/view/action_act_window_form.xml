@@ -3,10 +3,10 @@
 this repository contains the full copyright notices and license terms. -->
 <data>
     <xpath expr="//page[@id='general']" position="inside">
-        <label name="res_model"/>
-        <field name="res_model"/>
-        <label name="context_model"/>
-        <field name="context_model"/>
+        <label name="res_model_ref"/>
+        <field name="res_model_ref"/>
+        <label name="context_model_ref"/>
+        <field name="context_model_ref"/>
 
         <field name="act_window_views" colspan="4" view_ids="ir.act_window_view_view_list2"/>
 
