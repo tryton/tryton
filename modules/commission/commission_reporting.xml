@@ -68,8 +68,7 @@ this repository contains the full copyright notices and license terms. -->
 
         <record model="ir.rule.group" id="rule_group_reporting_agent_companies">
             <field name="name">User in companies</field>
-            <field name="model"
-                search="[('model', '=', 'commission.reporting.agent')]"/>
+            <field name="model">commission.reporting.agent</field>
             <field name="global_p" eval="True"/>
         </record>
         <record model="ir.rule" id="rule_reporting_agent_companies">
@@ -146,8 +145,7 @@ this repository contains the full copyright notices and license terms. -->
 
         <record model="ir.rule.group" id="rule_group_reporting_agent_time_series_companies">
             <field name="name">User in companies</field>
-            <field name="model"
-                search="[('model', '=', 'commission.reporting.agent.time_series')]"/>
+            <field name="model">commission.reporting.agent.time_series</field>
             <field name="global_p" eval="True"/>
         </record>
         <record model="ir.rule" id="rule_reporting_agent_time_series_companies">

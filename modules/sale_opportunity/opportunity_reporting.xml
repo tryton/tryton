@@ -54,7 +54,7 @@ this repository contains the full copyright notices and license terms. -->
 
         <record model="ir.rule.group" id="rule_group_reporting_main_companies">
             <field name="name">User in companies</field>
-            <field name="model" search="[('model', '=', 'sale.opportunity.reporting.main')]"/>
+            <field name="model">sale.opportunity.reporting.main</field>
             <field name="global_p" eval="True"/>
         </record>
         <record model="ir.rule" id="rule_reporting_main_companies">
@@ -130,7 +130,7 @@ this repository contains the full copyright notices and license terms. -->
 
         <record model="ir.rule.group" id="rule_group_reporting_main_time_series_companies">
             <field name="name">User in companies</field>
-            <field name="model" search="[('model', '=', 'sale.opportunity.reporting.main.time_series')]"/>
+            <field name="model">sale.opportunity.reporting.main.time_series</field>
             <field name="global_p" eval="True"/>
         </record>
         <record model="ir.rule" id="rule_reporting_main_time_series_companies">
@@ -195,7 +195,7 @@ this repository contains the full copyright notices and license terms. -->
 
         <record model="ir.rule.group" id="rule_group_reporting_conversion_companies">
             <field name="name">User in companies</field>
-            <field name="model" search="[('model', '=', 'sale.opportunity.reporting.conversion')]"/>
+            <field name="model">sale.opportunity.reporting.conversion</field>
             <field name="global_p" eval="True"/>
         </record>
         <record model="ir.rule" id="rule_reporting_conversion_companies">
@@ -271,7 +271,7 @@ this repository contains the full copyright notices and license terms. -->
 
         <record model="ir.rule.group" id="rule_group_reporting_conversion_time_series_companies">
             <field name="name">User in companies</field>
-            <field name="model" search="[('model', '=', 'sale.opportunity.reporting.conversion.time_series')]"/>
+            <field name="model">sale.opportunity.reporting.conversion.time_series</field>
             <field name="global_p" eval="True"/>
         </record>
         <record model="ir.rule" id="rule_reporting_conversion_time_series_companies">
@@ -354,7 +354,7 @@ this repository contains the full copyright notices and license terms. -->
 
         <record model="ir.rule.group" id="rule_group_reporting_conversion_employee_companies">
             <field name="name">User in companies</field>
-            <field name="model" search="[('model', '=', 'sale.opportunity.reporting.conversion.employee')]"/>
+            <field name="model">sale.opportunity.reporting.conversion.employee</field>
             <field name="global_p" eval="True"/>
         </record>
         <record model="ir.rule" id="rule_reporting_conversion_employee_companies">
@@ -432,7 +432,7 @@ this repository contains the full copyright notices and license terms. -->
 
         <record model="ir.rule.group" id="rule_group_reporting_conversion_employee_time_series_companies">
             <field name="name">User in companies</field>
-            <field name="model" search="[('model', '=', 'sale.opportunity.reporting.conversion.employee.time_series')]"/>
+            <field name="model">sale.opportunity.reporting.conversion.employee.time_series</field>
             <field name="global_p" eval="True"/>
         </record>
         <record model="ir.rule" id="rule_reporting_conversion_employee_time_series_companies">

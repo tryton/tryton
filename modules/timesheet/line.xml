@@ -62,7 +62,7 @@ this repository contains the full copyright notices and license terms. -->
 
         <record model="ir.rule.group" id="rule_group_line_companies">
             <field name="name">User in companies</field>
-            <field name="model" search="[('model', '=', 'timesheet.line')]"/>
+            <field name="model">timesheet.line</field>
             <field name="global_p" eval="True"/>
         </record>
         <record model="ir.rule" id="rule_line_companies">
@@ -74,7 +74,7 @@ this repository contains the full copyright notices and license terms. -->
 
         <record model="ir.rule.group" id="rule_group_line">
             <field name="name">Own timesheet line</field>
-            <field name="model" search="[('model', '=', 'timesheet.line')]"/>
+            <field name="model">timesheet.line</field>
             <field name="global_p" eval="False"/>
             <field name="default_p" eval="True"/>
             <field name="perm_read" eval="False"/>
@@ -87,7 +87,7 @@ this repository contains the full copyright notices and license terms. -->
         </record>
         <record model="ir.rule.group" id="rule_group_line_admin">
             <field name="name">Any timesheet line</field>
-            <field name="model" search="[('model', '=', 'timesheet.line')]"/>
+            <field name="model">timesheet.line</field>
             <field name="global_p" eval="False"/>
             <field name="default_p" eval="False"/>
         </record>
@@ -148,7 +148,7 @@ this repository contains the full copyright notices and license terms. -->
 
         <record model="ir.rule.group" id="rule_group_hours_employees">
             <field name="name">Own hours</field>
-            <field name="model" search="[('model', '=', 'timesheet.hours_employee')]"/>
+            <field name="model">timesheet.hours_employee</field>
             <field name="global_p" eval="False"/>
             <field name="default_p" eval="True"/>
         </record>
@@ -160,7 +160,7 @@ this repository contains the full copyright notices and license terms. -->
         </record>
         <record model="ir.rule.group" id="rule_group_hours_supervised_employees">
             <field name="name">Supervised employee's hours</field>
-            <field name="model" search="[('model', '=', 'timesheet.hours_employee')]"/>
+            <field name="model">timesheet.hours_employee</field>
             <field name="global_p" eval="False"/>
             <field name="default_p" eval="True"/>
         </record>
@@ -173,7 +173,7 @@ this repository contains the full copyright notices and license terms. -->
 
         <record model="ir.rule.group" id="rule_group_hours_employee_admin">
             <field name="name">Any employee hours</field>
-            <field name="model" search="[('model', '=', 'timesheet.hours_employee')]"/>
+            <field name="model">timesheet.hours_employee</field>
             <field name="global_p" eval="False"/>
             <field name="default_p" eval="False"/>
         </record>
@@ -212,7 +212,7 @@ this repository contains the full copyright notices and license terms. -->
 
         <record model="ir.rule.group" id="rule_group_hours_employee_weekly">
             <field name="name">Own hours</field>
-            <field name="model" search="[('model', '=', 'timesheet.hours_employee_weekly')]"/>
+            <field name="model">timesheet.hours_employee_weekly</field>
             <field name="global_p" eval="False"/>
             <field name="default_p" eval="True"/>
         </record>
@@ -224,7 +224,7 @@ this repository contains the full copyright notices and license terms. -->
         </record>
         <record model="ir.rule.group" id="rule_group_hours_supervised_employees_weekly">
             <field name="name">Supervised employee's hours</field>
-            <field name="model" search="[('model', '=', 'timesheet.hours_employee_weekly')]"/>
+            <field name="model">timesheet.hours_employee_weekly</field>
             <field name="global_p" eval="False"/>
             <field name="default_p" eval="True"/>
         </record>
@@ -237,7 +237,7 @@ this repository contains the full copyright notices and license terms. -->
 
         <record model="ir.rule.group" id="rule_group_hours_employee_weekly_admin">
             <field name="name">Any employee hours</field>
-            <field name="model" search="[('model', '=', 'timesheet.hours_employee_weekly')]"/>
+            <field name="model">timesheet.hours_employee_weekly</field>
             <field name="global_p" eval="False"/>
             <field name="default_p" eval="False"/>
         </record>
@@ -270,7 +270,7 @@ this repository contains the full copyright notices and license terms. -->
 
         <record model="ir.rule.group" id="rule_group_hours_employee_monthly">
             <field name="name">Own hours</field>
-            <field name="model" search="[('model', '=', 'timesheet.hours_employee_monthly')]"/>
+            <field name="model">timesheet.hours_employee_monthly</field>
             <field name="global_p" eval="False"/>
             <field name="default_p" eval="True"/>
         </record>
@@ -282,7 +282,7 @@ this repository contains the full copyright notices and license terms. -->
         </record>
         <record model="ir.rule.group" id="rule_group_hours_supervised_employees_monthly">
             <field name="name">Supervised employee's hours</field>
-            <field name="model" search="[('model', '=', 'timesheet.hours_employee_monthly')]"/>
+            <field name="model">timesheet.hours_employee_monthly</field>
             <field name="global_p" eval="False"/>
             <field name="default_p" eval="True"/>
         </record>
@@ -295,7 +295,7 @@ this repository contains the full copyright notices and license terms. -->
 
         <record model="ir.rule.group" id="rule_group_hours_employee_monthly_admin">
             <field name="name">Any employee hours</field>
-            <field name="model" search="[('model', '=', 'timesheet.hours_employee_monthly')]"/>
+            <field name="model">timesheet.hours_employee_monthly</field>
             <field name="global_p" eval="False"/>
             <field name="default_p" eval="False"/>
         </record>

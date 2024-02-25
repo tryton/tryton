@@ -862,7 +862,7 @@ this repository contains the full copyright notices and license terms. -->
 
         <record model="ir.rule.group" id="rule_group_shipment_in_companies">
             <field name="name">User in companies</field>
-            <field name="model" search="[('model', '=', 'stock.shipment.in')]"/>
+            <field name="model">stock.shipment.in</field>
             <field name="global_p" eval="True"/>
         </record>
         <record model="ir.rule" id="rule_shipment_in_companies">
@@ -874,7 +874,7 @@ this repository contains the full copyright notices and license terms. -->
 
         <record model="ir.rule.group" id="rule_group_shipment_in_return_companies">
             <field name="name">User in companies</field>
-            <field name="model" search="[('model', '=', 'stock.shipment.in.return')]"/>
+            <field name="model">stock.shipment.in.return</field>
             <field name="global_p" eval="True"/>
         </record>
         <record model="ir.rule" id="rule_shipment_in_return_companies">
@@ -886,7 +886,7 @@ this repository contains the full copyright notices and license terms. -->
 
         <record model="ir.rule.group" id="rule_group_shipment_out_companies">
             <field name="name">User in companies</field>
-            <field name="model" search="[('model', '=', 'stock.shipment.out')]"/>
+            <field name="model">stock.shipment.out</field>
             <field name="global_p" eval="True"/>
         </record>
         <record model="ir.rule" id="rule_shipment_out_companies">
@@ -898,7 +898,7 @@ this repository contains the full copyright notices and license terms. -->
 
         <record model="ir.rule.group" id="rule_group_shipment_out_return_companies">
             <field name="name">User in companies</field>
-            <field name="model" search="[('model', '=', 'stock.shipment.out.return')]"/>
+            <field name="model">stock.shipment.out.return</field>
             <field name="global_p" eval="True"/>
         </record>
         <record model="ir.rule" id="rule_shipment_out_return_companies">
@@ -910,7 +910,7 @@ this repository contains the full copyright notices and license terms. -->
 
         <record model="ir.rule.group" id="rule_group_shipment_internal_companies">
             <field name="name">User in companies</field>
-            <field name="model" search="[('model', '=', 'stock.shipment.internal')]"/>
+            <field name="model">stock.shipment.internal</field>
             <field name="global_p" eval="True"/>
         </record>
         <record model="ir.rule" id="rule_shipment_internal_companies">

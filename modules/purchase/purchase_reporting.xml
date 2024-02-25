@@ -52,7 +52,7 @@ this repository contains the full copyright notices and license terms. -->
 
         <record model="ir.rule.group" id="rule_group_reporting_main_companies">
             <field name="name">User in companies</field>
-            <field name="model" search="[('model', '=', 'purchase.reporting.main')]"/>
+            <field name="model">purchase.reporting.main</field>
             <field name="global_p" eval="True"/>
         </record>
         <record model="ir.rule" id="rule_reporting_main_companies">
@@ -125,7 +125,7 @@ this repository contains the full copyright notices and license terms. -->
 
         <record model="ir.rule.group" id="rule_group_reporting_main_time_series_companies">
             <field name="name">User in companies</field>
-            <field name="model" search="[('model', '=', 'purchase.reporting.main.time_series')]"/>
+            <field name="model">purchase.reporting.main.time_series</field>
             <field name="global_p" eval="True"/>
         </record>
         <record model="ir.rule" id="rule_reporting_main_time_series_companies">
@@ -199,7 +199,7 @@ this repository contains the full copyright notices and license terms. -->
 
         <record model="ir.rule.group" id="rule_group_reporting_supplier_companies">
             <field name="name">User in companies</field>
-            <field name="model" search="[('model', '=', 'purchase.reporting.supplier')]"/>
+            <field name="model">purchase.reporting.supplier</field>
             <field name="global_p" eval="True"/>
         </record>
         <record model="ir.rule" id="rule_reporting_supplier_companies">
@@ -276,7 +276,7 @@ this repository contains the full copyright notices and license terms. -->
 
         <record model="ir.rule.group" id="rule_group_reporting_supplier_time_series_companies">
             <field name="name">User in companies</field>
-            <field name="model" search="[('model', '=', 'purchase.reporting.supplier.time_series')]"/>
+            <field name="model">purchase.reporting.supplier.time_series</field>
             <field name="global_p" eval="True"/>
         </record>
         <record model="ir.rule" id="rule_reporting_supplier_time_series_companies">
@@ -351,7 +351,7 @@ this repository contains the full copyright notices and license terms. -->
 
         <record model="ir.rule.group" id="rule_group_reporting_product_companies">
             <field name="name">User in companies</field>
-            <field name="model" search="[('model', '=', 'purchase.reporting.product')]"/>
+            <field name="model">purchase.reporting.product</field>
             <field name="global_p" eval="True"/>
         </record>
         <record model="ir.rule" id="rule_reporting_product_companies">
@@ -427,7 +427,7 @@ this repository contains the full copyright notices and license terms. -->
 
         <record model="ir.rule.group" id="rule_group_reporting_product_time_series_companies">
             <field name="name">User in companies</field>
-            <field name="model" search="[('model', '=', 'purchase.reporting.product.time_series')]"/>
+            <field name="model">purchase.reporting.product.time_series</field>
             <field name="global_p" eval="True"/>
         </record>
         <record model="ir.rule" id="rule_reporting_product_time_series_companies">

@@ -109,8 +109,7 @@ this repository contains the full copyright notices and license terms. -->
 
         <record model="ir.rule.group" id="rule_group_account_companies">
             <field name="name">User in companies</field>
-            <field name="model"
-                search="[('model', '=', 'analytic_account.account')]"/>
+            <field name="model">analytic_account.account</field>
             <field name="global_p" eval="True"/>
         </record>
         <record model="ir.rule" id="rule_account_companies">
@@ -183,8 +182,7 @@ this repository contains the full copyright notices and license terms. -->
 
         <record model="ir.rule.group" id="rule_group_entry_companies">
             <field name="name">User in companies</field>
-            <field name="model"
-                search="[('model', '=', 'analytic.account.entry')]"/>
+            <field name="model">analytic.account.entry</field>
             <field name="global_p" eval="True"/>
         </record>
         <record model="ir.rule" id="rule_entry_companies">

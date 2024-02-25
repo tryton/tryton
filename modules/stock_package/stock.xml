@@ -49,7 +49,7 @@ this repository contains the full copyright notices and license terms. -->
 
         <record model="ir.rule.group" id="rule_group_package_companies">
             <field name="name">User in companies</field>
-            <field name="model" search="[('model', '=', 'stock.package')]"/>
+            <field name="model">stock.package</field>
             <field name="global_p" eval="True"/>
         </record>
         <record model="ir.rule" id="rule_package_companies">

@@ -239,8 +239,7 @@ this repository contains the full copyright notices and license terms. -->
 
         <record model="ir.rule.group" id="rule_group_account_type_companies">
             <field name="name">User in companies</field>
-            <field name="model"
-                search="[('model', '=', 'account.account.type')]"/>
+            <field name="model">account.account.type</field>
             <field name="global_p" eval="True"/>
         </record>
         <record model="ir.rule" id="rule_account_type_companies">
@@ -564,7 +563,7 @@ this repository contains the full copyright notices and license terms. -->
 
         <record model="ir.rule.group" id="rule_group_account_companies">
             <field name="name">User in companies</field>
-            <field name="model" search="[('model', '=', 'account.account')]"/>
+            <field name="model">account.account</field>
             <field name="global_p" eval="True"/>
         </record>
         <record model="ir.rule" id="rule_account_companies">
@@ -668,8 +667,7 @@ this repository contains the full copyright notices and license terms. -->
 
         <record model="ir.rule.group" id="rule_group_general_ledger_account_companies">
             <field name="name">User in companies</field>
-            <field name="model"
-                search="[('model', '=', 'account.general_ledger.account')]"/>
+            <field name="model">account.general_ledger.account</field>
             <field name="global_p" eval="True"/>
         </record>
         <record model="ir.rule" id="rule_general_ledger_account_companies">
@@ -755,7 +753,7 @@ this repository contains the full copyright notices and license terms. -->
 
         <record model="ir.rule.group" id="rule_group_general_ledger_account_party_companies">
             <field name="name">User in companies</field>
-            <field name="model" search="[('model', '=', 'account.general_ledger.account.party')]"/>
+            <field name="model">account.general_ledger.account.party</field>
             <field name="global_p" eval="True"/>
         </record>
         <record model="ir.rule" id="rule_general_ledger_account_party_companies">
@@ -798,8 +796,7 @@ this repository contains the full copyright notices and license terms. -->
 
         <record model="ir.rule.group" id="rule_group_general_ledger_line_companies">
             <field name="name">User in companies</field>
-            <field name="model"
-                search="[('model', '=', 'account.general_ledger.line')]"/>
+            <field name="model">account.general_ledger.line</field>
             <field name="global_p" eval="True"/>
         </record>
         <record model="ir.rule" id="rule_general_ledger_line_companies">
@@ -938,7 +935,7 @@ this repository contains the full copyright notices and license terms. -->
 
         <record model="ir.rule.group" id="rule_group_aged_balance_companies">
             <field name="name">User in companies</field>
-            <field name="model" search="[('model', '=', 'account.aged_balance')]"/>
+            <field name="model">account.aged_balance</field>
             <field name="global_p" eval="True"/>
         </record>
         <record model="ir.rule" id="rule_aged_balance_companies">

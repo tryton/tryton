@@ -106,7 +106,7 @@ this repository contains the full copyright notices and license terms. -->
 
         <record model="ir.rule.group" id="rule_group_user_warning">
             <field name="name">Own warning</field>
-            <field name="model" search="[('model', '=', 'res.user.warning')]"/>
+            <field name="model">res.user.warning</field>
             <field name="global_p" eval="True"/>
         </record>
         <record model="ir.rule" id="rule_user_warning1">
@@ -128,8 +128,7 @@ this repository contains the full copyright notices and license terms. -->
 
         <record model="ir.rule.group" id="rule_group_user_application">
             <field name="name">Own user application</field>
-            <field name="model"
-                search="[('model', '=', 'res.user.application')]"/>
+            <field name="model">res.user.application</field>
             <field name="global_p" eval="False"/>
             <field name="default_p" eval="True"/>
         </record>
@@ -140,8 +139,7 @@ this repository contains the full copyright notices and license terms. -->
 
         <record model="ir.rule.group" id="rule_group_user_application_admin">
             <field name="name">Any user application</field>
-            <field name="model"
-                search="[('model', '=', 'res.user.application')]"/>
+            <field name="model">res.user.application</field>
             <field name="global_p" eval="False"/>
             <field name="default_p" eval="False"/>
         </record>

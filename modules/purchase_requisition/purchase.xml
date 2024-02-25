@@ -224,7 +224,7 @@ this repository contains the full copyright notices and license terms.
 
         <record model="ir.rule.group" id="rule_group_requisition_companies">
             <field name="name">User in companies</field>
-            <field name="model" search="[('model', '=', 'purchase.requisition')]"/>
+            <field name="model">purchase.requisition</field>
             <field name="global_p" eval="True"/>
         </record>
         <record model="ir.rule" id="rule_requisition_companies">
@@ -237,8 +237,7 @@ this repository contains the full copyright notices and license terms.
 
         <record model="ir.rule.group" id="rule_group_requisition_employees">
             <field name="name">Own requisition</field>
-            <field name="model"
-                search="[('model', '=', 'purchase.requisition')]"/>
+            <field name="model">purchase.requisition</field>
             <field name="global_p" eval="False"/>
             <field name="default_p" eval="True"/>
             <field name="perm_read" eval="False"/>
@@ -258,8 +257,7 @@ this repository contains the full copyright notices and license terms.
         <!-- Give access to user who could trigger requisition work-flow -->
         <record model="ir.rule.group" id="rule_group_requisition_admin">
             <field name="name">Any requisition</field>
-            <field name="model"
-                search="[('model', '=', 'purchase.requisition')]"/>
+            <field name="model">purchase.requisition</field>
             <field name="global_p" eval="False"/>
         </record>
         <record model="ir.rule.group-res.group"

@@ -96,7 +96,7 @@ this repository contains the full copyright notices and license terms. -->
 
         <record model="ir.rule.group" id="rule_group_move_companies">
             <field name="name">User in companies</field>
-            <field name="model" search="[('model', '=', 'stock.move')]"/>
+            <field name="model">stock.move</field>
             <field name="global_p" eval="True"/>
         </record>
         <record model="ir.rule" id="rule_move_companies">

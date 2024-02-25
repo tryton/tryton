@@ -74,7 +74,7 @@ this repository contains the full copyright notices and license terms. -->
 
         <record model="ir.rule.group" id="rule_group_quantity_early_plan_companies">
             <field name="name">User in companies</field>
-            <field name="model" search="[('model', '=', 'stock.quantity.early_plan')]"/>
+            <field name="model">stock.quantity.early_plan</field>
             <field name="global_p" eval="True"/>
         </record>
         <record model="ir.rule" id="rule_quantity_early_plan_companies">

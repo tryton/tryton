@@ -79,7 +79,7 @@ this repository contains the full copyright notices and license terms. -->
 
         <record model="ir.rule.group" id="rule_group_product_cost_price_revision_companies">
             <field name="name">User in companies</field>
-            <field name="model" search="[('model', '=', 'product.cost_price.revision')]"/>
+            <field name="model">product.cost_price.revision</field>
             <field name="global_p" eval="True"/>
         </record>
         <record model="ir.rule" id="rule_product_cost_price_revision_companies">
@@ -283,7 +283,7 @@ this repository contains the full copyright notices and license terms. -->
 
         <record model="ir.rule.group" id="rule_group_product_quantities_warehouse_companies">
             <field name="name">User in companies</field>
-            <field name="model" search="[('model', '=', 'stock.product_quantities_warehouse')]"/>
+            <field name="model">stock.product_quantities_warehouse</field>
             <field name="global_p" eval="True"/>
         </record>
         <record model="ir.rule" id="rule_product_quantities_warehouse_companies">
@@ -384,7 +384,7 @@ this repository contains the full copyright notices and license terms. -->
 
         <record model="ir.rule.group" id="rule_group_product_quantities_warehouse_move_companies">
             <field name="name">User in companies</field>
-            <field name="model" search="[('model', '=', 'stock.product_quantities_warehouse.move')]"/>
+            <field name="model">stock.product_quantities_warehouse.move</field>
             <field name="global_p" eval="True"/>
         </record>
         <record model="ir.rule" id="rule_product_quantities_warehouse_move_companies">

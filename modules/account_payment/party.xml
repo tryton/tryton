@@ -23,7 +23,7 @@ this repository contains the full copyright notices and license terms. -->
 
         <record model="ir.rule.group" id="rule_group_party_reception_direct_debit_companies">
             <field name="name">User in companies</field>
-            <field name="model" search="[('model', '=', 'party.party.reception_direct_debit')]"/>
+            <field name="model">party.party.reception_direct_debit</field>
             <field name="global_p" eval="True"/>
         </record>
         <record model="ir.rule" id="rule_party_reception_direct_debit_companies">

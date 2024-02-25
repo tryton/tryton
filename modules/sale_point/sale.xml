@@ -91,7 +91,7 @@ this repository contains the full copyright notices and license terms. -->
 
         <record model="ir.rule.group" id="rule_group_point_sale_companies">
             <field name="name">User in companies</field>
-            <field name="model" search="[('model', '=', 'sale.point')]"/>
+            <field name="model">sale.point</field>
             <field name="global_p" eval="True"/>
         </record>
         <record model="ir.rule" id="rule_point_sale_companies">
@@ -208,7 +208,7 @@ this repository contains the full copyright notices and license terms. -->
 
         <record model="ir.rule.group" id="rule_group_sale_companies">
             <field name="name">User in companies</field>
-            <field name="model" search="[('model', '=', 'sale.point.sale')]"/>
+            <field name="model">sale.point.sale</field>
             <field name="global_p" eval="True"/>
         </record>
         <record model="ir.rule" id="rule_sale_companies">
@@ -321,7 +321,7 @@ this repository contains the full copyright notices and license terms. -->
 
         <record model="ir.rule.group" id="rule_group_cash_session_companies">
             <field name="name">User in companies</field>
-            <field name="model" search="[('model', '=', 'sale.point.sale')]"/>
+            <field name="model">sale.point.sale</field>
             <field name="global_p" eval="True"/>
         </record>
         <record model="ir.rule" id="rule_cash_session_companies">
@@ -381,7 +381,7 @@ this repository contains the full copyright notices and license terms. -->
 
         <record model="ir.rule.group" id="rule_group_payment_method_companies">
             <field name="name">User in companies</field>
-            <field name="model" search="[('model', '=', 'sale.point.payment.method')]"/>
+            <field name="model">sale.point.payment.method</field>
             <field name="global_p" eval="True"/>
         </record>
         <record model="ir.rule" id="rule_payment_method_companies">
@@ -455,7 +455,7 @@ this repository contains the full copyright notices and license terms. -->
 
         <record model="ir.rule.group" id="rule_group_cash_transfer_companies">
             <field name="name">User in companies</field>
-            <field name="model" search="[('model', '=', 'sale.point.cash.transfer')]"/>
+            <field name="model">sale.point.cash.transfer</field>
             <field name="global_p" eval="True"/>
         </record>
         <record model="ir.rule" id="rule_cash_transfer_companies">
@@ -516,7 +516,7 @@ this repository contains the full copyright notices and license terms. -->
 
         <record model="ir.rule.group" id="rule_group_cash_transfer_type_companies">
             <field name="name">User in companies</field>
-            <field name="model" search="[('model', '=', 'sale.point.cash.transfer.type')]"/>
+            <field name="model">sale.point.cash.transfer.type</field>
             <field name="global_p" eval="True"/>
         </record>
         <record model="ir.rule" id="rule_cash_transfer_type_companies">

@@ -158,7 +158,7 @@ this repository contains the full copyright notices and license terms. -->
 
         <record model="ir.rule.group" id="rule_group_quality_control_companies">
             <field name="name">User in companies</field>
-            <field name="model" search="[('model', '=', 'quality.control')]"/>
+            <field name="model">quality.control</field>
             <field name="global_p" eval="True"/>
         </record>
         <record model="ir.rule" id="rule_quality_control_companies">
@@ -274,7 +274,7 @@ this repository contains the full copyright notices and license terms. -->
 
         <record model="ir.rule.group" id="rule_group_quality_inspection_companies">
             <field name="name">User in companies</field>
-            <field name="model" search="[('model', '=', 'quality.inspection')]"/>
+            <field name="model">quality.inspection</field>
             <field name="global_p" eval="True"/>
         </record>
         <record model="ir.rule" id="rule_quality_inspection_companies">

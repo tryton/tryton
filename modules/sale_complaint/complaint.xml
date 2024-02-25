@@ -179,7 +179,7 @@ this repository contains the full copyright notices and license terms. -->
 
         <record model="ir.rule.group" id="rule_group_complaint_companies">
             <field name="name">User in companies</field>
-            <field name="model" search="[('model', '=', 'sale.complaint')]"/>
+            <field name="model">sale.complaint</field>
             <field name="global_p" eval="True"/>
         </record>
         <record model="ir.rule" id="rule_complaint_companies">

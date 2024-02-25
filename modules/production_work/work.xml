@@ -94,8 +94,7 @@ this repository contains the full copyright notices and license terms. -->
 
         <record model="ir.rule.group" id="rule_group_work_center_companies">
             <field name="name">User in companies</field>
-            <field name="model"
-                search="[('model', '=', 'production.work.center')]"/>
+            <field name="model">production.work.center</field>
             <field name="global_p" eval="True"/>
         </record>
         <record model="ir.rule" id="rule_work_center_companies">
@@ -261,7 +260,7 @@ this repository contains the full copyright notices and license terms. -->
 
         <record model="ir.rule.group" id="rule_group_work_companies">
             <field name="name">User in companies</field>
-            <field name="model" search="[('model', '=', 'production.work')]"/>
+            <field name="model">production.work</field>
             <field name="global_p" eval="True"/>
         </record>
         <record model="ir.rule" id="rule_work_companies">
@@ -319,7 +318,7 @@ this repository contains the full copyright notices and license terms. -->
 
         <record model="ir.rule.group" id="rule_group_work_cycle_companies">
             <field name="name">User in companies</field>
-            <field name="model" search="[('model', '=', 'production.work.cycle')]"/>
+            <field name="model">production.work.cycle</field>
             <field name="global_p" eval="True"/>
         </record>
         <record model="ir.rule" id="rule_work_cycle_companies">

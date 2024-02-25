@@ -146,7 +146,7 @@ this repository contains the full copyright notices and license terms. -->
 
         <record model="ir.rule.group" id="rule_group_sale_blanket_agreement_companies">
             <field name="name">Sales Blanket Agreement</field>
-            <field name="model" search="[('model', '=', 'sale.blanket_agreement')]"/>
+            <field name="model">sale.blanket_agreement</field>
             <field name="global_p" eval="True"/>
         </record>
         <record model="ir.rule" id="rule_sale_blanket_agreement_companies">

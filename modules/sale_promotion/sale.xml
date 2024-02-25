@@ -55,7 +55,7 @@ this repository contains the full copyright notices and license terms. -->
 
         <record model="ir.rule.group" id="rule_group_promotion_companies">
             <field name="name">User in companies</field>
-            <field name="model" search="[('model', '=', 'sale.promotion')]"/>
+            <field name="model">sale.promotion</field>
             <field name="global_p" eval="True"/>
         </record>
         <record model="ir.rule" id="rule_promotion_companies">

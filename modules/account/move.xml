@@ -41,8 +41,7 @@ this repository contains the full copyright notices and license terms. -->
 
         <record model="ir.rule.group" id="rule_group_move_companies">
             <field name="name">User in companies</field>
-            <field name="model"
-                search="[('model', '=', 'account.move')]"/>
+            <field name="model">account.move</field>
             <field name="global_p" eval="True"/>
         </record>
         <record model="ir.rule" id="rule_move_companies">
@@ -112,8 +111,7 @@ this repository contains the full copyright notices and license terms. -->
 
         <record model="ir.rule.group" id="rule_group_move_reconciliation_companies">
             <field name="name">User in companies</field>
-            <field name="model"
-                search="[('model', '=', 'account.move.reconciliation')]"/>
+            <field name="model">account.move.reconciliation</field>
             <field name="global_p" eval="True"/>
         </record>
         <record model="ir.rule" id="rule_move_reconciliation_companies">
@@ -409,8 +407,7 @@ this repository contains the full copyright notices and license terms. -->
 
         <record model="ir.rule.group" id="rule_group_reconcile_writeoff_companies">
             <field name="name">User in companies</field>
-            <field name="model"
-                search="[('model', '=', 'account.move.reconcile.write_off')]"/>
+            <field name="model">account.move.reconcile.write_off</field>
             <field name="global_p" eval="True"/>
         </record>
         <record model="ir.rule" id="rule_reconcile_writeoff_companies">

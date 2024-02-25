@@ -31,12 +31,10 @@ class ModelRuleTestCase(unittest.TestCase):
         pool = Pool()
         TestRule = pool.get('test.rule')
         RuleGroup = pool.get('ir.rule.group')
-        Model = pool.get('ir.model')
 
-        model, = Model.search([('model', '=', 'test.rule')])
         rule_group, = RuleGroup.create([{
                     'name': "Field different from foo",
-                    'model': model.id,
+                    'model': TestRule.__name__,
                     'global_p': True,
                     'perm_read': False,
                     'perm_create': True,
@@ -56,12 +54,10 @@ class ModelRuleTestCase(unittest.TestCase):
         pool = Pool()
         TestRule = pool.get('test.rule')
         RuleGroup = pool.get('ir.rule.group')
-        Model = pool.get('ir.model')
 
-        model, = Model.search([('model', '=', 'test.rule')])
         rule_group, = RuleGroup.create([{
                     'name': "Field different from foo",
-                    'model': model.id,
+                    'model': TestRule.__name__,
                     'global_p': True,
                     'perm_read': False,
                     'perm_create': True,
@@ -82,12 +78,10 @@ class ModelRuleTestCase(unittest.TestCase):
         pool = Pool()
         TestRule = pool.get('test.rule')
         RuleGroup = pool.get('ir.rule.group')
-        Model = pool.get('ir.model')
 
-        model, = Model.search([('model', '=', 'test.rule')])
         rule_group, = RuleGroup.create([{
                     'name': "Field different from foo",
-                    'model': model.id,
+                    'model': TestRule.__name__,
                     'global_p': False,
                     'default_p': True,
                     'perm_read': False,
@@ -119,12 +113,10 @@ class ModelRuleTestCase(unittest.TestCase):
         pool = Pool()
         TestRule = pool.get('test.rule')
         RuleGroup = pool.get('ir.rule.group')
-        Model = pool.get('ir.model')
 
-        model, = Model.search([('model', '=', 'test.rule')])
         rule_group, = RuleGroup.create([{
                     'name': "Field different from foo",
-                    'model': model.id,
+                    'model': TestRule.__name__,
                     'global_p': True,
                     'perm_read': False,
                     'perm_create': False,
@@ -145,12 +137,10 @@ class ModelRuleTestCase(unittest.TestCase):
         pool = Pool()
         TestRule = pool.get('test.rule')
         RuleGroup = pool.get('ir.rule.group')
-        Model = pool.get('ir.model')
 
-        model, = Model.search([('model', '=', 'test.rule')])
         rule_group, = RuleGroup.create([{
                     'name': "Field different from foo",
-                    'model': model.id,
+                    'model': TestRule.__name__,
                     'global_p': True,
                     'perm_read': False,
                     'perm_create': False,
@@ -172,12 +162,10 @@ class ModelRuleTestCase(unittest.TestCase):
         pool = Pool()
         TestRule = pool.get('test.rule')
         RuleGroup = pool.get('ir.rule.group')
-        Model = pool.get('ir.model')
 
-        model, = Model.search([('model', '=', 'test.rule')])
         rule_group, = RuleGroup.create([{
                     'name': "Field different from foo",
-                    'model': model.id,
+                    'model': TestRule.__name__,
                     'global_p': True,
                     'perm_read': False,
                     'perm_create': False,
@@ -209,12 +197,10 @@ class ModelRuleTestCase(unittest.TestCase):
         pool = Pool()
         TestRule = pool.get('test.rule')
         RuleGroup = pool.get('ir.rule.group')
-        Model = pool.get('ir.model')
 
-        model, = Model.search([('model', '=', 'test.rule')])
         rule_group, = RuleGroup.create([{
                     'name': "Field different from foo",
-                    'model': model.id,
+                    'model': TestRule.__name__,
                     'global_p': True,
                     'perm_read': False,
                     'perm_create': False,
@@ -235,12 +221,10 @@ class ModelRuleTestCase(unittest.TestCase):
         pool = Pool()
         TestRule = pool.get('test.rule')
         RuleGroup = pool.get('ir.rule.group')
-        Model = pool.get('ir.model')
 
-        model, = Model.search([('model', '=', 'test.rule')])
         rule_group, = RuleGroup.create([{
                     'name': "Field different from foo",
-                    'model': model.id,
+                    'model': TestRule.__name__,
                     'global_p': True,
                     'perm_read': False,
                     'perm_create': False,
@@ -272,12 +256,10 @@ class ModelRuleTestCase(unittest.TestCase):
         pool = Pool()
         TestRule = pool.get('test.rule')
         RuleGroup = pool.get('ir.rule.group')
-        Model = pool.get('ir.model')
 
-        model, = Model.search([('model', '=', 'test.rule')])
         rule_group, = RuleGroup.create([{
                     'name': "Field different from foo",
-                    'model': model.id,
+                    'model': TestRule.__name__,
                     'global_p': True,
                     'perm_read': True,
                     'perm_create': False,
@@ -298,12 +280,10 @@ class ModelRuleTestCase(unittest.TestCase):
         pool = Pool()
         TestRule = pool.get('test.rule')
         RuleGroup = pool.get('ir.rule.group')
-        Model = pool.get('ir.model')
 
-        model, = Model.search([('model', '=', 'test.rule')])
         rule_group, = RuleGroup.create([{
                     'name': "Field different from foo",
-                    'model': model.id,
+                    'model': TestRule.__name__,
                     'global_p': True,
                     'perm_read': True,
                     'perm_create': False,
@@ -325,12 +305,10 @@ class ModelRuleTestCase(unittest.TestCase):
         pool = Pool()
         TestRule = pool.get('test.rule')
         RuleGroup = pool.get('ir.rule.group')
-        Model = pool.get('ir.model')
 
-        model, = Model.search([('model', '=', 'test.rule')])
         rule_group, = RuleGroup.create([{
                     'name': "Field different from foo",
-                    'model': model.id,
+                    'model': TestRule.__name__,
                     'global_p': True,
                     'perm_read': True,
                     'perm_create': False,
@@ -362,12 +340,10 @@ class ModelRuleTestCase(unittest.TestCase):
         pool = Pool()
         TestRule = pool.get('test.rule')
         RuleGroup = pool.get('ir.rule.group')
-        Model = pool.get('ir.model')
 
-        model, = Model.search([('model', '=', 'test.rule')])
         rule_group, = RuleGroup.create([{
                     'name': "Field different from foo",
-                    'model': model.id,
+                    'model': TestRule.__name__,
                     'global_p': True,
                     'perm_read': True,
                     'perm_create': False,
@@ -388,12 +364,10 @@ class ModelRuleTestCase(unittest.TestCase):
         pool = Pool()
         TestRule = pool.get('test.rule')
         RuleGroup = pool.get('ir.rule.group')
-        Model = pool.get('ir.model')
 
-        model, = Model.search([('model', '=', 'test.rule')])
         rule_group, = RuleGroup.create([{
                     'name': "Field different from foo",
-                    'model': model.id,
+                    'model': TestRule.__name__,
                     'global_p': True,
                     'perm_read': True,
                     'perm_create': False,
@@ -424,12 +398,10 @@ class ModelRuleTestCase(unittest.TestCase):
         pool = Pool()
         TestRule = pool.get('test.rule')
         RuleGroup = pool.get('ir.rule.group')
-        Model = pool.get('ir.model')
 
-        model, = Model.search([('model', '=', 'test.rule')])
         rule_group, = RuleGroup.create([{
                     'name': "Field different from foo",
-                    'model': model.id,
+                    'model': TestRule.__name__,
                     'global_p': True,
                     'perm_read': False,
                     'perm_create': False,
@@ -451,12 +423,10 @@ class ModelRuleTestCase(unittest.TestCase):
         pool = Pool()
         TestRule = pool.get('test.rule')
         RuleGroup = pool.get('ir.rule.group')
-        Model = pool.get('ir.model')
 
-        model, = Model.search([('model', '=', 'test.rule')])
         rule_group, = RuleGroup.create([{
                     'name': "Field different from foo",
-                    'model': model.id,
+                    'model': TestRule.__name__,
                     'global_p': True,
                     'perm_read': False,
                     'perm_create': False,
@@ -479,12 +449,10 @@ class ModelRuleTestCase(unittest.TestCase):
         TestRule = pool.get('test.rule')
         TestRuleRelation = pool.get('test.rule.relation')
         RuleGroup = pool.get('ir.rule.group')
-        Model = pool.get('ir.model')
 
-        model, = Model.search([('model', '=', 'test.rule')])
         rule_group, = RuleGroup.create([{
                     'name': "Field different from foo",
-                    'model': model.id,
+                    'model': TestRule.__name__,
                     'global_p': True,
                     'perm_read': False,
                     'perm_create': False,
@@ -508,12 +476,10 @@ class ModelRuleTestCase(unittest.TestCase):
         TestRule = pool.get('test.rule')
         TestRuleRelation = pool.get('test.rule.relation')
         RuleGroup = pool.get('ir.rule.group')
-        Model = pool.get('ir.model')
 
-        model, = Model.search([('model', '=', 'test.rule')])
         rule_group, = RuleGroup.create([{
                     'name': "Field different from foo",
-                    'model': model.id,
+                    'model': TestRule.__name__,
                     'global_p': True,
                     'perm_read': False,
                     'perm_create': False,
@@ -546,12 +512,10 @@ class ModelRuleTestCase(unittest.TestCase):
         pool = Pool()
         TestRule = pool.get('test.rule')
         RuleGroup = pool.get('ir.rule.group')
-        Model = pool.get('ir.model')
 
-        model, = Model.search([('model', '=', 'test.rule')])
         rule_group, = RuleGroup.create([{
                     'name': "Field different from foo",
-                    'model': model.id,
+                    'model': TestRule.__name__,
                     'global_p': True,
                     'perm_read': False,
                     'perm_create': False,
@@ -573,12 +537,10 @@ class ModelRuleTestCase(unittest.TestCase):
         pool = Pool()
         TestRule = pool.get('test.rule')
         RuleGroup = pool.get('ir.rule.group')
-        Model = pool.get('ir.model')
 
-        model, = Model.search([('model', '=', 'test.rule')])
         rule_group, = RuleGroup.create([{
                     'name': "Field different from foo",
-                    'model': model.id,
+                    'model': TestRule.__name__,
                     'global_p': True,
                     'perm_read': False,
                     'perm_create': False,
@@ -601,12 +563,10 @@ class ModelRuleTestCase(unittest.TestCase):
         TestRule = pool.get('test.rule')
         TestRuleRelation = pool.get('test.rule.relation')
         RuleGroup = pool.get('ir.rule.group')
-        Model = pool.get('ir.model')
 
-        model, = Model.search([('model', '=', 'test.rule')])
         rule_group, = RuleGroup.create([{
                     'name': "Field different from foo",
-                    'model': model.id,
+                    'model': TestRule.__name__,
                     'global_p': True,
                     'perm_read': False,
                     'perm_create': False,
@@ -630,12 +590,10 @@ class ModelRuleTestCase(unittest.TestCase):
         TestRule = pool.get('test.rule')
         TestRuleRelation = pool.get('test.rule.relation')
         RuleGroup = pool.get('ir.rule.group')
-        Model = pool.get('ir.model')
 
-        model, = Model.search([('model', '=', 'test.rule')])
         rule_group, = RuleGroup.create([{
                     'name': "Field different from foo",
-                    'model': model.id,
+                    'model': TestRule.__name__,
                     'global_p': True,
                     'perm_read': False,
                     'perm_create': False,
@@ -659,12 +617,10 @@ class ModelRuleTestCase(unittest.TestCase):
         TestRule = pool.get('test.rule')
         TestRuleModel = pool.get('test.rule.model')
         RuleGroup = pool.get('ir.rule.group')
-        Model = pool.get('ir.model')
 
-        model, = Model.search([('model', '=', 'test.rule')])
         rule_group, = RuleGroup.create([{
                     'name': "Field different from foo",
-                    'model': model.id,
+                    'model': TestRule.__name__,
                     'global_p': True,
                     'perm_read': True,
                     'perm_create': False,
@@ -687,12 +643,10 @@ class ModelRuleTestCase(unittest.TestCase):
         TestRule = pool.get('test.rule')
         TestRuleModel = pool.get('test.rule.model')
         RuleGroup = pool.get('ir.rule.group')
-        Model = pool.get('ir.model')
 
-        model, = Model.search([('model', '=', 'test.rule')])
         rule_group, = RuleGroup.create([{
                     'name': "Field different from foo",
-                    'model': model.id,
+                    'model': TestRule.__name__,
                     'global_p': True,
                     'perm_read': True,
                     'perm_create': False,

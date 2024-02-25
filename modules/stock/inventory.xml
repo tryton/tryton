@@ -86,7 +86,7 @@ this repository contains the full copyright notices and license terms. -->
 
         <record model="ir.rule.group" id="rule_group_inventory_companies">
             <field name="name">User in companies</field>
-            <field name="model" search="[('model', '=', 'stock.inventory')]"/>
+            <field name="model">stock.inventory</field>
             <field name="global_p" eval="True"/>
         </record>
         <record model="ir.rule" id="rule_inventory_companies">

@@ -85,7 +85,7 @@ this repository contains the full copyright notices and license terms. -->
 
         <record model="ir.rule.group" id="rule_group_fiscalyear_companies">
             <field name="name">User in companies</field>
-            <field name="model" search="[('model', '=', 'account.fiscalyear')]"/>
+            <field name="model">account.fiscalyear</field>
             <field name="global_p" eval="True"/>
         </record>
         <record model="ir.rule" id="rule_fiscalyear_companies">
