@@ -336,7 +336,7 @@ this repository contains the full copyright notices and license terms. -->
 
         <record model="ir.action.report" id="report_checkout">
             <field name="name">Braintree Checkout</field>
-            <field name="model"></field>
+            <field name="model" eval="None"/>
             <field name="report_name">account.payment.braintree.checkout</field>
             <field name="report">account_payment_braintree/checkout.html</field>
             <field name="template_extension">html</field>

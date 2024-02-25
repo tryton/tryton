@@ -3,7 +3,7 @@
 this repository contains the full copyright notices and license terms. -->
 <data>
     <xpath expr="//tree" position="inside">
-        <field name="model" expand="1"/>
+        <field name="model_ref" expand="1"/>
         <field name="report_name" expand="1"/>
     </xpath>
 </data>

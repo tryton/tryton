@@ -286,7 +286,7 @@ this repository contains the full copyright notices and license terms. -->
 
         <record model="ir.action.report" id="report_checkout">
             <field name="name">Stripe Checkout</field>
-            <field name="model"></field>
+            <field name="model" eval="None"/>
             <field name="report_name">account.payment.stripe.checkout</field>
             <field name="report">account_payment_stripe/checkout.html</field>
             <field name="template_extension">html</field>

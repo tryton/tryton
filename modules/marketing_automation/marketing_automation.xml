@@ -303,7 +303,7 @@ this repository contains the full copyright notices and license terms. -->
 
         <record model="ir.action.report" id="report_unsubscribe">
             <field name="name">Marketing Automation Unsubscribe</field>
-            <field name="model"></field>
+            <field name="model" eval="None"/>
             <field name="report_name">marketing.automation.unsubscribe</field>
             <field name="report">marketing_automation/unsubscribe.html</field>
             <field name="template_extension">html</field>

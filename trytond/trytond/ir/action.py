@@ -468,7 +468,11 @@ class ActionMixin(ModelSQL):
             [('action', '=', action_id)], fields_names=fields, limit=1)
 
 
-class ActionReport(ActionMixin, ModelSQL, ModelView):
+class ActionReport(
+        fields.fmany2one(
+            'model_ref', 'model', 'ir.model,model', "Model",
+            ondelete='CASCADE'),
+        ActionMixin, ModelSQL, ModelView):
     "Action report"
     __name__ = 'ir.action.report'
     _action_name = 'report_name'
