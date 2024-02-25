@@ -57,7 +57,14 @@ class TrytonPOFile(polib.POFile):
             key=lambda x: (x.msgctxt, x.msgid))
 
 
-class Translation(ModelSQL, ModelView):
+class Translation(
+        fields.fmany2one(
+            'module_ref', 'module', 'ir.module,name', "Module",
+            readonly=True, ondelete='CASCADE'),
+        fields.fmany2one(
+            'overriding_module_ref', 'overriding_module', 'ir.module,name',
+            "Overriding Module", readonly=True),
+        ModelSQL, ModelView):
     "Translation"
     __name__ = "ir.translation"
 

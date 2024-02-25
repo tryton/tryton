@@ -8,8 +8,8 @@ this repository contains the full copyright notices and license terms. -->
         <field name="name"/>
         <label name="sequence"/>
         <field name="sequence"/>
-        <label name="module"/>
-        <field name="module"/>
+        <label name="module_ref"/>
+        <field name="module_ref"/>
         <label name="path"/>
         <field name="path"/>
     </group>

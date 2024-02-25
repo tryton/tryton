@@ -14,8 +14,8 @@ this repository contains the full copyright notices and license terms. -->
     <field name="priority"/>
     <label name="field_children"/>
     <field name="field_children"/>
-    <label name="module"/>
-    <field name="module"/>
+    <label name="module_ref"/>
+    <field name="module_ref"/>
     <label name="name"/>
     <field name="name"/>
     <separator name="arch" colspan="4"/>

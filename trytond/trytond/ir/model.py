@@ -39,7 +39,12 @@ class ConditionError(ValidationError):
     pass
 
 
-class Model(ModelSQL, ModelView):
+class Model(
+        fields.fmany2one(
+            'module_ref', 'module', 'ir.module,name', "Module",
+            readonly=True, ondelete='CASCADE',
+            help="Module in which this model is defined."),
+        ModelSQL, ModelView):
     "Model"
     __name__ = 'ir.model'
     _order_name = 'model'
@@ -58,8 +63,7 @@ class Model(ModelSQL, ModelView):
             'readonly': Bool(Eval('module')),
             },
         depends=['module'])
-    module = fields.Char('Module',
-       help="Module in which this model is defined.", readonly=True)
+    module = fields.Char("Module", readonly=True)
     global_search_p = fields.Boolean('Global Search')
     fields = fields.One2Many('ir.model.field', 'model_ref', "Fields")
     _get_names_cache = Cache('ir.model.get_names')
@@ -224,6 +228,10 @@ class ModelField(
         fields.fmany2one(
             'model_ref', 'model', 'ir.model,model', "Model",
             required=True, ondelete='CASCADE'),
+        fields.fmany2one(
+            'module_ref', 'module', 'ir.module,name', "Module",
+            readonly=True, ondelete='CASCADE',
+            help="Module in which this field is defined."),
         ModelSQL, ModelView):
     "Model field"
     __name__ = 'ir.model.field'
@@ -258,8 +266,7 @@ class ModelField(
             'readonly': Bool(Eval('module')),
             },
         depends=['module'])
-    module = fields.Char('Module',
-       help="Module in which this field is defined.")
+    module = fields.Char("Module", readonly=True)
     access = fields.Boolean(
         "Access",
         states={
@@ -1267,6 +1274,9 @@ class ModelButtonReset(ModelSQL):
 class ModelData(
         fields.fmany2one(
             'model_ref', 'model', 'ir.model,model', "Model",
+            required=True, ondelete='CASCADE'),
+        fields.fmany2one(
+            'module_ref', 'module', 'ir.module,name', "Module",
             required=True, ondelete='CASCADE'),
         ModelSQL, ModelView):
     "Model data"

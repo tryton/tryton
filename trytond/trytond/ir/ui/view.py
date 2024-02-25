@@ -37,6 +37,9 @@ class View(
             states={
                 'invisible': Eval('type') != 'tree',
                 }),
+        fields.fmany2one(
+            'module_ref', 'module', 'ir.module,name', "Module",
+            readonly=True, ondelete='CASCADE'),
         ModelSQL, ModelView):
     "View"
     __name__ = 'ir.ui.view'

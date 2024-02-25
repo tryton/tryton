@@ -472,6 +472,9 @@ class ActionReport(
         fields.fmany2one(
             'model_ref', 'model', 'ir.model,model', "Model",
             ondelete='CASCADE'),
+        fields.fmany2one(
+            'module_ref', 'module', 'ir.module,name', "Module",
+            readonly=True, ondelete='CASCADE'),
         ActionMixin, ModelSQL, ModelView):
     "Action report"
     __name__ = 'ir.action.report'
@@ -619,7 +622,7 @@ class ActionReport(
 
     @staticmethod
     def default_module():
-        return Transaction().context.get('module') or ''
+        return Transaction().context.get('module')
 
     def get_is_custom(self, name):
         return bool(self.report_content_custom)
