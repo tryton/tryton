@@ -1082,7 +1082,11 @@ class ActionActWindowDomain(
         pool.get('ir.action.keyword')._get_keyword_cache.clear()
 
 
-class ActionWizard(ActionMixin, ModelSQL, ModelView):
+class ActionWizard(
+        fields.fmany2one(
+            'model_ref', 'model', 'ir.model,model', "Model",
+            ondelete='CASCADE'),
+        ActionMixin, ModelSQL, ModelView):
     "Action wizard"
     __name__ = 'ir.action.wizard'
     _action_name = 'wiz_name'

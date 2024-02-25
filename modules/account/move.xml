@@ -307,7 +307,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.action.wizard" id="act_reconcile_lines">
             <field name="name">Reconcile Lines</field>
             <field name="wiz_name">account.move.reconcile_lines</field>
-            <field name="model"></field>
+            <field name="model" eval="None"/>
         </record>
         <record model="ir.action.keyword" id="act_reconcile_lines_keyword">
             <field name="keyword">form_action</field>
@@ -323,7 +323,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.action.wizard" id="act_unreconcile_lines">
             <field name="name">Unreconcile Lines</field>
             <field name="wiz_name">account.move.unreconcile_lines</field>
-            <field name="model"></field>
+            <field name="model" eval="None"/>
         </record>
         <record model="ir.action.keyword" id="act_unreconcile_lines_keyword">
             <field name="keyword">form_action</field>
