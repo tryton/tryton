@@ -8,7 +8,7 @@ from sql import Literal, Null
 
 from trytond.cache import Cache, MemoryCache
 from trytond.i18n import gettext
-from trytond.model import Index, ModelSQL, ModelView, fields
+from trytond.model import Index, ModelSQL, ModelView, fields, sequence_ordered
 from trytond.model.exceptions import ValidationError
 from trytond.pool import Pool
 from trytond.pyson import PYSON, Bool, Eval, If, PYSONDecoder
@@ -41,13 +41,12 @@ class View(
         fields.fmany2one(
             'module_ref', 'module', 'ir.module,name', "Module",
             readonly=True, ondelete='CASCADE'),
-        ModelSQL, ModelView):
+        sequence_ordered('priority', "Priority"), ModelSQL, ModelView):
     "View"
     __name__ = 'ir.ui.view'
     model = fields.Char('Model', states={
             'required': Eval('type') != 'board',
             })
-    priority = fields.Integer('Priority', required=True)
     type = fields.Selection([
             (None, ''),
             ('tree', 'Tree'),
@@ -104,9 +103,9 @@ class View(
     def __setup__(cls):
         super(View, cls).__setup__()
         table = cls.__table__()
+        cls.priority.required = True
 
         cls.__rpc__['view_get'] = RPC(instantiate=0, cache=dict(days=1))
-        cls._order.insert(0, ('priority', 'ASC'))
         cls._buttons.update({
                 'show': {
                     'readonly': Eval('type') != 'form',
