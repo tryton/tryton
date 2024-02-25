@@ -20,5 +20,6 @@ this repository contains the full copyright notices and license terms. -->
     <field name="name"/>
     <separator name="arch" colspan="4"/>
     <field name="arch" colspan="4"/>
+    <field name="extensions" colspan="4" view_ids="ir.view_view_list_extension"/>
     <button name="show" colspan="4"/>
 </form>

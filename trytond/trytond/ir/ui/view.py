@@ -4,6 +4,7 @@ import json
 import os
 
 from lxml import etree
+from sql import Literal, Null
 
 from trytond.cache import Cache, MemoryCache
 from trytond.i18n import gettext
@@ -70,8 +71,22 @@ class View(
     arch = fields.Function(fields.Text('View Architecture', states={
                 'readonly': Bool(Eval('name')),
                 }, depends=['name']), 'get_arch', setter='set_arch')
+    basis = fields.Function(fields.Boolean("Basis"), 'get_basis')
     inherit = fields.Many2One('ir.ui.view', 'Inherited View',
             ondelete='CASCADE')
+    extensions = fields.One2Many(
+        'ir.ui.view', 'inherit', "Extensions",
+        filter=[
+            ('basis', '=', False),
+            ],
+        domain=[
+            ('model', '=', Eval('model')),
+            ('type', '=', None),
+            ],
+        states={
+            'invisible': ~Eval('type'),
+            },
+        order=[('id', None)])
     field_childs = fields.Char('Children Field', states={
             'invisible': Eval('type') != 'tree',
             }, depends=['type'])
@@ -95,7 +110,8 @@ class View(
         cls._buttons.update({
                 'show': {
                     'readonly': Eval('type') != 'form',
-                    'depends': ['type'],
+                    'invisible': ~Eval('basis', False),
+                    'depends': ['type', 'basis'],
                     },
                 })
         cls._sql_indexes.update({
@@ -115,6 +131,36 @@ class View(
     @staticmethod
     def default_module():
         return Transaction().context.get('module') or ''
+
+    def get_basis(self, name):
+        return not self.inherit or self.model != self.inherit.model
+
+    @classmethod
+    def domain_basis(cls, domain, tables):
+        table, _ = tables[None]
+        if 'inherit' not in tables:
+            inherit = cls.__table__()
+            tables['inherit'] = {
+                None: (inherit, table.inherit == inherit.id),
+                }
+        else:
+            inherit, _ = tables['inherit'][None]
+        expression = (table.inherit == Null) | (table.model != inherit.model)
+
+        _, operator, value = domain
+        if operator in {'=', '!='}:
+            if (operator == '=') != value:
+                expression = ~expression
+        elif operator in {'in', 'not in'}:
+            if True in value and False not in value:
+                pass
+            elif False in value and True not in value:
+                expression = ~expression
+            else:
+                expression = Literal(True)
+        else:
+            expression = Literal(True)
+        return expression
 
     def get_rec_name(self, name):
         return '%s (%s)' % (
