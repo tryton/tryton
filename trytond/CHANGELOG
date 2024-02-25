@@ -1,3 +1,4 @@
+* Add xml_id field on ModelStorage
 * Add send_message methods
 * Store model on ir.rule.group
 * Store model on ir.model.button
