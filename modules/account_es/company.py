@@ -19,7 +19,7 @@ class Company(metaclass=PoolMeta):
                         contact_mechanism.value, None)
                 except NumberParseException:
                     continue
-                if phonenumber and phonenumber.country_code == '34':
+                if phonenumber and phonenumber.country_code == 34:
                     phone = contact_mechanism.value
                     break
         return phone
