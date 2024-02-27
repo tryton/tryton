@@ -14,6 +14,9 @@ def register():
         product.Product,
         product.Image,
         product.ImageCache,
+        product.Category,
+        product.CategoryImage,
+        product.CategoryImageCache,
         module='product_image', type_='model')
     Pool.register(
         module='product_image', type_='wizard')

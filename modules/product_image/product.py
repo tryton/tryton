@@ -280,3 +280,49 @@ class ImageCache(ImageCacheMixin, ModelSQL):
                     [table.width, table.height],
                     [table.size, table.size]))
             table_h.drop_column('size')
+
+
+class Category(ImageURLMixin, metaclass=PoolMeta):
+    __name__ = 'product.category'
+    __image_url__ = '/product-category/image'
+    images = fields.One2Many('product.category.image', 'category', "Images")
+
+
+class CategoryImage(
+        ImageMixin, sequence_ordered(), ModelSQL, ModelView, MatchMixin):
+    "Category Image"
+    __name__ = 'product.category.image'
+    category = fields.Many2One(
+        'product.category', "Category",
+        required=True, ondelete='CASCADE')
+    cache = fields.One2Many(
+        'product.category.image.cache', 'category_image', "Cache",
+        readonly=True)
+
+    @classmethod
+    def __setup__(cls):
+        super().__setup__()
+        cls.__access__.add('category')
+
+    def _store_cache(self, size, image):
+        cache = super()._store_cache(size, image)
+        cache.category_image = self
+        return cache
+
+
+class CategoryImageCache(ImageCacheMixin, ModelSQL):
+    "Category Image Cache"
+    __name__ = 'product.category.image.cache'
+    category_image = fields.Many2One(
+        'product.category.image', "Category Image", required=True,
+        ondelete='CASCADE')
+
+    @classmethod
+    def __setup__(cls):
+        super().__setup__()
+        t = cls.__table__()
+        cls._sql_constraints += [
+            ('dimension_unique',
+                Unique(t, t.category_image, t.width, t.height),
+                'product_image.msg_image_cache_size_unique'),
+            ]
