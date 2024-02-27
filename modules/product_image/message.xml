@@ -3,8 +3,8 @@
 this repository contains the full copyright notices and license terms. -->
 <tryton>
     <data>
-        <record model="ir.message" id="msg_product_image_size_unique">
-            <field name="text">The size of a product image must be unique.</field>
+        <record model="ir.message" id="msg_image_cache_size_unique">
+            <field name="text">The size of cached image must be unique.</field>
         </record>
     </data>
 </tryton>
