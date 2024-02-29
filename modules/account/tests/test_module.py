@@ -424,7 +424,7 @@ class AccountTestCase(
             # Use next fiscalyear
             today = datetime.date.today()
             next_fiscalyear = get_fiscalyear(company,
-                today=today.replace(year=today.year + 1))
+                today=today + relativedelta(years=1))
             next_fiscalyear.save()
             FiscalYear.create_period([next_fiscalyear])
 
