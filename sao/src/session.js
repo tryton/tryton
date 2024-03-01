@@ -112,6 +112,8 @@
             this.reset_context();
             var prm = Sao.rpc(args, this);
             return prm.then(context => {
+                context = Object.fromEntries(Object.entries(context).filter(
+                    ([k, v]) => (k != 'locale') && !k.endsWith('.rec_name')));
                 jQuery.extend(this.context, context);
                 this.store_context();
             });
