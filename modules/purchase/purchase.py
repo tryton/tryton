@@ -183,8 +183,15 @@ class Purchase(
             'account.invoice', None, None, "Invoices"),
         'get_invoices', searcher='search_invoices')
     invoices_ignored = fields.Many2Many(
-            'purchase.purchase-ignored-account.invoice',
-            'purchase', 'invoice', 'Ignored Invoices', readonly=True)
+        'purchase.purchase-ignored-account.invoice',
+        'purchase', 'invoice', "Ignored Invoices",
+        domain=[
+            ('id', 'in', Eval('invoices', [])),
+            ('state', '=', 'cancelled'),
+            ],
+        states={
+            'invisible': ~Eval('invoices_ignored', []),
+            })
     invoices_recreated = fields.Many2Many(
             'purchase.purchase-recreated-account.invoice',
             'purchase', 'invoice', 'Recreated Invoices', readonly=True)
@@ -302,7 +309,7 @@ class Purchase(
                     },
                 'process': {
                     'invisible': ~Eval('state').in_(
-                        ['confirmed', 'processing']),
+                        ['confirmed', 'processing', 'done']),
                     'icon': If(Eval('state') == 'confirmed',
                         'tryton-forward', 'tryton-refresh'),
                     'depends': ['state'],
@@ -1255,8 +1262,16 @@ class Line(sequence_ordered(), ModelSQL, ModelView):
         states={
             'invisible': ~Eval('moves'),
             })
-    moves_ignored = fields.Many2Many('purchase.line-ignored-stock.move',
-            'purchase_line', 'move', 'Ignored Moves', readonly=True)
+    moves_ignored = fields.Many2Many(
+        'purchase.line-ignored-stock.move', 'purchase_line', 'move',
+        "Ignored Moves",
+        domain=[
+            ('id', 'in', Eval('moves', [])),
+            ('state', '=', 'cancelled'),
+            ],
+        states={
+            'invisible': ~Eval('moves_ignored'),
+            })
     moves_recreated = fields.Many2Many('purchase.line-recreated-stock.move',
             'purchase_line', 'move', 'Recreated Moves', readonly=True)
     moves_exception = fields.Function(

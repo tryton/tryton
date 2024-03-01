@@ -214,8 +214,16 @@ class Sale(
     invoices = fields.Function(fields.Many2Many(
             'account.invoice', None, None, "Invoices"),
         'get_invoices', searcher='search_invoices')
-    invoices_ignored = fields.Many2Many('sale.sale-ignored-account.invoice',
-            'sale', 'invoice', 'Ignored Invoices', readonly=True)
+    invoices_ignored = fields.Many2Many(
+        'sale.sale-ignored-account.invoice', 'sale', 'invoice',
+        "Ignored Invoices",
+        domain=[
+            ('id', 'in', Eval('invoices', [])),
+            ('state', '=', 'cancelled'),
+            ],
+        states={
+            'invisible': ~Eval('invoices_ignored', []),
+            })
     invoices_recreated = fields.Many2Many(
         'sale.sale-recreated-account.invoice', 'sale', 'invoice',
         'Recreated Invoices', readonly=True)
@@ -340,7 +348,7 @@ class Sale(
                     },
                 'process': {
                     'invisible': ~Eval('state').in_(
-                        ['confirmed', 'processing']),
+                        ['confirmed', 'processing', 'done']),
                     'icon': If(Eval('state') == 'confirmed',
                         'tryton-forward', 'tryton-refresh'),
                     'depends': ['state'],
@@ -1369,8 +1377,16 @@ class SaleLine(TaxableMixin, sequence_ordered(), ModelSQL, ModelView):
         states={
             'invisible': ~Eval('moves'),
             })
-    moves_ignored = fields.Many2Many('sale.line-ignored-stock.move',
-            'sale_line', 'move', 'Ignored Moves', readonly=True)
+    moves_ignored = fields.Many2Many(
+        'sale.line-ignored-stock.move', 'sale_line', 'move',
+        "Ignored Moves",
+        domain=[
+            ('id', 'in', Eval('moves', [])),
+            ('state', '=', 'cancelled'),
+            ],
+        states={
+            'invisible': ~Eval('moves_ignored', []),
+            })
     moves_recreated = fields.Many2Many('sale.line-recreated-stock.move',
             'sale_line', 'move', 'Recreated Moves', readonly=True)
     moves_exception = fields.Function(

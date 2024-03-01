@@ -285,6 +285,17 @@ this repository contains the full copyright notices and license terms. -->
             <field name="perm_delete" eval="False"/>
         </record>
 
+        <record model="ir.model.field.access" id="access_purchase_purchase_invoices_ignored">
+            <field name="field" search="[('model.model', '=', 'purchase.purchase'), ('name', '=', 'invoices_ignored')]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+        </record>
+        <record model="ir.model.field.access" id="access_purchase_purchase_invoices_ignored_purchase_admin">
+            <field name="field" search="[('model.model', '=', 'purchase.purchase'), ('name', '=', 'invoices_ignored')]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+        </record>
+
         <record model="ir.model.button" id="purchase_cancel_button">
             <field name="name">cancel</field>
             <field name="string">Cancel</field>
@@ -485,6 +496,17 @@ this repository contains the full copyright notices and license terms. -->
             <field name="perm_write" eval="False"/>
             <field name="perm_create" eval="False"/>
             <field name="perm_delete" eval="False"/>
+        </record>
+
+        <record model="ir.model.field.access" id="access_purchase_line_moves_ignored">
+            <field name="field" search="[('model.model', '=', 'purchase.line'), ('name', '=', 'moves_ignored')]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+        </record>
+        <record model="ir.model.field.access" id="access_purchase_line_moves_ignored_purchase_admin">
+            <field name="field" search="[('model.model', '=', 'purchase.line'), ('name', '=', 'moves_ignored')]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
         </record>
 
         <record model="ir.ui.view" id="product_supplier_view_form">

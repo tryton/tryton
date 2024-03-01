@@ -32,6 +32,7 @@ this repository contains the full copyright notices and license terms. -->
         </page>
         <page name="moves" col="1">
             <field name="moves"/>
+            <field name="moves_ignored"/>
         </page>
         <page name="invoice_lines" col="1">
             <field name="invoice_lines"/>

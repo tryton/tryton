@@ -101,6 +101,12 @@ to recreate the items that need recreating, and ignore the rest.
    already be selected.
    This means you will need to deselect any that you do not want to recreate.
 
+.. note::
+
+   If you have ignored by mistake a move or an invoice, you can remove them
+   from the corresponding ignored list and after click on the
+   :guilabel:`Process` button.
+
 .. _Finishing a sale:
 
 Finishing a sale

@@ -271,6 +271,18 @@ this repository contains the full copyright notices and license terms. -->
             <field name="perm_delete" eval="True"/>
         </record>
 
+        <record model="ir.model.field.access" id="access_sale_sale_invoices_ignored">
+            <field name="field" search="[('model.model', '=', 'sale.sale'), ('name', '=', 'invoices_ignored')]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+        </record>
+        <record model="ir.model.field.access" id="access_sale_sale_invoices_ignored_sale_admin">
+            <field name="field" search="[('model.model', '=', 'sale.sale'), ('name', '=', 'invoices_ignored')]"/>
+            <field name="group" ref="group_sale_admin"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+        </record>
+
         <record model="ir.rule.group" id="rule_group_sale_companies">
             <field name="name">User in companies</field>
             <field name="model" search="[('model', '=', 'sale.sale')]"/>
@@ -414,6 +426,18 @@ this repository contains the full copyright notices and license terms. -->
             <field name="type">tree</field>
             <field name="priority" eval="20"/>
             <field name="name">sale_line_tree_sequence</field>
+        </record>
+
+        <record model="ir.model.field.access" id="access_sale_line_moves_ignored">
+            <field name="field" search="[('model.model', '=', 'sale.line'), ('name', '=', 'moves_ignored')]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+        </record>
+        <record model="ir.model.field.access" id="access_sale_line_moves_ignored_sale_admin">
+            <field name="field" search="[('model.model', '=', 'sale.line'), ('name', '=', 'moves_ignored')]"/>
+            <field name="group" ref="group_sale_admin"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
         </record>
 
         <record model="ir.action.act_window" id="act_sale_line_relate">
