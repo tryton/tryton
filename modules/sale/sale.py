@@ -1185,7 +1185,11 @@ class SaleIgnoredInvoice(ModelSQL):
     sale = fields.Many2One(
         'sale.sale', "Sale", ondelete='CASCADE', required=True)
     invoice = fields.Many2One(
-        'account.invoice', "Invoice", ondelete='RESTRICT', required=True)
+        'account.invoice', "Invoice", ondelete='RESTRICT', required=True,
+        domain=[
+            ('sales', '=', Eval('sale', -1)),
+            ('state', '=', 'cancelled'),
+            ])
 
     @classmethod
     def __register__(cls, module):
@@ -1201,7 +1205,11 @@ class SaleRecreatedInvoice(ModelSQL):
     sale = fields.Many2One(
         'sale.sale', "Sale", ondelete='CASCADE', required=True)
     invoice = fields.Many2One(
-        'account.invoice', "Invoice", ondelete='RESTRICT', required=True)
+        'account.invoice', "Invoice", ondelete='RESTRICT', required=True,
+        domain=[
+            ('sales', '=', Eval('sale', -1)),
+            ('state', '=', 'cancelled'),
+            ])
 
     @classmethod
     def __register__(cls, module):
@@ -2114,7 +2122,11 @@ class SaleLineIgnoredMove(ModelSQL):
     sale_line = fields.Many2One(
         'sale.line', "Sale Line", ondelete='CASCADE', required=True)
     move = fields.Many2One(
-        'stock.move', "Move", ondelete='RESTRICT', required=True)
+        'stock.move', "Move", ondelete='RESTRICT', required=True,
+        domain=[
+            ('origin.id', '=', Eval('sale_line', -1), 'sale.line'),
+            ('state', '=', 'cancelled'),
+            ])
 
     @classmethod
     def __register__(cls, module):
@@ -2130,7 +2142,11 @@ class SaleLineRecreatedMove(ModelSQL):
     sale_line = fields.Many2One(
         'sale.line', "Sale Line", ondelete='CASCADE', required=True)
     move = fields.Many2One(
-        'stock.move', "Move", ondelete='RESTRICT', required=True)
+        'stock.move', "Move", ondelete='RESTRICT', required=True,
+        domain=[
+            ('origin.id', '=', Eval('sale_line', -1), 'sale.line'),
+            ('state', '=', 'cancelled'),
+            ])
 
     @classmethod
     def __register__(cls, module):

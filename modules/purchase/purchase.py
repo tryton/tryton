@@ -1048,7 +1048,11 @@ class PurchaseIgnoredInvoice(ModelSQL):
     purchase = fields.Many2One(
         'purchase.purchase', "Purchase", ondelete='CASCADE', required=True)
     invoice = fields.Many2One(
-        'account.invoice', "Invoice", ondelete='RESTRICT', required=True)
+        'account.invoice', "Invoice", ondelete='RESTRICT', required=True,
+        domain=[
+            ('purchases', '=', Eval('purchase', -1)),
+            ('state', '=', 'cancelled'),
+            ])
 
     @classmethod
     def __register__(cls, module):
@@ -1064,7 +1068,11 @@ class PurchaseRecreatedInvoice(ModelSQL):
     purchase = fields.Many2One(
         'purchase.purchase', "Purchase", ondelete='CASCADE', required=True)
     invoice = fields.Many2One(
-        'account.invoice', "Invoice", ondelete='RESTRICT', required=True)
+        'account.invoice', "Invoice", ondelete='RESTRICT', required=True,
+        domain=[
+            ('purchases', '=', Eval('purchase', -1)),
+            ('state', '=', 'cancelled'),
+            ])
 
     @classmethod
     def __register__(cls, module):
@@ -2064,7 +2072,11 @@ class LineIgnoredMove(ModelSQL):
     purchase_line = fields.Many2One(
         'purchase.line', "Purchase Line", ondelete='CASCADE', required=True)
     move = fields.Many2One(
-        'stock.move', "Move", ondelete='RESTRICT', required=True)
+        'stock.move', "Move", ondelete='RESTRICT', required=True,
+        domain=[
+            ('origin.id', '=', Eval('purchase_line', -1), 'purchase.line'),
+            ('state', '=', 'cancelled'),
+            ])
 
     @classmethod
     def __register__(cls, module):
@@ -2080,7 +2092,11 @@ class LineRecreatedMove(ModelSQL):
     purchase_line = fields.Many2One(
         'purchase.line', "Purchase Line", ondelete='CASCADE', required=True)
     move = fields.Many2One(
-        'stock.move', "Move", ondelete='RESTRICT', required=True)
+        'stock.move', "Move", ondelete='RESTRICT', required=True,
+        domain=[
+            ('origin.id', '=', Eval('purchase_line', -1), 'purchase.line'),
+            ('state', '=', 'cancelled'),
+            ])
 
     @classmethod
     def __register__(cls, module):
