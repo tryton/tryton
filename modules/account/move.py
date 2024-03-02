@@ -1989,7 +1989,7 @@ class ReconcileLines(Wizard):
 
     def get_writeoff(self):
         "Return writeoff amount and company"
-        company = None
+        company = currency = None
         amount = Decimal('0.0')
         amount_second_currency = Decimal('0.0')
         second_currencies = set()
@@ -2000,6 +2000,7 @@ class ReconcileLines(Wizard):
             second_currencies.add(line.second_currency)
             if not company:
                 company = line.account.company
+                currency = company.currency
         try:
             second_currency, = second_currencies
         except ValueError:
@@ -2007,8 +2008,6 @@ class ReconcileLines(Wizard):
         if second_currency:
             amount = amount_second_currency
             currency = second_currency
-        else:
-            currency = company.currency
         return amount, currency, company
 
     def transition_start(self):
