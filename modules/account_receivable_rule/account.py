@@ -415,4 +415,4 @@ class Statement(metaclass=PoolMeta):
         for statement in statements:
             for line in statement.lines:
                 rules.update(line.account.receivable_rules)
-        Rule.apply(rules=Rule.browse(rules))
+        Rule.apply(Rule.browse(rules))
