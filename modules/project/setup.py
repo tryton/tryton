@@ -58,7 +58,7 @@ setup(name=name,
     download_url=download_url,
     project_urls={
         "Bug Tracker": 'https://bugs.tryton.org/',
-        "Documentation": 'https://docs.tryton.org/',
+        "Documentation": 'https://docs.tryton.org/modules-project/',
         "Forum": 'https://www.tryton.org/forum',
         "Source Code": 'https://hg.tryton.org/modules/project',
         },

@@ -62,7 +62,7 @@ setup(name=name,
     project_urls={
         "Bug Tracker": 'https://bugs.tryton.org/',
         "Documentation":
-        'https://docs.tryton.org/projects/modules-account-product/',
+        'https://docs.tryton.org/modules-account-product/',
         "Forum": 'https://www.tryton.org/forum',
         "Source Code": 'https://hg.tryton.org/modules/account_product',
         },

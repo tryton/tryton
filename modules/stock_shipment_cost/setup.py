@@ -62,7 +62,7 @@ setup(name=name,
     project_urls={
         "Bug Tracker": 'https://bugs.tryton.org/',
         "Documentation": (
-            'https://docs.tryton.org/projects/modules-stock-shipment-cost/'),
+            'https://docs.tryton.org/modules-stock-shipment-cost/'),
         "Forum": 'https://www.tryton.org/forum',
         "Source Code": 'https://hg.tryton.org/modules/stock_shipment_cost',
         },

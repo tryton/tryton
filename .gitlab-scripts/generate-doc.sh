@@ -3,8 +3,15 @@ set -eu
 
 OUTPUTDIR=`realpath "${1}"`
 mkdir -p "${OUTPUTDIR}"
+: ${DOC_BASE_URL:=${OUTPUTDIR}}
+: ${MAX_PROCS:=$(( `nproc` * 2 ))}
+export DOC_BASE_URL
 
-find . -path '*/doc/conf.py' | while read path; do
+find . -name 'cookiecutter*' -prune -o -path '*/doc/requirements-doc.txt' -print | while read path; do
+    pip install -r "${path}"
+done
+
+(find . -name 'cookiecutter*' -prune -o -path '*/doc/conf.py' -print | while read path; do
     path=`dirname "${path}"`
     path=`dirname "${path}"`
     package=`basename "${path}"`
@@ -17,8 +24,10 @@ find . -path '*/doc/conf.py' | while read path; do
         package="client-library"
     elif [ "${package}" = "trytond-gis" ]; then
         package="backend-gis"
+    elif [ "${package}" = "." ]; then
+        package=""
     else
         package="modules-${package}"
     fi
-    (cd "${path}" && python -m sphinx -T -E -b html doc "${OUTPUTDIR}/${package}")
-done
+    echo "${path}/doc" "${OUTPUTDIR}/${package}"
+done) | xargs --max-args=2 --max-procs=${MAX_PROCS} python -m sphinx -Q -T -E -b html
