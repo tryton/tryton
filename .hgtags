@@ -8979,3 +8979,4 @@ d6721129e33a8874b1f8a8fe996c8e7280d76b4f sale_shipment_cost-6.8.5
 ebbf63a8ecd43f3588524d6e356846a29017bff6 purchase_amendment-6.8.1
 cac2a681e3efab381e444fa638b3b7285cf04d12 party-6.8.3
 8ccb60bf6fbad43b0d0f45446cabd79f018d8aef account_statement-6.8.3
+b0ae69dbd73fd0fab51f76cda71ad34f83588186 account_payment_stripe-6.8.4
