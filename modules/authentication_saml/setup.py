@@ -63,7 +63,7 @@ setup(name=name,
     project_urls={
         "Bug Tracker": 'https://bugs.tryton.org/',
         "Documentation": (
-            'https://docs.tryton.org/projects/modules-authentication-saml'),
+            'https://docs.tryton.org/modules-authentication-saml'),
         "Forum": 'https://www.tryton.org/forum',
         "Source Code": 'https://code.tryton.org/tryton',
         },

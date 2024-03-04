@@ -65,7 +65,7 @@ setup(name=name,
     project_urls={
         "Bug Tracker": 'https://bugs.tryton.org/',
         "Documentation":
-            'https://docs.tryton.org/projects/modules-purchase-blanket-agreement',  # noqa: E501
+            'https://docs.tryton.org/modules-purchase-blanket-agreement',  # noqa: E501
         "Forum": 'https://www.tryton.org/forum',
         "Source Code":
             'https://hg.tryton.org/modules/purchase_blanket_agreement',

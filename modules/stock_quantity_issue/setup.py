@@ -66,7 +66,7 @@ setup(name=name,
     project_urls={
         "Bug Tracker": 'https://bugs.tryton.org/',
         "Documentation": (
-            'https://docs.tryton.org/projects/modules-stock-quantity-issue/'),
+            'https://docs.tryton.org/modules-stock-quantity-issue/'),
         "Forum": 'https://www.tryton.org/forum',
         "Source Code": 'https://code.tryton.org/tryton',
         },
