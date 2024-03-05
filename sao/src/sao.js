@@ -447,22 +447,27 @@ var Sao = {
                 deferreds.push(Sao.common.MODELNOTIFICATION.load_names());
                 deferreds.push(Sao.common.VIEW_SEARCH.load_searches());
                 return jQuery.when.apply(jQuery, deferreds).then(function() {
+                    var prm = jQuery.when();
                     for (const action_id of (preferences.actions || [])) {
-                        Sao.Action.execute(action_id, {}, null, {});
+                        prm = prm.then(() => {
+                            return Sao.Action.execute(action_id, {}, null);
+                        });
                     }
-                    Sao.set_title();
-                    var new_lang = preferences.language != Sao.i18n.getLocale();
-                    var prm = jQuery.Deferred();
-                    Sao.i18n.setlang(preferences.language).always(function() {
-                        if (new_lang) {
-                            Sao.user_menu(preferences);
-                        }
-                        prm.resolve(preferences);
+                    return prm.then(() => {
+                        Sao.set_title();
+                        var new_lang = preferences.language != Sao.i18n.getLocale();
+                        var prm = jQuery.Deferred();
+                        Sao.i18n.setlang(preferences.language).always(function() {
+                            if (new_lang) {
+                                Sao.user_menu(preferences);
+                            }
+                            prm.resolve(preferences);
+                        });
+                        Sao.i18n.set_direction(preferences.language_direction);
+                        Sao.i18n.locale = preferences.locale;
+                        Sao.common.MODELNAME.clear();
+                        return prm;
                     });
-                    Sao.i18n.set_direction(preferences.language_direction);
-                    Sao.i18n.locale = preferences.locale;
-                    Sao.common.MODELNAME.clear();
-                    return prm;
                 });
             });
         });
