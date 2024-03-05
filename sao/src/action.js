@@ -180,7 +180,7 @@
             'method': 'report.' + attributes.name + '.execute',
             'params': [data.ids || [], data, context]
         }, Sao.Session.current_session);
-        prm.done(function(result) {
+        return prm.done(function(result) {
             var report_type = result[0];
             var data = result[1];
             // TODO direct print
