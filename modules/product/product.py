@@ -860,7 +860,9 @@ class ProductIdentifier(sequence_ordered(), ModelSQL, ModelView):
                         code=self.code,
                         product=product))
 
-    def barcode(self, format='svg', **options):
-        if barcode and self.type in barcode.BARCODES:
+    def barcode(self, format='svg', type=None, **options):
+        if type is None:
+            type = self.type
+        if barcode and type in barcode.BARCODES:
             generator = getattr(barcode, 'generate_%s' % format)
-            return generator(self.type, self.on_change_with_code(), **options)
+            return generator(type, self.on_change_with_code(), **options)
