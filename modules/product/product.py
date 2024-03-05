@@ -804,6 +804,7 @@ class ProductIdentifier(sequence_ordered(), ModelSQL, ModelView):
             ('isil', "International Standard Identifier for Libraries"),
             ('isin', "International Securities Identification Number"),
             ('ismn', "International Standard Music Number"),
+            ('brand', "Brand"),
             ], "Type")
     type_string = type.translated('type')
     code = fields.Char("Code", required=True)
