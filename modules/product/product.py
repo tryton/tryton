@@ -821,9 +821,14 @@ class ProductIdentifier(sequence_ordered(), ModelSQL, ModelView):
                     (t.code, Index.Similarity())),
                 })
 
-    @fields.depends('type', 'code')
+    @property
+    @fields.depends('type')
+    def _is_stdnum(self):
+        return self.type in {'ean', 'isan', 'isbn', 'isil', 'isin', 'ismn'}
+
+    @fields.depends('type', 'code', methods=['_is_stdnum'])
     def on_change_with_code(self):
-        if self.type and self.type != 'other':
+        if self._is_stdnum:
             try:
                 module = import_module('stdnum.%s' % self.type)
                 return module.compact(self.code)
@@ -837,9 +842,9 @@ class ProductIdentifier(sequence_ordered(), ModelSQL, ModelView):
         super().pre_validate()
         self.check_code()
 
-    @fields.depends('type', 'product', 'code')
+    @fields.depends('type', 'product', 'code', methods=['_is_stdnum'])
     def check_code(self):
-        if self.type:
+        if self._is_stdnum:
             try:
                 module = import_module('stdnum.%s' % self.type)
             except ModuleNotFoundError:
