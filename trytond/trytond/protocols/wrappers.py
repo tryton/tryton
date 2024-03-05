@@ -15,7 +15,7 @@ except ImportError:
 from werkzeug import exceptions
 from werkzeug.datastructures import Authorization
 from werkzeug.exceptions import abort
-from werkzeug.utils import redirect
+from werkzeug.utils import redirect, send_file
 from werkzeug.wrappers import Request as _Request
 from werkzeug.wrappers import Response
 
@@ -34,6 +34,7 @@ __all__ = [
     'allow_null_origin',
     'exceptions',
     'redirect',
+    'send_file',
     'set_max_request_size',
     'user_application',
     'with_pool',
