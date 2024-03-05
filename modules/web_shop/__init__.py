@@ -12,6 +12,7 @@ def register():
     Pool.register(
         web.Shop,
         web.Shop_Warehouse,
+        web.Shop_Country,
         web.Shop_Product,
         web.Shop_ProductCategory,
         web.User,

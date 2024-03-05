@@ -70,6 +70,8 @@ class Shop(DeactivableMixin, ModelSQL, ModelView):
             'company': Eval('company', -1),
             },
         depends={'company'})
+    countries = fields.Many2Many(
+        'web.shop-country.country', 'shop', 'country', "Countries")
 
     products = fields.Many2Many(
         'web.shop-product.product', 'shop', 'product', "Products",
@@ -296,6 +298,16 @@ class Shop_Warehouse(ModelSQL):
         domain=[
             ('type', '=', 'warehouse'),
             ])
+
+
+class Shop_Country(ModelSQL):
+    "Web Shop - Country"
+    __name__ = 'web.shop-country.country'
+
+    shop = fields.Many2One(
+        'web.shop', "Shop", ondelete='CASCADE', required=True)
+    country = fields.Many2One(
+        'country.country', "Country", ondelete='CASCADE', required=True)
 
 
 class Shop_Product(Inactivate):

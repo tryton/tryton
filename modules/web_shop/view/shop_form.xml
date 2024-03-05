@@ -24,6 +24,9 @@ this repository contains the full copyright notices and license terms. -->
         <page name="warehouses">
             <field name="warehouses" colspan="4"/>
         </page>
+        <page name="countries">
+            <field name="countries" colspan="4"/>
+        </page>
         <page string="Products" id="products">
             <field name="products" colspan="4"/>
             <field name="categories" colspan="4"/>
