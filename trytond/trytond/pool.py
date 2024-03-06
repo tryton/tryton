@@ -3,7 +3,8 @@
 import builtins
 import logging
 from collections import OrderedDict, defaultdict
-from threading import RLock
+from threading import RLock, local
+from weakref import WeakSet
 
 from trytond.modules import load_modules, register_classes
 from trytond.transaction import Transaction
@@ -42,6 +43,7 @@ class PoolBase(object, metaclass=PoolMeta):
 
 
 class Pool(object):
+    __slots__ = ('database_name', '_modules', '_pool', '__weakref__')
 
     classes = {
         'model': defaultdict(OrderedDict),
@@ -51,25 +53,24 @@ class Pool(object):
     classes_mixin = defaultdict(list)
     _started = False
     _lock = RLock()
-    _locks = {}
-    _pool = {}
+    _local = local()
+    _pools = defaultdict(lambda: defaultdict(dict))
+    _pool_modules = defaultdict(list)
+    _pool_instances = WeakSet()
     test = False
-    _instances = {}
-    _modules = None
 
     def __new__(cls, database_name=None):
         if database_name is None:
             database_name = Transaction().database.name
-        result = cls._instances.get(database_name)
-        if result:
-            return result
-        lock = cls._locks.get(database_name)
-        if not lock:
+        instances = cls._local.__dict__.setdefault('instances', {})
+        if (instance := instances.get(database_name)) is None:
+            instances[database_name] = instance = super().__new__(cls)
+        if instance not in cls._pool_instances:
             with cls._lock:
-                lock = cls._locks.setdefault(database_name, RLock())
-        with lock:
-            return cls._instances.setdefault(database_name,
-                super(Pool, cls).__new__(cls))
+                instance._pool = cls._pools[database_name]
+                instance._modules = cls._pool_modules[database_name]
+                cls._pool_instances.add(instance)
+        return instance
 
     def __init__(self, database_name=None):
         if database_name is None:
@@ -81,17 +82,18 @@ class Pool(object):
         '''
         Register a list of classes
         '''
-        module = kwargs['module']
-        type_ = kwargs['type_']
-        depends = set(kwargs.get('depends', []))
-        assert type_ in {'model', 'report', 'wizard'}, (
-            f"{type_} is not a valid type_")
-        for cls in classes:
-            mpool = Pool.classes[type_][module]
-            assert cls not in mpool, f"{cls} is already registered"
-            assert issubclass(cls.__class__, PoolMeta), (
-                f"{cls} is missing metaclass {PoolMeta}")
-            mpool[cls] = depends
+        with Pool._lock:
+            module = kwargs['module']
+            type_ = kwargs['type_']
+            depends = set(kwargs.get('depends', []))
+            assert type_ in {'model', 'report', 'wizard'}, (
+                f"{type_} is not a valid type_")
+            for cls in classes:
+                mpool = Pool.classes[type_][module]
+                assert cls not in mpool, f"{cls} is already registered"
+                assert issubclass(cls.__class__, PoolMeta), (
+                    f"{cls} is missing metaclass {PoolMeta}")
+                mpool[cls] = depends
 
     @staticmethod
     def register_mixin(mixin, classinfo, module):
@@ -114,14 +116,8 @@ class Pool(object):
         Stop the Pool
         '''
         with cls._lock:
-            if database_name in cls._instances:
-                del cls._instances[database_name]
-            lock = cls._locks.get(database_name)
-            if not lock:
-                return
-            with lock:
-                if database_name in cls._pool:
-                    del cls._pool[database_name]
+            cls._pools.pop(database_name, None)
+            cls._pool_instances.clear()
 
     @classmethod
     def database_list(cls):
@@ -129,20 +125,7 @@ class Pool(object):
         :return: database list
         '''
         with cls._lock:
-            databases = []
-            for database in cls._pool.keys():
-                if cls._locks.get(database):
-                    if cls._locks[database].acquire(False):
-                        databases.append(database)
-                        cls._locks[database].release()
-            return databases
-
-    @property
-    def lock(self):
-        '''
-        Return the database lock for the pool.
-        '''
-        return self._locks[self.database_name]
+            return list(cls._pools.keys())
 
     def init(self, update=None, lang=None, activatedeps=False, indexes=True):
         '''
@@ -154,24 +137,16 @@ class Pool(object):
         with self._lock:
             if not self._started:
                 self.start()
-        with self._locks[self.database_name]:
-            # Don't reset pool if already init and not to update
-            if not update and self._pool.get(self.database_name):
-                return
             logger.info('init pool for "%s"', self.database_name)
-            self._pool.setdefault(self.database_name, {})
+            # Clear before loading modules
+            self._pool = defaultdict(dict)
             self._modules = []
-            # Clean the _pool before loading modules
-            for type in self.classes.keys():
-                self._pool[self.database_name][type] = {}
-            try:
-                restart = not load_modules(
-                    self.database_name, self, update=update, lang=lang,
-                    activatedeps=activatedeps, indexes=indexes)
-            except Exception:
-                del self._pool[self.database_name]
-                self._modules = None
-                raise
+            restart = not load_modules(
+                self.database_name, self, update=update, lang=lang,
+                activatedeps=activatedeps, indexes=indexes)
+            self._pools[self.database_name] = self._pool
+            self._pool_modules[self.database_name] = self._modules
+            self._pool_instances.clear()
             if restart:
                 self.init()
 
@@ -185,10 +160,10 @@ class Pool(object):
         '''
         if type == '*':
             for type in self.classes.keys():
-                if name in self._pool[self.database_name][type]:
+                if name in self._pool[type]:
                     break
         try:
-            return self._pool[self.database_name][type][name]
+            return self._pool[type][name]
         except KeyError:
             if type == 'report':
                 from trytond.report import Report
@@ -206,8 +181,7 @@ class Pool(object):
         '''
         Add a classe to the pool
         '''
-        with self._locks[self.database_name]:
-            self._pool[self.database_name][type][cls.__name__] = cls
+        self._pool[type][cls.__name__] = cls
 
     def iterobject(self, type='model'):
         '''
@@ -216,7 +190,7 @@ class Pool(object):
         :param type: the type
         :return: an iterator
         '''
-        return self._pool[self.database_name][type].items()
+        return self._pool[type].items()
 
     def fill(self, module, modules):
         '''
@@ -247,9 +221,8 @@ class Pool(object):
         logger.info('setup pool for "%s"', self.database_name)
         if classes is None:
             classes = {}
-            for type_ in self._pool[self.database_name]:
-                classes[type_] = list(
-                    self._pool[self.database_name][type_].values())
+            for type_ in self._pool:
+                classes[type_] = list(self._pool[type_].values())
         for type_, lst in classes.items():
             for cls in lst:
                 cls.__setup__()
@@ -277,9 +250,11 @@ class Pool(object):
                             cls.__name__, (mixin, cls), {'__slots__': ()})
                         self.add(cls, type=type_)
 
-    def refresh(self, modules):
-        if self._modules is not None and set(self._modules) != modules:
-            self.stop(self.database_name)
+    @classmethod
+    def refresh(cls, database_name, modules):
+        if (cls._pool_modules[database_name]
+                and set(cls._pool_modules[database_name]) != set(modules)):
+            cls.stop(database_name)
 
 
 def isregisteredby(obj, module, type_='model'):

@@ -39,6 +39,10 @@ Class methods:
 
    List all started databases.
 
+.. classmethod:: Pool.refresh(database_name, modules)
+
+   Stop the pool if it contains any of the modules.
+
 Instance methods:
 
 .. method:: Pool.get(name[, type])

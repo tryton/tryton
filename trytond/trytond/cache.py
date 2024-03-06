@@ -266,7 +266,7 @@ class MemoryCache(BaseCache):
             inst_timestamp = inst._timestamp.get(dbname)
             if not inst_timestamp or timestamp > inst_timestamp:
                 inst._clear(dbname, timestamp)
-        Pool(dbname).refresh(modules)
+        Pool.refresh(dbname, modules)
         cls._clean_last = dt.datetime.now()
 
     def sync_since(self, value):
@@ -384,7 +384,7 @@ class MemoryCache(BaseCache):
             cursor = conn.cursor()
             cursor.execute('LISTEN "%s"' % cls._channel)
             # Clear everything in case we missed a payload
-            Pool(dbname).refresh(_get_modules(cursor))
+            Pool.refresh(dbname, _get_modules(cursor))
             cls._clear_all(dbname)
             current_thread.listening = True
 
@@ -395,7 +395,7 @@ class MemoryCache(BaseCache):
                 while conn.notifies:
                     notification = conn.notifies.pop()
                     if notification.payload == 'refresh pool':
-                        Pool(dbname).refresh(_get_modules(cursor))
+                        Pool.refresh(dbname, _get_modules(cursor))
                     elif notification.payload:
                         reset = json.loads(notification.payload)
                         for name in reset:
