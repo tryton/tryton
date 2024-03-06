@@ -8,7 +8,7 @@ from trytond.tests.test_tryton import ModuleTestCase
 class WebShopTestCase(CompanyTestMixin, ModuleTestCase):
     'Test Web Shop module'
     module = 'web_shop'
-    extras = ['product_attribute', 'product_image']
+    extras = ['product_attribute', 'product_image', 'sale_price_list']
 
 
 del ModuleTestCase

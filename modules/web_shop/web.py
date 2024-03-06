@@ -252,6 +252,39 @@ class Shop(DeactivableMixin, ModelSQL, ModelView):
         return sale
 
 
+class Shop_PriceList(metaclass=PoolMeta):
+    __name__ = 'web.shop'
+
+    sale_price_list = fields.Many2One(
+        'product.price_list', "Sale Price List",
+        domain=[
+            ('company', '=', Eval('company', -1)),
+            ],
+        help="The price list to compute sale price of products.")
+    non_sale_price_list = fields.Many2One(
+        'product.price_list', "Non-Sale Price List",
+        domain=[
+            ('company', '=', Eval('company', -1)),
+            ],
+        help="The price list to compute the price of products "
+        "when it is not on sale.")
+
+    def get_context(self):
+        context = super().get_context()
+        if self.sale_price_list:
+            context['price_list'] = self.sale_price_list.id
+        if (self.non_sale_price_list
+                and Transaction().context.get('_non_sale_price', False)):
+            context['price_list'] = self.non_sale_price_list.id
+        return context
+
+    def get_sale(self, party=None):
+        sale = super().get_sale(party=party)
+        if self.sale_price_list:
+            sale.price_list = self.sale_price_list
+        return sale
+
+
 class Shop_Warehouse(ModelSQL):
     "Web Shop - Warehouse"
     __name__ = 'web.shop-stock.location'

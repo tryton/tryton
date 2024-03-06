@@ -74,6 +74,14 @@ this repository contains the full copyright notices and license terms. -->
         </record>
     </data>
 
+    <data depends="sale_price_list">
+        <record model="ir.ui.view" id="shop_view_price_list_form">
+            <field name="model">web.shop</field>
+            <field name="inherit" ref="shop_view_form"/>
+            <field name="name">shop_price_list_form</field>
+        </record>
+    </data>
+
     <data>
         <record model="ir.ui.view" id="user_view_form">
             <field name="model">web.user</field>
