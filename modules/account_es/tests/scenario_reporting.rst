@@ -27,6 +27,8 @@ Create company::
     >>> tax_identifier = company.party.identifiers.new()
     >>> tax_identifier.type = 'eu_vat'
     >>> tax_identifier.code = 'ESB01000009'
+    >>> phone = company.party.contact_mechanisms.new()
+    >>> phone.value = '+34 666 66 66 66'
     >>> company.party.save()
 
 Create fiscal year::
