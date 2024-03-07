@@ -1,6 +1,7 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 import unittest
+from unittest.mock import patch
 
 from trytond.i18n import gettext, lazy_gettext
 from trytond.pool import Pool
@@ -82,22 +83,16 @@ class I18nTestCase(unittest.TestCase):
     @with_transaction()
     def test_gettest_wrong_id_format(self):
         "gettext returns the id if it has wrong format"
-        Pool().test = False
-        try:
+        with patch('trytond.pool.Pool.test', False):
             message = gettext("Wrong Format")
-        finally:
-            Pool().test = True
 
         self.assertEqual(message, "Wrong Format")
 
     @with_transaction()
     def test_gettext_wrong_id(self):
         "gettext returns the id if it does not exist"
-        Pool().test = False
-        try:
+        with patch('trytond.pool.Pool.test', False):
             message = gettext('tests.not_exist')
-        finally:
-            Pool().test = True
 
         self.assertEqual(message, 'tests.not_exist')
 

@@ -33,9 +33,7 @@ def activate_modules(modules):
 
 
 def _get_config():
-    cfg = pconfig.set_trytond()
-    cfg.pool.test = True
-    return cfg
+    return pconfig.set_trytond()
 
 
 def set_user(user, config=None):
