@@ -1253,18 +1253,21 @@
         },
         sig_sel_add: function(el_field) {
             el_field = jQuery(el_field);
-            var field = el_field.attr('field');
-            var node = jQuery('<li/>', {
+            this._add_node(el_field.attr('field'), el_field.attr('name'));
+        },
+        _add_node: function(field, name) {
+            jQuery('<li/>', {
                 'field': field,
                 'class': 'draggable-handle',
-            }).text(el_field.attr('name')).prepend(
+            }).text(name).prepend(
                 Sao.common.ICONFACTORY.get_icon_img('tryton-drag')
-            ).click(function(e) {
-                if (e.ctrlKey || e.metaKey) {
+            ).click(function(evt) {
+                const node = jQuery(evt.target);
+                if (evt.ctrlKey || evt.metaKey) {
                     node.toggleClass('bg-primary');
                 } else {
-                    jQuery(e.target).addClass('bg-primary')
-                        .siblings().removeClass('bg-primary');
+                    node.addClass('bg-primary');
+                    node.siblings().removeClass('bg-primary');
                 }
             }).appendTo(this.fields_selected);
         },
@@ -1405,12 +1408,8 @@
                         Sao.i18n.gettext('Error'));
                 return;
             }
-            var node = jQuery('<li/>', {
-                'field': field
-            }).text(name).click(function(){
-                node.addClass('bg-primary')
-                    .siblings().removeClass('bg-primary');
-            }).appendTo(this.fields_selected);
+            this._add_node(field, name);
+            return true;
         },
         _traverse: function(fields, prefix, parents, i) {
             var field, item;
