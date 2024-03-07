@@ -3127,6 +3127,23 @@ test-modules-stock_product_location-postgresql:
     PACKAGE: modules/stock_product_location
     TAG_PATTERN: '/^stock_product_location-.*/'
 
+check-doc-modules-stock_product_location_place:
+  extends: .check-doc
+  variables:
+    PACKAGE: modules/stock_product_location_place
+
+test-modules-stock_product_location_place-sqlite:
+  extends: .test-sqlite
+  variables:
+    PACKAGE: modules/stock_product_location_place
+    TAG_PATTERN: '/^stock_product_location_place-.*/'
+
+test-modules-stock_product_location_place-postgresql:
+  extends: .test-postgresql
+  variables:
+    PACKAGE: modules/stock_product_location_place
+    TAG_PATTERN: '/^stock_product_location_place-.*/'
+
 check-doc-modules-stock_quantity_early_planning:
   extends: .check-doc
   variables:
