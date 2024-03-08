@@ -232,6 +232,7 @@ class MoveLine(metaclass=PoolMeta):
             for reception in line.party.reception_direct_debits:
                 if reception.match(pattern):
                     payments.extend(reception.get_payments(line))
+                    break
         Payment.save(payments)
         return payments
 
