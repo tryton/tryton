@@ -64,7 +64,7 @@ class PartyReceptionDirectDebit(
     __name__ = 'party.party.reception_direct_debit'
 
     party = fields.Many2One(
-        'party.party', "Party", ondelete='CASCADE',
+        'party.party', "Party", required=True, ondelete='CASCADE',
         context={
             'company': Eval('company', -1),
             },
