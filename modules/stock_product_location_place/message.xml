@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data grouped="1">
+        <record model="ir.message" id="msg_stock_product_location_unique">
+            <field name="text">Only one product place can be defined per location.</field>
+        </record>
+    </data>
+</tryton>

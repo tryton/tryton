@@ -1549,8 +1549,14 @@ class ModelSQL(ModelStorage):
     @classmethod
     def __check_domain_rule(cls, ids, mode):
         pool = Pool()
+        Lang = pool.get('ir.lang')
         Rule = pool.get('ir.rule')
         Model = pool.get('ir.model')
+        try:
+            User = pool.get('res.user')
+            Group = pool.get('res.group')
+        except KeyError:
+            User = Group = None
         table = cls.__table__()
         transaction = Transaction()
         in_max = transaction.database.IN_MAX
@@ -1628,7 +1634,18 @@ class ModelSQL(ModelStorage):
                 else:
                     msg = gettext(
                         f'ir.msg_{mode}_error', ids=ids, model=model)
-                raise AccessError(msg)
+
+                ctx_msg = []
+                lang = Lang.get()
+                if cls._history and transaction.context.get('_datetime'):
+                    ctx_msg.append(gettext('ir.msg_context_datetime',
+                            datetime=lang.strftime(
+                                transaction.context['_datetime'])))
+                if domain and User and Group:
+                    groups = Group.browse(User.get_groups())
+                    ctx_msg.append(gettext('ir.msg_context_groups',
+                            groups=', '.join(g.rec_name for g in groups)))
+                raise AccessError(msg, '\n'.join(ctx_msg))
 
     @classmethod
     def __search_query(cls, domain, count, query, order):

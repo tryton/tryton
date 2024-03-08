@@ -1,0 +1,47 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data>
+        <record model="ir.ui.view" id="stock_product_location_place_view_form">
+            <field name="model">stock.product.location.place</field>
+            <field name="type">form</field>
+            <field name="name">stock_product_location_place_form</field>
+        </record>
+
+        <record model="ir.ui.view" id="stock_product_location_place_view_list">
+            <field name="model">stock.product.location.place</field>
+            <field name="type">tree</field>
+            <field name="name">stock_product_location_place_list</field>
+        </record>
+
+        <record model="ir.model.access" id="access_stock_product_location_place">
+            <field name="model" search="[('model', '=', 'stock.product.location.place')]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+
+        <record model="ir.model.access" id="access_stock_product_location_place_stock_admin">
+            <field name="model" search="[('model', '=', 'stock.product.location.place')]"/>
+            <field name="group" ref="stock.group_stock_admin"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
+
+        <record model="ir.ui.view" id="stock_move_view_list_shipment_in">
+            <field name="model">stock.move</field>
+            <field name="inherit" ref="stock.move_view_list_shipment_in"/>
+            <field name="name">stock_move_list</field>
+        </record>
+
+        <record model="ir.ui.view" id="stock_move_view_list_shipment">
+            <field name="model">stock.move</field>
+            <field name="inherit" ref="stock.move_view_list_shipment"/>
+            <field name="name">stock_move_list</field>
+        </record>
+    </data>
+</tryton>

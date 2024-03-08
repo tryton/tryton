@@ -23,7 +23,11 @@ class Line(ModelSQL, ModelView):
     company = fields.Many2One('company.company', 'Company', required=True,
         help="The company on which the time is spent.")
     employee = fields.Many2One(
-        'company.employee', "Employee", required=True, domain=[
+        'company.employee', "Employee", required=True,
+        search_context={
+            'active_test': False,
+            },
+        domain=[
             ('company', '=', Eval('company', -1)),
             ['OR',
                 ('start_date', '=', None),

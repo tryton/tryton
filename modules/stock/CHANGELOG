@@ -1,3 +1,5 @@
+* Add location name fields to move
+* Unify shipment assignation scheduled jobs
 * Fill shipment number only in waiting state
 * Manage assignation for customer shipment with same picking and output location
 * Add pblc argument to assign_try

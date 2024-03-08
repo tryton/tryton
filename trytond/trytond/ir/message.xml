@@ -224,6 +224,12 @@ this repository contains the full copyright notices and license terms. -->
             <field name="text">You are not allowed to delete records "%(ids)s" of "%(model)s" because of at lease one of those rules:
 %(rules)s</field>
         </record>
+        <record model="ir.message" id="msg_context_datetime">
+            <field name="text">At date/time: %(datetime)s</field>
+        </record>
+        <record model="ir.message" id="msg_context_groups">
+            <field name="text">Within groups: %(groups)s</field>
+        </record>
         <record model="ir.message" id="msg_dict_schema_invalid_domain">
             <field name="text">Invalid domain in schema "%(schema)s".</field>
         </record>

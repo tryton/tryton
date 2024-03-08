@@ -1,6 +1,7 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 
+import datetime as dt
 from string import Template
 
 from trytond.model import ModelSQL, ModelView, fields
@@ -98,6 +99,9 @@ class Employee(ModelSQL, ModelView):
         help="The party which represents the employee.")
     company = fields.Many2One('company.company', 'Company', required=True,
         help="The company to which the employee belongs.")
+    active = fields.Function(
+        fields.Boolean("Active"),
+        'on_change_with_active', searcher='search_active')
     start_date = fields.Date('Start Date',
         domain=[If((Eval('start_date')) & (Eval('end_date')),
                 ('start_date', '<=', Eval('end_date')),
@@ -128,6 +132,43 @@ class Employee(ModelSQL, ModelView):
     @staticmethod
     def default_company():
         return Transaction().context.get('company')
+
+    @fields.depends('start_date', 'end_date')
+    def on_change_with_active(self, name=None):
+        pool = Pool()
+        Date = pool.get('ir.date')
+        context = Transaction().context
+        date = context.get('date') or Date.today()
+        start_date = self.start_date or dt.date.min
+        end_date = self.end_date or dt.date.max
+        return start_date <= date <= end_date
+
+    @classmethod
+    def search_active(cls, name, domain):
+        pool = Pool()
+        Date = pool.get('ir.date')
+        context = Transaction().context
+        date = context.get('date') or Date.today()
+        _, operator, value = domain
+        if (operator == '=' and value) or (operator == '!=' and not value):
+            domain = [
+                ['OR',
+                    ('start_date', '=', None),
+                    ('start_date', '<=', date),
+                    ],
+                ['OR',
+                    ('end_date', '=', None),
+                    ('end_date', '>=', date),
+                    ],
+                ]
+        elif (operator == '=' and not value) or (operator == '!=' and value):
+            domain = ['OR',
+                ('start_date', '>', date),
+                ('end_date', '<', date),
+                ]
+        else:
+            domain = []
+        return domain
 
     def get_rec_name(self, name):
         return self.party.rec_name
