@@ -11,4 +11,8 @@ this repository contains the full copyright notices and license terms. -->
     <field name="journal" widget="selection"/>
     <label name="currency"/>
     <field name="currency"/>
+
+    <label name="type"/>
+    <field name="type"/>
+    <newline/>
 </form>

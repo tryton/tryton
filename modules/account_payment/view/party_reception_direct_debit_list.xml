@@ -5,5 +5,6 @@ this repository contains the full copyright notices and license terms. -->
     <field name="party" expand="2"/>
     <field name="company" expand="1"/>
     <field name="journal" expand="1"/>
+    <field name="type"/>
     <field name="currency"/>
 </tree>
