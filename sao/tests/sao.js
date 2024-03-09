@@ -732,6 +732,10 @@
         QUnit.strictEqual(new Sao.PYSON.Get(
                 {'foo': 'bar'}, 'foo', 'default').toString(),
             'Get({"foo": "bar"}, "foo", "default")');
+
+        QUnit.strictEqual(
+            new Sao.PYSON.Eval('foo', {}).get('bar').toString(),
+            'Eval("foo", {}).get("bar")');
     });
 
     QUnit.test('PYSON In', function() {
@@ -811,6 +815,10 @@
 
         QUnit.strictEqual(new Sao.PYSON.In('foo', ['foo', 'bar']).toString(),
                 'In("foo", ["foo", "bar"])');
+
+        QUnit.strictEqual(
+            new Sao.PYSON.Eval('foo').in_(['foo', 'bar']).toString(),
+            'Eval("foo").in_(["foo", "bar"])');
     });
 
     QUnit.test('PYSON Date', function() {
@@ -1200,7 +1208,7 @@
             ['id', '=', -1]));
 
         QUnit.strictEqual(expr.toString(),
-            "If(Not(In(\"company\", Eval(\"context\", {}))), \"=\", \"!=\")");
+            'If(Not(Eval("context", {}).contains("company")), "=", "!=")');
         });
     QUnit.test('PYSON noeval', function() {
         var decoder = new Sao.PYSON.Decoder({}, true);
@@ -1236,7 +1244,7 @@
             'pyson': new Sao.PYSON.Eval('test'),
         };
         QUnit.strictEqual(Sao.PYSON.toString(value),
-            '{"test": ["foo", "bar"], "pyson": Eval("test", "")}');
+            '{"test": ["foo", "bar"], "pyson": Eval("test")}');
     });
 
     QUnit.test('PYSON.Eval dot notation', function() {
@@ -1296,7 +1304,7 @@
             "Or(true, false)", "eval_pyson('Or(True, False)').toString()");
         QUnit.strictEqual(
             eval_pyson('Eval("foo", {}).get("bar").toString()'),
-            'Get(Eval("foo", {}), "bar", "")');
+            'Eval("foo", {}).get("bar")');
     });
 
     var humanize_tests = [
