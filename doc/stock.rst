@@ -56,7 +56,7 @@ Stock
 :doc:`Product Location <stock_product_location:index>`
    Define preferred locations for products.
 
-:doc:`Product Location Place <stock_product_location:index>`
+:doc:`Product Location Place <stock_product_location_place:index>`
    Defines fixed place of products per location.
 
 :doc:`Quantity Early Planning <stock_quantity_early_planning:index>`
