@@ -2196,7 +2196,7 @@
             return this.attributes.name;
         },
         get model_name() {
-            return model.name;
+            return this.model.name;
         },
         get_cell: function() {
             var cell = jQuery('<div/>', {
