@@ -111,7 +111,7 @@
             return records;
         },
         get listed_records() {
-            this.group.slice();
+            return this.group.slice();
         },
         set_cursor: function(new_, reset_view) {
             if (new_) {
