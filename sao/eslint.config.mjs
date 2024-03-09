@@ -21,7 +21,6 @@ export default [
             },
         },
         rules: {
-            "no-extra-boolean-cast": "off",
             "no-prototype-builtins": "off",
             "no-self-assign": "off",
             "no-unexpected-multiline": "off",

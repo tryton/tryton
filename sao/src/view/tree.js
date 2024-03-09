@@ -112,7 +112,7 @@
                 this.view.optionals.push(column);
             }
 
-            if (Boolean(parseInt(attributes.sum || '0', 10))) {
+            if (parseInt(attributes.sum || '0', 10)) {
                 var sum = jQuery('<label/>', {
                     'text': attributes.string,
                 });
