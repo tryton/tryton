@@ -541,17 +541,6 @@
             } else if (typeof condition != 'boolean') {
                 condition = new Sao.PYSON.Bool(condition);
             }
-            var then_types, else_types;
-            if (then_statement instanceof Sao.PYSON.PYSON) {
-                then_types = then_statement.types();
-            } else {
-                then_types = [typeof then_statement];
-            }
-            if (else_statement instanceof Sao.PYSON.PYSON) {
-                else_types = else_statement.types();
-            } else {
-                else_types = [typeof else_statement];
-            }
             this._condition = condition;
             this._then_statement = then_statement;
             this._else_statement = else_statement;

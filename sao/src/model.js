@@ -173,7 +173,6 @@
         };
         array.remove = function(
             record, remove, force_remove=false, modified=true) {
-            var idx = this.indexOf(record);
             if (record.id >= 0) {
                 if (remove) {
                     if (~this.record_deleted.indexOf(record)) {
@@ -469,7 +468,7 @@
         array.set_sequence = function(field, position) {
             var changed = false;
             var prev = null;
-            var record, index, update, value, cmp;
+            var index, update, value, cmp;
             if (position === 0) {
                 cmp = function(a, b) { return a > b; };
             } else {
@@ -614,7 +613,6 @@
         },
         load: function(name, async=true, process_exception=true) {
             var fname;
-            var prm;
             if (this.destroyed || this.is_loaded(name)) {
                 if (async) {
                     return jQuery.when();
@@ -801,7 +799,6 @@
         },
         set: function(values, modified=true, validate=true) {
             var name, value;
-            var rec_named_fields = ['many2one', 'one2one', 'reference'];
             var later = {};
             var fieldnames = [];
             for (name in values) {
@@ -1703,8 +1700,7 @@
             } else if (Sao.common.compare(domain, [['id', '=', null]])) {
                 invalid = 'domain';
             } else {
-                let [screen_domain, _] = this.get_domains(
-                    record, pre_validate);
+                let [screen_domain] = this.get_domains(record, pre_validate);
                 var uniques = inversion.unique_value(
                     domain, this._single_value);
                 var unique = uniques[0];
@@ -2190,7 +2186,6 @@
         _set_value: function(record, value, default_, modified) {
             this._set_default_value(record);
             var group = record._values[this.name];
-            var prm = jQuery.when();
             if (jQuery.isEmptyObject(value)) {
                 value = [];
             }
@@ -2849,7 +2844,6 @@
             return '%X';
         },
         add_keys: function(keys, record) {
-            var schema_model = this.description.schema_model;
             var context = this.get_context(record);
             var domain = this.get_domain(record);
             var batchlen = Math.min(10, Sao.config.limit);

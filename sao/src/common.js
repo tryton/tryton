@@ -707,7 +707,6 @@
         }
         var key = JSON.stringify(value);
         var selection = this.attributes.selection || [];
-        var help = this.attributes.help_selection || {};
         var prm;
         let prepare_selection = selection => {
             selection = jQuery.extend([], selection);
@@ -1248,7 +1247,6 @@
                         ~['AND', 'OR'].indexOf(clause[0])) {
                     return '(' + this.string(clause) + ')';
                 }
-                var escaped;
                 var name = clause[0];
                 var operator = clause[1];
                 var value = clause[2];
@@ -1391,7 +1389,7 @@
         },
         complete: function(clause) {
             var results = [];
-            var name, operator, value, target;
+            var name, operator, value;
             if (clause.length == 1) {
                 name = clause[0];
             } else if (clause.length == 3) {
@@ -1402,7 +1400,6 @@
                 name = clause[0];
                 operator = clause[1];
                 value = clause[2];
-                target = clause[3];
                 if (name.endsWith('.rec_name')) {
                     name = name.substring(0, name.length - 9);
                 }
@@ -1590,7 +1587,6 @@
         },
         group_operator: function(tokens) {
             var cur = tokens[0];
-            var nex = null;
             var result = [];
             for (const nex of tokens.slice(1)) {
                 if ((nex == '=') && cur &&
@@ -1814,7 +1810,6 @@
                                 this.likify(clause[0])]));
                 } else if ((clause.length == 3) &&
                     (clause[0].toLowerCase() in this.strings)) {
-                    var name = clause[0];
                     var operator = clause[1];
                     var value = clause[2];
                     var field = this.strings[clause[0].toLowerCase()];
@@ -2296,9 +2291,7 @@
             if (boolop === undefined) {
                 boolop = this.and;
             }
-            var field = part[0];
             var operand = part[1];
-            var value = part[2];
             if ((operand === '=') & (boolop === this.and)) {
                 // We should consider that other domain inversion will set a
                 // correct value to this field
@@ -4003,7 +3996,7 @@
                 'target': '_blank'
                 }).appendTo(dialog.body)
                 .click(close);
-        var button = jQuery('<button/>', {
+        jQuery('<button/>', {
             'class': 'btn btn-default',
             'type': 'button',
             'title': Sao.i18n.gettext("Close"),
@@ -4236,7 +4229,7 @@
                 'class': 'btn-group',
                 'role': 'group'
             }).appendTo(toolbar);
-            var button = jQuery('<button/>', {
+            jQuery('<button/>', {
                 'class': 'btn btn-default dropdown-toggle',
                 'type': 'button',
                 'data-toggle': 'dropdown',

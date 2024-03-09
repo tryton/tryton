@@ -324,7 +324,6 @@ function eval_pyson(value){
         display: function() {
             var record = this.record;
             var field;
-            var depends;
             var promesses = [];
             if (this.scan_code_btn) {
                 this.scan_code_btn.el.toggle(Boolean(record));
@@ -1398,7 +1397,6 @@ function eval_pyson(value){
             }
             dialog.content.addClass('form-horizontal');
             this.languages.forEach(lang => {
-                var value;
                 var row = jQuery('<div/>', {
                     'class':'form-group'
                 });
@@ -1465,8 +1463,6 @@ function eval_pyson(value){
             for (const lang of this.languages) {
                 var input = jQuery('[data-lang-id=' + lang.id + ']');
                 if (!input.attr('readonly')) {
-                    var current_language = widget.model.session.context.
-                            language;
                     var context = {};
                     context.language = lang.code;
                     context.fuzzy_translation = false;
@@ -2115,7 +2111,6 @@ function eval_pyson(value){
         },
         display: function() {
             var record = this.record;
-            var field = this.field;
             var step = 'any';
             if (record) {
                 var digits = this.digits;
@@ -2462,7 +2457,7 @@ function eval_pyson(value){
                         'class': 'panel-heading',
                     }).appendTo(widget));
             }
-            var input = jQuery('<div/>', {
+            jQuery('<div/>', {
                 'class': 'richtext mousetrap',
                 'contenteditable': true
             }).appendTo(jQuery('<div/>', {
@@ -2590,7 +2585,7 @@ function eval_pyson(value){
         display: function() {
             var record = this.record;
             var field = this.field;
-            var text_value, value;
+            var value;
             Sao.View.Form.Many2One._super.display.call(this);
 
             this._set_button_sensitive();
@@ -2751,7 +2746,6 @@ function eval_pyson(value){
                 return;
             }
             if (model) {
-                var dom;
                 var domain = this.field.get_domain(record);
                 var context = this.field.get_search_context(record);
                 var order = this.field.get_search_order(record);
@@ -2814,7 +2808,7 @@ function eval_pyson(value){
                 this._popup = false;
             };
             screen.switch_view().done(() => {
-                var win = new Sao.Window.Form(screen, callback, {
+                new Sao.Window.Form(screen, callback, {
                     new_: true,
                     save_current: true,
                     defaults: defaults,
@@ -2865,7 +2859,6 @@ function eval_pyson(value){
             }
             var record = this.record;
             var value = record.field_get(this.field_name);
-            var sao_model = new Sao.Model(model);
 
             if (this._popup) {
                 return;
@@ -2877,7 +2870,6 @@ function eval_pyson(value){
                 if (!this._readonly && (text ||
                             this.field.get_state_attrs(this.record)
                             .required)) {
-                    var dom;
                     var domain = this.field.get_domain(record);
                     var context = this.field.get_search_context(record);
                     var order = this.field.get_search_order(record);
@@ -2894,7 +2886,7 @@ function eval_pyson(value){
                         this._popup = false;
                     };
                     var parser = new Sao.common.DomainParser();
-                    var win = new Sao.Window.Search(
+                    new Sao.Window.Search(
                         model, callback, {
                                 sel_multi: false,
                                 context: context,
@@ -3553,7 +3545,7 @@ function eval_pyson(value){
             };
             var parser = new Sao.common.DomainParser();
             var order = this.field.get_search_order(this.record);
-            var win = new Sao.Window.Search(this.attributes.relation,
+            new Sao.Window.Search(this.attributes.relation,
                     callback, {
                         sel_multi: true,
                         context: context,
@@ -3617,7 +3609,7 @@ function eval_pyson(value){
                 var field_size = record.expr_eval(
                     this.attributes.size) || -1;
                 field_size -= this.field.get_eval(record).length;
-                var win = new Sao.Window.Form(this.screen, update_sequence, {
+                new Sao.Window.Form(this.screen, update_sequence, {
                     new_: true,
                     defaults: defaults,
                     many: field_size,
@@ -3659,7 +3651,7 @@ function eval_pyson(value){
                             }
                             search_set();
                         };
-                        var win_search = new Sao.Window.Search(relation,
+                        new Sao.Window.Search(relation,
                                 callback, {
                                     sel_multi: true,
                                     context: context,
@@ -3737,7 +3729,7 @@ function eval_pyson(value){
                     } else {
                         this._popup = true;
                     }
-                    var win = new Sao.Window.Form(this.screen, () => {
+                    new Sao.Window.Form(this.screen, () => {
                         this._popup = false;
                     });
                 }
@@ -4041,7 +4033,6 @@ function eval_pyson(value){
             this.edit();
         },
         add: function() {
-            var dom;
             var domain = this.field.get_domain(this.record);
             var add_remove = this.record.expr_eval(
                 this.attributes.add_remove);
@@ -4072,7 +4063,7 @@ function eval_pyson(value){
                 this._popup = false;
             };
             var parser = new Sao.common.DomainParser();
-            var win = new Sao.Window.Search(this.attributes.relation,
+            new Sao.Window.Search(this.attributes.relation,
                     callback, {
                         sel_multi: true,
                         context: context,
@@ -4497,7 +4488,6 @@ function eval_pyson(value){
             return false;
         },
         display_update_selection: function() {
-            var i, len, element;
             var record = this.record;
             var field = this.field;
             this.update_selection(record, field, () => {
@@ -4697,7 +4687,6 @@ function eval_pyson(value){
             Sao.View.Form.URL._super.display.call(this);
             var url = '';
             var record = this.record;
-            var field = this.field;
             if (record) {
                 url = record.field_get_client(this.field_name);
             }
@@ -4956,7 +4945,7 @@ function eval_pyson(value){
             };
 
             var parser = new Sao.common.DomainParser();
-            var win = new Sao.Window.Search(this.schema_model,
+            new Sao.Window.Search(this.schema_model,
                     callback, {
                         sel_multi: true,
                         context: context,

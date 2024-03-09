@@ -187,7 +187,7 @@
                     'class': 'nav nav-tabs',
                     role: 'tablist'
                 }).appendTo(this.tab);
-                var content = jQuery('<div/>', {
+                jQuery('<div/>', {
                     'class': 'tab-content'
                 }).appendTo(this.tab);
                 this.tab_domain.forEach((tab_domain, i) => {
@@ -196,7 +196,7 @@
                         'class': 'badge badge-empty'
                     }).html('&nbsp;');
                     counter.css('visibility', 'hidden');
-                    var page = jQuery('<li/>', {
+                    jQuery('<li/>', {
                         role: 'presentation',
                         id: 'nav-' + i
                     }).append(jQuery('<a/>', {
@@ -303,11 +303,9 @@
             if (current_text) {
                 var current_domain = this.screen.domain_parser.parse(
                         current_text);
-                var star = this.get_star();
                 var bookmarks = this.bookmarks();
                 for (const bookmark of bookmarks) {
                     const id = bookmark[0];
-                    const name = bookmark[1];
                     const domain = bookmark[2];
                     const access = bookmark[3];
                     const text = this.screen.domain_parser.string(domain);
