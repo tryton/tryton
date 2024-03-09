@@ -404,8 +404,8 @@
             }
             jQuery.extend(context, this._context);
             if (this.parent_datetime_field) {
-                context._datetime = this.parent.get_eval()
-                [this.parent_datetime_field];
+                context._datetime = this.parent.get_eval()[
+                    this.parent_datetime_field];
             }
             return context;
         };

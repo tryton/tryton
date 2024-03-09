@@ -21,7 +21,6 @@ export default [
             },
         },
         rules: {
-            "no-unexpected-multiline": "off",
             "no-unused-vars": "off",
             "no-useless-escape": "off",
             "no-with": "off",
