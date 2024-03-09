@@ -3780,7 +3780,7 @@
             }
             var prm;
             if (this.source instanceof Array) {
-                prm = jQuery.when(source.filter(function(value) {
+                prm = jQuery.when(this.source.filter(function(value) {
                     return value.toLowerCase().startsWith(text.toLowerCase());
                 }));
             } else {
