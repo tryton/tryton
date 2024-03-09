@@ -21,7 +21,6 @@ export default [
             },
         },
         rules: {
-            "no-prototype-builtins": "off",
             "no-self-assign": "off",
             "no-unexpected-multiline": "off",
             "no-unused-vars": "off",

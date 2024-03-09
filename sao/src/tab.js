@@ -508,7 +508,8 @@
                 name = Sao.common.MODELNAME.get(model_name);
             }
             if (attributes.res_id) {
-                if (attributes.hasOwnProperty('tab_domain')) {
+                if (Object.prototype.hasOwnProperty.call(
+                    attributes, 'tab_domain')) {
                     delete attributes.tab_domain;
                 }
             }

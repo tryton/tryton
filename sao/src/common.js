@@ -678,7 +678,7 @@
                 }
             });
         environment.get = function(item, default_) {
-            if (this.hasOwnProperty(item))
+            if (Object.prototype.hasOwnProperty.call(this, item))
                 return this[item];
             return default_;
         };
@@ -3105,9 +3105,6 @@
             refresh = refresh || false;
             if (!refresh) {
                 for (var icon_name in this.load_icons) {
-                    if (!this.load_icons.hasOwnProperty(icon_name)) {
-                        continue;
-                    }
                     window.URL.revokeObjectURL(this.load_icons[icon_name]);
                 }
             }

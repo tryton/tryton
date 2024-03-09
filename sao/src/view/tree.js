@@ -864,7 +864,8 @@
                     return;
                 }
                 var optional;
-                if (tree_column_optional.hasOwnProperty(name)) {
+                if (Object.prototype.hasOwnProperty.call(
+                    tree_column_optional, name)) {
                     optional = tree_column_optional[name];
                 } else {
                     optional = Boolean(parseInt(

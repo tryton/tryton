@@ -742,9 +742,6 @@
             }
 
             for (fname in this.model.fields) {
-                if (!this.model.fields.hasOwnProperty(fname)) {
-                    continue;
-                }
                 if ((this.model.fields[fname].description.type == 'binary') &&
                         ~fnames_to_fetch.indexOf(fname, fnames_to_fetch)) {
                     context[this.model.name + '.' + fname] = 'size';
@@ -759,9 +756,6 @@
                     id2value[e.id] = e;
                 }
                 for (var id in id2record) {
-                    if (!id2record.hasOwnProperty(id)) {
-                        continue;
-                    }
                     var record = id2record[id];
                     if (!record.exception) {
                         record.exception = exception;
@@ -769,9 +763,6 @@
                     var value = id2value[id];
                     if (record && value) {
                         for (var key in this.modified_fields) {
-                            if (!this.modified_fields.hasOwnProperty(key)) {
-                                continue;
-                            }
                             delete value[key];
                         }
                         record.set(value, false);
@@ -814,9 +805,6 @@
             var later = {};
             var fieldnames = [];
             for (name in values) {
-                if (!values.hasOwnProperty(name)) {
-                    continue;
-                }
                 value = values[name];
                 if (name == '_timestamp') {
                     // Always keep the older timestamp
@@ -874,9 +862,6 @@
         get: function() {
             var value = {};
             for (var name in this.model.fields) {
-                if (!this.model.fields.hasOwnProperty(name)) {
-                    continue;
-                }
                 var field = this.model.fields[name];
                 if (field.description.readonly &&
                         !((field instanceof Sao.field.One2Many) &&
@@ -965,9 +950,6 @@
                     this[fname] = values[fname];
                     continue;
                 }
-                if (!values.hasOwnProperty(fname)) {
-                    continue;
-                }
                 var value = values[fname];
                 if (!(fname in this.model.fields)) {
                     continue;
@@ -1007,9 +989,6 @@
             var timestamps = {};
             timestamps[this.model.name + ',' + this.id] = this._timestamp;
             for (var fname in this.model.fields) {
-                if (!this.model.fields.hasOwnProperty(fname)) {
-                    continue;
-                }
                 if (!(fname in this._loaded)) {
                     continue;
                 }
@@ -1021,7 +1000,7 @@
         get_eval: function() {
             var value = {};
             for (var key in this.model.fields) {
-                if (!this._loaded.hasOwnProperty(key) && this.id >= 0)
+                if (!(key in this._loaded) && this.id >= 0)
                     continue;
                 value[key] = this.model.fields[key].get_eval(this);
             }
@@ -1105,9 +1084,6 @@
             var later = {};
             var fieldname, on_change_with;
             for (fieldname in this.model.fields) {
-                if (!this.model.fields.hasOwnProperty(fieldname)) {
-                    continue;
-                }
                 on_change_with = this.model.fields[fieldname]
                     .description.on_change_with;
                 if (jQuery.isEmptyObject(on_change_with)) {
@@ -1290,9 +1266,6 @@
                     if (sync && this.id >= 0 && !(fname in this._loaded)) {
                         continue;
                     }
-                    if (!this.model.fields.hasOwnProperty(fname)) {
-                        continue;
-                    }
                     var field = this.model.fields[fname];
                     if (fields && !~fields.indexOf(fname)) {
                         continue;
@@ -1446,9 +1419,6 @@
         },
         set_field_context: function() {
             for (var name in this.model.fields) {
-                if (!this.model.fields.hasOwnProperty(name)) {
-                    continue;
-                }
                 var field = this.model.fields[name];
                 var value = this._values[name];
                 if (!(value instanceof Array)) {
@@ -1504,7 +1474,8 @@
         destroy: function() {
             var vals = Object.values(this._values);
             for (const val of vals) {
-                if (val && val.hasOwnProperty('destroy')) {
+                if (val &&
+                    Object.prototype.hasOwnProperty.call(val, 'destroy')) {
                     val.destroy();
                 }
             }

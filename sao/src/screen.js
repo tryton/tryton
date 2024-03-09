@@ -2123,9 +2123,6 @@
                 view = this.views[i];
                 if (view.view_type == 'form') {
                     for (var wid_key in view.widgets) {
-                        if (!view.widgets.hasOwnProperty(wid_key)) {
-                            continue;
-                        }
                         widgets = view.widgets[wid_key];
                         for (wi = 0, wlen = widgets.length; wi < wlen; wi++) {
                             if (widgets[wi].screen) {

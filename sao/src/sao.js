@@ -108,7 +108,7 @@ var Sao = {
     }
 
     Sao.setdefault = function(object, key, value) {
-        if (!object.hasOwnProperty(key)) {
+        if (!Object.prototype.hasOwnProperty.call(object, key)) {
             object[key] = value;
         }
         return object[key];
