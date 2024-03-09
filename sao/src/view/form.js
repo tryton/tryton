@@ -1145,7 +1145,7 @@ function eval_pyson(value){
                         var url = new URL(name, window.location);
                         url.searchParams.set(
                             this.attributes.url_size,
-                            attributes.size || 48);
+                            this.attributes.size || 48);
                         name = url.href;
                     }
                     this.img.attr('src', name);
