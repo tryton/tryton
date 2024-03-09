@@ -4334,6 +4334,7 @@
                 type = 'image/svg+xml';
             }
         } catch (e) {
+            // continue
         }
         var blob = new Blob([data], {type: type});
         return window.URL.createObjectURL(blob);

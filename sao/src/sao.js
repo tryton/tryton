@@ -118,10 +118,12 @@ var Sao = {
     try {
         document.execCommand('styleWithCSS', false, false);
     } catch (e) {
+        // continue
     }
     try {
         document.execCommand('useCSS', false, true);
     } catch (e) {
+        // continue
     }
 
     // Add .uniqueId to jQuery

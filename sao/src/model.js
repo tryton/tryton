@@ -417,6 +417,7 @@
             var head = domain[0];
             var tail = domain.slice(1);
             if (~['AND', 'OR'].indexOf(head)) {
+                // pass
             } else if (inversion.is_leaf(head)) {
                 var field = head[0];
                 if ((field in this.model.fields) &&
