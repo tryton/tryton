@@ -1443,6 +1443,8 @@
         get selected_paths() {
             if (this.current_view && this.current_view.view_type == 'tree') {
                 return this.current_view.get_selected_paths();
+            } else {
+                return [];
             }
         },
         get listed_records() {
@@ -1459,6 +1461,8 @@
         get listed_paths() {
             if (this.current_view && this.current_view.view_type == 'tree') {
                 return this.current_view.get_listed_paths();
+            } else {
+                return [];
             }
         },
         clear: function() {

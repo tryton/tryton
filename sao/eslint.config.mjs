@@ -21,7 +21,6 @@ export default [
             },
         },
         rules: {
-            "getter-return": "off",
             "no-constant-condition": "off",
             "no-empty": "off",
             "no-extra-boolean-cast": "off",

@@ -1305,6 +1305,8 @@ function eval_pyson(value){
             var record = this.record;
             if (record) {
                 return record.model.fields[this.field_name];
+            } else {
+                return null;
             }
         },
         focus_out: function() {
@@ -2097,6 +2099,8 @@ function eval_pyson(value){
                 field = this.field;
             if (record && field) {
                 return field.digits(record, this.factor);
+            } else {
+                return null;
             }
         },
         get width() {
@@ -4273,6 +4277,7 @@ function eval_pyson(value){
                     return record.model.fields[this.filename];
                 }
             }
+            return null;
         },
         update_buttons: function(value) {
             if (value) {
@@ -5395,9 +5400,11 @@ function eval_pyson(value){
                 if (!digits || !digits.every(function(e) {
                     return e !== null;
                 })) {
-                    return;
+                    return null;
                 }
                 return digits;
+            } else {
+                return null;
             }
         },
         get_value: function() {

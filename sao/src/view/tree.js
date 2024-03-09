@@ -3166,7 +3166,7 @@
             Sao.View.EditableTree.editable_mixin(this);
         },
         get width() {
-            return;
+            return null;
         },
     });
 
@@ -3180,7 +3180,7 @@
             Sao.View.EditableTree.editable_mixin(this);
         },
         get width() {
-            return;
+            return null;
         },
     });
 

@@ -1144,6 +1144,8 @@ class Screen:
     def selected_paths(self):
         if self.current_view and self.current_view.view_type == 'tree':
             return self.current_view.get_selected_paths()
+        else:
+            return []
 
     @property
     def listed_records(self):
