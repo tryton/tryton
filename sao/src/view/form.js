@@ -4160,7 +4160,7 @@ function eval_pyson(value){
                 new Sao.Window.Form(screen, callback);
             });
         },
-        new_: function(defauts=null) {
+        new_: function(defaults=null) {
             if (this._popup) {
                 return;
             } else {
