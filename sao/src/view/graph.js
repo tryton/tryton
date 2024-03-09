@@ -226,7 +226,7 @@
             for (i = 0; i < this.yfields.length; i++) {
                 yfield = this.yfields[i];
                 if (yfield.color) {
-                    colors[yfield.key || yfield.name] = field.color;
+                    colors[yfield.key || yfield.name] = yfield.color;
                 }
             }
             c3_config.data.color = function(color, column) {
