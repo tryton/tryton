@@ -4087,7 +4087,7 @@ function eval_pyson(value){
                 new Sao.Window.Form(screen, callback);
             });
         },
-        new_: function(defauts=null) {
+        new_: function(defaults=null) {
             var screen = this._get_screen_form();
             if (defaults) {
                 defaults = jQuery.extend({}, defaults);
