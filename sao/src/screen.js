@@ -1350,7 +1350,8 @@
             }
             return jQuery.when.apply(jQuery, deferreds).then(
                 () => this.set_tree_state().then(() => {
-                    this.current_record = this.current_record;
+                    var record = this.current_record
+                    this.current_record = record;
                     // set_cursor must be called after set_tree_state because
                     // set_tree_state redraws the tree
                     if (set_cursor) {

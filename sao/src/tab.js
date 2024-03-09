@@ -1660,12 +1660,7 @@
             this.board.reload();
         },
         record_message: function() {
-            var i, len;
-            var action;
-
-            len = this.board.actions.length;
-            for (i = 0, len=len; i < len; i++) {
-                action = this.board.actions[i];
+            for (const action of this.board.actions) {
                 action.update_domain(this.board.actions);
             }
         },
