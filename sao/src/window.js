@@ -1324,7 +1324,7 @@
                 'id': 'input-quotechar',
                 'size': '1',
                 'maxlength': '1',
-                'value': '\"',
+                'value': '"',
             });
 
             jQuery('<div/>', {

@@ -22,7 +22,6 @@ export default [
         },
         rules: {
             "no-unused-vars": ["error", { "args": "none" }],
-            "no-useless-escape": "off",
             "no-with": "off",
         },
     }, {

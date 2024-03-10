@@ -3023,7 +3023,7 @@
 
     Sao.common.guess_mimetype = function(filename) {
         for (var ext in Sao.common.mimetypes) {
-            var re = new RegExp('.*\.' + ext + '$', 'i');
+            var re = new RegExp('.*.' + ext + '$', 'i');
             if (re.test(filename)) {
                 return Sao.common.mimetypes[ext];
             }
