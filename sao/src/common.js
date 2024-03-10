@@ -3095,11 +3095,8 @@
         load_icons: function(refresh) {
             refresh = refresh || false;
             if (!refresh) {
-                for (var icon_name in this.load_icons) {
-                    if (!this.load_icons.hasOwnProperty(icon_name)) {
-                        continue;
-                    }
-                    window.URL.revokeObjectURL(this.load_icons[icon_name]);
+                for (var icon_name in this.loaded_icons) {
+                    window.URL.revokeObjectURL(this.loaded_icons[icon_name]);
                 }
             }
 
