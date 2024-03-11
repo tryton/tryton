@@ -206,7 +206,7 @@
                     value = new Sao.PYSON.Bool(value);
                     }
             } else if (typeof value != 'boolean') {
-                value = Sao.PYSON.Bool(value);
+                value = new Sao.PYSON.Bool(value);
             }
             this._value = value;
         },
