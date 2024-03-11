@@ -63,6 +63,13 @@ class PYSONTestCase(unittest.TestCase):
 
         self.assertEqual(repr(pyson.Not(True)), 'Not(True)')
 
+        self.assertEqual(
+            repr(~pyson.Eval('foo', False)), "~Eval('foo', False)")
+
+        self.assertEqual(
+            repr(pyson.Eval('foo') != 'bar'),
+            "(Eval('foo') != 'bar')")
+
     def test_Bool(self):
         'Test pyson.Bool'
         self.assertEqual(pyson.Bool('test').pyson(), {
@@ -147,6 +154,10 @@ class PYSONTestCase(unittest.TestCase):
         self.assertEqual(repr(pyson.And(False, True, True)),
             'And(False, True, True)')
 
+        self.assertEqual(
+            repr(pyson.Eval('foo', True) & pyson.Eval('bar', False)),
+            "(Eval('foo', True) & Eval('bar', False))")
+
     def test_Or(self):
         'Test pyson.Or'
         self.assertEqual(pyson.Or(True, False).pyson(), {
@@ -190,6 +201,10 @@ class PYSONTestCase(unittest.TestCase):
         self.assertEqual(repr(pyson.Or(False, True, True)),
             'Or(False, True, True)')
 
+        self.assertEqual(
+            repr(pyson.Eval('foo', True) | pyson.Eval('bar', False)),
+            "(Eval('foo', True) | Eval('bar', False))")
+
     def test_Equal(self):
         'Test pyson.Equal'
         self.assertEqual(pyson.Equal('test', 'test').pyson(), {
@@ -211,6 +226,10 @@ class PYSONTestCase(unittest.TestCase):
 
         self.assertEqual(repr(pyson.Equal('foo', 'bar')),
             "Equal('foo', 'bar')")
+
+        self.assertEqual(
+            repr(pyson.Eval('foo') == 'bar'),
+            "(Eval('foo') == 'bar')")
 
     def test_Greater(self):
         'Test pyson.Greater'
@@ -322,6 +341,14 @@ class PYSONTestCase(unittest.TestCase):
             pyson.Greater(pyson.Eval('i', 0), 0))
         self.assertTrue(pyson.PYSONDecoder({'i': 1}).decode(eval))
 
+        self.assertEqual(
+            repr(pyson.Eval('i', 0) > 0),
+            "(Eval('i', 0) > 0)")
+
+        self.assertEqual(
+            repr(pyson.Eval('i', 0) >= 0),
+            "(Eval('i', 0) >= 0)")
+
     def test_Less(self):
         'Test pyson.Less'
         self.assertEqual(pyson.Less(0, 1).pyson(), {
@@ -401,6 +428,14 @@ class PYSONTestCase(unittest.TestCase):
                 pyson.DateTime(2020, 1, 1, 0, 0, 0, 0), 90000))
         self.assertFalse(pyson.PYSONDecoder().decode(eval))
 
+        self.assertEqual(
+            repr(pyson.Eval('i', 0) > 0),
+            "(Eval('i', 0) > 0)")
+
+        self.assertEqual(
+            repr(pyson.Eval('i', 0) >= 0),
+            "(Eval('i', 0) >= 0)")
+
     def test_If(self):
         'Test pyson.If'
         self.assertEqual(pyson.If(True, 'foo', 'bar').pyson(), {
@@ -457,6 +492,10 @@ class PYSONTestCase(unittest.TestCase):
 
         self.assertEqual(repr(pyson.Get({'foo': 'bar'}, 'foo', 'default')),
             "Get({'foo': 'bar'}, 'foo', 'default')")
+
+        self.assertEqual(
+            repr(pyson.Eval('foo', {}).get('bar')),
+            "Eval('foo', {}).get('bar')")
 
     def test_In(self):
         'Test pyson.In'
@@ -516,6 +555,10 @@ class PYSONTestCase(unittest.TestCase):
 
         self.assertEqual(repr(pyson.In('foo', ['foo', 'bar'])),
             "In('foo', ['foo', 'bar'])")
+
+        self.assertEqual(
+            repr(pyson.Eval('foo').in_(['foo', 'bar'])),
+            "Eval('foo').in_(['foo', 'bar'])")
 
     def test_Date(self):
         'Test pyson.Date'
@@ -825,7 +868,7 @@ class PYSONTestCase(unittest.TestCase):
             ).decode(eval), ['id', '=', -1])
 
         self.assertEqual(repr(expr),
-            "If(Not(In('company', Eval('context', {}))), '=', '!=')")
+            "If(~Eval('context', {}).contains('company'), '=', '!=')")
 
     def test_noeval(self):
         decoder = pyson.PYSONDecoder(noeval=True)

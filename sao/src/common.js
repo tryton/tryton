@@ -3232,11 +3232,12 @@
     Sao.common.ICONFACTORY = new Sao.common.IconFactory();
 
     Sao.common.UniqueDialog = Sao.class_(Object, {
+        size: undefined,
         init: function() {
             this.running = false;
         },
         build_dialog: function() {
-            var dialog = new Sao.Dialog('', this.class_, undefined, false);
+            var dialog = new Sao.Dialog('', this.class_, this.size, false);
             return dialog;
         },
         run: function() {
@@ -3283,12 +3284,7 @@
             dialog.body.append(jQuery('<div/>', {
                 'class': 'alert alert-info',
                 role: 'alert'
-            }).append(Sao.common.ICONFACTORY.get_icon_img(icon, {
-                'aria-hidden': true,
-            })).append(jQuery('<span/>', {
-                'class': 'sr-only'
-            }).text(Sao.i18n.gettext('Message: '))
-            ).append(jQuery('<span/>')
+            }).append(jQuery('<span/>')
                 .text(message)
                 .css('white-space', 'pre-wrap')));
             jQuery('<button/>', {
@@ -3310,18 +3306,14 @@
 
     Sao.common.WarningDialog = Sao.class_(Sao.common.UniqueDialog, {
         class_: 'warning-dialog',
+        size: 'md',
         build_dialog: function(message, title, prm) {
             var dialog = Sao.common.WarningDialog._super.build_dialog.call(
                 this);
             var content = jQuery('<div/>', {
                 'class': 'alert alert-warning',
                 role: 'alert'
-            }).append(Sao.common.ICONFACTORY.get_icon_img('tryton-warning', {
-                'aria-hidden': true,
-            })).append(jQuery('<span/>', {
-                'class': 'sr-only'
-            }).text(Sao.i18n.gettext('Warning: '))
-            ).append(jQuery('<h4/>')
+            }).append(jQuery('<h4/>')
                 .text(title)
                 .css('white-space', 'pre-wrap'));
             if (message) {
@@ -3345,6 +3337,7 @@
 
     Sao.common.UserWarningDialog = Sao.class_(Sao.common.WarningDialog, {
         class_: 'user-warning-dialog',
+        size: 'md',
         build_dialog: function(message, title, prm) {
             var dialog = Sao.common.UserWarningDialog._super.build_dialog.call(
                 this, message, title, prm);
@@ -3393,12 +3386,7 @@
             dialog.body.append(jQuery('<div/>', {
                 'class': 'alert alert-info',
                 role: 'alert'
-            }).append(Sao.common.ICONFACTORY.get_icon_img('tryton-info', {
-                'aria-hidden': true,
-            })).append(jQuery('<span/>', {
-                'class': 'sr-only'
-            }).text(Sao.i18n.gettext('Confirmation: '))
-            ).append(jQuery('<span/>')
+            }).append(jQuery('<span/>')
                 .text(message)
                 .css('white-space', 'pre-wrap')));
             return dialog;
@@ -3509,22 +3497,16 @@
 
     Sao.common.ConcurrencyDialog = Sao.class_(Sao.common.UniqueDialog, {
         class_: 'ask-dialog',
+        size: 'md',
         build_dialog: function(model, record_id, context, prm) {
             var dialog = Sao.common.ConcurrencyDialog._super.build_dialog.call(
                 this);
-            dialog.modal.find('.modal-dialog'
-                ).removeClass('modal-sm').addClass('modal-lg');
-            dialog.add_title(Sao.i18n.gettext('Concurrency Exception'));
+            dialog.add_title(Sao.i18n.gettext("Concurrency Warning"));
             dialog.body.append(jQuery('<div/>', {
                 'class': 'alert alert-info',
                 role: 'alert'
             }).append(jQuery('<p/>')
-                .append(Sao.common.ICONFACTORY.get_icon_img('tryton-info', {
-                    'aria-hidden': true,
-                })).append(jQuery('<span/>', {
-                    'class': 'sr-only'
-                }).text(Sao.i18n.gettext('Write Concurrency Warning: '))
-                ).text(Sao.i18n.gettext('This record has been modified ' +
+                .text(Sao.i18n.gettext('This record has been modified ' +
                 'while you were editing it.')))
                 .append(jQuery('<p/>').text(Sao.i18n.gettext('Choose:')))
                 .append(jQuery('<ul/>')
@@ -3582,21 +3564,15 @@
 
     Sao.common.ErrorDialog = Sao.class_(Sao.common.UniqueDialog, {
         class_: 'error-dialog',
+        size: 'lg',
         build_dialog: function(title, details, prm) {
             var dialog = Sao.common.ConcurrencyDialog._super.build_dialog.call(
                 this);
-            dialog.modal.find('.modal-dialog'
-                ).removeClass('modal-sm').addClass('modal-lg');
             dialog.add_title(Sao.i18n.gettext('Application Error'));
             dialog.body.append(jQuery('<div/>', {
                 'class': 'alert alert-danger',
                 role: 'alert'
-            }).append(Sao.common.ICONFACTORY.get_icon_img('tryton-error', {
-                'aria-hidden': true,
-            })).append(jQuery('<span/>', {
-                'class': 'sr-only'
-            }).text(Sao.i18n.gettext('Warning: '))
-            ).append(jQuery('<p/>')
+            }).append(jQuery('<p/>')
                 .append(jQuery('<pre/>')
                     .text(details)))
                 .append(jQuery('<p/>')

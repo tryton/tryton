@@ -24,6 +24,7 @@
     };
 
     Sao.PYSON.PYSON = Sao.class_(Object, {
+        _operator: null,
         init: function() {
         },
         pyson: function() {
@@ -42,9 +43,15 @@
             return new Sao.PYSON.In(k, this);
         },
         toString: function() {
-            var klass = this.pyson().__class__;
-            var args = this.__string_params__().map(Sao.PYSON.toString);
-            return klass + '(' + args.join(', ') + ')';
+            const params = this.__string_params__();
+            if (this._operator && (params[0] instanceof Sao.PYSON.PYSON)) {
+                const args = params.slice(1).map(Sao.PYSON.toString);
+                return `${params[0]}.${this._operator}(` + args.join(', ') + ')';
+            } else {
+                var klass = this.pyson().__class__;
+                var args = params.map(Sao.PYSON.toString);
+                return klass + '(' + args.join(', ') + ')';
+            }
         },
         __string_params__: function() {
             throw 'NotImplementedError';
@@ -166,7 +173,11 @@
             }
         },
         __string_params__: function() {
-            return [this._value, this._default];
+            const params = [this._value];
+            if (this._default !== '') {
+                params.push(this._default);
+            }
+            return params;
         },
         get basename() {
             var name = this._value;
@@ -595,6 +606,7 @@
         return new Sao.PYSON.Get(obj, key, default_);
     };
     Sao.PYSON.Get = Sao.class_(Sao.PYSON.PYSON, {
+        _operator: 'get',
         init: function(obj, key, default_=null) {
             Sao.PYSON.Get._super.init.call(this);
             if (obj instanceof Sao.PYSON.PYSON) {
@@ -637,7 +649,11 @@
             }
         },
         __string_params__: function() {
-            return [this._obj, this._key, this._default];
+            const params = [this._obj, this._key];
+            if (this._default !== '') {
+                params.push(this._default);
+            }
+            return params;
         }
     });
 
@@ -656,6 +672,7 @@
         return new Sao.PYSON.In(key, obj);
     };
     Sao.PYSON.In = Sao.class_(Sao.PYSON.PYSON, {
+        _operator: 'in_',
         init: function(key, obj) {
             Sao.PYSON.In._super.init.call(this);
             if (key instanceof Sao.PYSON.PYSON) {
@@ -688,6 +705,16 @@
         },
         types: function() {
             return ['boolean'];
+        },
+        toString: function() {
+            const params = this.__string_params__();
+            if (params[1] instanceof Sao.PYSON.PYSON) {
+                const args = params.slice().map(Sao.PYSON.toString);
+                args.splice(1, 1);
+                return `${params[1]}.contains(` + args.join(', ') + ')';
+            } else {
+                return Sao.PYSON.In._super.toString.call(this);
+            }
         },
         __string_params__: function() {
             return [this._key, this._obj];

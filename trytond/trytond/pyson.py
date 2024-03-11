@@ -9,6 +9,8 @@ from dateutil.relativedelta import relativedelta
 
 
 class PYSON(object):
+    _operator = None
+    _binary_operator = None
 
     def pyson(self):
         raise NotImplementedError
@@ -81,8 +83,17 @@ class PYSON(object):
         return In(k, self)
 
     def __repr__(self):
-        klass = self.__class__.__name__
-        return '%s(%s)' % (klass, ', '.join(map(repr, self.__repr_params__)))
+        params = self.__repr_params__
+        if self._operator and isinstance(params[0], PYSON):
+            return '%s.%s(%s)' % (
+                repr(params[0]), self._operator,
+                ', '.join(map(repr, params[1:])))
+        elif self._binary_operator and isinstance(params[0], PYSON):
+            return '(%s %s %s)' % (
+                repr(params[0]), self._binary_operator, repr(params[1]))
+        else:
+            klass = self.__class__.__name__
+            return '%s(%s)' % (klass, ', '.join(map(repr, params)))
 
     @property
     def __repr_params__(self):
@@ -137,7 +148,10 @@ class Eval(PYSON):
 
     @property
     def __repr_params__(self):
-        return self._value, self._default
+        params = (self._value,)
+        if self._default != '':
+            params += (self._default,)
+        return params
 
     def pyson(self):
         return {
@@ -183,6 +197,17 @@ class Not(PYSON):
             v = bool(v)
         self._value = v
 
+    def __repr__(self):
+        if (isinstance(self._value, Equal)
+                and isinstance(self._value._statement1, PYSON)):
+            return '(%s != %s)' % (
+                repr(self._value._statement1),
+                repr(self._value._statement2))
+        elif isinstance(self._value, PYSON):
+            return '~%s' % repr(self._value)
+        else:
+            return super().__repr__()
+
     @property
     def __repr_params__(self):
         return (self._value,)
@@ -226,6 +251,8 @@ class Bool(PYSON):
 
 
 class And(PYSON):
+    _pyson_class = 'And'
+    _binary_operator = '&'
 
     def __init__(self, *statements, **kwargs):
         super(And, self).__init__()
@@ -258,6 +285,7 @@ class And(PYSON):
 
 
 class Or(And):
+    _binary_operator = '|'
 
     def pyson(self):
         res = super(Or, self).pyson()
@@ -270,6 +298,7 @@ class Or(And):
 
 
 class Equal(PYSON):
+    _binary_operator = '=='
 
     def __init__(self, s1, s2):
         statement1, statement2 = s1, s2
@@ -333,6 +362,10 @@ class Greater(PYSON):
         self._equal = equal
 
     @property
+    def _binary_operator(self):
+        return '>=' if self._equal else '>'
+
+    @property
     def __repr_params__(self):
         return (self._statement1, self._statement2, self._equal)
 
@@ -377,6 +410,10 @@ class Greater(PYSON):
 
 
 class Less(Greater):
+
+    @property
+    def _binary_operator(self):
+        return '<=' if self._equal else '<'
 
     def pyson(self):
         res = super(Less, self).pyson()
@@ -440,6 +477,7 @@ class If(PYSON):
 
 
 class Get(PYSON):
+    _operator = 'get'
 
     def __init__(self, v, k, d=''):
         obj, key, default = v, k, d
@@ -458,7 +496,10 @@ class Get(PYSON):
 
     @property
     def __repr_params__(self):
-        return (self._obj, self._key, self._default)
+        params = (self._obj, self._key)
+        if self._default != '':
+            params += (self._default,)
+        return params
 
     def pyson(self):
         return {
@@ -480,6 +521,7 @@ class Get(PYSON):
 
 
 class In(PYSON):
+    _operator = 'in_'
 
     def __init__(self, k, v):
         key, obj = k, v
@@ -507,6 +549,14 @@ class In(PYSON):
                     assert isinstance(key, str), 'key must be a string'
         self._key = key
         self._obj = obj
+
+    def __repr__(self):
+        params = self.__repr_params__
+        if isinstance(params[1], PYSON):
+            return '%s.contains(%s)' % (
+                repr(params[1]), ', '.join(map(repr, params[:1] + params[2:])))
+        else:
+            return super().__repr__()
 
     @property
     def __repr_params__(self):

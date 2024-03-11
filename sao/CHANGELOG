@@ -1,3 +1,4 @@
+* Use operators when converting PYSON to string
 * Add DnD on binary and image widgets
 * Allow resetting forgotten password
 
