@@ -128,6 +128,24 @@
             'decode(Not(false))');
         QUnit.strictEqual(new Sao.PYSON.Not(true).toString(),
                 "Not(true)");
+
+        eval_ = new Sao.PYSON.Encoder().encode(new Sao.PYSON.Not({}));
+        QUnit.strictEqual(new Sao.PYSON.Decoder().decode(eval_), true,
+            "decode(Not({}))");
+
+        eval_ = new Sao.PYSON.Encoder().encode(new Sao.PYSON.Not({
+            'a': 1,
+        }));
+        QUnit.strictEqual(new Sao.PYSON.Decoder().decode(eval_), false,
+            "decode(Not({'a': 1}))");
+
+        eval_ = new Sao.PYSON.Encoder().encode(new Sao.PYSON.Not([]));
+        QUnit.strictEqual(new Sao.PYSON.Decoder().decode(eval_), true,
+            "decode(Not([]))");
+
+        eval_ = new Sao.PYSON.Encoder().encode(new Sao.PYSON.Not(['a']));
+        QUnit.strictEqual(new Sao.PYSON.Decoder().decode(eval_), false,
+            "decode(Not(['a']))");
     });
 
     QUnit.test('PYSON Bool', function() {
