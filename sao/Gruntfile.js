@@ -75,23 +75,6 @@ module.exports = function(grunt) {
             dest: 'dist/<%= pkg.name %>.js'
         }
     },
-    jshint: {
-        dist: {
-            options: {
-                jshintrc: 'src/.jshintrc'
-            },
-            src: ['dist/<%= pkg.name %>.js']
-        },
-        grunt: {
-            src: ['Gruntfile.js']
-        },
-        tests: {
-            options: {
-                jshintrc: 'tests/.jshintrc'
-            },
-            src: ['tests/*.js']
-        }
-    },
     uglify: {
       options: {
         banner: '/*! <%= pkg.name %>-<%= pkg.version %> | GPL-3\n' +
@@ -127,7 +110,7 @@ module.exports = function(grunt) {
     watch: {
         scripts: {
             files: ['src/**/*.js'],
-            tasks: ['concat', 'jshint']
+            tasks: ['concat']
         },
         styles: {
             files: ['src/*.less'],
@@ -152,17 +135,16 @@ module.exports = function(grunt) {
   });
 
   grunt.loadNpmTasks('grunt-contrib-concat');
-  grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-less');
   grunt.loadNpmTasks('grunt-po2json');
   grunt.loadNpmTasks('grunt-qunit-junit');
 
   grunt.registerTask('default', 'Build for production.', function() {
-    grunt.task.run(['concat', 'jshint', 'uglify', 'less', 'po2json']);
+    grunt.task.run(['concat', 'uglify', 'less', 'po2json']);
     });
   grunt.registerTask('dev', 'Build for development.', function() {
-    grunt.task.run(['concat', 'jshint', 'less:dev']);
+    grunt.task.run(['concat', 'less:dev']);
     });
   grunt.registerTask('devwatch', 'Watch development', function() {
     grunt.loadNpmTasks('grunt-contrib-watch');
@@ -178,7 +160,7 @@ module.exports = function(grunt) {
   });
   grunt.registerTask('test', 'Run tests', function() {
     grunt.loadNpmTasks('grunt-contrib-qunit');
-    grunt.task.run(['concat', 'jshint', 'less:dev', 'qunit_junit', 'qunit']);
+    grunt.task.run(['concat', 'less:dev', 'qunit_junit', 'qunit']);
     });
 
 };
