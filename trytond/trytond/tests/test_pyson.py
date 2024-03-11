@@ -63,6 +63,20 @@ class PYSONTestCase(unittest.TestCase):
 
         self.assertEqual(repr(pyson.Not(True)), 'Not(True)')
 
+        eval_ = pyson.PYSONEncoder().encode(pyson.Not({}))
+        self.assertTrue(pyson.PYSONDecoder().decode(eval_))
+
+        eval_ = pyson.PYSONEncoder().encode(pyson.Not({
+                    'a': 1,
+                    }))
+        self.assertFalse(pyson.PYSONDecoder().decode(eval_))
+
+        eval_ = pyson.PYSONEncoder().encode(pyson.Not([]))
+        self.assertTrue(pyson.PYSONDecoder().decode(eval_))
+
+        eval_ = pyson.PYSONEncoder().encode(pyson.Not(['a']))
+        self.assertFalse(pyson.PYSONDecoder().decode(eval_))
+
     def test_Bool(self):
         'Test pyson.Bool'
         self.assertEqual(pyson.Bool('test').pyson(), {

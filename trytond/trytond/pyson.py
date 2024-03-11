@@ -186,7 +186,7 @@ class Not(PYSON):
 
     @staticmethod
     def eval(dct, context):
-        return not dct['v']
+        return not Bool(dct['v']).eval(dct, context)
 
 
 class Bool(PYSON):
