@@ -230,7 +230,7 @@
     });
 
     Sao.PYSON.Not.eval_ = function(value, context) {
-        return !value.v;
+        return !Sao.PYSON.Bool.eval_(value, context);
     };
     Sao.PYSON.Not.init_from_object = function(obj) {
         return new Sao.PYSON.Not(obj.v);
