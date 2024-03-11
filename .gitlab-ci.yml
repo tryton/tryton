@@ -127,6 +127,21 @@ check-dist:
   script:
     - twine check packages/*
 
+check-eslint:
+  extends: .check
+  image: ${CI_DEPENDENCY_PROXY_GROUP_IMAGE_PREFIX}/node
+  variables:
+    NODE_CACHE_DIR: "$CI_PROJECT_DIR/.cache/npm"
+  cache:
+    paths:
+      - .cache/npm
+  before_script:
+    - sh .gitlab-scripts/bower_allow_root.sh
+  script:
+    - cd sao
+    - npm install --cache ${NODE_CACHE_DIR} --unsafe-perm --legacy-peer-deps
+    - npm run check
+
 check-ci-modules:
   extends: .check
   script:

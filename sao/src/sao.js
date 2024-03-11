@@ -1,8 +1,11 @@
 /* This file is part of Tryton.  The COPYRIGHT file at the top level of
    this repository contains the full copyright notices and license terms. */
+
+/* eslint-disable no-redeclare */
 var Sao = {
     __version__: '7.1.0',
 };
+/* eslint-enable no-redeclare */
 
 (function() {
     'use strict';
@@ -1201,7 +1204,7 @@ var Sao = {
                     if (definition.id){
                         var current_tab = Sao.Tab.tabs.get_current();
                         if (current_tab) {
-                            var focused = $(':focus');
+                            var focused = jQuery(':focus');
                             focused.blur();
                             current_tab.el.find('a[id="' + definition.id + '"]').click();
                             focused.focus();
@@ -1293,7 +1296,7 @@ var Sao = {
     .on('hidden.bs.modal', '.modal', function(event) {
         setModalsAndBackdropsOrder();
         if (jQuery('.modal:visible').length) {
-            $(document.body).addClass('modal-open');
+            jQuery(document.body).addClass('modal-open');
         }
     });
 
