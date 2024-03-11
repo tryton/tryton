@@ -823,7 +823,10 @@ class Screen:
                 context=self.context)
         except RPCException:
             return False
-        self.load(new_ids, position=self.new_position)
+        self.group.load(new_ids, position=self.new_position)
+        if new_ids:
+            self.current_record = self.group.get(new_ids[0])
+        self.display()
         return True
 
     def set_tree_state(self):
