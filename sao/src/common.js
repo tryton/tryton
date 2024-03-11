@@ -1022,7 +1022,8 @@
         read_token: function() {
             var quoted = false;
             var escapedstate = ' ';
-            while (true) {
+            const always = true;
+            while (always) {
                 var nextchar = this.instream.read(1);
                 if (this.state === null) {
                     this.token = '';  // past en of file
@@ -1166,13 +1167,12 @@
             try {
                 var lex = new Sao.common.udlex(input);
                 var tokens = [];
-                while (true) {
+                do {
                     var token = lex.next();
-                    if (token === null) {
-                        break;
+                    if (token !== null) {
+                        tokens.push(token);
                     }
-                    tokens.push(token);
-                }
+                } while (token !== null);
                 tokens = this.group_operator(tokens);
                 tokens = this.parenthesize(tokens);
                 tokens = this.group(tokens);

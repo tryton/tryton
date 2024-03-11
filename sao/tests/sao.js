@@ -1505,13 +1505,12 @@
         var udlex = function(input) {
             var lex = new Sao.common.udlex(input);
             var tokens = [];
-            while (true) {
+            do {
                 var token = lex.next();
-                if (token === null) {
-                    break;
+                if (token !== null) {
+                    tokens.push(token);
                 }
-                tokens.push(token);
-            }
+            } while (token !== null);
             return tokens;
         };
         var c = function(clause) {
