@@ -435,8 +435,6 @@ def load_modules(
 
                 Module = pool.get('ir.module')
                 Module.update_list()
-        # Need to commit to unlock SQLite database
-        transaction.commit()
 
     if not Transaction().connection:
         with Transaction().start(database_name, 0):
