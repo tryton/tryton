@@ -228,10 +228,18 @@ class JournalCashContext(ModelView):
 class JournalPeriod(Workflow, ModelSQL, ModelView):
     'Journal - Period'
     __name__ = 'account.journal.period'
-    journal = fields.Many2One('account.journal', 'Journal', required=True,
-            ondelete='CASCADE', states=STATES)
+    journal = fields.Many2One(
+        'account.journal', 'Journal', required=True, ondelete='CASCADE',
+        states=STATES,
+        context={
+            'company': Eval('company', None),
+            },
+        depends=['company'])
     period = fields.Many2One('account.period', 'Period', required=True,
             ondelete='CASCADE', states=STATES)
+    company = fields.Function(fields.Many2One(
+            'company.company', "Company"),
+        'on_change_with_company', searcher='search_company')
     icon = fields.Function(fields.Char('Icon'), 'get_icon')
     state = fields.Selection([
         ('open', 'Open'),
@@ -269,6 +277,14 @@ class JournalPeriod(Workflow, ModelSQL, ModelView):
         # Migration from 6.8: rename state close to closed
         cursor.execute(
             *t.update([t.state], ['closed'], where=t.state == 'close'))
+
+    @fields.depends('period')
+    def on_change_with_company(self, name=None):
+        return self.period.company if self.period else None
+
+    @classmethod
+    def search_company(cls, name, clause):
+        return [('period.' + clause[0], *clause[1:])]
 
     @staticmethod
     def default_state():

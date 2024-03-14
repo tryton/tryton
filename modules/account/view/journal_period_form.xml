@@ -2,10 +2,14 @@
 <!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
 this repository contains the full copyright notices and license terms. -->
 <form>
-    <label name="journal"/>
-    <field name="journal" widget="selection"/>
     <label name="period"/>
     <field name="period"/>
+    <label name="company"/>
+    <field name="company"/>
+
+    <label name="journal"/>
+    <field name="journal" widget="selection"/>
+    <newline/>
 
     <label name="state"/>
     <field name="state" colspan="4"/>
