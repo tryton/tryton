@@ -225,8 +225,7 @@ class JournalCashContext(ModelView):
     default_end_date = default_start_date
 
 
-class JournalPeriod(
-        DeactivableMixin, Workflow, ModelSQL, ModelView):
+class JournalPeriod(Workflow, ModelSQL, ModelView):
     'Journal - Period'
     __name__ = 'account.journal.period'
     journal = fields.Many2One('account.journal', 'Journal', required=True,
@@ -261,7 +260,6 @@ class JournalPeriod(
                     'depends': ['state'],
                     },
                 })
-        cls.active.states = STATES
 
     @classmethod
     def __register__(cls, module):
