@@ -214,10 +214,12 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.model.button" id="journal_period_close_button">
             <field name="model">account.journal.period</field>
             <field name="name">close</field>
+            <field name="string">Close</field>
         </record>
         <record model="ir.model.button" id="journal_period_reopen_button">
             <field name="model">account.journal.period</field>
             <field name="name">reopen</field>
+            <field name="string">Reopen</field>
         </record>
     </data>
 
