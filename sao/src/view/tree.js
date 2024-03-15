@@ -106,7 +106,10 @@
                 Sao.common.SELECTION_MULTIPLE);
             this.el = jQuery('<div/>', {
                 'class': 'tree-container',
-            });
+            })
+            // Prevent Chrome based browser to compute a min-content
+            // such that only this table has scrollbar if needed
+                .css('display', 'grid');
             this.scrollbar = jQuery('<div/>')
                 .appendTo(jQuery('<div/>', {
                     'class': 'scrollbar responsive',
