@@ -20,7 +20,7 @@ Development
 For development, you have to run instead:
 
     $ npm install --legacy-peer-deps
-    $ grunt dev
+    $ grunt
 
 Setup
 -----
