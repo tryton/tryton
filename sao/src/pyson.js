@@ -23,26 +23,26 @@
         }
     };
 
-    Sao.PYSON.PYSON = Sao.class_(Object, {
-        _operator: null,
-        init: function() {
-        },
-        pyson: function() {
+    Sao.PYSON.PYSON = class PYSON {
+        constructor() {
+            this._operator = null;
+        }
+        pyson() {
             throw 'NotImplementedError';
-        },
-        types: function() {
+        }
+        types() {
             throw 'NotImplementedError';
-        },
-        get: function(k, d='') {
+        }
+        get(k, d='') {
             return new Sao.PYSON.Get(this, k, d);
-        },
-        in_: function(obj) {
+        }
+        in_(obj) {
             return new Sao.PYSON.In(this, obj);
-        },
-        contains: function(k) {
+        }
+        contains(k) {
             return new Sao.PYSON.In(k, this);
-        },
-        toString: function() {
+        }
+        toString() {
             const params = this.__string_params__();
             if (this._operator && (params[0] instanceof Sao.PYSON.PYSON)) {
                 const args = params.slice(1).map(Sao.PYSON.toString);
@@ -52,11 +52,11 @@
                 var args = params.map(Sao.PYSON.toString);
                 return klass + '(' + args.join(', ') + ')';
             }
-        },
-        __string_params__: function() {
+        }
+        __string_params__() {
             throw 'NotImplementedError';
         }
-    });
+    };
 
     Sao.PYSON.PYSON.eval_ = function(value, context) {
         throw 'NotImplementedError';
@@ -65,8 +65,8 @@
         throw 'NotImplementedError';
     };
 
-    Sao.PYSON.Encoder = Sao.class_(Object, {
-        prepare: function(value, index, parent) {
+    Sao.PYSON.Encoder = class Encoder{
+        prepare(value, index, parent) {
             if (value !== null && value !== undefined) {
                 if (value instanceof Array) {
                     value = jQuery.extend([], value);
@@ -108,9 +108,9 @@
                 parent[index] = value;
             }
             return parent || value;
-        },
+        }
 
-        encode: function(pyson) {
+        encode(pyson) {
             pyson = this.prepare(pyson);
             return JSON.stringify(pyson, (k, v) => {
                 if (v instanceof Sao.PYSON.PYSON) {
@@ -121,14 +121,14 @@
                 return v;
             });
         }
-    });
+    };
 
-    Sao.PYSON.Decoder = Sao.class_(Object, {
-        init: function(context, noeval) {
+    Sao.PYSON.Decoder = class Decoder{
+        constructor(context, noeval) {
             this.__context = context || {};
             this.noeval = noeval || false;
-        },
-        decode: function(str) {
+        }
+        decode(str) {
             const reviver = (k, v) => {
                 if (typeof v == 'object' && v !== null) {
                     var cls = Sao.PYSON[v.__class__];
@@ -147,38 +147,38 @@
             };
             return JSON.parse(str, reviver);
         }
-    });
+    };
 
     Sao.PYSON.eval.Eval = function(value, default_) {
         return new Sao.PYSON.Eval(value, default_);
     };
-    Sao.PYSON.Eval = Sao.class_(Sao.PYSON.PYSON, {
-        init: function(value, default_='') {
-            Sao.PYSON.Eval._super.init.call(this);
+    Sao.PYSON.Eval = class Eval extends Sao.PYSON.PYSON {
+        constructor(value, default_='') {
+            super();
             this._value = value;
             this._default = default_;
-        },
-        pyson: function() {
+        }
+        pyson() {
             return {
                 '__class__': 'Eval',
                 'v': this._value,
                 'd': this._default
             };
-        },
-        types: function() {
+        }
+        types() {
             if (this._default instanceof Sao.PYSON.PYSON) {
                 return this._default.types();
             } else {
                 return [typeof this._default];
             }
-        },
-        __string_params__: function() {
+        }
+        __string_params__() {
             const params = [this._value];
             if (this._default !== '') {
                 params.push(this._default);
             }
             return params;
-        },
+        }
         get basename() {
             var name = this._value;
             if (name.startsWith('_parent_')) {
@@ -189,8 +189,11 @@
                 name = name.substring(0, idx);
             }
             return name;
-        },
-    });
+        }
+        static create(...args) {
+            return new Eval(...args);
+        }
+    };
 
     Sao.PYSON.Eval.eval_ = function(value, context) {
         var idx = value.v.indexOf('.');
@@ -213,9 +216,9 @@
     Sao.PYSON.eval.Not = function(value) {
         return new Sao.PYSON.Not(value);
     };
-    Sao.PYSON.Not = Sao.class_(Sao.PYSON.PYSON, {
-        init: function(value) {
-            Sao.PYSON.Not._super.init.call(this);
+    Sao.PYSON.Not = class Not extends Sao.PYSON.PYSON {
+        constructor(value) {
+            super();
             if (value instanceof Sao.PYSON.PYSON) {
                 if (jQuery(value.types()).not(['boolean', 'object']).length ||
                     jQuery(['boolean']).not(value.types()).length) {
@@ -225,20 +228,20 @@
                 value = Sao.PYSON.Bool(value);
             }
             this._value = value;
-        },
-        pyson: function() {
+        }
+        pyson() {
             return {
                 '__class__': 'Not',
                 'v': this._value
                 };
-        },
-        types: function() {
+        }
+        types() {
             return ['boolean'];
-        },
-        __string_params__: function() {
+        }
+        __string_params__() {
             return [this._value];
         }
-    });
+    };
 
     Sao.PYSON.Not.eval_ = function(value, context) {
         return !value.v;
@@ -250,24 +253,24 @@
     Sao.PYSON.eval.Bool = function(value) {
         return new Sao.PYSON.Bool(value);
     };
-    Sao.PYSON.Bool = Sao.class_(Sao.PYSON.PYSON, {
-        init: function(value) {
-            Sao.PYSON.Bool._super.init.call(this);
+    Sao.PYSON.Bool = class Bool extends Sao.PYSON.PYSON {
+        constructor(value) {
+            super();
             this._value = value;
-        },
-        pyson: function() {
+        }
+        pyson() {
             return {
                 '__class__': 'Bool',
                 'v': this._value
-                };
-        },
-        types: function() {
+            };
+        }
+        types() {
             return ['boolean'];
-        },
-        __string_params__: function() {
+        }
+        __string_params__() {
             return [this._value];
         }
-    });
+    };
 
     Sao.PYSON.Bool.eval_ = function(value, context) {
         if (moment.isMoment(value.v) && value.v.isTime) {
@@ -289,12 +292,12 @@
 
 
     Sao.PYSON.eval.And = function() {
-        return Sao.PYSON.And.new_(arguments);
+        return new Sao.PYSON.And(...arguments);
     };
-    Sao.PYSON.And = Sao.class_(Sao.PYSON.PYSON, {
-        init: function() {
+    Sao.PYSON.And = class And extends Sao.PYSON.PYSON {
+        constructor() {
             var statements = jQuery.extend([], arguments);
-            Sao.PYSON.And._super.init.call(this);
+            super();
             for (var i = 0, len = statements.length; i < len; i++) {
                 var statement = statements[i];
                 if (statement instanceof Sao.PYSON.PYSON) {
@@ -310,20 +313,20 @@
                 throw 'must have at least 2 statements';
             }
             this._statements = statements;
-        },
-        pyson: function() {
+        }
+        pyson() {
             return {
                 '__class__': 'And',
                 's': this._statements
             };
-        },
-        types: function() {
+        }
+        types() {
             return ['boolean'];
-        },
-        __string_params__: function() {
+        }
+        __string_params__() {
             return this._statements;
         }
-    });
+    };
 
     Sao.PYSON.And.eval_ = function(value, context) {
         var result = true;
@@ -333,20 +336,20 @@
         return result;
     };
     Sao.PYSON.And.init_from_object = function(obj) {
-        return Sao.PYSON.And.new_(obj.s);
+        return new Sao.PYSON.And(...obj.s);
     };
 
 
     Sao.PYSON.eval.Or = function() {
-        return Sao.PYSON.Or.new_(arguments);
+        return new Sao.PYSON.Or(...arguments);
     };
-    Sao.PYSON.Or = Sao.class_(Sao.PYSON.And, {
-        pyson: function() {
-            var result = Sao.PYSON.Or._super.pyson.call(this);
+    Sao.PYSON.Or = class Or extends Sao.PYSON.And {
+        pyson() {
+            var result = super.pyson();
             result.__class__ = 'Or';
             return result;
         }
-    });
+    };
 
     Sao.PYSON.Or.eval_ = function(value, context) {
         var result = false;
@@ -356,15 +359,15 @@
         return result;
     };
     Sao.PYSON.Or.init_from_object= function(obj) {
-        return new Sao.PYSON.Or.new_(obj.s);
+        return new Sao.PYSON.Or(...obj.s);
     };
 
     Sao.PYSON.eval.Equal = function(statement1, statement2) {
         return new Sao.PYSON.Equal(statement1, statement2);
     };
-    Sao.PYSON.Equal = Sao.class_(Sao.PYSON.PYSON, {
-        init: function(statement1, statement2) {
-            Sao.PYSON.Equal._super.init.call(this);
+    Sao.PYSON.Equal = class Equal extends Sao.PYSON.PYSON {
+        constructor(statement1, statement2) {
+            super();
             var types1, types2;
             if (statement1 instanceof Sao.PYSON.PYSON) {
                 types1 = statement1.types();
@@ -382,21 +385,21 @@
                 }
             this._statement1 = statement1;
             this._statement2 = statement2;
-        },
-        pyson: function() {
+        }
+        pyson() {
             return {
                 '__class__': 'Equal',
                 's1': this._statement1,
                 's2': this._statement2
             };
-        },
-        types: function() {
+        }
+        types() {
             return ['boolean'];
-        },
-        __string_params__: function() {
+        }
+        __string_params__() {
             return [this._statement1, this._statement2];
         }
-    });
+    };
 
     Sao.PYSON.Equal.eval_ = function(value, context) {
         if (value.s1 instanceof Array  && value.s2 instanceof Array) {
@@ -418,9 +421,9 @@
     Sao.PYSON.eval.Greater = function(statement1, statement2, equal) {
         return new Sao.PYSON.Greater(statement1, statement2, equal);
     };
-    Sao.PYSON.Greater = Sao.class_(Sao.PYSON.PYSON, {
-        init: function(statement1, statement2, equal=false) {
-            Sao.PYSON.Greater._super.init.call(this);
+    Sao.PYSON.Greater = class Greater extends Sao.PYSON.PYSON {
+        constructor(statement1, statement2, equal=false) {
+            super();
             var statements = [statement1, statement2];
             for (var i = 0; i < 2; i++) {
                 var statement = statements[i];
@@ -450,22 +453,22 @@
             this._statement1 = statement1;
             this._statement2 = statement2;
             this._equal = equal;
-        },
-        pyson: function() {
+        }
+        pyson() {
             return {
                 '__class__': 'Greater',
                 's1': this._statement1,
                 's2': this._statement2,
                 'e': this._equal
             };
-        },
-        types: function() {
+        }
+        types() {
             return ['boolean'];
-        },
-        __string_params__: function() {
+        }
+        __string_params__() {
             return [this._statement1, this._statement2, this._equal];
         }
-    });
+    };
 
     Sao.PYSON.Greater._convert = function(value) {
         value = jQuery.extend({}, value);
@@ -502,13 +505,13 @@
     Sao.PYSON.eval.Less = function(statement1, statement2, equal) {
         return new Sao.PYSON.Less(statement1, statement2, equal);
     };
-    Sao.PYSON.Less = Sao.class_(Sao.PYSON.Greater, {
-        pyson: function() {
-            var result = Sao.PYSON.Less._super.pyson.call(this);
+    Sao.PYSON.Less = class Less extends Sao.PYSON.Greater {
+        pyson() {
+            var result = super.pyson();
             result.__class__ = 'Less';
             return result;
         }
-    });
+    };
 
     Sao.PYSON.Less._convert = Sao.PYSON.Greater._convert;
 
@@ -530,9 +533,9 @@
     Sao.PYSON.eval.If = function(condition, then_statement, else_statement) {
         return new Sao.PYSON.If(condition, then_statement, else_statement);
     };
-    Sao.PYSON.If = Sao.class_(Sao.PYSON.PYSON, {
-        init: function(condition, then_statement, else_statement=null) {
-            Sao.PYSON.If._super.init.call(this);
+    Sao.PYSON.If = class If extends Sao.PYSON.PYSON {
+        constructor(condition, then_statement, else_statement=null) {
+            super();
             if (condition instanceof Sao.PYSON.PYSON) {
                 if (jQuery(condition.types()).not(['boolean']).length ||
                     jQuery(['boolean']).not(condition.types()).length) {
@@ -544,16 +547,16 @@
             this._condition = condition;
             this._then_statement = then_statement;
             this._else_statement = else_statement;
-        },
-        pyson: function() {
+        }
+        pyson() {
             return {
                 '__class__': 'If',
                 'c': this._condition,
                 't': this._then_statement,
                 'e': this._else_statement
             };
-        },
-        types: function() {
+        }
+        types() {
             var types;
             if (this._then_statement instanceof Sao.PYSON.PYSON) {
                 types = this._then_statement.types();
@@ -573,12 +576,12 @@
                 }
             }
             return types;
-        },
-        __string_params__: function() {
+        }
+        __string_params__() {
             return [this._condition, this._then_statement,
                 this._else_statement];
         }
-    });
+    };
 
     Sao.PYSON.If.eval_ = function(value, context) {
         if (value.c) {
@@ -594,10 +597,10 @@
     Sao.PYSON.eval.Get = function(obj, key, default_) {
         return new Sao.PYSON.Get(obj, key, default_);
     };
-    Sao.PYSON.Get = Sao.class_(Sao.PYSON.PYSON, {
-        _operator: 'get',
-        init: function(obj, key, default_=null) {
-            Sao.PYSON.Get._super.init.call(this);
+    Sao.PYSON.Get = class Get extends Sao.PYSON.PYSON {
+        constructor(obj, key, default_=null) {
+            super();
+            this._operator = 'get';
             if (obj instanceof Sao.PYSON.PYSON) {
                 if (jQuery(obj.types()).not(['object']).length ||
                     jQuery(['object']).not(obj.types()).length) {
@@ -621,30 +624,30 @@
             }
             this._key = key;
             this._default = default_;
-        },
-        pyson: function() {
+        }
+        pyson() {
             return {
                 '__class__': 'Get',
                 'v': this._obj,
                 'k': this._key,
                 'd': this._default
             };
-        },
-        types: function() {
+        }
+        types() {
             if (this._default instanceof Sao.PYSON.PYSON) {
                 return this._default.types();
             } else {
                 return [typeof this._default];
             }
-        },
-        __string_params__: function() {
+        }
+        __string_params__() {
             const params = [this._obj, this._key];
             if (this._default !== '') {
                 params.push(this._default);
             }
             return params;
         }
-    });
+    };
 
     Sao.PYSON.Get.eval_ = function(value, context) {
         if (value.k in value.v) {
@@ -660,10 +663,10 @@
     Sao.PYSON.eval.In = function(key, obj) {
         return new Sao.PYSON.In(key, obj);
     };
-    Sao.PYSON.In = Sao.class_(Sao.PYSON.PYSON, {
-        _operator: 'in_',
-        init: function(key, obj) {
-            Sao.PYSON.In._super.init.call(this);
+    Sao.PYSON.In = class In extends Sao.PYSON.PYSON {
+        constructor(key, obj) {
+            super();
+            this._operator = 'in_';
             if (key instanceof Sao.PYSON.PYSON) {
                 if (jQuery(key.types()).not(['string', 'number']).length) {
                     throw 'key must be a string or a number';
@@ -685,30 +688,30 @@
             }
             this._key = key;
             this._obj = obj;
-        },
-        pyson: function() {
+        }
+        pyson() {
             return {'__class__': 'In',
                 'k': this._key,
                 'v': this._obj
             };
-        },
-        types: function() {
+        }
+        types() {
             return ['boolean'];
-        },
-        toString: function() {
+        }
+        toString() {
             const params = this.__string_params__();
             if (params[1] instanceof Sao.PYSON.PYSON) {
                 const args = params.slice().map(Sao.PYSON.toString);
                 args.splice(1, 1);
                 return `${params[1]}.contains(` + args.join(', ') + ')';
             } else {
-                return Sao.PYSON.In._super.toString.call(this);
+                return super.toString();
             }
-        },
-        __string_params__: function() {
+        }
+        __string_params__() {
             return [this._key, this._obj];
         }
-    });
+    };
 
     Sao.PYSON.In.eval_ = function(value, context) {
         if (value.v) {
@@ -730,11 +733,11 @@
         return new Sao.PYSON.Date(year, month, day, delta_years, delta_months,
                 delta_days);
     };
-    Sao.PYSON.Date = Sao.class_(Sao.PYSON.PYSON, {
-        init: function(
+    Sao.PYSON.Date = class Date extends Sao.PYSON.PYSON {
+        constructor(
             year=null, month=null, day=null,
             delta_years=0, delta_months=0, delta_days=0, start=null) {
-            Sao.PYSON.Date._super.init.call(this);
+            super();
             this._test(year, 'year');
             this._test(month, 'month');
             this._test(day, 'day');
@@ -749,8 +752,8 @@
             this._delta_months = delta_months;
             this._delta_days = delta_days;
             this._start = start;
-        },
-        pyson: function() {
+        }
+        pyson() {
             return {
                 '__class__': 'Date',
                 'y': this._year,
@@ -761,11 +764,11 @@
                 'dd': this._delta_days,
                 'start': this._start,
             };
-        },
-        types: function() {
+        }
+        types() {
             return ['object'];
-        },
-        _test: function(value, name) {
+        }
+        _test(value, name) {
             if (value instanceof Sao.PYSON.PYSON) {
                 if (jQuery(value.types()).not(
                         ['number', typeof null]).length) {
@@ -776,12 +779,12 @@
                     throw name + ' must be an integer or None';
                 }
             }
-        },
-        __string_params__: function() {
+        }
+        __string_params__() {
             return [this._year, this._month, this._day, this._delta_years,
                 this._delta_months, this._delta_days, this._start];
         }
-    });
+    };
 
     Sao.PYSON.Date.eval_ = function(value, context) {
         var date = value.start;
@@ -811,15 +814,16 @@
             microsecond, delta_years, delta_months, delta_days, delta_hours,
             delta_minutes, delta_seconds, delta_microseconds);
     };
-    Sao.PYSON.DateTime = Sao.class_(Sao.PYSON.Date, {
-        init: function(
+    Sao.PYSON.DateTime = class DateTime extends Sao.PYSON.Date {
+        constructor(
             year=null, month=null, day=null,
             hour=null, minute=null, second=null, microsecond=null,
             delta_years=0, delta_months=0, delta_days=0, 
             delta_hours=0, delta_minutes=0, delta_seconds=0,
             delta_microseconds=0, start=null) {
-            Sao.PYSON.DateTime._super.init.call(this, year, month, day,
-                delta_years, delta_months, delta_days, start);
+            super(
+                year, month, day, delta_years, delta_months, delta_days,
+                start);
             this._test(hour, 'hour');
             this._test(minute, 'minute');
             this._test(second, 'second');
@@ -837,9 +841,9 @@
             this._delta_minutes = delta_minutes;
             this._delta_seconds = delta_seconds;
             this._delta_microseconds = delta_microseconds;
-        },
-        pyson: function() {
-            var result = Sao.PYSON.DateTime._super.pyson.call(this);
+        }
+        pyson() {
+            var result = super.pyson();
             result.__class__ = 'DateTime';
             result.h = this._hour;
             result.m = this._minute;
@@ -850,17 +854,16 @@
             result.ds = this._delta_seconds;
             result.dms = this._delta_microseconds;
             return result;
-        },
-        __string_params__: function() {
-            var date_params = Sao.PYSON.DateTime._super.__string_params__.call(
-                this);
+        }
+        __string_params__() {
+            var date_params = super.__string_params__();
             return [date_params[0], date_params[1], date_params[2],
                 this._hour, this._minute, this._second, this._microsecond,
                 date_params[3], date_params[4], date_params[5],
                 this._delta_hours, this._delta_minutes, this._delta_seconds,
                 this._delta_microseconds, date_params[6]];
         }
-    });
+    };
 
     Sao.PYSON.DateTime.eval_ = function(value, context) {
         var date = value.start;
@@ -895,9 +898,9 @@
     Sao.PYSON.eval.TimeDelta = function(days, seconds, microseconds) {
         return new Sao.PYSON.TimeDelta(days, seconds, microseconds);
     };
-    Sao.PYSON.TimeDelta = Sao.class_(Sao.PYSON.PYSON, {
-        init: function(days=0, seconds=0, microseconds=0) {
-            Sao.PYSON.TimeDelta._super.init.call(this);
+    Sao.PYSON.TimeDelta = class TimeDelta extends Sao.PYSON.PYSON {
+        constructor(days=0, seconds=0, microseconds=0) {
+            super();
             function test(value, name) {
                 if (value instanceof Sao.PYSON.TimeDelta) {
                     if (jQuery(value.types()).not(['number']).length)
@@ -914,22 +917,22 @@
             this._days = test(days, 'days');
             this._seconds = test(seconds, 'seconds');
             this._microseconds = test(microseconds, 'microseconds');
-        },
-        pyson: function() {
+        }
+        pyson() {
             return {
                 '__class__': 'TimeDelta',
                 'd': this._days,
                 's': this._seconds,
                 'm': this._microseconds,
             };
-        },
-        types: function() {
+        }
+        types() {
             return ['object'];
-        },
-        __string_params__: function() {
+        }
+        __string_params__() {
             return [this._days, this._seconds, this._microseconds];
-        },
-    });
+        }
+    };
     Sao.PYSON.TimeDelta.eval_ = function(value, context) {
         return Sao.TimeDelta(value.d, value.s, value.m / 1000);
     };
@@ -940,9 +943,9 @@
     Sao.PYSON.eval.Len = function(value) {
         return new Sao.PYSON.Len(value);
     };
-    Sao.PYSON.Len = Sao.class_(Sao.PYSON.PYSON, {
-        init: function(value) {
-            Sao.PYSON.Len._super.init.call(this);
+    Sao.PYSON.Len = class Len extends Sao.PYSON.PYSON {
+        constructor(value) {
+            super();
             if (value instanceof Sao.PYSON.PYSON) {
                 if (jQuery(value.types()).not(['object', 'string']).length ||
                     jQuery(['object', 'string']).not(value.types()).length) {
@@ -954,20 +957,20 @@
                 }
             }
             this._value = value;
-        },
-        pyson: function() {
+        }
+        pyson() {
             return {
                 '__class__': 'Len',
                 'v': this._value
             };
-        },
-        types: function() {
+        }
+        types() {
             return ['integer'];
-        },
-        __string_params__: function() {
+        }
+        __string_params__() {
             return [this._value];
         }
-    });
+    };
 
     Sao.PYSON.Len.eval_ = function(value, context) {
         if (typeof value.v == 'object') {
