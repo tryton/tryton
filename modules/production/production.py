@@ -385,13 +385,9 @@ class Production(ShipmentAssignMixin, Workflow, ModelSQL, ModelView):
                 move.currency = self.company.currency
         return move
 
-    @fields.depends(methods=['_move'])
-    def _explode_move_values(self, type, bom_io, quantity):
-        return self._move(type, bom_io.product, bom_io.unit, quantity)
-
     @fields.depends(
         'bom', 'product', 'unit', 'quantity', 'inputs', 'outputs',
-        methods=['_explode_move_values'])
+        methods=['_move'])
     def explode_bom(self):
         pool = Pool()
         Uom = pool.get('product.uom')
@@ -403,7 +399,7 @@ class Production(ShipmentAssignMixin, Workflow, ModelSQL, ModelView):
         inputs = []
         for input_ in self.bom.inputs:
             quantity = input_.compute_quantity(factor)
-            move = self._explode_move_values('input', input_, quantity)
+            move = self._move('input', input_.product, input_.unit, quantity)
             if move:
                 inputs.append(move)
                 quantity = Uom.compute_qty(
@@ -414,7 +410,7 @@ class Production(ShipmentAssignMixin, Workflow, ModelSQL, ModelView):
         outputs = []
         for output in self.bom.outputs:
             quantity = output.compute_quantity(factor)
-            move = self._explode_move_values('output', output, quantity)
+            move = self._move('output', output.product, output.unit, quantity)
             if move:
                 outputs.append(move)
         self.outputs = outputs
