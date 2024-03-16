@@ -370,8 +370,7 @@ class Production(ShipmentAssignMixin, Workflow, ModelSQL, ModelView):
             product=product,
             unit=unit,
             quantity=quantity,
-            company=self.company,
-            currency=self.company.currency if self.company else None)
+            company=self.company)
         if type == 'input':
             move.from_location = self.picking_location
             move.to_location = self.location
@@ -380,16 +379,18 @@ class Production(ShipmentAssignMixin, Workflow, ModelSQL, ModelView):
             move.from_location = self.location
             move.to_location = self.output_location
             move.production_output = self
+        if move.on_change_with_unit_price_required():
+            move.unit_price = Decimal(0)
+            if self.company:
+                move.currency = self.company.currency
         return move
 
     @fields.depends(methods=['_move'])
     def _explode_move_values(self, type, bom_io, quantity):
-        move = self._move(type, bom_io.product, bom_io.unit, quantity)
-        move.unit_price_required = move.on_change_with_unit_price_required()
-        return move
+        return self._move(type, bom_io.product, bom_io.unit, quantity)
 
     @fields.depends(
-        'bom', 'product', 'unit', 'quantity', 'company', 'inputs', 'outputs',
+        'bom', 'product', 'unit', 'quantity', 'inputs', 'outputs',
         methods=['_explode_move_values'])
     def explode_bom(self):
         pool = Pool()
@@ -415,8 +416,6 @@ class Production(ShipmentAssignMixin, Workflow, ModelSQL, ModelView):
             quantity = output.compute_quantity(factor)
             move = self._explode_move_values('output', output, quantity)
             if move:
-                move.unit_price = Decimal(0)
-                move.currency = self.company.currency
                 outputs.append(move)
         self.outputs = outputs
 
@@ -502,8 +501,6 @@ class Production(ShipmentAssignMixin, Workflow, ModelSQL, ModelView):
                         'output', production.product, production.unit,
                         production.quantity)
                     if move:
-                        move.unit_price = Decimal(0)
-                        move.currency = production.company.currency
                         to_save.append(move)
                 continue
 
@@ -523,8 +520,6 @@ class Production(ShipmentAssignMixin, Workflow, ModelSQL, ModelView):
                 move = production._move(
                     'output', product, output.unit, quantity)
                 if move:
-                    move.unit_price = Decimal(0)
-                    move.currency = production.company.currency
                     to_save.append(move)
         Move.save(to_save)
         cls._set_move_planned_date(productions)
