@@ -277,7 +277,7 @@ class Pool(object):
                         self.add(cls, type=type_)
 
     def refresh(self, modules):
-        if self._modules is not None and set(self._modules) != modules:
+        if self._modules and set(self._modules) != modules:
             self.stop(self.database_name)
 
 
