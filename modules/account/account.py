@@ -1986,9 +1986,12 @@ class _GeneralLedgerAccount(ActivePeriodMixin, ModelSQL, ModelView):
             'account.general_ledger.account.context')
         context = LedgerAccountContext.get_context()
         if name.startswith('start_'):
-            from_date = context.get('from_date')
+            from_date = context.get('from_date') or datetime.date.min
             if from_date:
-                from_date -= datetime.timedelta(days=1)
+                try:
+                    from_date -= datetime.timedelta(days=1)
+                except OverflowError:
+                    pass
             return None, from_date
         elif name.startswith('end_'):
             return None, context.get('to_date')
