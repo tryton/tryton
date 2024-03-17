@@ -486,22 +486,30 @@ class CreatePurchaseRequestQuotation(Wizard):
         pool = Pool()
         Warning = pool.get('res.user.warning')
 
-        reqs = [r for r in self.records if r.state in {'draft', 'quotation'}]
+        reqs = [
+            r for r in self.records
+            if r.state in {'draft', 'quotation', 'received'}]
         if reqs:
-            for r in reqs:
-                if r.state == 'quotation':
-                    if Warning.check(str(r)):
-                        raise PreviousQuotation(str(r),
-                            gettext('purchase_request_quotation'
-                                '.msg_previous_quotation',
-                                request=r.rec_name))
+            reqs = [r for r in reqs if r.state in {'quotation', 'received'}]
+            if reqs:
+                warning_key = Warning.format(
+                    'purchase_request_quotation_create', reqs)
+                if Warning.check(warning_key):
+                    names = ', '.join(r.rec_name for r in reqs[:5])
+                    if len(reqs) > 5:
+                        names += '...'
+                    raise PreviousQuotation(
+                        warning_key,
+                        gettext('purchase_request_quotation'
+                            '.msg_previous_quotation',
+                            requests=names))
             return 'ask_suppliers'
         return 'end'
 
     def default_ask_suppliers(self, fields):
         reqs = [
             r for r in self.records
-            if r.party and r.state in ['draft', 'quotation']]
+            if r.party and r.state in {'draft', 'quotation', 'received'}]
         return {
             'suppliers': [r.party.id for r in reqs],
             }
@@ -525,7 +533,8 @@ class CreatePurchaseRequestQuotation(Wizard):
         lines = []
 
         requests = [
-            r for r in self.records if r.state in ['draft', 'quotation']]
+            r for r in self.records
+            if r.state in {'draft', 'quotation', 'received'}]
         for supplier in self.ask_suppliers.suppliers:
             sub_requests = [
                 r for r in requests if self.filter_request(r, supplier)]
