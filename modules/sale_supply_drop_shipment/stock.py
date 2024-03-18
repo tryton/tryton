@@ -301,9 +301,9 @@ class ShipmentDrop(
             if shipment.state != 'cancelled':
                 raise AccessError(
                     gettext('sale_supply_drop_shipment'
-                        '.msg_drop_shipment_delete_cancel') % {
-                        'shipment': shipment.rec_name,
-                        })
+                        '.msg_drop_shipment_delete_cancel',
+                        shipment=shipment.rec_name,
+                        ))
         Move.delete([m for s in shipments for m in s.supplier_moves])
         super(ShipmentDrop, cls).delete(shipments)
 
