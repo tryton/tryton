@@ -264,6 +264,20 @@ this repository contains the full copyright notices and license terms. -->
         </record>
     </data>
 
+    <data depends="stock_split">
+        <record model="ir.ui.view" id="shipment_drop_view_form_split">
+            <field name="model">stock.shipment.drop</field>
+            <field name="inherit" ref="shipment_drop_view_form"/>
+            <field name="name">shipment_drop_split_form</field>
+        </record>
+
+        <record model="ir.model.button" id="shipment_drop_split_wizard_button">
+            <field name="model">stock.shipment.drop</field>
+            <field name="name">split_wizard</field>
+            <field name="string">Split</field>
+        </record>
+    </data>
+
     <data noupdate="1">
 
         <!-- Default locations -->

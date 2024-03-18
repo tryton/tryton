@@ -1,3 +1,4 @@
+* Support splitting drop shipment
 * Split customer moves when splitting supplier moves
 * Rename 'done' button to 'do'
 

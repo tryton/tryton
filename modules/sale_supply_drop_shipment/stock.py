@@ -535,6 +535,47 @@ class ShipmentDrop(
         return self.customer_moves
 
 
+class ShipmentDropSplit(metaclass=PoolMeta):
+    __name__ = 'stock.shipment.drop'
+
+    @classmethod
+    def __setup__(cls):
+        super().__setup__()
+        cls._buttons.update({
+                'split_wizard': {
+                    'readonly': Eval('state') != 'draft',
+                    'invisible': Eval('state') != 'draft',
+                    'depends': ['state'],
+                    },
+                })
+
+    @classmethod
+    @ModelView.button_action('stock_split.wizard_split_shipment')
+    def split_wizard(cls, shipments):
+        pass
+
+
+class SplitShipment(metaclass=PoolMeta):
+    __name__ = 'stock.shipment.split'
+
+    def get_moves(self, shipment):
+        moves = super().get_moves(shipment)
+        if shipment.__name__ == 'stock.shipment.drop':
+            moves = shipment.supplier_moves
+        return moves
+
+    def transition_split(self):
+        shipment = self.record
+        if shipment.__name__ == 'stock.shipment.drop':
+            customer_moves = []
+            for move in self.start.moves:
+                customer_moves.extend(move.moves_drop)
+            self.start.moves = [*self.start.moves, *customer_moves]
+            self.start.domain_moves = [
+                 *self.start.domain_moves, *customer_moves]
+        return super().transition_split()
+
+
 class Move(metaclass=PoolMeta):
     __name__ = 'stock.move'
 
