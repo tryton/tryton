@@ -541,20 +541,32 @@ class MoveAddLots(Wizard):
             lot = line.get_lot(self.record)
             lots.append(lot)
         Lot.save(lots)
-        if quantity_remaining:
-            self.record.quantity = quantity_remaining
-            self.record.save()
-        for i, (line, lot) in enumerate(zip(self.start.lots, lots)):
-            if not i and not quantity_remaining:
-                self.record.quantity = line.quantity
-                self.record.lot = lot
+        if hasattr(self.model, 'split'):
+            move = self.record
+            for line, lot in zip(self.start.lots, lots):
+                splits = move.split(line.quantity, self.record.unit, count=1)
+                splits.remove(move)
+                move.lot = lot
+                move.save()
+                if splits:
+                    move, = splits
+                else:
+                    break
+        else:
+            if quantity_remaining:
+                self.record.quantity = quantity_remaining
                 self.record.save()
-            else:
-                with Transaction().set_context(_stock_move_split=True):
-                    self.model.copy([self.record], {
-                            'quantity': line.quantity,
-                            'lot': lot.id,
-                            })
+            for i, (line, lot) in enumerate(zip(self.start.lots, lots)):
+                if not i and not quantity_remaining:
+                    self.record.quantity = line.quantity
+                    self.record.lot = lot
+                    self.record.save()
+                else:
+                    with Transaction().set_context(_stock_move_split=True):
+                        self.model.copy([self.record], {
+                                'quantity': line.quantity,
+                                'lot': lot.id,
+                                })
         return 'end'
 
 

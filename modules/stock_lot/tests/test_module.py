@@ -14,6 +14,7 @@ from trytond.transaction import Transaction
 class StockLotTestCase(CompanyTestMixin, ModuleTestCase):
     'Test Stock Lot module'
     module = 'stock_lot'
+    extras = ['stock_split']
 
     @with_transaction()
     def test_products_by_location(self):
