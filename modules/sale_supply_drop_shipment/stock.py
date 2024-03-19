@@ -588,6 +588,37 @@ class Move(metaclass=PoolMeta):
 
     @classmethod
     def copy(cls, moves, default=None):
+        context = Transaction().context
+        if (context.get('_stock_move_split')
+                and not context.get('_stock_move_split_drop')):
+            for move in moves:
+                if move.moves_drop:
+                    raise AccessError(
+                        gettext('sale_supply_drop_shipment'
+                            '.msg_move_split_drop'))
         default = default.copy() if default is not None else {}
         default.setdefault('moves_drop')
         return super().copy(moves, default=default)
+
+
+class MoveSplit(metaclass=PoolMeta):
+    __name__ = 'stock.move'
+
+    def split(self, quantity, unit, count=None):
+        with Transaction().set_context(_stock_move_split_drop=True):
+            moves = super().split(quantity, unit, count=count)
+        if self.moves_drop:
+            to_save = []
+            moves_drop = list(self.moves_drop)
+            for move in moves:
+                remainder = move.quantity
+                while remainder > 0 and moves_drop:
+                    move_drop = moves_drop.pop(0)
+                    splits = move_drop.split(remainder, move.unit, count=1)
+                    move_drop.origin_drop = move
+                    remainder -= move_drop.quantity
+                    to_save.append(move_drop)
+                    splits.remove(move_drop)
+                    moves_drop.extend(splits)
+            self.__class__.save(to_save)
+        return moves
