@@ -30,8 +30,6 @@
     Sao.View.Board = Sao.class_(Object, {
         xml_parser: Sao.View.BoardXMLViewParser,
         init: function(xml, context) {
-            var attributes, attribute, node, actions_prms;
-
             this.context = context;
             this.actions = [];
             this.containers = [];
@@ -41,7 +39,7 @@
             });
             new this.xml_parser(this, null, {}).parse(xml.children()[0]);
 
-            actions_prms = [];
+            var actions_prms = [];
             for (const action of this.actions) {
                 actions_prms.push(action.action_prm);
             }
@@ -152,15 +150,13 @@
             });
         },
         row_activate: function() {
-            var record_ids, win;
-
             if (!this.screen.current_record) {
                 return;
             }
 
             if (this.screen.current_view.view_type == 'tree' &&
                     (this.screen.current_view.attributes.keyword_open == 1)) {
-                record_ids = this.screen.current_view.selected_records.map(
+                const record_ids = this.screen.current_view.selected_records.map(
                         function(record) { return record.id; });
                 Sao.Action.exec_keyword('tree_open', {
                     model: this.screen.model_name,
@@ -168,7 +164,7 @@
                     ids: record_ids
                 }, jQuery.extend({}, this.screen.group._context), false);
             } else {
-                win = new Sao.Window.Form(this.screen, result => {
+                new Sao.Window.Form(this.screen, result => {
                     if (result) {
                         this.screen.current_record.save();
                     } else {
@@ -202,16 +198,13 @@
             }
         },
         update_domain: function(actions) {
-            var i, len;
-            var active, domain_ctx, decoder, new_domain;
-
-            domain_ctx = jQuery.extend({}, this.context);
+            const domain_ctx = jQuery.extend({}, this.context);
             domain_ctx._actions = {};
-            for (i = 0, len = actions.length; i < len; i++) {
+            for (var i = 0, len = actions.length; i < len; i++) {
                 domain_ctx._actions[actions[i].name] = actions[i].active;
             }
-            decoder = new Sao.PYSON.Decoder(domain_ctx);
-            new_domain = decoder.decode(this.action.pyson_domain);
+            const decoder = new Sao.PYSON.Decoder(domain_ctx);
+            const new_domain = decoder.decode(this.action.pyson_domain);
             if (Sao.common.compare(this.domain, new_domain)) {
                 return;
             }

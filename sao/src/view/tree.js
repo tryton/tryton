@@ -68,7 +68,6 @@
             column.tree = this.view;
             this.view.widgets[name].push(column);
 
-            var prefixes = [], suffixes = [];
             if ('symbol' in attributes) {
                 column.suffixes.push(
                     new Sao.View.Tree.Symbol(attributes, 1));
@@ -112,7 +111,7 @@
                 this.view.optionals.push(column);
             }
 
-            if (Boolean(parseInt(attributes.sum || '0', 10))) {
+            if (parseInt(attributes.sum || '0', 10)) {
                 var sum = jQuery('<label/>', {
                     'text': attributes.string,
                 });
@@ -257,7 +256,6 @@
 
                 column.footers = [];
                 if (this.sum_widgets.size) {
-                    var field_name = column.attributes.name;
                     var total_cell = jQuery('<th/>', {
                         'class': column.class_,
                     });
@@ -762,7 +760,6 @@
         display: function(selected, expanded) {
             set_treeview_height(this.treeview);
 
-            var tbody = this.tbody;
             var current_record = this.record;
             if (jQuery.isEmptyObject(selected)) {
                 selected = this.get_selected_paths();
@@ -864,7 +861,8 @@
                     return;
                 }
                 var optional;
-                if (tree_column_optional.hasOwnProperty(name)) {
+                if (Object.prototype.hasOwnProperty.call(
+                    tree_column_optional, name)) {
                     optional = tree_column_optional[name];
                 } else {
                     optional = Boolean(parseInt(
@@ -1334,7 +1332,7 @@
             }
         },
         set_cursor: function(new_, reset_view) {
-            var i, root_group, path, row_path, row, column;
+            var path, row, column;
             var td, prm;
 
             if (!this.record) {
@@ -1494,7 +1492,7 @@
         },
         get path() {
             if (!this._path) {
-                var path, position;
+                var path;
                 if (this.parent_) {
                     path = jQuery.extend([], this.parent_.path.split('.'));
                 } else {
@@ -1603,10 +1601,8 @@
                     'class': 'cell',
                 });
                 td.append(cell);
-                var j;
                 if (column.prefixes) {
-                    for (j = 0; j < column.prefixes.length; j++) {
-                        var prefix = column.prefixes[j];
+                    for (let j = 0; j < column.prefixes.length; j++) {
                         cell.append(jQuery('<span/>', {
                             'class': 'prefix'
                         }));
@@ -1616,8 +1612,7 @@
                     'class': 'widget'
                 }));
                 if (column.suffixes) {
-                    for (j = 0; j < column.suffixes.length; j++) {
-                        var suffix = column.suffixes[j];
+                    for (let j = 0; j < column.suffixes.length; j++) {
                         cell.append(jQuery('<span/>', {
                             'class': 'suffix'
                         }));
@@ -2007,7 +2002,6 @@
         },
         redraw: function(selected, expanded) {
             var i, cell, widget;
-            var field;
 
             Sao.View.Tree.RowEditable._super.redraw.call(this, selected,
                     expanded);
@@ -2150,8 +2144,7 @@
             return this._get_column_td(this.edited_column);
         },
         key_press: function(event_) {
-            var current_td, selector, next_column, next_idx, i;
-            var states;
+            var next_column, next_idx, i;
 
             if (((event_.which != Sao.common.TAB_KEYCODE) &&
                     (event_.which != Sao.common.UP_KEYCODE) &&
@@ -2451,7 +2444,7 @@
             return this.attributes.name;
         },
         get model_name() {
-            return model.name;
+            return this.model.name;
         },
         get_cell: function() {
             var cell = jQuery('<div/>', {
@@ -2883,11 +2876,9 @@
         },
         save_as: function(record) {
             var filename;
-            var mimetype = 'application/octet-binary';
             var filename_field = record.model.fields[this.filename];
             if (filename_field) {
                 filename = filename_field.get_client(record);
-                mimetype = Sao.common.guess_mimetype(filename);
             }
             var prm;
             if (this.field.get_data) {
@@ -3016,7 +3007,7 @@
                 button.el.click(
                         [record, button], this.button_clicked.bind(this));
             }
-            var fields = jQuery.map(this.view.screen.model.fields,
+            jQuery.map(this.view.screen.model.fields,
                 function(field, name) {
                     if ((field.description.loading || 'eager') ==
                         'eager') {
@@ -3166,7 +3157,7 @@
             Sao.View.EditableTree.editable_mixin(this);
         },
         get width() {
-            return;
+            return null;
         },
     });
 
@@ -3180,7 +3171,7 @@
             Sao.View.EditableTree.editable_mixin(this);
         },
         get width() {
-            return;
+            return null;
         },
     });
 

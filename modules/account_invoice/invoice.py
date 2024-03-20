@@ -2428,8 +2428,12 @@ class InvoiceLine(sequence_ordered(), ModelSQL, ModelView, TaxableMixin):
     @fields.depends('invoice', '_parent_invoice.state')
     def on_change_with_invoice_state(self, name=None):
         if self.invoice:
-            return self.invoice.state
-        return 'draft'
+            state = self.invoice.state
+            if state == 'cancelled' and self.invoice.cancel_move:
+                state = 'paid'
+        else:
+            state = 'draft'
+        return state
 
     @fields.depends('invoice', '_parent_invoice.party', 'party')
     def on_change_with_party_lang(self, name=None):

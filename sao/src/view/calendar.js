@@ -264,7 +264,6 @@
             var dtstart = this.attributes.dtstart;
             var dtend = this.attributes.dtend;
             var record = event.record;
-            var group = record.group;
             var previous_start = record.field_get(dtstart);
             var previous_end = previous_start;
             if (dtend) {
@@ -299,7 +298,6 @@
         event_resize: function(event, delta, revertFunc, jsEvent, ui, view) {
             var dtend = this.attributes.dtend;
             var record = event.record;
-            var group = record.group;
             var previous_end = record.field_get(dtend);
             var new_end = event.end;
             if (previous_end.isDateTime === true) {

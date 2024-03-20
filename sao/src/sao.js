@@ -1,8 +1,11 @@
 /* This file is part of Tryton.  The COPYRIGHT file at the top level of
    this repository contains the full copyright notices and license terms. */
+
+/* eslint-disable no-redeclare */
 var Sao = {
     __version__: '7.1.0',
 };
+/* eslint-enable no-redeclare */
 
 (function() {
     'use strict';
@@ -105,7 +108,7 @@ var Sao = {
     }
 
     Sao.setdefault = function(object, key, value) {
-        if (!object.hasOwnProperty(key)) {
+        if (!Object.prototype.hasOwnProperty.call(object, key)) {
             object[key] = value;
         }
         return object[key];
@@ -115,10 +118,12 @@ var Sao = {
     try {
         document.execCommand('styleWithCSS', false, false);
     } catch (e) {
+        // continue
     }
     try {
         document.execCommand('useCSS', false, true);
     } catch (e) {
+        // continue
     }
 
     // Add .uniqueId to jQuery
@@ -409,7 +414,6 @@ var Sao = {
             }, session).then(function(preferences) {
                 var deferreds = [];
                 deferreds.push(Sao.common.MODELACCESS.load_models());
-                deferreds.push(Sao.common.ICONFACTORY.load_icons());
                 deferreds.push(Sao.common.MODELHISTORY.load_history());
                 deferreds.push(Sao.common.MODELNOTIFICATION.load_names());
                 deferreds.push(Sao.common.VIEW_SEARCH.load_searches());
@@ -1201,7 +1205,7 @@ var Sao = {
                     if (definition.id){
                         var current_tab = Sao.Tab.tabs.get_current();
                         if (current_tab) {
-                            var focused = $(':focus');
+                            var focused = jQuery(':focus');
                             focused.blur();
                             current_tab.el.find('a[id="' + definition.id + '"]').click();
                             focused.focus();
@@ -1293,7 +1297,7 @@ var Sao = {
     .on('hidden.bs.modal', '.modal', function(event) {
         setModalsAndBackdropsOrder();
         if (jQuery('.modal:visible').length) {
-            $(document.body).addClass('modal-open');
+            jQuery(document.body).addClass('modal-open');
         }
     });
 

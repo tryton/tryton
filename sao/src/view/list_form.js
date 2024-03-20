@@ -111,7 +111,7 @@
             return records;
         },
         get listed_records() {
-            this.group.slice();
+            return this.group.slice();
         },
         set_cursor: function(new_, reset_view) {
             if (new_) {
@@ -165,11 +165,13 @@
                 var current_view_form;
 
                 if (event_.shiftKey) {
+                    let i = 0;
                     for (const other_view_form of this._view_forms) {
-                        if (other_view_forms.record === this.record) {
+                        if (other_view_form.record === this.record) {
                             current_view_form = other_view_form;
                             break;
                         }
+                        i++;
                     }
                     this.select_records(i, next_form_idx);
                 } else {

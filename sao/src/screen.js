@@ -187,7 +187,7 @@
                     'class': 'nav nav-tabs',
                     role: 'tablist'
                 }).appendTo(this.tab);
-                var content = jQuery('<div/>', {
+                jQuery('<div/>', {
                     'class': 'tab-content'
                 }).appendTo(this.tab);
                 this.tab_domain.forEach((tab_domain, i) => {
@@ -196,7 +196,7 @@
                         'class': 'badge badge-empty'
                     }).html('&nbsp;');
                     counter.css('visibility', 'hidden');
-                    var page = jQuery('<li/>', {
+                    jQuery('<li/>', {
                         role: 'presentation',
                         id: 'nav-' + i
                     }).append(jQuery('<a/>', {
@@ -303,11 +303,9 @@
             if (current_text) {
                 var current_domain = this.screen.domain_parser.parse(
                         current_text);
-                var star = this.get_star();
                 var bookmarks = this.bookmarks();
                 for (const bookmark of bookmarks) {
                     const id = bookmark[0];
-                    const name = bookmark[1];
                     const domain = bookmark[2];
                     const access = bookmark[3];
                     const text = this.screen.domain_parser.string(domain);
@@ -1350,7 +1348,8 @@
             }
             return jQuery.when.apply(jQuery, deferreds).then(
                 () => this.set_tree_state().then(() => {
-                    this.current_record = this.current_record;
+                    var record = this.current_record
+                    this.current_record = record;
                     // set_cursor must be called after set_tree_state because
                     // set_tree_state redraws the tree
                     if (set_cursor) {
@@ -1443,6 +1442,8 @@
         get selected_paths() {
             if (this.current_view && this.current_view.view_type == 'tree') {
                 return this.current_view.get_selected_paths();
+            } else {
+                return [];
             }
         },
         get listed_records() {
@@ -1459,6 +1460,8 @@
         get listed_paths() {
             if (this.current_view && this.current_view.view_type == 'tree') {
                 return this.current_view.get_listed_paths();
+            } else {
+                return [];
             }
         },
         clear: function() {
@@ -2119,9 +2122,6 @@
                 view = this.views[i];
                 if (view.view_type == 'form') {
                     for (var wid_key in view.widgets) {
-                        if (!view.widgets.hasOwnProperty(wid_key)) {
-                            continue;
-                        }
                         widgets = view.widgets[wid_key];
                         for (wi = 0, wlen = widgets.length; wi < wlen; wi++) {
                             if (widgets[wi].screen) {

@@ -1505,13 +1505,12 @@
         var udlex = function(input) {
             var lex = new Sao.common.udlex(input);
             var tokens = [];
-            while (true) {
+            do {
                 var token = lex.next();
-                if (token === null) {
-                    break;
+                if (token !== null) {
+                    tokens.push(token);
                 }
-                tokens.push(token);
-            }
+            } while (token !== null);
             return tokens;
         };
         var c = function(clause) {
@@ -1668,7 +1667,7 @@
         [
         ['test', 'test'],
         ['foo bar', '"foo bar"'],
-        ['"foo"', '\\\"foo\\\"'],
+        ['"foo"', '\\"foo\\"'],
         ['foo\\bar', 'foo\\\\bar']
         ].forEach(function(test) {
             var value = test[0];
@@ -1854,9 +1853,9 @@
         };
         [
         ['12:30:00', Sao.Time(12, 30, 0)],
-        ['test', Sao.Time(0, 0, 0)]
         ].forEach(test_valueOf_func, field);
         [
+        ['test', null],
         [null, null]
         ].forEach(test_func, field);
 

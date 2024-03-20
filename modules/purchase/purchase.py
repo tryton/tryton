@@ -575,12 +575,20 @@ class Purchase(
         skips = set(self.invoices_ignored)
         skips.update(self.invoices_recreated)
         invoices = [i for i in self._invoices_for_state if i not in skips]
+
+        def is_cancelled(invoice):
+            return invoice.state == 'cancelled' and not invoice.cancel_move
+
+        def is_paid(invoice):
+            return (
+                invoice.state == 'paid'
+                or (invoice.state == 'cancelled' and invoice.cancel_move))
         if invoices:
-            if any(i.state == 'cancelled' for i in invoices):
+            if any(is_cancelled(i) for i in invoices):
                 return 'exception'
-            elif all(i.state == 'paid' for i in invoices):
+            elif all(is_paid(i) for i in invoices):
                 return 'paid'
-            elif any(i.state == 'paid' for i in invoices):
+            elif any(is_paid(i) for i in invoices):
                 return 'partially paid'
             elif any(i.state == 'posted' for i in invoices):
                 return 'awaiting payment'

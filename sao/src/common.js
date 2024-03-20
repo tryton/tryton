@@ -248,21 +248,14 @@
     };
 
     Sao.common.parse_time = function(format, value) {
-        if (!value) {
-            return null;
+        var date = moment(value, Sao.common.moment_format(format));
+        if (date.isValid()) {
+            date = Sao.Time(
+                date.hour(), date.minute(), date.second(), date.millisecond());
+        } else {
+            date = null;
         }
-        var getNumber = function(pattern) {
-            var i = format.indexOf(pattern);
-            if (~i) {
-                var number = parseInt(value.slice(i, i + pattern.length), 10);
-                if (!isNaN(number)) {
-                    return number;
-                }
-            }
-            return 0;
-        };
-        return Sao.Time(getNumber('%H'), getNumber('%M'), getNumber('%S'),
-                getNumber('%f'));
+        return date;
     };
 
     Sao.common.format_date = function(date_format, date) {
@@ -678,7 +671,7 @@
                 }
             });
         environment.get = function(item, default_) {
-            if (this.hasOwnProperty(item))
+            if (Object.prototype.hasOwnProperty.call(this, item))
                 return this[item];
             return default_;
         };
@@ -707,7 +700,6 @@
         }
         var key = JSON.stringify(value);
         var selection = this.attributes.selection || [];
-        var help = this.attributes.help_selection || {};
         var prm;
         let prepare_selection = selection => {
             selection = jQuery.extend([], selection);
@@ -1022,7 +1014,8 @@
         read_token: function() {
             var quoted = false;
             var escapedstate = ' ';
-            while (true) {
+            const always = true;
+            while (always) {
                 var nextchar = this.instream.read(1);
                 if (this.state === null) {
                     this.token = '';  // past en of file
@@ -1166,13 +1159,12 @@
             try {
                 var lex = new Sao.common.udlex(input);
                 var tokens = [];
-                while (true) {
+                do {
                     var token = lex.next();
-                    if (token === null) {
-                        break;
+                    if (token !== null) {
+                        tokens.push(token);
                     }
-                    tokens.push(token);
-                }
+                } while (token !== null);
                 tokens = this.group_operator(tokens);
                 tokens = this.parenthesize(tokens);
                 tokens = this.group(tokens);
@@ -1248,7 +1240,6 @@
                         ~['AND', 'OR'].indexOf(clause[0])) {
                     return '(' + this.string(clause) + ')';
                 }
-                var escaped;
                 var name = clause[0];
                 var operator = clause[1];
                 var value = clause[2];
@@ -1391,7 +1382,7 @@
         },
         complete: function(clause) {
             var results = [];
-            var name, operator, value, target;
+            var name, operator, value;
             if (clause.length == 1) {
                 name = clause[0];
             } else if (clause.length == 3) {
@@ -1402,7 +1393,6 @@
                 name = clause[0];
                 operator = clause[1];
                 value = clause[2];
-                target = clause[3];
                 if (name.endsWith('.rec_name')) {
                     name = name.substring(0, name.length - 9);
                 }
@@ -1590,7 +1580,6 @@
         },
         group_operator: function(tokens) {
             var cur = tokens[0];
-            var nex = null;
             var result = [];
             for (const nex of tokens.slice(1)) {
                 if ((nex == '=') && cur &&
@@ -1814,7 +1803,6 @@
                                 this.likify(clause[0])]));
                 } else if ((clause.length == 3) &&
                     (clause[0].toLowerCase() in this.strings)) {
-                    var name = clause[0];
                     var operator = clause[1];
                     var value = clause[2];
                     var field = this.strings[clause[0].toLowerCase()];
@@ -2296,9 +2284,7 @@
             if (boolop === undefined) {
                 boolop = this.and;
             }
-            var field = part[0];
             var operand = part[1];
-            var value = part[2];
             if ((operand === '=') & (boolop === this.and)) {
                 // We should consider that other domain inversion will set a
                 // correct value to this field
@@ -3030,7 +3016,7 @@
 
     Sao.common.guess_mimetype = function(filename) {
         for (var ext in Sao.common.mimetypes) {
-            var re = new RegExp('.*\.' + ext + '$', 'i');
+            var re = new RegExp('.*.' + ext + '$', 'i');
             if (re.test(filename)) {
                 return Sao.common.mimetypes[ext];
             }
@@ -3041,11 +3027,16 @@
     Sao.common.LOCAL_ICONS = [
         'tryton-add',
         'tryton-archive',
+        'tryton-arrow-down',
+        'tryton-arrow-left',
+        'tryton-arrow-right',
+        'tryton-arrow-up',
         'tryton-attach',
         'tryton-back',
+        'tryton-barcode-scanner',
         'tryton-bookmark-border',
-        'tryton-bookmark',
         'tryton-bookmarks',
+        'tryton-bookmark',
         'tryton-cancel',
         'tryton-clear',
         'tryton-close',
@@ -3054,6 +3045,7 @@
         'tryton-date',
         'tryton-delete',
         'tryton-download',
+        'tryton-drag',
         'tryton-email',
         'tryton-error',
         'tryton-exit',
@@ -3086,105 +3078,97 @@
         'tryton-save',
         'tryton-search',
         'tryton-send',
+        'tryton-sound-off',
+        'tryton-sound-on',
         'tryton-star-border',
         'tryton-star',
         'tryton-switch',
         'tryton-translate',
         'tryton-unarchive',
         'tryton-undo',
+        'tryton-unfold-less',
+        'tryton-unfold-more',
         'tryton-warning',
     ];
 
     Sao.common.IconFactory = Sao.class_(Object, {
         batchnum: 10,
-        name2id: {},
-        loaded_icons: {},
-        tryton_icons: [],
-        register_prm: jQuery.when(),
-        load_icons: function(refresh) {
-            refresh = refresh || false;
+        _name2id: {},
+        _icons: {},
+        load_icons: function(refresh=false) {
+            const icon_model = new Sao.Model('ir.ui.icon');
+            var icons;
+            try {
+                icons = icon_model.execute('list_icons', [], {}, false);
+            } catch (e) {
+                icons = [];
+            }
+            const name2id = {};
+            for (const icon of icons) {
+                name2id[icon[1]] = icon[0];
+            }
+            this._name2id = name2id;
             if (!refresh) {
-                for (var icon_name in this.load_icons) {
-                    if (!this.load_icons.hasOwnProperty(icon_name)) {
-                        continue;
-                    }
-                    window.URL.revokeObjectURL(this.load_icons[icon_name]);
+                for (const icon_name in this._icons) {
+                    window.URL.revokeObjectURL(this._icons[icon_name]);
                 }
+                this._icons = {};
             }
-
-            var icon_model = new Sao.Model('ir.ui.icon');
-            return icon_model.execute('list_icons', [], {})
-            .then(icons => {
-                if (!refresh) {
-                    this.name2id = {};
-                    this.loaded_icons = {};
-                }
-                this.tryton_icons = [];
-
-                var icon_id, icon_name;
-                for (var i=0, len=icons.length; i < len; i++) {
-                    icon_id = icons[i][0];
-                    icon_name = icons[i][1];
-                    if (refresh && (icon_name in this.loaded_icons)) {
-                        continue;
-                    }
-                    this.tryton_icons.push([icon_id, icon_name]);
-                    this.name2id[icon_name] = icon_id;
-                }
-            });
+            return name2id;
         },
-        register_icon: function(icon_name) {
-            if (!icon_name) {
-                return jQuery.when();
-            } else if ((icon_name in this.loaded_icons) ||
-                    ~Sao.common.LOCAL_ICONS.indexOf(icon_name)) {
-                return jQuery.when();
+        _get_icon: function(icon_name) {
+            var url = this._icons[icon_name];
+            if (url !== undefined) {
+                return jQuery.when(url);
             }
-            if (this.register_prm.state() == 'pending') {
-                return this.register_prm.then(
-                    () => this.register_icon(icon_name));
+            if (~Sao.common.LOCAL_ICONS.indexOf(icon_name)) {
+                return jQuery.get('images/' + icon_name + '.svg', null, null, 'text')
+                    .then(icon => {
+                        var img_url = this._convert(icon);
+                        this._icons[icon_name] = img_url;
+                        return img_url;
+                    })
+                    .fail(() => {
+                        Sao.Logger.error("Unknown icon %s", icon_name);
+                        this._icons[icon_name] = null;
+                    });
             }
-            var loaded_prm;
-            if (!(icon_name in this.name2id)) {
-                loaded_prm = this.load_icons(true);
-            } else {
-                loaded_prm = jQuery.when();
+            var name2id = this._name2id;
+            if (!(icon_name in name2id)) {
+                name2id = this.load_icons(true);
+                if (!(name in name2id)) {
+                    Sao.Logger.error("Unknown icon %s", icon_name);
+                    this._icons[icon_name] = null;
+                    return jQuery.when();
+                }
             }
+            var ids = [];
+            for (const name in name2id) {
+                if ((!(name in this._icons)) || (name == icon_name)) {
+                    ids.push(name2id[name]);
+                }
+            }
+            const idx = ids.indexOf(name2id[icon_name]);
+            const from = Math.max(Math.round(idx - this.batchnum / 2), 0);
+            const to = Math.round(idx + this.batchnum / 2);
+            ids = ids.slice(from, to);
 
             var icon_model = new Sao.Model('ir.ui.icon');
-            this.register_prm = loaded_prm.then(() => {
-                const find_array = array => {
-                    var idx, l;
-                    for (idx=0, l=this.tryton_icons.length; idx < l; idx++) {
-                        var icon = this.tryton_icons[idx];
-                        if (Sao.common.compare(icon, array)) {
-                            break;
-                        }
-                    }
-                    return idx;
-                };
-                var idx = find_array([this.name2id[icon_name], icon_name]);
-                var from = Math.round(idx - this.batchnum / 2);
-                from = (from < 0) ? 0 : from;
-                var to = Math.round(idx + this.batchnum / 2);
-                var ids = [];
-                for (const e of this.tryton_icons.slice(from, to)) {
-                    ids.push(e[0]);
+            var icons;
+            try {
+                icons = icon_model.execute(
+                    'read', [ids, ['name', 'icon']], {}, false);
+            } catch(e) {
+                icons = [];
+            }
+            for (const icon of icons) {
+                const icon_url = this._convert(icon.icon);
+                this._icons[icon.name] = icon_url;
+                if (icon.name == icon_name) {
+                    url = icon_url;
                 }
-
-                var read_prm = icon_model.execute('read',
-                    [ids, ['name', 'icon']], {});
-                return read_prm.then(icons => {
-                    for (const icon of icons) {
-                        var img_url = this._convert(icon.icon);
-                        this.loaded_icons[icon.name] = img_url;
-                        delete this.name2id[icon.name];
-                        this.tryton_icons.splice(
-                            find_array([icon.id, icon.name]), 1);
-                    }
-                });
-            });
-            return this.register_prm;
+            }
+            return jQuery.when(url);
         },
         _convert: function(data) {
             var xml = jQuery.parseXML(data);
@@ -3198,21 +3182,7 @@
             if (!icon_name) {
                 return jQuery.when('');
             }
-            return this.register_icon(icon_name).then(() => {
-                if (icon_name in this.loaded_icons) {
-                    return this.loaded_icons[icon_name];
-                } else {
-                    return jQuery.get('images/' + icon_name + '.svg', null, null, 'text')
-                        .then(icon => {
-                            var img_url = this._convert(icon);
-                            this.loaded_icons[icon_name] = img_url;
-                            return img_url;
-                        })
-                        .fail(() => {
-                            Sao.Logger.error("Unknown icon %s", icon_name);
-                        });
-                }
-            });
+            return this._get_icon(icon_name);
         },
         get_icon_img: function(icon_name, attrs) {
             attrs = attrs || {};
@@ -3564,24 +3534,38 @@
 
     Sao.common.ErrorDialog = Sao.class_(Sao.common.UniqueDialog, {
         class_: 'error-dialog',
-        size: 'lg',
+        size: 'md',
         build_dialog: function(title, details, prm) {
             var dialog = Sao.common.ConcurrencyDialog._super.build_dialog.call(
                 this);
             dialog.add_title(Sao.i18n.gettext('Application Error'));
-            dialog.body.append(jQuery('<div/>', {
+            const alert_ = jQuery('<div/>', {
                 'class': 'alert alert-danger',
                 role: 'alert'
-            }).append(jQuery('<p/>')
-                .append(jQuery('<pre/>')
-                    .text(details)))
-                .append(jQuery('<p/>')
-                    .append(jQuery('<a/>', {
-                        'class': 'btn btn-link',
-                        href: Sao.config.bug_url,
-                        target: '_blank',
-                        rel: 'noreferrer noopener',
-                    }).text(Sao.i18n.gettext('Report Bug')))));
+            }).appendTo(dialog.body);
+            alert_.append(jQuery('<h4/>')
+                .text(title)
+                .css('white-space', 'pre-wrap'));
+            alert_.append(jQuery('<p/>').append(jQuery('<a/>', {
+                'class': 'btn btn-default',
+                role: 'button',
+                'data-toggle': 'collapse',
+                'data-target': '#error-detail',
+                'aria-expanded': false,
+                'aria-controls': '#error-detail',
+            }).text(Sao.i18n.gettext("Details"))));
+            alert_.append(jQuery('<p/>', {
+                'class': 'collapse',
+                id: 'error-detail',
+            }).append(jQuery('<pre/>', {
+                'class': 'pre-scrollable',
+            }).text(details)));
+            jQuery('<a/>', {
+                'class': 'btn btn-link',
+                href: Sao.config.bug_url,
+                target: '_blank',
+                rel: 'noreferrer noopener',
+            }).text(Sao.i18n.gettext('Report Bug')).appendTo(dialog.footer);
             jQuery('<button/>', {
                 'class': 'btn btn-primary',
                 'type': 'button',
@@ -3780,7 +3764,7 @@
             }
             var prm;
             if (this.source instanceof Array) {
-                prm = jQuery.when(source.filter(function(value) {
+                prm = jQuery.when(this.source.filter(function(value) {
                     return value.toLowerCase().startsWith(text.toLowerCase());
                 }));
             } else {
@@ -4006,7 +3990,7 @@
                 'target': '_blank'
                 }).appendTo(dialog.body)
                 .click(close);
-        var button = jQuery('<button/>', {
+        jQuery('<button/>', {
             'class': 'btn btn-default',
             'type': 'button',
             'title': Sao.i18n.gettext("Close"),
@@ -4239,7 +4223,7 @@
                 'class': 'btn-group',
                 'role': 'group'
             }).appendTo(toolbar);
-            var button = jQuery('<button/>', {
+            jQuery('<button/>', {
                 'class': 'btn btn-default dropdown-toggle',
                 'type': 'button',
                 'data-toggle': 'dropdown',
@@ -4334,6 +4318,7 @@
                 type = 'image/svg+xml';
             }
         } catch (e) {
+            // continue
         }
         var blob = new Blob([data], {type: type});
         return window.URL.createObjectURL(blob);

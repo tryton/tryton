@@ -124,6 +124,12 @@ class Forecast(Workflow, ModelSQL, ModelView):
         return 'draft'
 
     @classmethod
+    def default_warehouse(cls):
+        pool = Pool()
+        Location = pool.get('stock.location')
+        return Location.get_default_warehouse()
+
+    @classmethod
     def default_destination(cls):
         Location = Pool().get('stock.location')
         locations = Location.search(cls.destination.domain)

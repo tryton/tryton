@@ -1193,7 +1193,8 @@ class ModifyCostPrice(Wizard):
                             product.cost_price_method == 'fixed'
                             and revision.date == today)
                         or product.type == 'service'):
-                    cost = revision.get_cost_price(product.cost_price)
+                    cost = round_price(
+                        revision.get_cost_price(product.cost_price))
                     costs[cost].append(product)
                     records.remove(product)
         elif self.model.__name__ == 'product.template':
@@ -1207,7 +1208,8 @@ class ModifyCostPrice(Wizard):
                             and revision.date == today)
                         or template.type == 'service'):
                     for product in template.products:
-                        cost = revision.get_cost_price(product.cost_price)
+                        cost = round_price(
+                            revision.get_cost_price(product.cost_price))
                         costs[cost].append(product)
                     records.remove(template)
         Revision.save(revisions)

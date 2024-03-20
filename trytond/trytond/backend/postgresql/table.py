@@ -440,7 +440,7 @@ class TableHandler(TableHandlerInterface):
                 if self._columns[column_name]['notnull']:
                     return
                 cursor.execute(SQL(
-                        'SELECT id FROM {} WHERE {} IS NULL').format(
+                        'SELECT id FROM {} WHERE {} IS NULL LIMIT 1').format(
                         Identifier(self.table_name),
                         Identifier(column_name)))
                 if not cursor.rowcount:

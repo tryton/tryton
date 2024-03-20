@@ -691,6 +691,8 @@ img.icon {
     width: 100%;
     .form-container, .form-hcontainer, .form-vcontainer {
         display: grid;
+        width: 100%;
+        height: 100%;
     }
     .form-item {
         display: flex;
@@ -783,8 +785,8 @@ img.icon {
     }
     .form-text, .form-richtext {
         > textarea, .richtext {
+            height: 100%;
             line-height: 2.5ex;
-            max-height: 50ex;
             min-height: 12.5ex;
             overflow: auto;
             resize: vertical;
