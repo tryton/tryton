@@ -216,8 +216,8 @@ class CreateShippingUPS(Wizard):
         shipment_results = shipment_response['ShipmentResults']
         shipment.reference = shipment_results['ShipmentIdentificationNumber']
         ups_packages = shipment_results['PackageResults']
-        if len(packages) == 1:
-            # In case only one package is requested UPS returns a dictionnary
+        if not isinstance(ups_packages, list):
+            # In case only one package is requested UPS may return a dictionary
             # instead of a list of one package
             ups_packages = [ups_packages]
 
