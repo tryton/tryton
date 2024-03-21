@@ -12,6 +12,7 @@ from dateutil.relativedelta import relativedelta
 from gi.repository import Gdk, Gtk
 
 import tryton.rpc as rpc
+from tryton import common
 from tryton.action import Action
 from tryton.common import COLOR_SCHEMES, generateColorscheme, hex2rgb
 from tryton.config import CONFIG
@@ -386,7 +387,8 @@ class Graph(Gtk.DrawingArea):
                     if isinstance(value, datetime.timedelta):
                         value = value.total_seconds()
                     self.datas[x][key] += float(value or 0)
-        date_format = self.view.screen.context.get('date_format', '%x')
+        date_format = common.date_format(
+            self.view.screen.context.get('date_format'))
         datetime_format = date_format + ' %X'
         if isinstance(minx, datetime.datetime):
             date = minx
