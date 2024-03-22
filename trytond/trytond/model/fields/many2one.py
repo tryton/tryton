@@ -264,17 +264,16 @@ class Many2One(Field):
         else:
             _, target_name = name.split('.', 1)
         target_domain = [(target_name,) + tuple(domain[1:])]
-        if Target.estimated_count() < _subquery_threshold:
+        rule_domain = Rule.domain_get(Target.__name__, mode='read')
+        if not rule_domain and target_name == 'id':
+            # No need to join with the target table
+            return super().convert_domain(
+                (self.name, operator, value), tables, Model)
+        elif Target.estimated_count() < _subquery_threshold:
             query = Target.search(target_domain, order=[], query=True)
             return column.in_(query)
         else:
-            rule_domain = Rule.domain_get(Target.__name__, mode='read')
-            if rule_domain:
-                target_domain = [target_domain, rule_domain]
-            elif target_name == 'id':
-                # No need to join with the target table
-                return super().convert_domain(
-                    (self.name, operator, value), tables, Model)
+            target_domain = [target_domain, rule_domain]
             target_tables = self._get_target_tables(tables)
             target_table, _ = target_tables[None]
             _, expression = Target.search_domain(
