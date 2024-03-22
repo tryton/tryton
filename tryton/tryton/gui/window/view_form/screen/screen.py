@@ -826,7 +826,7 @@ class Screen:
         self.group.load(new_ids, position=self.new_position)
         if new_ids:
             self.current_record = self.group.get(new_ids[0])
-        self.display()
+        self.display(set_cursor=True)
         return True
 
     def set_tree_state(self):

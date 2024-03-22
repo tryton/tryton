@@ -1707,7 +1707,7 @@
                     if (!jQuery.isEmptyObject(new_ids)) {
                         this.current_record = this.group.get(new_ids[0]);
                     }
-                    this.display().always(dfd.resolve);
+                    this.display(true).always(dfd.resolve);
                 }, dfd.reject);
             return dfd.promise();
         },
