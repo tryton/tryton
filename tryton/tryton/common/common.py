@@ -37,6 +37,7 @@ from string import Template
 from threading import Lock, Thread
 
 import tryton.rpc as rpc
+from tryton.cache import CacheDict
 from tryton.config import CONFIG, PIXMAPS_DIR, SOUNDS_DIR, TRYTON_ICON
 
 try:
@@ -57,28 +58,6 @@ from .widget_style import widget_class
 
 _ = gettext.gettext
 logger = logging.getLogger(__name__)
-
-
-class CacheDict(OrderedDict):
-
-    def __init__(self, *args, cache_len=10, **kwargs):
-        assert cache_len > 0
-        self.cache_len = cache_len
-
-        super().__init__(*args, **kwargs)
-
-    def __setitem__(self, key, value):
-        super().__setitem__(key, value)
-        self.move_to_end(key)
-
-        while len(self) > self.cache_len:
-            oldkey = next(iter(self))
-            self.__delitem__(oldkey)
-
-    def __getitem__(self, key):
-        value = super().__getitem__(key)
-        self.move_to_end(key)
-        return value
 
 
 class IconFactory:
