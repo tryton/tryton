@@ -552,10 +552,19 @@ class SaleOpportunityLine(sequence_ordered(), ModelSQL, ModelView):
                 ()),
             ],
         states=_states)
+    product_uom_category = fields.Function(
+        fields.Many2One(
+            'product.uom.category', "Product UoM Category"),
+        'on_change_with_product_uom_category')
     quantity = fields.Float(
         "Quantity", digits='unit', required=True, states=_states)
     unit = fields.Many2One(
         'product.uom', "Unit",
+        domain=[
+            If(Eval('product_uom_category'),
+                ('category', '=', Eval('product_uom_category', -1)),
+                ('category', '=', -1)),
+            ],
         states={
             'required': Bool(Eval('product')),
             'readonly': _states['readonly'],
@@ -595,6 +604,10 @@ class SaleOpportunityLine(sequence_ordered(), ModelSQL, ModelView):
         category = self.product.sale_uom.category
         if not self.unit or self.unit.category != category:
             self.unit = self.product.sale_uom
+
+    @fields.depends('product')
+    def on_change_with_product_uom_category(self, name=None):
+        return self.product.default_uom_category if self.product else None
 
     def get_sale_line(self, sale):
         '''
