@@ -16,6 +16,7 @@ from trytond.modules.company.model import employee_field, set_employee
 from trytond.modules.currency.fields import Monetary
 from trytond.pool import Pool
 from trytond.pyson import Bool, Eval, Get, If, In
+from trytond.tools import firstline
 from trytond.transaction import Transaction
 
 
@@ -569,6 +570,9 @@ class SaleOpportunityLine(sequence_ordered(), ModelSQL, ModelView):
             'required': Bool(Eval('product')),
             'readonly': _states['readonly'],
             })
+    description = fields.Text("Description", states=_states)
+    summary = fields.Function(fields.Char("Summary"), 'on_change_with_summary')
+    note = fields.Text("Note")
 
     del _states
 
@@ -609,6 +613,10 @@ class SaleOpportunityLine(sequence_ordered(), ModelSQL, ModelView):
     def on_change_with_product_uom_category(self, name=None):
         return self.product.default_uom_category if self.product else None
 
+    @fields.depends('description')
+    def on_change_with_summary(self, name=None):
+        return firstline(self.description or '')
+
     def get_sale_line(self, sale):
         '''
         Return sale line for opportunity line
@@ -618,7 +626,7 @@ class SaleOpportunityLine(sequence_ordered(), ModelSQL, ModelView):
             type='line',
             product=self.product,
             sale=sale,
-            description=None,
+            description=self.description,
             )
         sale_line.on_change_product()
         self._set_sale_line_quantity(sale_line)
