@@ -1817,6 +1817,7 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin, InvoiceReportMixin):
     @classmethod
     @ModelView.button
     @Workflow.transition('posted')
+    @set_employee('posted_by', when='before')
     def post(cls, invoices):
         pool = Pool()
         Date = pool.get('ir.date')
@@ -1845,7 +1846,6 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin, InvoiceReportMixin):
         cls._post(invoices)
 
     @classmethod
-    @set_employee('posted_by', when='before')
     def _post(cls, invoices):
         pool = Pool()
         Move = pool.get('account.move')
@@ -1988,7 +1988,7 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin, InvoiceReportMixin):
             else:
                 posted.append(invoice)
         cls.paid(paid)
-        cls.post(posted)
+        cls._post(posted)
 
     @classmethod
     @Workflow.transition('paid')
