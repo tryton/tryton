@@ -8,10 +8,13 @@ from zeep.exceptions import Error
 
 from trytond.cache import Cache
 from trytond.config import config
+from trytond.i18n import gettext
 from trytond.model import fields
 from trytond.modules.currency.currency import CronFetchError
-from trytond.pool import PoolMeta
+from trytond.pool import Pool, PoolMeta
 from trytond.pyson import Eval, If
+
+from .exceptions import RSCredentialWarning
 
 URL = (
     'https://webservices.nbs.rs/CommunicationOfficeService1_0/'
@@ -95,3 +98,18 @@ class Cron(metaclass=PoolMeta):
                 Decimal(r.Unit.text) / Decimal(r.MiddleRate.text))
             for r in data.iterchildren()
             if r.Date == date.strftime('%d.%m.%Y')}
+
+    @classmethod
+    def write(cls, *args):
+        pool = Pool()
+        Warning = pool.get('res.user.warning')
+        actions = iter(args)
+        for crons, values in zip(actions, actions):
+            if ({'rs_username', 'rs_password', 'rs_license_id'}
+                    & values.keys()):
+                warning_name = Warning.format('rs_credential', crons)
+                if Warning.check(warning_name):
+                    raise RSCredentialWarning(
+                        warning_name,
+                        gettext('currency_rs.msg_rs_credential_modified'))
+        return super().write(*args)

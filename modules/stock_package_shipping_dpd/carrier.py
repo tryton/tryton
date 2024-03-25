@@ -8,11 +8,11 @@ from zeep.exceptions import Fault
 from trytond.i18n import gettext
 from trytond.model import (
     MatchMixin, ModelSQL, ModelView, fields, sequence_ordered)
-from trytond.pool import PoolMeta
+from trytond.pool import Pool, PoolMeta
 from trytond.pyson import Eval
 
 from .configuration import LOGIN_SERVICE, get_client
-from .exceptions import DPDError
+from .exceptions import DPDCredentialWarning, DPDError
 
 
 class CredentialDPD(sequence_ordered(), ModelSQL, ModelView, MatchMixin):
@@ -51,6 +51,21 @@ class CredentialDPD(sequence_ordered(), ModelSQL, ModelView, MatchMixin):
         self.token = result.authToken
         self.depot = result.depot
         self.save()
+
+    @classmethod
+    def write(cls, *args):
+        pool = Pool()
+        Warning = pool.get('res.user.warning')
+        actions = iter(args)
+        for credentials, values in zip(actions, actions):
+            if {'user_id', 'password', 'server'} & values.keys():
+                warning_name = Warning.format('dpd_credential', credentials)
+                if Warning.check(warning_name):
+                    raise DPDCredentialWarning(
+                        warning_name,
+                        gettext('stock_package_shipping_dpd'
+                            '.msg_dpd_credential_modified'))
+        return super().write(*args)
 
 
 class Carrier(metaclass=PoolMeta):

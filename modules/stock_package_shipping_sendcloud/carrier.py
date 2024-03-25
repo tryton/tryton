@@ -10,11 +10,11 @@ from trytond.config import config
 from trytond.i18n import gettext
 from trytond.model import (
     MatchMixin, ModelSQL, ModelView, fields, sequence_ordered)
-from trytond.pool import PoolMeta
+from trytond.pool import Pool, PoolMeta
 from trytond.protocols.wrappers import HTTPStatus
 from trytond.pyson import Eval
 
-from .exceptions import SendcloudError
+from .exceptions import SendcloudCredentialWarning, SendcloudError
 
 SENDCLOUD_API_URL = 'https://panel.sendcloud.sc/api/v2/'
 TIMEOUT = config.getfloat(
@@ -170,6 +170,22 @@ class CredentialSendcloud(sequence_ordered(), ModelSQL, ModelView, MatchMixin):
             url, auth=self.auth, timeout=TIMEOUT, headers=HEADERS)
         response.raise_for_status()
         return response.content
+
+    @classmethod
+    def write(cls, *args):
+        pool = Pool()
+        Warning = pool.get('res.user.warning')
+        actions = iter(args)
+        for credentials, values in zip(actions, actions):
+            if {'public_key', 'secret_key'} & values.keys():
+                warning_name = Warning.format(
+                    'sendcloud_credential', credentials)
+                if Warning.check(warning_name):
+                    raise SendcloudCredentialWarning(
+                        warning_name,
+                        gettext('stock_package_shipping_sendcloud'
+                            '.msg_sendcloud_credential_modified'))
+        return super().write(*args)
 
 
 class SendcloudAddress(sequence_ordered(), ModelSQL, ModelView, MatchMixin):

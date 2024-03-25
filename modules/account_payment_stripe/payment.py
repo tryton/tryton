@@ -35,6 +35,7 @@ from trytond.wizard import (
     Button, StateAction, StateTransition, StateView, Wizard)
 
 from .common import StripeCustomerMethodMixin
+from .exceptions import StripeAccountWarning
 
 logger = logging.getLogger(__name__)
 stripe.max_network_retries = config.getint(
@@ -1313,6 +1314,21 @@ class Account(ModelSQL, ModelView):
             else:
                 account.webhook_identifier = uuid.uuid4().hex
         cls.save(accounts)
+
+    @classmethod
+    def write(cls, *args):
+        pool = Pool()
+        Warning = pool.get('res.user.warning')
+        actions = iter(args)
+        for accounts, values in zip(actions, actions):
+            if {'secret_key', 'publishable_key'} & values.keys():
+                warning_name = Warning.format('stripe_key', accounts)
+                if Warning.check(warning_name):
+                    raise StripeAccountWarning(
+                        warning_name,
+                        gettext('account_payment_stripe'
+                            '.msg_stripe_key_modified'))
+        return super().write(*args)
 
 
 class Customer(CheckoutMixin, DeactivableMixin, ModelSQL, ModelView):

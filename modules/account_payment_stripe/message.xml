@@ -3,6 +3,9 @@
 this repository contains the full copyright notices and license terms. -->
 <tryton>
     <data grouped="1">
+        <record model="ir.message" id="msg_stripe_key_modified">
+            <field name="text">Are you sure you want to modify the keys of the Stripe account?</field>
+        </record>
         <record model="ir.message" id="msg_no_stripe_token">
             <field name="text">To process payment "%(payment)s" you must set a Stripe token or customer.</field>
         </record>

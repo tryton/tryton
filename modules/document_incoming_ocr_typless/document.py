@@ -9,10 +9,10 @@ import requests
 
 from trytond.i18n import gettext
 from trytond.model import fields
-from trytond.pool import PoolMeta
+from trytond.pool import Pool, PoolMeta
 from trytond.pyson import Eval
 
-from .exceptions import TyplessError
+from .exceptions import TyplessCredentialWarning, TyplessError
 
 MIME_TYPES = {
     'application/pdf',
@@ -320,3 +320,18 @@ class IncomingOCRService(metaclass=PoolMeta):
                 return ''
         elif name == 'vat_rate_net':
             return str(line.base)
+
+    @classmethod
+    def write(cls, *args):
+        pool = Pool()
+        Warning = pool.get('res.user.warning')
+        actions = iter(args)
+        for services, values in zip(actions, actions):
+            if 'typless_api_key' in values.keys():
+                warning_name = Warning.format('typless_credential', services)
+                if Warning.check(warning_name):
+                    raise TyplessCredentialWarning(
+                        warning_name,
+                        gettext('document_incoming_ocr_typless'
+                            '.msg_typless_credential_modified'))
+        return super().write(*args)

@@ -19,7 +19,7 @@ from trytond.pool import Pool, PoolMeta
 from trytond.pyson import Bool, Eval, If
 from trytond.transaction import Transaction
 
-from .exceptions import InvoiceChorusValidationError
+from .exceptions import ChorusCredentialWarning, InvoiceChorusValidationError
 
 OAUTH_TOKEN_URL = {
     'service-qualif': 'https://sandbox-oauth.piste.gouv.fr/api/oauth/token',
@@ -162,6 +162,28 @@ class CredentialChorus(ModelSQL, CompanyValueMixin):
                 verify=True, timeout=TIMEOUT)
         resp.raise_for_status()
         return resp.json()
+
+    @classmethod
+    def write(cls, *args):
+        pool = Pool()
+        Warning = pool.get('res.user.warning')
+        actions = iter(args)
+        for records, values in zip(actions, actions):
+            for record in records:
+                for field in [
+                        'chorus_piste_client_id', 'chorus_piste_client_secret',
+                        'chorus_login', 'chorus_password', 'chorus_service']:
+                    if (field in values
+                            and getattr(record, field)
+                            and getattr(record, field) != values[field]):
+                        warning_name = Warning.format(
+                            'chorus_credential', [record])
+                        if Warning.check(warning_name):
+                            raise ChorusCredentialWarning(
+                                warning_name,
+                                gettext('account_fr_chorus'
+                                    '.msg_chorus_credential_modified'))
+        return super().write(*args)
 
 
 class Invoice(metaclass=PoolMeta):
