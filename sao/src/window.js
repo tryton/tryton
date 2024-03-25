@@ -937,7 +937,7 @@
             }));
             revisions.forEach(function(revision) {
                 var name = revision[2];
-                rev = revision[0];
+                var rev = revision[0];
                 this.select.append(jQuery('<option/>', {
                     value: rev.valueOf(),
                     text: Sao.common.format_datetime(
