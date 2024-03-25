@@ -1,7 +1,6 @@
 /* This file is part of Tryton.  The COPYRIGHT file at the top level of
    this repository contains the full copyright notices and license terms. */
 
-/* jshint ignore:start */
 // Must be defined in non strict context otherwise is invalid
 function eval_pyson(value){
     with (Sao.PYSON.eval) {
@@ -9,7 +8,6 @@ function eval_pyson(value){
         return eval('(' + value + ')');
     }
 }
-/* jshint ignore:end */
 
 (function() {
     'use strict';
