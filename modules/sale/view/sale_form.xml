@@ -72,6 +72,9 @@ this repository contains the full copyright notices and license terms. -->
             <separator name="comment" colspan="4"/>
             <field name="comment" colspan="4"/>
         </page>
+        <page name="invoices_ignored" col="1">
+            <field name="invoices_ignored"/>
+        </page>
     </notebook>
     <group id="links" col="-1" colspan="3">
         <link icon="tryton-shipment-out" name="sale.act_shipment_form"/>

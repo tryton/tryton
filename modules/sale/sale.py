@@ -214,8 +214,16 @@ class Sale(
     invoices = fields.Function(fields.Many2Many(
             'account.invoice', None, None, "Invoices"),
         'get_invoices', searcher='search_invoices')
-    invoices_ignored = fields.Many2Many('sale.sale-ignored-account.invoice',
-            'sale', 'invoice', 'Ignored Invoices', readonly=True)
+    invoices_ignored = fields.Many2Many(
+        'sale.sale-ignored-account.invoice', 'sale', 'invoice',
+        "Ignored Invoices",
+        domain=[
+            ('id', 'in', Eval('invoices', [])),
+            ('state', '=', 'cancelled'),
+            ],
+        states={
+            'invisible': ~Eval('invoices_ignored', []),
+            })
     invoices_recreated = fields.Many2Many(
         'sale.sale-recreated-account.invoice', 'sale', 'invoice',
         'Recreated Invoices', readonly=True)
@@ -340,7 +348,7 @@ class Sale(
                     },
                 'process': {
                     'invisible': ~Eval('state').in_(
-                        ['confirmed', 'processing']),
+                        ['confirmed', 'processing', 'done']),
                     'icon': If(Eval('state') == 'confirmed',
                         'tryton-forward', 'tryton-refresh'),
                     'depends': ['state'],
@@ -1185,7 +1193,11 @@ class SaleIgnoredInvoice(ModelSQL):
     sale = fields.Many2One(
         'sale.sale', "Sale", ondelete='CASCADE', required=True)
     invoice = fields.Many2One(
-        'account.invoice', "Invoice", ondelete='RESTRICT', required=True)
+        'account.invoice', "Invoice", ondelete='RESTRICT', required=True,
+        domain=[
+            ('sales', '=', Eval('sale', -1)),
+            ('state', '=', 'cancelled'),
+            ])
 
     @classmethod
     def __register__(cls, module):
@@ -1201,7 +1213,11 @@ class SaleRecreatedInvoice(ModelSQL):
     sale = fields.Many2One(
         'sale.sale', "Sale", ondelete='CASCADE', required=True)
     invoice = fields.Many2One(
-        'account.invoice', "Invoice", ondelete='RESTRICT', required=True)
+        'account.invoice', "Invoice", ondelete='RESTRICT', required=True,
+        domain=[
+            ('sales', '=', Eval('sale', -1)),
+            ('state', '=', 'cancelled'),
+            ])
 
     @classmethod
     def __register__(cls, module):
@@ -1361,8 +1377,16 @@ class SaleLine(TaxableMixin, sequence_ordered(), ModelSQL, ModelView):
         states={
             'invisible': ~Eval('moves'),
             })
-    moves_ignored = fields.Many2Many('sale.line-ignored-stock.move',
-            'sale_line', 'move', 'Ignored Moves', readonly=True)
+    moves_ignored = fields.Many2Many(
+        'sale.line-ignored-stock.move', 'sale_line', 'move',
+        "Ignored Moves",
+        domain=[
+            ('id', 'in', Eval('moves', [])),
+            ('state', '=', 'cancelled'),
+            ],
+        states={
+            'invisible': ~Eval('moves_ignored', []),
+            })
     moves_recreated = fields.Many2Many('sale.line-recreated-stock.move',
             'sale_line', 'move', 'Recreated Moves', readonly=True)
     moves_exception = fields.Function(
@@ -2114,7 +2138,11 @@ class SaleLineIgnoredMove(ModelSQL):
     sale_line = fields.Many2One(
         'sale.line', "Sale Line", ondelete='CASCADE', required=True)
     move = fields.Many2One(
-        'stock.move', "Move", ondelete='RESTRICT', required=True)
+        'stock.move', "Move", ondelete='RESTRICT', required=True,
+        domain=[
+            ('origin.id', '=', Eval('sale_line', -1), 'sale.line'),
+            ('state', '=', 'cancelled'),
+            ])
 
     @classmethod
     def __register__(cls, module):
@@ -2130,7 +2158,11 @@ class SaleLineRecreatedMove(ModelSQL):
     sale_line = fields.Many2One(
         'sale.line', "Sale Line", ondelete='CASCADE', required=True)
     move = fields.Many2One(
-        'stock.move', "Move", ondelete='RESTRICT', required=True)
+        'stock.move', "Move", ondelete='RESTRICT', required=True,
+        domain=[
+            ('origin.id', '=', Eval('sale_line', -1), 'sale.line'),
+            ('state', '=', 'cancelled'),
+            ])
 
     @classmethod
     def __register__(cls, module):

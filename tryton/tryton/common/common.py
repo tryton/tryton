@@ -1293,10 +1293,15 @@ def RPCExecute(*args, **kwargs):
 
 
 def RPCContextReload(callback=None):
+    def clean(context):
+        return {
+            k: v for k, v in context.items()
+            if k != 'locale' and not k.endswith('.rec_name')}
+
     def update(context):
         rpc.context_reset()
         try:
-            rpc.CONTEXT.update(context())
+            rpc.CONTEXT.update(clean(context()))
         except RPCException:
             pass
         if callback:
@@ -1306,7 +1311,7 @@ def RPCContextReload(callback=None):
         callback=update if callback else None)
     if not callback:
         rpc.context_reset()
-        rpc.CONTEXT.update(context)
+        rpc.CONTEXT.update(clean(context))
 
 
 class Tooltips(object):
