@@ -506,8 +506,10 @@
                         attributes.res_id = [attributes.res_id];
                     }
                     screen.load(attributes.res_id);
-                    screen.current_record = screen.group.get(
-                        attributes.res_id[0]);
+                    if (attributes.res_id.length) {
+                        screen.current_record = screen.group.get(
+                            attributes.res_id[0]);
+                    }
                     screen.display();
                 } else {
                     if (screen.current_view.view_type == 'form') {

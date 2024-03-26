@@ -66,7 +66,8 @@ class Form(TabContent):
             if isinstance(res_id, int):
                 res_id = [res_id]
             self.screen.load(res_id)
-            self.screen.current_record = self.screen.group.get(res_id[0])
+            if res_id:
+                self.screen.current_record = self.screen.group.get(res_id[0])
             self.screen.display()
         else:
             if self.screen.current_view.view_type == 'form':
