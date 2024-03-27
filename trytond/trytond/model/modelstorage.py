@@ -987,7 +987,7 @@ class ModelStorage(Model):
                 if isinstance(value, datetime.date):
                     return value
                 elif value:
-                    return datetime.datetime.strptime(value, '%Y-%m-%d').date()
+                    return datetime.date.fromisoformat(value)
 
             def convert_datetime(value):
                 if isinstance(value, datetime.datetime):
