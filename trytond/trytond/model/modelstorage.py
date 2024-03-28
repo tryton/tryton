@@ -1436,10 +1436,12 @@ class ModelStorage(Model):
                             or not digits
                             or any(d is None for d in digits)):
                         return
-                    if (round(value, digits[1]) != value
-                            or (isinstance(value, Decimal)
-                                and value.as_tuple().exponent < -digits[1])):
-                        raise_error(value)
+                    if isinstance(value, Decimal):
+                        if value.as_tuple().exponent < -digits[1]:
+                            raise_error(value)
+                    else:
+                        if round(value, digits[1]) != value:
+                            raise_error(value)
                 # validate digits
                 if getattr(field, 'digits', None):
                     if is_pyson(field.digits):
