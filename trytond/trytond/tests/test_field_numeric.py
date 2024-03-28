@@ -158,6 +158,16 @@ class FieldNumericTestCase(unittest.TestCase):
                         }])
 
     @with_transaction()
+    def test_create_huge_digits_valid(self):
+        "Test create a huge number with valid digits"
+        Numeric = Pool().get('test.numeric_digits')
+
+        Numeric.create([{
+                    'digits': 2,
+                    'numeric': Decimal('10e25'),
+                    }])
+
+    @with_transaction()
     def test_create_trailing_zero_digits_invalid(self):
         "Test create numeric with invalid trailing zero digits"
         Numeric = Pool().get('test.numeric_digits')
