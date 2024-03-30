@@ -423,5 +423,8 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.message" id="msg_field_model_name">
             <field name="text">%(field)s (model name)</field>
         </record>
+        <record model="ir.message" id="msg_cache_name_unique">
+            <field name="text">The name of cache must be unique.</field>
+        </record>
     </data>
 </tryton>
