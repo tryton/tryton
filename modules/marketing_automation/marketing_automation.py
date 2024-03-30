@@ -982,13 +982,17 @@ class RecordActivity(Workflow, ModelSQL, ModelView):
 
     @classmethod
     def process(cls):
+        transaction = Transaction()
+        context = transaction.context
         now = datetime.datetime.now()
         activities = cls.search([
                 ('state', '=', 'waiting'),
                 ('at', '<=', now),
                 ('record.blocked', '!=', True),
                 ])
-        cls.do(activities)
+        with transaction.set_context(
+                queue_batch=context.get('queue_batch', True)):
+            cls.__queue__.do(activities)
 
     @classmethod
     @ModelView.button
