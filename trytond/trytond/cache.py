@@ -310,11 +310,6 @@ class MemoryCache(BaseCache):
                                     [[CurrentTimestamp(), name]]))
 
                         cursor.execute(*table.select(
-                                Max(table.timestamp),
-                                where=table.name == name))
-                        timestamp, = cursor.fetchone()
-
-                        cursor.execute(*table.select(
                                 _cast(Max(table.timestamp)),
                                 where=table.name == name))
                         timestamp, = cursor.fetchone()
