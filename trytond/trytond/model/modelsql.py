@@ -864,7 +864,7 @@ class ModelSQL(ModelStorage):
                             recomposed = dict(zip(column_names, value[skip:]))
                             raise_func(
                                 exception, recomposed, transaction=transaction)
-                    raise
+                        raise
 
         to_insert = []
         previous_columns = [table.create_uid, table.create_date]
@@ -1372,7 +1372,7 @@ class ModelSQL(ModelStorage):
                             cls.__raise_data_error(
                                 exception, values, list(values.keys()),
                                 transaction=transaction)
-                    raise
+                        raise
 
             for fname, value in values.items():
                 field = cls._fields[fname]
@@ -1541,7 +1541,7 @@ class ModelSQL(ModelStorage):
                 with Transaction().new_transaction():
                     cls.__raise_integrity_error(
                         exception, {}, transaction=transaction)
-                raise
+                    raise
 
         if has_translation:
             Translation.delete_ids(cls.__name__, 'model', ids)
