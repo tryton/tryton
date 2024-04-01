@@ -633,7 +633,7 @@ class ModelSQL(ModelStorage):
                         Transaction().set_context(_check_access=False):
                     cls.__raise_integrity_error(
                         exception, values, transaction=transaction)
-                raise
+                    raise
 
         transaction.create_records.setdefault(cls.__name__,
             set()).update(new_ids)
@@ -1030,7 +1030,7 @@ class ModelSQL(ModelStorage):
                         cls.__raise_integrity_error(
                             exception, values, list(values.keys()),
                             transaction=transaction)
-                    raise
+                        raise
 
             for fname, value in values.items():
                 field = cls._fields[fname]
@@ -1186,7 +1186,7 @@ class ModelSQL(ModelStorage):
                 with Transaction().new_transaction():
                     cls.__raise_integrity_error(
                         exception, {}, transaction=transaction)
-                raise
+                    raise
 
         if has_translation:
             Translation.delete_ids(cls.__name__, 'model', ids)
