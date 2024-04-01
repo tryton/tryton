@@ -382,7 +382,7 @@ Modify cost price::
     >>> modify_price.form.cost_price = '3.00'
     >>> modify_price.execute('modify')
     >>> product.cost_price
-    Decimal('3.00')
+    Decimal('3.0000')
     >>> stock_out.reload()
     >>> stock_out.debit
     Decimal('79.00')
