@@ -58,6 +58,15 @@ class Invoice(metaclass=PoolMeta):
                 sales.add(line.origin.sale.id)
         return list(sales)
 
+    @classmethod
+    def search_sales(cls, name, clause):
+        domain = super().search_sales(name, clause)
+        return ['OR',
+            domain,
+            ('lines.origin.sale' + clause[0][len(name):],
+                *clause[1:3], 'sale.advance_payment.condition', *clause[3:]),
+            ]
+
 
 class InvoiceLine(metaclass=PoolMeta):
     __name__ = 'account.invoice.line'
