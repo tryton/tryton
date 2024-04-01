@@ -185,26 +185,28 @@ class Cron(DeactivableMixin, ModelSQL, ModelView):
                         with processing(name), \
                                 transaction.new_transaction(
                                     **transaction_extras) as cron_trans:
-                            cron.run_once()
-                            cron_trans.commit()
-                    except Exception as e:
-                        if isinstance(e, TransactionError):
-                            cron_trans.rollback()
-                            e.fix(transaction_extras)
-                            continue
-                        if (isinstance(e, backend.DatabaseOperationalError)
-                                and count < retry):
-                            cron_trans.rollback()
-                            count += 1
-                            logger.debug("Retry: %i", count)
-                            continue
-                        if isinstance(e, (UserError, UserWarning)):
-                            Error.log(cron, e)
-                            logger.info(
-                                "%s failed after %i ms", name, duration())
-                        else:
-                            logger.exception(
-                                "%s failed after %i ms", name, duration())
+                            try:
+                                cron.run_once()
+                                cron_trans.commit()
+                            except TransactionError as e:
+                                cron_trans.rollback()
+                                e.fix(transaction_extras)
+                                continue
+                            except backend.DatabaseOperationalError:
+                                if count < retry:
+                                    cron_trans.rollback()
+                                    count += 1
+                                    logger.debug("Retry: %i", count)
+                                    continue
+                                else:
+                                    raise
+                    except (UserError, UserWarning) as e:
+                        Error.log(cron, e)
+                        logger.info(
+                            "%s failed after %i ms", name, duration())
+                    except Exception:
+                        logger.exception(
+                            "%s failed after %i ms", name, duration())
                     cron.next_call = cron.compute_next_call(now)
                     cron.save()
                     break
