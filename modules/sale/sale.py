@@ -969,12 +969,12 @@ class Sale(
     def is_done(self):
         return ((self.invoice_state == 'paid'
                 or (self.invoice_state == 'none'
-                    and all(not l.quantity
-                        for l in self.lines if l.type == 'line')))
+                    and self.invoice_method != 'manual'))
             and (self.shipment_state == 'sent'
                 or (self.shipment_state == 'none'
-                    and all(l.product.type == 'service'
-                        for l in self.lines if l.product))))
+                    and self.shipment_method != 'manual')
+                or all(l.product.type == 'service'
+                    for l in self.lines if l.product)))
 
     @classmethod
     def delete(cls, sales):
