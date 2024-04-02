@@ -574,7 +574,7 @@
                     record.modified_fields.id = added;
                 }
             } else {
-                result = response_id != 'RESPONSE_CANCEL';
+                result = (response_id != 'RESPONSE_CANCEL') && !readonly;
             }
             (cancel_prm || jQuery.when()).then(() => {
                 if (this.callback) {
