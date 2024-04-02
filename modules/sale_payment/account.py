@@ -52,7 +52,7 @@ class Payment(metaclass=PoolMeta):
             sale_amount = getattr(sale, 'total_amount', None)
             payment_amount = sum(
                 (p.amount for p in getattr(sale, 'payments', [])
-                    if p.state != 'failed'),
+                    if p.state != 'failed' and p != self),
                 Decimal(0))
             if sale_amount is not None:
                 self.kind = 'receivable' if sale_amount > 0 else 'payable'
