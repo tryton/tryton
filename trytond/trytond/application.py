@@ -36,7 +36,7 @@ if db_names:
     reader = csv.reader(StringIO(db_names))
     threads = []
     for name in next(reader):
-        thread = threading.Thread(target=Pool(name).init)
+        thread = threading.Thread(target=lambda: Pool(name).init())
         thread.start()
         threads.append(thread)
     for thread in threads:

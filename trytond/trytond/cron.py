@@ -14,7 +14,7 @@ logger = logging.getLogger(__name__)
 def run(options):
     threads = []
     for name in options.database_names:
-        thread = threading.Thread(target=Pool(name).init)
+        thread = threading.Thread(target=lambda: Pool(name).init())
         thread.start()
         threads.append(thread)
     for thread in threads:
