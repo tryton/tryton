@@ -123,7 +123,9 @@ class Cron(DeactivableMixin, ModelSQL, ModelView):
                 }),
             ]
 
-    def compute_next_call(self, now):
+    def compute_next_call(self, now=None):
+        if now is None:
+            now = datetime.datetime.now()
         return (now.replace(tzinfo=tz.UTC).astimezone(tz.SERVER)
             + relativedelta(**{self.interval_type: self.interval_number})
             + relativedelta(
@@ -210,7 +212,7 @@ class Cron(DeactivableMixin, ModelSQL, ModelView):
                         task.lock()
                     with processing(name):
                         task.run_once()
-                    task.next_call = task.compute_next_call()
+                    task.next_call = task.compute_next_call(now)
                     task.save()
                     logger.info("%s in %i ms", name, duration())
                 except Exception as e:
