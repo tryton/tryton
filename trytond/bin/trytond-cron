@@ -29,9 +29,11 @@ import trytond.cron as cron
 # Import after application is configured
 from trytond.pool import Pool
 
-with commandline.pidfile(options):
-    try:
-        Pool.start()
-        cron.run(options)
-    except KeyboardInterrupt:
-        pass
+# Ensure main module can be safely imported by a new interpreter
+if __name__ == '__main__':
+    with commandline.pidfile(options):
+        try:
+            Pool.start()
+            cron.run(options)
+        except KeyboardInterrupt:
+            pass
