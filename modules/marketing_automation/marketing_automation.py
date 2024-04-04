@@ -608,7 +608,7 @@ class Activity(
             return
         try:
             MarkupTemplate(self.email_template)
-        except Exception as exception:
+        except GenshiTemplateError as exception:
             raise TemplateError(
                 gettext('marketing_automation'
                     '.msg_activity_invalid_email_template',
@@ -622,7 +622,7 @@ class Activity(
             return
         try:
             TextTemplate(self.email_title)
-        except Exception as exception:
+        except GenshiTemplateError as exception:
             raise TemplateError(
                 gettext('marketing_automation'
                     '.msg_activity_invalid_email_title',

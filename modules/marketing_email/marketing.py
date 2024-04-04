@@ -421,7 +421,7 @@ class Message(Workflow, ModelSQL, ModelView):
                 continue
             try:
                 MarkupTemplate(message.content)
-            except Exception as exception:
+            except GenshiTemplateError as exception:
                 raise TemplateError(
                     gettext('marketing_email'
                         '.msg_message_invalid_content',
