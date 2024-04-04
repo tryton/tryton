@@ -34,6 +34,8 @@ class Sale(metaclass=PoolMeta):
             removed.extend(sale.set_extra())
         Line.delete(removed)
         cls.save(sales)
+        # Reset to quotation state to avoid duplicate log entries
+        cls.write(sales, {'state': 'quotation'})
 
     def set_extra(self):
         'Set extra lines and fill lines_to_delete'
