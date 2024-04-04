@@ -229,7 +229,7 @@ def order_line_mixin(prefix):
         def get_moves_progress(self, name):
             progress = super().get_moves_progress(name)
             if self.components:
-                progress = 0
+                progress = 0.
                 for component in self.components:
                     progress += component.moves_progress
                 progress = round(progress / len(self.components), 4)
@@ -354,7 +354,7 @@ def order_line_component_mixin(prefix):
             if quantity is not None and self.quantity:
                 progress = round(
                     (abs(self.quantity) - quantity) / abs(self.quantity), 4)
-                progress = max(0, min(1, progress))
+                progress = max(0., min(1., progress))
             return progress
 
         def get_moved_ratio(self):
