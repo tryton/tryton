@@ -127,6 +127,8 @@ Sale products with cost on shipment::
     1.0
     >>> cost_line.amount
     Decimal('3.00')
+    >>> cost_line.invoice_progress
+    1.0
     >>> sale.click('confirm')
     >>> sale.click('process')
     >>> sale.state
@@ -211,6 +213,8 @@ Sale products with cost on order::
     1.0
     >>> cost_line.amount
     Decimal('3.00')
+    >>> cost_line.invoice_progress
+    1.0
     >>> sale.click('confirm')
     >>> sale.click('process')
     >>> sale.state
