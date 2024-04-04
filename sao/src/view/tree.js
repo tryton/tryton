@@ -287,9 +287,7 @@
                 column.set_visible(jQuery(evt.delegateTarget).prop('checked'));
                 this.save_optional();
                 this.display();
-                for (const row of this.rows) {
-                    row.update_visible();
-                }
+                this.update_visible();
             };
             var menu = evt.data;
             menu.empty();
@@ -934,6 +932,7 @@
                 }).map(function(row) {
                     return row.el;
                 }));
+                this.update_visible();
                 if ((this.display_size < this.group.length) &&
                     (!this.tbody.children().last().hasClass('more-row'))) {
                     var more_row = jQuery('<tr/>', {
@@ -1012,6 +1011,30 @@
             }
             this.record = record;
             // TODO update_children
+        },
+        update_visible: function() {
+            var offset = 1;
+            if (this.optionals.length) {
+                offset += 1;
+            }
+
+            var thead_visible = this.thead.is(':visible');
+            var to_hide = jQuery();
+            var to_show = jQuery();
+            for (var i = 0; i < this.columns.length; i++) {
+                var column = this.columns[i];
+                // CSS is 1-indexed
+                var selector = `tr > td:nth-child(${i + offset + 1})`;
+                if ((thead_visible && column.header.is(':hidden')) ||
+                    (column.header.css('display') == 'none')) {
+                    to_hide.add(this.body.find(selector));
+                } else {
+                    to_show.add(this.body.find(selector));
+                }
+            }
+
+            to_hide.addClass('invisible').hide();
+            to_show.removeClass('invisible').show();
         },
         update_sum: function() {
             for (const [column, sum_widget] of this.sum_widgets) {
@@ -1666,7 +1689,6 @@
                     }
                     apply_visual(td, visual);
                 }
-                this.update_visible();
             }
             if (this.children_field) {
                 this.tree.columns.every((column, i) => {
@@ -1728,21 +1750,6 @@
                 this.el.css('text-decoration', 'inherit');
             }
             apply_visual(this.el, visual);
-        },
-        update_visible: function() {
-            var thead_visible = this.tree.thead.is(':visible');
-            for (var i = 0; i < this.tree.columns.length; i++) {
-                var column = this.tree.columns[i];
-                var td = this._get_column_td(i);
-                if ((column.header.is(':hidden') && thead_visible) ||
-                    column.header.css('display') == 'none') {
-                    td.hide();
-                    td.addClass('invisible');
-                } else {
-                    td.show();
-                    td.removeClass('invisible');
-                }
-            }
         },
         toggle_row: function() {
             if (this.is_expanded()) {
@@ -1811,6 +1818,7 @@
                         return row.el;
                     }));
                     this.tree.update_selection();
+                    this.tree.update_visible();
                 });
             });
         },
