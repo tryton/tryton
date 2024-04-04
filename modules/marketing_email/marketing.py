@@ -11,6 +11,7 @@ from urllib.parse import (
 
 from genshi.core import END, START, Attrs, QName
 from genshi.template import MarkupTemplate
+from genshi.template import TemplateError as GenshiTemplateError
 from sql import Literal
 from sql.aggregate import Count
 
@@ -494,7 +495,14 @@ class Message(Workflow, ModelSQL, ModelView):
                     ])
 
         for message in messages:
-            template = MarkupTemplate(message.content)
+            try:
+                template = MarkupTemplate(message.content)
+            except GenshiTemplateError as exception:
+                raise TemplateError(
+                    gettext('marketing_email'
+                        '.msg_message_invalid_content',
+                        message=message.rec_name,
+                        exception=exception)) from exception
             for email in (emails or message.list_.emails):
                 content = (template
                     .generate(
