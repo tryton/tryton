@@ -148,6 +148,16 @@ class Shop(DeactivableMixin, ModelSQL, ModelView):
         return shop
 
     @classmethod
+    def copy(cls, shops, default=None):
+        default = default.copy() if default is not None else {}
+        default.setdefault('warehouses')
+        default.setdefault('products')
+        default.setdefault('products_removed')
+        default.setdefault('categories')
+        default.setdefault('categories_removed')
+        return super().copy(shops, default=default)
+
+    @classmethod
     def write(cls, *args):
         cls._name_cache.clear()
         super().write(*args)
