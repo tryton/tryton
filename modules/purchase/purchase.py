@@ -1400,7 +1400,7 @@ class Line(sequence_ordered(), ModelSQL, ModelView):
         quantity = self._invoice_remaining_quantity
         if quantity is not None and self.quantity:
             progress = round((self.quantity - quantity) / self.quantity, 4)
-            progress = max(0, min(1, progress))
+            progress = max(0., min(1., progress))
         return progress
 
     @property
@@ -1432,7 +1432,7 @@ class Line(sequence_ordered(), ModelSQL, ModelView):
         if quantity is not None and self.quantity:
             progress = round(
                 (abs(self.quantity) - quantity) / abs(self.quantity), 4)
-            progress = max(0, min(1, progress))
+            progress = max(0., min(1., progress))
         return progress
 
     def _get_tax_rule_pattern(self):
