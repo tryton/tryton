@@ -1,3 +1,4 @@
+* Convert recursive calls of reconcile accounts wizard into loop
 * Remove active field on journal - period
 * Allow modifying period dates with moves
 

@@ -2249,23 +2249,21 @@ class Reconcile(Wizard):
             self.show.currencies = self.get_currencies(
                 self.show.account, self.show.party)
 
-        while not next_currency():
-            while not next_party():
-                if not next_account():
-                    return 'end'
-        if self.start.automatic or self.start.only_balanced:
-            lines = self._default_lines()
-            if lines and self.start.automatic:
-                while lines:
-                    Line.reconcile(lines)
-                    lines = self._default_lines()
-                if not self.get_currencies(
-                        self.show.account, self.show.party,
-                        currency=self.show.currency):
-                    return 'next_'
-            elif not lines and self.start.only_balanced:
-                return 'next_'
-        return 'show'
+        while True:
+            while not next_currency():
+                while not next_party():
+                    if not next_account():
+                        return 'end'
+            if self.start.automatic or self.start.only_balanced:
+                lines = self._default_lines()
+                if lines and self.start.automatic:
+                    while lines:
+                        Line.reconcile(lines)
+                        lines = self._default_lines()
+                    continue
+                elif not lines and self.start.only_balanced:
+                    continue
+            return 'show'
 
     def default_show(self, fields):
         pool = Pool()
