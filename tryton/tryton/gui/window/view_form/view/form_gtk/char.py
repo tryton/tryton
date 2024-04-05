@@ -171,4 +171,8 @@ class Password(Char):
             self.visibility_checkbox, expand=False, fill=True, padding=0)
 
     def toggle_visibility(self, button):
-        self.entry.props.visibility = not self.entry.props.visibility
+        if self.autocomplete:
+            entry = self.entry.get_child()
+        else:
+            entry = self.entry
+        entry.props.visibility = not self.entry.props.visibility
