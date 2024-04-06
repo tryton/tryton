@@ -77,16 +77,14 @@ this repository contains the full copyright notices and license terms. -->
             id="menu_work_center_list"/>
 
         <record model="ir.model.access" id="access_work_center">
-            <field name="model"
-                search="[('model', '=', 'production.work.center')]"/>
+            <field name="model">production.work.center</field>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="False"/>
             <field name="perm_create" eval="False"/>
             <field name="perm_delete" eval="False"/>
         </record>
         <record model="ir.model.access" id="access_work_center_admin">
-            <field name="model"
-                search="[('model', '=', 'production.work.center')]"/>
+            <field name="model">production.work.center</field>
             <field name="group" ref="production.group_production_admin"/>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="True"/>
@@ -142,16 +140,14 @@ this repository contains the full copyright notices and license terms. -->
             id="menu_work_center_category_list"/>
 
         <record model="ir.model.access" id="access_work_center_category">
-            <field name="model"
-                search="[('model', '=', 'production.work.center.category')]"/>
+            <field name="model">production.work.center.category</field>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="False"/>
             <field name="perm_create" eval="False"/>
             <field name="perm_delete" eval="False"/>
         </record>
         <record model="ir.model.access" id="access_work_center_category_admin">
-            <field name="model"
-                search="[('model', '=', 'production.work.center.category')]"/>
+            <field name="model">production.work.center.category</field>
             <field name="group" ref="production.group_production_admin"/>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="True"/>
@@ -236,14 +232,14 @@ this repository contains the full copyright notices and license terms. -->
             id="menu_work_list"/>
 
         <record model="ir.model.access" id="access_work">
-            <field name="model" search="[('model', '=', 'production.work')]"/>
+            <field name="model">production.work</field>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="False"/>
             <field name="perm_create" eval="False"/>
             <field name="perm_delete" eval="False"/>
         </record>
         <record model="ir.model.access" id="access_work_group_production">
-            <field name="model" search="[('model', '=', 'production.work')]"/>
+            <field name="model">production.work</field>
             <field name="group" ref="production.group_production"/>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="True"/>
@@ -288,14 +284,14 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
         <record model="ir.model.access" id="access_work_cycle">
-            <field name="model" search="[('model', '=', 'production.work.cycle')]"/>
+            <field name="model">production.work.cycle</field>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="False"/>
             <field name="perm_create" eval="False"/>
             <field name="perm_delete" eval="False"/>
         </record>
         <record model="ir.model.access" id="access_work_cycle_group_production">
-            <field name="model" search="[('model', '=', 'production.work.cycle')]"/>
+            <field name="model">production.work.cycle</field>
             <field name="group" ref="production.group_production"/>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="True"/>

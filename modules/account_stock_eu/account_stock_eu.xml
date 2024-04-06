@@ -16,7 +16,7 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
         <record model="ir.model.access" id="access_intrastat_transaction">
-            <field name="model" search="[('model', '=', 'account.stock.eu.intrastat.transaction')]"/>
+            <field name="model">account.stock.eu.intrastat.transaction</field>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="False"/>
             <field name="perm_create" eval="False"/>
@@ -36,7 +36,7 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
         <record model="ir.model.access" id="access_intrastat_transport">
-            <field name="model" search="[('model', '=', 'account.stock.eu.intrastat.transport')]"/>
+            <field name="model">account.stock.eu.intrastat.transport</field>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="False"/>
             <field name="perm_create" eval="False"/>
@@ -96,7 +96,7 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
         <record model="ir.model.access" id="access_intrastat_declaration">
-            <field name="model" search="[('model', '=', 'account.stock.eu.intrastat.declaration')]"/>
+            <field name="model">account.stock.eu.intrastat.declaration</field>
             <field name="perm_read" eval="False"/>
             <field name="perm_write" eval="False"/>
             <field name="perm_create" eval="False"/>
@@ -104,7 +104,7 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
         <record model="ir.model.access" id="access_intrastat_declaration_account">
-            <field name="model" search="[('model', '=', 'account.stock.eu.intrastat.declaration')]"/>
+            <field name="model">account.stock.eu.intrastat.declaration</field>
             <field name="group" ref="account.group_account"/>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="True"/>
@@ -137,7 +137,7 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
         <record model="ir.model.access" id="access_intrastat_declaration_line">
-            <field name="model" search="[('model', '=', 'account.stock.eu.intrastat.declaration.line')]"/>
+            <field name="model">account.stock.eu.intrastat.declaration.line</field>
             <field name="perm_read" eval="False"/>
             <field name="perm_write" eval="False"/>
             <field name="perm_create" eval="False"/>
@@ -145,7 +145,7 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
         <record model="ir.model.access" id="access_intrastat_declaration_line_account">
-            <field name="model" search="[('model', '=', 'account.stock.eu.intrastat.declaration.line')]"/>
+            <field name="model">account.stock.eu.intrastat.declaration.line</field>
             <field name="group" ref="account.group_account"/>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="False"/>

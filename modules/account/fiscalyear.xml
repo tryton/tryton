@@ -45,14 +45,14 @@ this repository contains the full copyright notices and license terms. -->
             id="menu_fiscalyear_form"/>
 
         <record model="ir.model.access" id="access_fiscalyear">
-            <field name="model" search="[('model', '=', 'account.fiscalyear')]"/>
+            <field name="model">account.fiscalyear</field>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="False"/>
             <field name="perm_create" eval="False"/>
             <field name="perm_delete" eval="False"/>
         </record>
         <record model="ir.model.access" id="access_fiscalyear_account_admin">
-            <field name="model" search="[('model', '=', 'account.fiscalyear')]"/>
+            <field name="model">account.fiscalyear</field>
             <field name="group" ref="group_account_admin"/>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="True"/>

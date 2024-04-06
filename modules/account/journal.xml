@@ -81,14 +81,14 @@ this repository contains the full copyright notices and license terms. -->
             id="menu_journal_open_cash"/>
 
         <record model="ir.model.access" id="access_journal">
-            <field name="model" search="[('model', '=', 'account.journal')]"/>
+            <field name="model">account.journal</field>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="False"/>
             <field name="perm_create" eval="False"/>
             <field name="perm_delete" eval="False"/>
         </record>
         <record model="ir.model.access" id="access_journal_account_admin">
-            <field name="model" search="[('model', '=', 'account.journal')]"/>
+            <field name="model">account.journal</field>
             <field name="group" ref="group_account_admin"/>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="True"/>
@@ -189,14 +189,14 @@ this repository contains the full copyright notices and license terms. -->
             id="menu_close_journal_period"/>
 
         <record model="ir.model.access" id="access_journal_period">
-            <field name="model" search="[('model', '=', 'account.journal.period')]"/>
+            <field name="model">account.journal.period</field>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="False"/>
             <field name="perm_create" eval="False"/>
             <field name="perm_delete" eval="False"/>
         </record>
         <record model="ir.model.access" id="access_journal_period_account">
-            <field name="model" search="[('model', '=', 'account.journal.period')]"/>
+            <field name="model">account.journal.period</field>
             <field name="group" ref="group_account"/>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="True"/>
@@ -204,7 +204,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="perm_delete" eval="False"/>
         </record>
         <record model="ir.model.access" id="access_journal_period_account_admin">
-            <field name="model" search="[('model', '=', 'account.journal.period')]"/>
+            <field name="model">account.journal.period</field>
             <field name="group" ref="group_account_admin"/>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="True"/>

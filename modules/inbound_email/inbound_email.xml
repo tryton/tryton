@@ -49,14 +49,14 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
         <record model="ir.model.access" id="access_inbound_email_inbox">
-            <field name="model" search="[('model', '=', 'inbound.email.inbox')]"/>
+            <field name="model">inbound.email.inbox</field>
             <field name="perm_read" eval="False"/>
             <field name="perm_write" eval="False"/>
             <field name="perm_create" eval="False"/>
             <field name="perm_delete" eval="False"/>
         </record>
         <record model="ir.model.access" id="access_inbound_email_inbox_group_admin">
-            <field name="model" search="[('model', '=', 'inbound.email.inbox')]"/>
+            <field name="model">inbound.email.inbox</field>
             <field name="group" ref="res.group_admin"/>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="True"/>
@@ -98,14 +98,14 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
         <record model="ir.model.access" id="access_inbound_email">
-            <field name="model" search="[('model', '=', 'inbound.email')]"/>
+            <field name="model">inbound.email</field>
             <field name="perm_read" eval="False"/>
             <field name="perm_write" eval="False"/>
             <field name="perm_create" eval="False"/>
             <field name="perm_delete" eval="False"/>
         </record>
         <record model="ir.model.access" id="access_inbound_email_group_admin">
-            <field name="model" search="[('model', '=', 'inbound.email')]"/>
+            <field name="model">inbound.email</field>
             <field name="group" ref="res.group_admin"/>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="True"/>

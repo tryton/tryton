@@ -242,7 +242,8 @@ class ModelView(unittest.TestCase):
         TestModel.test([test])
 
         # Without read access
-        access = ModelAccess(model=model, group=None, perm_read=False)
+        access = ModelAccess(
+            model=TestModel.__name__, group=None, perm_read=False)
         access.save()
         with self.assertRaises(AccessError):
             TestModel.test([test])
@@ -475,11 +476,10 @@ class ModelView(unittest.TestCase):
         "Test link in view without read access"
         pool = Pool()
         TestModel = pool.get('test.modelview.link')
-        Model = pool.get('ir.model')
         ModelAccess = pool.get('ir.model.access')
 
-        model, = Model.search([('model', '=', 'test.modelview.link.target')])
-        access = ModelAccess(model=model, group=None, perm_read=False)
+        access = ModelAccess(
+            model='test.modelview.link.target', group=None, perm_read=False)
         access.save()
 
         arch = TestModel.fields_view_get()['arch']
@@ -497,12 +497,11 @@ class ModelView(unittest.TestCase):
         "Test that replacing link by label results in a valid view"
         pool = Pool()
         TestModel = pool.get('test.modelview.link')
-        Model = pool.get('ir.model')
         ModelAccess = pool.get('ir.model.access')
         UIView = pool.get('ir.ui.view')
 
-        model, = Model.search([('model', '=', 'test.modelview.link.target')])
-        access = ModelAccess(model=model, group=None, perm_read=False)
+        access = ModelAccess(
+            model='test.modelview.link.target', group=None, perm_read=False)
         access.save()
 
         arch = TestModel.fields_view_get()['arch']

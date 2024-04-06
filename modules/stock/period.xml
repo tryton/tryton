@@ -47,14 +47,14 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
         <record model="ir.model.access" id="access_period">
-            <field name="model" search="[('model', '=', 'stock.period')]"/>
+            <field name="model">stock.period</field>
             <field name="perm_read" eval="False"/>
             <field name="perm_write" eval="False"/>
             <field name="perm_create" eval="False"/>
             <field name="perm_delete" eval="False"/>
         </record>
         <record model="ir.model.access" id="access_period_stock">
-            <field name="model" search="[('model', '=', 'stock.period')]"/>
+            <field name="model">stock.period</field>
             <field name="group" ref="group_stock"/>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="False"/>
@@ -62,7 +62,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="perm_delete" eval="False"/>
         </record>
         <record model="ir.model.access" id="access_period_admin">
-            <field name="model" search="[('model', '=', 'stock.period')]"/>
+            <field name="model">stock.period</field>
             <field name="group" ref="group_stock_admin"/>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="True"/>
@@ -94,14 +94,14 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
         <record model="ir.model.access" id="access_period_cache_cache">
-            <field name="model" search="[('model', '=', 'stock.period.cache')]"/>
+            <field name="model">stock.period.cache</field>
             <field name="perm_read" eval="False"/>
             <field name="perm_write" eval="False"/>
             <field name="perm_create" eval="False"/>
             <field name="perm_delete" eval="False"/>
         </record>
         <record model="ir.model.access" id="access_period_cache_cache_stock">
-            <field name="model" search="[('model', '=', 'stock.period.cache')]"/>
+            <field name="model">stock.period.cache</field>
             <field name="group" ref="group_stock"/>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="False"/>
@@ -109,7 +109,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="perm_delete" eval="False"/>
         </record>
         <record model="ir.model.access" id="access_period_cache_admin">
-            <field name="model" search="[('model', '=', 'stock.period.cache')]"/>
+            <field name="model">stock.period.cache</field>
             <field name="group" ref="group_stock_admin"/>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="True"/>

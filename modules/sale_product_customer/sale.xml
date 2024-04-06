@@ -62,14 +62,14 @@ this repository contains the full copyright notices and license terms. -->
             id="menu_product_customer"/>
 
         <record model="ir.model.access" id="access_product_customer">
-            <field name="model" search="[('model', '=', 'sale.product_customer')]"/>
+            <field name="model">sale.product_customer</field>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="False"/>
             <field name="perm_create" eval="False"/>
             <field name="perm_delete" eval="False"/>
         </record>
         <record model="ir.model.access" id="access_product_customer_sale">
-            <field name="model" search="[('model', '=', 'sale.product_customer')]"/>
+            <field name="model">sale.product_customer</field>
             <field name="group" ref="sale.group_sale"/>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="True"/>

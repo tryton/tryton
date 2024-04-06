@@ -98,14 +98,14 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
         <record model="ir.model.access" id="access_vat_list">
-            <field name="model" search="[('model', '=', 'account.reporting.vat_list_es')]"/>
+            <field name="model">account.reporting.vat_list_es</field>
             <field name="perm_read" eval="False"/>
             <field name="perm_write" eval="False"/>
             <field name="perm_create" eval="False"/>
             <field name="perm_delete" eval="False"/>
         </record>
         <record model="ir.model.access" id="access_vat_list_account">
-            <field name="model" search="[('model', '=', 'account.reporting.vat_list_es')]"/>
+            <field name="model">account.reporting.vat_list_es</field>
             <field name="group" ref="account.group_account"/>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="False"/>
@@ -158,14 +158,14 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
         <record model="ir.model.access" id="access_es_ec_operation_list">
-            <field name="model" search="[('model', '=', 'account.reporting.es_ec_operation_list')]"/>
+            <field name="model">account.reporting.es_ec_operation_list</field>
             <field name="perm_read" eval="False"/>
             <field name="perm_write" eval="False"/>
             <field name="perm_create" eval="False"/>
             <field name="perm_delete" eval="False"/>
         </record>
         <record model="ir.model.access" id="access_es_ec_operation_list_account">
-            <field name="model" search="[('model', '=', 'account.reporting.es_ec_operation_list')]"/>
+            <field name="model">account.reporting.es_ec_operation_list</field>
             <field name="group" ref="account.group_account"/>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="False"/>
@@ -211,14 +211,14 @@ this repository contains the full copyright notices and license terms. -->
         <menuitem parent="account.menu_reporting" action="act_vat_book_list" id="menu_vat_book" />
 
         <record model="ir.model.access" id="access_vat_book">
-            <field name="model" search="[('model', '=', 'account.reporting.vat_book_es')]"/>
+            <field name="model">account.reporting.vat_book_es</field>
             <field name="perm_read" eval="False"/>
             <field name="perm_write" eval="False"/>
             <field name="perm_create" eval="False"/>
             <field name="perm_delete" eval="False"/>
         </record>
         <record model="ir.model.access" id="access_vat_book_account">
-            <field name="model" search="[('model', '=', 'account.reporting.vat_book_es')]"/>
+            <field name="model">account.reporting.vat_book_es</field>
             <field name="group" ref="account.group_account"/>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="False"/>

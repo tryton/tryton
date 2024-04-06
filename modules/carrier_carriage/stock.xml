@@ -16,14 +16,14 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
         <record model="ir.model.access" id="access_shipment_carriage">
-            <field name="model" search="[('model', '=', 'stock.shipment.carriage')]"/>
+            <field name="model">stock.shipment.carriage</field>
             <field name="perm_read" eval="False"/>
             <field name="perm_write" eval="False"/>
             <field name="perm_create" eval="False"/>
             <field name="perm_delete" eval="False"/>
         </record>
         <record model="ir.model.access" id="access_shipment_carriage_group_stock">
-            <field name="model" search="[('model', '=', 'stock.shipment.carriage')]"/>
+            <field name="model">stock.shipment.carriage</field>
             <field name="group" ref="stock.group_stock"/>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="True"/>

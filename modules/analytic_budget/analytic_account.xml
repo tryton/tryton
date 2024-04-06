@@ -54,14 +54,14 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
         <record model="ir.model.access" id="access_budget">
-            <field name="model" search="[('model', '=', 'analytic_account.budget')]"/>
+            <field name="model">analytic_account.budget</field>
             <field name="perm_read" eval="False"/>
             <field name="perm_write" eval="False"/>
             <field name="perm_create" eval="False"/>
             <field name="perm_delete" eval="False"/>
         </record>
         <record model="ir.model.access" id="access_budget_account">
-            <field name="model" search="[('model', '=', 'analytic_account.budget')]"/>
+            <field name="model">analytic_account.budget</field>
             <field name="group" ref="account.group_account"/>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="False"/>
@@ -69,7 +69,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="perm_delete" eval="False"/>
         </record>
         <record model="ir.model.access" id="access_budget_budget">
-            <field name="model" search="[('model', '=', 'analytic_account.budget')]"/>
+            <field name="model">analytic_account.budget</field>
             <field name="group" ref="account_budget.group_budget"/>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="True"/>

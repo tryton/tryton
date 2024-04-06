@@ -43,7 +43,7 @@ this repository contains the full copyright notices and license terms. -->
             id="menu_product_association_rule_form"/>
 
         <record model="ir.model.access" id="access_product_association_rule">
-            <field name="model" search="[('model', '=', 'sale.product.association.rule')]"/>
+            <field name="model">sale.product.association.rule</field>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="False"/>
             <field name="perm_create" eval="False"/>

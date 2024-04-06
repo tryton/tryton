@@ -36,7 +36,7 @@ this repository contains the full copyright notices and license terms. -->
             id="menu_stock_shipment_shopify_identifier_form"/>
 
         <record model="ir.model.access" id="access_stock_shipment_shopify_identifier">
-            <field name="model" search="[('model', '=', 'stock.shipment.shopify_identifier')]"/>
+            <field name="model">stock.shipment.shopify_identifier</field>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="False"/>
             <field name="perm_create" eval="False"/>
@@ -44,7 +44,7 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
         <record model="ir.model.access" id="access_stock_shipment_shopify_identifier_admin">
-            <field name="model" search="[('model', '=', 'stock.shipment.shopify_identifier')]"/>
+            <field name="model">stock.shipment.shopify_identifier</field>
             <field name="group" ref="res.group_admin"/>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="True"/>

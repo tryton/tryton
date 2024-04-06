@@ -83,8 +83,7 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
         <record model="ir.model.access" id="access_advance_payment_term">
-            <field name="model"
-                search="[('model', '=', 'sale.advance_payment_term')]"/>
+            <field name="model">sale.advance_payment_term</field>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="False"/>
             <field name="perm_create" eval="False"/>
@@ -92,8 +91,7 @@ this repository contains the full copyright notices and license terms. -->
         </record>
         <record model="ir.model.access"
             id="access_advance_payment_term_sale_admin">
-            <field name="model"
-                search="[('model', '=', 'sale.advance_payment_term')]"/>
+            <field name="model">sale.advance_payment_term</field>
             <field name="group" ref="sale.group_sale_admin"/>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="True"/>

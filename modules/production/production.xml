@@ -189,14 +189,14 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
         <record model="ir.model.access" id="access_production">
-            <field name="model" search="[('model', '=', 'production')]"/>
+            <field name="model">production</field>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="False"/>
             <field name="perm_create" eval="False"/>
             <field name="perm_delete" eval="False"/>
         </record>
         <record model="ir.model.access" id="access_production_group_production">
-            <field name="model" search="[('model', '=', 'production')]"/>
+            <field name="model">production</field>
             <field name="group" ref="group_production"/>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="True"/>

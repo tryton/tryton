@@ -151,14 +151,14 @@ this repository contains the full copyright notices and license terms. -->
             icon="tryton-list"/>
 
         <record model="ir.model.access" id="access_product_template">
-            <field name="model" search="[('model', '=', 'product.template')]"/>
+            <field name="model">product.template</field>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="False"/>
             <field name="perm_create" eval="False"/>
             <field name="perm_delete" eval="False"/>
         </record>
         <record model="ir.model.access" id="access_product_template_admin">
-            <field name="model" search="[('model', '=', 'product.template')]"/>
+            <field name="model">product.template</field>
             <field name="group" ref="group_product_admin"/>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="True"/>

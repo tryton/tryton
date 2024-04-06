@@ -524,14 +524,14 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
         <record model="ir.model.access" id="access_shipment_in">
-            <field name="model" search="[('model', '=', 'stock.shipment.in')]"/>
+            <field name="model">stock.shipment.in</field>
             <field name="perm_read" eval="False"/>
             <field name="perm_write" eval="False"/>
             <field name="perm_create" eval="False"/>
             <field name="perm_delete" eval="False"/>
         </record>
         <record model="ir.model.access" id="access_shipment_in_group_stock">
-            <field name="model" search="[('model', '=', 'stock.shipment.in')]"/>
+            <field name="model">stock.shipment.in</field>
             <field name="group" ref="group_stock"/>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="True"/>
@@ -539,7 +539,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="perm_delete" eval="False"/>
         </record>
         <record model="ir.model.access" id="access_shipment_in_group_stock_admin">
-            <field name="model" search="[('model', '=', 'stock.shipment.in')]"/>
+            <field name="model">stock.shipment.in</field>
             <field name="group" ref="group_stock_admin"/>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="True"/>
@@ -578,14 +578,14 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
         <record model="ir.model.access" id="access_shipment_out">
-            <field name="model" search="[('model', '=', 'stock.shipment.out')]"/>
+            <field name="model">stock.shipment.out</field>
             <field name="perm_read" eval="False"/>
             <field name="perm_write" eval="False"/>
             <field name="perm_create" eval="False"/>
             <field name="perm_delete" eval="False"/>
         </record>
         <record model="ir.model.access" id="access_shipment_out_group_stock">
-            <field name="model" search="[('model', '=', 'stock.shipment.out')]"/>
+            <field name="model">stock.shipment.out</field>
             <field name="group" ref="group_stock"/>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="True"/>
@@ -593,7 +593,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="perm_delete" eval="False"/>
         </record>
         <record model="ir.model.access" id="access_shipment_out_group_stock_admin">
-            <field name="model" search="[('model', '=', 'stock.shipment.out')]"/>
+            <field name="model">stock.shipment.out</field>
             <field name="group" ref="group_stock_admin"/>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="True"/>
@@ -669,14 +669,14 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
         <record model="ir.model.access" id="access_shipment_internal">
-            <field name="model" search="[('model', '=', 'stock.shipment.internal')]"/>
+            <field name="model">stock.shipment.internal</field>
             <field name="perm_read" eval="False"/>
             <field name="perm_write" eval="False"/>
             <field name="perm_create" eval="False"/>
             <field name="perm_delete" eval="False"/>
         </record>
         <record model="ir.model.access" id="access_shipment_internal_group_stock">
-            <field name="model" search="[('model', '=', 'stock.shipment.internal')]"/>
+            <field name="model">stock.shipment.internal</field>
             <field name="group" ref="group_stock"/>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="True"/>
@@ -684,7 +684,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="perm_delete" eval="False"/>
         </record>
         <record model="ir.model.access" id="access_shipment_internal_group_stock_admin">
-            <field name="model" search="[('model', '=', 'stock.shipment.internal')]"/>
+            <field name="model">stock.shipment.internal</field>
             <field name="group" ref="group_stock_admin"/>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="True"/>
@@ -759,14 +759,14 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
         <record model="ir.model.access" id="access_shipment_out_return">
-            <field name="model" search="[('model', '=', 'stock.shipment.out.return')]"/>
+            <field name="model">stock.shipment.out.return</field>
             <field name="perm_read" eval="False"/>
             <field name="perm_write" eval="False"/>
             <field name="perm_create" eval="False"/>
             <field name="perm_delete" eval="False"/>
         </record>
         <record model="ir.model.access" id="access_shipment_out_return_group_stock">
-            <field name="model" search="[('model', '=', 'stock.shipment.out.return')]"/>
+            <field name="model">stock.shipment.out.return</field>
             <field name="group" ref="group_stock"/>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="True"/>
@@ -774,7 +774,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="perm_delete" eval="False"/>
         </record>
         <record model="ir.model.access" id="access_shipment_out_return_group_stock_admin">
-            <field name="model" search="[('model', '=', 'stock.shipment.out.return')]"/>
+            <field name="model">stock.shipment.out.return</field>
             <field name="group" ref="group_stock_admin"/>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="True"/>
@@ -813,14 +813,14 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
         <record model="ir.model.access" id="access_shipment_in_return">
-            <field name="model" search="[('model', '=', 'stock.shipment.in.return')]"/>
+            <field name="model">stock.shipment.in.return</field>
             <field name="perm_read" eval="False"/>
             <field name="perm_write" eval="False"/>
             <field name="perm_create" eval="False"/>
             <field name="perm_delete" eval="False"/>
         </record>
         <record model="ir.model.access" id="access_shipment_in_return_group_stock">
-            <field name="model" search="[('model', '=', 'stock.shipment.in.return')]"/>
+            <field name="model">stock.shipment.in.return</field>
             <field name="group" ref="group_stock"/>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="True"/>
@@ -828,7 +828,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="perm_delete" eval="False"/>
         </record>
         <record model="ir.model.access" id="access_shipment_in_return_group_stock_admin">
-            <field name="model" search="[('model', '=', 'stock.shipment.in.return')]"/>
+            <field name="model">stock.shipment.in.return</field>
             <field name="group" ref="group_stock_admin"/>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="True"/>

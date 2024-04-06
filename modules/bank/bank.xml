@@ -55,14 +55,14 @@ this repository contains the full copyright notices and license terms. -->
             id="menu_bank_form"/>
 
         <record model="ir.model.access" id="access_bank">
-            <field name="model" search="[('model', '=', 'bank')]"/>
+            <field name="model">bank</field>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="False"/>
             <field name="perm_create" eval="False"/>
             <field name="perm_delete" eval="False"/>
         </record>
         <record model="ir.model.access" id="access_bank_bank_admin">
-            <field name="model" search="[('model', '=', 'bank')]"/>
+            <field name="model">bank</field>
             <field name="group" ref="group_bank_admin"/>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="True"/>
@@ -105,14 +105,14 @@ this repository contains the full copyright notices and license terms. -->
             id="menu_bank_account_form"/>
 
         <record model="ir.model.access" id="access_account">
-            <field name="model" search="[('model', '=', 'bank.account')]"/>
+            <field name="model">bank.account</field>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="False"/>
             <field name="perm_create" eval="False"/>
             <field name="perm_delete" eval="False"/>
         </record>
         <record model="ir.model.access" id="access_account_bank_admin">
-            <field name="model" search="[('model', '=', 'bank.account')]"/>
+            <field name="model">bank.account</field>
             <field name="group" ref="group_bank_admin"/>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="True"/>

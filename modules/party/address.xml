@@ -82,14 +82,14 @@ this repository contains the full copyright notices and license terms. -->
             id="menu_address_format_form"/>
 
         <record model="ir.model.access" id="access_address_format">
-            <field name="model" search="[('model', '=', 'party.address.format')]"/>
+            <field name="model">party.address.format</field>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="False"/>
             <field name="perm_create" eval="False"/>
             <field name="perm_delete" eval="False"/>
         </record>
         <record model="ir.model.access" id="access_address_format_admin">
-            <field name="model" search="[('model', '=', 'party.address.format')]"/>
+            <field name="model">party.address.format</field>
             <field name="group" ref="group_party_admin"/>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="True"/>
@@ -130,14 +130,14 @@ this repository contains the full copyright notices and license terms. -->
             id="menu_address_subdivision_type_form"/>
 
         <record model="ir.model.access" id="access_address_subdivision_type">
-            <field name="model" search="[('model', '=', 'party.address.subdivision_type')]"/>
+            <field name="model">party.address.subdivision_type</field>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="False"/>
             <field name="perm_create" eval="False"/>
             <field name="perm_delete" eval="False"/>
         </record>
         <record model="ir.model.access" id="access_address_subdivision_type_admin">
-            <field name="model" search="[('model', '=', 'party.address.subdivision_type')]"/>
+            <field name="model">party.address.subdivision_type</field>
             <field name="group" ref="group_party_admin"/>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="True"/>

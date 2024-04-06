@@ -253,14 +253,14 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
         <record model="ir.model.access" id="access_purchase">
-            <field name="model" search="[('model', '=', 'purchase.purchase')]"/>
+            <field name="model">purchase.purchase</field>
             <field name="perm_read" eval="False"/>
             <field name="perm_write" eval="False"/>
             <field name="perm_create" eval="False"/>
             <field name="perm_delete" eval="False"/>
         </record>
         <record model="ir.model.access" id="access_purchase_purchase">
-            <field name="model" search="[('model', '=', 'purchase.purchase')]"/>
+            <field name="model">purchase.purchase</field>
             <field name="group" ref="group_purchase"/>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="True"/>
@@ -268,7 +268,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="perm_delete" eval="True"/>
         </record>
         <record model="ir.model.access" id="access_purchase_account">
-            <field name="model" search="[('model', '=', 'purchase.purchase')]"/>
+            <field name="model">purchase.purchase</field>
             <field name="group" ref="account.group_account"/>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="False"/>
@@ -277,7 +277,7 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
         <record model="ir.model.access" id="access_purchase_group_stock">
-            <field name="model" search="[('model', '=', 'purchase.purchase')]"/>
+            <field name="model">purchase.purchase</field>
             <field name="group" ref="stock.group_stock"/>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="False"/>
@@ -490,7 +490,7 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
         <record model="ir.model.access" id="access_purchase_line_group_stock">
-            <field name="model" search="[('model', '=', 'purchase.line')]"/>
+            <field name="model">purchase.line</field>
             <field name="group" ref="stock.group_stock"/>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="False"/>
@@ -552,14 +552,14 @@ this repository contains the full copyright notices and license terms. -->
             id="menu_product_supplier"/>
 
         <record model="ir.model.access" id="access_product_supplier">
-            <field name="model" search="[('model', '=', 'purchase.product_supplier')]"/>
+            <field name="model">purchase.product_supplier</field>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="False"/>
             <field name="perm_create" eval="False"/>
             <field name="perm_delete" eval="False"/>
         </record>
         <record model="ir.model.access" id="access_product_supplier_purchase">
-            <field name="model" search="[('model', '=', 'purchase.product_supplier')]"/>
+            <field name="model">purchase.product_supplier</field>
             <field name="group" ref="group_purchase"/>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="True"/>

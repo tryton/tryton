@@ -57,14 +57,14 @@ this repository contains the full copyright notices and license terms. -->
             id="menu_quantity_early_plan_form"/>
 
         <record model="ir.model.access" id="access_quantity_early_plan">
-            <field name="model" search="[('model', '=', 'stock.quantity.early_plan')]"/>
+            <field name="model">stock.quantity.early_plan</field>
             <field name="perm_read" eval="False"/>
             <field name="perm_write" eval="False"/>
             <field name="perm_create" eval="False"/>
             <field name="perm_delete" eval="False"/>
         </record>
         <record model="ir.model.access" id="access_quantity_early_plan_group_stock">
-            <field name="model" search="[('model', '=', 'stock.quantity.early_plan')]"/>
+            <field name="model">stock.quantity.early_plan</field>
             <field name="group" ref="stock.group_stock"/>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="True"/>

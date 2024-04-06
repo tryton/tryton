@@ -37,14 +37,14 @@ this repository contains the full copyright notices and license terms. -->
             id="menu_attribute_set"/>
 
         <record model="ir.model.access" id="access_attribute_set">
-            <field name="model" search="[('model', '=', 'product.attribute.set')]"/>
+            <field name="model">product.attribute.set</field>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="False"/>
             <field name="perm_create" eval="False"/>
             <field name="perm_delete" eval="False"/>
         </record>
         <record model="ir.model.access" id="access_attribute_set_admin">
-            <field name="model" search="[('model', '=', 'product.attribute.set')]"/>
+            <field name="model">product.attribute.set</field>
             <field name="group" ref="product.group_product_admin"/>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="True"/>
@@ -91,14 +91,14 @@ this repository contains the full copyright notices and license terms. -->
             id="menu_attribute"/>
 
         <record model="ir.model.access" id="access_attribute">
-            <field name="model" search="[('model', '=', 'product.attribute')]"/>
+            <field name="model">product.attribute</field>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="False"/>
             <field name="perm_create" eval="False"/>
             <field name="perm_delete" eval="False"/>
         </record>
         <record model="ir.model.access" id="access_attribute_admin">
-            <field name="model" search="[('model', '=', 'product.attribute')]"/>
+            <field name="model">product.attribute</field>
             <field name="group" ref="product.group_product_admin"/>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="True"/>

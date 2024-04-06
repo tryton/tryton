@@ -10,7 +10,7 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
         <record model="ir.model.access" id="access_move_line_dunning">
-            <field name="model" search="[('model', '=', 'account.move.line')]"/>
+            <field name="model">account.move.line</field>
             <field name="group" ref="group_dunning"/>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="False"/>

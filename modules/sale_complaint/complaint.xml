@@ -41,14 +41,14 @@ this repository contains the full copyright notices and license terms. -->
             id="menu_type"/>
 
         <record model="ir.model.access" id="access_type">
-            <field name="model" search="[('model', '=', 'sale.complaint.type')]"/>
+            <field name="model">sale.complaint.type</field>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="False"/>
             <field name="perm_create" eval="False"/>
             <field name="perm_delete" eval="False"/>
         </record>
         <record model="ir.model.access" id="access_type_admin">
-            <field name="model" search="[('model', '=', 'sale.complaint.type')]"/>
+            <field name="model">sale.complaint.type</field>
             <field name="group" ref="sale.group_sale_admin"/>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="True"/>
@@ -190,14 +190,14 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
         <record model="ir.model.access" id="access_complaint">
-            <field name="model" search="[('model', '=', 'sale.complaint')]"/>
+            <field name="model">sale.complaint</field>
             <field name="perm_read" eval="False"/>
             <field name="perm_write" eval="False"/>
             <field name="perm_create" eval="False"/>
             <field name="perm_delete" eval="False"/>
         </record>
         <record model="ir.model.access" id="access_complaint_sale">
-            <field name="model" search="[('model', '=', 'sale.complaint')]"/>
+            <field name="model">sale.complaint</field>
             <field name="group" ref="sale.group_sale"/>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="True"/>

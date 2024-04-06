@@ -18,7 +18,7 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
         <record model="ir.model.access" id="access_invoice_sale">
-            <field name="model" search="[('model', '=', 'account.invoice')]"/>
+            <field name="model">account.invoice</field>
             <field name="group" ref="group_sale"/>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="False"/>
@@ -27,7 +27,7 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
         <record model="ir.model.access" id="access_invoice_line_sale">
-            <field name="model" search="[('model', '=', 'account.invoice.line')]"/>
+            <field name="model">account.invoice.line</field>
             <field name="group" ref="group_sale"/>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="False"/>

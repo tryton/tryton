@@ -135,8 +135,7 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
         <record model="ir.model.access" id="access_request_quotation">
-            <field name="model"
-                search="[('model', '=', 'purchase.request.quotation')]"/>
+            <field name="model">purchase.request.quotation</field>
             <field name="perm_read" eval="False"/>
             <field name="perm_write" eval="False"/>
             <field name="perm_create" eval="False"/>
@@ -144,8 +143,7 @@ this repository contains the full copyright notices and license terms. -->
         </record>
         <record model="ir.model.access"
             id="access_request_quotation_purchase_request">
-            <field name="model"
-                search="[('model', '=', 'purchase.request.quotation')]"/>
+            <field name="model">purchase.request.quotation</field>
             <field name="group" ref="purchase_request.group_purchase_request"/>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="True"/>
@@ -154,8 +152,7 @@ this repository contains the full copyright notices and license terms. -->
         </record>
         <record model="ir.model.access"
             id="access_request_quotation_purchase">
-            <field name="model"
-                search="[('model', '=', 'purchase.request.quotation')]"/>
+            <field name="model">purchase.request.quotation</field>
             <field name="group" ref="purchase.group_purchase"/>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="False"/>

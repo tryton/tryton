@@ -198,14 +198,14 @@ this repository contains the full copyright notices and license terms. -->
             id="menu_account_type_list"/>
 
         <record model="ir.model.access" id="access_account_type">
-            <field name="model" search="[('model', '=', 'account.account.type')]"/>
+            <field name="model">account.account.type</field>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="False"/>
             <field name="perm_create" eval="False"/>
             <field name="perm_delete" eval="False"/>
         </record>
         <record model="ir.model.access" id="access_account_type_account_admin">
-            <field name="model" search="[('model', '=', 'account.account.type')]"/>
+            <field name="model">account.account.type</field>
             <field name="group" ref="group_account_admin"/>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="True"/>
@@ -302,7 +302,7 @@ this repository contains the full copyright notices and license terms. -->
             sequence="20"
             id="menu_account_template_tree"/>
         <record model="ir.model.access" id="access_account_template">
-            <field name="model" search="[('model', '=', 'account.account.template')]"/>
+            <field name="model">account.account.template</field>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="False"/>
             <field name="perm_create" eval="False"/>
@@ -495,14 +495,14 @@ this repository contains the full copyright notices and license terms. -->
             id="menu_account_tree_chart"/>
 
         <record model="ir.model.access" id="access_account">
-            <field name="model" search="[('model', '=', 'account.account')]"/>
+            <field name="model">account.account</field>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="False"/>
             <field name="perm_create" eval="False"/>
             <field name="perm_delete" eval="False"/>
         </record>
         <record model="ir.model.access" id="access_account_account_admin">
-            <field name="model" search="[('model', '=', 'account.account')]"/>
+            <field name="model">account.account</field>
             <field name="group" ref="group_account_admin"/>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="True"/>
@@ -639,14 +639,14 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
         <record model="ir.model.access" id="access_general_ledger_account">
-            <field name="model" search="[('model', '=', 'account.general_ledger.account')]"/>
+            <field name="model">account.general_ledger.account</field>
             <field name="perm_read" eval="False"/>
             <field name="perm_write" eval="False"/>
             <field name="perm_create" eval="False"/>
             <field name="perm_delete" eval="False"/>
         </record>
         <record model="ir.model.access" id="access_general_ledger_account_account">
-            <field name="model" search="[('model', '=', 'account.general_ledger.account')]"/>
+            <field name="model">account.general_ledger.account</field>
             <field name="group" ref="group_account"/>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="False"/>
@@ -726,14 +726,14 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
         <record model="ir.model.access" id="access_general_ledger_account_party">
-            <field name="model" search="[('model', '=', 'account.general_ledger.account.party')]"/>
+            <field name="model">account.general_ledger.account.party</field>
             <field name="perm_read" eval="False"/>
             <field name="perm_write" eval="False"/>
             <field name="perm_create" eval="False"/>
             <field name="perm_delete" eval="False"/>
         </record>
         <record model="ir.model.access" id="access_general_ledger_account_account_party">
-            <field name="model" search="[('model', '=', 'account.general_ledger.account.party')]"/>
+            <field name="model">account.general_ledger.account.party</field>
             <field name="group" ref="group_account"/>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="False"/>
@@ -909,14 +909,14 @@ this repository contains the full copyright notices and license terms. -->
             id="menu_aged_balance"/>
 
         <record model="ir.model.access" id="access_aged_balance">
-            <field name="model" search="[('model', '=', 'account.aged_balance')]"/>
+            <field name="model">account.aged_balance</field>
             <field name="perm_read" eval="False"/>
             <field name="perm_write" eval="False"/>
             <field name="perm_create" eval="False"/>
             <field name="perm_delete" eval="False"/>
         </record>
         <record model="ir.model.access" id="access_aged_balance_account">
-            <field name="model" search="[('model', '=', 'account.aged_balance')]"/>
+            <field name="model">account.aged_balance</field>
             <field name="group" ref="group_account"/>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="False"/>

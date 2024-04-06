@@ -119,7 +119,7 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
         <record model="ir.model.access" id="access_sale_blanket_agreement">
-            <field name="model" search="[('model', '=', 'sale.blanket_agreement')]"/>
+            <field name="model">sale.blanket_agreement</field>
             <field name="perm_read" eval="False"/>
             <field name="perm_write" eval="False"/>
             <field name="perm_create" eval="False"/>
@@ -127,7 +127,7 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
         <record model="ir.model.access" id="access_sale_blanket_agreement_for_group_sale">
-            <field name="model" search="[('model', '=', 'sale.blanket_agreement')]"/>
+            <field name="model">sale.blanket_agreement</field>
             <field name="group" ref="sale.group_sale"/>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="False"/>
@@ -136,7 +136,7 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
         <record model="ir.model.access" id="access_sale_blanket_agreement_for_group_sale_blanket_agreement">
-            <field name="model" search="[('model', '=', 'sale.blanket_agreement')]"/>
+            <field name="model">sale.blanket_agreement</field>
             <field name="group" ref="group_sale_blanket_agreement"/>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="True"/>

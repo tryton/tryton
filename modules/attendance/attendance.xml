@@ -78,7 +78,7 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
         <record model="ir.model.access" id="access_attendance">
-            <field name="model" search="[('model', '=', 'attendance.line')]"/>
+            <field name="model">attendance.line</field>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="True"/>
             <field name="perm_create" eval="True"/>
@@ -155,14 +155,14 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
         <record model="ir.model.access" id="access_period">
-            <field name="model" search="[('model', '=', 'attendance.period')]"/>
+            <field name="model">attendance.period</field>
             <field name="perm_read" eval="False"/>
             <field name="perm_write" eval="False"/>
             <field name="perm_create" eval="False"/>
             <field name="perm_delete" eval="False"/>
         </record>
         <record model="ir.model.access" id="access_period_admin">
-            <field name="model" search="[('model', '=', 'attendance.period')]"/>
+            <field name="model">attendance.period</field>
             <field name="group" ref="group_attendance_admin"/>
             <field name="perm_read" eval="True"/>
             <field name="perm_read" eval="True"/>

@@ -11,7 +11,7 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
         <record model="ir.model.access" id="access_move_group_production">
-            <field name="model" search="[('model', '=', 'stock.move')]"/>
+            <field name="model">stock.move</field>
             <field name="group" ref="group_production"/>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="True"/>

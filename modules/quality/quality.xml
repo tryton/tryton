@@ -69,14 +69,14 @@ this repository contains the full copyright notices and license terms. -->
             icon="tryton-list"/>
 
         <record model="ir.model.access" id="access_quality_configuration">
-            <field name="model" search="[('model', '=', 'quality.configuration')]"/>
+            <field name="model">quality.configuration</field>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="False"/>
             <field name="perm_create" eval="False"/>
             <field name="perm_delete" eval="False"/>
         </record>
         <record model="ir.model.access" id="access_quality_configuration_quality_admin">
-            <field name="model" search="[('model', '=', 'quality.configuration')]"/>
+            <field name="model">quality.configuration</field>
             <field name="group" ref="group_quality_admin"/>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="True"/>
@@ -141,14 +141,14 @@ this repository contains the full copyright notices and license terms. -->
             id="menu_quality_control"/>
 
         <record model="ir.model.access" id="access_quality_control">
-            <field name="model" search="[('model', '=', 'quality.control')]"/>
+            <field name="model">quality.control</field>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="False"/>
             <field name="perm_create" eval="False"/>
             <field name="perm_delete" eval="False"/>
         </record>
         <record model="ir.model.access" id="access_quality_control_quality_admin">
-            <field name="model" search="[('model', '=', 'quality.control')]"/>
+            <field name="model">quality.control</field>
             <field name="group" ref="group_quality_admin"/>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="True"/>
@@ -257,14 +257,14 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
         <record model="ir.model.access" id="access_quality_inspection">
-            <field name="model" search="[('model', '=', 'quality.inspection')]"/>
+            <field name="model">quality.inspection</field>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="True"/>
             <field name="perm_create" eval="False"/>
             <field name="perm_delete" eval="False"/>
         </record>
         <record model="ir.model.access" id="access_quality_control_quality">
-            <field name="model" search="[('model', '=', 'quality.inspection')]"/>
+            <field name="model">quality.inspection</field>
             <field name="group" ref="group_quality"/>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="True"/>
@@ -376,14 +376,14 @@ this repository contains the full copyright notices and license terms. -->
             id="menu_quality_alert_form"/>
 
         <record model="ir.model.access" id="access_quality_alert">
-            <field name="model" search="[('model', '=', 'quality.alert')]"/>
+            <field name="model">quality.alert</field>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="False"/>
             <field name="perm_create" eval="False"/>
             <field name="perm_delete" eval="False"/>
         </record>
         <record model="ir.model.access" id="access_quality_alert_quality">
-            <field name="model" search="[('model', '=', 'quality.alert')]"/>
+            <field name="model">quality.alert</field>
             <field name="group" ref="group_quality"/>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="True"/>

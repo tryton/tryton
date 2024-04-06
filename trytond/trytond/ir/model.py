@@ -488,11 +488,14 @@ class ModelField(
         return res
 
 
-class ModelAccess(DeactivableMixin, ModelSQL, ModelView):
+class ModelAccess(
+        fields.fmany2one(
+            'model_ref', 'model', 'ir.model,model', "Model",
+            required=True, ondelete='CASCADE'),
+        DeactivableMixin, ModelSQL, ModelView):
     "Model access"
     __name__ = 'ir.model.access'
-    model = fields.Many2One('ir.model', 'Model', required=True,
-            ondelete="CASCADE")
+    model = fields.Char("Model", required=True)
     group = fields.Many2One('res.group', 'Group',
             ondelete="CASCADE")
     perm_read = fields.Boolean('Read Access')
@@ -505,10 +508,33 @@ class ModelAccess(DeactivableMixin, ModelSQL, ModelView):
     @classmethod
     def __setup__(cls):
         super(ModelAccess, cls).__setup__()
-        cls.__access__.add('model')
+        cls.__access__.add('model_ref')
         cls.__rpc__.update({
                 'get_access': RPC(),
                 })
+
+    @classmethod
+    def __register__(cls, module):
+        pool = Pool()
+        Model = pool.get('ir.model')
+        transaction = Transaction()
+        cursor = transaction.connection.cursor()
+        table_h = cls.__table_handler__(module)
+        table = cls.__table__()
+        model = Model.__table__()
+
+        # Migration from 7.0: model as char
+        if (table_h.column_exist('model')
+                and table_h.column_is_type('model', 'INTEGER')):
+            table_h.column_rename('model', '_temp_model')
+            table_h.add_column('model', 'VARCHAR')
+            cursor.execute(*table.update(
+                    [table.model], [model.model],
+                    from_=[model],
+                    where=table._temp_model == model.id))
+            table_h.drop_column('_temp_model')
+
+        super().__register__(module)
 
     @classmethod
     def check_xml_record(cls, accesses, values):
@@ -531,11 +557,11 @@ class ModelAccess(DeactivableMixin, ModelSQL, ModelView):
         return False
 
     def get_rec_name(self, name):
-        return self.model.rec_name
+        return self.model_ref.rec_name
 
     @classmethod
     def search_rec_name(cls, name, clause):
-        return [('model',) + tuple(clause[1:])]
+        return [('model_ref.rec_name', *clause[1:])]
 
     @classmethod
     def get_access(cls, models):
@@ -545,11 +571,9 @@ class ModelAccess(DeactivableMixin, ModelSQL, ModelView):
             return defaultdict(lambda: defaultdict(lambda: True))
 
         pool = Pool()
-        Model = pool.get('ir.model')
         User = pool.get('res.user')
         cursor = Transaction().connection.cursor()
         model_access = cls.__table__()
-        ir_model = Model.__table__()
 
         groups = User.get_groups()
 
@@ -594,10 +618,8 @@ class ModelAccess(DeactivableMixin, ModelSQL, ModelView):
                 access[model] = default_singleton
             else:
                 access[model] = default
-        cursor.execute(*model_access.join(ir_model, 'LEFT',
-                condition=model_access.model == ir_model.id
-                ).select(
-                ir_model.model,
+        cursor.execute(*model_access.select(
+                model_access.model,
                 Max(Case(
                         (model_access.perm_read == Literal(True), 1),
                         else_=0)),
@@ -610,11 +632,11 @@ class ModelAccess(DeactivableMixin, ModelSQL, ModelView):
                 Max(Case(
                         (model_access.perm_delete == Literal(True), 1),
                         else_=0)),
-                where=ir_model.model.in_(all_models)
+                where=model_access.model.in_(all_models)
                 & (model_access.active == Literal(True))
                 & (model_access.group.in_(groups or [-1])
                     | (model_access.group == Null)),
-                group_by=ir_model.model))
+                group_by=model_access.model))
         raw_access = {
             m: {'read': r, 'write': w, 'create': c, 'delete': d}
             for m, r, w, c, d in cursor}

@@ -65,14 +65,14 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
         <record model="ir.model.access" id="access_lot">
-            <field name="model" search="[('model', '=', 'stock.lot')]"/>
+            <field name="model">stock.lot</field>
             <field name="perm_read" eval="False"/>
             <field name="perm_write" eval="False"/>
             <field name="perm_create" eval="False"/>
             <field name="perm_delete" eval="False"/>
         </record>
         <record model="ir.model.access" id="access_lot_group_stock">
-            <field name="model" search="[('model', '=', 'stock.lot')]"/>
+            <field name="model">stock.lot</field>
             <field name="group" ref="stock.group_stock"/>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="True"/>
@@ -166,7 +166,7 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
         <record model="ir.model.access" id="access_lot_trace">
-            <field name="model" search="[('model', '=', 'stock.lot.trace')]"/>
+            <field name="model">stock.lot.trace</field>
             <field name="perm_read" eval="False"/>
             <field name="perm_write" eval="False"/>
             <field name="perm_create" eval="False"/>
@@ -174,7 +174,7 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
         <record model="ir.model.access" id="access_lot_trace_group_stock">
-            <field name="model" search="[('model', '=', 'stock.lot.trace')]"/>
+            <field name="model">stock.lot.trace</field>
             <field name="group" ref="stock.group_stock"/>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="False"/>
@@ -195,14 +195,14 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
         <record model="ir.model.access" id="access_lots_by_locations">
-            <field name="model" search="[('model', '=', 'stock.lots_by_locations')]"/>
+            <field name="model">stock.lots_by_locations</field>
             <field name="perm_read" eval="False"/>
             <field name="perm_write" eval="False"/>
             <field name="perm_create" eval="False"/>
             <field name="perm_delete" eval="False"/>
         </record>
         <record model="ir.model.access" id="access_lots_by_locations_group_stock">
-            <field name="model" search="[('model', '=', 'stock.lots_by_locations')]"/>
+            <field name="model">stock.lots_by_locations</field>
             <field name="group" ref="stock.group_stock"/>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="False"/>
@@ -376,14 +376,14 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
         <record model="ir.model.access" id="access_period_cache_lot">
-            <field name="model" search="[('model', '=', 'stock.period.cache.lot')]"/>
+            <field name="model">stock.period.cache.lot</field>
             <field name="perm_read" eval="False"/>
             <field name="perm_write" eval="False"/>
             <field name="perm_create" eval="False"/>
             <field name="perm_delete" eval="False"/>
         </record>
         <record model="ir.model.access" id="access_period_cache_lot_stock">
-            <field name="model" search="[('model', '=', 'stock.period.cache.lot')]"/>
+            <field name="model">stock.period.cache.lot</field>
             <field name="group" ref="stock.group_stock"/>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="False"/>
@@ -391,7 +391,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="perm_delete" eval="False"/>
         </record>
         <record model="ir.model.access" id="access_period_cache_lot_admin">
-            <field name="model" search="[('model', '=', 'stock.period.cache.lot')]"/>
+            <field name="model">stock.period.cache.lot</field>
             <field name="group" ref="stock.group_stock_admin"/>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="True"/>

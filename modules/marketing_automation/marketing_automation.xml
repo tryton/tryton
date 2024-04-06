@@ -63,14 +63,14 @@ this repository contains the full copyright notices and license terms. -->
             id="menu_scenario_form"/>
 
         <record model="ir.model.access" id="access_scenario">
-            <field name="model" search="[('model', '=', 'marketing.automation.scenario')]"/>
+            <field name="model">marketing.automation.scenario</field>
             <field name="perm_read" eval="False"/>
             <field name="perm_write" eval="False"/>
             <field name="perm_create" eval="False"/>
             <field name="perm_delete" eval="False"/>
         </record>
         <record model="ir.model.access" id="access_scenario_marketing">
-            <field name="model" search="[('model', '=', 'marketing.automation.scenario')]"/>
+            <field name="model">marketing.automation.scenario</field>
             <field name="group" ref="marketing.group_marketing"/>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="True"/>
@@ -141,14 +141,14 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
         <record model="ir.model.access" id="access_activity">
-            <field name="model" search="[('model', '=', 'marketing.automation.activity')]"/>
+            <field name="model">marketing.automation.activity</field>
             <field name="perm_read" eval="False"/>
             <field name="perm_write" eval="False"/>
             <field name="perm_create" eval="False"/>
             <field name="perm_delete" eval="False"/>
         </record>
         <record model="ir.model.access" id="access_activity_marketing">
-            <field name="model" search="[('model', '=', 'marketing.automation.activity')]"/>
+            <field name="model">marketing.automation.activity</field>
             <field name="group" ref="marketing.group_marketing"/>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="True"/>
@@ -190,14 +190,14 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
         <record model="ir.model.access" id="access_record">
-            <field name="model" search="[('model', '=', 'marketing.automation.record')]"/>
+            <field name="model">marketing.automation.record</field>
             <field name="perm_read" eval="False"/>
             <field name="perm_write" eval="False"/>
             <field name="perm_create" eval="False"/>
             <field name="perm_delete" eval="False"/>
         </record>
         <record model="ir.model.access" id="access_record_marketing">
-            <field name="model" search="[('model', '=', 'marketing.automation.record')]"/>
+            <field name="model">marketing.automation.record</field>
             <field name="group" ref="marketing.group_marketing"/>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="True"/>
@@ -275,14 +275,14 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
         <record model="ir.model.access" id="access_record_activity">
-            <field name="model" search="[('model', '=', 'marketing.automation.record.activity')]"/>
+            <field name="model">marketing.automation.record.activity</field>
             <field name="perm_read" eval="False"/>
             <field name="perm_write" eval="False"/>
             <field name="perm_create" eval="False"/>
             <field name="perm_delete" eval="False"/>
         </record>
         <record model="ir.model.access" id="access_record_activity_marketing">
-            <field name="model" search="[('model', '=', 'marketing.automation.record.activity')]"/>
+            <field name="model">marketing.automation.record.activity</field>
             <field name="group" ref="marketing.group_marketing"/>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="True"/>

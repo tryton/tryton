@@ -35,14 +35,14 @@
             id="menu_shortened_url_form"/>
 
         <record model="ir.model.access" id="access_shortened_url">
-            <field name="model" search="[('model', '=', 'web.shortened_url')]"/>
+            <field name="model">web.shortened_url</field>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="False"/>
             <field name="perm_create" eval="False"/>
             <field name="perm_delete" eval="False"/>
         </record>
         <record model="ir.model.access" id="access_shortened_url_group_admin">
-            <field name="model" search="[('model', '=', 'web.shortened_url')]"/>
+            <field name="model">web.shortened_url</field>
             <field name="group" ref="res.group_admin"/>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="True"/>

@@ -1,3 +1,4 @@
+* Store model name on ir.model.access
 * Store model name on ir.model.field
 * Add fmany2one field
 * Allow creation of foreign key on non primary key
