@@ -268,15 +268,11 @@ class ModelTestCase(unittest.TestCase):
         "Test field is readonly when no write access on it"
         pool = Pool()
         Model = pool.get('test.model')
-        Field = pool.get('ir.model.field')
         FieldAccess = pool.get('ir.model.field.access')
 
-        field, = Field.search([
-                ('name', '=', 'name'),
-                ('model.model', '=', Model.__name__),
-                ])
         FieldAccess.create([{
-                    'field': field.id,
+                    'model': Model.__name__,
+                    'field': 'name',
                     'perm_write': False,
                     }])
 

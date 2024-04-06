@@ -596,18 +596,14 @@ class ModelView(unittest.TestCase):
         "Testing circular depends are removed when user has no access"
         pool = Pool()
         CircularDepends = pool.get('test.modelview.circular_depends')
-        Field = pool.get('ir.model.field')
         FieldAccess = pool.get('ir.model.field.access')
 
-        foo_field, = Field.search([
-                ('model.model', '=', 'test.modelview.circular_depends'),
-                ('name', '=', 'foo'),
-                ])
         FieldAccess.create([{
-            'field': foo_field.id,
-            'group': None,
-            'perm_read': False,
-            }])
+                    'model': CircularDepends.__name__,
+                    'field': 'foo',
+                    'group': None,
+                    'perm_read': False,
+                    }])
 
         fields = CircularDepends.fields_view_get(view_type='form')['fields']
 
@@ -641,18 +637,14 @@ class ModelView(unittest.TestCase):
         "Testing buttons are removed when dependant fields are not accesible"
         pool = Pool()
         Button = pool.get('test.modelview.button_depends')
-        Field = pool.get('ir.model.field')
         FieldAccess = pool.get('ir.model.field.access')
 
-        field, = Field.search([
-                ('model.model', '=', Button.__name__),
-                ('name', '=', 'value'),
-                ])
         FieldAccess.create([{
-            'field': field.id,
-            'group': None,
-            'perm_read': False,
-            }])
+                    'model': Button.__name__,
+                    'field': 'value',
+                    'group': None,
+                    'perm_read': False,
+                    }])
 
         arch = Button.fields_view_get(view_type='form')['arch']
         parser = etree.XMLParser()

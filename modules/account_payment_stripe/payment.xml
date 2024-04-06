@@ -185,8 +185,8 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
         <record model="ir.model.field.access" id="access_account_secret_key">
-            <field name="field"
-                search="[('name', '=', 'secret_key'), ('model.model', '=', 'account.payment.stripe.account')]"/>
+            <field name="model">account.payment.stripe.account</field>
+            <field name="field">secret_key</field>
             <field name="perm_read" eval="False"/>
             <field name="perm_write" eval="False"/>
             <field name="perm_create" eval="False"/>
@@ -194,8 +194,8 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
         <record model="ir.model.field.access" id="access_account_secret_key_account_admin">
-            <field name="field"
-                search="[('name', '=', 'secret_key'), ('model.model', '=', 'account.payment.stripe.account')]"/>
+            <field name="model">account.payment.stripe.account</field>
+            <field name="field">secret_key</field>
             <field name="group" ref="account.group_account_admin"/>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="True"/>

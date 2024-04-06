@@ -415,23 +415,6 @@ class _ModelFieldAccessTestCase(unittest.TestCase):
     def setUpClass(cls):
         activate_module('tests')
 
-    def _field(self, name):
-        pool = Pool()
-        Field = pool.get('ir.model.field')
-        field1, = Field.search([
-                ('model', '=', 'test.access'),
-                ('name', '=', name),
-                ])
-        return field1
-
-    @property
-    def field1(self):
-        return self._field('field1')
-
-    @property
-    def field2(self):
-        return self._field('field2')
-
     @property
     def group(self):
         pool = Pool()
@@ -469,7 +452,8 @@ class _ModelFieldAccessTestCase(unittest.TestCase):
         TestAccess = pool.get('test.access')
         record, = TestAccess.create([{}])
         FieldAccess.create([{
-                    'field': self.field1.id,
+                    'model': 'test.access',
+                    'field': 'field1',
                     'group': None,
                     self._perm: True,
                     }])
@@ -485,7 +469,8 @@ class _ModelFieldAccessTestCase(unittest.TestCase):
         TestAccess = pool.get('test.access')
         record, = TestAccess.create([{}])
         FieldAccess.create([{
-                    'field': self.field1.id,
+                    'model': 'test.access',
+                    'field': 'field1',
                     'group': None,
                     self._perm: False,
                     }])
@@ -501,12 +486,14 @@ class _ModelFieldAccessTestCase(unittest.TestCase):
         TestAccess = pool.get('test.access')
         record, = TestAccess.create([{}])
         FieldAccess.create([{
-                    'field': self.field1.id,
+                    'model': 'test.access',
+                    'field': 'field1',
                     'group': None,
                     self._perm: False,
                     }])
         FieldAccess.create([{
-                    'field': self.field1.id,
+                    'model': 'test.access',
+                    'field': 'field1',
                     'group': self.group.id,
                     self._perm: True,
                     }])
@@ -522,12 +509,14 @@ class _ModelFieldAccessTestCase(unittest.TestCase):
         TestAccess = pool.get('test.access')
         record, = TestAccess.create([{}])
         FieldAccess.create([{
-                    'field': self.field1.id,
+                    'model': 'test.access',
+                    'field': 'field1',
                     'group': None,
                     self._perm: True,
                     }])
         FieldAccess.create([{
-                    'field': self.field1.id,
+                    'model': 'test.access',
+                    'field': 'field1',
                     'group': self.group.id,
                     self._perm: False,
                     }])
@@ -543,12 +532,14 @@ class _ModelFieldAccessTestCase(unittest.TestCase):
         TestAccess = pool.get('test.access')
         record, = TestAccess.create([{}])
         FieldAccess.create([{
-                    'field': self.field1.id,
+                    'model': 'test.access',
+                    'field': 'field1',
                     'group': None,
                     self._perm: True,
                     }])
         FieldAccess.create([{
-                    'field': self.field1.id,
+                    'model': 'test.access',
+                    'field': 'field1',
                     'group': self.group.id,
                     self._perm: True,
                     }])
@@ -564,12 +555,14 @@ class _ModelFieldAccessTestCase(unittest.TestCase):
         TestAccess = pool.get('test.access')
         record, = TestAccess.create([{}])
         FieldAccess.create([{
-                    'field': self.field1.id,
+                    'model': 'test.access',
+                    'field': 'field1',
                     'group': None,
                     self._perm: False,
                     }])
         FieldAccess.create([{
-                    'field': self.field1.id,
+                    'model': 'test.access',
+                    'field': 'field1',
                     'group': self.group.id,
                     self._perm: False,
                     }])
@@ -585,7 +578,8 @@ class _ModelFieldAccessTestCase(unittest.TestCase):
         TestAccess = pool.get('test.access')
         record, = TestAccess.create([{}])
         FieldAccess.create([{
-                    'field': self.field1.id,
+                    'model': 'test.access',
+                    'field': 'field1',
                     'group': self.group.id,
                     self._perm: True,
                     }])
@@ -601,7 +595,8 @@ class _ModelFieldAccessTestCase(unittest.TestCase):
         TestAccess = pool.get('test.access')
         record, = TestAccess.create([{}])
         FieldAccess.create([{
-                    'field': self.field1.id,
+                    'model': 'test.access',
+                    'field': 'field1',
                     'group': self.group.id,
                     self._perm: False,
                     }])
@@ -619,12 +614,14 @@ class _ModelFieldAccessTestCase(unittest.TestCase):
         record, = TestAccess.create([{}])
         group, = Group.create([{'name': 'Test'}])
         FieldAccess.create([{
-                    'field': self.field1.id,
+                    'model': 'test.access',
+                    'field': 'field1',
                     'group': self.group.id,
                     self._perm: True,
                     }])
         FieldAccess.create([{
-                    'field': self.field1.id,
+                    'model': 'test.access',
+                    'field': 'field1',
                     'group': group.id,
                     self._perm: True,
                     }])
@@ -642,12 +639,14 @@ class _ModelFieldAccessTestCase(unittest.TestCase):
         record, = TestAccess.create([{}])
         group, = Group.create([{'name': 'Test'}])
         FieldAccess.create([{
-                    'field': self.field1.id,
+                    'model': 'test.access',
+                    'field': 'field1',
                     'group': self.group.id,
                     self._perm: False,
                     }])
         FieldAccess.create([{
-                    'field': self.field1.id,
+                    'model': 'test.access',
+                    'field': 'field1',
                     'group': group.id,
                     self._perm: True,
                     }])
@@ -665,12 +664,14 @@ class _ModelFieldAccessTestCase(unittest.TestCase):
         record, = TestAccess.create([{}])
         group, = Group.create([{'name': 'Test'}])
         FieldAccess.create([{
-                    'field': self.field1.id,
+                    'model': 'test.access',
+                    'field': 'field1',
                     'group': self.group.id,
                     self._perm: True,
                     }])
         FieldAccess.create([{
-                    'field': self.field1.id,
+                    'model': 'test.access',
+                    'field': 'field1',
                     'group': group.id,
                     self._perm: False,
                     }])
@@ -691,12 +692,14 @@ class _ModelFieldAccessTestCase(unittest.TestCase):
                 'parent': group.id,
                 })
         FieldAccess.create([{
-                    'field': self.field1.id,
+                    'model': 'test.access',
+                    'field': 'field1',
                     'group': self.group.id,
                     self._perm: False,
                     }])
         FieldAccess.create([{
-                    'field': self.field1.id,
+                    'model': 'test.access',
+                    'field': 'field1',
                     'group': group.id,
                     self._perm: True,
                     }])
@@ -714,12 +717,14 @@ class _ModelFieldAccessTestCase(unittest.TestCase):
         record, = TestAccess.create([{}])
         group, = Group.create([{'name': 'Test'}])
         FieldAccess.create([{
-                    'field': self.field1.id,
+                    'model': 'test.access',
+                    'field': 'field1',
                     'group': None,
                     self._perm: True,
                     }])
         FieldAccess.create([{
-                    'field': self.field2.id,
+                    'model': 'test.access',
+                    'field': 'field2',
                     'group': None,
                     self._perm: True,
                     }])
@@ -737,12 +742,14 @@ class _ModelFieldAccessTestCase(unittest.TestCase):
         record, = TestAccess.create([{}])
         group, = Group.create([{'name': 'Test'}])
         FieldAccess.create([{
-                    'field': self.field1.id,
+                    'model': 'test.access',
+                    'field': 'field1',
                     'group': None,
                     self._perm: False,
                     }])
         FieldAccess.create([{
-                    'field': self.field2.id,
+                    'model': 'test.access',
+                    'field': 'field2',
                     'group': None,
                     self._perm: False,
                     }])
@@ -760,12 +767,14 @@ class _ModelFieldAccessTestCase(unittest.TestCase):
         record, = TestAccess.create([{}])
         group, = Group.create([{'name': 'Test'}])
         FieldAccess.create([{
-                    'field': self.field1.id,
+                    'model': 'test.access',
+                    'field': 'field1',
                     'group': None,
                     self._perm: True,
                     }])
         FieldAccess.create([{
-                    'field': self.field2.id,
+                    'model': 'test.access',
+                    'field': 'field2',
                     'group': None,
                     self._perm: False,
                     }])
@@ -783,12 +792,14 @@ class _ModelFieldAccessTestCase(unittest.TestCase):
         record, = TestAccess.create([{}])
         group, = Group.create([{'name': 'Test'}])
         FieldAccess.create([{
-                    'field': self.field1.id,
+                    'model': 'test.access',
+                    'field': 'field1',
                     'group': self.group.id,
                     self._perm: True,
                     }])
         FieldAccess.create([{
-                    'field': self.field2.id,
+                    'model': 'test.access',
+                    'field': 'field2',
                     'group': None,
                     self._perm: True,
                     }])
@@ -806,12 +817,14 @@ class _ModelFieldAccessTestCase(unittest.TestCase):
         record, = TestAccess.create([{}])
         group, = Group.create([{'name': 'Test'}])
         FieldAccess.create([{
-                    'field': self.field1.id,
+                    'model': 'test.access',
+                    'field': 'field1',
                     'group': self.group.id,
                     self._perm: True,
                     }])
         FieldAccess.create([{
-                    'field': self.field2.id,
+                    'model': 'test.access',
+                    'field': 'field2',
                     'group': self.group.id,
                     self._perm: True,
                     }])
@@ -829,12 +842,14 @@ class _ModelFieldAccessTestCase(unittest.TestCase):
         record, = TestAccess.create([{}])
         group, = Group.create([{'name': 'Test'}])
         FieldAccess.create([{
-                    'field': self.field1.id,
+                    'model': 'test.access',
+                    'field': 'field1',
                     'group': self.group.id,
                     self._perm: False,
                     }])
         FieldAccess.create([{
-                    'field': self.field2.id,
+                    'model': 'test.access',
+                    'field': 'field2',
                     'group': self.group.id,
                     self._perm: False,
                     }])
@@ -852,12 +867,14 @@ class _ModelFieldAccessTestCase(unittest.TestCase):
         record, = TestAccess.create([{}])
         group, = Group.create([{'name': 'Test'}])
         FieldAccess.create([{
-                    'field': self.field1.id,
+                    'model': 'test.access',
+                    'field': 'field1',
                     'group': self.group.id,
                     self._perm: True,
                     }])
         FieldAccess.create([{
-                    'field': self.field2.id,
+                    'model': 'test.access',
+                    'field': 'field2',
                     'group': None,
                     self._perm: False,
                     }])
@@ -911,14 +928,10 @@ class ModelFieldAccessReadTestCase(_ModelFieldAccessTestCase):
         "Test access on search relate"
         pool = Pool()
         TestAccess = pool.get('test.access')
-        Field = pool.get('ir.model.field')
         FieldAccess = pool.get('ir.model.field.access')
-        field, = Field.search([
-                ('model', '=', 'test.access.relate'),
-                ('name', '=', 'value'),
-                ])
         FieldAccess.create([{
-                    'field': field.id,
+                    'model': 'test.access.relate',
+                    'field': 'value',
                     'perm_read': True,
                     }])
 
@@ -933,14 +946,10 @@ class ModelFieldAccessReadTestCase(_ModelFieldAccessTestCase):
         "Test access on search relate"
         pool = Pool()
         TestAccess = pool.get('test.access')
-        Field = pool.get('ir.model.field')
         FieldAccess = pool.get('ir.model.field.access')
-        field, = Field.search([
-                ('model', '=', 'test.access.relate'),
-                ('name', '=', 'value'),
-                ])
         FieldAccess.create([{
-                    'field': field.id,
+                    'model': 'test.access.relate',
+                    'field': 'value',
                     'perm_read': False,
                     }])
 
@@ -960,14 +969,10 @@ class ModelFieldAccessReadTestCase(_ModelFieldAccessTestCase):
         "Test access on search relate with a parent field"
         pool = Pool()
         TestAccess = pool.get('test.access')
-        Field = pool.get('ir.model.field')
         FieldAccess = pool.get('ir.model.field.access')
-        field, = Field.search([
-                ('model', '=', 'test.access.relate'),
-                ('name', '=', 'parent'),
-                ])
         FieldAccess.create([{
-                    'field': field.id,
+                    'model': 'test.access.relate',
+                    'field': 'parent',
                     'perm_read': True,
                     }])
 
@@ -978,14 +983,10 @@ class ModelFieldAccessReadTestCase(_ModelFieldAccessTestCase):
         "Test no access on search relate with a parent field"
         pool = Pool()
         TestAccess = pool.get('test.access')
-        Field = pool.get('ir.model.field')
         FieldAccess = pool.get('ir.model.field.access')
-        field, = Field.search([
-                ('model', '=', 'test.access.relate'),
-                ('name', '=', 'parent'),
-                ])
         FieldAccess.create([{
-                    'field': field.id,
+                    'model': 'test.access.relate',
+                    'field': 'parent',
                     'perm_read': False,
                     }])
 

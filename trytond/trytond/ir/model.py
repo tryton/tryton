@@ -740,11 +740,21 @@ class ModelAccess(
         ModelView._fields_view_get_cache.clear()
 
 
-class ModelFieldAccess(DeactivableMixin, ModelSQL, ModelView):
+class ModelFieldAccess(
+        fields.fmany2one(
+            'model_ref', 'model', 'ir.model,model', "Model",
+            required=True, ondelete='CASCADE'),
+        fields.fmany2one(
+            'field_ref', 'field,model', 'ir.model.field,name,model', "Field",
+            required=True, ondelete='CASCADE',
+            domain=[
+                ('model', '=', Eval('model')),
+                ]),
+        DeactivableMixin, ModelSQL, ModelView):
     "Model Field Access"
     __name__ = 'ir.model.field.access'
-    field = fields.Many2One('ir.model.field', 'Field', required=True,
-            ondelete='CASCADE')
+    model = fields.Char("Model", required=True)
+    field = fields.Char("Field", required=True)
     group = fields.Many2One('res.group', 'Group', ondelete='CASCADE')
     perm_read = fields.Boolean('Read Access')
     perm_write = fields.Boolean('Write Access')
@@ -756,7 +766,32 @@ class ModelFieldAccess(DeactivableMixin, ModelSQL, ModelView):
     @classmethod
     def __setup__(cls):
         super().__setup__()
-        cls.__access__.add('field')
+        cls.__access__.add('field_ref')
+
+    @classmethod
+    def __register__(cls, module):
+        pool = Pool()
+        Field = pool.get('ir.model.field')
+        transaction = Transaction()
+        cursor = transaction.connection.cursor()
+        table_h = cls.__table_handler__(module)
+        table = cls.__table__()
+        field = Field.__table__()
+
+        # Migration from 7.0: field as char
+        if (table_h.column_exist('field')
+                and table_h.column_is_type('field', 'INTEGER')):
+            table_h.column_rename('field', '_temp_field')
+            table_h.add_column('model', 'VARCHAR')
+            table_h.add_column('field', 'VARCHAR')
+            cursor.execute(*table.update(
+                    [table.model, table.field],
+                    [field.model, field.name],
+                    from_=[field],
+                    where=table._temp_field == field.id))
+            table_h.drop_column('_temp_field')
+
+        super().__register__(module)
 
     @classmethod
     def check_xml_record(cls, field_accesses, values):
@@ -779,11 +814,11 @@ class ModelFieldAccess(DeactivableMixin, ModelSQL, ModelView):
         return True
 
     def get_rec_name(self, name):
-        return self.field.rec_name
+        return self.field_ref.rec_name
 
     @classmethod
     def search_rec_name(cls, name, clause):
-        return [('field',) + tuple(clause[1:])]
+        return [('field_ref.rec_name', *clause[1:])]
 
     @classmethod
     def get_access(cls, models):
@@ -794,10 +829,8 @@ class ModelFieldAccess(DeactivableMixin, ModelSQL, ModelView):
                     lambda: defaultdict(lambda: True)))
 
         pool = Pool()
-        ModelField = pool.get('ir.model.field')
         User = pool.get('res.user')
         field_access = cls.__table__()
-        model_field = ModelField.__table__()
 
         groups = User.get_groups()
 
@@ -813,11 +846,9 @@ class ModelFieldAccess(DeactivableMixin, ModelSQL, ModelView):
         default = {}
         accesses = dict((m, default) for m in models)
         cursor = Transaction().connection.cursor()
-        cursor.execute(*field_access.join(model_field,
-                condition=field_access.field == model_field.id
-                ).select(
-                model_field.model,
-                model_field.name,
+        cursor.execute(*field_access.select(
+                field_access.model,
+                field_access.field,
                 Max(Case(
                         (field_access.perm_read == Literal(True), 1),
                         else_=0)),
@@ -830,11 +861,11 @@ class ModelFieldAccess(DeactivableMixin, ModelSQL, ModelView):
                 Max(Case(
                         (field_access.perm_delete == Literal(True), 1),
                         else_=0)),
-                where=model_field.model.in_(models)
+                where=field_access.model.in_(models)
                 & (field_access.active == Literal(True))
                 & (field_access.group.in_(groups or [-1])
                     | (field_access.group == Null)),
-                group_by=[model_field.model, model_field.name]))
+                group_by=[field_access.model, field_access.field]))
         for m, f, r, w, c, d in cursor:
             accesses[m][f] = {'read': r, 'write': w, 'create': c, 'delete': d}
         for model, maccesses in accesses.items():
