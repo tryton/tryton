@@ -152,7 +152,6 @@ html[theme="default"] {
 
 #menu, #tabs {
     margin-top: 5px;
-    padding-bottom: 5px;
 
     .navbar-brand {
         .title {
@@ -231,8 +230,54 @@ html[theme="default"] {
     }
 }
 
-#tabcontent > .tab-pane > .panel {
-    margin-bottom: 0;
+#tabcontent {
+    display: block;
+    width: 100%;
+
+    > .tab-pane > .panel {
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+        margin-bottom: 5px;
+
+        > .panel-body {
+            display: flex;
+            flex: 1;
+            flex-direction: row;
+            padding-top: 0;
+            min-height: 0;
+
+            > div {
+                display: inline-flex;
+                padding-left: 15px;
+                padding-right: 15px;
+
+                &:first-child {
+                    flex: 2;
+                }
+            }
+        }
+    }
+
+    > .tab-pane.active {
+        /* override bootstrap which sets display to block */
+        display: flex;
+        flex: 1;
+    }
+}
+
+@media screen and (max-width: @screen-xs-max) {
+    #tabcontent {
+        > .tab-pane > .panel > .panel-body {
+            flex-direction: column-reverse;
+            min-height: unset;
+        }
+    }
+}
+
+#tabcontent[data-view-type="tree"] {
+    display: flex;
+    flex: 1;
 }
 
 @media screen and (min-width: @screen-sm-min) {
@@ -352,6 +397,7 @@ html.accesskey {
 
     .tab-domain {
         overflow-x: auto;
+        flex: 0 0 content;
 
         > .nav-tabs {
             display: inline-flex;
@@ -463,6 +509,12 @@ img.icon {
     }
 }
 
+.screen-container {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
 .filter-box {
     margin: 5px 0;
 }
@@ -476,13 +528,38 @@ img.icon {
 }
 
 .content-box {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
     overflow-y: auto;
+}
+
+.tree-container {
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+}
+
+.attachment-preview {
+    border-color: @panel-default-border;
+    border-style: solid;
+    border-width: 0 0 0 1px;
+    flex: 1;
+    margin-left: 5px;
+    min-width: 20%;
+    overflow: auto;
+
+    > div {
+        flex: 1;
+    }
+}
+
+.wizard-form {
+    width: 100%;
 }
 
 @media screen and (max-width: @screen-sm-max) {
     .attachment-preview:not(:empty) {
-        border-color: @panel-default-border;
-        border-style: solid;
         border-width: 0 0 1px 0;
         margin-bottom: 5px;
     }
@@ -689,6 +766,7 @@ img.icon {
 
 .form {
     width: 100%;
+    height: 100%;
     .form-container, .form-hcontainer, .form-vcontainer {
         display: grid;
         width: 100%;
@@ -1172,6 +1250,7 @@ input.column-boolean {
 }
 
 .scrollbar {
+    flex: 0 0 content;
     overflow: auto;
 
     > div {
