@@ -116,9 +116,9 @@ this repository contains the full copyright notices and license terms. -->
 
         <record model="ir.model.button"
                 id="purchase_hande_purchase_cancellation_exception_button">
+            <field name="model">purchase.request</field>
             <field name="name">handle_purchase_cancellation_exception</field>
             <field name="string">Handle Purchase Cancellation</field>
-            <field name="model" search="[('model', '=', 'purchase.request')]"/>
         </record>
 
         <record model="ir.action.keyword"

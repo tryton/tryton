@@ -124,27 +124,27 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
         <record model="ir.model.button" id="shipment_cost_cancel_button">
+            <field name="model">account.shipment_cost</field>
             <field name="name">cancel</field>
             <field name="string">Cancel</field>
-            <field name="model" search="[('model', '=', 'account.shipment_cost')]"/>
         </record>
 
         <record model="ir.model.button" id="shipment_cost_post_button">
+            <field name="model">account.shipment_cost</field>
             <field name="name">post_wizard</field>
             <field name="string">Post</field>
-            <field name="model" search="[('model', '=', 'account.shipment_cost')]"/>
         </record>
 
         <record model="ir.model.button" id="shipment_cost_show_button">
+            <field name="model">account.shipment_cost</field>
             <field name="name">show</field>
             <field name="string">Show</field>
-            <field name="model" search="[('model', '=', 'account.shipment_cost')]"/>
         </record>
 
         <record model="ir.model.button" id="shipment_cost_draft_button">
+            <field name="model">account.shipment_cost</field>
             <field name="name">draft</field>
             <field name="string">Draft</field>
-            <field name="model" search="[('model', '=', 'account.shipment_cost')]"/>
         </record>
 
         <record model="ir.rule.group" id="rule_group_shipment_cost_companies">

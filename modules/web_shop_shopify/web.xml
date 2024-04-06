@@ -73,9 +73,9 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
         <record model="ir.model.button" id="shop_shopify_identifier_set_to_update_button">
+            <field name="model">web.shop.shopify_identifier</field>
             <field name="name">set_to_update</field>
             <field name="string">Set to Update</field>
-            <field name="model" search="[('model', '=', 'web.shop.shopify_identifier')]"/>
         </record>
 
         <record model="ir.ui.view" id="shop_shopify_payment_journal_view_form">

@@ -57,21 +57,21 @@ this repository contains the full copyright notices and license terms. -->
             id="menu_error_form"/>
 
         <record model="ir.model.button" id="error_open_button">
+            <field name="model">ir.error</field>
             <field name="name">open</field>
             <field name="string">Open</field>
-            <field name="model" search="[('model', '=', 'ir.error')]"/>
         </record>
 
         <record model="ir.model.button" id="error_process_button">
+            <field name="model">ir.error</field>
             <field name="name">process</field>
             <field name="string">Process</field>
-            <field name="model" search="[('model', '=', 'ir.error')]"/>
         </record>
 
         <record model="ir.model.button" id="error_solve_button">
+            <field name="model">ir.error</field>
             <field name="name">solve</field>
             <field name="string">Solve</field>
-            <field name="model" search="[('model', '=', 'ir.error')]"/>
         </record>
     </data>
 

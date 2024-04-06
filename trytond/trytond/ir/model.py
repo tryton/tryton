@@ -934,7 +934,11 @@ class ModelFieldAccess(
         ModelView._fields_view_get_cache.clear()
 
 
-class ModelButton(DeactivableMixin, ModelSQL, ModelView):
+class ModelButton(
+        fields.fmany2one(
+            'model_ref', 'model', 'ir.model,model', "Model",
+            required=True, readonly=True, ondelete='CASCADE'),
+        DeactivableMixin, ModelSQL, ModelView):
     "Model Button"
     __name__ = 'ir.model.button'
     name = fields.Char('Name', required=True, readonly=True)
@@ -942,35 +946,49 @@ class ModelButton(DeactivableMixin, ModelSQL, ModelView):
     help = fields.Text("Help", translate=True)
     confirm = fields.Text("Confirm", translate=True,
         help="Text to ask user confirmation when clicking the button.")
-    model = fields.Many2One('ir.model', 'Model', required=True, readonly=True,
-        ondelete='CASCADE')
+    model = fields.Char("Model", required=True, readonly=True)
     rules = fields.One2Many('ir.model.button.rule', 'button', "Rules")
     _rules_cache = Cache('ir.model.button.rules')
     clicks = fields.One2Many('ir.model.button.click', 'button', "Clicks")
     reset_by = fields.Many2Many(
         'ir.model.button-button.reset', 'button_ruled', 'button', "Reset by",
         domain=[
-            ('model', '=', Eval('model', -1)),
+            ('model', '=', Eval('model')),
             ('id', '!=', Eval('id', -1)),
             ],
-        depends=['model', 'id'],
         help="Button that should reset the rules.")
     reset = fields.Many2Many(
         'ir.model.button-button.reset', 'button', 'button_ruled', "Reset",
         domain=[
-            ('model', '=', Eval('model', -1)),
+            ('model', '=', Eval('model')),
             ('id', '!=', Eval('id', -1)),
-            ],
-        depends=['model', 'id'])
+            ])
     _reset_cache = Cache('ir.model.button.reset')
     _view_attributes_cache = Cache(
         'ir.model.button.view_attributes', context=False)
 
     @classmethod
     def __register__(cls, module_name):
-        super().__register__(module_name)
-
+        pool = Pool()
+        Model = pool.get('ir.model')
+        transaction = Transaction()
+        cursor = transaction.connection.cursor()
         table_h = cls.__table_handler__(module_name)
+        table = cls.__table__()
+        model = Model.__table__()
+
+        # Migration from 7.0: model as char
+        if (table_h.column_exist('model')
+                and table_h.column_is_type('model', 'INTEGER')):
+            table_h.column_rename('model', '_temp_model')
+            table_h.add_column('model', 'VARCHAR')
+            cursor.execute(*table.update(
+                    [table.model], [model.model],
+                    from_=[model],
+                    where=table._temp_model == model.id))
+            table_h.drop_column('_temp_model')
+
+        super().__register__(module_name)
 
         # Migration from 6.2: replace unique by exclude
         table_h.drop_constraint('name_model_uniq')
@@ -978,7 +996,7 @@ class ModelButton(DeactivableMixin, ModelSQL, ModelView):
     @classmethod
     def __setup__(cls):
         super(ModelButton, cls).__setup__()
-        cls.__access__.add('model')
+        cls.__access__.add('model_ref')
         t = cls.__table__()
         cls._sql_constraints += [
             ('name_model_exclude',
@@ -1030,7 +1048,7 @@ class ModelButton(DeactivableMixin, ModelSQL, ModelView):
         if rule_ids is not None:
             return Rule.browse(rule_ids)
         buttons = cls.search([
-                ('model.model', '=', model),
+                ('model', '=', model),
                 ('name', '=', name),
                 ])
         if not buttons:
@@ -1050,7 +1068,7 @@ class ModelButton(DeactivableMixin, ModelSQL, ModelView):
         if reset is not None:
             return reset
         buttons = cls.search([
-                ('model.model', '=', model),
+                ('model', '=', model),
                 ('name', '=', name),
                 ])
         if not buttons:
@@ -1069,7 +1087,7 @@ class ModelButton(DeactivableMixin, ModelSQL, ModelView):
         if attributes is not None:
             return attributes
         buttons = cls.search([
-                ('model.model', '=', model),
+                ('model', '=', model),
                 ('name', '=', name),
                 ])
         if not buttons:

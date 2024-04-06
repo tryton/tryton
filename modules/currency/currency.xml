@@ -134,9 +134,9 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
         <record model="ir.model.button" id="cron_run_button">
+            <field name="model">currency.cron</field>
             <field name="name">run</field>
             <field name="string">Run</field>
-            <field name="model" search="[('model', '=', 'currency.cron')]"/>
         </record>
 
         <record model="ir.cron" id="cron_cron">

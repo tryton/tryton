@@ -184,10 +184,9 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
         <record model="ir.model.button" id="statement_draft_button">
+            <field name="model">account.statement</field>
             <field name="name">draft</field>
             <field name="string">Draft</field>
-            <field name="model"
-                search="[('model', '=', 'account.statement')]"/>
         </record>
         <record model="ir.model.button-res.group"
             id="statement_draft_button_group_account">
@@ -196,18 +195,16 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
         <record model="ir.model.button" id="statement_validate_button">
+            <field name="model">account.statement</field>
             <field name="name">validate_statement</field>
             <field name="string">Validate</field>
-            <field name="model"
-                search="[('model', '=', 'account.statement')]"/>
         </record>
 
         <record model="ir.model.button" id="statement_post_button">
+            <field name="model">account.statement</field>
             <field name="name">post</field>
             <field name="string">Post</field>
             <field name="confirm">Are you sure you want to post the statement?</field>
-            <field name="model"
-                search="[('model', '=', 'account.statement')]"/>
         </record>
         <record model="ir.model.button-res.group"
             id="statement_post_button_group_account">
@@ -216,10 +213,9 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
         <record model="ir.model.button" id="statement_cancel_button">
+            <field name="model">account.statement</field>
             <field name="name">cancel</field>
             <field name="string">Cancel</field>
-            <field name="model"
-                search="[('model', '=', 'account.statement')]"/>
         </record>
         <record model="ir.model.button-res.group"
             id="statement_cancel_button_group_account">
@@ -228,10 +224,9 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
         <record model="ir.model.button" id="statement_reconcile_button">
+            <field name="model">account.statement</field>
             <field name="name">reconcile</field>
             <field name="string">Reconcile</field>
-            <field name="model"
-                search="[('model', '=', 'account.statement')]"/>
         </record>
         <record model="ir.model.button-res.group"
             id="statement_reconcile_button_group_account">

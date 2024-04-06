@@ -113,31 +113,31 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
         <record model="ir.model.button" id="inventory_confirm_button">
+            <field name="model">stock.inventory</field>
             <field name="name">confirm</field>
             <field name="string">Confirm</field>
             <field name="confirm">Are you sure you want to confirm the inventory?</field>
-            <field name="model" search="[('model', '=', 'stock.inventory')]"/>
         </record>
 
         <record model="ir.model.button" id="inventory_cancel_button">
+            <field name="model">stock.inventory</field>
             <field name="name">cancel</field>
             <field name="string">Cancel</field>
             <field name="confirm">Are you sure you want to cancel the inventory?</field>
-            <field name="model" search="[('model', '=', 'stock.inventory')]"/>
         </record>
 
         <record model="ir.model.button" id="inventory_complete_lines_button">
+            <field name="model">stock.inventory</field>
             <field name="name">complete_lines</field>
             <field name="string">Complete</field>
             <field name="help">Add an inventory line for each missing products</field>
-            <field name="model" search="[('model', '=', 'stock.inventory')]"/>
         </record>
 
         <record model="ir.model.button" id="inventory_count_button">
+            <field name="model">stock.inventory</field>
             <field name="name">do_count</field>
             <field name="string">Count</field>
             <field name="help">Launch the wizard to count products</field>
-            <field name="model" search="[('model', '=', 'stock.inventory')]"/>
         </record>
 
         <record model="ir.action.wizard" id="wizard_inventory_count">

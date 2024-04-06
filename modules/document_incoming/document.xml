@@ -179,39 +179,39 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
         <record model="ir.model.button" id="document_incoming_cancel_button">
+            <field name="model">document.incoming</field>
             <field name="name">cancel</field>
             <field name="string">Cancel</field>
-            <field name="model" search="[('model', '=', 'document.incoming')]"/>
         </record>
 
         <record model="ir.model.button" id="document_incoming_draft_button">
+            <field name="model">document.incoming</field>
             <field name="name">draft</field>
             <field name="string">Draft</field>
-            <field name="model" search="[('model', '=', 'document.incoming')]"/>
         </record>
 
         <record model="ir.model.button" id="document_incoming_split_wizard_button">
+            <field name="model">document.incoming</field>
             <field name="name">split_wizard</field>
             <field name="string">Split</field>
-            <field name="model" search="[('model', '=', 'document.incoming')]"/>
         </record>
 
         <record model="ir.model.button" id="document_incoming_extract_email_button">
+            <field name="model">document.incoming</field>
             <field name="name">extract_email</field>
             <field name="string">Extract Email</field>
-            <field name="model" search="[('model', '=', 'document.incoming')]"/>
         </record>
 
         <record model="ir.model.button" id="document_incoming_process_button">
+            <field name="model">document.incoming</field>
             <field name="name">process</field>
             <field name="string">Process</field>
-            <field name="model" search="[('model', '=', 'document.incoming')]"/>
         </record>
 
         <record model="ir.model.button" id="document_incoming_proceed_button">
+            <field name="model">document.incoming</field>
             <field name="name">proceed</field>
             <field name="string">Proceed</field>
-            <field name="model" search="[('model', '=', 'document.incoming')]"/>
         </record>
 
         <record model="ir.action.wizard" id="wizard_document_incoming_split">

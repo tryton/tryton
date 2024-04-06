@@ -40,9 +40,9 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">succeed_start_form</field>
         </record>
         <record model="ir.model.button" id="payment_succeed_wizard_button">
+            <field name="model">account.payment</field>
             <field name="name">succeed_wizard</field>
             <field name="string">Succeed</field>
-            <field name="model" search="[('model', '=', 'account.payment')]"/>
         </record>
 
         <record model="ir.cron" id="cron_post_clearing_moves">

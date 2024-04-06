@@ -85,27 +85,27 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
         <record model="ir.model.button" id="quantity_early_plan_open_button">
+            <field name="model">stock.quantity.early_plan</field>
             <field name="name">open</field>
             <field name="string">Reset to Open</field>
-            <field name="model" search="[('model', '=', 'stock.quantity.early_plan')]"/>
         </record>
 
         <record model="ir.model.button" id="quantity_early_plan_process_button">
+            <field name="model">stock.quantity.early_plan</field>
             <field name="name">process</field>
             <field name="string">Process</field>
-            <field name="model" search="[('model', '=', 'stock.quantity.early_plan')]"/>
         </record>
 
         <record model="ir.model.button" id="quantity_early_plan_close_button">
+            <field name="model">stock.quantity.early_plan</field>
             <field name="name">close</field>
             <field name="string">Close</field>
-            <field name="model" search="[('model', '=', 'stock.quantity.early_plan')]"/>
         </record>
 
         <record model="ir.model.button" id="quantity_early_plan_ignore_button">
+            <field name="model">stock.quantity.early_plan</field>
             <field name="name">ignore</field>
             <field name="string">Ignore</field>
-            <field name="model" search="[('model', '=', 'stock.quantity.early_plan')]"/>
         </record>
 
         <record model="ir.action.wizard" id="act_quantity_early_plan_generate">

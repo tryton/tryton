@@ -204,55 +204,55 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
         <record model="ir.model.button" id="invoice_cancel_button">
+            <field name="model">account.invoice</field>
             <field name="name">cancel</field>
             <field name="string">Cancel</field>
             <field name="confirm">Are you sure you want to cancel the invoices?</field>
             <field name="help">Cancel the invoice</field>
-            <field name="model" search="[('model', '=', 'account.invoice')]"/>
         </record>
 
         <record model="ir.model.button" id="invoice_draft_button">
+            <field name="model">account.invoice</field>
             <field name="name">draft</field>
             <field name="string">Draft</field>
-            <field name="model" search="[('model', '=', 'account.invoice')]"/>
         </record>
 
         <record model="ir.model.button" id="invoice_validate_button">
+            <field name="model">account.invoice</field>
             <field name="name">validate_invoice</field>
             <field name="string">Validate</field>
             <field name="help">Also known as Pro Forma</field>
-            <field name="model" search="[('model', '=', 'account.invoice')]"/>
         </record>
 
         <record model="ir.model.button" id="invoice_post_button">
+            <field name="model">account.invoice</field>
             <field name="name">post</field>
             <field name="string">Post</field>
             <field name="confirm">Are you sure you want to post the invoices?</field>
-            <field name="model" search="[('model', '=', 'account.invoice')]"/>
         </record>
 
         <record model="ir.model.button" id="invoice_pay_button">
+            <field name="model">account.invoice</field>
             <field name="name">pay</field>
             <field name="string">Pay</field>
-            <field name="model" search="[('model', '=', 'account.invoice')]"/>
         </record>
 
         <record model="ir.model.button" id="invoice_reschedule_lines_to_pay_button">
+            <field name="model">account.invoice</field>
             <field name="name">reschedule_lines_to_pay</field>
             <field name="string">Reschedule</field>
-            <field name="model" search="[('model', '=', 'account.invoice')]"/>
         </record>
 
         <record model="ir.model.button" id="invoice_delegate_lines_to_pay_button">
+            <field name="model">account.invoice</field>
             <field name="name">delegate_lines_to_pay</field>
             <field name="string">Modify Payee</field>
-            <field name="model" search="[('model', '=', 'account.invoice')]"/>
         </record>
 
         <record model="ir.model.button" id="invoice_process_button">
+            <field name="model">account.invoice</field>
             <field name="name">process</field>
             <field name="string">Process</field>
-            <field name="model" search="[('model', '=', 'account.invoice')]"/>
         </record>
         <record model="ir.model.button-res.group" id="invoice_process_button_group_account_admin">
             <field name="button" ref="invoice_process_button"/>

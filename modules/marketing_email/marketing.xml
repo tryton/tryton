@@ -164,21 +164,21 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
         <record model="ir.model.button" id="message_draft_button">
+            <field name="model">marketing.email.message</field>
             <field name="name">draft</field>
             <field name="string">Draft</field>
-            <field name="model" search="[('model', '=', 'marketing.email.message')]"/>
         </record>
 
         <record model="ir.model.button" id="message_send_button">
+            <field name="model">marketing.email.message</field>
             <field name="name">send</field>
             <field name="string">Send</field>
-            <field name="model" search="[('model', '=', 'marketing.email.message')]"/>
         </record>
 
         <record model="ir.model.button" id="message_send_test_button">
+            <field name="model">marketing.email.message</field>
             <field name="name">send_test</field>
             <field name="string">Send Test</field>
-            <field name="model" search="[('model', '=', 'marketing.email.message')]"/>
         </record>
 
         <record model="ir.model.access" id="access_email_message">

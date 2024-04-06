@@ -42,10 +42,10 @@ this repository contains the full copyright notices and license terms. -->
             id="menu_account_form"/>
 
         <record model="ir.model.button" id="account_new_identifier_button">
+            <field name="model">account.payment.braintree.account</field>
             <field name="name">new_identifier</field>
             <field name="string">New URL</field>
             <field name="confirm">This action will make the previous URL unusable. Do you want to continue?</field>
-            <field name="model" search="[('model', '=', 'account.payment.braintree.account')]"/>
         </record>
 
         <record model="ir.model.access" id="access_account">
@@ -104,21 +104,21 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
         <record model="ir.model.button" id="payment_braintree_checkout_button">
+            <field name="model">account.payment</field>
             <field name="name">braintree_checkout</field>
             <field name="string">Braintree Checkout</field>
-            <field name="model" search="[('model', '=', 'account.payment')]"/>
         </record>
 
         <record model="ir.model.button" id="payment_braintree_settle_payment_button">
+            <field name="model">account.payment</field>
             <field name="name">braintree_do_settle_payment</field>
             <field name="string">Braintree Settle Payment</field>
-            <field name="model" search="[('model', '=', 'account.payment')]"/>
         </record>
 
         <record model="ir.model.button" id="payment_braintree_pull_button">
+            <field name="model">account.payment</field>
             <field name="name">braintree_do_pull</field>
             <field name="string">Braintree Pull</field>
-            <field name="model" search="[('model', '=', 'account.payment')]"/>
         </record>
 
         <record model="ir.cron" id="cron_transact_payment">
@@ -212,21 +212,21 @@ this repository contains the full copyright notices and license terms. -->
             id="menu_refund_form"/>
 
         <record model="ir.model.button" id="refund_draft_button">
+            <field name="model">account.payment.braintree.refund</field>
             <field name="name">draft</field>
             <field name="string">Draft</field>
-            <field name="model" search="[('model', '=', 'account.payment.braintree.refund')]"/>
         </record>
 
         <record model="ir.model.button" id="refund_submit_button">
+            <field name="model">account.payment.braintree.refund</field>
             <field name="name">submit</field>
             <field name="string">Submit</field>
-            <field name="model" search="[('model', '=', 'account.payment.braintree.refund')]"/>
         </record>
 
         <record model="ir.model.button" id="refund_approve_button">
+            <field name="model">account.payment.braintree.refund</field>
             <field name="name">approve</field>
             <field name="string">Approve</field>
-            <field name="model" search="[('model', '=', 'account.payment.braintree.refund')]"/>
         </record>
 
         <record model="ir.cron" id="cron_refund">
@@ -289,9 +289,9 @@ this repository contains the full copyright notices and license terms. -->
             <field name="perm_delete" eval="True"/>
         </record>
         <record model="ir.model.button" id="customer_braintree_checkout_button">
+            <field name="model">account.payment.braintree.customer</field>
             <field name="name">braintree_checkout</field>
             <field name="string">Add Card</field>
-            <field name="model" search="[('model', '=', 'account.payment.braintree.customer')]"/>
         </record>
 
         <record model="ir.cron" id="cron_create_customer">
@@ -307,9 +307,9 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
         <record model="ir.model.button" id="customer_payment_method_delete_button">
+            <field name="model">account.payment.braintree.customer</field>
             <field name="name">delete_payment_method</field>
             <field name="string">Delete Payment Method</field>
-            <field name="model" search="[('model', '=', 'account.payment.braintree.customer')]"/>
         </record>
 
         <record model="ir.action.wizard" id="wizard_customer_payment_method_delete">

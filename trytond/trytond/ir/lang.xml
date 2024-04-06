@@ -543,16 +543,16 @@ this repository contains the full copyright notices and license terms. -->
             id="menu_lang_form"/>
 
         <record model="ir.model.button" id="lang_load_translations_button">
+            <field name="model">ir.lang</field>
             <field name="name">load_translations</field>
             <field name="string">Load translations</field>
-            <field name="model" search="[('model', '=', 'ir.lang')]"/>
             <field name="confirm">Are you sure you want to load languages' translations?</field>
         </record>
         <record model="ir.model.button" id="lang_unload_translations_button">
+            <field name="model">ir.lang</field>
             <field name="name">unload_translations</field>
             <field name="string">Unload translations</field>
             <field name="confirm">Are you sure you want to remove languages' translations?</field>
-            <field name="model" search="[('model', '=', 'ir.lang')]"/>
         </record>
 
         <record model="ir.ui.view" id="lang_config_start_view_form">

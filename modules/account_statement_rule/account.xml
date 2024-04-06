@@ -16,9 +16,9 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
         <record model="ir.model.button" id="statement_apply_rules_button">
+            <field name="model">account.statement</field>
             <field name="name">apply_rules</field>
             <field name="string">Apply Rules</field>
-            <field name="model" search="[('model', '=', 'account.statement')]"/>
         </record>
 
         <record model="ir.ui.view" id="rule_view_form">

@@ -226,16 +226,14 @@ class ModelView(unittest.TestCase):
         'Test Button Access'
         pool = Pool()
         TestModel = pool.get('test.modelview.button')
-        Model = pool.get('ir.model')
         Button = pool.get('ir.model.button')
         ModelAccess = pool.get('ir.model.access')
         Group = pool.get('res.group')
 
-        model, = Model.search([('model', '=', 'test.modelview.button')])
         admin, = Group.search([('name', '=', 'Administration')])
         test = TestModel()
 
-        button = Button(name='test', model=model)
+        button = Button(model=TestModel.__name__, name='test')
         button.save()
 
         # Without model/button access
@@ -291,14 +289,12 @@ class ModelView(unittest.TestCase):
         "Test not passed Button Rule"
         pool = Pool()
         TestModel = pool.get('test.modelview.button')
-        Model = pool.get('ir.model')
         Button = pool.get('ir.model.button')
         ButtonRule = pool.get('ir.model.button.rule')
         ButtonClick = pool.get('ir.model.button.click')
 
-        model, = Model.search([('model', '=', 'test.modelview.button')])
         rule = ButtonRule(number_user=2)
-        button = Button(name='test', model=model, rules=[rule])
+        button = Button(model=TestModel.__name__, name='test', rules=[rule])
         button.save()
 
         record = TestModel(id=-1)
@@ -319,14 +315,12 @@ class ModelView(unittest.TestCase):
         "Test passed Button Rule"
         pool = Pool()
         TestModel = pool.get('test.modelview.button')
-        Model = pool.get('ir.model')
         Button = pool.get('ir.model.button')
         ButtonRule = pool.get('ir.model.button.rule')
         ButtonClick = pool.get('ir.model.button.click')
 
-        model, = Model.search([('model', '=', 'test.modelview.button')])
         rule = ButtonRule(number_user=1)
-        button = Button(name='test', model=model, rules=[rule])
+        button = Button(model=TestModel.__name__, name='test', rules=[rule])
         button.save()
 
         record = TestModel(id=-1)

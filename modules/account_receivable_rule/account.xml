@@ -53,9 +53,9 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
         <record model="ir.model.button" id="account_receivable_rule_apply_button">
+            <field name="model">account.account.receivable.rule</field>
             <field name="name">apply</field>
             <field name="string">Apply</field>
-            <field name="model" search="[('model', '=', 'account.account.receivable.rule')]"/>
         </record>
         <record model="ir.model.button-res.group" id="account_receivable_rule_apply_button_group_account">
             <field name="button" ref="account_receivable_rule_apply_button"/>

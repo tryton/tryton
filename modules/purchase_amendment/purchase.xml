@@ -98,10 +98,10 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
         <record model="ir.model.button" id="purchase_amendment_validation_amendment_button">
+            <field name="model">purchase.amendment</field>
             <field name="name">validate_amendment</field>
             <field name="string">Validate</field>
             <field name="confirm">Are you sure you want to validate the amendements?</field>
-            <field name="model" search="[('model', '=', 'purchase.amendment')]"/>
         </record>
         <record model="ir.model.button-res.group" id="purchase_amendment_validation_amendment_button_group_purchase_amendment">
             <field name="button" ref="purchase_amendment_validation_amendment_button"/>

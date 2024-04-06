@@ -81,15 +81,15 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
         <record model="ir.model.button" id="lot_upward_traces_button">
+            <field name="model">stock.lot</field>
             <field name="name">upward_traces</field>
             <field name="string">Upward Traces</field>
-            <field name="model" search="[('model', '=', 'stock.lot')]"/>
         </record>
 
         <record model="ir.model.button" id="lot_downward_traces_button">
+            <field name="model">stock.lot</field>
             <field name="name">downward_traces</field>
             <field name="string">Downward Traces</field>
-            <field name="model" search="[('model', '=', 'stock.lot')]"/>
         </record>
 
         <record model="ir.ui.view" id="lot_trace_view_tree_upward">
@@ -335,9 +335,9 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
         <record model="ir.model.button" id="move_add_lots_wizard_button">
+            <field name="model">stock.move</field>
             <field name="name">add_lots_wizard</field>
             <field name="string">Add Lots</field>
-            <field name="model" search="[('model', '=', 'stock.move')]"/>
         </record>
 
         <record model="ir.action.wizard" id="wizard_move_add_lots">
@@ -359,9 +359,9 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
         <record model="ir.model.button" id="move_add_lots_start_duplicate_lot_button">
+            <field name="model">stock.move.add.lots.start</field>
             <field name="name">duplicate_lot</field>
             <field name="string">Duplicate Lot</field>
-            <field name="model" search="[('model', '=', 'stock.move.add.lots.start')]"/>
         </record>
 
         <record model="ir.ui.view" id="period_cache_lot_view_form">

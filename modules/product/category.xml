@@ -82,9 +82,9 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
         <record model="ir.model.button" id="category_add_products_button">
+            <field name="model">product.category</field>
             <field name="name">add_products</field>
             <field name="string">Add products</field>
-            <field name="model" search="[('model', '=', 'product.category')]"/>
         </record>
 
         <record model="ir.model.access" id="access_product_category">

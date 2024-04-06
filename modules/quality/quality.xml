@@ -285,21 +285,21 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
         <record model="ir.model.button" id="quality_inspection_pending_button">
+            <field name="model">quality.inspection</field>
             <field name="name">pending</field>
             <field name="string">Pending</field>
-            <field name="model" search="[('model', '=', 'quality.inspection')]"/>
         </record>
 
         <record model="ir.model.button" id="quality_inspection_process_button">
+            <field name="model">quality.inspection</field>
             <field name="name">process</field>
             <field name="string">Process</field>
-            <field name="model" search="[('model', '=', 'quality.inspection')]"/>
         </record>
 
         <record model="ir.model.button" id="quality_inspection_pass_button">
+            <field name="model">quality.inspection</field>
             <field name="name">pass_</field>
             <field name="string">Pass</field>
-            <field name="model" search="[('model', '=', 'quality.inspection')]"/>
         </record>
         <record model="ir.model.button-res.group" id="quality_inspection_pass_button_group_quality">
             <field name="button" ref="quality_inspection_pass_button"/>
@@ -307,9 +307,9 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
         <record model="ir.model.button" id="quality_inspection_fail_button">
+            <field name="model">quality.inspection</field>
             <field name="name">fail</field>
             <field name="string">Fail</field>
-            <field name="model" search="[('model', '=', 'quality.inspection')]"/>
         </record>
         <record model="ir.model.button-res.group" id="quality_inspection_fail_button_group_quality">
             <field name="button" ref="quality_inspection_fail_button"/>
@@ -392,27 +392,27 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
         <record model="ir.model.button" id="quality_alert_open_button">
+            <field name="model">quality.alert</field>
             <field name="name">open</field>
             <field name="string">Open</field>
-            <field name="model" search="[('model', '=', 'quality.alert')]"/>
         </record>
 
         <record model="ir.model.button" id="quality_alert_process_button">
+            <field name="model">quality.alert</field>
             <field name="name">process</field>
             <field name="string">Process</field>
-            <field name="model" search="[('model', '=', 'quality.alert')]"/>
         </record>
 
         <record model="ir.model.button" id="quality_alert_defer_button">
+            <field name="model">quality.alert</field>
             <field name="name">defer</field>
             <field name="string">Defer</field>
-            <field name="model" search="[('model', '=', 'quality.alert')]"/>
         </record>
 
         <record model="ir.model.button" id="quality_alert_resolve_button">
+            <field name="model">quality.alert</field>
             <field name="name">resolve</field>
             <field name="string">Resolve</field>
-            <field name="model" search="[('model', '=', 'quality.alert')]"/>
         </record>
     </data>
     <data noupdate="1">

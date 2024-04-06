@@ -108,15 +108,15 @@ We must add to the ``opportunity.xml`` file:
       <data>
          ...
          <record model="ir.model.button" id="opportunity_convert_button">
+            <field name="model">training.opportunity</field>
             <field name="name">convert</field>
             <field name="string">Convert</field>
-            <field name="model" search="[('model', '=', 'training.opportunity')]"/>
          </record>
 
          <record model="ir.model.button" id="opportunity_lost_button">
+            <field name="model">training.opportunity</field>
             <field name="name">lost</field>
             <field name="string">Lost</field>
-            <field name="model" search="[('model', '=', 'training.opportunity')]"/>
          </record>
       </data>
    </tryton>

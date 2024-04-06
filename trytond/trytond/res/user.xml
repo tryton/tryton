@@ -69,11 +69,10 @@ this repository contains the full copyright notices and license terms. -->
             <field name="perm_delete" eval="True"/>
         </record>
         <record model="ir.model.button" id="user_reset_password_button">
+            <field name="model">res.user</field>
             <field name="name">reset_password</field>
             <field name="string">Reset Password</field>
             <field name="help">Send by email a new temporary password to the user</field>
-            <field name="model"
-                search="[('model', '=', 'res.user')]"/>
         </record>
 
         <record model="ir.ui.view" id="user_config_start_view_form">
@@ -165,16 +164,14 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
         <record model="ir.model.button" id="user_application_validate_button">
+            <field name="model">res.user.application</field>
             <field name="name">validate_</field>
             <field name="string">Validate</field>
-            <field name="model"
-                search="[('model', '=', 'res.user.application')]"/>
         </record>
         <record model="ir.model.button" id="user_application_cancel_button">
+            <field name="model">res.user.application</field>
             <field name="name">cancel</field>
             <field name="string">Cancel</field>
-            <field name="model"
-                search="[('model', '=', 'res.user.application')]"/>
         </record>
     </data>
 </tryton>

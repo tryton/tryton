@@ -90,9 +90,9 @@ this repository contains the full copyright notices and license terms. -->
             id="menu_intrastat_declaration"/>
 
         <record model="ir.model.button" id="intrastat_declaration_export_button">
+            <field name="model">account.stock.eu.intrastat.declaration</field>
             <field name="name">export</field>
             <field name="string">Export</field>
-            <field name="model" search="[('model', '=', 'account.stock.eu.intrastat.declaration')]"/>
         </record>
 
         <record model="ir.model.access" id="access_intrastat_declaration">

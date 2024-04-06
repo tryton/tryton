@@ -44,9 +44,9 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">split_start_form</field>
         </record>
         <record model="ir.model.button" id="move_split_wizard_button">
+            <field name="model">stock.move</field>
             <field name="name">split_wizard</field>
             <field name="string">Split</field>
-            <field name="model" search="[('model', '=', 'stock.move')]"/>
         </record>
 
         <record model="ir.ui.view" id="shipment_in_return_view_form">
@@ -56,9 +56,9 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
         <record model="ir.model.button" id="shipment_in_return_split_wizard_button">
+            <field name="model">stock.shipment.in.return</field>
             <field name="name">split_wizard</field>
             <field name="string">Split</field>
-            <field name="model" search="[('model', '=', 'stock.shipment.in.return')]"/>
         </record>
 
         <record model="ir.ui.view" id="shipment_out_view_form">
@@ -68,9 +68,9 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
         <record model="ir.model.button" id="shipment_out_split_wizard_button">
+            <field name="model">stock.shipment.out</field>
             <field name="name">split_wizard</field>
             <field name="string">Split</field>
-            <field name="model" search="[('model', '=', 'stock.shipment.out')]"/>
         </record>
 
         <record model="ir.ui.view" id="shipment_internal_view_form">
@@ -80,9 +80,9 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
         <record model="ir.model.button" id="shipment_internal_split_wizard_button">
+            <field name="model">stock.shipment.internal</field>
             <field name="name">split_wizard</field>
             <field name="string">Split</field>
-            <field name="model" search="[('model', '=', 'stock.shipment.internal')]"/>
         </record>
 
         <record model="ir.action.wizard" id="wizard_split_shipment">

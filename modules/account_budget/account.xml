@@ -59,15 +59,15 @@ this repository contains the full copyright notices and license terms. -->
             id="menu_budget_form"/>
 
         <record model="ir.model.button" id="budget_update_lines_button">
+            <field name="model">account.budget</field>
             <field name="name">update_lines</field>
             <field name="string">Update Lines</field>
-            <field name="model" search="[('model', '=', 'account.budget')]"/>
         </record>
 
         <record model="ir.model.button" id="budget_copy_button">
+            <field name="model">account.budget</field>
             <field name="name">copy_button</field>
             <field name="string">Copy</field>
-            <field name="model" search="[('model', '=', 'account.budget')]"/>
         </record>
 
         <record model="ir.model.access" id="access_budget">
@@ -184,9 +184,9 @@ this repository contains the full copyright notices and license terms. -->
             id="menu_budget_report"/>
 
         <record model="ir.model.button" id="budget_line_create_periods_button">
+            <field name="model">account.budget.line</field>
             <field name="name">create_periods</field>
             <field name="string">Create Periods</field>
-            <field name="model" search="[('model', '=', 'account.budget.line')]"/>
         </record>
 
         <record model="ir.ui.view" id="budget_line_period_view_form">

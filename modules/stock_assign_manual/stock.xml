@@ -10,9 +10,9 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
         <record model="ir.model.button" id="shipment_in_return_assign_manual_wizard_button">
+            <field name="model">stock.shipment.in.return</field>
             <field name="name">assign_manual_wizard</field>
             <field name="string">Manual Assign</field>
-            <field name="model" search="[('model', '=', 'stock.shipment.in.return')]"/>
         </record>
 
         <record model="ir.ui.view" id="shipment_out_view_form">
@@ -22,9 +22,9 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
         <record model="ir.model.button" id="shipment_out_assign_manual_wizard_button">
+            <field name="model">stock.shipment.out</field>
             <field name="name">assign_manual_wizard</field>
             <field name="string">Manual Assign</field>
-            <field name="model" search="[('model', '=', 'stock.shipment.out')]"/>
         </record>
 
         <record model="ir.ui.view" id="shipment_internal_view_form">
@@ -34,9 +34,9 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
         <record model="ir.model.button" id="shipment_internal_assign_manual_wizard_button">
+            <field name="model">stock.shipment.internal</field>
             <field name="name">assign_manual_wizard</field>
             <field name="string">Manual Assign</field>
-            <field name="model" search="[('model', '=', 'stock.shipment.internal')]"/>
         </record>
 
         <record model="ir.action.wizard" id="wizard_shipment_in_return_assign_manual">

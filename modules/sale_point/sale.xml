@@ -172,34 +172,34 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
         <record model="ir.model.button" id="sale_pay_button">
+            <field name="model">sale.point.sale</field>
             <field name="name">pay</field>
             <field name="string">Pay</field>
-            <field name="model" search="[('model', '=', 'sale.point.sale')]"/>
         </record>
 
         <record model="ir.model.button" id="sale_cancel_button">
+            <field name="model">sale.point.sale</field>
             <field name="name">cancel</field>
             <field name="string">Cancel</field>
-            <field name="model" search="[('model', '=', 'sale.point.sale')]"/>
         </record>
 
         <record model="ir.model.button" id="sale_open_button">
+            <field name="model">sale.point.sale</field>
             <field name="name">open</field>
             <field name="string">Re-Open</field>
-            <field name="model" search="[('model', '=', 'sale.point.sale')]"/>
         </record>
 
         <record model="ir.model.button" id="sale_process_button">
+            <field name="model">sale.point.sale</field>
             <field name="name">process</field>
             <field name="string">Process</field>
-            <field name="model" search="[('model', '=', 'sale.point.sale')]"/>
         </record>
 
         <record model="ir.model.button" id="sale_post_button">
+            <field name="model">sale.point.sale</field>
             <field name="name">post</field>
             <field name="string">Post</field>
             <field name="confirm">Are you sure you want to post the sales?</field>
-            <field name="model" search="[('model', '=', 'sale.point.sale')]"/>
         </record>
         <record model="ir.model.button-res.group" id="sale_post_button_group_sale_point_posting">
             <field name="button" ref="sale_post_button"/>
@@ -297,22 +297,22 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
         <record model="ir.model.button" id="cash_session_open_button">
+            <field name="model">sale.point.cash.session</field>
             <field name="name">open</field>
             <field name="string">Re-Open</field>
-            <field name="model" search="[('model', '=', 'sale.point.cash.session')]"/>
         </record>
 
         <record model="ir.model.button" id="cash_session_close_button">
+            <field name="model">sale.point.cash.session</field>
             <field name="name">close</field>
             <field name="string">Close</field>
-            <field name="model" search="[('model', '=', 'sale.point.cash.session')]"/>
         </record>
 
         <record model="ir.model.button" id="cash_session_post_button">
+            <field name="model">sale.point.cash.session</field>
             <field name="name">post</field>
             <field name="string">Post</field>
             <field name="confirm">Are you sure you want to post the sessions?</field>
-            <field name="model" search="[('model', '=', 'sale.point.cash.session')]"/>
         </record>
         <record model="ir.model.button-res.group" id="cash_session_post_button_group_sale_point_posting">
             <field name="button" ref="cash_session_post_button"/>
@@ -443,10 +443,10 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
         <record model="ir.model.button" id="cash_transfer_post_button">
+            <field name="model">sale.point.cash.transfer</field>
             <field name="name">post</field>
             <field name="string">Post</field>
             <field name="confirm">Are you sure you want to post the transfer?</field>
-            <field name="model" search="[('model', '=', 'sale.point.cash.transfer')]"/>
         </record>
         <record model="ir.model.button-res.group" id="cash_transfer_post_button_group_sale_point_posting">
             <field name="button" ref="cash_transfer_post_button"/>

@@ -42,9 +42,9 @@ this repository contains the full copyright notices and license terms. -->
             sequence="10"
             id="menu_view"/>
         <record model="ir.model.button" id="view_show_button">
+            <field name="model">ir.ui.view</field>
             <field name="name">show</field>
             <field name="string">Show</field>
-            <field name="model" search="[('model', '=', 'ir.ui.view')]"/>
         </record>
 
         <record model="ir.ui.view" id="view_tree_width_view_form">

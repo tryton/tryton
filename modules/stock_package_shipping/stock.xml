@@ -16,9 +16,9 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
         <record model="ir.model.button" id="package_print_shipping_label_button">
+            <field name="model">stock.package</field>
             <field name="name">print_shipping_label</field>
             <field name="string">Shipping Label</field>
-            <field name="model" search="[('model', '=', 'stock.package')]"/>
         </record>
 
         <record model="ir.ui.view" id="shipment_out_view_form">
@@ -35,10 +35,9 @@ this repository contains the full copyright notices and license terms. -->
 
         <record model="ir.model.button"
                 id="shipment_out_create_shipping_button">
+            <field name="model">stock.shipment.out</field>
             <field name="name">create_shipping</field>
             <field name="string">Create Shipping for Packages</field>
-            <field name="model"
-                search="[('model', '=', 'stock.shipment.out')]"/>
         </record>
 
         <record model="ir.ui.view" id="shipment_in_return_view_form">
@@ -54,9 +53,9 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
         <record model="ir.model.button" id="shipment_in_return_create_shipping_button">
+            <field name="model">stock.shipment.in.return</field>
             <field name="name">create_shipping</field>
             <field name="string">Create Shipping for Packages</field>
-            <field name="model" search="[('model', '=', 'stock.shipment.in.return')]"/>
         </record>
 
         <record model="ir.action.wizard" id="act_create_shipping_wizard">

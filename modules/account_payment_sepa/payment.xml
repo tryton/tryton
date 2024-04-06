@@ -132,32 +132,28 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
         <record model="ir.model.button" id="mandate_cancel_button">
+            <field name="model">account.payment.sepa.mandate</field>
             <field name="name">cancel</field>
             <field name="string">Cancel</field>
             <field name="confirm">Are you sure you want to cancel the mandate?</field>
-            <field name="model"
-                search="[('model', '=', 'account.payment.sepa.mandate')]"/>
         </record>
 
         <record model="ir.model.button" id="mandate_draft_button">
+            <field name="model">account.payment.sepa.mandate</field>
             <field name="name">draft</field>
             <field name="string">Draft</field>
-            <field name="model"
-                search="[('model', '=', 'account.payment.sepa.mandate')]"/>
         </record>
 
         <record model="ir.model.button" id="mandate_validate_mandate_button">
+            <field name="model">account.payment.sepa.mandate</field>
             <field name="name">validate_mandate</field>
             <field name="string">Validate</field>
-            <field name="model"
-                search="[('model', '=', 'account.payment.sepa.mandate')]"/>
         </record>
 
         <record model="ir.model.button" id="mandate_request_button">
+            <field name="model">account.payment.sepa.mandate</field>
             <field name="name">request</field>
             <field name="string">Request</field>
-            <field name="model"
-                search="[('model', '=', 'account.payment.sepa.mandate')]"/>
         </record>
 
         <record model="ir.sequence.type" id="sequence_type_mandate">
@@ -277,40 +273,35 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
         <record model="ir.model.button" id="message_cancel_button">
+            <field name="model">account.payment.sepa.message</field>
             <field name="name">cancel</field>
             <field name="string">Cancel</field>
             <field name="confirm">Are you sure you want to cancel the messages?</field>
-            <field name="model"
-                search="[('model', '=', 'account.payment.sepa.message')]"/>
         </record>
 
         <record model="ir.model.button" id="message_draft_button">
+            <field name="model">account.payment.sepa.message</field>
             <field name="name">draft</field>
             <field name="string">Draft</field>
-            <field name="model"
-                search="[('model', '=', 'account.payment.sepa.message')]"/>
         </record>
 
         <record model="ir.model.button" id="message_wait_button">
+            <field name="model">account.payment.sepa.message</field>
             <field name="name">wait</field>
             <field name="string">Wait</field>
-            <field name="model"
-                search="[('model', '=', 'account.payment.sepa.message')]"/>
         </record>
 
         <record model="ir.model.button" id="message_do_button">
+            <field name="model">account.payment.sepa.message</field>
             <field name="name">do</field>
             <field name="string">Do</field>
             <field name="confirm">Are you sure you want to process the messages?</field>
-            <field name="model"
-                search="[('model', '=', 'account.payment.sepa.message')]"/>
         </record>
 
         <record model="ir.model.button" id="group_generate_message_button">
+            <field name="model">account.payment.group</field>
             <field name="name">sepa_generate_message</field>
             <field name="string">Generate SEPA Message</field>
-            <field name="model"
-                search="[('model', '=', 'account.payment.group')]"/>
         </record>
 
         <record model="ir.action.report" id="report_mandate">

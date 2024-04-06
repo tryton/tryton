@@ -79,19 +79,19 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
         <record model="ir.model.button" id="scenario_draft_button">
+            <field name="model">marketing.automation.scenario</field>
             <field name="name">draft</field>
             <field name="string">Draft</field>
-            <field name="model" search="[('model', '=', 'marketing.automation.scenario')]"/>
         </record>
         <record model="ir.model.button" id="scenario_run_button">
+            <field name="model">marketing.automation.scenario</field>
             <field name="name">run</field>
             <field name="string">Run</field>
-            <field name="model" search="[('model', '=', 'marketing.automation.scenario')]"/>
         </record>
         <record model="ir.model.button" id="scenario_stop_button">
+            <field name="model">marketing.automation.scenario</field>
             <field name="name">stop</field>
             <field name="string">Stop</field>
-            <field name="model" search="[('model', '=', 'marketing.automation.scenario')]"/>
         </record>
 
         <record model="ir.ui.view" id="activity_view_list">
@@ -206,9 +206,9 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
         <record model="ir.model.button" id="record_block_button">
+            <field name="model">marketing.automation.record</field>
             <field name="name">block</field>
             <field name="string">Block</field>
-            <field name="model" search="[('model', '=', 'marketing.automation.record')]"/>
         </record>
 
         <record model="ir.ui.view" id="record_activity_view_list">
@@ -291,14 +291,14 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
         <record model="ir.model.button" id="record_activity_on_email_opened_button">
+            <field name="model">marketing.automation.record.activity</field>
             <field name="name">on_email_opened</field>
             <field name="string">E-Mail Opened</field>
-            <field name="model" search="[('model', '=', 'marketing.automation.record.activity')]"/>
         </record>
         <record model="ir.model.button" id="record_activity_on_email_clicked_button">
+            <field name="model">marketing.automation.record.activity</field>
             <field name="name">on_email_clicked</field>
             <field name="string">E-Mail Clicked</field>
-            <field name="model" search="[('model', '=', 'marketing.automation.record.activity')]"/>
         </record>
 
         <record model="ir.action.report" id="report_unsubscribe">

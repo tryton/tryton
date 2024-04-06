@@ -254,9 +254,9 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
         <record model="ir.model.button" id="dunning_reschedule_button">
+            <field name="model">account.dunning</field>
             <field name="name">reschedule</field>
             <field name="string">Reschedule</field>
-            <field name="model" search="[('model', '=', 'account.dunning')]"/>
         </record>
 
         <record model="ir.ui.view" id="dunning_create_start_view_form">

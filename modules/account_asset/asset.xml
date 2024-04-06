@@ -133,40 +133,40 @@
         </record>
 
         <record model="ir.model.button" id="asset_draft_button">
+            <field name="model">account.asset</field>
             <field name="name">draft</field>
             <field name="string">Draft</field>
-            <field name="model" search="[('model', '=', 'account.asset')]"/>
         </record>
 
         <record model="ir.model.button" id="asset_close_button">
+            <field name="model">account.asset</field>
             <field name="name">close</field>
             <field name="string">Close</field>
             <field name="confirm">Are you sure you want to close the asset?</field>
-            <field name="model" search="[('model', '=', 'account.asset')]"/>
         </record>
 
         <record model="ir.model.button" id="asset_run_button">
+            <field name="model">account.asset</field>
             <field name="name">run</field>
             <field name="string">Run</field>
-            <field name="model" search="[('model', '=', 'account.asset')]"/>
         </record>
 
         <record model="ir.model.button" id="asset_create_lines_button">
+            <field name="model">account.asset</field>
             <field name="name">create_lines</field>
             <field name="string">Create Lines</field>
-            <field name="model" search="[('model', '=', 'account.asset')]"/>
         </record>
 
         <record model="ir.model.button" id="asset_clear_lines_button">
+            <field name="model">account.asset</field>
             <field name="name">clear_lines</field>
             <field name="string">Clear Lines</field>
-            <field name="model" search="[('model', '=', 'account.asset')]"/>
         </record>
 
         <record model="ir.model.button" id="asset_update_button">
+            <field name="model">account.asset</field>
             <field name="name">update</field>
             <field name="string">Update Asset</field>
-            <field name="model" search="[('model', '=', 'account.asset')]"/>
         </record>
 
         <record model="ir.ui.view" id="asset_line_view_form">

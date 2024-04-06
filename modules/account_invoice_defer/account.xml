@@ -132,11 +132,11 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
         <record model="ir.model.button" id="invoice_deferred_run_button">
+            <field name="model">account.invoice.deferred</field>
             <field name="name">run</field>
             <field name="string">Run</field>
             <field name="confirm">Are you sure you want to defer the invoices?</field>
             <field name="help">Start deferring the invoice</field>
-            <field name="model" search="[('model', '=', 'account.invoice.deferred')]"/>
         </record>
 
         <record model="ir.action.wizard" id="wizard_invoice_deferred_create_moves">
