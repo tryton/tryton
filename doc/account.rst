@@ -155,6 +155,9 @@ Accounting
 :doc:`Stock Shipment Cost Weight <account_stock_shipment_cost_weight:index>`
    Allocate shipment cost by weight.
 
+:doc:`SYSCOHADA <account_syscohada:index>`
+   SYSCOHADA chart of accounts.
+
 :doc:`Tax Cash <account_tax_cash:index>`
    Report tax on cash basis.
 
