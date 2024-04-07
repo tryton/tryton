@@ -58,6 +58,11 @@ function eval_pyson(value){
                 this.container.add(null, attributes);
                 return;
             }
+
+            if (attributes.loading == 'eager') {
+                this.field_attrs[name].loading = 'eager';
+            }
+
             var WidgetFactory = Sao.View.FormXMLViewParser.WIDGETS[
                 attributes.widget];
             var widget = new WidgetFactory(this.view, attributes);
@@ -3532,7 +3537,7 @@ function eval_pyson(value){
                     for (i = 0, len = result.length; i < len; i++) {
                         ids.push(result[i][0]);
                     }
-                    this.screen.group.load(ids, true);
+                    this.screen.group.load(ids, true, -1, null);
                     prm = this.screen.display();
                     if (sequence) {
                         this.screen.group.set_sequence(

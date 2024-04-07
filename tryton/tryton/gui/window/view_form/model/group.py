@@ -239,7 +239,7 @@ class Group(list):
                 return []
         return list({}.fromkeys(res))
 
-    def load(self, ids, modified=False, position=-1):
+    def load(self, ids, modified=False, position=-1, preloaded=None):
         if not ids:
             return True
 
@@ -256,6 +256,8 @@ class Group(list):
                 else:
                     self.insert(position, new_record)
                     position += 1
+            if preloaded and (already_loaded := preloaded.get(id)):
+                new_record.set(already_loaded, modified=False, validate=False)
             new_records.append(new_record)
 
         # Remove previously removed or deleted records

@@ -8,6 +8,7 @@ from lxml import etree
 
 from trytond.model.exceptions import (
     AccessButtonError, AccessError, ButtonActionException)
+from trytond.model.modelview import set_visible
 from trytond.pool import Pool
 from trytond.pyson import Eval, PYSONDecoder, PYSONEncoder
 from trytond.tests.test_tryton import activate_module, with_transaction
@@ -19,6 +20,162 @@ class ModelView(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
         activate_module('tests')
+
+    def test_set_visible(self):
+        "Test loading of visible x2m fields in group"
+
+        GROUP_XML = """
+        <form>
+            <group>
+                <field name="OK"/>
+            </group>
+            <group expandable="1">
+                <field name="OK"/>
+                <group expandable="0">
+                    <field name="KO"/>
+                </group>
+            </group>
+            <group expandable="0">
+                <field name="KO"/>
+                <group>
+                    <field name="KO"/>
+                </group>
+            </group>
+            <group>
+                <group>
+                    <field name="OK"/>
+                </group>
+                <group expandable="1">
+                    <field name="OK"/>
+                </group>
+                <group expandable="0">
+                    <field name="KO"/>
+                </group>
+            </group>
+         </form>
+        """
+        group_tree = etree.fromstring(GROUP_XML)
+        set_visible(group_tree, {'OK', 'KO'})
+        self.assertEqual(
+            ['OK', 'OK', 'OK', 'OK'],
+            [n.attrib['name']
+                for n in group_tree.xpath("//field[@loading='eager']")])
+
+    def test_mark_visible_x2m_notebook(self):
+        "Test marking visible x2m fields in notebook"
+
+        NOTEBOOK_XML = """
+        <form>
+            <notebook>
+                <page>
+                    <field name="OK"/>
+                    <field name="OK"/>
+                    <notebook>
+                        <page>
+                            <field name="OK"/>
+                            <notebook>
+                                <page>
+                                    <field name="OK"/>
+                                    <field name="OK"/>
+                                </page>
+                                <page>
+                                    <field name="KO"/>
+                                </page>
+                            </notebook>
+                        </page>
+                        <page>
+                            <field name="KO"/>
+                        </page>
+                    </notebook>
+                </page>
+                <page>
+                    <field name="KO"/>
+                    <notebook>
+                        <page>
+                            <field name="KO"/>
+                        </page>
+                        <page>
+                            <field name="KO"/>
+                        </page>
+                    </notebook>
+                </page>
+            </notebook>
+         </form>
+        """
+        nb_tree = etree.fromstring(NOTEBOOK_XML)
+        set_visible(nb_tree, {'OK', 'KO'})
+        self.assertEqual(
+            ['OK', 'OK', 'OK', 'OK', 'OK'],
+            [n.attrib['name']
+                for n in nb_tree.xpath("//field[@loading='eager']")])
+
+    def test_mark_visible_x2m_notebook_group(self):
+        "Test marking visible x2m fields in notebook and groups"
+
+        NBGROUP_XML = """
+        <form>
+            <notebook>
+                <page>
+                    <group>
+                        <field name="OK"/>
+                    </group>
+                    <group expandable="0">
+                        <field name="KO"/>
+                    </group>
+                    <group expandable="1">
+                        <field name="OK"/>
+                    </group>
+                </page>
+                <page>
+                    <group>
+                        <field name="KO"/>
+                    </group>
+                    <group expandable="0">
+                        <field name="KO"/>
+                    </group>
+                    <group expandable="1">
+                        <field name="KO"/>
+                    </group>
+                </page>
+            </notebook>
+            <group expandable="0">
+                <notebook>
+                    <page>
+                        <field name="KO"/>
+                    </page>
+                    <page>
+                        <field name="KO"/>
+                    </page>
+                </notebook>
+            </group>
+            <group expandable="1">
+                <notebook>
+                    <page>
+                        <field name="OK"/>
+                    </page>
+                    <page>
+                        <field name="KO"/>
+                    </page>
+                </notebook>
+            </group>
+            <group>
+                <notebook>
+                    <page>
+                        <field name="OK"/>
+                    </page>
+                    <page>
+                        <field name="KO"/>
+                    </page>
+                </notebook>
+            </group>
+         </form>
+        """
+        ng_tree = etree.fromstring(NBGROUP_XML)
+        set_visible(ng_tree, {'OK', 'KO'})
+        self.assertEqual(
+            ['OK', 'OK', 'OK', 'OK'],
+            [n.attrib['name']
+                for n in ng_tree.xpath("//field[@loading='eager']")])
 
     @with_transaction()
     def test_changed_values(self):

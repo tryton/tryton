@@ -1,3 +1,6 @@
+* Set loading eager to visible xxx2many on form view
+* Add loading attribute to form view
+* Add a contextual read limit on Model.read
 * Add a contextual read limit for related fields
 * Add xml_id field on ModelStorage
 * Add send_message methods

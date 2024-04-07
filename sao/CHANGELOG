@@ -1,3 +1,4 @@
+* Read xxx2Many fields using the dotted notation
 * Display XML ID on Log window
 * Use operators when converting PYSON to string
 * Add DnD on binary and image widgets
