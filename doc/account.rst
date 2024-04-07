@@ -44,6 +44,9 @@ Accounting
 :doc:`Export <account_export:index>`
    Export of accounting.
 
+:doc:`Export WinBooks <account_export_winbooks:index>`
+   Export to WinBooks.
+
 :doc:`Spanish <account_es:index>`
    Spanish accounting.
 
