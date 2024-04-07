@@ -41,6 +41,9 @@ Accounting
 :doc:`Dunning Letter <account_dunning_letter:index>`
    Print dunning letters.
 
+:doc:`Export <account_export:index>`
+   Export of accounting.
+
 :doc:`Spanish <account_es:index>`
    Spanish accounting.
 

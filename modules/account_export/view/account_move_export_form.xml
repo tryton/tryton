@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<form>
+    <label name="company"/>
+    <field name="company"/>
+    <newline/>
+
+    <label name="type"/>
+    <field name="type"/>
+    <label name="file"/>
+    <field name="file"/>
+
+    <field name="moves" colspan="4"/>
+
+    <label name="state"/>
+    <field name="state"/>
+    <group id="buttons" colspan="2" col="-1">
+        <button name="draft" icon="tryton-clear"/>
+        <button name="select_moves" icon="tryton-search"/>
+        <button name="wait" icon="tryton-forward"/>
+        <button name="do" icon="tryton-ok"/>
+    </group>
+</form>

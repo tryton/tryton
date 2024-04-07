@@ -271,6 +271,23 @@ test-modules-account_eu-postgresql:
     PACKAGE: modules/account_eu
     TAG_PATTERN: '/^account_eu-.*/'
 
+check-doc-modules-account_export:
+  extends: .check-doc
+  variables:
+    PACKAGE: modules/account_export
+
+test-modules-account_export-sqlite:
+  extends: .test-sqlite
+  variables:
+    PACKAGE: modules/account_export
+    TAG_PATTERN: '/^account_export-.*/'
+
+test-modules-account_export-postgresql:
+  extends: .test-postgresql
+  variables:
+    PACKAGE: modules/account_export
+    TAG_PATTERN: '/^account_export-.*/'
+
 check-doc-modules-account_fr:
   extends: .check-doc
   variables:

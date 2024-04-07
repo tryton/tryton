@@ -1,0 +1,115 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data>
+        <record model="ir.ui.view" id="account_configuration_view_form">
+            <field name="model">account.configuration</field>
+            <field name="inherit" ref="account.configuration_view_form"/>
+            <field name="name">account_configuration_form</field>
+        </record>
+
+        <record model="ir.ui.view" id="account_move_export_view_form">
+            <field name="model">account.move.export</field>
+            <field name="type">form</field>
+            <field name="name">account_move_export_form</field>
+        </record>
+
+        <record model="ir.ui.view" id="account_move_export_view_list">
+            <field name="model">account.move.export</field>
+            <field name="type">tree</field>
+            <field name="name">account_move_export_list</field>
+        </record>
+
+        <record model="ir.action.act_window" id="act_account_move_export_form">
+            <field name="name">Move Exports</field>
+            <field name="res_model">account.move.export</field>
+            <field
+                name="domain"
+                eval="[('company', '=', Eval('context', {}).get('company', -1))]"
+                pyson="1"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_account_move_export_form_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="account_move_export_view_list"/>
+            <field name="act_window" ref="act_account_move_export_form"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_account_move_export_form_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="account_move_export_view_form"/>
+            <field name="act_window" ref="act_account_move_export_form"/>
+        </record>
+        <record model="ir.action.act_window.domain" id="act_account_move_export_form_domain_draft">
+            <field name="name">Draft</field>
+            <field name="sequence" eval="10"/>
+            <field name="domain" eval="[('state', '=', 'draft')]" pyson="1"/>
+            <field name="count" eval="True"/>
+            <field name="act_window" ref="act_account_move_export_form"/>
+        </record>
+        <record model="ir.action.act_window.domain" id="act_account_move_export_form_domain_waiting">
+            <field name="name">Waiting</field>
+            <field name="sequence" eval="20"/>
+            <field name="domain" eval="[('state', '=', 'waiting')]" pyson="1"/>
+            <field name="count" eval="True"/>
+            <field name="act_window" ref="act_account_move_export_form"/>
+        </record>
+        <record model="ir.action.act_window.domain" id="act_account_move_export_form_domain_all">
+            <field name="name">All</field>
+            <field name="sequence" eval="9999"/>
+            <field name="domain"></field>
+            <field name="act_window" ref="act_account_move_export_form"/>
+        </record>
+        <menuitem
+            parent="account.menu_processing"
+            action="act_account_move_export_form"
+            sequence="10"
+            id="menu_account_move_export_form"/>
+
+        <record model="ir.rule.group" id="rule_group_account_move_export_companies">
+            <field name="name">User in companies</field>
+            <field name="model">account.move.export</field>
+            <field name="global_p" eval="True"/>
+        </record>
+        <record model="ir.rule" id="rule_account_move_export_companies">
+            <field name="domain" eval="[('company', 'in', Eval('companies', []))]" pyson="1"/>
+            <field name="rule_group" ref="rule_group_account_move_export_companies"/>
+        </record>
+
+        <record model="ir.model.access" id="access_account_move_export">
+            <field name="model">account.move.export</field>
+            <field name="perm_read" eval="False"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_account_move_export_account">
+            <field name="model">account.move.export</field>
+            <field name="group" ref="account.group_account"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
+
+        <record model="ir.model.button" id="account_move_export_draft_button">
+            <field name="model">account.move.export</field>
+            <field name="name">draft</field>
+            <field name="string">Reset to Draft</field>
+        </record>
+        <record model="ir.model.button" id="account_move_export_select_moves_button">
+            <field name="model">account.move.export</field>
+            <field name="name">select_moves</field>
+            <field name="string">Select Moves</field>
+        </record>
+        <record model="ir.model.button" id="account_move_export_wait_button">
+            <field name="model">account.move.export</field>
+            <field name="name">wait</field>
+            <field name="string">Wait</field>
+        </record>
+        <record model="ir.model.button" id="account_move_export_do_button">
+            <field name="model">account.move.export</field>
+            <field name="name">do</field>
+            <field name="string">Do</field>
+        </record>
+    </data>
+</tryton>
