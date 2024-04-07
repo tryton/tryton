@@ -73,7 +73,12 @@ def fmany2one(
                 None: (target, join),
                 }
         nested = clause[0][len(name) + 1:]
-        domain = [(nested or 'rec_name', *clause[1:])]
+        if not nested:
+            if isinstance(clause[2], str):
+                nested = 'rec_name'
+            else:
+                nested = 'id'
+        domain = [(nested, *clause[1:])]
         tables, clause = Target.search_domain(
             domain, tables=tables[name])
         return clause
