@@ -1,3 +1,4 @@
+* Add a contextual read limit for related fields
 * Add xml_id field on ModelStorage
 * Add send_message methods
 * Store model on ir.rule.group

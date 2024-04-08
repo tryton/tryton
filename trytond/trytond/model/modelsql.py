@@ -1213,7 +1213,11 @@ class ModelSQL(ModelStorage):
                 value = row[name]
                 if value is not None:
                     add(value)
-            return Target.read(target_ids, fields)
+            related_read_limit = transaction.context.get('related_read_limit')
+            rows = Target.read(target_ids[:related_read_limit], fields)
+            if related_read_limit is not None:
+                rows += [{'id': i} for i in target_ids[related_read_limit:]]
+            return rows
 
         def add_related(field, rows, targets):
             name = field.name
