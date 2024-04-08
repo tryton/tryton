@@ -3450,6 +3450,23 @@ test-modules-web_shop-postgresql:
     PACKAGE: modules/web_shop
     TAG_PATTERN: '/^web_shop-.*/'
 
+check-doc-modules-web_shop_product_data_feed:
+  extends: .check-doc
+  variables:
+    PACKAGE: modules/web_shop_product_data_feed
+
+test-modules-web_shop_product_data_feed-sqlite:
+  extends: .test-sqlite
+  variables:
+    PACKAGE: modules/web_shop_product_data_feed
+    TAG_PATTERN: '/^web_shop_product_data_feed-.*/'
+
+test-modules-web_shop_product_data_feed-postgresql:
+  extends: .test-postgresql
+  variables:
+    PACKAGE: modules/web_shop_product_data_feed
+    TAG_PATTERN: '/^web_shop_product_data_feed-.*/'
+
 check-doc-modules-web_shop_shopify:
   extends: .check-doc
   variables:

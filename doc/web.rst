@@ -8,6 +8,9 @@ Web
 :doc:`Shop <web_shop:index>`
    Fundamentals to sale online.
 
+:doc:`Shop Product Data Feed <web_shop_product_data_feed:index>`
+   Publish product data feed for markets.
+
 :doc:`Shop Shopify <web_shop_shopify:index>`
    Integrate with Shopify.
 

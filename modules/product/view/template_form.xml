@@ -30,8 +30,9 @@ this repository contains the full copyright notices and license terms. -->
           <newline/>
           <field name="products" mode="form,tree" colspan="2"
               view_ids="product.product_view_form_simple"/>
-          <field name="categories" colspan="2"
-              view_ids="product.category_view_list"/>
+          <group id="categories" colspan="2" col="2" yexpand="1" yfill="1">
+              <field name="categories" colspan="2" yexpand="1" yfill="1" view_ids="product.category_view_list"/>
+          </group>
       </page>
   </notebook>
 </form>

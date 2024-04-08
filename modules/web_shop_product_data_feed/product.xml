@@ -1,0 +1,126 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data>
+        <record model="ir.ui.view" id="product_template_view_form">
+            <field name="model">product.template</field>
+            <field name="inherit" ref="product.template_view_form"/>
+            <field name="name">product_template_form</field>
+        </record>
+
+        <record model="ir.ui.view" id="product_category_google_view_list">
+            <field name="model">product.category.google</field>
+            <field name="type">tree</field>
+            <field name="name">product_category_google_list</field>
+        </record>
+
+        <record model="ir.ui.view" id="product_category_google_view_form">
+            <field name="model">product.category.google</field>
+            <field name="type">form</field>
+            <field name="name">product_category_google_form</field>
+        </record>
+
+        <record model="ir.action.act_window" id="act_product_category_google_form">
+            <field name="name">Google Product Categories</field>
+            <field name="res_model">product.category.google</field>
+        </record>
+        <record model="ir.action.act_window.view" id="act_product_category_google_form_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="product_category_google_view_list"/>
+            <field name="act_window" ref="act_product_category_google_form"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_product_category_google_form_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="product_category_google_view_form"/>
+            <field name="act_window" ref="act_product_category_google_form"/>
+        </record>
+
+        <menuitem
+            parent="product.menu_configuration"
+            action="act_product_category_google_form"
+            sequence="50"
+            id="menu_product_category_google_form"/>
+
+        <record model="ir.model.access" id="access_product_category_google">
+            <field name="model">product.category.google</field>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_product_category_google_product_admin">
+            <field name="model">product.category.google</field>
+            <field name="group" ref="product.group_product_admin"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
+        <record model="ir.model.access" id="access_product_category_google_admin">
+            <field name="model">product.category.google</field>
+            <field name="group" ref="res.group_admin"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
+
+        <record model="ir.ui.view" id="product_category_facebook_view_list">
+            <field name="model">product.category.facebook</field>
+            <field name="type">tree</field>
+            <field name="name">product_category_facebook_list</field>
+        </record>
+
+        <record model="ir.ui.view" id="product_category_facebook_view_form">
+            <field name="model">product.category.facebook</field>
+            <field name="type">form</field>
+            <field name="name">product_category_facebook_form</field>
+        </record>
+
+        <record model="ir.action.act_window" id="act_product_category_facebook_form">
+            <field name="name">Facebook Product Categories</field>
+            <field name="res_model">product.category.facebook</field>
+        </record>
+        <record model="ir.action.act_window.view" id="act_product_category_facebook_form_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="product_category_facebook_view_list"/>
+            <field name="act_window" ref="act_product_category_facebook_form"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_product_category_facebook_form_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="product_category_facebook_view_form"/>
+            <field name="act_window" ref="act_product_category_facebook_form"/>
+        </record>
+
+        <menuitem
+            parent="product.menu_configuration"
+            action="act_product_category_facebook_form"
+            sequence="50"
+            id="menu_product_category_facebook_form"/>
+
+        <record model="ir.model.access" id="access_product_category_facebook">
+            <field name="model">product.category.facebook</field>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_product_category_facebook_product_admin">
+            <field name="model">product.category.facebook</field>
+            <field name="group" ref="product.group_product_admin"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
+        <record model="ir.model.access" id="access_product_category_facebook_admin">
+            <field name="model">product.category.facebook</field>
+            <field name="group" ref="res.group_admin"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
+    </data>
+</tryton>

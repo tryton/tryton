@@ -1,0 +1,2 @@
+id	title	description	link	image_link	availability	price	sale_price	google_product_category	brand	condition	item_group_id	unit_pricing_measure	unit_pricing_base_measure	product_type	gtin	mpn	is_bundle	product_length	product_width	product_height	product_weight	shipping
+12345	Product	Description	https://example.com/p/12345	https://example.com/i/12345.jpg	in stock	10.00 usd			Brand	new		1ct					False	50.0 cm	100.0 cm	20.0 cm	5.0 kg	US::Shipping:5.00 usd
