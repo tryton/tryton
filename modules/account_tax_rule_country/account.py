@@ -19,6 +19,8 @@ class TaxRule(metaclass=PoolMeta):
                 subdivision = subdivision.parent
 
         pattern = pattern.copy()
+        pattern.setdefault('from_country')
+        pattern.setdefault('to_country')
         for name in ['from_subdivision', 'to_subdivision']:
             subdivision = pattern.pop(name, None)
             if not subdivision:
