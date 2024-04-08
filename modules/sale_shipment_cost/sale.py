@@ -443,7 +443,8 @@ class Line(metaclass=PoolMeta):
                 quantity = 0
             elif (self.sale.shipment_cost_method == 'order'
                     and self.sale.invoice_method == 'shipment'):
-                shipments = self.sale.shipments
+                shipments = [
+                    s for s in self.sale.shipments if s.cost_method == 'order']
                 if (not shipments
                         or all(s.state != 'done' for s in shipments)):
                     quantity = 0
