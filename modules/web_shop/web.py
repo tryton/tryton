@@ -227,8 +227,8 @@ class Shop(DeactivableMixin, ModelSQL, ModelView):
             with Transaction().set_context(**self.get_context()):
                 products = Product.browse(products)
                 taxes_ = Tax.browse(tax_ids)
-            with Transaction().set_context(taxes=tax_ids):
-                prices.update(Product.get_sale_price(products))
+                with Transaction().set_context(taxes=tax_ids):
+                    prices.update(Product.get_sale_price(products))
             for product in products:
                 price = prices[product.id]
                 if price is not None:
