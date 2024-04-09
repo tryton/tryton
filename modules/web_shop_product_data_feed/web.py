@@ -344,18 +344,42 @@ class Shop_ShipmentCost(metaclass=PoolMeta):
         return CarrierSelection.get_carriers(pattern)
 
     def _product_data_feed_carrier_cost(
-            self, product, country, carrier, price):
+            self, product, country, carrier, price, pattern=None):
         pool = Pool()
         Currency = pool.get('currency.currency')
+        Date = pool.get('ir.date')
+        Tax = pool.get('account.tax')
+        if pattern is None:
+            pattern = {}
+
+        today = Date.today()
         context = {}
         if carrier.carrier_cost_method == 'percentage':
             context['amount'] = price
             context['currency'] = self.currency.id
         with Transaction().set_context(context=context):
             cost, currency_id = carrier.get_sale_price()
-        if cost is not None:
-            return Currency.compute(
-                Currency(currency_id), cost, self.currency)
+        if cost is None:
+            return
+        customer_tax_rule = self._customer_taxe_rule()
+        taxes = set()
+        for tax in carrier.carrier_product.customer_taxes_used:
+            if customer_tax_rule:
+                tax_ids = customer_tax_rule.apply(tax, pattern)
+                if tax_ids:
+                    taxes.update(tax_ids)
+                continue
+            taxes.add(tax.id)
+        if customer_tax_rule:
+            tax_ids = customer_tax_rule.apply(None, pattern)
+            if tax_ids:
+                taxes.update(tax_ids)
+        taxes = Tax.browse(taxes)
+        l_taxes = Tax.compute(taxes, cost, 1, today)
+        for l_tax in l_taxes:
+            cost += l_tax['amount']
+        return Currency.compute(
+            Currency(currency_id), cost, self.currency)
 
     def _product_data_feed_row(self, product, price, sale_price):
         row = super()._product_data_feed_row(product, price, sale_price)
