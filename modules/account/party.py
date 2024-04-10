@@ -113,7 +113,7 @@ class Party(CompanyMultiValueMixin, metaclass=PoolMeta):
         company_id = Transaction().context.get('company')
         if company_id >= 0:
             company = Company(company_id)
-            return company.currency.id
+            return company.currency
 
     @classmethod
     def get_receivable_payable(cls, parties, names):
