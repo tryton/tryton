@@ -431,7 +431,8 @@ class EmployeeMixin:
             opportunity.employee]
 
     def get_rec_name(self, name):
-        return self.employee.rec_name
+        if self.employee:
+            return self.employee.rec_name
 
     @classmethod
     def search_rec_name(cls, name, clause):
