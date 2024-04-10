@@ -111,7 +111,7 @@ class Party(CompanyMultiValueMixin, metaclass=PoolMeta):
         pool = Pool()
         Company = pool.get('company.company')
         company_id = Transaction().context.get('company')
-        if company_id:
+        if company_id >= 0:
             company = Company(company_id)
             return company.currency.id
 
