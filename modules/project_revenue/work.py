@@ -190,32 +190,23 @@ class Work(metaclass=PoolMeta):
             return company.currency.digits
         return 2
 
-    @fields.depends('product', 'company')
+    @fields.depends('product')
     def on_change_product(self):
         pool = Pool()
-        User = pool.get('res.user')
         ModelData = pool.get('ir.model.data')
         Uom = pool.get('product.uom')
-        Currency = pool.get('currency.currency')
 
         if not self.product:
             return
 
-        if self.price_list_hour:
-            hour_uom = Uom(ModelData.get_id('product', 'uom_hour'))
-            self.list_price = Uom.compute_price(
-                self.product.default_uom, self.product.list_price, hour_uom)
-        else:
-            self.list_price = self.product.list_price
-
-        if self.company:
-            user = User(Transaction().user)
-            if user.company != self.company:
-                if user.company.currency != self.company.currency:
-                    self.list_price = Currency.compute(user.company.currency,
-                        self.list_price, self.company.currency, round=False)
-
-        self.list_price = round_price(self.list_price)
+        list_price = self.product.list_price_used
+        if list_price is not None:
+            if self.price_list_hour:
+                hour_uom = Uom(ModelData.get_id('product', 'uom_hour'))
+                list_price = Uom.compute_price(
+                    self.product.default_uom, list_price, hour_uom)
+            list_price = round_price(list_price)
+        self.list_price = list_price
 
     @property
     def price_list_hour(self):
