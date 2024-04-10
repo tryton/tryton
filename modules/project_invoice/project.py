@@ -570,7 +570,7 @@ class Work(Effort, Progress, Timesheet, metaclass=PoolMeta):
         invoice_line.unit = key['unit']
         invoice_line.product = product
         invoice_line.on_change_product()
-        if not invoice_line.account:
+        if not getattr(invoice_line, 'account', None):
             if invoice_line.product:
                 raise InvoicingError(
                     gettext(
