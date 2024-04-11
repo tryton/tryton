@@ -15,42 +15,6 @@
         });
     }
 
-    function set_treeview_height(el) {
-        var height = '';
-        if (!el.parents('.form').length &&
-            !el.parents('#menu').length) {
-            var vh = '100vh';
-            if (el.parents('.modal-body').length) {
-                vh = el.parents('.modal-body').css('max-height');
-            }
-            var padding = ' ';
-            el.parents('.panel-body').each(function(i, panel) {
-                panel = jQuery(panel);
-                padding += '- ' + panel.css('padding-top');
-                padding += ' - ' + panel.css('padding-bottom');
-            });
-            var box_shadow = ' ';
-            el.parents('.panel').each(function(i, panel) {
-                panel = jQuery(panel);
-                var lengths = panel.css('box-shadow').match(/\d+px/g);
-                if (lengths && lengths.length) {
-                    lengths = lengths.map(function(length) {
-                        return length.replace('px', '');
-                    });
-                    box_shadow += '- ' + Math.max.apply(null, lengths) + 'px';
-                }
-            });
-            var y = el[0].getBoundingClientRect().y;
-            height = 'calc(' + vh + ' - ' + y + 'px' + padding + box_shadow + ')';
-        }
-        el.css('height', height);
-    }
-    jQuery(window).resize(function() {
-        jQuery('.treeview').each(function(i, el) {
-            set_treeview_height(jQuery(el));
-        });
-    });
-
     Sao.View.TreeXMLViewParser = Sao.class_(Sao.View.XMLViewParser, {
         _parse_tree: function(node, attributes) {
             for (const child of node.childNodes) {
@@ -140,7 +104,12 @@
             this.columns = [];
             this.selection_mode = (screen.attributes.selection_mode ||
                 Sao.common.SELECTION_MULTIPLE);
-            this.el = jQuery('<div/>');
+            this.el = jQuery('<div/>', {
+                'class': 'tree-container',
+            })
+            // Prevent Chrome based browser to compute a min-content
+            // such that only this table has scrollbar if needed
+                .css('display', 'grid');
             this.scrollbar = jQuery('<div/>')
                 .appendTo(jQuery('<div/>', {
                     'class': 'scrollbar responsive',
@@ -758,8 +727,6 @@
             return buttons;
         },
         display: function(selected, expanded) {
-            set_treeview_height(this.treeview);
-
             var current_record = this.record;
             if (jQuery.isEmptyObject(selected)) {
                 selected = this.get_selected_paths();

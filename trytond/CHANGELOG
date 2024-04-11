@@ -1,3 +1,16 @@
+* Set loading eager to visible xxx2many on form view
+* Add loading attribute to form view
+* Add a contextual read limit on Model.read
+* Add a contextual read limit for related fields
+* Add xml_id field on ModelStorage
+* Add send_message methods
+* Store model on ir.rule.group
+* Store model on ir.model.button
+* Store model and field name on ir.model.field.access
+* Store model name on ir.model.access
+* Store model name on ir.model.field
+* Add fmany2one field
+* Allow creation of foreign key on non primary key
 * Include context information in access error
 * Remove trytond-worker max tasks per child option for Python <= 3.10
 * Do not copy readonly relational fields

@@ -48,6 +48,25 @@ def variant_image(request, pool, code, name=None):
     return _image(request, pool, product)
 
 
+@app.route(
+    '/product-category/image/<code>/<base64:database_name>',
+    methods={'GET'})
+@app.route(
+    '/product-category/image/<code>/<base64:database_name>/<name>',
+    methods={'GET'})
+@with_pool
+@with_transaction()
+def category_image(request, pool, code, name=None):
+    Category = pool.get('product.category')
+    try:
+        category, = Category.search([
+                ('code', '=', unquote(code)),
+                ])
+    except ValueError:
+        abort(HTTPStatus.NOT_FOUND)
+    return _image(request, pool, category)
+
+
 def _image(request, pool, record):
     images = record.get_images(request.args)
     if not images:

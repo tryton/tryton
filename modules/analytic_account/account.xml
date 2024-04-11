@@ -109,8 +109,7 @@ this repository contains the full copyright notices and license terms. -->
 
         <record model="ir.rule.group" id="rule_group_account_companies">
             <field name="name">User in companies</field>
-            <field name="model"
-                search="[('model', '=', 'analytic_account.account')]"/>
+            <field name="model">analytic_account.account</field>
             <field name="global_p" eval="True"/>
         </record>
         <record model="ir.rule" id="rule_account_companies">
@@ -121,14 +120,14 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
         <record model="ir.model.access" id="access_account">
-            <field name="model" search="[('model', '=', 'analytic_account.account')]"/>
+            <field name="model">analytic_account.account</field>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="False"/>
             <field name="perm_create" eval="False"/>
             <field name="perm_delete" eval="False"/>
         </record>
         <record model="ir.model.access" id="access_account_account_admin">
-            <field name="model" search="[('model', '=', 'analytic_account.account')]"/>
+            <field name="model">analytic_account.account</field>
             <field name="group" ref="group_analytic_admin"/>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="True"/>
@@ -149,16 +148,14 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
         <record model="ir.model.access" id="access_account_distribution">
-            <field name="model"
-                search="[('model', '=', 'analytic_account.account.distribution')]"/>
+            <field name="model">analytic_account.account.distribution</field>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="False"/>
             <field name="perm_create" eval="False"/>
             <field name="perm_delete" eval="False"/>
         </record>
         <record model="ir.model.access" id="access_account_distribution_account_admin">
-            <field name="model"
-                search="[('model', '=', 'analytic_account.account.distribution')]"/>
+            <field name="model">analytic_account.account.distribution</field>
             <field name="group" ref="group_analytic_admin"/>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="True"/>
@@ -185,8 +182,7 @@ this repository contains the full copyright notices and license terms. -->
 
         <record model="ir.rule.group" id="rule_group_entry_companies">
             <field name="name">User in companies</field>
-            <field name="model"
-                search="[('model', '=', 'analytic.account.entry')]"/>
+            <field name="model">analytic.account.entry</field>
             <field name="global_p" eval="True"/>
         </record>
         <record model="ir.rule" id="rule_entry_companies">

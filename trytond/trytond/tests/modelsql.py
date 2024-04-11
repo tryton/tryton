@@ -35,6 +35,28 @@ class ModelSQLReadContextID(ModelSQL):
             })
 
 
+class ModelSQLReadLimit(ModelSQL):
+    "ModelSQL to test related limit"
+    __name__ = 'test.modelsql.read.limit'
+    name = fields.Char("Name")
+    targets = fields.One2Many(
+        'test.modelsql.read.limit.target', 'parent', "Targets")
+    sum_targets = fields.Function(
+        fields.Integer("Sum of Targets"), 'on_change_with_sum_targets')
+
+    @fields.depends('targets')
+    def on_change_with_sum_targets(self, name=None):
+        return sum(t.integer for t in self.targets)
+
+
+class ModelSQLReadLimitTarget(ModelSQL):
+    "ModelSQL to test related limit"
+    __name__ = 'test.modelsql.read.limit.target'
+    name = fields.Char("Name")
+    integer = fields.Integer("Integer")
+    parent = fields.Many2One('test.modelsql.read.limit', "Parent")
+
+
 class ModelSQLRequiredField(ModelSQL):
     'model with a required field'
     __name__ = 'test.modelsql'
@@ -257,6 +279,8 @@ def register(module):
         ModelSQLRead,
         ModelSQLReadTarget,
         ModelSQLReadContextID,
+        ModelSQLReadLimit,
+        ModelSQLReadLimitTarget,
         ModelSQLRequiredField,
         ModelSQLTimestamp,
         ModelSQLCreate,

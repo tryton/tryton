@@ -32,5 +32,35 @@ this repository contains the full copyright notices and license terms. -->
             <field name="type">list-form</field>
             <field name="name">image_form</field>
         </record>
+
+        <record model="ir.ui.view" id="category_view_list">
+            <field name="model">product.category</field>
+            <field name="inherit" ref="product.category_view_list"/>
+            <field name="name">category_list</field>
+        </record>
+
+        <record model="ir.ui.view" id="category_view_form">
+            <field name="model">product.category</field>
+            <field name="inherit" ref="product.category_view_form"/>
+            <field name="name">category_form</field>
+        </record>
+
+        <record model="ir.ui.view" id="category_image_view_list">
+            <field name="model">product.category.image</field>
+            <field name="type">tree</field>
+            <field name="name">category_image_list</field>
+        </record>
+
+        <record model="ir.ui.view" id="category_image_view_form">
+            <field name="model">product.category.image</field>
+            <field name="type">form</field>
+            <field name="name">category_image_form</field>
+        </record>
+
+        <record model="ir.ui.view" id="category_image_view_list_form">
+            <field name="model">product.category.image</field>
+            <field name="type">list-form</field>
+            <field name="name">category_image_form</field>
+        </record>
     </data>
 </tryton>

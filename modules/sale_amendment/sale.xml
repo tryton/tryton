@@ -69,14 +69,14 @@ this repository contains the full copyright notices and license terms. -->
             id="menu_sale_amendment"/>
 
         <record model="ir.model.access" id="access_sale_amendment">
-            <field name="model" search="[('model', '=', 'sale.amendment')]"/>
+            <field name="model">sale.amendment</field>
             <field name="perm_read" eval="False"/>
             <field name="perm_write" eval="False"/>
             <field name="perm_create" eval="False"/>
             <field name="perm_delete" eval="False"/>
         </record>
         <record model="ir.model.access" id="access_sale_amendment_sale">
-            <field name="model" search="[('model', '=', 'sale.amendment')]"/>
+            <field name="model">sale.amendment</field>
             <field name="group" ref="sale.group_sale"/>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="True"/>
@@ -86,7 +86,7 @@ this repository contains the full copyright notices and license terms. -->
 
         <record model="ir.rule.group" id="rule_group_sale_amendment_companies">
             <field name="name">User in companies</field>
-            <field name="model" search="[('model', '=', 'sale.amendment')]"/>
+            <field name="model">sale.amendment</field>
             <field name="global_p" eval="True"/>
         </record>
         <record model="ir.rule" id="rule_sale_amendment_companies">
@@ -98,10 +98,10 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
         <record model="ir.model.button" id="sale_amendment_validation_amendment_button">
+            <field name="model">sale.amendment</field>
             <field name="name">validate_amendment</field>
             <field name="string">Validate</field>
             <field name="confirm">Are you sure you want to validate the amendments?</field>
-            <field name="model" search="[('model', '=', 'sale.amendment')]"/>
         </record>
         <record model="ir.model.button-res.group" id="sale_amendment_validation_amendment_button_group_sale_amendment">
             <field name="button" ref="sale_amendment_validation_amendment_button"/>

@@ -22,36 +22,42 @@ this repository contains the full copyright notices and license terms. -->
             icon="tryton-list"/>
 
         <record model="ir.model.field.access" id="access_party_sale_invoice_method">
-            <field name="field" search="[('model.model', '=', 'party.party'), ('name', '=', 'sale_invoice_method')]"/>
+            <field name="model">party.party</field>
+            <field name="field">sale_invoice_method</field>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="False"/>
         </record>
         <record model="ir.model.field.access" id="access_party_sale_invoice_method_group_sale">
-            <field name="field" search="[('model.model', '=', 'party.party'), ('name', '=', 'sale_invoice_method')]"/>
+            <field name="model">party.party</field>
+            <field name="field">sale_invoice_method</field>
             <field name="group" ref="group_sale"/>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="True"/>
         </record>
 
         <record model="ir.model.field.access" id="access_party_sale_shipment_method">
-            <field name="field" search="[('model.model', '=', 'party.party'), ('name', '=', 'sale_shipment_method')]"/>
+            <field name="model">party.party</field>
+            <field name="field">sale_shipment_method</field>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="False"/>
         </record>
         <record model="ir.model.field.access" id="access_party_sale_shipment_method_group_sale">
-            <field name="field" search="[('model.model', '=', 'party.party'), ('name', '=', 'sale_shipment_method')]"/>
+            <field name="model">party.party</field>
+            <field name="field">sale_shipment_method</field>
             <field name="group" ref="group_sale"/>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="True"/>
         </record>
 
         <record model="ir.model.field.access" id="access_party_customer_currency">
-            <field name="field" search="[('model.model', '=', 'party.party'), ('name', '=', 'customer_currency')]"/>
+            <field name="model">party.party</field>
+            <field name="field">customer_currency</field>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="False"/>
         </record>
         <record model="ir.model.field.access" id="access_party_customer_currency_group_sale">
-            <field name="field" search="[('model.model', '=', 'party.party'), ('name', '=', 'customer_currency')]"/>
+            <field name="model">party.party</field>
+            <field name="field">customer_currency</field>
             <field name="group" ref="group_sale"/>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="True"/>

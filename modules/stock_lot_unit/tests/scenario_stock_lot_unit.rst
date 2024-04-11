@@ -76,7 +76,7 @@ Create an incoming shipment without lot::
     >>> move2.from_location = supplier_loc
     >>> move2.to_location = input_loc
     >>> shipment.click('receive')
-    >>> shipment.click('done')
+    >>> shipment.click('do')
 
 Let's ship a product with a lot::
 
@@ -102,7 +102,7 @@ Let's ship a product with a lot::
     >>> move.lot = lot
     >>> shipment.click('pick')
     >>> shipment.click('pack')
-    >>> shipment.click('done')
+    >>> shipment.click('do')
 
 Let's ship now two times the same lot::
 

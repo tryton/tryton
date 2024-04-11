@@ -81,6 +81,7 @@ class ConfigManager(object):
             'login.db': demo_database,
             'login.expanded': False,
             'client.title': 'Tryton',
+            'rpc.cache_size': 1024,
             'client.modepda': False,
             'client.toolbar': 'default',
             'client.save_tree_width': True,

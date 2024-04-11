@@ -11,7 +11,7 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
         <record model="ir.model.access" id="access_move_group_purchase">
-            <field name="model" search="[('model', '=', 'stock.move')]"/>
+            <field name="model">stock.move</field>
             <field name="group" ref="group_purchase"/>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="False"/>
@@ -70,7 +70,7 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
         <record model="ir.model.access" id="access_shipment_in_group_purchase">
-            <field name="model" search="[('model', '=', 'stock.shipment.in')]"/>
+            <field name="model">stock.shipment.in</field>
             <field name="group" ref="group_purchase"/>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="False"/>
@@ -93,7 +93,7 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
         <record model="ir.model.access" id="access_shipment_in_return_group_purchase">
-            <field name="model" search="[('model', '=', 'stock.shipment.in.return')]"/>
+            <field name="model">stock.shipment.in.return</field>
             <field name="group" ref="group_purchase"/>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="False"/>

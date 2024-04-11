@@ -37,8 +37,8 @@ class SendmailTestCase(unittest.TestCase):
         server = Mock()
         sendmail(
             'tryton@example.com', 'foo@example.com', message, server=server)
-        server.sendmail.assert_called_with(
-            'tryton@example.com', 'foo@example.com', message.as_string())
+        server.send_message.assert_called_with(
+            message, 'tryton@example.com', 'foo@example.com')
         server.quit.assert_not_called()
 
     def test_get_smtp_server(self):
@@ -97,9 +97,9 @@ class SendmailTestCase(unittest.TestCase):
 
         transaction.commit()
 
-        server.sendmail.assert_has_calls([
-                call('foo@example.com', 'bar@example.com', msg1.as_string()),
-                call('bar@example.com', 'foo@example.com', msg2.as_string()),
+        server.send_message.assert_has_calls([
+                call(msg1, 'foo@example.com', 'bar@example.com'),
+                call(msg2, 'bar@example.com', 'foo@example.com'),
                 ])
         server.quit.assert_called_once_with()
         self.assertFalse(datamanager.queue)
@@ -110,5 +110,5 @@ class SendmailTestCase(unittest.TestCase):
             'foo@example.com', 'bar@example.com', MagicMock(Message))
         transaction.rollback()
 
-        server.sendmail.assert_not_called()
+        server.send_message.assert_not_called()
         self.assertFalse(datamanager.queue)

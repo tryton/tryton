@@ -38,7 +38,7 @@ this repository contains the full copyright notices and license terms. -->
 
         <record model="ir.rule.group" id="rule_group_shop_companies">
             <field name="name">User in companies</field>
-            <field name="model" search="[('model', '=', 'web.shop')]"/>
+            <field name="model">web.shop</field>
             <field name="global_p" eval="True"/>
         </record>
         <record model="ir.rule" id="rule_shop_companies">
@@ -49,8 +49,7 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
         <record model="ir.model.access" id="access_shop">
-            <field name="model"
-                search="[('model', '=', 'web.shop')]"/>
+            <field name="model">web.shop</field>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="False"/>
             <field name="perm_create" eval="False"/>
@@ -58,8 +57,7 @@ this repository contains the full copyright notices and license terms. -->
         </record>
         <record model="ir.model.access"
             id="access_shop_sale_admin">
-            <field name="model"
-                search="[('model', '=', 'web.shop')]"/>
+            <field name="model">web.shop</field>
             <field name="group" ref="sale.group_sale_admin"/>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="True"/>
@@ -73,6 +71,14 @@ this repository contains the full copyright notices and license terms. -->
             <field name="model">web.shop</field>
             <field name="inherit" ref="shop_view_form"/>
             <field name="name">shop_attribute_form</field>
+        </record>
+    </data>
+
+    <data depends="sale_price_list">
+        <record model="ir.ui.view" id="shop_view_price_list_form">
+            <field name="model">web.shop</field>
+            <field name="inherit" ref="shop_view_form"/>
+            <field name="name">shop_price_list_form</field>
         </record>
     </data>
 

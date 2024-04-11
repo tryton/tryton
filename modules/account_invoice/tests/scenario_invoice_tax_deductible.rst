@@ -10,6 +10,7 @@ Imports::
     >>> from proteus import Model
     >>> from trytond.modules.account.tests.tools import (
     ...     create_chart, create_fiscalyear, create_tax, get_accounts)
+    >>> from trytond.modules.account_invoice.exceptions import InvoiceTaxesWarning
     >>> from trytond.modules.account_invoice.tests.tools import (
     ...     set_fiscalyear_invoice_sequences)
     >>> from trytond.modules.company.tests.tools import create_company, get_company
@@ -26,6 +27,7 @@ Activate modules::
     >>> ProductCategory = Model.get('product.category')
     >>> ProductTemplate = Model.get('product.template')
     >>> ProductUom = Model.get('product.uom')
+    >>> Warning = Model.get('res.user.warning')
 
 Create company::
 
@@ -90,6 +92,15 @@ Post a supplier invoice with 0% deductible::
     Decimal('550.00')
     >>> invoice.untaxed_amount, invoice.tax_amount, invoice.total_amount
     (Decimal('550.00'), Decimal('0.00'), Decimal('550.00'))
+    >>> try:
+    ...     invoice.click('post')
+    ... except InvoiceTaxesWarning as warning:
+    ...     _, (key, *_) = warning.args
+    ...     raise
+    Traceback (most recent call last):
+        ...
+    InvoiceTaxesWarning: ...
+    >>> Warning(user=config.user, name=key).save()
     >>> invoice.click('post')
     >>> invoice.untaxed_amount, invoice.tax_amount, invoice.total_amount
     (Decimal('550.00'), Decimal('0.00'), Decimal('550.00'))

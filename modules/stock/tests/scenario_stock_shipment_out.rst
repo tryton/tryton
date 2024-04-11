@@ -190,7 +190,7 @@ Ignore non assigned moves and pack shipment::
 
 Set the state as Done::
 
-    >>> shipment_out.click('done')
+    >>> shipment_out.click('do')
     >>> assertEqual(shipment_out.done_by, employee)
     >>> [m.state for m in shipment_out.outgoing_moves]
     ['done']
@@ -263,7 +263,7 @@ Finish the shipment::
 
 Finish the shipment::
 
-    >>> shipment_out.click('done')
+    >>> shipment_out.click('do')
     >>> shipment_out.state
     'done'
     >>> outgoing_move, = shipment_out.outgoing_moves

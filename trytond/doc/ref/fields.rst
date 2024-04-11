@@ -1174,3 +1174,17 @@ Instance methods:
    following ``type_``.
    The descriptor must be used on the same class as the field.
    Default ``type_`` is ``values``.
+
+fmany2one
+---------
+
+.. function:: fmany2one(name, sources, target[, string[, ondelete[, \**options]]])
+
+Return a mixin_ class which adds a :class:`Function` field to a
+:class:`~trytond.model.ModelSQL` class that emulate a :class:`Many2One` that
+refers to the ``target`` record having the ``sources`` as value.
+``target`` is composed of the name of the model and the name of the fields
+separated by a comma.
+The target fields must be unique.
+
+.. _mixin: http://en.wikipedia.org/wiki/Mixin

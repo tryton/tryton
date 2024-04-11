@@ -10,9 +10,9 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
         <record model="ir.model.button" id="production_assign_manual_wizard_button">
+            <field name="model">production</field>
             <field name="name">assign_manual_wizard</field>
             <field name="string">Manual Assign</field>
-            <field name="model" search="[('model', '=', 'production')]"/>
         </record>
 
         <record model="ir.action.wizard" id="wizard_production_assign_manual">

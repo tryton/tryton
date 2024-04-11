@@ -81,7 +81,7 @@ Create outputs including waste products::
     >>> waste_output.product = product
     >>> waste_output.from_location = production.location
     >>> waste_output.to_location = lost_found_loc
-    >>> production.click('done')
+    >>> production.click('do')
     >>> production.cost
     Decimal('20.0000')
     >>> output, = [o for o in production.outputs

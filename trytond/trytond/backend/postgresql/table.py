@@ -396,40 +396,63 @@ class TableHandler(TableHandlerInterface):
 
         self._update_definitions(columns=True)
 
-    def add_fk(self, column_name, reference, on_delete=None):
+    def add_fk(self, columns, reference, ref_columns=None, on_delete=None):
         if on_delete is not None:
             on_delete = on_delete.upper()
         else:
             on_delete = 'SET NULL'
+        if isinstance(columns, str):
+            columns = [columns]
 
         cursor = Transaction().connection.cursor()
-        name = self.convert_name(self.table_name + '_' + column_name + '_fkey')
+        if ref_columns:
+            ref_columns_name = '_' + '_'.join(ref_columns)
+        else:
+            ref_columns_name = ''
+        name = self.convert_name(
+            self.table_name + '_' + '_'.join(columns)
+            + ref_columns_name + '_fkey')
         if name in self._constraints:
-            if self._fk_deltypes.get(column_name) != on_delete:
-                self.drop_fk(column_name)
-                add = True
+            for column_name in columns:
+                if self._fk_deltypes.get(column_name) != on_delete:
+                    self.drop_fk(columns, ref_columns)
+                    add = True
+                    break
             else:
                 add = False
         else:
             add = True
         if add:
+            columns = SQL(', ').join(map(Identifier, columns))
+            if not ref_columns:
+                ref_columns = ['id']
+            ref_columns = SQL(', ').join(map(Identifier, ref_columns))
             cursor.execute(
                 SQL(
                     "ALTER TABLE {table} "
                     "ADD CONSTRAINT {constraint} "
-                    "FOREIGN KEY ({column}) REFERENCES {reference} "
+                    "FOREIGN KEY ({columns}) "
+                    "REFERENCES {reference} ({ref_columns}) "
                     "ON DELETE {action}"
                     )
                 .format(
                     table=Identifier(self.table_name),
                     constraint=Identifier(name),
-                    column=Identifier(column_name),
+                    columns=columns,
                     reference=Identifier(reference),
+                    ref_columns=ref_columns,
                     action=SQL(on_delete)))
             self._update_definitions(constraints=True)
 
-    def drop_fk(self, column_name, table=None):
-        self.drop_constraint(column_name + '_fkey', table=table)
+    def drop_fk(self, columns, ref_columns=None, table=None):
+        if isinstance(columns, str):
+            columns = [columns]
+        if ref_columns:
+            ref_columns_name = '_' + '_'.join(ref_columns)
+        else:
+            ref_columns_name = ''
+        self.drop_constraint(
+            '_'.join(columns) + ref_columns_name + '_fkey', table=table)
 
     def not_null_action(self, column_name, action='add'):
         if not self.column_exist(column_name):

@@ -41,6 +41,12 @@ Accounting
 :doc:`Dunning Letter <account_dunning_letter:index>`
    Print dunning letters.
 
+:doc:`Export <account_export:index>`
+   Export of accounting.
+
+:doc:`Export WinBooks <account_export_winbooks:index>`
+   Export to WinBooks.
+
 :doc:`Spanish <account_es:index>`
    Spanish accounting.
 
@@ -154,6 +160,9 @@ Accounting
 
 :doc:`Stock Shipment Cost Weight <account_stock_shipment_cost_weight:index>`
    Allocate shipment cost by weight.
+
+:doc:`SYSCOHADA <account_syscohada:index>`
+   SYSCOHADA chart of accounts.
 
 :doc:`Tax Cash <account_tax_cash:index>`
    Report tax on cash basis.

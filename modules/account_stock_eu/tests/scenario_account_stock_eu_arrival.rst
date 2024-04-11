@@ -134,7 +134,7 @@ Receive products from Belgium::
     >>> move.unit_price = Decimal('100.0000')
     >>> move.currency = eur
     >>> shipment.click('receive')
-    >>> shipment.click('done')
+    >>> shipment.click('do')
     >>> shipment.state
     'done'
 
@@ -156,7 +156,7 @@ Receive products from France::
     >>> move.unit_price = Decimal('90.0000')
     >>> move.currency = eur
     >>> shipment.click('receive')
-    >>> shipment.click('done')
+    >>> shipment.click('do')
     >>> shipment.state
     'done'
 
@@ -196,7 +196,7 @@ Receive products from US::
     >>> move.unit_price = Decimal('120.0000')
     >>> move.currency = usd
     >>> shipment.click('receive')
-    >>> shipment.click('done')
+    >>> shipment.click('do')
     >>> shipment.state
     'done'
 
@@ -218,7 +218,7 @@ Receive returned products from France::
     >>> move.unit_price = Decimal('150.0000')
     >>> move.currency = eur
     >>> shipment.click('receive')
-    >>> shipment.click('done')
+    >>> shipment.click('do')
     >>> shipment.state
     'done'
 

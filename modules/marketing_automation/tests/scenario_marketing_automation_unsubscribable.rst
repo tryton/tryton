@@ -12,10 +12,10 @@ Imports::
     >>> from trytond.tests.tools import activate_modules, assertEqual
     >>> from trytond.tools import file_open
 
-Patch sendmail_transactional::
+Patch send_message_transactional::
 
     >>> smtp_calls = patch.object(
-    ...     marketing_automation, 'sendmail_transactional').start()
+    ...     marketing_automation, 'send_message_transactional').start()
     >>> manager = patch.object(
     ...     marketing_automation, 'SMTPDataManager').start()
 

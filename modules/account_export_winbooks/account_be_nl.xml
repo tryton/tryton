@@ -1,0 +1,210 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data depends="account_be" language="nl">
+        <record id="account_be.tva_vente_biens_coco_nl" model="account.tax.template">
+            <field name="winbooks_code">212000</field>
+        </record>
+
+        <record id="account_be.tva_vente_biens_intracommunautaires_0_nl" model="account.tax.template">
+            <field name="winbooks_code">221000</field>
+        </record>
+
+        <record id="account_be.tva_vente_biens_hors_communaute_0_nl" model="account.tax.template">
+            <field name="winbooks_code">231000</field>
+        </record>
+
+        <record id="account_be.tva_vente_biens_0_nl" model="account.tax.template">
+            <field name="winbooks_code">211100</field>
+        </record>
+
+        <record id="account_be.tva_vente_biens_6_nl" model="account.tax.template">
+            <field name="winbooks_code">211200</field>
+        </record>
+
+        <record id="account_be.tva_vente_biens_12_nl" model="account.tax.template">
+            <field name="winbooks_code">211300</field>
+        </record>
+
+        <record id="account_be.tva_vente_biens_21_nl" model="account.tax.template">
+            <field name="winbooks_code">211400</field>
+        </record>
+
+        <record id="account_be.tva_vente_services_coco_nl" model="account.tax.template">
+            <field name="winbooks_code">212000</field>
+        </record>
+
+        <record id="account_be.tva_vente_services_intracommunautaires_0_nl" model="account.tax.template">
+            <field name="winbooks_code">222000</field>
+        </record>
+
+        <record id="account_be.tva_vente_services_hors_communaute_0_nl" model="account.tax.template">
+            <field name="winbooks_code">232000</field>
+        </record>
+
+        <record id="account_be.tva_vente_services_6_nl" model="account.tax.template">
+            <field name="winbooks_code">211200</field>
+        </record>
+
+        <record id="account_be.tva_vente_services_12_nl" model="account.tax.template">
+            <field name="winbooks_code">211300</field>
+        </record>
+
+        <record id="account_be.tva_vente_services_21_nl" model="account.tax.template">
+            <field name="winbooks_code">211400</field>
+        </record>
+
+        <record id="account_be.tva_achat_marchandises_intracommunautaires_0_nl" model="account.tax.template">
+            <field name="winbooks_code">121101</field>
+        </record>
+
+        <record id="account_be.tva_achat_marchandises_6_nl" model="account.tax.template">
+            <field name="winbooks_code">111102</field>
+        </record>
+
+        <record id="account_be.tva_achat_marchandises_intracommunautaires_6_1_nl" model="account.tax.template">
+            <field name="winbooks_code">121102</field>
+        </record>
+
+        <record id="account_be.tva_achat_marchandises_intracommunautaires_6_2_nl" model="account.tax.template">
+            <field name="winbooks_code">121102</field>
+        </record>
+
+        <record id="account_be.tva_achat_marchandises_12_1_nl" model="account.tax.template">
+            <field name="winbooks_code">111103</field>
+        </record>
+
+        <record id="account_be.tva_achat_marchandises_12_2_nl" model="account.tax.template">
+            <field name="winbooks_code">111103</field>
+        </record>
+
+        <record id="account_be.tva_achat_marchandises_intracommunautaires_12_1_nl" model="account.tax.template">
+            <field name="winbooks_code">121103</field>
+        </record>
+
+        <record id="account_be.tva_achat_marchandises_intracommunautaires_12_2_nl" model="account.tax.template">
+            <field name="winbooks_code">121103</field>
+        </record>
+
+        <record id="account_be.tva_achat_marchandises_21_1_nl" model="account.tax.template">
+            <field name="winbooks_code">111104</field>
+        </record>
+
+        <record id="account_be.tva_achat_marchandises_21_2_nl" model="account.tax.template">
+            <field name="winbooks_code">111104</field>
+        </record>
+
+        <record id="account_be.tva_achat_marchandises_intracommunautaires_21_1_nl" model="account.tax.template">
+            <field name="winbooks_code">121104</field>
+        </record>
+
+        <record id="account_be.tva_achat_marchandises_intracommunautaires_21_2_nl" model="account.tax.template">
+            <field name="winbooks_code">121104</field>
+        </record>
+
+        <record id="account_be.tva_achat_frais_biens_intracommunautaires_0_nl" model="account.tax.template">
+            <field name="winbooks_code">122300</field>
+        </record>
+
+        <record id="account_be.tva_achat_frais_biens_6_nl" model="account.tax.template">
+            <field name="winbooks_code">112102</field>
+        </record>
+
+        <record id="account_be.tva_achat_frais_biens_intracommunautaires_6_1_nl" model="account.tax.template">
+            <field name="winbooks_code">122102</field>
+        </record>
+
+        <record id="account_be.tva_achat_frais_biens_intracommunautaires_6_2_nl" model="account.tax.template">
+            <field name="winbooks_code">122102</field>
+        </record>
+
+        <record id="account_be.tva_achat_frais_biens_12_nl" model="account.tax.template">
+            <field name="winbooks_code">112103</field>
+        </record>
+
+        <record id="account_be.tva_achat_frais_biens_intracommunautaires_12_1_nl" model="account.tax.template">
+            <field name="winbooks_code">122103</field>
+        </record>
+
+        <record id="account_be.tva_achat_frais_biens_intracommunautaires_12_2_nl" model="account.tax.template">
+            <field name="winbooks_code">122103</field>
+        </record>
+
+        <record id="account_be.tva_achat_frais_biens_21_nl" model="account.tax.template">
+            <field name="winbooks_code">112104</field>
+        </record>
+
+        <record id="account_be.tva_achat_frais_biens_intracommunautaires_21_1_nl" model="account.tax.template">
+            <field name="winbooks_code">122104</field>
+        </record>
+
+        <record id="account_be.tva_achat_frais_biens_intracommunautaires_21_2_nl" model="account.tax.template">
+            <field name="winbooks_code">122104</field>
+        </record>
+
+        <record id="account_be.tva_achat_investissement_intracommunautaires_0_nl" model="account.tax.template">
+            <field name="winbooks_code">123100</field>
+        </record>
+
+        <record id="account_be.tva_achat_investissement_coco_6_1_nl" model="account.tax.template">
+            <field name="winbooks_code">113302</field>
+        </record>
+
+        <record id="account_be.tva_achat_investissement_coco_6_2_nl" model="account.tax.template">
+            <field name="winbooks_code">113302</field>
+        </record>
+
+        <record id="account_be.tva_achat_investissement_coco_12_1_nl" model="account.tax.template">
+            <field name="winbooks_code">113303</field>
+        </record>
+
+        <record id="account_be.tva_achat_investissement_coco_12_2_nl" model="account.tax.template">
+            <field name="winbooks_code">113303</field>
+        </record>
+
+        <record id="account_be.tva_achat_investissement_coco_21_1_nl" model="account.tax.template">
+            <field name="winbooks_code">113304</field>
+        </record>
+
+        <record id="account_be.tva_achat_investissement_coco_21_2_nl" model="account.tax.template">
+            <field name="winbooks_code">113304</field>
+        </record>
+
+        <record id="account_be.tva_achat_investissement_6_nl" model="account.tax.template">
+            <field name="winbooks_code">113102</field>
+        </record>
+
+        <record id="account_be.tva_achat_investissement_intracommunautaires_6_1_nl" model="account.tax.template">
+            <field name="winbooks_code">123102</field>
+        </record>
+
+        <record id="account_be.tva_achat_investissement_intracommunautaires_6_2_nl" model="account.tax.template">
+            <field name="winbooks_code">123102</field>
+        </record>
+
+        <record id="account_be.tva_achat_investissement_12_nl" model="account.tax.template">
+            <field name="winbooks_code">113103</field>
+        </record>
+
+        <record id="account_be.tva_achat_investissement_intracommunautaires_12_1_nl" model="account.tax.template">
+            <field name="winbooks_code">123103</field>
+        </record>
+
+        <record id="account_be.tva_achat_investissement_intracommunautaires_12_2_nl" model="account.tax.template">
+            <field name="winbooks_code">123103</field>
+        </record>
+
+        <record id="account_be.tva_achat_investissement_21_nl" model="account.tax.template">
+            <field name="winbooks_code">113104</field>
+        </record>
+
+        <record id="account_be.tva_achat_investissement_intracommunautaires_21_1_nl" model="account.tax.template">
+            <field name="winbooks_code">123104</field>
+        </record>
+
+        <record id="account_be.tva_achat_investissement_intracommunautaires_21_2_nl" model="account.tax.template">
+            <field name="winbooks_code">123104</field>
+        </record>
+    </data>
+</tryton>

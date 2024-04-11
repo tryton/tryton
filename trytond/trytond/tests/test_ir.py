@@ -17,7 +17,6 @@ except ImportError:
 
 from dateutil.relativedelta import relativedelta
 
-from trytond.config import config
 from trytond.ir.exceptions import SequenceAffixError
 from trytond.ir.lang import _replace
 from trytond.pool import Pool
@@ -66,7 +65,7 @@ class IrTestCase(ModuleTestCase):
 
         field, = ModelField.search([
                 ('field_description', '=', "Name"),
-                ('model.model', '=', 'ir.lang'),
+                ('model', '=', 'ir.lang'),
                 ('module', '=', 'ir'),
                 ])
         self.assertEqual(field.field_description, "Name")
@@ -79,7 +78,7 @@ class IrTestCase(ModuleTestCase):
 
         fields = ModelField.search([
                 ('field_description', 'in', ["Name", "Code"]),
-                ('model.model', '=', 'ir.lang'),
+                ('model', '=', 'ir.lang'),
                 ('module', '=', 'ir'),
                 ])
         self.assertEqual(
@@ -93,7 +92,7 @@ class IrTestCase(ModuleTestCase):
 
         field, = ModelField.search([
                 ('field_description', '=', "ID"),
-                ('model.model', '=', 'ir.lang'),
+                ('model', '=', 'ir.lang'),
                 ('module', '=', 'ir'),
                 ])
         self.assertEqual(field.field_description, "ID")
@@ -339,7 +338,9 @@ class IrTestCase(ModuleTestCase):
             )
         report.save()
 
-        with patch('trytond.ir.email_.sendmail_transactional') as sendmail:
+        with patch(
+                'trytond.ir.email_.send_message_transactional'
+                ) as send_message:
             email = Email.send(
                 to='"John Doe" <john@example.com>, Jane <jane@example.com>',
                 cc='User <user@example.com>',
@@ -359,11 +360,10 @@ class IrTestCase(ModuleTestCase):
             'jane@example.com',
             'user@example.com',
             'me@example.com']
-        sendmail.assert_called_once_with(
-            config.get('email', 'from'), addresses, ANY, strict=True)
+        send_message.assert_called_once_with(ANY, strict=True)
         self.assertEqual(
             email.recipients,
-            '"John Doe" <john@example.com>, Jane <jane@example.com>')
+            'John Doe <john@example.com>, Jane <jane@example.com>')
         self.assertEqual(email.recipients_secondary, 'User <user@example.com>')
         self.assertEqual(email.recipients_hidden, 'me@example.com')
         self.assertEqual(
@@ -392,7 +392,7 @@ class IrTestCase(ModuleTestCase):
         admin.save()
         model, = IrModel.search([('model', '=', 'res.user')])
         field, = IrModelField.search([
-                ('model', '=', model.id),
+                ('model', '=', 'res.user'),
                 ('name', '=', 'id'),
                 ])
 
@@ -427,7 +427,7 @@ class IrTestCase(ModuleTestCase):
         admin.save()
         model, = IrModel.search([('model', '=', 'res.user')])
         field, = IrModelField.search([
-                ('model', '=', model.id),
+                ('model', '=', 'res.user'),
                 ('name', '=', 'id'),
                 ])
 
@@ -453,7 +453,7 @@ class IrTestCase(ModuleTestCase):
         admin.save()
         model, = IrModel.search([('model', '=', 'res.user')])
         field, = IrModelField.search([
-                ('model', '=', model.id),
+                ('model', '=', 'res.user'),
                 ('name', '=', 'id'),
                 ])
 

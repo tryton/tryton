@@ -1279,6 +1279,64 @@ class AccountTestCase(
             self.assertEqual(taxline_2['amount'], Decimal('.10'))
 
     @with_transaction()
+    def test_taxable_mixin_tax_residual_rounding_with_0(self):
+        "Test TaxableMixin for rounding with residual amount and tax 0"
+        pool = Pool()
+        Account = pool.get('account.account')
+        Tax = pool.get('account.tax')
+        Configuration = pool.get('account.configuration')
+        currency = create_currency('cur')
+
+        company = create_company()
+        with set_company(company):
+            create_chart(company)
+
+            config = Configuration(1)
+            config.tax_rounding = 'line'
+            config.save()
+
+            tax_account, = Account.search([
+                    ('name', '=', 'Main Tax'),
+                    ])
+
+            tax0 = Tax()
+            tax0.name = tax0.description = "Tax 0"
+            tax0.type = 'percentage'
+            tax0.rate = Decimal('0')
+            tax0.invoice_account = tax_account
+            tax0.credit_note_account = tax_account
+            tax0.save()
+            tax1 = Tax()
+            tax1.name = tax1.description = "Tax 1"
+            tax1.type = 'percentage'
+            tax1.rate = Decimal('.1')
+            tax1.invoice_account = tax_account
+            tax1.credit_note_account = tax_account
+            tax1.save()
+            tax2 = Tax()
+            tax2.name = tax2.description = "Tax 2"
+            tax2.type = 'percentage'
+            tax2.rate = Decimal('.1')
+            tax2.invoice_account = tax_account
+            tax2.credit_note_account = tax_account
+            tax2.save()
+
+            taxable = self.Taxable(
+                currency=currency,
+                taxable_lines=[
+                    ([tax0, tax1, tax2], Decimal('1.0417'), 1, None),
+                    ],
+                company=company)
+
+            taxline_0, taxline_1, taxline_2 = taxable._get_taxes()
+            self.assertEqual(taxline_0['base'], Decimal('1.04'))
+            self.assertEqual(taxline_0['amount'], Decimal('0'))
+            self.assertEqual(taxline_1['base'], Decimal('1.04'))
+            self.assertEqual(taxline_1['amount'], Decimal('.11'))
+            self.assertEqual(taxline_2['base'], Decimal('1.04'))
+            self.assertEqual(taxline_2['amount'], Decimal('.10'))
+
+    @with_transaction()
     def test_taxable_mixin_tax_residual_rounding_negative_residual(self):
         "Test TaxableMixin for rounding with negative residual amount"
         pool = Pool()

@@ -10,6 +10,7 @@ from .field import (
     SQL_OPERATORS, Field, context_validate, depends, domain_validate,
     get_eval_fields, on_change_result, states_validate)
 from .float import Float
+from .fmany2one import fmany2one
 from .function import Function, MultiValue
 from .integer import Integer
 from .many2many import Many2Many
@@ -28,4 +29,4 @@ __all__ = [
     Boolean, Integer, Char, Text, FullText, Float, Numeric, Date,
     Timestamp, DateTime, Time, TimeDelta, Binary, Selection, Reference,
     Many2One, One2Many, Many2Many, Function, MultiValue, One2One, Dict,
-    MultiSelection]
+    MultiSelection, fmany2one]

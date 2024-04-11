@@ -106,7 +106,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">Access</field>
             <field name="res_model">ir.model.access</field>
             <field name="domain"
-                eval="[If(Eval('active_ids', []) == [Eval('active_id')], ('model', '=', Eval('active_id')), ('model', 'in', Eval('active_ids')))]"
+                eval="[('model_ref.id', 'in', Eval('active_ids', []))]"
                 pyson="1"/>
         </record>
         <record model="ir.action.keyword"
@@ -154,7 +154,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">Access</field>
             <field name="res_model">ir.model.field.access</field>
             <field name="domain"
-                eval="[If(Eval('active_ids', []) == [Eval('active_id')], ('field', '=', Eval('active_id')), ('field', 'in', Eval('active_ids')))]"
+                eval="[('field_ref.id', 'in', Eval('active_ids'))]"
                 pyson="1"/>
         </record>
         <record model="ir.action.keyword"
@@ -320,9 +320,9 @@ this repository contains the full copyright notices and license terms. -->
             sequence="50"
             id="menu_model_data_form"/>
         <record model="ir.model.button" id="model_data_sync_button">
+            <field name="model">ir.model.data</field>
             <field name="name">sync</field>
             <field name="string">Sync</field>
-            <field name="model" search="[('model', '=', 'ir.model.data')]"/>
         </record>
 
         <record model="ir.ui.view" id="model_log_view_form">

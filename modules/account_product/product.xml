@@ -12,7 +12,7 @@ this repository contains the full copyright notices and license terms. -->
 
         <record model="ir.rule.group" id="rule_group_category_default">
             <field name="name">Not accounting category</field>
-            <field name="model" search="[('model', '=', 'product.category')]"/>
+            <field name="model">product.category</field>
             <field name="default_p" eval="True"/>
             <field name="global_p" eval="False"/>
             <field name="perm_read" eval="False"/>
@@ -24,7 +24,7 @@ this repository contains the full copyright notices and license terms. -->
 
         <record model="ir.rule.group" id="rule_group_category_accounting">
             <field name="name">Any category</field>
-            <field name="model" search="[('model', '=', 'product.category')]"/>
+            <field name="model">product.category</field>
             <field name="global_p" eval="False"/>
             <field name="perm_read" eval="False"/>
         </record>
@@ -50,12 +50,14 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
         <record model="ir.model.field.access" id="access_template_account_category">
-            <field name="field" search="[('model.model', '=', 'product.template'), ('name', '=', 'account_category')]"/>
+            <field name="model">product.template</field>
+            <field name="field">account_category</field>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="False"/>
         </record>
         <record model="ir.model.field.access" id="access_template_account_category_account_product_admin">
-            <field name="field" search="[('model.model', '=', 'product.template'), ('name', '=', 'account_category')]"/>
+            <field name="model">product.template</field>
+            <field name="field">account_category</field>
             <field name="group" ref="group_account_product_admin"/>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="True"/>

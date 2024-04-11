@@ -10,7 +10,7 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
         <record model="ir.model.access" id="access_purchase_request_stock">
-            <field name="model" search="[('model', '=', 'purchase.request')]"/>
+            <field name="model">purchase.request</field>
             <field name="group" ref="stock.group_stock_admin"/>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="False"/>

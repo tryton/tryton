@@ -57,14 +57,14 @@ this repository contains the full copyright notices and license terms. -->
             id="menu_quantity_issue_form"/>
 
         <record model="ir.model.access" id="access_quantity_issue">
-            <field name="model" search="[('model', '=', 'stock.quantity.issue')]"/>
+            <field name="model">stock.quantity.issue</field>
             <field name="perm_read" eval="False"/>
             <field name="perm_write" eval="False"/>
             <field name="perm_create" eval="False"/>
             <field name="perm_delete" eval="False"/>
         </record>
         <record model="ir.model.access" id="access_quantity_issue_group_stock">
-            <field name="model" search="[('model', '=', 'stock.quantity.issue')]"/>
+            <field name="model">stock.quantity.issue</field>
             <field name="group" ref="stock.group_stock"/>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="True"/>
@@ -74,7 +74,7 @@ this repository contains the full copyright notices and license terms. -->
 
         <record model="ir.rule.group" id="rule_group_quantity_issue_companies">
             <field name="name">User in companies</field>
-            <field name="model" search="[('model', '=', 'stock.quantity.issue')]"/>
+            <field name="model">stock.quantity.issue</field>
             <field name="global_p" eval="True"/>
         </record>
         <record model="ir.rule" id="rule_quantity_issue_companies">
@@ -85,27 +85,27 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
         <record model="ir.model.button" id="quantity_issue_open_button">
+            <field name="model">stock.quantity.issue</field>
             <field name="name">open</field>
             <field name="string">Reset to Open</field>
-            <field name="model" search="[('model', '=', 'stock.quantity.issue')]"/>
         </record>
 
         <record model="ir.model.button" id="quantity_issue_process_button">
+            <field name="model">stock.quantity.issue</field>
             <field name="name">process</field>
             <field name="string">Process</field>
-            <field name="model" search="[('model', '=', 'stock.quantity.issue')]"/>
         </record>
 
         <record model="ir.model.button" id="quantity_issue_apply_best_planned_date_button">
+            <field name="model">stock.quantity.issue</field>
             <field name="name">apply_best_planned_date</field>
             <field name="string">Apply Best Planned Date</field>
-            <field name="model" search="[('model', '=', 'stock.quantity.issue')]"/>
         </record>
 
         <record model="ir.model.button" id="quantity_issue_solve_button">
+            <field name="model">stock.quantity.issue</field>
             <field name="name">solve</field>
             <field name="string">Solve</field>
-            <field name="model" search="[('model', '=', 'stock.quantity.issue')]"/>
         </record>
 
         <record model="ir.action.wizard" id="act_quantity_issue_generate">

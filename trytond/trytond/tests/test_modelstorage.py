@@ -834,12 +834,10 @@ class EvalEnvironmentTestCase(unittest.TestCase):
         "Test model save skips check access"
         pool = Pool()
         Model = pool.get('test.modelstorage')
-        IrModel = pool.get('ir.model')
         IrModelAccess = pool.get('ir.model.access')
 
-        model, = IrModel.search([('model', '=', Model.__name__)])
         IrModelAccess.create([{
-                    'model': model.id,
+                    'model': Model.__name__,
                     'perm_read': False,
                     'perm_create': False,
                     'perm_write': False,
@@ -854,12 +852,10 @@ class EvalEnvironmentTestCase(unittest.TestCase):
         "Test model getattr skips check access"
         pool = Pool()
         Model = pool.get('test.modelstorage')
-        IrModel = pool.get('ir.model')
         IrModelAccess = pool.get('ir.model.access')
 
-        model, = IrModel.search([('model', '=', Model.__name__)])
         IrModelAccess.create([{
-                    'model': model.id,
+                    'model': Model.__name__,
                     'perm_read': False,
                     'perm_create': False,
                     'perm_write': False,

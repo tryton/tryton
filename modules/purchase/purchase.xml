@@ -253,14 +253,14 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
         <record model="ir.model.access" id="access_purchase">
-            <field name="model" search="[('model', '=', 'purchase.purchase')]"/>
+            <field name="model">purchase.purchase</field>
             <field name="perm_read" eval="False"/>
             <field name="perm_write" eval="False"/>
             <field name="perm_create" eval="False"/>
             <field name="perm_delete" eval="False"/>
         </record>
         <record model="ir.model.access" id="access_purchase_purchase">
-            <field name="model" search="[('model', '=', 'purchase.purchase')]"/>
+            <field name="model">purchase.purchase</field>
             <field name="group" ref="group_purchase"/>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="True"/>
@@ -268,7 +268,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="perm_delete" eval="True"/>
         </record>
         <record model="ir.model.access" id="access_purchase_account">
-            <field name="model" search="[('model', '=', 'purchase.purchase')]"/>
+            <field name="model">purchase.purchase</field>
             <field name="group" ref="account.group_account"/>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="False"/>
@@ -277,7 +277,7 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
         <record model="ir.model.access" id="access_purchase_group_stock">
-            <field name="model" search="[('model', '=', 'purchase.purchase')]"/>
+            <field name="model">purchase.purchase</field>
             <field name="group" ref="stock.group_stock"/>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="False"/>
@@ -286,49 +286,46 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
         <record model="ir.model.field.access" id="access_purchase_purchase_invoices_ignored">
-            <field name="field" search="[('model.model', '=', 'purchase.purchase'), ('name', '=', 'invoices_ignored')]"/>
+            <field name="model">purchase.purchase</field>
+            <field name="field">invoices_ignored</field>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="False"/>
         </record>
         <record model="ir.model.field.access" id="access_purchase_purchase_invoices_ignored_purchase_admin">
-            <field name="field" search="[('model.model', '=', 'purchase.purchase'), ('name', '=', 'invoices_ignored')]"/>
+            <field name="model">purchase.purchase</field>
+            <field name="field">invoices_ignored</field>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="True"/>
         </record>
 
         <record model="ir.model.button" id="purchase_cancel_button">
+            <field name="model">purchase.purchase</field>
             <field name="name">cancel</field>
             <field name="string">Cancel</field>
-            <field name="model"
-                search="[('model', '=', 'purchase.purchase')]"/>
         </record>
 
         <record model="ir.model.button" id="purchase_draft_button">
+            <field name="model">purchase.purchase</field>
             <field name="name">draft</field>
             <field name="string">Draft</field>
-            <field name="model"
-                search="[('model', '=', 'purchase.purchase')]"/>
         </record>
 
         <record model="ir.model.button" id="purchase_quote_button">
+            <field name="model">purchase.purchase</field>
             <field name="name">quote</field>
             <field name="string">Quote</field>
-            <field name="model"
-                search="[('model', '=', 'purchase.purchase')]"/>
         </record>
 
         <record model="ir.model.button" id="purchase_confirm_button">
+            <field name="model">purchase.purchase</field>
             <field name="name">confirm</field>
             <field name="string">Confirm</field>
-            <field name="model"
-                search="[('model', '=', 'purchase.purchase')]"/>
         </record>
 
         <record model="ir.model.button" id="purchase_process_button">
+            <field name="model">purchase.purchase</field>
             <field name="name">process</field>
             <field name="string">Process</field>
-            <field name="model"
-                search="[('model', '=', 'purchase.purchase')]"/>
         </record>
         <record model="ir.model.button-res.group" id="purchase_process_button_group_purchase_admin">
             <field name="button" ref="purchase_process_button"/>
@@ -336,9 +333,9 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
         <record model="ir.model.button" id="purchase_manual_invoice_button">
+            <field name="model">purchase.purchase</field>
             <field name="name">manual_invoice</field>
             <field name="string">Create Invoice</field>
-            <field name="model" search="[('model', '=', 'purchase.purchase')]"/>
         </record>
         <record model="ir.model.button-res.group" id="purchase_manual_button_group_purchase">
             <field name="button" ref="purchase_manual_invoice_button"/>
@@ -350,24 +347,23 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
         <record model="ir.model.button" id="purchase_modify_header_button">
+            <field name="model">purchase.purchase</field>
             <field name="name">modify_header</field>
             <field name="string">Modify Header</field>
-            <field name="model"
-                search="[('model', '=', 'purchase.purchase')]"/>
         </record>
 
         <record model="ir.model.button"
                 id="purchase_hande_invoice_exception_button">
+            <field name="model">purchase.purchase</field>
             <field name="name">handle_invoice_exception</field>
             <field name="string">Handle Invoice Exception</field>
-            <field name="model" search="[('model', '=', 'purchase.purchase')]"/>
         </record>
 
         <record model="ir.model.button"
                 id="purchase_hande_shipment_exception_button">
+            <field name="model">purchase.purchase</field>
             <field name="name">handle_shipment_exception</field>
             <field name="string">Handle Shipment Exception</field>
-            <field name="model" search="[('model', '=', 'purchase.purchase')]"/>
         </record>
 
         <record model="ir.sequence.type" id="sequence_type_purchase">
@@ -490,7 +486,7 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
         <record model="ir.model.access" id="access_purchase_line_group_stock">
-            <field name="model" search="[('model', '=', 'purchase.line')]"/>
+            <field name="model">purchase.line</field>
             <field name="group" ref="stock.group_stock"/>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="False"/>
@@ -499,12 +495,14 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
         <record model="ir.model.field.access" id="access_purchase_line_moves_ignored">
-            <field name="field" search="[('model.model', '=', 'purchase.line'), ('name', '=', 'moves_ignored')]"/>
+            <field name="model">purchase.line</field>
+            <field name="field">moves_ignored</field>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="False"/>
         </record>
         <record model="ir.model.field.access" id="access_purchase_line_moves_ignored_purchase_admin">
-            <field name="field" search="[('model.model', '=', 'purchase.line'), ('name', '=', 'moves_ignored')]"/>
+            <field name="model">purchase.line</field>
+            <field name="field">moves_ignored</field>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="True"/>
         </record>
@@ -552,14 +550,14 @@ this repository contains the full copyright notices and license terms. -->
             id="menu_product_supplier"/>
 
         <record model="ir.model.access" id="access_product_supplier">
-            <field name="model" search="[('model', '=', 'purchase.product_supplier')]"/>
+            <field name="model">purchase.product_supplier</field>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="False"/>
             <field name="perm_create" eval="False"/>
             <field name="perm_delete" eval="False"/>
         </record>
         <record model="ir.model.access" id="access_product_supplier_purchase">
-            <field name="model" search="[('model', '=', 'purchase.product_supplier')]"/>
+            <field name="model">purchase.product_supplier</field>
             <field name="group" ref="group_purchase"/>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="True"/>
@@ -569,7 +567,7 @@ this repository contains the full copyright notices and license terms. -->
 
         <record model="ir.rule.group" id="rule_group_product_supplier_companies">
             <field name="name">User in companies</field>
-            <field name="model" search="[('model', '=', 'purchase.product_supplier')]"/>
+            <field name="model">purchase.product_supplier</field>
             <field name="global_p" eval="True"/>
         </record>
         <record model="ir.rule" id="rule_product_supplier_companies">
@@ -654,7 +652,7 @@ this repository contains the full copyright notices and license terms. -->
 
         <record model="ir.rule.group" id="rule_group_purchase_companies">
             <field name="name">User in companies</field>
-            <field name="model" search="[('model', '=', 'purchase.purchase')]"/>
+            <field name="model">purchase.purchase</field>
             <field name="global_p" eval="True"/>
         </record>
         <record model="ir.rule" id="rule_purchase_companies">

@@ -13,10 +13,10 @@ Imports::
     >>> from trytond.modules.sale_gift_card import sale
     >>> from trytond.tests.tools import activate_modules, assertEqual
 
-Patch sendmail_transactional::
+Patch send_message_transactional::
 
     >>> smtp_calls = patch.object(
-    ...     sale, 'sendmail_transactional').start()
+    ...     sale, 'send_message_transactional').start()
 
 Activate modules::
 
@@ -136,9 +136,7 @@ Check gift cards::
     False
     >>> smtp_calls.call_count
     2
-    >>> from_, to, msg = smtp_calls.call_args[0]
-    >>> to
-    ['customer@example.com']
+    >>> msg, = smtp_calls.call_args[0]
     >>> card.number in msg.get_body().get_content()
     True
 

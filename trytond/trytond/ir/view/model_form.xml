@@ -6,8 +6,8 @@ this repository contains the full copyright notices and license terms. -->
     <field name="name"/>
     <label name="model"/>
     <field name="model"/>
-    <label name="module"/>
-    <field name="module"/>
+    <label name="module_ref"/>
+    <field name="module_ref"/>
     <label name="global_search_p"/>
     <field name="global_search_p"/>
     <separator name="info" colspan="6"/>

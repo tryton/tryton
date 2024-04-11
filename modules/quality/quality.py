@@ -167,17 +167,17 @@ class Control(DeactivableMixin, MatchMixin, ModelSQL, ModelView):
 
     operations = fields.MultiSelection([
             ('stock.shipment.in:receive', "Supplier Shipment Received"),
-            ('stock.shipment.in:done', "Supplier Shipment Done"),
+            ('stock.shipment.in:do', "Supplier Shipment Done"),
             ('stock.shipment.out:pick', "Customer Shipment Picked"),
             ('stock.shipment.out:pack', "Customer Shipment Packed"),
             ('stock.shipment.out.return:receive',
                 "Customer Shipment Return Received"),
-            ('stock.shipment.out.return:done',
+            ('stock.shipment.out.return:do',
                 "Customer Shipment Return Done"),
             ('stock.shipment.internal:ship', "Internal Shipment Shipped"),
-            ('stock.shipment.internal:done', "Internal Shipment Done"),
+            ('stock.shipment.internal:do', "Internal Shipment Done"),
             ('production:run', "Production Run"),
-            ('production:done', "Production Done"),
+            ('production:do', "Production Done"),
             ], "Operations",
         help="The operations for which the control is performed.")
     frequency = fields.Float(
@@ -202,6 +202,32 @@ class Control(DeactivableMixin, MatchMixin, ModelSQL, ModelView):
 
     points = fields.One2Many(
         'quality.control.point', 'control', "Points", required=True)
+
+    @classmethod
+    def __register__(cls, module):
+        table = cls.__table__()
+        transaction = Transaction()
+        cursor = transaction.connection.cursor()
+        update = transaction.connection.cursor()
+
+        super().__register__(module)
+
+        # Migration from 7.0: rename done button to do
+        for old, new in [
+                ('stock.shipment.in:done', 'stock.shipment.in:do'),
+                ('stock.shipment.out.return:done',
+                    'stock.shipment.out.return:do'),
+                ('stock.shipment.internal:done',
+                    'stock.shipment.internal:do'),
+                ('production:done', 'production:do'),
+                ]:
+            cursor.execute(*table.select(
+                    table.id, table.operations,
+                    where=table.operations.like(f'%{old}%')))
+            for id_, operations in cursor:
+                update.execute(*table.update(
+                        [table.operations],
+                        operations.replace(old, new)))
 
     @classmethod
     def default_frequency(cls):

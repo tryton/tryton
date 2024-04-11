@@ -1,7 +1,7 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 
-from unittest.mock import ANY, patch
+from unittest.mock import patch
 
 from trytond.config import config
 from trytond.modules.party.tests import PartyCheckEraseMixin
@@ -101,9 +101,10 @@ class WebUserTestCase(PartyCheckEraseMixin, ModuleTestCase):
         self.assertFalse(user.email_valid)
         self.assertFalse(user.email_token)
 
-        with patch.object(user_module, 'sendmail_transactional') as sendmail:
+        with patch.object(
+                user_module, 'send_message_transactional') as send_message:
             User.validate_email([user])
-            sendmail.assert_called_once_with(FROM, ['user@example.com'], ANY)
+            send_message.assert_called_once()
 
         token = user.email_token
         self.assertTrue(token)
@@ -133,9 +134,10 @@ class WebUserTestCase(PartyCheckEraseMixin, ModuleTestCase):
         user.save()
         self.assertFalse(user.password_hash)
 
-        with patch.object(user_module, 'sendmail_transactional') as sendmail:
+        with patch.object(
+                user_module, 'send_message_transactional') as send_message:
             User.reset_password([user])
-            sendmail.assert_called_once_with(FROM, ['user@example.com'], ANY)
+            send_message.assert_called_once()
 
         token = user.reset_password_token
         self.assertTrue(token)

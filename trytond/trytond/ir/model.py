@@ -39,7 +39,12 @@ class ConditionError(ValidationError):
     pass
 
 
-class Model(ModelSQL, ModelView):
+class Model(
+        fields.fmany2one(
+            'module_ref', 'module', 'ir.module,name', "Module",
+            readonly=True, ondelete='CASCADE',
+            help="Module in which this model is defined."),
+        ModelSQL, ModelView):
     "Model"
     __name__ = 'ir.model'
     _order_name = 'model'
@@ -58,11 +63,9 @@ class Model(ModelSQL, ModelView):
             'readonly': Bool(Eval('module')),
             },
         depends=['module'])
-    module = fields.Char('Module',
-       help="Module in which this model is defined.", readonly=True)
+    module = fields.Char("Module", readonly=True)
     global_search_p = fields.Boolean('Global Search')
-    fields = fields.One2Many('ir.model.field', 'model', 'Fields',
-       required=True)
+    fields = fields.One2Many('ir.model.field', 'model_ref', "Fields")
     _get_names_cache = Cache('ir.model.get_names')
 
     @classmethod
@@ -221,7 +224,15 @@ class Model(ModelSQL, ModelView):
         return cls.get_names().get(model, model)
 
 
-class ModelField(ModelSQL, ModelView):
+class ModelField(
+        fields.fmany2one(
+            'model_ref', 'model', 'ir.model,model', "Model",
+            required=True, ondelete='CASCADE'),
+        fields.fmany2one(
+            'module_ref', 'module', 'ir.module,name', "Module",
+            readonly=True, ondelete='CASCADE',
+            help="Module in which this field is defined."),
+        ModelSQL, ModelView):
     "Model field"
     __name__ = 'ir.model.field'
     name = fields.Char('Name', required=True,
@@ -234,12 +245,11 @@ class ModelField(ModelSQL, ModelView):
             'readonly': Bool(Eval('module')),
             },
         depends=['module'])
-    model = fields.Many2One('ir.model', 'Model', required=True,
-        ondelete='CASCADE',
+    model = fields.Char(
+        "Model", required=True,
         states={
             'readonly': Bool(Eval('module')),
-            },
-        depends=['module'])
+            })
     field_description = fields.Char('Field Description', translate=True,
         loading='lazy',
         states={
@@ -256,8 +266,7 @@ class ModelField(ModelSQL, ModelView):
             'readonly': Bool(Eval('module')),
             },
         depends=['module'])
-    module = fields.Char('Module',
-       help="Module in which this field is defined.")
+    module = fields.Char("Module", readonly=True)
     access = fields.Boolean(
         "Access",
         states={
@@ -272,7 +281,7 @@ class ModelField(ModelSQL, ModelView):
     @classmethod
     def __setup__(cls):
         super(ModelField, cls).__setup__()
-        cls.__access__.add('model')
+        cls.__access__.add('model_ref')
         table = cls.__table__()
         cls._sql_constraints += [
             ('name_model_uniq', Unique(table, table.name, table.model),
@@ -281,17 +290,37 @@ class ModelField(ModelSQL, ModelView):
         cls._order.insert(0, ('name', 'ASC'))
 
     @classmethod
-    def register(cls, model, module_name, model_id):
+    def __register__(cls, module):
         pool = Pool()
         Model = pool.get('ir.model')
+        transaction = Transaction()
+        cursor = transaction.connection.cursor()
+        table_h = cls.__table_handler__(module)
+        table = cls.__table__()
+        model = Model.__table__()
+
+        # Migration from 7.0: model as char
+        if (table_h.column_exist('model')
+                and table_h.column_is_type('model', 'INTEGER')):
+            table_h.column_rename('model', '_temp_model')
+            table_h.add_column('model', 'VARCHAR')
+            cursor.execute(*table.update(
+                    [table.model], [model.model],
+                    from_=[model],
+                    where=table._temp_model == model.id))
+            table_h.drop_column('_temp_model')
+
+        super().__register__(module)
+
+    @classmethod
+    def register(cls, model, module_name, model_id):
         cursor = Transaction().connection.cursor()
 
         ir_model_field = cls.__table__()
-        ir_model = Model.__table__()
 
-        cursor.execute(*ir_model_field.join(ir_model,
-                condition=ir_model_field.model == ir_model.id
-                ).select(ir_model_field.id.as_('id'),
+        cursor.execute(*ir_model_field
+            .select(
+                ir_model_field.id.as_('id'),
                 ir_model_field.name.as_('name'),
                 ir_model_field.field_description.as_('field_description'),
                 ir_model_field.ttype.as_('ttype'),
@@ -299,7 +328,7 @@ class ModelField(ModelSQL, ModelView):
                 ir_model_field.module.as_('module'),
                 ir_model_field.help.as_('help'),
                 ir_model_field.access.as_('access'),
-                where=ir_model.model == model.__name__))
+                where=ir_model_field.model == model.__name__))
         model_fields = {f['name']: f for f in cursor_dict(cursor)}
 
         for field_name, field in model._fields.items():
@@ -312,28 +341,41 @@ class ModelField(ModelSQL, ModelView):
             access = field_name in model.__access__
 
             if field_name not in model_fields:
-                cursor.execute(*ir_model_field.insert(
-                        [ir_model_field.model, ir_model_field.name,
+                cursor.execute(*ir_model_field.insert([
+                            ir_model_field.model,
+                            ir_model_field.name,
                             ir_model_field.field_description,
-                            ir_model_field.ttype, ir_model_field.relation,
-                            ir_model_field.help, ir_model_field.module,
-                            ir_model_field.access],
-                        [[
-                                model_id, field_name,
+                            ir_model_field.ttype,
+                            ir_model_field.relation,
+                            ir_model_field.help,
+                            ir_model_field.module,
+                            ir_model_field.access,
+                            ], [[
+                                model.__name__,
+                                field_name,
                                 field.string,
-                                field._type, relation,
-                                field.help, module_name,
-                                access]]))
+                                field._type,
+                                relation,
+                                field.help,
+                                module_name,
+                                access,
+                                ]]))
             elif (model_fields[field_name]['field_description'] != field.string
                     or model_fields[field_name]['ttype'] != field._type
                     or model_fields[field_name]['relation'] != relation
                     or model_fields[field_name]['help'] != field.help
                     or model_fields[field_name]['access'] != access):
-                cursor.execute(*ir_model_field.update(
-                        [ir_model_field.field_description,
-                            ir_model_field.ttype, ir_model_field.relation,
-                            ir_model_field.help, ir_model_field.access],
-                        [field.string, field._type, relation, field.help,
+                cursor.execute(*ir_model_field.update([
+                            ir_model_field.field_description,
+                            ir_model_field.ttype,
+                            ir_model_field.relation,
+                            ir_model_field.help,
+                            ir_model_field.access,
+                            ], [
+                            field.string,
+                            field._type,
+                            relation,
+                            field.help,
                             access],
                         where=(ir_model_field.id
                             == model_fields[field_name]['id'])))
@@ -341,14 +383,11 @@ class ModelField(ModelSQL, ModelView):
     @classmethod
     def clean(cls):
         pool = Pool()
-        IrModel = pool.get('ir.model')
         transaction = Transaction()
         cursor = transaction.connection.cursor()
-        ir_model = IrModel.__table__()
         ir_model_field = cls.__table__()
-        cursor.execute(*ir_model_field
-            .join(ir_model, condition=ir_model_field.model == ir_model.id)
-            .select(ir_model.model, ir_model_field.name, ir_model_field.id))
+        cursor.execute(*ir_model_field.select(
+                ir_model_field.model, ir_model_field.name, ir_model_field.id))
         for model, field, id_ in cursor:
             Model = pool.get(model)
             if field not in Model._fields:
@@ -407,7 +446,6 @@ class ModelField(ModelSQL, ModelView):
     def read(cls, ids, fields_names):
         pool = Pool()
         Translation = pool.get('ir.translation')
-        Model = pool.get('ir.model')
 
         to_delete = []
         if Transaction().context.get('language'):
@@ -425,46 +463,27 @@ class ModelField(ModelSQL, ModelView):
         if (Transaction().context.get('language')
                 and ('field_description' in fields_names
                     or 'help' in fields_names)):
-            model_ids = set()
-            for rec in res:
-                if isinstance(rec['model'], (list, tuple)):
-                    model_ids.add(rec['model'][0])
-                else:
-                    model_ids.add(rec['model'])
-            model_ids = list(model_ids)
-            cursor = Transaction().connection.cursor()
-            model = Model.__table__()
-            cursor.execute(*model.select(model.id, model.model,
-                    where=model.id.in_(model_ids)))
-            id2model = dict(cursor)
-
             trans_args = []
             for rec in res:
-                if isinstance(rec['model'], (list, tuple)):
-                    model_id = rec['model'][0]
-                else:
-                    model_id = rec['model']
                 if 'field_description' in fields_names:
-                    trans_args.append((id2model[model_id] + ',' + rec['name'],
-                        'field', Transaction().language, None))
+                    trans_args.append((
+                            rec['model'] + ',' + rec['name'],
+                            'field', Transaction().language, None))
                 if 'help' in fields_names:
-                    trans_args.append((id2model[model_id] + ',' + rec['name'],
+                    trans_args.append((
+                            rec['model'] + ',' + rec['name'],
                             'help', Transaction().language, None))
             Translation.get_sources(trans_args)
             for rec in res:
-                if isinstance(rec['model'], (list, tuple)):
-                    model_id = rec['model'][0]
-                else:
-                    model_id = rec['model']
                 if 'field_description' in fields_names:
                     res_trans = Translation.get_source(
-                            id2model[model_id] + ',' + rec['name'],
+                            rec['model'] + ',' + rec['name'],
                             'field', Transaction().language)
                     if res_trans:
                         rec['field_description'] = res_trans
                 if 'help' in fields_names:
                     res_trans = Translation.get_source(
-                            id2model[model_id] + ',' + rec['name'],
+                            rec['model'] + ',' + rec['name'],
                             'help', Transaction().language)
                     if res_trans:
                         rec['help'] = res_trans
@@ -476,11 +495,14 @@ class ModelField(ModelSQL, ModelView):
         return res
 
 
-class ModelAccess(DeactivableMixin, ModelSQL, ModelView):
+class ModelAccess(
+        fields.fmany2one(
+            'model_ref', 'model', 'ir.model,model', "Model",
+            required=True, ondelete='CASCADE'),
+        DeactivableMixin, ModelSQL, ModelView):
     "Model access"
     __name__ = 'ir.model.access'
-    model = fields.Many2One('ir.model', 'Model', required=True,
-            ondelete="CASCADE")
+    model = fields.Char("Model", required=True)
     group = fields.Many2One('res.group', 'Group',
             ondelete="CASCADE")
     perm_read = fields.Boolean('Read Access')
@@ -493,10 +515,33 @@ class ModelAccess(DeactivableMixin, ModelSQL, ModelView):
     @classmethod
     def __setup__(cls):
         super(ModelAccess, cls).__setup__()
-        cls.__access__.add('model')
+        cls.__access__.add('model_ref')
         cls.__rpc__.update({
                 'get_access': RPC(),
                 })
+
+    @classmethod
+    def __register__(cls, module):
+        pool = Pool()
+        Model = pool.get('ir.model')
+        transaction = Transaction()
+        cursor = transaction.connection.cursor()
+        table_h = cls.__table_handler__(module)
+        table = cls.__table__()
+        model = Model.__table__()
+
+        # Migration from 7.0: model as char
+        if (table_h.column_exist('model')
+                and table_h.column_is_type('model', 'INTEGER')):
+            table_h.column_rename('model', '_temp_model')
+            table_h.add_column('model', 'VARCHAR')
+            cursor.execute(*table.update(
+                    [table.model], [model.model],
+                    from_=[model],
+                    where=table._temp_model == model.id))
+            table_h.drop_column('_temp_model')
+
+        super().__register__(module)
 
     @classmethod
     def check_xml_record(cls, accesses, values):
@@ -519,11 +564,11 @@ class ModelAccess(DeactivableMixin, ModelSQL, ModelView):
         return False
 
     def get_rec_name(self, name):
-        return self.model.rec_name
+        return self.model_ref.rec_name
 
     @classmethod
     def search_rec_name(cls, name, clause):
-        return [('model',) + tuple(clause[1:])]
+        return [('model_ref.rec_name', *clause[1:])]
 
     @classmethod
     def get_access(cls, models):
@@ -533,11 +578,9 @@ class ModelAccess(DeactivableMixin, ModelSQL, ModelView):
             return defaultdict(lambda: defaultdict(lambda: True))
 
         pool = Pool()
-        Model = pool.get('ir.model')
         User = pool.get('res.user')
         cursor = Transaction().connection.cursor()
         model_access = cls.__table__()
-        ir_model = Model.__table__()
 
         groups = User.get_groups()
 
@@ -582,10 +625,8 @@ class ModelAccess(DeactivableMixin, ModelSQL, ModelView):
                 access[model] = default_singleton
             else:
                 access[model] = default
-        cursor.execute(*model_access.join(ir_model, 'LEFT',
-                condition=model_access.model == ir_model.id
-                ).select(
-                ir_model.model,
+        cursor.execute(*model_access.select(
+                model_access.model,
                 Max(Case(
                         (model_access.perm_read == Literal(True), 1),
                         else_=0)),
@@ -598,11 +639,11 @@ class ModelAccess(DeactivableMixin, ModelSQL, ModelView):
                 Max(Case(
                         (model_access.perm_delete == Literal(True), 1),
                         else_=0)),
-                where=ir_model.model.in_(all_models)
+                where=model_access.model.in_(all_models)
                 & (model_access.active == Literal(True))
                 & (model_access.group.in_(groups or [-1])
                     | (model_access.group == Null)),
-                group_by=ir_model.model))
+                group_by=model_access.model))
         raw_access = {
             m: {'read': r, 'write': w, 'create': c, 'delete': d}
             for m, r, w, c, d in cursor}
@@ -706,11 +747,21 @@ class ModelAccess(DeactivableMixin, ModelSQL, ModelView):
         ModelView._fields_view_get_cache.clear()
 
 
-class ModelFieldAccess(DeactivableMixin, ModelSQL, ModelView):
+class ModelFieldAccess(
+        fields.fmany2one(
+            'model_ref', 'model', 'ir.model,model', "Model",
+            required=True, ondelete='CASCADE'),
+        fields.fmany2one(
+            'field_ref', 'field,model', 'ir.model.field,name,model', "Field",
+            required=True, ondelete='CASCADE',
+            domain=[
+                ('model', '=', Eval('model')),
+                ]),
+        DeactivableMixin, ModelSQL, ModelView):
     "Model Field Access"
     __name__ = 'ir.model.field.access'
-    field = fields.Many2One('ir.model.field', 'Field', required=True,
-            ondelete='CASCADE')
+    model = fields.Char("Model", required=True)
+    field = fields.Char("Field", required=True)
     group = fields.Many2One('res.group', 'Group', ondelete='CASCADE')
     perm_read = fields.Boolean('Read Access')
     perm_write = fields.Boolean('Write Access')
@@ -722,7 +773,32 @@ class ModelFieldAccess(DeactivableMixin, ModelSQL, ModelView):
     @classmethod
     def __setup__(cls):
         super().__setup__()
-        cls.__access__.add('field')
+        cls.__access__.add('field_ref')
+
+    @classmethod
+    def __register__(cls, module):
+        pool = Pool()
+        Field = pool.get('ir.model.field')
+        transaction = Transaction()
+        cursor = transaction.connection.cursor()
+        table_h = cls.__table_handler__(module)
+        table = cls.__table__()
+        field = Field.__table__()
+
+        # Migration from 7.0: field as char
+        if (table_h.column_exist('field')
+                and table_h.column_is_type('field', 'INTEGER')):
+            table_h.column_rename('field', '_temp_field')
+            table_h.add_column('model', 'VARCHAR')
+            table_h.add_column('field', 'VARCHAR')
+            cursor.execute(*table.update(
+                    [table.model, table.field],
+                    [field.model, field.name],
+                    from_=[field],
+                    where=table._temp_field == field.id))
+            table_h.drop_column('_temp_field')
+
+        super().__register__(module)
 
     @classmethod
     def check_xml_record(cls, field_accesses, values):
@@ -745,11 +821,11 @@ class ModelFieldAccess(DeactivableMixin, ModelSQL, ModelView):
         return True
 
     def get_rec_name(self, name):
-        return self.field.rec_name
+        return self.field_ref.rec_name
 
     @classmethod
     def search_rec_name(cls, name, clause):
-        return [('field',) + tuple(clause[1:])]
+        return [('field_ref.rec_name', *clause[1:])]
 
     @classmethod
     def get_access(cls, models):
@@ -760,12 +836,8 @@ class ModelFieldAccess(DeactivableMixin, ModelSQL, ModelView):
                     lambda: defaultdict(lambda: True)))
 
         pool = Pool()
-        Model = pool.get('ir.model')
-        ModelField = pool.get('ir.model.field')
         User = pool.get('res.user')
         field_access = cls.__table__()
-        ir_model = Model.__table__()
-        model_field = ModelField.__table__()
 
         groups = User.get_groups()
 
@@ -781,13 +853,9 @@ class ModelFieldAccess(DeactivableMixin, ModelSQL, ModelView):
         default = {}
         accesses = dict((m, default) for m in models)
         cursor = Transaction().connection.cursor()
-        cursor.execute(*field_access.join(model_field,
-                condition=field_access.field == model_field.id
-                ).join(ir_model,
-                condition=model_field.model == ir_model.id
-                ).select(
-                ir_model.model,
-                model_field.name,
+        cursor.execute(*field_access.select(
+                field_access.model,
+                field_access.field,
                 Max(Case(
                         (field_access.perm_read == Literal(True), 1),
                         else_=0)),
@@ -800,11 +868,11 @@ class ModelFieldAccess(DeactivableMixin, ModelSQL, ModelView):
                 Max(Case(
                         (field_access.perm_delete == Literal(True), 1),
                         else_=0)),
-                where=ir_model.model.in_(models)
+                where=field_access.model.in_(models)
                 & (field_access.active == Literal(True))
                 & (field_access.group.in_(groups or [-1])
                     | (field_access.group == Null)),
-                group_by=[ir_model.model, model_field.name]))
+                group_by=[field_access.model, field_access.field]))
         for m, f, r, w, c, d in cursor:
             accesses[m][f] = {'read': r, 'write': w, 'create': c, 'delete': d}
         for model, maccesses in accesses.items():
@@ -873,7 +941,11 @@ class ModelFieldAccess(DeactivableMixin, ModelSQL, ModelView):
         ModelView._fields_view_get_cache.clear()
 
 
-class ModelButton(DeactivableMixin, ModelSQL, ModelView):
+class ModelButton(
+        fields.fmany2one(
+            'model_ref', 'model', 'ir.model,model', "Model",
+            required=True, readonly=True, ondelete='CASCADE'),
+        DeactivableMixin, ModelSQL, ModelView):
     "Model Button"
     __name__ = 'ir.model.button'
     name = fields.Char('Name', required=True, readonly=True)
@@ -881,35 +953,49 @@ class ModelButton(DeactivableMixin, ModelSQL, ModelView):
     help = fields.Text("Help", translate=True)
     confirm = fields.Text("Confirm", translate=True,
         help="Text to ask user confirmation when clicking the button.")
-    model = fields.Many2One('ir.model', 'Model', required=True, readonly=True,
-        ondelete='CASCADE')
+    model = fields.Char("Model", required=True, readonly=True)
     rules = fields.One2Many('ir.model.button.rule', 'button', "Rules")
     _rules_cache = Cache('ir.model.button.rules')
     clicks = fields.One2Many('ir.model.button.click', 'button', "Clicks")
     reset_by = fields.Many2Many(
         'ir.model.button-button.reset', 'button_ruled', 'button', "Reset by",
         domain=[
-            ('model', '=', Eval('model', -1)),
+            ('model', '=', Eval('model')),
             ('id', '!=', Eval('id', -1)),
             ],
-        depends=['model', 'id'],
         help="Button that should reset the rules.")
     reset = fields.Many2Many(
         'ir.model.button-button.reset', 'button', 'button_ruled', "Reset",
         domain=[
-            ('model', '=', Eval('model', -1)),
+            ('model', '=', Eval('model')),
             ('id', '!=', Eval('id', -1)),
-            ],
-        depends=['model', 'id'])
+            ])
     _reset_cache = Cache('ir.model.button.reset')
     _view_attributes_cache = Cache(
         'ir.model.button.view_attributes', context=False)
 
     @classmethod
     def __register__(cls, module_name):
-        super().__register__(module_name)
-
+        pool = Pool()
+        Model = pool.get('ir.model')
+        transaction = Transaction()
+        cursor = transaction.connection.cursor()
         table_h = cls.__table_handler__(module_name)
+        table = cls.__table__()
+        model = Model.__table__()
+
+        # Migration from 7.0: model as char
+        if (table_h.column_exist('model')
+                and table_h.column_is_type('model', 'INTEGER')):
+            table_h.column_rename('model', '_temp_model')
+            table_h.add_column('model', 'VARCHAR')
+            cursor.execute(*table.update(
+                    [table.model], [model.model],
+                    from_=[model],
+                    where=table._temp_model == model.id))
+            table_h.drop_column('_temp_model')
+
+        super().__register__(module_name)
 
         # Migration from 6.2: replace unique by exclude
         table_h.drop_constraint('name_model_uniq')
@@ -917,7 +1003,7 @@ class ModelButton(DeactivableMixin, ModelSQL, ModelView):
     @classmethod
     def __setup__(cls):
         super(ModelButton, cls).__setup__()
-        cls.__access__.add('model')
+        cls.__access__.add('model_ref')
         t = cls.__table__()
         cls._sql_constraints += [
             ('name_model_exclude',
@@ -969,7 +1055,7 @@ class ModelButton(DeactivableMixin, ModelSQL, ModelView):
         if rule_ids is not None:
             return Rule.browse(rule_ids)
         buttons = cls.search([
-                ('model.model', '=', model),
+                ('model', '=', model),
                 ('name', '=', name),
                 ])
         if not buttons:
@@ -989,7 +1075,7 @@ class ModelButton(DeactivableMixin, ModelSQL, ModelView):
         if reset is not None:
             return reset
         buttons = cls.search([
-                ('model.model', '=', model),
+                ('model', '=', model),
                 ('name', '=', name),
                 ])
         if not buttons:
@@ -1008,7 +1094,7 @@ class ModelButton(DeactivableMixin, ModelSQL, ModelView):
         if attributes is not None:
             return attributes
         buttons = cls.search([
-                ('model.model', '=', model),
+                ('model', '=', model),
                 ('name', '=', name),
                 ])
         if not buttons:
@@ -1185,7 +1271,14 @@ class ModelButtonReset(ModelSQL):
         required=True, ondelete='CASCADE')
 
 
-class ModelData(ModelSQL, ModelView):
+class ModelData(
+        fields.fmany2one(
+            'model_ref', 'model', 'ir.model,model', "Model",
+            required=True, ondelete='CASCADE'),
+        fields.fmany2one(
+            'module_ref', 'module', 'ir.module,name', "Module",
+            required=True, ondelete='CASCADE'),
+        ModelSQL, ModelView):
     "Model data"
     __name__ = 'ir.model.data'
     fs_id = fields.Char('Identifier on File System', required=True,

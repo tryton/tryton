@@ -87,14 +87,14 @@ this repository contains the full copyright notices and license terms. -->
             id="menu_work_report"/>
 
         <record model="ir.model.access" id="access_work">
-            <field name="model" search="[('model', '=', 'timesheet.work')]"/>
+            <field name="model">timesheet.work</field>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="False"/>
             <field name="perm_create" eval="False"/>
             <field name="perm_delete" eval="False"/>
         </record>
         <record model="ir.model.access" id="access_work_admin">
-            <field name="model" search="[('model', '=', 'timesheet.work')]"/>
+            <field name="model">timesheet.work</field>
             <field name="group" ref="group_timesheet_admin"/>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="True"/>
@@ -104,7 +104,7 @@ this repository contains the full copyright notices and license terms. -->
 
         <record model="ir.rule.group" id="rule_group_work_companies">
             <field name="name">User in companies</field>
-            <field name="model" search="[('model', '=', 'timesheet.work')]"/>
+            <field name="model">timesheet.work</field>
             <field name="global_p" eval="True"/>
         </record>
         <record model="ir.rule" id="rule_work_companies">

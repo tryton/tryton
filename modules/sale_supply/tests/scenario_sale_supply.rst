@@ -180,7 +180,7 @@ Receive 100 products::
     >>> shipment.incoming_moves.append(move)
     >>> move.quantity = 100
     >>> shipment.click('receive')
-    >>> shipment.click('done')
+    >>> shipment.click('do')
     >>> shipment.state
     'done'
     >>> set_user(sale_user)
@@ -251,7 +251,7 @@ not create a new purchase request::
     >>> changing_template.save()
 
     >>> set_user(stock_user)
-    >>> shipment.click('done')
+    >>> shipment.click('do')
     >>> set_user(purchase_user)
     >>> len(PurchaseRequest.find([('product', '=', changing_product.id)]))
     0

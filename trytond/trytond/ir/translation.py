@@ -57,7 +57,14 @@ class TrytonPOFile(polib.POFile):
             key=lambda x: (x.msgctxt, x.msgid))
 
 
-class Translation(ModelSQL, ModelView):
+class Translation(
+        fields.fmany2one(
+            'module_ref', 'module', 'ir.module,name', "Module",
+            readonly=True, ondelete='CASCADE'),
+        fields.fmany2one(
+            'overriding_module_ref', 'overriding_module', 'ir.module,name',
+            "Overriding Module", readonly=True),
+        ModelSQL, ModelView):
     "Translation"
     __name__ = "ir.translation"
 
@@ -341,7 +348,7 @@ class Translation(ModelSQL, ModelView):
             trans_args = []
             for record in records:
                 if ttype in ('field', 'help'):
-                    name = record.model.model + ',' + record.name
+                    name = record.model + ',' + record.name
                 else:
                     name = record.model + ',' + field_name
                 trans_args.append((name, ttype, lang, None))
@@ -349,7 +356,7 @@ class Translation(ModelSQL, ModelView):
 
             for record in records:
                 if ttype in ('field', 'help'):
-                    name = record.model.model + ',' + record.name
+                    name = record.model + ',' + record.name
                 else:
                     name = record.model + ',' + field_name
                 translations[record.id] = cls.get_source(name, ttype, lang)
@@ -358,7 +365,7 @@ class Translation(ModelSQL, ModelView):
                         if ttype in {'field', 'help'}:
                             try:
                                 field = getattr(
-                                    pool.get(record.model.model), record.name)
+                                    pool.get(record.model), record.name)
                             except KeyError:
                                 continue
                             translations[record.id] = ''
@@ -458,7 +465,7 @@ class Translation(ModelSQL, ModelView):
 
             def get_name(record):
                 if ttype in ('field', 'help'):
-                    return record.model.model + ',' + record.name
+                    return record.model + ',' + record.name
                 else:
                     return record.model + ',' + field_name
 

@@ -36,7 +36,7 @@ this repository contains the full copyright notices and license terms. -->
             id="menu_account_receivable_rule_form"/>
 
         <record model="ir.model.access" id="access_account_receivable_rule">
-            <field name="model" search="[('model', '=', 'account.account.receivable.rule')]"/>
+            <field name="model">account.account.receivable.rule</field>
             <field name="perm_read" eval="False"/>
             <field name="perm_write" eval="False"/>
             <field name="perm_create" eval="False"/>
@@ -44,7 +44,7 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
         <record model="ir.model.access" id="access_account_receivable_rule_account_admin">
-            <field name="model" search="[('model', '=', 'account.account.receivable.rule')]"/>
+            <field name="model">account.account.receivable.rule</field>
             <field name="group" ref="account.group_account_admin"/>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="True"/>
@@ -53,9 +53,9 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
         <record model="ir.model.button" id="account_receivable_rule_apply_button">
+            <field name="model">account.account.receivable.rule</field>
             <field name="name">apply</field>
             <field name="string">Apply</field>
-            <field name="model" search="[('model', '=', 'account.account.receivable.rule')]"/>
         </record>
         <record model="ir.model.button-res.group" id="account_receivable_rule_apply_button_group_account">
             <field name="button" ref="account_receivable_rule_apply_button"/>
@@ -64,7 +64,7 @@ this repository contains the full copyright notices and license terms. -->
 
         <record model="ir.rule.group" id="rule_group_account_receivable_rule_companies">
             <field name="name">User in companies</field>
-            <field name="model" search="[('model', '=', 'account.account.receivable.rule')]"/>
+            <field name="model">account.account.receivable.rule</field>
             <field name="global_p" eval="True"/>
         </record>
         <record model="ir.rule" id="rule_account_receivable_rule_companies">

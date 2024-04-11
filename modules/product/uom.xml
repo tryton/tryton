@@ -343,14 +343,14 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
         <record model="ir.model.access" id="access_uom">
-            <field name="model" search="[('model', '=', 'product.uom')]"/>
+            <field name="model">product.uom</field>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="False"/>
             <field name="perm_create" eval="False"/>
             <field name="perm_delete" eval="False"/>
         </record>
         <record model="ir.model.access" id="access_uom_admin">
-            <field name="model" search="[('model', '=', 'product.uom')]"/>
+            <field name="model">product.uom</field>
             <field name="group" ref="group_product_admin"/>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="True"/>
@@ -359,14 +359,14 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
         <record model="ir.model.access" id="access_uom_category">
-            <field name="model" search="[('model', '=', 'product.uom.category')]"/>
+            <field name="model">product.uom.category</field>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="False"/>
             <field name="perm_create" eval="False"/>
             <field name="perm_delete" eval="False"/>
         </record>
         <record model="ir.model.access" id="access_uom_category_admin">
-          <field name="model" search="[('model', '=', 'product.uom.category')]"/>
+            <field name="model">product.uom.category</field>
             <field name="group" ref="group_product_admin"/>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="True"/>

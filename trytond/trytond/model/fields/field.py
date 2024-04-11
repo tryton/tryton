@@ -559,15 +559,13 @@ class Field(object):
 
 class FieldTranslate(Field):
 
-    def _get_translation_join(self, Model, name,
-            translation, model, table, from_, language):
+    def _get_translation_join(
+            self, Model, name, translation, table, from_, language):
         if Model.__name__ == 'ir.model.field':
             pool = Pool()
-            IrModel = pool.get('ir.model')
             ModelData = pool.get('ir.model.data')
             ModelField = pool.get('ir.model.field')
             Translation = pool.get('ir.translation')
-            model = IrModel.__table__()
             model_data = ModelData.__table__()
             model_field = ModelField.__table__()
             msg_trans = Translation.__table__()
@@ -593,14 +591,12 @@ class FieldTranslate(Field):
                     condition=Concat(
                         Concat(model_data.module, '.'),
                         model_data.fs_id) == getattr(model_field, name))
-                .join(model,
-                    condition=model_field.model == model.id)
                 .select(
                     msg_trans.id.as_('id'),
                     Literal(-1).as_('res_id'),
                     msg_trans.value.as_('value'),
                     Concat(
-                        Concat(model.model, ','),
+                        Concat(model_field.model, ','),
                         model_field.name).as_('name'),
                     msg_trans.lang.as_('lang'),
                     Literal(type_).as_('type'),
@@ -628,9 +624,7 @@ class FieldTranslate(Field):
             type_ = 'model'
             res_id = -1
         elif Model.__name__ == 'ir.model.field':
-            from_ = from_.join(model, 'LEFT',
-                condition=model.id == table.model)
-            name_ = Concat(Concat(model.model, ','), table.name)
+            name_ = Concat(Concat(table.model, ','), table.name)
             if name == 'field_description':
                 type_ = 'field'
             else:
@@ -652,16 +646,14 @@ class FieldTranslate(Field):
         from trytond.ir.lang import get_parent_language
         pool = Pool()
         Translation = pool.get('ir.translation')
-        IrModel = pool.get('ir.model')
 
         table = join = Model.__table__()
-        model = IrModel.__table__()
         language = Transaction().language
         column = None
         while language:
             translation = Translation.__table__()
             translation, join = self._get_translation_join(
-                Model, name, translation, model, table, join, language)
+                Model, name, translation, table, join, language)
             column = Coalesce(NullIf(column, ''), translation.value)
             language = get_parent_language(language)
         return table, join, column
@@ -690,7 +682,6 @@ class FieldTranslate(Field):
         from trytond.ir.lang import get_parent_language
         pool = Pool()
         Translation = pool.get('ir.translation')
-        IrModel = pool.get('ir.model')
         table, _ = tables[None]
         join = table
         language = Transaction().language
@@ -699,9 +690,8 @@ class FieldTranslate(Field):
             key = name + '.translation-' + language
             if key not in tables:
                 translation = Translation.__table__()
-                model = IrModel.__table__()
                 translation, join = self._get_translation_join(
-                    Model, name, translation, model, table, table, language)
+                    Model, name, translation, table, table, language)
                 if join.left == table:
                     tables[key] = {
                         None: (join.right, join.condition),

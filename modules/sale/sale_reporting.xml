@@ -60,7 +60,7 @@ this repository contains the full copyright notices and license terms. -->
 
         <record model="ir.rule.group" id="rule_group_reporting_main_companies">
             <field name="name">User in companies</field>
-            <field name="model" search="[('model', '=', 'sale.reporting.main')]"/>
+            <field name="model">sale.reporting.main</field>
             <field name="global_p" eval="True"/>
         </record>
         <record model="ir.rule" id="rule_reporting_main_companies">
@@ -71,14 +71,14 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
         <record model="ir.model.access" id="access_reporting_main">
-            <field name="model" search="[('model', '=', 'sale.reporting.main')]"/>
+            <field name="model">sale.reporting.main</field>
             <field name="perm_read" eval="False"/>
             <field name="perm_write" eval="False"/>
             <field name="perm_create" eval="False"/>
             <field name="perm_delete" eval="False"/>
         </record>
         <record model="ir.model.access" id="access_reporting_main_sale">
-            <field name="model" search="[('model', '=', 'sale.reporting.main')]"/>
+            <field name="model">sale.reporting.main</field>
             <field name="group" ref="group_sale"/>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="False"/>
@@ -133,7 +133,7 @@ this repository contains the full copyright notices and license terms. -->
 
         <record model="ir.rule.group" id="rule_group_reporting_main_time_series_companies">
             <field name="name">User in companies</field>
-            <field name="model" search="[('model', '=', 'sale.reporting.main.time_series')]"/>
+            <field name="model">sale.reporting.main.time_series</field>
             <field name="global_p" eval="True"/>
         </record>
         <record model="ir.rule" id="rule_reporting_main_time_series_companies">
@@ -144,14 +144,14 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
         <record model="ir.model.access" id="access_reporting_main_time_series">
-            <field name="model" search="[('model', '=', 'sale.reporting.main.time_series')]"/>
+            <field name="model">sale.reporting.main.time_series</field>
             <field name="perm_read" eval="False"/>
             <field name="perm_write" eval="False"/>
             <field name="perm_create" eval="False"/>
             <field name="perm_delete" eval="False"/>
         </record>
         <record model="ir.model.access" id="access_reporting_main_time_series_sale">
-            <field name="model" search="[('model', '=', 'sale.reporting.main.time_series')]"/>
+            <field name="model">sale.reporting.main.time_series</field>
             <field name="group" ref="group_sale"/>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="False"/>
@@ -219,7 +219,7 @@ this repository contains the full copyright notices and license terms. -->
 
         <record model="ir.rule.group" id="rule_group_reporting_customer_companies">
             <field name="name">User in companies</field>
-            <field name="model" search="[('model', '=', 'sale.reporting.customer')]"/>
+            <field name="model">sale.reporting.customer</field>
             <field name="global_p" eval="True"/>
         </record>
         <record model="ir.rule" id="rule_reporting_customer_companies">
@@ -230,14 +230,14 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
         <record model="ir.model.access" id="access_reporting_customer">
-            <field name="model" search="[('model', '=', 'sale.reporting.customer')]"/>
+            <field name="model">sale.reporting.customer</field>
             <field name="perm_read" eval="False"/>
             <field name="perm_write" eval="False"/>
             <field name="perm_create" eval="False"/>
             <field name="perm_delete" eval="False"/>
         </record>
         <record model="ir.model.access" id="access_reporting_customer_sale">
-            <field name="model" search="[('model', '=', 'sale.reporting.customer')]"/>
+            <field name="model">sale.reporting.customer</field>
             <field name="group" ref="group_sale"/>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="False"/>
@@ -296,7 +296,7 @@ this repository contains the full copyright notices and license terms. -->
 
         <record model="ir.rule.group" id="rule_group_reporting_customer_time_series_companies">
             <field name="name">User in companies</field>
-            <field name="model" search="[('model', '=', 'sale.reporting.customer.time_series')]"/>
+            <field name="model">sale.reporting.customer.time_series</field>
             <field name="global_p" eval="True"/>
         </record>
         <record model="ir.rule" id="rule_reporting_customer_time_series_companies">
@@ -307,14 +307,14 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
         <record model="ir.model.access" id="access_reporting_customer_time_series">
-            <field name="model" search="[('model', '=', 'sale.reporting.customer.time_series')]"/>
+            <field name="model">sale.reporting.customer.time_series</field>
             <field name="perm_read" eval="False"/>
             <field name="perm_write" eval="False"/>
             <field name="perm_create" eval="False"/>
             <field name="perm_delete" eval="False"/>
         </record>
         <record model="ir.model.access" id="access_reporting_customer_time_series_sale">
-            <field name="model" search="[('model', '=', 'sale.reporting.customer.time_series')]"/>
+            <field name="model">sale.reporting.customer.time_series</field>
             <field name="group" ref="group_sale"/>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="False"/>
@@ -377,7 +377,7 @@ this repository contains the full copyright notices and license terms. -->
 
         <record model="ir.rule.group" id="rule_group_reporting_customer_category_companies">
             <field name="name">User in companies</field>
-            <field name="model" search="[('model', '=', 'sale.reporting.customer.category')]"/>
+            <field name="model">sale.reporting.customer.category</field>
             <field name="global_p" eval="True"/>
         </record>
         <record model="ir.rule" id="rule_reporting_customer_category_companies">
@@ -388,14 +388,14 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
         <record model="ir.model.access" id="access_reporting_customer_category">
-            <field name="model" search="[('model', '=', 'sale.reporting.customer.category')]"/>
+            <field name="model">sale.reporting.customer.category</field>
             <field name="perm_read" eval="False"/>
             <field name="perm_write" eval="False"/>
             <field name="perm_create" eval="False"/>
             <field name="perm_delete" eval="False"/>
         </record>
         <record model="ir.model.access" id="access_reporting_customer_category_sale">
-            <field name="model" search="[('model', '=', 'sale.reporting.customer.category')]"/>
+            <field name="model">sale.reporting.customer.category</field>
             <field name="group" ref="group_sale"/>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="False"/>
@@ -454,7 +454,7 @@ this repository contains the full copyright notices and license terms. -->
 
         <record model="ir.rule.group" id="rule_group_reporting_customer_category_time_series_companies">
             <field name="name">User in companies</field>
-            <field name="model" search="[('model', '=', 'sale.reporting.customer.category.time_series')]"/>
+            <field name="model">sale.reporting.customer.category.time_series</field>
             <field name="global_p" eval="True"/>
         </record>
         <record model="ir.rule" id="rule_reporting_customer_category_time_series_companies">
@@ -465,14 +465,14 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
         <record model="ir.model.access" id="access_reporting_customer_category_time_series">
-            <field name="model" search="[('model', '=', 'sale.reporting.customer.category.time_series')]"/>
+            <field name="model">sale.reporting.customer.category.time_series</field>
             <field name="perm_read" eval="False"/>
             <field name="perm_write" eval="False"/>
             <field name="perm_create" eval="False"/>
             <field name="perm_delete" eval="False"/>
         </record>
         <record model="ir.model.access" id="access_reporting_customer_category_time_series_sale">
-            <field name="model" search="[('model', '=', 'sale.reporting.customer.category.time_series')]"/>
+            <field name="model">sale.reporting.customer.category.time_series</field>
             <field name="group" ref="group_sale"/>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="False"/>
@@ -540,7 +540,7 @@ this repository contains the full copyright notices and license terms. -->
 
         <record model="ir.rule.group" id="rule_group_reporting_product_companies">
             <field name="name">User in companies</field>
-            <field name="model" search="[('model', '=', 'sale.reporting.product')]"/>
+            <field name="model">sale.reporting.product</field>
             <field name="global_p" eval="True"/>
         </record>
         <record model="ir.rule" id="rule_reporting_product_companies">
@@ -551,14 +551,14 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
         <record model="ir.model.access" id="access_reporting_product">
-            <field name="model" search="[('model', '=', 'sale.reporting.product')]"/>
+            <field name="model">sale.reporting.product</field>
             <field name="perm_read" eval="False"/>
             <field name="perm_write" eval="False"/>
             <field name="perm_create" eval="False"/>
             <field name="perm_delete" eval="False"/>
         </record>
         <record model="ir.model.access" id="access_reporting_product_sale">
-            <field name="model" search="[('model', '=', 'sale.reporting.product')]"/>
+            <field name="model">sale.reporting.product</field>
             <field name="group" ref="group_sale"/>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="False"/>
@@ -616,7 +616,7 @@ this repository contains the full copyright notices and license terms. -->
 
         <record model="ir.rule.group" id="rule_group_reporting_product_time_series_companies">
             <field name="name">User in companies</field>
-            <field name="model" search="[('model', '=', 'sale.reporting.product.time_series')]"/>
+            <field name="model">sale.reporting.product.time_series</field>
             <field name="global_p" eval="True"/>
         </record>
         <record model="ir.rule" id="rule_reporting_product_time_series_companies">
@@ -627,14 +627,14 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
         <record model="ir.model.access" id="access_reporting_product_time_series">
-            <field name="model" search="[('model', '=', 'sale.reporting.product.time_series')]"/>
+            <field name="model">sale.reporting.product.time_series</field>
             <field name="perm_read" eval="False"/>
             <field name="perm_write" eval="False"/>
             <field name="perm_create" eval="False"/>
             <field name="perm_delete" eval="False"/>
         </record>
         <record model="ir.model.access" id="access_reporting_product_time_series_sale">
-            <field name="model" search="[('model', '=', 'sale.reporting.product.time_series')]"/>
+            <field name="model">sale.reporting.product.time_series</field>
             <field name="group" ref="group_sale"/>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="False"/>
@@ -697,7 +697,7 @@ this repository contains the full copyright notices and license terms. -->
 
         <record model="ir.rule.group" id="rule_group_reporting_product_category_companies">
             <field name="name">User in companies</field>
-            <field name="model" search="[('model', '=', 'sale.reporting.product.category')]"/>
+            <field name="model">sale.reporting.product.category</field>
             <field name="global_p" eval="True"/>
         </record>
         <record model="ir.rule" id="rule_reporting_product_category_companies">
@@ -708,14 +708,14 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
         <record model="ir.model.access" id="access_reporting_product_category">
-            <field name="model" search="[('model', '=', 'sale.reporting.product.category')]"/>
+            <field name="model">sale.reporting.product.category</field>
             <field name="perm_read" eval="False"/>
             <field name="perm_write" eval="False"/>
             <field name="perm_create" eval="False"/>
             <field name="perm_delete" eval="False"/>
         </record>
         <record model="ir.model.access" id="access_reporting_product_category_sale">
-            <field name="model" search="[('model', '=', 'sale.reporting.product.category')]"/>
+            <field name="model">sale.reporting.product.category</field>
             <field name="group" ref="group_sale"/>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="False"/>
@@ -774,7 +774,7 @@ this repository contains the full copyright notices and license terms. -->
 
         <record model="ir.rule.group" id="rule_group_reporting_product_category_time_series_companies">
             <field name="name">User in companies</field>
-            <field name="model" search="[('model', '=', 'sale.reporting.product.category.time_series')]"/>
+            <field name="model">sale.reporting.product.category.time_series</field>
             <field name="global_p" eval="True"/>
         </record>
         <record model="ir.rule" id="rule_reporting_product_category_time_series_companies">
@@ -785,14 +785,14 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
         <record model="ir.model.access" id="access_reporting_product_category_time_series">
-            <field name="model" search="[('model', '=', 'sale.reporting.product.category.time_series')]"/>
+            <field name="model">sale.reporting.product.category.time_series</field>
             <field name="perm_read" eval="False"/>
             <field name="perm_write" eval="False"/>
             <field name="perm_create" eval="False"/>
             <field name="perm_delete" eval="False"/>
         </record>
         <record model="ir.model.access" id="access_reporting_product_category_time_series_sale">
-            <field name="model" search="[('model', '=', 'sale.reporting.product.category.time_series')]"/>
+            <field name="model">sale.reporting.product.category.time_series</field>
             <field name="group" ref="group_sale"/>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="False"/>
@@ -858,7 +858,7 @@ this repository contains the full copyright notices and license terms. -->
 
         <record model="ir.rule.group" id="rule_group_reporting_country_tree_companies">
             <field name="name">User in companies</field>
-            <field name="model" search="[('model', '=', 'sale.reporting.country.tree')]"/>
+            <field name="model">sale.reporting.country.tree</field>
             <field name="global_p" eval="True"/>
         </record>
         <record model="ir.rule" id="rule_reporting_country_tree_companies">
@@ -869,14 +869,14 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
         <record model="ir.model.access" id="access_reporting_country_tree">
-            <field name="model" search="[('model', '=', 'sale.reporting.country.tree')]"/>
+            <field name="model">sale.reporting.country.tree</field>
             <field name="perm_read" eval="False"/>
             <field name="perm_write" eval="False"/>
             <field name="perm_create" eval="False"/>
             <field name="perm_delete" eval="False"/>
         </record>
         <record model="ir.model.access" id="access_reporting_country_tree_sale">
-            <field name="model" search="[('model', '=', 'sale.reporting.country.tree')]"/>
+            <field name="model">sale.reporting.country.tree</field>
             <field name="group" ref="group_sale"/>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="False"/>
@@ -929,7 +929,7 @@ this repository contains the full copyright notices and license terms. -->
 
         <record model="ir.rule.group" id="rule_group_reporting_country_time_series_companies">
             <field name="name">User in companies</field>
-            <field name="model" search="[('model', '=', 'sale.reporting.country.time_series')]"/>
+            <field name="model">sale.reporting.country.time_series</field>
             <field name="global_p" eval="True"/>
         </record>
         <record model="ir.rule" id="rule_reporting_country_time_series_companies">
@@ -940,14 +940,14 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
         <record model="ir.model.access" id="access_reporting_country_time_series">
-            <field name="model" search="[('model', '=', 'sale.reporting.country.time_series')]"/>
+            <field name="model">sale.reporting.country.time_series</field>
             <field name="perm_read" eval="False"/>
             <field name="perm_write" eval="False"/>
             <field name="perm_create" eval="False"/>
             <field name="perm_delete" eval="False"/>
         </record>
         <record model="ir.model.access" id="access_reporting_country_time_series_sale">
-            <field name="model" search="[('model', '=', 'sale.reporting.country.time_series')]"/>
+            <field name="model">sale.reporting.country.time_series</field>
             <field name="group" ref="group_sale"/>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="False"/>
@@ -1001,7 +1001,7 @@ this repository contains the full copyright notices and license terms. -->
 
         <record model="ir.rule.group" id="rule_group_reporting_country_subdivision_time_series_companies">
             <field name="name">User in companies</field>
-            <field name="model" search="[('model', '=', 'sale.reporting.country.subdivision.time_series')]"/>
+            <field name="model">sale.reporting.country.subdivision.time_series</field>
             <field name="global_p" eval="True"/>
         </record>
         <record model="ir.rule" id="rule_reporting_country_subdivision_time_series_companies">
@@ -1012,14 +1012,14 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
         <record model="ir.model.access" id="access_reporting_country_subdivision_time_series">
-            <field name="model" search="[('model', '=', 'sale.reporting.country.subdivision.time_series')]"/>
+            <field name="model">sale.reporting.country.subdivision.time_series</field>
             <field name="perm_read" eval="False"/>
             <field name="perm_write" eval="False"/>
             <field name="perm_create" eval="False"/>
             <field name="perm_delete" eval="False"/>
         </record>
         <record model="ir.model.access" id="access_reporting_country_subdivision_time_series_sale">
-            <field name="model" search="[('model', '=', 'sale.reporting.country.subdivision.time_series')]"/>
+            <field name="model">sale.reporting.country.subdivision.time_series</field>
             <field name="group" ref="group_sale"/>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="False"/>

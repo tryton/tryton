@@ -260,7 +260,7 @@ Validate Shipments::
     >>> shipment.click('assign_try')
     >>> shipment.click('pick')
     >>> shipment.click('pack')
-    >>> shipment.click('done')
+    >>> shipment.click('do')
 
 Open customer invoice::
 
@@ -356,7 +356,7 @@ Ship 3 products::
     >>> shipment.click('assign_try')
     >>> shipment.click('pick')
     >>> shipment.click('pack')
-    >>> shipment.click('done')
+    >>> shipment.click('do')
     >>> shipment.state
     'done'
 
@@ -496,7 +496,7 @@ Checking Shipments::
     >>> mix_shipment.click('assign_try')
     >>> mix_shipment.click('pick')
     >>> mix_shipment.click('pack')
-    >>> mix_shipment.click('done')
+    >>> mix_shipment.click('do')
     >>> move_shipment, = mix_shipment.outgoing_moves
     >>> move_shipment.product.rec_name
     'product'
@@ -644,7 +644,7 @@ to invoices::
     >>> shipment.click('assign_try')
     >>> shipment.click('pick')
     >>> shipment.click('pack')
-    >>> shipment.click('done')
+    >>> shipment.click('do')
     >>> sale.reload()
     >>> invoice, = sale.invoices
     >>> invoice_line, = invoice.lines

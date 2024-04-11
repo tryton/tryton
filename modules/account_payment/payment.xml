@@ -69,7 +69,7 @@ this repository contains the full copyright notices and license terms. -->
 
         <record model="ir.rule.group" id="rule_group_payment_journal_companies">
             <field name="name">User in companies</field>
-            <field name="model" search="[('model', '=', 'account.payment.journal')]"/>
+            <field name="model">account.payment.journal</field>
             <field name="global_p" eval="True"/>
         </record>
         <record model="ir.rule" id="rule_payment_journal_companies">
@@ -80,14 +80,14 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
         <record model="ir.model.access" id="access_payment_journal">
-            <field name="model" search="[('model', '=', 'account.payment.journal')]"/>
+            <field name="model">account.payment.journal</field>
             <field name="perm_read" eval="False"/>
             <field name="perm_write" eval="False"/>
             <field name="perm_create" eval="False"/>
             <field name="perm_delete" eval="False"/>
         </record>
         <record model="ir.model.access" id="access_payment_journal_account_admin">
-            <field name="model" search="[('model', '=', 'account.payment.journal')]"/>
+            <field name="model">account.payment.journal</field>
             <field name="group" ref="account.group_account_admin"/>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="True"/>
@@ -95,7 +95,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="perm_delete" eval="True"/>
         </record>
         <record model="ir.model.access" id="access_payment_journal_payment">
-            <field name="model" search="[('model', '=', 'account.payment.journal')]"/>
+            <field name="model">account.payment.journal</field>
             <field name="group" ref="group_payment"/>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="False"/>
@@ -150,7 +150,7 @@ this repository contains the full copyright notices and license terms. -->
 
         <record model="ir.rule.group" id="rule_group_payment_group_companies">
             <field name="name">User in companies</field>
-            <field name="model" search="[('model', '=', 'account.payment.group')]"/>
+            <field name="model">account.payment.group</field>
             <field name="global_p" eval="True"/>
         </record>
         <record model="ir.rule" id="rule_payment_group_companies">
@@ -161,14 +161,14 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
         <record model="ir.model.access" id="access_payment_group">
-            <field name="model" search="[('model', '=', 'account.payment.group')]"/>
+            <field name="model">account.payment.group</field>
             <field name="perm_read" eval="False"/>
             <field name="perm_write" eval="False"/>
             <field name="perm_create" eval="False"/>
             <field name="perm_delete" eval="False"/>
         </record>
         <record model="ir.model.access" id="access_payment_group_account_admin">
-            <field name="model" search="[('model', '=', 'account.payment.group')]"/>
+            <field name="model">account.payment.group</field>
             <field name="group" ref="account.group_account_admin"/>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="True"/>
@@ -176,7 +176,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="perm_delete" eval="False"/>
         </record>
         <record model="ir.model.access" id="access_payment_group_payment">
-            <field name="model" search="[('model', '=', 'account.payment.group')]"/>
+            <field name="model">account.payment.group</field>
             <field name="group" ref="group_payment"/>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="True"/>
@@ -185,9 +185,9 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
         <record model="ir.model.button" id="payment_group_succeed_button">
+            <field name="model">account.payment.group</field>
             <field name="name">succeed</field>
             <field name="string">Succeed</field>
-            <field name="model" search="[('model', '=', 'account.payment.group')]"/>
         </record>
 
         <record model="ir.sequence.type"
@@ -376,7 +376,7 @@ this repository contains the full copyright notices and license terms. -->
 
         <record model="ir.rule.group" id="rule_group_payment_companies">
             <field name="name">User in companies</field>
-            <field name="model" search="[('model', '=', 'account.payment')]"/>
+            <field name="model">account.payment</field>
             <field name="global_p" eval="True"/>
         </record>
         <record model="ir.rule" id="rule_payment_companies">
@@ -466,14 +466,14 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
         <record model="ir.model.access" id="access_payment">
-            <field name="model" search="[('model', '=', 'account.payment')]"/>
+            <field name="model">account.payment</field>
             <field name="perm_read" eval="False"/>
             <field name="perm_write" eval="False"/>
             <field name="perm_create" eval="False"/>
             <field name="perm_delete" eval="False"/>
         </record>
         <record model="ir.model.access" id="access_payment_account_admin">
-            <field name="model" search="[('model', '=', 'account.payment')]"/>
+            <field name="model">account.payment</field>
             <field name="group" ref="account.group_account_admin"/>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="True"/>
@@ -481,7 +481,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="perm_delete" eval="True"/>
         </record>
         <record model="ir.model.access" id="access_payment_payment">
-            <field name="model" search="[('model', '=', 'account.payment')]"/>
+            <field name="model">account.payment</field>
             <field name="group" ref="group_payment"/>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="True"/>
@@ -489,7 +489,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="perm_delete" eval="True"/>
         </record>
         <record model="ir.model.access" id="access_payment_payment_approval">
-            <field name="model" search="[('model', '=', 'account.payment')]"/>
+            <field name="model">account.payment</field>
             <field name="group" ref="group_payment_approval"/>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="False"/>
@@ -498,21 +498,21 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
         <record model="ir.model.button" id="payment_draft_button">
+            <field name="model">account.payment</field>
             <field name="name">draft</field>
             <field name="string">Draft</field>
-            <field name="model" search="[('model', '=', 'account.payment')]"/>
         </record>
 
         <record model="ir.model.button" id="payment_submit_button">
+            <field name="model">account.payment</field>
             <field name="name">submit</field>
             <field name="string">Submit</field>
-            <field name="model" search="[('model', '=', 'account.payment')]"/>
         </record>
 
         <record model="ir.model.button" id="payment_approve_button">
+            <field name="model">account.payment</field>
             <field name="name">approve</field>
             <field name="string">Approve</field>
-            <field name="model" search="[('model', '=', 'account.payment')]"/>
         </record>
         <record model="ir.model.button-res.group" id="payment_approve_button_group_payment_approval">
             <field name="button" ref="payment_approve_button"/>
@@ -520,28 +520,28 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
         <record model="ir.model.button" id="payment_process_wizard_button">
+            <field name="model">account.payment</field>
             <field name="name">process_wizard</field>
             <field name="string">Process</field>
-            <field name="model" search="[('model', '=', 'account.payment')]"/>
             <field name="confirm">Are you sure you want to process the payments?</field>
         </record>
 
         <record model="ir.model.button" id="payment_proceed_button">
+            <field name="model">account.payment</field>
             <field name="name">proceed</field>
             <field name="string">Processing</field>
-            <field name="model" search="[('model', '=', 'account.payment')]"/>
         </record>
 
         <record model="ir.model.button" id="payment_succeed_button">
+            <field name="model">account.payment</field>
             <field name="name">succeed</field>
             <field name="string">Succeed</field>
-            <field name="model" search="[('model', '=', 'account.payment')]"/>
         </record>
 
         <record model="ir.model.button" id="payment_fail_button">
+            <field name="model">account.payment</field>
             <field name="name">fail</field>
             <field name="string">Fail</field>
-            <field name="model" search="[('model', '=', 'account.payment')]"/>
         </record>
 
         <record model="ir.action.wizard" id="act_process_payments">

@@ -228,7 +228,7 @@ class Production(ShipmentAssignMixin, Workflow, ModelSQL, ModelView):
                     'invisible': Eval('state') != 'assigned',
                     'depends': ['state'],
                     },
-                'done': {
+                'do': {
                     'invisible': Eval('state') != 'running',
                     'depends': ['state'],
                     },
@@ -370,8 +370,7 @@ class Production(ShipmentAssignMixin, Workflow, ModelSQL, ModelView):
             product=product,
             unit=unit,
             quantity=quantity,
-            company=self.company,
-            currency=self.company.currency if self.company else None)
+            company=self.company)
         if type == 'input':
             move.from_location = self.picking_location
             move.to_location = self.location
@@ -380,17 +379,15 @@ class Production(ShipmentAssignMixin, Workflow, ModelSQL, ModelView):
             move.from_location = self.location
             move.to_location = self.output_location
             move.production_output = self
-        return move
-
-    @fields.depends(methods=['_move'])
-    def _explode_move_values(self, type, bom_io, quantity):
-        move = self._move(type, bom_io.product, bom_io.unit, quantity)
-        move.unit_price_required = move.on_change_with_unit_price_required()
+        if move.on_change_with_unit_price_required():
+            move.unit_price = Decimal(0)
+            if self.company:
+                move.currency = self.company.currency
         return move
 
     @fields.depends(
-        'bom', 'product', 'unit', 'quantity', 'company', 'inputs', 'outputs',
-        methods=['_explode_move_values'])
+        'bom', 'product', 'unit', 'quantity', 'inputs', 'outputs',
+        methods=['_move'])
     def explode_bom(self):
         pool = Pool()
         Uom = pool.get('product.uom')
@@ -402,7 +399,7 @@ class Production(ShipmentAssignMixin, Workflow, ModelSQL, ModelView):
         inputs = []
         for input_ in self.bom.inputs:
             quantity = input_.compute_quantity(factor)
-            move = self._explode_move_values('input', input_, quantity)
+            move = self._move('input', input_.product, input_.unit, quantity)
             if move:
                 inputs.append(move)
                 quantity = Uom.compute_qty(
@@ -413,10 +410,8 @@ class Production(ShipmentAssignMixin, Workflow, ModelSQL, ModelView):
         outputs = []
         for output in self.bom.outputs:
             quantity = output.compute_quantity(factor)
-            move = self._explode_move_values('output', output, quantity)
+            move = self._move('output', output.product, output.unit, quantity)
             if move:
-                move.unit_price = Decimal(0)
-                move.currency = self.company.currency
                 outputs.append(move)
         self.outputs = outputs
 
@@ -502,8 +497,6 @@ class Production(ShipmentAssignMixin, Workflow, ModelSQL, ModelView):
                         'output', production.product, production.unit,
                         production.quantity)
                     if move:
-                        move.unit_price = Decimal(0)
-                        move.currency = production.company.currency
                         to_save.append(move)
                 continue
 
@@ -523,8 +516,6 @@ class Production(ShipmentAssignMixin, Workflow, ModelSQL, ModelView):
                 move = production._move(
                     'output', product, output.unit, quantity)
                 if move:
-                    move.unit_price = Decimal(0)
-                    move.currency = production.company.currency
                     to_save.append(move)
         Move.save(to_save)
         cls._set_move_planned_date(productions)
@@ -772,7 +763,7 @@ class Production(ShipmentAssignMixin, Workflow, ModelSQL, ModelView):
     @ModelView.button
     @Workflow.transition('done')
     @set_employee('done_by')
-    def done(cls, productions):
+    def do(cls, productions):
         pool = Pool()
         Move = pool.get('stock.move')
         Date = pool.get('ir.date')
@@ -873,7 +864,7 @@ class Production_Lot(metaclass=PoolMeta):
     @classmethod
     @ModelView.button
     @Workflow.transition('done')
-    def done(cls, productions):
+    def do(cls, productions):
         pool = Pool()
         Lot = pool.get('stock.lot')
         Move = pool.get('stock.move')
@@ -888,4 +879,4 @@ class Production_Lot(metaclass=PoolMeta):
                         moves.append(move)
         Lot.save(lots)
         Move.save(moves)
-        super().done(productions)
+        super().do(productions)

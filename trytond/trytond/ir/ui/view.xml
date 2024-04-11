@@ -17,12 +17,21 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.ui.view" id="view_view_tree">
             <field name="model">ir.ui.view</field>
             <field name="type">tree</field>
+            <field name="priority" eval="10"/>
             <field name="name">ui_view_list</field>
+        </record>
+        <record model="ir.ui.view" id="view_view_list_extension">
+            <field name="model">ir.ui.view</field>
+            <field name="type">tree</field>
+            <field name="priority" eval="20"/>
+            <field name="name">ui_view_list_extension</field>
         </record>
         <record model="ir.action.act_window" id="act_view_form">
             <field name="name">Views</field>
             <field name="type">ir.action.act_window</field>
             <field name="res_model">ir.ui.view</field>
+            <field name="domain" eval="[('basis', '=', True)]" pyson="1"/>
+            <field name="order" eval="[('model', None)]" pyson="1"/>
         </record>
         <record model="ir.action.act_window.view"
             id="act_view_form_view1">
@@ -42,9 +51,9 @@ this repository contains the full copyright notices and license terms. -->
             sequence="10"
             id="menu_view"/>
         <record model="ir.model.button" id="view_show_button">
+            <field name="model">ir.ui.view</field>
             <field name="name">show</field>
             <field name="string">Show</field>
-            <field name="model" search="[('model', '=', 'ir.ui.view')]"/>
         </record>
 
         <record model="ir.ui.view" id="view_tree_width_view_form">

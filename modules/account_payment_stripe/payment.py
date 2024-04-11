@@ -26,7 +26,7 @@ from trytond.pool import Pool, PoolMeta
 from trytond.pyson import Eval, TimeDelta
 from trytond.report import Report, get_email
 from trytond.rpc import RPC
-from trytond.sendmail import sendmail_transactional
+from trytond.sendmail import send_message_transactional
 from trytond.tools import sql_pairing
 from trytond.tools.email_ import set_from_header
 from trytond.transaction import Transaction
@@ -389,9 +389,9 @@ class Payment(StripeCustomerMethodMixin, CheckoutMixin, metaclass=PoolMeta):
         msg, title = get_email(
             'account.payment.stripe.email_checkout', self, languages)
         set_from_header(msg, from_cfg, from_ or from_cfg)
-        msg['To'] = ','.join(emails)
+        msg['To'] = emails
         msg['Subject'] = title
-        sendmail_transactional(from_cfg, emails, msg)
+        send_message_transactional(msg)
 
     def _emails_checkout(self):
         emails = []
@@ -1077,7 +1077,7 @@ class Account(ModelSQL, ModelView):
             logger.error("charge.refund.updated: No refund '%s'", rf['id'])
         for refund in refunds:
             if rf['status'] == 'pending':
-                Refund.processing([refund])
+                Refund.process([refund])
             elif rf['status'] == 'succeeded':
                 Refund.succeed([refund])
             elif rf['status'] in {'failed', 'canceled'}:

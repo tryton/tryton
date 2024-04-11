@@ -1,3 +1,7 @@
+* Add Manufacturer Part Number product identifier
+* Add brand product identifier
+* Support generate barcode of different type
+* Add code on product category
 * Add product deactivable mixins
 
 Version 7.0.0 - 2023-10-30

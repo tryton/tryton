@@ -79,7 +79,7 @@ this repository contains the full copyright notices and license terms. -->
 
         <record model="ir.rule.group" id="rule_group_product_cost_price_revision_companies">
             <field name="name">User in companies</field>
-            <field name="model" search="[('model', '=', 'product.cost_price.revision')]"/>
+            <field name="model">product.cost_price.revision</field>
             <field name="global_p" eval="True"/>
         </record>
         <record model="ir.rule" id="rule_product_cost_price_revision_companies">
@@ -90,14 +90,14 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
         <record model="ir.model.access" id="access_product_cost_price_revision">
-            <field name="model" search="[('model', '=', 'product.cost_price.revision')]"/>
+            <field name="model">product.cost_price.revision</field>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="False"/>
             <field name="perm_create" eval="False"/>
             <field name="perm_delete" eval="False"/>
         </record>
         <record model="ir.model.access" id="access_product_cost_price_revision_admin">
-            <field name="model" search="[('model', '=', 'product.cost_price.revision')]"/>
+            <field name="model">product.cost_price.revision</field>
             <field name="group" ref="product.group_product_admin"/>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="True"/>
@@ -283,7 +283,7 @@ this repository contains the full copyright notices and license terms. -->
 
         <record model="ir.rule.group" id="rule_group_product_quantities_warehouse_companies">
             <field name="name">User in companies</field>
-            <field name="model" search="[('model', '=', 'stock.product_quantities_warehouse')]"/>
+            <field name="model">stock.product_quantities_warehouse</field>
             <field name="global_p" eval="True"/>
         </record>
         <record model="ir.rule" id="rule_product_quantities_warehouse_companies">
@@ -295,14 +295,14 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
         <record model="ir.model.access" id="access_product_quantities_warehouse">
-            <field name="model" search="[('model', '=', 'stock.product_quantities_warehouse')]"/>
+            <field name="model">stock.product_quantities_warehouse</field>
             <field name="perm_read" eval="False"/>
             <field name="perm_write" eval="False"/>
             <field name="perm_create" eval="False"/>
             <field name="perm_delete" eval="False"/>
         </record>
         <record model="ir.model.access" id="access_product_quantities_warehouse_group_stock">
-            <field name="model" search="[('model', '=', 'stock.product_quantities_warehouse')]"/>
+            <field name="model">stock.product_quantities_warehouse</field>
             <field name="group" ref="group_stock"/>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="False"/>
@@ -384,7 +384,7 @@ this repository contains the full copyright notices and license terms. -->
 
         <record model="ir.rule.group" id="rule_group_product_quantities_warehouse_move_companies">
             <field name="name">User in companies</field>
-            <field name="model" search="[('model', '=', 'stock.product_quantities_warehouse.move')]"/>
+            <field name="model">stock.product_quantities_warehouse.move</field>
             <field name="global_p" eval="True"/>
         </record>
         <record model="ir.rule" id="rule_product_quantities_warehouse_move_companies">
@@ -396,14 +396,14 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
         <record model="ir.model.access" id="access_product_quantities_warehouse_move">
-            <field name="model" search="[('model', '=', 'stock.product_quantities_warehouse.move')]"/>
+            <field name="model">stock.product_quantities_warehouse.move</field>
             <field name="perm_read" eval="False"/>
             <field name="perm_write" eval="False"/>
             <field name="perm_create" eval="False"/>
             <field name="perm_delete" eval="False"/>
         </record>
         <record model="ir.model.access" id="access_product_quantities_warehouse_move_group_stock">
-            <field name="model" search="[('model', '=', 'stock.product_quantities_warehouse.move')]"/>
+            <field name="model">stock.product_quantities_warehouse.move</field>
             <field name="group" ref="group_stock"/>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="False"/>

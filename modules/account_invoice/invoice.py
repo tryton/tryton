@@ -37,8 +37,8 @@ from trytond.wizard import (
 
 from .exceptions import (
     InvoiceFutureWarning, InvoiceNumberError, InvoicePaymentTermDateWarning,
-    InvoiceSimilarWarning, InvoiceTaxValidationError, InvoiceValidationError,
-    PayInvoiceError)
+    InvoiceSimilarWarning, InvoiceTaxesWarning, InvoiceTaxValidationError,
+    InvoiceValidationError, PayInvoiceError)
 
 if config.getboolean('account_invoice', 'filestore', default=False):
     file_id = 'invoice_report_cache_id'
@@ -1777,10 +1777,12 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin, InvoiceReportMixin):
         pool = Pool()
         Move = pool.get('account.move')
 
+        cls._check_taxes(invoices)
+        cls._check_similar(invoices)
+
         invoices_in = cls.browse([i for i in invoices if i.type == 'in'])
         cls.set_number(invoices_in)
         cls._store_cache(invoices)
-        cls._check_similar(invoices)
         moves = []
         for invoice in invoices_in:
             move = invoice.get_move()
@@ -1837,7 +1839,9 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin, InvoiceReportMixin):
                     raise InvoiceFutureWarning(warning_key,
                         gettext('account_invoice.msg_invoice_date_future',
                             invoices=names))
-        cls._check_similar([i for i in invoices if i.state != 'validated'])
+        to_check = [i for i in invoices if i.state != 'validated']
+        cls._check_taxes(to_check)
+        cls._check_similar(to_check)
         cls._post(invoices)
 
     @classmethod
@@ -1875,6 +1879,32 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin, InvoiceReportMixin):
             with transaction.set_context(
                     queue_batch=context.get('queue_batch', True)):
                 cls.__queue__.process(reconciled)
+
+    @classmethod
+    def _check_taxes(cls, invoices):
+        pool = Pool()
+        Line = pool.get('account.invoice.line')
+        Warning = pool.get('res.user.warning')
+        for invoice in invoices:
+            different_lines = []
+            for line in invoice.lines:
+                test_line = Line(line.id)
+                test_line.on_change_product()
+                if (test_line.taxes != line.taxes
+                        or test_line.taxes_deductible_rate
+                        != line.taxes_deductible_rate):
+                    different_lines.append(line)
+            if different_lines:
+                warning_key = Warning.format(
+                    'invoice_taxes', [invoice])
+                if Warning.check(warning_key):
+                    lines = ', '.join(l.rec_name for l in different_lines[:5])
+                    if len(different_lines) > 5:
+                        lines += '...'
+                    raise InvoiceTaxesWarning(warning_key,
+                        gettext('account_invoice.msg_invoice_default_taxes',
+                            invoice=invoice.rec_name,
+                            lines=lines))
 
     @classmethod
     def _check_similar(cls, invoices, type='in'):

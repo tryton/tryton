@@ -196,9 +196,8 @@ class TestModel(ProteusTestCase):
         group.save()
 
         ModelAccess = Model.get('ir.model.access')
-        Model_ = Model.get('ir.model')
         model_access = ModelAccess()
-        model_access.model = Model_.find([('model', '=', 'res.group')])[0]
+        model_access.model = 'res.group'
         model_access.perm_read = True
         model_access.perm_write = True
         model_access.perm_create = True

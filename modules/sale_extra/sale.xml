@@ -57,7 +57,7 @@ this repository contains the full copyright notices and license terms. -->
 
         <record model="ir.rule.group" id="rule_group_extra_companies">
             <field name="name">User in companies</field>
-            <field name="model" search="[('model', '=', 'sale.extra')]"/>
+            <field name="model">sale.extra</field>
             <field name="global_p" eval="True"/>
         </record>
         <record model="ir.rule" id="rule_extra_companies">
@@ -68,14 +68,14 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
         <record model="ir.model.access" id="access_extra">
-            <field name="model" search="[('model', '=', 'sale.extra')]"/>
+            <field name="model">sale.extra</field>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="False"/>
             <field name="perm_create" eval="False"/>
             <field name="perm_delete" eval="False"/>
         </record>
         <record model="ir.model.access" id="access_extra_sale_admin">
-            <field name="model" search="[('model', '=', 'sale.extra')]"/>
+            <field name="model">sale.extra</field>
             <field name="group" ref="sale.group_sale_admin"/>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="True"/>

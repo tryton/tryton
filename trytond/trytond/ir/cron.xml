@@ -43,9 +43,9 @@ this repository contains the full copyright notices and license terms. -->
             id="menu_cron_form"/>
 
         <record model="ir.model.button" id="cron_run_once_button">
+            <field name="model">ir.cron</field>
             <field name="name">run_once</field>
             <field name="string">Run Once</field>
-            <field name="model" search="[('model', '=', 'ir.cron')]"/>
         </record>
     </data>
 </tryton>

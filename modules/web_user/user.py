@@ -33,7 +33,7 @@ from trytond.pool import Pool
 from trytond.pyson import Eval
 from trytond.report import Report, get_email
 from trytond.res.user import CRYPT_CONTEXT, LoginAttempt
-from trytond.sendmail import sendmail_transactional
+from trytond.sendmail import send_message_transactional
 from trytond.tools.email_ import (
     EmailNotValidError, normalize_email, set_from_header, validate_email)
 from trytond.transaction import Transaction, without_check_access
@@ -50,7 +50,7 @@ def _send_email(from_, users, email_func):
         set_from_header(msg, from_cfg, from_ or from_cfg)
         msg['To'] = user.email
         msg['Subject'] = title
-        sendmail_transactional(from_cfg, [user.email], msg)
+        send_message_transactional(msg)
 
 
 def _add_params(url, **params):

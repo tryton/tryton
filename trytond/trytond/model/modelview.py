@@ -45,6 +45,23 @@ class ButtonActionException(RPCReturnException):
         return self.value
 
 
+def set_visible(node, fields, loading='eager'):
+    "Set loading to visible fields"
+    if node.tag == 'group':
+        if node.attrib.get('expandable', '1') == '1':
+            for child in node:
+                set_visible(child, fields, loading)
+    elif node.tag == 'notebook':
+        if len(node) > 0:
+            set_visible(node[0], fields, loading)
+    elif node.tag == 'field':
+        if node.attrib['name'] in fields:
+            node.attrib['loading'] = 'eager'
+    else:
+        for child in node:
+            set_visible(child, fields, loading)
+
+
 def on_change(func):
     @wraps(func)
     def wrapper(self, *args, **kwargs):
@@ -443,10 +460,13 @@ class ModelView(Model):
                         if colspan is not None:
                             element.attrib['colspan'] = colspan
 
-        # Remove empty pages
         if type == 'form':
             for page in tree.xpath('//page[not(descendant::*)]'):
                 page.getparent().remove(page)
+
+            set_visible(tree,
+                {fname for fname, field in cls._fields.items()
+                    if field._type in {'one2many', 'many2many'}})
 
         if type == 'tree':
             user = Transaction().user
@@ -507,6 +527,8 @@ class ModelView(Model):
             tree, encoding='utf-8', pretty_print=False).decode('utf-8')
         # Do not call fields_def without fields as it returns all fields
         if fields_def:
+            # Prevent clients calling fields_view_get to get 'id' definition
+            fields_def.setdefault('id', {'name': 'id'})
             fields2 = cls.fields_get(list(fields_def.keys()), level=level)
         else:
             fields2 = {}

@@ -577,6 +577,17 @@
       </attribute>
     </optional>
   </define>
+  <define name="attlist.field" combine="interleave">
+    <optional>
+      <attribute>
+        <name ns="">loading</name>
+        <choice>
+          <value>lazy</value>
+          <value>eager</value>
+        </choice>
+      </attribute>
+    </optional>
+  </define>
   <define name="image">
     <element>
       <name ns="">image</name>

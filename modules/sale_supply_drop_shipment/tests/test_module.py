@@ -10,6 +10,7 @@ class SaleSupplyDropShipmentTestCase(
         PartyCompanyCheckEraseMixin, CompanyTestMixin, ModuleTestCase):
     'Test SaleSupplyDropShipment module'
     module = 'sale_supply_drop_shipment'
+    extras = ['stock_split']
 
 
 del ModuleTestCase

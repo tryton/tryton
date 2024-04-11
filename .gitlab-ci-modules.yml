@@ -271,6 +271,40 @@ test-modules-account_eu-postgresql:
     PACKAGE: modules/account_eu
     TAG_PATTERN: '/^account_eu-.*/'
 
+check-doc-modules-account_export:
+  extends: .check-doc
+  variables:
+    PACKAGE: modules/account_export
+
+test-modules-account_export-sqlite:
+  extends: .test-sqlite
+  variables:
+    PACKAGE: modules/account_export
+    TAG_PATTERN: '/^account_export-.*/'
+
+test-modules-account_export-postgresql:
+  extends: .test-postgresql
+  variables:
+    PACKAGE: modules/account_export
+    TAG_PATTERN: '/^account_export-.*/'
+
+check-doc-modules-account_export_winbooks:
+  extends: .check-doc
+  variables:
+    PACKAGE: modules/account_export_winbooks
+
+test-modules-account_export_winbooks-sqlite:
+  extends: .test-sqlite
+  variables:
+    PACKAGE: modules/account_export_winbooks
+    TAG_PATTERN: '/^account_export_winbooks-.*/'
+
+test-modules-account_export_winbooks-postgresql:
+  extends: .test-postgresql
+  variables:
+    PACKAGE: modules/account_export_winbooks
+    TAG_PATTERN: '/^account_export_winbooks-.*/'
+
 check-doc-modules-account_fr:
   extends: .check-doc
   variables:
@@ -848,6 +882,23 @@ test-modules-account_stock_shipment_cost_weight-postgresql:
   variables:
     PACKAGE: modules/account_stock_shipment_cost_weight
     TAG_PATTERN: '/^account_stock_shipment_cost_weight-.*/'
+
+check-doc-modules-account_syscohada:
+  extends: .check-doc
+  variables:
+    PACKAGE: modules/account_syscohada
+
+test-modules-account_syscohada-sqlite:
+  extends: .test-sqlite
+  variables:
+    PACKAGE: modules/account_syscohada
+    TAG_PATTERN: '/^account_syscohada-.*/'
+
+test-modules-account_syscohada-postgresql:
+  extends: .test-postgresql
+  variables:
+    PACKAGE: modules/account_syscohada
+    TAG_PATTERN: '/^account_syscohada-.*/'
 
 check-doc-modules-account_tax_cash:
   extends: .check-doc
@@ -3398,6 +3449,23 @@ test-modules-web_shop-postgresql:
   variables:
     PACKAGE: modules/web_shop
     TAG_PATTERN: '/^web_shop-.*/'
+
+check-doc-modules-web_shop_product_data_feed:
+  extends: .check-doc
+  variables:
+    PACKAGE: modules/web_shop_product_data_feed
+
+test-modules-web_shop_product_data_feed-sqlite:
+  extends: .test-sqlite
+  variables:
+    PACKAGE: modules/web_shop_product_data_feed
+    TAG_PATTERN: '/^web_shop_product_data_feed-.*/'
+
+test-modules-web_shop_product_data_feed-postgresql:
+  extends: .test-postgresql
+  variables:
+    PACKAGE: modules/web_shop_product_data_feed
+    TAG_PATTERN: '/^web_shop_product_data_feed-.*/'
 
 check-doc-modules-web_shop_shopify:
   extends: .check-doc

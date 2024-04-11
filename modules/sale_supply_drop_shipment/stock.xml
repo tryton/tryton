@@ -97,15 +97,14 @@ this repository contains the full copyright notices and license terms. -->
             id="menu_shipment_drop_form"/>
 
         <record model="ir.model.access" id="access_shipment_drop">
-            <field name="model" search="[('model', '=', 'stock.shipment.drop')]"/>
+            <field name="model">stock.shipment.drop</field>
             <field name="perm_read" eval="False"/>
             <field name="perm_write" eval="False"/>
             <field name="perm_create" eval="False"/>
             <field name="perm_delete" eval="False"/>
         </record>
         <record model="ir.model.access" id="access_shipment_drop_group_stock">
-            <field name="model"
-                search="[('model', '=', 'stock.shipment.drop')]"/>
+            <field name="model">stock.shipment.drop</field>
             <field name="group" ref="stock.group_stock"/>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="True"/>
@@ -114,8 +113,7 @@ this repository contains the full copyright notices and license terms. -->
         </record>
         <record model="ir.model.access"
             id="access_shipment_drop_group_stock_admin">
-            <field name="model"
-                search="[('model', '=', 'stock.shipment.drop')]"/>
+            <field name="model">stock.shipment.drop</field>
             <field name="group" ref="stock.group_stock_admin"/>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="True"/>
@@ -123,7 +121,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="perm_delete" eval="True"/>
         </record>
         <record model="ir.model.access" id="access_shipment_drop_group_sale">
-            <field name="model" search="[('model', '=', 'stock.shipment.drop')]"/>
+            <field name="model">stock.shipment.drop</field>
             <field name="group" ref="sale.group_sale"/>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="False"/>
@@ -132,8 +130,7 @@ this repository contains the full copyright notices and license terms. -->
         </record>
         <record model="ir.model.access"
             id="access_shipment_drop_group_purchase">
-            <field name="model"
-                search="[('model', '=', 'stock.shipment.drop')]"/>
+            <field name="model">stock.shipment.drop</field>
             <field name="group" ref="purchase.group_purchase"/>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="False"/>
@@ -142,10 +139,9 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
         <record model="ir.model.button" id="shipment_drop_cancel_button">
+            <field name="model">stock.shipment.drop</field>
             <field name="name">cancel</field>
             <field name="string">Cancel</field>
-            <field name="model"
-                search="[('model', '=', 'stock.shipment.drop')]"/>
         </record>
         <record model="ir.model.button-res.group"
             id="shipment_drop_cancel_button_group_stock">
@@ -154,39 +150,34 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
         <record model="ir.model.button" id="shipment_drop_draft_button">
+            <field name="model">stock.shipment.drop</field>
             <field name="name">draft</field>
             <field name="string">Draft</field>
-            <field name="model"
-                search="[('model', '=', 'stock.shipment.drop')]"/>
         </record>
 
         <record model="ir.model.button" id="shipment_drop_wait_button">
+            <field name="model">stock.shipment.drop</field>
             <field name="name">wait</field>
             <field name="string">Wait</field>
-            <field name="model"
-                search="[('model', '=', 'stock.shipment.drop')]"/>
         </record>
 
         <record model="ir.model.button" id="shipment_drop_done_button">
-            <field name="name">done</field>
-            <field name="string">Done</field>
+            <field name="model">stock.shipment.drop</field>
+            <field name="name">do</field>
+            <field name="string">Complete</field>
             <field name="confirm">Are you sure you want to complete the shipment?</field>
-            <field name="model"
-                search="[('model', '=', 'stock.shipment.drop')]"/>
         </record>
 
         <record model="ir.model.button" id="shipment_drop_ship_button">
+            <field name="model">stock.shipment.drop</field>
             <field name="name">ship</field>
             <field name="string">Ship</field>
             <field name="confirm">Are you sure you want to ship the shipment?</field>
-            <field name="model"
-                search="[('model', '=', 'stock.shipment.drop')]"/>
         </record>
 
         <record model="ir.rule.group" id="rule_group_shipment_drop_companies">
             <field name="name">User in companies</field>
-            <field name="model"
-                search="[('model', '=', 'stock.shipment.drop')]"/>
+            <field name="model">stock.shipment.drop</field>
             <field name="global_p" eval="True"/>
         </record>
         <record model="ir.rule" id="rule_shipment_drop_companies">
@@ -270,6 +261,20 @@ this repository contains the full copyright notices and license terms. -->
             <field name="model">stock.move</field>
             <field name="inherit" ref="stock.move_view_form"/>
             <field name="name">stock_move_form</field>
+        </record>
+    </data>
+
+    <data depends="stock_split">
+        <record model="ir.ui.view" id="shipment_drop_view_form_split">
+            <field name="model">stock.shipment.drop</field>
+            <field name="inherit" ref="shipment_drop_view_form"/>
+            <field name="name">shipment_drop_split_form</field>
+        </record>
+
+        <record model="ir.model.button" id="shipment_drop_split_wizard_button">
+            <field name="model">stock.shipment.drop</field>
+            <field name="name">split_wizard</field>
+            <field name="string">Split</field>
         </record>
     </data>
 

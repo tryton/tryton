@@ -74,7 +74,7 @@ Make a production with 2 unused component::
     >>> output.currency = company.currency
     >>> output.from_location = production.location
     >>> output.to_location = production.warehouse.storage_location
-    >>> production.click('done')
+    >>> production.click('do')
 
 Check output price::
 

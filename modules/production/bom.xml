@@ -41,14 +41,14 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
         <record model="ir.model.access" id="access_bom">
-            <field name="model" search="[('model', '=', 'production.bom')]"/>
+            <field name="model">production.bom</field>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="False"/>
             <field name="perm_create" eval="False"/>
             <field name="perm_delete" eval="False"/>
         </record>
         <record model="ir.model.access" id="access_bom_admin">
-            <field name="model" search="[('model', '=', 'production.bom')]"/>
+            <field name="model">production.bom</field>
             <field name="group" ref="group_production_admin"/>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="True"/>

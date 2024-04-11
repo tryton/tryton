@@ -12,6 +12,7 @@ def register():
     Pool.register(
         web.Shop,
         web.Shop_Warehouse,
+        web.Shop_Country,
         web.Shop_Product,
         web.Shop_ProductCategory,
         web.User,
@@ -28,3 +29,6 @@ def register():
     Pool.register(
         product.Image,
         module='web_shop', type_='model', depends=['product_image'])
+    Pool.register(
+        web.Shop_PriceList,
+        module='web_shop', type_='model', depends=['sale_price_list'])

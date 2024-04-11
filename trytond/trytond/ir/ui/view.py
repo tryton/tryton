@@ -4,10 +4,11 @@ import json
 import os
 
 from lxml import etree
+from sql import Literal, Null
 
 from trytond.cache import Cache, MemoryCache
 from trytond.i18n import gettext
-from trytond.model import Index, ModelSQL, ModelView, fields
+from trytond.model import Index, ModelSQL, ModelView, fields, sequence_ordered
 from trytond.model.exceptions import ValidationError
 from trytond.pool import Pool
 from trytond.pyson import PYSON, Bool, Eval, If, PYSONDecoder
@@ -23,14 +24,29 @@ class XMLError(ValidationError):
     pass
 
 
-class View(ModelSQL, ModelView):
+class View(
+        fields.fmany2one(
+            'model_ref', 'model', 'ir.model,model', "Model",
+            ondelete='CASCADE'),
+        fields.fmany2one(
+            'field_children', 'field_childs,model',
+            'ir.model.field,name,model',
+            "Children Field",
+            domain=[
+                ('model', '=', Eval('model')),
+                ],
+            states={
+                'invisible': Eval('type') != 'tree',
+                }),
+        fields.fmany2one(
+            'module_ref', 'module', 'ir.module,name', "Module",
+            readonly=True, ondelete='CASCADE'),
+        sequence_ordered('priority', "Priority"), ModelSQL, ModelView):
     "View"
     __name__ = 'ir.ui.view'
-    _rec_name = 'model'
     model = fields.Char('Model', states={
             'required': Eval('type') != 'board',
             })
-    priority = fields.Integer('Priority', required=True)
     type = fields.Selection([
             (None, ''),
             ('tree', 'Tree'),
@@ -54,8 +70,22 @@ class View(ModelSQL, ModelView):
     arch = fields.Function(fields.Text('View Architecture', states={
                 'readonly': Bool(Eval('name')),
                 }, depends=['name']), 'get_arch', setter='set_arch')
+    basis = fields.Function(fields.Boolean("Basis"), 'get_basis')
     inherit = fields.Many2One('ir.ui.view', 'Inherited View',
             ondelete='CASCADE')
+    extensions = fields.One2Many(
+        'ir.ui.view', 'inherit', "Extensions",
+        filter=[
+            ('basis', '=', False),
+            ],
+        domain=[
+            ('model', '=', Eval('model')),
+            ('type', '=', None),
+            ],
+        states={
+            'invisible': ~Eval('type'),
+            },
+        order=[('id', None)])
     field_childs = fields.Char('Children Field', states={
             'invisible': Eval('type') != 'tree',
             }, depends=['type'])
@@ -73,13 +103,14 @@ class View(ModelSQL, ModelView):
     def __setup__(cls):
         super(View, cls).__setup__()
         table = cls.__table__()
+        cls.priority.required = True
 
         cls.__rpc__['view_get'] = RPC(instantiate=0, cache=dict(days=1))
-        cls._order.insert(0, ('priority', 'ASC'))
         cls._buttons.update({
                 'show': {
                     'readonly': Eval('type') != 'form',
-                    'depends': ['type'],
+                    'invisible': ~Eval('basis', False),
+                    'depends': ['type', 'basis'],
                     },
                 })
         cls._sql_indexes.update({
@@ -100,10 +131,44 @@ class View(ModelSQL, ModelView):
     def default_module():
         return Transaction().context.get('module') or ''
 
+    def get_basis(self, name):
+        return not self.inherit or self.model != self.inherit.model
+
+    @classmethod
+    def domain_basis(cls, domain, tables):
+        table, _ = tables[None]
+        if 'inherit' not in tables:
+            inherit = cls.__table__()
+            tables['inherit'] = {
+                None: (inherit, table.inherit == inherit.id),
+                }
+        else:
+            inherit, _ = tables['inherit'][None]
+        expression = (table.inherit == Null) | (table.model != inherit.model)
+
+        _, operator, value = domain
+        if operator in {'=', '!='}:
+            if (operator == '=') != value:
+                expression = ~expression
+        elif operator in {'in', 'not in'}:
+            if True in value and False not in value:
+                pass
+            elif False in value and True not in value:
+                expression = ~expression
+            else:
+                expression = Literal(True)
+        else:
+            expression = Literal(True)
+        return expression
+
     def get_rec_name(self, name):
         return '%s (%s)' % (
-            self.model,
+            self.model_ref.rec_name,
             self.inherit.rec_name if self.inherit else self.type_string)
+
+    @classmethod
+    def search_rec_name(cls, name, clause):
+        return [('model_ref.rec_name', *clause[1:])]
 
     @classmethod
     @ModelView.button_action('ir.act_view_show')
@@ -375,10 +440,19 @@ class ShowView(Wizard):
             ])
 
 
-class ViewTreeWidth(ModelSQL, ModelView):
+class ViewTreeWidth(
+        fields.fmany2one(
+            'model_ref', 'model', 'ir.model,model', "Model",
+            required=True, ondelete='CASCADE'),
+        fields.fmany2one(
+            'field_ref', 'field,model', 'ir.model.field,name,model', "Field",
+            required=True, ondelete='CASCADE',
+            domain=[
+                ('model', '=', Eval('model')),
+                ]),
+        ModelSQL, ModelView):
     "View Tree Width"
     __name__ = 'ir.ui.view_tree_width'
-    _rec_name = 'model'
     model = fields.Char('Model', required=True)
     field = fields.Char('Field', required=True)
     user = fields.Many2One('res.user', 'User', required=True,
@@ -398,6 +472,21 @@ class ViewTreeWidth(ModelSQL, ModelView):
                 (table.user, Index.Equality()),
                 (table.model, Index.Equality()),
                 (table.field, Index.Equality())))
+
+    def get_rec_name(self, name):
+        return f'{self.field_ref.rec_name} @ {self.model_ref.rec_name}'
+
+    @classmethod
+    def search_rec_name(cls, name, clause):
+        operator = clause[1]
+        if operator.startswith('!') or operator.startswith('not '):
+            bool_op = 'AND'
+        else:
+            bool_op = 'OR'
+        return [bool_op,
+            ('model_ref.rec_name', *clause[1:]),
+            ('field_ref.rec_name', *clause[1:]),
+            ]
 
     @classmethod
     def delete(cls, records):

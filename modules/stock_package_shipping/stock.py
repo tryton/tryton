@@ -288,8 +288,8 @@ class ShipmentInReturn(ShippingMixin, metaclass=PoolMeta):
     @classmethod
     @ModelView.button
     @Workflow.transition('done')
-    def done(cls, shipments):
-        super().done(shipments)
+    def do(cls, shipments):
+        super().do(shipments)
         cls.check_no_carrier(shipments)
 
     @property

@@ -97,7 +97,7 @@ this repository contains the full copyright notices and license terms. -->
 
         <record model="ir.rule.group" id="rule_group_mandate_companies">
             <field name="name">User in companies</field>
-            <field name="model" search="[('model', '=', 'account.payment.sepa.mandate')]"/>
+            <field name="model">account.payment.sepa.mandate</field>
             <field name="global_p" eval="True"/>
         </record>
         <record model="ir.rule" id="rule_payment_companies">
@@ -108,14 +108,14 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
         <record model="ir.model.access" id="access_mandate">
-            <field name="model" search="[('model', '=', 'account.payment.sepa.mandate')]"/>
+            <field name="model">account.payment.sepa.mandate</field>
             <field name="perm_read" eval="False"/>
             <field name="perm_write" eval="False"/>
             <field name="perm_create" eval="False"/>
             <field name="perm_delete" eval="False"/>
         </record>
         <record model="ir.model.access" id="access_mandate_account_admin">
-            <field name="model" search="[('model', '=', 'account.payment.sepa.mandate')]"/>
+            <field name="model">account.payment.sepa.mandate</field>
             <field name="group" ref="account.group_account_admin"/>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="True"/>
@@ -123,7 +123,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="perm_delete" eval="True"/>
         </record>
         <record model="ir.model.access" id="access_mandate_account_payment">
-            <field name="model" search="[('model', '=', 'account.payment.sepa.mandate')]"/>
+            <field name="model">account.payment.sepa.mandate</field>
             <field name="group" ref="account_payment.group_payment"/>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="True"/>
@@ -132,32 +132,28 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
         <record model="ir.model.button" id="mandate_cancel_button">
+            <field name="model">account.payment.sepa.mandate</field>
             <field name="name">cancel</field>
             <field name="string">Cancel</field>
             <field name="confirm">Are you sure you want to cancel the mandate?</field>
-            <field name="model"
-                search="[('model', '=', 'account.payment.sepa.mandate')]"/>
         </record>
 
         <record model="ir.model.button" id="mandate_draft_button">
+            <field name="model">account.payment.sepa.mandate</field>
             <field name="name">draft</field>
             <field name="string">Draft</field>
-            <field name="model"
-                search="[('model', '=', 'account.payment.sepa.mandate')]"/>
         </record>
 
         <record model="ir.model.button" id="mandate_validate_mandate_button">
+            <field name="model">account.payment.sepa.mandate</field>
             <field name="name">validate_mandate</field>
             <field name="string">Validate</field>
-            <field name="model"
-                search="[('model', '=', 'account.payment.sepa.mandate')]"/>
         </record>
 
         <record model="ir.model.button" id="mandate_request_button">
+            <field name="model">account.payment.sepa.mandate</field>
             <field name="name">request</field>
             <field name="string">Request</field>
-            <field name="model"
-                search="[('model', '=', 'account.payment.sepa.mandate')]"/>
         </record>
 
         <record model="ir.sequence.type" id="sequence_type_mandate">
@@ -241,8 +237,7 @@ this repository contains the full copyright notices and license terms. -->
 
         <record model="ir.rule.group" id="rule_group_message_companies">
             <field name="name">User in companies</field>
-            <field name="model"
-                search="[('model', '=', 'account.payment.sepa.message')]"/>
+            <field name="model">account.payment.sepa.message</field>
             <field name="global_p" eval="True"/>
         </record>
         <record model="ir.rule" id="rule_message_companies">
@@ -253,15 +248,14 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
         <record model="ir.model.access" id="access_message">
-            <field name="model"
-                search="[('model', '=', 'account.payment.sepa.message')]"/>
+            <field name="model">account.payment.sepa.message</field>
             <field name="perm_read" eval="False"/>
             <field name="perm_write" eval="False"/>
             <field name="perm_create" eval="False"/>
             <field name="perm_delete" eval="False"/>
         </record>
         <record model="ir.model.access" id="access_message_account_admin">
-            <field name="model" search="[('model', '=', 'account.payment.sepa.message')]"/>
+            <field name="model">account.payment.sepa.message</field>
             <field name="group" ref="account.group_account_admin"/>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="True"/>
@@ -269,7 +263,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="perm_delete" eval="True"/>
         </record>
         <record model="ir.model.access" id="access_mmessage_account_payment">
-            <field name="model" search="[('model', '=', 'account.payment.sepa.message')]"/>
+            <field name="model">account.payment.sepa.message</field>
             <field name="group" ref="account_payment.group_payment"/>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="True"/>
@@ -278,40 +272,35 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
         <record model="ir.model.button" id="message_cancel_button">
+            <field name="model">account.payment.sepa.message</field>
             <field name="name">cancel</field>
             <field name="string">Cancel</field>
             <field name="confirm">Are you sure you want to cancel the messages?</field>
-            <field name="model"
-                search="[('model', '=', 'account.payment.sepa.message')]"/>
         </record>
 
         <record model="ir.model.button" id="message_draft_button">
+            <field name="model">account.payment.sepa.message</field>
             <field name="name">draft</field>
             <field name="string">Draft</field>
-            <field name="model"
-                search="[('model', '=', 'account.payment.sepa.message')]"/>
         </record>
 
         <record model="ir.model.button" id="message_wait_button">
+            <field name="model">account.payment.sepa.message</field>
             <field name="name">wait</field>
             <field name="string">Wait</field>
-            <field name="model"
-                search="[('model', '=', 'account.payment.sepa.message')]"/>
         </record>
 
         <record model="ir.model.button" id="message_do_button">
+            <field name="model">account.payment.sepa.message</field>
             <field name="name">do</field>
             <field name="string">Do</field>
             <field name="confirm">Are you sure you want to process the messages?</field>
-            <field name="model"
-                search="[('model', '=', 'account.payment.sepa.message')]"/>
         </record>
 
         <record model="ir.model.button" id="group_generate_message_button">
+            <field name="model">account.payment.group</field>
             <field name="name">sepa_generate_message</field>
             <field name="string">Generate SEPA Message</field>
-            <field name="model"
-                search="[('model', '=', 'account.payment.group')]"/>
         </record>
 
         <record model="ir.action.report" id="report_mandate">

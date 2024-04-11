@@ -5,8 +5,8 @@ this repository contains the full copyright notices and license terms. -->
     <xpath expr="//page[@id='general']" position="inside">
         <label name="wiz_name"/>
         <field name="wiz_name"/>
-        <label name="model"/>
-        <field name="model"/>
+        <label name="model_ref"/>
+        <field name="model_ref"/>
 
         <label name="window"/>
         <field name="window"/>

@@ -5,7 +5,6 @@ import time
 from collections import defaultdict
 from email.headerregistry import Address
 from email.message import EmailMessage
-from email.utils import getaddresses
 from functools import lru_cache, partial
 from urllib.parse import (
     parse_qs, parse_qsl, urlencode, urljoin, urlsplit, urlunsplit)
@@ -28,11 +27,10 @@ from trytond.model import (
 from trytond.pool import Pool
 from trytond.pyson import Eval
 from trytond.report import Report, get_email
-from trytond.sendmail import SMTPDataManager, sendmail_transactional
+from trytond.sendmail import SMTPDataManager, send_message_transactional
 from trytond.tools import grouped_slice, reduce_ids
 from trytond.tools.email_ import (
-    EmailNotValidError, convert_ascii_email, normalize_email, set_from_header,
-    validate_email)
+    EmailNotValidError, normalize_email, set_from_header, validate_email)
 from trytond.transaction import Transaction, inactive_records
 from trytond.url import http_host
 from trytond.wizard import Button, StateTransition, StateView, Wizard
@@ -317,8 +315,7 @@ class EmailList(DeactivableMixin, ModelSQL, ModelView):
             set_from_header(msg, from_cfg, from_ or from_cfg)
             msg['To'] = record.email
             msg['Subject'] = title
-            sendmail_transactional(
-                from_cfg, [convert_ascii_email(record.email)], msg)
+            send_message_transactional(msg)
 
     def request_unsubscribe(self, email, from_=None):
         pool = Pool()
@@ -343,8 +340,7 @@ class EmailList(DeactivableMixin, ModelSQL, ModelView):
                 set_from_header(msg, from_cfg, from_ or from_cfg)
                 msg['To'] = record.email
                 msg['Subject'] = title
-                sendmail_transactional(
-                    from_cfg, [convert_ascii_email(record.email)], msg)
+                send_message_transactional(msg)
 
 
 class Message(Workflow, ModelSQL, ModelView):
@@ -516,15 +512,16 @@ class Message(Workflow, ModelSQL, ModelView):
                 set_from_header(msg, from_cfg, message.from_ or from_cfg)
                 msg['To'] = to
                 msg['Subject'] = message.title
-                msg.set_content(content, subtype='html')
                 if html2text:
                     converter = html2text.HTML2Text()
                     content_text = converter.handle(content)
                     msg.add_alternative(content_text, subtype='plain')
+                if msg.is_multipart():
+                    msg.add_alternative(content, subtype='html')
+                else:
+                    msg.set_content(content, subtype='html')
 
-                sendmail_transactional(
-                    from_cfg, getaddresses([str(to)]), msg,
-                    datamanager=smtpd_datamanager)
+                send_message_transactional(msg, datamanager=smtpd_datamanager)
         if not emails:
             cls.sent(messages)
 

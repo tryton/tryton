@@ -192,7 +192,7 @@ Receive 50 products::
 
     >>> set_user(stock_user)
     >>> shipment.click('ship')
-    >>> shipment.click('done')
+    >>> shipment.click('do')
     >>> shipment.state
     'done'
     >>> set_user(account_user)

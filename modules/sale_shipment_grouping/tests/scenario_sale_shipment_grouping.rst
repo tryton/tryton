@@ -149,7 +149,7 @@ Check the shipments::
     ...     shipment.click('assign_try')
     ...     shipment.click('pick')
     ...     shipment.click('pack')
-    ...     shipment.click('done')
+    ...     shipment.click('do')
 
 Now we'll use the same scenario with the grouped customer::
 

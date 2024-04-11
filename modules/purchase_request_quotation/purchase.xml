@@ -66,33 +66,28 @@ this repository contains the full copyright notices and license terms. -->
             id="menu_purchase_request_quotation_form"/>
 
         <record model="ir.model.button" id="quotation_cancel_button">
+            <field name="model">purchase.request.quotation</field>
             <field name="name">cancel</field>
-            <field name="model"
-                search="[('model', '=', 'purchase.request.quotation')]"/>
         </record>
 
         <record model="ir.model.button" id="quotation_draft_button">
+            <field name="model">purchase.request.quotation</field>
             <field name="name">draft</field>
-            <field name="model"
-                search="[('model', '=', 'purchase.request.quotation')]"/>
         </record>
 
         <record model="ir.model.button" id="quotation_send_button">
+            <field name="model">purchase.request.quotation</field>
             <field name="name">send</field>
-            <field name="model"
-                search="[('model', '=', 'purchase.request.quotation')]"/>
         </record>
 
         <record model="ir.model.button" id="quotation_receive_button">
+            <field name="model">purchase.request.quotation</field>
             <field name="name">receive</field>
-            <field name="model"
-                search="[('model', '=', 'purchase.request.quotation')]"/>
         </record>
 
         <record model="ir.model.button" id="quotation_reject_button">
+            <field name="model">purchase.request.quotation</field>
             <field name="name">reject</field>
-            <field name="model"
-                search="[('model', '=', 'purchase.request.quotation')]"/>
         </record>
 
         <record model="ir.ui.view"
@@ -123,8 +118,7 @@ this repository contains the full copyright notices and license terms. -->
 
         <record model="ir.rule.group" id="rule_group_request_quotation_companies">
             <field name="name">User in companies</field>
-            <field name="model"
-                search="[('model', '=', 'purchase.request.quotation')]"/>
+            <field name="model">purchase.request.quotation</field>
             <field name="global_p" eval="True"/>
         </record>
         <record model="ir.rule" id="rule_request_quotation_companies">
@@ -135,8 +129,7 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
         <record model="ir.model.access" id="access_request_quotation">
-            <field name="model"
-                search="[('model', '=', 'purchase.request.quotation')]"/>
+            <field name="model">purchase.request.quotation</field>
             <field name="perm_read" eval="False"/>
             <field name="perm_write" eval="False"/>
             <field name="perm_create" eval="False"/>
@@ -144,8 +137,7 @@ this repository contains the full copyright notices and license terms. -->
         </record>
         <record model="ir.model.access"
             id="access_request_quotation_purchase_request">
-            <field name="model"
-                search="[('model', '=', 'purchase.request.quotation')]"/>
+            <field name="model">purchase.request.quotation</field>
             <field name="group" ref="purchase_request.group_purchase_request"/>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="True"/>
@@ -154,8 +146,7 @@ this repository contains the full copyright notices and license terms. -->
         </record>
         <record model="ir.model.access"
             id="access_request_quotation_purchase">
-            <field name="model"
-                search="[('model', '=', 'purchase.request.quotation')]"/>
+            <field name="model">purchase.request.quotation</field>
             <field name="group" ref="purchase.group_purchase"/>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="False"/>

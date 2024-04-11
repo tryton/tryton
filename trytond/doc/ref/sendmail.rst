@@ -10,7 +10,7 @@ Sendmail
 
    The required arguments are an :rfc:`5322` from-address string, a list of
    :rfc:`5322` to-address strings (a bare string is treated as a list with 1
-   address), and an email message.
+   address), and an :py:class:`email.message.Message`.
    The caller may pass a :class:`~trytond.transaction.Transaction` instance to
    join otherwise the current one is joined.
    A specific data manager can be specified otherwise the default
@@ -20,6 +20,12 @@ Sendmail
    .. warning::
 
       An SMTP failure is only logged without raising any exception.
+
+.. function:: send_message_transactional(msg[, from_addr[, to_addrs[, transaction[, datamanager[, strict]]]]])
+
+   It is a convenience method for calling :func:`sendmail_transactional`.
+   If ``from_addr`` is ``None`` or ``to_addrs`` is ``None``, if fills those
+   arguments with addresses extracted from the headers of ``msg``.
 
 .. function:: sendmail(from_addr, to_addrs, msg[, server[, strict]])
 
@@ -31,6 +37,11 @@ Sendmail
    instance comes from :meth:`get_smtp_server`.
    If strict is ``True``, an exception is raised if it is not possible to
    connect to the server.
+
+.. function:: send_message(msg[, from_addr[, to_addrs[, server[, strict]]]])
+
+   Same convenience method as :func:`send_message_transactional` but for
+   calling :func:`sendmail`.
 
 .. function:: get_smtp_server([uri[, strict]])
 

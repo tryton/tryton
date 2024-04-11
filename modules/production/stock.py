@@ -78,6 +78,11 @@ class Move(metaclass=PoolMeta):
                 'production.msg_stock_move_production_single'),
             ]
 
+    @fields.depends('production_output', '_parent_production_output.company')
+    def on_change_production_output(self):
+        if self.production_output and self.production_output.company:
+            self.currency = self.production_output.company.currency
+
     @fields.depends(
         'production_input', '_parent_production_input.id',
         'production_output', '_parent_production_output.id')

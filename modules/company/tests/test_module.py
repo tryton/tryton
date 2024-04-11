@@ -131,14 +131,14 @@ class CompanyTestMixin:
         for fname, models in to_check.items():
             rules = Rule.search([
                     ('rule_group', 'where', [
-                            ('model.model', 'in', list(models)),
+                            ('model', 'in', list(models)),
                             ('global_p', '=', True),
                             ('perm_read', '=', True),
                             ]),
                     ('domain', '=', PYSONEncoder(sort_keys=True).encode(
                             [(fname, 'in', Eval('companies', []))])),
                     ])
-            with_rules = {r.rule_group.model.model for r in rules}
+            with_rules = {r.rule_group.model for r in rules}
             self.assertGreaterEqual(with_rules, models,
                 msg='Models %(models)s are missing a global rule '
                 'for field "%(field)s"' % {

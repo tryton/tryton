@@ -468,7 +468,14 @@ class ActionMixin(ModelSQL):
             [('action', '=', action_id)], fields_names=fields, limit=1)
 
 
-class ActionReport(ActionMixin, ModelSQL, ModelView):
+class ActionReport(
+        fields.fmany2one(
+            'model_ref', 'model', 'ir.model,model', "Model",
+            ondelete='CASCADE'),
+        fields.fmany2one(
+            'module_ref', 'module', 'ir.module,name', "Module",
+            readonly=True, ondelete='CASCADE'),
+        ActionMixin, ModelSQL, ModelView):
     "Action report"
     __name__ = 'ir.action.report'
     _action_name = 'report_name'
@@ -615,7 +622,7 @@ class ActionReport(ActionMixin, ModelSQL, ModelView):
 
     @staticmethod
     def default_module():
-        return Transaction().context.get('module') or ''
+        return Transaction().context.get('module')
 
     def get_is_custom(self, name):
         return bool(self.report_content_custom)
@@ -731,7 +738,14 @@ class ActionReport(ActionMixin, ModelSQL, ModelView):
                         exception=exception)) from exception
 
 
-class ActionActWindow(ActionMixin, ModelSQL, ModelView):
+class ActionActWindow(
+        fields.fmany2one(
+            'res_model_ref', 'res_model', 'ir.model,model', "Model",
+            ondelete='CASCADE'),
+        fields.fmany2one(
+            'context_model_ref', 'context_model', 'ir.model,model',
+            "Context Model", ondelete='CASCADE'),
+        ActionMixin, ModelSQL, ModelView):
     "Action act window"
     __name__ = 'ir.action.act_window'
     domain = fields.Char('Domain Value')
@@ -939,7 +953,7 @@ class ActionActWindowView(
     view = fields.Many2One(
         'ir.ui.view', "View", required=True, ondelete='CASCADE',
         domain=[
-            ('model', '=', Eval('model')),
+            ('model', '=', Eval('model', None)),
             ])
     act_window = fields.Many2One('ir.action.act_window', 'Action',
             ondelete='CASCADE')
@@ -1071,7 +1085,11 @@ class ActionActWindowDomain(
         pool.get('ir.action.keyword')._get_keyword_cache.clear()
 
 
-class ActionWizard(ActionMixin, ModelSQL, ModelView):
+class ActionWizard(
+        fields.fmany2one(
+            'model_ref', 'model', 'ir.model,model', "Model",
+            ondelete='CASCADE'),
+        ActionMixin, ModelSQL, ModelView):
     "Action wizard"
     __name__ = 'ir.action.wizard'
     _action_name = 'wiz_name'

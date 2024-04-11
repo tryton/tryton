@@ -171,7 +171,7 @@ Receive 9 products::
     >>> shipment.incoming_moves.append(move)
     >>> move.quantity = 5.0
     >>> shipment.click('receive')
-    >>> shipment.click('done')
+    >>> shipment.click('do')
     >>> shipment.state
     'done'
     >>> stock_in.reload()
@@ -252,7 +252,7 @@ Send 5 products::
     >>> shipment.click('pack')
     >>> shipment.state
     'packed'
-    >>> shipment.click('done')
+    >>> shipment.click('do')
     >>> shipment.state
     'done'
     >>> stock_out.reload()
@@ -380,7 +380,7 @@ Now we will use a product with different unit of measure::
     0.0
     >>> shipment.incoming_moves.append(move)
     >>> shipment.click('receive')
-    >>> shipment.click('done')
+    >>> shipment.click('do')
 
     >>> set_user(accountant)
     >>> purchase.reload()

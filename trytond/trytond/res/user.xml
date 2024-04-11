@@ -54,14 +54,14 @@ this repository contains the full copyright notices and license terms. -->
             id="menu_user_form"/>
 
         <record model="ir.model.access" id="access_user">
-            <field name="model" search="[('model', '=', 'res.user')]"/>
+            <field name="model">res.user</field>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="False"/>
             <field name="perm_create" eval="False"/>
             <field name="perm_delete" eval="False"/>
         </record>
         <record model="ir.model.access" id="access_user_admin">
-            <field name="model" search="[('model', '=', 'res.user')]"/>
+            <field name="model">res.user</field>
             <field name="group" ref="group_admin"/>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="True"/>
@@ -69,11 +69,10 @@ this repository contains the full copyright notices and license terms. -->
             <field name="perm_delete" eval="True"/>
         </record>
         <record model="ir.model.button" id="user_reset_password_button">
+            <field name="model">res.user</field>
             <field name="name">reset_password</field>
             <field name="string">Reset Password</field>
             <field name="help">Send by email a new temporary password to the user</field>
-            <field name="model"
-                search="[('model', '=', 'res.user')]"/>
         </record>
 
         <record model="ir.ui.view" id="user_config_start_view_form">
@@ -107,7 +106,7 @@ this repository contains the full copyright notices and license terms. -->
 
         <record model="ir.rule.group" id="rule_group_user_warning">
             <field name="name">Own warning</field>
-            <field name="model" search="[('model', '=', 'res.user.warning')]"/>
+            <field name="model">res.user.warning</field>
             <field name="global_p" eval="True"/>
         </record>
         <record model="ir.rule" id="rule_user_warning1">
@@ -129,8 +128,7 @@ this repository contains the full copyright notices and license terms. -->
 
         <record model="ir.rule.group" id="rule_group_user_application">
             <field name="name">Own user application</field>
-            <field name="model"
-                search="[('model', '=', 'res.user.application')]"/>
+            <field name="model">res.user.application</field>
             <field name="global_p" eval="False"/>
             <field name="default_p" eval="True"/>
         </record>
@@ -141,8 +139,7 @@ this repository contains the full copyright notices and license terms. -->
 
         <record model="ir.rule.group" id="rule_group_user_application_admin">
             <field name="name">Any user application</field>
-            <field name="model"
-                search="[('model', '=', 'res.user.application')]"/>
+            <field name="model">res.user.application</field>
             <field name="global_p" eval="False"/>
             <field name="default_p" eval="False"/>
         </record>
@@ -165,16 +162,14 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
         <record model="ir.model.button" id="user_application_validate_button">
+            <field name="model">res.user.application</field>
             <field name="name">validate_</field>
             <field name="string">Validate</field>
-            <field name="model"
-                search="[('model', '=', 'res.user.application')]"/>
         </record>
         <record model="ir.model.button" id="user_application_cancel_button">
+            <field name="model">res.user.application</field>
             <field name="name">cancel</field>
             <field name="string">Cancel</field>
-            <field name="model"
-                search="[('model', '=', 'res.user.application')]"/>
         </record>
     </data>
 </tryton>

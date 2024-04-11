@@ -11,14 +11,15 @@ this repository contains the full copyright notices and license terms. -->
         <field name="direct_print" xexpand="0" width="25"/>
     </xpath>
     <xpath expr="//page[@id='general']" position="inside">
-        <label name="model"/>
-        <field name="model"/>
+        <label name="model_ref"/>
+        <field name="model_ref"/>
+        <label name="module_ref"/>
+        <field name="module_ref"/>
+
         <label name="report_name"/>
         <field name="report_name"/>
-
         <label name="record_name"/>
         <field name="record_name"/>
-        <newline/>
 
         <label name="report_content"/>
         <group col="-1" id="report_content">

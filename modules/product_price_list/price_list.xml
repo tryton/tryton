@@ -39,14 +39,14 @@ this repository contains the full copyright notices and license terms. -->
             id="menu_price_list"/>
 
         <record model="ir.model.access" id="access_price_list">
-            <field name="model" search="[('model', '=', 'product.price_list')]"/>
+            <field name="model">product.price_list</field>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="False"/>
             <field name="perm_create" eval="False"/>
             <field name="perm_delete" eval="False"/>
         </record>
         <record model="ir.model.access" id="access_price_list_admin">
-            <field name="model" search="[('model', '=', 'product.price_list')]"/>
+            <field name="model">product.price_list</field>
             <field name="group" ref="product.group_product_admin"/>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="True"/>
@@ -56,7 +56,7 @@ this repository contains the full copyright notices and license terms. -->
 
         <record model="ir.rule.group" id="rule_group_price_list_companies">
             <field name="name">User in companies</field>
-            <field name="model" search="[('model', '=', 'product.price_list')]"/>
+            <field name="model">product.price_list</field>
             <field name="global_p" eval="True"/>
         </record>
         <record model="ir.rule" id="rule_price_list_companies">

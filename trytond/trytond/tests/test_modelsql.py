@@ -308,6 +308,72 @@ class ModelSQLTestCase(unittest.TestCase):
                             }],
                     }])
 
+    @with_transaction()
+    def test_read_limit(self):
+        "Test that we limit the number or related records read"
+        pool = Pool()
+        Model = pool.get('test.modelsql.read')
+
+        model, = Model.create([{
+                    'name': 'Record',
+                    'targets': [
+                        ('create', [{'name': str(i)} for i in range(10)]),
+                        ]
+                    }])
+
+        values, = Model.read([model.id], ['targets.name'])
+        self.assertTrue(all('id' in t and 'name' in t
+                for t in values['targets.']))
+
+        with Transaction().set_context(related_read_limit=4):
+            values, = Model.read([model.id], ['targets.name'])
+            self.assertTrue(all('id' in t and 'name' in t
+                    for t in values['targets.'][:4]))
+            self.assertTrue(all('id' in t and len(t) == 1
+                    for t in values['targets.'][4:]))
+
+    @with_transaction()
+    def test_read_limit_only_limit_related(self):
+        "Test that we don't limit reading records with related_read_limit"
+        pool = Pool()
+        Model = pool.get('test.modelsql.read')
+
+        records = Model.create([
+                {
+                    'name': f'Record {i}',
+                    'targets': [
+                        ('create', [{'name': str(i)} for i in range(10)]),
+                        ]
+                    } for i in range(10)])
+        with Transaction().set_context(related_read_limit=4):
+            values = Model.read(
+                [r.id for r in records], ['name', 'targets.name'])
+            self.assertTrue(all('id' in v and 'name' in v for v in values))
+            self.assertTrue(all(len(v['targets.']) == 10 for v in values))
+
+    @with_transaction()
+    def test_read_limit_caching(self):
+        "Test that limiting the related records read plays nice with caching"
+        pool = Pool()
+        Model = pool.get('test.modelsql.read.limit')
+
+        records = Model.create([
+                {
+                    'name': f'Record {i}',
+                    'targets': [
+                        ('create', [{'name': str(j), 'integer': j}
+                                for j in range(1, i + 1)]),
+                        ],
+                    } for i in range(10)])
+
+        with Transaction().set_context(read_limit=4):
+            values = Model.read(
+                [r.id for r in records],
+                ['name', 'targets.name', 'sum_targets'])
+            computed = {r['name']: r['sum_targets'] for r in values}
+            expected = {f'Record {i}': i * (i + 1) // 2 for i in range(10)}
+            self.assertEqual(computed, expected)
+
     @unittest.skipIf(backend.name == 'sqlite',
         'SQLite not concerned because tryton don\'t set "NOT NULL"'
         'constraint: "ALTER TABLE" don\'t support NOT NULL constraint'

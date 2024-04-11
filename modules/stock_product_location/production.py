@@ -8,8 +8,8 @@ class Production(metaclass=PoolMeta):
     __name__ = 'production'
 
     @fields.depends('warehouse')
-    def _explode_move_values(self, type, bom_io, quantity):
-        move = super()._explode_move_values(type, bom_io, quantity)
+    def _move(self, type, product, unit, quantity):
+        move = super()._move(type, product, unit, quantity)
         if move and type == 'output' and self.warehouse:
             move.set_product_location(warehouse=self.warehouse.id)
         return move

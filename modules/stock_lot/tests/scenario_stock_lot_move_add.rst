@@ -12,7 +12,10 @@ Imports::
 
 Activate modules::
 
-    >>> config = activate_modules('stock_lot')
+    >>> modules = ['stock_lot']
+    >>> if globals().get('stock_split', False):
+    ...     modules.append('stock_split')
+    >>> config = activate_modules(modules)
 
 Create company::
 

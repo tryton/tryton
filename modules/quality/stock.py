@@ -30,9 +30,9 @@ class ShipmentIn(ControlledShipmentMixin, metaclass=PoolMeta):
     @classmethod
     @ModelView.button
     @ControlledMixin.control(
-        'done', 'quality.wizard_stock_shipment_in_inspect_done')
-    def done(cls, shipments):
-        return super().done(shipments)
+        'do', 'quality.wizard_stock_shipment_in_inspect_do')
+    def do(cls, shipments):
+        return super().do(shipments)
 
 
 class ShipmentOut(ControlledShipmentMixin, metaclass=PoolMeta):
@@ -66,9 +66,9 @@ class ShipmentOutReturn(ControlledShipmentMixin, metaclass=PoolMeta):
     @classmethod
     @ModelView.button
     @ControlledMixin.control(
-        'done', 'quality.wizard_stock_shipment_out_return_inspect_done')
-    def done(cls, shipments):
-        return super().done(shipments)
+        'do', 'quality.wizard_stock_shipment_out_return_inspect_do')
+    def do(cls, shipments):
+        return super().do(shipments)
 
 
 class ShipmentInternal(ControlledShipmentMixin, metaclass=PoolMeta):
@@ -84,6 +84,6 @@ class ShipmentInternal(ControlledShipmentMixin, metaclass=PoolMeta):
     @classmethod
     @ModelView.button
     @ControlledMixin.control(
-        'done', 'quality.wizard_stock_shipment_internal_inspect_done')
-    def done(cls, shipments):
-        return super().done(shipments)
+        'do', 'quality.wizard_stock_shipment_internal_inspect_do')
+    def do(cls, shipments):
+        return super().do(shipments)

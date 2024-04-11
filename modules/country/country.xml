@@ -53,14 +53,14 @@ this repository contains the full copyright notices and license terms. -->
             id="menu_organization_form"/>
 
         <record model="ir.model.access" id="access_organization">
-            <field name="model" search="[('model', '=', 'country.organization')]"/>
+            <field name="model">country.organization</field>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="False"/>
             <field name="perm_create" eval="False"/>
             <field name="perm_delete" eval="False"/>
         </record>
         <record model="ir.model.access" id="access_organization_admin">
-            <field name="model" search="[('model', '=', 'country.organization')]"/>
+            <field name="model">country.organization</field>
             <field name="group" ref="res.group_admin"/>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="True"/>
@@ -143,14 +143,14 @@ this repository contains the full copyright notices and license terms. -->
             id="menu_region_form"/>
 
         <record model="ir.model.access" id="access_region">
-            <field name="model" search="[('model', '=', 'country.region')]"/>
+            <field name="model">country.region</field>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="False"/>
             <field name="perm_create" eval="False"/>
             <field name="perm_delete" eval="False"/>
         </record>
         <record model="ir.model.access" id="access_region_admin">
-            <field name="model" search="[('model', '=', 'country.region')]"/>
+            <field name="model">country.region</field>
             <field name="group" ref="res.group_admin"/>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="True"/>
@@ -203,14 +203,14 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
         <record model="ir.model.access" id="access_country">
-            <field name="model" search="[('model', '=', 'country.country')]"/>
+            <field name="model">country.country</field>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="False"/>
             <field name="perm_create" eval="False"/>
             <field name="perm_delete" eval="False"/>
         </record>
         <record model="ir.model.access" id="access_country_admin">
-            <field name="model" search="[('model', '=', 'country.country')]"/>
+            <field name="model">country.country</field>
             <field name="group" ref="res.group_admin"/>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="True"/>
@@ -230,14 +230,14 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
         <record model="ir.model.access" id="access_subdivision">
-            <field name="model" search="[('model', '=', 'country.subdivision')]"/>
+            <field name="model">country.subdivision</field>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="False"/>
             <field name="perm_create" eval="False"/>
             <field name="perm_delete" eval="False"/>
         </record>
         <record model="ir.model.access" id="access_subdivision_admin">
-            <field name="model" search="[('model', '=', 'country.subdivision')]"/>
+            <field name="model">country.subdivision</field>
             <field name="group" ref="res.group_admin"/>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="True"/>
@@ -279,14 +279,14 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
         <record model="ir.model.access" id="access_postal_code">
-            <field name="model" search="[('model', '=', 'country.postal_code')]"/>
+            <field name="model">country.postal_code</field>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="False"/>
             <field name="perm_create" eval="False"/>
             <field name="perm_delete" eval="False"/>
         </record>
         <record model="ir.model.access" id="access_postal_code_admin">
-            <field name="model" search="[('model', '=', 'country.postal_code')]"/>
+            <field name="model">country.postal_code</field>
             <field name="group" ref="res.group_admin"/>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="True"/>

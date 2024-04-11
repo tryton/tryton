@@ -12,5 +12,7 @@ this repository contains the full copyright notices and license terms. -->
     <field name="quantity" symbol="unit" optional="0"/>
     <field name="unit_price"/>
     <field name="amount"/>
+    <field name="moves_progress" string="Shipping" widget="progressbar" optional="1"/>
+    <field name="invoice_progress" string="Invoicing" widget="progressbar" optional="1"/>
     <field name="sale_state"/>
 </tree>

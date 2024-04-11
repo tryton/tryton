@@ -22,16 +22,14 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
         <record model="ir.model.access" id="access_employee_cost_price">
-            <field name="model"
-                search="[('model', '=', 'company.employee_cost_price')]"/>
+            <field name="model">company.employee_cost_price</field>
             <field name="perm_read" eval="False"/>
             <field name="perm_write" eval="False"/>
             <field name="perm_create" eval="False"/>
             <field name="perm_delete" eval="False"/>
         </record>
         <record model="ir.model.access" id="access_employee_cost_price_admin">
-            <field name="model"
-                search="[('model', '=', 'company.employee_cost_price')]"/>
+            <field name="model">company.employee_cost_price</field>
             <field name="group" ref="company.group_employee_admin"/>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="True"/>
@@ -40,15 +38,15 @@ this repository contains the full copyright notices and license terms. -->
         </record>
         <record model="ir.model.field.access"
             id="model_field_access_employee_cost_price">
-            <field name="field"
-                search="[('model.model', '=', 'company.employee'), ('name', '=', 'cost_price')]"/>
+            <field name="model">company.employee</field>
+            <field name="field">cost_price</field>
             <field name="perm_read" eval="False"/>
             <field name="perm_write" eval="False"/>
         </record>
         <record model="ir.model.field.access"
             id="model_field_access_employee_cost_price_admin">
-            <field name="field"
-                search="[('model.model', '=', 'company.employee'), ('name', '=', 'cost_price')]"/>
+            <field name="model">company.employee</field>
+            <field name="field">cost_price</field>
             <field name="group" ref="company.group_employee_admin"/>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="True"/>

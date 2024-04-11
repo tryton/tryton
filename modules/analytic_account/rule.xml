@@ -37,8 +37,7 @@ this repository contains the full copyright notices and license terms. -->
 
         <record model="ir.rule.group" id="rule_group_rule_companies">
             <field name="name">User in companies</field>
-            <field name="model"
-                search="[('model', '=', 'analytic_account.rule')]"/>
+            <field name="model">analytic_account.rule</field>
             <field name="global_p" eval="True"/>
         </record>
         <record model="ir.rule" id="rule_rule_companies">
@@ -49,16 +48,14 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
         <record model="ir.model.access" id="access_rule">
-            <field name="model"
-                search="[('model', '=', 'analytic_account.rule')]"/>
+            <field name="model">analytic_account.rule</field>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="False"/>
             <field name="perm_create" eval="False"/>
             <field name="perm_delete" eval="False"/>
         </record>
         <record model="ir.model.access" id="access_rule_account_admin">
-            <field name="model"
-                search="[('model', '=', 'analytic_account.rule')]"/>
+            <field name="model">analytic_account.rule</field>
             <field name="group" ref="group_analytic_admin"/>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="True"/>

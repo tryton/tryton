@@ -9,4 +9,7 @@ this repository contains the full copyright notices and license terms. -->
     <field name="template_sequence"/>
     <label name="product_sequence"/>
     <field name="product_sequence"/>
+
+    <label name="category_sequence"/>
+    <field name="category_sequence"/>
 </form>

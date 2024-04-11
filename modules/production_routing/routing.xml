@@ -36,14 +36,14 @@ this repository contains the full copyright notices and license terms. -->
             id="menu_routing_list"/>
 
         <record model="ir.model.access" id="access_routing">
-            <field name="model" search="[('model', '=', 'production.routing')]"/>
+            <field name="model">production.routing</field>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="False"/>
             <field name="perm_create" eval="False"/>
             <field name="perm_delete" eval="False"/>
         </record>
         <record model="ir.model.access" id="access_routing_admin">
-            <field name="model" search="[('model', '=', 'production.routing')]"/>
+            <field name="model">production.routing</field>
             <field name="group" ref="production.group_production_admin"/>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="True"/>
@@ -84,14 +84,14 @@ this repository contains the full copyright notices and license terms. -->
             id="menu_operation_list"/>
 
         <record model="ir.model.access" id="access_operation">
-            <field name="model" search="[('model', '=', 'production.routing.operation')]"/>
+            <field name="model">production.routing.operation</field>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="False"/>
             <field name="perm_create" eval="False"/>
             <field name="perm_delete" eval="False"/>
         </record>
         <record model="ir.model.access" id="access_operation_admin">
-            <field name="model" search="[('model', '=', 'production.routing.operation')]"/>
+            <field name="model">production.routing.operation</field>
             <field name="group" ref="production.group_production_admin"/>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="True"/>

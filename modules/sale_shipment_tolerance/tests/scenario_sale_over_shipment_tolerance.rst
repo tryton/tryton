@@ -107,7 +107,7 @@ Over ship 12 products::
     >>> shipment.click('assign_force')
     >>> shipment.click('pick')
     >>> shipment.click('pack')
-    >>> shipment.click('done')
+    >>> shipment.click('do')
 
 No new shipment as shipped inside tolerance::
 

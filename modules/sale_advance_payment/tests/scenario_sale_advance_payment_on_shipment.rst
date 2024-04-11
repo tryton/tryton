@@ -134,7 +134,7 @@ Make a partial shipment::
     >>> shipment.click('assign_force')
     >>> shipment.click('pick')
     >>> shipment.click('pack')
-    >>> shipment.click('done')
+    >>> shipment.click('do')
 
     >>> sale.reload()
     >>> len(sale.shipments)
@@ -152,7 +152,7 @@ Ship backorder::
     >>> shipment.click('assign_force')
     >>> shipment.click('pick')
     >>> shipment.click('pack')
-    >>> shipment.click('done')
+    >>> shipment.click('do')
 
     >>> sale.reload()
     >>> len(sale.shipments)

@@ -67,7 +67,7 @@ this repository contains the full copyright notices and license terms. -->
 
         <record model="ir.rule.group" id="rule_group_attendance_companies">
             <field name="name">User in companies</field>
-            <field name="model" search="[('model', '=', 'attendance.line')]"/>
+            <field name="model">attendance.line</field>
             <field name="global_p" eval="True"/>
         </record>
         <record model="ir.rule" id="rule_attendance_companies">
@@ -78,7 +78,7 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
         <record model="ir.model.access" id="access_attendance">
-            <field name="model" search="[('model', '=', 'attendance.line')]"/>
+            <field name="model">attendance.line</field>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="True"/>
             <field name="perm_create" eval="True"/>
@@ -87,7 +87,7 @@ this repository contains the full copyright notices and license terms. -->
 
         <record model="ir.rule.group" id="rule_group_attendance">
             <field name="name">Own attendance</field>
-            <field name="model" search="[('model', '=', 'attendance.line')]"/>
+            <field name="model">attendance.line</field>
             <field name="global_p" eval="False"/>
             <field name="default_p" eval="True"/>
             <field name="perm_read" eval="False"/>
@@ -101,7 +101,7 @@ this repository contains the full copyright notices and license terms. -->
         </record>
         <record model="ir.rule.group" id="rule_group_attendance_admin">
             <field name="name">Any attendance</field>
-            <field name="model" search="[('model', '=', 'attendance.line')]"/>
+            <field name="model">attendance.line</field>
             <field name="global_p" eval="False"/>
             <field name="default_p" eval="False"/>
         </record>
@@ -144,7 +144,7 @@ this repository contains the full copyright notices and license terms. -->
 
         <record model="ir.rule.group" id="rule_group_period_companies">
             <field name="name">User in companies</field>
-            <field name="model" search="[('model', '=', 'attendance.period')]"/>
+            <field name="model">attendance.period</field>
             <field name="global_p" eval="True"/>
         </record>
         <record model="ir.rule" id="rule_period_companies">
@@ -155,14 +155,14 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
         <record model="ir.model.access" id="access_period">
-            <field name="model" search="[('model', '=', 'attendance.period')]"/>
+            <field name="model">attendance.period</field>
             <field name="perm_read" eval="False"/>
             <field name="perm_write" eval="False"/>
             <field name="perm_create" eval="False"/>
             <field name="perm_delete" eval="False"/>
         </record>
         <record model="ir.model.access" id="access_period_admin">
-            <field name="model" search="[('model', '=', 'attendance.period')]"/>
+            <field name="model">attendance.period</field>
             <field name="group" ref="group_attendance_admin"/>
             <field name="perm_read" eval="True"/>
             <field name="perm_read" eval="True"/>
@@ -172,15 +172,15 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
         <record model="ir.model.button" id="period_draft_button">
+            <field name="model">attendance.period</field>
             <field name="name">draft</field>
             <field name="string">Draft</field>
-            <field name="model" search="[('model', '=', 'attendance.period')]"/>
         </record>
 
         <record model="ir.model.button" id="period_close_button">
+            <field name="model">attendance.period</field>
             <field name="name">close</field>
             <field name="string">Close</field>
-            <field name="model" search="[('model', '=', 'attendance.period')]"/>
         </record>
 
         <record model="ir.ui.view" id="sheet_line_view_form">
@@ -197,7 +197,7 @@ this repository contains the full copyright notices and license terms. -->
 
         <record model="ir.rule.group" id="rule_group_sheet_line_companies">
             <field name="name">User in companies</field>
-            <field name="model" search="[('model', '=', 'attendance.sheet.line')]"/>
+            <field name="model">attendance.sheet.line</field>
             <field name="global_p" eval="True"/>
         </record>
         <record model="ir.rule" id="rule_sheet_line_companies">
@@ -209,7 +209,7 @@ this repository contains the full copyright notices and license terms. -->
 
         <record model="ir.rule.group" id="rule_group_sheet_line">
             <field name="name">Own attendance sheet line</field>
-            <field name="model" search="[('model', '=', 'attendance.sheet.line')]"/>
+            <field name="model">attendance.sheet.line</field>
             <field name="global_p" eval="False"/>
             <field name="default_p" eval="True"/>
             <field name="perm_read" eval="False"/>
@@ -223,7 +223,7 @@ this repository contains the full copyright notices and license terms. -->
         </record>
         <record model="ir.rule.group" id="rule_group_sheet_line_admin">
             <field name="name">Any attendance sheet line</field>
-            <field name="model" search="[('model', '=', 'attendance.sheet.line')]"/>
+            <field name="model">attendance.sheet.line</field>
             <field name="global_p" eval="False"/>
             <field name="default_p" eval="False"/>
         </record>
@@ -261,7 +261,7 @@ this repository contains the full copyright notices and license terms. -->
 
         <record model="ir.rule.group" id="rule_group_sheet_companies">
             <field name="name">User in companies</field>
-            <field name="model" search="[('model', '=', 'attendance.sheet')]"/>
+            <field name="model">attendance.sheet</field>
             <field name="global_p" eval="True"/>
         </record>
         <record model="ir.rule" id="rule_sheet_companies">
@@ -273,7 +273,7 @@ this repository contains the full copyright notices and license terms. -->
 
         <record model="ir.rule.group" id="rule_group_sheet">
             <field name="name">Own attendance sheet</field>
-            <field name="model" search="[('model', '=', 'attendance.sheet')]"/>
+            <field name="model">attendance.sheet</field>
             <field name="global_p" eval="False"/>
             <field name="default_p" eval="True"/>
             <field name="perm_read" eval="False"/>
@@ -287,7 +287,7 @@ this repository contains the full copyright notices and license terms. -->
         </record>
         <record model="ir.rule.group" id="rule_group_sheet_admin">
             <field name="name">Any attendance sheet</field>
-            <field name="model" search="[('model', '=', 'attendance.sheet')]"/>
+            <field name="model">attendance.sheet</field>
             <field name="global_p" eval="False"/>
             <field name="default_p" eval="False"/>
         </record>

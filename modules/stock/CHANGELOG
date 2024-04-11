@@ -1,3 +1,4 @@
+* Rename 'done' button to 'do'
 * Add location name fields to move
 * Unify shipment assignation scheduled jobs
 * Fill shipment number only in waiting state

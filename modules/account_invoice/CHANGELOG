@@ -1,3 +1,4 @@
+* Raise a warning when validating invoice with non default taxes
 * Book currency exchange amount in dedicated account
 
 Version 7.0.0 - 2023-10-30

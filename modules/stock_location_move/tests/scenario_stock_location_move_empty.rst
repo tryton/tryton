@@ -134,7 +134,7 @@ Ship 1 product from the locations::
     >>> shipment.click('assign_try')
     >>> shipment.click('pick')
     >>> shipment.click('pack')
-    >>> shipment.click('done')
+    >>> shipment.click('do')
 
 Check empty non movable location are still active::
 

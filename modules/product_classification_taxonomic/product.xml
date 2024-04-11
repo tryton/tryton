@@ -66,14 +66,14 @@ this repository contains the full copyright notices and license terms. -->
             icon="tryton-list"/>
 
         <record model="ir.model.access" id="access_taxon">
-            <field name="model" search="[('model', '=', 'product.taxon')]"/>
+            <field name="model">product.taxon</field>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="False"/>
             <field name="perm_create" eval="False"/>
             <field name="perm_delete" eval="False"/>
         </record>
         <record model="ir.model.access" id="access_taxon_admin">
-            <field name="model" search="[('model', '=', 'product.taxon')]"/>
+            <field name="model">product.taxon</field>
             <field name="group" ref="product.group_product_admin"/>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="True"/>
@@ -114,14 +114,14 @@ this repository contains the full copyright notices and license terms. -->
             icon="tryton-list"/>
 
         <record model="ir.model.access" id="access_cultivar">
-            <field name="model" search="[('model', '=', 'product.cultivar')]"/>
+            <field name="model">product.cultivar</field>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="False"/>
             <field name="perm_create" eval="False"/>
             <field name="perm_delete" eval="False"/>
         </record>
         <record model="ir.model.access" id="access_cultivar_admin">
-            <field name="model" search="[('model', '=', 'product.cultivar')]"/>
+            <field name="model">product.cultivar</field>
             <field name="group" ref="product.group_product_admin"/>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="True"/>
@@ -161,14 +161,14 @@ this repository contains the full copyright notices and license terms. -->
             id="menu_cultivar_group"/>
 
         <record model="ir.model.access" id="access_cultivar_group">
-            <field name="model" search="[('model', '=', 'product.cultivar.group')]"/>
+            <field name="model">product.cultivar.group</field>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="False"/>
             <field name="perm_create" eval="False"/>
             <field name="perm_delete" eval="False"/>
         </record>
         <record model="ir.model.access" id="access_cultivar_group_admin">
-            <field name="model" search="[('model', '=', 'product.cultivar.group')]"/>
+            <field name="model">product.cultivar.group</field>
             <field name="group" ref="product.group_product_admin"/>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="True"/>

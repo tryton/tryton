@@ -17,14 +17,17 @@ class DomainError(ValidationError):
     pass
 
 
-class RuleGroup(ModelSQL, ModelView):
+class RuleGroup(
+        fields.fmany2one(
+            'model_ref', 'model', 'ir.model,model', "Model",
+            required=True, ondelete='CASCADE'),
+        ModelSQL, ModelView):
     "Rule group"
     __name__ = 'ir.rule.group'
     name = fields.Char(
         "Name", translate=True, required=True,
         help="Displayed to users when access error is raised for this rule.")
-    model = fields.Many2One('ir.model', 'Model',
-        required=True, ondelete='CASCADE')
+    model = fields.Char("Model", required=True)
     global_p = fields.Boolean('Global',
         help="Make the rule global \nso every users must follow this rule.")
     default_p = fields.Boolean('Default',
@@ -54,6 +57,29 @@ class RuleGroup(ModelSQL, ModelView):
         cls._sql_indexes.update({
                 Index(t, (t.model, Index.Equality())),
                 })
+
+    @classmethod
+    def __register__(cls, module):
+        pool = Pool()
+        Model = pool.get('ir.model')
+        transaction = Transaction()
+        cursor = transaction.connection.cursor()
+        table_h = cls.__table_handler__(module)
+        table = cls.__table__()
+        model = Model.__table__()
+
+        # Migration from 7.0: model as char
+        if (table_h.column_exist('model')
+                and table_h.column_is_type('model', 'INTEGER')):
+            table_h.column_rename('model', '_temp_model')
+            table_h.add_column('model', 'VARCHAR')
+            cursor.execute(*table.update(
+                    [table.model], [model.model],
+                    from_=[model],
+                    where=table._temp_model == model.id))
+            table_h.drop_column('_temp_model')
+
+        super().__register__(module)
 
     @staticmethod
     def default_global_p():
@@ -130,7 +156,7 @@ class Rule(ModelSQL, ModelView):
         if field_names and 'domain' not in field_names:
             return
         for rule in rules:
-            ctx = cls._get_context(rule.rule_group.model.model)
+            ctx = cls._get_context(rule.rule_group.model)
             try:
                 value = PYSONDecoder(ctx).decode(rule.domain)
             except Exception:
@@ -166,13 +192,11 @@ class Rule(ModelSQL, ModelView):
         "Return dictionary of non-global and global rules"
         pool = Pool()
         RuleGroup = pool.get('ir.rule.group')
-        Model = pool.get('ir.model')
         RuleGroup_Group = pool.get('ir.rule.group-res.group')
         User = pool.get('res.user')
         rule_table = cls.__table__()
         rule_group = RuleGroup.__table__()
         rule_group_group = RuleGroup_Group.__table__()
-        model = Model.__table__()
         transaction = Transaction()
 
         assert mode in cls.modes
@@ -204,12 +228,10 @@ class Rule(ModelSQL, ModelView):
             return {}, {}
         cursor.execute(*rule_table.join(rule_group,
                 condition=rule_group.id == rule_table.rule_group
-                ).join(model,
-                condition=rule_group.model == model.id
                 ).join(rule_group_group, 'LEFT',
                 condition=rule_group_group.rule_group == rule_group.id
                 ).select(rule_table.id,
-                where=(model.model.in_(model_names))
+                where=(rule_group.model.in_(model_names))
                 & (getattr(rule_group, 'perm_%s' % mode) == Literal(True))
                 & (rule_group_group.group.in_(groups or [-1])
                     | (rule_group.default_p == Literal(True))
@@ -218,12 +240,10 @@ class Rule(ModelSQL, ModelView):
         ids = [x for x, in cursor]
 
         # Test if there is no rule_group that have no rule
-        cursor.execute(*rule_group.join(model,
-                condition=rule_group.model == model.id
-                ).join(rule_group_group, 'LEFT',
+        cursor.execute(*rule_group.join(rule_group_group, 'LEFT',
                 condition=rule_group_group.rule_group == rule_group.id
                 ).select(rule_group.id,
-                where=(model.model.in_(model_names))
+                where=(rule_group.model.in_(model_names))
                 & ~rule_group.id.in_(rule_table.select(rule_table.rule_group))
                 & rule_group_group.group.in_(groups or [-1])))
         no_rules = cursor.fetchone()
@@ -235,11 +255,11 @@ class Rule(ModelSQL, ModelView):
             rules = cls.browse(ids)
         for rule in rules:
             decoder = PYSONDecoder(
-                cls._get_context(rule.rule_group.model.model))
+                cls._get_context(rule.rule_group.model))
             assert rule.domain, ('Rule domain empty,'
                 'check if migration was done')
             dom = decoder.decode(rule.domain)
-            target_model = rule.rule_group.model.model
+            target_model = rule.rule_group.model
             if target_model in model2field:
                 target_dom = ['OR']
                 for field in model2field[target_model]:

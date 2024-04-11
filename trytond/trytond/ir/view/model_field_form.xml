@@ -4,8 +4,8 @@ this repository contains the full copyright notices and license terms. -->
 <form>
     <label name="name"/>
     <field name="name"/>
-    <label name="model"/>
-    <field name="model" readonly="1"/>
+    <label name="model_ref"/>
+    <field name="model_ref"/>
     <label name="ttype"/>
     <field name="ttype"/>
     <label name="relation"/>
@@ -16,6 +16,6 @@ this repository contains the full copyright notices and license terms. -->
     <field name="help" colspan="3"/>
     <label name="access"/>
     <field name="access"/>
-    <label name="module"/>
-    <field name="module"/>
+    <label name="module_ref"/>
+    <field name="module_ref"/>
 </form>

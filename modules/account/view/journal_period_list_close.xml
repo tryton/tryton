@@ -2,9 +2,10 @@
 <!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
 this repository contains the full copyright notices and license terms. -->
 <tree>
+    <field name="company" expand="1" optional="1"/>
     <field name="journal" icon="icon" expand="1"/>
     <field name="period" expand="1"/>
-    <button name="reopen" string="Re-Open"/>
-    <button name="close" string="Close"/>
+    <button name="reopen"/>
+    <button name="close"/>
     <field name="state" tree_invisible="1"/>
 </tree>

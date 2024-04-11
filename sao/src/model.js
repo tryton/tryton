@@ -3,6 +3,39 @@
 (function() {
     'use strict';
 
+    function get_x2m_sub_fields(f_attrs, prefix) {
+        if (f_attrs.loading == 'eager' && f_attrs.views) {
+            // There's only one key but we don't know its value
+            const [[, view],] = Object.entries(f_attrs.views);
+
+            const sub_fields = view.fields || {};
+            const x2m_sub_fields = [];
+
+            for (const [s_field, f_def] of Object.entries(sub_fields)) {
+                x2m_sub_fields.push(`${prefix}.${s_field}`);
+
+                var type_ = f_def.type;
+                if (['many2one', 'one2one', 'reference'].includes(type_)) {
+                    x2m_sub_fields.push(`${prefix}.${s_field}.rec_name`);
+                } else if (['selection', 'multiselection'].includes(type_)) {
+                    x2m_sub_fields.push(`${prefix}.${s_field}:string`);
+                } else if (['one2many', 'many2many'].includes(type_)) {
+                    x2m_sub_fields.push(
+                        ...get_x2m_sub_fields(f_def, `${prefix}.${s_field}`)
+                    );
+                }
+            }
+
+            x2m_sub_fields.push(
+                `${prefix}._timestamp`,
+                `${prefix}._write`,
+                `${prefix}._delete`);
+            return x2m_sub_fields;
+        } else {
+            return [];
+        }
+    }
+
     Sao.Model = Sao.class_(Object, {
         init: function(name, attributes) {
             attributes = attributes || {};
@@ -78,7 +111,7 @@
                 this.__readonly = value;
             }
         });
-        array.load = function(ids, modified=false, position=-1) {
+        array.load = function(ids, modified=false, position=-1, preloaded=null) {
             if (position == -1) {
                 position = this.length;
             }
@@ -90,6 +123,9 @@
                     new_record.group = this;
                     this.splice(position, 0, new_record);
                     position += 1;
+                }
+                if (preloaded && (id in preloaded)) {
+                    new_record.set(preloaded[id], false, false);
                 }
                 new_records.push(new_record);
             }
@@ -666,6 +702,7 @@
                     fnames.push(fname);
                 }
             }
+            var related_read_limit = null;
             var fnames_to_fetch = fnames.slice();
             var rec_named_fields = ['many2one', 'one2one', 'reference'];
             const selection_fields = ['selection', 'multiselection'];
@@ -676,6 +713,13 @@
                 else if (~selection_fields.indexOf(fdescription.type) &&
                     ((fdescription.loading || 'lazy') == 'eager')) {
                     fnames_to_fetch.push(fname + ':string');
+                } else if (
+                    ['many2many', 'one2many'].includes(fdescription.type)) {
+                    var sub_fields = get_x2m_sub_fields(fdescription, fname);
+                    fnames_to_fetch = [ ...fnames_to_fetch, ...sub_fields];
+                    if (sub_fields.length > 0) {
+                        related_read_limit = Sao.config.display_size;
+                    }
                 }
             }
             if (!~fnames.indexOf('rec_name')) {
@@ -686,6 +730,9 @@
             fnames_to_fetch.push('_delete');
 
             var context = jQuery.extend({}, this.get_context());
+            if (related_read_limit) {
+                context.related_read_limit = related_read_limit;
+            }
             if (loading == 'eager') {
                 var limit = Math.trunc(Sao.config.limit /
                     Math.min(fnames_to_fetch.length, 10));
@@ -845,7 +892,7 @@
             }
             for (name in later) {
                 value = later[name];
-                this.model.fields[name].set(this, value);
+                this.model.fields[name].set(this, value, false, values[`${name}.`]);
                 this._loaded[name] = true;
                 fieldnames.push(name);
             }
@@ -2183,7 +2230,7 @@
         },
         _default: null,
         _single_value: false,
-        _set_value: function(record, value, default_, modified) {
+        _set_value: function(record, value, default_, modified, data) {
             this._set_default_value(record);
             var group = record._values[this.name];
             if (jQuery.isEmptyObject(value)) {
@@ -2196,29 +2243,64 @@
             } else {
                 mode = 'list values';
             }
-            if (mode == 'list values') {
+            if ((mode == 'list values') || data) {
                 var context = this.get_context(record);
-                let field_names = new Set();
-                for (const val of value) {
-                    for (const fieldname in val) {
-                        if (!(fieldname in group.model.fields) &&
-                                (!~fieldname.indexOf('.'))) {
-                            field_names.add(fieldname);
+                var value_fields = new Set();
+                if (mode == 'list values') {
+                    for (const v of value) {
+                        for (const f of Object.keys(v)) {
+                            value_fields.add(f);
+                        }
+                    }
+                } else {
+                    for (const d of data) {
+                        for (const f in d) {
+                            value_fields.add(f);
                         }
                     }
                 }
-                if (field_names.size) {
+                let field_names = new Set();
+                for (const fieldname of value_fields) {
+                    if (!(fieldname in group.model.fields) &&
+                            (!~fieldname.indexOf('.')) &&
+                            (!~fieldname.indexOf(':')) &&
+                            (!fieldname.startsWith('_'))) {
+                        field_names.add(fieldname);
+                    }
+                }
+                var attr_fields = Object.values(this.description.views || {})
+                    .map(v => v.fields)
+                    .reduce((acc, elem) => {
+                        for (const field in elem) {
+                            acc[field] = elem[field];
+                        }
+                        return acc;
+                    }, {});
+                var fields = {};
+                for (const n of field_names) {
+                    if (n in attr_fields) {
+                        fields[n] = attr_fields[n];
+                    }
+                }
+
+                var to_fetch = Array.from(field_names).filter(k => !(k in attr_fields));
+                if (to_fetch.length) {
                     var args = {
                         'method': 'model.' + this.description.relation +
                             '.fields_get',
-                        'params': [Array.from(field_names), context]
+                        'params': [to_fetch, context]
                     };
-                    var fields;
                     try {
-                        fields = Sao.rpc(args, record.model.session, false);
+                        var rpc_fields = Sao.rpc(
+                            args, record.model.session, false);
+                        for (const [key, value] of Object.entries(rpc_fields)) {
+                            fields[key] = value;
+                        }
                     } catch (e) {
                         return;
                     }
+                }
+                if (!jQuery.isEmptyObject(fields)) {
                     group.add_fields(fields);
                 }
             }
@@ -2232,7 +2314,11 @@
                 for (const record_to_remove of records_to_remove) {
                     group.remove(record_to_remove, true, false, false);
                 }
-                group.load(value, modified || default_);
+                var preloaded = {};
+                for (const d of (data || [])) {
+                    preloaded[d.id] = d;
+                }
+                group.load(value, modified || default_, -1, preloaded);
             } else {
                 for (const vals of value) {
                     var new_record;
@@ -2257,7 +2343,7 @@
                 group.record_modified();
             }
         },
-        set: function(record, value, _default=false) {
+        set: function(record, value, _default=false, data=null) {
             var group = record._values[this.name];
             var model;
             if (group !== undefined) {
@@ -2270,7 +2356,7 @@
             }
             record._values[this.name] = undefined;
             this._set_default_value(record, model);
-            this._set_value(record, value, _default);
+            this._set_value(record, value, _default, undefined, data);
         },
         get: function(record) {
             var group = record._values[this.name];

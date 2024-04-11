@@ -234,12 +234,12 @@ class ShipmentOutCostMixin(ShipmentCostMixin):
     @classmethod
     @ModelView.button
     @Workflow.transition('done')
-    def done(cls, shipments):
+    def do(cls, shipments):
         for shipment in shipments:
             shipment.cost = shipment.cost_used
             shipment.cost_currency = shipment.cost_currency_used
         cls.save(shipments)
-        super().done(shipments)
+        super().do(shipments)
         cls.set_shipment_cost(shipments)
 
 

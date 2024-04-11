@@ -32,14 +32,14 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
         <record model="ir.model.access" id="access_email">
-            <field name="model" search="[('model', '=', 'marketing.email')]"/>
+            <field name="model">marketing.email</field>
             <field name="perm_read" eval="False"/>
             <field name="perm_write" eval="False"/>
             <field name="perm_create" eval="False"/>
             <field name="perm_delete" eval="False"/>
         </record>
         <record model="ir.model.access" id="access_email_marketing_email">
-            <field name="model" search="[('model', '=', 'marketing.email')]"/>
+            <field name="model">marketing.email</field>
             <field name="group" ref="marketing.group_marketing"/>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="True"/>
@@ -80,14 +80,14 @@ this repository contains the full copyright notices and license terms. -->
             id="menu_email_list_form"/>
 
         <record model="ir.model.access" id="access_email_list">
-            <field name="model" search="[('model', '=', 'marketing.email.list')]"/>
+            <field name="model">marketing.email.list</field>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="False"/>
             <field name="perm_create" eval="False"/>
             <field name="perm_delete" eval="False"/>
         </record>
         <record model="ir.model.access" id="access_email_list_marketing_email">
-            <field name="model" search="[('model', '=', 'marketing.email.list')]"/>
+            <field name="model">marketing.email.list</field>
             <field name="group" ref="marketing.group_marketing"/>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="True"/>
@@ -164,32 +164,32 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
         <record model="ir.model.button" id="message_draft_button">
+            <field name="model">marketing.email.message</field>
             <field name="name">draft</field>
             <field name="string">Draft</field>
-            <field name="model" search="[('model', '=', 'marketing.email.message')]"/>
         </record>
 
         <record model="ir.model.button" id="message_send_button">
+            <field name="model">marketing.email.message</field>
             <field name="name">send</field>
             <field name="string">Send</field>
-            <field name="model" search="[('model', '=', 'marketing.email.message')]"/>
         </record>
 
         <record model="ir.model.button" id="message_send_test_button">
+            <field name="model">marketing.email.message</field>
             <field name="name">send_test</field>
             <field name="string">Send Test</field>
-            <field name="model" search="[('model', '=', 'marketing.email.message')]"/>
         </record>
 
         <record model="ir.model.access" id="access_email_message">
-            <field name="model" search="[('model', '=', 'marketing.email.message')]"/>
+            <field name="model">marketing.email.message</field>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="False"/>
             <field name="perm_create" eval="False"/>
             <field name="perm_delete" eval="False"/>
         </record>
         <record model="ir.model.access" id="access_email_message_marketing_email">
-            <field name="model" search="[('model', '=', 'marketing.email.message')]"/>
+            <field name="model">marketing.email.message</field>
             <field name="group" ref="marketing.group_marketing"/>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="True"/>

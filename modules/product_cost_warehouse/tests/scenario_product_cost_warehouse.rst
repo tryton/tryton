@@ -181,7 +181,7 @@ Transfer 1 product between warehouses::
     >>> move.cost_price
     Decimal('90.0000')
 
-    >>> shipment.click('done')
+    >>> shipment.click('do')
     >>> shipment.state
     'done'
     >>> move, = shipment.incoming_moves

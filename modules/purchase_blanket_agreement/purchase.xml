@@ -89,37 +89,37 @@ this repository contains the full copyright notices and license terms. -->
             id="menu_purchase_blanket_agreement"/>
 
         <record model="ir.model.button" id="purchase_blanket_agreement_cancel_button">
+            <field name="model">purchase.blanket_agreement</field>
             <field name="name">cancel</field>
             <field name="string">Cancel</field>
-            <field name="model" search="[('model', '=', 'purchase.blanket_agreement')]"/>
         </record>
 
         <record model="ir.model.button" id="purchase_blanket_agreement_draft_button">
+            <field name="model">purchase.blanket_agreement</field>
             <field name="name">draft</field>
             <field name="string">Draft</field>
-            <field name="model" search="[('model', '=', 'purchase.blanket_agreement')]"/>
         </record>
 
         <record model="ir.model.button" id="purchase_blanket_agreement_run_button">
+            <field name="model">purchase.blanket_agreement</field>
             <field name="name">run</field>
             <field name="string">Run</field>
-            <field name="model" search="[('model', '=', 'purchase.blanket_agreement')]"/>
         </record>
 
         <record model="ir.model.button" id="purchase_blanket_agreement_create_purchase_button">
+            <field name="model">purchase.blanket_agreement</field>
             <field name="name">create_purchase</field>
             <field name="string">Create a Purchase</field>
-            <field name="model" search="[('model', '=', 'purchase.blanket_agreement')]"/>
         </record>
 
         <record model="ir.model.button" id="purchase_blanket_agreement_close_button">
+            <field name="model">purchase.blanket_agreement</field>
             <field name="name">close</field>
             <field name="string">Close</field>
-            <field name="model" search="[('model', '=', 'purchase.blanket_agreement')]"/>
         </record>
 
         <record model="ir.model.access" id="access_purchase_blanket_agreement">
-            <field name="model" search="[('model', '=', 'purchase.blanket_agreement')]"/>
+            <field name="model">purchase.blanket_agreement</field>
             <field name="perm_read" eval="False"/>
             <field name="perm_write" eval="False"/>
             <field name="perm_create" eval="False"/>
@@ -127,7 +127,7 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
         <record model="ir.model.access" id="access_purchase_blanket_agreement_group_purchase">
-            <field name="model" search="[('model', '=', 'purchase.blanket_agreement')]"/>
+            <field name="model">purchase.blanket_agreement</field>
             <field name="group" ref="purchase.group_purchase"/>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="False"/>
@@ -136,7 +136,7 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
         <record model="ir.model.access" id="access_purchase_blanket_agreement_group_purchase_blanket_agreement">
-            <field name="model" search="[('model', '=', 'purchase.blanket_agreement')]"/>
+            <field name="model">purchase.blanket_agreement</field>
             <field name="group" ref="group_purchase_blanket_agreement"/>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="True"/>
@@ -146,7 +146,7 @@ this repository contains the full copyright notices and license terms. -->
 
         <record model="ir.rule.group" id="rule_group_purchase_blanket_agreement_companies">
             <field name="name">Purchases Blanket Agreement</field>
-            <field name="model" search="[('model', '=', 'purchase.blanket_agreement')]"/>
+            <field name="model">purchase.blanket_agreement</field>
             <field name="global_p" eval="True"/>
         </record>
         <record model="ir.rule" id="rule_purchase_blanket_agreement_companies">

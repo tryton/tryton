@@ -65,7 +65,7 @@ this repository contains the full copyright notices and license terms. -->
             id="menu_move_line_form"/>
 
         <record model="ir.model.access" id="access_move_line_payment">
-            <field name="model" search="[('model', '=', 'account.move.line')]"/>
+            <field name="model">account.move.line</field>
             <field name="group" ref="group_payment"/>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="False"/>
@@ -118,9 +118,9 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
         <record model="ir.model.button" id="move_line_pay_button">
+            <field name="model">account.move.line</field>
             <field name="name">pay</field>
             <field name="string">Pay</field>
-            <field name="model" search="[('model', '=', 'account.move.line')]"/>
         </record>
         <record model="ir.model.button-res.group" id="move_line_pay_button_group_payment">
             <field name="button" ref="move_line_pay_button"/>
@@ -128,9 +128,9 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
         <record model="ir.model.button" id="move_line_payment_block_button">
+            <field name="model">account.move.line</field>
             <field name="name">payment_block</field>
             <field name="string">Block</field>
-            <field name="model" search="[('model', '=', 'account.move.line')]"/>
         </record>
         <record model="ir.model.button-res.group"
             id="move_line_payment_block_button_group_payment">
@@ -139,9 +139,9 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
         <record model="ir.model.button" id="move_line_payment_unblock_button">
+            <field name="model">account.move.line</field>
             <field name="name">payment_unblock</field>
             <field name="string">Unblock</field>
-            <field name="model" search="[('model', '=', 'account.move.line')]"/>
         </record>
         <record model="ir.model.button-res.group"
             id="move_line_payment_unblock_button_group_payment">

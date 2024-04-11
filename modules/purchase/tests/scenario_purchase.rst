@@ -263,7 +263,7 @@ Validate Shipments::
     >>> shipment.save()
     >>> assertEqual(shipment.origins, purchase.rec_name)
     >>> shipment.click('receive')
-    >>> shipment.click('done')
+    >>> shipment.click('do')
     >>> purchase.reload()
     >>> purchase.shipment_state
     'received'
@@ -345,7 +345,7 @@ Check Return Shipments::
     >>> move_return.quantity
     4.0
     >>> ship_return.click('assign_try')
-    >>> ship_return.click('done')
+    >>> ship_return.click('do')
     >>> ship_return.state
     'done'
     >>> return_.reload()
@@ -408,14 +408,14 @@ Checking Shipments::
     ...     incoming_move = Move(id=move.id)
     ...     mix_shipment.incoming_moves.append(incoming_move)
     >>> mix_shipment.click('receive')
-    >>> mix_shipment.click('done')
+    >>> mix_shipment.click('do')
     >>> mix.reload()
     >>> len(mix.shipments)
     1
 
     >>> mix_return.click('wait')
     >>> mix_return.click('assign_try')
-    >>> mix_return.click('done')
+    >>> mix_return.click('do')
     >>> move_return, = mix_return.moves
     >>> move_return.product.rec_name
     'product'
@@ -475,14 +475,14 @@ Checking Shipments::
     ...     incoming_move = Move(id=move.id)
     ...     mix_shipment.incoming_moves.append(incoming_move)
     >>> mix_shipment.click('receive')
-    >>> mix_shipment.click('done')
+    >>> mix_shipment.click('do')
     >>> mix.reload()
     >>> len(mix.shipments)
     1
 
     >>> mix_return.click('wait')
     >>> mix_return.click('assign_try')
-    >>> mix_return.click('done')
+    >>> mix_return.click('do')
     >>> move_return, = mix_return.moves
     >>> move_return.product.rec_name
     'product'
@@ -553,7 +553,7 @@ linked to invoices::
     >>> for move in shipment.inventory_moves:
     ...     move.quantity = 5.0
     >>> shipment.click('receive')
-    >>> shipment.click('done')
+    >>> shipment.click('do')
     >>> purchase.reload()
     >>> invoice, = purchase.invoices
     >>> invoice_line, = invoice.lines
@@ -587,7 +587,7 @@ correctly linked to invoices::
     >>> for move in shipment.inventory_moves:
     ...     move.quantity = 8.0
     >>> shipment.click('receive')
-    >>> shipment.click('done')
+    >>> shipment.click('do')
     >>> purchase.reload()
     >>> invoice, = purchase.invoices
     >>> invoice_line, = invoice.lines

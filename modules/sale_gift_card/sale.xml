@@ -78,14 +78,14 @@ this repository contains the full copyright notices and license terms. -->
             id="menu_gift_card_form"/>
 
         <record model="ir.model.access" id="access_gift_card">
-            <field name="model" search="[('model', '=', 'sale.gift_card')]"/>
+            <field name="model">sale.gift_card</field>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="False"/>
             <field name="perm_create" eval="False"/>
             <field name="perm_delete" eval="False"/>
         </record>
         <record model="ir.model.access" id="access_gift_card_admin">
-            <field name="model" search="[('model', '=', 'sale.gift_card')]"/>
+            <field name="model">sale.gift_card</field>
             <field name="group" ref="group_gift_card_admin"/>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="True"/>
@@ -95,7 +95,7 @@ this repository contains the full copyright notices and license terms. -->
 
         <record model="ir.rule.group" id="rule_group_gift_card_companies">
             <field name="name">User in companies</field>
-            <field name="model" search="[('model', '=', 'sale.gift_card')]"/>
+            <field name="model">sale.gift_card</field>
             <field name="global_p" eval="True"/>
         </record>
         <record model="ir.rule" id="rule_gift_card_companies">

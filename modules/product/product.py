@@ -804,6 +804,8 @@ class ProductIdentifier(sequence_ordered(), ModelSQL, ModelView):
             ('isil', "International Standard Identifier for Libraries"),
             ('isin', "International Securities Identification Number"),
             ('ismn', "International Standard Music Number"),
+            ('brand', "Brand"),
+            ('mpn', "Manufacturer Part Number"),
             ], "Type")
     type_string = type.translated('type')
     code = fields.Char("Code", required=True)
@@ -821,9 +823,14 @@ class ProductIdentifier(sequence_ordered(), ModelSQL, ModelView):
                     (t.code, Index.Similarity())),
                 })
 
-    @fields.depends('type', 'code')
+    @property
+    @fields.depends('type')
+    def _is_stdnum(self):
+        return self.type in {'ean', 'isan', 'isbn', 'isil', 'isin', 'ismn'}
+
+    @fields.depends('type', 'code', methods=['_is_stdnum'])
     def on_change_with_code(self):
-        if self.type and self.type != 'other':
+        if self._is_stdnum:
             try:
                 module = import_module('stdnum.%s' % self.type)
                 return module.compact(self.code)
@@ -837,9 +844,9 @@ class ProductIdentifier(sequence_ordered(), ModelSQL, ModelView):
         super().pre_validate()
         self.check_code()
 
-    @fields.depends('type', 'product', 'code')
+    @fields.depends('type', 'product', 'code', methods=['_is_stdnum'])
     def check_code(self):
-        if self.type:
+        if self._is_stdnum:
             try:
                 module = import_module('stdnum.%s' % self.type)
             except ModuleNotFoundError:
@@ -855,7 +862,9 @@ class ProductIdentifier(sequence_ordered(), ModelSQL, ModelView):
                         code=self.code,
                         product=product))
 
-    def barcode(self, format='svg', **options):
-        if barcode and self.type in barcode.BARCODES:
+    def barcode(self, format='svg', type=None, **options):
+        if type is None:
+            type = self.type
+        if barcode and type in barcode.BARCODES:
             generator = getattr(barcode, 'generate_%s' % format)
-            return generator(self.type, self.on_change_with_code(), **options)
+            return generator(type, self.on_change_with_code(), **options)

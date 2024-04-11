@@ -1263,10 +1263,11 @@ class TaxableMixin(object):
             offset_amount = self.currency.rounding.copy_sign(remainder)
 
             for tax in cycle(taxes.values()):
-                tax['amount'] -= offset_amount
-                remainder -= offset_amount
-                if abs(remainder) < self.currency.rounding:
-                    break
+                if tax['amount']:
+                    tax['amount'] -= offset_amount
+                    remainder -= offset_amount
+                    if abs(remainder) < self.currency.rounding:
+                        break
 
     @fields.depends('company', methods=['_get_tax_context', '_round_taxes'])
     def _get_taxes(self):

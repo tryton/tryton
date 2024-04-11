@@ -40,14 +40,14 @@ this repository contains the full copyright notices and license terms. -->
             id="menu_tax_group_form"/>
 
         <record model="ir.model.access" id="access_tax_group">
-            <field name="model" search="[('model', '=', 'account.tax.group')]"/>
+            <field name="model">account.tax.group</field>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="False"/>
             <field name="perm_create" eval="False"/>
             <field name="perm_delete" eval="False"/>
         </record>
         <record model="ir.model.access" id="access_tax_group_account_admin">
-            <field name="model" search="[('model', '=', 'account.tax.group')]"/>
+            <field name="model">account.tax.group</field>
             <field name="group" ref="group_account_admin"/>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="True"/>
@@ -88,7 +88,7 @@ this repository contains the full copyright notices and license terms. -->
             id="menu_tax_code_template_tree"/>
 
         <record model="ir.model.access" id="access_tax_code_template">
-            <field name="model" search="[('model', '=', 'account.tax.code.template')]"/>
+            <field name="model">account.tax.code.template</field>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="False"/>
             <field name="perm_create" eval="False"/>
@@ -187,14 +187,14 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
         <record model="ir.model.access" id="access_tax_code">
-            <field name="model" search="[('model', '=', 'account.tax.code')]"/>
+            <field name="model">account.tax.code</field>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="False"/>
             <field name="perm_create" eval="False"/>
             <field name="perm_delete" eval="False"/>
         </record>
         <record model="ir.model.access" id="access_tax_code_account_admin">
-            <field name="model" search="[('model', '=', 'account.tax.code')]"/>
+            <field name="model">account.tax.code</field>
             <field name="group" ref="group_account_admin"/>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="True"/>
@@ -203,7 +203,7 @@ this repository contains the full copyright notices and license terms. -->
         </record>
         <record model="ir.rule.group" id="rule_group_tax_code_companies">
             <field name="name">User in companies</field>
-            <field name="model" search="[('model', '=', 'account.tax.code')]" />
+            <field name="model">account.tax.code</field>
             <field name="global_p" eval="True" />
         </record>
         <record model="ir.rule" id="rule_tax_code_companies">
@@ -269,7 +269,7 @@ this repository contains the full copyright notices and license terms. -->
             id="menu_tax_template_list"/>
 
         <record model="ir.model.access" id="access_tax_template">
-            <field name="model" search="[('model', '=', 'account.tax.template')]"/>
+            <field name="model">account.tax.template</field>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="False"/>
             <field name="perm_create" eval="False"/>
@@ -312,14 +312,14 @@ this repository contains the full copyright notices and license terms. -->
             id="menu_tax_list"/>
 
         <record model="ir.model.access" id="access_tax">
-            <field name="model" search="[('model', '=', 'account.tax')]"/>
+            <field name="model">account.tax</field>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="False"/>
             <field name="perm_create" eval="False"/>
             <field name="perm_delete" eval="False"/>
         </record>
         <record model="ir.model.access" id="access_tax_account_admin">
-            <field name="model" search="[('model', '=', 'account.tax')]"/>
+            <field name="model">account.tax</field>
             <field name="group" ref="group_account_admin"/>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="True"/>
@@ -329,7 +329,7 @@ this repository contains the full copyright notices and license terms. -->
 
         <record model="ir.rule.group" id="rule_group_tax_companies">
             <field name="name">User in companies</field>
-            <field name="model" search="[('model', '=', 'account.tax')]"/>
+            <field name="model">account.tax</field>
             <field name="global_p" eval="True"/>
         </record>
         <record model="ir.rule" id="rule_tax_companies">
@@ -434,7 +434,7 @@ this repository contains the full copyright notices and license terms. -->
             id="menu_tax_rule_template_form"/>
 
         <record model="ir.model.access" id="access_tax_rule_template">
-            <field name="model" search="[('model', '=', 'account.tax.rule.template')]"/>
+            <field name="model">account.tax.rule.template</field>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="False"/>
             <field name="perm_create" eval="False"/>
@@ -476,14 +476,14 @@ this repository contains the full copyright notices and license terms. -->
             id="menu_tax_rule_form"/>
 
         <record model="ir.model.access" id="access_tax_rule">
-            <field name="model" search="[('model', '=', 'account.tax.rule')]"/>
+            <field name="model">account.tax.rule</field>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="False"/>
             <field name="perm_create" eval="False"/>
             <field name="perm_delete" eval="False"/>
         </record>
         <record model="ir.model.access" id="access_tax_rule_account_admin">
-            <field name="model" search="[('model', '=', 'account.tax.rule')]"/>
+            <field name="model">account.tax.rule</field>
             <field name="group" ref="group_account_admin"/>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="True"/>
@@ -493,7 +493,7 @@ this repository contains the full copyright notices and license terms. -->
 
         <record model="ir.rule.group" id="rule_group_tax_rule_companies">
             <field name="name">User in companies</field>
-            <field name="model" search="[('model', '=', 'account.tax.rule')]"/>
+            <field name="model">account.tax.rule</field>
             <field name="global_p" eval="True"/>
         </record>
         <record model="ir.rule" id="rule_tax_rule_companies">

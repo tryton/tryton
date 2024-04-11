@@ -113,11 +113,9 @@ class WizardTestCase(unittest.TestCase):
         "Execute wizard without model access"
         pool = Pool()
         Wizard = pool.get('test.test_wizard', type='wizard')
-        Model = pool.get('ir.model')
         ModelAccess = pool.get('ir.model.access')
-        model, = Model.search([('model', '=', 'test.access')])
         ModelAccess.create([{
-                    'model': model.id,
+                    'model': 'test.access',
                     'perm_write': False,
                     }])
 

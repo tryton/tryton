@@ -53,9 +53,10 @@ class MarketingEmailTestCase(ModuleTestCase):
         email_list.save()
 
         with patch.object(
-                marketing_module, 'sendmail_transactional') as sendmail:
+                marketing_module,
+                'send_message_transactional') as send_message:
             email_list.request_subscribe('user@example.com')
-            sendmail.assert_called_once_with(FROM, ['user@example.com'], ANY)
+            send_message.assert_called_once()
 
         with inactive_records():
             email, = Email.search([
@@ -98,9 +99,10 @@ class MarketingEmailTestCase(ModuleTestCase):
         self.assertTrue(email.active)
 
         with patch.object(
-                marketing_module, 'sendmail_transactional') as sendmail:
+                marketing_module,
+                'send_message_transactional') as send_message:
             email_list.request_unsubscribe('user@example.com')
-            sendmail.assert_called_once_with(FROM, ['user@example.com'], ANY)
+            send_message.assert_called_once()
 
         self.assertEqual(
             email.get_email_unsubscribe_url(),
@@ -142,13 +144,12 @@ class MarketingEmailTestCase(ModuleTestCase):
 
         with patch.object(
                 marketing_module,
-                'sendmail_transactional') as sendmail:
+                'send_message_transactional') as send_message:
             smtpd_datamanager = Mock()
             Message.process(smtpd_datamanager=smtpd_datamanager)
 
-            sendmail.assert_called_once_with(
-                FROM, [('', 'user@example.com')], ANY,
-                datamanager=smtpd_datamanager)
+            send_message.assert_called_once_with(
+                ANY, datamanager=smtpd_datamanager)
         urls = ShortenedURL.search([
                 ('record', '=', str(message)),
                 ])

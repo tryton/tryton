@@ -1,7 +1,9 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 
+import base64
 import colorsys
+import concurrent.futures
 import gettext
 import locale
 import logging
@@ -30,11 +32,12 @@ import urllib.error
 import urllib.parse
 import urllib.request
 import webbrowser
-from functools import lru_cache, wraps
+from functools import wraps
 from string import Template
 from threading import Lock, Thread
 
 import tryton.rpc as rpc
+from tryton.cache import CacheDict
 from tryton.config import CONFIG, PIXMAPS_DIR, SOUNDS_DIR, TRYTON_ICON
 
 try:
@@ -64,6 +67,11 @@ class IconFactory:
     _icons = {}
     _local_icons = {}
     _pixbufs = defaultdict(dict)
+    _url_pixbufs = CacheDict(cache_len=CONFIG['image.cache_size'])
+    _empty_pixbufs = {}
+    _empty_gif = base64.b64decode(
+        'R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7')
+    _executor = concurrent.futures.ThreadPoolExecutor(max_workers=5)
 
     @classmethod
     def load_local_icons(cls):
@@ -190,16 +198,40 @@ class IconFactory:
         return urllib.parse.urlunsplit(parts)
 
     @classmethod
-    @lru_cache(maxsize=CONFIG['image.cache_size'])
-    def get_pixbuf_url(cls, url, size=16, size_param=None):
+    def _get_pixbuf_url(cls, url, size=16):
         if not url:
             return
-        url = cls._convert_url(url, size, size_param=size_param)
+        pixbuf = None
+        logger.info(f'GET {url}')
         try:
             with urllib.request.urlopen(url) as response:
-                return data2pixbuf(response.read(), size, size)
+                pixbuf = data2pixbuf(response.read(), size, size)
         except urllib.error.URLError:
             logger.info("Can not fetch %s", url, exc_info=True)
+        cls._url_pixbufs[url] = pixbuf
+        return pixbuf
+
+    @classmethod
+    def get_pixbuf_url(cls, url, size=16, size_param=None, callback=None):
+        if not url:
+            return
+
+        url = cls._convert_url(url, size, size_param=size_param)
+        pixbuf = cls._url_pixbufs.get(url)
+        if pixbuf is not None:
+            return pixbuf
+
+        if callback:
+            def fetch(url, size):
+                pixbuf = cls._get_pixbuf_url(url, size)
+                GLib.idle_add(lambda: callback(pixbuf))
+            cls._executor.submit(fetch, url, size)
+            if size not in cls._empty_pixbufs:
+                cls._empty_pixbufs[size] = _data2pixbuf(
+                    cls._empty_gif, size, size)
+            return cls._empty_pixbufs[size]
+        else:
+            return cls._get_pixbuf_url(url, size, size_param)
 
 
 IconFactory.load_local_icons()
@@ -1013,7 +1045,7 @@ def process_exception(exception, *args, **kwargs):
         elif exception.faultCode in map(str, HTTPStatus):
             err_msg = '[%s] %s' % (exception.faultCode, exception.faultString)
             message(
-                _('Error "%s". Try again later.') % err_msg,
+                _('Error: "%s". Try again later.') % err_msg,
                 msg_type=Gtk.MessageType.ERROR)
         else:
             error(exception, exception.faultString)

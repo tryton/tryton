@@ -65,7 +65,8 @@ class Form(TabContent):
             if isinstance(res_id, int):
                 res_id = [res_id]
             self.screen.load(res_id)
-            self.screen.current_record = self.screen.group.get(res_id[0])
+            if res_id:
+                self.screen.current_record = self.screen.group.get(res_id[0])
             self.screen.display()
         else:
             if self.screen.current_view.view_type == 'form':
@@ -104,7 +105,9 @@ class Form(TabContent):
     def compare(self, model, attributes):
         if not attributes:
             return False
-        return (self.model == model
+        return (
+            self.screen.view_index == 0
+            and self.model == model
             and self.res_id == attributes.get('res_id')
             and self.attributes.get('domain') == attributes.get('domain')
             and self.attributes.get('view_ids') == attributes.get('view_ids')

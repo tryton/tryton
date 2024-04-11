@@ -4,8 +4,8 @@ this repository contains the full copyright notices and license terms. -->
 <form>
     <label name="module"/>
     <field name="module"/>
-    <label name="model"/>
-    <field name="model"/>
+    <label name="model_ref"/>
+    <field name="model_ref"/>
     <label name="fs_id"/>
     <field name="fs_id"/>
     <label name="db_id"/>

@@ -5,9 +5,7 @@ import logging
 import time
 import uuid
 from collections import defaultdict
-from email.headerregistry import Address
 from email.message import EmailMessage
-from email.utils import getaddresses
 from functools import partial
 from urllib.parse import (
     parse_qsl, quote, urlencode, urljoin, urlsplit, urlunsplit)
@@ -37,9 +35,9 @@ from trytond.model import (
 from trytond.pool import Pool
 from trytond.pyson import Eval, If, PYSONDecoder, TimeDelta
 from trytond.report import Report
-from trytond.sendmail import SMTPDataManager, sendmail_transactional
+from trytond.sendmail import SMTPDataManager, send_message_transactional
 from trytond.tools import grouped_slice, pairwise_longest, reduce_ids
-from trytond.tools.email_ import convert_ascii_email, set_from_header
+from trytond.tools.email_ import format_address, has_rcpt, set_from_header
 from trytond.transaction import Transaction
 from trytond.url import http_host
 from trytond.wsgi import Base64Converter
@@ -652,9 +650,8 @@ class Activity(
         party = record.marketing_party
         contact = party.contact_mechanism_get('email')
         if contact and contact.email:
-            return Address(
-                contact.name or party.rec_name,
-                addr_spec=contact.email)
+            return format_address(
+                contact.email, contact.name or party.rec_name)
 
     def execute_send_email(
             self, record_activity, smtpd_datamanager=None, **kwargs):
@@ -668,8 +665,6 @@ class Activity(
             translated = self.__class__(self.id)
 
         to = self._email_recipient(record.record)
-        if not to:
-            return
 
         def unsubscribe(redirect):
             parts = urlsplit(urljoin(
@@ -727,31 +722,14 @@ class Activity(
             .filter(convert_href)
             .render())
 
-        from_ = (config.get('marketing', 'email_from')
-            or config.get('email', 'from'))
-        msg = EmailMessage()
-        set_from_header(msg, from_, translated.email_from or from_)
-        msg['To'] = to
-        msg['Subject'] = title
-        msg.set_content(content, subtype='html')
-        if html2text:
-            converter = html2text.HTML2Text()
-            content_text = converter.handle(content)
-            msg.add_alternative(content_text, subtype='plain')
+        msg = self._email(translated.email_from, to, title, content)
 
-        to_addrs = [convert_ascii_email(a) for _, a in getaddresses([str(to)])]
-        if to_addrs:
-            sendmail_transactional(
-                from_, to_addrs, msg, datamanager=smtpd_datamanager)
-
-            email = Email(
-                recipients=to,
-                addresses=[{'address': a} for a in to_addrs],
-                subject=title,
-                resource=record.record,
+        if has_rcpt(msg):
+            send_message_transactional(msg, datamanager=smtpd_datamanager)
+            email = Email.from_message(
+                msg, resource=record.record,
                 marketing_automation_activity=self,
-                marketing_automation_record=record,
-                )
+                marketing_automation_record=record)
             email.save()
 
     def email_context(self, record):
@@ -764,6 +742,23 @@ class Activity(
             'format_number': Report.format_number,
             'datetime': datetime,
             }
+
+    def _email(self, sender, to, subject, content):
+        msg = EmailMessage()
+        from_ = (config.get('marketing', 'email_from')
+            or config.get('email', 'from'))
+        set_from_header(msg, from_, sender or from_)
+        msg['To'] = to
+        msg['Subject'] = subject
+        if html2text:
+            converter = html2text.HTML2Text()
+            content_text = converter.handle(content)
+            msg.add_alternative(content_text, subtype='plain')
+        if msg.is_multipart():
+            msg.add_alternative(content, subtype='html')
+        else:
+            msg.set_content(content, subtype='html')
+        return msg
 
 
 class Record(ModelSQL, ModelView):

@@ -15,7 +15,7 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
         <record model="ir.model.access" id="access_stock_product_location">
-            <field name="model" search="[('model', '=', 'stock.product.location')]"/>
+            <field name="model">stock.product.location</field>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="False"/>
             <field name="perm_create" eval="False"/>
@@ -23,7 +23,7 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
         <record model="ir.model.access" id="access_stock_product_location_stock_admin">
-            <field name="model" search="[('model', '=', 'stock.product.location')]"/>
+            <field name="model">stock.product.location</field>
             <field name="group" ref="stock.group_stock_admin"/>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="True"/>

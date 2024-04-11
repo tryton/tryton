@@ -214,8 +214,12 @@ class Affix(Cell):
             else:
                 value = self.icon
             if self.attrs.get('icon_type') == 'url':
+                def callback(pixbuf):
+                    self.display_counters.pop(record.id, None)
+                    self.view.treeview.queue_resize()  # trigger a redraw
                 pixbuf = common.IconFactory.get_pixbuf_url(
-                    value, size_param=self.attrs.get('url_size'))
+                    value, size_param=self.attrs.get('url_size'),
+                    callback=callback)
             else:
                 pixbuf = common.IconFactory.get_pixbuf(
                     value, Gtk.IconSize.BUTTON)

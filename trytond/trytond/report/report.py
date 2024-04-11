@@ -558,19 +558,19 @@ def get_email(report, record, languages):
                     })
         if ext == 'txt':
             ext = 'plain'
-        if alternative:
-            msg.add_alternative(content, subtype=ext, params={
-                    'Content-Language': language.code,
-                    })
-        else:
-            msg.set_content(content, subtype=ext, params={
-                    'Content-Language': language.code,
-                    })
         if ext == 'html' and html2text:
             if not converter:
                 converter = html2text.HTML2Text()
             content_text = converter.handle(content)
             msg.add_alternative(content_text, subtype='plain', params={
+                    'Content-Language': language.code,
+                    })
+        if alternative or msg.is_multipart():
+            msg.add_alternative(content, subtype=ext, params={
+                    'Content-Language': language.code,
+                    })
+        else:
+            msg.set_content(content, subtype=ext, params={
                     'Content-Language': language.code,
                     })
     return msg, title

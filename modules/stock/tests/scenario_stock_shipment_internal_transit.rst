@@ -96,7 +96,7 @@ Create Internal Shipment with lead time::
     >>> shipment.outgoing_moves[0].state
     'done'
     >>> assertEqual(shipment.outgoing_moves[0].effective_date, yesterday)
-    >>> shipment.click('done')
+    >>> shipment.click('do')
     >>> shipment.incoming_moves[0].state
     'done'
     >>> assertEqual(shipment.incoming_moves[0].effective_date, today)

@@ -188,14 +188,14 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
         <record model="ir.model.access" id="access_invoice">
-            <field name="model" search="[('model', '=', 'account.invoice')]"/>
+            <field name="model">account.invoice</field>
             <field name="perm_read" eval="False"/>
             <field name="perm_write" eval="False"/>
             <field name="perm_create" eval="False"/>
             <field name="perm_delete" eval="False"/>
         </record>
         <record model="ir.model.access" id="access_invoice_account">
-            <field name="model" search="[('model', '=', 'account.invoice')]"/>
+            <field name="model">account.invoice</field>
             <field name="group" ref="account.group_account"/>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="True"/>
@@ -204,55 +204,55 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
         <record model="ir.model.button" id="invoice_cancel_button">
+            <field name="model">account.invoice</field>
             <field name="name">cancel</field>
             <field name="string">Cancel</field>
             <field name="confirm">Are you sure you want to cancel the invoices?</field>
             <field name="help">Cancel the invoice</field>
-            <field name="model" search="[('model', '=', 'account.invoice')]"/>
         </record>
 
         <record model="ir.model.button" id="invoice_draft_button">
+            <field name="model">account.invoice</field>
             <field name="name">draft</field>
             <field name="string">Draft</field>
-            <field name="model" search="[('model', '=', 'account.invoice')]"/>
         </record>
 
         <record model="ir.model.button" id="invoice_validate_button">
+            <field name="model">account.invoice</field>
             <field name="name">validate_invoice</field>
             <field name="string">Validate</field>
             <field name="help">Also known as Pro Forma</field>
-            <field name="model" search="[('model', '=', 'account.invoice')]"/>
         </record>
 
         <record model="ir.model.button" id="invoice_post_button">
+            <field name="model">account.invoice</field>
             <field name="name">post</field>
             <field name="string">Post</field>
             <field name="confirm">Are you sure you want to post the invoices?</field>
-            <field name="model" search="[('model', '=', 'account.invoice')]"/>
         </record>
 
         <record model="ir.model.button" id="invoice_pay_button">
+            <field name="model">account.invoice</field>
             <field name="name">pay</field>
             <field name="string">Pay</field>
-            <field name="model" search="[('model', '=', 'account.invoice')]"/>
         </record>
 
         <record model="ir.model.button" id="invoice_reschedule_lines_to_pay_button">
+            <field name="model">account.invoice</field>
             <field name="name">reschedule_lines_to_pay</field>
             <field name="string">Reschedule</field>
-            <field name="model" search="[('model', '=', 'account.invoice')]"/>
         </record>
 
         <record model="ir.model.button" id="invoice_delegate_lines_to_pay_button">
+            <field name="model">account.invoice</field>
             <field name="name">delegate_lines_to_pay</field>
             <field name="string">Modify Payee</field>
-            <field name="model" search="[('model', '=', 'account.invoice')]"/>
         </record>
 
         <record model="ir.model.button" id="invoice_process_button">
+            <field name="model">account.invoice</field>
             <field name="name">process</field>
             <field name="string">Process</field>
-            <field name="model" search="[('model', '=', 'account.invoice')]"/>
         </record>
         <record model="ir.model.button-res.group" id="invoice_process_button_group_account_admin">
             <field name="button" ref="invoice_process_button"/>
@@ -285,7 +285,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">invoice_report_revision_form</field>
         </record>
         <record model="ir.model.access" id="access_invoice_report_revision">
-            <field name="model" search="[('model', '=', 'account.invoice.report.revision')]"/>
+            <field name="model">account.invoice.report.revision</field>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="False"/>
             <field name="perm_create" eval="False"/>
@@ -339,14 +339,14 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
         <record model="ir.model.access" id="access_invoice_line">
-            <field name="model" search="[('model', '=', 'account.invoice.line')]"/>
+            <field name="model">account.invoice.line</field>
             <field name="perm_read" eval="False"/>
             <field name="perm_write" eval="False"/>
             <field name="perm_create" eval="False"/>
             <field name="perm_delete" eval="False"/>
         </record>
         <record model="ir.model.access" id="access_invoice_line_account">
-            <field name="model" search="[('model', '=', 'account.invoice.line')]"/>
+            <field name="model">account.invoice.line</field>
             <field name="group" ref="account.group_account"/>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="True"/>
@@ -417,7 +417,7 @@ this repository contains the full copyright notices and license terms. -->
 
         <record model="ir.rule.group" id="rule_group_payment_method_companies">
             <field name="name">User in companies</field>
-            <field name="model" search="[('model', '=', 'account.invoice.payment.method')]"/>
+            <field name="model">account.invoice.payment.method</field>
             <field name="global_p" eval="True"/>
         </record>
         <record model="ir.rule" id="rule_payment_method_companies">
@@ -428,14 +428,14 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
         <record model="ir.model.access" id="access_payment_method">
-            <field name="model" search="[('model', '=', 'account.invoice.payment.method')]"/>
+            <field name="model">account.invoice.payment.method</field>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="False"/>
             <field name="perm_create" eval="False"/>
             <field name="perm_delete" eval="False"/>
         </record>
         <record model="ir.model.access" id="access_payment_method_account_admin">
-            <field name="model" search="[('model', '=', 'account.invoice.payment.method')]"/>
+            <field name="model">account.invoice.payment.method</field>
             <field name="group" ref="account.group_account_admin"/>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="True"/>
@@ -462,7 +462,7 @@ this repository contains the full copyright notices and license terms. -->
 
         <record model="ir.rule.group" id="rule_group_invoice_companies">
             <field name="name">User in companies</field>
-            <field name="model" search="[('model', '=', 'account.invoice')]"/>
+            <field name="model">account.invoice</field>
             <field name="global_p" eval="True"/>
         </record>
         <record model="ir.rule" id="rule_invoice_companies">
@@ -474,7 +474,7 @@ this repository contains the full copyright notices and license terms. -->
 
         <record model="ir.rule.group" id="rule_group_invoice_line_companies">
             <field name="name">User in companies</field>
-            <field name="model" search="[('model', '=', 'account.invoice.line')]"/>
+            <field name="model">account.invoice.line</field>
             <field name="global_p" eval="True"/>
         </record>
         <record model="ir.rule" id="rule_invoice_line_companies">

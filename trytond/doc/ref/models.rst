@@ -324,6 +324,9 @@ Class methods:
    Their values will be returned under the referencing field suffixed by a
    ``.``.
    The number of *dots* in the name is not limited.
+   The number of records read using *dots* can be limited with the
+   ``related_read_limit`` key in the context.
+   The remaining records will only contain the ``id`` field.
 
    ``fields_names`` can also contain ``<field>:string`` for
    :class:`~fields.Selection` or :class:`~fields.MultiSelection` fields.

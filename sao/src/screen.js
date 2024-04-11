@@ -925,6 +925,9 @@
         get number_of_views() {
             return this.views.length + this.view_to_load.length;
         },
+        get view_index() {
+            return this.views.indexOf(this.current_view);
+        },
         switch_view: function(
             view_type=null, view_id=null, creatable=null, display=true) {
             if (view_id !== null) {
@@ -978,6 +981,8 @@
                         if (this.switch_callback) {
                             this.switch_callback();
                         }
+                        Sao.Tab.set_view_type(
+                            Sao.Tab.tabs.get_current().view_type);
                     });
                 };
                 const set_current_view = () => {
@@ -1001,9 +1006,8 @@
                         return this.add_view_id(view_id, view_type)
                             .then(set_current_view);
                     } else {
-                        var i = this.views.indexOf(this.current_view);
                         this.current_view = this.views[
-                            (i + 1) % this.views.length];
+                            (this.view_index + 1) % this.views.length];
                     }
                     if (found()) {
                         break;
@@ -1315,7 +1319,7 @@
             }
         },
         load: function(ids, set_cursor=true, modified=false, position=-1) {
-            this.group.load(ids, modified, position);
+            this.group.load(ids, modified, position, null);
             this.current_view.reset();
             this.current_record = null;
             return this.display(set_cursor);
@@ -1703,7 +1707,7 @@
             var records = this.current_view.selected_records;
             this.model.copy(records, this.context)
                 .then(new_ids => {
-                    this.group.load(new_ids, false, this.new_position);
+                    this.group.load(new_ids, false, this.new_position, null);
                     if (!jQuery.isEmptyObject(new_ids)) {
                         this.current_record = this.group.get(new_ids[0]);
                     }

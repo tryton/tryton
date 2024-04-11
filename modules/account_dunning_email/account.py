@@ -1,24 +1,15 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
-from email.header import Header
-from email.utils import formataddr, getaddresses
 
 from trytond.config import config
 from trytond.model import fields
 from trytond.pool import Pool, PoolMeta
 from trytond.pyson import Bool, Eval
 from trytond.report import get_email
-from trytond.sendmail import SMTPDataManager, sendmail_transactional
-from trytond.tools.email_ import convert_ascii_email, set_from_header
+from trytond.sendmail import SMTPDataManager, send_message_transactional
+from trytond.tools.email_ import format_address, has_rcpt, set_from_header
 from trytond.transaction import Transaction
 from trytond.wizard import StateTransition
-
-
-def _formataddr(pair):
-    name, address = pair
-    if name:
-        name = str(Header(name, 'utf-8'))
-    return formataddr((name, convert_ascii_email(address)))
 
 
 class Configuration(metaclass=PoolMeta):
@@ -126,11 +117,11 @@ class Dunning(metaclass=PoolMeta):
             'email', usage=self.level.email_contact_mechanism)
         if contact and contact.email:
             name = contact.name or self.party.rec_name
-            to.append(_formataddr((name, contact.email)))
+            to.append(format_address(contact.email, name))
         elif account_config.dunning_email_fallback:
             user = account_config.get_multivalue(
                 'dunning_email_fallback', company=self.company.id)
-            to.append(_formataddr((self.party.rec_name, user.email)))
+            to.append(format_address(user.email, self.party.rec_name))
         cc = []
         bcc = []
         languages = set()
@@ -142,21 +133,11 @@ class Dunning(metaclass=PoolMeta):
                     ], limit=1)
             languages.add(lang)
 
-        msg, title = self._email(from_, to, cc, bcc, languages)
-        to_addrs = [e for _, e in getaddresses(to + cc + bcc)]
-        if to_addrs:
-            if not pool.test:
-                sendmail_transactional(
-                    from_, to_addrs, msg, datamanager=datamanager)
-            return Email(
-                recipients=', '.join(to),
-                recipients_secondary=', '.join(cc),
-                recipients_hidden=', '.join(bcc),
-                addresses=[{'address': a} for a in to_addrs],
-                subject=title,
-                resource=self,
-                dunning_level=self.level,
-                )
+        msg = self._email(from_, to, cc, bcc, languages)
+        if has_rcpt(msg):
+            send_message_transactional(msg, datamanager=datamanager)
+            return Email.from_message(
+                msg, resource=self, dunning_level=self.level)
 
     def _email(self, sender, to, cc, bcc, languages):
         # TODO order languages to get default as last one for title
@@ -168,9 +149,9 @@ class Dunning(metaclass=PoolMeta):
             if dunning.level.email_from:
                 from_ = dunning.level.email_from
         set_from_header(msg, sender, from_)
-        msg['To'] = ', '.join(to)
-        msg['Cc'] = ', '.join(cc)
-        msg['Bcc'] = ', '.join(bcc)
+        msg['To'] = to
+        msg['Cc'] = cc
+        msg['Bcc'] = bcc
         msg['Subject'] = title
         msg['Auto-Submitted'] = 'auto-generated'
-        return msg, title
+        return msg

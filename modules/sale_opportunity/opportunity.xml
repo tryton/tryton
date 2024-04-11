@@ -128,14 +128,14 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
         <record model="ir.model.access" id="access_opportunity">
-            <field name="model" search="[('model', '=', 'sale.opportunity')]"/>
+            <field name="model">sale.opportunity</field>
             <field name="perm_read" eval="False"/>
             <field name="perm_write" eval="False"/>
             <field name="perm_create" eval="False"/>
             <field name="perm_delete" eval="False"/>
         </record>
         <record model="ir.model.access" id="access_opportunity_sale">
-            <field name="model" search="[('model', '=', 'sale.opportunity')]"/>
+            <field name="model">sale.opportunity</field>
             <field name="group" ref="sale.group_sale"/>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="False"/>
@@ -143,7 +143,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="perm_delete" eval="False"/>
         </record>
         <record model="ir.model.access" id="access_opportunity_oppotunity">
-            <field name="model" search="[('model', '=', 'sale.opportunity')]"/>
+            <field name="model">sale.opportunity</field>
             <field name="group" ref="group_opportunity"/>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="True"/>
@@ -152,21 +152,21 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
         <record model="ir.model.button" id="opportunity_lead_button">
+            <field name="model">sale.opportunity</field>
             <field name="name">lead</field>
             <field name="string">Set as Lead</field>
-            <field name="model" search="[('model', '=', 'sale.opportunity')]"/>
         </record>
 
         <record model="ir.model.button" id="opportunity_opportunity_button">
+            <field name="model">sale.opportunity</field>
             <field name="name">opportunity</field>
             <field name="string">Convert to Opportunity</field>
-            <field name="model" search="[('model', '=', 'sale.opportunity')]"/>
         </record>
 
         <record model="ir.model.button" id="opportunity_convert_button">
+            <field name="model">sale.opportunity</field>
             <field name="name">convert</field>
             <field name="string">Convert to Sale</field>
-            <field name="model" search="[('model', '=', 'sale.opportunity')]"/>
         </record>
         <record model="ir.model.button-res.group" id="opportunity_convert_button_group_sale">
             <field name="button" ref="opportunity_convert_button"/>
@@ -174,20 +174,20 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
         <record model="ir.model.button" id="opportunity_lost_button">
+            <field name="model">sale.opportunity</field>
             <field name="name">lost</field>
             <field name="string">Mark as Lost</field>
-            <field name="model" search="[('model', '=', 'sale.opportunity')]"/>
         </record>
 
         <record model="ir.model.button" id="opportunity_cancel_button">
+            <field name="model">sale.opportunity</field>
             <field name="name">cancel</field>
             <field name="string">Cancel</field>
-            <field name="model" search="[('model', '=', 'sale.opportunity')]"/>
         </record>
 
         <record model="ir.rule.group" id="rule_group_opportunity_companies">
             <field name="name">User in companies</field>
-            <field name="model" search="[('model', '=', 'sale.opportunity')]"/>
+            <field name="model">sale.opportunity</field>
             <field name="global_p" eval="True"/>
         </record>
         <record model="ir.rule" id="rule_opportunity_companies">

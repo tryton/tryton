@@ -45,6 +45,7 @@ def set_user(user, config=None):
 
 
 _dummy_test_case = unittest.TestCase()
+_dummy_test_case.maxDiff = None
 
 
 def __getattr__(name):

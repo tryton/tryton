@@ -2,8 +2,8 @@
 <!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
 this repository contains the full copyright notices and license terms. -->
 <tree>
-    <field name="module" optional="0"/>
-    <field name="model" expand="1"/>
+    <field name="module_ref"/>
+    <field name="model_ref" expand="1"/>
     <field name="fs_id" expand="1"/>
     <field name="db_id" optional="1"/>
     <field name="noupdate"/>

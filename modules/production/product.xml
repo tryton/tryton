@@ -22,16 +22,14 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
         <record model="ir.model.access" id="access_product-bom">
-            <field name="model"
-                search="[('model', '=', 'product.product-production.bom')]"/>
+            <field name="model">product.product-production.bom</field>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="False"/>
             <field name="perm_create" eval="False"/>
             <field name="perm_delete" eval="False"/>
         </record>
         <record model="ir.model.access" id="access_product-bom_admin">
-            <field name="model"
-                search="[('model', '=', 'product.product-production.bom')]"/>
+            <field name="model">product.product-production.bom</field>
             <field name="group" ref="group_production_admin"/>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="True"/>
@@ -77,14 +75,14 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
         <record model="ir.model.access" id="access_production_lead_time">
-            <field name="model" search="[('model', '=', 'production.lead_time')]"/>
+            <field name="model">production.lead_time</field>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="False"/>
             <field name="perm_create" eval="False"/>
             <field name="perm_delete" eval="False"/>
         </record>
         <record model="ir.model.access" id="access_production_lead_time_admin">
-            <field name="model" search="[('model', '=', 'production.lead_time')]"/>
+            <field name="model">production.lead_time</field>
             <field name="group" ref="group_production_admin"/>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="True"/>

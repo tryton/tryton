@@ -10,6 +10,7 @@ Imports::
     >>> from proteus import Model
     >>> from trytond.modules.account.tests.tools import (
     ...     create_chart, create_fiscalyear, create_tax, get_accounts)
+    >>> from trytond.modules.account_invoice.exceptions import InvoiceTaxesWarning
     >>> from trytond.modules.account_invoice.tests.tools import (
     ...     set_fiscalyear_invoice_sequences)
     >>> from trytond.modules.company.tests.tools import create_company, get_company
@@ -22,6 +23,8 @@ Imports::
 Activate modules::
 
     >>> config = activate_modules('account_invoice')
+
+    >>> Warning = Model.get('res.user.warning')
 
 Create company::
 
@@ -178,6 +181,15 @@ Create invoice with alternate currency and negative taxes::
     Decimal('-40.00')
     >>> invoice.total_amount
     Decimal('360.00')
+    >>> try:
+    ...     invoice.click('post')
+    ... except InvoiceTaxesWarning as warning:
+    ...     _, (key, *_) = warning.args
+    ...     raise
+    Traceback (most recent call last):
+        ...
+    InvoiceTaxesWarning: ...
+    >>> Warning(user=config.user, name=key).save()
     >>> invoice.click('post')
     >>> invoice.state
     'posted'

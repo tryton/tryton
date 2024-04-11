@@ -678,7 +678,7 @@ class ModuleTestCase(_DBTestCase):
         'Test missing default model access'
         pool = Pool()
         Access = pool.get('ir.model.access')
-        no_groups = {a.model.model for a in Access.search([
+        no_groups = {a.model for a in Access.search([
                     ('group', '=', None),
                     ])}
 
@@ -693,7 +693,7 @@ class ModuleTestCase(_DBTestCase):
             if has_access(Model, no_groups):
                 no_groups.add(mname)
 
-        with_groups = {a.model.model for a in Access.search([
+        with_groups = {a.model for a in Access.search([
                     ('group', '!=', None),
                     ])}
 

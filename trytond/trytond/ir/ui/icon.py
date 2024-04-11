@@ -10,7 +10,11 @@ from trytond.tools import file_open
 from trytond.transaction import Transaction
 
 
-class Icon(sequence_ordered(), ModelSQL, ModelView):
+class Icon(
+        fields.fmany2one(
+            'module_ref', 'module', 'ir.module,name', "Module",
+            readonly=True, required=True, ondelete='CASCADE'),
+        sequence_ordered(), ModelSQL, ModelView):
     'Icon'
     __name__ = 'ir.ui.icon'
 

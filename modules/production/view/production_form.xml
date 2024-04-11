@@ -56,6 +56,6 @@ this repository contains the full copyright notices and license terms. -->
         <button name="wait"/>
         <button name="assign_wizard" icon="tryton-forward"/>
         <button name="run" icon="tryton-forward"/>
-        <button name="done" icon="tryton-forward"/>
+        <button name="do" icon="tryton-forward"/>
     </group>
 </form>

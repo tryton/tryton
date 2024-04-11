@@ -116,9 +116,9 @@ this repository contains the full copyright notices and license terms. -->
 
         <record model="ir.model.button"
                 id="purchase_hande_purchase_cancellation_exception_button">
+            <field name="model">purchase.request</field>
             <field name="name">handle_purchase_cancellation_exception</field>
             <field name="string">Handle Purchase Cancellation</field>
-            <field name="model" search="[('model', '=', 'purchase.request')]"/>
         </record>
 
         <record model="ir.action.keyword"
@@ -131,7 +131,7 @@ this repository contains the full copyright notices and license terms. -->
 
         <record model="ir.rule.group" id="rule_group_purchase_request_companies">
             <field name="name">User in companies</field>
-            <field name="model" search="[('model', '=', 'purchase.request')]"/>
+            <field name="model">purchase.request</field>
             <field name="global_p" eval="True"/>
         </record>
         <record model="ir.rule" id="rule_purchase_request_companies">
@@ -142,14 +142,14 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
         <record model="ir.model.access" id="access_purchase_request">
-            <field name="model" search="[('model', '=', 'purchase.request')]"/>
+            <field name="model">purchase.request</field>
             <field name="perm_read" eval="False"/>
             <field name="perm_write" eval="False"/>
             <field name="perm_create" eval="False"/>
             <field name="perm_delete" eval="False"/>
         </record>
         <record model="ir.model.access" id="access_purchase_request_purchase">
-            <field name="model" search="[('model', '=', 'purchase.request')]"/>
+            <field name="model">purchase.request</field>
             <field name="group" ref="purchase.group_purchase"/>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="False"/>
@@ -157,7 +157,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="perm_delete" eval="False"/>
         </record>
         <record model="ir.model.access" id="access_purchase_request_admin">
-            <field name="model" search="[('model', '=', 'purchase.request')]"/>
+            <field name="model">purchase.request</field>
             <field name="group" ref="group_purchase_request"/>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="True"/>
@@ -166,7 +166,7 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
         <record model="ir.model.access" id="access_purchase_purchase_request">
-            <field name="model" search="[('model', '=', 'purchase.purchase')]"/>
+            <field name="model">purchase.purchase</field>
             <field name="group" ref="group_purchase_request"/>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="False"/>
@@ -175,7 +175,7 @@ this repository contains the full copyright notices and license terms. -->
         </record>
         <record model="ir.model.access"
             id="access_purchase_line_purchase_request">
-            <field name="model" search="[('model', '=', 'purchase.line')]"/>
+            <field name="model">purchase.line</field>
             <field name="group" ref="group_purchase_request"/>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="False"/>

@@ -71,7 +71,7 @@ Make a production::
     >>> output.quantity = 2
     >>> output.save()
     >>> _ = output.duplicate()
-    >>> production.click('done')
+    >>> production.click('do')
 
 Check output price::
 

@@ -85,7 +85,7 @@ Receive shipment::
 
 Finish the shipment::
 
-    >>> shipment.click('done')
+    >>> shipment.click('do')
     >>> shipment.state
     'done'
     >>> len(shipment.incoming_moves)

@@ -26,7 +26,7 @@ this repository contains the full copyright notices and license terms. -->
             icon="tryton-list"/>
 
         <record model="ir.model.access" id="access_configuration">
-            <field name="model" search="[('model', '=', 'stock.configuration')]"/>
+            <field name="model">stock.configuration</field>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="False"/>
             <field name="perm_create" eval="False"/>
@@ -34,7 +34,7 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
         <record model="ir.model.access" id="access_configuration_admin">
-            <field name="model" search="[('model', '=', 'stock.configuration')]"/>
+            <field name="model">stock.configuration</field>
             <field name="group" ref="group_stock_admin"/>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="True"/>

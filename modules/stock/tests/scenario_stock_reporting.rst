@@ -78,7 +78,7 @@ Receive a bunch of products::
     >>> move.currency = company.currency
     >>> shipment_in.save()
     >>> shipment_in.click('receive')
-    >>> shipment_in.click('done')
+    >>> shipment_in.click('do')
 
 Testing the report::
 
@@ -114,7 +114,7 @@ Add two shipment lines of same product and go through the workflow::
     >>> shipment_out.click('assign_try')
     >>> shipment_out.click('pick')
     >>> shipment_out.click('pack')
-    >>> shipment_out.click('done')
+    >>> shipment_out.click('do')
 
 Testing the reports::
 
@@ -152,7 +152,7 @@ Create an internal shipment::
     >>> shipment_internal.save()
     >>> shipment_internal.click('wait')
     >>> shipment_internal.click('assign_try')
-    >>> shipment_internal.click('done')
+    >>> shipment_internal.click('do')
 
 Testing the report::
 

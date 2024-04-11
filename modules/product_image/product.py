@@ -9,7 +9,7 @@ import PIL.Image
 from trytond.config import config
 from trytond.model import (
     MatchMixin, ModelSQL, ModelView, Unique, fields, sequence_ordered)
-from trytond.pool import Pool, PoolMeta
+from trytond.pool import PoolMeta
 from trytond.pyson import Bool, Eval, If
 from trytond.tools import slugify
 from trytond.transaction import Transaction
@@ -72,8 +72,7 @@ class ImageURLMixin:
         yield from self.images
 
     def get_images(self, pattern):
-        pool = Pool()
-        Image = pool.get('product.image')
+        Image = self.__class__.images.get_target()
         pattern = pattern.copy()
         for key in set(pattern.keys()) - Image.allowed_match_keys():
             del pattern[key]
@@ -106,38 +105,16 @@ class Product(ImageURLMixin, metaclass=PoolMeta):
                 yield image
 
 
-class ImageMixin:
+class _ImageMixin:
     __slots__ = ()
     image = fields.Binary(
         "Image", file_id=file_id, store_prefix=store_prefix, required=True)
     image_id = fields.Char("Image ID", readonly=True)
 
 
-class Image(ImageMixin, sequence_ordered(), ModelSQL, ModelView, MatchMixin):
-    "Product Image"
-    __name__ = 'product.image'
-    template = fields.Many2One(
-        'product.template', "Product",
-        required=True, ondelete='CASCADE',
-        domain=[
-            If(Bool(Eval('product')),
-                ('products', '=', Eval('product')),
-                ()),
-            ])
-    product = fields.Many2One(
-        'product.product', "Variant",
-        domain=[
-            If(Bool(Eval('template')),
-                ('template', '=', Eval('template')),
-                ()),
-            ])
-    cache = fields.One2Many(
-        'product.image.cache', 'product_image', "Cache", readonly=True)
-
-    @classmethod
-    def __setup__(cls):
-        super().__setup__()
-        cls.__access__.update(['product', 'template'])
+class ImageMixin(_ImageMixin):
+    __slots__ = ()
+    cache = None
 
     @classmethod
     def allowed_match_keys(cls):
@@ -207,31 +184,58 @@ class Image(ImageMixin, sequence_ordered(), ModelSQL, ModelView, MatchMixin):
         return data.getvalue()
 
     def _store_cache(self, size, image):
-        pool = Pool()
-        Cache = pool.get('product.image.cache')
+        Cache = self.__class__.cache.get_target()
         if isinstance(size, int):
             width = height = size
         else:
             width, height = size
         return Cache(
-            product_image=self,
             image=image,
             width=width,
             height=height)
 
     @classmethod
     def clear_cache(cls, images):
-        pool = Pool()
-        Cache = pool.get('product.image.cache')
+        Cache = cls.cache.get_target()
         caches = [c for i in images for c in i.cache]
         Cache.delete(caches)
 
 
-class ImageCache(ImageMixin, ModelSQL):
-    "Product Image Cache"
-    __name__ = 'product.image.cache'
-    product_image = fields.Many2One(
-        'product.image', "Product Image", required=True, ondelete='CASCADE')
+class Image(ImageMixin, sequence_ordered(), ModelSQL, ModelView, MatchMixin):
+    "Product Image"
+    __name__ = 'product.image'
+    template = fields.Many2One(
+        'product.template', "Product",
+        required=True, ondelete='CASCADE',
+        domain=[
+            If(Bool(Eval('product')),
+                ('products', '=', Eval('product')),
+                ()),
+            ])
+    product = fields.Many2One(
+        'product.product', "Variant",
+        domain=[
+            If(Bool(Eval('template')),
+                ('template', '=', Eval('template')),
+                ()),
+            ])
+    cache = fields.One2Many(
+        'product.image.cache', 'product_image', "Cache", readonly=True)
+
+    @classmethod
+    def __setup__(cls):
+        super().__setup__()
+        cls.__access__.update(['product', 'template'])
+
+    def _store_cache(self, size, image):
+        cache = super()._store_cache(size, image)
+        cache.product_image = self
+        return cache
+
+
+class ImageCacheMixin(_ImageMixin):
+    __slots__ = ()
+
     width = fields.Integer(
         "Width", required=True,
         domain=[
@@ -245,13 +249,20 @@ class ImageCache(ImageMixin, ModelSQL):
             ('height', '<=', SIZE_MAX),
             ])
 
+
+class ImageCache(ImageCacheMixin, ModelSQL):
+    "Product Image Cache"
+    __name__ = 'product.image.cache'
+    product_image = fields.Many2One(
+        'product.image', "Product Image", required=True, ondelete='CASCADE')
+
     @classmethod
     def __setup__(cls):
         super().__setup__()
         t = cls.__table__()
         cls._sql_constraints += [
             ('dimension_unique', Unique(t, t.product_image, t.width, t.height),
-                'ir.msg_product_image_size_unique'),
+                'product_image.msg_image_cache_size_unique'),
             ]
 
     @classmethod
@@ -269,3 +280,49 @@ class ImageCache(ImageMixin, ModelSQL):
                     [table.width, table.height],
                     [table.size, table.size]))
             table_h.drop_column('size')
+
+
+class Category(ImageURLMixin, metaclass=PoolMeta):
+    __name__ = 'product.category'
+    __image_url__ = '/product-category/image'
+    images = fields.One2Many('product.category.image', 'category', "Images")
+
+
+class CategoryImage(
+        ImageMixin, sequence_ordered(), ModelSQL, ModelView, MatchMixin):
+    "Category Image"
+    __name__ = 'product.category.image'
+    category = fields.Many2One(
+        'product.category', "Category",
+        required=True, ondelete='CASCADE')
+    cache = fields.One2Many(
+        'product.category.image.cache', 'category_image', "Cache",
+        readonly=True)
+
+    @classmethod
+    def __setup__(cls):
+        super().__setup__()
+        cls.__access__.add('category')
+
+    def _store_cache(self, size, image):
+        cache = super()._store_cache(size, image)
+        cache.category_image = self
+        return cache
+
+
+class CategoryImageCache(ImageCacheMixin, ModelSQL):
+    "Category Image Cache"
+    __name__ = 'product.category.image.cache'
+    category_image = fields.Many2One(
+        'product.category.image', "Category Image", required=True,
+        ondelete='CASCADE')
+
+    @classmethod
+    def __setup__(cls):
+        super().__setup__()
+        t = cls.__table__()
+        cls._sql_constraints += [
+            ('dimension_unique',
+                Unique(t, t.category_image, t.width, t.height),
+                'product_image.msg_image_cache_size_unique'),
+            ]

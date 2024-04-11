@@ -39,14 +39,14 @@ this repository contains the full copyright notices and license terms. -->
             icon="tryton-list"/>
 
         <record model="ir.model.access" id="access_purchase_configuration">
-            <field name="model" search="[('model', '=', 'purchase.configuration')]"/>
+            <field name="model">purchase.configuration</field>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="False"/>
             <field name="perm_create" eval="False"/>
             <field name="perm_delete" eval="False"/>
         </record>
         <record model="ir.model.access" id="access_purchase_configuration_purchase_admin">
-            <field name="model" search="[('model', '=', 'purchase.configuration')]"/>
+            <field name="model">purchase.configuration</field>
             <field name="group" ref="group_purchase_admin"/>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="True"/>

@@ -2,12 +2,15 @@
 <!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
 this repository contains the full copyright notices and license terms. -->
 <form col="6">
-    <label name="field"/>
-    <field name="field"/>
-    <label name="group"/>
-    <field name="group"/>
+    <label name="model_ref"/>
+    <field name="model_ref"/>
+    <label name="field_ref"/>
+    <field name="field_ref"/>
     <label name="active"/>
     <field name="active"/>
+
+    <label name="group"/>
+    <field name="group"/>
     <group id="checkboxes" colspan="6">
         <label name="perm_read"/>
         <field name="perm_read"/>

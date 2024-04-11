@@ -35,7 +35,7 @@ this repository contains the full copyright notices and license terms. -->
             id="menu_email_form"/>
 
         <record model="ir.model.access" id="access_email">
-            <field name="model" search="[('model', '=', 'ir.email')]"/>
+            <field name="model">ir.email</field>
             <field name="perm_create" eval="True"/>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="False"/>

@@ -203,7 +203,7 @@ class ShipmentDrop(
                     'invisible': Eval('state') != 'waiting',
                     'depends': ['state'],
                     },
-                'done': {
+                'do': {
                     'invisible': Eval('state') != 'shipped',
                     'depends': ['state'],
                     },
@@ -301,9 +301,9 @@ class ShipmentDrop(
             if shipment.state != 'cancelled':
                 raise AccessError(
                     gettext('sale_supply_drop_shipment'
-                        '.msg_drop_shipment_delete_cancel') % {
-                        'shipment': shipment.rec_name,
-                        })
+                        '.msg_drop_shipment_delete_cancel',
+                        shipment=shipment.rec_name,
+                        ))
         Move.delete([m for s in shipments for m in s.supplier_moves])
         super(ShipmentDrop, cls).delete(shipments)
 
@@ -504,7 +504,7 @@ class ShipmentDrop(
     @ModelView.button
     @Workflow.transition('done')
     @process_sale('customer_moves')
-    def done(cls, shipments):
+    def do(cls, shipments):
         pool = Pool()
         Move = pool.get('stock.move')
         Date = pool.get('ir.date')
@@ -533,6 +533,47 @@ class ShipmentDrop(
     @property
     def _check_quantity_target_moves(self):
         return self.customer_moves
+
+
+class ShipmentDropSplit(metaclass=PoolMeta):
+    __name__ = 'stock.shipment.drop'
+
+    @classmethod
+    def __setup__(cls):
+        super().__setup__()
+        cls._buttons.update({
+                'split_wizard': {
+                    'readonly': Eval('state') != 'draft',
+                    'invisible': Eval('state') != 'draft',
+                    'depends': ['state'],
+                    },
+                })
+
+    @classmethod
+    @ModelView.button_action('stock_split.wizard_split_shipment')
+    def split_wizard(cls, shipments):
+        pass
+
+
+class SplitShipment(metaclass=PoolMeta):
+    __name__ = 'stock.shipment.split'
+
+    def get_moves(self, shipment):
+        moves = super().get_moves(shipment)
+        if shipment.__name__ == 'stock.shipment.drop':
+            moves = shipment.supplier_moves
+        return moves
+
+    def transition_split(self):
+        shipment = self.record
+        if shipment.__name__ == 'stock.shipment.drop':
+            customer_moves = []
+            for move in self.start.moves:
+                customer_moves.extend(move.moves_drop)
+            self.start.moves = [*self.start.moves, *customer_moves]
+            self.start.domain_moves = [
+                 *self.start.domain_moves, *customer_moves]
+        return super().transition_split()
 
 
 class Move(metaclass=PoolMeta):
@@ -588,6 +629,37 @@ class Move(metaclass=PoolMeta):
 
     @classmethod
     def copy(cls, moves, default=None):
+        context = Transaction().context
+        if (context.get('_stock_move_split')
+                and not context.get('_stock_move_split_drop')):
+            for move in moves:
+                if move.moves_drop:
+                    raise AccessError(
+                        gettext('sale_supply_drop_shipment'
+                            '.msg_move_split_drop'))
         default = default.copy() if default is not None else {}
         default.setdefault('moves_drop')
         return super().copy(moves, default=default)
+
+
+class MoveSplit(metaclass=PoolMeta):
+    __name__ = 'stock.move'
+
+    def split(self, quantity, unit, count=None):
+        with Transaction().set_context(_stock_move_split_drop=True):
+            moves = super().split(quantity, unit, count=count)
+        if self.moves_drop:
+            to_save = []
+            moves_drop = list(self.moves_drop)
+            for move in moves:
+                remainder = move.quantity
+                while remainder > 0 and moves_drop:
+                    move_drop = moves_drop.pop(0)
+                    splits = move_drop.split(remainder, move.unit, count=1)
+                    move_drop.origin_drop = move
+                    remainder -= move_drop.quantity
+                    to_save.append(move_drop)
+                    splits.remove(move_drop)
+                    moves_drop.extend(splits)
+            self.__class__.save(to_save)
+        return moves

@@ -236,18 +236,14 @@ class CopyTestCase(unittest.TestCase):
     def test_no_acccess_copy_with_custom_value(self):
         "Test copying field with no access and custom value"
         pool = Pool()
-        Field = pool.get('ir.model.field')
         FieldAccess = pool.get('ir.model.field.access')
         TestAccess = pool.get('test.copy.access')
 
         record, = TestAccess.create([{'name': 'foo'}])
 
-        field, = Field.search([
-                ('model.model', '=', 'test.copy.access'),
-                ('name', '=', 'name'),
-                ])
         FieldAccess.create([{
-                    'field': field.id,
+                    'model': 'test.copy.access',
+                    'field': 'name',
                     'group': None,
                     'perm_read': True,
                     'perm_write': False,
@@ -260,16 +256,12 @@ class CopyTestCase(unittest.TestCase):
     def test_no_acccess_copy_with_default(self):
         "Test copying field with no access but default value"
         pool = Pool()
-        Field = pool.get('ir.model.field')
         FieldAccess = pool.get('ir.model.field.access')
         TestAccess = pool.get('test.copy.access')
 
-        field, = Field.search([
-                ('model.model', '=', 'test.copy.access'),
-                ('name', '=', 'name'),
-                ])
         FieldAccess.create([{
-                    'field': field.id,
+                    'model': 'test.copy.access',
+                    'field': 'name',
                     'group': None,
                     'perm_read': True,
                     'perm_write': False,
@@ -284,18 +276,14 @@ class CopyTestCase(unittest.TestCase):
     def test_no_acccess_copy_with_defaults(self):
         "Test copying field with no access and defaults"
         pool = Pool()
-        Field = pool.get('ir.model.field')
         FieldAccess = pool.get('ir.model.field.access')
         TestAccess = pool.get('test.copy.access')
 
         record, = TestAccess.create([{}])
 
-        field, = Field.search([
-                ('model.model', '=', 'test.copy.access'),
-                ('name', '=', 'name'),
-                ])
         FieldAccess.create([{
-                    'field': field.id,
+                    'model': 'test.copy.access',
+                    'field': 'name',
                     'group': None,
                     'perm_read': True,
                     'perm_write': False,
@@ -309,18 +297,14 @@ class CopyTestCase(unittest.TestCase):
     def test_copy_with_no_read_access(self):
         "Test copying field with no read access"
         pool = Pool()
-        Field = pool.get('ir.model.field')
         FieldAccess = pool.get('ir.model.field.access')
         TestAccess = pool.get('test.copy.access')
 
         record, = TestAccess.create([{}])
 
-        field, = Field.search([
-                ('model.model', '=', 'test.copy.access'),
-                ('name', '=', 'name'),
-                ])
         FieldAccess.create([{
-                    'field': field.id,
+                    'model': 'test.copy.access',
+                    'field': 'name',
                     'group': None,
                     'perm_read': False,
                     'perm_write': False,

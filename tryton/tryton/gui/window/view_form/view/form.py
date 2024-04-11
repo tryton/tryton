@@ -230,6 +230,9 @@ class FormXMLViewParser(XMLViewParser):
             self.container.add(None, attributes)
             return
 
+        if attributes.get('loading') == 'eager':
+            self.field_attrs[name]['loading'] = 'eager'
+
         widget = self.WIDGETS[attributes['widget']](self.view, attributes)
         self.view.widgets[name].append(widget)
 
@@ -340,18 +343,7 @@ class FormXMLViewParser(XMLViewParser):
                 int(attributes.get('width', -1)),
                 int(attributes.get('height', -1)))
 
-        # Force to display the first time it switches on a page
-        # This avoids glitch in position of widgets
-        def switch(notebook, page, page_num):
-            if not self.view.widget:
-                # Not yet finish to parse
-                return
-            notebook.grab_focus()
-            self.view.display()
-            notebook.disconnect(handler_id)
-        handler_id = notebook.connect('switch-page', switch)
         self.view.state_widgets.append(notebook)
-
         self.view.notebooks.append(notebook)
         self.container.add(notebook, attributes)
         self.parse_child(node, notebook)

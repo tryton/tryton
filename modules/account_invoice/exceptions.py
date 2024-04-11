@@ -41,6 +41,10 @@ class InvoiceFutureWarning(UserWarning):
     pass
 
 
+class InvoiceTaxesWarning(UserWarning):
+    pass
+
+
 class InvoiceSimilarWarning(UserWarning):
     pass
 

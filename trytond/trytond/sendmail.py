@@ -11,13 +11,23 @@ from urllib.parse import parse_qs, unquote_plus
 from trytond.config import config, parse_uri
 from trytond.transaction import Transaction
 
-__all__ = ['sendmail_transactional', 'sendmail', 'SMTPDataManager']
+__all__ = [
+    'sendmail_transactional', 'sendmail',
+    'send_message_transactional', 'send_message',
+    'SMTPDataManager']
 logger = logging.getLogger(__name__)
 retry = config.getint('email', 'retry', default=5)
 
 
 def sendmail_transactional(
         from_addr, to_addrs, msg, transaction=None, datamanager=None,
+        strict=False):
+    send_message_transactional(
+        msg, from_addr, to_addrs, transaction, datamanager, strict)
+
+
+def send_message_transactional(
+        msg, from_addr=None, to_addrs=None, transaction=None, datamanager=None,
         strict=False):
     if transaction is None:
         transaction = Transaction()
@@ -29,6 +39,11 @@ def sendmail_transactional(
 
 
 def sendmail(from_addr, to_addrs, msg, server=None, strict=False):
+    return send_message(msg, from_addr, to_addrs, server, strict)
+
+
+def send_message(
+        msg, from_addr=None, to_addrs=None, server=None, strict=False):
     if server is None:
         server = get_smtp_server(strict=strict)
         if not server:
@@ -43,7 +58,7 @@ def sendmail(from_addr, to_addrs, msg, server=None, strict=False):
         if count != retry:
             time.sleep(0.02 * (retry - count))
         try:
-            senderrs = server.sendmail(from_addr, to_addrs, msg.as_string())
+            senderrs = server.send_message(msg, from_addr, to_addrs)
         except smtplib.SMTPServerDisconnected:
             if count:
                 server = get_smtp_server(strict=strict)
@@ -82,8 +97,7 @@ def send_test_email(to_addrs, server=None):
     msg['From'] = from_
     msg['To'] = to_addrs
     msg['Subject'] = 'Tryton test email'
-    sendmail(
-        config.get('email', 'from'), to_addrs, msg, server=server, strict=True)
+    send_message(msg, server=server, strict=True)
 
 
 def get_smtp_server(uri=None, strict=False):
@@ -153,8 +167,8 @@ class SMTPDataManager(object):
     def tpc_finish(self, trans):
         if self._server is not None:
             for from_addr, to_addrs, msg in self.queue:
-                new_server = sendmail(
-                    from_addr, to_addrs, msg, server=self._server)
+                new_server = send_message(
+                    msg, from_addr, to_addrs, server=self._server)
                 if new_server:
                     self._server = new_server
             self._server.quit()

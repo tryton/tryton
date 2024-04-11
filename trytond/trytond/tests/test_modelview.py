@@ -8,6 +8,7 @@ from lxml import etree
 
 from trytond.model.exceptions import (
     AccessButtonError, AccessError, ButtonActionException)
+from trytond.model.modelview import set_visible
 from trytond.pool import Pool
 from trytond.pyson import Eval, PYSONDecoder, PYSONEncoder
 from trytond.tests.test_tryton import activate_module, with_transaction
@@ -19,6 +20,162 @@ class ModelView(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
         activate_module('tests')
+
+    def test_set_visible(self):
+        "Test loading of visible x2m fields in group"
+
+        GROUP_XML = """
+        <form>
+            <group>
+                <field name="OK"/>
+            </group>
+            <group expandable="1">
+                <field name="OK"/>
+                <group expandable="0">
+                    <field name="KO"/>
+                </group>
+            </group>
+            <group expandable="0">
+                <field name="KO"/>
+                <group>
+                    <field name="KO"/>
+                </group>
+            </group>
+            <group>
+                <group>
+                    <field name="OK"/>
+                </group>
+                <group expandable="1">
+                    <field name="OK"/>
+                </group>
+                <group expandable="0">
+                    <field name="KO"/>
+                </group>
+            </group>
+         </form>
+        """
+        group_tree = etree.fromstring(GROUP_XML)
+        set_visible(group_tree, {'OK', 'KO'})
+        self.assertEqual(
+            ['OK', 'OK', 'OK', 'OK'],
+            [n.attrib['name']
+                for n in group_tree.xpath("//field[@loading='eager']")])
+
+    def test_mark_visible_x2m_notebook(self):
+        "Test marking visible x2m fields in notebook"
+
+        NOTEBOOK_XML = """
+        <form>
+            <notebook>
+                <page>
+                    <field name="OK"/>
+                    <field name="OK"/>
+                    <notebook>
+                        <page>
+                            <field name="OK"/>
+                            <notebook>
+                                <page>
+                                    <field name="OK"/>
+                                    <field name="OK"/>
+                                </page>
+                                <page>
+                                    <field name="KO"/>
+                                </page>
+                            </notebook>
+                        </page>
+                        <page>
+                            <field name="KO"/>
+                        </page>
+                    </notebook>
+                </page>
+                <page>
+                    <field name="KO"/>
+                    <notebook>
+                        <page>
+                            <field name="KO"/>
+                        </page>
+                        <page>
+                            <field name="KO"/>
+                        </page>
+                    </notebook>
+                </page>
+            </notebook>
+         </form>
+        """
+        nb_tree = etree.fromstring(NOTEBOOK_XML)
+        set_visible(nb_tree, {'OK', 'KO'})
+        self.assertEqual(
+            ['OK', 'OK', 'OK', 'OK', 'OK'],
+            [n.attrib['name']
+                for n in nb_tree.xpath("//field[@loading='eager']")])
+
+    def test_mark_visible_x2m_notebook_group(self):
+        "Test marking visible x2m fields in notebook and groups"
+
+        NBGROUP_XML = """
+        <form>
+            <notebook>
+                <page>
+                    <group>
+                        <field name="OK"/>
+                    </group>
+                    <group expandable="0">
+                        <field name="KO"/>
+                    </group>
+                    <group expandable="1">
+                        <field name="OK"/>
+                    </group>
+                </page>
+                <page>
+                    <group>
+                        <field name="KO"/>
+                    </group>
+                    <group expandable="0">
+                        <field name="KO"/>
+                    </group>
+                    <group expandable="1">
+                        <field name="KO"/>
+                    </group>
+                </page>
+            </notebook>
+            <group expandable="0">
+                <notebook>
+                    <page>
+                        <field name="KO"/>
+                    </page>
+                    <page>
+                        <field name="KO"/>
+                    </page>
+                </notebook>
+            </group>
+            <group expandable="1">
+                <notebook>
+                    <page>
+                        <field name="OK"/>
+                    </page>
+                    <page>
+                        <field name="KO"/>
+                    </page>
+                </notebook>
+            </group>
+            <group>
+                <notebook>
+                    <page>
+                        <field name="OK"/>
+                    </page>
+                    <page>
+                        <field name="KO"/>
+                    </page>
+                </notebook>
+            </group>
+         </form>
+        """
+        ng_tree = etree.fromstring(NBGROUP_XML)
+        set_visible(ng_tree, {'OK', 'KO'})
+        self.assertEqual(
+            ['OK', 'OK', 'OK', 'OK'],
+            [n.attrib['name']
+                for n in ng_tree.xpath("//field[@loading='eager']")])
 
     @with_transaction()
     def test_changed_values(self):
@@ -226,23 +383,22 @@ class ModelView(unittest.TestCase):
         'Test Button Access'
         pool = Pool()
         TestModel = pool.get('test.modelview.button')
-        Model = pool.get('ir.model')
         Button = pool.get('ir.model.button')
         ModelAccess = pool.get('ir.model.access')
         Group = pool.get('res.group')
 
-        model, = Model.search([('model', '=', 'test.modelview.button')])
         admin, = Group.search([('name', '=', 'Administration')])
         test = TestModel()
 
-        button = Button(name='test', model=model)
+        button = Button(model=TestModel.__name__, name='test')
         button.save()
 
         # Without model/button access
         TestModel.test([test])
 
         # Without read access
-        access = ModelAccess(model=model, group=None, perm_read=False)
+        access = ModelAccess(
+            model=TestModel.__name__, group=None, perm_read=False)
         access.save()
         with self.assertRaises(AccessError):
             TestModel.test([test])
@@ -290,14 +446,12 @@ class ModelView(unittest.TestCase):
         "Test not passed Button Rule"
         pool = Pool()
         TestModel = pool.get('test.modelview.button')
-        Model = pool.get('ir.model')
         Button = pool.get('ir.model.button')
         ButtonRule = pool.get('ir.model.button.rule')
         ButtonClick = pool.get('ir.model.button.click')
 
-        model, = Model.search([('model', '=', 'test.modelview.button')])
         rule = ButtonRule(number_user=2)
-        button = Button(name='test', model=model, rules=[rule])
+        button = Button(model=TestModel.__name__, name='test', rules=[rule])
         button.save()
 
         record = TestModel(id=-1)
@@ -318,14 +472,12 @@ class ModelView(unittest.TestCase):
         "Test passed Button Rule"
         pool = Pool()
         TestModel = pool.get('test.modelview.button')
-        Model = pool.get('ir.model')
         Button = pool.get('ir.model.button')
         ButtonRule = pool.get('ir.model.button.rule')
         ButtonClick = pool.get('ir.model.button.click')
 
-        model, = Model.search([('model', '=', 'test.modelview.button')])
         rule = ButtonRule(number_user=1)
-        button = Button(name='test', model=model, rules=[rule])
+        button = Button(model=TestModel.__name__, name='test', rules=[rule])
         button.save()
 
         record = TestModel(id=-1)
@@ -475,11 +627,10 @@ class ModelView(unittest.TestCase):
         "Test link in view without read access"
         pool = Pool()
         TestModel = pool.get('test.modelview.link')
-        Model = pool.get('ir.model')
         ModelAccess = pool.get('ir.model.access')
 
-        model, = Model.search([('model', '=', 'test.modelview.link.target')])
-        access = ModelAccess(model=model, group=None, perm_read=False)
+        access = ModelAccess(
+            model='test.modelview.link.target', group=None, perm_read=False)
         access.save()
 
         arch = TestModel.fields_view_get()['arch']
@@ -497,12 +648,11 @@ class ModelView(unittest.TestCase):
         "Test that replacing link by label results in a valid view"
         pool = Pool()
         TestModel = pool.get('test.modelview.link')
-        Model = pool.get('ir.model')
         ModelAccess = pool.get('ir.model.access')
         UIView = pool.get('ir.ui.view')
 
-        model, = Model.search([('model', '=', 'test.modelview.link.target')])
-        access = ModelAccess(model=model, group=None, perm_read=False)
+        access = ModelAccess(
+            model='test.modelview.link.target', group=None, perm_read=False)
         access.save()
 
         arch = TestModel.fields_view_get()['arch']
@@ -597,18 +747,14 @@ class ModelView(unittest.TestCase):
         "Testing circular depends are removed when user has no access"
         pool = Pool()
         CircularDepends = pool.get('test.modelview.circular_depends')
-        Field = pool.get('ir.model.field')
         FieldAccess = pool.get('ir.model.field.access')
 
-        foo_field, = Field.search([
-                ('model.model', '=', 'test.modelview.circular_depends'),
-                ('name', '=', 'foo'),
-                ])
         FieldAccess.create([{
-            'field': foo_field.id,
-            'group': None,
-            'perm_read': False,
-            }])
+                    'model': CircularDepends.__name__,
+                    'field': 'foo',
+                    'group': None,
+                    'perm_read': False,
+                    }])
 
         fields = CircularDepends.fields_view_get(view_type='form')['fields']
 
@@ -622,7 +768,7 @@ class ModelView(unittest.TestCase):
 
         fields = DependsDepends.fields_view_get(view_type='form')['fields']
 
-        self.assertEqual(fields.keys(), {'foo', 'bar', 'baz'})
+        self.assertEqual(fields.keys(), {'id', 'foo', 'bar', 'baz'})
 
     @with_transaction(context={'_check_access': True})
     def test_button_depends_access(self):
@@ -642,18 +788,14 @@ class ModelView(unittest.TestCase):
         "Testing buttons are removed when dependant fields are not accesible"
         pool = Pool()
         Button = pool.get('test.modelview.button_depends')
-        Field = pool.get('ir.model.field')
         FieldAccess = pool.get('ir.model.field.access')
 
-        field, = Field.search([
-                ('model.model', '=', Button.__name__),
-                ('name', '=', 'value'),
-                ])
         FieldAccess.create([{
-            'field': field.id,
-            'group': None,
-            'perm_read': False,
-            }])
+                    'model': Button.__name__,
+                    'field': 'value',
+                    'group': None,
+                    'perm_read': False,
+                    }])
 
         arch = Button.fields_view_get(view_type='form')['arch']
         parser = etree.XMLParser()

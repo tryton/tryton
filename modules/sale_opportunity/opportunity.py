@@ -16,6 +16,7 @@ from trytond.modules.company.model import employee_field, set_employee
 from trytond.modules.currency.fields import Monetary
 from trytond.pool import Pool
 from trytond.pyson import Bool, Eval, Get, If, In
+from trytond.tools import firstline
 from trytond.transaction import Transaction
 
 
@@ -543,7 +544,8 @@ class SaleOpportunityLine(sequence_ordered(), ModelSQL, ModelView):
     opportunity_state = fields.Function(
         fields.Selection('get_opportunity_states', "Opportunity State"),
         'on_change_with_opportunity_state')
-    product = fields.Many2One('product.product', 'Product', required=True,
+    product = fields.Many2One(
+        'product.product', "Product",
         domain=[
             If(Eval('opportunity_state').in_(['lead', 'opportunity'])
                 & ~(Eval('quantity', 0) < 0),
@@ -551,10 +553,26 @@ class SaleOpportunityLine(sequence_ordered(), ModelSQL, ModelView):
                 ()),
             ],
         states=_states)
+    product_uom_category = fields.Function(
+        fields.Many2One(
+            'product.uom.category', "Product UoM Category"),
+        'on_change_with_product_uom_category')
     quantity = fields.Float(
         "Quantity", digits='unit', required=True, states=_states)
-    unit = fields.Many2One('product.uom', 'Unit', required=True,
-        states=_states)
+    unit = fields.Many2One(
+        'product.uom', "Unit",
+        domain=[
+            If(Eval('product_uom_category'),
+                ('category', '=', Eval('product_uom_category', -1)),
+                ('category', '=', -1)),
+            ],
+        states={
+            'required': Bool(Eval('product')),
+            'readonly': _states['readonly'],
+            })
+    description = fields.Text("Description", states=_states)
+    summary = fields.Function(fields.Char("Summary"), 'on_change_with_summary')
+    note = fields.Text("Note")
 
     del _states
 
@@ -562,6 +580,14 @@ class SaleOpportunityLine(sequence_ordered(), ModelSQL, ModelView):
     def __setup__(cls):
         super().__setup__()
         cls.__access__.add('opportunity')
+
+    @classmethod
+    def __register__(cls, module):
+        table_h = cls.__table_handler__(module)
+        super().__register__(module)
+        # Migration from 7.0: remove required on product and unit
+        table_h.not_null_action('product', 'remove')
+        table_h.not_null_action('unit', 'remove')
 
     @classmethod
     def get_opportunity_states(cls):
@@ -583,6 +609,14 @@ class SaleOpportunityLine(sequence_ordered(), ModelSQL, ModelView):
         if not self.unit or self.unit.category != category:
             self.unit = self.product.sale_uom
 
+    @fields.depends('product')
+    def on_change_with_product_uom_category(self, name=None):
+        return self.product.default_uom_category if self.product else None
+
+    @fields.depends('description')
+    def on_change_with_summary(self, name=None):
+        return firstline(self.description or '')
+
     def get_sale_line(self, sale):
         '''
         Return sale line for opportunity line
@@ -592,7 +626,7 @@ class SaleOpportunityLine(sequence_ordered(), ModelSQL, ModelView):
             type='line',
             product=self.product,
             sale=sale,
-            description=None,
+            description=self.description,
             )
         sale_line.on_change_product()
         self._set_sale_line_quantity(sale_line)
@@ -607,9 +641,13 @@ class SaleOpportunityLine(sequence_ordered(), ModelSQL, ModelView):
         pool = Pool()
         Lang = pool.get('ir.lang')
         lang = Lang.get()
-        return (lang.format_number_symbol(
-                self.quantity or 0, self.unit, digits=self.unit.digits)
-            + ' %s @ %s' % (self.product.rec_name, self.opportunity.rec_name))
+        if self.product:
+            return (lang.format_number_symbol(
+                    self.quantity or 0, self.unit, digits=self.unit.digits)
+                + ' %s @ %s' % (
+                    self.product.rec_name, self.opportunity.rec_name))
+        else:
+            return self.opportunity.rec_name
 
     @classmethod
     def search_rec_name(cls, name, clause):

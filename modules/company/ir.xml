@@ -28,7 +28,7 @@ this repository contains the full copyright notices and license terms. -->
 
         <record model="ir.rule.group" id="rule_group_sequence_companies">
             <field name="name">User in companies</field>
-            <field name="model" search="[('model', '=', 'ir.sequence')]"/>
+            <field name="model">ir.sequence</field>
             <field name="global_p" eval="True"/>
         </record>
         <record model="ir.rule" id="rule_sequence_companies1">
@@ -44,7 +44,7 @@ this repository contains the full copyright notices and license terms. -->
 
         <record model="ir.rule.group" id="rule_group_sequence_strict_companies">
             <field name="name">User in companies</field>
-            <field name="model" search="[('model', '=', 'ir.sequence.strict')]"/>
+            <field name="model">ir.sequence.strict</field>
             <field name="global_p" eval="True"/>
         </record>
         <record model="ir.rule" id="rule_sequence_strict_companies1">

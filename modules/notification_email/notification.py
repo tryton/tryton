@@ -1,7 +1,6 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 import mimetypes
-from email.headerregistry import Address
 from email.utils import getaddresses
 
 from genshi.template import TextTemplate
@@ -12,8 +11,8 @@ from trytond.model import ModelSQL, ModelView, fields
 from trytond.pool import Pool
 from trytond.pyson import Eval, TimeDelta
 from trytond.report import get_email
-from trytond.sendmail import SMTPDataManager, sendmail_transactional
-from trytond.tools.email_ import convert_ascii_email, set_from_header
+from trytond.sendmail import SMTPDataManager, send_message_transactional
+from trytond.tools.email_ import format_address, has_rcpt, set_from_header
 from trytond.transaction import Transaction
 
 from .exceptions import TemplateError
@@ -34,7 +33,7 @@ class Email(ModelSQL, ModelView):
     recipients = fields.Many2One(
         'ir.model.field', "Recipients",
         domain=[
-            ('model.model', '=', Eval('model')),
+            ('model', '=', Eval('model')),
             ],
         help="The field that contains the recipient(s).")
     fallback_recipients = fields.Many2One(
@@ -49,7 +48,7 @@ class Email(ModelSQL, ModelView):
     recipients_secondary = fields.Many2One(
         'ir.model.field', "Secondary Recipients",
         domain=[
-            ('model.model', '=', Eval('model')),
+            ('model', '=', Eval('model')),
             ],
         help="The field that contains the secondary recipient(s).")
     fallback_recipients_secondary = fields.Many2One(
@@ -64,7 +63,7 @@ class Email(ModelSQL, ModelView):
     recipients_hidden = fields.Many2One(
         'ir.model.field', "Hidden Recipients",
         domain=[
-            ('model.model', '=', Eval('model')),
+            ('model', '=', Eval('model')),
             ],
         help="The field that contains the hidden recipient(s).")
     fallback_recipients_hidden = fields.Many2One(
@@ -157,7 +156,10 @@ class Email(ModelSQL, ModelView):
         pool = Pool()
         EmailTemplate = pool.get('ir.email.template')
         with Transaction().set_context(usage=self.contact_mechanism):
-            return EmailTemplate.get_addresses(value)
+            # reformat addresses with encoding
+            return [
+                format_address(e, n)
+                for n, e in getaddresses(EmailTemplate.get_addresses(value))]
 
     def _get_languages(self, value):
         pool = Pool()
@@ -171,9 +173,12 @@ class Email(ModelSQL, ModelView):
 
         # TODO order languages to get default as last one for title
         msg, title = get_email(self.content, record, languages)
-        language = list(languages)[-1]
+        if languages:
+            language = list(languages)[-1].code
+        else:
+            language = None
         from_ = sender
-        with Transaction().set_context(language=language.code):
+        with Transaction().set_context(language=language):
             notification = self.__class__(self.id)
             if notification.from_:
                 from_ = notification.from_
@@ -184,7 +189,7 @@ class Email(ModelSQL, ModelView):
 
         if self.attachments:
             for report in self.attachments:
-                name, data = Attachment.get(report, record, language.code)
+                name, data = Attachment.get(report, record, language)
                 ctype, _ = mimetypes.guess_type(name)
                 if not ctype:
                     ctype = 'application/octet-stream'
@@ -196,11 +201,12 @@ class Email(ModelSQL, ModelView):
                     filename=('utf-8', '', name))
 
         set_from_header(msg, sender, from_)
-        msg['To'] = [Address(n, addr_spec=a) for n, a in getaddresses(to)]
-        msg['Cc'] = [Address(n, addr_spec=a) for n, a in getaddresses(cc)]
+        msg['To'] = to
+        msg['Cc'] = cc
+        msg['Bcc'] = bcc
         msg['Subject'] = title
         msg['Auto-Submitted'] = 'auto-generated'
-        return msg, title
+        return msg
 
     @classmethod
     def trigger(cls, records, trigger):
@@ -239,20 +245,11 @@ class Email(ModelSQL, ModelView):
             cc, cc_languages = self._get_cc(record)
             bcc, bcc_languages = self._get_bcc(record)
             languages = to_languages | cc_languages | bcc_languages
-            to_addrs = [
-                convert_ascii_email(e) for _, e in getaddresses(to + cc + bcc)]
-            if to_addrs:
-                msg, title = self.get_email(
-                    record, from_, to, cc, bcc, languages)
-                sendmail_transactional(
-                    from_, to_addrs, msg, datamanager=datamanager)
-                emails.append(Email(
-                        recipients=', '.join(to),
-                        recipients_secondary=', '.join(cc),
-                        recipients_hidden=', '.join(bcc),
-                        addresses=[{'address': a} for a in to_addrs],
-                        subject=title,
-                        resource=record,
+            msg = self.get_email(record, from_, to, cc, bcc, languages)
+            if has_rcpt(msg):
+                send_message_transactional(msg, datamanager=datamanager)
+                emails.append(Email.from_message(
+                        msg, resource=record,
                         notification_email=trigger.notification_email,
                         notification_trigger=trigger))
         Email.save(emails)

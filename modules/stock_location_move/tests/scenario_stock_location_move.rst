@@ -49,7 +49,7 @@ Move pallet from storage1 to storage2::
     >>> assertEqual(pallet.assigned_by, shipment)
     >>> assertEqual(pallet.parent, storage1)
 
-    >>> shipment.click('done')
+    >>> shipment.click('do')
     >>> shipment.state
     'done'
     >>> pallet.reload()
@@ -90,7 +90,7 @@ Concurrently move pallet::
         ...
     AssignError: ...
 
-    >>> shipment1.click('done')
+    >>> shipment1.click('do')
 
 Add lead time between warehouses::
 
@@ -119,6 +119,6 @@ Move pallet from storage1 to storage2 with lead_time::
     >>> pallet.reload()
     >>> assertEqual(pallet.parent, shipment.transit_location)
 
-    >>> shipment.click('done')
+    >>> shipment.click('do')
     >>> pallet.reload()
     >>> assertEqual(pallet.parent, warehouse2.storage_location)

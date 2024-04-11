@@ -2,8 +2,8 @@
 <!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
 this repository contains the full copyright notices and license terms. -->
 <form>
-    <label name="model"/>
-    <field name="model"/>
+    <label name="model_ref"/>
+    <field name="model_ref"/>
     <label name="type"/>
     <field name="type"/>
     <label name="inherit"/>
@@ -12,13 +12,14 @@ this repository contains the full copyright notices and license terms. -->
     <field name="domain" widget="pyson"/>
     <label name="priority"/>
     <field name="priority"/>
-    <label name="field_childs"/>
-    <field name="field_childs"/>
-    <label name="module"/>
-    <field name="module"/>
+    <label name="field_children"/>
+    <field name="field_children"/>
+    <label name="module_ref"/>
+    <field name="module_ref"/>
     <label name="name"/>
     <field name="name"/>
     <separator name="arch" colspan="4"/>
     <field name="arch" colspan="4"/>
+    <field name="extensions" colspan="4" view_ids="ir.view_view_list_extension"/>
     <button name="show" colspan="4"/>
 </form>

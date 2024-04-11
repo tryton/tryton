@@ -83,8 +83,7 @@ this repository contains the full copyright notices and license terms. -->
 
         <record model="ir.rule.group" id="rule_group_agent_companies">
             <field name="name">User in companies</field>
-            <field name="model"
-                search="[('model', '=', 'commission.agent')]"/>
+            <field name="model">commission.agent</field>
             <field name="global_p" eval="True"/>
         </record>
         <record model="ir.rule" id="rule_agent_companies">
@@ -95,14 +94,14 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
         <record model="ir.model.access" id="access_agent">
-            <field name="model" search="[('model', '=', 'commission.agent')]"/>
+            <field name="model">commission.agent</field>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="False"/>
             <field name="perm_create" eval="False"/>
             <field name="perm_delete" eval="False"/>
         </record>
         <record model="ir.model.access" id="access_agent_commission_admin">
-            <field name="model" search="[('model', '=', 'commission.agent')]"/>
+            <field name="model">commission.agent</field>
             <field name="group" ref="group_commission_admin"/>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="True"/>
@@ -189,14 +188,14 @@ this repository contains the full copyright notices and license terms. -->
             id="menu_plan_form"/>
 
         <record model="ir.model.access" id="access_plan">
-            <field name="model" search="[('model', '=', 'commission.plan')]"/>
+            <field name="model">commission.plan</field>
             <field name="perm_read" eval="False"/>
             <field name="perm_write" eval="False"/>
             <field name="perm_create" eval="False"/>
             <field name="perm_delete" eval="False"/>
         </record>
         <record model="ir.model.access" id="access_plan_commission_admin">
-            <field name="model" search="[('model', '=', 'commission.plan')]"/>
+            <field name="model">commission.plan</field>
             <field name="group" ref="group_commission_admin"/>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="True"/>
@@ -283,14 +282,14 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
         <record model="ir.model.access" id="access_commission">
-            <field name="model" search="[('model', '=', 'commission')]"/>
+            <field name="model">commission</field>
             <field name="perm_read" eval="False"/>
             <field name="perm_write" eval="False"/>
             <field name="perm_create" eval="False"/>
             <field name="perm_delete" eval="False"/>
         </record>
         <record model="ir.model.access" id="access_commission_commission">
-            <field name="model" search="[('model', '=', 'commission')]"/>
+            <field name="model">commission</field>
             <field name="group" ref="group_commission"/>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="True"/>
@@ -298,9 +297,9 @@ this repository contains the full copyright notices and license terms. -->
             <field name="perm_delete" eval="True"/>
         </record>
         <record model="ir.model.button" id="commission_invoice_button">
+            <field name="model">commission</field>
             <field name="name">invoice</field>
             <field name="string">Invoice</field>
-            <field name="model" search="[('model', '=', 'commission')]"/>
         </record>
 
         <record model="ir.action.wizard" id="act_commission_create_invoice">

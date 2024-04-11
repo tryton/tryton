@@ -189,14 +189,14 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
         <record model="ir.model.access" id="access_production">
-            <field name="model" search="[('model', '=', 'production')]"/>
+            <field name="model">production</field>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="False"/>
             <field name="perm_create" eval="False"/>
             <field name="perm_delete" eval="False"/>
         </record>
         <record model="ir.model.access" id="access_production_group_production">
-            <field name="model" search="[('model', '=', 'production')]"/>
+            <field name="model">production</field>
             <field name="group" ref="group_production"/>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="True"/>
@@ -206,7 +206,7 @@ this repository contains the full copyright notices and license terms. -->
 
         <record model="ir.rule.group" id="rule_group_production_companies">
             <field name="name">User in companies</field>
-            <field name="model" search="[('model', '=', 'production')]"/>
+            <field name="model">production</field>
             <field name="global_p" eval="True"/>
         </record>
         <record model="ir.rule" id="rule_production_companies">
@@ -217,51 +217,44 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
         <record model="ir.model.button" id="production_cancel_button">
+            <field name="model">production</field>
             <field name="name">cancel</field>
             <field name="string">Cancel</field>
-            <field name="model"
-                search="[('model', '=', 'production')]"/>
         </record>
 
         <record model="ir.model.button" id="production_draft_button">
+            <field name="model">production</field>
             <field name="name">draft</field>
             <field name="string">Draft</field>
-            <field name="model"
-                search="[('model', '=', 'production')]"/>
         </record>
 
         <record model="ir.model.button" id="production_wait_button">
+            <field name="model">production</field>
             <field name="name">wait</field>
             <field name="string">Wait</field>
-            <field name="model"
-                search="[('model', '=', 'production')]"/>
         </record>
 
         <record model="ir.model.button" id="production_run_button">
+            <field name="model">production</field>
             <field name="name">run</field>
             <field name="string">Run</field>
-            <field name="model"
-                search="[('model', '=', 'production')]"/>
         </record>
 
         <record model="ir.model.button" id="production_done_button">
-            <field name="name">done</field>
-            <field name="string">Done</field>
+            <field name="model">production</field>
+            <field name="name">do</field>
+            <field name="string">Complete</field>
             <field name="confirm">Are you sure you want to complete the production?</field>
-            <field name="model"
-                search="[('model', '=', 'production')]"/>
         </record>
 
         <record model="ir.model.button" id="production_assign_try_button">
+            <field name="model">production</field>
             <field name="name">assign_try</field>
-            <field name="model"
-                search="[('model', '=', 'production')]"/>
         </record>
 
         <record model="ir.model.button" id="production_assign_force_button">
+            <field name="model">production</field>
             <field name="name">assign_force</field>
-            <field name="model"
-                search="[('model', '=', 'production')]"/>
         </record>
         <record model="ir.model.button-res.group"
             id="production_assign_force_button_group_production">
@@ -270,16 +263,15 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
         <record model="ir.model.button" id="production_assign_wizard_button">
+            <field name="model">production</field>
             <field name="name">assign_wizard</field>
             <field name="string">Assign</field>
-            <field name="model" search="[('model', '=', 'production')]"/>
         </record>
 
         <record model="ir.model.button" id="production_reset_bom_button">
+            <field name="model">production</field>
             <field name="name">reset_bom</field>
             <field name="string">Reset to BOM</field>
-            <field name="model"
-                search="[('model', '=', 'production')]"/>
         </record>
 
         <record model="ir.action.wizard" id="wizard_production_assign">

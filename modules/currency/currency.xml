@@ -55,14 +55,14 @@ this repository contains the full copyright notices and license terms. -->
             sequence="10"
             id="menu_currency_form"/>
         <record model="ir.model.access" id="access_currency">
-            <field name="model" search="[('model', '=', 'currency.currency')]"/>
+            <field name="model">currency.currency</field>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="False"/>
             <field name="perm_create" eval="False"/>
             <field name="perm_delete" eval="False"/>
         </record>
         <record model="ir.model.access" id="access_currency_currency_admin">
-            <field name="model" search="[('model', '=', 'currency.currency')]"/>
+            <field name="model">currency.currency</field>
             <field name="group" ref="group_currency_admin"/>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="True"/>
@@ -118,14 +118,14 @@ this repository contains the full copyright notices and license terms. -->
         <menuitem parent="menu_currency" action="act_cron_form" sequence="20" id="menu_cron_form"/>
 
         <record model="ir.model.access" id="access_cron">
-            <field name="model" search="[('model', '=', 'currency.cron')]"/>
+            <field name="model">currency.cron</field>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="False"/>
             <field name="perm_create" eval="False"/>
             <field name="perm_delete" eval="False"/>
         </record>
         <record model="ir.model.access" id="access_cron_currency_admin">
-            <field name="model" search="[('model', '=', 'currency.cron')]"/>
+            <field name="model">currency.cron</field>
             <field name="group" ref="group_currency_admin"/>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="True"/>
@@ -134,9 +134,9 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
         <record model="ir.model.button" id="cron_run_button">
+            <field name="model">currency.cron</field>
             <field name="name">run</field>
             <field name="string">Run</field>
-            <field name="model" search="[('model', '=', 'currency.cron')]"/>
         </record>
 
         <record model="ir.cron" id="cron_cron">

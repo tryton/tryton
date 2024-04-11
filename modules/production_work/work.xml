@@ -77,16 +77,14 @@ this repository contains the full copyright notices and license terms. -->
             id="menu_work_center_list"/>
 
         <record model="ir.model.access" id="access_work_center">
-            <field name="model"
-                search="[('model', '=', 'production.work.center')]"/>
+            <field name="model">production.work.center</field>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="False"/>
             <field name="perm_create" eval="False"/>
             <field name="perm_delete" eval="False"/>
         </record>
         <record model="ir.model.access" id="access_work_center_admin">
-            <field name="model"
-                search="[('model', '=', 'production.work.center')]"/>
+            <field name="model">production.work.center</field>
             <field name="group" ref="production.group_production_admin"/>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="True"/>
@@ -96,8 +94,7 @@ this repository contains the full copyright notices and license terms. -->
 
         <record model="ir.rule.group" id="rule_group_work_center_companies">
             <field name="name">User in companies</field>
-            <field name="model"
-                search="[('model', '=', 'production.work.center')]"/>
+            <field name="model">production.work.center</field>
             <field name="global_p" eval="True"/>
         </record>
         <record model="ir.rule" id="rule_work_center_companies">
@@ -142,16 +139,14 @@ this repository contains the full copyright notices and license terms. -->
             id="menu_work_center_category_list"/>
 
         <record model="ir.model.access" id="access_work_center_category">
-            <field name="model"
-                search="[('model', '=', 'production.work.center.category')]"/>
+            <field name="model">production.work.center.category</field>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="False"/>
             <field name="perm_create" eval="False"/>
             <field name="perm_delete" eval="False"/>
         </record>
         <record model="ir.model.access" id="access_work_center_category_admin">
-            <field name="model"
-                search="[('model', '=', 'production.work.center.category')]"/>
+            <field name="model">production.work.center.category</field>
             <field name="group" ref="production.group_production_admin"/>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="True"/>
@@ -236,14 +231,14 @@ this repository contains the full copyright notices and license terms. -->
             id="menu_work_list"/>
 
         <record model="ir.model.access" id="access_work">
-            <field name="model" search="[('model', '=', 'production.work')]"/>
+            <field name="model">production.work</field>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="False"/>
             <field name="perm_create" eval="False"/>
             <field name="perm_delete" eval="False"/>
         </record>
         <record model="ir.model.access" id="access_work_group_production">
-            <field name="model" search="[('model', '=', 'production.work')]"/>
+            <field name="model">production.work</field>
             <field name="group" ref="production.group_production"/>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="True"/>
@@ -252,20 +247,20 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
         <record model="ir.model.button" id="work_start_button">
+            <field name="model">production.work</field>
             <field name="name">start</field>
             <field name="string">Start</field>
-            <field name="model" search="[('model', '=', 'production.work')]"/>
         </record>
 
         <record model="ir.model.button" id="work_stop_button">
+            <field name="model">production.work</field>
             <field name="name">stop</field>
             <field name="string">Stop</field>
-            <field name="model" search="[('model', '=', 'production.work')]"/>
         </record>
 
         <record model="ir.rule.group" id="rule_group_work_companies">
             <field name="name">User in companies</field>
-            <field name="model" search="[('model', '=', 'production.work')]"/>
+            <field name="model">production.work</field>
             <field name="global_p" eval="True"/>
         </record>
         <record model="ir.rule" id="rule_work_companies">
@@ -288,14 +283,14 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
         <record model="ir.model.access" id="access_work_cycle">
-            <field name="model" search="[('model', '=', 'production.work.cycle')]"/>
+            <field name="model">production.work.cycle</field>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="False"/>
             <field name="perm_create" eval="False"/>
             <field name="perm_delete" eval="False"/>
         </record>
         <record model="ir.model.access" id="access_work_cycle_group_production">
-            <field name="model" search="[('model', '=', 'production.work.cycle')]"/>
+            <field name="model">production.work.cycle</field>
             <field name="group" ref="production.group_production"/>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="True"/>
@@ -304,29 +299,26 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
         <record model="ir.model.button" id="work_cycle_cancel_button">
+            <field name="model">production.work.cycle</field>
             <field name="name">cancel</field>
             <field name="string">Cancel</field>
-            <field name="model"
-                search="[('model', '=', 'production.work.cycle')]"/>
         </record>
 
         <record model="ir.model.button" id="work_cycle_do_button">
+            <field name="model">production.work.cycle</field>
             <field name="name">do</field>
             <field name="string">Do</field>
-            <field name="model"
-                search="[('model', '=', 'production.work.cycle')]"/>
         </record>
 
         <record model="ir.model.button" id="work_cycle_run_button">
+            <field name="model">production.work.cycle</field>
             <field name="name">run</field>
             <field name="string">Run</field>
-            <field name="model"
-                search="[('model', '=', 'production.work.cycle')]"/>
         </record>
 
         <record model="ir.rule.group" id="rule_group_work_cycle_companies">
             <field name="name">User in companies</field>
-            <field name="model" search="[('model', '=', 'production.work.cycle')]"/>
+            <field name="model">production.work.cycle</field>
             <field name="global_p" eval="True"/>
         </record>
         <record model="ir.rule" id="rule_work_cycle_companies">

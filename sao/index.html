@@ -9,32 +9,25 @@ this repository contains the full copyright notices and license terms. -->
         <title>Tryton</title>
         <link rel="icon" type="image/png" href="images/tryton-icon.png">
 
-        <script type="text/javascript" src="bower_components/jquery/dist/jquery.min.js"></script>
-        <script type="text/javascript" src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
-        <script type="text/javascript" src="bower_components/moment/min/moment.min.js"></script>
-        <script type="text/javascript" src="bower_components/moment/min/locales.min.js"></script>
-        <script type="text/javascript" src="bower_components/gettext.js/dist/gettext.min.js"></script>
-        <script type="text/javascript" src="bower_components/d3/d3.min.js"></script>
-        <script type="text/javascript" src="bower_components/c3/c3.min.js"></script>
-        <script type="text/javascript" src="bower_components/papaparse/papaparse.min.js"></script>
-        <script type="text/javascript" src="bower_components/fullcalendar/dist/fullcalendar.min.js"></script>
+        <script type="text/javascript" src="bower_components/jquery/dist/jquery.js"></script>
+        <script type="text/javascript" src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+        <script type="text/javascript" src="bower_components/moment/moment.js"></script>
+        <script type="text/javascript" src="bower_components/moment/min/locales.js"></script>
+        <script type="text/javascript" src="bower_components/gettext.js/dist/gettext.js"></script>
+        <script type="text/javascript" src="bower_components/d3/d3.js"></script>
+        <script type="text/javascript" src="bower_components/c3/c3.js"></script>
+        <script type="text/javascript" src="bower_components/papaparse/papaparse.js"></script>
+        <script type="text/javascript" src="bower_components/fullcalendar/dist/fullcalendar.js"></script>
         <script type="text/javascript" src="bower_components/fullcalendar/dist/locale-all.js"></script>
-        <script type="text/javascript" src="bower_components/mousetrap/mousetrap.min.js"></script>
-        <script type="text/javascript" src="bower_components/mousetrap/plugins/pause/mousetrap-pause.min.js"></script>
-        <script type="text/javascript" src="bower_components/Sortable/Sortable.min.js"></script>
+        <script type="text/javascript" src="bower_components/mousetrap/mousetrap.js"></script>
+        <script type="text/javascript" src="bower_components/mousetrap/plugins/pause/mousetrap-pause.js"></script>
+        <script type="text/javascript" src="bower_components/Sortable/Sortable.js"></script>
 
-        <link rel="stylesheet" href="bower_components/c3/c3.min.css">
-        <link rel="stylesheet" href="bower_components/fullcalendar/dist/fullcalendar.min.css">
+        <link rel="stylesheet" href="bower_components/c3/c3.css">
+        <link rel="stylesheet" href="bower_components/fullcalendar/dist/fullcalendar.css">
 
-        <script type="text/javascript" src="dist/tryton-sao.min.js"></script>
-        <link rel="stylesheet" type="text/css" href="dist/tryton-sao.min.css"
-        media="screen"/>
-        <script type="text/javascript">
-            if (typeof Sao == 'undefined') {
-                document.write(unescape('%3cscript type="text/javascript" src="dist/tryton-sao.js"%3e%3c/script%3e'));
-                document.write(unescape('%3clink rel="stylesheet" type="text/css" href="dist/tryton-sao.css" media="screen"/%3e'));
-            }
-        </script>
+        <script type="text/javascript" src="dist/tryton-sao.js"></script>
+        <link rel="stylesheet" type="text/css" href="dist/tryton-sao.css" media="screen"/>
         <script type="text/javascript" src="custom.js"></script>
         <link rel="stylesheet" type="text/css" href="custom.css" media="screen"/>
     </head>
@@ -88,7 +81,7 @@ this repository contains the full copyright notices and license terms. -->
                      style="height: calc(100vh - 50px - 1px - 20px); margin: 0px;">
                     <div class="col-xs-12 col-sm-4 col-lg-3 sidebar-offcanvas" id="menu" role="navigation"
                                                                                          style="overflow-y: auto; height: 100%;"></div>
-                    <div class="col-xs-12 col-sm-8 col-lg-9 main-offcanvas" style="overflow-y: auto; height: 100%;" id="tabs" role="tabpanel">
+                    <div class="col-xs-12 col-sm-8 col-lg-9 main-offcanvas" style="display:flex; overflow-y: auto; height: 100%;" id="tabs" role="tabpanel">
                         <div id="tabcontent" class="tab-content"></div>
                     </div>
                 </div>

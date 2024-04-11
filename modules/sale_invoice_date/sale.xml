@@ -36,14 +36,14 @@ this repository contains the full copyright notices and license terms. -->
             id="menu_invoice_term_form"/>
 
         <record model="ir.model.access" id="access_invoice_term">
-            <field name="model" search="[('model', '=', 'sale.invoice.term')]"/>
+            <field name="model">sale.invoice.term</field>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="False"/>
             <field name="perm_create" eval="False"/>
             <field name="perm_delete" eval="False"/>
         </record>
         <record model="ir.model.access" id="access_invoice_term_sale_admin">
-            <field name="model" search="[('model', '=', 'sale.invoice.term')]"/>
+            <field name="model">sale.invoice.term</field>
             <field name="group" ref="sale.group_sale_admin"/>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="True"/>

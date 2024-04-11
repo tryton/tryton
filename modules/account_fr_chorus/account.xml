@@ -69,14 +69,14 @@ this repository contains the full copyright notices and license terms. -->
             id="menu_invoice_chorus_form"/>
 
         <record model="ir.model.access" id="access_invoice_chorus">
-            <field name="model" search="[('model', '=', 'account.invoice.chorus')]"/>
+            <field name="model">account.invoice.chorus</field>
             <field name="perm_read" eval="False"/>
             <field name="perm_write" eval="False"/>
             <field name="perm_create" eval="False"/>
             <field name="perm_delete" eval="False"/>
         </record>
         <record model="ir.model.access" id="access_invoice_account_chorus">
-            <field name="model" search="[('model', '=', 'account.invoice.chorus')]"/>
+            <field name="model">account.invoice.chorus</field>
             <field name="group" ref="account.group_account"/>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="True"/>
@@ -85,15 +85,15 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
         <record model="ir.model.button" id="invoice_chorus_send_button">
+            <field name="model">account.invoice.chorus</field>
             <field name="name">send</field>
             <field name="string">Send</field>
-            <field name="model" search="[('model', '=', 'account.invoice.chorus')]"/>
         </record>
 
         <record model="ir.model.button" id="invoice_chorus_update_button">
+            <field name="model">account.invoice.chorus</field>
             <field name="name">update</field>
             <field name="string">Update</field>
-            <field name="model" search="[('model', '=', 'account.invoice.chorus')]"/>
         </record>
 
         <record model="ir.cron" id="cron_invoice_send">

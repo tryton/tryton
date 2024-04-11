@@ -58,6 +58,11 @@ function eval_pyson(value){
                 this.container.add(null, attributes);
                 return;
             }
+
+            if (attributes.loading == 'eager') {
+                this.field_attrs[name].loading = 'eager';
+            }
+
             var WidgetFactory = Sao.View.FormXMLViewParser.WIDGETS[
                 attributes.widget];
             var widget = new WidgetFactory(this.view, attributes);
@@ -381,8 +386,10 @@ function eval_pyson(value){
                         }
                     }
                     var promesses = [];
-                    for (const j in this.state_widgets) {
-                        var state_widget = this.state_widgets[j];
+                    // We iterate in the reverse order so that the most nested
+                    // widgets are computed first and set_state methods can rely
+                    // on their children having their state set
+                    for (const state_widget of this.state_widgets.toReversed()) {
                         var prm = state_widget.set_state(record);
                         if (prm) {
                             promesses.push(prm);
@@ -895,6 +902,26 @@ function eval_pyson(value){
         },
         get_nth_page: function(page_index) {
             return jQuery(this.panes.find("div[role='tabpanel']")[page_index]);
+        },
+        set_state: function(record) {
+            Sao.View.Form.Notebook._super.set_state.call(this, record);
+
+            var n_pages = this.get_n_pages();
+            if (n_pages > 0) {
+                var to_collapse = true;
+                for (let i = 0; i < n_pages; i++) {
+                    var page = this.get_nth_page(i);
+                    if (page.css('display') != 'none') {
+                        to_collapse = false;
+                        break;
+                    }
+                }
+                if (to_collapse) {
+                    this.hide();
+                }
+            } else {
+                this.hide();
+            }
         }
     });
 
@@ -928,6 +955,26 @@ function eval_pyson(value){
         },
         add: function(widget) {
             this.el.append(widget.el);
+        },
+        set_state: function(record) {
+            Sao.View.Form.Group._super.set_state.call(this, record);
+
+            var to_collapse = false;
+            if (!this.attributes.string) {
+                to_collapse = true;
+                var children = this.el
+                    .find('> .form-container > .form-item')
+                    .children(':not(.tooltip)');
+                for (const child of children) {
+                    if (jQuery(child).css('display') != 'none') {
+                        to_collapse = false;
+                        break;
+                    }
+                }
+            }
+            if (to_collapse) {
+                this.hide();
+            }
         }
     });
 
@@ -3532,7 +3579,7 @@ function eval_pyson(value){
                     for (i = 0, len = result.length; i < len; i++) {
                         ids.push(result[i][0]);
                     }
-                    this.screen.group.load(ids, true);
+                    this.screen.group.load(ids, true, -1, null);
                     prm = this.screen.display();
                     if (sequence) {
                         this.screen.group.set_sequence(

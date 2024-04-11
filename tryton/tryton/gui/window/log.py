@@ -24,7 +24,8 @@ class Log(WinForm):
             log, = RPCExecute(
                 'model', record.model_name, 'read', [record.id],
                 ['create_uid.rec_name', 'create_date',
-                    'write_uid.rec_name', 'write_date'], context=context)
+                    'write_uid.rec_name', 'write_date',
+                    'xml_id'], context=context)
         except RPCException:
             return
 
@@ -53,11 +54,32 @@ class Log(WinForm):
         label_id.set_mnemonic_widget(entry_id)
         grid.attach(label_id, 2, 1, 1, 1)
 
+        if log.get('xml_id'):
+            module, xml_id = log['xml_id'].split('.', 1)
+
+            entry_module = Gtk.Entry(editable=False)
+            entry_module.set_text(module)
+            grid.attach(entry_module, 1, 2, 1, 1)
+            label_module = Gtk.Label(
+                label=set_underline(_("Module:")),
+                use_underline=True, halign=Gtk.Align.END)
+            label_module.set_mnemonic_widget(entry_module)
+            grid.attach(label_module, 0, 2, 1, 1)
+
+            entry_xml_id = Gtk.Entry(editable=False)
+            entry_xml_id.set_text(xml_id)
+            grid.attach(entry_xml_id, 3, 2, 1, 1)
+            label_xml_id = Gtk.Label(
+                label=set_underline(_("XML ID:")),
+                use_underline=True, halign=Gtk.Align.END)
+            label_xml_id.set_mnemonic_widget(entry_xml_id)
+            grid.attach(label_xml_id, 2, 2, 1, 1)
+
         for i, (user, user_label, date, date_label) in enumerate([
                     ('create_uid.', _("Created by:"),
                         'create_date', _("Created at:")),
                     ('write_uid.', _("Last Modified by:"),
-                        'write_date', _("Last Modified at:"))], 2):
+                        'write_date', _("Last Modified at:"))], 3):
             entry_user = Gtk.Entry(editable=False, width_chars=50)
             user = log.get(user)
             if user:

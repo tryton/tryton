@@ -63,14 +63,14 @@ this repository contains the full copyright notices and license terms. -->
             id="menu_scenario_form"/>
 
         <record model="ir.model.access" id="access_scenario">
-            <field name="model" search="[('model', '=', 'marketing.automation.scenario')]"/>
+            <field name="model">marketing.automation.scenario</field>
             <field name="perm_read" eval="False"/>
             <field name="perm_write" eval="False"/>
             <field name="perm_create" eval="False"/>
             <field name="perm_delete" eval="False"/>
         </record>
         <record model="ir.model.access" id="access_scenario_marketing">
-            <field name="model" search="[('model', '=', 'marketing.automation.scenario')]"/>
+            <field name="model">marketing.automation.scenario</field>
             <field name="group" ref="marketing.group_marketing"/>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="True"/>
@@ -79,19 +79,19 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
         <record model="ir.model.button" id="scenario_draft_button">
+            <field name="model">marketing.automation.scenario</field>
             <field name="name">draft</field>
             <field name="string">Draft</field>
-            <field name="model" search="[('model', '=', 'marketing.automation.scenario')]"/>
         </record>
         <record model="ir.model.button" id="scenario_run_button">
+            <field name="model">marketing.automation.scenario</field>
             <field name="name">run</field>
             <field name="string">Run</field>
-            <field name="model" search="[('model', '=', 'marketing.automation.scenario')]"/>
         </record>
         <record model="ir.model.button" id="scenario_stop_button">
+            <field name="model">marketing.automation.scenario</field>
             <field name="name">stop</field>
             <field name="string">Stop</field>
-            <field name="model" search="[('model', '=', 'marketing.automation.scenario')]"/>
         </record>
 
         <record model="ir.ui.view" id="activity_view_list">
@@ -141,14 +141,14 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
         <record model="ir.model.access" id="access_activity">
-            <field name="model" search="[('model', '=', 'marketing.automation.activity')]"/>
+            <field name="model">marketing.automation.activity</field>
             <field name="perm_read" eval="False"/>
             <field name="perm_write" eval="False"/>
             <field name="perm_create" eval="False"/>
             <field name="perm_delete" eval="False"/>
         </record>
         <record model="ir.model.access" id="access_activity_marketing">
-            <field name="model" search="[('model', '=', 'marketing.automation.activity')]"/>
+            <field name="model">marketing.automation.activity</field>
             <field name="group" ref="marketing.group_marketing"/>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="True"/>
@@ -190,14 +190,14 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
         <record model="ir.model.access" id="access_record">
-            <field name="model" search="[('model', '=', 'marketing.automation.record')]"/>
+            <field name="model">marketing.automation.record</field>
             <field name="perm_read" eval="False"/>
             <field name="perm_write" eval="False"/>
             <field name="perm_create" eval="False"/>
             <field name="perm_delete" eval="False"/>
         </record>
         <record model="ir.model.access" id="access_record_marketing">
-            <field name="model" search="[('model', '=', 'marketing.automation.record')]"/>
+            <field name="model">marketing.automation.record</field>
             <field name="group" ref="marketing.group_marketing"/>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="True"/>
@@ -206,9 +206,9 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
         <record model="ir.model.button" id="record_block_button">
+            <field name="model">marketing.automation.record</field>
             <field name="name">block</field>
             <field name="string">Block</field>
-            <field name="model" search="[('model', '=', 'marketing.automation.record')]"/>
         </record>
 
         <record model="ir.ui.view" id="record_activity_view_list">
@@ -275,14 +275,14 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
         <record model="ir.model.access" id="access_record_activity">
-            <field name="model" search="[('model', '=', 'marketing.automation.record.activity')]"/>
+            <field name="model">marketing.automation.record.activity</field>
             <field name="perm_read" eval="False"/>
             <field name="perm_write" eval="False"/>
             <field name="perm_create" eval="False"/>
             <field name="perm_delete" eval="False"/>
         </record>
         <record model="ir.model.access" id="access_record_activity_marketing">
-            <field name="model" search="[('model', '=', 'marketing.automation.record.activity')]"/>
+            <field name="model">marketing.automation.record.activity</field>
             <field name="group" ref="marketing.group_marketing"/>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="True"/>
@@ -291,19 +291,19 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
         <record model="ir.model.button" id="record_activity_on_email_opened_button">
+            <field name="model">marketing.automation.record.activity</field>
             <field name="name">on_email_opened</field>
             <field name="string">E-Mail Opened</field>
-            <field name="model" search="[('model', '=', 'marketing.automation.record.activity')]"/>
         </record>
         <record model="ir.model.button" id="record_activity_on_email_clicked_button">
+            <field name="model">marketing.automation.record.activity</field>
             <field name="name">on_email_clicked</field>
             <field name="string">E-Mail Clicked</field>
-            <field name="model" search="[('model', '=', 'marketing.automation.record.activity')]"/>
         </record>
 
         <record model="ir.action.report" id="report_unsubscribe">
             <field name="name">Marketing Automation Unsubscribe</field>
-            <field name="model"></field>
+            <field name="model" eval="None"/>
             <field name="report_name">marketing.automation.unsubscribe</field>
             <field name="report">marketing_automation/unsubscribe.html</field>
             <field name="template_extension">html</field>

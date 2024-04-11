@@ -43,22 +43,22 @@ this repository contains the full copyright notices and license terms. -->
             id="menu_period_form"/>
 
         <record model="ir.model.button" id="period_close_button">
+            <field name="model">account.period</field>
             <field name="name">close</field>
             <field name="string">Close</field>
-            <field name="model" search="[('model', '=', 'account.period')]"/>
         </record>
 
         <record model="ir.model.button" id="period_reopen_button">
+            <field name="model">account.period</field>
             <field name="name">reopen</field>
             <field name="string">Re-Open</field>
-            <field name="model" search="[('model', '=', 'account.period')]"/>
         </record>
 
         <record model="ir.model.button" id="period_lock_button">
+            <field name="model">account.period</field>
             <field name="name">lock_</field>
             <field name="string">Lock</field>
             <field name="confirm">Are you sure you want to lock the period?</field>
-            <field name="model" search="[('model', '=', 'account.period')]"/>
         </record>
 
         <record model="ir.action.act_window" id="act_period_form_close">
@@ -83,7 +83,7 @@ this repository contains the full copyright notices and license terms. -->
 
         <record model="ir.rule.group" id="rule_group_period_companies">
             <field name="name">User in companies</field>
-            <field name="model" search="[('model', '=', 'account.period')]"/>
+            <field name="model">account.period</field>
             <field name="global_p" eval="True"/>
         </record>
         <record model="ir.rule" id="rule_period_companies">

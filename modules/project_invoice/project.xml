@@ -23,9 +23,9 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
         <record model="ir.model.button" id="work_invoice_button">
+            <field name="model">project.work</field>
             <field name="name">invoice</field>
             <field name="string">Invoice</field>
-            <field name="model" search="[('model', '=', 'project.work')]"/>
         </record>
         <record model="ir.model.button-res.group"
             id="work_invoice_button_group_project_invoice">
@@ -44,8 +44,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">work_invoiced_progress_list</field>
         </record>
         <record model="ir.model.access" id="access_work_invoiced_progress">
-            <field name="model"
-                search="[('model', '=', 'project.work.invoiced_progress')]"/>
+            <field name="model">project.work.invoiced_progress</field>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="False"/>
             <field name="perm_create" eval="False"/>

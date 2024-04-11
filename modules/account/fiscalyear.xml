@@ -45,14 +45,14 @@ this repository contains the full copyright notices and license terms. -->
             id="menu_fiscalyear_form"/>
 
         <record model="ir.model.access" id="access_fiscalyear">
-            <field name="model" search="[('model', '=', 'account.fiscalyear')]"/>
+            <field name="model">account.fiscalyear</field>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="False"/>
             <field name="perm_create" eval="False"/>
             <field name="perm_delete" eval="False"/>
         </record>
         <record model="ir.model.access" id="access_fiscalyear_account_admin">
-            <field name="model" search="[('model', '=', 'account.fiscalyear')]"/>
+            <field name="model">account.fiscalyear</field>
             <field name="group" ref="group_account_admin"/>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="True"/>
@@ -61,33 +61,31 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
         <record model="ir.model.button" id="fiscalyear_create_periods_button">
+            <field name="model">account.fiscalyear</field>
             <field name="name">create_periods</field>
             <field name="string">Create Periods</field>
-            <field name="model"
-                search="[('model', '=', 'account.fiscalyear')]"/>
         </record>
 
         <record model="ir.model.button" id="fiscalyear_reopen_button">
+            <field name="model">account.fiscalyear</field>
             <field name="name">reopen</field>
             <field name="string">Re-Open</field>
-            <field name="model"
-                search="[('model', '=', 'account.fiscalyear')]"/>
         </record>
         <record model="ir.model.button" id="fiscalyear_close_button">
+            <field name="model">account.fiscalyear</field>
             <field name="name">close</field>
             <field name="string">Close</field>
-            <field name="model" search="[('model', '=', 'account.fiscalyear')]"/>
         </record>
         <record model="ir.model.button" id="fiscalyear_lock_button">
+            <field name="model">account.fiscalyear</field>
             <field name="name">lock_</field>
             <field name="string">Lock</field>
             <field name="confirm">Are you sure you want to lock the fiscal year?</field>
-            <field name="model" search="[('model', '=', 'account.fiscalyear')]"/>
         </record>
 
         <record model="ir.rule.group" id="rule_group_fiscalyear_companies">
             <field name="name">User in companies</field>
-            <field name="model" search="[('model', '=', 'account.fiscalyear')]"/>
+            <field name="model">account.fiscalyear</field>
             <field name="global_p" eval="True"/>
         </record>
         <record model="ir.rule" id="rule_fiscalyear_companies">

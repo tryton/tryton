@@ -12,11 +12,13 @@ import socket
 import ssl
 import threading
 import xmlrpc.client
-from collections import defaultdict
 from contextlib import contextmanager
 from decimal import Decimal
 from functools import partial, reduce
 from urllib.parse import quote, urljoin
+
+from .cache import CacheDict
+from .config import CONFIG
 
 __all__ = ["ResponseError", "Fault", "ProtocolError", "Transport",
     "ServerProxy", "ServerPool"]
@@ -401,7 +403,10 @@ class ServerPool(object):
 class _Cache:
 
     def __init__(self):
-        self.store = defaultdict(dict)
+        cache_size = CONFIG['rpc.cache_size']
+        self.store = CacheDict(
+            cache_len=cache_size,
+            default_factory=lambda: CacheDict(cache_len=cache_size))
 
     def cached(self, prefix):
         return prefix in self.store

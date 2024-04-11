@@ -182,7 +182,7 @@ class _ShipmentOutMixin(_ShipmentMixin):
     @classmethod
     @ModelView.button
     @Workflow.transition('done')
-    def done(cls, shipments):
+    def do(cls, shipments):
         pool = Pool()
         Carriage = pool.get('stock.shipment.carriage')
         has_cost_sale = hasattr(Carriage, 'cost_sale')
@@ -197,7 +197,7 @@ class _ShipmentOutMixin(_ShipmentMixin):
                         carriage.cost_sale_currency_used)
                 carriages.append(carriage)
         Carriage.save(carriages)
-        super().done(shipments)
+        super().do(shipments)
 
 
 class ShipmentOut(_ShipmentOutMixin, metaclass=PoolMeta):

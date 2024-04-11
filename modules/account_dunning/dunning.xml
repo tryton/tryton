@@ -57,7 +57,7 @@ this repository contains the full copyright notices and license terms. -->
 
         <record model="ir.model.access"
             id="access_dunning_procedure">
-            <field name="model" search="[('model', '=', 'account.dunning.procedure')]"/>
+            <field name="model">account.dunning.procedure</field>
             <field name="perm_read" eval="False"/>
             <field name="perm_write" eval="False"/>
             <field name="perm_create" eval="False"/>
@@ -65,7 +65,7 @@ this repository contains the full copyright notices and license terms. -->
         </record>
         <record model="ir.model.access"
             id="access_dunning_procedure_account_admin">
-            <field name="model" search="[('model', '=', 'account.dunning.procedure')]"/>
+            <field name="model">account.dunning.procedure</field>
             <field name="group" ref="account.group_account_admin"/>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="True"/>
@@ -74,7 +74,7 @@ this repository contains the full copyright notices and license terms. -->
         </record>
         <record model="ir.model.access"
             id="access_dunning_procedure_dunning">
-            <field name="model" search="[('model', '=', 'account.dunning.procedure')]"/>
+            <field name="model">account.dunning.procedure</field>
             <field name="group" ref="group_dunning"/>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="False"/>
@@ -101,7 +101,7 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
         <record model="ir.model.access" id="access_dunning_level">
-            <field name="model" search="[('model', '=', 'account.dunning.level')]"/>
+            <field name="model">account.dunning.level</field>
             <field name="perm_read" eval="False"/>
             <field name="perm_write" eval="False"/>
             <field name="perm_create" eval="False"/>
@@ -109,7 +109,7 @@ this repository contains the full copyright notices and license terms. -->
         </record>
         <record model="ir.model.access"
             id="access_dunning_level_account_admin">
-            <field name="model" search="[('model', '=', 'account.dunning.level')]"/>
+            <field name="model">account.dunning.level</field>
             <field name="group" ref="account.group_account_admin"/>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="True"/>
@@ -118,7 +118,7 @@ this repository contains the full copyright notices and license terms. -->
         </record>
         <record model="ir.model.access"
             id="access_dunning_level_dunning">
-            <field name="model" search="[('model', '=', 'account.dunning.level')]"/>
+            <field name="model">account.dunning.level</field>
             <field name="group" ref="group_dunning"/>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="False"/>
@@ -217,7 +217,7 @@ this repository contains the full copyright notices and license terms. -->
 
         <record model="ir.rule.group" id="rule_group_dunning_companies">
             <field name="name">User in companies</field>
-            <field name="model" search="[('model', '=', 'account.dunning')]"/>
+            <field name="model">account.dunning</field>
             <field name="global_p" eval="True"/>
         </record>
         <record model="ir.rule" id="rule_dunning_companies">
@@ -228,7 +228,7 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
         <record model="ir.model.access" id="access_dunning">
-            <field name="model" search="[('model', '=', 'account.dunning')]"/>
+            <field name="model">account.dunning</field>
             <field name="perm_read" eval="False"/>
             <field name="perm_write" eval="False"/>
             <field name="perm_create" eval="False"/>
@@ -236,7 +236,7 @@ this repository contains the full copyright notices and license terms. -->
         </record>
         <record model="ir.model.access"
             id="access_dunning_account_admin">
-            <field name="model" search="[('model', '=', 'account.dunning')]"/>
+            <field name="model">account.dunning</field>
             <field name="group" ref="account.group_account_admin"/>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="True"/>
@@ -245,7 +245,7 @@ this repository contains the full copyright notices and license terms. -->
         </record>
         <record model="ir.model.access"
             id="access_dunning_dunning">
-            <field name="model" search="[('model', '=', 'account.dunning')]"/>
+            <field name="model">account.dunning</field>
             <field name="group" ref="group_dunning"/>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="True"/>
@@ -254,9 +254,9 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
         <record model="ir.model.button" id="dunning_reschedule_button">
+            <field name="model">account.dunning</field>
             <field name="name">reschedule</field>
             <field name="string">Reschedule</field>
-            <field name="model" search="[('model', '=', 'account.dunning')]"/>
         </record>
 
         <record model="ir.ui.view" id="dunning_create_start_view_form">

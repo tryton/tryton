@@ -173,31 +173,27 @@ this repository contains the full copyright notices and license terms.
         </record>
 
         <record model="ir.model.button" id="requisition_cancel_button">
+            <field name="model">purchase.requisition</field>
             <field name="name">cancel</field>
             <field name="string">Cancel</field>
-            <field name="model"
-                search="[('model', '=', 'purchase.requisition')]"/>
         </record>
 
         <record model="ir.model.button" id="requisition_draft_button">
+            <field name="model">purchase.requisition</field>
             <field name="name">draft</field>
             <field name="string">Draft</field>
-            <field name="model"
-                search="[('model', '=', 'purchase.requisition')]"/>
         </record>
 
         <record model="ir.model.button" id="requisition_wait_button">
+            <field name="model">purchase.requisition</field>
             <field name="name">wait</field>
             <field name="string">Wait</field>
-            <field name="model"
-                search="[('model', '=', 'purchase.requisition')]"/>
         </record>
 
         <record model="ir.model.button" id="requisition_approve_button">
+            <field name="model">purchase.requisition</field>
             <field name="name">approve</field>
             <field name="string">Approve</field>
-            <field name="model"
-                search="[('model', '=', 'purchase.requisition')]"/>
         </record>
         <record model="ir.model.button-res.group"
             id="requisition_approve_button_group_purchase_requisition_approval">
@@ -206,9 +202,9 @@ this repository contains the full copyright notices and license terms.
         </record>
 
         <record model="ir.model.button" id="requisition_process_button">
+            <field name="model">purchase.requisition</field>
             <field name="name">process</field>
             <field name="string">Process</field>
-            <field name="model" search="[('model', '=', 'purchase.requisition')]"/>
         </record>
         <record model="ir.model.button-res.group" id="requisition_process_button_group_purchase_requisition_approval">
             <field name="button" ref="requisition_process_button"/>
@@ -216,10 +212,9 @@ this repository contains the full copyright notices and license terms.
         </record>
 
         <record model="ir.model.button" id="requisition_reject_button">
+            <field name="model">purchase.requisition</field>
             <field name="name">reject</field>
             <field name="string">Reject</field>
-            <field name="model"
-                search="[('model', '=', 'purchase.requisition')]"/>
         </record>
         <record model="ir.model.button-res.group"
             id="requisition_reject_button_group_purchase_requisition_approval">
@@ -229,7 +224,7 @@ this repository contains the full copyright notices and license terms.
 
         <record model="ir.rule.group" id="rule_group_requisition_companies">
             <field name="name">User in companies</field>
-            <field name="model" search="[('model', '=', 'purchase.requisition')]"/>
+            <field name="model">purchase.requisition</field>
             <field name="global_p" eval="True"/>
         </record>
         <record model="ir.rule" id="rule_requisition_companies">
@@ -242,8 +237,7 @@ this repository contains the full copyright notices and license terms.
 
         <record model="ir.rule.group" id="rule_group_requisition_employees">
             <field name="name">Own requisition</field>
-            <field name="model"
-                search="[('model', '=', 'purchase.requisition')]"/>
+            <field name="model">purchase.requisition</field>
             <field name="global_p" eval="False"/>
             <field name="default_p" eval="True"/>
             <field name="perm_read" eval="False"/>
@@ -263,8 +257,7 @@ this repository contains the full copyright notices and license terms.
         <!-- Give access to user who could trigger requisition work-flow -->
         <record model="ir.rule.group" id="rule_group_requisition_admin">
             <field name="name">Any requisition</field>
-            <field name="model"
-                search="[('model', '=', 'purchase.requisition')]"/>
+            <field name="model">purchase.requisition</field>
             <field name="global_p" eval="False"/>
         </record>
         <record model="ir.rule.group-res.group"
@@ -284,8 +277,7 @@ this repository contains the full copyright notices and license terms.
         </record>
 
         <record model="ir.model.access" id="access_requisition">
-            <field name="model"
-                search="[('model', '=', 'purchase.requisition')]"/>
+            <field name="model">purchase.requisition</field>
             <field name="perm_read" eval="False"/>
             <field name="perm_write" eval="False"/>
             <field name="perm_create" eval="False"/>
@@ -293,8 +285,7 @@ this repository contains the full copyright notices and license terms.
         </record>
         <record model="ir.model.access"
             id="access_requisition_purchase_requisition">
-            <field name="model"
-                search="[('model', '=', 'purchase.requisition')]"/>
+            <field name="model">purchase.requisition</field>
             <field name="group" ref="group_purchase_requisition"/>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="True"/>
@@ -303,15 +294,13 @@ this repository contains the full copyright notices and license terms.
         </record>
         <record model="ir.model.access"
             id="access_requisition_purchase_requisition_approval">
-            <field name="model"
-                search="[('model', '=', 'purchase.requisition')]"/>
+            <field name="model">purchase.requisition</field>
             <field name="group" ref="group_purchase_requisition_approval"/>
             <field name="perm_read" eval="True"/>
         </record>
          <record model="ir.model.access"
              id="access_requisition_purchase_request">
-            <field name="model"
-                search="[('model', '=', 'purchase.requisition')]"/>
+            <field name="model">purchase.requisition</field>
             <field name="group"
                 ref="purchase_request.group_purchase_request"/>
             <field name="perm_read" eval="True"/>

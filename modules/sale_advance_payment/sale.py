@@ -293,6 +293,16 @@ class Sale(metaclass=PoolMeta):
         searcher='search_advance_payment_invoices')
 
     @classmethod
+    def __setup__(cls):
+        super().__setup__()
+        cls.invoices_ignored.domain = [
+            'OR', cls.invoices_ignored.domain, [
+                ('id', 'in', Eval('advance_payment_invoices', [])),
+                ('state', '=', 'cancelled'),
+                ],
+            ]
+
+    @classmethod
     @ModelView.button
     @Workflow.transition('quotation')
     def quote(cls, sales):

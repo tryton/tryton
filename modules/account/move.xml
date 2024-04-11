@@ -41,8 +41,7 @@ this repository contains the full copyright notices and license terms. -->
 
         <record model="ir.rule.group" id="rule_group_move_companies">
             <field name="name">User in companies</field>
-            <field name="model"
-                search="[('model', '=', 'account.move')]"/>
+            <field name="model">account.move</field>
             <field name="global_p" eval="True"/>
         </record>
         <record model="ir.rule" id="rule_move_companies">
@@ -53,14 +52,14 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
         <record model="ir.model.access" id="access_move">
-            <field name="model" search="[('model', '=', 'account.move')]"/>
+            <field name="model">account.move</field>
             <field name="perm_read" eval="False"/>
             <field name="perm_write" eval="False"/>
             <field name="perm_create" eval="False"/>
             <field name="perm_delete" eval="False"/>
         </record>
         <record model="ir.model.access" id="access_move_account">
-            <field name="model" search="[('model', '=', 'account.move')]"/>
+            <field name="model">account.move</field>
             <field name="group" ref="group_account"/>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="True"/>
@@ -68,9 +67,9 @@ this repository contains the full copyright notices and license terms. -->
             <field name="perm_delete" eval="True"/>
         </record>
         <record model="ir.model.button" id="move_post_button">
+            <field name="model">account.move</field>
             <field name="name">post</field>
             <field name="string">Post</field>
-            <field name="model" search="[('model', '=', 'account.move')]"/>
         </record>
         <record model="ir.sequence.type" id="sequence_type_account_move">
             <field name="name">Account Move</field>
@@ -112,8 +111,7 @@ this repository contains the full copyright notices and license terms. -->
 
         <record model="ir.rule.group" id="rule_group_move_reconciliation_companies">
             <field name="name">User in companies</field>
-            <field name="model"
-                search="[('model', '=', 'account.move.reconciliation')]"/>
+            <field name="model">account.move.reconciliation</field>
             <field name="global_p" eval="True"/>
         </record>
         <record model="ir.rule" id="rule_move_reconciliation_companies">
@@ -124,14 +122,14 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
         <record model="ir.model.access" id="access_move_reconciliation">
-            <field name="model" search="[('model', '=', 'account.move.reconciliation')]"/>
+            <field name="model">account.move.reconciliation</field>
             <field name="perm_read" eval="False"/>
             <field name="perm_write" eval="False"/>
             <field name="perm_create" eval="False"/>
             <field name="perm_delete" eval="False"/>
         </record>
         <record model="ir.model.access" id="access_move_reconciliation_account">
-            <field name="model" search="[('model', '=', 'account.move.reconciliation')]"/>
+            <field name="model">account.move.reconciliation</field>
             <field name="group" ref="group_account"/>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="False"/>
@@ -139,7 +137,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="perm_delete" eval="False"/>
         </record>
         <record model="ir.model.access" id="access_move_reconciliation_account_admin">
-            <field name="model" search="[('model', '=', 'account.move.reconciliation')]"/>
+            <field name="model">account.move.reconciliation</field>
             <field name="group" ref="group_account_admin"/>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="True"/>
@@ -309,7 +307,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.action.wizard" id="act_reconcile_lines">
             <field name="name">Reconcile Lines</field>
             <field name="wiz_name">account.move.reconcile_lines</field>
-            <field name="model"></field>
+            <field name="model" eval="None"/>
         </record>
         <record model="ir.action.keyword" id="act_reconcile_lines_keyword">
             <field name="keyword">form_action</field>
@@ -325,7 +323,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.action.wizard" id="act_unreconcile_lines">
             <field name="name">Unreconcile Lines</field>
             <field name="wiz_name">account.move.unreconcile_lines</field>
-            <field name="model"></field>
+            <field name="model" eval="None"/>
         </record>
         <record model="ir.action.keyword" id="act_unreconcile_lines_keyword">
             <field name="keyword">form_action</field>
@@ -409,8 +407,7 @@ this repository contains the full copyright notices and license terms. -->
 
         <record model="ir.rule.group" id="rule_group_reconcile_writeoff_companies">
             <field name="name">User in companies</field>
-            <field name="model"
-                search="[('model', '=', 'account.move.reconcile.write_off')]"/>
+            <field name="model">account.move.reconcile.write_off</field>
             <field name="global_p" eval="True"/>
         </record>
         <record model="ir.rule" id="rule_reconcile_writeoff_companies">
@@ -421,14 +418,14 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
         <record model="ir.model.access" id="access_reconcile_writeoff">
-            <field name="model" search="[('model', '=', 'account.move.reconcile.write_off')]"/>
+            <field name="model">account.move.reconcile.write_off</field>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="False"/>
             <field name="perm_create" eval="False"/>
             <field name="perm_delete" eval="False"/>
         </record>
         <record model="ir.model.access" id="access_reconcile_writeoff_account_admin">
-            <field name="model" search="[('model', '=', 'account.move.reconcile.write_off')]"/>
+            <field name="model">account.move.reconcile.write_off</field>
             <field name="group" ref="group_account_admin"/>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="True"/>

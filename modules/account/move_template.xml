@@ -40,8 +40,7 @@ this repository contains the full copyright notices and license terms. -->
 
         <record model="ir.rule.group" id="rule_group_move_template_companies">
             <field name="name">User in companies</field>
-            <field name="model"
-                search="[('model', '=', 'account.move.template')]"/>
+            <field name="model">account.move.template</field>
             <field name="global_p" eval="True"/>
         </record>
         <record model="ir.rule" id="rule_move_template_companies">
@@ -52,14 +51,14 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
         <record model="ir.model.access" id="access_move_template">
-            <field name="model" search="[('model', '=', 'account.move.template')]"/>
+            <field name="model">account.move.template</field>
             <field name="perm_read" eval="False"/>
             <field name="perm_write" eval="False"/>
             <field name="perm_create" eval="False"/>
             <field name="perm_delete" eval="False"/>
         </record>
         <record model="ir.model.access" id="access_move_template_account">
-            <field name="model" search="[('model', '=', 'account.move.template')]"/>
+            <field name="model">account.move.template</field>
             <field name="group" ref="group_account"/>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="False"/>
@@ -67,7 +66,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="perm_delete" eval="False"/>
         </record>
         <record model="ir.model.access" id="access_move_template_account_admin">
-            <field name="model" search="[('model', '=', 'account.move.template')]"/>
+            <field name="model">account.move.template</field>
             <field name="group" ref="group_account_admin"/>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="True"/>

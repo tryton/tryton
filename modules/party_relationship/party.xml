@@ -39,8 +39,7 @@ this repository contains the full copyright notices and license terms. -->
             id="menu_relation_type"/>
 
         <record model="ir.model.access" id="access_relation_type">
-            <field name="model"
-                search="[('model', '=', 'party.relation.type')]"/>
+            <field name="model">party.relation.type</field>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="False"/>
             <field name="perm_create" eval="False"/>
@@ -48,8 +47,7 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
         <record model="ir.model.access" id="access_relation_type_admin">
-            <field name="model"
-                search="[('model', '=', 'party.relation.type')]"/>
+            <field name="model">party.relation.type</field>
             <field name="group" ref="party.group_party_admin"/>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="True"/>

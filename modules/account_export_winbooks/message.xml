@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data grouped="1">
+        <record model="ir.message" id="msg_party_identifier_winbooks_party_unique">
+            <field name="text">A party can have only one active WinBooks identifier.</field>
+        </record>
+        <record model="ir.message" id="msg_party_identifier_winbooks_code_unique">
+            <field name="text">The WinBooks identifier must be unique.</field>
+        </record>
+        <record model="ir.message" id="msg_account_tax_line_tax_move_line_unique">
+            <field name="text">Only one tax line of type "Tax" is allowed per move line.</field>
+        </record>
+    </data>
+</tryton>

@@ -12,6 +12,7 @@ __all__ = ['register', 'routes']
 
 def register():
     Pool.register(
+        model.ModelField,  # register first for model char migration
         configuration.Configuration,
         translation.Translation,
         translation.TranslationSetStart,
@@ -42,7 +43,6 @@ def register():
         action.ActionWizard,
         action.ActionURL,
         model.Model,
-        model.ModelField,
         model.ModelAccess,
         model.ModelFieldAccess,
         model.ModelButton,

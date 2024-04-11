@@ -107,8 +107,8 @@ class ShipmentInReturn(metaclass=PoolMeta):
     @ModelView.button
     @Workflow.transition('done')
     @process_purchase('moves')
-    def done(cls, shipments):
-        super(ShipmentInReturn, cls).done(shipments)
+    def do(cls, shipments):
+        super().do(shipments)
 
 
 def process_purchase_move(without_shipment=False):

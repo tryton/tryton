@@ -445,7 +445,7 @@
                     for (const record of result) {
                         ids.push(record[0]);
                     }
-                    this.screen.group.load(ids, true);
+                    this.screen.group.load(ids, true, -1, null);
                     prm = this.screen.display();
                 }
                 prm.done(() => {
@@ -767,7 +767,8 @@
             record.model.execute(
                 'read', [[record.id],
                     ['create_uid.rec_name', 'create_date',
-                        'write_uid.rec_name', 'write_date']], context
+                        'write_uid.rec_name', 'write_date',
+                        'xml_id']], context
             ).then(([log]) => {
                 var row, cell, label, input;
 
@@ -801,6 +802,39 @@
                 }).val(record.id).appendTo(cell);
                 input.css('text-align', 'end');
                 input.uniqueId();
+
+                if (log.xml_id) {
+                    const [module, xml_id] = log.xml_id.split('.', 2);
+
+                    row = jQuery('<tr/>').appendTo(body);
+                    cell = jQuery('<td/>').css('text-align', 'end').appendTo(row);
+                    label = jQuery('<label/>', {
+                        'class': 'form-label',
+                        'text': Sao.i18n.gettext("Module:"),
+                    }).appendTo(cell);
+                    label.uniqueId();
+                    cell = jQuery('<td/>').appendTo(row);
+                    input = jQuery('<input/>', {
+                        'readonly': true,
+                        'class': 'form-control input-sm',
+                        'aria-labelledby': label.attr('id'),
+                    }).val(module).appendTo(cell);
+                    input.uniqueId();
+
+                    cell = jQuery('<td/>').css('text-align', 'end').appendTo(row);
+                    label = jQuery('<label/>', {
+                        'class': 'form-label',
+                        'text': Sao.i18n.gettext("XML ID:"),
+                    }).appendTo(cell);
+                    label.uniqueId();
+                    cell = jQuery('<td/>').appendTo(row);
+                    input = jQuery('<input/>', {
+                        'readonly': true,
+                        'class': 'form-control input-sm',
+                        'aria-labelledby': label.attr('id'),
+                    }).val(xml_id).appendTo(cell);
+                    input.uniqueId();
+                }
 
                 [['create_uid.', Sao.i18n.gettext("Created by:"),
                     'create_date', Sao.i18n.gettext("Created at:")],

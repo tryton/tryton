@@ -454,7 +454,7 @@ class ModelSQL(ModelStorage):
                     # migration from 3.6
                     table.drop_fk(field_name)
                 elif ref:
-                    table.add_fk(field_name, ref, field.ondelete)
+                    table.add_fk(field_name, ref, on_delete=field.ondelete)
 
             required = field.required
             # Do not set 'NOT NULL' for Binary field as the database column
@@ -1213,7 +1213,11 @@ class ModelSQL(ModelStorage):
                 value = row[name]
                 if value is not None:
                     add(value)
-            return Target.read(target_ids, fields)
+            related_read_limit = transaction.context.get('related_read_limit')
+            rows = Target.read(target_ids[:related_read_limit], fields)
+            if related_read_limit is not None:
+                rows += [{'id': i} for i in target_ids[related_read_limit:]]
+            return rows
 
         def add_related(field, rows, targets):
             name = field.name

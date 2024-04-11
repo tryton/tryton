@@ -1,13 +1,20 @@
 <?xml version="1.0"?>
 <!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
 this repository contains the full copyright notices and license terms. -->
-<form col="6">
-    <label name="journal"/>
-    <field name="journal" widget="selection"/>
+<form>
     <label name="period"/>
     <field name="period"/>
-    <label name="active"/>
-    <field name="active"/>
+    <label name="company"/>
+    <field name="company"/>
+
+    <label name="journal"/>
+    <field name="journal" widget="selection"/>
+    <newline/>
+
     <label name="state"/>
-    <field name="state" colspan="5"/>
+    <field name="state"/>
+    <group id="buttons" colspan="2" col="-1">
+        <button name="reopen"/>
+        <button name="close"/>
+    </group>
 </form>

@@ -4,7 +4,7 @@ import datetime
 import os
 import unittest
 from contextlib import contextmanager
-from unittest.mock import ANY, Mock, patch
+from unittest.mock import Mock, patch
 
 from trytond.config import config
 from trytond.pool import Pool
@@ -151,9 +151,10 @@ class UserTestCase(unittest.TestCase):
 
         user = self.create_user('user', '12345', email='user@example.com')
 
-        with patch.object(user_module, 'sendmail_transactional') as sendmail:
+        with patch.object(
+                user_module, 'send_message_transactional') as send_message:
             User.reset_password([user], length=8)
-            sendmail.assert_called_once_with(FROM, ['user@example.com'], ANY)
+            send_message.assert_called_once()
 
         cursor.execute(*user_table.select(
                 user_table.password_hash,
@@ -174,7 +175,7 @@ class UserTestCase(unittest.TestCase):
         user = User(login='user', email='user@example.com')
         user.save()
 
-        with patch.object(user_module, 'sendmail_transactional'):
+        with patch.object(user_module, 'send_message_transactional'):
             User.reset_password([user], length=8)
 
         user.password_reset_expire = (

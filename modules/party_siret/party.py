@@ -12,28 +12,8 @@ class Party(metaclass=PoolMeta):
         'get_siren', searcher='search_siren')
 
     def get_siren(self, name):
-        for identifier in self.identifiers:
-            if identifier.type == 'fr_siren':
-                return identifier.id
+        return self._get_identifier(name, {'fr_siren'})
 
     @classmethod
     def search_siren(cls, name, clause):
-        _, operator, value = clause
-        nested = clause[0][len(name) + 1:]
-        domain = [
-            ('identifiers', 'where', [
-                    (nested or 'rec_name', operator, value),
-                    ('type', '=', 'fr_siren'),
-                    ]),
-            ]
-        # Add party without tax identifier
-        if ((operator == '=' and value is None)
-                or (operator == 'in' and None in value)):
-            domain = ['OR',
-                domain, [
-                    ('identifiers', 'not where', [
-                            ('type', '=', 'fr_siren'),
-                            ]),
-                    ],
-                ]
-        return domain
+        return cls._search_identifier(name, clause, {'fr_siren'})

@@ -14,15 +14,15 @@ this repository contains the full copyright notices and license terms. -->
             <field name="action" ref="wizard_stock_shipment_in_inspect_receive"/>
         </record>
 
-        <record model="ir.action.wizard" id="wizard_stock_shipment_in_inspect_done">
+        <record model="ir.action.wizard" id="wizard_stock_shipment_in_inspect_do">
             <field name="name">Inspect Done</field>
             <field name="wiz_name">quality.inspect</field>
             <field name="model">stock.shipment.in</field>
         </record>
-        <record model="ir.action.keyword" id="wizard_stock_shipment_in_inspect_done_keyword1">
+        <record model="ir.action.keyword" id="wizard_stock_shipment_in_inspect_do_keyword1">
             <field name="keyword">form_action</field>
             <field name="model">stock.shipment.in,-1</field>
-            <field name="action" ref="wizard_stock_shipment_in_inspect_done"/>
+            <field name="action" ref="wizard_stock_shipment_in_inspect_do"/>
         </record>
 
         <record model="ir.action.keyword" id="act_quality_inspection_form_relate_keyword_stock_shipment_in">
@@ -70,15 +70,15 @@ this repository contains the full copyright notices and license terms. -->
             <field name="action" ref="wizard_stock_shipment_out_return_inspect_receive"/>
         </record>
 
-        <record model="ir.action.wizard" id="wizard_stock_shipment_out_return_inspect_done">
+        <record model="ir.action.wizard" id="wizard_stock_shipment_out_return_inspect_do">
             <field name="name">Inspect Done</field>
             <field name="wiz_name">quality.inspect</field>
             <field name="model">stock.shipment.out.return</field>
         </record>
-        <record model="ir.action.keyword" id="wizard_stock_shipment_out_return_inspect_done_keyword1">
+        <record model="ir.action.keyword" id="wizard_stock_shipment_out_return_inspect_do_keyword1">
             <field name="keyword">form_action</field>
             <field name="model">stock.shipment.out.return,-1</field>
-            <field name="action" ref="wizard_stock_shipment_out_return_inspect_done"/>
+            <field name="action" ref="wizard_stock_shipment_out_return_inspect_do"/>
         </record>
 
         <record model="ir.action.keyword" id="act_quality_inspection_form_relate_keyword_stock_shipment_out_return">
@@ -98,15 +98,15 @@ this repository contains the full copyright notices and license terms. -->
             <field name="action" ref="wizard_stock_shipment_internal_inspect_ship"/>
         </record>
 
-        <record model="ir.action.wizard" id="wizard_stock_shipment_internal_inspect_done">
+        <record model="ir.action.wizard" id="wizard_stock_shipment_internal_inspect_do">
             <field name="name">Inspect Done</field>
             <field name="wiz_name">quality.inspect</field>
             <field name="model">stock.shipment.internal</field>
         </record>
-        <record model="ir.action.keyword" id="wizard_stock_shipment_internal_inspect_done_keyword1">
+        <record model="ir.action.keyword" id="wizard_stock_shipment_internal_inspect_do_keyword1">
             <field name="keyword">form_action</field>
             <field name="model">stock.shipment.internal,-1</field>
-            <field name="action" ref="wizard_stock_shipment_internal_inspect_done"/>
+            <field name="action" ref="wizard_stock_shipment_internal_inspect_do"/>
         </record>
 
         <record model="ir.action.keyword" id="act_quality_inspection_form_relate_keyword_stock_shipment_internal">

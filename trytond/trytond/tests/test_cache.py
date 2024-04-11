@@ -24,6 +24,10 @@ cache_ignored_global_context = MemoryCache('test.cache.ignored.global')
 class CacheTestCase(unittest.TestCase):
     "Test Cache"
 
+    @classmethod
+    def setUpClass(cls):
+        activate_module('tests')
+
     def testFreeze(self):
         "Test freeze"
         self.assertEqual(freeze([1, 2, 3]), (1, 2, 3))

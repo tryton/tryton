@@ -119,6 +119,8 @@ class ModelStorage(Model):
     rec_name = fields.Function(
         fields.Char(lazy_gettext('ir.msg_record_name')), 'get_rec_name',
         searcher='search_rec_name')
+    xml_id = fields.Function(
+        fields.Char(lazy_gettext('ir.msg_xml_id')), 'get_xml_id')
     _count_cache = Cache(
         'modelstorage.count', duration=_cache_count_timeout, context=False)
     _log = None
@@ -686,6 +688,21 @@ class ModelStorage(Model):
         return [(rec_name,) + tuple(clause[1:])]
 
     @classmethod
+    def get_xml_id(cls, records, name):
+        pool = Pool()
+        ModelData = pool.get('ir.model.data')
+
+        ids = dict.fromkeys(map(int, records))
+        with without_check_access():
+            for sub_records in grouped_slice(records):
+                for record in ModelData.search([
+                            ('model', '=', cls.__name__),
+                            ('db_id', 'in', [r.id for r in sub_records]),
+                            ]):
+                    ids[record.db_id] = f'{record.module}.{record.fs_id}'
+        return ids
+
+    @classmethod
     def search_global(cls, text):
         '''
         Yield tuples (record, name, icon) for text
@@ -987,7 +1004,7 @@ class ModelStorage(Model):
                 if isinstance(value, datetime.date):
                     return value
                 elif value:
-                    return datetime.datetime.strptime(value, '%Y-%m-%d').date()
+                    return datetime.date.fromisoformat(value)
 
             def convert_datetime(value):
                 if isinstance(value, datetime.datetime):
@@ -1467,10 +1484,12 @@ class ModelStorage(Model):
                             or not digits
                             or any(d is None for d in digits)):
                         return
-                    if (round(value, digits[1]) != value
-                            or (isinstance(value, Decimal)
-                                and value.as_tuple().exponent < -digits[1])):
-                        raise_error(value)
+                    if isinstance(value, Decimal):
+                        if value.as_tuple().exponent < -digits[1]:
+                            raise_error(value)
+                    else:
+                        if round(value, digits[1]) != value:
+                            raise_error(value)
                 # validate digits
                 if getattr(field, 'digits', None):
                     if is_pyson(field.digits):
