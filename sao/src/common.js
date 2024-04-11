@@ -3136,7 +3136,7 @@
             var name2id = this._name2id;
             if (!(icon_name in name2id)) {
                 name2id = this.load_icons(true);
-                if (!(name in name2id)) {
+                if (!(icon_name in name2id)) {
                     Sao.Logger.error("Unknown icon %s", icon_name);
                     this._icons[icon_name] = null;
                     return jQuery.when();
