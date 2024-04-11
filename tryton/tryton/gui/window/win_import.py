@@ -2,6 +2,7 @@
 # this repository contains the full copyright notices and license terms.
 import base64
 import csv
+import datetime as dt
 import gettext
 import locale
 from decimal import Decimal
@@ -10,7 +11,6 @@ from gi.repository import Gtk
 
 import tryton.common as common
 from tryton.common import RPCException, RPCExecute
-from tryton.common.datetime_ import date_parse
 from tryton.gui.window.win_csv import WinCSV
 
 _ = gettext.gettext
@@ -212,13 +212,18 @@ class WinImport(WinCSV):
                             val = locale.atof(val)
                         elif type_ == 'numeric':
                             val = Decimal(locale.delocalize(val))
-                        elif type_ in ['date', 'datetime']:
-                            val = date_parse(val, common.date_format())
+                        elif type_ == 'date':
+                            val = dt.datetime.strptime(
+                                val, common.date_format()).date()
+                        elif type_ == 'datetime':
+                            val = dt.datetime.strptime(
+                                val, common.date_format() + ' %X')
                         elif type_ == 'binary':
                             val = base64.b64decode(val)
                     row.append(val)
                 data.append(row)
-        except (IOError, UnicodeDecodeError, csv.Error) as exception:
+        except (IOError, UnicodeDecodeError, csv.Error, ValueError) \
+                as exception:
             common.warning(str(exception), _("Import failed"))
             return
         try:
