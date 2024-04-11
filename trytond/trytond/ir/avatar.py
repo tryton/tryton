@@ -129,7 +129,10 @@ class Avatar(ImageMixin, ResourceMixin, ModelSQL):
         if size > 2048:
             img = img.resize((2048, 2048))
         if img.mode in {'RGBA', 'P'}:
-            img = img.convert('RGB')
+            img.convert('RGBA')
+            background = Image.new('RGBA', img.size, (255, 255, 255))
+            background.alpha_composite(img)
+            img = background.convert('RGB')
         img.save(data, format='jpeg', optimize=True, **_params)
         return data.getvalue()
 
