@@ -3853,7 +3853,7 @@
                 });
             },
             function() {
-                Sao.Logger.warning(
+                Sao.Logger.warn(
                     "Unable to search for completion of %s", model);
             });
     };
