@@ -665,16 +665,10 @@ class ActionReport(ActionMixin, ModelSQL, ModelView):
             default = {}
         default = default.copy()
         default.setdefault('module', None)
-
-        new_reports = []
-        for report in reports:
-            if report.report:
-                default['report_content'] = None
-                default['report'] = None
-            default['report_name'] = report.report_name
-            new_reports.extend(super(ActionReport, cls).copy([report],
-                    default=default))
-        return new_reports
+        default.setdefault(
+            'report_content_custom',
+            lambda o: None if o['report'] else o['report_content_custom'])
+        return super().copy(reports, default=default)
 
     @classmethod
     def write(cls, reports, values, *args):
