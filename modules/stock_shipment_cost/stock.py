@@ -43,7 +43,7 @@ class ShipmentCostMixin:
         moves = []
         for shipment in shipments:
             cost = shipment._get_shipment_cost()
-            if not cost:
+            if cost is None:
                 continue
 
             sum_ = Decimal(0)
