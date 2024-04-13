@@ -1293,8 +1293,12 @@
                 set_cursor = true;
             }
             this.group.load(ids, modified);
-            this.current_view.reset();
-            if (ids.length && this.current_view.view_type != 'calendar') {
+            if (this.current_view) {
+                this.current_view.reset();
+            }
+            if (ids.length &&
+                this.current_view &&
+                this.current_view.view_type != 'calendar') {
                 this.current_record = this.group.get(ids[0]);
             } else {
                 this.current_record = null;
@@ -1315,7 +1319,7 @@
             } else {
                 this.current_record = null;
             }
-            if (this.views) {
+            if (this.views && this.current_view) {
                 var search_prm = this.search_active(
                         ~['tree', 'graph', 'calendar'].indexOf(
                             this.current_view.view_type));
@@ -1354,7 +1358,8 @@
             var view = this.current_view;
             view.set_value();
             this.set_cursor(false, false);
-            if (~['tree', 'form', 'list-form'].indexOf(view.view_type) &&
+            if (view &&
+                ~['tree', 'form', 'list-form'].indexOf(view.view_type) &&
                     this.current_record && this.current_record.group) {
                 var group = this.current_record.group;
                 var record = this.current_record;
@@ -1381,9 +1386,12 @@
         },
         display_previous: function() {
             var view = this.current_view;
-            view.set_value();
+            if (view) {
+                view.set_value();
+            }
             this.set_cursor(false, false);
-            if (~['tree', 'form', 'list-form'].indexOf(view.view_type) &&
+            if (view &&
+                ~['tree', 'form', 'list-form'].indexOf(view.view_type) &&
                     this.current_record && this.current_record.group) {
                 var group = this.current_record.group;
                 var record = this.current_record;
@@ -1406,7 +1414,7 @@
                 this.current_record = this.group[0];
             }
             this.set_cursor(false, false);
-            return view.display();
+            return view ? view.display() : jQuery.when();
         },
         get selected_records() {
             if (this.current_view) {
@@ -1442,7 +1450,8 @@
             });
         },
         default_row_activate: function() {
-            if ((this.current_view.view_type == 'tree') &&
+            if (this.current_view &&
+                (this.current_view.view_type == 'tree') &&
                     (this.current_view.attributes.keyword_open == 1)) {
                 var id = this.get_id();
                 if (id) {
@@ -1469,7 +1478,8 @@
                 default_ = true;
             }
             var prm = jQuery.when();
-            if (this.current_view.view_type == 'calendar') {
+            if (this.current_view &&
+                this.current_view.view_type == 'calendar') {
                 var selected_date = this.current_view.get_selected_date();
                 prm = this.switch_view('form', undefined, false);
             }
@@ -1480,7 +1490,7 @@
                 prm = this.switch_view('form', undefined, false);
             }
             return prm.then(function() {
-                if (!this.current_view.editable) {
+                if (!this.current_view || !this.current_view.editable) {
                     return;
                 }
                 var group;
@@ -1561,19 +1571,22 @@
         save_current: function() {
             var current_record = this.current_record;
             if (!current_record) {
-                if ((this.current_view.view_type == 'tree') &&
-                        this.group && this.group.length) {
+                if (this.current_view &&
+                    (this.current_view.view_type == 'tree') &&
+                    this.group && this.group.length) {
                     this.current_record = this.group[0];
                     current_record = this.current_record;
                 } else {
                     return jQuery.when();
                 }
             }
-            this.current_view.set_value();
-            var fields = this.current_view.get_fields();
+            if (this.current_view) {
+                this.current_view.set_value();
+                var fields = this.current_view.get_fields();
+            }
             var path = current_record.get_path(this.group);
             var prm = jQuery.Deferred();
-            if (this.current_view.view_type == 'tree') {
+            if (this.current_view && (this.current_view.view_type == 'tree')) {
                 prm = this.group.save().then(function() {
                     return this.current_record;
                 }.bind(this));
@@ -1581,7 +1594,7 @@
                 prm = current_record.save().then(function() {
                     return current_record;
                 });
-            } else {
+            } else if (this.current_view) {
                 return this.current_view.display().then(function() {
                     this.set_cursor();
                     return jQuery.Deferred().reject();
@@ -1617,7 +1630,7 @@
             var test = function(record) {
                 return (record.has_changed() || record.id < 0);
             };
-            if (this.current_view.view_type != 'tree') {
+            if (this.current_view && (this.current_view.view_type != 'tree')) {
                 if (this.current_record) {
                     if (test(this.current_record)) {
                         return true;
@@ -1628,20 +1641,24 @@
                     return true;
                 }
             }
-            if (this.current_view.modified) {
+            if (this.current_view && this.current_view.modified) {
                 return true;
             }
             return false;
         },
         unremove: function() {
-            var records = this.current_view.selected_records;
-            records.forEach(function(record) {
-                record.group.unremove(record);
-            });
+            if (this.current_view) {
+                var records = this.current_view.selected_records;
+                records.forEach(function(record) {
+                    record.group.unremove(record);
+                });
+            }
         },
         remove: function(delete_, remove, force_remove, records) {
             var prm = jQuery.when();
-            records = records || this.current_view.selected_records;
+            if (!records && this.current_view) {
+                records = this.current_view.selected_records;
+            }
             if (jQuery.isEmptyObject(records)) {
                 return prm;
             }
@@ -1699,7 +1716,8 @@
         },
         copy: function() {
             var dfd = jQuery.Deferred();
-            var records = this.current_view.selected_records;
+            var records = (
+                this.current_view ? this.current_view.selected_records : []);
             this.model.copy(records, this.context)
                 .then(function(new_ids) {
                 this.group.load(new_ids, false, this.new_position);
@@ -1884,14 +1902,18 @@
             if (!this.current_record) {
                 return null;
             }
-            this.current_view.set_value();
+            if (this.current_view) {
+                this.current_view.set_value();
+            }
             return this.current_record.get();
         },
         get_on_change_value: function() {
             if (!this.current_record) {
                 return null;
             }
-            this.current_view.set_value();
+            if (this.current_view) {
+                this.current_view.set_value();
+            }
             return this.current_record.get_on_change_value();
         },
         reload: function(ids, written) {
@@ -1908,11 +1930,13 @@
             }.bind(this));
         },
         get_buttons: function() {
-            var selected_records = this.current_view.selected_records;
+            var selected_records = (
+                this.current_view ? this.current_view.selected_records : []);
             if (jQuery.isEmptyObject(selected_records)) {
                 return [];
             }
-            var buttons = this.current_view.get_buttons();
+            var buttons = (
+                this.current_view ? this.current_view.get_buttons() : []);
             selected_records.forEach(function(record) {
                 buttons = buttons.filter(function(button) {
                     if (button.attributes.type === 'instance') {
@@ -1942,9 +1966,11 @@
                 }.bind(this));
             };
 
-            var selected_records = this.current_view.selected_records;
-            this.current_view.set_value();
-            var fields = this.current_view.get_fields();
+            if (this.current_view) {
+                var selected_records = this.current_view.selected_records;
+                this.current_view.set_value();
+                var fields = this.current_view.get_fields();
+            }
 
             var prms = [];
             var reset_state = function(record) {
@@ -2043,7 +2069,8 @@
             } else if (action.startsWith('switch')) {
                 this.switch_view.apply(this, action.split(' ', 3).slice(1));
             } else if (action == 'reload') {
-                if (~['tree', 'graph', 'calendar'].indexOf(this.current_view.view_type) &&
+                if (this.current_view &&
+                    ~['tree', 'graph', 'calendar'].indexOf(this.current_view.view_type) &&
                         !this.group.parent) {
                     this.search_filter();
                 }
@@ -2082,7 +2109,7 @@
             var path = ['model', this.model_name];
             var view_ids = this.views.map(
                 function(v) {return v.view_id;}).concat(this.view_ids);
-            if (this.current_view.view_type != 'form') {
+            if (this.current_view && (this.current_view.view_type != 'form')) {
                 var search_value;
                 if (this.attributes.search_value) {
                     search_value = this.attributes.search_value;
@@ -2095,8 +2122,10 @@
                 }
             } else if (this.current_record && (this.current_record.id > -1)) {
                 path.push(this.current_record.id);
-                var i = view_ids.indexOf(this.current_view.view_id);
-                view_ids = view_ids.slice(i).concat(view_ids.slice(0, i));
+                if (this.current_view) {
+                    var i = view_ids.indexOf(this.current_view.view_id);
+                    view_ids = view_ids.slice(i).concat(view_ids.slice(0, i));
+                }
             }
             if (!jQuery.isEmptyObject(view_ids)) {
                 query_string.push(['views', dumps(view_ids)]);
@@ -2180,6 +2209,9 @@
         set_tree_state: function() {
             var parent_, state, state_prm, tree_state_model;
             var view = this.current_view;
+            if (!view) {
+                return jQuery.when();
+            }
             if (!~['tree', 'form'].indexOf(view.view_type)) {
                 return jQuery.when();
             }
