@@ -396,6 +396,8 @@ class WizardDialog(Wizard, NoModal):
         return True
 
     def show(self):
+        if not self.screen:
+            return
         view = self.screen.current_view
         if view.view_type == 'form':
             expand = False
