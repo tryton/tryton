@@ -185,7 +185,7 @@ class ShipmentOutCostMixin(ShipmentCostMixin):
         moves = []
         for shipment in shipments:
             cost = shipment._get_shipment_cost()
-            if not cost:
+            if cost is None:
                 continue
             factors = getattr(shipment,
                 '_get_allocation_shipment_cost_factors_by_%s' %
