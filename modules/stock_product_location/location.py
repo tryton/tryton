@@ -57,7 +57,8 @@ class Move(metaclass=PoolMeta):
 
     def set_product_location(self, field='to_location', **pattern):
         assert field in {'from_location', 'to_location'}
-        if getattr(self, 'shipment', None):
+        if (getattr(self, 'shipment', None)
+                and getattr(self.shipment, 'warehouse', None)):
             pattern.setdefault('warehouse', self.shipment.warehouse.id)
         elif getattr(self, 'production', None):
             pattern.setdefault('warehouse', self.production.warehouse.id)
