@@ -1260,7 +1260,7 @@ class RPCProgress(object):
 
         def return_():
             if self.exception:
-                raise self.exception
+                raise RPCException(self.exception)
             else:
                 return self.res
 
