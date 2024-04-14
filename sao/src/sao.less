@@ -785,12 +785,26 @@ img.icon {
         width: max-content;
         max-width: 80ch;
     }
-    .form-char, .form-password, .form-integer, .form-float, .form-date,
-    .form-datetime, .form-time, .form-timedelta, .form-selection,
-    .form-multiselection, .form-url, .form-email, .form-callto, .form-sip,
-    .form-pyson {
+    .form-char, .form-password, .form-integer, .form-float, .form-timedelta,
+    .form-selection, .form-multiselection, .form-url, .form-email,
+    .form-callto, .form-sip, .form-pyson {
         input, select {
             min-width: 8ch;
+        }
+    }
+    .form-date {
+        input {
+            width: calc(10ch + @input-height-base);
+        }
+    }
+    .form-time {
+        input {
+            width: calc(8ch + @input-height-base);
+        }
+    }
+    .form-datetime {
+        input {
+            width: calc(19ch + @input-height-base);
         }
     }
     .form-many2one, .form-one2one, .form-reference, form-binary {
