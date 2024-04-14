@@ -414,19 +414,19 @@ class Int(GenericText):
         self.symbol = attrs.get('symbol')
         self.grouping = bool(int(attrs.get('grouping', 1)))
         if self.symbol:
-            self.renderer_prefix = Symbol(view, attrs, 0)
-            self.renderer_suffix = Symbol(view, attrs, 1)
+            self._cell_prefix = Symbol(view, attrs, 0)
+            self._cell_suffix = Symbol(view, attrs, 1)
 
     @property
     def prefixes(self):
         if self.symbol:
-            return [self.renderer_prefix]
+            return [self._cell_prefix]
         return []
 
     @property
     def suffixes(self):
         if self.symbol:
-            return [self.renderer_suffix]
+            return [self._cell_suffix]
         return []
 
     @catch_errors()
@@ -578,20 +578,20 @@ class Binary(GenericText):
         super(Binary, self).__init__(view, attrs, renderer=renderer)
         self.renderer.set_property('editable', False)
         self.renderer.set_property('xalign', self.align)
-        self.renderer_save = _BinarySave(self)
-        self.renderer_select = _BinarySelect(self)
+        self._cell_save = _BinarySave(self)
+        self._cell_select = _BinarySelect(self)
         if self.attrs.get('filename'):
-            self.renderer_open = _BinaryOpen(self)
+            self._cell_open = _BinaryOpen(self)
         else:
-            self.renderer_open = None
+            self._cell_open = None
 
     @property
     def prefixes(self):
-        return filter(None, [self.renderer_open])
+        return filter(None, [self._cell_open])
 
     @property
     def suffixes(self):
-        return [self.renderer_save, self.renderer_select]
+        return [self._cell_save, self._cell_select]
 
     @catch_errors()
     def get_textual_value(self, record):
@@ -1267,11 +1267,11 @@ class Reference(M2O):
 
     def __init__(self, view, attrs, renderer=None):
         super(Reference, self).__init__(view, attrs, renderer=renderer)
-        self.renderer_selection = _ReferenceSelection(view, attrs)
+        self._cell_selection = _ReferenceSelection(view, attrs)
 
     @property
     def prefixes(self):
-        return [self.renderer_selection]
+        return [self._cell_selection]
 
     def get_model(self, record, field):
         value = field.get_client(record)
