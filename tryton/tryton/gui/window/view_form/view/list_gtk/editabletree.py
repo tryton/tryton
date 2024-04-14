@@ -163,7 +163,8 @@ class EditableTreeView(TreeView):
         for renderer in column.get_cells():
             if renderer.props.editing:
                 widget = self.view.get_column_widget(column)
-                self.on_editing_done(widget.editable, renderer)
+                editable = widget.get_editable(renderer)
+                self.on_editing_done(editable, renderer)
         return True
 
     def on_keypressed(self, entry, event, renderer):
