@@ -23,7 +23,8 @@ from tryton.common.cellrenderertext import (
     CellRendererText, CellRendererTextCompletion)
 from tryton.common.cellrenderertoggle import CellRendererToggle
 from tryton.common.completion import get_completion, update_completion
-from tryton.common.datetime_ import CellRendererDate, CellRendererTime
+from tryton.common.datetime_ import (
+    CellRendererDate, CellRendererTime, date_parse)
 from tryton.common.domain_parser import quote
 from tryton.common.selection import (
     PopdownMixin, SelectionMixin, selection_shortcuts)
@@ -496,6 +497,17 @@ class Date(GenericText):
             return value.strftime(self.renderer.props.format)
         else:
             return ''
+
+    def value_from_text(self, record, text, callback=None):
+        if isinstance(text, str):
+            field = record[self.attrs['name']]
+            try:
+                # Use a datetime instance and rely on field to convert to the
+                # proper type
+                text = date_parse(text, self.get_format(record, field))
+            except (ValueError, OverflowError):
+                text = None
+        return super().value_from_text(record, text, callback=callback)
 
 
 class Time(Date):
