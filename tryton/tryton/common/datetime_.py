@@ -9,7 +9,9 @@ from gi.repository import Gdk, GObject, Gtk
 
 from .common import IconFactory
 
-__all__ = ['Date', 'CellRendererDate', 'Time', 'CellRendererTime', 'DateTime']
+__all__ = [
+    'Date', 'CellRendererDate', 'Time', 'CellRendererTime', 'DateTime',
+    'date_parse']
 
 _ = gettext.gettext
 
