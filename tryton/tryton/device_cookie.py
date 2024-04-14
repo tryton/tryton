@@ -20,7 +20,7 @@ def renew():
     def set_cookie(new_cookie):
         try:
             new_cookie = new_cookie()
-        except Exception:
+        except common.RPCException:
             logger.error("Cannot renew device cookie", exc_info=True)
         else:
             _set(new_cookie)

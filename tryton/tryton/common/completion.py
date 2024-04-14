@@ -5,7 +5,7 @@ import logging
 
 from gi.repository import GLib, Gtk
 
-from tryton.common import RPCExecute
+from tryton.common import RPCException, RPCExecute
 from tryton.config import CONFIG
 from tryton.exceptions import TrytonError, TrytonServerError
 
@@ -72,7 +72,7 @@ def update_completion(entry, record, field, model, domain=None):
                 'model', model, 'autocomplete', search_text, domain,
                 CONFIG['client.limit'], order, context=context,
                 process_exception=False, callback=callback)
-        except Exception:
+        except RPCException:
             logger.warning(
                 "Unable to search for completion of %s", model,
                 exc_info=True)

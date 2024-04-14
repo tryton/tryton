@@ -21,7 +21,6 @@ from tryton.common import (
 from tryton.common.domain_inversion import canonicalize
 from tryton.common.domain_parser import DomainParser
 from tryton.config import CONFIG
-from tryton.exceptions import TrytonServerError
 from tryton.gui.window.infobar import InfoBar
 from tryton.gui.window.view_form.model.group import Group
 from tryton.gui.window.view_form.view import View
@@ -310,7 +309,7 @@ class Screen:
                         'model', self.model_name, 'search_count',
                         domain, 0, self.count_limit, context=context,
                         process_exception=False)
-                except (RPCException, TrytonServerError):
+                except RPCException:
                     self.search_count = 0
             else:
                 self.search_count = len(ids)
@@ -936,7 +935,7 @@ class Screen:
                             json_paths, json_selected_path,
                             process_exception=False)
                         clear_cache('model.ir.ui.view_tree_state.get')
-                    except Exception:
+                    except RPCException:
                         logger.warn(
                             _('Unable to set view tree state'), exc_info=True)
 

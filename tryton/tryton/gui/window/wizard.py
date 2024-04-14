@@ -150,16 +150,17 @@ class Wizard(InfoBar):
 
     def end(self, callback=None):
         def end_callback(action):
-            self.destroy(action=action())
-            if callback:
-                callback()
-        try:
-            RPCExecute('wizard', self.action, 'delete', self.session_id,
-                process_exception=False, callback=end_callback)
-        except Exception:
-            logger.warn(
-                "Unable to delete session %s of wizard %s",
-                self.session_id, self.action, exc_info=True)
+            try:
+                self.destroy(action=action())
+                if callback:
+                    callback()
+            except RPCException:
+                logger.warn(
+                    "Unable to delete session %s of wizard %s",
+                    self.session_id, self.action, exc_info=True)
+        RPCExecute(
+            'wizard', self.action, 'delete', self.session_id,
+            process_exception=False, callback=end_callback)
 
     def clean(self):
         for widget in self.widget.get_children():

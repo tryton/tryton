@@ -1001,10 +1001,13 @@ def process_exception(exception, *args, **kwargs):
             name, msg, description = exception.args
             res = userwarning(description, msg)
             if res in ('always', 'ok'):
-                RPCExecute(
-                    'model', 'res.user.warning', 'skip',
-                    name, (res == 'always'),
-                    process_exception=False)
+                try:
+                    RPCExecute(
+                        'model', 'res.user.warning', 'skip',
+                        name, (res == 'always'),
+                        process_exception=False)
+                except RPCException:
+                    pass
                 return rpc_execute(*args)
         elif exception.faultCode == 'UserError':
             msg, description, domain = exception.args
