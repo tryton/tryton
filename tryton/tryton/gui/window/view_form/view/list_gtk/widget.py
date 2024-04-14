@@ -359,6 +359,14 @@ class GenericText(Cell):
         editable.connect('remove-widget', remove)
         return False
 
+    def get_editable(self, renderer):
+        if self.renderer == renderer:
+            return self.editable
+        for cell in self.prefixes + self.suffixes:
+            editable = cell.get_editable(renderer)
+            if editable:
+                return editable
+
 
 class Char(GenericText):
 
