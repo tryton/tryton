@@ -288,6 +288,7 @@ class ShipmentOut(ShippingMixin, metaclass=PoolMeta):
                     & (model_data.fs_id == 'create_shipping_button')))
 
     @classmethod
+    @ModelView.button
     @Workflow.transition('packed')
     def pack(cls, shipments):
         super().pack(shipments)
