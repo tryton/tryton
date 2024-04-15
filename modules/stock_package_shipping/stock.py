@@ -254,6 +254,7 @@ class ShipmentOut(ShippingMixin, metaclass=PoolMeta):
     __name__ = 'stock.shipment.out'
 
     @classmethod
+    @ModelView.button
     @Workflow.transition('packed')
     def pack(cls, shipments):
         super().pack(shipments)
