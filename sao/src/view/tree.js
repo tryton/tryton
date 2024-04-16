@@ -1828,8 +1828,7 @@
         collapse_children: function() {
             for (const row of this.rows) {
                 row.collapse_children();
-                var node = row.el[0];
-                node.parentNode.removeChild(node);
+                row.el.remove();
             }
             this.rows = [];
         },
