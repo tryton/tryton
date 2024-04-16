@@ -4,7 +4,7 @@
 import os
 import tempfile
 from decimal import Decimal
-from unittest.mock import Mock, patch
+from unittest.mock import ANY, Mock, patch
 
 from trytond.modules.account.tests import create_chart
 from trytond.modules.company.tests import create_company, set_company
@@ -132,6 +132,12 @@ class WebShopProductDataFeedTestCase(ModuleTestCase):
                 open(os.path.join(
                         os.path.dirname(__file__),
                         'google-products.csv')).read())
+
+            with patch.object(Shop, 'product_data_feed_csv') as feed:
+                Shop.update_product_data_feed_csv()
+
+                feed.assert_called_once_with(
+                    'google', language=None, duration=ANY)
 
 
 class WebShopProductDataFeedRouteTestCase(RouteTestCase):

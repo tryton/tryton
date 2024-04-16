@@ -2,6 +2,7 @@
 # this repository contains the full copyright notices and license terms.
 
 import csv
+import fnmatch
 import os
 import shutil
 import tempfile
@@ -75,7 +76,25 @@ class Shop(metaclass=PoolMeta):
             context['language'] = language
         return context
 
-    def product_data_feed_csv(self, format, language=None):
+    @classmethod
+    def update_product_data_feed_csv(cls, shops=None):
+        if shops is None:
+            shops = cls.search([])
+
+        directory = _get_directory()
+        for shop in shops:
+            for name in fnmatch.filter(
+                    os.listdir(directory),
+                    f'{shop.name}-{shop.id}-*.csv'):
+                name = name[len(f'{shop.name}-{shop.id}-'):-len('.csv')]
+                if '-' in name:
+                    format, language = name.rsplit('-', 1)
+                else:
+                    format, language = name, None
+                shop.product_data_feed_csv(
+                    format, language=language, duration=_duration / 2)
+
+    def product_data_feed_csv(self, format, language=None, duration=_duration):
         transaction = Transaction()
         directory = _get_directory()
         if language:
@@ -85,10 +104,12 @@ class Shop(metaclass=PoolMeta):
         filename = os.path.join(directory, filename)
 
         try:
-            if (time.time() - os.path.getmtime(filename)) < _duration:
+            if (time.time() - os.path.getmtime(filename)) < duration:
                 return filename
         except OSError:
-            pass
+            # Create the file so cron will update it
+            # even if this generation fails
+            open(filename, 'a').close()
 
         with transaction.set_context(_product_data_language=language):
             products, prices, taxes = self.get_products()

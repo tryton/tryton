@@ -3,13 +3,14 @@
 
 from trytond.pool import Pool
 
-from . import product, routes, web
+from . import ir, product, routes, web
 
 __all__ = ['register', 'routes']
 
 
 def register():
     Pool.register(
+        ir.Cron,
         product.UoM,
         product.Template,
         product.Product,
