@@ -95,6 +95,8 @@ class Shop(metaclass=PoolMeta):
                     format, language=language, duration=_duration / 2)
 
     def product_data_feed_csv(self, format, language=None, duration=_duration):
+        pool = Pool()
+        Lang = pool.get('ir.lang')
         transaction = Transaction()
         directory = _get_directory()
         if language:
@@ -102,6 +104,12 @@ class Shop(metaclass=PoolMeta):
         else:
             filename = f'{self.name}-{self.id}-{format}.csv'
         filename = os.path.join(directory, filename)
+
+        # Fallback to the default language if it does not exist
+        try:
+            Lang.get(language)
+        except ValueError:
+            language = None
 
         try:
             if (time.time() - os.path.getmtime(filename)) < duration:
