@@ -1588,8 +1588,7 @@
         collapse_children: function() {
             this.rows.forEach(function(row, pos, rows) {
                 row.collapse_children();
-                var node = row.el[0];
-                node.parentNode.removeChild(node);
+                row.el.remove();
             });
             this.rows = [];
         },
