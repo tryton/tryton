@@ -101,6 +101,8 @@ Create and pay an invoice without clearing::
     >>> succeed.execute('succeed')
 
     >>> invoice.reload()
+    >>> invoice.state
+    'posted'
     >>> invoice.amount_to_pay
     Decimal('0.00')
 
@@ -132,6 +134,8 @@ Create an invoice and pay it::
     >>> succeed.execute('succeed')
 
     >>> invoice1.reload()
+    >>> invoice1.state
+    'paid'
     >>> invoice1.amount_to_pay
     Decimal('0')
 
@@ -141,6 +145,8 @@ Unreconcile the payment line and check the amount to pay::
     ...     if l != paid_line]
     >>> unreconcile = Wizard('account.move.unreconcile_lines', [paid_line])
     >>> invoice1.reload()
+    >>> invoice1.state
+    'posted'
     >>> invoice1.amount_to_pay
     Decimal('0.00')
 
