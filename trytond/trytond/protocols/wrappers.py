@@ -72,8 +72,11 @@ class Request(_Request):
     @property
     def decoded_data(self):
         if self.content_encoding == 'gzip':
-            zipfile = gzip.GzipFile(fileobj=BytesIO(self.data), mode='rb')
-            return zipfile.read()
+            if self.user_id:
+                zipfile = gzip.GzipFile(fileobj=BytesIO(self.data), mode='rb')
+                return zipfile.read()
+            else:
+                abort(HTTPStatus.UNSUPPORTED_MEDIA_TYPE)
         else:
             return self.data
 
