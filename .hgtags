@@ -8089,3 +8089,4 @@ e123f9e7ba7da3e041962b331c6d802a0166be86 tryton-6.0.38
 f0e5dac0aef38fa1d30ac244fd70440131789ecb stock_package_shipping_ups-6.0.4
 b0f04b2ab393dc88f5e2ab85f79c813a368954ef sale_payment-6.0.3
 911ff614ff46e648f2ec9542d729a0608b9ad9fa sale_advance_payment-6.0.4
+81478449261c841dec8841dc56666114f3cde0e8 account_payment_stripe-6.0.11
