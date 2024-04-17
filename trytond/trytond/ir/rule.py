@@ -17,6 +17,28 @@ class DomainError(ValidationError):
     pass
 
 
+def _get_access_models(Model, names=None, model2field=None, path=None):
+    "Return names and model2field"
+    if names is None:
+        names = set()
+    if model2field is None:
+        model2field = defaultdict(list)
+    if Model.__name__ in names:
+        return
+    names.add(Model.__name__)
+    if path:
+        model2field[Model.__name__].append(path)
+    for field_name in Model.__access__:
+        field = getattr(Model, field_name)
+        Target = field.get_target()
+        if path:
+            target_path = path + '.' + field_name
+        else:
+            target_path = field_name
+        _get_access_models(Target, names, model2field, target_path)
+    return names, model2field
+
+
 class RuleGroup(
         fields.fmany2one(
             'model_ref', 'model', 'ir.model,model', "Model",
@@ -203,24 +225,8 @@ class Rule(ModelSQL, ModelView):
 
         groups = User.get_groups()
 
-        model_names = []
-        model2field = defaultdict(list)
-
-        def update_model_names(Model, path=None):
-            if Model.__name__ in model_names:
-                return
-            model_names.append(Model.__name__)
-            if path:
-                model2field[Model.__name__].append(path)
-            for field_name in Model.__access__:
-                field = getattr(Model, field_name)
-                Target = field.get_target()
-                if path:
-                    target_path = path + '.' + field_name
-                else:
-                    target_path = field_name
-                update_model_names(Target, target_path)
-        update_model_names(pool.get(model_name))
+        model_names, model2field = _get_access_models(pool.get(model_name))
+        model_names = list(model_names)
 
         cursor = transaction.connection.cursor()
         # root user above constraint
@@ -278,6 +284,7 @@ class Rule(ModelSQL, ModelView):
 
     @classmethod
     def domain_get(cls, model_name, mode='read'):
+        pool = Pool()
         transaction = Transaction()
         # root user above constraint
         if transaction.user == 0 or not transaction.check_access:
@@ -285,7 +292,11 @@ class Rule(ModelSQL, ModelView):
 
         assert mode in cls.modes
 
-        key = (model_name, mode) + cls._get_cache_key(model_name)
+        model_names, _ = _get_access_models(pool.get(model_name))
+
+        key = (model_name, mode)
+        for m_name in sorted(model_names):
+            key += cls._get_cache_key(m_name)
         domain = cls._domain_get_cache.get(key, False)
         if domain is not False:
             return domain
