@@ -9138,3 +9138,4 @@ f6206a14dc524ae05995bbabf4cec18e0f8cb3b6 sale_extra-7.0.1
 1d0fba09fc45c09a6117d2314f99eeee717bd4ec purchase-7.0.3
 a2cbb2f64a84a4b8b98e695c1f08ac13f4f0db24 account_statement_mt940-7.0.1
 60b9765f5cc55e95e25e123210699d1575c403f0 account_payment_stripe-7.0.3
+eb0d2d8ed89f39371f5b5fa627eafcb04fa74ed1 account_payment_clearing-7.0.2
