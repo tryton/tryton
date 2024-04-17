@@ -203,7 +203,7 @@ class Rule(ModelSQL, ModelView):
             }
 
     @classmethod
-    def _get_cache_key(cls, model_name):
+    def _get_cache_key(cls, model_names):
         pool = Pool()
         User = pool.get('res.user')
         # _datetime value will be added to the domain
@@ -294,9 +294,7 @@ class Rule(ModelSQL, ModelView):
 
         model_names, _ = _get_access_models(pool.get(model_name))
 
-        key = (model_name, mode)
-        for m_name in sorted(model_names):
-            key += cls._get_cache_key(m_name)
+        key = (model_name, mode) + cls._get_cache_key(model_names)
         domain = cls._domain_get_cache.get(key, False)
         if domain is not False:
             return domain

@@ -53,10 +53,10 @@ class Rule(metaclass=PoolMeta):
             '\n- "companies" as list of ids from the current user')
 
     @classmethod
-    def _get_cache_key(cls, model_name):
+    def _get_cache_key(cls, model_names):
         pool = Pool()
         User = pool.get('res.user')
-        key = super()._get_cache_key(model_name)
+        key = super()._get_cache_key(model_names)
         return (*key, User.get_companies())
 
     @classmethod
