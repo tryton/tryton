@@ -373,7 +373,8 @@ class Fs2bdAccessor:
         Model = self.pool.get(model_name)
         if not ids:
             ids = list(self.browserecord[module][model_name].keys())
-        models = Model.browse(ids)
+        with Transaction().set_context(language='en'):
+            models = Model.browse(ids)
         for model in models:
             if model.id in self.browserecord[module][model_name]:
                 for cache in Transaction().cache.values():
@@ -755,7 +756,8 @@ class TrytondXmlHandler(sax.handler.ContentHandler):
             record = self.fs2db.get_browserecord(
                 module, Model.__name__, record.id)
             if not record:
-                record = Model(record.id)
+                with Transaction().set_context(language='en'):
+                    record = Model(record.id)
             for key in values:
                 values[key] = self._clean_value(key, record)
 
