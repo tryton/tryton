@@ -44,7 +44,8 @@ class Request(_Request):
                 args.append(self.remote_addr)
             args.append("'%s'" % url)
             args.append("[%s]" % self.method)
-            args.append("%s" % (self.rpc_method or ''))
+            if self.view_args:
+                args.append("%s" % (self.rpc_method or ''))
         except Exception:
             args.append("(invalid WSGI environ)")
         return "<%s %s>" % (
@@ -91,8 +92,7 @@ class Request(_Request):
 
     @cached_property
     def user_id(self):
-        if not self.view_args:
-            return None
+        assert self.view_args is not None
         database_name = self.view_args.get('database_name')
         if not database_name:
             return None
