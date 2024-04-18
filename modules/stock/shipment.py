@@ -3067,6 +3067,7 @@ class PickingList(ShipmentReport):
             moves = shipment.outgoing_moves
         else:
             moves = shipment.inventory_moves
+        moves = [m for m in moves if m.state != 'cancelled']
         return sort(moves, cls.moves_order(shipment))
 
     @classmethod
@@ -3084,6 +3085,7 @@ class SupplierRestockingList(ShipmentReport):
             moves = shipment.incoming_moves
         else:
             moves = shipment.inventory_moves
+        moves = [m for m in moves if m.state != 'cancelled']
         return sort(moves, cls.moves_order(shipment))
 
     @classmethod
@@ -3101,6 +3103,7 @@ class CustomerReturnRestockingList(ShipmentReport):
             moves = shipment.incoming_moves
         else:
             moves = shipment.inventory_moves
+        moves = [m for m in moves if m.state != 'cancelled']
         return sort(moves, cls.moves_order(shipment))
 
     @classmethod
@@ -3121,6 +3124,7 @@ class InteralShipmentReport(ShipmentReport):
                 moves = shipment.outgoing_moves
         else:
             moves = shipment.moves
+        moves = [m for m in moves if m.state != 'cancelled']
         return sort(moves, cls.moves_order(shipment))
 
     @classmethod
