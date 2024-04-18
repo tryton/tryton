@@ -130,7 +130,6 @@ class JSONUnmarshaller(object):
 class Transport(xmlrpc.client.SafeTransport):
 
     accept_gzip_encoding = True
-    encode_threshold = 1400  # common MTU
 
     def __init__(
             self, fingerprints=None, ca_certs=None, session=None):
@@ -232,6 +231,11 @@ class Transport(xmlrpc.client.SafeTransport):
         self._connection[1].timeout = DEFAULT_TIMEOUT
         self._connection[1].sock.settimeout(DEFAULT_TIMEOUT)
         return self._connection[1]
+
+    @property
+    def encode_threshold(self):
+        if self.session:
+            return 1400  # common MTU
 
 
 class ServerProxy(xmlrpc.client.ServerProxy):
