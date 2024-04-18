@@ -3033,22 +3033,7 @@ class AssignPartial(ModelView):
         help="The moves that were not assigned.")
 
 
-class DeliveryNote(CompanyReport):
-    'Delivery Note'
-    __name__ = 'stock.shipment.out.delivery_note'
-
-    @classmethod
-    def execute(cls, ids, data):
-        with Transaction().set_context(address_with_party=False):
-            return super(DeliveryNote, cls).execute(ids, data)
-
-
 class ShipmentReport(CompanyReport):
-
-    @classmethod
-    def execute(cls, ids, data):
-        with Transaction().set_context(address_with_party=True):
-            return super(ShipmentReport, cls).execute(ids, data)
 
     @classmethod
     def moves(cls, shipment):
@@ -3063,6 +3048,25 @@ class ShipmentReport(CompanyReport):
         report_context = super().get_context(shipments, header, data)
         report_context['moves'] = cls.moves
         return report_context
+
+
+class DeliveryNote(ShipmentReport):
+    'Delivery Note'
+    __name__ = 'stock.shipment.out.delivery_note'
+
+    @classmethod
+    def execute(cls, ids, data):
+        with Transaction().set_context(address_with_party=False):
+            return super(DeliveryNote, cls).execute(ids, data)
+
+    @classmethod
+    def moves(cls, shipment):
+        moves = shipment.outgoing_moves
+        return sort(moves, cls.moves_order(shipment))
+
+    @classmethod
+    def moves_order(cls, shipment):
+        return shipment.__class__.outgoing_moves.order
 
 
 class PickingList(ShipmentReport):
@@ -3119,6 +3123,11 @@ class CustomerReturnRestockingList(ShipmentReport):
 class InteralShipmentReport(ShipmentReport):
     'Interal Shipment Report'
     __name__ = 'stock.shipment.internal.report'
+
+    @classmethod
+    def execute(cls, ids, data):
+        with Transaction().set_context(address_with_party=True):
+            return super(ShipmentReport, cls).execute(ids, data)
 
     @classmethod
     def moves(cls, shipment):
