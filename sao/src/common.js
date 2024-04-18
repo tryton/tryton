@@ -456,10 +456,14 @@
             if (!refresh) {
                 this._access = {};
             }
-            this._models = Sao.rpc({
-                'method': 'model.ir.model.list_models',
-                'params': [{}]
-            }, Sao.Session.current_session, false);
+            try {
+                this._models = Sao.rpc({
+                    'method': 'model.ir.model.list_models',
+                    'params': [{}]
+                }, Sao.Session.current_session, false);
+            } catch(e) {
+                Sao.Logger.error("Unable to get model list.");
+            }
         },
         get: function(model) {
             if (this._access[model] !== undefined) {
@@ -473,10 +477,23 @@
             var to_load = this._models.slice(
                 Math.max(0, idx - Math.floor(this.batchnum / 2)),
                 idx + Math.floor(this.batchnum / 2));
-            var access = Sao.rpc({
-                'method': 'model.ir.model.access.get_access',
-                'params': [to_load, {}]
-            }, Sao.Session.current_session, false);
+            var access;
+            try {
+                access = Sao.rpc({
+                    'method': 'model.ir.model.access.get_access',
+                    'params': [to_load, {}]
+                }, Sao.Session.current_session, false);
+            } catch(e) {
+                Sao.Logger.error(`Unable to get access for ${model}.`);
+                access = {
+                    model: {
+                        'read': true,
+                        'write': false,
+                        'create': false,
+                        'delete': false,
+                    },
+                };
+            }
             this._access = jQuery.extend(this._access, access);
             return this._access[model];
         }
