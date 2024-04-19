@@ -322,7 +322,7 @@ class RecordTagHandler:
         return "record '%s.%s'" % (self.mh.module, self.xml_id)
 
 
-class Fs2bdAccessor:
+class FS2DBAccessor:
     """
     Used in TrytondXmlHandler.
     Provide some helper function to ease cache access and management.
@@ -424,7 +424,7 @@ class TrytondXmlHandler(sax.handler.ContentHandler):
         self.pool = pool
         self.module = module
         self.ModelData = pool.get('ir.model.data')
-        self.fs2db = Fs2bdAccessor(self.ModelData, pool)
+        self.fs2db = FS2DBAccessor(self.ModelData, pool)
         self.to_delete = self.populate_to_delete()
         self.noupdate = None
         self.module_state = module_state
