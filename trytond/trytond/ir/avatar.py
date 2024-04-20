@@ -128,8 +128,8 @@ class Avatar(ImageMixin, ResourceMixin, ModelSQL):
                 (height + size) // 2))
         if size > 2048:
             img = img.resize((2048, 2048))
-        if img.mode in {'RGBA', 'P'}:
-            img.convert('RGBA')
+        if img.mode != 'RGB':
+            img = img.convert('RGB')
             background = Image.new('RGBA', img.size, (255, 255, 255))
             background.alpha_composite(img)
             img = background.convert('RGB')

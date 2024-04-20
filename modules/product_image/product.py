@@ -171,8 +171,8 @@ class ImageMixin(_ImageMixin):
         data = io.BytesIO()
         img = PIL.Image.open(io.BytesIO(image))
         img.thumbnail((SIZE_MAX, SIZE_MAX))
-        if img.mode in {'RGBA', 'P'}:
-            img.convert('RGBA')
+        if img.mode != 'RGB':
+            img = img.convert('RGB')
             background = PIL.Image.new('RGBA', img.size, (255, 255, 255))
             background.alpha_composite(img)
             img = background.convert('RGB')
