@@ -176,7 +176,7 @@ class ImageMixin(_ImageMixin):
             background = PIL.Image.new('RGBA', img.size, (255, 255, 255))
             background.alpha_composite(img)
             img = background.convert('RGB')
-        img.save(data, format='jpeg', optimize=True, **_params)
+        img.save(data, format='jpeg', optimize=True, dpi=(300, 300), **_params)
         return data.getvalue()
 
     def _resize(self, size=64, **_params):
@@ -185,7 +185,7 @@ class ImageMixin(_ImageMixin):
         if isinstance(size, int):
             size = (size, size)
         img.thumbnail(size)
-        img.save(data, format='jpeg', optimize=True, **_params)
+        img.save(data, format='jpeg', optimize=True, dpi=(300, 300), **_params)
         return data.getvalue()
 
     def _store_cache(self, size, image):
