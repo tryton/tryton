@@ -1924,7 +1924,7 @@
                 promises.push(this.group.parent.root_parent.reload());
             }
             return jQuery.when.apply(jQuery, promises).then(() => {
-                this.display();
+                return this.display();
             });
         },
         get_buttons: function() {
