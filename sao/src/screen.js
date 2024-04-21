@@ -1961,6 +1961,7 @@
                             ids: ids
                         }, null, this.context, true);
                     }
+                    this.record_saved();
                 });
             };
 

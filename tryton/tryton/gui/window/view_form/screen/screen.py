@@ -1267,6 +1267,7 @@ class Screen:
         except RPCException:
             action = None
         self.reload(ids, written=True)
+        self.record_saved()
         if isinstance(action, str):
             self.client_action(action)
         elif action:
