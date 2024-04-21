@@ -1217,7 +1217,8 @@ class Screen(SignalEvent):
         if button.get('confirm', False) and not sur(button['confirm']):
             return
         if button.get('type', 'class') == 'class':
-            if not self.current_record.save(force_reload=False):
+            record_id = self.current_record.save(force_reload=False)
+            if record_id is False or record_id < 0:
                 return
         if button.get('type', 'class') == 'class':
             self._button_class(button)
