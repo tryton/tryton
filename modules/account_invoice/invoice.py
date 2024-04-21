@@ -1890,7 +1890,7 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin, InvoiceReportMixin):
             for line in invoice.lines:
                 test_line = Line(line.id)
                 test_line.on_change_product()
-                if (test_line.taxes != line.taxes
+                if (set(test_line.taxes) != set(line.taxes)
                         or test_line.taxes_deductible_rate
                         != line.taxes_deductible_rate):
                     different_lines.append(line)
