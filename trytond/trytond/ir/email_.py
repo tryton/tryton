@@ -572,6 +572,22 @@ class EmailTemplate(ModelSQL, ModelView):
         if isinstance(record, User) and record.language:
             return record.language
 
+    @classmethod
+    def create(cls, vlist):
+        ModelView._view_toolbar_get_cache.clear()
+        return super().create(vlist)
+
+    @classmethod
+    def write(cls, *args):
+        if any({'name', 'model'} & v.keys() for v in args[1:None:2]):
+            ModelView._view_toolbar_get_cache.clear()
+        super().write(*args)
+
+    @classmethod
+    def delete(cls, records):
+        ModelView._view_toolbar_get_cache.clear()
+        super().delete(records)
+
 
 class EmailTemplate_Report(ModelSQL):
     "Email Template - Report"
