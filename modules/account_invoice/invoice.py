@@ -3409,13 +3409,16 @@ class PayInvoice(Wizard):
     def default_start(self, fields):
         default = {}
         invoice = self.record
+        payee = None
         if not invoice.alternative_payees:
-            default['payee'] = invoice.party.id
+            payee = invoice.party
         else:
             try:
-                default['payee'], = invoice.alternative_payees
+                payee, = invoice.alternative_payees
             except ValueError:
                 pass
+        if payee:
+            default['payee'] = payee.id
         default['payees'] = (
             [invoice.party.id] + [p.id for p in invoice.alternative_payees])
         default['company'] = invoice.company.id
