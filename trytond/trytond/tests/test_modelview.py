@@ -184,7 +184,7 @@ class ModelView(unittest.TestCase):
         Model = pool.get('test.modelview.changed_values')
         Target = pool.get('test.modelview.changed_values.target')
 
-        record = Model()
+        record = Model(targets=[], m2m_targets=[], m2m_function=[])
 
         self.assertEqual(record._changed_values, {})
 
@@ -255,7 +255,7 @@ class ModelView(unittest.TestCase):
                 })
 
         # no initial value
-        record = Model()
+        record = Model(targets=[], m2m_targets=[], m2m_function=[])
         record._values = record._record()
         target = Target(id=1)
         record._values['targets'] = [target]
@@ -365,7 +365,7 @@ class ModelView(unittest.TestCase):
         Model = pool.get('test.modelview.changed_values')
         Target = pool.get('test.modelview.changed_values.target')
 
-        record = Model(id=1)
+        record = Model(id=1, targets=[], m2m_targets=[], m2m_function=[])
         record.name = "Record"
         target = Target()
         target.name = "Target"
