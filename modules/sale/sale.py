@@ -1298,7 +1298,8 @@ class SaleLine(TaxableMixin, sequence_ordered(), ModelSQL, ModelView):
         context['taxes'] = [t.id for t in self.taxes or []]
         return context
 
-    @fields.depends('product', 'unit', 'sale',
+    @fields.depends(
+        'product', 'unit', 'sale', 'taxes',
         '_parent_sale.party', '_parent_sale.invoice_party',
         methods=['compute_taxes', 'compute_unit_price',
             'on_change_with_amount'])

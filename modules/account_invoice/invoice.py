@@ -2150,7 +2150,8 @@ class InvoiceLine(sequence_ordered(), ModelSQL, ModelView, TaxableMixin):
             'date': date,
             }
 
-    @fields.depends('product', 'unit', '_parent_invoice.type',
+    @fields.depends(
+        'product', 'unit', 'taxes', '_parent_invoice.type',
         '_parent_invoice.party', 'party', 'invoice', 'invoice_type',
         '_parent_invoice.invoice_date', '_parent_invoice.accounting_date',
         'company',
@@ -2222,7 +2223,8 @@ class InvoiceLine(sequence_ordered(), ModelSQL, ModelView, TaxableMixin):
         if self.product:
             return self.product.default_uom_category.id
 
-    @fields.depends('account', 'product', 'invoice',
+    @fields.depends(
+        'account', 'product', 'invoice', 'taxes',
         '_parent_invoice.party', '_parent_invoice.type',
         'party', 'invoice', 'invoice_type',
         methods=['_get_tax_rule_pattern'])

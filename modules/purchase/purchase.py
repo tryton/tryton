@@ -1304,7 +1304,8 @@ class Line(sequence_ordered(), ModelSQL, ModelView):
             'company': (self.company.id if self.company else -1),
             }
 
-    @fields.depends('product', 'unit', 'purchase',
+    @fields.depends(
+        'product', 'unit', 'purchase', 'taxes',
         '_parent_purchase.party', '_parent_purchase.invoice_party',
         'product_supplier', methods=['compute_taxes', 'compute_unit_price',
             '_get_product_supplier_pattern'])
