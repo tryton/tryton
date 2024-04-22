@@ -213,14 +213,14 @@ class Category(CompanyMultiValueMixin, metaclass=PoolMeta):
             self.customer_taxes = None
             self.supplier_taxes = None
 
-    @fields.depends('account_expense')
+    @fields.depends('account_expense', 'supplier_taxes')
     def on_change_account_expense(self):
         if self.account_expense:
             self.supplier_taxes = self.account_expense.taxes
         else:
             self.supplier_taxes = []
 
-    @fields.depends('account_revenue')
+    @fields.depends('account_revenue', 'customer_taxes')
     def on_change_account_revenue(self):
         if self.account_revenue:
             self.customer_taxes = self.account_revenue.taxes
