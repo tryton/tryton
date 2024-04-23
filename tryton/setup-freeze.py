@@ -124,14 +124,13 @@ version = version.strip()
 
 setup(name='tryton',
     version=version,
-    packages=find_packages(),
     options={
         'build_exe': {
             'no_compress': True,
             'include_files': include_files,
             'excludes': ['tkinter'],
             'silent': True,
-            'packages': ['gi'],
+            'packages': find_packages() + ['gi'],
             'include_msvcr': True,
             },
         'bdist_mac': {
