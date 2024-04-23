@@ -18,6 +18,7 @@ class Configuration(metaclass=PoolMeta):
             domain=[
                 ('sequence_type', '=',
                     Id('stock_lot', 'sequence_type_stock_lot')),
+                ('company', '=', None),
                 ]))
 
 
@@ -29,6 +30,7 @@ class ConfigurationDefaultLotSequence(ModelSQL, ValueMixin):
         domain=[
             ('sequence_type', '=',
                 Id('stock_lot', 'sequence_type_stock_lot')),
+            ('company', '=', None),
             ])
 
 
@@ -50,6 +52,7 @@ class Template(metaclass=PoolMeta):
         'ir.sequence', "Lot Sequence",
         domain=[
             ('sequence_type', '=', Id('stock_lot', 'sequence_type_stock_lot')),
+            ('company', '=', None),
             ],
         states={
             'invisible': ~Eval('type').in_(['goods', 'assets']),
