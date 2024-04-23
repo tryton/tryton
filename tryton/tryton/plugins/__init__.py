@@ -24,9 +24,11 @@ def register():
     imported = set()
     for path in paths:
         finder = importlib.machinery.FileFinder(
-            path, (
-                importlib.machinery.SourceFileLoader,
-                importlib.machinery.SOURCE_SUFFIXES))
+            path,
+            (importlib.machinery.SourceFileLoader,
+                importlib.machinery.SOURCE_SUFFIXES),
+            (importlib.machinery.SourcelessFileLoader,
+                importlib.machinery.BYTECODE_SUFFIXES))
         for plugin in os.listdir(path):
             module = os.path.splitext(plugin)[0]
             if (module.startswith('_') or module in imported):
