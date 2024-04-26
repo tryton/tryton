@@ -133,7 +133,7 @@ class ModelStorage(Model):
             cls.__rpc__.update({
                     'create': RPC(readonly=False,
                         result=lambda r: list(map(int, r))),
-                    'read': RPC(),
+                    'read': RPC(timeout=_request_timeout),
                     'write': RPC(readonly=False,
                         instantiate=slice(0, None, 2)),
                     'delete': RPC(readonly=False, instantiate=0),
@@ -148,7 +148,8 @@ class ModelStorage(Model):
                         instantiate=0, unique=False,
                         timeout=_request_timeout),
                     'export_data_domain': RPC(timeout=_request_timeout),
-                    'export_data': RPC(instantiate=0, unique=False),
+                    'export_data': RPC(
+                        instantiate=0, unique=False, timeout=_request_timeout),
                     'import_data': RPC(readonly=False),
                     })
         if cls._log is None:
