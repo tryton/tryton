@@ -4,11 +4,11 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "field:party.party,sale_price_list:"
 msgid "Sale Price List"
-msgstr ""
+msgstr "Lista de prețuri de vânzare"
 
 msgctxt "field:party.party,sale_price_lists:"
 msgid "Sale Price Lists"
-msgstr ""
+msgstr "Liste de prețuri de vânzare"
 
 msgctxt "field:party.party.sale_price_list,company:"
 msgid "Company"
@@ -20,7 +20,7 @@ msgstr "Parte"
 
 msgctxt "field:party.party.sale_price_list,sale_price_list:"
 msgid "Sale Price List"
-msgstr ""
+msgstr "Lista de prețuri de vânzare"
 
 msgctxt "field:product.sale.context,price_list:"
 msgid "Price List"
@@ -28,7 +28,7 @@ msgstr "Listă de prețuri"
 
 msgctxt "field:sale.configuration,sale_price_list:"
 msgid "Sale Price List"
-msgstr ""
+msgstr "Lista de prețuri de vânzare"
 
 msgctxt "field:sale.configuration.sale_price_list,company:"
 msgid "Company"
@@ -36,7 +36,7 @@ msgstr "Companie"
 
 msgctxt "field:sale.configuration.sale_price_list,sale_price_list:"
 msgid "Sale Price List"
-msgstr ""
+msgstr "Lista de prețuri de vânzare"
 
 msgctxt "field:sale.sale,price_list:"
 msgid "Price List"
@@ -44,15 +44,16 @@ msgstr "Listă de prețuri"
 
 msgctxt "help:party.party,sale_price_list:"
 msgid "The default price list for new sales."
-msgstr ""
+msgstr "Lista de prețuri implicită pentru vânzări noi."
 
+#, fuzzy
 msgctxt "help:sale.configuration,sale_price_list:"
 msgid "The default price list for new parties."
-msgstr ""
+msgstr "Lista de prețuri implicită pentru noi părți."
 
 msgctxt "help:sale.sale,price_list:"
 msgid "Use to compute the unit price of lines."
-msgstr ""
+msgstr "Se utilizează pentru a calcula prețul unitar al rândurilor."
 
 msgctxt "model:party.party.sale_price_list,name:"
 msgid "Party Sale Price List"
@@ -62,6 +63,7 @@ msgctxt "model:sale.configuration.sale_price_list,name:"
 msgid "Sale Configuration Sale PriceList"
 msgstr ""
 
+#, fuzzy
 msgctxt "selection:product.price_list,unit:"
 msgid "Product Sale"
-msgstr ""
+msgstr "Vânzare de produse"

@@ -31,6 +31,10 @@ msgid "disable thread usage"
 msgstr "desactiva l'ús de fils"
 
 #, python-format
+msgid "Invalid response id (%s) expected %s"
+msgstr ""
+
+#, python-format
 msgid "Unable to set locale %s"
 msgstr "No s'ha pogut establir l'idioma %s"
 
@@ -130,14 +134,26 @@ msgstr "Baixa"
 msgid "Could not get a session."
 msgstr "No s'ha pogut obtenir una sessió."
 
+#, fuzzy, python-format
+msgid "Error \"%s\". Try again later."
+msgstr "Massa peticions. Proveu-ho de nou més tard."
+
 msgid "Too many requests. Try again later."
 msgstr "Massa peticions. Proveu-ho de nou més tard."
 
-msgid "Not found."
-msgstr "No s'han trobat."
-
 msgid "Not Found."
 msgstr "No s'han trobat."
+
+msgid "Reset forgotten password"
+msgstr ""
+
+msgid "Send you an email to reset your password."
+msgstr ""
+
+msgid ""
+"A request to reset your password has been sent.\n"
+"Please check your mailbox."
+msgstr ""
 
 msgid "..."
 msgstr "..."
@@ -995,7 +1011,7 @@ msgstr "Ha fallat la detecció"
 
 #, python-format
 msgid "Unknown column header \"%s\""
-msgstr "Capçalera de columan desconeguda: \"%s\""
+msgstr "Capçalera de columna desconeguda: \"%s\""
 
 msgid "Error"
 msgstr "Error"
@@ -1084,7 +1100,19 @@ msgstr "La mida de la imatge és massa gran."
 msgid "Copy"
 msgstr "Copia"
 
-msgid "Paste"
+#, fuzzy
+msgid "Copy Row"
+msgstr "_Copia l'URL"
+
+#, fuzzy
+msgid "Copy Rows"
+msgstr "_Copia l'URL"
+
+msgid "Copy Column"
+msgstr ""
+
+#, fuzzy
+msgid "Paste Rows"
 msgstr "Enganxa"
 
 msgid ".."

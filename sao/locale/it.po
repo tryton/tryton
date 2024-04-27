@@ -113,7 +113,8 @@ msgstr ""
 msgid "Unable to reach the server."
 msgstr "server non raggiungibile"
 
-msgid "Too many requests. Try again later."
+#, fuzzy
+msgid "Error: \"%1\". Try again later."
 msgstr "Troppe richieste. Riprovare più tardi."
 
 msgid "Login"
@@ -129,7 +130,18 @@ msgstr ""
 msgid "Login with"
 msgstr "Login"
 
+msgid "Too many requests. Try again later."
+msgstr "Troppe richieste. Riprovare più tardi."
+
 msgid "Not found."
+msgstr ""
+
+msgid "Send you an email to reset your password."
+msgstr ""
+
+msgid ""
+"A request to reset your password has been sent.\n"
+"Please check your mailbox."
 msgstr ""
 
 msgid "Your selection:"
@@ -532,8 +544,9 @@ msgstr "%1%"
 msgid "Menu"
 msgstr ""
 
-msgid "Copy"
-msgstr ""
+#, fuzzy
+msgid "Copy Selected Rows"
+msgstr "Record selezionati"
 
 msgid "#ERROR"
 msgstr ""

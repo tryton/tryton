@@ -30,6 +30,10 @@ msgid "disable thread usage"
 msgstr ""
 
 #, python-format
+msgid "Invalid response id (%s) expected %s"
+msgstr ""
+
+#, python-format
 msgid "Unable to set locale %s"
 msgstr "Nepavyko nustatyti lokalės %s"
 
@@ -131,16 +135,27 @@ msgstr "Atsisiųsti"
 msgid "Could not get a session."
 msgstr "Nepavyko prisijungti prie serverio"
 
+#, python-format
+msgid "Error \"%s\". Try again later."
+msgstr ""
+
 msgid "Too many requests. Try again later."
 msgstr ""
 
 #, fuzzy
-msgid "Not found."
-msgstr "Nerasta rezultatų."
-
-#, fuzzy
 msgid "Not Found."
 msgstr "Nerasta rezultatų."
+
+msgid "Reset forgotten password"
+msgstr ""
+
+msgid "Send you an email to reset your password."
+msgstr ""
+
+msgid ""
+"A request to reset your password has been sent.\n"
+"Please check your mailbox."
+msgstr ""
 
 msgid "..."
 msgstr "..."
@@ -1113,7 +1128,19 @@ msgstr "Paveikslėlis yra per didelis."
 msgid "Copy"
 msgstr "Kopijuoti"
 
-msgid "Paste"
+#, fuzzy
+msgid "Copy Row"
+msgstr "_Kopijuoti URL"
+
+#, fuzzy
+msgid "Copy Rows"
+msgstr "_Kopijuoti URL"
+
+msgid "Copy Column"
+msgstr ""
+
+#, fuzzy
+msgid "Paste Rows"
 msgstr "Įdėti"
 
 msgid ".."

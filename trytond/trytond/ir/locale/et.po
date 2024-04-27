@@ -2717,13 +2717,13 @@ msgstr ""
 msgctxt "model:ir.message,text:msg_digits_validation_record"
 msgid ""
 "The number of digits in the value \"%(value)r\" for field \"%(field)s\" in "
-"\"%(record)s\" of \"%(model)s\" exceeds the limit of \"%(digits)i\"."
+"record \"%(record)s\" of \"%(model)s\" exceeds the limit of \"%(digits)i\"."
 msgstr "Väärtust \"%(value)s\" väljale \"%(field)s\" mudelis \"%(model)s\" ei eksisteeri."
 
 #, fuzzy
 msgctxt "model:ir.message,text:msg_domain_validation_record"
 msgid ""
-"The value \"%(value)s\" for field \"%(field)s\" in \"%(record)s\" of "
+"The value \"%(value)s\" for field \"%(field)s\" in record \"%(record)s\" of "
 "\"%(model)s\" is not valid according to its domain."
 msgstr ""
 "Selles domeenis ei ole välja \"%(field)s\" väärtus mudelis \"%(model)s\" "
@@ -2777,7 +2777,7 @@ msgstr ""
 #, fuzzy
 msgctxt "model:ir.message,text:msg_forbidden_char_validation_record"
 msgid ""
-"The value \"%(value)s\" for field \"%(field)s\" in \"%(record)s\" of "
+"The value \"%(value)s\" for field \"%(field)s\" in record \"%(record)s\" of "
 "\"%(model)s\" contains some invalid chars \"%(chars)s\"."
 msgstr "Väärtust \"%(value)s\" väljale \"%(field)s\" mudelis \"%(model)s\" ei eksisteeri."
 
@@ -2903,7 +2903,9 @@ msgstr "Mudeli \"%(model)s\" välja \"%(field)s\" jaoks on väärtus nõutud."
 
 #, fuzzy
 msgctxt "model:ir.message,text:msg_required_validation_record"
-msgid "A value is required for field \"%(field)s\" in \"%(record)s\" of \"%(model)s\"."
+msgid ""
+"A value is required for field \"%(field)s\" in record \"%(record)s\" of "
+"\"%(model)s\"."
 msgstr "Mudeli \"%(model)s\" välja \"%(field)s\" jaoks on väärtus nõutud."
 
 msgctxt "model:ir.message,text:msg_resource_copy_help"
@@ -2921,7 +2923,7 @@ msgstr "Välja \"%(field)s\" jaoks puudub ostingufunktsioon mudelis \"%(model)s\
 #, fuzzy
 msgctxt "model:ir.message,text:msg_selection_validation_record"
 msgid ""
-"The value \"%(value)s\" for field \"%(field)s\" in \"%(record)s\" of "
+"The value \"%(value)s\" for field \"%(field)s\" in record \"%(record)s\" of "
 "\"%(model)s\" is not one of the allowed options."
 msgstr "Väärtust \"%(value)s\" väljale \"%(field)s\" mudelis \"%(model)s\" ei eksisteeri."
 
@@ -2979,7 +2981,7 @@ msgstr ""
 #, fuzzy
 msgctxt "model:ir.message,text:msg_size_validation_record"
 msgid ""
-"The value \"%(value)s\" for field \"%(field)s\" in \"%(record)s\" of "
+"The value \"%(value)s\" for field \"%(field)s\" in record \"%(record)s\" of "
 "\"%(model)s\" is too long (%(size)i > %(max_size)i)."
 msgstr ""
 "Väärtus on mudeli \"%(model)s\" välja \"%(field)s\" jaoks liiga pikk "
@@ -2988,8 +2990,8 @@ msgstr ""
 #, fuzzy
 msgctxt "model:ir.message,text:msg_time_format_validation_record"
 msgid ""
-"The time value \"%(value)s\" for field \"%(field)s\" in \"%(record)s\" of "
-"\"%(model)s\" is not valid."
+"The time value \"%(value)s\" for field \"%(field)s\" in record "
+"\"%(record)s\" of \"%(model)s\" is not valid."
 msgstr "Väärtust \"%(value)s\" väljale \"%(field)s\" mudelis \"%(model)s\" ei eksisteeri."
 
 #, fuzzy
@@ -3084,8 +3086,8 @@ msgstr ""
 #, fuzzy
 msgctxt "model:ir.message,text:msg_write_xml_record"
 msgid ""
-"You are not allowed to modify the field \"%(field)s\" in \"%(record)s\" of "
-"\"%(model)s\"."
+"You are not allowed to modify the field \"%(field)s\" in record "
+"\"%(record)s\" of \"%(model)s\"."
 msgstr "Mudeli \"%(model)s\" välja \"%(field)s\" jaoks on väärtus nõutud."
 
 #, fuzzy

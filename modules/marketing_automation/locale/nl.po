@@ -26,6 +26,25 @@ msgctxt "field:marketing.automation.activity,delay:"
 msgid "Delay"
 msgstr "Vertraging"
 
+#, fuzzy
+msgctxt "field:marketing.automation.activity,email_click_rate:"
+msgid "E-mail Click Rate"
+msgstr "E-mail Geklikt"
+
+#, fuzzy
+msgctxt "field:marketing.automation.activity,email_click_rate_trend:"
+msgid "E-mail Click Rate Trend"
+msgstr "E-mail Geklikt"
+
+#, fuzzy
+msgctxt "field:marketing.automation.activity,email_click_through_rate:"
+msgid "E-mail Click-Through Rate"
+msgstr "E-mail Geklikt"
+
+msgctxt "field:marketing.automation.activity,email_click_through_rate_trend:"
+msgid "E-mail Click-Through Rate Trend"
+msgstr ""
+
 msgctxt "field:marketing.automation.activity,email_clicked:"
 msgid "E-Mails Clicked"
 msgstr "E-mails Geklikt"
@@ -33,6 +52,16 @@ msgstr "E-mails Geklikt"
 msgctxt "field:marketing.automation.activity,email_from:"
 msgid "From"
 msgstr "Van"
+
+#, fuzzy
+msgctxt "field:marketing.automation.activity,email_open_rate:"
+msgid "E-mail Open Rate"
+msgstr "E-mails geopend"
+
+#, fuzzy
+msgctxt "field:marketing.automation.activity,email_open_rate_trend:"
+msgid "E-mail Open Rate Trend"
+msgstr "E-mails geopend"
 
 msgctxt "field:marketing.automation.activity,email_opened:"
 msgid "E-Mails Opened"
@@ -118,9 +147,101 @@ msgctxt "field:marketing.automation.record.activity,state:"
 msgid "State"
 msgstr "Status"
 
+#, fuzzy
+msgctxt "field:marketing.automation.reporting.activity,activity:"
+msgid "Activity"
+msgstr "Activiteit"
+
+#, fuzzy
+msgctxt "field:marketing.automation.reporting.activity,activity_action:"
+msgid "Activity Action"
+msgstr "Activiteit actie"
+
+msgctxt "field:marketing.automation.reporting.activity,date:"
+msgid "Date"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:marketing.automation.reporting.activity,email_click_rate:"
+msgid "E-mail Click Rate"
+msgstr "E-mail Geklikt"
+
+#, fuzzy
+msgctxt ""
+"field:marketing.automation.reporting.activity,email_click_through_rate:"
+msgid "E-mail Click-Through Rate"
+msgstr "E-mail Geklikt"
+
+#, fuzzy
+msgctxt "field:marketing.automation.reporting.activity,email_clicked:"
+msgid "E-Mails Clicked"
+msgstr "E-mails Geklikt"
+
+#, fuzzy
+msgctxt "field:marketing.automation.reporting.activity,email_open_rate:"
+msgid "E-mail Open Rate"
+msgstr "E-mails geopend"
+
+#, fuzzy
+msgctxt "field:marketing.automation.reporting.activity,email_opened:"
+msgid "E-Mails Opened"
+msgstr "E-mails geopend"
+
+#, fuzzy
+msgctxt "field:marketing.automation.reporting.activity,record_count:"
+msgid "Records"
+msgstr "Records"
+
+#, fuzzy
+msgctxt "field:marketing.automation.reporting.context,from_date:"
+msgid "From Date"
+msgstr "Bewerkingsdatum"
+
+msgctxt "field:marketing.automation.reporting.context,period:"
+msgid "Period"
+msgstr ""
+
+msgctxt "field:marketing.automation.reporting.context,to_date:"
+msgid "To Date"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:marketing.automation.reporting.scenario,block_rate:"
+msgid "Block Rate"
+msgstr "geblokkeerd"
+
+msgctxt "field:marketing.automation.reporting.scenario,date:"
+msgid "Date"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:marketing.automation.reporting.scenario,record_count:"
+msgid "Records"
+msgstr "Records"
+
+#, fuzzy
+msgctxt "field:marketing.automation.reporting.scenario,record_count_blocked:"
+msgid "Records Blocked"
+msgstr "Geblokkeerde records"
+
+#, fuzzy
+msgctxt "field:marketing.automation.reporting.scenario,scenario:"
+msgid "Scenario"
+msgstr "Scenario"
+
 msgctxt "field:marketing.automation.scenario,activities:"
 msgid "Activities"
 msgstr "Activiteiten"
+
+#, fuzzy
+msgctxt "field:marketing.automation.scenario,block_rate:"
+msgid "Block Rate"
+msgstr "geblokkeerd"
+
+#, fuzzy
+msgctxt "field:marketing.automation.scenario,block_rate_trend:"
+msgid "Block Rate Trend"
+msgstr "geblokkeerd"
 
 msgctxt "field:marketing.automation.scenario,domain:"
 msgid "Domain"
@@ -239,6 +360,16 @@ msgstr "Activiteiten opnemen"
 msgctxt "model:ir.action,name:act_record_form"
 msgid "Records"
 msgstr "Records"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_reporting_activity"
+msgid "Activity Reporting"
+msgstr "Activiteit actie"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_reporting_scenario"
+msgid "Scenario Reporting"
+msgstr "Scenario"
 
 msgctxt "model:ir.action,name:act_scenario_form"
 msgid "Scenarios"
@@ -369,6 +500,21 @@ msgctxt "model:marketing.automation.record.activity,name:"
 msgid "Marketing Record Activity"
 msgstr "Marketingrecordactiviteit"
 
+#, fuzzy
+msgctxt "model:marketing.automation.reporting.activity,name:"
+msgid "Marketing Automation Reporting Activity"
+msgstr "Marketingrecordactiviteit"
+
+#, fuzzy
+msgctxt "model:marketing.automation.reporting.context,name:"
+msgid "Marketing Automation Reporting Context"
+msgstr "Marketing Abonnement Opzeggen"
+
+#, fuzzy
+msgctxt "model:marketing.automation.reporting.scenario,name:"
+msgid "Marketing Automation Reporting Scenario"
+msgstr "Marketing Abonnement opgezegd"
+
 msgctxt "model:marketing.automation.scenario,name:"
 msgid "Marketing Scenario"
 msgstr "Marketingscenario"
@@ -451,6 +597,19 @@ msgctxt "selection:marketing.automation.record.activity,state:"
 msgid "Waiting"
 msgstr "In afwachting"
 
+#, fuzzy
+msgctxt "selection:marketing.automation.reporting.context,period:"
+msgid "Day"
+msgstr "Vertraging"
+
+msgctxt "selection:marketing.automation.reporting.context,period:"
+msgid "Month"
+msgstr ""
+
+msgctxt "selection:marketing.automation.reporting.context,period:"
+msgid "Year"
+msgstr ""
+
 msgctxt "selection:marketing.automation.scenario,state:"
 msgid "Draft"
 msgstr "Concept"
@@ -462,6 +621,10 @@ msgstr "in uitvoering"
 msgctxt "selection:marketing.automation.scenario,state:"
 msgid "Stopped"
 msgstr "gestopt"
+
+msgctxt "view:marketing.automation.activity:"
+msgid "%"
+msgstr ""
 
 msgctxt "view:marketing.automation.activity:"
 msgid "After"
@@ -490,6 +653,18 @@ msgstr "Titel:"
 msgctxt "view:marketing.automation.record.activity:"
 msgid "Time"
 msgstr "Tijd"
+
+msgctxt "view:marketing.automation.reporting.activity:"
+msgid "%"
+msgstr ""
+
+msgctxt "view:marketing.automation.reporting.scenario:"
+msgid "%"
+msgstr ""
+
+msgctxt "view:marketing.automation.scenario:"
+msgid "%"
+msgstr ""
 
 msgctxt "view:party.party:"
 msgid "Marketing Automation"

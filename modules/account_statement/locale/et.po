@@ -123,9 +123,18 @@ msgctxt "field:account.statement.line,amount:"
 msgid "Amount"
 msgstr "Väärtus"
 
+msgctxt "field:account.statement.line,amount_second_currency:"
+msgid "Amount Second Currency"
+msgstr ""
+
 msgctxt "field:account.statement.line,company:"
 msgid "Company"
 msgstr "Ettevõte"
+
+#, fuzzy
+msgctxt "field:account.statement.line,company_currency:"
+msgid "Company Currency"
+msgstr "Ettevõtte osapool"
 
 #, fuzzy
 msgctxt "field:account.statement.line,currency:"
@@ -164,6 +173,11 @@ msgctxt "field:account.statement.line,related_to:"
 msgid "Related To"
 msgstr ""
 
+#, fuzzy
+msgctxt "field:account.statement.line,second_currency:"
+msgid "Second Currency"
+msgstr "Valuuta"
+
 msgctxt "field:account.statement.line,statement:"
 msgid "Statement"
 msgstr "Aruanne"
@@ -175,6 +189,10 @@ msgstr "Aruande staatus"
 msgctxt "field:account.statement.line.group,amount:"
 msgid "Amount"
 msgstr "Väärtus"
+
+msgctxt "field:account.statement.line.group,amount_second_currency:"
+msgid "Amount Second Currency"
+msgstr ""
 
 msgctxt "field:account.statement.line.group,currency:"
 msgid "Currency"
@@ -200,6 +218,11 @@ msgctxt "field:account.statement.line.group,party:"
 msgid "Party"
 msgstr "Osapoole"
 
+#, fuzzy
+msgctxt "field:account.statement.line.group,second_currency:"
+msgid "Second Currency"
+msgstr "Valuuta"
+
 msgctxt "field:account.statement.line.group,statement:"
 msgid "Statement"
 msgstr "Aruanne"
@@ -212,9 +235,18 @@ msgctxt "field:account.statement.origin,amount:"
 msgid "Amount"
 msgstr "Väärtus"
 
+msgctxt "field:account.statement.origin,amount_second_currency:"
+msgid "Amount Second Currency"
+msgstr ""
+
 msgctxt "field:account.statement.origin,company:"
 msgid "Company"
 msgstr "Ettevõte"
+
+#, fuzzy
+msgctxt "field:account.statement.origin,company_currency:"
+msgid "Company Currency"
+msgstr "Ettevõtte osapool"
 
 #, fuzzy
 msgctxt "field:account.statement.origin,currency:"
@@ -248,6 +280,11 @@ msgstr "Osapool"
 msgctxt "field:account.statement.origin,pending_amount:"
 msgid "Pending Amount"
 msgstr "Avatud väärtus"
+
+#, fuzzy
+msgctxt "field:account.statement.origin,second_currency:"
+msgid "Second Currency"
+msgstr "Valuuta"
 
 msgctxt "field:account.statement.origin,statement:"
 msgid "Statement"
@@ -362,15 +399,15 @@ msgctxt ""
 msgid "Validated"
 msgstr "Valideeritud"
 
+msgctxt "model:ir.message,text:msg_bank_account_currency"
+msgid ""
+"The currency of bank account \"%(bank_account)s\" must be the same as "
+"\"%(currency)s\" of the journal \"%(journal)s\"."
+msgstr ""
+
 msgctxt "model:ir.message,text:msg_import_no_journal"
 msgid ""
 "To import statement, you must create a journal for account \"%(account)s\"."
-msgstr ""
-
-msgctxt "model:ir.message,text:msg_import_wrong_currency"
-msgid ""
-"To import statement, the journal \"%(journal)s\" must have the currency "
-"\"%(currency)s\" instead of \"%(journal_currency)s\"."
 msgstr ""
 
 msgctxt "model:ir.message,text:msg_journal_bank_account_unique"
@@ -391,6 +428,22 @@ msgid ""
 "The validation of the statements will remove already paid or cancelled "
 "invoices from the statements' lines."
 msgstr "Aruande valideerimine eemaldab taustud arved teistest aruannetest."
+
+msgctxt "model:ir.message,text:msg_statement_line_delete_cancel_draft"
+msgid ""
+"To delete line \"%(line)s\" you must cancel or reset to draft statement "
+"\"%(statement)s\"."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_statement_line_second_currency_sign"
+msgid "You must set the same sign for second currency than amount."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_statement_origin_delete_cancel_draft"
+msgid ""
+"To delete origin \"%(origin)s\" you must cancel or reset to draft statement "
+"\"%(statement)s\"."
+msgstr ""
 
 msgctxt "model:ir.message,text:msg_statement_paid_invoice_draft"
 msgid ""

@@ -65,7 +65,7 @@ msgstr "Permis Anulare Factura"
 
 msgctxt "field:account.invoice,alternative_payees:"
 msgid "Alternative Payee"
-msgstr ""
+msgstr "Beneficiar Alternativ"
 
 msgctxt "field:account.invoice,amount_to_pay:"
 msgid "Amount to Pay"
@@ -103,14 +103,13 @@ msgctxt "field:account.invoice,description:"
 msgid "Description"
 msgstr "Descriere"
 
-#, fuzzy
 msgctxt "field:account.invoice,has_payment_method:"
 msgid "Has Payment Method"
-msgstr "Metodă Plata"
+msgstr "Are Metodă de Plată"
 
 msgctxt "field:account.invoice,has_report_cache:"
 msgid "Has Report Cached"
-msgstr ""
+msgstr "Are raport în cache"
 
 msgctxt "field:account.invoice,invoice_address:"
 msgid "Invoice Address"
@@ -132,10 +131,9 @@ msgctxt "field:account.invoice,invoice_report_format:"
 msgid "Invoice Report Format"
 msgstr "Format Raport Factura"
 
-#, fuzzy
 msgctxt "field:account.invoice,invoice_report_revisions:"
 msgid "Invoice Report Revisions"
-msgstr "Raport Factura"
+msgstr "Revizii Raport Factură"
 
 msgctxt "field:account.invoice,journal:"
 msgid "Journal"
@@ -185,10 +183,9 @@ msgctxt "field:account.invoice,payment_term_date:"
 msgid "Payment Term Date"
 msgstr "Data Termen de Plata"
 
-#, fuzzy
 msgctxt "field:account.invoice,posted_by:"
 msgid "Posted By"
-msgstr "Postat"
+msgstr "Postat De"
 
 msgctxt "field:account.invoice,reconciled:"
 msgid "Reconciled"
@@ -216,7 +213,7 @@ msgstr "Impozit"
 
 msgctxt "field:account.invoice,tax_amount_cache:"
 msgid "Tax Cache"
-msgstr ""
+msgstr "Cache Taxe"
 
 msgctxt "field:account.invoice,tax_identifier:"
 msgid "Tax Identifier"
@@ -230,10 +227,9 @@ msgctxt "field:account.invoice,total_amount:"
 msgid "Total"
 msgstr "Total"
 
-#, fuzzy
 msgctxt "field:account.invoice,total_amount_cache:"
 msgid "Total Cache"
-msgstr "Total"
+msgstr "Cache Total"
 
 msgctxt "field:account.invoice,type:"
 msgid "Type"
@@ -247,15 +243,13 @@ msgctxt "field:account.invoice,untaxed_amount:"
 msgid "Untaxed"
 msgstr "Neimpozitat"
 
-#, fuzzy
 msgctxt "field:account.invoice,untaxed_amount_cache:"
 msgid "Untaxed Cache"
-msgstr "Neimpozitat"
+msgstr "Cache Neimpozitat"
 
-#, fuzzy
 msgctxt "field:account.invoice,validated_by:"
 msgid "Validated By"
-msgstr "Validat"
+msgstr "Validat de"
 
 msgctxt "field:account.invoice-account.move.line,invoice:"
 msgid "Invoice"
@@ -265,10 +259,9 @@ msgctxt "field:account.invoice-account.move.line,invoice_account:"
 msgid "Invoice Account"
 msgstr "Cont Facturare"
 
-#, fuzzy
 msgctxt "field:account.invoice-account.move.line,invoice_alternative_payees:"
 msgid "Invoice Alternative Payees"
-msgstr "Plata Facturi"
+msgstr "Plătitori Alternativi Factură"
 
 msgctxt "field:account.invoice-account.move.line,invoice_party:"
 msgid "Invoice Party"
@@ -286,14 +279,13 @@ msgctxt "field:account.invoice-additional-account.move,move:"
 msgid "Additional Move"
 msgstr "Mişcări Suplimentare"
 
-#, fuzzy
 msgctxt "field:account.invoice.alternative_payee,invoice:"
 msgid "Invoice"
-msgstr "Factura fiscala"
+msgstr "Factura"
 
 msgctxt "field:account.invoice.alternative_payee,party:"
 msgid "Payee"
-msgstr ""
+msgstr "Beneficiar"
 
 msgctxt "field:account.invoice.credit.start,invoice_date:"
 msgid "Invoice Date"
@@ -331,12 +323,10 @@ msgctxt "field:account.invoice.line,invoice:"
 msgid "Invoice"
 msgstr "Factura"
 
-#, fuzzy
 msgctxt "field:account.invoice.line,invoice_description:"
 msgid "Invoice Description"
-msgstr "Descriere"
+msgstr "Descrierea Facturii"
 
-#, fuzzy
 msgctxt "field:account.invoice.line,invoice_party:"
 msgid "Party"
 msgstr "Parte"
@@ -373,7 +363,6 @@ msgctxt "field:account.invoice.line,product:"
 msgid "Product"
 msgstr "Produs"
 
-#, fuzzy
 msgctxt "field:account.invoice.line,product_uom_category:"
 msgid "Product UoM Category"
 msgstr "Categorie UM Produs"
@@ -430,7 +419,6 @@ msgctxt "field:account.invoice.pay.ask,company:"
 msgid "Company"
 msgstr "Companie"
 
-#, fuzzy
 msgctxt "field:account.invoice.pay.ask,currency:"
 msgid "Currency"
 msgstr "Moneda"
@@ -485,11 +473,11 @@ msgstr "Cont Facturare"
 
 msgctxt "field:account.invoice.pay.start,payee:"
 msgid "Payee"
-msgstr ""
+msgstr "Beneficiar"
 
 msgctxt "field:account.invoice.pay.start,payees:"
 msgid "Payees"
-msgstr ""
+msgstr "Beneficiari"
 
 msgctxt "field:account.invoice.pay.start,payment_method:"
 msgid "Payment Method"
@@ -615,32 +603,26 @@ msgctxt "field:account.invoice.payment_term.test.result,date:"
 msgid "Date"
 msgstr "Data"
 
-#, fuzzy
 msgctxt "field:account.invoice.report.revision,date:"
 msgid "Date"
 msgstr "Data"
 
-#, fuzzy
 msgctxt "field:account.invoice.report.revision,filename:"
 msgid "File Name"
-msgstr "Denumire"
+msgstr "Denumire Fisier"
 
-#, fuzzy
 msgctxt "field:account.invoice.report.revision,invoice:"
 msgid "Invoice"
-msgstr "Factura fiscala"
+msgstr "Factura"
 
-#, fuzzy
 msgctxt "field:account.invoice.report.revision,invoice_report_cache:"
 msgid "Invoice Report"
 msgstr "Raport Factura"
 
-#, fuzzy
 msgctxt "field:account.invoice.report.revision,invoice_report_cache_id:"
 msgid "Invoice Report ID"
-msgstr "Raport Factura ID"
+msgstr "ID Raport Factura"
 
-#, fuzzy
 msgctxt "field:account.invoice.report.revision,invoice_report_format:"
 msgid "Invoice Report Format"
 msgstr "Format Raport Factura"
@@ -751,7 +733,7 @@ msgstr "Daca este adevărat, factura curenta va fi anulata."
 
 msgctxt "help:account.invoice.line,product_uom_category:"
 msgid "The category of Unit of Measure for the product."
-msgstr ""
+msgstr "Categoria de Unitate de Masura pentru produs."
 
 msgctxt "help:account.invoice.line,taxes_date:"
 msgid ""
@@ -789,10 +771,9 @@ msgctxt "model:account.invoice-additional-account.move,name:"
 msgid "Invoice Additional Move"
 msgstr "Mişcare Suplimentara Factura"
 
-#, fuzzy
 msgctxt "model:account.invoice.alternative_payee,name:"
 msgid "Invoice Alternative Payee"
-msgstr "Stare Factura"
+msgstr "Plătitori Alternativi Factură"
 
 msgctxt "model:account.invoice.credit.start,name:"
 msgid "Credit Invoice"
@@ -838,19 +819,17 @@ msgctxt "model:account.invoice.payment_term.test.result,name:"
 msgid "Test Payment Term"
 msgstr "Proba Termen de Plata"
 
-#, fuzzy
 msgctxt "model:account.invoice.report.revision,name:"
 msgid "Invoice Report Revision"
-msgstr "Raport Factura"
+msgstr "Revize Raport Factură"
 
 msgctxt "model:account.invoice.tax,name:"
 msgid "Invoice Tax"
 msgstr "Impozit Factura"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_delegate_lines_to_pay_wizard"
 msgid "Delegate Lines to Pay"
-msgstr "Reprogramare Rânduri de Plata"
+msgstr "Delegați Rânduri de Plată"
 
 msgctxt "model:ir.action,name:act_invoice_form"
 msgid "Invoices"
@@ -864,7 +843,6 @@ msgctxt "model:ir.action,name:act_invoice_out_form"
 msgid "Customer Invoices"
 msgstr "Facturi Client"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_invoice_relate"
 msgid "Invoices"
 msgstr "Facturi"
@@ -885,10 +863,9 @@ msgctxt "model:ir.action,name:credit"
 msgid "Credit"
 msgstr "Credit"
 
-#, fuzzy
 msgctxt "model:ir.action,name:refresh_invoice_report_wizard"
 msgid "Invoice (revised)"
-msgstr "Rând Factura"
+msgstr "Factura (revizuita)"
 
 msgctxt "model:ir.action,name:report_invoice"
 msgid "Invoice"
@@ -936,30 +913,29 @@ msgctxt ""
 msgid "Validated"
 msgstr "Validat"
 
-#, fuzzy
 msgctxt "model:ir.action.act_window.domain,name:act_invoice_relate_all"
 msgid "All"
 msgstr "Tot"
 
-#, fuzzy
 msgctxt "model:ir.action.act_window.domain,name:act_invoice_relate_paid"
 msgid "Paid"
 msgstr "Plătit"
 
 msgctxt "model:ir.action.act_window.domain,name:act_invoice_relate_pending"
 msgid "Pending"
-msgstr ""
+msgstr "In Derulare"
 
-#, fuzzy
 msgctxt "model:ir.message,text:msg_cancel_invoice_move"
 msgid "The moves \"%(moves)s\" have the posted invoices \"%(invoices)s\" as origin."
-msgstr "Pentru a închide perioadele trebuie postate facturile \"%(invoices)s\"."
+msgstr "Mişcările \"%(moves)s\" au facturile \"%(invoices)s\" ca origine."
 
 msgctxt "model:ir.message,text:msg_cancel_invoice_move_description"
 msgid ""
 "Cancelling them will reconcile the move lines thus paying the invoices. You "
 "might want to cancel the invoices first."
 msgstr ""
+"Anularea va reconcilia rândurile mişcării, plătind astfel facturile. Poate "
+"doriți să anulați mai întâi facturile."
 
 msgctxt "model:ir.message,text:msg_close_period_non_posted_invoices"
 msgid "To close the periods you must post the invoices \"%(invoices)s\"."
@@ -976,6 +952,26 @@ msgstr ""
 msgctxt "model:ir.message,text:msg_invoice_credit_refund_not_posted"
 msgid "You cannot refund invoice \"%(invoice)s\" because it is not posted."
 msgstr "Nu se poate storna factura \"%(invoice)s\" pentru ca nu a fost postată."
+
+#, fuzzy
+msgctxt ""
+"model:ir.message,text:msg_invoice_currency_exchange_credit_account_missing"
+msgid ""
+"To post invoice \"%(invoice)s\", you must define a currency exchange credit "
+"account for \"%(company)s\"."
+msgstr ""
+"Pentru a posta \"%(invoice)s\" trebuie definita o secvenţa pe anul fiscal "
+"\"%(fiscalyear)s\"."
+
+#, fuzzy
+msgctxt ""
+"model:ir.message,text:msg_invoice_currency_exchange_debit_account_missing"
+msgid ""
+"To post invoice \"%(invoice)s\", you must define a currency exchange debit "
+"account for \"%(company)s\"."
+msgstr ""
+"Pentru a posta \"%(invoice)s\" trebuie definita o secvenţa pe anul fiscal "
+"\"%(fiscalyear)s\"."
 
 msgctxt "model:ir.message,text:msg_invoice_customer_cancel_move"
 msgid ""
@@ -997,14 +993,13 @@ msgctxt "model:ir.message,text:msg_invoice_delete_numbered"
 msgid "You cannot delete invoice \"%(invoice)s\" because it has a number."
 msgstr "Nu se poate şterge factura \"%(invoice)s\" pentru că are un număr."
 
-#, fuzzy
 msgctxt "model:ir.message,text:msg_invoice_line_create_draft"
 msgid ""
 "You cannot add lines to invoice \"%(invoice)s\" because it is no longer in a"
 " draft state."
 msgstr ""
-"Nu se poate adăuga un rând la factura \"%(invoice)s\" pentru că este "
-"postată, plătita sau anulată."
+"Nu se poate adăuga un rând la factura \"%(invoice)s\" pentru că nu mai este "
+"in starea de ciorna."
 
 msgctxt "model:ir.message,text:msg_invoice_line_modify"
 msgid ""
@@ -1040,6 +1035,9 @@ msgid ""
 "\"%(date)s\" because the sequence \"%(sequence)s\" has already been used for"
 " invoice \"%(after_invoice)s\"."
 msgstr ""
+"Pentru a numerota factura \"%(invoice)s\", trebuie să setați o dată a "
+"facturii după \"%(date)s\", deoarece secvența \"%(sequence)s\" a fost deja "
+"utilizată pentru factura \"%(after_invoice)s\"."
 
 msgctxt "model:ir.message,text:msg_invoice_overpay_paid"
 msgid ""
@@ -1054,6 +1052,8 @@ msgid ""
 "You cannot add a partial payment on invoice \"%(invoice)s\" with an amount "
 "greater than the amount to pay \"%(amount_to_pay)s\"."
 msgstr ""
+"Nu puteți adăuga o plată parțială pe factura %(invoice)s\" cu o sumă mai "
+"mare decât suma de plată \"%(amount_to_pay)s\"."
 
 msgctxt "model:ir.message,text:msg_invoice_payment_line_unique"
 msgid "A payment line can be linked to only one invoice."
@@ -1070,6 +1070,8 @@ msgid ""
 "Payment lines amount on invoice \"%(invoice)s\" can not be greater than the "
 "invoice amount."
 msgstr ""
+"Suma rândurilor de plată de pe factura \"%(invoice)s\" nu poate fi mai mare "
+"decât suma facturii."
 
 msgctxt "model:ir.message,text:msg_invoice_payment_term_date_past"
 msgid "The invoice \"%(invoice)s\" generates a payment date \"%(date)s\" in the past."
@@ -1077,47 +1079,53 @@ msgstr ""
 "Factura \"%(invoice)s\" genereaza data \"%(date)s\" de plata care este in "
 "trecut."
 
-#, fuzzy
 msgctxt "model:ir.message,text:msg_invoice_similar"
 msgid "The invoice \"%(invoice)s\" is similar to invoice \"%(similar)s\"."
-msgstr "Facturile \"%(invoices)s\" au o data în viitor."
+msgstr "Factura \"%(invoice)s\" este similară cu factura \"%(similar)s\"."
 
-#, fuzzy
 msgctxt "model:ir.message,text:msg_invoice_tax_create"
 msgid ""
 "You cannot add taxes to invoice \"%(invoice)s\" because it is no longer in a"
 " draft state."
 msgstr ""
-"Nu se poate adăuga un rând la factura \"%(invoice)s\" pentru că este "
-"postată, plătita sau anulată."
+"Nu se poate adăuga un rând la factura \"%(invoice)s\" pentru că nu mai este "
+"in stare de ciornă."
 
 msgctxt "model:ir.message,text:msg_invoice_tax_invalid"
 msgid ""
 "The taxes on invoice \"%(invoice)s\" are not valid, you must save it again "
 "to force them to be recalculated."
 msgstr ""
+"Taxele pe factura \"%(invoice)s\" nu sunt valabile, trebuie să o salvați din"
+" nou pentru a forța recalcularea acestora."
 
 msgctxt "model:ir.message,text:msg_invoice_tax_modify"
 msgid ""
 "You cannot modify tax \"%(tax)s\" because its invoice \"%(invoice)s\" is "
 "posted, paid or cancelled."
 msgstr ""
+"Nu se poate modifica impozit \"%(tax)s\" deoarece factura sa \"%(invoice)s\""
+" este postată, plătită sau anulată."
 
 msgctxt "model:ir.message,text:msg_payment_term_invalid_ratio_divisor"
 msgid "The ratio and divisor are not consistent on line \"%(line)s\"."
-msgstr ""
+msgstr "Raportul și divizorul nu sunt consecvente pe rândul \"%(line)s\"."
 
 msgctxt "model:ir.message,text:msg_payment_term_missing_last_remainder"
 msgid ""
 "To save payment term \"%(payment_term)s\", you must append a last remainder "
 "line."
 msgstr ""
+"Pentru a salva termenul de plată \"%(payment_term)s\", trebuie să atașați un"
+" ultim rând."
 
 msgctxt "model:ir.message,text:msg_payment_term_missing_remainder"
 msgid ""
 "To compute terms, you must append a remainder line on payment term "
 "\"%(payment_term)s\"."
 msgstr ""
+"Pentru a calcula termenii, trebuie să adăugați un rând la termenul de plată "
+"\"%(payment_term)s\"."
 
 msgctxt "model:ir.model.button,confirm:invoice_cancel_button"
 msgid "Are you sure you want to cancel the invoices?"
@@ -1141,7 +1149,7 @@ msgstr "Anulare"
 
 msgctxt "model:ir.model.button,string:invoice_delegate_lines_to_pay_button"
 msgid "Modify Payee"
-msgstr ""
+msgstr "Modifica Beneficiar"
 
 msgctxt "model:ir.model.button,string:invoice_draft_button"
 msgid "Draft"
@@ -1387,13 +1395,17 @@ msgctxt "view:account.invoice.line:"
 msgid "Notes"
 msgstr "Notițe"
 
+msgctxt "view:account.invoice.payment_term.line.delta:"
+msgid "Operations are applied in this displayed order."
+msgstr ""
+
 msgctxt "view:account.invoice.payment_term.line:"
 msgid "%"
 msgstr "%"
 
 msgctxt "view:account.invoice.report.revision:"
 msgid "Time"
-msgstr ""
+msgstr "Timp"
 
 msgctxt "view:account.invoice:"
 msgid "Invoice"

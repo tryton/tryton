@@ -4,7 +4,7 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "field:account.statement.origin,keywords:"
 msgid "Keywords"
-msgstr ""
+msgstr "Cuvinte cheie"
 
 msgctxt "field:account.statement.rule,amount_high:"
 msgid "Amount High"
@@ -18,10 +18,9 @@ msgctxt "field:account.statement.rule,company:"
 msgid "Company"
 msgstr "Companie"
 
-#, fuzzy
 msgctxt "field:account.statement.rule,currency:"
 msgid "Currency"
-msgstr "Zecimale valută"
+msgstr "Monedă"
 
 msgctxt "field:account.statement.rule,description:"
 msgid "Description"
@@ -29,7 +28,7 @@ msgstr "Descriere"
 
 msgctxt "field:account.statement.rule,information_rules:"
 msgid "Information Rules"
-msgstr ""
+msgstr "Reguli de informare"
 
 msgctxt "field:account.statement.rule,journal:"
 msgid "Journal"
@@ -37,19 +36,19 @@ msgstr "Jurnal"
 
 msgctxt "field:account.statement.rule,lines:"
 msgid "Lines"
-msgstr ""
+msgstr "Rânduri"
 
 msgctxt "field:account.statement.rule,name:"
 msgid "Name"
-msgstr ""
+msgstr "Nume"
 
 msgctxt "field:account.statement.rule.information,boolean:"
 msgid "Boolean"
-msgstr ""
+msgstr "Boolean"
 
 msgctxt "field:account.statement.rule.information,char:"
 msgid "Char"
-msgstr ""
+msgstr "Char"
 
 msgctxt "field:account.statement.rule.information,float_high:"
 msgid "Float High"
@@ -69,11 +68,11 @@ msgstr ""
 
 msgctxt "field:account.statement.rule.information,key:"
 msgid "Key"
-msgstr ""
+msgstr "Cheie"
 
 msgctxt "field:account.statement.rule.information,key_type:"
 msgid "Key Type"
-msgstr ""
+msgstr "Tip cheie"
 
 msgctxt "field:account.statement.rule.information,number_high:"
 msgid "Numeric High"
@@ -85,11 +84,11 @@ msgstr ""
 
 msgctxt "field:account.statement.rule.information,rule:"
 msgid "Rule"
-msgstr ""
+msgstr "Regulă"
 
 msgctxt "field:account.statement.rule.information,selection:"
 msgid "Selection"
-msgstr ""
+msgstr "Selecţie"
 
 msgctxt "field:account.statement.rule.line,account:"
 msgid "Account"
@@ -109,7 +108,7 @@ msgstr "Parte"
 
 msgctxt "field:account.statement.rule.line,rule:"
 msgid "Rule"
-msgstr ""
+msgstr "Regulă"
 
 msgctxt "help:account.statement.rule,description:"
 msgid ""
@@ -125,61 +124,68 @@ msgid ""
 "party, bank_account, invoice."
 msgstr ""
 
+#, fuzzy
 msgctxt "help:account.statement.rule.line,account:"
 msgid ""
 "Leave empty to use the party's receivable or payable account.\n"
 "The rule must have a company to use this field."
 msgstr ""
+"Lăsați necompletat pentru a utiliza contul de încasat sau de plătit al părții.\n"
+"Regula trebuie să aibă o companie care să folosească acest câmp."
 
+#, fuzzy
 msgctxt "help:account.statement.rule.line,amount:"
 msgid "A Python expression evaluated with 'amount' and 'pending'."
-msgstr ""
+msgstr "O expresie Python evaluată cu „cantitate” și „în așteptare”."
 
 msgctxt "help:account.statement.rule.line,party:"
 msgid ""
 "Leave empty to use the group named 'party' from the regular expressions."
 msgstr ""
 
+#, fuzzy
 msgctxt "model:account.statement.rule,name:"
 msgid "Account Statement Rule"
-msgstr ""
+msgstr "Regulă extras de cont"
 
+#, fuzzy
 msgctxt "model:account.statement.rule.information,name:"
 msgid "Account Statement Rule Information"
-msgstr ""
+msgstr "Informații despre regulile extrasului de cont"
 
+#, fuzzy
 msgctxt "model:account.statement.rule.line,name:"
 msgid "Account Statement Rule Line"
-msgstr ""
+msgstr "Rândul regulii extras de cont"
 
 msgctxt "model:ir.action,name:act_rule_form"
 msgid "Rules"
-msgstr ""
+msgstr "Reguli"
 
 msgctxt "model:ir.model.button,string:statement_apply_rules_button"
 msgid "Apply Rules"
-msgstr ""
+msgstr "Aplicare Reguli"
 
 msgctxt "model:ir.rule.group,name:rule_group_rule_companies"
 msgid "User in companies"
-msgstr ""
+msgstr "Utilizator în companii"
 
 msgctxt "model:ir.ui.menu,name:menu_rule_form"
 msgid "Rules"
-msgstr ""
+msgstr "Reguli"
 
 msgctxt "view:account.statement.rule.information:"
 msgid "-"
-msgstr ""
+msgstr "-"
 
 msgctxt "view:account.statement.rule:"
 msgid "-"
-msgstr ""
+msgstr "-"
 
 msgctxt "view:account.statement.rule:"
 msgid "Between"
-msgstr ""
+msgstr "Între"
 
 msgctxt "view:account.statement.rule:"
 msgid "Criteria"
-msgstr ""
+msgstr "Criterii"

@@ -2635,15 +2635,17 @@ msgctxt "model:ir.message,text:msg_dict_yes"
 msgid "Yes"
 msgstr "是"
 
+#, fuzzy
 msgctxt "model:ir.message,text:msg_digits_validation_record"
 msgid ""
 "The number of digits in the value \"%(value)r\" for field \"%(field)s\" in "
-"\"%(record)s\" of \"%(model)s\" exceeds the limit of \"%(digits)i\"."
+"record \"%(record)s\" of \"%(model)s\" exceeds the limit of \"%(digits)i\"."
 msgstr "模型 \"%(model)s\" ，其字段 \"%(field)s\" 的数字取值 \"%(value)s\" 的位数超出了 \"%(digits)i\" 的限制."
 
+#, fuzzy
 msgctxt "model:ir.message,text:msg_domain_validation_record"
 msgid ""
-"The value \"%(value)s\" for field \"%(field)s\" in \"%(record)s\" of "
+"The value \"%(value)s\" for field \"%(field)s\" in record \"%(record)s\" of "
 "\"%(model)s\" is not valid according to its domain."
 msgstr "模型 \"%(model)s\" 的记录\"%(record)s\"，其字段 \"%(field)s\" 的取值\"%(value)s\" 对于其域来说，是无效取值."
 
@@ -2687,9 +2689,10 @@ msgctxt "model:ir.message,text:msg_field_string"
 msgid "%(field)s (string)"
 msgstr "%(field)s (字符串)"
 
+#, fuzzy
 msgctxt "model:ir.message,text:msg_forbidden_char_validation_record"
 msgid ""
-"The value \"%(value)s\" for field \"%(field)s\" in \"%(record)s\" of "
+"The value \"%(value)s\" for field \"%(field)s\" in record \"%(record)s\" of "
 "\"%(model)s\" contains some invalid chars \"%(chars)s\"."
 msgstr ""
 "模型 \"%(model)s\" 的记录 \"%(record)s\"，其字段 \"%(field)s\" 的取值 \"%(value)s\" "
@@ -2800,8 +2803,11 @@ msgctxt "model:ir.message,text:msg_required_validation"
 msgid "A value is required for field \"%(field)s\" in \"%(model)s\"."
 msgstr "模型\"%(model)s\"的字段\"%(field)s\"需要有取值."
 
+#, fuzzy
 msgctxt "model:ir.message,text:msg_required_validation_record"
-msgid "A value is required for field \"%(field)s\" in \"%(record)s\" of \"%(model)s\"."
+msgid ""
+"A value is required for field \"%(field)s\" in record \"%(record)s\" of "
+"\"%(model)s\"."
 msgstr "模型\"%(model)s\"包含记录\"%(record)s\"，此记录包含的字段\"%(field)s\"需要有取值."
 
 msgctxt "model:ir.message,text:msg_resource_copy_help"
@@ -2816,9 +2822,10 @@ msgctxt "model:ir.message,text:msg_search_function_missing"
 msgid "Missing search function for field \"%(field)s\" in \"%(model)s\"."
 msgstr "模型 \"%(model)s\" 的字段 \"%(field)s\" 缺少搜索函数."
 
+#, fuzzy
 msgctxt "model:ir.message,text:msg_selection_validation_record"
 msgid ""
-"The value \"%(value)s\" for field \"%(field)s\" in \"%(record)s\" of "
+"The value \"%(value)s\" for field \"%(field)s\" in record \"%(record)s\" of "
 "\"%(model)s\" is not one of the allowed options."
 msgstr ""
 "模型 \"%(model)s\" 包含记录 \"%(record)s\"，此记录包含字段 "
@@ -2872,18 +2879,20 @@ msgid ""
 " (%(size)i > %(max_size)i)."
 msgstr "模型 \"%(model)s\" 中字段 \"%(field)s\" 的值 \"%(value)s\" 太长 (%(size)i > %(max_size)i)。"
 
+#, fuzzy
 msgctxt "model:ir.message,text:msg_size_validation_record"
 msgid ""
-"The value \"%(value)s\" for field \"%(field)s\" in \"%(record)s\" of "
+"The value \"%(value)s\" for field \"%(field)s\" in record \"%(record)s\" of "
 "\"%(model)s\" is too long (%(size)i > %(max_size)i)."
 msgstr ""
 "模型 \"%(model)s\" 的字段 \"%(field)s\" ，其取值 \"%(value)s\" 位数太长(%(size)i > "
 "%(max_size)i)."
 
+#, fuzzy
 msgctxt "model:ir.message,text:msg_time_format_validation_record"
 msgid ""
-"The time value \"%(value)s\" for field \"%(field)s\" in \"%(record)s\" of "
-"\"%(model)s\" is not valid."
+"The time value \"%(value)s\" for field \"%(field)s\" in record "
+"\"%(record)s\" of \"%(model)s\" is not valid."
 msgstr "\"%(model)s\" 包含的记录 \"%(record)s\" 中的字段 \"%(field)s\" 时间取值 \"%(value)s\" 无效。"
 
 msgctxt "model:ir.message,text:msg_timedelta_M"
@@ -2968,10 +2977,11 @@ msgstr ""
 "不允许写入模型 \"%(model)s\" 的记录 \"%(ids)s\" ， 由于下面的规则（至少一条）:\n"
 "%(rules)s"
 
+#, fuzzy
 msgctxt "model:ir.message,text:msg_write_xml_record"
 msgid ""
-"You are not allowed to modify the field \"%(field)s\" in \"%(record)s\" of "
-"\"%(model)s\"."
+"You are not allowed to modify the field \"%(field)s\" in record "
+"\"%(record)s\" of \"%(model)s\"."
 msgstr "不允许修改 \"%(model)s\" 的 \"%(record)s\" 中的字段 \"%(field)s\"。"
 
 msgctxt "model:ir.message,text:msg_xml_id_syntax_error"

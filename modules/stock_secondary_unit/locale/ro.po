@@ -4,15 +4,15 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "field:stock.move,product_secondary_uom_category:"
 msgid "Product Secondary UoM Category"
-msgstr ""
+msgstr "Categorie secundară UM de produs"
 
 msgctxt "field:stock.move,secondary_quantity:"
 msgid "Secondary Quantity"
-msgstr ""
+msgstr "Cantitate secundară"
 
 msgctxt "field:stock.move,secondary_unit:"
 msgid "Secondary Unit"
-msgstr ""
+msgstr "Unitatea secundară"
 
 msgctxt "field:stock.move,secondary_unit_price:"
 msgid "Secondary Unit Price"
@@ -20,16 +20,16 @@ msgstr "Preţ Unitate Secundara"
 
 msgctxt "help:stock.move,product_secondary_uom_category:"
 msgid "The category of secondary Unit of Measure for the product."
-msgstr ""
+msgstr "Categoria de unitate de măsură secundară pentru produs."
 
 msgctxt "view:stock.move:"
 msgid "Quantity:"
-msgstr ""
+msgstr "Cantitate:"
 
 msgctxt "view:stock.move:"
 msgid "Unit Price:"
-msgstr ""
+msgstr "Preț unitar:"
 
 msgctxt "view:stock.move:"
 msgid "Unit:"
-msgstr ""
+msgstr "Unitate:"

@@ -2755,7 +2755,7 @@ msgstr ""
 msgctxt "model:ir.message,text:msg_digits_validation_record"
 msgid ""
 "The number of digits in the value \"%(value)r\" for field \"%(field)s\" in "
-"\"%(record)s\" of \"%(model)s\" exceeds the limit of \"%(digits)i\"."
+"record \"%(record)s\" of \"%(model)s\" exceeds the limit of \"%(digits)i\"."
 msgstr ""
 "تعداد ارقام در مقدار:\"%(value)s\" برای فیلد :\"%(field)s\" در \"%(model)s\""
 " بیش از حد \"%(digits)i\"."
@@ -2763,7 +2763,7 @@ msgstr ""
 #, fuzzy
 msgctxt "model:ir.message,text:msg_domain_validation_record"
 msgid ""
-"The value \"%(value)s\" for field \"%(field)s\" in \"%(record)s\" of "
+"The value \"%(value)s\" for field \"%(field)s\" in record \"%(record)s\" of "
 "\"%(model)s\" is not valid according to its domain."
 msgstr "مقدار فیلد: \"%s\" در مدل: \"%s\" باتوجه به دامنه آن معتبر نیست."
 
@@ -2815,7 +2815,7 @@ msgstr ""
 #, fuzzy
 msgctxt "model:ir.message,text:msg_forbidden_char_validation_record"
 msgid ""
-"The value \"%(value)s\" for field \"%(field)s\" in \"%(record)s\" of "
+"The value \"%(value)s\" for field \"%(field)s\" in record \"%(record)s\" of "
 "\"%(model)s\" contains some invalid chars \"%(chars)s\"."
 msgstr "مقدار زمان: \"%s\" برای فیلد : \"%s\" در مدل : \"%s\" معتبر نیست."
 
@@ -2938,7 +2938,9 @@ msgstr "یک مقدار برای فیلد :\"%(field)s\" در\"%(model)s\" مو�
 
 #, fuzzy
 msgctxt "model:ir.message,text:msg_required_validation_record"
-msgid "A value is required for field \"%(field)s\" in \"%(record)s\" of \"%(model)s\"."
+msgid ""
+"A value is required for field \"%(field)s\" in record \"%(record)s\" of "
+"\"%(model)s\"."
 msgstr "یک مقدار برای فیلد :\"%(field)s\" در\"%(model)s\" مورد نیاز است."
 
 msgctxt "model:ir.message,text:msg_resource_copy_help"
@@ -2957,7 +2959,7 @@ msgstr "عملکرد جستجو برای فیلد \"٪ s\" گم شده است."
 #, fuzzy
 msgctxt "model:ir.message,text:msg_selection_validation_record"
 msgid ""
-"The value \"%(value)s\" for field \"%(field)s\" in \"%(record)s\" of "
+"The value \"%(value)s\" for field \"%(field)s\" in record \"%(record)s\" of "
 "\"%(model)s\" is not one of the allowed options."
 msgstr "مقدار : \"%s\" برای فیلد : \"%s\" در مدل : \"%s\" یکی از گزینه های مجاز نیست."
 
@@ -3015,7 +3017,7 @@ msgstr ""
 #, fuzzy
 msgctxt "model:ir.message,text:msg_size_validation_record"
 msgid ""
-"The value \"%(value)s\" for field \"%(field)s\" in \"%(record)s\" of "
+"The value \"%(value)s\" for field \"%(field)s\" in record \"%(record)s\" of "
 "\"%(model)s\" is too long (%(size)i > %(max_size)i)."
 msgstr ""
 "مقدار فیلد :\"%(field)s\" در \"%(model)s\" خیلی طولانی است (%(size)i > "
@@ -3024,8 +3026,8 @@ msgstr ""
 #, fuzzy
 msgctxt "model:ir.message,text:msg_time_format_validation_record"
 msgid ""
-"The time value \"%(value)s\" for field \"%(field)s\" in \"%(record)s\" of "
-"\"%(model)s\" is not valid."
+"The time value \"%(value)s\" for field \"%(field)s\" in record "
+"\"%(record)s\" of \"%(model)s\" is not valid."
 msgstr "مقدار زمان: \"%s\" برای فیلد : \"%s\" در مدل : \"%s\" معتبر نیست."
 
 msgctxt "model:ir.message,text:msg_timedelta_M"
@@ -3120,8 +3122,8 @@ msgstr ""
 #, fuzzy
 msgctxt "model:ir.message,text:msg_write_xml_record"
 msgid ""
-"You are not allowed to modify the field \"%(field)s\" in \"%(record)s\" of "
-"\"%(model)s\"."
+"You are not allowed to modify the field \"%(field)s\" in record "
+"\"%(record)s\" of \"%(model)s\"."
 msgstr "یک مقدار برای فیلد :\"%(field)s\" در\"%(model)s\" مورد نیاز است."
 
 #, fuzzy

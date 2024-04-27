@@ -69,7 +69,7 @@ msgstr ""
 
 msgctxt "field:account.payment.journal,sepa_payable_flavor:"
 msgid "Payable Flavor"
-msgstr ""
+msgstr "Varianta Plata"
 
 msgctxt "field:account.payment.journal,sepa_payable_initiator_id:"
 msgid "SEPA Payable Initiator Identifier"
@@ -258,7 +258,7 @@ msgstr ""
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_move_line_form_domain_receivable_mandate"
 msgid "Receivable with Mandate"
-msgstr ""
+msgstr "Client cu Mandat"
 
 msgctxt "model:ir.message,text:msg_mandate_authorisation_statement"
 msgid ""
@@ -483,15 +483,15 @@ msgstr ""
 
 msgctxt "selection:account.payment.journal,sepa_payable_initiator_id:"
 msgid "Belgian Enterprise Number"
-msgstr ""
+msgstr "Belgia, Număr Intreprindere"
 
 msgctxt "selection:account.payment.journal,sepa_payable_initiator_id:"
 msgid "SEPA Creditor Identifier"
-msgstr ""
+msgstr "SEPA Identificator Creditor"
 
 msgctxt "selection:account.payment.journal,sepa_payable_initiator_id:"
 msgid "Spanish VAT Number"
-msgstr ""
+msgstr "Spania, Nr. TVA"
 
 msgctxt "selection:account.payment.journal,sepa_receivable_initiator_id:"
 msgid "Belgian Enterprise Number"

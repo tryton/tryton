@@ -2,38 +2,43 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
+#, fuzzy
 msgctxt "field:party.party,sale_shipment_grouping_method:"
 msgid "Sale Shipment Grouping Method"
-msgstr ""
+msgstr "Metoda de grupare a livrărilor de vânzare"
 
+#, fuzzy
 msgctxt "field:party.party,sale_shipment_grouping_methods:"
 msgid "Sale Shipment Grouping Methods"
-msgstr ""
+msgstr "Metode de grupare a livrărilor de vânzare"
 
 msgctxt "field:party.party.sale_shipment_grouping_method,party:"
 msgid "Party"
 msgstr "Parte"
 
+#, fuzzy
 msgctxt ""
 "field:party.party.sale_shipment_grouping_method,sale_shipment_grouping_method:"
 msgid "Sale Shipment Grouping Method"
-msgstr ""
+msgstr "Metoda de grupare a livrărilor de vânzare"
 
+#, fuzzy
 msgctxt "field:sale.configuration,sale_shipment_grouping_method:"
 msgid "Sale Shipment Grouping Method"
-msgstr ""
+msgstr "Metoda de grupare a livrărilor de vânzare"
 
+#, fuzzy
 msgctxt "field:sale.configuration.sale_method,sale_shipment_grouping_method:"
 msgid "Sale Shipment Grouping Method"
-msgstr ""
+msgstr "Metoda de grupare a livrărilor de vânzare"
 
 msgctxt "help:sale.configuration,sale_shipment_grouping_method:"
 msgid "The default shipment grouping method for new customers."
-msgstr ""
+msgstr "Metoda implicită de grupare a expedierilor pentru clienții noi."
 
 msgctxt "help:sale.configuration.sale_method,sale_shipment_grouping_method:"
 msgid "The default shipment grouping method for new customers."
-msgstr ""
+msgstr "Metoda implicită de grupare a expedierilor pentru clienții noi."
 
 msgctxt "model:party.party.sale_shipment_grouping_method,name:"
 msgid "Party Sale Shipment Grouping Method"
@@ -41,11 +46,11 @@ msgstr ""
 
 msgctxt "selection:party.party,sale_shipment_grouping_method:"
 msgid "None"
-msgstr ""
+msgstr "Nici unul"
 
 msgctxt "selection:party.party,sale_shipment_grouping_method:"
 msgid "Standard"
-msgstr ""
+msgstr "Standard"
 
 msgctxt "view:party.party:"
 msgid "Shipments"

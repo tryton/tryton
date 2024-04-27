@@ -27,6 +27,10 @@ msgid "disable thread usage"
 msgstr ""
 
 #, python-format
+msgid "Invalid response id (%s) expected %s"
+msgstr ""
+
+#, python-format
 msgid "Unable to set locale %s"
 msgstr "Неможливо встановити локалізацію %s"
 
@@ -127,16 +131,27 @@ msgstr "Завантажити"
 msgid "Could not get a session."
 msgstr "Не вдалося підключитися до сервера."
 
+#, fuzzy, python-format
+msgid "Error \"%s\". Try again later."
+msgstr "Дуже багато запитів. Спробуйте ще раз пізніше."
+
 msgid "Too many requests. Try again later."
 msgstr "Дуже багато запитів. Спробуйте ще раз пізніше."
 
 #, fuzzy
-msgid "Not found."
-msgstr "Нічого не знайдено."
-
-#, fuzzy
 msgid "Not Found."
 msgstr "Нічого не знайдено."
+
+msgid "Reset forgotten password"
+msgstr ""
+
+msgid "Send you an email to reset your password."
+msgstr ""
+
+msgid ""
+"A request to reset your password has been sent.\n"
+"Please check your mailbox."
+msgstr ""
 
 msgid "..."
 msgstr "..."
@@ -1090,7 +1105,19 @@ msgstr "Розмір зображення завеликий."
 msgid "Copy"
 msgstr "Копіювати"
 
-msgid "Paste"
+#, fuzzy
+msgid "Copy Row"
+msgstr "_Копіювати URL"
+
+#, fuzzy
+msgid "Copy Rows"
+msgstr "_Копіювати URL"
+
+msgid "Copy Column"
+msgstr ""
+
+#, fuzzy
+msgid "Paste Rows"
 msgstr "Вставити"
 
 msgid ".."

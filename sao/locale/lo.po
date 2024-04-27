@@ -115,7 +115,7 @@ msgstr ""
 msgid "Unable to reach the server."
 msgstr "ບໍ່ສາມາດເຂົ້າເຖິງແມ່ຂ່າຍໄດ້"
 
-msgid "Too many requests. Try again later."
+msgid "Error: \"%1\". Try again later."
 msgstr ""
 
 msgid "Login"
@@ -131,7 +131,18 @@ msgstr "ຊື່ຜູ້ໃຊ້"
 msgid "Login with"
 msgstr "ເຂົ້າສູ່ລະບົບ"
 
+msgid "Too many requests. Try again later."
+msgstr ""
+
 msgid "Not found."
+msgstr ""
+
+msgid "Send you an email to reset your password."
+msgstr ""
+
+msgid ""
+"A request to reset your password has been sent.\n"
+"Please check your mailbox."
 msgstr ""
 
 msgid "Your selection:"
@@ -539,8 +550,9 @@ msgstr "%1%"
 msgid "Menu"
 msgstr ""
 
-msgid "Copy"
-msgstr ""
+#, fuzzy
+msgid "Copy Selected Rows"
+msgstr "ແຖວຂໍ້ມູນຕໍ່ໄປ"
 
 msgid "#ERROR"
 msgstr ""

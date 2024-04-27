@@ -2128,6 +2128,10 @@ msgstr ""
 "Het is aan te raden om de voorraad op te maken in het magazijn voordat het "
 "product gedeactiveerd wordt."
 
+msgctxt "model:ir.message,text:msg_product_quantities_max"
+msgid "You cannot select more than %(max)s products to compute quantities."
+msgstr ""
+
 msgctxt "model:ir.message,text:msg_shipment_check_quantity"
 msgid ""
 "The quantities of shipment \"%(shipment)s\" are different by %(quantities)s."
@@ -2190,7 +2194,7 @@ msgstr "Marge"
 
 msgctxt "model:ir.message,text:msg_stock_reporting_margin_trend"
 msgid "Margin Trend"
-msgstr "Marge trend"
+msgstr "Marge ontwikkeling"
 
 msgctxt "model:ir.message,text:msg_stock_reporting_number"
 msgid "Number"
@@ -2220,17 +2224,42 @@ msgctxt "model:ir.model.button,confirm:move_do_button"
 msgid "Are you sure you want to complete the move?"
 msgstr "Weet u zeker dat u de voorraad beweging wilt voltooien?"
 
+#, fuzzy
+msgctxt "model:ir.model.button,confirm:shipment_in_cancel_button"
+msgid "Are you sure you want to cancel the shipment?"
+msgstr "Weet u zeker dat u de voorraad beweging wilt annuleren?"
+
 msgctxt "model:ir.model.button,confirm:shipment_in_receive_button"
 msgid "Are you sure you want to receive the shipment?"
 msgstr "Weet u zeker dat u de zending wilt ontvangen?"
+
+#, fuzzy
+msgctxt "model:ir.model.button,confirm:shipment_in_return_cancel_button"
+msgid "Are you sure you want to cancel the shipment?"
+msgstr "Weet u zeker dat u de voorraad beweging wilt annuleren?"
 
 msgctxt "model:ir.model.button,confirm:shipment_in_return_done_button"
 msgid "Are you sure you want to complete the shipment?"
 msgstr "Weet u zeker dat u de zending wilt voltooien?"
 
+#, fuzzy
+msgctxt "model:ir.model.button,confirm:shipment_internal_cancel_button"
+msgid "Are you sure you want to cancel the shipment?"
+msgstr "Weet u zeker dat u de voorraad beweging wilt annuleren?"
+
+#, fuzzy
+msgctxt "model:ir.model.button,confirm:shipment_out_cancel_button"
+msgid "Are you sure you want to cancel the shipment?"
+msgstr "Weet u zeker dat u de voorraad beweging wilt annuleren?"
+
 msgctxt "model:ir.model.button,confirm:shipment_out_done_button"
 msgid "Are you sure you want to complete the shipment?"
 msgstr "Weet u zeker dat u de zending wilt voltooien?"
+
+#, fuzzy
+msgctxt "model:ir.model.button,confirm:shipment_out_return_cancel_button"
+msgid "Are you sure you want to cancel the shipment?"
+msgstr "Weet u zeker dat u de voorraad beweging wilt annuleren?"
 
 msgctxt "model:ir.model.button,confirm:shipment_out_return_receive_button"
 msgid "Are you sure you want to receive the shipment?"

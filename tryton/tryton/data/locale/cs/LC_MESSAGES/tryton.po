@@ -31,6 +31,10 @@ msgid "disable thread usage"
 msgstr ""
 
 #, python-format
+msgid "Invalid response id (%s) expected %s"
+msgstr ""
+
+#, python-format
 msgid "Unable to set locale %s"
 msgstr "Nemohu nastavit lokalizaci %s"
 
@@ -135,13 +139,25 @@ msgstr ""
 msgid "Could not get a session."
 msgstr "Nelze se spojit se serverem!"
 
+#, python-format
+msgid "Error \"%s\". Try again later."
+msgstr ""
+
 msgid "Too many requests. Try again later."
 msgstr ""
 
-msgid "Not found."
+msgid "Not Found."
 msgstr ""
 
-msgid "Not Found."
+msgid "Reset forgotten password"
+msgstr ""
+
+msgid "Send you an email to reset your password."
+msgstr ""
+
+msgid ""
+"A request to reset your password has been sent.\n"
+"Please check your mailbox."
 msgstr ""
 
 #, fuzzy
@@ -1174,7 +1190,16 @@ msgstr "Rozměry obrázku jsou příliš velké!"
 msgid "Copy"
 msgstr ""
 
-msgid "Paste"
+msgid "Copy Row"
+msgstr ""
+
+msgid "Copy Rows"
+msgstr ""
+
+msgid "Copy Column"
+msgstr ""
+
+msgid "Paste Rows"
 msgstr ""
 
 msgid ".."

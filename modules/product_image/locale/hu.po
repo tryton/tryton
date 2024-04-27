@@ -22,6 +22,10 @@ msgctxt "field:product.image,template:"
 msgid "Product"
 msgstr "Termék"
 
+msgctxt "field:product.image.cache,height:"
+msgid "Height"
+msgstr ""
+
 msgctxt "field:product.image.cache,image:"
 msgid "Image"
 msgstr ""
@@ -34,8 +38,8 @@ msgctxt "field:product.image.cache,product_image:"
 msgid "Product Image"
 msgstr "Termékkép"
 
-msgctxt "field:product.image.cache,size:"
-msgid "Size"
+msgctxt "field:product.image.cache,width:"
+msgid "Width"
 msgstr ""
 
 msgctxt "field:product.product,image_url:"

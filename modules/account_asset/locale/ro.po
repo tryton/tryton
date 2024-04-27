@@ -8,7 +8,7 @@ msgstr "Mijloc Fix"
 
 msgctxt "field:account.account.type.template,fixed_asset:"
 msgid "Fixed Asset"
-msgstr ""
+msgstr "Activ Fix"
 
 msgctxt "field:account.asset,account_journal:"
 msgid "Journal"
@@ -22,34 +22,33 @@ msgctxt "field:account.asset,company:"
 msgid "Company"
 msgstr "Companie"
 
-#, fuzzy
 msgctxt "field:account.asset,currency:"
 msgid "Currency"
-msgstr "Zecimale valută"
+msgstr "Monedă"
 
 msgctxt "field:account.asset,customer_invoice_line:"
 msgid "Customer Invoice Line"
-msgstr ""
+msgstr "Rând Factura Client"
 
 msgctxt "field:account.asset,depreciated_amount:"
 msgid "Depreciated Amount"
-msgstr ""
+msgstr "Suma Amortizata"
 
 msgctxt "field:account.asset,depreciating_value:"
 msgid "Depreciating Value"
-msgstr ""
+msgstr "Valoare de Depreciere"
 
 msgctxt "field:account.asset,depreciation_method:"
 msgid "Depreciation Method"
-msgstr ""
+msgstr "Metoda Amortizarii"
 
 msgctxt "field:account.asset,end_date:"
 msgid "End Date"
-msgstr ""
+msgstr "Data de Incheiere"
 
 msgctxt "field:account.asset,frequency:"
 msgid "Frequency"
-msgstr ""
+msgstr "Frecventa"
 
 msgctxt "field:account.asset,lines:"
 msgid "Lines"
@@ -61,7 +60,7 @@ msgstr "Mişcare Cont"
 
 msgctxt "field:account.asset,number:"
 msgid "Number"
-msgstr ""
+msgstr "Numar"
 
 msgctxt "field:account.asset,product:"
 msgid "Product"
@@ -69,76 +68,77 @@ msgstr "Produs"
 
 msgctxt "field:account.asset,purchase_date:"
 msgid "Purchase Date"
-msgstr ""
+msgstr "Data Achizitiei"
 
 msgctxt "field:account.asset,quantity:"
 msgid "Quantity"
-msgstr ""
+msgstr "Cantitate"
 
 msgctxt "field:account.asset,residual_value:"
 msgid "Residual Value"
-msgstr ""
+msgstr "Valoare Reziduala"
 
+#, fuzzy
 msgctxt "field:account.asset,revisions:"
 msgid "Revisions"
-msgstr ""
+msgstr "Revizuiri"
 
 msgctxt "field:account.asset,start_date:"
 msgid "Start Date"
-msgstr ""
+msgstr "Data de Inceput"
 
 msgctxt "field:account.asset,state:"
 msgid "State"
-msgstr ""
+msgstr "Stare"
 
 msgctxt "field:account.asset,supplier_invoice_line:"
 msgid "Supplier Invoice Line"
-msgstr ""
+msgstr "Rând Factură Furnizor"
 
 msgctxt "field:account.asset,unit:"
 msgid "Unit"
-msgstr ""
+msgstr "Unitate"
 
 msgctxt "field:account.asset,update_moves:"
 msgid "Update Moves"
-msgstr ""
+msgstr "Actualizare Miscari"
 
 msgctxt "field:account.asset,value:"
 msgid "Value"
-msgstr ""
+msgstr "Valoare"
 
 msgctxt "field:account.asset-update-account.move,asset:"
 msgid "Asset"
-msgstr ""
+msgstr "Activ"
 
 msgctxt "field:account.asset-update-account.move,move:"
 msgid "Move"
-msgstr ""
+msgstr "Miscare"
 
 msgctxt "field:account.asset.create_moves.start,date:"
 msgid "Date"
 msgstr "Data"
 
+#, fuzzy
 msgctxt "field:account.asset.line,accumulated_depreciation:"
 msgid "Accumulated Depreciation"
-msgstr ""
+msgstr "Depreciere Acumulata"
 
 msgctxt "field:account.asset.line,acquired_value:"
 msgid "Acquired Value"
-msgstr ""
+msgstr "Valoare Dobandita"
 
 msgctxt "field:account.asset.line,actual_value:"
 msgid "Actual Value"
-msgstr ""
+msgstr "Valoare Reala"
 
 msgctxt "field:account.asset.line,asset:"
 msgid "Asset"
-msgstr ""
+msgstr "Activ"
 
-#, fuzzy
 msgctxt "field:account.asset.line,currency:"
 msgid "Currency"
-msgstr "Zecimale valută"
+msgstr "Moneda"
 
 msgctxt "field:account.asset.line,date:"
 msgid "Date"
@@ -146,11 +146,11 @@ msgstr "Data"
 
 msgctxt "field:account.asset.line,depreciable_basis:"
 msgid "Depreciable Basis"
-msgstr ""
+msgstr "Baza Amortizabila"
 
 msgctxt "field:account.asset.line,depreciation:"
 msgid "Depreciation"
-msgstr ""
+msgstr "Amortizare"
 
 msgctxt "field:account.asset.line,move:"
 msgid "Account Move"
@@ -158,50 +158,48 @@ msgstr "Mişcare Cont"
 
 msgctxt "field:account.asset.print_depreciation_table.start,end_date:"
 msgid "End Date"
-msgstr ""
+msgstr "Data Sfarsit"
 
 msgctxt "field:account.asset.print_depreciation_table.start,start_date:"
 msgid "Start Date"
-msgstr ""
+msgstr "Data Inceput"
 
-#, fuzzy
 msgctxt "field:account.asset.revision,asset:"
 msgid "Asset"
-msgstr "Mijloc Fix"
+msgstr "Activ"
 
-#, fuzzy
 msgctxt "field:account.asset.revision,currency:"
 msgid "Currency"
-msgstr "Zecimale valută"
+msgstr "Moneda"
 
 msgctxt "field:account.asset.revision,description:"
 msgid "Description"
-msgstr ""
+msgstr "Descriere"
 
-#, fuzzy
 msgctxt "field:account.asset.revision,end_date:"
 msgid "End Date"
-msgstr "Data"
+msgstr "Data Sfarsit"
 
 msgctxt "field:account.asset.revision,origin:"
 msgid "Origin"
-msgstr ""
+msgstr "Origine"
 
 msgctxt "field:account.asset.revision,residual_value:"
 msgid "Residual Value"
-msgstr ""
+msgstr "Valoare Reziduala"
 
 msgctxt "field:account.asset.revision,value:"
 msgid "Asset Value"
-msgstr ""
+msgstr "Valoare Activ"
 
 msgctxt "field:account.asset.update.show_depreciation,amount:"
 msgid "Amount"
 msgstr "Suma"
 
+#, fuzzy
 msgctxt "field:account.asset.update.show_depreciation,counterpart_account:"
 msgid "Counterpart Account"
-msgstr ""
+msgstr "Cont Omolog"
 
 msgctxt "field:account.asset.update.show_depreciation,date:"
 msgid "Date"
@@ -209,39 +207,40 @@ msgstr "Data"
 
 msgctxt "field:account.asset.update.show_depreciation,depreciation_account:"
 msgid "Depreciation Account"
-msgstr ""
+msgstr "Cont de Amortizare"
 
 msgctxt "field:account.asset.update.show_depreciation,latest_move_date:"
 msgid "Latest Move Date"
-msgstr ""
+msgstr "Data Ultimei Mutari"
 
+#, fuzzy
 msgctxt "field:account.asset.update.show_depreciation,next_depreciation_date:"
 msgid "Next Depreciation Date"
-msgstr ""
+msgstr "Data Urmatoarei Amortizari"
 
 msgctxt "field:account.configuration,asset_bymonth:"
 msgid "Month"
-msgstr ""
+msgstr "Luna"
 
 msgctxt "field:account.configuration,asset_bymonthday:"
 msgid "Day of the Month"
-msgstr ""
+msgstr "Zi a Lunii"
 
 msgctxt "field:account.configuration,asset_frequency:"
 msgid "Asset Depreciation Frequency"
-msgstr ""
+msgstr "Frecventa Amortizarii Activelor"
 
 msgctxt "field:account.configuration,asset_sequence:"
 msgid "Asset Reference Sequence"
-msgstr ""
+msgstr "Secventa de Referinta a Activelor"
 
 msgctxt "field:account.configuration.asset_date,asset_bymonth:"
 msgid "Month"
-msgstr ""
+msgstr "Luna"
 
 msgctxt "field:account.configuration.asset_date,asset_bymonthday:"
 msgid "Day of the Month"
-msgstr ""
+msgstr "Zi a Lunii"
 
 msgctxt "field:account.configuration.asset_date,company:"
 msgid "Company"
@@ -249,7 +248,7 @@ msgstr "Companie"
 
 msgctxt "field:account.configuration.asset_frequency,asset_frequency:"
 msgid "Asset Depreciation Frequency"
-msgstr ""
+msgstr "Frecventa Amortizarii Activelor"
 
 msgctxt "field:account.configuration.asset_frequency,company:"
 msgid "Company"
@@ -257,7 +256,7 @@ msgstr "Companie"
 
 msgctxt "field:account.configuration.asset_sequence,asset_sequence:"
 msgid "Asset Reference Sequence"
-msgstr ""
+msgstr "Secventa de Referinta a Activelor"
 
 msgctxt "field:account.configuration.asset_sequence,company:"
 msgid "Company"
@@ -265,7 +264,7 @@ msgstr "Companie"
 
 msgctxt "field:account.invoice.line,asset:"
 msgid "Asset"
-msgstr ""
+msgstr "Activ"
 
 msgctxt "field:account.invoice.line,is_assets_depreciable:"
 msgid "Is Assets depreciable"
@@ -273,47 +272,47 @@ msgstr ""
 
 msgctxt "field:product.category,account_asset:"
 msgid "Account Asset"
-msgstr ""
+msgstr "Activ al Contului"
 
 msgctxt "field:product.category,account_depreciation:"
 msgid "Account Depreciation"
-msgstr ""
+msgstr "Amortizarea Contului"
 
 msgctxt "field:product.category.account,account_asset:"
 msgid "Account Asset"
-msgstr ""
+msgstr "Activ al Contului"
 
 msgctxt "field:product.category.account,account_depreciation:"
 msgid "Account Depreciation"
-msgstr ""
+msgstr "Amortizarea Contului"
 
 msgctxt "field:product.product,depreciable:"
 msgid "Depreciable"
-msgstr ""
+msgstr "Amortizabil"
 
 msgctxt "field:product.product,depreciation_duration:"
 msgid "Depreciation Duration"
-msgstr ""
+msgstr "Durata Amortizarii"
 
 msgctxt "field:product.template,depreciable:"
 msgid "Depreciable"
-msgstr ""
+msgstr "Amortizabil"
 
 msgctxt "field:product.template,depreciation_duration:"
 msgid "Depreciation Duration"
-msgstr ""
+msgstr "Durata Amortizarii"
 
 msgctxt "help:account.asset,depreciated_amount:"
 msgid "The amount already depreciated at the start date."
-msgstr ""
+msgstr "Suma deja amortizata la data de inceput."
 
 msgctxt "help:account.asset,depreciating_value:"
 msgid "The value of the asset at the start date."
-msgstr ""
+msgstr "Valoarea activului la data de inceput."
 
 msgctxt "help:account.asset,value:"
 msgid "The value of the asset when purchased."
-msgstr ""
+msgstr "Valoarea activului la momentul achizitiei."
 
 msgctxt "help:account.asset.update.show_depreciation,date:"
 msgid ""
@@ -321,45 +320,52 @@ msgid ""
 "depreciation date."
 msgstr ""
 
+#, fuzzy
 msgctxt "help:account.configuration,asset_bymonth:"
 msgid "The month to create the depreciation moves."
-msgstr ""
+msgstr "Luna in care se creeaza miscari de amortizare."
 
+#, fuzzy
 msgctxt "help:account.configuration,asset_bymonthday:"
 msgid "The day of the month to create the depreciation moves."
-msgstr ""
+msgstr "Ziua din luna in care se creeaza miscari de amortizare."
 
 msgctxt "help:account.configuration,asset_frequency:"
 msgid "The default depreciation frequency for new assets."
-msgstr ""
+msgstr "Frecvența implicită de amortizare pentru active noi."
 
+#, fuzzy
 msgctxt "help:account.configuration.asset_date,asset_bymonth:"
 msgid "The month to create the depreciation moves."
-msgstr ""
+msgstr "Luna in care se creeaza miscari de amortizare."
 
+#, fuzzy
 msgctxt "help:account.configuration.asset_date,asset_bymonthday:"
 msgid "The day of the month to create the depreciation moves."
-msgstr ""
+msgstr "Ziua din luna in care se creeaza miscari de amortizare."
 
 msgctxt "help:account.configuration.asset_frequency,asset_frequency:"
 msgid "The default depreciation frequency for new assets."
-msgstr ""
+msgstr "Frecvența implicită de amortizare pentru active noi."
 
 msgctxt "help:product.product,depreciation_duration:"
 msgid "In months"
-msgstr ""
+msgstr "In Luni"
 
+#, fuzzy
 msgctxt "help:product.template,depreciation_duration:"
 msgid "In months"
-msgstr ""
+msgstr "In Luni"
 
+#, fuzzy
 msgctxt "model:account.asset,name:"
 msgid "Asset"
-msgstr ""
+msgstr "Activ"
 
+#, fuzzy
 msgctxt "model:account.asset-update-account.move,name:"
 msgid "Asset - Update - Move"
-msgstr ""
+msgstr "Activ - Actualizare - Miscare"
 
 msgctxt "model:account.asset.create_moves.start,name:"
 msgid "Create Moves Start"
@@ -367,15 +373,16 @@ msgstr ""
 
 msgctxt "model:account.asset.line,name:"
 msgid "Asset Line"
-msgstr ""
+msgstr "Rând Active"
 
 msgctxt "model:account.asset.print_depreciation_table.start,name:"
 msgid "Asset Depreciation Table Start"
 msgstr ""
 
+#, fuzzy
 msgctxt "model:account.asset.revision,name:"
 msgid "Asset Revision"
-msgstr ""
+msgstr "Revizuire Active"
 
 msgctxt "model:account.asset.update.show_depreciation,name:"
 msgid "Update Asset Show Depreciation"
@@ -395,11 +402,11 @@ msgstr ""
 
 msgctxt "model:account.journal,name:journal_asset"
 msgid "Asset"
-msgstr ""
+msgstr "Activ"
 
 msgctxt "model:ir.action,name:act_asset_form"
 msgid "Assets"
-msgstr ""
+msgstr "Active"
 
 msgctxt "model:ir.action,name:report_depreciation_table"
 msgid "Depreciation Table"
@@ -415,7 +422,7 @@ msgstr ""
 
 msgctxt "model:ir.action,name:wizard_update"
 msgid "Update Asset"
-msgstr ""
+msgstr "Actualizare Activ"
 
 msgctxt "model:ir.action.act_window.domain,name:act_asset_form_domain_all"
 msgid "All"
@@ -427,7 +434,7 @@ msgstr "Închis"
 
 msgctxt "model:ir.action.act_window.domain,name:act_asset_form_domain_draft"
 msgid "Draft"
-msgstr ""
+msgstr "Ciorna"
 
 msgctxt "model:ir.action.act_window.domain,name:act_asset_form_domain_running"
 msgid "Running"
@@ -435,175 +442,188 @@ msgstr ""
 
 msgctxt "model:ir.message,text:msg_asset_delete_draft"
 msgid "You cannot delete asset \"%(asset)s\" because it is not in \"draft\" state."
-msgstr ""
+msgstr "Nu puteți șterge activul \"%(asset)s\" deoarece nu este în stare \"Ciornă\"."
 
 msgctxt "model:ir.message,text:msg_asset_draft_lines"
 msgid "You cannot reset to draft asset \"%(asset)s\" because it has lines."
 msgstr ""
+"Nu puteți reseta activul \"%(asset)s\" la starea de ciornă deoarece are "
+"rânduri."
 
+#, fuzzy
 msgctxt "model:ir.message,text:msg_asset_invoice_line_unique"
 msgid "Invoice line can be used only once on asset."
-msgstr ""
+msgstr "Linia de factură poate fi folosită o singură dată pe activ."
 
 msgctxt "model:ir.message,text:msg_asset_running_close_period"
 msgid ""
 "You cannot close period \"%(period)s\" because some assets \"%(assets)s\" "
 "still have lines without move."
 msgstr ""
+"Nu puteți închide perioada \"%(period)s\" deoarece unele active "
+"\"%(assets)s\" mai au rânduri fără mișcare."
 
+#, fuzzy
 msgctxt "model:ir.message,text:msg_invoice_line_asset_unique"
 msgid "Asset can be used only once on invoice line."
-msgstr ""
+msgstr "Activul poate fi folosit o singură dată pe linia de factură."
 
+#, fuzzy
 msgctxt "model:ir.message,text:msg_no_assets"
 msgid "There is no started asset."
-msgstr ""
+msgstr "Nu există niciun activ început."
 
 msgctxt "model:ir.message,text:msg_purchase_product_missing_account_asset"
 msgid ""
 "To invoice purchase \"%(purchase)s\", you must set an account asset on "
 "product \"%(product)s\"."
 msgstr ""
+"Pentru a factura achiziția \"%(purchase)s\", trebuie să setați un activ de "
+"cont pe produsul \"%(product)s\"."
 
+#, fuzzy
 msgctxt "model:ir.model.button,confirm:asset_close_button"
 msgid "Are you sure you want to close the asset?"
-msgstr ""
+msgstr "Sunteți sigur că doriți să închideți activul?"
 
 msgctxt "model:ir.model.button,string:asset_clear_lines_button"
 msgid "Clear Lines"
-msgstr ""
+msgstr "Goliți rândurile"
 
 msgctxt "model:ir.model.button,string:asset_close_button"
 msgid "Close"
-msgstr ""
+msgstr "Inchide"
 
 msgctxt "model:ir.model.button,string:asset_create_lines_button"
 msgid "Create Lines"
-msgstr ""
+msgstr "Creează rânduri"
 
 msgctxt "model:ir.model.button,string:asset_draft_button"
 msgid "Draft"
-msgstr ""
+msgstr "Ciorna"
 
 msgctxt "model:ir.model.button,string:asset_run_button"
 msgid "Run"
-msgstr ""
+msgstr "Ruleaza"
 
 msgctxt "model:ir.model.button,string:asset_update_button"
 msgid "Update Asset"
-msgstr ""
+msgstr "Actualizare Activ"
 
+#, fuzzy
 msgctxt "model:ir.rule.group,name:rule_group_asset_companies"
 msgid "User in companies"
-msgstr ""
+msgstr "Utilizator in Companii"
 
 msgctxt "model:ir.sequence,name:sequence_asset"
 msgid "Asset"
-msgstr ""
+msgstr "Activ"
 
 msgctxt "model:ir.sequence.type,name:sequence_type_asset"
 msgid "Asset"
-msgstr ""
+msgstr "Activ"
 
 msgctxt "model:ir.ui.menu,name:menu_asset"
 msgid "Assets"
-msgstr ""
+msgstr "Active"
 
 msgctxt "model:ir.ui.menu,name:menu_asset_form"
 msgid "Assets"
-msgstr ""
+msgstr "Active"
 
 msgctxt "model:ir.ui.menu,name:menu_create_depreciation_table"
 msgid "Print Depreciation Table"
 msgstr ""
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_create_moves"
 msgid "Create Assets Moves"
-msgstr ""
+msgstr "Creeaza Mutari de Active"
 
 msgctxt "report:account.asset.depreciation_table:"
 msgid "("
-msgstr ""
+msgstr "("
 
 msgctxt "report:account.asset.depreciation_table:"
 msgid ")"
-msgstr ""
+msgstr ")"
 
 msgctxt "report:account.asset.depreciation_table:"
 msgid "+"
-msgstr ""
+msgstr "+"
 
 msgctxt "report:account.asset.depreciation_table:"
 msgid "-"
-msgstr ""
+msgstr "-"
 
 msgctxt "report:account.asset.depreciation_table:"
 msgid "/"
-msgstr ""
+msgstr "/"
 
 msgctxt "report:account.asset.depreciation_table:"
 msgid "Actual Value"
-msgstr ""
+msgstr "Valoare Reala"
 
 msgctxt "report:account.asset.depreciation_table:"
 msgid "Amortization"
-msgstr ""
+msgstr "Amortizare"
 
 msgctxt "report:account.asset.depreciation_table:"
 msgid "Amortization Table"
-msgstr ""
+msgstr "Tabel Amortizare"
 
 msgctxt "report:account.asset.depreciation_table:"
 msgid "Assets"
-msgstr ""
+msgstr "Active"
 
+#, fuzzy
 msgctxt "report:account.asset.depreciation_table:"
 msgid "Closing Value"
-msgstr ""
+msgstr "Valoare de Inchidere"
 
 msgctxt "report:account.asset.depreciation_table:"
 msgid "Company:"
-msgstr ""
+msgstr "Companie:"
 
 msgctxt "report:account.asset.depreciation_table:"
 msgid "Fixed"
-msgstr ""
+msgstr "Fix"
 
 msgctxt "report:account.asset.depreciation_table:"
 msgid "From:"
-msgstr ""
+msgstr "De la:"
 
 msgctxt "report:account.asset.depreciation_table:"
 msgid "Print Date:"
-msgstr ""
+msgstr "Data Tiparirii:"
 
 msgctxt "report:account.asset.depreciation_table:"
 msgid "To:"
-msgstr ""
+msgstr "Catre:"
 
 msgctxt "report:account.asset.depreciation_table:"
 msgid "Total -"
-msgstr ""
+msgstr "Total -"
 
 msgctxt "report:account.asset.depreciation_table:"
 msgid "User:"
-msgstr ""
+msgstr "Utilizator:"
 
 msgctxt "report:account.asset.depreciation_table:"
 msgid "at"
-msgstr ""
+msgstr "la"
 
 msgctxt "selection:account.asset,depreciation_method:"
 msgid "Linear"
-msgstr ""
+msgstr "Liniar"
 
 msgctxt "selection:account.asset,frequency:"
 msgid "Monthly"
-msgstr ""
+msgstr "Lunar"
 
 msgctxt "selection:account.asset,frequency:"
 msgid "Yearly"
-msgstr ""
+msgstr "Anual"
 
 msgctxt "selection:account.asset,state:"
 msgid "Closed"
@@ -611,131 +631,132 @@ msgstr "Închis"
 
 msgctxt "selection:account.asset,state:"
 msgid "Draft"
-msgstr ""
+msgstr "Ciorna"
 
 msgctxt "selection:account.asset,state:"
 msgid "Running"
-msgstr ""
+msgstr "In Derulare"
 
 msgctxt "selection:account.configuration,asset_bymonth:"
 msgid "April"
-msgstr ""
+msgstr "Aprilie"
 
 msgctxt "selection:account.configuration,asset_bymonth:"
 msgid "August"
-msgstr ""
+msgstr "August"
 
 msgctxt "selection:account.configuration,asset_bymonth:"
 msgid "December"
-msgstr ""
+msgstr "Decembrie"
 
 msgctxt "selection:account.configuration,asset_bymonth:"
 msgid "February"
-msgstr ""
+msgstr "Februarie"
 
 msgctxt "selection:account.configuration,asset_bymonth:"
 msgid "January"
-msgstr ""
+msgstr "Ianuarie"
 
 msgctxt "selection:account.configuration,asset_bymonth:"
 msgid "July"
-msgstr ""
+msgstr "Iulie"
 
 msgctxt "selection:account.configuration,asset_bymonth:"
 msgid "June"
-msgstr ""
+msgstr "Iunie"
 
 msgctxt "selection:account.configuration,asset_bymonth:"
 msgid "March"
-msgstr ""
+msgstr "Martie"
 
 msgctxt "selection:account.configuration,asset_bymonth:"
 msgid "May"
-msgstr ""
+msgstr "Mai"
 
 msgctxt "selection:account.configuration,asset_bymonth:"
 msgid "November"
-msgstr ""
+msgstr "Noiembrie"
 
 msgctxt "selection:account.configuration,asset_bymonth:"
 msgid "October"
-msgstr ""
+msgstr "Octombrie"
 
 msgctxt "selection:account.configuration,asset_bymonth:"
 msgid "September"
-msgstr ""
+msgstr "Septembrie"
 
 msgctxt "selection:account.configuration,asset_bymonthday:"
 msgid "First"
-msgstr ""
+msgstr "Primul"
 
 msgctxt "selection:account.configuration,asset_bymonthday:"
 msgid "Last"
-msgstr ""
+msgstr "Ultimul"
 
 msgctxt "selection:account.configuration.asset_date,asset_bymonth:"
 msgid "April"
-msgstr ""
+msgstr "Aprilie"
 
 msgctxt "selection:account.configuration.asset_date,asset_bymonth:"
 msgid "August"
-msgstr ""
+msgstr "August"
 
 msgctxt "selection:account.configuration.asset_date,asset_bymonth:"
 msgid "December"
-msgstr ""
+msgstr "Decembrie"
 
 msgctxt "selection:account.configuration.asset_date,asset_bymonth:"
 msgid "February"
-msgstr ""
+msgstr "Februarie"
 
 msgctxt "selection:account.configuration.asset_date,asset_bymonth:"
 msgid "January"
-msgstr ""
+msgstr "Ianuarie"
 
 msgctxt "selection:account.configuration.asset_date,asset_bymonth:"
 msgid "July"
-msgstr ""
+msgstr "Iulie"
 
 msgctxt "selection:account.configuration.asset_date,asset_bymonth:"
 msgid "June"
-msgstr ""
+msgstr "Iunie"
 
 msgctxt "selection:account.configuration.asset_date,asset_bymonth:"
 msgid "March"
-msgstr ""
+msgstr "Martie"
 
 msgctxt "selection:account.configuration.asset_date,asset_bymonth:"
 msgid "May"
-msgstr ""
+msgstr "Mai"
 
 msgctxt "selection:account.configuration.asset_date,asset_bymonth:"
 msgid "November"
-msgstr ""
+msgstr "Noiembrie"
 
 msgctxt "selection:account.configuration.asset_date,asset_bymonth:"
 msgid "October"
-msgstr ""
+msgstr "Octombrie"
 
 msgctxt "selection:account.configuration.asset_date,asset_bymonth:"
 msgid "September"
-msgstr ""
+msgstr "Septembrie"
 
 msgctxt "selection:account.configuration.asset_date,asset_bymonthday:"
 msgid "First"
-msgstr ""
+msgstr "Primul"
 
 msgctxt "selection:account.configuration.asset_date,asset_bymonthday:"
 msgid "Last"
-msgstr ""
+msgstr "Ultimul"
 
 msgctxt "selection:account.journal,type:"
 msgid "Asset"
-msgstr ""
+msgstr "Activ"
 
+#, fuzzy
 msgctxt "view:account.asset.create_moves.start:"
 msgid "Create Assets Moves up to"
-msgstr ""
+msgstr "Creeaza Miscari de Active pana la"
 
 msgctxt "view:account.asset:"
 msgid "Lines"
@@ -743,56 +764,58 @@ msgstr "Rânduri"
 
 msgctxt "view:account.asset:"
 msgid "Other Info"
-msgstr ""
+msgstr "Alte Informatii"
 
 msgctxt "view:account.configuration:"
 msgid "Asset"
-msgstr ""
+msgstr "Activ"
 
 msgctxt "view:account.configuration:"
 msgid "Asset Move"
-msgstr ""
+msgstr "Mişcare Activ"
 
+#, fuzzy
 msgctxt "view:account.configuration:"
 msgid "Depreciation Frequency"
-msgstr ""
+msgstr "Frecventa Amortizare"
 
 msgctxt "view:account.configuration:"
 msgid "Sequence"
-msgstr ""
+msgstr "Secventa"
 
+#, fuzzy
 msgctxt "view:product.template:"
 msgid "Depreciation"
-msgstr ""
+msgstr "Amortizare"
 
 msgctxt "wizard_button:account.asset.create_moves,start,create_moves:"
 msgid "OK"
-msgstr ""
+msgstr "OK"
 
 msgctxt "wizard_button:account.asset.create_moves,start,end:"
 msgid "Cancel"
-msgstr ""
+msgstr "Anulare"
 
 msgctxt "wizard_button:account.asset.print_depreciation_table,start,end:"
 msgid "Cancel"
-msgstr ""
+msgstr "Anulare"
 
 msgctxt "wizard_button:account.asset.print_depreciation_table,start,print_:"
 msgid "Print"
-msgstr ""
+msgstr "Tipărire"
 
 msgctxt "wizard_button:account.asset.update,show_move,create_move:"
 msgid "OK"
-msgstr ""
+msgstr "OK"
 
 msgctxt "wizard_button:account.asset.update,show_move,end:"
 msgid "Cancel"
-msgstr ""
+msgstr "Anulare"
 
 msgctxt "wizard_button:account.asset.update,start,end:"
 msgid "Cancel"
-msgstr ""
+msgstr "Anulare"
 
 msgctxt "wizard_button:account.asset.update,start,update_asset:"
 msgid "OK"
-msgstr ""
+msgstr "OK"

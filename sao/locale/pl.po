@@ -128,7 +128,8 @@ msgstr "Skróty kart"
 msgid "Unable to reach the server."
 msgstr "Brak dostępu do serwera."
 
-msgid "Too many requests. Try again later."
+#, fuzzy
+msgid "Error: \"%1\". Try again later."
 msgstr "Za dużo połączeń. Spróbuj później."
 
 msgid "Login"
@@ -144,7 +145,18 @@ msgstr "Nazwa użytkownika"
 msgid "Login with"
 msgstr "Login"
 
+msgid "Too many requests. Try again later."
+msgstr "Za dużo połączeń. Spróbuj później."
+
 msgid "Not found."
+msgstr ""
+
+msgid "Send you an email to reset your password."
+msgstr ""
+
+msgid ""
+"A request to reset your password has been sent.\n"
+"Please check your mailbox."
 msgstr ""
 
 msgid "Your selection:"
@@ -541,8 +553,9 @@ msgstr "%1%"
 msgid "Menu"
 msgstr ""
 
-msgid "Copy"
-msgstr ""
+#, fuzzy
+msgid "Copy Selected Rows"
+msgstr "Wybrane rekordy"
 
 msgid "#ERROR"
 msgstr ""

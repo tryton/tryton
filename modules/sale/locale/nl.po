@@ -214,6 +214,11 @@ msgctxt "field:sale.line,invoice_lines:"
 msgid "Invoice Lines"
 msgstr "Factuur regels"
 
+#, fuzzy
+msgctxt "field:sale.line,invoice_progress:"
+msgid "Invoice Progress"
+msgstr "Factuur adres"
+
 msgctxt "field:sale.line,moves:"
 msgid "Moves"
 msgstr "Mutaties"
@@ -1043,7 +1048,7 @@ msgstr "Omzet"
 
 msgctxt "model:ir.message,text:msg_sale_reporting_revenue_trend"
 msgid "Revenue Trend"
-msgstr "Omzet trent"
+msgstr "Omzet ontwikkeling"
 
 msgctxt "model:ir.message,text:msg_sale_reporting_time_series"
 msgid "Time Series"

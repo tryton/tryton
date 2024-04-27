@@ -42,12 +42,12 @@ msgstr "Kogus"
 
 #, fuzzy
 msgctxt "help:product.product,lot_uom:"
-msgid "The default unit of measurer for lot."
+msgid "The default unit of measure for lot."
 msgstr "Partii vaikeühik."
 
 #, fuzzy
 msgctxt "help:product.template,lot_uom:"
-msgid "The default unit of measurer for lot."
+msgid "The default unit of measure for lot."
 msgstr "Partii vaikeühik."
 
 msgctxt "help:stock.lot,unit:"

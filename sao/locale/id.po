@@ -110,7 +110,8 @@ msgstr ""
 msgid "Unable to reach the server."
 msgstr ""
 
-msgid "Too many requests. Try again later."
+#, fuzzy
+msgid "Error: \"%1\". Try again later."
 msgstr "Terlalu banyak permintaan. Coba lagi nanti."
 
 msgid "Login"
@@ -125,7 +126,18 @@ msgstr ""
 msgid "Login with"
 msgstr ""
 
+msgid "Too many requests. Try again later."
+msgstr "Terlalu banyak permintaan. Coba lagi nanti."
+
 msgid "Not found."
+msgstr ""
+
+msgid "Send you an email to reset your password."
+msgstr ""
+
+msgid ""
+"A request to reset your password has been sent.\n"
+"Please check your mailbox."
 msgstr ""
 
 msgid "Your selection:"
@@ -516,7 +528,7 @@ msgstr "%1%"
 msgid "Menu"
 msgstr ""
 
-msgid "Copy"
+msgid "Copy Selected Rows"
 msgstr ""
 
 msgid "#ERROR"

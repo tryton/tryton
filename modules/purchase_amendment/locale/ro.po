@@ -16,11 +16,11 @@ msgstr "Rânduri"
 
 msgctxt "field:purchase.amendment,purchase:"
 msgid "Purchase"
-msgstr ""
+msgstr "Achiziție"
 
 msgctxt "field:purchase.amendment,state:"
 msgid "State"
-msgstr ""
+msgstr "Stare"
 
 msgctxt "field:purchase.amendment.line,action:"
 msgid "Action"
@@ -28,7 +28,7 @@ msgstr "Acțiune"
 
 msgctxt "field:purchase.amendment.line,amendment:"
 msgid "Amendment"
-msgstr ""
+msgstr "Amendament"
 
 msgctxt "field:purchase.amendment.line,description:"
 msgid "Description"
@@ -36,15 +36,16 @@ msgstr "Descriere"
 
 msgctxt "field:purchase.amendment.line,invoice_address:"
 msgid "Invoice Address"
-msgstr ""
+msgstr "Adresa de facturare"
 
+#, fuzzy
 msgctxt "field:purchase.amendment.line,invoice_party:"
 msgid "Invoice Party"
-msgstr ""
+msgstr "Parte Facturată"
 
 msgctxt "field:purchase.amendment.line,line:"
 msgid "Line"
-msgstr ""
+msgstr "Rând"
 
 msgctxt "field:purchase.amendment.line,party:"
 msgid "Party"
@@ -52,7 +53,7 @@ msgstr "Parte"
 
 msgctxt "field:purchase.amendment.line,payment_term:"
 msgid "Payment Term"
-msgstr ""
+msgstr "Termen de plată"
 
 msgctxt "field:purchase.amendment.line,product:"
 msgid "Product"
@@ -60,119 +61,126 @@ msgstr "Produs"
 
 msgctxt "field:purchase.amendment.line,product_supplier:"
 msgid "Supplier's Product"
-msgstr ""
+msgstr "Produsul Furnizorului"
 
 msgctxt "field:purchase.amendment.line,product_uom_category:"
 msgid "Product UoM Category"
-msgstr ""
+msgstr "Categorie UM Produs"
 
 msgctxt "field:purchase.amendment.line,purchase:"
 msgid "Purchase"
-msgstr ""
+msgstr "Achiziție"
 
 msgctxt "field:purchase.amendment.line,quantity:"
 msgid "Quantity"
-msgstr ""
+msgstr "Cantitate"
 
 msgctxt "field:purchase.amendment.line,state:"
 msgid "State"
-msgstr ""
+msgstr "Stare"
 
 msgctxt "field:purchase.amendment.line,unit:"
 msgid "Unit"
-msgstr ""
+msgstr "Unitate"
 
 msgctxt "field:purchase.amendment.line,unit_price:"
 msgid "Unit Price"
-msgstr ""
+msgstr "Preț unitar"
 
 msgctxt "field:purchase.amendment.line,warehouse:"
 msgid "Warehouse"
-msgstr ""
+msgstr "Depozit"
 
 msgctxt "field:purchase.purchase,amendments:"
 msgid "Amendments"
-msgstr ""
+msgstr "Amendamente"
 
 msgctxt "model:ir.action,name:act_purchase_amendment_form"
 msgid "Amendments"
-msgstr ""
+msgstr "Amendamente"
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_purchase_amendment_form_domain_all"
 msgid "All"
-msgstr ""
+msgstr "Tot"
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_purchase_amendment_form_domain_draft"
 msgid "Draft"
-msgstr ""
+msgstr "Ciornă"
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_purchase_amendment_form_domain_validated"
 msgid "Validated"
-msgstr ""
+msgstr "Validat"
 
 msgctxt "model:ir.message,text:msg_one_purchase_at_time"
 msgid ""
 "You cannot validate more than one amendment at the same time for purchase "
 "\"%(purchase)s\"."
 msgstr ""
+"Nu puteți valida mai mult de un amendament în același timp pentru achiziția "
+"\"%(purchase)s\"."
 
+#, fuzzy
 msgctxt ""
 "model:ir.model.button,confirm:purchase_amendment_validation_amendment_button"
 msgid "Are you sure you want to validate the amendements?"
-msgstr ""
+msgstr "Sigur doriți să validați amendamentele?"
 
 msgctxt ""
 "model:ir.model.button,string:purchase_amendment_validation_amendment_button"
 msgid "Validate"
-msgstr ""
+msgstr "Validare"
 
 msgctxt "model:ir.rule.group,name:rule_group_purchase_amendment_companies"
 msgid "User in companies"
-msgstr ""
+msgstr "Utilizator în Companii"
 
 msgctxt "model:ir.ui.menu,name:menu_purchase_amendment"
 msgid "Amendments"
-msgstr ""
+msgstr "Amendamente"
 
+#, fuzzy
 msgctxt "model:purchase.amendment,name:"
 msgid "Purchase Amendment"
-msgstr ""
+msgstr "Amendament de cumpărare"
 
+#, fuzzy
 msgctxt "model:purchase.amendment.line,name:"
 msgid "Purchase Amendment Line"
-msgstr ""
+msgstr "Rând Amendament de cumpărare"
 
+#, fuzzy
 msgctxt "model:res.group,name:group_purchase_amendment"
 msgid "Purchase Amendment"
-msgstr ""
+msgstr "Amendament de cumpărare"
 
 msgctxt "selection:purchase.amendment,state:"
 msgid "Draft"
-msgstr ""
+msgstr "Ciornă"
 
 msgctxt "selection:purchase.amendment,state:"
 msgid "Validated"
-msgstr ""
+msgstr "Validat"
 
 msgctxt "selection:purchase.amendment.line,action:"
 msgid "Change Line"
-msgstr ""
+msgstr "Schimbați rândul"
 
 msgctxt "selection:purchase.amendment.line,action:"
 msgid "Change Parties and Addresses"
-msgstr ""
+msgstr "Schimbare părți și adrese"
 
 msgctxt "selection:purchase.amendment.line,action:"
 msgid "Change Payment Term"
-msgstr ""
+msgstr "Modificare termen de plată"
 
 msgctxt "selection:purchase.amendment.line,action:"
 msgid "Change Warehouse"
-msgstr ""
+msgstr "Schimbare Depozit"
 
+#, fuzzy
 msgctxt "selection:purchase.amendment.line,action:"
 msgid "Recompute Taxes"
-msgstr ""
+msgstr "Recalculare impozite"

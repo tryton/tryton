@@ -30,6 +30,10 @@ msgid "disable thread usage"
 msgstr ""
 
 #, python-format
+msgid "Invalid response id (%s) expected %s"
+msgstr ""
+
+#, python-format
 msgid "Unable to set locale %s"
 msgstr "Nie można ustawić lokalizacji %s"
 
@@ -130,16 +134,27 @@ msgstr "Pobierz"
 msgid "Could not get a session."
 msgstr "Nie można połączyć się z serwerem."
 
+#, fuzzy, python-format
+msgid "Error \"%s\". Try again later."
+msgstr "Za dużo połączeń. Spróbuj później."
+
 msgid "Too many requests. Try again later."
 msgstr "Za dużo połączeń. Spróbuj później."
 
 #, fuzzy
-msgid "Not found."
-msgstr "Nie znaleziono wyniku."
-
-#, fuzzy
 msgid "Not Found."
 msgstr "Nie znaleziono wyniku."
+
+msgid "Reset forgotten password"
+msgstr ""
+
+msgid "Send you an email to reset your password."
+msgstr ""
+
+msgid ""
+"A request to reset your password has been sent.\n"
+"Please check your mailbox."
+msgstr ""
 
 msgid "..."
 msgstr "..."
@@ -1097,7 +1112,19 @@ msgstr "Za duży rozmiar obrazka."
 msgid "Copy"
 msgstr "Kopiuj"
 
-msgid "Paste"
+#, fuzzy
+msgid "Copy Row"
+msgstr "Skopiuj adres URL"
+
+#, fuzzy
+msgid "Copy Rows"
+msgstr "Skopiuj adres URL"
+
+msgid "Copy Column"
+msgstr ""
+
+#, fuzzy
+msgid "Paste Rows"
 msgstr "Wklej"
 
 msgid ".."

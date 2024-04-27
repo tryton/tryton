@@ -10,46 +10,52 @@ msgctxt "field:dashboard.action,user:"
 msgid "User"
 msgstr "Utilizator"
 
+#, fuzzy
 msgctxt "field:res.user,dashboard_actions:"
 msgid "Dashboard Actions"
-msgstr ""
+msgstr "Acțiuni din tabloul de bord"
 
+#, fuzzy
 msgctxt "field:res.user,dashboard_layout:"
 msgid "Dashboard Layout"
-msgstr ""
+msgstr "Aspect tablou de bord"
 
+#, fuzzy
 msgctxt "model:dashboard.action,name:"
 msgid "Dashboard Action"
-msgstr ""
+msgstr "Acțiune tablou de bord"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_dashboard"
 msgid "Dashboard"
-msgstr ""
+msgstr "Tablou de Bord"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_dashboard"
 msgid "Dashboard"
-msgstr ""
+msgstr "Tablou de bord"
 
 msgctxt "selection:res.user,dashboard_layout:"
 msgid "Square"
-msgstr ""
+msgstr "Pătrat"
 
 msgctxt "selection:res.user,dashboard_layout:"
 msgid "Stack Bottom"
-msgstr ""
+msgstr "Stivă Jos"
 
 msgctxt "selection:res.user,dashboard_layout:"
 msgid "Stack Left"
-msgstr ""
+msgstr "Stivă Stânga"
 
 msgctxt "selection:res.user,dashboard_layout:"
 msgid "Stack Right"
-msgstr ""
+msgstr "Stivă Dreapta"
 
 msgctxt "selection:res.user,dashboard_layout:"
 msgid "Stack Top"
-msgstr ""
+msgstr "Stivă Sus"
 
+#, fuzzy
 msgctxt "view:res.user:"
 msgid "Dashboard"
-msgstr ""
+msgstr "Tablou de bord"

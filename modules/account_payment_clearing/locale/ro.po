@@ -6,9 +6,10 @@ msgctxt "field:account.payment,account:"
 msgid "Account"
 msgstr "Cont"
 
+#, fuzzy
 msgctxt "field:account.payment,clearing_move:"
 msgid "Clearing Move"
-msgstr ""
+msgstr "Ștergerea Mișcării"
 
 msgctxt "field:account.payment,clearing_reconciled:"
 msgid "Clearing Reconciled"
@@ -50,9 +51,10 @@ msgctxt "help:account.payment,clearing_reconciled:"
 msgid "Checked if clearing line is reconciled."
 msgstr ""
 
+#, fuzzy
 msgctxt "help:account.payment.group,clearing_reconciled:"
 msgid "All payments in the group are reconciled."
-msgstr ""
+msgstr "Toate plățile din grup sunt reconciliate."
 
 msgctxt "help:account.payment.journal,clearing_posting_delay:"
 msgid ""
@@ -82,7 +84,7 @@ msgstr ""
 
 msgctxt "wizard_button:account.payment.succeed,start,end:"
 msgid "Cancel"
-msgstr ""
+msgstr "Anulare"
 
 msgctxt "wizard_button:account.payment.succeed,start,succeed:"
 msgid "Succeed"

@@ -2,17 +2,18 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
+#, fuzzy
 msgctxt "field:sale.line,draft_unit_price:"
 msgid "Draft Unit Price"
-msgstr ""
+msgstr "Ciornă Preț unitar"
 
 msgctxt "field:sale.line,promotion:"
 msgid "Promotion"
-msgstr ""
+msgstr "Promoție"
 
 msgctxt "field:sale.promotion,amount:"
 msgid "Amount"
-msgstr ""
+msgstr "Suma"
 
 msgctxt "field:sale.promotion,categories:"
 msgid "Categories"
@@ -24,43 +25,43 @@ msgstr "Companie"
 
 msgctxt "field:sale.promotion,currency:"
 msgid "Currency"
-msgstr ""
+msgstr "Monedă"
 
 msgctxt "field:sale.promotion,end_date:"
 msgid "End Date"
-msgstr ""
+msgstr "Data de sfârşit"
 
 msgctxt "field:sale.promotion,formula:"
 msgid "Formula"
-msgstr ""
+msgstr "Formulă"
 
 msgctxt "field:sale.promotion,name:"
 msgid "Name"
-msgstr ""
+msgstr "Nume"
 
 msgctxt "field:sale.promotion,price_list:"
 msgid "Price List"
-msgstr ""
+msgstr "Listă de prețuri"
 
 msgctxt "field:sale.promotion,products:"
 msgid "Products"
-msgstr ""
+msgstr "Produse"
 
 msgctxt "field:sale.promotion,quantity:"
 msgid "Quantity"
-msgstr ""
+msgstr "Cantitate"
 
 msgctxt "field:sale.promotion,start_date:"
 msgid "Start Date"
-msgstr ""
+msgstr "Data de Început"
 
 msgctxt "field:sale.promotion,unit:"
 msgid "Unit"
-msgstr ""
+msgstr "Unitate"
 
 msgctxt "field:sale.promotion,untaxed_amount:"
 msgid "Untaxed Amount"
-msgstr ""
+msgstr "Sumă neimpozată"
 
 msgctxt "field:sale.promotion-product.category,category:"
 msgid "Category"
@@ -68,7 +69,7 @@ msgstr "Categorie"
 
 msgctxt "field:sale.promotion-product.category,promotion:"
 msgid "Promotion"
-msgstr ""
+msgstr "Promoție"
 
 msgctxt "field:sale.promotion-product.product,product:"
 msgid "Product"
@@ -76,44 +77,49 @@ msgstr "Produs"
 
 msgctxt "field:sale.promotion-product.product,promotion:"
 msgid "Promotion"
-msgstr ""
+msgstr "Promoție"
 
+#, fuzzy
 msgctxt "help:sale.promotion,formula:"
 msgid ""
 "Python expression that will be evaluated with:\n"
 "- unit_price: the original unit_price"
 msgstr ""
+"Expresie Python care va fi evaluată cu:\n"
+"- unit_price: unit_price inițial"
 
 msgctxt "model:ir.action,name:act_promotion_form"
 msgid "Promotions"
-msgstr ""
+msgstr "Promoții"
 
 msgctxt "model:ir.action,name:act_promotion_relate"
 msgid "Sale Promotions"
-msgstr ""
+msgstr "Promoții de vânzare"
 
 msgctxt "model:ir.message,text:msg_invalid_formula"
 msgid ""
 "Invalid formula \"%(formula)s\" in promotion \"%(promotion)s\" 'with "
 "exception \"%(exception)s\"."
 msgstr ""
+"Formula \"%(formula)s\" invalidă în promoția \"%(promotion)s\" cu excepția "
+"\"%(exception)s\"."
 
 msgctxt "model:ir.rule.group,name:rule_group_promotion_companies"
 msgid "User in companies"
-msgstr ""
+msgstr "Utilizator în Companii"
 
 msgctxt "model:ir.ui.menu,name:menu_promotion"
 msgid "Promotions"
-msgstr ""
+msgstr "Promoții"
 
 msgctxt "model:sale.promotion,name:"
 msgid "Sale Promotion"
-msgstr ""
+msgstr "Promoție de vânzare"
 
 msgctxt "model:sale.promotion-product.category,name:"
 msgid "Sale Promotion - Product Category"
-msgstr ""
+msgstr "Promoție de vânzare - Categorie de produse"
 
 msgctxt "model:sale.promotion-product.product,name:"
 msgid "Sale Promotion - Product"
-msgstr ""
+msgstr "Promoție de vânzare - Produs"

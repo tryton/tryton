@@ -87,8 +87,9 @@ msgctxt "field:purchase.requisition.line,product_secondary_uom_category:"
 msgid "Product Secondary UoM Category"
 msgstr "Product secundaire maateenheid categorie"
 
+#, fuzzy
 msgctxt "help:product.product,purchase_secondary_uom:"
-msgid "The second Unit of Measure for purchases."
+msgid "The secondary Unit of Measure for purchases."
 msgstr "De tweede maateenheid voor inkopen."
 
 msgctxt "help:product.product,purchase_secondary_uom_factor:"
@@ -107,8 +108,9 @@ msgstr ""
 "De coëfficiënt voor de formule:\n"
 "coëfficiënt (inkoopeenheid) = 1 (secundaire eenheid)"
 
+#, fuzzy
 msgctxt "help:product.template,purchase_secondary_uom:"
-msgid "The second Unit of Measure for purchases."
+msgid "The secondary Unit of Measure for purchases."
 msgstr "De tweede maateenheid voor inkopen."
 
 msgctxt "help:product.template,purchase_secondary_uom_factor:"
@@ -147,8 +149,9 @@ msgctxt "help:purchase.product_supplier,default_uom_category:"
 msgid "The category of the default Unit of Measure."
 msgstr "De categorie van de standaard maateenheid."
 
+#, fuzzy
 msgctxt "help:purchase.product_supplier,purchase_secondary_uom:"
-msgid "The second Unit of Measure for purchases."
+msgid "The secondary Unit of Measure for purchases."
 msgstr "De tweede maateenheid voor inkopen."
 
 msgctxt "help:purchase.product_supplier,purchase_secondary_uom_factor:"

@@ -232,6 +232,11 @@ msgctxt "field:sale.line,invoice_lines:"
 msgid "Invoice Lines"
 msgstr "Számlasorok"
 
+#, fuzzy
+msgctxt "field:sale.line,invoice_progress:"
+msgid "Invoice Progress"
+msgstr "Számlázási cím"
+
 msgctxt "field:sale.line,moves:"
 msgid "Moves"
 msgstr "Mozgások"

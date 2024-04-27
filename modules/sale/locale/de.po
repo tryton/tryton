@@ -214,6 +214,11 @@ msgctxt "field:sale.line,invoice_lines:"
 msgid "Invoice Lines"
 msgstr "Rechnungspositionen"
 
+#, fuzzy
+msgctxt "field:sale.line,invoice_progress:"
+msgid "Invoice Progress"
+msgstr "Rechnungsadresse"
+
 msgctxt "field:sale.line,moves:"
 msgid "Moves"
 msgstr "Warenbewegungen"

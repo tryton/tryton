@@ -242,6 +242,11 @@ msgctxt "field:sale.line,invoice_lines:"
 msgid "Invoice Lines"
 msgstr "Arve read"
 
+#, fuzzy
+msgctxt "field:sale.line,invoice_progress:"
+msgid "Invoice Progress"
+msgstr "Arve aadress"
+
 msgctxt "field:sale.line,moves:"
 msgid "Moves"
 msgstr "Kanded"

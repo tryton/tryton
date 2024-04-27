@@ -34,12 +34,14 @@ msgctxt "field:stock.move.add.lots.start.lot,unit_quantity:"
 msgid "Unit Quantity"
 msgstr "Maßeinheit Menge"
 
+#, fuzzy
 msgctxt "help:product.product,lot_uom:"
-msgid "The default unit of measurer for lot."
+msgid "The default unit of measure for lot."
 msgstr "Die Standardmaßeinheit für Chargen."
 
+#, fuzzy
 msgctxt "help:product.template,lot_uom:"
-msgid "The default unit of measurer for lot."
+msgid "The default unit of measure for lot."
 msgstr "Die Standardmaßeinheit für Chargen."
 
 msgctxt "help:stock.lot,unit:"

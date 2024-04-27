@@ -244,7 +244,7 @@ msgstr ""
 
 msgctxt "view:account.configuration:"
 msgid "Sequence"
-msgstr ""
+msgstr "Secventa"
 
 msgctxt "wizard_button:account.landed_cost.post,show,end:"
 msgid "Cancel"

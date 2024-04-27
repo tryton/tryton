@@ -150,6 +150,46 @@ msgctxt "selection:sale.reporting.marketing.context,period:"
 msgid "Year"
 msgstr "Leto"
 
+#, fuzzy
+msgctxt "view:marketing.automation.activity:"
+msgid "Campaign"
+msgstr "Kampanija"
+
+#, fuzzy
+msgctxt "view:marketing.automation.activity:"
+msgid "Marketing Campaign"
+msgstr "Marketinška kampanija"
+
+#, fuzzy
+msgctxt "view:marketing.automation.activity:"
+msgid "Medium"
+msgstr "Medij"
+
+#, fuzzy
+msgctxt "view:marketing.automation.activity:"
+msgid "Source"
+msgstr "Izvor"
+
+#, fuzzy
+msgctxt "view:marketing.email.message:"
+msgid "Campaign"
+msgstr "Kampanija"
+
+#, fuzzy
+msgctxt "view:marketing.email.message:"
+msgid "Marketing Campaign"
+msgstr "Marketinška kampanija"
+
+#, fuzzy
+msgctxt "view:marketing.email.message:"
+msgid "Medium"
+msgstr "Medij"
+
+#, fuzzy
+msgctxt "view:marketing.email.message:"
+msgid "Source"
+msgstr "Izvor"
+
 msgctxt "view:sale.opportunity.reporting.context:"
 msgid "Marketing Campaign"
 msgstr "Marketinška kampanija"

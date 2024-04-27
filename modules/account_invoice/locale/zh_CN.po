@@ -949,6 +949,22 @@ msgctxt "model:ir.message,text:msg_invoice_credit_refund_not_posted"
 msgid "You cannot refund invoice \"%(invoice)s\" because it is not posted."
 msgstr "无法退还凭证 \"%(invoice)s\" ，因为它未过帐。"
 
+#, fuzzy
+msgctxt ""
+"model:ir.message,text:msg_invoice_currency_exchange_credit_account_missing"
+msgid ""
+"To post invoice \"%(invoice)s\", you must define a currency exchange credit "
+"account for \"%(company)s\"."
+msgstr "要对 \"%(invoice)s\" 入账，必须在会计年度 \"%(fiscalyear)s\" 上定义一个序列。"
+
+#, fuzzy
+msgctxt ""
+"model:ir.message,text:msg_invoice_currency_exchange_debit_account_missing"
+msgid ""
+"To post invoice \"%(invoice)s\", you must define a currency exchange debit "
+"account for \"%(company)s\"."
+msgstr "要对 \"%(invoice)s\" 入账，必须在会计年度 \"%(fiscalyear)s\" 上定义一个序列。"
+
 msgctxt "model:ir.message,text:msg_invoice_customer_cancel_move"
 msgid ""
 "You cannot cancel customer invoice \"%(invoice)s\" because it is posted and "
@@ -1339,6 +1355,10 @@ msgstr "基本"
 msgctxt "view:account.invoice.line:"
 msgid "Notes"
 msgstr "注释"
+
+msgctxt "view:account.invoice.payment_term.line.delta:"
+msgid "Operations are applied in this displayed order."
+msgstr ""
 
 msgctxt "view:account.invoice.payment_term.line:"
 msgid "%"

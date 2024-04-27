@@ -74,6 +74,11 @@ msgid "Downward Traces"
 msgstr ""
 
 #, fuzzy
+msgctxt "field:stock.lot.trace,from_location:"
+msgid "From Location"
+msgstr "Lokalizacja"
+
+#, fuzzy
 msgctxt "field:stock.lot.trace,lot:"
 msgid "Lot"
 msgstr "Lot"
@@ -91,6 +96,11 @@ msgstr "Ilość"
 msgctxt "field:stock.lot.trace,shipment:"
 msgid "Shipment"
 msgstr ""
+
+#, fuzzy
+msgctxt "field:stock.lot.trace,to_location:"
+msgid "To Location"
+msgstr "Lokalizacja"
 
 msgctxt "field:stock.lot.trace,unit:"
 msgid "Unit"

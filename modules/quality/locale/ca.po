@@ -369,7 +369,7 @@ msgstr "Configuració qualitat"
 
 msgctxt "model:quality.configuration.sequence,name:"
 msgid "Quality Configuration Sequence"
-msgstr "Seqüencia configuració qualitat"
+msgstr "Configuració Seqüencies qualitat"
 
 msgctxt "model:quality.control,name:"
 msgid "Quality Control"

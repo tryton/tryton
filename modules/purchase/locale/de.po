@@ -179,6 +179,11 @@ msgctxt "field:purchase.line,invoice_lines:"
 msgid "Invoice Lines"
 msgstr "Rechnungspositionen"
 
+#, fuzzy
+msgctxt "field:purchase.line,invoice_progress:"
+msgid "Invoice Progress"
+msgstr "Rechnungsadresse"
+
 msgctxt "field:purchase.line,moves:"
 msgid "Moves"
 msgstr "Warenbewegungen"
@@ -813,10 +818,11 @@ msgctxt "model:ir.action.act_window.domain,name:act_purchase_relate_pending"
 msgid "Pending"
 msgstr "Ausstehend"
 
+#, fuzzy
 msgctxt "model:ir.message,text:msg_change_purchase_uom"
 msgid ""
-"You are trying to change the purchase unit of measurer on which the purchase"
-" prices are based."
+"You are trying to change the purchase unit of measure on which the purchase "
+"prices are based."
 msgstr ""
 "Sie versuchen die Einkaufsmaßeinheit zu ändern, auf der die Einkaufspreise "
 "basieren."

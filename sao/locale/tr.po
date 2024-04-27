@@ -111,7 +111,7 @@ msgstr ""
 msgid "Unable to reach the server."
 msgstr ""
 
-msgid "Too many requests. Try again later."
+msgid "Error: \"%1\". Try again later."
 msgstr ""
 
 msgid "Login"
@@ -126,7 +126,18 @@ msgstr ""
 msgid "Login with"
 msgstr ""
 
+msgid "Too many requests. Try again later."
+msgstr ""
+
 msgid "Not found."
+msgstr ""
+
+msgid "Send you an email to reset your password."
+msgstr ""
+
+msgid ""
+"A request to reset your password has been sent.\n"
+"Please check your mailbox."
 msgstr ""
 
 msgid "Your selection:"
@@ -515,7 +526,7 @@ msgstr ""
 msgid "Menu"
 msgstr ""
 
-msgid "Copy"
+msgid "Copy Selected Rows"
 msgstr ""
 
 msgid "#ERROR"

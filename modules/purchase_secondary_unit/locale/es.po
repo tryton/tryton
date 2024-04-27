@@ -87,8 +87,9 @@ msgctxt "field:purchase.requisition.line,product_secondary_uom_category:"
 msgid "Product Secondary UoM Category"
 msgstr "Categoría de la UdM secundaria del producto"
 
+#, fuzzy
 msgctxt "help:product.product,purchase_secondary_uom:"
-msgid "The second Unit of Measure for purchases."
+msgid "The secondary Unit of Measure for purchases."
 msgstr "La unidad de medida secundaria de las compras."
 
 msgctxt "help:product.product,purchase_secondary_uom_factor:"
@@ -107,8 +108,9 @@ msgstr ""
 "El coeficiente de la fórmula:\n"
 "coeficiente (unidad_compra) = 1 (unidad secundaria)"
 
+#, fuzzy
 msgctxt "help:product.template,purchase_secondary_uom:"
-msgid "The second Unit of Measure for purchases."
+msgid "The secondary Unit of Measure for purchases."
 msgstr "La unidad de medida secundaria de las compras."
 
 msgctxt "help:product.template,purchase_secondary_uom_factor:"
@@ -147,8 +149,9 @@ msgctxt "help:purchase.product_supplier,default_uom_category:"
 msgid "The category of the default Unit of Measure."
 msgstr "La categoría de la unidad de medida por defecto."
 
+#, fuzzy
 msgctxt "help:purchase.product_supplier,purchase_secondary_uom:"
-msgid "The second Unit of Measure for purchases."
+msgid "The secondary Unit of Measure for purchases."
 msgstr "La unidad de medida secundaria de las compras."
 
 msgctxt "help:purchase.product_supplier,purchase_secondary_uom_factor:"

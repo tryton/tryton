@@ -40,7 +40,7 @@ msgstr "Título"
 
 msgctxt "field:quality.configuration,alert_sequence:"
 msgid "Alert Sequence"
-msgstr "Sequència alertas"
+msgstr "Secuencia alertas"
 
 msgctxt "field:quality.configuration,inspection_sequence:"
 msgid "Inspection Sequence"
@@ -48,7 +48,7 @@ msgstr "Secuencia Inspecciones"
 
 msgctxt "field:quality.configuration.sequence,alert_sequence:"
 msgid "Alert Sequence"
-msgstr "Sequencia Alertas"
+msgstr "Secuencia Alertas"
 
 msgctxt "field:quality.configuration.sequence,company:"
 msgid "Company"

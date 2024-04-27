@@ -113,7 +113,8 @@ msgstr "Bližnjice zavihkov"
 msgid "Unable to reach the server."
 msgstr "Ni se mogoče povezati s strežnikom."
 
-msgid "Too many requests. Try again later."
+#, fuzzy
+msgid "Error: \"%1\". Try again later."
 msgstr "Preveč poslanih zahtev. Poskusite kasneje."
 
 msgid "Login"
@@ -128,8 +129,19 @@ msgstr "Uporabniško ime"
 msgid "Login with"
 msgstr "Prijava z"
 
+msgid "Too many requests. Try again later."
+msgstr "Preveč poslanih zahtev. Poskusite kasneje."
+
 msgid "Not found."
 msgstr "Ni najdeno."
+
+msgid "Send you an email to reset your password."
+msgstr ""
+
+msgid ""
+"A request to reset your password has been sent.\n"
+"Please check your mailbox."
+msgstr ""
 
 msgid "Your selection:"
 msgstr "Vaša izbira:"
@@ -522,8 +534,9 @@ msgstr "%1%"
 msgid "Menu"
 msgstr ""
 
-msgid "Copy"
-msgstr ""
+#, fuzzy
+msgid "Copy Selected Rows"
+msgstr "Izbrani zapisi"
 
 msgid "#ERROR"
 msgstr "#NAPAKA"

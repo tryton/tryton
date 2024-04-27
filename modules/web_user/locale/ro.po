@@ -4,15 +4,16 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "field:web.user,email:"
 msgid "E-mail"
-msgstr ""
+msgstr "E-mail"
 
+#, fuzzy
 msgctxt "field:web.user,email_token:"
 msgid "E-mail Token"
-msgstr ""
+msgstr "Token de e-mail"
 
 msgctxt "field:web.user,email_valid:"
 msgid "E-mail Valid"
-msgstr ""
+msgstr "E-mail Valabil"
 
 msgctxt "field:web.user,party:"
 msgid "Party"
@@ -26,17 +27,19 @@ msgctxt "field:web.user,password_hash:"
 msgid "Password Hash"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:web.user,reset_password_token:"
 msgid "Reset Password Token"
-msgstr ""
+msgstr "Resetare Token Parolă"
 
 msgctxt "field:web.user,reset_password_token_expire:"
 msgid "Reset Password Token Expire"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:web.user,secondary_parties:"
 msgid "Secondary Parties"
-msgstr ""
+msgstr "Părți Secundare"
 
 #, fuzzy
 msgctxt "field:web.user-party.party.secondary,party:"
@@ -45,7 +48,7 @@ msgstr "Parte"
 
 msgctxt "field:web.user-party.party.secondary,user:"
 msgid "User"
-msgstr ""
+msgstr "Utilizator"
 
 msgctxt "field:web.user.authenticate.attempt,device_cookie:"
 msgid "Device Cookie"
@@ -53,31 +56,31 @@ msgstr ""
 
 msgctxt "field:web.user.authenticate.attempt,ip_address:"
 msgid "IP Address"
-msgstr ""
+msgstr "Adresă IP"
 
 msgctxt "field:web.user.authenticate.attempt,ip_network:"
 msgid "IP Network"
-msgstr ""
+msgstr "Rețea IP"
 
 msgctxt "field:web.user.authenticate.attempt,login:"
 msgid "Login"
-msgstr ""
+msgstr "Autentificare"
 
 msgctxt "field:web.user.session,key:"
 msgid "Key"
-msgstr ""
+msgstr "Cheie"
 
 msgctxt "field:web.user.session,user:"
 msgid "User"
-msgstr ""
+msgstr "Utilizator"
 
 msgctxt "model:ir.action,name:act_user_form"
 msgid "Web Users"
-msgstr ""
+msgstr "Utilizatori Web"
 
 msgctxt "model:ir.action,name:act_user_form_party"
 msgid "Web Users"
-msgstr ""
+msgstr "Utilizatori Web"
 
 msgctxt "model:ir.action,name:report_email_reset_password"
 msgid "Reset Password"
@@ -85,7 +88,7 @@ msgstr "Resetare parola"
 
 msgctxt "model:ir.action,name:report_email_validation"
 msgid "Email Validation"
-msgstr ""
+msgstr "Validarea e-mailului"
 
 msgctxt "model:ir.message,text:msg_user_email_invalid"
 msgid "The email address \"%(email)s\" for \"%(user)s\" is not valid."
@@ -93,11 +96,11 @@ msgstr "Adresa de email \"%(email)s\" pentru \"%(user)s\" nu este valid."
 
 msgctxt "model:ir.message,text:msg_user_email_unique"
 msgid "E-mail of active web user must be unique."
-msgstr ""
+msgstr "E-mailul utilizatorului web activ trebuie să fie unic."
 
 msgctxt "model:ir.message,text:msg_user_session_key_unique"
 msgid "Web user session key must be unique."
-msgstr ""
+msgstr "Cheia de sesiune a utilizatorului web trebuie să fie unică."
 
 msgctxt "model:ir.model.button,string:user_reset_password_button"
 msgid "Reset Password"
@@ -105,77 +108,83 @@ msgstr "Resetare Parola"
 
 msgctxt "model:ir.model.button,string:user_validate_email_button"
 msgid "Validate E-mail"
-msgstr ""
+msgstr "Validare e-mail"
 
 msgctxt "model:ir.ui.menu,name:menu_user_form"
 msgid "Web Users"
-msgstr ""
+msgstr "Utilizatori Web"
 
 msgctxt "model:web.user,name:"
 msgid "Web User"
-msgstr ""
+msgstr "Utilizator Web"
 
+#, fuzzy
 msgctxt "model:web.user-party.party.secondary,name:"
 msgid "Web User - Secondary Party"
-msgstr ""
+msgstr "Utilizator Web - Parte secundară"
 
 msgctxt "model:web.user.authenticate.attempt,name:"
 msgid "Web User Authenticate Attempt"
-msgstr ""
+msgstr "Încercare de autentificare a utilizatorului web"
 
 msgctxt "model:web.user.session,name:"
 msgid "Web User Session"
-msgstr ""
+msgstr "Sesiune a Utilizatorului Web"
+
+#, fuzzy
+msgctxt "report:web.user.email_reset_password:"
+msgid "Button not working? Paste this into your browser:"
+msgstr "Butonul nu funcționează? Copiați asta în browser:"
 
 msgctxt "report:web.user.email_reset_password:"
-msgid "Button is not working? Paste this into your browser:"
+msgid ""
+"Hello, we received a request to reset the password for the account associated with [1:%(email)s]. No changes have been made to your account yet.[2:]\n"
+"                You can reset your password by clicking the link below:[3:]\n"
+"                [4:\n"
+"                    Reset Password\n"
+"                ]"
 msgstr ""
 
 msgctxt "report:web.user.email_reset_password:"
 msgid "If you didn't make this request, you can ignore this email."
-msgstr ""
+msgstr "Dacă nu ați făcut această solicitare, puteți ignora acest e-mail."
 
 msgctxt "report:web.user.email_reset_password:"
 msgid "Reset Password"
-msgstr ""
+msgstr "Resetare Parolă"
 
 msgctxt "report:web.user.email_reset_password:"
 msgid "The link will expire in [1:%(datetime)s]."
-msgstr ""
-
-msgctxt "report:web.user.email_reset_password:"
-msgid ""
-"We received a request to reset the password for your account: %(email)s"
-msgstr ""
+msgstr "Linkul va expira în [1:%(datetime)s]."
 
 msgctxt "report:web.user.email_validation:"
 msgid "%(email)s"
-msgstr ""
+msgstr "%(email)s"
 
 msgctxt "report:web.user.email_validation:"
 msgid "Button is not working? Paste this into your browser:"
-msgstr ""
+msgstr "Butonul nu funcționează? Copiați asta în browser:"
 
 msgctxt "report:web.user.email_validation:"
 msgid "Email Validation"
-msgstr ""
+msgstr "Validarea e-mailului"
 
 msgctxt "report:web.user.email_validation:"
 msgid "If you received this email by mistake, just ignore it."
-msgstr ""
+msgstr "Dacă ați primit acest e-mail din greșeală, ignorați-l."
 
 msgctxt "report:web.user.email_validation:"
 msgid "Just one more step.."
-msgstr ""
+msgstr "Încă un pas."
 
 msgctxt "report:web.user.email_validation:"
 msgid "Validate"
-msgstr ""
+msgstr "Validare"
 
 msgctxt "view:web.user:"
 msgid "Reset Password"
-msgstr ""
+msgstr "Resetare Parolă"
 
 msgctxt "view:web.user:"
 msgid "Validate E-mail"
-msgstr ""
+msgstr "Validare e-mail"

@@ -4,15 +4,15 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "field:product.cultivar,groups:"
 msgid "Groups"
-msgstr ""
+msgstr "Grupuri"
 
 msgctxt "field:product.cultivar,name:"
 msgid "Name"
-msgstr ""
+msgstr "Nume"
 
 msgctxt "field:product.cultivar,selectable:"
 msgid "Selectable"
-msgstr ""
+msgstr "Selectabil"
 
 msgctxt "field:product.cultivar,taxon:"
 msgid "Taxon"
@@ -24,7 +24,7 @@ msgstr ""
 
 msgctxt "field:product.cultivar-product.cultivar.group,group:"
 msgid "Group"
-msgstr ""
+msgstr "Grup"
 
 msgctxt "field:product.cultivar.group,cultivars:"
 msgid "Cultivars"
@@ -32,7 +32,7 @@ msgstr ""
 
 msgctxt "field:product.cultivar.group,name:"
 msgid "Name"
-msgstr ""
+msgstr "Nume"
 
 msgctxt "field:product.taxon,childs:"
 msgid "Children"
@@ -40,19 +40,20 @@ msgstr "Copii"
 
 msgctxt "field:product.taxon,name:"
 msgid "Name"
-msgstr ""
+msgstr "Nume"
 
+#, fuzzy
 msgctxt "field:product.taxon,parent:"
 msgid "Parent"
-msgstr ""
+msgstr "Părinte"
 
 msgctxt "field:product.taxon,rank:"
 msgid "Type"
-msgstr ""
+msgstr "Tip"
 
 msgctxt "field:product.taxon,selectable:"
 msgid "Selectable"
-msgstr ""
+msgstr "Selectabil"
 
 msgctxt "model:ir.action,name:act_cultivar_form"
 msgid "Cultivars"
@@ -60,7 +61,7 @@ msgstr ""
 
 msgctxt "model:ir.action,name:act_cultivar_group_form"
 msgid "Groups"
-msgstr ""
+msgstr "Grupuri"
 
 msgctxt "model:ir.action,name:act_taxon_form"
 msgid "Taxons"
@@ -76,7 +77,7 @@ msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_cultivar_group"
 msgid "Groups"
-msgstr ""
+msgstr "Grupuri"
 
 msgctxt "model:ir.ui.menu,name:menu_taxon"
 msgid "Taxons"
@@ -104,11 +105,12 @@ msgstr ""
 
 msgctxt "selection:product.taxon,rank:"
 msgid "Class"
-msgstr ""
+msgstr "Clasă"
 
+#, fuzzy
 msgctxt "selection:product.taxon,rank:"
 msgid "Division"
-msgstr ""
+msgstr "Divizie"
 
 msgctxt "selection:product.taxon,rank:"
 msgid "Domain"
@@ -122,9 +124,10 @@ msgctxt "selection:product.taxon,rank:"
 msgid "Form"
 msgstr "Formular"
 
+#, fuzzy
 msgctxt "selection:product.taxon,rank:"
 msgid "Genus"
-msgstr ""
+msgstr "Gen"
 
 msgctxt "selection:product.taxon,rank:"
 msgid "Kingdom"
@@ -132,7 +135,7 @@ msgstr ""
 
 msgctxt "selection:product.taxon,rank:"
 msgid "Order"
-msgstr ""
+msgstr "Ordin"
 
 msgctxt "selection:product.taxon,rank:"
 msgid "Phylum"
@@ -140,20 +143,20 @@ msgstr ""
 
 msgctxt "selection:product.taxon,rank:"
 msgid "Section"
-msgstr ""
+msgstr "Secțiune"
 
 msgctxt "selection:product.taxon,rank:"
 msgid "Series"
-msgstr ""
+msgstr "Serie"
 
 msgctxt "selection:product.taxon,rank:"
 msgid "Species"
-msgstr ""
+msgstr "Specie"
 
 msgctxt "selection:product.taxon,rank:"
 msgid "Tribe"
-msgstr ""
+msgstr "Trib"
 
 msgctxt "selection:product.taxon,rank:"
 msgid "Variety"
-msgstr ""
+msgstr "varietate"

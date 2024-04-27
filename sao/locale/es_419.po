@@ -123,7 +123,8 @@ msgstr "Atajos de pestañas"
 msgid "Unable to reach the server."
 msgstr "No es posible conectar con el servidor."
 
-msgid "Too many requests. Try again later."
+#, fuzzy
+msgid "Error: \"%1\". Try again later."
 msgstr "Demasiadas peticiones. Inténtalo de nuevo más tarde."
 
 msgid "Login"
@@ -138,8 +139,19 @@ msgstr "Nombre de usuario"
 msgid "Login with"
 msgstr "Identificarse con"
 
+msgid "Too many requests. Try again later."
+msgstr "Demasiadas peticiones. Inténtalo de nuevo más tarde."
+
 msgid "Not found."
 msgstr "No se ha encontrado."
+
+msgid "Send you an email to reset your password."
+msgstr ""
+
+msgid ""
+"A request to reset your password has been sent.\n"
+"Please check your mailbox."
+msgstr ""
 
 msgid "Your selection:"
 msgstr "Su selección:"
@@ -532,8 +544,9 @@ msgstr "%1%"
 msgid "Menu"
 msgstr ""
 
-msgid "Copy"
-msgstr ""
+#, fuzzy
+msgid "Copy Selected Rows"
+msgstr "Registros seleccionados"
 
 msgid "#ERROR"
 msgstr ""

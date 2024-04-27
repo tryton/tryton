@@ -113,7 +113,8 @@ msgstr "Комбінації клавіш вкладки"
 msgid "Unable to reach the server."
 msgstr "Не вдається підключитися до сервера."
 
-msgid "Too many requests. Try again later."
+#, fuzzy
+msgid "Error: \"%1\". Try again later."
 msgstr "Дуже багато запитів. Спробуйте ще раз пізніше."
 
 msgid "Login"
@@ -129,7 +130,18 @@ msgstr "Ім'я користувача"
 msgid "Login with"
 msgstr "Логін"
 
+msgid "Too many requests. Try again later."
+msgstr "Дуже багато запитів. Спробуйте ще раз пізніше."
+
 msgid "Not found."
+msgstr ""
+
+msgid "Send you an email to reset your password."
+msgstr ""
+
+msgid ""
+"A request to reset your password has been sent.\n"
+"Please check your mailbox."
 msgstr ""
 
 msgid "Your selection:"
@@ -523,8 +535,9 @@ msgstr "%1%"
 msgid "Menu"
 msgstr ""
 
-msgid "Copy"
-msgstr ""
+#, fuzzy
+msgid "Copy Selected Rows"
+msgstr "Вибрані записи"
 
 msgid "#ERROR"
 msgstr ""

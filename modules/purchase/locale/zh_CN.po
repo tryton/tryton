@@ -179,6 +179,11 @@ msgctxt "field:purchase.line,invoice_lines:"
 msgid "Invoice Lines"
 msgstr "发票明细"
 
+#, fuzzy
+msgctxt "field:purchase.line,invoice_progress:"
+msgid "Invoice Progress"
+msgstr "发票地址"
+
 msgctxt "field:purchase.line,moves:"
 msgid "Moves"
 msgstr "移动"
@@ -807,10 +812,11 @@ msgctxt "model:ir.action.act_window.domain,name:act_purchase_relate_pending"
 msgid "Pending"
 msgstr "待定"
 
+#, fuzzy
 msgctxt "model:ir.message,text:msg_change_purchase_uom"
 msgid ""
-"You are trying to change the purchase unit of measurer on which the purchase"
-" prices are based."
+"You are trying to change the purchase unit of measure on which the purchase "
+"prices are based."
 msgstr "您正在试图更改采购价格依赖的采购计量单位."
 
 msgctxt "model:ir.message,text:msg_erase_party_pending_purchase"

@@ -110,8 +110,8 @@ msgstr "Raccourcis d'onglet"
 msgid "Unable to reach the server."
 msgstr "Impossible de joindre le serveur."
 
-msgid "Too many requests. Try again later."
-msgstr "Trop de demandes. Réessayez plus tard."
+msgid "Error: \"%1\". Try again later."
+msgstr "Erreur : « %1 ». Réessayez plus tard."
 
 msgid "Login"
 msgstr "Connexion"
@@ -125,8 +125,19 @@ msgstr "Nom d'utilisateur"
 msgid "Login with"
 msgstr "Connexion avec"
 
+msgid "Too many requests. Try again later."
+msgstr "Trop de demandes. Réessayez plus tard."
+
 msgid "Not found."
 msgstr "Pas trouvé."
+
+msgid "Send you an email to reset your password."
+msgstr ""
+
+msgid ""
+"A request to reset your password has been sent.\n"
+"Please check your mailbox."
+msgstr ""
 
 msgid "Your selection:"
 msgstr "Votre sélection :"
@@ -520,8 +531,9 @@ msgstr "%1%"
 msgid "Menu"
 msgstr "Menu"
 
-msgid "Copy"
-msgstr "Copier"
+#, fuzzy
+msgid "Copy Selected Rows"
+msgstr "Enregistrements sélectionnés"
 
 msgid "#ERROR"
 msgstr "#ERREUR"

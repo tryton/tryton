@@ -98,7 +98,6 @@ msgstr ""
 "Pentru a valida expedierea \"%(shipment)s\" trebuie adăugat un număr de "
 "telefon sau mobil pentru adresa \"%(address)s\"."
 
-#, fuzzy
 msgctxt "model:ir.message,text:msg_shipment_has_shipping_reference_number"
 msgid ""
 "You cannot create a shipping label for shipment \"%(shipment)s\" because it "

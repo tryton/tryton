@@ -144,6 +144,12 @@ msgctxt ""
 msgid "Employee"
 msgstr "Сотрудник"
 
+msgctxt "help:sale.opportunity,address:"
+msgid ""
+"The default address for the invoice and shipment.\n"
+"Leave empty to use the default values."
+msgstr ""
+
 #, fuzzy
 msgctxt "help:sale.opportunity,amount:"
 msgid "Estimated revenue amount."

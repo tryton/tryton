@@ -56,7 +56,7 @@ msgstr "Ubicación interna"
 
 msgctxt "field:stock.order_point,target_quantity:"
 msgid "Target Quantity"
-msgstr "Cantidad destino"
+msgstr "Cantidad deseada"
 
 msgctxt "field:stock.order_point,type:"
 msgid "Type"

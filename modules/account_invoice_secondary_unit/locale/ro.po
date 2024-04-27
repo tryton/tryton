@@ -2,7 +2,6 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-#, fuzzy
 msgctxt "field:account.invoice.line,product_secondary_uom_category:"
 msgid "Product Secondary UoM Category"
 msgstr "Categorie Secundara UM pentru Produs"
@@ -21,7 +20,7 @@ msgstr "Preţ Unitate Secundara"
 
 msgctxt "help:account.invoice.line,product_secondary_uom_category:"
 msgid "The category of secondary Unit of Measure for the product."
-msgstr ""
+msgstr "Categoria Unitatii de Masura pentru produs."
 
 msgctxt "view:account.invoice.line:"
 msgid "Quantity:"

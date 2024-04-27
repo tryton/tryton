@@ -8,15 +8,15 @@ msgstr "Conturi Analitice"
 
 msgctxt "field:account.asset,analytic_accounts_size:"
 msgid "Analytic Accounts Size"
-msgstr "Conturi Analitice Marime"
+msgstr "Conturi Analitice Mărime"
 
 msgctxt "field:account.invoice.line,analytic_accounts:"
 msgid "Analytic Accounts"
-msgstr "Conturi analitice"
+msgstr "Conturi Analitice"
 
 msgctxt "field:account.invoice.line,analytic_accounts_size:"
 msgid "Analytic Accounts Size"
-msgstr "Mărimea conturilor analitice"
+msgstr "Mărimea Conturilor Analitice"
 
 msgctxt "view:account.invoice.line:"
 msgid "Analytic"

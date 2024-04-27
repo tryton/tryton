@@ -130,7 +130,7 @@ msgstr "Atalhos para abas"
 msgid "Unable to reach the server."
 msgstr "Não foi possível se conectar ao servidor."
 
-msgid "Too many requests. Try again later."
+msgid "Error: \"%1\". Try again later."
 msgstr ""
 
 msgid "Login"
@@ -146,7 +146,18 @@ msgstr "Usuário"
 msgid "Login with"
 msgstr "Entrar"
 
+msgid "Too many requests. Try again later."
+msgstr ""
+
 msgid "Not found."
+msgstr ""
+
+msgid "Send you an email to reset your password."
+msgstr ""
+
+msgid ""
+"A request to reset your password has been sent.\n"
+"Please check your mailbox."
 msgstr ""
 
 msgid "Your selection:"
@@ -556,8 +567,9 @@ msgstr "%1%"
 msgid "Menu"
 msgstr ""
 
-msgid "Copy"
-msgstr ""
+#, fuzzy
+msgid "Copy Selected Rows"
+msgstr "Próximo registro"
 
 msgid "#ERROR"
 msgstr ""

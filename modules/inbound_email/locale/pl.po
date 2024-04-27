@@ -160,23 +160,3 @@ msgstr ""
 msgctxt "model:ir.ui.menu,name:menu_inbound_email_inbox_form"
 msgid "Inbox"
 msgstr ""
-
-msgctxt "selection:inbound.email,data_type:"
-msgid "MailPace"
-msgstr ""
-
-msgctxt "selection:inbound.email,data_type:"
-msgid "Mailchimp"
-msgstr ""
-
-msgctxt "selection:inbound.email,data_type:"
-msgid "Postmark"
-msgstr ""
-
-msgctxt "selection:inbound.email,data_type:"
-msgid "Raw"
-msgstr ""
-
-msgctxt "selection:inbound.email,data_type:"
-msgid "SendGrid"
-msgstr ""

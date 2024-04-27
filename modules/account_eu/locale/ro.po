@@ -12,7 +12,7 @@ msgstr "Cod"
 
 msgctxt "field:account.ec_sales_list,company_tax_identifier:"
 msgid "Company Tax Identifier"
-msgstr ""
+msgstr "Cod Fiscal"
 
 msgctxt "field:account.ec_sales_list,currency:"
 msgid "Currency"
@@ -22,9 +22,10 @@ msgctxt "field:account.ec_sales_list,party:"
 msgid "Party"
 msgstr "Parte"
 
+#, fuzzy
 msgctxt "field:account.ec_sales_list,party_tax_identifier:"
 msgid "Party Tax Identifier"
-msgstr ""
+msgstr "Identificator Fiscal al Părţii"
 
 msgctxt "field:account.ec_sales_list.context,company:"
 msgid "Company"
@@ -38,34 +39,42 @@ msgctxt "field:account.ec_sales_list.context,period:"
 msgid "Period"
 msgstr "Perioadă"
 
+#, fuzzy
 msgctxt "field:account.tax,ec_sales_list_code:"
 msgid "EC Sales List Code"
-msgstr ""
+msgstr "Codul listei de vânzări CE"
 
+#, fuzzy
 msgctxt "field:account.tax.template,ec_sales_list_code:"
 msgid "EC Sales List Code"
-msgstr ""
+msgstr "Codul listei de vânzări CE"
 
+#, fuzzy
 msgctxt "model:account.ec_sales_list,name:"
 msgid "EC Sales List"
-msgstr ""
+msgstr "Lista de vânzări CE"
 
+#, fuzzy
 msgctxt "model:account.ec_sales_list.context,name:"
 msgid "EC Sales List Context"
-msgstr ""
+msgstr "Contextul listei de vânzări CE"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_ec_sales_list_form"
 msgid "EC Sales List"
-msgstr ""
+msgstr "Lista de vânzări CE"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_ec_sales_list"
 msgid "EC Sales List"
-msgstr ""
+msgstr "Lista de vânzări CE"
 
+#, fuzzy
 msgctxt "view:account.tax.template:"
 msgid "EC Sales List"
-msgstr ""
+msgstr "Lista de vânzări CE"
 
+#, fuzzy
 msgctxt "view:account.tax:"
 msgid "EC Sales List"
-msgstr ""
+msgstr "Lista de vânzări CE"

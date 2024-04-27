@@ -241,6 +241,11 @@ msgid "Invoice Lines"
 msgstr "ລາຍການເກັບເງິນ"
 
 #, fuzzy
+msgctxt "field:sale.line,invoice_progress:"
+msgid "Invoice Progress"
+msgstr "ທີ່ຢູ່"
+
+#, fuzzy
 msgctxt "field:sale.line,moves:"
 msgid "Moves"
 msgstr "ຕັດບັນຊີສາງ"

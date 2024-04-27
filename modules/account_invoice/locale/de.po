@@ -961,6 +961,26 @@ msgstr ""
 "Rechnung \"%(invoice)s\" kann nicht verrechnet werden, da sie noch nicht "
 "festgeschrieben wurde."
 
+#, fuzzy
+msgctxt ""
+"model:ir.message,text:msg_invoice_currency_exchange_credit_account_missing"
+msgid ""
+"To post invoice \"%(invoice)s\", you must define a currency exchange credit "
+"account for \"%(company)s\"."
+msgstr ""
+"Um Rechnung invoice \"%(invoice)s\" festschreiben zu können, muss ein "
+"Nummernkreis für das Geschäftsjahr \"%(fiscalyear)s\" definiert sein."
+
+#, fuzzy
+msgctxt ""
+"model:ir.message,text:msg_invoice_currency_exchange_debit_account_missing"
+msgid ""
+"To post invoice \"%(invoice)s\", you must define a currency exchange debit "
+"account for \"%(company)s\"."
+msgstr ""
+"Um Rechnung invoice \"%(invoice)s\" festschreiben zu können, muss ein "
+"Nummernkreis für das Geschäftsjahr \"%(fiscalyear)s\" definiert sein."
+
 msgctxt "model:ir.message,text:msg_invoice_customer_cancel_move"
 msgid ""
 "You cannot cancel customer invoice \"%(invoice)s\" because it is posted and "
@@ -1078,7 +1098,7 @@ msgstr ""
 
 msgctxt "model:ir.message,text:msg_invoice_similar"
 msgid "The invoice \"%(invoice)s\" is similar to invoice \"%(similar)s\"."
-msgstr "Die Rechnungen \"%(invoices)s\" ist ähnlich zu Rechnung \"%(similar)s\"."
+msgstr "Die Rechnung \"%(invoice)s\" ist ähnlich zu Rechnung \"%(similar)s\"."
 
 msgctxt "model:ir.message,text:msg_invoice_tax_create"
 msgid ""
@@ -1392,6 +1412,10 @@ msgstr "Allgemein"
 msgctxt "view:account.invoice.line:"
 msgid "Notes"
 msgstr "Notizen"
+
+msgctxt "view:account.invoice.payment_term.line.delta:"
+msgid "Operations are applied in this displayed order."
+msgstr ""
 
 msgctxt "view:account.invoice.payment_term.line:"
 msgid "%"

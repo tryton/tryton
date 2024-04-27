@@ -31,6 +31,10 @@ msgid "disable thread usage"
 msgstr "schakel gebruik van threads uit"
 
 #, python-format
+msgid "Invalid response id (%s) expected %s"
+msgstr ""
+
+#, python-format
 msgid "Unable to set locale %s"
 msgstr "Kan omgeving %s niet instellen"
 
@@ -130,14 +134,26 @@ msgstr "Download"
 msgid "Could not get a session."
 msgstr "Kan geen sessie krijgen."
 
+#, python-format
+msgid "Error \"%s\". Try again later."
+msgstr "Te veel verzoeken\"%s\". Probeer het later nog eens."
+
 msgid "Too many requests. Try again later."
 msgstr "Te veel verzoeken. Probeer het later nog eens."
 
-msgid "Not found."
-msgstr "Niet gevonden."
-
 msgid "Not Found."
 msgstr "Niet gevonden."
+
+msgid "Reset forgotten password"
+msgstr ""
+
+msgid "Send you an email to reset your password."
+msgstr ""
+
+msgid ""
+"A request to reset your password has been sent.\n"
+"Please check your mailbox."
+msgstr ""
 
 msgid "..."
 msgstr "..."
@@ -1084,7 +1100,19 @@ msgstr "Afbeelding te groot."
 msgid "Copy"
 msgstr "Kopieer"
 
-msgid "Paste"
+#, fuzzy
+msgid "Copy Row"
+msgstr "_Kopieer URL"
+
+#, fuzzy
+msgid "Copy Rows"
+msgstr "_Kopieer URL"
+
+msgid "Copy Column"
+msgstr ""
+
+#, fuzzy
+msgid "Paste Rows"
 msgstr "Plakken"
 
 msgid ".."

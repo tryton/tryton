@@ -127,15 +127,13 @@ msgctxt "field:product.product,cost_prices:"
 msgid "Cost Prices"
 msgstr "Costuri"
 
-#, fuzzy
 msgctxt "field:product.product,default_uom:"
 msgid "Default UoM"
 msgstr "UM Implicita"
 
-#, fuzzy
 msgctxt "field:product.product,default_uom_category:"
 msgid "Default UoM Category"
-msgstr "Categorie implicita al UM"
+msgstr "Categorie Implicita UM"
 
 msgctxt "field:product.product,description:"
 msgid "Description"
@@ -209,15 +207,13 @@ msgctxt "field:product.template,cost_price_methods:"
 msgid "Cost Price Methods"
 msgstr "Metode Pret cost"
 
-#, fuzzy
 msgctxt "field:product.template,default_uom:"
 msgid "Default UoM"
 msgstr "UM Implicita"
 
-#, fuzzy
 msgctxt "field:product.template,default_uom_category:"
 msgid "Default UoM Category"
-msgstr "Categorie implicita al UM"
+msgstr "Categorie Implicita UM"
 
 msgctxt "field:product.template,list_price:"
 msgid "List Price"
@@ -349,19 +345,17 @@ msgctxt "help:product.product,cost_price_method:"
 msgid "The method used to calculate the cost price."
 msgstr "Metoda utilizată pentru calcularea a costului."
 
-#, fuzzy
 msgctxt "help:product.product,default_uom:"
 msgid ""
 "The standard Unit of Measure for the product.\n"
 "Used internally when calculating the stock levels of goods and assets."
 msgstr ""
-"Unitatea standard de măsură pentru produs.\n"
-"Folosit intern la calcularea nivelului stocului de bunuri și active."
+"Unitatea standard de măsură pentru produsul.\n"
+"Folosit intern la calcularea nivelului stocului de marfă și active."
 
-#, fuzzy
 msgctxt "help:product.product,default_uom_category:"
 msgid "The category of the default Unit of Measure."
-msgstr "Categorii de unități de măsură"
+msgstr "Categoria Unităţii de Măsura implicite."
 
 msgctxt "help:product.product,identifiers:"
 msgid "Other identifiers associated with the variant."
@@ -407,19 +401,17 @@ msgctxt "help:product.template,cost_price_method:"
 msgid "The method used to calculate the cost price."
 msgstr "Metoda utilizată pentru calcularea a costului."
 
-#, fuzzy
 msgctxt "help:product.template,default_uom:"
 msgid ""
 "The standard Unit of Measure for the product.\n"
 "Used internally when calculating the stock levels of goods and assets."
 msgstr ""
 "Unitatea standard de măsură pentru produs.\n"
-"Folosit intern la calcularea nivelului stocului de bunuri și active."
+"Folosit intern la calcularea nivelului stocului de marfuri și active."
 
-#, fuzzy
 msgctxt "help:product.template,default_uom_category:"
 msgid "The category of the default Unit of Measure."
-msgstr "Categorii de unități de măsură"
+msgstr "Categora Unităţii de Măsura implicite."
 
 msgctxt "help:product.template,list_price:"
 msgid "The standard price the product is sold at."
@@ -513,27 +505,22 @@ msgctxt "model:ir.message,text:msg_product_code_unique"
 msgid "Code of active product must be unique."
 msgstr "Codul al unui produs activ trebuie să fie unic."
 
-#, fuzzy
 msgctxt "model:ir.message,text:msg_uom_decrease_digits"
 msgid "You cannot decrease the digits of the unit of measure \"%(uom)s\"."
 msgstr "Nu se pot reduce zecimalele al UM \"%(uom)s\"."
 
-#, fuzzy
 msgctxt "model:ir.message,text:msg_uom_incompatible_factor_rate"
 msgid "Incompatible factor and rate values on unit of measure\"%(uom)s\"."
 msgstr "Factor şi rata incompatibil pentru UM \"%(uom)s\"."
 
-#, fuzzy
 msgctxt "model:ir.message,text:msg_uom_modify_category"
 msgid "You cannot modify the category of the unit of measure \"%(uom)s\"."
 msgstr "Categoria de UM nu se poate modifica \"%(uom)s\"."
 
-#, fuzzy
 msgctxt "model:ir.message,text:msg_uom_modify_factor"
 msgid "You cannot modify the factor of the unit of measure \"%(uom)s\"."
 msgstr "Nu se poate modifica factorul Unităţii de Masură \"%(uom)s\"."
 
-#, fuzzy
 msgctxt "model:ir.message,text:msg_uom_modify_options"
 msgid ""
 "If the unit of measure is still not used, you can delete it otherwise you "
@@ -542,10 +529,9 @@ msgstr ""
 "Dacă UM nu este utilizată se poate şterge, altfel se poate dezactiva în "
 "vedere creării unei noi UM."
 
-#, fuzzy
 msgctxt "model:ir.message,text:msg_uom_modify_rate"
 msgid "You cannot modify the rate of the unit of measure\"%(uom)s\"."
-msgstr "Nu se poate modifică rate al UM \"%(uom)s\"."
+msgstr "Nu se poate modifică rata al UM \"%(uom)s\"."
 
 msgctxt "model:ir.message,text:msg_uom_no_zero_factor_rate"
 msgid "Rate and factor can not be both equal to zero."

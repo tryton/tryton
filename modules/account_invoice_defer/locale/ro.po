@@ -1,4 +1,5 @@
 #
+#, fuzzy
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
@@ -22,19 +23,19 @@ msgstr ""
 
 msgctxt "field:account.invoice.deferred,amount:"
 msgid "Amount"
-msgstr ""
+msgstr "Suma"
 
 msgctxt "field:account.invoice.deferred,company:"
 msgid "Company"
-msgstr ""
+msgstr "Compania"
 
 msgctxt "field:account.invoice.deferred,currency:"
 msgid "Currency"
-msgstr ""
+msgstr "Moneda"
 
 msgctxt "field:account.invoice.deferred,end_date:"
 msgid "End Date"
-msgstr ""
+msgstr "Data Sfarsit"
 
 msgctxt "field:account.invoice.deferred,invoice_line:"
 msgid "Invoice Line"
@@ -42,15 +43,15 @@ msgstr ""
 
 msgctxt "field:account.invoice.deferred,journal:"
 msgid "Journal"
-msgstr ""
+msgstr "Jurnal"
 
 msgctxt "field:account.invoice.deferred,moves:"
 msgid "Moves"
-msgstr ""
+msgstr "Miscari"
 
 msgctxt "field:account.invoice.deferred,start_date:"
 msgid "Start Date"
-msgstr ""
+msgstr "Data Inceput"
 
 msgctxt "field:account.invoice.deferred,state:"
 msgid "State"
@@ -58,7 +59,7 @@ msgstr ""
 
 msgctxt "field:account.invoice.deferred,type:"
 msgid "Type"
-msgstr ""
+msgstr "Tip"
 
 msgctxt "field:account.invoice.line,defer_from:"
 msgid "Defer From"
@@ -96,7 +97,7 @@ msgstr ""
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_invoice_deferred_in_form_domain_draft"
 msgid "Draft"
-msgstr ""
+msgstr "Ciorna"
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_invoice_deferred_in_form_domain_running"
@@ -111,7 +112,7 @@ msgstr ""
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_invoice_deferred_out_form_domain_draft"
 msgid "Draft"
-msgstr ""
+msgstr "Ciorna"
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_invoice_deferred_out_form_domain_running"

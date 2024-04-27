@@ -1,10 +1,11 @@
 #
+#, fuzzy
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "field:account.invoice,documents_incoming:"
 msgid "Incoming Documents"
-msgstr ""
+msgstr "Documenti in Arrivo"
 
 msgctxt "field:document.incoming.configuration,default_supplier:"
 msgid "Default Supplier"
@@ -13,11 +14,13 @@ msgstr ""
 msgctxt "model:ir.message,text:msg_supplier_invoice_company"
 msgid "To process document \"%(document)s\" you must set a company on it."
 msgstr ""
+"Per elaborare il documento \"%(document)s\" è necessario impostarvi una "
+"azienda."
 
 msgctxt "selection:document.incoming,type:"
 msgid "Supplier Invoice"
-msgstr ""
+msgstr "Fattura Fornitore"
 
 msgctxt "view:document.incoming.configuration:"
 msgid "Supplier Invoice"
-msgstr ""
+msgstr "Fattura Fornitore"

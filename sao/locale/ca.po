@@ -110,7 +110,8 @@ msgstr "Dreceres de la pestanya"
 msgid "Unable to reach the server."
 msgstr "No s'ha pogut connectar amb el servidor."
 
-msgid "Too many requests. Try again later."
+#, fuzzy
+msgid "Error: \"%1\". Try again later."
 msgstr "Massa peticions. Proveu-ho de nou més tard."
 
 msgid "Login"
@@ -125,8 +126,19 @@ msgstr "Nom d'usuari"
 msgid "Login with"
 msgstr "Identificar-se amb"
 
+msgid "Too many requests. Try again later."
+msgstr "Massa peticions. Proveu-ho de nou més tard."
+
 msgid "Not found."
 msgstr "No s'han trobat."
+
+msgid "Send you an email to reset your password."
+msgstr ""
+
+msgid ""
+"A request to reset your password has been sent.\n"
+"Please check your mailbox."
+msgstr ""
 
 msgid "Your selection:"
 msgstr "La vostra selecció:"
@@ -431,7 +443,7 @@ msgid "Modified at"
 msgstr "Modificat el"
 
 msgid "\"%1\" is required."
-msgstr "\"%1\" s obligatori."
+msgstr "\"%1\" és obligatori."
 
 msgid "\"%1\" is not valid according to its domain."
 msgstr "\"%1\" no és vàlid segons el seu domini."
@@ -518,8 +530,9 @@ msgstr "%1%"
 msgid "Menu"
 msgstr "Menú"
 
-msgid "Copy"
-msgstr "Copia"
+#, fuzzy
+msgid "Copy Selected Rows"
+msgstr "Registres seleccionats"
 
 msgid "#ERROR"
 msgstr "#ERROR"

@@ -202,8 +202,8 @@ msgstr "ຜະລິດຕະພັນ"
 
 #, fuzzy
 msgctxt "view:account.create_chart.properties:"
-msgid "Category"
-msgstr "ໝວດ"
+msgid "Product"
+msgstr "ຜະລິດຕະພັນ"
 
 msgctxt "view:product.category:"
 msgid "Accounting"

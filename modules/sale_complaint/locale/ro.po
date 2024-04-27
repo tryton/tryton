@@ -4,15 +4,15 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "field:sale.complaint,actions:"
 msgid "Actions"
-msgstr ""
+msgstr "Acțiuni"
 
 msgctxt "field:sale.complaint,approved_by:"
 msgid "Approved By"
-msgstr ""
+msgstr "Aprobat de"
 
 msgctxt "field:sale.complaint,cancelled_by:"
 msgid "Cancelled By"
-msgstr ""
+msgstr "Anulat de"
 
 msgctxt "field:sale.complaint,company:"
 msgid "Company"
@@ -20,7 +20,7 @@ msgstr "Companie"
 
 msgctxt "field:sale.complaint,customer:"
 msgid "Customer"
-msgstr ""
+msgstr "Client"
 
 msgctxt "field:sale.complaint,date:"
 msgid "Date"
@@ -38,33 +38,35 @@ msgctxt "field:sale.complaint,origin:"
 msgid "Origin"
 msgstr "Origine"
 
+#, fuzzy
 msgctxt "field:sale.complaint,origin_id:"
 msgid "Origin ID"
-msgstr ""
+msgstr "ID de origine"
 
 msgctxt "field:sale.complaint,origin_model:"
 msgid "Origin Model"
-msgstr ""
+msgstr "Model de origine"
 
 msgctxt "field:sale.complaint,reference:"
 msgid "Reference"
-msgstr ""
+msgstr "Referinţă"
 
 msgctxt "field:sale.complaint,rejected_by:"
 msgid "Rejected By"
-msgstr ""
+msgstr "Respins de"
 
 msgctxt "field:sale.complaint,state:"
 msgid "State"
-msgstr ""
+msgstr "Stare"
 
+#, fuzzy
 msgctxt "field:sale.complaint,submitted_by:"
 msgid "Submitted By"
-msgstr ""
+msgstr "Depus de"
 
 msgctxt "field:sale.complaint,type:"
 msgid "Type"
-msgstr ""
+msgstr "Tip"
 
 msgctxt "field:sale.complaint.action,action:"
 msgid "Action"
@@ -72,43 +74,43 @@ msgstr "Acțiune"
 
 msgctxt "field:sale.complaint.action,amount:"
 msgid "Amount"
-msgstr ""
+msgstr "Suma"
 
 msgctxt "field:sale.complaint.action,complaint:"
 msgid "Complaint"
-msgstr ""
+msgstr "Reclamație"
 
 msgctxt "field:sale.complaint.action,complaint_state:"
 msgid "Complaint State"
-msgstr ""
+msgstr "Starea Reclamației"
 
 msgctxt "field:sale.complaint.action,currency:"
 msgid "Currency"
-msgstr ""
+msgstr "Monedă"
 
 msgctxt "field:sale.complaint.action,invoice_lines:"
 msgid "Invoice Lines"
-msgstr ""
+msgstr "Rânduri Factură"
 
 msgctxt "field:sale.complaint.action,quantity:"
 msgid "Quantity"
-msgstr ""
+msgstr "Cantitate"
 
 msgctxt "field:sale.complaint.action,result:"
 msgid "Result"
-msgstr ""
+msgstr "Rezultat"
 
 msgctxt "field:sale.complaint.action,sale_lines:"
 msgid "Sale Lines"
-msgstr ""
+msgstr "Rânduri de vânzare"
 
 msgctxt "field:sale.complaint.action,unit:"
 msgid "Unit"
-msgstr ""
+msgstr "Unitate"
 
 msgctxt "field:sale.complaint.action,unit_price:"
 msgid "Unit Price"
-msgstr ""
+msgstr "Preț unitar"
 
 msgctxt "field:sale.complaint.action-account.invoice.line,action:"
 msgid "Action"
@@ -116,36 +118,37 @@ msgstr "Acțiune"
 
 msgctxt "field:sale.complaint.action-account.invoice.line,amount:"
 msgid "Amount"
-msgstr ""
+msgstr "Suma"
 
+#, fuzzy
 msgctxt ""
 "field:sale.complaint.action-account.invoice.line,complaint_origin_id:"
 msgid "Complaint Origin ID"
-msgstr ""
+msgstr "ID de origine a reclamației"
 
 msgctxt "field:sale.complaint.action-account.invoice.line,complaint_state:"
 msgid "Complaint State"
-msgstr ""
+msgstr "Starea Reclamației"
 
 msgctxt "field:sale.complaint.action-account.invoice.line,currency:"
 msgid "Currency"
-msgstr ""
+msgstr "Monedă"
 
 msgctxt "field:sale.complaint.action-account.invoice.line,line:"
 msgid "Invoice Line"
-msgstr ""
+msgstr "Rând Factură"
 
 msgctxt "field:sale.complaint.action-account.invoice.line,quantity:"
 msgid "Quantity"
-msgstr ""
+msgstr "Cantitate"
 
 msgctxt "field:sale.complaint.action-account.invoice.line,unit:"
 msgid "Unit"
-msgstr ""
+msgstr "Unitate"
 
 msgctxt "field:sale.complaint.action-account.invoice.line,unit_price:"
 msgid "Unit Price"
-msgstr ""
+msgstr "Preț unitar"
 
 msgctxt "field:sale.complaint.action-sale.line,action:"
 msgid "Action"
@@ -153,227 +156,239 @@ msgstr "Acțiune"
 
 msgctxt "field:sale.complaint.action-sale.line,amount:"
 msgid "Amount"
-msgstr ""
+msgstr "Suma"
 
+#, fuzzy
 msgctxt "field:sale.complaint.action-sale.line,complaint_origin_id:"
 msgid "Complaint Origin ID"
-msgstr ""
+msgstr "ID de origine a reclamației"
 
 msgctxt "field:sale.complaint.action-sale.line,complaint_state:"
 msgid "Complaint State"
-msgstr ""
+msgstr "Starea Reclamației"
 
 msgctxt "field:sale.complaint.action-sale.line,currency:"
 msgid "Currency"
-msgstr ""
+msgstr "Monedă"
 
 msgctxt "field:sale.complaint.action-sale.line,line:"
 msgid "Sale Line"
-msgstr ""
+msgstr "Rând de vânzare"
 
 msgctxt "field:sale.complaint.action-sale.line,quantity:"
 msgid "Quantity"
-msgstr ""
+msgstr "Cantitate"
 
 msgctxt "field:sale.complaint.action-sale.line,unit:"
 msgid "Unit"
-msgstr ""
+msgstr "Unitate"
 
 msgctxt "field:sale.complaint.action-sale.line,unit_price:"
 msgid "Unit Price"
-msgstr ""
+msgstr "Preț unitar"
 
 msgctxt "field:sale.complaint.type,name:"
 msgid "Name"
-msgstr ""
+msgstr "Nume"
 
 msgctxt "field:sale.complaint.type,origin:"
 msgid "Origin"
 msgstr "Origine"
 
+#, fuzzy
 msgctxt "field:sale.configuration,complaint_sequence:"
 msgid "Complaint Sequence"
-msgstr ""
+msgstr "Secvența Reclamației"
 
+#, fuzzy
 msgctxt "field:sale.configuration.sequence,complaint_sequence:"
 msgid "Complaint Sequence"
-msgstr ""
+msgstr "Secvența Reclamației"
 
 msgctxt "help:sale.complaint.action,invoice_lines:"
 msgid "Leave empty for all lines."
-msgstr ""
+msgstr "Lăsați gol pentru toate rândurile."
 
 msgctxt "help:sale.complaint.action,quantity:"
 msgid "Leave empty for the same quantity."
-msgstr ""
+msgstr "Lăsați gol pentru aceeași cantitate."
 
 msgctxt "help:sale.complaint.action,sale_lines:"
 msgid "Leave empty for all lines."
-msgstr ""
+msgstr "Lăsați gol pentru toate rândurile."
 
 msgctxt "help:sale.complaint.action,unit_price:"
 msgid "Leave empty for the same price."
-msgstr ""
+msgstr "Lăsați gol pentru același preț."
 
 msgctxt "help:sale.complaint.action-account.invoice.line,unit_price:"
 msgid "Leave empty for the same price."
-msgstr ""
+msgstr "Lăsați gol pentru același preț."
 
 msgctxt "help:sale.complaint.action-sale.line,unit_price:"
 msgid "Leave empty for the same price."
-msgstr ""
+msgstr "Lăsați gol pentru același preț."
 
 msgctxt "model:ir.action,name:act_complaint_form"
 msgid "Complaints"
-msgstr ""
+msgstr "Reclamații"
 
 msgctxt "model:ir.action,name:act_complaint_relate_party"
 msgid "Customer Complaints"
-msgstr ""
+msgstr "Reclamațiile clienților"
 
 msgctxt "model:ir.action,name:act_complaint_relate_sale"
 msgid "Complaints"
-msgstr ""
+msgstr "Reclamații"
 
 msgctxt "model:ir.action,name:act_type_form"
 msgid "Types"
-msgstr ""
+msgstr "Tipuri"
 
+#, fuzzy
 msgctxt "model:ir.action.act_window.domain,name:act_complaint_form_domain_all"
 msgid "All"
-msgstr ""
+msgstr "Tot"
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_complaint_form_domain_approved"
 msgid "Approved"
-msgstr ""
+msgstr "Aprobat"
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_complaint_form_domain_draft"
 msgid "Draft"
-msgstr ""
+msgstr "Ciornă"
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_complaint_form_domain_waiting"
 msgid "Waiting"
-msgstr ""
+msgstr "În Aşteptare"
 
 msgctxt "model:ir.message,text:msg_action_delete_result"
 msgid "You cannot delete action \"%(action)s\" because it has a result."
-msgstr ""
+msgstr "Nu se poate șterge acțiunea \"%(action)s\" deoarece are un rezultat."
 
 msgctxt "model:ir.message,text:msg_complaint_delete_draft"
 msgid "To delete complaint \"%(complaint)s\" you must reset it to draft state."
 msgstr ""
+"Pentru a șterge reclamația \"%(complaint)s\", trebuie resetată la starea de "
+"ciornă."
 
 msgctxt "model:ir.model.button,string:complaint_approve_button"
 msgid "Approve"
-msgstr ""
+msgstr "Aprobare"
 
 msgctxt "model:ir.model.button,string:complaint_cancel_button"
 msgid "Cancel"
-msgstr ""
+msgstr "Anulare"
 
 msgctxt "model:ir.model.button,string:complaint_do_button"
 msgid "Process"
-msgstr ""
+msgstr "Procesare"
 
 msgctxt "model:ir.model.button,string:complaint_draft_button"
 msgid "Draft"
-msgstr ""
+msgstr "Ciornă"
 
 msgctxt "model:ir.model.button,string:complaint_reject_button"
 msgid "Reject"
-msgstr ""
+msgstr "Respinge"
 
 msgctxt "model:ir.model.button,string:complaint_wait_button"
 msgid "Wait"
-msgstr ""
+msgstr "Așteptare"
 
 msgctxt "model:ir.rule.group,name:rule_group_complaint_companies"
 msgid "User in companies"
-msgstr ""
+msgstr "Utilizator în Companii"
 
 msgctxt "model:ir.sequence,name:sequence_complaint"
 msgid "Customer Complaint"
-msgstr ""
+msgstr "Reclamație client"
 
 msgctxt "model:ir.sequence.type,name:sequence_type_complaint"
 msgid "Customer Complaint"
-msgstr ""
+msgstr "Reclamație client"
 
 msgctxt "model:ir.ui.menu,name:menu_complaint"
 msgid "Complaints"
-msgstr ""
+msgstr "Reclamații"
 
 msgctxt "model:ir.ui.menu,name:menu_configuration"
 msgid "Customer Complaint"
-msgstr ""
+msgstr "Reclamație client"
 
 msgctxt "model:ir.ui.menu,name:menu_type"
 msgid "Types"
-msgstr ""
+msgstr "Tipuri"
 
 msgctxt "model:sale.complaint,name:"
 msgid "Customer Complaint"
-msgstr ""
+msgstr "Reclamație client"
 
+#, fuzzy
 msgctxt "model:sale.complaint.action,name:"
 msgid "Customer Complaint Action"
-msgstr ""
+msgstr "Acțiune Reclamație Client"
 
+#, fuzzy
 msgctxt "model:sale.complaint.action-account.invoice.line,name:"
 msgid "Customer Complaint Action - Invoice Line"
-msgstr ""
+msgstr "Acțiune Reclamație Client - Rând Factură"
 
 msgctxt "model:sale.complaint.action-sale.line,name:"
 msgid "Customer Complaint Action - Sale Line"
-msgstr ""
+msgstr "Acțiune Reclamație Client - Rând Vânzare"
 
+#, fuzzy
 msgctxt "model:sale.complaint.type,name:"
 msgid "Customer Complaint Type"
-msgstr ""
+msgstr "Tip Reclamație Client"
 
 msgctxt "selection:sale.complaint,state:"
 msgid "Approved"
-msgstr ""
+msgstr "Aprobat"
 
 msgctxt "selection:sale.complaint,state:"
 msgid "Cancelled"
-msgstr ""
+msgstr "Anulat"
 
 msgctxt "selection:sale.complaint,state:"
 msgid "Done"
-msgstr ""
+msgstr "Terminat"
 
 msgctxt "selection:sale.complaint,state:"
 msgid "Draft"
-msgstr ""
+msgstr "Ciornă"
 
 msgctxt "selection:sale.complaint,state:"
 msgid "Rejected"
-msgstr ""
+msgstr "Respins"
 
 msgctxt "selection:sale.complaint,state:"
 msgid "Waiting"
-msgstr ""
+msgstr "În Aşteptare"
 
+#, fuzzy
 msgctxt "selection:sale.complaint.action,action:"
 msgid "Create Credit Note"
-msgstr ""
+msgstr "Creare notă de credit"
 
+#, fuzzy
 msgctxt "selection:sale.complaint.action,action:"
 msgid "Create Sale Return"
-msgstr ""
+msgstr "Creare retur de vânzare"
 
 msgctxt "view:sale.complaint:"
 msgid "Complaint"
-msgstr ""
+msgstr "Reclamație"
 
 msgctxt "view:sale.complaint:"
 msgid "Other Info"
-msgstr ""
+msgstr "Alte informații"
 
+#, fuzzy
 msgctxt "view:sale.complaint:"
 msgid "Process"
-msgstr ""
+msgstr "Procesare"

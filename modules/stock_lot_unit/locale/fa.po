@@ -42,12 +42,12 @@ msgstr "مقدار"
 
 #, fuzzy
 msgctxt "help:product.product,lot_uom:"
-msgid "The default unit of measurer for lot."
+msgid "The default unit of measure for lot."
 msgstr "واحد پیشفرض قطعه."
 
 #, fuzzy
 msgctxt "help:product.template,lot_uom:"
-msgid "The default unit of measurer for lot."
+msgid "The default unit of measure for lot."
 msgstr "واحد پیشفرض قطعه."
 
 msgctxt "help:stock.lot,unit:"

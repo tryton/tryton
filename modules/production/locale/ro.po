@@ -4,19 +4,19 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "field:product.product,boms:"
 msgid "BOMs"
-msgstr ""
+msgstr "BOM-uri"
 
 msgctxt "field:product.product,producible:"
 msgid "Producible"
-msgstr ""
+msgstr "Productibil"
 
 msgctxt "field:product.product,production_lead_times:"
 msgid "Lead Times"
-msgstr ""
+msgstr "Timpi de livrare"
 
 msgctxt "field:product.product-production.bom,bom:"
 msgid "BOM"
-msgstr ""
+msgstr "BOM"
 
 msgctxt "field:product.product-production.bom,product:"
 msgid "Product"
@@ -24,15 +24,15 @@ msgstr "Produs"
 
 msgctxt "field:product.template,producible:"
 msgid "Producible"
-msgstr ""
+msgstr "Productibil"
 
 msgctxt "field:production,assigned_by:"
 msgid "Assigned By"
-msgstr ""
+msgstr "Alocat de"
 
 msgctxt "field:production,bom:"
 msgid "BOM"
-msgstr ""
+msgstr "BOM"
 
 msgctxt "field:production,company:"
 msgid "Company"
@@ -44,23 +44,23 @@ msgstr "Cost"
 
 msgctxt "field:production,done_by:"
 msgid "Done By"
-msgstr ""
+msgstr "Făcut De"
 
 msgctxt "field:production,effective_start_date:"
 msgid "Effective Start Date"
-msgstr ""
+msgstr "Data de începere efectivă"
 
 msgctxt "field:production,inputs:"
 msgid "Inputs"
-msgstr ""
+msgstr "Intrări"
 
 msgctxt "field:production,location:"
 msgid "Location"
-msgstr ""
+msgstr "Locație"
 
 msgctxt "field:production,number:"
 msgid "Number"
-msgstr ""
+msgstr "Număr"
 
 msgctxt "field:production,origin:"
 msgid "Origin"
@@ -68,15 +68,15 @@ msgstr "Origine"
 
 msgctxt "field:production,outputs:"
 msgid "Outputs"
-msgstr ""
+msgstr "Ieșiri"
 
 msgctxt "field:production,partially_assigned:"
 msgid "Partially Assigned"
-msgstr ""
+msgstr "Parțial Alocat"
 
 msgctxt "field:production,planned_start_date:"
 msgid "Planned Start Date"
-msgstr ""
+msgstr "Data de începere planificată"
 
 msgctxt "field:production,product:"
 msgid "Product"
@@ -90,46 +90,46 @@ msgctxt "field:production,reference:"
 msgid "Reference"
 msgstr "Referinţă"
 
+#, fuzzy
 msgctxt "field:production,run_by:"
 msgid "Run By"
-msgstr ""
+msgstr "Condus de"
 
 msgctxt "field:production,state:"
 msgid "State"
-msgstr ""
+msgstr "Stare"
 
 msgctxt "field:production,unit:"
 msgid "Unit"
-msgstr ""
+msgstr "Unitate"
 
-#, fuzzy
 msgctxt "field:production,uom_category:"
 msgid "UoM Category"
-msgstr "Categorie"
+msgstr "Categorie UM"
 
 msgctxt "field:production,warehouse:"
 msgid "Warehouse"
-msgstr ""
+msgstr "Depozit"
 
 msgctxt "field:production.bom,inputs:"
 msgid "Inputs"
-msgstr ""
+msgstr "Intrări"
 
 msgctxt "field:production.bom,name:"
 msgid "Name"
-msgstr ""
+msgstr "Nume"
 
 msgctxt "field:production.bom,output_products:"
 msgid "Output Products"
-msgstr ""
+msgstr "Produse de ieșire"
 
 msgctxt "field:production.bom,outputs:"
 msgid "Outputs"
-msgstr ""
+msgstr "Ieșiri"
 
 msgctxt "field:production.bom.input,bom:"
 msgid "BOM"
-msgstr ""
+msgstr "BOM"
 
 msgctxt "field:production.bom.input,product:"
 msgid "Product"
@@ -141,15 +141,15 @@ msgstr "Cantitate"
 
 msgctxt "field:production.bom.input,unit:"
 msgid "Unit"
-msgstr ""
+msgstr "Unitate"
 
 msgctxt "field:production.bom.input,uom_category:"
 msgid "Uom Category"
-msgstr ""
+msgstr "Categorie UM"
 
 msgctxt "field:production.bom.output,bom:"
 msgid "BOM"
-msgstr ""
+msgstr "BOM"
 
 msgctxt "field:production.bom.output,product:"
 msgid "Product"
@@ -157,15 +157,15 @@ msgstr "Produs"
 
 msgctxt "field:production.bom.output,quantity:"
 msgid "Quantity"
-msgstr ""
+msgstr "Cantitate"
 
 msgctxt "field:production.bom.output,unit:"
 msgid "Unit"
-msgstr ""
+msgstr "Unitate"
 
 msgctxt "field:production.bom.output,uom_category:"
 msgid "Uom Category"
-msgstr ""
+msgstr "Categorie UM"
 
 msgctxt "field:production.bom.tree,childs:"
 msgid "Childs"
@@ -177,15 +177,15 @@ msgstr "Produs"
 
 msgctxt "field:production.bom.tree,quantity:"
 msgid "Quantity"
-msgstr ""
+msgstr "Cantitate"
 
 msgctxt "field:production.bom.tree,unit:"
 msgid "Unit"
-msgstr ""
+msgstr "Unitate"
 
 msgctxt "field:production.bom.tree.open.start,bom:"
 msgid "BOM"
-msgstr ""
+msgstr "BOM"
 
 msgctxt "field:production.bom.tree.open.start,category:"
 msgid "Category"
@@ -201,15 +201,15 @@ msgstr "Cantitate"
 
 msgctxt "field:production.bom.tree.open.start,unit:"
 msgid "Unit"
-msgstr ""
+msgstr "Unitate"
 
 msgctxt "field:production.bom.tree.open.tree,bom_tree:"
 msgid "BOM Tree"
-msgstr ""
+msgstr "Arborele BOM"
 
 msgctxt "field:production.configuration,production_sequence:"
 msgid "Production Sequence"
-msgstr ""
+msgstr "Secvența de producție"
 
 msgctxt "field:production.configuration.production_sequence,company:"
 msgid "Company"
@@ -218,15 +218,16 @@ msgstr "Companie"
 msgctxt ""
 "field:production.configuration.production_sequence,production_sequence:"
 msgid "Production Sequence"
-msgstr ""
+msgstr "Secvența de producție"
 
 msgctxt "field:production.lead_time,bom:"
 msgid "BOM"
-msgstr ""
+msgstr "BOM"
 
+#, fuzzy
 msgctxt "field:production.lead_time,lead_time:"
 msgid "Lead Time"
-msgstr ""
+msgstr "Timp de livrare"
 
 msgctxt "field:production.lead_time,product:"
 msgid "Product"
@@ -234,80 +235,86 @@ msgstr "Produs"
 
 msgctxt "field:stock.location,production_location:"
 msgid "Production"
-msgstr ""
+msgstr "Producţie"
 
 #, fuzzy
 msgctxt "field:stock.location,production_output_location:"
 msgid "Production Output"
-msgstr "Produs"
+msgstr "Ieșire de producție"
 
 #, fuzzy
 msgctxt "field:stock.location,production_picking_location:"
 msgid "Production Picking"
-msgstr "Produs"
+msgstr "Alegerea producției"
 
 #, fuzzy
 msgctxt "field:stock.lot.trace,production_input:"
 msgid "Production Input"
-msgstr "Produs"
+msgstr "Intrare de producție"
 
 #, fuzzy
 msgctxt "field:stock.lot.trace,production_output:"
 msgid "Production Output"
-msgstr "Produs"
+msgstr "Ieșire de producție"
 
-#, fuzzy
 msgctxt "field:stock.move,production:"
 msgid "Production"
-msgstr "Produs"
+msgstr "Producţie"
 
+#, fuzzy
 msgctxt "field:stock.move,production_cost_price_updated:"
 msgid "Cost Price Updated"
-msgstr ""
+msgstr "Preț actualizat"
 
+#, fuzzy
 msgctxt "field:stock.move,production_input:"
 msgid "Production Input"
-msgstr ""
+msgstr "Intrare de producție"
 
+#, fuzzy
 msgctxt "field:stock.move,production_output:"
 msgid "Production Output"
-msgstr ""
+msgstr "Ieșire de producție"
 
 msgctxt "help:production,number:"
 msgid "The main identifier for the shipment."
-msgstr ""
+msgstr "Identificatorul principal pentru expediere."
 
 msgctxt "help:production,reference:"
 msgid "The external identifier for the shipment."
-msgstr ""
+msgstr "Identificatorul extern pentru expediere."
 
 msgctxt "help:production,uom_category:"
 msgid "The category of Unit of Measure."
-msgstr ""
+msgstr "Categoria de unitate de măsură."
 
 msgctxt "help:stock.location,production_output_location:"
 msgid ""
 "Where the produced goods are stored.\n"
 "Leave empty to use the warehouse storage location."
 msgstr ""
+"Unde sunt depozitate bunurile produse.\n"
+"Lăsați gol pentru a folosi locația de depozitare a depozitului."
 
 msgctxt "help:stock.location,production_picking_location:"
 msgid ""
 "Where the production components are picked from.\n"
 "Leave empty to use the warehouse storage location."
 msgstr ""
+"De unde se ridică componentele de producție.\n"
+"Lăsați gol pentru a folosi locația de depozitare a depozitului."
 
 msgctxt "model:ir.action,name:act_bom_form"
 msgid "BOM"
-msgstr ""
+msgstr "BOM"
 
 msgctxt "model:ir.action,name:act_bom_list"
 msgid "BOMs"
-msgstr ""
+msgstr "BOM-uri"
 
 msgctxt "model:ir.action,name:act_product_in_bom"
 msgid "BOMs"
-msgstr ""
+msgstr "BOM-uri"
 
 msgctxt "model:ir.action,name:act_production_calendar"
 msgid "Productions"
@@ -323,119 +330,125 @@ msgstr "Producţie"
 
 msgctxt "model:ir.action,name:wizard_bom_tree_open"
 msgid "BOM Tree"
-msgstr ""
+msgstr "Arborele BOM"
 
 #, fuzzy
 msgctxt "model:ir.action,name:wizard_production_assign"
 msgid "Assign Production"
-msgstr "Produs"
+msgstr "Alocare Producţie"
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_product_in_bom_output_domain_input"
 msgid "As Inputs"
-msgstr ""
+msgstr "Ca intrări"
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_product_in_bom_output_domain_output"
 msgid "As Outputs"
-msgstr ""
+msgstr "Ca Ieșiri"
 
+#, fuzzy
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_production_list_domain_all"
 msgid "All"
-msgstr ""
+msgstr "Tot"
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_production_list_domain_assigned"
 msgid "Assigned"
-msgstr ""
+msgstr "Alocat"
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_production_list_domain_available"
 msgid "Partially Assigned"
-msgstr ""
+msgstr "Parțial Alocat"
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_production_list_domain_draft"
 msgid "Draft"
-msgstr ""
+msgstr "Ciornă"
 
+#, fuzzy
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_production_list_domain_requests"
 msgid "Requests"
-msgstr ""
+msgstr "Cereri"
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_production_list_domain_running"
 msgid "Running"
-msgstr ""
+msgstr "În derulare"
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_production_list_domain_waiting"
 msgid "Waiting"
-msgstr ""
+msgstr "În Aşteptare"
 
 msgctxt "model:ir.message,text:msg_missing_product_list_price"
 msgid ""
 "The product \"%(product)s\" on production \"%(production)s\" does not have "
 "any list price defined."
 msgstr ""
+"Produsul \"%(product)s\" din producția \"%(production)s\" nu are niciun preț"
+" de listă definit."
 
 msgctxt "model:ir.message,text:msg_recursive_bom"
 msgid "You cannot create a recursive BOM for product \"%(product)s\"."
-msgstr ""
+msgstr "Nu puteți crea un BOM recursiv pentru produsul „%(product)s”."
 
+#, fuzzy
 msgctxt "model:ir.message,text:msg_stock_move_production_single"
 msgid "Move can not be used for production input and output."
-msgstr ""
+msgstr "Mișcarea nu poate fi utilizată pentru intrarea și ieșirea producției."
 
+#, fuzzy
 msgctxt "model:ir.model.button,confirm:production_done_button"
 msgid "Are you sure you want to complete the production?"
-msgstr ""
+msgstr "Sunteți sigur că doriți să finalizați producția?"
 
 msgctxt "model:ir.model.button,string:production_assign_wizard_button"
 msgid "Assign"
-msgstr ""
+msgstr "Alocare"
 
 msgctxt "model:ir.model.button,string:production_cancel_button"
 msgid "Cancel"
-msgstr ""
+msgstr "Anulare"
 
 msgctxt "model:ir.model.button,string:production_done_button"
 msgid "Done"
-msgstr ""
+msgstr "Terminat"
 
 msgctxt "model:ir.model.button,string:production_draft_button"
 msgid "Draft"
-msgstr ""
+msgstr "Ciornă"
 
 msgctxt "model:ir.model.button,string:production_reset_bom_button"
 msgid "Reset to BOM"
-msgstr ""
+msgstr "Resetați la BOM"
 
 msgctxt "model:ir.model.button,string:production_run_button"
 msgid "Run"
-msgstr ""
+msgstr "Rulează"
 
 msgctxt "model:ir.model.button,string:production_wait_button"
 msgid "Wait"
-msgstr ""
+msgstr "Așteptare"
 
 msgctxt "model:ir.rule.group,name:rule_group_production_companies"
 msgid "User in companies"
-msgstr ""
+msgstr "Utilizator în Companii"
 
 msgctxt "model:ir.sequence,name:sequence_production"
 msgid "Production"
-msgstr ""
+msgstr "Producţie"
 
 msgctxt "model:ir.sequence.type,name:sequence_type_production"
 msgid "Production"
-msgstr ""
+msgstr "Producţie"
 
 msgctxt "model:ir.ui.menu,name:menu_bom_list"
 msgid "BOMs"
-msgstr ""
+msgstr "BOM-uri"
 
 msgctxt "model:ir.ui.menu,name:menu_configuration"
 msgid "Configuration"
@@ -460,15 +473,15 @@ msgstr "Producţie"
 
 msgctxt "model:product.product-production.bom,name:"
 msgid "Product - BOM"
-msgstr ""
+msgstr "Produs - BOM"
 
 msgctxt "model:production,name:"
 msgid "Production"
-msgstr ""
+msgstr "Producţie"
 
 msgctxt "model:production.bom,name:"
 msgid "Bill of Material"
-msgstr ""
+msgstr "Lista materialelor"
 
 msgctxt "model:production.bom.input,name:"
 msgid "Bill of Material Input"
@@ -478,25 +491,27 @@ msgctxt "model:production.bom.output,name:"
 msgid "Bill of Material Output"
 msgstr ""
 
+#, fuzzy
 msgctxt "model:production.bom.tree,name:"
 msgid "BOM Tree"
-msgstr ""
+msgstr "Arborele BOM"
 
 msgctxt "model:production.bom.tree.open.start,name:"
 msgid "Open BOM Tree"
-msgstr ""
+msgstr "Deschideți arborele BOM"
 
 msgctxt "model:production.bom.tree.open.tree,name:"
 msgid "Open BOM Tree"
-msgstr ""
+msgstr "Deschideți arborele BOM"
 
 msgctxt "model:production.configuration,name:"
 msgid "Production Configuration"
-msgstr ""
+msgstr "Configurația producției"
 
+#, fuzzy
 msgctxt "model:production.configuration.production_sequence,name:"
 msgid "Production Configuration Production Sequence"
-msgstr ""
+msgstr "Configurația producției Secvența de producție"
 
 msgctxt "model:production.lead_time,name:"
 msgid "Production Lead Time"
@@ -504,15 +519,16 @@ msgstr ""
 
 msgctxt "model:res.group,name:group_production"
 msgid "Production"
-msgstr ""
+msgstr "Producţie"
 
+#, fuzzy
 msgctxt "model:res.group,name:group_production_admin"
 msgid "Production Administration"
-msgstr ""
+msgstr "Administrare producție"
 
 msgctxt "model:stock.location,name:location_production"
 msgid "Production"
-msgstr ""
+msgstr "Producţie"
 
 msgctxt "selection:ir.cron,method:"
 msgid "Assign Productions"
@@ -522,67 +538,68 @@ msgctxt "selection:ir.cron,method:"
 msgid "Reschedule Productions"
 msgstr "Reprogramare Producţie"
 
+#, fuzzy
 msgctxt "selection:ir.cron,method:"
 msgid "Set Cost from Moves"
-msgstr ""
+msgstr "Setați costul din mișcări"
 
 msgctxt "selection:production,state:"
 msgid "Assigned"
-msgstr ""
+msgstr "Alocat"
 
 msgctxt "selection:production,state:"
 msgid "Cancelled"
-msgstr ""
+msgstr "Anulat"
 
 msgctxt "selection:production,state:"
 msgid "Done"
-msgstr ""
+msgstr "Terminat"
 
 msgctxt "selection:production,state:"
 msgid "Draft"
-msgstr ""
+msgstr "Ciornă"
 
+#, fuzzy
 msgctxt "selection:production,state:"
 msgid "Request"
-msgstr ""
+msgstr "Cerere"
 
 msgctxt "selection:production,state:"
 msgid "Running"
-msgstr ""
+msgstr "În derulare"
 
 msgctxt "selection:production,state:"
 msgid "Waiting"
-msgstr ""
+msgstr "În Aşteptare"
 
-#, fuzzy
 msgctxt "view:product.template:"
 msgid "Production"
-msgstr "Produs"
+msgstr "Producţie"
 
 msgctxt "view:production.bom:"
 msgid "Lines"
-msgstr ""
+msgstr "Rânduri"
 
 msgctxt "view:production:"
 msgid "Lines"
-msgstr ""
+msgstr "Rânduri"
 
 msgctxt "view:production:"
 msgid "Other Info"
-msgstr ""
+msgstr "Alte informații"
 
 msgctxt "wizard_button:production.bom.tree.open,start,end:"
 msgid "Cancel"
-msgstr ""
+msgstr "Anulare"
 
 msgctxt "wizard_button:production.bom.tree.open,start,tree:"
 msgid "OK"
-msgstr ""
+msgstr "OK"
 
 msgctxt "wizard_button:production.bom.tree.open,tree,end:"
 msgid "Close"
-msgstr ""
+msgstr "Închidere"
 
 msgctxt "wizard_button:production.bom.tree.open,tree,start:"
 msgid "Change"
-msgstr ""
+msgstr "Schimbare"

@@ -110,7 +110,8 @@ msgstr "Tab snelkoppelingen"
 msgid "Unable to reach the server."
 msgstr "Kan geen verbinding maken met server."
 
-msgid "Too many requests. Try again later."
+#, fuzzy
+msgid "Error: \"%1\". Try again later."
 msgstr "Te veel verzoeken. Probeer het later nog eens."
 
 msgid "Login"
@@ -125,8 +126,19 @@ msgstr "Gebruikersnaam"
 msgid "Login with"
 msgstr "Inloggen met"
 
+msgid "Too many requests. Try again later."
+msgstr "Te veel verzoeken. Probeer het later nog eens."
+
 msgid "Not found."
 msgstr "Niet gevonden."
+
+msgid "Send you an email to reset your password."
+msgstr ""
+
+msgid ""
+"A request to reset your password has been sent.\n"
+"Please check your mailbox."
+msgstr ""
 
 msgid "Your selection:"
 msgstr "Uw selectie:"
@@ -518,8 +530,9 @@ msgstr "%1%"
 msgid "Menu"
 msgstr "Menu"
 
-msgid "Copy"
-msgstr "Kopieer"
+#, fuzzy
+msgid "Copy Selected Rows"
+msgstr "Geselecteerde records"
 
 msgid "#ERROR"
 msgstr "#FOUT"

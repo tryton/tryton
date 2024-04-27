@@ -124,7 +124,7 @@ msgstr ""
 
 msgctxt "field:sale.point.cash.transfer,currency:"
 msgid "Currency"
-msgstr ""
+msgstr "Valuta"
 
 msgctxt "field:sale.point.cash.transfer,date:"
 msgid "Date"
@@ -284,7 +284,7 @@ msgstr ""
 
 msgctxt "field:sale.point.sale.line,currency:"
 msgid "Currency"
-msgstr ""
+msgstr "Valuta"
 
 msgctxt "field:sale.point.sale.line,moves:"
 msgid "Moves"

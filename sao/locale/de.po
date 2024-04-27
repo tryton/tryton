@@ -110,7 +110,8 @@ msgstr "Registerkarten Tastenkombinationen"
 msgid "Unable to reach the server."
 msgstr "Kann nicht zum Server verbinden."
 
-msgid "Too many requests. Try again later."
+#, fuzzy
+msgid "Error: \"%1\". Try again later."
 msgstr "Zu viele Anfragen. Bitte versuchen Sie es später erneut."
 
 msgid "Login"
@@ -125,8 +126,19 @@ msgstr "Benutzername"
 msgid "Login with"
 msgstr "Log-in mit"
 
+msgid "Too many requests. Try again later."
+msgstr "Zu viele Anfragen. Bitte versuchen Sie es später erneut."
+
 msgid "Not found."
 msgstr "Nicht gefunden."
+
+msgid "Send you an email to reset your password."
+msgstr ""
+
+msgid ""
+"A request to reset your password has been sent.\n"
+"Please check your mailbox."
+msgstr ""
 
 msgid "Your selection:"
 msgstr "Ihre Auswahl:"
@@ -524,8 +536,9 @@ msgstr "%1%"
 msgid "Menu"
 msgstr "Menü"
 
-msgid "Copy"
-msgstr "Kopieren"
+#, fuzzy
+msgid "Copy Selected Rows"
+msgstr "Ausgewählte Datensätze"
 
 msgid "#ERROR"
 msgstr "#FEHLER"

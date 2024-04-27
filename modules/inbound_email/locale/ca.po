@@ -166,23 +166,3 @@ msgstr "Correu electrònic entrant"
 msgctxt "model:ir.ui.menu,name:menu_inbound_email_inbox_form"
 msgid "Inbox"
 msgstr "Safata d'entrada"
-
-msgctxt "selection:inbound.email,data_type:"
-msgid "MailPace"
-msgstr "MailPace"
-
-msgctxt "selection:inbound.email,data_type:"
-msgid "Mailchimp"
-msgstr "Mailchimp"
-
-msgctxt "selection:inbound.email,data_type:"
-msgid "Postmark"
-msgstr "Postmark"
-
-msgctxt "selection:inbound.email,data_type:"
-msgid "Raw"
-msgstr "En cru"
-
-msgctxt "selection:inbound.email,data_type:"
-msgid "SendGrid"
-msgstr "SendGrid"

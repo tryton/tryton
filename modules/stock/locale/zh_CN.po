@@ -2064,6 +2064,10 @@ msgid ""
 "deactivating the product."
 msgstr "建议在停用产品之前清除库位的库存。"
 
+msgctxt "model:ir.message,text:msg_product_quantities_max"
+msgid "You cannot select more than %(max)s products to compute quantities."
+msgstr ""
+
 msgctxt "model:ir.message,text:msg_shipment_check_quantity"
 msgid ""
 "The quantities of shipment \"%(shipment)s\" are different by %(quantities)s."
@@ -2153,17 +2157,42 @@ msgctxt "model:ir.model.button,confirm:move_do_button"
 msgid "Are you sure you want to complete the move?"
 msgstr "确定要完成库存变动吗？"
 
+#, fuzzy
+msgctxt "model:ir.model.button,confirm:shipment_in_cancel_button"
+msgid "Are you sure you want to cancel the shipment?"
+msgstr "确定要取消库存变动吗?"
+
 msgctxt "model:ir.model.button,confirm:shipment_in_receive_button"
 msgid "Are you sure you want to receive the shipment?"
 msgstr "确定要收货吗?"
+
+#, fuzzy
+msgctxt "model:ir.model.button,confirm:shipment_in_return_cancel_button"
+msgid "Are you sure you want to cancel the shipment?"
+msgstr "确定要取消库存变动吗?"
 
 msgctxt "model:ir.model.button,confirm:shipment_in_return_done_button"
 msgid "Are you sure you want to complete the shipment?"
 msgstr "确定要完成收货吗?"
 
+#, fuzzy
+msgctxt "model:ir.model.button,confirm:shipment_internal_cancel_button"
+msgid "Are you sure you want to cancel the shipment?"
+msgstr "确定要取消库存变动吗?"
+
+#, fuzzy
+msgctxt "model:ir.model.button,confirm:shipment_out_cancel_button"
+msgid "Are you sure you want to cancel the shipment?"
+msgstr "确定要取消库存变动吗?"
+
 msgctxt "model:ir.model.button,confirm:shipment_out_done_button"
 msgid "Are you sure you want to complete the shipment?"
 msgstr "确定要完成发货吗?"
+
+#, fuzzy
+msgctxt "model:ir.model.button,confirm:shipment_out_return_cancel_button"
+msgid "Are you sure you want to cancel the shipment?"
+msgstr "确定要取消库存变动吗?"
 
 msgctxt "model:ir.model.button,confirm:shipment_out_return_receive_button"
 msgid "Are you sure you want to receive the shipment?"

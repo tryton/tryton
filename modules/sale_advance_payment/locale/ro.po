@@ -13,7 +13,7 @@ msgstr ""
 #, fuzzy
 msgctxt "field:account.invoice.line,advance_payment_recalled_lines:"
 msgid "Advance Payment Recalled Lines"
-msgstr "Termen de plata in avans"
+msgstr "Rânduri de plată în avans rechemate"
 
 msgctxt "field:sale.advance_payment.condition,account:"
 msgid "Account"
@@ -31,13 +31,14 @@ msgctxt "field:sale.advance_payment.condition,block_supply:"
 msgid "Block Supply"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:sale.advance_payment.condition,completed:"
 msgid "Completed"
-msgstr ""
+msgstr "Efectuat"
 
 msgctxt "field:sale.advance_payment.condition,currency:"
 msgid "Currency"
-msgstr ""
+msgstr "Monedă"
 
 msgctxt "field:sale.advance_payment.condition,description:"
 msgid "Description"
@@ -45,15 +46,15 @@ msgstr "Descriere"
 
 msgctxt "field:sale.advance_payment.condition,invoice_delay:"
 msgid "Invoice Delay"
-msgstr ""
+msgstr "Întârzierea facturii"
 
 msgctxt "field:sale.advance_payment.condition,invoice_lines:"
 msgid "Invoice Lines"
-msgstr ""
+msgstr "Rânduri Factură"
 
 msgctxt "field:sale.advance_payment.condition,sale:"
 msgid "Sale"
-msgstr ""
+msgstr "Vânzare"
 
 msgctxt "field:sale.advance_payment.condition,sale_company:"
 msgid "Company"
@@ -61,7 +62,7 @@ msgstr "Companie"
 
 msgctxt "field:sale.advance_payment.condition,sale_state:"
 msgid "Sale State"
-msgstr ""
+msgstr "Starea vânzării"
 
 msgctxt "field:sale.advance_payment_term,lines:"
 msgid "Lines"
@@ -69,7 +70,7 @@ msgstr "Rânduri"
 
 msgctxt "field:sale.advance_payment_term,name:"
 msgid "Name"
-msgstr ""
+msgstr "Nume"
 
 msgctxt "field:sale.advance_payment_term.line,account:"
 msgid "Account"
@@ -97,11 +98,11 @@ msgstr "Descriere"
 
 msgctxt "field:sale.advance_payment_term.line,formula:"
 msgid "Formula"
-msgstr ""
+msgstr "Formulă"
 
 msgctxt "field:sale.advance_payment_term.line,invoice_delay:"
 msgid "Invoice Delay"
-msgstr ""
+msgstr "Întârzierea facturii"
 
 msgctxt "field:sale.advance_payment_term.line.account,account:"
 msgid "Account"
@@ -113,35 +114,38 @@ msgstr "Companie"
 
 msgctxt "field:sale.advance_payment_term.line.account,line:"
 msgid "Line"
-msgstr ""
+msgstr "Rând"
 
 msgctxt "field:sale.sale,advance_payment_conditions:"
 msgid "Advance Payment Conditions"
-msgstr ""
+msgstr "Condiții de plată în avans"
 
 msgctxt "field:sale.sale,advance_payment_invoices:"
 msgid "Advance Payment Invoices"
-msgstr ""
+msgstr "Facturi cu plata în avans"
 
 msgctxt "field:sale.sale,advance_payment_term:"
 msgid "Advance Payment Term"
-msgstr ""
+msgstr "Termen de plată în avans"
 
 msgctxt "help:sale.advance_payment_term.line,account:"
 msgid "Used for the line of advance payment invoice."
-msgstr ""
+msgstr "Folosit pentru rândul facturii de plată în avans."
 
 msgctxt "help:sale.advance_payment_term.line,block_shipping:"
 msgid "Check to prevent the packing of the shipment before advance payment."
 msgstr ""
+"Bifați pentru a preveni ambalarea transportului înainte de plata în avans."
 
 msgctxt "help:sale.advance_payment_term.line,block_supply:"
 msgid "Check to prevent any supply request before advance payment."
 msgstr ""
+"Bifați pentru a preveni orice cerere de aprovizionare înainte de plata în "
+"avans."
 
 msgctxt "help:sale.advance_payment_term.line,description:"
 msgid "Used as description for the invoice line."
-msgstr ""
+msgstr "Folosit ca descriere pentru rândul de factură."
 
 msgctxt "help:sale.advance_payment_term.line,formula:"
 msgid ""
@@ -149,47 +153,58 @@ msgid ""
 "- total_amount: The total amount of the sale.\n"
 "- untaxed_amount: The total untaxed amount of the sale."
 msgstr ""
+"O expresie Python utilizată pentru a calcula suma plății în avans care va fi evaluată cu:\n"
+"- total_amount: suma totală a vânzării.\n"
+"- untaxed_amount: suma totală netaxată a vânzării."
 
+#, fuzzy
 msgctxt "help:sale.advance_payment_term.line,invoice_delay:"
 msgid ""
 "Delta to apply on the sale date for the date of the advance payment invoice."
 msgstr ""
+"Diferența care să se aplice la data vânzării pentru data facturii de plată "
+"în avans."
 
 msgctxt "model:ir.action,name:act_advance_invoice_form"
 msgid "Advance Invoices"
-msgstr ""
+msgstr "Facturi în avans"
 
 msgctxt "model:ir.action,name:act_advance_payment_term_form"
 msgid "Advance Payment Terms"
-msgstr ""
+msgstr "Termene de plată în avans"
 
 msgctxt "model:ir.message,text:msg_shipping_blocked"
 msgid ""
 "To pack shipments the customer must paid the advance payment for sale "
 "\"%(sale)s\"."
 msgstr ""
+"Pentru a ambala expedierile clientul trebuie să plătească avansul pentru "
+"vânzarea „%(sale)s”."
 
+#, fuzzy
 msgctxt "model:ir.message,text:msg_term_line_invalid_formula"
 msgid ""
 "Invalid formula \"%(formula)s\" in term line \"%(term_line)s\" with "
 "exception \"%(exception)s\"."
 msgstr ""
+"Formula „%(formula)s” invalidă în rândul termenului „%(term_line)s” cu "
+"excepția „%(exception)s”."
 
 msgctxt "model:ir.ui.menu,name:menu_advance_payment_term"
 msgid "Advance Payment Terms"
-msgstr ""
+msgstr "Termene de plată în avans"
 
 msgctxt "model:sale.advance_payment.condition,name:"
 msgid "Advance Payment Condition"
-msgstr ""
+msgstr "Condiție de plată în avans"
 
 msgctxt "model:sale.advance_payment_term,name:"
 msgid "Advance Payment Term"
-msgstr ""
+msgstr "Termen de plată în avans"
 
 msgctxt "model:sale.advance_payment_term.line,name:"
 msgid "Advance Payment Term Line"
-msgstr ""
+msgstr "Rând Termen de plată în avans"
 
 msgctxt "model:sale.advance_payment_term.line.account,name:"
 msgid "Advance Payment Term Line Account"

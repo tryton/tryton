@@ -4,37 +4,35 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "field:account.invoice,purchase_exception_state:"
 msgid "Exception State"
-msgstr ""
+msgstr "Stare de excepție"
 
 msgctxt "field:account.invoice,purchases:"
 msgid "Purchases"
-msgstr ""
+msgstr "Achiziții"
 
 msgctxt "field:party.party,customer_code:"
 msgid "Customer Code"
-msgstr ""
+msgstr "Cod Client"
 
 msgctxt "field:party.party,customer_codes:"
 msgid "Customer Codes"
-msgstr ""
+msgstr "Coduri client"
 
-#, fuzzy
 msgctxt "field:party.party,supplier_currencies:"
 msgid "Supplier Currencies"
-msgstr "Furnizor"
+msgstr "Monede ale furnizorului"
 
-#, fuzzy
 msgctxt "field:party.party,supplier_currency:"
 msgid "Supplier Currency"
-msgstr "Moneda"
+msgstr "Moneda furnizorului"
 
 msgctxt "field:party.party,supplier_lead_time:"
 msgid "Lead Time"
-msgstr ""
+msgstr "Timp de livrare"
 
 msgctxt "field:party.party,supplier_lead_times:"
 msgid "Lead Times"
-msgstr ""
+msgstr "Timpi de livrare"
 
 msgctxt "field:party.party.customer_code,company:"
 msgid "Company"
@@ -42,7 +40,7 @@ msgstr "Companie"
 
 msgctxt "field:party.party.customer_code,customer_code:"
 msgid "Customer Code"
-msgstr ""
+msgstr "Cod Client"
 
 msgctxt "field:party.party.customer_code,party:"
 msgid "Party"
@@ -53,12 +51,10 @@ msgctxt "field:party.party.supplier_currency,party:"
 msgid "Party"
 msgstr "Parte"
 
-#, fuzzy
 msgctxt "field:party.party.supplier_currency,supplier_currency:"
 msgid "Supplier Currency"
-msgstr "Moneda"
+msgstr "Moneda furnizorului"
 
-#, fuzzy
 msgctxt "field:party.party.supplier_lead_time,company:"
 msgid "Company"
 msgstr "Companie"
@@ -70,59 +66,58 @@ msgstr "Parte"
 
 msgctxt "field:party.party.supplier_lead_time,supplier_lead_time:"
 msgid "Lead Time"
-msgstr ""
+msgstr "Timp de livrare"
 
-#, fuzzy
 msgctxt "field:product.product,last_purchase_price_uom:"
 msgid "Last Purchase Price"
-msgstr "Achiziții"
+msgstr "Ultimul preț de achiziție"
 
 msgctxt "field:product.product,product_suppliers:"
 msgid "Suppliers"
-msgstr ""
+msgstr "Furnizori"
 
+#, fuzzy
 msgctxt "field:product.product,purchasable:"
 msgid "Purchasable"
-msgstr ""
+msgstr "Cumparabil"
 
 msgctxt "field:product.product,purchase_price_uom:"
 msgid "Purchase Price"
-msgstr ""
+msgstr "Preț de achiziție"
 
-#, fuzzy
 msgctxt "field:product.product,purchase_uom:"
 msgid "Purchase UoM"
-msgstr "Achiziții"
+msgstr "UM Achiziție"
 
 msgctxt "field:product.template,product_suppliers:"
 msgid "Suppliers"
-msgstr ""
-
-msgctxt "field:product.template,purchasable:"
-msgid "Purchasable"
-msgstr ""
+msgstr "Furnizori"
 
 #, fuzzy
+msgctxt "field:product.template,purchasable:"
+msgid "Purchasable"
+msgstr "Cumparabil"
+
 msgctxt "field:product.template,purchase_uom:"
 msgid "Purchase UoM"
-msgstr "Achiziții"
+msgstr "UM Achiziție"
 
 msgctxt "field:purchase.configuration,purchase_invoice_method:"
 msgid "Invoice Method"
-msgstr ""
+msgstr "Metoda de facturare"
 
 msgctxt "field:purchase.configuration,purchase_process_after:"
 msgid "Process Purchase after"
-msgstr ""
+msgstr "Procesați achiziția după"
 
 msgctxt "field:purchase.configuration,purchase_sequence:"
 msgid "Purchase Sequence"
-msgstr ""
+msgstr "Secvența de achiziție"
 
 msgctxt ""
 "field:purchase.configuration.purchase_method,purchase_invoice_method:"
 msgid "Invoice Method"
-msgstr ""
+msgstr "Metoda de facturare"
 
 msgctxt "field:purchase.configuration.sequence,company:"
 msgid "Company"
@@ -130,7 +125,7 @@ msgstr "Companie"
 
 msgctxt "field:purchase.configuration.sequence,purchase_sequence:"
 msgid "Purchase Sequence"
-msgstr ""
+msgstr "Secvența de achiziție"
 
 msgctxt "field:purchase.handle.invoice.exception.ask,domain_invoices:"
 msgid "Domain Invoices"
@@ -138,19 +133,20 @@ msgstr ""
 
 msgctxt "field:purchase.handle.invoice.exception.ask,recreate_invoices:"
 msgid "Recreate Invoices"
-msgstr ""
+msgstr "Recreere facturi"
 
+#, fuzzy
 msgctxt "field:purchase.handle.shipment.exception.ask,domain_moves:"
 msgid "Domain Moves"
-msgstr ""
+msgstr "Mișcări de domeniu"
 
 msgctxt "field:purchase.handle.shipment.exception.ask,recreate_moves:"
 msgid "Recreate Moves"
-msgstr ""
+msgstr "Recreere mișcări"
 
 msgctxt "field:purchase.line,actual_quantity:"
 msgid "Actual Quantity"
-msgstr ""
+msgstr "Cantitate Reala"
 
 msgctxt "field:purchase.line,amount:"
 msgid "Amount"
@@ -170,48 +166,54 @@ msgstr "Data de livrare"
 
 msgctxt "field:purchase.line,delivery_date_edit:"
 msgid "Edit Delivery Date"
-msgstr ""
+msgstr "Editare dată livrare"
 
 msgctxt "field:purchase.line,delivery_date_store:"
 msgid "Delivery Date"
-msgstr ""
+msgstr "Data de livrare"
 
 msgctxt "field:purchase.line,description:"
 msgid "Description"
 msgstr "Descriere"
 
+#, fuzzy
 msgctxt "field:purchase.line,from_location:"
 msgid "From Location"
-msgstr ""
+msgstr "Din Locaţie"
 
 msgctxt "field:purchase.line,invoice_lines:"
 msgid "Invoice Lines"
-msgstr ""
+msgstr "Rânduri Factură"
+
+#, fuzzy
+msgctxt "field:purchase.line,invoice_progress:"
+msgid "Invoice Progress"
+msgstr "Adresa de facturare"
 
 msgctxt "field:purchase.line,moves:"
 msgid "Moves"
-msgstr ""
+msgstr "Mișcări"
 
 #, fuzzy
 msgctxt "field:purchase.line,moves_exception:"
 msgid "Moves Exception"
-msgstr "Gestionare Excepție Factura"
+msgstr "Excepție de Mișcare"
 
 msgctxt "field:purchase.line,moves_ignored:"
 msgid "Ignored Moves"
-msgstr ""
+msgstr "Mișcări ignorate"
 
 msgctxt "field:purchase.line,moves_progress:"
 msgid "Moves Progress"
-msgstr ""
+msgstr "Progres Mișcări"
 
 msgctxt "field:purchase.line,moves_recreated:"
 msgid "Recreated Moves"
-msgstr ""
+msgstr "Mișcări recreate"
 
 msgctxt "field:purchase.line,note:"
 msgid "Note"
-msgstr ""
+msgstr "Notă"
 
 msgctxt "field:purchase.line,product:"
 msgid "Product"
@@ -219,41 +221,40 @@ msgstr "Produs"
 
 msgctxt "field:purchase.line,product_supplier:"
 msgid "Supplier's Product"
-msgstr ""
+msgstr "Produsul Furnizorului"
 
 msgctxt "field:purchase.line,product_uom_category:"
 msgid "Product UoM Category"
-msgstr ""
+msgstr "Categorie UM Produs"
 
 msgctxt "field:purchase.line,purchase:"
 msgid "Purchase"
-msgstr ""
+msgstr "Achiziție"
 
-#, fuzzy
 msgctxt "field:purchase.line,purchase_date:"
 msgid "Purchase Date"
-msgstr "Achiziții"
+msgstr "Data Achiziției"
 
+#, fuzzy
 msgctxt "field:purchase.line,purchase_state:"
 msgid "Purchase State"
-msgstr ""
+msgstr "Stare Achiziție"
 
 msgctxt "field:purchase.line,quantity:"
 msgid "Quantity"
-msgstr ""
+msgstr "Cantitate"
 
 msgctxt "field:purchase.line,summary:"
 msgid "Summary"
-msgstr ""
+msgstr "Sumar"
 
-#, fuzzy
 msgctxt "field:purchase.line,supplier:"
 msgid "Supplier"
 msgstr "Furnizor"
 
 msgctxt "field:purchase.line,taxes:"
 msgid "Taxes"
-msgstr ""
+msgstr "Taxe"
 
 msgctxt "field:purchase.line,to_location:"
 msgid "To Location"
@@ -261,23 +262,23 @@ msgstr "Spre Locație"
 
 msgctxt "field:purchase.line,type:"
 msgid "Type"
-msgstr ""
+msgstr "Tip"
 
 msgctxt "field:purchase.line,unit:"
 msgid "Unit"
-msgstr ""
+msgstr "Unitate"
 
 msgctxt "field:purchase.line,unit_price:"
 msgid "Unit Price"
-msgstr ""
+msgstr "Preț unitar"
 
 msgctxt "field:purchase.line,warehouse:"
 msgid "Warehouse"
-msgstr ""
+msgstr "Depozit"
 
 msgctxt "field:purchase.line-account.tax,line:"
 msgid "Purchase Line"
-msgstr ""
+msgstr "Rând de cumpărare"
 
 msgctxt "field:purchase.line-account.tax,tax:"
 msgid "Tax"
@@ -289,15 +290,15 @@ msgstr "Mișcare"
 
 msgctxt "field:purchase.line-ignored-stock.move,purchase_line:"
 msgid "Purchase Line"
-msgstr ""
+msgstr "Rând de cumpărare"
 
 msgctxt "field:purchase.line-recreated-stock.move,move:"
 msgid "Move"
-msgstr ""
+msgstr "Mișcare"
 
 msgctxt "field:purchase.line-recreated-stock.move,purchase_line:"
 msgid "Purchase Line"
-msgstr ""
+msgstr "Rând de cumpărare"
 
 msgctxt "field:purchase.product_supplier,code:"
 msgid "Code"
@@ -313,23 +314,23 @@ msgstr "Moneda"
 
 msgctxt "field:purchase.product_supplier,lead_time:"
 msgid "Lead Time"
-msgstr ""
+msgstr "Timp de livrare"
 
 msgctxt "field:purchase.product_supplier,name:"
 msgid "Name"
-msgstr ""
+msgstr "Nume"
 
 msgctxt "field:purchase.product_supplier,party:"
 msgid "Supplier"
-msgstr ""
+msgstr "Furnizor"
 
 msgctxt "field:purchase.product_supplier,prices:"
 msgid "Prices"
-msgstr ""
+msgstr "Prețuri"
 
 msgctxt "field:purchase.product_supplier,product:"
 msgid "Variant"
-msgstr ""
+msgstr "Variantă"
 
 msgctxt "field:purchase.product_supplier,template:"
 msgid "Product"
@@ -337,7 +338,7 @@ msgstr "Produs"
 
 msgctxt "field:purchase.product_supplier,unit:"
 msgid "Unit"
-msgstr ""
+msgstr "Unitate"
 
 msgctxt "field:purchase.product_supplier.price,currency:"
 msgid "Currency"
@@ -349,19 +350,19 @@ msgstr "Furnizor"
 
 msgctxt "field:purchase.product_supplier.price,quantity:"
 msgid "Quantity"
-msgstr ""
+msgstr "Cantitate"
 
 msgctxt "field:purchase.product_supplier.price,unit:"
 msgid "Unit"
-msgstr ""
+msgstr "Unitate"
 
 msgctxt "field:purchase.product_supplier.price,unit_price:"
 msgid "Unit Price"
-msgstr ""
+msgstr "Preț unitar"
 
 msgctxt "field:purchase.purchase,comment:"
 msgid "Comment"
-msgstr ""
+msgstr "Comentariu"
 
 msgctxt "field:purchase.purchase,company:"
 msgid "Company"
@@ -369,7 +370,7 @@ msgstr "Companie"
 
 msgctxt "field:purchase.purchase,confirmed_by:"
 msgid "Confirmed By"
-msgstr ""
+msgstr "Confirmat de"
 
 msgctxt "field:purchase.purchase,contact:"
 msgid "Contact"
@@ -389,11 +390,11 @@ msgstr "Descriere"
 
 msgctxt "field:purchase.purchase,invoice_address:"
 msgid "Invoice Address"
-msgstr ""
+msgstr "Adresa de facturare"
 
 msgctxt "field:purchase.purchase,invoice_method:"
 msgid "Invoice Method"
-msgstr ""
+msgstr "Metoda de facturare"
 
 msgctxt "field:purchase.purchase,invoice_party:"
 msgid "Invoice Party"
@@ -413,7 +414,7 @@ msgstr "Facturi ignorate"
 
 msgctxt "field:purchase.purchase,invoices_recreated:"
 msgid "Recreated Invoices"
-msgstr ""
+msgstr "Facturi recreate"
 
 msgctxt "field:purchase.purchase,lines:"
 msgid "Lines"
@@ -429,7 +430,7 @@ msgstr "Număr"
 
 msgctxt "field:purchase.purchase,origin:"
 msgid "Origin"
-msgstr ""
+msgstr "Origine"
 
 msgctxt "field:purchase.purchase,party:"
 msgid "Party"
@@ -445,23 +446,25 @@ msgstr "Termen de plata"
 
 msgctxt "field:purchase.purchase,purchase_date:"
 msgid "Purchase Date"
-msgstr ""
+msgstr "Data Achiziției"
 
 msgctxt "field:purchase.purchase,quoted_by:"
 msgid "Quoted By"
-msgstr ""
+msgstr "Ofertat de"
 
 msgctxt "field:purchase.purchase,reference:"
 msgid "Reference"
-msgstr ""
+msgstr "Referinţă"
 
+#, fuzzy
 msgctxt "field:purchase.purchase,shipment_returns:"
 msgid "Shipment Returns"
-msgstr ""
+msgstr "Retururi expediție"
 
+#, fuzzy
 msgctxt "field:purchase.purchase,shipment_state:"
 msgid "Shipment State"
-msgstr ""
+msgstr "Starea expedierii"
 
 msgctxt "field:purchase.purchase,shipments:"
 msgid "Shipments"
@@ -469,7 +472,7 @@ msgstr "Expedieri"
 
 msgctxt "field:purchase.purchase,state:"
 msgid "State"
-msgstr ""
+msgstr "Stare"
 
 msgctxt "field:purchase.purchase,tax_amount:"
 msgid "Tax"
@@ -481,7 +484,7 @@ msgstr ""
 
 msgctxt "field:purchase.purchase,total_amount:"
 msgid "Total"
-msgstr ""
+msgstr "Total"
 
 msgctxt "field:purchase.purchase,total_amount_cache:"
 msgid "Total Cache"
@@ -489,7 +492,7 @@ msgstr ""
 
 msgctxt "field:purchase.purchase,untaxed_amount:"
 msgid "Untaxed"
-msgstr ""
+msgstr "Neimpozitat"
 
 msgctxt "field:purchase.purchase,untaxed_amount_cache:"
 msgid "Untaxed Cache"
@@ -497,174 +500,183 @@ msgstr ""
 
 msgctxt "field:purchase.purchase,warehouse:"
 msgid "Warehouse"
-msgstr ""
+msgstr "Depozit"
 
 msgctxt "field:purchase.purchase-ignored-account.invoice,invoice:"
 msgid "Invoice"
-msgstr ""
+msgstr "Factură"
 
 msgctxt "field:purchase.purchase-ignored-account.invoice,purchase:"
 msgid "Purchase"
-msgstr ""
+msgstr "Achiziție"
 
 msgctxt "field:purchase.purchase-recreated-account.invoice,invoice:"
 msgid "Invoice"
-msgstr ""
+msgstr "Factură"
 
 msgctxt "field:purchase.purchase-recreated-account.invoice,purchase:"
 msgid "Purchase"
-msgstr ""
+msgstr "Achiziție"
 
-#, fuzzy
 msgctxt "field:purchase.reporting.context,company:"
 msgid "Company"
 msgstr "Companie"
 
 msgctxt "field:purchase.reporting.context,from_date:"
 msgid "From Date"
-msgstr ""
+msgstr "De la Data"
 
 msgctxt "field:purchase.reporting.context,period:"
 msgid "Period"
-msgstr ""
+msgstr "Perioadă"
 
 msgctxt "field:purchase.reporting.context,to_date:"
 msgid "To Date"
-msgstr ""
+msgstr "Până la Data"
 
 msgctxt "field:purchase.reporting.context,warehouse:"
 msgid "Warehouse"
-msgstr ""
+msgstr "Depozit"
 
-#, fuzzy
 msgctxt "field:purchase.reporting.product,product:"
 msgid "Product"
 msgstr "Produs"
 
-#, fuzzy
 msgctxt "field:purchase.reporting.product,product_supplier:"
 msgid "Supplier's Product"
-msgstr "Furnizor"
+msgstr "Produsul Furnizorului"
 
-#, fuzzy
 msgctxt "field:purchase.reporting.product.time_series,product:"
 msgid "Product"
 msgstr "Produs"
 
-#, fuzzy
 msgctxt "field:purchase.reporting.product.time_series,product_supplier:"
 msgid "Supplier's Product"
-msgstr "Furnizor"
+msgstr "Produsul Furnizorului"
 
-#, fuzzy
 msgctxt "field:purchase.reporting.supplier,supplier:"
 msgid "Supplier"
 msgstr "Furnizor"
 
-#, fuzzy
 msgctxt "field:purchase.reporting.supplier.time_series,supplier:"
 msgid "Supplier"
 msgstr "Furnizor"
 
+#, fuzzy
 msgctxt "field:stock.location,supplier_return_location:"
 msgid "Supplier Return"
-msgstr ""
+msgstr "Retururi Furnizor"
 
 msgctxt "field:stock.move,purchase:"
 msgid "Purchase"
-msgstr ""
+msgstr "Achiziție"
 
+#, fuzzy
 msgctxt "field:stock.move,purchase_exception_state:"
 msgid "Exception State"
-msgstr ""
+msgstr "Stare de excepție"
 
 msgctxt "field:stock.move,supplier:"
 msgid "Supplier"
-msgstr ""
+msgstr "Furnizor"
 
 msgctxt "help:party.party,customer_code:"
 msgid ""
 "The code the party as supplier has assigned to the company as customer."
 msgstr ""
+"Codul pe care partea în calitate de furnizor l-a alocat companiei în "
+"calitate de client."
 
 msgctxt "help:party.party,supplier_currency:"
 msgid "Default currency for purchases from this party."
-msgstr ""
+msgstr "Moneda prestabilită pentru achizițiile de la această parte."
 
 msgctxt "help:party.party,supplier_lead_time:"
 msgid ""
 "The time from confirming the purchase order to receiving the goods from the party when used as a supplier.\n"
 "Used if no lead time is set on the product supplier."
 msgstr ""
+"Timpul de la confirmarea comenzii de cumpărare până la primirea bunurilor de la parte atunci când este utilizat ca furnizor.\n"
+"Folosit dacă nu este setat niciun termen de livrare pentru furnizorul produsului."
 
 msgctxt "help:party.party.supplier_currency,supplier_currency:"
 msgid "Default currency for purchases from this party."
-msgstr ""
+msgstr "Moneda prestabilită pentru achizițiile de la această parte."
 
 msgctxt "help:party.party.supplier_lead_time,supplier_lead_time:"
 msgid ""
 "The time from confirming the purchase order to receiving the goods from the party when used as a supplier.\n"
 "Used if no lead time is set on the product supplier."
 msgstr ""
+"Timpul de la confirmarea comenzii de cumpărare până la primirea bunurilor de la parte atunci când este utilizat ca furnizor.\n"
+"Folosit dacă nu este setat niciun termen de livrare pentru furnizorul produsului."
 
 msgctxt "help:product.product,purchase_uom:"
 msgid "The default Unit of Measure for purchases."
-msgstr ""
+msgstr "Unitatea de măsură implicită pentru achiziții."
 
 msgctxt "help:product.template,purchase_uom:"
 msgid "The default Unit of Measure for purchases."
-msgstr ""
+msgstr "Unitatea de măsură implicită pentru achiziții."
 
+#, fuzzy
 msgctxt "help:purchase.configuration,purchase_process_after:"
 msgid ""
 "The grace period during which confirmed purchase can still be reset to draft.\n"
 "Applied only if a worker queue is activated."
 msgstr ""
+"Perioada de grație în timpul căreia achiziția confirmată poate fi resetată în versiune nefinalizată.\n"
+"Se aplică numai dacă este activată o coadă de lucrători."
 
 msgctxt "help:purchase.handle.invoice.exception.ask,recreate_invoices:"
 msgid ""
 "The selected invoices will be recreated. The other ones will be ignored."
-msgstr ""
+msgstr "Facturile selectate vor fi recreate. Celelalte vor fi ignorate."
 
 msgctxt "help:purchase.handle.shipment.exception.ask,recreate_moves:"
 msgid "The selected moves will be recreated. The other ones will be ignored."
-msgstr ""
+msgstr "Mișcările selectate vor fi recreate. Celelalte vor fi ignorate."
 
 msgctxt "help:purchase.line,delivery_date_edit:"
 msgid "Check to edit the delivery date."
-msgstr ""
+msgstr "Bifați pentru a edita data livrării."
 
 msgctxt "help:purchase.line,product_uom_category:"
 msgid "The category of Unit of Measure for the product."
-msgstr ""
+msgstr "Categoria de unitate de măsură pentru produs."
 
 msgctxt "help:purchase.product_supplier,lead_time:"
 msgid ""
 "The time from confirming the purchase order to receiving the products.\n"
 "If empty the lead time of the supplier is used."
 msgstr ""
+"Timpul de la confirmarea comenzii de cumpărare până la primirea produselor.\n"
+"Dacă este gol, se folosește termenul de livrare al furnizorului."
 
+#, fuzzy
 msgctxt "help:purchase.product_supplier,prices:"
 msgid ""
 "Add price for different criteria.\n"
 "The last matching line is used."
 msgstr ""
+"Adăugați preţuri pentru diferite criterii.\n"
+"Primul rând potrivit va fi utilizat."
 
 msgctxt "help:purchase.product_supplier.price,quantity:"
 msgid "Minimal quantity."
-msgstr ""
+msgstr "Cantitate minimă."
 
 msgctxt "help:purchase.product_supplier.price,unit:"
 msgid "The unit in which the quantity is specified."
-msgstr ""
+msgstr "Unitatea în care este specificată cantitatea."
 
 msgctxt "help:purchase.purchase,delivery_date:"
 msgid "The default delivery date for each line."
-msgstr ""
+msgstr "Data de livrare implicită pentru fiecare rând."
 
 msgctxt "help:stock.location,supplier_return_location:"
 msgid "If empty the Storage location is used."
-msgstr ""
+msgstr "Dacă este gol, se utilizează locația de stocare."
 
 msgctxt "model:ir.action,name:act_invoice_form"
 msgid "Invoices"
@@ -672,74 +684,67 @@ msgstr "Facturi"
 
 msgctxt "model:ir.action,name:act_open_supplier"
 msgid "Parties associated to Purchases"
-msgstr ""
+msgstr "Părțile asociate Achizițiilor"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_product_supplier_form"
 msgid "Suppliers"
-msgstr "Furnizor"
+msgstr "Furnizori"
 
 msgctxt "model:ir.action,name:act_product_supplier_price_form"
 msgid "Prices"
-msgstr ""
+msgstr "Prețuri"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_purchase_configuration_form"
 msgid "Configuration"
 msgstr "Configurație"
 
 msgctxt "model:ir.action,name:act_purchase_form"
 msgid "Purchases"
-msgstr ""
+msgstr "Achiziții"
 
 msgctxt "model:ir.action,name:act_purchase_invoice_relate"
 msgid "Purchases"
-msgstr ""
+msgstr "Achiziții"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_purchase_line_relate"
 msgid "Purchase Lines"
-msgstr "Achiziții"
+msgstr "Rânduri de Achiziție"
 
 msgctxt "model:ir.action,name:act_purchase_move_relate"
 msgid "Moves"
-msgstr ""
+msgstr "Mișcări"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_purchase_relate"
 msgid "Purchases"
 msgstr "Achiziții"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_purchase_relate_simple"
 msgid "Purchases"
 msgstr "Achiziții"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_reporting_main"
 msgid "Purchases"
 msgstr "Achiziții"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_reporting_main_time_series"
 msgid "Purchases"
 msgstr "Achiziții"
 
 msgctxt "model:ir.action,name:act_reporting_product"
 msgid "Purchases per Product"
-msgstr ""
+msgstr "Achiziții per produs"
 
 msgctxt "model:ir.action,name:act_reporting_product_time_series"
 msgid "Purchases per Product"
-msgstr ""
+msgstr "Achiziții per produs"
 
 msgctxt "model:ir.action,name:act_reporting_supplier"
 msgid "Purchases per Supplier"
-msgstr ""
+msgstr "Achiziții per Furnizor"
 
 msgctxt "model:ir.action,name:act_reporting_supplier_time_series"
 msgid "Purchases per Supplier"
-msgstr ""
+msgstr "Achiziții per Furnizor"
 
 msgctxt "model:ir.action,name:act_return_form"
 msgid "Returns"
@@ -751,7 +756,7 @@ msgstr "Expedieri"
 
 msgctxt "model:ir.action,name:report_purchase"
 msgid "Purchase"
-msgstr ""
+msgstr "Achiziție"
 
 msgctxt "model:ir.action,name:wizard_invoice_handle_exception"
 msgid "Handle Invoice Exception"
@@ -764,268 +769,298 @@ msgstr "Modificați antetul"
 #, fuzzy
 msgctxt "model:ir.action,name:wizard_return_purchase"
 msgid "Return Purchase"
-msgstr "Returnări"
+msgstr "Retur Achiziție"
 
 msgctxt "model:ir.action,name:wizard_shipment_handle_exception"
 msgid "Handle Shipment Exception"
 msgstr "Gestioneaza Excepție de expediere"
 
+#, fuzzy
 msgctxt "model:ir.action.act_window.domain,name:act_purchase_form_domain_all"
 msgid "All"
-msgstr ""
+msgstr "Tot"
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_purchase_form_domain_confirmed"
 msgid "Confirmed"
-msgstr ""
+msgstr "Confirmat"
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_purchase_form_domain_draft"
 msgid "Draft"
-msgstr ""
+msgstr "Ciornă"
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_purchase_form_domain_exception"
 msgid "Exception"
-msgstr ""
+msgstr "Excepție"
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_purchase_form_domain_processing"
 msgid "Processing"
-msgstr ""
+msgstr "În curs de procesare"
 
+#, fuzzy
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_purchase_form_domain_quotation"
 msgid "Quotation"
-msgstr ""
+msgstr "Cotație"
 
+#, fuzzy
 msgctxt "model:ir.action.act_window.domain,name:act_purchase_line_relate_all"
 msgid "All"
-msgstr ""
+msgstr "Tot"
 
 msgctxt "model:ir.action.act_window.domain,name:act_purchase_line_relate_done"
 msgid "Done"
-msgstr ""
+msgstr "Terminat"
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_purchase_line_relate_pending"
 msgid "Pending"
-msgstr ""
+msgstr "În derulare"
 
+#, fuzzy
 msgctxt "model:ir.action.act_window.domain,name:act_purchase_relate_all"
 msgid "All"
-msgstr ""
+msgstr "Tot"
 
 msgctxt "model:ir.action.act_window.domain,name:act_purchase_relate_done"
 msgid "Done"
-msgstr ""
+msgstr "Terminat"
 
 msgctxt "model:ir.action.act_window.domain,name:act_purchase_relate_pending"
 msgid "Pending"
-msgstr ""
+msgstr "În derulare"
 
+#, fuzzy
 msgctxt "model:ir.message,text:msg_change_purchase_uom"
 msgid ""
-"You are trying to change the purchase unit of measurer on which the purchase"
-" prices are based."
+"You are trying to change the purchase unit of measure on which the purchase "
+"prices are based."
 msgstr ""
+"Încercați să schimbați unitatea de măsură pe care se bazează prețurile de "
+"achiziție."
 
 msgctxt "model:ir.message,text:msg_erase_party_pending_purchase"
 msgid ""
 "You cannot erase party \"%(party)s\" while they have pending purchases with "
 "company \"%(company)s\"."
 msgstr ""
+"Nu se poate șterge partea \"%(party)s\" în timp ce acesta are achiziții în "
+"așteptare cu compania \"%(company)s\"."
 
 msgctxt "model:ir.message,text:msg_purchase_delete_cancel"
 msgid "To delete purchase \"%(purchase)s\" you must cancel it."
 msgstr ""
+"Pentru a șterge achiziția \"%(purchase)s\", aceasta trebuie să fie anulată."
 
 msgctxt "model:ir.message,text:msg_purchase_invoice_reset_draft"
 msgid ""
 "You cannot reset invoice \"%(invoice)s\" to draft because it was generated "
 "by a purchase."
 msgstr ""
+"Nu puteți reseta factura \"%(invoice)s\" la ciornă deoarece a fost generată "
+"de o achiziție."
 
 msgctxt "model:ir.message,text:msg_purchase_line_create_draft"
 msgid ""
 "You cannot add lines to purchase \"%(purchase)s\" because it is no longer in"
 " a draft state."
 msgstr ""
+"Nu se pot adăuga rânduri la achiziția \"%(purchase)s\" pentru că nu mai este"
+" în starea de ciornă."
 
 msgctxt "model:ir.message,text:msg_purchase_line_delete_cancel_draft"
 msgid ""
 "To delete line \"%(line)s\" you must cancel or reset to draft purchase "
 "\"%(purchase)s\"."
 msgstr ""
+"Pentru a șterge rândul \"%(line)s\", achiziția nefinalizată \"%(purchase)s\""
+" trebuie anulată sau resetată."
 
 msgctxt "model:ir.message,text:msg_purchase_line_move_quantity"
 msgid ""
 "The purchase line \"%(line)s\" is moving %(extra)s in addition to the "
 "%(quantity)s ordered."
 msgstr ""
+"Rândul de vânzare \"%(line)s\" mișcă %(extra)s în plus față de %(quantity)s "
+"comandată."
 
 msgctxt "model:ir.message,text:msg_purchase_line_tax_unique"
 msgid "A tax can be added only once to a purchase line."
-msgstr ""
+msgstr "O taxă poate fi adăugată o singură dată la un rând de achiziție."
 
 msgctxt "model:ir.message,text:msg_purchase_missing_account_expense"
 msgid ""
 "To invoice purchase \"%(purchase)s\" you must configure a default account "
 "expense."
 msgstr ""
+"Pentru a factura achiziția \"%(purchase)s\" trebuie să configurați o "
+"cheltuială implicită de cont."
 
 msgctxt "model:ir.message,text:msg_purchase_modify_header_draft"
 msgid ""
 "To modify the header of purchase \"%(purchase)s\", it must be in draft "
 "state."
 msgstr ""
+"Pentru a modifica antetul achiziției \"%(purchase)s\", acesta trebuie să fie"
+" în stare ciornă."
 
 msgctxt "model:ir.message,text:msg_purchase_move_reset_draft"
 msgid ""
 "You cannot reset move \"%(move)s\" to draft because it was generated by a "
 "purchase."
 msgstr ""
+"Nu puteți reseta mișcarea \"%(move)s\" în ciornă deoarece a fost generată de"
+" o achiziție."
 
 msgctxt "model:ir.message,text:msg_purchase_product_missing_account_expense"
 msgid ""
 "To invoice purchase \"%(purchase)s\" you must define an account expense for "
 "product \"%(product)s\"."
 msgstr ""
+"Pentru a factura achiziția \"%(purchase)s\" trebuie să definiți o cheltuială"
+" de cont pentru produsul \"%(product)s\"."
 
-#, fuzzy
 msgctxt "model:ir.message,text:msg_purchase_reporting_company"
 msgid "Company"
 msgstr "Companie"
 
-#, fuzzy
 msgctxt "model:ir.message,text:msg_purchase_reporting_currency"
 msgid "Currency"
 msgstr "Moneda"
 
 msgctxt "model:ir.message,text:msg_purchase_reporting_date"
 msgid "Date"
-msgstr ""
+msgstr "Data"
 
 msgctxt "model:ir.message,text:msg_purchase_reporting_expense"
 msgid "Expense"
-msgstr ""
+msgstr "Cheltuială"
 
+#, fuzzy
 msgctxt "model:ir.message,text:msg_purchase_reporting_expense_trend"
 msgid "Expense Trend"
-msgstr ""
+msgstr "Tendința cheltuielilor"
 
 msgctxt "model:ir.message,text:msg_purchase_reporting_number"
 msgid "#"
-msgstr ""
+msgstr "#"
 
 msgctxt "model:ir.message,text:msg_purchase_reporting_number_help"
 msgid "Number of purchases."
-msgstr ""
+msgstr "Numărul de achiziții."
 
+#, fuzzy
 msgctxt "model:ir.message,text:msg_purchase_reporting_time_series"
 msgid "Time Series"
-msgstr ""
+msgstr "Seria de timp"
 
 msgctxt "model:ir.message,text:msg_purchase_supplier_location_required"
 msgid ""
 "To process purchase \"%(purchase)s\" you must set a supplier location on "
 "party \"%(party)s\"."
 msgstr ""
+"Pentru a procesa achiziția \"%(purchase)s\" trebuie să setați o locație a "
+"furnizorului în partea \"%(party)s\"."
 
 msgctxt "model:ir.message,text:msg_warehouse_required_for_quotation"
 msgid ""
 "To get a quote for the purchase \"%(purchase)s\" you must enter a warehouse."
 msgstr ""
+"Pentru a obține o ofertă pentru achiziția „%(purchase)s” trebuie specificat "
+"un depozit."
 
 msgctxt "model:ir.model.button,string:purchase_cancel_button"
 msgid "Cancel"
-msgstr ""
+msgstr "Anulare"
 
 msgctxt "model:ir.model.button,string:purchase_confirm_button"
 msgid "Confirm"
-msgstr ""
+msgstr "Confirmare"
 
 msgctxt "model:ir.model.button,string:purchase_draft_button"
 msgid "Draft"
-msgstr ""
+msgstr "Ciornă"
 
+#, fuzzy
 msgctxt "model:ir.model.button,string:purchase_hande_invoice_exception_button"
 msgid "Handle Invoice Exception"
-msgstr ""
+msgstr "Gestionare Excepție Factură"
 
+#, fuzzy
 msgctxt ""
 "model:ir.model.button,string:purchase_hande_shipment_exception_button"
 msgid "Handle Shipment Exception"
-msgstr ""
+msgstr "Gestionare Excepție Expediere"
 
-#, fuzzy
 msgctxt "model:ir.model.button,string:purchase_manual_invoice_button"
 msgid "Create Invoice"
-msgstr "Facturi ignorate"
+msgstr "Creare Factura"
 
 msgctxt "model:ir.model.button,string:purchase_modify_header_button"
 msgid "Modify Header"
-msgstr ""
+msgstr "Modificare Antet"
 
 msgctxt "model:ir.model.button,string:purchase_process_button"
 msgid "Process"
-msgstr ""
+msgstr "Procesare"
 
 msgctxt "model:ir.model.button,string:purchase_quote_button"
 msgid "Quote"
-msgstr ""
+msgstr "Ofertă"
 
 msgctxt "model:ir.rule.group,name:rule_group_product_supplier_companies"
 msgid "User in companies"
-msgstr ""
+msgstr "Utilizator în Companii"
 
 msgctxt "model:ir.rule.group,name:rule_group_purchase_companies"
 msgid "User in companies"
-msgstr ""
+msgstr "Utilizator în Companii"
 
 msgctxt "model:ir.rule.group,name:rule_group_reporting_main_companies"
 msgid "User in companies"
-msgstr ""
+msgstr "Utilizator în Companii"
 
 msgctxt ""
 "model:ir.rule.group,name:rule_group_reporting_main_time_series_companies"
 msgid "User in companies"
-msgstr ""
+msgstr "Utilizator în Companii"
 
 msgctxt "model:ir.rule.group,name:rule_group_reporting_product_companies"
 msgid "User in companies"
-msgstr ""
+msgstr "Utilizator în Companii"
 
 msgctxt ""
 "model:ir.rule.group,name:rule_group_reporting_product_time_series_companies"
 msgid "User in companies"
-msgstr ""
+msgstr "Utilizator în Companii"
 
 msgctxt "model:ir.rule.group,name:rule_group_reporting_supplier_companies"
 msgid "User in companies"
-msgstr ""
+msgstr "Utilizator în Companii"
 
 msgctxt ""
 "model:ir.rule.group,name:rule_group_reporting_supplier_time_series_companies"
 msgid "User in companies"
-msgstr ""
+msgstr "Utilizator în Companii"
 
 msgctxt "model:ir.sequence,name:sequence_purchase"
 msgid "Purchase"
-msgstr ""
+msgstr "Achiziție"
 
 msgctxt "model:ir.sequence.type,name:sequence_type_purchase"
 msgid "Purchase"
-msgstr ""
+msgstr "Achiziție"
 
 msgctxt "model:ir.ui.menu,name:menu_configuration"
 msgid "Configuration"
 msgstr "Configurare"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_product_supplier"
 msgid "Suppliers"
-msgstr "Furnizor"
+msgstr "Furnizori"
 
 msgctxt "model:ir.ui.menu,name:menu_purchase"
 msgid "Purchases"
@@ -1037,20 +1072,19 @@ msgstr "Configurare"
 
 msgctxt "model:ir.ui.menu,name:menu_purchase_form"
 msgid "Purchases"
-msgstr ""
+msgstr "Achiziții"
 
 msgctxt "model:ir.ui.menu,name:menu_reporting"
 msgid "Reporting"
 msgstr "Raportare"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_reporting_purchase"
 msgid "Purchases"
 msgstr "Achiziții"
 
 msgctxt "model:ir.ui.menu,name:menu_supplier"
 msgid "Associated to Purchases"
-msgstr ""
+msgstr "Asociat la Achizitii"
 
 msgctxt "model:party.party.customer_code,name:"
 msgid "Party Customer Code"
@@ -1060,113 +1094,117 @@ msgctxt "model:party.party.supplier_currency,name:"
 msgid "Party Supplier Currency"
 msgstr ""
 
-#, fuzzy
 msgctxt "model:party.party.supplier_lead_time,name:"
 msgid "Supplier Lead Time"
-msgstr "Furnizor"
+msgstr "Timp de livrare furnizor"
 
 msgctxt "model:purchase.configuration,name:"
 msgid "Purchase Configuration"
-msgstr ""
+msgstr "Configurarea achiziției"
 
 msgctxt "model:purchase.configuration.purchase_method,name:"
 msgid "Purchase Configuration Purchase Method"
-msgstr ""
+msgstr "Configurarea achiziției Metoda de achiziție"
 
 msgctxt "model:purchase.configuration.sequence,name:"
 msgid "Purchase Configuration Sequence"
-msgstr ""
+msgstr "Secvența de configurare a achiziției"
 
+#, fuzzy
 msgctxt "model:purchase.handle.invoice.exception.ask,name:"
 msgid "Handle Invoice Exception"
-msgstr ""
+msgstr "Gestionare Excepție Factură"
 
+#, fuzzy
 msgctxt "model:purchase.handle.shipment.exception.ask,name:"
 msgid "Handle Shipment Exception"
-msgstr ""
+msgstr "Gestionare Excepție de expediere"
 
 msgctxt "model:purchase.line,name:"
 msgid "Purchase Line"
-msgstr ""
+msgstr "Rând de cumpărare"
 
+#, fuzzy
 msgctxt "model:purchase.line-account.tax,name:"
 msgid "Purchase Line - Tax"
-msgstr ""
+msgstr "Rând de cumpărare - Taxă"
 
+#, fuzzy
 msgctxt "model:purchase.line-ignored-stock.move,name:"
 msgid "Purchase Line - Ignored Move"
-msgstr ""
+msgstr "Rând de achiziție - Mișcare Ignorată"
 
+#, fuzzy
 msgctxt "model:purchase.line-recreated-stock.move,name:"
 msgid "Purchase Line - Ignored Move"
-msgstr ""
+msgstr "Rând de achiziție - Mișcare Ignorată"
 
 msgctxt "model:purchase.product_supplier,name:"
 msgid "Product Supplier"
-msgstr ""
+msgstr "Furnizor de produse"
 
 msgctxt "model:purchase.product_supplier.price,name:"
 msgid "Product Supplier Price"
-msgstr ""
+msgstr "Pret furnizor de produse"
 
 msgctxt "model:purchase.purchase,name:"
 msgid "Purchase"
-msgstr ""
+msgstr "Achiziție"
 
 msgctxt "model:purchase.purchase-ignored-account.invoice,name:"
 msgid "Purchase - Ignored Invoice"
-msgstr ""
+msgstr "Achiziție - Factură Ignorată"
 
 msgctxt "model:purchase.purchase-recreated-account.invoice,name:"
 msgid "Purchase - Recreated Invoice"
-msgstr ""
+msgstr "Achiziție - Factură recreată"
 
+#, fuzzy
 msgctxt "model:purchase.reporting.context,name:"
 msgid "Purchase Reporting Context"
-msgstr ""
+msgstr "Contextul raportării achizițiilor"
 
-#, fuzzy
 msgctxt "model:purchase.reporting.main,name:"
 msgid "Purchase Reporting"
-msgstr "Raportare"
+msgstr "Raportarea achizițiilor"
 
-#, fuzzy
 msgctxt "model:purchase.reporting.main.time_series,name:"
 msgid "Purchase Reporting"
-msgstr "Raportare"
+msgstr "Raportarea achizițiilor"
 
 msgctxt "model:purchase.reporting.product,name:"
 msgid "Purchase Reporting per Product"
-msgstr ""
+msgstr "Raportarea achizițiilor per produs"
 
 msgctxt "model:purchase.reporting.product.time_series,name:"
 msgid "Purchase Reporting per Product"
-msgstr ""
+msgstr "Raportarea achizițiilor per produs"
 
 msgctxt "model:purchase.reporting.supplier,name:"
 msgid "Purchase Reporting per Supplier"
-msgstr ""
+msgstr "Raportarea achizițiilor per furnizor"
 
 msgctxt "model:purchase.reporting.supplier.time_series,name:"
 msgid "Purchase Reporting per Supplier"
-msgstr ""
+msgstr "Raportarea achizițiilor per furnizor"
 
 #, fuzzy
 msgctxt "model:purchase.return_purchase.start,name:"
 msgid "Return Purchase"
-msgstr "Returnări"
+msgstr "Retur achiziție"
 
 msgctxt "model:res.group,name:group_purchase"
 msgid "Purchase"
-msgstr ""
+msgstr "Achiziție"
 
+#, fuzzy
 msgctxt "model:res.group,name:group_purchase_admin"
 msgid "Purchase Administrator"
-msgstr ""
+msgstr "Administrator de achiziții"
 
 msgctxt "report:purchase.purchase:"
 msgid ":"
-msgstr ""
+msgstr ":"
 
 msgctxt "report:purchase.purchase:"
 msgid "Amount"
@@ -1174,15 +1212,15 @@ msgstr "Suma"
 
 msgctxt "report:purchase.purchase:"
 msgid "Customer Code:"
-msgstr ""
+msgstr "Cod Client:"
 
 msgctxt "report:purchase.purchase:"
 msgid "Date:"
-msgstr ""
+msgstr "Data:"
 
 msgctxt "report:purchase.purchase:"
 msgid "Delivery Address:"
-msgstr ""
+msgstr "Adresa de livrare:"
 
 msgctxt "report:purchase.purchase:"
 msgid "Description"
@@ -1194,19 +1232,19 @@ msgstr "Descriere:"
 
 msgctxt "report:purchase.purchase:"
 msgid "Draft Purchase Order"
-msgstr ""
+msgstr "Ciornă de comandă de achiziție"
 
 msgctxt "report:purchase.purchase:"
 msgid "Purchase Order N°:"
-msgstr ""
+msgstr "Nr. comandă de achiziție:"
 
 msgctxt "report:purchase.purchase:"
 msgid "Quantity"
-msgstr ""
+msgstr "Cantitate"
 
 msgctxt "report:purchase.purchase:"
 msgid "Reference:"
-msgstr ""
+msgstr "Referinţă:"
 
 msgctxt "report:purchase.purchase:"
 msgid "Request for Quotation N°:"
@@ -1214,221 +1252,221 @@ msgstr ""
 
 msgctxt "report:purchase.purchase:"
 msgid "Taxes"
-msgstr ""
+msgstr "Taxe"
 
 msgctxt "report:purchase.purchase:"
 msgid "Taxes:"
-msgstr ""
+msgstr "Taxe:"
 
 msgctxt "report:purchase.purchase:"
 msgid "Total (excl. taxes):"
-msgstr ""
+msgstr "Total (fără taxe):"
 
 msgctxt "report:purchase.purchase:"
 msgid "Total:"
-msgstr ""
+msgstr "Total:"
 
 msgctxt "report:purchase.purchase:"
 msgid "Unit Price"
-msgstr ""
+msgstr "Preț unitar"
 
 msgctxt "selection:account.invoice,purchase_exception_state:"
 msgid "Ignored"
-msgstr ""
+msgstr "Ignorat"
 
 msgctxt "selection:account.invoice,purchase_exception_state:"
 msgid "Recreated"
-msgstr ""
+msgstr "Recreat"
 
 msgctxt "selection:purchase.line,type:"
 msgid "Comment"
-msgstr ""
+msgstr "Comentariu"
 
 msgctxt "selection:purchase.line,type:"
 msgid "Line"
-msgstr ""
+msgstr "Rând"
 
 msgctxt "selection:purchase.line,type:"
 msgid "Subtotal"
-msgstr ""
+msgstr "Subtotal"
 
 msgctxt "selection:purchase.line,type:"
 msgid "Title"
-msgstr ""
+msgstr "Titlu"
 
 msgctxt "selection:purchase.purchase,invoice_method:"
 msgid "Based On Order"
-msgstr ""
+msgstr "Pe baza Comenzii"
 
 msgctxt "selection:purchase.purchase,invoice_method:"
 msgid "Based On Shipment"
-msgstr ""
+msgstr "Pe baza expedierii"
 
 msgctxt "selection:purchase.purchase,invoice_method:"
 msgid "Manual"
-msgstr ""
+msgstr "Manual"
 
 msgctxt "selection:purchase.purchase,invoice_state:"
 msgid "Awaiting Payment"
-msgstr ""
+msgstr "În așteptarea plății"
 
 msgctxt "selection:purchase.purchase,invoice_state:"
 msgid "Exception"
-msgstr ""
+msgstr "Excepție"
 
 msgctxt "selection:purchase.purchase,invoice_state:"
 msgid "None"
-msgstr ""
+msgstr "Nici unul"
 
 msgctxt "selection:purchase.purchase,invoice_state:"
 msgid "Paid"
-msgstr ""
+msgstr "Plătit"
 
 msgctxt "selection:purchase.purchase,invoice_state:"
 msgid "Partially Paid"
-msgstr ""
+msgstr "Plătit Parțial"
 
 msgctxt "selection:purchase.purchase,invoice_state:"
 msgid "Pending"
-msgstr ""
+msgstr "În derulare"
 
 msgctxt "selection:purchase.purchase,shipment_state:"
 msgid "Exception"
-msgstr ""
+msgstr "Excepție"
 
 msgctxt "selection:purchase.purchase,shipment_state:"
 msgid "None"
-msgstr ""
+msgstr "Nici unul"
 
 msgctxt "selection:purchase.purchase,shipment_state:"
 msgid "Partially Shipped"
-msgstr ""
+msgstr "Livrat parțial"
 
 msgctxt "selection:purchase.purchase,shipment_state:"
 msgid "Received"
-msgstr ""
+msgstr "Primit"
 
 msgctxt "selection:purchase.purchase,shipment_state:"
 msgid "Waiting"
-msgstr ""
+msgstr "În Aşteptare"
 
 msgctxt "selection:purchase.purchase,state:"
 msgid "Cancelled"
-msgstr ""
+msgstr "Anulat"
 
 msgctxt "selection:purchase.purchase,state:"
 msgid "Confirmed"
-msgstr ""
+msgstr "Confirmat"
 
 msgctxt "selection:purchase.purchase,state:"
 msgid "Done"
-msgstr ""
+msgstr "Terminat"
 
 msgctxt "selection:purchase.purchase,state:"
 msgid "Draft"
-msgstr ""
+msgstr "Ciornă"
 
 msgctxt "selection:purchase.purchase,state:"
 msgid "Processing"
-msgstr ""
+msgstr "În curs de procesare"
 
 msgctxt "selection:purchase.purchase,state:"
 msgid "Quotation"
-msgstr ""
+msgstr "Cotație"
 
 msgctxt "selection:purchase.reporting.context,period:"
 msgid "Day"
-msgstr ""
+msgstr "Zi"
 
 msgctxt "selection:purchase.reporting.context,period:"
 msgid "Month"
-msgstr ""
+msgstr "Lună"
 
 msgctxt "selection:purchase.reporting.context,period:"
 msgid "Year"
-msgstr ""
+msgstr "An"
 
 msgctxt "selection:stock.move,purchase_exception_state:"
 msgid "Ignored"
-msgstr ""
+msgstr "Ignorat"
 
 msgctxt "selection:stock.move,purchase_exception_state:"
 msgid "Recreated"
-msgstr ""
+msgstr "Recreat"
 
 msgctxt "view:party.party:"
 msgid "Supplier"
-msgstr ""
+msgstr "Furnizor"
 
 msgctxt "view:product.template:"
 msgid "Suppliers"
-msgstr ""
+msgstr "Furnizori"
 
 msgctxt "view:purchase.handle.invoice.exception.ask:"
 msgid "Choose invoices to recreate:"
-msgstr ""
+msgstr "Alegere facturi de recreat:"
 
 msgctxt "view:purchase.handle.shipment.exception.ask:"
 msgid "Choose move to recreate:"
-msgstr ""
+msgstr "Alegere mișare de recreat:"
 
 msgctxt "view:purchase.line:"
 msgid "Delivery Date:"
-msgstr ""
+msgstr "Data de livrare:"
 
 msgctxt "view:purchase.line:"
 msgid "General"
-msgstr ""
+msgstr "General"
 
 msgctxt "view:purchase.line:"
 msgid "Notes"
-msgstr ""
+msgstr "Notiţe"
 
 msgctxt "view:purchase.line:"
 msgid "Taxes"
-msgstr ""
+msgstr "Taxe"
 
 msgctxt "view:purchase.purchase:"
 msgid "Other Info"
-msgstr ""
+msgstr "Alte Informații"
 
 msgctxt "view:purchase.purchase:"
 msgid "Purchase"
-msgstr ""
+msgstr "Achiziție"
 
+#, fuzzy
 msgctxt "view:purchase.return_purchase.start:"
 msgid "Are you sure to return these/this purchase(s)?"
-msgstr ""
+msgstr "Sunteți sigur că veți returna aceasta/aceste achiziții?"
 
 msgctxt "wizard_button:purchase.handle.invoice.exception,ask,end:"
 msgid "Cancel"
-msgstr ""
+msgstr "Anulare"
 
 msgctxt "wizard_button:purchase.handle.invoice.exception,ask,handle:"
 msgid "OK"
-msgstr ""
+msgstr "OK"
 
 msgctxt "wizard_button:purchase.handle.shipment.exception,ask,end:"
 msgid "Cancel"
-msgstr ""
+msgstr "Anulare"
 
 msgctxt "wizard_button:purchase.handle.shipment.exception,ask,handle:"
 msgid "OK"
-msgstr ""
+msgstr "OK"
 
 msgctxt "wizard_button:purchase.modify_header,start,end:"
 msgid "Cancel"
-msgstr ""
+msgstr "Anulare"
 
 msgctxt "wizard_button:purchase.modify_header,start,modify:"
 msgid "Modify"
-msgstr ""
+msgstr "Modificare"
 
 msgctxt "wizard_button:purchase.return_purchase,start,end:"
 msgid "Cancel"
-msgstr ""
+msgstr "Anulare"
 
-#, fuzzy
 msgctxt "wizard_button:purchase.return_purchase,start,return_:"
 msgid "Return"
-msgstr "Returnări"
+msgstr "Retur"
