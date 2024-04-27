@@ -1455,11 +1455,11 @@ class Line(DescriptionOriginMixin, MoveLineMixin, ModelSQL, ModelView):
         pool = Pool()
         Move = pool.get('account.move')
 
-        def move_fields():
+        def move_fields(move_name):
             for fname, field in cls._fields.items():
                 if (isinstance(field, fields.Function)
                         and field.setter == 'set_move_field'):
-                    if fname.startswith('move_'):
+                    if move_name and fname.startswith('move_'):
                         fname = fname[5:]
                     yield fname
 
@@ -1469,7 +1469,7 @@ class Line(DescriptionOriginMixin, MoveLineMixin, ModelSQL, ModelView):
         for vals in vlist:
             if not vals.get('move'):
                 move_values = {}
-                for fname in move_fields():
+                for fname in move_fields(move_name=True):
                     move_values[fname] = vals.get(fname) or context.get(fname)
                 key = tuple(sorted(move_values.items()))
                 move = moves.get(key)
@@ -1480,7 +1480,7 @@ class Line(DescriptionOriginMixin, MoveLineMixin, ModelSQL, ModelView):
                 vals['move'] = move.id
             else:
                 # prevent default value for field with set_move_field
-                for fname in move_fields():
+                for fname in move_fields(move_name=False):
                     vals.setdefault(fname, None)
         lines = super(Line, cls).create(vlist)
         period_and_journals = set((line.period, line.journal)
