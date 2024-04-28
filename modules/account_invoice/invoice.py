@@ -6,7 +6,7 @@ from decimal import Decimal
 from itertools import chain, combinations, groupby
 
 from genshi.template.text import TextTemplate
-from sql import Literal, Null
+from sql import Null
 from sql.aggregate import Sum
 from sql.conditionals import Coalesce
 from sql.functions import CharLength, Round
@@ -875,7 +875,8 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin, InvoiceReportMixin):
             | tax.select(tax.invoice.as_('invoice'),
                 Coalesce(Sum(tax.amount), 0).as_('total_amount'),
                 where=(tax.invoice.in_(invoice_query)
-                    & ~Exists(invoice.select(Literal(1),
+                    & Exists(invoice.select(
+                            invoice.id,
                             where=(invoice.total_amount_cache == Null)
                             & (invoice.id == tax.invoice)))),
                 group_by=tax.invoice))
@@ -947,7 +948,8 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin, InvoiceReportMixin):
 
         query = tax.select(tax.invoice,
             where=(tax.invoice.in_(invoice_query)
-                & ~Exists(invoice.select(Literal(1),
+                & Exists(invoice.select(
+                        invoice.id,
                         where=(invoice.tax_amount_cache == Null)
                         & (invoice.id == tax.invoice)))),
             group_by=tax.invoice,
