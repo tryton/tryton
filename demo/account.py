@@ -1,0 +1,82 @@
+# This file is part of Tryton.  The COPYRIGHT file at the top level of
+# this repository contains the full copyright notices and license terms.
+
+import datetime as dt
+
+from dateutil.relativedelta import relativedelta
+
+from proteus import Model, Wizard
+
+
+def setup(config, modules, company):
+    AccountTemplate = Model.get('account.account.template')
+    Account = Model.get('account.account')
+    FiscalYear = Model.get('account.fiscalyear')
+    Sequence = Model.get('ir.sequence')
+    SequenceStrict = Model.get('ir.sequence.strict')
+    SequenceType = Model.get('ir.sequence.type')
+    Party = Model.get('party.party')
+
+    root_template, = AccountTemplate.find([
+        ('parent', '=', None),
+        ('name', '=', 'Minimal Account Chart'),
+        ])
+    create_chart_account = Wizard('account.create_chart')
+    create_chart_account.execute('account')
+    create_chart_account.form.account_template = root_template
+    create_chart_account.form.company = company
+    create_chart_account.execute('create_account')
+
+    receivable, = Account.find([
+            ('type.receivable', '=', True),
+            ('company', '=', company.id),
+            ])
+    payable, = Account.find([
+            ('type.payable', '=', True),
+            ('company', '=', company.id),
+            ])
+
+    create_chart_account.form.account_receivable = receivable
+    create_chart_account.form.account_payable = payable
+    create_chart_account.execute('create_properties')
+
+    # Set account for parties created without company
+    parties = Party.find([])
+    for party in parties:
+        party.account_receivable = receivable
+        party.account_payable = payable
+    Party.save(parties)
+
+    move_sequence_type, = SequenceType.find(
+        [('name', '=', "Account Move")], limit=1)
+    invoice_sequence_type, = SequenceType.find([
+            ('name', '=', "Invoice"),
+            ], limit=1)
+    today = dt.date.today()
+    for start_date in (
+            today + relativedelta(month=1, day=1, years=-1),
+            today + relativedelta(month=1, day=1),
+            today + relativedelta(month=1, day=1, years=1)):
+        fiscalyear = FiscalYear(name='%s' % start_date.year)
+        fiscalyear.start_date = start_date
+        fiscalyear.end_date = start_date + relativedelta(month=12, day=31)
+        fiscalyear.company = company
+        post_move_sequence = Sequence(name='%s' % start_date.year,
+            sequence_type=move_sequence_type,
+            company=company)
+        post_move_sequence.save()
+        fiscalyear.post_move_sequence = post_move_sequence
+        invoice_sequence, = fiscalyear.invoice_sequences
+        if 'account_invoice' in modules:
+            for attr, name in (('out_invoice_sequence', 'Invoice'),
+                    ('in_invoice_sequence', 'Supplier Invoice'),
+                    ('out_credit_note_sequence', 'Credit Note'),
+                    ('in_credit_note_sequence', 'Supplier Credit Note')):
+                sequence = SequenceStrict(
+                    name='%s %s' % (name, start_date.year),
+                    sequence_type=invoice_sequence_type,
+                    company=company)
+                sequence.save()
+                setattr(invoice_sequence, attr, sequence)
+        fiscalyear.save()
+        fiscalyear.click('create_period')
