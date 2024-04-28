@@ -894,7 +894,6 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin, InvoiceReportMixin):
     @classmethod
     def search_total_amount(cls, name, clause):
         pool = Pool()
-        Rule = pool.get('ir.rule')
         Line = pool.get('account.invoice.line')
         Tax = pool.get('account.invoice.tax')
         Invoice = pool.get('account.invoice')
@@ -906,34 +905,34 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin, InvoiceReportMixin):
         tax = Tax.__table__()
 
         _, operator, value = clause
-        invoice_query = Rule.query_get('account.invoice')
         Operator = fields.SQL_OPERATORS[operator]
         # SQLite uses float for sum
         if value is not None and backend.name == 'sqlite':
             value = float(value)
 
-        union = (line.join(invoice, condition=(invoice.id == line.invoice)
-                ).join(currency, condition=(currency.id == invoice.currency)
-                ).select(line.invoice.as_('invoice'),
-                Coalesce(Sum(Round((line.quantity * line.unit_price).cast(
-                                type_name),
-                                currency.digits)), 0).as_('total_amount'),
-                where=(line.invoice.in_(invoice_query)
-                    & (invoice.total_amount_cache == Null)),
-                group_by=line.invoice)
-            | tax.select(tax.invoice.as_('invoice'),
-                Coalesce(Sum(tax.amount), 0).as_('total_amount'),
-                where=(tax.invoice.in_(invoice_query)
-                    & Exists(invoice.select(
-                            invoice.id,
-                            where=(invoice.total_amount_cache == Null)
-                            & (invoice.id == tax.invoice)))),
-                group_by=tax.invoice))
+        union = (
+            line
+            .join(invoice, condition=(invoice.id == line.invoice))
+            .join(currency, condition=(currency.id == invoice.currency))
+            .select(
+                line.invoice.as_('invoice'),
+                Coalesce(Round(
+                        (line.quantity * line.unit_price).cast(type_name),
+                        currency.digits), 0).as_('total_amount'),
+                where=(invoice.total_amount_cache == Null))
+            | tax.select(
+                tax.invoice.as_('invoice'),
+                tax.amount.as_('total_amount'),
+                where=Exists(
+                    invoice.select(
+                        invoice.id,
+                        where=(invoice.total_amount_cache == Null)
+                        & (invoice.id == tax.invoice)))))
         union |= invoice.select(
             invoice.id.as_('invoice'),
             invoice.total_amount_cache.as_('total_amount'),
-            where=(invoice.id.in_(invoice_query)
-                & (invoice.total_amount_cache != Null)
+            where=(
+                (invoice.total_amount_cache != Null)
                 & Operator(invoice.total_amount_cache.cast(type_name), value)))
         query = union.select(union.invoice, group_by=union.invoice,
             having=Operator(Sum(union.total_amount).cast(type_name),
@@ -943,7 +942,6 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin, InvoiceReportMixin):
     @classmethod
     def search_untaxed_amount(cls, name, clause):
         pool = Pool()
-        Rule = pool.get('ir.rule')
         Line = pool.get('account.invoice.line')
         Invoice = pool.get('account.invoice')
         Currency = pool.get('currency.currency')
@@ -953,35 +951,35 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin, InvoiceReportMixin):
         currency = Currency.__table__()
 
         _, operator, value = clause
-        invoice_query = Rule.query_get('account.invoice')
         Operator = fields.SQL_OPERATORS[operator]
         # SQLite uses float for sum
         if value is not None and backend.name == 'sqlite':
             value = float(value)
 
-        query = line.join(invoice,
-            condition=(invoice.id == line.invoice)
-            ).join(currency,
-                condition=(currency.id == invoice.currency)
-                ).select(line.invoice,
-                    where=(line.invoice.in_(invoice_query)
-                        & (invoice.untaxed_amount_cache == Null)),
-                    group_by=line.invoice,
-                    having=Operator(Coalesce(Sum(
-                                Round((line.quantity * line.unit_price).cast(
-                                        type_name),
-                                    currency.digits)), 0).cast(type_name),
-                        value))
+        query = (
+            line
+            .join(invoice, condition=(invoice.id == line.invoice))
+            .join(currency, condition=(currency.id == invoice.currency))
+            .select(
+                line.invoice,
+                where=(invoice.untaxed_amount_cache == Null),
+                group_by=line.invoice,
+                having=Operator(
+                    Coalesce(Sum(Round(
+                                (line.quantity * line.unit_price).cast(
+                                    type_name),
+                                currency.digits)), 0).cast(type_name),
+                    value)))
         query |= invoice.select(invoice.id,
-            where=invoice.id.in_(invoice_query)
-            & (invoice.untaxed_amount_cache != Null)
-            & Operator(invoice.untaxed_amount_cache.cast(type_name), value))
+            where=(
+                (invoice.untaxed_amount_cache != Null)
+                & Operator(
+                    invoice.untaxed_amount_cache.cast(type_name), value)))
         return [('id', 'in', query)]
 
     @classmethod
     def search_tax_amount(cls, name, clause):
         pool = Pool()
-        Rule = pool.get('ir.rule')
         Tax = pool.get('account.invoice.tax')
         Invoice = pool.get('account.invoice')
         type_name = cls.tax_amount._field.sql_type().base
@@ -989,25 +987,24 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin, InvoiceReportMixin):
         invoice = Invoice.__table__()
 
         _, operator, value = clause
-        invoice_query = Rule.query_get('account.invoice')
         Operator = fields.SQL_OPERATORS[operator]
         # SQLite uses float for sum
         if value is not None and backend.name == 'sqlite':
             value = float(value)
 
         query = tax.select(tax.invoice,
-            where=(tax.invoice.in_(invoice_query)
-                & Exists(invoice.select(
-                        invoice.id,
-                        where=(invoice.tax_amount_cache == Null)
-                        & (invoice.id == tax.invoice)))),
+            where=Exists(
+                invoice.select(
+                    invoice.id,
+                    where=(invoice.tax_amount_cache == Null)
+                    & (invoice.id == tax.invoice))),
             group_by=tax.invoice,
-            having=Operator(Coalesce(Sum(tax.amount), 0).cast(type_name),
-                value))
+            having=Operator(
+                Coalesce(Sum(tax.amount), 0).cast(type_name), value))
         query |= invoice.select(invoice.id,
-            where=invoice.id.in_(invoice_query)
-            & (invoice.tax_amount_cache != Null)
-            & Operator(invoice.tax_amount_cache.cast(type_name), value))
+            where=(
+                (invoice.tax_amount_cache != Null)
+                & Operator(invoice.tax_amount_cache.cast(type_name), value)))
         return [('id', 'in', query)]
 
     def get_allow_cancel(self, name):
