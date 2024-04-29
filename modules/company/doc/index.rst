@@ -12,6 +12,7 @@ what their organisational structure is.
    :maxdepth: 2
 
    usage
+   configuration
    design
    reference
    releases

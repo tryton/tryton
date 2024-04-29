@@ -13,6 +13,8 @@ this repository contains the full copyright notices and license terms. -->
             <field name="employees"/>
         </page>
         <page string="Reports" col="1" id="reports">
+            <separator name="logo"/>
+            <field name="logo" widget="image" width="800" height="400"/>
             <separator name="header"/>
             <field name="header"/>
             <separator name="footer"/>
