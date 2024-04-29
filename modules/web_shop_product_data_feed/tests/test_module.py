@@ -17,7 +17,9 @@ from trytond.tests.test_tryton import (
 class WebShopProductDataFeedTestCase(ModuleTestCase):
     "Test Web Shop Product Data Feed module"
     module = 'web_shop_product_data_feed'
-    extras = ['product_kit', 'product_measurements', 'sale_shipment_cost']
+    extras = [
+        'account_tax_rule_country', 'product_kit', 'product_measurements',
+        'sale_shipment_cost']
 
     @with_transaction()
     def test_data_feed(self):

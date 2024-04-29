@@ -396,3 +396,21 @@ class Shop_ShipmentCost(metaclass=PoolMeta):
                         f'{cost} {self.currency.code}')
         row['shipping'] = ','.join(shipping)
         return row
+
+
+class Shop_TaxRuleCountry(metaclass=PoolMeta):
+    __name__ = 'web.shop'
+
+    def _product_data_feed_carrier_cost(
+            self, product, country, carrier, price, pattern=None):
+        pattern = pattern.copy() if pattern is not None else {}
+        if (self.warehouse
+                and self.warehouse.address
+                and self.warehouse.address.country):
+            pattern.setdefault(
+                'from_country', self.warehouse.address.country.id)
+        else:
+            pattern.setdefault('from_country')
+        pattern.setdefault('to_country', country.id)
+        return super()._product_data_feed_carrier_cost(
+            product, country, carrier, price, pattern=pattern)
