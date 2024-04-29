@@ -1,3 +1,7 @@
+
+Version 7.2.0 - 2024-04-29
+--------------------------
+* Bug fixes (see mercurial logs for details)
 * Use usage from context for default contact mechanism on party
 
 Version 7.0.0 - 2023-10-30

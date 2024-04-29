@@ -1,3 +1,7 @@
+
+Version 7.2.0 - 2024-04-29
+--------------------------
+* Bug fixes (see mercurial logs for details)
 * Add trend spark lines
 * Add reporting on scenario and activity per period
 * Display block rate instead of absolute value
