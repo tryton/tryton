@@ -7,8 +7,7 @@ Version 7.2.1 - 2024-05-01
 Version 7.2.0 - 2024-04-29
 --------------------------
 * Bug fixes (see mercurial logs for details)
-
-Open purchases created from requests
+* Open purchases created from requests
 
 Version 7.0.0 - 2023-10-30
 --------------------------
