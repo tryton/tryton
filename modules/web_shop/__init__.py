@@ -28,3 +28,6 @@ def register():
     Pool.register(
         product.Image,
         module='web_shop', type_='model', depends=['product_image'])
+    Pool.register(
+        web.Shop_TaxRuleCountry,
+        module='web_shop', type_='model', depends=['account_tax_rule_country'])
