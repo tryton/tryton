@@ -29,3 +29,7 @@ def register():
         web.Shop_ShipmentCost,
         module='web_shop_product_data_feed', type_='model',
         depends=['sale_shipment_cost'])
+    Pool.register(
+        web.Shop_TaxRuleCountry,
+        module='web_shop_product_data_feed', type_='model',
+        depends=['account_tax_rule_country'])
