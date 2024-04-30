@@ -521,8 +521,8 @@ class BlanketAgreementLine(ModelSQL, ModelView):
         '_parent_blanket_agreement.currency')
     def on_change_with_amount(self, name=None):
         amount = (
-            Decimal(str(self.quantity or '0.0'))
-            * (self.unit_price or Decimal('0.0')))
+            Decimal(str(self.quantity or 0))
+            * (self.unit_price or Decimal(0)))
 
         if self.blanket_agreement and self.blanket_agreement.currency:
             return self.blanket_agreement.currency.round(amount)

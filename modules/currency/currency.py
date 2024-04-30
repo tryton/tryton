@@ -120,7 +120,7 @@ class Currency(
     def on_change_with_rate(self):
         now = datetime.date.today()
         closer = datetime.date.min
-        res = Decimal('0.0')
+        res = Decimal(0)
         for rate in self.rates or []:
             date = getattr(rate, 'date', None) or now
             if date <= now and date > closer:
