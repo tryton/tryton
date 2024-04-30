@@ -61,7 +61,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="text">To continue, you must create a fiscal year for the date "%(date)s" and company "%(company)s".</field>
         </record>
         <record model="ir.message" id="msg_no_open_fiscalyear_date">
-            <field name="text">To continue, you must reopen the fiscal year "%(fiscalyear)s" of company "%(company)s"for the date "%(date)s".</field>
+            <field name="text">To continue, you must reopen the fiscal year "%(fiscalyear)s" of company "%(company)s" for the date "%(date)s".</field>
         </record>
         <record model="ir.message" id="msg_fiscalyear_overlap">
             <field name="text">The fiscal years "%(first)s" and "%(second)s" overlap, you must use different dates.</field>
