@@ -629,8 +629,8 @@ class Reconciliation(ModelSQL, ModelView):
     def check_lines(cls, reconciliations):
         Lang = Pool().get('ir.lang')
         for reconciliation in reconciliations:
-            debit = Decimal('0.0')
-            credit = Decimal('0.0')
+            debit = Decimal(0)
+            credit = Decimal(0)
             account = None
             if reconciliation.lines:
                 party = reconciliation.lines[0].party
@@ -1152,13 +1152,13 @@ class Line(MoveLineMixin, ModelSQL, ModelView):
     @fields.depends('debit', 'credit', 'amount_second_currency')
     def on_change_debit(self):
         if self.debit:
-            self.credit = Decimal('0.0')
+            self.credit = Decimal(0)
         self._amount_second_currency_sign()
 
     @fields.depends('debit', 'credit', 'amount_second_currency')
     def on_change_credit(self):
         if self.credit:
-            self.debit = Decimal('0.0')
+            self.debit = Decimal(0)
         self._amount_second_currency_sign()
 
     @fields.depends('amount_second_currency', 'debit', 'credit')
@@ -1535,8 +1535,8 @@ class Line(MoveLineMixin, ModelSQL, ModelView):
             lines = list(lines)
             reconcile_account = None
             reconcile_party = None
-            amount = Decimal('0.0')
-            amount_second_currency = Decimal('0.0')
+            amount = Decimal(0)
+            amount_second_currency = Decimal(0)
             second_currencies = set()
             for line in lines:
                 amount += line.debit - line.credit
@@ -1951,8 +1951,8 @@ class ReconcileLines(Wizard):
     def get_writeoff(self):
         "Return writeoff amount and company"
         company = currency = None
-        amount = Decimal('0.0')
-        amount_second_currency = Decimal('0.0')
+        amount = Decimal(0)
+        amount_second_currency = Decimal(0)
         second_currencies = set()
         for line in self.records:
             amount += line.debit - line.credit

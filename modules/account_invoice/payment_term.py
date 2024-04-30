@@ -56,7 +56,7 @@ class PaymentTerm(DeactivableMixin, ModelSQL, ModelView):
         """
         # TODO implement business_days
         # http://pypi.python.org/pypi/BusinessHours/
-        sign = 1 if amount >= Decimal('0.0') else -1
+        sign = 1 if amount >= Decimal(0) else -1
         res = []
         remainder = amount
         for line in self.lines:
@@ -64,7 +64,7 @@ class PaymentTerm(DeactivableMixin, ModelSQL, ModelView):
             value_date = line.get_date(date)
             if value is None or not value_date:
                 continue
-            if ((remainder - value) * sign) < Decimal('0.0'):
+            if ((remainder - value) * sign) < Decimal(0):
                 res.append((value_date, remainder))
                 break
             if value:
@@ -149,16 +149,16 @@ class PaymentTermLine(sequence_ordered(), ModelSQL, ModelView):
     @fields.depends('type')
     def on_change_type(self):
         if self.type != 'fixed':
-            self.amount = Decimal('0.0')
+            self.amount = Decimal(0)
             self.currency = None
         if self.type not in ('percent', 'percent_on_total'):
-            self.ratio = Decimal('0.0')
-            self.divisor = Decimal('0.0')
+            self.ratio = Decimal(0)
+            self.divisor = Decimal(0)
 
     @fields.depends('ratio')
     def on_change_ratio(self):
         if not self.ratio:
-            self.divisor = Decimal('0.0')
+            self.divisor = Decimal(0)
         else:
             self.divisor = self.round(1 / self.ratio,
                 self.__class__.divisor.digits[1])
@@ -166,7 +166,7 @@ class PaymentTermLine(sequence_ordered(), ModelSQL, ModelView):
     @fields.depends('divisor')
     def on_change_divisor(self):
         if not self.divisor:
-            self.ratio = Decimal('0.0')
+            self.ratio = Decimal(0)
         else:
             self.ratio = self.round(1 / self.divisor,
                 self.__class__.ratio.digits[1])
