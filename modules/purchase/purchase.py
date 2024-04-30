@@ -480,9 +480,9 @@ class Purchase(
 
     @fields.depends('lines', 'currency', methods=['get_tax_amount'])
     def on_change_lines(self):
-        self.untaxed_amount = Decimal('0.0')
-        self.tax_amount = Decimal('0.0')
-        self.total_amount = Decimal('0.0')
+        self.untaxed_amount = Decimal(0)
+        self.tax_amount = Decimal(0)
+        self.total_amount = Decimal(0)
         if self.lines:
             for line in self.lines:
                 self.untaxed_amount += getattr(line, 'amount', None) or 0
@@ -1624,7 +1624,7 @@ class Line(sequence_ordered(), ModelSQL, ModelView):
         if self.type == 'line':
             return self.on_change_with_amount()
         elif self.type == 'subtotal':
-            amount = Decimal('0.0')
+            amount = Decimal(0)
             for line2 in self.purchase.lines:
                 if line2.type == 'line':
                     amount += line2.purchase.currency.round(
@@ -1632,7 +1632,7 @@ class Line(sequence_ordered(), ModelSQL, ModelView):
                 elif line2.type == 'subtotal':
                     if self == line2:
                         break
-                    amount = Decimal('0.0')
+                    amount = Decimal(0)
             return amount
 
     @fields.depends('purchase', '_parent_purchase.warehouse')
