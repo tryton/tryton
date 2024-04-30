@@ -143,7 +143,7 @@ class Move(metaclass=PoolMeta):
             unit, quantity, product.default_uom, round=False)
 
         as_qty_field = _get_field(type_)
-        cost = Decimal('0.0')
+        cost = Decimal(0)
         consumed_qty = 0.0
         for move, move_qty, move_cost_price in cls._get_anglo_saxon_move(
                 moves, total_qty, type_):

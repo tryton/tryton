@@ -237,7 +237,7 @@ class PurchaseRequisition(Workflow, ModelSQL, ModelView):
 
     @fields.depends('lines', 'currency')
     def on_change_with_total_amount(self):
-        self.total_amount = Decimal('0.0')
+        self.total_amount = Decimal(0)
         if self.lines:
             for line in self.lines:
                 self.total_amount += getattr(line, 'amount', None) or 0

@@ -194,4 +194,4 @@ Reconcile Lines with write-off::
     ...     if l != writeoff_line1]
     >>> assertEqual(writeoff_line2.account, expense)
     >>> writeoff_line2.debit
-    Decimal('3.0')
+    Decimal('3')

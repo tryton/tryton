@@ -232,7 +232,7 @@ class Account(
         for name in names:
             if name not in ('credit', 'debit'):
                 raise Exception('Bad argument')
-            result[name] = {}.fromkeys(ids, Decimal('0.0'))
+            result[name] = {}.fromkeys(ids, Decimal(0))
 
         id2account = {}
         for account in accounts:

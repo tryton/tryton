@@ -543,9 +543,9 @@ class Sale(
 
     @fields.depends('lines', 'currency', methods=['get_tax_amount'])
     def on_change_lines(self):
-        self.untaxed_amount = Decimal('0.0')
-        self.tax_amount = Decimal('0.0')
-        self.total_amount = Decimal('0.0')
+        self.untaxed_amount = Decimal(0)
+        self.tax_amount = Decimal(0)
+        self.total_amount = Decimal(0)
 
         if self.lines:
             for line in self.lines:
@@ -1680,18 +1680,18 @@ class SaleLine(TaxableMixin, sequence_ordered(), ModelSQL, ModelView):
     def on_change_with_amount(self):
         if self.type == 'line':
             currency = self.sale.currency if self.sale else None
-            amount = Decimal(str(self.quantity or '0.0')) * \
-                (self.unit_price or Decimal('0.0'))
+            amount = Decimal(str(self.quantity or 0)) * \
+                (self.unit_price or Decimal(0))
             if currency:
                 return currency.round(amount)
             return amount
-        return Decimal('0.0')
+        return Decimal(0)
 
     def get_amount(self, name):
         if self.type == 'line':
             return self.on_change_with_amount()
         elif self.type == 'subtotal':
-            amount = Decimal('0.0')
+            amount = Decimal(0)
             for line2 in self.sale.lines:
                 if line2.type == 'line':
                     amount += line2.sale.currency.round(
@@ -1699,9 +1699,9 @@ class SaleLine(TaxableMixin, sequence_ordered(), ModelSQL, ModelView):
                 elif line2.type == 'subtotal':
                     if self == line2:
                         break
-                    amount = Decimal('0.0')
+                    amount = Decimal(0)
             return amount
-        return Decimal('0.0')
+        return Decimal(0)
 
     @fields.depends('sale', '_parent_sale.warehouse')
     def on_change_with_warehouse(self, name=None):
