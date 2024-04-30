@@ -301,7 +301,7 @@ class AEAT303(AEATReport):
                 "computed code %s already defined" % code)
         amounts['46'] = amounts['27'] - amounts['45']
         amounts['64'] = amounts['46'] + amounts['58'] + amounts['76']
-        amounts['66'] = amounts['64'] * Decimal(amounts['65']) / Decimal(100.0)
+        amounts['66'] = amounts['64'] * Decimal(amounts['65']) / Decimal(100)
         amounts['110'] = amounts['78'] = amount_to_compensate
         amounts['87'] = amounts['110'] - amounts['78']
         amounts['69'] = (amounts['66'] + amounts['77'] - amounts['78']

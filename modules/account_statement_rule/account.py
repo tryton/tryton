@@ -340,7 +340,7 @@ class StatementRuleLine(sequence_ordered(), ModelSQL, ModelView):
                 account = invoice.account
             elif party:
                 with Transaction().set_context(date=origin.date):
-                    if amount > Decimal('0.0'):
+                    if amount > Decimal(0):
                         account = party.account_receivable_used
                     else:
                         account = party.account_payable_used

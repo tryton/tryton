@@ -161,4 +161,4 @@ Reconcile Lines with write-off::
     >>> writeoff_line2.account == expense
     True
     >>> writeoff_line2.debit
-    Decimal('3.0')
+    Decimal('3')

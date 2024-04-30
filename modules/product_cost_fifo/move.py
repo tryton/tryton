@@ -75,7 +75,7 @@ class Move(metaclass=PoolMeta):
         with Transaction().set_context(company=self.company.id):
             fifo_moves = self.product.get_fifo_move(total_qty)
 
-        cost_price = Decimal("0.0")
+        cost_price = Decimal(0)
         consumed_qty = 0.0
         to_save = []
         for move, move_qty in fifo_moves:

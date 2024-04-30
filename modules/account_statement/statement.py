@@ -830,7 +830,7 @@ class Line(
         if self.party:
             if self.amount:
                 with Transaction().set_context(date=self.date):
-                    if self.amount > Decimal("0.0"):
+                    if self.amount > Decimal(0):
                         self.account = self.party.account_receivable_used
                     else:
                         self.account = self.party.account_payable_used
@@ -854,7 +854,7 @@ class Line(
                     # The user has entered a non-default value, we keep it.
                     pass
                 elif self.amount:
-                    if self.amount > Decimal("0.0"):
+                    if self.amount > Decimal(0):
                         self.account = self.party.account_receivable_used
                     else:
                         self.account = self.party.account_payable_used

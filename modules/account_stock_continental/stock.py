@@ -34,12 +34,12 @@ class Move(metaclass=PoolMeta):
                 Decimal(str(self.quantity)) * unit_price)
 
         if type_.startswith('in_'):
-            move_line.debit = Decimal('0.0')
+            move_line.debit = Decimal(0)
             move_line.credit = amount
             move_line.account = self.product.account_stock_in_used
         else:
             move_line.debit = amount
-            move_line.credit = Decimal('0.0')
+            move_line.credit = Decimal(0)
             move_line.account = self.product.account_stock_out_used
 
         return [move_line]
@@ -55,12 +55,12 @@ class Move(metaclass=PoolMeta):
             )
         if not amount:
             return
-        if amount >= Decimal('0.0'):
-            move_line.debit = Decimal('0.0')
+        if amount >= Decimal(0):
+            move_line.debit = Decimal(0)
             move_line.credit = amount
         else:
             move_line.debit = - amount
-            move_line.credit = Decimal('0.0')
+            move_line.credit = Decimal(0)
         return move_line
 
     def _get_account_stock_move_type(self):
@@ -126,7 +126,7 @@ class Move(metaclass=PoolMeta):
             else:
                 account_move_lines = self._get_account_stock_move_lines(type_)
 
-        amount = Decimal('0.0')
+        amount = Decimal(0)
         for line in account_move_lines:
             amount += line.debit - line.credit
 

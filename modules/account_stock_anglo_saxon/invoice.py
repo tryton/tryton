@@ -31,10 +31,10 @@ class InvoiceLine(metaclass=PoolMeta):
 
         if type_.startswith('in_'):
             move_line.debit = amount
-            move_line.credit = Decimal('0.0')
+            move_line.credit = Decimal(0)
             move_line.account = self.product.account_stock_in_used
         else:
-            move_line.debit = Decimal('0.0')
+            move_line.debit = Decimal(0)
             move_line.credit = amount
             move_line.account = self.product.account_stock_out_used
 

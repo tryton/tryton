@@ -1047,7 +1047,7 @@ class Tax(sequence_ordered(), ModelSQL, ModelView, DeactivableMixin):
             date = Date.today()
         taxes = cls.sort_taxes(taxes)
         res = cls._unit_compute(taxes, price_unit, date)
-        quantity = Decimal(str(quantity or 0.0))
+        quantity = Decimal(str(quantity or 0))
         for row in res:
             row['base'] *= quantity
             row['amount'] *= quantity

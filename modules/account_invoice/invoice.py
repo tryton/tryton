@@ -539,9 +539,9 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
         pool = Pool()
         InvoiceTax = pool.get('account.invoice.tax')
 
-        self.untaxed_amount = Decimal('0.0')
-        self.tax_amount = Decimal('0.0')
-        self.total_amount = Decimal('0.0')
+        self.untaxed_amount = Decimal(0)
+        self.tax_amount = Decimal(0)
+        self.total_amount = Decimal(0)
         computed_taxes = {}
 
         if self.lines:
@@ -553,13 +553,13 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
             if self.currency:
                 return self.currency.is_zero(amount)
             else:
-                return amount == Decimal('0.0')
+                return amount == Decimal(0)
 
         tax_keys = []
         taxes = list(self.taxes or [])
         for tax in (self.taxes or []):
             if tax.manual:
-                self.tax_amount += tax.amount or Decimal('0.0')
+                self.tax_amount += tax.amount or Decimal(0)
                 continue
             key = tax._key
             if (key not in computed_taxes) or (key in tax_keys):
@@ -567,12 +567,12 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
                 continue
             tax_keys.append(key)
             if not is_zero(computed_taxes[key]['base']
-                    - (tax.base or Decimal('0.0'))):
+                    - (tax.base or Decimal(0))):
                 self.tax_amount += computed_taxes[key]['amount']
                 tax.amount = computed_taxes[key]['amount']
                 tax.base = computed_taxes[key]['base']
             else:
-                self.tax_amount += tax.amount or Decimal('0.0')
+                self.tax_amount += tax.amount or Decimal(0)
         for key in computed_taxes:
             if key not in tax_keys:
                 self.tax_amount += computed_taxes[key]['amount']
@@ -2034,8 +2034,8 @@ class InvoiceLine(sequence_ordered(), ModelSQL, ModelView, TaxableMixin):
         if self.type == 'line':
             currency = (self.invoice.currency if self.invoice
                 else self.currency)
-            amount = (Decimal(str(self.quantity or '0.0'))
-                * (self.unit_price or Decimal('0.0')))
+            amount = (Decimal(str(self.quantity or 0))
+                * (self.unit_price or Decimal(0)))
             invoice_type = (
                 self.invoice.type if self.invoice else self.invoice_type)
             if (invoice_type == 'in'
@@ -2050,7 +2050,7 @@ class InvoiceLine(sequence_ordered(), ModelSQL, ModelView, TaxableMixin):
             if currency:
                 return currency.round(amount)
             return amount
-        return Decimal('0.0')
+        return Decimal(0)
 
     def get_amount(self, name):
         if self.type == 'line':
@@ -2542,11 +2542,11 @@ class InvoiceTax(sequence_ordered(), ModelSQL, ModelView):
 
     @staticmethod
     def default_base():
-        return Decimal('0.0')
+        return Decimal(0)
 
     @staticmethod
     def default_amount():
-        return Decimal('0.0')
+        return Decimal(0)
 
     @staticmethod
     def default_manual():
@@ -2940,7 +2940,7 @@ class PayInvoiceAsk(ModelView):
         else:
             amount = self.amount
 
-        self.amount_writeoff = Decimal('0.0')
+        self.amount_writeoff = Decimal(0)
         if not self.invoice:
             return
         for line in self.lines:
@@ -3002,7 +3002,7 @@ class PayInvoice(Wizard):
             amount_invoice = Currency.compute(
                 self.start.currency, self.start.amount, invoice.currency)
         _, remainder = self.get_reconcile_lines_for_amount(invoice, amount)
-        if (remainder == Decimal('0.0')
+        if (remainder == Decimal(0)
                 and amount_invoice <= invoice.amount_to_pay):
             return 'pay'
         return 'ask'
