@@ -13,5 +13,8 @@ this repository contains the full copyright notices and license terms. -->
 
         <label name="category"/>
         <field name="category"/>
+
+        <label name="description"/>
+        <field name="description"/>
     </group>
 </form>

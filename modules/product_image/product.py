@@ -116,6 +116,8 @@ class ImageMixin(_ImageMixin):
     __slots__ = ()
     cache = None
 
+    description = fields.Char("Description", translate=True)
+
     @classmethod
     def allowed_match_keys(cls):
         return set()
