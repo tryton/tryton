@@ -150,42 +150,34 @@ msgctxt "selection:sale.reporting.marketing.context,period:"
 msgid "Year"
 msgstr "Año"
 
-#, fuzzy
 msgctxt "view:marketing.automation.activity:"
 msgid "Campaign"
 msgstr "Campaña"
 
-#, fuzzy
 msgctxt "view:marketing.automation.activity:"
 msgid "Marketing Campaign"
 msgstr "Campaña de marketing"
 
-#, fuzzy
 msgctxt "view:marketing.automation.activity:"
 msgid "Medium"
 msgstr "Medio"
 
-#, fuzzy
 msgctxt "view:marketing.automation.activity:"
 msgid "Source"
 msgstr "Origen"
 
-#, fuzzy
 msgctxt "view:marketing.email.message:"
 msgid "Campaign"
 msgstr "Campaña"
 
-#, fuzzy
 msgctxt "view:marketing.email.message:"
 msgid "Marketing Campaign"
 msgstr "Campaña de marketing"
 
-#, fuzzy
 msgctxt "view:marketing.email.message:"
 msgid "Medium"
 msgstr "Medio"
 
-#, fuzzy
 msgctxt "view:marketing.email.message:"
 msgid "Source"
 msgstr "Origen"

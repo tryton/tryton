@@ -224,7 +224,7 @@ msgstr "Tag des Monats"
 
 msgctxt "field:account.configuration,asset_frequency:"
 msgid "Asset Depreciation Frequency"
-msgstr "Abschreibungsbuchungsfrequenz"
+msgstr "Abschreibungsintervall"
 
 msgctxt "field:account.configuration,asset_sequence:"
 msgid "Asset Reference Sequence"
@@ -244,7 +244,7 @@ msgstr "Unternehmen"
 
 msgctxt "field:account.configuration.asset_frequency,asset_frequency:"
 msgid "Asset Depreciation Frequency"
-msgstr "Abschreibungsbuchungsfrequenz"
+msgstr "Abschreibungsintervall"
 
 msgctxt "field:account.configuration.asset_frequency,company:"
 msgid "Company"
@@ -276,11 +276,11 @@ msgstr "Abschreibungskonto"
 
 msgctxt "field:product.category.account,account_asset:"
 msgid "Account Asset"
-msgstr "Anlagenkonto"
+msgstr "Bilanzkonto Sachanlagen"
 
 msgctxt "field:product.category.account,account_depreciation:"
 msgid "Account Depreciation"
-msgstr "Abschreibungskonto"
+msgstr "Bilanzkonto Abschreibungen"
 
 msgctxt "field:product.product,depreciable:"
 msgid "Depreciable"
@@ -411,7 +411,7 @@ msgstr "Buchungssätze für Abschreibungen erstellen"
 
 msgctxt "model:ir.action,name:wizard_print_depreciation_table"
 msgid "Print Depreciation Table"
-msgstr "Entwicklung des Anlagevermögens drucken"
+msgstr "Entwicklung des Anlagevermögens"
 
 msgctxt "model:ir.action,name:wizard_update"
 msgid "Update Asset"
@@ -505,7 +505,7 @@ msgstr "Anlage aktualisieren"
 
 msgctxt "model:ir.rule.group,name:rule_group_asset_companies"
 msgid "User in companies"
-msgstr "Benutzer im Unternehmen"
+msgstr "Benutzer in Unternehmen"
 
 msgctxt "model:ir.sequence,name:sequence_asset"
 msgid "Asset"
@@ -525,7 +525,7 @@ msgstr "Anlagen"
 
 msgctxt "model:ir.ui.menu,name:menu_create_depreciation_table"
 msgid "Print Depreciation Table"
-msgstr "Entwicklung des Anlagevermögens drucken"
+msgstr "Entwicklung des Anlagevermögens"
 
 msgctxt "model:ir.ui.menu,name:menu_create_moves"
 msgid "Create Assets Moves"

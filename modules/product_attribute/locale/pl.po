@@ -30,10 +30,9 @@ msgctxt "field:product.product,attributes:"
 msgid "Attributes"
 msgstr "Atrybuty"
 
-#, fuzzy
 msgctxt "field:product.product,attributes_name:"
 msgid "Attributes Name"
-msgstr "Atrybuty"
+msgstr "Nazwa atrybutu"
 
 msgctxt "field:product.template,attribute_set:"
 msgid "Attribute Set"
@@ -73,7 +72,7 @@ msgstr "Zestawy atrybutów"
 
 msgctxt "model:ir.message,text:msg_label_value"
 msgid "%(label)s: %(value)s"
-msgstr ""
+msgstr "%(label)s: %(value)s"
 
 msgctxt "model:ir.ui.menu,name:menu_attribute"
 msgid "Attributes"

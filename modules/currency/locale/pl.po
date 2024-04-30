@@ -32,7 +32,7 @@ msgstr "Dzień tygodnia"
 
 msgctxt "field:currency.cron-currency.currency,cron:"
 msgid "Cron"
-msgstr "Cron"
+msgstr "Planista zadań"
 
 msgctxt "field:currency.cron-currency.currency,currency:"
 msgid "Currency"
@@ -182,7 +182,6 @@ msgctxt "model:ir.ui.menu,name:menu_cron_form"
 msgid "Scheduled Rate Updates"
 msgstr "Zaplanowane aktualizacje walut"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_currency"
 msgid "Currencies"
 msgstr "Waluty"
@@ -209,7 +208,7 @@ msgstr "Tygodniowo"
 
 msgctxt "selection:currency.cron,source:"
 msgid "European Central Bank"
-msgstr ""
+msgstr "Europejski Bank Centralny"
 
 msgctxt "selection:ir.cron,method:"
 msgid "Update Currency Rates"

@@ -52,7 +52,7 @@ msgstr "Verpackungsvolumen"
 
 msgctxt "field:stock.package,packaging_volume_uom:"
 msgid "Packaging Volume UoM"
-msgstr "Maßeinheit Verpackungsvolumen"
+msgstr "Volumenmaßeinheit Verpackung"
 
 msgctxt "field:stock.package,packaging_weight:"
 msgid "Packaging Weight"
@@ -60,7 +60,7 @@ msgstr "Verpackungsgewicht"
 
 msgctxt "field:stock.package,packaging_weight_uom:"
 msgid "Packaging Weight UoM"
-msgstr "Maßeinheit Verpackungsgewicht"
+msgstr "Gewichtsmaßeinheit Verpackung"
 
 msgctxt "field:stock.package,parent:"
 msgid "Parent"
@@ -112,7 +112,7 @@ msgstr "Verpackungsvolumen"
 
 msgctxt "field:stock.package.type,packaging_volume_uom:"
 msgid "Packaging Volume UoM"
-msgstr "Maßeinheit Verpackungsvolumen"
+msgstr "Volumenmaßeinheit Verpackung"
 
 msgctxt "field:stock.package.type,packaging_weight:"
 msgid "Packaging Weight"
@@ -120,7 +120,7 @@ msgstr "Verpackungsgewicht"
 
 msgctxt "field:stock.package.type,packaging_weight_uom:"
 msgid "Packaging Weight UoM"
-msgstr "Maßeinheit Verpackungsgewicht"
+msgstr "Gewichtsmaßeinheit Verpackung"
 
 msgctxt "field:stock.package.type,width:"
 msgid "Width"
@@ -247,7 +247,7 @@ msgstr ""
 
 msgctxt "model:ir.rule.group,name:rule_group_package_companies"
 msgid "User in companies"
-msgstr "Benutzer im Unternehmen"
+msgstr "Benutzer in Unternehmen"
 
 msgctxt "model:ir.sequence,name:sequence_package"
 msgid "Stock Package"

@@ -194,12 +194,6 @@ msgstr "d"
 msgid "False"
 msgstr "Ne"
 
-msgid "Message: "
-msgstr "Sporočilo: "
-
-msgid "Warning: "
-msgstr "Opozorilo: "
-
 msgid "Always ignore this warning."
 msgstr "Vedno prezri to opozorilo."
 
@@ -209,13 +203,8 @@ msgstr "Ali želiš nadaljevati?"
 msgid "No"
 msgstr "Ne"
 
-msgid "Confirmation: "
-msgstr "Potrditev: "
-
-msgid "Concurrency Exception"
-msgstr "Napaka sočasnega izvajanja"
-
-msgid "Write Concurrency Warning: "
+#, fuzzy
+msgid "Concurrency Warning"
 msgstr "Opozorilo sočasnega zapisovanja: "
 
 msgid "This record has been modified while you were editing it."
@@ -244,6 +233,9 @@ msgstr "Vseeno shrani"
 
 msgid "Application Error"
 msgstr "Programska napaka"
+
+msgid "Details"
+msgstr ""
 
 msgid "Report Bug"
 msgstr "Prijava programske napake"
@@ -597,6 +589,12 @@ msgstr "Model:"
 
 msgid "ID:"
 msgstr "ID:"
+
+msgid "Module:"
+msgstr ""
+
+msgid "XML ID:"
+msgstr ""
 
 msgid "Created by:"
 msgstr "Ustvaril:"

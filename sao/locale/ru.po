@@ -192,12 +192,6 @@ msgstr ""
 msgid "False"
 msgstr ""
 
-msgid "Message: "
-msgstr ""
-
-msgid "Warning: "
-msgstr ""
-
 msgid "Always ignore this warning."
 msgstr ""
 
@@ -207,13 +201,7 @@ msgstr ""
 msgid "No"
 msgstr ""
 
-msgid "Confirmation: "
-msgstr ""
-
-msgid "Concurrency Exception"
-msgstr ""
-
-msgid "Write Concurrency Warning: "
+msgid "Concurrency Warning"
 msgstr ""
 
 msgid "This record has been modified while you were editing it."
@@ -241,6 +229,9 @@ msgid "Write Anyway"
 msgstr ""
 
 msgid "Application Error"
+msgstr ""
+
+msgid "Details"
 msgstr ""
 
 msgid "Report Bug"
@@ -590,6 +581,12 @@ msgid "Model:"
 msgstr ""
 
 msgid "ID:"
+msgstr ""
+
+msgid "Module:"
+msgstr ""
+
+msgid "XML ID:"
 msgstr ""
 
 msgid "Created by:"

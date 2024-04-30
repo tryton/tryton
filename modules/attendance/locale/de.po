@@ -172,11 +172,11 @@ msgstr "Alle Anwesenheiten"
 
 msgctxt "model:ir.rule.group,name:rule_group_attendance_companies"
 msgid "User in companies"
-msgstr "Benutzer im Unternehmen"
+msgstr "Benutzer in Unternehmen"
 
 msgctxt "model:ir.rule.group,name:rule_group_period_companies"
 msgid "User in companies"
-msgstr "Benutzer im Unternehmen"
+msgstr "Benutzer in Unternehmen"
 
 msgctxt "model:ir.rule.group,name:rule_group_sheet"
 msgid "Own attendance sheet"
@@ -188,7 +188,7 @@ msgstr "Alle Anwesenheitslisten"
 
 msgctxt "model:ir.rule.group,name:rule_group_sheet_companies"
 msgid "User in companies"
-msgstr "Benutzer im Unternehmen"
+msgstr "Benutzer in Unternehmen"
 
 msgctxt "model:ir.rule.group,name:rule_group_sheet_line"
 msgid "Own attendance sheet line"
@@ -200,7 +200,7 @@ msgstr "Alle Anwesenheitseinträge"
 
 msgctxt "model:ir.rule.group,name:rule_group_sheet_line_companies"
 msgid "User in companies"
-msgstr "Benutzer im Unternehmen"
+msgstr "Benutzer in Unternehmen"
 
 msgctxt "model:ir.ui.menu,name:menu_attendance"
 msgid "Attendances"

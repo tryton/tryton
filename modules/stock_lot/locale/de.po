@@ -71,10 +71,9 @@ msgctxt "field:stock.lot.trace,downward_traces:"
 msgid "Downward Traces"
 msgstr "Retrograde Rückverfolgung"
 
-#, fuzzy
 msgctxt "field:stock.lot.trace,from_location:"
 msgid "From Location"
-msgstr "Ort"
+msgstr "Von Lagerort"
 
 msgctxt "field:stock.lot.trace,lot:"
 msgid "Lot"
@@ -92,10 +91,9 @@ msgctxt "field:stock.lot.trace,shipment:"
 msgid "Shipment"
 msgstr "Lieferung"
 
-#, fuzzy
 msgctxt "field:stock.lot.trace,to_location:"
 msgid "To Location"
-msgstr "Ort"
+msgstr "Zu Lagerort"
 
 msgctxt "field:stock.lot.trace,unit:"
 msgid "Unit"
@@ -367,7 +365,7 @@ msgstr "Chargen Hinzufügen"
 
 msgctxt "model:ir.rule.group,name:rule_group_lot_trace_companies"
 msgid "User in companies"
-msgstr "Benutzer im Unternehmen"
+msgstr "Benutzer in Unternehmen"
 
 msgctxt "model:ir.sequence.type,name:sequence_type_stock_lot"
 msgid "Stock Lot"

@@ -4,11 +4,11 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "field:stock.configuration,measurement_volume_uom:"
 msgid "Measurement Volume UoM"
-msgstr "Volumeneinheit"
+msgstr "Volumenmaßeinheit"
 
 msgctxt "field:stock.configuration,measurement_weight_uom:"
 msgid "Measurement Weight UoM"
-msgstr "Gewichtseinheit"
+msgstr "Gewichtsmaßeinheit"
 
 msgctxt "field:stock.configuration.measurement,company:"
 msgid "Company"
@@ -16,11 +16,11 @@ msgstr "Unternehmen"
 
 msgctxt "field:stock.configuration.measurement,measurement_volume_uom:"
 msgid "Measurement Volume UoM"
-msgstr "Volumeneinheit"
+msgstr "Volumenmaßeinheit"
 
 msgctxt "field:stock.configuration.measurement,measurement_weight_uom:"
 msgid "Measurement Weight UoM"
-msgstr "Gewichtseinheit"
+msgstr "Gewichtsmaßeinheit"
 
 msgctxt "field:stock.move,internal_volume:"
 msgid "Internal Volume"
@@ -52,7 +52,7 @@ msgstr "Volumen"
 
 msgctxt "field:stock.package,volume_uom:"
 msgid "Volume UoM"
-msgstr "Volumen Maßeinheit"
+msgstr "Volumenmaßeinheit"
 
 msgctxt "field:stock.package,weight:"
 msgid "Weight"
@@ -60,7 +60,7 @@ msgstr "Gewicht"
 
 msgctxt "field:stock.package,weight_uom:"
 msgid "Weight UoM"
-msgstr "Gewicht Maßeinheit"
+msgstr "Gewichtsmaßeinheit"
 
 msgctxt "field:stock.shipment.in,volume:"
 msgid "Volume"
@@ -68,7 +68,7 @@ msgstr "Volumen"
 
 msgctxt "field:stock.shipment.in,volume_uom:"
 msgid "Volume UoM"
-msgstr "Volumen Maßeinheit"
+msgstr "Volumenmaßeinheit"
 
 msgctxt "field:stock.shipment.in,weight:"
 msgid "Weight"
@@ -76,7 +76,7 @@ msgstr "Gewicht"
 
 msgctxt "field:stock.shipment.in,weight_uom:"
 msgid "Weight UoM"
-msgstr "Gewicht Maßeinheit"
+msgstr "Gewichtsmaßeinheit"
 
 msgctxt "field:stock.shipment.in.return,packages_volume:"
 msgid "Packages Volume"
@@ -92,7 +92,7 @@ msgstr "Volumen"
 
 msgctxt "field:stock.shipment.in.return,volume_uom:"
 msgid "Volume UoM"
-msgstr "Volumen Maßeinheit"
+msgstr "Volumenmaßeinheit"
 
 msgctxt "field:stock.shipment.in.return,weight:"
 msgid "Weight"
@@ -100,7 +100,7 @@ msgstr "Gewicht"
 
 msgctxt "field:stock.shipment.in.return,weight_uom:"
 msgid "Weight UoM"
-msgstr "Gewicht Maßeinheit"
+msgstr "Gewichtsmaßeinheit"
 
 msgctxt "field:stock.shipment.out,packages_volume:"
 msgid "Packages Volume"
@@ -116,7 +116,7 @@ msgstr "Volumen"
 
 msgctxt "field:stock.shipment.out,volume_uom:"
 msgid "Volume UoM"
-msgstr "Volumen Maßeinheit"
+msgstr "Volumenmaßeinheit"
 
 msgctxt "field:stock.shipment.out,weight:"
 msgid "Weight"
@@ -124,7 +124,7 @@ msgstr "Gewicht"
 
 msgctxt "field:stock.shipment.out,weight_uom:"
 msgid "Weight UoM"
-msgstr "Gewicht Maßeinheit"
+msgstr "Gewichtsmaßeinheit"
 
 msgctxt "field:stock.shipment.out.return,volume:"
 msgid "Volume"
@@ -132,7 +132,7 @@ msgstr "Volumen"
 
 msgctxt "field:stock.shipment.out.return,volume_uom:"
 msgid "Volume UoM"
-msgstr "Volumen Maßeinheit"
+msgstr "Volumenmaßeinheit"
 
 msgctxt "field:stock.shipment.out.return,weight:"
 msgid "Weight"
@@ -140,7 +140,7 @@ msgstr "Gewicht"
 
 msgctxt "field:stock.shipment.out.return,weight_uom:"
 msgid "Weight UoM"
-msgstr "Gewicht Maßeinheit"
+msgstr "Gewichtsmaßeinheit"
 
 msgctxt "help:stock.configuration,measurement_volume_uom:"
 msgid "The default Unit of Measure for volume."

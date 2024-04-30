@@ -1168,6 +1168,11 @@ msgctxt "field:account.journal.open_cash.context,start_date:"
 msgid "Start Date"
 msgstr "Tanggal Awal"
 
+#, fuzzy
+msgctxt "field:account.journal.period,company:"
+msgid "Company"
+msgstr "Perusahaan"
+
 msgctxt "field:account.journal.period,icon:"
 msgid "Icon"
 msgstr ""
@@ -3713,6 +3718,15 @@ msgctxt "model:ir.model.button,string:fiscalyear_reopen_button"
 msgid "Re-Open"
 msgstr ""
 
+#, fuzzy
+msgctxt "model:ir.model.button,string:journal_period_close_button"
+msgid "Close"
+msgstr "Tutup"
+
+msgctxt "model:ir.model.button,string:journal_period_reopen_button"
+msgid "Reopen"
+msgstr ""
+
 msgctxt "model:ir.model.button,string:move_post_button"
 msgid "Post"
 msgstr ""
@@ -3762,6 +3776,11 @@ msgstr "Pengguna di dalam perusahaan"
 
 #, fuzzy
 msgctxt "model:ir.rule.group,name:rule_group_general_ledger_line_companies"
+msgid "User in companies"
+msgstr "Pengguna di dalam perusahaan"
+
+#, fuzzy
+msgctxt "model:ir.rule.group,name:rule_group_journal_period_companies"
 msgid "User in companies"
 msgstr "Pengguna di dalam perusahaan"
 
@@ -4782,14 +4801,6 @@ msgstr "Periode"
 msgctxt "view:account.fiscalyear:"
 msgid "Sequences"
 msgstr "Urutan-Urutan"
-
-msgctxt "view:account.journal.period:"
-msgid "Close"
-msgstr "Tutup"
-
-msgctxt "view:account.journal.period:"
-msgid "Re-Open"
-msgstr ""
 
 msgctxt "view:account.move.line.reschedule.start:"
 msgid "every"

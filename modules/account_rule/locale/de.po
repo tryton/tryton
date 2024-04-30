@@ -53,7 +53,7 @@ msgstr "Kontenregeln"
 
 msgctxt "model:ir.rule.group,name:rule_group_account_rule_companies"
 msgid "User in companies"
-msgstr "Benutzer im Unternehmen"
+msgstr "Benutzer in Unternehmen"
 
 msgctxt "model:ir.ui.menu,name:menu_account_rule_form"
 msgid "Account Rules"

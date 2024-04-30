@@ -410,6 +410,10 @@ msgctxt "field:stock.move,from_location:"
 msgid "From Location"
 msgstr "Desde ubicación"
 
+msgctxt "field:stock.move,from_location_name:"
+msgid "From Location"
+msgstr "Desde ubicación"
+
 msgctxt "field:stock.move,internal_quantity:"
 msgid "Internal Quantity"
 msgstr "Cantidad interna"
@@ -451,6 +455,10 @@ msgid "State"
 msgstr "Estado"
 
 msgctxt "field:stock.move,to_location:"
+msgid "To Location"
+msgstr "A ubicación"
+
+msgctxt "field:stock.move,to_location_name:"
 msgid "To Location"
 msgstr "A ubicación"
 
@@ -2122,6 +2130,7 @@ msgstr ""
 msgctxt "model:ir.message,text:msg_product_quantities_max"
 msgid "You cannot select more than %(max)s products to compute quantities."
 msgstr ""
+"No podéis seleccionar mas de %(max)s productos para calcular las cantidades."
 
 msgctxt "model:ir.message,text:msg_shipment_check_quantity"
 msgid ""
@@ -2216,42 +2225,37 @@ msgctxt "model:ir.model.button,confirm:move_do_button"
 msgid "Are you sure you want to complete the move?"
 msgstr "¿Estás seguro que quieres finalizar el movimiento?"
 
-#, fuzzy
 msgctxt "model:ir.model.button,confirm:shipment_in_cancel_button"
 msgid "Are you sure you want to cancel the shipment?"
-msgstr "¿Estás seguro que quieres cancelar el movimiento?"
+msgstr "¿Estás seguro que quieres cancelar el albarán?"
 
 msgctxt "model:ir.model.button,confirm:shipment_in_receive_button"
 msgid "Are you sure you want to receive the shipment?"
 msgstr "¿Estás seguro que quieres recibir el albarán?"
 
-#, fuzzy
 msgctxt "model:ir.model.button,confirm:shipment_in_return_cancel_button"
 msgid "Are you sure you want to cancel the shipment?"
-msgstr "¿Estás seguro que quieres cancelar el movimiento?"
+msgstr "¿Estás seguro que quieres cancelar el albarán?"
 
 msgctxt "model:ir.model.button,confirm:shipment_in_return_done_button"
 msgid "Are you sure you want to complete the shipment?"
 msgstr "¿Estás seguro que quieres finalizar el albarán?"
 
-#, fuzzy
 msgctxt "model:ir.model.button,confirm:shipment_internal_cancel_button"
 msgid "Are you sure you want to cancel the shipment?"
-msgstr "¿Estás seguro que quieres cancelar el movimiento?"
+msgstr "¿Estás seguro que quieres cancelar el albarán?"
 
-#, fuzzy
 msgctxt "model:ir.model.button,confirm:shipment_out_cancel_button"
 msgid "Are you sure you want to cancel the shipment?"
-msgstr "¿Estás seguro que quieres cancelar el movimiento?"
+msgstr "¿Estás seguro que quieres cancelar el albarán?"
 
 msgctxt "model:ir.model.button,confirm:shipment_out_done_button"
 msgid "Are you sure you want to complete the shipment?"
 msgstr "¿Estás seguro que quieres finalizar el albarán?"
 
-#, fuzzy
 msgctxt "model:ir.model.button,confirm:shipment_out_return_cancel_button"
 msgid "Are you sure you want to cancel the shipment?"
-msgstr "¿Estás seguro que quieres cancelar el movimiento?"
+msgstr "¿Estás seguro que quieres cancelar el albarán?"
 
 msgctxt "model:ir.model.button,confirm:shipment_out_return_receive_button"
 msgid "Are you sure you want to receive the shipment?"
@@ -2306,8 +2310,8 @@ msgid "Cancel"
 msgstr "Cancelar"
 
 msgctxt "model:ir.model.button,string:shipment_in_done_button"
-msgid "Done"
-msgstr "Finalizar"
+msgid "Complete"
+msgstr "Completar"
 
 msgctxt "model:ir.model.button,string:shipment_in_draft_button"
 msgid "Reset to Draft"
@@ -2326,8 +2330,8 @@ msgid "Cancel"
 msgstr "Cancelar"
 
 msgctxt "model:ir.model.button,string:shipment_in_return_done_button"
-msgid "Done"
-msgstr "Finalizar"
+msgid "Complete"
+msgstr "Completar"
 
 msgctxt "model:ir.model.button,string:shipment_in_return_draft_button"
 msgid "Draft"
@@ -2346,8 +2350,8 @@ msgid "Cancel"
 msgstr "Cancelar"
 
 msgctxt "model:ir.model.button,string:shipment_internal_done_button"
-msgid "Done"
-msgstr "Finalizar"
+msgid "Complete"
+msgstr "Completar"
 
 msgctxt "model:ir.model.button,string:shipment_internal_draft_button"
 msgid "Draft"
@@ -2370,8 +2374,8 @@ msgid "Cancel"
 msgstr "Cancelar"
 
 msgctxt "model:ir.model.button,string:shipment_out_done_button"
-msgid "Done"
-msgstr "Finalizar"
+msgid "Complete"
+msgstr "Completar"
 
 msgctxt "model:ir.model.button,string:shipment_out_draft_button"
 msgid "Draft"
@@ -2390,8 +2394,8 @@ msgid "Cancel"
 msgstr "Cancelar"
 
 msgctxt "model:ir.model.button,string:shipment_out_return_done_button"
-msgid "Done"
-msgstr "Finalizar"
+msgid "Complete"
+msgstr "Completar"
 
 msgctxt "model:ir.model.button,string:shipment_out_return_draft_button"
 msgid "Draft"
@@ -3054,12 +3058,8 @@ msgid "Warehouse:"
 msgstr "Almacén:"
 
 msgctxt "selection:ir.cron,method:"
-msgid "Assign Customer Shipments"
-msgstr "Reserva los albaranes de cliente"
-
-msgctxt "selection:ir.cron,method:"
-msgid "Assign Internal Shipments"
-msgstr "Reserva los albaranes internos"
+msgid "Assign Shipments"
+msgstr "Reservar albaranes"
 
 msgctxt "selection:ir.cron,method:"
 msgid "Recompute Cost Price from Moves"

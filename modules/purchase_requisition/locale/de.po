@@ -192,7 +192,7 @@ msgstr "Alle Bestellanforderungen"
 
 msgctxt "model:ir.rule.group,name:rule_group_requisition_companies"
 msgid "User in companies"
-msgstr "Benutzer im Unternehmen"
+msgstr "Benutzer in Unternehmen"
 
 msgctxt "model:ir.rule.group,name:rule_group_requisition_employees"
 msgid "Own requisition"

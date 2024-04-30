@@ -55,6 +55,11 @@ msgctxt "field:ir.action.act_window,context_model:"
 msgid "Context Model"
 msgstr "Контекстна модель"
 
+#, fuzzy
+msgctxt "field:ir.action.act_window,context_model_ref:"
+msgid "Context Model"
+msgstr "Контекстна модель"
+
 msgctxt "field:ir.action.act_window,domain:"
 msgid "Domain Value"
 msgstr "Значення домену"
@@ -104,6 +109,11 @@ msgid "Records"
 msgstr "Записи"
 
 msgctxt "field:ir.action.act_window,res_model:"
+msgid "Model"
+msgstr "Модель"
+
+#, fuzzy
+msgctxt "field:ir.action.act_window,res_model_ref:"
 msgid "Model"
 msgstr "Модель"
 
@@ -192,7 +202,17 @@ msgctxt "field:ir.action.report,model:"
 msgid "Model"
 msgstr "Модель"
 
+#, fuzzy
+msgctxt "field:ir.action.report,model_ref:"
+msgid "Model"
+msgstr "Модель"
+
 msgctxt "field:ir.action.report,module:"
+msgid "Module"
+msgstr "Модуль"
+
+#, fuzzy
+msgctxt "field:ir.action.report,module_ref:"
 msgid "Module"
 msgstr "Модуль"
 
@@ -297,6 +317,11 @@ msgid "Keywords"
 msgstr "Ключові слова"
 
 msgctxt "field:ir.action.wizard,model:"
+msgid "Model"
+msgstr "Модель"
+
+#, fuzzy
+msgctxt "field:ir.action.wizard,model_ref:"
 msgid "Model"
 msgstr "Модель"
 
@@ -787,6 +812,11 @@ msgctxt "field:ir.model,module:"
 msgid "Module"
 msgstr "Модуль"
 
+#, fuzzy
+msgctxt "field:ir.model,module_ref:"
+msgid "Module"
+msgstr "Модуль"
+
 msgctxt "field:ir.model,name:"
 msgid "Model Description"
 msgstr "Опис моделі"
@@ -800,6 +830,11 @@ msgid "Group"
 msgstr "Група"
 
 msgctxt "field:ir.model.access,model:"
+msgid "Model"
+msgstr "Модель"
+
+#, fuzzy
+msgctxt "field:ir.model.access,model_ref:"
 msgid "Model"
 msgstr "Модель"
 
@@ -832,6 +867,11 @@ msgid "Help"
 msgstr "Довідка"
 
 msgctxt "field:ir.model.button,model:"
+msgid "Model"
+msgstr "Модель"
+
+#, fuzzy
+msgctxt "field:ir.model.button,model_ref:"
 msgid "Model"
 msgstr "Модель"
 
@@ -903,7 +943,17 @@ msgctxt "field:ir.model.data,model:"
 msgid "Model"
 msgstr "Модель"
 
+#, fuzzy
+msgctxt "field:ir.model.data,model_ref:"
+msgid "Model"
+msgstr "Модель"
+
 msgctxt "field:ir.model.data,module:"
+msgid "Module"
+msgstr "Модуль"
+
+#, fuzzy
+msgctxt "field:ir.model.data,module_ref:"
 msgid "Module"
 msgstr "Модуль"
 
@@ -935,7 +985,17 @@ msgctxt "field:ir.model.field,model:"
 msgid "Model"
 msgstr "Модель"
 
+#, fuzzy
+msgctxt "field:ir.model.field,model_ref:"
+msgid "Model"
+msgstr "Модель"
+
 msgctxt "field:ir.model.field,module:"
+msgid "Module"
+msgstr "Модуль"
+
+#, fuzzy
+msgctxt "field:ir.model.field,module_ref:"
 msgid "Module"
 msgstr "Модуль"
 
@@ -959,9 +1019,24 @@ msgctxt "field:ir.model.field.access,field:"
 msgid "Field"
 msgstr "Поле"
 
+#, fuzzy
+msgctxt "field:ir.model.field.access,field_ref:"
+msgid "Field"
+msgstr "Поле"
+
 msgctxt "field:ir.model.field.access,group:"
 msgid "Group"
 msgstr "Група"
+
+#, fuzzy
+msgctxt "field:ir.model.field.access,model:"
+msgid "Model"
+msgstr "Модель"
+
+#, fuzzy
+msgctxt "field:ir.model.field.access,model_ref:"
+msgid "Model"
+msgstr "Модель"
 
 msgctxt "field:ir.model.field.access,perm_create:"
 msgid "Create Access"
@@ -1154,6 +1229,11 @@ msgctxt "field:ir.rule.group,model:"
 msgid "Model"
 msgstr "Модель"
 
+#, fuzzy
+msgctxt "field:ir.rule.group,model_ref:"
+msgid "Model"
+msgstr "Модель"
+
 msgctxt "field:ir.rule.group,name:"
 msgid "Name"
 msgstr "Найменування"
@@ -1310,11 +1390,21 @@ msgctxt "field:ir.translation,module:"
 msgid "Module"
 msgstr "Модуль"
 
+#, fuzzy
+msgctxt "field:ir.translation,module_ref:"
+msgid "Module"
+msgstr "Модуль"
+
 msgctxt "field:ir.translation,name:"
 msgid "Field Name"
 msgstr "Ім'я поля"
 
 msgctxt "field:ir.translation,overriding_module:"
+msgid "Overriding Module"
+msgstr "Перевизначаючий модуль"
+
+#, fuzzy
+msgctxt "field:ir.translation,overriding_module_ref:"
 msgid "Overriding Module"
 msgstr "Перевизначаючий модуль"
 
@@ -1418,6 +1508,11 @@ msgctxt "field:ir.ui.icon,module:"
 msgid "Module"
 msgstr "Модуль"
 
+#, fuzzy
+msgctxt "field:ir.ui.icon,module_ref:"
+msgid "Module"
+msgstr "Модуль"
+
 msgctxt "field:ir.ui.icon,name:"
 msgid "Name"
 msgstr "Найменування"
@@ -1470,6 +1565,10 @@ msgctxt "field:ir.ui.view,arch:"
 msgid "View Architecture"
 msgstr "Перегляд архітектури"
 
+msgctxt "field:ir.ui.view,basis:"
+msgid "Basis"
+msgstr ""
+
 msgctxt "field:ir.ui.view,data:"
 msgid "Data"
 msgstr "Дані"
@@ -1477,6 +1576,16 @@ msgstr "Дані"
 msgctxt "field:ir.ui.view,domain:"
 msgid "Domain"
 msgstr "Домен"
+
+#, fuzzy
+msgctxt "field:ir.ui.view,extensions:"
+msgid "Extensions"
+msgstr "Розширення"
+
+#, fuzzy
+msgctxt "field:ir.ui.view,field_children:"
+msgid "Children Field"
+msgstr "Діти"
 
 msgctxt "field:ir.ui.view,field_childs:"
 msgid "Children Field"
@@ -1490,7 +1599,17 @@ msgctxt "field:ir.ui.view,model:"
 msgid "Model"
 msgstr "Модель"
 
+#, fuzzy
+msgctxt "field:ir.ui.view,model_ref:"
+msgid "Model"
+msgstr "Модель"
+
 msgctxt "field:ir.ui.view,module:"
+msgid "Module"
+msgstr "Модуль"
+
+#, fuzzy
+msgctxt "field:ir.ui.view,module_ref:"
 msgid "Module"
 msgstr "Модуль"
 
@@ -1566,7 +1685,17 @@ msgctxt "field:ir.ui.view_tree_width,field:"
 msgid "Field"
 msgstr "Поле"
 
+#, fuzzy
+msgctxt "field:ir.ui.view_tree_width,field_ref:"
+msgid "Field"
+msgstr "Поле"
+
 msgctxt "field:ir.ui.view_tree_width,model:"
+msgid "Model"
+msgstr "Модель"
+
+#, fuzzy
+msgctxt "field:ir.ui.view_tree_width,model_ref:"
 msgid "Model"
 msgstr "Модель"
 
@@ -1691,7 +1820,8 @@ msgctxt "help:ir.lang,parent:"
 msgid "Code of the exceptional parent"
 msgstr "Код виняткового батька"
 
-msgctxt "help:ir.model,module:"
+#, fuzzy
+msgctxt "help:ir.model,module_ref:"
 msgid "Module in which this model is defined."
 msgstr "Модуль, у якому визначено цю модель."
 
@@ -1727,7 +1857,8 @@ msgstr ""
 "Якщо позначено, доступ до моделі поля також перевіряється на записах, "
 "пов'язаних з цим полем."
 
-msgctxt "help:ir.model.field,module:"
+#, fuzzy
+msgctxt "help:ir.model.field,module_ref:"
 msgid "Module in which this field is defined."
 msgstr "Модуль, у якому визначено це поле."
 
@@ -2521,6 +2652,14 @@ msgctxt "model:ir.message,text:msg_button_name_unique"
 msgid "The name of the button must be unique per model."
 msgstr "Назва кнопки має бути унікальною для кожної моделі."
 
+msgctxt "model:ir.message,text:msg_context_datetime"
+msgid "At date/time: %(datetime)s"
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_context_groups"
+msgid "Within groups: %(groups)s"
+msgstr ""
+
 msgctxt "model:ir.message,text:msg_create_rule_error"
 msgid ""
 "You are not allowed to create records of \"%(model)s\" because they fail on at least one of these rules:\n"
@@ -3051,6 +3190,10 @@ msgid ""
 "You are not allowed to modify the field \"%(field)s\" in record "
 "\"%(record)s\" of \"%(model)s\"."
 msgstr "Потрібно значення для поля \"%(field)s\" в \"%(model)s\"."
+
+msgctxt "model:ir.message,text:msg_xml_id"
+msgid "XML ID"
+msgstr ""
 
 msgctxt "model:ir.message,text:msg_xml_id_syntax_error"
 msgid ""

@@ -95,6 +95,15 @@ msgid "State"
 msgstr "状态"
 
 #, fuzzy
+msgctxt "field:sale.opportunity.line,description:"
+msgid "Description"
+msgstr "描述"
+
+msgctxt "field:sale.opportunity.line,note:"
+msgid "Note"
+msgstr ""
+
+#, fuzzy
 msgctxt "field:sale.opportunity.line,opportunity:"
 msgid "Opportunity"
 msgstr "Opportunities"
@@ -107,8 +116,16 @@ msgctxt "field:sale.opportunity.line,product:"
 msgid "Product"
 msgstr ""
 
+msgctxt "field:sale.opportunity.line,product_uom_category:"
+msgid "Product UoM Category"
+msgstr ""
+
 msgctxt "field:sale.opportunity.line,quantity:"
 msgid "Quantity"
+msgstr ""
+
+msgctxt "field:sale.opportunity.line,summary:"
+msgid "Summary"
 msgstr ""
 
 msgctxt "field:sale.opportunity.line,unit:"
@@ -472,6 +489,14 @@ msgstr ""
 
 msgctxt "selection:sale.opportunity.reporting.context,period:"
 msgid "Year"
+msgstr ""
+
+msgctxt "view:sale.opportunity.line:"
+msgid "General"
+msgstr ""
+
+msgctxt "view:sale.opportunity.line:"
+msgid "Notes"
 msgstr ""
 
 #, fuzzy

@@ -432,6 +432,11 @@ msgctxt "field:stock.move,from_location:"
 msgid "From Location"
 msgstr "Iz lokacije"
 
+#, fuzzy
+msgctxt "field:stock.move,from_location_name:"
+msgid "From Location"
+msgstr "Iz lokacije"
+
 msgctxt "field:stock.move,internal_quantity:"
 msgid "Internal Quantity"
 msgstr "Notranja količina"
@@ -476,6 +481,11 @@ msgid "State"
 msgstr "Stanje"
 
 msgctxt "field:stock.move,to_location:"
+msgid "To Location"
+msgstr "Na lokacijo"
+
+#, fuzzy
+msgctxt "field:stock.move,to_location_name:"
 msgid "To Location"
 msgstr "Na lokacijo"
 
@@ -2369,9 +2379,10 @@ msgctxt "model:ir.model.button,string:shipment_in_cancel_button"
 msgid "Cancel"
 msgstr "Cancel"
 
+#, fuzzy
 msgctxt "model:ir.model.button,string:shipment_in_done_button"
-msgid "Done"
-msgstr "Done"
+msgid "Complete"
+msgstr "Izpolnitev popisa"
 
 msgctxt "model:ir.model.button,string:shipment_in_draft_button"
 msgid "Reset to Draft"
@@ -2389,9 +2400,10 @@ msgctxt "model:ir.model.button,string:shipment_in_return_cancel_button"
 msgid "Cancel"
 msgstr "Cancel"
 
+#, fuzzy
 msgctxt "model:ir.model.button,string:shipment_in_return_done_button"
-msgid "Done"
-msgstr "Done"
+msgid "Complete"
+msgstr "Izpolnitev popisa"
 
 msgctxt "model:ir.model.button,string:shipment_in_return_draft_button"
 msgid "Draft"
@@ -2409,9 +2421,10 @@ msgctxt "model:ir.model.button,string:shipment_internal_cancel_button"
 msgid "Cancel"
 msgstr "Cancel"
 
+#, fuzzy
 msgctxt "model:ir.model.button,string:shipment_internal_done_button"
-msgid "Done"
-msgstr "Done"
+msgid "Complete"
+msgstr "Izpolnitev popisa"
 
 msgctxt "model:ir.model.button,string:shipment_internal_draft_button"
 msgid "Draft"
@@ -2433,9 +2446,10 @@ msgctxt "model:ir.model.button,string:shipment_out_cancel_button"
 msgid "Cancel"
 msgstr "Cancel"
 
+#, fuzzy
 msgctxt "model:ir.model.button,string:shipment_out_done_button"
-msgid "Done"
-msgstr "Done"
+msgid "Complete"
+msgstr "Izpolnitev popisa"
 
 msgctxt "model:ir.model.button,string:shipment_out_draft_button"
 msgid "Draft"
@@ -2455,9 +2469,10 @@ msgctxt "model:ir.model.button,string:shipment_out_return_cancel_button"
 msgid "Cancel"
 msgstr "Cancel"
 
+#, fuzzy
 msgctxt "model:ir.model.button,string:shipment_out_return_done_button"
-msgid "Done"
-msgstr "Done"
+msgid "Complete"
+msgstr "Izpolnitev popisa"
 
 msgctxt "model:ir.model.button,string:shipment_out_return_draft_button"
 msgid "Draft"
@@ -3176,13 +3191,8 @@ msgstr "Skladišče:"
 
 #, fuzzy
 msgctxt "selection:ir.cron,method:"
-msgid "Assign Customer Shipments"
-msgstr "Customer Shipments"
-
-#, fuzzy
-msgctxt "selection:ir.cron,method:"
-msgid "Assign Internal Shipments"
-msgstr "Internal Shipment"
+msgid "Assign Shipments"
+msgstr "Assign Shipment Internal"
 
 #, fuzzy
 msgctxt "selection:ir.cron,method:"

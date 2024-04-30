@@ -1418,9 +1418,18 @@ msgctxt "view:purchase.line:"
 msgid "General"
 msgstr "General"
 
+#, fuzzy
+msgctxt "view:purchase.line:"
+msgid "Invoicing"
+msgstr "Factură"
+
 msgctxt "view:purchase.line:"
 msgid "Notes"
 msgstr "Notiţe"
+
+msgctxt "view:purchase.line:"
+msgid "Shipping"
+msgstr ""
 
 msgctxt "view:purchase.line:"
 msgid "Taxes"

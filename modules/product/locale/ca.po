@@ -10,6 +10,14 @@ msgctxt "field:product.category,childs:"
 msgid "Children"
 msgstr "Fills"
 
+msgctxt "field:product.category,code:"
+msgid "Code"
+msgstr "Codi"
+
+msgctxt "field:product.category,code_readonly:"
+msgid "Code Readonly"
+msgstr "Codi només lectura"
+
 msgctxt "field:product.category,name:"
 msgid "Name"
 msgstr "Nom"
@@ -21,6 +29,10 @@ msgstr "Pare"
 msgctxt "field:product.category,templates:"
 msgid "Products"
 msgstr "Productes"
+
+msgctxt "field:product.configuration,category_sequence:"
+msgid "Category Sequence"
+msgstr "Seqüència de la categoria"
 
 msgctxt "field:product.configuration,default_cost_price_method:"
 msgid "Default Cost Method"
@@ -189,7 +201,7 @@ msgstr "Codi"
 
 msgctxt "field:product.template,code_readonly:"
 msgid "Code Readonly"
-msgstr "Code només lectura"
+msgstr "Codi només lectura"
 
 msgctxt "field:product.template,consumable:"
 msgid "Consumable"
@@ -294,6 +306,10 @@ msgstr "Utilitzat per afegir una estructura per sota la categoria."
 msgctxt "help:product.category,parent:"
 msgid "Used to add structure above the category."
 msgstr "Utilitzat per afegir una estructura per sobre la categoria."
+
+msgctxt "help:product.configuration,category_sequence:"
+msgid "Used to generate the category code."
+msgstr "Utilitzada per generar el codi de la categoria."
 
 msgctxt "help:product.configuration,default_cost_price_method:"
 msgid "The default cost price method for new products."
@@ -496,6 +512,10 @@ msgctxt "model:ir.action,name:act_uom_form"
 msgid "Units of Measure"
 msgstr "Unitats de mesura"
 
+msgctxt "model:ir.message,text:msg_category_code_unique"
+msgid "The code on product category must be unique."
+msgstr "El codi de la categoria de producte ha de ser únic."
+
 msgctxt "model:ir.message,text:msg_invalid_code"
 msgid "The %(type)s \"%(code)s\" for product \"%(product)s\" is not valid."
 msgstr "El \"%(type)s\" \"%(code)s\" del producte \"%(product)s\" no és vàlid."
@@ -539,6 +559,10 @@ msgstr "El rati i el factor no poden ser els dos igual a zero."
 msgctxt "model:ir.model.button,string:category_add_products_button"
 msgid "Add products"
 msgstr "Afegeix productes"
+
+msgctxt "model:ir.sequence.type,name:sequence_type_category"
+msgid "Category"
+msgstr "Categoria"
 
 msgctxt "model:ir.sequence.type,name:sequence_type_product"
 msgid "Variant"
@@ -953,6 +977,10 @@ msgid "Product Administration"
 msgstr "Administració de productes"
 
 msgctxt "selection:product.identifier,type:"
+msgid "Brand"
+msgstr "Marca"
+
+msgctxt "selection:product.identifier,type:"
 msgid "International Article Number"
 msgstr "Número d'article internacional (EAN)"
 
@@ -975,6 +1003,10 @@ msgstr "Número estàndard Internacional del Lllibreries (ISIL)"
 msgctxt "selection:product.identifier,type:"
 msgid "International Standard Music Number"
 msgstr "Número estàndard Internacional de Música (ISMN)"
+
+msgctxt "selection:product.identifier,type:"
+msgid "Manufacturer Part Number"
+msgstr "Número de peça del fabricant"
 
 msgctxt "selection:product.product,cost_price_method:"
 msgid "Average"

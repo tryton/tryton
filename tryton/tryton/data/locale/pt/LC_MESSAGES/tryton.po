@@ -85,7 +85,8 @@ msgstr "Não"
 msgid "Yes"
 msgstr "Sim"
 
-msgid "Concurrency Exception"
+#, fuzzy
+msgid "Concurrency Warning"
 msgstr "Exceção de concorrência"
 
 msgid "This record has been modified while you were editing it."
@@ -116,6 +117,9 @@ msgstr "Fechar"
 msgid "Application Error"
 msgstr "Erro no programa"
 
+msgid "Details"
+msgstr ""
+
 msgid "Report Bug"
 msgstr "Reportar erro (bug)"
 
@@ -133,12 +137,15 @@ msgstr "Nova versão disponível!"
 msgid "Download"
 msgstr "Baixar"
 
+msgid "Concurrency Exception"
+msgstr "Exceção de concorrência"
+
 #, fuzzy
 msgid "Could not get a session."
 msgstr "Não foi possível se conectar ao servidor"
 
 #, python-format
-msgid "Error \"%s\". Try again later."
+msgid "Error: \"%s\". Try again later."
 msgstr ""
 
 msgid "Too many requests. Try again later."
@@ -747,6 +754,12 @@ msgstr "Modelo:"
 
 msgid "ID:"
 msgstr "ID:"
+
+msgid "Module:"
+msgstr ""
+
+msgid "XML ID:"
+msgstr ""
 
 #, fuzzy
 msgid "Created by:"

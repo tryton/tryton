@@ -194,12 +194,6 @@ msgstr "t"
 msgid "False"
 msgstr "假"
 
-msgid "Message: "
-msgstr "信息: "
-
-msgid "Warning: "
-msgstr "警告: "
-
 msgid "Always ignore this warning."
 msgstr "下次不再提示."
 
@@ -209,13 +203,8 @@ msgstr "继续此项操作 ?"
 msgid "No"
 msgstr "否"
 
-msgid "Confirmation: "
-msgstr "确认: "
-
-msgid "Concurrency Exception"
-msgstr "并行操作异常"
-
-msgid "Write Concurrency Warning: "
+#, fuzzy
+msgid "Concurrency Warning"
 msgstr "同步操作警告: "
 
 msgid "This record has been modified while you were editing it."
@@ -244,6 +233,9 @@ msgstr "覆写"
 
 msgid "Application Error"
 msgstr "程序错误"
+
+msgid "Details"
+msgstr ""
 
 msgid "Report Bug"
 msgstr "报告Bug"
@@ -596,6 +588,12 @@ msgstr "模型:"
 
 msgid "ID:"
 msgstr "标识:"
+
+msgid "Module:"
+msgstr ""
+
+msgid "XML ID:"
+msgstr ""
 
 msgid "Created by:"
 msgstr "创建者:"

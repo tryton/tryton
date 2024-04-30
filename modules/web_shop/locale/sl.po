@@ -54,6 +54,11 @@ msgctxt "field:web.shop,company:"
 msgid "Company"
 msgstr "Družba"
 
+#, fuzzy
+msgctxt "field:web.shop,countries:"
+msgid "Countries"
+msgstr "Kategorije"
+
 msgctxt "field:web.shop,currency:"
 msgid "Currency"
 msgstr "Valuta"
@@ -70,6 +75,10 @@ msgctxt "field:web.shop,name:"
 msgid "Name"
 msgstr "Naziv"
 
+msgctxt "field:web.shop,non_sale_price_list:"
+msgid "Non-Sale Price List"
+msgstr ""
+
 msgctxt "field:web.shop,products:"
 msgid "Products"
 msgstr "Izdelki"
@@ -78,6 +87,10 @@ msgctxt "field:web.shop,products_removed:"
 msgid "Products Removed"
 msgstr "Odstranjeni izdeleki"
 
+msgctxt "field:web.shop,sale_price_list:"
+msgid "Sale Price List"
+msgstr ""
+
 msgctxt "field:web.shop,type:"
 msgid "Type"
 msgstr "Vrsta"
@@ -85,6 +98,15 @@ msgstr "Vrsta"
 msgctxt "field:web.shop,warehouses:"
 msgid "Warehouses"
 msgstr "Skladišča"
+
+msgctxt "field:web.shop-country.country,country:"
+msgid "Country"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:web.shop-country.country,shop:"
+msgid "Shop"
+msgstr "Trgovina"
 
 msgctxt "field:web.shop-product.attribute,attribute:"
 msgid "Attribute"
@@ -154,6 +176,11 @@ msgctxt "help:web.shop,categories_removed:"
 msgid "The list of categories to unpublish."
 msgstr "Seznam kategorij za odstranitev iz objave."
 
+msgctxt "help:web.shop,non_sale_price_list:"
+msgid ""
+"The price list to compute the price of products when it is not on sale."
+msgstr ""
+
 msgctxt "help:web.shop,products:"
 msgid "The list of products to publish."
 msgstr "Seznam izdelekov za objavo."
@@ -161,6 +188,10 @@ msgstr "Seznam izdelekov za objavo."
 msgctxt "help:web.shop,products_removed:"
 msgid "The list of products to unpublish."
 msgstr "Seznam izdelekov za odstranitev iz objave."
+
+msgctxt "help:web.shop,sale_price_list:"
+msgid "The price list to compute sale price of products."
+msgstr ""
 
 msgctxt "help:web.shop,type:"
 msgid "The front-end used for the web shop."
@@ -197,6 +228,11 @@ msgstr "Spletne trgovine"
 msgctxt "model:web.shop,name:"
 msgid "Web Shop"
 msgstr "Spletna trgovina"
+
+#, fuzzy
+msgctxt "model:web.shop-country.country,name:"
+msgid "Web Shop - Country"
+msgstr "Spletna trgovina - Izdelek"
 
 msgctxt "model:web.shop-product.attribute,name:"
 msgid "Web Shop - Attribute"

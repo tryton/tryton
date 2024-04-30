@@ -395,7 +395,7 @@ msgid "Cancel"
 msgstr "Canel"
 
 msgctxt "model:ir.model.button,string:production_done_button"
-msgid "Done"
+msgid "Complete"
 msgstr ""
 
 msgctxt "model:ir.model.button,string:production_draft_button"
@@ -504,10 +504,6 @@ msgstr ""
 
 msgctxt "model:stock.location,name:location_production"
 msgid "Production"
-msgstr ""
-
-msgctxt "selection:ir.cron,method:"
-msgid "Assign Productions"
 msgstr ""
 
 msgctxt "selection:ir.cron,method:"

@@ -501,7 +501,7 @@ msgid ""
 "Invalid formula \"%(formula)s\" in commission plan line \"%(line)s\" with "
 "exception \"%(exception)s\"."
 msgstr ""
-"Ongeldige formule \"%(formula)s\" in commissieplanlijn \"% (line)s\" met "
+"Ongeldige formule \"%(formula)s\" in regel commissie plan \"%(line)s\" met "
 "uitzondering \"%(exception)s\"."
 
 msgctxt "model:ir.model.button,string:commission_invoice_button"

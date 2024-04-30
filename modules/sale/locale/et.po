@@ -1671,9 +1671,19 @@ msgctxt "view:sale.line:"
 msgid "General"
 msgstr "Üldine"
 
+#, fuzzy
+msgctxt "view:sale.line:"
+msgid "Invoicing"
+msgstr "Arve"
+
 msgctxt "view:sale.line:"
 msgid "Notes"
 msgstr "Märkused"
+
+#, fuzzy
+msgctxt "view:sale.line:"
+msgid "Shipping"
+msgstr "Tarne kuupäev"
 
 msgctxt "view:sale.line:"
 msgid "Taxes"

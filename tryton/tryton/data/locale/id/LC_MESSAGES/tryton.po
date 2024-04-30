@@ -80,7 +80,7 @@ msgstr "Tidak"
 msgid "Yes"
 msgstr "Ya"
 
-msgid "Concurrency Exception"
+msgid "Concurrency Warning"
 msgstr ""
 
 msgid "This record has been modified while you were editing it."
@@ -111,6 +111,9 @@ msgstr "Tutup"
 msgid "Application Error"
 msgstr ""
 
+msgid "Details"
+msgstr ""
+
 msgid "Report Bug"
 msgstr "Melaporkan Kesalahan"
 
@@ -127,12 +130,15 @@ msgstr "Versi baru tersedia!"
 msgid "Download"
 msgstr "Unduh"
 
+msgid "Concurrency Exception"
+msgstr ""
+
 #, fuzzy
 msgid "Could not get a session."
 msgstr "Tidak dapat terhubung ke server."
 
 #, fuzzy, python-format
-msgid "Error \"%s\". Try again later."
+msgid "Error: \"%s\". Try again later."
 msgstr "Terlalu banyak permintaan. Coba lagi nanti."
 
 msgid "Too many requests. Try again later."
@@ -722,6 +728,12 @@ msgstr "Model:"
 
 msgid "ID:"
 msgstr "ID:"
+
+msgid "Module:"
+msgstr ""
+
+msgid "XML ID:"
+msgstr ""
 
 msgid "Created by:"
 msgstr "Dibuat oleh:"

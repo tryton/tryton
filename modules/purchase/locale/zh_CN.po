@@ -1360,9 +1360,18 @@ msgctxt "view:purchase.line:"
 msgid "General"
 msgstr "基本情况"
 
+#, fuzzy
+msgctxt "view:purchase.line:"
+msgid "Invoicing"
+msgstr "发票"
+
 msgctxt "view:purchase.line:"
 msgid "Notes"
 msgstr "备注"
+
+msgctxt "view:purchase.line:"
+msgid "Shipping"
+msgstr ""
 
 msgctxt "view:purchase.line:"
 msgid "Taxes"

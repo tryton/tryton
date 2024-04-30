@@ -1003,6 +1003,13 @@ msgstr ""
 "Faktur \"%(invoice)s\" menghasilkan tanggal pembayaran \"%(date)s\" di masa "
 "lampau."
 
+#, fuzzy
+msgctxt "model:ir.message,text:msg_invoice_default_taxes"
+msgid "The invoice \"%(invoice)s\" does not have the default taxes for %(lines)s."
+msgstr ""
+"Faktur \"%(invoice)s\" menghasilkan tanggal pembayaran \"%(date)s\" di masa "
+"lampau."
+
 msgctxt "model:ir.message,text:msg_invoice_delete_cancel"
 msgid "To delete invoice \"%(invoice)s\" you must cancel it."
 msgstr "Untuk menghapus faktur \"%(invoice)s\" Anda harus membatalkannya."

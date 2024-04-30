@@ -1670,9 +1670,19 @@ msgctxt "view:sale.line:"
 msgid "General"
 msgstr "Pagrindinis"
 
+#, fuzzy
+msgctxt "view:sale.line:"
+msgid "Invoicing"
+msgstr "Sąskaita faktūra"
+
 msgctxt "view:sale.line:"
 msgid "Notes"
 msgstr "Pastabos"
+
+#, fuzzy
+msgctxt "view:sale.line:"
+msgid "Shipping"
+msgstr "Išsiuntimo data"
 
 msgctxt "view:sale.line:"
 msgid "Taxes"

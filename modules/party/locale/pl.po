@@ -516,10 +516,9 @@ msgstr ""
 "Strony mają różny identyfikator podatkowy: \"%(source_code)s\" różni się od "
 "\"%(destination_code)s\"."
 
-#, fuzzy
 msgctxt "model:ir.message,text:msg_email_invalid"
 msgid "The email address \"%(email)s\" for party \"%(party)s\" is not valid."
-msgstr "Typ %(type)s \"%(code)s\" strony \"%(party)s\" jest niepoprawny."
+msgstr "Adres e-mail \"%(email)s\" strony \"%(party)s\" jest nieprawidłowy."
 
 msgctxt "model:ir.message,text:msg_erase_active_party"
 msgid "Party \"%(party)s\" cannot be erased because they are still active."
@@ -552,7 +551,7 @@ msgstr "Kod strony musi być unikatowy."
 
 msgctxt "model:ir.message,text:msg_party_identifier_duplicate"
 msgid "The party \"%(party)s\" has the same %(type)s \"%(code)s\"."
-msgstr ""
+msgstr "Strona \"%(party)s\" ma ten sam %(type)s \"%(code)s\"."
 
 msgctxt "model:ir.message,text:msg_party_set_contact_mechanism"
 msgid ""
@@ -686,10 +685,9 @@ msgctxt "selection:party.configuration,identifier_types:"
 msgid "Albanian VAT Number"
 msgstr "Albański numer VAT"
 
-#, fuzzy
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "Algerian Tax Number"
-msgstr "Numer podatkowy w Andorze"
+msgstr "Algierski Numer Podatkowy"
 
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "Andorra Tax Number"
@@ -727,28 +725,25 @@ msgctxt "selection:party.configuration,identifier_types:"
 msgid "Austrian Tax Identification"
 msgstr "Austriacka identyfikacja podatkowa"
 
-#, fuzzy
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "Austrian Umsatzsteuer-Identifikationsnummer"
-msgstr "Austriacka identyfikacja podatkowa"
+msgstr "Austriacki Umsatzsteuer-Identifikations-Nummer"
 
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "Belarus VAT Number"
 msgstr "Białoruski numer VAT"
 
-#, fuzzy
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "Belgian BIS Number"
-msgstr "Bułgarski numer VAT"
+msgstr "Belgijski numer BIS"
 
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "Belgian Enterprise Number"
 msgstr "Belgijski numer przedsiębiorstw"
 
-#, fuzzy
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "Belgian National Number"
-msgstr "Chilijski numer podatkowy"
+msgstr "Belgijski numer krajowy"
 
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "Brazillian Company Identifier"
@@ -870,10 +865,9 @@ msgctxt "selection:party.configuration,identifier_types:"
 msgid "Ecuadorian Tax Identification"
 msgstr "Ekwadorska identyfikacja podatkowa"
 
-#, fuzzy
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "Egyptian Tax Registration Number"
-msgstr "PESEL"
+msgstr "Egipski numer rejestracji podatkowej"
 
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "English Unique Pupil Number"
@@ -897,227 +891,187 @@ msgstr "VAT-UE"
 
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "European VAT on e-Commerce - One Stop Shop"
-msgstr ""
+msgstr "Europejski VAT od handlu elektronicznego - One Stop Shop"
 
-#, fuzzy
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "Faroese Tax Number"
-msgstr "NIP"
+msgstr "Numer podatkowy Wysp Owczych"
 
-#, fuzzy
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "Finnish Association Identifier"
-msgstr "Brazylijski Identyfikator Narodowy"
+msgstr "Identyfikator fińskiego stowarzyszenia"
 
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "Finnish Business Identifier"
-msgstr ""
+msgstr "Fiński identyfikator biznesowy"
 
-#, fuzzy
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "Finnish Individual Tax Number"
-msgstr "Nr podatkowy w Argentynie"
+msgstr "Fiński indywidualny numer podatkowy"
 
-#, fuzzy
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "Finnish Personal Identity Code"
-msgstr "Bułgarskie Kody Tożsamości"
+msgstr "Fiński osobisty kod identyfikacyjny"
 
-#, fuzzy
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "Finnish VAT Number"
-msgstr "NIP"
+msgstr "Fiński numer VAT"
 
-#, fuzzy
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "French Company Establishment Identification Number"
-msgstr "PESEL"
+msgstr "Francuski numer SIRET"
 
-#, fuzzy
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "French Company Identification Number"
-msgstr "PESEL"
+msgstr "Francuski numer SIREN"
 
-#, fuzzy
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "French Personal Identification Number"
-msgstr "PESEL"
+msgstr "Francuski osobisty numer identyfikacyjny"
 
-#, fuzzy
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "French Tax Identification Number"
-msgstr "PESEL"
+msgstr "Francuski numer identyfikacji podatkowej"
 
-#, fuzzy
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "French VAT Number"
-msgstr "VAT-UE"
+msgstr "Francuski numer VAT"
 
-#, fuzzy
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "German Company Register Number"
-msgstr "Austryjacki Rejestr Przedsiębiorstw"
+msgstr "Niemiecki numer rejestracyjny firmy"
 
-#, fuzzy
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "German Personal Tax Number"
-msgstr "Numer podatkowy w Andorze"
+msgstr "Niemiecki numer identyfikacji podatkowej"
 
-#, fuzzy
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "German Tax Number"
-msgstr "Numer podatkowy w Andorze"
+msgstr "Niemiecki numer podatkowy"
 
-#, fuzzy
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "German VAT Number"
-msgstr "VAT-UE"
+msgstr "Niemiecki numer VAT"
 
-#, fuzzy
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "Ghanaian Taxpayer Identification Number"
-msgstr "PESEL"
+msgstr "Numer identyfikacyjny podatnika w Ghanie"
 
-#, fuzzy
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "Greek Social Security Number"
-msgstr "Australijski Numer Przedsiębiorstwa"
+msgstr "Grecki numer ubezpieczenia społecznego"
 
-#, fuzzy
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "Greek VAT Number"
-msgstr "VAT-UE"
+msgstr "Grecki numer VAT"
 
-#, fuzzy
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "Guatemala Tax Number"
-msgstr "Australijski Numer Podatkowy"
+msgstr "Numer podatkowy w Gwatemali"
 
-#, fuzzy
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "Guinean Tax Number"
-msgstr "Numer podatkowy w Andorze"
+msgstr "Numer podatkowy w Gwinei"
 
-#, fuzzy
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "Hungarian VAT Number"
-msgstr "Bułgarski Numer VAT"
+msgstr "Węgierski numer VAT"
 
-#, fuzzy
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "Icelandic Personal and Organisation Identity Code"
-msgstr "Bułgarskie Kody Tożsamości"
+msgstr "Islandzki kod identyfikacyjny osoby i organizacji"
 
-#, fuzzy
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "Icelandic VAT Number"
-msgstr "Numer VAT w Albanii"
+msgstr "Numer VAT w Islandii"
 
-#, fuzzy
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "Indian Digital Resident Personal Identity Number"
-msgstr "Brazylijski Identyfikator Narodowy"
+msgstr "Cyfrowy numer identyfikacyjny indyjskiego rezydenta"
 
-#, fuzzy
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "Indian Income Tax Identifier"
-msgstr "Identyfikator podatkowy"
+msgstr "Identyfikator podatku dochodowego w Indiach"
 
-#, fuzzy
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "Indian VAT number"
-msgstr "Numer VAT w Albanii"
+msgstr "Numer VAT w Indiach"
 
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "Indian Voter ID"
-msgstr ""
+msgstr "Indyjski identyfikator wyborcy"
 
-#, fuzzy
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "Indonesian VAT Number"
-msgstr "Numer VAT w Albanii"
+msgstr "Numer VAT w Indonezji"
 
-#, fuzzy
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "Irish Personal Number"
-msgstr "Australijski Numer Przedsiębiorstwa"
+msgstr "Irlandzki numer osobisty"
 
-#, fuzzy
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "Irish VAT Number"
-msgstr "NIP"
+msgstr "Numer VAT w Irlandii"
 
-#, fuzzy
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "Israeli Company Number"
-msgstr "Australijski Numer Przedsiębiorstwa"
+msgstr "Izraelski numer firmy"
 
-#, fuzzy
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "Israeli Identity Number"
-msgstr "Australijski Numer Przedsiębiorstwa"
+msgstr "Izraelski numer identyfikacyjny"
 
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "Italian Tax Code for Individuals"
-msgstr ""
+msgstr "Włoski numer podatkowy dla osób fizycznych"
 
-#, fuzzy
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "Italian VAT Number"
-msgstr "Numer VAT w Albanii"
+msgstr "Numer VAT we Włoszech"
 
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "Japanese Corporate Number"
-msgstr ""
+msgstr "Japoński numer przedsiębiorstwa"
 
-#, fuzzy
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "Latvian VAT Number"
-msgstr "Numer VAT w Albanii"
+msgstr "Łotewski numer VAT"
 
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "Lithuanian Personal Number"
-msgstr ""
+msgstr "Litewski numer osobisty"
 
-#, fuzzy
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "Lithuanian VAT Number"
-msgstr "Numer VAT w Albanii"
+msgstr "Litewski numer VAT"
 
-#, fuzzy
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "Luxembourgian VAT Number"
-msgstr "Bułgarski Numer VAT"
+msgstr "Luksemburski numer VAT"
 
-#, fuzzy
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "Macedonian Tax Number"
-msgstr "Nr podatkowy w Argentynie"
+msgstr "Macedoński numer podatkowy"
 
-#, fuzzy
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "Malaysian National Registration Identity Card Number"
-msgstr "Brazylijski Identyfikator Narodowy"
+msgstr "Numer dowodu osobistego w malezyjskim rejestrze krajowym"
 
-#, fuzzy
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "Maltese VAT Number"
-msgstr "NIP"
+msgstr "Maltański numer VAT"
 
-#, fuzzy
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "Mauritian National Identifier"
-msgstr "Brazylijski Identyfikator Narodowy"
+msgstr "Identyfikator narodowy Mauritiusa"
 
-#, fuzzy
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "Mexican Tax Number"
-msgstr "Nr podatkowy w Argentynie"
+msgstr "Meksykański numer podatkowy"
 
-#, fuzzy
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "Moldavian Company Identification Number"
-msgstr "PESEL"
+msgstr "Numer identyfikacyjny mołdawskiego przedsiębiorstwa"
 
 #, fuzzy
 msgctxt "selection:party.configuration,identifier_types:"
@@ -1439,7 +1393,6 @@ msgctxt "selection:party.contact_mechanism,type:"
 msgid "Website"
 msgstr "Strona WWW"
 
-#, fuzzy
 msgctxt "view:party.address:"
 msgid "General"
 msgstr "Ogólne"

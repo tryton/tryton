@@ -721,6 +721,12 @@ msgstr ""
 msgid "ID:"
 msgstr ""
 
+msgid "Module:"
+msgstr ""
+
+msgid "XML ID:"
+msgstr ""
+
 msgid "Created by:"
 msgstr ""
 

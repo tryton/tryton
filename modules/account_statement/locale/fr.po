@@ -124,16 +124,15 @@ msgstr "Montant"
 
 msgctxt "field:account.statement.line,amount_second_currency:"
 msgid "Amount Second Currency"
-msgstr ""
+msgstr "Montant en devise secondaire"
 
 msgctxt "field:account.statement.line,company:"
 msgid "Company"
 msgstr "Société"
 
-#, fuzzy
 msgctxt "field:account.statement.line,company_currency:"
 msgid "Company Currency"
-msgstr "Tiers de la société"
+msgstr "Devise de la société"
 
 msgctxt "field:account.statement.line,currency:"
 msgid "Currency"
@@ -171,10 +170,9 @@ msgctxt "field:account.statement.line,related_to:"
 msgid "Related To"
 msgstr "Relative à"
 
-#, fuzzy
 msgctxt "field:account.statement.line,second_currency:"
 msgid "Second Currency"
-msgstr "Devise"
+msgstr "Devise secondaire"
 
 msgctxt "field:account.statement.line,statement:"
 msgid "Statement"
@@ -190,7 +188,7 @@ msgstr "Montant"
 
 msgctxt "field:account.statement.line.group,amount_second_currency:"
 msgid "Amount Second Currency"
-msgstr ""
+msgstr "Montant en devise secondaire"
 
 msgctxt "field:account.statement.line.group,currency:"
 msgid "Currency"
@@ -216,10 +214,9 @@ msgctxt "field:account.statement.line.group,party:"
 msgid "Party"
 msgstr "Tiers"
 
-#, fuzzy
 msgctxt "field:account.statement.line.group,second_currency:"
 msgid "Second Currency"
-msgstr "Devise"
+msgstr "Devise secondaire"
 
 msgctxt "field:account.statement.line.group,statement:"
 msgid "Statement"
@@ -235,16 +232,15 @@ msgstr "Montant"
 
 msgctxt "field:account.statement.origin,amount_second_currency:"
 msgid "Amount Second Currency"
-msgstr ""
+msgstr "Montant en devise secondaire"
 
 msgctxt "field:account.statement.origin,company:"
 msgid "Company"
 msgstr "Société"
 
-#, fuzzy
 msgctxt "field:account.statement.origin,company_currency:"
 msgid "Company Currency"
-msgstr "Tiers de la société"
+msgstr "Devise de la société"
 
 msgctxt "field:account.statement.origin,currency:"
 msgid "Currency"
@@ -278,10 +274,9 @@ msgctxt "field:account.statement.origin,pending_amount:"
 msgid "Pending Amount"
 msgstr "Montant en attente"
 
-#, fuzzy
 msgctxt "field:account.statement.origin,second_currency:"
 msgid "Second Currency"
-msgstr "Devise"
+msgstr "Devise secondaire"
 
 msgctxt "field:account.statement.origin,statement:"
 msgid "Statement"
@@ -399,6 +394,8 @@ msgid ""
 "The currency of bank account \"%(bank_account)s\" must be the same as "
 "\"%(currency)s\" of the journal \"%(journal)s\"."
 msgstr ""
+"La devise du compte bancaire « %(bank_account)s » doit être la même que "
+"celle « %(currency)s » du journal « %(journal)s »."
 
 msgctxt "model:ir.message,text:msg_import_no_journal"
 msgid ""
@@ -440,6 +437,7 @@ msgstr ""
 msgctxt "model:ir.message,text:msg_statement_line_second_currency_sign"
 msgid "You must set the same sign for second currency than amount."
 msgstr ""
+"Vous devez définir le même signe pour la deuxième devise que le montant."
 
 msgctxt "model:ir.message,text:msg_statement_origin_delete_cancel_draft"
 msgid ""

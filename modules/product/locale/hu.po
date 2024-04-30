@@ -11,6 +11,16 @@ msgctxt "field:product.category,childs:"
 msgid "Children"
 msgstr "Alkategóriák"
 
+#, fuzzy
+msgctxt "field:product.category,code:"
+msgid "Code"
+msgstr "Kód"
+
+#, fuzzy
+msgctxt "field:product.category,code_readonly:"
+msgid "Code Readonly"
+msgstr "Szám csak olvasható"
+
 msgctxt "field:product.category,name:"
 msgid "Name"
 msgstr "Név"
@@ -22,6 +32,11 @@ msgstr "Fölérendelt"
 msgctxt "field:product.category,templates:"
 msgid "Products"
 msgstr "Termékek"
+
+#, fuzzy
+msgctxt "field:product.configuration,category_sequence:"
+msgid "Category Sequence"
+msgstr "Változatok sorszámozása"
 
 msgctxt "field:product.configuration,default_cost_price_method:"
 msgid "Default Cost Method"
@@ -301,6 +316,11 @@ msgctxt "help:product.category,parent:"
 msgid "Used to add structure above the category."
 msgstr "Itt megadhatja vagy létrehozhatja a főkategóriát."
 
+#, fuzzy
+msgctxt "help:product.configuration,category_sequence:"
+msgid "Used to generate the category code."
+msgstr "Itt megadhatja vagy létrehozhatja a főkategóriát."
+
 msgctxt "help:product.configuration,default_cost_price_method:"
 msgid "The default cost price method for new products."
 msgstr ""
@@ -508,6 +528,10 @@ msgctxt "model:ir.action,name:act_uom_form"
 msgid "Units of Measure"
 msgstr "Mértékegységek"
 
+msgctxt "model:ir.message,text:msg_category_code_unique"
+msgid "The code on product category must be unique."
+msgstr ""
+
 msgctxt "model:ir.message,text:msg_invalid_code"
 msgid "The %(type)s \"%(code)s\" for product \"%(product)s\" is not valid."
 msgstr ""
@@ -549,6 +573,11 @@ msgstr ""
 msgctxt "model:ir.model.button,string:category_add_products_button"
 msgid "Add products"
 msgstr "Termékek hozzáadása"
+
+#, fuzzy
+msgctxt "model:ir.sequence.type,name:sequence_type_category"
+msgid "Category"
+msgstr "Kategória"
 
 msgctxt "model:ir.sequence.type,name:sequence_type_product"
 msgid "Variant"
@@ -969,6 +998,10 @@ msgid "Product Administration"
 msgstr "Product Administration"
 
 msgctxt "selection:product.identifier,type:"
+msgid "Brand"
+msgstr ""
+
+msgctxt "selection:product.identifier,type:"
 msgid "International Article Number"
 msgstr "Globális Kereskedelmi Áruazonosító Szám (GTIN)"
 
@@ -991,6 +1024,10 @@ msgstr ""
 msgctxt "selection:product.identifier,type:"
 msgid "International Standard Music Number"
 msgstr "Nemzetközi Szabványos Kottaazonosító (ISMN)"
+
+msgctxt "selection:product.identifier,type:"
+msgid "Manufacturer Part Number"
+msgstr ""
 
 msgctxt "selection:product.product,cost_price_method:"
 msgid "Average"

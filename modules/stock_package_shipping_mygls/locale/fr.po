@@ -88,7 +88,7 @@ msgid ""
 "%(message)s"
 msgstr ""
 "L'appel de l'API MyGLS a échoué avec le message d'erreur suivant :\n"
-"%(messages)s"
+"%(message)s"
 
 msgctxt "model:ir.message,text:msg_phone_mobile_required"
 msgid ""

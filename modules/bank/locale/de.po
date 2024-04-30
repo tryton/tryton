@@ -104,7 +104,7 @@ msgstr "Für das Bankkonto kann nur eine IBAN erfasst werden."
 
 msgctxt "model:ir.message,text:msg_invalid_bic"
 msgid "The BIC \"%(bic)s\" is not valid."
-msgstr "Die IBAN \"%(number)s\" ist ungültig."
+msgstr "Die BIC \"%(bic)s\" ist ungültig."
 
 msgctxt "model:ir.message,text:msg_invalid_iban"
 msgid "IBAN \"%(number)s\" is not valid."

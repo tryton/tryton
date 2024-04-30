@@ -224,7 +224,7 @@ msgstr "Code Partei"
 
 msgctxt "field:party.party,code_readonly:"
 msgid "Code Readonly"
-msgstr "Code (nur lesbar)"
+msgstr "Code ist nur lesbar"
 
 msgctxt "field:party.party,contact_mechanisms:"
 msgid "Contact Mechanisms"
@@ -1164,7 +1164,7 @@ msgstr "Russischer Steueridentifikator"
 
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "SEPA Identifier of the Creditor (AT-02)"
-msgstr "SEPA Kreditorenidentifikation (AT-02)"
+msgstr "SEPA Gläubiger-Identifikationsnummer (AT-02)"
 
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "San Marino National Tax Number"

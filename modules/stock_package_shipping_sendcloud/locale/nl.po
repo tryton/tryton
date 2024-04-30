@@ -88,7 +88,7 @@ msgid ""
 "%(message)s"
 msgstr ""
 "Bij het oproepen van de Sendcloud webservice is volgende fout opgetreden:\n"
-"%(bericht)s"
+"%(message)s"
 
 msgctxt "model:ir.message,text:msg_shipment_has_shipping_reference_number"
 msgid ""

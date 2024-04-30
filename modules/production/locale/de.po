@@ -404,8 +404,8 @@ msgid "Cancel"
 msgstr "Annullieren"
 
 msgctxt "model:ir.model.button,string:production_done_button"
-msgid "Done"
-msgstr "Erledigt"
+msgid "Complete"
+msgstr "Fertigstellen"
 
 msgctxt "model:ir.model.button,string:production_draft_button"
 msgid "Draft"
@@ -425,7 +425,7 @@ msgstr "Warten"
 
 msgctxt "model:ir.rule.group,name:rule_group_production_companies"
 msgid "User in companies"
-msgstr "Benutzer im Unternehmen"
+msgstr "Benutzer in Unternehmen"
 
 msgctxt "model:ir.sequence,name:sequence_production"
 msgid "Production"
@@ -514,10 +514,6 @@ msgstr "Produktion Administration"
 msgctxt "model:stock.location,name:location_production"
 msgid "Production"
 msgstr "Produktion"
-
-msgctxt "selection:ir.cron,method:"
-msgid "Assign Productions"
-msgstr "Produktionsaufträge reservieren"
 
 msgctxt "selection:ir.cron,method:"
 msgid "Reschedule Productions"

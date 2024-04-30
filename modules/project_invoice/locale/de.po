@@ -107,7 +107,7 @@ msgstr ""
 msgctxt "model:ir.message,text:msg_invoiced_work_delete"
 msgid "You cannot delete work \"%(work)s\" because it has been invoiced."
 msgstr ""
-"Die Projektaufgabe \"%(line)s\" kann nicht mehr gelöscht werden, weil diese "
+"Die Projektaufgabe \"%(work)s\" kann nicht mehr gelöscht werden, weil diese "
 "bereits in Rechnung gestellt ist."
 
 msgctxt "model:ir.message,text:msg_invoiced_work_modify_effort"

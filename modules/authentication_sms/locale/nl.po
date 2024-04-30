@@ -28,7 +28,7 @@ msgstr "%(name)s code %(code)s"
 
 msgctxt "model:ir.message,text:msg_user_sms_code"
 msgid "SMS Code for %(login)s"
-msgstr "SMS-code voor% (login) s"
+msgstr "SMS-code voor%(login)s"
 
 msgctxt "model:res.user.login.sms_code,name:"
 msgid "SMS Code"

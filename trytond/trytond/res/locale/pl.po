@@ -58,7 +58,6 @@ msgctxt "field:ir.export-write-res.group,group:"
 msgid "Group"
 msgstr "Grupa"
 
-#, fuzzy
 msgctxt "field:ir.model.button,groups:"
 msgid "Groups"
 msgstr "Grupy"
@@ -79,7 +78,6 @@ msgctxt "field:ir.model.button.rule,group:"
 msgid "Group"
 msgstr "Grupa"
 
-#, fuzzy
 msgctxt "field:ir.rule.group,groups:"
 msgid "Groups"
 msgstr "Grupy"
@@ -104,7 +102,6 @@ msgctxt "field:ir.sequence.type-res.group,sequence_type:"
 msgid "Sequence Type"
 msgstr "Typ sekwencji"
 
-#, fuzzy
 msgctxt "field:ir.ui.menu,groups:"
 msgid "Groups"
 msgstr "Grupy"
@@ -139,7 +136,7 @@ msgstr "Nazwa"
 
 msgctxt "field:res.group,parent:"
 msgid "Parent"
-msgstr ""
+msgstr "Grupa nadrzędna"
 
 msgctxt "field:res.group,rule_groups:"
 msgid "Rules"
@@ -159,7 +156,7 @@ msgstr "Aplikacje"
 
 msgctxt "field:res.user,avatar_badge_url:"
 msgid "Avatar Badge URL"
-msgstr ""
+msgstr "Avatar Badge URL"
 
 msgctxt "field:res.user,email:"
 msgid "Email"
@@ -259,16 +256,15 @@ msgstr "Użytkownik"
 
 msgctxt "field:res.user.device,cookie:"
 msgid "Cookie"
-msgstr ""
+msgstr "Ciasteczko"
 
-#, fuzzy
 msgctxt "field:res.user.device,login:"
 msgid "Login"
 msgstr "Login"
 
 msgctxt "field:res.user.login.attempt,device_cookie:"
 msgid "Device Cookie"
-msgstr ""
+msgstr "Ciasteczko urządzenia"
 
 msgctxt "field:res.user.login.attempt,ip_address:"
 msgid "IP Address"
@@ -308,7 +304,7 @@ msgstr "Grupy uprawnione do edycji tego typu sekwencji."
 
 msgctxt "help:res.group,parent:"
 msgid "The group to inherit accesses from."
-msgstr ""
+msgstr "Grupa, z której mają być dziedziczone dostępy."
 
 msgctxt "help:res.user,actions:"
 msgid "Actions that will be run at login."
@@ -344,7 +340,7 @@ msgstr "Grupa zezwalająca na modyfikowanie eksportu"
 
 msgctxt "model:ir.message,text:msg_email_invalid"
 msgid "The email address \"%(email)s\" for \"%(user)s\" is not valid."
-msgstr ""
+msgstr "Adres e-mail \"%(email)s\" użytkownika \"%(user)s\" jest niepoprawny."
 
 msgctxt "model:ir.message,text:msg_password_email"
 msgid "The password cannot be the same as user's email address."
@@ -356,7 +352,7 @@ msgstr "Takie hasło jest niedozwolone."
 
 msgctxt "model:ir.message,text:msg_password_length"
 msgid "The password must have at least %(length)i characters."
-msgstr ""
+msgstr "Hasło musi zawierać przynajmniej %(length)i znaków."
 
 msgctxt "model:ir.message,text:msg_password_login"
 msgid "The password cannot be the same as user's login."
@@ -480,7 +476,7 @@ msgstr "Wstępne ustawienia użytkownika"
 
 msgctxt "model:res.user.device,name:"
 msgid "User Device"
-msgstr ""
+msgstr "Urządzenie użytkownika"
 
 msgctxt "model:res.user.login.attempt,name:"
 msgid "Login Attempt"
@@ -490,7 +486,6 @@ msgctxt "model:res.user.warning,name:"
 msgid "User Warning"
 msgstr "Ostrzeżenie użytkownika"
 
-#, fuzzy
 msgctxt "report:res.user.email_reset_password:"
 msgid ""
 "Hello,\n"
@@ -500,24 +495,24 @@ msgid ""
 "                [7:%(http_host)s/#%(database)s][8:]\n"
 "                You must set a new one from the user's preferences.[9:]"
 msgstr ""
-"Hasło do twojego konta, [1:%(login)s], zostało zresetowane.[2:]\n"
-"                Musisz ustawić nowe hasło w preferencjach użytkownika.[3:]\n"
-"                Możesz połączyć się używając tymczasowego hasła [4:%(password)s] do [5:]\n"
-"                [6:tryton://%(host)s/%(database)s][7:]\n"
-"                [8:%(host)s/#%(database)s]"
+"Witaj,\n"
+"                otrzymaliśmy prośbę o zresetowanie hasła do konta powiązanego z [1:%(login)s]. Na Twoim koncie nie wprowadzono jeszcze żadnych zmian.[2:]\n"
+"                Możesz połączyć się za pomocą tymczasowego hasła [3:%(password)s] z [4:]\n"
+"                [5:tryton://%(host)s/%(database)s][6:]\n"
+"                [7:%(http_host)s/#%(database)s][8:]\n"
+"                Musisz ustawić nowe hasło w preferencjach użytkownika.[9:]"
 
 msgctxt "report:res.user.email_reset_password:"
 msgid "If you didn't make this request, you can safely ignore this email."
-msgstr ""
+msgstr "Jeśli nie Ty wysłałeś to żądanie, możesz zignorować tę wiadomość."
 
 msgctxt "report:res.user.email_reset_password:"
 msgid "Reset Password"
 msgstr "Zresetuj hasło"
 
-#, fuzzy
 msgctxt "report:res.user.email_reset_password:"
 msgid "The password will expire in [1:%(datetime)s]."
-msgstr "Hasło wygaśnie o [1:%(datetime)s UTC]."
+msgstr "Hasło wygaśnie za [1:%(datetime)s]."
 
 msgctxt "selection:res.user.application,state:"
 msgid "Cancelled"

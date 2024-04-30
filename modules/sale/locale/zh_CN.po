@@ -1645,8 +1645,17 @@ msgstr "基本"
 
 #, fuzzy
 msgctxt "view:sale.line:"
+msgid "Invoicing"
+msgstr "Invoices"
+
+#, fuzzy
+msgctxt "view:sale.line:"
 msgid "Notes"
 msgstr "注释"
+
+msgctxt "view:sale.line:"
+msgid "Shipping"
+msgstr ""
 
 msgctxt "view:sale.line:"
 msgid "Taxes"

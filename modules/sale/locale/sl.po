@@ -1655,9 +1655,19 @@ msgctxt "view:sale.line:"
 msgid "General"
 msgstr "Splošno"
 
+#, fuzzy
+msgctxt "view:sale.line:"
+msgid "Invoicing"
+msgstr "Račun"
+
 msgctxt "view:sale.line:"
 msgid "Notes"
 msgstr "Zapiski"
+
+#, fuzzy
+msgctxt "view:sale.line:"
+msgid "Shipping"
+msgstr "Datum odpreme"
 
 msgctxt "view:sale.line:"
 msgid "Taxes"

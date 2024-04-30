@@ -1585,9 +1585,19 @@ msgctxt "view:sale.line:"
 msgid "General"
 msgstr "General"
 
+#, fuzzy
+msgctxt "view:sale.line:"
+msgid "Invoicing"
+msgstr "Factura fiscala"
+
 msgctxt "view:sale.line:"
 msgid "Notes"
 msgstr "Notițe"
+
+#, fuzzy
+msgctxt "view:sale.line:"
+msgid "Shipping"
+msgstr "Data de expediere"
 
 msgctxt "view:sale.line:"
 msgid "Taxes"

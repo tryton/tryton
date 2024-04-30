@@ -85,7 +85,8 @@ msgstr "Nem"
 msgid "Yes"
 msgstr "Igen"
 
-msgid "Concurrency Exception"
+#, fuzzy
+msgid "Concurrency Warning"
 msgstr "Egyidejű módosítási hiba"
 
 msgid "This record has been modified while you were editing it."
@@ -117,6 +118,9 @@ msgstr "Bezárás"
 msgid "Application Error"
 msgstr "Alkalmazáshiba"
 
+msgid "Details"
+msgstr ""
+
 msgid "Report Bug"
 msgstr "A hiba jelentése"
 
@@ -133,12 +137,15 @@ msgstr "Új verzió elérhető!"
 msgid "Download"
 msgstr "Letöltés"
 
+msgid "Concurrency Exception"
+msgstr "Egyidejű módosítási hiba"
+
 #, fuzzy
 msgid "Could not get a session."
 msgstr "Nem sikerült csatlakozni a kiszolgálóhoz."
 
 #, python-format
-msgid "Error \"%s\". Try again later."
+msgid "Error: \"%s\". Try again later."
 msgstr ""
 
 msgid "Too many requests. Try again later."
@@ -736,6 +743,12 @@ msgstr "Elem:"
 
 msgid "ID:"
 msgstr "ID:"
+
+msgid "Module:"
+msgstr ""
+
+msgid "XML ID:"
+msgstr ""
 
 msgid "Created by:"
 msgstr "Létrehozta:"

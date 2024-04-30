@@ -4,44 +4,44 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "field:product.product,location_places:"
 msgid "Places per Location"
-msgstr ""
+msgstr "Llocs per ubicació"
 
 msgctxt "field:product.template,location_places:"
 msgid "Places per Location"
-msgstr ""
+msgstr "Llocs per ubicació"
 
 msgctxt "field:stock.move,from_place:"
 msgid "From Place"
-msgstr ""
+msgstr "Del lloc"
 
 msgctxt "field:stock.move,to_place:"
 msgid "To Place"
-msgstr ""
+msgstr "Al lloc"
 
 msgctxt "field:stock.product.location.place,location:"
 msgid "Storage Location"
-msgstr ""
+msgstr "Ubicació d'emmagatzematge"
 
 msgctxt "field:stock.product.location.place,place:"
 msgid "Place"
-msgstr ""
+msgstr "Lloc"
 
 msgctxt "field:stock.product.location.place,product:"
 msgid "Variant"
-msgstr ""
+msgstr "Variant"
 
 msgctxt "field:stock.product.location.place,template:"
 msgid "Product"
-msgstr ""
+msgstr "Producte"
 
 msgctxt "help:stock.product.location.place,place:"
 msgid "The place where the product is always stored in the location."
-msgstr ""
+msgstr "El lloc on s'emmagatzema sempre el producte a la ubicació."
 
 msgctxt "model:ir.message,text:msg_stock_product_location_unique"
 msgid "Only one product place can be defined per location."
-msgstr ""
+msgstr "Només es pot definir un lloc pel producte per cada ubicació."
 
 msgctxt "model:stock.product.location.place,name:"
 msgid "Product Location Place"
-msgstr ""
+msgstr "Lloc ubicació producte"

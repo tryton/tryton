@@ -1228,6 +1228,11 @@ msgctxt "field:account.journal.open_cash.context,start_date:"
 msgid "Start Date"
 msgstr "Alguskuupäev"
 
+#, fuzzy
+msgctxt "field:account.journal.period,company:"
+msgid "Company"
+msgstr "Ettevõte"
+
 msgctxt "field:account.journal.period,icon:"
 msgid "Icon"
 msgstr "Ikoon"
@@ -3885,6 +3890,15 @@ msgctxt "model:ir.model.button,string:fiscalyear_reopen_button"
 msgid "Re-Open"
 msgstr "Ava uuesti"
 
+#, fuzzy
+msgctxt "model:ir.model.button,string:journal_period_close_button"
+msgid "Close"
+msgstr "Sulge"
+
+msgctxt "model:ir.model.button,string:journal_period_reopen_button"
+msgid "Reopen"
+msgstr ""
+
 msgctxt "model:ir.model.button,string:move_post_button"
 msgid "Post"
 msgstr "Postita"
@@ -3934,6 +3948,11 @@ msgstr "Kasutaja ettevõttes"
 
 #, fuzzy
 msgctxt "model:ir.rule.group,name:rule_group_general_ledger_line_companies"
+msgid "User in companies"
+msgstr "Kasutaja ettevõttes"
+
+#, fuzzy
+msgctxt "model:ir.rule.group,name:rule_group_journal_period_companies"
 msgid "User in companies"
 msgstr "Kasutaja ettevõttes"
 
@@ -4981,14 +5000,6 @@ msgstr "Perioodid"
 msgctxt "view:account.fiscalyear:"
 msgid "Sequences"
 msgstr "Järjestused"
-
-msgctxt "view:account.journal.period:"
-msgid "Close"
-msgstr "Sulge"
-
-msgctxt "view:account.journal.period:"
-msgid "Re-Open"
-msgstr "Taas-ava"
 
 msgctxt "view:account.move.line.reschedule.start:"
 msgid "every"

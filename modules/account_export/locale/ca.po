@@ -1,3 +1,120 @@
 #
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:account.configuration,move_export_type:"
+msgid "Move Export Type"
+msgstr "Tipus d'exportació d'assentament"
+
+msgctxt "field:account.configuration.export,company:"
+msgid "Company"
+msgstr "Empresa"
+
+msgctxt "field:account.configuration.export,move_export_type:"
+msgid "Move Export Type"
+msgstr "Tipus d'exportació d'assentament"
+
+msgctxt "field:account.move,export:"
+msgid "Export"
+msgstr "Exportació"
+
+msgctxt "field:account.move.export,company:"
+msgid "Company"
+msgstr "Empresa"
+
+msgctxt "field:account.move.export,file:"
+msgid "File"
+msgstr "Fitxer"
+
+msgctxt "field:account.move.export,file_id:"
+msgid "File ID"
+msgstr "ID fitxer"
+
+msgctxt "field:account.move.export,filename:"
+msgid "Filename"
+msgstr "Nom del fitxer"
+
+msgctxt "field:account.move.export,moves:"
+msgid "Moves"
+msgstr "Assentaments"
+
+msgctxt "field:account.move.export,state:"
+msgid "State"
+msgstr "Estat"
+
+msgctxt "field:account.move.export,type:"
+msgid "Type"
+msgstr "Tipus"
+
+msgctxt "model:account.configuration.export,name:"
+msgid "Account Configuration Export"
+msgstr "Configuració exportacions comptables"
+
+msgctxt "model:account.move.export,name:"
+msgid "Account Move Export"
+msgstr "Exportació asentaments comptables"
+
+msgctxt "model:ir.action,name:act_account_move_export_form"
+msgid "Move Exports"
+msgstr "Exportacions assentaments"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_account_move_export_form_domain_all"
+msgid "All"
+msgstr "Tot"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_account_move_export_form_domain_draft"
+msgid "Draft"
+msgstr "Esborrany"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_account_move_export_form_domain_waiting"
+msgid "Waiting"
+msgstr "En espera"
+
+msgctxt "model:ir.message,text:msg_account_move_export_delete_draft"
+msgid "To delete move export \"%(export)s\" you must reset it to draft."
+msgstr ""
+"Per eliminar l'exportació d'assentaments \"%(export)s\" s'ha de restablir a "
+"esborrany."
+
+msgctxt "model:ir.model.button,string:account_move_export_do_button"
+msgid "Do"
+msgstr "Finalitza"
+
+msgctxt "model:ir.model.button,string:account_move_export_draft_button"
+msgid "Reset to Draft"
+msgstr "Restaura a esborrany"
+
+msgctxt "model:ir.model.button,string:account_move_export_select_moves_button"
+msgid "Select Moves"
+msgstr "Selecciona assentaments"
+
+msgctxt "model:ir.model.button,string:account_move_export_wait_button"
+msgid "Wait"
+msgstr "En espera"
+
+msgctxt "model:ir.rule.group,name:rule_group_account_move_export_companies"
+msgid "User in companies"
+msgstr "Usuari a les empreses"
+
+msgctxt "model:ir.ui.menu,name:menu_account_move_export_form"
+msgid "Move Exports"
+msgstr "Exportacions assentaments"
+
+msgctxt "selection:account.move.export,state:"
+msgid "Done"
+msgstr "Finalitzat"
+
+msgctxt "selection:account.move.export,state:"
+msgid "Draft"
+msgstr "Esborrany"
+
+msgctxt "selection:account.move.export,state:"
+msgid "Waiting"
+msgstr "En espera"
+
+msgctxt "view:account.configuration:"
+msgid "Export"
+msgstr "Exportacions"

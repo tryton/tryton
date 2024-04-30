@@ -195,7 +195,7 @@ msgctxt "model:ir.action,name:wizard_production_inspect_run"
 msgid "Inspect Run"
 msgstr "Qualitätsprüfung für Status \"In Ausführung\" durchführen"
 
-msgctxt "model:ir.action,name:wizard_stock_shipment_in_inspect_done"
+msgctxt "model:ir.action,name:wizard_stock_shipment_in_inspect_do"
 msgid "Inspect Done"
 msgstr "Qualitätsprüfung für Status \"Erledigt\" durchführen"
 
@@ -203,7 +203,7 @@ msgctxt "model:ir.action,name:wizard_stock_shipment_in_inspect_receive"
 msgid "Inspect Reception"
 msgstr "Qualitätsprüfung für Status \"Erhalten\" durchführen"
 
-msgctxt "model:ir.action,name:wizard_stock_shipment_internal_inspect_done"
+msgctxt "model:ir.action,name:wizard_stock_shipment_internal_inspect_do"
 msgid "Inspect Done"
 msgstr "Qualitätsprüfung für Status \"Erledigt\" durchführen"
 
@@ -219,9 +219,9 @@ msgctxt "model:ir.action,name:wizard_stock_shipment_out_inspect_pick"
 msgid "Inspect Pick"
 msgstr "Qualitätsprüfung für Status \"Kommissioniert\" durchführen"
 
-msgctxt "model:ir.action,name:wizard_stock_shipment_out_return_inspect_done"
+msgctxt "model:ir.action,name:wizard_stock_shipment_out_return_inspect_do"
 msgid "Inspect Done"
-msgstr "Qualitätsprüfung für Status \"Erledigt\" ausführen"
+msgstr "Qualitätsprüfung für Status \"Erledigt\" durchführen"
 
 msgctxt ""
 "model:ir.action,name:wizard_stock_shipment_out_return_inspect_receive"
@@ -315,11 +315,11 @@ msgstr "Ausführen"
 
 msgctxt "model:ir.rule.group,name:rule_group_quality_control_companies"
 msgid "User in companies"
-msgstr "Benutzer im Unternehmen"
+msgstr "Benutzer in Unternehmen"
 
 msgctxt "model:ir.rule.group,name:rule_group_quality_inspection_companies"
 msgid "User in companies"
-msgstr "Benutzer im Unternehmen"
+msgstr "Benutzer in Unternehmen"
 
 msgctxt "model:ir.sequence,name:sequence_quality_alert"
 msgid "Quality Alert"

@@ -425,6 +425,11 @@ msgctxt "field:stock.move,from_location:"
 msgid "From Location"
 msgstr "Asukohast"
 
+#, fuzzy
+msgctxt "field:stock.move,from_location_name:"
+msgid "From Location"
+msgstr "Asukohast"
+
 msgctxt "field:stock.move,internal_quantity:"
 msgid "Internal Quantity"
 msgstr "Sisemine kogus"
@@ -469,6 +474,11 @@ msgid "State"
 msgstr "Olek"
 
 msgctxt "field:stock.move,to_location:"
+msgid "To Location"
+msgstr "Asukohta"
+
+#, fuzzy
+msgctxt "field:stock.move,to_location_name:"
 msgid "To Location"
 msgstr "Asukohta"
 
@@ -2346,9 +2356,10 @@ msgctxt "model:ir.model.button,string:shipment_in_cancel_button"
 msgid "Cancel"
 msgstr "Tühista"
 
+#, fuzzy
 msgctxt "model:ir.model.button,string:shipment_in_done_button"
-msgid "Done"
-msgstr "Tehtud"
+msgid "Complete"
+msgstr "Lõoetatud"
 
 msgctxt "model:ir.model.button,string:shipment_in_draft_button"
 msgid "Reset to Draft"
@@ -2366,9 +2377,10 @@ msgctxt "model:ir.model.button,string:shipment_in_return_cancel_button"
 msgid "Cancel"
 msgstr "Tühista"
 
+#, fuzzy
 msgctxt "model:ir.model.button,string:shipment_in_return_done_button"
-msgid "Done"
-msgstr "Tehtud"
+msgid "Complete"
+msgstr "Lõoetatud"
 
 msgctxt "model:ir.model.button,string:shipment_in_return_draft_button"
 msgid "Draft"
@@ -2386,9 +2398,10 @@ msgctxt "model:ir.model.button,string:shipment_internal_cancel_button"
 msgid "Cancel"
 msgstr "Tühista"
 
+#, fuzzy
 msgctxt "model:ir.model.button,string:shipment_internal_done_button"
-msgid "Done"
-msgstr "Tehtud"
+msgid "Complete"
+msgstr "Lõoetatud"
 
 msgctxt "model:ir.model.button,string:shipment_internal_draft_button"
 msgid "Draft"
@@ -2410,9 +2423,10 @@ msgctxt "model:ir.model.button,string:shipment_out_cancel_button"
 msgid "Cancel"
 msgstr "Tühista"
 
+#, fuzzy
 msgctxt "model:ir.model.button,string:shipment_out_done_button"
-msgid "Done"
-msgstr "Tehtud"
+msgid "Complete"
+msgstr "Lõoetatud"
 
 msgctxt "model:ir.model.button,string:shipment_out_draft_button"
 msgid "Draft"
@@ -2432,9 +2446,10 @@ msgctxt "model:ir.model.button,string:shipment_out_return_cancel_button"
 msgid "Cancel"
 msgstr "Tühista"
 
+#, fuzzy
 msgctxt "model:ir.model.button,string:shipment_out_return_done_button"
-msgid "Done"
-msgstr "Tehtud"
+msgid "Complete"
+msgstr "Lõoetatud"
 
 msgctxt "model:ir.model.button,string:shipment_out_return_draft_button"
 msgid "Draft"
@@ -3141,13 +3156,8 @@ msgstr "Ladu:"
 
 #, fuzzy
 msgctxt "selection:ir.cron,method:"
-msgid "Assign Customer Shipments"
-msgstr "Lisa kliendi lähetus"
-
-#, fuzzy
-msgctxt "selection:ir.cron,method:"
-msgid "Assign Internal Shipments"
-msgstr "Sisemine lähetus"
+msgid "Assign Shipments"
+msgstr "Omista sisemine lähetus"
 
 #, fuzzy
 msgctxt "selection:ir.cron,method:"

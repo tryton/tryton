@@ -27,6 +27,10 @@ msgctxt "field:company.company,timezone:"
 msgid "Timezone"
 msgstr ""
 
+msgctxt "field:company.employee,active:"
+msgid "Active"
+msgstr ""
+
 msgctxt "field:company.employee,company:"
 msgid "Company"
 msgstr ""

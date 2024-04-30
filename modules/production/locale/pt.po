@@ -416,8 +416,8 @@ msgid "Cancel"
 msgstr "Cancel"
 
 msgctxt "model:ir.model.button,string:production_done_button"
-msgid "Done"
-msgstr "Done"
+msgid "Complete"
+msgstr ""
 
 msgctxt "model:ir.model.button,string:production_draft_button"
 msgid "Draft"
@@ -528,11 +528,6 @@ msgstr "Administração de Produção"
 msgctxt "model:stock.location,name:location_production"
 msgid "Production"
 msgstr "Produção"
-
-#, fuzzy
-msgctxt "selection:ir.cron,method:"
-msgid "Assign Productions"
-msgstr "Atribuir Produção"
 
 #, fuzzy
 msgctxt "selection:ir.cron,method:"

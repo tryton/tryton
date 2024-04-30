@@ -159,7 +159,7 @@ msgstr "Entwurf"
 
 msgctxt "model:ir.rule.group,name:rule_group_forecast_companies"
 msgid "User in companies"
-msgstr "Benutzer im Unternehmen"
+msgstr "Benutzer in Unternehmen"
 
 msgctxt "model:ir.ui.menu,name:menu_forecast_form"
 msgid "Forecasts"

@@ -1,3 +1,102 @@
 #
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:product.category.facebook,code:"
+msgid "Code"
+msgstr "Codi"
+
+msgctxt "field:product.category.facebook,name:"
+msgid "Name"
+msgstr "Nom"
+
+msgctxt "field:product.category.google,code:"
+msgid "Code"
+msgstr "Codi"
+
+msgctxt "field:product.category.google,name:"
+msgid "Name"
+msgstr "Nom"
+
+msgctxt "field:product.product,facebook_category:"
+msgid "Facebook Category"
+msgstr "Categoria Facebook"
+
+msgctxt "field:product.product,google_category:"
+msgid "Google Category"
+msgstr "Categoria Google"
+
+msgctxt "field:product.template,facebook_category:"
+msgid "Facebook Category"
+msgstr "Categoria Facebook"
+
+msgctxt "field:product.template,google_category:"
+msgid "Google Category"
+msgstr "Categoria Google"
+
+msgctxt "field:web.shop,product_image_url_template:"
+msgid "Product Image URL"
+msgstr "URL de la imatge del producte"
+
+msgctxt "field:web.shop,product_url_template:"
+msgid "Product URL"
+msgstr "URL del producte"
+
+msgctxt "help:web.shop,product_image_url_template:"
+msgid ""
+"The template to generate the indexed product image URL.\n"
+"The following placeholders can be used:\n"
+"- ${id}\n"
+"- ${code}\n"
+"- ${name}\n"
+"- ${language}\n"
+"- ${index}\n"
+msgstr ""
+"La plantilla per generar l'URL de la imatge del producte a indexar.\n"
+"Es poden utilitzar les següents substitucions:\n"
+"- ${id}\n"
+"- ${code}\n"
+"- ${name}\n"
+"- ${language}\n"
+"- ${index}\n"
+
+msgctxt "help:web.shop,product_url_template:"
+msgid ""
+"The template to generate the product URL on the web shop.\n"
+"The following placeholders can be used:\n"
+"- ${id}\n"
+"- ${code}\n"
+"- ${name}\n"
+"- ${language}\n"
+msgstr ""
+"La plantilla per generar l'URL del producte a la tenda web.\n"
+"Es poden utilitzar les següents substitucions:\n"
+"- ${id}\n"
+"- ${code}\n"
+"- ${name}\n"
+"- ${language}\n"
+"- ${index}\n"
+
+msgctxt "model:ir.action,name:act_product_category_facebook_form"
+msgid "Facebook Product Categories"
+msgstr "Categories de productes de Facebook"
+
+msgctxt "model:ir.action,name:act_product_category_google_form"
+msgid "Google Product Categories"
+msgstr "Categories de productes de Google"
+
+msgctxt "model:ir.ui.menu,name:menu_product_category_facebook_form"
+msgid "Facebook Product Categories"
+msgstr "Categories de productes de Facebook"
+
+msgctxt "model:ir.ui.menu,name:menu_product_category_google_form"
+msgid "Google Product Categories"
+msgstr "Categories de productes de Google"
+
+msgctxt "model:product.category.facebook,name:"
+msgid "Facebook Product Category"
+msgstr "Categoria de producte de Facebook"
+
+msgctxt "model:product.category.google,name:"
+msgid "Google Product Category"
+msgstr "Categoria de producte de Google"

@@ -195,12 +195,6 @@ msgstr "п"
 msgid "False"
 msgstr "Неправда"
 
-msgid "Message: "
-msgstr "Повідомлення: "
-
-msgid "Warning: "
-msgstr "Попередження: "
-
 msgid "Always ignore this warning."
 msgstr "Завжди ігнорувати це попередження."
 
@@ -210,13 +204,8 @@ msgstr "Ви бажаєте продовжити?"
 msgid "No"
 msgstr "Ні"
 
-msgid "Confirmation: "
-msgstr "Підтвердження: "
-
-msgid "Concurrency Exception"
-msgstr "Виняток одночасного доступу"
-
-msgid "Write Concurrency Warning: "
+#, fuzzy
+msgid "Concurrency Warning"
 msgstr "Попередження одночасного запису: "
 
 msgid "This record has been modified while you were editing it."
@@ -245,6 +234,9 @@ msgstr "Записати все одно"
 
 msgid "Application Error"
 msgstr "Помилка програми"
+
+msgid "Details"
+msgstr ""
 
 msgid "Report Bug"
 msgstr "Повідомити про помилку"
@@ -601,6 +593,12 @@ msgstr "Модель: "
 
 msgid "ID:"
 msgstr "ID:"
+
+msgid "Module:"
+msgstr ""
+
+msgid "XML ID:"
+msgstr ""
 
 msgid "Created by:"
 msgstr "Ким створено:"
