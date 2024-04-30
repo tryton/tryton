@@ -86,7 +86,8 @@ msgstr ""
 msgid "Yes"
 msgstr "ແມ່ນ"
 
-msgid "Concurrency Exception"
+#, fuzzy
+msgid "Concurrency Warning"
 msgstr "ຍົກເວັ້ນການເຂົ້າເຖິງພ້ອມກັນ"
 
 msgid "This record has been modified while you were editing it."
@@ -118,6 +119,9 @@ msgstr ""
 msgid "Application Error"
 msgstr "ໂປຣແກຣມ ມີຂໍ້ຜິດພາດ!"
 
+msgid "Details"
+msgstr ""
+
 msgid "Report Bug"
 msgstr "ລາຍງານຂໍ້ຜິດພາດ"
 
@@ -134,12 +138,15 @@ msgstr ""
 msgid "Download"
 msgstr ""
 
+msgid "Concurrency Exception"
+msgstr "ຍົກເວັ້ນການເຂົ້າເຖິງພ້ອມກັນ"
+
 #, fuzzy
 msgid "Could not get a session."
 msgstr "ບໍ່ສາມາດເຊື່ອມຕໍ່ກັບແມ່ຂ່າຍໄດ້"
 
 #, python-format
-msgid "Error \"%s\". Try again later."
+msgid "Error: \"%s\". Try again later."
 msgstr ""
 
 msgid "Too many requests. Try again later."
@@ -760,6 +767,12 @@ msgstr "ແບບ:"
 
 msgid "ID:"
 msgstr "ເລກລໍາດັບ:"
+
+msgid "Module:"
+msgstr ""
+
+msgid "XML ID:"
+msgstr ""
 
 #, fuzzy
 msgid "Created by:"

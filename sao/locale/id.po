@@ -191,12 +191,6 @@ msgstr "t"
 msgid "False"
 msgstr "Salah"
 
-msgid "Message: "
-msgstr "Pesan: "
-
-msgid "Warning: "
-msgstr ""
-
 msgid "Always ignore this warning."
 msgstr "Selalu abaikan peringatan ini."
 
@@ -206,13 +200,7 @@ msgstr "Apakah Anda ingin melanjutkan?"
 msgid "No"
 msgstr "Tidak"
 
-msgid "Confirmation: "
-msgstr ""
-
-msgid "Concurrency Exception"
-msgstr ""
-
-msgid "Write Concurrency Warning: "
+msgid "Concurrency Warning"
 msgstr ""
 
 msgid "This record has been modified while you were editing it."
@@ -240,6 +228,9 @@ msgid "Write Anyway"
 msgstr "Tetap Menulis"
 
 msgid "Application Error"
+msgstr ""
+
+msgid "Details"
 msgstr ""
 
 msgid "Report Bug"
@@ -590,6 +581,12 @@ msgstr ""
 
 msgid "ID:"
 msgstr "ID:"
+
+msgid "Module:"
+msgstr ""
+
+msgid "XML ID:"
+msgstr ""
 
 msgid "Created by:"
 msgstr "Dibuat oleh:"

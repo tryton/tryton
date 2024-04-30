@@ -80,7 +80,8 @@ msgstr "Nu"
 msgid "Yes"
 msgstr "Da"
 
-msgid "Concurrency Exception"
+#, fuzzy
+msgid "Concurrency Warning"
 msgstr "Excepție de concurgență"
 
 msgid "This record has been modified while you were editing it."
@@ -111,6 +112,9 @@ msgstr "Închidere"
 msgid "Application Error"
 msgstr "Eroare de aplicație"
 
+msgid "Details"
+msgstr ""
+
 msgid "Report Bug"
 msgstr "Raporteati eroare"
 
@@ -127,11 +131,14 @@ msgstr "O nouă versiune este disponibilă!"
 msgid "Download"
 msgstr "Descarca"
 
+msgid "Concurrency Exception"
+msgstr "Excepție de concurgență"
+
 msgid "Could not get a session."
 msgstr "Nu s-a putut găsi o sesiune."
 
 #, fuzzy, python-format
-msgid "Error \"%s\". Try again later."
+msgid "Error: \"%s\". Try again later."
 msgstr "Prea multe cereri. Încercați mai târziu."
 
 msgid "Too many requests. Try again later."
@@ -722,6 +729,12 @@ msgstr "Model:"
 
 msgid "ID:"
 msgstr "ID:"
+
+msgid "Module:"
+msgstr ""
+
+msgid "XML ID:"
+msgstr ""
 
 msgid "Created by:"
 msgstr "Creat de:"

@@ -126,10 +126,9 @@ msgctxt "model:web.user.session,name:"
 msgid "Web User Session"
 msgstr "Webgebruikerssessie"
 
-#, fuzzy
 msgctxt "report:web.user.email_reset_password:"
 msgid "Button not working? Paste this into your browser:"
-msgstr "Knop werkt niet? Plak dit in uw browser:"
+msgstr "Werkt de knop niet? Plak dit in uw browser:"
 
 msgctxt "report:web.user.email_reset_password:"
 msgid ""
@@ -139,6 +138,11 @@ msgid ""
 "                    Reset Password\n"
 "                ]"
 msgstr ""
+"Hallo, we hebben een aanvraag ontvangen om het wachtwoord voor gebruiker [1:%(email)s] te resetten. Op dit moment zijn er nog geen wijzigingen gedaan aan de gebruiker.[2:]\n"
+"                U kunt het wachtwoord resetten door op de onderstaande link te klikken:[3:]\n"
+"                [4:\n"
+"                     Reset wachtwoord\n"
+"                ]"
 
 msgctxt "report:web.user.email_reset_password:"
 msgid "If you didn't make this request, you can ignore this email."

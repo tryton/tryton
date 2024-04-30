@@ -247,7 +247,7 @@ msgstr "Aquí teniu el vostre codi:"
 
 msgctxt "report:sale.gift_card.email:"
 msgid "You received a gift card of %(value)s for %(company)s."
-msgstr "Heu rebut una targeta regal de %(valor)s de l'empresa %(company)s."
+msgstr "Heu rebut una targeta regal de %(value)s de l'empresa %(company)s."
 
 msgctxt "report:sale.gift_card:"
 msgid "Value:"

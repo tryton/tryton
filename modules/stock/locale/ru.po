@@ -449,6 +449,11 @@ msgctxt "field:stock.move,from_location:"
 msgid "From Location"
 msgstr "Из местоположения"
 
+#, fuzzy
+msgctxt "field:stock.move,from_location_name:"
+msgid "From Location"
+msgstr "Из местоположения"
+
 msgctxt "field:stock.move,internal_quantity:"
 msgid "Internal Quantity"
 msgstr "Внутреннее количество"
@@ -493,6 +498,11 @@ msgid "State"
 msgstr "Состояние"
 
 msgctxt "field:stock.move,to_location:"
+msgid "To Location"
+msgstr "В местоположение"
+
+#, fuzzy
+msgctxt "field:stock.move,to_location_name:"
 msgid "To Location"
 msgstr "В местоположение"
 
@@ -2405,9 +2415,10 @@ msgctxt "model:ir.model.button,string:shipment_in_cancel_button"
 msgid "Cancel"
 msgstr "Cancel"
 
+#, fuzzy
 msgctxt "model:ir.model.button,string:shipment_in_done_button"
-msgid "Done"
-msgstr "Done"
+msgid "Complete"
+msgstr "Полная инвентаризация"
 
 msgctxt "model:ir.model.button,string:shipment_in_draft_button"
 msgid "Reset to Draft"
@@ -2425,9 +2436,10 @@ msgctxt "model:ir.model.button,string:shipment_in_return_cancel_button"
 msgid "Cancel"
 msgstr "Cancel"
 
+#, fuzzy
 msgctxt "model:ir.model.button,string:shipment_in_return_done_button"
-msgid "Done"
-msgstr "Done"
+msgid "Complete"
+msgstr "Полная инвентаризация"
 
 msgctxt "model:ir.model.button,string:shipment_in_return_draft_button"
 msgid "Draft"
@@ -2445,9 +2457,10 @@ msgctxt "model:ir.model.button,string:shipment_internal_cancel_button"
 msgid "Cancel"
 msgstr "Cancel"
 
+#, fuzzy
 msgctxt "model:ir.model.button,string:shipment_internal_done_button"
-msgid "Done"
-msgstr "Done"
+msgid "Complete"
+msgstr "Полная инвентаризация"
 
 msgctxt "model:ir.model.button,string:shipment_internal_draft_button"
 msgid "Draft"
@@ -2469,9 +2482,10 @@ msgctxt "model:ir.model.button,string:shipment_out_cancel_button"
 msgid "Cancel"
 msgstr "Cancel"
 
+#, fuzzy
 msgctxt "model:ir.model.button,string:shipment_out_done_button"
-msgid "Done"
-msgstr "Done"
+msgid "Complete"
+msgstr "Полная инвентаризация"
 
 msgctxt "model:ir.model.button,string:shipment_out_draft_button"
 msgid "Draft"
@@ -2490,9 +2504,10 @@ msgctxt "model:ir.model.button,string:shipment_out_return_cancel_button"
 msgid "Cancel"
 msgstr "Cancel"
 
+#, fuzzy
 msgctxt "model:ir.model.button,string:shipment_out_return_done_button"
-msgid "Done"
-msgstr "Done"
+msgid "Complete"
+msgstr "Полная инвентаризация"
 
 msgctxt "model:ir.model.button,string:shipment_out_return_draft_button"
 msgid "Draft"
@@ -3220,13 +3235,8 @@ msgstr "Товарный склад:"
 
 #, fuzzy
 msgctxt "selection:ir.cron,method:"
-msgid "Assign Customer Shipments"
-msgstr "Customer Shipments"
-
-#, fuzzy
-msgctxt "selection:ir.cron,method:"
-msgid "Assign Internal Shipments"
-msgstr "Internal Shipment"
+msgid "Assign Shipments"
+msgstr "Assign Shipment Internal"
 
 #, fuzzy
 msgctxt "selection:ir.cron,method:"

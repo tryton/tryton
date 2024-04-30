@@ -1180,6 +1180,11 @@ msgctxt "field:account.journal.open_cash.context,start_date:"
 msgid "Start Date"
 msgstr "Kezdődátum"
 
+#, fuzzy
+msgctxt "field:account.journal.period,company:"
+msgid "Company"
+msgstr "Cég"
+
 msgctxt "field:account.journal.period,icon:"
 msgid "Icon"
 msgstr "Ikon"
@@ -3786,6 +3791,15 @@ msgctxt "model:ir.model.button,string:fiscalyear_reopen_button"
 msgid "Re-Open"
 msgstr "Visszanyitás"
 
+#, fuzzy
+msgctxt "model:ir.model.button,string:journal_period_close_button"
+msgid "Close"
+msgstr "Lezárás"
+
+msgctxt "model:ir.model.button,string:journal_period_reopen_button"
+msgid "Reopen"
+msgstr ""
+
 msgctxt "model:ir.model.button,string:move_post_button"
 msgid "Post"
 msgstr "Rögzítés"
@@ -3835,6 +3849,11 @@ msgstr "Felhasználó a cég alkalmazotta"
 
 #, fuzzy
 msgctxt "model:ir.rule.group,name:rule_group_general_ledger_line_companies"
+msgid "User in companies"
+msgstr "Felhasználó a cég alkalmazotta"
+
+#, fuzzy
+msgctxt "model:ir.rule.group,name:rule_group_journal_period_companies"
 msgid "User in companies"
 msgstr "Felhasználó a cég alkalmazotta"
 
@@ -4872,14 +4891,6 @@ msgstr "Periódusok"
 msgctxt "view:account.fiscalyear:"
 msgid "Sequences"
 msgstr "Sorszámozások"
-
-msgctxt "view:account.journal.period:"
-msgid "Close"
-msgstr "Lezárás"
-
-msgctxt "view:account.journal.period:"
-msgid "Re-Open"
-msgstr "Visszanyitás"
 
 msgctxt "view:account.move.line.reschedule.start:"
 msgid "every"

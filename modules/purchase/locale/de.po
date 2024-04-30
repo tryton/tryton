@@ -179,10 +179,9 @@ msgctxt "field:purchase.line,invoice_lines:"
 msgid "Invoice Lines"
 msgstr "Rechnungspositionen"
 
-#, fuzzy
 msgctxt "field:purchase.line,invoice_progress:"
 msgid "Invoice Progress"
-msgstr "Rechnungsadresse"
+msgstr "Rechnungsfortschritt"
 
 msgctxt "field:purchase.line,moves:"
 msgid "Moves"
@@ -818,14 +817,13 @@ msgctxt "model:ir.action.act_window.domain,name:act_purchase_relate_pending"
 msgid "Pending"
 msgstr "Ausstehend"
 
-#, fuzzy
 msgctxt "model:ir.message,text:msg_change_purchase_uom"
 msgid ""
 "You are trying to change the purchase unit of measure on which the purchase "
 "prices are based."
 msgstr ""
-"Sie versuchen die Einkaufsmaßeinheit zu ändern, auf der die Einkaufspreise "
-"basieren."
+"Sie versuchen die Einkaufsmaßeinheit zu ändern, auf der die "
+"Lieferanteneinkaufspreise basieren."
 
 msgctxt "model:ir.message,text:msg_erase_party_pending_purchase"
 msgid ""
@@ -994,38 +992,38 @@ msgstr "Anfrage"
 
 msgctxt "model:ir.rule.group,name:rule_group_product_supplier_companies"
 msgid "User in companies"
-msgstr "Benutzer im Unternehmen"
+msgstr "Benutzer in Unternehmen"
 
 msgctxt "model:ir.rule.group,name:rule_group_purchase_companies"
 msgid "User in companies"
-msgstr "Benutzer im Unternehmen"
+msgstr "Benutzer in Unternehmen"
 
 msgctxt "model:ir.rule.group,name:rule_group_reporting_main_companies"
 msgid "User in companies"
-msgstr "Benutzer im Unternehmen"
+msgstr "Benutzer in Unternehmen"
 
 msgctxt ""
 "model:ir.rule.group,name:rule_group_reporting_main_time_series_companies"
 msgid "User in companies"
-msgstr "Benutzer im Unternehmen"
+msgstr "Benutzer in Unternehmen"
 
 msgctxt "model:ir.rule.group,name:rule_group_reporting_product_companies"
 msgid "User in companies"
-msgstr "Benutzer im Unternehmen"
+msgstr "Benutzer in Unternehmen"
 
 msgctxt ""
 "model:ir.rule.group,name:rule_group_reporting_product_time_series_companies"
 msgid "User in companies"
-msgstr "Benutzer im Unternehmen"
+msgstr "Benutzer in Unternehmen"
 
 msgctxt "model:ir.rule.group,name:rule_group_reporting_supplier_companies"
 msgid "User in companies"
-msgstr "Benutzer im Unternehmen"
+msgstr "Benutzer in Unternehmen"
 
 msgctxt ""
 "model:ir.rule.group,name:rule_group_reporting_supplier_time_series_companies"
 msgid "User in companies"
-msgstr "Benutzer im Unternehmen"
+msgstr "Benutzer in Unternehmen"
 
 msgctxt "model:ir.sequence,name:sequence_purchase"
 msgid "Purchase"
@@ -1392,8 +1390,16 @@ msgid "General"
 msgstr "Allgemein"
 
 msgctxt "view:purchase.line:"
+msgid "Invoicing"
+msgstr "Rechnungsfortschritt"
+
+msgctxt "view:purchase.line:"
 msgid "Notes"
 msgstr "Notizen"
+
+msgctxt "view:purchase.line:"
+msgid "Shipping"
+msgstr "Lieferfortschritt"
 
 msgctxt "view:purchase.line:"
 msgid "Taxes"

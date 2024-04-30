@@ -24,7 +24,7 @@ msgstr "Importe conciliado"
 
 msgctxt "field:account.move.line.group,amount_second_currency:"
 msgid "Amount Second Currency"
-msgstr "Importe segunda moneda"
+msgstr "Importe moneda secundaria"
 
 msgctxt "field:account.move.line.group,company:"
 msgid "Company"
@@ -100,7 +100,7 @@ msgstr "Conciliado"
 
 msgctxt "field:account.move.line.group,second_currency:"
 msgid "Second Currency"
-msgstr "Segunda moneda"
+msgstr "Moneda secundaria"
 
 msgctxt "field:account.move.line.group,state:"
 msgid "State"

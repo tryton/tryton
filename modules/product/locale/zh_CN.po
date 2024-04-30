@@ -10,6 +10,16 @@ msgctxt "field:product.category,childs:"
 msgid "Children"
 msgstr "子类别"
 
+#, fuzzy
+msgctxt "field:product.category,code:"
+msgid "Code"
+msgstr "代码"
+
+#, fuzzy
+msgctxt "field:product.category,code_readonly:"
+msgid "Code Readonly"
+msgstr "只读代码"
+
 msgctxt "field:product.category,name:"
 msgid "Name"
 msgstr "名称"
@@ -21,6 +31,11 @@ msgstr "父类别"
 msgctxt "field:product.category,templates:"
 msgid "Products"
 msgstr "产品"
+
+#, fuzzy
+msgctxt "field:product.configuration,category_sequence:"
+msgid "Category Sequence"
+msgstr "产品变体序列"
 
 msgctxt "field:product.configuration,default_cost_price_method:"
 msgid "Default Cost Method"
@@ -295,6 +310,11 @@ msgctxt "help:product.category,parent:"
 msgid "Used to add structure above the category."
 msgstr "用于在类别上面添加结构."
 
+#, fuzzy
+msgctxt "help:product.configuration,category_sequence:"
+msgid "Used to generate the category code."
+msgstr "用于生成产品代码的最后一部分."
+
 msgctxt "help:product.configuration,default_cost_price_method:"
 msgid "The default cost price method for new products."
 msgstr "新产品默认使用的成本价格方法."
@@ -489,6 +509,11 @@ msgctxt "model:ir.action,name:act_uom_form"
 msgid "Units of Measure"
 msgstr "计量单位"
 
+#, fuzzy
+msgctxt "model:ir.message,text:msg_category_code_unique"
+msgid "The code on product category must be unique."
+msgstr "已启用产品的代码不能重复."
+
 msgctxt "model:ir.message,text:msg_invalid_code"
 msgid "The %(type)s \"%(code)s\" for product \"%(product)s\" is not valid."
 msgstr "%(type)s \"%(code)s\" 对产品 \"%(product)s\" 是无效的."
@@ -530,6 +555,11 @@ msgstr "换算率和换算因子不能同时为零."
 msgctxt "model:ir.model.button,string:category_add_products_button"
 msgid "Add products"
 msgstr "添加产品"
+
+#, fuzzy
+msgctxt "model:ir.sequence.type,name:sequence_type_category"
+msgid "Category"
+msgstr "类别"
 
 msgctxt "model:ir.sequence.type,name:sequence_type_product"
 msgid "Variant"
@@ -944,6 +974,10 @@ msgid "Product Administration"
 msgstr "产品管理"
 
 msgctxt "selection:product.identifier,type:"
+msgid "Brand"
+msgstr ""
+
+msgctxt "selection:product.identifier,type:"
 msgid "International Article Number"
 msgstr "国际商品编码"
 
@@ -966,6 +1000,10 @@ msgstr "图书馆国际标准标识符"
 msgctxt "selection:product.identifier,type:"
 msgid "International Standard Music Number"
 msgstr "国际标准乐谱号"
+
+msgctxt "selection:product.identifier,type:"
+msgid "Manufacturer Part Number"
+msgstr ""
 
 msgctxt "selection:product.product,cost_price_method:"
 msgid "Average"

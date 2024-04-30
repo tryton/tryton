@@ -196,12 +196,6 @@ msgstr "t"
 msgid "False"
 msgstr "Netiesa"
 
-msgid "Message: "
-msgstr ""
-
-msgid "Warning: "
-msgstr ""
-
 msgid "Always ignore this warning."
 msgstr "Daugiau nepaisyti šio pranešimo."
 
@@ -211,13 +205,8 @@ msgstr "Ar tikrai norite vykdyti?"
 msgid "No"
 msgstr "Ne"
 
-msgid "Confirmation: "
-msgstr ""
-
-msgid "Concurrency Exception"
-msgstr "Lygiagretaus duomenų rašymo klaida"
-
-msgid "Write Concurrency Warning: "
+#, fuzzy
+msgid "Concurrency Warning"
 msgstr "Lygiagretaus duomenų rašymo perspėjimas: "
 
 msgid "This record has been modified while you were editing it."
@@ -247,6 +236,9 @@ msgstr "Rašyti visvien"
 
 msgid "Application Error"
 msgstr "Programos klaida"
+
+msgid "Details"
+msgstr ""
 
 msgid "Report Bug"
 msgstr "Pranešti apie klaidą"
@@ -606,6 +598,12 @@ msgstr ""
 
 msgid "ID:"
 msgstr "ID:"
+
+msgid "Module:"
+msgstr ""
+
+msgid "XML ID:"
+msgstr ""
 
 #, fuzzy
 msgid "Created by:"

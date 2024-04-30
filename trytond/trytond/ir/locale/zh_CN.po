@@ -54,6 +54,11 @@ msgctxt "field:ir.action.act_window,context_model:"
 msgid "Context Model"
 msgstr "上下文模型"
 
+#, fuzzy
+msgctxt "field:ir.action.act_window,context_model_ref:"
+msgid "Context Model"
+msgstr "上下文模型"
+
 msgctxt "field:ir.action.act_window,domain:"
 msgid "Domain Value"
 msgstr "域取值"
@@ -103,6 +108,11 @@ msgid "Records"
 msgstr "记录"
 
 msgctxt "field:ir.action.act_window,res_model:"
+msgid "Model"
+msgstr "模型"
+
+#, fuzzy
+msgctxt "field:ir.action.act_window,res_model_ref:"
 msgid "Model"
 msgstr "模型"
 
@@ -190,7 +200,17 @@ msgctxt "field:ir.action.report,model:"
 msgid "Model"
 msgstr "模型"
 
+#, fuzzy
+msgctxt "field:ir.action.report,model_ref:"
+msgid "Model"
+msgstr "模型"
+
 msgctxt "field:ir.action.report,module:"
+msgid "Module"
+msgstr "模块"
+
+#, fuzzy
+msgctxt "field:ir.action.report,module_ref:"
 msgid "Module"
 msgstr "模块"
 
@@ -295,6 +315,11 @@ msgid "Keywords"
 msgstr "关键词"
 
 msgctxt "field:ir.action.wizard,model:"
+msgid "Model"
+msgstr "模型"
+
+#, fuzzy
+msgctxt "field:ir.action.wizard,model_ref:"
 msgid "Model"
 msgstr "模型"
 
@@ -782,6 +807,11 @@ msgctxt "field:ir.model,module:"
 msgid "Module"
 msgstr "模块"
 
+#, fuzzy
+msgctxt "field:ir.model,module_ref:"
+msgid "Module"
+msgstr "模块"
+
 msgctxt "field:ir.model,name:"
 msgid "Model Description"
 msgstr "模型描述"
@@ -795,6 +825,11 @@ msgid "Group"
 msgstr "用户组"
 
 msgctxt "field:ir.model.access,model:"
+msgid "Model"
+msgstr "模型"
+
+#, fuzzy
+msgctxt "field:ir.model.access,model_ref:"
 msgid "Model"
 msgstr "模型"
 
@@ -827,6 +862,11 @@ msgid "Help"
 msgstr "帮助"
 
 msgctxt "field:ir.model.button,model:"
+msgid "Model"
+msgstr "模型"
+
+#, fuzzy
+msgctxt "field:ir.model.button,model_ref:"
 msgid "Model"
 msgstr "模型"
 
@@ -898,7 +938,17 @@ msgctxt "field:ir.model.data,model:"
 msgid "Model"
 msgstr "模型"
 
+#, fuzzy
+msgctxt "field:ir.model.data,model_ref:"
+msgid "Model"
+msgstr "模型"
+
 msgctxt "field:ir.model.data,module:"
+msgid "Module"
+msgstr "模块"
+
+#, fuzzy
+msgctxt "field:ir.model.data,module_ref:"
 msgid "Module"
 msgstr "模块"
 
@@ -930,7 +980,17 @@ msgctxt "field:ir.model.field,model:"
 msgid "Model"
 msgstr "模型"
 
+#, fuzzy
+msgctxt "field:ir.model.field,model_ref:"
+msgid "Model"
+msgstr "模型"
+
 msgctxt "field:ir.model.field,module:"
+msgid "Module"
+msgstr "模块"
+
+#, fuzzy
+msgctxt "field:ir.model.field,module_ref:"
 msgid "Module"
 msgstr "模块"
 
@@ -954,9 +1014,24 @@ msgctxt "field:ir.model.field.access,field:"
 msgid "Field"
 msgstr "字段"
 
+#, fuzzy
+msgctxt "field:ir.model.field.access,field_ref:"
+msgid "Field"
+msgstr "字段"
+
 msgctxt "field:ir.model.field.access,group:"
 msgid "Group"
 msgstr "用户组"
+
+#, fuzzy
+msgctxt "field:ir.model.field.access,model:"
+msgid "Model"
+msgstr "模型"
+
+#, fuzzy
+msgctxt "field:ir.model.field.access,model_ref:"
+msgid "Model"
+msgstr "模型"
 
 msgctxt "field:ir.model.field.access,perm_create:"
 msgid "Create Access"
@@ -1146,6 +1221,11 @@ msgctxt "field:ir.rule.group,model:"
 msgid "Model"
 msgstr "模型"
 
+#, fuzzy
+msgctxt "field:ir.rule.group,model_ref:"
+msgid "Model"
+msgstr "模型"
+
 msgctxt "field:ir.rule.group,name:"
 msgid "Name"
 msgstr "名称"
@@ -1302,11 +1382,21 @@ msgctxt "field:ir.translation,module:"
 msgid "Module"
 msgstr "模块"
 
+#, fuzzy
+msgctxt "field:ir.translation,module_ref:"
+msgid "Module"
+msgstr "模块"
+
 msgctxt "field:ir.translation,name:"
 msgid "Field Name"
 msgstr "字段名称"
 
 msgctxt "field:ir.translation,overriding_module:"
+msgid "Overriding Module"
+msgstr "覆盖模块"
+
+#, fuzzy
+msgctxt "field:ir.translation,overriding_module_ref:"
 msgid "Overriding Module"
 msgstr "覆盖模块"
 
@@ -1410,6 +1500,11 @@ msgctxt "field:ir.ui.icon,module:"
 msgid "Module"
 msgstr "模块"
 
+#, fuzzy
+msgctxt "field:ir.ui.icon,module_ref:"
+msgid "Module"
+msgstr "模块"
+
 msgctxt "field:ir.ui.icon,name:"
 msgid "Name"
 msgstr "名称"
@@ -1462,6 +1557,10 @@ msgctxt "field:ir.ui.view,arch:"
 msgid "View Architecture"
 msgstr "视图结构"
 
+msgctxt "field:ir.ui.view,basis:"
+msgid "Basis"
+msgstr ""
+
 msgctxt "field:ir.ui.view,data:"
 msgid "Data"
 msgstr "数据"
@@ -1469,6 +1568,16 @@ msgstr "数据"
 msgctxt "field:ir.ui.view,domain:"
 msgid "Domain"
 msgstr "域"
+
+#, fuzzy
+msgctxt "field:ir.ui.view,extensions:"
+msgid "Extensions"
+msgstr "扩展"
+
+#, fuzzy
+msgctxt "field:ir.ui.view,field_children:"
+msgid "Children Field"
+msgstr "子字段"
 
 msgctxt "field:ir.ui.view,field_childs:"
 msgid "Children Field"
@@ -1482,7 +1591,17 @@ msgctxt "field:ir.ui.view,model:"
 msgid "Model"
 msgstr "模型"
 
+#, fuzzy
+msgctxt "field:ir.ui.view,model_ref:"
+msgid "Model"
+msgstr "模型"
+
 msgctxt "field:ir.ui.view,module:"
+msgid "Module"
+msgstr "模块"
+
+#, fuzzy
+msgctxt "field:ir.ui.view,module_ref:"
 msgid "Module"
 msgstr "模块"
 
@@ -1558,7 +1677,17 @@ msgctxt "field:ir.ui.view_tree_width,field:"
 msgid "Field"
 msgstr "字段"
 
+#, fuzzy
+msgctxt "field:ir.ui.view_tree_width,field_ref:"
+msgid "Field"
+msgstr "字段"
+
 msgctxt "field:ir.ui.view_tree_width,model:"
+msgid "Model"
+msgstr "模型"
+
+#, fuzzy
+msgctxt "field:ir.ui.view_tree_width,model_ref:"
 msgid "Model"
 msgstr "模型"
 
@@ -1674,7 +1803,8 @@ msgctxt "help:ir.lang,parent:"
 msgid "Code of the exceptional parent"
 msgstr "特殊父级的代码"
 
-msgctxt "help:ir.model,module:"
+#, fuzzy
+msgctxt "help:ir.model,module_ref:"
 msgid "Module in which this model is defined."
 msgstr "定义该模型的模块."
 
@@ -1708,7 +1838,8 @@ msgid ""
 "against the relation of the field."
 msgstr "如果选中，系统会根据字段的关系测试对字段模型的访问权限。"
 
-msgctxt "help:ir.model.field,module:"
+#, fuzzy
+msgctxt "help:ir.model.field,module_ref:"
 msgid "Module in which this field is defined."
 msgstr "定义该字段的模块."
 
@@ -2499,6 +2630,14 @@ msgctxt "model:ir.message,text:msg_button_name_unique"
 msgid "The name of the button must be unique per model."
 msgstr "每个模型的按钮名称不能重复。"
 
+msgctxt "model:ir.message,text:msg_context_datetime"
+msgid "At date/time: %(datetime)s"
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_context_groups"
+msgid "Within groups: %(groups)s"
+msgstr ""
+
 msgctxt "model:ir.message,text:msg_create_rule_error"
 msgid ""
 "You are not allowed to create records of \"%(model)s\" because they fail on at least one of these rules:\n"
@@ -2983,6 +3122,10 @@ msgid ""
 "You are not allowed to modify the field \"%(field)s\" in record "
 "\"%(record)s\" of \"%(model)s\"."
 msgstr "不允许修改 \"%(model)s\" 的 \"%(record)s\" 中的字段 \"%(field)s\"。"
+
+msgctxt "model:ir.message,text:msg_xml_id"
+msgid "XML ID"
+msgstr ""
 
 msgctxt "model:ir.message,text:msg_xml_id_syntax_error"
 msgid ""

@@ -92,6 +92,15 @@ msgctxt "field:sale.opportunity,state:"
 msgid "State"
 msgstr "Stato"
 
+#, fuzzy
+msgctxt "field:sale.opportunity.line,description:"
+msgid "Description"
+msgstr "Descrizione"
+
+msgctxt "field:sale.opportunity.line,note:"
+msgid "Note"
+msgstr ""
+
 msgctxt "field:sale.opportunity.line,opportunity:"
 msgid "Opportunity"
 msgstr "opportunity"
@@ -104,9 +113,17 @@ msgctxt "field:sale.opportunity.line,product:"
 msgid "Product"
 msgstr "Prodotto"
 
+msgctxt "field:sale.opportunity.line,product_uom_category:"
+msgid "Product UoM Category"
+msgstr ""
+
 msgctxt "field:sale.opportunity.line,quantity:"
 msgid "Quantity"
 msgstr "Quantità"
+
+msgctxt "field:sale.opportunity.line,summary:"
+msgid "Summary"
+msgstr ""
 
 msgctxt "field:sale.opportunity.line,unit:"
 msgid "Unit"
@@ -489,6 +506,14 @@ msgstr "Mese"
 msgctxt "selection:sale.opportunity.reporting.context,period:"
 msgid "Year"
 msgstr "Anno"
+
+msgctxt "view:sale.opportunity.line:"
+msgid "General"
+msgstr ""
+
+msgctxt "view:sale.opportunity.line:"
+msgid "Notes"
+msgstr ""
 
 #, fuzzy
 msgctxt "view:sale.opportunity.reporting.conversion:"

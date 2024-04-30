@@ -57,6 +57,11 @@ msgctxt "field:web.shop,company:"
 msgid "Company"
 msgstr "Cég"
 
+#, fuzzy
+msgctxt "field:web.shop,countries:"
+msgid "Countries"
+msgstr "Kategóriák"
+
 msgctxt "field:web.shop,currency:"
 msgid "Currency"
 msgstr "Pénznem"
@@ -73,12 +78,20 @@ msgctxt "field:web.shop,name:"
 msgid "Name"
 msgstr "Név"
 
+msgctxt "field:web.shop,non_sale_price_list:"
+msgid "Non-Sale Price List"
+msgstr ""
+
 msgctxt "field:web.shop,products:"
 msgid "Products"
 msgstr "Termékek"
 
 msgctxt "field:web.shop,products_removed:"
 msgid "Products Removed"
+msgstr ""
+
+msgctxt "field:web.shop,sale_price_list:"
+msgid "Sale Price List"
 msgstr ""
 
 msgctxt "field:web.shop,type:"
@@ -88,6 +101,15 @@ msgstr "Típus"
 msgctxt "field:web.shop,warehouses:"
 msgid "Warehouses"
 msgstr "Raktárak"
+
+msgctxt "field:web.shop-country.country,country:"
+msgid "Country"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:web.shop-country.country,shop:"
+msgid "Shop"
+msgstr "Bolt"
 
 msgctxt "field:web.shop-product.attribute,attribute:"
 msgid "Attribute"
@@ -157,12 +179,21 @@ msgctxt "help:web.shop,categories_removed:"
 msgid "The list of categories to unpublish."
 msgstr ""
 
+msgctxt "help:web.shop,non_sale_price_list:"
+msgid ""
+"The price list to compute the price of products when it is not on sale."
+msgstr ""
+
 msgctxt "help:web.shop,products:"
 msgid "The list of products to publish."
 msgstr ""
 
 msgctxt "help:web.shop,products_removed:"
 msgid "The list of products to unpublish."
+msgstr ""
+
+msgctxt "help:web.shop,sale_price_list:"
+msgid "The price list to compute sale price of products."
 msgstr ""
 
 msgctxt "help:web.shop,type:"
@@ -197,6 +228,11 @@ msgstr "Webáruházak"
 
 msgctxt "model:web.shop,name:"
 msgid "Web Shop"
+msgstr "Webáruház"
+
+#, fuzzy
+msgctxt "model:web.shop-country.country,name:"
+msgid "Web Shop - Country"
 msgstr "Webáruház"
 
 msgctxt "model:web.shop-product.attribute,name:"

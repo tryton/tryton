@@ -1543,7 +1543,15 @@ msgid "General"
 msgstr ""
 
 msgctxt "view:sale.line:"
+msgid "Invoicing"
+msgstr ""
+
+msgctxt "view:sale.line:"
 msgid "Notes"
+msgstr ""
+
+msgctxt "view:sale.line:"
+msgid "Shipping"
 msgstr ""
 
 msgctxt "view:sale.line:"

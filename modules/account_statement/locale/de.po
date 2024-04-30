@@ -124,16 +124,15 @@ msgstr "Betrag"
 
 msgctxt "field:account.statement.line,amount_second_currency:"
 msgid "Amount Second Currency"
-msgstr ""
+msgstr "Fremdwährungsbetrag"
 
 msgctxt "field:account.statement.line,company:"
 msgid "Company"
 msgstr "Unternehmen"
 
-#, fuzzy
 msgctxt "field:account.statement.line,company_currency:"
 msgid "Company Currency"
-msgstr "Unternehmen"
+msgstr "Unternehmenswährung"
 
 msgctxt "field:account.statement.line,currency:"
 msgid "Currency"
@@ -171,10 +170,9 @@ msgctxt "field:account.statement.line,related_to:"
 msgid "Related To"
 msgstr "Zugeordnet zu"
 
-#, fuzzy
 msgctxt "field:account.statement.line,second_currency:"
 msgid "Second Currency"
-msgstr "Währung"
+msgstr "Fremdwährung"
 
 msgctxt "field:account.statement.line,statement:"
 msgid "Statement"
@@ -190,7 +188,7 @@ msgstr "Betrag"
 
 msgctxt "field:account.statement.line.group,amount_second_currency:"
 msgid "Amount Second Currency"
-msgstr ""
+msgstr "Fremdwährungsbetrag"
 
 msgctxt "field:account.statement.line.group,currency:"
 msgid "Currency"
@@ -216,10 +214,9 @@ msgctxt "field:account.statement.line.group,party:"
 msgid "Party"
 msgstr "Partei"
 
-#, fuzzy
 msgctxt "field:account.statement.line.group,second_currency:"
 msgid "Second Currency"
-msgstr "Währung"
+msgstr "Fremdwährung"
 
 msgctxt "field:account.statement.line.group,statement:"
 msgid "Statement"
@@ -235,16 +232,15 @@ msgstr "Betrag"
 
 msgctxt "field:account.statement.origin,amount_second_currency:"
 msgid "Amount Second Currency"
-msgstr ""
+msgstr "Fremdwährungsbetrag"
 
 msgctxt "field:account.statement.origin,company:"
 msgid "Company"
 msgstr "Unternehmen"
 
-#, fuzzy
 msgctxt "field:account.statement.origin,company_currency:"
 msgid "Company Currency"
-msgstr "Unternehmen"
+msgstr "Unternehmenswährung"
 
 msgctxt "field:account.statement.origin,currency:"
 msgid "Currency"
@@ -278,10 +274,9 @@ msgctxt "field:account.statement.origin,pending_amount:"
 msgid "Pending Amount"
 msgstr "Ausstehender Betrag"
 
-#, fuzzy
 msgctxt "field:account.statement.origin,second_currency:"
 msgid "Second Currency"
-msgstr "Währung"
+msgstr "Fremdwährung"
 
 msgctxt "field:account.statement.origin,statement:"
 msgid "Statement"
@@ -399,6 +394,8 @@ msgid ""
 "The currency of bank account \"%(bank_account)s\" must be the same as "
 "\"%(currency)s\" of the journal \"%(journal)s\"."
 msgstr ""
+"Die Währung des Bankkontos \"%(bank_account)s\" muss mit der Währung "
+"\"%(currency)s\" des Journals \"%(journal)s\" übereinstimmen."
 
 msgctxt "model:ir.message,text:msg_import_no_journal"
 msgid ""
@@ -431,27 +428,29 @@ msgstr ""
 "Die Validierung der Kontoauszüge wird bereits bezahlte oder stornierte "
 "Rechnungen von den Kontoauszugspositionen entfernen."
 
-#, fuzzy
 msgctxt "model:ir.message,text:msg_statement_line_delete_cancel_draft"
 msgid ""
 "To delete line \"%(line)s\" you must cancel or reset to draft statement "
 "\"%(statement)s\"."
 msgstr ""
-"Damit der Buchungssatz \"%(move)s\" festgeschrieben werden kann, muss zuerst"
-" der Auszug \"%(statement)s\" festgeschrieben werden."
+"Um die Buchungsposition \"%(line)s\" löschen zu können, müssen Sie zuerst "
+"den Auszug \"%(statement)s\" annullieren oder in den Entwurfsstatus "
+"zurücksetzen."
 
 msgctxt "model:ir.message,text:msg_statement_line_second_currency_sign"
 msgid "You must set the same sign for second currency than amount."
 msgstr ""
+"Sie müssen für den Fremdwährungsbetrag das gleiche Vorzeichen wie für den "
+"Betrag verwenden."
 
-#, fuzzy
 msgctxt "model:ir.message,text:msg_statement_origin_delete_cancel_draft"
 msgid ""
 "To delete origin \"%(origin)s\" you must cancel or reset to draft statement "
 "\"%(statement)s\"."
 msgstr ""
-"Damit der Buchungssatz \"%(move)s\" festgeschrieben werden kann, muss zuerst"
-" der Auszug \"%(statement)s\" festgeschrieben werden."
+"Um die Herkunft \"%(origin)s\" löschen zu können, muss zuerst der Auszug "
+"\"%(statement)s\" annulliert oder in den Entwurfsstatus zurückgesetzt "
+"werden."
 
 msgctxt "model:ir.message,text:msg_statement_paid_invoice_draft"
 msgid ""
@@ -525,11 +524,11 @@ msgstr "Prüfen"
 
 msgctxt "model:ir.rule.group,name:rule_group_statement_companies"
 msgid "User in companies"
-msgstr "Benutzer im Unternehmen"
+msgstr "Benutzer in Unternehmen"
 
 msgctxt "model:ir.rule.group,name:rule_group_statement_journal_companies"
 msgid "User in companies"
-msgstr "Benutzer im Unternehmen"
+msgstr "Benutzer in Unternehmen"
 
 msgctxt "model:ir.ui.menu,name:menu_line_group_form"
 msgid "Line Groups"

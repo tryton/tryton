@@ -12,7 +12,7 @@ msgstr "Preisliste"
 
 msgctxt "field:carrier,weight_uom:"
 msgid "Weight UoM"
-msgstr "Maßeinheit Gewicht"
+msgstr "Gewichtsmaßeinheit"
 
 msgctxt "field:carrier.weight_price_list,carrier:"
 msgid "Carrier"
@@ -32,7 +32,7 @@ msgstr "Gewicht"
 
 msgctxt "field:carrier.weight_price_list,weight_uom:"
 msgid "Weight UoM"
-msgstr "Maßeinheit Gewicht"
+msgstr "Gewichtsmaßeinheit"
 
 msgctxt "help:carrier,weight_currency:"
 msgid "The currency of the price."

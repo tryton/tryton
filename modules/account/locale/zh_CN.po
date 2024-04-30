@@ -1147,6 +1147,11 @@ msgctxt "field:account.journal.open_cash.context,start_date:"
 msgid "Start Date"
 msgstr "开始日期"
 
+#, fuzzy
+msgctxt "field:account.journal.period,company:"
+msgid "Company"
+msgstr "公司"
+
 msgctxt "field:account.journal.period,icon:"
 msgid "Icon"
 msgstr "图标"
@@ -3616,6 +3621,15 @@ msgctxt "model:ir.model.button,string:fiscalyear_reopen_button"
 msgid "Re-Open"
 msgstr "重新打开"
 
+#, fuzzy
+msgctxt "model:ir.model.button,string:journal_period_close_button"
+msgid "Close"
+msgstr "结账"
+
+msgctxt "model:ir.model.button,string:journal_period_reopen_button"
+msgid "Reopen"
+msgstr ""
+
 msgctxt "model:ir.model.button,string:move_post_button"
 msgid "Post"
 msgstr "登记入账"
@@ -3658,6 +3672,11 @@ msgid "User in companies"
 msgstr "公司用户"
 
 msgctxt "model:ir.rule.group,name:rule_group_general_ledger_line_companies"
+msgid "User in companies"
+msgstr "公司用户"
+
+#, fuzzy
+msgctxt "model:ir.rule.group,name:rule_group_journal_period_companies"
 msgid "User in companies"
 msgstr "公司用户"
 
@@ -4647,14 +4666,6 @@ msgstr "分期"
 msgctxt "view:account.fiscalyear:"
 msgid "Sequences"
 msgstr "序列"
-
-msgctxt "view:account.journal.period:"
-msgid "Close"
-msgstr "结账"
-
-msgctxt "view:account.journal.period:"
-msgid "Re-Open"
-msgstr "重新打开"
 
 msgctxt "view:account.move.line.reschedule.start:"
 msgid "every"

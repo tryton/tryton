@@ -1147,6 +1147,10 @@ msgctxt "field:account.journal.open_cash.context,start_date:"
 msgid "Start Date"
 msgstr "Date de début"
 
+msgctxt "field:account.journal.period,company:"
+msgid "Company"
+msgstr "Société"
+
 msgctxt "field:account.journal.period,icon:"
 msgid "Icon"
 msgstr "Icône"
@@ -3755,6 +3759,14 @@ msgctxt "model:ir.model.button,string:fiscalyear_reopen_button"
 msgid "Re-Open"
 msgstr "Rouvrir"
 
+msgctxt "model:ir.model.button,string:journal_period_close_button"
+msgid "Close"
+msgstr "Clôturer"
+
+msgctxt "model:ir.model.button,string:journal_period_reopen_button"
+msgid "Reopen"
+msgstr "Rouvrir"
+
 msgctxt "model:ir.model.button,string:move_post_button"
 msgid "Post"
 msgstr "Comptabiliser"
@@ -3797,6 +3809,10 @@ msgid "User in companies"
 msgstr "Utilisateur dans les sociétés"
 
 msgctxt "model:ir.rule.group,name:rule_group_general_ledger_line_companies"
+msgid "User in companies"
+msgstr "Utilisateur dans les sociétés"
+
+msgctxt "model:ir.rule.group,name:rule_group_journal_period_companies"
 msgid "User in companies"
 msgstr "Utilisateur dans les sociétés"
 
@@ -4788,14 +4804,6 @@ msgstr "Périodes"
 msgctxt "view:account.fiscalyear:"
 msgid "Sequences"
 msgstr "Séquences"
-
-msgctxt "view:account.journal.period:"
-msgid "Close"
-msgstr "Clôturer"
-
-msgctxt "view:account.journal.period:"
-msgid "Re-Open"
-msgstr "Rouvrir"
 
 msgctxt "view:account.move.line.reschedule.start:"
 msgid "every"

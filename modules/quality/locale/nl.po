@@ -194,17 +194,17 @@ msgctxt "model:ir.action,name:wizard_production_inspect_run"
 msgid "Inspect Run"
 msgstr "Inspectie Uitvoeren"
 
-msgctxt "model:ir.action,name:wizard_stock_shipment_in_inspect_done"
+msgctxt "model:ir.action,name:wizard_stock_shipment_in_inspect_do"
 msgid "Inspect Done"
-msgstr "Inspectie Gereed"
+msgstr "Inspectie afronden"
 
 msgctxt "model:ir.action,name:wizard_stock_shipment_in_inspect_receive"
 msgid "Inspect Reception"
 msgstr "Inspectie Levering"
 
-msgctxt "model:ir.action,name:wizard_stock_shipment_internal_inspect_done"
+msgctxt "model:ir.action,name:wizard_stock_shipment_internal_inspect_do"
 msgid "Inspect Done"
-msgstr "Inspectie Gereed"
+msgstr "Inspectie afronden"
 
 msgctxt "model:ir.action,name:wizard_stock_shipment_internal_inspect_ship"
 msgid "Inspect Ship"
@@ -218,9 +218,9 @@ msgctxt "model:ir.action,name:wizard_stock_shipment_out_inspect_pick"
 msgid "Inspect Pick"
 msgstr "Inspectie Picking"
 
-msgctxt "model:ir.action,name:wizard_stock_shipment_out_return_inspect_done"
+msgctxt "model:ir.action,name:wizard_stock_shipment_out_return_inspect_do"
 msgid "Inspect Done"
-msgstr "Inspectie Gereed"
+msgstr "Inspectie afronden"
 
 msgctxt ""
 "model:ir.action,name:wizard_stock_shipment_out_return_inspect_receive"

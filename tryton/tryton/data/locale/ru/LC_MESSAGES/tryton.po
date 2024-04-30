@@ -88,7 +88,8 @@ msgstr ""
 msgid "Yes"
 msgstr ""
 
-msgid "Concurrency Exception"
+#, fuzzy
+msgid "Concurrency Warning"
 msgstr "Прерывание конкурентных записей"
 
 msgid "This record has been modified while you were editing it."
@@ -120,6 +121,9 @@ msgstr ""
 msgid "Application Error"
 msgstr "Ошибка приложения!"
 
+msgid "Details"
+msgstr ""
+
 msgid "Report Bug"
 msgstr "Сообщить об ошибке"
 
@@ -136,12 +140,15 @@ msgstr ""
 msgid "Download"
 msgstr ""
 
+msgid "Concurrency Exception"
+msgstr "Прерывание конкурентных записей"
+
 #, fuzzy
 msgid "Could not get a session."
 msgstr "Не удается подключиться к серверу!"
 
 #, python-format
-msgid "Error \"%s\". Try again later."
+msgid "Error: \"%s\". Try again later."
 msgstr ""
 
 msgid "Too many requests. Try again later."
@@ -775,6 +782,12 @@ msgstr "Модель:"
 
 msgid "ID:"
 msgstr "Номер строки"
+
+msgid "Module:"
+msgstr ""
+
+msgid "XML ID:"
+msgstr ""
 
 #, fuzzy
 msgid "Created by:"

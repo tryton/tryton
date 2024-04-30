@@ -214,10 +214,9 @@ msgctxt "field:sale.line,invoice_lines:"
 msgid "Invoice Lines"
 msgstr "Líneas de factura"
 
-#, fuzzy
 msgctxt "field:sale.line,invoice_progress:"
 msgid "Invoice Progress"
-msgstr "Dirección de facturación"
+msgstr "Progreso de facturación"
 
 msgctxt "field:sale.line,moves:"
 msgid "Moves"
@@ -985,7 +984,7 @@ msgid ""
 "The sale line \"%(line)s\" is moving %(extra)s in addition to the "
 "%(quantity)s ordered."
 msgstr ""
-"La linea de venta \"%(line)s\" esta movimiendo %(extra)s a demas de los "
+"La linea de venta \"%(line)s\" está moviendo %(extra)s además de los "
 "\"%(quantity)s pedidos."
 
 msgctxt "model:ir.message,text:msg_sale_line_tax_unique"
@@ -1587,8 +1586,16 @@ msgid "General"
 msgstr "General"
 
 msgctxt "view:sale.line:"
+msgid "Invoicing"
+msgstr "Facturación"
+
+msgctxt "view:sale.line:"
 msgid "Notes"
 msgstr "Notas"
+
+msgctxt "view:sale.line:"
+msgid "Shipping"
+msgstr "Envío"
 
 msgctxt "view:sale.line:"
 msgid "Taxes"

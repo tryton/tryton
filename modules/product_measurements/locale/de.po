@@ -24,7 +24,7 @@ msgstr "Volumen"
 
 msgctxt "field:product.product,volume_uom:"
 msgid "Volume UoM"
-msgstr "Volumen Maßeinheit"
+msgstr "Volumenmaßeinheit"
 
 msgctxt "field:product.product,weight:"
 msgid "Weight"
@@ -32,7 +32,7 @@ msgstr "Gewicht"
 
 msgctxt "field:product.product,weight_uom:"
 msgid "Weight UoM"
-msgstr "Maßeinheit Gewicht"
+msgstr "Gewichtsmaßeinheit"
 
 msgctxt "field:product.product,width:"
 msgid "Width"
@@ -64,7 +64,7 @@ msgstr "Volumen"
 
 msgctxt "field:product.template,volume_uom:"
 msgid "Volume UoM"
-msgstr "Volumen Maßeinheit"
+msgstr "Volumenmaßeinheit"
 
 msgctxt "field:product.template,weight:"
 msgid "Weight"
@@ -72,7 +72,7 @@ msgstr "Gewicht"
 
 msgctxt "field:product.template,weight_uom:"
 msgid "Weight UoM"
-msgstr "Maßeinheit Gewicht"
+msgstr "Gewichtsmaßeinheit"
 
 msgctxt "field:product.template,width:"
 msgid "Width"

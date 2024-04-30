@@ -34,15 +34,13 @@ msgctxt "field:stock.move.add.lots.start.lot,unit_quantity:"
 msgid "Unit Quantity"
 msgstr "Cantidad unitaria"
 
-#, fuzzy
 msgctxt "help:product.product,lot_uom:"
 msgid "The default unit of measure for lot."
-msgstr "La unidad de medida por defecto del lote."
+msgstr "La unidad por defecto del lote."
 
-#, fuzzy
 msgctxt "help:product.template,lot_uom:"
 msgid "The default unit of measure for lot."
-msgstr "La unidad de medida por defecto del lote."
+msgstr "La unidad por defecto del lote."
 
 msgctxt "help:stock.lot,unit:"
 msgid "The biggest unit for the lot."

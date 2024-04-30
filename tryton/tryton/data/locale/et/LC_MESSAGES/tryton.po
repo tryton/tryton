@@ -83,7 +83,8 @@ msgstr "Ei"
 msgid "Yes"
 msgstr "Jah"
 
-msgid "Concurrency Exception"
+#, fuzzy
+msgid "Concurrency Warning"
 msgstr "Konkurentsi erand"
 
 msgid "This record has been modified while you were editing it."
@@ -114,6 +115,9 @@ msgstr "Sulge"
 msgid "Application Error"
 msgstr "Rakenduse viga"
 
+msgid "Details"
+msgstr ""
+
 msgid "Report Bug"
 msgstr "Teatvita veast"
 
@@ -131,12 +135,15 @@ msgstr "Uus versioon on saadaval!"
 msgid "Download"
 msgstr "Allalaadimine"
 
+msgid "Concurrency Exception"
+msgstr "Konkurentsi erand"
+
 #, fuzzy
 msgid "Could not get a session."
 msgstr "Ei saanud serveriga ühendust"
 
 #, python-format
-msgid "Error \"%s\". Try again later."
+msgid "Error: \"%s\". Try again later."
 msgstr ""
 
 msgid "Too many requests. Try again later."
@@ -743,6 +750,12 @@ msgstr "Mudel:"
 
 msgid "ID:"
 msgstr "ID"
+
+msgid "Module:"
+msgstr ""
+
+msgid "XML ID:"
+msgstr ""
 
 #, fuzzy
 msgid "Created by:"

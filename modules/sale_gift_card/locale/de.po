@@ -212,7 +212,7 @@ msgstr ""
 
 msgctxt "model:ir.rule.group,name:rule_group_gift_card_companies"
 msgid "User in companies"
-msgstr "Benutzer im Unternehmen"
+msgstr "Benutzer in Unternehmen"
 
 msgctxt "model:ir.sequence.type,name:sequence_type_gift_card"
 msgid "Gift Card"

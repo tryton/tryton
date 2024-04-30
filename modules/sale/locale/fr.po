@@ -1587,8 +1587,16 @@ msgid "General"
 msgstr "Général"
 
 msgctxt "view:sale.line:"
+msgid "Invoicing"
+msgstr "Facturation"
+
+msgctxt "view:sale.line:"
 msgid "Notes"
 msgstr "Notes"
+
+msgctxt "view:sale.line:"
+msgid "Shipping"
+msgstr "Livraison"
 
 msgctxt "view:sale.line:"
 msgid "Taxes"

@@ -228,7 +228,7 @@ msgstr "Neu terminieren"
 
 msgctxt "model:ir.rule.group,name:rule_group_dunning_companies"
 msgid "User in companies"
-msgstr "Benutzer im Unternehmen"
+msgstr "Benutzer in Unternehmen"
 
 msgctxt "model:ir.ui.menu,name:menu_dunning_configuration"
 msgid "Dunnings"

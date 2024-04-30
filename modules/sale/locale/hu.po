@@ -1641,9 +1641,19 @@ msgctxt "view:sale.line:"
 msgid "General"
 msgstr "Általános"
 
+#, fuzzy
+msgctxt "view:sale.line:"
+msgid "Invoicing"
+msgstr "Számla"
+
 msgctxt "view:sale.line:"
 msgid "Notes"
 msgstr "Jegyzetek"
+
+#, fuzzy
+msgctxt "view:sale.line:"
+msgid "Shipping"
+msgstr "Kiszállítás dátuma"
 
 msgctxt "view:sale.line:"
 msgid "Taxes"

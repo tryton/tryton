@@ -1629,9 +1629,18 @@ msgctxt "view:sale.line:"
 msgid "General"
 msgstr "Umum"
 
+#, fuzzy
+msgctxt "view:sale.line:"
+msgid "Invoicing"
+msgstr "Faktur"
+
 msgctxt "view:sale.line:"
 msgid "Notes"
 msgstr "Catatan-Catatan"
+
+msgctxt "view:sale.line:"
+msgid "Shipping"
+msgstr ""
 
 msgctxt "view:sale.line:"
 msgid "Taxes"

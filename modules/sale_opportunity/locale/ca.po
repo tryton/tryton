@@ -90,6 +90,14 @@ msgctxt "field:sale.opportunity,state:"
 msgid "State"
 msgstr "Estat"
 
+msgctxt "field:sale.opportunity.line,description:"
+msgid "Description"
+msgstr "Descripció"
+
+msgctxt "field:sale.opportunity.line,note:"
+msgid "Note"
+msgstr "Nota"
+
 msgctxt "field:sale.opportunity.line,opportunity:"
 msgid "Opportunity"
 msgstr "Oportunitat"
@@ -102,9 +110,17 @@ msgctxt "field:sale.opportunity.line,product:"
 msgid "Product"
 msgstr "Producte"
 
+msgctxt "field:sale.opportunity.line,product_uom_category:"
+msgid "Product UoM Category"
+msgstr "Categoria UdM del producte"
+
 msgctxt "field:sale.opportunity.line,quantity:"
 msgid "Quantity"
 msgstr "Quantitat"
+
+msgctxt "field:sale.opportunity.line,summary:"
+msgid "Summary"
+msgstr "Resum"
 
 msgctxt "field:sale.opportunity.line,unit:"
 msgid "Unit"
@@ -140,6 +156,8 @@ msgid ""
 "The default address for the invoice and shipment.\n"
 "Leave empty to use the default values."
 msgstr ""
+"L'adreça predeterminada per a la factura i l'enviament.\n"
+"Deixeu-lo en blanc per utilitzar els valors predeterminats."
 
 msgctxt "help:sale.opportunity,amount:"
 msgid "Estimated revenue amount."
@@ -437,6 +455,14 @@ msgstr "Mes"
 msgctxt "selection:sale.opportunity.reporting.context,period:"
 msgid "Year"
 msgstr "Any"
+
+msgctxt "view:sale.opportunity.line:"
+msgid "General"
+msgstr "General"
+
+msgctxt "view:sale.opportunity.line:"
+msgid "Notes"
+msgstr "Notes"
 
 msgctxt "view:sale.opportunity.reporting.conversion:"
 msgid "%"

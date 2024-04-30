@@ -1,3 +1,102 @@
 #
+#, fuzzy
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:product.category.facebook,code:"
+msgid "Code"
+msgstr "Code"
+
+msgctxt "field:product.category.facebook,name:"
+msgid "Name"
+msgstr "Naam"
+
+msgctxt "field:product.category.google,code:"
+msgid "Code"
+msgstr "Code"
+
+msgctxt "field:product.category.google,name:"
+msgid "Name"
+msgstr "Naam"
+
+msgctxt "field:product.product,facebook_category:"
+msgid "Facebook Category"
+msgstr "Facebook categorie"
+
+msgctxt "field:product.product,google_category:"
+msgid "Google Category"
+msgstr "Google categorie"
+
+msgctxt "field:product.template,facebook_category:"
+msgid "Facebook Category"
+msgstr "Facebook categorie"
+
+msgctxt "field:product.template,google_category:"
+msgid "Google Category"
+msgstr "Google categorie"
+
+msgctxt "field:web.shop,product_image_url_template:"
+msgid "Product Image URL"
+msgstr "URL van product afbeelding"
+
+msgctxt "field:web.shop,product_url_template:"
+msgid "Product URL"
+msgstr "Product URL"
+
+msgctxt "help:web.shop,product_image_url_template:"
+msgid ""
+"The template to generate the indexed product image URL.\n"
+"The following placeholders can be used:\n"
+"- ${id}\n"
+"- ${code}\n"
+"- ${name}\n"
+"- ${language}\n"
+"- ${index}\n"
+msgstr ""
+"De template om een geïndexeerde product afbeelding URL te genereren\n"
+"De volgende aanduidingen kunnen worden gebruikt:\n"
+"- ${id}\n"
+"- ${code}\n"
+"- ${name}\n"
+"- ${language}\n"
+"- ${index}\n"
+
+msgctxt "help:web.shop,product_url_template:"
+msgid ""
+"The template to generate the product URL on the web shop.\n"
+"The following placeholders can be used:\n"
+"- ${id}\n"
+"- ${code}\n"
+"- ${name}\n"
+"- ${language}\n"
+msgstr ""
+"De template om een een product URL te generen voor de webshop.\n"
+"De volgende aanduidingen kunnen worden gebruikt:\n"
+"- ${id}\n"
+"- ${code}\n"
+"- ${name}\n"
+"- ${language}\n"
+
+msgctxt "model:ir.action,name:act_product_category_facebook_form"
+msgid "Facebook Product Categories"
+msgstr "Facebook product categorieën"
+
+msgctxt "model:ir.action,name:act_product_category_google_form"
+msgid "Google Product Categories"
+msgstr "Google product categorieën"
+
+msgctxt "model:ir.ui.menu,name:menu_product_category_facebook_form"
+msgid "Facebook Product Categories"
+msgstr "Facebook product categorieën"
+
+msgctxt "model:ir.ui.menu,name:menu_product_category_google_form"
+msgid "Google Product Categories"
+msgstr "Google product categorieën"
+
+msgctxt "model:product.category.facebook,name:"
+msgid "Facebook Product Category"
+msgstr "Facebook product categorie"
+
+msgctxt "model:product.category.google,name:"
+msgid "Google Product Category"
+msgstr "Google product categorie"

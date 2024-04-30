@@ -104,7 +104,7 @@ msgstr ""
 
 msgctxt "model:ir.rule.group,name:rule_group_promotion_companies"
 msgid "User in companies"
-msgstr "Benutzer im Unternehmen"
+msgstr "Benutzer in Unternehmen"
 
 msgctxt "model:ir.ui.menu,name:menu_promotion"
 msgid "Promotions"

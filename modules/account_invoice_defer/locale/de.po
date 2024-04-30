@@ -136,7 +136,8 @@ msgid ""
 "\"%(deferrals)s\" do not have yet move for the period."
 msgstr ""
 "Der Buchungszeitraum \"%(period)s\" kann nicht geschlossen werden, da für "
-"einige Rechnungsabgrenzungsposten noch keine Buchungssätze erstellt wurden."
+"die Rechnungsabgrenzungsposten \"%(deferrals)s\" noch keine Buchungssätze "
+"für den Buchungszeitraum erstellt wurden."
 
 msgctxt "model:ir.message,text:msg_missing_deferred_account_expense"
 msgid "There is no deferred account expense configured."
@@ -160,7 +161,7 @@ msgstr "Ausführen"
 
 msgctxt "model:ir.rule.group,name:rule_group_invoice_deferred_companies"
 msgid "User in companies"
-msgstr "Benutzer im Unternehmen"
+msgstr "Benutzer in Unternehmen"
 
 msgctxt "model:ir.ui.menu,name:menu_invoice_deferred_create_moves"
 msgid "Create Invoices Deferred Moves"

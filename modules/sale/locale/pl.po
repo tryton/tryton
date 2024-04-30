@@ -1239,7 +1239,7 @@ msgstr "Produkt"
 
 msgctxt "model:ir.ui.menu,name:menu_reporting"
 msgid "Reporting"
-msgstr "Reporting"
+msgstr "Raportowanie"
 
 msgctxt "model:ir.ui.menu,name:menu_reporting_sale"
 msgid "Sales"
@@ -1655,9 +1655,19 @@ msgctxt "view:sale.line:"
 msgid "General"
 msgstr "Ogólne"
 
+#, fuzzy
+msgctxt "view:sale.line:"
+msgid "Invoicing"
+msgstr "Faktura"
+
 msgctxt "view:sale.line:"
 msgid "Notes"
 msgstr "Notatki"
+
+#, fuzzy
+msgctxt "view:sale.line:"
+msgid "Shipping"
+msgstr "Data wysyłki"
 
 msgctxt "view:sale.line:"
 msgid "Taxes"

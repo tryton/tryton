@@ -412,6 +412,11 @@ msgctxt "field:stock.move,from_location:"
 msgid "From Location"
 msgstr ""
 
+#, fuzzy
+msgctxt "field:stock.move,from_location_name:"
+msgid "From Location"
+msgstr "Luogo"
+
 msgctxt "field:stock.move,internal_quantity:"
 msgid "Internal Quantity"
 msgstr ""
@@ -458,6 +463,11 @@ msgstr "Stato"
 msgctxt "field:stock.move,to_location:"
 msgid "To Location"
 msgstr ""
+
+#, fuzzy
+msgctxt "field:stock.move,to_location_name:"
+msgid "To Location"
+msgstr "Luogo"
 
 msgctxt "field:stock.move,unit:"
 msgid "Unit"
@@ -2333,8 +2343,8 @@ msgid "Cancel"
 msgstr "Annulla"
 
 msgctxt "model:ir.model.button,string:shipment_in_done_button"
-msgid "Done"
-msgstr "Done"
+msgid "Complete"
+msgstr ""
 
 msgctxt "model:ir.model.button,string:shipment_in_draft_button"
 msgid "Reset to Draft"
@@ -2353,8 +2363,8 @@ msgid "Cancel"
 msgstr "Annulla"
 
 msgctxt "model:ir.model.button,string:shipment_in_return_done_button"
-msgid "Done"
-msgstr "Done"
+msgid "Complete"
+msgstr ""
 
 msgctxt "model:ir.model.button,string:shipment_in_return_draft_button"
 msgid "Draft"
@@ -2373,8 +2383,8 @@ msgid "Cancel"
 msgstr "Annulla"
 
 msgctxt "model:ir.model.button,string:shipment_internal_done_button"
-msgid "Done"
-msgstr "Done"
+msgid "Complete"
+msgstr ""
 
 msgctxt "model:ir.model.button,string:shipment_internal_draft_button"
 msgid "Draft"
@@ -2397,8 +2407,8 @@ msgid "Cancel"
 msgstr "Annulla"
 
 msgctxt "model:ir.model.button,string:shipment_out_done_button"
-msgid "Done"
-msgstr "Done"
+msgid "Complete"
+msgstr ""
 
 msgctxt "model:ir.model.button,string:shipment_out_draft_button"
 msgid "Draft"
@@ -2418,8 +2428,8 @@ msgid "Cancel"
 msgstr "Annulla"
 
 msgctxt "model:ir.model.button,string:shipment_out_return_done_button"
-msgid "Done"
-msgstr "Done"
+msgid "Complete"
+msgstr ""
 
 msgctxt "model:ir.model.button,string:shipment_out_return_draft_button"
 msgid "Draft"
@@ -3137,13 +3147,8 @@ msgstr "Magazzino:"
 
 #, fuzzy
 msgctxt "selection:ir.cron,method:"
-msgid "Assign Customer Shipments"
-msgstr "Customer Shipments"
-
-#, fuzzy
-msgctxt "selection:ir.cron,method:"
-msgid "Assign Internal Shipments"
-msgstr "Internal Shipment"
+msgid "Assign Shipments"
+msgstr "Assign Shipment Internal"
 
 #, fuzzy
 msgctxt "selection:ir.cron,method:"

@@ -413,8 +413,8 @@ msgid "Cancel"
 msgstr "Tühista"
 
 msgctxt "model:ir.model.button,string:production_done_button"
-msgid "Done"
-msgstr "Tehtud"
+msgid "Complete"
+msgstr ""
 
 msgctxt "model:ir.model.button,string:production_draft_button"
 msgid "Draft"
@@ -526,11 +526,6 @@ msgstr "Tootmine administreerimine"
 msgctxt "model:stock.location,name:location_production"
 msgid "Production"
 msgstr "Tootmine"
-
-#, fuzzy
-msgctxt "selection:ir.cron,method:"
-msgid "Assign Productions"
-msgstr "Tootmise omistamine"
 
 #, fuzzy
 msgctxt "selection:ir.cron,method:"

@@ -179,10 +179,9 @@ msgctxt "field:purchase.line,invoice_lines:"
 msgid "Invoice Lines"
 msgstr "Línies de factura"
 
-#, fuzzy
 msgctxt "field:purchase.line,invoice_progress:"
 msgid "Invoice Progress"
-msgstr "Adreça de facturació"
+msgstr "Progrés de facturació"
 
 msgctxt "field:purchase.line,moves:"
 msgid "Moves"
@@ -813,7 +812,6 @@ msgctxt "model:ir.action.act_window.domain,name:act_purchase_relate_pending"
 msgid "Pending"
 msgstr "Pendent"
 
-#, fuzzy
 msgctxt "model:ir.message,text:msg_change_purchase_uom"
 msgid ""
 "You are trying to change the purchase unit of measure on which the purchase "
@@ -863,8 +861,8 @@ msgid ""
 "The purchase line \"%(line)s\" is moving %(extra)s in addition to the "
 "%(quantity)s ordered."
 msgstr ""
-"La línia de compra \"%(line)s\" està movent %(extra)s més dels \"(quantity)s"
-" demanats."
+"La línia de compra \"%(line)s\" està movent %(extra)s a més dels "
+"%(quantity)s demanats."
 
 msgctxt "model:ir.message,text:msg_purchase_line_tax_unique"
 msgid "A tax can be added only once to a purchase line."
@@ -1386,8 +1384,16 @@ msgid "General"
 msgstr "General"
 
 msgctxt "view:purchase.line:"
+msgid "Invoicing"
+msgstr "Facturació"
+
+msgctxt "view:purchase.line:"
 msgid "Notes"
 msgstr "Notes"
+
+msgctxt "view:purchase.line:"
+msgid "Shipping"
+msgstr "Enviament"
 
 msgctxt "view:purchase.line:"
 msgid "Taxes"

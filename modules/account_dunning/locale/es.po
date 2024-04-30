@@ -25,7 +25,7 @@ msgstr "Importe"
 
 msgctxt "field:account.dunning,amount_second_currency:"
 msgid "Amount Second Currency"
-msgstr "Importe segunda moneda"
+msgstr "Importe moneda secundaria"
 
 msgctxt "field:account.dunning,blocked:"
 msgid "Blocked"

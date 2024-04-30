@@ -195,12 +195,6 @@ msgstr "t"
 msgid "False"
 msgstr "Falso"
 
-msgid "Message: "
-msgstr "messaggio: "
-
-msgid "Warning: "
-msgstr "Attenzione: "
-
 msgid "Always ignore this warning."
 msgstr "ignorare sempre questo avviso"
 
@@ -210,13 +204,8 @@ msgstr "Continuare?"
 msgid "No"
 msgstr "no"
 
-msgid "Confirmation: "
-msgstr "conferma: "
-
-msgid "Concurrency Exception"
-msgstr "eccezione di concorrenza"
-
-msgid "Write Concurrency Warning: "
+#, fuzzy
+msgid "Concurrency Warning"
 msgstr "scrivi avviso di concorrenza: "
 
 msgid "This record has been modified while you were editing it."
@@ -245,6 +234,9 @@ msgstr "Scrivi comunque"
 
 msgid "Application Error"
 msgstr "Errore dell'applicazione"
+
+msgid "Details"
+msgstr ""
 
 msgid "Report Bug"
 msgstr "Segnala l'errore"
@@ -611,6 +603,12 @@ msgstr "Modello: "
 
 msgid "ID:"
 msgstr "ID:"
+
+msgid "Module:"
+msgstr ""
+
+msgid "XML ID:"
+msgstr ""
 
 msgid "Created by:"
 msgstr "Creato da:"

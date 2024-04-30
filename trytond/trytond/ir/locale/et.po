@@ -55,6 +55,11 @@ msgctxt "field:ir.action.act_window,context_model:"
 msgid "Context Model"
 msgstr "Konteksti mudel"
 
+#, fuzzy
+msgctxt "field:ir.action.act_window,context_model_ref:"
+msgid "Context Model"
+msgstr "Konteksti mudel"
+
 msgctxt "field:ir.action.act_window,domain:"
 msgid "Domain Value"
 msgstr "Domeeni väärtus"
@@ -105,6 +110,11 @@ msgid "Records"
 msgstr "Kirje ID"
 
 msgctxt "field:ir.action.act_window,res_model:"
+msgid "Model"
+msgstr "Mudel"
+
+#, fuzzy
+msgctxt "field:ir.action.act_window,res_model_ref:"
 msgid "Model"
 msgstr "Mudel"
 
@@ -193,7 +203,17 @@ msgctxt "field:ir.action.report,model:"
 msgid "Model"
 msgstr "Mudel"
 
+#, fuzzy
+msgctxt "field:ir.action.report,model_ref:"
+msgid "Model"
+msgstr "Mudel"
+
 msgctxt "field:ir.action.report,module:"
+msgid "Module"
+msgstr "Moodul"
+
+#, fuzzy
+msgctxt "field:ir.action.report,module_ref:"
 msgid "Module"
 msgstr "Moodul"
 
@@ -301,6 +321,11 @@ msgid "Keywords"
 msgstr "Märksõnad"
 
 msgctxt "field:ir.action.wizard,model:"
+msgid "Model"
+msgstr "Mudel"
+
+#, fuzzy
+msgctxt "field:ir.action.wizard,model_ref:"
 msgid "Model"
 msgstr "Mudel"
 
@@ -815,6 +840,11 @@ msgctxt "field:ir.model,module:"
 msgid "Module"
 msgstr "Moodul"
 
+#, fuzzy
+msgctxt "field:ir.model,module_ref:"
+msgid "Module"
+msgstr "Moodul"
+
 msgctxt "field:ir.model,name:"
 msgid "Model Description"
 msgstr "Mudeli kirjeldus"
@@ -828,6 +858,11 @@ msgid "Group"
 msgstr "Grupp"
 
 msgctxt "field:ir.model.access,model:"
+msgid "Model"
+msgstr "Mudel"
+
+#, fuzzy
+msgctxt "field:ir.model.access,model_ref:"
 msgid "Model"
 msgstr "Mudel"
 
@@ -860,6 +895,11 @@ msgid "Help"
 msgstr "Abi"
 
 msgctxt "field:ir.model.button,model:"
+msgid "Model"
+msgstr "Mudel"
+
+#, fuzzy
+msgctxt "field:ir.model.button,model_ref:"
 msgid "Model"
 msgstr "Mudel"
 
@@ -931,7 +971,17 @@ msgctxt "field:ir.model.data,model:"
 msgid "Model"
 msgstr "Mudel"
 
+#, fuzzy
+msgctxt "field:ir.model.data,model_ref:"
+msgid "Model"
+msgstr "Mudel"
+
 msgctxt "field:ir.model.data,module:"
+msgid "Module"
+msgstr "Moodul"
+
+#, fuzzy
+msgctxt "field:ir.model.data,module_ref:"
 msgid "Module"
 msgstr "Moodul"
 
@@ -964,7 +1014,17 @@ msgctxt "field:ir.model.field,model:"
 msgid "Model"
 msgstr "Mudel"
 
+#, fuzzy
+msgctxt "field:ir.model.field,model_ref:"
+msgid "Model"
+msgstr "Mudel"
+
 msgctxt "field:ir.model.field,module:"
+msgid "Module"
+msgstr "Moodul"
+
+#, fuzzy
+msgctxt "field:ir.model.field,module_ref:"
 msgid "Module"
 msgstr "Moodul"
 
@@ -988,9 +1048,24 @@ msgctxt "field:ir.model.field.access,field:"
 msgid "Field"
 msgstr "Väli"
 
+#, fuzzy
+msgctxt "field:ir.model.field.access,field_ref:"
+msgid "Field"
+msgstr "Väli"
+
 msgctxt "field:ir.model.field.access,group:"
 msgid "Group"
 msgstr "Grupp"
+
+#, fuzzy
+msgctxt "field:ir.model.field.access,model:"
+msgid "Model"
+msgstr "Mudel"
+
+#, fuzzy
+msgctxt "field:ir.model.field.access,model_ref:"
+msgid "Model"
+msgstr "Mudel"
 
 msgctxt "field:ir.model.field.access,perm_create:"
 msgid "Create Access"
@@ -1185,6 +1260,11 @@ msgctxt "field:ir.rule.group,model:"
 msgid "Model"
 msgstr "Mudel"
 
+#, fuzzy
+msgctxt "field:ir.rule.group,model_ref:"
+msgid "Model"
+msgstr "Mudel"
+
 msgctxt "field:ir.rule.group,name:"
 msgid "Name"
 msgstr "Nimi"
@@ -1343,11 +1423,21 @@ msgctxt "field:ir.translation,module:"
 msgid "Module"
 msgstr "Moodul"
 
+#, fuzzy
+msgctxt "field:ir.translation,module_ref:"
+msgid "Module"
+msgstr "Moodul"
+
 msgctxt "field:ir.translation,name:"
 msgid "Field Name"
 msgstr "Välja nimi"
 
 msgctxt "field:ir.translation,overriding_module:"
+msgid "Overriding Module"
+msgstr "Kirjuta moodul üle"
+
+#, fuzzy
+msgctxt "field:ir.translation,overriding_module_ref:"
 msgid "Overriding Module"
 msgstr "Kirjuta moodul üle"
 
@@ -1455,6 +1545,11 @@ msgctxt "field:ir.ui.icon,module:"
 msgid "Module"
 msgstr "Moodul"
 
+#, fuzzy
+msgctxt "field:ir.ui.icon,module_ref:"
+msgid "Module"
+msgstr "Moodul"
+
 msgctxt "field:ir.ui.icon,name:"
 msgid "Name"
 msgstr "Nimi"
@@ -1507,6 +1602,10 @@ msgctxt "field:ir.ui.view,arch:"
 msgid "View Architecture"
 msgstr "Vaata arhitektuuri"
 
+msgctxt "field:ir.ui.view,basis:"
+msgid "Basis"
+msgstr ""
+
 msgctxt "field:ir.ui.view,data:"
 msgid "Data"
 msgstr "Andmed"
@@ -1514,6 +1613,16 @@ msgstr "Andmed"
 msgctxt "field:ir.ui.view,domain:"
 msgid "Domain"
 msgstr "Domeen"
+
+#, fuzzy
+msgctxt "field:ir.ui.view,extensions:"
+msgid "Extensions"
+msgstr "Laiendus"
+
+#, fuzzy
+msgctxt "field:ir.ui.view,field_children:"
+msgid "Children Field"
+msgstr "Alamväli"
 
 msgctxt "field:ir.ui.view,field_childs:"
 msgid "Children Field"
@@ -1527,7 +1636,17 @@ msgctxt "field:ir.ui.view,model:"
 msgid "Model"
 msgstr "Mudel"
 
+#, fuzzy
+msgctxt "field:ir.ui.view,model_ref:"
+msgid "Model"
+msgstr "Mudel"
+
 msgctxt "field:ir.ui.view,module:"
+msgid "Module"
+msgstr "Moodul"
+
+#, fuzzy
+msgctxt "field:ir.ui.view,module_ref:"
 msgid "Module"
 msgstr "Moodul"
 
@@ -1607,7 +1726,17 @@ msgctxt "field:ir.ui.view_tree_width,field:"
 msgid "Field"
 msgstr "Väli"
 
+#, fuzzy
+msgctxt "field:ir.ui.view_tree_width,field_ref:"
+msgid "Field"
+msgstr "Väli"
+
 msgctxt "field:ir.ui.view_tree_width,model:"
+msgid "Model"
+msgstr "Mudel"
+
+#, fuzzy
+msgctxt "field:ir.ui.view_tree_width,model_ref:"
 msgid "Model"
 msgstr "Mudel"
 
@@ -1725,7 +1854,7 @@ msgid "Code of the exceptional parent"
 msgstr ""
 
 #, fuzzy
-msgctxt "help:ir.model,module:"
+msgctxt "help:ir.model,module_ref:"
 msgid "Module in which this model is defined."
 msgstr "Moodul, milles mudel on defineeritud"
 
@@ -1759,7 +1888,7 @@ msgid ""
 msgstr ""
 
 #, fuzzy
-msgctxt "help:ir.model.field,module:"
+msgctxt "help:ir.model.field,module_ref:"
 msgid "Module in which this field is defined."
 msgstr "Moodul, milles väli on defineeritud"
 
@@ -2564,6 +2693,14 @@ msgctxt "model:ir.message,text:msg_button_name_unique"
 msgid "The name of the button must be unique per model."
 msgstr ""
 
+msgctxt "model:ir.message,text:msg_context_datetime"
+msgid "At date/time: %(datetime)s"
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_context_groups"
+msgid "Within groups: %(groups)s"
+msgstr ""
+
 msgctxt "model:ir.message,text:msg_create_rule_error"
 msgid ""
 "You are not allowed to create records of \"%(model)s\" because they fail on at least one of these rules:\n"
@@ -3089,6 +3226,10 @@ msgid ""
 "You are not allowed to modify the field \"%(field)s\" in record "
 "\"%(record)s\" of \"%(model)s\"."
 msgstr "Mudeli \"%(model)s\" välja \"%(field)s\" jaoks on väärtus nõutud."
+
+msgctxt "model:ir.message,text:msg_xml_id"
+msgid "XML ID"
+msgstr ""
 
 #, fuzzy
 msgctxt "model:ir.message,text:msg_xml_id_syntax_error"

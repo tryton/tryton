@@ -1,3 +1,118 @@
 #
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:account.configuration,move_export_type:"
+msgid "Move Export Type"
+msgstr ""
+
+msgctxt "field:account.configuration.export,company:"
+msgid "Company"
+msgstr ""
+
+msgctxt "field:account.configuration.export,move_export_type:"
+msgid "Move Export Type"
+msgstr ""
+
+msgctxt "field:account.move,export:"
+msgid "Export"
+msgstr ""
+
+msgctxt "field:account.move.export,company:"
+msgid "Company"
+msgstr ""
+
+msgctxt "field:account.move.export,file:"
+msgid "File"
+msgstr ""
+
+msgctxt "field:account.move.export,file_id:"
+msgid "File ID"
+msgstr ""
+
+msgctxt "field:account.move.export,filename:"
+msgid "Filename"
+msgstr ""
+
+msgctxt "field:account.move.export,moves:"
+msgid "Moves"
+msgstr ""
+
+msgctxt "field:account.move.export,state:"
+msgid "State"
+msgstr ""
+
+msgctxt "field:account.move.export,type:"
+msgid "Type"
+msgstr ""
+
+msgctxt "model:account.configuration.export,name:"
+msgid "Account Configuration Export"
+msgstr ""
+
+msgctxt "model:account.move.export,name:"
+msgid "Account Move Export"
+msgstr ""
+
+msgctxt "model:ir.action,name:act_account_move_export_form"
+msgid "Move Exports"
+msgstr ""
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_account_move_export_form_domain_all"
+msgid "All"
+msgstr ""
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_account_move_export_form_domain_draft"
+msgid "Draft"
+msgstr ""
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_account_move_export_form_domain_waiting"
+msgid "Waiting"
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_account_move_export_delete_draft"
+msgid "To delete move export \"%(export)s\" you must reset it to draft."
+msgstr ""
+
+msgctxt "model:ir.model.button,string:account_move_export_do_button"
+msgid "Do"
+msgstr ""
+
+msgctxt "model:ir.model.button,string:account_move_export_draft_button"
+msgid "Reset to Draft"
+msgstr ""
+
+msgctxt "model:ir.model.button,string:account_move_export_select_moves_button"
+msgid "Select Moves"
+msgstr ""
+
+msgctxt "model:ir.model.button,string:account_move_export_wait_button"
+msgid "Wait"
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_account_move_export_companies"
+msgid "User in companies"
+msgstr ""
+
+msgctxt "model:ir.ui.menu,name:menu_account_move_export_form"
+msgid "Move Exports"
+msgstr ""
+
+msgctxt "selection:account.move.export,state:"
+msgid "Done"
+msgstr ""
+
+msgctxt "selection:account.move.export,state:"
+msgid "Draft"
+msgstr ""
+
+msgctxt "selection:account.move.export,state:"
+msgid "Waiting"
+msgstr ""
+
+msgctxt "view:account.configuration:"
+msgid "Export"
+msgstr ""

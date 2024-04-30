@@ -488,7 +488,6 @@ msgctxt "model:res.user.warning,name:"
 msgid "User Warning"
 msgstr "Aviso usuario"
 
-#, fuzzy
 msgctxt "report:res.user.email_reset_password:"
 msgid ""
 "Hello,\n"
@@ -502,11 +501,13 @@ msgstr ""
 "                Debe establecer una nueva desde las preferencias de usuario.[3:]\n"
 "                Puede conectar con esta contraseña temporal [4:%(password)s] a [5:]\n"
 "                [6:tryton://%(host)s/%(database)s][7:]\n"
-"                [8:%(host)s/#%(database)s]"
+"                [8:%(http_host)s/#%(database)s]"
 
 msgctxt "report:res.user.email_reset_password:"
 msgid "If you didn't make this request, you can safely ignore this email."
 msgstr ""
+"Si no has realizado esta petición, puedes ignorar este correo "
+"tranquilamente."
 
 msgctxt "report:res.user.email_reset_password:"
 msgid "Reset Password"

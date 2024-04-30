@@ -1506,8 +1506,17 @@ msgstr "ທົ່ວໄປ"
 
 #, fuzzy
 msgctxt "view:purchase.line:"
+msgid "Invoicing"
+msgstr "ໃບເກັບເງິນ"
+
+#, fuzzy
+msgctxt "view:purchase.line:"
 msgid "Notes"
 msgstr "ໝາຍເຫດ"
+
+msgctxt "view:purchase.line:"
+msgid "Shipping"
+msgstr ""
 
 #, fuzzy
 msgctxt "view:purchase.line:"

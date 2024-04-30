@@ -10,6 +10,14 @@ msgctxt "field:product.category,childs:"
 msgid "Children"
 msgstr "Untergeordnet (Kategorien)"
 
+msgctxt "field:product.category,code:"
+msgid "Code"
+msgstr "Code"
+
+msgctxt "field:product.category,code_readonly:"
+msgid "Code Readonly"
+msgstr "Code ist nur lesbar"
+
 msgctxt "field:product.category,name:"
 msgid "Name"
 msgstr "Name"
@@ -21,6 +29,10 @@ msgstr "Übergeordnet (Kategorie)"
 msgctxt "field:product.category,templates:"
 msgid "Products"
 msgstr "Artikel"
+
+msgctxt "field:product.configuration,category_sequence:"
+msgid "Category Sequence"
+msgstr "Nummernkreis Artikelkategorie"
 
 msgctxt "field:product.configuration,default_cost_price_method:"
 msgid "Default Cost Method"
@@ -295,6 +307,10 @@ msgctxt "help:product.category,parent:"
 msgid "Used to add structure above the category."
 msgstr "Erlaubt den Aufbau einer Struktur oberhalb dieser Kategorie."
 
+msgctxt "help:product.configuration,category_sequence:"
+msgid "Used to generate the category code."
+msgstr "Wird zum Generieren des Artikelkategoriecodes genutzt."
+
 msgctxt "help:product.configuration,default_cost_price_method:"
 msgid "The default cost price method for new products."
 msgstr "Die Standardbestandsbewertungsmethode für neue Artikel."
@@ -499,6 +515,10 @@ msgctxt "model:ir.action,name:act_uom_form"
 msgid "Units of Measure"
 msgstr "Maßeinheiten"
 
+msgctxt "model:ir.message,text:msg_category_code_unique"
+msgid "The code on product category must be unique."
+msgstr "Der Code für eine Artikelkategorie kann nur einmal vergeben werden."
+
 msgctxt "model:ir.message,text:msg_invalid_code"
 msgid "The %(type)s \"%(code)s\" for product \"%(product)s\" is not valid."
 msgstr ""
@@ -548,6 +568,10 @@ msgstr "Faktor und Kehrwert können nicht beide Null sein."
 msgctxt "model:ir.model.button,string:category_add_products_button"
 msgid "Add products"
 msgstr "Artikel hinzufügen"
+
+msgctxt "model:ir.sequence.type,name:sequence_type_category"
+msgid "Category"
+msgstr "Artikelkategorie"
 
 msgctxt "model:ir.sequence.type,name:sequence_type_product"
 msgid "Variant"
@@ -962,6 +986,10 @@ msgid "Product Administration"
 msgstr "Artikel Administration"
 
 msgctxt "selection:product.identifier,type:"
+msgid "Brand"
+msgstr "Marke"
+
+msgctxt "selection:product.identifier,type:"
 msgid "International Article Number"
 msgstr "Internationale Artikelnummer (IAN/EAN)"
 
@@ -984,6 +1012,10 @@ msgstr "International Standard Identifier for Libraries (ISIL)"
 msgctxt "selection:product.identifier,type:"
 msgid "International Standard Music Number"
 msgstr "Internationale Standardmusiknummer (ISMN)"
+
+msgctxt "selection:product.identifier,type:"
+msgid "Manufacturer Part Number"
+msgstr "Herstellerteilenummer"
 
 msgctxt "selection:product.product,cost_price_method:"
 msgid "Average"

@@ -2,6 +2,56 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
+#, fuzzy
+msgctxt "field:product.category,image_url:"
+msgid "Image URL"
+msgstr "Képek"
+
+#, fuzzy
+msgctxt "field:product.category,images:"
+msgid "Images"
+msgstr "Képek"
+
+msgctxt "field:product.category.image,cache:"
+msgid "Cache"
+msgstr ""
+
+msgctxt "field:product.category.image,category:"
+msgid "Category"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:product.category.image,image:"
+msgid "Image"
+msgstr "Képek"
+
+#, fuzzy
+msgctxt "field:product.category.image,image_id:"
+msgid "Image ID"
+msgstr "Képek"
+
+msgctxt "field:product.category.image.cache,category_image:"
+msgid "Category Image"
+msgstr ""
+
+msgctxt "field:product.category.image.cache,height:"
+msgid "Height"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:product.category.image.cache,image:"
+msgid "Image"
+msgstr "Képek"
+
+#, fuzzy
+msgctxt "field:product.category.image.cache,image_id:"
+msgid "Image ID"
+msgstr "Képek"
+
+msgctxt "field:product.category.image.cache,width:"
+msgid "Width"
+msgstr ""
+
 msgctxt "field:product.image,cache:"
 msgid "Cache"
 msgstr ""
@@ -58,8 +108,16 @@ msgctxt "field:product.template,images:"
 msgid "Images"
 msgstr "Képek"
 
-msgctxt "model:ir.message,text:msg_product_image_size_unique"
-msgid "The size of a product image must be unique."
+msgctxt "model:ir.message,text:msg_image_cache_size_unique"
+msgid "The size of cached image must be unique."
+msgstr ""
+
+msgctxt "model:product.category.image,name:"
+msgid "Category Image"
+msgstr ""
+
+msgctxt "model:product.category.image.cache,name:"
+msgid "Category Image Cache"
 msgstr ""
 
 msgctxt "model:product.image,name:"

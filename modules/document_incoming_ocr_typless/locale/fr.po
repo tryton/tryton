@@ -1,5 +1,4 @@
 #
-#, fuzzy
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
@@ -25,7 +24,7 @@ msgid ""
 "%(message)s"
 msgstr ""
 "L'appel au service Web Typless a échoué avec le message d'erreur suivant :\n"
-"%(messages)s"
+"%(message)s"
 
 msgctxt "selection:document.incoming.ocr.service,type:"
 msgid "Typless"

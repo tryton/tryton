@@ -427,6 +427,11 @@ msgid "From Location"
 msgstr "Induló tárhely"
 
 #, fuzzy
+msgctxt "field:stock.move,from_location_name:"
+msgid "From Location"
+msgstr "Induló tárhely"
+
+#, fuzzy
 msgctxt "field:stock.move,internal_quantity:"
 msgid "Internal Quantity"
 msgstr "Belső mennyiség"
@@ -471,6 +476,11 @@ msgid "State"
 msgstr "Állapot"
 
 msgctxt "field:stock.move,to_location:"
+msgid "To Location"
+msgstr "Cél tárhely"
+
+#, fuzzy
+msgctxt "field:stock.move,to_location_name:"
 msgid "To Location"
 msgstr "Cél tárhely"
 
@@ -2322,9 +2332,10 @@ msgctxt "model:ir.model.button,string:shipment_in_cancel_button"
 msgid "Cancel"
 msgstr "Érvénytelenítés"
 
+#, fuzzy
 msgctxt "model:ir.model.button,string:shipment_in_done_button"
-msgid "Done"
-msgstr "Kész"
+msgid "Complete"
+msgstr "Feltöltés"
 
 msgctxt "model:ir.model.button,string:shipment_in_draft_button"
 msgid "Reset to Draft"
@@ -2342,9 +2353,10 @@ msgctxt "model:ir.model.button,string:shipment_in_return_cancel_button"
 msgid "Cancel"
 msgstr "Érvénytelenítés"
 
+#, fuzzy
 msgctxt "model:ir.model.button,string:shipment_in_return_done_button"
-msgid "Done"
-msgstr "Kész"
+msgid "Complete"
+msgstr "Feltöltés"
 
 msgctxt "model:ir.model.button,string:shipment_in_return_draft_button"
 msgid "Draft"
@@ -2362,9 +2374,10 @@ msgctxt "model:ir.model.button,string:shipment_internal_cancel_button"
 msgid "Cancel"
 msgstr "Érvénytelenítés"
 
+#, fuzzy
 msgctxt "model:ir.model.button,string:shipment_internal_done_button"
-msgid "Done"
-msgstr "Kész"
+msgid "Complete"
+msgstr "Feltöltés"
 
 msgctxt "model:ir.model.button,string:shipment_internal_draft_button"
 msgid "Draft"
@@ -2386,9 +2399,10 @@ msgctxt "model:ir.model.button,string:shipment_out_cancel_button"
 msgid "Cancel"
 msgstr "Érvénytelenítés"
 
+#, fuzzy
 msgctxt "model:ir.model.button,string:shipment_out_done_button"
-msgid "Done"
-msgstr "Kész"
+msgid "Complete"
+msgstr "Feltöltés"
 
 msgctxt "model:ir.model.button,string:shipment_out_draft_button"
 msgid "Draft"
@@ -2406,9 +2420,10 @@ msgctxt "model:ir.model.button,string:shipment_out_return_cancel_button"
 msgid "Cancel"
 msgstr "Érvénytelenítés"
 
+#, fuzzy
 msgctxt "model:ir.model.button,string:shipment_out_return_done_button"
-msgid "Done"
-msgstr "Kész"
+msgid "Complete"
+msgstr "Feltöltés"
 
 msgctxt "model:ir.model.button,string:shipment_out_return_draft_button"
 msgid "Draft"
@@ -3108,13 +3123,8 @@ msgstr "Raktár:"
 
 #, fuzzy
 msgctxt "selection:ir.cron,method:"
-msgid "Assign Customer Shipments"
-msgstr "Vevői szállítmány rendelkezésére állásának ellenőrzése"
-
-#, fuzzy
-msgctxt "selection:ir.cron,method:"
-msgid "Assign Internal Shipments"
-msgstr "Belső szállítmány rendelkezésére állásának ellenőrzése"
+msgid "Assign Shipments"
+msgstr "Assign Shipment Internal"
 
 #, fuzzy
 msgctxt "selection:ir.cron,method:"
