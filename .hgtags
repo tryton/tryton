@@ -9311,3 +9311,4 @@ ef5dc93aaddd75e85ea389bace7115d2286133ed authentication_sms-7.2.1
 14bac99df4b6da7c96254ffc4ebb7c5229dbb73f analytic_budget-7.2.1
 e1c33ea7cbacbd78f81911d1567d99606e06e435 analytic_account-7.2.1
 f63bb8f7cf5c29c6c46cffbfb0b86683a786bd43 account_stock_shipment_cost-7.2.1
+9aa506c507140343eefafb43518b1718a63d0d31 account_stock_landed_cost-7.2.1
