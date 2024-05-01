@@ -9146,3 +9146,4 @@ dd32edb7312b189c4f4bbd1c0d27adf9d0384f41 tryton-7.0.10
 4d67efc518f5b144cf7fd1be6216072cfec8c919 sao-7.0.11
 faf92db0bb76ede92faa11c5ec619aca02152fee stock_shipment_cost-7.0.1
 317094530abad5f7fb1749779d7471fa1055f1fa stock_product_location-7.0.2
+35d0fcb30b285cba974508fb9518c5cf6a899168 stock_package_shipping-7.0.1
