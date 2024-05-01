@@ -67,7 +67,7 @@ def find_path(name, subdir='modules', _test=os.path.isfile):
             try:
                 module_name, module_path = name.split(os.sep, 1)
             except ValueError:
-                module_name, module_path = name, None
+                module_name, module_path = name, ''
             if module_name in {'ir', 'res', 'tests'}:
                 path = secure_join(root_path, module_name, module_path)
             else:
