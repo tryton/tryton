@@ -12,6 +12,7 @@ from trytond import backend
 from trytond.config import config
 from trytond.pool import Pool
 from trytond.sendmail import send_test_email
+from trytond.tools import file_open
 from trytond.transaction import Transaction, TransactionError, inactive_records
 
 __all__ = ['run']
@@ -133,6 +134,52 @@ def run(options):
                         User.reset_password([admin])
                     if options.hostname is not None:
                         configuration.hostname = options.hostname or None
+                    if options.export_translations:
+                        Lang = pool.get('ir.lang')
+                        Translation = pool.get('ir.translation')
+                        TranslationSet = pool.get(
+                            'ir.translation.set', type='wizard')
+                        TranslationClean = pool.get(
+                            'ir.translation.clean', type='wizard')
+                        TranslationUpdate = pool.get(
+                            'ir.translation.update', type='wizard')
+
+                        logger.info("set translations")
+                        session_id, _, _ = TranslationSet.create()
+                        TranslationSet.execute(session_id, {}, 'set_')
+                        TranslationSet.delete(session_id)
+
+                        logger.info("clean translations")
+                        session_id, _, _ = TranslationClean.create()
+                        TranslationClean.execute(session_id, {}, 'clean')
+                        TranslationClean.delete(session_id)
+
+                        for language in options.languages:
+                            logger.info(
+                                "synchronize translations %s", language)
+                            language, = Lang.search([
+                                    ('code', '=', language),
+                                    ])
+
+                            session_id, _, _ = TranslationUpdate.create()
+                            TranslationUpdate.execute(session_id, {
+                                    'start': {
+                                        'language': language.id,
+                                        },
+                                    }, 'update')
+                            TranslationUpdate.delete(session_id)
+
+                        for module in options.update:
+                            for language in options.languages:
+                                logger.info(
+                                    "export %s translations %s",
+                                    module, language)
+                                filename = os.path.join(
+                                    module, 'locale', f'{language}.po')
+                                with file_open(filename, 'wb') as fp:
+                                    fp.write(Translation.translation_export(
+                                            language, module))
+
                     configuration.save()
                 except TransactionError as e:
                     transaction.rollback()

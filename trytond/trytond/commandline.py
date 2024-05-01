@@ -136,6 +136,9 @@ def get_parser_admin():
     parser.add_argument("--validate-percentage", dest="validate_percentage",
         type=float, default=100, metavar="PERCENTAGE",
         help="percentage of records to validate (default: 100)")
+    parser.add_argument("--export-translations", action="store_true",
+        dest="export_translations",
+        help="export module translations to locale folder")
 
     parser.epilog = ('The first time a database is initialized '
         'or when the password is set, the admin password is read '
