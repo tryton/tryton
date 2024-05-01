@@ -9319,3 +9319,4 @@ c7d4a6746c49af6ca9871dba2c4ea1f5e1de967e account_rule-7.2.1
 1284a8b2fe49a19ab82437a1b1fec2064a985450 account_receivable_rule-7.2.1
 14aed378012f13439bab3c56e5b95a18140f9f85 account_payment_stripe-7.2.1
 91808825bc1f3612b5ed63b2af7374b17b932cdc account_payment_sepa-7.2.1
+637af3c0b7d0da8776909d1b7fe9e05d30b613f4 account_payment-7.2.1
