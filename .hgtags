@@ -9321,3 +9321,4 @@ c7d4a6746c49af6ca9871dba2c4ea1f5e1de967e account_rule-7.2.1
 91808825bc1f3612b5ed63b2af7374b17b932cdc account_payment_sepa-7.2.1
 637af3c0b7d0da8776909d1b7fe9e05d30b613f4 account_payment-7.2.1
 4d6397b7aa2a9f0cd1646fb29a8b0fc04950a41b account_move_line_grouping-7.2.1
+d51af3c04c084cc732452adaf9e3540b40c52bc4 account_invoice_defer-7.2.1
