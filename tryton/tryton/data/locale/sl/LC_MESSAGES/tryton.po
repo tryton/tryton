@@ -141,9 +141,9 @@ msgstr "Izjema sočasnega izvajanja"
 msgid "Could not get a session."
 msgstr "Ni mogoče vzpostaviti seje."
 
-#, fuzzy, python-format
+#, python-format
 msgid "Error: \"%s\". Try again later."
-msgstr "Preveč poslanih zahtev. Poskusite kasneje."
+msgstr ""
 
 msgid "Too many requests. Try again later."
 msgstr "Preveč poslanih zahtev. Poskusite kasneje."

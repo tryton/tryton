@@ -138,9 +138,9 @@ msgstr "Виняток одночасного доступу"
 msgid "Could not get a session."
 msgstr "Не вдалося підключитися до сервера."
 
-#, fuzzy, python-format
+#, python-format
 msgid "Error: \"%s\". Try again later."
-msgstr "Дуже багато запитів. Спробуйте ще раз пізніше."
+msgstr ""
 
 msgid "Too many requests. Try again later."
 msgstr "Дуже багато запитів. Спробуйте ще раз пізніше."

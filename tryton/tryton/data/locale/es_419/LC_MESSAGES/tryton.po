@@ -140,9 +140,9 @@ msgstr "Excepción de concurrencia"
 msgid "Could not get a session."
 msgstr ""
 
-#, fuzzy, python-format
+#, python-format
 msgid "Error: \"%s\". Try again later."
-msgstr "Demasiadas peticiones. Inténtalo de nuevo más tarde."
+msgstr ""
 
 msgid "Too many requests. Try again later."
 msgstr "Demasiadas peticiones. Inténtalo de nuevo más tarde."
