@@ -140,7 +140,7 @@ check-ci-modules:
     PIP_CACHE_DIR: "$CI_PROJECT_DIR/.cache/pip"
   cache:
     paths:
-      - .cache/pip/http
+      - .cache/pip/http-v2
   before_script:
     - pip install tox
   script:
@@ -211,7 +211,7 @@ check-trytond-rng:
     PIP_CACHE_DIR: "$CI_PROJECT_DIR/.cache/pip"
   cache:
     paths:
-      - .cache/pip/http
+      - .cache/pip/http-v2
   before_script:
     - pip install rnc2rng
   script:
