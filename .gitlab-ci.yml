@@ -56,7 +56,7 @@ documentation:
     PIP_CACHE_DIR: "$CI_PROJECT_DIR/.cache/pip"
   cache:
     paths:
-      - .cache/pip/http
+      - .cache/pip/http-v2
   before_script:
     - pip install -r "${PACKAGE}/${DOC_DIR}/requirements-doc.txt"
     - pip install sphinx-lint rstcheck[sphinx]
@@ -155,7 +155,7 @@ check-cookiecutter-module:
     PIP_CACHE_DIR: "$CI_PROJECT_DIR/.cache/pip"
   cache:
     paths:
-      - .cache/pip/http
+      - .cache/pip/http-v2
   before_script:
     - pip install cookiecutter
   script:
@@ -172,7 +172,7 @@ check-template-modules:
     PIP_CACHE_DIR: "$CI_PROJECT_DIR/.cache/pip"
   cache:
     paths:
-      - .cache/pip/http
+      - .cache/pip/http-v2
   before_script:
     - pip install cookiecutter
   script:
@@ -197,7 +197,7 @@ check-template-modules:
     PIP_CACHE_DIR: "$CI_PROJECT_DIR/.cache/pip"
   cache:
     paths:
-      - .cache/pip/http
+      - .cache/pip/http-v2
   before_script:
     - pip install tox
   script:
@@ -279,7 +279,7 @@ check-trytond-rng:
     PIP_CACHE_DIR: "$CI_PROJECT_DIR/.cache/pip"
   cache:
     paths:
-      - .cache/pip/http
+      - .cache/pip/http-v2
   before_script:
     - pip install rnc2rng
   script:
@@ -354,7 +354,7 @@ test-demo:
     PIP_CACHE_DIR: "$CI_PROJECT_DIR/.cache/pip"
   cache:
     paths:
-      - .cache/pip/http
+      - .cache/pip/http-v2
   before_script:
     - pip install packages/trytond* packages/proteus*
   script:
