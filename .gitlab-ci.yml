@@ -53,6 +53,7 @@ documentation:
   variables:
     DOC_BASE_URL: ${CI_PROJECT_DIR}/docs
     DOC_DIR: doc
+    PIP_CACHE_DIR: "$CI_PROJECT_DIR/.cache/pip"
   cache:
     paths:
       - .cache/pip/http
@@ -148,6 +149,8 @@ check-ci-modules:
 
 check-cookiecutter-module:
   extends: .check
+  variables:
+    PIP_CACHE_DIR: "$CI_PROJECT_DIR/.cache/pip"
   cache:
     paths:
       - .cache/pip/http
@@ -163,6 +166,8 @@ check-cookiecutter-module:
 
 check-template-modules:
   extends: .check
+  variables:
+    PIP_CACHE_DIR: "$CI_PROJECT_DIR/.cache/pip"
   cache:
     paths:
       - .cache/pip/http
@@ -268,6 +273,8 @@ check-doc-trytond:
 
 check-trytond-rng:
   extends: .check
+  variables:
+    PIP_CACHE_DIR: "$CI_PROJECT_DIR/.cache/pip"
   cache:
     paths:
       - .cache/pip/http
