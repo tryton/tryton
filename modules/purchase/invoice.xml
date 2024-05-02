@@ -7,8 +7,9 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">Invoices</field>
             <field name="res_model">account.invoice</field>
             <field name="context"></field>
-            <field name="domain"
-                eval="[('lines.origin.purchase.id', 'in', Eval('active_ids'), 'purchase.line')]"
+            <field
+                name="domain"
+                eval="[('purchases.id', 'in', Eval('active_ids', []))]"
                 pyson="1"/>
         </record>
         <record model="ir.action.keyword"
