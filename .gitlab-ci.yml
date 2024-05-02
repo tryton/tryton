@@ -207,6 +207,8 @@ check-doc-trytond:
 
 check-trytond-rng:
   extends: .check
+  variables:
+    PIP_CACHE_DIR: "$CI_PROJECT_DIR/.cache/pip"
   cache:
     paths:
       - .cache/pip/http
