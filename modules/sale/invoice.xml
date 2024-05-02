@@ -6,8 +6,9 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.action.act_window" id="act_invoice_form">
             <field name="name">Invoices</field>
             <field name="res_model">account.invoice</field>
-            <field name="domain"
-                eval="[If(Eval('active_ids', []) == [Eval('active_id')], ('lines.origin.sale.id', '=', Eval('active_id'), 'sale.line'), ('lines.origin.sale.id', 'in', Eval('active_ids'), 'sale.line'))]"
+            <field
+                name="domain"
+                eval="[('sales.id', 'in', Eval('active_ids', []))]"
                 pyson="1"/>
         </record>
         <record model="ir.action.keyword"

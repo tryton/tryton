@@ -9,19 +9,6 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">sale_form</field>
         </record>
 
-        <record model="ir.action.act_window" id="act_advance_invoice_form">
-            <field name="name">Advance Invoices</field>
-            <field name="res_model">account.invoice</field>
-            <field name="domain"
-                eval="[('lines.origin.sale.id', 'in', Eval('active_ids'), 'sale.advance_payment.condition')]"
-                pyson="1"/>
-        </record>
-        <record model="ir.action.keyword" id="act_advance_invoice_keyword1">
-            <field name="keyword">form_relate</field>
-            <field name="model">sale.sale,-1</field>
-            <field name="action" ref="act_advance_invoice_form"/>
-        </record>
-
         <record model="ir.ui.view" id="advance_payment_condition_form">
             <field name="model">sale.advance_payment.condition</field>
             <field name="type">form</field>
