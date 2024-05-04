@@ -5,7 +5,6 @@ import gzip
 import logging
 import time
 from functools import wraps
-from io import BytesIO
 
 try:
     from http import HTTPStatus
@@ -74,8 +73,7 @@ class Request(_Request):
     def decoded_data(self):
         if self.content_encoding == 'gzip':
             if self.user_id:
-                zipfile = gzip.GzipFile(fileobj=BytesIO(self.data), mode='rb')
-                return zipfile.read()
+                return gzip.decompress(self.data)
             else:
                 abort(HTTPStatus.UNSUPPORTED_MEDIA_TYPE)
         else:
