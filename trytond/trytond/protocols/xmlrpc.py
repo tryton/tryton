@@ -9,8 +9,8 @@ from decimal import Decimal
 
 import defusedxml.xmlrpc
 from werkzeug.exceptions import (
-    BadRequest, Conflict, Forbidden, InternalServerError, Locked,
-    TooManyRequests)
+    BadRequest, Conflict, Forbidden, HTTPException, InternalServerError,
+    Locked, TooManyRequests)
 from werkzeug.wrappers import Response
 
 from trytond.exceptions import (
@@ -137,6 +137,8 @@ class XMLRequest(Request):
             try:
                 # TODO replace by own loads
                 return client.loads(self.decoded_data, use_builtin_types=True)
+            except HTTPException:
+                raise
             except Exception:
                 raise BadRequest('Unable to read XMl request')
         else:
