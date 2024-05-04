@@ -1,6 +1,7 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 import datetime
+import gzip
 import logging
 import xmlrpc.client as client
 # convert decimal to float before marshalling:
@@ -166,9 +167,14 @@ class XMLProtocol:
                 data = client.Fault(255, str(data))
             else:
                 data = (data,)
-            return Response(client.dumps(
-                    data, methodresponse=True, allow_none=True),
-                content_type='text/xml')
+            headers = {}
+            data = client.dumps(
+                data, methodresponse=True, allow_none=True)
+            if len(data) >= 1400 and 'gzip' in request.accept_encodings:
+                data = gzip.compress(data.encode('utf-8'), compresslevel=1)
+                headers['Content-Encoding'] = 'gzip'
+            return Response(
+                data, content_type='text/xml', headers=headers)
         else:
             if isinstance(data, UserWarning):
                 return Conflict(data)

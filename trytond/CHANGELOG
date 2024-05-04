@@ -1,3 +1,4 @@
+* Compress RPC responses
 * Change _changed_values and _save_values properties to method
 * Add configuration for report convert command
 * Use process pool to run cron
