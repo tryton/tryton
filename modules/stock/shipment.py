@@ -1258,6 +1258,7 @@ class ShipmentOut(
     origins = fields.Function(fields.Char('Origins'), 'get_origins')
     picked_by = employee_field("Picked By")
     packed_by = employee_field("Packed By")
+    shipped_by = employee_field("Shipped By")
     done_by = employee_field("Done By")
     state = fields.Selection([
         ('draft', 'Draft'),
@@ -1265,6 +1266,7 @@ class ShipmentOut(
         ('assigned', 'Assigned'),
         ('picked', 'Picked'),
         ('packed', 'Packed'),
+        ('shipped', "Shipped"),
         ('done', 'Done'),
         ('cancelled', 'Cancelled'),
         ], "State", readonly=True, sort=False,
@@ -1280,7 +1282,7 @@ class ShipmentOut(
                     (t.state, Index.Equality()),
                     where=t.state.in_([
                             'draft', 'waiting', 'assigned',
-                            'picked', 'packed'])),
+                            'picked', 'packed', 'shipped'])),
                 })
         cls._transitions |= set((
                 ('draft', 'waiting'),
@@ -1289,9 +1291,11 @@ class ShipmentOut(
                 ('assigned', 'picked'),
                 ('assigned', 'packed'),
                 ('picked', 'packed'),
+                ('packed', 'shipped'),
                 ('packed', 'done'),
                 ('packed', 'waiting'),
                 ('packed', 'picked'),
+                ('shipped', 'done'),
                 ('assigned', 'waiting'),
                 ('waiting', 'waiting'),
                 ('waiting', 'draft'),
@@ -1300,6 +1304,7 @@ class ShipmentOut(
                 ('assigned', 'cancelled'),
                 ('picked', 'cancelled'),
                 ('packed', 'cancelled'),
+                ('shipped', 'cancelled'),
                 ('cancelled', 'draft'),
                 ))
         cls._buttons.update({
@@ -1348,6 +1353,10 @@ class ShipmentOut(
                         Eval('state') != 'picked'),
                     'depends': [
                         'state', 'warehouse_storage', 'warehouse_output'],
+                    },
+                'ship': {
+                    'invisible': Eval('state') != 'packed',
+                    'depends': ['state'],
                     },
                 'do': {
                     'invisible': Eval('state') != 'packed',
@@ -1677,6 +1686,17 @@ class ShipmentOut(
                     moves.append(move)
         Move.save(moves)
         Move.save(imoves)
+
+    @classmethod
+    @ModelView.button
+    @Workflow.transition('shipped')
+    @set_employee('shipped_by')
+    def ship(cls, shipments):
+        pool = Pool()
+        Move = pool.get('stock.move')
+        Move.delete([
+                m for s in shipments for m in s.outgoing_moves
+                if m.state == 'staging'])
 
     @classmethod
     @ModelView.button
