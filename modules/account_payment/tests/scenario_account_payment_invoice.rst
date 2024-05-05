@@ -114,12 +114,20 @@ Create multiple valid payments for one line::
     >>> pay_line = Wizard('account.move.line.pay', [line_to_pay])
     >>> pay_line.execute('next_')
     >>> pay_line.execute('next_')
+    >>> payment, = pay_line.actions[0]
+    >>> payment.amount
+    Decimal('100.00')
+    >>> payment.amount = Decimal('30.00')
+    >>> payment.save()
     >>> pay_line = Wizard('account.move.line.pay', [line_to_pay])
     >>> pay_line.execute('next_')
     >>> pay_line.execute('next_')
+    >>> payment, = pay_line.actions[0]
+    >>> payment.amount
+    Decimal('70.00')
+    >>> payment.amount = Decimal('30.00')
+    >>> payment.save()
     >>> payments = Payment.find([('state', '=', 'draft')])
-    >>> for payment in payments:
-    ...     payment.amount = Decimal('30')
     >>> Payment.click(payments, 'submit')
 
 Check amount to pay::
