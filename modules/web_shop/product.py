@@ -1,14 +1,9 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 
-from trytond.config import config
 from trytond.model import fields
 from trytond.pool import PoolMeta
 from trytond.pyson import Eval
-
-if not config.get('html', 'plugins-product.template-web_shop_description'):
-    config.set(
-        'html', 'plugins-product.template-web_shop_description', 'fullpage')
 
 
 class Template(metaclass=PoolMeta):

@@ -47,12 +47,6 @@ from trytond.wsgi import Base64Converter
 from .exceptions import ConditionError, DomainError, TemplateError
 from .mixin import MarketingAutomationMixin
 
-if not config.get(
-        'html', 'plugins-marketing.automation.activity-email_template'):
-    config.set(
-        'html', 'plugins-marketing.automation.activity-email_template',
-        'fullpage')
-
 USE_SSL = bool(config.get('ssl', 'certificate'))
 URL_BASE = config.get('marketing', 'automation_base', default=http_host())
 URL_OPEN = urljoin(URL_BASE, '/m/empty.gif')

@@ -38,12 +38,6 @@ from trytond.wizard import Button, StateTransition, StateView, Wizard
 
 from .exceptions import EMailValidationError, TemplateError
 
-if not config.get(
-        'html', 'plugins-marketing.email.message-content'):
-    config.set(
-        'html', 'plugins-marketing.email.message-content',
-        'fullpage')
-
 URL_BASE = config.get('marketing', 'email_base', default=http_host())
 URL_OPEN = urljoin(URL_BASE, '/m/empty.gif')
 

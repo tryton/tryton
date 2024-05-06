@@ -8,7 +8,6 @@ from operator import itemgetter
 from genshi.template.text import TextTemplate
 
 from trytond.cache import Cache, MemoryCache
-from trytond.config import config
 from trytond.i18n import gettext
 from trytond.model import (
     DeactivableMixin, Index, ModelSingleton, ModelSQL, ModelStorage, ModelView,
@@ -20,10 +19,6 @@ from trytond.rpc import RPC
 from trytond.tools import file_open
 from trytond.transaction import (
     Transaction, inactive_records, without_check_access)
-
-if not config.get('html', 'plugins-ir.action.report-report_content_html'):
-    config.set(
-        'html', 'plugins-ir.action.report-report_content_html', 'fullpage')
 
 
 class WizardModelError(ValidationError):
