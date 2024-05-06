@@ -76,7 +76,7 @@ def html_editor(request, pool, model, record, field):
         elif not isinstance(text, str):
             abort(HTTPStatus.BAD_REQUEST)
         title = '%(model)s "%(name)s" %(field)s - %(title)s' % {
-            'model': field.model.name,
+            'model': field.model_ref.name,
             'name': record.rec_name,
             'field': field.field_description,
             'title': request.args.get('title', "Tryton"),
