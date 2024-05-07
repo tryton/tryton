@@ -1,3 +1,4 @@
+* Lock only running cron record
 * Add option to skip tests that require network
 * Add language support per field in export data
 * Add translated descriptor for Char and Text fields
