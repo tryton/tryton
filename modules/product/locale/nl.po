@@ -10,6 +10,14 @@ msgctxt "field:product.category,childs:"
 msgid "Children"
 msgstr "Onderliggende niveaus"
 
+msgctxt "field:product.category,code:"
+msgid "Code"
+msgstr "Code"
+
+msgctxt "field:product.category,code_readonly:"
+msgid "Code Readonly"
+msgstr "Code Alleen lezen"
+
 msgctxt "field:product.category,name:"
 msgid "Name"
 msgstr "Naam"
@@ -21,6 +29,10 @@ msgstr "Bovenliggend niveau"
 msgctxt "field:product.category,templates:"
 msgid "Products"
 msgstr "Producten"
+
+msgctxt "field:product.configuration,category_sequence:"
+msgid "Category Sequence"
+msgstr "Categorie reeks"
 
 msgctxt "field:product.configuration,default_cost_price_method:"
 msgid "Default Cost Method"
@@ -295,6 +307,10 @@ msgctxt "help:product.category,parent:"
 msgid "Used to add structure above the category."
 msgstr "Wordt gebruikt om een structuur boven de categorie toe te voegen."
 
+msgctxt "help:product.configuration,category_sequence:"
+msgid "Used to generate the category code."
+msgstr "Wordt gebruikt de categorie code te genereren."
+
 msgctxt "help:product.configuration,default_cost_price_method:"
 msgid "The default cost price method for new products."
 msgstr "De standaard kostprijs methode voor nieuwe producten."
@@ -499,6 +515,10 @@ msgctxt "model:ir.action,name:act_uom_form"
 msgid "Units of Measure"
 msgstr "Maateenheden"
 
+msgctxt "model:ir.message,text:msg_category_code_unique"
+msgid "The code on product category must be unique."
+msgstr "Code van het product categorie moet uniek zijn."
+
 msgctxt "model:ir.message,text:msg_invalid_code"
 msgid "The %(type)s \"%(code)s\" for product \"%(product)s\" is not valid."
 msgstr "Het %(type)s \"%(code)s\" voor product \"%(product)s\" is niet geldig."
@@ -521,7 +541,7 @@ msgstr "U kunt de categorie van maateenheid \"%(uom)s\" niet wijzigen."
 
 msgctxt "model:ir.message,text:msg_uom_modify_factor"
 msgid "You cannot modify the factor of the unit of measure \"%(uom)s\"."
-msgstr "U kunt de factor van maateenheid \"% (uom) s\" niet wijzigen."
+msgstr "U kunt de factor van maateenheid \"%(uom)s\" niet wijzigen."
 
 msgctxt "model:ir.message,text:msg_uom_modify_options"
 msgid ""
@@ -542,6 +562,10 @@ msgstr "De verhouding en factor kunnen niet beiden gelijk zijn aan nul."
 msgctxt "model:ir.model.button,string:category_add_products_button"
 msgid "Add products"
 msgstr "Producten toevoegen"
+
+msgctxt "model:ir.sequence.type,name:sequence_type_category"
+msgid "Category"
+msgstr "Categorie"
 
 msgctxt "model:ir.sequence.type,name:sequence_type_product"
 msgid "Variant"
@@ -956,6 +980,10 @@ msgid "Product Administration"
 msgstr "Product administratie"
 
 msgctxt "selection:product.identifier,type:"
+msgid "Brand"
+msgstr "Merk"
+
+msgctxt "selection:product.identifier,type:"
 msgid "International Article Number"
 msgstr "Internationaal artikelnummer"
 
@@ -978,6 +1006,10 @@ msgstr "Internationale standaardidentificatie voor bibliotheken"
 msgctxt "selection:product.identifier,type:"
 msgid "International Standard Music Number"
 msgstr "Internationaal standaard muzieknummer"
+
+msgctxt "selection:product.identifier,type:"
+msgid "Manufacturer Part Number"
+msgstr "Onderdeel nummer fabrikant"
 
 msgctxt "selection:product.product,cost_price_method:"
 msgid "Average"

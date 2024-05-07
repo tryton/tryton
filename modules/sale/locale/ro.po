@@ -14,10 +14,9 @@ msgctxt "field:party.party,customer_currencies:"
 msgid "Customer Currencies"
 msgstr "Valute Clienți"
 
-#, fuzzy
 msgctxt "field:party.party,customer_currency:"
 msgid "Customer Currency"
-msgstr "Moneda"
+msgstr "Moneda Client"
 
 msgctxt "field:party.party,sale_invoice_method:"
 msgid "Invoice Method"
@@ -31,12 +30,10 @@ msgctxt "field:party.party,sale_shipment_method:"
 msgid "Shipment Method"
 msgstr "Metoda de Expediere"
 
-#, fuzzy
 msgctxt "field:party.party.customer_currency,customer_currency:"
 msgid "Customer Currency"
-msgstr "Moneda"
+msgstr "Moneda Client"
 
-#, fuzzy
 msgctxt "field:party.party.customer_currency,party:"
 msgid "Party"
 msgstr "Parte"
@@ -65,7 +62,6 @@ msgctxt "field:product.configuration.default_lead_time,default_lead_time:"
 msgid "Default Lead Time"
 msgstr "Timp Implicit de execuţie"
 
-#, fuzzy
 msgctxt "field:product.lead_time,lead_time:"
 msgid "Lead Time"
 msgstr "Timp de livrare"
@@ -78,10 +74,9 @@ msgctxt "field:product.product,lead_time:"
 msgid "Lead Time"
 msgstr "Timp de livrare"
 
-#, fuzzy
 msgctxt "field:product.product,lead_times:"
 msgid "Lead Times"
-msgstr "Timp de livrare"
+msgstr "Timpi de livrare"
 
 msgctxt "field:product.product,salable:"
 msgid "Salable"
@@ -91,10 +86,9 @@ msgctxt "field:product.product,sale_price_uom:"
 msgid "Sale Price"
 msgstr "Preț de vânzare"
 
-#, fuzzy
 msgctxt "field:product.product,sale_uom:"
 msgid "Sale UoM"
-msgstr "Vânzare UM"
+msgstr "UM Vânzare"
 
 msgctxt "field:product.sale.context,company:"
 msgid "Company"
@@ -128,19 +122,17 @@ msgctxt "field:product.template,lead_time:"
 msgid "Lead Time"
 msgstr "Timp de livrare"
 
-#, fuzzy
 msgctxt "field:product.template,lead_times:"
 msgid "Lead Times"
-msgstr "Timp de livrare"
+msgstr "Timpi de livrare"
 
 msgctxt "field:product.template,salable:"
 msgid "Salable"
 msgstr "Marfă"
 
-#, fuzzy
 msgctxt "field:product.template,sale_uom:"
 msgid "Sale UoM"
-msgstr "Vânzare UM"
+msgstr "UM Vânzare"
 
 msgctxt "field:sale.configuration,sale_invoice_method:"
 msgid "Sale Invoice Method"
@@ -222,23 +214,26 @@ msgctxt "field:sale.line,invoice_lines:"
 msgid "Invoice Lines"
 msgstr "Rând factură"
 
+#, fuzzy
+msgctxt "field:sale.line,invoice_progress:"
+msgid "Invoice Progress"
+msgstr "Adresa de facturare"
+
 msgctxt "field:sale.line,moves:"
 msgid "Moves"
 msgstr "Mișcări"
 
-#, fuzzy
 msgctxt "field:sale.line,moves_exception:"
 msgid "Moves Exception"
-msgstr "Excepție de Miscare"
+msgstr "Excepție de Mișcare"
 
 msgctxt "field:sale.line,moves_ignored:"
 msgid "Ignored Moves"
 msgstr "Mișcări ignorate"
 
-#, fuzzy
 msgctxt "field:sale.line,moves_progress:"
 msgid "Moves Progress"
-msgstr "Mișcari Finalizate"
+msgstr "Progres Mișcări"
 
 msgctxt "field:sale.line,moves_recreated:"
 msgid "Recreated Moves"
@@ -252,7 +247,6 @@ msgctxt "field:sale.line,product:"
 msgid "Product"
 msgstr "Produs"
 
-#, fuzzy
 msgctxt "field:sale.line,product_uom_category:"
 msgid "Product UoM Category"
 msgstr "Categorie UM Produs"
@@ -265,7 +259,6 @@ msgctxt "field:sale.line,sale:"
 msgid "Sale"
 msgstr "Vânzare"
 
-#, fuzzy
 msgctxt "field:sale.line,sale_date:"
 msgid "Sale Date"
 msgstr "Data vânzării"
@@ -374,17 +367,14 @@ msgctxt "field:sale.reporting.country.time_series,country:"
 msgid "Country"
 msgstr "Țară"
 
-#, fuzzy
 msgctxt "field:sale.reporting.country.tree,children:"
 msgid "Children"
 msgstr "Copii"
 
-#, fuzzy
 msgctxt "field:sale.reporting.country.tree,parent:"
 msgid "Parent"
 msgstr "Părinte"
 
-#, fuzzy
 msgctxt "field:sale.reporting.country.tree,region:"
 msgid "Region"
 msgstr "Regiune"
@@ -417,7 +407,6 @@ msgctxt "field:sale.reporting.customer.category.tree,parent:"
 msgid "Parent"
 msgstr "Părinte"
 
-#, fuzzy
 msgctxt "field:sale.reporting.customer.category.tree,revenue:"
 msgid "Revenue"
 msgstr "Venituri"
@@ -454,7 +443,6 @@ msgctxt "field:sale.reporting.product.category.tree,parent:"
 msgid "Parent"
 msgstr "Părinte"
 
-#, fuzzy
 msgctxt "field:sale.reporting.product.category.tree,revenue:"
 msgid "Revenue"
 msgstr "Venituri"
@@ -463,30 +451,25 @@ msgctxt "field:sale.reporting.product.time_series,product:"
 msgid "Product"
 msgstr "Produs"
 
-#, fuzzy
 msgctxt "field:sale.reporting.region.tree,currency:"
 msgid "Currency"
 msgstr "Moneda"
 
-#, fuzzy
 msgctxt "field:sale.reporting.region.tree,name:"
 msgid "Name"
-msgstr "Denumire"
+msgstr "Nume"
 
-#, fuzzy
 msgctxt "field:sale.reporting.region.tree,parent:"
 msgid "Parent"
 msgstr "Părinte"
 
-#, fuzzy
 msgctxt "field:sale.reporting.region.tree,revenue:"
 msgid "Revenue"
 msgstr "Venituri"
 
-#, fuzzy
 msgctxt "field:sale.reporting.region.tree,subregions:"
 msgid "Subregions"
-msgstr "Regiune"
+msgstr "Sub-regiuni"
 
 msgctxt "field:sale.sale,comment:"
 msgid "Comment"
@@ -616,28 +599,25 @@ msgctxt "field:sale.sale,tax_amount:"
 msgid "Tax"
 msgstr "Impozit"
 
-#, fuzzy
 msgctxt "field:sale.sale,tax_amount_cache:"
 msgid "Tax Cache"
-msgstr "Impozit precalculat"
+msgstr "Cache Impozit"
 
 msgctxt "field:sale.sale,total_amount:"
 msgid "Total"
 msgstr "Total"
 
-#, fuzzy
 msgctxt "field:sale.sale,total_amount_cache:"
 msgid "Total Cache"
-msgstr "Impozit precalculat"
+msgstr "Cache Total"
 
 msgctxt "field:sale.sale,untaxed_amount:"
 msgid "Untaxed"
 msgstr "Neimpozitat"
 
-#, fuzzy
 msgctxt "field:sale.sale,untaxed_amount_cache:"
 msgid "Untaxed Cache"
-msgstr "Baza de impozitare"
+msgstr "Neimpozitat Cache"
 
 msgctxt "field:sale.sale,warehouse:"
 msgid "Warehouse"
@@ -669,7 +649,7 @@ msgstr "Stare de excepție"
 
 msgctxt "help:party.party,customer_currency:"
 msgid "Default currency for sales to this party."
-msgstr ""
+msgstr "Moneda implicită pentru vânzări către această parte."
 
 msgctxt "help:party.party,sale_invoice_method:"
 msgid ""
@@ -689,7 +669,7 @@ msgstr ""
 
 msgctxt "help:party.party.customer_currency,customer_currency:"
 msgid "Default currency for sales to this party."
-msgstr ""
+msgstr "Moneda implicită pentru vânzări către această parte."
 
 msgctxt "help:product.configuration,default_lead_time:"
 msgid ""
@@ -717,7 +697,7 @@ msgstr ""
 
 msgctxt "help:product.product,sale_uom:"
 msgid "The default Unit of Measure for sales."
-msgstr ""
+msgstr "Unitatea de Masura implicita pentru vanzari."
 
 msgctxt "help:product.template,lead_time:"
 msgid ""
@@ -729,7 +709,7 @@ msgstr ""
 
 msgctxt "help:product.template,sale_uom:"
 msgid "The default Unit of Measure for sales."
-msgstr ""
+msgstr "Unitatea de Masura Implicita pentru vanzari."
 
 msgctxt "help:sale.configuration,sale_process_after:"
 msgid ""
@@ -746,7 +726,7 @@ msgstr "Facturile selectate vor fi recreate. Celelalte vor fi ignorate."
 
 msgctxt "help:sale.line,product_uom_category:"
 msgid "The category of Unit of Measure for the product."
-msgstr ""
+msgstr "Categoria de Unitate de Masura pentru produs."
 
 msgctxt "help:sale.sale,shipping_date:"
 msgid "When the shipping of goods should start."
@@ -772,10 +752,9 @@ msgctxt "model:ir.action,name:act_reporting_country_time_series"
 msgid "Sales per Country"
 msgstr "Vânzări pe țară"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_reporting_country_tree"
 msgid "Sales per Country"
-msgstr "Vânzări pe țară"
+msgstr "Vânzări per țară"
 
 msgctxt "model:ir.action,name:act_reporting_customer"
 msgid "Sales per Customer"
@@ -825,10 +804,9 @@ msgctxt "model:ir.action,name:act_reporting_product_time_series"
 msgid "Sales per Product"
 msgstr "Vânzări pe produs"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_reporting_region_tree"
 msgid "Sales per Region"
-msgstr "Vânzări pe regiune"
+msgstr "Vânzări per regiune"
 
 msgctxt "model:ir.action,name:act_return_form"
 msgid "Returns"
@@ -842,21 +820,18 @@ msgctxt "model:ir.action,name:act_sale_form"
 msgid "Sales"
 msgstr "Vânzări"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_sale_line_relate"
 msgid "Sale Lines"
-msgstr "Rând de vânzare"
+msgstr "Rânduri de vânzare"
 
 msgctxt "model:ir.action,name:act_sale_move_relate"
 msgid "Moves"
 msgstr "Mișcări"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_sale_relate"
 msgid "Sales"
 msgstr "Vânzări"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_sale_relate_simple"
 msgid "Sales"
 msgstr "Vânzări"
@@ -877,12 +852,10 @@ msgctxt "model:ir.action,name:wizard_modify_header"
 msgid "Modify Header"
 msgstr "Modificați antetul"
 
-#, fuzzy
 msgctxt "model:ir.action,name:wizard_reporting_country_tree_open"
 msgid "Open Region"
 msgstr "Regiune deschisă"
 
-#, fuzzy
 msgctxt "model:ir.action,name:wizard_reporting_region_tree_open"
 msgid "Open Region"
 msgstr "Regiune deschisă"
@@ -923,33 +896,29 @@ msgctxt ""
 msgid "Quotation"
 msgstr "Ofertă"
 
-#, fuzzy
 msgctxt "model:ir.action.act_window.domain,name:act_sale_line_relate_all"
 msgid "All"
 msgstr "Tot"
 
-#, fuzzy
 msgctxt "model:ir.action.act_window.domain,name:act_sale_line_relate_done"
 msgid "Done"
 msgstr "Terminat"
 
 msgctxt "model:ir.action.act_window.domain,name:act_sale_line_relate_pending"
 msgid "Pending"
-msgstr ""
+msgstr "In derulare"
 
-#, fuzzy
 msgctxt "model:ir.action.act_window.domain,name:act_sale_relate_all"
 msgid "All"
 msgstr "Tot"
 
-#, fuzzy
 msgctxt "model:ir.action.act_window.domain,name:act_sale_relate_done"
 msgid "Done"
 msgstr "Terminat"
 
 msgctxt "model:ir.action.act_window.domain,name:act_sale_relate_pending"
 msgid "Pending"
-msgstr ""
+msgstr "In derulare"
 
 msgctxt "model:ir.message,text:msg_erase_party_pending_sale"
 msgid ""
@@ -994,14 +963,13 @@ msgstr ""
 "Nu puteți devalida factura \"%(invoice)s\", deoarece a fost generată de o "
 "vânzare."
 
-#, fuzzy
 msgctxt "model:ir.message,text:msg_sale_line_create_draft"
 msgid ""
 "You cannot add lines to sale \"%(sale)s\" because it is no longer in a draft"
 " state."
 msgstr ""
-"Pentru a modifica antetul vânzării \"%(sale)s\", acesta trebuie să fie în "
-"stare devalidata."
+"Nu puteți adăuga rânduri la vânzarea \"%(sale)s\" deoarece nu mai este în "
+"stare de ciornă."
 
 msgctxt "model:ir.message,text:msg_sale_line_delete_cancel_draft"
 msgid ""
@@ -1016,10 +984,12 @@ msgid ""
 "The sale line \"%(line)s\" is moving %(extra)s in addition to the "
 "%(quantity)s ordered."
 msgstr ""
+"Linia de vânzare \"%(line)s\" mută %(extra)s în plus față de %(quantity)s "
+"comandată."
 
 msgctxt "model:ir.message,text:msg_sale_line_tax_unique"
 msgid "A tax can be added only once to a sale line."
-msgstr "O taxă poate fi adăugată o singură dată la o linie de vânzare."
+msgstr "O taxă poate fi adăugată o singură dată la un rând de vânzare."
 
 msgctxt "model:ir.message,text:msg_sale_missing_account_revenue"
 msgid "To invoice sale \"%(sale)s\" you must configure a default account revenue."
@@ -1077,7 +1047,6 @@ msgctxt "model:ir.message,text:msg_sale_reporting_revenue_trend"
 msgid "Revenue Trend"
 msgstr "Tendința veniturilor"
 
-#, fuzzy
 msgctxt "model:ir.message,text:msg_sale_reporting_time_series"
 msgid "Time Series"
 msgstr "Seria de timp"
@@ -1115,15 +1084,13 @@ msgctxt "model:ir.model.button,string:sale_handle_shipment_exception_button"
 msgid "Handle Shipment Exception"
 msgstr "Gestioneaza Excepție de expediere"
 
-#, fuzzy
 msgctxt "model:ir.model.button,string:sale_manual_invoice_button"
 msgid "Create Invoice"
-msgstr "Recreați facturi"
+msgstr "Creare Factura"
 
-#, fuzzy
 msgctxt "model:ir.model.button,string:sale_manual_shipment_button"
 msgid "Create Shipment"
-msgstr "Expedieri"
+msgstr "Creare Expediere"
 
 msgctxt "model:ir.model.button,string:sale_modify_header_button"
 msgid "Modify Header"
@@ -1147,7 +1114,6 @@ msgctxt ""
 msgid "User in companies"
 msgstr "Utilizator în companii"
 
-#, fuzzy
 msgctxt "model:ir.rule.group,name:rule_group_reporting_country_tree_companies"
 msgid "User in companies"
 msgstr "Utilizator în companii"
@@ -1173,12 +1139,12 @@ msgstr "Utilizator în companii"
 
 msgctxt "model:ir.rule.group,name:rule_group_reporting_main_companies"
 msgid "User in companies"
-msgstr "Utilizator în companii"
+msgstr "Utilizator în Companii"
 
 msgctxt ""
 "model:ir.rule.group,name:rule_group_reporting_main_time_series_companies"
 msgid "User in companies"
-msgstr "Utilizator în companii"
+msgstr "Utilizator în Companii"
 
 msgctxt ""
 "model:ir.rule.group,name:rule_group_reporting_product_category_companies"
@@ -1192,12 +1158,12 @@ msgstr "Utilizator în companii"
 
 msgctxt "model:ir.rule.group,name:rule_group_reporting_product_companies"
 msgid "User in companies"
-msgstr "Utilizator în companii"
+msgstr "Utilizator în Companii"
 
 msgctxt ""
 "model:ir.rule.group,name:rule_group_reporting_product_time_series_companies"
 msgid "User in companies"
-msgstr "Utilizator în companii"
+msgstr "Utilizator în Companii"
 
 msgctxt "model:ir.rule.group,name:rule_group_sale_companies"
 msgid "User in companies"
@@ -1245,7 +1211,7 @@ msgstr "Vânzări"
 
 msgctxt "model:party.party.customer_currency,name:"
 msgid "Party Customer Currency"
-msgstr ""
+msgstr "Valută Clientului"
 
 msgctxt "model:party.party.sale_method,name:"
 msgid "Party Sale Method"
@@ -1255,10 +1221,9 @@ msgctxt "model:product.configuration.default_lead_time,name:"
 msgid "Product Default Lead Time"
 msgstr "Timpul Implicit de Execuţie al Produsului"
 
-#, fuzzy
 msgctxt "model:product.lead_time,name:"
 msgid "Product Lead Time"
-msgstr "Timpul Implicit de Execuţie al Produsului"
+msgstr "Timp de Execuţie al Produsului"
 
 msgctxt "model:product.sale.context,name:"
 msgid "Product Sale Context"
@@ -1298,11 +1263,11 @@ msgstr "Rând de vânzare"
 
 msgctxt "model:sale.line-account.tax,name:"
 msgid "Sale Line - Tax"
-msgstr "Linie de vânzare - impozit"
+msgstr "Rând Vânzare - Impozit"
 
 msgctxt "model:sale.line-ignored-stock.move,name:"
 msgid "Sale Line - Ignored Move"
-msgstr "Linie de vânzare - Mișcare Ignorată"
+msgstr "Rând de vânzare - Mișcare Ignorată"
 
 msgctxt "model:sale.line-recreated-stock.move,name:"
 msgid "Sale Line - Recreated Move"
@@ -1328,10 +1293,9 @@ msgctxt "model:sale.reporting.country.time_series,name:"
 msgid "Sale Reporting per Country"
 msgstr "Raportarea vânzărilor pe țară"
 
-#, fuzzy
 msgctxt "model:sale.reporting.country.tree,name:"
 msgid "Sale Reporting per Country"
-msgstr "Raportarea vânzărilor pe țară"
+msgstr "Raportare vânzări per țară"
 
 msgctxt "model:sale.reporting.customer,name:"
 msgid "Sale Reporting per Customer"
@@ -1381,10 +1345,9 @@ msgctxt "model:sale.reporting.product.time_series,name:"
 msgid "Sale Reporting per Product"
 msgstr "Raportarea vânzărilor pe produs"
 
-#, fuzzy
 msgctxt "model:sale.reporting.region.tree,name:"
 msgid "Sale Reporting per Region"
-msgstr "Raportarea vânzărilor pe regiune"
+msgstr "Raportare vânzări per regiune"
 
 msgctxt "model:sale.return_sale.start,name:"
 msgid "Return Sale"
@@ -1414,10 +1377,9 @@ msgctxt "report:sale.sale:"
 msgid "Date:"
 msgstr "Data:"
 
-#, fuzzy
 msgctxt "report:sale.sale:"
 msgid "Delivery Address:"
-msgstr "Adresa de facturare"
+msgstr "Adresa de livrare:"
 
 msgctxt "report:sale.sale:"
 msgid "Description"
@@ -1517,7 +1479,7 @@ msgstr "La expediere trimis"
 
 msgctxt "selection:sale.sale,invoice_state:"
 msgid "Awaiting Payment"
-msgstr ""
+msgstr "În așteptarea plății"
 
 msgctxt "selection:sale.sale,invoice_state:"
 msgid "Exception"
@@ -1533,11 +1495,11 @@ msgstr "Plătit"
 
 msgctxt "selection:sale.sale,invoice_state:"
 msgid "Partially Paid"
-msgstr ""
+msgstr "Plătit Parțial"
 
 msgctxt "selection:sale.sale,invoice_state:"
 msgid "Pending"
-msgstr ""
+msgstr "In derulare"
 
 msgctxt "selection:sale.sale,shipment_method:"
 msgid "Manual"
@@ -1561,7 +1523,7 @@ msgstr "Nici unul"
 
 msgctxt "selection:sale.sale,shipment_state:"
 msgid "Partially Shipped"
-msgstr ""
+msgstr "Livrat parțial"
 
 msgctxt "selection:sale.sale,shipment_state:"
 msgid "Sent"
@@ -1623,9 +1585,19 @@ msgctxt "view:sale.line:"
 msgid "General"
 msgstr "General"
 
+#, fuzzy
+msgctxt "view:sale.line:"
+msgid "Invoicing"
+msgstr "Factura fiscala"
+
 msgctxt "view:sale.line:"
 msgid "Notes"
 msgstr "Notițe"
+
+#, fuzzy
+msgctxt "view:sale.line:"
+msgid "Shipping"
+msgstr "Data de expediere"
 
 msgctxt "view:sale.line:"
 msgid "Taxes"

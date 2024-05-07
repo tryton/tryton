@@ -64,7 +64,8 @@ class Move(metaclass=PoolMeta):
 
     def get_product_location(self, **pattern):
         "Return the product location for the move"
-        if getattr(self, 'shipment', None):
+        if (getattr(self, 'shipment', None)
+                and getattr(self.shipment, 'warehouse', None)):
             pattern.setdefault('warehouse', self.shipment.warehouse.id)
         elif getattr(self, 'production', None):
             pattern.setdefault('warehouse', self.production.warehouse.id)

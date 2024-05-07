@@ -273,10 +273,27 @@ class TableHandler(TableHandlerInterface):
             raise Exception('Not null action not supported!')
 
     def add_constraint(self, ident, constraint):
-        warnings.warn('Unable to add constraint with SQLite backend')
+        transaction = Transaction()
+        database = transaction.database
+        cursor = transaction.connection.cursor()
+        ident = self.convert_name(self.table_name + "_" + ident)
+        if database.has_constraint(constraint):
+            where = ''
+            if hasattr(constraint, 'where'):
+                where = ' WHERE ' + str(constraint.where)
+            cursor.execute(
+                'CREATE UNIQUE INDEX IF NOT EXISTS %s ON %s (%s) %s' % (
+                    _escape_identifier(ident),
+                    _escape_identifier(self.table_name),
+                    ', '.join(map(str, constraint.columns)),
+                    where))
+        else:
+            warnings.warn('Unable to add constraint with SQLite backend')
 
     def drop_constraint(self, ident, table=None):
-        warnings.warn('Unable to drop constraint with SQLite backend')
+        cursor = Transaction().connection.cursor()
+        ident = self.convert_name(self.table_name + "_" + ident)
+        cursor.execute('DROP INDEX IF EXISTS %s' % _escape_identifier(ident))
 
     def set_indexes(self, indexes, concurrently=False):
         cursor = Transaction().connection.cursor()

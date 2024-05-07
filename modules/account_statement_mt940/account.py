@@ -88,7 +88,7 @@ class StatementImport(metaclass=PoolMeta):
         origin.date = transaction.date
         origin.amount = transaction.amount
         origin.party = self.mt940_party(mt940_statement, transaction)
-        origin.description = transaction.description
+        origin.description = ''.join(transaction.description.splitlines())
         origin.information = self.mt940_information(
             mt940_statement, transaction)
         return [origin]

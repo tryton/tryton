@@ -137,7 +137,7 @@ msgstr "Bestätigen"
 
 msgctxt "model:ir.rule.group,name:rule_group_sale_amendment_companies"
 msgid "User in companies"
-msgstr "Benutzer im Unternehmen"
+msgstr "Benutzer in Unternehmen"
 
 msgctxt "model:ir.ui.menu,name:menu_sale_amendment"
 msgid "Amendments"

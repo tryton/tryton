@@ -6,34 +6,30 @@ msgctxt "field:product.product,height:"
 msgid "Height"
 msgstr "Înălţime"
 
-#, fuzzy
 msgctxt "field:product.product,height_uom:"
 msgid "Height UoM"
-msgstr "Înălțime UM"
+msgstr "UM Înălțime"
 
 msgctxt "field:product.product,length:"
 msgid "Length"
 msgstr "Lungime"
 
-#, fuzzy
 msgctxt "field:product.product,length_uom:"
 msgid "Length UoM"
-msgstr "Lungime UM"
+msgstr "UM Lungime"
 
 msgctxt "field:product.product,volume:"
 msgid "Volume"
 msgstr "Volum"
 
-#, fuzzy
 msgctxt "field:product.product,volume_uom:"
 msgid "Volume UoM"
-msgstr "Volum UM"
+msgstr "UM Volum"
 
 msgctxt "field:product.product,weight:"
 msgid "Weight"
 msgstr "Greutate"
 
-#, fuzzy
 msgctxt "field:product.product,weight_uom:"
 msgid "Weight UoM"
 msgstr "UM Greutate"
@@ -42,16 +38,14 @@ msgctxt "field:product.product,width:"
 msgid "Width"
 msgstr "Lăţime"
 
-#, fuzzy
 msgctxt "field:product.product,width_uom:"
 msgid "Width UoM"
-msgstr "UM Latime"
+msgstr "UM Lățime"
 
 msgctxt "field:product.template,height:"
 msgid "Height"
 msgstr "Înălţime"
 
-#, fuzzy
 msgctxt "field:product.template,height_uom:"
 msgid "Height UoM"
 msgstr "UM Înălțime"
@@ -60,7 +54,6 @@ msgctxt "field:product.template,length:"
 msgid "Length"
 msgstr "Lungime"
 
-#, fuzzy
 msgctxt "field:product.template,length_uom:"
 msgid "Length UoM"
 msgstr "UM Lungime"
@@ -69,7 +62,6 @@ msgctxt "field:product.template,volume:"
 msgid "Volume"
 msgstr "Volum"
 
-#, fuzzy
 msgctxt "field:product.template,volume_uom:"
 msgid "Volume UoM"
 msgstr "UM Volum"
@@ -78,7 +70,6 @@ msgctxt "field:product.template,weight:"
 msgid "Weight"
 msgstr "Greutate"
 
-#, fuzzy
 msgctxt "field:product.template,weight_uom:"
 msgid "Weight UoM"
 msgstr "UM Greutate"
@@ -87,90 +78,89 @@ msgctxt "field:product.template,width:"
 msgid "Width"
 msgstr "Lăţime"
 
-#, fuzzy
 msgctxt "field:product.template,width_uom:"
 msgid "Width UoM"
-msgstr "UM Latime"
+msgstr "UM Lățime"
 
 msgctxt "help:product.product,height:"
 msgid "Height for 1 default unit of measure."
-msgstr ""
+msgstr "Înălțime pentru 1 unitate de măsură implicită."
 
 msgctxt "help:product.product,height_uom:"
 msgid "The Unit of Measure for the height."
-msgstr ""
+msgstr "Unitatea de măsură pentru înălțime."
 
 msgctxt "help:product.product,length:"
 msgid "Length for 1 default unit of measure."
-msgstr ""
+msgstr "Lungimea pentru 1 unitate de măsură implicită."
 
 msgctxt "help:product.product,length_uom:"
 msgid "The Unit of Measure for the length."
-msgstr ""
+msgstr "Unitatea de măsură pentru lungime."
 
 msgctxt "help:product.product,volume:"
 msgid "Volume for 1 default unit of measure."
-msgstr ""
+msgstr "Volumul pentru 1 unitate de măsură implicită."
 
 msgctxt "help:product.product,volume_uom:"
 msgid "The Unit of Measure for the volume."
-msgstr ""
+msgstr "Unitatea de măsură pentru volum."
 
 msgctxt "help:product.product,weight:"
 msgid "Weight for 1 default unit of measure."
-msgstr ""
+msgstr "Greutate pentru 1 unitate de măsură implicită."
 
 msgctxt "help:product.product,weight_uom:"
 msgid "The Unit of Measure for the weight."
-msgstr ""
+msgstr "Unitatea de măsură pentru greutate."
 
 msgctxt "help:product.product,width:"
 msgid "Width for 1 default unit of measure."
-msgstr ""
+msgstr "Lățimea pentru 1 unitate de măsură implicită."
 
 msgctxt "help:product.product,width_uom:"
 msgid "The Unit of Measure for the width."
-msgstr ""
+msgstr "Unitatea de măsură pentru lățime."
 
 msgctxt "help:product.template,height:"
 msgid "Height for 1 default unit of measure."
-msgstr ""
+msgstr "Înălțime pentru 1 unitate de măsură implicită."
 
 msgctxt "help:product.template,height_uom:"
 msgid "The Unit of Measure for the height."
-msgstr ""
+msgstr "Unitatea de măsură pentru înălțime."
 
 msgctxt "help:product.template,length:"
 msgid "Length for 1 default unit of measure."
-msgstr ""
+msgstr "Lungimea pentru 1 unitate de măsură implicită."
 
 msgctxt "help:product.template,length_uom:"
 msgid "The Unit of Measure for the length."
-msgstr ""
+msgstr "Unitatea de măsură pentru lungime."
 
 msgctxt "help:product.template,volume:"
 msgid "Volume for 1 default unit of measure."
-msgstr ""
+msgstr "Volumul pentru 1 unitate de măsură implicită."
 
 msgctxt "help:product.template,volume_uom:"
 msgid "The Unit of Measure for the volume."
-msgstr ""
+msgstr "Unitatea de măsură pentru volum."
 
 msgctxt "help:product.template,weight:"
 msgid "Weight for 1 default unit of measure."
-msgstr ""
+msgstr "Greutate pentru 1 unitate de măsură implicită."
 
 msgctxt "help:product.template,weight_uom:"
 msgid "The Unit of Measure for the weight."
-msgstr ""
+msgstr "Unitatea de măsură pentru greutate."
 
 msgctxt "help:product.template,width:"
 msgid "Width for 1 default unit of measure."
-msgstr ""
+msgstr "Lățimea pentru 1 unitate de măsură implicită."
 
 msgctxt "help:product.template,width_uom:"
 msgid "The Unit of Measure for the width."
-msgstr ""
+msgstr "Unitatea de măsură pentru lățime."
 
 msgctxt "view:product.template:"
 msgid "Measurements"
@@ -178,4 +168,4 @@ msgstr "Măsurători"
 
 msgctxt "view:product.template:"
 msgid "Measurements for 1 default UoM."
-msgstr ""
+msgstr "Măsurători pentru 1 UM implicită."

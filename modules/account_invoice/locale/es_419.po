@@ -971,6 +971,20 @@ msgctxt "model:ir.message,text:msg_invoice_credit_refund_not_posted"
 msgid "You cannot refund invoice \"%(invoice)s\" because it is not posted."
 msgstr ""
 
+msgctxt ""
+"model:ir.message,text:msg_invoice_currency_exchange_credit_account_missing"
+msgid ""
+"To post invoice \"%(invoice)s\", you must define a currency exchange credit "
+"account for \"%(company)s\"."
+msgstr ""
+
+msgctxt ""
+"model:ir.message,text:msg_invoice_currency_exchange_debit_account_missing"
+msgid ""
+"To post invoice \"%(invoice)s\", you must define a currency exchange debit "
+"account for \"%(company)s\"."
+msgstr ""
+
 #, fuzzy
 msgctxt "model:ir.message,text:msg_invoice_customer_cancel_move"
 msgid ""
@@ -982,6 +996,10 @@ msgstr ""
 
 msgctxt "model:ir.message,text:msg_invoice_date_future"
 msgid "The invoices \"%(invoices)s\" have an invoice date in the future."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_invoice_default_taxes"
+msgid "The invoice \"%(invoice)s\" does not have the default taxes for %(lines)s."
 msgstr ""
 
 msgctxt "model:ir.message,text:msg_invoice_delete_cancel"
@@ -1381,6 +1399,10 @@ msgstr ""
 
 msgctxt "view:account.invoice.line:"
 msgid "Notes"
+msgstr ""
+
+msgctxt "view:account.invoice.payment_term.line.delta:"
+msgid "Operations are applied in this displayed order."
 msgstr ""
 
 msgctxt "view:account.invoice.payment_term.line:"

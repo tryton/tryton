@@ -212,7 +212,7 @@ msgstr "Anzeigen"
 
 msgctxt "model:ir.rule.group,name:rule_group_landed_cost_companies"
 msgid "User in companies"
-msgstr "Benutzer im Unternehmen"
+msgstr "Benutzer in Unternehmen"
 
 msgctxt "model:ir.sequence,name:sequence_landed_cost"
 msgid "Landed Cost"

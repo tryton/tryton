@@ -18,9 +18,10 @@ msgctxt "field:account.statement,date:"
 msgid "Date"
 msgstr "Data"
 
+#, fuzzy
 msgctxt "field:account.statement,end_balance:"
 msgid "End Balance"
-msgstr ""
+msgstr "Balanță Finală"
 
 msgctxt "field:account.statement,journal:"
 msgid "Journal"
@@ -28,27 +29,27 @@ msgstr "Jurnal"
 
 msgctxt "field:account.statement,lines:"
 msgid "Lines"
-msgstr ""
+msgstr "Rânduri"
 
 msgctxt "field:account.statement,name:"
 msgid "Name"
-msgstr ""
+msgstr "Nume"
 
 msgctxt "field:account.statement,number_of_lines:"
 msgid "Number of Lines"
-msgstr ""
+msgstr "Numărul de rânduri"
 
 msgctxt "field:account.statement,origin_file:"
 msgid "Origin File"
-msgstr ""
+msgstr "Fișierul de origine"
 
 msgctxt "field:account.statement,origin_file_id:"
 msgid "Origin File ID"
-msgstr ""
+msgstr "ID-ul fișierului de origine"
 
 msgctxt "field:account.statement,origins:"
 msgid "Origins"
-msgstr ""
+msgstr "Origini"
 
 msgctxt "field:account.statement,start_balance:"
 msgid "Start Balance"
@@ -56,19 +57,20 @@ msgstr "Sold Initial"
 
 msgctxt "field:account.statement,state:"
 msgid "State"
-msgstr ""
+msgstr "Stare"
 
+#, fuzzy
 msgctxt "field:account.statement,to_reconcile:"
 msgid "To Reconcile"
-msgstr ""
+msgstr "De Reconciliat"
 
 msgctxt "field:account.statement,total_amount:"
 msgid "Total Amount"
-msgstr ""
+msgstr "Suma Totală"
 
 msgctxt "field:account.statement,validation:"
 msgid "Validation"
-msgstr ""
+msgstr "Validare"
 
 msgctxt "field:account.statement.import.start,company:"
 msgid "Company"
@@ -76,11 +78,11 @@ msgstr "Companie"
 
 msgctxt "field:account.statement.import.start,file_:"
 msgid "File"
-msgstr ""
+msgstr "Fişier"
 
 msgctxt "field:account.statement.import.start,file_format:"
 msgid "File Format"
-msgstr ""
+msgstr "Format Fişier"
 
 msgctxt "field:account.statement.journal,account:"
 msgid "Account"
@@ -88,7 +90,7 @@ msgstr "Cont"
 
 msgctxt "field:account.statement.journal,bank_account:"
 msgid "Bank Account"
-msgstr ""
+msgstr "Cont Bancar"
 
 msgctxt "field:account.statement.journal,company:"
 msgid "Company"
@@ -108,11 +110,11 @@ msgstr "Jurnal"
 
 msgctxt "field:account.statement.journal,name:"
 msgid "Name"
-msgstr ""
+msgstr "Nume"
 
 msgctxt "field:account.statement.journal,validation:"
 msgid "Validation Type"
-msgstr ""
+msgstr "Tip de validare"
 
 msgctxt "field:account.statement.line,account:"
 msgid "Account"
@@ -122,9 +124,18 @@ msgctxt "field:account.statement.line,amount:"
 msgid "Amount"
 msgstr "Suma"
 
+msgctxt "field:account.statement.line,amount_second_currency:"
+msgid "Amount Second Currency"
+msgstr ""
+
 msgctxt "field:account.statement.line,company:"
 msgid "Company"
 msgstr "Companie"
+
+#, fuzzy
+msgctxt "field:account.statement.line,company_currency:"
+msgid "Company Currency"
+msgstr "Valută"
 
 msgctxt "field:account.statement.line,currency:"
 msgid "Currency"
@@ -140,11 +151,11 @@ msgstr "Descriere"
 
 msgctxt "field:account.statement.line,move:"
 msgid "Account Move"
-msgstr ""
+msgstr "Mişcare Cont"
 
 msgctxt "field:account.statement.line,number:"
 msgid "Number"
-msgstr ""
+msgstr "Număr"
 
 msgctxt "field:account.statement.line,origin:"
 msgid "Origin"
@@ -162,9 +173,15 @@ msgctxt "field:account.statement.line,related_to:"
 msgid "Related To"
 msgstr ""
 
+#, fuzzy
+msgctxt "field:account.statement.line,second_currency:"
+msgid "Second Currency"
+msgstr "Valută"
+
+#, fuzzy
 msgctxt "field:account.statement.line,statement:"
 msgid "Statement"
-msgstr ""
+msgstr "Extras de cont"
 
 msgctxt "field:account.statement.line,statement_state:"
 msgid "Statement State"
@@ -173,6 +190,10 @@ msgstr ""
 msgctxt "field:account.statement.line.group,amount:"
 msgid "Amount"
 msgstr "Suma"
+
+msgctxt "field:account.statement.line.group,amount_second_currency:"
+msgid "Amount Second Currency"
+msgstr ""
 
 msgctxt "field:account.statement.line.group,currency:"
 msgid "Currency"
@@ -188,15 +209,20 @@ msgstr "Jurnal"
 
 msgctxt "field:account.statement.line.group,move:"
 msgid "Move"
-msgstr ""
+msgstr "Miscare"
 
 msgctxt "field:account.statement.line.group,number:"
 msgid "Number"
-msgstr ""
+msgstr "Număr"
 
 msgctxt "field:account.statement.line.group,party:"
 msgid "Party"
 msgstr "Parte"
+
+#, fuzzy
+msgctxt "field:account.statement.line.group,second_currency:"
+msgid "Second Currency"
+msgstr "Valută"
 
 msgctxt "field:account.statement.line.group,statement:"
 msgid "Statement"
@@ -210,9 +236,18 @@ msgctxt "field:account.statement.origin,amount:"
 msgid "Amount"
 msgstr "Suma"
 
+msgctxt "field:account.statement.origin,amount_second_currency:"
+msgid "Amount Second Currency"
+msgstr ""
+
 msgctxt "field:account.statement.origin,company:"
 msgid "Company"
 msgstr "Companie"
+
+#, fuzzy
+msgctxt "field:account.statement.origin,company_currency:"
+msgid "Company Currency"
+msgstr "Valută"
 
 msgctxt "field:account.statement.origin,currency:"
 msgid "Currency"
@@ -232,11 +267,11 @@ msgstr "Informație"
 
 msgctxt "field:account.statement.origin,lines:"
 msgid "Lines"
-msgstr ""
+msgstr "Rânduri"
 
 msgctxt "field:account.statement.origin,number:"
 msgid "Number"
-msgstr ""
+msgstr "Număr"
 
 msgctxt "field:account.statement.origin,party:"
 msgid "Party"
@@ -245,6 +280,11 @@ msgstr "Parte"
 msgctxt "field:account.statement.origin,pending_amount:"
 msgid "Pending Amount"
 msgstr ""
+
+#, fuzzy
+msgctxt "field:account.statement.origin,second_currency:"
+msgid "Second Currency"
+msgstr "Valută"
 
 msgctxt "field:account.statement.origin,statement:"
 msgid "Statement"
@@ -330,7 +370,7 @@ msgstr ""
 
 msgctxt "model:ir.action,name:act_statement_origin_form_statement"
 msgid "Origins"
-msgstr ""
+msgstr "Origini"
 
 msgctxt "model:ir.action,name:report_statement"
 msgid "Statement"
@@ -340,14 +380,15 @@ msgctxt "model:ir.action,name:wizard_statement_import"
 msgid "Import Statement"
 msgstr ""
 
+#, fuzzy
 msgctxt "model:ir.action.act_window.domain,name:act_statement_form_domain_all"
 msgid "All"
-msgstr ""
+msgstr "Tot"
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_statement_form_domain_draft"
 msgid "Draft"
-msgstr ""
+msgstr "Ciornă"
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_statement_form_domain_posted"
@@ -357,22 +398,24 @@ msgstr ""
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_statement_form_domain_validated"
 msgid "Validated"
+msgstr "Validat"
+
+msgctxt "model:ir.message,text:msg_bank_account_currency"
+msgid ""
+"The currency of bank account \"%(bank_account)s\" must be the same as "
+"\"%(currency)s\" of the journal \"%(journal)s\"."
 msgstr ""
 
 msgctxt "model:ir.message,text:msg_import_no_journal"
 msgid ""
 "To import statement, you must create a journal for account \"%(account)s\"."
 msgstr ""
-
-msgctxt "model:ir.message,text:msg_import_wrong_currency"
-msgid ""
-"To import statement, the journal \"%(journal)s\" must have the currency "
-"\"%(currency)s\" instead of \"%(journal_currency)s\"."
-msgstr ""
+"Pentru a importa extrasul, trebuie să creați un jurnal pentru contul "
+"\"%(account)s\"."
 
 msgctxt "model:ir.message,text:msg_journal_bank_account_unique"
 msgid "Only one journal is allowed per bank account."
-msgstr ""
+msgstr "Este permis un singur jurnal pentru fiecare cont bancar."
 
 msgctxt "model:ir.message,text:msg_post_statement_move"
 msgid "To post the move \"%(move)s\" you must post the statement \"%(statement)s\"."
@@ -386,6 +429,22 @@ msgctxt "model:ir.message,text:msg_statement_invoice_paid_cancelled"
 msgid ""
 "The validation of the statements will remove already paid or cancelled "
 "invoices from the statements' lines."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_statement_line_delete_cancel_draft"
+msgid ""
+"To delete line \"%(line)s\" you must cancel or reset to draft statement "
+"\"%(statement)s\"."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_statement_line_second_currency_sign"
+msgid "You must set the same sign for second currency than amount."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_statement_origin_delete_cancel_draft"
+msgid ""
+"To delete origin \"%(origin)s\" you must cancel or reset to draft statement "
+"\"%(statement)s\"."
 msgstr ""
 
 msgctxt "model:ir.message,text:msg_statement_paid_invoice_draft"
@@ -410,15 +469,21 @@ msgctxt "model:ir.message,text:msg_statement_wrong_number_of_lines_add"
 msgid "To validate statement \"%(statement)s\" you must add %(n)s line(s)."
 msgstr ""
 
+#, fuzzy
 msgctxt "model:ir.message,text:msg_statement_wrong_number_of_lines_remove"
 msgid "To validate statement \"%(statement)s\" you must remove %(n)s line(s)."
 msgstr ""
+"Pentru a valida extrasul \"%(statement)s\" trebuie să eliminați rândurile "
+"%(n)s."
 
+#, fuzzy
 msgctxt "model:ir.message,text:msg_statement_wrong_total_amount"
 msgid ""
 "To validate statement \"%(statement)s\" you must change lines to have total "
 "amount of %(total_amount)s instead of %(amount)s."
 msgstr ""
+"Pentru a valida extrasul \"%(statement)s\" trebuie să modificați rândurile "
+"pentru a avea o cantitate totală de %(total_amount)s în loc de %(amount)s."
 
 msgctxt "model:ir.model.button,confirm:statement_post_button"
 msgid "Are you sure you want to post the statement?"
@@ -426,11 +491,11 @@ msgstr ""
 
 msgctxt "model:ir.model.button,string:statement_cancel_button"
 msgid "Cancel"
-msgstr ""
+msgstr "Anulare"
 
 msgctxt "model:ir.model.button,string:statement_draft_button"
 msgid "Draft"
-msgstr ""
+msgstr "Ciornă"
 
 msgctxt "model:ir.model.button,string:statement_post_button"
 msgid "Post"
@@ -438,23 +503,23 @@ msgstr ""
 
 msgctxt "model:ir.model.button,string:statement_reconcile_button"
 msgid "Reconcile"
-msgstr ""
+msgstr "Reconciliere"
 
 msgctxt "model:ir.model.button,string:statement_validate_button"
 msgid "Validate"
-msgstr ""
+msgstr "Validare"
 
 msgctxt "model:ir.rule.group,name:rule_group_statement_companies"
 msgid "User in companies"
-msgstr ""
+msgstr "Utilizator în Companii"
 
 msgctxt "model:ir.rule.group,name:rule_group_statement_journal_companies"
 msgid "User in companies"
-msgstr ""
+msgstr "Utilizator în Companii"
 
 msgctxt "model:ir.ui.menu,name:menu_line_group_form"
 msgid "Line Groups"
-msgstr ""
+msgstr "Grupuri de rânduri"
 
 msgctxt "model:ir.ui.menu,name:menu_statement_configuration"
 msgid "Statements"
@@ -483,7 +548,7 @@ msgstr ""
 
 msgctxt "report:account.statement:"
 msgid "#"
-msgstr ""
+msgstr "#"
 
 msgctxt "report:account.statement:"
 msgid "Amount"
@@ -491,7 +556,7 @@ msgstr "Suma"
 
 msgctxt "report:account.statement:"
 msgid "Cancelled"
-msgstr ""
+msgstr "Anulat"
 
 msgctxt "report:account.statement:"
 msgid "Date"
@@ -507,15 +572,15 @@ msgstr "Descriere"
 
 msgctxt "report:account.statement:"
 msgid "Draft"
-msgstr ""
+msgstr "Ciornă"
 
 msgctxt "report:account.statement:"
 msgid "Journal:"
-msgstr ""
+msgstr "Jurnal:"
 
 msgctxt "report:account.statement:"
 msgid "Number"
-msgstr ""
+msgstr "Număr"
 
 msgctxt "report:account.statement:"
 msgid "Party"
@@ -527,7 +592,7 @@ msgstr "Extras de cont"
 
 msgctxt "report:account.statement:"
 msgid "Total"
-msgstr ""
+msgstr "Total"
 
 msgctxt "selection:account.journal,type:"
 msgid "Statement"
@@ -535,11 +600,11 @@ msgstr ""
 
 msgctxt "selection:account.statement,state:"
 msgid "Cancelled"
-msgstr ""
+msgstr "Anulat"
 
 msgctxt "selection:account.statement,state:"
 msgid "Draft"
-msgstr ""
+msgstr "Ciornă"
 
 msgctxt "selection:account.statement,state:"
 msgid "Posted"
@@ -547,7 +612,7 @@ msgstr ""
 
 msgctxt "selection:account.statement,state:"
 msgid "Validated"
-msgstr ""
+msgstr "Validat"
 
 msgctxt "selection:account.statement.journal,validation:"
 msgid "Amount"
@@ -559,11 +624,11 @@ msgstr "Sold"
 
 msgctxt "selection:account.statement.journal,validation:"
 msgid "Number of Lines"
-msgstr ""
+msgstr "Numărul de rânduri"
 
 msgctxt "view:account.statement:"
 msgid "Other Info"
-msgstr ""
+msgstr "Alte Informaţii"
 
 msgctxt "view:account.statement:"
 msgid "Statement Lines"
@@ -571,7 +636,7 @@ msgstr ""
 
 msgctxt "wizard_button:account.statement.import,start,end:"
 msgid "Cancel"
-msgstr ""
+msgstr "Anulare"
 
 msgctxt "wizard_button:account.statement.import,start,import_:"
 msgid "Import"

@@ -205,6 +205,13 @@ this repository contains the full copyright notices and license terms. -->
             <field name="count" eval="True"/>
             <field name="act_window" ref="act_shipment_out_form"/>
         </record>
+        <record model="ir.action.act_window.domain" id="act_shipment_out_form_domain_shipped">
+            <field name="name">Shipped</field>
+            <field name="sequence" eval="70"/>
+            <field name="domain" eval="[('state', '=', 'shipped')]" pyson="1"/>
+            <field name="count" eval="True"/>
+            <field name="act_window" ref="act_shipment_out_form"/>
+        </record>
         <record model="ir.action.act_window.domain" id="act_shipment_out_form_domain_all">
             <field name="name">All</field>
             <field name="sequence" eval="9999"/>
@@ -626,6 +633,13 @@ this repository contains the full copyright notices and license terms. -->
             <field name="model">stock.shipment.out</field>
             <field name="name">pack</field>
             <field name="string">Pack</field>
+        </record>
+
+        <record model="ir.model.button" id="shipment_out_ship_button">
+            <field name="model">stock.shipment.out</field>
+            <field name="name">ship</field>
+            <field name="string">Ship</field>
+            <field name="confirm">Are you sure you want to ship the shipment?</field>
         </record>
 
         <record model="ir.model.button" id="shipment_out_done_button">

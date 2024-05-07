@@ -31,6 +31,10 @@ msgid "disable thread usage"
 msgstr "schakel gebruik van threads uit"
 
 #, python-format
+msgid "Invalid response id (%s) expected %s"
+msgstr "Ongeldige reactie id (%s) verwacht werd %s"
+
+#, python-format
 msgid "Unable to set locale %s"
 msgstr "Kan omgeving %s niet instellen"
 
@@ -80,8 +84,8 @@ msgstr "Nee"
 msgid "Yes"
 msgstr "Ja"
 
-msgid "Concurrency Exception"
-msgstr "Simultaan gebruik error"
+msgid "Concurrency Warning"
+msgstr "Simultaan gebruik waarschuwing"
 
 msgid "This record has been modified while you were editing it."
 msgstr "Dit record werd gewijzigd terwijl u het aan het bewerken was."
@@ -111,6 +115,9 @@ msgstr "Sluiten"
 msgid "Application Error"
 msgstr "Applicatiefout"
 
+msgid "Details"
+msgstr "Details"
+
 msgid "Report Bug"
 msgstr "Programmafout melden"
 
@@ -127,17 +134,34 @@ msgstr "Er is een nieuwe versie beschikbaar!"
 msgid "Download"
 msgstr "Download"
 
+msgid "Concurrency Exception"
+msgstr "Simultaan gebruik error"
+
 msgid "Could not get a session."
 msgstr "Kan geen sessie krijgen."
+
+#, python-format
+msgid "Error: \"%s\". Try again later."
+msgstr "Error: \"%s\". Probeer het later nog eens."
 
 msgid "Too many requests. Try again later."
 msgstr "Te veel verzoeken. Probeer het later nog eens."
 
-msgid "Not found."
-msgstr "Niet gevonden."
-
 msgid "Not Found."
 msgstr "Niet gevonden."
+
+msgid "Reset forgotten password"
+msgstr "Reset vergeten wachtwoord"
+
+msgid "Send you an email to reset your password."
+msgstr "Stuurt u een email om het wachtwoord te resetten."
+
+msgid ""
+"A request to reset your password has been sent.\n"
+"Please check your mailbox."
+msgstr ""
+"Een verzoek om uw wachtwoord te resetten is verstuurd.\n"
+"Controller uw mailbox."
 
 msgid "..."
 msgstr "..."
@@ -711,6 +735,12 @@ msgstr "Model:"
 msgid "ID:"
 msgstr "ID:"
 
+msgid "Module:"
+msgstr "Module:"
+
+msgid "XML ID:"
+msgstr "XML id:"
+
 msgid "Created by:"
 msgstr "Aangemaakt door:"
 
@@ -1084,8 +1114,17 @@ msgstr "Afbeelding te groot."
 msgid "Copy"
 msgstr "Kopieer"
 
-msgid "Paste"
-msgstr "Plakken"
+msgid "Copy Row"
+msgstr "Kopieer regel"
+
+msgid "Copy Rows"
+msgstr "Kopieer regels"
+
+msgid "Copy Column"
+msgstr "Kopieer kolom"
+
+msgid "Paste Rows"
+msgstr "Plak regels"
 
 msgid ".."
 msgstr ".."

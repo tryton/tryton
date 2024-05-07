@@ -4,12 +4,11 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "field:project.work,cost:"
 msgid "Cost"
-msgstr ""
+msgstr "Cost"
 
-#, fuzzy
 msgctxt "field:project.work,currency:"
 msgid "Currency"
-msgstr "Zecimale valută"
+msgstr "Monedă"
 
 msgctxt "field:project.work,list_price:"
 msgid "List Price"
@@ -21,24 +20,27 @@ msgstr "Produs"
 
 msgctxt "field:project.work,purchase_lines:"
 msgid "Purchase Lines"
-msgstr ""
+msgstr "Rânduri de Achiziție"
 
+#, fuzzy
 msgctxt "field:project.work,revenue:"
 msgid "Revenue"
-msgstr ""
+msgstr "Venit"
 
+#, fuzzy
 msgctxt "field:purchase.line,work:"
 msgid "Work Effort"
-msgstr ""
+msgstr "Efort de muncă"
 
+#, fuzzy
 msgctxt "help:purchase.line,work:"
 msgid "Add to the cost of the work effort."
-msgstr ""
+msgstr "Adaugă la costul efortului de muncă."
 
 msgctxt "view:project.work:"
 msgid "Purchases"
-msgstr ""
+msgstr "Achiziții"
 
 msgctxt "view:purchase.line:"
 msgid "Project"
-msgstr ""
+msgstr "Proiect"

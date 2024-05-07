@@ -23,8 +23,7 @@ from tryton.common import RPCContextReload, RPCException, RPCExecute
 from tryton.common.cellrendererclickablepixbuf import (
     CellRendererClickablePixbuf)
 from tryton.config import CONFIG, TRYTON_ICON, get_config_dir
-from tryton.exceptions import (
-    TrytonError, TrytonServerError, TrytonServerUnavailable)
+from tryton.exceptions import TrytonError, TrytonServerUnavailable
 from tryton.gui.window import Window
 from tryton.jsonrpc import object_hook
 from tryton.pyson import PYSONDecoder
@@ -376,7 +375,7 @@ class Main(Gtk.Application):
             def set_result(result):
                 try:
                     result = result()
-                except (RPCException, TrytonServerError):
+                except RPCException:
                     result = []
                 if search_text != widget.get_text():
                     if callback:
@@ -472,7 +471,7 @@ class Main(Gtk.Application):
             favorites = RPCExecute('model',
                 self.menu_screen.model_name + '.favorite', 'get',
                 process_exception=False)
-        except Exception:
+        except RPCException:
             return False
         for id_, name, icon in favorites:
             menuitem = Gtk.MenuItem(label=name)

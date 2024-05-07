@@ -110,8 +110,8 @@ msgstr "Raccourcis d'onglet"
 msgid "Unable to reach the server."
 msgstr "Impossible de joindre le serveur."
 
-msgid "Too many requests. Try again later."
-msgstr "Trop de demandes. Réessayez plus tard."
+msgid "Error: \"%1\". Try again later."
+msgstr "Erreur : « %1 ». Réessayez plus tard."
 
 msgid "Login"
 msgstr "Connexion"
@@ -125,8 +125,21 @@ msgstr "Nom d'utilisateur"
 msgid "Login with"
 msgstr "Connexion avec"
 
+msgid "Too many requests. Try again later."
+msgstr "Trop de demandes. Réessayez plus tard."
+
 msgid "Not found."
 msgstr "Pas trouvé."
+
+msgid "Send you an email to reset your password."
+msgstr "Envoyez-vous un email pour réinitialiser votre mot de passe."
+
+msgid ""
+"A request to reset your password has been sent.\n"
+"Please check your mailbox."
+msgstr ""
+"Une demande de réinitialisation de votre mot de passe a été envoyée.\n"
+"Veuillez vérifier votre boîte aux lettres."
 
 msgid "Your selection:"
 msgstr "Votre sélection :"
@@ -179,12 +192,6 @@ msgstr "v"
 msgid "False"
 msgstr "Faux"
 
-msgid "Message: "
-msgstr "Message : "
-
-msgid "Warning: "
-msgstr "Avertissement : "
-
 msgid "Always ignore this warning."
 msgstr "Toujours ignorer cet avertissement."
 
@@ -194,14 +201,8 @@ msgstr "Souhaitez-vous continuer ?"
 msgid "No"
 msgstr "Non"
 
-msgid "Confirmation: "
-msgstr "Confirmation : "
-
-msgid "Concurrency Exception"
-msgstr "Erreur d'accès concurrent"
-
-msgid "Write Concurrency Warning: "
-msgstr "Attention, accès en écriture concurrents : "
+msgid "Concurrency Warning"
+msgstr "Avertissement de concurrence"
 
 msgid "This record has been modified while you were editing it."
 msgstr ""
@@ -231,6 +232,9 @@ msgstr "Écraser"
 
 msgid "Application Error"
 msgstr "Erreur applicative"
+
+msgid "Details"
+msgstr "Détails"
 
 msgid "Report Bug"
 msgstr "Rapporter un bogue"
@@ -520,8 +524,8 @@ msgstr "%1%"
 msgid "Menu"
 msgstr "Menu"
 
-msgid "Copy"
-msgstr "Copier"
+msgid "Copy Selected Rows"
+msgstr "Copier les lignes sélectionnées"
 
 msgid "#ERROR"
 msgstr "#ERREUR"
@@ -582,6 +586,12 @@ msgstr "Modèle :"
 
 msgid "ID:"
 msgstr "ID :"
+
+msgid "Module:"
+msgstr "Module :"
+
+msgid "XML ID:"
+msgstr "XML ID :"
 
 msgid "Created by:"
 msgstr "Crée par :"

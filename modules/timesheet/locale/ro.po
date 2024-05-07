@@ -172,47 +172,48 @@ msgstr "Utilizaţi pentru a lega timpul folosit de alte înregistrări."
 
 msgctxt "help:timesheet.work,timesheet_end_date:"
 msgid "Restrict adding lines after the date."
-msgstr ""
+msgstr "Restricționați adăugarea de rânduri după dată."
 
+#, fuzzy
 msgctxt "help:timesheet.work,timesheet_lines:"
 msgid "Spend time on this work."
-msgstr ""
+msgstr "Petrece timp pe această lucrare."
 
 msgctxt "help:timesheet.work,timesheet_start_date:"
 msgid "Restrict adding lines before the date."
-msgstr ""
+msgstr "Restricționați adăugarea de rânduri înainte de dată."
 
 msgctxt "help:timesheet.work.context,from_date:"
 msgid "Do not take into account lines before the date."
-msgstr ""
+msgstr "Nu luați în considerare rândurile dinainte de dată."
 
 msgctxt "help:timesheet.work.context,to_date:"
 msgid "Do not take into account lines after the date."
-msgstr ""
+msgstr "Nu luați în considerare rândurile de după dată."
 
 msgctxt "model:ir.action,name:act_hours_employee_form"
 msgid "Hours per Employee"
-msgstr ""
+msgstr "Ore per Angajat"
 
 msgctxt "model:ir.action,name:act_hours_employee_monthly_form"
 msgid "Hours per Employee per Month"
-msgstr ""
+msgstr "Ore per Angajat per Luna"
 
 msgctxt "model:ir.action,name:act_hours_employee_weekly_form"
 msgid "Hours per Employee per Week"
-msgstr ""
+msgstr "Ore per Angajat per Saptamana"
 
 msgctxt "model:ir.action,name:act_line_enter"
 msgid "Enter Timesheet"
-msgstr ""
+msgstr "Introduceți Foaia de pontaj"
 
 msgctxt "model:ir.action,name:act_line_form"
 msgid "Lines"
-msgstr ""
+msgstr "Rânduri"
 
 msgctxt "model:ir.action,name:act_line_form_work"
 msgid "Timesheet Lines"
-msgstr ""
+msgstr "Rânduri Foaie Pontaj"
 
 msgctxt "model:ir.action,name:act_work_list"
 msgid "Works"
@@ -236,69 +237,80 @@ msgstr ""
 
 msgctxt "model:ir.message,text:msg_line_uuid_unique"
 msgid "The UUID of timesheet line must be unique."
-msgstr ""
+msgstr "UUID-ul rândului foii de pontaj trebuie să fie unic."
 
 msgctxt "model:ir.message,text:msg_work_company_different_origin"
 msgid "The companies associated with work \"%(work)s\" and its origin differ."
 msgstr ""
 
+#, fuzzy
 msgctxt "model:ir.message,text:msg_work_origin_unique_company"
 msgid "Work origin must be unique by company."
-msgstr ""
+msgstr "Originea muncii trebuie să fie unică pentru companie."
 
+#, fuzzy
 msgctxt "model:ir.rule.group,name:rule_group_hours_employee_admin"
 msgid "Any employee hours"
-msgstr ""
+msgstr "Orice program de angajat"
 
+#, fuzzy
 msgctxt "model:ir.rule.group,name:rule_group_hours_employee_monthly"
 msgid "Own hours"
-msgstr ""
+msgstr "Programul propriu"
 
+#, fuzzy
 msgctxt "model:ir.rule.group,name:rule_group_hours_employee_monthly_admin"
 msgid "Any employee hours"
-msgstr ""
+msgstr "Orice program de angajat"
 
+#, fuzzy
 msgctxt "model:ir.rule.group,name:rule_group_hours_employee_weekly"
 msgid "Own hours"
-msgstr ""
+msgstr "Programul propriu"
 
+#, fuzzy
 msgctxt "model:ir.rule.group,name:rule_group_hours_employee_weekly_admin"
 msgid "Any employee hours"
-msgstr ""
+msgstr "Orice program de angajat"
 
+#, fuzzy
 msgctxt "model:ir.rule.group,name:rule_group_hours_employees"
 msgid "Own hours"
-msgstr ""
+msgstr "Programul propriu"
 
+#, fuzzy
 msgctxt "model:ir.rule.group,name:rule_group_hours_supervised_employees"
 msgid "Supervised employee's hours"
-msgstr ""
+msgstr "Programul de lucru al angajatului supravegheat"
 
+#, fuzzy
 msgctxt ""
 "model:ir.rule.group,name:rule_group_hours_supervised_employees_monthly"
 msgid "Supervised employee's hours"
-msgstr ""
+msgstr "Programul de lucru al angajatului supravegheat"
 
+#, fuzzy
 msgctxt ""
 "model:ir.rule.group,name:rule_group_hours_supervised_employees_weekly"
 msgid "Supervised employee's hours"
-msgstr ""
+msgstr "Programul de lucru al angajatului supravegheat"
 
 msgctxt "model:ir.rule.group,name:rule_group_line"
 msgid "Own timesheet line"
 msgstr ""
 
+#, fuzzy
 msgctxt "model:ir.rule.group,name:rule_group_line_admin"
 msgid "Any timesheet line"
-msgstr ""
+msgstr "Orice rând de foaie de pontaj"
 
 msgctxt "model:ir.rule.group,name:rule_group_line_companies"
 msgid "User in companies"
-msgstr ""
+msgstr "Utilizator în companii"
 
 msgctxt "model:ir.rule.group,name:rule_group_work_companies"
 msgid "User in companies"
-msgstr ""
+msgstr "Utilizator în companii"
 
 msgctxt "model:ir.ui.menu,name:menu_configuration"
 msgid "Configuration"
@@ -306,23 +318,23 @@ msgstr "Configurare"
 
 msgctxt "model:ir.ui.menu,name:menu_hours_employee"
 msgid "Hours per Employee"
-msgstr ""
+msgstr "Ore per Angajat"
 
 msgctxt "model:ir.ui.menu,name:menu_hours_employee_open_monthly"
 msgid "Hours per Employee per Month"
-msgstr ""
+msgstr "Ore per Angajat per Luna"
 
 msgctxt "model:ir.ui.menu,name:menu_hours_employee_open_weekly"
 msgid "Hours per Employee per Week"
-msgstr ""
+msgstr "Ore per Angajat per Saptamana"
 
 msgctxt "model:ir.ui.menu,name:menu_line_enter"
 msgid "Enter Timesheet"
-msgstr ""
+msgstr "Introduceți Foaia de pontaj"
 
 msgctxt "model:ir.ui.menu,name:menu_line_form"
 msgid "Lines"
-msgstr ""
+msgstr "Rânduri"
 
 msgctxt "model:ir.ui.menu,name:menu_reporting"
 msgid "Reporting"
@@ -330,15 +342,17 @@ msgstr "Raportare"
 
 msgctxt "model:ir.ui.menu,name:menu_timesheet"
 msgid "Timesheet"
-msgstr ""
+msgstr "Foaia de pontaj"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_work_list"
 msgid "Works"
-msgstr ""
+msgstr "Lucrări"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_work_report"
 msgid "Works"
-msgstr ""
+msgstr "Lucrări"
 
 msgctxt "model:res.group,name:group_timesheet_admin"
 msgid "Timesheet Administration"
@@ -346,7 +360,7 @@ msgstr ""
 
 msgctxt "model:timesheet.hours_employee,name:"
 msgid "Hours per Employee"
-msgstr ""
+msgstr "Ore per Angajat"
 
 msgctxt "model:timesheet.hours_employee.context,name:"
 msgid "Hours per Employee Context"
@@ -354,19 +368,19 @@ msgstr ""
 
 msgctxt "model:timesheet.hours_employee_monthly,name:"
 msgid "Hours per Employee per Month"
-msgstr ""
+msgstr "Ore per Angajat per Luna"
 
 msgctxt "model:timesheet.hours_employee_weekly,name:"
 msgid "Hours per Employee per Week"
-msgstr ""
+msgstr "Ore per Angajat per Saptamana"
 
 msgctxt "model:timesheet.line,name:"
 msgid "Timesheet Line"
-msgstr ""
+msgstr "Rând Foaie Pontaj"
 
 msgctxt "model:timesheet.line.enter.start,name:"
 msgid "Enter Lines"
-msgstr ""
+msgstr "Introduceți rânduri"
 
 msgctxt "model:timesheet.work,name:"
 msgid "Work"
@@ -378,12 +392,12 @@ msgstr ""
 
 msgctxt "selection:res.user.application,application:"
 msgid "Timesheet"
-msgstr ""
+msgstr "Foaie de pontaj"
 
 msgctxt "wizard_button:timesheet.line.enter,start,end:"
 msgid "Cancel"
-msgstr ""
+msgstr "Anulare"
 
 msgctxt "wizard_button:timesheet.line.enter,start,enter:"
 msgid "Enter"
-msgstr ""
+msgstr "Introducere"

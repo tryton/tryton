@@ -196,6 +196,11 @@ msgctxt "field:purchase.line,invoice_lines:"
 msgid "Invoice Lines"
 msgstr "Sąskaitos faktūros eilutės"
 
+#, fuzzy
+msgctxt "field:purchase.line,invoice_progress:"
+msgid "Invoice Progress"
+msgstr "Juridinis adresas"
+
 msgctxt "field:purchase.line,moves:"
 msgid "Moves"
 msgstr "Operacijos"
@@ -858,8 +863,8 @@ msgstr ""
 
 msgctxt "model:ir.message,text:msg_change_purchase_uom"
 msgid ""
-"You are trying to change the purchase unit of measurer on which the purchase"
-" prices are based."
+"You are trying to change the purchase unit of measure on which the purchase "
+"prices are based."
 msgstr ""
 
 msgctxt "model:ir.message,text:msg_erase_party_pending_purchase"
@@ -1432,9 +1437,18 @@ msgctxt "view:purchase.line:"
 msgid "General"
 msgstr "Pagrindinis"
 
+#, fuzzy
+msgctxt "view:purchase.line:"
+msgid "Invoicing"
+msgstr "Sąskaita faktūra"
+
 msgctxt "view:purchase.line:"
 msgid "Notes"
 msgstr "Pastabos"
+
+msgctxt "view:purchase.line:"
+msgid "Shipping"
+msgstr ""
 
 msgctxt "view:purchase.line:"
 msgid "Taxes"

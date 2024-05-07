@@ -166,29 +166,33 @@ msgctxt "model:ir.action,name:act_budget_form"
 msgid "Analytic Budgets"
 msgstr ""
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_budget_line_form"
 msgid "Budget Lines"
-msgstr ""
+msgstr "Randuri de Buget"
 
 msgctxt "model:ir.action,name:act_budget_report"
 msgid "Analytic Budgets"
 msgstr ""
 
+#, fuzzy
 msgctxt "model:ir.action,name:wizard_budget_copy"
 msgid "Copy Budget"
-msgstr ""
+msgstr "Copiere Buget"
 
 msgctxt "model:ir.model.button,string:budget_copy_button"
 msgid "Copy"
-msgstr ""
+msgstr "Copiere"
 
+#, fuzzy
 msgctxt "model:ir.model.button,string:budget_update_lines_button"
 msgid "Update Lines"
-msgstr ""
+msgstr "Actualizare Randuri"
 
+#, fuzzy
 msgctxt "model:ir.rule.group,name:rule_group_budget_companies"
 msgid "User in companies"
-msgstr ""
+msgstr "Utilizator in companii"
 
 msgctxt "model:ir.ui.menu,name:menu_budget_form"
 msgid "Analytic Budgets"

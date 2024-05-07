@@ -148,6 +148,16 @@ class Shop(DeactivableMixin, ModelSQL, ModelView):
         return shop
 
     @classmethod
+    def copy(cls, shops, default=None):
+        default = default.copy() if default is not None else {}
+        default.setdefault('warehouses')
+        default.setdefault('products')
+        default.setdefault('products_removed')
+        default.setdefault('categories')
+        default.setdefault('categories_removed')
+        return super().copy(shops, default=default)
+
+    @classmethod
     def write(cls, *args):
         cls._name_cache.clear()
         super().write(*args)
@@ -217,8 +227,8 @@ class Shop(DeactivableMixin, ModelSQL, ModelView):
             with Transaction().set_context(**self.get_context()):
                 products = Product.browse(products)
                 taxes_ = Tax.browse(tax_ids)
-            with Transaction().set_context(taxes=tax_ids):
-                prices.update(Product.get_sale_price(products))
+                with Transaction().set_context(taxes=tax_ids):
+                    prices.update(Product.get_sale_price(products))
             for product in products:
                 price = prices[product.id]
                 if price is not None:

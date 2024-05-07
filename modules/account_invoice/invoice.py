@@ -1817,6 +1817,7 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin, InvoiceReportMixin):
     @classmethod
     @ModelView.button
     @Workflow.transition('posted')
+    @set_employee('posted_by', when='before')
     def post(cls, invoices):
         pool = Pool()
         Date = pool.get('ir.date')
@@ -1845,7 +1846,6 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin, InvoiceReportMixin):
         cls._post(invoices)
 
     @classmethod
-    @set_employee('posted_by', when='before')
     def _post(cls, invoices):
         pool = Pool()
         Move = pool.get('account.move')
@@ -1890,7 +1890,7 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin, InvoiceReportMixin):
             for line in invoice.lines:
                 test_line = Line(line.id)
                 test_line.on_change_product()
-                if (test_line.taxes != line.taxes
+                if (set(test_line.taxes) != set(line.taxes)
                         or test_line.taxes_deductible_rate
                         != line.taxes_deductible_rate):
                     different_lines.append(line)
@@ -1988,7 +1988,7 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin, InvoiceReportMixin):
             else:
                 posted.append(invoice)
         cls.paid(paid)
-        cls.post(posted)
+        cls._post(posted)
 
     @classmethod
     @Workflow.transition('paid')
@@ -2605,7 +2605,8 @@ class InvoiceLine(sequence_ordered(), ModelSQL, ModelView, TaxableMixin):
             'date': date,
             }
 
-    @fields.depends('product', 'unit', '_parent_invoice.type',
+    @fields.depends(
+        'product', 'unit', 'taxes', '_parent_invoice.type',
         '_parent_invoice.party', 'party', 'invoice', 'invoice_type',
         '_parent_invoice.invoice_date', '_parent_invoice.accounting_date',
         'company',
@@ -2679,7 +2680,8 @@ class InvoiceLine(sequence_ordered(), ModelSQL, ModelView, TaxableMixin):
     def on_change_with_product_uom_category(self, name=None):
         return self.product.default_uom_category if self.product else None
 
-    @fields.depends('account', 'product', 'invoice',
+    @fields.depends(
+        'account', 'product', 'invoice', 'taxes',
         '_parent_invoice.party', '_parent_invoice.type',
         'party', 'invoice', 'invoice_type',
         methods=['_get_tax_rule_pattern'])
@@ -3505,13 +3507,16 @@ class PayInvoice(Wizard):
     def default_start(self, fields):
         default = {}
         invoice = self.record
+        payee = None
         if not invoice.alternative_payees:
-            default['payee'] = invoice.party.id
+            payee = invoice.party
         else:
             try:
-                default['payee'], = invoice.alternative_payees
+                payee, = invoice.alternative_payees
             except ValueError:
                 pass
+        if payee:
+            default['payee'] = payee.id
         default['payees'] = (
             [invoice.party.id] + [p.id for p in invoice.alternative_payees])
         default['company'] = invoice.company.id

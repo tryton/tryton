@@ -1,5 +1,4 @@
 #
-#, fuzzy
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
@@ -235,7 +234,7 @@ msgstr ""
 
 msgctxt "view:account.configuration:"
 msgid "Sequence"
-msgstr ""
+msgstr "Secventa"
 
 msgctxt "view:account.configuration:"
 msgid "Shipment Cost"

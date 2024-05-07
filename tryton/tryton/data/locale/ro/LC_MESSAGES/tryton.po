@@ -27,6 +27,10 @@ msgid "disable thread usage"
 msgstr "dezactivare utilizarea thread-urilor"
 
 #, python-format
+msgid "Invalid response id (%s) expected %s"
+msgstr ""
+
+#, python-format
 msgid "Unable to set locale %s"
 msgstr "Imposibil de setat regiunea locală %s"
 
@@ -76,7 +80,8 @@ msgstr "Nu"
 msgid "Yes"
 msgstr "Da"
 
-msgid "Concurrency Exception"
+#, fuzzy
+msgid "Concurrency Warning"
 msgstr "Excepție de concurgență"
 
 msgid "This record has been modified while you were editing it."
@@ -107,6 +112,9 @@ msgstr "Închidere"
 msgid "Application Error"
 msgstr "Eroare de aplicație"
 
+msgid "Details"
+msgstr ""
+
 msgid "Report Bug"
 msgstr "Raporteati eroare"
 
@@ -123,17 +131,32 @@ msgstr "O nouă versiune este disponibilă!"
 msgid "Download"
 msgstr "Descarca"
 
+msgid "Concurrency Exception"
+msgstr "Excepție de concurgență"
+
 msgid "Could not get a session."
 msgstr "Nu s-a putut găsi o sesiune."
+
+#, fuzzy, python-format
+msgid "Error: \"%s\". Try again later."
+msgstr "Prea multe cereri. Încercați mai târziu."
 
 msgid "Too many requests. Try again later."
 msgstr "Prea multe cereri. Încercați mai târziu."
 
-msgid "Not found."
-msgstr "Nimic găsit."
-
 msgid "Not Found."
 msgstr "Niciun rezultat găsit."
+
+msgid "Reset forgotten password"
+msgstr ""
+
+msgid "Send you an email to reset your password."
+msgstr ""
+
+msgid ""
+"A request to reset your password has been sent.\n"
+"Please check your mailbox."
+msgstr ""
 
 msgid "..."
 msgstr "..."
@@ -144,7 +167,7 @@ msgstr "<i>Căutare...</i>"
 msgid "<i>Create...</i>"
 msgstr "<i>Creare...</i>"
 
-#, fuzzy, python-format
+#, python-format
 msgid "Create \"%s\"..."
 msgstr "Creare \"%s\"..."
 
@@ -296,7 +319,7 @@ msgid "Spell Checking"
 msgstr "Verificare ortografia"
 
 msgid "Play Sound for Code Scanner"
-msgstr ""
+msgstr "Rulare Sunet pentru Scanner"
 
 msgid "PDA Mode"
 msgstr "Modul PDA"
@@ -508,10 +531,10 @@ msgid "Attachments (%s)"
 msgstr "Atașamente (%s)"
 
 msgid "Code Scanner"
-msgstr ""
+msgstr "Scanner"
 
 msgid "Code"
-msgstr ""
+msgstr "Cod"
 
 msgid "Profile Editor"
 msgstr "Editor de profil"
@@ -674,7 +697,7 @@ msgid "Open report"
 msgstr "Deschidere Raport"
 
 msgid "Print"
-msgstr "Tiparire"
+msgstr "Tipărire"
 
 msgid "Print report"
 msgstr "Tipărire raport"
@@ -706,6 +729,12 @@ msgstr "Model:"
 
 msgid "ID:"
 msgstr "ID:"
+
+msgid "Module:"
+msgstr ""
+
+msgid "XML ID:"
+msgstr ""
 
 msgid "Created by:"
 msgstr "Creat de:"
@@ -938,20 +967,19 @@ msgid "Delete"
 msgstr "Ștergere"
 
 msgid "Discard changes"
-msgstr ""
+msgstr "Omitere schimbări"
 
 msgid "Save and New"
-msgstr ""
+msgstr "Salvare şi Nou"
 
-#, fuzzy
 msgid "Add and New"
-msgstr "Adaugă valoare"
+msgstr "Adăugare şi Nou"
 
 msgid "Add"
 msgstr "Adăuga"
 
 msgid "Apply changes"
-msgstr ""
+msgstr "Aplicare schimbări"
 
 msgid "Switch"
 msgstr "Schimba"
@@ -992,7 +1020,7 @@ msgstr "Detecție eșuată"
 
 #, python-format
 msgid "Unknown column header \"%s\""
-msgstr ""
+msgstr "Antet necunoscut de coloană \"%s\""
 
 msgid "Error"
 msgstr "Eroare"
@@ -1058,7 +1086,7 @@ msgid ":"
 msgstr ":"
 
 msgid "Scan"
-msgstr ""
+msgstr "Scanare"
 
 msgid "Image Size"
 msgstr "Marimea imaginii"
@@ -1081,7 +1109,19 @@ msgstr "Dimensiunea imaginii este prea mare."
 msgid "Copy"
 msgstr "Copiere"
 
-msgid "Paste"
+#, fuzzy
+msgid "Copy Row"
+msgstr "_Copiere URL"
+
+#, fuzzy
+msgid "Copy Rows"
+msgstr "_Copiere URL"
+
+msgid "Copy Column"
+msgstr ""
+
+#, fuzzy
+msgid "Paste Rows"
 msgstr "Lipire"
 
 msgid ".."

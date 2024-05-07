@@ -1,3 +1,7 @@
+
+Version 7.2.0 - 2024-04-29
+--------------------------
+* Bug fixes (see mercurial logs for details)
 * Raise a warning when validating invoice with non default taxes
 * Book currency exchange amount in dedicated account
 

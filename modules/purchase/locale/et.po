@@ -193,6 +193,11 @@ msgctxt "field:purchase.line,invoice_lines:"
 msgid "Invoice Lines"
 msgstr "Arveread"
 
+#, fuzzy
+msgctxt "field:purchase.line,invoice_progress:"
+msgid "Invoice Progress"
+msgstr "Arve aadress"
+
 msgctxt "field:purchase.line,moves:"
 msgid "Moves"
 msgstr "Liikumised"
@@ -855,8 +860,8 @@ msgstr ""
 
 msgctxt "model:ir.message,text:msg_change_purchase_uom"
 msgid ""
-"You are trying to change the purchase unit of measurer on which the purchase"
-" prices are based."
+"You are trying to change the purchase unit of measure on which the purchase "
+"prices are based."
 msgstr ""
 
 msgctxt "model:ir.message,text:msg_erase_party_pending_purchase"
@@ -1428,9 +1433,18 @@ msgctxt "view:purchase.line:"
 msgid "General"
 msgstr "Üldine"
 
+#, fuzzy
+msgctxt "view:purchase.line:"
+msgid "Invoicing"
+msgstr "Arve"
+
 msgctxt "view:purchase.line:"
 msgid "Notes"
 msgstr "Märkused"
+
+msgctxt "view:purchase.line:"
+msgid "Shipping"
+msgstr ""
 
 msgctxt "view:purchase.line:"
 msgid "Taxes"

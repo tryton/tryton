@@ -38,8 +38,7 @@ class Date(Field):
         if isinstance(value, str):
             value = datetime.date.fromisoformat(value)
         elif isinstance(value, datetime.datetime):
-            if value.time() != datetime.time():
-                raise ValueError("Date field can not have time")
+            raise ValueError("Date field can not have time")
         return super().sql_format(value)
 
     def sql_cast(self, expression, timezone=None):

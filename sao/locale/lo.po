@@ -115,7 +115,7 @@ msgstr ""
 msgid "Unable to reach the server."
 msgstr "ບໍ່ສາມາດເຂົ້າເຖິງແມ່ຂ່າຍໄດ້"
 
-msgid "Too many requests. Try again later."
+msgid "Error: \"%1\". Try again later."
 msgstr ""
 
 msgid "Login"
@@ -131,7 +131,18 @@ msgstr "ຊື່ຜູ້ໃຊ້"
 msgid "Login with"
 msgstr "ເຂົ້າສູ່ລະບົບ"
 
+msgid "Too many requests. Try again later."
+msgstr ""
+
 msgid "Not found."
+msgstr ""
+
+msgid "Send you an email to reset your password."
+msgstr ""
+
+msgid ""
+"A request to reset your password has been sent.\n"
+"Please check your mailbox."
 msgstr ""
 
 msgid "Your selection:"
@@ -185,12 +196,6 @@ msgstr "ຈ"
 msgid "False"
 msgstr "ເທັດ"
 
-msgid "Message: "
-msgstr "ຂໍ້ຄວາມ: "
-
-msgid "Warning: "
-msgstr "ຄຳເຕືອນ: "
-
 msgid "Always ignore this warning."
 msgstr "ບໍ່ສົນກັບຄຳເຕືອນນີ້."
 
@@ -200,13 +205,8 @@ msgstr "ທ່ານຕ້ອງການດຳເນີນບໍ່?"
 msgid "No"
 msgstr "ບໍ່"
 
-msgid "Confirmation: "
-msgstr "ຄຳຢັ້ງຢືນ: "
-
-msgid "Concurrency Exception"
-msgstr "ຍົກເວັ້ນສະກຸນເງິນ"
-
-msgid "Write Concurrency Warning: "
+#, fuzzy
+msgid "Concurrency Warning"
 msgstr "ຂຽນຄຳເຕືອນສະກຸນເງິນ: "
 
 msgid "This record has been modified while you were editing it."
@@ -236,6 +236,9 @@ msgstr "ຂຽນລົງເລີຍ"
 
 msgid "Application Error"
 msgstr "ໂປຣແກຣມຜິດພາດ"
+
+msgid "Details"
+msgstr ""
 
 msgid "Report Bug"
 msgstr "ລາຍງານຂໍ້ຜິດພາດ"
@@ -539,8 +542,9 @@ msgstr "%1%"
 msgid "Menu"
 msgstr ""
 
-msgid "Copy"
-msgstr ""
+#, fuzzy
+msgid "Copy Selected Rows"
+msgstr "ແຖວຂໍ້ມູນຕໍ່ໄປ"
 
 msgid "#ERROR"
 msgstr ""
@@ -604,6 +608,12 @@ msgstr "ແມ່ແບບ: "
 
 msgid "ID:"
 msgstr "ເລກກຳກັບ:"
+
+msgid "Module:"
+msgstr ""
+
+msgid "XML ID:"
+msgstr ""
 
 #, fuzzy
 msgid "Created by:"

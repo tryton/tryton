@@ -1,4 +1,5 @@
 #
+#, fuzzy
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
@@ -64,7 +65,7 @@ msgstr ""
 
 msgctxt "selection:account.account.rule,type:"
 msgid "Payable"
-msgstr ""
+msgstr "Furnizor"
 
 msgctxt "selection:account.account.rule,type:"
 msgid "Receivable"

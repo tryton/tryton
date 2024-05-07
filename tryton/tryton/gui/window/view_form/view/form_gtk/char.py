@@ -171,10 +171,9 @@ class Password(Char):
         self.widget.pack_start(
             self.visibility_checkbox, expand=False, fill=True, padding=0)
 
-    def _readonly_set(self, value):
-        super(Char, self)._readonly_set(value)
-        self.entry.set_editable(not value)
-        self.visibility_checkbox.props.visible = not value
-
     def toggle_visibility(self, button):
-        self.entry.props.visibility = not self.entry.props.visibility
+        if self.autocomplete:
+            entry = self.entry.get_child()
+        else:
+            entry = self.entry
+        entry.props.visibility = not self.entry.props.visibility

@@ -410,6 +410,11 @@ msgctxt "field:stock.move,from_location:"
 msgid "From Location"
 msgstr "从库位"
 
+#, fuzzy
+msgctxt "field:stock.move,from_location_name:"
+msgid "From Location"
+msgstr "从库位"
+
 msgctxt "field:stock.move,internal_quantity:"
 msgid "Internal Quantity"
 msgstr "内部数量"
@@ -451,6 +456,11 @@ msgid "State"
 msgstr "状态"
 
 msgctxt "field:stock.move,to_location:"
+msgid "To Location"
+msgstr "到库位"
+
+#, fuzzy
+msgctxt "field:stock.move,to_location_name:"
 msgid "To Location"
 msgstr "到库位"
 
@@ -2064,6 +2074,10 @@ msgid ""
 "deactivating the product."
 msgstr "建议在停用产品之前清除库位的库存。"
 
+msgctxt "model:ir.message,text:msg_product_quantities_max"
+msgid "You cannot select more than %(max)s products to compute quantities."
+msgstr ""
+
 msgctxt "model:ir.message,text:msg_shipment_check_quantity"
 msgid ""
 "The quantities of shipment \"%(shipment)s\" are different by %(quantities)s."
@@ -2153,17 +2167,42 @@ msgctxt "model:ir.model.button,confirm:move_do_button"
 msgid "Are you sure you want to complete the move?"
 msgstr "确定要完成库存变动吗？"
 
+#, fuzzy
+msgctxt "model:ir.model.button,confirm:shipment_in_cancel_button"
+msgid "Are you sure you want to cancel the shipment?"
+msgstr "确定要取消库存变动吗?"
+
 msgctxt "model:ir.model.button,confirm:shipment_in_receive_button"
 msgid "Are you sure you want to receive the shipment?"
 msgstr "确定要收货吗?"
+
+#, fuzzy
+msgctxt "model:ir.model.button,confirm:shipment_in_return_cancel_button"
+msgid "Are you sure you want to cancel the shipment?"
+msgstr "确定要取消库存变动吗?"
 
 msgctxt "model:ir.model.button,confirm:shipment_in_return_done_button"
 msgid "Are you sure you want to complete the shipment?"
 msgstr "确定要完成收货吗?"
 
+#, fuzzy
+msgctxt "model:ir.model.button,confirm:shipment_internal_cancel_button"
+msgid "Are you sure you want to cancel the shipment?"
+msgstr "确定要取消库存变动吗?"
+
+#, fuzzy
+msgctxt "model:ir.model.button,confirm:shipment_out_cancel_button"
+msgid "Are you sure you want to cancel the shipment?"
+msgstr "确定要取消库存变动吗?"
+
 msgctxt "model:ir.model.button,confirm:shipment_out_done_button"
 msgid "Are you sure you want to complete the shipment?"
 msgstr "确定要完成发货吗?"
+
+#, fuzzy
+msgctxt "model:ir.model.button,confirm:shipment_out_return_cancel_button"
+msgid "Are you sure you want to cancel the shipment?"
+msgstr "确定要取消库存变动吗?"
 
 msgctxt "model:ir.model.button,confirm:shipment_out_return_receive_button"
 msgid "Are you sure you want to receive the shipment?"
@@ -2217,9 +2256,10 @@ msgctxt "model:ir.model.button,string:shipment_in_cancel_button"
 msgid "Cancel"
 msgstr "取消"
 
+#, fuzzy
 msgctxt "model:ir.model.button,string:shipment_in_done_button"
-msgid "Done"
-msgstr "完成"
+msgid "Complete"
+msgstr "补全"
 
 msgctxt "model:ir.model.button,string:shipment_in_draft_button"
 msgid "Reset to Draft"
@@ -2237,9 +2277,10 @@ msgctxt "model:ir.model.button,string:shipment_in_return_cancel_button"
 msgid "Cancel"
 msgstr "取消"
 
+#, fuzzy
 msgctxt "model:ir.model.button,string:shipment_in_return_done_button"
-msgid "Done"
-msgstr "完成"
+msgid "Complete"
+msgstr "补全"
 
 msgctxt "model:ir.model.button,string:shipment_in_return_draft_button"
 msgid "Draft"
@@ -2257,9 +2298,10 @@ msgctxt "model:ir.model.button,string:shipment_internal_cancel_button"
 msgid "Cancel"
 msgstr "取消"
 
+#, fuzzy
 msgctxt "model:ir.model.button,string:shipment_internal_done_button"
-msgid "Done"
-msgstr "完成"
+msgid "Complete"
+msgstr "补全"
 
 msgctxt "model:ir.model.button,string:shipment_internal_draft_button"
 msgid "Draft"
@@ -2281,9 +2323,10 @@ msgctxt "model:ir.model.button,string:shipment_out_cancel_button"
 msgid "Cancel"
 msgstr "取消"
 
+#, fuzzy
 msgctxt "model:ir.model.button,string:shipment_out_done_button"
-msgid "Done"
-msgstr "完成"
+msgid "Complete"
+msgstr "补全"
 
 msgctxt "model:ir.model.button,string:shipment_out_draft_button"
 msgid "Draft"
@@ -2301,9 +2344,10 @@ msgctxt "model:ir.model.button,string:shipment_out_return_cancel_button"
 msgid "Cancel"
 msgstr "取消"
 
+#, fuzzy
 msgctxt "model:ir.model.button,string:shipment_out_return_done_button"
-msgid "Done"
-msgstr "完成"
+msgid "Complete"
+msgstr "补全"
 
 msgctxt "model:ir.model.button,string:shipment_out_return_draft_button"
 msgid "Draft"
@@ -2965,13 +3009,10 @@ msgctxt "report:stock.shipment.out.return.restocking_list:"
 msgid "Warehouse:"
 msgstr "仓库:"
 
+#, fuzzy
 msgctxt "selection:ir.cron,method:"
-msgid "Assign Customer Shipments"
-msgstr "选定给客户发送的货物"
-
-msgctxt "selection:ir.cron,method:"
-msgid "Assign Internal Shipments"
-msgstr "选定内部发送的货物"
+msgid "Assign Shipments"
+msgstr "选货"
 
 msgctxt "selection:ir.cron,method:"
 msgid "Recompute Cost Price from Moves"

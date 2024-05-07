@@ -445,7 +445,7 @@ class WinForm(NoModal, InfoBar):
                 record.modified_fields.setdefault('id')
             result = False
         else:
-            result = response_id not in cancel_responses
+            result = (response_id not in cancel_responses) and not readonly
         if self.callback:
             self.callback(result)
         self.destroy()

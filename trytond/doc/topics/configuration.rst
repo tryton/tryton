@@ -37,10 +37,14 @@ asks them to be named like their module.
    :backlinks: entry
    :depth: 2
 
+.. _config-web:
+
 web
 ---
 
 Defines the behavior of the web interface.
+
+.. _config-web.listen:
 
 listen
 ~~~~~~
@@ -54,11 +58,15 @@ Default ``localhost:8000``
    To listen on all IPv4 interfaces use the value ``0.0.0.0:8000`` and for all
    IPv6 interfaces use ``[::]:8000``.
 
+.. _config-web.hostname:
+
 hostname
 ~~~~~~~~
 
 Defines the hostname to use when generating a URL when there is no request
 context available, for example during a cron job.
+
+.. _config-web.root:
 
 root
 ~~~~
@@ -67,6 +75,8 @@ Defines the root path served by ``GET`` requests.
 
 Default: Under the ``www`` directory of user's home running ``trytond``.
 
+.. _config-web.num_proxies:
+
 num_proxies
 ~~~~~~~~~~~
 
@@ -74,12 +84,16 @@ The number of proxy servers in front of ``trytond``.
 
 Default: 0
 
+.. _config-web.cache_timeout:
+
 cache_timeout
 ~~~~~~~~~~~~~
 
 The cache timeout in seconds.
 
 Default: 12h
+
+.. _config-web.cors:
 
 cors
 ~~~~
@@ -92,6 +106,8 @@ For example::
       http://example.com
       https://example.com
 
+.. _config-web.avatar_base:
+
 avatar_base
 ~~~~~~~~~~~
 
@@ -102,6 +118,8 @@ Default: ``''``
 .. note:: It can be used to setup a CDN.
 
 
+.. _config-web.avatar_timeout:
+
 avatar_timeout
 ~~~~~~~~~~~~~~
 
@@ -109,10 +127,14 @@ The time in seconds that the avatar can be stored in cache.
 
 Default: 7 days
 
+.. _config-database:
+
 database
 --------
 
 Defines how the database is managed.
+
+.. _config-database.uri:
 
 uri
 ~~~
@@ -161,6 +183,8 @@ The recognized query parameters can be found in SQLite's
 `documentation
 <https://www.sqlite.org/uri.html#recognized_query_parameters>`__.
 
+.. _config-database.path:
+
 path
 ~~~~
 
@@ -170,12 +194,16 @@ The directory where Tryton stores files and so the user running
 Default: The :file:`db` folder under the user home directory running
 :command:`trytond`.
 
+.. _config-database.list:
+
 list
 ~~~~
 
 A boolean value to list available databases.
 
 Default: ``True``
+
+.. _config-database.retry:
 
 retry
 ~~~~~
@@ -184,12 +212,16 @@ The number of retries when a database operational error occurs during a request.
 
 Default: ``5``
 
+.. _config-database.subquery_threshold:
+
 subquery_threshold
 ~~~~~~~~~~~~~~~~~~
 
 The number of records in the target relation under which a sub-query is used.
 
 Default: ``1000``
+
+.. _config-database.language:
 
 language
 ~~~~~~~~
@@ -199,6 +231,8 @@ table for translations.
 
 Default: ``en``
 
+.. _config-database.avatar_filestore:
+
 avatar_filestore
 ~~~~~~~~~~~~~~~~
 
@@ -207,6 +241,8 @@ This configuration value indicates whether the avatars should be stored in the
 
 Default: ``False``
 
+.. _config-database.avatar_prefix:
+
 avatar_prefix
 ~~~~~~~~~~~~~
 
@@ -214,11 +250,15 @@ The prefix to use with the :ref:`FileStore <ref-filestore>` to store avatars.
 
 Default: ``None``
 
+.. _config-database.default_name:
+
 default_name
 ~~~~~~~~~~~~
 
 The name of the database to use for operations without a database name.
 Default: ``template1`` for PostgreSQL, ``:memory:`` for SQLite.
+
+.. _config-database.timeout:
 
 timeout
 ~~~~~~~
@@ -227,6 +267,8 @@ The timeout duration in seconds after which the connections to unused databases
 are closed.
 Default: ``1800`` (30 minutes)
 
+.. _config-database.minconn:
+
 minconn
 ~~~~~~~
 
@@ -234,11 +276,15 @@ The minimum number of connections to keep in the pool (if the backend supports
 pool) per process.
 Default: ``1``
 
+.. _config-database.maxconn:
+
 maxconn
 ~~~~~~~
 
 The maximum number of simultaneous connections to the database per process.
 Default: ``64``
+
+.. _config-database.unaccent_function:
 
 unaccent_function
 ~~~~~~~~~~~~~~~~~
@@ -247,6 +293,8 @@ The name of the unaccent function.
 
 Default: ``unaccent``
 
+.. _config-database.similarity_function:
+
 similarity_function
 ~~~~~~~~~~~~~~~~~~~
 
@@ -254,8 +302,12 @@ The name of the similarity function.
 
 Default: ``similarity``
 
+.. _config-request:
+
 request
 -------
+
+.. _config-request.max_size:
 
 max_size
 ~~~~~~~~
@@ -264,12 +316,16 @@ The maximum size in bytes of unauthenticated request (zero means no limit).
 
 Default: 2MB
 
+.. _config-request.max_size_authenticated:
+
 max_size_authenticated
 ~~~~~~~~~~~~~~~~~~~~~~
 
 The maximum size in bytes of an authenticated request (zero means no limit).
 
 Default: 2GB
+
+.. _config-request.timeout:
 
 timeout
 ~~~~~~~
@@ -279,10 +335,14 @@ depending on the parameters.
 
 Default: ``60``
 
+.. _config-cache:
+
 cache
 -----
 
 Defines size of various cache.
+
+.. _config-cache.transaction:
 
 transaction
 ~~~~~~~~~~~
@@ -291,12 +351,16 @@ The number of contextual caches kept per transaction.
 
 Default: ``10``
 
+.. _config-cache.model:
+
 model
 ~~~~~
 
 The number of different model kept in the cache per transaction.
 
 Default: ``200``
+
+.. _config-cache.record:
 
 record
 ~~~~~~
@@ -307,6 +371,8 @@ It can be changed locally using the ``_record_cache_size`` key in
 
 Default: ``2000``
 
+.. _config-cache.field:
+
 field
 ~~~~~
 
@@ -315,12 +381,16 @@ The number of field to load with an ``eager`` :attr:`Field.loading
 
 Default: ``100``
 
+.. _config-cache.default:
+
 default
 ~~~~~~~
 
 The default :attr:`~trytond.cache.Cache.size_limit` of :class:`~trytond.cache.Cache`.
 
 Default: ``1024``
+
+.. _config-cache.clean_timeout:
 
 clean_timeout
 ~~~~~~~~~~~~~
@@ -331,12 +401,16 @@ channels if the back-end supports them.
 
 Default: ``300``
 
+.. _config-cache.count_timeout:
+
 count_timeout
 ~~~~~~~~~~~~~
 
 The cache timeout duration in seconds of the estimation of records.
 
 Default: ``86400`` (1 day)
+
+.. _config-cache.count_clear:
 
 count_clear
 ~~~~~~~~~~~
@@ -346,8 +420,12 @@ cleared.
 
 Default: ``1000``
 
+.. _config-queue:
+
 queue
 -----
+
+.. _config-queue.worker:
 
 worker
 ~~~~~~
@@ -357,12 +435,16 @@ the end of the requests.
 
 Default: ``False``
 
+.. _config-queue.clean_days:
+
 clean_days
 ~~~~~~~~~~
 
 The number of days after which processed tasks are removed.
 
 Default: ``30``
+
+.. _config-queue.batch_size:
 
 batch_size
 ~~~~~~~~~~
@@ -371,8 +453,12 @@ The default number of the instances to process in a batch.
 
 Default: ``20``
 
+.. _config-error:
+
 error
 -----
+
+.. _config-error.clean_days:
 
 clean_days
 ~~~~~~~~~~
@@ -380,6 +466,8 @@ clean_days
 The number of days after which reported errors are removed.
 
 Default: ``90``
+
+.. _config-table:
 
 table
 -----
@@ -394,6 +482,8 @@ For example::
     account.invoice.line = acc_inv_line
     account.invoice.tax = acc_inv_tax
 
+.. _config-ssl:
+
 ssl
 ---
 
@@ -401,10 +491,14 @@ Activates SSL_ on the web interface.
 
 .. note:: It is recommended to delegate the SSL support to a proxy.
 
+.. _config-ssl.privatekey:
+
 privatekey
 ~~~~~~~~~~
 
 The path to the private key.
+
+.. _config-ssl.certificate:
 
 certificate
 ~~~~~~~~~~~
@@ -415,10 +509,14 @@ The path to the certificate.
    Set only one of ``privatekey`` or ``certificate`` to ``true`` if the SSL is
    delegated.
 
+.. _config-email:
+
 email
 -----
 
 .. note:: Email settings can be tested with the ``trytond-admin`` command
+
+.. _config-email.uri:
 
 uri
 ~~~
@@ -442,6 +540,8 @@ The uri accepts the following additional parameters:
 
 Default: ``smtp://localhost:25``
 
+.. _config-email.from:
+
 from
 ~~~~
 
@@ -454,6 +554,8 @@ For example::
 
 Default: The login name of the :abbr:`OS (Operating System)` user.
 
+.. _config-email.retry:
+
 retry
 ~~~~~
 
@@ -461,8 +563,12 @@ The number of retries when the SMTP server returns a temporary error.
 
 Default: ``5``
 
+.. _config-session:
+
 session
 -------
+
+.. _config-session.authentications:
 
 authentications
 ~~~~~~~~~~~~~~~
@@ -497,6 +603,8 @@ refer to their documentation for more information.
 
 Default: ``password``
 
+.. _config-session.authentication_ip_network:
+
 authentication_ip_network
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -505,6 +613,8 @@ authentication method option.
 
 Default: ``''``
 
+.. _config-session.max_age:
+
 max_age
 ~~~~~~~
 
@@ -512,12 +622,16 @@ The time in seconds that a session stay valid.
 
 Default: ``2592000`` (30 days)
 
+.. _config-session.timeout:
+
 timeout
 ~~~~~~~
 
 The time in seconds without activity before the session is no more fresh.
 
 Default: ``300`` (5 minutes)
+
+.. _config-session.max_attempt:
 
 max_attempt
 ~~~~~~~~~~~
@@ -528,6 +642,8 @@ attempts over a period of ``timeout``.
 
 Default: ``5``
 
+.. _config-session.max_attempt_ip_network:
+
 max_attempt_ip_network
 ~~~~~~~~~~~~~~~~~~~~~~
 
@@ -537,6 +653,8 @@ counting is done on all attempts over a period of ``timeout``.
 
 Default: ``300``
 
+.. _config-session.ip_network_4:
+
 ip_network_4
 ~~~~~~~~~~~~
 
@@ -544,6 +662,8 @@ The network prefix to apply on IPv4 address for counting the authentication
 attempts.
 
 Default: ``32``
+
+.. _config-session.ip_network_6:
 
 ip_network_6
 ~~~~~~~~~~~~
@@ -553,8 +673,12 @@ attempts.
 
 Default: ``56``
 
+.. _config-password:
+
 password
 --------
+
+.. _config-password.length:
 
 length
 ~~~~~~
@@ -563,10 +687,14 @@ The minimal length required for the user password.
 
 Default: ``8``
 
+.. _config-password.forbidden:
+
 forbidden
 ~~~~~~~~~
 
 The path to a file containing one forbidden password per line.
+
+.. _config-password.reset_timeout:
 
 reset_timeout
 ~~~~~~~~~~~~~
@@ -574,6 +702,8 @@ reset_timeout
 The time in seconds until the reset password expires.
 
 Default: ``86400`` (24h)
+
+.. _config-password.passlib:
 
 passlib
 ~~~~~~~
@@ -585,10 +715,14 @@ If no path is set, Tryton will use the schemes ``argon2``, ``scrypt``,
 
 Default: ``None``
 
+.. _config-attachment:
+
 attachment
 ----------
 
 Defines how to store the attachments
+
+.. _config-attachment.filestore:
 
 filestore
 ~~~~~~~~~
@@ -597,6 +731,8 @@ A boolean value to store attachment in the :ref:`FileStore <ref-filestore>`.
 
 Default: ``True``
 
+.. _config-attachment.store_prefix:
+
 store_prefix
 ~~~~~~~~~~~~
 
@@ -604,8 +740,12 @@ The prefix to use with the ``FileStore``.
 
 Default: ``None``
 
+.. _config-bus:
+
 bus
 ---
+
+.. _config-bus.allow_subscribe:
 
 allow_subscribe
 ~~~~~~~~~~~~~~~
@@ -614,10 +754,14 @@ A boolean value to allow clients to subscribe to bus channels.
 
 Default: ``False``
 
+.. _config-bus.url_host:
+
 url_host
 ~~~~~~~~
 
 If set redirects bus requests to the host URL.
+
+.. _config-bus.long_polling_timeout:
 
 long_polling_timeout
 ~~~~~~~~~~~~~~~~~~~~
@@ -627,6 +771,8 @@ polling for bus messages
 
 Default: ``300``
 
+.. _config-bus.cache_timeout:
+
 cache_timeout
 ~~~~~~~~~~~~~
 
@@ -635,6 +781,8 @@ discarded.
 
 Default: ``300``
 
+.. _config-bus.select_timeout:
+
 select_timeout
 ~~~~~~~~~~~~~~
 
@@ -642,8 +790,12 @@ The timeout duration of the select call when listening on a channel.
 
 Default: ``5``
 
+.. _config-html:
+
 html
 ----
+
+.. _config-html.src:
 
 src
 ~~~
@@ -651,6 +803,8 @@ src
 The URL pointing to `TinyMCE <https://www.tiny.cloud/>`_ editor.
 
 Default: ``https://cloud.tinymce.com/stable/tinymce.min.js``
+
+.. _config-html.plugins:
 
 plugins
 ~~~~~~~
@@ -661,6 +815,8 @@ It can be overridden for specific models and fields using the names:
 
 Default: ``''``
 
+.. _config-html.css:
+
 css
 ~~~
 
@@ -670,6 +826,8 @@ It can be overridden for specific models and fields using the names:
 
 Default: ``[]``
 
+.. _config-html.class:
+
 class
 ~~~~~
 
@@ -678,6 +836,8 @@ It can be overridden for specific models and fields using the names:
 ``class-<model>-<field>`` or ``class-<model>``.
 
 Default: ``''``
+
+.. _config-wsgi_middleware:
 
 wsgi middleware
 ---------------

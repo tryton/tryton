@@ -8,7 +8,7 @@ msgstr "Companie"
 
 msgctxt "field:stock.inventory.create.start,complete_lines:"
 msgid "Complete"
-msgstr ""
+msgstr "Complet"
 
 msgctxt "field:stock.inventory.create.start,date:"
 msgid "Date"
@@ -16,36 +16,36 @@ msgstr "Data"
 
 msgctxt "field:stock.inventory.create.start,empty_quantity:"
 msgid "Empty Quantity"
-msgstr ""
+msgstr "Cantitate Goală"
 
 msgctxt "field:stock.inventory.create.start,locations:"
 msgid "Locations"
-msgstr ""
+msgstr "Locaţii"
 
 msgctxt "help:stock.inventory.create.start,complete_lines:"
 msgid "Add an inventory line for each missing product."
-msgstr ""
+msgstr "Adăugați un rând de inventar pentru fiecare produs lipsă."
 
 msgctxt "help:stock.inventory.create.start,empty_quantity:"
 msgid "How lines without a quantity are handled."
-msgstr ""
+msgstr "Cum se gestionează rânduri fără o cantitate."
 
 msgctxt "model:ir.action,name:wizard_create_inventory"
 msgid "Create Inventories"
-msgstr ""
+msgstr "Creare Inventare"
 
 msgctxt "model:ir.ui.menu,name:menu_create_inventory"
 msgid "Create Inventories"
-msgstr ""
+msgstr "Creare Inventare"
 
 msgctxt "model:stock.inventory.create.start,name:"
 msgid "Create Inventories"
-msgstr ""
+msgstr "Creare Inventare"
 
 msgctxt "wizard_button:stock.inventory.create,start,create_:"
 msgid "Create"
-msgstr ""
+msgstr "Creare"
 
 msgctxt "wizard_button:stock.inventory.create,start,end:"
 msgid "Cancel"
-msgstr ""
+msgstr "Anulare"

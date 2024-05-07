@@ -4,11 +4,11 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "field:purchase.line,analytic_accounts:"
 msgid "Analytic Accounts"
-msgstr "Conturi analitice"
+msgstr "Conturi Analitice"
 
 msgctxt "field:purchase.line,analytic_accounts_size:"
 msgid "Analytic Accounts Size"
-msgstr "Mărimea conturilor analitice"
+msgstr "Mărimea Conturilor Analitice"
 
 msgctxt "view:purchase.line:"
 msgid "Analytic"

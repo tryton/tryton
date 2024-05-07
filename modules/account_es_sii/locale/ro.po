@@ -1,22 +1,26 @@
 #
+#, fuzzy
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
+#, fuzzy
 msgctxt "field:account.configuration,es_sii_environment:"
 msgid "SII Environment"
-msgstr ""
+msgstr "Mediu SII"
 
+#, fuzzy
 msgctxt "field:account.configuration,es_sii_url:"
 msgid "SII URL"
-msgstr ""
+msgstr "URL SII"
 
 msgctxt "field:account.credential.sii,company:"
 msgid "Company"
-msgstr ""
+msgstr "Companie"
 
+#, fuzzy
 msgctxt "field:account.credential.sii,es_sii_environment:"
 msgid "SII Environment"
-msgstr ""
+msgstr "Mediu SII"
 
 msgctxt "field:account.credential.sii,es_sii_url:"
 msgid "SII URL"

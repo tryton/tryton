@@ -123,7 +123,8 @@ msgstr "Atajos de pestañas"
 msgid "Unable to reach the server."
 msgstr "No es posible conectar con el servidor."
 
-msgid "Too many requests. Try again later."
+#, fuzzy
+msgid "Error: \"%1\". Try again later."
 msgstr "Demasiadas peticiones. Inténtalo de nuevo más tarde."
 
 msgid "Login"
@@ -138,8 +139,19 @@ msgstr "Nombre de usuario"
 msgid "Login with"
 msgstr "Identificarse con"
 
+msgid "Too many requests. Try again later."
+msgstr "Demasiadas peticiones. Inténtalo de nuevo más tarde."
+
 msgid "Not found."
 msgstr "No se ha encontrado."
+
+msgid "Send you an email to reset your password."
+msgstr ""
+
+msgid ""
+"A request to reset your password has been sent.\n"
+"Please check your mailbox."
+msgstr ""
 
 msgid "Your selection:"
 msgstr "Su selección:"
@@ -192,12 +204,6 @@ msgstr "v"
 msgid "False"
 msgstr "Falso"
 
-msgid "Message: "
-msgstr "Mensaje "
-
-msgid "Warning: "
-msgstr "Aviso: "
-
 msgid "Always ignore this warning."
 msgstr "Ignorar siempre esta advertencia."
 
@@ -207,13 +213,8 @@ msgstr "¿Desea continuar?"
 msgid "No"
 msgstr "No"
 
-msgid "Confirmation: "
-msgstr "Confirmación: "
-
-msgid "Concurrency Exception"
-msgstr "Excepción de concurrencia"
-
-msgid "Write Concurrency Warning: "
+#, fuzzy
+msgid "Concurrency Warning"
 msgstr "Aviso de concurrencia de escritura: "
 
 msgid "This record has been modified while you were editing it."
@@ -242,6 +243,9 @@ msgstr "Guardar de todas formas"
 
 msgid "Application Error"
 msgstr "Error de aplicación"
+
+msgid "Details"
+msgstr ""
 
 msgid "Report Bug"
 msgstr "Informar del error"
@@ -532,8 +536,9 @@ msgstr "%1%"
 msgid "Menu"
 msgstr ""
 
-msgid "Copy"
-msgstr ""
+#, fuzzy
+msgid "Copy Selected Rows"
+msgstr "Registros seleccionados"
 
 msgid "#ERROR"
 msgstr ""
@@ -597,6 +602,12 @@ msgstr "Modelo: "
 
 msgid "ID:"
 msgstr "ID:"
+
+msgid "Module:"
+msgstr ""
+
+msgid "XML ID:"
+msgstr ""
 
 msgid "Created by:"
 msgstr "Creado por:"

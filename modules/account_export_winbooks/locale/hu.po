@@ -1,0 +1,65 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:account.account,winbooks_code:"
+msgid "WinBooks Code"
+msgstr ""
+
+msgctxt "field:account.fiscalyear,winbooks_code:"
+msgid "WinBooks Code"
+msgstr ""
+
+msgctxt "field:account.journal,winbooks_code:"
+msgid "WinBooks Code"
+msgstr ""
+
+msgctxt "field:account.journal,winbooks_code_credit_note:"
+msgid "WinBooks Code Credit Note"
+msgstr ""
+
+msgctxt "field:account.tax,winbooks_code:"
+msgid "WinBooks Code"
+msgstr ""
+
+msgctxt "field:account.tax.template,winbooks_code:"
+msgid "WinBooks Code"
+msgstr ""
+
+msgctxt "field:party.party,winbooks_customer_identifier:"
+msgid "WinBooks Customer Identifier"
+msgstr ""
+
+msgctxt "field:party.party,winbooks_supplier_identifier:"
+msgid "WinBooks Supplier Identifier"
+msgstr ""
+
+msgctxt "help:account.journal,winbooks_code_credit_note:"
+msgid ""
+"The code to use for credit note.\n"
+"Leave empty to use the default code."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_account_tax_line_tax_move_line_unique"
+msgid "Only one tax line of type \"Tax\" is allowed per move line."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_party_identifier_winbooks_code_unique"
+msgid "The WinBooks identifier must be unique."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_party_identifier_winbooks_party_unique"
+msgid "A party can have only one active WinBooks identifier."
+msgstr ""
+
+msgctxt "selection:account.move.export,type:"
+msgid "WinBooks"
+msgstr ""
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "WinBooks Customer"
+msgstr ""
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "WinBooks Supplier"
+msgstr ""

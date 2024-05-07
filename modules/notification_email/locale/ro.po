@@ -142,7 +142,7 @@ msgid ""
 "The Genshi syntax can be used with 'record' in the evaluation context.\n"
 "If empty the report name will be used."
 msgstr ""
-"Sintaxa Genshi poate fi folosită cu „înregistrare” în contextul evaluării.\n"
+"Sintaxa Genshi poate fi folosită cu 'record' în contextul evaluării.\n"
 "Dacă este gol, va fi folosit numele raportului."
 
 msgctxt "help:notification.email,triggers:"

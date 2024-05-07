@@ -30,6 +30,10 @@ msgid "disable thread usage"
 msgstr "onemogoči uporabo niti"
 
 #, python-format
+msgid "Invalid response id (%s) expected %s"
+msgstr ""
+
+#, python-format
 msgid "Unable to set locale %s"
 msgstr "Ni možno nastaviti krajevnih nastavitev %s"
 
@@ -80,7 +84,8 @@ msgstr "Ne"
 msgid "Yes"
 msgstr "Da"
 
-msgid "Concurrency Exception"
+#, fuzzy
+msgid "Concurrency Warning"
 msgstr "Izjema sočasnega izvajanja"
 
 msgid "This record has been modified while you were editing it."
@@ -111,6 +116,9 @@ msgstr "Zapri"
 msgid "Application Error"
 msgstr "Programska napaka"
 
+msgid "Details"
+msgstr ""
+
 msgid "Report Bug"
 msgstr "Prijava programske napake"
 
@@ -127,17 +135,32 @@ msgstr "Nova različica programa je na voljo!"
 msgid "Download"
 msgstr "Prenesi"
 
+msgid "Concurrency Exception"
+msgstr "Izjema sočasnega izvajanja"
+
 msgid "Could not get a session."
 msgstr "Ni mogoče vzpostaviti seje."
+
+#, fuzzy, python-format
+msgid "Error: \"%s\". Try again later."
+msgstr "Preveč poslanih zahtev. Poskusite kasneje."
 
 msgid "Too many requests. Try again later."
 msgstr "Preveč poslanih zahtev. Poskusite kasneje."
 
-msgid "Not found."
-msgstr "Ni najdeno."
-
 msgid "Not Found."
 msgstr "Ni najdeno."
+
+msgid "Reset forgotten password"
+msgstr ""
+
+msgid "Send you an email to reset your password."
+msgstr ""
+
+msgid ""
+"A request to reset your password has been sent.\n"
+"Please check your mailbox."
+msgstr ""
 
 msgid "..."
 msgstr "..."
@@ -712,6 +735,12 @@ msgstr "Model:"
 msgid "ID:"
 msgstr "ID:"
 
+msgid "Module:"
+msgstr ""
+
+msgid "XML ID:"
+msgstr ""
+
 msgid "Created by:"
 msgstr "Ustvaril:"
 
@@ -1085,7 +1114,19 @@ msgstr "Podoba je prevelika."
 msgid "Copy"
 msgstr "Kopiraj"
 
-msgid "Paste"
+#, fuzzy
+msgid "Copy Row"
+msgstr "_Kopiraj URL"
+
+#, fuzzy
+msgid "Copy Rows"
+msgstr "_Kopiraj URL"
+
+msgid "Copy Column"
+msgstr ""
+
+#, fuzzy
+msgid "Paste Rows"
 msgstr "Prilepi"
 
 msgid ".."

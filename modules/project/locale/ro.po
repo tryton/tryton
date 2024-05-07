@@ -32,35 +32,35 @@ msgstr "Parte"
 
 msgctxt "field:project.work,party_address:"
 msgid "Contact Address"
-msgstr ""
+msgstr "Adresa de Contact"
 
 msgctxt "field:project.work,path:"
 msgid "Path"
-msgstr ""
+msgstr "Cale"
 
 msgctxt "field:project.work,progress:"
 msgid "Progress"
-msgstr ""
+msgstr "Progres"
 
 msgctxt "field:project.work,status:"
 msgid "Status"
-msgstr ""
+msgstr "Stare"
 
 msgctxt "field:project.work,timesheet_available:"
 msgid "Available on timesheets"
-msgstr ""
+msgstr "Disponibil pe foile de pontaj"
 
 msgctxt "field:project.work,timesheet_duration:"
 msgid "Duration"
-msgstr ""
+msgstr "Durata"
 
 msgctxt "field:project.work,timesheet_end_date:"
 msgid "Timesheet End"
-msgstr ""
+msgstr "Sfârșitul foii de pontaj"
 
 msgctxt "field:project.work,timesheet_start_date:"
 msgid "Timesheet Start"
-msgstr ""
+msgstr "Început foaie de pontaj"
 
 msgctxt "field:project.work,timesheet_works:"
 msgid "Timesheet Works"
@@ -68,15 +68,15 @@ msgstr ""
 
 msgctxt "field:project.work,total_effort:"
 msgid "Total Effort"
-msgstr ""
+msgstr "Efort total"
 
 msgctxt "field:project.work,total_progress:"
 msgid "Total Progress"
-msgstr ""
+msgstr "Progres total"
 
 msgctxt "field:project.work,type:"
 msgid "Type"
-msgstr ""
+msgstr "Tip"
 
 msgctxt "field:project.work.status,count:"
 msgid "Count"
@@ -84,59 +84,64 @@ msgstr ""
 
 msgctxt "field:project.work.status,default:"
 msgid "Default"
-msgstr ""
+msgstr "Implicit"
 
 msgctxt "field:project.work.status,name:"
 msgid "Name"
-msgstr ""
+msgstr "Nume"
 
 msgctxt "field:project.work.status,progress:"
 msgid "Progress"
-msgstr ""
+msgstr "Progres"
 
 msgctxt "field:project.work.status,types:"
 msgid "Types"
-msgstr ""
+msgstr "Tipuri"
 
 msgctxt "help:project.work,effort_duration:"
 msgid "Estimated Effort for this work."
-msgstr ""
+msgstr "Efort estimat pentru această lucrare."
 
 msgctxt "help:project.work,progress:"
 msgid "Estimated progress for this work."
-msgstr ""
+msgstr "Progresul estimat pentru această lucrare."
 
 msgctxt "help:project.work,timesheet_available:"
 msgid "Check to record time spent."
-msgstr ""
+msgstr "Bifați pentru a înregistra timpul petrecut."
 
+#, fuzzy
 msgctxt "help:project.work,timesheet_duration:"
 msgid "Total time spent on this work and the sub-works."
-msgstr ""
+msgstr "Timpul total petrecut cu această lucrare și sub-lucrări."
 
+#, fuzzy
 msgctxt "help:project.work,total_effort:"
 msgid "Estimated total effort for this work and the sub-works."
-msgstr ""
+msgstr "Efort total estimat pentru această lucrare și sublucrări."
 
+#, fuzzy
 msgctxt "help:project.work,total_progress:"
 msgid "Estimated total progress for this work and the sub-works."
-msgstr ""
+msgstr "Progresul total estimat pentru această lucrare și sublucrări."
 
 msgctxt "help:project.work.status,count:"
 msgid "Check to show the number of works in this status."
-msgstr ""
+msgstr "Bifați pentru a afișa numărul de lucrări în această stare."
 
 msgctxt "help:project.work.status,default:"
 msgid "Check to use as default status for the type."
-msgstr ""
+msgstr "Bifați pentru a utiliza ca stare implicită pentru tip."
 
+#, fuzzy
 msgctxt "help:project.work.status,progress:"
 msgid "The minimum progress required for this status."
-msgstr ""
+msgstr "Progresul minim necesar pentru acest statut."
 
+#, fuzzy
 msgctxt "help:project.work.status,types:"
 msgid "The type of works which can use this status."
-msgstr ""
+msgstr "Tipul de lucrări care pot folosi acest statut."
 
 msgctxt "model:ir.action,name:act_open_child_work"
 msgid "Tasks"
@@ -156,29 +161,33 @@ msgstr "Sarcini"
 
 msgctxt "model:ir.action,name:act_timesheet_line_form_work"
 msgid "Timesheet Lines"
-msgstr ""
+msgstr "Rânduri Foaie Pontaj"
 
 msgctxt "model:ir.action,name:act_work_list"
 msgid "Works Efforts"
 msgstr ""
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_work_status"
 msgid "Work Status"
-msgstr ""
+msgstr "Starea de lucru"
 
 msgctxt "model:ir.action,name:act_work_tree"
 msgid "Works Efforts"
 msgstr ""
 
+#, fuzzy
 msgctxt "model:ir.message,text:msg_domain_all"
 msgid "All"
-msgstr ""
+msgstr "Tot"
 
 msgctxt "model:ir.message,text:msg_erase_party_opened_project"
 msgid ""
 "You cannot erase party \"%(party)s\" while they have opened projects with "
 "company \"%(company)s\"."
 msgstr ""
+"Nu puteți șterge partea „%(party)s” în timp ce au proiecte deschise cu "
+"compania „%(company)s”."
 
 msgctxt "model:ir.message,text:msg_work_children_progress"
 msgid "To complete work \"%(work)s\" you must complete also all its children."
@@ -189,6 +198,8 @@ msgid ""
 "To set work \"%(work)s\" in \"%(status)s\" status, you must increase its "
 "progress up to at least %(progress)s."
 msgstr ""
+"Pentru a seta lucrarea „%(work)s” în starea „%(status)s”, trebuie să-i "
+"măriți progresul până la cel puțin %(progress)s."
 
 msgctxt "model:ir.message,text:msg_work_parent_progress"
 msgid "To re-open work \"%(work)s\" you must re-open also its parent \"%(parent)s\"."
@@ -196,7 +207,7 @@ msgstr ""
 
 msgctxt "model:ir.rule.group,name:rule_group_work_companies"
 msgid "User in companies"
-msgstr ""
+msgstr "Utilizator în companii"
 
 msgctxt "model:ir.ui.menu,name:menu_configuration"
 msgid "Configuration"
@@ -226,37 +237,40 @@ msgctxt "model:ir.ui.menu,name:menu_work_list"
 msgid "Works Efforts"
 msgstr ""
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_work_status"
 msgid "Work Status"
-msgstr ""
+msgstr "Starea Lucrării"
 
 msgctxt "model:ir.ui.menu,name:menu_work_tree"
 msgid "Works Efforts"
 msgstr ""
 
+#, fuzzy
 msgctxt "model:project.work,name:"
 msgid "Work Effort"
-msgstr ""
+msgstr "Efort de muncă"
 
+#, fuzzy
 msgctxt "model:project.work.status,name:"
 msgid "Work Status"
-msgstr ""
+msgstr "Starea Lucrării"
 
 msgctxt "model:project.work.status,name:work_done_status"
 msgid "Done"
-msgstr ""
+msgstr "Terminat"
 
 msgctxt "model:project.work.status,name:work_open_status"
 msgid "Open"
-msgstr ""
+msgstr "Deschis"
 
 msgctxt "model:res.group,name:group_project_admin"
 msgid "Project Administration"
-msgstr ""
+msgstr "Administrare Proiect"
 
 msgctxt "selection:project.work,type:"
 msgid "Project"
-msgstr ""
+msgstr "Proiect"
 
 msgctxt "selection:project.work,type:"
 msgid "Task"
@@ -264,24 +278,24 @@ msgstr "Sarcina"
 
 msgctxt "view:project.work.status:"
 msgid "%"
-msgstr ""
+msgstr "%"
 
 msgctxt "view:project.work:"
 msgid "%"
-msgstr ""
+msgstr "%"
 
 msgctxt "view:project.work:"
 msgid "End:"
-msgstr ""
+msgstr "Sfârşit:"
 
 msgctxt "view:project.work:"
 msgid "General"
-msgstr ""
+msgstr "General"
 
 msgctxt "view:project.work:"
 msgid "Start:"
-msgstr ""
+msgstr "Start:"
 
 msgctxt "view:project.work:"
 msgid "Timesheet:"
-msgstr ""
+msgstr "Foaie de pontaj:"

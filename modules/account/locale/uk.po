@@ -1164,6 +1164,11 @@ msgctxt "field:account.journal.open_cash.context,start_date:"
 msgid "Start Date"
 msgstr "Початкова дата"
 
+#, fuzzy
+msgctxt "field:account.journal.period,company:"
+msgid "Company"
+msgstr "Компанія"
+
 msgctxt "field:account.journal.period,icon:"
 msgid "Icon"
 msgstr "Піктограма"
@@ -2375,11 +2380,8 @@ msgstr ""
 
 msgctxt "help:account.account,taxes:"
 msgid ""
-"Default tax for manual encoding of move lines\n"
-"for journal types: \"expense\" and \"revenue\"."
+"Default taxes for documents to be applied when there is no other source."
 msgstr ""
-"Податок за умовчанням для ручного кодування рядків проводок\n"
-"для типів журналів: \"витрати\" і \"дохід\"."
 
 msgctxt "help:account.account,template_override:"
 msgid "Check to override template definition"
@@ -3464,13 +3466,6 @@ msgstr ""
 "Ви не можете змінити або видалити період журналу \"%(journal_period)s\", "
 "оскільки він містить проводки."
 
-msgctxt "model:ir.message,text:msg_modify_delete_period_moves"
-msgid ""
-"You cannot modify or delete period \"%(period)s\" because it contains moves."
-msgstr ""
-"Ви не можете змінити або видалити період \"%(period)s\", оскільки він "
-"містить проводки."
-
 msgctxt "model:ir.message,text:msg_modify_line_closed_journal_period"
 msgid ""
 "You cannot add/modify/delete lines on closed journal-period "
@@ -3598,6 +3593,15 @@ msgctxt "model:ir.message,text:msg_period_fiscalyear_dates"
 msgid ""
 "The dates for period \"%(period)s\" must be between the dates of its fiscal "
 "year \"%(fiscalyear)s\"."
+msgstr ""
+"Дати для періоду \"%(period)s\" мають бути між датами його фінансового року "
+"\"%(fiscalyear)s\"."
+
+#, fuzzy
+msgctxt "model:ir.message,text:msg_period_move_dates"
+msgid ""
+"The dates for period \"%(period)s\" must include the date \"%(move_date)s\" "
+"of move \"%(move)s\"."
 msgstr ""
 "Дати для періоду \"%(period)s\" мають бути між датами його фінансового року "
 "\"%(fiscalyear)s\"."
@@ -3793,6 +3797,15 @@ msgctxt "model:ir.model.button,string:fiscalyear_reopen_button"
 msgid "Re-Open"
 msgstr "Перевідкрити"
 
+#, fuzzy
+msgctxt "model:ir.model.button,string:journal_period_close_button"
+msgid "Close"
+msgstr "Закрити"
+
+msgctxt "model:ir.model.button,string:journal_period_reopen_button"
+msgid "Reopen"
+msgstr ""
+
 msgctxt "model:ir.model.button,string:move_post_button"
 msgid "Post"
 msgstr "Провести"
@@ -3835,6 +3848,11 @@ msgid "User in companies"
 msgstr "Користувач у компаніях"
 
 msgctxt "model:ir.rule.group,name:rule_group_general_ledger_line_companies"
+msgid "User in companies"
+msgstr "Користувач у компаніях"
+
+#, fuzzy
+msgctxt "model:ir.rule.group,name:rule_group_journal_period_companies"
 msgid "User in companies"
 msgstr "Користувач у компаніях"
 
@@ -4842,14 +4860,6 @@ msgstr "Періоди"
 msgctxt "view:account.fiscalyear:"
 msgid "Sequences"
 msgstr "Послідовності"
-
-msgctxt "view:account.journal.period:"
-msgid "Close"
-msgstr "Закрити"
-
-msgctxt "view:account.journal.period:"
-msgid "Re-Open"
-msgstr "Перевідкрити"
 
 msgctxt "view:account.move.line.reschedule.start:"
 msgid "every"

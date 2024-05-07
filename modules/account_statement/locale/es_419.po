@@ -122,8 +122,16 @@ msgctxt "field:account.statement.line,amount:"
 msgid "Amount"
 msgstr ""
 
+msgctxt "field:account.statement.line,amount_second_currency:"
+msgid "Amount Second Currency"
+msgstr ""
+
 msgctxt "field:account.statement.line,company:"
 msgid "Company"
+msgstr ""
+
+msgctxt "field:account.statement.line,company_currency:"
+msgid "Company Currency"
 msgstr ""
 
 msgctxt "field:account.statement.line,currency:"
@@ -162,6 +170,10 @@ msgctxt "field:account.statement.line,related_to:"
 msgid "Related To"
 msgstr ""
 
+msgctxt "field:account.statement.line,second_currency:"
+msgid "Second Currency"
+msgstr ""
+
 msgctxt "field:account.statement.line,statement:"
 msgid "Statement"
 msgstr "Estado de cuenta"
@@ -172,6 +184,10 @@ msgstr "Estado del estado de cuenta"
 
 msgctxt "field:account.statement.line.group,amount:"
 msgid "Amount"
+msgstr ""
+
+msgctxt "field:account.statement.line.group,amount_second_currency:"
+msgid "Amount Second Currency"
 msgstr ""
 
 msgctxt "field:account.statement.line.group,currency:"
@@ -199,6 +215,10 @@ msgctxt "field:account.statement.line.group,party:"
 msgid "Party"
 msgstr ""
 
+msgctxt "field:account.statement.line.group,second_currency:"
+msgid "Second Currency"
+msgstr ""
+
 msgctxt "field:account.statement.line.group,statement:"
 msgid "Statement"
 msgstr "Estado de cuenta"
@@ -211,8 +231,16 @@ msgctxt "field:account.statement.origin,amount:"
 msgid "Amount"
 msgstr ""
 
+msgctxt "field:account.statement.origin,amount_second_currency:"
+msgid "Amount Second Currency"
+msgstr ""
+
 msgctxt "field:account.statement.origin,company:"
 msgid "Company"
+msgstr ""
+
+msgctxt "field:account.statement.origin,company_currency:"
+msgid "Company Currency"
 msgstr ""
 
 msgctxt "field:account.statement.origin,currency:"
@@ -245,6 +273,10 @@ msgstr ""
 
 msgctxt "field:account.statement.origin,pending_amount:"
 msgid "Pending Amount"
+msgstr ""
+
+msgctxt "field:account.statement.origin,second_currency:"
+msgid "Second Currency"
 msgstr ""
 
 #, fuzzy
@@ -369,15 +401,15 @@ msgctxt ""
 msgid "Validated"
 msgstr ""
 
+msgctxt "model:ir.message,text:msg_bank_account_currency"
+msgid ""
+"The currency of bank account \"%(bank_account)s\" must be the same as "
+"\"%(currency)s\" of the journal \"%(journal)s\"."
+msgstr ""
+
 msgctxt "model:ir.message,text:msg_import_no_journal"
 msgid ""
 "To import statement, you must create a journal for account \"%(account)s\"."
-msgstr ""
-
-msgctxt "model:ir.message,text:msg_import_wrong_currency"
-msgid ""
-"To import statement, the journal \"%(journal)s\" must have the currency "
-"\"%(currency)s\" instead of \"%(journal_currency)s\"."
 msgstr ""
 
 msgctxt "model:ir.message,text:msg_journal_bank_account_unique"
@@ -396,6 +428,22 @@ msgctxt "model:ir.message,text:msg_statement_invoice_paid_cancelled"
 msgid ""
 "The validation of the statements will remove already paid or cancelled "
 "invoices from the statements' lines."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_statement_line_delete_cancel_draft"
+msgid ""
+"To delete line \"%(line)s\" you must cancel or reset to draft statement "
+"\"%(statement)s\"."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_statement_line_second_currency_sign"
+msgid "You must set the same sign for second currency than amount."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_statement_origin_delete_cancel_draft"
+msgid ""
+"To delete origin \"%(origin)s\" you must cancel or reset to draft statement "
+"\"%(statement)s\"."
 msgstr ""
 
 msgctxt "model:ir.message,text:msg_statement_paid_invoice_draft"

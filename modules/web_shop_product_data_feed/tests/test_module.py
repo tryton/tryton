@@ -6,6 +6,7 @@ import tempfile
 from decimal import Decimal
 from unittest.mock import Mock, patch
 
+from trytond.modules.account.tests import create_chart
 from trytond.modules.company.tests import create_company, set_company
 from trytond.pool import Pool
 from trytond.protocols.wrappers import HTTPStatus
@@ -22,14 +23,17 @@ class WebShopProductDataFeedTestCase(ModuleTestCase):
     def test_data_feed(self):
         "Test data feed"
         pool = Pool()
+        Account = pool.get('account.account')
         Carrier = pool.get('carrier')
         CarrierSelection = pool.get('carrier.selection')
         Country = pool.get('country.country')
         Party = pool.get('party.party')
         Product = pool.get('product.product')
+        ProductCategory = pool.get('product.category')
         ProductIdentifier = pool.get('product.identifier')
         ProductTemplate = pool.get('product.template')
         Shop = pool.get('web.shop')
+        Tax = pool.get('account.tax')
         UoM = pool.get('product.uom')
 
         unit, = UoM.search([('name', '=', "Unit")])
@@ -45,6 +49,25 @@ class WebShopProductDataFeedTestCase(ModuleTestCase):
                 patch.object(tempfile, 'gettempdir') as gettempdir:
             gettempdir.return_value = directory
 
+            create_chart(company)
+
+            tax_account, = Account.search([
+                    ('name', '=', 'Main Tax'),
+                    ])
+
+            tax = Tax()
+            tax.name = tax.description = 'Test'
+            tax.type = 'percentage'
+            tax.rate = Decimal('0.2')
+            tax.invoice_account = tax_account
+            tax.credit_note_account = tax_account
+            tax.save()
+
+            category = ProductCategory(
+                name='Category', accounting=True,
+                customer_taxes=[tax])
+            category.save()
+
             carrier_template = ProductTemplate(
                 name="Shipping",
                 type='service',
@@ -52,6 +75,7 @@ class WebShopProductDataFeedTestCase(ModuleTestCase):
                 salable=True,
                 sale_uom=unit,
                 list_price=Decimal('5.0000'),
+                account_category=category,
                 )
             carrier_template.save()
             carrier_product = Product(template=carrier_template)

@@ -113,7 +113,8 @@ msgstr "Комбінації клавіш вкладки"
 msgid "Unable to reach the server."
 msgstr "Не вдається підключитися до сервера."
 
-msgid "Too many requests. Try again later."
+#, fuzzy
+msgid "Error: \"%1\". Try again later."
 msgstr "Дуже багато запитів. Спробуйте ще раз пізніше."
 
 msgid "Login"
@@ -129,7 +130,18 @@ msgstr "Ім'я користувача"
 msgid "Login with"
 msgstr "Логін"
 
+msgid "Too many requests. Try again later."
+msgstr "Дуже багато запитів. Спробуйте ще раз пізніше."
+
 msgid "Not found."
+msgstr ""
+
+msgid "Send you an email to reset your password."
+msgstr ""
+
+msgid ""
+"A request to reset your password has been sent.\n"
+"Please check your mailbox."
 msgstr ""
 
 msgid "Your selection:"
@@ -183,12 +195,6 @@ msgstr "п"
 msgid "False"
 msgstr "Неправда"
 
-msgid "Message: "
-msgstr "Повідомлення: "
-
-msgid "Warning: "
-msgstr "Попередження: "
-
 msgid "Always ignore this warning."
 msgstr "Завжди ігнорувати це попередження."
 
@@ -198,13 +204,8 @@ msgstr "Ви бажаєте продовжити?"
 msgid "No"
 msgstr "Ні"
 
-msgid "Confirmation: "
-msgstr "Підтвердження: "
-
-msgid "Concurrency Exception"
-msgstr "Виняток одночасного доступу"
-
-msgid "Write Concurrency Warning: "
+#, fuzzy
+msgid "Concurrency Warning"
 msgstr "Попередження одночасного запису: "
 
 msgid "This record has been modified while you were editing it."
@@ -233,6 +234,9 @@ msgstr "Записати все одно"
 
 msgid "Application Error"
 msgstr "Помилка програми"
+
+msgid "Details"
+msgstr ""
 
 msgid "Report Bug"
 msgstr "Повідомити про помилку"
@@ -523,8 +527,9 @@ msgstr "%1%"
 msgid "Menu"
 msgstr ""
 
-msgid "Copy"
-msgstr ""
+#, fuzzy
+msgid "Copy Selected Rows"
+msgstr "Вибрані записи"
 
 msgid "#ERROR"
 msgstr ""
@@ -588,6 +593,12 @@ msgstr "Модель: "
 
 msgid "ID:"
 msgstr "ID:"
+
+msgid "Module:"
+msgstr ""
+
+msgid "XML ID:"
+msgstr ""
 
 msgid "Created by:"
 msgstr "Ким створено:"

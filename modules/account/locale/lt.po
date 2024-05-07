@@ -1218,6 +1218,11 @@ msgctxt "field:account.journal.open_cash.context,start_date:"
 msgid "Start Date"
 msgstr "Pradžios data"
 
+#, fuzzy
+msgctxt "field:account.journal.period,company:"
+msgid "Company"
+msgstr "Organizacija"
+
 msgctxt "field:account.journal.period,icon:"
 msgid "Icon"
 msgstr "Ikona"
@@ -2460,11 +2465,8 @@ msgstr ""
 
 msgctxt "help:account.account,taxes:"
 msgid ""
-"Default tax for manual encoding of move lines\n"
-"for journal types: \"expense\" and \"revenue\"."
+"Default taxes for documents to be applied when there is no other source."
 msgstr ""
-"Numatytieji mokesčiai, kuriant operacijų eilutes \n"
-"\"išlaidų\" ir \"pajamų\" tipo žurnalams rankiniu būdu."
 
 msgctxt "help:account.account,template_override:"
 msgid "Check to override template definition"
@@ -3567,13 +3569,6 @@ msgid ""
 " contains moves."
 msgstr ""
 
-msgctxt "model:ir.message,text:msg_modify_delete_period_moves"
-msgid ""
-"You cannot modify or delete period \"%(period)s\" because it contains moves."
-msgstr ""
-"Negalima keisti ar pašalinti periodą \"%(period)s\", nes jo metu jau "
-"atliktos operacijos."
-
 msgctxt "model:ir.message,text:msg_modify_line_closed_journal_period"
 msgid ""
 "You cannot add/modify/delete lines on closed journal-period "
@@ -3700,6 +3695,15 @@ msgctxt "model:ir.message,text:msg_period_fiscalyear_dates"
 msgid ""
 "The dates for period \"%(period)s\" must be between the dates of its fiscal "
 "year \"%(fiscalyear)s\"."
+msgstr ""
+"Periodo \"%(period)s\" datos turi priklausyti finansiniams metams "
+"\"%(fiscalyear)s\"."
+
+#, fuzzy
+msgctxt "model:ir.message,text:msg_period_move_dates"
+msgid ""
+"The dates for period \"%(period)s\" must include the date \"%(move_date)s\" "
+"of move \"%(move)s\"."
 msgstr ""
 "Periodo \"%(period)s\" datos turi priklausyti finansiniams metams "
 "\"%(fiscalyear)s\"."
@@ -3896,6 +3900,15 @@ msgctxt "model:ir.model.button,string:fiscalyear_reopen_button"
 msgid "Re-Open"
 msgstr "Iš naujo atverti"
 
+#, fuzzy
+msgctxt "model:ir.model.button,string:journal_period_close_button"
+msgid "Close"
+msgstr "Užverti"
+
+msgctxt "model:ir.model.button,string:journal_period_reopen_button"
+msgid "Reopen"
+msgstr ""
+
 msgctxt "model:ir.model.button,string:move_post_button"
 msgid "Post"
 msgstr "Įtraukti į apskaitą"
@@ -3945,6 +3958,11 @@ msgstr "Organizacijos naudotojas"
 
 #, fuzzy
 msgctxt "model:ir.rule.group,name:rule_group_general_ledger_line_companies"
+msgid "User in companies"
+msgstr "Organizacijos naudotojas"
+
+#, fuzzy
+msgctxt "model:ir.rule.group,name:rule_group_journal_period_companies"
 msgid "User in companies"
 msgstr "Organizacijos naudotojas"
 
@@ -5014,16 +5032,6 @@ msgstr "Periods"
 msgctxt "view:account.fiscalyear:"
 msgid "Sequences"
 msgstr "Numeruotės"
-
-#, fuzzy
-msgctxt "view:account.journal.period:"
-msgid "Close"
-msgstr "Close"
-
-#, fuzzy
-msgctxt "view:account.journal.period:"
-msgid "Re-Open"
-msgstr "Re-Open"
 
 msgctxt "view:account.move.line.reschedule.start:"
 msgid "every"

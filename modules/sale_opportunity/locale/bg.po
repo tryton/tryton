@@ -94,6 +94,15 @@ msgctxt "field:sale.opportunity,state:"
 msgid "State"
 msgstr "Състояние"
 
+#, fuzzy
+msgctxt "field:sale.opportunity.line,description:"
+msgid "Description"
+msgstr "Описание"
+
+msgctxt "field:sale.opportunity.line,note:"
+msgid "Note"
+msgstr ""
+
 msgctxt "field:sale.opportunity.line,opportunity:"
 msgid "Opportunity"
 msgstr "Възможност"
@@ -106,9 +115,17 @@ msgctxt "field:sale.opportunity.line,product:"
 msgid "Product"
 msgstr "Продукт"
 
+msgctxt "field:sale.opportunity.line,product_uom_category:"
+msgid "Product UoM Category"
+msgstr ""
+
 msgctxt "field:sale.opportunity.line,quantity:"
 msgid "Quantity"
 msgstr "Количество"
+
+msgctxt "field:sale.opportunity.line,summary:"
+msgid "Summary"
+msgstr ""
 
 msgctxt "field:sale.opportunity.line,unit:"
 msgid "Unit"
@@ -143,6 +160,12 @@ msgctxt ""
 "field:sale.opportunity.reporting.conversion.employee.time_series,employee:"
 msgid "Employee"
 msgstr "Служител"
+
+msgctxt "help:sale.opportunity,address:"
+msgid ""
+"The default address for the invoice and shipment.\n"
+"Leave empty to use the default values."
+msgstr ""
 
 #, fuzzy
 msgctxt "help:sale.opportunity,amount:"
@@ -482,6 +505,14 @@ msgstr "Месец"
 msgctxt "selection:sale.opportunity.reporting.context,period:"
 msgid "Year"
 msgstr "Година"
+
+msgctxt "view:sale.opportunity.line:"
+msgid "General"
+msgstr ""
+
+msgctxt "view:sale.opportunity.line:"
+msgid "Notes"
+msgstr ""
 
 #, fuzzy
 msgctxt "view:sale.opportunity.reporting.conversion:"

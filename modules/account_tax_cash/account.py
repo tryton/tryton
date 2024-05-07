@@ -223,7 +223,7 @@ class Invoice(metaclass=PoolMeta):
             },
         help="The tax group reported on cash basis for this invoice.")
 
-    @fields.depends('party', 'type')
+    @fields.depends('party', 'type', 'tax_group_on_cash_basis')
     def on_change_party(self):
         super(Invoice, self).on_change_party()
         if self.type == 'in' and self.party:

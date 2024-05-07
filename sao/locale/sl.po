@@ -113,7 +113,8 @@ msgstr "Bližnjice zavihkov"
 msgid "Unable to reach the server."
 msgstr "Ni se mogoče povezati s strežnikom."
 
-msgid "Too many requests. Try again later."
+#, fuzzy
+msgid "Error: \"%1\". Try again later."
 msgstr "Preveč poslanih zahtev. Poskusite kasneje."
 
 msgid "Login"
@@ -128,8 +129,19 @@ msgstr "Uporabniško ime"
 msgid "Login with"
 msgstr "Prijava z"
 
+msgid "Too many requests. Try again later."
+msgstr "Preveč poslanih zahtev. Poskusite kasneje."
+
 msgid "Not found."
 msgstr "Ni najdeno."
+
+msgid "Send you an email to reset your password."
+msgstr ""
+
+msgid ""
+"A request to reset your password has been sent.\n"
+"Please check your mailbox."
+msgstr ""
 
 msgid "Your selection:"
 msgstr "Vaša izbira:"
@@ -182,12 +194,6 @@ msgstr "d"
 msgid "False"
 msgstr "Ne"
 
-msgid "Message: "
-msgstr "Sporočilo: "
-
-msgid "Warning: "
-msgstr "Opozorilo: "
-
 msgid "Always ignore this warning."
 msgstr "Vedno prezri to opozorilo."
 
@@ -197,13 +203,8 @@ msgstr "Ali želiš nadaljevati?"
 msgid "No"
 msgstr "Ne"
 
-msgid "Confirmation: "
-msgstr "Potrditev: "
-
-msgid "Concurrency Exception"
-msgstr "Napaka sočasnega izvajanja"
-
-msgid "Write Concurrency Warning: "
+#, fuzzy
+msgid "Concurrency Warning"
 msgstr "Opozorilo sočasnega zapisovanja: "
 
 msgid "This record has been modified while you were editing it."
@@ -232,6 +233,9 @@ msgstr "Vseeno shrani"
 
 msgid "Application Error"
 msgstr "Programska napaka"
+
+msgid "Details"
+msgstr ""
 
 msgid "Report Bug"
 msgstr "Prijava programske napake"
@@ -522,8 +526,9 @@ msgstr "%1%"
 msgid "Menu"
 msgstr ""
 
-msgid "Copy"
-msgstr ""
+#, fuzzy
+msgid "Copy Selected Rows"
+msgstr "Izbrani zapisi"
 
 msgid "#ERROR"
 msgstr "#NAPAKA"
@@ -584,6 +589,12 @@ msgstr "Model:"
 
 msgid "ID:"
 msgstr "ID:"
+
+msgid "Module:"
+msgstr ""
+
+msgid "XML ID:"
+msgstr ""
 
 msgid "Created by:"
 msgstr "Ustvaril:"

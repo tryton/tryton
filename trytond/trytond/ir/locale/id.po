@@ -55,6 +55,10 @@ msgctxt "field:ir.action.act_window,context_model:"
 msgid "Context Model"
 msgstr ""
 
+msgctxt "field:ir.action.act_window,context_model_ref:"
+msgid "Context Model"
+msgstr ""
+
 msgctxt "field:ir.action.act_window,domain:"
 msgid "Domain Value"
 msgstr ""
@@ -105,6 +109,11 @@ msgid "Records"
 msgstr "Rekaman"
 
 msgctxt "field:ir.action.act_window,res_model:"
+msgid "Model"
+msgstr "Model"
+
+#, fuzzy
+msgctxt "field:ir.action.act_window,res_model_ref:"
 msgid "Model"
 msgstr "Model"
 
@@ -193,7 +202,17 @@ msgctxt "field:ir.action.report,model:"
 msgid "Model"
 msgstr "Model"
 
+#, fuzzy
+msgctxt "field:ir.action.report,model_ref:"
+msgid "Model"
+msgstr "Model"
+
 msgctxt "field:ir.action.report,module:"
+msgid "Module"
+msgstr "Modul"
+
+#, fuzzy
+msgctxt "field:ir.action.report,module_ref:"
 msgid "Module"
 msgstr "Modul"
 
@@ -299,6 +318,11 @@ msgid "Keywords"
 msgstr "Kata Kunci"
 
 msgctxt "field:ir.action.wizard,model:"
+msgid "Model"
+msgstr "Model"
+
+#, fuzzy
+msgctxt "field:ir.action.wizard,model_ref:"
 msgid "Model"
 msgstr "Model"
 
@@ -801,6 +825,11 @@ msgctxt "field:ir.model,module:"
 msgid "Module"
 msgstr "Modul"
 
+#, fuzzy
+msgctxt "field:ir.model,module_ref:"
+msgid "Module"
+msgstr "Modul"
+
 msgctxt "field:ir.model,name:"
 msgid "Model Description"
 msgstr "Deskripsi Model"
@@ -814,6 +843,11 @@ msgid "Group"
 msgstr "Kelompok"
 
 msgctxt "field:ir.model.access,model:"
+msgid "Model"
+msgstr "Model"
+
+#, fuzzy
+msgctxt "field:ir.model.access,model_ref:"
 msgid "Model"
 msgstr "Model"
 
@@ -846,6 +880,11 @@ msgid "Help"
 msgstr "Bantuan"
 
 msgctxt "field:ir.model.button,model:"
+msgid "Model"
+msgstr "Model"
+
+#, fuzzy
+msgctxt "field:ir.model.button,model_ref:"
 msgid "Model"
 msgstr "Model"
 
@@ -917,7 +956,17 @@ msgctxt "field:ir.model.data,model:"
 msgid "Model"
 msgstr "Model"
 
+#, fuzzy
+msgctxt "field:ir.model.data,model_ref:"
+msgid "Model"
+msgstr "Model"
+
 msgctxt "field:ir.model.data,module:"
+msgid "Module"
+msgstr "Modul"
+
+#, fuzzy
+msgctxt "field:ir.model.data,module_ref:"
 msgid "Module"
 msgstr "Modul"
 
@@ -949,7 +998,17 @@ msgctxt "field:ir.model.field,model:"
 msgid "Model"
 msgstr "Model"
 
+#, fuzzy
+msgctxt "field:ir.model.field,model_ref:"
+msgid "Model"
+msgstr "Model"
+
 msgctxt "field:ir.model.field,module:"
+msgid "Module"
+msgstr "Modul"
+
+#, fuzzy
+msgctxt "field:ir.model.field,module_ref:"
 msgid "Module"
 msgstr "Modul"
 
@@ -973,9 +1032,23 @@ msgctxt "field:ir.model.field.access,field:"
 msgid "Field"
 msgstr ""
 
+msgctxt "field:ir.model.field.access,field_ref:"
+msgid "Field"
+msgstr ""
+
 msgctxt "field:ir.model.field.access,group:"
 msgid "Group"
 msgstr "Kelompok"
+
+#, fuzzy
+msgctxt "field:ir.model.field.access,model:"
+msgid "Model"
+msgstr "Model"
+
+#, fuzzy
+msgctxt "field:ir.model.field.access,model_ref:"
+msgid "Model"
+msgstr "Model"
 
 msgctxt "field:ir.model.field.access,perm_create:"
 msgid "Create Access"
@@ -1169,6 +1242,11 @@ msgctxt "field:ir.rule.group,model:"
 msgid "Model"
 msgstr "Model"
 
+#, fuzzy
+msgctxt "field:ir.rule.group,model_ref:"
+msgid "Model"
+msgstr "Model"
+
 msgctxt "field:ir.rule.group,name:"
 msgid "Name"
 msgstr "Nama"
@@ -1327,11 +1405,20 @@ msgctxt "field:ir.translation,module:"
 msgid "Module"
 msgstr "Modul"
 
+#, fuzzy
+msgctxt "field:ir.translation,module_ref:"
+msgid "Module"
+msgstr "Modul"
+
 msgctxt "field:ir.translation,name:"
 msgid "Field Name"
 msgstr ""
 
 msgctxt "field:ir.translation,overriding_module:"
+msgid "Overriding Module"
+msgstr ""
+
+msgctxt "field:ir.translation,overriding_module_ref:"
 msgid "Overriding Module"
 msgstr ""
 
@@ -1436,6 +1523,11 @@ msgctxt "field:ir.ui.icon,module:"
 msgid "Module"
 msgstr "Modul"
 
+#, fuzzy
+msgctxt "field:ir.ui.icon,module_ref:"
+msgid "Module"
+msgstr "Modul"
+
 msgctxt "field:ir.ui.icon,name:"
 msgid "Name"
 msgstr "Nama"
@@ -1488,6 +1580,10 @@ msgctxt "field:ir.ui.view,arch:"
 msgid "View Architecture"
 msgstr ""
 
+msgctxt "field:ir.ui.view,basis:"
+msgid "Basis"
+msgstr ""
+
 msgctxt "field:ir.ui.view,data:"
 msgid "Data"
 msgstr "Data"
@@ -1495,6 +1591,15 @@ msgstr "Data"
 msgctxt "field:ir.ui.view,domain:"
 msgid "Domain"
 msgstr ""
+
+msgctxt "field:ir.ui.view,extensions:"
+msgid "Extensions"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:ir.ui.view,field_children:"
+msgid "Children Field"
+msgstr "Cabang"
 
 msgctxt "field:ir.ui.view,field_childs:"
 msgid "Children Field"
@@ -1508,7 +1613,17 @@ msgctxt "field:ir.ui.view,model:"
 msgid "Model"
 msgstr "Model"
 
+#, fuzzy
+msgctxt "field:ir.ui.view,model_ref:"
+msgid "Model"
+msgstr "Model"
+
 msgctxt "field:ir.ui.view,module:"
+msgid "Module"
+msgstr "Modul"
+
+#, fuzzy
+msgctxt "field:ir.ui.view,module_ref:"
 msgid "Module"
 msgstr "Modul"
 
@@ -1585,7 +1700,16 @@ msgctxt "field:ir.ui.view_tree_width,field:"
 msgid "Field"
 msgstr ""
 
+msgctxt "field:ir.ui.view_tree_width,field_ref:"
+msgid "Field"
+msgstr ""
+
 msgctxt "field:ir.ui.view_tree_width,model:"
+msgid "Model"
+msgstr "Model"
+
+#, fuzzy
+msgctxt "field:ir.ui.view_tree_width,model_ref:"
 msgid "Model"
 msgstr "Model"
 
@@ -1699,7 +1823,7 @@ msgctxt "help:ir.lang,parent:"
 msgid "Code of the exceptional parent"
 msgstr ""
 
-msgctxt "help:ir.model,module:"
+msgctxt "help:ir.model,module_ref:"
 msgid "Module in which this model is defined."
 msgstr ""
 
@@ -1731,7 +1855,7 @@ msgid ""
 "against the relation of the field."
 msgstr ""
 
-msgctxt "help:ir.model.field,module:"
+msgctxt "help:ir.model.field,module_ref:"
 msgid "Module in which this field is defined."
 msgstr ""
 
@@ -2523,6 +2647,14 @@ msgctxt "model:ir.message,text:msg_button_name_unique"
 msgid "The name of the button must be unique per model."
 msgstr ""
 
+msgctxt "model:ir.message,text:msg_context_datetime"
+msgid "At date/time: %(datetime)s"
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_context_groups"
+msgid "Within groups: %(groups)s"
+msgstr ""
+
 msgctxt "model:ir.message,text:msg_create_rule_error"
 msgid ""
 "You are not allowed to create records of \"%(model)s\" because they fail on at least one of these rules:\n"
@@ -2661,12 +2793,12 @@ msgstr "Ya"
 msgctxt "model:ir.message,text:msg_digits_validation_record"
 msgid ""
 "The number of digits in the value \"%(value)r\" for field \"%(field)s\" in "
-"\"%(record)s\" of \"%(model)s\" exceeds the limit of \"%(digits)i\"."
+"record \"%(record)s\" of \"%(model)s\" exceeds the limit of \"%(digits)i\"."
 msgstr ""
 
 msgctxt "model:ir.message,text:msg_domain_validation_record"
 msgid ""
-"The value \"%(value)s\" for field \"%(field)s\" in \"%(record)s\" of "
+"The value \"%(value)s\" for field \"%(field)s\" in record \"%(record)s\" of "
 "\"%(model)s\" is not valid according to its domain."
 msgstr ""
 
@@ -2712,7 +2844,7 @@ msgstr ""
 
 msgctxt "model:ir.message,text:msg_forbidden_char_validation_record"
 msgid ""
-"The value \"%(value)s\" for field \"%(field)s\" in \"%(record)s\" of "
+"The value \"%(value)s\" for field \"%(field)s\" in record \"%(record)s\" of "
 "\"%(model)s\" contains some invalid chars \"%(chars)s\"."
 msgstr ""
 
@@ -2824,9 +2956,12 @@ msgctxt "model:ir.message,text:msg_required_validation"
 msgid "A value is required for field \"%(field)s\" in \"%(model)s\"."
 msgstr ""
 
+#, fuzzy
 msgctxt "model:ir.message,text:msg_required_validation_record"
-msgid "A value is required for field \"%(field)s\" in \"%(record)s\" of \"%(model)s\"."
-msgstr ""
+msgid ""
+"A value is required for field \"%(field)s\" in record \"%(record)s\" of "
+"\"%(model)s\"."
+msgstr "Anda tidak diizinkan mengakses \"%(model)s\"."
 
 msgctxt "model:ir.message,text:msg_resource_copy_help"
 msgid "The resources to which this record must be copied."
@@ -2842,7 +2977,7 @@ msgstr ""
 
 msgctxt "model:ir.message,text:msg_selection_validation_record"
 msgid ""
-"The value \"%(value)s\" for field \"%(field)s\" in \"%(record)s\" of "
+"The value \"%(value)s\" for field \"%(field)s\" in record \"%(record)s\" of "
 "\"%(model)s\" is not one of the allowed options."
 msgstr ""
 
@@ -2894,15 +3029,16 @@ msgstr ""
 
 msgctxt "model:ir.message,text:msg_size_validation_record"
 msgid ""
-"The value \"%(value)s\" for field \"%(field)s\" in \"%(record)s\" of "
+"The value \"%(value)s\" for field \"%(field)s\" in record \"%(record)s\" of "
 "\"%(model)s\" is too long (%(size)i > %(max_size)i)."
 msgstr ""
 
+#, fuzzy
 msgctxt "model:ir.message,text:msg_time_format_validation_record"
 msgid ""
-"The time value \"%(value)s\" for field \"%(field)s\" in \"%(record)s\" of "
-"\"%(model)s\" is not valid."
-msgstr ""
+"The time value \"%(value)s\" for field \"%(field)s\" in record "
+"\"%(record)s\" of \"%(model)s\" is not valid."
+msgstr "Anda tidak diizinkan mengakses \"%(model)s\"."
 
 msgctxt "model:ir.message,text:msg_timedelta_M"
 msgid "M"
@@ -2989,9 +3125,13 @@ msgstr ""
 #, fuzzy
 msgctxt "model:ir.message,text:msg_write_xml_record"
 msgid ""
-"You are not allowed to modify the field \"%(field)s\" in \"%(record)s\" of "
-"\"%(model)s\"."
+"You are not allowed to modify the field \"%(field)s\" in record "
+"\"%(record)s\" of \"%(model)s\"."
 msgstr "Anda tidak diizinkan mengakses \"%(model)s\"."
+
+msgctxt "model:ir.message,text:msg_xml_id"
+msgid "XML ID"
+msgstr ""
 
 #, fuzzy
 msgctxt "model:ir.message,text:msg_xml_id_syntax_error"

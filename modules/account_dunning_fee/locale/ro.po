@@ -8,7 +8,7 @@ msgstr ""
 
 msgctxt "field:account.dunning.fee,compute_method:"
 msgid "Compute Method"
-msgstr ""
+msgstr "Metoda de Calcul"
 
 msgctxt "field:account.dunning.fee,journal:"
 msgid "Journal"
@@ -16,11 +16,11 @@ msgstr "Jurnal"
 
 msgctxt "field:account.dunning.fee,name:"
 msgid "Name"
-msgstr ""
+msgstr "Nume"
 
 msgctxt "field:account.dunning.fee,percentage:"
 msgid "Percentage"
-msgstr ""
+msgstr "Procentaj"
 
 msgctxt "field:account.dunning.fee,product:"
 msgid "Product"

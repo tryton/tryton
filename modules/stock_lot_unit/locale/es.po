@@ -35,12 +35,12 @@ msgid "Unit Quantity"
 msgstr "Cantidad unitaria"
 
 msgctxt "help:product.product,lot_uom:"
-msgid "The default unit of measurer for lot."
-msgstr "La unidad de medida por defecto del lote."
+msgid "The default unit of measure for lot."
+msgstr "La unidad por defecto del lote."
 
 msgctxt "help:product.template,lot_uom:"
-msgid "The default unit of measurer for lot."
-msgstr "La unidad de medida por defecto del lote."
+msgid "The default unit of measure for lot."
+msgstr "La unidad por defecto del lote."
 
 msgctxt "help:stock.lot,unit:"
 msgid "The biggest unit for the lot."

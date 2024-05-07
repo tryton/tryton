@@ -88,7 +88,7 @@ msgid "Product Secondary UoM Category"
 msgstr "Artikel Zweitmaßeinheitenkategorie"
 
 msgctxt "help:product.product,purchase_secondary_uom:"
-msgid "The second Unit of Measure for purchases."
+msgid "The secondary Unit of Measure for purchases."
 msgstr "Die zweite Maßeinheit für Einkäufe."
 
 msgctxt "help:product.product,purchase_secondary_uom_factor:"
@@ -108,7 +108,7 @@ msgstr ""
 "Koeffizient(Einkaufseinheit) = 1 (Zweitmaßeinheit)"
 
 msgctxt "help:product.template,purchase_secondary_uom:"
-msgid "The second Unit of Measure for purchases."
+msgid "The secondary Unit of Measure for purchases."
 msgstr "Die zweite Maßeinheit für Einkäufe."
 
 msgctxt "help:product.template,purchase_secondary_uom_factor:"
@@ -148,7 +148,7 @@ msgid "The category of the default Unit of Measure."
 msgstr "Die Kategorie für die Standardmaßeinheit."
 
 msgctxt "help:purchase.product_supplier,purchase_secondary_uom:"
-msgid "The second Unit of Measure for purchases."
+msgid "The secondary Unit of Measure for purchases."
 msgstr "Die zweite Maßeinheit für Einkäufe."
 
 msgctxt "help:purchase.product_supplier,purchase_secondary_uom_factor:"

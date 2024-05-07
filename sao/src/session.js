@@ -547,7 +547,8 @@
                         'type': 'button',
                         'title': Sao.i18n.gettext(
                             "Send you an email to reset your password."),
-                    }).text("Reset forgotten password").click(() => {
+                    }).text(Sao.i18n.gettext(
+                        "Reset forgotten password")).click(() => {
                         session.do_reset_password().then(() => {
                             return Sao.common.message.run(Sao.i18n.gettext(
                                 "A request to reset your password has been sent.\n" +

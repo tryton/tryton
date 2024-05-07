@@ -31,6 +31,10 @@ msgid "disable thread usage"
 msgstr "Threading deaktivieren"
 
 #, python-format
+msgid "Invalid response id (%s) expected %s"
+msgstr "Ungültige Antwort-ID (%s) erwartet %s"
+
+#, python-format
 msgid "Unable to set locale %s"
 msgstr "Kann locale %s nicht setzen."
 
@@ -80,7 +84,7 @@ msgstr "Nein"
 msgid "Yes"
 msgstr "Ja"
 
-msgid "Concurrency Exception"
+msgid "Concurrency Warning"
 msgstr "Aktualisierungskonflikt"
 
 msgid "This record has been modified while you were editing it."
@@ -113,6 +117,9 @@ msgstr "Schließen"
 msgid "Application Error"
 msgstr "Anwendungsfehler"
 
+msgid "Details"
+msgstr "Details"
+
 msgid "Report Bug"
 msgstr "Fehler melden"
 
@@ -129,17 +136,34 @@ msgstr "Eine neue Version ist verfügbar!"
 msgid "Download"
 msgstr "Herunterladen"
 
+msgid "Concurrency Exception"
+msgstr "Aktualisierungskonflikt"
+
 msgid "Could not get a session."
 msgstr "Die Session-Anforderung ist fehlgeschlagen."
+
+#, python-format
+msgid "Error: \"%s\". Try again later."
+msgstr "Fehler: \"%s\". Bitte versuchen Sie es später erneut."
 
 msgid "Too many requests. Try again later."
 msgstr "Zu viele Anfragen. Bitte versuchen Sie es später erneut."
 
-msgid "Not found."
-msgstr "Nicht gefunden."
-
 msgid "Not Found."
 msgstr "Nicht gefunden."
+
+msgid "Reset forgotten password"
+msgstr "Vergessenes Passwort zurücksetzen"
+
+msgid "Send you an email to reset your password."
+msgstr "E-Mail zum Zurücksetzen des Passworts senden."
+
+msgid ""
+"A request to reset your password has been sent.\n"
+"Please check your mailbox."
+msgstr ""
+"Eine Anfrage zum Zurücksetzen Ihres Passworts wurde gesendet.\n"
+"Bitte überprüfen Sie Ihr Postfach."
 
 msgid "..."
 msgstr "..."
@@ -718,6 +742,12 @@ msgstr "Modell:"
 msgid "ID:"
 msgstr "ID:"
 
+msgid "Module:"
+msgstr "Modul:"
+
+msgid "XML ID:"
+msgstr "XML-ID:"
+
 msgid "Created by:"
 msgstr "Erstellt von:"
 
@@ -1091,8 +1121,17 @@ msgstr "Bild ist zu groß."
 msgid "Copy"
 msgstr "Kopieren"
 
-msgid "Paste"
-msgstr "Einfügen"
+msgid "Copy Row"
+msgstr "Zeile kopieren"
+
+msgid "Copy Rows"
+msgstr "Zeilen kopieren"
+
+msgid "Copy Column"
+msgstr "Spalte kopieren"
+
+msgid "Paste Rows"
+msgstr "Zeilen Einfügen"
 
 msgid ".."
 msgstr ".."

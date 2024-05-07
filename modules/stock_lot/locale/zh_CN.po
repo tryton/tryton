@@ -71,6 +71,11 @@ msgctxt "field:stock.lot.trace,downward_traces:"
 msgid "Downward Traces"
 msgstr "向下追踪"
 
+#, fuzzy
+msgctxt "field:stock.lot.trace,from_location:"
+msgid "From Location"
+msgstr "库位"
+
 msgctxt "field:stock.lot.trace,lot:"
 msgid "Lot"
 msgstr "批次"
@@ -86,6 +91,11 @@ msgstr "数量"
 msgctxt "field:stock.lot.trace,shipment:"
 msgid "Shipment"
 msgstr "收发货"
+
+#, fuzzy
+msgctxt "field:stock.lot.trace,to_location:"
+msgid "To Location"
+msgstr "库位"
 
 msgctxt "field:stock.lot.trace,unit:"
 msgid "Unit"

@@ -339,4 +339,25 @@ test-sao:
     PACKAGE: sao
     TAG_PATTERN: '/^sao-.*/'
 
+test-demo:
+  stage: test
+  image: ${CI_DEPENDENCY_PROXY_GROUP_IMAGE_PREFIX}/python:3.8
+  variables:
+    TRYTOND_DATABASE__PATH: /tmp
+    PIP_CACHE_DIR: "$CI_PROJECT_DIR/.cache/pip"
+  cache:
+    paths:
+      - .cache/pip/http
+  before_script:
+    - pip install packages/trytond* packages/proteus*
+  script:
+    - touch /tmp/demo.sqlite
+    - echo "admin" > /tmp/password
+    - TRYTONPASSFILE=/tmp/password trytond-admin --database demo --all --email admin@example.com
+    - python -m demo --database demo
+  rules:
+    - changes:
+      - demo/**/*
+      - modules/{account,account_invoice,account_payment,account_statement,company,country,currency,party,product,production,production_routing,production_work,project,purchase,sale,stock,timesheet}/**/*
+
 include: '.gitlab-ci-modules.yml'

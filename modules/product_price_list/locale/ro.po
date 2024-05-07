@@ -12,12 +12,11 @@ msgstr "Rânduri"
 
 msgctxt "field:product.price_list,name:"
 msgid "Name"
-msgstr "Denumire"
+msgstr "Nume"
 
-#, fuzzy
 msgctxt "field:product.price_list,price:"
 msgid "Price"
-msgstr "Listă de prețuri"
+msgstr "Pret"
 
 msgctxt "field:product.price_list,tax_included:"
 msgid "Tax Included"
@@ -69,11 +68,11 @@ msgstr "Identificatorul principal al listei de prețuri."
 
 msgctxt "help:product.price_list,price:"
 msgid "The value used for 'unit_price'."
-msgstr ""
+msgstr "Valoarea utilizata pentru 'unit_price'."
 
 msgctxt "help:product.price_list,tax_included:"
 msgid "Check if result's formula includes taxes."
-msgstr "Verificare dacă rezultatul al formulei include taxe."
+msgstr "Verificare dacă formula rezultatului include taxe."
 
 msgctxt "help:product.price_list,unit:"
 msgid "The unit in which the quantity is expressed."
@@ -97,7 +96,7 @@ msgstr ""
 
 msgctxt "help:product.price_list.line,price_list:"
 msgid "The price list to which the line belongs."
-msgstr "Lista de prețuri la care aparține rândul."
+msgstr "Lista de prețuri de care aparține rândul."
 
 msgctxt "help:product.price_list.line,product:"
 msgid "Apply only to this product."
@@ -116,7 +115,7 @@ msgid ""
 "Invalid formula \"%(formula)s\" in price list line \"%(line)s\" with "
 "exception \"%(exception)s\"."
 msgstr ""
-"Formula nevalidă \"%(formula)s\" din linia listei de prețuri \"%(line)s\" cu"
+"Formula invalidă \"%(formula)s\" din linia listei de prețuri \"%(line)s\" cu"
 " excepția \"%(exception)s\"."
 
 msgctxt "model:ir.rule.group,name:rule_group_price_list_companies"
@@ -133,15 +132,15 @@ msgstr "Listă de prețuri"
 
 msgctxt "model:product.price_list.line,name:"
 msgid "Price List Line"
-msgstr "Rândul al listei de prețuri"
+msgstr "Rând al listei de prețuri"
 
 msgctxt "selection:product.price_list,price:"
 msgid "Cost Price"
-msgstr ""
+msgstr "Preţ Cost"
 
 msgctxt "selection:product.price_list,price:"
 msgid "List price"
-msgstr ""
+msgstr "Pret de Lista"
 
 msgctxt "selection:product.price_list,unit:"
 msgid "Product Default"

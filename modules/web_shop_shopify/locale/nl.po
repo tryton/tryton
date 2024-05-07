@@ -191,7 +191,7 @@ msgid ""
 "To change the template of product \"%(product)s\" you must unpublish it from"
 " the Shopify web shops."
 msgstr ""
-"Om het sjabloon van het artikel \"%(product)\" te kunnen bewerken, moet de "
+"Om het sjabloon van het artikel \"%(product)s\" te kunnen bewerken, moet de "
 "publicatie in de Shopfiy webshop eerst worden ingetrokken."
 
 msgctxt "model:ir.message,text:msg_product_fail"

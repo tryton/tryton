@@ -4,7 +4,7 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "field:account.payment,braintree_account:"
 msgid "Braintree Account"
-msgstr ""
+msgstr "Cont Braintree"
 
 msgctxt "field:account.payment,braintree_checkout_id:"
 msgid "Braintree Checkout ID"
@@ -16,91 +16,95 @@ msgstr ""
 
 msgctxt "field:account.payment,braintree_customer:"
 msgid "Braintree Customer"
-msgstr ""
+msgstr "Client Braintree"
 
 msgctxt "field:account.payment,braintree_customer_method:"
 msgid "Braintree Customer Method"
-msgstr ""
+msgstr "Metoda Client Braintree"
 
 msgctxt "field:account.payment,braintree_customer_method_selection:"
 msgid "Braintree Customer Method"
-msgstr ""
+msgstr "Metoda Client Braintree"
 
 msgctxt "field:account.payment,braintree_device_data:"
 msgid "Braintree Device Data"
-msgstr ""
+msgstr "Datele Dispozitivului Braintree"
 
 msgctxt "field:account.payment,braintree_dispute_reason:"
 msgid "Braintree Dispute Reason"
-msgstr ""
+msgstr "Motiv Disputa Braintree"
 
 msgctxt "field:account.payment,braintree_dispute_status:"
 msgid "Braintree Dispute Status"
-msgstr ""
+msgstr "Stare Disputa Braintree"
 
 msgctxt "field:account.payment,braintree_error_message:"
 msgid "Braintree Error Message"
-msgstr ""
+msgstr "Mesaj Eroare Braintree"
 
 msgctxt "field:account.payment,braintree_nonce:"
 msgid "Braintree Nonce"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:account.payment,braintree_payment_settled:"
 msgid "Braintree Payment Settled"
-msgstr ""
+msgstr "Plata Braintree Decontata"
 
+#, fuzzy
 msgctxt "field:account.payment,braintree_refunds:"
 msgid "Refunds"
-msgstr ""
+msgstr "Rambursari"
 
 msgctxt "field:account.payment,braintree_settle_payment:"
 msgid "Braintree Settle Payment"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:account.payment,braintree_settlement_needed:"
 msgid "Braintree Settlement Needed"
-msgstr ""
+msgstr "Decontare Braintree Necesara"
 
 msgctxt "field:account.payment,braintree_transaction_id:"
 msgid "Braintree Transaction ID"
-msgstr ""
+msgstr "ID Tranzactie Braintree"
 
 msgctxt "field:account.payment.braintree.account,currency:"
 msgid "Currency"
-msgstr ""
+msgstr "Moneda"
 
 msgctxt "field:account.payment.braintree.account,environment:"
 msgid "Environment"
-msgstr ""
+msgstr "Mediu"
 
 msgctxt "field:account.payment.braintree.account,merchant_id:"
 msgid "Merchant ID"
-msgstr ""
+msgstr "ID Comerciant"
 
 msgctxt "field:account.payment.braintree.account,name:"
 msgid "Name"
-msgstr ""
+msgstr "Nume"
 
 msgctxt "field:account.payment.braintree.account,private_key:"
 msgid "Private Key"
-msgstr ""
+msgstr "Cheie Privata"
 
 msgctxt "field:account.payment.braintree.account,public_key:"
 msgid "Public Key"
-msgstr ""
+msgstr "Cheie Publica"
 
+#, fuzzy
 msgctxt "field:account.payment.braintree.account,sandbox_settle_transaction:"
 msgid "Automatic Settlement"
-msgstr ""
+msgstr "Decontare Automata"
 
 msgctxt "field:account.payment.braintree.account,webhook_endpoint:"
 msgid "Webhook Endpoint"
-msgstr ""
+msgstr "Punct Final Webhook"
 
 msgctxt "field:account.payment.braintree.account,webhook_identifier:"
 msgid "Webhook Identifier"
-msgstr ""
+msgstr "Identificator Webhook"
 
 msgctxt "field:account.payment.braintree.customer,braintree_account:"
 msgid "Account"
@@ -116,15 +120,15 @@ msgstr ""
 
 msgctxt "field:account.payment.braintree.customer,braintree_customer_id:"
 msgid "Braintree Customer ID"
-msgstr ""
+msgstr "ID Client Braintree"
 
 msgctxt "field:account.payment.braintree.customer,braintree_device_data:"
 msgid "Braintree Device Data"
-msgstr ""
+msgstr "Date Dispozitiv Braintree"
 
 msgctxt "field:account.payment.braintree.customer,braintree_error_message:"
 msgid "Braintree Error Message"
-msgstr ""
+msgstr "Mesaj Eroare Braintree"
 
 msgctxt "field:account.payment.braintree.customer,braintree_nonce:"
 msgid "Braintree Nonce"
@@ -132,29 +136,29 @@ msgstr ""
 
 msgctxt "field:account.payment.braintree.customer,identical_customers:"
 msgid "Identical Customers"
-msgstr ""
+msgstr "Clienti Identici"
 
 msgctxt "field:account.payment.braintree.customer,party:"
 msgid "Party"
-msgstr ""
+msgstr "Parte"
 
 msgctxt "field:account.payment.braintree.customer.identical,source:"
 msgid "Source"
-msgstr ""
+msgstr "Sursa"
 
 msgctxt "field:account.payment.braintree.customer.identical,target:"
 msgid "Target"
-msgstr ""
+msgstr "Tinta"
 
 msgctxt ""
 "field:account.payment.braintree.customer.payment_method.delete.ask,customer:"
 msgid "Customer"
-msgstr ""
+msgstr "Client"
 
 msgctxt ""
 "field:account.payment.braintree.customer.payment_method.delete.ask,payment_method:"
 msgid "Payment Method"
-msgstr ""
+msgstr "Metoda de Plata"
 
 msgctxt "field:account.payment.braintree.refund,amount:"
 msgid "Amount"
@@ -162,35 +166,35 @@ msgstr "Suma"
 
 msgctxt "field:account.payment.braintree.refund,approved_by:"
 msgid "Approved by"
-msgstr ""
+msgstr "Aprobat de"
 
 msgctxt "field:account.payment.braintree.refund,braintree_error_message:"
 msgid "Braintree Error Message"
-msgstr ""
+msgstr "Mesaj Eroare Braintree"
 
 msgctxt "field:account.payment.braintree.refund,braintree_transaction_id:"
 msgid "Braintree Transaction ID"
-msgstr ""
+msgstr "ID Tranzactie Braintree"
 
 msgctxt "field:account.payment.braintree.refund,company:"
 msgid "Company"
-msgstr ""
+msgstr "Companie"
 
 msgctxt "field:account.payment.braintree.refund,currency:"
 msgid "Currency"
-msgstr ""
+msgstr "Moneda"
 
 msgctxt "field:account.payment.braintree.refund,payment:"
 msgid "Payment"
-msgstr ""
+msgstr "Plata"
 
 msgctxt "field:account.payment.braintree.refund,state:"
 msgid "State"
-msgstr ""
+msgstr "Stare"
 
 msgctxt "field:account.payment.braintree.refund,submitted_by:"
 msgid "Submitted by"
-msgstr ""
+msgstr "Depus de"
 
 msgctxt "field:account.payment.journal,braintree_account:"
 msgid "Account"
@@ -198,61 +202,61 @@ msgstr "Cont"
 
 msgctxt "field:party.party,braintree_customers:"
 msgid "Braintree Customers"
-msgstr ""
+msgstr "Clienti Braintree"
 
 msgctxt "field:party.party.reception_direct_debit,braintree_account:"
 msgid "Braintree Account"
-msgstr ""
+msgstr "Cont Braintree"
 
 msgctxt "field:party.party.reception_direct_debit,braintree_customer:"
 msgid "Braintree Customer"
-msgstr ""
+msgstr "Client Braintree"
 
 msgctxt "field:party.party.reception_direct_debit,braintree_customer_method:"
 msgid "Braintree Customer Method"
-msgstr ""
+msgstr "Metoda Client Braintree"
 
 msgctxt ""
 "field:party.party.reception_direct_debit,braintree_customer_method_selection:"
 msgid "Braintree Customer Method"
-msgstr ""
+msgstr "Metoda Client Braintree"
 
 msgctxt "help:account.payment.braintree.account,webhook_endpoint:"
 msgid "The URL to be called by Braintree."
-msgstr ""
+msgstr "URL-ul ce trebuie apelat de catre Braintree."
 
 msgctxt "model:account.payment.braintree.account,name:"
 msgid "Braintree Account"
-msgstr ""
+msgstr "Cont Braintree"
 
 msgctxt "model:account.payment.braintree.customer,name:"
 msgid "Braintree Customer"
-msgstr ""
+msgstr "Client Braintree"
 
 msgctxt "model:account.payment.braintree.customer.identical,name:"
 msgid "Braintree Customer Identical"
-msgstr ""
+msgstr "Client Identic Braintree"
 
 msgctxt ""
 "model:account.payment.braintree.customer.payment_method.delete.ask,name:"
 msgid "Delete Customer Payment Method"
-msgstr ""
+msgstr "Stergere Metoda de Plata Client"
 
 msgctxt "model:account.payment.braintree.refund,name:"
 msgid "Braintree Payment Refund"
-msgstr ""
+msgstr "Rambursare Plata Braintree"
 
 msgctxt "model:ir.action,name:act_account_form"
 msgid "Braintree Accounts"
-msgstr ""
+msgstr "Conturi Braintree"
 
 msgctxt "model:ir.action,name:act_customer_form"
 msgid "Braintree Customers"
-msgstr ""
+msgstr "Clienti Braintree"
 
 msgctxt "model:ir.action,name:act_refund_form"
 msgid "Braintree Refunds"
-msgstr ""
+msgstr "Rambursari Braintree"
 
 msgctxt "model:ir.action,name:report_checkout"
 msgid "Braintree Checkout"
@@ -268,7 +272,7 @@ msgstr ""
 
 msgctxt "model:ir.action,name:wizard_customer_payment_method_delete"
 msgid "Delete Payment Method"
-msgstr ""
+msgstr "Stergere Metoda de Plata"
 
 msgctxt "model:ir.action.act_window.domain,name:act_refund_form_domain_all"
 msgid "All"
@@ -276,35 +280,37 @@ msgstr ""
 
 msgctxt "model:ir.action.act_window.domain,name:act_refund_form_domain_draft"
 msgid "Draft"
-msgstr ""
+msgstr "Ciorna"
 
 msgctxt "model:ir.action.act_window.domain,name:act_refund_form_domain_failed"
 msgid "Failed"
-msgstr ""
+msgstr "Esuat"
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_refund_form_domain_processing"
 msgid "Processing"
-msgstr ""
+msgstr "In Curs de Procesare"
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_refund_form_domain_suceeded"
 msgid "Succeeded"
-msgstr ""
+msgstr "Reusit"
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_refund_form_domain_to_approve"
 msgid "To Approve"
-msgstr ""
+msgstr "De Aprobat"
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_refund_form_domain_to_process"
 msgid "To Process"
-msgstr ""
+msgstr "De Procesat"
 
 msgctxt "model:ir.message,text:msg_braintree_receivable"
 msgid "To pay \"%(payment)s\", you cannot use a Braintree journal \"%(journal)s\"."
 msgstr ""
+"Pentru a plăti \"%(payment)s\", nu puteți utiliza un jurnal Braintree "
+"\"%(journal)s\"."
 
 msgctxt "model:ir.message,text:msg_no_braintree_nonce"
 msgid ""
@@ -316,18 +322,20 @@ msgctxt "model:ir.model.button,confirm:account_new_identifier_button"
 msgid ""
 "This action will make the previous URL unusable. Do you want to continue?"
 msgstr ""
+"Această acțiune va face ca adresa URL anterioară să fie inutilizabilă. "
+"Doriți să continuați?"
 
 msgctxt "model:ir.model.button,string:account_new_identifier_button"
 msgid "New URL"
-msgstr ""
+msgstr "URL Nou"
 
 msgctxt "model:ir.model.button,string:customer_braintree_checkout_button"
 msgid "Add Card"
-msgstr ""
+msgstr "Adaugare Card"
 
 msgctxt "model:ir.model.button,string:customer_payment_method_delete_button"
 msgid "Delete Payment Method"
-msgstr ""
+msgstr "Stergere Metoda de Plata"
 
 msgctxt "model:ir.model.button,string:payment_braintree_checkout_button"
 msgid "Braintree Checkout"
@@ -343,27 +351,27 @@ msgstr ""
 
 msgctxt "model:ir.model.button,string:refund_approve_button"
 msgid "Approve"
-msgstr ""
+msgstr "Aproba"
 
 msgctxt "model:ir.model.button,string:refund_draft_button"
 msgid "Draft"
-msgstr ""
+msgstr "Ciorna"
 
 msgctxt "model:ir.model.button,string:refund_submit_button"
 msgid "Submit"
-msgstr ""
+msgstr "Trimite"
 
 msgctxt "model:ir.ui.menu,name:menu_account_form"
 msgid "Braintree Accounts"
-msgstr ""
+msgstr "Conturi Braintree"
 
 msgctxt "model:ir.ui.menu,name:menu_customer_form"
 msgid "Braintree Customers"
-msgstr ""
+msgstr "Clienti Braintree"
 
 msgctxt "model:ir.ui.menu,name:menu_refund_form"
 msgid "Braintree Refunds"
-msgstr ""
+msgstr "Rambursari Braintree"
 
 msgctxt "report:account.payment.braintree.checkout:"
 msgid "Braintree Checkout"
@@ -371,15 +379,15 @@ msgstr ""
 
 msgctxt "report:account.payment.braintree.checkout:"
 msgid "Pay"
-msgstr ""
+msgstr "Plata"
 
 msgctxt "report:account.payment.braintree.checkout:"
 msgid "Register card"
-msgstr ""
+msgstr "Inregistreaza Card"
 
 msgctxt "selection:account.payment.braintree.account,environment:"
 msgid "Production"
-msgstr ""
+msgstr "Productie"
 
 msgctxt "selection:account.payment.braintree.account,environment:"
 msgid "Sandbox"
@@ -387,39 +395,39 @@ msgstr ""
 
 msgctxt "selection:account.payment.braintree.refund,state:"
 msgid "Approved"
-msgstr ""
+msgstr "Aprobat"
 
 msgctxt "selection:account.payment.braintree.refund,state:"
 msgid "Draft"
-msgstr ""
+msgstr "Ciorna"
 
 msgctxt "selection:account.payment.braintree.refund,state:"
 msgid "Failed"
-msgstr ""
+msgstr "Esuat"
 
 msgctxt "selection:account.payment.braintree.refund,state:"
 msgid "Processing"
-msgstr ""
+msgstr "In Curs de Procesare"
 
 msgctxt "selection:account.payment.braintree.refund,state:"
 msgid "Submitted"
-msgstr ""
+msgstr "Trimis"
 
 msgctxt "selection:account.payment.braintree.refund,state:"
 msgid "Succeeded"
-msgstr ""
+msgstr "Reusit"
 
 msgctxt "selection:account.payment.journal,process_method:"
 msgid "Braintree"
-msgstr ""
+msgstr "Braintree"
 
 msgctxt "selection:ir.cron,method:"
 msgid "Create Braintree Customer"
-msgstr ""
+msgstr "Creeaza Client Braintree"
 
 msgctxt "selection:ir.cron,method:"
 msgid "Delete Braintree Customer"
-msgstr ""
+msgstr "Sterge Client Braintree"
 
 msgctxt "selection:ir.cron,method:"
 msgid "Pull Braintree Payment"
@@ -429,9 +437,10 @@ msgctxt "selection:ir.cron,method:"
 msgid "Pull Braintree Refund"
 msgstr ""
 
+#, fuzzy
 msgctxt "selection:ir.cron,method:"
 msgid "Refund Braintree Payment"
-msgstr ""
+msgstr "Restituie Plata Braintree"
 
 msgctxt "selection:ir.cron,method:"
 msgid "Transact Braintree Payment"
@@ -439,11 +448,11 @@ msgstr ""
 
 msgctxt "view:account.payment.journal:"
 msgid "Braintree"
-msgstr ""
+msgstr "Braintree"
 
 msgctxt "view:account.payment:"
 msgid "Braintree"
-msgstr ""
+msgstr "Braintree"
 
 msgctxt "view:account.payment:"
 msgid "Client Token:"
@@ -451,11 +460,11 @@ msgstr ""
 
 msgctxt "view:account.payment:"
 msgid "Customer:"
-msgstr ""
+msgstr "Client:"
 
 msgctxt "view:account.payment:"
 msgid "Device Data:"
-msgstr ""
+msgstr "Date Dispozitiv:"
 
 msgctxt "view:account.payment:"
 msgid "Nonce:"
@@ -463,7 +472,7 @@ msgstr ""
 
 msgctxt "view:account.payment:"
 msgid "Payment Method:"
-msgstr ""
+msgstr "Metoda de Plata:"
 
 msgctxt "view:account.payment:"
 msgid "Settle:"
@@ -475,22 +484,22 @@ msgstr ""
 
 msgctxt "view:account.payment:"
 msgid "Transaction ID:"
-msgstr ""
+msgstr "ID Tranzactie:"
 
 msgctxt "view:party.party.reception_direct_debit:"
 msgid "Customer:"
-msgstr ""
+msgstr "Client:"
 
 msgctxt "view:party.party.reception_direct_debit:"
 msgid "Payment Method:"
-msgstr ""
+msgstr "Metoda de Plata:"
 
 msgctxt ""
 "wizard_button:account.payment.braintree.customer.payment_method.delete,ask,delete_:"
 msgid "Delete"
-msgstr ""
+msgstr "Sterge"
 
 msgctxt ""
 "wizard_button:account.payment.braintree.customer.payment_method.delete,ask,end:"
 msgid "Cancel"
-msgstr ""
+msgstr "Anulare"

@@ -20,10 +20,10 @@ class Rule(metaclass=PoolMeta):
         return context
 
     @classmethod
-    def _get_cache_key(cls, model_name):
+    def _get_cache_key(cls, model_names):
         pool = Pool()
         User = pool.get('res.user')
-        key = super()._get_cache_key(model_name)
-        if model_name in _EMPLOYEES_RULE_MODELS:
+        key = super()._get_cache_key(model_names)
+        if model_names & _EMPLOYEES_RULE_MODELS:
             key = (*key, User.get_employees())
         return key

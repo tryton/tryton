@@ -2,58 +2,62 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
+#, fuzzy
 msgctxt "field:production,work_center:"
 msgid "Work Center"
-msgstr ""
+msgstr "Centru de lucru"
 
 msgctxt "field:production,works:"
 msgid "Works"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:production.routing.operation,work_center_category:"
 msgid "Work Center Category"
-msgstr ""
+msgstr "Categorie Centru de lucru"
 
+#, fuzzy
 msgctxt "field:production.work,active_cycles:"
 msgid "Active Cycles"
-msgstr ""
+msgstr "Cicluri active"
 
 msgctxt "field:production.work,company:"
 msgid "Company"
 msgstr "Companie"
 
-#, fuzzy
 msgctxt "field:production.work,cost:"
 msgid "Cost"
 msgstr "Cost"
 
 msgctxt "field:production.work,cycles:"
 msgid "Cycles"
-msgstr ""
+msgstr "Cicluri"
 
 msgctxt "field:production.work,operation:"
 msgid "Operation"
-msgstr ""
+msgstr "Operațiune"
 
 msgctxt "field:production.work,production:"
 msgid "Production"
-msgstr ""
+msgstr "Producţie"
 
 msgctxt "field:production.work,state:"
 msgid "State"
-msgstr ""
+msgstr "Stare"
 
 msgctxt "field:production.work,warehouse:"
 msgid "Warehouse"
-msgstr ""
+msgstr "Depozit"
 
+#, fuzzy
 msgctxt "field:production.work,work_center:"
 msgid "Work Center"
-msgstr ""
+msgstr "Centru de lucru"
 
+#, fuzzy
 msgctxt "field:production.work,work_center_category:"
 msgid "Work Center Category"
-msgstr ""
+msgstr "Categorie Centru de lucru"
 
 msgctxt "field:production.work.center,category:"
 msgid "Category"
@@ -93,9 +97,8 @@ msgstr "Denumire"
 
 msgctxt "field:production.work.cycle,cancelled_by:"
 msgid "Cancelled By"
-msgstr ""
+msgstr "Anulat de"
 
-#, fuzzy
 msgctxt "field:production.work.cycle,company:"
 msgid "Company"
 msgstr "Companie"
@@ -112,29 +115,34 @@ msgctxt "field:production.work.cycle,duration:"
 msgid "Duration"
 msgstr "Durata"
 
+#, fuzzy
 msgctxt "field:production.work.cycle,run_by:"
 msgid "Run By"
-msgstr ""
+msgstr "Condus de"
 
 msgctxt "field:production.work.cycle,state:"
 msgid "State"
 msgstr "Stare"
 
+#, fuzzy
 msgctxt "field:production.work.cycle,work:"
 msgid "Work"
-msgstr ""
+msgstr "Muncă"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_work_center_category_list"
 msgid "Work Center Categories"
-msgstr ""
+msgstr "Categorii de centre de lucru"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_work_center_list"
 msgid "Work Centers"
-msgstr ""
+msgstr "Centre de lucru"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_work_center_tree"
 msgid "Work Centers"
-msgstr ""
+msgstr "Centre de lucru"
 
 msgctxt "model:ir.action,name:act_work_list"
 msgid "Works"
@@ -146,7 +154,7 @@ msgstr "Toate"
 
 msgctxt "model:ir.action.act_window.domain,name:act_work_list_domain_draft"
 msgid "Draft"
-msgstr ""
+msgstr "Ciornă"
 
 msgctxt "model:ir.action.act_window.domain,name:act_work_list_domain_request"
 msgid "Request"
@@ -158,25 +166,31 @@ msgstr ""
 
 msgctxt "model:ir.action.act_window.domain,name:act_work_list_domain_waiting"
 msgid "Waiting"
-msgstr ""
+msgstr "În Aşteptare"
 
 msgctxt "model:ir.message,text:msg_delete_request"
 msgid "To delete work \"%(work)s\" it must be in the \"request\" or \"draft\" state."
 msgstr ""
+"Pentru a șterge lucrarea \"%(work)s\" trebuie să fie în starea „cerere” sau "
+"„ciornă”."
 
 msgctxt "model:ir.message,text:msg_do_finished_work"
 msgid "To complete production \"%(production)s\", work \"%(work)s\" must be finished."
 msgstr ""
+"Pentru a finaliza producția \"%(production)s\", lucrarea \"%(work)s\" "
+"trebuie să fie terminată."
 
 msgctxt "model:ir.message,text:msg_missing_work_center"
 msgid ""
 "Could not find a work center of category \"%(category)s\" under "
 "\"%(parent)s\"."
 msgstr ""
+"Nu s-a putut găsi un centru de lucru din categoria \"%(category)s\" sub "
+"\"%(parent)s\"."
 
 msgctxt "model:ir.model.button,string:work_cycle_cancel_button"
 msgid "Cancel"
-msgstr ""
+msgstr "Anulare"
 
 msgctxt "model:ir.model.button,string:work_cycle_do_button"
 msgid "Do"
@@ -184,71 +198,79 @@ msgstr ""
 
 msgctxt "model:ir.model.button,string:work_cycle_run_button"
 msgid "Run"
-msgstr ""
+msgstr "Rulează"
 
 msgctxt "model:ir.model.button,string:work_start_button"
 msgid "Start"
-msgstr ""
+msgstr "Start"
 
 msgctxt "model:ir.model.button,string:work_stop_button"
 msgid "Stop"
-msgstr ""
+msgstr "Stop"
 
 msgctxt "model:ir.rule.group,name:rule_group_work_center_companies"
 msgid "User in companies"
-msgstr ""
+msgstr "Utilizator în Companii"
 
 msgctxt "model:ir.rule.group,name:rule_group_work_companies"
 msgid "User in companies"
-msgstr ""
+msgstr "Utilizator în companii"
 
 msgctxt "model:ir.rule.group,name:rule_group_work_cycle_companies"
 msgid "User in companies"
-msgstr ""
+msgstr "Utilizator în Companii"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_work_center_category_list"
 msgid "Work Center Categories"
-msgstr ""
+msgstr "Categorii de centre de lucru"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_work_center_list"
 msgid "Work Centers"
-msgstr ""
+msgstr "Centre de lucru"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_work_center_tree"
 msgid "Work Centers"
-msgstr ""
+msgstr "Centre de lucru"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_work_list"
 msgid "Works"
-msgstr ""
+msgstr "Lucrări"
 
+#, fuzzy
 msgctxt "model:production.work,name:"
 msgid "Production Work"
-msgstr ""
+msgstr "Muncă de producție"
 
+#, fuzzy
 msgctxt "model:production.work.center,name:"
 msgid "Work Center"
-msgstr ""
+msgstr "Centru de lucru"
 
+#, fuzzy
 msgctxt "model:production.work.center.category,name:"
 msgid "Work Center Category"
-msgstr ""
+msgstr "Categorie Centru de lucru"
 
+#, fuzzy
 msgctxt "model:production.work.cycle,name:"
 msgid "Work Cycle"
-msgstr ""
+msgstr "Ciclul de lucru"
 
 msgctxt "selection:production.work,state:"
 msgid "Done"
-msgstr ""
+msgstr "Terminat"
 
 msgctxt "selection:production.work,state:"
 msgid "Draft"
-msgstr ""
+msgstr "Ciornă"
 
 msgctxt "selection:production.work,state:"
 msgid "Finished"
-msgstr ""
+msgstr "Terminat"
 
 msgctxt "selection:production.work,state:"
 msgid "Request"
@@ -256,32 +278,32 @@ msgstr ""
 
 msgctxt "selection:production.work,state:"
 msgid "Running"
-msgstr ""
+msgstr "În derulare"
 
 msgctxt "selection:production.work,state:"
 msgid "Waiting"
-msgstr ""
+msgstr "În Aşteptare"
 
 msgctxt "selection:production.work.center,cost_method:"
 msgid "Per Cycle"
-msgstr ""
+msgstr "Pe ciclu"
 
 msgctxt "selection:production.work.center,cost_method:"
 msgid "Per Hour"
-msgstr ""
+msgstr "Pe oră"
 
 msgctxt "selection:production.work.cycle,state:"
 msgid "Cancelled"
-msgstr ""
+msgstr "Anulat"
 
 msgctxt "selection:production.work.cycle,state:"
 msgid "Done"
-msgstr ""
+msgstr "Terminat"
 
 msgctxt "selection:production.work.cycle,state:"
 msgid "Draft"
-msgstr ""
+msgstr "Ciornă"
 
 msgctxt "selection:production.work.cycle,state:"
 msgid "Running"
-msgstr ""
+msgstr "În derulare"

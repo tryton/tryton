@@ -525,7 +525,7 @@ class HandlePurchaseCancellationException(Wizard):
     start = StateView('purchase.request.handle.purchase.cancellation.start',
         'purchase_request.handle_purchase_cancellation_start', [
             Button('Cancel', 'end', 'tryton-cancel'),
-            Button('Reset to draft', 'reset', 'tryton-clear'),
+            Button('Reset to Draft', 'reset', 'tryton-clear'),
             Button('Cancel Request', 'cancel_request', 'tryton-delete',
                 default=True),
             ])

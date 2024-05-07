@@ -888,6 +888,7 @@ class ModelView(Model):
                 elif isinstance(field, fields.Function):
                     init_targets = []
                 else:
+                    assert hasattr(init_record, fname), (init_record, fname)
                     init_targets = getattr(init_record, fname, [])
                 value = collections.defaultdict(list)
                 previous = [t.id for t in init_targets if t.id]

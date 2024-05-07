@@ -74,7 +74,7 @@ class EmailEntry(Gtk.Entry):
             RPCExecute(
                 'model', 'ir.email', 'complete', text, CONFIG['client.limit'],
                 process_exception=False, callback=callback)
-        except Exception:
+        except RPCException:
             logger.warning(
                 _("Unable to complete email entry"), exc_info=True)
         return False

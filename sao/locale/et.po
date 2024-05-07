@@ -120,7 +120,7 @@ msgstr "Vahelehe otseteed"
 msgid "Unable to reach the server."
 msgstr "Serverit ei leita."
 
-msgid "Too many requests. Try again later."
+msgid "Error: \"%1\". Try again later."
 msgstr ""
 
 msgid "Login"
@@ -136,7 +136,18 @@ msgstr "Kasutaja nimi"
 msgid "Login with"
 msgstr "Logi sisse"
 
+msgid "Too many requests. Try again later."
+msgstr ""
+
 msgid "Not found."
+msgstr ""
+
+msgid "Send you an email to reset your password."
+msgstr ""
+
+msgid ""
+"A request to reset your password has been sent.\n"
+"Please check your mailbox."
 msgstr ""
 
 msgid "Your selection:"
@@ -190,12 +201,6 @@ msgstr ""
 msgid "False"
 msgstr "Väär"
 
-msgid "Message: "
-msgstr "Teade: "
-
-msgid "Warning: "
-msgstr "Hoiatus: "
-
 msgid "Always ignore this warning."
 msgstr "Eira alati seda hoiatust."
 
@@ -205,13 +210,7 @@ msgstr "Kas soovid jätkata?"
 msgid "No"
 msgstr "Ei"
 
-msgid "Confirmation: "
-msgstr "Kinnitus: "
-
-msgid "Concurrency Exception"
-msgstr ""
-
-msgid "Write Concurrency Warning: "
+msgid "Concurrency Warning"
 msgstr ""
 
 msgid "This record has been modified while you were editing it."
@@ -241,6 +240,9 @@ msgstr "Salvesta ikkagi"
 
 msgid "Application Error"
 msgstr "Rakenduse viga"
+
+msgid "Details"
+msgstr ""
 
 msgid "Report Bug"
 msgstr "Vearaport"
@@ -543,8 +545,9 @@ msgstr "%1%"
 msgid "Menu"
 msgstr ""
 
-msgid "Copy"
-msgstr ""
+#, fuzzy
+msgid "Copy Selected Rows"
+msgstr "Järgmine kirje"
 
 msgid "#ERROR"
 msgstr ""
@@ -608,6 +611,12 @@ msgstr "Mudel: "
 
 msgid "ID:"
 msgstr "ID"
+
+msgid "Module:"
+msgstr ""
+
+msgid "XML ID:"
+msgstr ""
 
 #, fuzzy
 msgid "Created by:"

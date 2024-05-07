@@ -7,7 +7,6 @@ import operator
 import tryton.common as common
 from tryton.common import RPCException, RPCExecute
 from tryton.config import CONFIG
-from tryton.exceptions import TrytonServerError
 from tryton.pyson import PYSONDecoder
 
 from . import field as fields
@@ -720,7 +719,7 @@ class Record:
                 'model', self.model_name,
                 'autocomplete_' + fieldname, args, context=self.get_context(),
                 process_exception=False)
-        except (RPCException, TrytonServerError):
+        except RPCException:
             # ensure res is a list
             res = []
         self.autocompletion[fieldname] = res
@@ -728,9 +727,12 @@ class Record:
     def on_scan_code(self, code, depends):
         depends = self.expr_eval(depends)
         values = self._get_on_change_args(depends)
-        changes = RPCExecute(
-            'model', self.model_name, 'on_scan_code', values, code,
-            context=self.get_context(), process_exception=False)
+        try:
+            changes = RPCExecute(
+                'model', self.model_name, 'on_scan_code', values, code,
+                context=self.get_context(), process_exception=False)
+        except RPCException:
+            changes = []
         self.set_on_change(changes)
         self.set_modified()
         return bool(changes)

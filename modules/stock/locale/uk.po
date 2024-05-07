@@ -410,6 +410,10 @@ msgctxt "field:stock.move,from_location:"
 msgid "From Location"
 msgstr ""
 
+msgctxt "field:stock.move,from_location_name:"
+msgid "From Location"
+msgstr ""
+
 msgctxt "field:stock.move,internal_quantity:"
 msgid "Internal Quantity"
 msgstr ""
@@ -451,6 +455,10 @@ msgid "State"
 msgstr ""
 
 msgctxt "field:stock.move,to_location:"
+msgid "To Location"
+msgstr ""
+
+msgctxt "field:stock.move,to_location_name:"
 msgid "To Location"
 msgstr ""
 
@@ -2048,6 +2056,10 @@ msgid ""
 "deactivating the product."
 msgstr ""
 
+msgctxt "model:ir.message,text:msg_product_quantities_max"
+msgid "You cannot select more than %(max)s products to compute quantities."
+msgstr ""
+
 msgctxt "model:ir.message,text:msg_shipment_check_quantity"
 msgid ""
 "The quantities of shipment \"%(shipment)s\" are different by %(quantities)s."
@@ -2137,16 +2149,36 @@ msgctxt "model:ir.model.button,confirm:move_do_button"
 msgid "Are you sure you want to complete the move?"
 msgstr ""
 
+msgctxt "model:ir.model.button,confirm:shipment_in_cancel_button"
+msgid "Are you sure you want to cancel the shipment?"
+msgstr ""
+
 msgctxt "model:ir.model.button,confirm:shipment_in_receive_button"
 msgid "Are you sure you want to receive the shipment?"
+msgstr ""
+
+msgctxt "model:ir.model.button,confirm:shipment_in_return_cancel_button"
+msgid "Are you sure you want to cancel the shipment?"
 msgstr ""
 
 msgctxt "model:ir.model.button,confirm:shipment_in_return_done_button"
 msgid "Are you sure you want to complete the shipment?"
 msgstr ""
 
+msgctxt "model:ir.model.button,confirm:shipment_internal_cancel_button"
+msgid "Are you sure you want to cancel the shipment?"
+msgstr ""
+
+msgctxt "model:ir.model.button,confirm:shipment_out_cancel_button"
+msgid "Are you sure you want to cancel the shipment?"
+msgstr ""
+
 msgctxt "model:ir.model.button,confirm:shipment_out_done_button"
 msgid "Are you sure you want to complete the shipment?"
+msgstr ""
+
+msgctxt "model:ir.model.button,confirm:shipment_out_return_cancel_button"
+msgid "Are you sure you want to cancel the shipment?"
 msgstr ""
 
 msgctxt "model:ir.model.button,confirm:shipment_out_return_receive_button"
@@ -2202,7 +2234,7 @@ msgid "Cancel"
 msgstr ""
 
 msgctxt "model:ir.model.button,string:shipment_in_done_button"
-msgid "Done"
+msgid "Complete"
 msgstr ""
 
 msgctxt "model:ir.model.button,string:shipment_in_draft_button"
@@ -2222,7 +2254,7 @@ msgid "Cancel"
 msgstr ""
 
 msgctxt "model:ir.model.button,string:shipment_in_return_done_button"
-msgid "Done"
+msgid "Complete"
 msgstr ""
 
 msgctxt "model:ir.model.button,string:shipment_in_return_draft_button"
@@ -2242,7 +2274,7 @@ msgid "Cancel"
 msgstr ""
 
 msgctxt "model:ir.model.button,string:shipment_internal_done_button"
-msgid "Done"
+msgid "Complete"
 msgstr ""
 
 msgctxt "model:ir.model.button,string:shipment_internal_draft_button"
@@ -2266,7 +2298,7 @@ msgid "Cancel"
 msgstr ""
 
 msgctxt "model:ir.model.button,string:shipment_out_done_button"
-msgid "Done"
+msgid "Complete"
 msgstr ""
 
 msgctxt "model:ir.model.button,string:shipment_out_draft_button"
@@ -2286,7 +2318,7 @@ msgid "Cancel"
 msgstr ""
 
 msgctxt "model:ir.model.button,string:shipment_out_return_done_button"
-msgid "Done"
+msgid "Complete"
 msgstr ""
 
 msgctxt "model:ir.model.button,string:shipment_out_return_draft_button"
@@ -2950,11 +2982,7 @@ msgid "Warehouse:"
 msgstr ""
 
 msgctxt "selection:ir.cron,method:"
-msgid "Assign Customer Shipments"
-msgstr ""
-
-msgctxt "selection:ir.cron,method:"
-msgid "Assign Internal Shipments"
+msgid "Assign Shipments"
 msgstr ""
 
 msgctxt "selection:ir.cron,method:"

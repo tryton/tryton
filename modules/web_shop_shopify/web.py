@@ -20,7 +20,7 @@ from trytond.transaction import Transaction
 from trytond.url import http_host
 
 from .common import IdentifierMixin, IdentifiersMixin
-from .exceptions import ShopifyError
+from .exceptions import ShopifyCredentialWarning, ShopifyError
 
 EDIT_ORDER_DELAY = dt.timedelta(days=60 + 1)
 
@@ -579,6 +579,23 @@ class Shop(metaclass=PoolMeta):
         Sale.store_cache(to_update.keys())
         Amendment._clear_sale(to_update.keys())
         Sale.__queue__.process(to_update.keys())
+
+    @classmethod
+    def write(cls, *args):
+        pool = Pool()
+        Warning = pool.get('res.user.warning')
+        actions = iter(args)
+        for shops, values in zip(actions, actions):
+            if ({'shopify_url', 'shopify_password',
+                    'shopify_webhook_shared_secret'}
+                    & values.keys()):
+                warning_name = Warning.format('shopify_credential', shops)
+                if Warning.check(warning_name):
+                    raise ShopifyCredentialWarning(
+                        warning_name,
+                        gettext('web_shop_shopify'
+                            '.msg_shopidy_credential_modified'))
+        return super().write(*args)
 
 
 class ShopShopifyIdentifier(IdentifierMixin, ModelSQL, ModelView):

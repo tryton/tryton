@@ -57,6 +57,11 @@ msgctxt "field:ir.action.act_window,context_model:"
 msgid "Context Model"
 msgstr ""
 
+#, fuzzy
+msgctxt "field:ir.action.act_window,context_model_ref:"
+msgid "Context Model"
+msgstr "Стойност на котекст"
+
 msgctxt "field:ir.action.act_window,domain:"
 msgid "Domain Value"
 msgstr "Стойност на домейн"
@@ -111,6 +116,11 @@ msgid "Records"
 msgstr "ID на запис"
 
 msgctxt "field:ir.action.act_window,res_model:"
+msgid "Model"
+msgstr "Модел"
+
+#, fuzzy
+msgctxt "field:ir.action.act_window,res_model_ref:"
 msgid "Model"
 msgstr "Модел"
 
@@ -206,7 +216,17 @@ msgctxt "field:ir.action.report,model:"
 msgid "Model"
 msgstr "Модел"
 
+#, fuzzy
+msgctxt "field:ir.action.report,model_ref:"
+msgid "Model"
+msgstr "Модел"
+
 msgctxt "field:ir.action.report,module:"
+msgid "Module"
+msgstr "Модул"
+
+#, fuzzy
+msgctxt "field:ir.action.report,module_ref:"
 msgid "Module"
 msgstr "Модул"
 
@@ -325,6 +345,11 @@ msgid "Keywords"
 msgstr "Ключови думи"
 
 msgctxt "field:ir.action.wizard,model:"
+msgid "Model"
+msgstr "Модел"
+
+#, fuzzy
+msgctxt "field:ir.action.wizard,model_ref:"
 msgid "Model"
 msgstr "Модел"
 
@@ -851,6 +876,11 @@ msgctxt "field:ir.model,module:"
 msgid "Module"
 msgstr "Модул"
 
+#, fuzzy
+msgctxt "field:ir.model,module_ref:"
+msgid "Module"
+msgstr "Модул"
+
 msgctxt "field:ir.model,name:"
 msgid "Model Description"
 msgstr "Описание на модел"
@@ -864,6 +894,11 @@ msgid "Group"
 msgstr "Група"
 
 msgctxt "field:ir.model.access,model:"
+msgid "Model"
+msgstr "Модел"
+
+#, fuzzy
+msgctxt "field:ir.model.access,model_ref:"
 msgid "Model"
 msgstr "Модел"
 
@@ -898,6 +933,11 @@ msgid "Help"
 msgstr "Помощ"
 
 msgctxt "field:ir.model.button,model:"
+msgid "Model"
+msgstr "Модел"
+
+#, fuzzy
+msgctxt "field:ir.model.button,model_ref:"
 msgid "Model"
 msgstr "Модел"
 
@@ -976,7 +1016,17 @@ msgctxt "field:ir.model.data,model:"
 msgid "Model"
 msgstr "Модел"
 
+#, fuzzy
+msgctxt "field:ir.model.data,model_ref:"
+msgid "Model"
+msgstr "Модел"
+
 msgctxt "field:ir.model.data,module:"
+msgid "Module"
+msgstr "Модул"
+
+#, fuzzy
+msgctxt "field:ir.model.data,module_ref:"
 msgid "Module"
 msgstr "Модул"
 
@@ -1010,7 +1060,17 @@ msgctxt "field:ir.model.field,model:"
 msgid "Model"
 msgstr "Модел"
 
+#, fuzzy
+msgctxt "field:ir.model.field,model_ref:"
+msgid "Model"
+msgstr "Модел"
+
 msgctxt "field:ir.model.field,module:"
+msgid "Module"
+msgstr "Модул"
+
+#, fuzzy
+msgctxt "field:ir.model.field,module_ref:"
 msgid "Module"
 msgstr "Модул"
 
@@ -1034,9 +1094,24 @@ msgctxt "field:ir.model.field.access,field:"
 msgid "Field"
 msgstr "Поле"
 
+#, fuzzy
+msgctxt "field:ir.model.field.access,field_ref:"
+msgid "Field"
+msgstr "Поле"
+
 msgctxt "field:ir.model.field.access,group:"
 msgid "Group"
 msgstr "Група"
+
+#, fuzzy
+msgctxt "field:ir.model.field.access,model:"
+msgid "Model"
+msgstr "Модел"
+
+#, fuzzy
+msgctxt "field:ir.model.field.access,model_ref:"
+msgid "Model"
+msgstr "Модел"
 
 #, fuzzy
 msgctxt "field:ir.model.field.access,perm_create:"
@@ -1242,6 +1317,11 @@ msgctxt "field:ir.rule.group,model:"
 msgid "Model"
 msgstr "Модел"
 
+#, fuzzy
+msgctxt "field:ir.rule.group,model_ref:"
+msgid "Model"
+msgstr "Модел"
+
 msgctxt "field:ir.rule.group,name:"
 msgid "Name"
 msgstr "Име"
@@ -1400,11 +1480,20 @@ msgctxt "field:ir.translation,module:"
 msgid "Module"
 msgstr "Модул"
 
+#, fuzzy
+msgctxt "field:ir.translation,module_ref:"
+msgid "Module"
+msgstr "Модул"
+
 msgctxt "field:ir.translation,name:"
 msgid "Field Name"
 msgstr "Име на поле"
 
 msgctxt "field:ir.translation,overriding_module:"
+msgid "Overriding Module"
+msgstr ""
+
+msgctxt "field:ir.translation,overriding_module_ref:"
 msgid "Overriding Module"
 msgstr ""
 
@@ -1512,6 +1601,11 @@ msgctxt "field:ir.ui.icon,module:"
 msgid "Module"
 msgstr "Модул"
 
+#, fuzzy
+msgctxt "field:ir.ui.icon,module_ref:"
+msgid "Module"
+msgstr "Модул"
+
 msgctxt "field:ir.ui.icon,name:"
 msgid "Name"
 msgstr "Име на прикачен файл"
@@ -1567,6 +1661,10 @@ msgctxt "field:ir.ui.view,arch:"
 msgid "View Architecture"
 msgstr "Архитектура на изгледа"
 
+msgctxt "field:ir.ui.view,basis:"
+msgid "Basis"
+msgstr ""
+
 #, fuzzy
 msgctxt "field:ir.ui.view,data:"
 msgid "Data"
@@ -1575,6 +1673,16 @@ msgstr "Данни"
 msgctxt "field:ir.ui.view,domain:"
 msgid "Domain"
 msgstr "Домейн"
+
+#, fuzzy
+msgctxt "field:ir.ui.view,extensions:"
+msgid "Extensions"
+msgstr "Разширение"
+
+#, fuzzy
+msgctxt "field:ir.ui.view,field_children:"
+msgid "Children Field"
+msgstr "Наследено поле"
 
 msgctxt "field:ir.ui.view,field_childs:"
 msgid "Children Field"
@@ -1588,7 +1696,17 @@ msgctxt "field:ir.ui.view,model:"
 msgid "Model"
 msgstr "Модел"
 
+#, fuzzy
+msgctxt "field:ir.ui.view,model_ref:"
+msgid "Model"
+msgstr "Модел"
+
 msgctxt "field:ir.ui.view,module:"
+msgid "Module"
+msgstr "Модул"
+
+#, fuzzy
+msgctxt "field:ir.ui.view,module_ref:"
 msgid "Module"
 msgstr "Модул"
 
@@ -1676,7 +1794,17 @@ msgctxt "field:ir.ui.view_tree_width,field:"
 msgid "Field"
 msgstr "Поле"
 
+#, fuzzy
+msgctxt "field:ir.ui.view_tree_width,field_ref:"
+msgid "Field"
+msgstr "Поле"
+
 msgctxt "field:ir.ui.view_tree_width,model:"
+msgid "Model"
+msgstr "Модел"
+
+#, fuzzy
+msgctxt "field:ir.ui.view_tree_width,model_ref:"
 msgid "Model"
 msgstr "Модел"
 
@@ -1806,7 +1934,7 @@ msgid "Code of the exceptional parent"
 msgstr ""
 
 #, fuzzy
-msgctxt "help:ir.model,module:"
+msgctxt "help:ir.model,module_ref:"
 msgid "Module in which this model is defined."
 msgstr "Модула в който този модел е зададен"
 
@@ -1842,7 +1970,7 @@ msgid ""
 msgstr ""
 
 #, fuzzy
-msgctxt "help:ir.model.field,module:"
+msgctxt "help:ir.model.field,module_ref:"
 msgid "Module in which this field is defined."
 msgstr "Модул в който този модел е зададен"
 
@@ -2710,6 +2838,14 @@ msgctxt "model:ir.message,text:msg_button_name_unique"
 msgid "The name of the button must be unique per model."
 msgstr "Името на модула трябва да е уникално!"
 
+msgctxt "model:ir.message,text:msg_context_datetime"
+msgid "At date/time: %(datetime)s"
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_context_groups"
+msgid "Within groups: %(groups)s"
+msgstr ""
+
 msgctxt "model:ir.message,text:msg_create_rule_error"
 msgid ""
 "You are not allowed to create records of \"%(model)s\" because they fail on at least one of these rules:\n"
@@ -2863,7 +2999,7 @@ msgstr ""
 msgctxt "model:ir.message,text:msg_digits_validation_record"
 msgid ""
 "The number of digits in the value \"%(value)r\" for field \"%(field)s\" in "
-"\"%(record)s\" of \"%(model)s\" exceeds the limit of \"%(digits)i\"."
+"record \"%(record)s\" of \"%(model)s\" exceeds the limit of \"%(digits)i\"."
 msgstr ""
 "The value \"%(value)s\" of field \"%(field)s\" on \"%(model)s\" exceeds the "
 "digits limit of \"%(digits)s\"."
@@ -2871,7 +3007,7 @@ msgstr ""
 #, fuzzy
 msgctxt "model:ir.message,text:msg_domain_validation_record"
 msgid ""
-"The value \"%(value)s\" for field \"%(field)s\" in \"%(record)s\" of "
+"The value \"%(value)s\" for field \"%(field)s\" in record \"%(record)s\" of "
 "\"%(model)s\" is not valid according to its domain."
 msgstr ""
 "The value of the field \"%(field)s\" on \"%(model)s\" is not valid according"
@@ -2922,7 +3058,7 @@ msgstr ""
 #, fuzzy
 msgctxt "model:ir.message,text:msg_forbidden_char_validation_record"
 msgid ""
-"The value \"%(value)s\" for field \"%(field)s\" in \"%(record)s\" of "
+"The value \"%(value)s\" for field \"%(field)s\" in record \"%(record)s\" of "
 "\"%(model)s\" contains some invalid chars \"%(chars)s\"."
 msgstr ""
 "The time value \"%(value)s\" of field \"%(field)s\" on \"%(model)s\" is not "
@@ -3045,7 +3181,9 @@ msgstr "Missing search function on field \"%s\"."
 
 #, fuzzy
 msgctxt "model:ir.message,text:msg_required_validation_record"
-msgid "A value is required for field \"%(field)s\" in \"%(record)s\" of \"%(model)s\"."
+msgid ""
+"A value is required for field \"%(field)s\" in record \"%(record)s\" of "
+"\"%(model)s\"."
 msgstr "The value \"%(value)s\" of field \"%(field)s\" on \"%(model)s\" doesn't exist."
 
 msgctxt "model:ir.message,text:msg_resource_copy_help"
@@ -3064,7 +3202,7 @@ msgstr "Missing search function on field \"%s\"."
 #, fuzzy
 msgctxt "model:ir.message,text:msg_selection_validation_record"
 msgid ""
-"The value \"%(value)s\" for field \"%(field)s\" in \"%(record)s\" of "
+"The value \"%(value)s\" for field \"%(field)s\" in record \"%(record)s\" of "
 "\"%(model)s\" is not one of the allowed options."
 msgstr ""
 "The value \"%(value)s\" of field \"%(field)s\" on \"%(model)s\" is not in "
@@ -3121,15 +3259,15 @@ msgstr "The value \"%(value)s\" of field \"%(field)s\" on \"%(model)s\" doesn't 
 #, fuzzy
 msgctxt "model:ir.message,text:msg_size_validation_record"
 msgid ""
-"The value \"%(value)s\" for field \"%(field)s\" in \"%(record)s\" of "
+"The value \"%(value)s\" for field \"%(field)s\" in record \"%(record)s\" of "
 "\"%(model)s\" is too long (%(size)i > %(max_size)i)."
 msgstr "The value \"%(value)s\" of field \"%(field)s\" on \"%(model)s\" doesn't exist."
 
 #, fuzzy
 msgctxt "model:ir.message,text:msg_time_format_validation_record"
 msgid ""
-"The time value \"%(value)s\" for field \"%(field)s\" in \"%(record)s\" of "
-"\"%(model)s\" is not valid."
+"The time value \"%(value)s\" for field \"%(field)s\" in record "
+"\"%(record)s\" of \"%(model)s\" is not valid."
 msgstr ""
 "The time value \"%(value)s\" of field \"%(field)s\" on \"%(model)s\" is not "
 "valid."
@@ -3221,9 +3359,13 @@ msgstr ""
 #, fuzzy
 msgctxt "model:ir.message,text:msg_write_xml_record"
 msgid ""
-"You are not allowed to modify the field \"%(field)s\" in \"%(record)s\" of "
-"\"%(model)s\"."
+"You are not allowed to modify the field \"%(field)s\" in record "
+"\"%(record)s\" of \"%(model)s\"."
 msgstr "The value \"%(value)s\" of field \"%(field)s\" on \"%(model)s\" doesn't exist."
+
+msgctxt "model:ir.message,text:msg_xml_id"
+msgid "XML ID"
+msgstr ""
 
 msgctxt "model:ir.message,text:msg_xml_id_syntax_error"
 msgid ""

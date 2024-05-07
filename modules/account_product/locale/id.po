@@ -188,9 +188,10 @@ msgctxt "view:account.configuration:"
 msgid "Product"
 msgstr "Produk"
 
+#, fuzzy
 msgctxt "view:account.create_chart.properties:"
-msgid "Category"
-msgstr "Kategori"
+msgid "Product"
+msgstr "Produk"
 
 msgctxt "view:product.category:"
 msgid "Accounting"

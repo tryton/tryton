@@ -408,7 +408,11 @@ msgstr "Data efectiva"
 
 msgctxt "field:stock.move,from_location:"
 msgid "From Location"
-msgstr "Des d'ubicació"
+msgstr "Des de la ubicació"
+
+msgctxt "field:stock.move,from_location_name:"
+msgid "From Location"
+msgstr "Des de la ubicació"
 
 msgctxt "field:stock.move,internal_quantity:"
 msgid "Internal Quantity"
@@ -451,6 +455,10 @@ msgid "State"
 msgstr "Estat"
 
 msgctxt "field:stock.move,to_location:"
+msgid "To Location"
+msgstr "A la ubicació"
+
+msgctxt "field:stock.move,to_location_name:"
 msgid "To Location"
 msgstr "A la ubicació"
 
@@ -1939,7 +1947,7 @@ msgid ""
 "Invalid cost price \"%(cost_price)s\" for product \"%(product)s\" with "
 "exception \"%(exception)s\"."
 msgstr ""
-"El preu de cost \"%(cost_price)s\" del producte \"%(producte)\" és invalid "
+"El preu de cost \"%(cost_price)s\" del producte \"%(product)s\" és invàlid "
 "amb l'excepció \"%(exception)s\"."
 
 msgctxt "model:ir.message,text:msg_invalid_cost_price_not_number"
@@ -1947,8 +1955,8 @@ msgid ""
 "The value \"%(value)s\" of \"%(cost_price)s\" for product \"%(product)s\" is"
 " not a number."
 msgstr ""
-"El valor \"%(value)s\" del \"%(cost_price)s\" del producte \"%(producte)\" "
-"no es un número."
+"El valor \"%(value)s\" del \"%(cost_price)s\" del producte \"%(product)\"s "
+"no és un número."
 
 msgctxt "model:ir.message,text:msg_inventory_count_create_line"
 msgid "No existing line found for \"%(search)s\"."
@@ -2118,6 +2126,11 @@ msgstr ""
 "Es recomanable buidar les existències de les ubicacions d'emmagatzematge "
 "abans de desactivar el producte."
 
+msgctxt "model:ir.message,text:msg_product_quantities_max"
+msgid "You cannot select more than %(max)s products to compute quantities."
+msgstr ""
+"No podeu seleccionar més de %(max)s productes per calcular les quantitats."
+
 msgctxt "model:ir.message,text:msg_shipment_check_quantity"
 msgid ""
 "The quantities of shipment \"%(shipment)s\" are different by %(quantities)s."
@@ -2211,17 +2224,37 @@ msgctxt "model:ir.model.button,confirm:move_do_button"
 msgid "Are you sure you want to complete the move?"
 msgstr "Segur que vols finalitzar el moviment?"
 
+msgctxt "model:ir.model.button,confirm:shipment_in_cancel_button"
+msgid "Are you sure you want to cancel the shipment?"
+msgstr "Segur que vols cancel·lar l'albarà?"
+
 msgctxt "model:ir.model.button,confirm:shipment_in_receive_button"
 msgid "Are you sure you want to receive the shipment?"
 msgstr "Segur que vols rebre l'albarà?"
+
+msgctxt "model:ir.model.button,confirm:shipment_in_return_cancel_button"
+msgid "Are you sure you want to cancel the shipment?"
+msgstr "Segur que vols cancel·lar l'albarà?"
 
 msgctxt "model:ir.model.button,confirm:shipment_in_return_done_button"
 msgid "Are you sure you want to complete the shipment?"
 msgstr "Segur que vols finalitzar l'albarà?"
 
+msgctxt "model:ir.model.button,confirm:shipment_internal_cancel_button"
+msgid "Are you sure you want to cancel the shipment?"
+msgstr "Segur que vols cancel·lar l'albarà?"
+
+msgctxt "model:ir.model.button,confirm:shipment_out_cancel_button"
+msgid "Are you sure you want to cancel the shipment?"
+msgstr "Segur que vols cancel·lar l'albarà?"
+
 msgctxt "model:ir.model.button,confirm:shipment_out_done_button"
 msgid "Are you sure you want to complete the shipment?"
 msgstr "Segur que vols finalitzar l'albarà?"
+
+msgctxt "model:ir.model.button,confirm:shipment_out_return_cancel_button"
+msgid "Are you sure you want to cancel the shipment?"
+msgstr "Segur que vols cancel·lar l'albarà?"
 
 msgctxt "model:ir.model.button,confirm:shipment_out_return_receive_button"
 msgid "Are you sure you want to receive the shipment?"
@@ -2276,8 +2309,8 @@ msgid "Cancel"
 msgstr "Cancel·la"
 
 msgctxt "model:ir.model.button,string:shipment_in_done_button"
-msgid "Done"
-msgstr "Finalitza"
+msgid "Complete"
+msgstr "Completa"
 
 msgctxt "model:ir.model.button,string:shipment_in_draft_button"
 msgid "Reset to Draft"
@@ -2296,8 +2329,8 @@ msgid "Cancel"
 msgstr "Cancel·la"
 
 msgctxt "model:ir.model.button,string:shipment_in_return_done_button"
-msgid "Done"
-msgstr "Finalitza"
+msgid "Complete"
+msgstr "Completa"
 
 msgctxt "model:ir.model.button,string:shipment_in_return_draft_button"
 msgid "Draft"
@@ -2316,8 +2349,8 @@ msgid "Cancel"
 msgstr "Cancel·la"
 
 msgctxt "model:ir.model.button,string:shipment_internal_done_button"
-msgid "Done"
-msgstr "Finalitza"
+msgid "Complete"
+msgstr "Completa"
 
 msgctxt "model:ir.model.button,string:shipment_internal_draft_button"
 msgid "Draft"
@@ -2340,8 +2373,8 @@ msgid "Cancel"
 msgstr "Cancel·la"
 
 msgctxt "model:ir.model.button,string:shipment_out_done_button"
-msgid "Done"
-msgstr "Finalitza"
+msgid "Complete"
+msgstr "Completa"
 
 msgctxt "model:ir.model.button,string:shipment_out_draft_button"
 msgid "Draft"
@@ -2360,8 +2393,8 @@ msgid "Cancel"
 msgstr "Cancel·la"
 
 msgctxt "model:ir.model.button,string:shipment_out_return_done_button"
-msgid "Done"
-msgstr "Finalitza"
+msgid "Complete"
+msgstr "Completa"
 
 msgctxt "model:ir.model.button,string:shipment_out_return_draft_button"
 msgid "Draft"
@@ -2933,7 +2966,7 @@ msgstr "Esborrany"
 
 msgctxt "report:stock.shipment.out.picking_list:"
 msgid "From Location"
-msgstr "Des d'ubicació"
+msgstr "Des de la ubicació"
 
 msgctxt "report:stock.shipment.out.picking_list:"
 msgid "N°:"
@@ -2989,7 +3022,7 @@ msgstr "Esborrany"
 
 msgctxt "report:stock.shipment.out.return.restocking_list:"
 msgid "From Location"
-msgstr "D'ubicació"
+msgstr "Des de la ubicació"
 
 msgctxt "report:stock.shipment.out.return.restocking_list:"
 msgid "N°:"
@@ -3024,12 +3057,8 @@ msgid "Warehouse:"
 msgstr "Magatzem:"
 
 msgctxt "selection:ir.cron,method:"
-msgid "Assign Customer Shipments"
-msgstr "Reserva els albarans de client"
-
-msgctxt "selection:ir.cron,method:"
-msgid "Assign Internal Shipments"
-msgstr "Reserva els albarans interns"
+msgid "Assign Shipments"
+msgstr "Reserva albarans"
 
 msgctxt "selection:ir.cron,method:"
 msgid "Recompute Cost Price from Moves"

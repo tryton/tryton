@@ -4,11 +4,11 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "field:product.product,lot_uom:"
 msgid "Lot UoM"
-msgstr "Chargeneinheit"
+msgstr "Chargenmaßeinheit"
 
 msgctxt "field:product.template,lot_uom:"
 msgid "Lot UoM"
-msgstr "Chargeneinheit"
+msgstr "Chargenmaßeinheit"
 
 msgctxt "field:stock.lot,product_default_uom_category:"
 msgid "Default Product UoM Category"
@@ -35,11 +35,11 @@ msgid "Unit Quantity"
 msgstr "Maßeinheit Menge"
 
 msgctxt "help:product.product,lot_uom:"
-msgid "The default unit of measurer for lot."
+msgid "The default unit of measure for lot."
 msgstr "Die Standardmaßeinheit für Chargen."
 
 msgctxt "help:product.template,lot_uom:"
-msgid "The default unit of measurer for lot."
+msgid "The default unit of measure for lot."
 msgstr "Die Standardmaßeinheit für Chargen."
 
 msgctxt "help:stock.lot,unit:"

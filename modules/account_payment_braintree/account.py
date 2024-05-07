@@ -35,6 +35,7 @@ from trytond.wizard import (
     Button, StateAction, StateTransition, StateView, Wizard)
 
 from .common import BraintreeCustomerMethodMixin
+from .exceptions import BraintreeAccountWarning
 
 logger = logging.getLogger(__name__)
 
@@ -901,6 +902,22 @@ class PaymentBraintreeAccount(ModelSQL, ModelView):
         for payment in payments:
             payment.braintree_update(transaction)
         return bool(payments)
+
+    @classmethod
+    def write(cls, *args):
+        pool = Pool()
+        Warning = pool.get('res.user.warning')
+        actions = iter(args)
+        for accounts, values in zip(actions, actions):
+            if ({'environment', 'merchant_id', 'public_key', 'private_key'}
+                    & values.keys()):
+                warning_name = Warning.format('braintree_key', accounts)
+                if Warning.check(warning_name):
+                    raise BraintreeAccountWarning(
+                        warning_name,
+                        gettext('account_payment_braintree'
+                            '.msg_braintree_key_modified'))
+        return super().write(*args)
 
 
 class PaymentBraintreeCustomer(

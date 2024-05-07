@@ -16,11 +16,11 @@ msgstr "Cod Numeric"
 
 msgctxt "field:country.country,flag:"
 msgid "Flag"
-msgstr ""
+msgstr "Steag"
 
 msgctxt "field:country.country,members:"
 msgid "Members"
-msgstr ""
+msgstr "Membri"
 
 msgctxt "field:country.country,name:"
 msgid "Name"
@@ -28,9 +28,8 @@ msgstr "Denumire"
 
 msgctxt "field:country.country,organizations:"
 msgid "Organizations"
-msgstr ""
+msgstr "Organizații"
 
-#, fuzzy
 msgctxt "field:country.country,region:"
 msgid "Region"
 msgstr "Regiune"
@@ -39,19 +38,17 @@ msgctxt "field:country.country,subdivisions:"
 msgid "Subdivisions"
 msgstr "Subdiviziune"
 
-#, fuzzy
 msgctxt "field:country.organization,code:"
 msgid "Code"
 msgstr "Cod"
 
-#, fuzzy
 msgctxt "field:country.organization,countries:"
 msgid "Countries"
 msgstr "Țări"
 
 msgctxt "field:country.organization,members:"
 msgid "Members"
-msgstr ""
+msgstr "Membri"
 
 #, fuzzy
 msgctxt "field:country.organization,name:"
@@ -60,24 +57,24 @@ msgstr "Denumire"
 
 msgctxt "field:country.organization.member,active:"
 msgid "Active"
-msgstr ""
+msgstr "Activ"
 
-#, fuzzy
 msgctxt "field:country.organization.member,country:"
 msgid "Country"
 msgstr "Țară"
 
 msgctxt "field:country.organization.member,from_date:"
 msgid "From Date"
-msgstr ""
+msgstr "De la Data"
 
 msgctxt "field:country.organization.member,organization:"
 msgid "Organization"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:country.organization.member,to_date:"
 msgid "To Date"
-msgstr ""
+msgstr "Până la Data"
 
 msgctxt "field:country.postal_code,city:"
 msgid "City"
@@ -95,12 +92,10 @@ msgctxt "field:country.postal_code,subdivision:"
 msgid "Subdivision"
 msgstr "Subdiviziune"
 
-#, fuzzy
 msgctxt "field:country.region,code_numeric:"
 msgid "Numeric Code"
 msgstr "Cod Numeric"
 
-#, fuzzy
 msgctxt "field:country.region,countries:"
 msgid "Countries"
 msgstr "Țări"
@@ -118,7 +113,7 @@ msgstr "Parinte"
 #, fuzzy
 msgctxt "field:country.region,subregions:"
 msgid "Subregions"
-msgstr "Subdiviziune"
+msgstr "Subregiuni"
 
 msgctxt "field:country.subdivision,code:"
 msgid "Code"
@@ -130,7 +125,7 @@ msgstr "Țară"
 
 msgctxt "field:country.subdivision,flag:"
 msgid "Flag"
-msgstr ""
+msgstr "Steag"
 
 msgctxt "field:country.subdivision,name:"
 msgid "Name"
@@ -172,9 +167,10 @@ msgctxt "help:country.postal_code,subdivision:"
 msgid "The subdivision where the postal code is."
 msgstr "Subdiviziunea în care se află codul poștal."
 
+#, fuzzy
 msgctxt "help:country.region,code_numeric:"
 msgid "UN M49 region code."
-msgstr ""
+msgstr "Cod de regiune ONU M49."
 
 msgctxt "help:country.subdivision,code:"
 msgid "The ISO code of the subdivision."
@@ -198,103 +194,115 @@ msgstr "Țară"
 
 msgctxt "model:country.organization,name:"
 msgid "Organization"
-msgstr ""
+msgstr "Organizație"
 
 msgctxt "model:country.organization,name:organization_amu"
 msgid "Arab Maghreb Union"
-msgstr ""
+msgstr "Uniunea Maghrebului Arab"
 
+#, fuzzy
 msgctxt "model:country.organization,name:organization_apec"
 msgid "Asia-Pacific Economic Cooperation"
-msgstr ""
+msgstr "Cooperarea Economică Asia-Pacific"
 
+#, fuzzy
 msgctxt "model:country.organization,name:organization_asean"
 msgid "Association of Southeast Asian Nations"
-msgstr ""
+msgstr "Asociația Națiunilor din Asia de Sud-Est"
 
 msgctxt "model:country.organization,name:organization_benelux"
 msgid "Benelux Union"
-msgstr ""
+msgstr "Uniunea Benelux"
 
 #, fuzzy
 msgctxt "model:country.organization,name:organization_can"
 msgid "Andean Community"
-msgstr "Comunitatea autonomă"
+msgstr "Comunitatea Andină"
 
 #, fuzzy
 msgctxt "model:country.organization,name:organization_caricom"
 msgid "Caribbean Community"
-msgstr "Comunitatea autonomă"
+msgstr "Comunitatea Caraibelor"
 
+#, fuzzy
 msgctxt "model:country.organization,name:organization_cemac"
 msgid "Economic and Monetary Community of Central Africa"
-msgstr ""
+msgstr "Comunitatea Economică și Monetară a Africii Centrale"
 
+#, fuzzy
 msgctxt "model:country.organization,name:organization_cen-sad"
 msgid "Community of Sahel–Saharan States"
-msgstr ""
+msgstr "Comunitatea Statelor Sahel-Sahariene"
 
+#, fuzzy
 msgctxt "model:country.organization,name:organization_comesa"
 msgid "Common Market for Eastern and Southern Africa"
-msgstr ""
+msgstr "Piața comună pentru Africa de Est și de Sud"
 
 #, fuzzy
 msgctxt "model:country.organization,name:organization_eac"
 msgid "East African Community"
-msgstr "Comunitatea autonomă"
+msgstr "Comunitatea Est-Africană"
 
+#, fuzzy
 msgctxt "model:country.organization,name:organization_eccas"
 msgid "Economic Community of Central African States"
-msgstr ""
+msgstr "Comunitatea Economică a Statelor Africii Centrale"
 
+#, fuzzy
 msgctxt "model:country.organization,name:organization_ecowas"
 msgid "Economic Community of West African States"
-msgstr ""
+msgstr "Comunitatea Economică a Statelor Africii de Vest"
 
 msgctxt "model:country.organization,name:organization_eu"
 msgid "European Union"
-msgstr ""
+msgstr "Uniunea Europeană"
 
+#, fuzzy
 msgctxt "model:country.organization,name:organization_gcc"
 msgid "Cooperation Council for the Arab States of the Gulf"
-msgstr ""
+msgstr "Consiliul de Cooperare pentru Statele Arabe din Golf"
 
+#, fuzzy
 msgctxt "model:country.organization,name:organization_igad"
 msgid "Intergovernmental Authority on Development"
-msgstr ""
+msgstr "Autoritatea Interguvernamentală pentru Dezvoltare"
 
+#, fuzzy
 msgctxt "model:country.organization,name:organization_mercosur"
 msgid "Southern Common Market"
-msgstr ""
+msgstr "Piața comună de sud"
 
+#, fuzzy
 msgctxt "model:country.organization,name:organization_nafta"
 msgid "North American Free Trade Agreement"
-msgstr ""
+msgstr "Acordul de Liber Schimb din America de Nord"
 
+#, fuzzy
 msgctxt "model:country.organization,name:organization_sadc"
 msgid "Southern African Development Community"
-msgstr ""
+msgstr "Comunitatea de Dezvoltare a Africii de Sud"
 
+#, fuzzy
 msgctxt "model:country.organization,name:organization_safta"
 msgid "South Asian Free Trade Area"
-msgstr ""
+msgstr "Zona de schimb liber din Asia de Sud"
 
 msgctxt "model:country.organization.member,name:"
 msgid "Organization Member"
-msgstr ""
+msgstr "Membru al organizației"
 
 msgctxt "model:country.postal_code,name:"
 msgid "Postal Code"
 msgstr "Cod Poștal"
 
-#, fuzzy
 msgctxt "model:country.region,name:"
 msgid "Region"
 msgstr "Regiune"
 
 msgctxt "model:country.region,name:region_africa"
 msgid "Africa"
-msgstr ""
+msgstr "Africa"
 
 msgctxt "model:country.region,name:region_americas"
 msgid "Americas"
@@ -302,127 +310,129 @@ msgstr ""
 
 msgctxt "model:country.region,name:region_antarctica"
 msgid "Antarctica"
-msgstr ""
+msgstr "Antarctica"
 
 msgctxt "model:country.region,name:region_asia"
 msgid "Asia"
-msgstr ""
+msgstr "Asia"
 
 msgctxt "model:country.region,name:region_australia_new_zealand"
 msgid "Australia and New Zealand"
-msgstr ""
+msgstr "Australia și Noua Zeelandă"
 
 msgctxt "model:country.region,name:region_caribbean"
 msgid "Caribbean"
-msgstr ""
+msgstr "Caraibe"
 
 msgctxt "model:country.region,name:region_central_america"
 msgid "Central America"
-msgstr ""
+msgstr "America Centrală"
 
 msgctxt "model:country.region,name:region_central_asia"
 msgid "Central Asia"
-msgstr ""
+msgstr "Asia Centrala"
 
+#, fuzzy
 msgctxt "model:country.region,name:region_channel_islands"
 msgid "Channel Islands"
-msgstr ""
+msgstr "Insulele Canalului"
 
 msgctxt "model:country.region,name:region_eastern_africa"
 msgid "Eastern Africa"
-msgstr ""
+msgstr "Africa de Est"
 
 msgctxt "model:country.region,name:region_eastern_asia"
 msgid "Eastern Asia"
-msgstr ""
+msgstr "Asia de Est"
 
 msgctxt "model:country.region,name:region_eastern_europe"
 msgid "Eastern Europe"
-msgstr ""
+msgstr "Europa de Est"
 
 msgctxt "model:country.region,name:region_europe"
 msgid "Europe"
-msgstr ""
+msgstr "Europa"
 
 msgctxt "model:country.region,name:region_latin_america_caribbean"
 msgid "Latin America and the Caribbean"
-msgstr ""
+msgstr "America Latină și Caraibe"
 
 msgctxt "model:country.region,name:region_melanesia"
 msgid "Melanesia"
-msgstr ""
+msgstr "Melanezia"
 
 msgctxt "model:country.region,name:region_micronesia"
 msgid "Micronesia"
-msgstr ""
+msgstr "Micronezia"
 
+#, fuzzy
 msgctxt "model:country.region,name:region_middle_africa"
 msgid "Middle Africa"
-msgstr ""
+msgstr "Africa Centrală"
 
 msgctxt "model:country.region,name:region_north_america"
 msgid "North America"
-msgstr ""
+msgstr "America de Nord"
 
 msgctxt "model:country.region,name:region_northern_africa"
 msgid "Northern Africa"
-msgstr ""
+msgstr "Africa de Nord"
 
 msgctxt "model:country.region,name:region_northern_america"
 msgid "Northern America"
-msgstr ""
+msgstr "America de Nord"
 
 msgctxt "model:country.region,name:region_northern_europe"
 msgid "Northern Europe"
-msgstr ""
+msgstr "Europa de Nord"
 
 msgctxt "model:country.region,name:region_oceania"
 msgid "Oceania"
-msgstr ""
+msgstr "Oceania"
 
 msgctxt "model:country.region,name:region_polynesia"
 msgid "Polynesia"
-msgstr ""
+msgstr "Polinezia"
 
 msgctxt "model:country.region,name:region_south-eastern_asia"
 msgid "South-eastern Asia"
-msgstr ""
+msgstr "Asia de Sud-Est"
 
 msgctxt "model:country.region,name:region_south_america"
 msgid "South America"
-msgstr ""
+msgstr "America de Sud"
 
 msgctxt "model:country.region,name:region_southern_africa"
 msgid "Southern Africa"
-msgstr ""
+msgstr "Africa de Sud"
 
 msgctxt "model:country.region,name:region_southern_asia"
 msgid "Southern Asia"
-msgstr ""
+msgstr "Asia de Sud"
 
 msgctxt "model:country.region,name:region_southern_europe"
 msgid "Southern Europe"
-msgstr ""
+msgstr "Europa de Sud"
 
 msgctxt "model:country.region,name:region_sub-saharan_africa"
 msgid "Sub-Saharan Africa"
-msgstr ""
+msgstr "Africa Sub-Sahariană"
 
 msgctxt "model:country.region,name:region_western_africa"
 msgid "Western Africa"
-msgstr ""
+msgstr "Africa de Vest"
 
 msgctxt "model:country.region,name:region_western_asia"
 msgid "Western Asia"
-msgstr ""
+msgstr "Asia de Vest"
 
 msgctxt "model:country.region,name:region_western_europe"
 msgid "Western Europe"
-msgstr ""
+msgstr "Europa de Vest"
 
 msgctxt "model:country.region,name:region_world"
 msgid "World"
-msgstr ""
+msgstr "Lume"
 
 msgctxt "model:country.subdivision,name:"
 msgid "Subdivision"
@@ -431,7 +441,7 @@ msgstr "Subdiviziune"
 #, fuzzy
 msgctxt "model:ir.action,name:act_country_by_region"
 msgid "Countries by Region"
-msgstr "Țări"
+msgstr "Țări după regiune"
 
 msgctxt "model:ir.action,name:act_country_form"
 msgid "Countries"
@@ -439,23 +449,20 @@ msgstr "Țări"
 
 msgctxt "model:ir.action,name:act_organization_form"
 msgid "Organizations"
-msgstr ""
+msgstr "Organizații"
 
 msgctxt "model:ir.action,name:act_postal_code_form"
 msgid "Postal Codes"
 msgstr "Coduri Poștale"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_region_form"
 msgid "Regions"
-msgstr "Regiune"
+msgstr "Regiuni"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_region_tree"
 msgid "Areas"
-msgstr "Zonă"
+msgstr "Zone"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_country"
 msgid "Countries"
 msgstr "Țări"
@@ -466,17 +473,15 @@ msgstr "Țări"
 
 msgctxt "model:ir.ui.menu,name:menu_organization_form"
 msgid "Organizations"
-msgstr ""
+msgstr "Organizații"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_region_form"
 msgid "Regions"
-msgstr "Regiune"
+msgstr "Regiuni"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_region_tree"
 msgid "Areas"
-msgstr "Zonă"
+msgstr "Zone"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Administration"
@@ -496,7 +501,7 @@ msgstr "Zona administrativă"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Administrative atoll"
-msgstr ""
+msgstr "Atol administrativ"
 
 #, fuzzy
 msgctxt "selection:country.subdivision,type:"
@@ -535,10 +540,9 @@ msgctxt "selection:country.subdivision,type:"
 msgid "Autonomous Region"
 msgstr "Regiune autonomă"
 
-#, fuzzy
 msgctxt "selection:country.subdivision,type:"
 msgid "Autonomous city in north africa"
-msgstr "District autonom"
+msgstr "Oraș autonom din Africa de Nord"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Autonomous communities"
@@ -554,7 +558,7 @@ msgstr "Insula autonomă"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Autonomous monastic state"
-msgstr ""
+msgstr "Stat monahal autonom"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Autonomous municipality"
@@ -584,7 +588,6 @@ msgctxt "selection:country.subdivision,type:"
 msgid "Canton"
 msgstr "Canton"
 
-#, fuzzy
 msgctxt "selection:country.subdivision,type:"
 msgid "Capital"
 msgstr "Capitala"
@@ -593,54 +596,62 @@ msgctxt "selection:country.subdivision,type:"
 msgid "Capital District"
 msgstr ""
 
+#, fuzzy
 msgctxt "selection:country.subdivision,type:"
 msgid "Capital Metropolitan City"
-msgstr ""
+msgstr "Capitala Metropolitană"
 
+#, fuzzy
 msgctxt "selection:country.subdivision,type:"
 msgid "Capital Territory"
-msgstr ""
+msgstr "Teritoriul Capitalei"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Capital city"
 msgstr "Capitala"
 
+#, fuzzy
 msgctxt "selection:country.subdivision,type:"
 msgid "Chain (of islands)"
-msgstr ""
+msgstr "Lanț (de insule)"
 
+#, fuzzy
 msgctxt "selection:country.subdivision,type:"
 msgid "Chains (of islands)"
-msgstr ""
+msgstr "Lanțuri (de insule)"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "City"
 msgstr "Oraș"
 
+#, fuzzy
 msgctxt "selection:country.subdivision,type:"
 msgid "City corporation"
-msgstr ""
+msgstr "Corporația orașului"
 
 #, fuzzy
 msgctxt "selection:country.subdivision,type:"
 msgid "City municipality"
-msgstr "Municipalitatea specială"
+msgstr "Municipiul orașului"
 
+#, fuzzy
 msgctxt "selection:country.subdivision,type:"
 msgid "City with county rights"
-msgstr ""
+msgstr "Oraș cu drepturi județene"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Commune"
 msgstr "Comună"
 
+#, fuzzy
 msgctxt "selection:country.subdivision,type:"
 msgid "Constitutional province"
-msgstr ""
+msgstr "Provincie constituțională"
 
+#, fuzzy
 msgctxt "selection:country.subdivision,type:"
 msgid "Council area"
-msgstr ""
+msgstr "zona Consiliului"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Country"
@@ -650,9 +661,10 @@ msgctxt "selection:country.subdivision,type:"
 msgid "County"
 msgstr "Județ"
 
+#, fuzzy
 msgctxt "selection:country.subdivision,type:"
 msgid "Decentralized regional entity"
-msgstr ""
+msgstr "Entitate regională descentralizată"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Department"
@@ -679,13 +691,15 @@ msgctxt "selection:country.subdivision,type:"
 msgid "District municipality"
 msgstr "Municipalitate autonomă"
 
+#, fuzzy
 msgctxt "selection:country.subdivision,type:"
 msgid "District with special status"
-msgstr ""
+msgstr "District cu statut special"
 
+#, fuzzy
 msgctxt "selection:country.subdivision,type:"
 msgid "Districts under republic administration"
-msgstr ""
+msgstr "Districte aflate în administrarea republicii"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Division"
@@ -707,30 +721,34 @@ msgctxt "selection:country.subdivision,type:"
 msgid "Entity"
 msgstr "Entitate"
 
+#, fuzzy
 msgctxt "selection:country.subdivision,type:"
 msgid "Federal Dependency"
-msgstr ""
+msgstr "Dependență federală"
 
+#, fuzzy
 msgctxt "selection:country.subdivision,type:"
 msgid "Federal District"
-msgstr ""
+msgstr "District federal"
 
+#, fuzzy
 msgctxt "selection:country.subdivision,type:"
 msgid "Federal Territories"
-msgstr ""
+msgstr "Teritoriile Federale"
 
 #, fuzzy
 msgctxt "selection:country.subdivision,type:"
 msgid "Federal Territory"
-msgstr "Teritoriu"
+msgstr "Teritoriu federal"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Federal capital territory"
 msgstr ""
 
+#, fuzzy
 msgctxt "selection:country.subdivision,type:"
 msgid "Free municipal consortium"
-msgstr ""
+msgstr "Consorțiu municipal gratuit"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Geographical entity"
@@ -744,21 +762,24 @@ msgctxt "selection:country.subdivision,type:"
 msgid "Geographical unit"
 msgstr "Unitate geografică"
 
+#, fuzzy
 msgctxt "selection:country.subdivision,type:"
 msgid "Governorate"
-msgstr ""
+msgstr "Guvernorat"
 
+#, fuzzy
 msgctxt "selection:country.subdivision,type:"
 msgid "Group of islands (20 inhabited islands)"
-msgstr ""
+msgstr "Grup de insule (20 de insule locuite)"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Included for completeness"
 msgstr ""
 
+#, fuzzy
 msgctxt "selection:country.subdivision,type:"
 msgid "Indigenous region"
-msgstr ""
+msgstr "Regiune indigenă"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Island"
@@ -775,24 +796,26 @@ msgstr "Grup de insule"
 #, fuzzy
 msgctxt "selection:country.subdivision,type:"
 msgid "Islands, groups of islands"
-msgstr "Grup de insule"
+msgstr "Insule, grupuri de insule"
 
+#, fuzzy
 msgctxt "selection:country.subdivision,type:"
 msgid "Land"
-msgstr ""
+msgstr "Teren"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Local council"
 msgstr "Consiliu Local"
 
+#, fuzzy
 msgctxt "selection:country.subdivision,type:"
 msgid "London borough"
-msgstr ""
+msgstr "Cartier Londonez"
 
 #, fuzzy
 msgctxt "selection:country.subdivision,type:"
 msgid "Metropolitan administration"
-msgstr "Orașe metropolitane"
+msgstr "Administrația metropolitană"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Metropolitan cities"
@@ -801,51 +824,58 @@ msgstr "Orașe metropolitane"
 #, fuzzy
 msgctxt "selection:country.subdivision,type:"
 msgid "Metropolitan city"
-msgstr "Orașe metropolitane"
+msgstr "Oraș metropolitan"
 
+#, fuzzy
 msgctxt "selection:country.subdivision,type:"
 msgid "Metropolitan collectivity with special status"
-msgstr ""
+msgstr "Colectivitate metropolitană cu statut special"
 
+#, fuzzy
 msgctxt "selection:country.subdivision,type:"
 msgid "Metropolitan department"
-msgstr ""
+msgstr "Departament metropolitan"
 
+#, fuzzy
 msgctxt "selection:country.subdivision,type:"
 msgid "Metropolitan district"
-msgstr ""
+msgstr "District Metropolitan"
 
+#, fuzzy
 msgctxt "selection:country.subdivision,type:"
 msgid "Metropolitan region"
-msgstr ""
+msgstr "Regiune metropolitană"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Municipalities"
-msgstr ""
+msgstr "Municipalități"
 
+#, fuzzy
 msgctxt "selection:country.subdivision,type:"
 msgid "Municipality"
-msgstr ""
+msgstr "Municipiu"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Nation"
-msgstr ""
+msgstr "Naţiune"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Oblast"
-msgstr ""
+msgstr "Oblast"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Outlying area"
 msgstr "Zona periferică"
 
+#, fuzzy
 msgctxt "selection:country.subdivision,type:"
 msgid "Overseas collectivity"
-msgstr ""
+msgstr "Colectivitatea de peste mări"
 
+#, fuzzy
 msgctxt "selection:country.subdivision,type:"
 msgid "Overseas collectivity with special status"
-msgstr ""
+msgstr "Colectivitate de peste mări cu statut special"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Overseas department"
@@ -870,11 +900,11 @@ msgstr ""
 #, fuzzy
 msgctxt "selection:country.subdivision,type:"
 msgid "Pakistan administered area"
-msgstr "Zona administrativă"
+msgstr "Zonă administrată de Pakistan"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Parish"
-msgstr ""
+msgstr "Parohie"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Popularate"
@@ -890,7 +920,7 @@ msgstr "Prefectură"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Principality"
-msgstr ""
+msgstr "Principat"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Province"
@@ -902,7 +932,7 @@ msgstr ""
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Rayon"
-msgstr ""
+msgstr "Raion"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Region"
@@ -915,24 +945,26 @@ msgstr "Consiliul regional"
 #, fuzzy
 msgctxt "selection:country.subdivision,type:"
 msgid "Regional state"
-msgstr "Consiliul regional"
+msgstr "Stat regional"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Republic"
 msgstr "Republică"
 
+#, fuzzy
 msgctxt "selection:country.subdivision,type:"
 msgid "Republican City"
-msgstr ""
+msgstr "Oraș Republican"
 
 #, fuzzy
 msgctxt "selection:country.subdivision,type:"
 msgid "Rural municipality"
-msgstr "Municipalitatea specială"
+msgstr "Municipalitate rurală"
 
+#, fuzzy
 msgctxt "selection:country.subdivision,type:"
 msgid "Self-governed part"
-msgstr ""
+msgstr "Parte autonomă"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Special District"
@@ -949,7 +981,7 @@ msgstr "Regiunea specială"
 #, fuzzy
 msgctxt "selection:country.subdivision,type:"
 msgid "Special administrative city"
-msgstr "Regiunea administrativă specială"
+msgstr "Oraș administrativ special"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Special administrative region"
@@ -959,18 +991,20 @@ msgctxt "selection:country.subdivision,type:"
 msgid "Special city"
 msgstr "Oraș special"
 
+#, fuzzy
 msgctxt "selection:country.subdivision,type:"
 msgid "Special island authority"
-msgstr ""
+msgstr "Autoritate specială insulară"
 
 #, fuzzy
 msgctxt "selection:country.subdivision,type:"
 msgid "Special self-governing city"
-msgstr "Oraș special"
+msgstr "Oraș special autonom"
 
+#, fuzzy
 msgctxt "selection:country.subdivision,type:"
 msgid "Special self-governing province"
-msgstr ""
+msgstr "Provincie Autonomă Specială"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Special zone"
@@ -990,45 +1024,51 @@ msgstr "Teritoriu"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Town"
-msgstr ""
+msgstr "Oraș"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Town council"
-msgstr ""
+msgstr "Consiliul Local"
 
+#, fuzzy
 msgctxt "selection:country.subdivision,type:"
 msgid "Two-tier county"
-msgstr ""
+msgstr "Județul cu două niveluri"
 
+#, fuzzy
 msgctxt "selection:country.subdivision,type:"
 msgid "Union territory"
-msgstr ""
+msgstr "Teritoriul Uniunii"
 
+#, fuzzy
 msgctxt "selection:country.subdivision,type:"
 msgid "Unitary authority"
-msgstr ""
+msgstr "Autoritate unitară"
 
+#, fuzzy
 msgctxt "selection:country.subdivision,type:"
 msgid "Unitary authority (england)"
-msgstr ""
+msgstr "Autoritate unitară (Anglia)"
 
+#, fuzzy
 msgctxt "selection:country.subdivision,type:"
 msgid "Unitary authority (wales)"
-msgstr ""
+msgstr "Autoritate unitară (Țara Galilor)"
 
 #, fuzzy
 msgctxt "selection:country.subdivision,type:"
 msgid "Urban community"
-msgstr "Comunitatea autonomă"
+msgstr "Comunitate urbană"
 
 #, fuzzy
 msgctxt "selection:country.subdivision,type:"
 msgid "Urban municipality"
-msgstr "Municipalitatea specială"
+msgstr "Municipalitate urbană"
 
+#, fuzzy
 msgctxt "selection:country.subdivision,type:"
 msgid "Voivodship"
-msgstr ""
+msgstr "Voievodat"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Ward"

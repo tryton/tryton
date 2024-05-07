@@ -21,6 +21,7 @@ from sql.conditionals import NullIf
 from sql.functions import (
     CharLength, CurrentTimestamp, Extract, Function, Overlay, Position,
     Substring, Trim)
+from sql.operators import Equal
 
 from trytond.backend.database import DatabaseInterface, SQLType
 from trytond.config import config, parse_uri
@@ -590,7 +591,12 @@ class Database(DatabaseInterface):
         return Literal(True)
 
     def has_constraint(self, constraint):
-        return False
+        from trytond.model.modelsql import Exclude, Unique
+        return (
+            not constraint.params
+            and (isinstance(constraint, Unique)
+                or (isinstance(constraint, Exclude)
+                    and set(constraint.operators) == {Equal})))
 
     def has_multirow_insert(self):
         return True

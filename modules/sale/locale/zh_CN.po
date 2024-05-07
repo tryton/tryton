@@ -227,6 +227,11 @@ msgctxt "field:sale.line,invoice_lines:"
 msgid "Invoice Lines"
 msgstr ""
 
+#, fuzzy
+msgctxt "field:sale.line,invoice_progress:"
+msgid "Invoice Progress"
+msgstr "Invoices"
+
 msgctxt "field:sale.line,moves:"
 msgid "Moves"
 msgstr ""
@@ -1640,8 +1645,17 @@ msgstr "基本"
 
 #, fuzzy
 msgctxt "view:sale.line:"
+msgid "Invoicing"
+msgstr "Invoices"
+
+#, fuzzy
+msgctxt "view:sale.line:"
 msgid "Notes"
 msgstr "注释"
+
+msgctxt "view:sale.line:"
+msgid "Shipping"
+msgstr ""
 
 msgctxt "view:sale.line:"
 msgid "Taxes"

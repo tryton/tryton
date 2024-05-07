@@ -130,7 +130,7 @@ msgstr "Atalhos para abas"
 msgid "Unable to reach the server."
 msgstr "Não foi possível se conectar ao servidor."
 
-msgid "Too many requests. Try again later."
+msgid "Error: \"%1\". Try again later."
 msgstr ""
 
 msgid "Login"
@@ -146,7 +146,18 @@ msgstr "Usuário"
 msgid "Login with"
 msgstr "Entrar"
 
+msgid "Too many requests. Try again later."
+msgstr ""
+
 msgid "Not found."
+msgstr ""
+
+msgid "Send you an email to reset your password."
+msgstr ""
+
+msgid ""
+"A request to reset your password has been sent.\n"
+"Please check your mailbox."
 msgstr ""
 
 msgid "Your selection:"
@@ -200,12 +211,6 @@ msgstr "v"
 msgid "False"
 msgstr "Falso"
 
-msgid "Message: "
-msgstr "Mensagem: "
-
-msgid "Warning: "
-msgstr "Alerta: "
-
 msgid "Always ignore this warning."
 msgstr "Sempre ignorar este alerta."
 
@@ -215,13 +220,8 @@ msgstr "Você deseja continuar?"
 msgid "No"
 msgstr "Não"
 
-msgid "Confirmation: "
-msgstr "Confirmação: "
-
-msgid "Concurrency Exception"
-msgstr "Exceção de concorrência"
-
-msgid "Write Concurrency Warning: "
+#, fuzzy
+msgid "Concurrency Warning"
 msgstr "Alerta de edição concorrente: "
 
 msgid "This record has been modified while you were editing it."
@@ -251,6 +251,9 @@ msgstr "Forçar Escrita"
 
 msgid "Application Error"
 msgstr "Erro no Sistema"
+
+msgid "Details"
+msgstr ""
 
 msgid "Report Bug"
 msgstr "Relatar erro"
@@ -556,8 +559,9 @@ msgstr "%1%"
 msgid "Menu"
 msgstr ""
 
-msgid "Copy"
-msgstr ""
+#, fuzzy
+msgid "Copy Selected Rows"
+msgstr "Próximo registro"
 
 msgid "#ERROR"
 msgstr ""
@@ -621,6 +625,12 @@ msgstr "Modelo: "
 
 msgid "ID:"
 msgstr "ID:"
+
+msgid "Module:"
+msgstr ""
+
+msgid "XML ID:"
+msgstr ""
 
 #, fuzzy
 msgid "Created by:"

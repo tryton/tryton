@@ -436,6 +436,13 @@ class Line(metaclass=PoolMeta):
                         shipment_cost_invoiced.append(shipment.id)
         return lines
 
+    @property
+    def _invoice_remaining_quantity(self):
+        quantity = super()._invoice_remaining_quantity
+        if self.shipment_cost is not None:
+            quantity = 0
+        return quantity
+
     def _get_invoice_line_quantity(self):
         quantity = super()._get_invoice_line_quantity()
         if self.shipment_cost is not None:
@@ -443,7 +450,8 @@ class Line(metaclass=PoolMeta):
                 quantity = 0
             elif (self.sale.shipment_cost_method == 'order'
                     and self.sale.invoice_method == 'shipment'):
-                shipments = self.sale.shipments
+                shipments = [
+                    s for s in self.sale.shipments if s.cost_method == 'order']
                 if (not shipments
                         or all(s.state != 'done' for s in shipments)):
                     quantity = 0

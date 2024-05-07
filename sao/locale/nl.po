@@ -110,8 +110,8 @@ msgstr "Tab snelkoppelingen"
 msgid "Unable to reach the server."
 msgstr "Kan geen verbinding maken met server."
 
-msgid "Too many requests. Try again later."
-msgstr "Te veel verzoeken. Probeer het later nog eens."
+msgid "Error: \"%1\". Try again later."
+msgstr "Te veel aanvragen. Probeer het later nog eens."
 
 msgid "Login"
 msgstr "Inloggen"
@@ -125,8 +125,21 @@ msgstr "Gebruikersnaam"
 msgid "Login with"
 msgstr "Inloggen met"
 
+msgid "Too many requests. Try again later."
+msgstr "Te veel verzoeken. Probeer het later nog eens."
+
 msgid "Not found."
 msgstr "Niet gevonden."
+
+msgid "Send you an email to reset your password."
+msgstr "Stuurt u een email om het wachtwoord te resetten."
+
+msgid ""
+"A request to reset your password has been sent.\n"
+"Please check your mailbox."
+msgstr ""
+"Een verzoek om uw wachtwoord te resetten is verstuurd.\n"
+"Controller uw mailbox."
 
 msgid "Your selection:"
 msgstr "Uw selectie:"
@@ -179,12 +192,6 @@ msgstr "w (t)"
 msgid "False"
 msgstr "Onwaar"
 
-msgid "Message: "
-msgstr "Bericht: "
-
-msgid "Warning: "
-msgstr "Waarschuwing: "
-
 msgid "Always ignore this warning."
 msgstr "Deze waarschuwing altijd negeren."
 
@@ -194,14 +201,8 @@ msgstr "Doorgaan?"
 msgid "No"
 msgstr "Nee"
 
-msgid "Confirmation: "
-msgstr "Bevestiging: "
-
-msgid "Concurrency Exception"
-msgstr "Simultaan gebruik error"
-
-msgid "Write Concurrency Warning: "
-msgstr "Aandacht, schrijftoegang concurrenten (Write Concurrency) : "
+msgid "Concurrency Warning"
+msgstr "Simultaan gebruik waarschuwing"
 
 msgid "This record has been modified while you were editing it."
 msgstr "Dit record werd gewijzigd terwijl u het aan het bewerken was."
@@ -229,6 +230,9 @@ msgstr "Overschrijven"
 
 msgid "Application Error"
 msgstr "Applicatiefout"
+
+msgid "Details"
+msgstr "Details"
 
 msgid "Report Bug"
 msgstr "Programmafout melden"
@@ -518,8 +522,8 @@ msgstr "%1%"
 msgid "Menu"
 msgstr "Menu"
 
-msgid "Copy"
-msgstr "Kopieer"
+msgid "Copy Selected Rows"
+msgstr "Kopieer geselecteerde regels"
 
 msgid "#ERROR"
 msgstr "#FOUT"
@@ -580,6 +584,12 @@ msgstr "Model:"
 
 msgid "ID:"
 msgstr "ID:"
+
+msgid "Module:"
+msgstr "Module:"
+
+msgid "XML ID:"
+msgstr "XML id:"
 
 msgid "Created by:"
 msgstr "Aangemaakt door:"

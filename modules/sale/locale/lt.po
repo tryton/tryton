@@ -242,6 +242,11 @@ msgctxt "field:sale.line,invoice_lines:"
 msgid "Invoice Lines"
 msgstr "Sąskaitos faktūros eilutės"
 
+#, fuzzy
+msgctxt "field:sale.line,invoice_progress:"
+msgid "Invoice Progress"
+msgstr "Juridinis adresas"
+
 msgctxt "field:sale.line,moves:"
 msgid "Moves"
 msgstr "Operacijos"
@@ -1665,9 +1670,19 @@ msgctxt "view:sale.line:"
 msgid "General"
 msgstr "Pagrindinis"
 
+#, fuzzy
+msgctxt "view:sale.line:"
+msgid "Invoicing"
+msgstr "Sąskaita faktūra"
+
 msgctxt "view:sale.line:"
 msgid "Notes"
 msgstr "Pastabos"
+
+#, fuzzy
+msgctxt "view:sale.line:"
+msgid "Shipping"
+msgstr "Išsiuntimo data"
 
 msgctxt "view:sale.line:"
 msgid "Taxes"

@@ -4,19 +4,19 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "field:account.invoice,agent:"
 msgid "Commission Agent"
-msgstr ""
+msgstr "Agent comisionar"
 
 msgctxt "field:account.invoice.credit.start,with_agent:"
 msgid "With Agent"
-msgstr ""
+msgstr "Cu agentul"
 
 msgctxt "field:account.invoice.line,commissions:"
 msgid "Commissions"
-msgstr ""
+msgstr "Comisioane"
 
 msgctxt "field:account.invoice.line,from_commissions:"
 msgid "From Commissions"
-msgstr ""
+msgstr "Din comisioane"
 
 msgctxt "field:account.invoice.line,principal:"
 msgid "Commission Principal"
@@ -24,7 +24,7 @@ msgstr ""
 
 msgctxt "field:commission,agent:"
 msgid "Agent"
-msgstr ""
+msgstr "Agent"
 
 msgctxt "field:commission,amount:"
 msgid "Amount"
@@ -33,7 +33,7 @@ msgstr "Suma"
 #, fuzzy
 msgctxt "field:commission,base_amount:"
 msgid "Base Amount"
-msgstr "Suma"
+msgstr "Suma de bază"
 
 msgctxt "field:commission,currency:"
 msgid "Currency"
@@ -45,7 +45,7 @@ msgstr "Data"
 
 msgctxt "field:commission,invoice_line:"
 msgid "Invoice Line"
-msgstr ""
+msgstr "Rând Factură"
 
 msgctxt "field:commission,invoice_state:"
 msgid "Invoice State"
@@ -77,36 +77,35 @@ msgstr "Parte"
 
 msgctxt "field:commission.agent,pending_amount:"
 msgid "Pending Amount"
-msgstr ""
+msgstr "Sumă în așteptare"
 
 msgctxt "field:commission.agent,plan:"
 msgid "Plan"
-msgstr ""
+msgstr "Plan"
 
 msgctxt "field:commission.agent,selections:"
 msgid "Selections"
-msgstr ""
+msgstr "Selecții"
 
 msgctxt "field:commission.agent,type_:"
 msgid "Type"
-msgstr ""
+msgstr "Tip"
 
 msgctxt "field:commission.agent.selection,agent:"
 msgid "Agent"
-msgstr ""
+msgstr "Agent"
 
-#, fuzzy
 msgctxt "field:commission.agent.selection,company:"
 msgid "Company"
 msgstr "Companie"
 
 msgctxt "field:commission.agent.selection,employee:"
 msgid "Employee"
-msgstr ""
+msgstr "Angajat"
 
 msgctxt "field:commission.agent.selection,end_date:"
 msgid "End Date"
-msgstr ""
+msgstr "Data de încheiere"
 
 msgctxt "field:commission.agent.selection,party:"
 msgid "Party"
@@ -114,27 +113,28 @@ msgstr "Parte"
 
 msgctxt "field:commission.agent.selection,start_date:"
 msgid "Start Date"
-msgstr ""
+msgstr "Data de Început"
 
 msgctxt "field:commission.create_invoice.ask,agents:"
 msgid "Agents"
-msgstr ""
+msgstr "Agenți"
 
 msgctxt "field:commission.create_invoice.ask,from_:"
 msgid "From"
-msgstr ""
+msgstr "De la"
 
 msgctxt "field:commission.create_invoice.ask,to:"
 msgid "To"
-msgstr ""
+msgstr "Către"
 
 msgctxt "field:commission.create_invoice.ask,type_:"
 msgid "Type"
-msgstr ""
+msgstr "Tip"
 
+#, fuzzy
 msgctxt "field:commission.plan,commission_method:"
 msgid "Commission Method"
-msgstr ""
+msgstr "Metodă de Comision"
 
 msgctxt "field:commission.plan,commission_product:"
 msgid "Commission Product"
@@ -142,11 +142,11 @@ msgstr ""
 
 msgctxt "field:commission.plan,lines:"
 msgid "Lines"
-msgstr ""
+msgstr "Rânduri"
 
 msgctxt "field:commission.plan,name:"
 msgid "Name"
-msgstr ""
+msgstr "Nume"
 
 msgctxt "field:commission.plan.line,category:"
 msgid "Category"
@@ -154,11 +154,11 @@ msgstr "Categorie"
 
 msgctxt "field:commission.plan.line,formula:"
 msgid "Formula"
-msgstr ""
+msgstr "Formulă"
 
 msgctxt "field:commission.plan.line,plan:"
 msgid "Plan"
-msgstr ""
+msgstr "Plan"
 
 msgctxt "field:commission.plan.line,product:"
 msgid "Product"
@@ -166,9 +166,8 @@ msgstr "Produs"
 
 msgctxt "field:commission.reporting.agent,agent:"
 msgid "Agent"
-msgstr ""
+msgstr "Agent"
 
-#, fuzzy
 msgctxt "field:commission.reporting.agent,amount:"
 msgid "Amount"
 msgstr "Suma"
@@ -176,30 +175,29 @@ msgstr "Suma"
 #, fuzzy
 msgctxt "field:commission.reporting.agent,base_amount:"
 msgid "Base Amount"
-msgstr "Suma"
+msgstr "Suma de bază"
 
 msgctxt "field:commission.reporting.agent,base_amount_trend:"
 msgid "Base Amount Trend"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:commission.reporting.agent,currency:"
 msgid "Currency"
-msgstr "Moneda"
+msgstr "Monedă"
 
 msgctxt "field:commission.reporting.agent,number:"
 msgid "Number"
-msgstr ""
+msgstr "Număr"
 
+#, fuzzy
 msgctxt "field:commission.reporting.agent,time_series:"
 msgid "Time Series"
-msgstr ""
+msgstr "Seria de timp"
 
 msgctxt "field:commission.reporting.agent.time_series,agent:"
 msgid "Agent"
-msgstr ""
+msgstr "Agent"
 
-#, fuzzy
 msgctxt "field:commission.reporting.agent.time_series,amount:"
 msgid "Amount"
 msgstr "Suma"
@@ -207,53 +205,48 @@ msgstr "Suma"
 #, fuzzy
 msgctxt "field:commission.reporting.agent.time_series,base_amount:"
 msgid "Base Amount"
-msgstr "Suma"
+msgstr "Suma de bază"
 
 msgctxt "field:commission.reporting.agent.time_series,base_amount_trend:"
 msgid "Base Amount Trend"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:commission.reporting.agent.time_series,currency:"
 msgid "Currency"
-msgstr "Moneda"
+msgstr "Monedă"
 
-#, fuzzy
 msgctxt "field:commission.reporting.agent.time_series,date:"
 msgid "Date"
 msgstr "Data"
 
 msgctxt "field:commission.reporting.agent.time_series,number:"
 msgid "Number"
-msgstr ""
+msgstr "Număr"
 
-#, fuzzy
 msgctxt "field:commission.reporting.context,from_date:"
 msgid "From Date"
-msgstr "Data"
+msgstr "De la Data"
 
-#, fuzzy
 msgctxt "field:commission.reporting.context,invoiced:"
 msgid "Invoiced"
-msgstr "Stare Factura"
+msgstr "Facturat"
 
 msgctxt "field:commission.reporting.context,period:"
 msgid "Period"
-msgstr ""
+msgstr "Perioadă"
 
 #, fuzzy
 msgctxt "field:commission.reporting.context,to_date:"
 msgid "To Date"
-msgstr "Data"
+msgstr "Până la Data"
 
-#, fuzzy
 msgctxt "field:commission.reporting.context,type:"
 msgid "Type"
 msgstr "Tip"
 
 msgctxt "field:party.party,agents:"
 msgid "Agents"
-msgstr ""
+msgstr "Agenți"
 
 msgctxt "field:product.product,principals:"
 msgid "Commission Principals"
@@ -265,7 +258,7 @@ msgstr ""
 
 msgctxt "field:product.template-commission.agent,agent:"
 msgid "Agent"
-msgstr ""
+msgstr "Agent"
 
 msgctxt "field:product.template-commission.agent,template:"
 msgid "Template"
@@ -275,25 +268,26 @@ msgctxt "field:sale.line,principal:"
 msgid "Commission Principal"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:sale.sale,agent:"
 msgid "Commission Agent"
-msgstr ""
+msgstr "Agent comisionar"
 
 msgctxt "field:stock.move,commission_price:"
 msgid "Commission Price"
-msgstr ""
+msgstr "Preț comision"
 
 msgctxt "field:stock.reporting.margin.context,include_commission:"
 msgid "Include Commission"
-msgstr ""
+msgstr "Includere comision"
 
 msgctxt "help:account.invoice,agent:"
 msgid "The agent who receives a commission for the invoice."
-msgstr ""
+msgstr "Agentul care primește un comision pentru factură."
 
 msgctxt "help:account.invoice.credit.start,with_agent:"
 msgid "Check to keep the original invoice's agent."
-msgstr ""
+msgstr "Bifați pentru a păstra agentul facturii originale."
 
 msgctxt "help:account.invoice.line,principal:"
 msgid "The principal who pays a commission for the invoice line."
@@ -301,35 +295,36 @@ msgstr ""
 
 msgctxt "help:commission,date:"
 msgid "When the commission is due."
-msgstr ""
+msgstr "Când se datorează comisionul."
 
 msgctxt "help:commission,invoice_state:"
 msgid "The current state of the invoice that the commission appears on."
-msgstr ""
+msgstr "Starea actuală a facturii pe care apare comisionul."
 
 msgctxt "help:commission,origin:"
 msgid "The source of the commission."
-msgstr ""
+msgstr "Sursa comisionului."
 
 msgctxt "help:commission,product:"
 msgid "The product that is used on the invoice line."
-msgstr ""
+msgstr "Produsul care este utilizat pe rândul de factură."
 
 msgctxt "help:commission.agent,party:"
 msgid "The party for whom the commission is calculated."
-msgstr ""
+msgstr "Partea pentru care se calculează comisionul."
 
 msgctxt "help:commission.agent,plan:"
 msgid "The plan used to calculate the commission."
-msgstr ""
+msgstr "Planul folosit pentru calcularea comisionului."
 
 msgctxt "help:commission.agent.selection,end_date:"
 msgid "The last date that the agent will be considered for selection."
 msgstr ""
+"Ultima dată la care agentul va fi luat în considerare pentru selecție."
 
 msgctxt "help:commission.agent.selection,start_date:"
 msgid "The first date that the agent will be considered for selection."
-msgstr ""
+msgstr "Prima dată la care agentul va fi luat în considerare pentru selecție."
 
 msgctxt "help:commission.create_invoice.ask,agents:"
 msgid ""
@@ -339,50 +334,58 @@ msgstr ""
 
 msgctxt "help:commission.create_invoice.ask,from_:"
 msgid "Limit to commissions from this date."
-msgstr ""
+msgstr "Limitare la comisioane de la această dată."
 
 msgctxt "help:commission.create_invoice.ask,to:"
 msgid "Limit to commissions to this date."
-msgstr ""
+msgstr "Limitare la comisioane până la această dată."
 
 msgctxt "help:commission.create_invoice.ask,type_:"
 msgid "Limit to commissions of this type."
-msgstr ""
+msgstr "Limitare la comisioane de acest tip."
 
 msgctxt "help:commission.plan,commission_method:"
 msgid "When the commission is due."
-msgstr ""
+msgstr "Când se datorează comisionul."
 
 msgctxt "help:commission.plan,commission_product:"
 msgid "The product that is used on the invoice lines."
-msgstr ""
+msgstr "Produsul care este utilizat pe rândurile de factură."
 
 msgctxt "help:commission.plan,lines:"
 msgid "The formulas used to calculate the commission for different criteria."
 msgstr ""
+"Formulele utilizate pentru calcularea comisionului pentru diferite criterii."
 
+#, fuzzy
 msgctxt "help:commission.plan.line,category:"
 msgid "Apply only to products in the category."
-msgstr ""
+msgstr "Aplicare numai produselor din categorie."
 
+#, fuzzy
 msgctxt "help:commission.plan.line,formula:"
 msgid ""
 "The python expression used to calculate the amount of commission for the line.\n"
 "It is evaluated with:\n"
 "- amount: the original amount"
 msgstr ""
+"Expresia python folosită pentru a calcula suma comisionului pentru rând.\n"
+"Se evaluează cu:\n"
+"- suma: suma inițială"
 
+#, fuzzy
 msgctxt "help:commission.plan.line,plan:"
 msgid "The plan to which the line belongs."
-msgstr ""
+msgstr "Planul căruia îi aparține rândul."
 
+#, fuzzy
 msgctxt "help:commission.plan.line,product:"
 msgid "Apply only to the product."
-msgstr ""
+msgstr "Aplicare numai acestui produs."
 
 msgctxt "help:commission.reporting.context,invoiced:"
 msgid "Only include invoiced commissions."
-msgstr ""
+msgstr "Includeți doar comisioanele facturate."
 
 msgctxt "help:product.product,principals:"
 msgid "The principals who pay a commission when the product is sold."
@@ -398,15 +401,15 @@ msgstr ""
 
 msgctxt "help:sale.sale,agent:"
 msgid "The agent who receives a commission for the sale."
-msgstr ""
+msgstr "Agentul care primește un comision pentru vânzare."
 
 msgctxt "model:account.journal,name:journal_commission"
 msgid "Commission"
-msgstr ""
+msgstr "Comision"
 
 msgctxt "model:commission,name:"
 msgid "Commission"
-msgstr ""
+msgstr "Comision"
 
 msgctxt "model:commission.agent,name:"
 msgid "Commission Agent"
@@ -414,126 +417,135 @@ msgstr ""
 
 msgctxt "model:commission.agent.selection,name:"
 msgid "Agent Selection"
-msgstr ""
+msgstr "Selectarea agentului"
 
 msgctxt "model:commission.create_invoice.ask,name:"
 msgid "Create Commission Invoice"
-msgstr ""
+msgstr "Creați factura de comision"
 
+#, fuzzy
 msgctxt "model:commission.plan,name:"
 msgid "Commission Plan"
-msgstr ""
+msgstr "Plan de Comisioane"
 
+#, fuzzy
 msgctxt "model:commission.plan.line,name:"
 msgid "Commission Plan Line"
-msgstr ""
+msgstr "Rând Plan de Comisioane"
 
 msgctxt "model:commission.reporting.agent,name:"
 msgid "Commission Reporting per Agent"
-msgstr ""
+msgstr "Raportarea Comisioanelor per Agent"
 
 msgctxt "model:commission.reporting.agent.time_series,name:"
 msgid "Commission Reporting per Agent"
-msgstr ""
+msgstr "Raportarea Comisioanelor per Agent"
 
+#, fuzzy
 msgctxt "model:commission.reporting.context,name:"
 msgid "Commission Reporting Context"
-msgstr ""
+msgstr "Contextul de raportare a Comisioanelor"
 
 msgctxt "model:ir.action,name:act_agent_form"
 msgid "Agents"
-msgstr ""
+msgstr "Agenți"
 
 msgctxt "model:ir.action,name:act_agent_selections"
 msgid "Selections"
-msgstr ""
+msgstr "Selecții"
 
 msgctxt "model:ir.action,name:act_commission_create_invoice"
 msgid "Create Commission Invoices"
-msgstr ""
+msgstr "Creați facturi de comision"
 
 msgctxt "model:ir.action,name:act_commission_form"
 msgid "Commissions"
-msgstr ""
+msgstr "Comisioane"
 
 msgctxt "model:ir.action,name:act_commission_form2"
 msgid "Commissions"
-msgstr ""
+msgstr "Comisioane"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_commission_from_relate"
 msgid "From Commissions"
-msgstr ""
+msgstr "Din comisioane"
 
 msgctxt "model:ir.action,name:act_commission_relate"
 msgid "Commissions"
-msgstr ""
+msgstr "Comisioane"
 
 msgctxt "model:ir.action,name:act_plan_form"
 msgid "Plans"
-msgstr ""
+msgstr "Planuri"
 
 msgctxt "model:ir.action,name:act_reporting_agent"
 msgid "Commissions per Agent"
-msgstr ""
+msgstr "Comisioane per agent"
 
 msgctxt "model:ir.action,name:act_reporting_agent_time_series"
 msgid "Commissions per Agent"
-msgstr ""
+msgstr "Comisioane per agent"
 
+#, fuzzy
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_commission_form_domain_all"
 msgid "All"
-msgstr ""
+msgstr "Tot"
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_commission_form_domain_to_invoice"
 msgid "To Invoice"
-msgstr ""
+msgstr "De Facturat"
 
 msgctxt "model:ir.message,text:msg_erase_party_pending_commission"
 msgid ""
 "You cannot erase party \"%(party)s\" while they have pending commissions "
 "with company \"%(company)s\"."
 msgstr ""
+"Nu se poate șterge partea \"%(party)s\" în timp ce aceasta are achiziții în "
+"așteptare cu compania \"%(company)s\"."
 
 msgctxt "model:ir.message,text:msg_plan_line_invalid_formula"
 msgid ""
 "Invalid formula \"%(formula)s\" in commission plan line \"%(line)s\" with "
 "exception \"%(exception)s\"."
 msgstr ""
+"Formula \"%(formula)s\" nu este valabilă în rândul planului de comisioane "
+"\"%(line)s\" cu excepția \"%(exception)s\"."
 
 msgctxt "model:ir.model.button,string:commission_invoice_button"
 msgid "Invoice"
-msgstr ""
+msgstr "Factură"
 
 msgctxt "model:ir.rule.group,name:rule_group_agent_companies"
 msgid "User in companies"
-msgstr ""
+msgstr "Utilizator în Companii"
 
 msgctxt "model:ir.rule.group,name:rule_group_reporting_agent_companies"
 msgid "User in companies"
-msgstr ""
+msgstr "Utilizator în Companii"
 
 msgctxt ""
 "model:ir.rule.group,name:rule_group_reporting_agent_time_series_companies"
 msgid "User in companies"
-msgstr ""
+msgstr "Utilizator în Companii"
 
 msgctxt "model:ir.ui.menu,name:menu_agent_form"
 msgid "Agents"
-msgstr ""
+msgstr "Agenți"
 
 msgctxt "model:ir.ui.menu,name:menu_commission"
 msgid "Commission"
-msgstr ""
+msgstr "Comision"
 
 msgctxt "model:ir.ui.menu,name:menu_commission_create_invoice"
 msgid "Create Commission Invoices"
-msgstr ""
+msgstr "Creare facturi de comision"
 
 msgctxt "model:ir.ui.menu,name:menu_commission_form"
 msgid "Commissions"
-msgstr ""
+msgstr "Comisioane"
 
 msgctxt "model:ir.ui.menu,name:menu_configuration"
 msgid "Configuration"
@@ -541,15 +553,15 @@ msgstr "Configurare"
 
 msgctxt "model:ir.ui.menu,name:menu_plan_form"
 msgid "Plans"
-msgstr ""
+msgstr "Planuri"
 
 msgctxt "model:ir.ui.menu,name:menu_reporting"
 msgid "Reporting"
-msgstr ""
+msgstr "Raportare"
 
 msgctxt "model:ir.ui.menu,name:menu_reporting_commission"
 msgid "Commissions"
-msgstr ""
+msgstr "Comisioane"
 
 msgctxt "model:product.template-commission.agent,name:"
 msgid "Product Template - Commission Agent"

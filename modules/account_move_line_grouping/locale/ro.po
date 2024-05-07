@@ -4,115 +4,115 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "field:account.move,grouped_lines:"
 msgid "Grouped Lines"
-msgstr ""
+msgstr "Rânduri Grupate"
 
 msgctxt "field:account.move.line.group,account:"
 msgid "Account"
-msgstr ""
+msgstr "Cont"
 
 msgctxt "field:account.move.line.group,amount:"
 msgid "Amount"
-msgstr ""
+msgstr "Suma"
 
 msgctxt "field:account.move.line.group,amount_currency:"
 msgid "Amount Currency"
-msgstr ""
+msgstr "Suma Valuta"
 
 msgctxt "field:account.move.line.group,amount_reconciled:"
 msgid "Amount Reconciled"
-msgstr ""
+msgstr "Suma Reconciliata"
 
 msgctxt "field:account.move.line.group,amount_second_currency:"
 msgid "Amount Second Currency"
-msgstr ""
+msgstr "Suma Moneda Secundara"
 
 msgctxt "field:account.move.line.group,company:"
 msgid "Company"
-msgstr ""
+msgstr "Companie"
 
 msgctxt "field:account.move.line.group,credit:"
 msgid "Credit"
-msgstr ""
+msgstr "Credit"
 
 msgctxt "field:account.move.line.group,currency:"
 msgid "Currency"
-msgstr ""
+msgstr "Moneda"
 
 msgctxt "field:account.move.line.group,date:"
 msgid "Effective Date"
-msgstr ""
+msgstr "Data Efectiva"
 
 msgctxt "field:account.move.line.group,debit:"
 msgid "Debit"
-msgstr ""
+msgstr "Debit"
 
 msgctxt "field:account.move.line.group,delegated_amount:"
 msgid "Delegated Amount"
-msgstr ""
+msgstr "Suma Delegata"
 
 msgctxt "field:account.move.line.group,journal:"
 msgid "Journal"
-msgstr ""
+msgstr "Jurnal"
 
 msgctxt "field:account.move.line.group,lines:"
 msgid "Lines"
-msgstr ""
+msgstr "Rânduri"
 
 msgctxt "field:account.move.line.group,maturity_date:"
 msgid "Maturity Date"
-msgstr ""
+msgstr "Data Scadentei"
 
 msgctxt "field:account.move.line.group,move:"
 msgid "Move"
-msgstr ""
+msgstr "Miscare"
 
 msgctxt "field:account.move.line.group,move_description_used:"
 msgid "Move Description"
-msgstr ""
+msgstr "Descriere Miscare"
 
 msgctxt "field:account.move.line.group,move_origin:"
 msgid "Move Origin"
-msgstr ""
+msgstr "Origine Miscare"
 
 msgctxt "field:account.move.line.group,move_state:"
 msgid "Move State"
-msgstr ""
+msgstr "Stare Miscare"
 
 msgctxt "field:account.move.line.group,partially_reconciled:"
 msgid "Partially Reconciled"
-msgstr ""
+msgstr "Partial Reconciliat"
 
 msgctxt "field:account.move.line.group,party:"
 msgid "Party"
-msgstr ""
+msgstr "Parte"
 
 msgctxt "field:account.move.line.group,payable_receivable_balance:"
 msgid "Payable/Receivable Balance"
-msgstr ""
+msgstr "Sold Furnizor/Client"
 
 msgctxt "field:account.move.line.group,period:"
 msgid "Period"
-msgstr ""
+msgstr "Perioada"
 
 msgctxt "field:account.move.line.group,reconciled:"
 msgid "Reconciled"
-msgstr ""
+msgstr "Reconciliat"
 
 msgctxt "field:account.move.line.group,second_currency:"
 msgid "Second Currency"
-msgstr ""
+msgstr "A doua Moneda"
 
 msgctxt "field:account.move.line.group,state:"
 msgid "State"
-msgstr ""
+msgstr "Stare"
 
 msgctxt "field:account.move.line.group-move.line,group:"
 msgid "Group"
-msgstr ""
+msgstr "Grup"
 
 msgctxt "field:account.move.line.group-move.line,line:"
 msgid "Line"
-msgstr ""
+msgstr "Rând"
 
 msgctxt "model:account.move.line.group,name:"
 msgid "Account Move Line Group"
@@ -128,7 +128,7 @@ msgstr ""
 
 msgctxt "model:ir.action,name:act_move_line_group_payable_receivable"
 msgid "Payable/Receivable Lines (Grouped)"
-msgstr ""
+msgstr "Rânduri Furnizor/Client (Grupate)"
 
 msgctxt "model:ir.action,name:act_open_account"
 msgid "Open Move Account (Grouped)"
@@ -136,8 +136,8 @@ msgstr ""
 
 msgctxt "view:account.move.line.group:"
 msgid "Balance"
-msgstr ""
+msgstr "Balanta"
 
 msgctxt "view:account.move.line.group:"
 msgid "Other Info"
-msgstr ""
+msgstr "Alte Informatii"

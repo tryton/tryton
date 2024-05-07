@@ -119,7 +119,7 @@ msgid ""
 "\"%(purchase)s\"."
 msgstr ""
 "No es pot validar a la vegada més d'una correcció de la mateixa compra "
-"\"%(compra)s\"."
+"\"%(purchase)s\"."
 
 msgctxt ""
 "model:ir.model.button,confirm:purchase_amendment_validation_amendment_button"

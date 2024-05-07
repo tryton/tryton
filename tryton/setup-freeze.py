@@ -66,7 +66,10 @@ def replace_path(match):
     libs = [os.path.basename(p) for p in match.group(1).split(',')]
     required_libs.update(libs)
     if sys.platform == 'darwin':
-        libs = [os.path.join('@executable_path', 'lib', l) for l in libs]
+        prefix = '@executable_path/lib'
+    else:
+        prefix = 'lib'
+    libs = [os.path.join(prefix, l) for l in libs]
     return 'shared-library="%s"' % ','.join(libs)
 
 
@@ -91,10 +94,6 @@ for ns in required_gi_namespaces:
 
     include_files.append((typefile_tmp, typefile_file))
 
-if sys.platform == 'darwin':
-    lib_dest = 'lib'
-else:
-    lib_dest = '.'
 if sys.platform == 'win32':
     required_libs.update([
         'libepoxy-0.dll',
@@ -109,7 +108,7 @@ for lib in required_libs:
             break
     else:
         raise Exception('%s not found' % lib)
-    include_files.append((path, os.path.join(lib_dest, lib)))
+    include_files.append((path, os.path.join('lib', lib)))
 
 ssl_paths = ssl.get_default_verify_paths()
 include_files.append(
@@ -125,14 +124,13 @@ version = version.strip()
 
 setup(name='tryton',
     version=version,
-    packages=find_packages(),
     options={
         'build_exe': {
             'no_compress': True,
             'include_files': include_files,
             'excludes': ['tkinter'],
             'silent': True,
-            'packages': ['gi'],
+            'packages': find_packages() + ['gi'],
             'include_msvcr': True,
             },
         'bdist_mac': {

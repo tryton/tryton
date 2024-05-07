@@ -402,8 +402,8 @@ msgid "Cancel"
 msgstr "Annuleer"
 
 msgctxt "model:ir.model.button,string:production_done_button"
-msgid "Done"
-msgstr "Gereed"
+msgid "Complete"
+msgstr "Voltooien"
 
 msgctxt "model:ir.model.button,string:production_draft_button"
 msgid "Draft"
@@ -512,10 +512,6 @@ msgstr "Productie administratie"
 msgctxt "model:stock.location,name:location_production"
 msgid "Production"
 msgstr "Productie"
-
-msgctxt "selection:ir.cron,method:"
-msgid "Assign Productions"
-msgstr "Wijs productie toe"
 
 msgctxt "selection:ir.cron,method:"
 msgid "Reschedule Productions"

@@ -88,7 +88,7 @@ msgid "Product Secondary UoM Category"
 msgstr "Categoría de la UdM secundaria del producto"
 
 msgctxt "help:product.product,purchase_secondary_uom:"
-msgid "The second Unit of Measure for purchases."
+msgid "The secondary Unit of Measure for purchases."
 msgstr "La unidad de medida secundaria de las compras."
 
 msgctxt "help:product.product,purchase_secondary_uom_factor:"
@@ -108,7 +108,7 @@ msgstr ""
 "coeficiente (unidad_compra) = 1 (unidad secundaria)"
 
 msgctxt "help:product.template,purchase_secondary_uom:"
-msgid "The second Unit of Measure for purchases."
+msgid "The secondary Unit of Measure for purchases."
 msgstr "La unidad de medida secundaria de las compras."
 
 msgctxt "help:product.template,purchase_secondary_uom_factor:"
@@ -148,7 +148,7 @@ msgid "The category of the default Unit of Measure."
 msgstr "La categoría de la unidad de medida por defecto."
 
 msgctxt "help:purchase.product_supplier,purchase_secondary_uom:"
-msgid "The second Unit of Measure for purchases."
+msgid "The secondary Unit of Measure for purchases."
 msgstr "La unidad de medida secundaria de las compras."
 
 msgctxt "help:purchase.product_supplier,purchase_secondary_uom_factor:"

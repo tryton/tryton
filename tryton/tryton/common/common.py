@@ -252,7 +252,7 @@ class ModelAccess(object):
             self._models = rpc.execute('model', 'ir.model', 'list_models',
                 rpc.CONTEXT)
         except TrytonServerError:
-            pass
+            logger.error("Unable to get model list.")
 
     def __getitem__(self, model):
         if model in self._access:
@@ -266,7 +266,14 @@ class ModelAccess(object):
             access = rpc.execute('model', 'ir.model.access', 'get_access',
                 self._models[to_load], rpc.CONTEXT)
         except TrytonServerError:
-            access = {}
+            logger.error("Unable to get access for %s.", model)
+            access = {
+                model: {
+                    'read': True,
+                    'write': False,
+                    'create': False,
+                    'delete': False},
+                }
         self._access.update(access)
         return self._access[model]
 
@@ -1001,10 +1008,13 @@ def process_exception(exception, *args, **kwargs):
             name, msg, description = exception.args
             res = userwarning(description, msg)
             if res in ('always', 'ok'):
-                RPCExecute(
-                    'model', 'res.user.warning', 'skip',
-                    name, (res == 'always'),
-                    process_exception=False)
+                try:
+                    RPCExecute(
+                        'model', 'res.user.warning', 'skip',
+                        name, (res == 'always'),
+                        process_exception=False)
+                except RPCException:
+                    pass
                 return rpc_execute(*args)
         elif exception.faultCode == 'UserError':
             msg, description, domain = exception.args
@@ -1304,7 +1314,7 @@ class RPCProgress(object):
 
         def return_():
             if self.exception:
-                raise self.exception
+                raise RPCException(self.exception)
             else:
                 return self.res
 

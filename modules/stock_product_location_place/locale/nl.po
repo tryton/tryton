@@ -1,0 +1,48 @@
+#
+#, fuzzy
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:product.product,location_places:"
+msgid "Places per Location"
+msgstr "Plaatsen per locatie"
+
+msgctxt "field:product.template,location_places:"
+msgid "Places per Location"
+msgstr "Plaatsen per locatie"
+
+msgctxt "field:stock.move,from_place:"
+msgid "From Place"
+msgstr "Van plaats"
+
+msgctxt "field:stock.move,to_place:"
+msgid "To Place"
+msgstr "Naar plaats"
+
+msgctxt "field:stock.product.location.place,location:"
+msgid "Storage Location"
+msgstr "Opslag Locatie"
+
+msgctxt "field:stock.product.location.place,place:"
+msgid "Place"
+msgstr "Plaats"
+
+msgctxt "field:stock.product.location.place,product:"
+msgid "Variant"
+msgstr "Variant"
+
+msgctxt "field:stock.product.location.place,template:"
+msgid "Product"
+msgstr "Product"
+
+msgctxt "help:stock.product.location.place,place:"
+msgid "The place where the product is always stored in the location."
+msgstr "De plaats waar het product altijd op de locatie wordt opgeslagen."
+
+msgctxt "model:ir.message,text:msg_stock_product_location_unique"
+msgid "Only one product place can be defined per location."
+msgstr "Per locatie kan er maar één product plaats gedefinieerd worden."
+
+msgctxt "model:stock.product.location.place,name:"
+msgid "Product Location Place"
+msgstr "Product locatie plaats"

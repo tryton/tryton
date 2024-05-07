@@ -54,6 +54,10 @@ msgctxt "field:web.shop,company:"
 msgid "Company"
 msgstr ""
 
+msgctxt "field:web.shop,countries:"
+msgid "Countries"
+msgstr ""
+
 msgctxt "field:web.shop,currency:"
 msgid "Currency"
 msgstr "Valuta"
@@ -70,12 +74,20 @@ msgctxt "field:web.shop,name:"
 msgid "Name"
 msgstr ""
 
+msgctxt "field:web.shop,non_sale_price_list:"
+msgid "Non-Sale Price List"
+msgstr ""
+
 msgctxt "field:web.shop,products:"
 msgid "Products"
 msgstr ""
 
 msgctxt "field:web.shop,products_removed:"
 msgid "Products Removed"
+msgstr ""
+
+msgctxt "field:web.shop,sale_price_list:"
+msgid "Sale Price List"
 msgstr ""
 
 msgctxt "field:web.shop,type:"
@@ -85,6 +97,14 @@ msgstr ""
 msgctxt "field:web.shop,warehouses:"
 msgid "Warehouses"
 msgstr "Magazzini"
+
+msgctxt "field:web.shop-country.country,country:"
+msgid "Country"
+msgstr ""
+
+msgctxt "field:web.shop-country.country,shop:"
+msgid "Shop"
+msgstr ""
 
 msgctxt "field:web.shop-product.attribute,attribute:"
 msgid "Attribute"
@@ -154,12 +174,21 @@ msgctxt "help:web.shop,categories_removed:"
 msgid "The list of categories to unpublish."
 msgstr ""
 
+msgctxt "help:web.shop,non_sale_price_list:"
+msgid ""
+"The price list to compute the price of products when it is not on sale."
+msgstr ""
+
 msgctxt "help:web.shop,products:"
 msgid "The list of products to publish."
 msgstr ""
 
 msgctxt "help:web.shop,products_removed:"
 msgid "The list of products to unpublish."
+msgstr ""
+
+msgctxt "help:web.shop,sale_price_list:"
+msgid "The price list to compute sale price of products."
 msgstr ""
 
 msgctxt "help:web.shop,type:"
@@ -194,6 +223,10 @@ msgstr ""
 
 msgctxt "model:web.shop,name:"
 msgid "Web Shop"
+msgstr ""
+
+msgctxt "model:web.shop-country.country,name:"
+msgid "Web Shop - Country"
 msgstr ""
 
 msgctxt "model:web.shop-product.attribute,name:"

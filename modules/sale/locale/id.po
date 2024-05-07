@@ -231,6 +231,11 @@ msgctxt "field:sale.line,invoice_lines:"
 msgid "Invoice Lines"
 msgstr "Baris Faktur"
 
+#, fuzzy
+msgctxt "field:sale.line,invoice_progress:"
+msgid "Invoice Progress"
+msgstr "Alamat Faktur"
+
 msgctxt "field:sale.line,moves:"
 msgid "Moves"
 msgstr "Perpindahan"
@@ -1624,9 +1629,18 @@ msgctxt "view:sale.line:"
 msgid "General"
 msgstr "Umum"
 
+#, fuzzy
+msgctxt "view:sale.line:"
+msgid "Invoicing"
+msgstr "Faktur"
+
 msgctxt "view:sale.line:"
 msgid "Notes"
 msgstr "Catatan-Catatan"
+
+msgctxt "view:sale.line:"
+msgid "Shipping"
+msgstr ""
 
 msgctxt "view:sale.line:"
 msgid "Taxes"

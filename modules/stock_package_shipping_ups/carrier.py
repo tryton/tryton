@@ -4,10 +4,13 @@
 from oauthlib.oauth2 import BackendApplicationClient
 from requests_oauthlib import OAuth2Session
 
+from trytond.i18n import gettext
 from trytond.model import (
     MatchMixin, ModelSQL, ModelView, fields, sequence_ordered)
-from trytond.pool import PoolMeta
+from trytond.pool import Pool, PoolMeta
 from trytond.pyson import Eval
+
+from .exceptions import UPSCredentialWarning
 
 
 class CredentialUPS(sequence_ordered(), ModelSQL, ModelView, MatchMixin):
@@ -60,6 +63,22 @@ class CredentialUPS(sequence_ordered(), ModelSQL, ModelView, MatchMixin):
             return 'https://onlinetools.ups.com/api/shipments/v1/ship'
         else:
             return 'https://wwwcie.ups.com/api/shipments/v1/ship'
+
+    @classmethod
+    def write(cls, *args):
+        pool = Pool()
+        Warning = pool.get('res.user.warning')
+        actions = iter(args)
+        for credentials, values in zip(actions, actions):
+            if ({'client_id', 'client_secret', 'account_number'}
+                    & values.keys()):
+                warning_name = Warning.format('dpd_credential', credentials)
+                if Warning.check(warning_name):
+                    raise UPSCredentialWarning(
+                        warning_name,
+                        gettext('stock_package_shipping_ups'
+                            '.msg_ups_credential_modified'))
+        return super().write(*args)
 
 
 class Carrier(metaclass=PoolMeta):

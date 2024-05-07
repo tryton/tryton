@@ -2,25 +2,29 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
+#, fuzzy
 msgctxt "field:account.fiscalyear,tax_group_on_cash_basis:"
 msgid "Tax Group On Cash Basis"
-msgstr ""
+msgstr "Grup fiscal pe bază de numerar"
 
+#, fuzzy
 msgctxt "field:account.invoice,tax_group_on_cash_basis:"
 msgid "Tax Group On Cash Basis"
-msgstr ""
+msgstr "Grup fiscal pe bază de numerar"
 
 msgctxt "field:account.invoice.tax.group.cash,invoice:"
 msgid "Invoice"
-msgstr ""
+msgstr "Factură"
 
+#, fuzzy
 msgctxt "field:account.invoice.tax.group.cash,tax_group:"
 msgid "Tax Group"
-msgstr ""
+msgstr "Grup Fiscal"
 
+#, fuzzy
 msgctxt "field:account.period,tax_group_on_cash_basis:"
 msgid "Tax Group On Cash Basis"
-msgstr ""
+msgstr "Grup fiscal pe bază de numerar"
 
 msgctxt "field:account.tax.group.cash,fiscalyear:"
 msgid "Fiscal Year"
@@ -34,21 +38,23 @@ msgctxt "field:account.tax.group.cash,period:"
 msgid "Period"
 msgstr "Perioadă"
 
+#, fuzzy
 msgctxt "field:account.tax.group.cash,tax_group:"
 msgid "Tax Group"
-msgstr ""
+msgstr "Grup Fiscal"
 
 msgctxt "field:account.tax.line,on_cash_basis:"
 msgid "On Cash Basis"
-msgstr ""
+msgstr "Pe bază de numerar"
 
 msgctxt "field:account.tax.line,period:"
 msgid "Period"
 msgstr "Perioadă"
 
+#, fuzzy
 msgctxt "field:party.party,supplier_tax_group_on_cash_basis:"
 msgid "Supplier Tax Group On Cash Basis"
-msgstr ""
+msgstr "Grup de impozitare a furnizorilor pe bază de numerar"
 
 msgctxt "help:account.fiscalyear,tax_group_on_cash_basis:"
 msgid "The tax group reported on cash basis for this fiscal year."

@@ -226,7 +226,6 @@ msgctxt "field:stock.inventory.count.quantity,total_quantity:"
 msgid "Total Quantity"
 msgstr "Cantitate Totală"
 
-#, fuzzy
 msgctxt "field:stock.inventory.count.quantity,unit:"
 msgid "Unit"
 msgstr "Unitate"
@@ -267,7 +266,6 @@ msgctxt "field:stock.inventory.line,quantity:"
 msgid "Actual Quantity"
 msgstr "Cantitate Reala"
 
-#, fuzzy
 msgctxt "field:stock.inventory.line,unit:"
 msgid "Unit"
 msgstr "Unitate"
@@ -332,7 +330,6 @@ msgctxt "field:stock.location,quantity:"
 msgid "Quantity"
 msgstr "Cantitate"
 
-#, fuzzy
 msgctxt "field:stock.location,quantity_uom:"
 msgid "Quantity UoM"
 msgstr "Cantitate UM"
@@ -403,13 +400,18 @@ msgstr "Valută"
 
 msgctxt "field:stock.move,delay:"
 msgid "Delay"
-msgstr ""
+msgstr "Intarziere"
 
 msgctxt "field:stock.move,effective_date:"
 msgid "Effective Date"
 msgstr "Data Efectivă"
 
 msgctxt "field:stock.move,from_location:"
+msgid "From Location"
+msgstr "Din locație"
+
+#, fuzzy
+msgctxt "field:stock.move,from_location_name:"
 msgid "From Location"
 msgstr "Din locație"
 
@@ -421,10 +423,9 @@ msgctxt "field:stock.move,origin:"
 msgid "Origin"
 msgstr "Origine"
 
-#, fuzzy
 msgctxt "field:stock.move,origin_planned_date:"
 msgid "Origin Planned Date"
-msgstr "Data Planificată"
+msgstr "Data Planificată al Originei"
 
 msgctxt "field:stock.move,planned_date:"
 msgid "Planned Date"
@@ -438,7 +439,6 @@ msgctxt "field:stock.move,product_cost_price:"
 msgid "Product Cost Price"
 msgstr "Revizuirea prețului costului produsului"
 
-#, fuzzy
 msgctxt "field:stock.move,product_uom_category:"
 msgid "Product UoM Category"
 msgstr "Categorie UM Produs"
@@ -460,6 +460,10 @@ msgid "To Location"
 msgstr "Spre Locație"
 
 #, fuzzy
+msgctxt "field:stock.move,to_location_name:"
+msgid "To Location"
+msgstr "Spre Locație"
+
 msgctxt "field:stock.move,unit:"
 msgid "Unit"
 msgstr "Unitate"
@@ -592,7 +596,6 @@ msgctxt "field:stock.products_by_locations,cost_value:"
 msgid "Cost Value"
 msgstr "Valoare Cost"
 
-#, fuzzy
 msgctxt "field:stock.products_by_locations,default_uom:"
 msgid "Default UoM"
 msgstr "UM Implicită"
@@ -1195,10 +1198,9 @@ msgctxt "help:stock.inventory.count.quantity,total_quantity:"
 msgid "The total amount of the line counted so far."
 msgstr "Suma totală din rândurile numărate până acum."
 
-#, fuzzy
 msgctxt "help:stock.inventory.count.quantity,unit:"
 msgid "The unit in which the quantities are specified."
-msgstr "Unitatea în care este specificată cantitatea."
+msgstr "Unitatea în care sunt specificate cantitățile."
 
 msgctxt "help:stock.inventory.count.search,search:"
 msgid "The item that's counted."
@@ -1216,10 +1218,9 @@ msgctxt "help:stock.inventory.line,quantity:"
 msgid "The actual quantity found in the location."
 msgstr "Cantitatea faptică găsită în locaţie."
 
-#, fuzzy
 msgctxt "help:stock.inventory.line,unit:"
 msgid "The unit in which the quantity is specified."
-msgstr "Unitatea în care este exprimată cantitatea."
+msgstr "Unitatea în care este specificată cantitatea."
 
 msgctxt "help:stock.location,childs:"
 msgid "Used to add structure below the location."
@@ -1271,7 +1272,7 @@ msgstr "Cantitatea de stoc în locaţie."
 
 msgctxt "help:stock.location,quantity_uom:"
 msgid "The Unit of Measure for the quantities."
-msgstr ""
+msgstr "Unitatea de Masura pentru cantitati."
 
 msgctxt "help:stock.location,storage_location:"
 msgid "The top level location where stock is stored."
@@ -1309,10 +1310,9 @@ msgctxt "help:stock.move,origin:"
 msgid "The source of the stock move."
 msgstr "Sursa mişcării de stoc."
 
-#, fuzzy
 msgctxt "help:stock.move,origin_planned_date:"
 msgid "When the stock was expected to be moved originally."
-msgstr "Când se aşteaptă să se mute stocul."
+msgstr "Când se aștepta ca stocul să fie mutat inițial."
 
 msgctxt "help:stock.move,planned_date:"
 msgid "When the stock is expected to be moved."
@@ -1326,11 +1326,11 @@ msgctxt "help:stock.move,product_cost_price:"
 msgid ""
 "The cost price of the product when different from the cost price of the "
 "move."
-msgstr ""
+msgstr "Prețul produsului atunci când este diferit de prețul mutării."
 
 msgctxt "help:stock.move,product_uom_category:"
 msgid "The category of Unit of Measure for the product."
-msgstr ""
+msgstr "Categoria de Unitate de Masura pentru produs."
 
 msgctxt "help:stock.move,quantity:"
 msgid "The amount of stock moved."
@@ -1348,10 +1348,9 @@ msgctxt "help:stock.move,to_location:"
 msgid "Where the stock is moved to."
 msgstr "Unde este mutat stocul."
 
-#, fuzzy
 msgctxt "help:stock.move,unit:"
 msgid "The unit in which the quantity is specified."
-msgstr "Unitatea în care este exprimată cantitatea."
+msgstr "Unitatea în care este specificată cantitatea."
 
 msgctxt "help:stock.move,unit_price_company:"
 msgid "Unit price in company currency."
@@ -1380,7 +1379,7 @@ msgstr "Depozitul pentru care vor fi calculate cantităţile."
 
 msgctxt "help:stock.products_by_locations,default_uom:"
 msgid "The default Unit of Measure."
-msgstr ""
+msgstr "Unitatea de Masura implicita."
 
 msgctxt "help:stock.products_by_locations.context,forecast_date:"
 msgid ""
@@ -1424,10 +1423,9 @@ msgctxt "help:stock.shipment.in,number:"
 msgid "The main identifier for the shipment."
 msgstr "Identificatorul principal pentru expediere."
 
-#, fuzzy
 msgctxt "help:stock.shipment.in,reference:"
 msgid "The external identifier for the shipment."
-msgstr "Identificatori externi ai expedierii."
+msgstr "Identificatorul extern al expedierii."
 
 msgctxt "help:stock.shipment.in,state:"
 msgid "The current state of the shipment."
@@ -1461,10 +1459,9 @@ msgctxt "help:stock.shipment.in.return,number:"
 msgid "The main identifier for the shipment."
 msgstr "Identificatorul principal pentru expediere."
 
-#, fuzzy
 msgctxt "help:stock.shipment.in.return,reference:"
 msgid "The external identifier for the shipment."
-msgstr "Identificatori externi ai expedierii."
+msgstr "Identificatorul extern al expedierii."
 
 msgctxt "help:stock.shipment.in.return,state:"
 msgid "The current state of the shipment."
@@ -1510,10 +1507,9 @@ msgctxt "help:stock.shipment.internal,planned_start_date:"
 msgid "When the stock is expected to be sent."
 msgstr "Când se aşteaptă să se trimită stocul."
 
-#, fuzzy
 msgctxt "help:stock.shipment.internal,reference:"
 msgid "The external identifier for the shipment."
-msgstr "Identificatori externi ai expedierii."
+msgstr "Identificatorul extern al expedierii."
 
 msgctxt "help:stock.shipment.internal,state:"
 msgid "The current state of the shipment."
@@ -1556,10 +1552,9 @@ msgctxt "help:stock.shipment.out,outgoing_moves:"
 msgid "The moves that send the stock to the customer."
 msgstr "Mişcările care trimit stocul la client."
 
-#, fuzzy
 msgctxt "help:stock.shipment.out,reference:"
 msgid "The external identifier for the shipment."
-msgstr "Identificatori externi ai expedierii."
+msgstr "Identificatorul extern al expedierii."
 
 msgctxt "help:stock.shipment.out,state:"
 msgid "The current state of the shipment."
@@ -1593,10 +1588,9 @@ msgctxt "help:stock.shipment.out.return,number:"
 msgid "The main identifier for the shipment."
 msgstr "Identificatorul principal pentru expediere."
 
-#, fuzzy
 msgctxt "help:stock.shipment.out.return,reference:"
 msgid "The external identifier for the shipment."
-msgstr "Identificatori externi ai expedierii."
+msgstr "Identificatorul extern al expedierii."
 
 msgctxt "help:stock.shipment.out.return,state:"
 msgid "The current state of the shipment."
@@ -1722,7 +1716,6 @@ msgctxt "model:ir.action,name:act_stock_configuration_form"
 msgid "Configuration"
 msgstr "Configurare"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_warehouse_list"
 msgid "Warehouses"
 msgstr "Depozite"
@@ -1949,14 +1942,13 @@ msgstr ""
 "Cost invalid \"%(cost_price)s\" pentru produs \"%(product)s\" cu excepţia "
 "\"%(exception)s\"."
 
-#, fuzzy
 msgctxt "model:ir.message,text:msg_invalid_cost_price_not_number"
 msgid ""
 "The value \"%(value)s\" of \"%(cost_price)s\" for product \"%(product)s\" is"
 " not a number."
 msgstr ""
-"Cost invalid \"%(cost_price)s\" pentru produs \"%(product)s\" cu excepţia "
-"\"%(exception)s\"."
+"Valoarea \"%(value)s\" a lui \"%(cost_price)s\" pentru produsul "
+"\"%(product)s\" nu este un număr."
 
 msgctxt "model:ir.message,text:msg_inventory_count_create_line"
 msgid "No existing line found for \"%(search)s\"."
@@ -1991,6 +1983,8 @@ msgid ""
 "To confirm the inventory \"%(inventory)s\" you must set a lost and found on "
 "a parent of location \"%(location)s\"."
 msgstr ""
+"Pentru a confirma inventarul \"%(inventory)s\", trebuie să setați pierdut și"
+" găsit pe un părinte al locației \"%(location)s\"."
 
 msgctxt "model:ir.message,text:msg_inventory_missing_empty_quantity"
 msgid ""
@@ -2005,13 +1999,13 @@ msgid ""
 "To set location \"%(location)s\" as storage/input/output of warehouse "
 "\"%(warehouse)s\", it must be in the warehouse."
 msgstr ""
+"Pentru a seta locația \"%(location)s\" ca stocare/intrare/ieșire a "
+"depozitului \"%(warehouse)s\", aceasta trebuie să fie în depozit."
 
-#, fuzzy
 msgctxt "model:ir.message,text:msg_location_inactive_not_empty"
 msgid "To inactivate location \"%(location)s\", you must empty it."
-msgstr "Locația \"%(location)s\" trebuie să fie goală pentru a fi dezactivată."
+msgstr "Pentru a dezactiva locația \"%(location)s\", trebuie să o goliți."
 
-#, fuzzy
 msgctxt "model:ir.message,text:msg_location_invalid_type_for_moves"
 msgid ""
 "You cannot change the type of location \"%(location)s\" to \"%(type)s\"\n"
@@ -2020,16 +2014,14 @@ msgstr ""
 "Nu se poate schimba tipul de locație \"%(location)s\" la \"%(type)s\"\n"
 "deoarece acest tip nu suportă mutări, iar locația are mutări existente."
 
-#, fuzzy
 msgctxt "model:ir.message,text:msg_move_delete_draft_cancel"
 msgid ""
 "To delete stock move \"%(move)s\" you must cancel it or reset its state to "
 "draft."
 msgstr ""
-"Pentru a șterge mutarea de stoc \"%(move)s\" este necesar să o anulați sau "
+"Pentru a șterge mişcare de stoc \"%(move)s\" este necesar să o anulați sau "
 "să ii resetați starea la Ciornă."
 
-#, fuzzy
 msgctxt "model:ir.message,text:msg_move_effective_date_in_the_future"
 msgid "The moves \"%(moves)s\" have effective dates in the future."
 msgstr "Mutările \"%(moves)s\" au date efective în viitor."
@@ -2053,21 +2045,18 @@ msgid "You cannot modify stock move \"%(move)s\" because it is cancelled."
 msgstr ""
 "Nu se poate modifica mişcarea de stoc \"%(move)s\" pentru că este anulată."
 
-#, fuzzy
 msgctxt "model:ir.message,text:msg_move_modify_done"
 msgid "You cannot modify stock move \"%(move)s\" because it is done."
 msgstr ""
-"Nu se poate modifica mutarea de stoc \"%(move)s\" deoarece a fost deja "
+"Nu se poate modifica mişcare de stoc \"%(move)s\" deoarece a fost deja "
 "efectuată."
 
-#, fuzzy
 msgctxt "model:ir.message,text:msg_move_modify_period_close"
 msgid "To modify stock move \"%(move)s\" you must reopen period \"%(period)s\"."
 msgstr ""
-"Pentru a modifica mutarea de stoc \"%(move)s\" trebuie să redeschideți "
+"Pentru a modifica mişcare de stoc \"%(move)s\" trebuie să redeschideți "
 "perioada \"%(period)s\"."
 
-#, fuzzy
 msgctxt "model:ir.message,text:msg_move_no_origin"
 msgid "Stock moves \"%(moves)s\" have no origin."
 msgstr "Mutările de stoc \"%(moves)s\" nu au origine."
@@ -2090,15 +2079,16 @@ msgid ""
 "You cannot change the cost price of a product which is associated with stock moves.\n"
 "You must use the \"Modify Cost Price\" wizard."
 msgstr ""
+"Nu puteți modifica prețul unui produs care este asociat cu mutarea stocurilor.\n"
+"Trebuie să utilizați expertul \"Modificare preț\"."
 
-#, fuzzy
 msgctxt "model:ir.message,text:msg_product_change_default_uom"
 msgid ""
 "You cannot change the default unit of measure of a product which is "
 "associated with stock moves."
 msgstr ""
-"Nu se poate schimba Unitatea de Masură implicită a unui produs asociat cu "
-"mutari de stoc."
+"Nu se poate schimba Unitatea de Masură implicită a unui produs care este "
+"asociat cu mutari de stoc."
 
 msgctxt "model:ir.message,text:msg_product_change_type"
 msgid ""
@@ -2123,55 +2113,52 @@ msgstr ""
 "Este recomandată lichidarea stocurilor din locațiile de depozitare înaintea "
 "dezactivării produsului."
 
+msgctxt "model:ir.message,text:msg_product_quantities_max"
+msgid "You cannot select more than %(max)s products to compute quantities."
+msgstr ""
+
 msgctxt "model:ir.message,text:msg_shipment_check_quantity"
 msgid ""
 "The quantities of shipment \"%(shipment)s\" are different by %(quantities)s."
-msgstr ""
+msgstr "Cantitățile expedierii \"%(shipment)s\" diferă cu %(quantities)s."
 
 msgctxt "model:ir.message,text:msg_shipment_delay"
 msgid "Delay"
-msgstr ""
+msgstr "Intarziere"
 
 msgctxt "model:ir.message,text:msg_shipment_delete_cancel"
 msgid "To delete shipment \"%(shipment)s\" you must cancel it."
-msgstr ""
+msgstr "Pentru a șterge expedierea \"%(shipment)s\", trebuie să o anulați."
 
-#, fuzzy
 msgctxt "model:ir.message,text:msg_shipment_effective_date"
 msgid "Effective Date"
 msgstr "Data Efectivă"
 
-#, fuzzy
 msgctxt "model:ir.message,text:msg_shipment_effective_date_help"
 msgid "When the stock operation was actually completed."
-msgstr "Când s-a completat expedierea faptic."
+msgstr "Când operațiunea de stoc a fost efectiv finalizată."
 
-#, fuzzy
 msgctxt "model:ir.message,text:msg_shipment_origin_planned_date"
 msgid "Origin Planned Date"
-msgstr "Data Planificată"
+msgstr "Data Planificată al Originei"
 
-#, fuzzy
 msgctxt "model:ir.message,text:msg_shipment_origin_planned_date_help"
 msgid "When the stock operation was initially expected to be completed."
-msgstr "Când se aşteaptă să se completeze expediere."
+msgstr "Când se preconiza ca operațiunea de stoc să fie finalizată."
 
-#, fuzzy
 msgctxt "model:ir.message,text:msg_shipment_pack_inventory_done"
 msgid "To pack shipment \"%(shipment)s\" you must do the inventory moves."
 msgstr ""
-"Pentru a șterge rând inventar \"%(line)s\" trebuie anulat inventarul "
-"\"%(inventory)s\"."
+"Pentru a împacheta expedierea \"%(shipment)s\" trebuie să faceți mișcările "
+"de inventar."
 
-#, fuzzy
 msgctxt "model:ir.message,text:msg_shipment_planned_date"
 msgid "Planned Date"
 msgstr "Data Planificată"
 
-#, fuzzy
 msgctxt "model:ir.message,text:msg_shipment_planned_date_help"
 msgid "When the stock operation is expected to be completed."
-msgstr "Când se aşteaptă să se completeze expediere."
+msgstr "Când se preconizează finalizarea operațiunii de stoc."
 
 msgctxt "model:ir.message,text:msg_stock_reporting_company"
 msgid "Company"
@@ -2221,17 +2208,42 @@ msgctxt "model:ir.model.button,confirm:move_do_button"
 msgid "Are you sure you want to complete the move?"
 msgstr "Sunteți sigur că doriți să finalizați mişcarea?"
 
+#, fuzzy
+msgctxt "model:ir.model.button,confirm:shipment_in_cancel_button"
+msgid "Are you sure you want to cancel the shipment?"
+msgstr "Sigur doriți să anulați mutarea?"
+
 msgctxt "model:ir.model.button,confirm:shipment_in_receive_button"
 msgid "Are you sure you want to receive the shipment?"
 msgstr "Sunteți sigur că doriți să primiți transportul?"
+
+#, fuzzy
+msgctxt "model:ir.model.button,confirm:shipment_in_return_cancel_button"
+msgid "Are you sure you want to cancel the shipment?"
+msgstr "Sigur doriți să anulați mutarea?"
 
 msgctxt "model:ir.model.button,confirm:shipment_in_return_done_button"
 msgid "Are you sure you want to complete the shipment?"
 msgstr "Sunteți sigur că doriți să finalizați expedierea?"
 
+#, fuzzy
+msgctxt "model:ir.model.button,confirm:shipment_internal_cancel_button"
+msgid "Are you sure you want to cancel the shipment?"
+msgstr "Sigur doriți să anulați mutarea?"
+
+#, fuzzy
+msgctxt "model:ir.model.button,confirm:shipment_out_cancel_button"
+msgid "Are you sure you want to cancel the shipment?"
+msgstr "Sigur doriți să anulați mutarea?"
+
 msgctxt "model:ir.model.button,confirm:shipment_out_done_button"
 msgid "Are you sure you want to complete the shipment?"
 msgstr "Sunteți sigur că doriți să finalizați expedierea?"
+
+#, fuzzy
+msgctxt "model:ir.model.button,confirm:shipment_out_return_cancel_button"
+msgid "Are you sure you want to cancel the shipment?"
+msgstr "Sigur doriți să anulați mutarea?"
 
 msgctxt "model:ir.model.button,confirm:shipment_out_return_receive_button"
 msgid "Are you sure you want to receive the shipment?"
@@ -2285,9 +2297,10 @@ msgctxt "model:ir.model.button,string:shipment_in_cancel_button"
 msgid "Cancel"
 msgstr "Anulare"
 
+#, fuzzy
 msgctxt "model:ir.model.button,string:shipment_in_done_button"
-msgid "Done"
-msgstr "Terminat"
+msgid "Complete"
+msgstr "Complet"
 
 msgctxt "model:ir.model.button,string:shipment_in_draft_button"
 msgid "Reset to Draft"
@@ -2305,9 +2318,10 @@ msgctxt "model:ir.model.button,string:shipment_in_return_cancel_button"
 msgid "Cancel"
 msgstr "Anulare"
 
+#, fuzzy
 msgctxt "model:ir.model.button,string:shipment_in_return_done_button"
-msgid "Done"
-msgstr "Terminat"
+msgid "Complete"
+msgstr "Complet"
 
 msgctxt "model:ir.model.button,string:shipment_in_return_draft_button"
 msgid "Draft"
@@ -2325,9 +2339,10 @@ msgctxt "model:ir.model.button,string:shipment_internal_cancel_button"
 msgid "Cancel"
 msgstr "Anulare"
 
+#, fuzzy
 msgctxt "model:ir.model.button,string:shipment_internal_done_button"
-msgid "Done"
-msgstr "Terminare"
+msgid "Complete"
+msgstr "Complet"
 
 msgctxt "model:ir.model.button,string:shipment_internal_draft_button"
 msgid "Draft"
@@ -2349,9 +2364,10 @@ msgctxt "model:ir.model.button,string:shipment_out_cancel_button"
 msgid "Cancel"
 msgstr "Anulare"
 
+#, fuzzy
 msgctxt "model:ir.model.button,string:shipment_out_done_button"
-msgid "Done"
-msgstr "Terminare"
+msgid "Complete"
+msgstr "Complet"
 
 msgctxt "model:ir.model.button,string:shipment_out_draft_button"
 msgid "Draft"
@@ -2369,9 +2385,10 @@ msgctxt "model:ir.model.button,string:shipment_out_return_cancel_button"
 msgid "Cancel"
 msgstr "Anulare"
 
+#, fuzzy
 msgctxt "model:ir.model.button,string:shipment_out_return_done_button"
-msgid "Done"
-msgstr "Terminare"
+msgid "Complete"
+msgstr "Complet"
 
 msgctxt "model:ir.model.button,string:shipment_out_return_draft_button"
 msgid "Draft"
@@ -2581,15 +2598,13 @@ msgctxt "model:ir.ui.menu,name:menu_stock_configuration"
 msgid "Configuration"
 msgstr "Configurare"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_warehouse_list"
 msgid "Warehouses"
 msgstr "Depozite"
 
-#, fuzzy
 msgctxt "model:party.party-delivered_to-stock.location,name:"
 msgid "Party Delivered to Warehouse"
-msgstr "Depozit Curent"
+msgstr "Parte livrată la Depozit"
 
 msgctxt "model:party.party.location,name:"
 msgid "Party Location"
@@ -2621,7 +2636,7 @@ msgstr "Administrarea Stocurilor"
 
 msgctxt "model:res.group,name:group_stock_force_assignment"
 msgid "Stock Force Assignment"
-msgstr ""
+msgstr "Atribuire Forțata Stoc"
 
 msgctxt "model:stock.configuration,name:"
 msgid "Stock Configuration"
@@ -2633,7 +2648,7 @@ msgstr "Locația de configurare a stocului"
 
 msgctxt "model:stock.configuration.sequence,name:"
 msgid "Stock Configuration Sequence"
-msgstr ""
+msgstr "Secventa de Configurare a Stocului"
 
 msgctxt "model:stock.inventory,name:"
 msgid "Stock Inventory"
@@ -2641,11 +2656,11 @@ msgstr "Inventar Stoc"
 
 msgctxt "model:stock.inventory.count.quantity,name:"
 msgid "Stock Inventory Count"
-msgstr ""
+msgstr "Număr de Inventar Stoc"
 
 msgctxt "model:stock.inventory.count.search,name:"
 msgid "Stock Inventory Count"
-msgstr ""
+msgstr "Număr de Inventar Stoc"
 
 msgctxt "model:stock.inventory.line,name:"
 msgid "Stock Inventory Line"
@@ -2705,7 +2720,7 @@ msgstr "Perioada Stoc"
 
 msgctxt "model:stock.period.cache,name:"
 msgid "Stock Period Cache"
-msgstr ""
+msgstr "Cache Perioada Stoc"
 
 msgctxt "model:stock.product_quantities_warehouse,name:"
 msgid "Product Quantities By Warehouse"
@@ -2717,7 +2732,7 @@ msgstr "Cantităţi de Produs după Depozit"
 
 msgctxt "model:stock.product_quantities_warehouse.move,name:"
 msgid "Product Quantities By Warehouse Moves"
-msgstr ""
+msgstr "Cantități de produse în funcție de mutările din depozit"
 
 msgctxt "model:stock.products_by_locations,name:"
 msgid "Products by Locations"
@@ -2741,7 +2756,7 @@ msgstr "Raportare Marja după Categorie de Stoc"
 
 msgctxt "model:stock.reporting.margin.context,name:"
 msgid "Stock Reporting Margin Context"
-msgstr ""
+msgstr "Context Raport Marja Stoc"
 
 msgctxt "model:stock.reporting.margin.main,name:"
 msgid "Stock Reporting Margin"
@@ -2753,11 +2768,11 @@ msgstr "Raport Marja Stocuri"
 
 msgctxt "model:stock.reporting.margin.product,name:"
 msgid "Stock Reporting Margin per Product"
-msgstr ""
+msgstr "Marja de raportare a stocurilor per produs"
 
 msgctxt "model:stock.reporting.margin.product.time_series,name:"
 msgid "Stock Reporting Margin per Product"
-msgstr ""
+msgstr "Marja de raportare a stocurilor per produs"
 
 msgctxt "model:stock.shipment.assign.partial,name:"
 msgid "Assign Shipment"
@@ -2787,15 +2802,13 @@ msgctxt "report:stock.shipment.in.restocking_list:"
 msgid "/"
 msgstr "/"
 
-#, fuzzy
 msgctxt "report:stock.shipment.in.restocking_list:"
 msgid "Cancelled"
 msgstr "Anulat"
 
-#, fuzzy
 msgctxt "report:stock.shipment.in.restocking_list:"
 msgid "Draft"
-msgstr "Draft"
+msgstr "Ciorna"
 
 msgctxt "report:stock.shipment.in.restocking_list:"
 msgid "From Location"
@@ -2803,7 +2816,7 @@ msgstr "Din Locaţie"
 
 msgctxt "report:stock.shipment.in.restocking_list:"
 msgid "N°:"
-msgstr ""
+msgstr "N°:"
 
 msgctxt "report:stock.shipment.in.restocking_list:"
 msgid "Planned Date:"
@@ -2855,7 +2868,7 @@ msgstr "Expediere Interna"
 
 msgctxt "report:stock.shipment.internal.report:"
 msgid "N°:"
-msgstr ""
+msgstr "N°:"
 
 msgctxt "report:stock.shipment.internal.report:"
 msgid "Planned Date:"
@@ -2885,7 +2898,6 @@ msgctxt "report:stock.shipment.out.delivery_note:"
 msgid "/"
 msgstr "/"
 
-#, fuzzy
 msgctxt "report:stock.shipment.out.delivery_note:"
 msgid "Cancelled"
 msgstr "Anulat"
@@ -2902,19 +2914,17 @@ msgctxt "report:stock.shipment.out.delivery_note:"
 msgid "Delivery Note"
 msgstr "Aviz de Însoţire a Mărfii"
 
-#, fuzzy
 msgctxt "report:stock.shipment.out.delivery_note:"
 msgid "Draft"
-msgstr "Draft"
+msgstr "Ciorna"
 
-#, fuzzy
 msgctxt "report:stock.shipment.out.delivery_note:"
 msgid "Location:"
-msgstr "Locație"
+msgstr "Locație:"
 
 msgctxt "report:stock.shipment.out.delivery_note:"
 msgid "N°:"
-msgstr ""
+msgstr "N°:"
 
 msgctxt "report:stock.shipment.out.delivery_note:"
 msgid "Product"
@@ -2932,7 +2942,6 @@ msgctxt "report:stock.shipment.out.picking_list:"
 msgid "/"
 msgstr "/"
 
-#, fuzzy
 msgctxt "report:stock.shipment.out.picking_list:"
 msgid "Cancelled"
 msgstr "Anulat"
@@ -2941,15 +2950,13 @@ msgctxt "report:stock.shipment.out.picking_list:"
 msgid "Customer:"
 msgstr "Client:"
 
-#, fuzzy
 msgctxt "report:stock.shipment.out.picking_list:"
 msgid "Done"
 msgstr "Terminat"
 
-#, fuzzy
 msgctxt "report:stock.shipment.out.picking_list:"
 msgid "Draft"
-msgstr "Draft"
+msgstr "Ciorna"
 
 msgctxt "report:stock.shipment.out.picking_list:"
 msgid "From Location"
@@ -2957,7 +2964,7 @@ msgstr "Din Locaţie"
 
 msgctxt "report:stock.shipment.out.picking_list:"
 msgid "N°:"
-msgstr ""
+msgstr "N°:"
 
 msgctxt "report:stock.shipment.out.picking_list:"
 msgid "Picking List"
@@ -2995,7 +3002,6 @@ msgctxt "report:stock.shipment.out.return.restocking_list:"
 msgid ":"
 msgstr ":"
 
-#, fuzzy
 msgctxt "report:stock.shipment.out.return.restocking_list:"
 msgid "Cancelled"
 msgstr "Anulat"
@@ -3004,10 +3010,9 @@ msgctxt "report:stock.shipment.out.return.restocking_list:"
 msgid "Customer"
 msgstr "Client"
 
-#, fuzzy
 msgctxt "report:stock.shipment.out.return.restocking_list:"
 msgid "Draft"
-msgstr "Draft"
+msgstr "Ciorna"
 
 msgctxt "report:stock.shipment.out.return.restocking_list:"
 msgid "From Location"
@@ -3015,7 +3020,7 @@ msgstr "Din locație"
 
 msgctxt "report:stock.shipment.out.return.restocking_list:"
 msgid "N°:"
-msgstr ""
+msgstr "N°:"
 
 msgctxt "report:stock.shipment.out.return.restocking_list:"
 msgid "Planned Date:"
@@ -3045,29 +3050,26 @@ msgctxt "report:stock.shipment.out.return.restocking_list:"
 msgid "Warehouse:"
 msgstr "Depozit:"
 
+#, fuzzy
 msgctxt "selection:ir.cron,method:"
-msgid "Assign Customer Shipments"
-msgstr "Atribuire Expedierile Client"
-
-msgctxt "selection:ir.cron,method:"
-msgid "Assign Internal Shipments"
-msgstr ""
+msgid "Assign Shipments"
+msgstr "Atribuire Expediere"
 
 msgctxt "selection:ir.cron,method:"
 msgid "Recompute Cost Price from Moves"
-msgstr ""
+msgstr "Recalculați prețul din Mutări"
 
 msgctxt "selection:ir.cron,method:"
 msgid "Reschedule Customer Shipments"
-msgstr ""
+msgstr "Reprogramare Expeditii Client"
 
 msgctxt "selection:ir.cron,method:"
 msgid "Reschedule Internal Shipments"
-msgstr ""
+msgstr "Reprogramare Expeditii Interne"
 
 msgctxt "selection:ir.cron,method:"
 msgid "Reschedule Supplier Return Shipments"
-msgstr ""
+msgstr "Reprogramare Expeditii Retur Furnizor"
 
 msgctxt "selection:stock.inventory,empty_quantity:"
 msgid "Empty"
@@ -3325,27 +3327,22 @@ msgctxt "view:stock.configuration:"
 msgid "Shipments"
 msgstr "Expedieri"
 
-#, fuzzy
 msgctxt "view:stock.configuration:"
 msgid "Supplier Return Sequence"
-msgstr "Secvența Retur Expediere Furnizor"
+msgstr "Secvența Retur Furnizor"
 
-#, fuzzy
 msgctxt "view:stock.configuration:"
 msgid "Supplier Sequence"
-msgstr "Secvența Expediere Furnizor"
+msgstr "Secvența Furnizor"
 
-#, fuzzy
 msgctxt "view:stock.move:"
 msgid "Cost"
 msgstr "Cost"
 
-#, fuzzy
 msgctxt "view:stock.move:"
 msgid "Move"
 msgstr "Mișcare"
 
-#, fuzzy
 msgctxt "view:stock.move:"
 msgid "Other Info"
 msgstr "Alte Informaţii"
@@ -3436,7 +3433,7 @@ msgstr "Așteptare"
 
 msgctxt "wizard_button:stock.shipment.assign,partial,force:"
 msgid "Force"
-msgstr ""
+msgstr "Forţare"
 
 msgctxt "wizard_button:stock.shipment.assign,partial,ignore:"
 msgid "Ignore"

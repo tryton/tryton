@@ -190,6 +190,11 @@ msgctxt "field:purchase.line,invoice_lines:"
 msgid "Invoice Lines"
 msgstr "Baris Faktur"
 
+#, fuzzy
+msgctxt "field:purchase.line,invoice_progress:"
+msgid "Invoice Progress"
+msgstr "Alamat Faktur"
+
 msgctxt "field:purchase.line,moves:"
 msgid "Moves"
 msgstr "Perpindahan"
@@ -837,8 +842,8 @@ msgstr ""
 
 msgctxt "model:ir.message,text:msg_change_purchase_uom"
 msgid ""
-"You are trying to change the purchase unit of measurer on which the purchase"
-" prices are based."
+"You are trying to change the purchase unit of measure on which the purchase "
+"prices are based."
 msgstr ""
 
 msgctxt "model:ir.message,text:msg_erase_party_pending_purchase"
@@ -1405,9 +1410,18 @@ msgctxt "view:purchase.line:"
 msgid "General"
 msgstr "Umum"
 
+#, fuzzy
+msgctxt "view:purchase.line:"
+msgid "Invoicing"
+msgstr "Faktur"
+
 msgctxt "view:purchase.line:"
 msgid "Notes"
 msgstr "Catatan-Catatan"
+
+msgctxt "view:purchase.line:"
+msgid "Shipping"
+msgstr ""
 
 msgctxt "view:purchase.line:"
 msgid "Taxes"

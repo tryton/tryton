@@ -113,7 +113,7 @@ msgstr ""
 msgid "Unable to reach the server."
 msgstr ""
 
-msgid "Too many requests. Try again later."
+msgid "Error: \"%1\". Try again later."
 msgstr ""
 
 msgid "Login"
@@ -129,7 +129,18 @@ msgstr "Felhasználónév"
 msgid "Login with"
 msgstr "Bejelentkezés"
 
+msgid "Too many requests. Try again later."
+msgstr ""
+
 msgid "Not found."
+msgstr ""
+
+msgid "Send you an email to reset your password."
+msgstr ""
+
+msgid ""
+"A request to reset your password has been sent.\n"
+"Please check your mailbox."
 msgstr ""
 
 msgid "Your selection:"
@@ -184,12 +195,6 @@ msgstr "w"
 msgid "False"
 msgstr "Hamis"
 
-msgid "Message: "
-msgstr "Üzenet: "
-
-msgid "Warning: "
-msgstr ""
-
 msgid "Always ignore this warning."
 msgstr "Ne mutassa többet ezt a figyelmeztetést"
 
@@ -199,14 +204,9 @@ msgstr "Akarja folyatni?"
 msgid "No"
 msgstr "Nem"
 
-msgid "Confirmation: "
-msgstr ""
-
-msgid "Concurrency Exception"
+#, fuzzy
+msgid "Concurrency Warning"
 msgstr "Egyidejű módosítási hiba"
-
-msgid "Write Concurrency Warning: "
-msgstr ""
 
 msgid "This record has been modified while you were editing it."
 msgstr ""
@@ -237,6 +237,9 @@ msgstr "Felülírás"
 
 msgid "Application Error"
 msgstr "Alkalmazáshiba"
+
+msgid "Details"
+msgstr ""
 
 msgid "Report Bug"
 msgstr "A hiba jelentése"
@@ -528,8 +531,9 @@ msgstr ""
 msgid "Menu"
 msgstr ""
 
-msgid "Copy"
-msgstr ""
+#, fuzzy
+msgid "Copy Selected Rows"
+msgstr "Csak a kiválasztott rekordokat"
 
 msgid "#ERROR"
 msgstr ""
@@ -592,6 +596,12 @@ msgid "Model:"
 msgstr "Elem: "
 
 msgid "ID:"
+msgstr ""
+
+msgid "Module:"
+msgstr ""
+
+msgid "XML ID:"
 msgstr ""
 
 msgid "Created by:"

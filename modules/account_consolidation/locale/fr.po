@@ -36,7 +36,7 @@ msgstr "Parent"
 
 msgctxt "field:account.consolidation,statement:"
 msgid "Statement"
-msgstr "Relevé"
+msgstr "Raport"
 
 msgctxt "field:account.consolidation,types:"
 msgid "Types"
@@ -148,7 +148,7 @@ msgstr "Consolidations de compte"
 
 msgctxt "model:ir.action,name:report_consolidation_statement"
 msgid "Statement"
-msgstr "Relevé"
+msgstr "Raport"
 
 msgctxt "model:ir.ui.menu,name:menu_consolidation_list"
 msgid "Account Consolidations"
@@ -196,7 +196,7 @@ msgstr "Date d'impression :"
 
 msgctxt "report:account.consolidation.statement:"
 msgid "Statement"
-msgstr "Relevé"
+msgstr "Raport"
 
 msgctxt "report:account.consolidation.statement:"
 msgid "To"

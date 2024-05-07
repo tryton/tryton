@@ -110,8 +110,8 @@ msgstr "Dreceres de la pestanya"
 msgid "Unable to reach the server."
 msgstr "No s'ha pogut connectar amb el servidor."
 
-msgid "Too many requests. Try again later."
-msgstr "Massa peticions. Proveu-ho de nou més tard."
+msgid "Error: \"%1\". Try again later."
+msgstr "Error: \"%1\". Proveu-ho de nou més tard."
 
 msgid "Login"
 msgstr "Accedeix"
@@ -125,8 +125,21 @@ msgstr "Nom d'usuari"
 msgid "Login with"
 msgstr "Identificar-se amb"
 
+msgid "Too many requests. Try again later."
+msgstr "Massa peticions. Proveu-ho de nou més tard."
+
 msgid "Not found."
 msgstr "No s'han trobat."
+
+msgid "Send you an email to reset your password."
+msgstr "Reb un correu electrònic per restablir la teva contrasenya."
+
+msgid ""
+"A request to reset your password has been sent.\n"
+"Please check your mailbox."
+msgstr ""
+"S'ha enviat una sol·licitud per restablir la contrasenya.\n"
+"Si us plau, comproveu la vostra bústia de correu."
 
 msgid "Your selection:"
 msgstr "La vostra selecció:"
@@ -179,12 +192,6 @@ msgstr "v"
 msgid "False"
 msgstr "Fals"
 
-msgid "Message: "
-msgstr "Missatge: "
-
-msgid "Warning: "
-msgstr "Avs: "
-
 msgid "Always ignore this warning."
 msgstr "Ignora sempre aquest advertiment."
 
@@ -194,14 +201,8 @@ msgstr "Voleu continuar?"
 msgid "No"
 msgstr "No"
 
-msgid "Confirmation: "
-msgstr "Confirmaci: "
-
-msgid "Concurrency Exception"
-msgstr "Excepció de concurrència"
-
-msgid "Write Concurrency Warning: "
-msgstr "Avís de concurrència d'escriptura: "
+msgid "Concurrency Warning"
+msgstr "Avís de concurrència"
 
 msgid "This record has been modified while you were editing it."
 msgstr "Aquest registre ha estat modificat mentre l'editàveu."
@@ -229,6 +230,9 @@ msgstr "Desa de totes formes"
 
 msgid "Application Error"
 msgstr "Error d'aplicació"
+
+msgid "Details"
+msgstr "Detalls"
 
 msgid "Report Bug"
 msgstr "Informa de l'error"
@@ -431,7 +435,7 @@ msgid "Modified at"
 msgstr "Modificat el"
 
 msgid "\"%1\" is required."
-msgstr "\"%1\" s obligatori."
+msgstr "\"%1\" és obligatori."
 
 msgid "\"%1\" is not valid according to its domain."
 msgstr "\"%1\" no és vàlid segons el seu domini."
@@ -518,8 +522,8 @@ msgstr "%1%"
 msgid "Menu"
 msgstr "Menú"
 
-msgid "Copy"
-msgstr "Copia"
+msgid "Copy Selected Rows"
+msgstr "Copia files seleccionades"
 
 msgid "#ERROR"
 msgstr "#ERROR"
@@ -580,6 +584,12 @@ msgstr "Model:"
 
 msgid "ID:"
 msgstr "Identificador:"
+
+msgid "Module:"
+msgstr "Mòdul:"
+
+msgid "XML ID:"
+msgstr "ID XML:"
 
 msgid "Created by:"
 msgstr "Creat per:"

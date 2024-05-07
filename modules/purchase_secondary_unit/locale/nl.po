@@ -88,8 +88,8 @@ msgid "Product Secondary UoM Category"
 msgstr "Product secundaire maateenheid categorie"
 
 msgctxt "help:product.product,purchase_secondary_uom:"
-msgid "The second Unit of Measure for purchases."
-msgstr "De tweede maateenheid voor inkopen."
+msgid "The secondary Unit of Measure for purchases."
+msgstr "De secundaire maateenheid voor inkopen."
 
 msgctxt "help:product.product,purchase_secondary_uom_factor:"
 msgid ""
@@ -108,8 +108,8 @@ msgstr ""
 "coëfficiënt (inkoopeenheid) = 1 (secundaire eenheid)"
 
 msgctxt "help:product.template,purchase_secondary_uom:"
-msgid "The second Unit of Measure for purchases."
-msgstr "De tweede maateenheid voor inkopen."
+msgid "The secondary Unit of Measure for purchases."
+msgstr "De secundaire maateenheid voor inkopen."
 
 msgctxt "help:product.template,purchase_secondary_uom_factor:"
 msgid ""
@@ -148,8 +148,8 @@ msgid "The category of the default Unit of Measure."
 msgstr "De categorie van de standaard maateenheid."
 
 msgctxt "help:purchase.product_supplier,purchase_secondary_uom:"
-msgid "The second Unit of Measure for purchases."
-msgstr "De tweede maateenheid voor inkopen."
+msgid "The secondary Unit of Measure for purchases."
+msgstr "De secundaire maateenheid voor inkopen."
 
 msgctxt "help:purchase.product_supplier,purchase_secondary_uom_factor:"
 msgid ""

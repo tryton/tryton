@@ -2,13 +2,15 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
+#, fuzzy
 msgctxt "field:sale.configuration,sale_opportunity_sequence:"
 msgid "Opportunity Sequence"
-msgstr ""
+msgstr "Secvență de oportunitate"
 
+#, fuzzy
 msgctxt "field:sale.configuration.sequence,sale_opportunity_sequence:"
 msgid "Opportunity Sequence"
-msgstr ""
+msgstr "Secvență de oportunitate"
 
 msgctxt "field:sale.opportunity,address:"
 msgid "Address"
@@ -32,11 +34,11 @@ msgstr ""
 
 msgctxt "field:sale.opportunity,conversion_probability:"
 msgid "Conversion Probability"
-msgstr ""
+msgstr "Probabilitate de conversie"
 
 msgctxt "field:sale.opportunity,converted_by:"
 msgid "Converted By"
-msgstr ""
+msgstr "Convertit de"
 
 msgctxt "field:sale.opportunity,currency:"
 msgid "Currency"
@@ -48,11 +50,11 @@ msgstr "Descriere"
 
 msgctxt "field:sale.opportunity,employee:"
 msgid "Employee"
-msgstr ""
+msgstr "Angajat"
 
 msgctxt "field:sale.opportunity,end_date:"
 msgid "End Date"
-msgstr ""
+msgstr "Data Încheiere"
 
 msgctxt "field:sale.opportunity,lines:"
 msgid "Lines"
@@ -60,11 +62,11 @@ msgstr "Rânduri"
 
 msgctxt "field:sale.opportunity,lost_reason:"
 msgid "Reason for loss"
-msgstr ""
+msgstr "Motivul pierderii"
 
 msgctxt "field:sale.opportunity,number:"
 msgid "Number"
-msgstr ""
+msgstr "Număr"
 
 msgctxt "field:sale.opportunity,party:"
 msgid "Party"
@@ -84,148 +86,180 @@ msgstr "Vânzări"
 
 msgctxt "field:sale.opportunity,start_date:"
 msgid "Start Date"
-msgstr ""
+msgstr "Data de Început"
 
 msgctxt "field:sale.opportunity,state:"
 msgid "State"
+msgstr "Stare"
+
+#, fuzzy
+msgctxt "field:sale.opportunity.line,description:"
+msgid "Description"
+msgstr "Descriere"
+
+msgctxt "field:sale.opportunity.line,note:"
+msgid "Note"
 msgstr ""
 
 msgctxt "field:sale.opportunity.line,opportunity:"
 msgid "Opportunity"
-msgstr ""
+msgstr "Oportunitate"
 
+#, fuzzy
 msgctxt "field:sale.opportunity.line,opportunity_state:"
 msgid "Opportunity State"
-msgstr ""
+msgstr "Starea oportunității"
 
 msgctxt "field:sale.opportunity.line,product:"
 msgid "Product"
 msgstr "Produs"
 
+msgctxt "field:sale.opportunity.line,product_uom_category:"
+msgid "Product UoM Category"
+msgstr ""
+
 msgctxt "field:sale.opportunity.line,quantity:"
 msgid "Quantity"
+msgstr "Cantitate"
+
+msgctxt "field:sale.opportunity.line,summary:"
+msgid "Summary"
 msgstr ""
 
 msgctxt "field:sale.opportunity.line,unit:"
 msgid "Unit"
-msgstr ""
+msgstr "Unitate"
 
-#, fuzzy
 msgctxt "field:sale.opportunity.reporting.context,company:"
 msgid "Company"
 msgstr "Companie"
 
 msgctxt "field:sale.opportunity.reporting.context,from_date:"
 msgid "From Date"
-msgstr ""
+msgstr "De la Data"
 
 msgctxt "field:sale.opportunity.reporting.context,period:"
 msgid "Period"
-msgstr ""
+msgstr "Perioadă"
 
 msgctxt "field:sale.opportunity.reporting.context,to_date:"
 msgid "To Date"
-msgstr ""
+msgstr "Până la Data"
 
-#, fuzzy
 msgctxt "field:sale.opportunity.reporting.conversion.employee,employee:"
 msgid "Employee"
 msgstr "Angajat"
 
-#, fuzzy
 msgctxt ""
 "field:sale.opportunity.reporting.conversion.employee.time_series,employee:"
 msgid "Employee"
 msgstr "Angajat"
 
+msgctxt "help:sale.opportunity,address:"
+msgid ""
+"The default address for the invoice and shipment.\n"
+"Leave empty to use the default values."
+msgstr ""
+
+#, fuzzy
 msgctxt "help:sale.opportunity,amount:"
 msgid "Estimated revenue amount."
-msgstr ""
+msgstr "Suma estimată a veniturilor."
 
 msgctxt "help:sale.opportunity,conversion_probability:"
 msgid "Percentage between 0 and 100."
-msgstr ""
+msgstr "Procent între 0 și 100."
 
 msgctxt "model:ir.action,name:act_open_sale_form"
 msgid "Sales"
-msgstr ""
+msgstr "Vânzări"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_opportunity_form"
 msgid "Leads and Opportunities"
-msgstr ""
+msgstr "Piste și Oportunități"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_opportunity_form2"
 msgid "Sales Leads/Opportunities"
-msgstr ""
+msgstr "Piste/Oportunități de vânzări"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_reporting_conversion"
 msgid "Opportunity Conversions"
-msgstr ""
+msgstr "Conversii de oportunitate"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_reporting_conversion_employee"
 msgid "Opportunity Conversions per Employee"
-msgstr ""
+msgstr "Conversii de oportunitate per angajat"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_reporting_conversion_employee_time_series"
 msgid "Opportunity Conversions per Employee"
-msgstr ""
+msgstr "Conversii de oportunitate per angajat"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_reporting_conversion_time_series"
 msgid "Opportunity Conversions"
-msgstr ""
+msgstr "Conversii de oportunitate"
 
 msgctxt "model:ir.action,name:act_reporting_main"
 msgid "Opportunities"
-msgstr ""
+msgstr "Oportunități"
 
 msgctxt "model:ir.action,name:act_reporting_main_time_series"
 msgid "Opportunities"
-msgstr ""
+msgstr "Oportunități"
 
+#, fuzzy
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_opportunity_form_domain_all"
 msgid "All"
-msgstr ""
+msgstr "Tot"
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_opportunity_form_domain_cancelled"
 msgid "Cancelled"
-msgstr ""
+msgstr "Anulat"
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_opportunity_form_domain_converted"
 msgid "Converted"
-msgstr ""
+msgstr "Convertit"
 
+#, fuzzy
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_opportunity_form_domain_leads"
 msgid "Leads"
-msgstr ""
+msgstr "Piste"
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_opportunity_form_domain_lost"
 msgid "Lost"
-msgstr ""
+msgstr "Pierdut"
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_opportunity_form_domain_opportunities"
 msgid "Opportunities"
-msgstr ""
+msgstr "Oportunități"
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_opportunity_form_domain_won"
 msgid "Won"
-msgstr ""
+msgstr "Câștigat"
 
+#, fuzzy
 msgctxt "model:ir.message,text:msg_modify_origin_opportunity"
 msgid "You cannot modify the opportunity origin of the sale \"%(sale)s\"."
-msgstr ""
+msgstr "Nu puteți modifica originea oportunității vânzării \"%(sale)s\"."
 
 msgctxt "model:ir.message,text:msg_opportunity_delete_cancel"
 msgid "To delete opportunity \"%(opportunity)s\", you must cancel it."
 msgstr ""
+"Pentru a șterge oportunitatea \"%(opportunity)s\", aceasta trebuie să fie "
+"anulată."
 
-#, fuzzy
 msgctxt "model:ir.message,text:msg_sale_opportunity_reporting_amount"
 msgid "Amount"
 msgstr "Suma"
@@ -237,44 +271,45 @@ msgstr "Suma"
 
 msgctxt "model:ir.message,text:msg_sale_opportunity_reporting_conversion_rate"
 msgid "Conversion Rate"
-msgstr ""
+msgstr "Rata de conversie"
 
+#, fuzzy
 msgctxt ""
 "model:ir.message,text:msg_sale_opportunity_reporting_conversion_trend"
 msgid "Conversion Trend"
-msgstr ""
+msgstr "Tendința de conversie"
 
 msgctxt "model:ir.message,text:msg_sale_opportunity_reporting_converted"
 msgid "Converted"
-msgstr ""
+msgstr "Convertit"
 
 msgctxt ""
 "model:ir.message,text:msg_sale_opportunity_reporting_converted_amount"
 msgid "Converted Amount"
-msgstr ""
+msgstr "Suma convertită"
 
+#, fuzzy
 msgctxt ""
 "model:ir.message,text:msg_sale_opportunity_reporting_converted_amount_trend"
 msgid "Converted Amount Trend"
-msgstr ""
+msgstr "Tendința sumei convertite"
 
-#, fuzzy
 msgctxt "model:ir.message,text:msg_sale_opportunity_reporting_lost"
 msgid "Lost"
 msgstr "Pierdut"
 
 msgctxt "model:ir.message,text:msg_sale_opportunity_reporting_number_help"
 msgid "Number of opportunities"
-msgstr ""
+msgstr "Numărul de oportunități"
 
 #, fuzzy
 msgctxt "model:ir.message,text:msg_sale_opportunity_reporting_number_trend"
 msgid "Number Trend"
-msgstr "Număr"
+msgstr "Tendința numărului"
 
 msgctxt "model:ir.message,text:msg_sale_opportunity_reporting_winning_rate"
 msgid "Winning Rate"
-msgstr ""
+msgstr "Rata de câștig"
 
 msgctxt "model:ir.message,text:msg_sale_opportunity_reporting_winning_trend"
 msgid "Winning Trend"
@@ -282,12 +317,11 @@ msgstr ""
 
 msgctxt "model:ir.message,text:msg_sale_opportunity_reporting_won"
 msgid "Won"
-msgstr ""
+msgstr "Câștigat"
 
-#, fuzzy
 msgctxt "model:ir.message,text:msg_sale_opportunity_reporting_won_amount"
 msgid "Won Amount"
-msgstr "Suma"
+msgstr "Suma câștigată"
 
 msgctxt ""
 "model:ir.message,text:msg_sale_opportunity_reporting_won_amount_trend"
@@ -296,11 +330,12 @@ msgstr ""
 
 msgctxt "model:ir.model.button,string:opportunity_cancel_button"
 msgid "Cancel"
-msgstr ""
+msgstr "Anulare"
 
+#, fuzzy
 msgctxt "model:ir.model.button,string:opportunity_convert_button"
 msgid "Convert to Sale"
-msgstr ""
+msgstr "Convertire în vânzare"
 
 msgctxt "model:ir.model.button,string:opportunity_lead_button"
 msgid "Set as Lead"
@@ -308,108 +343,115 @@ msgstr ""
 
 msgctxt "model:ir.model.button,string:opportunity_lost_button"
 msgid "Mark as Lost"
-msgstr ""
+msgstr "Marcați ca Pierdut"
 
 msgctxt "model:ir.model.button,string:opportunity_opportunity_button"
 msgid "Convert to Opportunity"
-msgstr ""
+msgstr "Convertiți în oportunitate"
 
 msgctxt "model:ir.rule.group,name:rule_group_opportunity_companies"
 msgid "User in companies"
-msgstr ""
+msgstr "Utilizator în Companii"
 
 msgctxt "model:ir.rule.group,name:rule_group_reporting_conversion_companies"
 msgid "User in companies"
-msgstr ""
+msgstr "Utilizator în Companii"
 
 msgctxt ""
 "model:ir.rule.group,name:rule_group_reporting_conversion_employee_companies"
 msgid "User in companies"
-msgstr ""
+msgstr "Utilizator în Companii"
 
 msgctxt ""
 "model:ir.rule.group,name:rule_group_reporting_conversion_employee_time_series_companies"
 msgid "User in companies"
-msgstr ""
+msgstr "Utilizator în Companii"
 
 msgctxt ""
 "model:ir.rule.group,name:rule_group_reporting_conversion_time_series_companies"
 msgid "User in companies"
-msgstr ""
+msgstr "Utilizator în Companii"
 
 msgctxt "model:ir.rule.group,name:rule_group_reporting_main_companies"
 msgid "User in companies"
-msgstr ""
+msgstr "Utilizator în Companii"
 
 msgctxt ""
 "model:ir.rule.group,name:rule_group_reporting_main_time_series_companies"
 msgid "User in companies"
-msgstr ""
+msgstr "Utilizator în Companii"
 
 msgctxt "model:ir.sequence,name:sequence_sale_opportunity"
 msgid "Sale Opportunity"
-msgstr ""
+msgstr "Oportunitate de vânzare"
 
 msgctxt "model:ir.sequence.type,name:sequence_type_sale_opportunity"
 msgid "Sale Opportunity"
-msgstr ""
+msgstr "Oportunitate de vânzare"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_opportunity_form"
 msgid "Leads and Opportunities"
-msgstr ""
+msgstr "Piste și oportunități"
 
 msgctxt "model:ir.ui.menu,name:menu_reporting_opportunity"
 msgid "Opportunities"
-msgstr ""
+msgstr "Oportunități"
 
 msgctxt "model:res.group,name:group_opportunity"
 msgid "Sale Opportunity"
-msgstr ""
+msgstr "Oportunitate de vânzare"
 
 msgctxt "model:sale.opportunity,name:"
 msgid "Sale Opportunity"
-msgstr ""
+msgstr "Oportunitate de vânzare"
 
+#, fuzzy
 msgctxt "model:sale.opportunity.line,name:"
 msgid "Sale Opportunity Line"
-msgstr ""
+msgstr "Rând de oportunități de vânzare"
 
+#, fuzzy
 msgctxt "model:sale.opportunity.reporting.context,name:"
 msgid "Sale Opportunity Reporting Context"
-msgstr ""
+msgstr "Context de raportare a oportunităților de vânzare"
 
+#, fuzzy
 msgctxt "model:sale.opportunity.reporting.conversion,name:"
 msgid "Sale Opportunity Reporting Conversion"
-msgstr ""
+msgstr "Conversie de raportare a oportunităților de vânzare"
 
+#, fuzzy
 msgctxt "model:sale.opportunity.reporting.conversion.employee,name:"
 msgid "Sale Opportunity Reporting Conversion per Employee"
-msgstr ""
+msgstr "Conversie de raportare a oportunităților de vânzare per angajat"
 
+#, fuzzy
 msgctxt ""
 "model:sale.opportunity.reporting.conversion.employee.time_series,name:"
 msgid "Sale Opportunity Reporting Conversion per Employee"
-msgstr ""
+msgstr "Conversie de raportare a oportunităților de vânzare per angajat"
 
+#, fuzzy
 msgctxt "model:sale.opportunity.reporting.conversion.time_series,name:"
 msgid "Sale Opportunity Reporting Conversion"
-msgstr ""
+msgstr "Conversie de raportare a oportunităților de vânzare"
 
 msgctxt "model:sale.opportunity.reporting.main,name:"
 msgid "Sale Opportunity Reporting"
-msgstr ""
+msgstr "Raportarea oportunităților de vânzare"
 
 msgctxt "model:sale.opportunity.reporting.main.time_series,name:"
 msgid "Sale Opportunity Reporting"
-msgstr ""
+msgstr "Raportarea oportunităților de vânzare"
 
 msgctxt "selection:sale.opportunity,state:"
 msgid "Cancelled"
-msgstr ""
+msgstr "Anulat"
 
 msgctxt "selection:sale.opportunity,state:"
 msgid "Converted"
-msgstr ""
+msgstr "Convertit"
 
 msgctxt "selection:sale.opportunity,state:"
 msgid "Lead"
@@ -417,40 +459,47 @@ msgstr ""
 
 msgctxt "selection:sale.opportunity,state:"
 msgid "Lost"
-msgstr ""
+msgstr "Pierdut"
 
 msgctxt "selection:sale.opportunity,state:"
 msgid "Opportunity"
-msgstr ""
+msgstr "Oportunitate"
 
 msgctxt "selection:sale.opportunity,state:"
 msgid "Won"
-msgstr ""
+msgstr "Câștigat"
 
 msgctxt "selection:sale.opportunity.reporting.context,period:"
 msgid "Day"
-msgstr ""
+msgstr "Zi"
 
-#, fuzzy
 msgctxt "selection:sale.opportunity.reporting.context,period:"
 msgid "Month"
 msgstr "Lună"
 
 msgctxt "selection:sale.opportunity.reporting.context,period:"
 msgid "Year"
+msgstr "An"
+
+msgctxt "view:sale.opportunity.line:"
+msgid "General"
+msgstr ""
+
+msgctxt "view:sale.opportunity.line:"
+msgid "Notes"
 msgstr ""
 
 msgctxt "view:sale.opportunity.reporting.conversion:"
 msgid "%"
-msgstr ""
+msgstr "%"
 
 msgctxt "view:sale.opportunity.reporting.main:"
 msgid "%"
-msgstr ""
+msgstr "%"
 
 msgctxt "view:sale.opportunity:"
 msgid "%"
-msgstr ""
+msgstr "%"
 
 msgctxt "view:sale.opportunity:"
 msgid "Lead/Opportunity"

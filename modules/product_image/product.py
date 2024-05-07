@@ -170,7 +170,10 @@ class ImageMixin(_ImageMixin):
         img = PIL.Image.open(io.BytesIO(image))
         img.thumbnail((SIZE_MAX, SIZE_MAX))
         if img.mode in {'RGBA', 'P'}:
-            img = img.convert('RGB')
+            img.convert('RGBA')
+            background = PIL.Image.new('RGBA', img.size, (255, 255, 255))
+            background.alpha_composite(img)
+            img = background.convert('RGB')
         img.save(data, format='jpeg', optimize=True, **_params)
         return data.getvalue()
 

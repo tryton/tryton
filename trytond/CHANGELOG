@@ -1,3 +1,9 @@
+* Add partial support for constraints with SQLite backend
+
+Version 7.2.0 - 2024-04-29
+--------------------------
+* Bug fixes (see mercurial logs for details)
+* Do not accept compressed content from unauthenticated request (#13142)
 * Set loading eager to visible xxx2many on form view
 * Add loading attribute to form view
 * Add a contextual read limit on Model.read

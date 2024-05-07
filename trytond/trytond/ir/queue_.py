@@ -248,10 +248,10 @@ class _Method(object):
 
         if isinstance(instances, list):
             if has_worker and queue_batch:
-                if isinstance(queue_batch, int):
-                    count = queue_batch
-                else:
+                if isinstance(queue_batch, bool):
                     count = batch_size
+                else:
+                    count = int(queue_batch)
             else:
                 count = len(instances)
             task_ids = []

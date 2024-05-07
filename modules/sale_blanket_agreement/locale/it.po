@@ -72,7 +72,7 @@ msgstr ""
 
 msgctxt "field:sale.blanket_agreement.line,currency:"
 msgid "Currency"
-msgstr ""
+msgstr "Valuta"
 
 msgctxt "field:sale.blanket_agreement.line,processed_quantity:"
 msgid "Processed quantity"

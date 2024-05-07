@@ -33,7 +33,7 @@ msgstr "El producte \"%(product)s\" es subministra a la venda."
 msgctxt "model:ir.message,text:msg_template_supply_on_sale_order_point"
 msgid "The product has purchase order points \"%(order_points)s\" defined."
 msgstr ""
-"El producte te regles d'aprovisionament de compra \"%(order_point)s\" "
+"El producte té regles d'aprovisionament de compra \"%(order_points)s\" "
 "definits."
 
 msgctxt "selection:product.product,supply_on_sale:"

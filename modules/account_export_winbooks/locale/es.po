@@ -1,0 +1,69 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:account.account,winbooks_code:"
+msgid "WinBooks Code"
+msgstr "Código WinBooks"
+
+msgctxt "field:account.fiscalyear,winbooks_code:"
+msgid "WinBooks Code"
+msgstr "Código WinBooks"
+
+msgctxt "field:account.journal,winbooks_code:"
+msgid "WinBooks Code"
+msgstr "Código WinBooks"
+
+msgctxt "field:account.journal,winbooks_code_credit_note:"
+msgid "WinBooks Code Credit Note"
+msgstr "Código WinBooks abono"
+
+msgctxt "field:account.tax,winbooks_code:"
+msgid "WinBooks Code"
+msgstr "Código WinBooks"
+
+msgctxt "field:account.tax.template,winbooks_code:"
+msgid "WinBooks Code"
+msgstr "Código WinBooks"
+
+msgctxt "field:party.party,winbooks_customer_identifier:"
+msgid "WinBooks Customer Identifier"
+msgstr "Identificador cliente Winbooks"
+
+msgctxt "field:party.party,winbooks_supplier_identifier:"
+msgid "WinBooks Supplier Identifier"
+msgstr "Identificador proveedor WinBooks"
+
+msgctxt "help:account.journal,winbooks_code_credit_note:"
+msgid ""
+"The code to use for credit note.\n"
+"Leave empty to use the default code."
+msgstr ""
+"El código que se utilizará para la nota de crédito.\n"
+"Déjelo vacío para usar el código predeterminado."
+
+msgctxt "model:ir.message,text:msg_account_tax_line_tax_move_line_unique"
+msgid "Only one tax line of type \"Tax\" is allowed per move line."
+msgstr ""
+"Sólo se permite una línea de impuestos de tipo \"Impuesto\" por apunte "
+"contable."
+
+msgctxt "model:ir.message,text:msg_party_identifier_winbooks_code_unique"
+msgid "The WinBooks identifier must be unique."
+msgstr "El identificador de WinBooks debe ser único."
+
+msgctxt "model:ir.message,text:msg_party_identifier_winbooks_party_unique"
+msgid "A party can have only one active WinBooks identifier."
+msgstr "Una tercero sólo puede tener un identificador de WinBooks activo."
+
+msgctxt "selection:account.move.export,type:"
+msgid "WinBooks"
+msgstr "WinBooks"
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "WinBooks Customer"
+msgstr "Cliente WinBooks"
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "WinBooks Supplier"
+msgstr "Proveedor WinBooks"

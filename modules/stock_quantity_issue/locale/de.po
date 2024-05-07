@@ -125,7 +125,7 @@ msgstr "Beheben"
 
 msgctxt "model:ir.rule.group,name:rule_group_quantity_issue_companies"
 msgid "User in companies"
-msgstr "Benutzer im Unternehmen"
+msgstr "Benutzer in Unternehmen"
 
 msgctxt "model:ir.ui.menu,name:menu_quantity_issue_form"
 msgid "Quantity Issues"

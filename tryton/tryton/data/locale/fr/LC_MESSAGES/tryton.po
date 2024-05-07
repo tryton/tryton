@@ -31,6 +31,10 @@ msgid "disable thread usage"
 msgstr "désactiver l'utilisation des threads"
 
 #, python-format
+msgid "Invalid response id (%s) expected %s"
+msgstr "ID (%s) de réponse non valide, attendu %s"
+
+#, python-format
 msgid "Unable to set locale %s"
 msgstr "Impossible de sélectionner la locale %s"
 
@@ -80,8 +84,8 @@ msgstr "Non"
 msgid "Yes"
 msgstr "Oui"
 
-msgid "Concurrency Exception"
-msgstr "Erreur d'accès concurrent"
+msgid "Concurrency Warning"
+msgstr "Avertissement de concurrence"
 
 msgid "This record has been modified while you were editing it."
 msgstr ""
@@ -113,6 +117,9 @@ msgstr "Fermer"
 msgid "Application Error"
 msgstr "Erreur applicative"
 
+msgid "Details"
+msgstr "Détails"
+
 msgid "Report Bug"
 msgstr "Rapporter un bogue"
 
@@ -129,17 +136,34 @@ msgstr "Un nouvelle version est disponible !"
 msgid "Download"
 msgstr "Télécharger"
 
+msgid "Concurrency Exception"
+msgstr "Erreur d'accès concurrent"
+
 msgid "Could not get a session."
 msgstr "Impossible d'obtenir une session."
+
+#, python-format
+msgid "Error: \"%s\". Try again later."
+msgstr "Erreur : « %s ». Réessayez plus tard."
 
 msgid "Too many requests. Try again later."
 msgstr "Trop de demandes. Réessayez plus tard."
 
-msgid "Not found."
-msgstr "Pas trouvé."
-
 msgid "Not Found."
 msgstr "Pas trouvé."
+
+msgid "Reset forgotten password"
+msgstr "Réinitialiser le mot de passe oublié"
+
+msgid "Send you an email to reset your password."
+msgstr "Envoyez-vous un email pour réinitialiser votre mot de passe."
+
+msgid ""
+"A request to reset your password has been sent.\n"
+"Please check your mailbox."
+msgstr ""
+"Une demande de réinitialisation de votre mot de passe a été envoyée.\n"
+"Veuillez vérifier votre boîte aux lettres."
 
 msgid "..."
 msgstr "..."
@@ -715,6 +739,12 @@ msgstr "Modèle :"
 msgid "ID:"
 msgstr "ID :"
 
+msgid "Module:"
+msgstr "Module :"
+
+msgid "XML ID:"
+msgstr "XML ID :"
+
 msgid "Created by:"
 msgstr "Crée par :"
 
@@ -1088,8 +1118,17 @@ msgstr "Taille de l'image trop grande."
 msgid "Copy"
 msgstr "Copier"
 
-msgid "Paste"
-msgstr "Coller"
+msgid "Copy Row"
+msgstr "Copier la ligne"
+
+msgid "Copy Rows"
+msgstr "Copier les lignes"
+
+msgid "Copy Column"
+msgstr "Copier la colonne"
+
+msgid "Paste Rows"
+msgstr "Coller les lignes"
 
 msgid ".."
 msgstr ".."

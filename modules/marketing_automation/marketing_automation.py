@@ -18,7 +18,9 @@ except ImportError:
     html2text = None
 
 from genshi.core import END, START, Attrs, QName
-from genshi.template import MarkupTemplate, TextTemplate
+from genshi.template import MarkupTemplate
+from genshi.template import TemplateError as GenshiTemplateError
+from genshi.template import TextTemplate
 from sql import Literal
 from sql.aggregate import Count
 
@@ -606,7 +608,7 @@ class Activity(
             return
         try:
             MarkupTemplate(self.email_template)
-        except Exception as exception:
+        except GenshiTemplateError as exception:
             raise TemplateError(
                 gettext('marketing_automation'
                     '.msg_activity_invalid_email_template',
@@ -620,7 +622,7 @@ class Activity(
             return
         try:
             TextTemplate(self.email_title)
-        except Exception as exception:
+        except GenshiTemplateError as exception:
             raise TemplateError(
                 gettext('marketing_automation'
                     '.msg_activity_invalid_email_title',
@@ -713,14 +715,27 @@ class Activity(
 
         context = self.email_context(record)
         context['short'] = partial(short, event='on_email_clicked')
-        title = (TextTemplate(translated.email_title)
-            .generate(**context)
-            .render())
-        template = MarkupTemplate(translated.email_template)
-        content = (template
-            .generate(**context)
-            .filter(convert_href)
-            .render())
+        try:
+            title = (TextTemplate(translated.email_title)
+                .generate(**context)
+                .render())
+        except GenshiTemplateError as exception:
+            raise TemplateError(
+                gettext('marketing_automation'
+                    '.msg_activity_invalid_email_title',
+                    activity=self.rec_name,
+                    exception=exception)) from exception
+        try:
+            template = MarkupTemplate(translated.email_template)
+            content = (template
+                .generate(**context)
+                .filter(convert_href)
+                .render())
+        except GenshiTemplateError as exception:
+            raise TemplateError(gettext('marketing_automation'
+                    '.msg_activity_invalid_email_template',
+                    activity=self.rec_name,
+                    exception=exception)) from exception
 
         msg = self._email(translated.email_from, to, title, content)
 

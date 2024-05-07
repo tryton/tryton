@@ -410,6 +410,10 @@ msgctxt "field:stock.move,from_location:"
 msgid "From Location"
 msgstr "Van locatie"
 
+msgctxt "field:stock.move,from_location_name:"
+msgid "From Location"
+msgstr "Van locatie"
+
 msgctxt "field:stock.move,internal_quantity:"
 msgid "Internal Quantity"
 msgstr "Interne hoeveelheid"
@@ -451,6 +455,10 @@ msgid "State"
 msgstr "Status"
 
 msgctxt "field:stock.move,to_location:"
+msgid "To Location"
+msgstr "Naar locatie"
+
+msgctxt "field:stock.move,to_location_name:"
 msgid "To Location"
 msgstr "Naar locatie"
 
@@ -2128,6 +2136,12 @@ msgstr ""
 "Het is aan te raden om de voorraad op te maken in het magazijn voordat het "
 "product gedeactiveerd wordt."
 
+msgctxt "model:ir.message,text:msg_product_quantities_max"
+msgid "You cannot select more than %(max)s products to compute quantities."
+msgstr ""
+"U kunt niet meer dan %(max)s producten selecteren om de hoeveelheden te "
+"berekenen."
+
 msgctxt "model:ir.message,text:msg_shipment_check_quantity"
 msgid ""
 "The quantities of shipment \"%(shipment)s\" are different by %(quantities)s."
@@ -2190,7 +2204,7 @@ msgstr "Marge"
 
 msgctxt "model:ir.message,text:msg_stock_reporting_margin_trend"
 msgid "Margin Trend"
-msgstr "Marge trend"
+msgstr "Marge ontwikkeling"
 
 msgctxt "model:ir.message,text:msg_stock_reporting_number"
 msgid "Number"
@@ -2220,17 +2234,37 @@ msgctxt "model:ir.model.button,confirm:move_do_button"
 msgid "Are you sure you want to complete the move?"
 msgstr "Weet u zeker dat u de voorraad beweging wilt voltooien?"
 
+msgctxt "model:ir.model.button,confirm:shipment_in_cancel_button"
+msgid "Are you sure you want to cancel the shipment?"
+msgstr "Weet u zeker dat u de zending wilt annuleren?"
+
 msgctxt "model:ir.model.button,confirm:shipment_in_receive_button"
 msgid "Are you sure you want to receive the shipment?"
 msgstr "Weet u zeker dat u de zending wilt ontvangen?"
+
+msgctxt "model:ir.model.button,confirm:shipment_in_return_cancel_button"
+msgid "Are you sure you want to cancel the shipment?"
+msgstr "Weet u zeker dat u de zending wilt annuleren?"
 
 msgctxt "model:ir.model.button,confirm:shipment_in_return_done_button"
 msgid "Are you sure you want to complete the shipment?"
 msgstr "Weet u zeker dat u de zending wilt voltooien?"
 
+msgctxt "model:ir.model.button,confirm:shipment_internal_cancel_button"
+msgid "Are you sure you want to cancel the shipment?"
+msgstr "Weet u zeker dat u de zending wilt annuleren?"
+
+msgctxt "model:ir.model.button,confirm:shipment_out_cancel_button"
+msgid "Are you sure you want to cancel the shipment?"
+msgstr "Weet u zeker dat u de zending wilt annuleren?"
+
 msgctxt "model:ir.model.button,confirm:shipment_out_done_button"
 msgid "Are you sure you want to complete the shipment?"
 msgstr "Weet u zeker dat u de zending wilt voltooien?"
+
+msgctxt "model:ir.model.button,confirm:shipment_out_return_cancel_button"
+msgid "Are you sure you want to cancel the shipment?"
+msgstr "Weet u zeker dat u de zending wilt annuleren?"
 
 msgctxt "model:ir.model.button,confirm:shipment_out_return_receive_button"
 msgid "Are you sure you want to receive the shipment?"
@@ -2285,8 +2319,8 @@ msgid "Cancel"
 msgstr "Annuleer"
 
 msgctxt "model:ir.model.button,string:shipment_in_done_button"
-msgid "Done"
-msgstr "Afronden"
+msgid "Complete"
+msgstr "Voltooien"
 
 msgctxt "model:ir.model.button,string:shipment_in_draft_button"
 msgid "Reset to Draft"
@@ -2305,8 +2339,8 @@ msgid "Cancel"
 msgstr "Annuleer"
 
 msgctxt "model:ir.model.button,string:shipment_in_return_done_button"
-msgid "Done"
-msgstr "Afronden"
+msgid "Complete"
+msgstr "Voltooien"
 
 msgctxt "model:ir.model.button,string:shipment_in_return_draft_button"
 msgid "Draft"
@@ -2325,8 +2359,8 @@ msgid "Cancel"
 msgstr "Annuleer"
 
 msgctxt "model:ir.model.button,string:shipment_internal_done_button"
-msgid "Done"
-msgstr "Afronden"
+msgid "Complete"
+msgstr "Voltooien"
 
 msgctxt "model:ir.model.button,string:shipment_internal_draft_button"
 msgid "Draft"
@@ -2349,8 +2383,8 @@ msgid "Cancel"
 msgstr "Annuleer"
 
 msgctxt "model:ir.model.button,string:shipment_out_done_button"
-msgid "Done"
-msgstr "Afronden"
+msgid "Complete"
+msgstr "Voltooien"
 
 msgctxt "model:ir.model.button,string:shipment_out_draft_button"
 msgid "Draft"
@@ -2369,8 +2403,8 @@ msgid "Cancel"
 msgstr "Annuleer"
 
 msgctxt "model:ir.model.button,string:shipment_out_return_done_button"
-msgid "Done"
-msgstr "Afronden"
+msgid "Complete"
+msgstr "Voltooien"
 
 msgctxt "model:ir.model.button,string:shipment_out_return_draft_button"
 msgid "Draft"
@@ -3033,12 +3067,8 @@ msgid "Warehouse:"
 msgstr "Magazijn:"
 
 msgctxt "selection:ir.cron,method:"
-msgid "Assign Customer Shipments"
-msgstr "Klant zendingen toewijzen"
-
-msgctxt "selection:ir.cron,method:"
-msgid "Assign Internal Shipments"
-msgstr "Interne zending toewijzen"
+msgid "Assign Shipments"
+msgstr "Zendingen toewijzen"
 
 msgctxt "selection:ir.cron,method:"
 msgid "Recompute Cost Price from Moves"

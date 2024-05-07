@@ -40,7 +40,7 @@ msgstr "Empresa"
 
 msgctxt "field:sale.point,customer_location:"
 msgid "To Location"
-msgstr "A la ubicación"
+msgstr "A ubicación"
 
 msgctxt "field:sale.point,journal:"
 msgid "Journal"

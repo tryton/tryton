@@ -127,7 +127,7 @@ def load_translations(pool, node, languages):
     base_path_position = len(node.info['directory']) + 1
     for language, files in lang2filenames.items():
         filenames = [f[base_path_position:] for f in files]
-        logger.info('%s:loading %s', module, ','.join(filenames))
+        logger.info('%s load %s', module, ','.join(filenames))
         Translation = pool.get('ir.translation')
         Translation.translation_import(language, module, files)
 
@@ -166,7 +166,7 @@ def load_module_graph(graph, pool, update=None, lang=None, indexes=True):
             module = node.name
             if module not in MODULES:
                 continue
-            logger.info(module)
+            logger.info('%s load', module)
             classes = pool.fill(module, modules)
             if update:
                 # Clear all caches to prevent _record with wrong schema to
@@ -186,7 +186,7 @@ def load_module_graph(graph, pool, update=None, lang=None, indexes=True):
                     module2state[child.name] = package_state
                 for type in list(classes.keys()):
                     for cls in classes[type]:
-                        logger.info('%s:register %s', module, cls.__name__)
+                        logger.info('%s register %s', module, cls.__name__)
                         cls.__register__(module)
                 for model in classes['model']:
                     if hasattr(model, '_history'):
@@ -200,7 +200,7 @@ def load_module_graph(graph, pool, update=None, lang=None, indexes=True):
 
                 for filename in node.info.get('xml', []):
                     filename = filename.replace('/', os.sep)
-                    logger.info('%s:loading %s', module, filename)
+                    logger.info('%s load %s', module, filename)
                     # Feed the parser with xml content:
                     with tools.file_open(
                             os.path.join(module, filename), 'rb') as fp:
@@ -247,18 +247,18 @@ def load_module_graph(graph, pool, update=None, lang=None, indexes=True):
             for model_name in models_with_indexes:
                 model = pool.get(model_name)
                 if model._sql_indexes:
-                    logger.info('index:update %s', model_name)
+                    logger.info('update index for %s', model_name)
                     model._update_sql_indexes(concurrently=concurrently)
 
         if update:
             if indexes:
                 create_indexes(concurrently=False)
             else:
-                logger.info('index:skipping indexes creation')
+                logger.info('skip indexes creation')
             for model_name in models_to_update_history:
                 model = pool.get(model_name)
                 if model._history:
-                    logger.info('history:update %s', model.__name__)
+                    logger.info('update history for %s', model.__name__)
                     model._update_history_table()
             transaction.commit()
         elif indexes:
@@ -301,7 +301,7 @@ def register_classes(with_test=False):
 
     for node in create_graph(get_modules(with_test=with_test)):
         module_name = node.name
-        logger.info('%s:registering classes', module_name)
+        logger.info('%s import', module_name)
 
         if module_name in ('ir', 'res', 'tests'):
             MODULES.append(module_name)

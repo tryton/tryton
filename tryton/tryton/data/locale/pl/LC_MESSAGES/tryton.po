@@ -18,7 +18,7 @@ msgid "specify the log level: DEBUG, INFO, WARNING, ERROR, CRITICAL"
 msgstr "podaj poziom rejestrowania: DEBUG, INFO, WARNING, ERROR, CRITICAL"
 
 msgid "specify the file used to output logging information"
-msgstr ""
+msgstr "określ plik używany do wysyłania informacji rejestrujących"
 
 msgid "specify the login user"
 msgstr "podaj login użytkownika"
@@ -27,7 +27,11 @@ msgid "specify the server hostname:port"
 msgstr "podaj nazwę:port serwera"
 
 msgid "disable thread usage"
-msgstr ""
+msgstr "wyłącz użycie wątku"
+
+#, python-format
+msgid "Invalid response id (%s) expected %s"
+msgstr "Nieprawidłowy identyfikator odpowiedzi (%s). Oczekiwano %s"
 
 #, python-format
 msgid "Unable to set locale %s"
@@ -79,8 +83,8 @@ msgstr "Nie"
 msgid "Yes"
 msgstr "Tak"
 
-msgid "Concurrency Exception"
-msgstr "Wyjątek równoczesnego zapisu danych"
+msgid "Concurrency Warning"
+msgstr "Ostrzeżenie o równoczesnym zapisie danych"
 
 msgid "This record has been modified while you were editing it."
 msgstr "Ten rekord został zmodyfikowany w trakcie twojej edycji."
@@ -110,6 +114,9 @@ msgstr "Zamknij"
 msgid "Application Error"
 msgstr "Błąd aplikacji"
 
+msgid "Details"
+msgstr "Szczegóły"
+
 msgid "Report Bug"
 msgstr "Zgłoś błąd"
 
@@ -126,20 +133,34 @@ msgstr "Nowa wersja jest dostępna!"
 msgid "Download"
 msgstr "Pobierz"
 
-#, fuzzy
+msgid "Concurrency Exception"
+msgstr "Wyjątek równoczesnego zapisu danych"
+
 msgid "Could not get a session."
-msgstr "Nie można połączyć się z serwerem."
+msgstr "Nie udało się ustanowić sesji."
+
+#, python-format
+msgid "Error: \"%s\". Try again later."
+msgstr "Błąd: \"%s\". Spróbuj ponownie później."
 
 msgid "Too many requests. Try again later."
 msgstr "Za dużo połączeń. Spróbuj później."
 
-#, fuzzy
-msgid "Not found."
-msgstr "Nie znaleziono wyniku."
-
-#, fuzzy
 msgid "Not Found."
-msgstr "Nie znaleziono wyniku."
+msgstr "Nie znaleziono."
+
+msgid "Reset forgotten password"
+msgstr "Zresetuj zapomniane hasło"
+
+msgid "Send you an email to reset your password."
+msgstr "Wyślij wiadomość, aby zresetować hasło."
+
+msgid ""
+"A request to reset your password has been sent.\n"
+"Please check your mailbox."
+msgstr ""
+"Żądanie zresetowania hasła zostało wysłane.\n"
+"Sprawdź skrzynkę pocztową."
 
 msgid "..."
 msgstr "..."
@@ -150,9 +171,9 @@ msgstr "<i>Szukaj...</i>"
 msgid "<i>Create...</i>"
 msgstr "<i>Utwórz...</i>"
 
-#, fuzzy, python-format
+#, python-format
 msgid "Create \"%s\"..."
-msgstr "Utwórz „%s”..."
+msgstr "Utwórz \"%s\"..."
 
 msgid "Value"
 msgstr "Wartość"
@@ -199,9 +220,8 @@ msgstr "Szablon"
 msgid "Edit..."
 msgstr "Edycja..."
 
-#, fuzzy
 msgid "View Logs..."
-msgstr "Przeglądaj dziennik..."
+msgstr "Przeglądaj logi..."
 
 msgid "Attachments..."
 msgstr "Załączniki..."
@@ -225,13 +245,13 @@ msgid "E-Mail..."
 msgstr "E-mail..."
 
 msgid "Bold"
-msgstr "Pogrubiony"
+msgstr "Pogrubienie"
 
 msgid "Italic"
 msgstr "Kursywa"
 
 msgid "Underline"
-msgstr "Podkreślenie"
+msgstr "Podkreśl"
 
 msgid "Align Left"
 msgstr "Wyrównanie do lewej"
@@ -303,7 +323,7 @@ msgid "Spell Checking"
 msgstr "Sprawdzanie pisowni"
 
 msgid "Play Sound for Code Scanner"
-msgstr ""
+msgstr "Odtwórz dźwięk dla skanera kodów"
 
 msgid "PDA Mode"
 msgstr "Tryb PDA"
@@ -317,9 +337,8 @@ msgstr "Sprawdź wersję"
 msgid "Options"
 msgstr "Opcje"
 
-#, fuzzy
 msgid "Documentation..."
-msgstr "Akcje..."
+msgstr "Dokumentacja..."
 
 msgid "Keyboard Shortcuts..."
 msgstr "Skróty klawiszowe..."
@@ -460,16 +479,14 @@ msgstr "Przesuń do dołu"
 msgid "Move to parent"
 msgstr "Przesuń do elementu nadrzędnego"
 
-#, fuzzy
 msgid "Edition"
 msgstr "Edycja"
 
-#, fuzzy
 msgid "Copy selected rows"
-msgstr "Skopiuj zaznaczony tekst"
+msgstr "Skopiuj wybrane wiersze"
 
 msgid "Insert copied rows"
-msgstr ""
+msgstr "Wstaw skopiowane wiersze"
 
 msgid "Select all"
 msgstr "Zaznacz wszystko"
@@ -518,10 +535,10 @@ msgid "Attachments (%s)"
 msgstr "Załączniki (%s)"
 
 msgid "Code Scanner"
-msgstr ""
+msgstr "Skaner kodów"
 
 msgid "Code"
-msgstr ""
+msgstr "Kod"
 
 msgid "Profile Editor"
 msgstr "Edytor profili"
@@ -548,10 +565,10 @@ msgid "Username:"
 msgstr "Użytkownik:"
 
 msgid "Incompatible version of the server."
-msgstr "Niewłaściwa wersja serwera."
+msgstr "Niekompatybilna wersja serwera."
 
 msgid "Could not connect to the server."
-msgstr "Nie można połączyć się z serwerem."
+msgstr "Brak dostępu do serwera."
 
 msgid "Login"
 msgstr "Login"
@@ -606,18 +623,16 @@ msgid "Attachments"
 msgstr "Załączniki"
 
 msgid "Files"
-msgstr ""
+msgstr "Pliki"
 
 msgid "Send"
 msgstr "Wyślij"
 
-#, fuzzy
 msgid "Select File"
-msgstr "Zaznacz wszystko"
+msgstr "Wybierz plik"
 
-#, fuzzy
 msgid "Remove File"
-msgstr "Usuń <Del>"
+msgstr "Usuń plik"
 
 msgid "Select"
 msgstr "Wybierz"
@@ -625,9 +640,8 @@ msgstr "Wybierz"
 msgid "Add..."
 msgstr "Dodaj..."
 
-#, fuzzy
 msgid "Preview"
-msgstr "Poprzedni"
+msgstr "Podgląd"
 
 msgid "Previous"
 msgstr "Poprzedni"
@@ -720,19 +734,23 @@ msgstr "Model:"
 msgid "ID:"
 msgstr "ID:"
 
+msgid "Module:"
+msgstr "Moduł:"
+
+msgid "XML ID:"
+msgstr "XML ID:"
+
 msgid "Created by:"
 msgstr "Utworzył:"
 
 msgid "Created at:"
 msgstr "Data utworzenia:"
 
-#, fuzzy
 msgid "Last Modified by:"
-msgstr "Autor ostatniej modyfikacji:"
+msgstr "Zmodyfikował:"
 
-#, fuzzy
 msgid "Last Modified at:"
-msgstr "Data ostatniej modyfikacji:"
+msgstr "Ostatnio zmodyfikowano:"
 
 #, python-format
 msgid "Notes (%s)"
@@ -924,9 +942,9 @@ msgstr "%s (string)"
 msgid "%s (model name)"
 msgstr "%s (model name)"
 
-#, fuzzy, python-format
+#, python-format
 msgid "%s/Record Name"
-msgstr "%s (record name)"
+msgstr "%s/Nazwa rekordu"
 
 msgid "What is the name of this export?"
 msgstr "Jaka jest nazwa tego eksportu?"
@@ -944,7 +962,7 @@ msgid "%d records saved."
 msgstr "%d rekordy zostały zapisane."
 
 msgid "Export failed"
-msgstr ""
+msgstr "Eksport nie powiódł się"
 
 msgid "Link"
 msgstr "Link"
@@ -953,20 +971,19 @@ msgid "Delete"
 msgstr "Usuń"
 
 msgid "Discard changes"
-msgstr ""
+msgstr "Odrzuć zmiany"
 
 msgid "Save and New"
-msgstr ""
+msgstr "Zapisz i utwórz nowy"
 
-#, fuzzy
 msgid "Add and New"
-msgstr "Dodaj wartość"
+msgstr "Dodaj i utwórz nowy"
 
 msgid "Add"
 msgstr "Dodaj"
 
 msgid "Apply changes"
-msgstr ""
+msgstr "Zatwierdź zmiany"
 
 msgid "Switch"
 msgstr "Przełącz"
@@ -1003,17 +1020,17 @@ msgid "You must select an import file first."
 msgstr "Wybierz plik do zaimportowania."
 
 msgid "Detection failed"
-msgstr ""
+msgstr "Wykrycie nie powiodło się"
 
 #, python-format
 msgid "Unknown column header \"%s\""
-msgstr ""
+msgstr "Nieznany nagłówek kolumny \"%s\""
 
 msgid "Error"
 msgstr "Błąd"
 
 msgid "Import failed"
-msgstr ""
+msgstr "Import nie powiódł się"
 
 #, python-format
 msgid "%d record imported."
@@ -1039,9 +1056,8 @@ msgstr "Kreator"
 msgid "ID"
 msgstr "ID"
 
-#, fuzzy
 msgid "Created by"
-msgstr "Utworzył:"
+msgstr "Utworzył"
 
 msgid "Created at"
 msgstr "Data utworzenia"
@@ -1074,7 +1090,7 @@ msgid ":"
 msgstr ":"
 
 msgid "Scan"
-msgstr ""
+msgstr "Skanuj"
 
 msgid "Image Size"
 msgstr "Rozmiar obrazka"
@@ -1097,8 +1113,17 @@ msgstr "Za duży rozmiar obrazka."
 msgid "Copy"
 msgstr "Kopiuj"
 
-msgid "Paste"
-msgstr "Wklej"
+msgid "Copy Row"
+msgstr "Skopiuj wiersz"
+
+msgid "Copy Rows"
+msgstr "Skopiuj wiersze"
+
+msgid "Copy Column"
+msgstr "Skopiuj kolumnę"
+
+msgid "Paste Rows"
+msgstr "Wklej wiersze"
 
 msgid ".."
 msgstr ".."
@@ -1143,14 +1168,13 @@ msgid "next year"
 msgstr "następny rok"
 
 msgid "Day"
-msgstr ""
+msgstr "Dzień"
 
 msgid "Week"
 msgstr "Tydzień"
 
-#, fuzzy
 msgid "Month"
-msgstr "Widok miesiąca"
+msgstr "Miesiąc"
 
 msgid "Select..."
 msgstr "Wybierz..."
@@ -1218,7 +1242,7 @@ msgid "No other language available."
 msgstr "Brak innych języków."
 
 msgid "#ERROR"
-msgstr ""
+msgstr "#BŁĄD"
 
 msgid "Translate view"
 msgstr "Widok tłumaczenia"

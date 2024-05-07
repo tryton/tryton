@@ -35,6 +35,8 @@ this repository contains the full copyright notices and license terms. -->
             <field name="picked_by"/>
             <label name="packed_by"/>
             <field name="packed_by"/>
+            <label name="shipped_by"/>
+            <field name="shipped_by"/>
             <label name="done_by"/>
             <field name="done_by"/>
         </page>
@@ -48,6 +50,7 @@ this repository contains the full copyright notices and license terms. -->
         <button name="assign_wizard" icon="tryton-forward"/>
         <button name="pick"/>
         <button name="pack" icon="tryton-forward"/>
+        <button name="ship" icon="tryton-forward"/>
         <button name="do" icon="tryton-ok"/>
     </group>
 </form>

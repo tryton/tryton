@@ -188,39 +188,39 @@ msgstr "Inspections de qualité"
 
 msgctxt "model:ir.action,name:wizard_production_inspect_done"
 msgid "Inspect Done"
-msgstr "Inspecter terminé"
+msgstr "Inspecter l'achèvement"
 
 msgctxt "model:ir.action,name:wizard_production_inspect_run"
 msgid "Inspect Run"
-msgstr "Inspecter Lancer"
+msgstr "Inspecter l'exécution"
 
-msgctxt "model:ir.action,name:wizard_stock_shipment_in_inspect_done"
+msgctxt "model:ir.action,name:wizard_stock_shipment_in_inspect_do"
 msgid "Inspect Done"
-msgstr "Inspecter terminé"
+msgstr "Inspecter l'achèvement"
 
 msgctxt "model:ir.action,name:wizard_stock_shipment_in_inspect_receive"
 msgid "Inspect Reception"
 msgstr "Inspecter la réception"
 
-msgctxt "model:ir.action,name:wizard_stock_shipment_internal_inspect_done"
+msgctxt "model:ir.action,name:wizard_stock_shipment_internal_inspect_do"
 msgid "Inspect Done"
-msgstr "Inspecter terminé"
+msgstr "Inspecter l'achèvement"
 
 msgctxt "model:ir.action,name:wizard_stock_shipment_internal_inspect_ship"
 msgid "Inspect Ship"
-msgstr "Inspecter Livrer"
+msgstr "Inspecter la livraison"
 
 msgctxt "model:ir.action,name:wizard_stock_shipment_out_inspect_pack"
 msgid "Inspect Pack"
-msgstr "Inspecter Emballer"
+msgstr "Inspecter l'emballage"
 
 msgctxt "model:ir.action,name:wizard_stock_shipment_out_inspect_pick"
 msgid "Inspect Pick"
-msgstr "Inspecter Prélever"
+msgstr "Inspecter le prélèvement"
 
-msgctxt "model:ir.action,name:wizard_stock_shipment_out_return_inspect_done"
+msgctxt "model:ir.action,name:wizard_stock_shipment_out_return_inspect_do"
 msgid "Inspect Done"
-msgstr "Inspecter terminé"
+msgstr "Inspecter l'achèvement"
 
 msgctxt ""
 "model:ir.action,name:wizard_stock_shipment_out_return_inspect_receive"

@@ -71,6 +71,10 @@ msgctxt "field:stock.lot.trace,downward_traces:"
 msgid "Downward Traces"
 msgstr "Traçabilitat descendent"
 
+msgctxt "field:stock.lot.trace,from_location:"
+msgid "From Location"
+msgstr "Des de la ubicació"
+
 msgctxt "field:stock.lot.trace,lot:"
 msgid "Lot"
 msgstr "Lot"
@@ -86,6 +90,10 @@ msgstr "Quantitat"
 msgctxt "field:stock.lot.trace,shipment:"
 msgid "Shipment"
 msgstr "Albarà"
+
+msgctxt "field:stock.lot.trace,to_location:"
+msgid "To Location"
+msgstr "A la ubicació"
 
 msgctxt "field:stock.lot.trace,unit:"
 msgid "Unit"

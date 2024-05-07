@@ -1248,6 +1248,11 @@ msgctxt "field:account.journal.open_cash.context,start_date:"
 msgid "Start Date"
 msgstr "Data rozpoczęcia"
 
+#, fuzzy
+msgctxt "field:account.journal.period,company:"
+msgid "Company"
+msgstr "Firma"
+
 msgctxt "field:account.journal.period,icon:"
 msgid "Icon"
 msgstr "Ikona"
@@ -2525,8 +2530,7 @@ msgstr "Pozwala uzgadniać zapisy księgowe dla tego konta."
 
 msgctxt "help:account.account,taxes:"
 msgid ""
-"Default tax for manual encoding of move lines\n"
-"for journal types: \"expense\" and \"revenue\"."
+"Default taxes for documents to be applied when there is no other source."
 msgstr ""
 
 msgctxt "help:account.account,template_override:"
@@ -3661,11 +3665,6 @@ msgid ""
 " contains moves."
 msgstr ""
 
-msgctxt "model:ir.message,text:msg_modify_delete_period_moves"
-msgid ""
-"You cannot modify or delete period \"%(period)s\" because it contains moves."
-msgstr ""
-
 msgctxt "model:ir.message,text:msg_modify_line_closed_journal_period"
 msgid ""
 "You cannot add/modify/delete lines on closed journal-period "
@@ -3777,6 +3776,12 @@ msgctxt "model:ir.message,text:msg_period_fiscalyear_dates"
 msgid ""
 "The dates for period \"%(period)s\" must be between the dates of its fiscal "
 "year \"%(fiscalyear)s\"."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_period_move_dates"
+msgid ""
+"The dates for period \"%(period)s\" must include the date \"%(move_date)s\" "
+"of move \"%(move)s\"."
 msgstr ""
 
 msgctxt "model:ir.message,text:msg_period_overlap"
@@ -3944,6 +3949,15 @@ msgctxt "model:ir.model.button,string:fiscalyear_reopen_button"
 msgid "Re-Open"
 msgstr "Re-Open"
 
+#, fuzzy
+msgctxt "model:ir.model.button,string:journal_period_close_button"
+msgid "Close"
+msgstr "Zamknij"
+
+msgctxt "model:ir.model.button,string:journal_period_reopen_button"
+msgid "Reopen"
+msgstr ""
+
 msgctxt "model:ir.model.button,string:move_post_button"
 msgid "Post"
 msgstr "Post"
@@ -3986,6 +4000,10 @@ msgid "User in companies"
 msgstr ""
 
 msgctxt "model:ir.rule.group,name:rule_group_general_ledger_line_companies"
+msgid "User in companies"
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_journal_period_companies"
 msgid "User in companies"
 msgstr ""
 
@@ -4213,7 +4231,7 @@ msgstr "Otworzenie na nowo roku podatkowego"
 
 msgctxt "model:ir.ui.menu,name:menu_reporting"
 msgid "Reporting"
-msgstr "Reporting"
+msgstr "Raportowanie"
 
 #, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_tax_code_list"
@@ -5072,14 +5090,6 @@ msgstr "Okresy"
 msgctxt "view:account.fiscalyear:"
 msgid "Sequences"
 msgstr "Sekwencje"
-
-msgctxt "view:account.journal.period:"
-msgid "Close"
-msgstr "Zamknij"
-
-msgctxt "view:account.journal.period:"
-msgid "Re-Open"
-msgstr "Otwórz ponownie"
 
 msgctxt "view:account.move.line.reschedule.start:"
 msgid "every"

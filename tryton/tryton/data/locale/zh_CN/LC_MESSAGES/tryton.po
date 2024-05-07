@@ -30,6 +30,10 @@ msgid "disable thread usage"
 msgstr "禁用线程"
 
 #, python-format
+msgid "Invalid response id (%s) expected %s"
+msgstr ""
+
+#, python-format
 msgid "Unable to set locale %s"
 msgstr "无法设置 locale %s"
 
@@ -79,7 +83,8 @@ msgstr "否"
 msgid "Yes"
 msgstr "是"
 
-msgid "Concurrency Exception"
+#, fuzzy
+msgid "Concurrency Warning"
 msgstr "并行操作异常"
 
 msgid "This record has been modified while you were editing it."
@@ -110,6 +115,9 @@ msgstr "关闭"
 msgid "Application Error"
 msgstr "程序错误"
 
+msgid "Details"
+msgstr ""
+
 msgid "Report Bug"
 msgstr "报告Bug"
 
@@ -126,17 +134,32 @@ msgstr "有新版本可用！"
 msgid "Download"
 msgstr "下载"
 
+msgid "Concurrency Exception"
+msgstr "并行操作异常"
+
 msgid "Could not get a session."
 msgstr "无法获取会话。"
+
+#, fuzzy, python-format
+msgid "Error: \"%s\". Try again later."
+msgstr "请求太多，请稍后重试."
 
 msgid "Too many requests. Try again later."
 msgstr "请求太多，请稍后重试."
 
-msgid "Not found."
-msgstr "无符合条件的数据."
-
 msgid "Not Found."
 msgstr "无符合条件的数据."
+
+msgid "Reset forgotten password"
+msgstr ""
+
+msgid "Send you an email to reset your password."
+msgstr ""
+
+msgid ""
+"A request to reset your password has been sent.\n"
+"Please check your mailbox."
+msgstr ""
 
 msgid "..."
 msgstr "..."
@@ -710,6 +733,12 @@ msgstr "模型:"
 msgid "ID:"
 msgstr "标识:"
 
+msgid "Module:"
+msgstr ""
+
+msgid "XML ID:"
+msgstr ""
+
 msgid "Created by:"
 msgstr "创建者:"
 
@@ -1083,7 +1112,19 @@ msgstr "图片尺寸过大."
 msgid "Copy"
 msgstr "复制"
 
-msgid "Paste"
+#, fuzzy
+msgid "Copy Row"
+msgstr "复制（_C）URL"
+
+#, fuzzy
+msgid "Copy Rows"
+msgstr "复制（_C）URL"
+
+msgid "Copy Column"
+msgstr ""
+
+#, fuzzy
+msgid "Paste Rows"
 msgstr "粘贴"
 
 msgid ".."

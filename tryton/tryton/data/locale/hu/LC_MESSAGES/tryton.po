@@ -30,6 +30,10 @@ msgid "disable thread usage"
 msgstr ""
 
 #, python-format
+msgid "Invalid response id (%s) expected %s"
+msgstr ""
+
+#, python-format
 msgid "Unable to set locale %s"
 msgstr "Nem lehet beállítani a %s nyelvet"
 
@@ -81,7 +85,8 @@ msgstr "Nem"
 msgid "Yes"
 msgstr "Igen"
 
-msgid "Concurrency Exception"
+#, fuzzy
+msgid "Concurrency Warning"
 msgstr "Egyidejű módosítási hiba"
 
 msgid "This record has been modified while you were editing it."
@@ -113,6 +118,9 @@ msgstr "Bezárás"
 msgid "Application Error"
 msgstr "Alkalmazáshiba"
 
+msgid "Details"
+msgstr ""
+
 msgid "Report Bug"
 msgstr "A hiba jelentése"
 
@@ -129,20 +137,34 @@ msgstr "Új verzió elérhető!"
 msgid "Download"
 msgstr "Letöltés"
 
+msgid "Concurrency Exception"
+msgstr "Egyidejű módosítási hiba"
+
 #, fuzzy
 msgid "Could not get a session."
 msgstr "Nem sikerült csatlakozni a kiszolgálóhoz."
+
+#, python-format
+msgid "Error: \"%s\". Try again later."
+msgstr ""
 
 msgid "Too many requests. Try again later."
 msgstr ""
 
 #, fuzzy
-msgid "Not found."
-msgstr "Nincs találat"
-
-#, fuzzy
 msgid "Not Found."
 msgstr "Nincs találat"
+
+msgid "Reset forgotten password"
+msgstr ""
+
+msgid "Send you an email to reset your password."
+msgstr ""
+
+msgid ""
+"A request to reset your password has been sent.\n"
+"Please check your mailbox."
+msgstr ""
 
 msgid "..."
 msgstr "..."
@@ -722,6 +744,12 @@ msgstr "Elem:"
 msgid "ID:"
 msgstr "ID:"
 
+msgid "Module:"
+msgstr ""
+
+msgid "XML ID:"
+msgstr ""
+
 msgid "Created by:"
 msgstr "Létrehozta:"
 
@@ -1100,7 +1128,19 @@ msgstr "Kép túl nagy!"
 msgid "Copy"
 msgstr "Másolás"
 
-msgid "Paste"
+#, fuzzy
+msgid "Copy Row"
+msgstr "Másolás"
+
+#, fuzzy
+msgid "Copy Rows"
+msgstr "Másolás"
+
+msgid "Copy Column"
+msgstr ""
+
+#, fuzzy
+msgid "Paste Rows"
 msgstr "Beillesztés"
 
 msgid ".."

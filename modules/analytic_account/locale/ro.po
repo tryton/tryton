@@ -2,13 +2,14 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
+#, fuzzy
 msgctxt "field:account.move.line,analytic_lines:"
 msgid "Analytic Lines"
-msgstr ""
+msgstr "Rânduri Analitice"
 
 msgctxt "field:account.move.line,analytic_state:"
 msgid "Analytic State"
-msgstr ""
+msgstr "Stare Analitică"
 
 msgctxt "field:analytic.account.entry,account:"
 msgid "Account"
@@ -44,7 +45,7 @@ msgstr "Companie"
 
 msgctxt "field:analytic_account.account,credit:"
 msgid "Credit"
-msgstr ""
+msgstr "Credit"
 
 msgctxt "field:analytic_account.account,currency:"
 msgid "Currency"
@@ -60,15 +61,15 @@ msgstr ""
 
 msgctxt "field:analytic_account.account,distributions:"
 msgid "Distributions"
-msgstr ""
+msgstr "Distribuții"
 
 msgctxt "field:analytic_account.account,name:"
 msgid "Name"
-msgstr ""
+msgstr "Nume"
 
 msgctxt "field:analytic_account.account,note:"
 msgid "Note"
-msgstr ""
+msgstr "Notă"
 
 msgctxt "field:analytic_account.account,parent:"
 msgid "Parent"
@@ -80,20 +81,21 @@ msgstr ""
 
 msgctxt "field:analytic_account.account,state:"
 msgid "State"
-msgstr ""
+msgstr "Stare"
 
 msgctxt "field:analytic_account.account,type:"
 msgid "Type"
-msgstr ""
+msgstr "Tip"
 
 #, fuzzy
 msgctxt "field:analytic_account.account.context,end_date:"
 msgid "End Date"
-msgstr "Data"
+msgstr "Data de sfârșit"
 
+#, fuzzy
 msgctxt "field:analytic_account.account.context,start_date:"
 msgid "Start Date"
-msgstr ""
+msgstr "Data de Început"
 
 msgctxt "field:analytic_account.account.distribution,account:"
 msgid "Account"
@@ -103,9 +105,10 @@ msgctxt "field:analytic_account.account.distribution,parent:"
 msgid "Parent"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:analytic_account.account.distribution,ratio:"
 msgid "Ratio"
-msgstr ""
+msgstr "Rație"
 
 msgctxt "field:analytic_account.account.distribution,root:"
 msgid "Root"
@@ -136,9 +139,10 @@ msgctxt "field:analytic_account.line,debit:"
 msgid "Debit"
 msgstr "Debit"
 
+#, fuzzy
 msgctxt "field:analytic_account.line,move_line:"
 msgid "Account Move Line"
-msgstr ""
+msgstr "Rând Mişcare Cont"
 
 msgctxt "field:analytic_account.rule,account:"
 msgid "Account"
@@ -146,11 +150,11 @@ msgstr "Cont"
 
 msgctxt "field:analytic_account.rule,analytic_accounts:"
 msgid "Analytic Accounts"
-msgstr ""
+msgstr "Conturi Analitice"
 
 msgctxt "field:analytic_account.rule,analytic_accounts_size:"
 msgid "Analytic Accounts Size"
-msgstr ""
+msgstr "Mărimea Conturilor Analitice"
 
 msgctxt "field:analytic_account.rule,company:"
 msgid "Company"
@@ -174,24 +178,27 @@ msgstr ""
 
 msgctxt "model:analytic_account.account,name:"
 msgid "Analytic Account"
-msgstr ""
+msgstr "Cont Analitic"
 
 #, fuzzy
 msgctxt "model:analytic_account.account.context,name:"
 msgid "Open Chart of Accounts"
 msgstr "Deschidere Plan de Conturi"
 
+#, fuzzy
 msgctxt "model:analytic_account.account.distribution,name:"
 msgid "Analytic Account Distribution"
-msgstr ""
+msgstr "Distribuția analitică a conturilor"
 
+#, fuzzy
 msgctxt "model:analytic_account.line,name:"
 msgid "Analytic Line"
-msgstr ""
+msgstr "Rând Analitic"
 
+#, fuzzy
 msgctxt "model:analytic_account.rule,name:"
 msgid "Analytic Rule"
-msgstr ""
+msgstr "Regulă analitică"
 
 msgctxt "model:ir.action,name:act_account_list"
 msgid "Accounts"
@@ -201,52 +208,64 @@ msgctxt "model:ir.action,name:act_account_tree"
 msgid "Accounts"
 msgstr "Conturi"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_account_tree_chart"
 msgid "Chart of Analytic Accounts"
-msgstr "Deschidere Plan de Conturi"
+msgstr "Planu de Conturi Analitice"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_line_form"
 msgid "Analytic Lines"
-msgstr ""
+msgstr "Rânduri Analitice"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_move_line_form_completion"
 msgid "Analytic Lines to Complete"
-msgstr ""
+msgstr "Rânduri analitice de completat"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_open_account"
 msgid "Open Account"
-msgstr ""
+msgstr "Cont deschis"
 
 msgctxt "model:ir.action,name:act_rule_form"
 msgid "Rules"
-msgstr ""
+msgstr "Reguli"
 
 msgctxt "model:ir.message,text:msg_account_wrong_type_line"
 msgid ""
 "You cannot change the type of account \"%(account)s\" because it has move "
 "lines."
 msgstr ""
+"Nu puteți schimba tipul de cont \"%(account)s\" deoarece are rânduri de "
+"mişcare."
 
+#, fuzzy
 msgctxt "model:ir.message,text:msg_analytic_account_root_change"
 msgid ""
 "You cannot change the root of the analytic account \"%(account)s\" which is "
 "associated with analytic account entry."
 msgstr ""
+"Nu puteți modifica rădăcina contului analitic „%(account)s”, care este "
+"asociată cu introducerea contului analitic."
 
+#, fuzzy
 msgctxt "model:ir.message,text:msg_invalid_distribution"
 msgid ""
 "To save account \"%(account)s\" the sum of their distributions must be "
 "100%%."
 msgstr ""
+"Pentru a salva contul „%(account)s”, suma distribuțiilor acestora trebuie să"
+" fie de 100%."
 
+#, fuzzy
 msgctxt "model:ir.message,text:msg_root_origin_unique"
 msgid "Only one account is allowed by analytic root and origin."
-msgstr ""
+msgstr "Un singur cont este permis după rădăcina analitică și origine."
 
+#, fuzzy
 msgctxt "model:ir.model.button,string:line_apply_analytic_rules_button"
 msgid "Apply Analytic Rules"
-msgstr ""
+msgstr "Aplicare reguli analitice"
 
 msgctxt "model:ir.rule.group,name:rule_group_account_companies"
 msgid "User in companies"
@@ -254,15 +273,15 @@ msgstr "Utilizator în companii"
 
 msgctxt "model:ir.rule.group,name:rule_group_entry_companies"
 msgid "User in companies"
-msgstr ""
+msgstr "Utilizator în Companii"
 
 msgctxt "model:ir.rule.group,name:rule_group_line_companies"
 msgid "User in companies"
-msgstr ""
+msgstr "Utilizator în companii"
 
 msgctxt "model:ir.rule.group,name:rule_group_rule_companies"
 msgid "User in companies"
-msgstr ""
+msgstr "Utilizator în companii"
 
 msgctxt "model:ir.ui.menu,name:menu_account_list"
 msgid "Accounts"
@@ -272,34 +291,35 @@ msgctxt "model:ir.ui.menu,name:menu_account_tree"
 msgid "Accounts"
 msgstr "Conturi"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_account_tree_chart"
 msgid "Chart of Analytic Accounts"
-msgstr "Deschidere Plan de Conturi"
+msgstr "Plan de Conturi Analitice"
 
 msgctxt "model:ir.ui.menu,name:menu_analytic_account_configuration"
 msgid "Analytic"
 msgstr "Analitic"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_completion"
 msgid "Analytic Lines to Complete"
-msgstr ""
+msgstr "Rânduri analitice de completat"
 
 msgctxt "model:ir.ui.menu,name:menu_rule_form"
 msgid "Rules"
-msgstr ""
+msgstr "Reguli"
 
+#, fuzzy
 msgctxt "model:res.group,name:group_analytic_admin"
 msgid "Analytic Administration"
-msgstr ""
+msgstr "Administrare analitică"
 
 msgctxt "selection:account.move.line,analytic_state:"
 msgid "Draft"
-msgstr ""
+msgstr "Ciornă"
 
 msgctxt "selection:account.move.line,analytic_state:"
 msgid "Valid"
-msgstr ""
+msgstr "Valabil"
 
 msgctxt "selection:analytic_account.account,state:"
 msgid "Closed"
@@ -307,31 +327,32 @@ msgstr "Închis"
 
 msgctxt "selection:analytic_account.account,state:"
 msgid "Draft"
-msgstr ""
+msgstr "Ciornă"
 
 msgctxt "selection:analytic_account.account,state:"
 msgid "Opened"
-msgstr ""
+msgstr "Deschis"
 
 msgctxt "selection:analytic_account.account,type:"
 msgid "Distribution"
-msgstr ""
+msgstr "Distribuție"
 
 msgctxt "selection:analytic_account.account,type:"
 msgid "Normal"
-msgstr ""
+msgstr "Normal"
 
 msgctxt "selection:analytic_account.account,type:"
 msgid "Root"
 msgstr ""
 
+#, fuzzy
 msgctxt "selection:analytic_account.account,type:"
 msgid "View"
-msgstr ""
+msgstr "Vedere"
 
 msgctxt "view:account.move.line:"
 msgid "Analytic"
-msgstr ""
+msgstr "Analitic"
 
 msgctxt "view:analytic_account.account.distribution:"
 msgid "%"
@@ -339,8 +360,8 @@ msgstr "%"
 
 msgctxt "view:analytic_account.account:"
 msgid "General Information"
-msgstr ""
+msgstr "Informații Generale"
 
 msgctxt "view:analytic_account.account:"
 msgid "Notes"
-msgstr ""
+msgstr "Notiţe"

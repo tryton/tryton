@@ -410,6 +410,10 @@ msgctxt "field:stock.move,from_location:"
 msgid "From Location"
 msgstr "Von Lagerort"
 
+msgctxt "field:stock.move,from_location_name:"
+msgid "From Location"
+msgstr "Von Lagerort"
+
 msgctxt "field:stock.move,internal_quantity:"
 msgid "Internal Quantity"
 msgstr "Interne Menge"
@@ -451,6 +455,10 @@ msgid "State"
 msgstr "Status"
 
 msgctxt "field:stock.move,to_location:"
+msgid "To Location"
+msgstr "Zu Lagerort"
+
+msgctxt "field:stock.move,to_location_name:"
 msgid "To Location"
 msgstr "Zu Lagerort"
 
@@ -2133,6 +2141,11 @@ msgstr ""
 "Es wird empfohlen, vor der Deaktivierung des Artikels den Bestand aus den "
 "Lagerorten zu entfernen."
 
+msgctxt "model:ir.message,text:msg_product_quantities_max"
+msgid "You cannot select more than %(max)s products to compute quantities."
+msgstr ""
+"Sie können zur Mengenberechnung nicht mehr als %(max)s Artikel auswählen."
+
 msgctxt "model:ir.message,text:msg_shipment_check_quantity"
 msgid ""
 "The quantities of shipment \"%(shipment)s\" are different by %(quantities)s."
@@ -2226,17 +2239,37 @@ msgctxt "model:ir.model.button,confirm:move_do_button"
 msgid "Are you sure you want to complete the move?"
 msgstr "Sind Sie sicher, dass Sie die Warenbewegung fertigstellen wollen?"
 
+msgctxt "model:ir.model.button,confirm:shipment_in_cancel_button"
+msgid "Are you sure you want to cancel the shipment?"
+msgstr "Sind Sie sicher, dass Sie den Wareneingang abbrechen wollen?"
+
 msgctxt "model:ir.model.button,confirm:shipment_in_receive_button"
 msgid "Are you sure you want to receive the shipment?"
 msgstr "Sind Sie sicher, dass Sie die Lieferung empfangen wollen?"
+
+msgctxt "model:ir.model.button,confirm:shipment_in_return_cancel_button"
+msgid "Are you sure you want to cancel the shipment?"
+msgstr "Sind Sie sicher, dass Sie die Warenrückgabe abbrechen wollen?"
 
 msgctxt "model:ir.model.button,confirm:shipment_in_return_done_button"
 msgid "Are you sure you want to complete the shipment?"
 msgstr "Sind Sie sicher, dass Sie die Lieferung fertigstellen wollen?"
 
+msgctxt "model:ir.model.button,confirm:shipment_internal_cancel_button"
+msgid "Are you sure you want to cancel the shipment?"
+msgstr "Sind Sie sicher, dass Sie die interne Lieferung abbrechen wollen?"
+
+msgctxt "model:ir.model.button,confirm:shipment_out_cancel_button"
+msgid "Are you sure you want to cancel the shipment?"
+msgstr "Sind Sie sicher, dass Sie den Warenausgang abbrechen wollen?"
+
 msgctxt "model:ir.model.button,confirm:shipment_out_done_button"
 msgid "Are you sure you want to complete the shipment?"
 msgstr "Sind Sie sicher, dass Sie die Lieferung fertigstellen wollen?"
+
+msgctxt "model:ir.model.button,confirm:shipment_out_return_cancel_button"
+msgid "Are you sure you want to cancel the shipment?"
+msgstr "Sind Sie sicher, dass Sie die Warenrücknahme abbrechen wollen?"
 
 msgctxt "model:ir.model.button,confirm:shipment_out_return_receive_button"
 msgid "Are you sure you want to receive the shipment?"
@@ -2291,8 +2324,8 @@ msgid "Cancel"
 msgstr "Annullieren"
 
 msgctxt "model:ir.model.button,string:shipment_in_done_button"
-msgid "Done"
-msgstr "Erledigt"
+msgid "Complete"
+msgstr "Fertigstellen"
 
 msgctxt "model:ir.model.button,string:shipment_in_draft_button"
 msgid "Reset to Draft"
@@ -2311,8 +2344,8 @@ msgid "Cancel"
 msgstr "Annullieren"
 
 msgctxt "model:ir.model.button,string:shipment_in_return_done_button"
-msgid "Done"
-msgstr "Erledigt"
+msgid "Complete"
+msgstr "Fertigstellen"
 
 msgctxt "model:ir.model.button,string:shipment_in_return_draft_button"
 msgid "Draft"
@@ -2331,8 +2364,8 @@ msgid "Cancel"
 msgstr "Annullieren"
 
 msgctxt "model:ir.model.button,string:shipment_internal_done_button"
-msgid "Done"
-msgstr "Erledigt"
+msgid "Complete"
+msgstr "Fertigstellen"
 
 msgctxt "model:ir.model.button,string:shipment_internal_draft_button"
 msgid "Draft"
@@ -2355,8 +2388,8 @@ msgid "Cancel"
 msgstr "Annullieren"
 
 msgctxt "model:ir.model.button,string:shipment_out_done_button"
-msgid "Done"
-msgstr "Erledigt"
+msgid "Complete"
+msgstr "Fertigstellen"
 
 msgctxt "model:ir.model.button,string:shipment_out_draft_button"
 msgid "Draft"
@@ -2375,8 +2408,8 @@ msgid "Cancel"
 msgstr "Annullieren"
 
 msgctxt "model:ir.model.button,string:shipment_out_return_done_button"
-msgid "Done"
-msgstr "Erledigt"
+msgid "Complete"
+msgstr "Fertigstellen"
 
 msgctxt "model:ir.model.button,string:shipment_out_return_draft_button"
 msgid "Draft"
@@ -2392,79 +2425,79 @@ msgstr "Warten"
 
 msgctxt "model:ir.rule.group,name:rule_group_inventory_companies"
 msgid "User in companies"
-msgstr "Benutzer im Unternehmen"
+msgstr "Benutzer in Unternehmen"
 
 msgctxt "model:ir.rule.group,name:rule_group_move_companies"
 msgid "User in companies"
-msgstr "Benutzer im Unternehmen"
+msgstr "Benutzer in Unternehmen"
 
 msgctxt "model:ir.rule.group,name:rule_group_period_companies"
 msgid "User in companies"
-msgstr "Benutzer im Unternehmen"
+msgstr "Benutzer in Unternehmen"
 
 msgctxt ""
 "model:ir.rule.group,name:rule_group_product_cost_price_revision_companies"
 msgid "User in companies"
-msgstr "Benutzer im Unternehmen"
+msgstr "Benutzer in Unternehmen"
 
 msgctxt ""
 "model:ir.rule.group,name:rule_group_product_quantities_warehouse_companies"
 msgid "User in companies"
-msgstr "Benutzer im Unternehmen"
+msgstr "Benutzer in Unternehmen"
 
 msgctxt ""
 "model:ir.rule.group,name:rule_group_product_quantities_warehouse_move_companies"
 msgid "User in companies"
-msgstr "Benutzer im Unternehmen"
+msgstr "Benutzer in Unternehmen"
 
 msgctxt ""
 "model:ir.rule.group,name:rule_group_reporting_margin_category_companies"
 msgid "User in companies"
-msgstr "Benutzer im Unternehmen"
+msgstr "Benutzer in Unternehmen"
 
 msgctxt ""
 "model:ir.rule.group,name:rule_group_reporting_margin_category_time_series_companies"
 msgid "User in companies"
-msgstr "Benutzer im Unternehmen"
+msgstr "Benutzer in Unternehmen"
 
 msgctxt "model:ir.rule.group,name:rule_group_reporting_margin_main_companies"
 msgid "User in companies"
-msgstr "Benutzer im Unternehmen"
+msgstr "Benutzer in Unternehmen"
 
 msgctxt ""
 "model:ir.rule.group,name:rule_group_reporting_margin_main_time_series_companies"
 msgid "User in companies"
-msgstr "Benutzer im Unternehmen"
+msgstr "Benutzer in Unternehmen"
 
 msgctxt ""
 "model:ir.rule.group,name:rule_group_reporting_margin_product_companies"
 msgid "User in companies"
-msgstr "Benutzer im Unternehmen"
+msgstr "Benutzer in Unternehmen"
 
 msgctxt ""
 "model:ir.rule.group,name:rule_group_reporting_margin_product_time_series_companies"
 msgid "User in companies"
-msgstr "Benutzer im Unternehmen"
+msgstr "Benutzer in Unternehmen"
 
 msgctxt "model:ir.rule.group,name:rule_group_shipment_in_companies"
 msgid "User in companies"
-msgstr "Benutzer im Unternehmen"
+msgstr "Benutzer in Unternehmen"
 
 msgctxt "model:ir.rule.group,name:rule_group_shipment_in_return_companies"
 msgid "User in companies"
-msgstr "Benutzer im Unternehmen"
+msgstr "Benutzer in Unternehmen"
 
 msgctxt "model:ir.rule.group,name:rule_group_shipment_internal_companies"
 msgid "User in companies"
-msgstr "Benutzer im Unternehmen"
+msgstr "Benutzer in Unternehmen"
 
 msgctxt "model:ir.rule.group,name:rule_group_shipment_out_companies"
 msgid "User in companies"
-msgstr "Benutzer im Unternehmen"
+msgstr "Benutzer in Unternehmen"
 
 msgctxt "model:ir.rule.group,name:rule_group_shipment_out_return_companies"
 msgid "User in companies"
-msgstr "Benutzer im Unternehmen"
+msgstr "Benutzer in Unternehmen"
 
 msgctxt "model:ir.sequence,name:sequence_inventory"
 msgid "Inventory"
@@ -3039,12 +3072,8 @@ msgid "Warehouse:"
 msgstr "Logistikstandort:"
 
 msgctxt "selection:ir.cron,method:"
-msgid "Assign Customer Shipments"
-msgstr "Warenausgangslieferungen reservieren"
-
-msgctxt "selection:ir.cron,method:"
-msgid "Assign Internal Shipments"
-msgstr "Interne Lieferungen reservieren"
+msgid "Assign Shipments"
+msgstr "Artikel reservieren"
 
 msgctxt "selection:ir.cron,method:"
 msgid "Recompute Cost Price from Moves"

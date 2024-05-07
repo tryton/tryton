@@ -26,6 +26,22 @@ msgctxt "field:marketing.automation.activity,delay:"
 msgid "Delay"
 msgstr "Vertraging"
 
+msgctxt "field:marketing.automation.activity,email_click_rate:"
+msgid "E-mail Click Rate"
+msgstr "Percentage email geklikt"
+
+msgctxt "field:marketing.automation.activity,email_click_rate_trend:"
+msgid "E-mail Click Rate Trend"
+msgstr "Trend percentage email geklikt"
+
+msgctxt "field:marketing.automation.activity,email_click_through_rate:"
+msgid "E-mail Click-Through Rate"
+msgstr "Percentage email doorgeklikt"
+
+msgctxt "field:marketing.automation.activity,email_click_through_rate_trend:"
+msgid "E-mail Click-Through Rate Trend"
+msgstr "Trend percentage email doorgeklikt"
+
 msgctxt "field:marketing.automation.activity,email_clicked:"
 msgid "E-Mails Clicked"
 msgstr "E-mails Geklikt"
@@ -33,6 +49,14 @@ msgstr "E-mails Geklikt"
 msgctxt "field:marketing.automation.activity,email_from:"
 msgid "From"
 msgstr "Van"
+
+msgctxt "field:marketing.automation.activity,email_open_rate:"
+msgid "E-mail Open Rate"
+msgstr "Percentage email geopend"
+
+msgctxt "field:marketing.automation.activity,email_open_rate_trend:"
+msgid "E-mail Open Rate Trend"
+msgstr "Trend percentage email geopend"
 
 msgctxt "field:marketing.automation.activity,email_opened:"
 msgid "E-Mails Opened"
@@ -118,9 +142,86 @@ msgctxt "field:marketing.automation.record.activity,state:"
 msgid "State"
 msgstr "Status"
 
+msgctxt "field:marketing.automation.reporting.activity,activity:"
+msgid "Activity"
+msgstr "Activiteit"
+
+msgctxt "field:marketing.automation.reporting.activity,activity_action:"
+msgid "Activity Action"
+msgstr "Activiteit actie"
+
+msgctxt "field:marketing.automation.reporting.activity,date:"
+msgid "Date"
+msgstr "Datum"
+
+msgctxt "field:marketing.automation.reporting.activity,email_click_rate:"
+msgid "E-mail Click Rate"
+msgstr "Percentage email geklikt"
+
+msgctxt ""
+"field:marketing.automation.reporting.activity,email_click_through_rate:"
+msgid "E-mail Click-Through Rate"
+msgstr "Percentage email doorgeklikt"
+
+msgctxt "field:marketing.automation.reporting.activity,email_clicked:"
+msgid "E-Mails Clicked"
+msgstr "Op email geklikt"
+
+msgctxt "field:marketing.automation.reporting.activity,email_open_rate:"
+msgid "E-mail Open Rate"
+msgstr "Percentage email geopend"
+
+msgctxt "field:marketing.automation.reporting.activity,email_opened:"
+msgid "E-Mails Opened"
+msgstr "Email geopend"
+
+msgctxt "field:marketing.automation.reporting.activity,record_count:"
+msgid "Records"
+msgstr "Records"
+
+msgctxt "field:marketing.automation.reporting.context,from_date:"
+msgid "From Date"
+msgstr "Vanaf datum"
+
+msgctxt "field:marketing.automation.reporting.context,period:"
+msgid "Period"
+msgstr "Periode"
+
+msgctxt "field:marketing.automation.reporting.context,to_date:"
+msgid "To Date"
+msgstr "Tot datum"
+
+msgctxt "field:marketing.automation.reporting.scenario,block_rate:"
+msgid "Block Rate"
+msgstr "Percentage geblokkeerd"
+
+msgctxt "field:marketing.automation.reporting.scenario,date:"
+msgid "Date"
+msgstr "Datum"
+
+msgctxt "field:marketing.automation.reporting.scenario,record_count:"
+msgid "Records"
+msgstr "Records"
+
+msgctxt "field:marketing.automation.reporting.scenario,record_count_blocked:"
+msgid "Records Blocked"
+msgstr "Geblokkeerde records"
+
+msgctxt "field:marketing.automation.reporting.scenario,scenario:"
+msgid "Scenario"
+msgstr "Scenario"
+
 msgctxt "field:marketing.automation.scenario,activities:"
 msgid "Activities"
 msgstr "Activiteiten"
+
+msgctxt "field:marketing.automation.scenario,block_rate:"
+msgid "Block Rate"
+msgstr "Percentage geblokkeerd"
+
+msgctxt "field:marketing.automation.scenario,block_rate_trend:"
+msgid "Block Rate Trend"
+msgstr "Trend percentage geblokkeerd"
 
 msgctxt "field:marketing.automation.scenario,domain:"
 msgid "Domain"
@@ -240,6 +341,14 @@ msgctxt "model:ir.action,name:act_record_form"
 msgid "Records"
 msgstr "Records"
 
+msgctxt "model:ir.action,name:act_reporting_activity"
+msgid "Activity Reporting"
+msgstr "Activiteit rapportage"
+
+msgctxt "model:ir.action,name:act_reporting_scenario"
+msgid "Scenario Reporting"
+msgstr "Scenario rapportage"
+
 msgctxt "model:ir.action,name:act_scenario_form"
 msgid "Scenarios"
 msgstr "scenario's"
@@ -300,7 +409,7 @@ msgid ""
 "Invalid e-mail template in activity \"%(activity)s\" with exception "
 "\"%(exception)s\"."
 msgstr ""
-"Ongeldige e-mailsjabloon in activiteit \"%(activity s\" met uitzondering "
+"Ongeldige e-mail template in activiteit \"%(activity)s\" met uitzondering "
 "\"%(exception)s\"."
 
 msgctxt "model:ir.message,text:msg_activity_invalid_email_title"
@@ -308,7 +417,7 @@ msgid ""
 "Invalid e-mail title in activity \"%(activity)s\" with exception "
 "\"%(exception)s\"."
 msgstr ""
-"Ongeldige e-mailtitel in activiteit \"%(activity s\" met uitzondering "
+"Ongeldige e-mail titel in activiteit \"%(activity)s\" met uitzondering "
 "\"%(exception)s\"."
 
 msgctxt "model:ir.message,text:msg_activity_record_unique"
@@ -368,6 +477,18 @@ msgstr "Marketingrecord"
 msgctxt "model:marketing.automation.record.activity,name:"
 msgid "Marketing Record Activity"
 msgstr "Marketingrecordactiviteit"
+
+msgctxt "model:marketing.automation.reporting.activity,name:"
+msgid "Marketing Automation Reporting Activity"
+msgstr "Activiteit rapportage voor marketingautomatisering"
+
+msgctxt "model:marketing.automation.reporting.context,name:"
+msgid "Marketing Automation Reporting Context"
+msgstr "Rapportage context voor marketingautomatisering"
+
+msgctxt "model:marketing.automation.reporting.scenario,name:"
+msgid "Marketing Automation Reporting Scenario"
+msgstr "Scenario rapportage voor marketingautomatisering"
 
 msgctxt "model:marketing.automation.scenario,name:"
 msgid "Marketing Scenario"
@@ -451,6 +572,18 @@ msgctxt "selection:marketing.automation.record.activity,state:"
 msgid "Waiting"
 msgstr "In afwachting"
 
+msgctxt "selection:marketing.automation.reporting.context,period:"
+msgid "Day"
+msgstr "Dag"
+
+msgctxt "selection:marketing.automation.reporting.context,period:"
+msgid "Month"
+msgstr "Maand"
+
+msgctxt "selection:marketing.automation.reporting.context,period:"
+msgid "Year"
+msgstr "Jaar"
+
 msgctxt "selection:marketing.automation.scenario,state:"
 msgid "Draft"
 msgstr "Concept"
@@ -462,6 +595,10 @@ msgstr "in uitvoering"
 msgctxt "selection:marketing.automation.scenario,state:"
 msgid "Stopped"
 msgstr "gestopt"
+
+msgctxt "view:marketing.automation.activity:"
+msgid "%"
+msgstr "%"
 
 msgctxt "view:marketing.automation.activity:"
 msgid "After"
@@ -490,6 +627,18 @@ msgstr "Titel:"
 msgctxt "view:marketing.automation.record.activity:"
 msgid "Time"
 msgstr "Tijd"
+
+msgctxt "view:marketing.automation.reporting.activity:"
+msgid "%"
+msgstr "%"
+
+msgctxt "view:marketing.automation.reporting.scenario:"
+msgid "%"
+msgstr "%"
+
+msgctxt "view:marketing.automation.scenario:"
+msgid "%"
+msgstr "%"
 
 msgctxt "view:party.party:"
 msgid "Marketing Automation"

@@ -69,7 +69,7 @@ msgid "Relate"
 msgstr "Relata"
 
 msgid "Print"
-msgstr "Tiparire"
+msgstr "Tipărire"
 
 msgid "E-Mail"
 msgstr "E-Mail"
@@ -110,7 +110,8 @@ msgstr "Comenzile rapide pentru file"
 msgid "Unable to reach the server."
 msgstr "Serverul nu se poate accessa."
 
-msgid "Too many requests. Try again later."
+#, fuzzy
+msgid "Error: \"%1\". Try again later."
 msgstr "Prea multe cereri. Încercați mai târziu."
 
 msgid "Login"
@@ -125,8 +126,19 @@ msgstr "Utilizator"
 msgid "Login with"
 msgstr "Autentificare cu"
 
+msgid "Too many requests. Try again later."
+msgstr "Prea multe cereri. Încercați mai târziu."
+
 msgid "Not found."
 msgstr "Nimic găsit."
+
+msgid "Send you an email to reset your password."
+msgstr ""
+
+msgid ""
+"A request to reset your password has been sent.\n"
+"Please check your mailbox."
+msgstr ""
 
 msgid "Your selection:"
 msgstr "Selecția dvs.:"
@@ -179,12 +191,6 @@ msgstr "t"
 msgid "False"
 msgstr "Fals"
 
-msgid "Message: "
-msgstr "Mesaj: "
-
-msgid "Warning: "
-msgstr "Avertizare: "
-
 msgid "Always ignore this warning."
 msgstr "Ignorați întotdeauna acest avertisment."
 
@@ -194,13 +200,8 @@ msgstr "Doriți să continuați?"
 msgid "No"
 msgstr "Nu"
 
-msgid "Confirmation: "
-msgstr "Confirmare: "
-
-msgid "Concurrency Exception"
-msgstr "Excepție de concurgență"
-
-msgid "Write Concurrency Warning: "
+#, fuzzy
+msgid "Concurrency Warning"
 msgstr "Avertizare de scriere simultană: "
 
 msgid "This record has been modified while you were editing it."
@@ -210,7 +211,7 @@ msgid "Choose:"
 msgstr "Alegere:"
 
 msgid "\"Cancel\" to cancel saving;"
-msgstr "„Anulare” pentru a anula salvarea;"
+msgstr "\"Anulare\" pentru a anula salvarea;"
 
 msgid "\"Compare\" to see the modified version;"
 msgstr "\"Comparație\" pentru a vedea versiunea modificată;"
@@ -230,6 +231,9 @@ msgstr "Scrie oricum"
 msgid "Application Error"
 msgstr "Eroare de aplicație"
 
+msgid "Details"
+msgstr ""
+
 msgid "Report Bug"
 msgstr "Raporteati eroare"
 
@@ -242,9 +246,8 @@ msgstr "Căutare..."
 msgid "Create..."
 msgstr "Creare..."
 
-#, fuzzy
 msgid "Create \"%1\"..."
-msgstr "Creare..."
+msgstr "Creare \"%1\"..."
 
 msgid "Download"
 msgstr "Descarca"
@@ -447,7 +450,7 @@ msgid ":"
 msgstr ":"
 
 msgid "Scan"
-msgstr ""
+msgstr "Scanare"
 
 msgid "Translate"
 msgstr "Traducere"
@@ -517,10 +520,11 @@ msgid "%1%"
 msgstr "%1%"
 
 msgid "Menu"
-msgstr ""
+msgstr "Meniu"
 
-msgid "Copy"
-msgstr ""
+#, fuzzy
+msgid "Copy Selected Rows"
+msgstr "Înregistrări selectate"
 
 msgid "#ERROR"
 msgstr "#EROARE"
@@ -556,17 +560,16 @@ msgid "No action defined."
 msgstr "Nicio acțiune definită."
 
 msgid "Discard changes"
-msgstr ""
+msgstr "Omitere schimbări"
 
 msgid "Save and New"
-msgstr ""
+msgstr "Salvare şi Nou"
 
-#, fuzzy
 msgid "Add and New"
-msgstr "Adăugare denumire de câmp"
+msgstr "Adăugare şi Nou"
 
 msgid "Apply changes"
-msgstr ""
+msgstr "Aplicare schimbări"
 
 msgid "Attachments (%1)"
 msgstr "Atașamente (%1)"
@@ -582,6 +585,12 @@ msgstr "Model:"
 
 msgid "ID:"
 msgstr "ID:"
+
+msgid "Module:"
+msgstr ""
+
+msgid "XML ID:"
+msgstr ""
 
 msgid "Created by:"
 msgstr "Creat de:"
@@ -638,7 +647,7 @@ msgid "Detection failed"
 msgstr "Detecție eșuată"
 
 msgid "Unknown column header \"%1\""
-msgstr ""
+msgstr "Antet necunoscut de coloană \"%1\""
 
 msgid "Error"
 msgstr "Eroare"
@@ -737,13 +746,13 @@ msgid "Remove File"
 msgstr "Eliminare Fişier"
 
 msgid "Code Scanner"
-msgstr ""
+msgstr "Scanner"
 
 msgid "Code"
-msgstr ""
+msgstr "Cod"
 
 msgid "Toggle Sound"
-msgstr ""
+msgstr "Comutați sunetul"
 
 msgid "Wizard"
 msgstr "Asistent"

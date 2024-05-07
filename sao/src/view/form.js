@@ -1759,7 +1759,6 @@ function eval_pyson(value){
 
     Sao.View.Form.Date = Sao.class_(Sao.View.Form.Widget, {
         class_: 'form-date',
-        _width: '10em',
         _input: 'date',
         _input_format: '%Y-%m-%d',
         _format: Sao.common.format_date,
@@ -1814,7 +1813,6 @@ function eval_pyson(value){
                 Sao.common.ICONFACTORY.get_icon_img('tryton-date')
                     .appendTo(this.icon);
             }
-            this.date.css('max-width', this._width);
             this.date.change(this.focus_out.bind(this));
             var mousetrap = new Mousetrap(this.date[0]);
 
@@ -1901,7 +1899,6 @@ function eval_pyson(value){
 
     Sao.View.Form.DateTime = Sao.class_(Sao.View.Form.Date, {
         class_: 'form-datetime',
-        _width: '20em',
         _input: 'datetime-local',
         _input_format: '%Y-%m-%dT%H:%M:%S',
         _format: Sao.common.format_datetime,
@@ -1922,7 +1919,6 @@ function eval_pyson(value){
 
     Sao.View.Form.Time = Sao.class_(Sao.View.Form.Date, {
         class_: 'form-time',
-        _width: '10em',
         _input: 'time',
         _input_format: '%H:%M:%S',
         _format: Sao.common.format_time,

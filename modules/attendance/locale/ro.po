@@ -4,87 +4,88 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "field:attendance.line,at:"
 msgid "At"
-msgstr ""
+msgstr "La"
 
 msgctxt "field:attendance.line,company:"
 msgid "Company"
-msgstr ""
+msgstr "Companie"
 
 msgctxt "field:attendance.line,date:"
 msgid "Date"
-msgstr ""
+msgstr "Data"
 
 msgctxt "field:attendance.line,employee:"
 msgid "Employee"
-msgstr ""
+msgstr "Angajat"
 
 msgctxt "field:attendance.line,type:"
 msgid "Type"
-msgstr ""
+msgstr "Tip"
 
 msgctxt "field:attendance.period,company:"
 msgid "Company"
-msgstr ""
+msgstr "Compania"
 
 msgctxt "field:attendance.period,ends_at:"
 msgid "Ends at"
-msgstr ""
+msgstr "Se termină la"
 
 msgctxt "field:attendance.period,state:"
 msgid "State"
-msgstr ""
+msgstr "Stare"
 
 msgctxt "field:attendance.sheet,company:"
 msgid "Company"
-msgstr ""
+msgstr "Compania"
 
 msgctxt "field:attendance.sheet,date:"
 msgid "Date"
-msgstr ""
+msgstr "Data"
 
 msgctxt "field:attendance.sheet,duration:"
 msgid "Duration"
-msgstr ""
+msgstr "Durată"
 
 msgctxt "field:attendance.sheet,employee:"
 msgid "Employee"
-msgstr ""
+msgstr "Angajat"
 
 msgctxt "field:attendance.sheet,lines:"
 msgid "Lines"
-msgstr ""
+msgstr "Rânduri"
 
+#, fuzzy
 msgctxt "field:attendance.sheet,timesheet_duration:"
 msgid "Timesheet Duration"
-msgstr ""
+msgstr "Durata foii de pontaj"
 
 msgctxt "field:attendance.sheet.line,company:"
 msgid "Company"
-msgstr ""
+msgstr "Companie"
 
 msgctxt "field:attendance.sheet.line,date:"
 msgid "Date"
-msgstr ""
+msgstr "Data"
 
 msgctxt "field:attendance.sheet.line,duration:"
 msgid "Duration"
-msgstr ""
+msgstr "Durată"
 
 msgctxt "field:attendance.sheet.line,employee:"
 msgid "Employee"
-msgstr ""
+msgstr "Angajat"
 
 msgctxt "field:attendance.sheet.line,from_:"
 msgid "From"
-msgstr ""
+msgstr "De la"
 
 msgctxt "field:attendance.sheet.line,sheet:"
 msgid "Sheet"
-msgstr ""
+msgstr "Foaie"
 
 msgctxt "field:attendance.sheet.line,to:"
 msgid "To"
-msgstr ""
+msgstr "La"
 
 msgctxt "help:attendance.line,company:"
 msgid "The company which the employee attended."
@@ -92,23 +93,23 @@ msgstr ""
 
 msgctxt "help:attendance.period,company:"
 msgid "The company the period is associated with."
-msgstr ""
+msgstr "Compania cu care este asociată perioada."
 
 msgctxt "help:attendance.period,state:"
 msgid "The current state of the attendance period."
-msgstr ""
+msgstr "Starea actuală a perioadei de prezență."
 
 msgctxt "model:attendance.line,name:"
 msgid "Attendance Line"
-msgstr ""
+msgstr "Linia de prezență"
 
 msgctxt "model:attendance.period,name:"
 msgid "Attendance Period"
-msgstr ""
+msgstr "Perioada de prezență"
 
 msgctxt "model:attendance.sheet,name:"
 msgid "Attendance Sheet"
-msgstr ""
+msgstr "Fișa de prezență"
 
 msgctxt "model:attendance.sheet.line,name:"
 msgid "Attendance SheetLine"
@@ -116,7 +117,7 @@ msgstr ""
 
 msgctxt "model:ir.action,name:act_attendance"
 msgid "Attendances"
-msgstr ""
+msgstr "Prezențe"
 
 msgctxt "model:ir.action,name:act_period_list"
 msgid "Periods"
@@ -124,25 +125,34 @@ msgstr "Perioade"
 
 msgctxt "model:ir.action,name:act_sheet"
 msgid "Sheets"
-msgstr ""
+msgstr "Foi"
 
 msgctxt "model:ir.message,text:msg_close_period_previous_open"
 msgid "To close period \"%(period)s\" you must first close \"%(other_period)s\"."
 msgstr ""
+"Pentru a închide perioada \"%(period)s\" trebuie mai întâi închisă perioada "
+"\"%(other_period)s\"."
 
 msgctxt "model:ir.message,text:msg_delete_period_close"
 msgid "To delete attendance \"%(attendance)s\" you must reopen period \"%(period)s\"."
 msgstr ""
+"Pentru a șterge prezența \"%(attendance)s\" trebuie să redeschideți perioada"
+" \"%(period)s\"."
 
+#, fuzzy
 msgctxt "model:ir.message,text:msg_draft_period_previous_closed"
 msgid ""
 "To change period \"%(period)s\" you must first change \"%(other_period)s\" "
 "to draft."
 msgstr ""
+"Pentru a schimba perioada \"%(period)s\", trebuie ca mai întâi "
+"\"%(other_period)s\" să fie setată ca ciornă."
 
 msgctxt "model:ir.message,text:msg_modify_period_close"
 msgid "To modify attendance \"%(attendance)s\" you must reopen period \"%(period)s\"."
 msgstr ""
+"Pentru a modifica prezența \"%(attendance)s\" trebuie redeschisă perioada "
+"\"%(period)s\"."
 
 msgctxt "model:ir.model.button,string:period_close_button"
 msgid "Close"
@@ -154,15 +164,15 @@ msgstr "Draft"
 
 msgctxt "model:ir.rule.group,name:rule_group_attendance"
 msgid "Own attendance"
-msgstr ""
+msgstr "Prezența proprie"
 
 msgctxt "model:ir.rule.group,name:rule_group_attendance_admin"
 msgid "Any attendance"
-msgstr ""
+msgstr "Orice prezență"
 
 msgctxt "model:ir.rule.group,name:rule_group_attendance_companies"
 msgid "User in companies"
-msgstr ""
+msgstr "Utilizator în Companii"
 
 msgctxt "model:ir.rule.group,name:rule_group_period_companies"
 msgid "User in companies"
@@ -170,31 +180,31 @@ msgstr "Utilizator în companii"
 
 msgctxt "model:ir.rule.group,name:rule_group_sheet"
 msgid "Own attendance sheet"
-msgstr ""
+msgstr "Fișa de prezență proprie"
 
 msgctxt "model:ir.rule.group,name:rule_group_sheet_admin"
 msgid "Any attendance sheet"
-msgstr ""
+msgstr "Orice foaie de prezență"
 
 msgctxt "model:ir.rule.group,name:rule_group_sheet_companies"
 msgid "User in companies"
-msgstr ""
+msgstr "Utilizator în Companii"
 
 msgctxt "model:ir.rule.group,name:rule_group_sheet_line"
 msgid "Own attendance sheet line"
-msgstr ""
+msgstr "Rândul propriu pe foaia de prezență"
 
 msgctxt "model:ir.rule.group,name:rule_group_sheet_line_admin"
 msgid "Any attendance sheet line"
-msgstr ""
+msgstr "Orice rând pe foaia de prezență"
 
 msgctxt "model:ir.rule.group,name:rule_group_sheet_line_companies"
 msgid "User in companies"
-msgstr ""
+msgstr "Utilizator în Companii"
 
 msgctxt "model:ir.ui.menu,name:menu_attendance"
 msgid "Attendances"
-msgstr ""
+msgstr "Prezențe"
 
 msgctxt "model:ir.ui.menu,name:menu_configuration"
 msgid "Configuration"
@@ -202,7 +212,7 @@ msgstr "Configurare"
 
 msgctxt "model:ir.ui.menu,name:menu_main_attendance"
 msgid "Attendance"
-msgstr ""
+msgstr "Prezență"
 
 msgctxt "model:ir.ui.menu,name:menu_period_list"
 msgid "Periods"
@@ -210,36 +220,39 @@ msgstr "Perioade"
 
 msgctxt "model:ir.ui.menu,name:menu_sheet"
 msgid "Sheets"
-msgstr ""
+msgstr "Foi"
 
+#, fuzzy
 msgctxt "model:res.group,name:group_attendance_admin"
 msgid "Attendance Administration"
-msgstr ""
+msgstr "Administrarea prezenței"
 
+#, fuzzy
 msgctxt "selection:attendance.line,type:"
 msgid "In"
-msgstr ""
+msgstr "În"
 
+#, fuzzy
 msgctxt "selection:attendance.line,type:"
 msgid "Out"
-msgstr ""
+msgstr "Afară"
 
 msgctxt "selection:attendance.period,state:"
 msgid "Closed"
-msgstr ""
+msgstr "Închis"
 
 msgctxt "selection:attendance.period,state:"
 msgid "Draft"
-msgstr ""
+msgstr "Ciornă"
 
 msgctxt "view:attendance.line:"
 msgid "Date"
-msgstr ""
+msgstr "Data"
 
 msgctxt "view:attendance.line:"
 msgid "Time"
-msgstr ""
+msgstr "Timp"
 
 msgctxt "view:attendance.period:"
 msgid "Time"
-msgstr ""
+msgstr "Timp"

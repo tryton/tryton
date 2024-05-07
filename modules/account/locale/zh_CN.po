@@ -1147,6 +1147,11 @@ msgctxt "field:account.journal.open_cash.context,start_date:"
 msgid "Start Date"
 msgstr "开始日期"
 
+#, fuzzy
+msgctxt "field:account.journal.period,company:"
+msgid "Company"
+msgstr "公司"
+
 msgctxt "field:account.journal.period,icon:"
 msgid "Icon"
 msgstr "图标"
@@ -2329,11 +2334,8 @@ msgstr "强制此帐户的所有记账凭证都拥有这种第二货币。"
 
 msgctxt "help:account.account,taxes:"
 msgid ""
-"Default tax for manual encoding of move lines\n"
-"for journal types: \"expense\" and \"revenue\"."
+"Default taxes for documents to be applied when there is no other source."
 msgstr ""
-"记账凭证明细手动编码的默认税\n"
-"对于日记帐类型：“费用”和“收入”。"
 
 msgctxt "help:account.account,template_override:"
 msgid "Check to override template definition"
@@ -3347,11 +3349,6 @@ msgid ""
 " contains moves."
 msgstr "无法更改或者删除分期日记账 \"%(journal_period)s\"，因为它已经登记记账凭证."
 
-msgctxt "model:ir.message,text:msg_modify_delete_period_moves"
-msgid ""
-"You cannot modify or delete period \"%(period)s\" because it contains moves."
-msgstr "无法更改或者删除分期 \"%(period)s\"，因为它已经包含记账凭证."
-
 msgctxt "model:ir.message,text:msg_modify_line_closed_journal_period"
 msgid ""
 "You cannot add/modify/delete lines on closed journal-period "
@@ -3458,6 +3455,13 @@ msgctxt "model:ir.message,text:msg_period_fiscalyear_dates"
 msgid ""
 "The dates for period \"%(period)s\" must be between the dates of its fiscal "
 "year \"%(fiscalyear)s\"."
+msgstr "分期 \"%(period)s\" 的日期必须在会计年度 \"%(fiscalyear)s\" 的日期之间."
+
+#, fuzzy
+msgctxt "model:ir.message,text:msg_period_move_dates"
+msgid ""
+"The dates for period \"%(period)s\" must include the date \"%(move_date)s\" "
+"of move \"%(move)s\"."
 msgstr "分期 \"%(period)s\" 的日期必须在会计年度 \"%(fiscalyear)s\" 的日期之间."
 
 msgctxt "model:ir.message,text:msg_period_overlap"
@@ -3617,6 +3621,15 @@ msgctxt "model:ir.model.button,string:fiscalyear_reopen_button"
 msgid "Re-Open"
 msgstr "重新打开"
 
+#, fuzzy
+msgctxt "model:ir.model.button,string:journal_period_close_button"
+msgid "Close"
+msgstr "结账"
+
+msgctxt "model:ir.model.button,string:journal_period_reopen_button"
+msgid "Reopen"
+msgstr ""
+
 msgctxt "model:ir.model.button,string:move_post_button"
 msgid "Post"
 msgstr "登记入账"
@@ -3659,6 +3672,11 @@ msgid "User in companies"
 msgstr "公司用户"
 
 msgctxt "model:ir.rule.group,name:rule_group_general_ledger_line_companies"
+msgid "User in companies"
+msgstr "公司用户"
+
+#, fuzzy
+msgctxt "model:ir.rule.group,name:rule_group_journal_period_companies"
 msgid "User in companies"
 msgstr "公司用户"
 
@@ -4648,14 +4666,6 @@ msgstr "分期"
 msgctxt "view:account.fiscalyear:"
 msgid "Sequences"
 msgstr "序列"
-
-msgctxt "view:account.journal.period:"
-msgid "Close"
-msgstr "结账"
-
-msgctxt "view:account.journal.period:"
-msgid "Re-Open"
-msgstr "重新打开"
 
 msgctxt "view:account.move.line.reschedule.start:"
 msgid "every"

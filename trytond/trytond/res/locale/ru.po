@@ -514,19 +514,24 @@ msgctxt "model:res.user.warning,name:"
 msgid "User Warning"
 msgstr "Внимание Пользователь"
 
+msgctxt "report:res.user.email_reset_password:"
+msgid ""
+"Hello,\n"
+"                we have received a request to reset the password for the account associated with [1:%(login)s]. No changes have been made to your account yet.[2:]\n"
+"                You can connect with this temporary password [3:%(password)s] to[4:]\n"
+"                [5:tryton://%(host)s/%(database)s][6:]\n"
+"                [7:%(http_host)s/#%(database)s][8:]\n"
+"                You must set a new one from the user's preferences.[9:]"
+msgstr ""
+
+msgctxt "report:res.user.email_reset_password:"
+msgid "If you didn't make this request, you can safely ignore this email."
+msgstr ""
+
 #, fuzzy
 msgctxt "report:res.user.email_reset_password:"
 msgid "Reset Password"
 msgstr "Reset Password"
-
-msgctxt "report:res.user.email_reset_password:"
-msgid ""
-"The password for your account, [1:%(login)s], has been reset.[2:]\n"
-"                You must set a new one from the user's preferences.[3:]\n"
-"                You can connect with this temporary password [4:%(password)s] to[5:]\n"
-"                [6:tryton://%(host)s/%(database)s][7:]\n"
-"                [8:%(http_host)s/#%(database)s]"
-msgstr ""
 
 msgctxt "report:res.user.email_reset_password:"
 msgid "The password will expire in [1:%(datetime)s]."

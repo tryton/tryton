@@ -15,7 +15,7 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
         <record model="ir.action.wizard" id="wizard_stock_shipment_in_inspect_do">
-            <field name="name">Inspect Done</field>
+            <field name="name">Inspect Completion</field>
             <field name="wiz_name">quality.inspect</field>
             <field name="model">stock.shipment.in</field>
         </record>
@@ -71,7 +71,7 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
         <record model="ir.action.wizard" id="wizard_stock_shipment_out_return_inspect_do">
-            <field name="name">Inspect Done</field>
+            <field name="name">Inspect Completion</field>
             <field name="wiz_name">quality.inspect</field>
             <field name="model">stock.shipment.out.return</field>
         </record>
@@ -99,7 +99,7 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
         <record model="ir.action.wizard" id="wizard_stock_shipment_internal_inspect_do">
-            <field name="name">Inspect Done</field>
+            <field name="name">Inspect Completion</field>
             <field name="wiz_name">quality.inspect</field>
             <field name="model">stock.shipment.internal</field>
         </record>

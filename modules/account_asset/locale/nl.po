@@ -433,7 +433,7 @@ msgstr "In uitvoering"
 msgctxt "model:ir.message,text:msg_asset_delete_draft"
 msgid "You cannot delete asset \"%(asset)s\" because it is not in \"draft\" state."
 msgstr ""
-"U kunt activa \"% (asset)s\" niet verwijderen omdat het niet in status "
+"U kunt activa \"%(asset)s\" niet verwijderen omdat het niet in status "
 "\"concept\" staat."
 
 msgctxt "model:ir.message,text:msg_asset_draft_lines"

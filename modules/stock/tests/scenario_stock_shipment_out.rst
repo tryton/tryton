@@ -100,6 +100,7 @@ Add two shipment lines of same product::
     >>> shipment_out.number
     >>> shipment_out.picked_by
     >>> shipment_out.packed_by
+    >>> shipment_out.shipped_by
     >>> shipment_out.done_by
 
 Set the shipment state to waiting::
@@ -163,6 +164,7 @@ Ignore non assigned moves and pack shipment::
     [0.0, 1.0]
     >>> shipment_out.picked_by
     >>> shipment_out.packed_by
+    >>> shipment_out.shipped_by
     >>> shipment_out.done_by
 
     >>> picking_list = Report('stock.shipment.out.picking_list')
@@ -171,10 +173,12 @@ Ignore non assigned moves and pack shipment::
     >>> shipment_out.click('pick')
     >>> assertEqual(shipment_out.picked_by, employee)
     >>> shipment_out.packed_by
+    >>> shipment_out.shipped_by
     >>> shipment_out.done_by
 
     >>> shipment_out.click('pack')
     >>> assertEqual(shipment_out.packed_by, employee)
+    >>> shipment_out.shipped_by
     >>> shipment_out.done_by
     >>> [m.state for m in shipment_out.outgoing_moves]
     ['assigned']
@@ -187,6 +191,12 @@ Ignore non assigned moves and pack shipment::
 
     >>> delivery_note = Report('stock.shipment.out.delivery_note')
     >>> _ = delivery_note.execute([shipment_out])
+
+Set the state as Shipped::
+
+    >>> shipment_out.click('ship')
+    >>> assertEqual(shipment_out.shipped_by, employee)
+    >>> shipment_out.done_by
 
 Set the state as Done::
 

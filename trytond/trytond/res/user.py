@@ -1078,6 +1078,7 @@ class Warning_(ModelSQL, ModelView):
         return '%s.%s' % (hashlib.md5(key).hexdigest(), name)
 
     @classmethod
+    @without_check_access
     def check(cls, warning_name):
         transaction = Transaction()
         user = transaction.user

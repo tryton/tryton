@@ -64,6 +64,38 @@ this repository contains the full copyright notices and license terms. -->
             action="act_uom_category_form"
             sequence="20"
             id="menu_uom_category_form"/>
+
+        <record model="ir.model.access" id="access_uom">
+            <field name="model">product.uom</field>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_uom_admin">
+            <field name="model">product.uom</field>
+            <field name="group" ref="group_product_admin"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
+
+        <record model="ir.model.access" id="access_uom_category">
+            <field name="model">product.uom.category</field>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_uom_category_admin">
+            <field name="model">product.uom.category</field>
+            <field name="group" ref="group_product_admin"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
     </data>
     <data noupdate="1">
         <record model="product.uom.category" id="uom_cat_unit">
@@ -341,38 +373,5 @@ this repository contains the full copyright notices and license terms. -->
             <field name="factor" eval="3_600_000_000"/>
             <field name="rate" eval="round(1.0 / 3_600_000_000, 12)"/>
         </record>
-
-        <record model="ir.model.access" id="access_uom">
-            <field name="model">product.uom</field>
-            <field name="perm_read" eval="True"/>
-            <field name="perm_write" eval="False"/>
-            <field name="perm_create" eval="False"/>
-            <field name="perm_delete" eval="False"/>
-        </record>
-        <record model="ir.model.access" id="access_uom_admin">
-            <field name="model">product.uom</field>
-            <field name="group" ref="group_product_admin"/>
-            <field name="perm_read" eval="True"/>
-            <field name="perm_write" eval="True"/>
-            <field name="perm_create" eval="True"/>
-            <field name="perm_delete" eval="True"/>
-        </record>
-
-        <record model="ir.model.access" id="access_uom_category">
-            <field name="model">product.uom.category</field>
-            <field name="perm_read" eval="True"/>
-            <field name="perm_write" eval="False"/>
-            <field name="perm_create" eval="False"/>
-            <field name="perm_delete" eval="False"/>
-        </record>
-        <record model="ir.model.access" id="access_uom_category_admin">
-            <field name="model">product.uom.category</field>
-            <field name="group" ref="group_product_admin"/>
-            <field name="perm_read" eval="True"/>
-            <field name="perm_write" eval="True"/>
-            <field name="perm_create" eval="True"/>
-            <field name="perm_delete" eval="True"/>
-        </record>
-
     </data>
 </tryton>

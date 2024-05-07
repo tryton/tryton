@@ -1,3 +1,7 @@
+
+Version 7.2.0 - 2024-04-29
+--------------------------
+* Bug fixes (see mercurial logs for details)
 * Add countries for web shop
 * Support sale price list per web shop
 

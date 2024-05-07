@@ -31,6 +31,10 @@ msgid "disable thread usage"
 msgstr "desactiva l'ús de fils"
 
 #, python-format
+msgid "Invalid response id (%s) expected %s"
+msgstr "ID de resposta (%s) invàlido. S'esperava %s"
+
+#, python-format
 msgid "Unable to set locale %s"
 msgstr "No s'ha pogut establir l'idioma %s"
 
@@ -80,8 +84,8 @@ msgstr "No"
 msgid "Yes"
 msgstr "Si"
 
-msgid "Concurrency Exception"
-msgstr "Excepció de concurrència"
+msgid "Concurrency Warning"
+msgstr "Avís de concurrència"
 
 msgid "This record has been modified while you were editing it."
 msgstr "Aquest registre ha estat modificat mentre l'editàveu."
@@ -111,6 +115,9 @@ msgstr "Tanca"
 msgid "Application Error"
 msgstr "Error d'aplicació"
 
+msgid "Details"
+msgstr "Detalls"
+
 msgid "Report Bug"
 msgstr "Informa de l'error"
 
@@ -127,17 +134,34 @@ msgstr "Hi ha una nova versió disponible!"
 msgid "Download"
 msgstr "Baixa"
 
+msgid "Concurrency Exception"
+msgstr "Excepció de concurrència"
+
 msgid "Could not get a session."
 msgstr "No s'ha pogut obtenir una sessió."
+
+#, python-format
+msgid "Error: \"%s\". Try again later."
+msgstr "Error: \"%s\". Proveu-ho de nou més tard."
 
 msgid "Too many requests. Try again later."
 msgstr "Massa peticions. Proveu-ho de nou més tard."
 
-msgid "Not found."
-msgstr "No s'han trobat."
-
 msgid "Not Found."
 msgstr "No s'han trobat."
+
+msgid "Reset forgotten password"
+msgstr "Restableix la contrasenya"
+
+msgid "Send you an email to reset your password."
+msgstr "Reb un correu electrònic per restablir la teva contrasenya."
+
+msgid ""
+"A request to reset your password has been sent.\n"
+"Please check your mailbox."
+msgstr ""
+"S'ha enviat una sol·licitud per restablir la contrasenya.\n"
+"Si us plau, comproveu la vostra bústia de correu."
 
 msgid "..."
 msgstr "..."
@@ -711,6 +735,12 @@ msgstr "Model:"
 msgid "ID:"
 msgstr "Identificador:"
 
+msgid "Module:"
+msgstr "Mòdul:"
+
+msgid "XML ID:"
+msgstr "ID XML:"
+
 msgid "Created by:"
 msgstr "Creat per:"
 
@@ -995,7 +1025,7 @@ msgstr "Ha fallat la detecció"
 
 #, python-format
 msgid "Unknown column header \"%s\""
-msgstr "Capçalera de columan desconeguda: \"%s\""
+msgstr "Capçalera de columna desconeguda: \"%s\""
 
 msgid "Error"
 msgstr "Error"
@@ -1084,8 +1114,17 @@ msgstr "La mida de la imatge és massa gran."
 msgid "Copy"
 msgstr "Copia"
 
-msgid "Paste"
-msgstr "Enganxa"
+msgid "Copy Row"
+msgstr "Copia fila"
+
+msgid "Copy Rows"
+msgstr "Copia les files"
+
+msgid "Copy Column"
+msgstr "Copia columna"
+
+msgid "Paste Rows"
+msgstr "Enganxa files"
 
 msgid ".."
 msgstr ".."

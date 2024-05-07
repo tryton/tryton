@@ -30,6 +30,10 @@ msgid "disable thread usage"
 msgstr ""
 
 #, python-format
+msgid "Invalid response id (%s) expected %s"
+msgstr ""
+
+#, python-format
 msgid "Unable to set locale %s"
 msgstr "Nepavyko nustatyti lokalės %s"
 
@@ -79,7 +83,8 @@ msgstr "Ne"
 msgid "Yes"
 msgstr "Taip"
 
-msgid "Concurrency Exception"
+#, fuzzy
+msgid "Concurrency Warning"
 msgstr "Lygiagretaus duomenų rašymo klaida"
 
 msgid "This record has been modified while you were editing it."
@@ -110,6 +115,9 @@ msgstr "Užverti"
 msgid "Application Error"
 msgstr "Programos klaida"
 
+msgid "Details"
+msgstr ""
+
 msgid "Report Bug"
 msgstr "Pranešti apie klaidą"
 
@@ -127,20 +135,34 @@ msgstr "Yra prieinama nauja versija!"
 msgid "Download"
 msgstr "Atsisiųsti"
 
+msgid "Concurrency Exception"
+msgstr "Lygiagretaus duomenų rašymo klaida"
+
 #, fuzzy
 msgid "Could not get a session."
 msgstr "Nepavyko prisijungti prie serverio"
+
+#, python-format
+msgid "Error: \"%s\". Try again later."
+msgstr ""
 
 msgid "Too many requests. Try again later."
 msgstr ""
 
 #, fuzzy
-msgid "Not found."
-msgstr "Nerasta rezultatų."
-
-#, fuzzy
 msgid "Not Found."
 msgstr "Nerasta rezultatų."
+
+msgid "Reset forgotten password"
+msgstr ""
+
+msgid "Send you an email to reset your password."
+msgstr ""
+
+msgid ""
+"A request to reset your password has been sent.\n"
+"Please check your mailbox."
+msgstr ""
 
 msgid "..."
 msgstr "..."
@@ -731,6 +753,12 @@ msgstr "Modelis:"
 msgid "ID:"
 msgstr "ID:"
 
+msgid "Module:"
+msgstr ""
+
+msgid "XML ID:"
+msgstr ""
+
 #, fuzzy
 msgid "Created by:"
 msgstr "Sukūręs naudotojas"
@@ -1113,7 +1141,19 @@ msgstr "Paveikslėlis yra per didelis."
 msgid "Copy"
 msgstr "Kopijuoti"
 
-msgid "Paste"
+#, fuzzy
+msgid "Copy Row"
+msgstr "_Kopijuoti URL"
+
+#, fuzzy
+msgid "Copy Rows"
+msgstr "_Kopijuoti URL"
+
+msgid "Copy Column"
+msgstr ""
+
+#, fuzzy
+msgid "Paste Rows"
 msgstr "Įdėti"
 
 msgid ".."

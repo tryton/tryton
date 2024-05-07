@@ -30,6 +30,10 @@ msgid "disable thread usage"
 msgstr ""
 
 #, python-format
+msgid "Invalid response id (%s) expected %s"
+msgstr ""
+
+#, python-format
 msgid "Unable to set locale %s"
 msgstr "Ei saa seadistada lokaati %s"
 
@@ -79,7 +83,8 @@ msgstr "Ei"
 msgid "Yes"
 msgstr "Jah"
 
-msgid "Concurrency Exception"
+#, fuzzy
+msgid "Concurrency Warning"
 msgstr "Konkurentsi erand"
 
 msgid "This record has been modified while you were editing it."
@@ -110,6 +115,9 @@ msgstr "Sulge"
 msgid "Application Error"
 msgstr "Rakenduse viga"
 
+msgid "Details"
+msgstr ""
+
 msgid "Report Bug"
 msgstr "Teatvita veast"
 
@@ -127,20 +135,34 @@ msgstr "Uus versioon on saadaval!"
 msgid "Download"
 msgstr "Allalaadimine"
 
+msgid "Concurrency Exception"
+msgstr "Konkurentsi erand"
+
 #, fuzzy
 msgid "Could not get a session."
 msgstr "Ei saanud serveriga ühendust"
+
+#, python-format
+msgid "Error: \"%s\". Try again later."
+msgstr ""
 
 msgid "Too many requests. Try again later."
 msgstr ""
 
 #, fuzzy
-msgid "Not found."
-msgstr "Tulemusi ei leitud."
-
-#, fuzzy
 msgid "Not Found."
 msgstr "Tulemusi ei leitud."
+
+msgid "Reset forgotten password"
+msgstr ""
+
+msgid "Send you an email to reset your password."
+msgstr ""
+
+msgid ""
+"A request to reset your password has been sent.\n"
+"Please check your mailbox."
+msgstr ""
 
 msgid "..."
 msgstr "..."
@@ -729,6 +751,12 @@ msgstr "Mudel:"
 msgid "ID:"
 msgstr "ID"
 
+msgid "Module:"
+msgstr ""
+
+msgid "XML ID:"
+msgstr ""
+
 #, fuzzy
 msgid "Created by:"
 msgstr "Loomise kuupäev"
@@ -1115,7 +1143,19 @@ msgstr "Pilt on liiga suur."
 msgid "Copy"
 msgstr "Kopeeri"
 
-msgid "Paste"
+#, fuzzy
+msgid "Copy Row"
+msgstr "_Kopeeri URL"
+
+#, fuzzy
+msgid "Copy Rows"
+msgstr "_Kopeeri URL"
+
+msgid "Copy Column"
+msgstr ""
+
+#, fuzzy
+msgid "Paste Rows"
 msgstr "Aseta"
 
 msgid ".."

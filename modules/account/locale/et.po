@@ -1228,6 +1228,11 @@ msgctxt "field:account.journal.open_cash.context,start_date:"
 msgid "Start Date"
 msgstr "Alguskuupäev"
 
+#, fuzzy
+msgctxt "field:account.journal.period,company:"
+msgid "Company"
+msgstr "Ettevõte"
+
 msgctxt "field:account.journal.period,icon:"
 msgid "Icon"
 msgstr "Ikoon"
@@ -2467,14 +2472,10 @@ msgstr ""
 "Sunni kõigile selle konto kannetele \n"
 "see sekundaarne valuuta."
 
-#, fuzzy
 msgctxt "help:account.account,taxes:"
 msgid ""
-"Default tax for manual encoding of move lines\n"
-"for journal types: \"expense\" and \"revenue\"."
+"Default taxes for documents to be applied when there is no other source."
 msgstr ""
-"Vaikimisi maks käsikodeerimiseks kande ridadel \n"
-"registri tüüpidele: \"kulu\" ja \"müügitulu\"."
 
 msgctxt "help:account.account,template_override:"
 msgid "Check to override template definition"
@@ -3589,12 +3590,6 @@ msgstr ""
 "Ei saa muuta vi kustutada andmiku-perioodi \"%(andmiku-periood)e\" kuna "
 "selles on kandeid"
 
-msgctxt "model:ir.message,text:msg_modify_delete_period_moves"
-msgid ""
-"You cannot modify or delete period \"%(period)s\" because it contains moves."
-msgstr ""
-"Ei saa muuta või kustutada perioodi \"%(periood)e\" kuna sellel on kandeid."
-
 msgctxt "model:ir.message,text:msg_modify_line_closed_journal_period"
 msgid ""
 "You cannot add/modify/delete lines on closed journal-period "
@@ -3714,6 +3709,15 @@ msgctxt "model:ir.message,text:msg_period_fiscalyear_dates"
 msgid ""
 "The dates for period \"%(period)s\" must be between the dates of its fiscal "
 "year \"%(fiscalyear)s\"."
+msgstr ""
+"Perioodi \"%(perioodide) kuupäevad peavad olema majandusaasta "
+"\"%(majandusaastate)\" kuupäevade vahemikus"
+
+#, fuzzy
+msgctxt "model:ir.message,text:msg_period_move_dates"
+msgid ""
+"The dates for period \"%(period)s\" must include the date \"%(move_date)s\" "
+"of move \"%(move)s\"."
 msgstr ""
 "Perioodi \"%(perioodide) kuupäevad peavad olema majandusaasta "
 "\"%(majandusaastate)\" kuupäevade vahemikus"
@@ -3886,6 +3890,15 @@ msgctxt "model:ir.model.button,string:fiscalyear_reopen_button"
 msgid "Re-Open"
 msgstr "Ava uuesti"
 
+#, fuzzy
+msgctxt "model:ir.model.button,string:journal_period_close_button"
+msgid "Close"
+msgstr "Sulge"
+
+msgctxt "model:ir.model.button,string:journal_period_reopen_button"
+msgid "Reopen"
+msgstr ""
+
 msgctxt "model:ir.model.button,string:move_post_button"
 msgid "Post"
 msgstr "Postita"
@@ -3935,6 +3948,11 @@ msgstr "Kasutaja ettevõttes"
 
 #, fuzzy
 msgctxt "model:ir.rule.group,name:rule_group_general_ledger_line_companies"
+msgid "User in companies"
+msgstr "Kasutaja ettevõttes"
+
+#, fuzzy
+msgctxt "model:ir.rule.group,name:rule_group_journal_period_companies"
 msgid "User in companies"
 msgstr "Kasutaja ettevõttes"
 
@@ -4982,14 +5000,6 @@ msgstr "Perioodid"
 msgctxt "view:account.fiscalyear:"
 msgid "Sequences"
 msgstr "Järjestused"
-
-msgctxt "view:account.journal.period:"
-msgid "Close"
-msgstr "Sulge"
-
-msgctxt "view:account.journal.period:"
-msgid "Re-Open"
-msgstr "Taas-ava"
 
 msgctxt "view:account.move.line.reschedule.start:"
 msgid "every"

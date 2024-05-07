@@ -2,6 +2,50 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
+msgctxt "field:product.category,image_url:"
+msgid "Image URL"
+msgstr "URL de l'image"
+
+msgctxt "field:product.category,images:"
+msgid "Images"
+msgstr "Images"
+
+msgctxt "field:product.category.image,cache:"
+msgid "Cache"
+msgstr "Cache"
+
+msgctxt "field:product.category.image,category:"
+msgid "Category"
+msgstr "Catégorie"
+
+msgctxt "field:product.category.image,image:"
+msgid "Image"
+msgstr "Image"
+
+msgctxt "field:product.category.image,image_id:"
+msgid "Image ID"
+msgstr "ID de l'image"
+
+msgctxt "field:product.category.image.cache,category_image:"
+msgid "Category Image"
+msgstr "Image de catégorie"
+
+msgctxt "field:product.category.image.cache,height:"
+msgid "Height"
+msgstr "Hauteur"
+
+msgctxt "field:product.category.image.cache,image:"
+msgid "Image"
+msgstr "Image"
+
+msgctxt "field:product.category.image.cache,image_id:"
+msgid "Image ID"
+msgstr "ID de l'image"
+
+msgctxt "field:product.category.image.cache,width:"
+msgid "Width"
+msgstr "Largeur"
+
 msgctxt "field:product.image,cache:"
 msgid "Cache"
 msgstr "Cache"
@@ -22,6 +66,10 @@ msgctxt "field:product.image,template:"
 msgid "Product"
 msgstr "Produit"
 
+msgctxt "field:product.image.cache,height:"
+msgid "Height"
+msgstr "Hauteur"
+
 msgctxt "field:product.image.cache,image:"
 msgid "Image"
 msgstr "Image"
@@ -34,9 +82,9 @@ msgctxt "field:product.image.cache,product_image:"
 msgid "Product Image"
 msgstr "Image du produit"
 
-msgctxt "field:product.image.cache,size:"
-msgid "Size"
-msgstr "Taille"
+msgctxt "field:product.image.cache,width:"
+msgid "Width"
+msgstr "Largeur"
 
 msgctxt "field:product.product,image_url:"
 msgid "Image URL"
@@ -54,9 +102,17 @@ msgctxt "field:product.template,images:"
 msgid "Images"
 msgstr "Images"
 
-msgctxt "model:ir.message,text:msg_product_image_size_unique"
-msgid "The size of a product image must be unique."
-msgstr "La taille d'une image de produit doit être unique."
+msgctxt "model:ir.message,text:msg_image_cache_size_unique"
+msgid "The size of cached image must be unique."
+msgstr "La taille de l'image mise en cache doit être unique."
+
+msgctxt "model:product.category.image,name:"
+msgid "Category Image"
+msgstr "Image de catégorie"
+
+msgctxt "model:product.category.image.cache,name:"
+msgid "Category Image Cache"
+msgstr "Cache d'images de catégorie"
 
 msgctxt "model:product.image,name:"
 msgid "Product Image"

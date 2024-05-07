@@ -90,7 +90,6 @@ msgstr ""
 "La chiamata al servizio web Sendcloud non è fallita con il seguente messaggio di errore:\n"
 "%(message)s"
 
-#, fuzzy
 msgctxt "model:ir.message,text:msg_shipment_has_shipping_reference_number"
 msgid ""
 "You cannot create a shipping label for shipment \"%(shipment)s\" because it "

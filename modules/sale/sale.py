@@ -1440,7 +1440,7 @@ class SaleLine(TaxableMixin, sequence_ordered(), ModelSQL, ModelView):
     def default_type():
         return 'line'
 
-    @fields.depends('type')
+    @fields.depends('type', 'taxes')
     def on_change_type(self):
         if self.type != 'line':
             self.product = None
@@ -1478,7 +1478,7 @@ class SaleLine(TaxableMixin, sequence_ordered(), ModelSQL, ModelView):
         quantity = self._invoice_remaining_quantity
         if quantity is not None and self.quantity:
             progress = round((self.quantity - quantity) / self.quantity, 4)
-            progress = max(0, min(1, progress))
+            progress = max(0., min(1., progress))
         return progress
 
     @property
@@ -1519,7 +1519,7 @@ class SaleLine(TaxableMixin, sequence_ordered(), ModelSQL, ModelView):
         if quantity is not None and self.quantity:
             progress = round(
                 (abs(self.quantity) - quantity) / abs(self.quantity), 4)
-            progress = max(0, min(1, progress))
+            progress = max(0., min(1., progress))
         return progress
 
     @property
@@ -1567,7 +1567,7 @@ class SaleLine(TaxableMixin, sequence_ordered(), ModelSQL, ModelView):
         return context
 
     @fields.depends(
-        'sale', '_parent_sale.party', '_parent_sale.invoice_party',
+        'sale', 'taxes', '_parent_sale.party', '_parent_sale.invoice_party',
         methods=['compute_taxes', 'on_change_with_amount'])
     def on_change_sale(self):
         party = None
@@ -1576,7 +1576,8 @@ class SaleLine(TaxableMixin, sequence_ordered(), ModelSQL, ModelView):
         self.taxes = self.compute_taxes(party)
         self.amount = self.on_change_with_amount()
 
-    @fields.depends('product', 'unit', 'sale',
+    @fields.depends(
+        'product', 'unit', 'sale', 'taxes',
         '_parent_sale.party', '_parent_sale.invoice_party',
         methods=['compute_taxes', 'compute_unit_price',
             'on_change_with_amount'])

@@ -90,6 +90,14 @@ msgctxt "field:sale.opportunity,state:"
 msgid "State"
 msgstr "État"
 
+msgctxt "field:sale.opportunity.line,description:"
+msgid "Description"
+msgstr "Description"
+
+msgctxt "field:sale.opportunity.line,note:"
+msgid "Note"
+msgstr "Note"
+
 msgctxt "field:sale.opportunity.line,opportunity:"
 msgid "Opportunity"
 msgstr "Opportunité"
@@ -102,9 +110,17 @@ msgctxt "field:sale.opportunity.line,product:"
 msgid "Product"
 msgstr "Produit"
 
+msgctxt "field:sale.opportunity.line,product_uom_category:"
+msgid "Product UoM Category"
+msgstr "Catégorie d'UDM du produit"
+
 msgctxt "field:sale.opportunity.line,quantity:"
 msgid "Quantity"
 msgstr "Quantité"
+
+msgctxt "field:sale.opportunity.line,summary:"
+msgid "Summary"
+msgstr "Résumé"
 
 msgctxt "field:sale.opportunity.line,unit:"
 msgid "Unit"
@@ -134,6 +150,14 @@ msgctxt ""
 "field:sale.opportunity.reporting.conversion.employee.time_series,employee:"
 msgid "Employee"
 msgstr "Employé"
+
+msgctxt "help:sale.opportunity,address:"
+msgid ""
+"The default address for the invoice and shipment.\n"
+"Leave empty to use the default values."
+msgstr ""
+"L'adresse par défaut pour la facture et l'expédition.\n"
+"Laissez vide pour utiliser les valeurs par défaut."
 
 msgctxt "help:sale.opportunity,amount:"
 msgid "Estimated revenue amount."
@@ -433,6 +457,14 @@ msgstr "Mois"
 msgctxt "selection:sale.opportunity.reporting.context,period:"
 msgid "Year"
 msgstr "Année"
+
+msgctxt "view:sale.opportunity.line:"
+msgid "General"
+msgstr "Général"
+
+msgctxt "view:sale.opportunity.line:"
+msgid "Notes"
+msgstr "Notes"
 
 msgctxt "view:sale.opportunity.reporting.conversion:"
 msgid "%"

@@ -4,75 +4,76 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "field:account.budget,company:"
 msgid "Company"
-msgstr ""
+msgstr "Companie"
 
 msgctxt "field:account.budget,fiscalyear:"
 msgid "Fiscal Year"
-msgstr ""
+msgstr "An Fiscal"
 
 msgctxt "field:account.budget,lines:"
 msgid "Lines"
-msgstr ""
+msgstr "Randuri"
 
 msgctxt "field:account.budget,name:"
 msgid "Name"
-msgstr ""
+msgstr "Nume"
 
 msgctxt "field:account.budget,root_lines:"
 msgid "Lines"
-msgstr ""
+msgstr "Randuri"
 
 msgctxt "field:account.budget.context,budget:"
 msgid "Budget"
-msgstr ""
+msgstr "Buget"
 
 msgctxt "field:account.budget.context,fiscalyear:"
 msgid "Fiscal Year"
-msgstr ""
+msgstr "An Fiscal"
 
 msgctxt "field:account.budget.context,periods:"
 msgid "Periods"
-msgstr ""
+msgstr "Perioade"
 
+#, fuzzy
 msgctxt "field:account.budget.context,posted:"
 msgid "Posted"
-msgstr ""
+msgstr "Postat"
 
 msgctxt "field:account.budget.copy.start,company:"
 msgid "Company"
-msgstr ""
+msgstr "Companie"
 
 msgctxt "field:account.budget.copy.start,factor:"
 msgid "Factor"
-msgstr ""
+msgstr "Factor"
 
 msgctxt "field:account.budget.copy.start,fiscalyear:"
 msgid "Fiscal Year"
-msgstr ""
+msgstr "An Fiscal"
 
 msgctxt "field:account.budget.copy.start,name:"
 msgid "Name"
-msgstr ""
+msgstr "Nume"
 
 msgctxt "field:account.budget.line,account:"
 msgid "Account"
-msgstr ""
+msgstr "Cont"
 
 msgctxt "field:account.budget.line,account_type:"
 msgid "Account Type"
-msgstr ""
+msgstr "Tip de Cont"
 
 msgctxt "field:account.budget.line,actual_amount:"
 msgid "Actual Amount"
-msgstr ""
+msgstr "Suma Reala"
 
 msgctxt "field:account.budget.line,amount:"
 msgid "Amount"
-msgstr ""
+msgstr "Suma"
 
 msgctxt "field:account.budget.line,budget:"
 msgid "Budget"
-msgstr ""
+msgstr "Buget"
 
 msgctxt "field:account.budget.line,children:"
 msgid "Children"
@@ -80,23 +81,23 @@ msgstr ""
 
 msgctxt "field:account.budget.line,company:"
 msgid "Company"
-msgstr ""
+msgstr "Companie"
 
 msgctxt "field:account.budget.line,currency:"
 msgid "Currency"
-msgstr ""
+msgstr "Moneda"
 
 msgctxt "field:account.budget.line,current_name:"
 msgid "Current Name"
-msgstr ""
+msgstr "Denumirea Curenta"
 
 msgctxt "field:account.budget.line,left:"
 msgid "Left"
-msgstr ""
+msgstr "Stanga"
 
 msgctxt "field:account.budget.line,name:"
 msgid "Name"
-msgstr ""
+msgstr "Nume"
 
 msgctxt "field:account.budget.line,parent:"
 msgid "Parent"
@@ -108,63 +109,63 @@ msgstr ""
 
 msgctxt "field:account.budget.line,percentage:"
 msgid "Percentage"
-msgstr ""
+msgstr "Procentaj"
 
 msgctxt "field:account.budget.line,periods:"
 msgid "Periods"
-msgstr ""
+msgstr "Perioade"
 
 msgctxt "field:account.budget.line,right:"
 msgid "Right"
-msgstr ""
+msgstr "Dreapta"
 
 msgctxt "field:account.budget.line,total_amount:"
 msgid "Total Amount"
-msgstr ""
+msgstr "Suma Totala"
 
 msgctxt "field:account.budget.line.create_periods.start,method:"
 msgid "Method"
-msgstr ""
+msgstr "Metoda"
 
 msgctxt "field:account.budget.line.period,actual_amount:"
 msgid "Actual Amount"
-msgstr ""
+msgstr "Suma Reala"
 
 msgctxt "field:account.budget.line.period,budget_line:"
 msgid "Budget Line"
-msgstr ""
+msgstr "Rand de Buget"
 
 msgctxt "field:account.budget.line.period,currency:"
 msgid "Currency"
-msgstr ""
+msgstr "Moneda"
 
 msgctxt "field:account.budget.line.period,fiscalyear:"
 msgid "Fiscal Year"
-msgstr ""
+msgstr "An Fiscal"
 
 msgctxt "field:account.budget.line.period,percentage:"
 msgid "Percentage"
-msgstr ""
+msgstr "Procentaj"
 
 msgctxt "field:account.budget.line.period,period:"
 msgid "Period"
-msgstr ""
+msgstr "Perioada"
 
 msgctxt "field:account.budget.line.period,ratio:"
 msgid "Ratio"
-msgstr ""
+msgstr "Ratie"
 
 msgctxt "field:account.budget.line.period,total_amount:"
 msgid "Total Amount"
-msgstr ""
+msgstr "Suma Totala"
 
 msgctxt "help:account.budget,company:"
 msgid "The company that the budget is associated with."
-msgstr ""
+msgstr "Compania cu care este asociat bugetul."
 
 msgctxt "help:account.budget,fiscalyear:"
 msgid "The fiscal year the budget applies to."
-msgstr ""
+msgstr "Anul fiscal la care se aplica bugetul."
 
 msgctxt "help:account.budget.context,posted:"
 msgid "Only include posted moves."
@@ -172,43 +173,47 @@ msgstr ""
 
 msgctxt "help:account.budget.copy.start,factor:"
 msgid "The percentage to apply to the budget line amounts."
-msgstr ""
+msgstr "Procentul de aplicat la sumele rândului de buget."
 
 msgctxt "help:account.budget.copy.start,fiscalyear:"
 msgid "The fiscal year during which the new budget will apply."
-msgstr ""
+msgstr "Anul fiscal in cursul caruia se va aplica noul buget."
 
 msgctxt "help:account.budget.line,account:"
 msgid "The account the budget applies to."
-msgstr ""
+msgstr "Contul la care se aplica bugetul."
 
 msgctxt "help:account.budget.line,account_type:"
 msgid "The account type the budget applies to."
-msgstr ""
+msgstr "Tipul de cont la care se aplica bugetul."
 
+#, fuzzy
 msgctxt "help:account.budget.line,actual_amount:"
 msgid "The total amount booked against the budget line."
-msgstr ""
+msgstr "Suma totală înregistrată pe linia de buget."
 
 msgctxt "help:account.budget.line,amount:"
 msgid "The amount allocated to the budget line."
-msgstr ""
+msgstr "Suma alocata rândului de buget."
 
+#, fuzzy
 msgctxt "help:account.budget.line,children:"
 msgid "Used to add structure below the budget."
-msgstr ""
+msgstr "Folosit pentru a adauga structura sub buget."
 
+#, fuzzy
 msgctxt "help:account.budget.line,parent:"
 msgid "Used to add structure above the budget."
-msgstr ""
+msgstr "Folosit pentru a adauga structura peste buget."
 
+#, fuzzy
 msgctxt "help:account.budget.line,percentage:"
 msgid "The percentage of booked amount of the budget line."
-msgstr ""
+msgstr "Procentul sumei rezervate din linia de buget."
 
 msgctxt "help:account.budget.line,periods:"
 msgid "The periods that contain details of the budget."
-msgstr ""
+msgstr "Perioada care contine detalii despre buget."
 
 msgctxt "help:account.budget.line,total_amount:"
 msgid "The total amount allocated to the budget line and its children."
@@ -220,7 +225,7 @@ msgstr ""
 
 msgctxt "help:account.budget.line.period,budget_line:"
 msgid "The line that the budget period is part of."
-msgstr ""
+msgstr "Linia din care face parte perioada bugetară."
 
 msgctxt "help:account.budget.line.period,percentage:"
 msgid "The percentage of booked amount of the budget line."
@@ -228,7 +233,7 @@ msgstr ""
 
 msgctxt "help:account.budget.line.period,ratio:"
 msgid "The percentage allocated to the budget."
-msgstr ""
+msgstr "Procentajul alocat la buget."
 
 msgctxt "help:account.budget.line.period,total_amount:"
 msgid "The total amount allocated to the budget and its children."
@@ -236,15 +241,16 @@ msgstr ""
 
 msgctxt "model:account.budget,name:"
 msgid "Account Budget"
-msgstr ""
+msgstr "Buget Cont"
 
 msgctxt "model:account.budget.context,name:"
 msgid "Account Budget Context"
-msgstr ""
+msgstr "Context Buget Cont"
 
+#, fuzzy
 msgctxt "model:account.budget.copy.start,name:"
 msgid "Copy Budget"
-msgstr ""
+msgstr "Copiere Buget"
 
 msgctxt "model:account.budget.line,name:"
 msgid "Account Budget Line"
@@ -252,7 +258,7 @@ msgstr ""
 
 msgctxt "model:account.budget.line.create_periods.start,name:"
 msgid "Create Periods"
-msgstr ""
+msgstr "Creare Perioade"
 
 msgctxt "model:account.budget.line.period,name:"
 msgid "Account Budget Line Period"
@@ -260,112 +266,118 @@ msgstr ""
 
 msgctxt "model:ir.action,name:act_budget_form"
 msgid "Budgets"
-msgstr ""
+msgstr "Bugete"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_budget_line_form"
 msgid "Budget Lines"
-msgstr ""
+msgstr "Randuri de Buget"
 
 msgctxt "model:ir.action,name:act_budget_report"
 msgid "Budgets"
-msgstr ""
+msgstr "Bugete"
 
+#, fuzzy
 msgctxt "model:ir.action,name:wizard_budget_copy"
 msgid "Copy Budget"
-msgstr ""
+msgstr "Copiere Buget"
 
 msgctxt "model:ir.action,name:wizard_budget_line_create_periods"
 msgid "Create Periods"
-msgstr ""
+msgstr "Creare Perioade"
 
 msgctxt "model:ir.message,text:msg_budget_line_budget_account_type_unique"
 msgid "The account type must be unique for each budget."
-msgstr ""
+msgstr "Tipul de cont trebuie sa fie unic pentru fiecare buget."
 
 msgctxt "model:ir.message,text:msg_budget_line_budget_account_unique"
 msgid "The account must be unique for each budget."
-msgstr ""
+msgstr "Contul trebuie sa fie unic pentru fiecare buget."
 
 msgctxt ""
 "model:ir.message,text:msg_budget_line_period_budget_line_period_unique"
 msgid "The period must be unique for each budget line."
-msgstr ""
+msgstr "Perioada trebuie să fie unică pentru fiecare rând de buget."
 
 msgctxt "model:ir.message,text:msg_budget_line_period_ratio"
 msgid ""
 "The sum of period ratios for the budget line \"%(budget_line)s\" must be "
 "less or equal to 100%%."
 msgstr ""
+"Suma ratiilor perioadei pentru linia bugetară \"%(budget_line)s\" trebuie să"
+" fie mai mică sau egală cu 100%."
 
 msgctxt "model:ir.model.button,string:budget_copy_button"
 msgid "Copy"
-msgstr ""
+msgstr "Copiere"
 
 msgctxt "model:ir.model.button,string:budget_line_create_periods_button"
 msgid "Create Periods"
-msgstr ""
+msgstr "Creare Perioade"
 
+#, fuzzy
 msgctxt "model:ir.model.button,string:budget_update_lines_button"
 msgid "Update Lines"
-msgstr ""
+msgstr "Actualizare Randuri"
 
+#, fuzzy
 msgctxt "model:ir.rule.group,name:rule_group_budget_companies"
 msgid "User in companies"
-msgstr ""
+msgstr "Utilizator in companii"
 
 msgctxt "model:ir.ui.menu,name:menu_budget"
 msgid "Budgets"
-msgstr ""
+msgstr "Bugete"
 
 msgctxt "model:ir.ui.menu,name:menu_budget_form"
 msgid "Budgets"
-msgstr ""
+msgstr "Bugete"
 
 msgctxt "model:ir.ui.menu,name:menu_budget_report"
 msgid "Budgets"
-msgstr ""
+msgstr "Bugete"
 
 msgctxt "model:res.group,name:group_budget"
 msgid "Account Budget"
-msgstr ""
+msgstr "Buget Cont"
 
 msgctxt "selection:account.budget.line.create_periods.start,method:"
 msgid "Evenly"
-msgstr ""
+msgstr "Uniform"
 
 msgctxt "view:account.budget.copy.start:"
 msgid "%"
-msgstr ""
+msgstr "%"
 
 msgctxt "view:account.budget.line.period:"
 msgid "%"
-msgstr ""
+msgstr "%"
 
 msgctxt "view:account.budget.line:"
 msgid "%"
-msgstr ""
+msgstr "%"
 
 msgctxt "view:account.budget.line:"
 msgid "Name"
-msgstr ""
+msgstr "Nume"
 
 msgctxt "view:account.budget.line:"
 msgid "Name:"
-msgstr ""
+msgstr "Nume:"
 
 msgctxt "wizard_button:account.budget.copy,start,copy:"
 msgid "Copy"
-msgstr ""
+msgstr "Copiere"
 
 msgctxt "wizard_button:account.budget.copy,start,end:"
 msgid "Cancel"
-msgstr ""
+msgstr "Anulare"
 
 msgctxt ""
 "wizard_button:account.budget.line.create_periods,start,create_periods:"
 msgid "Create"
-msgstr ""
+msgstr "Creare"
 
 msgctxt "wizard_button:account.budget.line.create_periods,start,end:"
 msgid "Cancel"
-msgstr ""
+msgstr "Anulare"

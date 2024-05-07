@@ -127,7 +127,7 @@ msgstr "کلید های میانبر برگه"
 msgid "Unable to reach the server."
 msgstr "امکان دسترسی به سرور وجود ندارد."
 
-msgid "Too many requests. Try again later."
+msgid "Error: \"%1\". Try again later."
 msgstr ""
 
 msgid "Login"
@@ -143,7 +143,18 @@ msgstr "نام کاربری"
 msgid "Login with"
 msgstr "ورود"
 
+msgid "Too many requests. Try again later."
+msgstr ""
+
 msgid "Not found."
+msgstr ""
+
+msgid "Send you an email to reset your password."
+msgstr ""
+
+msgid ""
+"A request to reset your password has been sent.\n"
+"Please check your mailbox."
 msgstr ""
 
 msgid "Your selection:"
@@ -197,12 +208,6 @@ msgstr "t"
 msgid "False"
 msgstr "غلط"
 
-msgid "Message: "
-msgstr "پیام : "
-
-msgid "Warning: "
-msgstr "هشدار: "
-
 msgid "Always ignore this warning."
 msgstr "همیشه این هشدار را نادیده بگیرید."
 
@@ -212,13 +217,8 @@ msgstr "آیا می خواهید پردازش شود؟"
 msgid "No"
 msgstr "خیر"
 
-msgid "Confirmation: "
-msgstr "تأییدیه : "
-
-msgid "Concurrency Exception"
-msgstr "همزمانی استثنا"
-
-msgid "Write Concurrency Warning: "
+#, fuzzy
+msgid "Concurrency Warning"
 msgstr "نوشتن همزمانی هشدار: "
 
 msgid "This record has been modified while you were editing it."
@@ -248,6 +248,9 @@ msgstr "نوشتن بهرحال"
 
 msgid "Application Error"
 msgstr "خطای برنامه"
+
+msgid "Details"
+msgstr ""
 
 msgid "Report Bug"
 msgstr "گزارش باگ"
@@ -553,8 +556,9 @@ msgstr "%1%"
 msgid "Menu"
 msgstr ""
 
-msgid "Copy"
-msgstr ""
+#, fuzzy
+msgid "Copy Selected Rows"
+msgstr "پرونده بعدی"
 
 msgid "#ERROR"
 msgstr ""
@@ -618,6 +622,12 @@ msgstr "مدل : "
 
 msgid "ID:"
 msgstr "شناسه :"
+
+msgid "Module:"
+msgstr ""
+
+msgid "XML ID:"
+msgstr ""
 
 #, fuzzy
 msgid "Created by:"

@@ -1357,7 +1357,7 @@ class Line(sequence_ordered(), ModelSQL, ModelView):
     def default_type():
         return 'line'
 
-    @fields.depends('type')
+    @fields.depends('type', 'taxes')
     def on_change_type(self):
         if self.type != 'line':
             self.product = None
@@ -1400,7 +1400,7 @@ class Line(sequence_ordered(), ModelSQL, ModelView):
         quantity = self._invoice_remaining_quantity
         if quantity is not None and self.quantity:
             progress = round((self.quantity - quantity) / self.quantity, 4)
-            progress = max(0, min(1, progress))
+            progress = max(0., min(1., progress))
         return progress
 
     @property
@@ -1432,7 +1432,7 @@ class Line(sequence_ordered(), ModelSQL, ModelView):
         if quantity is not None and self.quantity:
             progress = round(
                 (abs(self.quantity) - quantity) / abs(self.quantity), 4)
-            progress = max(0, min(1, progress))
+            progress = max(0., min(1., progress))
         return progress
 
     def _get_tax_rule_pattern(self):
@@ -1474,7 +1474,8 @@ class Line(sequence_ordered(), ModelSQL, ModelView):
             }
 
     @fields.depends(
-        'purchase', '_parent_purchase.party', '_parent_purchase.invoice_party',
+        'purchase', 'taxes',
+        '_parent_purchase.party', '_parent_purchase.invoice_party',
         methods=['compute_taxes', 'on_change_with_amount'])
     def on_change_purchase(self):
         party = None
@@ -1483,7 +1484,8 @@ class Line(sequence_ordered(), ModelSQL, ModelView):
         self.taxes = self.compute_taxes(party)
         self.amount = self.on_change_with_amount()
 
-    @fields.depends('product', 'unit', 'purchase',
+    @fields.depends(
+        'product', 'unit', 'purchase', 'taxes',
         '_parent_purchase.party', '_parent_purchase.invoice_party',
         'product_supplier', methods=['compute_taxes', 'compute_unit_price',
             '_get_product_supplier_pattern'])

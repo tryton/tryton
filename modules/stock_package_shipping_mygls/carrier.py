@@ -1,9 +1,12 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
+from trytond.i18n import gettext
 from trytond.model import (
     MatchMixin, ModelSQL, ModelView, fields, sequence_ordered)
-from trytond.pool import PoolMeta
+from trytond.pool import Pool, PoolMeta
 from trytond.pyson import Eval, If
+
+from .exceptions import MyGLSCredentialWarning
 
 
 class CredentialMyGLS(sequence_ordered(), ModelSQL, ModelView, MatchMixin):
@@ -30,6 +33,22 @@ class CredentialMyGLS(sequence_ordered(), ModelSQL, ModelView, MatchMixin):
     @classmethod
     def default_server(cls):
         return 'testing'
+
+    @classmethod
+    def write(cls, *args):
+        pool = Pool()
+        Warning = pool.get('res.user.warning')
+        actions = iter(args)
+        for credentials, values in zip(actions, actions):
+            if ({'server', 'username', 'password', 'client_number'}
+                    & values.keys()):
+                warning_name = Warning.format('mygls_credential', credentials)
+                if Warning.check(warning_name):
+                    raise MyGLSCredentialWarning(
+                        warning_name,
+                        gettext('stock_package_shipping_mygls'
+                            '.msg_mygls_credential_modified'))
+        return super().write(*args)
 
 
 class Carrier(metaclass=PoolMeta):

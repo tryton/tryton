@@ -7,7 +7,6 @@ from gi.repository import Gtk
 import tryton.common as common
 from tryton.action import Action
 from tryton.config import CONFIG
-from tryton.exceptions import TrytonServerError
 from tryton.pyson import PYSONDecoder
 
 
@@ -209,7 +208,7 @@ class Link(StateMixin, Gtk.Button):
             if count > 99:
                 count = '99+'
             counter[idx] = count
-        except (common.RPCException, TrytonServerError):
+        except common.RPCException:
             pass
         self._set_label_counter(label, counter)
 

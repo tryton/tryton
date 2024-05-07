@@ -9,3 +9,11 @@ msgstr "SIRET"
 msgctxt "field:party.party,siren:"
 msgid "SIREN"
 msgstr "SIREN"
+
+msgctxt "help:company.company,footer:"
+msgid "- ${siren}\n"
+msgstr "- ${siren}\n"
+
+msgctxt "help:company.company,header:"
+msgid "- ${siren}\n"
+msgstr "- ${siren}\n"

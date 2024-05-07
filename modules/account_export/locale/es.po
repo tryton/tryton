@@ -1,0 +1,120 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:account.configuration,move_export_type:"
+msgid "Move Export Type"
+msgstr "Tipo de exportación de asientos"
+
+msgctxt "field:account.configuration.export,company:"
+msgid "Company"
+msgstr "Empresa"
+
+msgctxt "field:account.configuration.export,move_export_type:"
+msgid "Move Export Type"
+msgstr "Tipo de exportación de asientos"
+
+msgctxt "field:account.move,export:"
+msgid "Export"
+msgstr "Exportación"
+
+msgctxt "field:account.move.export,company:"
+msgid "Company"
+msgstr "Empresa"
+
+msgctxt "field:account.move.export,file:"
+msgid "File"
+msgstr "Archivo"
+
+msgctxt "field:account.move.export,file_id:"
+msgid "File ID"
+msgstr "Identificador del fichero"
+
+msgctxt "field:account.move.export,filename:"
+msgid "Filename"
+msgstr "Nombre del fichero"
+
+msgctxt "field:account.move.export,moves:"
+msgid "Moves"
+msgstr "Asientos"
+
+msgctxt "field:account.move.export,state:"
+msgid "State"
+msgstr "Estado"
+
+msgctxt "field:account.move.export,type:"
+msgid "Type"
+msgstr "Tipo"
+
+msgctxt "model:account.configuration.export,name:"
+msgid "Account Configuration Export"
+msgstr "Configuración exportaciones contables"
+
+msgctxt "model:account.move.export,name:"
+msgid "Account Move Export"
+msgstr "Exportación asientos contables"
+
+msgctxt "model:ir.action,name:act_account_move_export_form"
+msgid "Move Exports"
+msgstr "Exportaciones asientos"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_account_move_export_form_domain_all"
+msgid "All"
+msgstr "Todo"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_account_move_export_form_domain_draft"
+msgid "Draft"
+msgstr "Borrador"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_account_move_export_form_domain_waiting"
+msgid "Waiting"
+msgstr "En espera"
+
+msgctxt "model:ir.message,text:msg_account_move_export_delete_draft"
+msgid "To delete move export \"%(export)s\" you must reset it to draft."
+msgstr ""
+"Para eliminar la exportación de asientos \"%(export)s\" debes restablecerla "
+"a borrador."
+
+msgctxt "model:ir.model.button,string:account_move_export_do_button"
+msgid "Do"
+msgstr "Finalizar"
+
+msgctxt "model:ir.model.button,string:account_move_export_draft_button"
+msgid "Reset to Draft"
+msgstr "Restaurar a borrador"
+
+msgctxt "model:ir.model.button,string:account_move_export_select_moves_button"
+msgid "Select Moves"
+msgstr "Selecionar asientos"
+
+msgctxt "model:ir.model.button,string:account_move_export_wait_button"
+msgid "Wait"
+msgstr "En espera"
+
+msgctxt "model:ir.rule.group,name:rule_group_account_move_export_companies"
+msgid "User in companies"
+msgstr "Usuario en las empresas"
+
+msgctxt "model:ir.ui.menu,name:menu_account_move_export_form"
+msgid "Move Exports"
+msgstr "Exportación asientos"
+
+msgctxt "selection:account.move.export,state:"
+msgid "Done"
+msgstr "Finalizado"
+
+msgctxt "selection:account.move.export,state:"
+msgid "Draft"
+msgstr "Borrador"
+
+msgctxt "selection:account.move.export,state:"
+msgid "Waiting"
+msgstr "En espera"
+
+msgctxt "view:account.configuration:"
+msgid "Export"
+msgstr "Exportaciones"

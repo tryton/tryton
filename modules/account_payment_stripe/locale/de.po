@@ -408,7 +408,7 @@ msgstr ""
 msgctxt "model:ir.message,text:msg_stripe_receivable"
 msgid "To pay \"%(payment)s\", you cannot use a stripe journal \"%(journal)s\"."
 msgstr ""
-"\"(%payment)s\" kann nicht über das Stripe Journal \"%(journal)s\" bezahlt "
+"\"%(payment)s\" kann nicht über das Stripe Journal \"%(journal)s\" bezahlt "
 "werden."
 
 msgctxt "model:ir.model.button,confirm:account_new_identifier_button"

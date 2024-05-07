@@ -115,7 +115,7 @@ msgstr ""
 msgid "Unable to reach the server."
 msgstr ""
 
-msgid "Too many requests. Try again later."
+msgid "Error: \"%1\". Try again later."
 msgstr ""
 
 msgid "Login"
@@ -131,7 +131,18 @@ msgstr "Naudotojo vardas"
 msgid "Login with"
 msgstr "Prisijungti"
 
+msgid "Too many requests. Try again later."
+msgstr ""
+
 msgid "Not found."
+msgstr ""
+
+msgid "Send you an email to reset your password."
+msgstr ""
+
+msgid ""
+"A request to reset your password has been sent.\n"
+"Please check your mailbox."
 msgstr ""
 
 msgid "Your selection:"
@@ -185,12 +196,6 @@ msgstr "t"
 msgid "False"
 msgstr "Netiesa"
 
-msgid "Message: "
-msgstr ""
-
-msgid "Warning: "
-msgstr ""
-
 msgid "Always ignore this warning."
 msgstr "Daugiau nepaisyti šio pranešimo."
 
@@ -200,13 +205,8 @@ msgstr "Ar tikrai norite vykdyti?"
 msgid "No"
 msgstr "Ne"
 
-msgid "Confirmation: "
-msgstr ""
-
-msgid "Concurrency Exception"
-msgstr "Lygiagretaus duomenų rašymo klaida"
-
-msgid "Write Concurrency Warning: "
+#, fuzzy
+msgid "Concurrency Warning"
 msgstr "Lygiagretaus duomenų rašymo perspėjimas: "
 
 msgid "This record has been modified while you were editing it."
@@ -236,6 +236,9 @@ msgstr "Rašyti visvien"
 
 msgid "Application Error"
 msgstr "Programos klaida"
+
+msgid "Details"
+msgstr ""
 
 msgid "Report Bug"
 msgstr "Pranešti apie klaidą"
@@ -530,8 +533,9 @@ msgstr ""
 msgid "Menu"
 msgstr ""
 
-msgid "Copy"
-msgstr ""
+#, fuzzy
+msgid "Copy Selected Rows"
+msgstr "Pasirinkti įrašai"
 
 msgid "#ERROR"
 msgstr ""
@@ -594,6 +598,12 @@ msgstr ""
 
 msgid "ID:"
 msgstr "ID:"
+
+msgid "Module:"
+msgstr ""
+
+msgid "XML ID:"
+msgstr ""
 
 #, fuzzy
 msgid "Created by:"

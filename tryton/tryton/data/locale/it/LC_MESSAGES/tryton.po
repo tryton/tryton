@@ -31,6 +31,10 @@ msgid "disable thread usage"
 msgstr ""
 
 #, python-format
+msgid "Invalid response id (%s) expected %s"
+msgstr ""
+
+#, python-format
 msgid "Unable to set locale %s"
 msgstr "Impossibile impostare la localizzazione %s"
 
@@ -80,7 +84,8 @@ msgstr "No"
 msgid "Yes"
 msgstr "Sì"
 
-msgid "Concurrency Exception"
+#, fuzzy
+msgid "Concurrency Warning"
 msgstr "Eccezione di concorrenza"
 
 msgid "This record has been modified while you were editing it."
@@ -111,6 +116,9 @@ msgstr "Chiudi"
 msgid "Application Error"
 msgstr "Errore dell'applicazione"
 
+msgid "Details"
+msgstr ""
+
 msgid "Report Bug"
 msgstr "Segnala l'errore"
 
@@ -127,20 +135,34 @@ msgstr "Una nuova versione è disponibile!"
 msgid "Download"
 msgstr "Scarica"
 
+msgid "Concurrency Exception"
+msgstr "Eccezione di concorrenza"
+
 #, fuzzy
 msgid "Could not get a session."
 msgstr "Impossibile connettersi al server."
+
+#, fuzzy, python-format
+msgid "Error: \"%s\". Try again later."
+msgstr "Troppe richieste. Riprovare più tardi."
 
 msgid "Too many requests. Try again later."
 msgstr "Troppe richieste. Riprovare più tardi."
 
 #, fuzzy
-msgid "Not found."
-msgstr "Nessun risultato trovato."
-
-#, fuzzy
 msgid "Not Found."
 msgstr "Nessun risultato trovato."
+
+msgid "Reset forgotten password"
+msgstr ""
+
+msgid "Send you an email to reset your password."
+msgstr ""
+
+msgid ""
+"A request to reset your password has been sent.\n"
+"Please check your mailbox."
+msgstr ""
 
 msgid "..."
 msgstr "..."
@@ -724,6 +746,12 @@ msgstr "Modello:"
 msgid "ID:"
 msgstr "ID:"
 
+msgid "Module:"
+msgstr ""
+
+msgid "XML ID:"
+msgstr ""
+
 msgid "Created by:"
 msgstr "Creato da:"
 
@@ -1108,7 +1136,18 @@ msgstr ""
 msgid "Copy"
 msgstr ""
 
-msgid "Paste"
+#, fuzzy
+msgid "Copy Row"
+msgstr "_Copia URL"
+
+#, fuzzy
+msgid "Copy Rows"
+msgstr "_Copia URL"
+
+msgid "Copy Column"
+msgstr ""
+
+msgid "Paste Rows"
 msgstr ""
 
 msgid ".."

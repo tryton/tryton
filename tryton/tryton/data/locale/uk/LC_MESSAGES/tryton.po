@@ -27,6 +27,10 @@ msgid "disable thread usage"
 msgstr ""
 
 #, python-format
+msgid "Invalid response id (%s) expected %s"
+msgstr ""
+
+#, python-format
 msgid "Unable to set locale %s"
 msgstr "Неможливо встановити локалізацію %s"
 
@@ -76,7 +80,8 @@ msgstr "Ні"
 msgid "Yes"
 msgstr "Так"
 
-msgid "Concurrency Exception"
+#, fuzzy
+msgid "Concurrency Warning"
 msgstr "Виняток одночасного доступу"
 
 msgid "This record has been modified while you were editing it."
@@ -107,6 +112,9 @@ msgstr "Закрити"
 msgid "Application Error"
 msgstr "Помилка програми"
 
+msgid "Details"
+msgstr ""
+
 msgid "Report Bug"
 msgstr "Повідомити про помилку"
 
@@ -123,20 +131,34 @@ msgstr "Доступна нова версія!"
 msgid "Download"
 msgstr "Завантажити"
 
+msgid "Concurrency Exception"
+msgstr "Виняток одночасного доступу"
+
 #, fuzzy
 msgid "Could not get a session."
 msgstr "Не вдалося підключитися до сервера."
+
+#, fuzzy, python-format
+msgid "Error: \"%s\". Try again later."
+msgstr "Дуже багато запитів. Спробуйте ще раз пізніше."
 
 msgid "Too many requests. Try again later."
 msgstr "Дуже багато запитів. Спробуйте ще раз пізніше."
 
 #, fuzzy
-msgid "Not found."
-msgstr "Нічого не знайдено."
-
-#, fuzzy
 msgid "Not Found."
 msgstr "Нічого не знайдено."
+
+msgid "Reset forgotten password"
+msgstr ""
+
+msgid "Send you an email to reset your password."
+msgstr ""
+
+msgid ""
+"A request to reset your password has been sent.\n"
+"Please check your mailbox."
+msgstr ""
 
 msgid "..."
 msgstr "..."
@@ -716,6 +738,12 @@ msgstr "Модель:"
 msgid "ID:"
 msgstr "ID:"
 
+msgid "Module:"
+msgstr ""
+
+msgid "XML ID:"
+msgstr ""
+
 msgid "Created by:"
 msgstr "Ким створено:"
 
@@ -1090,7 +1118,19 @@ msgstr "Розмір зображення завеликий."
 msgid "Copy"
 msgstr "Копіювати"
 
-msgid "Paste"
+#, fuzzy
+msgid "Copy Row"
+msgstr "_Копіювати URL"
+
+#, fuzzy
+msgid "Copy Rows"
+msgstr "_Копіювати URL"
+
+msgid "Copy Column"
+msgstr ""
+
+#, fuzzy
+msgid "Paste Rows"
 msgstr "Вставити"
 
 msgid ".."

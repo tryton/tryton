@@ -192,8 +192,8 @@ msgid "Product"
 msgstr "Artikel"
 
 msgctxt "view:account.create_chart.properties:"
-msgid "Category"
-msgstr "Kategorie"
+msgid "Product"
+msgstr "Artikel"
 
 msgctxt "view:product.category:"
 msgid "Accounting"

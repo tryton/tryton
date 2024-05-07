@@ -113,7 +113,8 @@ msgstr "标签快捷方式"
 msgid "Unable to reach the server."
 msgstr "无法连接服务器."
 
-msgid "Too many requests. Try again later."
+#, fuzzy
+msgid "Error: \"%1\". Try again later."
 msgstr "请求太多，请稍后重试."
 
 msgid "Login"
@@ -128,8 +129,19 @@ msgstr "用户名"
 msgid "Login with"
 msgstr "登录"
 
+msgid "Too many requests. Try again later."
+msgstr "请求太多，请稍后重试."
+
 msgid "Not found."
 msgstr "无符合条件的数据."
+
+msgid "Send you an email to reset your password."
+msgstr ""
+
+msgid ""
+"A request to reset your password has been sent.\n"
+"Please check your mailbox."
+msgstr ""
 
 msgid "Your selection:"
 msgstr "已选择:"
@@ -182,12 +194,6 @@ msgstr "t"
 msgid "False"
 msgstr "假"
 
-msgid "Message: "
-msgstr "信息: "
-
-msgid "Warning: "
-msgstr "警告: "
-
 msgid "Always ignore this warning."
 msgstr "下次不再提示."
 
@@ -197,13 +203,8 @@ msgstr "继续此项操作 ?"
 msgid "No"
 msgstr "否"
 
-msgid "Confirmation: "
-msgstr "确认: "
-
-msgid "Concurrency Exception"
-msgstr "并行操作异常"
-
-msgid "Write Concurrency Warning: "
+#, fuzzy
+msgid "Concurrency Warning"
 msgstr "同步操作警告: "
 
 msgid "This record has been modified while you were editing it."
@@ -232,6 +233,9 @@ msgstr "覆写"
 
 msgid "Application Error"
 msgstr "程序错误"
+
+msgid "Details"
+msgstr ""
 
 msgid "Report Bug"
 msgstr "报告Bug"
@@ -521,8 +525,9 @@ msgstr "%1%"
 msgid "Menu"
 msgstr "菜单"
 
-msgid "Copy"
-msgstr "复制"
+#, fuzzy
+msgid "Copy Selected Rows"
+msgstr "已选记录"
 
 msgid "#ERROR"
 msgstr "#错误"
@@ -583,6 +588,12 @@ msgstr "模型:"
 
 msgid "ID:"
 msgstr "标识:"
+
+msgid "Module:"
+msgstr ""
+
+msgid "XML ID:"
+msgstr ""
 
 msgid "Created by:"
 msgstr "创建者:"

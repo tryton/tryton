@@ -179,10 +179,12 @@ class Payment(metaclass=PoolMeta):
 
     @classmethod
     def _account_type_domain(cls):
-        return If(Eval('kind') == 'receivable',
-            ('type.receivable', '=', True),
-            ('type.payable', '=', True),
-            )
+        return If(Eval('state') == 'draft',
+            If(Eval('kind') == 'receivable',
+                ('type.receivable', '=', True),
+                ('type.payable', '=', True),
+                ),
+            ())
 
     @fields.depends('party', 'kind', 'date')
     def on_change_party(self):

@@ -5,22 +5,23 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 #, fuzzy
 msgctxt "field:party.party,purchase_invoice_line_standalone:"
 msgid "Purchase Invoice Line Standalone"
-msgstr "Achiziție - Rând Factură Ignorată"
+msgstr "Rând Factură de Achiziție Independentă"
 
 #, fuzzy
 msgctxt "field:party.party,purchase_invoice_lines_standalone:"
 msgid "Purchase Invoice Lines Standalone"
-msgstr "Achiziție - Rând Factură Ignorată"
+msgstr "Rând Facturi de Achiziție Independente"
 
+#, fuzzy
 msgctxt "field:party.party.purchase_invoice_line_standalone,party:"
 msgid "Party"
-msgstr ""
+msgstr "Parte"
 
 #, fuzzy
 msgctxt ""
 "field:party.party.purchase_invoice_line_standalone,purchase_invoice_line_standalone:"
 msgid "Invoice Line Standalone"
-msgstr "Rânduri Factura Ignorate"
+msgstr "Rând Factură Independent"
 
 msgctxt "field:purchase.purchase,invoice_lines:"
 msgid "Invoice Lines"

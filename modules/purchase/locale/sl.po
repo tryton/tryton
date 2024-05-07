@@ -182,6 +182,11 @@ msgctxt "field:purchase.line,invoice_lines:"
 msgid "Invoice Lines"
 msgstr "Postavke računa"
 
+#, fuzzy
+msgctxt "field:purchase.line,invoice_progress:"
+msgid "Invoice Progress"
+msgstr "Plačnik"
+
 msgctxt "field:purchase.line,moves:"
 msgid "Moves"
 msgstr "Promet"
@@ -822,8 +827,8 @@ msgstr "V teku"
 #, fuzzy
 msgctxt "model:ir.message,text:msg_change_purchase_uom"
 msgid ""
-"You are trying to change the purchase unit of measurer on which the purchase"
-" prices are based."
+"You are trying to change the purchase unit of measure on which the purchase "
+"prices are based."
 msgstr ""
 "Poskušate spremeniti mersko enoto na podlagi katere so določene nabavne "
 "cene."
@@ -1392,9 +1397,18 @@ msgctxt "view:purchase.line:"
 msgid "General"
 msgstr "Splošno"
 
+#, fuzzy
+msgctxt "view:purchase.line:"
+msgid "Invoicing"
+msgstr "Račun"
+
 msgctxt "view:purchase.line:"
 msgid "Notes"
 msgstr "Zapiski"
+
+msgctxt "view:purchase.line:"
+msgid "Shipping"
+msgstr ""
 
 msgctxt "view:purchase.line:"
 msgid "Taxes"

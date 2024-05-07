@@ -1,5 +1,4 @@
 #
-#, fuzzy
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
@@ -9,15 +8,15 @@ msgstr ""
 
 msgctxt "field:account.consolidation,amount:"
 msgid "Amount"
-msgstr ""
+msgstr "Suma"
 
 msgctxt "field:account.consolidation,amount_cmp:"
 msgid "Amount"
-msgstr ""
+msgstr "Suma"
 
 msgctxt "field:account.consolidation,assets:"
 msgid "Assets"
-msgstr ""
+msgstr "Active"
 
 msgctxt "field:account.consolidation,children:"
 msgid "Children"
@@ -25,11 +24,11 @@ msgstr ""
 
 msgctxt "field:account.consolidation,currency:"
 msgid "Currency"
-msgstr ""
+msgstr "Moneda"
 
 msgctxt "field:account.consolidation,name:"
 msgid "Name"
-msgstr ""
+msgstr "Nume"
 
 msgctxt "field:account.consolidation,parent:"
 msgid "Parent"
@@ -41,27 +40,27 @@ msgstr ""
 
 msgctxt "field:account.consolidation,types:"
 msgid "Types"
-msgstr ""
+msgstr "Tipuri"
 
 msgctxt "field:account.consolidation.balance_sheet.context,companies:"
 msgid "Companies"
-msgstr ""
+msgstr "Companii"
 
 msgctxt "field:account.consolidation.balance_sheet.context,comparison:"
 msgid "Comparison"
-msgstr ""
+msgstr "Comparatie"
 
 msgctxt "field:account.consolidation.balance_sheet.context,currency:"
 msgid "Currency"
-msgstr ""
+msgstr "Moneda"
 
 msgctxt "field:account.consolidation.balance_sheet.context,date:"
 msgid "Date"
-msgstr ""
+msgstr "Data"
 
 msgctxt "field:account.consolidation.balance_sheet.context,date_cmp:"
 msgid "Date"
-msgstr ""
+msgstr "Data"
 
 msgctxt "field:account.consolidation.balance_sheet.context,posted:"
 msgid "Posted Moves"
@@ -69,35 +68,38 @@ msgstr ""
 
 msgctxt "field:account.consolidation.income_statement.context,companies:"
 msgid "Companies"
-msgstr ""
+msgstr "Companii"
 
 msgctxt "field:account.consolidation.income_statement.context,comparison:"
 msgid "Comparison"
-msgstr ""
+msgstr "Comparatie"
 
 msgctxt "field:account.consolidation.income_statement.context,currency:"
 msgid "Currency"
-msgstr ""
+msgstr "Moneda"
 
+#, fuzzy
 msgctxt "field:account.consolidation.income_statement.context,from_date:"
 msgid "From Date"
-msgstr ""
+msgstr "De la Data"
 
+#, fuzzy
 msgctxt "field:account.consolidation.income_statement.context,from_date_cmp:"
 msgid "From Date"
-msgstr ""
+msgstr "De la Data"
 
 msgctxt "field:account.consolidation.income_statement.context,posted:"
 msgid "Posted Moves"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:account.consolidation.income_statement.context,to_date:"
 msgid "To Date"
-msgstr ""
+msgstr "Pana in Prezent"
 
 msgctxt "field:account.consolidation.income_statement.context,to_date_cmp:"
 msgid "To Date"
-msgstr ""
+msgstr "Pana in Prezent"
 
 msgctxt "field:account.invoice,consolidation_company:"
 msgid "Consolidation Company"
@@ -169,7 +171,7 @@ msgstr ""
 
 msgctxt "report:account.consolidation.statement:"
 msgid "/"
-msgstr ""
+msgstr "/"
 
 msgctxt "report:account.consolidation.statement:"
 msgid "Balance Sheet"
@@ -177,23 +179,25 @@ msgstr "Bilanţ"
 
 msgctxt "report:account.consolidation.statement:"
 msgid "Companies:"
-msgstr ""
+msgstr "Companii:"
 
 msgctxt "report:account.consolidation.statement:"
 msgid "Date:"
-msgstr ""
+msgstr "Data:"
 
 msgctxt "report:account.consolidation.statement:"
 msgid "From Date:"
-msgstr ""
+msgstr "De la Data:"
 
+#, fuzzy
 msgctxt "report:account.consolidation.statement:"
 msgid "Income Statement"
-msgstr ""
+msgstr "Adeverinta de Venit"
 
+#, fuzzy
 msgctxt "report:account.consolidation.statement:"
 msgid "Print Date:"
-msgstr ""
+msgstr "Data Tiparirii:"
 
 msgctxt "report:account.consolidation.statement:"
 msgid "Statement"
@@ -205,11 +209,11 @@ msgstr ""
 
 msgctxt "report:account.consolidation.statement:"
 msgid "User:"
-msgstr ""
+msgstr "Utilizator:"
 
 msgctxt "report:account.consolidation.statement:"
 msgid "at"
-msgstr ""
+msgstr "la"
 
 msgctxt "selection:account.consolidation,statement:"
 msgid "Balance"
@@ -217,7 +221,7 @@ msgstr ""
 
 msgctxt "selection:account.consolidation,statement:"
 msgid "Income"
-msgstr ""
+msgstr "Venit"
 
 msgctxt "selection:account.consolidation,statement:"
 msgid "Off-Balance"
@@ -225,4 +229,4 @@ msgstr ""
 
 msgctxt "view:account.consolidation:"
 msgid "Comparison"
-msgstr ""
+msgstr "Comparatie"

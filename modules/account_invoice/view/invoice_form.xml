@@ -58,6 +58,10 @@ this repository contains the full copyright notices and license terms. -->
             <field name="account"/>
             <label name="accounting_date"/>
             <field name="accounting_date"/>
+            <label name="validated_by"/>
+            <field name="validated_by"/>
+            <label name="posted_by"/>
+            <field name="posted_by"/>
             <field name="alternative_payees" colspan="4"/>
             <label name="move"/>
             <field name="move"/>

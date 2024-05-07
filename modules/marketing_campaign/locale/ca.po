@@ -150,6 +150,38 @@ msgctxt "selection:sale.reporting.marketing.context,period:"
 msgid "Year"
 msgstr "Any"
 
+msgctxt "view:marketing.automation.activity:"
+msgid "Campaign"
+msgstr "Campanya"
+
+msgctxt "view:marketing.automation.activity:"
+msgid "Marketing Campaign"
+msgstr "Campanya de màrqueting"
+
+msgctxt "view:marketing.automation.activity:"
+msgid "Medium"
+msgstr "Medi"
+
+msgctxt "view:marketing.automation.activity:"
+msgid "Source"
+msgstr "Origen"
+
+msgctxt "view:marketing.email.message:"
+msgid "Campaign"
+msgstr "Campanya"
+
+msgctxt "view:marketing.email.message:"
+msgid "Marketing Campaign"
+msgstr "Campanya de màrqueting"
+
+msgctxt "view:marketing.email.message:"
+msgid "Medium"
+msgstr "Medi"
+
+msgctxt "view:marketing.email.message:"
+msgid "Source"
+msgstr "Origen"
+
 msgctxt "view:sale.opportunity.reporting.context:"
 msgid "Marketing Campaign"
 msgstr "Campanya de màrqueting"

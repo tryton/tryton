@@ -4,11 +4,11 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "field:account.account,receivable_rules:"
 msgid "Receivable Rules"
-msgstr ""
+msgstr "Reguli Client"
 
 msgctxt "field:account.account.receivable.rule,account:"
 msgid "Account"
-msgstr ""
+msgstr "Cont"
 
 msgctxt "field:account.account.receivable.rule,account_party_required:"
 msgid "Account Party Required"
@@ -16,23 +16,23 @@ msgstr ""
 
 msgctxt "field:account.account.receivable.rule,account_payable:"
 msgid "Account Payable"
-msgstr ""
+msgstr "Cont Furnizor"
 
 msgctxt "field:account.account.receivable.rule,account_receivable:"
 msgid "Account Receivable"
-msgstr ""
+msgstr "Cont Client"
 
 msgctxt "field:account.account.receivable.rule,accounts:"
 msgid "Accounts"
-msgstr ""
+msgstr "Conturi"
 
 msgctxt "field:account.account.receivable.rule,company:"
 msgid "Company"
-msgstr ""
+msgstr "Companie"
 
 msgctxt "field:account.account.receivable.rule,journal:"
 msgid "Journal"
-msgstr ""
+msgstr "Jurnal"
 
 msgctxt "field:account.account.receivable.rule,overflow_account:"
 msgid "Overflow Account"
@@ -40,20 +40,20 @@ msgstr ""
 
 msgctxt "field:account.account.receivable.rule,priorities:"
 msgid "Priorities"
-msgstr ""
+msgstr "Priorități"
 
 msgctxt "field:account.account.receivable.rule.account,account:"
 msgid "Account"
-msgstr ""
+msgstr "Cont"
 
 msgctxt ""
 "field:account.account.receivable.rule.account,account_party_required:"
 msgid "Account Party Required"
-msgstr ""
+msgstr "Parte este Necesară pentru Cont"
 
 msgctxt "field:account.account.receivable.rule.account,account_payable:"
 msgid "Account Payable"
-msgstr ""
+msgstr "Cont Furnizor"
 
 msgctxt "field:account.account.receivable.rule.account,account_receivable:"
 msgid "Account Receivable"
@@ -61,15 +61,15 @@ msgstr ""
 
 msgctxt "field:account.account.receivable.rule.account,company:"
 msgid "Company"
-msgstr ""
+msgstr "Companie"
 
 msgctxt "field:account.account.receivable.rule.account,only_reconcile:"
 msgid "Only Reconcile"
-msgstr ""
+msgstr "Doar Reconciliere"
 
 msgctxt "field:account.account.receivable.rule.account,rule:"
 msgid "Rule"
-msgstr ""
+msgstr "Regulă"
 
 msgctxt "help:account.account.receivable.rule,overflow_account:"
 msgid ""
@@ -77,9 +77,10 @@ msgid ""
 "Leave empty to keep it in the current account."
 msgstr ""
 
+#, fuzzy
 msgctxt "help:account.account.receivable.rule.account,only_reconcile:"
 msgid "Distribute only to fully reconcile."
-msgstr ""
+msgstr "Distribuiți numai pentru a reconcilia pe deplin."
 
 msgctxt "model:account.account.receivable.rule,name:"
 msgid "Account Receivable Rule"
@@ -95,32 +96,34 @@ msgstr ""
 
 msgctxt "model:ir.message,text:msg_account_unique"
 msgid "Only one active rule is allowed by account."
-msgstr ""
+msgstr "Este permisă o singură regulă activă pe cont."
 
 msgctxt "model:ir.message,text:msg_rule_account_unique"
 msgid "Only one account is allowed by rule."
-msgstr ""
+msgstr "Un singur cont este permis de regulă."
 
 msgctxt "model:ir.model.button,string:account_receivable_rule_apply_button"
 msgid "Apply"
-msgstr ""
+msgstr "Aplicare"
 
 msgctxt ""
 "model:ir.rule.group,name:rule_group_account_receivable_rule_companies"
 msgid "User in companies"
-msgstr ""
+msgstr "Utilizator în companii"
 
 msgctxt "model:ir.ui.menu,name:menu_account_receivable_rule_form"
 msgid "Account Receivable Rules"
-msgstr ""
+msgstr "Reguli Cont Client"
 
+#, fuzzy
 msgctxt "selection:account.account.receivable.rule,priorities:"
 msgid "Account, Maturity Date"
-msgstr ""
+msgstr "Cont, Data scadenței"
 
+#, fuzzy
 msgctxt "selection:account.account.receivable.rule,priorities:"
 msgid "Maturity Date, Account"
-msgstr ""
+msgstr "Data scadenței, cont"
 
 msgctxt "selection:ir.cron,method:"
 msgid "Apply Account Receivable Rules"

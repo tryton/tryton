@@ -220,9 +220,9 @@ class Rule(metaclass=PoolMeta):
         return context
 
     @classmethod
-    def _get_cache_key(cls, model_name):
-        key = super()._get_cache_key(model_name)
-        if model_name in {'res.user.warning', 'res.user.application'}:
+    def _get_cache_key(cls, model_names):
+        key = super()._get_cache_key(model_names)
+        if model_names & {'res.user.warning', 'res.user.application'}:
             key = (*key, Transaction().user)
         return key
 

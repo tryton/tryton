@@ -20,20 +20,17 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 msgid "Are your sure to leave?"
 msgstr "Czy na pewno wyjść?"
 
-#, fuzzy
 msgid "Incompatible version of the server."
-msgstr "Brak dostępu do serwera."
+msgstr "Niekompatybilna wersja serwera."
 
 msgid "Version mismatch"
-msgstr ""
+msgstr "Niezgodność wersji"
 
-#, fuzzy
 msgid "Could not connect to the server."
 msgstr "Brak dostępu do serwera."
 
-#, fuzzy
 msgid "Connection error"
-msgstr "Utworzył"
+msgstr "Błąd połączenia"
 
 msgid "Favorites"
 msgstr "Ulubione"
@@ -105,16 +102,16 @@ msgid "Show this help"
 msgstr "Wyświetl tę pomoc"
 
 msgid "Show/Hide access keys"
-msgstr ""
+msgstr "Pokaż/Ukryj klawisze dostępu"
 
 msgid "Help"
-msgstr ""
+msgstr "Pomoc"
 
 msgid "Close"
 msgstr "Zamknij"
 
 msgid "Documentation..."
-msgstr ""
+msgstr "Dokumentacja..."
 
 msgid "Keyboard shortcuts"
 msgstr "Skróty klawiszowe"
@@ -128,8 +125,8 @@ msgstr "Skróty kart"
 msgid "Unable to reach the server."
 msgstr "Brak dostępu do serwera."
 
-msgid "Too many requests. Try again later."
-msgstr "Za dużo połączeń. Spróbuj później."
+msgid "Error: \"%1\". Try again later."
+msgstr "Błąd: \"%1\". Spróbuj później."
 
 msgid "Login"
 msgstr "Login"
@@ -140,12 +137,24 @@ msgstr "Baza danych"
 msgid "User name"
 msgstr "Nazwa użytkownika"
 
-#, fuzzy
 msgid "Login with"
 msgstr "Login"
 
+msgid "Too many requests. Try again later."
+msgstr "Za dużo połączeń. Spróbuj później."
+
 msgid "Not found."
+msgstr "Nie znaleziono."
+
+msgid "Send you an email to reset your password."
+msgstr "Wyślij wiadomość, aby zresetować hasło."
+
+msgid ""
+"A request to reset your password has been sent.\n"
+"Please check your mailbox."
 msgstr ""
+"Żądanie zresetowania hasła zostało wysłane.\n"
+"Sprawdź skrzynkę pocztową."
 
 msgid "Your selection:"
 msgstr "Twoje zaznaczenie:"
@@ -198,12 +207,6 @@ msgstr "p"
 msgid "False"
 msgstr "Nie"
 
-msgid "Message: "
-msgstr "Wiadomość: "
-
-msgid "Warning: "
-msgstr "Ostrzeżenie: "
-
 msgid "Always ignore this warning."
 msgstr "Zawsze ignoruj takie ostrzeżenie."
 
@@ -213,14 +216,8 @@ msgstr "Czy chcesz kontynuować?"
 msgid "No"
 msgstr "Nie"
 
-msgid "Confirmation: "
-msgstr "Potwierdzenie: "
-
-msgid "Concurrency Exception"
-msgstr "Wyjątek równoczesnego zapisu danych"
-
-msgid "Write Concurrency Warning: "
-msgstr "Ostrzeżenie o równoczesnym zapisie danych: "
+msgid "Concurrency Warning"
+msgstr "Ostrzeżenie o równoczesnym zapisie danych"
 
 msgid "This record has been modified while you were editing it."
 msgstr "Ten rekord został zmodyfikowany w trakcie twojej edycji."
@@ -249,6 +246,9 @@ msgstr "Zapisz"
 msgid "Application Error"
 msgstr "Błąd aplikacji"
 
+msgid "Details"
+msgstr "Szczegóły"
+
 msgid "Report Bug"
 msgstr "Zgłoś błąd"
 
@@ -261,9 +261,8 @@ msgstr "Szukaj..."
 msgid "Create..."
 msgstr "Utwórz..."
 
-#, fuzzy
 msgid "Create \"%1\"..."
-msgstr "Utwórz..."
+msgstr "Utwórz \"%1\"..."
 
 msgid "Download"
 msgstr "Pobierz"
@@ -272,14 +271,13 @@ msgid "..."
 msgstr "..."
 
 msgid "Bold"
-msgstr ""
+msgstr "Pogrubienie"
 
 msgid "Italic"
-msgstr ""
+msgstr "Kursywa"
 
-#, fuzzy
 msgid "Underline"
-msgstr "Przywróć"
+msgstr "Podkreśl"
 
 msgid "Font"
 msgstr "Czcionka"
@@ -288,16 +286,16 @@ msgid "Size"
 msgstr "Rozmiar"
 
 msgid "Justify Right"
-msgstr ""
+msgstr "Wyrównaj do prawej"
 
 msgid "Justify Left"
-msgstr ""
+msgstr "Wyrównaj do lewej"
 
 msgid "Justify Center"
-msgstr ""
+msgstr "Wyśrodkuj"
 
 msgid "Justify Full"
-msgstr ""
+msgstr "Wyjustuj"
 
 msgid "Switch view"
 msgstr "Przełącz widok"
@@ -318,7 +316,7 @@ msgid "Reload"
 msgstr "Odśwież"
 
 msgid "View Logs..."
-msgstr "Pokaż dziennik..."
+msgstr "Przeglądaj logi..."
 
 msgid "Show revisions..."
 msgstr "Pokaż rewizje..."
@@ -388,9 +386,8 @@ msgstr "Musisz wybrać jeden rekord."
 msgid "Add..."
 msgstr "Dodaj..."
 
-#, fuzzy
 msgid "Preview"
-msgstr "Poprzedni"
+msgstr "Podgląd"
 
 msgid "Template"
 msgstr "Szablon"
@@ -468,7 +465,7 @@ msgid ":"
 msgstr ":"
 
 msgid "Scan"
-msgstr ""
+msgstr "Skanuj"
 
 msgid "Translate"
 msgstr "Przetłumacz"
@@ -527,9 +524,8 @@ msgstr "Wybierz..."
 msgid "Clear"
 msgstr "Wyczyść"
 
-#, fuzzy
 msgid "Open..."
-msgstr "Otwórz"
+msgstr "Otwórz..."
 
 msgid "Choose a language"
 msgstr "Wybierz język"
@@ -539,13 +535,13 @@ msgid "%1%"
 msgstr "%1%"
 
 msgid "Menu"
-msgstr ""
+msgstr "Menu"
 
-msgid "Copy"
-msgstr ""
+msgid "Copy Selected Rows"
+msgstr "Kopiuj wybrane rekordy"
 
 msgid "#ERROR"
-msgstr ""
+msgstr "#BŁĄD"
 
 msgid "More"
 msgstr "Więcej"
@@ -578,17 +574,16 @@ msgid "No action defined."
 msgstr "Brak zdefiniowanej akcji."
 
 msgid "Discard changes"
-msgstr ""
+msgstr "Odrzuć zmiany"
 
 msgid "Save and New"
-msgstr ""
+msgstr "Zapisz i utwórz nowy"
 
-#, fuzzy
 msgid "Add and New"
-msgstr "Dodaj nazwy pól"
+msgstr "Dodaj i utwórz nowy"
 
 msgid "Apply changes"
-msgstr ""
+msgstr "Zatwierdź zmiany"
 
 msgid "Attachments (%1)"
 msgstr "Załączniki (%1)"
@@ -596,16 +591,20 @@ msgstr "Załączniki (%1)"
 msgid "Notes (%1)"
 msgstr "Notatki (%1)"
 
-#, fuzzy
 msgid "Logs (%1)"
-msgstr "Notatki (%1)"
+msgstr "Logi (%1)"
 
-#, fuzzy
 msgid "Model:"
-msgstr "Model: "
+msgstr "Model:"
 
 msgid "ID:"
 msgstr "ID:"
+
+msgid "Module:"
+msgstr "Moduł:"
+
+msgid "XML ID:"
+msgstr "XML ID:"
 
 msgid "Created by:"
 msgstr "Utworzył:"
@@ -613,13 +612,11 @@ msgstr "Utworzył:"
 msgid "Created at:"
 msgstr "Data utworzenia:"
 
-#, fuzzy
 msgid "Last Modified by:"
-msgstr "Zmodyfikował"
+msgstr "Zmodyfikował:"
 
-#, fuzzy
 msgid "Last Modified at:"
-msgstr "Data modyfikacji"
+msgstr "Ostatnio zmodyfikowano:"
 
 msgid "Search %1"
 msgstr "Szukaj %1"
@@ -661,24 +658,22 @@ msgid "You must select an import file first."
 msgstr "Wybierz plik do zaimportowania."
 
 msgid "Detection failed"
-msgstr ""
+msgstr "Wykrycie nie powiodło się"
 
 msgid "Unknown column header \"%1\""
-msgstr ""
+msgstr "Nieznany nagłówek kolumny \"%1\""
 
 msgid "Error"
 msgstr "Błąd"
 
-#, fuzzy
 msgid "Import failed"
-msgstr "Importuj"
+msgstr "Import nie powiódł się"
 
-#, fuzzy
 msgid "%1 record imported"
 msgid_plural "%1 records imported"
-msgstr[0] "%1 (record name)"
-msgstr[1] "%1 (record name)"
-msgstr[2] "%1 (record name)"
+msgstr[0] "%1 rekord zaimportowano"
+msgstr[1] "%1 rekordy zaimportowano"
+msgstr[2] "%1 rekordów zaimportowano"
 
 msgid "CSV Export: %1"
 msgstr "Eksport do CSV: %1"
@@ -719,9 +714,8 @@ msgstr "%1 (string)"
 msgid "%1 (model name)"
 msgstr "%1 (model name)"
 
-#, fuzzy
 msgid "%1/Record Name"
-msgstr "%1 (record name)"
+msgstr "%1/Nazwa rekordu"
 
 msgid "What is the name of this export?"
 msgstr "Jaka jest nazwa tego eksportu?"
@@ -729,12 +723,11 @@ msgstr "Jaka jest nazwa tego eksportu?"
 msgid "Override %1 definition?"
 msgstr "Czy nadpisać definicję %1?"
 
-#, fuzzy
 msgid "%1 record saved"
 msgid_plural "%1 records saved"
-msgstr[0] "Rekord został zapisany."
-msgstr[1] "Rekord został zapisany."
-msgstr[2] "Rekord został zapisany."
+msgstr[0] "%1 rekord zapisano"
+msgstr[1] "%1 rekordy zapisano"
+msgstr[2] "%1 rekordów zapisano"
 
 msgid "E-mail %1"
 msgstr "E-mail %1"
@@ -758,23 +751,22 @@ msgid "Attachments"
 msgstr "Załączniki"
 
 msgid "Files"
-msgstr ""
+msgstr "Pliki"
 
 msgid "Send"
 msgstr "Wyślij"
 
-#, fuzzy
 msgid "Remove File"
-msgstr "Usuń"
+msgstr "Usuń plik"
 
 msgid "Code Scanner"
-msgstr ""
+msgstr "Skaner kodów"
 
 msgid "Code"
-msgstr ""
+msgstr "Kod"
 
 msgid "Toggle Sound"
-msgstr ""
+msgstr "Przełącz dźwięk"
 
 msgid "Wizard"
 msgstr "Kreator"

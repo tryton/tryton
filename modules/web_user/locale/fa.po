@@ -130,9 +130,19 @@ msgctxt "model:web.user.session,name:"
 msgid "Web User Session"
 msgstr "جلسه کاری کاربر وب"
 
+#, fuzzy
 msgctxt "report:web.user.email_reset_password:"
-msgid "Button is not working? Paste this into your browser:"
+msgid "Button not working? Paste this into your browser:"
 msgstr "دکمه کار نمی کند؟ این آدرس را در مرورگر خود مرور کنید:"
+
+msgctxt "report:web.user.email_reset_password:"
+msgid ""
+"Hello, we received a request to reset the password for the account associated with [1:%(email)s]. No changes have been made to your account yet.[2:]\n"
+"                You can reset your password by clicking the link below:[3:]\n"
+"                [4:\n"
+"                    Reset Password\n"
+"                ]"
+msgstr ""
 
 msgctxt "report:web.user.email_reset_password:"
 msgid "If you didn't make this request, you can ignore this email."
@@ -145,12 +155,6 @@ msgstr "بازنشانی کلمه عبور"
 msgctxt "report:web.user.email_reset_password:"
 msgid "The link will expire in [1:%(datetime)s]."
 msgstr ""
-
-#, fuzzy
-msgctxt "report:web.user.email_reset_password:"
-msgid ""
-"We received a request to reset the password for your account: %(email)s"
-msgstr "مایک درخواست برای بازنشانی کلمه عبور حساب کاربری شما دریافت کردیم،"
 
 msgctxt "report:web.user.email_validation:"
 msgid "%(email)s"

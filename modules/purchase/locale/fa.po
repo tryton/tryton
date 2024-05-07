@@ -196,6 +196,11 @@ msgctxt "field:purchase.line,invoice_lines:"
 msgid "Invoice Lines"
 msgstr "خطوط صورتحساب"
 
+#, fuzzy
+msgctxt "field:purchase.line,invoice_progress:"
+msgid "Invoice Progress"
+msgstr "آدرس صورتحساب"
+
 msgctxt "field:purchase.line,moves:"
 msgid "Moves"
 msgstr "جابجایی ها"
@@ -866,8 +871,8 @@ msgstr ""
 #, fuzzy
 msgctxt "model:ir.message,text:msg_change_purchase_uom"
 msgid ""
-"You are trying to change the purchase unit of measurer on which the purchase"
-" prices are based."
+"You are trying to change the purchase unit of measure on which the purchase "
+"prices are based."
 msgstr ""
 "شما در حال تلاش برای تغییرواحد قیمت خرید هستید، که قیمت خرید بر مبنای آن "
 "متکی است."
@@ -1451,9 +1456,18 @@ msgctxt "view:purchase.line:"
 msgid "General"
 msgstr "عمومی"
 
+#, fuzzy
+msgctxt "view:purchase.line:"
+msgid "Invoicing"
+msgstr "صورت حساب"
+
 msgctxt "view:purchase.line:"
 msgid "Notes"
 msgstr "یادداشت ها"
+
+msgctxt "view:purchase.line:"
+msgid "Shipping"
+msgstr ""
 
 msgctxt "view:purchase.line:"
 msgid "Taxes"

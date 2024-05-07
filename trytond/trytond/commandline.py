@@ -108,7 +108,8 @@ def get_parser_admin():
         metavar='MODULE',
         help="activate or update modules").completer = module_completer
     parser.add_argument(
-        "--indexes", dest="indexes", action=argparse.BooleanOptionalAction,
+        "--indexes", dest="indexes",
+        action=getattr(argparse, 'BooleanOptionalAction', 'store_true'),
         default=None, help="update indexes")
     parser.add_argument("--all", dest="update", action="append_const",
         const="ir", help="update all activated modules")

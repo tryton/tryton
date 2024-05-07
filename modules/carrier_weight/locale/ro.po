@@ -12,32 +12,32 @@ msgstr "Listă de prețuri"
 
 msgctxt "field:carrier,weight_uom:"
 msgid "Weight UoM"
-msgstr ""
-
-msgctxt "field:carrier.weight_price_list,carrier:"
-msgid "Carrier"
-msgstr ""
+msgstr "UM Greutate"
 
 #, fuzzy
+msgctxt "field:carrier.weight_price_list,carrier:"
+msgid "Carrier"
+msgstr "Transportator"
+
 msgctxt "field:carrier.weight_price_list,currency:"
 msgid "Currency"
-msgstr "Valută"
+msgstr "Monedă"
 
 msgctxt "field:carrier.weight_price_list,price:"
 msgid "Price"
-msgstr ""
+msgstr "Preț"
 
 msgctxt "field:carrier.weight_price_list,weight:"
 msgid "Weight"
-msgstr ""
+msgstr "Greutate"
 
 msgctxt "field:carrier.weight_price_list,weight_uom:"
 msgid "Weight UoM"
-msgstr ""
+msgstr "UM Greutate"
 
 msgctxt "help:carrier,weight_currency:"
 msgid "The currency of the price."
-msgstr ""
+msgstr "Moneda prețului."
 
 msgctxt "help:carrier,weight_price_list:"
 msgid ""
@@ -45,26 +45,30 @@ msgid ""
 "The first line for which the weight is greater is used.\n"
 "The line with weight of 0 is used as default price."
 msgstr ""
+"Adăugați prețul pe greutate la serviciul de transport.\n"
+"Se folosește primul rând pentru care greutatea este mai mare.\n"
+"Rândul cu greutatea 0 este utilizată ca preț implicit."
 
 msgctxt "help:carrier,weight_uom:"
 msgid "The Unit of Measure of weight criteria for the price list."
-msgstr ""
+msgstr "Unitatea de măsură a criteriilor de greutate pentru lista de prețuri."
 
 msgctxt "help:carrier.weight_price_list,carrier:"
 msgid "The carrier that the price list belongs to."
-msgstr ""
+msgstr "Transportatorul căruia îi aparține lista de prețuri."
 
+#, fuzzy
 msgctxt "help:carrier.weight_price_list,price:"
 msgid "The price of the carrier service."
-msgstr ""
+msgstr "Prețul serviciului de transportator."
 
 msgctxt "help:carrier.weight_price_list,weight:"
 msgid "The lower limit for the price."
-msgstr ""
+msgstr "Limita inferioară a prețului."
 
 msgctxt "help:carrier.weight_price_list,weight_uom:"
 msgid "The Unit of Measure of the weight."
-msgstr ""
+msgstr "Unitatea de măsură a greutății."
 
 msgctxt "model:carrier.weight_price_list,name:"
 msgid "Carrier Weight Price List"
@@ -72,4 +76,4 @@ msgstr ""
 
 msgctxt "selection:carrier,carrier_cost_method:"
 msgid "Weight"
-msgstr ""
+msgstr "Greutate"

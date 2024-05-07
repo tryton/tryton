@@ -108,6 +108,15 @@ msgid "State"
 msgstr "ສະຖານະ"
 
 #, fuzzy
+msgctxt "field:sale.opportunity.line,description:"
+msgid "Description"
+msgstr "ເນື້ອໃນລາຍການ"
+
+msgctxt "field:sale.opportunity.line,note:"
+msgid "Note"
+msgstr ""
+
+#, fuzzy
 msgctxt "field:sale.opportunity.line,opportunity:"
 msgid "Opportunity"
 msgstr "Opportunities"
@@ -121,10 +130,18 @@ msgctxt "field:sale.opportunity.line,product:"
 msgid "Product"
 msgstr "ຜະລິດຕະພັນ"
 
+msgctxt "field:sale.opportunity.line,product_uom_category:"
+msgid "Product UoM Category"
+msgstr ""
+
 #, fuzzy
 msgctxt "field:sale.opportunity.line,quantity:"
 msgid "Quantity"
 msgstr "ຈຳນວນ"
+
+msgctxt "field:sale.opportunity.line,summary:"
+msgid "Summary"
+msgstr ""
 
 #, fuzzy
 msgctxt "field:sale.opportunity.line,unit:"
@@ -160,6 +177,12 @@ msgctxt ""
 "field:sale.opportunity.reporting.conversion.employee.time_series,employee:"
 msgid "Employee"
 msgstr "ພະນັກງານ"
+
+msgctxt "help:sale.opportunity,address:"
+msgid ""
+"The default address for the invoice and shipment.\n"
+"Leave empty to use the default values."
+msgstr ""
 
 msgctxt "help:sale.opportunity,amount:"
 msgid "Estimated revenue amount."
@@ -493,6 +516,14 @@ msgstr "ເດືອນ"
 msgctxt "selection:sale.opportunity.reporting.context,period:"
 msgid "Year"
 msgstr "ປີ"
+
+msgctxt "view:sale.opportunity.line:"
+msgid "General"
+msgstr ""
+
+msgctxt "view:sale.opportunity.line:"
+msgid "Notes"
+msgstr ""
 
 #, fuzzy
 msgctxt "view:sale.opportunity.reporting.conversion:"

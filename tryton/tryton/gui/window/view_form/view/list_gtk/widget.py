@@ -23,7 +23,8 @@ from tryton.common.cellrenderertext import (
     CellRendererText, CellRendererTextCompletion)
 from tryton.common.cellrenderertoggle import CellRendererToggle
 from tryton.common.completion import get_completion, update_completion
-from tryton.common.datetime_ import CellRendererDate, CellRendererTime
+from tryton.common.datetime_ import (
+    CellRendererDate, CellRendererTime, date_parse)
 from tryton.common.domain_parser import quote
 from tryton.common.selection import (
     PopdownMixin, SelectionMixin, selection_shortcuts)
@@ -380,6 +381,14 @@ class GenericText(Cell):
         editable.connect('remove-widget', remove)
         return False
 
+    def get_editable(self, renderer):
+        if self.renderer == renderer:
+            return self.editable
+        for cell in self.prefixes + self.suffixes:
+            editable = cell.get_editable(renderer)
+            if editable:
+                return editable
+
 
 class Char(GenericText):
 
@@ -405,19 +414,19 @@ class Int(GenericText):
         self.symbol = attrs.get('symbol')
         self.grouping = bool(int(attrs.get('grouping', 1)))
         if self.symbol:
-            self.renderer_prefix = Symbol(view, attrs, 0)
-            self.renderer_suffix = Symbol(view, attrs, 1)
+            self._cell_prefix = Symbol(view, attrs, 0)
+            self._cell_suffix = Symbol(view, attrs, 1)
 
     @property
     def prefixes(self):
         if self.symbol:
-            return [self.renderer_prefix]
+            return [self._cell_prefix]
         return []
 
     @property
     def suffixes(self):
         if self.symbol:
-            return [self.renderer_suffix]
+            return [self._cell_suffix]
         return []
 
     @catch_errors()
@@ -497,6 +506,17 @@ class Date(GenericText):
         else:
             return ''
 
+    def value_from_text(self, record, text, callback=None):
+        if isinstance(text, str):
+            field = record[self.attrs['name']]
+            try:
+                # Use a datetime instance and rely on field to convert to the
+                # proper type
+                text = date_parse(text, self.get_format(record, field))
+            except (ValueError, OverflowError):
+                text = None
+        return super().value_from_text(record, text, callback=callback)
+
 
 class Time(Date):
 
@@ -558,20 +578,20 @@ class Binary(GenericText):
         super(Binary, self).__init__(view, attrs, renderer=renderer)
         self.renderer.set_property('editable', False)
         self.renderer.set_property('xalign', self.align)
-        self.renderer_save = _BinarySave(self)
-        self.renderer_select = _BinarySelect(self)
+        self._cell_save = _BinarySave(self)
+        self._cell_select = _BinarySelect(self)
         if self.attrs.get('filename'):
-            self.renderer_open = _BinaryOpen(self)
+            self._cell_open = _BinaryOpen(self)
         else:
-            self.renderer_open = None
+            self._cell_open = None
 
     @property
     def prefixes(self):
-        return filter(None, [self.renderer_open])
+        return filter(None, [self._cell_open])
 
     @property
     def suffixes(self):
-        return [self.renderer_save, self.renderer_select]
+        return [self._cell_save, self._cell_select]
 
     @catch_errors()
     def get_textual_value(self, record):
@@ -1247,11 +1267,11 @@ class Reference(M2O):
 
     def __init__(self, view, attrs, renderer=None):
         super(Reference, self).__init__(view, attrs, renderer=renderer)
-        self.renderer_selection = _ReferenceSelection(view, attrs)
+        self._cell_selection = _ReferenceSelection(view, attrs)
 
     @property
     def prefixes(self):
-        return [self.renderer_selection]
+        return [self._cell_selection]
 
     def get_model(self, record, field):
         value = field.get_client(record)
