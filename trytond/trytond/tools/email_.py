@@ -68,7 +68,7 @@ try:
             emailinfo = _validate_email(
                 email, check_deliverability=False,
                 test_environment=Pool.test)
-            return emailinfo.ascii_email
+            return emailinfo.ascii_email or emailinfo.normalized
         except EmailNotValidError:
             return email
 
