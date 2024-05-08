@@ -241,4 +241,14 @@ class Cron(DeactivableMixin, ModelSQL, ModelView):
             while transaction.tasks:
                 task_id = transaction.tasks.pop()
                 run_task(db_name, task_id)
+        for task_id in skip_task_ids:
+            if task_id < 0:
+                continue
+            with Transaction().start(db_name, 0) as transaction:
+                try:
+                    task = cls(task_id)
+                    task.next_call = task.compute_next_call(now)
+                    task.save()
+                except backend.DatabaseOperationalError:
+                    transaction.rollback()
         logger.info('cron finished for "%s"', db_name)
