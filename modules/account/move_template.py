@@ -55,8 +55,16 @@ class MoveTemplate(DeactivableMixin, ModelSQL, ModelView):
         move.company = self.company
         move.journal = self.journal
         if self.description:
-            move.description = self.description.format(
-                **dict(Keyword.format_values(self, values)))
+            try:
+                move.description = self.description.format(
+                    **dict(Keyword.format_values(self, values)))
+            except (KeyError, ValueError) as e:
+                raise MoveTemplateExpressionError(
+                    gettext(
+                        'account.msg_move_template_invalid_description',
+                        description=self.description,
+                        template=self.rec_name,
+                        error=e)) from e
         move.lines = [l.get_line(values) for l in self.lines]
 
         return move
