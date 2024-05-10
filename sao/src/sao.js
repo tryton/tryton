@@ -847,7 +847,7 @@ var Sao = {
         decoder = new Sao.PYSON.Decoder(Sao.Session.current_session.context);
         var action_ctx = decoder.decode(action.pyson_context || '{}');
         var domain = decoder.decode(action.pyson_domain);
-        var form = new Sao.Tab.Form(action.res_model, {
+        const screen = new Sao.Screen(action.res_model, {
             'mode': ['tree'],
             'view_ids': view_ids,
             'domain': domain,
@@ -856,11 +856,9 @@ var Sao = {
             'limit': null,
             'row_activate': Sao.main_menu_row_activate,
         });
-        Sao.main_menu_screen = form.screen;
-        Sao.main_menu_screen.switch_callback = null;
-        Sao.Tab.tabs.splice(Sao.Tab.tabs.indexOf(form), 1);
-        form.view_prm.done(function() {
-            var view = form.screen.current_view;
+        Sao.main_menu_screen = screen;
+        screen.switch_view().done(function() {
+            var view = screen.current_view;
             view.table.removeClass('table table-bordered');
             view.table.addClass('no-responsive');
             view.table.find('thead').hide();
@@ -870,11 +868,14 @@ var Sao = {
             jQuery('#global-search').append(gs.el);
             jQuery('#menu').empty();
             jQuery('#menu').append(
-                form.screen.screen_container.content_box.detach());
-            var column = new FavoriteColumn(form.screen.model.fields.favorite);
-            form.screen.views[0].table.find('> colgroup').append(column.col);
-            form.screen.views[0].table.find('> thead > tr').append(column.header);
-            form.screen.views[0].columns.push(column);
+                screen.screen_container.content_box.detach());
+            var column = new FavoriteColumn(screen.model.fields.favorite);
+            screen.views[0].table.find('> colgroup').append(column.col);
+            screen.views[0].table.find('> thead > tr').append(column.header);
+            screen.views[0].columns.push(column);
+
+            screen.search_filter();
+            screen.display(true);
         });
     };
     Sao.main_menu_screen = null;
