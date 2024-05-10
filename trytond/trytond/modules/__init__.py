@@ -162,6 +162,12 @@ def load_module_graph(graph, pool, update=None, lang=None, indexes=True):
             module2state.update(cursor)
         modules = set(modules)
 
+        new_modules = modules - module2state.keys()
+        if new_modules:
+            cursor.execute(*ir_module.insert(
+                    [ir_module.name, ir_module.state],
+                    [[m, 'not activated'] for m in new_modules]))
+
         for node in graph:
             module = node.name
             if module not in MODULES:
