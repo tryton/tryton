@@ -178,7 +178,7 @@ class Product(metaclass=PoolMeta):
                 if uom and product.default_uom.category == uom.category:
                     unit_price = Uom.compute_price(
                         product.default_uom, unit_price, uom)
-                else:
+                elif product.sale_uom:
                     unit_price = Uom.compute_price(
                         product.default_uom, unit_price, product.sale_uom)
             if currency and company and unit_price is not None:
