@@ -438,6 +438,11 @@
         }).on('show.bs.tab', function() {
             Sao.set_url(tab.get_url(), tab.name_long.split(' / ').pop());
             Sao.Tab.set_view_type(tab.current_view_type);
+        }).on('mousedown', function(evt) {
+            if (evt.which === 2) {
+                evt.preventDefault();
+                tab.close();
+            }
         })
         .append(jQuery('<button/>', {
             'class': 'close',
