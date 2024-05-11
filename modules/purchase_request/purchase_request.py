@@ -28,7 +28,7 @@ class PurchaseRequest(ModelSQL, ModelView):
     __name__ = 'purchase.request'
 
     product = fields.Many2One(
-        'product.product', "Product", readonly=True,
+        'product.product', "Product", readonly=True, ondelete='CASCADE',
         domain=[
             If((Eval('state') == 'draft')
                 & ~(Eval('quantity', 0) < 0),
