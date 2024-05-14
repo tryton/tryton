@@ -2272,10 +2272,13 @@ function eval_pyson(value){
             this.el = jQuery('<div/>', {
                 'class': this.class_
             });
+            this.group = jQuery('<div/>', {
+                'class': 'input-group',
+            }).appendTo(this.el);
             this.input = this.labelled = jQuery('<textarea/>', {
                 'class': 'form-control input-sm mousetrap',
                 'name': attributes.name,
-            }).appendTo(this.el);
+            }).appendTo(this.group);
             this.input.change(this.focus_out.bind(this));
             this.input.on('keydown', this.send_modified.bind(this));
             if (this.attributes.translate) {
@@ -2286,7 +2289,7 @@ function eval_pyson(value){
                     'title': Sao.i18n.gettext("Translate"),
                 }).appendTo(jQuery('<span/>', {
                     'class': 'input-group-btn'
-                }).appendTo(this.el));
+                }).appendTo(this.group));
                 button.append(
                     Sao.common.ICONFACTORY.get_icon_img('tryton-translate'));
                 button.click(this.translate.bind(this));
@@ -2362,13 +2365,16 @@ function eval_pyson(value){
                         'class': 'panel-heading',
                     }).appendTo(this.el));
             }
+            this.group = jQuery('<div/>', {
+                'class': 'input-group',
+            }).appendTo(jQuery('<div/>', {
+                'class': 'panel-body',
+            }).appendTo(this.el));
             this.input = this.labelled = jQuery('<div/>', {
                 'class': 'richtext mousetrap',
-                'contenteditable': true
-            }).appendTo(jQuery('<div/>', {
-                'class': 'panel-body'
-            }).appendTo(this.el));
-            this.el.focusout(this.focus_out.bind(this));
+                'contenteditable': true,
+            }).appendTo(this.group);
+            this.group.focusout(this.focus_out.bind(this));
             if (this.attributes.translate) {
                 var button = jQuery('<button/>', {
                     'class': 'btn btn-default btn-sm form-control',
@@ -2377,7 +2383,7 @@ function eval_pyson(value){
                     'title': Sao.i18n.gettext("Translate"),
                 }).appendTo(jQuery('<span/>', {
                     'class': 'input-group-btn',
-                }).appendTo(this.el));
+                }).appendTo(this.group));
                 button.append(
                     Sao.common.ICONFACTORY.get_icon_img('tryton-translate'));
                 button.click(this.translate.bind(this));
