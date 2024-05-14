@@ -48,3 +48,7 @@ class Image(metaclass=PoolMeta):
     __name__ = 'product.image'
 
     web_shop = fields.Boolean("Web Shop")
+
+    @classmethod
+    def allowed_match_keys(cls):
+        return super().allowed_match_keys() | {'web_shop'}
