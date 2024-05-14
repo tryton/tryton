@@ -20,6 +20,12 @@ class Configuration(
                 ('sequence_type', '=',
                     Id('production', 'sequence_type_production')),
                 ]))
+    bom_sequence = fields.Many2One(
+        'ir.sequence', "BOM Sequence",
+        domain=[
+            ('sequence_type', '=', Id('production', 'sequence_type_bom')),
+            ],
+        help="Used to generate the BOM code.")
 
     @classmethod
     def default_production_sequence(cls, **pattern):

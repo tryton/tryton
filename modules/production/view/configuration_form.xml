@@ -4,4 +4,6 @@ this repository contains the full copyright notices and license terms. -->
 <form>
     <label name="production_sequence"/>
     <field name="production_sequence"/>
+    <label name="bom_sequence"/>
+    <field name="bom_sequence"/>
 </form>

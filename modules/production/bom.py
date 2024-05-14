@@ -1,8 +1,12 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
+
+from sql.functions import CharLength
+
 from trytond.model import DeactivableMixin, ModelSQL, ModelView, fields
 from trytond.pool import Pool
 from trytond.pyson import Eval
+from trytond.tools import is_full_text, lstrip_wildcard
 from trytond.wizard import Button, StateView, Wizard
 
 
@@ -11,10 +15,61 @@ class BOM(DeactivableMixin, ModelSQL, ModelView):
     __name__ = 'production.bom'
 
     name = fields.Char('Name', required=True, translate=True)
+    code = fields.Char(
+        "Code",
+        states={
+            'readonly': Eval('code_readonly', False),
+            })
+    code_readonly = fields.Function(
+        fields.Boolean("Code Readonly"), 'get_code_readonly')
     inputs = fields.One2Many('production.bom.input', 'bom', 'Inputs')
     outputs = fields.One2Many('production.bom.output', 'bom', 'Outputs')
     output_products = fields.Many2Many('production.bom.output',
         'bom', 'product', 'Output Products')
+
+    @classmethod
+    def order_code(cls, tables):
+        table, _ = tables[None]
+        if cls.default_code_readonly():
+            return [CharLength(table.code), table.code]
+        else:
+            return [table.code]
+
+    @classmethod
+    def default_code_readonly(cls):
+        pool = Pool()
+        Configuration = pool.get('production.configuration')
+        config = Configuration(1)
+        return bool(config.bom_sequence)
+
+    def get_code_readonly(self, name):
+        return self.default_code_readonly()
+
+    @classmethod
+    def order_rec_name(cls, tables):
+        table, _ = tables[None]
+        return cls.order_code(tables) + [table.name]
+
+    def get_rec_name(self, name):
+        if self.code:
+            return '[' + self.code + '] ' + self.name
+        else:
+            return self.name
+
+    @classmethod
+    def search_rec_name(cls, name, clause):
+        _, operator, operand, *extra = clause
+        if operator.startswith('!') or operator.startswith('not '):
+            bool_op = 'AND'
+        else:
+            bool_op = 'OR'
+        code_value = operand
+        if operator.endswith('like') and is_full_text(operand):
+            code_value = lstrip_wildcard(operand)
+        return [bool_op,
+            ('name', operator, operand, *extra),
+            ('code', operator, code_value, *extra),
+            ]
 
     def compute_factor(self, product, quantity, unit):
         '''
@@ -32,11 +87,29 @@ class BOM(DeactivableMixin, ModelSQL, ModelView):
             return 0
 
     @classmethod
+    def _new_code(cls):
+        pool = Pool()
+        Configuration = pool.get('production.configuration')
+        config = Configuration(1)
+        sequence = config.bom_sequence
+        if sequence:
+            return sequence.get()
+
+    @classmethod
+    def create(cls, vlist):
+        vlist = [v.copy() for v in vlist]
+        for values in vlist:
+            if not values.get('code'):
+                values['code'] = cls._new_code()
+        return super().create(vlist)
+
+    @classmethod
     def copy(cls, records, default=None):
         if default is None:
             default = {}
         else:
             default = default.copy()
+        default.setdefault('code', None)
         default.setdefault('output_products', None)
         return super(BOM, cls).copy(records, default=default)
 
