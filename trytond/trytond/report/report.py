@@ -48,10 +48,10 @@ try:
 except ImportError:
     qrcode = None
 
-warnings.simplefilter("ignore")
-import relatorio.reporting  # noqa: E402
+with warnings.catch_warnings():
+    warnings.simplefilter("ignore")
+    import relatorio.reporting  # noqa: E402
 
-warnings.resetwarnings()
 try:
     from relatorio.templates.opendocument import MANIFEST, Manifest
 except ImportError:
