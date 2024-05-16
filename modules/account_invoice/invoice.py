@@ -767,41 +767,47 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin, InvoiceReportMixin):
             return max(r.date for r in reconciliations)
 
     @classmethod
-    def get_lines_to_pay(cls, invoices, name):
+    def _query_lines_to_pay(cls, invoices):
         pool = Pool()
         MoveLine = pool.get('account.move.line')
         AdditionalMove = pool.get('account.invoice-additional-account.move')
         line = MoveLine.__table__()
         invoice = cls.__table__()
         additional_move = AdditionalMove.__table__()
-        cursor = Transaction().connection.cursor()
 
+        red_sql = reduce_ids(invoice.id, invoices)
+        query = (invoice
+            .join(line,
+                condition=((invoice.move == line.move)
+                    & (invoice.account == line.account)))
+            .select(
+                invoice.id.as_('invoice'),
+                line.id.as_('line'),
+                line.maturity_date.as_('maturity_date'),
+                where=red_sql))
+        query |= (invoice
+            .join(additional_move,
+                condition=additional_move.invoice == invoice.id)
+            .join(line,
+                condition=((additional_move.move == line.move)
+                    & (invoice.account == line.account)))
+            .select(
+                invoice.id.as_('invoice'),
+                line.id.as_('line'),
+                line.maturity_date.as_('maturity_date'),
+                where=red_sql))
+        return query
+
+    @classmethod
+    def get_lines_to_pay(cls, invoices, name):
+        cursor = Transaction().connection.cursor()
         lines = defaultdict(list)
-        for sub_ids in grouped_slice(invoices):
-            red_sql = reduce_ids(invoice.id, sub_ids)
-            query = (invoice
-                .join(line,
-                    condition=((invoice.move == line.move)
-                        & (invoice.account == line.account)))
-                .select(
-                    invoice.id.as_('invoice'),
-                    line.id.as_('line'),
-                    line.maturity_date.as_('maturity_date'),
-                    where=red_sql))
-            query |= (invoice
-                .join(additional_move,
-                    condition=additional_move.invoice == invoice.id)
-                .join(line,
-                    condition=((additional_move.move == line.move)
-                        & (invoice.account == line.account)))
-                .select(
-                    invoice.id.as_('invoice'),
-                    line.id.as_('line'),
-                    line.maturity_date.as_('maturity_date'),
-                    where=red_sql))
-            cursor.execute(*query.select(
-                    query.invoice, query.line,
-                    order_by=query.maturity_date.nulls_last))
+        for sub_invoices in grouped_slice(invoices):
+            query = cls._query_lines_to_pay(sub_invoices)
+            query = query.select(
+                query.invoice, query.line,
+                order_by=query.maturity_date.nulls_last)
+            cursor.execute(*query)
             for invoice_id, line_id in cursor:
                 lines[invoice_id].append(line_id)
         return lines
