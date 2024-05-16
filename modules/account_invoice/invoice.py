@@ -784,6 +784,7 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin, InvoiceReportMixin):
                 invoice.id.as_('invoice'),
                 line.id.as_('line'),
                 line.maturity_date.as_('maturity_date'),
+                line.reconciliation.as_('reconciliation'),
                 where=red_sql))
         query |= (invoice
             .join(additional_move,
@@ -795,6 +796,7 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin, InvoiceReportMixin):
                 invoice.id.as_('invoice'),
                 line.id.as_('line'),
                 line.maturity_date.as_('maturity_date'),
+                line.reconciliation.as_('reconciliation'),
                 where=red_sql))
         return query
 
@@ -812,17 +814,37 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin, InvoiceReportMixin):
                 lines[invoice_id].append(line_id)
         return lines
 
-    def get_reconciliation_lines(self, name):
-        if not self.move:
-            return
-        lines = set()
-        for move in chain([self.move], self.additional_moves):
-            for line in move.lines:
-                if line.account == self.account and line.reconciliation:
-                    for line in line.reconciliation.lines:
-                        if line not in self.lines_to_pay:
-                            lines.add(line)
-        return [l.id for l in sorted(lines, key=lambda l: l.date)]
+    @classmethod
+    def get_reconciliation_lines(cls, invoices, name):
+        pool = Pool()
+        Line = pool.get('account.move.line')
+        Move = pool.get('account.move')
+        line = Line.__table__()
+        move = Move.__table__()
+        cursor = Transaction().connection.cursor()
+        lines = defaultdict(list)
+        for sub_invoices in grouped_slice(invoices):
+            sub_invoices = list(sub_invoices)
+            lines_to_pay = cls._query_lines_to_pay(sub_invoices)
+            query = cls._query_lines_to_pay(sub_invoices)
+            query = (
+                query
+                .join(line,
+                    condition=query.reconciliation == line.reconciliation)
+                .join(move, condition=line.move == move.id)
+                .select(
+                    query.invoice, line.id,
+                    where=~Exists(
+                        lines_to_pay.select(
+                            lines_to_pay.line,
+                            where=(lines_to_pay.invoice == query.invoice)
+                            & (lines_to_pay.line == line.id))),
+                    group_by=[query.invoice, line.id, move.date],
+                    order_by=move.date.asc))
+            cursor.execute(*query)
+            for invoice_id, line_id in cursor:
+                lines[invoice_id].append(line_id)
+        return lines
 
     @classmethod
     def get_amount_to_pay(cls, invoices, name):
