@@ -342,6 +342,18 @@ Char
       The database backend must support full text search otherwise ``ilike`` is
       always used.
 
+Instance methods:
+
+.. method:: Char.translated([name])
+
+   Returns a descriptor to a method that returns the translated value of the
+   field.
+   If no lanaguage code is provided when calling the method, the
+   :attr:`trytond.transaction.Transaction.language` is used.
+
+   The descriptor must be used on the same class as the field.
+
+
 Text
 ----
 
@@ -367,6 +379,12 @@ Text
 
    Same as :attr:`Char.search_full_text`.
    The default value is ``True``.
+
+Instance methods:
+
+.. method:: Text.translated([name])
+
+   Same as :meth:`Char.translated`.
 
 FullText
 --------

@@ -644,6 +644,36 @@ class FieldCharTranslatedTestCase(unittest.TestCase, CommonTestCaseMixin):
 
             self.assertEqual(char.char, "bar")
 
+    @with_transaction()
+    def test_translated(self):
+        pool = Pool()
+        Language = pool.get('ir.lang')
+        Char = self.Char()
+
+        english, = Language.search([('code', '=', 'en')])
+        english.translatable = True
+        english.save()
+
+        french, = Language.search([('code', '=', 'fr')])
+        french.translatable = True
+        french.save()
+
+        with Transaction().set_context(language='en'):
+            record, = Char.create([{'char': 'foo'}])
+        with Transaction().set_context(language='fr'):
+            Char.write([record], {'char': 'bar'})
+
+        self.assertEqual(record.char, 'foo')
+        self.assertEqual(record.char_translated('en'), 'foo')
+        self.assertEqual(record.char_translated('fr'), 'bar')
+
+        with Transaction().set_context(language='fr'):
+            record = Char(record.id)
+
+        self.assertEqual(record.char, 'bar')
+        self.assertEqual(record.char_translated('en'), 'foo')
+        self.assertEqual(record.char_translated('fr'), 'bar')
+
 
 @unittest.skipUnless(backend.name == 'postgresql',
     "unaccent works only on postgresql")
