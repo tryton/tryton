@@ -176,6 +176,13 @@ class WinExport(WinCSV):
                 if '.' not in name:
                     if field.get('relation'):
                         self.model1.insert(node, 0, [None, ''])
+                    elif field.get('translate', False):
+                        for language in self.languages:
+                            l_path = f"{path}:lang={language['code']}"
+                            l_string = f"{string_} ({language['name']})"
+                            self.model1.insert(
+                                node, 0, [language['name'], l_path])
+                            self.fields[l_path] = (l_string, None)
 
     def _get_fields(self, model):
         try:

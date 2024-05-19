@@ -7,7 +7,7 @@ import sys
 
 from gi.repository import Gdk, GObject, Gtk
 
-from tryton.common import IconFactory
+from tryton.common import IconFactory, RPCExecute
 from tryton.common.underline import set_underline
 from tryton.config import TRYTON_ICON
 from tryton.gui import Main
@@ -35,6 +35,11 @@ encodings = ["ascii", "big5", "big5hkscs", "cp037", "cp424", "cp437", "cp500",
 class WinCSV(NoModal):
     def __init__(self, *args, **kwargs):
         super(WinCSV, self).__init__(*args, **kwargs)
+
+        self.languages = RPCExecute(
+            'model', 'ir.lang', 'search_read', [
+                ('translatable', '=', True),
+                ], 0, None, [('name', 'DESC')], ['code', 'name'])
 
         self.dialog = Gtk.Dialog(
             transient_for=self.parent, destroy_with_parent=True)

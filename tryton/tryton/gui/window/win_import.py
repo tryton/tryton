@@ -26,10 +26,6 @@ class WinImport(WinCSV):
         self.fields_data = {}
         self.fields = {}
         self.fields_invert = {}
-        self.languages = RPCExecute(
-            'model', 'ir.lang', 'search_read', [
-                ('translatable', '=', True),
-                ], 0, None, None, ['code', 'name'])
         super(WinImport, self).__init__()
         self.dialog.set_title(_('CSV Import: %s') % name)
 

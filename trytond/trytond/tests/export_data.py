@@ -20,6 +20,7 @@ class ExportData(ModelSQL):
     float = fields.Float('Float')
     numeric = fields.Numeric('Numeric')
     char = fields.Char('Char')
+    char_translated = fields.Char("Char", translate=True)
     text = fields.Text('Text')
     date = fields.Date('Date')
     datetime = fields.DateTime('DateTime')

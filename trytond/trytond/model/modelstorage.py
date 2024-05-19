@@ -742,8 +742,11 @@ class ModelStorage(Model):
                     break
                 field_name = fields_tree[i]
                 descriptor = None
+                language = None
                 if '.' in field_name:
                     field_name, descriptor = field_name.split('.')
+                elif ':lang=' in field_name:
+                    field_name, language = field_name.split(':lang=')
                 eModel = pool.get(value.__name__)
                 field = eModel._fields[field_name]
                 if field.states and 'invisible' in field.states:
@@ -754,6 +757,8 @@ class ModelStorage(Model):
                         break
                 if descriptor:
                     value = getattr(field, descriptor)().__get__(value, eModel)
+                elif language:
+                    value = field.translated().__get__(value, eModel)(language)
                 else:
                     value = getattr(value, field_name)
                 if isinstance(value, (list, tuple)):
@@ -790,6 +795,7 @@ class ModelStorage(Model):
     def _convert_field_names(cls, fields_names):
         pool = Pool()
         ModelField = pool.get('ir.model.field')
+        Lang = pool.get('ir.lang')
         result = []
         for names in fields_names:
             descriptions = []
@@ -798,6 +804,9 @@ class ModelStorage(Model):
                 translated = name.endswith('.translated')
                 if translated:
                     name = name[:-len('.translated')]
+                language = None
+                if ':lang=' in name:
+                    name, language = name.split(':lang=')
                 field = class_._fields[name]
                 field_name = ModelField.get_name(class_.__name__, name)
                 if translated:
@@ -807,6 +816,9 @@ class ModelStorage(Model):
                     elif isinstance(field, fields.Reference):
                         field_name = gettext(
                             'ir.msg_field_model_name', field=field_name)
+                if language:
+                    lang = Lang.get(language)
+                    field_name += f' ({lang.name})'
                 descriptions.append(field_name)
                 if hasattr(field, 'get_target'):
                     class_ = field.get_target()
