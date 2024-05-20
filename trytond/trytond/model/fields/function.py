@@ -130,7 +130,16 @@ class Function(Field):
                 else:
                     return {n: convert_dict(values[n], n) for n in name}
             else:
-                return {r.id: convert(method(r, name), name) for r in records}
+                if isinstance(name, str):
+                    return {
+                        r.id: convert(method(r, name), name) for r in records}
+                else:
+                    results = {n: {} for n in name}
+                    for r in records:
+                        values = method(r, name)
+                        for n in name:
+                            results[n][r.id] = values[n]
+                    return results
 
         def convert(value, name):
             from ..model import Model as BaseModel
