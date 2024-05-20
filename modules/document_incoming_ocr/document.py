@@ -87,9 +87,9 @@ class IncomingSupplierInvoice(metaclass=PoolMeta):
             invoice_data = self.ocr_service.get_supplier_invoice(self)
 
             tax_identifier = invoice_data.get('tax_identifier')
-            if tax_identifier:
+            if tax_identifier and invoice.party:
                 tax_identifier_types = Party.tax_identifier_types()
-                for identifier in self.party.identifiers:
+                for identifier in invoice.party.identifiers:
                     if (identifier.type in tax_identifier_types
                             and identifier.code == tax_identifier):
                         invoice.party_tax_identifier = identifier
