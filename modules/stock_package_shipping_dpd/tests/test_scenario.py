@@ -3,8 +3,11 @@
 
 import os
 
-from trytond.tests.test_tryton import load_doc_tests
+from trytond.tests.test_tryton import TEST_NETWORK, load_doc_tests
 
-if os.getenv('DPD_USER_ID') and os.getenv('DPD_PASSWORD'):
-    def load_tests(*args, **kwargs):
-        return load_doc_tests(__name__, __file__, *args, **kwargs)
+
+def load_tests(*args, **kwargs):
+    if (not TEST_NETWORK
+            or not (os.getenv('DPD_USER_ID') and os.getenv('DPD_PASSWORD'))):
+        kwargs.setdefault('skips', set()).add('scenario_shipping_dpd.rst')
+    return load_doc_tests(__name__, __file__, *args, **kwargs)

@@ -3,10 +3,13 @@
 
 import os
 
-from trytond.tests.test_tryton import load_doc_tests
+from trytond.tests.test_tryton import TEST_NETWORK, load_doc_tests
 
-if (os.getenv('NBS_RS_USERNAME')
-        and os.getenv('NBS_RS_PASSWORD')
-        and os.getenv('NBS_RS_LICENSE_ID')):
-    def load_tests(*args, **kwargs):
-        return load_doc_tests(__name__, __file__, *args, **kwargs)
+
+def load_tests(*args, **kwargs):
+    if (not TEST_NETWORK
+            or not (os.getenv('NBS_RS_USERNAME')
+                and os.getenv('NBS_RS_PASSWORD')
+                and os.getenv('NBS_RS_LICENSE_ID'))):
+        kwargs.setdefault('skips', set()).add('scenario_currency_rs.rst')
+    return load_doc_tests(__name__, __file__, *args, **kwargs)

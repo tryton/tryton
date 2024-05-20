@@ -76,6 +76,7 @@ def _cpu_count():
 
 
 DB_CACHE_JOBS = os.environ.get('DB_CACHE_JOBS', str(_cpu_count()))
+TEST_NETWORK = bool(int(os.getenv('TEST_NETWORK', 1)))
 
 
 def activate_module(modules, lang='en'):
@@ -1117,13 +1118,14 @@ class OutputChecker(doctest.OutputChecker):
 doctest_checker = OutputChecker()
 
 
-def load_doc_tests(name, path, loader, tests, pattern):
+def load_doc_tests(name, path, loader, tests, pattern, skips=None):
     def shouldIncludeScenario(path):
         return (
             loader.testNamePatterns is None
             or any(
                 fnmatchcase(path, pattern)
                 for pattern in loader.testNamePatterns))
+    skips = set() if skips is None else set(skips)
     directory = os.path.dirname(path)
     # TODO: replace by glob root_dir in Python 3.10
     cwd = os.getcwd()
@@ -1143,12 +1145,13 @@ def load_doc_tests(name, path, loader, tests, pattern):
                     configs = json.load(fp)
             else:
                 configs = [{}]
+            s_optionflags = doctest.SKIP if scenario in skips else optionflags
             for globs in configs:
                 tests.addTests(doctest.DocFileSuite(
                         scenario, package=name, globs=globs,
                         tearDown=doctest_teardown, encoding='utf-8',
                         checker=doctest_checker,
-                        optionflags=optionflags))
+                        optionflags=s_optionflags))
     finally:
         os.chdir(cwd)
     return tests

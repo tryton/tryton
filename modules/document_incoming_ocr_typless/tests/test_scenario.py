@@ -3,9 +3,13 @@
 
 import os
 
-from trytond.tests.test_tryton import load_doc_tests
+from trytond.tests.test_tryton import TEST_NETWORK, load_doc_tests
 
-if (os.getenv('TYPLESS_API_KEY')
-        and os.getenv('TYPLESS_DOCUMENT_TYPE')):
-    def load_tests(*args, **kwargs):
-        return load_doc_tests(__name__, __file__, *args, **kwargs)
+
+def load_tests(*args, **kwargs):
+    if (not TEST_NETWORK
+            or not (os.getenv('TYPLESS_API_KEY')
+                and os.getenv('TYPLESS_DOCUMENT_TYPE'))):
+        kwargs.setdefault('skips', set()).add(
+            'scenario_document_incoming_ocr_typless.rst')
+    return load_doc_tests(__name__, __file__, *args, **kwargs)

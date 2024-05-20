@@ -3,10 +3,14 @@
 
 import os
 
-from trytond.tests.test_tryton import load_doc_tests
+from trytond.tests.test_tryton import TEST_NETWORK, load_doc_tests
 
-if (os.getenv('BRAINTREE_MERCHANT_ID')
-        and os.getenv('BRAINTREE_PUBLIC_KEY')
-        and os.getenv('BRAINTREE_PRIVATE_KEY')):
-    def load_tests(*args, **kwargs):
-        return load_doc_tests(__name__, __file__, *args, **kwargs)
+
+def load_tests(*args, **kwargs):
+    if (not TEST_NETWORK
+            or not (os.getenv('BRAINTREE_MERCHANT_ID')
+                and os.getenv('BRAINTREE_PUBLIC_KEY')
+                and os.getenv('BRAINTREE_PRIVATE_KEY'))):
+        kwargs.setdefault('skips', set()).add(
+            'scenario_account_payment_braintree.rst')
+    return load_doc_tests(__name__, __file__, *args, **kwargs)

@@ -17,6 +17,11 @@ Tests
 
    The context used to test the transactions
 
+.. attribute:: TEST_NETWORK
+
+   If false, tests that requires network are skipped.
+   Its value is taken from the environment variable of the same name.
+
 .. function:: activate_module(name)
 
    Activate the named module for the tested database.
@@ -135,7 +140,7 @@ doctest helpers
    A specialized doctest checker to ensure the Python compatibility.
 
 
-.. function:: load_doc_tests(name, path, loader, tests, pattern)
+.. function:: load_doc_tests(name, path, loader, tests, pattern[, skips])
 
    An helper that follows the ``load_tests`` protocol to load as
    :py:class:`~doctest.DocTest` all ``*.rst`` files in ``directory``,
@@ -143,6 +148,7 @@ doctest helpers
    doc tests are registered.
    If a file with the same name but the extension ``.json`` exists, the test is
    registered for each globals defined in the JSON list.
+   ``skips`` constains the name of the scenario to skip.
 
 .. function:: suite()
 
