@@ -82,7 +82,7 @@ class SplitProduction(Wizard):
     def default_start(self, fields):
         return {
             'unit': self.record.unit.id,
-            'uom_category': self.record.uom.category.id,
+            'uom_category': self.record.unit.category.id,
             }
 
     def transition_split(self):
