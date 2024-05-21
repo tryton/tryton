@@ -365,3 +365,34 @@ class LineBlanketAgreement(metaclass=PoolMeta):
                 rate=self.secondary_uom_rate,
                 round=round)
         return quantity
+
+
+class AmendmentLine(metaclass=PoolMeta):
+    __name__ = 'purchase.amendment.line'
+
+    product_secondary_uom_category = fields.Function(
+        fields.Many2One(
+            'product.uom.category', "Product Secondary UoM Category",
+            help="The category of the secondary Unit of Measure "
+            "for the product."),
+        'on_change_with_product_secondary_uom_category')
+
+    @classmethod
+    def _unit_categories(cls):
+        return super()._unit_categories() + ['product_secondary_uom_category']
+
+    @fields.depends('product')
+    def on_change_with_product_secondary_uom_category(self, name=None):
+        if self.product and self.product.purchase_secondary_uom:
+            return self.product.purchase_secondary_uom.category
+
+    def _apply_line(self, purchase, purchase_line):
+        super()._apply_line(purchase, purchase_line)
+        if (self.unit and self.product
+                and self.unit.category != self.product.purchase_uom.category):
+            purchase_line.unit = self.line.unit
+            purchase_line.secondary_quantity = self.quantity
+            purchase_line.secondary_unit = self.unit
+            purchase_line.on_change_secondary_quantity()
+            purchase_line.secondary_unit_price = self.unit_price
+            purchase_line.on_change_secondary_unit_price()
