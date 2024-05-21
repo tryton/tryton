@@ -16,7 +16,8 @@ class Line(metaclass=PoolMeta):
                 'invisible': ((Eval('type') != 'line')
                     | ~Eval('secondary_unit')),
                 'readonly': Eval('purchase_state') != 'draft',
-                }),
+                },
+            depends=['secondary_uom_factor', 'secondary_uom_rate']),
         'on_change_with_secondary_quantity', setter='set_secondary')
     secondary_unit = fields.Many2One(
         'product.uom', "Secondary Unit", ondelete='RESTRICT',
@@ -27,8 +28,7 @@ class Line(metaclass=PoolMeta):
             ],
         states={
             'invisible': ((Eval('type') != 'line')
-                | (~Eval('secondary_uom_factor')
-                    & ~Eval('secondary_uom_rate'))),
+                | ~Eval('product_secondary_uom_category')),
             'readonly': Eval('purchase_state') != 'draft',
             })
     secondary_unit_price = fields.Function(Monetary(
@@ -42,9 +42,17 @@ class Line(metaclass=PoolMeta):
 
     secondary_uom_factor = fields.Float(
         "Secondary UoM Factor",
+        states={
+            'readonly': True,
+            'required': (Eval('type') == 'line') & Eval('secondary_unit'),
+            },
         help="The factor for the secondary Unit of Measure.")
     secondary_uom_rate = fields.Float(
         "Secondary UoM Rate",
+        states={
+            'readonly': True,
+            'required': (Eval('type') == 'line') & Eval('secondary_unit'),
+            },
         help="The rate for the secondary Unit of Measure.")
 
     product_secondary_uom_category = fields.Function(
