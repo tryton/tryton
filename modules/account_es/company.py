@@ -23,3 +23,13 @@ class Company(metaclass=PoolMeta):
                     phone = contact_mechanism.value
                     break
         return phone
+
+    @property
+    def es_tax_identifier(self):
+        valid_types = {'es_cif', 'es_dni', 'es_nie', 'es_vat', 'eu_vat'}
+        for identifier in self.party.identifiers:
+            if identifier.type in valid_types:
+                if (identifier.type == 'eu_vat'
+                        and not identifier.code.startswith('ES')):
+                    continue
+                return identifier
