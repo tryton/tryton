@@ -28,10 +28,10 @@ this repository contains the full copyright notices and license terms. -->
             <field name="text">To delete statement "%(statement)s" you must cancel it.</field>
         </record>
         <record model="ir.message" id="msg_statement_invoice_paid_cancelled">
-            <field name="text">The validation of the statements will remove already paid or cancelled invoices from the statements' lines.</field>
+            <field name="text">Validating the statements will remove already paid or cancelled invoices from the statements' lines.</field>
         </record>
         <record model="ir.message" id="msg_statement_paid_invoice_draft">
-            <field name="text">The validation of the statements will remove paid invoices from other draft statements.</field>
+            <field name="text">Validating the statements will remove paid invoices from other draft statements.</field>
         </record>
         <record model="ir.message" id="msg_statement_post_pending_amount">
             <field name="text">To post statement "%(statement)s" you must create lines for pending %(amount)s of origin "%(origin)s".</field>
