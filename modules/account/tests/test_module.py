@@ -656,12 +656,15 @@ class AccountTestCase(
             self.assertEqual(move.state, 'posted')
 
             # Move lines with debit = credit = 0 are automatically reconciled
+            receivable_no_party, = Account.copy([receivable], default={
+                    'party_required': False,
+                    })
             move = Move()
             move.period = period
             move.journal = journal_revenue
             move.date = period.start_date
             move.lines = [
-                Line(account=revenue, credit=Decimal(0)),
+                Line(account=receivable_no_party, credit=Decimal(0)),
                 Line(account=receivable, debit=Decimal(0), party=party),
                 ]
             move.save()

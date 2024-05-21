@@ -504,7 +504,9 @@ class Move(DescriptionOriginMixin, ModelSQL, ModelView):
         cls.save(moves)
 
         def keyfunc(line):
-            return line.party, line.account
+            # Set party last to avoid compare party instance and None
+            # party will always be None for the same account
+            return line.account, line.party
         to_reconcile = Line.browse(sorted(
                 [l for l in Line.browse(to_reconcile) if l.account.reconcile],
                 key=keyfunc))
