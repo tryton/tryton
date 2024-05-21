@@ -30,3 +30,7 @@ def register():
         sale.LineBlanketAgreement,
         module='sale_secondary_unit', type_='model',
         depends=['sale_blanket_agreement'])
+    Pool.register(
+        sale.AmendmentLine,
+        module='sale_secondary_unit', type_='model',
+        depends=['sale_amendment'])

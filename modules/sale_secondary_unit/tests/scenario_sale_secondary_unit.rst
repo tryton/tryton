@@ -13,8 +13,9 @@ Imports::
 
 Activate modules::
 
-    >>> config = activate_modules(
-    ...     ['sale_secondary_unit',
+    >>> config = activate_modules([
+    ...     'sale_amendment',
+    ...     'sale_secondary_unit',
     ...     'account_invoice_secondary_unit',
     ...     'stock_secondary_unit'])
 
@@ -129,3 +130,25 @@ Check secondary unit on move::
     >>> assertEqual(move.secondary_unit, kg)
     >>> move.secondary_quantity
     2.0
+
+Add an amendment::
+
+    >>> amendment = sale.amendments.new()
+    >>> line = amendment.lines.new()
+    >>> line.action = 'line'
+    >>> line.line = sale.lines[-1]
+    >>> line.quantity = 1
+    >>> line.unit = kg
+    >>> line.unit_price = Decimal('45.0000')
+    >>> amendment.click('validate_amendment')
+
+    >>> sale.reload()
+    >>> line = sale.lines[-1]
+    >>> line.quantity
+    5.0
+    >>> line.secondary_quantity
+    1.0
+    >>> line.unit_price
+    Decimal('9.0000')
+    >>> line.secondary_unit_price
+    Decimal('45.0000')

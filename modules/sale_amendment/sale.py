@@ -304,11 +304,6 @@ class AmendmentLine(ModelSQL, ModelView):
             })
     unit = fields.Many2One(
         'product.uom', "Unit", ondelete='RESTRICT',
-        domain=[
-            If(Eval('product_uom_category'),
-                ('category', '=', Eval('product_uom_category')),
-                ()),
-            ],
         states={
             'readonly': Eval('state') != 'draft',
             'invisible': Eval('action') != 'line',
@@ -336,6 +331,16 @@ class AmendmentLine(ModelSQL, ModelView):
     def __setup__(cls):
         super().__setup__()
         cls.__access__.add('amendment')
+        unit_categories = cls._unit_categories()
+        cls.unit.domain = [
+            If(Bool(Eval('product_uom_category')),
+                ('category', 'in', [Eval(c) for c in unit_categories]),
+                ('category', '!=', -1)),
+            ]
+
+    @classmethod
+    def _unit_categories(cls):
+        return ['product_uom_category']
 
     @fields.depends(
         'amendment',
