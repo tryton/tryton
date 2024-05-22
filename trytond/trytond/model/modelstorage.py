@@ -861,7 +861,7 @@ class ModelStorage(Model):
                         value, '/'.join(field), ftype)
                 elif is_prefix_len and ':lang=' in field[-1]:
                     field_name, lang = field[-1].split(':lang=')
-                    translate.setdefault(lang, {})[field_name] = value or False
+                    translate.setdefault(lang, {})[field_name] = value
                 elif is_prefix_len and prefix == field[:-1]:
                     this_field_def = fields_def[field[-1]]
                     field_type = this_field_def['type']
