@@ -35,7 +35,8 @@ Class attributes are:
 
 .. attribute:: Model._rec_name
 
-   The name of the field used as name of records.
+   The name of the :class:`~trytond.model.fields.Char` field used as name of
+   records.
    The default value is ``name``.
 
 .. attribute:: Model.id
