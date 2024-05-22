@@ -8,6 +8,7 @@ from decimal import Decimal
 from trytond.model.exceptions import ImportDataError
 from trytond.pool import Pool
 from trytond.tests.test_tryton import activate_module, with_transaction
+from trytond.transaction import Transaction
 
 
 class ImportDataTestCase(unittest.TestCase):
@@ -138,6 +139,28 @@ class ImportDataTestCase(unittest.TestCase):
 
         self.assertEqual(
             Char.import_data(['char'], [['test'], ['foo'], ['bar']]), 3)
+
+    @with_transaction()
+    def test_translate(self):
+        "Test translate"
+        pool = Pool()
+        Translate = pool.get('test.import_data.translate')
+
+        self.assertEqual(
+            Translate.import_data(
+                ['translate:lang=en', 'translate:lang=fr'],
+                [['foo', 'bar'], ['', '']]),
+            2)
+
+        with Transaction().set_context(language='en'):
+            record1, record2 = Translate.search([])
+            self.assertEqual(record1.translate, 'foo')
+            self.assertEqual(record2.translate, '')
+
+        with Transaction().set_context(language='en'):
+            record1, record2 = Translate.search([])
+            self.assertEqual(record1.translate, 'foo')
+            self.assertEqual(record2.translate, '')
 
     @with_transaction()
     def test_text(self):
