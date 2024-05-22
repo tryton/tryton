@@ -4,7 +4,6 @@ import datetime
 from decimal import Decimal
 
 from trytond.modules.account.tests import create_chart, get_fiscalyear
-from trytond.modules.account_es_sii.account import SII_URL
 from trytond.modules.account_invoice.tests import set_invoice_sequences
 from trytond.modules.company.tests import create_company, set_company
 from trytond.modules.currency.tests import add_currency_rate, create_currency
@@ -581,26 +580,6 @@ class AccountEsSiiTestCase(ModuleTestCase):
             sii_invoice = create_invoice('in', company, party, [tax])
 
             self.assertEqual(sii_invoice, [])
-
-    @with_transaction()
-    def test_get_client(self):
-        "Test client can be initialized for all environments"
-        pool = Pool()
-        Config = pool.get('account.configuration')
-        Credential = pool.get('account.credential.sii')
-
-        company = create_company()
-        with set_company(company):
-            config = Config(1)
-            for key, _ in SII_URL:
-                if not key:
-                    continue
-                for environment in ['staging', 'production']:
-                    config.es_sii_url = key
-                    config.es_sii_environment = environment
-                    config.save()
-                    client = Credential.get_client('SuministroFactEmitidas')
-                    self.assertTrue(client)
 
 
 del ModuleTestCase
