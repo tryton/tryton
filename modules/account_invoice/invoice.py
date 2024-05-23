@@ -2311,7 +2311,13 @@ class InvoiceLine(sequence_ordered(), ModelSQL, ModelView, TaxableMixin):
                 'invisible': ~Eval('type').in_(['line', 'subtotal']),
                 }),
         'get_amount')
-    description = fields.Text('Description', size=None, states=_states)
+    description = fields.Text(
+        "Description",
+        states={
+            'readonly': (_states['readonly']
+                & ~Id('account', 'group_account_admin').in_(
+                    Eval('context', {}).get('groups', []))),
+                })
     summary = fields.Function(fields.Char('Summary'), 'on_change_with_summary')
     note = fields.Text('Note')
     taxes = fields.Many2Many('account.invoice.line-account.tax',
@@ -2363,7 +2369,7 @@ class InvoiceLine(sequence_ordered(), ModelSQL, ModelView, TaxableMixin):
     @classmethod
     def __setup__(cls):
         super(InvoiceLine, cls).__setup__()
-        cls._check_modify_exclude = {'note', 'origin'}
+        cls._check_modify_exclude = {'note', 'origin', 'description'}
 
         # Set account domain dynamically for kind
         cls.account.domain = [
