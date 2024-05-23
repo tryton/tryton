@@ -382,7 +382,6 @@ class Party(
                 try:
                     result = eu_vat.check_vies(code)
                 except Exception:
-                    print('exception', code)
                     logger.debug(
                         f"Fail to check {identifier['code']}", exc_info=True)
                     continue
