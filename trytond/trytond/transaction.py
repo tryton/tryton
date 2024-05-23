@@ -141,9 +141,7 @@ class Transaction(object):
             if transactions.count(self) == 1:
                 try:
                     try:
-                        # Transaction must be commited to send notifications
-                        if commit and (not self.readonly
-                                or self.database.has_channel()):
+                        if commit and not self.readonly:
                             self.commit()
                         else:
                             self.rollback()
