@@ -38,6 +38,7 @@ class Sale(metaclass=PoolMeta):
             locations = [warehouse.id]
             with Transaction().set_context(
                     company=company.id, locations=locations,
+                    stock_assign=True,
                     stock_date_end=None):
                 product_quantities.update(
                     (p, p.forecast_quantity)
