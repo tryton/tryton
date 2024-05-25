@@ -2890,7 +2890,7 @@ function eval_pyson(value){
         _update_completion: function(text) {
             var record = this.record;
             if (!record) {
-                return;
+                return jQuery.when();
             }
             var field = this.field;
             var value = field.get(record);
@@ -3744,7 +3744,7 @@ function eval_pyson(value){
         },
         _update_completion: function(text) {
             if (!this.record) {
-                return;
+                return jQuery.when();
             }
             var model = this.attributes.relation;
             var domain = this.field.get_domain(this.record);
@@ -4111,7 +4111,7 @@ function eval_pyson(value){
         },
         _update_completion: function(text) {
             if (!this.record) {
-                return;
+                return jQuery.when();
             }
             var model = this.attributes.relation;
             var domain = this.field.get_domain(this.record);
@@ -5014,10 +5014,10 @@ function eval_pyson(value){
         },
         _update_completion: function(text) {
             if (this.wid_text.prop('disabled')) {
-                return;
+                return jQuery.when();
             }
             if (!this.record) {
-                return;
+                return jQuery.when();
             }
             return Sao.common.update_completion(
                 this.wid_text, this.record, this.field, this.schema_model);
