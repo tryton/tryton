@@ -681,6 +681,7 @@
                 views = this.model.fields[name].views;
             }
             var fields = {};
+            var views_operator;
             if (loading == 'eager') {
                 for (fname in this.model.fields) {
                     field = this.model.fields[fname];
@@ -688,17 +689,19 @@
                         fields[fname] = field;
                     }
                 }
+                views_operator = views.isSubsetOf.bind(views);
             } else {
                 fields = this.model.fields;
+                views_operator = function(view) {
+                    return Boolean(this.intersection(view).size);
+                }.bind(views);
             }
             var fnames = [];
             for (fname in fields) {
                 field = fields[fname];
                 if (!(fname in this._loaded) &&
                     (!views.size ||
-                        Sao.common.intersect(
-                            Array.from(views).sort(),
-                            Array.from(field.views).sort()))) {
+                        views_operator(new Set(field.views)))) {
                     fnames.push(fname);
                 }
             }
