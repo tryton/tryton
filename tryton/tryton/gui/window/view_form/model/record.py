@@ -99,12 +99,14 @@ class Record:
                 fields = ((fname, field)
                     for fname, field in self.group.fields.items()
                     if field.attrs.get('loading', 'eager') == 'eager')
+                views_operator = set.issubset
             else:
                 fields = self.group.fields.items()
+                views_operator = set.intersection
 
             fnames = [fname for fname, field in fields
                 if fname not in self._loaded
-                and (not views or (views & field.views))]
+                and (not views or views_operator(views, field.views))]
             related_read_limit = 0
             for fname in list(fnames):
                 f_attrs = self.group.fields[fname].attrs

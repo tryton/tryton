@@ -107,6 +107,35 @@ var Sao = {
         };
     }
 
+    if (!Set.prototype.intersection) {
+        Set.prototype.intersection = function(other) {
+            if (this === null) {
+                throw new TypeError();
+            }
+            const result = new Set();
+            for (const key of other.keys()) {
+                if (this.has(key)) {
+                    result.add(key)
+                }
+            }
+            return result;
+        }
+    }
+
+    if (!Set.prototype.isSubsetOf) {
+        Set.prototype.isSubsetOf = function(other) {
+            if (this === null) {
+                throw new TypeError();
+            }
+            for (const key of this.keys()) {
+                if (!other.has(key)) {
+                    return false;
+                }
+            }
+            return true;
+        }
+    }
+
     Sao.setdefault = function(object, key, value) {
         if (!Object.prototype.hasOwnProperty.call(object, key)) {
             object[key] = value;
