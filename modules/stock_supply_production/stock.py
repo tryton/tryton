@@ -84,6 +84,10 @@ class StockSupply(metaclass=PoolMeta):
                     ('to_location.type', '=', 'storage'),
                     ('state', '=', 'draft'),
                     ('planned_date', '<', today),
+                    ('production', 'not where', [
+                            ('state', '=', 'request'),
+                            ('origin', 'like', 'stock.order_point,%'),
+                            ]),
                     ], order=[])
         if moves:
             key = '%s@%s' % (self.__name__, today)
