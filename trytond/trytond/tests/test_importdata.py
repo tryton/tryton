@@ -305,6 +305,9 @@ class ImportDataTestCase(unittest.TestCase):
         'Test many2one'
         pool = Pool()
         Many2one = pool.get('test.import_data.many2one')
+        Target = pool.get('test.import_data.many2one.target')
+
+        Target.create([{'name': "Test"}])
 
         for value in ['Test', '']:
             with self.subTest(value=value):
@@ -312,21 +315,13 @@ class ImportDataTestCase(unittest.TestCase):
                     Many2one.import_data(['many2one'], [[value]]), 1)
 
     @with_transaction()
-    def test_many2one_id(self):
-        "Test many2one with id"
-        pool = Pool()
-        Many2one = pool.get('test.import_data.many2one')
-
-        self.assertEqual(
-            Many2one.import_data(
-                ['many2one:id'], [['tests.import_data_many2one_target_test']]),
-            1)
-
-    @with_transaction()
     def test_many2one_many_rows(self):
         "Test many2one many rows"
         pool = Pool()
         Many2one = pool.get('test.import_data.many2one')
+        Target = pool.get('test.import_data.many2one.target')
+
+        Target.create([{'name': "Test"}])
 
         self.assertEqual(
             Many2one.import_data(['many2one'], [['Test'], ['Test']]), 2)
@@ -343,21 +338,17 @@ class ImportDataTestCase(unittest.TestCase):
                     Many2one.import_data(['many2one'], [[value]])
 
     @with_transaction()
-    def test_many2one_id_invalid(self):
-        "Test many2one invalid id"
-        pool = Pool()
-        Many2one = pool.get('test.import_data.many2one')
-
-        for value in ['foo', 'tests.foo']:
-            with self.subTest(value=value):
-                with self.assertRaises(ImportDataError):
-                    Many2one.import_data(['many2one:id'], [[value]])
-
-    @with_transaction()
     def test_many2many(self):
         'Test many2many'
         pool = Pool()
         Many2many = pool.get('test.import_data.many2many')
+        Target = pool.get('test.import_data.many2many.target')
+
+        Target.create([
+                {'name': "Test 1"},
+                {'name': "Test 2"},
+                {'name': "Test, comma"},
+                ])
 
         for value in [
                 'Test 1', 'Test\\, comma', 'Test\\, comma,Test 1',
@@ -367,24 +358,17 @@ class ImportDataTestCase(unittest.TestCase):
                     Many2many.import_data(['many2many'], [[value]]), 1)
 
     @with_transaction()
-    def test_many2many_id(self):
-        "Test many2many with id"
-        pool = Pool()
-        Many2many = pool.get('test.import_data.many2many')
-
-        for value in [
-                'tests.import_data_many2many_target_test1',
-                'tests.import_data_many2many_target_test1,'
-                'tests.import_data_many2many_target_test2']:
-            with self.subTest(value=value):
-                self.assertEqual(
-                    Many2many.import_data(['many2many:id'], [[value]]), 1)
-
-    @with_transaction()
     def test_many2many_many_rows(self):
         "Test many2many many rows"
         pool = Pool()
         Many2many = pool.get('test.import_data.many2many')
+        Target = pool.get('test.import_data.many2many.target')
+
+        Target.create([
+                {'name': "Test 1"},
+                {'name': "Test 2"},
+                {'name': "Test, comma"},
+                ])
 
         self.assertEqual(
             Many2many.import_data(['many2many'], [['Test 1'], ['Test 2']]), 2)
@@ -486,22 +470,12 @@ class ImportDataTestCase(unittest.TestCase):
         'Test reference'
         pool = Pool()
         Reference = pool.get('test.import_data.reference')
+        Selection = pool.get('test.import_data.reference.selection')
+
+        Selection.create([{'name': "Test"}])
 
         self.assertEqual(Reference.import_data(['reference'],
             [['test.import_data.reference.selection,Test']]), 1)
-        reference, = Reference.search([])
-        self.assertEqual(reference.reference.__name__,
-            'test.import_data.reference.selection')
-
-    @with_transaction()
-    def test_reference_id(self):
-        "Test reference with id"
-        pool = Pool()
-        Reference = pool.get('test.import_data.reference')
-
-        self.assertEqual(Reference.import_data(['reference:id'],
-            [['test.import_data.reference.selection,'
-                'tests.import_data_reference_selection_test']]), 1)
         reference, = Reference.search([])
         self.assertEqual(reference.reference.__name__,
             'test.import_data.reference.selection')
@@ -522,6 +496,9 @@ class ImportDataTestCase(unittest.TestCase):
         "Test reference many rows"
         pool = Pool()
         Reference = pool.get('test.import_data.reference')
+        Selection = pool.get('test.import_data.reference.selection')
+
+        Selection.create([{'name': "Test"}])
 
         self.assertEqual(Reference.import_data(['reference'],
             [['test.import_data.reference.selection,Test'],
@@ -543,17 +520,6 @@ class ImportDataTestCase(unittest.TestCase):
             with self.subTest(value=value):
                 with self.assertRaises(ImportDataError):
                     Reference.import_data(['reference'], [[value]])
-
-    @with_transaction()
-    def test_reference_id_invalid(self):
-        "Test reference invalid id"
-        pool = Pool()
-        Reference = pool.get('test.import_data.reference')
-
-        with self.assertRaises(ImportDataError):
-            Reference.import_data(
-                ['reference:id'],
-                [['test.import_data.reference.selection,foo']])
 
     @with_transaction()
     def test_binary_bytes(self):
@@ -621,22 +587,6 @@ class ImportDataTestCase(unittest.TestCase):
 
         self.assertEqual(count, 1)
         self.assertEqual([m.name for m in record.many2many], ["Bar"])
-
-    @with_transaction()
-    def test_update_many2many_id(self):
-        "Test update many2many with id"
-        pool = Pool()
-        Many2many = pool.get('test.import_data.many2many')
-
-        record = Many2many(many2many=[{'name': "Foo"}])
-        record.save()
-
-        count = Many2many.import_data(
-            ['id', 'many2many:id'],
-            [[record.id, 'tests.import_data_many2many_target_test1']])
-
-        self.assertEqual(count, 1)
-        self.assertEqual([m.name for m in record.many2many], ["Test 1"])
 
     @with_transaction()
     def test_update_one2many(self):

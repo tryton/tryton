@@ -1,3 +1,4 @@
+* Remove support for ``:id`` suffix in import data
 * Add export translations option to trytond-admin
 * Update TinyMCE to version 7
 * Add python-format flag to PO files

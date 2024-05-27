@@ -169,9 +169,6 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.message" id="msg_reference_syntax_error">
             <field name="text">Syntax error for reference: %(value)r in "%(field)s" of "%(model)s" (%(column)s).</field>
         </record>
-        <record model="ir.message" id="msg_xml_id_syntax_error">
-            <field name="text">Syntax error for XML id: %(value)r in "%(field)s" of "%(model)s" (%(column)s).</field>
-        </record>
         <record model="ir.message" id="msg_domain_validation_record">
             <field name="text">The value "%(value)s" for field "%(field)s" in record "%(record)s" of "%(model)s" is not valid according to its domain.</field>
         </record>

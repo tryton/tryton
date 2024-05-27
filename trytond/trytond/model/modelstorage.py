@@ -924,44 +924,6 @@ class ModelStorage(Model):
                 res = '%s,%s' % (relation, res[0].id)
             return res
 
-        @lru_cache(maxsize=1000)
-        def get_by_id(value, ftype, field, klass, column):
-            if not value:
-                return None
-            relation = None
-            if ftype == 'many2many':
-                value = next(csv.reader(value.splitlines(), delimiter=',',
-                        quoting=csv.QUOTE_NONE, escapechar='\\'))
-            elif ftype == 'reference':
-                try:
-                    relation, value = value.split(',', 1)
-                except ValueError as e:
-                    raise ImportDataError(
-                        gettext('ir.msg_reference_syntax_error',
-                            value=value,
-                            column=column,
-                            **klass.__names__(field))) from e
-                value = [value]
-            else:
-                value = [value]
-            res_ids = []
-            for word in value:
-                try:
-                    module, xml_id = word.rsplit('.', 1)
-                    db_id = ModelData.get_id(module, xml_id)
-                except (ValueError, KeyError) as e:
-                    raise ImportDataError(
-                        gettext('ir.msg_xml_id_syntax_error',
-                            value=word,
-                            column=column,
-                            **klass.__names__(field))) from e
-                res_ids.append(db_id)
-            if ftype == 'many2many' and res_ids:
-                return res_ids
-            elif ftype == 'reference' and res_ids:
-                return '%s,%s' % (relation, str(res_ids[0]))
-            return res_ids[0]
-
         def dispatch(create, write, row, Relation=cls):
             id_ = row.pop('id', None)
             if id_:
@@ -1063,15 +1025,7 @@ class ModelStorage(Model):
                 is_prefix_len = (len(field) == (prefix_len + 1))
                 value = line[i]
                 column = '/'.join(field)
-                if is_prefix_len and field[-1].endswith(':id'):
-                    field_name = field[-1][:-3]
-                    ftype = fields_def[field_name]['type']
-                    res = get_by_id(value, ftype, field_name, klass, column)
-                    if ftype == 'many2many':
-                        res = [('add', res)] if res else []
-                        many2many.add(field_name)
-                    row[field[0][:-3]] = res
-                elif is_prefix_len and ':lang=' in field[-1]:
+                if is_prefix_len and ':lang=' in field[-1]:
                     field_name, lang = field[-1].split(':lang=')
                     translate.setdefault(lang, {})[field_name] = value
                 elif is_prefix_len and prefix == field[:-1]:
@@ -1156,8 +1110,6 @@ class ModelStorage(Model):
                 for i in range(max(nbrmax, 1)):
                     data.pop(0)
             return (row, nbrmax, translate)
-
-        ModelData = pool.get('ir.model.data')
 
         fields_names = [x.split('/') for x in fields_names]
         fields_def = cls.fields_get()
