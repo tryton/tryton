@@ -1050,12 +1050,16 @@ class ModelStorage(Model):
             todo = set()
             prefix_len = len(prefix)
             many2many = set()
+            if len(fields_names) > len(line):
+                n = len(fields_names) - len(line)
+                if n > 1:
+                    raise ImportDataError(gettext(
+                            'ir.msg_import_data_missing_columns', n=n))
+                else:
+                    raise ImportDataError(gettext(
+                            'ir.msg_import_data_missing_column'))
             # Import normal fields_names
             for i, field in enumerate(fields_names):
-                if i >= len(line):
-                    raise Exception('ImportError',
-                        'Please check that all your lines have %d cols.'
-                        % len(fields_names))
                 is_prefix_len = (len(field) == (prefix_len + 1))
                 value = line[i]
                 column = '/'.join(field)
@@ -1155,8 +1159,6 @@ class ModelStorage(Model):
 
         ModelData = pool.get('ir.model.data')
 
-        len_fields_names = len(fields_names)
-        assert all(len(x) == len_fields_names for x in data)
         fields_names = [x.split('/') for x in fields_names]
         fields_def = cls.fields_get()
 

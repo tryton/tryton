@@ -151,6 +151,12 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.message" id="msg_base_config_record">
             <field name="text">This record is part of the base configuration.</field>
         </record>
+        <record model="ir.message" id="msg_import_data_missing_column">
+            <field name="text">Missing values for last column.</field>
+        </record>
+        <record model="ir.message" id="msg_import_data_missing_columns">
+            <field name="text">Missing values for %(n)s last columns.</field>
+        </record>
         <record model="ir.message" id="msg_relation_not_found">
             <field name="text">Relation not found: %(value)r in "%(model)s" (%(column)s).</field>
         </record>

@@ -5,6 +5,13 @@ from trytond.model import ModelSQL, fields
 from trytond.pool import Pool
 
 
+class ImportData(ModelSQL):
+    "Import Data"
+    __name__ = 'test.import_data'
+    name = fields.Char("Name")
+    value = fields.Integer("Value")
+
+
 class ImportDataBoolean(ModelSQL):
     "Import Data Boolean"
     __name__ = 'test.import_data.boolean'
@@ -176,6 +183,7 @@ class ImportDataUpdate(ModelSQL):
 
 def register(module):
     Pool.register(
+        ImportData,
         ImportDataBoolean,
         ImportDataInteger,
         ImportDataFloat,

@@ -19,6 +19,18 @@ class ImportDataTestCase(unittest.TestCase):
         activate_module('tests')
 
     @with_transaction()
+    def test_missing_values(self):
+        "Test error is raised when missing values"
+        pool = Pool()
+        Model = pool.get('test.import_data')
+
+        with self.assertRaisesRegex(ImportDataError, "for last column"):
+            Model.import_data(['name'], [["Test"], []])
+
+        with self.assertRaisesRegex(ImportDataError, "for 2 last column"):
+            Model.import_data(['name', 'value'], [["Test", 1], []])
+
+    @with_transaction()
     def test_boolean(self):
         'Test boolean'
         pool = Pool()
