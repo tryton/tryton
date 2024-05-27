@@ -1,3 +1,4 @@
+* Include row and column in error message when importing data
 * Remove support for ``:id`` suffix in import data
 * Add export translations option to trytond-admin
 * Update TinyMCE to version 7

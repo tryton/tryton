@@ -24,10 +24,12 @@ class ImportDataTestCase(unittest.TestCase):
         pool = Pool()
         Model = pool.get('test.import_data')
 
-        with self.assertRaisesRegex(ImportDataError, "for last column"):
+        with self.assertRaisesRegex(
+                ImportDataError, "for last column at row 2"):
             Model.import_data(['name'], [["Test"], []])
 
-        with self.assertRaisesRegex(ImportDataError, "for 2 last column"):
+        with self.assertRaisesRegex(
+                ImportDataError, "for 2 last columns at row 2"):
             Model.import_data(['name', 'value'], [["Test", 1], []])
 
     @with_transaction()
@@ -56,7 +58,8 @@ class ImportDataTestCase(unittest.TestCase):
         pool = Pool()
         Boolean = pool.get('test.import_data.boolean')
 
-        with self.assertRaises(ImportDataError):
+        with self.assertRaisesRegex(
+                ImportDataError, "at row 1 and column 1"):
             Boolean.import_data(['boolean'], [['foo']])
 
     @with_transaction()
@@ -87,7 +90,8 @@ class ImportDataTestCase(unittest.TestCase):
 
         for value in ['1.1', '-1.1', 'foo']:
             with self.subTest(value=value):
-                with self.assertRaises(ImportDataError):
+                with self.assertRaisesRegex(
+                        ImportDataError, "at row 1 and column 1"):
                     Integer.import_data(['integer'], [[value]])
 
     @with_transaction()
@@ -108,7 +112,8 @@ class ImportDataTestCase(unittest.TestCase):
         pool = Pool()
         Float = pool.get('test.import_data.float')
 
-        with self.assertRaises(ImportDataError):
+        with self.assertRaisesRegex(
+                ImportDataError, "'foo' .* at row 1 and column 1"):
             Float.import_data(['float'], [['foo']])
 
     @with_transaction()
@@ -129,7 +134,8 @@ class ImportDataTestCase(unittest.TestCase):
         pool = Pool()
         Numeric = pool.get('test.import_data.numeric')
 
-        with self.assertRaises(ImportDataError):
+        with self.assertRaisesRegex(
+                ImportDataError, "'foo' .* at row 1 and column 1"):
             Numeric.import_data(['numeric'], [['foo']])
 
     @with_transaction()
@@ -220,7 +226,8 @@ class ImportDataTestCase(unittest.TestCase):
         pool = Pool()
         Date = pool.get('test.import_data.date')
 
-        with self.assertRaises(ImportDataError):
+        with self.assertRaisesRegex(
+                ImportDataError, "'foo' .* at row 1 and column 1"):
             Date.import_data(['date'], [['foo']])
 
     @with_transaction()
@@ -252,7 +259,8 @@ class ImportDataTestCase(unittest.TestCase):
         pool = Pool()
         Datetime = pool.get('test.import_data.datetime')
 
-        with self.assertRaises(ImportDataError):
+        with self.assertRaisesRegex(
+                ImportDataError, "'foo' .* at row 1 and column 1"):
             Datetime.import_data(['datetime'], [['foo']])
 
     @with_transaction()
@@ -276,7 +284,8 @@ class ImportDataTestCase(unittest.TestCase):
         pool = Pool()
         Timedelta = pool.get('test.import_data.timedelta')
 
-        with self.assertRaises(ImportDataError):
+        with self.assertRaisesRegex(
+                ImportDataError, "'foo' .* at row 1 and column 1"):
             Timedelta.import_data(['timedelta'], [['foo']])
 
     @with_transaction()
@@ -334,7 +343,8 @@ class ImportDataTestCase(unittest.TestCase):
 
         for value in ['foo', 'Duplicate']:
             with self.subTest(value=value):
-                with self.assertRaises(ImportDataError):
+                with self.assertRaisesRegex(
+                        ImportDataError, "at row 1 and column 1"):
                     Many2one.import_data(['many2one'], [[value]])
 
     @with_transaction()
@@ -381,7 +391,8 @@ class ImportDataTestCase(unittest.TestCase):
 
         for value in ['foo', 'Test 1,foo', 'Duplicate', 'Test 1,Duplicate']:
             with self.subTest(value=value):
-                with self.assertRaises(ImportDataError):
+                with self.assertRaisesRegex(
+                        ImportDataError, "at row 1 and column 1"):
                     Many2many.import_data(['many2many'], [[value]])
 
     @with_transaction()
@@ -518,7 +529,8 @@ class ImportDataTestCase(unittest.TestCase):
                 'test.import_data.reference.selection,Duplicate',
                 'test.import_data.reference.selection,test.foo']:
             with self.subTest(value=value):
-                with self.assertRaises(ImportDataError):
+                with self.assertRaisesRegex(
+                        ImportDataError, "at row 1 and column 1"):
                     Reference.import_data(['reference'], [[value]])
 
     @with_transaction()

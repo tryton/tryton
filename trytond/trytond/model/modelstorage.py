@@ -838,8 +838,27 @@ class ModelStorage(Model):
         '''
         pool = Pool()
 
+        row_index = data.index
+
+        class _Error(Exception):
+            def __init__(self, msg_id, **variables):
+                self.msg_id = msg_id
+                self.variables = variables
+
+        def error(func):
+            def wrapper(line, index, *args, **kwargs):
+                try:
+                    return func(line[index], *args, **kwargs)
+                except _Error as e:
+                    raise ImportDataError(gettext(
+                            e.msg_id, **e.variables,
+                            row=row_index(line) + 1,
+                            column=index + 1)) from e
+            return wrapper
+
+        @error
         @lru_cache(maxsize=1000)
-        def get_many2one(relation, value, column):
+        def get_many2one(value, relation):
             if not value:
                 return None
             Relation = pool.get(relation)
@@ -847,23 +866,22 @@ class ModelStorage(Model):
                 ('rec_name', '=', value),
                 ], limit=2)
             if len(res) < 1:
-                raise ImportDataError(gettext(
-                        'ir.msg_relation_not_found',
-                        value=value,
-                        column=column,
-                        **Relation.__names__()))
+                raise _Error(
+                    'ir.msg_relation_not_found',
+                    value=value,
+                    **Relation.__names__())
             elif len(res) > 1:
-                raise ImportDataError(
-                    gettext('ir.msg_too_many_relations_found',
-                        value=value,
-                        column=column,
-                        **Relation.__names__()))
+                raise _Error(
+                    'ir.msg_too_many_relations_found',
+                    value=value,
+                    **Relation.__names__())
             else:
                 res = res[0].id
             return res
 
+        @error
         @lru_cache(maxsize=1000)
-        def get_many2many(relation, value, column):
+        def get_many2many(value, relation):
             if not value:
                 return None
             res = []
@@ -874,52 +892,48 @@ class ModelStorage(Model):
                     ('rec_name', '=', word),
                     ], limit=2)
                 if len(res2) < 1:
-                    raise ImportDataError(
-                        gettext('ir.msg_relation_not_found',
-                            value=word,
-                            column=column,
-                            **Relation.__names__()))
+                    raise _Error(
+                        'ir.msg_relation_not_found',
+                        value=word,
+                        **Relation.__names__())
                 elif len(res2) > 1:
-                    raise ImportDataError(
-                        gettext('ir.msg_too_many_relations_found',
-                            value=word,
-                            column=column,
-                            **Relation.__names__()))
+                    raise _Error(
+                        'ir.msg_too_many_relations_found',
+                        value=word,
+                        **Relation.__names__())
                 else:
                     res.append(res2[0].id)
             return res
 
-        def get_one2one(relation, value, column):
-            return ('add', get_many2one(relation, value, column))
+        def get_one2one(*args, **kwargs):
+            return ('add', get_many2one(*args, **kwargs))
 
+        @error
         @lru_cache(maxsize=1000)
-        def get_reference(value, field, klass, column):
+        def get_reference(value, field, klass):
             if not value:
                 return None
             try:
                 relation, value = value.split(',', 1)
                 Relation = pool.get(relation)
             except (ValueError, KeyError) as e:
-                raise ImportDataError(
-                    gettext('ir.msg_reference_syntax_error',
-                        value=value,
-                        column=column,
-                        **klass.__names__(field))) from e
+                raise _Error(
+                    'ir.msg_reference_syntax_error',
+                    value=value,
+                    **klass.__names__(field)) from e
             res = Relation.search([
                 ('rec_name', '=', value),
                 ], limit=2)
             if len(res) < 1:
-                raise ImportDataError(gettext(
-                        'ir.msg_relation_not_found',
-                        value=value,
-                        column=column,
-                        **Relation.__names__()))
+                raise _Error(
+                    'ir.msg_relation_not_found',
+                    value=value,
+                    **Relation.__names__())
             elif len(res) > 1:
-                raise ImportDataError(
-                    gettext('ir.msg_too_many_relations_found',
-                        value=value,
-                        column=column,
-                        **Relation.__names__()))
+                raise _Error(
+                    'ir.msg_too_many_relations_found',
+                    value=value,
+                    **Relation.__names__())
             else:
                 res = '%s,%s' % (relation, res[0].id)
             return res
@@ -933,7 +947,8 @@ class ModelStorage(Model):
                 create.append(row)
             return id_
 
-        def convert(value, ftype, field, klass, column):
+        @error
+        def convert(value, ftype, field, klass):
             def convert_boolean(value):
                 if value.lower() == 'true':
                     return True
@@ -995,15 +1010,16 @@ class ModelStorage(Model):
                     return value
 
             try:
-                return locals()['convert_%s' % ftype](value)
+                func = locals()['convert_%s' % ftype]
             except KeyError:
                 return value
+            try:
+                return func(value)
             except (ValueError, TypeError, decimal.InvalidOperation) as e:
-                raise ImportDataError(
-                    gettext('ir.msg_value_syntax_error',
-                        value=value,
-                        column=column,
-                        **klass.__names__(field))) from e
+                raise _Error(
+                    'ir.msg_value_syntax_error',
+                    value=value,
+                    **klass.__names__(field)) from e
 
         def process_lines(data, prefix, fields_def, position=0, klass=cls):
             line = data[position]
@@ -1016,18 +1032,19 @@ class ModelStorage(Model):
                 n = len(fields_names) - len(line)
                 if n > 1:
                     raise ImportDataError(gettext(
-                            'ir.msg_import_data_missing_columns', n=n))
+                            'ir.msg_import_data_missing_columns',
+                            n=n,
+                            row=row_index(line) + 1))
                 else:
                     raise ImportDataError(gettext(
-                            'ir.msg_import_data_missing_column'))
+                            'ir.msg_import_data_missing_column',
+                            row=row_index(line) + 1))
             # Import normal fields_names
             for i, field in enumerate(fields_names):
                 is_prefix_len = (len(field) == (prefix_len + 1))
-                value = line[i]
-                column = '/'.join(field)
                 if is_prefix_len and ':lang=' in field[-1]:
                     field_name, lang = field[-1].split(':lang=')
-                    translate.setdefault(lang, {})[field_name] = value
+                    translate.setdefault(lang, {})[field_name] = line[i]
                 elif is_prefix_len and prefix == field[:-1]:
                     field_name = field[-1]
                     this_field_def = fields_def[field_name]
@@ -1035,25 +1052,22 @@ class ModelStorage(Model):
                     res = None
                     if field_name == 'id':
                         try:
-                            res = int(value)
+                            res = int(line[i])
                         except ValueError:
-                            res = get_many2one(klass.__name__, value, column)
+                            res = get_many2one(line, i, klass.__name__)
                     elif field_type == 'many2one':
-                        res = get_many2one(
-                            this_field_def['relation'], value, column)
+                        res = get_many2one(line, i, this_field_def['relation'])
                     elif field_type == 'many2many':
                         many2many.add(field_name)
                         res = get_many2many(
-                            this_field_def['relation'], value, column)
+                            line, i, this_field_def['relation'])
                         res = [('add', res)] if res else []
                     elif field_type == 'one2one':
-                        res = get_one2one(
-                            this_field_def['relation'], value, column)
+                        res = get_one2one(line, i, this_field_def['relation'])
                     elif field_type == 'reference':
-                        res = get_reference(value, field_name, klass, column)
+                        res = get_reference(line, i, field_name, klass)
                     else:
-                        res = convert(
-                            value, field_type, field_name, klass, column)
+                        res = convert(line, i, field_type, field_name, klass)
                     row[field_name] = res
                 elif prefix == field[0:prefix_len]:
                     todo.add(field[prefix_len])
@@ -1117,7 +1131,8 @@ class ModelStorage(Model):
         to_create, to_create_translations = [], []
         to_write, to_write_translations = [], []
         languages = set()
-        while len(data):
+        data = data.copy()
+        while data:
             (row, _, translate) = \
                 process_lines(data, [], fields_def)
             if dispatch(to_create, to_write, row):

@@ -152,22 +152,22 @@ this repository contains the full copyright notices and license terms. -->
             <field name="text">This record is part of the base configuration.</field>
         </record>
         <record model="ir.message" id="msg_import_data_missing_column">
-            <field name="text">Missing values for last column.</field>
+            <field name="text">Missing values for last column at row %(row)d.</field>
         </record>
         <record model="ir.message" id="msg_import_data_missing_columns">
-            <field name="text">Missing values for %(n)s last columns.</field>
+            <field name="text">Missing values for %(n)s last columns at row %(row)d.</field>
         </record>
         <record model="ir.message" id="msg_relation_not_found">
-            <field name="text">Relation not found: %(value)r in "%(model)s" (%(column)s).</field>
+            <field name="text">Could not find relation for %(value)r in "%(model)s" at row %(row)d and column %(column)d.</field>
         </record>
         <record model="ir.message" id="msg_too_many_relations_found">
-            <field name="text">Too many relations found: %(value)r in "%(model)s" (%(column)s).</field>
+            <field name="text">Found too many relation for %(value)r in "%(model)s" at row %(row)d and column %(column)d.</field>
         </record>
         <record model="ir.message" id="msg_value_syntax_error">
-            <field name="text">Syntax error for value: %(value)r in "%(field)s" of "%(model)s" (%(column)s).</field>
+            <field name="text">Syntax error for %(value)r in "%(field)s" of "%(model)s" at row %(row)d and column %(column)d.</field>
         </record>
         <record model="ir.message" id="msg_reference_syntax_error">
-            <field name="text">Syntax error for reference: %(value)r in "%(field)s" of "%(model)s" (%(column)s).</field>
+            <field name="text">Syntax error for %(value)r in "%(field)s" of "%(model)s" at row %(row)d and column %(column)d.</field>
         </record>
         <record model="ir.message" id="msg_domain_validation_record">
             <field name="text">The value "%(value)s" for field "%(field)s" in record "%(record)s" of "%(model)s" is not valid according to its domain.</field>
