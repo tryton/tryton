@@ -6,6 +6,7 @@ from trytond.i18n import gettext
 from trytond.modules.stock_supply.exceptions import SupplyWarning
 from trytond.pool import Pool, PoolMeta
 from trytond.pyson import Eval, If
+from trytond.transaction import check_access
 from trytond.wizard import StateAction
 
 
@@ -77,12 +78,14 @@ class StockSupply(metaclass=PoolMeta):
         Move = pool.get('stock.move')
         Warning = pool.get('res.user.warning')
         today = Date.today()
-        if Move.search([
+        with check_access():
+            moves = Move.search([
                     ('from_location.type', '=', 'production'),
                     ('to_location.type', '=', 'storage'),
                     ('state', '=', 'draft'),
                     ('planned_date', '<', today),
-                    ], order=[]):
+                    ], order=[])
+        if moves:
             key = '%s@%s' % (self.__name__, today)
             if Warning.check(key):
                 raise SupplyWarning(
