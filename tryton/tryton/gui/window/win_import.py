@@ -201,7 +201,8 @@ class WinImport(WinCSV):
 
             fname = self.import_csv_file.get_filename()
             if fname:
-                self.import_csv(fname, fields)
+                if not self.import_csv(fname, fields):
+                    return
         self.destroy()
 
     def import_csv(self, fname, fields):
@@ -252,3 +253,4 @@ class WinImport(WinCSV):
             common.message(_('%d record imported.') % count)
         else:
             common.message(_('%d records imported.') % count)
+        return count
