@@ -686,7 +686,8 @@ var Sao = {
         jQuery(window).click(function() {
             Sao.favorites_menu_clear();
         });
-        if (!jQuery('#user-favorites').children('.dropdown-menu').length) {
+        if (Sao.main_menu_screen &&
+            !jQuery('#user-favorites').children('.dropdown-menu').length) {
             var name = Sao.main_menu_screen.model_name + '.favorite';
             var session = Sao.Session.current_session;
             var args = {
@@ -782,6 +783,9 @@ var Sao = {
 
     Sao.main_menu_row_activate = function() {
         var screen = Sao.main_menu_screen;
+        if (!screen) {
+            return;
+        }
         const id = screen.get_id();
         if (id) {
             // ids is not defined to prevent to add suffix
@@ -894,6 +898,9 @@ var Sao = {
         favorite_click: function(e) {
             // Prevent activate the action of the row
             e.stopImmediatePropagation();
+            if (!Sao.main_menu_screen) {
+                return;
+            }
             var button = e.data.button;
             var method, icon;
             var star = button.data('star');
@@ -1024,7 +1031,7 @@ var Sao = {
         },
         update: function(text) {
             var ir_model = new Sao.Model('ir.model');
-            if (!text) {
+            if (!text || ! Sao.main_menu_screen) {
                 return jQuery.when([]);
             }
             return ir_model.execute('global_search',
@@ -1045,6 +1052,9 @@ var Sao = {
                 });
         },
         match_selected: function(item) {
+            if (!Sao.main_menu_screen) {
+                return;
+            }
             if (item.model == Sao.main_menu_screen.model_name) {
                 // ids is not defined to prevent to add suffix
                 Sao.Action.exec_keyword('tree_open', {
