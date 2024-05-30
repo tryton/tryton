@@ -168,9 +168,12 @@ class One2Many(Field):
             if self.filter:
                 clause.append(self.filter)
             targets.append([r.id for r in Target.search(clause, order=order)])
-        targets = Target.read(list(chain(*targets)), ['id', self.field])
+        to_read = list(chain(*targets))
+        targets = {t['id']: t
+            for t in Target.read(to_read, ['id', self.field])}
 
-        for target in targets:
+        for read_id in to_read:
+            target = targets[read_id]
             if reference_key:
                 _, origin_id = target[self.field].split(',', 1)
                 origin_id = int(origin_id)

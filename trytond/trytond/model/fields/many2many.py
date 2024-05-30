@@ -165,10 +165,12 @@ class Many2Many(Field):
                 clause.append((self.target, 'where', self.filter))
             relations.append(
                 [r.id for r in Relation.search(clause, order=order)])
-        relations = Relation.read(
-            list(chain(*relations)), [self.origin, self.target])
+        to_read = list(chain(*relations))
+        relations = {t['id']: t
+            for t in Relation.read(to_read, [self.origin, self.target])}
 
-        for relation in relations:
+        for read_id in to_read:
+            relation = relations[read_id]
             if reference_key:
                 _, origin_id = relation[self.origin].split(',', 1)
                 origin_id = int(origin_id)

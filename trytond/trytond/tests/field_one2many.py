@@ -147,6 +147,27 @@ class One2ManyContextTarget(ModelSQL):
         return context.get('test')
 
 
+class One2ManyOrder(ModelSQL):
+    "One2Many Order"
+    __name__ = 'test.one2many_order'
+    targets = fields.One2Many(
+        'test.one2many_order.target', 'origin', "Targets")
+    reversed_targets = fields.One2Many(
+        'test.one2many_order.target', 'origin', "Reversed Targets",
+        order=[('id', 'ASC')])
+
+
+class One2ManyOrderTarget(ModelSQL):
+    "One2Many Order Target"
+    __name__ = 'test.one2many_order.target'
+    origin = fields.Many2One('test.one2many_order', "Origin")
+
+    @classmethod
+    def __setup__(cls):
+        super().__setup__()
+        cls._order = [('id', 'DESC')]
+
+
 def register(module):
     Pool.register(
         One2Many,
@@ -167,4 +188,6 @@ def register(module):
         One2ManyFilterDomainTarget,
         One2ManyContext,
         One2ManyContextTarget,
+        One2ManyOrder,
+        One2ManyOrderTarget,
         module=module, type_='model')

@@ -756,6 +756,29 @@ class FieldMany2ManyTestCase(unittest.TestCase, CommonTestCaseMixin):
 
         self.assertEqual(record.targets[0].context, 'foo')
 
+    @with_transaction()
+    def test_read_order(self):
+        "Test read on many2many respect the order specified"
+        pool = Pool()
+        Many2Many = pool.get('test.many2many_order')
+        Target = pool.get('test.many2many_order.target')
+        Relation = pool.get('test.many2many_order.relation')
+
+        origin, = Many2Many.create([{}])
+        targets = Target.create([{}, {}, {}])
+        Relation.create([{
+                    'origin': origin.id,
+                    'target': t.id,
+                    } for t in targets])
+
+        origin, = Many2Many.browse([origin.id])
+        self.assertEqual(
+            [t.id for t in origin.targets],
+            sorted([t.id for t in targets]))
+        self.assertEqual(
+            [t.id for t in origin.reversed_targets],
+            sorted([t.id for t in targets], reverse=True))
+
 
 class FieldMany2ManyReferenceTestCase(unittest.TestCase, CommonTestCaseMixin):
     "Test Field Many2Many Reference"

@@ -693,6 +693,30 @@ class FieldOne2ManyTestCase(
 
         self.assertEqual(record.targets[0].context, record.id)
 
+    @with_transaction()
+    def test_read_order(self):
+        "Test read on one2many respect the order specified"
+        pool = Pool()
+        One2Many = pool.get('test.one2many_order')
+        Target = pool.get('test.one2many_order.target')
+
+        origin, = One2Many.create([{}])
+        targets = Target.create([{
+                    'origin': origin.id,
+                    }, {
+                    'origin': origin.id,
+                    }, {
+                    'origin': origin.id,
+                    }])
+
+        origin, = One2Many.browse([origin.id])
+        self.assertEqual(
+            [t.id for t in origin.targets],
+            sorted([t.id for t in targets], reverse=True))
+        self.assertEqual(
+            [t.id for t in origin.reversed_targets],
+            sorted([t.id for t in targets]))
+
 
 class FieldOne2ManyReferenceTestCase(
         unittest.TestCase, CommonTestCaseMixin, SearchTestCaseMixin):
