@@ -228,16 +228,8 @@
     ];
 
     Sao.common.date_format = function(format) {
-        if (jQuery.isEmptyObject(format)) {
-            format = '%x';
-            if (Sao.Session.current_session) {
-                var context = Sao.Session.current_session.context;
-                if (context.locale && context.locale.date) {
-                    format = context.locale.date;
-                }
-            }
-        }
-        return Sao.common.moment_format(format);
+        return Sao.common.moment_format(
+            format || Sao.i18n.locale.date || '%x');
     };
 
     Sao.common.format_time = function(format, date) {

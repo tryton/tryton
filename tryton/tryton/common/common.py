@@ -37,6 +37,7 @@ from string import Template
 from threading import Lock, Thread
 
 import tryton.rpc as rpc
+import tryton.translate as translate
 from tryton.cache import CacheDict
 from tryton.config import CONFIG, PIXMAPS_DIR, SOUNDS_DIR, TRYTON_ICON
 
@@ -1528,7 +1529,7 @@ def get_align(float_, expand=True):
 
 
 def date_format(format_=None):
-    return format_ or rpc.CONTEXT.get('locale', {}).get('date', '%x')
+    return format_ or translate.DATE or '%x'
 
 
 def idle_add(func):
