@@ -12,6 +12,7 @@ from gi.repository import Gtk
 from tryton.config import CURRENT_DIR
 
 _ = gettext.gettext
+DATE = None
 
 _LOCALE2WIN32 = {
     'af_ZA': 'Afrikaans_South Africa',
@@ -196,8 +197,10 @@ def setlang(lang=None, locale_dict=None):
         conv = locale.localeconv()
         for field in list(locale_dict.keys()):
             if field == 'date':
-                continue
-            conv[field] = locale_dict[field]
+                global DATE
+                DATE = locale_dict[field]
+            else:
+                conv[field] = locale_dict[field]
         locale.localeconv = lambda: conv
 
 
