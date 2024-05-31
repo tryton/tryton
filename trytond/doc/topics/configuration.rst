@@ -790,6 +790,30 @@ The timeout duration of the select call when listening on a channel.
 
 Default: ``5``
 
+.. _config-report:
+
+report
+------
+
+.. _config-report.convert_command:
+
+convert_command
+---------------
+
+The command to convert document between formats.
+
+The available keywords are:
+
+   - ``%(directory)s``: the temporary working directory
+   - ``%(input_format)s``: the format of the file to convert
+   - ``%(input_extension)s``: the extension of the file to convert
+   - ``%(input_path)s``: the path of the file to convert
+   - ``%(output_format)s``: the format to which the file must be converted
+   - ``%(output_extension)s``: the extension for the converted file
+   - ``%(output_path)s``: the path where the converted file must be written
+
+The command must write the result in ``%(output_path)s``.
+
 .. _config-html:
 
 html

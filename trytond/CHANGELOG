@@ -1,3 +1,4 @@
+* Add configuration for report convert command
 * Use process pool to run cron
 * Lock only running cron record
 * Add option to skip tests that require network

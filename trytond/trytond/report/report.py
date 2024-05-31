@@ -6,6 +6,8 @@ import logging
 import math
 import operator
 import os
+import pathlib
+import shutil
 import subprocess
 import tempfile
 import time
@@ -31,6 +33,7 @@ except ImportError:
 from genshi.filters import Translator
 from genshi.template.text import TextTemplate
 
+from trytond.config import config
 from trytond.exceptions import UserError
 from trytond.i18n import gettext
 from trytond.pool import Pool, PoolBase
@@ -109,6 +112,13 @@ NO_BREAKING_SPACE = '\u00A0'
 # 56 with 12 for username and 8 for random. So 162 should be the maximum but we
 # round it to 100.
 REPORT_NAME_MAX_LENGTH = 100
+
+CONVERT_COMMAND = config.get(
+    'report', 'convert_command',
+    default='soffice --headless --nolockcheck --nodefault --norestore '
+    '--convert-to "%(output_extension)s" '
+    '--outdir "%(directory)s" '
+    '"%(input_path)s"')
 
 
 class TranslateFactory:
@@ -382,42 +392,48 @@ class Report(URLMixin, PoolBase):
         if input_format == output_format and output_format in MIMETYPES:
             return output_format, data
 
-        dtemp = tempfile.mkdtemp(prefix='trytond_')
-        path = os.path.join(
-            dtemp, report.report_name + os.extsep + input_format)
-        oext = FORMAT2EXT.get(output_format, output_format)
+        directory = tempfile.mkdtemp(prefix='trytond_')
+        input_extension = FORMAT2EXT.get(input_format, input_format)
+        output_extension = FORMAT2EXT.get(output_format, output_format)
+        path = pathlib.Path(directory, report.report_name)
+        input_path = path.with_suffix(os.extsep + input_extension)
+        output_path = path.with_suffix(os.extsep + output_extension)
         mode = 'w+' if isinstance(data, str) else 'wb+'
-        with open(path, mode) as fp:
+        with open(input_path, mode) as fp:
             fp.write(data)
         try:
-            cmd = ['soffice',
-                '--headless', '--nolockcheck', '--nodefault', '--norestore',
-                '--convert-to', oext, '--outdir', dtemp, path]
-            output = os.path.splitext(path)[0] + os.extsep + oext
+            cmd = CONVERT_COMMAND % {
+                'directory': directory,
+                'input_format': input_format,
+                'input_extension': input_extension,
+                'input_path': input_path,
+                'output_format': output_format,
+                'output_extension': output_extension,
+                'output_path': output_path,
+                }
             for count in range(retry, -1, -1):
                 if count != retry:
                     time.sleep(0.02 * (retry - count))
                 try:
-                    subprocess.check_call(cmd, timeout=timeout)
+                    subprocess.check_call(cmd, timeout=timeout, shell=True)
                 except subprocess.CalledProcessError:
                     if count:
                         continue
                     logger.error(
-                        "fail to convert %s to %s", report.report_name, oext,
-                        exc_info=True)
+                        "fail to convert %s to %s",
+                        report.report_name, output_format, exc_info=True)
                     break
-                if os.path.exists(output):
-                    with open(output, 'rb') as fp:
-                        return oext, fp.read()
+                if os.path.exists(output_path):
+                    with open(output_path, 'rb') as fp:
+                        return output_extension, fp.read()
             else:
                 logger.error(
-                    'fail to convert %s to %s', report.report_name, oext)
+                    'fail to convert %s to %s',
+                    report.report_name, output_format)
             return input_format, data
         finally:
             try:
-                os.remove(path)
-                os.remove(output)
-                os.rmdir(dtemp)
+                shutil.rmtree(directory, ignore_errors=True)
             except OSError:
                 pass
 
