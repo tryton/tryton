@@ -22,4 +22,4 @@ Pro`_, it is set to the "Exception" state.
 After fixing the data, you can resend the invoice by clicking on
 :guilabel:`Send` button.
 
-.. _Chorus Pro: https://chorus-pro.gouv.fr/
+.. _Chorus Pro: https://portail.chorus-pro.gouv.fr/
