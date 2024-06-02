@@ -85,7 +85,7 @@ except ImportError:
     def convert_ascii_email(email):
         return email
 
-    class EmailNotValidError(Exception):
+    class EmailNotValidError(ValueError):
         pass
 
 

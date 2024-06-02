@@ -13,6 +13,7 @@ from trytond.config import config
 from trytond.pool import Pool
 from trytond.sendmail import send_test_email
 from trytond.tools import file_open
+from trytond.tools.email_ import EmailNotValidError, validate_email
 from trytond.transaction import Transaction, TransactionError, inactive_records
 
 __all__ = ['run']
@@ -79,8 +80,16 @@ def run(options):
         if options.email is not None:
             email = options.email
         elif init[db_name]:
-            email = input(
-                '"admin" email for "%s": ' % db_name)
+            while True:
+                email = input(
+                    '"admin" email for "%s" (empty for none): ' % db_name)
+                if email:
+                    try:
+                        validate_email(email)
+                    except EmailNotValidError as e:
+                        sys.stderr.write(str(e) + '\n')
+                        continue
+                break
         else:
             email = None
 
