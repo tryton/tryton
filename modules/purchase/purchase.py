@@ -221,7 +221,7 @@ class Purchase(
             'stock.shipment.in.return', None, None, "Shipment Returns"),
         'get_shipment_returns', searcher='search_shipment_returns')
     moves = fields.Function(
-        fields.Many2Many('stock.move', None, None, "Moves"),
+        fields.Many2Many('stock.move', None, None, "Stock Moves"),
         'get_moves', searcher='search_moves')
 
     quoted_by = employee_field(
@@ -1258,13 +1258,13 @@ class Line(sequence_ordered(), ModelSQL, ModelView):
         fields.Float("Invoice Progress", digits=(1, 4)),
         'get_invoice_progress')
     moves = fields.One2Many(
-        'stock.move', 'origin', "Moves", readonly=True,
+        'stock.move', 'origin', "Stock Moves", readonly=True,
         states={
             'invisible': ~Eval('moves'),
             })
     moves_ignored = fields.Many2Many(
         'purchase.line-ignored-stock.move', 'purchase_line', 'move',
-        "Ignored Moves",
+        "Ignored Stock Moves",
         domain=[
             ('id', 'in', Eval('moves', [])),
             ('state', '=', 'cancelled'),
@@ -1272,8 +1272,9 @@ class Line(sequence_ordered(), ModelSQL, ModelView):
         states={
             'invisible': ~Eval('moves_ignored'),
             })
-    moves_recreated = fields.Many2Many('purchase.line-recreated-stock.move',
-            'purchase_line', 'move', 'Recreated Moves', readonly=True)
+    moves_recreated = fields.Many2Many(
+        'purchase.line-recreated-stock.move', 'purchase_line', 'move',
+        "Recreated Stock Moves", readonly=True)
     moves_exception = fields.Function(
         fields.Boolean("Moves Exception"), 'get_moves_exception')
     moves_progress = fields.Function(
@@ -2089,7 +2090,7 @@ class LineIgnoredMove(ModelSQL):
     purchase_line = fields.Many2One(
         'purchase.line', "Purchase Line", ondelete='CASCADE', required=True)
     move = fields.Many2One(
-        'stock.move', "Move", ondelete='RESTRICT', required=True,
+        'stock.move', "Stock Move", ondelete='RESTRICT', required=True,
         domain=[
             ('origin.id', '=', Eval('purchase_line', -1), 'purchase.line'),
             ('state', '=', 'cancelled'),
@@ -2109,7 +2110,7 @@ class LineRecreatedMove(ModelSQL):
     purchase_line = fields.Many2One(
         'purchase.line', "Purchase Line", ondelete='CASCADE', required=True)
     move = fields.Many2One(
-        'stock.move', "Move", ondelete='RESTRICT', required=True,
+        'stock.move', "Stock Move", ondelete='RESTRICT', required=True,
         domain=[
             ('origin.id', '=', Eval('purchase_line', -1), 'purchase.line'),
             ('state', '=', 'cancelled'),
@@ -2171,12 +2172,12 @@ class HandleShipmentExceptionAsk(ModelView):
     'Handle Shipment Exception'
     __name__ = 'purchase.handle.shipment.exception.ask'
     recreate_moves = fields.Many2Many(
-        'stock.move', None, None, 'Recreate Moves',
+        'stock.move', None, None, 'Recreate Stock Moves',
         domain=[('id', 'in', Eval('domain_moves'))],
         help=('The selected moves will be recreated. '
             'The other ones will be ignored.'))
     domain_moves = fields.Many2Many(
-        'stock.move', None, None, 'Domain Moves')
+        'stock.move', None, None, 'Domain Stock Moves')
 
 
 class HandleShipmentException(Wizard):
