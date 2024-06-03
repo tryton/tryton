@@ -3,9 +3,12 @@
 @import "bootstrap";
 @import "bootstrap-rtl";
 @import "sao-variables";
+html {
+    user-select: none;
+}
+
 html[theme="default"] {
     @import "theme";
-    user-select: none;
 }
 
 // Fix double rtl prefix
