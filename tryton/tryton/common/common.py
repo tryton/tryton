@@ -710,6 +710,10 @@ class MessageDialog(UniqueDialog):
             message_type=msg_type, buttons=buttons, text=message)
         if secondary:
             dialog.format_secondary_text(secondary)
+        area = dialog.get_message_area()
+        for child in area.get_children():
+            if isinstance(child, Gtk.Label):
+                child.set_selectable(True)
         return dialog
 
     def __call__(self, message, *args, **kwargs):
