@@ -11,11 +11,11 @@ this repository contains the full copyright notices and license terms. -->
     <field name="shipment_out_sequence"/>
     <label name="shipment_out_return_sequence" string="Customer Return Sequence"/>
     <field name="shipment_out_return_sequence"/>
-    <label name="shipment_internal_sequence"/>
-    <field name="shipment_internal_sequence" string="Internal Sequence"/>
-    <label name="shipment_internal_transit"/>
-    <field name="shipment_internal_transit" string="Internal Transit"/>
+    <label name="shipment_internal_sequence" string="Internal Sequence"/>
+    <field name="shipment_internal_sequence"/>
+    <label name="shipment_internal_transit" string="Internal Transit"/>
+    <field name="shipment_internal_transit"/>
     <separator id="inventory" colspan="4" string="Inventory"/>
-    <label name="inventory_sequence"/>
-    <field name="inventory_sequence" string="Sequence"/>
+    <label name="inventory_sequence" string="Sequence"/>
+    <field name="inventory_sequence"/>
 </form>
