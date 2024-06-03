@@ -28,6 +28,20 @@ this repository contains the full copyright notices and license terms. -->
             <field name="perm_delete" eval="False"/>
         </record>
 
+        <record model="ir.action.act_window" id="act_invoice_line_form">
+            <field name="name">Invoice Lines</field>
+            <field name="res_model">account.invoice.line</field>
+            <field
+                name="domain"
+                eval="[('origin.id', 'in', Eval('active_ids', []), 'purchase.line')]"
+                pyson="1"/>
+        </record>
+        <record model="ir.action.keyword" id="act_invoice_line_form_keyword1">
+            <field name="keyword">form_relate</field>
+            <field name="model">purchase.line,-1</field>
+            <field name="action" ref="act_invoice_line_form"/>
+        </record>
+
         <record model="ir.model.access" id="access_invoice_line_purchase">
             <field name="model">account.invoice.line</field>
             <field name="group" ref="group_purchase"/>

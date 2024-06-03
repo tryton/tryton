@@ -36,7 +36,12 @@ this repository contains the full copyright notices and license terms. -->
             <field name="res_model">stock.move</field>
             <field
                 name="domain"
-                eval="[If(Eval('active_ids', []) == [Eval('active_id')], ('purchase', '=', Eval('active_id')), ('purchase', 'in', Eval('active_ids')))]"
+                eval="[
+                If(Eval('active_model') == 'purchase.purchase',
+                ('purchase', 'in', Eval('active_ids', [])), ()),
+                If(Eval('active_model') == 'purchase.line',
+                ('origin.id', 'in', Eval('active_ids', []), 'purchase.line'), ()),
+                ]"
                 pyson="1"/>
         </record>
         <record model="ir.action.act_window.view" id="act_move_form_view1">
@@ -49,9 +54,14 @@ this repository contains the full copyright notices and license terms. -->
             <field name="view" ref="stock.move_view_form"/>
             <field name="act_window" ref="act_purchase_move_relate"/>
         </record>
-        <record model="ir.action.keyword" id="act_move_form_keyword1">
+        <record model="ir.action.keyword" id="act_move_form_keyword_purchase">
             <field name="keyword">form_relate</field>
             <field name="model">purchase.purchase,-1</field>
+            <field name="action" ref="act_purchase_move_relate"/>
+        </record>
+        <record model="ir.action.keyword" id="act_move_form_keyword_purchase_line">
+            <field name="keyword">form_relate</field>
+            <field name="model">purchase.line,-1</field>
             <field name="action" ref="act_purchase_move_relate"/>
         </record>
 
