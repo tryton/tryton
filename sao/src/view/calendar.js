@@ -346,20 +346,24 @@
             if (!this.start && !this.end) {
                 return [['id', '=', -1]];
             }
-            var first_datetime = Sao.DateTime(this.start);
-            var last_datetime = Sao.DateTime(this.end);
+            var start = Sao.DateTime(this.start);
+            var end = Sao.DateTime(this.end);
             var dtstart = this.attributes.dtstart;
             var dtend = this.attributes.dtend || dtstart;
+            var fields = this.screen.model.fields;
+            if (fields[dtstart].description.type == 'date') {
+                start = start.todate();
+            }
+            if (fields[dtend].description.type == 'date') {
+                end = end.todate();
+            }
             return [
                 [dtstart, '!=', null],
                 [dtend, '!=', null],
                 ['OR',
-                    ['AND', [dtstart, '>=', first_datetime],
-                        [dtstart,  '<',  last_datetime]],
-                    ['AND', [dtend, '>=', first_datetime],
-                        [dtend, '<', last_datetime]],
-                    ['AND',  [dtstart, '<', first_datetime],
-                        [dtend, '>', last_datetime]],
+                    ['AND', [dtstart, '>=', start], [dtstart,  '<', end]],
+                    ['AND', [dtend, '>=', start], [dtend, '<', end]],
+                    ['AND',  [dtstart, '<', start], [dtend, '>', end]],
                 ],
             ];
         },
