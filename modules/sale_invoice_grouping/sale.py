@@ -7,8 +7,8 @@ from trytond.pool import PoolMeta
 from trytond.transaction import Transaction
 
 
-class Sale(metaclass=PoolMeta):
-    __name__ = 'sale.sale'
+class InvoiceGroupingMixin:
+    __slots__ = ()
 
     @property
     def invoice_grouping_method(self):
@@ -17,7 +17,7 @@ class Sale(metaclass=PoolMeta):
 
     @property
     def _invoice_grouping_origins(self):
-        return ['sale.line']
+        return ['sale.line', 'sale.rental.line']
 
     def _get_invoice_grouping_fields(self, invoice):
         return {'state', 'company', 'type', 'journal', 'party',
@@ -59,6 +59,10 @@ class Sale(metaclass=PoolMeta):
                 invoice, = grouped_invoices
         return invoice
 
+
+class Sale(InvoiceGroupingMixin, metaclass=PoolMeta):
+    __name__ = 'sale.sale'
+
     @classmethod
     def _process_invoice(cls, sales):
         for method, sales in groupby(
@@ -68,3 +72,17 @@ class Sale(metaclass=PoolMeta):
                     super()._process_invoice([sale])
             else:
                 super()._process_invoice(list(sales))
+
+
+class Rental(InvoiceGroupingMixin, metaclass=PoolMeta):
+    __name__ = 'sale.rental'
+
+    @classmethod
+    def invoice(cls, rentals):
+        for method, rentals in groupby(
+                rentals, lambda r: r.invoice_grouping_method):
+            if method:
+                for rental in rentals:
+                    super().invoice([rental])
+            else:
+                super().invoice(list(rentals))
