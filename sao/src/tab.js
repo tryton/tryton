@@ -1210,7 +1210,7 @@
                 this.refresh_resources(true);
             });
             for (const file of files) {
-                Sao.common.get_file_data(file, window_.add_data);
+                Sao.common.get_file_data(file, window_.add_data.bind(window_));
             }
             jQuery.when.apply(jQuery, uris).then(function() {
                 function empty(value) {
