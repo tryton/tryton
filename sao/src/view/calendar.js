@@ -309,13 +309,18 @@
             var last_datetime = Sao.DateTime(this.end);
             var dtstart = this.attributes.dtstart;
             var dtend = this.attributes.dtend || dtstart;
-            return ['OR',
+            return [
+                [dtstart, '!=', null],
+                [dtend, '!=', null],
+                ['OR',
                     ['AND', [dtstart, '>=', first_datetime],
                         [dtstart,  '<',  last_datetime]],
                     ['AND', [dtend, '>=', first_datetime],
                         [dtend, '<', last_datetime]],
                     ['AND',  [dtstart, '<', first_datetime],
-                        [dtend, '>', last_datetime]]];
+                        [dtend, '>', last_datetime]],
+                ],
+            ];
         },
         get_displayed_period: function(){
             var DatesPeriod = [];
