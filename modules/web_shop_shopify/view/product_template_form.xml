@@ -2,8 +2,10 @@
 <!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
 this repository contains the full copyright notices and license terms. -->
 <data>
-    <xpath expr="//page[@id='customers']" position="inside">
+    <xpath expr="//page[@id='web_shop']" position="inside">
+        <newline/>
         <label name="shopify_uom"/>
         <field name="shopify_uom"/>
+        <newline/>
     </xpath>
 </data>
