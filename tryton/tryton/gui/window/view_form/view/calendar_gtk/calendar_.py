@@ -67,13 +67,18 @@ class Calendar_(goocalendar.Calendar):
             self.current_domain_period.get_dates(True)
         dtstart = self.attrs['dtstart']
         dtend = self.attrs.get('dtend') or dtstart
-        domain = ['OR',
-            ['AND', (dtstart, '>=', first_datetime),
-                (dtstart, '<', last_datetime)],
-            ['AND', (dtend, '>=', first_datetime),
-                (dtend, '<', last_datetime)],
-            ['AND', (dtstart, '<', first_datetime),
-                (dtend, '>', last_datetime)]]
+        domain = [
+            (dtstart, '!=', None),
+            (dtend, '!=', None),
+            ['OR',
+                ['AND', (dtstart, '>=', first_datetime),
+                    (dtstart, '<', last_datetime)],
+                ['AND', (dtend, '>=', first_datetime),
+                    (dtend, '<', last_datetime)],
+                ['AND', (dtstart, '<', first_datetime),
+                    (dtend, '>', last_datetime)],
+                ],
+            ]
         return domain
 
     def get_colors(self, record):
