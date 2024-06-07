@@ -263,7 +263,7 @@ class AccountEsSiiTestCase(ModuleTestCase):
             tax_detail = {
                 'DetalleIVA': [{
                         'BaseImponible': Decimal('50.00'),
-                        'TipoImpositivo': '10.0',
+                        'TipoImpositivo': '10.00',
                         'CuotaRepercutida': (
                             Decimal('5.00')),
                         'TipoRecargoEquivalencia': '1.4',
@@ -403,7 +403,7 @@ class AccountEsSiiTestCase(ModuleTestCase):
             tax_detail = {
                 'DetalleIVA': [{
                     'BaseImponible': Decimal('50.00'),
-                    'TipoImpositivo': '10.0',
+                    'TipoImpositivo': '10.00',
                     'CuotaRepercutida': Decimal('5.00'),
                     }, {
                     'BaseImponible': Decimal('50.00'),
@@ -502,7 +502,7 @@ class AccountEsSiiTestCase(ModuleTestCase):
                 'DesgloseIVA': {
                     'DetalleIVA': [{
                             'BaseImponible': Decimal('50.00'),
-                            'TipoImpositivo': '10.0',
+                            'TipoImpositivo': '10.00',
                             'CuotaSoportada': Decimal('5.00')}]}}
             self.assertDictEqual(
                 payload['FacturaRecibida']['DesgloseFactura'], invoice_detail)
