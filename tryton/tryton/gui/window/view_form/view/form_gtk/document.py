@@ -1,7 +1,6 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 from pathlib import Path
-from tempfile import NamedTemporaryFile
 
 from gi.repository import Gtk, Gdk, GLib
 try:
@@ -75,17 +74,17 @@ class Document(BinaryMixin, Widget):
             self.image.hide()
             if self.evince_view:
                 self.evince_scroll.show()
+                suffix = None
                 if self.filename_field:
-                    suffix = self.filename_field.get(self.record)
-                else:
-                    suffix = None
+                    filename = self.filename_field.get(self.record)
+                    if filename:
+                        suffix = Path(filename).suffix
+                filename = Path(self.field.get_filename(self.record, suffix))
                 try:
-                    with NamedTemporaryFile(suffix=suffix) as fp:
-                        fp.write(data)
-                        path = Path(fp.name)
-                        document = (
-                            EvinceDocument.Document.factory_get_document(
-                                path.as_uri()))
+                    document = (
+                        EvinceDocument.Document.factory_get_document_full(
+                            filename.as_uri(),
+                            EvinceDocument.DocumentLoadFlags.NONE))
                     model = EvinceView.DocumentModel()
                     model.set_document(document)
                     self.evince_view.set_model(model)
