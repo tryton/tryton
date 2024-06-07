@@ -10,6 +10,7 @@ import operator
 import os
 from decimal import Decimal
 from itertools import chain
+from pathlib import Path
 
 import tryton.common as common
 from tryton.common import (
@@ -1070,26 +1071,56 @@ class ReferenceField(Field):
 
 
 class _FileCache(object):
-    def __init__(self, path):
-        self.path = path
+    def __init__(self, data=None):
+        _, filename = tempfile.mkstemp(prefix='tryton_')
+        self.path = Path(filename)
+        self.suffixes = {}
+        if data:
+            with open(self.path, 'wb') as fp:
+                fp.write(data)
+
+    @property
+    def data(self):
+        with open(self.path, 'rb') as fp:
+            return fp.read()
 
     def __del__(self):
         try:
             os.remove(self.path)
         except IOError:
             pass
+        for path in self.suffixes.values():
+            try:
+                os.remove(path)
+            except IOError:
+                pass
+
+    def with_suffix(self, suffix):
+        if suffix in self.suffixes:
+            return self.suffixes[suffix]
+        _, filename = tempfile.mkstemp(prefix='tryton_', suffix=suffix)
+        self.suffixes[suffix] = path = Path(filename)
+        with open(path, 'wb') as fp:
+            fp.write(self.data)
+        return path
 
 
 class BinaryField(Field):
 
     _default = None
 
+    def _set_file_cache(self, record, data):
+        if isinstance(data, str):
+            data = data.encode('utf-8')
+        file_cache = _FileCache(data)
+        self.set(record, file_cache)
+        return file_cache
+
     def get(self, record):
         result = record.value.get(self.name, self._default)
         if isinstance(result, _FileCache):
             try:
-                with open(result.path, 'rb') as fp:
-                    result = fp.read()
+                result = result.data
             except IOError:
                 result = self.get_data(record)
         return result
@@ -1098,13 +1129,7 @@ class BinaryField(Field):
         return self.get(record)
 
     def set_client(self, record, value, force_change=False):
-        _, filename = tempfile.mkstemp(prefix='tryton_')
-        data = value or b''
-        if isinstance(data, str):
-            data = data.encode('utf-8')
-        with open(filename, 'wb') as fp:
-            fp.write(data)
-        self.set(record, _FileCache(filename))
+        self._set_file_cache(record, value or b'')
         self.sig_changed(record)
         record.validate(softvalidation=True)
         record.set_modified(self.name)
@@ -1128,14 +1153,19 @@ class BinaryField(Field):
                     [record.id], [self.name], context=context)
             except RPCException:
                 return b''
-            _, filename = tempfile.mkstemp(prefix='tryton_')
-            data = values[self.name] or b''
-            if isinstance(data, str):
-                data = data.encode('utf-8')
-            with open(filename, 'wb') as fp:
-                fp.write(data)
-            self.set(record, _FileCache(filename))
+            self._set_file_cache(record, values[self.name] or b'')
         return self.get(record)
+
+    def get_filename(self, record, suffix=None):
+        data = self.get_data(record)
+        file_cache = record.value.get(self.name)
+        if not isinstance(file_cache, _FileCache):
+            file_cache = self._set_file_cache(record, data)
+        if suffix:
+            filename = file_cache.with_suffix(suffix)
+        else:
+            filename = file_cache.path
+        return filename
 
 
 class DictField(Field):
