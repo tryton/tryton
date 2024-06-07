@@ -25,7 +25,7 @@ def clean():
     for fname in _files:
         try:
             os.remove(fname)
-        except FileNotFoundError:
+        except (FileNotFoundError, PermissionError):
             pass
     _files.clear()
 
