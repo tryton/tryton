@@ -1,5 +1,6 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
+import logging
 from pathlib import Path
 
 from gi.repository import Gdk, GLib, Gtk
@@ -14,6 +15,8 @@ from tryton.common import data2pixbuf, resize_pixbuf
 
 from .binary import BinaryMixin
 from .widget import Widget
+
+logger = logging.getLogger(__name__)
 
 
 class Document(BinaryMixin, Widget):
@@ -90,5 +93,8 @@ class Document(BinaryMixin, Widget):
                     model.set_document(document)
                     self.evince_view.set_model(model)
                 except GLib.GError:
+                    logger.warning(
+                        f"Could not open document {filename}",
+                        exc_info=True)
                     self.evince_view.set_model(EvinceView.DocumentModel())
                     self.evince_scroll.hide()
