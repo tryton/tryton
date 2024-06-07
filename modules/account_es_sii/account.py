@@ -498,7 +498,7 @@ class InvoiceSII(ModelSQL, ModelView):
         if not tax.es_sii_operation_key:
             return tuple()
         return (
-            ('rate', tax.rate * 100),
+            ('rate', str((tax.rate * 100).quantize(Decimal('0.01')))),
             )
 
     @classmethod
@@ -514,7 +514,7 @@ class InvoiceSII(ModelSQL, ModelView):
             if t.type == 'tax' and not t.tax.es_reported_with)
         values = {
             'BaseImponible': base_amount,
-            'TipoImpositivo': str(key['rate']),
+            'TipoImpositivo': key['rate'],
             'Cuota%s' % key['cuota_suffix']: tax_amount,
             }
         surcharge_taxes = list(t for t in tax_lines
