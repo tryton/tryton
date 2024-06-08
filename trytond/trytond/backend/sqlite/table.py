@@ -279,7 +279,7 @@ class TableHandler(TableHandlerInterface):
         ident = self.convert_name(self.table_name + "_" + ident)
         if database.has_constraint(constraint):
             where = ''
-            if hasattr(constraint, 'where'):
+            if getattr(constraint, 'where', None):
                 where = ' WHERE ' + str(constraint.where)
             cursor.execute(
                 'CREATE UNIQUE INDEX IF NOT EXISTS %s ON %s (%s) %s' % (
