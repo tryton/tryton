@@ -2,6 +2,7 @@
 # repository contains the full copyright notices and license terms.
 
 import unittest
+import warnings
 
 from trytond.model import EvalEnvironment
 from trytond.model.exceptions import (
@@ -192,7 +193,12 @@ class ModelStorageTestCase(unittest.TestCase):
 
         record1 = ModelStorage()
         record1.target = target = Target()
-        record1.save()
+
+        with warnings.catch_warnings(record=True) as w:
+            warnings.simplefilter("always")
+            record1.save()
+            warning, = w
+            self.assertTrue(issubclass(warning.category, UserWarning))
 
         record2 = ModelStorage()
         record2.target = target
@@ -217,7 +223,12 @@ class ModelStorageTestCase(unittest.TestCase):
         target.target = m2o_target = M2OTarget()
         record = ModelStorage()
         record.targets = [target]
-        record.save()
+
+        with warnings.catch_warnings(record=True) as w:
+            warnings.simplefilter("always")
+            record.save()
+            warning, = w
+            self.assertTrue(issubclass(warning.category, UserWarning))
 
         self.assertIsNotNone(record.id)
         self.assertIsNotNone(m2o_target.id)
