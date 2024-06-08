@@ -587,7 +587,7 @@ Ignore shipment exception::
 
     >>> order.reload()
     >>> order.fulfillment_status
-    'partial'
+    'fulfilled'
     >>> len(order.fulfillments)
     1
     >>> order.financial_status
