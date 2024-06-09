@@ -183,11 +183,14 @@ class Incoming(DeactivableMixin, Workflow, ModelSQL, ModelView):
     def from_inbound_email(cls, email_, rule):
         message = email_.as_dict()
         active = not message.get('attachments')
+        data = message.get('text', message.get('html'))
+        if isinstance(data, str):
+            data = data.encode()
         document = cls(
             active=active,
             name=message.get('subject', 'No Subject'),
             company=rule.document_incoming_company,
-            data=message.get('text', message.get('html')),
+            data=data,
             type=rule.document_incoming_type if active else None,
             source='inbound_email',
             )
