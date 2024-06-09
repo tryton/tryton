@@ -1,13 +1,13 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 import datetime
-import unittest
 
 from trytond.report.report import Report
-from trytond.tests.test_tryton import activate_module, with_transaction
+from trytond.tests.test_tryton import (
+    TestCase, activate_module, with_transaction)
 
 
-class ReportTestCase(unittest.TestCase):
+class ReportTestCase(TestCase):
     'Test Report'
 
     @classmethod

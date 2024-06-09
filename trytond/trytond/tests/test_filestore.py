@@ -3,14 +3,14 @@
 import os
 import shutil
 import tempfile
-import unittest
 from unittest.mock import patch
 
 from trytond.config import config
 from trytond.filestore import filestore
+from trytond.tests.test_tryton import TestCase
 
 
-class FileStoreTestCase(unittest.TestCase):
+class FileStoreTestCase(TestCase):
     "Test FileStore"
 
     def setUp(self):

@@ -38,12 +38,22 @@ Tests
    dump and restore operations.
    The default value is the number of CPU.
 
+TestCase
+--------
+
+.. class:: TestCase()
+
+   A subclass of `unittest.TestCase`_ for testing non-module Tryton.
+
+   It setups warning filters based on ``TEST_PYTHONWARNINGS`` environment
+   variable.
+
 ModuleTestCase
 --------------
 
 .. class:: ModuleTestCase()
 
-   A subclass of `unittest.TestCase`_ that tests a Tryton module.
+   A subclass of :class:`TestCase` that tests a Tryton module.
    Some tests are included to ensure that the module works properly.
 
    It creates a temporary database with the module activated in setUpClass_ and
@@ -67,7 +77,7 @@ RouteTestCase
 
 .. class:: RouteTestCase()
 
-   A subclass of `unittest.TestCase`_ to test Tryton routes.
+   A subclass of :class:`TestCase` to test Tryton routes.
 
    It creates a temporary database with the module activated in setUpClass_ and
    drops it in the tearDownClass_ method.

@@ -11,10 +11,11 @@ from trytond.model.exceptions import (
 from trytond.model.modelview import set_visible
 from trytond.pool import Pool
 from trytond.pyson import Eval, PYSONDecoder, PYSONEncoder
-from trytond.tests.test_tryton import activate_module, with_transaction
+from trytond.tests.test_tryton import (
+    TestCase, activate_module, with_transaction)
 
 
-class ModelView(unittest.TestCase):
+class ModelView(TestCase):
     "Test ModelView"
 
     @classmethod

@@ -2,14 +2,14 @@
 # this repository contains the full copyright notices and license terms.
 
 import datetime
-import unittest
 from decimal import ROUND_HALF_DOWN, Decimal
 
 from trytond import backend
 from trytond.modules.currency.ecb import (
     RatesNotAvailableError, UnsupportedCurrencyError, get_rates)
 from trytond.pool import Pool
-from trytond.tests.test_tryton import ModuleTestCase, with_transaction
+from trytond.tests.test_tryton import (
+    ModuleTestCase, TestCase, with_transaction)
 from trytond.transaction import Transaction
 
 
@@ -394,7 +394,7 @@ class CurrencyTestCase(ModuleTestCase):
         self.assertSetEqual(data, result)
 
 
-class ECBtestCase(unittest.TestCase):
+class ECBtestCase(TestCase):
 
     def test_rate_EUR_week_ago(self):
         "Fetch EUR rates a week ago"

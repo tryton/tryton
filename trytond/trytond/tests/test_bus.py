@@ -8,11 +8,11 @@ from unittest.mock import patch
 from trytond import backend, bus
 from trytond.bus import Bus, _MessageQueue, notify
 from trytond.tests.test_tryton import (
-    DB_NAME, activate_module, with_transaction)
+    DB_NAME, TestCase, activate_module, with_transaction)
 from trytond.transaction import Transaction
 
 
-class MessageQueueTestCase(unittest.TestCase):
+class MessageQueueTestCase(TestCase):
 
     def setUp(self):
         self._timestamp = 0
@@ -74,7 +74,7 @@ class MessageQueueTestCase(unittest.TestCase):
         self.assertEqual(content, {'message_id': 10})
 
 
-class BusTestCase(unittest.TestCase):
+class BusTestCase(TestCase):
     "Test Bus"
 
     @classmethod

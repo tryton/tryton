@@ -1,11 +1,11 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
-import unittest
 
 from trytond.model.exceptions import (
     DomainValidationError, RequiredValidationError, SizeValidationError)
 from trytond.pool import Pool
-from trytond.tests.test_tryton import activate_module, with_transaction
+from trytond.tests.test_tryton import (
+    TestCase, activate_module, with_transaction)
 
 
 class CommonTestCaseMixin:
@@ -374,7 +374,7 @@ class CommonTestCaseMixin:
         self.assertIsNone(relation.write_date)
 
 
-class FieldMany2ManyTestCase(unittest.TestCase, CommonTestCaseMixin):
+class FieldMany2ManyTestCase(TestCase, CommonTestCaseMixin):
     "Test Field Many2Many"
 
     @classmethod
@@ -780,7 +780,7 @@ class FieldMany2ManyTestCase(unittest.TestCase, CommonTestCaseMixin):
             sorted([t.id for t in targets], reverse=True))
 
 
-class FieldMany2ManyReferenceTestCase(unittest.TestCase, CommonTestCaseMixin):
+class FieldMany2ManyReferenceTestCase(TestCase, CommonTestCaseMixin):
     "Test Field Many2Many Reference"
 
     @classmethod

@@ -1,7 +1,6 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of this
 # repository contains the full copyright notices and license terms.
 
-import unittest
 import warnings
 
 from trytond.model import EvalEnvironment
@@ -9,11 +8,12 @@ from trytond.model.exceptions import (
     AccessError, DomainValidationError, RequiredValidationError)
 from trytond.model.modelstorage import _UnsavedRecordError
 from trytond.pool import Pool
-from trytond.tests.test_tryton import activate_module, with_transaction
+from trytond.tests.test_tryton import (
+    TestCase, activate_module, with_transaction)
 from trytond.transaction import Transaction, check_access
 
 
-class ModelStorageTestCase(unittest.TestCase):
+class ModelStorageTestCase(TestCase):
     'Test ModelStorage'
 
     @classmethod
@@ -766,7 +766,7 @@ class ModelStorageTestCase(unittest.TestCase):
         Model.delete([record])
 
 
-class EvalEnvironmentTestCase(unittest.TestCase):
+class EvalEnvironmentTestCase(TestCase):
     "Test EvalEnvironment"
 
     @classmethod

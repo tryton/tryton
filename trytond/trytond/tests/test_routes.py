@@ -3,16 +3,16 @@
 
 import base64
 import json
-import unittest
 
 from trytond.pool import Pool
 from trytond.protocols.wrappers import Response
-from trytond.tests.test_tryton import DB_NAME, Client, activate_module, drop_db
+from trytond.tests.test_tryton import (
+    DB_NAME, Client, TestCase, activate_module, drop_db)
 from trytond.transaction import Transaction
 from trytond.wsgi import app
 
 
-class RoutesTestCase(unittest.TestCase):
+class RoutesTestCase(TestCase):
 
     @classmethod
     def setUpClass(cls):

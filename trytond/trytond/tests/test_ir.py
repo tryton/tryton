@@ -25,7 +25,7 @@ from trytond.tools import timezone
 from trytond.transaction import Transaction
 
 from .test_tryton import (
-    ModuleTestCase, activate_module, drop_db, with_transaction)
+    ModuleTestCase, TestCase, activate_module, drop_db, with_transaction)
 
 
 class IrTestCase(ModuleTestCase):
@@ -478,7 +478,7 @@ class IrTestCase(ModuleTestCase):
                 })
 
 
-class IrCronTestCase(unittest.TestCase):
+class IrCronTestCase(TestCase):
     "Test ir.cron features"
 
     @classmethod

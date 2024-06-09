@@ -1,15 +1,13 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of this
 # repository contains the full copyright notices and license terms.
 
-import unittest
-
 from trytond.pool import Pool
 from trytond.transaction import Transaction
 
-from .test_tryton import activate_module, with_transaction
+from .test_tryton import TestCase, activate_module, with_transaction
 
 
-class ModelLogTestCase(unittest.TestCase):
+class ModelLogTestCase(TestCase):
     "Test Model Log"
 
     @classmethod

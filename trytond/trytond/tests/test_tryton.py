@@ -16,6 +16,7 @@ import sys
 import time
 import unittest
 import unittest.mock
+import warnings
 from configparser import ConfigParser
 from fnmatch import fnmatchcase
 from functools import reduce, wraps
@@ -43,8 +44,10 @@ __all__ = [
     'CONTEXT',
     'Client',
     'DB_NAME',
+    'TestCase',
     'ModuleTestCase',
     'RouteTestCase',
+    'ExtensionTestCase',
     'USER',
     'activate_module',
     'doctest_checker',
@@ -282,7 +285,70 @@ def with_transaction(user=1, context=None):
     return decorator
 
 
-class _DBTestCase(unittest.TestCase):
+class TestCase(unittest.TestCase):
+
+    @classmethod
+    def setUpClass(cls):
+        super().setUpClass()
+        if pythonwarnings := os.getenv('TEST_PYTHONWARNINGS'):
+            cm = warnings.catch_warnings()
+            cm.__enter__()
+            cls.addClassCleanup(cm.__exit__, cm, None, None, None)
+            cls.setUpClassWarning(pythonwarnings.split(','))
+
+    @classmethod
+    def setUpClassWarning(cls, options):
+
+        def _getcategory(category):
+            if not category:
+                return Warning
+            if '.' not in category:
+                import builtins as m
+                klass = category
+            else:
+                module, _, klass = category.rpartition('.')
+                try:
+                    m = __import__(module, None, None, [klass])
+                except ImportError:
+                    raise ValueError(
+                        "invalid module name: %r" % module) from None
+            try:
+                cat = getattr(m, klass)
+            except AttributeError:
+                raise ValueError(
+                    "unknown warning category: %r" % category) from None
+            if not issubclass(cat, Warning):
+                raise ValueError("invalid warning category: %r" % category)
+            return cat
+
+        for option in options:
+            parts = option.split(':')
+            if len(parts) > 5:
+                raise ValueError("too many fields (max 5): %r" % option)
+            while len(parts) < 5:
+                parts.append('')
+            action, message, category, module, lineno = [
+                s.strip() for s in parts]
+            if not action:
+                action = 'default'
+            category = _getcategory(category)
+            if message:
+                message = re.escape(message)
+            if module:
+                module = re.escape(module) + r'\Z'
+            if lineno:
+                try:
+                    lineno = int(lineno)
+                    if lineno < 0:
+                        raise ValueError
+                except (ValueError, OverflowError):
+                    raise ValueError("invalid lineno %r" % lineno) from None
+            else:
+                lineno = 0
+            warnings.filterwarnings(action, message, category, module, lineno)
+
+
+class _DBTestCase(TestCase):
     module = None
     extras = None
     language = 'en'
@@ -1036,7 +1102,7 @@ def create_db(name=DB_NAME, lang='en'):
         pool.init()
 
 
-class ExtensionTestCase(unittest.TestCase):
+class ExtensionTestCase(TestCase):
     extension = None
 
     @classmethod

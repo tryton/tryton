@@ -1,9 +1,8 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 
-import unittest
-
 from trytond.model import MatchMixin, fields
+from trytond.tests.test_tryton import TestCase
 
 
 class Model(MatchMixin):
@@ -26,7 +25,7 @@ class Target():
         return f"Target({self.id})"
 
 
-class ModelMatchMixinTestCase(unittest.TestCase):
+class ModelMatchMixinTestCase(TestCase):
     "Test MatchMixin"
 
     def test_match(self):

@@ -19,6 +19,7 @@ except ImportError:
     email_validator = None
 
 from trytond.pool import Pool
+from trytond.tests.test_tryton import TestCase
 from trytond.tools import (
     cached_property, decimal_, email_, escape_wildcard, file_open, firstline,
     grouped_slice, is_full_text, is_instance_method, likify, lstrip_wildcard,
@@ -43,7 +44,7 @@ except ImportError:
     qrcode = None
 
 
-class ToolsTestCase(unittest.TestCase):
+class ToolsTestCase(TestCase):
     'Test tools'
     table = sql.Table('test')
 
@@ -433,7 +434,7 @@ class ToolsTestCase(unittest.TestCase):
                     long_form)
 
 
-class StringPartitionedTestCase(unittest.TestCase):
+class StringPartitionedTestCase(TestCase):
     "Test StringPartitioned"
 
     def test_init(self):
@@ -485,7 +486,7 @@ class StringPartitionedTestCase(unittest.TestCase):
         self.assertEqual(list(s), ['bar', 'foo'])
 
 
-class LazyStringTestCase(unittest.TestCase):
+class LazyStringTestCase(TestCase):
     "Test LazyString"
 
     def test_init(self):
@@ -515,7 +516,7 @@ class LazyStringTestCase(unittest.TestCase):
         self.assertEqual(s, 'barfoo')
 
 
-class ImmutableDictTestCase(unittest.TestCase):
+class ImmutableDictTestCase(TestCase):
     "Test ImmutableDict"
 
     def test_setitem(self):
@@ -575,7 +576,7 @@ class ImmutableDictTestCase(unittest.TestCase):
             d.update({'foo': 'bar'})
 
 
-class DomainInversionTestCase(unittest.TestCase):
+class DomainInversionTestCase(TestCase):
     "Test domain_inversion"
 
     def test_simple_inversion(self):
@@ -1212,7 +1213,7 @@ class DomainInversionTestCase(unittest.TestCase):
 
 
 @unittest.skipUnless(barcode, "required barcode")
-class BarcodeTestCase(unittest.TestCase):
+class BarcodeTestCase(TestCase):
     "Test barcode module"
 
     def test_generate_svg(self):
@@ -1229,7 +1230,7 @@ class BarcodeTestCase(unittest.TestCase):
 
 
 @unittest.skipUnless(qrcode, "required qrcode")
-class QRCodeTestCase(unittest.TestCase):
+class QRCodeTestCase(TestCase):
     "Test qrcode module"
 
     def test_generate_svg(self):
@@ -1268,7 +1269,7 @@ class CachedPropertySlots:
     cached_count = cached_property(get_count)
 
 
-class CachedPropertyTestCase(unittest.TestCase):
+class CachedPropertyTestCase(TestCase):
     "Test cached_property"
 
     def test_cached_property_clear(self):
@@ -1297,7 +1298,7 @@ class CachedPropertyTestCase(unittest.TestCase):
         self.assertEqual(item.cached_count, 2)
 
 
-class EmailTestCase(unittest.TestCase):
+class EmailTestCase(TestCase):
     "Test email"
 
     def test_set_from_header_same(self):

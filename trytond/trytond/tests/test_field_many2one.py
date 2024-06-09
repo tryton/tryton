@@ -1,15 +1,15 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
-import unittest
 
 from sql import Join
 
 from trytond.model.exceptions import DomainValidationError
 from trytond.pool import Pool
-from trytond.tests.test_tryton import activate_module, with_transaction
+from trytond.tests.test_tryton import (
+    TestCase, activate_module, with_transaction)
 
 
-class FieldMany2OneTestCase(unittest.TestCase):
+class FieldMany2OneTestCase(TestCase):
     "Test Field Many2One"
 
     @classmethod
@@ -243,7 +243,7 @@ class FieldMany2OneTestCase(unittest.TestCase):
         self.assertEqual(record.target.context, 'foo')
 
 
-class FieldMany2OneTreeTestCase(unittest.TestCase):
+class FieldMany2OneTreeTestCase(TestCase):
     "Test Field Many2One Tree"
     model_name = 'test.many2one_tree'
 

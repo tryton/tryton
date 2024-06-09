@@ -7,10 +7,10 @@ from trytond.model.dictschema import SelectionError
 from trytond.model.exceptions import RequiredValidationError
 from trytond.pool import Pool
 from trytond.tests.test_tryton import (
-    ExtensionTestCase, activate_module, with_transaction)
+    ExtensionTestCase, TestCase, activate_module, with_transaction)
 
 
-class FieldDictTestCase(unittest.TestCase):
+class FieldDictTestCase(TestCase):
     "Test Field Dict"
 
     @classmethod

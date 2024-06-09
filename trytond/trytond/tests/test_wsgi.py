@@ -1,16 +1,15 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 
-import unittest
 from unittest.mock import Mock, sentinel
 
 from trytond.exceptions import TrytonException
 from trytond.protocols.wrappers import Response
-from trytond.tests.test_tryton import Client
+from trytond.tests.test_tryton import Client, TestCase
 from trytond.wsgi import TrytondWSGI
 
 
-class WSGIAppTestCase(unittest.TestCase):
+class WSGIAppTestCase(TestCase):
     'Test WSGI Application'
 
     class TestException(TrytonException):

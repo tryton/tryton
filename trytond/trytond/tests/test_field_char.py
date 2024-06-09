@@ -10,7 +10,7 @@ from trytond.model.exceptions import (
     ForbiddenCharValidationError, RequiredValidationError, SizeValidationError)
 from trytond.pool import Pool
 from trytond.tests.test_tryton import (
-    ExtensionTestCase, activate_module, with_transaction)
+    ExtensionTestCase, TestCase, activate_module, with_transaction)
 from trytond.transaction import Transaction
 
 
@@ -382,7 +382,7 @@ class CommonTestCaseMixin:
         self.assertEqual(char.char_unstripped, " Foo ")
 
 
-class FieldCharTestCase(unittest.TestCase, CommonTestCaseMixin):
+class FieldCharTestCase(TestCase, CommonTestCaseMixin):
     "Test Field Char"
 
     @classmethod
@@ -608,7 +608,7 @@ class FieldCharTestCase(unittest.TestCase, CommonTestCaseMixin):
         self.assertEqual(read_record.char_unstripped, " Bar ")
 
 
-class FieldCharTranslatedTestCase(unittest.TestCase, CommonTestCaseMixin):
+class FieldCharTranslatedTestCase(TestCase, CommonTestCaseMixin):
     "Test Field Char Translated"
 
     @classmethod

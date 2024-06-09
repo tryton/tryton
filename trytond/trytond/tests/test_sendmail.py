@@ -1,7 +1,6 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 import smtplib
-import unittest
 from email.message import Message
 from unittest.mock import ANY, MagicMock, Mock, call, patch
 
@@ -9,10 +8,10 @@ from trytond.sendmail import (
     SMTPDataManager, get_smtp_server, sendmail, sendmail_transactional)
 from trytond.transaction import Transaction
 
-from .test_tryton import activate_module, with_transaction
+from .test_tryton import TestCase, activate_module, with_transaction
 
 
-class SendmailTestCase(unittest.TestCase):
+class SendmailTestCase(TestCase):
     'Test sendmail'
 
     @classmethod

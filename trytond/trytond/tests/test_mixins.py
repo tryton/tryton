@@ -2,19 +2,19 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 
-import unittest
 import urllib.parse
 
 from trytond.model import ModelView
 from trytond.pool import Pool
-from trytond.tests.test_tryton import activate_module, with_transaction
+from trytond.tests.test_tryton import (
+    TestCase, activate_module, with_transaction)
 from trytond.transaction import Transaction
 from trytond.url import HOSTNAME, http_host
 
 from .mixin import NotMixin, ReportMixin, TestMixin, TestSecondMixin
 
 
-class UrlTestCase(unittest.TestCase):
+class UrlTestCase(TestCase):
     "Test URL generation"
 
     @classmethod
@@ -74,7 +74,7 @@ class UrlTestCase(unittest.TestCase):
                 http_host(), urllib.parse.quote(db_name)))
 
 
-class MixinTestCase(unittest.TestCase):
+class MixinTestCase(TestCase):
     "Test Mixin"
 
     @classmethod
@@ -112,7 +112,7 @@ class MixinTestCase(unittest.TestCase):
         self.assertTrue(issubclass(Report, ReportMixin))
 
 
-class DeactivableMixinTestCase(unittest.TestCase):
+class DeactivableMixinTestCase(TestCase):
     "Test DeactivableMixin"
 
     @classmethod

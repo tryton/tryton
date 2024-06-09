@@ -1,6 +1,6 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
-import unittest
+
 from decimal import Decimal, InvalidOperation
 
 from sql import Literal
@@ -8,10 +8,11 @@ from sql import Literal
 from trytond.model.exceptions import (
     DigitsValidationError, RequiredValidationError)
 from trytond.pool import Pool
-from trytond.tests.test_tryton import activate_module, with_transaction
+from trytond.tests.test_tryton import (
+    TestCase, activate_module, with_transaction)
 
 
-class FieldNumericTestCase(unittest.TestCase):
+class FieldNumericTestCase(TestCase):
     "Test Field Numeric"
 
     @classmethod

@@ -8,9 +8,10 @@ import unittest
 from decimal import Decimal
 
 from trytond import pyson
+from trytond.tests.test_tryton import TestCase
 
 
-class PYSONTestCase(unittest.TestCase):
+class PYSONTestCase(TestCase):
     'Test PySON'
 
     def test_Decimal(self):
