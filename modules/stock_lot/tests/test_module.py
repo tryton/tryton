@@ -214,7 +214,7 @@ class StockLotTestCase(CompanyTestMixin, ModuleTestCase):
                 self.assertEqual(lot_cache.internal_quantity,
                     quantities[(lot_cache.location, lot_cache.lot)])
 
-    @with_transaction
+    @with_transaction()
     def test_assign_try_with_lot(self):
         "Test Move assign_try with lot"
         pool = Pool()
@@ -305,8 +305,8 @@ class StockLotTestCase(CompanyTestMixin, ModuleTestCase):
                     (m.lot, m.quantity, m.state) for m in moves}, {
                     (lot1, 2, 'assigned'),
                     (lot2, 3, 'assigned'),
-                    (None, 1, 'assigned'),
-                    (None, 4, 'draft'),
+                    (None, 3, 'assigned'),
+                    (None, 2, 'draft'),
                     })
 
 
