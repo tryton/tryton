@@ -82,6 +82,7 @@ class Bank(ModelSQL, ModelView):
             else:
                 name = None
             bank = cls(party=Party(name=name), bic=bic.compact)
+            bank.party.save()
             bank.save()
             return bank
 
