@@ -192,7 +192,7 @@ def instantiate_context(field, record):
 
 
 def on_change_result(record):
-    return record._changed_values
+    return record._changed_values()
 
 
 def on_change_with_result(fieldname):
@@ -201,7 +201,7 @@ def on_change_with_result(fieldname):
         def wrapper(self, *args, **kwargs):
             value = func(self, *args, **kwargs)
             setattr(self, fieldname, value)
-            return self._changed_values
+            return self._changed_values()
         return wrapper
     return decorator
 

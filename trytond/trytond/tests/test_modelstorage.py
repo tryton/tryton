@@ -164,7 +164,7 @@ class ModelStorageTestCase(TestCase):
         record.target = target = Target()
 
         with self.assertRaises(_UnsavedRecordError) as cm:
-            record._save_values
+            record._save_values()
 
         self.assertEqual(cm.exception.record, target)
 

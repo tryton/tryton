@@ -1881,7 +1881,6 @@ class ModelStorage(Model):
                     **{k: v for k, v in data.items() if k not in to_delete})
         return value
 
-    @property
     def _save_values(self):
         values = {}
         if not self._values:
@@ -1923,13 +1922,13 @@ class ModelStorage(Model):
                         t_values = None
                     try:
                         if target.id is None or target.id < 0:
-                            to_create.append(target._save_values)
+                            to_create.append(target._save_values())
                         else:
                             if target.id in previous:
                                 previous.remove(target.id)
                             else:
                                 to_add.append(target.id)
-                            target_values = target._save_values
+                            target_values = target._save_values()
                             if target_values:
                                 to_write.append(
                                     ('write', [target.id], target_values))
@@ -1987,7 +1986,7 @@ class ModelStorage(Model):
                     continue
                 while True:
                     try:
-                        save_values[record] = record._save_values
+                        save_values[record] = record._save_values()
                         break
                     except _UnsavedRecordError as e:
                         warnings.warn(

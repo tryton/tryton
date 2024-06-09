@@ -187,7 +187,7 @@ class ModelView(TestCase):
 
         record = Model(targets=[], m2m_targets=[], m2m_function=[])
 
-        self.assertEqual(record._changed_values, {})
+        self.assertEqual(record._changed_values(), {})
 
         record.name = 'foo'
         record.target = Target(1)
@@ -195,7 +195,7 @@ class ModelView(TestCase):
         record.targets = [Target(name='bar')]
         record.multiselection = ['a']
         record.dictionary = {'key': 'value'}
-        self.assertEqual(record._changed_values, {
+        self.assertEqual(record._changed_values(), {
                 'name': 'foo',
                 'target': 1,
                 'ref_target': 'test.modelview.changed_values.target,2',
@@ -217,7 +217,7 @@ class ModelView(TestCase):
             dictionary={'key': 'value'},
             )
 
-        self.assertEqual(record._changed_values, {})
+        self.assertEqual(record._changed_values(), {})
 
         target = record.targets[0]
         target.name = 'bar'
@@ -229,7 +229,7 @@ class ModelView(TestCase):
         dico = record.dictionary.copy()
         dico['key'] = 'another value'
         record.dictionary = dico
-        self.assertEqual(record._changed_values, {
+        self.assertEqual(record._changed_values(), {
                 'targets': {
                     'update': [{'id': 1, 'name': 'bar'}],
                     'delete': [2],
@@ -244,12 +244,12 @@ class ModelView(TestCase):
 
         # change only one2many record
         record = Model(targets=[{'id': 1, 'name': 'foo'}])
-        self.assertEqual(record._changed_values, {})
+        self.assertEqual(record._changed_values(), {})
 
         target, = record.targets
         target.name = 'bar'
         record.targets = record.targets
-        self.assertEqual(record._changed_values, {
+        self.assertEqual(record._changed_values(), {
                 'targets': {
                     'update': [{'id': 1, 'name': 'bar'}],
                     },
@@ -261,7 +261,7 @@ class ModelView(TestCase):
         target = Target(id=1)
         record._values['targets'] = [target]
         target.name = 'foo'
-        self.assertEqual(record._changed_values, {
+        self.assertEqual(record._changed_values(), {
                 'targets': {
                     'add': [(0, {'id': 1, 'name': 'foo'})],
                     },
@@ -279,7 +279,7 @@ class ModelView(TestCase):
             record = Model()
             record.m2m_function = record.on_change_with_m2m_function()
 
-            self.assertEqual(record._changed_values, {
+            self.assertEqual(record._changed_values(), {
                     'm2m_function': {'add': [(0, {'id': 42})]},
                     })
 
@@ -299,7 +299,7 @@ class ModelView(TestCase):
         target1.name = "test"
         record.targets = [target1, Target(name="baz")]
 
-        self.assertEqual(record._changed_values, {
+        self.assertEqual(record._changed_values(), {
                 'targets': {
                     'delete': [target2.id],
                     'update': [{'id': target1.id, 'name': "test"}],
@@ -318,7 +318,7 @@ class ModelView(TestCase):
         record = Model(targets=[target])
         Model.targets.remove(record, [target])
 
-        self.assertEqual(record._changed_values, {
+        self.assertEqual(record._changed_values(), {
                 'targets': {
                     'remove': [1],
                     },
@@ -335,7 +335,7 @@ class ModelView(TestCase):
         record = Model(m2m_targets=[target])
         Model.m2m_targets.delete(record, [target])
 
-        self.assertEqual(record._changed_values, {
+        self.assertEqual(record._changed_values(), {
                 'm2m_targets': {
                     'delete': [1],
                     },
@@ -352,7 +352,7 @@ class ModelView(TestCase):
         record = Model()
         record.stored_target = target
 
-        self.assertEqual(record._changed_values, {
+        self.assertEqual(record._changed_values(), {
                 'stored_target': target.id,
                 'stored_target.': {
                     'rec_name': "Target",
@@ -372,7 +372,7 @@ class ModelView(TestCase):
         target.name = "Target"
         record.targets = [target]
 
-        self.assertEqual(record._changed_values, {
+        self.assertEqual(record._changed_values(), {
                 'name': "Record",
                 'targets': {
                     'add': [(0, {'id': None, 'name': "Target"})],
