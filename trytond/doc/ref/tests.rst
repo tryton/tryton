@@ -109,6 +109,18 @@ RouteTestCase
 
    Return a client to simulate requests to the WSGI application.
 
+ExtensionTestCase
+-----------------
+
+.. class:: ExtensionTestCase()
+
+   A subclass of :class:`TestCase` to test a Tryton with an database extension
+   activated.
+
+.. attribute:: ExtensionTestCase.extension
+
+   The name of the extension to activate.
+
 .. _`unittest.TestCase`: https://docs.python.org/library/unittest.html#test-cases
 .. _setUpClass: https://docs.python.org/library/unittest.html#unittest.TestCase.setUpClass
 .. _tearDownClass: https://docs.python.org/library/unittest.html#unittest.TestCase.tearDownClass
