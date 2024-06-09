@@ -2,7 +2,7 @@
 # this repository contains the full copyright notices and license terms.
 
 import uuid
-from unittest.mock import Mock, patch
+from unittest.mock import patch
 
 from trytond.modules.company.tests import CompanyTestMixin
 from trytond.modules.document_incoming.document import iter_pages
@@ -48,7 +48,7 @@ class DocumentIncomingTestCase(CompanyTestMixin, ModuleTestCase):
                 with self.assertRaises(ValueError):
                     iter_pages(expression, 0)
 
-    @with_transaction
+    @with_transaction()
     def test_document_from_inbound_email(self):
         "Test document from inbound email"
         pool = Pool()
@@ -56,27 +56,29 @@ class DocumentIncomingTestCase(CompanyTestMixin, ModuleTestCase):
         Email = pool.get('inbound.email')
         Rule = pool.get('inbound.email.rule')
 
-        email = Email()
-        email.as_dict = Mock(return_value={
+        with patch.object(Email, 'as_dict') as as_dict:
+            as_dict.return_value = {
                 'subject': "Subject",
                 'text': "Text",
                 'attachments': [{
                         'filename': "document",
                         'data': b'data',
                         }],
-                })
-        rule = Rule(
-            document_incoming_type='document_incoming',
-            document_incoming_company=None,
-            )
+                }
 
-        document = Document.from_inbound_email(email, rule)
+            email = Email()
+            rule = Rule(
+                document_incoming_type='document_incoming',
+                document_incoming_company=None,
+                )
+
+            document = Document.from_inbound_email(email, rule)
 
         self.assertFalse(document.active)
         self.assertEqual(document.name, "Subject")
         self.assertEqual(document.data, b'Text')
         self.assertEqual(document.source, 'inbound_email')
-        child = document.children
+        child, = document.children
         self.assertTrue(child.active)
         self.assertEqual(child.name, 'document')
         self.assertEqual(child.data, b'data')
