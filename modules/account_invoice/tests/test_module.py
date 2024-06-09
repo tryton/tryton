@@ -25,14 +25,12 @@ def set_invoice_sequences(fiscalyear):
     sequence = Sequence(name=fiscalyear.name, sequence_type=sequence_type)
     sequence.company = fiscalyear.company
     sequence.save()
-    fiscalyear.invoice_sequences = []
     invoice_sequence = InvoiceSequence()
-    invoice_sequence.fiscalyear = fiscalyear
     invoice_sequence.in_invoice_sequence = sequence
     invoice_sequence.in_credit_note_sequence = sequence
     invoice_sequence.out_invoice_sequence = sequence
     invoice_sequence.out_credit_note_sequence = sequence
-    invoice_sequence.save()
+    fiscalyear.invoice_sequences = [invoice_sequence]
     return fiscalyear
 
 
