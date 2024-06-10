@@ -373,9 +373,11 @@ class WinForm(NoModal, InfoBar):
                 self.but_pre.set_sensitive(True)
             else:
                 self.but_pre.set_sensitive(False)
-            if access['delete'] and not readonly and deletable:
-                self.but_del.set_sensitive(True)
-                self.but_undel.set_sensitive(True)
+            self.but_del.set_sensitive(bool(
+                    not readonly
+                    and access['delete']
+                    and deletable))
+            self.but_undel.set_sensitive(bool(not readonly))
         else:
             self.but_del.set_sensitive(False)
             self.but_undel.set_sensitive(False)
