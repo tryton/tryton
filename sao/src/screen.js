@@ -796,9 +796,7 @@
             this.views = [];
             this.views_preload = attributes.views_preload || {};
             this.exclude_field = attributes.exclude_field;
-            this.new_group(attributes.context || {});
             this.current_view = null;
-            this.current_record = null;
             this.domain = attributes.domain || [];
             this.context_domain = attributes.context_domain;
             this.size_limit = null;
@@ -810,11 +808,14 @@
             this._current_domain = [];
             this.offset = 0;
             this.order = this.default_order = attributes.order;
+            this.readonly = this.attributes.readonly || false;
             var access = Sao.common.MODELACCESS.get(model_name);
             if (!(access.write || access.create)) {
-                this.attributes.readonly = true;
+                this.readonly = true;
             }
             this.search_count = 0;
+            this.new_group(attributes.context || {});
+            this.current_record = null;
             this.screen_container = new Sao.ScreenContainer(
                 attributes.tab_domain);
             this.breadcrumb = attributes.breadcrumb || [];
@@ -857,7 +858,10 @@
             var readonly_records = this.selected_records.some(function(r) {
                 return r.readonly;
             });
-            return this.attributes.readonly || readonly_records;
+            return this.__readonly || readonly_records;
+        },
+        set readonly(value) {
+            this.__readonly = value;
         },
         get deletable() {
             return this.selected_records.every(function(r) {
@@ -1230,7 +1234,7 @@
                 context = this.context;
             }
             var group = new Sao.Group(this.model, context, []);
-            group.readonly = this.attributes.readonly;
+            group.readonly = this.__readonly;
             this.set_group(group);
         },
         record_modified: function(display=true) {
