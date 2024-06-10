@@ -1361,7 +1361,7 @@
                         if (this.editable && new_) {
                             td.trigger('click');
                         }
-                        td.find(':input,[tabindex=0]').focus();
+                        Sao.common.find_focusable_child(td).focus();
                     }
                 }
             };
