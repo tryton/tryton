@@ -69,7 +69,7 @@ class WinForm(NoModal, InfoBar):
         self.accel_group = Gtk.AccelGroup()
         self.win.add_accel_group(self.accel_group)
 
-        readonly = self.screen.readonly or self.screen.group.readonly
+        readonly = self.screen.group.readonly
 
         self.but_ok = None
         self.but_new = None
@@ -360,7 +360,7 @@ class WinForm(NoModal, InfoBar):
         deletable = True
         if self.screen.current_record:
             deletable = self.screen.current_record.deletable
-        readonly = self.screen.readonly or self.screen.group.readonly
+        readonly = self.screen.group.readonly
         if position >= 1:
             name = str(position)
             if self.domain is not None:
@@ -399,7 +399,7 @@ class WinForm(NoModal, InfoBar):
         cancel_responses = [
             Gtk.ResponseType.CANCEL, Gtk.ResponseType.DELETE_EVENT]
         self.screen.current_view.set_value()
-        readonly = self.screen.readonly or self.screen.group.readonly
+        readonly = self.screen.group.readonly
         if (response_id not in cancel_responses
                 and not readonly
                 and self.screen.current_record is not None):
