@@ -767,7 +767,7 @@
 
             var tbody = this.tbody;
             var current_record = this.record;
-            if (jQuery.isEmptyObject(selected)) {
+            if (jQuery.isEmptyObject(selected) && current_record) {
                 selected = this.get_selected_paths();
                 if (this.selection.prop('checked') &&
                     !this.selection.prop('indeterminate')) {
@@ -776,16 +776,12 @@
                         selected.push([record.id]);
                     }
                 } else {
-                    if (current_record) {
-                        var current_path = current_record.get_path(this.group);
-                        current_path = current_path.map(function(e) {
-                            return e[1];
-                        });
-                        if (!Sao.common.contains(selected, current_path)) {
-                            selected = [current_path];
-                        }
-                    } else if (!current_record) {
-                        selected = [];
+                    var current_path = current_record.get_path(this.group);
+                    current_path = current_path.map(function(e) {
+                        return e[1];
+                    });
+                    if (!Sao.common.contains(selected, current_path)) {
+                        selected = [current_path];
                     }
                 }
             }
