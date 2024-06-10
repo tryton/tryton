@@ -354,10 +354,12 @@
                 }
                 this.but_next.prop('disabled', data[0] >= data[1]);
                 this.but_previous.prop('disabled', data[0] <= 1);
-                if (access.delete && !readonly && deletable) {
-                    this.but_del.prop('disabled', false);
-                    this.but_undel.prop('disabled', false);
-                }
+                this.but_del.prop(
+                    'disabled',
+                    readonly ||
+                    !access.delete ||
+                    !deletable);
+                this.but_undel.prop('disabled', readonly);
             } else {
                 this.but_del.prop('disabled', true);
                 this.but_undel.prop('disabled', true);
