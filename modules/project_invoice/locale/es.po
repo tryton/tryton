@@ -119,7 +119,7 @@ msgstr ""
 msgctxt "model:ir.message,text:msg_missing_account_revenue"
 msgid "To invoice work \"%(work)s\" you must configure a default account revenue."
 msgstr ""
-"Para facturar el trabajo \"%(works)\" debéis configurar una cuenta de "
+"Para facturar el trabajo \"%(works)s\" debéis configurar una cuenta de "
 "ingressos por defecto."
 
 msgctxt "model:ir.message,text:msg_missing_list_price"
