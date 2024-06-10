@@ -153,7 +153,9 @@
                     this.menu_buttons[item.id] = menuitem;
                     link.click(evt => {
                         evt.preventDefault();
-                        this[item.id]();
+                        if (!menuitem.hasClass('disabled')) {
+                            this[item.id]();
+                        }
                     });
                 } else if (!item && previous) {
                     menuitem = jQuery('<li/>', {
