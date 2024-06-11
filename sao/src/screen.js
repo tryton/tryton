@@ -1097,6 +1097,7 @@
                             return ids;
                         }
                         this.clear();
+                        this.screen_container.search_entry.focus();
                         return this.load(ids).then(() => {
                             this.count_tab_domain();
                         });

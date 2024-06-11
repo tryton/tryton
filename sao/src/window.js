@@ -984,6 +984,9 @@
                     }
                 });
             });
+            this.el.on('shown.bs.modal', () => {
+                this.screen.screen_container.search_entry.focus();
+            });
             this.el.on('hidden.bs.modal', function(event) {
                 jQuery(this).remove();
             });
