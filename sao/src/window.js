@@ -886,8 +886,14 @@
             this.title = title;
             this.exclude_field = kwargs.exclude_field || null;
             var dialog = new Sao.Dialog(Sao.i18n.gettext(
-                'Search %1', this.title), '', 'lg');
+                'Search %1', this.title), '', 'lg', false);
             this.el = dialog.modal;
+            this.el.on('keydown', e => {
+                if (e.which == Sao.common.ESC_KEYCODE) {
+                    e.preventDefault();
+                    this.response('RESPONSE_CANCEL');
+                }
+            });
 
             jQuery('<button/>', {
                 'class': 'btn btn-link',
