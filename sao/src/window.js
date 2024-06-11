@@ -997,7 +997,8 @@
             if (response_id == 'RESPONSE_OK') {
                 records = this.screen.current_view.selected_records;
             } else if (response_id == 'RESPONSE_APPLY') {
-                this.screen.search_filter();
+                this.screen.search_filter(
+                    this.screen.screen_container.get_text());
                 return;
             } else if (response_id == 'RESPONSE_ACCEPT') {
                 var view_ids = jQuery.extend([], this.view_ids);
