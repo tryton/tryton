@@ -142,8 +142,15 @@ class ModelSQLSearchOR2Union(ModelSQL):
 
     @classmethod
     def order_integer(cls, tables):
+        pool = Pool()
+        Target = pool.get('test.modelsql.search.or2union.target')
+        target = Target.__table__()
+
         table, _ = tables[None]
-        return [table.integer + 1]
+        tables['target'] = {
+            None: (target, (target.id == table.target)),
+            }
+        return [table.integer + target.id]
 
 
 class ModelSQLSearchOR2UnionTarget(ModelSQL):
