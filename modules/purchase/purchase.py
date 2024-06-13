@@ -913,7 +913,11 @@ class Purchase(
     @Workflow.transition('draft')
     @reset_employee('quoted_by', 'confirmed_by')
     def draft(cls, purchases):
-        pass
+        cls.write(purchases, {
+                'tax_amount_cache': None,
+                'untaxed_amount_cache': None,
+                'total_amount_cache': None,
+                })
 
     @classmethod
     @ModelView.button

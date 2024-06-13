@@ -375,7 +375,11 @@ class PurchaseRequisition(Workflow, ModelSQL, ModelView):
     @Workflow.transition('draft')
     @reset_employee('approved_by', 'rejected_by')
     def draft(cls, requisitions):
-        pass
+        cls.write(requisitions, {
+                'tax_amount_cache': None,
+                'untaxed_amount_cache': None,
+                'total_amount_cache': None,
+                })
 
     @classmethod
     @ModelView.button
