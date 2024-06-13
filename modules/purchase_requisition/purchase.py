@@ -247,6 +247,10 @@ class PurchaseRequisition(Workflow, ModelSQL, ModelView):
 
     @classmethod
     def store_cache(cls, requisitions):
+        requisitions = list(requisitions)
+        cls.write(requisitions, {
+                'total_amount_cache': None,
+                })
         for requisition in requisitions:
             requisition.total_amount_cache = requisition.total_amount
         cls.save(requisitions)

@@ -766,6 +766,12 @@ class Purchase(
 
     @classmethod
     def store_cache(cls, purchases):
+        purchases = list(purchases)
+        cls.write(purchases, {
+                'untaxed_amount_cache': None,
+                'tax_amount_cache': None,
+                'total_amount_cache': None,
+                })
         for purchase in purchases:
             purchase.untaxed_amount_cache = purchase.untaxed_amount
             purchase.tax_amount_cache = purchase.tax_amount

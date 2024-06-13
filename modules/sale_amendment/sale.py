@@ -119,10 +119,6 @@ class Amendment(Workflow, ModelSQL, ModelView):
                 line.apply(sale)
             # Force saved lines
             sale.lines = sale.lines
-            # Force recompute cache
-            sale.untaxed_amount_cache = None
-            sale.tax_amount_cache = None
-            sale.total_amount_cache = None
 
         Sale.save(sales)
         Sale.store_cache(sales)

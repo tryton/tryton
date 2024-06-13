@@ -1762,11 +1762,13 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin, InvoiceReportMixin):
 
     @classmethod
     def _store_cache(cls, invoices):
+        invoices = list(invoices)
+        cls.write(invoices, {
+                'untaxed_amount_cache': None,
+                'tax_amount_cache': None,
+                'total_amount_cache': None,
+                })
         for invoice in invoices:
-            if (invoice.untaxed_amount == invoice.untaxed_amount_cache
-                    and invoice.tax_amount == invoice.tax_amount_cache
-                    and invoice.total_amount == invoice.total_amount_cache):
-                continue
             invoice.untaxed_amount_cache = invoice.untaxed_amount
             invoice.tax_amount_cache = invoice.tax_amount
             invoice.total_amount_cache = invoice.total_amount
