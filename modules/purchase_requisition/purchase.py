@@ -332,6 +332,7 @@ class PurchaseRequisition(Workflow, ModelSQL, ModelView):
         default.setdefault('supply_date', None)
         default.setdefault('approved_by')
         default.setdefault('rejected_by')
+        default.setdefault('total_amount_cache')
         return super(PurchaseRequisition, cls).copy(
             requisitions, default=default)
 
