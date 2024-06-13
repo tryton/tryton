@@ -104,7 +104,9 @@ class Sale(metaclass=PoolMeta):
         cursor.execute(*table.update(
                 [table.shipment_cost_method],
                 [Null],
-                where=(table.carrier == Null) & (table.state != 'draft')))
+                where=(table.carrier == Null)
+                & (table.state != 'draft')
+                & (table.shipment_cost_method != Null)))
 
     @classmethod
     def default_shipment_cost_method(cls, **pattern):
