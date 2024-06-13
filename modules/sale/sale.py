@@ -808,6 +808,9 @@ class Sale(
         default.setdefault('sale_date', None)
         default.setdefault('quoted_by')
         default.setdefault('confirmed_by')
+        default.setdefault('untaxed_amount_cache')
+        default.setdefault('tax_amount_cache')
+        default.setdefault('total_amount_cache')
         return super(Sale, cls).copy(sales, default=default)
 
     def check_for_quotation(self):
