@@ -453,7 +453,7 @@ def complete_value(field, value):
 
     def complete_datetime():
         yield datetime.date.today()
-        yield datetime.datetime.utcnow()
+        yield datetime.datetime.now(datetime.timezone.utc).replace(tzinfo=None)
 
     def complete_date():
         yield datetime.date.today()
