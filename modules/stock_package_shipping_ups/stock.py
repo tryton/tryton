@@ -182,15 +182,19 @@ class CreateShippingUPS(Wizard):
         try:
             while nb_tries < 5 and response is None:
                 try:
-                    req = requests.post(api_url, json=shipment_request)
+                    response = requests.post(api_url, json=shipment_request)
                 except ssl.SSLError as e:
                     error_message = e.reason
                     nb_tries += 1
                     continue
-                req.raise_for_status()
-                response = req.json()
+                response.raise_for_status()
+                response = response.json()
         except requests.HTTPError as e:
-            error_message = e.args[0]
+            try:
+                errors = e.response.json()['response']['errors']
+                error_message = "\n".join(m['message'] for m in errors)
+            except (requests.JSONDecodeError, TypeError, KeyError):
+                error_message = e.args[0]
 
         if error_message:
             raise UPSError(
