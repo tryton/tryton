@@ -462,6 +462,10 @@ this repository contains the full copyright notices and license terms. -->
             <field name="model">account.account.type,-1</field>
             <field name="action" ref="act_open_type"/>
         </record>
+        <record model="ir.action-res.group" id="act_open_type_account">
+            <field name="action" ref="act_open_type"/>
+            <field name="group" ref="group_account"/>
+        </record>
 
         <record model="ir.ui.view" id="account_view_tree_chart">
             <field name="model">account.account</field>
