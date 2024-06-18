@@ -274,6 +274,8 @@ def load_module_graph(graph, pool, update=None, lang=None, indexes=True):
                     model._update_history_table()
             transaction.commit()
         elif indexes:
+            # Release any lock
+            transaction.commit()
             with transaction.new_transaction(autocommit=True):
                 create_indexes(concurrently=True)
 
