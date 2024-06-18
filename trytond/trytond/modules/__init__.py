@@ -233,6 +233,10 @@ def load_module_graph(graph, pool, update=None, lang=None, indexes=True):
                             [[0, CurrentTimestamp(), module, 'activated'],
                                 ]))
                 module2state[module] = 'activated'
+            elif not update and indexes:
+                for model in classes['model']:
+                    if hasattr(model, '_update_sql_indexes'):
+                        models_with_indexes.add(model.__name__)
 
         if not update:
             pool.setup()
