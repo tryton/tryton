@@ -1528,7 +1528,10 @@ class Move(Workflow, ModelSQL, ModelView):
 
                 def state_date_clause():
                     return (
-                        Coalesce(move_date, datetime.date.max) > period.date)
+                        Coalesce(
+                            move.effective_date,
+                            move.planned_date,
+                            datetime.date.max) > period.date)
                 state_date_clause_in &= state_date_clause()
                 state_date_clause_out &= state_date_clause()
 
