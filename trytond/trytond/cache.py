@@ -185,11 +185,12 @@ class MemoryCache(BaseCache):
         key = self._key(key)
         cache = self._get_cache()
         try:
-            (expire, result) = cache.pop(key)
+            expire, result = cache[key]
             if expire and expire < dt.datetime.now():
+                del cache[key]
                 self.miss += 1
                 return default
-            cache[key] = (expire, result)
+            cache.move_to_end(key)
             self.hit += 1
             return deepcopy(result)
         except (KeyError, TypeError):
