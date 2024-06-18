@@ -1603,15 +1603,14 @@ class Move(Workflow, ModelSQL, ModelView):
                 & dest_clause_to,
                 group_by=[move.from_location] + move_keys),
             all_=True)
-        if PeriodCache:
+        if PeriodCache and period:
             period_keys = [Column(period_cache, key).as_(key)
                 for key in grouping]
             query = Union(query, from_period.select(
                     period_cache.location.as_('location'),
                     period_cache.internal_quantity.as_('quantity'),
                     *period_keys,
-                    where=(period_cache.period
-                        == (period.id if period else None))
+                    where=(period_cache.period == period.id)
                     & where_period
                     & period_cache.location.in_(location_query)
                     & dest_clause_period),
