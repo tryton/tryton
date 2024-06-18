@@ -363,6 +363,7 @@ class Move(Workflow, ModelSQL, ModelView):
         cls._sql_indexes.update({
                 Index(
                     t,
+                    (t.company, Index.Equality()),
                     (t.from_location, Index.Range()),
                     (t.product, Index.Range()),
                     (Coalesce(
@@ -372,6 +373,7 @@ class Move(Workflow, ModelSQL, ModelView):
                         Index.Range())),
                 Index(
                     t,
+                    (t.company, Index.Equality()),
                     (t.to_location, Index.Range()),
                     (t.product, Index.Range()),
                     (Coalesce(
@@ -381,6 +383,7 @@ class Move(Workflow, ModelSQL, ModelView):
                         Index.Range())),
                 Index(
                     t,
+                    (t.company, Index.Equality()),
                     (t.state, Index.Equality()),
                     where=t.state.in_(['staging', 'draft', 'assigned'])),
                 })
