@@ -190,7 +190,8 @@ class Cache(ModelSQL, ModelView):
                 Index(
                     t,
                     (t.period, Index.Equality()),
-                    (t.product, Index.Equality()),
+                    (t.location, Index.Range()),
+                    (t.product, Index.Range()),
                     include=[t.internal_quantity]),
                 Index(
                     t,
