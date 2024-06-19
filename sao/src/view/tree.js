@@ -1027,9 +1027,9 @@
                 var selector = `tr > td:nth-child(${i + offset + 1})`;
                 if ((thead_visible && column.header.is(':hidden')) ||
                     (column.header.css('display') == 'none')) {
-                    to_hide.add(this.body.find(selector));
+                    to_hide.add(this.tbody.find(selector));
                 } else {
-                    to_show.add(this.body.find(selector));
+                    to_show.add(this.tbody.find(selector));
                 }
             }
 
