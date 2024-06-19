@@ -365,22 +365,22 @@ class Move(Workflow, ModelSQL, ModelView):
                     t,
                     (t.company, Index.Equality()),
                     (t.from_location, Index.Range()),
-                    (t.product, Index.Range()),
                     (Coalesce(
                             t.effective_date,
                             t.planned_date,
                             datetime.date.max),
-                        Index.Range())),
+                        Index.Range()),
+                    (t.product, Index.Range())),
                 Index(
                     t,
                     (t.company, Index.Equality()),
                     (t.to_location, Index.Range()),
-                    (t.product, Index.Range()),
                     (Coalesce(
                             t.effective_date,
                             t.planned_date,
                             datetime.date.max),
-                        Index.Range())),
+                        Index.Range()),
+                    (t.product, Index.Range())),
                 Index(
                     t,
                     (t.company, Index.Equality()),
