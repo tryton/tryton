@@ -127,7 +127,7 @@
             this.title_long = toolbar.find('.title-long');
 
             this.main = jQuery('<div/>', {
-                'class': 'panel-body row',
+                'class': 'panel-body',
             }).appendTo(this.el);
             this.content = jQuery('<div/>').appendTo(this.main);
 
