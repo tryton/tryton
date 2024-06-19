@@ -1013,11 +1013,7 @@
             // TODO update_children
         },
         update_visible: function() {
-            var offset = 1;
-            if (this.optionals.length) {
-                offset += 1;
-            }
-
+            var offset = 2; // selection-state + tree-menu
             var thead_visible = this.thead.is(':visible');
             var to_hide = jQuery();
             var to_show = jQuery();
