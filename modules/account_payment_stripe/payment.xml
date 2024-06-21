@@ -215,6 +215,12 @@ this repository contains the full copyright notices and license terms. -->
             <field name="string">Stripe Capture</field>
         </record>
 
+        <record model="ir.model.button" id="payment_stripe_pull_button">
+            <field name="model">account.payment</field>
+            <field name="name">stripe_do_pull</field>
+            <field name="string">Stripe Pull</field>
+        </record>
+
         <record model="ir.ui.view" id="customer_view_form">
             <field name="model">account.payment.stripe.customer</field>
             <field name="type">form</field>

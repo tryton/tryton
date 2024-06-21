@@ -250,6 +250,13 @@ class Payment(StripeCustomerMethodMixin, CheckoutMixin, metaclass=PoolMeta):
                         | ~Eval('stripe_capture_needed')),
                     'depends': ['state', 'stripe_capture_needed'],
                     },
+                'stripe_do_pull': {
+                    'invisible': (
+                        ~Eval('stripe_charge_id')
+                        & ~Eval('stripe_payment_intent_id')),
+                    'depends': [
+                        'stripe_charge_id', 'stripe_payment_intent_id'],
+                    },
                 })
 
     @classmethod
@@ -651,6 +658,11 @@ class Payment(StripeCustomerMethodMixin, CheckoutMixin, metaclass=PoolMeta):
         except (stripe.error.RateLimitError,
                 stripe.error.APIConnectionError) as e:
             logger.warning(str(e))
+
+    @classmethod
+    @ModelView.button
+    def stripe_do_pull(cls, payments):
+        cls.stripe_pull(payments)
 
     @classmethod
     def stripe_pull(cls, payments):

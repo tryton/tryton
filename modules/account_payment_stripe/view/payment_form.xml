@@ -5,6 +5,7 @@ this repository contains the full copyright notices and license terms. -->
     <xpath expr="//group[@id='buttons']" position="inside">
         <button name="stripe_checkout"/>
         <button name="stripe_do_capture"/>
+        <button name="stripe_do_pull"/>
     </xpath>
     <xpath expr="//field[@name='date']" position="after">
         <group id="stripe" string="Stripe" colspan="4">
