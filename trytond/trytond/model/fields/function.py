@@ -209,6 +209,9 @@ class Function(Field):
         definition['sortable'] = self.sortable(model)
         return definition
 
+    def definition_translations(self, model, language):
+        return self._field.definition_translations(model, language)
+
     def searchable(self, model):
         return super().searchable(model) and (
             bool(self.searcher) or hasattr(model, f'domain_{self.name}'))
