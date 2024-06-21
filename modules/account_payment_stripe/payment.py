@@ -814,6 +814,7 @@ class Refund(Workflow, ModelSQL, ModelView):
                 ('approved', 'processing'),
                 ('processing', 'succeeded'),
                 ('processing', 'failed'),
+                ('succeeded', 'failed'),
                 ('approved', 'draft'),
                 ))
         cls._buttons.update({
