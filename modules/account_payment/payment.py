@@ -295,7 +295,7 @@ class Payment(Workflow, ModelSQL, ModelView):
     date = fields.Date('Date', required=True, states=_STATES)
     amount = Monetary(
         "Amount", currency='currency', digits='currency', required=True,
-        domain=[('amount', '>', 0)],
+        domain=[('amount', '>=', 0)],
         states={
             'readonly': ~Eval('state').in_(
                 If(Eval('process_method') == 'manual',
