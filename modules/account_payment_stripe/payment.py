@@ -742,6 +742,19 @@ class Payment(CheckoutMixin, metaclass=PoolMeta):
     def stripe_intent_update(cls, payments=None):
         pass
 
+    @property
+    def stripe_charge_(self):
+        if not self.stripe_charge_id:
+            return
+        try:
+            return stripe.Charge.retrieve(
+                self.stripe_charge_id,
+                api_key=self.journal.stripe_account.secret_key,
+                stripe_version=STRIPE_VERSION)
+        except (stripe.error.RateLimitError,
+                stripe.error.APIConnectionError) as e:
+            logger.warning(str(e))
+
 
 class Refund(Workflow, ModelSQL, ModelView):
     "Stripe Payment Refund"
