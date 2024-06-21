@@ -139,6 +139,9 @@ this repository contains the full copyright notices and license terms. -->
 Use the current period to cancel the move?</field>
         </record>
 
+        <record model="ir.message" id="msg_move_template_invalid_description">
+            <field name="text">Failed to evaluate the description "%(description)s" from template "%(template)s" with error: "%(error)s"</field>
+        </record>
         <record model="ir.message" id="msg_move_template_invalid_expression">
             <field name="text">Failed to evaluate expression "%(expression)s" from template "%(template)s" with error:
 "%(error)s"</field>

@@ -119,6 +119,9 @@ setup(name=name,
     license='GPL-3',
     python_requires='>=3.8',
     install_requires=requires,
+    extras_require={
+        'image': ['pillow'],
+        },
     zip_safe=False,
     entry_points="""
     [trytond.modules]

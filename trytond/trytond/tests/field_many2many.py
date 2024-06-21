@@ -203,6 +203,29 @@ class Many2ManyContextTarget(ModelSQL):
         return context.get('test')
 
 
+class Many2ManyOrder(ModelSQL):
+    "Many2Many Order"
+    __name__ = 'test.many2many_order'
+    targets = fields.Many2Many(
+        'test.many2many_order.relation', 'origin', 'target', "Targets")
+    reversed_targets = fields.Many2Many(
+        'test.many2many_order.relation', 'origin', 'target',
+        "Reversed Targets",
+        order=[('target', 'DESC')])
+
+
+class Many2ManyOrderRelation(ModelSQL):
+    "Many2Many Order Relation"
+    __name__ = 'test.many2many_order.relation'
+    origin = fields.Many2One('test.many2many_order', "Origin")
+    target = fields.Many2One('test.many2many_order.target', "Target")
+
+
+class Many2ManyOrderTarget(ModelSQL):
+    "Many2Many Order Target"
+    __name__ = 'test.many2many_order.target'
+
+
 def register(module):
     Pool.register(
         Many2Many,
@@ -231,4 +254,7 @@ def register(module):
         Many2ManyContext,
         Many2ManyContextTarget,
         Many2ManyContextRelation,
+        Many2ManyOrder,
+        Many2ManyOrderRelation,
+        Many2ManyOrderTarget,
         module=module, type_='model')

@@ -47,12 +47,6 @@ from trytond.wsgi import Base64Converter
 from .exceptions import ConditionError, DomainError, TemplateError
 from .mixin import MarketingAutomationMixin
 
-if not config.get(
-        'html', 'plugins-marketing.automation.activity-email_template'):
-    config.set(
-        'html', 'plugins-marketing.automation.activity-email_template',
-        'fullpage')
-
 USE_SSL = bool(config.get('ssl', 'certificate'))
 URL_BASE = config.get('marketing', 'automation_base', default=http_host())
 URL_OPEN = urljoin(URL_BASE, '/m/empty.gif')
@@ -982,13 +976,17 @@ class RecordActivity(Workflow, ModelSQL, ModelView):
 
     @classmethod
     def process(cls):
+        transaction = Transaction()
+        context = transaction.context
         now = datetime.datetime.now()
         activities = cls.search([
                 ('state', '=', 'waiting'),
                 ('at', '<=', now),
                 ('record.blocked', '!=', True),
                 ])
-        cls.do(activities)
+        with transaction.set_context(
+                queue_batch=context.get('queue_batch', True)):
+            cls.__queue__.do(activities)
 
     @classmethod
     @ModelView.button

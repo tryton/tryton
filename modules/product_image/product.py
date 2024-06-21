@@ -116,6 +116,8 @@ class ImageMixin(_ImageMixin):
     __slots__ = ()
     cache = None
 
+    description = fields.Char("Description", translate=True)
+
     @classmethod
     def allowed_match_keys(cls):
         return set()
@@ -169,12 +171,12 @@ class ImageMixin(_ImageMixin):
         data = io.BytesIO()
         img = PIL.Image.open(io.BytesIO(image))
         img.thumbnail((SIZE_MAX, SIZE_MAX))
-        if img.mode in {'RGBA', 'P'}:
-            img.convert('RGBA')
+        if img.mode != 'RGB':
+            img = img.convert('RGBA')
             background = PIL.Image.new('RGBA', img.size, (255, 255, 255))
             background.alpha_composite(img)
             img = background.convert('RGB')
-        img.save(data, format='jpeg', optimize=True, **_params)
+        img.save(data, format='jpeg', optimize=True, dpi=(300, 300), **_params)
         return data.getvalue()
 
     def _resize(self, size=64, **_params):
@@ -183,7 +185,7 @@ class ImageMixin(_ImageMixin):
         if isinstance(size, int):
             size = (size, size)
         img.thumbnail(size)
-        img.save(data, format='jpeg', optimize=True, **_params)
+        img.save(data, format='jpeg', optimize=True, dpi=(300, 300), **_params)
         return data.getvalue()
 
     def _store_cache(self, size, image):

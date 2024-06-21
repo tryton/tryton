@@ -93,6 +93,7 @@ class LongPollingBus:
                 cls._queues[pid, database]['listener'] = listener
                 listener.start()
 
+        logger.info("subscribe to '%s' on '%s'", ','.join(channels), database)
         messages = cls._messages.get(database)
         if messages:
             channel, content = messages.get_next(channels, last_message)
@@ -131,7 +132,7 @@ class LongPollingBus:
             'message': message,
             'channel': channel,
             }
-        logger.debug('Bus: %s', response_data)
+        logger.debug('Bus: %r', response_data)
         return response_data
 
     @classmethod
@@ -140,7 +141,7 @@ class LongPollingBus:
         if not db.has_channel():
             raise exceptions.NotImplemented
 
-        logger.info("listening on channel '%s'", cls._channel)
+        logger.info("start listener for '%s'", database)
         conn = db.get_connection(autocommit=True)
         pid = os.getpid()
         selector = selectors.DefaultSelector()
@@ -172,8 +173,7 @@ class LongPollingBus:
                         event.set()
                 now = time.time()
         except Exception:
-            logger.error('bus listener on "%s" crashed', database,
-                exc_info=True)
+            logger.exception("bus listener on '%s' crashed", database)
 
             with cls._queues_lock[pid]:
                 del cls._queues[pid, database]
@@ -196,7 +196,7 @@ class LongPollingBus:
     def publish(cls, channel, message):
         transaction = Transaction()
         if not transaction.database.has_channel():
-            logger.debug('Database backend do not support channels')
+            logger.info("database backend does not support channels")
             return
 
         cursor = transaction.connection.cursor()
@@ -206,6 +206,9 @@ class LongPollingBus:
                 'message': message,
                 }, cls=JSONEncoder, separators=(',', ':'))
         cursor.execute('NOTIFY "%s", %%s' % cls._channel, (payload,))
+        logger.debug(
+            "publish %r to '%s' on '%s'",
+            message, channel, transaction.database.name)
 
 
 if config.get('bus', 'class'):
@@ -236,10 +239,10 @@ def subscribe(request, database_name):
 
     last_message = request.parsed_data.get('last_message')
 
-    logger.debug(
-        "getting bus messages from %s@%s%s for %s since %s",
-        request.authorization.username, request.remote_addr, request.path,
-        channels, last_message)
+    logger.info(
+        "get bus messages for %s since %s from %s@%s%s",
+        channels, last_message, request.authorization.username,
+        request.remote_addr, request.path)
     bus_response = Bus.subscribe(database_name, channels, last_message)
     return Response(
         json.dumps(bus_response, cls=JSONEncoder, separators=(',', ':')),

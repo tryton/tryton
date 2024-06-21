@@ -2,6 +2,16 @@
 Usage
 *****
 
+.. _Scheduling Product Data Feed updates:
+
+Scheduling Product Data Feed updates
+====================================
+
+You may want to define some "Scheduled tasks" :guilabel:`Update Web Shop
+Product Data Feed` to keep the cache of the feeds up to date.
+The task updates each feed already in the cache if their last modification was
+before half of the `cache duration <config-web_shop.product_data_feed_cache>`.
+
 .. _Fill Google Product Category:
 
 Fill Google Product Category

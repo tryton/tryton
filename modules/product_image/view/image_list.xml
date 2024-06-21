@@ -5,4 +5,5 @@ this repository contains the full copyright notices and license terms. -->
     <field name="template" expand="1"/>
     <field name="product" expand="1"/>
     <field name="image" expand="2"/>
+    <field name="description" expand="1" optional="1"/>
 </tree>

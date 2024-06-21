@@ -101,6 +101,7 @@ def get_parser_cron():
 
 
 def get_parser_admin():
+    from trytond.tools.email_ import validate_email
     parser = get_parser()
 
     parser.add_argument(
@@ -116,12 +117,13 @@ def get_parser_admin():
     parser.add_argument("--activate-dependencies", dest="activatedeps",
         action="store_true",
         help="activate missing dependencies of updated modules")
-    parser.add_argument("--email", dest="email", help="set the admin email")
+    parser.add_argument("--email", dest="email", type=validate_email,
+        help="set the admin email")
     parser.add_argument("-p", "--password", dest="password",
         action='store_true', help="set the admin password")
     parser.add_argument("--reset-password", dest='reset_password',
         action='store_true', help="reset the admin password")
-    parser.add_argument("--test-email", dest='test_email',
+    parser.add_argument("--test-email", dest='test_email', type=validate_email,
         help="send a test email to the specified address")
     parser.add_argument("-m", "--update-modules-list", action="store_true",
         dest="update_modules_list", help="update the list of tryton modules")
@@ -136,6 +138,9 @@ def get_parser_admin():
     parser.add_argument("--validate-percentage", dest="validate_percentage",
         type=float, default=100, metavar="PERCENTAGE",
         help="percentage of records to validate (default: 100)")
+    parser.add_argument("--export-translations", action="store_true",
+        dest="export_translations",
+        help="export module translations to locale folder")
 
     parser.epilog = ('The first time a database is initialized '
         'or when the password is set, the admin password is read '

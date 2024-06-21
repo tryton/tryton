@@ -6,7 +6,7 @@ from decimal import Decimal
 from itertools import chain, combinations, groupby
 
 from genshi.template.text import TextTemplate
-from sql import Literal, Null
+from sql import Null
 from sql.aggregate import Sum
 from sql.conditionals import Coalesce
 from sql.functions import CharLength, Round
@@ -639,9 +639,9 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin, InvoiceReportMixin):
         pool = Pool()
         InvoiceTax = pool.get('account.invoice.tax')
 
-        self.untaxed_amount = Decimal('0.0')
-        self.tax_amount = Decimal('0.0')
-        self.total_amount = Decimal('0.0')
+        self.untaxed_amount = Decimal(0)
+        self.tax_amount = Decimal(0)
+        self.total_amount = Decimal(0)
         computed_taxes = {}
 
         if self.lines:
@@ -653,13 +653,13 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin, InvoiceReportMixin):
             if self.currency:
                 return self.currency.is_zero(amount)
             else:
-                return amount == Decimal('0.0')
+                return amount == Decimal(0)
 
         tax_keys = []
         taxes = list(self.taxes or [])
         for tax in (self.taxes or []):
             if tax.manual:
-                self.tax_amount += tax.amount or Decimal('0.0')
+                self.tax_amount += tax.amount or Decimal(0)
                 continue
             key = tax._key
             if (key not in computed_taxes) or (key in tax_keys):
@@ -667,12 +667,12 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin, InvoiceReportMixin):
                 continue
             tax_keys.append(key)
             if not is_zero(computed_taxes[key]['base']
-                    - (tax.base or Decimal('0.0'))):
+                    - (tax.base or Decimal(0))):
                 self.tax_amount += computed_taxes[key]['amount']
                 tax.amount = computed_taxes[key]['amount']
                 tax.base = computed_taxes[key]['base']
             else:
-                self.tax_amount += tax.amount or Decimal('0.0')
+                self.tax_amount += tax.amount or Decimal(0)
         for key in computed_taxes:
             if key not in tax_keys:
                 self.tax_amount += computed_taxes[key]['amount']
@@ -767,56 +767,84 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin, InvoiceReportMixin):
             return max(r.date for r in reconciliations)
 
     @classmethod
-    def get_lines_to_pay(cls, invoices, name):
+    def _query_lines_to_pay(cls, invoices):
         pool = Pool()
         MoveLine = pool.get('account.move.line')
         AdditionalMove = pool.get('account.invoice-additional-account.move')
         line = MoveLine.__table__()
         invoice = cls.__table__()
         additional_move = AdditionalMove.__table__()
-        cursor = Transaction().connection.cursor()
 
+        red_sql = reduce_ids(invoice.id, invoices)
+        query = (invoice
+            .join(line,
+                condition=((invoice.move == line.move)
+                    & (invoice.account == line.account)))
+            .select(
+                invoice.id.as_('invoice'),
+                line.id.as_('line'),
+                line.maturity_date.as_('maturity_date'),
+                line.reconciliation.as_('reconciliation'),
+                where=red_sql))
+        query |= (invoice
+            .join(additional_move,
+                condition=additional_move.invoice == invoice.id)
+            .join(line,
+                condition=((additional_move.move == line.move)
+                    & (invoice.account == line.account)))
+            .select(
+                invoice.id.as_('invoice'),
+                line.id.as_('line'),
+                line.maturity_date.as_('maturity_date'),
+                line.reconciliation.as_('reconciliation'),
+                where=red_sql))
+        return query
+
+    @classmethod
+    def get_lines_to_pay(cls, invoices, name):
+        cursor = Transaction().connection.cursor()
         lines = defaultdict(list)
-        for sub_ids in grouped_slice(invoices):
-            red_sql = reduce_ids(invoice.id, sub_ids)
-            query = (invoice
-                .join(line,
-                    condition=((invoice.move == line.move)
-                        & (invoice.account == line.account)))
-                .select(
-                    invoice.id.as_('invoice'),
-                    line.id.as_('line'),
-                    line.maturity_date.as_('maturity_date'),
-                    where=red_sql))
-            query |= (invoice
-                .join(additional_move,
-                    condition=additional_move.invoice == invoice.id)
-                .join(line,
-                    condition=((additional_move.move == line.move)
-                        & (invoice.account == line.account)))
-                .select(
-                    invoice.id.as_('invoice'),
-                    line.id.as_('line'),
-                    line.maturity_date.as_('maturity_date'),
-                    where=red_sql))
-            cursor.execute(*query.select(
-                    query.invoice, query.line,
-                    order_by=query.maturity_date.nulls_last))
+        for sub_invoices in grouped_slice(invoices):
+            query = cls._query_lines_to_pay(sub_invoices)
+            query = query.select(
+                query.invoice, query.line,
+                order_by=query.maturity_date.nulls_last)
+            cursor.execute(*query)
             for invoice_id, line_id in cursor:
                 lines[invoice_id].append(line_id)
         return lines
 
-    def get_reconciliation_lines(self, name):
-        if not self.move:
-            return
-        lines = set()
-        for move in chain([self.move], self.additional_moves):
-            for line in move.lines:
-                if line.account == self.account and line.reconciliation:
-                    for line in line.reconciliation.lines:
-                        if line not in self.lines_to_pay:
-                            lines.add(line)
-        return [l.id for l in sorted(lines, key=lambda l: l.date)]
+    @classmethod
+    def get_reconciliation_lines(cls, invoices, name):
+        pool = Pool()
+        Line = pool.get('account.move.line')
+        Move = pool.get('account.move')
+        line = Line.__table__()
+        move = Move.__table__()
+        cursor = Transaction().connection.cursor()
+        lines = defaultdict(list)
+        for sub_invoices in grouped_slice(invoices):
+            sub_invoices = list(sub_invoices)
+            lines_to_pay = cls._query_lines_to_pay(sub_invoices)
+            query = cls._query_lines_to_pay(sub_invoices)
+            query = (
+                query
+                .join(line,
+                    condition=query.reconciliation == line.reconciliation)
+                .join(move, condition=line.move == move.id)
+                .select(
+                    query.invoice, line.id,
+                    where=~Exists(
+                        lines_to_pay.select(
+                            lines_to_pay.line,
+                            where=(lines_to_pay.invoice == query.invoice)
+                            & (lines_to_pay.line == line.id))),
+                    group_by=[query.invoice, line.id, move.date],
+                    order_by=move.date.asc))
+            cursor.execute(*query)
+            for invoice_id, line_id in cursor:
+                lines[invoice_id].append(line_id)
+        return lines
 
     @classmethod
     def get_amount_to_pay(cls, invoices, name):
@@ -896,7 +924,8 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin, InvoiceReportMixin):
             | tax.select(tax.invoice.as_('invoice'),
                 Coalesce(Sum(tax.amount), 0).as_('total_amount'),
                 where=(tax.invoice.in_(invoice_query)
-                    & ~Exists(invoice.select(Literal(1),
+                    & Exists(invoice.select(
+                            invoice.id,
                             where=(invoice.total_amount_cache == Null)
                             & (invoice.id == tax.invoice)))),
                 group_by=tax.invoice))
@@ -968,7 +997,8 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin, InvoiceReportMixin):
 
         query = tax.select(tax.invoice,
             where=(tax.invoice.in_(invoice_query)
-                & ~Exists(invoice.select(Literal(1),
+                & Exists(invoice.select(
+                        invoice.id,
                         where=(invoice.tax_amount_cache == Null)
                         & (invoice.id == tax.invoice)))),
             group_by=tax.invoice,
@@ -2489,8 +2519,8 @@ class InvoiceLine(sequence_ordered(), ModelSQL, ModelView, TaxableMixin):
         if self.type == 'line':
             currency = (self.invoice.currency if self.invoice
                 else self.currency)
-            amount = (Decimal(str(self.quantity or '0.0'))
-                * (self.unit_price or Decimal('0.0')))
+            amount = (Decimal(str(self.quantity or 0))
+                * (self.unit_price or Decimal(0)))
             invoice_type = (
                 self.invoice.type if self.invoice else self.invoice_type)
             if (invoice_type == 'in'
@@ -2505,7 +2535,7 @@ class InvoiceLine(sequence_ordered(), ModelSQL, ModelView, TaxableMixin):
             if currency:
                 return currency.round(amount)
             return amount
-        return Decimal('0.0')
+        return Decimal(0)
 
     def get_amount(self, name):
         if self.type == 'line':
@@ -2994,11 +3024,11 @@ class InvoiceTax(sequence_ordered(), ModelSQL, ModelView):
 
     @staticmethod
     def default_base():
-        return Decimal('0.0')
+        return Decimal(0)
 
     @staticmethod
     def default_amount():
-        return Decimal('0.0')
+        return Decimal(0)
 
     @staticmethod
     def default_manual():
@@ -3455,7 +3485,7 @@ class PayInvoiceAsk(ModelView):
     @fields.depends(
         'lines', 'amount', 'currency', 'invoice', 'payment_lines', 'company')
     def on_change_lines(self):
-        self.amount_writeoff = Decimal('0.0')
+        self.amount_writeoff = Decimal(0)
         if not self.invoice:
             return
 
@@ -3532,7 +3562,7 @@ class PayInvoice(Wizard):
         currency = self.start.currency
         _, remainder = self.get_reconcile_lines_for_amount(
             invoice, amount, currency)
-        if remainder == Decimal('0.0') and amount <= invoice.amount_to_pay:
+        if remainder == Decimal(0) and amount <= invoice.amount_to_pay:
             return 'pay'
         return 'ask'
 

@@ -60,7 +60,7 @@ class Move(metaclass=PoolMeta):
             states={
                 'invisible': ~Eval('production'),
                 }),
-        'on_change_with_production')
+        'on_change_with_production', searcher='search_production')
     production_cost_price_updated = fields.Boolean(
         "Cost Price Updated", readonly=True,
         states={
@@ -91,6 +91,19 @@ class Move(metaclass=PoolMeta):
             return self.production_input
         elif self.production_output:
             return self.production_output
+
+    @classmethod
+    def search_production(cls, name, clause):
+        _, operator, operand, *extra = clause
+        if operator.startswith('!') or operator.startswith('not '):
+            bool_op = 'AND'
+        else:
+            bool_op = 'OR'
+        nested = clause[0][len(name):]
+        return [bool_op,
+            ('production_input' + nested, operator, operand, *extra),
+            ('production_output' + nested, operator, operand, *extra),
+            ]
 
     def set_effective_date(self):
         if not self.effective_date and self.production_input:

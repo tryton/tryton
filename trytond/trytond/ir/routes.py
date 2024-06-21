@@ -16,7 +16,8 @@ from trytond.transaction import Transaction
 from trytond.wsgi import app
 
 SOURCE = config.get(
-    'html', 'src', default='https://cloud.tinymce.com/stable/tinymce.min.js')
+    'html', 'src',
+    default='https://cdn.tiny.cloud/1/no-api-key/tinymce/7/tinymce.min.js')
 AVATAR_TIMEOUT = config.getint(
     'web', 'avatar_timeout', default=7 * 24 * 60 * 60)
 
@@ -76,7 +77,7 @@ def html_editor(request, pool, model, record, field):
         elif not isinstance(text, str):
             abort(HTTPStatus.BAD_REQUEST)
         title = '%(model)s "%(name)s" %(field)s - %(title)s' % {
-            'model': field.model.name,
+            'model': field.model_ref.name,
             'name': record.rec_name,
             'field': field.field_description,
             'title': request.args.get('title', "Tryton"),
@@ -102,54 +103,54 @@ TEMPLATE = '''<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8"/>
-    <script src="%(source)s"></script>
+    <script src="%(source)s" referrerpolicy="origin"></script>
     <script>
     tinymce.init({
         selector: '#text',
         language: '%(language)s',
-        plugins: 'fullscreen autosave code %(plugins)s',
+        plugins: 'autosave code %(plugins)s',
         removed_menuitems: 'newdocument',
         toolbar: 'save | undo redo | styleselect | bold italic | ' +
             'alignleft aligncenter alignright alignjustify | ' +
             'bullist numlist outdent indent | link image | close',
         extended_valid_elements:
-            'py:if[test],' +
-            'py:choose[test],py:when[test],py:otherwise,' +
-            'py:for[each],' +
-            'py:def[function],' +
-            'py:match[path],' +
-            'py:with[vars],' +
-            'py:replace[value]',
+            'py\\\\:if[test],' +
+            'py\\\\:choose[test],py\\\\:when[test],py\\\\:otherwise,' +
+            'py\\\\:for[each],' +
+            'py\\\\:def[function],' +
+            'py\\\\:match[path],' +
+            'py\\\\:with[vars],' +
+            'py\\\\:replace[value]',
         custom_elements:
-            'py:if,' +
-            'py:choose,py:when,py:otherwise,' +
-            'py:for,' +
-            'py:def,' +
-            'py:match,' +
-            'py:with,' +
-            'py:replace',
+            'py\\\\:if,' +
+            'py\\\\:choose,py\\\\:when,py\\\\:otherwise,' +
+            'py\\\\:for,' +
+            'py\\\\:def,' +
+            'py\\\\:match,' +
+            'py\\\\:with,' +
+            'py\\\\:replace',
         content_css: %(css)s,
         body_class: %(class)s,
         setup: function(editor) {
-            editor.addMenuItem('save', {
+            editor.ui.registry.addMenuItem('save', {
                 text: 'Save',
                 icon: 'save',
                 context: 'file',
-                cmd: 'save',
+                onAction: () => editor.execCommand('save')
             });
-            editor.addButton('save', {
+            editor.ui.registry.addButton('save', {
                 title: 'Save',
                 icon: 'save',
-                cmd: 'save',
+                onAction: () => editor.execCommand('save')
             });
             editor.addShortcut('ctrl+s', 'save', 'save');
             editor.addCommand('save', function() {
                 document.form.submit();
             });
-            editor.addButton('close', {
+            editor.ui.registry.addButton('close', {
                 title: 'Close',
-                icon: 'remove',
-                onclick: function() {
+                icon: 'close',
+                onAction: function() {
                     window.location =
                         window.location.protocol + '//_@' +
                         window.location.host +
@@ -159,7 +160,6 @@ TEMPLATE = '''<!DOCTYPE html>
             });
         },
         init_instance_callback: function(editor) {
-            editor.execCommand('mceFullScreen');
             var error = '%(error)s';
             if (error) {
                 editor.notificationManager.open({

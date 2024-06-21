@@ -162,6 +162,12 @@ def load_module_graph(graph, pool, update=None, lang=None, indexes=True):
             module2state.update(cursor)
         modules = set(modules)
 
+        new_modules = modules - module2state.keys()
+        if new_modules:
+            cursor.execute(*ir_module.insert(
+                    [ir_module.name, ir_module.state],
+                    [[m, 'not activated'] for m in new_modules]))
+
         for node in graph:
             module = node.name
             if module not in MODULES:
@@ -378,10 +384,10 @@ def load_modules(
                 Module.update_list()
 
     if not Transaction().connection:
-        with Transaction().start(database_name, 0):
+        with Transaction().start(database_name, 0, readonly=not update):
             _load_modules(update)
     else:
-        with Transaction().new_transaction(), \
+        with Transaction().new_transaction(readonly=not update), \
                 Transaction().set_user(0), \
                 Transaction().reset_context():
             _load_modules(update)

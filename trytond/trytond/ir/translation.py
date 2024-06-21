@@ -938,6 +938,13 @@ class Translation(
                         name=translation.name,
                         overriding_module=translation.overriding_module))
             flags = [] if not translation.fuzzy else ['fuzzy']
+            try:
+                translation.src % ()
+            except ValueError:
+                # Incomplete format is not python format
+                pass
+            except TypeError:
+                flags.append('python-format')
             trans_ctxt = '%(type)s:%(name)s:' % {
                 'type': translation.type,
                 'name': translation.name,

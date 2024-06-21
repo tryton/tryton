@@ -21,10 +21,18 @@ class AccountAssetTestCase(ModuleTestCase):
                     dt.timedelta(days=365)),
                 (dt.date(2019, 1, 1), dt.date(2019, 3, 1),
                     dt.timedelta(days=31 + 28)),
+                (dt.date(2019, 2, 28), dt.date(2019, 3, 31),
+                    dt.timedelta(days=31)),
                 (dt.date(2024, 1, 1), dt.date(2024, 2, 1),
                     dt.timedelta(days=31)),
                 (dt.date(2024, 1, 1), dt.date(2024, 3, 1),
                     dt.timedelta(days=31 + 28)),
+                (dt.date(2024, 2, 27), dt.date(2024, 3, 31),
+                    dt.timedelta(days=32)),
+                (dt.date(2024, 2, 28), dt.date(2024, 3, 31),
+                    dt.timedelta(days=31)),
+                (dt.date(2024, 2, 29), dt.date(2024, 3, 31),
+                    dt.timedelta(days=31)),
                 (dt.date(2024, 3, 1), dt.date(2024, 4, 1),
                     dt.timedelta(days=31)),
                 (dt.date(2024, 1, 1), dt.date(2025, 1, 1),
@@ -34,9 +42,9 @@ class AccountAssetTestCase(ModuleTestCase):
                 (dt.date(2000, 1, 1), dt.date(2020, 1, 1),
                     dt.timedelta(days=365 * 20)),
                 ]:
-            self.assertEqual(
-                normalized_delta(start, end), delta,
-                msg='%s - %s' % (start, end))
+            with self.subTest(start=start, end=end):
+                self.assertEqual(
+                    normalized_delta(start, end), delta)
 
 
 del ModuleTestCase

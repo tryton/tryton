@@ -45,6 +45,31 @@ class MoveTemplate(DeactivableMixin, ModelSQL, ModelView):
     def default_company():
         return Transaction().context.get('company')
 
+    @classmethod
+    def validate_fields(cls, templates, field_names):
+        super().validate_fields(templates, field_names)
+        cls.check_description(templates, field_names)
+
+    @classmethod
+    def check_description(cls, templates, field_names=None):
+        pool = Pool()
+        Keyword = pool.get('account.move.template.keyword')
+        if field_names and not (field_names & {'description', 'keywords'}):
+            return
+        for template in templates:
+            if template.description:
+                values = {k.name: '' for k in template.keywords}
+                try:
+                    template.description.format(
+                        **dict(Keyword.format_values(template, values)))
+                except (KeyError, ValueError) as e:
+                    raise MoveTemplateKeywordValidationError(
+                        gettext(
+                            'account.msg_move_template_invalid_description',
+                            description=template.description,
+                            template=template.rec_name,
+                            error=e)) from e
+
     def get_move(self, values):
         'Return the move for the keyword values'
         pool = Pool()
@@ -55,8 +80,16 @@ class MoveTemplate(DeactivableMixin, ModelSQL, ModelView):
         move.company = self.company
         move.journal = self.journal
         if self.description:
-            move.description = self.description.format(
-                **dict(Keyword.format_values(self, values)))
+            try:
+                move.description = self.description.format(
+                    **dict(Keyword.format_values(self, values)))
+            except (KeyError, ValueError) as e:
+                raise MoveTemplateExpressionError(
+                    gettext(
+                        'account.msg_move_template_invalid_description',
+                        description=self.description,
+                        template=self.rec_name,
+                        error=e)) from e
         move.lines = [l.get_line(values) for l in self.lines]
 
         return move

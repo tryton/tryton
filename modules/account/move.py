@@ -504,7 +504,9 @@ class Move(DescriptionOriginMixin, ModelSQL, ModelView):
         cls.save(moves)
 
         def keyfunc(line):
-            return line.party, line.account
+            # Set party last to avoid compare party instance and None
+            # party will always be None for the same account
+            return line.account, line.party
         to_reconcile = Line.browse(sorted(
                 [l for l in Line.browse(to_reconcile) if l.account.reconcile],
                 key=keyfunc))
@@ -634,8 +636,8 @@ class Reconciliation(ModelSQL, ModelView):
     def check_lines(cls, reconciliations):
         Lang = Pool().get('ir.lang')
         for reconciliation in reconciliations:
-            debit = Decimal('0.0')
-            credit = Decimal('0.0')
+            debit = Decimal(0)
+            credit = Decimal(0)
             account = None
             if reconciliation.lines:
                 party = reconciliation.lines[0].party
@@ -1160,13 +1162,13 @@ class Line(DescriptionOriginMixin, MoveLineMixin, ModelSQL, ModelView):
     @fields.depends('debit', 'credit', 'amount_second_currency')
     def on_change_debit(self):
         if self.debit:
-            self.credit = Decimal('0.0')
+            self.credit = Decimal(0)
         self._amount_second_currency_sign()
 
     @fields.depends('debit', 'credit', 'amount_second_currency')
     def on_change_credit(self):
         if self.credit:
-            self.debit = Decimal('0.0')
+            self.debit = Decimal(0)
         self._amount_second_currency_sign()
 
     @fields.depends('amount_second_currency', 'debit', 'credit')
@@ -1455,11 +1457,11 @@ class Line(DescriptionOriginMixin, MoveLineMixin, ModelSQL, ModelView):
         pool = Pool()
         Move = pool.get('account.move')
 
-        def move_fields():
+        def move_fields(move_name):
             for fname, field in cls._fields.items():
                 if (isinstance(field, fields.Function)
                         and field.setter == 'set_move_field'):
-                    if fname.startswith('move_'):
+                    if move_name and fname.startswith('move_'):
                         fname = fname[5:]
                     yield fname
 
@@ -1469,7 +1471,7 @@ class Line(DescriptionOriginMixin, MoveLineMixin, ModelSQL, ModelView):
         for vals in vlist:
             if not vals.get('move'):
                 move_values = {}
-                for fname in move_fields():
+                for fname in move_fields(move_name=True):
                     move_values[fname] = vals.get(fname) or context.get(fname)
                 key = tuple(sorted(move_values.items()))
                 move = moves.get(key)
@@ -1480,7 +1482,7 @@ class Line(DescriptionOriginMixin, MoveLineMixin, ModelSQL, ModelView):
                 vals['move'] = move.id
             else:
                 # prevent default value for field with set_move_field
-                for fname in move_fields():
+                for fname in move_fields(move_name=False):
                     vals.setdefault(fname, None)
         lines = super(Line, cls).create(vlist)
         period_and_journals = set((line.period, line.journal)
@@ -1561,8 +1563,8 @@ class Line(DescriptionOriginMixin, MoveLineMixin, ModelSQL, ModelView):
             lines = list(lines)
             reconcile_account = None
             reconcile_party = None
-            amount = Decimal('0.0')
-            amount_second_currency = Decimal('0.0')
+            amount = Decimal(0)
+            amount_second_currency = Decimal(0)
             second_currencies = set()
             posted = True
             for line in lines:
@@ -2004,8 +2006,8 @@ class ReconcileLines(Wizard):
     def get_writeoff(self):
         "Return writeoff amount and company"
         company = currency = None
-        amount = Decimal('0.0')
-        amount_second_currency = Decimal('0.0')
+        amount = Decimal(0)
+        amount_second_currency = Decimal(0)
         second_currencies = set()
         for line in self.records:
             amount += line.debit - line.credit

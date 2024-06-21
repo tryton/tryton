@@ -297,6 +297,22 @@ class Shop_PriceList(metaclass=PoolMeta):
         return sale
 
 
+class Shop_TaxRuleCountry(metaclass=PoolMeta):
+    __name__ = 'web.shop'
+
+    def get_products(self, pattern=None):
+        pattern = pattern.copy() if pattern is not None else {}
+        if (self.warehouse
+                and self.warehouse.address
+                and self.warehouse.address.country):
+            pattern.setdefault(
+                'from_country', self.warehouse.address.country.id)
+        else:
+            pattern.setdefault('from_country')
+        pattern.setdefault('to_country')
+        return super().get_products(pattern=pattern)
+
+
 class Shop_Warehouse(ModelSQL):
     "Web Shop - Warehouse"
     __name__ = 'web.shop-stock.location'

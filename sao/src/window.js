@@ -179,7 +179,7 @@
                 }
             });
 
-            var readonly = this.screen.readonly || this.screen.group.readonly;
+            var readonly = this.screen.group.readonly;
 
             this.but_ok = null;
             this.but_new = null;
@@ -406,7 +406,7 @@
             var name = '_';
             var access = Sao.common.MODELACCESS.get(this.screen.model_name);
             var deletable = this.screen.deletable;
-            var readonly = this.screen.readonly || this.screen.group.readonly;
+            var readonly = this.screen.group.readonly;
             if (position >= 1) {
                 name = position;
                 if (this.domain) {
@@ -414,10 +414,12 @@
                 }
                 this.but_next.prop('disabled', position >= size);
                 this.but_previous.prop('disabled', position <= 1);
-                if (access.delete && !readonly && deletable) {
-                    this.but_del.prop('disabled', false);
-                    this.but_undel.prop('disabled', false);
-                }
+                this.but_del.prop(
+                    'disabled',
+                    readonly ||
+                    !access.delete ||
+                    !deletable);
+                this.but_undel.prop('disabled', readonly);
             } else {
                 this.but_del.prop('disabled', true);
                 this.but_undel.prop('disabled', true);
@@ -490,7 +492,7 @@
         response: function(response_id) {
             var result;
             this.screen.current_view.set_value();
-            var readonly = this.screen.readonly || this.screen.group.readonly;
+            var readonly = this.screen.group.readonly;
             if (~['RESPONSE_OK', 'RESPONSE_ACCEPT'].indexOf(response_id) &&
                     !readonly &&
                     this.screen.current_record) {
@@ -1396,6 +1398,14 @@
             this.session = Sao.Session.current_session;
             this.fields_data = {}; // Ask before Removing this.
             this.fields_invert = {};
+            this.languages = Sao.rpc({
+                'method': 'model.ir.lang.search_read',
+                'params': [
+                    [['translatable', '=', true]],
+                    0, null, null, ['code', 'name'],
+                    {},
+                ],
+            }, this.session, false);
             Sao.Window.Import._super.init.call(this,
                 Sao.i18n.gettext('CSV Import: %1', name));
 
@@ -1550,7 +1560,7 @@
                     }).prependTo(node);
                 expander_icon.css(
                     'visibility',
-                    parent_node[field].relation ? 'visible' : 'hidden');
+                    parent_node[field].children ? 'visible' : 'hidden');
             });
         },
         model_populate: function (fields, parent_node, prefix_field,
@@ -1559,28 +1569,47 @@
             prefix_field = prefix_field || '';
             prefix_name = prefix_name || '';
 
-            for (const field of Object.keys(fields)) {
-                if(!fields[field].readonly || field == 'id') {
-                    var name = fields[field].string || field;
+            for (const field_name of Object.keys(fields)) {
+                const field = fields[field_name];
+                if(!field.readonly || field_name == 'id') {
+                    var name = field.string || field_name;
                     name = prefix_name + name;
                     // Only One2Many can be nested for import
                     var relation;
-                    if (fields[field].type == 'one2many') {
-                        relation = fields[field].relation;
+                    if (field.type == 'one2many') {
+                        relation = field.relation;
                     } else {
                         relation = null;
                     }
                     var node = {
                         name: name,
-                        field: prefix_field + field,
+                        field: prefix_field + field_name,
                         relation: relation,
-                        string: fields[field].string
+                        string: field.string
                     };
-                    parent_node[field] = node;
-                    this.fields[prefix_field + field] = node;
-                    this.fields_invert[name] = prefix_field + field;
+                    parent_node[field_name] = node;
+                    this.fields[prefix_field + field_name] = node;
+                    this.fields_invert[name] = prefix_field + field_name;
                     if (relation) {
                         node.children = {};
+                    } else if (field.translate) {
+                        node.children = {};
+                        for (const language of this.languages) {
+                            const l_field_name = (
+                                `${field_name}:lang=${language.code}`);
+                            const l_name = (
+                                prefix_name + name + ` (${language.name})`);
+                            const l_node = {
+                                name: l_name,
+                                field: prefix_field + l_field_name,
+                                relation: null,
+                                string: language.name,
+                            };
+                            node.children[l_field_name] = l_node;
+                            this.fields[prefix_field + l_field_name] = l_node;
+                            this.fields_invert[l_name] = (
+                                prefix_field + l_field_name);
+                        }
                     }
                 }
             }

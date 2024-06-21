@@ -2,6 +2,7 @@
 # this repository contains the full copyright notices and license terms.
 
 import csv
+import fnmatch
 import os
 import shutil
 import tempfile
@@ -75,7 +76,27 @@ class Shop(metaclass=PoolMeta):
             context['language'] = language
         return context
 
-    def product_data_feed_csv(self, format, language=None):
+    @classmethod
+    def update_product_data_feed_csv(cls, shops=None):
+        if shops is None:
+            shops = cls.search([])
+
+        directory = _get_directory()
+        for shop in shops:
+            for name in fnmatch.filter(
+                    os.listdir(directory),
+                    f'{shop.name}-{shop.id}-*.csv'):
+                name = name[len(f'{shop.name}-{shop.id}-'):-len('.csv')]
+                if '-' in name:
+                    format, language = name.rsplit('-', 1)
+                else:
+                    format, language = name, None
+                shop.product_data_feed_csv(
+                    format, language=language, duration=_duration / 2)
+
+    def product_data_feed_csv(self, format, language=None, duration=_duration):
+        pool = Pool()
+        Lang = pool.get('ir.lang')
         transaction = Transaction()
         directory = _get_directory()
         if language:
@@ -84,11 +105,19 @@ class Shop(metaclass=PoolMeta):
             filename = f'{self.name}-{self.id}-{format}.csv'
         filename = os.path.join(directory, filename)
 
+        # Fallback to the default language if it does not exist
         try:
-            if (time.time() - os.path.getmtime(filename)) < _duration:
+            Lang.get(language)
+        except ValueError:
+            language = None
+
+        try:
+            if (time.time() - os.path.getmtime(filename)) < duration:
                 return filename
         except OSError:
-            pass
+            # Create the file so cron will update it
+            # even if this generation fails
+            open(filename, 'a').close()
 
         with transaction.set_context(_product_data_language=language):
             products, prices, taxes = self.get_products()
@@ -396,3 +425,21 @@ class Shop_ShipmentCost(metaclass=PoolMeta):
                         f'{cost} {self.currency.code}')
         row['shipping'] = ','.join(shipping)
         return row
+
+
+class Shop_TaxRuleCountry(metaclass=PoolMeta):
+    __name__ = 'web.shop'
+
+    def _product_data_feed_carrier_cost(
+            self, product, country, carrier, price, pattern=None):
+        pattern = pattern.copy() if pattern is not None else {}
+        if (self.warehouse
+                and self.warehouse.address
+                and self.warehouse.address.country):
+            pattern.setdefault(
+                'from_country', self.warehouse.address.country.id)
+        else:
+            pattern.setdefault('from_country')
+        pattern.setdefault('to_country', country.id)
+        return super()._product_data_feed_carrier_cost(
+            product, country, carrier, price, pattern=pattern)

@@ -4,15 +4,23 @@
 
 import datetime as dt
 import doctest
+import email.message
 import sys
 import unittest
 from io import BytesIO
+from unittest.mock import patch
 
 import sql
 import sql.operators
 
+try:
+    import email_validator
+except ImportError:
+    email_validator = None
+
+from trytond.pool import Pool
 from trytond.tools import (
-    cached_property, decimal_, escape_wildcard, file_open, firstline,
+    cached_property, decimal_, email_, escape_wildcard, file_open, firstline,
     grouped_slice, is_full_text, is_instance_method, likify, lstrip_wildcard,
     pairwise_longest, reduce_domain, reduce_ids, remove_forbidden_chars,
     rstrip_wildcard, slugify, sortable_values, strip_wildcard, timezone,
@@ -1287,6 +1295,151 @@ class CachedPropertyTestCase(unittest.TestCase):
         self.assertEqual(item.cached_count, 1)
         del item.cached_count
         self.assertEqual(item.cached_count, 2)
+
+
+class EmailTestCase(unittest.TestCase):
+    "Test email"
+
+    def test_set_from_header_same(self):
+        "Test set_from_header with same addresses"
+        msg = email.message.EmailMessage()
+
+        email_.set_from_header(msg, 'foo@example.com', 'foo@example.com')
+
+        self.assertEqual(msg['From'], 'foo@example.com')
+        self.assertIsNone(msg['Sender'])
+        self.assertIsNone(msg['On-Behalf-Of'])
+        self.assertIsNone(msg['Reply-To'])
+
+    def test_set_from_header_same_domain(self):
+        "Test set_from_header with same domain addresses"
+        msg = email.message.EmailMessage()
+
+        email_.set_from_header(msg, 'foo@example.com', 'bar@example.com')
+
+        self.assertEqual(msg['From'], 'bar@example.com')
+        self.assertEqual(msg['Sender'], 'foo@example.com')
+        self.assertIsNone(msg['On-Behalf-Of'])
+        self.assertIsNone(msg['Reply-To'])
+
+    def test_set_from_header_different_domain(self):
+        "Test set_from_header with different domain addresses"
+        msg = email.message.EmailMessage()
+
+        email_.set_from_header(msg, 'foo@example.com', 'bar@example.net')
+
+        self.assertEqual(msg['From'], 'foo@example.com')
+        self.assertIsNone(msg['Sender'])
+        self.assertEqual(msg['On-Behalf-Of'], 'bar@example.net')
+        self.assertEqual(msg['Reply-To'], 'bar@example.net')
+
+    def test_has_rcpt_to(self):
+        "Test has_rcpt with To"
+        msg = email.message.EmailMessage()
+        msg['To'] = 'foo@example.com'
+
+        self.assertTrue(email_.has_rcpt(msg))
+
+    def test_has_rcpt_cc(self):
+        "Test has_rcpt with Cc"
+        msg = email.message.EmailMessage()
+        msg['Cc'] = 'foo@example.com'
+
+        self.assertTrue(email_.has_rcpt(msg))
+
+    def test_has_rcpt_bcc(self):
+        "Test has_rcpt with Bcc"
+        msg = email.message.EmailMessage()
+        msg['Bcc'] = 'foo@example.com'
+
+        self.assertTrue(email_.has_rcpt(msg))
+
+    def test_has_rcpt_without(self):
+        "Test has_rcpt without"
+        msg = email.message.EmailMessage()
+
+        self.assertFalse(email_.has_rcpt(msg))
+
+    @unittest.skipUnless(email_validator, "requires email-validator")
+    @patch.object(Pool, 'test')
+    def test_validate_email(self, pool_test):
+        "Test validate_email"
+        pool_test.return_value = True
+
+        self.assertEqual(
+            email_.validate_email('foo@example.com'), 'foo@example.com')
+
+    @unittest.skipUnless(email_validator, "requires email-validator")
+    @patch.object(Pool, 'test')
+    def test_validate_email_invalid(self, pool_test):
+        "Test validate_email with invalid email"
+        pool_test.return_value = True
+
+        with self.assertRaises(email_.EmailNotValidError):
+            email_.validate_email('foo')
+
+    @unittest.skipUnless(email_validator, "requires email-validator")
+    @patch.object(Pool, 'test')
+    def test_normalize_email(self, pool_test):
+        "Test normalize_email"
+        pool_test.return_value = True
+
+        self.assertEqual(
+            email_.normalize_email('foo@example.com'), 'foo@example.com')
+
+    @unittest.skipUnless(email_validator, "requires email-validator")
+    @patch.object(Pool, 'test')
+    def test_normalize_email_invalid(self, pool_test):
+        "Test normalize_email with invalid email"
+        pool_test.return_value = True
+
+        self.assertEqual(email_.normalize_email('foo'), 'foo')
+
+    @unittest.skipUnless(email_validator, "requires email-validator")
+    @patch.object(Pool, 'test')
+    def test_convert_ascii_email(self, pool_test):
+        "Test convert_ascii_email"
+        pool_test.return_value = True
+
+        self.assertEqual(
+            email_.convert_ascii_email('foo@example.com'), 'foo@example.com')
+
+    @unittest.skipUnless(email_validator, "requires email-validator")
+    @patch.object(Pool, 'test')
+    def test_convert_ascii_email_non_ascii(self, pool_test):
+        "Test convert_ascii_email with non-ascii"
+        pool_test.return_value = True
+
+        self.assertEqual(
+            email_.convert_ascii_email('föo@example.com'), 'föo@example.com')
+
+    @unittest.skipUnless(email_validator, "requires email-validator")
+    @patch.object(Pool, 'test')
+    def test_convert_ascii_email_invalid(self, pool_test):
+        "Test convert_ascii_email with invalid email"
+        pool_test.return_value = True
+
+        self.assertEqual(
+            email_.convert_ascii_email('foo'), 'foo')
+
+    def test_format_address(self):
+        "Test format_address"
+        for address, name, result in [
+                ('foo@example.com', None, 'foo@example.com'),
+                ('foo@example.com', "John", 'John <foo@example.com>'),
+                ('foo@example.com', "John Doe", 'John Doe <foo@example.com>'),
+                ('foo@example.com', "John Döe",
+                    '=?utf-8?q?John_D=C3=B6e?= <foo@example.com>'),
+                ('foo@example.com', "J@ne", '"J@ne" <foo@example.com>'),
+                ('föo@example.com', None, 'föo@example.com'),
+                ('föo@example.com', "John", 'John <föo@example.com>'),
+                ('föo@example.com', "John Doe", 'John Doe <föo@example.com>'),
+                ('föo@example.com', "John Döe",
+                    '=?utf-8?q?John_D=C3=B6e?= <föo@example.com>'),
+                ('föo@example.com', "J@ne", '"J@ne" <föo@example.com>'),
+                ]:
+            with self.subTest(address=address, name=name):
+                self.assertEqual(email_.format_address(address, name), result)
 
 
 def load_tests(loader, tests, pattern):

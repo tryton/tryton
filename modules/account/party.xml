@@ -21,10 +21,10 @@ this repository contains the full copyright notices and license terms. -->
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="False"/>
         </record>
-        <record model="ir.model.field.access" id="access_party_accounts_account_party">
+        <record model="ir.model.field.access" id="access_party_accounts_account_account">
             <field name="model">party.party</field>
             <field name="field">accounts</field>
-            <field name="group" ref="group_account_party"/>
+            <field name="group" ref="group_account"/>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="True"/>
         </record>
@@ -35,10 +35,10 @@ this repository contains the full copyright notices and license terms. -->
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="False"/>
         </record>
-        <record model="ir.model.field.access" id="access_party_account_payable_account_party">
+        <record model="ir.model.field.access" id="access_party_account_payable_account">
             <field name="model">party.party</field>
             <field name="field">account_payable</field>
-            <field name="group" ref="group_account_party"/>
+            <field name="group" ref="group_account"/>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="True"/>
         </record>
@@ -49,10 +49,10 @@ this repository contains the full copyright notices and license terms. -->
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="False"/>
         </record>
-        <record model="ir.model.field.access" id="access_party_account_receivable_account_party">
+        <record model="ir.model.field.access" id="access_party_account_receivable_account">
             <field name="model">party.party</field>
             <field name="field">account_receivable</field>
-            <field name="group" ref="group_account_party"/>
+            <field name="group" ref="group_account"/>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="True"/>
         </record>
@@ -63,10 +63,10 @@ this repository contains the full copyright notices and license terms. -->
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="False"/>
         </record>
-        <record model="ir.model.field.access" id="access_party_customer_tax_rule_account_party">
+        <record model="ir.model.field.access" id="access_party_customer_tax_rule_account">
             <field name="model">party.party</field>
             <field name="field">customer_tax_rule</field>
-            <field name="group" ref="group_account_party"/>
+            <field name="group" ref="group_account"/>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="True"/>
         </record>
@@ -77,10 +77,10 @@ this repository contains the full copyright notices and license terms. -->
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="False"/>
         </record>
-        <record model="ir.model.field.access" id="access_party_supplier_tax_rule_account_party">
+        <record model="ir.model.field.access" id="access_party_supplier_tax_rule_account">
             <field name="model">party.party</field>
             <field name="field">supplier_tax_rule</field>
-            <field name="group" ref="group_account_party"/>
+            <field name="group" ref="group_account"/>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="True"/>
         </record>

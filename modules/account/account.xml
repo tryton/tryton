@@ -6,10 +6,6 @@ this repository contains the full copyright notices and license terms. -->
         <record model="res.group" id="group_account">
             <field name="name">Account</field>
         </record>
-        <record model="res.group" id="group_account_party">
-            <field name="name">Accounting Party</field>
-            <field name="parent" ref="group_account"/>
-        </record>
         <record model="res.group" id="group_account_admin">
             <field name="name">Account Administration</field>
             <field name="parent" ref="group_account"/>
@@ -17,10 +13,6 @@ this repository contains the full copyright notices and license terms. -->
         <record model="res.user-res.group" id="user_admin_group_account">
             <field name="user" ref="res.user_admin"/>
             <field name="group" ref="group_account"/>
-        </record>
-        <record model="res.user-res.group" id="user_admin_group_account_party">
-            <field name="user" ref="res.user_admin"/>
-            <field name="group" ref="group_account_party"/>
         </record>
         <record model="res.user-res.group" id="user_admin_group_account_admin">
             <field name="user" ref="res.user_admin"/>

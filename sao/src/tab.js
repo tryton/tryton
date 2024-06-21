@@ -438,6 +438,11 @@
         }).on('show.bs.tab', function() {
             Sao.set_url(tab.get_url(), tab.name_long.split(' / ').pop());
             Sao.Tab.set_view_type(tab.current_view_type);
+        }).on('mousedown', function(evt) {
+            if (evt.which === 2) {
+                evt.preventDefault();
+                tab.close();
+            }
         })
         .append(jQuery('<button/>', {
             'class': 'close',
@@ -1254,7 +1259,7 @@
                 this.refresh_resources(true);
             });
             for (const file of files) {
-                Sao.common.get_file_data(file, window_.add_data);
+                Sao.common.get_file_data(file, window_.add_data.bind(window_));
             }
             jQuery.when.apply(jQuery, uris).then(function() {
                 function empty(value) {

@@ -322,7 +322,7 @@ class RecordTagHandler:
         return "record '%s.%s'" % (self.mh.module, self.xml_id)
 
 
-class Fs2bdAccessor:
+class FS2DBAccessor:
     """
     Used in TrytondXmlHandler.
     Provide some helper function to ease cache access and management.
@@ -408,9 +408,7 @@ class Fs2bdAccessor:
                     records = Model.search([
                         ('id', 'in', list(sub_record_ids)),
                         ], order=[('id', 'ASC')])
-                with Transaction().set_context(language='en'):
-                    models = Model.browse(list(map(int, records)))
-                for model in models:
+                for model in records:
                     self.browserecord[module][model_name][model.id] = model
         self.fetched_modules.append(module)
 
@@ -424,7 +422,7 @@ class TrytondXmlHandler(sax.handler.ContentHandler):
         self.pool = pool
         self.module = module
         self.ModelData = pool.get('ir.model.data')
-        self.fs2db = Fs2bdAccessor(self.ModelData, pool)
+        self.fs2db = FS2DBAccessor(self.ModelData, pool)
         self.to_delete = self.populate_to_delete()
         self.noupdate = None
         self.module_state = module_state
@@ -460,10 +458,11 @@ class TrytondXmlHandler(sax.handler.ContentHandler):
         source = sax.InputSource()
         source.setByteStream(stream)
 
-        try:
-            self.sax_parser.parse(source)
-        except Exception as e:
-            raise ParsingError("in %s" % self.current_state()) from e
+        with Transaction().set_context(language='en', module=self.module):
+            try:
+                self.sax_parser.parse(source)
+            except Exception as e:
+                raise ParsingError("in %s" % self.current_state()) from e
         return self.to_delete
 
     def startElement(self, name, attributes):
@@ -630,8 +629,7 @@ class TrytondXmlHandler(sax.handler.ContentHandler):
             record = self.fs2db.get_browserecord(module, Model.__name__, db_id)
             # Re-create record if it was deleted
             if not record:
-                with Transaction().set_context(
-                        module=module, language='en'):
+                with Transaction().set_context(module=module):
                     record, = Model.create([values])
 
                 # reset_browsercord
@@ -697,8 +695,7 @@ class TrytondXmlHandler(sax.handler.ContentHandler):
     def create_records(self, model, vlist, fs_ids):
         Model = self.pool.get(model)
 
-        with Transaction().set_context(module=self.module, language='en'):
-            records = Model.create(vlist)
+        records = Model.create(vlist)
 
         mdata_values = []
         for record, values, fs_id in zip(records, vlist, fs_ids):
@@ -741,8 +738,7 @@ class TrytondXmlHandler(sax.handler.ContentHandler):
         # if there is values to update:
         if to_update:
             # write the values in the db:
-            with Transaction().set_context(
-                    module=module, language='en'):
+            with Transaction().set_context(module=module):
                 Model.write(*to_update)
             self.fs2db.reset_browsercord(
                 module, Model.__name__, sum(to_update[::2], []))

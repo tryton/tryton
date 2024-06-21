@@ -128,12 +128,12 @@ class Avatar(ImageMixin, ResourceMixin, ModelSQL):
                 (height + size) // 2))
         if size > 2048:
             img = img.resize((2048, 2048))
-        if img.mode in {'RGBA', 'P'}:
-            img.convert('RGBA')
+        if img.mode != 'RGB':
+            img = img.convert('RGBA')
             background = Image.new('RGBA', img.size, (255, 255, 255))
             background.alpha_composite(img)
             img = background.convert('RGB')
-        img.save(data, format='jpeg', optimize=True, **_params)
+        img.save(data, format='jpeg', optimize=True, dpi=(300, 300), **_params)
         return data.getvalue()
 
     def _resize(self, size=64, **_params):
@@ -142,7 +142,7 @@ class Avatar(ImageMixin, ResourceMixin, ModelSQL):
         data = io.BytesIO()
         img = Image.open(io.BytesIO(self.image))
         img = img.resize((size, size))
-        img.save(data, format='jpeg', optimize=True, **_params)
+        img.save(data, format='jpeg', optimize=True, dpi=(300, 300), **_params)
         return data.getvalue()
 
     def _store_cache(self, size, image):
@@ -210,5 +210,5 @@ def generate(size, string):
     draw.text(
         (size / 2, size / 2), letter, fill=white, font=font, anchor='mm')
     data = io.BytesIO()
-    image.save(data, format='jpeg', optimize=True)
+    image.save(data, format='jpeg', optimize=True, dpi=(300, 300))
     return data.getvalue()

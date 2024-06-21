@@ -3,13 +3,14 @@
 
 from trytond.pool import Pool
 
-from . import product, routes, web
+from . import ir, product, routes, web
 
 __all__ = ['register', 'routes']
 
 
 def register():
     Pool.register(
+        ir.Cron,
         product.UoM,
         product.Template,
         product.Product,
@@ -29,3 +30,7 @@ def register():
         web.Shop_ShipmentCost,
         module='web_shop_product_data_feed', type_='model',
         depends=['sale_shipment_cost'])
+    Pool.register(
+        web.Shop_TaxRuleCountry,
+        module='web_shop_product_data_feed', type_='model',
+        depends=['account_tax_rule_country'])

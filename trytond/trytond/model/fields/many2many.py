@@ -139,6 +139,7 @@ class Many2Many(Field):
 
         Relation = self.get_relation()
         origin_field = Relation._fields[self.origin]
+        reference_key = origin_field._type == 'reference'
 
         if origin_field.sortable(Relation):
             if origin_field._type == 'reference':
@@ -154,7 +155,7 @@ class Many2Many(Field):
 
         relations = []
         for sub_ids in grouped_slice(ids):
-            if origin_field._type == 'reference':
+            if reference_key:
                 references = ['%s,%s' % (model.__name__, x) for x in sub_ids]
                 clause = [(self.origin, 'in', references)]
             else:
@@ -162,12 +163,20 @@ class Many2Many(Field):
             clause += [(self.target, '!=', None)]
             if self.filter:
                 clause.append((self.target, 'where', self.filter))
-            relations.append(Relation.search(clause, order=order))
-        relations = Relation.browse(list(chain(*relations)))
+            relations.append(
+                [r.id for r in Relation.search(clause, order=order)])
+        to_read = list(chain(*relations))
+        relations = {t['id']: t
+            for t in Relation.read(to_read, [self.origin, self.target])}
 
-        for relation in relations:
-            origin_id = getattr(relation, self.origin).id
-            res[origin_id].append(getattr(relation, self.target).id)
+        for read_id in to_read:
+            relation = relations[read_id]
+            if reference_key:
+                _, origin_id = relation[self.origin].split(',', 1)
+                origin_id = int(origin_id)
+            else:
+                origin_id = relation[self.origin]
+            res[origin_id].append(relation[self.target])
         return dict((key, tuple(value)) for key, value in res.items())
 
     def set(self, Model, name, ids, values, *args):

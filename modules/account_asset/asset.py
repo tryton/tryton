@@ -36,7 +36,10 @@ def normalized_delta(start, end):
     delta = end - start
     correction = 0
     if start.year == end.year:
-        if calendar.isleap(start.year) and start.month <= 2 and end.month > 2:
+        if (calendar.isleap(start.year)
+                and (start.month < 2
+                    or (start.month == 2 and start.day < 29))
+                and end.month > 2):
             correction -= 1
     else:
         if calendar.isleap(start.year) and start.month <= February:

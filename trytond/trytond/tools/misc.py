@@ -46,7 +46,7 @@ def import_module(name):
 
 def file_open(name, mode="r", subdir='modules', encoding=None):
     "Open a file from the root directory, using subdir folder"
-    path = find_path(name, subdir)
+    path = find_path(name, subdir, _test=None)
     return io.open(path, mode, encoding=encoding)
 
 
@@ -67,7 +67,7 @@ def find_path(name, subdir='modules', _test=os.path.isfile):
             try:
                 module_name, module_path = name.split(os.sep, 1)
             except ValueError:
-                module_name, module_path = name, None
+                module_name, module_path = name, ''
             if module_name in {'ir', 'res', 'tests'}:
                 path = secure_join(root_path, module_name, module_path)
             else:
@@ -84,7 +84,7 @@ def find_path(name, subdir='modules', _test=os.path.isfile):
     else:
         path = secure_join(root_path, name)
 
-    if _test(path):
+    if not _test or _test(path):
         return path
     else:
         raise FileNotFoundError("No such file or directory: %r" % name)

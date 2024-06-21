@@ -4,4 +4,5 @@ this repository contains the full copyright notices and license terms. -->
 <tree sequence="sequence">
     <field name="category" expand="1"/>
     <field name="image" expand="2"/>
+    <field name="description" expand="1" optional="1"/>
 </tree>

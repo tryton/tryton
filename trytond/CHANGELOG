@@ -1,3 +1,6 @@
+* Add export translations option to trytond-admin
+* Update TinyMCE to version 7
+* Add python-format flag to PO files
 * Add partial support for constraints with SQLite backend
 
 Version 7.2.0 - 2024-04-29

@@ -142,9 +142,9 @@ msgstr "Eccezione di concorrenza"
 msgid "Could not get a session."
 msgstr "Impossibile connettersi al server."
 
-#, fuzzy, python-format
+#, python-format
 msgid "Error: \"%s\". Try again later."
-msgstr "Troppe richieste. Riprovare più tardi."
+msgstr ""
 
 msgid "Too many requests. Try again later."
 msgstr "Troppe richieste. Riprovare più tardi."

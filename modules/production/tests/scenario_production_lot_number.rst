@@ -30,7 +30,7 @@ Create lot sequence::
 
     >>> sequence_type, = SequenceType.find(
     ...     [('name', '=', "Stock Lot")], limit=1)
-    >>> sequence = Sequence(name="Lot", sequence_type=sequence_type)
+    >>> sequence = Sequence(name="Lot", sequence_type=sequence_type, company=None)
     >>> sequence.save()
 
 Create product::

@@ -107,6 +107,35 @@ var Sao = {
         };
     }
 
+    if (!Set.prototype.intersection) {
+        Set.prototype.intersection = function(other) {
+            if (this === null) {
+                throw new TypeError();
+            }
+            const result = new Set();
+            for (const key of other.keys()) {
+                if (this.has(key)) {
+                    result.add(key)
+                }
+            }
+            return result;
+        }
+    }
+
+    if (!Set.prototype.isSubsetOf) {
+        Set.prototype.isSubsetOf = function(other) {
+            if (this === null) {
+                throw new TypeError();
+            }
+            for (const key of this.keys()) {
+                if (!other.has(key)) {
+                    return false;
+                }
+            }
+            return true;
+        }
+    }
+
     Sao.setdefault = function(object, key, value) {
         if (!Object.prototype.hasOwnProperty.call(object, key)) {
             object[key] = value;
@@ -686,7 +715,8 @@ var Sao = {
         jQuery(window).click(function() {
             Sao.favorites_menu_clear();
         });
-        if (!jQuery('#user-favorites').children('.dropdown-menu').length) {
+        if (Sao.main_menu_screen &&
+            !jQuery('#user-favorites').children('.dropdown-menu').length) {
             var name = Sao.main_menu_screen.model_name + '.favorite';
             var session = Sao.Session.current_session;
             var args = {
@@ -782,6 +812,9 @@ var Sao = {
 
     Sao.main_menu_row_activate = function() {
         var screen = Sao.main_menu_screen;
+        if (!screen) {
+            return;
+        }
         const id = screen.get_id();
         if (id) {
             // ids is not defined to prevent to add suffix
@@ -814,7 +847,7 @@ var Sao = {
         decoder = new Sao.PYSON.Decoder(Sao.Session.current_session.context);
         var action_ctx = decoder.decode(action.pyson_context || '{}');
         var domain = decoder.decode(action.pyson_domain);
-        var form = new Sao.Tab.Form(action.res_model, {
+        const screen = new Sao.Screen(action.res_model, {
             'mode': ['tree'],
             'view_ids': view_ids,
             'domain': domain,
@@ -823,11 +856,9 @@ var Sao = {
             'limit': null,
             'row_activate': Sao.main_menu_row_activate,
         });
-        Sao.main_menu_screen = form.screen;
-        Sao.main_menu_screen.switch_callback = null;
-        Sao.Tab.tabs.splice(Sao.Tab.tabs.indexOf(form), 1);
-        form.view_prm.done(function() {
-            var view = form.screen.current_view;
+        Sao.main_menu_screen = screen;
+        screen.switch_view().done(function() {
+            var view = screen.current_view;
             view.table.removeClass('table table-bordered');
             view.table.addClass('no-responsive');
             view.table.find('thead').hide();
@@ -837,11 +868,14 @@ var Sao = {
             jQuery('#global-search').append(gs.el);
             jQuery('#menu').empty();
             jQuery('#menu').append(
-                form.screen.screen_container.content_box.detach());
-            var column = new FavoriteColumn(form.screen.model.fields.favorite);
-            form.screen.views[0].table.find('> colgroup').append(column.col);
-            form.screen.views[0].table.find('> thead > tr').append(column.header);
-            form.screen.views[0].columns.push(column);
+                screen.screen_container.content_box.detach());
+            var column = new FavoriteColumn(screen.model.fields.favorite);
+            screen.views[0].table.find('> colgroup').append(column.col);
+            screen.views[0].table.find('> thead > tr').append(column.header);
+            screen.views[0].columns.push(column);
+
+            screen.search_filter();
+            screen.display(true);
         });
     };
     Sao.main_menu_screen = null;
@@ -894,6 +928,9 @@ var Sao = {
         favorite_click: function(e) {
             // Prevent activate the action of the row
             e.stopImmediatePropagation();
+            if (!Sao.main_menu_screen) {
+                return;
+            }
             var button = e.data.button;
             var method, icon;
             var star = button.data('star');
@@ -1024,7 +1061,7 @@ var Sao = {
         },
         update: function(text) {
             var ir_model = new Sao.Model('ir.model');
-            if (!text) {
+            if (!text || ! Sao.main_menu_screen) {
                 return jQuery.when([]);
             }
             return ir_model.execute('global_search',
@@ -1045,6 +1082,9 @@ var Sao = {
                 });
         },
         match_selected: function(item) {
+            if (!Sao.main_menu_screen) {
+                return;
+            }
             if (item.model == Sao.main_menu_screen.model_name) {
                 // ids is not defined to prevent to add suffix
                 Sao.Action.exec_keyword('tree_open', {

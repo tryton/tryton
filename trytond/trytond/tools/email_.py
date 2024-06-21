@@ -1,6 +1,8 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
-from email.header import Header
+
+import re
+from email.charset import Charset
 from email.utils import formataddr, parseaddr
 
 from trytond.pool import Pool
@@ -68,7 +70,7 @@ try:
             emailinfo = _validate_email(
                 email, check_deliverability=False,
                 test_environment=Pool.test)
-            return emailinfo.ascii_email
+            return emailinfo.ascii_email or emailinfo.normalized
         except EmailNotValidError:
             return email
 
@@ -83,11 +85,37 @@ except ImportError:
     def convert_ascii_email(email):
         return email
 
-    class EmailNotValidError(Exception):
+    class EmailNotValidError(ValueError):
         pass
 
 
-def format_address(email, name=None):
+# Copy of email.utils.formataddr but without the ASCII enforcement
+specialsre = re.compile(r'[][\\()<>@,:;".]')
+escapesre = re.compile(r'[\\"]')
+
+
+def _formataddr(pair, charset='utf-8'):
+    name, address = pair
     if name:
-        name = str(Header(name, 'utf-8'))
-    return formataddr((name, convert_ascii_email(email)))
+        try:
+            name.encode('ascii')
+        except UnicodeEncodeError:
+            if isinstance(charset, str):
+                charset = Charset(charset)
+            encoded_name = charset.header_encode(name)
+            return "%s <%s>" % (encoded_name, address)
+        else:
+            quotes = ''
+            if specialsre.search(name):
+                quotes = '"'
+            name = escapesre.sub(r'\\\g<0>', name)
+            return '%s%s%s <%s>' % (quotes, name, quotes, address)
+    return address
+
+
+def format_address(email, name=None):
+    pair = (name, convert_ascii_email(email))
+    try:
+        return formataddr(pair)
+    except UnicodeEncodeError:
+        return _formataddr(pair)

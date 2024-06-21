@@ -76,6 +76,7 @@ Create Template::
     >>> line.account = payable
     >>> line.party = 'party'
     >>> line.amount = 'amount'
+    >>> line.description = "{description} 1"
     >>> line = template.lines.new()
     >>> line.operation = 'debit'
     >>> line.account = expense
@@ -84,10 +85,12 @@ Create Template::
     >>> ttax.amount = line.amount
     >>> ttax.tax = tax
     >>> ttax.type = 'base'
+    >>> line.description = "{description} 2"
     >>> line = template.lines.new()
     >>> line.operation = 'debit'
     >>> line.account = tax.invoice_account
     >>> line.amount = 'amount * (1 - 1/1.1)'
+    >>> line.description = "{description} 3"
     >>> ttax = line.taxes.new()
     >>> ttax.amount = line.amount
     >>> ttax.tax = tax
@@ -132,6 +135,8 @@ Check the Move::
     3
     >>> sorted((l.debit, l.credit) for l in move.lines)
     [(Decimal('0'), Decimal('12.24')), (Decimal('1.11'), Decimal('0')), (Decimal('11.13'), Decimal('0'))]
+    >>> sorted([l.description for l in move.lines])
+    ['Test 1', 'Test 2', 'Test 3']
     >>> move.description
     'Supplier - Test'
     >>> with config.set_context(periods=period_ids):

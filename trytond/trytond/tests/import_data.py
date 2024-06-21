@@ -35,6 +35,12 @@ class ImportDataChar(ModelSQL):
     char = fields.Char('Char')
 
 
+class ImportDataTranslate(ModelSQL):
+    "Import Data Translate"
+    __name__ = 'test.import_data.translate'
+    translate = fields.Char("Translate", translate=True)
+
+
 class ImportDataText(ModelSQL):
     "Import Data Text"
     __name__ = 'test.import_data.text'
@@ -175,6 +181,7 @@ def register(module):
         ImportDataFloat,
         ImportDataNumeric,
         ImportDataChar,
+        ImportDataTranslate,
         ImportDataText,
         ImportDataDate,
         ImportDataDateTime,

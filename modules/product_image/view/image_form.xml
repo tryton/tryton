@@ -16,5 +16,8 @@ this repository contains the full copyright notices and license terms. -->
 
         <label name="product"/>
         <field name="product"/>
+
+        <label name="description"/>
+        <field name="description"/>
     </group>
 </form>

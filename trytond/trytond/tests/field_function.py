@@ -41,6 +41,38 @@ class FunctionAccessorTarget(ModelSQL):
     __name__ = 'test.function.accessor.target'
 
 
+class FunctonGetter(ModelSQL):
+    "Function Getter"
+    __name__ = 'test.function.getter'
+
+    function_class = fields.Function(
+        fields.Char("Function"), 'get_function_class')
+    function_class_names = fields.Function(
+        fields.Char("Function"), 'get_function_class_names')
+    function_instance = fields.Function(
+        fields.Char("Function"), 'get_function_instance')
+    function_instance_names = fields.Function(
+        fields.Char("Function"), 'get_function_instance_names')
+
+    @classmethod
+    def get_function_class(cls, records, name):
+        assert name == 'function_class', name
+        return {r.id: "class" for r in records}
+
+    @classmethod
+    def get_function_class_names(cls, records, names):
+        assert names == ['function_class_names'], names
+        return {n: {r.id: "class names" for r in records} for n in names}
+
+    def get_function_instance(self, name):
+        assert name == 'function_instance', name
+        return "instance"
+
+    def get_function_instance_names(self, names):
+        assert names == ['function_instance_names'], names
+        return {n: "instance names" for n in names}
+
+
 class FunctionGetterContext(ModelSQL):
     "Function Getter Context"
     __name__ = 'test.function.getter_context'
@@ -86,6 +118,7 @@ def register(module):
         FunctionDefinition,
         FunctionAccessor,
         FunctionAccessorTarget,
+        FunctonGetter,
         FunctionGetterContext,
         FunctionGetterLocalCache,
         module=module, type_='model')

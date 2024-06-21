@@ -1637,7 +1637,10 @@ function eval_pyson(value){
                 this.group.css('width', '100%');
             }
             if (this.attributes.translate) {
-                Sao.common.ICONFACTORY.get_icon_img('tryton-translate')
+                jQuery('<button/>', {
+                    'class': 'btn btn-link',
+                    'type': 'button',
+                }).append(Sao.common.ICONFACTORY.get_icon_img('tryton-translate'))
                     .appendTo(jQuery('<div/>', {
                         'class': 'icon-input icon-secondary',
                         'aria-label': Sao.i18n.gettext('Translate'),
@@ -1707,7 +1710,10 @@ function eval_pyson(value){
         },
         set_readonly: function(readonly) {
             Sao.View.Form.Char._super.set_readonly.call(this, readonly);
+            var record = this.record;
             this.input.prop('readonly', readonly);
+            this.input.prop('disabled', !record);
+            this.el.find('button').prop('disabled', readonly || ! record);
         },
         focus: function() {
             this.input.focus();
@@ -1810,7 +1816,11 @@ function eval_pyson(value){
                     'tabindex': -1,
                 }).appendTo(group);
                 this.input.appendTo(this.icon);
-                Sao.common.ICONFACTORY.get_icon_img('tryton-date')
+                jQuery('<button/>', {
+                    'class': 'btn btn-link',
+                    'type': 'button',
+                    'tabindex': -1,
+                }).append(Sao.common.ICONFACTORY.get_icon_img('tryton-date'))
                     .appendTo(this.icon);
             }
             this.date.change(this.focus_out.bind(this));
@@ -1986,6 +1996,7 @@ function eval_pyson(value){
         set_readonly: function(readonly) {
             Sao.View.Form.TimeDelta._super.set_readonly.call(this, readonly);
             this.input.prop('readonly', readonly);
+            this.input.prop('disabled', !this.record);
         }
     });
 
@@ -2122,6 +2133,7 @@ function eval_pyson(value){
         set_readonly: function(readonly) {
             Sao.View.Form.Integer._super.set_readonly.call(this, readonly);
             this.input_text.prop('readonly', readonly);
+            this.input_text.prop('disabled', !this.record);
         },
         focus: function() {
             if (!this.input.prop('readonly')) {
@@ -2311,6 +2323,7 @@ function eval_pyson(value){
         set_readonly: function(readonly) {
             Sao.View.Form.Boolean._super.set_readonly.call(this, readonly);
             this.input.prop('readonly', readonly);
+            this.input.prop('disabled', !this.record);
         }
     });
 
@@ -2323,10 +2336,13 @@ function eval_pyson(value){
             this.el = jQuery('<div/>', {
                 'class': this.class_
             });
+            this.group = jQuery('<div/>', {
+                'class': 'input-group',
+            }).appendTo(this.el);
             this.input = this.labelled = jQuery('<textarea/>', {
                 'class': 'form-control input-sm mousetrap',
                 'name': attributes.name,
-            }).appendTo(this.el);
+            }).appendTo(this.group);
             this.input.change(this.focus_out.bind(this));
             this.input.on('keydown', this.send_modified.bind(this));
             if (this.attributes.translate) {
@@ -2337,7 +2353,7 @@ function eval_pyson(value){
                     'title': Sao.i18n.gettext("Translate"),
                 }).appendTo(jQuery('<span/>', {
                     'class': 'input-group-btn'
-                }).appendTo(this.el));
+                }).appendTo(this.group));
                 button.append(
                     Sao.common.ICONFACTORY.get_icon_img('tryton-translate'));
                 button.click(this.translate.bind(this));
@@ -2386,7 +2402,10 @@ function eval_pyson(value){
         },
         set_readonly: function(readonly) {
             Sao.View.Form.Text._super.set_readonly.call(this, readonly);
+            var record = this.record;
             this.input.prop('readonly', readonly);
+            this.input.prop('disabled', !record);
+            this.el.find('button').prop('disabled', readonly || !record)
         },
         translate_widget: function() {
             var widget = jQuery('<textarea/>', {
@@ -2413,13 +2432,16 @@ function eval_pyson(value){
                         'class': 'panel-heading',
                     }).appendTo(this.el));
             }
+            this.group = jQuery('<div/>', {
+                'class': 'input-group',
+            }).appendTo(jQuery('<div/>', {
+                'class': 'panel-body',
+            }).appendTo(this.el));
             this.input = this.labelled = jQuery('<div/>', {
                 'class': 'richtext mousetrap',
-                'contenteditable': true
-            }).appendTo(jQuery('<div/>', {
-                'class': 'panel-body'
-            }).appendTo(this.el));
-            this.el.focusout(this.focus_out.bind(this));
+                'contenteditable': true,
+            }).appendTo(this.group);
+            this.group.focusout(this.focus_out.bind(this));
             if (this.attributes.translate) {
                 var button = jQuery('<button/>', {
                     'class': 'btn btn-default btn-sm form-control',
@@ -2428,7 +2450,7 @@ function eval_pyson(value){
                     'title': Sao.i18n.gettext("Translate"),
                 }).appendTo(jQuery('<span/>', {
                     'class': 'input-group-btn',
-                }).appendTo(this.el));
+                }).appendTo(this.group));
                 button.append(
                     Sao.common.ICONFACTORY.get_icon_img('tryton-translate'));
                 button.click(this.translate.bind(this));
@@ -2486,10 +2508,13 @@ function eval_pyson(value){
         },
         set_readonly: function(readonly) {
             Sao.View.Form.RichText._super.set_readonly.call(this, readonly);
+            var record = this.record;
             this.input.prop('contenteditable', !readonly);
+            this.input.prop('disabled', !record);
+            this.el.find('button').prop('disabled', readonly || !record);
             if (this.toolbar) {
                 this.toolbar.find('button,input,select')
-                    .prop('disabled', readonly);
+                    .prop('disabled', readonly || !record);
             }
         },
         translate_widget: function() {
@@ -2541,14 +2566,22 @@ function eval_pyson(value){
                 'class': 'form-control input-sm mousetrap',
                 'name': attributes.name,
             }).appendTo(group);
-            this.but_primary = jQuery('<img/>', {
+            this.but_primary = jQuery('<button/>', {
+                'class': 'btn btn-link',
+                'type': 'button',
+                'tabindex': -1,
+            }).append(jQuery('<img/>', {
                 'class': 'icon',
-            }).appendTo(jQuery('<div/>', {
+            })).appendTo(jQuery('<div/>', {
                 'class': 'icon-input icon-primary',
             }).appendTo(group));
-            this.but_secondary = jQuery('<img/>', {
+            this.but_secondary = jQuery('<button/>', {
+                'class': 'btn btn-link',
+                'type': 'button',
+                'tabindex': -1,
+            }).append(jQuery('<img/>', {
                 'class': 'icon',
-            }).appendTo(jQuery('<div/>', {
+            })).appendTo(jQuery('<div/>', {
                 'class': 'icon-input icon-secondary',
             }).appendTo(group));
             this.but_primary.click('primary', this.edit.bind(this));
@@ -2638,6 +2671,8 @@ function eval_pyson(value){
 
             if (!record) {
                 this.entry.val('');
+                this.but_primary.parent().hide();
+                this.but_secondary.parent().hide();
                 return;
             }
             this.set_text(field.get_client(record));
@@ -2666,8 +2701,6 @@ function eval_pyson(value){
                 var button = items[2];
                 var icon_input = button.parent();
                 var type = 'input-icon-' + items[3];
-                // don't use .hide/.show because the display value is not
-                // correctly restored on modal.
                 if (!icon_name) {
                     icon_input.hide();
                     icon_input.parent().removeClass(type);
@@ -2675,7 +2708,7 @@ function eval_pyson(value){
                     icon_input.show();
                     icon_input.parent().addClass(type);
                     Sao.common.ICONFACTORY.get_icon_url(icon_name).then(function(url) {
-                        button.attr('src', url);
+                        button.find('img').attr('src', url);
                     });
                 }
                 button.attr('aria-label', tooltip);
@@ -2691,9 +2724,11 @@ function eval_pyson(value){
             this._set_button_sensitive();
         },
         _set_button_sensitive: function() {
+            var record = this.record;
             this.entry.prop('readonly', this._readonly);
-            this.but_primary.prop('disabled', !this.read_access);
-            this.but_secondary.prop('disabled', this._readonly);
+            this.entry.prop('disabled', !record);
+            this.but_primary.prop('disabled', !this.read_access || !record);
+            this.but_secondary.prop('disabled', this._readonly || !record);
         },
         get_access: function(type) {
             var model = this.get_model();
@@ -2961,7 +2996,7 @@ function eval_pyson(value){
         _update_completion: function(text) {
             var record = this.record;
             if (!record) {
-                return;
+                return jQuery.when();
             }
             var field = this.field;
             var value = field.get(record);
@@ -3432,38 +3467,46 @@ function eval_pyson(value){
 
             this.but_switch.prop(
                 'disabled',
+                !record ||
                 !((this._position || (view_type == 'form')) && has_views));
             this.but_new.prop(
                 'disabled',
                 this._readonly ||
+                !record ||
                 !this.create_access ||
                 size_limit);
             this.but_del.prop(
                 'disabled',
                 this._readonly ||
+                !record ||
                 !this.delete_access ||
                 !this._position ||
                 !deletable);
             this.but_undel.prop(
                 'disabled',
                 this._readonly ||
+                !record ||
                 size_limit ||
                 !this._position);
             this.but_open.prop(
                 'disabled',
+                !record ||
                 !this._position ||
                 !this.read_access);
             this.but_next.prop(
                 'disabled',
+                !record ||
                 (this.position > 0) &&
                 ( this._position >= this._length));
             this.but_previous.prop(
                 'disabled',
+                !record ||
                 this._position <= 1);
             if (this.attributes.add_remove) {
                 this.but_add.prop(
                     'disabled',
                     this._readonly ||
+                    !record ||
                     size_limit ||
                     !this.write_access ||
                     !this.read_access);
@@ -3471,6 +3514,7 @@ function eval_pyson(value){
                 this.but_remove.prop(
                     'disabled',
                     this._readonly ||
+                    !record ||
                     !this.position ||
                     !this.write_access ||
                     !this.read_access);
@@ -3500,6 +3544,7 @@ function eval_pyson(value){
                     this.screen.current_record = null;
                     this.screen.group.parent = null;
                     this.screen.display();
+                    this.screen.screen_container.hide_filter();
                     return;
                 }
 
@@ -3844,7 +3889,7 @@ function eval_pyson(value){
         },
         _update_completion: function(text) {
             if (!this.record) {
-                return;
+                return jQuery.when();
             }
             var model = this.attributes.relation;
             var domain = this.field.get_domain(this.record);
@@ -4025,10 +4070,10 @@ function eval_pyson(value){
                         (m2m_size >= field_size) && (field_size >= 0));
             }
 
-            this.entry.prop('disabled', this._readonly);
-            this.but_add.prop('disabled', this._readonly || size_limit);
-            this.but_remove.prop('disabled', this._readonly ||
-                this._position === 0);
+            this.entry.prop('disabled', this._readonly || !record);
+            this.but_add.prop('disabled', this._readonly || !record || size_limit);
+            this.but_remove.prop(
+                'disabled', this._readonly || !record || this._position === 0);
         },
         record_message: function(position, size) {
             this._position = position;
@@ -4056,6 +4101,7 @@ function eval_pyson(value){
                     this.screen.current_record = null;
                     this.screen.group.parent = null;
                     this.screen.display();
+                    this.screen.screen_container.hide_filter();
                     return;
                 }
                 var new_group = record.field_get_client(this.field_name);
@@ -4230,7 +4276,7 @@ function eval_pyson(value){
         },
         _update_completion: function(text) {
             if (!this.record) {
-                return;
+                return jQuery.when();
             }
             var model = this.attributes.relation;
             var domain = this.field.get_domain(this.record);
@@ -4492,10 +4538,12 @@ function eval_pyson(value){
         },
         set_readonly: function(readonly) {
             Sao.View.Form.Binary._super.set_readonly.call(this, readonly);
-            this.but_select.prop('disabled', readonly);
-            this.but_clear.prop('disabled', readonly);
+            var record = this.record;
+            this.but_select.prop('disabled', readonly || !record);
+            this.but_clear.prop('disabled', readonly || !record);
             if (this.text) {
                 this.text.prop('readonly', readonly);
+                this.text.prop('disabled', !record);
             }
         }
     });
@@ -4600,9 +4648,10 @@ function eval_pyson(value){
         },
         set_readonly: function(readonly) {
             Sao.View.Form.Image._super.set_readonly.call(this, readonly);
+            var record = this.record;
             this._readonly = readonly;
-            this.but_select.prop('disabled', readonly);
-            this.but_clear.prop('disabled', readonly);
+            this.but_select.prop('disabled', readonly || !record);
+            this.but_clear.prop('disabled', readonly || !record);
         },
         select_drop: function(evt) {
             if (this._readonly) {
@@ -4798,7 +4847,7 @@ function eval_pyson(value){
                 'class': this.class_,
             });
             this.button = jQuery('<a/>', {
-                'class': 'btn btn-lnk',
+                'class': 'btn btn-link',
                 'target': '_blank',
                 'rel': 'noreferrer noopener',
             }).text(attributes.string).appendTo(this.el);
@@ -4835,7 +4884,7 @@ function eval_pyson(value){
         },
         set_readonly: function(readonly) {
             Sao.View.Form.HTML._super.set_readonly.call(this, readonly);
-            this.el.find('button').prop('disabled', readonly);
+            this.el.find('button').prop('disabled', readonly || !this.record);
             if (readonly) {
                 this.el.find('a').hide();
             } else {
@@ -5053,9 +5102,10 @@ function eval_pyson(value){
                 var widget = this.fields[key];
                 widget.set_readonly(readonly);
             }
-            this.wid_text.prop('disabled', readonly);
+            this.wid_text.prop('disabled', readonly || !this.record);
         },
         _set_button_sensitive: function() {
+            var record = this.record;
             var create = this.attributes.create;
             if (create === undefined) {
                 create = 1;
@@ -5068,10 +5118,10 @@ function eval_pyson(value){
             } else if (typeof delete_ == 'string') {
                 delete_ = Boolean(parseInt(delete_, 10));
             }
-            this.but_add.prop('disabled', this._readonly || !create);
+            this.but_add.prop('disabled', this._readonly || !create || !record);
             for (var key in this.fields) {
                 var button = this.fields[key].button;
-                button.prop('disabled', this._readonly || !delete_);
+                button.prop('disabled', this._readonly || !delete_ || !record);
             }
         },
         add_line: function(key, position) {
@@ -5196,10 +5246,10 @@ function eval_pyson(value){
         },
         _update_completion: function(text) {
             if (this.wid_text.prop('disabled')) {
-                return;
+                return jQuery.when();
             }
             if (!this.record) {
-                return;
+                return jQuery.when();
             }
             return Sao.common.update_completion(
                 this.wid_text, this.record, this.field, this.schema_model);
@@ -5511,8 +5561,9 @@ function eval_pyson(value){
                 }
             });
             if (this.input_date[0].type == this._input) {
-                var icon = jQuery('<div/>', {
+                var icon = jQuery('<button/>', {
                     'class': 'btn btn-default',
+                    'type': 'button',
                     'aria-label': Sao.i18n.gettext("Open the calendar"),
                     'title': Sao.i18n.gettext("Open the calendar"),
                 }).prependTo(group);

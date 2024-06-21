@@ -26,6 +26,10 @@ class WinImport(WinCSV):
         self.fields_data = {}
         self.fields = {}
         self.fields_invert = {}
+        self.languages = RPCExecute(
+            'model', 'ir.lang', 'search_read', [
+                ('translatable', '=', True),
+                ], 0, None, None, ['code', 'name'])
         super(WinImport, self).__init__()
         self.dialog.set_title(_('CSV Import: %s') % name)
 
@@ -67,22 +71,34 @@ class WinImport(WinCSV):
         fields_order = list(fields.keys())
         fields_order.sort(
             key=lambda x: fields[x].get('string', ''), reverse=True)
-        for field in fields_order:
-            if not fields[field].get('readonly', False) or field == 'id':
-                self.fields_data[prefix_field + field] = fields[field]
-                name = fields[field]['string'] or field
+        for field_name in fields_order:
+            field = fields[field_name]
+            if not field.get('readonly', False) or field_name == 'id':
+                self.fields_data[prefix_field + field_name] = field
+                name = field['string'] or field_name
                 node = self.model1.insert(
-                    parent_node, 0, [name, prefix_field + field])
+                    parent_node, 0, [name, prefix_field + field_name])
                 name = prefix_name + name
                 # Only One2Many can be nested for import
-                if fields[field]['type'] == 'one2many':
-                    relation = fields[field].get('relation')
+                if field['type'] == 'one2many':
+                    relation = field.get('relation')
                 else:
                     relation = None
-                self.fields[prefix_field + field] = (name, relation)
-                self.fields_invert[name] = prefix_field + field
+                self.fields[prefix_field + field_name] = (name, relation)
+                self.fields_invert[name] = prefix_field + field_name
                 if relation:
                     self.model1.insert(node, 0, [None, ''])
+                elif field.get('translate', False):
+                    for language in self.languages:
+                        l_field_name = f"{field_name}:lang={language['code']}"
+                        self.model1.insert(
+                            node, 0, [
+                                language['name'], prefix_field + l_field_name])
+                        l_name = prefix_name + name + f" ({language['name']})"
+                        self.fields[prefix_field + l_field_name] = (
+                            l_name, relation)
+                        self.fields_invert[l_name] = (
+                            prefix_field + l_field_name)
 
     def _get_fields(self, model):
         try:

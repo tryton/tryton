@@ -14,15 +14,14 @@ this repository contains the full copyright notices and license terms. -->
         </group>
         <label name="replaced_by"/>
         <field name="replaced_by"/>
+        <newline/>
+        <label name="lang"/>
+        <field name="lang" widget="selection"/>
     </group>
     <notebook colspan="6">
         <page string="General" id="general">
             <field name="addresses" mode="form,tree" colspan="4"
                 view_ids="party.address_view_form_simple,party.address_view_tree_sequence"/>
-            <group col="2" colspan="4" id="lang">
-                <label name="lang"/>
-                <field name="lang" widget="selection" xexpand="0"/>
-            </group>
             <field name="contact_mechanisms" colspan="2"
                 view_ids="party.contact_mechanism_view_tree_sequence"/>
             <field name="categories" colspan="2"

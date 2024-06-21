@@ -53,6 +53,20 @@ class FieldFunctionTestCase(unittest.TestCase):
         self.assertEqual(record.function, target)
 
     @with_transaction()
+    def test_getter(self):
+        "Test getter"
+        pool = Pool()
+        Model = pool.get('test.function.getter')
+
+        record = Model()
+        record.save()
+
+        self.assertEqual(record.function_class, "class")
+        self.assertEqual(record.function_class_names, "class names")
+        self.assertEqual(record.function_instance, "instance")
+        self.assertEqual(record.function_instance_names, "instance names")
+
+    @with_transaction()
     def test_getter_context(self):
         "Test getter context"
         pool = Pool()

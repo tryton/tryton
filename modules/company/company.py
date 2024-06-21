@@ -2,9 +2,18 @@
 # this repository contains the full copyright notices and license terms.
 
 import datetime as dt
+import io
+import logging
 from string import Template
 
-from trytond.model import ModelSQL, ModelView, fields
+try:
+    import PIL
+except ImportError:
+    PIL = None
+
+from trytond.config import config
+from trytond.model import ModelSQL, ModelView, Unique, fields
+from trytond.model.exceptions import SQLConstraintError
 from trytond.pool import Pool
 from trytond.pyson import Eval, If
 from trytond.report import Report
@@ -12,10 +21,12 @@ from trytond.tools import timezone as tz
 from trytond.transaction import Transaction
 from trytond.wizard import Button, StateTransition, StateView, Wizard
 
+SIZE_MAX = config.getint('company', 'logo_size_max', default=2048)
 TIMEZONES = [(z, z) for z in tz.available_timezones()]
 TIMEZONES += [(None, '')]
 
 Transaction.cache_keys.update({'company', 'employee'})
+logger = logging.getLogger(__name__)
 
 _SUBSTITUTION_HELP = (
     "The following placeholders can be used:\n"
@@ -41,6 +52,9 @@ class Company(ModelSQL, ModelView):
     footer = fields.Text(
         'Footer',
         help="The text to display on report footers.\n" + _SUBSTITUTION_HELP)
+    logo = fields.Binary("Logo", readonly=not PIL)
+    logo_cache = fields.One2Many(
+        'company.company.logo.cache', 'company', "Cache", readonly=True)
     currency = fields.Many2One('currency.currency', 'Currency', required=True,
         help="The main currency for the company.")
     timezone = fields.Selection(TIMEZONES, 'Timezone', translate=False,
@@ -81,10 +95,136 @@ class Company(ModelSQL, ModelView):
         return [('party.rec_name',) + tuple(clause[1:])]
 
     @classmethod
-    def write(cls, companies, values, *args):
-        super(Company, cls).write(companies, values, *args)
+    def create(cls, vlist):
+        vlist = [v.copy() for v in vlist]
+        for values in vlist:
+            if logo := values.get('logo'):
+                values['logo'] = cls._logo_convert(logo)
+        return super().create(vlist)
+
+    @classmethod
+    def write(cls, *args):
+        actions = iter(args)
+        args = []
+        for companies, values in zip(actions, actions):
+            if logo := values.get('logo'):
+                values = values.copy()
+                values['logo'] = cls._logo_convert(logo)
+            args.append(companies)
+            args.append(values)
+        super().write(*args)
+        cls._logo_clear_cache(sum(args[0:None:2], []))
         # Restart the cache on the domain_get method
         Pool().get('ir.rule')._domain_get_cache.clear()
+
+    @classmethod
+    def _logo_convert(cls, image, **_params):
+        if not PIL:
+            return
+        data = io.BytesIO()
+        img = PIL.Image.open(io.BytesIO(image))
+        img.thumbnail((SIZE_MAX, SIZE_MAX))
+        if img.mode != 'RGBA':
+            img = img.convert('RGBA')
+        img.save(data, format='png', optimize=True, dpi=(300, 300), **_params)
+        return data.getvalue()
+
+    def get_logo(self, width, height):
+        "Return logo image with mime-type and size in pixel"
+        if not self.logo:
+            raise ValueError("No logo")
+        width, height = round(width), round(height)
+        if not all(0 < s <= SIZE_MAX for s in [width, height]):
+            raise ValueError(f"Invalid size {width} × {height}")
+        cached_sizes = set()
+        for cache in self.logo_cache:
+            cached_sizes.add((cache.width, cache.height))
+            if ((cache.width == width and cache.height <= height)
+                    or (cache.width <= width and cache.height == height)):
+                return cache.image, 'image/png', cache.width, cache.height
+
+        try:
+            with Transaction().new_transaction():
+                image, width, height = self._logo_resize(width, height)
+                if (width, height) not in cached_sizes:
+                    cache = self._logo_store_cache(image, width, height)
+                    # Save cache only if record is already committed
+                    if self.__class__.search([('id', '=', self.id)]):
+                        cache.save()
+        except SQLConstraintError:
+            logger.info("caching company logo failed", exc_info=True)
+        return image, 'image/png', width, height
+
+    def get_logo_cm(self, width, height):
+        "Return logo image with mime-type and size in centimeter"
+        width *= 300 / 2.54
+        height *= 300 / 2.54
+        image, mimetype, width, height = self.get_logo(width, height)
+        width /= 300 / 2.54
+        height /= 300 / 2.54
+        return image, mimetype, f'{width}cm', f'{height}cm'
+
+    def get_logo_in(self, width, height):
+        "Return logo image with mime-type and size in inch"
+        width *= 300
+        height *= 300
+        image, mimetype, width, height = self.get_logo(width, height)
+        width /= 300
+        height /= 300
+        return image, mimetype, f'{width}in', f'{height}in'
+
+    def _logo_resize(self, width, height, **_params):
+        if not PIL:
+            return self.logo, width, height
+        data = io.BytesIO()
+        img = PIL.Image.open(io.BytesIO(self.logo))
+        img.thumbnail((width, height))
+        img.save(data, format='png', optimize=True, dpi=(300, 300), **_params)
+        return data.getvalue(), img.width, img.height
+
+    def _logo_store_cache(self, image, width, height):
+        Cache = self.__class__.logo_cache.get_target()
+        return Cache(
+            company=self,
+            image=image,
+            width=width,
+            height=height)
+
+    @classmethod
+    def _logo_clear_cache(cls, companies):
+        Cache = cls.logo_cache.get_target()
+        caches = [c for r in companies for c in r.logo_cache]
+        Cache.delete(caches)
+
+
+class CompanyLogoCache(ModelSQL):
+    "Company Logo Cache"
+    __name__ = 'company.company.logo.cache'
+
+    company = fields.Many2One(
+        'company.company', "Company", required=True, ondelete='CASCADE')
+    image = fields.Binary("Image", required=True)
+    width = fields.Integer(
+        "Width", required=True,
+        domain=[
+            ('width', '>', 0),
+            ('width', '<=', SIZE_MAX),
+            ])
+    height = fields.Integer(
+        "Height", required=True,
+        domain=[
+            ('height', '>', 0),
+            ('height', '<=', SIZE_MAX),
+            ])
+
+    @classmethod
+    def __setup__(cls):
+        super().__setup__()
+        t = cls.__table__()
+        cls._sql_constraints += [
+            ('dimension_unique', Unique(t, t.company, t.width, t.height),
+                'company.msg_company_logo_cache_size_unique'),
+            ]
 
 
 class Employee(ModelSQL, ModelView):
