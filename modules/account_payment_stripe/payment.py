@@ -1230,7 +1230,8 @@ class Account(ModelSQL, ModelView):
                 Payment.proceed([payment])
             payment.stripe_captured = bool(
                 payment_intent['amount_received'])
-            payment.stripe_amount = payment_intent['amount_received']
+            if payment.stripe_amount > payment_intent['amount_received']:
+                payment.stripe_amount = payment_intent['amount_received']
             payment.save()
             if payment.amount:
                 Payment.succeed([payment])
