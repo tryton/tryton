@@ -41,7 +41,7 @@ def get_shipments_returns(model_name):
     def method(self, name):
         Model = Pool().get(model_name)
         shipments = set()
-        for line in self.lines:
+        for line in self.line_lines:
             for move in line.moves:
                 if isinstance(move.shipment, Model):
                     shipments.add(move.shipment.id)
@@ -150,6 +150,11 @@ class Purchase(
             })
     lines = fields.One2Many('purchase.line', 'purchase', 'Lines',
         states=_states)
+    line_lines = fields.One2Many(
+        'purchase.line', 'purchase', "Line - Lines", readonly=True,
+        filter=[
+            ('type', '=', 'line'),
+            ])
     comment = fields.Text('Comment')
     untaxed_amount = fields.Function(Monetary(
             "Untaxed", currency='currency', digits='currency'),
@@ -542,9 +547,7 @@ class Purchase(
                     total_amount[purchase.id] = purchase.total_amount_cache
             else:
                 untaxed_amount[purchase.id] = sum(
-                    (line.amount for line in purchase.lines
-                        if line.type == 'line' and line.amount is not None),
-                    Decimal(0))
+                    (line.amount for line in purchase.line_lines), Decimal(0))
                 if compute_taxes:
                     tax_amount[purchase.id] = purchase.get_tax_amount()
                     total_amount[purchase.id] = (
@@ -562,7 +565,7 @@ class Purchase(
 
     def get_invoices(self, name):
         invoices = set()
-        for line in self.lines:
+        for line in self.line_lines:
             for invoice_line in line.invoice_lines:
                 if invoice_line.invoice:
                     invoices.add(invoice_line.invoice.id)
@@ -570,8 +573,13 @@ class Purchase(
 
     @classmethod
     def search_invoices(cls, name, clause):
-        return [('lines.invoice_lines.invoice' + clause[0][len(name):],
-                *clause[1:])]
+        return [
+            ('lines', 'where', [
+                    ('invoice_lines.invoice' + clause[0][len(name):],
+                        *clause[1:]),
+                    ('type', '=', 'line'),
+                    ]),
+            ]
 
     @property
     def _invoices_for_state(self):
@@ -616,24 +624,29 @@ class Purchase(
         '''
         Return the shipment state for the purchase.
         '''
-        if any(l.moves_exception for l in self.lines):
+        if any(l.moves_exception for l in self.line_lines):
             return 'exception'
         elif any(m.state != 'cancelled' for m in self.moves):
-            if all(l.moves_progress >= 1 for l in self.lines
+            if all(l.moves_progress >= 1 for l in self.line_lines
                     if l.moves_progress is not None):
                 return 'received'
-            elif any(l.moves_progress for l in self.lines):
+            elif any(l.moves_progress for l in self.line_lines):
                 return 'partially shipped'
             else:
                 return 'waiting'
         return 'none'
 
     def get_moves(self, name):
-        return [m.id for l in self.lines for m in l.moves]
+        return [m.id for l in self.line_lines for m in l.moves]
 
     @classmethod
     def search_moves(cls, name, clause):
-        return [('lines.' + clause[0],) + tuple(clause[1:])]
+        return [
+            ('lines', 'where', [
+                    clause,
+                    ('type', '=', 'line'),
+                    ]),
+            ]
 
     @classmethod
     def _get_origin(cls):
@@ -732,7 +745,7 @@ class Purchase(
         return super(Purchase, cls).copy(purchases, default=default)
 
     def check_for_quotation(self):
-        for line in self.lines:
+        for line in self.line_lines:
             if (not line.to_location
                     and line.product
                     and line.movable):
@@ -825,7 +838,7 @@ class Purchase(
         Move = pool.get('stock.move')
 
         moves = []
-        for line in self.lines:
+        for line in self.line_lines:
             move = line.get_move(move_type)
             if move:
                 moves.append(move)
@@ -861,13 +874,13 @@ class Purchase(
                 or (self.invoice_state == 'none'
                     and all(
                         l.invoice_progress >= 1
-                        for l in self.lines
+                        for l in self.line_lines
                         if l.invoice_progress is not None)))
             and (self.shipment_state == 'received'
                 or (self.shipment_state == 'none'
                     and all(
                         l.moves_progress >= 1
-                        for l in self.lines
+                        for l in self.line_lines
                         if l.moves_progress is not None))))
 
     @classmethod
@@ -1022,7 +1035,7 @@ class Purchase(
             if purchase.shipment_state != shipment_state:
                 shipment_states[shipment_state].append(purchase)
 
-            for line in purchase.lines:
+            for line in purchase.line_lines:
                 line.set_actual_quantity()
                 lines.append(line)
 

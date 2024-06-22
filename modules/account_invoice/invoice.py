@@ -245,6 +245,11 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin, InvoiceReportMixin):
                 | ~Eval('currency')
                 | ~Eval('account')),
             })
+    line_lines = fields.One2Many(
+        'account.invoice.line', 'invoice', "Line - Lines", readonly=True,
+        filter=[
+            ('type', '=', 'line'),
+            ])
     taxes = fields.One2Many(
         'account.invoice.tax', 'invoice', 'Tax Lines',
         domain=[
@@ -736,8 +741,7 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin, InvoiceReportMixin):
         for invoice in invoices_no_cache:
             zero = invoice.currency.round(Decimal(0))
             untaxed_amount[invoice.id] = sum(
-                (line.amount for line in invoice.lines
-                    if line.type == 'line'), zero)
+                (line.amount for line in invoice.line_lines), zero)
             total_amount[invoice.id] = (
                 untaxed_amount[invoice.id] + tax_amount[invoice.id])
 
@@ -1207,7 +1211,7 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin, InvoiceReportMixin):
             today = Date.today()
         self.update_taxes(exception=True)
         move_lines = []
-        for line in self.lines:
+        for line in self.line_lines:
             move_lines += line.get_move_lines()
         for tax in self.taxes:
             move_lines += tax.get_move_lines()
@@ -1349,7 +1353,7 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin, InvoiceReportMixin):
     def _sequence_field(self):
         "Returns the field name of invoice_sequence to use"
         field = self.type
-        if (all(l.amount <= 0 for l in self.lines if l.product)
+        if (all(l.amount <= 0 for l in self.line_lines)
                 and self.total_amount < 0):
             field += '_credit_note'
         else:
@@ -1421,7 +1425,7 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin, InvoiceReportMixin):
 
     def get_origins(self, name):
         return ', '.join(set(filter(None,
-                    (l.origin_name for l in self.lines))))
+                    (l.origin_name for l in self.line_lines))))
 
     @classmethod
     def view_attributes(cls):
@@ -1915,7 +1919,7 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin, InvoiceReportMixin):
         Warning = pool.get('res.user.warning')
         for invoice in invoices:
             different_lines = []
-            for line in invoice.lines:
+            for line in invoice.line_lines:
                 test_line = Line(line.id)
                 test_line.on_change_product()
                 if (set(test_line.taxes) != set(line.taxes)

@@ -42,7 +42,7 @@ def get_shipments_returns(model_name):
     def method(self, name):
         Model = Pool().get(model_name)
         shipments = set()
-        for line in self.lines:
+        for line in self.line_lines:
             for move in line.moves:
                 if isinstance(move.shipment, Model):
                     shipments.add(move.shipment.id)
@@ -181,6 +181,11 @@ class Sale(
             'readonly': Eval('state') != 'draft',
             },
         depends={'party'})
+    line_lines = fields.One2Many(
+        'sale.line', 'sale', "Line - Lines", readonly=True,
+        filter=[
+            ('type', '=', 'line'),
+            ])
     comment = fields.Text('Comment')
     untaxed_amount = fields.Function(Monetary(
             "Untaxed", digits='currency', currency='currency'), 'get_amount')
@@ -597,8 +602,7 @@ class Sale(
                     total_amount[sale.id] = sale.total_amount_cache
             else:
                 untaxed_amount[sale.id] = sum(
-                    (line.amount for line in sale.lines
-                        if line.type == 'line'), Decimal(0))
+                    (line.amount for line in sale.line_lines), Decimal(0))
                 if compute_taxes:
                     tax_amount[sale.id] = sale.get_tax_amount()
                     total_amount[sale.id] = (
@@ -616,7 +620,7 @@ class Sale(
 
     def get_invoices(self, name):
         invoices = set()
-        for line in self.lines:
+        for line in self.line_lines:
             for invoice_line in line.invoice_lines:
                 if invoice_line.invoice:
                     invoices.add(invoice_line.invoice.id)
@@ -624,8 +628,13 @@ class Sale(
 
     @classmethod
     def search_invoices(cls, name, clause):
-        return [('lines.invoice_lines.invoice' + clause[0][len(name):],
-                *clause[1:])]
+        return [
+            ('lines', 'where', [
+                    ('invoice_lines.invoice' + clause[0][len(name):],
+                        *clause[1:]),
+                    ('type', '=', 'line'),
+                    ]),
+            ]
 
     @property
     def _invoices_for_state(self):
@@ -670,24 +679,29 @@ class Sale(
         '''
         Return the shipment state for the sale.
         '''
-        if any(l.moves_exception for l in self.lines):
+        if any(l.moves_exception for l in self.line_lines):
             return 'exception'
         elif any(m.state != 'cancelled' for m in self.moves):
-            if all(l.moves_progress >= 1.0 for l in self.lines
+            if all(l.moves_progress >= 1.0 for l in self.line_lines
                     if l.moves_progress is not None):
                 return 'sent'
-            elif any(l.moves_progress for l in self.lines):
+            elif any(l.moves_progress for l in self.line_lines):
                 return 'partially shipped'
             else:
                 return 'waiting'
         return 'none'
 
     def get_moves(self, name):
-        return [m.id for l in self.lines for m in l.moves]
+        return [m.id for l in self.line_lines for m in l.moves]
 
     @classmethod
     def search_moves(cls, name, clause):
-        return [('lines.' + clause[0],) + tuple(clause[1:])]
+        return [
+            ('lines', 'where', [
+                    clause,
+                    ('type', '=', 'line'),
+                    ]),
+            ]
 
     @classmethod
     def _get_origin(cls):
@@ -820,7 +834,7 @@ class Sale(
             raise SaleQuotationError(
                 gettext('sale.msg_sale_invoice_address_required_for_quotation',
                     sale=self.rec_name))
-        for line in self.lines:
+        for line in self.line_lines:
             if (line.product
                     and line.product.type != 'service'
                     and line.quantity >= 0
@@ -956,7 +970,7 @@ class Sale(
 
     def _get_shipment_moves(self, shipment_type):
         moves = {}
-        for line in self.lines:
+        for line in self.line_lines:
             move = line.get_move(shipment_type)
             if move:
                 moves[line] = move
@@ -997,13 +1011,13 @@ class Sale(
                 or (self.invoice_state == 'none'
                     and all(
                         l.invoice_progress >= 1
-                        for l in self.lines
+                        for l in self.line_lines
                         if l.invoice_progress is not None)))
             and (self.shipment_state == 'sent'
                 or (self.shipment_state == 'none'
                     and all(
                         l.moves_progress >= 1
-                        for l in self.lines
+                        for l in self.line_lines
                         if l.moves_progress is not None))))
 
     @classmethod
@@ -1154,7 +1168,7 @@ class Sale(
             if sale.shipment_state != shipment_state:
                 shipment_states[shipment_state].append(sale)
 
-            for line in sale.lines:
+            for line in sale.line_lines:
                 line.set_actual_quantity()
                 lines.append(line)
 
