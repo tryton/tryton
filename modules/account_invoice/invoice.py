@@ -646,7 +646,8 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin, InvoiceReportMixin):
 
         if self.lines:
             for line in self.lines:
-                self.untaxed_amount += getattr(line, 'amount', None) or 0
+                if getattr(line, 'type', '') == 'line':
+                    self.untaxed_amount += getattr(line, 'amount', 0) or 0
             computed_taxes = self._get_taxes()
 
         def is_zero(amount):
