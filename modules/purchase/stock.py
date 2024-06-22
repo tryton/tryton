@@ -152,6 +152,15 @@ class Move(metaclass=PoolMeta):
         ], 'Exception State'), 'get_purchase_exception_state')
 
     @classmethod
+    def __setup__(cls):
+        super().__setup__()
+        if not cls.origin.domain:
+            cls.origin.domain = {}
+        cls.origin.domain['purchase.line'] = [
+            ('type', '=', 'line'),
+            ]
+
+    @classmethod
     def _get_origin(cls):
         models = super(Move, cls)._get_origin()
         models.append('purchase.line')
