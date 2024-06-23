@@ -5,6 +5,7 @@ import datetime as dt
 import os
 import time
 import unittest
+from unittest.mock import patch
 
 from trytond import backend
 from trytond import cache as cache_mod
@@ -222,6 +223,17 @@ class MemoryCacheTestCase(unittest.TestCase):
         time.sleep(cache_expire.duration.total_seconds())
 
         self.assertEqual(cache_expire.get('foo'), None)
+
+
+class MemoryCacheWithoutInsertOnConflict(MemoryCacheTestCase):
+    "Test Cache without Insert On Conflict"
+
+    def setUp(self):
+        super().setUp()
+        patcher = patch('trytond.backend.Database.has_insert_on_conflict')
+        self.addCleanup(patcher.stop)
+        mock = patcher.start()
+        mock.return_value = False
 
 
 @unittest.skipIf(backend.name == 'sqlite', "SQLite has not channel")

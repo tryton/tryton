@@ -193,6 +193,7 @@ class Database(DatabaseInterface):
     _search_path = None
     _current_user = None
     _has_returning = None
+    _has_insert_on_conflict = None
     _has_select_for_skip_locked = None
     _has_proc = defaultdict(lambda: defaultdict(dict))
     _extensions = defaultdict(dict)
@@ -523,6 +524,16 @@ class Database(DatabaseInterface):
 
     def has_select_for(self):
         return True
+
+    def has_insert_on_conflict(self):
+        if self._has_insert_on_conflict is None:
+            connection = self.get_connection()
+            try:
+                self._has_insert_on_conflict = (
+                    self.get_version(connection) >= (9, 5))
+            finally:
+                self.put_connection(connection)
+        return self._has_insert_on_conflict
 
     def get_select_for_skip_locked(self):
         if self._has_select_for_skip_locked is None:
