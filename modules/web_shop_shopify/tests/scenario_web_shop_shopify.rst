@@ -362,7 +362,7 @@ Check inventory item::
     ...     for inv in inventory_items for i in inv.shopify_identifiers]
     >>> for _ in range(MAX_SLEEP):
     ...     inventory_levels = location.inventory_levels()
-    ...     if inventory_levels:
+    ...     if inventory_levels and len(inventory_levels) == 2:
     ...         break
     ...     time.sleep(FETCH_SLEEP)
     >>> sorted(l.available for l in inventory_levels
