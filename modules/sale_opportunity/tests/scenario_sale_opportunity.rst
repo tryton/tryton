@@ -7,7 +7,8 @@ Imports::
     >>> from decimal import Decimal
 
     >>> from proteus import Model
-    >>> from trytond.modules.account.tests.tools import create_chart, get_accounts
+    >>> from trytond.modules.account.tests.tools import (
+    ...     create_chart, create_tax, get_accounts)
     >>> from trytond.modules.account_invoice.tests.tools import create_payment_term
     >>> from trytond.modules.company.tests.tools import create_company, get_company
     >>> from trytond.tests.tools import activate_modules, assertEqual, set_user
@@ -28,6 +29,11 @@ Create chart of accounts::
     >>> _ = create_chart(company)
     >>> accounts = get_accounts(company)
     >>> revenue = accounts['revenue']
+
+Create tax::
+
+    >>> tax = create_tax(Decimal('.10'))
+    >>> tax.save()
 
 Create sale opportunity user::
 
@@ -72,6 +78,7 @@ Create account category::
     >>> account_category = ProductCategory(name="Account Category")
     >>> account_category.accounting = True
     >>> account_category.account_revenue = revenue
+    >>> account_category.customer_taxes.append(tax)
     >>> account_category.save()
 
 Create product::
@@ -137,6 +144,7 @@ Find the sale::
     >>> assertEqual(line.product, product)
     >>> line.quantity
     10.0
+    >>> assertEqual(line.taxes, [tax])
 
 Quote different quantity::
 
