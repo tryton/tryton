@@ -3,12 +3,12 @@
 this repository contains the full copyright notices and license terms. -->
 <form col="2">
     <image name="tryton-info" xexpand="0" xfill="0"/>
-    <group col="1" id="labels">
+    <group col="1" id="labels" yalign="0.5">
         <label string="Your system will be upgraded." id="upgraded"
-            yalign="0.0" xalign="0.0" xexpand="1"/>
+            xalign="0.0" xexpand="1"/>
         <label string="Note that this operation may take a few minutes."
             id="operation"
-            yalign="0.0" xalign="0.0" xexpand="1"/>
+            xalign="0.0" xexpand="1"/>
     </group>
     <separator name="module_info" colspan="2"/>
     <field name="module_info" colspan="2"/>
