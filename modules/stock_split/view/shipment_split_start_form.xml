@@ -3,7 +3,7 @@
 this repository contains the full copyright notices and license terms. -->
 <form col="2">
     <image name="tryton-question" xexpand="0" xfill="0"/>
-    <label string="Choose move to send in new shipment:"
+    <label string="Select moves to send in a new shipment:"
         id="choose" yalign="0.5" xalign="0.0" xexpand="1"/>
     <field name="moves" colspan="2" widget="multiselection"/>
 </form>
