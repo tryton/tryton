@@ -828,6 +828,15 @@ The URL pointing to `TinyMCE <https://www.tiny.cloud/>`_ editor.
 
 Default: ``https://cloud.tinymce.com/stable/tinymce.min.js``
 
+.. _config-html.license_key:
+
+license_key
+~~~~~~~~~~~
+
+The license key for TinyMCE.
+
+Default: ``gpl``
+
 .. _config-html.plugins:
 
 plugins

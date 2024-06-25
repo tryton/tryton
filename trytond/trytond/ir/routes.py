@@ -18,6 +18,7 @@ from trytond.wsgi import app
 SOURCE = config.get(
     'html', 'src',
     default='https://cdn.tiny.cloud/1/no-api-key/tinymce/7/tinymce.min.js')
+LICENSE_KEY = config.get('html', 'license_key', default='gpl')
 AVATAR_TIMEOUT = config.getint(
     'web', 'avatar_timeout', default=7 * 24 * 60 * 60)
 _request_timeout = config.getint('request', 'timeout', default=0)
@@ -86,6 +87,7 @@ def html_editor(request, pool, model, record, field):
 
         return Response(TEMPLATE % {
                 'source': SOURCE,
+                'license_key': LICENSE_KEY,
                 'plugins': get_config(
                     ['plugins', model, field.name], default=''),
                 'css': get_config(
@@ -108,6 +110,7 @@ TEMPLATE = '''<!DOCTYPE html>
     <script>
     tinymce.init({
         selector: '#text',
+        license_key: '%(license_key)s',
         language: '%(language)s',
         plugins: 'autosave code %(plugins)s',
         removed_menuitems: 'newdocument',
