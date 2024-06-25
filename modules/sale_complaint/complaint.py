@@ -17,7 +17,10 @@ from trytond.modules.currency.fields import Monetary
 from trytond.modules.product import price_digits
 from trytond.pool import Pool
 from trytond.pyson import Bool, Eval, If
+from trytond.tools import grouped_slice
 from trytond.transaction import Transaction
+
+from .exceptions import ComplaintSimilarWarning
 
 
 class Type(DeactivableMixin, ModelSQL, ModelView):
@@ -332,7 +335,7 @@ class Complaint(Workflow, ModelSQL, ModelView):
     @Workflow.transition('waiting')
     @set_employee('submitted_by')
     def wait(cls, complaints):
-        pass
+        cls._check_similar(complaints)
 
     @classmethod
     @ModelView.button
@@ -376,6 +379,57 @@ class Complaint(Workflow, ModelSQL, ModelView):
             for action, record in zip(actions[kls], records):
                 action.result = record
         Action.save(sum(list(actions.values()), []))
+
+    @classmethod
+    def _check_similar(cls, complaints):
+        pool = Pool()
+        Warning = pool.get('res.user.warning')
+        for sub_complaints in grouped_slice(complaints):
+            sub_complaints = list(sub_complaints)
+            domain = list(filter(None,
+                    (c._similar_domain() for c in sub_complaints)))
+            if not domain:
+                continue
+            if cls.search(['OR'] + domain, order=[]):
+                for complaint in sub_complaints:
+                    domain = complaint._similar_domain()
+                    if not domain:
+                        continue
+                    try:
+                        similar, = cls.search(domain, limit=1)
+                    except ValueError:
+                        continue
+                    warning_key = Warning.format(
+                        'complaint_similar', [complaint])
+                    if Warning.check(warning_key):
+                        raise ComplaintSimilarWarning(warning_key,
+                            gettext('sale_complaint.msg_complaint_similar',
+                                similar=similar.rec_name,
+                                complaint=complaint.rec_name))
+
+    def _similar_domain(self):
+        pool = Pool()
+        Sale = pool.get('sale.sale')
+        SaleLine = pool.get('sale.line')
+        Invoice = pool.get('account.invoice')
+        InvoiceLine = pool.get('account.invoice.line')
+        domain = ['OR',
+            ('origin', '=', str(self.origin)),
+            ]
+        if isinstance(self.origin, Sale):
+            domain.append(('origin.sale', '=', self.origin.id, 'sale.line'))
+        elif isinstance(self.origin, SaleLine):
+            domain.append(('origin', '=', str(self.origin.sale)))
+        elif isinstance(self.origin, Invoice):
+            domain.append(
+                ('origin.invoice', '=', self.origin.id,
+                    'account.invoice.line'))
+        elif isinstance(self.origin, InvoiceLine):
+            domain.append(('origin', '=', str(self.origin.invoice)))
+        return [
+            domain,
+            ('id', '!=', self.id),
+            ]
 
 
 class Action(ModelSQL, ModelView):

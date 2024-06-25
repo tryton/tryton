@@ -162,6 +162,11 @@ Create a complaint to return partially the sale::
     >>> complaint.state
     'draft'
     >>> complaint.click('wait')
+    Traceback (most recent call last):
+        ...
+    ComplaintSimilarWarning: ...
+    >>> config.skip_warning = True
+    >>> complaint.click('wait')
     >>> complaint.state
     'waiting'
     >>> complaint.click('approve')
