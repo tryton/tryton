@@ -316,7 +316,8 @@
                 }
                 if (!dialog ||
                     !this.model ||
-                    (Sao.main_menu_screen.model_name == this.model)) {
+                    (Sao.main_menu_screen &&
+                    (Sao.main_menu_screen.model_name == this.model))) {
                     is_menu = true;
                     screen = Sao.main_menu_screen;
                 } else {
