@@ -301,11 +301,13 @@ class Sale(
                 Index(
                     t,
                     (t.invoice_state, Index.Equality()),
-                    where=t.state.in_(['none', 'waiting', 'exception'])),
+                    where=t.invoice_state.in_([
+                            'none', 'waiting', 'exception'])),
                 Index(
                     t,
                     (t.shipment_state, Index.Equality()),
-                    where=t.state.in_(['none', 'waiting', 'exception'])),
+                    where=t.shipment_state.in_([
+                            'none', 'waiting', 'exception'])),
                 })
         cls._order = [
             ('sale_date', 'DESC NULLS FIRST'),
