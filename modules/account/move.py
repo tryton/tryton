@@ -27,9 +27,10 @@ from trytond.wizard import (
     Button, StateAction, StateTransition, StateView, Wizard)
 
 from .exceptions import (
-    AccountMissing, CancelDelegatedWarning, CancelWarning, DelegateLineError,
-    GroupLineError, JournalMissing, PeriodNotFoundError, PostError,
-    ReconciliationDeleteWarning, ReconciliationError, RescheduleLineError)
+    AccountMissing, CancelDelegatedWarning, CancelWarning, CopyWarning,
+    DelegateLineError, GroupLineError, JournalMissing, PeriodNotFoundError,
+    PostError, ReconciliationDeleteWarning, ReconciliationError,
+    RescheduleLineError)
 
 _MOVE_STATES = {
     'readonly': Eval('state') == 'posted',
@@ -335,14 +336,51 @@ class Move(DescriptionOriginMixin, ModelSQL, ModelView):
 
     @classmethod
     def copy(cls, moves, default=None):
+        pool = Pool()
+        Date = pool.get('ir.date')
+        Period = pool.get('account.period')
+        Warning = pool.get('res.user.warning')
+
         if default is None:
             default = {}
         else:
             default = default.copy()
+
+        def _check_period(origin):
+            period = Period(origin['period'])
+            if period.state == 'closed':
+                move = cls(origin['id'])
+                key = Warning.format('copy', [move])
+                if Warning.check(key):
+                    raise CopyWarning(key,
+                        gettext('account.msg_move_copy_closed_period',
+                            move=move))
+                return False
+            else:
+                return True
+
+        def default_period(origin):
+            if not _check_period(origin):
+                with Transaction().set_context(company=origin['company']):
+                    today = Date.today()
+                period = Period.find(origin['company'], date=today)
+                return period.id
+            else:
+                return origin['period']
+
+        def default_date(origin):
+            if not _check_period(origin):
+                with Transaction().set_context(company=origin['company']):
+                    return Date.today()
+            else:
+                return origin['date']
+
         default.setdefault('number', None)
         default.setdefault('post_number', None)
         default.setdefault('state', cls.default_state())
         default.setdefault('post_date', None)
+        default.setdefault('period', default_period)
+        default.setdefault('date', default_date)
         return super().copy(moves, default=default)
 
     @classmethod

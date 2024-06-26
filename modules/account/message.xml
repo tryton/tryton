@@ -134,6 +134,10 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.message" id="msg_modify_posted_moved">
             <field name="text">You cannot modify posted move "%(move)s".</field>
         </record>
+        <record model="ir.message" id="msg_move_copy_closed_period">
+            <field name="text">The period of move "%(move)s" is closed.
+Use the current period to copy the move?</field>
+        </record>
         <record model="ir.message" id="msg_move_cancel_closed_period">
             <field name="text">The period of move "%(move)s" is closed.
 Use the current period to cancel the move?</field>

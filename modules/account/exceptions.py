@@ -81,6 +81,10 @@ class MoveTemplateKeywordValidationError(ValidationError):
     pass
 
 
+class CopyWarning(UserWarning):
+    pass
+
+
 class CancelWarning(UserWarning):
     pass
 
