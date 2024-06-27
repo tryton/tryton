@@ -266,6 +266,33 @@ def no_table_query(func):
     return wrapper
 
 
+def apply_sorting(keywords):
+    order_types = {
+        'DESC': Desc,
+        'ASC': Asc,
+        }
+    null_ordering_types = {
+        'NULLS FIRST': NullsFirst,
+        'NULLS LAST': NullsLast,
+        None: lambda _: _
+        }
+
+    if not keywords:
+        keywords = 'ASC'
+    keywords = keywords.upper()
+
+    try:
+        otype, null_ordering = keywords.split(' ', 1)
+    except ValueError:
+        otype = keywords
+        null_ordering = None
+
+    Order = order_types[otype]
+    NullOrdering = null_ordering_types[null_ordering]
+
+    return lambda col: NullOrdering(Order(col))
+
+
 class ModelSQL(ModelStorage):
     """
     Define a model with storage in database.
@@ -1769,31 +1796,11 @@ class ModelSQL(ModelStorage):
     @classmethod
     def __search_order(cls, order, tables):
         order_by = []
-        order_types = {
-            'DESC': Desc,
-            'ASC': Asc,
-            }
-        null_ordering_types = {
-            'NULLS FIRST': NullsFirst,
-            'NULLS LAST': NullsLast,
-            None: lambda _: _
-            }
         for oexpr, otype in order:
             fname, _, extra_expr = oexpr.partition('.')
             field = cls._fields[fname]
-            if not otype:
-                otype, null_ordering = 'ASC', None
-            else:
-                otype = otype.upper()
-                try:
-                    otype, null_ordering = otype.split(' ', 1)
-                except ValueError:
-                    null_ordering = None
-            Order = order_types[otype]
-            NullOrdering = null_ordering_types[null_ordering]
             forder = field.convert_order(oexpr, tables, cls)
-            order_by.extend((NullOrdering(Order(o)) for o in forder))
-
+            order_by.extend(apply_sorting(otype)(o) for o in forder)
         return order_by
 
     @classmethod
