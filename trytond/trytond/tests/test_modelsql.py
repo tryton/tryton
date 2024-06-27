@@ -1252,6 +1252,27 @@ class ModelSQLTestCase(TestCase):
         self.assertIn('UNION', str(Model.search(domain, query=True)))
 
     @with_transaction()
+    def test_search_or_to_union_function_field(self):
+        pool = Pool()
+        Model = pool.get('test.modelsql.search.or2union')
+
+        model_a, model_b, model_c = Model.create([{
+                    'name': 'A',
+                    }, {
+                    'name': 'B',
+                    }, {
+                    'name': 'C',
+                    'targets': [
+                        ('create', [{'name': 'A'}]),
+                        ],
+                    },
+                ])
+
+        domain = [('rec_name', '=', 'A')]
+        self.assertEqual(Model.search(domain), [model_a, model_c])
+        self.assertIn('UNION', str(Model.search(domain, query=True)))
+
+    @with_transaction()
     def test_search_limit(self):
         "Test searching with limit"
         pool = Pool()

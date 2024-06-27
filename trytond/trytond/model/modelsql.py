@@ -22,6 +22,7 @@ from trytond.pool import Pool
 from trytond.pyson import PYSONDecoder, PYSONEncoder
 from trytond.rpc import RPC
 from trytond.tools import cursor_dict, grouped_slice, reduce_ids
+from trytond.tools.domain_inversion import simplify
 from trytond.transaction import (
     Transaction, inactive_records, record_cache_size, without_check_access)
 
@@ -1691,6 +1692,21 @@ class ModelSQL(ModelStorage):
         pool = Pool()
         Rule = pool.get('ir.rule')
 
+        def convert(domain):
+            if is_leaf(domain):
+                fname, *_ = domain[0].split('.', 1)
+                field = cls._fields[fname]
+                if isinstance(field, fields.Function) and field.searcher:
+                    new_leaf = getattr(cls, field.searcher)(fname, domain)
+                    return new_leaf
+                else:
+                    return domain
+            elif isinstance(domain, str):
+                return domain
+            else:
+                return [convert(d) for d in domain]
+
+        domain = simplify(convert(domain))
         rule_domain = Rule.domain_get(cls.__name__, mode='read')
         joined_domains = None
         if domain and domain[0] == 'OR':

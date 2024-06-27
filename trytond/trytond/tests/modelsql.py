@@ -152,6 +152,13 @@ class ModelSQLSearchOR2Union(ModelSQL):
             }
         return [table.integer + target.id]
 
+    @classmethod
+    def search_rec_name(cls, name, clause):
+        return ['OR',
+            ('name',) + clause[1:],
+            ('targets.name',) + clause[1:],
+            ]
+
 
 class ModelSQLSearchOR2UnionTarget(ModelSQL):
     "ModelSQL Target to test read"
