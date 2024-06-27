@@ -255,6 +255,8 @@ class ShipmentCost(Workflow, ModelSQL, ModelView):
                     shipment.cost += round_price(cost * factor)
                 else:
                     shipment.cost = round_price(cost * factor)
+                if shipment.cost_currency != shipment.company.currency:
+                    shipment.cost_currency = shipment.company.currency
             klass.save(shipments)
             klass.set_shipment_cost(shipments)
 
