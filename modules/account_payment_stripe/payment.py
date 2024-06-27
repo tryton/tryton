@@ -730,6 +730,7 @@ class Payment(CheckoutMixin, metaclass=PoolMeta):
         try:
             return stripe.PaymentIntent.retrieve(
                 self.stripe_payment_intent_id,
+                expand=['latest_charge'],
                 api_key=self.journal.stripe_account.secret_key,
                 stripe_version=STRIPE_VERSION)
         except (stripe.error.RateLimitError,
@@ -754,6 +755,36 @@ class Payment(CheckoutMixin, metaclass=PoolMeta):
         except (stripe.error.RateLimitError,
                 stripe.error.APIConnectionError) as e:
             logger.warning(str(e))
+
+    @classmethod
+    def stripe_pull(cls, payments):
+        "Update payments with Stripe charges"
+        for payment in payments:
+            charge = payment.stripe_charge_
+            payment_intent = payment.stripe_payment_intent
+            if payment_intent:
+                charge = payment_intent.latest_charge
+            if charge:
+                payment.stripe_update(charge)
+
+    def stripe_update(self, charge):
+        assert (
+            (charge.id == self.stripe_charge_id)
+            or (charge.payment_intent.id == self.stripe_payment_intent_id))
+        amount = charge.amount - charge.amount_refunded
+        if (self.state not in {'succeeded', 'failed'}
+                or self.stripe_amount != amount
+                or (not amount and self.state != 'failed')):
+            if self.state == 'succeeded':
+                self.__class__.proceed([self])
+            self.stripe_captured = charge.captured
+            self.stripe_amount = amount
+            self.save()
+            if self.amount:
+                if charge.status == 'succeeded' and charge.captured:
+                    self.__class__.succeed([self])
+            else:
+                self.__class__.fail([self])
 
 
 class Refund(Workflow, ModelSQL, ModelView):
@@ -1141,8 +1172,10 @@ class Account(ModelSQL, ModelView):
 
     def webhook_charge_refund_updated(self, payload):
         pool = Pool()
+        Payment = pool.get('account.payment')
         Refund = pool.get('account.payment.stripe.refund')
 
+        payments = []
         rf = payload['object']
         refunds = Refund.search([
                 ('stripe_refund_id', '=', rf['id']),
@@ -1157,7 +1190,9 @@ class Account(ModelSQL, ModelView):
             elif rf['status'] in {'failed', 'canceled'}:
                 refund.stripe_error_code = rf['failure_reason']
                 Refund.fail([refund])
+                payments.append(refund.payment)
             refund.save()
+        Payment.stripe_pull(payments)
         return bool(refunds)
 
     def webhook_charge_failed(self, payload, _event='charge.failed'):
