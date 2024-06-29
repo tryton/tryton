@@ -1156,10 +1156,10 @@ class DictField(Field):
         self.keys = {}
 
     def get(self, record):
-        return super(DictField, self).get(record) or self._default
+        return (super().get(record) or self._default).copy()
 
     def get_client(self, record):
-        return super(DictField, self).get_client(record) or self._default
+        return super().get_client(record)
 
     def validation_domains(self, record, pre_validate=None):
         screen_domain, attr_domain = self.domains_get(record, pre_validate)
