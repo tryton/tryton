@@ -2753,12 +2753,11 @@
             Sao.field.Dict._super.set.call(this, record, value);
         },
         get: function(record) {
-            return (Sao.field.Dict._super.get.call(this, record) ||
-                    this._default);
+            return jQuery.extend(
+                {}, Sao.field.Dict._super.get.call(this, record));
         },
         get_client: function(record) {
-            return (Sao.field.Dict._super.get_client.call(this, record) ||
-                    this._default);
+            return Sao.field.Dict._super.get_client.call(this, record);
         },
         validation_domains: function(record, pre_validate) {
             return this.get_domains(record, pre_validate)[0];
