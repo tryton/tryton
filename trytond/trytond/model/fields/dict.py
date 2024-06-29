@@ -57,6 +57,8 @@ class Dict(Field):
                 if v is None:
                     continue
                 if self.schema_model and isinstance(v, (list, tuple)):
+                    if not v:
+                        continue
                     v = list(sorted(set(v)))
                 d[k] = v
             value = dumps(d)
