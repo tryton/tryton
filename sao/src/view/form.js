@@ -5015,6 +5015,7 @@ function eval_pyson(value){
                     for (const key of new_names) {
                         value[key] = null;
                     }
+                    this.field.set_client(this.record, value);
                     this._display().then(() => {
                         this.fields[new_names[0]].input.focus();
                     });

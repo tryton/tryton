@@ -513,6 +513,7 @@ class DictWidget(Widget):
         self.send_modified()
         value = self.field.get_client(self.record)
         value.update({k: None for k in new_keys})
+        self.field.set_client(self.record, value)
         self.display()
 
         # Use idle add because it can be called from the callback
