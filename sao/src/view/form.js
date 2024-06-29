@@ -5215,7 +5215,9 @@ function eval_pyson(value){
                 return value.map(function(e) { return JSON.parse(e); });
             },
             set_value: function(value) {
-                value = value.map(function(e) { return JSON.stringify(e); });
+                if (value) {
+                    value = value.map(function(e) { return JSON.stringify(e); });
+                }
                 this.input.val(value);
             }
         });
