@@ -236,9 +236,10 @@ class DictMultiSelectionEntry(DictEntry):
         selection.handler_block_by_func(self._changed)
         try:
             selection.unselect_all()
-            for v in value:
-                if v in value2path:
-                    selection.select_path(value2path[v])
+            if value:
+                for v in value:
+                    if v in value2path:
+                        selection.select_path(value2path[v])
         finally:
             selection.handler_unblock_by_func(self._changed)
 
