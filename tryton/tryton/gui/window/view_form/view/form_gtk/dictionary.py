@@ -233,7 +233,7 @@ class DictMultiSelectionEntry(DictEntry):
 
     def get_value(self):
         model, paths = self.tree.get_selection().get_selected_rows()
-        return [model[path][0] for path in paths]
+        return [model[path][0] for path in paths] or None
 
     def set_value(self, value):
         value2path = {v: idx for idx, (v, _) in enumerate(self.selection)}

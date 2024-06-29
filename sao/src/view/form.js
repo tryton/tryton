@@ -5437,7 +5437,11 @@ function eval_pyson(value){
             },
             get_value: function() {
                 var value = this.input.val();
-                return value.map(function(e) { return JSON.parse(e); });
+                if (value && value.length) {
+                    return value.map(function(e) { return JSON.parse(e); });
+                } else {
+                    return null;
+                }
             },
             set_value: function(value) {
                 if (value) {
