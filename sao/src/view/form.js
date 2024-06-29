@@ -4976,10 +4976,8 @@ function eval_pyson(value){
             var group = jQuery('<div/>', {
                 'class': 'input-group input-group-sm'
             }).appendTo(jQuery('<div>', {
-                'class': 'col-sm-10 col-sm-offset-2'
-            }).appendTo(jQuery('<div/>', {
-                'class': 'form-group'
-            }).appendTo(body)));
+                'class': 'dict-row'
+            }).appendTo(body));
             this.wid_text = jQuery('<input/>', {
                 'type': 'text',
                 'class': 'form-control input-sm',
@@ -5130,16 +5128,16 @@ function eval_pyson(value){
             this.fields[key] = field = new (
                 this.get_entries(key_schema.type))(key, this);
             this.rows[key] = row = jQuery('<div/>', {
-                'class': 'form-group'
+                'class': 'dict-row'
             });
             var text = key_schema.string + Sao.i18n.gettext(':');
             var label = jQuery('<label/>', {
                 'text': text
             }).appendTo(jQuery('<div/>', {
-                'class': 'dict-label col-sm-2 control-label'
+                'class': 'dict-label control-label'
             }).appendTo(row));
 
-            field.el.addClass('col-sm-10').appendTo(row);
+            field.el.appendTo(row);
 
             label.uniqueId();
             field.labelled.uniqueId();
