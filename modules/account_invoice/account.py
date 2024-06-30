@@ -289,8 +289,9 @@ class MoveLine(metaclass=PoolMeta):
             Invoice.add_payment_lines({Invoice(value): lines})
 
     @classmethod
-    def search_invoice_payment(cls, name, domain):
-        return [('invoice_payments',) + tuple(domain[1:])]
+    def search_invoice_payment(cls, name, clause):
+        nested = clause[0][len(name):]
+        return [('invoice_payments' + nested, *clause[1:])]
 
     @property
     def product(self):
