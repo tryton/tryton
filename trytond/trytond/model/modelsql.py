@@ -1351,6 +1351,11 @@ class ModelSQL(ModelStorage):
                 columns += [Extract('EPOCH',
                         Coalesce(main_table.write_date, main_table.create_date)
                         ).cast(sql_type).as_('_timestamp')]
+        if backend.name == 'sqlite':
+            for column in columns:
+                field = cls._fields.get(column.output_name)
+                if field:
+                    column.output_name += ' [%s]' % field.sql_type().base
         select = table.select(*columns,
             where=expression, order_by=order_by, limit=limit, offset=offset)
         if query:
