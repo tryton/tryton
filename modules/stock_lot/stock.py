@@ -888,6 +888,7 @@ class InventoryCount(metaclass=PoolMeta):
     def default_quantity(self, fields):
         pool = Pool()
         Product = pool.get('product.product')
+        InventoryLine = pool.get('stock.inventory.line')
         inventory = self.record
         if isinstance(self.search.search, Product):
             product = self.search.search
@@ -896,7 +897,10 @@ class InventoryCount(metaclass=PoolMeta):
                 raise RequiredValidationError(
                     gettext('stock_lot.msg_only_lot',
                         product=product.rec_name))
-        return super(InventoryCount, self).default_quantity(fields)
+        values = super(InventoryCount, self).default_quantity(fields)
+        line = InventoryLine(values['line'])
+        values['lot'] = line.lot.id if line.lot else None
+        return values
 
     def get_line_domain(self, inventory):
         pool = Pool()
@@ -924,3 +928,12 @@ class InventoryCountSearch(metaclass=PoolMeta):
     def __setup__(cls):
         super(InventoryCountSearch, cls).__setup__()
         cls.search.selection.append(('stock.lot', "Lot"))
+
+
+class InventoryCountQuantity(ModelView):
+    __name__ = 'stock.inventory.count.quantity'
+
+    lot = fields.Many2One('stock.lot', "Lot", readonly=True,
+        states={
+            'invisible': ~Eval('lot', None),
+            })
