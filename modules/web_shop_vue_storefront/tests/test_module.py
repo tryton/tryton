@@ -59,12 +59,14 @@ class WebVueStorefrontTestCase(CompanyTestMixin, ModuleTestCase):
 
         company = create_company()
         warehouse, = Location.search([('type', '=', 'warehouse')], limit=1)
+        guest_party = Party(name="Guest")
+        guest_party.save()
         web_shop = WebShop(name="Web Shop")
         web_shop.company = company
         web_shop.currency = company.currency
         web_shop.warehouses = [warehouse]
         web_shop.type = 'vsf'
-        web_shop.guest_party = Party(name="Guest")
+        web_shop.guest_party = guest_party
         web_shop.save()
         with Transaction().set_context(**web_shop.get_context()):
             yield web_shop
@@ -79,6 +81,8 @@ class WebVueStorefrontTestCase(CompanyTestMixin, ModuleTestCase):
         Move = pool.get('stock.move')
 
         unit, = Uom.search([('name', '=', "Unit")], limit=1)
+        account_category = Category(name="Category", accounting=True)
+        account_category.save()
         template = Template(name="Product")
         template.type = 'goods'
         template.list_price = Decimal(100)
@@ -86,7 +90,7 @@ class WebVueStorefrontTestCase(CompanyTestMixin, ModuleTestCase):
         template.salable = True
         template.sale_uom = unit
         template.products = [Product(suffix_code=code, web_shops=[web_shop])]
-        template.account_category = Category(name="Category", accounting=True)
+        template.account_category = account_category
         template.save()
         product, = template.products
 
@@ -129,17 +133,21 @@ class WebVueStorefrontTestCase(CompanyTestMixin, ModuleTestCase):
         Uom = pool.get('product.uom')
 
         unit, = Uom.search([('name', '=', "Unit")], limit=1)
+        account_category = Category(name="Service", accounting=True)
+        account_category.save()
         template = Template(name=product_name)
         template.type = 'service'
         template.list_price = price
         template.default_uom = template.sale_uom = unit
         template.salable = True
         template.products = [Product()]
-        template.account_category = Category(name="Service", accounting=True)
+        template.account_category = account_category
         template.save()
 
+        party = Party(name=name)
+        party.save()
         carrier = Carrier()
-        carrier.party = Party(name=name)
+        carrier.party = party
         carrier.carrier_product, = template.products
         carrier.save()
         return carrier

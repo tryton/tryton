@@ -75,6 +75,7 @@ class Sale(metaclass=PoolMeta):
             address_data = addresses.get('shippingAddress')
             if address_data:
                 address = user.set_vsf_address(address_data, self.party)
+                address.save()
                 if address.party != self.party:
                     self.shipment_party = address.party
                 self.shipment_address = address
@@ -82,6 +83,7 @@ class Sale(metaclass=PoolMeta):
             if address_data:
                 if address_data != addresses.get('shippingAddress'):
                     address = user.set_vsf_address(address_data, self.party)
+                    address.save()
                 if address.party != self.party:
                     self.invoice_party = address.party
                 self.invoice_address = address
