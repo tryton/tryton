@@ -36,6 +36,7 @@ class ProductImageAttributeTestCase(ModuleTestCase):
         template = Template(name="Template")
         template.default_uom, = Uom.search([], limit=1)
         template.attribute_set = attribute_set
+        template.save()
         product = Product(template=template)
         product.attributes = {
             'attr1': 'foo',
