@@ -127,7 +127,8 @@
         return result;
     };
 
-    Sao.common.selection = function(title, values, alwaysask=false) {
+    Sao.common.selection = function(
+        title, values, alwaysask=false, default_=null) {
         var prm = jQuery.Deferred();
         if (jQuery.isEmptyObject(values)) {
             prm.reject();
@@ -152,11 +153,14 @@
                 .prepend(jQuery('<input/>', {
                     'type': 'radio',
                     'name': 'selection-' + dialog.modal.attr('id'),
-                    'value': i
+                    'value': i,
+                    'checked': values[keys[i]] == default_,
                 })))
             .appendTo(dialog.body);
         });
-        dialog.body.find('input').first().prop('checked', true);
+        if (!default_) {
+            dialog.body.find('input').first().prop('checked', true);
+        }
 
         jQuery('<button/>', {
             'class': 'btn btn-link',

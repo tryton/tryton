@@ -400,7 +400,7 @@ def get_sensible_widget(window):
     return window
 
 
-def selection(title, values, alwaysask=False):
+def selection(title, values, alwaysask=False, default=None):
     if not values or len(values) == 0:
         return None
     elif len(values) == 1 and (not alwaysask):
@@ -439,14 +439,18 @@ def selection(title, values, alwaysask=False):
     model = Gtk.ListStore(GObject.TYPE_STRING, GObject.TYPE_INT)
     keys = list(values.keys())
     keys.sort()
-    i = 0
-    for val in keys:
+    selected = None
+    for i, val in enumerate(keys):
         model.append([str(val), i])
-        i += 1
+        if default:
+            if values[keys[i]] == default:
+                selected = i
 
     treeview.set_model(model)
     treeview.connect('row-activated',
             lambda x, y, z: dialog.response(Gtk.ResponseType.OK) or True)
+    if selected is not None:
+        treeview.get_selection().select_path(selected)
 
     dialog.show_all()
     response = dialog.run()
