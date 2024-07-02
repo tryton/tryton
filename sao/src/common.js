@@ -142,6 +142,7 @@
         var dialog = new Sao.Dialog(
                 title || Sao.i18n.gettext('Your selection:'),
                 'selection-dialog');
+        dialog.modal.uniqueId();
 
         keys.forEach(function(k, i) {
             jQuery('<div/>', {
@@ -150,7 +151,7 @@
                 .text(' ' + k)
                 .prepend(jQuery('<input/>', {
                     'type': 'radio',
-                    'name': 'selection',
+                    'name': 'selection-' + dialog.modal.attr('id'),
                     'value': i
                 })))
             .appendTo(dialog.body);
