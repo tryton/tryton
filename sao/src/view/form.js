@@ -4853,15 +4853,9 @@ function eval_pyson(value){
                 'rel': 'noreferrer noopener',
             }).text(attributes.string).appendTo(this.el);
             if (attributes.translate) {
-                var button = jQuery('<button/>', {
-                    'class': 'btn btn-default btn-sm',
-                    'type': 'button',
-                    'aria-label': Sao.i18n.gettext('Translate'),
-                    'title': Sao.i18n.gettext("Translate"),
-                }).appendTo(this.el);
-                button.append(
+                this.button.prepend(
                     Sao.common.ICONFACTORY.get_icon_img('tryton-translate'));
-                button.click(this.translate.bind(this));
+                this.button.click(this.translate.bind(this));
             }
         },
         uri: function(language) {
@@ -4881,7 +4875,9 @@ function eval_pyson(value){
         },
         display: function() {
             Sao.View.Form.HTML._super.display.call(this);
-            this.button.attr('href', this.uri());
+            if (!this.attributes.translate) {
+                this.button.attr('href', this.uri());
+            }
         },
         set_readonly: function(readonly) {
             Sao.View.Form.HTML._super.set_readonly.call(this, readonly);
@@ -4897,7 +4893,9 @@ function eval_pyson(value){
             for (const language of languages) {
                 options[language.name] = language.code;
             }
-            Sao.common.selection(Sao.i18n.gettext("Choose a language"), options)
+            Sao.common.selection(
+                Sao.i18n.gettext("Choose a language"), options, false,
+                Sao.i18n.getlang())
             .done(language => {
                 window.open(this.uri(language), '_blank', 'noreferrer,noopener');
             });

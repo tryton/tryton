@@ -130,8 +130,10 @@ class HTML(Widget, TranslateMixin):
             self.button, expand=False, fill=False, padding=0)
 
         if attrs.get('translate'):
-            self.widget.pack_start(
-                self.translate_button(), expand=False, fill=False, padding=0)
+            self.button.set_image(common.IconFactory.get_image(
+                    'tryton-translate', Gtk.IconSize.SMALL_TOOLBAR))
+            self.button.set_always_show_image(True)
+            self.button.connect('clicked', self.translate)
 
     def uri(self, language=None):
         if not self.record or self.record.id < 0 or CONNECTION.url is None:
@@ -149,7 +151,8 @@ class HTML(Widget, TranslateMixin):
 
     def display(self):
         super().display()
-        self.button.set_uri(self.uri())
+        if self.attrs.get('translate'):
+            self.button.set_uri(self.uri())
 
     def _readonly_set(self, value):
         super()._readonly_set(value)
@@ -158,6 +161,7 @@ class HTML(Widget, TranslateMixin):
 
     def translate_dialog(self, languages):
         languages = {l['name']: l['code'] for l in languages}
-        result = selection(_('Choose a language'), languages)
+        result = selection(
+            _('Choose a language'), languages, default=CONFIG['client.lang'])
         if result:
             webbrowser.open(self.uri(language=result[1]), new=2)
