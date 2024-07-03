@@ -37,7 +37,8 @@ def sendcloud_api(func):
                         error_message = e.args[0]
                         nb_tries += 1
                         time.sleep(1)
-                    raise
+                    else:
+                        raise
         except requests.HTTPError as e:
             error_message = e.args[0]
         raise SendcloudError(
