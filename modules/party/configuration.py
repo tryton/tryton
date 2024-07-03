@@ -36,8 +36,11 @@ class Configuration(ModelSingleton, ModelSQL, ModelView, MultiValueMixin):
         # Migration from 6.8: Use vat alias
         configuration = cls(1)
         if configuration.identifier_types:
-            configuration.identifier_types = list(map(
+            identifier_types = list(map(
                     replace_vat, configuration.identifier_types))
+            if configuration.identifier_types != identifier_types:
+                configuration.identifier_types = identifier_types
+                configuration.save()
 
     @classmethod
     def default_party_sequence(cls, **pattern):
