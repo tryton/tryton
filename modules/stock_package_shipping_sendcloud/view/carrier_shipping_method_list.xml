@@ -4,5 +4,6 @@ this repository contains the full copyright notices and license terms. -->
 <tree sequence="sequence">
     <field name="sendcloud" expand="1"/>
     <field name="carrier" expand="1"/>
+    <field name="warehouse" expand="1"/>
     <field name="shipping_method" expand="2"/>
 </tree>

@@ -97,8 +97,11 @@ class CredentialSendcloud(sequence_ordered(), ModelSQL, ModelView, MatchMixin):
         self._addresses_sender_cache.set(self.id, addresses)
         return addresses
 
-    def get_sender_address(self, shipment):
-        pattern = self._get_sender_address_pattern(shipment)
+    def get_sender_address(self, shipment_or_warehouse):
+        if shipment_or_warehouse.__name__ == 'stock.location':
+            pattern = {'warehouse': shipment_or_warehouse.id}
+        else:
+            pattern = self._get_sender_address_pattern(shipment_or_warehouse)
         for address in self.addresses:
             if address.match(pattern):
                 return int(address.address) if address.address else None
@@ -239,18 +242,29 @@ class SendcloudShippingMethod(
         domain=[
             ('shipping_service', '=', 'sendcloud'),
             ])
+    warehouse = fields.Many2One(
+        'stock.location', "Warehouse",
+        domain=[
+            ('type', '=', 'warehouse'),
+            ])
     shipping_method = fields.Selection(
         'get_shipping_methods', "Shipping Method")
 
-    @fields.depends('sendcloud', '_parent_sendcloud.id')
+    @fields.depends('sendcloud', 'warehouse', '_parent_sendcloud.id')
     def get_shipping_methods(self):
         methods = [(None, '')]
         if (self.sendcloud
                 and self.sendcloud.id is not None
                 and self.sendcloud.id >= 0):
+            if self.warehouse:
+                sender_address = self.sendcloud.get_sender_address(
+                    self.warehouse)
+            else:
+                sender_address = None
             methods += [
                 (str(m['id']), m['name'])
-                for m in self.sendcloud.get_shipping_methods()]
+                for m in self.sendcloud.get_shipping_methods(
+                    sender_address=sender_address)]
         return methods
 
 

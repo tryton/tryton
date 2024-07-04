@@ -9,6 +9,9 @@ this repository contains the full copyright notices and license terms. -->
 
     <label name="carrier"/>
     <field name="carrier"/>
+    <label name="warehouse"/>
+    <field name="warehouse"/>
+
     <label name="shipping_method"/>
     <field name="shipping_method"/>
 </form>
