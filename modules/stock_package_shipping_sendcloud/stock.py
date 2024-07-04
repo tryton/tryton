@@ -145,6 +145,7 @@ class CreateShippingSendcloud(Wizard):
         ModelData = pool.get('ir.model.data')
 
         cm = UoM(ModelData.get_id('product', 'uom_centimeter'))
+        kg = UoM(ModelData.get_id('product', 'uom_kilogram'))
         party = shipment.shipping_to
         address = shipment.shipping_to_address
         phone = address.contact_mechanism_get(
@@ -171,7 +172,8 @@ class CreateShippingSendcloud(Wizard):
             'external_reference': '/'.join([shipment.number, package.number]),
             'quantity': 1,
             'order_number': shipment.number,
-            'weight': package.total_weight,
+            'weight': UoM.compute_qty(
+                package.weight_uom, package.total_weight, kg),
             'length': UoM.compute_qty(package.length_uom, package.length, cm),
             'width': UoM.compute_qty(package.width_uom, package.width, cm),
             'height': UoM.compute_qty(package.height_uom, package.height, cm),
