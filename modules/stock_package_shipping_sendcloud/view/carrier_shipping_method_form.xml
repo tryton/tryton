@@ -12,6 +12,11 @@ this repository contains the full copyright notices and license terms. -->
     <label name="warehouse"/>
     <field name="warehouse"/>
 
+    <label name="min_weight"/>
+    <field name="min_weight"/>
+    <label name="max_weight"/>
+    <field name="max_weight"/>
+
     <label name="shipping_method"/>
     <field name="shipping_method"/>
 </form>

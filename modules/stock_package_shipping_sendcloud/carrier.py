@@ -12,7 +12,7 @@ from trytond.model import (
     MatchMixin, ModelSQL, ModelView, fields, sequence_ordered)
 from trytond.pool import Pool, PoolMeta
 from trytond.protocols.wrappers import HTTPStatus
-from trytond.pyson import Eval
+from trytond.pyson import Eval, If
 
 from .exceptions import SendcloudCredentialWarning, SendcloudError
 
@@ -134,8 +134,8 @@ class CredentialSendcloud(sequence_ordered(), ModelSQL, ModelView, MatchMixin):
         self._shiping_methods_cache.set(key, methods)
         return methods
 
-    def get_shipping_method(self, shipment):
-        pattern = self._get_shipping_method_pattern(shipment)
+    def get_shipping_method(self, shipment, package=None):
+        pattern = self._get_shipping_method_pattern(shipment, package=package)
         for method in self.shipping_methods:
             if method.match(pattern):
                 if method.shipping_method:
@@ -144,9 +144,21 @@ class CredentialSendcloud(sequence_ordered(), ModelSQL, ModelView, MatchMixin):
                     return None
 
     @classmethod
-    def _get_shipping_method_pattern(cls, shipment):
+    def _get_shipping_method_pattern(cls, shipment, package=None):
+        pool = Pool()
+        UoM = pool.get('product.uom')
+        ModelData = pool.get('ir.model.data')
+        kg = UoM(ModelData.get_id('product', 'uom_kilogram'))
+
+        if package:
+            weight = UoM.compute_qty(
+                package.weight_uom, package.total_weight, kg, round=False)
+        else:
+            weight = UoM.compute_qty(
+                shipment.weight_uom, shipment.weight, kg, round=False)
         return {
             'carrier': shipment.carrier.id if shipment.carrier else None,
+            'weight': weight,
             }
 
     @sendcloud_api
@@ -247,6 +259,30 @@ class SendcloudShippingMethod(
         domain=[
             ('type', '=', 'warehouse'),
             ])
+    min_weight = fields.Float(
+        "Minimal Weight",
+        domain=[
+            ['OR',
+                ('min_weight', '=', None),
+                ('min_weight', '>', 0),
+                ],
+            If(Eval('max_weight', 0),
+                ('min_weight', '<=', Eval('max_weight', 0)),
+                ()),
+            ],
+        help="Minimal weight included in kg.")
+    max_weight = fields.Float(
+        "Maximal Weight",
+        domain=[
+            ['OR',
+                ('max_weight', '=', None),
+                ('max_weight', '>', 0),
+                ],
+            If(Eval('min_weight', 0),
+                ('max_weight', '>=', Eval('min_weight', 0)),
+                ()),
+            ],
+        help="Maximal weight included in kg.")
     shipping_method = fields.Selection(
         'get_shipping_methods', "Shipping Method")
 
@@ -266,6 +302,15 @@ class SendcloudShippingMethod(
                 for m in self.sendcloud.get_shipping_methods(
                     sender_address=sender_address)]
         return methods
+
+    def match(self, pattern, match_none=False):
+        pattern = pattern.copy()
+        if (weight := pattern.pop('weight')) is not None:
+            min_weight = self.min_weight or 0
+            max_weight = self.max_weight or weight
+            if not (min_weight <= weight <= max_weight):
+                return False
+        return super().match(pattern, match_none=match_none)
 
 
 class Carrier(metaclass=PoolMeta):

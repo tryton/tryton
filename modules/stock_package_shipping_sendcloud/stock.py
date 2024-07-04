@@ -179,7 +179,8 @@ class CreateShippingSendcloud(Wizard):
             'height': UoM.compute_qty(package.height_uom, package.height, cm),
             'request_label': True,
             }
-        shipping_method = credential.get_shipping_method(shipment)
+        shipping_method = credential.get_shipping_method(
+            shipment, package=package)
         if shipping_method:
             parcel['shipment'] = {'id': shipping_method}
         else:

@@ -1,3 +1,4 @@
+* Add package weight as shipping method criteria
 * Add warehouse as shipping method criteria
 * Warn when changing credential
 
