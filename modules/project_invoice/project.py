@@ -7,19 +7,20 @@ from collections import defaultdict
 from decimal import Decimal
 from itertools import groupby
 
-from sql import Null
+from sql import Cast, Null
 from sql.aggregate import Sum
 from sql.conditionals import NullIf
 from sql.functions import Extract
 from sql.operators import Concat
 
+from trytond import backend
 from trytond.i18n import gettext
 from trytond.model import ModelSQL, ModelView, fields
 from trytond.model.exceptions import AccessError
 from trytond.modules.currency.fields import Monetary
 from trytond.pool import Pool, PoolMeta
 from trytond.pyson import Bool, Eval, Id, If
-from trytond.tools import grouped_slice, reduce_ids
+from trytond.tools import grouped_slice, reduce_ids, sqlite_apply_types
 from trytond.transaction import Transaction
 from trytond.wizard import StateAction, Wizard
 
@@ -164,17 +165,20 @@ class Progress:
         ids2work = dict((w.id, w) for w in works)
         for sub_ids in grouped_slice(ids2work.keys()):
             where = reduce_ids(table.id, sub_ids)
-            cursor.execute(*table.join(progress,
+            query = (table.join(progress,
                     condition=progress.work == table.id
                     ).join(invoice_line,
                     condition=progress.invoice_line == invoice_line.id
-                    ).select(table.id,
-                    Sum(progress.progress * invoice_line.unit_price),
+                    ).select(
+                    table.id,
+                    Sum(Cast(progress.progress, 'NUMERIC')
+                        * invoice_line.unit_price).as_('amount'),
                     where=where,
                     group_by=table.id))
+            if backend.name == 'sqlite':
+                sqlite_apply_types(query, [None, 'NUMERIC'])
+            cursor.execute(*query)
             for work_id, amount in cursor:
-                if not isinstance(amount, Decimal):
-                    amount = Decimal(str(amount))
                 work = ids2work[work_id]
                 if work.price_list_hour:
                     amount *= Decimal(str(work.effort_hours))
@@ -191,7 +195,7 @@ class Progress:
 
         for work in works:
             currency = id2currency[work2currency[work.id]]
-            amounts[work.id] = currency.round(Decimal(amounts[work.id]))
+            amounts[work.id] = currency.round(amounts[work.id])
         return amounts
 
     def get_origins_to_invoice(self):

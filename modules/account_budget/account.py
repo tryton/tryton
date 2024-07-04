@@ -7,6 +7,7 @@ from itertools import groupby
 from sql.aggregate import Sum
 from sql.conditionals import Coalesce
 
+from trytond import backend
 from trytond.i18n import gettext
 from trytond.model import (
     Index, ModelSQL, ModelView, Unique, fields, sequence_ordered, tree)
@@ -15,7 +16,7 @@ from trytond.modules.currency.fields import Monetary
 from trytond.pool import Pool
 from trytond.pyson import Bool, Eval, If
 from trytond.rpc import RPC
-from trytond.tools import grouped_slice, reduce_ids
+from trytond.tools import grouped_slice, reduce_ids, sqlite_apply_types
 from trytond.transaction import Transaction
 from trytond.wizard import (
     Button, StateAction, StateTransition, StateView, Wizard)
@@ -54,16 +55,15 @@ class AmountMixin:
         for keys, grouped_records in groupby(
                 records, key=cls._get_amount_group_key):
             for sub_records in grouped_slice(list(grouped_records)):
-                cursor.execute(*cls._get_amount_query(
-                        sub_records, dict(keys)))
+                query = cls._get_amount_query(sub_records, dict(keys))
+                if backend.name == 'sqlite':
+                    sqlite_apply_types(query, [None, 'NUMERIC'])
+                cursor.execute(*query)
                 balances.update(cursor)
 
         total = {n: {} for n in names}
         for record in records:
             balance = balances[record.id]
-            # SQLite uses float for SUM
-            if not isinstance(balance, Decimal):
-                balance = Decimal(str(balance))
             if 'actual_amount' in names:
                 total['actual_amount'][record.id] = record.currency.round(
                     balance)
@@ -205,8 +205,11 @@ class BudgetLineMixin(
                 & (children.right <= table.right))
             .select(
                 table.id,
-                Sum(Coalesce(children.amount, 0)),
+                Sum(Coalesce(children.amount, 0)).as_(name),
                 group_by=table.id))
+
+        if backend.name == 'sqlite':
+            sqlite_apply_types(query, [None, 'NUMERIC'])
 
         for sub_ids in grouped_slice(ids):
             query.where = reduce_ids(table.id, sub_ids)
@@ -215,9 +218,6 @@ class BudgetLineMixin(
 
         for record in records:
             amount = amounts[record.id]
-            # SQLite uses float for SUM
-            if amount is not None and not isinstance(amount, Decimal):
-                amount = Decimal(str(amount))
             if amount is not None:
                 amounts[record.id] = record.currency.round(amount)
         return amounts
@@ -564,7 +564,7 @@ class BudgetLine(BudgetLineMixin, ModelSQL, ModelView):
                 line,
                 condition=line.account == children.account)
             .select(
-                table.id, amount,
+                table.id, amount.as_('amount'),
                 where=red_sql & query_where,
                 group_by=table.id))
 
@@ -714,7 +714,7 @@ class BudgetLinePeriod(AmountMixin, ModelSQL, ModelView):
                 condition=(line.move == move.id)
                 & (move.period == table.period))
             .select(
-                table.id, amount,
+                table.id, amount.as_('amount'),
                 where=red_sql & query_where,
                 group_by=table.id))
 

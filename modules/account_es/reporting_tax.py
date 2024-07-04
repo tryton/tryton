@@ -53,8 +53,6 @@ def justify(string, size):
 
 
 def format_decimal(n, include_sign=False):
-    if not isinstance(n, Decimal):
-        n = Decimal(n)
     sign = ''
     if include_sign:
         sign = 'N' if n < 0 else ''
@@ -470,7 +468,7 @@ class ESVATList(ModelSQL, ModelView):
                     exclude_invoice_tax.invoice,
                     where=((exclude_invoice_tax.invoice == invoice.id)
                         & (exclude_invoice_tax.tax.in_(excluded_taxes))))))
-        return (tax_line
+        query = (tax_line
             .join(tax, condition=tax_line.tax == tax.id)
             .join(line, condition=tax_line.move_line == line.id)
             .join(move, condition=line.move == move.id)
@@ -508,6 +506,7 @@ class ESVATList(ModelSQL, ModelView):
                     company.currency,
                     tax.es_vat_list_code,
                     ]))
+        return query
 
 
 class ESVATListContext(ModelView):
@@ -548,8 +547,6 @@ class AEAT347(Report):
         context['justify'] = justify
 
         def format_decimal(n):
-            if not isinstance(n, Decimal):
-                n = Decimal(n)
             sign = 'N' if n < 0 else ' '
             return sign + ('{0:.2f}'.format(abs(n))).replace('.', '').rjust(
                 15, '0')
@@ -707,8 +704,6 @@ class AEAT349(Report):
         context['identifier_code'] = identifier_code
 
         def format_decimal(n, digits=13):
-            if not isinstance(n, Decimal):
-                n = Decimal(n)
             return ('{0:.2f}'.format(abs(n))).replace('.', '').rjust(
                 digits, '0')
         context['format_decimal'] = format_decimal
@@ -928,8 +923,6 @@ class VATBookReport(Report):
     def format_decimal(cls, n):
         if n is None:
             return ''
-        if not isinstance(n, Decimal):
-            n = Decimal(n)
         sign = '-' if n < 0 else ''
         return sign + '{0:.2f}'.format(abs(n)).replace('.', ',')
 

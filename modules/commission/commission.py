@@ -12,6 +12,7 @@ except ImportError:
     Null = None
 from sql.aggregate import Sum
 
+from trytond import backend
 from trytond.i18n import gettext
 from trytond.model import (
     MatchMixin, ModelSQL, ModelView, fields, sequence_ordered)
@@ -19,7 +20,8 @@ from trytond.modules.currency.fields import Monetary
 from trytond.modules.product import price_digits, round_price
 from trytond.pool import Pool
 from trytond.pyson import Bool, Eval, Id, If
-from trytond.tools import decistmt, grouped_slice, reduce_ids
+from trytond.tools import (
+    decistmt, grouped_slice, reduce_ids, sqlite_apply_types)
 from trytond.transaction import Transaction, check_access
 from trytond.wizard import Button, StateAction, StateView, Wizard
 
@@ -122,17 +124,18 @@ class Agent(ModelSQL, ModelView):
         for sub_ids in grouped_slice(ids):
             where = reduce_ids(commission.agent, sub_ids)
             where &= commission.invoice_line == Null
-            query = commission.select(commission.agent, Sum(commission.amount),
+            query = commission.select(
+                commission.agent, Sum(commission.amount).as_('pending_amount'),
                 where=where,
                 group_by=commission.agent)
+            if backend.name == 'sqlite':
+                sqlite_apply_types(query, [None, 'NUMERIC'])
             cursor.execute(*query)
             amounts.update(dict(cursor))
-        for agent_id, amount in amounts.items():
-            if amount:
-                # SQLite uses float for SUM
-                if not isinstance(amount, Decimal):
-                    amount = Decimal(str(amount))
-                amounts[agent_id] = round_price(amount)
+        if backend.name == 'sqlite':
+            for agent_id, amount in amounts.items():
+                if amount is not None:
+                    amounts[agent_id] = round_price(amount)
         return amounts
 
     @property

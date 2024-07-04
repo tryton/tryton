@@ -1,9 +1,9 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
-from decimal import Decimal
 
 from sql.aggregate import Sum
 
+from trytond import backend
 from trytond.i18n import gettext
 from trytond.model import (
     DeactivableMixin, MatchMixin, ModelSQL, ModelView, Unique, Workflow,
@@ -15,7 +15,8 @@ from trytond.modules.currency.fields import Monetary
 from trytond.pool import Pool
 from trytond.pyson import Bool, Eval, Id
 from trytond.tools import (
-    grouped_slice, is_full_text, lstrip_wildcard, reduce_ids)
+    grouped_slice, is_full_text, lstrip_wildcard, reduce_ids,
+    sqlite_apply_types)
 from trytond.transaction import Transaction
 
 STATES = {
@@ -138,16 +139,16 @@ class Journal(
                 ).join(account, 'LEFT', condition=line.account == account.id
                 ).join(account_type, 'LEFT',
                     condition=account.type == account_type.id
-                ).select(move.journal, Sum(line.debit), Sum(line.credit),
+                ).select(
+                    move.journal,
+                    Sum(line.debit).as_('debit'),
+                    Sum(line.credit).as_('credit'),
                     where=where & red_sql,
                     group_by=move.journal)
+            if backend.name == 'sqlite':
+                sqlite_apply_types(query, [None, 'NUMERIC', 'NUMERIC'])
             cursor.execute(*query)
             for journal_id, debit, credit in cursor:
-                # SQLite uses float for SUM
-                if not isinstance(debit, Decimal):
-                    debit = Decimal(str(debit))
-                if not isinstance(credit, Decimal):
-                    credit = Decimal(str(credit))
                 result['debit'][journal_id] = company.currency.round(debit)
                 result['credit'][journal_id] = company.currency.round(credit)
                 result['balance'][journal_id] = company.currency.round(

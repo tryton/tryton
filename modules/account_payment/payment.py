@@ -8,6 +8,7 @@ from sql.aggregate import Count, Sum
 from sql.functions import CharLength
 from sql.operators import Abs
 
+from trytond import backend
 from trytond.i18n import gettext
 from trytond.model import (
     DeactivableMixin, Index, ModelSQL, ModelView, Workflow, fields)
@@ -19,7 +20,8 @@ from trytond.pool import Pool
 from trytond.pyson import Eval, If
 from trytond.rpc import RPC
 from trytond.tools import (
-    cursor_dict, grouped_slice, reduce_ids, sortable_values)
+    cursor_dict, grouped_slice, reduce_ids, sortable_values,
+    sqlite_apply_types)
 from trytond.transaction import Transaction
 from trytond.wizard import StateAction, Wizard
 
@@ -196,34 +198,30 @@ class Group(ModelSQL, ModelView):
             ]
 
         for sub_ids in grouped_slice(groups):
-            cursor.execute(*payment.select(*columns,
+            query = payment.select(*columns,
                 where=reduce_ids(payment.group, sub_ids),
-                group_by=payment.group),
-                )
-
+                group_by=payment.group)
+            if backend.name == 'sqlite':
+                sqlite_apply_types(
+                    query, [None, None, 'NUMERIC', 'NUMERIC', None])
+            cursor.execute(*query)
             for row in cursor_dict(cursor):
-                group_id = row['group_id']
+                group = cls(row['group_id'])
 
-                result['payment_count'][group_id] = row['payment_count']
-                result['payment_complete'][group_id] = \
+                result['payment_count'][group.id] = row['payment_count']
+                result['payment_complete'][group.id] = \
                     not row['payment_not_complete']
 
                 amount = row['payment_amount']
                 succeeded = row['payment_amount_succeeded']
 
-                if amount is not None:
-                    # SQLite uses float for SUM
-                    if not isinstance(amount, Decimal):
-                        amount = Decimal(str(amount))
-                    amount = cls(group_id).company.currency.round(amount)
-                result['payment_amount'][group_id] = amount
+                if amount is not None and backend.name == 'sqlite':
+                    amount = group.company.currency.round(amount)
+                result['payment_amount'][group.id] = amount
 
-                if succeeded is not None:
-                    # SQLite uses float for SUM
-                    if not isinstance(succeeded, Decimal):
-                        succeeded = Decimal(str(succeeded))
-                    succeeded = cls(group_id).company.currency.round(succeeded)
-                result['payment_amount_succeeded'][group_id] = succeeded
+                if succeeded is not None and backend.name == 'sqlite':
+                    succeeded = group.company.currency.round(succeeded)
+                result['payment_amount_succeeded'][group.id] = succeeded
 
         for key in list(result.keys()):
             if key not in names:

@@ -6,12 +6,13 @@ from sql import For, Literal, Null
 from sql.aggregate import Sum
 from sql.conditionals import Case, Coalesce
 
+from trytond import backend
 from trytond.i18n import gettext
 from trytond.model import fields
 from trytond.modules.currency.fields import Monetary
 from trytond.modules.party.exceptions import EraseError
 from trytond.pool import Pool, PoolMeta
-from trytond.tools import grouped_slice, reduce_ids
+from trytond.tools import grouped_slice, reduce_ids, sqlite_apply_types
 from trytond.transaction import Transaction
 
 
@@ -46,23 +47,23 @@ class Party(metaclass=PoolMeta):
 
         for sub_parties in grouped_slice(parties):
             party_clause = reduce_ids(line.party, [p.id for p in sub_parties])
-            cursor.execute(*line
+            query = (line
                 .join(account, condition=account.id == line.account)
                 .join(account_type, condition=account.type == account_type.id)
                 .select(line.party,
                     # Use credit - debit to positive deposit amount
-                    Sum(Coalesce(line.credit, 0) - Coalesce(line.debit, 0)),
+                    Sum(Coalesce(line.credit, 0) - Coalesce(line.debit, 0)
+                        ).as_('debit'),
                     where=account_type.deposit
                     & party_clause
                     & (line.reconciliation == Null)
                     & (account.company == user.company.id)
                     & line_clause,
                     group_by=line.party))
-            for party_id, value in cursor:
-                # SQLite uses float for SUM
-                if not isinstance(value, Decimal):
-                    value = currency.round(Decimal(str(value)))
-                values[party_id] = value
+            if backend.name == 'sqlite':
+                sqlite_apply_types(query, [None, 'NUMERIC'])
+            cursor.execute(*query)
+            values.update((p, currency.round(a)) for p, a in cursor)
         return values
 
     @classmethod
@@ -131,12 +132,13 @@ class Party(metaclass=PoolMeta):
                         line.amount_second_currency),
                     else_=0))
 
-        cursor.execute(*line.select(amount, where=where))
+        query = line.select(amount.as_('deposit_balance'), where=where)
+        if backend.name == 'sqlite':
+            sqlite_apply_types(query, ['NUMERIC'])
+        cursor.execute(*query)
         amount, = cursor.fetchone()
         if amount is None:
             amount = Decimal(0)
-        if not isinstance(amount, Decimal):
-            amount = Decimal(str(amount))
         return currency.round(amount)
 
     def check_deposit(self, deposit_account, sign=1):

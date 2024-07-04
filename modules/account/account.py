@@ -22,7 +22,8 @@ from trytond.pool import Pool
 from trytond.pyson import Bool, Eval, Id, If, PYSONEncoder
 from trytond.report import Report
 from trytond.tools import (
-    grouped_slice, is_full_text, lstrip_wildcard, reduce_ids)
+    grouped_slice, is_full_text, lstrip_wildcard, reduce_ids,
+    sqlite_apply_types)
 from trytond.transaction import Transaction, check_access, inactive_records
 from trytond.wizard import (
     Button, StateAction, StateTransition, StateView, Wizard)
@@ -1045,21 +1046,22 @@ class Account(
         line_query, fiscalyear_ids = MoveLine.query_get(line)
         for sub_ids in grouped_slice(ids):
             red_sql = reduce_ids(table_a.id, sub_ids)
-            cursor.execute(*table_a.join(table_c,
+            query = (table_a.join(table_c,
                     condition=(table_c.left >= table_a.left)
                     & (table_c.right <= table_a.right)
                     ).join(line, condition=line.account == table_c.id
                     ).select(
                     table_a.id,
-                    Sum(Coalesce(line.debit, 0) - Coalesce(line.credit, 0)),
+                    Sum(Coalesce(line.debit, 0) - Coalesce(line.credit, 0)
+                        ).as_('balance'),
                     where=red_sql & line_query,
                     group_by=table_a.id))
+            if backend.name == 'sqlite':
+                sqlite_apply_types(query, [None, 'NUMERIC'])
+            cursor.execute(*query)
             balances.update(dict(cursor))
 
         for account in accounts:
-            # SQLite uses float for SUM
-            if not isinstance(balances[account.id], Decimal):
-                balances[account.id] = Decimal(str(balances[account.id]))
             balances[account.id] = account.currency.round(balances[account.id])
 
         fiscalyears = FiscalYear.browse(fiscalyear_ids)
@@ -1094,27 +1096,28 @@ class Account(
         line = MoveLine.__table__()
         line_query, fiscalyear_ids = MoveLine.query_get(line)
         columns = [table.id]
+        types = [None]
         for name in names:
             if name == 'line_count':
                 columns.append(Count(Literal('*')))
+                types.append(None)
             else:
-                columns.append(Sum(Coalesce(Column(line, name), 0)))
+                columns.append(Sum(Coalesce(Column(line, name), 0)).as_(name))
+                types.append('NUMERIC')
         for sub_ids in grouped_slice(ids):
             red_sql = reduce_ids(table.id, sub_ids)
-            cursor.execute(*table.join(line, 'LEFT',
+            query = (table.join(line, 'LEFT',
                     condition=line.account == table.id
                     ).select(*columns,
                     where=red_sql & line_query,
                     group_by=table.id))
+            if backend.name == 'sqlite':
+                sqlite_apply_types(query, types)
+            cursor.execute(*query)
             for row in cursor:
                 account_id = row[0]
                 for i, name in enumerate(names, 1):
-                    # SQLite uses float for SUM
-                    if (name != 'line_count'
-                            and not isinstance(row[i], Decimal)):
-                        result[name][account_id] = Decimal(str(row[i]))
-                    else:
-                        result[name][account_id] = row[i]
+                    result[name][account_id] = row[i]
         for account in accounts:
             for name in names:
                 if name == 'line_count':
@@ -1541,7 +1544,7 @@ class AccountParty(ActivePeriodMixin, ModelSQL):
             account_sql = reduce_ids(table_a.id, sub_account_ids)
             for sub_party_ids in grouped_slice(party_ids):
                 party_sql = reduce_ids(line.party, sub_party_ids)
-                cursor.execute(*table_a.join(table_c,
+                query = (table_a.join(table_c,
                         condition=(table_c.left >= table_a.left)
                         & (table_c.right <= table_a.right)
                         ).join(line, condition=line.account == table_c.id
@@ -1550,9 +1553,12 @@ class AccountParty(ActivePeriodMixin, ModelSQL):
                         line.party,
                         Sum(
                             Coalesce(line.debit, 0)
-                            - Coalesce(line.credit, 0)),
+                            - Coalesce(line.credit, 0)).as_('balance'),
                         where=account_sql & party_sql & line_query,
                         group_by=[table_a.id, line.party]))
+                if backend.name == 'sqlite':
+                    sqlite_apply_types(query, [None, None, 'NUMERIC'])
+                cursor.execute(*query)
                 for account_id, party_id, balance in cursor:
                     try:
                         id_ = account_party2id[(account_id, party_id)]
@@ -1563,9 +1569,6 @@ class AccountParty(ActivePeriodMixin, ModelSQL):
                     balances[id_] = balance
 
         for record in records:
-            # SQLite uses float for SUM
-            if not isinstance(balances[record.id], Decimal):
-                balances[record.id] = Decimal(str(balances[record.id]))
             balances[record.id] = record.currency.round(balances[record.id])
 
         fiscalyears = FiscalYear.browse(fiscalyear_ids)
@@ -1599,20 +1602,26 @@ class AccountParty(ActivePeriodMixin, ModelSQL):
         line = MoveLine.__table__()
         line_query, fiscalyear_ids = MoveLine.query_get(line)
         columns = [table.id, line.party]
+        types = [None, None]
         for name in names:
             if name == 'line_count':
-                columns.append(Count(Literal('*')))
+                columns.append(Count(Literal('*')).as_(name))
+                types.append(None)
             else:
-                columns.append(Sum(Coalesce(Column(line, name), 0)))
+                columns.append(Sum(Coalesce(Column(line, name), 0)).as_(name))
+                types.append('NUMERIC')
         for sub_account_ids in grouped_slice(account_ids):
             account_sql = reduce_ids(table.id, sub_account_ids)
             for sub_party_ids in grouped_slice(party_ids):
                 party_sql = reduce_ids(line.party, sub_party_ids)
-                cursor.execute(*table.join(line, 'LEFT',
+                query = (table.join(line, 'LEFT',
                         condition=line.account == table.id
                         ).select(*columns,
                         where=account_sql & party_sql & line_query,
                         group_by=[table.id, line.party]))
+                if backend.name == 'sqlite':
+                    sqlite_apply_types(query, types)
+                cursor.execute(*query)
                 for row in cursor:
                     try:
                         id_ = account_party2id[tuple(row[0:2])]
@@ -1621,12 +1630,7 @@ class AccountParty(ActivePeriodMixin, ModelSQL):
                         # the database than from records
                         continue
                     for i, name in enumerate(names, 2):
-                        # SQLite uses float for SUM
-                        if (name != 'line_count'
-                                and not isinstance(row[i], Decimal)):
-                            result[name][id_] = Decimal(str(row[i]))
-                        else:
-                            result[name][id_] = row[i]
+                        result[name][id_] = row[i]
         for record in records:
             for name in names:
                 if name == 'line_count':
@@ -1759,7 +1763,7 @@ class AccountDeferral(ModelSQL, ModelView):
 
         for sub_deferrals in grouped_slice(deferrals):
             red_sql = reduce_ids(table.id, [d.id for d in sub_deferrals])
-            cursor.execute(*table
+            query = (table
                 .join(account, condition=table.account == account.id)
                 .join(account_child,
                     condition=(account_child.left >= account.left)
@@ -1768,15 +1772,14 @@ class AccountDeferral(ModelSQL, ModelView):
                     condition=(table_child.account == account_child.id)
                     & (table_child.fiscalyear == table.fiscalyear))
                 .select(
-                    table.id,
-                    Sum(table_child.debit - table_child.credit),
+                    table.id.as_('id'),
+                    Sum(table_child.debit - table_child.credit).as_('balance'),
                     where=red_sql,
                     group_by=table.id))
+            if backend.name == 'sqlite':
+                sqlite_apply_types(query, [None, 'NUMERIC'])
+            cursor.execute(*query)
             balances.update(dict(cursor))
-
-        for id_, balance in balances.items():
-            if not isinstance(balance, Decimal):
-                balances[id_] = Decimal(str(balance))
         return balances
 
     def get_currency(self, name):

@@ -9,6 +9,7 @@ from functools import wraps
 from sql.aggregate import Sum
 from sql.conditionals import Coalesce
 
+from trytond import backend
 from trytond.i18n import gettext
 from trytond.model import (
     DeactivableMixin, Index, ModelSQL, ModelView, Workflow, fields,
@@ -18,7 +19,7 @@ from trytond.modules.company.model import employee_field, set_employee
 from trytond.modules.product import price_digits, round_price
 from trytond.pool import Pool
 from trytond.pyson import Bool, Eval, If, TimeDelta
-from trytond.tools import grouped_slice, reduce_ids
+from trytond.tools import grouped_slice, reduce_ids, sqlite_apply_types
 from trytond.transaction import Transaction
 
 from .exceptions import PickerError
@@ -262,15 +263,15 @@ class Work(sequence_ordered(), ModelSQL, ModelView):
 
         for sub_works in grouped_slice(works):
             red_sql = reduce_ids(cycle.work, [w.id for w in sub_works])
-            cursor.execute(*cycle.select(
-                    cycle.work, Sum(Coalesce(cycle.cost, 0)),
-                    where=red_sql & (cycle.state == 'done'),
-                    group_by=cycle.work))
+            query = cycle.select(
+                cycle.work, Sum(Coalesce(cycle.cost, 0)).as_('cost'),
+                where=red_sql & (cycle.state == 'done'),
+                group_by=cycle.work)
+            if backend.name == 'sqlite':
+                sqlite_apply_types(query, [None, 'NUMERIC'])
+            cursor.execute(*query)
             costs.update(cursor)
-
         for cost in costs:
-            if not isinstance(cost, Decimal):
-                costs[cost] = Decimal(str(costs[cost]))
             costs[cost] = round_price(costs[cost])
         return costs
 

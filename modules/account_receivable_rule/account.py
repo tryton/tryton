@@ -1,17 +1,18 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 import datetime as dt
-from decimal import Decimal
 
 from sql import Literal, Null
 from sql.aggregate import Sum
 from sql.operators import Equal
 
+from trytond import backend
 from trytond.model import (
     DeactivableMixin, Exclude, ModelSQL, ModelView, Unique, Workflow,
     dualmethod, fields, sequence_ordered)
 from trytond.pool import Pool, PoolMeta
 from trytond.pyson import Eval
+from trytond.tools import sqlite_apply_types
 from trytond.transaction import Transaction
 
 
@@ -242,21 +243,21 @@ class AccountRuleAbstract(DeactivableMixin, ModelSQL, ModelView):
         cursor = Transaction().connection.cursor()
 
         amount = Sum(self._amount(line))
-        cursor.execute(*line
+        query = (line
             .join(move, condition=line.move == move.id)
             .select(
                 line.party,
-                amount,
+                amount.as_('amount'),
                 where=(
                     (line.account == self.account.id)
                     & (line.reconciliation == Null)
                     & (move.state == 'posted')),
                 group_by=line.party,
                 having=amount > 0))
-
+        if backend.name == 'sqlite':
+            sqlite_apply_types(query, [None, 'NUMERIC'])
+        cursor.execute(*query)
         for party_id, amount in cursor:
-            if not isinstance(amount, Decimal):
-                amount = Decimal(str(amount))
             if amount > 0:
                 yield party_id, amount
 

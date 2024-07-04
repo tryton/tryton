@@ -24,8 +24,8 @@ from trytond.tools import (
     cached_property, decimal_, email_, escape_wildcard, file_open, firstline,
     grouped_slice, is_full_text, is_instance_method, likify, lstrip_wildcard,
     pairwise_longest, reduce_domain, reduce_ids, remove_forbidden_chars,
-    rstrip_wildcard, slugify, sortable_values, strip_wildcard, timezone,
-    unescape_wildcard)
+    rstrip_wildcard, slugify, sortable_values, sqlite_apply_types,
+    strip_wildcard, timezone, unescape_wildcard)
 from trytond.tools.domain_inversion import (
     canonicalize, concat, domain_inversion, eval_domain,
     extract_reference_models, localize_domain, merge, parse,
@@ -329,6 +329,16 @@ class ToolsTestCase(TestCase):
                 (1, 3),
                 (1, None),
                 ])
+
+    def test_sqlite_apply_types(self):
+        "test sqlite_apply_types"
+        table = sql.Table('t')
+        select = table.select(table.foo.as_('bar'))
+
+        sqlite_apply_types(select, ['NUMERIC'])
+
+        self.assertEqual(
+            str(select), 'SELECT "a"."foo" AS "bar [NUMERIC]" FROM "t" AS "a"')
 
     def test_firstline(self):
         "Test firstline"

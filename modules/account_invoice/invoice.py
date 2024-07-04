@@ -30,7 +30,8 @@ from trytond.pyson import Bool, Eval, Id, If
 from trytond.report import Report
 from trytond.rpc import RPC
 from trytond.tools import (
-    cached_property, firstline, grouped_slice, reduce_ids, slugify)
+    cached_property, firstline, grouped_slice, reduce_ids, slugify,
+    sqlite_apply_types)
 from trytond.transaction import Transaction
 from trytond.wizard import (
     Button, StateAction, StateReport, StateTransition, StateView, Wizard)
@@ -715,21 +716,18 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin, InvoiceReportMixin):
 
         type_name = cls.tax_amount._field.sql_type().base
         tax = InvoiceTax.__table__()
-        to_round = False
         for sub_ids in grouped_slice(invoices_no_cache):
             red_sql = reduce_ids(tax.invoice, sub_ids)
-            cursor.execute(*tax.select(tax.invoice,
+            query = (tax.select(tax.invoice,
                     Coalesce(Sum(tax.amount), 0).as_(type_name),
                     where=red_sql,
                     group_by=tax.invoice))
-            for invoice_id, sum_ in cursor:
-                # SQLite uses float for SUM
-                if not isinstance(sum_, Decimal):
-                    sum_ = Decimal(str(sum_))
-                    to_round = True
-                tax_amount[invoice_id] = sum_
+            if backend.name == 'sqlite':
+                sqlite_apply_types(query, [None, 'NUMERIC'])
+            cursor.execute(*query)
+            tax_amount.update(cursor)
         # Float amount must be rounded to get the right precision
-        if to_round:
+        if backend.name == 'sqlite':
             for invoice in invoices:
                 tax_amount[invoice.id] = invoice.currency.round(
                     tax_amount[invoice.id])

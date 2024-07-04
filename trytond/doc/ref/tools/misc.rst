@@ -64,6 +64,10 @@ Miscellaneous
 
    Return an SQL expression that pairs SQL integers x and y.
 
+.. function:: sqlite_apply_types(select, types)
+
+   Apply in place the SQLite types to column names of the select query.
+
 .. function:: firstline(text)
 
    Return first non-empty line of a text field.
