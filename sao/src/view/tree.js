@@ -930,6 +930,7 @@
                 }).map(function(row) {
                     return row.el;
                 }));
+                this.update_selection(); // update after new rows has been added
                 if ((this.display_size < this.group.length) &&
                     (!this.tbody.children().last().hasClass('more-row'))) {
                     var more_row = jQuery('<tr/>', {
@@ -994,9 +995,7 @@
             }
         },
         redraw: function(selected, expanded) {
-            return redraw_async(this.rows, selected, expanded).then(() => {
-                this.update_selection();
-            });
+            return redraw_async(this.rows, selected, expanded);
         },
         switch_: function(path) {
             this.screen.row_activate();
