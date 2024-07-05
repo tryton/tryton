@@ -1258,9 +1258,9 @@
             this.selection.prop('indeterminate', false);
             if (jQuery.isEmptyObject(selected_records)) {
                 this.selection.prop('checked', false);
-            } else if (selected_records.length ==
-                    this.tbody.children().length &&
-                    this.display_size >= this.group.length) {
+            } else if (
+                this.rows.every((row) => row.is_selected()) &&
+                (selected_records.length >= this.tbody.children().length)) {
                 this.selection.prop('checked', true);
             } else {
                 this.selection.prop('indeterminate', true);
