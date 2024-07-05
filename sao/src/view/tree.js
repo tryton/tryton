@@ -750,6 +750,7 @@
                 }).map(function(row) {
                     return row.el;
                 }));
+                this.update_selection(); // update after new rows has been added
                 if ((this.display_size < this.group.length) &&
                     (!this.tbody.children().last().hasClass('more-row'))) {
                     var more_row = jQuery('<tr/>', {
