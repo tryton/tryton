@@ -3,8 +3,7 @@ Configuration
 *************
 
 The *Stock Package Shipping Module* uses some settings from the
-``[stock_package_shipping]`` section of the :doc:`configuration file
-<trytond:topics/configuration>`.
+``[stock_package_shipping]`` section of the :ref:`trytond:topics-configuration`.
 
 .. _config-stock_package_shipping.filestore:
 

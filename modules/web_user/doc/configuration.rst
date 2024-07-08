@@ -2,8 +2,8 @@
 Configuration
 *************
 
-The *Web user Module* uses values from settings in different sections of the
-:doc:`configuration file <trytond:topics/configuration>`.
+The *Web user Module* uses values from settings in different sections of
+the :ref:`trytond:topics-configuration`.
 
 ``[web]``
 *********

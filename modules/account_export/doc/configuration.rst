@@ -3,7 +3,7 @@ Configuration
 *************
 
 The *Account Export Module* uses some settings from the ``[account_export]``
-section of the :doc:`configuration file <trytond:topics/configuration>`.
+section of the :ref:`trytond:topics-configuration`.
 
 .. _config-account_export.filestore:
 

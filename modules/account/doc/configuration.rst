@@ -3,7 +3,7 @@ Configuration
 *************
 
 The *Account Module* uses values from settings in the ``[account]`` section
-of the :doc:`configuration file <trytond:topics/configuration>`.
+of the :ref:`trytond:topics-configuration`.
 
 .. _config-account.reconciliation_chunk:
 

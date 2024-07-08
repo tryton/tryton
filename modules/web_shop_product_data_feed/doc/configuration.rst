@@ -3,8 +3,7 @@ Configuration
 *************
 
 The *Web Shop Product Data Feed Module* uses values from settings in the
-``[web_shop]`` section of the :doc:`configuration file
-<trytond:topics/configuration>`.
+``[web_shop]`` section of the :ref:`trytond:topics-configuration`.
 
 .. _config-web_shop.product_data_feed_cache:
 

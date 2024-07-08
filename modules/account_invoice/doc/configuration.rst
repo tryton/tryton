@@ -3,7 +3,7 @@ Configuration
 *************
 
 The *Account Invoice Module* uses some settings from the ``[account_invoice]``
-section of the :doc:`configuration file <trytond:topics/configuration>`.
+section of the :ref:`trytond:topics-configuration`.
 
 .. _config-account_invoice.filestore:
 

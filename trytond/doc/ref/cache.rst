@@ -29,9 +29,9 @@ Cache
 .. attribute:: Cache.size_limit
 
    The maximal number of values cached.
-   The value comes from the entry with the same ``name`` under the ``cache``
-   section of the :ref:`configuration <topics-configuration>` using the
-   ``default`` entry as default value.
+   The value comes from the entry with the same ``name`` under the
+   :ref:`config-cache` section of the configuration using the ``default`` entry
+   as default value.
 
 .. attribute:: Cache.hit
 
@@ -89,5 +89,4 @@ Cache
 
     By default Tryton uses a MemoryCache, but this behaviour can be overridden
     by setting a fully qualified name of an alternative class defined in the
-    :ref:`configuration <topics-configuration>` ``class`` of the ``cache``
-    section.
+    ``class`` of the :ref:`config-cache` section.

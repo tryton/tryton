@@ -109,8 +109,8 @@ Login Attempt
 The *Login Attempt* concept is used to track and limit login attempts from
 IP addresses and networks.
 
-It is configured using settings from the ``[session]`` section of the
-`configuration file <topics-configuration>`.
+It is configured using settings from the :ref:`config-session` section of the
+:ref:`topics-configuration`.
 
 .. _model-res.user.device:
 

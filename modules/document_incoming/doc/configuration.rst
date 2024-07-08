@@ -3,8 +3,7 @@ Configuration
 *************
 
 The *Document Incoming Module* uses values from settings in the
-``[document_incoming]`` section of the :doc:`configuration file
-<trytond:topics/configuration>`.
+``[document_incoming]`` section of the :ref:`trytond:topics-configuration`.
 
 .. _config-document_incoming.filestore:
 

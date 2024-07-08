@@ -3,8 +3,7 @@ Configuration
 *************
 
 The *Web Shop Shopify Module* uses values from settings in the
-``[web_shop_shopify]`` section of the :doc:`configuration file
-<trytond:topics/configuration>`.
+``[web_shop_shopify]`` section of the :ref:`trytond:topics-configuration`.
 
 .. _config-web_shop_shopify.locations_cache:
 

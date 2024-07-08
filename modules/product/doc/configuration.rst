@@ -2,8 +2,8 @@
 Configuration
 *************
 
-The *Product Module* uses some settings from the ``[product]`` section of the
-:doc:`configuration file <trytond:topics/configuration>`.
+The *Product Module* uses some settings from the ``[product]`` section of
+the :ref:`trytond:topics-configuration`.
 
 .. _config-product.price_decimal:
 

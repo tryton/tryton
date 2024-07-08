@@ -1,8 +1,8 @@
 .. _topics-configuration:
 
-=============================
-Configuration file for Tryton
-=============================
+==================
+Configuration file
+==================
 
 The configuration file controls some aspects of the behavior of Tryton.
 The file uses a simple ini-file format. It consists of sections, led by a

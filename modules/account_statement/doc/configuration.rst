@@ -3,8 +3,7 @@ Configuration
 *************
 
 The *Account Statement Module* uses values from settings in the
-``[account_statement]`` section of the :doc:`configuration file
-<trytond:topics/configuration>`.
+``[account_statement]`` section of the :ref:`trytond:topics-configuration`.
 
 .. _config-account_statement.filestore:
 

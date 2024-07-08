@@ -3,7 +3,7 @@ Configuration
 *************
 
 The *Product Image Module* uses some settings from the ``[product]`` section of
-the :doc:`configuration file <trytond:topics/configuration>`.
+the :ref:`trytond:topics-configuration`.
 
 .. _config-product-image_filestore:
 
@@ -38,9 +38,7 @@ The default value is: ``2048``
 ==============
 
 The base URL for the images, without the path.
-
-The default value is generated from the `hostname
-<trytond:topics-configuration>` configuration setting.
+The default value is generated from :ref:`config-web.hostname` setting.
 
 ``image_timeout``
 =================
