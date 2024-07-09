@@ -1323,7 +1323,10 @@
                         if (this.editable && new_) {
                             td.trigger('click');
                         }
-                        Sao.common.find_focusable_child(td).focus();
+                        var child = Sao.common.find_focusable_child(td);
+                        if (child) {
+                            child.focus();
+                        }
                     }
                 }
             };
