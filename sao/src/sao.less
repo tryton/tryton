@@ -553,11 +553,24 @@ img.icon {
     border-width: 0 0 0 1px;
     flex: 1;
     margin-left: 5px;
-    min-width: 20%;
-    overflow: auto;
+    overflow: unset;
 
-    > div {
-        flex: 1;
+    > div.preview-resizer {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        max-width: 100vw;
+        min-width: 100%;
+        overflow: hidden;
+        resize: inline;
+        transform: scaleX(-1);
+
+        > div.preview-resizer-content {
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+            transform: scaleX(-1);
+        }
     }
 }
 
@@ -569,6 +582,9 @@ img.icon {
     .attachment-preview:not(:empty) {
         border-width: 0 0 1px 0;
         margin-bottom: 5px;
+        > div.preview-resizer {
+            resize: none;
+        }
     }
 }
 

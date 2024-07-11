@@ -1286,11 +1286,14 @@
         },
         _attachment_preview_el: function() {
             var el = jQuery('<div/>', {
-                'class': 'text-center',
+                'class': 'preview-resizer',
             });
-            var buttons = jQuery('<div/>', {
-                'class': 'btn-group',
+            var content = jQuery('<div/>', {
+                'class': 'preview-resizer-content',
             }).appendTo(el);
+            var buttons = jQuery('<div/>', {
+                'class': 'btn-group center-block',
+            }).appendTo(content);
 
             var but_prev = jQuery('<button/>', {
                 'class': 'btn btn-default btn-sm',
@@ -1342,7 +1345,7 @@
             screen.windows.push(preview);
 
             screen.switch_view().done(function() {
-                el.append(screen.screen_container.el);
+                content.append(screen.screen_container.el);
             });
             return el;
         },
