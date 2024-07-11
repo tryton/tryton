@@ -935,12 +935,10 @@ img.icon {
             object-fit: scale-down;
             object-position: center top;
             width: 100%;
-            height: 75vh;
-            @media screen and (max-width: @screen-sm-max) {
-                height: 50vh;
-            }
+            min-height: 50vh;
+            height: 100%;
             @media screen and (max-width: @screen-xs-max) {
-                height: 25vh;
+                min-height: 25vh;
             }
         }
     }
