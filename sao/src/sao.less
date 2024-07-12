@@ -273,15 +273,6 @@ html[theme="default"] {
     }
 }
 
-@media screen and (max-width: @screen-xs-max) {
-    #tabcontent {
-        > .tab-pane > .panel > .panel-body {
-            flex-direction: column-reverse;
-            min-height: unset;
-        }
-    }
-}
-
 #tabcontent[data-view-type="tree"] {
     display: flex;
     flex: 1;
@@ -552,7 +543,6 @@ img.icon {
     border-style: solid;
     border-width: 0 0 0 1px;
     flex: 1;
-    margin-left: 5px;
     overflow: unset;
 
     > div.preview-resizer {
@@ -580,8 +570,8 @@ img.icon {
 
 @media screen and (max-width: @screen-xs-max) {
     .attachment-preview:not(:empty) {
-        border-width: 0 0 1px 0;
-        margin-bottom: 5px;
+        flex: 2;
+
         > div.preview-resizer {
             resize: none;
         }
@@ -1134,9 +1124,6 @@ input.column-boolean {
 }
 
 @media screen and (max-width: @screen-xs-max) {
-    .treeview {
-        height: calc(100vh - 370px);
-    }
     .dict-row {
         grid-column: 1;
     }
