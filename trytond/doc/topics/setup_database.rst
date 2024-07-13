@@ -37,6 +37,10 @@ To upgrade to a new series, the command line is:
     $ trytond-admin -c <config file> -d <database name> --all
 
 .. warning::
+   Because the database is modified in place it is important to make a backup before
+   running the update.
+
+.. warning::
     Prior to upgrade see if there is no manual action to take on the `migration
     topic`_.
 
