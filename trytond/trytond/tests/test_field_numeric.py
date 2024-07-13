@@ -463,6 +463,28 @@ class FieldNumericTestCase(TestCase):
         self.assertEqual(numerics, [numeric1])
 
     @with_transaction()
+    def test_search_order(self):
+        "Test search order"
+        pool = Pool()
+        Numeric = pool.get('test.numeric')
+
+        Numeric.create([{
+                    'numeric': Decimal('10.00'),
+                    }, {
+                    'numeric': Decimal('7.00'),
+                    }])
+
+        records_asc = Numeric.search([], order=[('numeric', 'ASC')])
+        records_desc = Numeric.search([], order=[('numeric', 'DESC')])
+
+        self.assertEqual(
+            [r.numeric for r in records_asc],
+            [Decimal('7.00'), Decimal('10.00')])
+        self.assertEqual(
+            [r.numeric for r in records_desc],
+            [Decimal('10.00'), Decimal('7.00')])
+
+    @with_transaction()
     def test_write(self):
         "Test write numeric"
         Numeric = Pool().get('test.numeric')
