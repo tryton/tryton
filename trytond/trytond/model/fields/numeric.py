@@ -29,7 +29,7 @@ class Numeric(Float):
     def _domain_column(self, operator, column):
         column = super()._domain_column(operator, column)
         if backend.name == 'sqlite':
-            # Must be casted as Decimal is stored as bytes
+            # Must be cast because Decimal is stored as bytes
             column = Cast(column, self.sql_type().base)
         return column
 
@@ -38,7 +38,7 @@ class Numeric(Float):
         if backend.name == 'sqlite':
             if isinstance(value, (Select, CombiningQuery)):
                 return value
-            # Must be casted as Decimal is adapted to bytes
+            # Must be cast because Decimal is adapted to bytes
             type_ = self.sql_type().base
             if operator in ('in', 'not in'):
                 return [Cast(Literal(v), type_) for v in value]
