@@ -186,7 +186,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.model.button" id="sale_open_button">
             <field name="model">sale.point.sale</field>
             <field name="name">open</field>
-            <field name="string">Re-Open</field>
+            <field name="string">Reopen</field>
         </record>
 
         <record model="ir.model.button" id="sale_process_button">
@@ -299,7 +299,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.model.button" id="cash_session_open_button">
             <field name="model">sale.point.cash.session</field>
             <field name="name">open</field>
-            <field name="string">Re-Open</field>
+            <field name="string">Reopen</field>
         </record>
 
         <record model="ir.model.button" id="cash_session_close_button">

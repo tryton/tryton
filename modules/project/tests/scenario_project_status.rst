@@ -58,7 +58,7 @@ Try to complete project without task::
     >>> task.progress = 1
     >>> project.save()
 
-Try to re-open task without project::
+Try to reopen task without project::
 
     >>> task = Work(task.id)
     >>> task.progress = 0.5
@@ -78,7 +78,7 @@ Change progress with updating status::
     >>> project.status = in_progress
     >>> project.save()
 
-Re-open task::
+Reopen task::
 
     >>> task = Work(task.id)
     >>> task.progress = 0.5

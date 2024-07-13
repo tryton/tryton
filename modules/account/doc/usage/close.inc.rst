@@ -41,11 +41,11 @@ to close the period.
 
 .. tip::
 
-   If you need to make changes to a closed period you can re-open it, unless
-   it has been locked.
+   If you need to make changes to a closed period, you can reopen it if it is
+   not locked.
 
-   To re-open a closed period use the
-   [:menuselection:`Financial --> Processing --> Close Periods`] menu item.
+   To reopen a closed period use the [:menuselection:`Financial --> Processing
+   --> Close Periods`] menu item.
    To find a closed period, you will need to clear the filter so that all the
    periods are listed, not just the open ones.
 
