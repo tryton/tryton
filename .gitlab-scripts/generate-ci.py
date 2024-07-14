@@ -17,13 +17,17 @@ test-${name}-sqlite:
   variables:
     PACKAGE: ${package}
     TAG_PATTERN: '/^${tag_name}-.*/'
-
+${extra}
 test-${name}-postgresql:
   extends: .test-postgresql
   variables:
     PACKAGE: ${package}
     TAG_PATTERN: '/^${tag_name}-.*/'
-""")
+${extra}""")
+RESOURCE_GROUPS = {
+    'account_payment_stripe': 'stripe',
+    'web_shop_shopify': 'shopify',
+    }
 
 
 def main(filename):
@@ -40,10 +44,15 @@ def render(file):
         name = tag_name = package.replace('/', '-')
         if tag_name.startswith('modules-'):
             tag_name = tag_name[len('modules-'):]
+        if resource_group := RESOURCE_GROUPS.get(tag_name):
+            extra = '  resource_group: ' + resource_group + '\n'
+        else:
+            extra = ''
         mapping = {
             'name': name,
             'package': package,
             'tag_name': tag_name,
+            'extra': extra,
             }
         file.write(TEMPLATE.substitute(mapping))
 
