@@ -468,12 +468,14 @@ test-modules-account_payment_stripe-sqlite:
   variables:
     PACKAGE: modules/account_payment_stripe
     TAG_PATTERN: '/^account_payment_stripe-.*/'
+  resource_group: stripe
 
 test-modules-account_payment_stripe-postgresql:
   extends: .test-postgresql
   variables:
     PACKAGE: modules/account_payment_stripe
     TAG_PATTERN: '/^account_payment_stripe-.*/'
+  resource_group: stripe
 
 check-doc-modules-account_product:
   extends: .check-doc
