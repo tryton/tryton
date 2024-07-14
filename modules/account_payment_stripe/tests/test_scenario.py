@@ -15,5 +15,6 @@ def load_tests(*args, **kwargs):
                 'scenario_account_payment_stripe_dispute.rst',
                 'scenario_account_payment_stripe_identical.rst',
                 'scenario_account_payment_stripe_intent.rst',
+                'scenario_account_payment_stripe_refund_failure.rst',
                 })
     return load_doc_tests(__name__, __file__, *args, **kwargs)
