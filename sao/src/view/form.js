@@ -4598,7 +4598,7 @@ function eval_pyson(value){
         },
         set_url: function(value) {
             this.button.attr('href', value);
-            this.button.toggle(value);
+            this.button.toggle(Boolean(value));
         },
         set_invisible: function(invisible) {
             Sao.View.Form.URL._super.set_invisible.call(this, invisible);
