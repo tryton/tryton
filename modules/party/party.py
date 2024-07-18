@@ -689,7 +689,7 @@ IDENTIFIER_TYPES = [
     ('us_ptin', "U.S. Preparer Tax Identification Number"),
     ('us_ssn', "U.S. Social Security Number"),
     ('us_tin', "U.S. Taxpayer Identification Number"),
-    ('uy_ruc', "Uruguay Tax Number"),
+    ('uy_rut', "Uruguay Tax Number"),
     ('ve_rif', "Venezuelan VAT Number"),
     ('vn_mst', "Vietnam Tax Number"),
     ('za_idnr', "South African Identity Document Number"),
@@ -782,7 +782,7 @@ TAX_IDENTIFIER_TYPES = [
     'us_ptin',
     'us_ssn',
     'us_tin',
-    'uy_ruc',
+    'uy_rut',
     've_rif',
     'vn_mst',
     'za_tin',
@@ -831,6 +831,10 @@ class Identifier(sequence_ordered(), DeactivableMixin, ModelSQL, ModelView):
             cursor.execute(*table.update(
                     [table.type], [new],
                     where=table.type == old))
+
+        # Migration from 7.2: Rename uy_ruc into uy_rut
+        cursor.execute(*table.update([table.type], ['uy_rut'],
+                where=(table.type == 'uy_ruc')))
 
     @classmethod
     def get_types(cls):
