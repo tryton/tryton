@@ -600,6 +600,7 @@ IDENTIFIER_TYPES = [
     ('gb_nhs',
         "United Kingdom National Health Service Patient Identifier"),
     ('gb_upn', "English Unique Pupil Number"),
+    ('gb_utr', "United Kingdom Unique Taxpayer Reference"),
     ('gb_vat', "United Kingdom (and Isle of Man) VAT Number"),
     ('gh_tin', "Ghanaian Taxpayer Identification Number"),
     ('gn_nifp', "Guinean Tax Number"),
