@@ -566,9 +566,9 @@ class PartyTestCase(PartyCheckEraseMixin, ModuleTestCase):
         "Ensure tax identifier types are in identifier types"
         pool = Pool()
         Party = pool.get('party.party')
-        self.assertFalse(
-            set(Party.tax_identifier_types())
-            - set(dict(IDENTIFIER_TYPES).keys()))
+        identifiers = dict(IDENTIFIER_TYPES).keys()
+        tax_identifiers = set(Party.tax_identifier_types())
+        self.assertLessEqual(tax_identifiers, identifiers)
 
     @with_transaction()
     def test_identifier_vat_types(self):
