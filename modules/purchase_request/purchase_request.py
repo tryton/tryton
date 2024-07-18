@@ -40,7 +40,9 @@ class PurchaseRequest(ModelSQL, ModelView):
             },
         depends={'company'})
     description = fields.Text('Description', readonly=True)
-    summary = fields.Function(fields.Char('Summary'), 'on_change_with_summary')
+    summary = fields.Function(
+        fields.Char('Summary'), 'on_change_with_summary',
+        searcher='search_summary')
     party = fields.Many2One(
         'party.party', "Party", states=STATES,
         context={
@@ -252,6 +254,10 @@ class PurchaseRequest(ModelSQL, ModelView):
     @fields.depends('description')
     def on_change_with_summary(self, name=None):
         return firstline(self.description or '')
+
+    @classmethod
+    def search_summary(cls, name, clause):
+        return [('description', *clause[1:])]
 
     @classmethod
     def _get_origin(cls):

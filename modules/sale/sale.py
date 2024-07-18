@@ -1376,7 +1376,9 @@ class SaleLine(TaxableMixin, sequence_ordered(), ModelSQL, ModelView):
             'readonly': Eval('sale_state') != 'draft',
             },
         depends=['sale_state'])
-    summary = fields.Function(fields.Char('Summary'), 'on_change_with_summary')
+    summary = fields.Function(
+        fields.Char('Summary'), 'on_change_with_summary',
+        searcher='search_summary')
     note = fields.Text('Note')
     taxes = fields.Many2Many('sale.line-account.tax', 'line', 'tax', 'Taxes',
         order=[('tax.sequence', 'ASC'), ('tax.id', 'ASC')],
@@ -1724,6 +1726,10 @@ class SaleLine(TaxableMixin, sequence_ordered(), ModelSQL, ModelView):
     @fields.depends('description')
     def on_change_with_summary(self, name=None):
         return firstline(self.description or '')
+
+    @classmethod
+    def search_summary(cls, name, clause):
+        return [('description', *clause[1:])]
 
     @fields.depends(
         'type', 'quantity', 'unit_price',

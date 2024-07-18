@@ -2322,7 +2322,9 @@ class InvoiceLine(sequence_ordered(), ModelSQL, ModelView, TaxableMixin):
                 & ~Id('account', 'group_account_admin').in_(
                     Eval('context', {}).get('groups', []))),
                 })
-    summary = fields.Function(fields.Char('Summary'), 'on_change_with_summary')
+    summary = fields.Function(
+        fields.Char('Summary'), 'on_change_with_summary',
+        searcher='search_summary')
     note = fields.Text('Note')
     taxes = fields.Many2Many('account.invoice.line-account.tax',
         'line', 'tax', 'Taxes',
@@ -2517,6 +2519,10 @@ class InvoiceLine(sequence_ordered(), ModelSQL, ModelView, TaxableMixin):
     @fields.depends('description')
     def on_change_with_summary(self, name=None):
         return firstline(self.description or '')
+
+    @classmethod
+    def search_summary(cls, name, clause):
+        return [('description', *clause[1:])]
 
     @fields.depends(
         'type', 'quantity', 'unit_price', 'taxes_deductible_rate', 'invoice',

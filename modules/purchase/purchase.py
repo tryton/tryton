@@ -1260,7 +1260,9 @@ class Line(sequence_ordered(), ModelSQL, ModelView):
         states={
             'readonly': Eval('purchase_state') != 'draft',
             })
-    summary = fields.Function(fields.Char('Summary'), 'on_change_with_summary')
+    summary = fields.Function(
+        fields.Char('Summary'), 'on_change_with_summary',
+        searcher='search_summary')
     note = fields.Text('Note')
     taxes = fields.Many2Many('purchase.line-account.tax',
         'line', 'tax', 'Taxes',
@@ -1656,6 +1658,10 @@ class Line(sequence_ordered(), ModelSQL, ModelView):
     @fields.depends('description')
     def on_change_with_summary(self, name=None):
         return firstline(self.description or '')
+
+    @classmethod
+    def search_summary(cls, name, clause):
+        return [('description', *clause[1:])]
 
     @fields.depends(
         'type', 'quantity', 'unit_price',

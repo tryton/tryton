@@ -55,7 +55,9 @@ class Error(Workflow, ModelView, ModelSQL):
     origin_string = origin.translated('origin')
     message = fields.Text("Message", readonly=True)
     description = fields.Text("Description", readonly=True)
-    summary = fields.Function(fields.Char("Summary"), 'on_change_with_summary')
+    summary = fields.Function(
+        fields.Char("Summary"), 'on_change_with_summary',
+        searcher='search_summary')
 
     processed_by = fields.Many2One(
         'res.user', "Processed by",
@@ -113,6 +115,10 @@ class Error(Workflow, ModelView, ModelSQL):
     @fields.depends('message')
     def on_change_with_summary(self, name=None):
         return firstline(self.message or '')
+
+    @classmethod
+    def search_summary(cls, name, clause):
+        return [('message', *clause[1:])]
 
     def get_rec_name(self, name):
         if self.origin:

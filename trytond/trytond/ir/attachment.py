@@ -30,7 +30,9 @@ class Attachment(ResourceMixin, ModelSQL, ModelView):
         ('link', 'Link'),
         ], 'Type', required=True)
     description = fields.Text('Description')
-    summary = fields.Function(fields.Char('Summary'), 'on_change_with_summary')
+    summary = fields.Function(
+        fields.Char('Summary'), 'on_change_with_summary',
+        searcher='search_summary')
     link = fields.Char('Link', states={
             'invisible': Eval('type') != 'link',
             }, depends=['type'])
@@ -66,6 +68,10 @@ class Attachment(ResourceMixin, ModelSQL, ModelView):
     @fields.depends('description')
     def on_change_with_summary(self, name=None):
         return firstline(self.description or '')
+
+    @classmethod
+    def search_summary(cls, name, clause):
+        return [('description', *clause[1:])]
 
     @classmethod
     def fields_view_get(cls, view_id=None, view_type='form', level=None):

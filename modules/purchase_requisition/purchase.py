@@ -452,7 +452,9 @@ class PurchaseRequisitionLine(sequence_ordered(), ModelSQL, ModelView):
             help="The category of Unit of Measure for the product."),
         'on_change_with_product_uom_category')
     description = fields.Text("Description", states=_states)
-    summary = fields.Function(fields.Char('Summary'), 'on_change_with_summary')
+    summary = fields.Function(
+        fields.Char('Summary'), 'on_change_with_summary',
+        searcher='search_summary')
     quantity = fields.Float(
         "Quantity", digits='unit', required=True, states=_states)
     unit = fields.Many2One(
@@ -522,6 +524,10 @@ class PurchaseRequisitionLine(sequence_ordered(), ModelSQL, ModelView):
     @fields.depends('description')
     def on_change_with_summary(self, name=None):
         return firstline(self.description or '')
+
+    @classmethod
+    def search_summary(cls, name, clause):
+        return [('description', *clause[1:])]
 
     @fields.depends(
         'quantity', 'unit_price',

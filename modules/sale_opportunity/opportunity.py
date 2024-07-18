@@ -575,7 +575,9 @@ class SaleOpportunityLine(sequence_ordered(), ModelSQL, ModelView):
             'readonly': _states['readonly'],
             })
     description = fields.Text("Description", states=_states)
-    summary = fields.Function(fields.Char("Summary"), 'on_change_with_summary')
+    summary = fields.Function(
+        fields.Char("Summary"), 'on_change_with_summary',
+        searcher='search_summary')
     note = fields.Text("Note")
 
     company = fields.Function(
@@ -624,6 +626,10 @@ class SaleOpportunityLine(sequence_ordered(), ModelSQL, ModelView):
     @fields.depends('description')
     def on_change_with_summary(self, name=None):
         return firstline(self.description or '')
+
+    @classmethod
+    def search_summary(cls, name, clause):
+        return [('description', *clause[1:])]
 
     @fields.depends('opportunity', '_parent_opportunity.company')
     def on_change_with_company(self, name=None):
