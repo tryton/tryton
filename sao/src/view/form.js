@@ -2772,6 +2772,7 @@ function eval_pyson(value){
                     params.name = this.attributes.string;
                     params.context = this.field.get_context(this.record);
                     Sao.Tab.create(params);
+                    this._popup = false;
                     return;
                 }
                 var screen = this.get_screen();
