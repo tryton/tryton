@@ -7,6 +7,7 @@ import doctest
 import email.message
 import sys
 import unittest
+from copy import deepcopy
 from io import BytesIO
 from unittest.mock import patch
 
@@ -584,6 +585,17 @@ class ImmutableDictTestCase(TestCase):
 
         with self.assertRaises(TypeError):
             d.update({'foo': 'bar'})
+
+    def test_deepcopy(self):
+        "deepcopying should be possible"
+        original = ImmutableDict(foo={'a': 1}, bar=2, baz=1.3)
+        copy = deepcopy(original)
+
+        self.assertEqual(original, copy)
+        self.assertIsNot(original, copy)
+
+        self.assertEqual(original['foo'], copy['foo'])
+        self.assertIsNot(original['foo'], copy['foo'])
 
 
 class DomainInversionTestCase(TestCase):
