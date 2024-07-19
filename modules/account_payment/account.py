@@ -129,13 +129,17 @@ class MoveLine(metaclass=PoolMeta):
         value = cls.payment_amount._field.sql_cast(
             cls.payment_amount.sql_format(value))
 
+        accounts = (account
+            .join(account_type, condition=account.type == account_type.id)
+            .select(
+                account.id,
+                where=account_type.payable | account_type.receivable))
+
         query = (table
             .join(payment, type_='LEFT',
             condition=(table.id == payment.line) & (payment.state != 'failed'))
-            .join(account, condition=table.account == account.id)
-            .join(account_type, condition=account.type == account_type.id)
             .select(table.id,
-                where=(account_type.payable | account_type.receivable),
+                where=table.account.in_(accounts),
                 group_by=(table.id, table.second_currency),
                 having=Operator(amount, value)
                 ))
