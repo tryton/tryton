@@ -6,6 +6,7 @@ import datetime as dt
 import doctest
 import sys
 import unittest
+from copy import deepcopy
 from io import BytesIO
 
 import sql
@@ -565,6 +566,17 @@ class ImmutableDictTestCase(unittest.TestCase):
 
         with self.assertRaises(TypeError):
             d.update({'foo': 'bar'})
+
+    def test_deepcopy(self):
+        "deepcopying should be possible"
+        original = ImmutableDict(foo={'a': 1}, bar=2, baz=1.3)
+        copy = deepcopy(original)
+
+        self.assertEqual(original, copy)
+        self.assertIsNot(original, copy)
+
+        self.assertEqual(original['foo'], copy['foo'])
+        self.assertIsNot(original['foo'], copy['foo'])
 
 
 class DomainInversionTestCase(unittest.TestCase):
