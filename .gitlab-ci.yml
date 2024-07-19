@@ -142,7 +142,7 @@ check-dist:
 
 check-eslint:
   extends: .check
-  image: ${CI_DEPENDENCY_PROXY_GROUP_IMAGE_PREFIX}/node
+  image: ${CI_DEPENDENCY_PROXY_GROUP_IMAGE_PREFIX}/node:lts
   variables:
     NODE_CACHE_DIR: "$CI_PROJECT_DIR/.cache/npm"
   cache:
@@ -296,7 +296,7 @@ check-account-chart:
 
 .test-npm:
   extends: .test
-  image: ${CI_DEPENDENCY_PROXY_GROUP_IMAGE_PREFIX}/node
+  image: ${CI_DEPENDENCY_PROXY_GROUP_IMAGE_PREFIX}/node:lts
   variables:
     NODE_CACHE_DIR: "$CI_PROJECT_DIR/.cache/npm"
   cache:
