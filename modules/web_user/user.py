@@ -190,7 +190,7 @@ class User(avatar_mixin(100), DeactivableMixin, ModelSQL, ModelView):
                     validate_email(user.email)
                 except EmailNotValidError as e:
                     raise UserValidationError(gettext(
-                            'web_user.msg_email_invalid',
+                            'web_user.msg_user_email_invalid',
                             user=user.rec_name,
                             email=user.email),
                         str(e)) from e
