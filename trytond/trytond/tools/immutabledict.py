@@ -1,5 +1,7 @@
 # This file is part of Tryton.  The COPYRIGHT file at the toplevel of this
 # repository contains the full copyright notices and license terms.
+from copy import deepcopy
+
 
 class ImmutableDict(dict):
 
@@ -7,6 +9,10 @@ class ImmutableDict(dict):
 
     def _not_allowed(cls, *args, **kwargs):
         raise TypeError("Operation not allowed on ImmutableDict")
+
+    def __deepcopy__(self, memo):
+        return ImmutableDict(
+            (k, deepcopy(v, memo=memo)) for k, v in self.items())
 
     __setitem__ = _not_allowed
     __delitem__ = _not_allowed
