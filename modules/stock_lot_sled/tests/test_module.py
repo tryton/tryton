@@ -40,7 +40,7 @@ class StockLotSLEDTestCase(CompanyTestMixin, ModuleTestCase):
         product.save()
 
         supplier, = Location.search([('code', '=', 'SUP')])
-        storage, = Location.search([('code', '=', 'CUS')])
+        storage, = Location.search([('code', '=', 'STO')])
 
         company = create_company()
         with set_company(company):

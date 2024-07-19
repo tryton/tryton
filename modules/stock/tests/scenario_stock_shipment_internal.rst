@@ -81,7 +81,6 @@ Create Internal Shipment::
     >>> move.quantity = 1
     >>> move.from_location = internal_loc
     >>> move.to_location = storage_loc
-    >>> move.currency = company.currency
     >>> shipment.save()
     >>> shipment.number
     >>> shipment.assigned_by
@@ -114,7 +113,6 @@ Create Internal Shipment from lost_found location::
     >>> move.quantity = 2
     >>> move.from_location = lost_found_loc
     >>> move.to_location = internal_loc
-    >>> move.currency = company.currency
     >>> lost_found_shipment.click('wait')
     >>> lost_found_shipment.click('assign_try')
     >>> lost_found_shipment.state

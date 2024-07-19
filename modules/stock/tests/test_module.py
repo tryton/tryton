@@ -1150,8 +1150,6 @@ class StockTestCase(
                         'from_location': from_.id,
                         'to_location': to.id,
                         'company': company.id,
-                        'unit_price': Decimal(1),
-                        'currency': company.currency.id,
                         } for from_, to in [
                         (storage, storage2),
                         (storage2, storage3)]])
@@ -1204,8 +1202,6 @@ class StockTestCase(
                         'from_location': storage.id,
                         'to_location': child.id,
                         'company': company.id,
-                        'unit_price': Decimal(1),
-                        'currency': company.currency.id,
                         }])
 
             self.assertFalse(Move.assign_try([move]))

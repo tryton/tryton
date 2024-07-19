@@ -56,49 +56,62 @@ class LocationLeadTime(metaclass=PoolMeta):
             ]
 
 
-def set_origin_consignment(func):
-    @wraps(func)
-    def wrapper(cls, moves):
-        pool = Pool()
-        InvoiceLine = pool.get('account.invoice.line')
-        to_save = []
-        move2line = {}
-        for move in moves:
-            if not move.consignment_invoice_lines:
-                lines = move.get_invoice_lines_consignment()
-                if lines:
-                    to_save.extend(lines)
-                    move2line[move] = lines[0]
-        if to_save:
-            InvoiceLine.save(to_save)
-            for move, line in move2line.items():
-                if not move.origin:
-                    move.origin = line
-                if move.unit_price is None:
-                    move.unit_price = line.unit_price
-                    move.currency = line.currency
-            cls.save(list(move2line.keys()))
-        return func(cls, moves)
-    return wrapper
+def set_origin_consignment(state):
+    def decorator(func):
+        @wraps(func)
+        def wrapper(cls, moves):
+            pool = Pool()
+            InvoiceLine = pool.get('account.invoice.line')
+            to_save = []
+            move2line = {}
+            for move in moves:
+                if not move.consignment_invoice_lines:
+                    lines = move.get_invoice_lines_consignment()
+                    if lines:
+                        to_save.extend(lines)
+                        move2line[move] = lines[0]
+            if to_save:
+                InvoiceLine.save(to_save)
+                for move, line in move2line.items():
+                    move.state = state
+                    if not move.origin:
+                        move.origin = line
+                    if (move.on_change_with_unit_price_required()
+                            and move.unit_price is None):
+                        move.unit_price = line.unit_price
+                        move.currency = line.currency
+                cls.save(list(move2line.keys()))
+            return func(cls, moves)
+        return wrapper
+    return decorator
 
 
-def unset_origin_consignment(func):
-    @wraps(func)
-    def wrapper(cls, moves):
-        pool = Pool()
-        InvoiceLine = pool.get('account.invoice.line')
-        lines, to_save = [], []
-        for move in moves:
-            for invoice_line in move.consignment_invoice_lines:
-                lines.append(invoice_line)
-                if move.origin == move:
-                    move.origin = None
-                to_save.append(move)
-        if lines:
-            InvoiceLine.delete(lines)
-            cls.save(to_save)
-        return func(cls, moves)
-    return wrapper
+def unset_origin_consignment(state):
+    def decorator(func):
+        @wraps(func)
+        def wrapper(cls, moves):
+            pool = Pool()
+            InvoiceLine = pool.get('account.invoice.line')
+            lines, to_save = [], set()
+            for move in moves:
+                move.state = state
+                for invoice_line in move.consignment_invoice_lines:
+                    lines.append(invoice_line)
+                    if move.origin == move:
+                        move.origin = None
+                    to_save.add(move)
+                if (not move.on_change_with_unit_price_required()
+                        and (move.unit_price or move.currency)):
+                    move.unit_price = None
+                    move.currency = None
+                    to_save.add(move)
+            if lines:
+                InvoiceLine.delete(lines)
+            if to_save:
+                cls.save(list(to_save))
+            return func(cls, moves)
+        return wrapper
+    return decorator
 
 
 class Move(metaclass=PoolMeta):
@@ -231,28 +244,28 @@ class Move(metaclass=PoolMeta):
     @classmethod
     @ModelView.button
     @Workflow.transition('draft')
-    @unset_origin_consignment
+    @unset_origin_consignment('draft')
     def draft(cls, moves):
         super(Move, cls).draft(moves)
 
     @classmethod
     @ModelView.button
     @Workflow.transition('assigned')
-    @set_origin_consignment
+    @set_origin_consignment('assigned')
     def assign(cls, moves):
         super(Move, cls).assign(moves)
 
     @classmethod
     @ModelView.button
     @Workflow.transition('done')
-    @set_origin_consignment
+    @set_origin_consignment('done')
     def do(cls, moves):
         super(Move, cls).do(moves)
 
     @classmethod
     @ModelView.button
     @Workflow.transition('cancelled')
-    @unset_origin_consignment
+    @unset_origin_consignment('cancelled')
     def cancel(cls, moves):
         super(Move, cls).cancel(moves)
 
@@ -260,6 +273,30 @@ class Move(metaclass=PoolMeta):
     def copy(cls, moves, default=None):
         pool = Pool()
         InvoiceLine = pool.get('account.invoice.line')
+
+        default = default.copy() if default is not None else {}
+        consigment_moves = {
+            m.id for m in moves if isinstance(m.origin, InvoiceLine)}
+
+        def consigment_moves_cleared(name, default):
+            default = default.copy()
+
+            def default_value(data):
+                if data['id'] in consigment_moves:
+                    return None
+                elif name in default:
+                    if callable(default[name]):
+                        return default[name](data)
+                    else:
+                        return default[name]
+                else:
+                    return data.get(name)
+            return default_value
+
+        default['origin'] = consigment_moves_cleared('origin', default)
+        default['unit_price'] = consigment_moves_cleared('unit_price', default)
+        default['currency'] = consigment_moves_cleared('currency', default)
+
         moves = super(Move, cls).copy(moves, default=default)
         if not Transaction().context.get('_stock_move_split'):
             to_save = []

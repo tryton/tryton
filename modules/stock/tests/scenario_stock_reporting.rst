@@ -147,8 +147,6 @@ Create an internal shipment::
     >>> move.from_location = storage_loc
     >>> move.to_location = lost_loc
     >>> move.company = company
-    >>> move.unit_price = Decimal('1')
-    >>> move.currency = company.currency
     >>> shipment_internal.save()
     >>> shipment_internal.click('wait')
     >>> shipment_internal.click('assign_try')
