@@ -384,11 +384,15 @@ class Payment(Workflow, ModelSQL, ModelView):
     def __setup__(cls):
         super(Payment, cls).__setup__()
         t = cls.__table__()
-        cls._sql_indexes.add(
-            Index(
-                t, (t.state, Index.Equality(cardinality='low')),
-                where=t.state.in_([
-                        'draft', 'submitted', 'approved', 'processing'])))
+        cls._sql_indexes.update({
+                Index(
+                    t, (t.state, Index.Equality(cardinality='low')),
+                    where=t.state.in_([
+                            'draft', 'submitted', 'approved', 'processing'])),
+                Index(
+                    t, (t.line, Index.Equality()),
+                    where=t.state != 'failed'),
+                })
         cls._order.insert(0, ('date', 'DESC'))
         cls._transitions |= set((
                 ('draft', 'submitted'),
