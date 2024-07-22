@@ -1,11 +1,14 @@
 Stock Lot Module
 ################
 
-The stock lot module defines lot of products.
+The *Stock Lot Module* allows specific quantities of products to be managed
+separately.
+This includes providing traceability for these batches of stock and keeping track
+of where the stock is and how much is available.
 
-Lot
-***
 
-A lot is by default just a number to tag moves.
-It is possible to define per product when the lot is required by selecting the
-type of location involved in the move.
+.. toctree::
+   :maxdepth: 2
+
+   design
+   releases
