@@ -127,7 +127,7 @@ class Pool(object):
         with cls._lock:
             return list(cls._pools.keys())
 
-    def init(self, update=None, lang=None, activatedeps=False, indexes=True):
+    def init(self, update=None, lang=None, activatedeps=False, indexes=None):
         '''
         Init pool
         Set update to proceed to update
