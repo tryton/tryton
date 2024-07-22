@@ -11,7 +11,7 @@ from sql.conditionals import Case, Coalesce
 from sql.functions import Abs
 
 from trytond.i18n import gettext
-from trytond.model import ModelSQL, ModelView, fields
+from trytond.model import Index, ModelSQL, ModelView, fields
 from trytond.modules.account.exceptions import (
     CancelWarning, DelegateLineWarning, GroupLineWarning,
     RescheduleLineWarning)
@@ -19,7 +19,8 @@ from trytond.modules.company.model import CompanyValueMixin
 from trytond.modules.currency.fields import Monetary
 from trytond.pool import Pool, PoolMeta
 from trytond.pyson import Bool, Eval, Id, If
-from trytond.transaction import Transaction, check_access
+from trytond.tools import grouped_slice, reduce_ids
+from trytond.transaction import Transaction, check_access, without_check_access
 from trytond.wizard import (
     Button, StateAction, StateTransition, StateView, Wizard)
 
@@ -27,15 +28,30 @@ from .exceptions import BlockedWarning, GroupWarning
 from .payment import KINDS
 
 
+def _payment_amount_expression(table):
+    return (Case(
+            (table.second_currency == Null,
+                Abs(table.credit - table.debit)),
+            else_=Abs(table.amount_second_currency))
+        - Coalesce(table.payment_amount_cache, 0))
+
+
 class MoveLine(metaclass=PoolMeta):
     __name__ = 'account.move.line'
+
     payment_amount = fields.Function(Monetary(
             "Amount to Pay",
             currency='payment_currency', digits='payment_currency',
             states={
                 'invisible': ~Eval('payment_kind'),
                 }),
-        'get_payment_amount', searcher='search_payment_amount')
+        'get_payment_amount')
+    payment_amount_cache = Monetary(
+        "Amount to Pay Cache",
+        currency='payment_currency', digits='payment_currency', readonly=True,
+        states={
+            'invisible': ~Eval('payment_kind'),
+            })
     payment_currency = fields.Function(fields.Many2One(
             'currency.currency', "Payment Currency"),
         'get_payment_currency', searcher='search_payment_currency')
@@ -59,6 +75,11 @@ class MoveLine(metaclass=PoolMeta):
     @classmethod
     def __setup__(cls):
         super(MoveLine, cls).__setup__()
+        t = cls.__table__()
+        cls._sql_indexes.update({
+                Index(
+                    t, (_payment_amount_expression(t), Index.Range())),
+                })
         cls._buttons.update({
                 'pay': {
                     'invisible': (
@@ -82,52 +103,45 @@ class MoveLine(metaclass=PoolMeta):
                     },
                 })
         cls._check_modify_exclude.update(
-            ['payment_blocked', 'payment_direct_debit'])
+            ['payment_blocked', 'payment_direct_debit',
+                'payment_amount_cache'])
+
+    @classmethod
+    def __register__(cls, module):
+        table_h = cls.__table_handler__(module)
+        set_payment_amount = not table_h.column_exist('payment_amount')
+
+        super().__register__(module)
+
+        # Migration from 7.2: store payment_amount
+        if set_payment_amount:
+            cls.set_payment_amount()
 
     @classmethod
     def default_payment_direct_debit(cls):
         return False
 
-    @classmethod
-    def get_payment_amount(cls, lines, name):
-        amounts = {}
-        for line in lines:
-            if (not line.account.type.payable
-                    and not line.account.type.receivable):
-                amounts[line.id] = None
-                continue
-            if line.second_currency:
-                amount = abs(line.amount_second_currency)
+    def get_payment_amount(self, name):
+        if self.account.type.payable or self.account.type.receivable:
+            if self.second_currency:
+                amount = abs(self.amount_second_currency)
             else:
-                amount = abs(line.credit - line.debit)
-
-            for payment in line.payments:
-                if payment.state != 'failed':
-                    amount -= payment.amount
-
-            amounts[line.id] = amount
-        return amounts
+                amount = abs(self.credit - self.debit)
+            if self.payment_amount_cache:
+                amount -= self.payment_amount_cache
+        else:
+            amount = None
+        return amount
 
     @classmethod
-    def search_payment_amount(cls, name, clause):
+    def domain_payment_amount(cls, domain, tables):
         pool = Pool()
-        Payment = pool.get('account.payment')
         Account = pool.get('account.account')
         AccountType = pool.get('account.account.type')
-        _, operator, value = clause
-        Operator = fields.SQL_OPERATORS[operator]
-        table = cls.__table__()
-        payment = Payment.__table__()
         account = Account.__table__()
         account_type = AccountType.__table__()
 
-        payment_amount = Sum(Coalesce(payment.amount, 0))
-        main_amount = Abs(table.credit - table.debit) - payment_amount
-        second_amount = Abs(table.amount_second_currency) - payment_amount
-        amount = Case((table.second_currency == Null, main_amount),
-            else_=second_amount)
-        value = cls.payment_amount._field.sql_cast(
-            cls.payment_amount.sql_format(value))
+        table, _ = tables[None]
 
         accounts = (account
             .join(account_type, condition=account.type == account_type.id)
@@ -135,15 +149,60 @@ class MoveLine(metaclass=PoolMeta):
                 account.id,
                 where=account_type.payable | account_type.receivable))
 
-        query = (table
-            .join(payment, type_='LEFT',
-            condition=(table.id == payment.line) & (payment.state != 'failed'))
-            .select(table.id,
-                where=table.account.in_(accounts),
-                group_by=(table.id, table.second_currency),
-                having=Operator(amount, value)
-                ))
-        return [('id', 'in', query)]
+        _, operator, operand = domain
+        Operator = fields.SQL_OPERATORS[operator]
+
+        payment_amount = _payment_amount_expression(table)
+
+        expression = Operator(payment_amount, operand)
+        expression &= table.account.in_(accounts)
+        return expression
+
+    @classmethod
+    def order_payment_amount(cls, tables):
+        table, _ = tables[None]
+        return [_payment_amount_expression(table)]
+
+    @classmethod
+    @without_check_access
+    def set_payment_amount(cls, lines=None):
+        pool = Pool()
+        Payment = pool.get('account.payment')
+        Account = pool.get('account.account')
+        AccountType = pool.get('account.account.type')
+
+        cursor = Transaction().connection.cursor()
+        table = cls.__table__()
+        payment = Payment.__table__()
+        account = Account.__table__()
+        account_type = AccountType.__table__()
+
+        accounts = (account
+            .join(account_type, condition=account.type == account_type.id)
+            .select(
+                account.id,
+                where=account_type.payable | account_type.receivable))
+
+        query = (table.update(
+                [table.payment_amount_cache],
+                [payment.select(
+                        Sum(Coalesce(payment.amount, 0)),
+                        where=(payment.line == table.id)
+                        & (payment.state != 'failed'))],
+                where=table.account.in_(accounts)))
+
+        if lines:
+            for sub_lines in grouped_slice(lines):
+                query.where = (
+                    table.account.in_(accounts)
+                    & reduce_ids(table.id, map(int, sub_lines)))
+                cursor.execute(*query)
+        else:
+            cursor.execute(*query)
+
+        if lines:
+            # clear cache
+            cls.write(lines, {})
 
     def get_payment_currency(self, name):
         if self.second_currency:
