@@ -19,8 +19,8 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.action.act_window" id="act_price_list_form">
             <field name="name">Price Lists</field>
             <field name="res_model">product.price_list</field>
-            <field name="domain"
-                eval="[('company', '=', Eval('company', -1))]" pyson="1"/>
+            <!-- Migration from 6.0: Force empty domain for multicompany-->
+            <field name="domain" eval="[]" pyson="1"/>
         </record>
         <record model="ir.action.act_window.view" id="act_price_list_form_view1">
             <field name="sequence" eval="10"/>
