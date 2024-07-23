@@ -10,7 +10,7 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
         <record model="ir.action.act_window" id="act_vat_customer_form">
-            <field name="name">Belgium VAT Customer</field>
+            <field name="name">Belgian VAT Customer</field>
             <field name="res_model">account.be.vat_customer</field>
             <field name="context_model">account.be.vat_customer.context</field>
         </record>
