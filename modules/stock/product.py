@@ -966,7 +966,10 @@ class ProductQuantitiesByWarehouseMove(ModelSQL, ModelView):
         warehouse = With('id', query=Location.search([
                     ('parent', 'child_of', [location_id]),
                     ], query=True, order=[]))
-        date_column = Coalesce(move.effective_date, move.planned_date)
+        date_column = Coalesce(
+            move.effective_date,
+            Case((move.state == 'assigned', today), else_=Null),
+            move.planned_date)
         quantity = Case(
             (move.to_location.in_(warehouse.select(warehouse.id)),
                 move.internal_quantity),
