@@ -18,8 +18,8 @@ be depreciated.
 
 .. note::
 
-   Most of the properties are filled automatically when a supplier invoice line
-   is set.
+   Most of the properties are filled in automatically when a supplier invoice
+   line is set.
 
 When the asset is run, lines are calculated for each date based on the frequency
 and the method for the period defined by the start and end dates.
