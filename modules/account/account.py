@@ -3008,8 +3008,6 @@ class AgedBalance(ModelSQL, ModelView):
 
         company_id = context.get('company')
         date = context.get('date')
-        with Transaction().set_context(date=None):
-            line_query, _ = MoveLine.query_get(line)
         kind = cls.get_kind(type_)
         debit_kind = (
             cls.get_kind(debit_type)
@@ -3063,8 +3061,7 @@ class AgedBalance(ModelSQL, ModelView):
                 & ((line.reconciliation == Null)
                     | (reconciliation.date > date))
                 & (move.date <= date)
-                & (account.company == company_id)
-                & line_query,
+                & (account.company == company_id),
                 group_by=(line.party, move.company))
 
     @classmethod
