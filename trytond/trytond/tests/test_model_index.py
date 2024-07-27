@@ -77,6 +77,19 @@ class ModelIndexTestCase(TestCase):
 
         self.assertNotEqual(index1, index2)
 
+    def test_index_inequality_usage_cardinality(self):
+        "Test Index inequality on usage cardinality"
+        table1 = Table('test')
+        index1 = Index(
+            table1,
+            (table1.name, Index.Equality(cardinality='low')))
+        table2 = Table('test')
+        index2 = Index(
+            table2,
+            (table2.name, Index.Equality(cardinality='high')))
+
+        self.assertNotEqual(index1, index2)
+
     def test_index_inequality_usage_option(self):
         "Test Index inequality on usage option"
         table1 = Table('test')

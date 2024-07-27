@@ -635,7 +635,8 @@ class HashTranslator(IndexMixin, IndexTranslatorInterface):
     @classmethod
     def score(cls, index):
         if (len(index.expressions) > 1
-                or index.expressions[0][1].__class__.__name__ != 'Equality'):
+                or index.expressions[0][1].__class__.__name__ != 'Equality'
+                or index.expressions[0][1].cardinality != 'high'):
             return 0
         if index.options.get('include'):
             return 0

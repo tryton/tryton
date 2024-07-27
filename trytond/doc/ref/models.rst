@@ -798,23 +798,24 @@ Available options are:
 
 Apply unaccent function if the database supports it.
 
-.. attribute:: Index.Usage(\*\*options)
+.. attribute:: Index.Usage([cardinality[, \*\*options]])
 
 Represent a usage of a SQL expression.
+Available cardinality is ``low``, ``normal`` (default) and ``high``.
 Available options are:
 
    * ``collation``: the name of the collation
    * ``order``: the sort order
 
-.. attribute:: Index.Equality(\*\*options)
+.. attribute:: Index.Equality([cardinality[, \*\*options]])
 
 Represent an equality usage.
 
-.. attribute:: Index.Range(\*\*options)
+.. attribute:: Index.Range([cardinality[, \*\*options]])
 
 Represent an range usage.
 
-.. attribute:: Index.Similarity(\*\*options)
+.. attribute:: Index.Similarity([cardinality[, \*\*options]])
 
 Represent a similar usage only for text.
 Additional options are available:

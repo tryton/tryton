@@ -1,3 +1,4 @@
+* Add cardinality option to Index Usage
 * Allow configuring TinyMCE license key
 * Add tools to apply types to SQLite select queries
 * Compress RPC responses

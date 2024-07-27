@@ -232,9 +232,11 @@ class Index:
             return self.expression.params
 
     class Usage:
-        __slots__ = ('options',)
+        __slots__ = ('options', 'cardinality')
 
-        def __init__(self, **options):
+        def __init__(self, cardinality='normal', **options):
+            assert cardinality in {'low', 'normal', 'high'}
+            self.cardinality = cardinality
             self.options = options
 
         def __hash__(self):
@@ -242,6 +244,7 @@ class Index:
 
         def __eq__(self, other):
             return (self.__class__ == other.__class__
+                and self.cardinality == other.cardinality
                 and self.options == other.options)
 
     class Equality(Usage):
