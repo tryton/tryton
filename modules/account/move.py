@@ -1649,6 +1649,12 @@ class Line(DescriptionOriginMixin, MoveLineMixin, ModelSQL, ModelView):
             account = writeoff.debit_account
         else:
             account = writeoff.credit_account
+        if account == reconcile_account:
+            raise ReconciliationError(gettext(
+                    'account.msg_reconciliation_write_off_same_account',
+                    write_off=writeoff.rec_name,
+                    account=account.rec_name))
+
         journal = writeoff.journal
 
         if currency != company.currency:

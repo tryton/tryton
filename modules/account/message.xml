@@ -181,6 +181,9 @@ You may need to cancel its move "%(move)s".</field>
         <record model="ir.message" id="msg_reconciliation_write_off_missing">
             <field name="text">To reconcile lines with "%(amount)s" write-off, you must select a write-off method.</field>
         </record>
+        <record model="ir.message" id="msg_reconciliation_write_off_same_account">
+            <field name="text">You cannot reconcile lines using the write-off "%(write_off)s" with the same "%(account)s".</field>
+        </record>
         <record model="ir.message" id="msg_reconciliation_currency_exchange_journal_missing">
             <field name="text">To reconcile lines, you must define a currency exchange journal for "%(company)s".</field>
         </record>
