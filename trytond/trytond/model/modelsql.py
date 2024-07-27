@@ -2042,6 +2042,12 @@ class ModelSQL(ModelStorage):
 
     @classmethod
     def _update_mptt(cls, field_names, list_ids, values=None):
+        # The threshold is based on comparing the cost of each method using a
+        # cost of 1 for a select query, a cost of x for a query update x rows
+        # and _update_tree update half of the rows on average.
+        # With n = len(ids) and C = cls.estimated_count(), the costs are:
+        # - _update_tree: n (2 + 2 * n / 2) -> 2n (1 + n / 2)
+        # - _rebuild_tree: 2 * C
         for field_name, ids in zip(field_names, list_ids):
             field = cls._fields[field_name]
             if (values is not None
@@ -2050,7 +2056,7 @@ class ModelSQL(ModelStorage):
                     'You can not update fields: "%s", "%s"' %
                     (field.left, field.right))
 
-            if len(ids) < max(cls.estimated_count() / 4, 4):
+            if len(ids) * (1 + len(ids) / 2) < cls.estimated_count():
                 for id_ in ids:
                     cls._update_tree(id_, field_name,
                         field.left, field.right)
