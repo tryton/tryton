@@ -136,7 +136,7 @@ class ProductAssociationRule(ModelSQL, ModelView):
                     (t.conviction, Index.Range(order='ASC'))),
                 Index(
                     t,
-                    (t.id, Index.Range()),
+                    (t.id, Index.Range(cardinality='high')),
                     (t.lift, Index.Range(order='DESC'))),
                 })
 

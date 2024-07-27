@@ -80,8 +80,8 @@ class Email(DeactivableMixin, ModelSQL, ModelView):
             ]
         cls._sql_indexes.add(Index(
                 t,
-                (t.list_, Index.Equality()),
-                (t.email, Index.Equality())))
+                (t.list_, Index.Range()),
+                (t.email, Index.Equality(cardinality='high'))))
 
     @classmethod
     def default_email_token(cls, nbytes=None):
@@ -375,7 +375,7 @@ class Message(Workflow, ModelSQL, ModelView):
         t = cls.__table__()
         cls._sql_indexes.add(
             Index(
-                t, (t.state, Index.Equality()),
+                t, (t.state, Index.Equality(cardinality='low')),
                 where=t.state.in_(['draft', 'sending'])))
         cls._transitions |= set([
                 ('draft', 'sending'),

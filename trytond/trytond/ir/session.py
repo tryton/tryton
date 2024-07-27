@@ -28,13 +28,13 @@ class Session(ModelSQL):
         cls.__rpc__ = {}
         cls._sql_indexes.update({
                 Index(table,
-                    (table.key, Index.Equality()),
+                    (table.key, Index.Equality(cardinality='high')),
                     (table.create_uid, Index.Equality())),
                 Index(table,
-                    (table.key, Index.Equality()),
+                    (table.key, Index.Equality(cardinality='high')),
                     (table.create_date, Index.Equality())),
                 Index(table,
-                    (table.key, Index.Equality()),
+                    (table.key, Index.Equality(cardinality='high')),
                     (table.write_date, Index.Equality())),
                 })
 

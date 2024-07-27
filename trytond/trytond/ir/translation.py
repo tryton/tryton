@@ -98,24 +98,24 @@ class Translation(
                     table, (Index.Unaccent(table.value), Index.Similarity())),
                 Index(
                     table,
-                    (table.type, Index.Equality()),
+                    (table.type, Index.Equality(cardinality='low')),
                     (table.name, Index.Equality()),
-                    (table.lang, Index.Equality()),
+                    (table.lang, Index.Equality(cardinality='low')),
                     (table.res_id, Index.Range()),
-                    (table.fuzzy, Index.Equality()),
+                    (table.fuzzy, Index.Equality(cardinality='low')),
                     (Index.Unaccent(table.value), Index.Similarity())),
                 Index(
                     table,
-                    (table.type, Index.Equality()),
+                    (table.type, Index.Equality(cardinality='low')),
                     (table.name, Index.Equality()),
-                    (table.lang, Index.Equality()),
-                    (table.fuzzy, Index.Equality())),
+                    (table.lang, Index.Equality(cardinality='low')),
+                    (table.fuzzy, Index.Equality(cardinality='low'))),
                 Index(
                     table,
-                    (table.res_id, Index.Equality()),
+                    (table.res_id, Index.Range()),
                     (table.name, Index.Equality()),
-                    (table.lang, Index.Equality()),
-                    (table.type, Index.Equality())),
+                    (table.lang, Index.Equality(cardinality='low')),
+                    (table.type, Index.Equality(cardinality='low'))),
                 })
 
     @classmethod

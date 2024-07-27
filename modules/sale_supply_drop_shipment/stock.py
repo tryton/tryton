@@ -166,7 +166,7 @@ class ShipmentDrop(
         t = cls.__table__()
         cls._sql_indexes.update({
                 Index(
-                    t, (t.state, Index.Equality()),
+                    t, (t.state, Index.Equality(cardinality='low')),
                     where=t.state.in_(['draft', 'waiting', 'shipped'])),
                 })
         cls._order = [

@@ -196,7 +196,7 @@ class BlanketAgreement(Workflow, ModelSQL, ModelView):
         cls._sql_indexes.update({
                 Index(t, (t.reference, Index.Similarity())),
                 Index(
-                    t, (t.state, Index.Equality()),
+                    t, (t.state, Index.Equality(cardinality='low')),
                     where=t.state.in_(['draft', 'running'])),
                 })
         cls._order = [

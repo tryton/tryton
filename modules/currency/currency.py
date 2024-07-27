@@ -288,7 +288,7 @@ class CurrencyRate(ModelSQL, ModelView):
         cls._sql_indexes.add(
             Index(
                 t,
-                (t.currency, Index.Equality()),
+                (t.currency, Index.Range()),
                 (t.date, Index.Range()),
                 order='DESC'))
         cls._order.insert(0, ('date', 'DESC'))

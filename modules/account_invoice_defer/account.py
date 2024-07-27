@@ -131,7 +131,7 @@ class InvoiceDeferred(Workflow, ModelSQL, ModelView):
             ]
         cls._sql_indexes.add(
             Index(
-                table, (table.state, Index.Equality()),
+                table, (table.state, Index.Equality(cardinality='low')),
                 where=table.state.in_(['draft', 'running'])))
         cls.journal.domain = [
             If(Eval('type') == 'out',

@@ -72,8 +72,8 @@ class Relation(ModelSQL):
         if not callable(cls.table_query):
             t = cls.__table__()
             cls._sql_indexes.update({
-                    Index(t, (t.from_, Index.Equality())),
-                    Index(t, (t.to, Index.Equality())),
+                    Index(t, (t.from_, Index.Range())),
+                    Index(t, (t.to, Index.Range())),
                     })
 
     def get_active(self, name):

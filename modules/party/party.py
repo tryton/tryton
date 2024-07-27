@@ -102,8 +102,8 @@ class Party(
             ('code_uniq', Unique(t, t.code), 'party.msg_party_code_unique')
             ]
         cls._sql_indexes.update({
-                Index(t, (t.code, Index.Equality())),
-                Index(t, (t.code, Index.Similarity())),
+                Index(t, (t.code, Index.Equality(cardinality='high'))),
+                Index(t, (t.code, Index.Similarity(cardinality='high'))),
                 })
         cls._order.insert(0, ('distance', 'ASC NULLS LAST'))
         cls._order.insert(1, ('name', 'ASC'))

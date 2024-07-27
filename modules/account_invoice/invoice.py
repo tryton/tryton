@@ -360,24 +360,25 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin, InvoiceReportMixin):
                 Index(t, (t.reference, Index.Similarity())),
                 Index(
                     t,
-                    (t.state, Index.Equality()),
+                    (t.state, Index.Equality(cardinality='low')),
                     where=t.state.in_(['draft', 'validated', 'posted'])),
                 Index(t, (t.total_amount_cache, Index.Range())),
                 Index(
                     t,
-                    (t.total_amount_cache, Index.Equality()),
+                    (t.total_amount_cache, Index.Equality(cardinality='low')),
                     include=[t.id],
                     where=t.total_amount_cache == Null),
                 Index(t, (t.untaxed_amount_cache, Index.Range())),
                 Index(
                     t,
-                    (t.untaxed_amount_cache, Index.Equality()),
+                    (t.untaxed_amount_cache,
+                        Index.Equality(cardinality='low')),
                     include=[t.id],
                     where=t.untaxed_amount_cache == Null),
                 Index(t, (t.tax_amount_cache, Index.Range())),
                 Index(
                     t,
-                    (t.tax_amount_cache, Index.Equality()),
+                    (t.tax_amount_cache, Index.Equality(cardinality='low')),
                     include=[t.id],
                     where=t.tax_amount_cache == Null),
                 })

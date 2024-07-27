@@ -312,5 +312,5 @@ class TriggerLog(ModelSQL):
         cls._sql_indexes.add(
             Index(
                 table,
-                (table.trigger, Index.Equality()),
+                (table.trigger, Index.Range()),
                 (table.record_id, Index.Range())))

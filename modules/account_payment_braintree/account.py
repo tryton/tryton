@@ -585,7 +585,7 @@ class PaymentBraintreeRefund(Workflow, ModelSQL, ModelView):
         cls._sql_indexes.add(
             Index(
                 t,
-                (t.state, Index.Equality()),
+                (t.state, Index.Equality(cardinality='low')),
                 where=t.state.in_([
                         'draft', 'submitted', 'approved', 'processing'])))
         cls.__access__.add('payment')

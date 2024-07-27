@@ -446,7 +446,7 @@ class Product(
                 'product.msg_product_code_unique'),
             ]
         cls._sql_indexes.add(
-            Index(t, (t.code, Index.Similarity())))
+            Index(t, (t.code, Index.Similarity(cardinality='high'))))
 
         for attr in dir(Template):
             tfield = getattr(Template, attr)
@@ -819,8 +819,8 @@ class ProductIdentifier(sequence_ordered(), ModelSQL, ModelView):
         cls._sql_indexes.update({
                 Index(
                     t,
-                    (t.product, Index.Equality()),
-                    (t.code, Index.Similarity())),
+                    (t.product, Index.Range()),
+                    (t.code, Index.Similarity(cardinality='high'))),
                 })
 
     @property

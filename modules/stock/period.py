@@ -39,7 +39,7 @@ class Period(Workflow, ModelSQL, ModelView):
         cls._sql_indexes.add(
             Index(
                 t,
-                (t.company, Index.Equality()),
+                (t.company, Index.Range()),
                 (t.date, Index.Range(order='DESC')),
                 where=t.state == 'closed'))
         cls._transitions |= set((
@@ -189,11 +189,11 @@ class Cache(ModelSQL, ModelView):
         cls._sql_indexes.update({
                 Index(
                     t,
-                    (t.period, Index.Equality()),
+                    (t.period, Index.Range()),
                     (t.location, Index.Range()),
                     (t.product, Index.Range()),
                     include=[t.internal_quantity]),
                 Index(
                     t,
-                    (t.location, Index.Equality())),
+                    (t.location, Index.Range())),
                 })

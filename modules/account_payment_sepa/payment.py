@@ -582,7 +582,7 @@ class Mandate(Workflow, ModelSQL, ModelView):
             ]
         cls._sql_indexes.add(
             Index(
-                t, (t.state, Index.Equality()),
+                t, (t.state, Index.Equality(cardinality='low')),
                 where=t.state.in_(['draft', 'requested'])))
 
     @classmethod
@@ -834,7 +834,7 @@ class Message(Workflow, ModelSQL, ModelView):
         t = cls.__table__()
         cls._sql_indexes.add(
             Index(
-                t, (t.state, Index.Equality()),
+                t, (t.state, Index.Equality(cardinality='low')),
                 where=t.state.in_(['draft', 'waiting'])))
         cls._transitions |= {
             ('draft', 'waiting'),

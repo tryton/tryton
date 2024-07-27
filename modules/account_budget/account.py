@@ -169,8 +169,8 @@ class BudgetLineMixin(
         cls._sql_indexes.add(
             Index(
                 t,
-                (t.left, Index.Range()),
-                (t.right, Index.Range())))
+                (t.left, Index.Range(cardinality='high')),
+                (t.right, Index.Range(cardinality='high'))))
         cls.__access__.add('budget')
 
     @classmethod

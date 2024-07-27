@@ -46,7 +46,7 @@ class Line(ModelSQL, ModelView):
                 'account.msg_line_debit_credit'),
             ]
         cls._sql_indexes.update({
-                Index(t, (t.account, Index.Equality())),
+                Index(t, (t.account, Index.Range())),
                 Index(t, (t.date, Index.Range())),
                 })
         cls._order.insert(0, ('date', 'ASC'))

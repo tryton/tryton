@@ -273,7 +273,7 @@ class Type(
                 # Index for receivable/payable balance
                 Index(
                     table,
-                    (table.id, Index.Range()),
+                    (table.id, Index.Range(cardinality='high')),
                     where=table.receivable | table.payable),
                 })
 
@@ -990,8 +990,8 @@ class Account(
         cls._sql_indexes.add(
             Index(
                 table,
-                (table.left, Index.Range()),
-                (table.right, Index.Range())))
+                (table.left, Index.Range(cardinality='high')),
+                (table.right, Index.Range(cardinality='high'))))
 
     @classmethod
     def __register__(cls, module_name):
@@ -1704,8 +1704,8 @@ class AccountDeferral(ModelSQL, ModelView):
         cls._sql_indexes.add(
             Index(
                 t,
-                (t.fiscalyear, Index.Equality()),
-                (t.account, Index.Equality())))
+                (t.fiscalyear, Index.Range()),
+                (t.account, Index.Range())))
 
     @classmethod
     def __register__(cls, module_name):

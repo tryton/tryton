@@ -141,7 +141,7 @@ class Complaint(Workflow, ModelSQL, ModelView):
                 Index(t, (t.reference, Index.Similarity())),
                 Index(
                     t,
-                    (t.state, Index.Equality()),
+                    (t.state, Index.Equality(cardinality='low')),
                     where=t.state.in_(['draft', 'waiting', 'approved'])),
                 })
         cls._order.insert(0, ('date', 'DESC'))

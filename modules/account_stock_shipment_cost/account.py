@@ -127,7 +127,10 @@ class ShipmentCost(Workflow, ModelSQL, ModelView):
         super().__setup__()
         t = cls.__table__()
         cls._sql_indexes.add(
-            Index(t, (t.state, Index.Equality()), where=t.state == 'draft'))
+            Index(
+                t,
+                (t.state, Index.Equality(cardinality='low')),
+                where=t.state == 'draft'))
         cls._order.insert(0, ('number', 'DESC'))
         cls._transitions |= set((
                 ('draft', 'posted'),

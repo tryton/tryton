@@ -386,7 +386,7 @@ class Payment(Workflow, ModelSQL, ModelView):
         t = cls.__table__()
         cls._sql_indexes.add(
             Index(
-                t, (t.state, Index.Equality()),
+                t, (t.state, Index.Equality(cardinality='low')),
                 where=t.state.in_([
                         'draft', 'submitted', 'approved', 'processing'])))
         cls._order.insert(0, ('date', 'DESC'))

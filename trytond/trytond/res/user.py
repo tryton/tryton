@@ -1136,16 +1136,16 @@ class UserApplication(Workflow, ModelSQL, ModelView):
 
         table = cls.__table__()
         cls._sql_indexes.update({
-                Index(table, (table.key, Index.Equality())),
+                Index(table, (table.key, Index.Equality(cardinality='high'))),
                 Index(
                     table,
                     (table.user, Index.Equality()),
-                    (table.state, Index.Equality())),
+                    (table.state, Index.Equality(cardinality='low'))),
                 Index(
                     table,
-                    (table.key, Index.Equality()),
-                    (table.application, Index.Equality()),
-                    (table.state, Index.Equality())),
+                    (table.key, Index.Equality(cardinality='high')),
+                    (table.application, Index.Equality(cardinality='low')),
+                    (table.state, Index.Equality(cardinality='low'))),
                 })
 
     @classmethod

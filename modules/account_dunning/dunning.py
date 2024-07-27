@@ -131,7 +131,7 @@ class Dunning(ModelSQL, ModelView):
         cls._sql_indexes.add(
             Index(
                 table,
-                (table.state, Index.Equality()),
+                (table.state, Index.Equality(cardinality='low')),
                 where=table.state.in_(['draft', 'waiting'])))
         cls._active_field = 'active'
         cls._buttons.update({

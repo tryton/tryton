@@ -451,7 +451,7 @@ class ShipmentIn(
         cls._sql_indexes.update({
                 Index(
                     t,
-                    (t.state, Index.Equality()),
+                    (t.state, Index.Equality(cardinality='low')),
                     where=t.state.in_(['draft', 'received'])),
                 })
         cls._order = [
@@ -856,7 +856,7 @@ class ShipmentInReturn(ShipmentAssignMixin, Workflow, ModelSQL, ModelView):
         cls._sql_indexes.update({
                 Index(
                     t,
-                    (t.state, Index.Equality()),
+                    (t.state, Index.Equality(cardinality='low')),
                     where=t.state.in_(['draft', 'waiting', 'assigned'])),
                 })
         cls._order = [
@@ -1275,7 +1275,7 @@ class ShipmentOut(
         cls._sql_indexes.update({
                 Index(
                     t,
-                    (t.state, Index.Equality()),
+                    (t.state, Index.Equality(cardinality='low')),
                     where=t.state.in_([
                             'draft', 'waiting', 'assigned',
                             'picked', 'packed', 'shipped'])),
@@ -1981,7 +1981,7 @@ class ShipmentOutReturn(
         cls._sql_indexes.update({
                 Index(
                     t,
-                    (t.state, Index.Equality()),
+                    (t.state, Index.Equality(cardinality='low')),
                     where=t.state.in_(['draft', 'received'])),
                 })
         cls._transitions |= set((
@@ -2460,7 +2460,7 @@ class ShipmentInternal(
         cls._sql_indexes.update({
                 Index(
                     t,
-                    (t.state, Index.Equality()),
+                    (t.state, Index.Equality(cardinality='low')),
                     where=t.state.in_([
                             'request', 'draft', 'waiting',
                             'assigned', 'shipped'])),

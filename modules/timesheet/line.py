@@ -80,23 +80,23 @@ class Line(ModelSQL, ModelView):
         cls._sql_indexes.update({
                 Index(
                     t,
-                    (t.date, Index.Equality()),
-                    (t.company, Index.Equality()),
-                    (t.employee, Index.Equality())),
+                    (t.date, Index.Range()),
+                    (t.company, Index.Range()),
+                    (t.employee, Index.Range())),
                 Index(
                     t,
                     (t.date, Index.Range()),
-                    (t.employee, Index.Equality())),
+                    (t.employee, Index.Range())),
                 Index(
                     t,
-                    (Extract('YEAR', t.date), Index.Equality()),
-                    (Extract('WEEK', t.date), Index.Equality()),
-                    (t.employee, Index.Equality())),
+                    (Extract('YEAR', t.date), Index.Range()),
+                    (Extract('WEEK', t.date), Index.Range()),
+                    (t.employee, Index.Range())),
                 Index(
                     t,
-                    (Extract('YEAR', t.date), Index.Equality()),
-                    (Extract('MONTH', t.date), Index.Equality()),
-                    (t.employee, Index.Equality())),
+                    (Extract('YEAR', t.date), Index.Range()),
+                    (Extract('MONTH', t.date), Index.Range()),
+                    (t.employee, Index.Range())),
                 })
 
     @staticmethod

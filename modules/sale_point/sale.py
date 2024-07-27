@@ -170,7 +170,7 @@ class POSSale(Workflow, ModelSQL, ModelView, TaxableMixin):
         t = cls.__table__()
         cls._sql_indexes.add(
             Index(
-                t, (t.state, Index.Equality()),
+                t, (t.state, Index.Equality(cardinality='low')),
                 where=t.state.in_(['open', 'done'])))
         cls._transitions |= {
             ('open', 'done'),
@@ -787,7 +787,10 @@ class POSCashSession(Workflow, ModelSQL, ModelView):
                 'sale_point.msg_cash_session_previous_unique'),
             ]
         cls._sql_indexes.add(
-            Index(t, (t.state, Index.Equality()), where=t.state == 'open'))
+            Index(
+                t,
+                (t.state, Index.Equality(cardinality='low')),
+                where=t.state == 'open'))
         cls._transitions |= {
             ('open', 'closed'),
             ('closed', 'open'),
@@ -1232,7 +1235,10 @@ class POSCashTransfer(Workflow, ModelSQL, ModelView):
         super().__setup__()
         t = cls.__table__()
         cls._sql_indexes.add(
-            Index(t, (t.state, Index.Equality()), where=t.state == 'draft'))
+            Index(
+                t,
+                (t.state, Index.Equality(cardinality='low')),
+                where=t.state == 'draft'))
         cls._transitions |= {
             ('draft', 'posted'),
             }

@@ -86,7 +86,7 @@ class Error(Workflow, ModelView, ModelSQL):
         cls._sql_indexes.add(
             Index(
                 table,
-                (table.state, Index.Equality()),
+                (table.state, Index.Equality(cardinality='low')),
                 where=table.state.in_(['open', 'processing'])))
         cls._transitions |= {
             ('open', 'processing'),

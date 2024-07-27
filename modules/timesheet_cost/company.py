@@ -90,7 +90,7 @@ class EmployeeCostPrice(ModelSQL, ModelView):
         cls._sql_indexes.add(
             Index(
                 t,
-                (t.employee, Index.Equality()),
+                (t.employee, Index.Range()),
                 (t.date, Index.Range(order='ASC'))))
         cls._order.insert(0, ('date', 'DESC'))
 

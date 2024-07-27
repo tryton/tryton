@@ -134,11 +134,11 @@ class Statement(Workflow, ModelSQL, ModelView):
         cls._sql_indexes.update({
                 Index(
                     t,
-                    (t.journal, Index.Equality()),
+                    (t.journal, Index.Range()),
                     (t.date, Index.Range(order='DESC'))),
                 Index(
                     t,
-                    (t.state, Index.Equality()),
+                    (t.state, Index.Equality(cardinality='low')),
                     where=t.state.in_(['draft', 'validated'])),
                 })
         cls._order[0] = ('id', 'DESC')

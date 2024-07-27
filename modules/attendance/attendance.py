@@ -182,7 +182,7 @@ class Period(Workflow, ModelSQL, ModelView):
             Index(
                 t,
                 (t.company, Index.Equality()),
-                (t.state, Index.Equality()),
+                (t.state, Index.Equality(cardinality='low')),
                 (t.ends_at, Index.Range(order='DESC'))))
         cls._transitions |= set((
                 ('draft', 'closed'),

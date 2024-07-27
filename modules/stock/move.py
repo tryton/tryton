@@ -404,7 +404,7 @@ class Move(Workflow, ModelSQL, ModelView):
                 Index(
                     t,
                     (t.company, Index.Equality()),
-                    (t.state, Index.Equality()),
+                    (t.state, Index.Equality(cardinality='low')),
                     where=t.state.in_(['staging', 'draft', 'assigned'])),
                 })
         cls._order[0] = ('id', 'DESC')

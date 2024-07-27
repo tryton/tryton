@@ -76,7 +76,7 @@ class QuantityIssue(
         t = cls.__table__()
         cls._sql_indexes.add(
             Index(
-                t, (t.state, Index.Equality()),
+                t, (t.state, Index.Equality(cardinality='low')),
                 where=t.state.in_(['open', 'processing'])))
         cls.priority.readonly = True
         cls._transitions |= {

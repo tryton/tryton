@@ -16,6 +16,6 @@ class PostalCode(metaclass=PoolMeta):
                 Index(
                     t,
                     (Index.Unaccent(t.city), Index.Similarity()),
-                    (t.country, Index.Equality()),
-                    (t.subdivision, Index.Equality())),
+                    (t.country, Index.Range()),
+                    (t.subdivision, Index.Range())),
                 })

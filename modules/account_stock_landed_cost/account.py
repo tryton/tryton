@@ -136,7 +136,10 @@ class LandedCost(Workflow, ModelSQL, ModelView, MatchMixin):
         super(LandedCost, cls).__setup__()
         t = cls.__table__()
         cls._sql_indexes.add(
-            Index(t, (t.state, Index.Equality()), where=t.state == 'draft'))
+            Index(
+                t,
+                (t.state, Index.Equality(cardinality='low')),
+                where=t.state == 'draft'))
         cls._order = [
             ('number', 'DESC'),
             ('id', 'DESC'),

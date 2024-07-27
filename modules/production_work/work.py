@@ -155,7 +155,7 @@ class Work(sequence_ordered(), ModelSQL, ModelView):
         t = cls.__table__()
         cls._sql_indexes.add(
             Index(
-                t, (t.state, Index.Equality()),
+                t, (t.state, Index.Equality(cardinality='low')),
                 where=t.state.in_(['request', 'draft', 'waiting', 'running'])))
         cls._buttons.update({
                 'start': {
@@ -348,7 +348,7 @@ class WorkCycle(Workflow, ModelSQL, ModelView):
         t = cls.__table__()
         cls._sql_indexes.add(
             Index(
-                t, (t.state, Index.Equality()),
+                t, (t.state, Index.Equality(cardinality='low')),
                 where=t.state.in_(['draft', 'running'])))
         cls._transitions |= set((
                 ('draft', 'running'),

@@ -208,7 +208,7 @@ class Asset(Workflow, ModelSQL, ModelView):
         cls._sql_indexes.add(
             Index(
                 table,
-                (table.state, Index.Equality()),
+                (table.state, Index.Equality(cardinality='low')),
                 where=table.state.in_(['draft', 'running'])))
         cls._transitions |= set((
                 ('draft', 'running'),

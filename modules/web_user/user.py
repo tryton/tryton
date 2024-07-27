@@ -18,7 +18,7 @@ try:
     import html2text
 except ImportError:
     html2text = None
-from sql import Literal
+from sql import Literal, Null
 from sql.conditionals import Coalesce
 from sql.functions import CurrentTimestamp
 from sql.operators import Equal
@@ -100,8 +100,12 @@ class User(avatar_mixin(100), DeactivableMixin, ModelSQL, ModelView):
                 'web_user.msg_user_email_unique'),
             ]
         cls._sql_indexes.update({
-                Index(table, (table.email, Index.Equality())),
-                Index(table, (table.email_token, Index.Equality())),
+                Index(
+                    table, (table.email, Index.Equality(cardinality='high'))),
+                Index(
+                    table,
+                    (table.email_token, Index.Equality(cardinality='high')),
+                    where=table.email_token != Null),
                 })
         cls._buttons.update({
                 'validate_email': {
@@ -461,7 +465,7 @@ class UserSession(ModelSQL):
                     table,
                     (Coalesce(table.write_date, table.create_date),
                         Index.Range())),
-                Index(table, (table.key, Index.Equality())),
+                Index(table, (table.key, Index.Equality(cardinality='high'))),
                 })
 
     @classmethod

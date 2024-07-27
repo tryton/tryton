@@ -297,20 +297,20 @@ class Sale(
         t = cls.__table__()
         cls._sql_indexes.update({
                 Index(t, (t.reference, Index.Similarity())),
-                Index(t, (t.party, Index.Equality())),
+                Index(t, (t.party, Index.Range())),
                 Index(
                     t,
-                    (t.state, Index.Equality()),
+                    (t.state, Index.Equality(cardinality='low')),
                     where=t.state.in_([
                             'draft', 'quotation', 'confirmed', 'processing'])),
                 Index(
                     t,
-                    (t.invoice_state, Index.Equality()),
+                    (t.invoice_state, Index.Equality(cardinality='low')),
                     where=t.invoice_state.in_([
                             'none', 'waiting', 'exception'])),
                 Index(
                     t,
-                    (t.shipment_state, Index.Equality()),
+                    (t.shipment_state, Index.Equality(cardinality='low')),
                     where=t.shipment_state.in_([
                             'none', 'waiting', 'exception'])),
                 })

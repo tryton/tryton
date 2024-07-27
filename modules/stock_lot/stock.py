@@ -863,13 +863,13 @@ class PeriodCacheLot(ModelSQL, ModelView):
         cls._sql_indexes.update({
                 Index(
                     t,
-                    (t.period, Index.Equality()),
-                    (t.product, Index.Equality()),
-                    (t.lot, Index.Equality()),
+                    (t.period, Index.Range()),
+                    (t.product, Index.Range()),
+                    (t.lot, Index.Range()),
                     include=[t.internal_quantity]),
                 Index(
                     t,
-                    (t.location, Index.Equality())),
+                    (t.location, Index.Range())),
                 })
 
 

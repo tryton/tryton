@@ -166,7 +166,7 @@ class Rule(ModelSQL, ModelView):
         table = cls.__table__()
 
         cls._sql_indexes.add(
-            Index(table, (table.rule_group, Index.Equality())))
+            Index(table, (table.rule_group, Index.Range())))
 
     @classmethod
     def validate_fields(cls, rules, field_names):

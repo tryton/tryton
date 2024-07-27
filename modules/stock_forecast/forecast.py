@@ -71,7 +71,7 @@ class Forecast(Workflow, ModelSQL, ModelView):
         cls._sql_indexes.add(
             Index(
                 t,
-                (t.state, Index.Equality()),
+                (t.state, Index.Equality(cardinality='low')),
                 (t.to_date, Index.Range())))
         cls.create_date.select = True
         cls._order.insert(0, ('from_date', 'DESC'))

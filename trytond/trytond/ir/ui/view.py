@@ -116,11 +116,11 @@ class View(
         cls._sql_indexes.update({
                 Index(table,
                     (table.model, Index.Equality()),
-                    (table.inherit, Index.Equality())),
+                    (table.inherit, Index.Range())),
                 Index(
                     table,
-                    (table.id, Index.Equality()),
-                    (table.inherit, Index.Equality())),
+                    (table.id, Index.Range()),
+                    (table.inherit, Index.Range())),
                 })
 
     @staticmethod
@@ -469,7 +469,7 @@ class ViewTreeWidth(
         cls._sql_indexes.add(
             Index(
                 table,
-                (table.user, Index.Equality()),
+                (table.user, Index.Range()),
                 (table.model, Index.Equality()),
                 (table.field, Index.Equality())))
 
@@ -549,8 +549,8 @@ class ViewTreeOptional(ModelSQL, ModelView):
         cls._sql_indexes.add(
             Index(
                 table,
-                (table.user, Index.Equality()),
-                (table.view_id, Index.Equality())))
+                (table.user, Index.Range()),
+                (table.view_id, Index.Range())))
 
     @classmethod
     def validate_fields(cls, records, fields_names):
@@ -628,7 +628,7 @@ class ViewTreeState(ModelSQL, ModelView):
         cls._sql_indexes.add(
             Index(
                 table,
-                (table.user, Index.Equality()),
+                (table.user, Index.Range()),
                 (table.model, Index.Equality()),
                 (table.child_name, Index.Equality()),
                 (table.domain, Index.Equality())))

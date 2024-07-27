@@ -1290,9 +1290,9 @@ class CostPriceRevision(ModelSQL, ModifyCostPriceStart):
         cls._sql_indexes.add(
             Index(
                 t,
-                (t.product, Index.Equality()),
-                (t.template, Index.Equality()),
-                (t.company, Index.Equality())))
+                (t.product, Index.Range()),
+                (t.template, Index.Range()),
+                (t.company, Index.Range())))
         cls._order.insert(0, ('date', 'DESC'))
 
     @classmethod

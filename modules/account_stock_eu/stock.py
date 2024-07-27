@@ -104,8 +104,8 @@ class Move(metaclass=PoolMeta):
         cls._sql_indexes.add(
             Index(
                 t,
-                (t.intrastat_declaration, Index.Equality()),
-                (t.company, Index.Equality()),
+                (t.intrastat_declaration, Index.Range()),
+                (t.company, Index.Range()),
                 where=(t.intrastat_type != Null) & (t.state == 'done')))
 
     @fields.depends(

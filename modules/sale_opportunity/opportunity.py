@@ -159,13 +159,13 @@ class SaleOpportunity(
         t = cls.__table__()
         cls._sql_indexes.update({
                 Index(t, (t.reference, Index.Similarity())),
-                Index(t, (t.party, Index.Equality())),
+                Index(t, (t.party, Index.Range())),
                 Index(
                     t,
                     (t.start_date, Index.Range(order='DESC')),
                     (t.end_date, Index.Range(order='DESC'))),
                 Index(
-                    t, (t.state, Index.Equality()),
+                    t, (t.state, Index.Equality(cardinality='low')),
                     where=t.state.in_(['lead', 'opportunity'])),
                 })
         cls._order.insert(0, ('start_date', 'DESC'))

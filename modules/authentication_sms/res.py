@@ -67,7 +67,8 @@ class UserLoginSMSCode(ModelSQL):
     def __setup__(cls):
         super().__setup__()
         t = cls.__table__()
-        cls._sql_indexes.add(Index(t, (t.user_id, Index.Equality())))
+        cls._sql_indexes.add(Index(
+                t, (t.user_id, Index.Equality(cardinality='high'))))
 
     @classmethod
     def default_code(cls):

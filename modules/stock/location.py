@@ -189,8 +189,8 @@ class Location(DeactivableMixin, tree(), ModelSQL, ModelView):
                 Index(t, (t.code, Index.Similarity())),
                 Index(
                     t,
-                    (t.left, Index.Range()),
-                    (t.right, Index.Range())),
+                    (t.left, Index.Range(cardinality='high')),
+                    (t.right, Index.Range(cardinality='high'))),
                 })
         cls._order.insert(0, ('name', 'ASC'))
 

@@ -149,12 +149,12 @@ class Move(DescriptionOriginMixin, ModelSQL, ModelView):
                     readonly=False, instantiate=0, fresh_session=True),
                 })
         cls._sql_indexes.update({
-                Index(t, (t.period, Index.Equality())),
+                Index(t, (t.period, Index.Range())),
                 Index(t, (t.date, Index.Range()), (t.number, Index.Range())),
                 Index(
                     t,
-                    (t.journal, Index.Equality()),
-                    (t.period, Index.Equality())),
+                    (t.journal, Index.Range()),
+                    (t.period, Index.Range())),
                 })
 
     @classmethod
@@ -1072,26 +1072,26 @@ class Line(DescriptionOriginMixin, MoveLineMixin, ModelSQL, ModelView):
         cls._sql_indexes.update({
                 Index(
                     table,
-                    (table.account, Index.Equality()),
-                    (table.party, Index.Equality())),
-                Index(table, (table.reconciliation, Index.Equality())),
+                    (table.account, Index.Range()),
+                    (table.party, Index.Range())),
+                Index(table, (table.reconciliation, Index.Range())),
                 # Index for General Ledger
                 Index(
                     table,
-                    (table.move, Index.Equality()),
-                    (table.account, Index.Equality())),
+                    (table.move, Index.Range()),
+                    (table.account, Index.Range())),
                 # Index for account.account.party
                 Index(
                     table,
-                    (table.account, Index.Equality()),
-                    (table.party, Index.Equality()),
-                    (table.id, Index.Equality()),
+                    (table.account, Index.Range()),
+                    (table.party, Index.Range()),
+                    (table.id, Index.Range(cardinality='high')),
                     where=table.party != Null),
                 # Index for receivable/payable balance
                 Index(
                     table,
-                    (table.account, Index.Equality()),
-                    (table.party, Index.Equality()),
+                    (table.account, Index.Range()),
+                    (table.party, Index.Range()),
                     where=table.reconciliation == Null),
                 })
 

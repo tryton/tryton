@@ -138,7 +138,8 @@ class Scenario(
         t = cls.__table__()
         cls._sql_indexes.add(
             Index(
-                t, (t.state, Index.Equality()),
+                t,
+                (t.state, Index.Equality(cardinality='low')),
                 where=t.state.in_(['draft', 'running'])))
         cls._transitions |= set((
                 ('draft', 'running'),
@@ -917,7 +918,7 @@ class RecordActivity(Workflow, ModelSQL, ModelView):
         cls._sql_indexes.add(
             Index(
                 t,
-                (t.state, Index.Equality()),
+                (t.state, Index.Equality(cardinality='low')),
                 where=t.state.in_(['waiting'])))
         cls._transitions |= set((
                 ('waiting', 'done'),
