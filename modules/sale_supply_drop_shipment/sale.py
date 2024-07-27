@@ -113,9 +113,10 @@ class Line(metaclass=PoolMeta):
         request = super().get_purchase_request(product_quantities)
         if request and request.party:
             if self.product and self.product.type in ('goods', 'assets'):
+                pattern = self._get_purchase_request_product_supplier_pattern()
+                pattern['party'] = request.party.id
                 product_supplier = request.find_best_product_supplier(
-                    self.product, self.shipping_date,
-                    **self._get_purchase_request_product_supplier_pattern())
+                    self.product, self.shipping_date, **pattern)
                 if product_supplier and product_supplier.drop_shipment:
                     request.customer = (
                         self.sale.shipment_party or self.sale.party)
