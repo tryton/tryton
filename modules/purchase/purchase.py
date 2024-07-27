@@ -532,11 +532,14 @@ class Purchase(
             compute_taxes = True
         else:
             compute_taxes = False
-        # Sort cached first and re-instanciate to optimize cache management
-        purchases = sorted(purchases,
-            key=lambda p: p.state in cls._states_cached, reverse=True)
-        purchases = cls.browse(purchases)
+        # Browse separately not cached to limit number of lines read
+        cached, not_cached = [], []
         for purchase in purchases:
+            if purchase.state in cls._states_cached:
+                cached.append(purchase)
+            else:
+                not_cached.append(purchase)
+        for purchase in chain(cached, cls.browse(not_cached)):
             if (purchase.state in cls._states_cached
                     and purchase.untaxed_amount_cache is not None
                     and purchase.tax_amount_cache is not None

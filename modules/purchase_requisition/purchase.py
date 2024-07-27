@@ -259,11 +259,14 @@ class PurchaseRequisition(Workflow, ModelSQL, ModelView):
     def get_amount(cls, requisitions, name):
         total_amount = {}
 
-        # Sort cached first and re-instantiate to optimize cache management
-        requisitions = sorted(requisitions,
-            key=lambda r: r.state in cls._states_cached, reverse=True)
-        requisitions = cls.browse(requisitions)
+        # Browse separately not cached to limit number of lines read
+        cached, not_cached = [], []
         for requisition in requisitions:
+            if requisition.state in cls._states_cached:
+                cached.append(requisition)
+            else:
+                not_cached.append(requisition)
+        for requisition in chain(cached, cls.browse(not_cached)):
             if (requisition.state in cls._states_cached
                     and requisition.total_amount_cache is not None):
                 total_amount[requisition.id] = requisition.total_amount_cache

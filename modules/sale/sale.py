@@ -587,11 +587,14 @@ class Sale(
             compute_taxes = True
         else:
             compute_taxes = False
-        # Sort cached first and re-instanciate to optimize cache management
-        sales = sorted(sales, key=lambda s: s.state in cls._states_cached,
-            reverse=True)
-        sales = cls.browse(sales)
+        # Browse separately not cached to limit number of lines read
+        cached, not_cached = [], []
         for sale in sales:
+            if sale.state in cls._states_cached:
+                cached.append(sale)
+            else:
+                not_cached.append(sale)
+        for sale in chain(cached, cls.browse(not_cached)):
             if (sale.state in cls._states_cached
                     and sale.untaxed_amount_cache is not None
                     and sale.tax_amount_cache is not None
