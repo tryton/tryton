@@ -3126,7 +3126,7 @@ class InvoiceTax(sequence_ordered(), ModelSQL, ModelView):
         for invoice in Invoice.browse(list(invoice_ids)):
             if invoice.state != 'draft':
                 raise AccessError(
-                    gettext('account_invoice.msg_invoice_tax_create_draft',
+                    gettext('account_invoice.msg_invoice_tax_create',
                         invoice=invoice.rec_name))
         return super(InvoiceTax, cls).create(vlist)
 
