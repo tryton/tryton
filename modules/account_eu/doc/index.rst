@@ -1,7 +1,12 @@
-Account Europe Module
-#####################
+#######################
+European Account Module
+#######################
 
-The account_eu module implements common accounting requirements in Europe.
-It includes:
+The *European Account Module* adds common accounting requirements for European
+countries.
 
-    - EC Sales List (ESL)
+.. toctree::
+   :maxdepth: 2
+
+   design
+   releases
