@@ -20,4 +20,4 @@ turnover and VAT amount for a `Fiscal Year <account:model-account.fiscalyear>`.
       |Financial --> Reporting --> Belgian VAT Customer|__
 
       .. |Financial --> Reporting --> Belgian VAT Customer| replace:: :menuselection:`Financial --> Reporting --> Belgian VAT Customer`
-      __ https://demo.tryton.org/model/account.be.vat_customer;content_model=account.be.vat_customer.context
+      __ https://demo.tryton.org/model/account.be.vat_customer;context_model=account.be.vat_customer.context

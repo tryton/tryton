@@ -2,7 +2,7 @@
 Belgian Account Module
 ######################
 
-The *Account Belgian Module* defines the standard chart of accounts and reports
+The *Belgian Account Module* defines the standard chart of accounts and reports
 for Belgium.
 
 .. toctree::
