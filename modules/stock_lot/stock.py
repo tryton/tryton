@@ -196,6 +196,7 @@ class LotTrace(ModelSQL, ModelView):
     company = fields.Many2One('company.company', "Company")
     date = fields.Date("Date")
     shipment = fields.Reference("Shipment", 'get_shipments')
+    origin = fields.Reference("Origin", 'get_origins')
     document = fields.Function(
         fields.Reference("Document", 'get_documents'), 'get_document')
 
@@ -240,6 +241,7 @@ class LotTrace(ModelSQL, ModelView):
             move.company.as_('company'),
             move.effective_date.as_('date'),
             move.shipment.as_('shipment'),
+            move.origin.as_('origin'),
             ]
 
     def get_rec_name(self, name):
@@ -252,12 +254,27 @@ class LotTrace(ModelSQL, ModelView):
         return Move.get_shipment()
 
     @classmethod
+    def get_origins(cls):
+        pool = Pool()
+        Move = pool.get('stock.move')
+        return Move.get_origin()
+
+    @classmethod
     def get_documents(cls):
-        return cls.get_shipments()
+        pool = Pool()
+        Model = pool.get('ir.model')
+        return cls.get_shipments() + [
+            ('stock.inventory', Model.get_name('stock.inventory'))]
 
     def get_document(self, name):
+        pool = Pool()
+        InventoryLine = pool.get('stock.inventory.line')
+        document = None
         if self.shipment:
-            return str(self.shipment)
+            document = str(self.shipment)
+        elif isinstance(self.origin, InventoryLine):
+            document = str(self.origin.inventory)
+        return str(document) if document else None
 
     @classmethod
     def _is_trace_move(cls, move):
