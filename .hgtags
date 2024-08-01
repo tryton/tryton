@@ -9390,3 +9390,4 @@ a784727eee8c3a8850b938f23976783d55574c6e stock_package_shipping_ups-7.2.1
 3ec75e9c257ef5131dc7881c5eb2ee19e7c7eb22 account_stock_shipment_cost-7.2.2
 1bd497cbec1f8e658673b4bbbcaee2ed75e8a3a8 account_payment_stripe-7.2.2
 56bf6c128b331985e0576778b5fbe83caf31f62f account_payment-7.2.2
+0e98849f0e9b0146c0e13aec932fa7db3b1541f3 account_invoice-7.2.3
