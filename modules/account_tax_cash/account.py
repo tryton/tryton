@@ -272,7 +272,7 @@ class Invoice(metaclass=PoolMeta):
         for records, values in zip(actions, actions):
             if 'payment_lines' in values:
                 invoices.extend(records)
-        invoices = cls.browse(sum(args[0:None:2], []))
+        invoices = cls.browse(invoices)
         cls._update_tax_cash_basis(invoices)
 
     @classmethod
