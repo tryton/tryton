@@ -169,23 +169,23 @@ class TaxLine(metaclass=PoolMeta):
             line_no_periods = [l for l in lines if not l.period]
             if line_no_periods:
                 line_no_period, = line_no_periods
-                to_save.append(line_no_period)
             else:
                 line_no_period = None
             total = sum(l.amount for l in lines)
-            amount = company.currency.round(total * ratio)
-            if line_no_period and line_no_period.amount == amount:
-                line_no_period.period = period
-            else:
-                line = cls(**key)
-                if line_no_period:
-                    line.amount = amount - total + line_no_period.amount
-                    line_no_period.amount -= line.amount
+            amount = total * ratio - sum(l.amount for l in lines if l.period)
+            amount = company.currency.round(amount)
+            if amount:
+                if line_no_period and line_no_period.amount == amount:
+                    line_no_period.period = period
                 else:
-                    line.amount = amount - total
-                line.period = period
-                if line.amount:
-                    to_save.append(line)
+                    line = cls(**key, amount=amount)
+                    if line_no_period:
+                        line_no_period.amount -= line.amount
+                    line.period = period
+                    if line.amount:
+                        to_save.append(line)
+                if line_no_period:
+                    to_save.append(line_no_period)
         cls.save(to_save)
 
 
