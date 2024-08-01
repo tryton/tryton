@@ -4,9 +4,11 @@ from collections import defaultdict
 from itertools import groupby
 
 from sql import Literal, Null
+from sql.operators import Equal
 
 from trytond.i18n import gettext
-from trytond.model import ModelSQL, ModelView, Workflow, dualmethod, fields
+from trytond.model import (
+    Exclude, ModelSQL, ModelView, Workflow, dualmethod, fields)
 from trytond.pool import Pool, PoolMeta
 from trytond.pyson import Eval
 from trytond.tools import sortable_values
@@ -132,6 +134,24 @@ class TaxLine(metaclass=PoolMeta):
         states={
             'invisible': ~Eval('on_cash_basis', False),
             })
+
+    @classmethod
+    def __setup__(cls):
+        super().__setup__()
+
+        t = cls.__table__()
+        cls._sql_constraints = [
+            ('tax_type_move_line_cash_basis_no_period',
+                Exclude(
+                    t,
+                    (t.tax, Equal),
+                    (t.type, Equal),
+                    (t.move_line, Equal),
+                    where=(t.on_cash_basis == Literal(True))
+                    & (t.period == Null)),
+                'account_tax_cash.'
+                'msg_tax_type_move_line_cash_basis_no_period_unique'),
+            ]
 
     @classmethod
     def default_on_cash_basis(cls):

@@ -6,5 +6,8 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.message" id="msg_close_period_line_payment">
             <field name="text">To close period "%(period)s" you must link all payable/receivable lines to invoices.</field>
         </record>
+        <record model="ir.message" id="msg_tax_type_move_line_cash_basis_no_period_unique">
+            <field name="text">Only one tax line on cash basis can be without period per move line.</field>
+        </record>
     </data>
 </tryton>
