@@ -114,6 +114,12 @@ class InvoiceLine(metaclass=PoolMeta):
             PurchaseLine = pool.get('purchase.line')
         except KeyError:
             PurchaseLine = None
+        try:
+            Move = pool.get('stock.move')
+            ShipmentOut = pool.get('stock.shipment.out')
+            ShipmentOutReturn = pool.get('stock.shipment.out.return')
+        except KeyError:
+            Move = ShipmentOut = ShipmentOutReturn = None
 
         pattern = super(InvoiceLine, self)._get_tax_rule_pattern()
 
@@ -138,6 +144,28 @@ class InvoiceLine(metaclass=PoolMeta):
             if warehouse and warehouse.address:
                 to_country = warehouse.address.country
                 to_subdivision = warehouse.address.subdivision
+        elif (Move
+                and isinstance(self.origin, Move)
+                and self.origin.id >= 0):
+            move = self.origin
+            if move.from_location.warehouse:
+                warehouse_address = move.from_location.warehouse.address
+                if warehouse_address:
+                    from_country = warehouse_address.country
+                    from_subdivision = warehouse_address.subdivision
+            elif isinstance(move.origin, ShipmentOutReturn):
+                delivery_address = move.origin.delivery_address
+                from_country = delivery_address.country
+                from_subdivision = delivery_address.subdivision
+            if move.to_location.warehouse:
+                warehouse_address = move.to_location.warehouse.address
+                if warehouse_address:
+                    to_country = warehouse_address.country
+                    to_subdivision = warehouse_address.subdivision
+            elif isinstance(move.origin, ShipmentOut):
+                delivery_address = move.origin.delivery_address
+                to_country = delivery_address.country
+                to_subdivision = delivery_address.subdivision
 
         pattern['from_country'] = from_country.id if from_country else None
         pattern['from_subdivision'] = (

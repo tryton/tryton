@@ -3,7 +3,7 @@
 
 from trytond.pool import Pool
 
-from . import account, purchase, sale, stock
+from . import account, purchase, sale
 
 
 def register():
@@ -26,7 +26,3 @@ def register():
         purchase.Line,
         module='account_tax_rule_country', type_='model',
         depends=['purchase'])
-    Pool.register(
-        stock.Move,
-        module='account_tax_rule_country', type_='model',
-        depends=['stock'])
