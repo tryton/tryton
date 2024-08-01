@@ -9388,3 +9388,4 @@ d7dcbf3d455fe3b0719ebec334e2103031dde742 sao-7.2.5
 a784727eee8c3a8850b938f23976783d55574c6e stock_package_shipping_ups-7.2.1
 6d8048b1a8022bf397671fbb18a7bd74a5ce5caa stock_package_shipping_sendcloud-7.2.2
 3ec75e9c257ef5131dc7881c5eb2ee19e7c7eb22 account_stock_shipment_cost-7.2.2
+1bd497cbec1f8e658673b4bbbcaee2ed75e8a3a8 account_payment_stripe-7.2.2
