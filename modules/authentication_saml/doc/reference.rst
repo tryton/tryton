@@ -1,6 +1,6 @@
-******
-Design
-******
+*************
+API Reference
+*************
 
 The *Authentication SAML Module* introduces some new routes:
 

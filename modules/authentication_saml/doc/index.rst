@@ -2,13 +2,14 @@
 Authentication SAML Module
 ##########################
 
-The `SAML <https://en.wikipedia.org/wiki/Security_Assertion_Markup_Language>`_
-authentication module allows to delegate the user authentication to an
-`identity provider <https://en.wikipedia.org/wiki/Identity_provider_(SAML)>`_.
+The *Authentication SAML Module* allows delegating the user authentication to
+an `identity provider
+<https://en.wikipedia.org/wiki/Identity_provider_(SAML)>`_ using `SAML
+<https://en.wikipedia.org/wiki/Security_Assertion_Markup_Language>`_.
 
 .. toctree::
    :maxdepth: 2
 
    configuration
-   design
+   reference
    releases
