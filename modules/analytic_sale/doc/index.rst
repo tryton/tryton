@@ -1,4 +1,11 @@
+####################
 Analytic Sale Module
 ####################
 
-The analytic sale module allows to set analytic accounts on sale line.
+The *Analytic Sale Module* adds analytic accounts to the sale lines.
+
+.. toctree::
+   :maxdepth: 2
+
+   design
+   releases
