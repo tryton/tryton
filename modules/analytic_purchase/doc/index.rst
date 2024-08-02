@@ -1,4 +1,11 @@
+########################
 Analytic Purchase Module
 ########################
 
-The analytic purchase module allows to set analytic accounts on purchase line.
+The *Analytic Purchase Module* adds analytic accounts to the purchase lines.
+
+.. toctree::
+   :maxdepth: 2
+
+   design
+   releases
