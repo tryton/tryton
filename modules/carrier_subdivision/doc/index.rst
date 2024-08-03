@@ -1,12 +1,12 @@
+##########################
 Carrier Subdivision Module
 ##########################
 
-This module extends the carrier selection pattern with:
+The *Carrier Subdivision Module* adds the subdivisions as criteria for carrier
+selection.
 
-* The warehouse Subdivision
-* A regular expression to match against warehouse postal code
-* The customer Subdivision
-* A regular expression to match against customer postal code
+.. toctree::
+   :maxdepth: 2
 
-These can be used to restrict the usage of a carrier to a specific subdivision
-or a specific postal code.
+   design
+   releases
