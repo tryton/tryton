@@ -1,4 +1,11 @@
+#########################
 Carrier Percentage Module
 #########################
 
-The carrier percentage module adds a cost method based on percentage.
+The *Carrier Percentage Module* adds a cost method based on percentage.
+
+.. toctree::
+   :maxdepth: 2
+
+   design
+   releases
