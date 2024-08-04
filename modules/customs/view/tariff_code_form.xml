@@ -10,9 +10,10 @@ this repository contains the full copyright notices and license terms. -->
     <field name="description" colspan="3"/>
 
     <label name="country"/>
-    <field name="country"/>
+    <field name="country" colspan="3"/>
+
     <label name="organization"/>
-    <field name="organization"/>
+    <field name="organization" colspan="3"/>
 
     <label id="from" string="From"/>
     <group id="start" col="2">

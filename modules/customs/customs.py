@@ -47,8 +47,6 @@ class TariffCode(DeactivableMixin, CountryMatchMixin, ModelSQL, ModelView):
     code = fields.Char('Code', required=True,
         help='The code from Harmonized System of Nomenclature.')
     description = fields.Char('Description', translate=True)
-    country = fields.Many2One('country.country', 'Country')
-    # TODO country group
     start_month = fields.Many2One('ir.calendar.month', "Start Month",
         states={
             'required': Eval('end_month') | Eval('start_day'),

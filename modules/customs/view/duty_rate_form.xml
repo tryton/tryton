@@ -8,9 +8,9 @@ this repository contains the full copyright notices and license terms. -->
     <field name="type"/>
 
     <label name="country"/>
-    <field name="country"/>
+    <field name="country" colspan="3"/>
     <label name="organization"/>
-    <field name="organization"/>
+    <field name="organization" colspan="3"/>
 
     <label name="start_date"/>
     <field name="start_date"/>
