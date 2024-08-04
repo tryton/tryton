@@ -1,4 +1,10 @@
+################
 Marketing Module
 ################
 
-The marketing module defines the fundamentals for marketing modules.
+The *Marketing Module* defines the fundamentals for marketing modules.
+
+.. toctree::
+   :maxdepth: 2
+
+   releases
