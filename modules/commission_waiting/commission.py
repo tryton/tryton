@@ -1,7 +1,7 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 
-from trytond.model import ModelView, fields
+from trytond.model import fields
 from trytond.pool import Pool, PoolMeta
 from trytond.pyson import Bool, Eval
 from trytond.transaction import Transaction
@@ -39,7 +39,6 @@ class Commission(metaclass=PoolMeta):
         return super(Commission, cls).copy(commissions, default=default)
 
     @classmethod
-    @ModelView.button
     def create_waiting_move(cls, commissions):
         pool = Pool()
         Move = pool.get('account.move')
