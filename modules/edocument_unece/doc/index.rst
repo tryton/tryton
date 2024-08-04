@@ -1,14 +1,12 @@
+######################
 EDocument UNECE Module
 ######################
 
-The module adds many codes from the UNECE:
+The *EDocument UNECE Module* adds support for `UNECE <https://unece.org/>`_
+codes.
 
-    * `Recommendation N°. 20 Codes for Units of Measure Used in International
-      Trade
-      <https://tfig.unece.org/instruments/recommendations-and-standards/unece-and-uncefact-recommendations/recommendation-no-20/>`_
+.. toctree::
+   :maxdepth: 2
 
-    * `5153  Duty or tax or fee type name code
-      <https://unece.org/fileadmin/DAM/trade/untdid/d16b/tred/tred5153.htm>`_
-
-    * `5305  Duty or tax or fee category code
-      <https://unece.org/fileadmin/DAM/trade/untdid/d16b/tred/tred5305.htm>`_
+   design
+   releases
