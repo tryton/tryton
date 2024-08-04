@@ -9,3 +9,4 @@ The *Marketing Campaign Module* helps collecting data about marketing campaigns.
 
    design
    reference
+   releases
