@@ -172,6 +172,18 @@ class Move(metaclass=PoolMeta):
         if to_write:
             cls.write(*to_write)
 
+    @classmethod
+    @ModelView.button
+    @Workflow.transition('cancelled')
+    def cancel(cls, moves):
+        super().cancel(moves)
+        shipments = defaultdict(set)
+        for move in moves:
+            if issubclass(move.shipment, MeasurementsMixin):
+                shipments[move.shipment.__class__].add(move.shipment)
+        for Shipment, shipments in shipments.items():
+            Shipment.set_measurements(shipments)
+
 
 class MeasurementsMixin(object):
     __slots__ = ()
@@ -281,14 +293,16 @@ class MeasurementsMixin(object):
                             table, move, location))
                     .select(
                         Sum(Coalesce(move.internal_weight, 0)),
-                        where=cls._measurements_move_condition(table, move)),
+                        where=cls._measurements_move_condition(table, move)
+                        & (move.state != 'cancelled')),
                     move
                     .join(location,
                         condition=cls._measurements_location_condition(
                             table, move, location))
                     .select(
                         Sum(Coalesce(move.internal_volume, 0)),
-                        where=cls._measurements_move_condition(table, move))],
+                        where=cls._measurements_move_condition(table, move)
+                        & (move.state != 'cancelled'))],
                 where=table.state.in_(states)))
 
         if shipments:
@@ -323,6 +337,7 @@ class MeasurementsMixin(object):
         query = table.join(
             move, type_='LEFT',
             condition=cls._measurements_move_condition(table, move)
+            & (move.state != 'cancelled')
             ).join(
                 location,
                 condition=cls._measurements_location_condition(
@@ -411,6 +426,7 @@ class MeasurementsMixin(object):
         query = table.join(
             move, type_='LEFT',
             condition=cls._measurements_move_condition(table, move)
+            & (move.state != 'cancelled')
             ).join(
                 location,
                 condition=cls._measurements_location_condition(

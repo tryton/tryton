@@ -1,3 +1,4 @@
+* Do not include cancelled moves in measurements
 * Store internal measurements for final states of shipments
 
 Version 7.2.0 - 2024-04-29
