@@ -279,12 +279,24 @@ class MeasurementsMixin(object):
             measurement = Sum(move.internal_weight)
             if value is not None:
                 kg = Uom(ModelData.get_id('product', 'uom_kilogram'))
-                value = Uom.compute_qty(uom, value, kg, round=False)
+                if isinstance(value, (int, float)):
+                    value = Uom.compute_qty(uom, value, kg, round=False)
+                else:
+                    value = [
+                        Uom.compute_qty(uom, v, kg, round=False)
+                        if v is not None else v
+                        for v in value]
         else:
             measurement = Sum(move.internal_volume)
             if value is not None:
                 liter = Uom(ModelData.get_id('product', 'uom_liter'))
-                value = Uom.compute_qty(uom, value, liter, round=False)
+                if isinstance(value, (int, float)):
+                    value = Uom.compute_qty(uom, value, liter, round=False)
+                else:
+                    value = [
+                        Uom.compute_qty(uom, v, liter, round=False)
+                        if v is not None else v
+                        for v in value]
 
         query = table.join(
             move, type_='LEFT',

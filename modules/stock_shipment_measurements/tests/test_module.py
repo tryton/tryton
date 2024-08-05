@@ -187,8 +187,10 @@ class StockShipmentMeasurementsTestCase(CompanyTestMixin, ModuleTestCase):
             for clause, result in [
                     ([('weight', '=', 10)], [shipment]),
                     ([('weight', '=', 5)], []),
+                    ([('weight', 'in', [10, 5])], [shipment]),
                     ([('volume', '=', 2)], [shipment]),
                     ([('volume', '=', 3)], []),
+                    ([('volume', 'in', [2, 3])], [shipment]),
                     ]:
                 msg = 'clause: %s' % clause
                 self.assertEqual(Shipment.search(clause), result, msg=msg)
