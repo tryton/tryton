@@ -9,18 +9,6 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">party_form</field>
         </record>
 
-        <record model="ir.action.wizard" id="act_open_customer">
-            <field name="name">Parties associated to Sales</field>
-            <field name="wiz_name">sale.open_customer</field>
-        </record>
-        <menuitem
-            name="Associated to Sales"
-            parent="party.menu_party_form"
-            action="act_open_customer"
-            sequence="50"
-            id="menu_customer"
-            icon="tryton-list"/>
-
         <record model="ir.model.field.access" id="access_party_sale_invoice_method">
             <field name="model">party.party</field>
             <field name="field">sale_invoice_method</field>

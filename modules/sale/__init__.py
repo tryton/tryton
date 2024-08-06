@@ -57,7 +57,6 @@ def register():
         invoice.Line,
         module='sale', type_='model')
     Pool.register(
-        sale.OpenCustomer,
         sale.HandleShipmentException,
         sale.HandleInvoiceException,
         sale.ReturnSale,

@@ -1,23 +1,3 @@
-.. _Listing customers:
-
-Listing customers
-=================
-
-In Tryton, by definition, the `Parties <party:model-party.party>` that
-have bought `Products <product:concept-product>` from your
-`Company <company:model-company.company>` are its customers.
-The *Sale Module* lets you get a list of these from the
-[:menuselection:`Parties --> Parties --> Associated to Sales`]
-main menu item.
-
-.. tip::
-
-   For some companies it is important to know which parties are, or may
-   eventually be, customers before they have bought anything.
-   One way you can do this is to create a ``Customer``
-   `Category <party:model-party.category>`, and add all the appropriate
-   parties to it.
-
 .. _Making products salable:
 
 Making products salable
