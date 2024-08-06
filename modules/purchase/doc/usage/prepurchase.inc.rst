@@ -1,22 +1,3 @@
-.. _Listing Suppliers:
-
-Listing Suppliers
-=================
-
-In Tryton, by definition, the `Parties <party:model-party.party>` that your
-`Company <company:model-company.company>` has bought from are its suppliers.
-The *Purchase Module* lets you list these when you open the
-[:menuselection:`Parties --> Parties --> Associated to Purchases`]
-main menu item.
-
-.. tip::
-
-   For some companies it is important to know which parties are, or may
-   eventually be, suppliers before you have bought anything from them.
-   One way of doing this is to create a ``Supplier``
-   `Category <party:model-party.category>`, and add all the appropriate
-   parties to it.
-
 .. _Making products purchasable:
 
 Making products purchasable

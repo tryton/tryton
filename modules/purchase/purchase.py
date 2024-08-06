@@ -26,7 +26,7 @@ from trytond.modules.company.model import (
 from trytond.modules.currency.fields import Monetary
 from trytond.modules.product import price_digits
 from trytond.pool import Pool
-from trytond.pyson import Bool, Eval, If, PYSONEncoder
+from trytond.pyson import Bool, Eval, If
 from trytond.tools import cached_property, firstline
 from trytond.transaction import Transaction
 from trytond.wizard import (
@@ -2204,30 +2204,6 @@ class PurchaseReport(CompanyReport):
                 company=company.id if company else None):
             context['today'] = Date.today()
         return context
-
-
-class OpenSupplier(Wizard):
-    'Open Suppliers'
-    __name__ = 'purchase.open_supplier'
-    start_state = 'open_'
-    open_ = StateAction('party.act_party_form')
-
-    def do_open_(self, action):
-        pool = Pool()
-        ModelData = pool.get('ir.model.data')
-        Wizard = pool.get('ir.action.wizard')
-        Purchase = pool.get('purchase.purchase')
-        cursor = Transaction().connection.cursor()
-        purchase = Purchase.__table__()
-
-        cursor.execute(*purchase.select(purchase.party,
-                group_by=purchase.party))
-        supplier_ids = [line[0] for line in cursor]
-        action['pyson_domain'] = PYSONEncoder().encode(
-            [('id', 'in', supplier_ids)])
-        wizard = Wizard(ModelData.get_id('purchase', 'act_open_supplier'))
-        action['name'] = wizard.name
-        return action, {}
 
 
 class HandleShipmentExceptionAsk(ModelView):

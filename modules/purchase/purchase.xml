@@ -624,18 +624,6 @@ this repository contains the full copyright notices and license terms. -->
             <field name="action" ref="wizard_return_purchase"/>
         </record>
 
-        <record model="ir.action.wizard" id="act_open_supplier">
-            <field name="name">Parties associated to Purchases</field>
-            <field name="wiz_name">purchase.open_supplier</field>
-        </record>
-        <menuitem
-            name="Associated to Purchases"
-            parent="party.menu_party_form"
-            action="act_open_supplier"
-            sequence="50"
-            icon="tryton-list"
-            id="menu_supplier"/>
-
         <record model="ir.action.wizard" id="wizard_modify_header">
             <field name="name">Modify Header</field>
             <field name="wiz_name">purchase.modify_header</field>

@@ -49,7 +49,6 @@ def register():
         purchase.PurchaseReport,
         module='purchase', type_='report')
     Pool.register(
-        purchase.OpenSupplier,
         purchase.HandleShipmentException,
         purchase.HandleInvoiceException,
         party.PartyReplace,
