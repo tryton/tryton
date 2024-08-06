@@ -130,7 +130,6 @@ class StockShipmentMeasurementsTestCase(CompanyTestMixin, ModuleTestCase):
         kg, = Uom.search([('name', '=', 'Kilogram')])
         liter, = Uom.search([('name', '=', 'Liter')])
         customer, = Location.search([('code', '=', 'CUS')])
-        storage, = Location.search([('code', '=', 'STO')])
         party = Party(name='Customer')
         party.addresses = [{}]
         party.save()
@@ -166,7 +165,7 @@ class StockShipmentMeasurementsTestCase(CompanyTestMixin, ModuleTestCase):
                     product=product,
                     unit=kg,
                     quantity=10,
-                    from_location=storage,
+                    from_location=shipment.warehouse.output_location,
                     to_location=customer,
                     company=company,
                     unit_price=Decimal(1),
@@ -179,6 +178,7 @@ class StockShipmentMeasurementsTestCase(CompanyTestMixin, ModuleTestCase):
             self.assertEqual(shipment.volume, 2)
 
             Shipment.wait([shipment])
+            Shipment.pick([shipment])
 
             # with inventory moves
             self.assertEqual(shipment.weight, 10)
@@ -207,7 +207,7 @@ class StockShipmentMeasurementsTestCase(CompanyTestMixin, ModuleTestCase):
             package = Package()
             package.type = package_type
             package.shipment = shipment
-            package.moves = shipment.moves
+            package.moves = shipment.outgoing_moves
             package.parent = package_root
             package.save()
 
@@ -222,6 +222,25 @@ class StockShipmentMeasurementsTestCase(CompanyTestMixin, ModuleTestCase):
 
             self.assertEqual(package.total_weight, 10)
             self.assertEqual(package.total_volume, 2)
+
+            Shipment.pack([shipment])
+            Shipment.do([shipment])
+
+            self.assertEqual(shipment.internal_weight, 10)
+            self.assertEqual(shipment.internal_volume, 2)
+            self.assertEqual(shipment.weight, 10)
+            self.assertEqual(shipment.volume, 2)
+
+            for clause, result in [
+                    ([('weight', '=', 10)], [shipment]),
+                    ([('weight', '=', 5)], []),
+                    ([('weight', 'in', [10, 5])], [shipment]),
+                    ([('volume', '=', 2)], [shipment]),
+                    ([('volume', '=', 3)], []),
+                    ([('volume', 'in', [2, 3])], [shipment]),
+                    ]:
+                msg = 'clause: %s' % clause
+                self.assertEqual(Shipment.search(clause), result, msg=msg)
 
 
 del ModuleTestCase

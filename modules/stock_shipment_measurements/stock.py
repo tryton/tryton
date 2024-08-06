@@ -1,12 +1,15 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 from collections import defaultdict
+from functools import wraps
 from itertools import groupby
 
+from sql import Literal, Null
 from sql.aggregate import Sum
+from sql.conditionals import Coalesce
 from sql.operators import Concat
 
-from trytond.model import ModelSQL, fields
+from trytond.model import Index, ModelSQL, ModelView, Workflow, fields
 from trytond.modules.company.model import CompanyValueMixin
 from trytond.pool import Pool, PoolMeta
 from trytond.pyson import Bool, Eval, Id
@@ -180,6 +183,7 @@ class MeasurementsMixin(object):
                 },
             help="The total weight of the record's moves."),
         'get_measurements', searcher='search_measurements')
+    internal_weight = fields.Float("Internal Weight", readonly=True)
     weight_uom = fields.Function(
         fields.Many2One(
             'product.uom', "Weight UoM",
@@ -193,11 +197,54 @@ class MeasurementsMixin(object):
                 },
             help="The total volume of the record's moves."),
         'get_measurements', searcher='search_measurements')
+    internal_volume = fields.Float("Internal Volume", readonly=True)
     volume_uom = fields.Function(
         fields.Many2One(
             'product.uom', "Volume UoM",
             help="The Unit of Measure of volume."),
         'get_measurements_uom')
+
+    @classmethod
+    def __setup__(cls):
+        super().__setup__()
+
+        t = cls.__table__()
+        states = cls._measurements_states()
+        if states:
+            cls._sql_indexes.update({
+                    Index(
+                        t,
+                        (t.id, Index.Range()),
+                        where=(~t.state.in_(states)
+                            | (t.internal_weight == Null)
+                            | (t.internal_volume == Null))),
+                    Index(t,
+                        (t.internal_weight, Index.Range()),
+                        where=(t.state.in_(states)
+                            & (t.internal_weight != Null)
+                            & (t.internal_volume != Null))),
+                    Index(t,
+                        (t.internal_volume, Index.Range()),
+                        where=(t.state.in_(states)
+                            & (t.internal_weight != Null)
+                            & (t.internal_volume != Null))),
+                    })
+
+    @classmethod
+    def __register__(cls, module):
+        table_h = cls.__table_handler__(module)
+        set_measurements = (
+            not table_h.column_exist('internal_weight')
+            or not table_h.column_exist('internal_volume'))
+
+        super().__register__(module)
+
+        if set_measurements:
+            cls.set_measurements()
+
+    @classmethod
+    def _measurements_states(cls):
+        return []
 
     @classmethod
     def get_measurements_uom(cls, shipments, name):
@@ -211,6 +258,50 @@ class MeasurementsMixin(object):
             for shipment in shipments:
                 uoms[shipment.id] = uom.id
         return uoms
+
+    @classmethod
+    def set_measurements(cls, shipments=None):
+        pool = Pool()
+        Location = pool.get('stock.location')
+        Move = pool.get('stock.move')
+
+        cursor = Transaction().connection.cursor()
+        table = cls.__table__()
+        move = Move.__table__()
+        location = Location.__table__()
+
+        if not (states := cls._measurements_states()):
+            return
+
+        query = (table.update(
+                [table.internal_weight, table.internal_volume],
+                [move
+                    .join(location,
+                        condition=cls._measurements_location_condition(
+                            table, move, location))
+                    .select(
+                        Sum(Coalesce(move.internal_weight, 0)),
+                        where=cls._measurements_move_condition(table, move)),
+                    move
+                    .join(location,
+                        condition=cls._measurements_location_condition(
+                            table, move, location))
+                    .select(
+                        Sum(Coalesce(move.internal_volume, 0)),
+                        where=cls._measurements_move_condition(table, move))],
+                where=table.state.in_(states)))
+
+        if shipments:
+            where = query.where
+            for sub_shipments in grouped_slice(shipments):
+                query.where = (
+                    where & reduce_ids(table.id, map(int, sub_shipments)))
+                cursor.execute(*query)
+        else:
+            cursor.execute(*query)
+
+        if shipments:
+            cls.write(shipments, {})
 
     @classmethod
     def get_measurements(cls, shipments, names):
@@ -238,23 +329,35 @@ class MeasurementsMixin(object):
                     table, move, location)
                 ).select(
                     table.id,
-                    Sum(move.internal_weight),
-                    Sum(move.internal_volume),
+                    Sum(Coalesce(move.internal_weight, 0)),
+                    Sum(Coalesce(move.internal_volume, 0)),
                     group_by=[table.id])
 
-        id2shipment = {s.id: s for s in shipments}
-        for sub_shipments in grouped_slice(shipments):
+        weights, volumes = {}, {}
+        states = cls._measurements_states()
+        for sub_shipments in grouped_slice(
+                (s for s in shipments
+                    if s.state not in states
+                    or s.internal_weight is None
+                    or s.internal_volume is None)):
             query.where = reduce_ids(
                 table.id, [s.id for s in sub_shipments])
             cursor.execute(*query)
             for id_, weight, volume in cursor:
-                shipment = id2shipment[id_]
-                if 'weight' in names:
-                    measurements['weight'][id_] = Uom.compute_qty(
-                        kg, weight, shipment.weight_uom)
-                if 'volume' in names:
-                    measurements['volume'][id_] = Uom.compute_qty(
-                        liter, volume, shipment.volume_uom)
+                weights[id_] = weight
+                volumes[id_] = volume
+
+        for shipment in shipments:
+            if 'weight' in names:
+                weight = weights.get(
+                    shipment.id, shipment.internal_weight)
+                measurements['weight'][shipment.id] = Uom.compute_qty(
+                    kg, weight, shipment.weight_uom)
+            if 'volume' in names:
+                volume = volumes.get(
+                    shipment.id, shipment.internal_volume)
+                measurements['volume'][shipment.id] = Uom.compute_qty(
+                    liter, volume, shipment.volume_uom)
         return measurements
 
     @classmethod
@@ -276,7 +379,8 @@ class MeasurementsMixin(object):
 
         Operator = fields.SQL_OPERATORS[operator]
         if name == 'weight':
-            measurement = Sum(move.internal_weight)
+            measurement = Sum(Coalesce(move.internal_weight, 0))
+            column = table.internal_weight
             if value is not None:
                 kg = Uom(ModelData.get_id('product', 'uom_kilogram'))
                 if isinstance(value, (int, float)):
@@ -287,7 +391,8 @@ class MeasurementsMixin(object):
                         if v is not None else v
                         for v in value]
         else:
-            measurement = Sum(move.internal_volume)
+            measurement = Sum(Coalesce(move.internal_volume, 0))
+            column = table.internal_volume
             if value is not None:
                 liter = Uom(ModelData.get_id('product', 'uom_liter'))
                 if isinstance(value, (int, float)):
@@ -298,6 +403,11 @@ class MeasurementsMixin(object):
                         if v is not None else v
                         for v in value]
 
+        if states := cls._measurements_states():
+            state_clause = table.state.in_(states)
+        else:
+            state_clause = Literal(False)
+
         query = table.join(
             move, type_='LEFT',
             condition=cls._measurements_move_condition(table, move)
@@ -307,8 +417,17 @@ class MeasurementsMixin(object):
                     table, move, location)
                 ).select(
                     table.id,
+                    where=~state_clause
+                    | (table.internal_weight == Null)
+                    | (table.internal_volume == Null),
                     group_by=[table.id],
                     having=Operator(measurement, value))
+        query |= table.select(
+            table.id,
+            where=state_clause
+            & (table.internal_weight != Null)
+            & (table.internal_volume != Null)
+            & Operator(column, value))
         return [('id', 'in', query)]
 
     @classmethod
@@ -320,8 +439,21 @@ class MeasurementsMixin(object):
         raise NotImplementedError
 
 
+def set_measurements(func):
+    @wraps(func)
+    def wrapper(cls, shipments, *args, **kwargs):
+        result = func(cls, shipments, *args, **kwargs)
+        cls.set_measurements(shipments)
+        return result
+    return wrapper
+
+
 class ShipmentIn(MeasurementsMixin, object, metaclass=PoolMeta):
     __name__ = 'stock.shipment.in'
+
+    @classmethod
+    def _measurements_states(cls):
+        return super()._measurements_states() + ['done', 'cancelled']
 
     @classmethod
     def _measurements_location_condition(cls, shipment, move, location):
@@ -329,17 +461,53 @@ class ShipmentIn(MeasurementsMixin, object, metaclass=PoolMeta):
             (move.from_location == location.id)
             & (location.type == 'supplier'))
 
+    @classmethod
+    @ModelView.button
+    @set_measurements
+    @Workflow.transition('done')
+    def do(cls, shipments):
+        super().do(shipments)
+
+    @classmethod
+    @ModelView.button
+    @set_measurements
+    @Workflow.transition('cancelled')
+    def cancel(cls, shipments):
+        super().cancel(shipments)
+
 
 class ShipmentInReturn(MeasurementsMixin, object, metaclass=PoolMeta):
     __name__ = 'stock.shipment.in.return'
 
     @classmethod
+    def _measurements_states(cls):
+        return super()._measurements_states() + ['done', 'cancelled']
+
+    @classmethod
     def _measurements_location_condition(cls, shipment, move, location):
         return move.from_location == location.id
+
+    @classmethod
+    @ModelView.button
+    @set_measurements
+    @Workflow.transition('done')
+    def do(cls, shipments):
+        super().do(shipments)
+
+    @classmethod
+    @ModelView.button
+    @set_measurements
+    @Workflow.transition('cancelled')
+    def cancel(cls, shipments):
+        super().cancel(shipments)
 
 
 class ShipmentOut(MeasurementsMixin, object, metaclass=PoolMeta):
     __name__ = 'stock.shipment.out'
+
+    @classmethod
+    def _measurements_states(cls):
+        return super()._measurements_states() + ['done', 'cancelled']
 
     @classmethod
     def _measurements_location_condition(cls, shipment, move, location):
@@ -364,15 +532,47 @@ class ShipmentOut(MeasurementsMixin, object, metaclass=PoolMeta):
                         round=False)
         return weight
 
+    @classmethod
+    @ModelView.button
+    @set_measurements
+    @Workflow.transition('done')
+    def do(cls, shipments):
+        super().do(shipments)
+
+    @classmethod
+    @ModelView.button
+    @set_measurements
+    @Workflow.transition('cancelled')
+    def cancel(cls, shipments):
+        super().cancel(shipments)
+
 
 class ShipmentOutReturn(MeasurementsMixin, object, metaclass=PoolMeta):
     __name__ = 'stock.shipment.out.return'
+
+    @classmethod
+    def _measurements_states(cls):
+        return super()._measurements_states() + ['done', 'cancelled']
 
     @classmethod
     def _measurements_location_condition(cls, shipment, move, location):
         return (
             (move.from_location == location.id)
             & (location.type == 'customer'))
+
+    @classmethod
+    @ModelView.button
+    @set_measurements
+    @Workflow.transition('done')
+    def do(cls, shipments):
+        super().do(shipments)
+
+    @classmethod
+    @ModelView.button
+    @set_measurements
+    @Workflow.transition('cancelled')
+    def cancel(cls, shipments):
+        super().cancel(shipments)
 
 # TODO ShipmentInternal
 
