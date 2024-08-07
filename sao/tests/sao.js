@@ -2186,6 +2186,8 @@
         });
         var valid = ['name', '=', 'Doe'];
         var invalid = ['surname', '=', 'John'];
+        QUnit.ok(parser.stringable([]));
+        QUnit.ok(parser.stringable([[]]));
         QUnit.ok(parser.stringable([valid]));
         QUnit.ok(!parser.stringable([invalid]));
         QUnit.ok(parser.stringable(['AND', valid]));

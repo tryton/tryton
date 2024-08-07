@@ -592,6 +592,8 @@ class DomainParserTestCase(TestCase):
                 })
         valid = ('name', '=', 'Doe')
         invalid = ('surname', '=', 'John')
+        self.assertTrue(dom.stringable([]))
+        self.assertTrue(dom.stringable([[]]))
         self.assertTrue(dom.stringable([valid]))
         self.assertFalse(dom.stringable([invalid]))
         self.assertTrue(dom.stringable(['AND', valid]))
