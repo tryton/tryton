@@ -252,7 +252,15 @@
             }, ctx, false);
         },
         _action_key: function(data) {
-            return data.x;
+            var x = data.x;
+            var type = this.view.screen.model.fields[this.xfield.name]
+                .description.type;
+            if (x && (type == 'datetime')) {
+                x = Sao.DateTime(x).toString();
+            } else if (x && (type == 'date')) {
+                x = Sao.Date(x).toString();
+            }
+            return x;
         }
     });
 
