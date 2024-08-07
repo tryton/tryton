@@ -359,7 +359,7 @@ class Database(DatabaseInterface):
                         'Test failed for "%s"', db_name, exc_info=True)
                     continue
         finally:
-            self.put_connection(connection)
+            self.put_connection(connection, close=True)
 
         self.__class__._list_cache[hostname] = res
         self.__class__._list_cache_timestamp[hostname] = now
@@ -404,7 +404,7 @@ class Database(DatabaseInterface):
         try:
             return self._test(connection, hostname=hostname)
         finally:
-            self.put_connection(connection)
+            self.put_connection(connection, close=True)
 
     @classmethod
     def _test(cls, connection, hostname=None):
