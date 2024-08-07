@@ -1195,7 +1195,7 @@
         },
         stringable: function(domain) {
             const stringable_ = clause => {
-                if (!clause) {
+                if (!clause || jQuery.isEmptyObject(clause)) {
                     return true;
                 }
                 var is_array = function(e) {
