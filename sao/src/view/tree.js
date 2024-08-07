@@ -506,7 +506,8 @@
             this.selected_records.forEach((record) => {
                 var values = [];
                 this.columns.forEach((col) => {
-                    if (!col.get_visible() || !col.attributes.name) {
+                    if (!col.get_visible() || !col.attributes.name ||
+                        col instanceof Sao.View.Tree.ButtonColumn) {
                         return;
                     }
                     var text;
