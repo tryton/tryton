@@ -7,4 +7,5 @@ always activated.
 .. toctree::
    :maxdepth: 2
 
+   ir/index
    res/index

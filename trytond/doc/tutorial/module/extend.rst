@@ -43,8 +43,8 @@ Extend the Party view
 
 Now that we added a new field to the ``party.party``
 :class:`~trytond.model.Model`, we can also add it the form view.
-This is done by adding a ``ir.ui.view`` record that inherit the party form view
-of the ``party`` module.
+This is done by adding a `View <model-ir.ui.view>` record that inherit the
+party form view of the ``party`` module.
 Here is the content of the :file:`party.xml` file:
 
 .. code-block:: xml

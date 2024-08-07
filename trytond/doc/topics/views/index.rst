@@ -11,7 +11,7 @@ In Tryton, :class:`ModelView <trytond.model.ModelView>` can have several views.
 An ``action`` opens a window and defines which view to show.
 
 The views are built from XML that is stored in the :file:`view` directory of
-the module or in the databases thanks to the model ir.ui.view.
+the module or in the databases thanks to the `View <model-ir.ui.view>`.
 
 So generally, they are defined in XML files with this kind of XML where name is
 the name of the XML file in the :file:`view` directory:
@@ -398,7 +398,8 @@ Display an image with those attributes:
 
 ``name``
    The image name or the field name which contains the image name.
-   For the ``icon`` type it must be the name of a record of ``ir.ui.icon``.
+   For the ``icon`` type it must be the name of an `Icon <model-ir.ui.icon>`
+   record.
    For the ``url`` type it must be the URL. It can be relative to the server.
 
 ``url_size``
@@ -462,8 +463,8 @@ Display a button with those attributes:
 
         ``button(cls, records)``
 
-   The function may return an ``ir.action`` id or one of those client side
-   action keywords:
+   The function may return an `Action <model-ir.action>` id or one of these
+   client side action keywords:
 
    .. _topics-views-client-actions:
 
@@ -507,22 +508,22 @@ Display a button with those attributes:
 :ref:`help <common-attributes-help>`.
 
 .. warning::
-    The button should be registered on ``ir.model.button`` where the default
-    value of the ``string``, ``confirm`` and ``help`` attributes can be can be
-    defined.
+   The button should be registered as a `Model Button <model-ir.model.button>`
+   where the default value of the ``string``, ``confirm`` and ``help``
+   attributes can be can be defined.
 
 .. _form-link:
 
 link
 ----
 
-Display an ``ir.action.act_window`` as a button with a counter or one counter
-per tab.
+Display an `Window Action <model-ir.action.act_window>` as a button with a
+counter or one counter per tab.
 When clicked it opens the window.
 The available attributes are:
 
 ``name``
-   The XML id of ``ir.action.act_window``.
+   The XML id of `Window Action <model-ir.action.act_window>`.
 
 ``icon``
    The name of the icon to display.
@@ -628,7 +629,7 @@ A tree view is used to display records inside a list or a tree.
 
 It is a tree if there is a ``field_childs`` defined and this tree has the drag
 and drop activated if the ``field_childs`` and the ``parent field`` are defined
-in the ``ir.ui.view`` record.
+in the `View <model-ir.ui.view>` record.
 
 The columns of the view are put on the screen from left to right.
 
@@ -751,7 +752,8 @@ displayed in the same column with the attributes:
 
 ``icon``
    The image name or the field name which contains the image name.
-   For the ``icon`` type it must be the name of a record of ``ir.ui.icon``.
+   For the ``icon`` type it must be the name of an `Icon <model-ir.ui.icon>`
+   record.
    For the ``url`` type it must be the URL and it can be relative to the server.
 
 ``icon_type``

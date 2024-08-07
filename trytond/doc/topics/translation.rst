@@ -12,7 +12,7 @@ The official language files are named after the `POSIX locale
 standard, e.g. de.po, es.po, es_AR.po, es_EC.po...
 
 The names of custom language files must match the code of the language in the
-:class:`~trytond.model.Model` ``ir.lang``.
+`Language <model-ir.lang>`.
 
 If a language is set ``translatable``, the translations is loaded into the
 database on each update.
@@ -59,11 +59,12 @@ To override the translation of another module the ``msgctxt`` string must have
 the following content: ``type:name:module.xml_id``
 
 type
-   The field type of ir.translation.
+   The field type of `Translation <model-ir.translation>`.
 name
-   The field name of ir.translation.
+   The field name of *Translation*.
 module
-   The field module ir.translation.
+   The field module *Translation*.
 xml_id
-   The XML id that is stored in ``ir.model.data`` as ``fs_id``.
+   The XML id that is stored in `Model Data <model-ir.model.data>` as
+   ``fs_id``.
    It is optional and can be omitted if it is None.

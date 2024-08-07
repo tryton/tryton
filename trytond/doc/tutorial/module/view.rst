@@ -126,8 +126,8 @@ Now we have to declare the XML data file in the :file:`tryton.cfg` file:
 Create menu entry
 -----------------
 
-In order to show our models on the user menu we need an
-``ir.action.act_window`` and a menu entry.
+In order to show our models on the user menu we need an `Window Action
+<model-ir.action.act_window>` and a menu entry.
 
 An action window is used to relate one or more views, usually a list and a form
 view.

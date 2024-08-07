@@ -7,7 +7,7 @@ Extending View
 Extending a view means, that the original view will be modified by a set of
 rules which are defined with XML.
 For this purpose, the extension engine uses XPath_ expressions.
-The view is defined with the field ``inherit`` of the ``ir.ui.view``.
+The view is defined with the `View <model-ir.ui.view>`'s ``inherit`` field.
 
 If the field :ref:`domain <topics-domain>` is not set or evaluated to ``True``,
 the inheritance will be proceeded.

@@ -18,8 +18,8 @@ The first argument of the method must be an instance or a list of instances of
 :class:`~trytond.model.Model`.
 This other arguments must be JSON-ifiable.
 
-A task is pushed into the ``queue`` by calling the desired method on the
-:attr:`~trytond.model.Model.__queue__`.
+A task is pushed into the `Queue <model-ir.queue>` by calling the desired
+method on the :attr:`~trytond.model.Model.__queue__`.
 This stores in the queue all the current parameters of the call and it will be
 execute by a worker or at the end of the transaction if no worker is
 configured.

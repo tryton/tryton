@@ -7,17 +7,18 @@ Scheduled Actions
 Tryton provides a scheduler (aka cron) which can execute methods of
 :ref:`models <topics-models>` periodically at set intervals.
 
-The planning is managed by ``ir.cron`` records which store the method to call
-and the interval of time between calls. The method must be a class method of a
-:class:`~trytond.model.Model` which can be called without any parameters.
+The planning is managed by `Cron <model-ir.cron>` records which store the
+method to call and the interval of time between calls.
+The method must be a class method of a :class:`~trytond.model.Model` which can
+be called without any parameters.
 
 .. note::
 
    The timezone used to schedule the action is
    :attr:`timezone.SERVER <trytond.tools.timezone.SERVER>`.
 
-To register a new method with the scheduler, you must extend the ``ir.cron``
-model and append the new method to the
+To register a new method with the scheduler, you must extend the `Cron
+<model-ir.cron>` model and append the new method to the
 :attr:`~trytond.model.fields.Selection.selection` attribute of the ``method``
 field in :meth:`~trytond.model.Model.__setup__()`. The name of the selection
 must be the model name and the method name joined together with a ``|`` between

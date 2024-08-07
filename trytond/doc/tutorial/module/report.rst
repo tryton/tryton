@@ -28,8 +28,8 @@ And we register it in the :class:`~trytond.pool.Pool` as type ``report`` in
             module='opportunity', type_='report')
 
 
-Now we have to create a ``ir.action.report`` and ``ir.action.keyword`` in
-:file:`opportunity.xml`:
+Now we have to create a `Report <model-ir.action.report>` and `Action Keyword
+<model-ir.action>` in :file:`opportunity.xml`:
 
 .. code-block:: xml
 
@@ -51,8 +51,8 @@ Now we have to create a ``ir.action.report`` and ``ir.action.keyword`` in
       </data>
    </tryton>
 
-The ``ir.action.report`` links the ``trytond.report.Report`` with the
-:class:`~trytond.model.Model`.
+The `Report <model-ir.action.report>` links the :class:`~trytond.report.Report`
+with the :class:`~trytond.model.Model`.
 
 ``name``
    The string that is shown on the menu.
@@ -65,9 +65,9 @@ The ``ir.action.report`` links the ``trytond.report.Report`` with the
 ``template_extension``
    The template format.
 
-And like for the :ref:`wizard <tutorial-module-wizard>`, the
-``ir.action.keyword`` makes the ``trytond.report.Report`` available as action
-to any ``training.opportunity``.
+And like for the :ref:`wizard <tutorial-module-wizard>`, the `Action Keyword
+<model-ir.action>` makes the :class:`~trytond.report.Report` available as
+action to any ``training.opportunity``.
 
 Finally we create the OpenDocument_ template as :file:`opportunity.fodt` using
 LibreOffice_.

@@ -32,8 +32,8 @@ following class method is added in :file:`opportunity.py` file:
 Call other model methods
 ------------------------
 
-In the previous example we called the ``today`` method of the ``ir.date`` model
-from the :class:`~trytond.pool.Pool` instance.
+In the previous example we called the ``today`` method of the `Date
+<model-ir.date>` model from the :class:`~trytond.pool.Pool` instance.
 The :attr:`~trytond.model.Model.__name__` value is used to get the class.
 It is very important to get the class from the pool instead of using a normal
 Python import, because the pool ensures that all of the extensions are applied

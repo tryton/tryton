@@ -110,8 +110,8 @@ And we register it in the :class:`~trytond.pool.Pool` as type ``wizard`` in
             opportunity.Convert,
             module='opportunity', type_='wizard')
 
-Finally we just need to create a ``ir.action.wizard`` and ``ir.action.keyword``
-in :file:`opportunity.xml`:
+Finally we just need to create a `Wizard <model-ir.action.wizard>` and an
+`Action Keyword <model-ir.action>` in :file:`opportunity.xml`:
 
 .. code-block:: xml
 
@@ -131,8 +131,8 @@ in :file:`opportunity.xml`:
       </data>
    </tryton>
 
-The ``ir.action.wizard`` links the :class:`~trytond.wizard.Wizard` with the
-:class:`~trytond.model.Model`.
+The `Wizard <model-ir.action.wizard>` links the :class:`~trytond.wizard.Wizard`
+with the :class:`~trytond.model.Model`.
 
 ``name``
    The string that is shown on the menu.
@@ -141,8 +141,9 @@ The ``ir.action.wizard`` links the :class:`~trytond.wizard.Wizard` with the
 ``model``
    The name of the :class:`~trytond.model.Model`.
 
-And the ``ir.action.keyword`` makes the :class:`~trytond.wizard.Wizard`
-available as action to any ``training.opportunity``.
+And the `Action Keyword <model-ir.action>` makes the
+:class:`~trytond.wizard.Wizard` available as action to any
+``training.opportunity``.
 
 ``keyword``
    The type of `keyword <topics-actions>`.

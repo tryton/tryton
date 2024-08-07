@@ -29,7 +29,8 @@ These are specific to ODT files.
 .. _relatorio: https://relatorio.tryton.org/
 .. _Genshi: https://genshi.edgewall.org/
 
-When defining an ``ir.action.report`` the following attributes are available:
+When defining a `Report <model-ir.action.report>` the following attributes are
+available:
 
 ``name``
    The name of the report.
@@ -174,8 +175,8 @@ Creating a simple report template for a model within a module
 -------------------------------------------------------------
 
 Once you have created a report template stored in your module, you must create
-an XML record of ``ir.action.report`` and another XML record of
-``ir.action.keyword`` like:
+an XML record for the `Report <model-ir.action.report>` and another XML record for the
+`Action Keyword <model-ir.action>` like:
 
 .. code-block:: xml
 

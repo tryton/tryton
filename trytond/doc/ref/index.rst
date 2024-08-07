@@ -12,6 +12,7 @@ Reference of the ``trytond`` API:
    models
    fields
    wizard
+   report
    pyson
    transaction
    exceptions

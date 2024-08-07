@@ -195,7 +195,8 @@ StateAction
 
 .. class:: StateAction(action_id)
 
-   A :class:`StateTransition` which let the client launch an ``ir.action``.
+   A :class:`StateTransition` which lets the client launch an `Action
+   <model-ir.action>`.
 
    This action definition can be customized with a method on wizard having the
    same name as the state but starting with ``do_``.
@@ -204,13 +205,13 @@ Instance attributes are:
 
 .. attribute:: StateAction.action_id
 
-   The XML id of the ``ir.action``.
+   The XML id of the `Action <model-ir.action>`.
 
 Instance methods are:
 
 .. method:: StateAction.get_action()
 
-   Return the ``ir.action`` definition.
+   Return the `Action <model-ir.action>` definition.
 
 
 StateReport

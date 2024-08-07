@@ -98,8 +98,8 @@ dictionary and decorate the transition method with the
         def lost(cls, opportunities):
             ...
 
-Every button must also be recorded in ``ir.model.button`` to define its label
-(and also the :ref:`access right <topics-access_rights>`).
+Every button must also be recorded as a `Model Button <model-ir.model.button>` to
+define its label (and also the :ref:`access right <topics-access_rights>`).
 We must add to the ``opportunity.xml`` file:
 
 .. code-block:: xml

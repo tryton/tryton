@@ -192,7 +192,7 @@ Here is the list of the tags:
        other types, it is required to use the ``eval`` attribute.
 
 ``menuitem``
-   Shortcut to create ``ir.ui.menu`` records.
+   Shortcut to create `Menu <model-ir.ui.menu>` records.
    Here is the list of attributes:
 
    ``id``

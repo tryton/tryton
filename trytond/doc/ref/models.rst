@@ -76,7 +76,8 @@ Class methods:
 
 .. classmethod:: Model.__register__(module_name)
 
-   Register the model in ``ir.model`` and ``ir.model.field``.
+   Register the model in `Model <model-ir.model>` and `Model Field
+   <model-ir.model.field>`.
    See :meth:`trytond.pool.PoolBase.__register__`.
 
 .. classmethod:: Model.default_get(fields_names[, with_rec_name])
@@ -338,8 +339,8 @@ Class methods:
 .. classmethod:: ModelStorage.trigger_create(records)
 
    Trigger create actions.
-   It calls actions defined in ``ir.trigger`` with ``on_create`` set and
-   ``condition`` is true.
+   It calls actions defined in the `Trigger <model-ir.trigger>` where
+   ``on_create`` is set and the ``condition`` is true.
 
 .. classmethod:: ModelStorage.read(ids, fields_names)
 
@@ -385,8 +386,9 @@ Class methods:
 .. classmethod:: ModelStorage.trigger_write(eligibles)
 
    Trigger write actions.
-   It will call actions defined in ``ir.trigger`` with ``on_write`` set and
-   ``condition`` was false before :meth:`~ModelStorage.write` and true after.
+   It calls actions defined in `Trigger <model-ir.trigger>` where ``on_write``
+   is set and the ``condition`` was false before :meth:`~ModelStorage.write`
+   and true after.
 
 .. classmethod:: ModelStorage.index_set_field(name)
 
@@ -399,8 +401,8 @@ Class methods:
 .. classmethod:: ModelStorage.trigger_delete(records)
 
    Trigger delete actions.
-   It will call actions defined in ``ir.trigger`` with ``on_delete`` set and
-   ``condition`` is true.
+   It calls actions defined in `Trigger <model-ir.trigger>` where ``on_delete``
+   is set and ``condition`` is true.
 
 .. classmethod:: ModelStorage.copy(records[, default])
 
@@ -1198,7 +1200,8 @@ avatar, if it's not set then no default avatar is generated.
 
 .. attribute::  AvatarMixin.avatars
 
-   The :class:`~fields.One2Many` field used to store the ``ir.avatar`` records.
+   The :class:`~fields.One2Many` field used to store the `Avatar
+   <model-ir.avatar>` records.
 
 .. attribute:: AvatarMixin.avatar
 
