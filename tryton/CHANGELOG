@@ -1,3 +1,4 @@
+* Retry JSON-RPC requests on Service Unavailable
 * Set focus on search entry after search
 * Support language suffix in CSV export
 * Close tab with mouse middle click

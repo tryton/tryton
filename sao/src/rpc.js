@@ -124,6 +124,32 @@
                 dfd.reject();
                 return;
             }
+            if (query.status == 503) {
+                this.retries++;
+                if (this.retries < 5) {
+                    var timeoutID = Sao.common.processing.show(0);
+                    var delay = parseInt(
+                        query.getResponseHeader('Retry-After'), 10);
+                    if (isNaN(delay)) {
+                        delay = this.retries;
+                    }
+                    delay = Math.min(delay, 10);
+                    if (async) {
+                        window.setTimeout(() => {
+                            Sao.common.processing.hide(timeoutID);
+                            jQuery.ajax(this);
+                        }, 1000 * delay);
+                    } else {
+                        var start = new Date().getTime();
+                        while (new Date().getTime() < start + 1000 * delay) {
+                            continue;
+                        }
+                        Sao.common.processing.hide(timeoutID);
+                        return jQuery.ajax(this);
+                    }
+                    return;
+                }
+            }
             if (query.status == 401) {
                 //Try to relog
                 Sao.Session.renew(session).then(function() {
@@ -161,6 +187,7 @@
             }],
             'success': ajax_success,
             'error': ajax_error,
+            'retries': 0,
         });
         if (async) {
             return dfd.promise();

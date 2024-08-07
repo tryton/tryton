@@ -11,11 +11,17 @@ import logging
 import socket
 import ssl
 import threading
+import time
 import xmlrpc.client
 from contextlib import contextmanager
 from decimal import Decimal
 from functools import partial, reduce
 from urllib.parse import quote, urljoin
+
+try:
+    from http import HTTPStatus
+except ImportError:
+    from http import client as HTTPStatus
 
 from .cache import CacheDict
 from .config import CONFIG
@@ -288,12 +294,28 @@ class ServerProxy(xmlrpc.client.ServerProxy):
 
         try:
             try:
-                response = self.__transport.request(
-                    self.__host,
-                    self.__handler,
-                    request,
-                    verbose=self.__verbose
-                    )
+                for i in range(5):
+                    try:
+                        response = self.__transport.request(
+                            self.__host,
+                            self.__handler,
+                            request,
+                            verbose=self.__verbose
+                            )
+                    except xmlrpc.client.ProtocolError as e:
+                        if e.errcode == HTTPStatus.SERVICE_UNAVAILABLE:
+                            try:
+                                delay = int(e.headers.get('Retry-After', i))
+                            except ValueError:
+                                if isinstance(
+                                        e.errcode, HTTPStatus.GATEWAY_TIMEOUT):
+                                    # Do not retry on timeout without delay
+                                    raise
+                                delay = i
+                            delay = min(delay, 10)
+                            time.sleep(delay)
+                            continue
+                    break
             except (socket.error, http.client.HTTPException) as v:
                 if (isinstance(v, socket.error)
                         and v.args[0] == errno.EPIPE):

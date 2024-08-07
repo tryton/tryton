@@ -1,3 +1,4 @@
+* Retry JSON-RPC requests on Service Unavailable
 * Allow resizing the attachment preview panel
 * Set focus on search entry after search
 * Support language suffix in CSV export
