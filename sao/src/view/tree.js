@@ -511,7 +511,7 @@
                     var text;
                     if (!record.is_loaded(col.attributes.name)) {
                         try {
-                            record.load(this.attributes.name, false, false);
+                            record.load(col.attributes.name, false, false);
                             text = col.get_textual_value(record);
                         } catch (e) {
                             Sao.Logger.error(
