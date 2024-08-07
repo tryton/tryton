@@ -3616,11 +3616,14 @@
                 this.el.appendTo('body');
             });
         },
-        show: function() {
+        show: function(timeout=null) {
+            if (timeout === null) {
+                timeout = this.timeout;
+            }
             return window.setTimeout(() => {
                 this.queries += 1;
                 this.el.show();
-            }, this.timeout);
+            }, timeout);
         },
         hide: function(timeoutID) {
             window.clearTimeout(timeoutID);
