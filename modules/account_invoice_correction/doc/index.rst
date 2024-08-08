@@ -1,7 +1,14 @@
+#################################
 Account Invoice Correction Module
 #################################
 
-The account invoice correction module adds a wizard on invoice which allows
-select lines for which the unit price must be corrected.
+The *Account Invoice Correction Module* adds a wizard which allows the
+correction of unit prices on posted invoice lines.
 A new invoice is created with those lines in double: once with the original
 quantity, once with the inverted quantity.
+
+.. toctree::
+   :maxdepth: 2
+
+   design
+   releases
