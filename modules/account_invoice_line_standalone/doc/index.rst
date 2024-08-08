@@ -1,5 +1,12 @@
+######################################
 Account Invoice Line Standalone Module
 ######################################
 
-The account invoice line standalone module allows to create invoice line not
-linked to an invoice.
+The *Account Invoice Line Standalone Module* allows creating invoice lines that
+are not linked to an invoice.
+
+.. toctree::
+   :maxdepth: 2
+
+   design
+   releases
