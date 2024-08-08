@@ -1,4 +1,12 @@
+#################################
 Account Payment SEPA CFONB Module
 #################################
 
-The account_payment_sepa_cfonb module adds CFONB flavors to SEPA messages.
+The *Account Payment SEPA CFONB Module* adds `CFONB
+<https://www.cfonb.org/espace-documentaire/sepa>`_ flavors to SEPA messages.
+
+.. toctree::
+   :maxdepth: 2
+
+   design
+   releases
