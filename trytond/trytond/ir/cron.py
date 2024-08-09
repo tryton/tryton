@@ -1,8 +1,10 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 import datetime
+import hashlib
 import logging
 import time
+from collections import defaultdict
 
 from dateutil.relativedelta import relativedelta
 from sql import Literal
@@ -16,6 +18,7 @@ from trytond.model import (
 from trytond.pool import Pool
 from trytond.pyson import Eval
 from trytond.status import processing
+from trytond.tools import grouped_slice, reduce_ids
 from trytond.tools import timezone as tz
 from trytond.transaction import Transaction, TransactionError
 from trytond.worker import run_task
@@ -24,23 +27,32 @@ clean_days = config.getint('cron', 'clean_days', default=30)
 logger = logging.getLogger(__name__)
 
 
+def str2bigint(s):
+    return int(hashlib.sha256(s.encode('utf-8')).hexdigest(), 16) % 10**8
+
+
 class Cron(DeactivableMixin, ModelSQL, ModelView):
     "Cron"
     __name__ = "ir.cron"
-    interval_number = fields.Integer('Interval Number', required=True)
+    _states = {
+        'readonly': Eval('running', False),
+        }
+    interval_number = fields.Integer(
+        "Interval Number", required=True, states=_states)
     interval_type = fields.Selection([
             ('minutes', 'Minutes'),
             ('hours', 'Hours'),
             ('days', 'Days'),
             ('weeks', 'Weeks'),
             ('months', 'Months'),
-            ], "Interval Type", sort=False, required=True)
+            ], "Interval Type", sort=False, required=True, states=_states)
     minute = fields.Integer("Minute",
         domain=['OR',
             ('minute', '=', None),
             [('minute', '>=', 0), ('minute', '<=', 59)],
             ],
         states={
+            'readonly': _states['readonly'],
             'invisible': Eval('interval_type').in_(['minutes']),
             },
         depends=['interval_type'])
@@ -50,12 +62,14 @@ class Cron(DeactivableMixin, ModelSQL, ModelView):
             [('hour', '>=', 0), ('hour', '<=', 23)],
             ],
         states={
+            'readonly': _states['readonly'],
             'invisible': Eval('interval_type').in_(['minutes', 'hours']),
             },
         depends=['interval_type'])
     weekday = fields.Many2One(
         'ir.calendar.day', "Day of Week",
         states={
+            'readonly': _states['readonly'],
             'invisible': Eval('interval_type').in_(
                 ['minutes', 'hours', 'days']),
             },
@@ -66,21 +80,26 @@ class Cron(DeactivableMixin, ModelSQL, ModelView):
             ('day', '>=', 0),
             ],
         states={
+            'readonly': _states['readonly'],
             'invisible': Eval('interval_type').in_(
                 ['minutes', 'hours', 'days', 'weeks']),
             },
         depends=['interval_type'])
     timezone = fields.Function(fields.Char("Timezone"), 'get_timezone')
 
-    next_call = fields.DateTime("Next Call")
+    next_call = fields.DateTime("Next Call", states=_states)
+    running = fields.Function(
+        fields.Boolean("Running"), 'get_running')
     method = fields.Selection([
             ('ir.trigger|trigger_time', "Run On Time Triggers"),
             ('ir.queue|clean', "Clean Task Queue"),
             ('ir.error|clean', "Clean Errors"),
             ('ir.cron.log|clean', "Clean Cron Logs"),
-            ], "Method", required=True)
+            ], "Method", required=True, states=_states)
 
     logs = fields.One2Many('ir.cron.log', 'cron', "Logs", readonly=True)
+
+    del _states
 
     @classmethod
     def __setup__(cls):
@@ -89,6 +108,7 @@ class Cron(DeactivableMixin, ModelSQL, ModelView):
 
         cls._buttons.update({
                 'run_once': {
+                    'readonly': Eval('running', False),
                     'icon': 'tryton-launch',
                     },
                 })
@@ -114,6 +134,31 @@ class Cron(DeactivableMixin, ModelSQL, ModelView):
 
     def get_timezone(self, name):
         return self.default_timezone()
+
+    @classmethod
+    def get_running(cls, crons, name):
+        transaction = Transaction()
+        database = transaction.database
+        table = cls.__table__()
+
+        running = defaultdict(bool)
+        if database.has_select_for():
+            # Avoid concurrent locking read
+            database.lock_id(str2bigint(f'{cls.__name__},running'))
+            with transaction.new_transaction() as transaction:
+                cursor = transaction.connection.cursor()
+                For = database.get_select_for_skip_locked()
+                for sub_crons in grouped_slice(crons):
+                    ids = [c.id for c in sub_crons]
+                    query = table.select(
+                        table.id,
+                        where=reduce_ids(table.id, ids),
+                        for_=For('UPDATE'))
+                    cursor.execute(*query)
+                    not_running = {i for i, in cursor}
+                    running.update(
+                        (i, True) for i in ids if i not in not_running)
+        return running
 
     @classmethod
     def check_xml_record(cls, crons, values):

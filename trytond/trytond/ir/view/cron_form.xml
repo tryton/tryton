@@ -4,8 +4,12 @@ this repository contains the full copyright notices and license terms. -->
 <form>
     <label name="method"/>
     <field name="method"/>
-    <label name="active"/>
-    <field name="active"/>
+    <group colspan="2" col="-1" id="checkboxes">
+        <label name="active"/>
+        <field name="active" xexpand="0" width="25"/>
+        <label name="running"/>
+        <field name="running"/>
+    </group>
     <label id="interval_label" string="Every"/>
     <group id="interval" col="-1" colspan="3">
         <field name="interval_number"/>

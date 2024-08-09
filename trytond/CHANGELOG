@@ -1,3 +1,4 @@
+* Forbid editing cron when it is running
 * Store last cron durations
 * Use JSONB to store MultiSelection field by default
 * Add cardinality option to Index Usage

@@ -4,6 +4,7 @@
 from trytond import backend
 from trytond.model import ModelSQL, ModelView, dualmethod, fields
 from trytond.pool import Pool, PoolMeta
+from trytond.pyson import Eval
 from trytond.tools import timezone as tz
 from trytond.transaction import Transaction
 
@@ -70,8 +71,12 @@ class Rule(metaclass=PoolMeta):
 
 class Cron(metaclass=PoolMeta):
     __name__ = "ir.cron"
-    companies = fields.Many2Many('ir.cron-company.company', 'cron', 'company',
-            'Companies', help='Companies registered for this cron.')
+    companies = fields.Many2Many(
+        'ir.cron-company.company', 'cron', 'company', "Companies",
+        states={
+            'readonly': Eval('running', False),
+            },
+        help='Companies registered for this cron.')
 
     @dualmethod
     @ModelView.button
