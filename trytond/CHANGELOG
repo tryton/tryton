@@ -1,3 +1,4 @@
+* Store last cron durations
 * Use JSONB to store MultiSelection field by default
 * Add cardinality option to Index Usage
 * Allow configuring TinyMCE license key

@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<form col="2">
+    <label name="cron"/>
+    <field name="cron"/>
+
+    <label name="started"/>
+    <field name="started"/>
+
+    <label name="ended"/>
+    <field name="ended"/>
+
+    <label name="duration"/>
+    <field name="duration"/>
+</form>

@@ -24,6 +24,13 @@ this repository contains the full copyright notices and license terms. -->
         <label name="timezone"/>
         <field name="timezone"/>
     </group>
+
+    <notebook colspan="4">
+        <page name="logs">
+            <field name="logs" colspan="4" mode="tree,graph,form"/>
+        </page>
+    </notebook>
+
     <label name="next_call"/>
     <field name="next_call"/>
     <button name="run_once" colspan="2"/>

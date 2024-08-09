@@ -420,6 +420,20 @@ cleared.
 
 Default: ``1000``
 
+.. _config-cron:
+
+cron
+----
+
+.. _config-cron.clean_days:
+
+clean_days
+~~~~~~~~~~
+
+The number of days after which scheduled task logs are removed.
+
+Default: ``30``
+
 .. _config-queue:
 
 queue

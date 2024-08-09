@@ -58,6 +58,7 @@ def register():
         avatar.Avatar,
         avatar.AvatarCache,
         cron.Cron,
+        cron.Log,
         lang.Lang,
         lang.LangConfigStart,
         export.Export,

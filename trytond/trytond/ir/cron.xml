@@ -47,5 +47,31 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">run_once</field>
             <field name="string">Run Once</field>
         </record>
+
+        <record model="ir.ui.view" id="cron_log_view_list">
+            <field name="model">ir.cron.log</field>
+            <field name="type">tree</field>
+            <field name="name">cron_log_list</field>
+        </record>
+
+        <record model="ir.ui.view" id="cron_log_view_form">
+            <field name="model">ir.cron.log</field>
+            <field name="type">form</field>
+            <field name="name">cron_log_form</field>
+        </record>
+
+        <record model="ir.ui.view" id="cron_log_view_graph">
+            <field name="model">ir.cron.log</field>
+            <field name="type">graph</field>
+            <field name="name">cron_log_graph</field>
+        </record>
+    </data>
+
+    <data noupdate="1">
+        <record model="ir.cron" id="cron_cron_log_clean">
+            <field name="method">ir.cron.log|clean</field>
+            <field name="interval_number" eval="1"/>
+            <field name="interval_type">months</field>
+        </record>
     </data>
 </tryton>

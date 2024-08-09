@@ -20,6 +20,7 @@ from trytond.tools import timezone as tz
 from trytond.transaction import Transaction, TransactionError
 from trytond.worker import run_task
 
+clean_days = config.getint('cron', 'clean_days', default=30)
 logger = logging.getLogger(__name__)
 
 
@@ -76,7 +77,10 @@ class Cron(DeactivableMixin, ModelSQL, ModelView):
             ('ir.trigger|trigger_time', "Run On Time Triggers"),
             ('ir.queue|clean', "Clean Task Queue"),
             ('ir.error|clean', "Clean Errors"),
+            ('ir.cron.log|clean', "Clean Cron Logs"),
             ], "Method", required=True)
+
+    logs = fields.One2Many('ir.cron.log', 'cron', "Logs", readonly=True)
 
     @classmethod
     def __setup__(cls):
@@ -176,6 +180,7 @@ class Cron(DeactivableMixin, ModelSQL, ModelView):
                     **transaction_extras) as transaction:
                 pool = Pool()
                 Error = pool.get('ir.error')
+                Log = pool.get('ir.cron.log')
                 table = cls.__table__()
                 database = transaction.database
                 cursor = transaction.connection.cursor()
@@ -206,6 +211,7 @@ class Cron(DeactivableMixin, ModelSQL, ModelView):
                 def duration():
                     return (time.monotonic() - started) * 1000
                 started = time.monotonic()
+                started_datetime = datetime.datetime.now()
                 name = '<Cron %s@%s %s>' % (task.id, db_name, task.method)
                 try:
                     if not database.has_select_for():
@@ -214,8 +220,13 @@ class Cron(DeactivableMixin, ModelSQL, ModelView):
                         task.run_once()
                     task.next_call = task.compute_next_call(now)
                     task.save()
+                    Log(
+                        cron=task,
+                        started=started_datetime,
+                        ended=datetime.datetime.now()).save()
                     logger.info("%s in %i ms", name, duration())
                 except Exception as e:
+                    print(e)
                     transaction.rollback()
                     if isinstance(e, TransactionError):
                         e.fix(transaction_extras)
@@ -252,3 +263,31 @@ class Cron(DeactivableMixin, ModelSQL, ModelView):
                 except backend.DatabaseOperationalError:
                     transaction.rollback()
         logger.info('cron finished for "%s"', db_name)
+
+
+class Log(ModelSQL, ModelView):
+    "Cron Log"
+    __name__ = 'ir.cron.log'
+
+    cron = fields.Many2One(
+        'ir.cron', "Cron", ondelete='CASCADE', required=True)
+    started = fields.DateTime("Started", required=True)
+    ended = fields.DateTime("Ended", required=True)
+    duration = fields.Function(
+        fields.TimeDelta("Duration"), 'get_duration')
+
+    @classmethod
+    def __setup__(cls):
+        super().__setup__()
+        cls.__access__.add('cron')
+
+    def get_duration(self, name):
+        return self.ended - self.started
+
+    @classmethod
+    def clean(cls, date=None):
+        if date is None:
+            date = (
+                datetime.datetime.now() - datetime.timedelta(days=clean_days))
+        logs = cls.search([('create_date', '<', date)])
+        cls.delete(logs)
