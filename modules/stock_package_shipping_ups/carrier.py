@@ -60,9 +60,9 @@ class CredentialUPS(sequence_ordered(), ModelSQL, ModelView, MatchMixin):
 
     def get_shipment_url(self):
         if self.server == 'production':
-            return 'https://onlinetools.ups.com/api/shipments/v1/ship'
+            return 'https://onlinetools.ups.com/api/shipments/v2403/ship'
         else:
-            return 'https://wwwcie.ups.com/api/shipments/v1/ship'
+            return 'https://wwwcie.ups.com/api/shipments/v2403/ship'
 
     @classmethod
     def write(cls, *args):

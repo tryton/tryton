@@ -78,7 +78,7 @@ class ImageURLMixin:
             del pattern[key]
         pattern = {k: bool(int(v)) for k, v in pattern.items()}
         for image in self.images_used:
-            if image.match(pattern):
+            if image.match(pattern, match_none=True):
                 yield image
 
 

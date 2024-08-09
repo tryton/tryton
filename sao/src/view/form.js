@@ -2801,6 +2801,7 @@ function eval_pyson(value){
                     params.name = this.attributes.string;
                     params.context = this.field.get_context(this.record);
                     Sao.Tab.create(params);
+                    this._popup = false;
                     return;
                 }
                 var screen = this.get_screen();
@@ -4804,7 +4805,7 @@ function eval_pyson(value){
         },
         set_url: function(value) {
             this.button.attr('href', value);
-            this.button.toggle(value);
+            this.button.toggle(Boolean(value));
         },
         set_invisible: function(invisible) {
             Sao.View.Form.URL._super.set_invisible.call(this, invisible);
@@ -4852,15 +4853,9 @@ function eval_pyson(value){
                 'rel': 'noreferrer noopener',
             }).text(attributes.string).appendTo(this.el);
             if (attributes.translate) {
-                var button = jQuery('<button/>', {
-                    'class': 'btn btn-default btn-sm',
-                    'type': 'button',
-                    'aria-label': Sao.i18n.gettext('Translate'),
-                    'title': Sao.i18n.gettext("Translate"),
-                }).appendTo(this.el);
-                button.append(
+                this.button.prepend(
                     Sao.common.ICONFACTORY.get_icon_img('tryton-translate'));
-                button.click(this.translate.bind(this));
+                this.button.click(this.translate.bind(this));
             }
         },
         uri: function(language) {
@@ -4880,7 +4875,9 @@ function eval_pyson(value){
         },
         display: function() {
             Sao.View.Form.HTML._super.display.call(this);
-            this.button.attr('href', this.uri());
+            if (!this.attributes.translate) {
+                this.button.attr('href', this.uri());
+            }
         },
         set_readonly: function(readonly) {
             Sao.View.Form.HTML._super.set_readonly.call(this, readonly);
@@ -4896,7 +4893,9 @@ function eval_pyson(value){
             for (const language of languages) {
                 options[language.name] = language.code;
             }
-            Sao.common.selection(Sao.i18n.gettext("Choose a language"), options)
+            Sao.common.selection(
+                Sao.i18n.gettext("Choose a language"), options, false,
+                Sao.i18n.getlang())
             .done(language => {
                 window.open(this.uri(language), '_blank', 'noreferrer,noopener');
             });
@@ -4976,10 +4975,8 @@ function eval_pyson(value){
             var group = jQuery('<div/>', {
                 'class': 'input-group input-group-sm'
             }).appendTo(jQuery('<div>', {
-                'class': 'col-sm-10 col-sm-offset-2'
-            }).appendTo(jQuery('<div/>', {
-                'class': 'form-group'
-            }).appendTo(body)));
+                'class': 'dict-row'
+            }).appendTo(body));
             this.wid_text = jQuery('<input/>', {
                 'type': 'text',
                 'class': 'form-control input-sm',
@@ -5058,6 +5055,7 @@ function eval_pyson(value){
                     for (const key of new_names) {
                         value[key] = null;
                     }
+                    this.field.set_client(this.record, value);
                     this._display().then(() => {
                         this.fields[new_names[0]].input.focus();
                     });
@@ -5130,16 +5128,16 @@ function eval_pyson(value){
             this.fields[key] = field = new (
                 this.get_entries(key_schema.type))(key, this);
             this.rows[key] = row = jQuery('<div/>', {
-                'class': 'form-group'
+                'class': 'dict-row'
             });
             var text = key_schema.string + Sao.i18n.gettext(':');
             var label = jQuery('<label/>', {
                 'text': text
             }).appendTo(jQuery('<div/>', {
-                'class': 'dict-label col-sm-2 control-label'
+                'class': 'dict-label control-label'
             }).appendTo(row));
 
-            field.el.addClass('col-sm-10').appendTo(row);
+            field.el.appendTo(row);
 
             label.uniqueId();
             field.labelled.uniqueId();
@@ -5438,10 +5436,16 @@ function eval_pyson(value){
             },
             get_value: function() {
                 var value = this.input.val();
-                return value.map(function(e) { return JSON.parse(e); });
+                if (value && value.length) {
+                    return value.map(function(e) { return JSON.parse(e); });
+                } else {
+                    return null;
+                }
             },
             set_value: function(value) {
-                value = value.map(function(e) { return JSON.stringify(e); });
+                if (value) {
+                    value = value.map(function(e) { return JSON.stringify(e); });
+                }
                 this.input.val(value);
             }
         });

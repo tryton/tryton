@@ -1,18 +1,21 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 import io
+import unittest
 import urllib.request
 
 import PIL.Image
 
 from trytond.pool import Pool
-from trytond.tests.test_tryton import ModuleTestCase, with_transaction
+from trytond.tests.test_tryton import (
+    TEST_NETWORK, ModuleTestCase, with_transaction)
 
 
 class ProductImageTestCase(ModuleTestCase):
     'Test Product Image module'
     module = 'product_image'
 
+    @unittest.skipUnless(TEST_NETWORK, "requires network")
     @with_transaction()
     def test_image_square(self):
         "Test image square"
@@ -43,6 +46,7 @@ class ProductImageTestCase(ModuleTestCase):
         img = PIL.Image.open(io.BytesIO(image.get(size=(150, 200))))
         self.assertEqual(img.size, (150, 150))
 
+    @unittest.skipUnless(TEST_NETWORK, "requires network")
     @with_transaction()
     def test_image_non_square(self):
         "Test image non square"
@@ -89,6 +93,7 @@ class ProductImageTestCase(ModuleTestCase):
             with self.subTest(size=size):
                 self.assertEqual(Image._round_size(size), result)
 
+    @unittest.skipUnless(TEST_NETWORK, "requires network")
     @with_transaction()
     def test_get_image_url(self):
         "Test get_image_url"

@@ -20,6 +20,7 @@ SOURCE = config.get(
     default='https://cdn.tiny.cloud/1/no-api-key/tinymce/7/tinymce.min.js')
 AVATAR_TIMEOUT = config.getint(
     'web', 'avatar_timeout', default=7 * 24 * 60 * 60)
+_request_timeout = config.getint('request', 'timeout', default=0)
 
 
 def get_token(record):
@@ -184,7 +185,8 @@ TEMPLATE = '''<!DOCTYPE html>
 @app.route('/<database_name>/data/<model>', methods={'GET'})
 @app.auth_required
 @with_pool
-@with_transaction(user='request', context=dict(_check_access=True))
+@with_transaction(
+    user='request', context=dict(_check_access=True), timeout=_request_timeout)
 def data(request, pool, model):
     User = pool.get('res.user')
     Lang = pool.get('ir.lang')

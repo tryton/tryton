@@ -12,7 +12,8 @@ except ImportError:
 
 from trytond.exceptions import UserError
 from trytond.model.exceptions import AccessError
-from trytond.modules.party.party import IDENTIFIER_TYPES
+from trytond.modules.party.party import (
+    IDENTIFIER_TYPES, IDENTIFIER_VAT, replace_vat)
 from trytond.pool import Pool
 from trytond.tests.test_tryton import ModuleTestCase, with_transaction
 from trytond.transaction import Transaction
@@ -565,9 +566,16 @@ class PartyTestCase(PartyCheckEraseMixin, ModuleTestCase):
         "Ensure tax identifier types are in identifier types"
         pool = Pool()
         Party = pool.get('party.party')
-        self.assertFalse(
-            set(Party.tax_identifier_types())
-            - set(dict(IDENTIFIER_TYPES).keys()))
+        identifiers = dict(IDENTIFIER_TYPES).keys()
+        tax_identifiers = set(Party.tax_identifier_types())
+        self.assertLessEqual(tax_identifiers, identifiers)
+
+    @with_transaction()
+    def test_identifier_vat_types(self):
+        "Ensure VAT identifiers are identifier types"
+        identifiers = dict(IDENTIFIER_TYPES).keys()
+        vat_identifiers = set(map(replace_vat, IDENTIFIER_VAT))
+        self.assertLessEqual(vat_identifiers, identifiers)
 
     @with_transaction()
     def test_party_distance(self):

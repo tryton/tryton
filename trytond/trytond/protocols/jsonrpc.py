@@ -2,12 +2,13 @@
 # this repository contains the full copyright notices and license terms.
 import base64
 import datetime
+import gzip
 import json
 from decimal import Decimal
 
 from werkzeug.exceptions import (
-    BadRequest, Conflict, Forbidden, InternalServerError, Locked,
-    TooManyRequests)
+    BadRequest, Conflict, Forbidden, HTTPException, InternalServerError,
+    Locked, TooManyRequests)
 from werkzeug.wrappers import Response
 
 from trytond.exceptions import (
@@ -129,6 +130,8 @@ class JSONRequest(Request):
                         getattr(self, 'charset', 'utf-8'),
                         getattr(self, 'encoding_errors', 'replace')),
                     object_hook=JSONDecoder())
+            except HTTPException:
+                raise
             except Exception:
                 raise BadRequest('Unable to read JSON request')
         else:
@@ -136,17 +139,11 @@ class JSONRequest(Request):
 
     @cached_property
     def rpc_method(self):
-        try:
-            return self.parsed_data['method']
-        except Exception:
-            pass
+        return self.parsed_data['method']
 
     @cached_property
     def rpc_params(self):
-        try:
-            return self.parsed_data['params']
-        except Exception:
-            pass
+        return self.parsed_data['params']
 
 
 class JSONProtocol:
@@ -188,6 +185,11 @@ class JSONProtocol:
             elif isinstance(data, Exception):
                 return InternalServerError(data)
             response = data
-        return Response(json.dumps(
-                response, cls=JSONEncoder, separators=(',', ':')),
-            content_type='application/json')
+        headers = {}
+        data = json.dumps(
+            response, cls=JSONEncoder, separators=(',', ':'))
+        if len(data) >= 1400 and 'gzip' in request.accept_encodings:
+            data = gzip.compress(data.encode('utf-8'), compresslevel=1)
+            headers['Content-Encoding'] = 'gzip'
+        return Response(
+            data, content_type='application/json', headers=headers)

@@ -9,7 +9,8 @@ from sql.functions import CurrentDate
 from trytond import backend
 from trytond.model.exceptions import RequiredValidationError
 from trytond.pool import Pool
-from trytond.tests.test_tryton import activate_module, with_transaction
+from trytond.tests.test_tryton import (
+    TestCase, activate_module, with_transaction)
 from trytond.transaction import Transaction
 
 today = datetime.date(2009, 1, 1)
@@ -18,7 +19,7 @@ yesterday = today - datetime.timedelta(1)
 default_date = datetime.date(2000, 1, 1)
 
 
-class FieldDateTestCase(unittest.TestCase):
+class FieldDateTestCase(TestCase):
     "Test Field Date"
 
     @classmethod

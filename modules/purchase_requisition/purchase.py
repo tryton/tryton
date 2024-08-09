@@ -247,6 +247,10 @@ class PurchaseRequisition(Workflow, ModelSQL, ModelView):
 
     @classmethod
     def store_cache(cls, requisitions):
+        requisitions = list(requisitions)
+        cls.write(requisitions, {
+                'total_amount_cache': None,
+                })
         for requisition in requisitions:
             requisition.total_amount_cache = requisition.total_amount
         cls.save(requisitions)
@@ -332,6 +336,7 @@ class PurchaseRequisition(Workflow, ModelSQL, ModelView):
         default.setdefault('supply_date', None)
         default.setdefault('approved_by')
         default.setdefault('rejected_by')
+        default.setdefault('total_amount_cache')
         return super(PurchaseRequisition, cls).copy(
             requisitions, default=default)
 
@@ -346,7 +351,11 @@ class PurchaseRequisition(Workflow, ModelSQL, ModelView):
     @Workflow.transition('draft')
     @reset_employee('approved_by', 'rejected_by')
     def draft(cls, requisitions):
-        pass
+        cls.write(requisitions, {
+                'tax_amount_cache': None,
+                'untaxed_amount_cache': None,
+                'total_amount_cache': None,
+                })
 
     @classmethod
     @ModelView.button

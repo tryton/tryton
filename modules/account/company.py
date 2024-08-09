@@ -6,12 +6,13 @@ from sql import Literal, Null
 from sql.aggregate import Sum
 from sql.conditionals import Coalesce
 
+from trytond import backend
 from trytond.i18n import gettext
 from trytond.model import fields
 from trytond.model.exceptions import AccessError
 from trytond.modules.currency.fields import Monetary
 from trytond.pool import Pool, PoolMeta
-from trytond.tools import grouped_slice, reduce_ids
+from trytond.tools import grouped_slice, reduce_ids, sqlite_apply_types
 from trytond.transaction import Transaction
 
 
@@ -67,21 +68,21 @@ class Company(metaclass=PoolMeta):
             for sub_companies in grouped_slice(companies):
                 sub_ids = [p.id for p in sub_companies]
                 company_where = reduce_ids(account.company, sub_ids)
-                cursor.execute(*line
+                query = (line
                     .join(account,
                         condition=account.id == line.account)
                     .join(account_type,
                         condition=account.type == account_type.id)
-                    .select(account.company, amount,
+                    .select(account.company.as_('id'), amount.as_(name),
                         where=(getattr(account_type, code)
                             & (line.reconciliation == Null)
                             & company_where
                             & today_where),
                         group_by=account.company))
+                if backend.name == 'sqlite':
+                    sqlite_apply_types(query, [None, 'NUMERIC'])
+                cursor.execute(*query)
                 for company_id, value in cursor:
-                    # SQLite uses float for SUM
-                    if not isinstance(value, Decimal):
-                        value = Decimal(str(value))
                     amounts[name][company_id] = value.quantize(exp[company_id])
         return amounts
 

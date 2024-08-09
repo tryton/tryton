@@ -1,18 +1,19 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of this
 # repository contains the full copyright notices and license terms.
 
-import unittest
+import warnings
 
 from trytond.model import EvalEnvironment
 from trytond.model.exceptions import (
     AccessError, DomainValidationError, RequiredValidationError)
 from trytond.model.modelstorage import _UnsavedRecordError
 from trytond.pool import Pool
-from trytond.tests.test_tryton import activate_module, with_transaction
+from trytond.tests.test_tryton import (
+    TestCase, activate_module, with_transaction)
 from trytond.transaction import Transaction, check_access
 
 
-class ModelStorageTestCase(unittest.TestCase):
+class ModelStorageTestCase(TestCase):
     'Test ModelStorage'
 
     @classmethod
@@ -163,7 +164,7 @@ class ModelStorageTestCase(unittest.TestCase):
         record.target = target = Target()
 
         with self.assertRaises(_UnsavedRecordError) as cm:
-            record._save_values
+            record._save_values()
 
         self.assertEqual(cm.exception.record, target)
 
@@ -192,7 +193,12 @@ class ModelStorageTestCase(unittest.TestCase):
 
         record1 = ModelStorage()
         record1.target = target = Target()
-        record1.save()
+
+        with warnings.catch_warnings(record=True) as w:
+            warnings.simplefilter("always")
+            record1.save()
+            warning, = w
+            self.assertTrue(issubclass(warning.category, UserWarning))
 
         record2 = ModelStorage()
         record2.target = target
@@ -217,7 +223,12 @@ class ModelStorageTestCase(unittest.TestCase):
         target.target = m2o_target = M2OTarget()
         record = ModelStorage()
         record.targets = [target]
-        record.save()
+
+        with warnings.catch_warnings(record=True) as w:
+            warnings.simplefilter("always")
+            record.save()
+            warning, = w
+            self.assertTrue(issubclass(warning.category, UserWarning))
 
         self.assertIsNotNone(record.id)
         self.assertIsNotNone(m2o_target.id)
@@ -755,7 +766,7 @@ class ModelStorageTestCase(unittest.TestCase):
         Model.delete([record])
 
 
-class EvalEnvironmentTestCase(unittest.TestCase):
+class EvalEnvironmentTestCase(TestCase):
     "Test EvalEnvironment"
 
     @classmethod

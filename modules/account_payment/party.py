@@ -64,13 +64,21 @@ class PartyReceptionDirectDebit(
     __name__ = 'party.party.reception_direct_debit'
 
     party = fields.Many2One(
-        'party.party', "Party", ondelete='CASCADE',
+        'party.party', "Party", required=True, ondelete='CASCADE',
         context={
             'company': Eval('company', -1),
             },
         depends={'company'})
     journal = fields.Many2One(
         'account.payment.journal', "Journal", required=True)
+    type = fields.Selection([
+            ('line', "Line"),
+            ('balance', "Balance"),
+            ], "Type", required=True,
+        help_selection={
+            'line': "Make one payment per line.",
+            'balance': "Make a single payment.",
+            })
     company = fields.Function(
         fields.Many2One('company.company', "Company"),
         'on_change_with_company', searcher='search_company')
@@ -80,6 +88,10 @@ class PartyReceptionDirectDebit(
     process_method = fields.Function(
         fields.Selection('get_process_methods', "Process Method"),
         'on_change_with_process_method')
+
+    @classmethod
+    def default_type(cls):
+        return 'line'
 
     @fields.depends('journal')
     def on_change_with_company(self, name=None):
@@ -107,20 +119,27 @@ class PartyReceptionDirectDebit(
             return self.journal.process_method
 
     @classmethod
-    def get_pattern(cls, line):
+    def get_pattern(cls, line, type='line'):
         return {
             'company': line.company.id,
             'currency': line.payment_currency.id,
+            'type': type,
             }
 
-    def get_payments(self, line):
+    def get_payments(self, line=None, amount=None, date=None):
         pool = Pool()
         Date = pool.get('ir.date')
-        with Transaction().set_context(company=self.company.id):
-            today = Date.today()
-        for date, amount in self._compute(
-                line.maturity_date or today, line.payment_amount):
-            yield self._get_payment(line, date, amount)
+        assert not line or self.type == 'line'
+        if date is None:
+            with Transaction().set_context(company=self.company.id):
+                date = Date.today()
+        if line:
+            date = min(line.maturity_date, date)
+            if amount is None:
+                amount = line.payment_amount
+        if amount:
+            for date, amount in self._compute(date, amount):
+                yield self._get_payment(line, date, amount)
 
     def _compute(self, date, amount):
         yield date, amount
@@ -129,13 +148,35 @@ class PartyReceptionDirectDebit(
         pool = Pool()
         Payment = pool.get('account.payment')
         return Payment(
-            company=line.company,
+            company=self.company,
             journal=self.journal,
             kind='receivable',
-            party=line.party,
+            party=self.party,
             date=date,
             amount=amount,
             line=line)
+
+    def get_balance_domain(self, date):
+        return [
+            ['OR',
+                ('account.type.receivable', '=', True),
+                ('account.type.payable', '=', True),
+                ],
+            ('party', '=', self.party.id),
+            ('payment_currency', '=', self.currency.id),
+            ('reconciliation', '=', None),
+            ('payment_amount', '!=', 0),
+            ('move_state', '=', 'posted'),
+            ('maturity_date', '<=', date),
+            ('payment_blocked', '!=', True),
+            ]
+
+    def get_balance_pending_payment_domain(self):
+        return [
+            ('party', '=', self.party.id),
+            ('currency', '=', self.currency.id),
+            ('state', 'not in', ['succeeded', 'failed']),
+            ]
 
 
 class Replace(metaclass=PoolMeta):

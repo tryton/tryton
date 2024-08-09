@@ -29,6 +29,7 @@ def register():
         stock.Inventory,
         stock.InventoryLine,
         stock.InventoryCountSearch,
+        stock.InventoryCountQuantity,
         product.Configuration,
         product.ConfigurationDefaultLotSequence,
         product.Template,

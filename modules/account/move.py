@@ -491,7 +491,10 @@ class Move(DescriptionOriginMixin, ModelSQL, ModelView):
                         line.id,
                         where=reduce_ids(line.move, sub_moves_ids)
                         & (line.debit == Decimal(0))
-                        & (line.credit == Decimal(0))))
+                        & (line.credit == Decimal(0))
+                        & ((line.amount_second_currency == Null)
+                            | (line.amount_second_currency == Decimal(0)))
+                        ))
                 to_reconcile.extend(l for l, in cursor)
 
         for move in moves:
@@ -1646,6 +1649,12 @@ class Line(DescriptionOriginMixin, MoveLineMixin, ModelSQL, ModelView):
             account = writeoff.debit_account
         else:
             account = writeoff.credit_account
+        if account == reconcile_account:
+            raise ReconciliationError(gettext(
+                    'account.msg_reconciliation_write_off_same_account',
+                    write_off=writeoff.rec_name,
+                    account=account.rec_name))
+
         journal = writeoff.journal
 
         if currency != company.currency:

@@ -127,7 +127,8 @@
         return result;
     };
 
-    Sao.common.selection = function(title, values, alwaysask=false) {
+    Sao.common.selection = function(
+        title, values, alwaysask=false, default_=null) {
         var prm = jQuery.Deferred();
         if (jQuery.isEmptyObject(values)) {
             prm.reject();
@@ -142,6 +143,7 @@
         var dialog = new Sao.Dialog(
                 title || Sao.i18n.gettext('Your selection:'),
                 'selection-dialog');
+        dialog.modal.uniqueId();
 
         keys.forEach(function(k, i) {
             jQuery('<div/>', {
@@ -150,12 +152,15 @@
                 .text(' ' + k)
                 .prepend(jQuery('<input/>', {
                     'type': 'radio',
-                    'name': 'selection',
-                    'value': i
+                    'name': 'selection-' + dialog.modal.attr('id'),
+                    'value': i,
+                    'checked': values[keys[i]] == default_,
                 })))
             .appendTo(dialog.body);
         });
-        dialog.body.find('input').first().prop('checked', true);
+        if (!default_) {
+            dialog.body.find('input').first().prop('checked', true);
+        }
 
         jQuery('<button/>', {
             'class': 'btn btn-link',

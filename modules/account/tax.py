@@ -18,7 +18,8 @@ from trytond.model.exceptions import AccessError
 from trytond.modules.currency.fields import Monetary
 from trytond.pool import Pool
 from trytond.pyson import Bool, Eval, If, PYSONEncoder
-from trytond.tools import cursor_dict, is_full_text, lstrip_wildcard
+from trytond.tools import (
+    cursor_dict, is_full_text, lstrip_wildcard, sqlite_apply_types)
 from trytond.transaction import Transaction
 from trytond.wizard import Button, StateAction, StateView, Wizard
 
@@ -949,13 +950,13 @@ class Tax(sequence_ordered(), ModelSQL, ModelView, DeactivableMixin):
                 group_by=tax_line.tax)
             )
 
+        if backend.name == 'sqlite':
+            sqlite_apply_types(query, [None] + ['NUMERIC'] * len(names))
+
         cursor.execute(*query)
         for row in cursor_dict(cursor):
             for name in names:
-                value = row[name] or 0
-                if not isinstance(value, Decimal):
-                    value = Decimal(str(value))
-                result[name][row['tax']] = value
+                result[name][row['tax']] = row[name] or 0
         return result
 
     @classmethod

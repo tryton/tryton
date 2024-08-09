@@ -2,17 +2,17 @@
 # this repository contains the full copyright notices and license terms.
 import datetime as dt
 import math
-import unittest
 
 from sql import Literal, Select, functions
 from sql.functions import CurrentTimestamp, DateTrunc, ToChar
 
 from trytond.model import fields
-from trytond.tests.test_tryton import activate_module, with_transaction
+from trytond.tests.test_tryton import (
+    TestCase, activate_module, with_transaction)
 from trytond.transaction import Transaction
 
 
-class BackendTestCase(unittest.TestCase):
+class BackendTestCase(TestCase):
     "Test the backend"
 
     @classmethod

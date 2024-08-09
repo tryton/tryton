@@ -11,7 +11,7 @@ Imports::
     >>> from trytond.modules.account.tests.tools import (
     ...     create_chart, create_fiscalyear, get_accounts)
     >>> from trytond.modules.company.tests.tools import create_company, get_company
-    >>> from trytond.tests.tools import activate_modules, assertEqual
+    >>> from trytond.tests.tools import activate_modules, assertEqual, assertIsNotNone
 
     >>> today = dt.date.today()
     >>> tomorrow = today + dt.timedelta(days=1)
@@ -92,6 +92,7 @@ Create direct debit::
     >>> assertEqual(payment.party, customer1)
     >>> assertEqual(payment.date, tomorrow)
     >>> assertEqual(payment.journal, payment_journal)
+    >>> assertIsNotNone(payment.line)
 
 Re-run create direct debit does nothing::
 

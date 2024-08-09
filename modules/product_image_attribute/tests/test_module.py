@@ -1,15 +1,18 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
+import unittest
 import urllib.request
 
 from trytond.pool import Pool
-from trytond.tests.test_tryton import ModuleTestCase, with_transaction
+from trytond.tests.test_tryton import (
+    TEST_NETWORK, ModuleTestCase, with_transaction)
 
 
 class ProductImageAttributeTestCase(ModuleTestCase):
     'Test Product Image Attribute module'
     module = 'product_image_attribute'
 
+    @unittest.skipUnless(TEST_NETWORK, "requires network")
     @with_transaction()
     def test_image_attribute(self):
         "Test image with attribute"
@@ -33,6 +36,7 @@ class ProductImageAttributeTestCase(ModuleTestCase):
         template = Template(name="Template")
         template.default_uom, = Uom.search([], limit=1)
         template.attribute_set = attribute_set
+        template.save()
         product = Product(template=template)
         product.attributes = {
             'attr1': 'foo',

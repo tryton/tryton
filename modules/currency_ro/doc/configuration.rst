@@ -3,7 +3,7 @@ Configuration
 *************
 
 The *Currency RO Module* uses values from settings in the ``[currency_ro]``
-section of the :doc:`configuration file <trytond:topics/configuration>`.
+section of the :ref:`trytond:topics-configuration`.
 
 .. _config-currency_ro.requests_timeout:
 

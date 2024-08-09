@@ -3,8 +3,7 @@ Configuration
 *************
 
 The *Stock Package Shipping UPS Module* uses values from the settings in the
-``[stock_package_shipping_ups]`` section of the :doc:`configuration file
-<trytond:topics/configuration>`.
+``[stock_package_shipping_ups]`` section of the :ref:`trytond:topics-configuration`.
 
 .. _config-stock_package_shipping_ups.requests_timeout:
 

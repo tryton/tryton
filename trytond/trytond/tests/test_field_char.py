@@ -10,7 +10,7 @@ from trytond.model.exceptions import (
     ForbiddenCharValidationError, RequiredValidationError, SizeValidationError)
 from trytond.pool import Pool
 from trytond.tests.test_tryton import (
-    ExtensionTestCase, activate_module, with_transaction)
+    ExtensionTestCase, TestCase, activate_module, with_transaction)
 from trytond.transaction import Transaction
 
 
@@ -382,7 +382,7 @@ class CommonTestCaseMixin:
         self.assertEqual(char.char_unstripped, " Foo ")
 
 
-class FieldCharTestCase(unittest.TestCase, CommonTestCaseMixin):
+class FieldCharTestCase(TestCase, CommonTestCaseMixin):
     "Test Field Char"
 
     @classmethod
@@ -608,7 +608,7 @@ class FieldCharTestCase(unittest.TestCase, CommonTestCaseMixin):
         self.assertEqual(read_record.char_unstripped, " Bar ")
 
 
-class FieldCharTranslatedTestCase(unittest.TestCase, CommonTestCaseMixin):
+class FieldCharTranslatedTestCase(TestCase, CommonTestCaseMixin):
     "Test Field Char Translated"
 
     @classmethod
@@ -643,6 +643,36 @@ class FieldCharTranslatedTestCase(unittest.TestCase, CommonTestCaseMixin):
             char.save()
 
             self.assertEqual(char.char, "bar")
+
+    @with_transaction()
+    def test_translated(self):
+        pool = Pool()
+        Language = pool.get('ir.lang')
+        Char = self.Char()
+
+        english, = Language.search([('code', '=', 'en')])
+        english.translatable = True
+        english.save()
+
+        french, = Language.search([('code', '=', 'fr')])
+        french.translatable = True
+        french.save()
+
+        with Transaction().set_context(language='en'):
+            record, = Char.create([{'char': 'foo'}])
+        with Transaction().set_context(language='fr'):
+            Char.write([record], {'char': 'bar'})
+
+        self.assertEqual(record.char, 'foo')
+        self.assertEqual(record.char_translated('en'), 'foo')
+        self.assertEqual(record.char_translated('fr'), 'bar')
+
+        with Transaction().set_context(language='fr'):
+            record = Char(record.id)
+
+        self.assertEqual(record.char, 'bar')
+        self.assertEqual(record.char_translated('en'), 'foo')
+        self.assertEqual(record.char_translated('fr'), 'bar')
 
 
 @unittest.skipUnless(backend.name == 'postgresql',

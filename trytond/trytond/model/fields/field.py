@@ -192,7 +192,7 @@ def instantiate_context(field, record):
 
 
 def on_change_result(record):
-    return record._changed_values
+    return record._changed_values()
 
 
 def on_change_with_result(fieldname):
@@ -201,7 +201,7 @@ def on_change_with_result(fieldname):
         def wrapper(self, *args, **kwargs):
             value = func(self, *args, **kwargs)
             setattr(self, fieldname, value)
-            return self._changed_values
+            return self._changed_values()
         return wrapper
     return decorator
 
@@ -559,6 +559,14 @@ class Field(object):
 
 class FieldTranslate(Field):
 
+    def translated(self, name=None):
+        "Return a descriptor to get translated value of the field"
+        if name is None:
+            name = self.name
+        if name is None:
+            raise ValueError("Missing name argument")
+        return Translated(name)
+
     def _get_translation_join(
             self, Model, name, translation, table, from_, language):
         if Model.__name__ == 'ir.model.field':
@@ -725,3 +733,30 @@ class FieldTranslate(Field):
         definition = super().definition(model, language)
         definition['translate'] = self.translate
         return definition
+
+
+class Translated:
+    "A descriptor to translate value of field"
+
+    def __init__(self, name):
+        self.name = name
+
+    def __get__(self, inst, cls):
+        pool = Pool()
+        Translation = pool.get('ir.translation')
+        if inst is None:
+            return self
+
+        def translate(language=None):
+            if language is None:
+                language = Transaction().language
+            read_size = max(1, min(
+                    inst._cache.size_limit,
+                    inst._local_cache.size_limit,
+                    inst._transaction.database.IN_MAX))
+            index = inst._ids.index(inst.id)
+            ids = inst._ids[index:index + read_size]
+            translations = Translation.get_ids(
+                f'{cls.__name__},{self.name}', 'model', language, ids)
+            return translations.get(inst.id) or getattr(inst, self.name)
+        return translate

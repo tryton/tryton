@@ -403,7 +403,7 @@ class Period(Workflow, ModelSQL, ModelView):
     @ModelView.button
     @Workflow.transition('open')
     def reopen(cls, periods):
-        "Re-open period"
+        "Reopen period"
         pass
 
     @classmethod

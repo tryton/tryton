@@ -5,6 +5,8 @@ import logging
 import time
 
 from dateutil.relativedelta import relativedelta
+from sql import Literal
+from sql.conditionals import Coalesce
 
 from trytond import backend
 from trytond.config import config
@@ -121,7 +123,9 @@ class Cron(DeactivableMixin, ModelSQL, ModelView):
                 }),
             ]
 
-    def compute_next_call(self, now):
+    def compute_next_call(self, now=None):
+        if now is None:
+            now = datetime.datetime.now()
         return (now.replace(tzinfo=tz.UTC).astimezone(tz.SERVER)
             + relativedelta(**{self.interval_type: self.interval_number})
             + relativedelta(
@@ -157,61 +161,94 @@ class Cron(DeactivableMixin, ModelSQL, ModelView):
 
     @classmethod
     def run(cls, db_name):
-        transaction = Transaction()
         logger.info('cron started for "%s"', db_name)
         now = datetime.datetime.now()
         retry = config.getint('database', 'retry')
-        with transaction.start(
-                db_name, 0, context={'_skip_warnings': True},
-                _lock_tables=[cls._table]):
-            pool = Pool()
-            Error = pool.get('ir.error')
-            crons = cls.search(['OR',
-                    ('next_call', '<=', now),
-                    ('next_call', '=', None),
-                    ])
+        count = 0
+        current_task_id = None
+        transaction_extras = {}
+        skip_task_ids = [-1]
+        while True:
+            if count:
+                time.sleep(0.02 * (retry - count))
+            with Transaction().start(
+                    db_name, 0, context={'_skip_warnings': True},
+                    **transaction_extras) as transaction:
+                pool = Pool()
+                Error = pool.get('ir.error')
+                table = cls.__table__()
+                database = transaction.database
+                cursor = transaction.connection.cursor()
 
-            for cron in crons:
+                query = table.select(
+                    table.id,
+                    where=(Coalesce(table.next_call, now) <= now)
+                    & ~table.id.in_(skip_task_ids)
+                    & (table.active == Literal(True)),
+                    order_by=[table.id.asc],
+                    limit=1)
+                if database.has_select_for():
+                    For = database.get_select_for_skip_locked()
+                    query.for_ = For('UPDATE')
+                cursor.execute(*query)
+                row = cursor.fetchone()
+                if not row:
+                    break
+                task_id, = row
+                if current_task_id is not None and current_task_id != task_id:
+                    # Get another task so reset the transaction setup
+                    count = 0
+                    current_task_id = None
+                    transaction_extras.clear()
+                    continue
+                task = cls(task_id)
+
                 def duration():
                     return (time.monotonic() - started) * 1000
                 started = time.monotonic()
-                name = '<Cron %s@%s %s>' % (cron.id, db_name, cron.method)
-                transaction_extras = {}
-                count = 0
-                while True:
-                    if count:
-                        time.sleep(0.02 * (retry - count))
-                    try:
-                        with processing(name), \
-                                transaction.new_transaction(
-                                    **transaction_extras) as cron_trans:
-                            try:
-                                cron.run_once()
-                                cron_trans.commit()
-                            except TransactionError as e:
-                                cron_trans.rollback()
-                                e.fix(transaction_extras)
-                                continue
-                            except backend.DatabaseOperationalError:
-                                if count < retry:
-                                    cron_trans.rollback()
-                                    count += 1
-                                    logger.debug("Retry: %i", count)
-                                    continue
-                                else:
-                                    raise
-                    except (UserError, UserWarning) as e:
-                        Error.report(cron, e)
+                name = '<Cron %s@%s %s>' % (task.id, db_name, task.method)
+                try:
+                    if not database.has_select_for():
+                        task.lock()
+                    with processing(name):
+                        task.run_once()
+                    task.next_call = task.compute_next_call(now)
+                    task.save()
+                    logger.info("%s in %i ms", name, duration())
+                except Exception as e:
+                    transaction.rollback()
+                    if isinstance(e, TransactionError):
+                        e.fix(transaction_extras)
+                        current_task_id = task_id
+                        continue
+                    if (isinstance(e, backend.DatabaseOperationalError)
+                            and count < retry):
+                        count += 1
+                        current_task_id = task_id
+                        logger.debug("Retry: %i", count)
+                        continue
+                    if isinstance(e, (UserError, UserWarning)):
+                        Error.report(task, e)
                         logger.info(
                             "%s failed after %i ms", name, duration())
-                    except Exception:
+                    else:
                         logger.exception(
                             "%s failed after %i ms", name, duration())
-                    cron.next_call = cron.compute_next_call(now)
-                    cron.save()
-                    break
-                logger.info("%s in %i ms", name, duration())
-        while transaction.tasks:
-            task_id = transaction.tasks.pop()
-            run_task(db_name, task_id)
+                    skip_task_ids.append(task_id)
+                current_task_id = None
+                count = 0
+                transaction_extras.clear()
+            while transaction.tasks:
+                task_id = transaction.tasks.pop()
+                run_task(db_name, task_id)
+        for task_id in skip_task_ids:
+            if task_id < 0:
+                continue
+            with Transaction().start(db_name, 0) as transaction:
+                try:
+                    task = cls(task_id)
+                    task.next_call = task.compute_next_call(now)
+                    task.save()
+                except backend.DatabaseOperationalError:
+                    transaction.rollback()
         logger.info('cron finished for "%s"', db_name)

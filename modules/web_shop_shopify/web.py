@@ -566,7 +566,7 @@ class Shop(metaclass=PoolMeta):
             shop = sale.web_shop
             with shop.shopify_session():
                 sale = Sale.get_from_shopify(shop, order, sale=sale)
-                if sale._changed_values:
+                if sale._changed_values():
                     sale.untaxed_amount_cache = None
                     sale.tax_amount_cache = None
                     sale.total_amount_cache = None

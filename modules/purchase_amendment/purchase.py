@@ -119,10 +119,6 @@ class Amendment(Workflow, ModelSQL, ModelView):
                 line.apply(purchase)
             # Force saved lines
             purchase.lines = purchase.lines
-            # Force recompute cache
-            purchase.untaxed_amount_cache = None
-            purchase.tax_amount_cache = None
-            purchase.total_amount_cache = None
 
         Purchase.save(purchases)
         Purchase.store_cache(purchases)
@@ -285,9 +281,6 @@ class AmendmentLine(ModelSQL, ModelView):
             })
     unit = fields.Many2One(
         'product.uom', "Unit", ondelete='RESTRICT',
-        domain=[
-            ('category', '=', Eval('product_uom_category')),
-            ],
         states={
             'readonly': Eval('state') != 'draft',
             'invisible': Eval('action') != 'line',
@@ -315,6 +308,16 @@ class AmendmentLine(ModelSQL, ModelView):
     def __setup__(cls):
         super().__setup__()
         cls.__access__.add('amendment')
+        unit_categories = cls._unit_categories()
+        cls.unit.domain = [
+            If(Bool(Eval('product_uom_category')),
+                ('category', 'in', [Eval(c) for c in unit_categories]),
+                ('category', '!=', -1)),
+            ]
+
+    @classmethod
+    def _unit_categories(cls):
+        return ['product_uom_category']
 
     @fields.depends(
         'amendment',

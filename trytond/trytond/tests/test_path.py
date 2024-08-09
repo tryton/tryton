@@ -1,14 +1,14 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
-import unittest
 
 from trytond.pool import Pool
+from trytond.tests.test_tryton import TestCase
 from trytond.transaction import inactive_records
 
 from .test_tree import TreeTestCaseMixin
 
 
-class PathTestCase(TreeTestCaseMixin, unittest.TestCase):
+class PathTestCase(TreeTestCaseMixin, TestCase):
     "Test Path"
     model_name = 'test.path'
 

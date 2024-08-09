@@ -132,7 +132,7 @@ def load_translations(pool, node, languages):
         Translation.translation_import(language, module, files)
 
 
-def load_module_graph(graph, pool, update=None, lang=None, indexes=True):
+def load_module_graph(graph, pool, update=None, lang=None, indexes=None):
     # Prevent to import backend when importing module
     from trytond.cache import Cache
     from trytond.ir.lang import get_parent_language
@@ -231,6 +231,10 @@ def load_module_graph(graph, pool, update=None, lang=None, indexes=True):
                             [[0, CurrentTimestamp(), module, 'activated'],
                                 ]))
                 module2state[module] = 'activated'
+            elif not update and indexes:
+                for model in classes['model']:
+                    if hasattr(model, '_update_sql_indexes'):
+                        models_with_indexes.add(model.__name__)
 
         if not update:
             pool.setup()
@@ -257,7 +261,7 @@ def load_module_graph(graph, pool, update=None, lang=None, indexes=True):
                     model._update_sql_indexes(concurrently=concurrently)
 
         if update:
-            if indexes:
+            if indexes or indexes is None:
                 create_indexes(concurrently=False)
             else:
                 logger.info('skip indexes creation')
@@ -268,6 +272,8 @@ def load_module_graph(graph, pool, update=None, lang=None, indexes=True):
                     model._update_history_table()
             transaction.commit()
         elif indexes:
+            # Release any lock
+            transaction.commit()
             with transaction.new_transaction(autocommit=True):
                 create_indexes(concurrently=True)
 
@@ -321,7 +327,7 @@ def register_classes(with_test=False):
 
 
 def load_modules(
-        database_name, pool, update=None, lang=None, indexes=True,
+        database_name, pool, update=None, lang=None, indexes=None,
         activatedeps=False):
     # Do not import backend when importing module
     res = True

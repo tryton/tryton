@@ -22,6 +22,7 @@
             this.screen_state = null;
             this.state = null;
             this.session = Sao.Session.current_session;
+            this.__prm = jQuery.Deferred();
             this.__processing = false;
             this.__waiting_response = false;
             this.info_bar = new Sao.Window.InfoBar();
@@ -37,7 +38,7 @@
             this.context.active_ids = this.ids;
             this.context.active_model = this.model;
             this.context.action_id = this.action_id;
-            return Sao.rpc({
+            Sao.rpc({
                 'method': 'wizard.' + this.action + '.create',
                 'params': [this.session.context]
             }, this.session).then(result => {
@@ -48,6 +49,7 @@
             }, () => {
                 this.destroy();
             });
+            return this.__prm.promise();
         },
         process: function() {
             if (this.__processing || this.__waiting_response) {
@@ -129,11 +131,13 @@
                 'params': [this.session_id, this.session.context]
             }, this.session).then(action => {
                 this.destroy(action);
+                this.__prm.resolve();
             })
             .fail(() => {
                 Sao.Logger.warn(
                     "Unable to delete session %s of wizard %s",
                     this.session_id, this.action);
+                this.__prm.reject();
             });
         },
         clean: function() {
@@ -316,7 +320,8 @@
                 }
                 if (!dialog ||
                     !this.model ||
-                    (Sao.main_menu_screen.model_name == this.model)) {
+                    (Sao.main_menu_screen &&
+                    (Sao.main_menu_screen.model_name == this.model))) {
                     is_menu = true;
                     screen = Sao.main_menu_screen;
                 } else {

@@ -46,7 +46,7 @@ Sendmail
 .. function:: get_smtp_server([uri[, strict]])
 
    Return a SMTP instance from `smtplib`_ using the ``uri`` or the one defined
-   in the ``email`` section of the :ref:`configuration <topics-configuration>`.
+   in the :ref:`config-email.uri` section of the :ref:`config-email` configuration.
    If strict is ``True``, an exception is raised if it is not possible to
    connect to the server.
 

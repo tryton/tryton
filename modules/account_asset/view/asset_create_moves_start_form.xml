@@ -3,9 +3,9 @@
      repository contains the full copyright notices and license terms. -->
 <form col="2">
     <image name="tryton-question" xexpand="0" xfill="0"/>
-    <group col="3" id="label_date">
+    <group col="3" id="label_date" yalign="0.5">
         <label string="Create Assets Moves up to" id="create"
-            yalign="0.0" xalign="0.0"/>
+            xalign="0.0"/>
         <label name="date"/>
         <field name="date"/>
     </group>

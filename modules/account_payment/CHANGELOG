@@ -1,4 +1,5 @@
-* Enforce payment amount to be greater than zero
+* Add option to create direct debit based on balance
+* Enforce payment amount to be greater or equal to zero
 
 Version 7.2.0 - 2024-04-29
 --------------------------

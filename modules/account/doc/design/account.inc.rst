@@ -103,8 +103,8 @@ Account Deferral
 The *Account Deferral* concept stores, by `Account <model-account.account>`,
 any amounts that need to be carried forward to the next
 `Fiscal Year <model-account.fiscalyear>`.
-The data that gets stored here is managed automatically when fiscal years
-are closed or re-opened.
+The data stored here is automatically managed when fiscal years are closed or
+reopened.
 
 .. _model-account.general_ledger.account:
 

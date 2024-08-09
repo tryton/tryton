@@ -105,6 +105,10 @@ Database
    Return if the database supports ``FOR UPDATE`` and ``FOR SHARE`` in
    ``SELECT``.
 
+.. method:: Database.has_insert_on_conflict()
+
+   Return if the database supports ``ON CONFLICT`` IN ``INSERT``.
+
 .. method:: Database.get_select_for_skip_locked()
 
    Return For class with skip locked.

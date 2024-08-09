@@ -10,7 +10,7 @@ from collections import OrderedDict, defaultdict
 from copy import deepcopy
 from weakref import WeakKeyDictionary
 
-from sql import Table
+from sql import Conflict, Table
 from sql.aggregate import Max
 from sql.functions import CurrentTimestamp, Function
 
@@ -295,30 +295,40 @@ class MemoryCache(BaseCache):
             try:
                 with connection.cursor() as cursor:
                     for name in reset:
-                        cursor.execute(*table.select(table.name, table.id,
-                                table.timestamp,
-                                where=table.name == name,
-                                limit=1))
-                        if cursor.fetchone():
-                            # It would be better to insert only
-                            cursor.execute(*table.update([table.timestamp],
-                                    [CurrentTimestamp()],
-                                    where=table.name == name))
+                        if database.has_insert_on_conflict():
+                            query = table.insert(
+                                [table.timestamp, table.name],
+                                [[CurrentTimestamp(), name]],
+                                on_conflict=Conflict(
+                                    table,
+                                    indexed_columns=[table.name],
+                                    columns=[table.timestamp],
+                                    values=[CurrentTimestamp()]))
+                            if database.has_returning():
+                                query.returning = [table.timestamp]
+                            cursor.execute(*query)
                         else:
-                            cursor.execute(*table.insert(
+                            cursor.execute(*table.select(table.name, table.id,
+                                    table.timestamp,
+                                    where=table.name == name,
+                                    limit=1))
+                            if cursor.fetchone():
+                                query = table.update(
+                                    [table.timestamp],
+                                    [CurrentTimestamp()],
+                                    where=table.name == name)
+                            else:
+                                query = table.insert(
                                     [table.timestamp, table.name],
-                                    [[CurrentTimestamp(), name]]))
-
-                        cursor.execute(*table.select(
-                                Max(table.timestamp),
-                                where=table.name == name))
+                                    [[CurrentTimestamp(), name]])
+                            if database.has_returning():
+                                query.returning = [table.timestamp]
+                            cursor.execute(*query)
+                        if not database.has_returning():
+                            cursor.execute(*table.select(
+                                    Max(table.timestamp),
+                                    where=table.name == name))
                         timestamp, = cursor.fetchone()
-
-                        cursor.execute(*table.select(
-                                _cast(Max(table.timestamp)),
-                                where=table.name == name))
-                        timestamp, = cursor.fetchone()
-
                         inst = cls._instances[name]
                         inst._clear(dbname, timestamp)
                 connection.commit()

@@ -4,7 +4,8 @@ import unittest
 from unittest.mock import Mock
 
 from trytond import backend
-from trytond.tests.test_tryton import CONTEXT, DB_NAME, USER, activate_module
+from trytond.tests.test_tryton import (
+    CONTEXT, DB_NAME, USER, TestCase, activate_module)
 from trytond.transaction import Transaction
 
 
@@ -19,7 +20,7 @@ def empty_transaction(*args, **kwargs):
         return True
 
 
-class TransactionTestCase(unittest.TestCase):
+class TransactionTestCase(TestCase):
     'Test the Transaction Context manager'
 
     @classmethod

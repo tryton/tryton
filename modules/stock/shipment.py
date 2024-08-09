@@ -518,10 +518,6 @@ class ShipmentIn(
         return [Coalesce(table.effective_date, table.planned_date)]
 
     @staticmethod
-    def default_planned_date():
-        return Pool().get('ir.date').today()
-
-    @staticmethod
     def default_state():
         return 'draft'
 
@@ -597,24 +593,24 @@ class ShipmentIn(
         for shipment in shipments:
             dates = shipment._move_planned_date
             incoming_date, inventory_date = dates
-            # Update planned_date only for later to not be too optimistic if
-            # the shipment is not directly received.
-            incoming_moves_to_write = [m for m in shipment.incoming_moves
-                if (m.state not in {'done', 'cancelled'}
-                    and ((m.planned_date or datetime.date.max)
-                        < (incoming_date or datetime.date.max)))]
-            if incoming_moves_to_write:
-                to_write.extend((incoming_moves_to_write, {
-                            'planned_date': incoming_date,
-                            }))
-            inventory_moves_to_write = [m for m in shipment.inventory_moves
-                if (m.state not in {'done', 'cancelled'}
-                    and ((m.planned_date or datetime.date.max)
-                        < (inventory_date or datetime.date.max)))]
-            if inventory_moves_to_write:
-                to_write.extend((inventory_moves_to_write, {
-                            'planned_date': inventory_date,
-                            }))
+            if incoming_date:
+                incoming_moves_to_write = [
+                    m for m in shipment.incoming_moves
+                    if (m.state not in {'done', 'cancelled'})]
+                if incoming_moves_to_write:
+                    to_write.extend(
+                        (incoming_moves_to_write, {
+                                'planned_date': incoming_date,
+                                }))
+            if inventory_date:
+                inventory_moves_to_write = [
+                    m for m in shipment.inventory_moves
+                    if (m.state not in {'done', 'cancelled'})]
+                if inventory_moves_to_write:
+                    to_write.extend(
+                        (inventory_moves_to_write, {
+                                'planned_date': inventory_date,
+                                }))
         if to_write:
             Move.write(*to_write)
 

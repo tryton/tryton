@@ -323,6 +323,7 @@ class Screen:
         if only_ids:
             return ids
         self.clear()
+        GLib.idle_add(self.screen_container.search_entry.grab_focus)
         self.load(ids)
         self.count_tab_domain()
         return bool(ids)

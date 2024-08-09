@@ -15,7 +15,7 @@ line:
     $ trytond -c <config file>
 
 The server will wait for client connections on the interface defined in the
-``web`` section of the :ref:`configuration <topics-configuration>`.
+:ref:`config-web` section of the configuration.
 
 .. note::
 
@@ -35,8 +35,7 @@ If you prefer to run Tryton inside your own WSGI server instead of the simple
 server of Werkzeug, you can use the application ``trytond.application.app``.
 Following environment variables can be set:
 
- * ``TRYTOND_CONFIG``: Point to :ref:`configuration <topics-configuration>`
-   file.
+ * ``TRYTOND_CONFIG``: Point to :ref:`topics-configuration`.
  * ``TRYTOND_LOGGING_CONFIG``: Point to :ref:`logging <topics-logs>` file.
  * ``TRYTOND_LOGGING_LEVEL``: An integer to set the default `logging level`_
    (default: ``ERROR``).
@@ -79,9 +78,9 @@ Worker service
 ==============
 
 If you want to use a pool of workers to run :ref:`asynchronously some tasks
-<topics-task-queue>`, you must activate the worker in the ``queue`` section of
-the :ref:`configuration <topics-configuration>` and run the worker manager with
-this command line:
+<topics-task-queue>`, you must activate the :ref:`config-queue.worker` in the
+:ref:`config-queue` section of the configuration and run the worker manager
+with this command line:
 
 .. code-block:: console
 

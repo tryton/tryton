@@ -5,8 +5,10 @@ from collections import defaultdict
 from copy import copy
 from functools import wraps
 
-from sql import Column, Null
+from sql import Cast, Column, Null
+from sql.conditionals import Case
 from sql.functions import CharLength
+from sql.operators import Concat
 
 from trytond.i18n import gettext
 from trytond.model import (
@@ -195,9 +197,7 @@ class LotTrace(ModelSQL, ModelView):
 
     company = fields.Many2One('company.company', "Company")
     date = fields.Date("Date")
-    shipment = fields.Reference("Shipment", 'get_shipments')
-    document = fields.Function(
-        fields.Reference("Document", 'get_documents'), 'get_document')
+    document = fields.Reference("Document", 'get_documents')
 
     upward_traces = fields.Function(
         fields.Many2Many(
@@ -215,16 +215,38 @@ class LotTrace(ModelSQL, ModelView):
 
     @classmethod
     def table_query(cls):
-        pool = Pool()
-        Move = pool.get('stock.move')
-        move = Move.__table__()
-        return (
-            move.select(
-                *cls._columns(move),
-                where=(move.lot != Null) & (move.state == 'done')))
+        from_item, tables = cls._joins()
+        query = from_item.select(
+            *cls._columns(tables),
+            where=cls._where(tables))
+        return query
 
     @classmethod
-    def _columns(cls, move):
+    def _joins(cls):
+        pool = Pool()
+        Move = pool.get('stock.move')
+        InventoryLine = pool.get('stock.inventory.line')
+
+        move = Move.__table__()
+        inventory_line = InventoryLine.__table__()
+        tables = {}
+        tables['move'] = move
+        tables['inventory_line'] = inventory_line
+
+        inventory_line_id = Move.origin.sql_id(move.origin, Move)
+        from_item = (move.join(inventory_line, type_='LEFT',
+            condition=(move.origin.like(InventoryLine.__name__ + '%')
+                & (inventory_line.id == inventory_line_id))))
+        return from_item, tables
+
+    @classmethod
+    def _where(cls, tables):
+        move = tables['move']
+        return (move.lot != Null) & (move.state == 'done')
+
+    @classmethod
+    def _columns(cls, tables):
+        move = tables['move']
         return [
             move.id.as_('id'),
             move.create_uid.as_('create_uid'),
@@ -239,25 +261,30 @@ class LotTrace(ModelSQL, ModelView):
             move.unit.as_('unit'),
             move.company.as_('company'),
             move.effective_date.as_('date'),
-            move.shipment.as_('shipment'),
+            cls.get_document(tables).as_('document'),
             ]
 
     def get_rec_name(self, name):
         return self.document.rec_name if self.document else str(self.id)
 
     @classmethod
-    def get_shipments(cls):
+    def get_documents(cls):
         pool = Pool()
+        Model = pool.get('ir.model')
         Move = pool.get('stock.move')
-        return Move.get_shipment()
+        return Move.get_origin() + [
+            ('stock.inventory', Model.get_name('stock.inventory'))]
 
     @classmethod
-    def get_documents(cls):
-        return cls.get_shipments()
-
-    def get_document(self, name):
-        if self.shipment:
-            return str(self.shipment)
+    def get_document(cls, tables):
+        move = tables['move']
+        inventory_line = tables['inventory_line']
+        sql_type = cls.document.sql_type().base
+        return Case(
+            ((inventory_line.id != Null),
+            Concat('stock.inventory,',
+                Cast(inventory_line.inventory, sql_type))),
+            else_=move.shipment)
 
     @classmethod
     def _is_trace_move(cls, move):
@@ -888,6 +915,7 @@ class InventoryCount(metaclass=PoolMeta):
     def default_quantity(self, fields):
         pool = Pool()
         Product = pool.get('product.product')
+        InventoryLine = pool.get('stock.inventory.line')
         inventory = self.record
         if isinstance(self.search.search, Product):
             product = self.search.search
@@ -896,7 +924,10 @@ class InventoryCount(metaclass=PoolMeta):
                 raise RequiredValidationError(
                     gettext('stock_lot.msg_only_lot',
                         product=product.rec_name))
-        return super(InventoryCount, self).default_quantity(fields)
+        values = super(InventoryCount, self).default_quantity(fields)
+        line = InventoryLine(values['line'])
+        values['lot'] = line.lot.id if line.lot else None
+        return values
 
     def get_line_domain(self, inventory):
         pool = Pool()
@@ -924,3 +955,12 @@ class InventoryCountSearch(metaclass=PoolMeta):
     def __setup__(cls):
         super(InventoryCountSearch, cls).__setup__()
         cls.search.selection.append(('stock.lot', "Lot"))
+
+
+class InventoryCountQuantity(ModelView):
+    __name__ = 'stock.inventory.count.quantity'
+
+    lot = fields.Many2One('stock.lot', "Lot", readonly=True,
+        states={
+            'invisible': ~Eval('lot', None),
+            })

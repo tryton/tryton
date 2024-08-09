@@ -502,8 +502,7 @@ class Payment(CheckoutMixin, BraintreeCustomerMethodMixin, metaclass=PoolMeta):
 
     def braintree_update(self, transaction):
         "Update payment with braintree transaction"
-        if self.state == 'succeeded':
-            self.__class__.proceed([self])
+        assert transaction.id == self.braintree_transaction_id
         gateway = transaction.gateway
         amount = transaction.amount
         for id_ in transaction.refund_ids:
@@ -513,15 +512,20 @@ class Payment(CheckoutMixin, BraintreeCustomerMethodMixin, metaclass=PoolMeta):
         for dispute in transaction.disputes:
             if dispute.status in DISPUTE_FINAL_STATUSES:
                 amount -= dispute.amount_disputed - dispute.amount_won
-        self.amount = amount
-        self.save()
-        if transaction.status in SUCCEEDED_STATUSES:
-            if amount:
-                self.__class__.succeed([self])
-            else:
+        if (self.state not in {'succeeded', 'failed'}
+                or self.amount != amount
+                or (not amount and self.state != 'failed')):
+            if self.state == 'succeeded':
+                self.__class__.proceed([self])
+            self.amount = amount
+            self.save()
+            if transaction.status in SUCCEEDED_STATUSES:
+                if amount:
+                    self.__class__.succeed([self])
+                else:
+                    self.__class__.fail([self])
+            elif transaction.status in FAILED_STATUSES:
                 self.__class__.fail([self])
-        elif transaction.status in FAILED_STATUSES:
-            self.__class__.fail([self])
 
 
 class PaymentBraintreeRefund(Workflow, ModelSQL, ModelView):

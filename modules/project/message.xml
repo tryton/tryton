@@ -10,7 +10,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="text">To complete work "%(work)s" you must complete also all its children.</field>
         </record>
         <record model="ir.message" id="msg_work_parent_progress">
-            <field name="text">To re-open work "%(work)s" you must re-open also its parent "%(parent)s".</field>
+            <field name="text">To reopen the work "%(work)s", you must also reopen its parent "%(parent)s".</field>
         </record>
         <record model="ir.message" id="msg_erase_party_opened_project">
             <field name="text">You cannot erase party "%(party)s" while they have opened projects with company "%(company)s".</field>

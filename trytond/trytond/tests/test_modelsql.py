@@ -14,11 +14,11 @@ from trytond.model.exceptions import (
 from trytond.model.modelsql import split_subquery_domain
 from trytond.pool import Pool
 from trytond.tests.test_tryton import (
-    CONTEXT, DB_NAME, USER, activate_module, with_transaction)
+    CONTEXT, DB_NAME, USER, TestCase, activate_module, with_transaction)
 from trytond.transaction import Transaction, TransactionError
 
 
-class ModelSQLTestCase(unittest.TestCase):
+class ModelSQLTestCase(TestCase):
     'Test ModelSQL'
 
     @classmethod
@@ -1335,7 +1335,7 @@ class ModelSQLTestCase(unittest.TestCase):
                 ])
 
 
-class TranslationTestCase(unittest.TestCase):
+class TranslationTestCase(TestCase):
     default_language = 'fr'
     other_language = 'en'
 

@@ -35,5 +35,5 @@ syntax to use for documents.
    The `Account Configuration <account:model-account.configuration>` concept is
    introduced by the :doc:`Account Module <account:index>`.
 
-.. _Chorus Pro: https://chorus-pro.gouv.fr/
+.. _Chorus Pro: https://portail.chorus-pro.gouv.fr/
 .. _PISTE: https://piste.gouv.fr/

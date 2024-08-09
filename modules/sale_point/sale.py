@@ -9,6 +9,7 @@ from sql.conditionals import Coalesce
 from sql.functions import CharLength
 from sql.operators import Equal
 
+from trytond import backend
 from trytond.i18n import gettext
 from trytond.model import (
     DeactivableMixin, Exclude, Index, ModelSQL, ModelView, Workflow, fields)
@@ -18,7 +19,7 @@ from trytond.modules.currency.fields import Monetary
 from trytond.modules.product import price_digits, round_price
 from trytond.pool import Pool
 from trytond.pyson import Bool, Eval, Id, If
-from trytond.tools import grouped_slice, reduce_ids
+from trytond.tools import grouped_slice, reduce_ids, sqlite_apply_types
 from trytond.transaction import Transaction
 from trytond.wizard import Button, StateTransition, StateView, Wizard
 
@@ -861,13 +862,12 @@ class POSCashSession(Workflow, ModelSQL, ModelView):
                     group_by=[transfer.session]),
                 all_=True)
             query = query.select(
-                query.session, Sum(query.amount),
+                query.session, Sum(query.amount).as_('amount'),
                 group_by=[query.session])
+            if backend.name == 'sqlite':
+                sqlite_apply_types(query, [None, 'NUMERIC'])
             cursor.execute(*query)
-            for session_id, balance in cursor:
-                if not isinstance(balance, Decimal):
-                    balance = Decimal(str(balance))
-                balances[session_id] = balance
+            balances.update(cursor)
         for session in sessions:
             balances[session.id] = session.currency.round(balances[session.id])
         return balances

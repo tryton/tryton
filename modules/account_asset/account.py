@@ -44,7 +44,7 @@ def get_asset_selection(field_name):
 class Configuration(metaclass=PoolMeta):
     __name__ = 'account.configuration'
     asset_sequence = fields.MultiValue(fields.Many2One(
-            'ir.sequence', "Asset Reference Sequence", required=True,
+            'ir.sequence', "Asset Sequence", required=True,
             domain=[
                 ('company', 'in', [
                         Eval('context', {}).get('company', -1), None]),

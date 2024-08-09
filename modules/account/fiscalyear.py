@@ -378,7 +378,7 @@ class FiscalYear(Workflow, ModelSQL, ModelView):
     @Workflow.transition('open')
     def reopen(cls, fiscalyears):
         '''
-        Re-open a fiscal year
+        Reopen a fiscal year
         '''
         Deferral = Pool().get('account.account.deferral')
 

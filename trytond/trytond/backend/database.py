@@ -85,6 +85,9 @@ class DatabaseInterface(object):
     def has_select_for(self):
         return False
 
+    def has_insert_on_conflict(self):
+        return False
+
     def get_select_for_skip_locked(self):
         return For
 

@@ -5,13 +5,14 @@ import datetime as dt
 import os
 import time
 import unittest
+from unittest.mock import patch
 
 from trytond import backend
 from trytond import cache as cache_mod
 from trytond.cache import (
     LRUDict, LRUDictTransaction, MemoryCache, freeze, unfreeze)
 from trytond.tests.test_tryton import (
-    DB_NAME, USER, activate_module, with_transaction)
+    DB_NAME, USER, TestCase, activate_module, with_transaction)
 from trytond.transaction import Transaction
 
 cache = MemoryCache('test.cache')
@@ -21,7 +22,7 @@ cache_ignored_local_context = MemoryCache(
 cache_ignored_global_context = MemoryCache('test.cache.ignored.global')
 
 
-class CacheTestCase(unittest.TestCase):
+class CacheTestCase(TestCase):
     "Test Cache"
 
     @classmethod
@@ -95,7 +96,7 @@ class CacheTestCase(unittest.TestCase):
         self.assertEqual(value, 1)
 
 
-class MemoryCacheTestCase(unittest.TestCase):
+class MemoryCacheTestCase(TestCase):
     "Test Cache"
 
     @classmethod
@@ -224,6 +225,17 @@ class MemoryCacheTestCase(unittest.TestCase):
         self.assertEqual(cache_expire.get('foo'), None)
 
 
+class MemoryCacheWithoutInsertOnConflict(MemoryCacheTestCase):
+    "Test Cache without Insert On Conflict"
+
+    def setUp(self):
+        super().setUp()
+        patcher = patch('trytond.backend.Database.has_insert_on_conflict')
+        self.addCleanup(patcher.stop)
+        mock = patcher.start()
+        mock.return_value = False
+
+
 @unittest.skipIf(backend.name == 'sqlite', "SQLite has not channel")
 class MemoryCacheChannelTestCase(MemoryCacheTestCase):
     "Test Cache with channel"
@@ -254,7 +266,7 @@ class MemoryCacheChannelTestCase(MemoryCacheTestCase):
         super().test_memory_cache_sync()
 
 
-class LRUDictTestCase(unittest.TestCase):
+class LRUDictTestCase(TestCase):
     "Test LRUDict"
 
     def test_setitem(self):
@@ -303,7 +315,7 @@ class LRUDictTestCase(unittest.TestCase):
         self.assertEqual(lru_dict['foo'], 'foo')
 
 
-class LRUDictTransactionTestCase(unittest.TestCase):
+class LRUDictTransactionTestCase(TestCase):
     "Test LRUDictTransaction"
 
     @classmethod

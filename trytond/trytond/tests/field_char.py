@@ -53,6 +53,7 @@ class CharTranslate(ModelSQL):
     char_lstripped = fields.Char("Char", strip='leading', translate=True)
     char_rstripped = fields.Char("Char", strip='trailing', translate=True)
     char_unstripped = fields.Char("Char", strip=False, translate=True)
+    char_translated = char.translated('char')
 
 
 class CharUnaccentedOn(ModelSQL):

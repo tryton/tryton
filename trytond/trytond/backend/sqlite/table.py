@@ -3,7 +3,6 @@
 
 import logging
 import re
-import warnings
 from weakref import WeakKeyDictionary
 
 from trytond.backend.table import (
@@ -184,7 +183,7 @@ class TableHandler(TableHandlerInterface):
         return base_type == db_type and same_size
 
     def db_default(self, column_name, value):
-        warnings.warn('Unable to set default on column with SQLite backend')
+        pass
 
     def add_column(self, column_name, sql_type, default=None, comment=''):
         database = Transaction().database
@@ -256,20 +255,15 @@ class TableHandler(TableHandlerInterface):
         self._update_definitions(columns=True)
 
     def add_fk(self, columns, reference, ref_columns=None, on_delete=None):
-        warnings.warn('Unable to add foreign key with SQLite backend')
+        pass
 
     def drop_fk(self, columns=None, ref_columns=None, table=None):
-        warnings.warn('Unable to drop foreign key with SQLite backend')
+        pass
 
     def not_null_action(self, column_name, action='add'):
         if not self.column_exist(column_name):
             return
-
-        if action == 'add':
-            warnings.warn('Unable to set not null with SQLite backend')
-        elif action == 'remove':
-            warnings.warn('Unable to remove not null with SQLite backend')
-        else:
+        if action not in {'add', 'remove'}:
             raise Exception('Not null action not supported!')
 
     def add_constraint(self, ident, constraint):
@@ -287,8 +281,6 @@ class TableHandler(TableHandlerInterface):
                     _escape_identifier(self.table_name),
                     ', '.join(map(str, constraint.columns)),
                     where))
-        else:
-            warnings.warn('Unable to add constraint with SQLite backend')
 
     def drop_constraint(self, ident, table=None):
         cursor = Transaction().connection.cursor()
@@ -312,8 +304,6 @@ class TableHandler(TableHandlerInterface):
                             _escape_identifier(self.table_name),
                             query),
                         params)
-                else:
-                    warnings.warn("Can not create index with parameters")
                 old.discard(name)
         for name in old:
             if name.startswith('idx_') or name.endswith('_index'):

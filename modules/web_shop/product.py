@@ -63,11 +63,15 @@ class Image(metaclass=PoolMeta):
     web_shop = fields.Boolean("Web Shop")
 
     @classmethod
+    def default_web_shop(cls):
+        return False
+
+    @classmethod
     def allowed_match_keys(cls):
         return super().allowed_match_keys() | {'web_shop'}
 
     @classmethod
     def copy(cls, images, default=None):
         default = default.copy() if default is not None else {}
-        default.setdefault('web_shop')
+        default.setdefault('web_shop', False)
         return super().copy(images, default=default)

@@ -54,7 +54,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.message" id="msg_invoice_tax_modify">
             <field name="text">You cannot modify tax "%(tax)s" because its invoice "%(invoice)s" is posted, paid or cancelled.</field>
         </record>
-        <record model="ir.message" id="msg_invoice_tax_create">
+        <record model="ir.message" id="msg_invoice_tax_create_draft">
             <field name="text">You cannot add taxes to invoice "%(invoice)s" because it is no longer in a draft state.</field>
         </record>
         <record model="ir.message" id="msg_invoice_line_tax_unique">

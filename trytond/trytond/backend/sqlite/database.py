@@ -601,6 +601,9 @@ class Database(DatabaseInterface):
     def has_multirow_insert(self):
         return True
 
+    def has_insert_on_conflict(self):
+        return sqlite.sqlite_version_info >= (3, 35, 0)
+
     def has_window_functions(self):
         return sqlite.sqlite_version_info >= (3, 25, 0)
 
@@ -624,19 +627,47 @@ class Database(DatabaseInterface):
         return NullIf(JSONQuote(column), JSONQuote(Null))
 
 
-sqlite.register_converter('NUMERIC', lambda val: Decimal(val.decode('utf-8')))
-sqlite.register_adapter(Decimal, lambda val: str(val).encode('utf-8'))
+def adapt_decimal(val):
+    return str(val).encode()
+
+
+def adapt_date(val):
+    return val.isoformat()
 
 
 def adapt_datetime(val):
     return val.replace(tzinfo=None).isoformat(" ")
 
 
+def adapt_time(val):
+    return val.isoformat()
+
+
+def adapt_timedelta(val):
+    return val.total_seconds()
+
+
+sqlite.register_adapter(Decimal, adapt_decimal)
+sqlite.register_adapter(datetime.date, adapt_date)
 sqlite.register_adapter(datetime.datetime, adapt_datetime)
-sqlite.register_adapter(datetime.time, lambda val: val.isoformat())
-sqlite.register_converter('TIME',
-    lambda val: datetime.time(*map(int, val.decode('utf-8').split(':'))))
-sqlite.register_adapter(datetime.timedelta, lambda val: val.total_seconds())
+sqlite.register_adapter(datetime.time, adapt_time)
+sqlite.register_adapter(datetime.timedelta, adapt_timedelta)
+
+
+def convert_numeric(val):
+    return Decimal(val.decode())
+
+
+def convert_date(val):
+    return datetime.date.fromisoformat(val.decode())
+
+
+def convert_datetime(val):
+    return datetime.datetime.fromisoformat(val.decode())
+
+
+def convert_time(val):
+    return datetime.time.fromisoformat(val.decode())
 
 
 def convert_interval(value):
@@ -651,4 +682,11 @@ def convert_interval(value):
 
 _interval_max = datetime.timedelta.max.total_seconds()
 _interval_min = datetime.timedelta.min.total_seconds()
+
+
+sqlite.register_converter('NUMERIC', convert_numeric)
+sqlite.register_converter('DATE', convert_date)
+sqlite.register_converter('DATETIME', convert_datetime)
+sqlite.register_converter('TIME', convert_time)
+sqlite.register_converter('TIMESTAMP', convert_datetime)
 sqlite.register_converter('INTERVAL', convert_interval)

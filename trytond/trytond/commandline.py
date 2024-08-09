@@ -77,6 +77,10 @@ def get_parser_daemon():
         "--coroutine", action="store_true", dest="coroutine",
         default=bool(os.environ.get('TRYTOND_COROUTINE', False)),
         help="use coroutine for concurrency")
+    parser.add_argument("-n", dest='processes', type=int,
+        help="set number of processes to use")
+    parser.add_argument("--max", dest='maxtasksperchild', type=int,
+        help="set number of tasks a worker process before being replaced")
     return parser
 
 
@@ -84,10 +88,6 @@ def get_parser_worker():
     parser = get_parser_daemon()
     parser.add_argument("--name", dest='name',
         help="work only on the named queue")
-    parser.add_argument("-n", dest='processes', type=int,
-        help="set number of processes to use")
-    parser.add_argument("--max", dest='maxtasksperchild', type=int,
-        help="set number of tasks a worker process before being replaced")
     parser.add_argument("-t", "--timeout", dest='timeout', default=60,
         type=int, help="set maximum timeout when waiting notification")
     return parser

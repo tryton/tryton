@@ -2,11 +2,12 @@
 # this repository contains the full copyright notices and license terms.
 from trytond.pool import Pool
 
-from . import account, ir, payment, statement
+from . import account, ir, party, payment, statement
 
 
 def register():
     Pool.register(
+        party.PartyReceptionDirectDebit,
         payment.Journal,
         payment.Payment,
         payment.Group,

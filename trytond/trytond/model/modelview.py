@@ -840,20 +840,7 @@ class ModelView(Model):
                 for r in result]
         return result
 
-    @property
     def _changed_values(self):
-        """Return the values changed since the instantiation.
-        By default, the value of a field is its internal representation except:
-            - for Many2One and One2One field: the id.
-            - for Reference field: the string model,id
-            - for One2Many and Many2Many: a dictionary composed of three keys:
-                - add: a list of tuple, the first element is the index where
-                  the new line is added, the second element is
-                  `_default_values`
-                - update: a list of dictionary of `_changed_values` including
-                  the `id`
-                - remove: a list of ids
-        """
         from .modelstorage import ModelStorage
         changed = {}
         init_values = self._init_values or self._record()
@@ -905,7 +892,7 @@ class ModelView(Model):
                         if target.id in previous:
                             previous.remove(target.id)
                             if isinstance(target, ModelView):
-                                target_changed = target._changed_values
+                                target_changed = target._changed_values()
                                 if target_changed:
                                     target_changed['id'] = target.id
                                     value['update'].append(target_changed)
@@ -916,7 +903,7 @@ class ModelView(Model):
                                 target_init_values = target._init_values
                                 target._init_values = None
                                 try:
-                                    added_values = target._changed_values
+                                    added_values = target._changed_values()
                                 finally:
                                     target._init_values = target_init_values
                             else:

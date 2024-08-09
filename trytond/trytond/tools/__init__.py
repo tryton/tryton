@@ -15,8 +15,8 @@ from .misc import (
     get_smtp_server, grouped_slice, import_module, is_full_text,
     is_instance_method, likify, lstrip_wildcard, pairwise_longest,
     reduce_domain, reduce_ids, remove_forbidden_chars, resolve,
-    rstrip_wildcard, slugify, sortable_values, sql_pairing, strip_wildcard,
-    unescape_wildcard)
+    rstrip_wildcard, slugify, sortable_values, sql_pairing, sqlite_apply_types,
+    strip_wildcard, unescape_wildcard)
 
 _NOT_FOUND = object()
 
@@ -92,6 +92,7 @@ __all__ = [
     slugify,
     sortable_values,
     sql_pairing,
+    sqlite_apply_types,
     strip_wildcard,
     unescape_wildcard,
     ]

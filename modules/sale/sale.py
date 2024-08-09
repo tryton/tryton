@@ -250,7 +250,7 @@ class Sale(
             'stock.shipment.out.return', None, None, "Shipment Returns"),
         'get_shipment_returns', searcher='search_shipment_returns')
     moves = fields.Function(
-        fields.Many2Many('stock.move', None, None, "Moves"),
+        fields.Many2Many('stock.move', None, None, "Stock Moves"),
         'get_moves', searcher='search_moves')
     origin = fields.Reference(
         "Origin", selection='get_origin',
@@ -301,11 +301,13 @@ class Sale(
                 Index(
                     t,
                     (t.invoice_state, Index.Equality()),
-                    where=t.state.in_(['none', 'waiting', 'exception'])),
+                    where=t.invoice_state.in_([
+                            'none', 'waiting', 'exception'])),
                 Index(
                     t,
                     (t.shipment_state, Index.Equality()),
-                    where=t.state.in_(['none', 'waiting', 'exception'])),
+                    where=t.shipment_state.in_([
+                            'none', 'waiting', 'exception'])),
                 })
         cls._order = [
             ('sale_date', 'DESC NULLS FIRST'),
@@ -808,6 +810,9 @@ class Sale(
         default.setdefault('sale_date', None)
         default.setdefault('quoted_by')
         default.setdefault('confirmed_by')
+        default.setdefault('untaxed_amount_cache')
+        default.setdefault('tax_amount_cache')
+        default.setdefault('total_amount_cache')
         return super(Sale, cls).copy(sales, default=default)
 
     def check_for_quotation(self):
@@ -863,6 +868,12 @@ class Sale(
 
     @classmethod
     def store_cache(cls, sales):
+        sales = list(sales)
+        cls.write(sales, {
+                'untaxed_amount_cache': None,
+                'tax_amount_cache': None,
+                'total_amount_cache': None,
+                })
         for sale in sales:
             sale.untaxed_amount_cache = sale.untaxed_amount
             sale.tax_amount_cache = sale.tax_amount
@@ -1017,7 +1028,11 @@ class Sale(
     @Workflow.transition('draft')
     @reset_employee('quoted_by', 'confirmed_by')
     def draft(cls, sales):
-        pass
+        cls.write(sales, {
+                'tax_amount_cache': None,
+                'untaxed_amount_cache': None,
+                'total_amount_cache': None,
+                })
 
     @classmethod
     @ModelView.button
@@ -1373,13 +1388,13 @@ class SaleLine(TaxableMixin, sequence_ordered(), ModelSQL, ModelView):
         fields.Float("Invoice Progress", digits=(1, 4)),
         'get_invoice_progress')
     moves = fields.One2Many(
-        'stock.move', 'origin', "Moves", readonly=True,
+        'stock.move', 'origin', "Stock Moves", readonly=True,
         states={
             'invisible': ~Eval('moves'),
             })
     moves_ignored = fields.Many2Many(
         'sale.line-ignored-stock.move', 'sale_line', 'move',
-        "Ignored Moves",
+        "Ignored Stock Moves",
         domain=[
             ('id', 'in', Eval('moves', [])),
             ('state', '=', 'cancelled'),
@@ -1388,7 +1403,7 @@ class SaleLine(TaxableMixin, sequence_ordered(), ModelSQL, ModelView):
             'invisible': ~Eval('moves_ignored', []),
             })
     moves_recreated = fields.Many2Many('sale.line-recreated-stock.move',
-            'sale_line', 'move', 'Recreated Moves', readonly=True)
+            'sale_line', 'move', 'Recreated Stock Moves', readonly=True)
     moves_exception = fields.Function(
         fields.Boolean("Moves Exception"), 'get_moves_exception')
     moves_progress = fields.Function(
@@ -2139,7 +2154,7 @@ class SaleLineIgnoredMove(ModelSQL):
     sale_line = fields.Many2One(
         'sale.line', "Sale Line", ondelete='CASCADE', required=True)
     move = fields.Many2One(
-        'stock.move', "Move", ondelete='RESTRICT', required=True,
+        'stock.move', "Stock Move", ondelete='RESTRICT', required=True,
         domain=[
             ('origin.id', '=', Eval('sale_line', -1), 'sale.line'),
             ('state', '=', 'cancelled'),
@@ -2159,7 +2174,7 @@ class SaleLineRecreatedMove(ModelSQL):
     sale_line = fields.Many2One(
         'sale.line', "Sale Line", ondelete='CASCADE', required=True)
     move = fields.Many2One(
-        'stock.move', "Move", ondelete='RESTRICT', required=True,
+        'stock.move', "Stock Move", ondelete='RESTRICT', required=True,
         domain=[
             ('origin.id', '=', Eval('sale_line', -1), 'sale.line'),
             ('state', '=', 'cancelled'),
@@ -2223,10 +2238,10 @@ class HandleShipmentExceptionAsk(ModelView):
     'Handle Shipment Exception'
     __name__ = 'sale.handle.shipment.exception.ask'
     recreate_moves = fields.Many2Many(
-        'stock.move', None, None, 'Recreate Moves',
+        'stock.move', None, None, 'Recreate Stock Moves',
         domain=[('id', 'in', Eval('domain_moves'))])
     domain_moves = fields.Many2Many(
-        'stock.move', None, None, 'Domain Moves')
+        'stock.move', None, None, 'Domain Stock Moves')
 
 
 class HandleShipmentException(Wizard):
@@ -2411,7 +2426,7 @@ class ModifyHeader(Wizard):
         Line = pool.get('sale.line')
 
         sale = self.get_sale()
-        values = self.start._save_values
+        values = self.start._save_values()
         self.model.write([sale], values)
         self.model.log([sale], 'write', ','.join(sorted(values.keys())))
 

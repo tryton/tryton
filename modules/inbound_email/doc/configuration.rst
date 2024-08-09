@@ -3,7 +3,7 @@ Configuration
 *************
 
 The *Inbound Email Module* uses values from settings in the ``[inbound_email]``
-section of the :doc:`configuration file <trytond:topics/configuration>`.
+section of the :ref:`trytond:topics-configuration`.
 
 .. _config-inboud_email.filestore:
 

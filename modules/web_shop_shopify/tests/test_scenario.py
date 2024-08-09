@@ -3,8 +3,15 @@
 
 import os
 
-from trytond.tests.test_tryton import load_doc_tests
+from trytond.tests.test_tryton import TEST_NETWORK, load_doc_tests
 
-if os.getenv('SHOPIFY_PASSWORD') and os.getenv('SHOPIFY_URL'):
-    def load_tests(*args, **kwargs):
-        return load_doc_tests(__name__, __file__, *args, **kwargs)
+
+def load_tests(*args, **kwargs):
+    if (not TEST_NETWORK
+            or not (os.getenv('SHOPIFY_PASSWORD')
+                and os.getenv('SHOPIFY_URL'))):
+        kwargs.setdefault('skips', set()).update({
+                'scenario_web_shop_shopify.rst',
+                'scenario_web_shop_shopify_secondary_unit.rst',
+                })
+    return load_doc_tests(__name__, __file__, *args, **kwargs)

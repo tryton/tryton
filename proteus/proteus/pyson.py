@@ -662,7 +662,8 @@ class DateTime(Date):
                 and not isinstance(now, datetime.datetime)):
             now = datetime.datetime.combine(now, datetime.time())
         if not isinstance(now, datetime.datetime):
-            now = datetime.datetime.utcnow()
+            now = datetime.datetime.now(
+                datetime.timezone.utc).replace(tzinfo=None)
         return now + relativedelta(
             year=dct['y'],
             month=dct['M'],

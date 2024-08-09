@@ -216,6 +216,31 @@ Class methods:
 
 Instance methods:
 
+.. method:: ModelView._changed_values()
+
+   Return the values changed since the instantiation.
+   By default, the value of a field is its internal representation except:
+
+      - for :class:`~trytond.model.fields.Many2One` and
+        :class:`~trytond.model.fields.One2One` field: the
+        :attr:`~trytond.model.Model.id`.
+
+      - for :class:`~trytond.model.fields.Reference` field: the string '<model
+        name>,<record id>'.
+
+      - for :class:`~trytond.model.fields.One2Many` and
+        :class:`~trytond.model.fields.Many2Many`: a dictionary composed of
+        three keys:
+
+         - ``add``: a list of tuple, the first element is the index where the
+           new line is added, the second element is default values.
+
+         - ``update``: a list of dictionary of changed values including the
+           ``id``.
+
+         - ``remove``: a list of ids.
+
+
 .. method:: ModelView.on_change(fieldnames)
 
    Return the list of changes by calling ``on_change`` method of each field.
@@ -522,6 +547,11 @@ Dual methods:
       record in order to be saved when the parent record is saved.
 
 Instance methods:
+
+.. method:: ModelStorage._save_values()
+
+   Returns the modified values from the saved one, which can be used with
+   :meth:`~ModelStorage.create` or :meth:`~ModelStorage.write`.
 
 .. method:: ModelStorage.resources()
 

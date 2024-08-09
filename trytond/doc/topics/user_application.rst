@@ -43,7 +43,7 @@ creation of such route.
    Take the first parameter as database name and replace it by the
    corresponding instance of the :ref:`Pool <ref-pool>`.
 
-``with_transaction([readonly])``
+``with_transaction([readonly[, user[, context[, timeout]]]])``
    Start a :class:`~trytond.transaction.Transaction` using the :ref:`Pool
    <ref-pool>` from ``with_pool``.
    If ``readonly`` is not set, the transaction will not be readonly for

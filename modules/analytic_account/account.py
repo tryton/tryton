@@ -7,6 +7,7 @@ from sql import Column, Literal
 from sql.aggregate import Sum
 from sql.conditionals import Coalesce
 
+from trytond import backend
 from trytond.i18n import gettext
 from trytond.model import (
     DeactivableMixin, Index, ModelSQL, ModelView, Unique, fields, sum_tree,
@@ -15,7 +16,8 @@ from trytond.model.exceptions import AccessError
 from trytond.modules.currency.fields import Monetary
 from trytond.pool import Pool
 from trytond.pyson import Eval, If, PYSONDecoder, PYSONEncoder
-from trytond.tools import grouped_slice, is_full_text, lstrip_wildcard
+from trytond.tools import (
+    grouped_slice, is_full_text, lstrip_wildcard, sqlite_apply_types)
 from trytond.transaction import Transaction
 
 from .exceptions import AccountValidationError
@@ -195,22 +197,22 @@ class Account(
             id2account[account.id] = account
 
         line_query = Line.query_get(line)
-        cursor.execute(*table.join(line, 'LEFT',
+        query = (table.join(line, 'LEFT',
                 condition=table.id == line.account
                 ).join(move_line, 'LEFT',
                 condition=move_line.id == line.move_line
                 ).select(table.id,
-                Sum(Coalesce(line.credit, 0) - Coalesce(line.debit, 0)),
+                Sum(Coalesce(line.credit, 0) - Coalesce(line.debit, 0)
+                    ).as_('balance'),
                 where=(table.type != 'view')
                 & table.id.in_(all_ids)
                 & (table.active == Literal(True)) & line_query,
                 group_by=table.id))
+        if backend.name == 'sqlite':
+            sqlite_apply_types(query, [None, 'NUMERIC'])
+        cursor.execute(*query)
         values = defaultdict(Decimal)
-        for account_id, value in cursor:
-            # SQLite uses float for SUM
-            if not isinstance(value, Decimal):
-                value = Decimal(str(value))
-            values[account_id] += value
+        values.update(cursor)
 
         balances = sum_tree(childs, values)
         for account in accounts:
@@ -240,9 +242,11 @@ class Account(
 
         line_query = Line.query_get(line)
         columns = [table.id]
+        types = [None]
         for name in names:
-            columns.append(Sum(Coalesce(Column(line, name), 0)))
-        cursor.execute(*table.join(line, 'LEFT',
+            columns.append(Sum(Coalesce(Column(line, name), 0)).as_(name))
+            types.append('NUMERIC')
+        query = (table.join(line, 'LEFT',
                 condition=table.id == line.account
                 ).join(move_line, 'LEFT',
                 condition=move_line.id == line.move_line
@@ -251,15 +255,13 @@ class Account(
                 & table.id.in_(ids)
                 & (table.active == Literal(True)) & line_query,
                 group_by=table.id))
-
+        if backend.name == 'sqlite':
+            sqlite_apply_types(query, types)
+        cursor.execute(*query)
         for row in cursor:
             account_id = row[0]
             for i, name in enumerate(names, 1):
-                value = row[i]
-                # SQLite uses float for SUM
-                if not isinstance(value, Decimal):
-                    value = Decimal(str(value))
-                result[name][account_id] += value
+                result[name][account_id] += row[i]
         for account in accounts:
             for name in names:
                 result[name][account.id] = account.currency.round(

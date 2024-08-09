@@ -221,7 +221,7 @@ class Purchase(
             'stock.shipment.in.return', None, None, "Shipment Returns"),
         'get_shipment_returns', searcher='search_shipment_returns')
     moves = fields.Function(
-        fields.Many2Many('stock.move', None, None, "Moves"),
+        fields.Many2Many('stock.move', None, None, "Stock Moves"),
         'get_moves', searcher='search_moves')
 
     quoted_by = employee_field(
@@ -258,11 +258,13 @@ class Purchase(
                 Index(
                     t,
                     (t.invoice_state, Index.Equality()),
-                    where=t.state.in_(['none', 'waiting', 'exception'])),
+                    where=t.invoice_state.in_([
+                            'none', 'waiting', 'exception'])),
                 Index(
                     t,
                     (t.shipment_state, Index.Equality()),
-                    where=t.state.in_(['none', 'waiting', 'exception'])),
+                    where=t.shipment_state.in_([
+                            'none', 'waiting', 'exception'])),
                 })
         cls._order = [
             ('purchase_date', 'DESC NULLS FIRST'),
@@ -724,6 +726,9 @@ class Purchase(
         default.setdefault('purchase_date', None)
         default.setdefault('quoted_by')
         default.setdefault('confirmed_by')
+        default.setdefault('untaxed_amount_cache')
+        default.setdefault('tax_amount_cache')
+        default.setdefault('total_amount_cache')
         return super(Purchase, cls).copy(purchases, default=default)
 
     def check_for_quotation(self):
@@ -763,6 +768,12 @@ class Purchase(
 
     @classmethod
     def store_cache(cls, purchases):
+        purchases = list(purchases)
+        cls.write(purchases, {
+                'untaxed_amount_cache': None,
+                'tax_amount_cache': None,
+                'total_amount_cache': None,
+                })
         for purchase in purchases:
             purchase.untaxed_amount_cache = purchase.untaxed_amount
             purchase.tax_amount_cache = purchase.tax_amount
@@ -881,7 +892,11 @@ class Purchase(
     @Workflow.transition('draft')
     @reset_employee('quoted_by', 'confirmed_by')
     def draft(cls, purchases):
-        pass
+        cls.write(purchases, {
+                'tax_amount_cache': None,
+                'untaxed_amount_cache': None,
+                'total_amount_cache': None,
+                })
 
     @classmethod
     @ModelView.button
@@ -1258,13 +1273,13 @@ class Line(sequence_ordered(), ModelSQL, ModelView):
         fields.Float("Invoice Progress", digits=(1, 4)),
         'get_invoice_progress')
     moves = fields.One2Many(
-        'stock.move', 'origin', "Moves", readonly=True,
+        'stock.move', 'origin', "Stock Moves", readonly=True,
         states={
             'invisible': ~Eval('moves'),
             })
     moves_ignored = fields.Many2Many(
         'purchase.line-ignored-stock.move', 'purchase_line', 'move',
-        "Ignored Moves",
+        "Ignored Stock Moves",
         domain=[
             ('id', 'in', Eval('moves', [])),
             ('state', '=', 'cancelled'),
@@ -1272,8 +1287,9 @@ class Line(sequence_ordered(), ModelSQL, ModelView):
         states={
             'invisible': ~Eval('moves_ignored'),
             })
-    moves_recreated = fields.Many2Many('purchase.line-recreated-stock.move',
-            'purchase_line', 'move', 'Recreated Moves', readonly=True)
+    moves_recreated = fields.Many2Many(
+        'purchase.line-recreated-stock.move', 'purchase_line', 'move',
+        "Recreated Stock Moves", readonly=True)
     moves_exception = fields.Function(
         fields.Boolean("Moves Exception"), 'get_moves_exception')
     moves_progress = fields.Function(
@@ -2089,7 +2105,7 @@ class LineIgnoredMove(ModelSQL):
     purchase_line = fields.Many2One(
         'purchase.line', "Purchase Line", ondelete='CASCADE', required=True)
     move = fields.Many2One(
-        'stock.move', "Move", ondelete='RESTRICT', required=True,
+        'stock.move', "Stock Move", ondelete='RESTRICT', required=True,
         domain=[
             ('origin.id', '=', Eval('purchase_line', -1), 'purchase.line'),
             ('state', '=', 'cancelled'),
@@ -2109,7 +2125,7 @@ class LineRecreatedMove(ModelSQL):
     purchase_line = fields.Many2One(
         'purchase.line', "Purchase Line", ondelete='CASCADE', required=True)
     move = fields.Many2One(
-        'stock.move', "Move", ondelete='RESTRICT', required=True,
+        'stock.move', "Stock Move", ondelete='RESTRICT', required=True,
         domain=[
             ('origin.id', '=', Eval('purchase_line', -1), 'purchase.line'),
             ('state', '=', 'cancelled'),
@@ -2171,12 +2187,12 @@ class HandleShipmentExceptionAsk(ModelView):
     'Handle Shipment Exception'
     __name__ = 'purchase.handle.shipment.exception.ask'
     recreate_moves = fields.Many2Many(
-        'stock.move', None, None, 'Recreate Moves',
+        'stock.move', None, None, 'Recreate Stock Moves',
         domain=[('id', 'in', Eval('domain_moves'))],
         help=('The selected moves will be recreated. '
             'The other ones will be ignored.'))
     domain_moves = fields.Many2Many(
-        'stock.move', None, None, 'Domain Moves')
+        'stock.move', None, None, 'Domain Stock Moves')
 
 
 class HandleShipmentException(Wizard):
@@ -2333,7 +2349,7 @@ class ModifyHeader(Wizard):
         Line = pool.get('purchase.line')
 
         purchase = self.get_purchase()
-        values = self.start._save_values
+        values = self.start._save_values()
         self.model.write([purchase], values)
         self.model.log([purchase], 'write', ','.join(sorted(values.keys())))
 

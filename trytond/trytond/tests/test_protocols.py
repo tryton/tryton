@@ -3,11 +3,11 @@
 
 import datetime
 import json
-import unittest
 from decimal import Decimal
 
 from trytond.protocols.jsonrpc import JSONDecoder, JSONEncoder, JSONRequest
 from trytond.protocols.xmlrpc import XMLRequest, client
+from trytond.tests.test_tryton import TestCase
 from trytond.tools.immutabledict import ImmutableDict
 
 
@@ -54,7 +54,7 @@ class DumpsLoadsMixin:
         self.dumps_loads(None)
 
 
-class JSONTestCase(DumpsLoadsMixin, unittest.TestCase):
+class JSONTestCase(DumpsLoadsMixin, TestCase):
     'Test JSON'
 
     def test_json_request(self):
@@ -73,7 +73,7 @@ class JSONTestCase(DumpsLoadsMixin, unittest.TestCase):
                 object_hook=JSONDecoder()), value)
 
 
-class XMLTestCase(DumpsLoadsMixin, unittest.TestCase):
+class XMLTestCase(DumpsLoadsMixin, TestCase):
     'Test XML'
 
     def test_xml_request(self):

@@ -3,7 +3,7 @@ Configuration
 *************
 
 The *Currency RS Module* uses values from settings in the ``[currency_rs]``
-section of the :doc:`configuration file <trytond:topics/configuration>`.
+section of the :ref:`trytond:topics-configuration`.
 
 .. _config-currency_rs.requests_timeout:
 

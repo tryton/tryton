@@ -1,14 +1,14 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 import datetime
-import unittest
 
 from sql.functions import CurrentTimestamp
 
 from trytond.model.exceptions import (
     RequiredValidationError, TimeFormatValidationError)
 from trytond.pool import Pool
-from trytond.tests.test_tryton import activate_module, with_transaction
+from trytond.tests.test_tryton import (
+    TestCase, activate_module, with_transaction)
 
 today = datetime.datetime(2009, 1, 1, 12, 0, 0)
 tomorrow = today + datetime.timedelta(1)
@@ -16,7 +16,7 @@ yesterday = today - datetime.timedelta(1)
 default_datetime = datetime.datetime(2000, 1, 1, 12, 0, 0)
 
 
-class FieldDateTimeTestCase(unittest.TestCase):
+class FieldDateTimeTestCase(TestCase):
     "Test Field DateTime"
 
     @classmethod

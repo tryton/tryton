@@ -249,6 +249,7 @@ class Shop(metaclass=PoolMeta):
         email = data['customer']['email']
         user = User(email=email, password=data['password'])
         party = Party(name=join_name(firstname, lastname))
+        party.save()
         user.party = party
         user.save()
         firstname, lastname = split_name(user.party.name)
@@ -552,9 +553,12 @@ class ShopVSFIdentifierMixin:
     def set_vsf_identifier(cls, records):
         pool = Pool()
         Identifier = pool.get('web.shop.vsf_identifier')
+        vsf_identifiers = []
         for record in records:
             if not record.vsf_identifier:
                 record.vsf_identifier = Identifier(record=record)
+                vsf_identifiers.append(record.vsf_identifier)
+        Identifier.save(vsf_identifiers)
         cls.save(records)
 
 

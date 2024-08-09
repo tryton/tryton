@@ -928,6 +928,7 @@
                 }).map(function(row) {
                     return row.el;
                 }));
+                this.update_selection(); // update after new rows has been added
                 this.update_visible();
                 if ((this.display_size < this.group.length) &&
                     (!this.tbody.children().last().hasClass('more-row'))) {
@@ -993,9 +994,7 @@
             }
         },
         redraw: function(selected, expanded) {
-            return redraw_async(this.rows, selected, expanded).then(() => {
-                this.update_selection();
-            });
+            return redraw_async(this.rows, selected, expanded);
         },
         switch_: function(path) {
             this.screen.row_activate();
@@ -1240,9 +1239,9 @@
             this.selection.prop('indeterminate', false);
             if (jQuery.isEmptyObject(selected_records)) {
                 this.selection.prop('checked', false);
-            } else if (selected_records.length ==
-                    this.tbody.children().length &&
-                    this.display_size >= this.group.length) {
+            } else if (
+                this.rows.every((row) => row.is_selected()) &&
+                (selected_records.length >= this.tbody.children().length)) {
                 this.selection.prop('checked', true);
             } else {
                 this.selection.prop('indeterminate', true);
@@ -1342,7 +1341,10 @@
                         if (this.editable && new_) {
                             td.trigger('click');
                         }
-                        Sao.common.find_focusable_child(td).focus();
+                        var child = Sao.common.find_focusable_child(td);
+                        if (child) {
+                            child.focus();
+                        }
                     }
                 }
             };

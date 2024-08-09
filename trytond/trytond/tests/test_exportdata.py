@@ -2,14 +2,15 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 import datetime
-import unittest
 from decimal import Decimal
 
 from trytond.pool import Pool
-from trytond.tests.test_tryton import activate_module, with_transaction
+from trytond.tests.test_tryton import (
+    TestCase, activate_module, with_transaction)
+from trytond.transaction import Transaction
 
 
-class ExportDataTestCase(unittest.TestCase):
+class ExportDataTestCase(TestCase):
     'Test export_data'
 
     @classmethod
@@ -129,6 +130,32 @@ class ExportDataTestCase(unittest.TestCase):
         self.assertEqual(
             ExportData.export_data([export1, export2], ['char']),
             [['test'], ['']])
+
+    @with_transaction()
+    def test_char_translated(self):
+        "Test export_data char translated"
+        pool = Pool()
+        ExportData = pool.get('test.export_data')
+        Language = pool.get('ir.lang')
+
+        english, = Language.search([('code', '=', 'en')])
+        english.translatable = True
+        english.save()
+
+        french, = Language.search([('code', '=', 'fr')])
+        french.translatable = True
+        french.save()
+
+        with Transaction().set_context(language='en'):
+            record, = ExportData.create([{'char_translated': 'foo'}])
+        with Transaction().set_context(language='fr'):
+            ExportData.write([record], {'char_translated': 'bar'})
+
+        self.assertEqual(
+            ExportData.export_data(
+                [record],
+                ['char_translated:lang=en', 'char_translated:lang=fr']),
+            [['foo', 'bar']])
 
     @with_transaction()
     def test_text(self):
@@ -433,11 +460,14 @@ class ExportDataTestCase(unittest.TestCase):
 
         export1, = ExportData.create([{
                     'char': "Test",
+                    "char_translated": "Test 2",
                     'integer': 2,
                     }])
         self.assertEqual(
-            ExportData.export_data([export1], ['char', 'integer'], True),
-            [["Char", "Integer"], ["Test", 2]])
+            ExportData.export_data(
+                [export1],
+                ['char', 'char_translated:lang=en', 'integer'], True),
+            [["Char", "Char (English)", "Integer"], ["Test", "Test 2", 2]])
 
     @with_transaction()
     def test_nested_header(self):

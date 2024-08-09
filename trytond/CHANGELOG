@@ -1,3 +1,14 @@
+* Add tools to apply types to SQLite select queries
+* Compress RPC responses
+* Change _changed_values and _save_values properties to method
+* Add configuration for report convert command
+* Use process pool to run cron
+* Lock only running cron record
+* Add option to skip tests that require network
+* Add language support per field in export data
+* Add translated descriptor for Char and Text fields
+* Include row and column in error message when importing data
+* Remove support for ``:id`` suffix in import data
 * Add export translations option to trytond-admin
 * Update TinyMCE to version 7
 * Add python-format flag to PO files

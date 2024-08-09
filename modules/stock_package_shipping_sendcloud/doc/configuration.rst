@@ -3,8 +3,7 @@ Configuration
 *************
 
 The *Stock Package Shipping Sendcloud Module* uses values from settings in the
-``[stock_package_shipping_sendcloud]`` section of the :doc:`configuration file
-<trytond:topics/configuration>`.
+``[stock_package_shipping_sendcloud]`` section of the :ref:`trytond:topics-configuration`.
 
 .. _config-stock_package_shipping_sendcloud.addresses_cache:
 

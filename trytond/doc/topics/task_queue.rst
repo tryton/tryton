@@ -5,9 +5,9 @@ Task Queue
 ==========
 
 Tryton provides a way to run asynchronously some tasks. You must activate the
-worker in the ``queue`` section of the :ref:`configuration
-<topics-configuration>` and :ref:`run the worker manager
-<topics-start-server>` otherwise the tasks will be run at the end of the
+:ref:`config-queue.worker` in the :ref:`config-queue` section of the configuration
+and :ref:`run the worker manager <topics-start-server>` otherwise the
+tasks will be run at the end of the
 transaction.
 
 A task is the parameters that defines how to call a method from a

@@ -6,6 +6,7 @@ from sql import Literal, Null
 from sql.aggregate import Sum
 from sql.conditionals import Coalesce
 
+from trytond import backend
 from trytond.i18n import gettext
 from trytond.model import ModelSQL, fields
 from trytond.modules.company.model import (
@@ -14,7 +15,7 @@ from trytond.modules.currency.fields import Monetary
 from trytond.modules.party.exceptions import EraseError
 from trytond.pool import Pool, PoolMeta
 from trytond.pyson import Eval, If
-from trytond.tools import grouped_slice, reduce_ids
+from trytond.tools import grouped_slice, reduce_ids, sqlite_apply_types
 from trytond.transaction import Transaction
 
 from .exceptions import AccountMissing
@@ -158,21 +159,21 @@ class Party(CompanyMultiValueMixin, metaclass=PoolMeta):
             for sub_parties in grouped_slice(parties):
                 sub_ids = [p.id for p in sub_parties]
                 party_where = reduce_ids(line.party, sub_ids)
-                cursor.execute(*line.join(account,
+                query = (line.join(account,
                         condition=account.id == line.account
                         ).join(account_type,
                         condition=account.type == account_type.id
-                        ).select(line.party, amount,
+                        ).select(line.party, amount.as_(name),
                         where=(getattr(account_type, code)
                             & (line.reconciliation == Null)
                             & (account.company == company_id)
                             & party_where
                             & today_where),
                         group_by=line.party))
+                if backend.name == 'sqlite':
+                    sqlite_apply_types(query, [None, 'NUMERIC'])
+                cursor.execute(*query)
                 for party, value in cursor:
-                    # SQLite uses float for SUM
-                    if not isinstance(value, Decimal):
-                        value = Decimal(str(value))
                     result[name][party] = value.quantize(exp)
         return result
 

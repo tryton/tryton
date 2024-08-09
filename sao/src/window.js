@@ -920,8 +920,14 @@
             this.title = title;
             this.exclude_field = kwargs.exclude_field || null;
             var dialog = new Sao.Dialog(Sao.i18n.gettext(
-                'Search %1', this.title), '', 'lg');
+                'Search %1', this.title), '', 'lg', false);
             this.el = dialog.modal;
+            this.el.on('keydown', e => {
+                if (e.which == Sao.common.ESC_KEYCODE) {
+                    e.preventDefault();
+                    this.response('RESPONSE_CANCEL');
+                }
+            });
 
             jQuery('<button/>', {
                 'class': 'btn btn-link',
@@ -984,6 +990,9 @@
                     }
                 });
             });
+            this.el.on('shown.bs.modal', () => {
+                this.screen.screen_container.search_entry.focus();
+            });
             this.el.on('hidden.bs.modal', function(event) {
                 jQuery(this).remove();
             });
@@ -997,7 +1006,8 @@
             if (response_id == 'RESPONSE_OK') {
                 records = this.screen.current_view.selected_records;
             } else if (response_id == 'RESPONSE_APPLY') {
-                this.screen.search_filter();
+                this.screen.search_filter(
+                    this.screen.screen_container.get_text());
                 return;
             } else if (response_id == 'RESPONSE_ACCEPT') {
                 var view_ids = jQuery.extend([], this.view_ids);
@@ -1196,6 +1206,15 @@
 
     Sao.Window.CSV = Sao.class_(Object, {
         init: function(title) {
+            this.languages = Sao.rpc({
+                'method': 'model.ir.lang.search_read',
+                'params': [
+                    [['translatable', '=', true]],
+                    0, null, null, ['code', 'name'],
+                    {},
+                ],
+            }, this.session, false);
+
             this.dialog = new Sao.Dialog(title, 'csv', 'lg');
             this.el = this.dialog.modal;
 
@@ -1398,14 +1417,6 @@
             this.session = Sao.Session.current_session;
             this.fields_data = {}; // Ask before Removing this.
             this.fields_invert = {};
-            this.languages = Sao.rpc({
-                'method': 'model.ir.lang.search_read',
-                'params': [
-                    [['translatable', '=', true]],
-                    0, null, null, ['code', 'name'],
-                    {},
-                ],
-            }, this.session, false);
             Sao.Window.Import._super.init.call(this,
                 Sao.i18n.gettext('CSV Import: %1', name));
 
@@ -1983,8 +1994,25 @@
                     this.fields[path] = node;
 
                     // Insert relation only to real field
-                    if (item.name.indexOf('.') == -1 && item.field.relation) {
-                        node.children = {};
+                    if (item.name.indexOf('.') == -1) {
+                        if (item.field.relation) {
+                            node.children = {};
+                        } else if (item.field.translate) {
+                            node.children = {};
+                            for (const language of this.languages) {
+                                const l_path = `${path}:lang=${language.code}`;
+                                const l_string = (
+                                    `${long_string} (${language.name})`);
+                                const l_node = {
+                                    path: l_path,
+                                    string: language.name,
+                                    long_string: l_string,
+                                    relation: null,
+                                };
+                                node.children[language.code] = l_node;
+                                this.fields[l_path] = l_node;
+                            }
+                        }
                     }
                 }
             }

@@ -3,10 +3,13 @@
 
 import os
 
-from trytond.tests.test_tryton import load_doc_tests
+from trytond.tests.test_tryton import TEST_NETWORK, load_doc_tests
 
-if (os.getenv('UPS_CLIENT_ID')
-        and os.getenv('UPS_CLIENT_SECRET')
-        and os.getenv('UPS_ACCOUNT_NUMBER')):
-    def load_tests(*args, **kwargs):
-        return load_doc_tests(__name__, __file__, *args, **kwargs)
+
+def load_tests(*args, **kwargs):
+    if (not TEST_NETWORK
+            or not (os.getenv('UPS_CLIENT_ID')
+                and os.getenv('UPS_CLIENT_SECRET')
+                and os.getenv('UPS_ACCOUNT_NUMBER'))):
+        kwargs.setdefault('skips', set()).add('scenario_shipping_ups.rst')
+    return load_doc_tests(__name__, __file__, *args, **kwargs)

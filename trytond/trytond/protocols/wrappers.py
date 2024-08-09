@@ -5,7 +5,6 @@ import gzip
 import logging
 import time
 from functools import wraps
-from io import BytesIO
 
 try:
     from http import HTTPStatus
@@ -74,8 +73,7 @@ class Request(_Request):
     def decoded_data(self):
         if self.content_encoding == 'gzip':
             if self.user_id:
-                zipfile = gzip.GzipFile(fileobj=BytesIO(self.data), mode='rb')
-                return zipfile.read()
+                return gzip.decompress(self.data)
             else:
                 abort(HTTPStatus.UNSUPPORTED_MEDIA_TYPE)
         else:
@@ -230,7 +228,7 @@ def with_pool(func):
     return wrapper
 
 
-def with_transaction(readonly=None, user=0, context=None):
+def with_transaction(readonly=None, user=0, context=None, timeout=None):
     from trytond.worker import run_task
 
     def decorator(func):
@@ -259,7 +257,8 @@ def with_transaction(readonly=None, user=0, context=None):
                     time.sleep(0.02 * (retry - count))
                 with Transaction().start(
                         pool.database_name, user_, readonly=readonly_,
-                        context=context_, **transaction_extras) as transaction:
+                        context=context_, timeout=timeout,
+                        **transaction_extras) as transaction:
                     try:
                         result = func(request, pool, *args, **kwargs)
                     except TransactionError as e:

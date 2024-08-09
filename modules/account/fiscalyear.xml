@@ -69,7 +69,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.model.button" id="fiscalyear_reopen_button">
             <field name="model">account.fiscalyear</field>
             <field name="name">reopen</field>
-            <field name="string">Re-Open</field>
+            <field name="string">Reopen</field>
         </record>
         <record model="ir.model.button" id="fiscalyear_close_button">
             <field name="model">account.fiscalyear</field>

@@ -830,7 +830,7 @@ class Inspect(Wizard):
         pool = Pool()
         Inspection = pool.get('quality.inspection')
         inspection = self.store.inspections[0]
-        Inspection.write([inspection], self.inspection._save_values)
+        Inspection.write([inspection], self.inspection._save_values())
         inspection.process()
         return 'next_'
 

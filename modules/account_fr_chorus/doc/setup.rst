@@ -10,7 +10,7 @@ Connect to Chorus Pro
 Tryton uses the API with `OAuth2 <https://en.wikipedia.org/wiki/OAuth#OAuth_2.0>`_.
 
 You must create a PISTE application for Tryton following the `User guide
-<https://developer.aife.economie.gouv.fr/en/help-center/guide>`_.
+<https://piste.gouv.fr/en/help-center/guide>`_.
 The application must have access to these APIs:
 
    * Factures

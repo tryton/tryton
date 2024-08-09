@@ -2,8 +2,8 @@
 Configuration
 *************
 
-The *Currency Module* uses some settings from the ``[currency]`` section of the
-:doc:`configuration file <trytond:topics/configuration>`.
+The *Currency Module* uses some settings from the ``[currency]`` section of
+the :ref:`trytond:topics-configuration`
 
 .. _config-currency.rate_decimal:
 

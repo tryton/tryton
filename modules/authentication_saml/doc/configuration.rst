@@ -3,8 +3,7 @@ Configuration
 *************
 
 The *Authentication SAML Module* introduces new authentication services from
-settings in the ``[authentication_saml]`` section of the :doc:`configuration
-file <trytond:topics/configuration>`.
+settings in the ``[authentication_saml]`` section of the :ref:`trytond:topics-configuration`.
 The section lists the SAML service to setup with the string to display to the
 user.
 Each service can be configuration with a section named ``[authentication_saml
@@ -22,8 +21,8 @@ Example::
 
 .. note::
    Depending on the service provider, you may need to add its origins to the
-   ``cors`` value in the ``[web]`` section of the :doc:`configuration file
-   <trytond:topics/configuration>`.
+   :ref:`config-web.cors` value in the :ref:`config-web` section of the
+   :ref:`trytond:topics-configuration`.
 
 .. _config-authentication_saml.metadata:
 

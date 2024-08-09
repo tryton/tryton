@@ -38,7 +38,7 @@ class MoveLine(metaclass=PoolMeta):
         'get_payment_amount', searcher='search_payment_amount')
     payment_currency = fields.Function(fields.Many2One(
             'currency.currency', "Payment Currency"),
-        'get_payment_currency')
+        'get_payment_currency', searcher='search_payment_currency')
     payments = fields.One2Many('account.payment', 'line', 'Payments',
         readonly=True,
         states={
@@ -147,6 +147,16 @@ class MoveLine(metaclass=PoolMeta):
         elif self.currency:
             return self.currency.id
 
+    @classmethod
+    def search_payment_currency(cls, name, clause):
+        return ['OR',
+            [('second_currency', *clause[1:]),
+                ('second_currency', '!=', None),
+                ],
+            [('currency', *clause[1:]),
+                ('second_currency', '=', None)],
+            ]
+
     def get_payment_kind(self, name):
         if self.account.type.receivable or self.account.type.payable:
             if self.debit > 0 or self.credit < 0:
@@ -223,7 +233,7 @@ class MoveLine(metaclass=PoolMeta):
         with check_access():
             lines = cls.search(cls._pay_direct_debit_domain(date))
 
-        payments = []
+        payments, receptions = [], set()
         for line in lines:
             if not line.payment_amount:
                 # SQLite fails to search for payment_amount != 0
@@ -231,9 +241,37 @@ class MoveLine(metaclass=PoolMeta):
             pattern = Reception.get_pattern(line)
             for reception in line.party.reception_direct_debits:
                 if reception.match(pattern):
-                    payments.extend(reception.get_payments(line))
+                    payments.extend(
+                        reception.get_payments(line=line, date=date))
+                    break
+            else:
+                pattern = Reception.get_pattern(line, 'balance')
+                for reception in line.party.reception_direct_debits:
+                    if reception.match(pattern):
+                        receptions.add(reception)
+                        break
         Payment.save(payments)
-        return payments
+
+        balance_payments = []
+        for reception in receptions:
+            lines = cls.search(reception.get_balance_domain(date))
+            amount = (
+                sum(l.payment_amount for l in lines
+                    if l.payment_kind == 'receivable')
+                - sum(l.payment_amount for l in lines
+                    if l.payment_kind == 'payable'))
+            pending_payments = Payment.search(
+                reception.get_balance_pending_payment_domain())
+            amount -= (
+                sum(p.amount for p in pending_payments
+                    if p.kind == 'receivable')
+                - sum(p.amount for p in pending_payments
+                    if p.kind == 'payable'))
+            if amount > 0:
+                balance_payments.extend(
+                    reception.get_payments(amount=amount, date=date))
+        Payment.save(balance_payments)
+        return payments + balance_payments
 
 
 class CreateDirectDebit(Wizard):

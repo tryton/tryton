@@ -17,5 +17,5 @@ class Company(metaclass=PoolMeta):
     def _substitutions(self):
         substitutions = super()._substitutions
         siren = self.party.siren
-        substitutions['siren'] = siren.value if siren else ''
+        substitutions['siren'] = siren.code if siren else ''
         return substitutions

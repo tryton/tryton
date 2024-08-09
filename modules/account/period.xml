@@ -51,7 +51,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.model.button" id="period_reopen_button">
             <field name="model">account.period</field>
             <field name="name">reopen</field>
-            <field name="string">Re-Open</field>
+            <field name="string">Reopen</field>
         </record>
 
         <record model="ir.model.button" id="period_lock_button">

@@ -1,12 +1,12 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
-import unittest
 
 from trytond.config import config
 from trytond.model.exceptions import (
     DomainValidationError, RequiredValidationError, SizeValidationError)
 from trytond.pool import Pool
-from trytond.tests.test_tryton import activate_module, with_transaction
+from trytond.tests.test_tryton import (
+    TestCase, activate_module, with_transaction)
 
 
 class SearchTestCaseMixin:
@@ -450,7 +450,7 @@ class CommonTestCaseMixin:
 
 
 class FieldOne2ManyTestCase(
-        unittest.TestCase, CommonTestCaseMixin, SearchTestCaseMixin):
+        TestCase, CommonTestCaseMixin, SearchTestCaseMixin):
     "Test Field One2Many"
     _strategy = 'IN'
 
@@ -719,7 +719,7 @@ class FieldOne2ManyTestCase(
 
 
 class FieldOne2ManyReferenceTestCase(
-        unittest.TestCase, CommonTestCaseMixin, SearchTestCaseMixin):
+        TestCase, CommonTestCaseMixin, SearchTestCaseMixin):
     "Test Field One2Many Reference"
     _strategy = 'IN'
 
@@ -734,7 +734,7 @@ class FieldOne2ManyReferenceTestCase(
         return Pool().get('test.one2many_reference.target')
 
 
-class FieldOne2ManyExistsTestCase(unittest.TestCase, SearchTestCaseMixin):
+class FieldOne2ManyExistsTestCase(TestCase, SearchTestCaseMixin):
     "Test Field One2Many when using EXISTS"
     _strategy = 'EXISTS'
 
@@ -758,7 +758,7 @@ class FieldOne2ManyExistsTestCase(unittest.TestCase, SearchTestCaseMixin):
 
 
 class FieldOne2ManyReferenceExistsTestCase(
-        unittest.TestCase, SearchTestCaseMixin):
+        TestCase, SearchTestCaseMixin):
     "Test Field One2Many Reference when using EXISTS"
     _strategy = 'EXISTS'
 

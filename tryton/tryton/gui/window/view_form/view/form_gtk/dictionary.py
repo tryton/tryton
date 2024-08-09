@@ -233,7 +233,7 @@ class DictMultiSelectionEntry(DictEntry):
 
     def get_value(self):
         model, paths = self.tree.get_selection().get_selected_rows()
-        return [model[path][0] for path in paths]
+        return [model[path][0] for path in paths] or None
 
     def set_value(self, value):
         value2path = {v: idx for idx, (v, _) in enumerate(self.selection)}
@@ -241,9 +241,10 @@ class DictMultiSelectionEntry(DictEntry):
         selection.handler_block_by_func(self._changed)
         try:
             selection.unselect_all()
-            for v in value:
-                if v in value2path:
-                    selection.select_path(value2path[v])
+            if value:
+                for v in value:
+                    if v in value2path:
+                        selection.select_path(value2path[v])
         finally:
             selection.handler_unblock_by_func(self._changed)
 
@@ -513,6 +514,7 @@ class DictWidget(Widget):
         self.send_modified()
         value = self.field.get_client(self.record)
         value.update({k: None for k in new_keys})
+        self.field.set_client(self.record, value)
         self.display()
 
         # Use idle add because it can be called from the callback

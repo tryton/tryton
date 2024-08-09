@@ -82,31 +82,17 @@ class TrytondWSGI(object):
                 abort(http.client.UNAUTHORIZED, response=response)
         return wrapper
 
-    def check_request_size(self, request, size=None):
-        if request.method not in {'POST', 'PUT', 'PATCH'}:
-            return
-        if size is None:
-            if request.user_id:
-                max_size = config.getint(
-                    'request', 'max_size_authenticated')
-            else:
-                max_size = config.getint(
-                    'request', 'max_size')
-        else:
-            max_size = size
-        if max_size:
-            content_length = request.content_length
-            if content_length is None:
-                abort(http.client.LENGTH_REQUIRED)
-            elif content_length > max_size:
-                abort(http.client.REQUEST_ENTITY_TOO_LARGE)
-
     def dispatch_request(self, request):
         adapter = self.url_map.bind_to_environ(request.environ)
         try:
             endpoint, request.view_args = adapter.match()
-            max_request_size = getattr(endpoint, 'max_request_size', None)
-            self.check_request_size(request, max_request_size)
+            if hasattr(endpoint, 'max_request_size'):
+                max_size = endpoint.max_request_size
+            elif request.user_id:
+                max_size = config.getint('request', 'max_size_authenticated')
+            else:
+                max_size = config.getint('request', 'max_size')
+            request.max_content_length = max_size
             return endpoint(request, **request.view_args)
         except exceptions.HTTPException as e:
             logger.debug(

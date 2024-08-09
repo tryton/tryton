@@ -1,16 +1,16 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
-import unittest
 
 from sql import Literal
 
 from trytond.model.exceptions import (
     DomainValidationError, RequiredValidationError)
 from trytond.pool import Pool
-from trytond.tests.test_tryton import activate_module, with_transaction
+from trytond.tests.test_tryton import (
+    TestCase, activate_module, with_transaction)
 
 
-class FieldIntegerTestCase(unittest.TestCase):
+class FieldIntegerTestCase(TestCase):
     "Test Field Integer"
 
     @classmethod

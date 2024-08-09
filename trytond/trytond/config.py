@@ -97,6 +97,7 @@ class TrytonConfigParser(configparser.ConfigParser):
         self.set('bus', 'long_polling_timeout', str(5 * 60))
         self.set('bus', 'cache_timeout', '5')
         self.set('bus', 'select_timeout', '5')
+        self.add_section('report')
         self.add_section('html')
         self.update_environ()
         self.update_etc()

@@ -16,6 +16,7 @@ import sys
 import time
 import unittest
 import unittest.mock
+import warnings
 from configparser import ConfigParser
 from fnmatch import fnmatchcase
 from functools import reduce, wraps
@@ -43,8 +44,10 @@ __all__ = [
     'CONTEXT',
     'Client',
     'DB_NAME',
+    'TestCase',
     'ModuleTestCase',
     'RouteTestCase',
+    'ExtensionTestCase',
     'USER',
     'activate_module',
     'doctest_checker',
@@ -76,6 +79,7 @@ def _cpu_count():
 
 
 DB_CACHE_JOBS = os.environ.get('DB_CACHE_JOBS', str(_cpu_count()))
+TEST_NETWORK = bool(int(os.getenv('TEST_NETWORK', 1)))
 
 
 def activate_module(modules, lang='en'):
@@ -281,7 +285,70 @@ def with_transaction(user=1, context=None):
     return decorator
 
 
-class _DBTestCase(unittest.TestCase):
+class TestCase(unittest.TestCase):
+
+    @classmethod
+    def setUpClass(cls):
+        super().setUpClass()
+        if pythonwarnings := os.getenv('TEST_PYTHONWARNINGS'):
+            cm = warnings.catch_warnings()
+            cm.__enter__()
+            cls.addClassCleanup(cm.__exit__, cm, None, None, None)
+            cls.setUpClassWarning(pythonwarnings.split(','))
+
+    @classmethod
+    def setUpClassWarning(cls, options):
+
+        def _getcategory(category):
+            if not category:
+                return Warning
+            if '.' not in category:
+                import builtins as m
+                klass = category
+            else:
+                module, _, klass = category.rpartition('.')
+                try:
+                    m = __import__(module, None, None, [klass])
+                except ImportError:
+                    raise ValueError(
+                        "invalid module name: %r" % module) from None
+            try:
+                cat = getattr(m, klass)
+            except AttributeError:
+                raise ValueError(
+                    "unknown warning category: %r" % category) from None
+            if not issubclass(cat, Warning):
+                raise ValueError("invalid warning category: %r" % category)
+            return cat
+
+        for option in options:
+            parts = option.split(':')
+            if len(parts) > 5:
+                raise ValueError("too many fields (max 5): %r" % option)
+            while len(parts) < 5:
+                parts.append('')
+            action, message, category, module, lineno = [
+                s.strip() for s in parts]
+            if not action:
+                action = 'default'
+            category = _getcategory(category)
+            if message:
+                message = re.escape(message)
+            if module:
+                module = re.escape(module) + r'\Z'
+            if lineno:
+                try:
+                    lineno = int(lineno)
+                    if lineno < 0:
+                        raise ValueError
+                except (ValueError, OverflowError):
+                    raise ValueError("invalid lineno %r" % lineno) from None
+            else:
+                lineno = 0
+            warnings.filterwarnings(action, message, category, module, lineno)
+
+
+class _DBTestCase(TestCase):
     module = None
     extras = None
     language = 'en'
@@ -1035,7 +1102,7 @@ def create_db(name=DB_NAME, lang='en'):
         pool.init()
 
 
-class ExtensionTestCase(unittest.TestCase):
+class ExtensionTestCase(TestCase):
     extension = None
 
     @classmethod
@@ -1117,13 +1184,14 @@ class OutputChecker(doctest.OutputChecker):
 doctest_checker = OutputChecker()
 
 
-def load_doc_tests(name, path, loader, tests, pattern):
+def load_doc_tests(name, path, loader, tests, pattern, skips=None):
     def shouldIncludeScenario(path):
         return (
             loader.testNamePatterns is None
             or any(
                 fnmatchcase(path, pattern)
                 for pattern in loader.testNamePatterns))
+    skips = set() if skips is None else set(skips)
     directory = os.path.dirname(path)
     # TODO: replace by glob root_dir in Python 3.10
     cwd = os.getcwd()
@@ -1143,12 +1211,13 @@ def load_doc_tests(name, path, loader, tests, pattern):
                     configs = json.load(fp)
             else:
                 configs = [{}]
+            s_optionflags = doctest.SKIP if scenario in skips else optionflags
             for globs in configs:
                 tests.addTests(doctest.DocFileSuite(
                         scenario, package=name, globs=globs,
                         tearDown=doctest_teardown, encoding='utf-8',
                         checker=doctest_checker,
-                        optionflags=optionflags))
+                        optionflags=s_optionflags))
     finally:
         os.chdir(cwd)
     return tests

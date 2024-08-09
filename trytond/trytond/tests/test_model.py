@@ -1,15 +1,16 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of this
 # repository contains the full copyright notices and license terms.
-import unittest
+
 from copy import copy
 
 from trytond.model.model import record
 from trytond.pool import Pool
-from trytond.tests.test_tryton import activate_module, with_transaction
+from trytond.tests.test_tryton import (
+    TestCase, activate_module, with_transaction)
 from trytond.transaction import Transaction
 
 
-class ModelTestCase(unittest.TestCase):
+class ModelTestCase(TestCase):
     'Test Model'
 
     @classmethod
@@ -390,7 +391,7 @@ class ModelTestCase(unittest.TestCase):
                     })
 
 
-class ModelTranslationTestCase(unittest.TestCase):
+class ModelTranslationTestCase(TestCase):
     "Test Model translation"
     default_language = 'en'
     other_language = 'fr'
@@ -445,7 +446,7 @@ class ModelTranslationTestCase(unittest.TestCase):
         self.assertEqual(other['string'], "Nom")
 
 
-class RecordTestCase(unittest.TestCase):
+class RecordTestCase(TestCase):
     "Test record"
 
     def test_creation(self):

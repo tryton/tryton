@@ -16,7 +16,8 @@ class Line(metaclass=PoolMeta):
                 'invisible': ((Eval('type') != 'line')
                     | ~Eval('secondary_unit')),
                 'readonly': Eval('sale_state') != 'draft',
-                }),
+                },
+            depends=['secondary_uom_factor', 'secondary_uom_rate']),
         'on_change_with_secondary_quantity', setter='set_secondary')
     secondary_unit = fields.Many2One(
         'product.uom', "Secondary Unit", ondelete='RESTRICT',
@@ -27,8 +28,7 @@ class Line(metaclass=PoolMeta):
             ],
         states={
             'invisible': ((Eval('type') != 'line')
-                | (~Eval('secondary_uom_factor')
-                    & ~Eval('secondary_uom_rate'))),
+                | ~Eval('product_secondary_uom_category')),
             'readonly': Eval('sale_state') != 'draft',
             })
     secondary_unit_price = fields.Function(Monetary(
@@ -42,9 +42,17 @@ class Line(metaclass=PoolMeta):
 
     secondary_uom_factor = fields.Float(
         "Secondary UoM Factor",
+        states={
+            'readonly': True,
+            'required': (Eval('type') == 'line') & Eval('secondary_unit'),
+            },
         help="The factor for the secondary Unit of Measure.")
     secondary_uom_rate = fields.Float(
         "Secondary UoM Rate",
+        states={
+            'readonly': True,
+            'required': (Eval('type') == 'line') & Eval('secondary_unit'),
+            },
         help="The rate for the secondary Unit of Measure.")
 
     product_secondary_uom_category = fields.Function(
@@ -306,3 +314,34 @@ class LineBlanketAgreement(metaclass=PoolMeta):
                 rate=self.secondary_uom_rate,
                 round=round)
         return quantity
+
+
+class AmendmentLine(metaclass=PoolMeta):
+    __name__ = 'sale.amendment.line'
+
+    product_secondary_uom_category = fields.Function(
+        fields.Many2One(
+            'product.uom.category', "Product Secondary UoM Category",
+            help="The category of the secondary Unit of Measure "
+            "for the product."),
+        'on_change_with_product_secondary_uom_category')
+
+    @classmethod
+    def _unit_categories(cls):
+        return super()._unit_categories() + ['product_secondary_uom_category']
+
+    @fields.depends('product')
+    def on_change_with_product_secondary_uom_category(self, name=None):
+        if self.product and self.product.sale_secondary_uom:
+            return self.product.sale_secondary_uom.category
+
+    def _apply_line(self, sale, sale_line):
+        super()._apply_line(sale, sale_line)
+        if (self.unit and self.product
+                and self.unit.category != self.product.sale_uom.category):
+            sale_line.unit = self.line.unit
+            sale_line.secondary_quantity = self.quantity
+            sale_line.secondary_unit = self.unit
+            sale_line.on_change_secondary_quantity()
+            sale_line.secondary_unit_price = self.unit_price
+            sale_line.on_change_secondary_unit_price()

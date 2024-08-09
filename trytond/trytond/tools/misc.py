@@ -16,7 +16,7 @@ from collections.abc import Iterable, Sized
 from functools import wraps
 from itertools import chain, islice, tee, zip_longest
 
-from sql import Literal
+from sql import As, Literal, Select
 from sql.conditionals import Case
 from sql.operators import Or
 
@@ -304,6 +304,15 @@ def sql_pairing(x, y):
     return Case(
         (x < y, (y * y) + x),
         else_=(x * x) + x + y)
+
+
+def sqlite_apply_types(select, types):
+    "Apply SQLite types to column names of the select query"
+    assert isinstance(select, Select)
+    for column, type in zip(select.columns, types):
+        if type:
+            assert isinstance(column, As)
+            column.output_name += ' [%s]' % type
 
 
 def firstline(text):

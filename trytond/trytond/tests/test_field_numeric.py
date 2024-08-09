@@ -1,6 +1,6 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
-import unittest
+
 from decimal import Decimal, InvalidOperation
 
 from sql import Literal
@@ -8,10 +8,11 @@ from sql import Literal
 from trytond.model.exceptions import (
     DigitsValidationError, RequiredValidationError)
 from trytond.pool import Pool
-from trytond.tests.test_tryton import activate_module, with_transaction
+from trytond.tests.test_tryton import (
+    TestCase, activate_module, with_transaction)
 
 
-class FieldNumericTestCase(unittest.TestCase):
+class FieldNumericTestCase(TestCase):
     "Test Field Numeric"
 
     @classmethod
@@ -460,6 +461,28 @@ class FieldNumericTestCase(unittest.TestCase):
                 ])
 
         self.assertEqual(numerics, [numeric1])
+
+    @with_transaction()
+    def test_search_order(self):
+        "Test search order"
+        pool = Pool()
+        Numeric = pool.get('test.numeric')
+
+        Numeric.create([{
+                    'numeric': Decimal('10.00'),
+                    }, {
+                    'numeric': Decimal('7.00'),
+                    }])
+
+        records_asc = Numeric.search([], order=[('numeric', 'ASC')])
+        records_desc = Numeric.search([], order=[('numeric', 'DESC')])
+
+        self.assertEqual(
+            [r.numeric for r in records_asc],
+            [Decimal('7.00'), Decimal('10.00')])
+        self.assertEqual(
+            [r.numeric for r in records_desc],
+            [Decimal('10.00'), Decimal('7.00')])
 
     @with_transaction()
     def test_write(self):

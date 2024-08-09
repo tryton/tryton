@@ -1,14 +1,13 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of this
 # repository contains the full copyright notices and license terms.
 
-import unittest
-
 from sql import Table
 
 from trytond.model import Index
+from trytond.tests.test_tryton import TestCase
 
 
-class ModelIndexTestCase(unittest.TestCase):
+class ModelIndexTestCase(TestCase):
     "Test Model Index"
 
     def test_index_equality(self):

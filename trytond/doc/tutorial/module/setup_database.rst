@@ -5,8 +5,7 @@ Initialize the database
 
 By default Tryton, use an SQLite database stored in the folder :file:`db` of
 your home directory.
-This can be changed in the ``database`` section of the `configuration
-<topics-configuration>`.
+This can be changed in the :ref:`config-database` section of the configuration.
 
 Now creating a Tryton database is only a matter of executing the following
 commands:

@@ -1220,9 +1220,9 @@ class ViewTree(View):
             label.set_text(text)
 
     def set_cursor(self, new=False, reset_view=True):
-        self.treeview.grab_focus()
         model = self.treeview.get_model()
         if self.record and model and self.treeview.get_realized():
+            self.treeview.grab_focus()
             path = self.record.get_index_path(model.group)
             if model.get_flags() & Gtk.TreeModelFlags.LIST_ONLY:
                 path = (path[0],)

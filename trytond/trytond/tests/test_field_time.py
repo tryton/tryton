@@ -1,14 +1,14 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 import datetime
-import unittest
 
 from sql.functions import CurrentTimestamp
 
 from trytond.model.exceptions import (
     RequiredValidationError, TimeFormatValidationError)
 from trytond.pool import Pool
-from trytond.tests.test_tryton import activate_module, with_transaction
+from trytond.tests.test_tryton import (
+    TestCase, activate_module, with_transaction)
 
 pre_evening = datetime.time(16, 30)
 evening = datetime.time(18, 45, 3)
@@ -16,7 +16,7 @@ night = datetime.time(20, 00)
 default_time = datetime.time(16, 30)
 
 
-class FieldTimeTestCase(unittest.TestCase):
+class FieldTimeTestCase(TestCase):
     "Test Field Time"
 
     @classmethod

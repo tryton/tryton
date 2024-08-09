@@ -2,7 +2,6 @@
 # this repository contains the full copyright notices and license terms.
 import shutil
 import tempfile
-import unittest
 
 from sql import Literal
 
@@ -10,13 +9,14 @@ from trytond.config import config
 from trytond.model import fields
 from trytond.model.exceptions import RequiredValidationError
 from trytond.pool import Pool
-from trytond.tests.test_tryton import activate_module, with_transaction
+from trytond.tests.test_tryton import (
+    TestCase, activate_module, with_transaction)
 from trytond.transaction import Transaction
 
 cast = fields.Binary.cast
 
 
-class FieldBinaryTestCase(unittest.TestCase):
+class FieldBinaryTestCase(TestCase):
     "Test Field Binary"
 
     @classmethod

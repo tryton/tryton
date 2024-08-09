@@ -1,6 +1,8 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
-from sql import Null
+from sql import Cast, Null
+from sql.conditionals import Case
+from sql.operators import Concat
 
 from trytond.model import Check, fields
 from trytond.pool import Pool, PoolMeta
@@ -151,8 +153,9 @@ class LotTrace(metaclass=PoolMeta):
     production_output = fields.Many2One('production', "Production Output")
 
     @classmethod
-    def _columns(cls, move):
-        return super()._columns(move) + [
+    def _columns(cls, tables):
+        move = tables['move']
+        return super()._columns(tables) + [
             move.production_input.as_('production_input'),
             move.production_output.as_('production_output'),
             ]
@@ -164,13 +167,19 @@ class LotTrace(metaclass=PoolMeta):
         return super().get_documents() + [
             ('production', Model.get_name('production'))]
 
-    def get_document(self, name):
-        document = super().get_document(name)
-        if self.production_input:
-            document = str(self.production_input)
-        elif self.production_output:
-            document = str(self.production_output)
-        return document
+    @classmethod
+    def get_document(cls, tables):
+        document = super().get_document(tables)
+        sql_type = cls.document.sql_type().base
+        move = tables['move']
+        return Case(
+            ((move.production_input != Null),
+                Concat('production,',
+                    Cast(move.production_input, sql_type))),
+            ((move.production_output != Null),
+                Concat('production,',
+                    Cast(move.production_output, sql_type))),
+            else_=document)
 
     def _get_upward_traces(self):
         traces = super()._get_upward_traces()

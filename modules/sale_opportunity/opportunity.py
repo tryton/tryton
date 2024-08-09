@@ -552,7 +552,11 @@ class SaleOpportunityLine(sequence_ordered(), ModelSQL, ModelView):
                 ('salable', '=', True),
                 ()),
             ],
-        states=_states)
+        states=_states,
+        context={
+            'company': Eval('company', None),
+            },
+        depends=['company'])
     product_uom_category = fields.Function(
         fields.Many2One(
             'product.uom.category', "Product UoM Category"),
@@ -573,6 +577,10 @@ class SaleOpportunityLine(sequence_ordered(), ModelSQL, ModelView):
     description = fields.Text("Description", states=_states)
     summary = fields.Function(fields.Char("Summary"), 'on_change_with_summary')
     note = fields.Text("Note")
+
+    company = fields.Function(
+        fields.Many2One('company.company', "Company"),
+        'on_change_with_company')
 
     del _states
 
@@ -616,6 +624,10 @@ class SaleOpportunityLine(sequence_ordered(), ModelSQL, ModelView):
     @fields.depends('description')
     def on_change_with_summary(self, name=None):
         return firstline(self.description or '')
+
+    @fields.depends('opportunity', '_parent_opportunity.company')
+    def on_change_with_company(self, name=None):
+        return self.opportunity.company if self.opportunity else None
 
     def get_sale_line(self, sale):
         '''

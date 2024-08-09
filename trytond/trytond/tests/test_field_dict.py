@@ -7,10 +7,10 @@ from trytond.model.dictschema import SelectionError
 from trytond.model.exceptions import RequiredValidationError
 from trytond.pool import Pool
 from trytond.tests.test_tryton import (
-    ExtensionTestCase, activate_module, with_transaction)
+    ExtensionTestCase, TestCase, activate_module, with_transaction)
 
 
-class FieldDictTestCase(unittest.TestCase):
+class FieldDictTestCase(TestCase):
     "Test Field Dict"
 
     @classmethod
@@ -859,7 +859,7 @@ class FieldDictTestCase(unittest.TestCase):
         self.assertDictEqual(
             dict_.dico_string_keys, {'a': 'A', 'type': "Type"})
 
-    @with_transaction
+    @with_transaction()
     def test_set_key(self):
         "Test setting a key of dict"
         Dict = Pool().get('test.dict')
@@ -870,7 +870,7 @@ class FieldDictTestCase(unittest.TestCase):
                     }])
 
         with self.assertRaises(TypeError):
-            dict.dico['a'] = 5
+            dict_.dico['a'] = 5
 
 
 @unittest.skipUnless(backend.name == 'postgresql',
