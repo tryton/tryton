@@ -1,5 +1,11 @@
-Account Statement Coda Module
+#############################
+Account Statement CODA Module
 #############################
 
-The Account Statement Coda module implements the import of the `CODA
-<http://downloads.tryton.org/standards/coda-2.6.pdf>`_ file as statement.
+The *Account Statement Coda Module* implements the import of `CODA
+<http://downloads.tryton.org/standards/coda-2.6.pdf>`_ files as statements.
+
+.. toctree::
+   :maxdepth: 2
+
+   releases
