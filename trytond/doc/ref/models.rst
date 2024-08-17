@@ -313,6 +313,22 @@ Class attributes are:
 
    The name of the :class:`~fields.Field` used as record name.
 
+Instance attributes are:
+
+.. attribute:: ModelStorage._transaction
+
+   The :class:`~trytond.transaction.Transaction` instance under which the
+   record was instantiated.
+
+.. attribute:: ModelStorage._user
+
+   The `User <model-res.user>` id from the :attr:`~ModelStorage._transaction`.
+
+.. attribute:: ModelStorage._context
+
+   The :attr:`~trytond.transaction.Transaction.context` under which the record
+   was instantiated.
+
 Static methods:
 
 .. staticmethod:: ModelStorage.default_create_uid()
