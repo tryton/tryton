@@ -1099,6 +1099,11 @@ Function
 
    where ``name`` is the name of the field, and it must return the value.
 
+.. note::
+
+   The getter function is called with the
+   :attr:`~trytond.model.ModelStorage._context` of the instances.
+
 .. attribute:: Function.setter
 
    The name of the classmethod of the :class:`~trytond.model.Model` to set the
