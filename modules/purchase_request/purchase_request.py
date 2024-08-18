@@ -391,7 +391,7 @@ class CreatePurchase(Wizard):
         '''
         return (
             ('product', request.product),
-            ('description', request.description),
+            ('description', request.description or ''),
             ('unit', request.unit),
             )
 

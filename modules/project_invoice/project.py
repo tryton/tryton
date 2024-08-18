@@ -577,7 +577,7 @@ class Work(Effort, Progress, Timesheet, metaclass=PoolMeta):
         return (('product', line['product']),
             ('unit', line['unit']),
             ('unit_price', line['unit_price']),
-            ('description', line['description']))
+            ('description', line['description'] or ''))
 
     def _get_invoice_line(self, key, invoice, lines):
         "Return a invoice line for the lines"

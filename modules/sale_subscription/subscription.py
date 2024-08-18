@@ -957,7 +957,7 @@ class LineConsumption(ModelSQL, ModelView):
             ('unit', consumption.line.unit),
             ('product', consumption.line.service.product),
             ('unit_price', consumption.line.unit_price),
-            ('description', consumption.line.description),
+            ('description', consumption.line.description or ''),
             ('origin', consumption.line),
             )
 
