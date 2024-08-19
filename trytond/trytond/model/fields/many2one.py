@@ -42,7 +42,6 @@ class Many2One(Field):
             ``SET NULL`` will be changed into ``RESTRICT`` if required is set.
         :param datetime_field: The name of the field that contains the datetime
             value to read the target record.
-        :param target_search: The kind of target search 'subquery' or 'join'
         :param search_order: The order to use when searching for a record
         :param search_context: The context to use when searching for a record
         '''
