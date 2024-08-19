@@ -166,11 +166,6 @@ The wizard goes through each account and `Party <party:model-party.party>`
 in turn, and attempts to find the best possible reconciliations from the
 unreconciled account move lines that should be considered.
 
-It does this by splitting up the account move lines into sequential
-`chunks <config-account.reconciliation_chunk>`.
-It then tries all possible combinations of the account move lines within each
-chunk, in an attempt to find the best set of balanced lines.
-
 .. seealso::
 
    The reconcile accounts wizard can be started from the main menu item:

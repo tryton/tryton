@@ -1,9 +1,9 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 import datetime as dt
-from collections import defaultdict, namedtuple
+from collections import defaultdict
 from decimal import Decimal
-from itertools import chain, combinations, groupby
+from itertools import chain, groupby
 
 from genshi.template.text import TextTemplate
 from sql import Null
@@ -1541,38 +1541,20 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin, InvoiceReportMixin):
         '''
         Return list of lines and the remainder to make reconciliation.
         '''
-        Result = namedtuple('Result', ['lines', 'remainder'])
+        pool = Pool()
+        Line = pool.get('account.move.line')
+
+        assert currency in {self.currency, self.company.currency}
 
         if party is None:
             party = self.party
-
-        assert currency in [self.currency, self.company.currency]
-
-        def balance(line):
-            if currency == line.second_currency:
-                return line.amount_second_currency
-            elif currency == self.company.currency:
-                return line.debit - line.credit
-            else:
-                return 0
-
         lines = [
             l for l in self.payment_lines + self.lines_to_pay
             if not l.reconciliation
             and (not self.account.party_required or l.party == party)]
 
-        remainder = sum(map(balance, lines)) - amount
-        best = Result(lines, remainder)
-        if remainder:
-            for n in range(len(lines) - 1, 0, -1):
-                for comb_lines in combinations(lines, n):
-                    remainder = sum(map(balance, comb_lines)) - amount
-                    result = Result(list(comb_lines), remainder)
-                    if currency.is_zero(remainder):
-                        return result
-                    if abs(remainder) < abs(best.remainder):
-                        best = result
-        return best
+        return Line.find_best_reconciliation(
+            lines, currency, amount=amount)
 
     def pay_invoice(
             self, amount, payment_method, date, description=None,

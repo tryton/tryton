@@ -184,6 +184,7 @@ class AccountTestCase(
         PartyCompanyCheckEraseMixin, CompanyTestMixin, ModuleTestCase):
     'Test Account module'
     module = 'account'
+    maxDiff = None
 
     @with_transaction()
     def test_account_chart(self):
@@ -769,6 +770,71 @@ class AccountTestCase(
                     Line(account=receivable, debit=Decimal(100), party=party),
                     ]
                 move.save()
+
+    @with_transaction()
+    def test_find_best_reconciliation(self):
+        "Test find best reconciliation"
+        pool = Pool()
+        Line = pool.get('account.move.line')
+
+        currency = create_currency('USD')
+
+        line1 = Line(
+            debit=Decimal(10), credit=0, currency=currency,
+            second_currency=None, account=None,
+            maturity_date=datetime.date(2024, 1, 1))
+        line2 = Line(
+            debit=0, credit=Decimal(10), currency=currency,
+            second_currency=None, account=None,
+            maturity_date=datetime.date(2024, 1, 2))
+        line3 = Line(
+            debit=0, credit=Decimal(5), currency=currency,
+            second_currency=None, account=None,
+            maturity_date=datetime.date(2024, 1, 3))
+
+        for (lines, amount, best, remaining) in [
+                ([line1], 0, [line1], Decimal('10')),
+                ([line1], Decimal(10), [line1], Decimal(0)),
+                ([line1], Decimal(3), [line1], Decimal(7)),
+                ([line1, line2], 0, [line1, line2], Decimal(0)),
+                ([line1, line2], Decimal(10), [line1], Decimal(0)),
+                ([line1, line2], Decimal(-10), [line2], Decimal(0)),
+                ([line1, line2], Decimal(20), [line1], Decimal(-10)),
+                ([line1, line2], Decimal(-3), [line1, line2], Decimal(3)),
+                ([line1, line2], Decimal(-9), [line2], Decimal(-1)),
+                ([line1, line3], 0, [line1, line3], Decimal(5)),
+                ([line1, line2, line3], 0, [line1, line2], Decimal(0)),
+                ]:
+            with self.subTest(lines=lines, amount=amount):
+                self.assertEqual(
+                    Line.find_best_reconciliation(lines, currency, amount),
+                    (best, remaining))
+
+    @with_transaction()
+    def test_find_best_reconciliation_currency(self):
+        "Test find best reconciliation with different currencies"
+        pool = Pool()
+        Line = pool.get('account.move.line')
+
+        currency1 = create_currency('USD')
+        currency2 = create_currency('EUR')
+
+        line1 = Line(
+            debit=Decimal(10), credit=0, currency=currency1,
+            second_currency=None, account=None,
+            maturity_date=datetime.date(2024, 1, 1))
+        line2 = Line(
+            debit=0, credit=Decimal(20), currency=currency2,
+            second_currency=currency1, amount_second_currency=Decimal('-10'),
+            account=None, maturity_date=datetime.date(2024, 1, 1))
+        line3 = Line(
+            debit=0, credit=Decimal(5), currency=None,
+            second_currency=None, account=None,
+            maturity_date=datetime.date(2024, 1, 3))
+
+        self.assertEqual(
+            Line.find_best_reconciliation([line1, line2, line3], currency1),
+            ([line1, line2], Decimal(0)))
 
     @with_transaction()
     def test_tax_compute(self):

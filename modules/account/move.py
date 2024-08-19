@@ -2,7 +2,7 @@
 # this repository contains the full copyright notices and license terms.
 from collections import defaultdict
 from decimal import Decimal
-from itertools import chain, combinations, groupby, islice
+from itertools import chain, groupby, islice
 
 from dateutil.relativedelta import relativedelta
 from sql import Literal, Null, Window
@@ -11,7 +11,6 @@ from sql.conditionals import Case, Coalesce
 from sql.functions import Abs, CharLength, Round
 from sql.operators import Exists
 
-from trytond.config import config
 from trytond.i18n import gettext
 from trytond.model import (
     Check, DeactivableMixin, Index, ModelSQL, ModelView, dualmethod, fields)
@@ -1806,6 +1805,54 @@ class Line(DescriptionOriginMixin, MoveLineMixin, ModelSQL, ModelView):
         move.lines = lines
         return move
 
+    @classmethod
+    def find_best_reconciliation(cls, lines, currency, amount=0):
+        """Return the list of lines to reconcile for the amount
+        with the smallest remaining.
+
+        For performance reason it is an approximation that searches for the
+        smallest remaining by removing the last line that decrease it."""
+        assert len({l.account for l in lines}) <= 1
+
+        def get_balance(line):
+            if line.second_currency == currency:
+                return line.amount_second_currency
+            elif line.currency == currency:
+                return line.debit - line.credit
+            else:
+                return 0
+
+        lines = sorted(lines, key=cls._reconciliation_sort_key)
+        debit, credit = [], []
+        remaining = -amount
+        for line in list(lines):
+            balance = get_balance(line)
+            if balance > 0:
+                debit.append(line)
+            elif balance < 0:
+                credit.append(line)
+            else:
+                lines.remove(line)
+            remaining += balance
+
+        best_lines, best_remaining = list(lines), remaining
+        if remaining:
+            while lines:
+                try:
+                    line = (debit if remaining > 0 else credit).pop()
+                except IndexError:
+                    break
+                lines.remove(line)
+                remaining -= get_balance(line)
+                if lines and abs(remaining) < abs(best_remaining):
+                    best_lines, best_remaining = list(lines), remaining
+                    if not remaining:
+                        break
+        return best_lines, best_remaining
+
+    def _reconciliation_sort_key(self):
+        return self.maturity_date or self.date
+
 
 class LineReceivablePayableContext(ModelView):
     "Receivable/Payable Line Context"
@@ -2357,6 +2404,9 @@ class Reconcile(Wizard):
 
     def _default_lines(self):
         'Return the larger list of lines which can be reconciled'
+        pool = Pool()
+        Line = pool.get('account.move.line')
+
         if self.model and self.model.__name__ == 'account.move.line':
             requested = {
                 l for l in self.records
@@ -2364,45 +2414,15 @@ class Reconcile(Wizard):
                 and l.party == self.show.party
                 and (l.second_currency or l.currency) == self.show.currency}
         else:
-            requested = None
+            requested = []
         currency = self.show.currency
 
-        def balance(line):
-            if line.second_currency == currency:
-                return line.amount_second_currency
-            elif line.currency == currency:
-                return line.debit - line.credit
-            else:
-                return 0
-
-        all_lines = self._all_lines()
-        amount = sum(map(balance, all_lines))
-        if currency.is_zero(amount):
-            return all_lines
-
-        chunk = config.getint('account', 'reconciliation_chunk', default=10)
-        # Combination is exponential so it must be limited to small number
-        default = []
-        for lines in grouped_slice(
-                sorted(all_lines, key=self._line_sort_key), chunk):
-            lines = list(lines)
-            best = None
-            for n in range(len(lines), 1, -1):
-                for comb_lines in combinations(lines, n):
-                    if requested and not requested.intersection(comb_lines):
-                        continue
-                    amount = sum(balance(l) for l in comb_lines)
-                    if currency.is_zero(amount):
-                        best = comb_lines
-                        break
-                if best:
-                    break
-            if best:
-                default.extend(best)
-        if not default and requested:
+        lines, remaining = Line.find_best_reconciliation(
+            self._all_lines(), currency)
+        if remaining:
             return requested
         else:
-            return default
+            return lines
 
     def transition_reconcile(self):
         pool = Pool()

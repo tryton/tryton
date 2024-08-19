@@ -12,7 +12,6 @@ income statement.
 
    setup
    usage/index
-   configuration
    design/index
    reference
    releases
