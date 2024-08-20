@@ -147,10 +147,10 @@ Send products::
     >>> shipment.state
     'done'
 
-    >>> shipment.cost_invoice_line.amount
+    >>> shipment.cost_sale_invoice_line.amount
     Decimal('3.00')
     >>> carriage, = shipment.before_carriages
-    >>> carriage.cost_invoice_line.amount
+    >>> carriage.cost_sale_invoice_line.amount
     Decimal('2.00')
 
 Check customer invoice::

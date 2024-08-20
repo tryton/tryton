@@ -8,6 +8,6 @@ from trytond.pool import PoolMeta
 class InvoiceLine(metaclass=PoolMeta):
     __name__ = 'account.invoice.line'
 
-    cost_shipment_carriages = fields.One2Many(
-        'stock.shipment.carriage', 'cost_invoice_line',
-        "Cost of Shipment Carriages", readonly=True)
+    cost_sale_shipment_carriages = fields.One2Many(
+        'stock.shipment.carriage', 'cost_sale_invoice_line',
+        "Cost Sale of Shipment Carriages", readonly=True)

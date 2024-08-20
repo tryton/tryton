@@ -44,6 +44,16 @@ class Carriage(sequence_ordered(), ShipmentCostMixin, ModelSQL, ModelView):
         cls.carrier.required = True
 
     @classmethod
+    def __register__(cls, module):
+        table_h = cls.__table_handler__(module)
+
+        # Migration from 7.2: use suffix sale
+        table_h.column_rename('cost_method', 'cost_sale_method')
+        table_h.column_rename('cost_invoice_line', 'cost_sale_invoice_line')
+
+        super().__register__(module)
+
+    @classmethod
     def get_shipments(cls):
         pool = Pool()
         IrModel = pool.get('ir.model')
@@ -159,10 +169,11 @@ class Carriage_Sale(ShipmentCostSaleMixin, metaclass=PoolMeta):
     def _shipment_cost_currency_date(self):
         return self.shipment.effective_date
 
-    def get_cost_invoice_line(self, invoice, origin=None):
-        invoice_line = super().get_cost_invoice_line(invoice, origin=origin)
+    def get_cost_sale_invoice_line(self, invoice, origin=None):
+        invoice_line = super().get_cost_sale_invoice_line(
+            invoice, origin=origin)
         if invoice_line:
-            invoice_line.cost_shipment_carriages = [self]
+            invoice_line.cost_sale_shipment_carriages = [self]
         return invoice_line
 
     @classmethod
@@ -171,7 +182,7 @@ class Carriage_Sale(ShipmentCostSaleMixin, metaclass=PoolMeta):
             sequence=carriage.sequence,
             type=carriage.type,
             carrier=carriage.carrier,
-            cost_method=carriage.cost_method,
+            cost_sale_method=carriage.cost_method,
             from_=carriage.from_,
             to=carriage.to,
             )

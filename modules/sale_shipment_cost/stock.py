@@ -16,7 +16,7 @@ class ShipmentCostSaleMixin:
     cost_sale_currency_used = fields.Function(fields.Many2One(
             'currency.currency', "Cost Sale Currency",
             states={
-                'invisible': Eval('cost_method') != 'shipment',
+                'invisible': Eval('cost_sale_method') != 'shipment',
                 'readonly': (
                     Eval('shipment_cost_sale_readonly', True)
                     | ~Eval('cost_edit', False)),
@@ -25,14 +25,14 @@ class ShipmentCostSaleMixin:
     cost_sale_currency = fields.Many2One(
         'currency.currency', "Cost Sale Currency",
         states={
-            'invisible': Eval('cost_method') != 'shipment',
+            'invisible': Eval('cost_sale_method') != 'shipment',
             'required': Bool(Eval('cost_sale')),
             'readonly': Eval('shipment_cost_sale_readonly', True),
             })
     cost_sale_used = fields.Function(fields.Numeric(
             "Cost Sale", digits=price_digits,
             states={
-                'invisible': Eval('cost_method') != 'shipment',
+                'invisible': Eval('cost_sale_method') != 'shipment',
                 'readonly': (
                     Eval('shipment_cost_sale_readonly', True)
                     | ~Eval('cost_edit', False)),
@@ -41,16 +41,16 @@ class ShipmentCostSaleMixin:
     cost_sale = fields.Numeric(
         "Cost Sale", digits=price_digits, readonly=True,
         states={
-            'invisible': Eval('cost_method') != 'shipment',
+            'invisible': Eval('cost_sale_method') != 'shipment',
             })
 
     cost_sales = fields.One2Many(
         'stock.shipment.cost_sale', 'shipment', "Cost Sales", readonly=True)
 
-    cost_invoice_line = fields.Many2One(
-        'account.invoice.line', "Cost Invoice Line", readonly=True)
-    cost_method = fields.Selection(
-        'get_cost_methods', "Cost Method", readonly=True)
+    cost_sale_invoice_line = fields.Many2One(
+        'account.invoice.line', "Cost Sale Invoice Line", readonly=True)
+    cost_sale_method = fields.Selection(
+        'get_cost_sale_methods', "Cost Sale Method", readonly=True)
 
     shipment_cost_sale_readonly = fields.Function(
         fields.Boolean("Shipment Cost Sale Read Only"),
@@ -59,14 +59,15 @@ class ShipmentCostSaleMixin:
     def on_change_with_shipment_cost_sale_readonly(self, name=None):
         raise NotImplementedError
 
-    @fields.depends('carrier', 'cost_method', methods=['_get_carrier_context'])
+    @fields.depends(
+        'carrier', 'cost_sale_method', methods=['_get_carrier_context'])
     def _compute_costs(self):
         costs = super()._compute_costs()
         costs.update({
                 'cost_sale': None,
                 'cost_sale_currency': None,
                 })
-        if self.carrier and self.cost_method == 'shipment':
+        if self.carrier and self.cost_sale_method == 'shipment':
             with Transaction().set_context(self._get_carrier_context()):
                 cost_sale, sale_currency_id = self.carrier.get_sale_price()
             if cost_sale is not None:
@@ -93,21 +94,21 @@ class ShipmentCostSaleMixin:
             return self.cost_sale_currency
 
     @classmethod
-    def get_cost_methods(cls):
+    def get_cost_sale_methods(cls):
         pool = Pool()
         Sale = pool.get('sale.sale')
         fieldname = 'shipment_cost_method'
         return Sale.fields_get([fieldname])[fieldname]['selection']
 
-    def get_cost_invoice_line(self, invoice, origin=None):
+    def get_cost_sale_invoice_line(self, invoice, origin=None):
         pool = Pool()
         Currency = pool.get('currency.currency')
         InvoiceLine = pool.get('account.invoice.line')
 
-        if (self.cost_method != 'shipment'
+        if (self.cost_sale_method != 'shipment'
                 or not self.carrier
                 or not self.cost_sale_used
-                or self.cost_invoice_line):
+                or self.cost_sale_invoice_line):
             return
         product = self.carrier.carrier_product
 
@@ -189,14 +190,18 @@ class ShipmentOut(ShipmentCostSaleMixin, metaclass=PoolMeta):
                 and not table_h.column_exist('cost_sale_currency')):
             table_h.column_rename('cost_currency', 'cost_sale_currency')
 
-        cost_method_exists = table_h.column_exist('cost_method')
+        # Migration from 7.2: use suffix sale
+        table_h.column_rename('cost_method', 'cost_sale_method')
+        table_h.column_rename('cost_invoice_line', 'cost_sale_invoice_line')
+
+        cost_sale_method_exists = table_h.column_exist('cost_sale_method')
 
         super().__register__(module)
 
-        # Migration from 6.0: fill new cost_method field
-        if not cost_method_exists:
+        # Migration from 6.0: fill new cost_sale_method field
+        if not cost_sale_method_exists:
             cursor.execute(*table.update(
-                    columns=[table.cost_method],
+                    columns=[table.cost_sale_method],
                     values=['shipment']))
 
     @fields.depends('state')
@@ -207,10 +212,11 @@ class ShipmentOut(ShipmentCostSaleMixin, metaclass=PoolMeta):
     def _shipment_cost_currency_date(self):
         return self.effective_date
 
-    def get_cost_invoice_line(self, invoice, origin=None):
-        invoice_line = super().get_cost_invoice_line(invoice, origin=origin)
+    def get_cost_sale_invoice_line(self, invoice, origin=None):
+        invoice_line = super().get_cost_sale_invoice_line(
+            invoice, origin=origin)
         if invoice_line:
-            invoice_line.cost_shipments = [self]
+            invoice_line.cost_sale_shipments = [self]
         return invoice_line
 
     @classmethod

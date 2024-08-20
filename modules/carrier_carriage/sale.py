@@ -124,7 +124,7 @@ class Line(metaclass=PoolMeta):
                     invoice = self.sale._get_invoice_sale()
                     for carriage in shipment.carriages:
                         # XXX: self is not necessary linked to carriage
-                        invoice_line = carriage.get_cost_invoice_line(
+                        invoice_line = carriage.get_cost_sale_invoice_line(
                             invoice, origin=self)
                         if invoice_line:
                             lines.append(invoice_line)

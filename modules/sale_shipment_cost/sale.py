@@ -371,7 +371,7 @@ class Sale(metaclass=PoolMeta):
         fields = super()._get_shipment_grouping_fields(shipment)
         fields.add('carrier')
         if isinstance(shipment, ShipmentOut):
-            fields.add('cost_method')
+            fields.add('cost_sale_method')
         return fields
 
     @property
@@ -387,7 +387,7 @@ class Sale(metaclass=PoolMeta):
         ShipmentOut = pool.get('stock.shipment.out')
         shipment = super()._get_shipment_sale(Shipment, key)
         if isinstance(shipment, ShipmentOut):
-            shipment.cost_method = self.shipment_cost_method
+            shipment.cost_sale_method = self.shipment_cost_method
             shipment.carrier = self.carrier
         return shipment
 
@@ -433,7 +433,7 @@ class Line(metaclass=PoolMeta):
             for shipment in self.sale.shipments:
                 if (shipment.state == 'done'
                         and shipment.id not in shipment_cost_invoiced):
-                    invoice_line = shipment.get_cost_invoice_line(
+                    invoice_line = shipment.get_cost_sale_invoice_line(
                         self.sale._get_invoice_sale(), origin=self)
                     if invoice_line:
                         lines.append(invoice_line)
@@ -455,7 +455,8 @@ class Line(metaclass=PoolMeta):
             elif (self.sale.shipment_cost_method == 'order'
                     and self.sale.invoice_method == 'shipment'):
                 shipments = [
-                    s for s in self.sale.shipments if s.cost_method == 'order']
+                    s for s in self.sale.shipments
+                    if s.cost_sale_method == 'order']
                 if (not shipments
                         or all(s.state != 'done' for s in shipments)):
                     quantity = 0

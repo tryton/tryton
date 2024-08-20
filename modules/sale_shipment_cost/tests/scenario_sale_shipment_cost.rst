@@ -140,7 +140,7 @@ Send products::
 
     >>> ShipmentOut = Model.get('stock.shipment.out')
     >>> shipment, = sale.shipments
-    >>> shipment.cost_method
+    >>> shipment.cost_sale_method
     'shipment'
     >>> assertEqual(shipment.carrier, carrier)
     >>> shipment.cost_used
@@ -168,7 +168,7 @@ Send products::
     >>> shipment.state
     'done'
 
-    >>> shipment.cost_invoice_line.amount
+    >>> shipment.cost_sale_invoice_line.amount
     Decimal('3.00')
 
 Check customer invoice::
