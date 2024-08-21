@@ -1360,7 +1360,7 @@ class ShipmentOut(
                     'depends': ['state'],
                     },
                 'do': {
-                    'invisible': Eval('state') != 'packed',
+                    'invisible': ~Eval('state').in_(['packed', 'shipped']),
                     },
                 'assign_wizard': {
                     'invisible': Eval('state') != 'waiting',
