@@ -61,8 +61,6 @@ Make a production::
     >>> input.product = component
     >>> input.lot = component_lot
     >>> input.quantity = 1
-    >>> input.currency = production.company.currency
-    >>> input.unit_price = Decimal(0)
     >>> output = production.outputs.new()
     >>> output.from_location = production.location
     >>> output.to_location = production.warehouse.storage_location
