@@ -2210,10 +2210,19 @@ class HandleShipmentExceptionAsk(ModelView):
     'Handle Shipment Exception'
     __name__ = 'purchase.handle.shipment.exception.ask'
     recreate_moves = fields.Many2Many(
-        'stock.move', None, None, 'Recreate Stock Moves',
-        domain=[('id', 'in', Eval('domain_moves'))],
-        help=('The selected moves will be recreated. '
-            'The other ones will be ignored.'))
+        'stock.move', None, None, "Stock Moves to Recreate",
+        domain=[
+            ('id', 'in', Eval('domain_moves', [])),
+            ('id', 'not in', Eval('ignore_moves', [])),
+            ],
+        help="The selected cancelled stock moves will be recreated.")
+    ignore_moves = fields.Many2Many(
+        'stock.move', None, None, "Stock Moves to Ignore",
+        domain=[
+            ('id', 'in', Eval('domain_moves', [])),
+            ('id', 'not in', Eval('recreate_moves', [])),
+            ],
+        help="The selected cancelled stock moves will be ignored.")
     domain_moves = fields.Many2Many(
         'stock.move', None, None, 'Domain Stock Moves')
 
@@ -2237,15 +2246,12 @@ class HandleShipmentException(Wizard):
                 if move.state == 'cancelled' and move not in skip:
                     moves.append(move.id)
         return {
-            'recreate_moves': moves,
             'domain_moves': moves,
             }
 
     def transition_handle(self):
         pool = Pool()
         PurchaseLine = pool.get('purchase.line')
-        to_recreate = self.ask.recreate_moves
-        domain_moves = self.ask.domain_moves
 
         for line in self.record.lines:
             moves_ignored = []
@@ -2253,11 +2259,11 @@ class HandleShipmentException(Wizard):
             skip = set(line.moves_ignored)
             skip.update(line.moves_recreated)
             for move in line.moves:
-                if move not in domain_moves or move in skip:
+                if move not in self.ask.domain_moves or move in skip:
                     continue
-                if move in to_recreate:
+                if move in self.ask.recreate_moves:
                     moves_recreated.append(move.id)
-                else:
+                elif move in self.ask.ignore_moves:
                     moves_ignored.append(move.id)
 
             PurchaseLine.write([line], {
@@ -2273,10 +2279,19 @@ class HandleInvoiceExceptionAsk(ModelView):
     'Handle Invoice Exception'
     __name__ = 'purchase.handle.invoice.exception.ask'
     recreate_invoices = fields.Many2Many(
-        'account.invoice', None, None, 'Recreate Invoices',
-        domain=[('id', 'in', Eval('domain_invoices'))],
-        help=('The selected invoices will be recreated. '
-            'The other ones will be ignored.'))
+        'account.invoice', None, None, "Invoices to Recreate",
+        domain=[
+            ('id', 'in', Eval('domain_invoices', [])),
+            ('id', 'not in', Eval('ignore_invoices', [])),
+            ],
+        help="The selected cancelled invoices will be recreated.")
+    ignore_invoices = fields.Many2Many(
+        'account.invoice', None, None, "Invoices to Ignore",
+        domain=[
+            ('id', 'in', Eval('domain_invoices', [])),
+            ('id', 'not in', Eval('recreate_invoices', [])),
+            ],
+        help="The selected cancelled invoices will be ignored.")
     domain_invoices = fields.Many2Many(
         'account.invoice', None, None, 'Domain Invoices')
 
@@ -2300,7 +2315,6 @@ class HandleInvoiceException(Wizard):
             if invoice.state == 'cancelled' and invoice not in skip:
                 invoices.append(invoice.id)
         return {
-            'recreate_invoices': invoices,
             'domain_invoices': invoices,
             }
 
@@ -2310,7 +2324,7 @@ class HandleInvoiceException(Wizard):
         for invoice in self.ask.domain_invoices:
             if invoice in self.ask.recreate_invoices:
                 invoices_recreated.append(invoice.id)
-            else:
+            elif invoice in self.ask.ignore_invoices:
                 invoices_ignored.append(invoice.id)
 
         self.model.write([self.record], {

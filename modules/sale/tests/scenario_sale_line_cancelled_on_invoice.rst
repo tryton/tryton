@@ -85,7 +85,8 @@ Cancel invoice::
 Ignore exception::
 
     >>> invoice_handle_exception = sale.click('handle_invoice_exception')
-    >>> invoice_handle_exception.form.recreate_invoices.clear()
+    >>> invoice_handle_exception.form.ignore_invoices.extend(
+    ...     invoice_handle_exception.form.ignore_invoices.find())
     >>> invoice_handle_exception.execute('handle')
 
     >>> sale.shipment_state

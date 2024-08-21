@@ -1,3 +1,4 @@
+* Improve exception handling wizard
 * Remove "Parties associated to Sales" menu entry
 * Permit only sale line of type line as stock move origin
 

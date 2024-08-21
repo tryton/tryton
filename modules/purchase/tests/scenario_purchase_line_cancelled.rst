@@ -89,14 +89,16 @@ Cancel stock move and invoice::
 Ignore exceptions::
 
     >>> invoice_handle_exception = purchase.click('handle_invoice_exception')
-    >>> invoice_handle_exception.form.recreate_invoices.clear()
+    >>> invoice_handle_exception.form.ignore_invoices.extend(
+    ...     invoice_handle_exception.form.ignore_invoices.find())
     >>> invoice_handle_exception.execute('handle')
 
     >>> purchase.invoice_state
     'none'
 
     >>> shipment_handle_exception = purchase.click('handle_shipment_exception')
-    >>> shipment_handle_exception.form.recreate_moves.clear()
+    >>> shipment_handle_exception.form.ignore_moves.extend(
+    ...     shipment_handle_exception.form.ignore_moves.find())
     >>> shipment_handle_exception.execute('handle')
 
     >>> purchase.shipment_state

@@ -1,3 +1,4 @@
+* Improve exception handling wizard
 * Remove "Parties associated to Purchases" menu entry
 * Permit only purchase line of type line as stock move origin
 
