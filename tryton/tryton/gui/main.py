@@ -772,6 +772,9 @@ class Main(Gtk.Application):
             expand=True, fill=True, padding=0)
         treeview = screen.current_view.treeview
         treeview.set_headers_visible(False)
+        for col in treeview.get_columns():
+            if col._type in {'selection', 'optional', 'drag'}:
+                col.set_visible(False)
 
         # Favorite column
         column = Gtk.TreeViewColumn()

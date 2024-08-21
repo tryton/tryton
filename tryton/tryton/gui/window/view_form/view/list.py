@@ -451,6 +451,8 @@ class ViewTree(View):
             grid_lines = Gtk.TreeViewGridLines.VERTICAL
 
         super().__init__(view_id, screen, xml)
+
+        self.set_selection_column()
         self.set_drag_and_drop()
 
         self.mnemonic_widget = self.treeview
@@ -615,6 +617,21 @@ class ViewTree(View):
                         arrow.set_from_pixbuf(direction)
                     else:
                         arrow.clear()
+
+    def set_selection_column(self):
+        def select_data_func(column, cell, model, iter_, selection):
+            cell.set_property('active', selection.iter_is_selected(iter_))
+
+        selection = self.treeview.get_selection()
+        column = Gtk.TreeViewColumn()
+        column.set_sizing(Gtk.TreeViewColumnSizing.FIXED)
+        column.name = None
+        column._type = 'selection'
+        cell = Gtk.CellRendererToggle()
+        cell.set_sensitive(False)
+        column.pack_start(cell, expand=False)
+        column.set_cell_data_func(cell, select_data_func, selection)
+        self.treeview.insert_column(column, 0)
 
     def set_drag_and_drop(self):
         dnd = False
@@ -1153,7 +1170,7 @@ class ViewTree(View):
                 column.set_visible(not unique or bool(self.children_field))
         if self.children_field:
             for i, column in enumerate(self.treeview.get_columns()):
-                if (self.draggable or self.optionals) and not i:
+                if column._type in {'selection', 'optional', 'drag'}:
                     continue
                 if column.get_visible():
                     self.treeview.set_expander_column(column)
