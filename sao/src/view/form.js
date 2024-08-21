@@ -4557,6 +4557,14 @@ function eval_pyson(value){
             Sao.View.Form.MultiSelection._super.init.call(
                 this, view, attributes);
             this.select.prop('multiple', true);
+
+            this.select.on('mousedown', 'option', (evt) => {
+                evt.preventDefault();
+                var scroll = this.select.get(0).scrollTop;
+                evt.target.selected = !evt.target.selected;
+                this.select.trigger('change');
+                setTimeout(() => this.select.get(0).scrollTop = scroll, 0);
+            }).mousemove(evt => evt.preventDefault());
         },
         set_selection: function(selection, help) {
             Sao.View.Form.MultiSelection._super.set_selection.call(
@@ -5422,6 +5430,15 @@ function eval_pyson(value){
                 Sao.View.Form.Dict.MultiSelection._super
                     .create_widget.call(this);
                 this.input.prop('multiple', true);
+
+                this.input.on('mousedown', 'option', (evt) => {
+                    evt.preventDefault();
+                    var scroll = this.input.get(0).scrollTop;
+                    evt.target.selected = !evt.target.selected;
+                    this.input.trigger('change');
+                    setTimeout(() => this.input.get(0).scrollTop = scroll, 0);
+                }).mousemove(evt => evt.preventDefault());
+
                 var widget_help = this.definition.help;
                 if (widget_help) {
                     this.input.children().each(function() {
