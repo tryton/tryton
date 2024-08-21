@@ -1013,6 +1013,17 @@ img.icon {
     }
 }
 
+.form-multiselection, .dict-multiselection {
+    select {
+        option:before {
+            content: "☐ ";
+        }
+        option:checked:before {
+            content: "☑ ";
+        }
+    }
+}
+
 .form-integer, .form-float, .form-timedelta,
 .dict-integer, .dict-float, .dict-numeric,
 .editabletree-integer, .editabletree-float, .editabletree-timedelta {

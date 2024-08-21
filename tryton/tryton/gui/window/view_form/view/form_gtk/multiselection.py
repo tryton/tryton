@@ -33,14 +33,22 @@ class MultiSelection(Widget, SelectionMixin):
         selection.set_mode(Gtk.SelectionMode.MULTIPLE)
         selection.connect('changed', self.changed)
         self.widget.add(self.tree)
-        name_column = Gtk.TreeViewColumn()
+        column = Gtk.TreeViewColumn()
+        select_cell = Gtk.CellRendererToggle()
+        select_cell.set_sensitive(False)
+        column.pack_start(select_cell, expand=False)
+        column.set_cell_data_func(
+            select_cell, self._select_data_func, selection)
         name_cell = Gtk.CellRendererText()
-        name_column.pack_start(name_cell, expand=True)
-        name_column.add_attribute(name_cell, 'text', 1)
-        self.tree.append_column(name_column)
+        column.pack_start(name_cell, expand=True)
+        column.add_attribute(name_cell, 'text', 1)
+        self.tree.append_column(column)
 
         self.nullable_widget = False
         self.init_selection()
+
+    def _select_data_func(self, column, cell, model, iter_, selection):
+        cell.set_property('active', selection.iter_is_selected(iter_))
 
     def _readonly_set(self, readonly):
         super(MultiSelection, self)._readonly_set(readonly)
