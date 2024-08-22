@@ -422,7 +422,7 @@ class InventoryLine(ModelSQL, ModelView):
     @classmethod
     def search_inventory_location(cls, name, clause):
         nested = clause[0][len(name):]
-        return [('inventory.' + name + nested, *clause[1:])]
+        return [('inventory.location' + nested, *clause[1:])]
 
     @fields.depends('inventory', '_parent_inventory.date')
     def on_change_with_inventory_date(self, name=None):
