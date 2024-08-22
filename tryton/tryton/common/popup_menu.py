@@ -146,7 +146,7 @@ def populate(menu, model, record, title='', field=None, context=None):
                 item.connect('activate', activate, action, atype)
             menu.show_all()
 
-        email_item = Gtk.MenuItem(label=_('E-Mail...'))
+        email_item = Gtk.MenuItem(label=_('Email...'))
         action_menu.append(email_item)
         email_item.connect('activate', email, toolbar)
     menu.show_all()

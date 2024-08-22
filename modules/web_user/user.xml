@@ -78,7 +78,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.model.button" id="user_validate_email_button">
             <field name="model">web.user</field>
             <field name="name">validate_email</field>
-            <field name="string">Validate E-mail</field>
+            <field name="string">Validate Email</field>
         </record>
 
         <record model="ir.model.button" id="user_reset_password_button">

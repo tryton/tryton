@@ -20,7 +20,7 @@ class Configuration(metaclass=PoolMeta):
         domain=[
             ('email', '!=', None),
             ],
-        help="User notified when no e-mail is found to send the dunning")
+        help="User notified when no email is found to send the dunning")
 
 
 class DunningLevel(metaclass=PoolMeta):
@@ -47,7 +47,7 @@ class DunningLevel(metaclass=PoolMeta):
         states={
             'invisible': ~Eval('send_email'),
             },
-        help="Define which e-mail to use from the party's contact mechanisms")
+        help="Define which email to use from the party's contact mechanisms")
 
     @classmethod
     def default_email_template(cls):

@@ -73,12 +73,12 @@ class User(avatar_mixin(100), DeactivableMixin, ModelSQL, ModelView):
     _rec_name = 'email'
 
     email = fields.Char(
-        "E-mail",
+        "Email",
         states={
             'required': Eval('active', True),
             })
-    email_valid = fields.Boolean('E-mail Valid')
-    email_token = fields.Char("E-mail Token", strip=False)
+    email_valid = fields.Boolean('Email Valid')
+    email_token = fields.Char("Email Token", strip=False)
     password_hash = fields.Char('Password Hash')
     password = fields.Function(
         fields.Char('Password'), 'get_password', setter='set_password')

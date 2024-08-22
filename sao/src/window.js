@@ -2412,7 +2412,7 @@
         init: function(name, record, prints, template) {
             this.record = record;
             this.dialog = new Sao.Dialog(
-                Sao.i18n.gettext('E-mail %1', name), 'email', 'lg');
+                Sao.i18n.gettext('Email %1', name), 'email', 'lg');
             this.el = this.dialog.modal;
             this.dialog.content.addClass('form-horizontal');
 

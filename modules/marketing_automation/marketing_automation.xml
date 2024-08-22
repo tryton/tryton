@@ -293,12 +293,12 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.model.button" id="record_activity_on_email_opened_button">
             <field name="model">marketing.automation.record.activity</field>
             <field name="name">on_email_opened</field>
-            <field name="string">E-Mail Opened</field>
+            <field name="string">Email Opened</field>
         </record>
         <record model="ir.model.button" id="record_activity_on_email_clicked_button">
             <field name="model">marketing.automation.record.activity</field>
             <field name="name">on_email_clicked</field>
-            <field name="string">E-Mail Clicked</field>
+            <field name="string">Email Clicked</field>
         </record>
 
         <record model="ir.action.report" id="report_unsubscribe">

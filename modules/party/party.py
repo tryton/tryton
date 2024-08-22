@@ -84,7 +84,7 @@ class Party(
         fields.Char("Fax", states=_contact_mechanism_states),
         'get_contact_mechanism', setter='set_contact_mechanism')
     email = fields.Function(
-        fields.Char("E-Mail", states=_contact_mechanism_states),
+        fields.Char("Email", states=_contact_mechanism_states),
         'get_contact_mechanism', setter='set_contact_mechanism')
     website = fields.Function(
         fields.Char("Website", states=_contact_mechanism_states),

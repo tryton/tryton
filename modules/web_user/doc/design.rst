@@ -11,7 +11,7 @@ Web User
 
 The *Web User* concept stores the details of user accounts for people who
 interact with Tryton from a website.
-Each user is identified by their e-mail address which must be unique.
+Each user is identified by their email address which must be unique.
 The email address is used when logging a user in, along with other
 authentication information, such as their password.
 

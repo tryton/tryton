@@ -77,7 +77,7 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
         <record model="ir.action.act_window" id="act_inbound_email_form_relate">
-            <field name="name">E-mails</field>
+            <field name="name">Emails</field>
             <field name="res_model">inbound.email</field>
             <field name="domain" eval="[('inbox', 'in', Eval('active_ids', []))]" pyson="1"/>
         </record>

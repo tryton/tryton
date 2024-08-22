@@ -10,10 +10,10 @@ this repository contains the full copyright notices and license terms. -->
             <field name="text">Invalid condition "%(condition)s" in activity "%(activity)s" with exception "%(exception)s".</field>
         </record>
         <record model="ir.message" id="msg_activity_invalid_email_template">
-            <field name="text">Invalid e-mail template in activity "%(activity)s" with exception "%(exception)s".</field>
+            <field name="text">Invalid email template in activity "%(activity)s" with exception "%(exception)s".</field>
         </record>
         <record model="ir.message" id="msg_activity_invalid_email_title">
-            <field name="text">Invalid e-mail title in activity "%(activity)s" with exception "%(exception)s".</field>
+            <field name="text">Invalid email title in activity "%(activity)s" with exception "%(exception)s".</field>
         </record>
         <record model="ir.message" id="msg_activity_record_unique">
             <field name="text">Record Activity must be unique by record and activity.</field>

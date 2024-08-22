@@ -323,7 +323,7 @@ Report...:
 
 .. _Toolbar-Email:
 
-E-Mail...:
+Email...:
   Open an editor to send an email related to the actual record.
 
 .. _Toolbar-Print:

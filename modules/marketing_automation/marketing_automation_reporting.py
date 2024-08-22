@@ -161,27 +161,27 @@ class Activity(Abstract):
         'on_change_with_activity_action')
     record_count = fields.Integer("Records")
     email_opened = fields.Integer(
-        "E-Mails Opened",
+        "Emails Opened",
         states={
             'invisible': Eval('activity_action') != 'send_email',
             })
     email_clicked = fields.Integer(
-        "E-Mails Clicked",
+        "Emails Clicked",
         states={
             'invisible': Eval('activity_action') != 'send_email',
             })
     email_open_rate = fields.Float(
-        "E-mail Open Rate",
+        "Email Open Rate",
         states={
             'invisible': Eval('activity_action') != 'send_email',
             })
     email_click_rate = fields.Float(
-        "E-mail Click Rate",
+        "Email Click Rate",
         states={
             'invisible': Eval('activity_action') != 'send_email',
             })
     email_click_through_rate = fields.Float(
-        "E-mail Click-Through Rate",
+        "Email Click-Through Rate",
         states={
             'invisible': Eval('activity_action') != 'send_email',
             })

@@ -341,8 +341,8 @@ class Activity(
 
     event = fields.Selection([
             (None, ""),
-            ('email_opened', "E-Mail Opened"),
-            ('email_clicked', "E-Mail Clicked"),
+            ('email_opened', "Email Opened"),
+            ('email_clicked', "Email Clicked"),
             ], "Event")  # domain set by _parent_action_events
     negative = fields.Boolean("Negative",
         states={
@@ -352,10 +352,10 @@ class Activity(
         "if the event has not happened by the end of the delay.")
     on = fields.Function(fields.Selection([
                 (None, ""),
-                ('email_opened', "E-Mail Opened"),
-                ('email_opened_not', "E-Mail Not Opened"),
-                ('email_clicked', "E-Mail Clicked"),
-                ('email_clicked_not', "E-Mail Not Clicked"),
+                ('email_opened', "Email Opened"),
+                ('email_opened_not', "Email Not Opened"),
+                ('email_clicked', "Email Clicked"),
+                ('email_clicked_not', "Email Not Clicked"),
                 ], "On"),  # domain set by _parent_action_events
         'get_on', setter='set_on')
     condition = fields.Char("Condition",
@@ -376,17 +376,17 @@ class Activity(
 
     action = fields.Selection([
             (None, ''),
-            ('send_email', "Send E-Mail"),
+            ('send_email', "Send email"),
             ], "Action")
 
-    # Send E-mail
+    # Send email
     email_from = fields.Char("From", translate=True,
         states={
             'invisible': Eval('action') != 'send_email',
             },
         help="Leave empty to use the value defined in the configuration file.")
     email_title = fields.Char(
-        "E-Mail Title",
+        "Email Title",
         translate=True,
         states={
             'invisible': Eval('action') != 'send_email',
@@ -396,13 +396,13 @@ class Activity(
         "The Genshi syntax can be used "
         "with 'record' in the evaluation context.")
     email_template = fields.Text(
-        "E-Mail Template",
+        "Email Template",
         translate=True,
         states={
             'invisible': Eval('action') != 'send_email',
             'required': Eval('action') == 'send_email',
             },
-        help="The HTML content of the E-mail.\n"
+        help="The HTML content of the email.\n"
         "The Genshi syntax can be used "
         "with 'record' in the evaluation context.")
 
@@ -410,13 +410,13 @@ class Activity(
         fields.Integer("Records"), 'get_record_count')
     email_opened = fields.Function(
         fields.Integer(
-            "E-Mails Opened",
+            "Emails Opened",
             states={
                 'invisible': Eval('action') != 'send_email',
                 }), 'get_record_count')
     email_clicked = fields.Function(
         fields.Integer(
-            "E-Mails Clicked",
+            "Emails Clicked",
             states={
                 'invisible': Eval('action') != 'send_email',
                 }),
@@ -424,42 +424,42 @@ class Activity(
 
     email_open_rate = fields.Function(
         fields.Float(
-            "E-mail Open Rate",
+            "Email Open Rate",
             states={
                 'invisible': Eval('action') != 'send_email',
                 }),
         'get_rate')
     email_open_rate_trend = fields.Function(
         fields.Char(
-            "E-mail Open Rate Trend",
+            "Email Open Rate Trend",
             states={
                 'invisible': Eval('action') != 'send_email',
                 }),
         'get_trend')
     email_click_rate = fields.Function(
         fields.Float(
-            "E-mail Click Rate",
+            "Email Click Rate",
             states={
                 'invisible': Eval('action') != 'send_email',
                 }),
         'get_rate')
     email_click_rate_trend = fields.Function(
         fields.Char(
-            "E-mail Click Rate Trend",
+            "Email Click Rate Trend",
             states={
                 'invisible': Eval('action') != 'send_email',
                 }),
         'get_trend')
     email_click_through_rate = fields.Function(
         fields.Float(
-            "E-mail Click-Through Rate",
+            "Email Click-Through Rate",
             states={
                 'invisible': Eval('action') != 'send_email',
                 }),
         'get_rate')
     email_click_through_rate_trend = fields.Function(
         fields.Char(
-            "E-mail Click-Through Rate Trend",
+            "Email Click-Through Rate Trend",
             states={
                 'invisible': Eval('action') != 'send_email',
                 }),
@@ -892,12 +892,12 @@ class RecordActivity(Workflow, ModelSQL, ModelView):
             'required': Eval('state') == 'done',
             })
     email_opened = fields.Boolean(
-        "E-Mail Opened",
+        "Email Opened",
         states={
             'invisible': Eval('activity_action') != 'send_email',
             })
     email_clicked = fields.Boolean(
-        "E-Mail Clicked",
+        "Email Clicked",
         states={
             'invisible': Eval('activity_action') != 'send_email',
             })

@@ -106,7 +106,7 @@ class Email(NoModal):
         self.dialog.set_default_size(*self.default_size())
         self.dialog.connect('response', self.response)
 
-        self.dialog.set_title(_('E-mail %s') % name)
+        self.dialog.set_title(_('Email %s') % name)
 
         grid = Gtk.Grid(
             column_spacing=3, row_spacing=3,

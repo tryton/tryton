@@ -24,7 +24,7 @@ _TYPES = [
     ('phone', 'Phone'),
     ('mobile', 'Mobile'),
     ('fax', 'Fax'),
-    ('email', 'E-Mail'),
+    ('email', 'Email'),
     ('website', 'Website'),
     ('skype', 'Skype'),
     ('sip', 'SIP'),
@@ -96,7 +96,7 @@ class ContactMechanism(
             "Leave empty for the party language."))
     languages = fields.One2Many(
         'party.contact_mechanism.language', 'contact_mechanism', "Languages")
-    email = fields.Function(fields.Char('E-Mail', states={
+    email = fields.Function(fields.Char('Email', states={
         'invisible': Eval('type') != 'email',
         'required': Eval('type') == 'email',
         }, depends={'value'}),

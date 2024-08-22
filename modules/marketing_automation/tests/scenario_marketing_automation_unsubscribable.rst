@@ -65,7 +65,7 @@ Create the running scenario::
     >>> scenario.save()
 
     >>> activity = scenario.activities.new()
-    >>> activity.name = "First E-Mail"
+    >>> activity.name = "First email"
     >>> activity.action = 'send_email'
     >>> activity.email_title = "Pending Sale"
     >>> activity.condition = PYSONEncoder().encode(

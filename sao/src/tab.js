@@ -99,8 +99,8 @@
                 }, {
                     id: 'email',
                     icon: 'tryton-email',
-                    label: Sao.i18n.gettext('E-Mail...'),
-                    tooltip: Sao.i18n.gettext('Send an e-mail using the record'),
+                    label: Sao.i18n.gettext('Email...'),
+                    tooltip: Sao.i18n.gettext('Send an email using the record'),
                 }, null, {
                     id: 'export',
                     icon: 'tryton-export',

@@ -50,7 +50,7 @@ Create the running scenario::
     >>> scenario.save()
 
     >>> root_activity = Activity()
-    >>> root_activity.name = "First E-Mail"
+    >>> root_activity.name = "First email"
     >>> root_activity.parent = scenario
     >>> root_activity.action = 'send_email'
     >>> root_activity.email_title = "Hello"
@@ -61,26 +61,26 @@ Create the running scenario::
     >>> root_activity.save()
 
     >>> email_opened = Activity()
-    >>> email_opened.name = "E-Mail Opened"
+    >>> email_opened.name = "Email Opened"
     >>> email_opened.parent = root_activity
     >>> email_opened.on = 'email_opened'
     >>> email_opened.save()
 
     >>> email_clicked = Activity()
-    >>> email_clicked.name = "E-Mail Clicked"
+    >>> email_clicked.name = "Email Clicked"
     >>> email_clicked.parent = root_activity
     >>> email_clicked.on = 'email_clicked'
     >>> email_clicked.save()
 
     >>> email_not_clicked = Activity()
-    >>> email_not_clicked.name = "E-Mail no clicked"
+    >>> email_not_clicked.name = "Email no clicked"
     >>> email_not_clicked.parent = root_activity
     >>> email_not_clicked.on = 'email_clicked_not'
     >>> email_not_clicked.delay = datetime.timedelta(days=2)
     >>> email_not_clicked.save()
 
     >>> email_reminder = Activity()
-    >>> email_reminder.name = "E-Mail Reminder"
+    >>> email_reminder.name = "Email Reminder"
     >>> email_reminder.parent = root_activity
     >>> email_reminder.action = 'send_email'
     >>> email_reminder.email_title = "Reminder"

@@ -44,7 +44,7 @@ class Email(ModelSQL, ModelView):
         states={
             'invisible': ~Eval('recipients'),
             },
-        help="User notified when no recipients e-mail is found")
+        help="User notified when no recipients email is found.")
     recipients_secondary = fields.Many2One(
         'ir.model.field', "Secondary Recipients",
         domain=[
@@ -59,7 +59,7 @@ class Email(ModelSQL, ModelView):
         states={
             'invisible': ~Eval('recipients_secondary'),
             },
-        help="User notified when no secondary recipients e-mail is found")
+        help="User notified when no secondary recipients email is found.")
     recipients_hidden = fields.Many2One(
         'ir.model.field', "Hidden Recipients",
         domain=[
@@ -74,7 +74,7 @@ class Email(ModelSQL, ModelView):
         states={
             'invisible': ~Eval('recipients_hidden'),
             },
-        help="User notified when no hidden recipients e-mail is found")
+        help="User notified when no hidden recipients email is found.")
 
     contact_mechanism = fields.Selection(
         'get_contact_mechanisms', "Contact Mechanism",

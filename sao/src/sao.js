@@ -1175,7 +1175,7 @@ var Sao = {
                 id: 'print',
             }, {
                 shortcut: 'ctrl+shift+e',
-                label: Sao.i18n.gettext('E-Mail'),
+                label: Sao.i18n.gettext('Email'),
                 id: 'email',
             }, {
                 shortcut: 'alt+shift+tab',

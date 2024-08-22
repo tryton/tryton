@@ -109,7 +109,7 @@ class Carrier(metaclass=PoolMeta):
 
     dpd_notification = fields.Selection([
             (None, ""),
-            ('email', "E-Mail"),
+            ('email', "Email"),
             ('sms', "SMS"),
             ], "Notification",
         states={

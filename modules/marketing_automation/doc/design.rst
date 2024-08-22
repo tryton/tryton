@@ -45,10 +45,10 @@ Actions
 
 The available actions are:
 
-Send E-Mail
-^^^^^^^^^^^
+Send EMail
+^^^^^^^^^^
 
-The E-mail is composed using an HTML `Genshi <https://genshi.edgewall.org/>`_
+The email is composed using an HTML `Genshi <https://genshi.edgewall.org/>`_
 template with ``record`` in the evaluation context.
 All ``<a>`` elements have their ``href`` replaced by a shortened version used
 to trigger children activities.

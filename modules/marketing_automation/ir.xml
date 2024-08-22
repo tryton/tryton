@@ -10,7 +10,7 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
         <record model="ir.action.act_window" id="act_ir_email_form_relate_activity">
-            <field name="name">E-mails</field>
+            <field name="name">Emails</field>
             <field name="res_model">ir.email</field>
             <field name="domain"
                 eval="[('marketing_automation_activity', 'in', Eval('active_ids'))]"

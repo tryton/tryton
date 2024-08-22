@@ -21,7 +21,7 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
         <record model="ir.action.act_window" id="act_email_relate_list">
-            <field name="name">E-mails</field>
+            <field name="name">Emails</field>
             <field name="res_model">marketing.email</field>
             <field name="domain" eval="[('list_', '=', Eval('active_id'))]" pyson="1"/>
         </record>

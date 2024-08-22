@@ -107,8 +107,8 @@ Version 5.8.0 - 2020-11-02
 * Manage symbol widget
 * Fallback to model name as title
 * Manage deletable and writable state
-* Support e-mail template
-* Send e-mail via the server
+* Support email template
+* Send email via the server
 * Support PYSON comparison of date and datetime
 * Position copied records based on order
 * Allow configuration of default colors for graph and calendar

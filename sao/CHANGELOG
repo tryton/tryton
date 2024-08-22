@@ -100,7 +100,7 @@ Version 5.8.0 - 2020-11-02
 * Set treeview footer sticky on bottom
 * Add get, in_ and contains methods to PYSON
 * Manage deletable and writable state
-* Support e-mail template
+* Support email template
 * Always encode CSV export in UTF-8
 * Use tempusdominus and Popper for date time picker
 * Support PYSON comparison of date and datetime

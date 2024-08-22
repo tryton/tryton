@@ -14,5 +14,5 @@ Marketing
 :doc:`Campaign <marketing_campaign:index>`
    Manage campaign.
 
-:doc:`E-mail <marketing_email:index>`
+:doc:`Email <marketing_email:index>`
    Manage mailing lists.

@@ -57,13 +57,13 @@ def _extract_params(url):
 
 
 class Email(DeactivableMixin, ModelSQL, ModelView):
-    "Marketing E-mail"
+    "Marketing Email"
     __name__ = 'marketing.email'
     _rec_name = 'email'
 
-    email = fields.Char("E-mail", required=True)
+    email = fields.Char("Email", required=True)
     list_ = fields.Many2One('marketing.email.list', "List", required=True)
-    email_token = fields.Char("E-mail Token", required=True)
+    email_token = fields.Char("Email Token", required=True)
     web_user = fields.Function(
         fields.Many2One('web.user', "Web User"), 'get_web_user')
     party = fields.Function(
@@ -339,7 +339,7 @@ class EmailList(DeactivableMixin, ModelSQL, ModelView):
 
 
 class Message(Workflow, ModelSQL, ModelView):
-    "Marketing E-mail Message"
+    "Marketing Email Message"
     __name__ = 'marketing.email.message'
     _rec_name = 'title'
 
@@ -529,7 +529,7 @@ class Message(Workflow, ModelSQL, ModelView):
 
 
 class SendTest(Wizard):
-    "Send Test E-mail"
+    "Send Test Email"
     __name__ = 'marketing.email.send_test'
     start = StateView(
         'marketing.email.send_test',
@@ -557,7 +557,7 @@ class SendTest(Wizard):
 
 
 class SendTestView(ModelView):
-    "Send Test E-mail"
+    "Send Test Email"
     __name__ = 'marketing.email.send_test'
 
     list_ = fields.Many2One(
@@ -565,7 +565,7 @@ class SendTestView(ModelView):
     message = fields.Many2One(
         'marketing.email.message', "Message", readonly=True)
     email = fields.Many2One(
-        'marketing.email', "E-Mail", required=True,
+        'marketing.email', "Email", required=True,
         domain=[
             ('list_', '=', Eval('list_')),
             ])
