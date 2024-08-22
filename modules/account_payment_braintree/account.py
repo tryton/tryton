@@ -1092,10 +1092,7 @@ class PaymentBraintreeCustomer(
                     customer._customer_parameters())
             except TooManyRequestsError as e:
                 logger.warning(str(e))
-            except Exception:
-                logger.error(
-                    "Error when updating customer %d", customer.id,
-                    exc_info=True)
+                raise
 
     @classmethod
     def braintree_delete(cls, customers=None):
