@@ -929,6 +929,7 @@ class PaymentBraintreeCustomer(
     "Braintree Customer"
     __name__ = 'account.payment.braintree.customer'
     _history = True
+    _rec_name = 'braintree_customer_id'
     party = fields.Many2One(
         'party.party', "Party", required=True,
         states={
