@@ -1396,6 +1396,7 @@ class Customer(CheckoutMixin, DeactivableMixin, ModelSQL, ModelView):
     "Stripe Customer"
     __name__ = 'account.payment.stripe.customer'
     _history = True
+    _rec_name = 'stripe_customer_id'
     party = fields.Many2One('party.party', "Party", required=True,
         states={
             'readonly': Eval('stripe_customer_id') | Eval('stripe_token'),
