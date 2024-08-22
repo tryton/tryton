@@ -1584,14 +1584,7 @@ class Customer(CheckoutMixin, DeactivableMixin, ModelSQL, ModelView):
             except (stripe.error.RateLimitError,
                     stripe.error.APIConnectionError) as e:
                 logger.warning(str(e))
-            except Exception as e:
-                if (isinstance(e, stripe.error.StripeError)
-                        and e.code in RETRY_CODES):
-                    logger.warning(str(e))
-                else:
-                    logger.error(
-                        "Error when updating customer %d", customer.id,
-                        exc_info=True)
+                raise
 
     @classmethod
     def stripe_delete(cls, customers=None):
