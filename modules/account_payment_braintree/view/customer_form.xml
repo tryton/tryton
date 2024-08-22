@@ -16,6 +16,7 @@ this repository contains the full copyright notices and license terms. -->
 
     <group id="buttons" col="-1" colspan="4">
         <button name="braintree_checkout"/>
+        <button name="braintree_update"/>
         <button name="delete_payment_method"/>
     </group>
 

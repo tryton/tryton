@@ -975,6 +975,10 @@ class PaymentBraintreeCustomer(
                     'invisible': Bool(Eval('braintree_nonce')),
                     'depends': ['braintree_nonce'],
                     },
+                'braintree_update': {
+                    'invisible': ~Eval('braintree_customer_id'),
+                    'depends': ['braintree_customer_id'],
+                    },
                 'delete_payment_method': {
                     'invisible': ~Eval('braintree_customer_id'),
                     'depends': ['braintree_customer_id'],
@@ -1083,8 +1087,11 @@ class PaymentBraintreeCustomer(
         return params
 
     @classmethod
+    @ModelView.button
     def braintree_update(cls, customers):
         for customer in customers:
+            if not customer.braintree_customer_id:
+                continue
             gateway = customer.braintree_account.gateway()
             try:
                 gateway.customer.update(

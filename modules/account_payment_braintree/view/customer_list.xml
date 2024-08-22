@@ -6,4 +6,5 @@ this repository contains the full copyright notices and license terms. -->
     <field name="braintree_account" expand="1"/>
     <field name="braintree_customer_id"/>
     <button name="braintree_checkout"/>
+    <button name="braintree_update"/>
 </tree>

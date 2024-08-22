@@ -293,6 +293,11 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">braintree_checkout</field>
             <field name="string">Add Card</field>
         </record>
+        <record model="ir.model.button" id="customer_braintree_update_button">
+            <field name="model">account.payment.braintree.customer</field>
+            <field name="name">braintree_update</field>
+            <field name="string">Update</field>
+        </record>
 
         <record model="ir.cron" id="cron_create_customer">
             <field name="method">account.payment.braintree.customer|braintree_create</field>
