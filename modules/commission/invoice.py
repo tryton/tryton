@@ -6,7 +6,7 @@ from itertools import groupby
 from trytond.model import ModelView, Workflow, fields
 from trytond.modules.product import round_price
 from trytond.pool import Pool, PoolMeta
-from trytond.pyson import Bool, Eval, If
+from trytond.pyson import Eval
 from trytond.tools import grouped_slice
 from trytond.transaction import Transaction
 
@@ -130,13 +130,10 @@ class InvoiceLine(metaclass=PoolMeta):
     principal = fields.Many2One('commission.agent', 'Commission Principal',
         domain=[
             ('type_', '=', 'principal'),
-            ('company', '=', Eval('_parent_invoice', {}).get('company',
-                    Eval('company', -1))),
+            ('company', '=', Eval('company', -1)),
             ],
         states={
-            'invisible': If(Bool(Eval('_parent_invoice')),
-                Eval('_parent_invoice', {}).get('type') == 'in',
-                Eval('invoice_type') == 'in'),
+            'invisible': Eval('invoice_type') == 'in',
             'readonly': Eval('invoice_state') != 'draft',
             },
         help="The principal who pays a commission for the invoice line.")

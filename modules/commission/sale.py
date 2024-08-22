@@ -78,7 +78,7 @@ class Line(metaclass=PoolMeta):
     principal = fields.Many2One('commission.agent', 'Commission Principal',
         domain=[
             ('type_', '=', 'principal'),
-            ('company', '=', Eval('_parent_sale', {}).get('company', -1)),
+            ('company', '=', Eval('company', -1)),
             ],
         depends={'sale'},
         help="The principal who pays a commission for the line.")
