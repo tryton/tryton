@@ -16,8 +16,10 @@ class Template(metaclass=PoolMeta):
 
     @property
     def principal(self):
-        if self.principals:
-            return self.principals[0]
+        company_id = self._context.get('company')
+        for agent in self.principals:
+            if agent.company.id == company_id:
+                return agent
 
 
 class Template_Agent(ModelSQL):
