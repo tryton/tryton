@@ -273,6 +273,11 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">stripe_checkout</field>
             <field name="string">Add Card</field>
         </record>
+        <record model="ir.model.button" id="customer_stripe_update_button">
+            <field name="model">account.payment.stripe.customer</field>
+            <field name="name">stripe_update</field>
+            <field name="string">Update</field>
+        </record>
         <record model="ir.model.button" id="customer_source_detach_button">
             <field name="model">account.payment.stripe.customer</field>
             <field name="name">detach_source</field>

@@ -1459,6 +1459,10 @@ class Customer(CheckoutMixin, DeactivableMixin, ModelSQL, ModelView):
                     'invisible': ~Eval('stripe_checkout_needed', False),
                     'depends': ['stripe_checkout_needed'],
                     },
+                'stripe_update': {
+                    'invisible': ~Eval('stripe_customer_id'),
+                    'depends': ['stripe_customer_id'],
+                    },
                 'detach_source': {
                     'invisible': ~Eval('stripe_customer_id'),
                     'depends': ['stripe_customer_id'],
@@ -1572,8 +1576,11 @@ class Customer(CheckoutMixin, DeactivableMixin, ModelSQL, ModelView):
             }
 
     @classmethod
+    @ModelView.button
     def stripe_update(cls, customers):
         for customer in customers:
+            if not customer.stripe_customer_id:
+                continue
             try:
                 stripe.Customer.modify(
                     customer.stripe_customer_id,

@@ -13,6 +13,7 @@ this repository contains the full copyright notices and license terms. -->
     <field name="stripe_customer_id"/>
     <group id="buttons" col="-1" colspan="4">
         <button name="stripe_checkout"/>
+        <button name="stripe_update"/>
         <button name="detach_source"/>
         <button name="find_identical"/>
     </group>

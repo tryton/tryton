@@ -7,4 +7,5 @@ this repository contains the full copyright notices and license terms. -->
     <field name="stripe_customer_id"/>
     <field name="stripe_token"/>
     <button name="stripe_checkout"/>
+    <button name="stripe_update"/>
 </tree>
