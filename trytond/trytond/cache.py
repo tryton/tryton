@@ -92,7 +92,7 @@ class BaseCache(object):
             self.duration = dt.timedelta(**duration)
         else:
             self.duration = None
-        assert self._name not in self._instances
+        assert self._name not in self._instances, self._name
         self._instances[self._name] = self
 
     @classmethod
