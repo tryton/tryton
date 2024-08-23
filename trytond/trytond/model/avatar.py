@@ -58,14 +58,22 @@ def avatar_mixin(size=64, default=None):
             from trytond.ir.avatar import PIL, generate
             if not PIL:
                 return
+            pool = Pool()
+            Avatar = pool.get('ir.avatar')
+            avatars = []
             records = [r for r in records if not r.has_avatar]
             if not records:
                 return
             for record in records:
-                avatar = generate(size, getattr(record, field))
-                if avatar:
-                    record.avatar = avatar
-            cls.save(records)
+                image = generate(size, getattr(record, field))
+                if image:
+                    if record.avatars:
+                        avatar, = record.avatars
+                    else:
+                        avatar = Avatar(resource=record)
+                    avatar.image = image
+                    avatars.append(avatar)
+            Avatar.save(avatars)
 
         @classmethod
         def copy(cls, avatars, default=None):
