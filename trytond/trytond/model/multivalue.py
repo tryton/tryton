@@ -1,10 +1,14 @@
 # This file is part of Tryton.  The COPYRIGHT file at the toplevel of this
 # repository contains the full copyright notices and license terms.
+from threading import Lock
+
+from trytond.cache import Cache
 from trytond.pool import Pool
 
 from .fields import MultiValue
 from .match import MatchMixin
 from .model import Model
+from .modelstorage import ModelStorage
 
 
 class MultiValueMixin(object):
@@ -25,7 +29,7 @@ class MultiValueMixin(object):
                     and field.model_name == Value.__name__
                     and not field.filter):
                 return getattr(self, fname)
-        return Value.search([])
+        return Value.values()
 
     def multivalue_record(self, field, **pattern):
         Value = self.multivalue_model(field)
@@ -95,11 +99,48 @@ class MultiValueMixin(object):
         Value.save(to_save)
 
 
-class ValueMixin(MatchMixin):
+class ValueMixin(MatchMixin, ModelStorage):
     __slots__ = ()
+
+    __caches = {}
+    __caches_lock = Lock()
 
     def match(self, pattern, match_none=True):
         return super(ValueMixin, self).match(pattern, match_none=match_none)
+
+    @classmethod
+    def _values_cache(cls):
+        if (cache := cls.__caches.get(cls.__name__)) is None:
+            with cls.__caches_lock:
+                if (cache := cls.__caches.get(cls.__name__)) is None:
+                    cache = Cache(cls.__name__ + '.values')
+                    cls.__caches[cls.__name__] = cache
+        return cache
+
+    @classmethod
+    def values(cls):
+        cache = cls._values_cache()
+        if (ids := cache.get(None)) is not None:
+            return cls.browse(ids)
+        records = cls.search([])
+        cache.set(None, [r.id for r in records])
+        return records
+
+    @classmethod
+    def create(cls, vlist):
+        records = super().create(vlist)
+        cls._values_cache().clear()
+        return records
+
+    @classmethod
+    def write(cls, *args):
+        super().write(*args)
+        cls._values_cache().clear()
+
+    @classmethod
+    def delete(cls, records):
+        super().delete(records)
+        cls._values_cache().clear()
 
 
 def filter_pattern(pattern, Value):
