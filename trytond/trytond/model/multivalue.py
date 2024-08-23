@@ -96,6 +96,7 @@ class MultiValueMixin(object):
 
 
 class ValueMixin(MatchMixin):
+    __slots__ = ()
 
     def match(self, pattern, match_none=True):
         return super(ValueMixin, self).match(pattern, match_none=match_none)
