@@ -384,12 +384,11 @@ class Sequence(DeactivableMixin, ModelSQL, ModelView):
     def _get_sequence(cls, sequence):
         if sequence.type == 'incremental':
             if sql_sequence and not cls._strict:
-                cursor = Transaction().connection.cursor()
-                cursor.execute('SELECT nextval(\'"%s"\')'
-                    % sequence._sql_sequence_name)
-                number_next, = cursor.fetchone()
+                transaction = Transaction()
+                number_next = transaction.database.sequence_nextval(
+                    transaction.connection, sequence._sql_sequence_name)
                 # clean cache
-                Transaction().counter += 1
+                transaction.counter += 1
                 sequence._local_cache.pop(sequence.id, None)
             else:
                 # Pre-fetch number_next

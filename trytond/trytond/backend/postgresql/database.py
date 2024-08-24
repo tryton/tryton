@@ -733,6 +733,11 @@ class Database(DatabaseInterface):
         cursor.execute(SQL("DROP SEQUENCE {}").format(
                 Identifier(name)))
 
+    def sequence_nextval(self, connection, name):
+        cursor = connection.cursor()
+        cursor.execute('SELECT NEXTVAL(%s)', (name,))
+        return cursor.fetchone()[0]
+
     def sequence_next_number(self, connection, name):
         cursor = connection.cursor()
         version = self.get_version(connection)
