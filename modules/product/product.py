@@ -233,23 +233,27 @@ class Template(
         return [('default_uom.category' + clause[0][len(name):], *clause[1:])]
 
     @classmethod
-    def _new_code(cls):
+    def _code_sequence(cls):
         pool = Pool()
         Configuration = pool.get('product.configuration')
         config = Configuration(1)
-        sequence = config.template_sequence
-        if sequence:
-            return sequence.get()
+        return config.template_sequence
 
     @classmethod
     def create(cls, vlist):
         pool = Pool()
         Product = pool.get('product.product')
         vlist = [v.copy() for v in vlist]
+        missing_code = []
         for values in vlist:
             values.setdefault('products', None)
             if not values.get('code'):
-                values['code'] = cls._new_code()
+                missing_code.append(values)
+        if missing_code:
+            if sequence := cls._code_sequence():
+                for values, code in zip(
+                        missing_code, sequence.get_many(len(missing_code))):
+                    values['code'] = code
         templates = super(Template, cls).create(vlist)
         products = sum((t.products for t in templates), ())
         Product.sync_code(products)
@@ -652,20 +656,21 @@ class Product(
                 return identifier
 
     @classmethod
-    def _new_suffix_code(cls):
+    def _code_sequence(cls):
         pool = Pool()
         Configuration = pool.get('product.configuration')
         config = Configuration(1)
-        sequence = config.product_sequence
-        if sequence:
-            return sequence.get()
+        return config.product_sequence
 
     @classmethod
     def create(cls, vlist):
         vlist = [x.copy() for x in vlist]
-        for values in vlist:
-            if not values.get('suffix_code'):
-                values['suffix_code'] = cls._new_suffix_code()
+        missing_code = [v for v in vlist if not v.get('suffix_code')]
+        if missing_code:
+            if sequence := cls._code_sequence():
+                for values, code in zip(
+                        missing_code, sequence.get_many(len(missing_code))):
+                    values['suffix_code'] = code
         products = super().create(vlist)
         cls.sync_code(products)
         return products
