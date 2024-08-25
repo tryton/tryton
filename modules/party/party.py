@@ -280,21 +280,25 @@ class Party(
         return index
 
     @classmethod
-    def _new_code(cls, **pattern):
+    def _code_sequence(cls, **pattern):
         pool = Pool()
         Configuration = pool.get('party.configuration')
         config = Configuration(1)
-        sequence = config.get_multivalue('party_sequence', **pattern)
-        if sequence:
-            return sequence.get()
+        return config.get_multivalue('party_sequence', **pattern)
 
     @classmethod
     def create(cls, vlist):
         vlist = [x.copy() for x in vlist]
+        missing_code = []
         for values in vlist:
             if not values.get('code'):
-                values['code'] = cls._new_code()
+                missing_code.append(values)
             values.setdefault('addresses', None)
+        if missing_code:
+            if sequence := cls._code_sequence():
+                for values, code in zip(
+                        missing_code, sequence.get_many(len(missing_code))):
+                    values['code'] = code
         return super(Party, cls).create(vlist)
 
     @classmethod
