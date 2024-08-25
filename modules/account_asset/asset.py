@@ -632,11 +632,15 @@ class Asset(Workflow, ModelSQL, ModelView):
         Config = pool.get('account.configuration')
 
         config = Config(1)
-        for asset in assets:
-            if asset.number:
-                continue
-            asset.number = config.get_multivalue(
-                'asset_sequence', company=asset.company.id).get()
+
+        for company, c_assets in groupby(assets, key=lambda a: a.company):
+            c_assets = [a for a in c_assets if not a.number]
+            if c_assets:
+                sequence = config.get_multivalue(
+                    'asset_sequence', company=company.id)
+                for asset, number in zip(
+                        c_assets, sequence.get_many(len(c_assets))):
+                    asset.number = number
         cls.save(assets)
 
     @classmethod
