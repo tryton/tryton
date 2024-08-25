@@ -380,37 +380,40 @@ class Sequence(DeactivableMixin, ModelSQL, ModelView):
         return int(
             (time.time() - self.timestamp_offset) / self.timestamp_rounding)
 
-    @classmethod
-    def _get_sequence(cls, sequence):
-        if sequence.type == 'incremental':
-            if sql_sequence and not cls._strict:
+    def _get_many(self, n=1):
+        if self.type == 'incremental':
+            if sql_sequence and not self._strict:
                 transaction = Transaction()
-                number_next = transaction.database.sequence_nextval(
-                    transaction.connection, sequence._sql_sequence_name)
+                numbers = transaction.database.sequence_nextvals(
+                    transaction.connection, self._sql_sequence_name, n)
                 # clean cache
                 transaction.counter += 1
-                sequence._local_cache.pop(sequence.id, None)
+                self._local_cache.pop(self.id, None)
             else:
-                # Pre-fetch number_next
-                number_next = sequence.number_next_internal
-
-                cls.write([sequence], {
-                        'number_next_internal': (number_next
-                            + sequence.number_increment),
-                        })
-            return f'{number_next:0>{sequence.padding}d}'
-        elif sequence.type in ('decimal timestamp', 'hexadecimal timestamp'):
-            timestamp = sequence.last_timestamp
-            while timestamp == sequence.last_timestamp:
-                timestamp = sequence._timestamp()
-            cls.write([sequence], {
-                'last_timestamp': timestamp,
-                })
-            if sequence.type == 'decimal timestamp':
-                return f'{timestamp:d}'
+                # pre-fetch number_next
+                start = self.number_next_internal
+                end = start + n * self.number_increment
+                numbers = list(range(start, end, self.number_increment))
+                self.number_next_internal = end
+                self.save()
+            for number in numbers:
+                yield f'{number:0>{self.padding}d}'
+        elif self.type in {'decimal timestamp', 'hexadecimal timestamp'}:
+            timestamps = []
+            last_timestamp = timestamp = self.last_timestamp
+            for _ in range(n):
+                while timestamp == last_timestamp:
+                    timestamp = self._timestamp()
+                timestamps.append(timestamp)
+                last_timestamp = timestamp
+            self.last_timestamp = last_timestamp
+            self.save()
+            if self.type == 'decimal timestamp':
+                for timestamp in timestamps:
+                    yield f'{timestamp:d}'
             else:
-                return hex(timestamp)[2:].upper()
-        return ''
+                for timestamp in timestamps:
+                    yield hex(timestamp)[2:].upper()
 
     @fields.depends('type', 'padding', 'number_next', methods=['_timestamp'])
     def _get_preview_sequence(self):
@@ -426,23 +429,20 @@ class Sequence(DeactivableMixin, ModelSQL, ModelView):
                 return hex(timestamp)[2:].upper()
         return ''
 
+    def get(self):
+        "Returns the next sequence value"
+        return next(self.get_many(n=1))
+
     @without_check_access
-    def get(self, _lock=False):
-        '''
-        Return the next sequence value
-        '''
-        cls = self.__class__
-        try:
-            sequence = cls(self.id)
-        except TypeError:
-            raise MissingError(gettext('ir.msg_sequence_missing'))
+    def get_many(self, n=1, _lock=False):
+        "Yield the n next sequence values"
+        assert n > 0, n
         if _lock:
             self.lock()
-        return '%s%s%s' % (
-            cls._process(sequence.prefix),
-            cls._get_sequence(sequence),
-            cls._process(sequence.suffix),
-            )
+        for value in self._get_many(n=n):
+            prefix = self._process(self.prefix)
+            suffix = self._process(self.suffix)
+            yield f'{prefix}{value}{suffix}'
 
     @fields.depends('prefix', 'suffix', methods=['_get_preview_sequence'])
     def on_change_with_preview(self, name=None):
@@ -459,5 +459,5 @@ class SequenceStrict(Sequence):
     _table = None  # Needed to reset Sequence._table
     _strict = True
 
-    def get(self, _lock=True):
-        return super().get(_lock=True)
+    def get_many(self, n=1, _lock=True):
+        yield from super().get_many(n=n, _lock=True)

@@ -738,6 +738,13 @@ class Database(DatabaseInterface):
         cursor.execute('SELECT NEXTVAL(%s)', (name,))
         return cursor.fetchone()[0]
 
+    def sequence_nextvals(self, connection, name, n):
+        cursor = connection.cursor()
+        cursor.execute(
+            'SELECT NEXTVAL(%s) FROM generate_series(1, %s)', (name, n))
+        for val, in cursor:
+            yield val
+
     def sequence_next_number(self, connection, name):
         cursor = connection.cursor()
         version = self.get_version(connection)

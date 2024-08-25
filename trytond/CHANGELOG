@@ -1,3 +1,4 @@
+* Support getting many sequences at once
 * Add sequence_nextval function to Database
 * Retrieve groups of actions without checking access (#13506)
 * Check read access of report records (#13505)

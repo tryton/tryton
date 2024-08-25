@@ -285,9 +285,6 @@ this repository contains the full copyright notices and license terms. -->
             <field name="text">The condition "%(condition)s" is not a valid PYSON expression for button rule "%(rule)s".</field>
         </record>
 
-        <record model="ir.message" id="msg_sequence_missing">
-            <field name="text">Missing sequence.</field>
-        </record>
         <record model="ir.message" id="msg_sequence_invalid_prefix">
             <field name="text">Invalid prefix "%(affix)s" for sequence "%(sequence)s".</field>
         </record>
