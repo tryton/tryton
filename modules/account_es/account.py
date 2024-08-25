@@ -164,7 +164,7 @@ class Invoice(metaclass=PoolMeta):
 
     @property
     def es_vat_book_type(self):
-        if 'credit_note' in self._sequence_field:
+        if self.sequence_type == 'credit_note':
             return 'R0'
         if not self.party_tax_identifier:
             return 'F2'

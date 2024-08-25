@@ -246,7 +246,7 @@ class MoveExport(metaclass=PoolMeta):
             dbktype = ''
             if isinstance(move.origin, Invoice):
                 invoice = move.origin
-                sequence_field = invoice._sequence_field[:-len('_sequence')]
+                sequence_field = f'{invoice.type}_{invoice.sequence_type}'
                 dbktype = getattr(DBKTYPE, sequence_field.upper())
             elif isinstance(move.origin, Statement):
                 dbktype = DBKTYPE.STATEMENT

@@ -332,7 +332,7 @@ class InvoiceSII(ModelSQL, ModelView):
     @property
     def invoice_type(self):
         tax_identifier = bool(self.invoice.es_sii_party_tax_identifier)
-        if 'credit_note' in self.invoice._sequence_field:
+        if self.invoice.sequence_type == 'credit_note':
             if tax_identifier:
                 return 'R1'
             else:

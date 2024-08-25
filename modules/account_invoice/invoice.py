@@ -145,6 +145,11 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin, InvoiceReportMixin):
         help="The date from which the payment term is calculated.\n"
         "Leave empty to use the invoice date.")
     sequence = fields.Integer("Sequence", readonly=True)
+    sequence_type_cache = fields.Selection([
+            (None, ""),
+            ('invoice', "Invoice"),
+            ('credit_note', "Credit Note"),
+            ], "Sequence Type Cache", readonly=True)
     party = fields.Many2One(
         'party.party', 'Party', required=True, states=_states,
         context={
@@ -1294,6 +1299,7 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin, InvoiceReportMixin):
 
                 if not invoice.invoice_date and invoice.type == 'out':
                     invoice.invoice_date = today
+                invoice.sequence_type_cache = invoice._sequence_type
                 sequence, sequence_date = invoice._number_sequence()
                 to_number[(sequence, sequence_date)].append(invoice)
                 if invoice.type == 'out' and sequence not in sequences:
@@ -1354,15 +1360,21 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin, InvoiceReportMixin):
                     fiscalyear=fiscalyear.rec_name))
 
     @property
-    def _sequence_field(self):
-        "Returns the field name of invoice_sequence to use"
-        field = self.type
+    def _sequence_type(self):
         if (all(l.amount <= 0 for l in self.line_lines)
                 and self.total_amount < 0):
-            field += '_credit_note'
+            return 'credit_note'
         else:
-            field += '_invoice'
-        return field + '_sequence'
+            return 'invoice'
+
+    @property
+    def sequence_type(self):
+        return self.sequence_type_cache or self._sequence_type
+
+    @property
+    def _sequence_field(self):
+        "Returns the field name of invoice_sequence to use"
+        return f'{self.type}_{self.sequence_type}_sequence'
 
     def get_tax_identifier(self):
         "Return the default computed tax identifier"
