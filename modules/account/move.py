@@ -306,24 +306,22 @@ class Move(DescriptionOriginMixin, ModelSQL, ModelView):
         Journal = pool.get('account.journal')
         context = Transaction().context
 
-        journals = {}
         default_company = cls.default_company()
         vlist = [x.copy() for x in vlist]
+        missing_number = defaultdict(list)
         for vals in vlist:
             if not vals.get('number'):
                 journal_id = vals.get('journal', context.get('journal'))
                 company_id = vals.get('company', default_company)
                 if journal_id:
-                    if journal_id not in journals:
-                        journal = journals[journal_id] = Journal(journal_id)
-                    else:
-                        journal = journals[journal_id]
-                    sequence = journal.get_multivalue(
-                        'sequence', company=company_id)
-                    if sequence:
-                        with Transaction().set_context(company=company_id):
-                            vals['number'] = sequence.get()
-
+                    missing_number[(journal_id, company_id)].append(vals)
+        for (journal_id, company_id), values in missing_number.items():
+            journal = Journal(journal_id)
+            sequence = journal.get_multivalue('sequence', company=company_id)
+            with Transaction().set_context(company=company_id):
+                for vals, number in zip(
+                        values, sequence.get_many(len(values))):
+                    vals['number'] = number
         return super().create(vlist)
 
     @classmethod
