@@ -181,7 +181,11 @@ class Agent(DeactivableMixin, ModelSQL, ModelView):
 class AgentSelection(sequence_ordered(), MatchMixin, ModelSQL, ModelView):
     "Agent Selection"
     __name__ = 'commission.agent.selection'
-    agent = fields.Many2One('commission.agent', "Agent", required=True)
+    agent = fields.Many2One(
+        'commission.agent', "Agent", required=True,
+        domain=[
+            ('type_', '=', 'agent'),
+            ])
     start_date = fields.Date(
         "Start Date",
         domain=[
