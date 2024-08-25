@@ -636,11 +636,15 @@ class Production(ShipmentAssignMixin, Workflow, ModelSQL, ModelView):
         Config = pool.get('production.configuration')
 
         config = Config(1)
-        for production in productions:
-            if not production.number:
-                production.number = config.get_multivalue(
-                    'production_sequence',
-                    company=production.company.id).get()
+        for company, c_productions in groupby(
+                productions, key=lambda p: p.company):
+            c_productions = [p for p in c_productions if not p.number]
+            if c_productions:
+                sequence = config.get_multivalue(
+                    'production_sequence', company=company.id)
+                for production, number in zip(
+                        c_productions, sequence.get_many(len(c_productions))):
+                    production.number = number
         cls.save(productions)
 
     @classmethod
