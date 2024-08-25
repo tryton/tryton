@@ -91,20 +91,21 @@ class Category(tree(separator=' / '), ModelSQL, ModelView):
              }
 
     @classmethod
-    def _new_code(cls):
+    def _code_sequence(cls):
         pool = Pool()
         Configuration = pool.get('product.configuration')
         config = Configuration(1)
-        sequence = config.category_sequence
-        if sequence:
-            return sequence.get()
+        return config.category_sequence
 
     @classmethod
     def create(cls, vlist):
         vlist = [v.copy() for v in vlist]
-        for values in vlist:
-            if not values.get('code'):
-                values['code'] = cls._new_code()
+        missing_code = [v for v in vlist if not v.get('code')]
+        if missing_code:
+            if sequence := cls._code_sequence():
+                for values, code in zip(
+                        missing_code, sequence.get_many(len(missing_code))):
+                    values['code'] = code
         return super().create(vlist)
 
     @classmethod
