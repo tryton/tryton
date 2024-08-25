@@ -58,6 +58,14 @@ class Agent(DeactivableMixin, ModelSQL, ModelView):
         states={
             'invisible': Eval('type_') != 'agent',
             })
+    products = fields.Many2Many(
+        'product.template-commission.agent', 'agent', 'template', "Products",
+        states={
+            'invisible': Eval('type_') != 'principal',
+            },
+        context={
+            'company': Eval('company', -1),
+            })
 
     @classmethod
     def __register__(cls, module_name):
