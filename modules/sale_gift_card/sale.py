@@ -448,14 +448,17 @@ class _LineMixin:
         unit_price = UoM.compute_price(
             self.unit, self.unit_price, self.product.default_uom)
         unit_price = self.sale.currency.round(unit_price)
-        for _ in range(int(quantity)):
+        sequence = config.get_multivalue(
+            'gift_card_sequence', company=self.sale.company.id)
+        if sequence:
+            numbers = sequence.get_many(int(quantity))
+        else:
+            numbers = range(int(quantity))
+        for number in numbers:
             card = GiftCard()
             card.company = self.sale.company
-            sequence = config.get_multivalue(
-                'gift_card_sequence', company=card.company.id)
             if sequence:
-                with Transaction().set_context(company=card.company.id):
-                    card.number = sequence.get()
+                card.number = number
             card.product = self.product
             card.value = unit_price
             card.currency = self.sale.currency
