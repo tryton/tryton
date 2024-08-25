@@ -206,13 +206,21 @@ class Quotation(Workflow, ModelSQL, ModelView):
         Config = pool.get('purchase.configuration')
 
         config = Config(1)
-        for quotation in quotations:
-            if quotation.number:
-                quotation.revision += 1
-            else:
-                quotation.number = config.get_multivalue(
-                    'purchase_request_quotation_sequence',
-                    company=quotation.company.id).get()
+        for company, c_quotations in groupby(
+                quotations, key=lambda q: q.company):
+            missing_number = []
+            for quotation in c_quotations:
+                if quotation.number:
+                    quotation.revision += 1
+                else:
+                    missing_number.append(quotation)
+            if missing_number:
+                sequence = config.get_multivalue(
+                    'purchase_request_quotation_sequence', company=company.id)
+                for quotation, number in zip(
+                        missing_number,
+                        sequence.get_many(len(missing_number))):
+                    quotation.number = number
         cls.save(quotations)
 
     @fields.depends('supplier')
