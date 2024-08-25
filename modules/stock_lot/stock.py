@@ -146,20 +146,20 @@ class Lot(DeactivableMixin, ModelSQL, ModelView, LotMixin, StockMixin):
 
     @classmethod
     def create(cls, vlist):
-        vlist = [v.copy() for v in vlist]
-        for values in vlist:
-            if not values.get('number'):
-                values['number'] = cls._new_number(values)
-        return super().create(vlist)
-
-    @classmethod
-    def _new_number(cls, values):
         pool = Pool()
         Product = pool.get('product.product')
-        if values.get('product'):
-            product = Product(values['product'])
-            if product.lot_sequence:
-                return product.lot_sequence.get()
+        vlist = [v.copy() for v in vlist]
+        missing_number = defaultdict(list)
+        for values in vlist:
+            if not values.get('number') and values.get('product') is not None:
+                product = Product(values['product'])
+                if product.lot_sequence:
+                    missing_number[product.lot_sequence].append(values)
+
+        for sequence, values in missing_number.items():
+            for vals, number in zip(values, sequence.get_many(len(values))):
+                vals['number'] = number
+        return super().create(vlist)
 
     @classmethod
     @check_no_move
