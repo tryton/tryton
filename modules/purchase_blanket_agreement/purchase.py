@@ -330,12 +330,15 @@ class BlanketAgreement(Workflow, ModelSQL, ModelView):
         Config = pool.get('purchase.configuration')
 
         config = Config(1)
-        for agreement in agreements:
-            if agreement.number:
-                continue
-            agreement.number = config.get_multivalue(
-                'blanket_agreement_sequence',
-                company=agreement.company.id).get()
+        for company, c_agreements in groupby(
+                agreements, key=lambda a: a.company):
+            c_agreements = [a for a in c_agreements if not a.number]
+            if c_agreements:
+                sequence = config.get_multivalue(
+                    'blanket_agreement_sequence', company=company.id)
+                for agreement, number in zip(
+                        c_agreements, sequence.get_many(len(c_agreements))):
+                    agreement.number = number
         cls.save(agreements)
 
     @classmethod
