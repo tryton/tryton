@@ -866,11 +866,14 @@ class Sale(
         Config = pool.get('sale.configuration')
 
         config = Config(1)
-        for sale in sales:
-            if sale.number:
-                continue
-            sale.number = config.get_multivalue(
-                'sale_sequence', company=sale.company.id).get()
+        for company, c_sales in groupby(sales, key=lambda s: s.company):
+            c_sales = [s for s in c_sales if not s.number]
+            if c_sales:
+                sequence = config.get_multivalue(
+                    'sale_sequence', company=company.id)
+                for sale, number in zip(
+                        c_sales, sequence.get_many(len(c_sales))):
+                    sale.number = number
         cls.save(sales)
 
     @classmethod
