@@ -4,12 +4,18 @@ this repository contains the full copyright notices and license terms. -->
 <form>
     <label name="party"/>
     <field name="party"/>
-    <group col="2" colspan="2" id="type_">
-        <field name="type_"/>
-        <field name="company"/>
-    </group>
+    <label name="active"/>
+    <field name="active"/>
+
+    <label name="type_"/>
+    <field name="type_"/>
+    <label name="company"/>
+    <field name="company"/>
+
     <label name="plan"/>
     <field name="plan"/>
     <label name="currency"/>
     <field name="currency"/>
+
+    <field name="selections" colspan="4"/>
 </form>

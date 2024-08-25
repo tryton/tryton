@@ -12,6 +12,9 @@ class Template(metaclass=PoolMeta):
         domain=[
             ('type_', '=', 'principal'),
             ],
+        filter=[
+            ('active', '=', True),
+            ],
         help="The principals who pay a commission when the product is sold.")
 
     @property

@@ -15,7 +15,8 @@ from sql.aggregate import Sum
 from trytond import backend
 from trytond.i18n import gettext
 from trytond.model import (
-    MatchMixin, ModelSQL, ModelView, fields, sequence_ordered)
+    DeactivableMixin, MatchMixin, ModelSQL, ModelView, fields,
+    sequence_ordered)
 from trytond.modules.currency.fields import Monetary
 from trytond.modules.product import price_digits, round_price
 from trytond.pool import Pool
@@ -28,7 +29,7 @@ from trytond.wizard import Button, StateAction, StateView, Wizard
 from .exceptions import FormulaError
 
 
-class Agent(ModelSQL, ModelView):
+class Agent(DeactivableMixin, ModelSQL, ModelView):
     'Commission Agent'
     __name__ = 'commission.agent'
     party = fields.Many2One('party.party', "Party", required=True,
@@ -48,7 +49,15 @@ class Agent(ModelSQL, ModelView):
     pending_amount = fields.Function(fields.Numeric('Pending Amount',
             digits=price_digits), 'get_pending_amount')
     selections = fields.One2Many(
-        'commission.agent.selection', 'agent', "Selections")
+        'commission.agent.selection', 'agent', "Selections",
+        domain=[
+            If(~Eval('active', True),
+                ('end_date', '!=', None),
+                ()),
+            ],
+        states={
+            'invisible': Eval('type_') != 'agent',
+            })
 
     @classmethod
     def __register__(cls, module_name):
@@ -73,6 +82,21 @@ class Agent(ModelSQL, ModelView):
 
         # Migration from 5.4: Add not null on currency
         table.not_null_action('currency', 'add')
+
+    @fields.depends('active', 'selections', 'company')
+    def on_change_active(self):
+        pool = Pool()
+        Date = pool.get('ir.date')
+        with Transaction().set_context(
+                company=self.company.id if self.company else None):
+            today = Date.today()
+        if not self.active and self.selections:
+            for selection in self.selections:
+                start_date = getattr(selection, 'start_date') or today
+                end_date = getattr(selection, 'end_date')
+                if not end_date:
+                    selection.end_date = max(today, start_date)
+            self.selections = self.selections
 
     @staticmethod
     def default_company():
