@@ -765,11 +765,15 @@ class Purchase(
         Config = pool.get('purchase.configuration')
 
         config = Config(1)
-        for purchase in purchases:
-            if purchase.number:
-                continue
-            purchase.number = config.get_multivalue(
-                'purchase_sequence', company=purchase.company.id).get()
+        for company, c_purchases in groupby(
+                purchases, key=lambda p: p.company):
+            c_purchases = [p for p in c_purchases if not p.number]
+            if c_purchases:
+                sequence = config.get_multivalue(
+                    'purchase_sequence', company=company.id)
+                for purchase, number in zip(
+                        c_purchases, sequence.get_many(len(c_purchases))):
+                    purchase.number = number
         cls.save(purchases)
 
     @classmethod
