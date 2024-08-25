@@ -2,6 +2,7 @@
 # this repository contains the full copyright notices and license terms.
 from collections import defaultdict
 from decimal import Decimal
+from itertools import groupby
 
 from sql import Literal, Null, Union
 from sql.aggregate import Sum
@@ -325,9 +326,13 @@ class POSSale(Workflow, ModelSQL, ModelView, TaxableMixin):
     @classmethod
     @Workflow.transition('done')
     def do(cls, sales):
-        for sale in sales:
-            with Transaction().set_context(company=sale.company.id):
-                sale.number = sale.point.sequence.get()
+        for (company, sequence), c_sales in groupby(
+                sales, key=lambda s: (s.company, s.point.sequence)):
+            c_sales = list(c_sales)
+            with Transaction().set_context(company=company.id):
+                for sale, number in zip(
+                        c_sales, sequence.get_many(len(c_sales))):
+                    sale.number = number
         cls.save(sales)
 
     @classmethod
