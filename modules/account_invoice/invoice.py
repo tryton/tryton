@@ -1264,7 +1264,6 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin, InvoiceReportMixin):
         pool = Pool()
         Date = pool.get('ir.date')
         Lang = pool.get('ir.lang')
-        Sequence = pool.get('ir.sequence.strict')
 
         sequences = set()
 
@@ -1276,6 +1275,7 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin, InvoiceReportMixin):
             def invoice_date(invoice):
                 return invoice.invoice_date or today
 
+            to_number = defaultdict(list)
             grouped_invoices = sorted(grouped_invoices, key=invoice_date)
 
             for invoice in grouped_invoices:
@@ -1294,13 +1294,14 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin, InvoiceReportMixin):
 
                 if not invoice.invoice_date and invoice.type == 'out':
                     invoice.invoice_date = today
-                invoice.number, invoice.sequence = invoice.get_next_number()
-                if invoice.type == 'out' and invoice.sequence not in sequences:
+                sequence, sequence_date = invoice._number_sequence()
+                to_number[(sequence, sequence_date)].append(invoice)
+                if invoice.type == 'out' and sequence not in sequences:
                     date = invoice_date(invoice)
                     # Do not need to lock the table
-                    # because sequence.get_id is sequential
+                    # because sequence.get_many is sequential
                     after_invoices = cls.search([
-                            ('sequence', '=', invoice.sequence),
+                            ('sequence', '=', sequence),
                             ('invoice_date', '>', date),
                             ],
                         limit=1, order=[('invoice_date', 'DESC')])
@@ -1309,14 +1310,21 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin, InvoiceReportMixin):
                         raise InvoiceNumberError(
                             gettext('account_invoice.msg_invoice_number_after',
                                 invoice=invoice.rec_name,
-                                sequence=Sequence(invoice.sequence).rec_name,
+                                sequence=sequence.rec_name,
                                 date=Lang.get().strftime(date),
                                 after_invoice=after_invoice.rec_name))
-                    sequences.add(invoice.sequence)
+                    sequences.add(sequence)
+            for (sequence, date), n_invoices in to_number.items():
+                with Transaction().set_context(
+                        date=date, company=company.id):
+                    for invoice, number in zip(
+                            n_invoices, sequence.get_many(len(n_invoices))):
+                        invoice.sequence = sequence
+                        invoice.number = number
         cls.save(invoices)
 
-    def get_next_number(self, pattern=None):
-        "Return invoice number and sequence id used"
+    def _number_sequence(self, pattern=None):
+        "Returns the sequence and date to use for numbering"
         pool = Pool()
         Period = pool.get('account.period')
 
@@ -1337,18 +1345,13 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin, InvoiceReportMixin):
 
         for invoice_sequence in fiscalyear.invoice_sequences:
             if invoice_sequence.match(pattern):
-                sequence = getattr(
-                    invoice_sequence, self._sequence_field)
-                break
+                return getattr(
+                    invoice_sequence, self._sequence_field), accounting_date
         else:
             raise InvoiceNumberError(
                 gettext('account_invoice.msg_invoice_no_sequence',
                     invoice=self.rec_name,
                     fiscalyear=fiscalyear.rec_name))
-        with Transaction().set_context(
-                date=accounting_date,
-                company=self.company.id):
-            return sequence.get(), sequence.id
 
     @property
     def _sequence_field(self):
