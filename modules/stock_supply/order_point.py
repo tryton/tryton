@@ -6,7 +6,7 @@ from sql import Null
 from trytond.i18n import gettext
 from trytond.model import ModelSQL, ModelView, fields
 from trytond.pool import Pool
-from trytond.pyson import Equal, Eval, If, In, Not
+from trytond.pyson import Eval, If
 from trytond.transaction import Transaction
 
 from .exceptions import OrderPointValidationError
@@ -25,8 +25,10 @@ class OrderPoint(ModelSQL, ModelView):
         domain=[
             ('type', '=', 'goods'),
             ('consumable', '=', False),
-            ('purchasable', 'in', If(Equal(Eval('type'), 'purchase'),
-                    [True], [True, False])),
+            ('purchasable', 'in',
+                If(Eval('type') == 'purchase',
+                    [True],
+                    [True, False])),
             ],
         context={
             'company': Eval('company', -1),
@@ -43,7 +45,7 @@ class OrderPoint(ModelSQL, ModelView):
         'stock.location', 'Provisioning Location',
         domain=[('type', 'in', ['storage', 'view'])],
         states={
-            'invisible': Not(Equal(Eval('type'), 'internal')),
+            'invisible': Eval('type') != 'internal',
             'required': ((Eval('type') == 'internal')
                 & (Eval('min_quantity', None) != None)),  # noqa: E711
         })
