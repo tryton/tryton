@@ -236,6 +236,8 @@ class Move(Workflow, ModelSQL, ModelView):
             'readonly': Eval('state') != 'draft',
             },
         help="The source of the stock move.")
+    outcome_moves = fields.One2Many(
+        'stock.move', 'origin', "Outcome Moves", readonly=True)
     origin_planned_date = fields.Date(
         "Origin Planned Date", readonly=True,
         help="When the stock was expected to be moved originally.")
@@ -910,6 +912,12 @@ class Move(Workflow, ModelSQL, ModelView):
     @Workflow.transition('cancelled')
     def cancel(cls, moves):
         pass
+
+    @classmethod
+    def copy(cls, moves, default=None):
+        default = default.copy() if default is not None else {}
+        default.setdefault('outcome_moves', None)
+        return super().copy(moves, default=default)
 
     @classmethod
     def create(cls, vlist):
