@@ -93,7 +93,7 @@ class SaleMixin:
 
     @classmethod
     def _is_recommendable_product(cls, product):
-        return product.salable and product.recommendable
+        return product.active and product.salable and product.recommendable
 
 
 class Sale(SaleMixin, metaclass=PoolMeta):
