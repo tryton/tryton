@@ -90,11 +90,7 @@ class OrderPoint(ModelSQL, ModelView):
             ('max_quantity', '=', None),
             ('max_quantity', '>=', Eval('target_quantity', 0)),
             ])
-    company = fields.Many2One('company.company', 'Company', required=True,
-            domain=[
-                ('id', If(In('company', Eval('context', {})), '=', '!='),
-                    Eval('context', {}).get('company', -1)),
-            ])
+    company = fields.Many2One('company.company', 'Company', required=True)
     unit = fields.Function(fields.Many2One('product.uom', 'Unit'), 'get_unit')
 
     @classmethod
