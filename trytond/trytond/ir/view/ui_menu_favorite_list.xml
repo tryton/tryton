@@ -3,5 +3,6 @@
 this repository contains the full copyright notices and license terms. -->
 <tree sequence="sequence">
     <field name="menu" expand="1"/>
+    <field name="user" expand="1"/>
     <field name="sequence" tree_invisible="1"/>
 </tree>
