@@ -1,5 +1,8 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
+
+from sql import Null
+
 from trytond.i18n import gettext
 from trytond.model import ModelSQL, ModelView, fields
 from trytond.pool import Pool
@@ -29,22 +32,13 @@ class OrderPoint(ModelSQL, ModelView):
             'company': Eval('company', -1),
             },
         depends={'company'})
-    warehouse_location = fields.Many2One(
-        'stock.location', 'Warehouse Location',
-        domain=[('type', '=', 'warehouse')],
-        states={
-            'invisible': Not(Equal(Eval('type'), 'purchase')),
-            'required': Equal(Eval('type'), 'purchase'),
-            })
-    storage_location = fields.Many2One(
-        'stock.location', "Storage Location",
-        domain=[('type', '=', 'storage')],
-        states={
-            'invisible': Not(Equal(Eval('type'), 'internal')),
-            'required': Equal(Eval('type'), 'internal'),
-        })
-    location = fields.Function(fields.Many2One('stock.location', 'Location'),
-            'get_location', searcher='search_location')
+    location = fields.Many2One(
+        'stock.location', "Location", required=True,
+        domain=[
+            If(Eval('type') == 'internal',
+                ('type', '=', 'storage'),
+                ('type', '=', 'warehouse')),
+            ])
     provisioning_location = fields.Many2One(
         'stock.location', 'Provisioning Location',
         domain=[('type', 'in', ['storage', 'view'])],
@@ -103,12 +97,45 @@ class OrderPoint(ModelSQL, ModelView):
             ])
     unit = fields.Function(fields.Many2One('product.uom', 'Unit'), 'get_unit')
 
+    @classmethod
+    def __register__(cls, module):
+        table = cls.__table__()
+        table_h = cls.__table_handler__(module)
+        cursor = Transaction().connection.cursor()
+
+        super().__register__(module)
+
+        # Migration from 7.2: merge warehouse_location and storage_location
+        if table_h.column_exist('warehouse_location'):
+            cursor.execute(*table.update(
+                    [table.location],
+                    [table.warehouse_location],
+                    where=(table.location == Null)
+                    & (table.warehouse_location != Null)))
+            table_h.drop_column('warehouse_location')
+        if table_h.column_exist('storage_location'):
+            cursor.execute(*table.update(
+                    [table.location],
+                    [table.storage_location],
+                    where=(table.location == Null)
+                    & (table.storage_location != Null)))
+            table_h.drop_column('storage_location')
+
     @staticmethod
     def default_type():
         return "purchase"
 
+    @fields.depends('type', 'location')
+    def on_change_type(self):
+        if self.type == 'internal' and self.location:
+            if self.location.type != 'storage':
+                self.location = None
+        elif self.location:
+            if self.location.type != 'warehouse':
+                self.location = None
+
     @classmethod
-    def default_warehouse_location(cls):
+    def default_location(cls):
         return Pool().get('stock.location').get_default_warehouse()
 
     @fields.depends('product', '_parent_product.default_uom')
@@ -145,8 +172,8 @@ class OrderPoint(ModelSQL, ModelView):
                     continue
                 arg = ['AND',
                     ('product', '=', op.product.id),
-                    (location_name, '=', op.storage_location.id),
-                    ('storage_location', '=',
+                    (location_name, '=', op.location.id),
+                    ('location', '=',
                         getattr(op, location_name).id),
                     ('company', '=', op.company.id),
                     ('type', '=', 'internal')]
@@ -160,8 +187,8 @@ class OrderPoint(ModelSQL, ModelView):
     @staticmethod
     def _type2field(type=None):
         t2f = {
-            'purchase': 'warehouse_location',
-            'internal': 'storage_location',
+            'purchase': 'location',
+            'internal': 'location',
             }
         if type is None:
             return t2f
@@ -189,6 +216,16 @@ class OrderPoint(ModelSQL, ModelView):
             raise OrderPointValidationError(
                 gettext('stock_supply.msg_order_point_unique'))
 
+    @property
+    def warehouse_location(self):
+        if self.type == 'purchase':
+            return self.location
+
+    @property
+    def storage_location(self):
+        if self.type == 'internal':
+            return self.location
+
     def get_rec_name(self, name):
         return "%s @ %s" % (self.product.name, self.location.name)
 
@@ -203,22 +240,6 @@ class OrderPoint(ModelSQL, ModelView):
             ('location.rec_name', *clause[1:]),
             ('product.rec_name', *clause[1:]),
             ]
-
-    def get_location(self, name):
-        if self.type == 'purchase':
-            return self.warehouse_location.id
-        elif self.type == 'internal':
-            return self.storage_location.id
-
-    @classmethod
-    def search_location(cls, name, domain=None):
-        clauses = ['OR']
-        for type, field in cls._type2field().items():
-            clauses.append([
-                    ('type', '=', type),
-                    (field,) + tuple(domain[1:]),
-                    ])
-        return clauses
 
     @staticmethod
     def default_company():

@@ -24,11 +24,6 @@ class OrderPoint(metaclass=PoolMeta):
                 ()),
             ]
 
-        cls.warehouse_location.states['invisible'] &= (
-            Eval('type') != 'production')
-        cls.warehouse_location.states['required'] |= (
-            Eval('type') == 'production')
-
         option = ('production', 'Production')
         if option not in cls.type.selection:
             cls.type.selection.append(option)
@@ -36,16 +31,17 @@ class OrderPoint(metaclass=PoolMeta):
     @classmethod
     def _type2field(cls, type=None):
         if type == 'production':
-            return 'warehouse_location'
+            return 'location'
         result = super(OrderPoint, cls)._type2field(type=type)
         if type is None:
-            result['production'] = 'warehouse_location'
+            result['production'] = 'location'
         return result
 
-    def get_location(self, name):
-        location = super(OrderPoint, self).get_location(name)
+    @property
+    def warehouse_location(self):
+        location = super().warehouse_location
         if self.type == 'production':
-            return self.warehouse_location.id
+            location = self.location
         return location
 
 

@@ -7,14 +7,15 @@ this repository contains the full copyright notices and license terms. -->
     <field name="type"/>
     <label name="company"/>
     <field name="company"/>
-    <label name="warehouse_location"/>
-    <field name="warehouse_location"/>
-    <label name="storage_location"/>
-    <field name="storage_location"/>
+    <newline/>
+
+    <label name="location"/>
+    <field name="location"/>
     <label name="provisioning_location"/>
     <field name="provisioning_location"/>
     <label name="overflowing_location"/>
     <field name="overflowing_location"/>
+
     <separator string="Product Info" colspan="6" id="info"/>
     <label name="product"/>
     <field name="product" colspan="5"/>

@@ -185,7 +185,7 @@ Create an order point with negative minimal quantity::
     >>> order_point = OrderPoint()
     >>> order_point.type = 'purchase'
     >>> order_point.product = product
-    >>> order_point.warehouse_location = warehouse_loc
+    >>> order_point.location = warehouse_loc
     >>> order_point.min_quantity = -2
     >>> order_point.target_quantity = 10
     >>> order_point.save()

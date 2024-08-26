@@ -99,7 +99,7 @@ Create internal order point::
     >>> OrderPoint = Model.get('stock.order_point')
     >>> order_point = OrderPoint()
     >>> order_point.product = product
-    >>> order_point.storage_location = storage_loc
+    >>> order_point.location = storage_loc
     >>> order_point.provisioning_location = provisioning_loc
     >>> order_point.type = 'internal'
     >>> order_point.min_quantity = 10

@@ -67,7 +67,7 @@ Create an internal order point::
     >>> OrderPoint = Model.get('stock.order_point')
     >>> overflow_order_point = OrderPoint()
     >>> overflow_order_point.product = product
-    >>> overflow_order_point.storage_location = overflowed_storage_loc
+    >>> overflow_order_point.location = overflowed_storage_loc
     >>> overflow_order_point.overflowing_location = overflow_loc
     >>> overflow_order_point.type = 'internal'
     >>> overflow_order_point.max_quantity = 80

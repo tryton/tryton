@@ -141,7 +141,7 @@ class StockSupplyTestCase(CompanyTestMixin, ModuleTestCase):
             order_point, = OrderPoint.create([{
                         'product': product.id,
                         'type': 'purchase',
-                        'warehouse_location': warehouse.id,
+                        'location': warehouse.id,
                         'min_quantity': 0.0,
                         'target_quantity': 5.0,
                         }])
