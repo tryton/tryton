@@ -262,7 +262,7 @@ class UIMenu(
         return menu2favorite
 
 
-class UIMenuFavorite(ModelSQL, ModelView):
+class UIMenuFavorite(ModelSQL):
     "Menu Favorite"
     __name__ = 'ir.ui.menu.favorite'
 

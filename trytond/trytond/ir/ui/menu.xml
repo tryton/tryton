@@ -59,18 +59,5 @@ this repository contains the full copyright notices and license terms. -->
             action="act_menu_list"
             sequence="10"
             id="menu_menu_list"/>
-
-        <record model="ir.ui.view" id="menu_favorite_view_list">
-            <field name="model">ir.ui.menu.favorite</field>
-            <field name="type">tree</field>
-            <field name="name">ui_menu_favorite_list</field>
-        </record>
-
-        <record model="ir.ui.view" id="menu_favorite_view_form">
-            <field name="model">ir.ui.menu.favorite</field>
-            <field name="type">form</field>
-            <field name="name">ui_menu_favorite_form</field>
-        </record>
-
     </data>
 </tryton>
