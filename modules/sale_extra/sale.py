@@ -250,6 +250,10 @@ class ExtraLine(sequence_ordered(), ModelSQL, ModelView, MatchMixin):
         pattern = pattern.copy()
         sale_amount = pattern.pop('sale_amount')
 
+        if (not self.product.active
+                or not self.product.salable):
+            return False
+
         match = super().match(pattern)
 
         if self.sale_amount is not None:
