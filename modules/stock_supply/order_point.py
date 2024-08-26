@@ -1,15 +1,15 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 
-from sql import Null
 
-from trytond.i18n import gettext
-from trytond.model import ModelSQL, ModelView, fields
+from sql import Null
+from sql.conditionals import Greatest, Least
+from sql.operators import Equal
+
+from trytond.model import Exclude, ModelSQL, ModelView, Unique, fields
 from trytond.pool import Pool
 from trytond.pyson import Eval, If
 from trytond.transaction import Transaction
-
-from .exceptions import OrderPointValidationError
 
 
 class OrderPoint(ModelSQL, ModelView):
@@ -96,6 +96,29 @@ class OrderPoint(ModelSQL, ModelView):
     unit = fields.Function(fields.Many2One('product.uom', 'Unit'), 'get_unit')
 
     @classmethod
+    def __setup__(cls):
+        super().__setup__()
+
+        t = cls.__table__()
+        for location_name in [
+                'provisioning_location', 'overflowing_location']:
+            column = getattr(t, location_name)
+            cls._sql_constraints.append(
+                ('concurrent_%s_internal' % location_name,
+                    Exclude(t,
+                        (t.product, Equal),
+                        (Greatest(t.location, column), Equal),
+                        (Least(t.location, column), Equal),
+                        (t.company, Equal),
+                        where=t.type == 'internal'),
+                    'stock_supply.msg_order_point_concurrent_%s_internal' %
+                    location_name))
+        cls._sql_constraints.append(
+            ('product_location_purchase_unique',
+                Unique(t, t.product, t.location, t.company),
+                'stock_supply.msg_order_point_unique'))
+
+    @classmethod
     def __register__(cls, module):
         table = cls.__table__()
         table_h = cls.__table_handler__(module)
@@ -144,75 +167,6 @@ class OrderPoint(ModelSQL, ModelView):
 
     def get_unit(self, name):
         return self.product.default_uom.id
-
-    @classmethod
-    def validate(cls, orderpoints):
-        super(OrderPoint, cls).validate(orderpoints)
-        cls.check_concurrent_internal(orderpoints)
-        cls.check_uniqueness(orderpoints)
-
-    @classmethod
-    def check_concurrent_internal(cls, orders):
-        """
-        Ensure that there is no 'concurrent' internal order
-        points. I.E. no two order point with opposite location for the
-        same product and same company.
-        """
-        internals = cls.browse([o for o in orders if o.type == 'internal'])
-        if not internals:
-            return
-
-        for location_name in [
-                'provisioning_location', 'overflowing_location']:
-            query = []
-            for op in internals:
-                if getattr(op, location_name, None) is None:
-                    continue
-                arg = ['AND',
-                    ('product', '=', op.product.id),
-                    (location_name, '=', op.location.id),
-                    ('location', '=',
-                        getattr(op, location_name).id),
-                    ('company', '=', op.company.id),
-                    ('type', '=', 'internal')]
-                query.append(arg)
-            if query and cls.search(['OR'] + query):
-                raise OrderPointValidationError(
-                    gettext('stock_supply'
-                        '.msg_order_point_concurrent_%s_internal' %
-                        location_name))
-
-    @staticmethod
-    def _type2field(type=None):
-        t2f = {
-            'purchase': 'location',
-            'internal': 'location',
-            }
-        if type is None:
-            return t2f
-        else:
-            return t2f[type]
-
-    @classmethod
-    def check_uniqueness(cls, orders):
-        """
-        Ensure uniqueness of order points. I.E that there is no several
-        order point for the same location, the same product and the
-        same company.
-        """
-        query = ['OR']
-        for op in orders:
-            field = cls._type2field(op.type)
-            arg = ['AND',
-                ('product', '=', op.product.id),
-                (field, '=', getattr(op, field).id),
-                ('id', '!=', op.id),
-                ('company', '=', op.company.id),
-                ]
-            query.append(arg)
-        if cls.search(query):
-            raise OrderPointValidationError(
-                gettext('stock_supply.msg_order_point_unique'))
 
     @property
     def warehouse_location(self):

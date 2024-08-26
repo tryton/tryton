@@ -28,15 +28,6 @@ class OrderPoint(metaclass=PoolMeta):
         if option not in cls.type.selection:
             cls.type.selection.append(option)
 
-    @classmethod
-    def _type2field(cls, type=None):
-        if type == 'production':
-            return 'location'
-        result = super(OrderPoint, cls)._type2field(type=type)
-        if type is None:
-            result['production'] = 'location'
-        return result
-
     @property
     def warehouse_location(self):
         location = super().warehouse_location
