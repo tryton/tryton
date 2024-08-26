@@ -263,7 +263,7 @@ class Database(DatabaseInterface):
         for count in range(retry, -1, -1):
             try:
                 conn = self._connpool.getconn()
-            except PoolError:
+            except (PoolError, DatabaseOperationalError):
                 if count and not self._connpool.closed:
                     logger.info('waiting a connection')
                     time.sleep(1)
