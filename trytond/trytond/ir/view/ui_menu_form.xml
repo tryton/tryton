@@ -16,7 +16,15 @@ this repository contains the full copyright notices and license terms. -->
     <label name="sequence"/>
     <field name="sequence"/>
 
-    <field name="action_keywords" string="Actions" colspan="4"/>
-
-    <field name="groups" colspan="4"/>
+    <notebook>
+        <page name="groups">
+            <field name="groups" colspan="4"/>
+        </page>
+        <page name="favorites">
+            <field name="favorites" colspan="4"/>
+        </page>
+        <page name="action_keywords" string="Actions">
+            <field name="action_keywords" string="Actions" colspan="4"/>
+        </page>
+    </notebook>
 </form>

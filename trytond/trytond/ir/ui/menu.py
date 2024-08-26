@@ -107,6 +107,8 @@ class UIMenu(
             ('keyword', '=', 'tree_open'),
             ])
     favorite = fields.Function(fields.Boolean('Favorite'), 'get_favorite')
+    favorites = fields.Many2Many(
+        'ir.ui.menu.favorite', 'menu', 'user', "Favorites")
 
     @classmethod
     def order_complete_name(cls, tables):
