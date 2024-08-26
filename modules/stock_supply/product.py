@@ -9,7 +9,13 @@ from trytond.pool import PoolMeta, Pool
 class Product(metaclass=PoolMeta):
     __name__ = "product.product"
     order_points = fields.One2Many(
-        'stock.order_point', 'product', 'Order Points')
+        'stock.order_point', 'product', "Order Points", readonly=True)
+
+    @classmethod
+    def copy(cls, products, default=None):
+        default = default.copy() if default is not None else {}
+        default.setdefault('order_points', None)
+        return super().copy(products, default=default)
 
 
 class ProductSupplier(metaclass=PoolMeta):
