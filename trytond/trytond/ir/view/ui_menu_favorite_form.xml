@@ -4,8 +4,6 @@ this repository contains the full copyright notices and license terms. -->
 <form>
     <label name="menu"/>
     <field name="menu"/>
-    <label name="sequence"/>
-    <field name="sequence"/>
     <label name="user"/>
     <field name="user"/>
 </form>

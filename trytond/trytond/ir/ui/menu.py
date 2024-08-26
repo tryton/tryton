@@ -262,7 +262,7 @@ class UIMenu(
         return menu2favorite
 
 
-class UIMenuFavorite(sequence_ordered(), ModelSQL, ModelView):
+class UIMenuFavorite(ModelSQL, ModelView):
     "Menu Favorite"
     __name__ = 'ir.ui.menu.favorite'
 
@@ -289,7 +289,8 @@ class UIMenuFavorite(sequence_ordered(), ModelSQL, ModelView):
         user = Transaction().user
         favorites = cls.search([
                 ('user', '=', user),
-                ])
+                ],
+            order=[('id', 'DESC')])
         return [(f.menu.id, f.menu.rec_name, f.menu.icon) for f in favorites]
 
     @classmethod
