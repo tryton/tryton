@@ -717,6 +717,23 @@ class Move(Workflow, ModelSQL, ModelView):
             with Transaction().set_context(company=self.company.id):
                 self.effective_date = Date.today()
 
+        moves = [m for m in self.outcome_moves if m.state == 'done']
+        if (isinstance(self.origin, self.__class__)
+                and self.origin.state == 'done'):
+            moves.append(self.origin)
+        before_date = max(
+            (m.effective_date for m in moves
+                if m.to_location == self.from_location),
+            default=datetime.date.min)
+        if self.effective_date < before_date:
+            self.effective_date = before_date
+        after_date = min(
+            (m.effective_date for m in moves
+                if m.from_location == self.to_location),
+            default=datetime.date.max)
+        if self.effective_date > after_date:
+            self.effective_date = after_date
+
     @classmethod
     def view_attributes(cls):
         return super().view_attributes() + [
