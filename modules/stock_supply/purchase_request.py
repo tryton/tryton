@@ -51,7 +51,6 @@ class PurchaseRequest(metaclass=PoolMeta):
         necessary for the selected warehouses.
         """
         pool = Pool()
-        OrderPoint = pool.get('stock.order_point')
         Product = pool.get('product.product')
         Location = pool.get('stock.location')
         User = pool.get('res.user')
@@ -65,22 +64,6 @@ class PurchaseRequest(metaclass=PoolMeta):
                     ('type', '=', 'warehouse'),
                     ])
         warehouse_ids = [w.id for w in warehouses]
-        # fetch order points
-        order_points = OrderPoint.search([
-            ('warehouse_location', '!=', None),
-            ('company', '=', company.id),
-            ])
-        # index them by product
-        product2ops = {}
-        product2ops_other = {}
-        for order_point in order_points:
-            if order_point.type == 'purchase':
-                dict_ = product2ops
-            else:
-                dict_ = product2ops_other
-            dict_[
-                (order_point.warehouse_location.id, order_point.product.id)
-                ] = order_point
 
         if products is None:
             # fetch goods and assets
@@ -90,7 +73,6 @@ class PurchaseRequest(metaclass=PoolMeta):
                     ('consumable', '=', False),
                     ('purchasable', '=', True),
                     ], order=[('id', 'ASC')])
-        product_ids = [p.id for p in products]
         # aggregate product by minimum supply date
         date2products = defaultdict(list)
         for product in products:
@@ -102,7 +84,24 @@ class PurchaseRequest(metaclass=PoolMeta):
         new_requests = []
         for (min_date, max_date), dates_products in date2products.items():
             for sub_products in grouped_slice(dates_products):
-                sub_products = list(sub_products)
+                sub_products = Product.browse(sub_products)
+
+                product2ops = {}
+                product2ops_other = {}
+                for product in sub_products:
+                    for order_point in product.order_points:
+                        if (order_point.company != company
+                                or not order_point.warehouse_location):
+                            continue
+                        if order_point.type == 'purchase':
+                            dict_ = product2ops
+                        else:
+                            dict_ = product2ops_other
+                        dict_[
+                            (order_point.warehouse_location.id,
+                                order_point.product.id)
+                            ] = order_point
+
                 product_ids = [p.id for p in sub_products]
                 with Transaction().set_context(
                         forecast=True,
