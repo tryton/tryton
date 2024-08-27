@@ -66,10 +66,12 @@ this repository contains the full copyright notices and license terms. -->
             <field name="type">tree</field>
             <field name="name">ui_view_tree_width_list</field>
         </record>
+
         <record model="ir.action.act_window" id="act_view_tree_width_form">
             <field name="name">View Tree Width</field>
             <field name="type">ir.action.act_window</field>
             <field name="res_model">ir.ui.view_tree_width</field>
+            <field name="domain" eval="[('model_ref', 'in', Eval('active_ids', []))]" pyson="1"/>
         </record>
         <record model="ir.action.act_window.view"
             id="act_view_tree_width_form_view1">
@@ -83,11 +85,11 @@ this repository contains the full copyright notices and license terms. -->
             <field name="view" ref="view_tree_width_view_form"/>
             <field name="act_window" ref="act_view_tree_width_form"/>
         </record>
-        <menuitem
-            parent="menu_ui"
-            action="act_view_tree_width_form"
-            sequence="50"
-            id="menu_view_tree_width"/>
+        <record model="ir.action.keyword" id="act_view_tree_width_form_keyword_model">
+            <field name="keyword">form_relate</field>
+            <field name="model">ir.model,-1</field>
+            <field name="action" ref="act_view_tree_width_form"/>
+        </record>
 
         <record model="ir.ui.view" id="view_tree_optional_view_form">
             <field name="model">ir.ui.view_tree_optional</field>
@@ -104,6 +106,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.action.act_window" id="act_view_tree_optional_form">
             <field name="name">View Tree Optional</field>
             <field name="res_model">ir.ui.view_tree_optional</field>
+            <field name="domain" eval="[('model_ref', 'in', Eval('active_ids', []))]" pyson="1"/>
         </record>
         <record model="ir.action.act_window.view" id="act_view_tree_optional_form_view1">
             <field name="sequence" eval="10"/>
@@ -115,12 +118,11 @@ this repository contains the full copyright notices and license terms. -->
             <field name="view" ref="view_tree_optional_view_form"/>
             <field name="act_window" ref="act_view_tree_optional_form"/>
         </record>
-
-        <menuitem
-            parent="menu_ui"
-            action="act_view_tree_optional_form"
-            sequence="50"
-            id="menu_view_tree_optional"/>
+        <record model="ir.action.keyword" id="act_view_tree_optional_form_keyword_model">
+            <field name="keyword">form_relate</field>
+            <field name="model">ir.model,-1</field>
+            <field name="action" ref="act_view_tree_optional_form"/>
+        </record>
 
         <record model="ir.ui.view" id="view_tree_state_form">
             <field name="model">ir.ui.view_tree_state</field> 
@@ -132,10 +134,11 @@ this repository contains the full copyright notices and license terms. -->
             <field name="type">tree</field>
             <field name="name">ui_view_tree_state_list</field>
         </record>
+
         <record model="ir.action.act_window" id="act_view_tree_state">
             <field name="name">Tree State</field>
-            <field name="type">ir.action.act_window</field>
             <field name="res_model">ir.ui.view_tree_state</field>
+            <field name="domain" eval="[('model_ref', 'in', Eval('active_ids', []))]" pyson="1"/>
         </record>
         <record model="ir.action.act_window.view"
             id="act_view_tree_state_tree">
@@ -149,11 +152,11 @@ this repository contains the full copyright notices and license terms. -->
             <field name="view" ref="view_tree_state_form"/>
             <field name="act_window" ref="act_view_tree_state"/>
         </record>
-        <menuitem
-            parent="menu_ui"
-            action="act_view_tree_state"
-            sequence="50"
-            id="menu_view_tree_state"/>
+        <record model="ir.action.keyword" id="act_view_tree_state_keyword_model">
+            <field name="keyword">form_relate</field>
+            <field name="model">ir.model,-1</field>
+            <field name="action" ref="act_view_tree_state"/>
+        </record>
 
         <record model="ir.ui.view" id="view_search_form">
             <field name="model">ir.ui.view_search</field> 
@@ -165,10 +168,11 @@ this repository contains the full copyright notices and license terms. -->
             <field name="type">tree</field>
             <field name="name">ui_view_search_list</field>
         </record>
+
         <record model="ir.action.act_window" id="act_view_search">
             <field name="name">View Search</field>
-            <field name="type">ir.action.act_window</field>
             <field name="res_model">ir.ui.view_search</field>
+            <field name="domain" eval="[('model_ref', 'in', Eval('active_ids', []))]" pyson="1"/>
         </record>
         <record model="ir.action.act_window.view"
             id="act_view_search_tree">
@@ -182,10 +186,10 @@ this repository contains the full copyright notices and license terms. -->
             <field name="view" ref="view_search_form"/>
             <field name="act_window" ref="act_view_search"/>
         </record>
-        <menuitem
-            parent="menu_ui"
-            action="act_view_search"
-            sequence="50"
-            id="menu_view_search"/>
+        <record model="ir.action.keyword" id="act_view_search_keyword_model">
+            <field name="keyword">form_relate</field>
+            <field name="model">ir.model,-1</field>
+            <field name="action" ref="act_view_search"/>
+        </record>
     </data>
 </tryton>
