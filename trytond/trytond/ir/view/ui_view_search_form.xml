@@ -2,14 +2,14 @@
 <!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
 this repository contains the full copyright notices and license terms. -->
 <form>
+    <label name="model_ref"/>
+    <field name="model_ref"/>
+    <newline/>
+
     <label name="name"/>
     <field name="name"/>
     <label name="user"/>
     <field name="user"/>
-
-    <label name="model"/>
-    <field name="model"/>
-    <newline/>
 
     <label name="domain"/>
     <field name="domain" colspan="3" widget="pyson"/>

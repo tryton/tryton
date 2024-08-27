@@ -727,7 +727,11 @@ class ViewTreeState(
             state.selected_nodes or cls.default_selected_nodes())
 
 
-class ViewSearch(ModelSQL, ModelView):
+class ViewSearch(
+        fields.fmany2one(
+            'model_ref', 'model', 'ir.model,model', "Model",
+            required=True, ondelete='CASCADE'),
+        ModelSQL, ModelView):
     "View Search"
     __name__ = 'ir.ui.view_search'
 
