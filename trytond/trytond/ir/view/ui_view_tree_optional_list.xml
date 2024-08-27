@@ -4,6 +4,7 @@ this repository contains the full copyright notices and license terms. -->
 <tree>
     <field name="view_id" expand="1"/>
     <field name="user" expand="1"/>
-    <field name="field" expand="1"/>
+    <field name="model_ref" expand="1"/>
+    <field name="field_ref" expand="1"/>
     <field name="value"/>
 </tree>

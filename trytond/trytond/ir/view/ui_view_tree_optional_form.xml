@@ -7,8 +7,11 @@ this repository contains the full copyright notices and license terms. -->
     <label name="user"/>
     <field name="user"/>
 
-    <label name="field"/>
-    <field name="field"/>
+    <label name="model_ref"/>
+    <field name="model_ref"/>
+    <label name="field_ref"/>
+    <field name="field_ref"/>
+
     <label name="value"/>
     <field name="value"/>
 </form>

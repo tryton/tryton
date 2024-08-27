@@ -529,13 +529,24 @@ class ViewTreeWidth(
             cls.create(to_create)
 
 
-class ViewTreeOptional(ModelSQL, ModelView):
+class ViewTreeOptional(
+        fields.fmany2one(
+            'model_ref', 'model', 'ir.model,model', "Model",
+            required=True, ondelete='CASCADE'),
+        fields.fmany2one(
+            'field_ref', 'field,model', 'ir.model.field,name,model', "Field",
+            required=True, ondelete='CASCADE',
+            domain=[
+                ('model', '=', Eval('model')),
+                ]),
+        ModelSQL, ModelView):
     "View Tree Optional"
     __name__ = 'ir.ui.view_tree_optional'
     view_id = fields.Many2One(
         'ir.ui.view', "View ID", required=True, ondelete='CASCADE')
     user = fields.Many2One(
         'res.user', "User", required=True, ondelete='CASCADE')
+    model = fields.Char("Model", required=True)
     field = fields.Char("Field", required=True)
     value = fields.Boolean("Value")
 
@@ -551,6 +562,22 @@ class ViewTreeOptional(ModelSQL, ModelView):
                 table,
                 (table.user, Index.Range()),
                 (table.view_id, Index.Range())))
+
+    @classmethod
+    def __register__(cls, module):
+        pool = Pool()
+        View = pool.get('ir.ui.view')
+        table = cls.__table__()
+        view = View.__table__()
+        cursor = Transaction().connection.cursor()
+
+        super().__register__(module)
+
+        # Migration from 7.2: add model
+        cursor.execute(*table.update(
+                [table.model],
+                [view.select(view.model, where=view.id == table.view_id)],
+                where=table.model == Null))
 
     @classmethod
     def validate_fields(cls, records, fields_names):
@@ -586,7 +613,10 @@ class ViewTreeOptional(ModelSQL, ModelView):
     @classmethod
     def set_optional(cls, view_id, fields):
         "Store optional field that must be displayed"
+        pool = Pool()
+        View = pool.get('ir.ui.view')
         user = Transaction().user
+        view = View(view_id)
         records = cls.search([
                 ('view_id', '=', view_id),
                 ('user', '=', user),
@@ -595,8 +625,9 @@ class ViewTreeOptional(ModelSQL, ModelView):
         to_create = []
         for field, value in fields.items():
             to_create.append({
-                    'view_id': view_id,
+                    'view_id': view.id,
                     'user': user,
+                    'model': view.model,
                     'field': field,
                     'value': bool(value),
                     })
