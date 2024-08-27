@@ -487,8 +487,11 @@ class Move(DescriptionOriginMixin, ModelSQL, ModelView):
         to_reconcile = []
 
         for company, c_moves in groupby(moves, lambda m: m.company):
+            with Transaction().set_context(company=company.id):
+                today = Date.today()
             currency = company.currency
-            for sub_moves in grouped_slice(list(c_moves)):
+            c_moves = list(c_moves)
+            for sub_moves in grouped_slice(c_moves):
                 sub_moves_ids = [m.id for m in sub_moves]
 
                 cursor.execute(*move.select(
@@ -532,12 +535,18 @@ class Move(DescriptionOriginMixin, ModelSQL, ModelView):
                         ))
                 to_reconcile.extend(l for l, in cursor)
 
-        for move in moves:
-            move.state = 'posted'
-            if not move.post_number:
-                with Transaction().set_context(company=move.company.id):
-                    move.post_date = Date.today()
-                move.post_number = move.period.post_move_sequence_used.get()
+            missing_number = defaultdict(list)
+            for move in c_moves:
+                move.state = 'posted'
+                if not move.post_number:
+                    move.post_date = today
+                    missing_number[move.period.post_move_sequence_used].append(
+                        move)
+
+            for sequence, m_moves in missing_number.items():
+                for move, number in zip(
+                        m_moves, sequence.get_many(len(m_moves))):
+                    move.post_number = number
 
         cls.save(moves)
 
