@@ -639,7 +639,17 @@ class ViewTreeOptional(
             cls.create(to_create)
 
 
-class ViewTreeState(ModelSQL, ModelView):
+class ViewTreeState(
+        fields.fmany2one(
+            'model_ref', 'model', 'ir.model,model', "Model",
+            required=True, ondelete='CASCADE'),
+        fields.fmany2one(
+            'child_field', 'child_name,model', 'ir.model.field,name,model',
+            "Child Field", ondelete='CASCADE',
+            domain=[
+                ('model', '=', Eval('model')),
+                ]),
+        ModelSQL, ModelView):
     'View Tree State'
     __name__ = 'ir.ui.view_tree_state'
     _rec_name = 'model'

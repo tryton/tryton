@@ -2,16 +2,19 @@
 <!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
 this repository contains the full copyright notices and license terms. -->
 <form>
-    <label name="model"/>
-    <field name="model"/>
     <label name="user"/>
     <field name="user"/>
+    <label name="model_ref"/>
+    <field name="model_ref"/>
+
     <label name="domain"/>
     <field name="domain"/>
-    <label name="child_name"/>
-    <field name="child_name"/>
+    <label name="child_field"/>
+    <field name="child_field"/>
+
     <separator name="nodes" colspan="4"/>
     <field name="nodes" colspan="4"/>
+
     <separator name="selected_nodes" colspan="4"/>
     <field name="selected_nodes" colspan="4"/>
 </form>
