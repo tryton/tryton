@@ -36,6 +36,10 @@ from .exceptions import (
     PartyLocationError, PurchaseMoveQuantity, PurchaseQuotationError)
 
 
+def samesign(a, b):
+    return math.copysign(a, b) == a
+
+
 def get_shipments_returns(model_name):
     "Computes the returns or shipments"
     def method(self, name):
@@ -1878,7 +1882,8 @@ class Line(sequence_ordered(), ModelSQL, ModelView):
                     gettext('purchase'
                         '.msg_purchase_missing_account_expense',
                         purchase=self.purchase.rec_name))
-        invoice_line.stock_moves = self._get_invoice_line_moves()
+        if samesign(self.quantity, invoice_line.quantity):
+            invoice_line.stock_moves = self._get_invoice_line_moves()
         return [invoice_line]
 
     def _get_invoice_line_quantity(self):
@@ -2022,9 +2027,11 @@ class Line(sequence_ordered(), ModelSQL, ModelView):
     def _get_move_invoice_lines(self, move_type):
         'Return the invoice lines that should be shipped'
         if self.purchase.invoice_method in {'order', 'manual'}:
-            return [l for l in self.invoice_lines]
+            lines = self.invoice_lines
         else:
-            return [l for l in self.invoice_lines if not l.stock_moves]
+            lines = filter(lambda l: not l.stock_moves, self.invoice_lines)
+        return list(filter(
+                lambda l: samesign(self.quantity, l.quantity), lines))
 
     def set_actual_quantity(self):
         pool = Pool()
