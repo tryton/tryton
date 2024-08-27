@@ -483,7 +483,7 @@ class ModelView(Model):
             if view_id:
                 ViewTreeOptional = pool.get('ir.ui.view_tree_optional')
                 viewtreeoptionals = ViewTreeOptional.search([
-                        ('view_id', '=', view_id),
+                        ('view', '=', view_id),
                         ('user', '=', user),
                         ])
                 fields_optional = {o.field: o.value for o in viewtreeoptionals}

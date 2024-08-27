@@ -542,8 +542,8 @@ class ViewTreeOptional(
         ModelSQL, ModelView):
     "View Tree Optional"
     __name__ = 'ir.ui.view_tree_optional'
-    view_id = fields.Many2One(
-        'ir.ui.view', "View ID", required=True, ondelete='CASCADE')
+    view = fields.Many2One(
+        'ir.ui.view', "View", required=True, ondelete='CASCADE')
     user = fields.Many2One(
         'res.user', "User", required=True, ondelete='CASCADE')
     model = fields.Char("Model", required=True)
@@ -561,7 +561,7 @@ class ViewTreeOptional(
             Index(
                 table,
                 (table.user, Index.Range()),
-                (table.view_id, Index.Range())))
+                (table.view, Index.Range())))
 
     @classmethod
     def __register__(cls, module):
@@ -569,30 +569,34 @@ class ViewTreeOptional(
         View = pool.get('ir.ui.view')
         table = cls.__table__()
         view = View.__table__()
+        table_h = cls.__table_handler__(module)
         cursor = Transaction().connection.cursor()
+
+        # Migration from 7.2: rename view_id into view
+        table_h.column_rename('view_id', 'view')
 
         super().__register__(module)
 
         # Migration from 7.2: add model
         cursor.execute(*table.update(
                 [table.model],
-                [view.select(view.model, where=view.id == table.view_id)],
+                [view.select(view.model, where=view.id == table.view)],
                 where=table.model == Null))
 
     @classmethod
     def validate_fields(cls, records, fields_names):
         super().validate_fields(records, fields_names)
-        cls.check_view_id(records, fields_names)
+        cls.check_view(records, fields_names)
 
     @classmethod
-    def check_view_id(cls, records, fields_names=None):
-        if fields_names and 'view_id' not in fields_names:
+    def check_view(cls, records, fields_names=None):
+        if fields_names and 'view' not in fields_names:
             return
         for record in records:
-            if record.view_id and record.view_id.rng_type != 'tree':
+            if record.view and record.view.rng_type != 'tree':
                 raise ViewError(gettext(
                         'ir.msg_view_tree_optional_type',
-                        view=record.view_id.rec_name))
+                        view=record.view.rec_name))
 
     @classmethod
     def create(cls, vlist):
@@ -618,14 +622,14 @@ class ViewTreeOptional(
         user = Transaction().user
         view = View(view_id)
         records = cls.search([
-                ('view_id', '=', view_id),
+                ('view', '=', view.id),
                 ('user', '=', user),
                 ])
         cls.delete(records)
         to_create = []
         for field, value in fields.items():
             to_create.append({
-                    'view_id': view.id,
+                    'view': view,
                     'user': user,
                     'model': view.model,
                     'field': field,

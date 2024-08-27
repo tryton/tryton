@@ -2,8 +2,8 @@
 <!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
 this repository contains the full copyright notices and license terms. -->
 <form>
-    <label name="view_id"/>
-    <field name="view_id"/>
+    <label name="view"/>
+    <field name="view"/>
     <label name="user"/>
     <field name="user"/>
 
