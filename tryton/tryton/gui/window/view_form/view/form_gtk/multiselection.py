@@ -78,6 +78,8 @@ class MultiSelection(Widget, SelectionMixin):
         self.field.set_client(self.record, self.get_value())
 
     def display(self):
+        def freeze(iter):
+            return list(map(tuple, iter))
         selection = self.tree.get_selection()
         selection.handler_block_by_func(self.changed)
         try:
@@ -85,7 +87,7 @@ class MultiSelection(Widget, SelectionMixin):
             # it will be set back in the super call
             selection.set_select_function(lambda *a: True)
             self.update_selection(self.record, self.field)
-            new_model = self.selection != [list(row) for row in self.model]
+            new_model = freeze(self.selection) != freeze(self.model)
             if new_model:
                 self.model.clear()
             if not self.field:
