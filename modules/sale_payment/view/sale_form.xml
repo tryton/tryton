@@ -2,7 +2,7 @@
 <!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
 this repository contains the full copyright notices and license terms. -->
 <data>
-    <xpath expr="//group[@id='links']" position="inside">
+    <xpath expr="//link[@name='sale.act_invoice_form']" position="before">
         <link icon="tryton-payment" name="sale_payment.act_payments_relate"/>
     </xpath>
 </data>

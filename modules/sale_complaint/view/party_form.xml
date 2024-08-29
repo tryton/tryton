@@ -2,7 +2,7 @@
 <!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
 this repository contains the full copyright notices and license terms. -->
 <data>
-    <xpath expr="//group[@id='links']" position="inside">
+    <xpath expr="//link[@name='sale.act_sale_line_relate']" position="after">
         <link icon="tryton-sale-complaint" name="sale_complaint.act_complaint_relate_party" empty="hide"/>
     </xpath>
 </data>
