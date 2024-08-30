@@ -515,6 +515,7 @@ class IrCronTestCase(TestCase):
         cron.interval_number = 1
         cron.interval_type = 'days'
         cron.hour = 1
+        cron.minute = 0
 
         # Quebec is UTC-5
         self.assertEqual(
@@ -529,6 +530,7 @@ class IrCronTestCase(TestCase):
         cron.interval_number = 1
         cron.interval_type = 'days'
         cron.hour = 2
+        cron.minute = 30
 
         # 2022-03-13 is the day of DST switch
         # Quebec is UTC-4
@@ -542,6 +544,7 @@ class IrCronTestCase(TestCase):
         cron = self._get_cron()
         cron.interval_number = 1
         cron.interval_type = 'hours'
+        cron.minute = 30
 
         # 2022-11-06 is the day of DST switch
         # Quebec is UTC-5

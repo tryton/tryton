@@ -3,6 +3,7 @@
 import datetime
 import hashlib
 import logging
+import random
 import time
 from collections import defaultdict
 
@@ -181,15 +182,18 @@ class Cron(DeactivableMixin, ModelSQL, ModelView):
                 microsecond=0,
                 second=0,
                 minute=(
-                    self.minute
+                    (self.minute if self.minute is not None
+                        else random.randint(0, 59))
                     if self.interval_type != 'minutes'
                     else None),
                 hour=(
-                    self.hour
+                    (self.hour if self.hour is not None
+                        else random.randint(0, 23))
                     if self.interval_type not in {'minutes', 'hours'}
                     else None),
                 day=(
-                    self.day
+                    (self.day if self.day is not None
+                        else random.randint(0, 31))
                     if self.interval_type not in {
                         'minutes', 'hours', 'days', 'weeks'}
                     else None),
