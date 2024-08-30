@@ -110,6 +110,13 @@ class InvoiceLine(metaclass=PoolMeta):
         cls.check_validate_project_invoice_quantity(lines, field_names)
 
     @classmethod
+    def copy(cls, lines, default=None):
+        default = default.copy() if default is not None else {}
+        default.setdefault('project_invoice_works')
+        default.setdefault('project_invoice_progresses')
+        return super().copy(lines, default=default)
+
+    @classmethod
     def delete(cls, lines):
         pool = Pool()
         WorkInvoicedProgress = pool.get('project.work.invoiced_progress')
