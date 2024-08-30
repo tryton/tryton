@@ -4,7 +4,7 @@ import datetime
 import operator
 from collections import defaultdict
 from decimal import Decimal
-from itertools import zip_longest
+from itertools import groupby, zip_longest
 
 from dateutil.relativedelta import relativedelta
 from sql import Column, Literal, Null, Window
@@ -1036,40 +1036,46 @@ class Account(
         pool = Pool()
         MoveLine = pool.get('account.move.line')
         FiscalYear = pool.get('account.fiscalyear')
-        cursor = Transaction().connection.cursor()
+        transaction = Transaction()
+        cursor = transaction.connection.cursor()
 
         table_a = cls.__table__()
         table_c = cls.__table__()
         line = MoveLine.__table__()
-        ids = [a.id for a in accounts]
-        balances = dict((i, Decimal(0)) for i in ids)
-        line_query, fiscalyear_ids = MoveLine.query_get(line)
-        for sub_ids in grouped_slice(ids):
-            red_sql = reduce_ids(table_a.id, sub_ids)
-            query = (table_a.join(table_c,
-                    condition=(table_c.left >= table_a.left)
-                    & (table_c.right <= table_a.right)
-                    ).join(line, condition=line.account == table_c.id
-                    ).select(
-                    table_a.id,
-                    Sum(Coalesce(line.debit, 0) - Coalesce(line.credit, 0)
-                        ).as_('balance'),
-                    where=red_sql & line_query,
-                    group_by=table_a.id))
-            if backend.name == 'sqlite':
-                sqlite_apply_types(query, [None, 'NUMERIC'])
-            cursor.execute(*query)
-            balances.update(dict(cursor))
+        balances = defaultdict(Decimal)
+        for company, c_accounts in groupby(accounts, key=lambda a: a.company):
+            c_accounts = list(c_accounts)
+            ids = [a.id for a in c_accounts]
+            with transaction.set_context(company=company.id):
+                line_query, fiscalyear_ids = MoveLine.query_get(line)
+            for sub_ids in grouped_slice(ids):
+                red_sql = reduce_ids(table_a.id, sub_ids)
+                query = (table_a.join(table_c,
+                        condition=(table_c.left >= table_a.left)
+                        & (table_c.right <= table_a.right)
+                        ).join(line, condition=line.account == table_c.id
+                        ).select(
+                        table_a.id,
+                        Sum(Coalesce(line.debit, 0) - Coalesce(line.credit, 0)
+                            ).as_('balance'),
+                        where=red_sql & line_query,
+                        group_by=table_a.id))
+                if backend.name == 'sqlite':
+                    sqlite_apply_types(query, [None, 'NUMERIC'])
+                cursor.execute(*query)
+                balances.update(dict(cursor))
 
-        for account in accounts:
-            balances[account.id] = account.currency.round(balances[account.id])
+            for account in c_accounts:
+                balances[account.id] = account.currency.round(
+                    balances[account.id])
 
-        fiscalyears = FiscalYear.browse(fiscalyear_ids)
+            fiscalyears = FiscalYear.browse(fiscalyear_ids)
 
-        def func(accounts, names):
-            return {names[0]: cls.get_balance(accounts, names[0])}
-        return cls._cumulate(fiscalyears, accounts, [name], {name: balances},
-            func)[name]
+            def func(accounts, names):
+                return {names[0]: cls.get_balance(accounts, names[0])}
+            cls._cumulate(
+                fiscalyears, c_accounts, [name], {name: balances}, func)
+        return balances
 
     @classmethod
     def get_credit_debit(cls, accounts, names):
@@ -1081,10 +1087,10 @@ class Account(
         pool = Pool()
         MoveLine = pool.get('account.move.line')
         FiscalYear = pool.get('account.fiscalyear')
-        cursor = Transaction().connection.cursor()
+        transaction = Transaction()
+        cursor = transaction.connection.cursor()
 
         result = {}
-        ids = [a.id for a in accounts]
         for name in names:
             if name not in {
                     'credit', 'debit', 'amount_second_currency', 'line_count'}:
@@ -1094,53 +1100,58 @@ class Account(
 
         table = cls.__table__()
         line = MoveLine.__table__()
-        line_query, fiscalyear_ids = MoveLine.query_get(line)
-        columns = [table.id]
-        types = [None]
-        for name in names:
-            if name == 'line_count':
-                columns.append(Count(Literal('*')))
-                types.append(None)
-            else:
-                columns.append(Sum(Coalesce(Column(line, name), 0)).as_(name))
-                types.append('NUMERIC')
-        for sub_ids in grouped_slice(ids):
-            red_sql = reduce_ids(table.id, sub_ids)
-            query = (table.join(line, 'LEFT',
-                    condition=line.account == table.id
-                    ).select(*columns,
-                    where=red_sql & line_query,
-                    group_by=table.id))
-            if backend.name == 'sqlite':
-                sqlite_apply_types(query, types)
-            cursor.execute(*query)
-            for row in cursor:
-                account_id = row[0]
-                for i, name in enumerate(names, 1):
-                    result[name][account_id] = row[i]
-        for account in accounts:
+
+        for company, c_accounts in groupby(accounts, key=lambda a: a.company):
+            c_accounts = list(c_accounts)
+            ids = [a.id for a in c_accounts]
+            with transaction.set_context(company=company.id):
+                line_query, fiscalyear_ids = MoveLine.query_get(line)
+            columns = [table.id]
+            types = [None]
             for name in names:
                 if name == 'line_count':
-                    continue
-                if (name == 'amount_second_currency'
-                        and account.second_currency):
-                    currency = account.second_currency
+                    columns.append(Count(Literal('*')))
+                    types.append(None)
                 else:
-                    currency = account.currency
-                result[name][account.id] = currency.round(
-                    result[name][account.id])
+                    columns.append(
+                        Sum(Coalesce(Column(line, name), 0)).as_(name))
+                    types.append('NUMERIC')
+            for sub_ids in grouped_slice(ids):
+                red_sql = reduce_ids(table.id, sub_ids)
+                query = (table.join(line, 'LEFT',
+                        condition=line.account == table.id
+                        ).select(*columns,
+                        where=red_sql & line_query,
+                        group_by=table.id))
+                if backend.name == 'sqlite':
+                    sqlite_apply_types(query, types)
+                cursor.execute(*query)
+                for row in cursor:
+                    account_id = row[0]
+                    for i, name in enumerate(names, 1):
+                        result[name][account_id] = row[i]
+            for account in c_accounts:
+                for name in names:
+                    if name == 'line_count':
+                        continue
+                    if (name == 'amount_second_currency'
+                            and account.second_currency):
+                        currency = account.second_currency
+                    else:
+                        currency = account.currency
+                    result[name][account.id] = currency.round(
+                        result[name][account.id])
 
-        cumulate_names = []
-        if Transaction().context.get('cumulate'):
-            cumulate_names = names
-        elif 'amount_second_currency' in names:
-            cumulate_names = ['amount_second_currency']
-        if cumulate_names:
-            fiscalyears = FiscalYear.browse(fiscalyear_ids)
-            return cls._cumulate(fiscalyears, accounts, cumulate_names, result,
-                cls.get_credit_debit)
-        else:
-            return result
+            cumulate_names = []
+            if transaction.context.get('cumulate'):
+                cumulate_names = names
+            elif 'amount_second_currency' in names:
+                cumulate_names = ['amount_second_currency']
+            if cumulate_names:
+                fiscalyears = FiscalYear.browse(fiscalyear_ids)
+                cls._cumulate(fiscalyears, c_accounts, cumulate_names, result,
+                    cls.get_credit_debit)
+        return result
 
     @classmethod
     def _cumulate(
@@ -1529,55 +1540,62 @@ class AccountParty(ActivePeriodMixin, ModelSQL):
         Account = pool.get('account.account')
         MoveLine = pool.get('account.move.line')
         FiscalYear = pool.get('account.fiscalyear')
-        cursor = Transaction().connection.cursor()
+        transaction = Transaction()
+        cursor = transaction.connection.cursor()
 
         table_a = Account.__table__()
         table_c = Account.__table__()
         line = MoveLine.__table__()
-        ids = [a.id for a in records]
-        account_ids = {a.account.id for a in records}
-        party_ids = {a.party.id for a in records}
-        account_party2id = {(a.account.id, a.party.id): a.id for a in records}
-        balances = dict((i, Decimal(0)) for i in ids)
-        line_query, fiscalyear_ids = MoveLine.query_get(line)
-        for sub_account_ids in grouped_slice(account_ids):
-            account_sql = reduce_ids(table_a.id, sub_account_ids)
-            for sub_party_ids in grouped_slice(party_ids):
-                party_sql = reduce_ids(line.party, sub_party_ids)
-                query = (table_a.join(table_c,
-                        condition=(table_c.left >= table_a.left)
-                        & (table_c.right <= table_a.right)
-                        ).join(line, condition=line.account == table_c.id
-                        ).select(
-                        table_a.id,
-                        line.party,
-                        Sum(
-                            Coalesce(line.debit, 0)
-                            - Coalesce(line.credit, 0)).as_('balance'),
-                        where=account_sql & party_sql & line_query,
-                        group_by=[table_a.id, line.party]))
-                if backend.name == 'sqlite':
-                    sqlite_apply_types(query, [None, None, 'NUMERIC'])
-                cursor.execute(*query)
-                for account_id, party_id, balance in cursor:
-                    try:
-                        id_ = account_party2id[(account_id, party_id)]
-                    except KeyError:
-                        # There can be more combinations of account-party in
-                        # the database than from records
-                        continue
-                    balances[id_] = balance
+        balances = defaultdict(Decimal)
 
-        for record in records:
-            balances[record.id] = record.currency.round(balances[record.id])
+        for company, c_records in groupby(records, lambda r: r.company):
+            c_records = list(c_records)
+            account_ids = {a.account.id for a in c_records}
+            party_ids = {a.party.id for a in c_records}
+            account_party2id = {
+                (a.account.id, a.party.id): a.id for a in c_records}
+            with transaction.set_context(company=company.id):
+                line_query, fiscalyear_ids = MoveLine.query_get(line)
+            for sub_account_ids in grouped_slice(account_ids):
+                account_sql = reduce_ids(table_a.id, sub_account_ids)
+                for sub_party_ids in grouped_slice(party_ids):
+                    party_sql = reduce_ids(line.party, sub_party_ids)
+                    query = (table_a.join(table_c,
+                            condition=(table_c.left >= table_a.left)
+                            & (table_c.right <= table_a.right)
+                            ).join(line, condition=line.account == table_c.id
+                            ).select(
+                            table_a.id,
+                            line.party,
+                            Sum(
+                                Coalesce(line.debit, 0)
+                                - Coalesce(line.credit, 0)).as_('balance'),
+                            where=account_sql & party_sql & line_query,
+                            group_by=[table_a.id, line.party]))
+                    if backend.name == 'sqlite':
+                        sqlite_apply_types(query, [None, None, 'NUMERIC'])
+                    cursor.execute(*query)
+                    for account_id, party_id, balance in cursor:
+                        try:
+                            id_ = account_party2id[(account_id, party_id)]
+                        except KeyError:
+                            # There can be more combinations of account-party
+                            # in the database than from records
+                            continue
+                        balances[id_] = balance
 
-        fiscalyears = FiscalYear.browse(fiscalyear_ids)
+            for record in c_records:
+                balances[record.id] = record.currency.round(
+                    balances[record.id])
 
-        def func(records, names):
-            return {names[0]: cls.get_balance(records, names[0])}
-        return Account._cumulate(
-            fiscalyears, records, [name], {name: balances}, func,
-            deferral=None)[name]
+            fiscalyears = FiscalYear.browse(fiscalyear_ids)
+
+            def func(records, names):
+                return {names[0]: cls.get_balance(records, names[0])}
+            Account._cumulate(
+                fiscalyears, c_records, [name], {name: balances}, func,
+                deferral=None)[name]
+        return balances
 
     @classmethod
     def get_credit_debit(cls, records, names):
@@ -1585,7 +1603,8 @@ class AccountParty(ActivePeriodMixin, ModelSQL):
         Account = pool.get('account.account')
         MoveLine = pool.get('account.move.line')
         FiscalYear = pool.get('account.fiscalyear')
-        cursor = Transaction().connection.cursor()
+        transaction = Transaction()
+        cursor = transaction.connection.cursor()
 
         result = {}
         for name in names:
@@ -1595,12 +1614,8 @@ class AccountParty(ActivePeriodMixin, ModelSQL):
             column_type = int if name == 'line_count' else Decimal
             result[name] = defaultdict(column_type)
 
-        account_ids = {a.account.id for a in records}
-        party_ids = {a.party.id for a in records}
-        account_party2id = {(a.account.id, a.party.id): a.id for a in records}
         table = Account.__table__()
         line = MoveLine.__table__()
-        line_query, fiscalyear_ids = MoveLine.query_get(line)
         columns = [table.id, line.party]
         types = [None, None]
         for name in names:
@@ -1610,50 +1625,61 @@ class AccountParty(ActivePeriodMixin, ModelSQL):
             else:
                 columns.append(Sum(Coalesce(Column(line, name), 0)).as_(name))
                 types.append('NUMERIC')
-        for sub_account_ids in grouped_slice(account_ids):
-            account_sql = reduce_ids(table.id, sub_account_ids)
-            for sub_party_ids in grouped_slice(party_ids):
-                party_sql = reduce_ids(line.party, sub_party_ids)
-                query = (table.join(line, 'LEFT',
-                        condition=line.account == table.id
-                        ).select(*columns,
-                        where=account_sql & party_sql & line_query,
-                        group_by=[table.id, line.party]))
-                if backend.name == 'sqlite':
-                    sqlite_apply_types(query, types)
-                cursor.execute(*query)
-                for row in cursor:
-                    try:
-                        id_ = account_party2id[tuple(row[0:2])]
-                    except KeyError:
-                        # There can be more combinations of account-party in
-                        # the database than from records
-                        continue
-                    for i, name in enumerate(names, 2):
-                        result[name][id_] = row[i]
-        for record in records:
-            for name in names:
-                if name == 'line_count':
-                    continue
-                if name == 'amount_second_currency' and record.second_currency:
-                    currency = record.second_currency
-                else:
-                    currency = record.currency
-                result[name][record.id] = currency.round(
-                    result[name][record.id])
 
-        cumulate_names = []
-        if Transaction().context.get('cumulate'):
-            cumulate_names = names
-        elif 'amount_second_currency' in names:
-            cumulate_names = ['amount_second_currency']
-        if cumulate_names:
-            fiscalyears = FiscalYear.browse(fiscalyear_ids)
-            return Account._cumulate(
-                fiscalyears, records, cumulate_names, result,
-                cls.get_credit_debit, deferral=None)
-        else:
-            return result
+        for company, c_records in groupby(records, key=lambda r: r.company):
+            c_records = list(c_records)
+            account_ids = {a.account.id for a in c_records}
+            party_ids = {a.party.id for a in c_records}
+            account_party2id = {
+                (a.account.id, a.party.id): a.id for a in c_records}
+
+            with transaction.set_context(company=company.id):
+                line_query, fiscalyear_ids = MoveLine.query_get(line)
+
+            for sub_account_ids in grouped_slice(account_ids):
+                account_sql = reduce_ids(table.id, sub_account_ids)
+                for sub_party_ids in grouped_slice(party_ids):
+                    party_sql = reduce_ids(line.party, sub_party_ids)
+                    query = (table.join(line, 'LEFT',
+                            condition=line.account == table.id
+                            ).select(*columns,
+                            where=account_sql & party_sql & line_query,
+                            group_by=[table.id, line.party]))
+                    if backend.name == 'sqlite':
+                        sqlite_apply_types(query, types)
+                    cursor.execute(*query)
+                    for row in cursor:
+                        try:
+                            id_ = account_party2id[tuple(row[0:2])]
+                        except KeyError:
+                            # There can be more combinations of account-party
+                            # in the database than from records
+                            continue
+                        for i, name in enumerate(names, 2):
+                            result[name][id_] = row[i]
+            for record in c_records:
+                for name in names:
+                    if name == 'line_count':
+                        continue
+                    if (name == 'amount_second_currency'
+                            and record.second_currency):
+                        currency = record.second_currency
+                    else:
+                        currency = record.currency
+                    result[name][record.id] = currency.round(
+                        result[name][record.id])
+
+            cumulate_names = []
+            if transaction.context.get('cumulate'):
+                cumulate_names = names
+            elif 'amount_second_currency' in names:
+                cumulate_names = ['amount_second_currency']
+            if cumulate_names:
+                fiscalyears = FiscalYear.browse(fiscalyear_ids)
+                Account._cumulate(
+                    fiscalyears, c_records, cumulate_names, result,
+                    cls.get_credit_debit, deferral=None)
+        return result
 
     def get_currency(self, name):
         return self.company.currency.id
