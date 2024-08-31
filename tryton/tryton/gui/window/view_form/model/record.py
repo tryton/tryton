@@ -125,7 +125,7 @@ class Record(SignalEvent):
                     list(id2record.keys()), fnames, context=ctx)
             except RPCException:
                 values = [{'id': x} for x in id2record]
-                default_values = dict((f, None) for f in fnames)
+                default_values = dict((f, None) for f in fnames if f != 'id')
                 for value in values:
                     value.update(default_values)
                 self.exception = exception = True

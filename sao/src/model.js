@@ -827,7 +827,9 @@
                         id: id
                     };
                     for (var i in fnames_to_fetch) {
-                        default_values[fnames_to_fetch[i]] = null;
+                        if (fname != 'id') {
+                            default_values[fnames_to_fetch[i]] = null;
+                        }
                     }
                     failed_values.push(default_values);
                 }
