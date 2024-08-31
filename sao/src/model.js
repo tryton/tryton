@@ -819,17 +819,15 @@
             };
             const failed = () => {
                 var failed_values = [];
-                var default_values;
-                for (var id in id2record) {
-                    default_values = {
-                        id: id
-                    };
-                    for (const fname of fnames_to_fetch) {
-                        if (fname != 'id') {
-                            default_values[fname] = null;
-                        }
+                var default_values = {};
+                for (let fname of fnames_to_fetch) {
+                    if (fname != 'id') {
+                        default_values[fname] = null;
                     }
-                    failed_values.push(default_values);
+                }
+
+                for (let id in id2record) {
+                    failed_values.push(Object.assign({'id': id}, default_values));
                 }
                 return succeed(failed_values, true);
             };

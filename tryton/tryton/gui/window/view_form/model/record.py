@@ -177,10 +177,10 @@ class Record:
                 for record in id2record.values():
                     record.exception = True
                 if process_exception:
-                    values = [{'id': x} for x in id2record]
+                    values = []
                     default_values = {f: None for f in fnames if f != 'id'}
-                    for value in values:
-                        value.update(default_values)
+                    for id in id2record:
+                        values.append({'id': id, **default_values})
                 else:
                     raise
             id2value = dict((value['id'], value) for value in values)
