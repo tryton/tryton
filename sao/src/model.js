@@ -825,7 +825,9 @@
                         id: id
                     };
                     for (const fname of fnames_to_fetch) {
-                        default_values[fname] = null;
+                        if (fname != 'id') {
+                            default_values[fname] = null;
+                        }
                     }
                     failed_values.push(default_values);
                 }
