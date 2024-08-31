@@ -623,6 +623,14 @@ Class attributes are:
 
 Class methods:
 
+.. classmethod:: ModelSQL.__setup_indexes__()
+
+   Setup the :attr:`~ModelSQL._sql_indexes` before creating them on the table.
+
+   .. note::
+      The method is called only once when all the models have been setup by the
+      :class:`~trytond.pool.Pool`.
+
 .. classmethod:: ModelSQL.__table__()
 
    Return a SQL Table instance for the Model.

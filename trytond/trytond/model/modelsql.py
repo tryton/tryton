@@ -355,55 +355,57 @@ class ModelSQL(ModelStorage):
                     })
 
     @classmethod
-    def __post_setup__(cls):
-        super().__post_setup__()
-
+    def __setup_indexes__(cls):
+        pool = Pool()
         # Define Range index to optimise with reduce_ids
-        for field in cls._fields.values():
-            field_names = set()
-            if isinstance(field, fields.One2Many):
-                Target = field.get_target()
-                if field.field:
-                    field_names.add(field.field)
-            elif isinstance(field, fields.Many2Many):
-                Target = field.get_relation()
-                if field.origin:
-                    field_names.add(field.origin)
-                if field.target:
-                    field_names.add(field.target)
-            else:
-                continue
-            field_names.discard('id')
-            for field_name in field_names:
-                target_field = getattr(Target, field_name)
-                if (issubclass(Target, ModelSQL)
-                        and not callable(Target.table_query)
-                        and not hasattr(target_field, 'set')):
-                    target = Target.__table__()
-                    column = Column(target, field_name)
-                    if not target_field.required and Target != cls:
-                        where = column != Null
-                    else:
-                        where = None
-                    if target_field._type == 'reference':
-                        Target._sql_indexes.update({
-                                Index(
-                                    target,
-                                    (column, Index.Equality()),
-                                    where=where),
-                                Index(
-                                    target,
-                                    (column, Index.Similarity(begin=True)),
-                                    (target_field.sql_id(column, Target),
-                                        Index.Range()),
-                                    where=where),
-                                })
-                    else:
-                        Target._sql_indexes.add(
+        for field_name, field in cls._fields.items():
+            Targets = []
+            if isinstance(field, fields.Many2One):
+                Targets = [field.get_target()]
+            elif isinstance(field, fields.Reference):
+                if isinstance(field.selection, (list, tuple)):
+                    for target, _ in field.selection:
+                        if target:
+                            Targets.append(pool.get(target))
+                else:
+                    Targets.extend(t for _, t in pool.iterobject())
+            for Target in Targets:
+                for tfield in Target._fields.values():
+                    if (isinstance(tfield, fields.One2Many)
+                            and tfield.get_target() == cls):
+                        break
+                    elif (isinstance(tfield, fields.Many2Many)
+                            and tfield.get_target() == cls
+                            and (tfield.origin == field_name
+                                or tfield.target == field_name)):
+                        break
+                else:
+                    continue
+                table = cls.__table__()
+                column = Column(table, field_name)
+                if not field.required and cls != Target:
+                    where = column != Null
+                else:
+                    where = None
+                if isinstance(field, fields.Reference):
+                    cls._sql_indexes.update({
                             Index(
-                                target,
-                                (column, Index.Range()),
-                                where=where))
+                                table,
+                                (column, Index.Equality()),
+                                where=where),
+                            Index(
+                                table,
+                                (column, Index.Similarity(begin=True)),
+                                (field.sql_id(column, Target), Index.Range()),
+                                where=where),
+                            })
+                else:
+                    cls._sql_indexes.add(
+                        Index(
+                            table,
+                            (column, Index.Range()),
+                            where=where))
+                    break
 
     @classmethod
     def __table__(cls):

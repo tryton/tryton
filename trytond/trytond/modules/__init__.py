@@ -233,7 +233,7 @@ def load_module_graph(graph, pool, update=None, lang=None, indexes=None):
                 module2state[module] = 'activated'
             elif not update and indexes:
                 for model in classes['model']:
-                    if hasattr(model, '_update_sql_indexes'):
+                    if hasattr(model, '__setup_indexes__'):
                         models_with_indexes.add(model.__name__)
 
         if not update:
@@ -252,6 +252,10 @@ def load_module_graph(graph, pool, update=None, lang=None, indexes=None):
             ModelField.clean()
 
         pool.setup_mixin()
+
+        for model_name in models_with_indexes:
+            model = pool.get(model_name)
+            model.__setup_indexes__()
 
         def create_indexes(concurrently):
             for model_name in models_with_indexes:
