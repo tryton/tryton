@@ -13,4 +13,4 @@ add to it a line that has an `Account <account:model-account.account>` of `Type
 Deposit <model-account.account.type>` and a price set to the amount to be
 deposited.
 Then you can post it and `register the payment <account_invoice:Paying an
-invoice>`_ of the deposit.
+invoice>` of the deposit.
