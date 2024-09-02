@@ -38,8 +38,32 @@ class MultiSelectionRequired(ModelSQL):
         [('foo', "Foo"), ('bar', "Bar")], "Selects", required=True)
 
 
+class MultiSelectionText(MultiSelection):
+    "MultiSelection TEXT"
+    __name__ = 'test.multi_selection_text'
+
+    @classmethod
+    def __setup__(cls):
+        super().__setup__()
+        cls.selects._sql_type = 'TEXT'
+        cls.dyn_selects._sql_type = 'TEXT'
+        cls.static_selects._sql_type = 'TEXT'
+
+
+class MultiSelectionRequiredText(MultiSelectionRequired):
+    "MultiSelection Required Text"
+    __name__ = 'test.multi_selection_required_text'
+
+    @classmethod
+    def __setup__(cls):
+        super().__setup__()
+        cls.selects._sql_type = 'TEXT'
+
+
 def register(module):
     Pool.register(
         MultiSelection,
         MultiSelectionRequired,
+        MultiSelectionText,
+        MultiSelectionRequiredText,
         module=module, type_='model')

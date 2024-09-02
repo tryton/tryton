@@ -1,14 +1,11 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
-import unittest
 
-from trytond import backend
 from trytond.model.exceptions import (
     RequiredValidationError, SelectionValidationError)
 from trytond.pool import Pool
 from trytond.tests.test_tryton import (
     TestCase, activate_module, with_transaction)
-from trytond.transaction import Transaction
 
 
 class FieldMultiSelectionTestCase(TestCase):
@@ -18,12 +15,18 @@ class FieldMultiSelectionTestCase(TestCase):
     def setUpClass(cls):
         activate_module('tests')
 
+    @property
+    def Selection(self):
+        return Pool().get('test.multi_selection')
+
+    @property
+    def SelectionRequired(self):
+        return Pool().get('test.multi_selection_required')
+
     @with_transaction()
     def test_create(self):
         "Test create multi-selection"
-        Selection = Pool().get('test.multi_selection')
-
-        selection, selection_none = Selection.create([{
+        selection, selection_none = self.Selection.create([{
                     'selects': ['foo', 'bar'],
                     }, {
                     'selects': None,
@@ -35,19 +38,15 @@ class FieldMultiSelectionTestCase(TestCase):
     @with_transaction()
     def test_create_not_in(self):
         "Test create multi-selection not in selection"
-        Selection = Pool().get('test.multi_selection')
-
         with self.assertRaises(SelectionValidationError):
-            Selection.create([{
+            self.Selection.create([{
                         'selects': ('invalid'),
                         }])
 
     @with_transaction()
     def test_create_dynamic(self):
         "Test create dynamic selection"
-        Selection = Pool().get('test.multi_selection')
-
-        selection_foo, selection_bar = Selection.create([{
+        selection_foo, selection_bar = self.Selection.create([{
                     'selects': ['foo'],
                     'dyn_selects': ['foo'],
                     }, {
@@ -61,9 +60,7 @@ class FieldMultiSelectionTestCase(TestCase):
     @with_transaction()
     def test_create_dynamic_none(self):
         "Test create dynamic selection None"
-        Selection = Pool().get('test.multi_selection')
-
-        selection, = Selection.create([{
+        selection, = self.Selection.create([{
                     'selects': ['foo'],
                     'dyn_selects': None,
                     }])
@@ -73,10 +70,8 @@ class FieldMultiSelectionTestCase(TestCase):
     @with_transaction()
     def test_create_dynamic_not_in(self):
         "Test create dynamic selection not in"
-        Selection = Pool().get('test.multi_selection')
-
         with self.assertRaises(SelectionValidationError):
-            Selection.create([{
+            self.Selection.create([{
                     'selects': ['foo'],
                     'dyn_selects': ['foo', 'bar'],
                     }])
@@ -84,9 +79,7 @@ class FieldMultiSelectionTestCase(TestCase):
     @with_transaction()
     def test_create_static(self):
         "Test create static selection"
-        Selection = Pool().get('test.multi_selection')
-
-        selection, = Selection.create([{
+        selection, = self.Selection.create([{
                     'static_selects': ['foo', 'bar'],
                     }])
 
@@ -95,9 +88,7 @@ class FieldMultiSelectionTestCase(TestCase):
     @with_transaction()
     def test_create_static_none(self):
         "Test create static selection None"
-        Selection = Pool().get('test.multi_selection')
-
-        selection, = Selection.create([{
+        selection, = self.Selection.create([{
                     'static_selects': None,
                     }])
 
@@ -106,19 +97,15 @@ class FieldMultiSelectionTestCase(TestCase):
     @with_transaction()
     def test_create_static_not_in(self):
         "Test create static selection not in"
-        Selection = Pool().get('test.multi_selection')
-
         with self.assertRaises(SelectionValidationError):
-            Selection.create([{
+            self.Selection.create([{
                     'static_selects': ['foo', 'bar', 'invalid'],
                     }])
 
     @with_transaction()
     def test_create_required_with_value(self):
         "Test create selection required with value"
-        Selection = Pool().get('test.multi_selection_required')
-
-        selection, = Selection.create([{
+        selection, = self.SelectionRequired.create([{
                     'selects': ['foo', 'bar'],
                     }])
 
@@ -127,40 +114,33 @@ class FieldMultiSelectionTestCase(TestCase):
     @with_transaction()
     def test_create_required_without_value(self):
         "Test create selection required without value"
-        Selection = Pool().get('test.multi_selection_required')
-
         with self.assertRaises(RequiredValidationError):
-            Selection.create([{}])
+            self.SelectionRequired.create([{}])
 
     @with_transaction()
     def test_create_required_none(self):
         "Test create selection required without value"
-        Selection = Pool().get('test.multi_selection_required')
-
         with self.assertRaises(RequiredValidationError):
-            Selection.create([{
+            self.SelectionRequired.create([{
                         'selects': None,
                         }])
 
     @with_transaction()
     def test_create_required_empty(self):
         "Test create selection required with empty value"
-        Selection = Pool().get('test.multi_selection_required')
-
         with self.assertRaises(RequiredValidationError):
-            Selection.create([{
+            self.SelectionRequired.create([{
                         'selects': [],
                         }])
 
     @with_transaction()
     def test_write(self):
         "Test write selection"
-        Selection = Pool().get('test.multi_selection')
-        selection, = Selection.create([{
+        selection, = self.Selection.create([{
                     'selects': ['foo'],
                     }])
 
-        Selection.write([selection], {
+        self.Selection.write([selection], {
                 'selects': ['foo', 'bar'],
                 })
 
@@ -169,8 +149,7 @@ class FieldMultiSelectionTestCase(TestCase):
     @with_transaction()
     def test_string(self):
         "Test string selection"
-        Selection = Pool().get('test.multi_selection')
-        selection, = Selection.create([{
+        selection, = self.Selection.create([{
                     'selects': ['foo', 'bar'],
                     }])
 
@@ -179,8 +158,7 @@ class FieldMultiSelectionTestCase(TestCase):
     @with_transaction()
     def test_string_none(self):
         "Test string selection none"
-        Selection = Pool().get('test.multi_selection')
-        selection, = Selection.create([{
+        selection, = self.Selection.create([{
                     'selects': None,
                     }])
 
@@ -189,15 +167,14 @@ class FieldMultiSelectionTestCase(TestCase):
     @with_transaction()
     def test_search_equals(self):
         "Test search selection equals"
-        Selection = Pool().get('test.multi_selection')
-        selection, = Selection.create([{
+        selection, = self.Selection.create([{
                     'selects': ['bar', 'foo'],
                     }])
 
-        foo_bar = Selection.search([
+        foo_bar = self.Selection.search([
                 ('selects', '=', ['foo', 'bar']),
                 ])
-        foo = Selection.search([
+        foo = self.Selection.search([
                 ('selects', '=', ['foo']),
                 ])
 
@@ -207,12 +184,11 @@ class FieldMultiSelectionTestCase(TestCase):
     @with_transaction()
     def test_search_equals_string(self):
         "Test search selection equals string"
-        Selection = Pool().get('test.multi_selection')
-        selection, = Selection.create([{
+        selection, = self.Selection.create([{
                     'selects': ['foo'],
                     }])
 
-        foo = Selection.search([
+        foo = self.Selection.search([
                 ('selects', '=', 'foo'),
                 ])
 
@@ -221,12 +197,11 @@ class FieldMultiSelectionTestCase(TestCase):
     @with_transaction()
     def test_search_equals_none(self):
         "Test search selection equals"
-        Selection = Pool().get('test.multi_selection')
-        selection, = Selection.create([{
+        selection, = self.Selection.create([{
                     'selects': None,
                     }])
 
-        selections = Selection.search([
+        selections = self.Selection.search([
                 ('selects', '=', None),
                 ])
 
@@ -235,15 +210,14 @@ class FieldMultiSelectionTestCase(TestCase):
     @with_transaction()
     def test_search_in_string(self):
         "Test search selection in string"
-        Selection = Pool().get('test.multi_selection')
-        selection, = Selection.create([{
+        selection, = self.Selection.create([{
                     'selects': ['foo', 'bar'],
                     }])
 
-        foo = Selection.search([
+        foo = self.Selection.search([
                 ('selects', 'in', 'foo'),
                 ])
-        baz = Selection.search([
+        baz = self.Selection.search([
                 ('selects', 'in', 'baz'),
                 ])
 
@@ -253,15 +227,14 @@ class FieldMultiSelectionTestCase(TestCase):
     @with_transaction()
     def test_search_not_in_string(self):
         "Test search selection not in string"
-        Selection = Pool().get('test.multi_selection')
-        selection, = Selection.create([{
+        selection, = self.Selection.create([{
                     'selects': ['foo', 'bar'],
                     }])
 
-        foo = Selection.search([
+        foo = self.Selection.search([
                 ('selects', 'not in', 'foo'),
                 ])
-        baz = Selection.search([
+        baz = self.Selection.search([
                 ('selects', 'not in', 'baz'),
                 ])
 
@@ -271,21 +244,20 @@ class FieldMultiSelectionTestCase(TestCase):
     @with_transaction()
     def test_search_in_list(self):
         "Test search selection in list"
-        Selection = Pool().get('test.multi_selection')
-        selection, = Selection.create([{
+        selection, = self.Selection.create([{
                     'selects': ['foo', 'bar'],
                     }])
 
-        foo = Selection.search([
+        foo = self.Selection.search([
                 ('selects', 'in', ['foo']),
                 ])
-        baz = Selection.search([
+        baz = self.Selection.search([
                 ('selects', 'in', ['baz']),
                 ])
-        foo_baz = Selection.search([
+        foo_baz = self.Selection.search([
                 ('selects', 'in', ['foo', 'baz']),
                 ])
-        empty = Selection.search([
+        empty = self.Selection.search([
                 ('selects', 'in', []),
                 ])
 
@@ -297,21 +269,20 @@ class FieldMultiSelectionTestCase(TestCase):
     @with_transaction()
     def test_search_not_in_list(self):
         "Test search selection not in list"
-        Selection = Pool().get('test.multi_selection')
-        selection, = Selection.create([{
+        selection, = self.Selection.create([{
                     'selects': ['foo', 'bar'],
                     }])
 
-        foo = Selection.search([
+        foo = self.Selection.search([
                 ('selects', 'not in', ['foo']),
                 ])
-        baz = Selection.search([
+        baz = self.Selection.search([
                 ('selects', 'not in', ['baz']),
                 ])
-        foo_baz = Selection.search([
+        foo_baz = self.Selection.search([
                 ('selects', 'not in', ['foo', 'baz']),
                 ])
-        empty = Selection.search([
+        empty = self.Selection.search([
                 ('selects', 'not in', []),
                 ])
 
@@ -323,8 +294,7 @@ class FieldMultiSelectionTestCase(TestCase):
     @with_transaction()
     def test_read_string(self):
         "Test reading value and string"
-        Selection = Pool().get('test.multi_selection')
-        foo, foo_bar, null = Selection.create([{
+        foo, foo_bar, null = self.Selection.create([{
                     'selects': ['foo'],
                     }, {
                     'selects': ['foo', 'bar'],
@@ -332,7 +302,7 @@ class FieldMultiSelectionTestCase(TestCase):
                     'selects': [],
                     }])
 
-        foo_read, foo_bar_read, null_read = Selection.read(
+        foo_read, foo_bar_read, null_read = self.Selection.read(
             [foo.id, foo_bar.id, null.id], ['selects:string'])
 
         self.assertEqual(foo_read['selects:string'], ["Foo"])
@@ -342,8 +312,7 @@ class FieldMultiSelectionTestCase(TestCase):
     @with_transaction()
     def test_read_string_dynamic_selection(self):
         "Test reading value and string of a dynamic selection"
-        Selection = Pool().get('test.multi_selection')
-        foo, bar, null = Selection.create([{
+        foo, bar, null = self.Selection.create([{
                     'selects': ['foo'],
                     'dyn_selects': ['foo', 'foobar'],
                     }, {
@@ -352,7 +321,7 @@ class FieldMultiSelectionTestCase(TestCase):
                     'dyn_selects': [],
                     }])
 
-        foo_read, bar_read, null_read = Selection.read(
+        foo_read, bar_read, null_read = self.Selection.read(
             [foo.id, bar.id, null.id], ['dyn_selects:string'])
 
         self.assertEqual(foo_read['dyn_selects:string'], ["Foo", "FooBar"])
@@ -360,28 +329,13 @@ class FieldMultiSelectionTestCase(TestCase):
         self.assertEqual(null_read['dyn_selects:string'], [])
 
 
-@unittest.skipIf(
-    backend.name != 'postgresql', 'jsonb only supported by postgresql')
-class FieldMultiSelectionJSONBTestCase(FieldMultiSelectionTestCase):
+class FieldMultiSelectionTextTestCase(FieldMultiSelectionTestCase):
+    "Test Field MultiSelection with TEXT as SQL type"
 
-    @classmethod
-    def setUpClass(cls):
-        super().setUpClass()
-        cls.setup_model()
+    @property
+    def Selection(self):
+        return Pool().get('test.multi_selection_text')
 
-    @classmethod
-    @with_transaction()
-    def setup_model(cls):
-        connection = Transaction().connection
-        if backend.Database().get_version(connection) < (9, 2):
-            return
-        pool = Pool()
-        for model in ['test.multi_selection', 'test.multi_selection_required']:
-            Model = pool.get(model)
-            cursor = connection.cursor()
-            for name, field in Model._fields.items():
-                if field._type == 'multiselection':
-                    cursor.execute('ALTER TABLE "%s" '
-                        'ALTER COLUMN %s TYPE json USING %s::json' % (
-                            Model._table, name, name))
-        Transaction().commit()
+    @property
+    def SelectionRequired(self):
+        return Pool().get('test.multi_selection_required_text')
