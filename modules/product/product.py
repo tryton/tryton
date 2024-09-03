@@ -15,13 +15,14 @@ from sql.operators import Equal
 from trytond.i18n import gettext
 from trytond.model import (
     DeactivableMixin, Exclude, Index, Model, ModelSQL, ModelView, UnionMixin,
-    fields, sequence_ordered)
+    fields, sequence_ordered, tree)
 from trytond.modules.company.model import (
     CompanyMultiValueMixin, CompanyValueMixin)
 from trytond.pool import Pool
 from trytond.pyson import Eval, Get
 from trytond.tools import is_full_text, lstrip_wildcard
 from trytond.transaction import Transaction
+from trytond.wizard import Button, StateTransition, StateView, Wizard
 
 try:
     from trytond.tools import barcode
@@ -380,7 +381,7 @@ class ProductDeactivatableMixin(TemplateDeactivatableMixin):
 
 
 class Product(
-        TemplateDeactivatableMixin, ModelSQL, ModelView,
+        TemplateDeactivatableMixin, tree('replaced_by'), ModelSQL, ModelView,
         CompanyMultiValueMixin):
     "Product Variant"
     __name__ = "product.product"
@@ -425,6 +426,16 @@ class Product(
         digits=price_digits), 'get_price_uom')
     cost_price_uom = fields.Function(fields.Numeric('Cost Price',
         digits=price_digits), 'get_price_uom')
+    replaced_by = fields.Many2One(
+        'product.product', "Replaced By",
+        domain=[
+            ('type', '=', Eval('type')),
+            ('default_uom_category', '=', Eval('default_uom_category', -1)),
+            ],
+        states={
+            'invisible': ~Eval('replaced_by'),
+            },
+        help="The product replacing this one.")
 
     @classmethod
     def __setup__(cls):
@@ -611,6 +622,8 @@ class Product(
             ('identifiers.code', operator, code_value, *extra),
             ('template.name', operator, operand, *extra),
             ('template.code', operator, code_value, *extra),
+            ('replaced_by.code', operator, code_value, *extra),
+            ('replaced_by.identifiers.code', operator, code_value, *extra),
             ]
 
     @staticmethod
@@ -715,6 +728,31 @@ class Product(
             if code != product.code:
                 product.code = code
         cls.save(products)
+
+    def can_be_deactivated(self):
+        return True
+
+    @classmethod
+    def deactivate_replaced(cls, products=None):
+        if products is None:
+            products = cls.search([
+                    ('replaced_by', '!=', None),
+                    ('active', '=', True),
+                    ])
+        deactivated = []
+        for product in products:
+            if product.can_be_deactivated():
+                deactivated.append(product)
+        if deactivated:
+            cls.write(deactivated, {'active': False})
+        return deactivated
+
+    @property
+    def replacement(self):
+        replacement = self
+        while replacement.replaced_by and not replacement.active:
+            replacement = replacement.replaced_by
+        return replacement
 
 
 class ProductListPrice(ModelSQL, CompanyValueMixin):
@@ -873,3 +911,78 @@ class ProductIdentifier(sequence_ordered(), ModelSQL, ModelView):
         if barcode and type in barcode.BARCODES:
             generator = getattr(barcode, 'generate_%s' % format)
             return generator(type, self.on_change_with_code(), **options)
+
+
+class ProductReplace(Wizard):
+    "Replace Product"
+    __name__ = 'product.product.replace'
+    start_state = 'ask'
+    ask = StateView(
+        'product.product.replace.ask', 'product.product_replace_ask_view_form',
+        [Button("Cancel", 'end', 'tryton-cancel'),
+            Button("Replace", 'replace', 'tryton-launch', default=True),
+            ])
+    replace = StateTransition()
+
+    def transition_replace(self):
+        source = self.ask.source
+        destination = self.ask.destination
+
+        source.replaced_by = destination
+        if source.can_be_deactivated():
+            source.active = False
+        source.save()
+        return 'end'
+
+
+class ProductReplaceAsk(ModelView):
+    "Replace Product"
+    __name__ = 'product.product.replace.ask'
+    source = fields.Many2One(
+        'product.product', "Source", required=True,
+        domain=[
+            ('replaced_by', '=', None),
+            ],
+        help="The product to be replaced.")
+    destination = fields.Many2One(
+        'product.product', "Destination", required=True,
+        domain=[
+            ('id', '!=', Eval('source', -1)),
+            ('type', '=', Eval('source_type')),
+            ('default_uom_category',
+                '=', Eval('source_default_uom_category', -1)),
+            ],
+        help="The product that replaces.")
+
+    source_type = fields.Function(fields.Selection('get_types', "Source Type"),
+        'on_change_with_source_type')
+    source_default_uom_category = fields.Function(
+        fields.Many2One('product.uom.category', "Source Default UoM Category"),
+        'on_change_with_source_default_uom_category')
+
+    @classmethod
+    def default_source(cls):
+        context = Transaction().context
+        if context.get('active_model') == 'product.product':
+            return context.get('active_id')
+
+    @fields.depends('source')
+    def on_change_source(self):
+        if self.source and self.source.replaced_by:
+            self.destination = self.source.replaced_by
+
+    @classmethod
+    def get_types(cls):
+        pool = Pool()
+        Product = pool.get('product.product')
+        return Product.fields_get(['type'])['type']['selection']
+
+    @fields.depends('source')
+    def on_change_with_source_type(self):
+        if self.source:
+            return self.source.type
+
+    @fields.depends('source')
+    def on_change_with_source_default_uom_category(self):
+        if self.source:
+            return self.source.default_uom_category

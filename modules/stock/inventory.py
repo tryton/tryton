@@ -219,7 +219,8 @@ class Inventory(Workflow, ModelSQL, ModelView):
                 if move:
                     moves.append(move)
         if moves:
-            Move.save(moves)
+            with transaction.set_context(_product_replacement=False):
+                Move.save(moves)
             with transaction.set_context(_skip_warnings=True):
                 Move.do(moves)
 

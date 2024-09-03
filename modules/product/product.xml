@@ -209,6 +209,27 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">identifier_list_sequence</field>
         </record>
 
+        <record model="ir.action.wizard" id="wizard_product_replace">
+            <field name="name">Replace</field>
+            <field name="wiz_name">product.product.replace</field>
+            <field name="model">product.product</field>
+        </record>
+        <record model="ir.action-res.group" id="wizard_product_replace-group_product_admin">
+            <field name="action" ref="wizard_product_replace"/>
+            <field name="group" ref="group_product_admin"/>
+        </record>
+        <record model="ir.action.keyword" id="wizard_product_replace_keyword1">
+            <field name="keyword">form_action</field>
+            <field name="model">product.product,-1</field>
+            <field name="action" ref="wizard_product_replace"/>
+        </record>
+
+        <record model="ir.ui.view" id="product_replace_ask_view_form">
+            <field name="model">product.product.replace.ask</field>
+            <field name="type">form</field>
+            <field name="name">product_replace_ask_form</field>
+        </record>
+
         <record model="ir.sequence.type" id="sequence_type_product">
             <field name="name">Variant</field>
         </record>
@@ -236,5 +257,13 @@ this repository contains the full copyright notices and license terms. -->
             <field name="group" ref="group_product_admin"/>
         </record>
 
+    </data>
+
+    <data noupdate="1">
+        <record model="ir.cron" id="cron_product_deactivate_replaced">
+            <field name="method">product.product|deactivate_replaced</field>
+            <field name="interval_number" eval="1"/>
+            <field name="interval_type">days</field>
+        </record>
     </data>
 </tryton>

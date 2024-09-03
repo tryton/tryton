@@ -16,6 +16,7 @@ __all__ = [price_digits, round_price, uom_conversion_digits,
 def register():
     Pool.register(
         ir.Configuration,
+        ir.Cron,
         uom.UomCategory,
         uom.Uom,
         category.Category,
@@ -28,6 +29,10 @@ def register():
         product.ProductCostPrice,
         product.TemplateCategory,
         product.TemplateCategoryAll,
+        product.ProductReplaceAsk,
         configuration.Configuration,
         configuration.ConfigurationDefaultCostPriceMethod,
         module='product', type_='model')
+    Pool.register(
+        product.ProductReplace,
+        module='product', type_='wizard')

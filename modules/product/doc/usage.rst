@@ -72,3 +72,17 @@ belongs in the ``Clothes / Shirts / Short sleeves`` and
    [:menuselection:`Products --> Categories`] menu item.
    Then when you open one of the categories listed here you will get a list
    of all the products in that category.
+
+.. _Replacing a product:
+
+Replacing a product
+===================
+
+When a `Product <model-product.product>` is no more available but can be
+replaced by another equivalent product, you can run the `Replace
+<wizard-product.product.replace>` product wizard.
+Here, you will be able to enter the product to be replaced and the replacement
+product.
+Tryton will store the information and deactivate the replaced product if
+possible or the :guilabel:`Deactivate Replaced Products` `scheduled task
+<trytond:model-ir.cron>` will try to do it later.

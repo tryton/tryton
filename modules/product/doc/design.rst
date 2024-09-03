@@ -82,6 +82,18 @@ Some of the supported types of identifier include:
       .. |Products --> Products --> Variants| replace:: :menuselection:`Products --> Products --> Variants`
       __ https://demo.tryton.org/model/product.product
 
+Wizards
+-------
+
+.. _wizard-product.product.replace:
+
+Replace
+^^^^^^^
+
+This wizard is used to replace selected product with the product that should be
+used instead.
+The replaced product is then deactivated as soon as it is allowed.
+
 .. _model-product.category:
 
 Category

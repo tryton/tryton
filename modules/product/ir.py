@@ -22,3 +22,14 @@ class Configuration(metaclass=PoolMeta):
                 "The price_decimal %s in [product] configuration section "
                 "is different from the value %s in 'ir.configuration'." % (
                     price_decimal, self.product_price_decimal))
+
+
+class Cron(metaclass=PoolMeta):
+    __name__ = 'ir.cron'
+
+    @classmethod
+    def __setup__(cls):
+        super().__setup__()
+        cls.method.selection.append(
+            ('product.product|deactivate_replaced',
+                "Deactivate Replaced Products"))

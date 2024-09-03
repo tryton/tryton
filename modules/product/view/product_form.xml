@@ -8,6 +8,11 @@ this repository contains the full copyright notices and license terms. -->
             <field name="suffix_code"/>
         </group>
     </xpath>
+    <xpath expr="//field[@name='active']" position="after">
+        <label name="replaced_by"/>
+        <field name="replaced_by" colspan="3"/>
+        <newline/>
+    </xpath>
     <xpath expr="/form/notebook/page[@id='general']/label[@name='type']"
         position="before">
         <label name="template"/>

@@ -24,6 +24,12 @@ cost prices to be updated based on the stock moves.
 Each `Company <company:model-company.company>` has its own stock moves which
 are kept separate from other company's stock moves.
 
+.. note::
+
+   When creating a stock move for a `replaced product <product:Replacing a
+   product>` that is deactivated, the product of the stock move is changed
+   automatically by its replacement.
+
 .. seealso::
 
    The stock moves can be listed by opening the main menu item:

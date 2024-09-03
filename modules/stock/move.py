@@ -870,6 +870,15 @@ class Move(Workflow, ModelSQL, ModelView):
                     gettext('stock.msg_move_effective_date_in_the_future',
                         moves=names))
 
+        replaced = set()
+        for move in moves:
+            if (move.product.replaced_by
+                    and (move.from_location.type != 'storage'
+                        or move.to_location.type != 'storage')):
+                replaced.add(move.product)
+        if replaced:
+            Product.__queue__.deactivate_replaced(Product.browse(replaced))
+
     @property
     def _cost_price_pattern(self):
         return {
@@ -942,6 +951,7 @@ class Move(Workflow, ModelSQL, ModelView):
         pool = Pool()
         Product = pool.get('product.product')
         Uom = pool.get('product.uom')
+        context = Transaction().context
 
         vlist = [x.copy() for x in vlist]
         # Use ordered dict to optimize cache alignment
@@ -961,6 +971,8 @@ class Move(Workflow, ModelSQL, ModelView):
             internal_quantity = cls._get_internal_quantity(
                 vals['quantity'], unit, product)
             vals['internal_quantity'] = internal_quantity
+            if context.get('_product_replacement', True):
+                vals['product'] = product.replacement.id
         moves = super(Move, cls).create(vlist)
         cls.check_period_closed(moves)
         return moves

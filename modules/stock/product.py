@@ -268,6 +268,35 @@ class Product(StockMixin, object, metaclass=PoolMeta):
     def write(cls, *args):
         super(Product, cls).write(*args)
 
+    def can_be_deactivated(self):
+        pool = Pool()
+        Location = pool.get('stock.location')
+        Company = pool.get('company.company')
+        result = super().can_be_deactivated()
+        locations = Location.search([('type', '=', 'storage')])
+        location_ids = list(map(int, locations))
+        for company in Company.search([]):
+            with Transaction().set_context(
+                    company=company.id,
+                    locations=location_ids):
+                product = self.__class__(self.id)
+                if product.quantity:
+                    result = False
+        return result
+
+    @classmethod
+    def deactivate_replaced(cls, products=None):
+        pool = Pool()
+        Move = pool.get('stock.move')
+        deactivated = super().deactivate_replaced(products=products)
+        for sub_products in grouped_slice(deactivated):
+            moves = Move.search([
+                    ('product', 'in', list(map(int, sub_products))),
+                    ('state', 'in', ['staging', 'draft']),
+                    ])
+            Move.delete(moves)
+        return deactivated
+
     @classmethod
     def products_by_location(cls, location_ids,
             with_childs=False, grouping=('product',), grouping_filter=None):

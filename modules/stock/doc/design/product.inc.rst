@@ -8,6 +8,13 @@ These include a product's stock and forecast quantities, which show its
 current and predicted future stock situation, and the cost value of its
 stock.
 
+.. note::
+
+   When a `replaced product <product:Replacing a product>` is deactivated, the
+   remaining :guilabel:`Draft` and :guilabel:`Staging` `Stock Moves
+   <model-stock.move>` for the product are deleted to be recreated with the
+   replacement.
+
 .. seealso::
 
    The `Product <product:concept-product>` concept is introduced by the
