@@ -8,8 +8,8 @@ if base_url:
     modules_url = base_url + '/modules-{module}/'
     trytond_url = base_url + '/server/'
 else:
-    modules_url = 'https://docs.tryton.org/${series}/modules-{module}/'
-    trytond_url = 'https://docs.tryton.org/${series}/server/'
+    modules_url = 'https://docs.tryton.org/{series}/modules-{module}/'
+    trytond_url = 'https://docs.tryton.org/{series}/server/'
 
 
 def get_info():

@@ -9,9 +9,9 @@ if base_url:
     tryton_url = base_url + '/client-desktop/'
     proteus_url = base_url + '/client-library/'
 else:
-    modules_url = 'https://docs.tryton.org/${series}/modules-{module}/'
-    tryton_url = 'https://docs.tryton.org/${series}/client-desktop/'
-    proteus_url = 'https://docs.tryton.org/${series}/client-library/'
+    modules_url = 'https://docs.tryton.org/{series}/modules-{module}/'
+    tryton_url = 'https://docs.tryton.org/{series}/client-desktop/'
+    proteus_url = 'https://docs.tryton.org/{series}/client-library/'
 
 
 def get_info():
