@@ -194,7 +194,7 @@ class BudgetLine(BudgetLineMixin, ModelSQL, ModelView):
                 line,
                 condition=line.account == children.account)
             .select(
-                table.id, balance,
+                table.id, balance.as_('amount'),
                 where=red_sql & query_where,
                 group_by=table.id))
 
