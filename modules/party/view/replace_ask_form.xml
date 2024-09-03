@@ -4,6 +4,6 @@ this repository contains the full copyright notices and license terms. -->
 <form>
     <label name="source" string="Party"/>
     <field name="source"/>
-    <label name="destination" string="Replace By"/>
+    <label name="destination" string="Replaced By"/>
     <field name="destination"/>
 </form>
