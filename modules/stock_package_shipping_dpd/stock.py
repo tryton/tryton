@@ -4,6 +4,7 @@
 import locale
 from io import BytesIO
 from itertools import zip_longest
+from math import ceil
 
 from lxml import etree
 from pypdf import PdfReader, PdfWriter
@@ -257,12 +258,12 @@ class CreateDPDShipping(Wizard):
         if (package.length is not None
                 and package.width is not None
                 and package.height is not None):
-            length = UoM.compute_qty(
-                package.length_uom, package.length, cm)
-            width = UoM.compute_qty(
-                package.width_uom, package.width, cm)
-            height = UoM.compute_qty(
-                package.height_uom, package.height, cm)
+            length = ceil(UoM.compute_qty(
+                    package.length_uom, package.length, cm, round=False))
+            width = ceil(UoM.compute_qty(
+                    package.width_uom, package.width, cm, round=False))
+            height = ceil(UoM.compute_qty(
+                    package.height_uom, package.height, cm, round=False))
             if length < 1000 and width < 1000 and height < 1000:
                 parcel['volume'] = int(
                     '%03i%03i%03i' % (length, width, height))
