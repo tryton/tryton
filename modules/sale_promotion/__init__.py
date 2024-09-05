@@ -3,7 +3,7 @@
 
 from trytond.pool import Pool
 
-from . import sale
+from . import sale, sale_reporting
 
 
 def register():
@@ -13,4 +13,5 @@ def register():
         sale.Promotion_ProductCategory,
         sale.Sale,
         sale.Line,
+        sale_reporting.Promotion,
         module='sale_promotion', type_='model')

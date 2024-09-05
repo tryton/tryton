@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data>
+        <record model="ir.ui.view" id="sale_reporting_promotion_view_list">
+            <field name="model">sale.reporting.promotion</field>
+            <field name="type" eval="None"/>
+            <field name="inherit" ref="sale.reporting_main_view_list"/>
+            <field name="name">sale_reporting_promotion_list</field>
+        </record>
+
+        <record model="ir.action.act_window" id="act_sale_reporting_promotion">
+            <field name="name">Sales per Promotion</field>
+            <field name="res_model">sale.reporting.promotion</field>
+            <field name="context_model">sale.reporting.context</field>
+        </record>
+        <record model="ir.action.act_window.view" id="act_sale_reporting_promotion_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="sale_reporting_promotion_view_list"/>
+            <field name="act_window" ref="act_sale_reporting_promotion"/>
+        </record>
+        <record model="ir.action.keyword" id="act_sale_reporting_promotion_keyword1">
+            <field name="keyword">tree_open</field>
+            <field name="model" ref="sale.menu_reporting_sale"/>
+            <field name="action" ref="act_sale_reporting_promotion"/>
+        </record>
+
+        <record model="ir.rule.group" id="rule_group_reporting_promotion_companies">
+            <field name="name">User in companies</field>
+            <field name="model">sale.reporting.promotion</field>
+            <field name="global_p" eval="True"/>
+        </record>
+        <record model="ir.rule" id="rule_reporting_promotion_companies">
+            <field name="domain" eval="[('company', 'in', Eval('companies', []))]" pyson="1"/>
+            <field name="rule_group" ref="rule_group_reporting_promotion_companies"/>
+        </record>
+
+    </data>
+</tryton>
