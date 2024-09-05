@@ -7,6 +7,7 @@ import requests
 import ssl
 import urllib.parse
 from itertools import zip_longest
+from math import ceil
 
 from trytond.config import config
 from trytond.i18n import gettext
@@ -327,20 +328,28 @@ class CreateShippingUPS(Wizard):
                 'UnitOfMeasurement': {
                     'Code': 'CM' if use_metric else 'IN',
                     },
-                'Length': '%i' % round(UoM.compute_qty(package.length_uom,
-                        package.length, cm if use_metric else inch)),
-                'Width': '%i' % round(UoM.compute_qty(package.width_uom,
-                        package.width, cm if use_metric else inch)),
-                'Height': '%i' % round(UoM.compute_qty(package.height_uom,
-                        package.height, cm if use_metric else inch)),
+                'Length': '%i' % ceil(
+                    UoM.compute_qty(
+                        package.length_uom, package.length,
+                        cm if use_metric else inch, round=False)),
+                'Width': '%i' % ceil(
+                    UoM.compute_qty(
+                        package.width_uom, package.width,
+                        cm if use_metric else inch, round=False)),
+                'Height': '%i' % ceil(
+                    UoM.compute_qty(
+                        package.height_uom, package.height,
+                        cm if use_metric else inch, round=False)),
                 }
         if package.total_weight is not None:
             pkg['PackageWeight'] = {
                 'UnitOfMeasurement': {
                     'Code': 'KGS' if use_metric else 'LBS',
                     },
-                'Weight': str(UoM.compute_qty(kg, package.total_weight,
-                        kg if use_metric else lb)),
+                'Weight': '%i' % ceil(
+                    UoM.compute_qty(
+                        kg, package.total_weight,
+                        kg if use_metric else lb, round=False)),
                 }
         return pkg
 
