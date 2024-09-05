@@ -37,6 +37,11 @@ class AbstractMixin:
 
     @classmethod
     def _pos_sale_line_columns(cls, line, point, sale, currency):
+        try:
+            columns = super()._pos_sale_line_columns(
+                line, point, sale, currency)
+        except AttributeError:
+            columns = []
         return [
             line.product.as_('product'),
             line.quantity.as_('quantity'),
@@ -48,7 +53,7 @@ class AbstractMixin:
             Literal(None).as_('customer'),
             point.storage_location.as_('location'),
             point.address.as_('shipment_address'),
-            ]
+            ] + columns
 
     @classmethod
     def _lines(cls):
