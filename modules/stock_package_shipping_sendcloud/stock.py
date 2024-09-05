@@ -1,6 +1,7 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 from itertools import zip_longest
+from math import ceil
 
 from trytond.i18n import gettext
 from trytond.model import fields
@@ -172,11 +173,22 @@ class CreateShippingSendcloud(Wizard):
             'external_reference': '/'.join([shipment.number, package.number]),
             'quantity': 1,
             'order_number': shipment.number,
-            'weight': UoM.compute_qty(
-                package.weight_uom, package.total_weight, kg),
-            'length': UoM.compute_qty(package.length_uom, package.length, cm),
-            'width': UoM.compute_qty(package.width_uom, package.width, cm),
-            'height': UoM.compute_qty(package.height_uom, package.height, cm),
+            'weight': ceil(
+                UoM.compute_qty(
+                    package.weight_uom, package.total_weight, kg, round=False)
+                * 100) / 100,
+            'length': ceil(
+                UoM.compute_qty(
+                    package.length_uom, package.length, cm, round=False)
+                * 100) / 100,
+            'width': ceil(
+                UoM.compute_qty(
+                    package.width_uom, package.width, cm, round=False)
+                * 100) / 100,
+            'height': ceil(
+                UoM.compute_qty(
+                    package.height_uom, package.height, cm, round=False)
+                * 100) / 100,
             'request_label': True,
             }
         shipping_method = credential.get_shipping_method(shipment)
