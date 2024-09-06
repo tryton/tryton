@@ -142,6 +142,7 @@ class ShipmentMixin:
     def copy(cls, shipments, default=None):
         default = default.copy() if default is not None else {}
         default.setdefault('number')
+        default.setdefault('moves.origin', None)
         return super().copy(shipments, default=default)
 
 
