@@ -28,6 +28,12 @@ class ShipmentMixin:
             ('/tree', 'visual', If(Eval('state') == 'cancelled', 'muted', '')),
             ]
 
+    @classmethod
+    def copy(cls, shipments, default=None):
+        default = default.copy() if default is not None else {}
+        default.setdefault('moves.origin', None)
+        return super().copy(shipments, default=default)
+
 
 class ShipmentAssignMixin(ShipmentMixin):
     _assign_moves_field = None
