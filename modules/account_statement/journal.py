@@ -46,7 +46,7 @@ class Journal(DeactivableMixin, ModelSQL, ModelView):
         domain=[
             ('type', '!=', None),
             ('closed', '!=', True),
-            ('company', '=', Eval('company')),
+            ('company', '=', Eval('company', -1)),
             ('party_required', '=', False),
             ])
 

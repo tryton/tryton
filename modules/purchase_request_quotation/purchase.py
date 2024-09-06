@@ -117,7 +117,7 @@ class Quotation(Workflow, ModelSQL, ModelView):
         depends={'company'})
     supplier_address = fields.Many2One('party.address', 'Supplier Address',
         domain=[
-            ('party', '=', Eval('supplier')),
+            ('party', '=', Eval('supplier', -1)),
             ])
     lines = fields.One2Many('purchase.request.quotation.line', 'quotation',
         'Lines', states={

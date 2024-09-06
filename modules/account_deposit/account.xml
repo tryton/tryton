@@ -27,7 +27,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="res_model">account.move.line</field>
             <field
                 name="domain"
-                eval="[('account.type.deposit', '=', True), If(Eval('active_ids', []) == [Eval('active_id')], ('party', '=', Eval('active_id')), ('party', 'in', Eval('active_ids')))]"
+                eval="[('account.type.deposit', '=', True), ('party', 'in', Eval('active_ids', []))]"
                 pyson="1"/>
             <field name="search_value" eval="[('reconciliation', '=', None)]" pyson="1"/>
             <field name="order" eval="[('date', 'DESC')]" pyson="1"/>

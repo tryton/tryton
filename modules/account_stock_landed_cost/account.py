@@ -81,7 +81,7 @@ class LandedCost(Workflow, ModelSQL, ModelView, MatchMixin):
             'readonly': Eval('state') != 'draft',
             },
         domain=[
-            ('company', '=', Eval('company')),
+            ('company', '=', Eval('company', -1)),
             ('state', 'in', ['received', 'done']),
             ])
     invoice_lines = fields.One2Many('account.invoice.line', 'landed_cost',

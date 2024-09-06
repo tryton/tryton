@@ -801,7 +801,7 @@ class StatementLine(metaclass=PoolMeta):
         cls.related_to.domain['account.payment'] = [
             ('company', '=', Eval('company', -1)),
             If(Bool(Eval('party')),
-                ('party', '=', Eval('party')),
+                ('party', '=', Eval('party', -1)),
                 ()),
             ('state', 'in', ['processing', 'succeeded', 'failed']),
             If(Eval('second_currency'),

@@ -1898,14 +1898,14 @@ class WriteOff(DeactivableMixin, ModelSQL, ModelView):
         domain=[
             ('type', '!=', None),
             ('closed', '!=', True),
-            ('company', '=', Eval('company')),
+            ('company', '=', Eval('company', -1)),
             ])
     debit_account = fields.Many2One('account.account', "Debit Account",
         required=True,
         domain=[
             ('type', '!=', None),
             ('closed', '!=', True),
-            ('company', '=', Eval('company')),
+            ('company', '=', Eval('company', -1)),
             ])
 
     @classmethod
@@ -2064,7 +2064,7 @@ class ReconcileLinesWriteOff(ModelView):
     writeoff = fields.Many2One('account.move.reconcile.write_off', "Write Off",
         required=True,
         domain=[
-            ('company', '=', Eval('company')),
+            ('company', '=', Eval('company', -1)),
             ])
     date = fields.Date('Date', required=True)
     amount = Monetary(
@@ -2491,8 +2491,8 @@ class ReconcileShow(ModelView):
     currency = fields.Many2One('currency.currency', "Currency", readonly=True)
     lines = fields.Many2Many('account.move.line', None, None, 'Lines',
         domain=[
-            ('account', '=', Eval('account')),
-            ('party', '=', Eval('party')),
+            ('account', '=', Eval('account', -1)),
+            ('party', '=', Eval('party', -1)),
             ('reconciliation', '=', None),
             ['OR',
                 [

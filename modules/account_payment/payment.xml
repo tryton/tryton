@@ -350,7 +350,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">Payments</field>
             <field name="res_model">account.payment</field>
             <field name="domain"
-                eval="[If(Eval('active_ids', []) == [Eval('active_id')], ('party', '=', Eval('active_id')), ('party', 'in', Eval('active_ids')))]"
+                eval="[('party', 'in', Eval('active_ids', []))]"
                 pyson="1"/>
             <field name="search_value" eval="[('state', 'not in', ['succeeded', 'failed'])]" pyson="1"/>
         </record>
@@ -390,7 +390,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">Payments</field>
             <field name="res_model">account.payment</field>
             <field name="domain"
-                eval="[If(Eval('active_ids', []) == [Eval('active_id')], ('line', '=', Eval('active_id')), ('line', 'in', Eval('active_ids')))]"
+                eval="[('line', 'in', Eval('active_ids', []))]"
                 pyson="1"/>
         </record>
         <record model="ir.action.act_window.view"

@@ -125,7 +125,7 @@ class BEVATCustomerContext(ModelView):
     fiscalyear = fields.Many2One(
         'account.fiscalyear', "Fiscal Year", required=True,
         domain=[
-            ('company', '=', Eval('company')),
+            ('company', '=', Eval('company', -1)),
             ])
 
     @classmethod

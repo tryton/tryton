@@ -720,16 +720,16 @@ class ESVATBookContext(ModelView):
     fiscalyear = fields.Many2One('account.fiscalyear', "Fiscal Year",
         required=True,
         domain=[
-            ('company', '=', Eval('company')),
+            ('company', '=', Eval('company', -1)),
             ])
     start_period = fields.Many2One('account.period', "Start Period",
         domain=[
-            ('fiscalyear', '=', Eval('fiscalyear')),
+            ('fiscalyear', '=', Eval('fiscalyear', -1)),
             ('start_date', '<=', (Eval('end_period'), 'start_date')),
             ])
     end_period = fields.Many2One('account.period', "End Period",
         domain=[
-            ('fiscalyear', '=', Eval('fiscalyear')),
+            ('fiscalyear', '=', Eval('fiscalyear', -1)),
             ('start_date', '>=', (Eval('start_period'), 'start_date'))
             ])
     es_vat_book_type = fields.Selection([

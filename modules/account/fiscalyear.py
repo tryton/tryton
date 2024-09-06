@@ -34,7 +34,7 @@ class FiscalYear(Workflow, ModelSQL, ModelView):
     periods = fields.One2Many('account.period', 'fiscalyear', 'Periods',
         states=STATES,
         domain=[
-            ('company', '=', Eval('company')),
+            ('company', '=', Eval('company', -1)),
             ],
         order=[('start_date', 'ASC'), ('id', 'ASC')])
     state = fields.Selection([
@@ -47,7 +47,7 @@ class FiscalYear(Workflow, ModelSQL, ModelView):
         domain=[
             ('sequence_type', '=',
                 Id('account', 'sequence_type_account_move')),
-            ('company', '=', Eval('company')),
+            ('company', '=', Eval('company', -1)),
             ])
     company = fields.Many2One(
         'company.company', "Company", required=True)
@@ -426,7 +426,7 @@ class BalanceNonDeferralStart(ModelView):
         depends={'company'})
     period = fields.Many2One('account.period', 'Period', required=True,
         domain=[
-            ('fiscalyear', '=', Eval('fiscalyear')),
+            ('fiscalyear', '=', Eval('fiscalyear', -1)),
             ('type', '=', 'adjustment'),
             ])
     credit_account = fields.Many2One('account.account', 'Credit Account',
@@ -603,7 +603,7 @@ class RenewFiscalYearStart(ModelView):
     previous_fiscalyear = fields.Many2One(
         'account.fiscalyear', "Previous Fiscalyear", required=True,
         domain=[
-            ('company', '=', Eval('company')),
+            ('company', '=', Eval('company', -1)),
             ],
         help="Used as reference for fiscalyear configuration.")
     start_date = fields.Date("Start Date", required=True)

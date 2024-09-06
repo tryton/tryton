@@ -13,7 +13,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">Mandates</field>
             <field name="res_model">account.payment.sepa.mandate</field>
             <field name="domain"
-                eval="[If(Eval('active_ids', []) == [Eval('active_id')], ('party', '=', Eval('active_id')), ('party', 'in', Eval('active_ids')))]"
+                eval="[('party', 'in', Eval('active_ids', []))]"
                 pyson="1"/>
         </record>
         <record model="ir.action.act_window.view" id="act_mandate_form2_view1">

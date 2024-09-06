@@ -41,7 +41,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="res_model">web.user</field>
             <field
                 name="domain"
-                eval="['OR', ('party', 'in', Eval('active_ids')), ('secondary_parties', 'in', Eval('active_ids'))]"
+                eval="['OR', ('party', 'in', Eval('active_ids', [])), ('secondary_parties', 'in', Eval('active_ids', []))]"
                 pyson="1"/>
         </record>
         <record model="ir.action.act_window.view" id="act_user_form_party_view1">

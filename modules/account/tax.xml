@@ -292,7 +292,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">Taxes</field>
             <field name="res_model">account.tax</field>
             <field name="domain"
-                eval="[('company', '=', Eval('company')), ('parent', '=', None)]"
+                eval="[('company', '=', Eval('company', -1)), ('parent', '=', None)]"
                 pyson="1"/>
         </record>
         <record model="ir.action.act_window.view" id="act_tax_list_view1">
@@ -456,7 +456,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.action.act_window" id="act_tax_rule_form">
             <field name="name">Rules</field>
             <field name="res_model">account.tax.rule</field>
-            <field name="domain" eval="[('company', '=', Eval('company'))]"
+            <field name="domain" eval="[('company', '=', Eval('company', -1))]"
                 pyson="1"/>
         </record>
         <record model="ir.action.act_window.view" id="act_tax_rule_form_view1">

@@ -77,7 +77,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">Subscriptions</field>
             <field name="res_model">sale.subscription</field>
             <field name="domain"
-                eval="[If(Eval('active_ids', []) == [Eval('active_id')], ('party', '=', Eval('active_id')), ('party', 'in', Eval('active_ids', [])))]"
+                eval="[('party', 'in', Eval('active_ids', []))]"
                 pyson="1"/>
             <field name="search_value" eval="[('state', 'not in', ['closed', 'cancelled'])]" pyson="1"/>
         </record>

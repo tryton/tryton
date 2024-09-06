@@ -20,7 +20,7 @@ class SearchTestCaseMixin:
                     }])
 
         one2manys = One2Many.search([
-                ('targets', '=', "Target"),
+                ('targets.rec_name', '=', "Target"),
                 ])
 
         self.assertListEqual(one2manys, [one2many])
@@ -35,7 +35,7 @@ class SearchTestCaseMixin:
                     }])
 
         one2manys = One2Many.search([
-                ('targets', '=', "Target"),
+                ('targets.rec_name', '=', "Target"),
                 ])
 
         self.assertListEqual(one2manys, [one2many])
@@ -49,7 +49,7 @@ class SearchTestCaseMixin:
                     }])
 
         one2manys = One2Many.search([
-                ('targets', '!=', "Target"),
+                ('targets.rec_name', '!=', "Target"),
                 ])
 
         self.assertListEqual(one2manys, [])
@@ -96,7 +96,7 @@ class SearchTestCaseMixin:
                     }])
 
         one2manys = One2Many.search([
-                ('targets', '!=', "Target"),
+                ('targets.rec_name', '!=', "Target"),
                 ])
 
         self.assertListEqual(one2manys, [no_link])

@@ -475,8 +475,8 @@ class BlanketAgreementLine(ModelSQL, ModelView):
                     ('product', '=', Eval('product')),
                     ],
                 []),
-            ('party', '=', Eval('_parent_blanket_agreement', {}).get(
-                    'supplier')),
+            ('party', '=',
+                Eval('_parent_blanket_agreement', {}).get('supplier', -1)),
             ],
         states=_states)
     product_uom_category = fields.Function(

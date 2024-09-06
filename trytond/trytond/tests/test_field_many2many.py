@@ -34,7 +34,7 @@ class CommonTestCaseMixin:
                     }])
 
         many2manys = Many2Many.search([
-                ('targets', '=', "Target"),
+                ('targets.rec_name', '=', "Target"),
                 ])
 
         self.assertListEqual(many2manys, [many2many])
@@ -49,7 +49,7 @@ class CommonTestCaseMixin:
                     }])
 
         many2manys = Many2Many.search([
-                ('targets', '=', "Target"),
+                ('targets.rec_name', '=', "Target"),
                 ])
 
         self.assertListEqual(many2manys, [many2many])
@@ -63,7 +63,7 @@ class CommonTestCaseMixin:
                     }])
 
         many2manys = Many2Many.search([
-                ('targets', '!=', "Target"),
+                ('targets.rec_name', '!=', "Target"),
                 ])
 
         self.assertListEqual(many2manys, [])
@@ -110,7 +110,7 @@ class CommonTestCaseMixin:
                     }])
 
         many2manys = Many2Many.search([
-                ('targets', '!=', "Target"),
+                ('targets.rec_name', '!=', "Target"),
                 ])
 
         self.assertListEqual(many2manys, [no_link])

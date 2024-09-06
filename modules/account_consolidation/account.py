@@ -93,7 +93,7 @@ class Invoice(metaclass=PoolMeta):
     consolidation_company = fields.Many2One(
         'company.company', "Consolidation Company",
         domain=[
-            ('party', '=', Eval('party')),
+            ('party', '=', Eval('party', -1)),
             ],
         states={
             'readonly': Eval('state') != 'draft',

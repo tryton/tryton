@@ -116,12 +116,12 @@ class ECSalesListContext(ModelView):
     fiscalyear = fields.Many2One(
         'account.fiscalyear', "Fiscal Year", required=True,
         domain=[
-            ('company', '=', Eval('company')),
+            ('company', '=', Eval('company', -1)),
             ])
     period = fields.Many2One(
         'account.period', "Period",
         domain=[
-            ('fiscalyear', '=', Eval('fiscalyear')),
+            ('fiscalyear', '=', Eval('fiscalyear', -1)),
             ])
 
     @classmethod

@@ -26,7 +26,7 @@ class Request(metaclass=PoolMeta):
             },
         depends={'company'})
     delivery_address = fields.Many2One('party.address', 'Delivery Address',
-        domain=[('party', '=', Eval('customer'))],
+        domain=[('party', '=', Eval('customer', -1))],
         states={
             'invisible': ~Eval('customer'),
             'readonly': Eval('state') != 'draft',
@@ -72,7 +72,7 @@ class Purchase(metaclass=PoolMeta):
             },
         depends={'company'})
     delivery_address = fields.Many2One('party.address', 'Delivery Address',
-        domain=[('party', '=', Eval('customer'))],
+        domain=[('party', '=', Eval('customer', -1))],
         states={
             'readonly': Eval('state') != 'draft',
             'invisible': ~Eval('customer'),

@@ -140,7 +140,7 @@ class FieldOne2OneTestCase(TestCase):
                     }])
 
         one2ones = One2One.search([
-                ('one2one', '=', "Target"),
+                ('one2one.rec_name', '=', "Target"),
                 ])
 
         self.assertListEqual(one2ones, [one2one])
@@ -157,7 +157,7 @@ class FieldOne2OneTestCase(TestCase):
                     }])
 
         one2ones = One2One.search([
-                ('one2one', '!=', "Target"),
+                ('one2one.rec_name', '!=', "Target"),
                 ])
 
         self.assertListEqual(one2ones, [])

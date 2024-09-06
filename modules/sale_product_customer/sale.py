@@ -179,7 +179,7 @@ class BlanketAgreementLine(metaclass=PoolMeta):
                     ],
                 []),
             ('party', '=', Eval('_parent_blanket_agreement', {}).get(
-                    'customer')),
+                    'customer', -1)),
             ],
         states={
             'readonly': Eval('agreement_state') != 'draft'

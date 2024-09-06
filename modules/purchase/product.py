@@ -452,9 +452,9 @@ class ProductSupplier(
         if operator.endswith('like') and is_full_text(operand):
             code_value = lstrip_wildcard(operand)
         domain = [bool_op,
-            ('template', operator, operand, *extra),
-            ('product', operator, operand, *extra),
-            ('party', operator, operand, *extra),
+            ('template.rec_name', operator, operand, *extra),
+            ('product.rec_name', operator, operand, *extra),
+            ('party.rec_name', operator, operand, *extra),
             ('code', operator, code_value, *extra),
             ('name', operator, operand, *extra),
             ]

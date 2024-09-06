@@ -1873,13 +1873,13 @@
                             return;
                         }
                     }
+                    if (['many2one', 'one2many', 'many2many', 'one2one',
+                        'many2many', 'one2one'].includes(field.type)) {
+                        field_name += '.rec_name';
+                    }
                     if (value instanceof Array) {
                         value = value.map(
                             v => this.convert_value(field, v, this.context));
-                        if (~['many2one', 'one2many', 'many2many', 'one2one',
-                            'many2many', 'one2one'].indexOf(field.type)) {
-                            field_name += '.rec_name';
-                        }
                     } else {
                         value = this.convert_value(field, value, this.context);
                     }

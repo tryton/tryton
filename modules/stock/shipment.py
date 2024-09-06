@@ -337,7 +337,8 @@ class ShipmentIn(
     contact_address = fields.Many2One('party.address', 'Contact Address',
         states={
             'readonly': Eval('state') != 'draft',
-            }, domain=[('party', '=', Eval('supplier'))],
+            },
+        domain=[('party', '=', Eval('supplier', -1))],
         help="The address at which the supplier can be contacted.")
     warehouse = fields.Many2One('stock.location', "Warehouse",
         required=True, domain=[('type', '=', 'warehouse')],
@@ -397,7 +398,7 @@ class ShipmentIn(
                     ('to_location', 'child_of',
                         [Eval('warehouse_input', -1)], 'parent'),
                     ('to_location', '=', Eval('warehouse_input'))),
-                ('company', '=', Eval('company')),
+                ('company', '=', Eval('company', -1)),
                 ],
             states={
                 'readonly': (
@@ -418,7 +419,7 @@ class ShipmentIn(
                             Eval('warehouse')),
                         ],
                     [],),
-                ('company', '=', Eval('company')),
+                ('company', '=', Eval('company', -1)),
                 ],
             order=[
                 ('to_location', 'ASC'),
@@ -434,7 +435,7 @@ class ShipmentIn(
         'get_inventory_moves', setter='set_inventory_moves')
     moves = fields.One2Many(
         'stock.move', 'shipment', "Moves",
-        domain=[('company', '=', Eval('company'))],
+        domain=[('company', '=', Eval('company', -1))],
         states={
             'readonly': True,
             })
@@ -796,7 +797,7 @@ class ShipmentInReturn(ShipmentAssignMixin, Workflow, ModelSQL, ModelView):
             'readonly': Eval('state') != 'draft',
             },
         domain=['OR',
-            ('party', '=', Eval('supplier')),
+            ('party', '=', Eval('supplier', -1)),
             ('warehouses', 'where', [
                     ('id', '=', Eval('warehouse', -1)),
                     If(Eval('state') == 'draft',
@@ -835,7 +836,7 @@ class ShipmentInReturn(ShipmentAssignMixin, Workflow, ModelSQL, ModelView):
                             [Eval('to_location', -1)], 'parent'),
                         ],
                     [])),
-            ('company', '=', Eval('company')),
+            ('company', '=', Eval('company', -1)),
             ],
         order=[
             ('from_location', 'ASC'),
@@ -1160,7 +1161,7 @@ class ShipmentOut(
             'readonly': Eval('state') != 'draft',
             },
         domain=['OR',
-            ('party', '=', Eval('customer')),
+            ('party', '=', Eval('customer', -1)),
             ('warehouses', 'where', [
                     ('id', '=', Eval('warehouse', -1)),
                     If(Eval('state') == 'draft',
@@ -1210,7 +1211,7 @@ class ShipmentOut(
                 If(~Eval('state').in_(['done', 'cancelled']),
                     ('to_location', '=', Eval('customer_location')),
                     ()),
-                ('company', '=', Eval('company')),
+                ('company', '=', Eval('company', -1)),
                 ],
             order=[
                 ('product', 'ASC'),
@@ -1235,7 +1236,7 @@ class ShipmentOut(
                         [Eval('warehouse_storage', -1)], 'parent'),
                     ()),
                 ('to_location', '=', Eval('warehouse_output')),
-                ('company', '=', Eval('company')),
+                ('company', '=', Eval('company', -1)),
                 ],
             order=[
                 ('from_location', 'ASC'),
@@ -1253,7 +1254,7 @@ class ShipmentOut(
         'get_inventory_moves', setter='set_inventory_moves')
     moves = fields.One2Many(
         'stock.move', 'shipment', "Moves",
-        domain=[('company', '=', Eval('company'))],
+        domain=[('company', '=', Eval('company', -1))],
         states={
             'readonly': True,
             })
@@ -1882,7 +1883,8 @@ class ShipmentOutReturn(
         'party.address', "Contact Address",
         states={
             'readonly': Eval('state') != 'draft',
-            }, domain=[('party', '=', Eval('customer'))],
+            },
+        domain=[('party', '=', Eval('customer', -1))],
         help="The address the customer can be contacted at.")
     warehouse = fields.Many2One('stock.location', "Warehouse", required=True,
         states={
@@ -1925,7 +1927,7 @@ class ShipmentOutReturn(
                     ('to_location', 'child_of',
                         [Eval('warehouse_input', -1)], 'parent'),
                     ('to_location', '=', Eval('warehouse_input'))),
-                ('company', '=', Eval('company')),
+                ('company', '=', Eval('company', -1)),
                 ],
             order=[
                 ('product', 'ASC'),
@@ -1949,7 +1951,7 @@ class ShipmentOutReturn(
                             Eval('warehouse')),
                         ],
                     []),
-                ('company', '=', Eval('company')),
+                ('company', '=', Eval('company', -1)),
                 ],
             order=[
                 ('to_location', 'ASC'),
@@ -1965,7 +1967,7 @@ class ShipmentOutReturn(
         'get_inventory_moves', setter='set_inventory_moves')
     moves = fields.One2Many(
         'stock.move', 'shipment', "Moves",
-        domain=[('company', '=', Eval('company'))],
+        domain=[('company', '=', Eval('company', -1))],
         states={
             'readonly': True,
             })
@@ -2385,7 +2387,7 @@ class ShipmentInternal(
                                 ],
                             ]),
                     [])),
-            ('company', '=', Eval('company')),
+            ('company', '=', Eval('company', -1)),
             ],
         order=[
             ('from_location', 'ASC'),

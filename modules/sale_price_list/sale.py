@@ -9,7 +9,7 @@ class Sale(metaclass=PoolMeta):
     __name__ = 'sale.sale'
     price_list = fields.Many2One('product.price_list', 'Price List',
         help="Use to compute the unit price of lines.",
-        domain=[('company', '=', Eval('company'))],
+        domain=[('company', '=', Eval('company', -1))],
         states={
             'readonly': Or(Not(Equal(Eval('state'), 'draft')),
                 Bool(Eval('lines', [0]))),

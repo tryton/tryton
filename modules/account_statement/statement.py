@@ -764,7 +764,7 @@ class Line(origin_mixin(_states), sequence_ordered(), ModelSQL, ModelView):
                         ],
                     []),
                 If(Bool(Eval('account')),
-                    ('account', '=', Eval('account')),
+                    ('account', '=', Eval('account', -1)),
                     ()),
                 If(Eval('statement_state') == 'draft',
                     ('state', '=', 'posted'),

@@ -13,7 +13,7 @@ class Agent(metaclass=PoolMeta):
         domain=[
             ('type', '!=', None),
             ('closed', '!=', True),
-            ('company', '=', Eval('company')),
+            ('company', '=', Eval('company', -1)),
             ],
         help="The account the agent's waiting commission amounts are posted "
         "to.")

@@ -91,7 +91,7 @@ class InvoiceSequence(sequence_ordered(), ModelSQL, ModelView, MatchMixin):
             ])
     period = fields.Many2One('account.period', 'Period',
         domain=[
-            ('fiscalyear', '=', Eval('fiscalyear')),
+            ('fiscalyear', '=', Eval('fiscalyear', -1)),
             ('type', '=', 'standard'),
             ])
     in_invoice_sequence = fields.Many2One('ir.sequence.strict',
@@ -99,28 +99,28 @@ class InvoiceSequence(sequence_ordered(), ModelSQL, ModelView, MatchMixin):
         domain=[
             ('sequence_type', '=',
                 Id('account_invoice', 'sequence_type_account_invoice')),
-            ('company', '=', Eval('company')),
+            ('company', '=', Eval('company', -1)),
             ])
     in_credit_note_sequence = fields.Many2One('ir.sequence.strict',
         'Supplier Credit Note Sequence', required=True,
         domain=[
             ('sequence_type', '=',
                 Id('account_invoice', 'sequence_type_account_invoice')),
-            ('company', '=', Eval('company')),
+            ('company', '=', Eval('company', -1)),
             ])
     out_invoice_sequence = fields.Many2One('ir.sequence.strict',
         'Customer Invoice Sequence', required=True,
         domain=[
             ('sequence_type', '=',
                 Id('account_invoice', 'sequence_type_account_invoice')),
-            ('company', '=', Eval('company')),
+            ('company', '=', Eval('company', -1)),
             ])
     out_credit_note_sequence = fields.Many2One('ir.sequence.strict',
         'Customer Credit Note Sequence', required=True,
         domain=[
             ('sequence_type', '=',
                 Id('account_invoice', 'sequence_type_account_invoice')),
-            ('company', '=', Eval('company')),
+            ('company', '=', Eval('company', -1)),
             ])
 
     @classmethod
@@ -149,7 +149,7 @@ class MoveLine(metaclass=PoolMeta):
             domain=[
                 ('account', '=', Eval('account', -1)),
                 If(Bool(Eval('party')),
-                    ('party', '=', Eval('party')),
+                    ('party', '=', Eval('party', -1)),
                     (),
                     ),
                 ],

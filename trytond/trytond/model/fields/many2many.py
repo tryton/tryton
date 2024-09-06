@@ -1,5 +1,6 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
+import warnings
 from collections import defaultdict
 from itertools import chain
 
@@ -455,6 +456,10 @@ class Many2Many(Field):
                 return expression
             else:
                 if isinstance(value, str):
+                    if not operator.endswith('where'):
+                        warnings.warn(
+                            f"Missing target field "
+                            f"in operand of domain {domain}")
                     target_name = 'rec_name'
                 else:
                     target_name = 'id'

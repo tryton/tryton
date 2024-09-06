@@ -867,12 +867,13 @@ class DomainParser(object):
                                     (field_name, '<=', rvalue),
                                     ])
                             continue
+                    if field['type'] in {
+                            'many2one', 'one2many', 'many2many', 'one2one',
+                            }:
+                        field_name += '.rec_name'
                     if isinstance(value, list):
                         value = [convert_value(field, v, self.context)
                             for v in value]
-                        if field['type'] in ('many2one', 'one2many',
-                                'many2many', 'one2one'):
-                            field_name += '.rec_name'
                     else:
                         value = convert_value(field, value, self.context)
                     if 'like' in operator:

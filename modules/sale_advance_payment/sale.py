@@ -164,7 +164,7 @@ class AdvancePaymentCondition(ModelSQL, ModelView):
         'account.account', "Account", required=True,
         domain=[
             ('type.unearned_revenue', '=', True),
-            ('company', '=', Eval('sale_company')),
+            ('company', '=', Eval('sale_company', -1)),
             ],
         states=_states)
     block_supply = fields.Boolean("Block Supply", states=_states)

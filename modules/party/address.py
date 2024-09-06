@@ -62,7 +62,7 @@ class Address(
     identifiers = fields.One2Many(
         'party.identifier', 'address', "Identifiers",
         domain=[
-            ('party', '=', Eval('party')),
+            ('party', '=', Eval('party', -1)),
             ('type', 'in', ['fr_siret']),
             ])
     contact_mechanisms = fields.One2Many(

@@ -956,13 +956,25 @@ class DomainParserTestCase(TestCase):
                     },
                 'relation': {
                     'string': "Relation",
-                    'relation': 'relation',
                     'name': 'relation',
+                    'type': 'many2one',
                     'relation_fields': {
                         'name': {
                             'string': "Name",
                             'name': 'name',
                             'type': 'char',
+                            },
+                        'm2o': {
+                            'string': "M2O",
+                            'name': 'm2o',
+                            'type': 'many2one',
+                            'relation_fields': {
+                                'foo': {
+                                    'string': "Foo",
+                                    'name': 'foo',
+                                    'type': 'integer',
+                                    },
+                                },
                             },
                         },
                     },
@@ -1088,7 +1100,7 @@ class DomainParserTestCase(TestCase):
                 ])
         self.assertEqual(
             rlist(dom.parse_clause([('Many2One', None, 'John')])), [
-                ('many2one', 'ilike', '%John%'),
+                ('many2one.rec_name', 'ilike', '%John%'),
                 ])
         self.assertEqual(
             rlist(dom.parse_clause([('Many2One', None, ['John', 'Jane'])])), [
@@ -1098,8 +1110,17 @@ class DomainParserTestCase(TestCase):
             rlist(dom.parse_clause(iter([iter([['John']])]))), [
                 [('rec_name', 'ilike', '%John%')]])
         self.assertEqual(
+            rlist(dom.parse_clause(iter([['Relation', None, "Test"]]))),
+            [('relation.rec_name', 'ilike', "%Test%")])
+        self.assertEqual(
             rlist(dom.parse_clause(iter([['Relation.Name', None, "Test"]]))),
             [('relation.name', 'ilike', "%Test%")])
+        self.assertEqual(
+            rlist(dom.parse_clause(iter([['Relation.M2O', None, "Foo"]]))),
+            [('relation.m2o.rec_name', 'ilike', "%Foo%")])
+        self.assertEqual(
+            rlist(dom.parse_clause(iter([['Relation.M2O.Foo', None, '42']]))),
+            [('relation.m2o.foo', '=', 42)])
         self.assertEqual(
             rlist(dom.parse_clause(iter([['OR']]))),
             [('rec_name', 'ilike', "%OR%")])

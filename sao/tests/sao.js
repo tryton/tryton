@@ -1961,13 +1961,25 @@
             },
             'relation': {
                 'string': "Relation",
-                'relation': 'relation',
                 'name': 'relation',
+                'type': 'many2one',
                 'relation_fields': {
                     'name': {
                         'string': "Name",
                         'name': 'name',
                         'type': 'char',
+                    },
+                    'm2o': {
+                        'string': "M2O",
+                        'name': 'm2o',
+                        'type': 'many2one',
+                        'relation_fields': {
+                            'foo': {
+                                'string': "Foo",
+                                'name': 'foo',
+                                'type': 'integer',
+                            },
+                        },
                     },
                 },
             },
@@ -2029,12 +2041,19 @@
             ['OR', c(['name', 'ilike', '%John%']),
                 c(['name', 'ilike', '%Jane%'])
             ]],
-        [[c(['Many2One', null, 'John'])], [['many2one', 'ilike', '%John%']]],
+        [[c(['Many2One', null, 'John'])],
+            [['many2one.rec_name', 'ilike', '%John%']]],
         [[c(['Many2One', null, ['John', 'Jane']])],
             [['many2one.rec_name', 'in', ['John', 'Jane']]]],
         [[[c(['John'])]], [[['rec_name', 'ilike', '%John%']]]],
+        [[c(['Relation', null, 'John'])],
+            [['relation.rec_name', 'ilike', '%John%']]],
         [[c(['Relation.Name', null, "Test"])],
             [['relation.name', 'ilike', "%Test%"]]],
+        [[c(['Relation.M2O', null, "Foo"])],
+            [['relation.m2o.rec_name', 'ilike', "%Foo%"]]],
+        [[c(['Relation.M2O.Foo', null, "42"])],
+            [['relation.m2o.foo', '=', 42]]],
         [[c(['OR'])], [['rec_name', 'ilike', "%OR%"]]],
         [[c(['AND'])], [['rec_name', 'ilike', "%AND%"]]],
         ].forEach(function(test) {

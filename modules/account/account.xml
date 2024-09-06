@@ -685,7 +685,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="context_model">account.general_ledger.account.context</field>
             <field
                 name="domain"
-                eval="[If(Eval('active_ids', []) == [Eval('active_id')], ('account', '=', Eval('active_id')), ('account', 'in', Eval('active_ids')))]"
+                eval="[('account', 'in', Eval('active_ids', []))]"
                 pyson="1"/>
         </record>
         <record model="ir.action.act_window.view" id="act_general_ledger_account_party_form_view1">

@@ -38,7 +38,7 @@ class Line(ModelSQL, ModelView):
             'active_test': False,
             },
         domain=[
-            ('company', '=', Eval('company')),
+            ('company', '=', Eval('company', -1)),
             ['OR',
                 ('start_date', '=', None),
                 ('start_date', '<=', Eval('date', None)),
