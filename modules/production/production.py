@@ -670,6 +670,8 @@ class Production(ShipmentAssignMixin, Workflow, ModelSQL, ModelView):
         default.setdefault('assigned_by')
         default.setdefault('run_by')
         default.setdefault('done_by')
+        default.setdefault('inputs.origin', None)
+        default.setdefault('outputs.origin', None)
         return super(Production, cls).copy(productions, default=default)
 
     def _get_move_planned_date(self):
