@@ -67,6 +67,6 @@ class Line(metaclass=PoolMeta):
                         gettext('sale_shipment_tolerance.msg_over_shipment',
                             line=self.rec_name,
                             shipped=lang.format(
-                                '%.*f', (self.unit.digits, shipped_quantity)),
+                                '%f', shipped_quantity),
                             maximal=lang.format(
-                                '%.*f', (self.unit.digits, maximal_quantity))))
+                                '%f', maximal_quantity)))
