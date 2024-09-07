@@ -31,20 +31,19 @@ class InvoiceLine(metaclass=PoolMeta):
             PurchaseLine = pool.get('purchase.line')
         except KeyError:
             PurchaseLine = None
-        name = ''
-        if self.stock_moves:
-            name = ','.join({
-                    move.shipment.incoterm_name
-                    for move in self.stock_moves
-                    if (move.state != 'cancelled'
-                        and isinstance(move.shipment, IncotermMixin))})
-        elif (SaleLine
-                and isinstance(self.origin, SaleLine)
-                and isinstance(self.origin.sale, IncotermMixin)):
-
-            name = self.origin.sale.incoterm_name
-        elif (PurchaseLine
-                and isinstance(self.origin, PurchaseLine)
-                and isinstance(self.origin.purchase, IncotermMixin)):
-            name = self.origin.purchase.incoterm_name
-        return name
+        names = {
+            move.shipment.incoterm_name
+            for move in self.stock_moves
+            if (move.state != 'cancelled'
+                and isinstance(move.shipment, IncotermMixin)
+                and move.shipment.incoterm_name)}
+        if not names:
+            if (SaleLine
+                    and isinstance(self.origin, SaleLine)
+                    and isinstance(self.origin.sale, IncotermMixin)):
+                names.add(self.origin.sale.incoterm_name)
+            elif (PurchaseLine
+                    and isinstance(self.origin, PurchaseLine)
+                    and isinstance(self.origin.purchase, IncotermMixin)):
+                names.add(self.origin.purchase.incoterm_name)
+        return ', '.join(filter(None, names))
