@@ -1813,9 +1813,6 @@ class SaleLine(TaxableMixin, sequence_ordered(), ModelSQL, ModelView):
         'product', 'quantity', 'company', 'sale',
         '_parent_sale.sale_date', '_parent_sale.shipping_date')
     def planned_shipping_date(self):
-        pool = Pool()
-        Date = pool.get('ir.date')
-        transaction = Transaction()
         if self.product and self.quantity is not None and self.quantity > 0:
             date = self.sale.sale_date if self.sale else None
             shipping_date = self.product.compute_shipping_date(date=date)
@@ -1823,13 +1820,6 @@ class SaleLine(TaxableMixin, sequence_ordered(), ModelSQL, ModelView):
                 shipping_date = None
             elif self.sale and self.sale.shipping_date:
                 shipping_date = max(shipping_date, self.sale.shipping_date)
-            if shipping_date:
-                if self.company:
-                    company_id = self.company.id
-                else:
-                    company_id = transaction.context.get('company')
-                with transaction.set_context(company=company_id):
-                    shipping_date = max(shipping_date, Date.today())
             return shipping_date
 
     @fields.depends('sale', '_parent_sale.currency')
@@ -1988,6 +1978,7 @@ class SaleLine(TaxableMixin, sequence_ordered(), ModelSQL, ModelView):
         '''
         pool = Pool()
         Move = pool.get('stock.move')
+        Date = pool.get('ir.date')
 
         if self.type != 'line':
             return
@@ -2011,6 +2002,10 @@ class SaleLine(TaxableMixin, sequence_ordered(), ModelSQL, ModelView):
                 gettext('sale.msg_sale_customer_location_required',
                     sale=self.sale.rec_name,
                     party=self.sale.party.rec_name))
+
+        with Transaction().set_context(company=self.sale.company.id):
+            today = Date.today()
+
         move = Move()
         move.quantity = quantity
         move.unit = self.unit
@@ -2022,7 +2017,7 @@ class SaleLine(TaxableMixin, sequence_ordered(), ModelSQL, ModelView):
         if move.on_change_with_unit_price_required():
             move.unit_price = self.unit_price
             move.currency = self.sale.currency
-        move.planned_date = self.planned_shipping_date
+        move.planned_date = max(self.planned_shipping_date or today, today)
         move.invoice_lines = self._get_move_invoice_lines(shipment_type)
         move.origin = self
         move.origin_planned_date = move.planned_date
