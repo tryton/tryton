@@ -221,6 +221,16 @@ class Package(tree(), MeasurementsMixin, ModelSQL, ModelView):
     def __setup__(cls):
         cls.number.search_unaccented = False
         super().__setup__()
+        for field in [
+                cls.length, cls.length_uom,
+                cls.height, cls.height_uom,
+                cls.width, cls.width_uom,
+                cls.packaging_volume, cls.packaging_volume_uom,
+                cls.packaging_weight, cls.packaging_weight_uom,
+                ]:
+            field.states = {
+                'readonly': Eval('state') == 'closed',
+                }
 
     @classmethod
     def __register__(cls, module):
