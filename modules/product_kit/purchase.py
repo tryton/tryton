@@ -7,6 +7,7 @@ from trytond.i18n import gettext
 from trytond.model import ModelSQL, ModelView, fields
 from trytond.modules.product import round_price
 from trytond.pool import Pool, PoolMeta
+from trytond.transaction import Transaction
 
 from .common import (
     AmendmentLineMixin, get_moves, get_shipments_returns,
@@ -82,6 +83,7 @@ class LineComponent(
         from trytond.modules.purchase.exceptions import PartyLocationError
         pool = Pool()
         Move = pool.get('stock.move')
+        Date = pool.get('ir.date')
 
         if (self.quantity >= 0) != (move_type == 'in'):
             return
@@ -100,6 +102,9 @@ class LineComponent(
                     purchase=self.purchase.rec_name,
                     party=self.purchase.party.rec_name))
 
+        with Transaction().set_context(company=self.line.purchase.company.id):
+            today = Date.today()
+
         move = Move()
         move.quantity = quantity
         move.unit = self.unit
@@ -113,6 +118,8 @@ class LineComponent(
                 self.line.unit_price * self.price_ratio)
             move.currency = self.line.purchase.currency
         move.planned_date = self.line.planned_delivery_date
+        if move.planned_date and move.planned_date < today:
+            move.planned_date = None
         move.origin = self
         move.origin_planned_date = move.planned_date
         return move

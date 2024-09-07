@@ -1755,13 +1755,8 @@ class Line(sequence_ordered(), ModelSQL, ModelView):
         '_parent_purchase.company')
     def planned_delivery_date(self):
         pool = Pool()
-        Date = pool.get('ir.date')
         ProductSupplier = pool.get('purchase.product_supplier')
-        if self.purchase and self.purchase.company:
-            with Transaction().set_context(company=self.purchase.company.id):
-                today = Date.today()
-        else:
-            today = Date.today()
+
         product_supplier = self.product_supplier
         if not product_supplier and self.purchase and self.purchase.company:
             product_supplier = ProductSupplier(
@@ -1780,8 +1775,6 @@ class Line(sequence_ordered(), ModelSQL, ModelView):
             delivery_date = product_supplier.compute_supply_date(date=date)
             if delivery_date == datetime.date.max:
                 delivery_date = None
-        if delivery_date and delivery_date < today:
-            delivery_date = None
         return delivery_date
 
     @classmethod
@@ -1947,6 +1940,7 @@ class Line(sequence_ordered(), ModelSQL, ModelView):
         '''
         pool = Pool()
         Move = pool.get('stock.move')
+        Date = pool.get('ir.date')
 
         if self.type != 'line':
             return
@@ -1970,6 +1964,10 @@ class Line(sequence_ordered(), ModelSQL, ModelView):
                 gettext('purchase.msg_purchase_supplier_location_required',
                     purchase=self.purchase.rec_name,
                     party=self.purchase.party.rec_name))
+
+        with Transaction().set_context(company=self.purchase.company.id):
+            today = Date.today()
+
         move = Move()
         move.quantity = quantity
         move.unit = self.unit
@@ -1982,6 +1980,8 @@ class Line(sequence_ordered(), ModelSQL, ModelView):
             move.unit_price = self.unit_price
             move.currency = self.purchase.currency
         move.planned_date = self.planned_delivery_date
+        if move.planned_date and move.planned_date < today:
+            move.planned_date = None
         move.invoice_lines = self._get_move_invoice_lines(move_type)
         move.origin = self
         move.origin_planned_date = move.planned_date
