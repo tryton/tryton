@@ -229,7 +229,9 @@
                 }
             }
             record.modified_fields.id = true;
-            if ((record.id < 0) || force_remove) {
+            if ((record.id < 0) ||
+                (this.parent && this.parent.id < 0) ||
+                force_remove) {
                 this._remove(record);
             }
             if (modified) {

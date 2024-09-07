@@ -408,7 +408,9 @@ class Group(list):
                 if record not in self.record_deleted:
                     self.record_deleted.append(record)
         record.modified_fields.setdefault('id')
-        if record.id < 0 or force_remove:
+        if (record.id < 0
+                or (self.parent and self.parent.id < 0)
+                or force_remove):
             self._remove(record)
 
         if len(self):
