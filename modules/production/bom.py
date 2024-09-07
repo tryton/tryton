@@ -243,9 +243,10 @@ class BOMTree(ModelView):
 
         result = []
         if bom is None:
-            if not product.boms:
+            pbom = product.get_bom()
+            if pbom is None:
                 return result
-            bom = product.boms[0].bom
+            bom = pbom.bom
 
         factor = bom.compute_factor(product, quantity, unit)
         for input_ in bom.inputs:
@@ -342,8 +343,10 @@ class OpenBOMTree(Wizard):
         defaults['product'] = product.id
         if getattr(self.start, 'bom', None):
             defaults['bom'] = self.start.bom.id
-        elif product.boms:
-            defaults['bom'] = product.boms[0].id
+        else:
+            bom = product.get_bom()
+            if bom:
+                defaults['bom'] = bom.id
         defaults['quantity'] = getattr(self.start, 'quantity', None)
         return defaults
 

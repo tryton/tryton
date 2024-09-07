@@ -76,8 +76,15 @@ class Product(metaclass=PoolMeta):
         default.setdefault('production_lead_times', None)
         return super(Product, cls).copy(products, default=default)
 
+    def get_bom(self, pattern=None):
+        if pattern is None:
+            pattern = {}
+        for bom in self.boms:
+            if bom.match(pattern):
+                return bom
 
-class ProductBom(sequence_ordered(), ModelSQL, ModelView):
+
+class ProductBom(sequence_ordered(), MatchMixin, ModelSQL, ModelView):
     'Product - BOM'
     __name__ = 'product.product-production.bom'
 

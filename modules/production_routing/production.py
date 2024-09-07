@@ -36,9 +36,10 @@ class Production(metaclass=PoolMeta):
     @classmethod
     def compute_request(
             cls, product, warehouse, quantity, date, company,
-            order_point=None):
+            order_point=None, bom_pattern=None):
         production = super(Production, cls).compute_request(
             product, warehouse, quantity, date, company,
-            order_point=order_point)
-        production.routing = product.boms[0].routing if product.boms else None
+            order_point=order_point, bom_pattern=bom_pattern)
+        if bom := product.get_bom(bom_pattern):
+            production.routing = bom.routing
         return production

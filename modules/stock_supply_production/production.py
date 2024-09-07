@@ -151,7 +151,7 @@ class Production(metaclass=PoolMeta):
     @classmethod
     def compute_request(
             cls, product, warehouse, quantity, date, company,
-            order_point=None):
+            order_point=None, bom_pattern=None):
         """
         Return the value of the production request.
         """
@@ -169,13 +169,14 @@ class Production(metaclass=PoolMeta):
             origin = str(order_point)
         else:
             origin = 'stock.order_point,-1'
+        pbom = product.get_bom(bom_pattern)
         return cls(
             planned_date=date,
             company=company,
             warehouse=warehouse,
             location=warehouse.production_location,
             product=product,
-            bom=product.boms[0].bom if product.boms else None,
+            bom=pbom.bom if pbom else None,
             unit=unit,
             quantity=quantity,
             state='request',
