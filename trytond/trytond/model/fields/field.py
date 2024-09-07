@@ -1,7 +1,7 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 import warnings
-from functools import partial, wraps
+from functools import wraps
 
 import sql
 from sql import (operators, Column, Literal, Select, CombiningQuery, Null,
@@ -204,10 +204,10 @@ def with_inactive_records(func):
 SQL_OPERATORS = {
     '=': operators.Equal,
     '!=': operators.NotEqual,
-    'like': partial(operators.Like, escape='\\'),
-    'not like': partial(operators.NotLike, escape='\\'),
-    'ilike': partial(operators.ILike, escape='\\'),
-    'not ilike': partial(operators.NotILike, escape='\\'),
+    'like': operators.Like,
+    'not like': operators.NotLike,
+    'ilike': operators.ILike,
+    'not ilike': operators.NotILike,
     'in': operators.In,
     'not in': operators.NotIn,
     '<=': operators.LessEqual,
