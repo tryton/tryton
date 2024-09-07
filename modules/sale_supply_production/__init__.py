@@ -20,3 +20,7 @@ def register():
         module='sale_supply_production', type_='wizard')
     Pool.register(
         module='sale_supply_production', type_='report')
+    Pool.register(
+        sale.Line_Routing,
+        module='sale_supply_production', type_='model',
+        depends=['production_routing'])

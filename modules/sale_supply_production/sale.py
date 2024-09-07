@@ -112,3 +112,15 @@ class Line(metaclass=PoolMeta):
             state='request',
             origin=self,
             )
+
+
+class Line_Routing(metaclass=PoolMeta):
+    __name__ = 'sale.line'
+
+    def get_production(self, product_quantities, bom_pattern=None):
+        production = super().get_production(
+            product_quantities, bom_pattern=bom_pattern)
+        if production and production.product:
+            if pbom := production.product.get_bom(bom_pattern):
+                production.routing = pbom.routing
+        return production
