@@ -10,3 +10,9 @@ class InvoiceLine(metaclass=PoolMeta):
     cost_shipments = fields.One2Many(
         'stock.shipment.out', 'cost_invoice_line', "Cost of Shipments",
         readonly=True)
+
+    @classmethod
+    def copy(cls, lines, default=None):
+        default = default.copy() if default is not None else {}
+        default.setdefault('cost_shipments', None)
+        return super().copy(lines, default=default)
