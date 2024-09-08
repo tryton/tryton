@@ -1315,7 +1315,9 @@ class RPCProgress(object):
 
         def return_():
             if self.exception:
-                raise RPCException(self.exception)
+                if not isinstance(self.exception, RPCException):
+                    raise RPCException(self.exception)
+                raise self.exception
             else:
                 return self.res
 
