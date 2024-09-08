@@ -323,6 +323,12 @@ class Sale(metaclass=PoolMeta):
             invoice.update_taxes()
         return invoice
 
+    @classmethod
+    def copy(cls, sales, default=None):
+        default = default.copy() if default is not None else {}
+        default.setdefault('shipment_costs', None)
+        return super().copy(sales, default=default)
+
 
 class Line(metaclass=PoolMeta):
     __name__ = 'sale.line'
