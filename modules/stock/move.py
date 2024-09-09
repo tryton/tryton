@@ -607,7 +607,8 @@ class Move(Workflow, ModelSQL, ModelView):
 
     @property
     def origin_name(self):
-        return self.origin.rec_name if self.origin else None
+        if self.origin and self.origin.id >= 0:
+            return self.origin.rec_name
 
     @classmethod
     @without_check_access

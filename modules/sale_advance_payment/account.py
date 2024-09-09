@@ -86,7 +86,7 @@ class InvoiceLine(metaclass=PoolMeta):
         pool = Pool()
         Condition = pool.get('sale.advance_payment.condition')
         name = super().origin_name
-        if isinstance(self.origin, Condition):
+        if isinstance(self.origin, Condition) and self.origin.id >= 0:
             name = self.origin.sale.rec_name
         return name
 

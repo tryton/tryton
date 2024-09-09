@@ -145,7 +145,7 @@ class MoveSale(metaclass=PoolMeta):
         pool = Pool()
         SaleLineComponent = pool.get('sale.line.component')
         name = super().origin_name
-        if isinstance(self.origin, SaleLineComponent):
+        if isinstance(self.origin, SaleLineComponent) and self.origin.id >= 0:
             name = self.origin.line.sale.rec_name
         return name
 
@@ -227,7 +227,8 @@ class MovePurchase(metaclass=PoolMeta):
         pool = Pool()
         PurchaseLineComponent = pool.get('purchase.line.component')
         name = super().origin_name
-        if isinstance(self.origin, PurchaseLineComponent):
+        if (isinstance(self.origin, PurchaseLineComponent)
+                and self.origin.id >= 0):
             name = self.origin.line.purchase.rec_name
         return name
 

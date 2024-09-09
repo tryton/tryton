@@ -12,6 +12,7 @@ class InvoiceLine(metaclass=PoolMeta):
         Move = pool.get('stock.move')
         name = super(InvoiceLine, self).origin_name
         if (isinstance(self.origin, Move)
+                and self.origin.id >= 0
                 and self.origin.shipment):
             name = self.origin.shipment.rec_name
         return name

@@ -201,7 +201,7 @@ class Move(metaclass=PoolMeta):
         pool = Pool()
         SaleLine = pool.get('sale.line')
         name = super(Move, self).origin_name
-        if isinstance(self.origin, SaleLine):
+        if isinstance(self.origin, SaleLine) and self.origin.id >= 0:
             name = self.origin.sale.rec_name
         return name
 
