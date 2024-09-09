@@ -2071,7 +2071,7 @@ class InvoiceLine(sequence_ordered(), ModelSQL, ModelView, TaxableMixin):
 
     @property
     def origin_name(self):
-        if isinstance(self.origin, self.__class__):
+        if isinstance(self.origin, self.__class__) and self.origin.id >= 0:
             return self.origin.invoice.rec_name
         return self.origin.rec_name if self.origin else None
 

@@ -123,7 +123,7 @@ class InvoiceLine(metaclass=PoolMeta):
         pool = Pool()
         PurchaseLine = pool.get('purchase.line')
         name = super(InvoiceLine, self).origin_name
-        if isinstance(self.origin, PurchaseLine):
+        if isinstance(self.origin, PurchaseLine) and self.origin.id >= 0:
             name = self.origin.purchase.rec_name
         return name
 
