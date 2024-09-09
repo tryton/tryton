@@ -11,7 +11,7 @@ class InvoiceLine(metaclass=PoolMeta):
         pool = Pool()
         SubscriptionLine = pool.get('sale.subscription.line')
         name = super(InvoiceLine, self).origin_name
-        if isinstance(self.origin, SubscriptionLine):
+        if isinstance(self.origin, SubscriptionLine) and self.origin.id >= 0:
             name = self.origin.subscription.rec_name
         return name
 
