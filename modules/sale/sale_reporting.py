@@ -852,7 +852,8 @@ class RegionTree(ModelSQL, ModelView):
     "Sale Reporting per Region"
     __name__ = 'sale.reporting.region.tree'
 
-    name = fields.Function(fields.Char("Name"), 'get_name')
+    name = fields.Function(
+        fields.Char("Name"), 'get_name', searcher='search_name')
     parent = fields.Many2One('sale.reporting.region.tree', "Parent")
     subregions = fields.One2Many(
         'sale.reporting.region.tree', 'parent', "Subregions")
@@ -880,6 +881,12 @@ class RegionTree(ModelSQL, ModelView):
         Region = pool.get('country.region')
         regions = Region.browse(regions)
         return {r.id: r.name for r in regions}
+
+    @classmethod
+    def search_name(cls, name, domain):
+        pool = Pool()
+        Region = pool.get('country.region')
+        return [('id', 'in', Region.search(domain, query=True))]
 
     @classmethod
     def order_name(cls, tables):
