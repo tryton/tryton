@@ -377,18 +377,23 @@ class ModuleTestCase(_DBTestCase):
         for mname, model in Pool().iterobject():
             if not isregisteredby(model, self.module):
                 continue
+            rec_name = model._rec_name
             # Skip testing default value even if the field doesn't exist
             # as there is a fallback to id
-            if model._rec_name == 'name':
+            if rec_name == 'name' and 'name' not in model._fields:
                 continue
             with self.subTest(model=mname):
-                self.assertIn(model._rec_name, model._fields.keys(),
-                    msg='Wrong _rec_name "%s" for %s' % (
-                        model._rec_name, mname))
-                field = model._fields[model._rec_name]
+                self.assertIn(rec_name, model._fields.keys(),
+                    msg="Wrong _rec_name %r for %r" % (
+                        rec_name, mname))
+                field = model._fields[rec_name]
                 self.assertIn(field._type, {'char', 'text'},
-                    msg="Wrong '%s' type for _rec_name of %s'" % (
-                        field._type, mname))
+                    msg="Wrong %r type for _rec_name %r of %r'" % (
+                        field._type, rec_name, mname))
+                if hasattr(model, 'search'):
+                    self.assertTrue(field.searchable(model),
+                        msg="_rec_name %r of %r not searchable" % (
+                            rec_name, mname))
 
     @with_transaction()
     def test_model__access__(self):
