@@ -184,9 +184,11 @@ doctest helpers
 Tools
 -----
 
-.. function:: activate_modules(modules)
+.. function:: activate_modules(modules, \*setup)
 
    Activate a list of ``modules`` for scenario based on proteus doctests.
+   The following arguments are functions sequentially called at the end of the
+   activation with the proteus configuration as ``config`` keyword argument.
 
 .. function:: set_user(user, config)
 

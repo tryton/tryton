@@ -2,6 +2,7 @@
 # this repository contains the full copyright notices and license terms.
 
 import unittest
+from functools import partial
 
 from proteus import Model, Wizard
 from proteus import config as pconfig
@@ -11,10 +12,20 @@ from .test_tryton import backup_db_cache, drop_create, restore_db_cache
 __all__ = ['activate_modules', 'set_user']
 
 
-def activate_modules(modules):
+def _func_name(func):
+    if isinstance(func, partial):
+        return f'{func.func.__qualname__}(*{func.args}, **{func.keywords})'
+    else:
+        assert not hasattr(func, '__self__')
+        return func.__qualname__
+
+
+def activate_modules(modules, *setup):
     if isinstance(modules, str):
         modules = [modules]
-    cache_name = '-'.join(modules)
+    cache_name = '-'.join(sorted(modules))
+    if setup_name := '|'.join(_func_name(f) for f in setup):
+        cache_name += f'--{setup_name}'
     if restore_db_cache(cache_name):
         return _get_config()
     drop_create()
@@ -27,6 +38,9 @@ def activate_modules(modules):
     assert len(records) == len(modules)
     Module.click(records, 'activate')
     Wizard('ir.module.activate_upgrade').execute('upgrade')
+
+    for func in setup:
+        func(config=cfg)
 
     backup_db_cache(cache_name)
     return cfg
