@@ -227,7 +227,8 @@ class Control(DeactivableMixin, MatchMixin, ModelSQL, ModelView):
             for id_, operations in cursor:
                 update.execute(*table.update(
                         [table.operations],
-                        operations.replace(old, new)))
+                        operations.replace(old, new),
+                        where=table.id == id_))
 
     @classmethod
     def default_frequency(cls):
