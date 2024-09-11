@@ -207,6 +207,7 @@ class Control(DeactivableMixin, MatchMixin, ModelSQL, ModelView):
     def __register__(cls, module):
         table = cls.__table__()
         transaction = Transaction()
+        database = transaction.database
         cursor = transaction.connection.cursor()
         update = transaction.connection.cursor()
 
@@ -221,13 +222,21 @@ class Control(DeactivableMixin, MatchMixin, ModelSQL, ModelView):
                     'stock.shipment.internal:do'),
                 ('production:done', 'production:do'),
                 ]:
+            try:
+                where = database.json_key_exists(table.operations, old)
+            except NotImplementedError:
+                where = table.operations.like(f'%{old}%')
             cursor.execute(*table.select(
-                    table.id, table.operations,
-                    where=table.operations.like(f'%{old}%')))
+                    table.id, table.operations, where=where))
             for id_, operations in cursor:
+                if isinstance(operations, (list, tuple)):
+                    value = cls.operations.sql_format(
+                        [x.replace(old, new) for x in operations])
+                else:
+                    value = operations.replace(old, new)
                 update.execute(*table.update(
                         [table.operations],
-                        operations.replace(old, new),
+                        value,
                         where=table.id == id_))
 
     @classmethod
