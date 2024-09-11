@@ -17,6 +17,7 @@ import time
 import unittest
 import unittest.mock
 import warnings
+from collections import defaultdict
 from configparser import ConfigParser
 from fnmatch import fnmatchcase
 from functools import reduce, wraps
@@ -440,34 +441,72 @@ class ModuleTestCase(_DBTestCase):
                     view_id = view.id
                 model = view.model
                 Model = pool.get(model)
-                res = Model.fields_view_get(view_id)
-                self.assertEqual(res['model'], model)
-                tree = etree.fromstring(res['arch'])
+                view = Model.fields_view_get(view_id)
+                self.assertEqual(view['model'], model)
+                tree = etree.fromstring(view['arch'])
 
-                validator = etree.RelaxNG(etree=View.get_rng(res['type']))
+                validator = etree.RelaxNG(etree=View.get_rng(view['type']))
                 validator.assertValid(tree)
 
                 tree_root = tree.getroottree().getroot()
 
                 for element in tree_root.iter():
                     with self.subTest(element=element):
-                        if element.tag in {
+                        fields_to_check = set()
+                        rpc_to_check = set()
+                        target_fields_to_check = defaultdict(set)
+                        if element.tag == 'form':
+                            if on_write := element.get('on_write'):
+                                rpc_to_check.add(on_write)
+                            for attr in ['cursor']:
+                                if field := element.get(attr):
+                                    fields_to_check.add(field)
+                        elif element.tag == 'tree':
+                            if sequence := element.get('sequence'):
+                                fields_to_check.add(sequence)
+                            if on_write := element.get('on_write'):
+                                rpc_to_check.add(on_write)
+                        elif element.tag == 'calendar':
+                            for attr in ['dtstart', 'dtend']:
+                                if field := element.get(attr):
+                                    fields_to_check.add(field)
+                        elif element.tag in {
                                 'field', 'label', 'separator', 'group',
                                 'page'}:
                             attrs = ['name']
                             if element.tag == 'field':
                                 attrs += ['icon', 'symbol']
+                                if product := element.get('product'):
+                                    field_name = element.get('name')
+                                    target_fields_to_check[field_name].update(
+                                        product.split(','))
                             for attr in attrs:
-                                field = element.get(attr)
-                                if field:
-                                    self.assertIn(field, res['fields'].keys(),
-                                        msg='Missing field: %s in %s' % (
-                                            field, Model.__name__))
-                        if element.tag == 'button':
+                                if field := element.get(attr):
+                                    fields_to_check.add(field)
+                        elif element.tag == 'button':
                             button_name = element.get('name')
                             self.assertIn(button_name, Model._buttons.keys(),
-                                msg="Button '%s' is not in %s._buttons"
-                                % (button_name, Model.__name__))
+                                msg="Missing button %r in %r" % (
+                                    button_name, Model.__name__))
+
+                        for field in fields_to_check:
+                            self.assertIn(field, view['fields'].keys(),
+                                msg="Missing field %r in %r" % (
+                                    field, Model.__name__))
+                        for field, t_fields in target_fields_to_check.items():
+                            for t_view in view['fields'][field].get(
+                                    'views', {}).values():
+                                for t_field in t_fields:
+                                    self.assertIn(
+                                        t_field, t_view['fields'].keys(),
+                                        msg=("Missing field %r "
+                                            "in view of %r of %r"
+                                            % (t_field, field,
+                                                Model.__name__)))
+                        for rpc in rpc_to_check:
+                            self.assertIn(rpc, Model.__rpc__.keys(),
+                                msg="Missing RPC %r in %r" % (
+                                    rpc, Model.__name__))
         self.assertFalse(view_files, msg="unused view files")
 
     @with_transaction()
