@@ -7,17 +7,13 @@ Imports::
     >>> from decimal import Decimal
 
     >>> from proteus import Model
-    >>> from trytond.modules.company.tests.tools import create_company, get_company
+    >>> from trytond.modules.company.tests.tools import create_company
+    >>> from trytond.modules.currency.tests.tools import get_currency
     >>> from trytond.tests.tools import activate_modules
 
 Activate modules::
 
-    >>> config = activate_modules('sale_promotion')
-
-Create company::
-
-    >>> _ = create_company()
-    >>> company = get_company()
+    >>> config = activate_modules('sale_promotion', create_company)
 
 Create customer::
 
@@ -51,7 +47,7 @@ Create Promotion::
     >>> Promotion = Model.get('sale.promotion')
     >>> promotion = Promotion(name='product 2 free')
     >>> promotion.amount = Decimal('100')
-    >>> promotion.currency = company.currency
+    >>> promotion.currency = get_currency()
     >>> promotion.products.extend([product2])
     >>> promotion.formula = '0.0'
     >>> promotion.save()

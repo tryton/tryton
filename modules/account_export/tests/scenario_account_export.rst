@@ -14,16 +14,12 @@ Imports::
 
 Activate modules::
 
-    >>> config = activate_modules('account_export')
+    >>> config = activate_modules('account_export', create_company, create_chart)
 
     >>> Journal = Model.get('account.journal')
     >>> Move = Model.get('account.move')
     >>> MoveExport = Model.get('account.move.export')
     >>> Party = Model.get('party.party')
-
-Create company::
-
-    >>> _ = create_company()
 
 Create fiscal year::
 
@@ -31,9 +27,8 @@ Create fiscal year::
     >>> fiscalyear.click('create_period')
     >>> period = fiscalyear.periods[0]
 
-Create chart of accounts::
+Get accounts::
 
-    >>> _ = create_chart()
     >>> accounts = get_accounts()
 
 Create party::

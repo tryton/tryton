@@ -19,23 +19,22 @@ Imports::
 
 Activate modules::
 
-    >>> config = activate_modules('account_statement_rule')
+    >>> config = activate_modules(
+    ...     'account_statement_rule', create_company, create_chart)
 
-Create company::
+Get company::
 
-    >>> _ = create_company()
     >>> company = get_company()
 
 Create fiscal year::
 
     >>> fiscalyear = set_fiscalyear_invoice_sequences(
-    ...     create_fiscalyear(company, today))
+    ...     create_fiscalyear(today=today))
     >>> fiscalyear.click('create_period')
 
-Create chart of accounts::
+Get accounts::
 
-    >>> _ = create_chart(company)
-    >>> accounts = get_accounts(company)
+    >>> accounts = get_accounts()
     >>> receivable = accounts['receivable']
     >>> cash = accounts['cash']
 

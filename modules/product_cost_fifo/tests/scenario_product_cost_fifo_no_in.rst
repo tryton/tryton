@@ -15,11 +15,10 @@ Imports::
 
 Activate modules::
 
-    >>> config = activate_modules('product_cost_fifo')
+    >>> config = activate_modules('product_cost_fifo', create_company)
 
-Create company::
+Get company::
 
-    >>> _ = create_company()
     >>> company = get_company()
 
 Create product::

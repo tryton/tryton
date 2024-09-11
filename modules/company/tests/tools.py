@@ -21,6 +21,8 @@ def create_company(party=None, currency=None, config=None):
     company.party = party
     if not currency:
         currency = get_currency(config=config)
+    elif isinstance(currency, str):
+        currency = get_currency(currency, config=config)
     company.currency = currency
     company_config.execute('add')
 

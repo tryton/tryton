@@ -9,7 +9,7 @@ Imports::
 
     >>> from proteus import Model, Wizard
     >>> from trytond.modules.account.tests.tools import create_chart, get_accounts
-    >>> from trytond.modules.company.tests.tools import create_company, get_company
+    >>> from trytond.modules.company.tests.tools import create_company
     >>> from trytond.tests.tools import activate_modules, assertEqual
 
     >>> today = dt.date.today()
@@ -18,17 +18,12 @@ Imports::
 
 Activate modules::
 
-    >>> config = activate_modules('stock_supply_forecast')
+    >>> config = activate_modules(
+    ...     'stock_supply_forecast', create_company, create_chart)
 
-Create company::
+Get accounts::
 
-    >>> _ = create_company()
-    >>> company = get_company()
-
-Create chart of accounts::
-
-    >>> _ = create_chart(company)
-    >>> accounts = get_accounts(company)
+    >>> accounts = get_accounts()
     >>> expense = accounts['expense']
 
 Create parties::

@@ -20,26 +20,24 @@ Imports::
 
 Activate modules::
 
-    >>> config = activate_modules('commission')
+    >>> config = activate_modules('commission', create_company, create_chart)
 
     >>> ReportingAgent = Model.get('commission.reporting.agent')
     >>> ReportingAgentTimeseries = Model.get('commission.reporting.agent.time_series')
 
-Create company::
+Get company::
 
-    >>> _ = create_company()
     >>> company = get_company()
 
 Create fiscal year::
 
     >>> fiscalyear = set_fiscalyear_invoice_sequences(
-    ...     create_fiscalyear(company, (today, tomorrow)))
+    ...     create_fiscalyear(today=(today, tomorrow)))
     >>> fiscalyear.click('create_period')
 
-Create chart of accounts::
+Get accounts::
 
-    >>> _ = create_chart(company)
-    >>> accounts = get_accounts(company)
+    >>> accounts = get_accounts()
 
 Create customer::
 

@@ -8,24 +8,19 @@ Imports::
     >>> from decimal import Decimal
 
     >>> from proteus import Model
-    >>> from trytond.modules.company.tests.tools import create_company, get_company
+    >>> from trytond.modules.company.tests.tools import create_company
     >>> from trytond.tests.tools import activate_modules, assertEqual, set_user
 
     >>> today = dt.date.today()
 
 Activate modules::
 
-    >>> config = activate_modules('production_work')
+    >>> config = activate_modules('production_work', create_company)
 
     >>> Employee = Model.get('company.employee')
     >>> Group = Model.get('res.group')
     >>> Party = Model.get('party.party')
     >>> User = Model.get('res.user')
-
-Create company::
-
-    >>> _ = create_company()
-    >>> company = get_company()
 
 Create product::
 

@@ -10,11 +10,7 @@ Imports::
 
 Activate project::
 
-    >>> config = activate_modules('project')
-
-Create a company::
-
-    >>> _ = create_company()
+    >>> config = activate_modules('project', create_company)
 
 Create status::
 

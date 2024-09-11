@@ -8,7 +8,8 @@ Imports::
     >>> from decimal import Decimal
 
     >>> from proteus import Model, Wizard
-    >>> from trytond.modules.company.tests.tools import create_company, get_company
+    >>> from trytond.modules.company.tests.tools import create_company
+    >>> from trytond.modules.currency.tests.tools import get_currency
     >>> from trytond.tests.tools import activate_modules, assertEqual
 
     >>> today = dt.date.today()
@@ -18,7 +19,7 @@ Imports::
 
 Activate modules::
 
-    >>> config = activate_modules('stock_quantity_early_planning')
+    >>> config = activate_modules('stock_quantity_early_planning', create_company)
 
     >>> Company = Model.get('company.company')
     >>> Location = Model.get('stock.location')
@@ -31,10 +32,9 @@ Activate modules::
     >>> ShipmentOut = Model.get('stock.shipment.out')
     >>> ShipmentInternal = Model.get('stock.shipment.internal')
 
-Create company::
+Get currency::
 
-    >>> _ = create_company()
-    >>> company = get_company()
+    >>> currency = get_currency()
 
 Create parties::
 
@@ -73,7 +73,7 @@ Plan receiving some products in 1 week in second warehouse::
     ...     move.from_location = supplier_loc
     ...     move.to_location = warehouse2.input_location
     ...     move.unit_price = product.cost_price
-    ...     move.currency = company.currency
+    ...     move.currency = currency
     ...     move.planned_date = date
     ...     move.save()
 
@@ -119,7 +119,7 @@ Plan to ship in 3 weeks::
     >>> move.from_location = warehouse.output_location
     >>> move.to_location = customer_loc
     >>> move.unit_price = product.list_price
-    >>> move.currency = company.currency
+    >>> move.currency = currency
     >>> shipment_out.save()
     >>> shipment_out.click('wait')
 

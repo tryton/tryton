@@ -12,12 +12,13 @@ Imports::
     >>> from trytond.modules.account_invoice.tests.tools import (
     ...     set_fiscalyear_invoice_sequences)
     >>> from trytond.modules.account_invoice_watermark.tests.tools import pdf_contains
-    >>> from trytond.modules.company.tests.tools import create_company, get_company
+    >>> from trytond.modules.company.tests.tools import create_company
     >>> from trytond.tests.tools import activate_modules
 
 Activate modules::
 
-    >>> config = activate_modules('account_invoice_watermark')
+    >>> config = activate_modules(
+    ...     'account_invoice_watermark', create_company, create_chart)
 
     >>> ActionReport = Model.get('ir.action.report')
     >>> Invoice = Model.get('account.invoice')
@@ -33,21 +34,15 @@ Convert invoice report to PDF::
     >>> invoice_report.extension = 'pdf'
     >>> invoice_report.save()
 
-Create company::
-
-    >>> _ = create_company()
-    >>> company = get_company()
-
 Create fiscal year::
 
     >>> fiscalyear = set_fiscalyear_invoice_sequences(
-    ...     create_fiscalyear(company))
+    ...     create_fiscalyear())
     >>> fiscalyear.click('create_period')
 
-Create chart of accounts::
+Get accounts::
 
-    >>> _ = create_chart(company)
-    >>> accounts = get_accounts(company)
+    >>> accounts = get_accounts()
 
 Create payment method::
 

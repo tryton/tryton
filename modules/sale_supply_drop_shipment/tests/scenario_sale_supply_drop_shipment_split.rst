@@ -16,7 +16,8 @@ Activate modules::
     >>> config = activate_modules([
     ...         'sale_supply_drop_shipment',
     ...         'stock_split',
-    ...         ])
+    ...         ],
+    ...     create_company, create_chart)
 
     >>> Move = Model.get('stock.move')
     >>> Party = Model.get('party.party')
@@ -29,13 +30,8 @@ Activate modules::
     >>> Sale = Model.get('sale.sale')
     >>> Shipment = Model.get('stock.shipment.drop')
 
-Create company::
+Get accounts::
 
-    >>> _ = create_company()
-
-Create chart of account::
-
-    >>> _ = create_chart()
     >>> accounts = get_accounts()
 
 Create parties::

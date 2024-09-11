@@ -8,7 +8,7 @@ Imports::
     >>> from decimal import Decimal
 
     >>> from proteus import Model, Report
-    >>> from trytond.modules.company.tests.tools import create_company, get_company
+    >>> from trytond.modules.company.tests.tools import create_company
     >>> from trytond.tests.tools import (
     ...     activate_modules, assertEqual, assertNotEqual, set_user)
 
@@ -18,12 +18,7 @@ Imports::
 
 Activate modules::
 
-    >>> config = activate_modules('stock')
-
-Create company::
-
-    >>> _ = create_company()
-    >>> company = get_company()
+    >>> config = activate_modules('stock', create_company)
 
 Create product::
 
@@ -103,7 +98,6 @@ Create Internal Shipment from lost_found location::
 
     >>> lost_found_shipment = Shipment()
     >>> lost_found_shipment.planned_date = today
-    >>> lost_found_shipment.company = company
     >>> lost_found_shipment.from_location = lost_found_loc
     >>> lost_found_shipment.to_location = internal_loc
     >>> move = StockMove()

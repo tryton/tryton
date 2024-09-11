@@ -8,17 +8,12 @@ Imports::
     >>> from decimal import Decimal
 
     >>> from proteus import Model
-    >>> from trytond.modules.company.tests.tools import create_company, get_company
+    >>> from trytond.modules.company.tests.tools import create_company
     >>> from trytond.tests.tools import activate_modules
 
 Activate modules::
 
-    >>> config = activate_modules('project_revenue')
-
-Create company::
-
-    >>> _ = create_company()
-    >>> company = get_company()
+    >>> config = activate_modules('project_revenue', create_company)
 
 Create customer::
 
@@ -33,7 +28,6 @@ Create employee::
     >>> party = Party(name='Employee')
     >>> party.save()
     >>> employee.party = party
-    >>> employee.company = company
     >>> _ = employee.cost_prices.new(cost_price=Decimal('10.00'))
     >>> employee.save()
     >>> employee.cost_price

@@ -21,7 +21,8 @@ Imports::
 Activate modules::
 
     >>> config = activate_modules(
-    ...     ['account_export_winbooks', 'account_statement'])
+    ...     ['account_export_winbooks', 'account_statement'],
+    ...     create_company, create_chart)
     >>> config.skip_warning = True
 
     >>> Invoice = Model.get('account.invoice')
@@ -31,13 +32,8 @@ Activate modules::
     >>> Statement = Model.get('account.statement')
     >>> StatementJournal = Model.get('account.statement.journal')
 
-Create company::
+Get accounts::
 
-    >>> _ = create_company()
-
-Create chart of accounts::
-
-    >>> _ = create_chart()
     >>> accounts = get_accounts()
 
     >>> accounts['payable'].winbooks_code = '440000'

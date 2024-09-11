@@ -7,17 +7,12 @@ Imports::
     >>> from decimal import Decimal
 
     >>> from proteus import Model, Wizard
-    >>> from trytond.modules.company.tests.tools import create_company, get_company
+    >>> from trytond.modules.company.tests.tools import create_company
     >>> from trytond.tests.tools import activate_modules, set_user
 
 Activate modules::
 
-    >>> config = activate_modules('stock_supply')
-
-Create company::
-
-    >>> _ = create_company()
-    >>> company = get_company()
+    >>> config = activate_modules('stock_supply', create_company)
 
 Create stock admin user::
 

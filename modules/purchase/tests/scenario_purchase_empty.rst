@@ -6,21 +6,12 @@ Imports::
 
     >>> from proteus import Model
     >>> from trytond.modules.account.tests.tools import create_chart
-    >>> from trytond.modules.company.tests.tools import create_company, get_company
+    >>> from trytond.modules.company.tests.tools import create_company
     >>> from trytond.tests.tools import activate_modules
 
 Activate modules::
 
-    >>> config = activate_modules('purchase')
-
-Create company::
-
-    >>> _ = create_company()
-    >>> company = get_company()
-
-Create chart of accounts::
-
-    >>> _ = create_chart(company)
+    >>> config = activate_modules('purchase', create_company, create_chart)
 
 Create parties::
 

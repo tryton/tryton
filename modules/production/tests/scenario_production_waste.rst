@@ -7,17 +7,12 @@ Imports::
     >>> from decimal import Decimal
 
     >>> from proteus import Model
-    >>> from trytond.modules.company.tests.tools import create_company, get_company
+    >>> from trytond.modules.company.tests.tools import create_company
     >>> from trytond.tests.tools import activate_modules
 
 Activate modules::
 
-    >>> config = activate_modules('production')
-
-Create company::
-
-    >>> _ = create_company()
-    >>> company = get_company()
+    >>> config = activate_modules('production', create_company)
 
 Create main product::
 
@@ -75,7 +70,7 @@ Create outputs including waste products::
     >>> output.from_location = production.location
     >>> output.to_location = warehouse_loc.storage_location
     >>> output.unit_price = Decimal('0')
-    >>> output.currency = company.currency
+    >>> output.currency = production.company.currency
     >>> waste_output = production.outputs.new()
     >>> waste_output.quantity = 1.0
     >>> waste_output.product = product

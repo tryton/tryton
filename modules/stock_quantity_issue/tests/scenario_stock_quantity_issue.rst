@@ -8,7 +8,8 @@ Imports::
     >>> from decimal import Decimal
 
     >>> from proteus import Model
-    >>> from trytond.modules.company.tests.tools import create_company, get_company
+    >>> from trytond.modules.company.tests.tools import create_company
+    >>> from trytond.modules.currency.tests.tools import get_currency
     >>> from trytond.tests.tools import activate_modules, assertEqual
 
     >>> today = dt.date.today()
@@ -18,9 +19,8 @@ Imports::
 
 Activate modules::
 
-    >>> config = activate_modules('stock_quantity_issue')
+    >>> config = activate_modules('stock_quantity_issue', create_company)
 
-    >>> Company = Model.get('company.company')
     >>> Cron = Model.get('ir.cron')
     >>> Location = Model.get('stock.location')
     >>> Move = Model.get('stock.move')
@@ -30,10 +30,9 @@ Activate modules::
     >>> QuantityIssue = Model.get('stock.quantity.issue')
     >>> ShipmentOut = Model.get('stock.shipment.out')
 
-Create company::
+Get currency::
 
-    >>> _ = create_company()
-    >>> company = get_company()
+    >>> currency = get_currency()
 
 Create parties::
 
@@ -66,7 +65,7 @@ Plan receiving some products tomorrow and in 2 week::
     >>> move.from_location = supplier_loc
     >>> move.to_location = input_loc
     >>> move.unit_price = Decimal('5')
-    >>> move.currency = company.currency
+    >>> move.currency = currency
     >>> move.planned_date = today
     >>> move.save()
 
@@ -87,7 +86,7 @@ Plan to ship some products in 1 week::
     >>> move.from_location = output_loc
     >>> move.to_location = customer_loc
     >>> move.unit_price = Decimal('20')
-    >>> move.currency = company.currency
+    >>> move.currency = currency
     >>> shipment_out1.save()
 
     >>> shipment_out2, = ShipmentOut.duplicate([shipment_out1])

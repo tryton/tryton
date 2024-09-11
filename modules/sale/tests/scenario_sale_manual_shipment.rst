@@ -12,17 +12,13 @@ Imports::
 
 Activate modules::
 
-    >>> config = activate_modules('sale')
+    >>> config = activate_modules('sale', create_company)
 
     >>> Party = Model.get('party.party')
     >>> ProductCategory = Model.get('product.category')
     >>> ProductTemplate = Model.get('product.template')
     >>> ProductUom = Model.get('product.uom')
     >>> Sale = Model.get('sale.sale')
-
-Create company::
-
-    >>> _ = create_company()
 
 Create party::
 

@@ -22,16 +22,15 @@ Imports::
 
 Activate modules::
 
-    >>> config = activate_modules('account_deposit')
+    >>> config = activate_modules('account_deposit', create_company, create_chart)
 
     >>> Party = Model.get('party.party')
     >>> Invoice = Model.get('account.invoice')
 
-Create company::
+Get currencies::
 
     >>> currency = get_currency('USD')
     >>> eur = get_currency('EUR')
-    >>> _ = create_company(currency=currency)
 
 Set alternate currency rates::
 
@@ -48,9 +47,8 @@ Create fiscal year::
     >>> fiscalyear = set_fiscalyear_invoice_sequences(create_fiscalyear())
     >>> fiscalyear.click('create_period')
 
-Create chart of accounts::
+Get accounts::
 
-    >>> _ = create_chart()
     >>> accounts = add_deposit_accounts(get_accounts())
     >>> accounts['deposit'].second_currency = eur
     >>> accounts['deposit'].save()

@@ -16,16 +16,15 @@ Imports::
 
 Activate modules::
 
-    >>> config = activate_modules('product_cost_fifo')
+    >>> config = activate_modules('product_cost_fifo', create_company)
 
     >>> Location = Model.get('stock.location')
     >>> ProductUom = Model.get('product.uom')
     >>> ProductTemplate = Model.get('product.template')
     >>> StockMove = Model.get('stock.move')
 
-Create company::
+Get company::
 
-    >>> _ = create_company()
     >>> company = get_company()
 
 Create product::

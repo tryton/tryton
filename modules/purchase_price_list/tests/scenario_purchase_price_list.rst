@@ -12,17 +12,13 @@ Imports::
 
 Activate modules::
 
-    >>> config = activate_modules('purchase_price_list')
+    >>> config = activate_modules('purchase_price_list', create_company)
 
     >>> Party = Model.get('party.party')
     >>> PriceList = Model.get('product.price_list')
     >>> ProductTemplate = Model.get('product.template')
     >>> ProductUom = Model.get('product.uom')
     >>> Purchase = Model.get('purchase.purchase')
-
-Create company::
-
-    >>> _ = create_company()
 
 Create supplier::
 

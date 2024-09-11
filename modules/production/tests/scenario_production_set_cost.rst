@@ -8,16 +8,12 @@ Imports::
 
     >>> from proteus import Model
     >>> from trytond.modules.company.tests.tools import create_company, get_company
+    >>> from trytond.modules.currency.tests.tools import get_currency
     >>> from trytond.tests.tools import activate_modules
 
 Activate modules::
 
-    >>> config = activate_modules('production')
-
-Create company::
-
-    >>> _ = create_company()
-    >>> company = get_company()
+    >>> config = activate_modules('production', create_company)
 
 Create main product::
 
@@ -71,7 +67,7 @@ Make a production with 2 unused component::
     >>> output.product = component
     >>> output.quantity = 2
     >>> output.unit_price = Decimal(0)
-    >>> output.currency = company.currency
+    >>> output.currency = get_currency()
     >>> output.from_location = production.location
     >>> output.to_location = production.warehouse.storage_location
     >>> production.click('do')
@@ -96,11 +92,10 @@ Change cost of input::
 Launch cron task::
 
     >>> Cron = Model.get('ir.cron')
-    >>> Company = Model.get('company.company')
     >>> cron_set_cost, = Cron.find([
     ...     ('method', '=', 'production|set_cost_from_moves'),
     ...     ])
-    >>> cron_set_cost.companies.append(Company(company.id))
+    >>> cron_set_cost.companies.append(get_company())
     >>> cron_set_cost.click('run_once')
 
     >>> production.reload()

@@ -6,21 +6,16 @@ Imports::
 
     >>> from proteus import Wizard
     >>> from trytond.modules.account.tests.tools import create_fiscalyear
-    >>> from trytond.modules.company.tests.tools import create_company, get_company
+    >>> from trytond.modules.company.tests.tools import create_company
     >>> from trytond.tests.tools import activate_modules, assertEqual
 
 Activate modules::
 
-    >>> config = activate_modules('account')
-
-Create company::
-
-    >>> _ = create_company()
-    >>> company = get_company()
+    >>> config = activate_modules('account', create_company)
 
 Create fiscal year::
 
-    >>> fiscalyear = create_fiscalyear(company)
+    >>> fiscalyear = create_fiscalyear()
     >>> fiscalyear.click('create_period')
     >>> period = fiscalyear.periods.new()
     >>> period.name = 'Adjustment'

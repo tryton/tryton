@@ -21,7 +21,7 @@ Patch send_message_transactional::
 
 Activate modules::
 
-    >>> config = activate_modules(['marketing_automation', 'sale'])
+    >>> config = activate_modules(['marketing_automation', 'sale'], create_company)
 
     >>> Activity = Model.get('marketing.automation.activity')
     >>> Cron = Model.get('ir.cron')
@@ -45,10 +45,6 @@ Create a party::
     >>> contact.type = 'email'
     >>> contact.value = 'michael@example.com'
     >>> party.save()
-
-Create company::
-
-    >>> _ = create_company()
 
 Create a sale::
 

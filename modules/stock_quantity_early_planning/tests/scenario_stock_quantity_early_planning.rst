@@ -8,7 +8,8 @@ Imports::
     >>> from decimal import Decimal
 
     >>> from proteus import Model, Wizard
-    >>> from trytond.modules.company.tests.tools import create_company, get_company
+    >>> from trytond.modules.company.tests.tools import create_company
+    >>> from trytond.modules.currency.tests.tools import get_currency
     >>> from trytond.tests.tools import activate_modules, assertEqual
 
     >>> today = dt.date.today()
@@ -19,9 +20,8 @@ Imports::
 
 Activate modules::
 
-    >>> config = activate_modules('stock_quantity_early_planning')
+    >>> config = activate_modules('stock_quantity_early_planning', create_company)
 
-    >>> Company = Model.get('company.company')
     >>> Location = Model.get('stock.location')
     >>> Move = Model.get('stock.move')
     >>> Party = Model.get('party.party')
@@ -31,10 +31,9 @@ Activate modules::
     >>> QuantityEarlyPlan = Model.get('stock.quantity.early_plan')
     >>> ShipmentOut = Model.get('stock.shipment.out')
 
-Create company::
+Get currency::
 
-    >>> _ = create_company()
-    >>> company = get_company()
+    >>> currency = get_currency()
 
 Create parties::
 
@@ -71,7 +70,7 @@ Plan receiving some products tomorrow and in 2 week::
     ...     move.from_location = supplier_loc
     ...     move.to_location = input_loc
     ...     move.unit_price = product.cost_price
-    ...     move.currency = company.currency
+    ...     move.currency = currency
     ...     move.planned_date = date
     ...     move.save()
 
@@ -92,14 +91,14 @@ Plan to ship some products in 3 weeks::
     >>> move.from_location = output_loc
     >>> move.to_location = customer_loc
     >>> move.unit_price = product1.list_price
-    >>> move.currency = company.currency
+    >>> move.currency = currency
     >>> move = shipment_out1.outgoing_moves.new()
     >>> move.product = product2
     >>> move.quantity = 6
     >>> move.from_location = output_loc
     >>> move.to_location = customer_loc
     >>> move.unit_price = product2.list_price
-    >>> move.currency = company.currency
+    >>> move.currency = currency
     >>> shipment_out1.save()
 
     >>> shipment_out2 = ShipmentOut()
@@ -111,7 +110,7 @@ Plan to ship some products in 3 weeks::
     >>> move.from_location = output_loc
     >>> move.to_location = customer_loc
     >>> move.unit_price = product1.list_price
-    >>> move.currency = company.currency
+    >>> move.currency = currency
     >>> shipment_out2.save()
 
     >>> shipment_out3 = ShipmentOut()
@@ -123,7 +122,7 @@ Plan to ship some products in 3 weeks::
     >>> move.from_location = output_loc
     >>> move.to_location = customer_loc
     >>> move.unit_price = product1.list_price
-    >>> move.currency = company.currency
+    >>> move.currency = currency
     >>> shipment_out3.save()
 
     >>> ShipmentOut.click([shipment_out1, shipment_out2, shipment_out3], 'wait')

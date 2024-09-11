@@ -9,7 +9,7 @@ Imports::
 
     >>> from proteus import Model
     >>> from trytond.modules.account.tests.tools import create_chart, get_accounts
-    >>> from trytond.modules.company.tests.tools import create_company, get_company
+    >>> from trytond.modules.company.tests.tools import create_company
     >>> from trytond.tests.tools import activate_modules, assertEqual
 
     >>> today = dt.date.today()
@@ -18,7 +18,8 @@ Imports::
 
 Activate modules::
 
-    >>> config = activate_modules('purchase_blanket_agreement')
+    >>> config = activate_modules(
+    ...     'purchase_blanket_agreement', create_company, create_chart)
 
     >>> Party = Model.get('party.party')
     >>> ProductCategory = Model.get('product.category')
@@ -27,15 +28,9 @@ Activate modules::
     >>> PurchaseBlanketAgreement = Model.get('purchase.blanket_agreement')
     >>> Purchase = Model.get('purchase.purchase')
 
-Create company::
+Get accounts::
 
-    >>> _ = create_company()
-    >>> company = get_company()
-
-Create chart of accounts::
-
-    >>> _ = create_chart(company)
-    >>> accounts = get_accounts(company)
+    >>> accounts = get_accounts()
 
 Create supplier::
 

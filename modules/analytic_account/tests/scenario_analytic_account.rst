@@ -9,31 +9,25 @@ Imports::
     >>> from proteus import Model, Wizard
     >>> from trytond.modules.account.tests.tools import (
     ...     create_chart, create_fiscalyear, get_accounts)
-    >>> from trytond.modules.company.tests.tools import create_company, get_company
+    >>> from trytond.modules.company.tests.tools import create_company
     >>> from trytond.tests.tools import activate_modules, assertEqual
 
 Activate modules::
 
-    >>> config = activate_modules('analytic_account')
+    >>> config = activate_modules('analytic_account', create_company, create_chart)
 
     >>> Reconciliation = Model.get('account.move.reconciliation')
-
-Create company::
-
-    >>> _ = create_company()
-    >>> company = get_company()
+    >>> Journal = Model.get('account.journal')
 
 Create fiscal year::
 
-    >>> fiscalyear = create_fiscalyear(company)
+    >>> fiscalyear = create_fiscalyear()
     >>> fiscalyear.click('create_period')
     >>> period = fiscalyear.periods[0]
 
-Create chart of accounts::
+Get accounts::
 
-    >>> Journal = Model.get('account.journal')
-    >>> _ = create_chart(company)
-    >>> accounts = get_accounts(company)
+    >>> accounts = get_accounts()
     >>> receivable = accounts['receivable']
     >>> revenue = accounts['revenue']
     >>> expense = accounts['expense']
@@ -56,11 +50,11 @@ Create analytic accounts::
 Create analytic rules::
 
     >>> AnalyticRule = Model.get('analytic_account.rule')
-    >>> rule1 = AnalyticRule(company=company, account=expense)
+    >>> rule1 = AnalyticRule(account=expense)
     >>> entry, = rule1.analytic_accounts
     >>> entry.account = analytic_account
     >>> rule1.save()
-    >>> rule2 = AnalyticRule(company=company, account=revenue)
+    >>> rule2 = AnalyticRule(account=revenue)
     >>> entry, = rule2.analytic_accounts
     >>> entry.account = analytic_account2
     >>> rule2.save()

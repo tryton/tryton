@@ -19,7 +19,7 @@ Imports::
     ...     create_chart, create_fiscalyear, create_tax, get_accounts)
     >>> from trytond.modules.account_invoice.tests.tools import (
     ...     set_fiscalyear_invoice_sequences)
-    >>> from trytond.modules.company.tests.tools import create_company, get_company
+    >>> from trytond.modules.company.tests.tools import create_company
     >>> from trytond.modules.web_shop_shopify.product import Template
     >>> from trytond.modules.web_shop_shopify.web import Shop
     >>> from trytond.tests.tools import activate_modules, assertEqual
@@ -36,7 +36,8 @@ Activate modules::
     ...         'product_image',
     ...         'sale_discount',
     ...         'sale_shipment_cost',
-    ...         ])
+    ...         ],
+    ...     create_company, create_chart)
 
     >>> Account = Model.get('account.account')
     >>> Carrier = Model.get('carrier')
@@ -83,15 +84,9 @@ Create country::
     >>> china = Country(name="China", code='CN')
     >>> china.save()
 
-Create company::
+Get accounts::
 
-    >>> _ = create_company()
-    >>> company = get_company()
-
-Create chart of accounts::
-
-    >>> _ = create_chart(company)
-    >>> accounts = get_accounts(company)
+    >>> accounts = get_accounts()
 
 Create tax::
 
@@ -99,8 +94,7 @@ Create tax::
 
 Create fiscal year::
 
-    >>> fiscalyear = set_fiscalyear_invoice_sequences(
-    ...     create_fiscalyear(company))
+    >>> fiscalyear = set_fiscalyear_invoice_sequences(create_fiscalyear())
     >>> fiscalyear.click('create_period')
 
 Create payment journal::

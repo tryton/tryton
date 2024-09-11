@@ -10,17 +10,12 @@ Imports::
     >>> from proteus import Model
     >>> from trytond.modules.account.tests.tools import create_chart, get_accounts
     >>> from trytond.modules.account_invoice.tests.tools import create_payment_term
-    >>> from trytond.modules.company.tests.tools import create_company, get_company
+    >>> from trytond.modules.company.tests.tools import create_company
     >>> from trytond.tests.tools import activate_modules, set_user
 
 Activate modules::
 
-    >>> config = activate_modules('project_invoice')
-
-Create company::
-
-    >>> _ = create_company()
-    >>> company = get_company()
+    >>> config = activate_modules('project_invoice', create_company, create_chart)
 
 Create project user::
 
@@ -45,10 +40,9 @@ Create project invoice user::
     ...     [project_invoice_group, project_group])
     >>> project_invoice_user.save()
 
-Create chart of accounts::
+Get accounts::
 
-    >>> _ = create_chart(company)
-    >>> accounts = get_accounts(company)
+    >>> accounts = get_accounts()
     >>> revenue = accounts['revenue']
 
 Create payment term::
@@ -70,7 +64,6 @@ Create employee::
     >>> party = Party(name='Employee')
     >>> party.save()
     >>> employee.party = party
-    >>> employee.company = company
     >>> employee.save()
 
 Create account category::

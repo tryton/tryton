@@ -8,7 +8,8 @@ Imports::
     >>> from decimal import Decimal
 
     >>> from proteus import Model, Wizard
-    >>> from trytond.modules.company.tests.tools import create_company, get_company
+    >>> from trytond.modules.company.tests.tools import create_company
+    >>> from trytond.modules.currency.tests.tools import get_currency
     >>> from trytond.tests.tools import activate_modules
 
     >>> today = dt.date.today()
@@ -16,12 +17,11 @@ Imports::
 
 Activate modules::
 
-    >>> config = activate_modules('stock')
+    >>> config = activate_modules('stock', create_company)
 
-Create company::
+Get currency::
 
-    >>> _ = create_company()
-    >>> company = get_company()
+    >>> currency = get_currency()
 
 Create product::
 
@@ -73,9 +73,8 @@ Make 1 unit of the product available @ 100 ::
     >>> incoming_move.to_location = storage_sub_loc
     >>> incoming_move.planned_date = today
     >>> incoming_move.effective_date = today
-    >>> incoming_move.company = company
     >>> incoming_move.unit_price = Decimal('100')
-    >>> incoming_move.currency = company.currency
+    >>> incoming_move.currency = currency
     >>> incoming_move.click('do')
 
 Check Cost Price is 100::
@@ -94,9 +93,8 @@ Add 1 more unit @ 200::
     >>> incoming_move.to_location = storage_loc
     >>> incoming_move.planned_date = today
     >>> incoming_move.effective_date = today
-    >>> incoming_move.company = company
     >>> incoming_move.unit_price = Decimal('200')
-    >>> incoming_move.currency = company.currency
+    >>> incoming_move.currency = currency
     >>> incoming_move.click('do')
 
 Check Cost Price Average is 150::
@@ -116,9 +114,8 @@ Add twice 1 more unit @ 200::
     >>> incoming_move.to_location = storage_loc
     >>> incoming_move.planned_date = today
     >>> incoming_move.effective_date = today
-    >>> incoming_move.company = company
     >>> incoming_move.unit_price = Decimal('200')
-    >>> incoming_move.currency = company.currency
+    >>> incoming_move.currency = currency
     >>> incoming_move.save()
     >>> incoming_moves.append(incoming_move)
 
@@ -130,9 +127,8 @@ Add twice 1 more unit @ 200::
     >>> incoming_move.to_location = storage_loc
     >>> incoming_move.planned_date = today
     >>> incoming_move.effective_date = today
-    >>> incoming_move.company = company
     >>> incoming_move.unit_price = Decimal('200')
-    >>> incoming_move.currency = company.currency
+    >>> incoming_move.currency = currency
     >>> incoming_move.save()
     >>> incoming_moves.append(incoming_move)
 
@@ -175,8 +171,7 @@ Send one product we don't have in stock::
     >>> outgoing_move.to_location = customer_loc
     >>> outgoing_move.planned_date = today
     >>> outgoing_move.effective_date = today
-    >>> outgoing_move.company = company
-    >>> outgoing_move.currency = company.currency
+    >>> outgoing_move.currency = currency
     >>> outgoing_move.click('do')
 
 Cost price should stay 5::
@@ -191,12 +186,11 @@ Return one product to the supplier::
     >>> outgoing_move.unit = unit
     >>> outgoing_move.quantity = 1
     >>> outgoing_move.unit_price = Decimal('28')
-    >>> outgoing_move.currency = company.currency
+    >>> outgoing_move.currency = currency
     >>> outgoing_move.from_location = storage_loc
     >>> outgoing_move.to_location = supplier_loc
     >>> outgoing_move.planned_date = today
     >>> outgoing_move.effective_date = today
-    >>> outgoing_move.company = company
     >>> outgoing_move.click('do')
 
 Cost price should stay 5::
@@ -214,9 +208,8 @@ Receive one unit of the product with negative stock so the stock stays negative:
     >>> incoming_move.to_location = storage_loc
     >>> incoming_move.planned_date = today
     >>> incoming_move.effective_date = today
-    >>> incoming_move.company = company
     >>> incoming_move.unit_price = Decimal('3')
-    >>> incoming_move.currency = company.currency
+    >>> incoming_move.currency = currency
     >>> incoming_move.click('do')
 
 Cost price should be set to last unit price::
@@ -235,9 +228,8 @@ Receive two units of the product so the stock becomes positive::
     >>> incoming_move.to_location = storage_loc
     >>> incoming_move.planned_date = today
     >>> incoming_move.effective_date = today
-    >>> incoming_move.company = company
     >>> incoming_move.unit_price = Decimal('2')
-    >>> incoming_move.currency = company.currency
+    >>> incoming_move.currency = currency
     >>> incoming_move.click('do')
 
 Cost price should be set to last unit price::

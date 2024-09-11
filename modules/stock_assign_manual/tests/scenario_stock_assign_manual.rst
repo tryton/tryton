@@ -8,17 +8,13 @@ Imports::
     >>> from decimal import Decimal
 
     >>> from proteus import Model, Wizard
-    >>> from trytond.modules.company.tests.tools import create_company, get_company
+    >>> from trytond.modules.company.tests.tools import create_company
+    >>> from trytond.modules.currency.tests.tools import get_currency
     >>> from trytond.tests.tools import activate_modules, assertEqual
 
 Activate stock_assign_manual::
 
-    >>> config = activate_modules('stock_assign_manual')
-
-Create company::
-
-    >>> _ = create_company()
-    >>> company = get_company()
+    >>> config = activate_modules('stock_assign_manual', create_company)
 
 Create customer::
 
@@ -59,7 +55,7 @@ Fill locations::
     >>> move.from_location = supplier_loc
     >>> move.to_location = storage_loc
     >>> move.unit_price = Decimal('5')
-    >>> move.currency = company.currency
+    >>> move.currency = get_currency()
     >>> move.click('do')
 
     >>> move = StockMove()
@@ -68,7 +64,7 @@ Fill locations::
     >>> move.from_location = supplier_loc
     >>> move.to_location = storage_loc2
     >>> move.unit_price = Decimal('5')
-    >>> move.currency = company.currency
+    >>> move.currency = get_currency()
     >>> move.click('do')
 
 Make a customer shipment::
@@ -83,7 +79,7 @@ Make a customer shipment::
     >>> move.from_location = output_loc
     >>> move.to_location = customer_loc
     >>> move.unit_price = Decimal('20')
-    >>> move.currency = company.currency
+    >>> move.currency = get_currency()
     >>> move = shipment.outgoing_moves.new()
     >>> move.product = product
     >>> move.unit = unit
@@ -91,7 +87,7 @@ Make a customer shipment::
     >>> move.from_location = output_loc
     >>> move.to_location = customer_loc
     >>> move.unit_price = Decimal('20')
-    >>> move.currency = company.currency
+    >>> move.currency = get_currency()
     >>> shipment.click('wait')
     >>> shipment.state
     'waiting'

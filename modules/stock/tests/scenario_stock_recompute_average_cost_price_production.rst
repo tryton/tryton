@@ -8,7 +8,8 @@ Imports::
     >>> from decimal import Decimal
 
     >>> from proteus import Model, Wizard
-    >>> from trytond.modules.company.tests.tools import create_company, get_company
+    >>> from trytond.modules.company.tests.tools import create_company
+    >>> from trytond.modules.currency.tests.tools import get_currency
     >>> from trytond.tests.tools import activate_modules
 
     >>> today = dt.date.today()
@@ -16,17 +17,16 @@ Imports::
 
 Activate modules::
 
-    >>> config = activate_modules('stock')
+    >>> config = activate_modules('stock', create_company)
 
     >>> Location = Model.get('stock.location')
     >>> ProductTemplate = Model.get('product.template')
     >>> ProductUom = Model.get('product.uom')
     >>> StockMove = Model.get('stock.move')
 
-Create company::
+Get currency::
 
-    >>> _ = create_company()
-    >>> company = get_company()
+    >>> currency = get_currency()
 
 Create product::
 
@@ -64,7 +64,7 @@ Consume product for production and reverse some::
     ...     from_location=production_loc,
     ...     to_location=storage_loc,
     ...     unit_price=Decimal('40.0000'),
-    ...     currency=company.currency,
+    ...     currency=currency,
     ...     effective_date=today).click('do')
 
     >>> [m.cost_price for m in StockMove.find([])]
@@ -90,7 +90,7 @@ Receive product yesterday at new cost::
     ...     from_location=supplier_loc,
     ...     to_location=storage_loc,
     ...     unit_price=Decimal('20.0000'),
-    ...     currency=company.currency,
+    ...     currency=currency,
     ...     effective_date=yesterday).click('do')
 
 Recompute cost price::

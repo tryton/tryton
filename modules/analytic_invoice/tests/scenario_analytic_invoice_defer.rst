@@ -14,14 +14,16 @@ Imports::
     ...     set_fiscalyear_invoice_sequences)
     >>> from trytond.modules.account_invoice_defer.tests.tools import (
     ...     add_deferred_accounts)
-    >>> from trytond.modules.company.tests.tools import create_company, get_company
+    >>> from trytond.modules.company.tests.tools import create_company
     >>> from trytond.tests.tools import activate_modules, assertEqual
 
     >>> today = dt.date.today()
 
 Activate modules::
 
-    >>> config = activate_modules(['analytic_invoice', 'account_invoice_defer'])
+    >>> config = activate_modules(
+    ...     ['analytic_invoice', 'account_invoice_defer'],
+    ...     create_company, create_chart)
 
     >>> AnalyticAccount = Model.get('analytic_account.account')
     >>> Invoice = Model.get('account.invoice')
@@ -30,22 +32,16 @@ Activate modules::
     >>> ProductCategory = Model.get('product.category')
     >>> ProductUom = Model.get('product.uom')
 
-Create company::
-
-    >>> _ = create_company()
-    >>> company = get_company()
-
 Create fiscal year::
 
     >>> fiscalyear = set_fiscalyear_invoice_sequences(
-    ...     create_fiscalyear(company, today))
+    ...     create_fiscalyear(today=today))
     >>> fiscalyear.click('create_period')
     >>> period = fiscalyear.periods[0]
 
-Create chart of accounts::
+Get accounts::
 
-    >>> _ = create_chart(company)
-    >>> accounts = add_deferred_accounts(get_accounts(company))
+    >>> accounts = add_deferred_accounts(get_accounts())
 
 Create analytic accounts::
 

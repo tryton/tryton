@@ -20,7 +20,9 @@ Imports::
 
 Activate modules::
 
-    >>> config = activate_modules(['account_statement', 'account_invoice'])
+    >>> config = activate_modules(
+    ...     ['account_statement', 'account_invoice'],
+    ...     create_company, create_chart)
 
     >>> AccountConfiguration = Model.get('account.configuration')
     >>> AccountJournal = Model.get('account.journal')
@@ -29,20 +31,18 @@ Activate modules::
     >>> Statement = Model.get('account.statement')
     >>> StatementJournal = Model.get('account.statement.journal')
 
-Create company::
+Get currencies::
 
     >>> usd = get_currency('USD')
     >>> eur = get_currency('EUR')
-    >>> _ = create_company(currency=usd)
 
 Create fiscal year::
 
     >>> fiscalyear = set_fiscalyear_invoice_sequences(create_fiscalyear())
     >>> fiscalyear.click('create_period')
 
-Create chart of accounts::
+Get accounts::
 
-    >>> _ = create_chart()
     >>> accounts = get_accounts()
 
 Configure currency exchange::

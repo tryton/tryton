@@ -11,14 +11,14 @@ Imports::
     ...     create_chart, create_fiscalyear, get_accounts)
     >>> from trytond.modules.account_invoice.tests.tools import (
     ...     set_fiscalyear_invoice_sequences)
-    >>> from trytond.modules.company.tests.tools import create_company, get_company
+    >>> from trytond.modules.company.tests.tools import create_company
     >>> from trytond.modules.sale_advance_payment.tests.tools import (
     ...     add_advance_payment_accounts, create_advance_payment_term)
     >>> from trytond.tests.tools import activate_modules
 
 Activate modules::
 
-    >>> config = activate_modules('sale_advance_payment')
+    >>> config = activate_modules('sale_advance_payment', create_company, create_chart)
 
     >>> Journal = Model.get('account.journal')
     >>> Party = Model.get('party.party')
@@ -28,20 +28,13 @@ Activate modules::
     >>> ProductUoM = Model.get('product.uom')
     >>> Sale = Model.get('sale.sale')
 
-Create a company::
+Get accounts::
 
-    >>> _ = create_company()
-    >>> company = get_company()
-
-Create a chart of accounts::
-
-    >>> _ = create_chart(company)
-    >>> accounts = add_advance_payment_accounts(get_accounts(company))
+    >>> accounts = add_advance_payment_accounts(get_accounts())
 
 Create a fiscal year::
 
-    >>> fiscalyear = set_fiscalyear_invoice_sequences(
-    ...     create_fiscalyear(company))
+    >>> fiscalyear = set_fiscalyear_invoice_sequences(create_fiscalyear())
     >>> fiscalyear.click('create_period')
 
 Set a payment method::

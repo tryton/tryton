@@ -7,18 +7,13 @@ Imports::
     >>> from decimal import Decimal
 
     >>> from proteus import Model, Wizard
-    >>> from trytond.modules.company.tests.tools import create_company, get_company
+    >>> from trytond.modules.company.tests.tools import create_company
     >>> from trytond.tests.tools import activate_modules, assertEqual
 
 Activate modules::
 
     >>> config = activate_modules(
-    ...     ['stock_supply_production', 'production_routing'])
-
-Create company::
-
-    >>> _ = create_company()
-    >>> company = get_company()
+    ...     ['stock_supply_production', 'production_routing'], create_company)
 
 Create product::
 

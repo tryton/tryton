@@ -7,22 +7,18 @@ Imports::
     >>> from decimal import Decimal
 
     >>> from proteus import Model
-    >>> from trytond.modules.company.tests.tools import create_company, get_company
+    >>> from trytond.modules.company.tests.tools import create_company
+    >>> from trytond.modules.currency.tests.tools import get_currency
     >>> from trytond.tests.tools import activate_modules
 
 Activate modules::
 
-    >>> config = activate_modules('stock_product_location_place')
+    >>> config = activate_modules('stock_product_location_place', create_company)
 
     >>> Location = Model.get('stock.location')
     >>> Move = Model.get('stock.move')
     >>> ProductTemplate = Model.get('product.template')
     >>> UoM = Model.get('product.uom')
-
-Create company::
-
-    >>> _ = create_company()
-    >>> company = get_company()
 
 Get location::
 
@@ -58,7 +54,7 @@ Create a stock move::
     >>> move.to_location = storage_loc
     >>> move.quantity = 1
     >>> move.unit_price = Decimal(10)
-    >>> move.currency = company.currency
+    >>> move.currency = get_currency()
     >>> move.save()
 
     >>> move.to_place.rec_name

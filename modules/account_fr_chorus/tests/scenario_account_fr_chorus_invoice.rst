@@ -9,6 +9,7 @@ Imports::
     >>> import time
     >>> import uuid
     >>> from decimal import Decimal
+    >>> from functools import partial
     >>> from unittest.mock import patch
 
     >>> from proteus import Model
@@ -17,7 +18,6 @@ Imports::
     >>> from trytond.modules.account_invoice.tests.tools import (
     ...     set_fiscalyear_invoice_sequences)
     >>> from trytond.modules.company.tests.tools import create_company, get_company
-    >>> from trytond.modules.currency.tests.tools import get_currency
     >>> from trytond.modules.party.party import Identifier
     >>> from trytond.tests.tools import activate_modules
 
@@ -32,7 +32,8 @@ Patch SIRET validation::
 Activate modules::
 
     >>> config = activate_modules([
-    ...     'account_fr_chorus', 'edocument_uncefact', 'account_fr'])
+    ...     'account_fr_chorus', 'edocument_uncefact', 'account_fr'],
+    ...     create_company, partial(create_chart, chart='account_fr.root'))
 
     >>> AccountConfig = Model.get('account.configuration')
     >>> Cron = Model.get('ir.cron')
@@ -41,9 +42,8 @@ Activate modules::
     >>> Party = Model.get('party.party')
     >>> Tax = Model.get('account.tax')
 
-Create company::
+Setup company::
 
-    >>> _ = create_company(currency=get_currency('EUR'))
     >>> company = get_company()
     >>> company_party = company.party
     >>> company_address, = company_party.addresses
@@ -60,9 +60,8 @@ Create fiscal year::
     >>> fiscalyear = set_fiscalyear_invoice_sequences(create_fiscalyear())
     >>> fiscalyear.click('create_period')
 
-Create chart of accounts::
+Get accounts::
 
-    >>> _ = create_chart(chart='account_fr.root')
     >>> acccounts = get_accounts()
 
     >>> tax, = Tax.find([

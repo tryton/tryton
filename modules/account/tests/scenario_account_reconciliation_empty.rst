@@ -15,7 +15,7 @@ Imports::
 
 Activate modules::
 
-    >>> config = activate_modules('account')
+    >>> config = activate_modules('account', create_company, create_chart)
 
     >>> Journal = Model.get('account.journal')
     >>> Move = Model.get('account.move')
@@ -25,18 +25,13 @@ Create currencies::
     >>> usd = get_currency('USD')
     >>> eur = get_currency('EUR')
 
-Create company::
-
-    >>> _ = create_company(currency=usd)
-
 Create fiscal year::
 
     >>> fiscalyear = create_fiscalyear()
     >>> fiscalyear.click('create_period')
 
-Create chart of accounts::
+Get accounts::
 
-    >>> _ = create_chart()
     >>> accounts = get_accounts()
     >>> account = accounts['cash']
     >>> account.reconcile = True

@@ -10,24 +10,18 @@ Imports::
     >>> from trytond.modules.account.tests.tools import (
     ...     create_chart, create_tax, get_accounts)
     >>> from trytond.modules.account_invoice.tests.tools import create_payment_term
-    >>> from trytond.modules.company.tests.tools import create_company, get_company
+    >>> from trytond.modules.company.tests.tools import create_company
     >>> from trytond.tests.tools import activate_modules, assertEqual, set_user
 
 Activate modules::
 
-    >>> config = activate_modules('sale_opportunity')
+    >>> config = activate_modules('sale_opportunity', create_company, create_chart)
 
     >>> Sale = Model.get('sale.sale')
 
-Create company::
+Get accounts::
 
-    >>> _ = create_company()
-    >>> company = get_company()
-
-Create chart of accounts::
-
-    >>> _ = create_chart(company)
-    >>> accounts = get_accounts(company)
+    >>> accounts = get_accounts()
     >>> revenue = accounts['revenue']
 
 Create tax::

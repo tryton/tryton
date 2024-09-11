@@ -15,7 +15,7 @@ Imports::
     >>> from trytond.modules.account_asset.tests.tools import add_asset_accounts
     >>> from trytond.modules.account_invoice.tests.tools import (
     ...     set_fiscalyear_invoice_sequences)
-    >>> from trytond.modules.company.tests.tools import create_company, get_company
+    >>> from trytond.modules.company.tests.tools import create_company
     >>> from trytond.tests.tools import activate_modules
 
     >>> today = dt.date.today()
@@ -24,23 +24,19 @@ Imports::
 
 Activate modules::
 
-    >>> config = activate_modules(['analytic_invoice', 'account_asset'])
-
-Create company::
-
-    >>> _ = create_company()
-    >>> company = get_company()
+    >>> config = activate_modules(
+    ...     ['analytic_invoice', 'account_asset'],
+    ...     create_company, create_chart)
 
 Create fiscal year::
 
     >>> fiscalyear = set_fiscalyear_invoice_sequences(
-    ...     create_fiscalyear(company, (today, next_next_month)))
+    ...     create_fiscalyear(today=(today, next_next_month)))
     >>> fiscalyear.click('create_period')
 
-Create chart of accounts::
+Get accounts::
 
-    >>> _ = create_chart(company)
-    >>> accounts = add_asset_accounts(get_accounts(company), company)
+    >>> accounts = add_asset_accounts(get_accounts())
     >>> revenue = accounts['revenue']
     >>> asset_account = accounts['asset']
     >>> expense = accounts['expense']

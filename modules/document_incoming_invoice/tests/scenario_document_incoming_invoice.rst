@@ -13,20 +13,16 @@ Imports::
 
 Activate modules::
 
-    >>> config = activate_modules('document_incoming_invoice')
+    >>> config = activate_modules(
+    ...     'document_incoming_invoice', create_company, create_chart)
 
     >>> Document = Model.get('document.incoming')
     >>> DocumentConfiguration = Model.get('document.incoming.configuration')
     >>> Party = Model.get('party.party')
 
-Create company::
+Get company::
 
-    >>> _ = create_company()
     >>> company = get_company()
-
-Create chart of account::
-
-    >>> _ = create_chart()
 
 Create fiscal year::
 

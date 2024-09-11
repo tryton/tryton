@@ -8,7 +8,8 @@ Imports::
     >>> from decimal import Decimal
 
     >>> from proteus import Model, Report
-    >>> from trytond.modules.company.tests.tools import create_company, get_company
+    >>> from trytond.modules.company.tests.tools import create_company
+    >>> from trytond.modules.currency.tests.tools import get_currency
     >>> from trytond.tests.tools import activate_modules
 
     >>> today = dt.date.today()
@@ -16,12 +17,11 @@ Imports::
 
 Activate modules::
 
-    >>> config = activate_modules('stock')
+    >>> config = activate_modules('stock', create_company)
 
-Create company::
+Get currency::
 
-    >>> _ = create_company()
-    >>> company = get_company()
+    >>> currency = get_currency()
 
 Create customer & supplier::
 
@@ -63,7 +63,6 @@ Create Shipment In::
     >>> shipment_in.planned_date = today
     >>> shipment_in.supplier = supplier
     >>> shipment_in.warehouse = warehouse_loc
-    >>> shipment_in.company = company
 
 Receive a bunch of products::
 
@@ -73,9 +72,8 @@ Receive a bunch of products::
     >>> move.quantity = 100
     >>> move.from_location = supplier_loc
     >>> move.to_location = input_loc
-    >>> move.company = company
     >>> move.unit_price = Decimal('1')
-    >>> move.currency = company.currency
+    >>> move.currency = currency
     >>> shipment_in.save()
     >>> shipment_in.click('receive')
     >>> shipment_in.click('do')
@@ -96,7 +94,6 @@ Create Shipment Out::
     >>> shipment_out.planned_date = today
     >>> shipment_out.customer = customer
     >>> shipment_out.warehouse = warehouse_loc
-    >>> shipment_out.company = company
 
 Add two shipment lines of same product and go through the workflow::
 
@@ -106,9 +103,8 @@ Add two shipment lines of same product and go through the workflow::
     >>> move.quantity = 1
     >>> move.from_location = output_loc
     >>> move.to_location = customer_loc
-    >>> move.company = company
     >>> move.unit_price = Decimal('1')
-    >>> move.currency = company.currency
+    >>> move.currency = currency
     >>> shipment_out.save()
     >>> shipment_out.click('wait')
     >>> shipment_out.click('assign_try')
@@ -137,7 +133,6 @@ Create an internal shipment::
     >>> ShipmentInternal = Model.get('stock.shipment.internal')
     >>> shipment_internal = ShipmentInternal()
     >>> shipment_internal.planned_date = today
-    >>> shipment_internal.company = company
     >>> shipment_internal.from_location = storage_loc
     >>> shipment_internal.to_location = lost_loc
     >>> move = shipment_internal.moves.new()
@@ -146,7 +141,6 @@ Create an internal shipment::
     >>> move.quantity = 1
     >>> move.from_location = storage_loc
     >>> move.to_location = lost_loc
-    >>> move.company = company
     >>> shipment_internal.save()
     >>> shipment_internal.click('wait')
     >>> shipment_internal.click('assign_try')

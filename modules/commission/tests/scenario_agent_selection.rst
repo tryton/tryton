@@ -16,17 +16,15 @@ Imports::
 
 Activate modules::
 
-    >>> config = activate_modules(['commission', 'sale'])
+    >>> config = activate_modules(['commission', 'sale'], create_company, create_chart)
 
-Create company::
+Get company::
 
-    >>> _ = create_company()
     >>> company = get_company()
 
-Create chart of accounts::
+Get accounts::
 
-    >>> _ = create_chart(company)
-    >>> accounts = get_accounts(company)
+    >>> accounts = get_accounts()
 
 Create employee::
 

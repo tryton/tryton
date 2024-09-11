@@ -19,7 +19,8 @@ Imports::
 
 Activate modules::
 
-    >>> config = activate_modules(['account_payment', 'account_statement'])
+    >>> config = activate_modules(
+    ...     ['account_payment', 'account_statement'], create_company, create_chart)
 
     >>> AccountJournal = Model.get('account.journal')
     >>> Party = Model.get('party.party')
@@ -28,19 +29,14 @@ Activate modules::
     >>> Statement = Model.get('account.statement')
     >>> StatementJournal = Model.get('account.statement.journal')
 
-Create company::
-
-    >>> _ = create_company()
-
 Create fiscal year::
 
     >>> fiscalyear = set_fiscalyear_invoice_sequences(
     ...     create_fiscalyear())
     >>> fiscalyear.click('create_period')
 
-Create chart of accounts::
+Get accounts::
 
-    >>> _ = create_chart()
     >>> accounts = get_accounts()
 
 Create journals::

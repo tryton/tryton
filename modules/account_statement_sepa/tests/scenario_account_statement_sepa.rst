@@ -4,16 +4,19 @@ Account Statement Sepa Scenario
 
 Imports::
 
+    >>> from functools import partial
+
     >>> from proteus import Model, Wizard
     >>> from trytond.modules.account.tests.tools import create_chart, get_accounts
     >>> from trytond.modules.company.tests.tools import create_company, get_company
-    >>> from trytond.modules.currency.tests.tools import get_currency
     >>> from trytond.tests.tools import activate_modules, assertEqual
     >>> from trytond.tools import file_open
 
 Activate modules::
 
-    >>> config = activate_modules('account_statement_sepa')
+    >>> config = activate_modules(
+    ...     'account_statement_sepa',
+    ...     partial(create_company, currency='EUR'), create_chart)
 
     >>> AccountJournal = Model.get('account.journal')
     >>> Bank = Model.get('bank')
@@ -21,15 +24,13 @@ Activate modules::
     >>> Party = Model.get('party.party')
     >>> StatementJournal = Model.get('account.statement.journal')
 
-Create company::
+Get company::
 
-    >>> _ = create_company(currency=get_currency('EUR'))
     >>> company = get_company()
 
-Create chart of accounts::
+Get accounts::
 
-    >>> _ = create_chart(company)
-    >>> accounts = get_accounts(company)
+    >>> accounts = get_accounts()
 
 Create parties::
 

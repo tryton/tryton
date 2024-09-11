@@ -10,16 +10,12 @@ Imports::
 
 Activate modules::
 
-    >>> config = activate_modules(['sale_supply', 'stock_supply'])
+    >>> config = activate_modules(['sale_supply', 'stock_supply'], create_company)
 
     >>> Location = Model.get('stock.location')
     >>> OrderPoint = Model.get('stock.order_point')
     >>> ProductTemplate = Model.get('product.template')
     >>> UoM = Model.get('product.uom')
-
-Create company::
-
-    >>> _ = create_company()
 
 Get locations::
 

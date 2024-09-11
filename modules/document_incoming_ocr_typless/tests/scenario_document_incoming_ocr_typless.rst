@@ -12,7 +12,7 @@ Imports::
     ...     create_chart, create_fiscalyear, create_tax, get_accounts)
     >>> from trytond.modules.account_invoice.tests.tools import (
     ...     set_fiscalyear_invoice_sequences)
-    >>> from trytond.modules.company.tests.tools import create_company, get_company
+    >>> from trytond.modules.company.tests.tools import create_company
     >>> from trytond.tests.tools import activate_modules, assertEqual
     >>> from trytond.tools import file_open
 
@@ -20,7 +20,8 @@ Activate modules::
 
     >>> config = activate_modules([
     ...     'document_incoming_ocr_typless',
-    ...     'document_incoming_invoice'])
+    ...     'document_incoming_invoice'],
+    ...     create_company, create_chart)
 
     >>> Document = Model.get('document.incoming')
     >>> OCRService = Model.get('document.incoming.ocr.service')
@@ -29,21 +30,15 @@ Activate modules::
     >>> ProductTemplate = Model.get('product.template')
     >>> UoM = Model.get('product.uom')
 
-Create company::
+Get accounts::
 
-    >>> _ = create_company()
-    >>> company = get_company()
-
-Create chart of account::
-
-    >>> _ = create_chart()
-    >>> accounts = get_accounts(company)
+    >>> accounts = get_accounts()
 
 Create taxes::
 
-    >>> tax_10 = create_tax(Decimal('0.1'), company)
+    >>> tax_10 = create_tax(Decimal('0.1'))
     >>> tax_10.save()
-    >>> tax_20 = create_tax(Decimal('0.2'), company)
+    >>> tax_20 = create_tax(Decimal('0.2'))
     >>> tax_20.save()
 
 Create fiscal year::

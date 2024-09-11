@@ -8,7 +8,7 @@ Imports::
     >>> from decimal import Decimal
 
     >>> from proteus import Model
-    >>> from trytond.modules.company.tests.tools import create_company, get_company
+    >>> from trytond.modules.company.tests.tools import create_company
     >>> from trytond.tests.tools import activate_modules, assertEqual, assertTrue
 
     >>> today = dt.date.today()
@@ -17,7 +17,7 @@ Imports::
 
 Activate modules::
 
-    >>> config = activate_modules('stock_lot')
+    >>> config = activate_modules('stock_lot', create_company)
 
     >>> LeadTime = Model.get('stock.location.lead_time')
     >>> Location = Model.get('stock.location')
@@ -25,11 +25,6 @@ Activate modules::
     >>> ProductTemplate = Model.get('product.template')
     >>> ProductUom = Model.get('product.uom')
     >>> Shipment = Model.get('stock.shipment.internal')
-
-Create company::
-
-    >>> _ = create_company()
-    >>> company = get_company()
 
 Create product::
 

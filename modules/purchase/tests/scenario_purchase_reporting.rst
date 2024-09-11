@@ -13,12 +13,13 @@ Imports::
     ...     create_chart, create_fiscalyear, get_accounts)
     >>> from trytond.modules.account_invoice.tests.tools import (
     ...     set_fiscalyear_invoice_sequences)
-    >>> from trytond.modules.company.tests.tools import create_company, get_company
+    >>> from trytond.modules.company.tests.tools import create_company
     >>> from trytond.tests.tools import activate_modules, assertEqual
 
 Activate modules::
 
-    >>> config = activate_modules('purchase')
+    >>> config = activate_modules('purchase', create_company, create_chart)
+
     >>> Party = Model.get('party.party')
     >>> ProductUom = Model.get('product.uom')
     >>> ProductTemplate = Model.get('product.template')
@@ -29,21 +30,14 @@ Activate modules::
     >>> Product = Model.get('purchase.reporting.product')
     >>> ProductTimeseries = Model.get('purchase.reporting.product.time_series')
 
-Create company::
-
-    >>> _ = create_company()
-    >>> company = get_company()
-
 Create fiscal year::
 
-    >>> fiscalyear = set_fiscalyear_invoice_sequences(
-    ...     create_fiscalyear(company))
+    >>> fiscalyear = set_fiscalyear_invoice_sequences(create_fiscalyear())
     >>> fiscalyear.click('create_period')
 
-Create chart of accounts::
+Get accounts::
 
-    >>> _ = create_chart(company)
-    >>> accounts = get_accounts(company)
+    >>> accounts = get_accounts()
     >>> expense = accounts['expense']
 
 Create parties::

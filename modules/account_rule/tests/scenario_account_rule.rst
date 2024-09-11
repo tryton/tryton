@@ -9,12 +9,14 @@ Imports::
     >>> from proteus import Model
     >>> from trytond.modules.account.tests.tools import (
     ...     create_chart, create_tax, get_accounts)
-    >>> from trytond.modules.company.tests.tools import create_company, get_company
+    >>> from trytond.modules.company.tests.tools import create_company
     >>> from trytond.tests.tools import activate_modules, assertEqual
 
 Activate modules::
 
-    >>> config = activate_modules(['account_rule', 'product', 'sale'])
+    >>> config = activate_modules(
+    ...     ['account_rule', 'product', 'sale'],
+    ...     create_company, create_chart)
 
     >>> AccountRule = Model.get('account.account.rule')
     >>> Party = Model.get('party.party')
@@ -24,15 +26,9 @@ Activate modules::
     >>> Sale = Model.get('sale.sale')
     >>> Tax = Model.get('account.tax')
 
-Create company::
+Get accounts::
 
-    >>> _ = create_company()
-    >>> company = get_company()
-
-Create chart of accounts::
-
-    >>> _ = create_chart(company)
-    >>> accounts = get_accounts(company)
+    >>> accounts = get_accounts()
     >>> account_revenue1 = accounts['revenue']
     >>> account_revenue2, = account_revenue1.duplicate()
     >>> account_revenue3, = account_revenue1.duplicate()

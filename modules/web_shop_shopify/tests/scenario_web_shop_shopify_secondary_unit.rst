@@ -18,7 +18,7 @@ Imports::
     ...     create_chart, create_fiscalyear, get_accounts)
     >>> from trytond.modules.account_invoice.tests.tools import (
     ...     set_fiscalyear_invoice_sequences)
-    >>> from trytond.modules.company.tests.tools import create_company, get_company
+    >>> from trytond.modules.company.tests.tools import create_company
     >>> from trytond.tests.tools import activate_modules, assertEqual
 
     >>> FETCH_SLEEP, MAX_SLEEP = 1, 10
@@ -28,7 +28,8 @@ Activate modules::
     >>> config = activate_modules([
     ...         'web_shop_shopify',
     ...         'sale_secondary_unit',
-    ...         ])
+    ...         ],
+    ...     create_company, create_chart)
 
     >>> Account = Model.get('account.account')
     >>> Category = Model.get('product.category')
@@ -42,20 +43,13 @@ Activate modules::
     >>> Uom = Model.get('product.uom')
     >>> WebShop = Model.get('web.shop')
 
-Create company::
+Get accounts::
 
-    >>> _ = create_company()
-    >>> company = get_company()
-
-Create chart of accounts::
-
-    >>> _ = create_chart(company)
-    >>> accounts = get_accounts(company)
+    >>> accounts = get_accounts()
 
 Create fiscal year::
 
-    >>> fiscalyear = set_fiscalyear_invoice_sequences(
-    ...     create_fiscalyear(company))
+    >>> fiscalyear = set_fiscalyear_invoice_sequences(create_fiscalyear())
     >>> fiscalyear.click('create_period')
 
 Create payment journal::

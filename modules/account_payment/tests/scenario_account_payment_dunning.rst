@@ -10,14 +10,15 @@ Imports::
     >>> from proteus import Model, Wizard
     >>> from trytond.modules.account.tests.tools import (
     ...     create_chart, create_fiscalyear, get_accounts)
-    >>> from trytond.modules.company.tests.tools import create_company, get_company
+    >>> from trytond.modules.company.tests.tools import create_company
     >>> from trytond.tests.tools import activate_modules, assertEqual
 
     >>> today = dt.date.today()
 
 Activate modules::
 
-    >>> config = activate_modules(['account_payment', 'account_dunning'])
+    >>> config = activate_modules(
+    ...     ['account_payment', 'account_dunning'], create_company, create_chart)
 
     >>> Dunning = Model.get('account.dunning')
     >>> Journal = Model.get('account.journal')
@@ -26,21 +27,15 @@ Activate modules::
     >>> PaymentJournal = Model.get('account.payment.journal')
     >>> Procedure = Model.get('account.dunning.procedure')
 
-Create company::
+Get accounts::
 
-    >>> _ = create_company()
-    >>> company = get_company()
-
-Create chart of accounts::
-
-    >>> _ = create_chart(company)
-    >>> accounts = get_accounts(company)
+    >>> accounts = get_accounts()
 
     >>> expense_journal, = Journal.find([('code', '=', 'EXP')])
 
 Create fiscal year::
 
-    >>> fiscalyear = create_fiscalyear(company, today)
+    >>> fiscalyear = create_fiscalyear(today=today)
     >>> fiscalyear.click('create_period')
 
 Create dunning procedure::

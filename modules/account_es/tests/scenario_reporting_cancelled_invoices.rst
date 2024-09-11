@@ -5,6 +5,7 @@ Account ES Reporting Cancelled Invoices Scenario
 Imports::
 
     >>> from decimal import Decimal
+    >>> from functools import partial
 
     >>> from proteus import Model, Wizard
     >>> from trytond.modules.account.tests.tools import (
@@ -16,11 +17,12 @@ Imports::
 
 Activate modules::
 
-    >>> config = activate_modules('account_es')
+    >>> config = activate_modules(
+    ...     'account_es',
+    ...     create_company, partial(create_chart, chart='account_es.pgc_0_pyme'))
 
-Create company::
+Setup company::
 
-    >>> _ = create_company()
     >>> company = get_company()
     >>> tax_identifier = company.party.identifiers.new()
     >>> tax_identifier.type = 'eu_vat'
@@ -30,14 +32,13 @@ Create company::
 Create fiscal year::
 
     >>> fiscalyear = set_fiscalyear_invoice_sequences(
-    ...     create_fiscalyear(company))
+    ...     create_fiscalyear())
     >>> fiscalyear.click('create_period')
     >>> period = fiscalyear.periods[0]
 
-Create chart of accounts::
+Get accounts::
 
-    >>> _ = create_chart(company, 'account_es.pgc_0_pyme')
-    >>> accounts = get_accounts(company)
+    >>> accounts = get_accounts()
     >>> expense = accounts['expense']
     >>> revenue = accounts['revenue']
 

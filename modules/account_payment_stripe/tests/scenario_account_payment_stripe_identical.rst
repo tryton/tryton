@@ -17,16 +17,15 @@ Imports::
 
 Activate modules::
 
-    >>> config = activate_modules('account_payment_stripe')
+    >>> config = activate_modules('account_payment_stripe', create_company)
 
     >>> Company = Model.get('company.company')
     >>> Cron = Model.get('ir.cron')
     >>> StripeAccount = Model.get('account.payment.stripe.account')
     >>> StripeCustomer = Model.get('account.payment.stripe.customer')
 
-Create company::
+Get company::
 
-    >>> _ = create_company()
     >>> company = get_company()
 
 Create Stripe account::

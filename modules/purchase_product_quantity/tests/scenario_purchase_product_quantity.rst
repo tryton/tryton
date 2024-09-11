@@ -8,13 +8,14 @@ Imports::
 
     >>> from proteus import Model, Wizard
     >>> from trytond.modules.account.tests.tools import create_chart, get_accounts
-    >>> from trytond.modules.company.tests.tools import create_company, get_company
+    >>> from trytond.modules.company.tests.tools import create_company
     >>> from trytond.tests.tools import activate_modules, assertEqual, set_user
 
 Activate modules::
 
     >>> config = activate_modules(
-    ...     ['purchase_product_quantity', 'purchase_request'])
+    ...     ['purchase_product_quantity', 'purchase_request'],
+    ...     create_company, create_chart)
     >>> user = config.user
 
     >>> Location = Model.get('stock.location')
@@ -24,15 +25,9 @@ Activate modules::
     >>> ProductUom = Model.get('product.uom')
     >>> PurchaseRequest = Model.get('purchase.request')
 
-Create company::
+Get accounts::
 
-    >>> _ = create_company()
-    >>> company = get_company()
-
-Create chart of accounts::
-
-    >>> _ = create_chart(company)
-    >>> accounts = get_accounts(company)
+    >>> accounts = get_accounts()
 
 Create parties::
 
@@ -74,14 +69,14 @@ Get stock locations::
 
 Create the purchase request below minimal::
 
+    >>> ctx = config.context
     >>> set_user(0)
     >>> pr_id, = PurchaseRequest.create([{
     ...             'product': product.id,
     ...             'quantity': 30,
     ...             'unit': gr,
     ...             'warehouse': warehouse_loc.id,
-    ...             'company': company.id,
-    ...             }], config.context)
+    ...             }], ctx)
     >>> set_user(user)
     >>> purchase_request = PurchaseRequest(pr_id)
 
@@ -100,14 +95,14 @@ Create purchase::
 
 Create the purchase request wrong rounding::
 
+    >>> ctx = config.context
     >>> set_user(0)
     >>> pr_id, = PurchaseRequest.create([{
     ...             'product': product.id,
     ...             'quantity': 1001,
     ...             'unit': gr,
     ...             'warehouse': warehouse_loc.id,
-    ...             'company': company.id,
-    ...             }], config.context)
+    ...             }], ctx)
     >>> set_user(user)
     >>> purchase_request = PurchaseRequest(pr_id)
 

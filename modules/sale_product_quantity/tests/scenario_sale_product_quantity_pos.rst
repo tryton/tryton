@@ -7,13 +7,14 @@ Imports::
     >>> from decimal import Decimal
 
     >>> from proteus import Model
-    >>> from trytond.modules.company.tests.tools import create_company, get_company
+    >>> from trytond.modules.company.tests.tools import create_company
     >>> from trytond.tests.tools import activate_modules
 
 Activate modules::
 
     >>> config = activate_modules(
-    ...     ['sale_product_quantity', 'sale_point'])
+    ...     ['sale_product_quantity', 'sale_point'],
+    ...     create_company)
 
     >>> Journal = Model.get('account.journal')
     >>> Location = Model.get('stock.location')
@@ -24,11 +25,6 @@ Activate modules::
     >>> Sale = Model.get('sale.point.sale')
     >>> SequenceStrict = Model.get('ir.sequence.strict')
     >>> SequenceType = Model.get('ir.sequence.type')
-
-Create company::
-
-    >>> _ = create_company()
-    >>> company = get_company()
 
 Get journal::
 

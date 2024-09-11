@@ -10,14 +10,10 @@ Imports::
 
 Activate modules::
 
-    >>> config = activate_modules('quality')
+    >>> config = activate_modules('quality', create_company)
 
     >>> Control = Model.get('quality.control')
     >>> Inspection = Model.get('quality.inspection')
-
-Create company::
-
-    >>> _ = create_company()
 
 Create control::
 

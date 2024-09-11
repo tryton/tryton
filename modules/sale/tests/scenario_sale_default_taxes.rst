@@ -14,19 +14,14 @@ Imports::
 
 Activate modules::
 
-    >>> config = activate_modules('sale')
+    >>> config = activate_modules('sale', create_company, create_chart)
 
     >>> Party = Model.get('party.party')
     >>> Sale = Model.get('sale.sale')
     >>> Tax = Model.get('account.tax')
 
-Create company::
+Get accounts::
 
-    >>> _ = create_company()
-
-Create chart of accounts::
-
-    >>> _ = create_chart()
     >>> accounts = get_accounts()
 
 Create tax::

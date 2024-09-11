@@ -4,6 +4,8 @@ Account Statement AEB43 Scenario
 
 Imports::
 
+    >>> from functools import partial
+
     >>> from proteus import Model, Wizard
     >>> from trytond.modules.account.tests.tools import create_chart, get_accounts
     >>> from trytond.modules.company.tests.tools import create_company, get_company
@@ -13,20 +15,23 @@ Imports::
 
 Activate modules::
 
-    >>> config = activate_modules('account_statement_aeb43')
+    >>> config = activate_modules(
+    ...     'account_statement_aeb43',
+    ...     partial(create_company, currency='EUR'), create_chart)
 
-Create company::
+Get company::
+
+    >>> company = get_company()
+
+Setup currency::
 
     >>> eur = get_currency('EUR')
     >>> eur.numeric_code = '978'
     >>> eur.save()
-    >>> _ = create_company(currency=eur)
-    >>> company = get_company()
 
-Create chart of accounts::
+Get accounts::
 
-    >>> _ = create_chart(company)
-    >>> accounts = get_accounts(company)
+    >>> accounts = get_accounts()
     >>> cash = accounts['cash']
 
 Create parties::

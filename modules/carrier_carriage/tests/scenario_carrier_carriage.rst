@@ -8,12 +8,14 @@ Imports::
 
     >>> from proteus import Model
     >>> from trytond.modules.account.tests.tools import create_chart, get_accounts
-    >>> from trytond.modules.company.tests.tools import create_company, get_company
+    >>> from trytond.modules.company.tests.tools import create_company
     >>> from trytond.tests.tools import activate_modules, assertEqual
 
 Activate modules::
 
-    >>> config = activate_modules(['carrier_carriage', 'sale_shipment_cost'])
+    >>> config = activate_modules(
+    ...     ['carrier_carriage', 'sale_shipment_cost'],
+    ...     create_company, create_chart)
 
     >>> Carrier = Model.get('carrier')
     >>> Party = Model.get('party.party')
@@ -22,15 +24,9 @@ Activate modules::
     >>> ProductUom = Model.get('product.uom')
     >>> Sale = Model.get('sale.sale')
 
-Create company::
+Get accounts::
 
-    >>> _ = create_company()
-    >>> company = get_company()
-
-Create chart of accounts::
-
-    >>> _ = create_chart(company)
-    >>> accounts = get_accounts(company)
+    >>> accounts = get_accounts()
 
 Create customer::
 

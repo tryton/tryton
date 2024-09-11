@@ -9,25 +9,22 @@ Imports::
     >>> from proteus import Model
     >>> from trytond.modules.account.tests.tools import create_chart, get_accounts
     >>> from trytond.modules.account_invoice.tests.tools import create_payment_term
-    >>> from trytond.modules.company.tests.tools import create_company, get_company
+    >>> from trytond.modules.company.tests.tools import create_company
+    >>> from trytond.modules.currency.tests.tools import get_currency
     >>> from trytond.tests.tools import activate_modules
 
 Activate modules::
 
     >>> config = activate_modules(
-    ...     ['account_cash_rounding', 'account_invoice', 'sale'])
-
-Create company::
-
-    >>> _ = create_company()
-    >>> company = get_company()
-
-Create chart of accounts::
+    ...     ['account_cash_rounding', 'account_invoice', 'sale'],
+    ...     create_company, create_chart)
 
     >>> Account = Model.get('account.account')
     >>> AccountConfig = Model.get('account.configuration')
-    >>> _ = create_chart(company)
-    >>> accounts = get_accounts(company)
+
+Get accounts::
+
+    >>> accounts = get_accounts()
 
 Set cash rounding::
 
@@ -45,7 +42,7 @@ Set cash rounding::
     >>> account_config.cash_rounding_debit_account = cash_rounding_debit
     >>> account_config.save()
 
-    >>> currency = company.currency
+    >>> currency = get_currency()
     >>> currency.cash_rounding = Decimal('0.05')
     >>> currency.save()
 

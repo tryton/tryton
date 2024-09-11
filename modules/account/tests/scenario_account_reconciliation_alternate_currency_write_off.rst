@@ -17,7 +17,7 @@ Imports::
 
 Activate modules::
 
-    >>> config = activate_modules('account')
+    >>> config = activate_modules('account', create_company, create_chart)
 
     >>> Configuration = Model.get('account.configuration')
     >>> Journal = Model.get('account.journal')
@@ -31,19 +31,14 @@ Create currencies::
     >>> usd = get_currency('USD')
     >>> eur = get_currency('EUR')
 
-Create company::
-
-    >>> _ = create_company(currency=usd)
-
 Create fiscal year::
 
     >>> fiscalyear = create_fiscalyear()
     >>> fiscalyear.click('create_period')
     >>> period = fiscalyear.periods[0]
 
-Create chart of accounts::
+Get accounts::
 
-    >>> _ = create_chart()
     >>> accounts = get_accounts()
 
 Configure currency exchange::

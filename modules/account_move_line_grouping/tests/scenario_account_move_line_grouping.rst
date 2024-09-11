@@ -10,12 +10,13 @@ Imports::
     >>> from trytond import backend
     >>> from trytond.modules.account.tests.tools import (
     ...     create_chart, create_fiscalyear, get_accounts)
-    >>> from trytond.modules.company.tests.tools import create_company, get_company
+    >>> from trytond.modules.company.tests.tools import create_company
     >>> from trytond.tests.tools import activate_modules
 
 Activate modules::
 
-    >>> config = activate_modules('account_move_line_grouping')
+    >>> config = activate_modules(
+    ...     'account_move_line_grouping', create_company, create_chart)
 
     >>> Journal = Model.get('account.journal')
     >>> Line = Model.get('account.move.line')
@@ -23,21 +24,15 @@ Activate modules::
     >>> Move = Model.get('account.move')
     >>> Party = Model.get('party.party')
 
-Create company::
-
-    >>> _ = create_company()
-    >>> company = get_company()
-
 Create fiscal year::
 
-    >>> fiscalyear = create_fiscalyear(company)
+    >>> fiscalyear = create_fiscalyear()
     >>> fiscalyear.click('create_period')
     >>> period = fiscalyear.periods[0]
 
-Create chart of accounts::
+Get accounts::
 
-    >>> _ = create_chart(company)
-    >>> accounts = get_accounts(company)
+    >>> accounts = get_accounts()
 
     >>> journal_revenue, = Journal.find([
     ...         ('code', '=', "REV"),

@@ -7,23 +7,19 @@ Imports::
     >>> from decimal import Decimal
 
     >>> from proteus import Model, Report
-    >>> from trytond.modules.company.tests.tools import create_company, get_company
+    >>> from trytond.modules.company.tests.tools import create_company
+    >>> from trytond.modules.currency.tests.tools import get_currency
     >>> from trytond.tests.tools import activate_modules, assertNotEqual
 
 Activate modules::
 
-    >>> config = activate_modules('stock')
+    >>> config = activate_modules('stock', create_company)
 
     >>> Location = Model.get('stock.location')
     >>> Party = Model.get('party.party')
     >>> ProductTemplate = Model.get('product.template')
     >>> ProductUom = Model.get('product.uom')
     >>> ShipmentIn = Model.get('stock.shipment.in')
-
-Create company::
-
-    >>> _ = create_company()
-    >>> company = get_company()
 
 Create supplier::
 
@@ -57,7 +53,7 @@ Create a shipment::
     >>> move.from_location = supplier_loc
     >>> move.to_location = input_loc
     >>> move.unit_price = Decimal('5')
-    >>> move.currency = company.currency
+    >>> move.currency = get_currency()
     >>> shipment.save()
     >>> assertNotEqual(shipment.number, None)
 

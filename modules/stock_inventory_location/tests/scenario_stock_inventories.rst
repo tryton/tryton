@@ -10,11 +10,7 @@ Imports::
 
 Activate modules::
 
-    >>> config = activate_modules('stock_inventory_location')
-
-Create company::
-
-    >>> _ = create_company()
+    >>> config = activate_modules('stock_inventory_location', create_company)
 
 Get stock locations::
 

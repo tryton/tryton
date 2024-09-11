@@ -8,12 +8,14 @@ Imports::
     >>> from decimal import Decimal
 
     >>> from proteus import Model
-    >>> from trytond.modules.company.tests.tools import create_company, get_company
+    >>> from trytond.modules.company.tests.tools import create_company
     >>> from trytond.tests.tools import activate_modules
 
 Activate modules::
 
-    >>> config = activate_modules('sale_product_recommendation_association_rule')
+    >>> config = activate_modules(
+    ...     'sale_product_recommendation_association_rule',
+    ...     create_company)
 
     >>> Cron = Model.get('ir.cron')
     >>> Party = Model.get('party.party')
@@ -22,11 +24,6 @@ Activate modules::
     >>> Sale = Model.get('sale.sale')
     >>> SaleConfiguration = Model.get('sale.configuration')
     >>> Uom = Model.get('product.uom')
-
-Create company::
-
-    >>> _ = create_company()
-    >>> company = get_company()
 
 Configuration association rule::
 

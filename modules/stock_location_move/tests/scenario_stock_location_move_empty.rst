@@ -17,11 +17,10 @@ Imports::
 
 Activate modules::
 
-    >>> config = activate_modules('stock_location_move')
+    >>> config = activate_modules('stock_location_move', create_company)
 
-Create company::
+Get company::
 
-    >>> _ = create_company()
     >>> company = get_company()
 
 Create customer::

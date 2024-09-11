@@ -8,19 +8,19 @@ Imports::
     >>> from decimal import Decimal
 
     >>> from proteus import Model
-    >>> from trytond.modules.company.tests.tools import create_company, get_company
+    >>> from trytond.modules.company.tests.tools import create_company
+    >>> from trytond.modules.currency.tests.tools import get_currency
     >>> from trytond.tests.tools import activate_modules, assertEqual
 
     >>> today = dt.date.today()
 
 Activate modules::
 
-    >>> config = activate_modules('stock')
+    >>> config = activate_modules('stock', create_company)
 
-Create company::
+Get currency::
 
-    >>> _ = create_company()
-    >>> company = get_company()
+    >>> currency = get_currency()
 
 Get stock locations::
 
@@ -82,9 +82,8 @@ Fill storage::
     >>> incoming_move.to_location = storage_loc
     >>> incoming_move.planned_date = today
     >>> incoming_move.effective_date = today
-    >>> incoming_move.company = company
     >>> incoming_move.unit_price = Decimal('100')
-    >>> incoming_move.currency = company.currency
+    >>> incoming_move.currency = currency
     >>> incoming_moves = [incoming_move]
 
     >>> incoming_move = StockMove()
@@ -95,9 +94,8 @@ Fill storage::
     >>> incoming_move.to_location = storage_loc
     >>> incoming_move.planned_date = today
     >>> incoming_move.effective_date = today
-    >>> incoming_move.company = company
     >>> incoming_move.unit_price = Decimal('70')
-    >>> incoming_move.currency = company.currency
+    >>> incoming_move.currency = currency
     >>> incoming_moves.append(incoming_move)
     >>> StockMove.click(incoming_moves, 'do')
 
@@ -129,9 +127,8 @@ Fill storage with more quantities::
     >>> incoming_move.to_location = storage_loc
     >>> incoming_move.planned_date = today
     >>> incoming_move.effective_date = today
-    >>> incoming_move.company = company
     >>> incoming_move.unit_price = Decimal('100')
-    >>> incoming_move.currency = company.currency
+    >>> incoming_move.currency = currency
     >>> incoming_moves = [incoming_move]
 
     >>> incoming_move = StockMove()
@@ -142,9 +139,8 @@ Fill storage with more quantities::
     >>> incoming_move.to_location = storage_loc
     >>> incoming_move.planned_date = today
     >>> incoming_move.effective_date = today
-    >>> incoming_move.company = company
     >>> incoming_move.unit_price = Decimal('70')
-    >>> incoming_move.currency = company.currency
+    >>> incoming_move.currency = currency
     >>> incoming_moves.append(incoming_move)
     >>> StockMove.click(incoming_moves, 'do')
 

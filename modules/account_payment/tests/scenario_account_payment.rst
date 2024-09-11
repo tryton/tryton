@@ -10,7 +10,7 @@ Imports::
     >>> from proteus import Model, Wizard
     >>> from trytond.modules.account.tests.tools import (
     ...     create_chart, create_fiscalyear, get_accounts)
-    >>> from trytond.modules.company.tests.tools import create_company, get_company
+    >>> from trytond.modules.company.tests.tools import create_company
     >>> from trytond.tests.tools import activate_modules, assertEqual
 
     >>> today = dt.date.today()
@@ -18,12 +18,7 @@ Imports::
 
 Activate modules::
 
-    >>> config = activate_modules('account_payment')
-
-Create company::
-
-    >>> _ = create_company()
-    >>> company = get_company()
+    >>> config = activate_modules('account_payment', create_company, create_chart)
 
 Set employee::
 
@@ -41,13 +36,12 @@ Set employee::
 
 Create fiscal year::
 
-    >>> fiscalyear = create_fiscalyear(company, (today, tomorrow))
+    >>> fiscalyear = create_fiscalyear(today=(today, tomorrow))
     >>> fiscalyear.click('create_period')
 
-Create chart of accounts::
+Get accounts::
 
-    >>> _ = create_chart(company)
-    >>> accounts = get_accounts(company)
+    >>> accounts = get_accounts()
     >>> payable = accounts['payable']
     >>> expense = accounts['expense']
 

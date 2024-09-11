@@ -13,7 +13,8 @@ Imports::
 
 Activate modules::
 
-    >>> config = activate_modules('sale_supply_production')
+    >>> config = activate_modules(
+    ...     'sale_supply_production', create_company, create_chart)
 
     >>> Inventory = Model.get('stock.inventory')
     >>> Location = Model.get('stock.location')
@@ -23,13 +24,8 @@ Activate modules::
     >>> Sale = Model.get('sale.sale')
     >>> UoM = Model.get('product.uom')
 
-Create company::
+Get accounts::
 
-    >>> _ = create_company()
-
-Create chart of accounts::
-
-    >>> _ = create_chart()
     >>> accounts = get_accounts()
 
 Create parties::

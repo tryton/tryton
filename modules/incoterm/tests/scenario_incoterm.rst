@@ -14,7 +14,8 @@ Imports::
 Activate modules::
 
     >>> config = activate_modules(
-    ...     ['incoterm', 'sale', 'sale_shipment_cost', 'purchase'])
+    ...     ['incoterm', 'sale', 'sale_shipment_cost', 'purchase'],
+    ...     create_company, create_chart)
 
     >>> Address = Model.get('party.address')
     >>> Carrier = Model.get('carrier')
@@ -35,9 +36,8 @@ Create countries::
     >>> china = Country(name="China", code='CN')
     >>> china.save()
 
-Create company::
+Setup company::
 
-    >>> _ = create_company()
     >>> company = get_company()
     >>> company.incoterms.extend(Incoterm.find([
     ...         ('code', 'in', ['FCA', 'CIP', 'CFR', 'CIF']),
@@ -45,9 +45,8 @@ Create company::
     ...         ]))
     >>> company.save()
 
-Create chart of accounts::
+Get accounts::
 
-    >>> _ = create_chart(company)
     >>> accounts = get_accounts(company)
 
 Create addresses::

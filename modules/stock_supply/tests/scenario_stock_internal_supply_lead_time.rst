@@ -8,7 +8,8 @@ Imports::
     >>> from decimal import Decimal
 
     >>> from proteus import Model, Wizard
-    >>> from trytond.modules.company.tests.tools import create_company, get_company
+    >>> from trytond.modules.company.tests.tools import create_company
+    >>> from trytond.modules.currency.tests.tools import get_currency
     >>> from trytond.tests.tools import activate_modules, assertEqual
 
     >>> today = dt.date.today()
@@ -16,18 +17,13 @@ Imports::
 
 Activate modules::
 
-    >>> config = activate_modules('stock_supply')
+    >>> config = activate_modules('stock_supply', create_company)
 
 Create customer::
 
     >>> Party = Model.get('party.party')
     >>> customer = Party(name='Customer')
     >>> customer.save()
-
-Create company::
-
-    >>> _ = create_company()
-    >>> company = get_company()
 
 Create product::
 
@@ -101,7 +97,7 @@ Create needs for tomorrow in second warehouse::
     >>> move.from_location = sec_warehouse_loc.output_location
     >>> move.to_location = customer_loc
     >>> move.unit_price = Decimal('20')
-    >>> move.currency = company.currency
+    >>> move.currency = get_currency()
     >>> shipment.click('wait')
     >>> shipment.state
     'waiting'

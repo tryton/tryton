@@ -22,22 +22,18 @@ Imports::
 
 Activate modules::
 
-    >>> config = activate_modules('account_payment_stripe')
+    >>> config = activate_modules(
+    ...     'account_payment_stripe', create_company, create_chart)
 
-Create company::
+Get company::
 
     >>> Company = Model.get('company.company')
-    >>> _ = create_company()
     >>> company = get_company()
 
 Create fiscal year::
 
-    >>> fiscalyear = create_fiscalyear(company, today)
+    >>> fiscalyear = create_fiscalyear(today=today)
     >>> fiscalyear.click('create_period')
-
-Create chart of accounts::
-
-    >>> _ = create_chart(company)
 
 Create Stripe account::
 

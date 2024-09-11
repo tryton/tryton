@@ -9,7 +9,7 @@ Imports::
 
     >>> from proteus import Model, Report
     >>> from trytond.modules.account.tests.tools import create_chart, get_accounts
-    >>> from trytond.modules.company.tests.tools import create_company, get_company
+    >>> from trytond.modules.company.tests.tools import create_company
     >>> from trytond.modules.sale_gift_card import sale
     >>> from trytond.tests.tools import activate_modules, assertEqual
 
@@ -20,7 +20,7 @@ Patch send_message_transactional::
 
 Activate modules::
 
-    >>> config = activate_modules('sale_gift_card')
+    >>> config = activate_modules('sale_gift_card', create_company, create_chart)
 
     >>> Account = Model.get('account.account')
     >>> AccountConfig = Model.get('account.configuration')
@@ -34,15 +34,9 @@ Activate modules::
     >>> Sequence = Model.get('ir.sequence')
     >>> SequenceType = Model.get('ir.sequence.type')
 
-Create company::
+Get accounts::
 
-    >>> _ = create_company()
-    >>> company = get_company()
-
-Create chart of accounts::
-
-    >>> _ = create_chart(company)
-    >>> accounts = get_accounts(company)
+    >>> accounts = get_accounts()
 
 Setup gift card accounting::
 

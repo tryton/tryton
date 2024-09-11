@@ -8,19 +8,19 @@ Imports::
     >>> from decimal import Decimal
 
     >>> from proteus import Model
-    >>> from trytond.modules.company.tests.tools import create_company, get_company
+    >>> from trytond.modules.company.tests.tools import create_company
+    >>> from trytond.modules.currency.tests.tools import get_currency
     >>> from trytond.tests.tools import activate_modules, assertEqual
 
     >>> today = dt.date.today()
 
 Activate modules::
 
-    >>> config = activate_modules('stock_product_location')
+    >>> config = activate_modules('stock_product_location', create_company)
 
-Create company::
+Get currency::
 
-    >>> _ = create_company()
-    >>> company = get_company()
+    >>> currency = get_currency()
 
 Create customer::
 
@@ -76,7 +76,6 @@ Create Shipment in::
     >>> shipment_in.planned_date = today
     >>> shipment_in.supplier = supplier
     >>> shipment_in.warehouse = warehouse_loc
-    >>> shipment_in.company = company
 
 Add one shipment line of product::
 
@@ -86,9 +85,8 @@ Add one shipment line of product::
     >>> move.quantity = 1
     >>> move.from_location = supplier_loc
     >>> move.to_location = input_loc
-    >>> move.company = company
     >>> move.unit_price = Decimal('1')
-    >>> move.currency = company.currency
+    >>> move.currency = currency
     >>> shipment_in.save()
 
 Test that to_location is child location on reception::
@@ -112,9 +110,8 @@ Add one shipment return line::
     >>> move.quantity = 1
     >>> move.from_location = customer_loc
     >>> move.to_location = input_loc
-    >>> move.company = company
     >>> move.unit_price = Decimal('1')
-    >>> move.currency = company.currency
+    >>> move.currency = currency
     >>> shipment_out_return.save()
 
 Test that to_location is child location on reception::

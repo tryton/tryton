@@ -8,7 +8,8 @@ Imports::
     >>> from decimal import Decimal
 
     >>> from proteus import Model
-    >>> from trytond.modules.company.tests.tools import create_company, get_company
+    >>> from trytond.modules.company.tests.tools import create_company
+    >>> from trytond.modules.currency.tests.tools import get_currency
     >>> from trytond.tests.tools import activate_modules
 
     >>> today = dt.date.today()
@@ -16,7 +17,7 @@ Imports::
 
 Activate modules::
 
-    >>> config = activate_modules('stock')
+    >>> config = activate_modules('stock', create_company)
 
     >>> Cron = Model.get('ir.cron')
     >>> Location = Model.get('stock.location')
@@ -27,10 +28,9 @@ Activate modules::
     >>> ShipmentOut = Model.get('stock.shipment.out')
     >>> UoM = Model.get('product.uom')
 
-Create company::
+Get currency::
 
-    >>> _ = create_company()
-    >>> company = get_company()
+    >>> currency = get_currency()
 
 Create a product::
 
@@ -62,7 +62,7 @@ Fill storage::
     >>> move.from_location = supplier_loc
     >>> move.to_location = storage_loc
     >>> move.unit_price = Decimal('10.0000')
-    >>> move.currency = company.currency
+    >>> move.currency = currency
     >>> move.effective_date = yesterday
     >>> move.click('do')
     >>> move.state
@@ -92,7 +92,7 @@ Create different shipments with different planned dates::
     >>> move.product = product
     >>> move.quantity = 2
     >>> move.unit_price = Decimal('10.0000')
-    >>> move.currency = company.currency
+    >>> move.currency = currency
     >>> shipment_out_1.click('wait')
     >>> shipment_out_1.state
     'waiting'

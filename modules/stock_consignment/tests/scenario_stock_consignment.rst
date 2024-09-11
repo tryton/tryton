@@ -9,22 +9,16 @@ Imports::
     >>> from proteus import Model
     >>> from trytond.modules.account.tests.tools import (
     ...     create_chart, create_tax, get_accounts)
-    >>> from trytond.modules.company.tests.tools import create_company, get_company
+    >>> from trytond.modules.company.tests.tools import create_company
     >>> from trytond.tests.tools import activate_modules, assertEqual
 
 Activate modules::
 
-    >>> config = activate_modules('stock_consignment')
+    >>> config = activate_modules('stock_consignment', create_company, create_chart)
 
-Create company::
+Get accounts::
 
-    >>> _ = create_company()
-    >>> company = get_company()
-
-Create chart of accounts::
-
-    >>> _ = create_chart(company)
-    >>> accounts = get_accounts(company)
+    >>> accounts = get_accounts()
     >>> revenue = accounts['revenue']
     >>> expense = accounts['expense']
 
@@ -173,7 +167,7 @@ Use supplier consignment stock for shipment out::
     >>> move.product = product
     >>> move.quantity = 3
     >>> move.unit_price = Decimal('10')
-    >>> move.currency = company.currency
+    >>> move.currency = shipment_out.company.currency
     >>> move.from_location = output_loc
     >>> move.to_location = customer_loc
     >>> shipment_out.click('wait')

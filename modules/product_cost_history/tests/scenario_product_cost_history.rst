@@ -13,13 +13,12 @@ Imports::
 
 Activate modules::
 
-    >>> config = activate_modules('product_cost_history')
+    >>> config = activate_modules('product_cost_history', create_company)
 
     >>> Date = Model.get('ir.date')
 
-Create company::
+Setup company::
 
-    >>> _ = create_company()
     >>> company = get_company()
     >>> company.timezone = 'Europe/Madrid'
     >>> company.save()

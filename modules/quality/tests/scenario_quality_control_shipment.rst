@@ -12,7 +12,7 @@ Imports::
 
 Activate modules::
 
-    >>> config = activate_modules(['quality', 'stock'])
+    >>> config = activate_modules(['quality', 'stock'], create_company)
 
     >>> Control = Model.get('quality.control')
     >>> Inspection = Model.get('quality.inspection')
@@ -20,10 +20,6 @@ Activate modules::
     >>> ProductTemplate = Model.get('product.template')
     >>> Shipment = Model.get('stock.shipment.in')
     >>> UoM = Model.get('product.uom')
-
-Create company::
-
-    >>> _ = create_company()
 
 Create party::
 

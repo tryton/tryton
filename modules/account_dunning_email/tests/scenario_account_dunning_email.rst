@@ -12,7 +12,7 @@ Imports::
     >>> from trytond.modules.account.tests.tools import (
     ...     create_chart, create_fiscalyear, get_accounts)
     >>> from trytond.modules.account_dunning_email import account
-    >>> from trytond.modules.company.tests.tools import create_company, get_company
+    >>> from trytond.modules.company.tests.tools import create_company
     >>> from trytond.tests.tools import activate_modules, assertEqual
 
 Patch send_message_transactional::
@@ -24,25 +24,20 @@ Patch send_message_transactional::
 
 Activate modules::
 
-    >>> config = activate_modules('account_dunning_email')
+    >>> config = activate_modules(
+    ...     'account_dunning_email', create_company, create_chart)
 
     >>> Email = Model.get('ir.email')
 
-Create company::
-
-    >>> _ = create_company()
-    >>> company = get_company()
-
 Create fiscal year::
 
-    >>> fiscalyear = create_fiscalyear(company)
+    >>> fiscalyear = create_fiscalyear()
     >>> fiscalyear.click('create_period')
     >>> period = fiscalyear.periods[0]
 
-Create chart of accounts::
+Get accounts::
 
-    >>> _ = create_chart(company)
-    >>> accounts = get_accounts(company)
+    >>> accounts = get_accounts()
     >>> receivable = accounts['receivable']
     >>> revenue = accounts['revenue']
     >>> cash = accounts['cash']

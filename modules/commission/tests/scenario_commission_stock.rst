@@ -21,7 +21,8 @@ Imports::
 Activate modules::
 
     >>> config = activate_modules(
-    ...     ['commission', 'sale', 'stock', 'account_invoice_stock'])
+    ...     ['commission', 'sale', 'stock', 'account_invoice_stock'],
+    ...     create_company, create_chart)
 
     >>> Agent = Model.get('commission.agent')
     >>> Commission = Model.get('commission')
@@ -33,21 +34,19 @@ Activate modules::
     >>> Template = Model.get('product.template')
     >>> Uom = Model.get('product.uom')
 
-Create company::
+Get company::
 
-    >>> _ = create_company()
     >>> company = get_company()
 
 Create fiscal year::
 
     >>> fiscalyear = set_fiscalyear_invoice_sequences(
-    ...     create_fiscalyear(company, (yesterday, today)))
+    ...     create_fiscalyear(today=(yesterday, today)))
     >>> fiscalyear.click('create_period')
 
-Create chart of accounts::
+Get accounts::
 
-    >>> _ = create_chart(company)
-    >>> accounts = get_accounts(company)
+    >>> accounts = get_accounts()
 
 Create customer::
 

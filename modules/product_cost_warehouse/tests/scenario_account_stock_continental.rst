@@ -17,7 +17,8 @@ Imports::
 Activate product_cost_warehouse::
 
     >>> config = activate_modules([
-    ...         'product_cost_warehouse', 'account_stock_continental'])
+    ...         'product_cost_warehouse', 'account_stock_continental'],
+    ...     create_company, create_chart)
 
     >>> Location = Model.get('stock.location')
     >>> Product = Model.get('product.product')
@@ -28,21 +29,19 @@ Activate product_cost_warehouse::
     >>> ShipmentInternal = Model.get('stock.shipment.internal')
     >>> StockConfiguration = Model.get('stock.configuration')
 
-Create company::
+Get company::
 
-    >>> _ = create_company()
     >>> company = get_company()
 
 Create fiscal year::
 
-    >>> fiscalyear = create_fiscalyear(company)
+    >>> fiscalyear = create_fiscalyear()
     >>> fiscalyear.account_stock_method = 'continental'
     >>> fiscalyear.click('create_period')
 
-Create chart of accounts::
+Get accounts::
 
-    >>> _ = create_chart(company)
-    >>> accounts = add_stock_accounts(get_accounts(company), company)
+    >>> accounts = add_stock_accounts(get_accounts())
 
 Create product category::
 

@@ -16,7 +16,7 @@ Imports::
     ...     add_cogs_accounts)
     >>> from trytond.modules.account_stock_continental.tests.tools import (
     ...     add_stock_accounts)
-    >>> from trytond.modules.company.tests.tools import create_company, get_company
+    >>> from trytond.modules.company.tests.tools import create_company
     >>> from trytond.tests.tools import activate_modules, set_user
 
     >>> today = dt.date.today()
@@ -27,12 +27,8 @@ Activate modules::
     ...         'account_stock_anglo_saxon',
     ...         'sale',
     ...         'purchase',
-    ...         ])
-
-Create company::
-
-    >>> _ = create_company()
-    >>> company = get_company()
+    ...         ],
+    ...     create_company, create_chart)
 
 Create the required users::
 
@@ -69,15 +65,13 @@ Create the required users::
 Create fiscal year::
 
     >>> fiscalyear = set_fiscalyear_invoice_sequences(
-    ...     create_fiscalyear(company, today))
+    ...     create_fiscalyear(today=today))
     >>> fiscalyear.account_stock_method = 'anglo_saxon'
     >>> fiscalyear.click('create_period')
 
-Create chart of accounts::
+Get accounts::
 
-    >>> _ = create_chart(company)
-    >>> accounts = add_cogs_accounts(add_stock_accounts(
-    ...         get_accounts(company), company), company)
+    >>> accounts = add_cogs_accounts(add_stock_accounts(get_accounts()))
     >>> receivable = accounts['receivable']
     >>> payable = accounts['payable']
     >>> revenue = accounts['revenue']

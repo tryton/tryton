@@ -8,19 +8,15 @@ Imports::
     >>> from decimal import Decimal
 
     >>> from proteus import Model
-    >>> from trytond.modules.company.tests.tools import create_company, get_company
+    >>> from trytond.modules.company.tests.tools import create_company
+    >>> from trytond.modules.currency.tests.tools import get_currency
     >>> from trytond.tests.tools import activate_modules, assertEqual
 
     >>> today = dt.date.today()
 
 Activate modules::
 
-    >>> config = activate_modules('stock_lot')
-
-Create company::
-
-    >>> _ = create_company()
-    >>> company = get_company()
+    >>> config = activate_modules('stock_lot', create_company)
 
 Create customer::
 
@@ -59,16 +55,14 @@ Create Shipment Out::
     >>> shipment_out.planned_date = today
     >>> shipment_out.customer = customer
     >>> shipment_out.warehouse = warehouse_loc
-    >>> shipment_out.company = company
     >>> move = shipment_out.outgoing_moves.new()
     >>> move.product = product
     >>> move.unit = unit
     >>> move.quantity = 10
     >>> move.from_location = output_loc
     >>> move.to_location = customer_loc
-    >>> move.company = company
     >>> move.unit_price = Decimal('1')
-    >>> move.currency = company.currency
+    >>> move.currency = get_currency()
     >>> shipment_out.save()
 
 Set the shipment state to waiting::

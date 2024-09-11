@@ -11,17 +11,14 @@ Imports::
     ...     create_chart, create_fiscalyear, get_accounts)
     >>> from trytond.modules.account_invoice.tests.tools import (
     ...     create_payment_term, set_fiscalyear_invoice_sequences)
-    >>> from trytond.modules.company.tests.tools import create_company, get_company
+    >>> from trytond.modules.company.tests.tools import create_company
     >>> from trytond.tests.tools import activate_modules, set_user
 
 Activate modules::
 
-    >>> config = activate_modules(['sale_supply', 'sale', 'purchase'])
-
-Create company::
-
-    >>> _ = create_company()
-    >>> company = get_company()
+    >>> config = activate_modules(
+    ...     ['sale_supply', 'sale', 'purchase'],
+    ...     create_company, create_chart)
 
 Create sale user::
 
@@ -58,14 +55,12 @@ Create stock user::
 
 Create fiscal year::
 
-    >>> fiscalyear = set_fiscalyear_invoice_sequences(
-    ...     create_fiscalyear(company))
+    >>> fiscalyear = set_fiscalyear_invoice_sequences(create_fiscalyear())
     >>> fiscalyear.click('create_period')
 
-Create chart of accounts::
+Get accounts::
 
-    >>> _ = create_chart(company)
-    >>> accounts = get_accounts(company)
+    >>> accounts = get_accounts()
     >>> revenue = accounts['revenue']
     >>> expense = accounts['expense']
 

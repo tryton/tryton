@@ -12,7 +12,7 @@ Imports::
     ...     create_chart, create_fiscalyear, get_accounts)
     >>> from trytond.modules.account_invoice.tests.tools import (
     ...     set_fiscalyear_invoice_sequences)
-    >>> from trytond.modules.company.tests.tools import create_company, get_company
+    >>> from trytond.modules.company.tests.tools import create_company
     >>> from trytond.tests.tools import activate_modules
 
     >>> today = dt.date.today()
@@ -23,7 +23,8 @@ Activate modules::
     ...         'purchase_shipment_cost',
     ...         'account_invoice_stock',
     ...         'purchase',
-    ...         ])
+    ...         ],
+    ...     create_company, create_chart)
 
     >>> Carrier = Model.get('carrier')
     >>> Move = Model.get('stock.move')
@@ -34,20 +35,14 @@ Activate modules::
     >>> Purchase = Model.get('purchase.purchase')
     >>> ShipmentIn = Model.get('stock.shipment.in')
 
-Create company::
+Get accounts::
 
-    >>> _ = create_company()
-    >>> company = get_company()
-
-Create chart of accounts::
-
-    >>> _ = create_chart(company)
-    >>> accounts = get_accounts(company)
+    >>> accounts = get_accounts()
 
 Create fiscal year::
 
     >>> fiscalyear = set_fiscalyear_invoice_sequences(
-    ...     create_fiscalyear(company, today))
+    ...     create_fiscalyear(today=today))
     >>> fiscalyear.click('create_period')
 
 Create account categories::

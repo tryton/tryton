@@ -12,7 +12,7 @@ Imports::
     ...     create_chart, create_fiscalyear, get_accounts)
     >>> from trytond.modules.account_invoice.tests.tools import (
     ...     create_payment_term, set_fiscalyear_invoice_sequences)
-    >>> from trytond.modules.company.tests.tools import create_company, get_company
+    >>> from trytond.modules.company.tests.tools import create_company
     >>> from trytond.tests.tools import activate_modules, assertEqual, set_user
 
     >>> today = dt.date.today()
@@ -23,12 +23,8 @@ Activate modules::
     ...         'sale_supply_drop_shipment',
     ...         'sale',
     ...         'purchase',
-    ...         ])
-
-Create company::
-
-    >>> _ = create_company()
-    >>> company = get_company()
+    ...         ],
+    ...     create_company, create_chart)
 
 Create sale user::
 
@@ -82,13 +78,12 @@ Create account user::
 Create fiscal year::
 
     >>> fiscalyear = set_fiscalyear_invoice_sequences(
-    ...     create_fiscalyear(company, today))
+    ...     create_fiscalyear(today=today))
     >>> fiscalyear.click('create_period')
 
-Create chart of accounts::
+Get accounts::
 
-    >>> _ = create_chart(company)
-    >>> accounts = get_accounts(company)
+    >>> accounts = get_accounts()
     >>> revenue = accounts['revenue']
     >>> expense = accounts['expense']
 

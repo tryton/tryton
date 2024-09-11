@@ -9,22 +9,16 @@ Imports::
     >>> from proteus import Model
     >>> from trytond.modules.account.tests.tools import (
     ...     create_chart, create_tax, get_accounts)
-    >>> from trytond.modules.company.tests.tools import create_company, get_company
+    >>> from trytond.modules.company.tests.tools import create_company
     >>> from trytond.tests.tools import activate_modules, assertEqual
 
 Activate modules::
 
-    >>> config = activate_modules('sale')
+    >>> config = activate_modules('sale', create_company, create_chart)
 
-Create company::
+Get accounts::
 
-    >>> _ = create_company()
-    >>> company = get_company()
-
-Create chart of accounts::
-
-    >>> _ = create_chart(company)
-    >>> accounts = get_accounts(company)
+    >>> accounts = get_accounts()
     >>> revenue = accounts['revenue']
 
 Create tax and tax rule::
@@ -35,7 +29,7 @@ Create tax and tax rule::
     >>> other_tax.save()
 
     >>> TaxRule = Model.get('account.tax.rule')
-    >>> foreign = TaxRule(name='Foreign Customers', company=company)
+    >>> foreign = TaxRule(name='Foreign Customers')
     >>> foreign_tax = foreign.lines.new()
     >>> foreign_tax.origin_tax = tax
     >>> foreign_tax.tax = other_tax

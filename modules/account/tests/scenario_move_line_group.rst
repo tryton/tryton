@@ -11,31 +11,28 @@ Imports::
     >>> from trytond.modules.account.exceptions import CancelDelegatedWarning
     >>> from trytond.modules.account.tests.tools import (
     ...     create_chart, create_fiscalyear, get_accounts)
-    >>> from trytond.modules.company.tests.tools import create_company, get_company
+    >>> from trytond.modules.company.tests.tools import create_company
     >>> from trytond.modules.currency.tests.tools import get_currency
     >>> from trytond.tests.tools import activate_modules, assertEqual
 
 Activate modules::
 
-    >>> config = activate_modules('account')
+    >>> config = activate_modules('account', create_company, create_chart)
 
-Create company::
+Get currency::
 
     >>> usd = get_currency('USD')
     >>> eur = get_currency('EUR')
-    >>> _ = create_company(currency=usd)
-    >>> company = get_company()
 
 Create fiscal year::
 
-    >>> fiscalyear = create_fiscalyear(company)
+    >>> fiscalyear = create_fiscalyear()
     >>> fiscalyear.click('create_period')
     >>> period = fiscalyear.periods[0]
 
-Create chart of accounts::
+Get accounts::
 
-    >>> _ = create_chart(company)
-    >>> accounts = get_accounts(company)
+    >>> accounts = get_accounts()
     >>> payable = accounts['payable']
     >>> receivable = accounts['receivable']
     >>> revenue = accounts['revenue']

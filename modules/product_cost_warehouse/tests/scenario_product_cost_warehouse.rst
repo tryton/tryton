@@ -12,11 +12,10 @@ Imports::
 
 Activate modules::
 
-    >>> config = activate_modules('product_cost_warehouse')
+    >>> config = activate_modules('product_cost_warehouse', create_company)
 
-Create company::
+Get company::
 
-    >>> _ = create_company()
     >>> company = get_company()
 
 Create product::

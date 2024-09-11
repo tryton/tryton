@@ -8,19 +8,19 @@ Imports::
     >>> from decimal import Decimal
 
     >>> from proteus import Model
-    >>> from trytond.modules.company.tests.tools import create_company, get_company
+    >>> from trytond.modules.company.tests.tools import create_company
+    >>> from trytond.modules.currency.tests.tools import get_currency
     >>> from trytond.tests.tools import activate_modules
 
     >>> today = dt.date.today()
 
 Activate modules::
 
-    >>> config = activate_modules('stock_package')
+    >>> config = activate_modules('stock_package', create_company)
 
-Create company::
+Get currency::
 
-    >>> _ = create_company()
-    >>> company = get_company()
+    >>> currency = get_currency()
 
 Create customer::
 
@@ -58,7 +58,6 @@ Create Shipment Out::
     >>> shipment_out.planned_date = today
     >>> shipment_out.customer = customer
     >>> shipment_out.warehouse = warehouse_loc
-    >>> shipment_out.company = company
 
 Add two shipment lines of same product::
 
@@ -70,9 +69,8 @@ Add two shipment lines of same product::
     ...     move.quantity = 1
     ...     move.from_location = output_loc
     ...     move.to_location = customer_loc
-    ...     move.company = company
     ...     move.unit_price = Decimal('1')
-    ...     move.currency = company.currency
+    ...     move.currency = currency
     >>> shipment_out.save()
 
 Pack shipment::

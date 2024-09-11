@@ -18,26 +18,22 @@ Imports::
 
 Activate modules::
 
-    >>> config = activate_modules('account_payment_braintree')
+    >>> config = activate_modules(
+    ...     'account_payment_braintree', create_company, create_chart)
 
 Get cron::
 
     >>> Cron = Model.get('ir.cron')
 
-Create company::
+Get company::
 
     >>> Company = Model.get('company.company')
-    >>> _ = create_company()
     >>> company = get_company()
 
 Create fiscal year::
 
-    >>> fiscalyear = create_fiscalyear(company)
+    >>> fiscalyear = create_fiscalyear()
     >>> fiscalyear.click('create_period')
-
-Create chart of accounts::
-
-    >>> _ = create_chart(company)
 
 Create Braintree account::
 

@@ -12,7 +12,7 @@ Imports::
     ...     create_chart, create_fiscalyear, get_accounts)
     >>> from trytond.modules.account_invoice.tests.tools import (
     ...     create_payment_term, set_fiscalyear_invoice_sequences)
-    >>> from trytond.modules.company.tests.tools import create_company, get_company
+    >>> from trytond.modules.company.tests.tools import create_company
     >>> from trytond.tests.tools import activate_modules, assertEqual
 
 Activate modules::
@@ -21,23 +21,17 @@ Activate modules::
     ...         'sale_shipment_cost',
     ...         'sale',
     ...         'account_invoice',
-    ...         ])
-
-Create company::
-
-    >>> _ = create_company()
-    >>> company = get_company()
+    ...         ],
+    ...     create_company, create_chart)
 
 Create fiscal year::
 
-    >>> fiscalyear = set_fiscalyear_invoice_sequences(
-    ...     create_fiscalyear(company))
+    >>> fiscalyear = set_fiscalyear_invoice_sequences(create_fiscalyear())
     >>> fiscalyear.click('create_period')
 
-Create chart of accounts::
+Get accounts::
 
-    >>> _ = create_chart(company)
-    >>> accounts = get_accounts(company)
+    >>> accounts = get_accounts()
     >>> revenue = accounts['revenue']
     >>> expense = accounts['expense']
 
@@ -147,12 +141,12 @@ Send products::
     Decimal('2.0000')
     >>> shipment.cost_sale_used
     Decimal('3.0000')
-    >>> assertEqual(shipment.cost_sale_currency_used, company.currency)
+    >>> assertEqual(shipment.cost_sale_currency_used, shipment.company.currency)
     >>> move, = shipment.inventory_moves
     >>> move.quantity = 4
     >>> shipment.cost_sale_used
     Decimal('3.0000')
-    >>> assertEqual(shipment.cost_sale_currency_used, company.currency)
+    >>> assertEqual(shipment.cost_sale_currency_used, shipment.company.currency)
     >>> shipment.state
     'waiting'
     >>> shipment.click('assign_force')

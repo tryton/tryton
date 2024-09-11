@@ -12,16 +12,12 @@ Imports::
 
 Activate modules::
 
-    >>> config = activate_modules('stock_product_location_place')
+    >>> config = activate_modules('stock_product_location_place', create_company)
 
     >>> Location = Model.get('stock.location')
     >>> Move = Model.get('stock.move')
     >>> ProductTemplate = Model.get('product.template')
     >>> UoM = Model.get('product.uom')
-
-Create company::
-
-    >>> _ = create_company()
 
 Get location::
 

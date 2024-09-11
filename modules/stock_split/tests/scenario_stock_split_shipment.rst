@@ -7,17 +7,17 @@ Imports::
     >>> from decimal import Decimal
 
     >>> from proteus import Model
-    >>> from trytond.modules.company.tests.tools import create_company, get_company
+    >>> from trytond.modules.company.tests.tools import create_company
+    >>> from trytond.modules.currency.tests.tools import get_currency
     >>> from trytond.tests.tools import activate_modules, assertEqual
 
 Activate modules::
 
-    >>> config = activate_modules('stock_split')
+    >>> config = activate_modules('stock_split', create_company)
 
-Create company::
+Get currency::
 
-    >>> _ = create_company()
-    >>> company = get_company()
+    >>> currency = get_currency()
 
 Create customer::
 
@@ -62,7 +62,7 @@ Create shipment with 2 lines::
     ...     move.from_location = output_loc
     ...     move.to_location = customer_loc
     ...     move.unit_price = Decimal(1)
-    ...     move.currency = company.currency
+    ...     move.currency = currency
 
     >>> shipment1.save()
     >>> move1, move2 = shipment1.outgoing_moves

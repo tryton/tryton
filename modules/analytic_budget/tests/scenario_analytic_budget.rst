@@ -9,12 +9,12 @@ Imports::
     >>> from proteus import Model
     >>> from trytond.modules.account.tests.tools import (
     ...     create_chart, create_fiscalyear, get_accounts)
-    >>> from trytond.modules.company.tests.tools import create_company, get_company
+    >>> from trytond.modules.company.tests.tools import create_company
     >>> from trytond.tests.tools import activate_modules, assertEqual
 
 Activate the analytic_budget module::
 
-    >>> config = activate_modules('analytic_budget')
+    >>> config = activate_modules('analytic_budget', create_company, create_chart)
 
     >>> AnalyticAccount = Model.get('analytic_account.account')
     >>> Budget = Model.get('analytic_account.budget')
@@ -23,22 +23,16 @@ Activate the analytic_budget module::
     >>> Move = Model.get('account.move')
     >>> Party = Model.get('party.party')
 
-Create a company::
-
-    >>> _ = create_company()
-    >>> company = get_company()
-
 Create a fiscal year::
 
-    >>> fiscalyear = create_fiscalyear(company)
+    >>> fiscalyear = create_fiscalyear()
     >>> fiscalyear.click('create_period')
     >>> period = fiscalyear.periods[0]
     >>> next_period = fiscalyear.periods[1]
 
-Create a chart of accounts::
+Get accounts::
 
-    >>> _ = create_chart(company)
-    >>> accounts = get_accounts(company)
+    >>> accounts = get_accounts()
 
 Create the analytic accounts::
 

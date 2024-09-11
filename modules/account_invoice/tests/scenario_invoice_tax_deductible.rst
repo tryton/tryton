@@ -13,14 +13,14 @@ Imports::
     >>> from trytond.modules.account_invoice.exceptions import InvoiceTaxesWarning
     >>> from trytond.modules.account_invoice.tests.tools import (
     ...     set_fiscalyear_invoice_sequences)
-    >>> from trytond.modules.company.tests.tools import create_company, get_company
+    >>> from trytond.modules.company.tests.tools import create_company
     >>> from trytond.tests.tools import activate_modules
 
     >>> today = dt.date.today()
 
 Activate modules::
 
-    >>> config = activate_modules('account_invoice')
+    >>> config = activate_modules('account_invoice', create_company, create_chart)
 
     >>> Invoice = Model.get('account.invoice')
     >>> Party = Model.get('party.party')
@@ -29,21 +29,15 @@ Activate modules::
     >>> ProductUom = Model.get('product.uom')
     >>> Warning = Model.get('res.user.warning')
 
-Create company::
-
-    >>> _ = create_company()
-    >>> company = get_company()
-
 Create fiscal year::
 
     >>> fiscalyear = set_fiscalyear_invoice_sequences(
-    ...     create_fiscalyear(company, today))
+    ...     create_fiscalyear(today=today))
     >>> fiscalyear.click('create_period')
 
-Create chart of accounts::
+Get accounts::
 
-    >>> _ = create_chart(company)
-    >>> accounts = get_accounts(company)
+    >>> accounts = get_accounts()
 
 Create tax::
 

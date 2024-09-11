@@ -10,24 +10,19 @@ Imports::
     >>> from trytond.modules.account.tests.tools import create_fiscalyear
     >>> from trytond.modules.account_invoice.tests.tools import (
     ...     set_fiscalyear_invoice_sequences)
-    >>> from trytond.modules.company.tests.tools import create_company, get_company
+    >>> from trytond.modules.company.tests.tools import create_company
     >>> from trytond.tests.tools import activate_modules, assertEqual
 
     >>> today = dt.date.today()
 
 Activate modules::
 
-    >>> config = activate_modules('account_invoice')
-
-Create company::
-
-    >>> _ = create_company()
-    >>> company = get_company()
+    >>> config = activate_modules('account_invoice', create_company)
 
 Create fiscal year::
 
     >>> InvoiceSequence = Model.get('account.fiscalyear.invoice_sequence')
-    >>> fiscalyear = create_fiscalyear(company, today)
+    >>> fiscalyear = create_fiscalyear(today=today)
     >>> fiscalyear = set_fiscalyear_invoice_sequences(fiscalyear)
     >>> fiscalyear.click('create_period')
     >>> inv_seq, = fiscalyear.invoice_sequences

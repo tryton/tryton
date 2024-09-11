@@ -5,12 +5,12 @@ Stock Lot Inventory Count Scenario
 Imports::
 
     >>> from proteus import Model
-    >>> from trytond.modules.company.tests.tools import create_company, get_company
+    >>> from trytond.modules.company.tests.tools import create_company
     >>> from trytond.tests.tools import activate_modules, assertEqual
 
 Activate modules::
 
-    >>> config = activate_modules('stock_lot')
+    >>> config = activate_modules('stock_lot', create_company)
     >>> config.skip_warning = True
 
     >>> Inventory = Model.get('stock.inventory')
@@ -18,11 +18,6 @@ Activate modules::
     >>> Lot = Model.get('stock.lot')
     >>> ProductTemplate = Model.get('product.template')
     >>> ProductUom = Model.get('product.uom')
-
-Create company::
-
-    >>> _ = create_company()
-    >>> company = get_company()
 
 Get stock location::
 

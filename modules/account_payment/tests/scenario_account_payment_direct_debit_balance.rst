@@ -17,7 +17,7 @@ Imports::
 
 Activate modules::
 
-    >>> config = activate_modules('account_payment')
+    >>> config = activate_modules('account_payment', create_company, create_chart)
 
     >>> Journal = Model.get('account.journal')
     >>> Move = Model.get('account.move')
@@ -25,18 +25,13 @@ Activate modules::
     >>> Payment = Model.get('account.payment')
     >>> PaymentJournal = Model.get('account.payment.journal')
 
-Create company::
-
-    >>> _ = create_company()
-
 Create fiscal year::
 
     >>> fiscalyear = create_fiscalyear()
     >>> fiscalyear.click('create_period')
 
-Create chart of accounts::
+Get accounts::
 
-    >>> _ = create_chart()
     >>> accounts = get_accounts()
 
     >>> revnue_journal, = Journal.find([('code', '=', 'REV')])

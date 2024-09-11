@@ -9,24 +9,20 @@ Imports::
 
     >>> from proteus import Model, Wizard
     >>> from trytond.modules.account.tests.tools import create_chart, get_accounts
-    >>> from trytond.modules.company.tests.tools import create_company, get_company
+    >>> from trytond.modules.company.tests.tools import create_company
     >>> from trytond.tests.tools import activate_modules, assertEqual, set_user
 
     >>> today = dt.date.today()
 
 Activate modules::
 
-    >>> config = activate_modules(['purchase_request', 'stock_supply'])
+    >>> config = activate_modules(
+    ...     ['purchase_request', 'stock_supply'],
+    ...     create_company, create_chart)
 
-Create company::
+Get accounts::
 
-    >>> _ = create_company()
-    >>> company = get_company()
-
-Create chart of accounts::
-
-    >>> _ = create_chart(company)
-    >>> accounts = get_accounts(company)
+    >>> accounts = get_accounts()
     >>> expense = accounts['expense']
 
 Create parties::
@@ -127,16 +123,15 @@ Create a need for missing product::
     >>> shipment_out.effective_date = today
     >>> shipment_out.customer = customer
     >>> shipment_out.warehouse = warehouse_loc
-    >>> shipment_out.company = company
     >>> move = shipment_out.outgoing_moves.new()
     >>> move.product = product
     >>> move.unit = unit
     >>> move.quantity = 1
     >>> move.from_location = output_loc
     >>> move.to_location = customer_loc
-    >>> move.company = company
+    >>> move.company = shipment_out.company
     >>> move.unit_price = Decimal('1')
-    >>> move.currency = company.currency
+    >>> move.currency = shipment_out.company.currency
     >>> shipment_out.click('wait')
 
 There is no purchase request::
@@ -210,6 +205,7 @@ Re-create the purchase request::
 
 Create a second purchase request manually::
 
+    >>> ctx = config.context
     >>> set_user(0)  # root
     >>> pr_id, = PurchaseRequest.create([{
     ...             'product': product.id,
@@ -217,8 +213,7 @@ Create a second purchase request manually::
     ...             'unit': unit,
     ...             'warehouse': warehouse_loc.id,
     ...             'origin': 'stock.order_point,-1',
-    ...             'company': company.id,
-    ...             }], config.context)
+    ...             }], ctx)
     >>> pr = PurchaseRequest(pr_id)
 
 There is now 2 draft purchase requests::
@@ -246,13 +241,13 @@ Create the purchase with a unique line::
 
 Create a purchase request without product::
 
+    >>> ctx = config.context
     >>> set_user(0)  # root
     >>> pr_id, = PurchaseRequest.create([{
     ...             'description': "Custom product",
     ...             'quantity': 1,
     ...             'origin': 'stock.order_point,-1',
-    ...             'company': company.id,
-    ...             }], config.context)
+    ...             }], ctx)
     >>> pr = PurchaseRequest(pr_id)
     >>> pr.save()
 

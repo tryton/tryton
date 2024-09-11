@@ -16,7 +16,8 @@ Imports::
 
 Activate modules::
 
-    >>> config = activate_modules('purchase_invoice_line_standalone')
+    >>> config = activate_modules(
+    ...     'purchase_invoice_line_standalone', create_company, create_chart)
 
     >>> Party = Model.get('party.party')
     >>> ProductCategory = Model.get('product.category')
@@ -24,18 +25,13 @@ Activate modules::
     >>> ProductTemplate = Model.get('product.template')
     >>> Purchase = Model.get('purchase.purchase')
 
-Create company::
-
-    >>> _ = create_company()
-
 Create fiscal year::
 
     >>> fiscalyear = set_fiscalyear_invoice_sequences(create_fiscalyear())
     >>> fiscalyear.click('create_period')
 
-Create chart of accounts::
+Get accounts::
 
-    >>> _ = create_chart()
     >>> accounts = get_accounts()
 
 Create parties::

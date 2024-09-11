@@ -7,17 +7,17 @@ Imports::
     >>> from decimal import Decimal
 
     >>> from proteus import Model
-    >>> from trytond.modules.company.tests.tools import create_company, get_company
+    >>> from trytond.modules.company.tests.tools import create_company
+    >>> from trytond.modules.currency.tests.tools import get_currency
     >>> from trytond.tests.tools import activate_modules, assertEqual
 
 Activate modules::
 
-    >>> config = activate_modules('stock_lot_unit')
+    >>> config = activate_modules('stock_lot_unit', create_company)
 
-Create company::
+Get currency::
 
-    >>> _ = create_company()
-    >>> company = get_company()
+    >>> currency = get_currency()
 
 Create customer::
 
@@ -65,14 +65,14 @@ Create an incoming shipment without lot::
     >>> move1.product = product
     >>> move1.quantity = 60
     >>> move1.unit_price = Decimal('8')
-    >>> move1.currency = company.currency
+    >>> move1.currency = currency
     >>> move1.from_location = supplier_loc
     >>> move1.to_location = input_loc
     >>> move2 = shipment.incoming_moves.new()
     >>> move2.product = product
     >>> move2.quantity = 40
     >>> move2.unit_price = Decimal('8')
-    >>> move2.currency = company.currency
+    >>> move2.currency = currency
     >>> move2.from_location = supplier_loc
     >>> move2.to_location = input_loc
     >>> shipment.click('receive')
@@ -94,7 +94,7 @@ Let's ship a product with a lot::
     >>> move.product = product
     >>> move.quantity = 1
     >>> move.unit_price = Decimal('20')
-    >>> move.currency = company.currency
+    >>> move.currency = currency
     >>> move.from_location = output_loc
     >>> move.to_location = customer_loc
     >>> shipment.click('wait')
@@ -115,14 +115,14 @@ Let's ship now two times the same lot::
     >>> move1.product = product
     >>> move1.quantity = 1
     >>> move1.unit_price = Decimal('20')
-    >>> move1.currency = company.currency
+    >>> move1.currency = currency
     >>> move1.from_location = output_loc
     >>> move1.to_location = customer_loc
     >>> move2 = shipment.outgoing_moves.new()
     >>> move2.product = product
     >>> move2.quantity = 1
     >>> move2.unit_price = Decimal('20')
-    >>> move2.currency = company.currency
+    >>> move2.currency = currency
     >>> move2.from_location = output_loc
     >>> move2.to_location = customer_loc
     >>> shipment.click('wait')
@@ -148,7 +148,7 @@ Now let's ship one move with a quantity bigger than lot unit quantity::
     >>> move.product = product
     >>> move.quantity = 4
     >>> move.unit_price = Decimal('20')
-    >>> move.currency = company.currency
+    >>> move.currency = currency
     >>> move.from_location = output_loc
     >>> move.to_location = customer_loc
     >>> shipment.click('wait')

@@ -8,7 +8,8 @@ Imports::
     >>> from decimal import Decimal
 
     >>> from proteus import Model
-    >>> from trytond.modules.company.tests.tools import create_company, get_company
+    >>> from trytond.modules.company.tests.tools import create_company
+    >>> from trytond.modules.currency.tests.tools import get_currency
     >>> from trytond.tests.tools import activate_modules, assertEqual
 
     >>> today = dt.date.today()
@@ -16,12 +17,11 @@ Imports::
 
 Activate modules::
 
-    >>> config = activate_modules('stock')
+    >>> config = activate_modules('stock', create_company)
 
-Create company::
+Get currency::
 
-    >>> _ = create_company()
-    >>> company = get_company()
+    >>> currency = get_currency()
 
 Create product::
 
@@ -71,7 +71,7 @@ Create some moves::
     >>> move.to_location = storage_loc
     >>> move.quantity = 8
     >>> move.unit_price = Decimal('20')
-    >>> move.currency = company.currency
+    >>> move.currency = currency
     >>> move.effective_date = yesterday
     >>> move.click('do')
 
@@ -81,7 +81,7 @@ Create some moves::
     >>> move.to_location = customer_loc
     >>> move.quantity = 2
     >>> move.unit_price = Decimal('40')
-    >>> move.currency = company.currency
+    >>> move.currency = currency
     >>> move.effective_date = yesterday
     >>> move.click('do')
 
@@ -91,7 +91,7 @@ Create some moves::
     >>> move.to_location = customer_loc
     >>> move.quantity = 4
     >>> move.unit_price = Decimal('30')
-    >>> move.currency = company.currency
+    >>> move.currency = currency
     >>> move.effective_date = today
     >>> move.click('do')
 
@@ -101,7 +101,7 @@ Create some moves::
     >>> move.to_location = storage_loc
     >>> move.quantity = 1
     >>> move.unit_price = Decimal('30')
-    >>> move.currency = company.currency
+    >>> move.currency = currency
     >>> move.effective_date = today
     >>> move.click('do')
 
@@ -111,7 +111,7 @@ Create some moves::
     >>> move.to_location = customer_loc
     >>> move.quantity = 2
     >>> move.unit_price = Decimal('50')
-    >>> move.currency = company.currency
+    >>> move.currency = currency
     >>> move.effective_date = today
     >>> move.click('do')
 

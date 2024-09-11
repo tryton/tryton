@@ -7,17 +7,12 @@ Imports::
     >>> from decimal import Decimal
 
     >>> from proteus import Model
-    >>> from trytond.modules.company.tests.tools import create_company, get_company
+    >>> from trytond.modules.company.tests.tools import create_company
     >>> from trytond.tests.tools import activate_modules, assertEqual
 
 Activate modules::
 
-    >>> config = activate_modules('purchase_shipment_cost')
-
-Create company::
-
-    >>> _ = create_company()
-    >>> company = get_company()
+    >>> config = activate_modules('purchase_shipment_cost', create_company)
 
 Create supplier::
 
@@ -78,11 +73,11 @@ Receive a single product line::
     >>> move.product = product
     >>> move.quantity = 50
     >>> move.unit_price = Decimal('8')
-    >>> move.currency = company.currency
+    >>> move.currency = shipment.company.currency
     >>> shipment.carrier = carrier
     >>> shipment.cost_used
     Decimal('3.0000')
-    >>> assertEqual(shipment.cost_currency_used, company.currency)
+    >>> assertEqual(shipment.cost_currency_used, shipment.company.currency)
     >>> shipment.click('receive')
     >>> shipment.state
     'received'
@@ -102,7 +97,7 @@ Receive many product lines::
     ...     move.product = product
     ...     move.quantity = quantity
     ...     move.unit_price = Decimal('8')
-    ...     move.currency = company.currency
+    ...     move.currency = shipment.company.currency
     >>> shipment.carrier = carrier
     >>> shipment.cost_used
     Decimal('3.0000')
@@ -122,14 +117,14 @@ Receive a two lines with no cost::
     >>> move.product = product
     >>> move.quantity = 75
     >>> move.unit_price = Decimal('0.0')
-    >>> move.currency = company.currency
+    >>> move.currency = shipment.company.currency
     >>> move = shipment.incoming_moves.new()
     >>> move.from_location = supplier_location
     >>> move.to_location = shipment.warehouse.input_location
     >>> move.product = product
     >>> move.quantity = 25
     >>> move.unit_price = Decimal('0.0')
-    >>> move.currency = company.currency
+    >>> move.currency = shipment.company.currency
     >>> shipment.carrier = carrier
     >>> shipment.cost_used
     Decimal('3.0000')

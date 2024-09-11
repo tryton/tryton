@@ -21,7 +21,8 @@ Imports::
 
 Activate modules::
 
-    >>> config = activate_modules('account_stock_shipment_cost')
+    >>> config = activate_modules(
+    ...     'account_stock_shipment_cost', create_company, create_chart)
 
     >>> Invoice = Model.get('account.invoice')
     >>> InvoiceLine = Model.get('account.invoice.line')
@@ -34,21 +35,19 @@ Activate modules::
     >>> ShipmentCost = Model.get('account.shipment_cost')
     >>> Warning = Model.get('res.user.warning')
 
-Create company::
+Get company::
 
-    >>> _ = create_company()
     >>> company = get_company()
 
 Create fiscal year::
 
     >>> fiscalyear = set_fiscalyear_invoice_sequences(
-    ...     create_fiscalyear(company, today))
+    ...     create_fiscalyear(today=today))
     >>> fiscalyear.click('create_period')
 
-Create chart of accounts::
+Get accounts::
 
-    >>> _ = create_chart(company)
-    >>> accounts = get_accounts(company)
+    >>> accounts = get_accounts()
 
 Create parties::
 

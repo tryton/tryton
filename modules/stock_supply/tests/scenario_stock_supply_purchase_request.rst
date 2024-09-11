@@ -9,24 +9,19 @@ Imports::
 
     >>> from proteus import Model, Wizard
     >>> from trytond.modules.account.tests.tools import create_chart, get_accounts
-    >>> from trytond.modules.company.tests.tools import create_company, get_company
+    >>> from trytond.modules.company.tests.tools import create_company
+    >>> from trytond.modules.currency.tests.tools import get_currency
     >>> from trytond.tests.tools import activate_modules, assertEqual, set_user
 
     >>> today = dt.date.today()
 
 Activate modules::
 
-    >>> config = activate_modules('stock_supply')
+    >>> config = activate_modules('stock_supply', create_company, create_chart)
 
-Create company::
+Get accounts::
 
-    >>> _ = create_company()
-    >>> company = get_company()
-
-Create chart of accounts::
-
-    >>> _ = create_chart(company)
-    >>> accounts = get_accounts(company)
+    >>> accounts = get_accounts()
     >>> expense = accounts['expense']
 
 Create parties::
@@ -141,16 +136,14 @@ Create needs for missing product::
     >>> shipment_out.effective_date = today
     >>> shipment_out.customer = customer
     >>> shipment_out.warehouse = warehouse_loc
-    >>> shipment_out.company = company
     >>> move = shipment_out.outgoing_moves.new()
     >>> move.product = product
     >>> move.unit = unit
     >>> move.quantity = 1
     >>> move.from_location = output_loc
     >>> move.to_location = customer_loc
-    >>> move.company = company
     >>> move.unit_price = Decimal('1')
-    >>> move.currency = company.currency
+    >>> move.currency = get_currency()
     >>> shipment_out.click('wait')
 
     >>> shipment_out, = shipment_out.duplicate(

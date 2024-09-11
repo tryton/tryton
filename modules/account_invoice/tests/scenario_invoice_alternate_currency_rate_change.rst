@@ -21,7 +21,7 @@ Imports::
 
 Activate modules::
 
-    >>> config = activate_modules('account_invoice')
+    >>> config = activate_modules('account_invoice', create_company, create_chart)
 
     >>> Configuration = Model.get('account.configuration')
     >>> Invoice = Model.get('account.invoice')
@@ -29,11 +29,10 @@ Activate modules::
     >>> Party = Model.get('party.party')
     >>> PaymentMethod = Model.get('account.invoice.payment.method')
 
-Create company::
+Get currencies::
 
     >>> currency = get_currency('USD')
     >>> eur = get_currency('EUR')
-    >>> _ = create_company(currency=currency)
 
 Set alternate currency rates::
 
@@ -51,9 +50,8 @@ Create fiscal year::
     ...     create_fiscalyear())
     >>> fiscalyear.click('create_period')
 
-Create chart of accounts::
+Get accounts::
 
-    >>> _ = create_chart()
     >>> accounts = get_accounts()
 
 Configure currency exchange::

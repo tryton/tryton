@@ -22,22 +22,13 @@ Imports::
 
 Activate modules::
 
-    >>> config = activate_modules('account_payment_stripe')
-
-Create company::
-
-    >>> Company = Model.get('company.company')
-    >>> _ = create_company()
-    >>> company = get_company()
+    >>> config = activate_modules(
+    ...     'account_payment_stripe', create_company, create_chart)
 
 Create fiscal year::
 
-    >>> fiscalyear = create_fiscalyear(company, today)
+    >>> fiscalyear = create_fiscalyear(today=today)
     >>> fiscalyear.click('create_period')
-
-Create chart of accounts::
-
-    >>> _ = create_chart(company)
 
 Create Stripe account::
 
@@ -65,7 +56,7 @@ Setup fetch events cron::
     >>> cron_fetch_events, = Cron.find([
     ...     ('method', '=', 'account.payment.stripe.account|fetch_events'),
     ...     ])
-    >>> cron_fetch_events.companies.append(Company(company.id))
+    >>> cron_fetch_events.companies.append(get_company())
 
 Create payment journal::
 
@@ -192,7 +183,7 @@ Run cron::
     >>> cron_customer_create, = Cron.find([
     ...     ('method', '=', 'account.payment.stripe.customer|stripe_create'),
     ...     ])
-    >>> cron_customer_create.companies.append(Company(company.id))
+    >>> cron_customer_create.companies.append(get_company())
     >>> cron_customer_create.click('run_once')
 
     >>> stripe_customer.reload()
@@ -262,7 +253,7 @@ Run cron::
     >>> cron_customer_delete, = Cron.find([
     ...     ('method', '=', 'account.payment.stripe.customer|stripe_delete'),
     ...     ])
-    >>> cron_customer_delete.companies.append(Company(company.id))
+    >>> cron_customer_delete.companies.append(get_company())
     >>> cron_customer_delete.click('run_once')
 
     >>> stripe_customer.reload()

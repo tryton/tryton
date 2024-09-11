@@ -22,22 +22,17 @@ Imports::
 
 Activate modules::
 
-    >>> config = activate_modules('account_payment_stripe')
-
-Create company::
-
-    >>> Company = Model.get('company.company')
-    >>> _ = create_company()
-    >>> company = get_company()
+    >>> config = activate_modules(
+    ...     'account_payment_stripe', create_company, create_chart)
 
 Create fiscal year::
 
-    >>> fiscalyear = create_fiscalyear(company, today)
+    >>> fiscalyear = create_fiscalyear(today=today)
     >>> fiscalyear.click('create_period')
 
-Create chart of accounts::
+Get accounts::
 
-    >>> _ = create_chart(company)
+    >>> _ = create_chart()
 
 Create Stripe account::
 
@@ -54,7 +49,7 @@ Setup fetch events cron::
     >>> cron_fetch_events, = Cron.find([
     ...     ('method', '=', 'account.payment.stripe.account|fetch_events'),
     ...     ])
-    >>> cron_fetch_events.companies.append(Company(company.id))
+    >>> cron_fetch_events.companies.append(get_company())
 
 Create payment journal::
 

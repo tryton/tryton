@@ -17,24 +17,20 @@ Imports::
 
 Activate modules::
 
-    >>> config = activate_modules('account')
+    >>> config = activate_modules('account', create_company, create_chart)
 
-Create company::
-
-    >>> _ = create_company()
     >>> company = get_company()
 
 Create fiscal year::
 
-    >>> fiscalyear = create_fiscalyear(company, today)
+    >>> fiscalyear = create_fiscalyear(today=today)
     >>> fiscalyear.click('create_period')
     >>> periods = fiscalyear.periods
     >>> period_1, period_3, period_5 = periods[0], periods[2], periods[4]
 
-Create chart of accounts::
+Get accounts::
 
-    >>> _ = create_chart(company)
-    >>> accounts = get_accounts(company)
+    >>> accounts = get_accounts()
     >>> receivable = accounts['receivable']
     >>> revenue = accounts['revenue']
     >>> expense = accounts['expense']

@@ -12,7 +12,7 @@ Imports::
     ...     create_chart, create_fiscalyear, get_accounts)
     >>> from trytond.modules.account_invoice.tests.tools import (
     ...     set_fiscalyear_invoice_sequences)
-    >>> from trytond.modules.company.tests.tools import create_company, get_company
+    >>> from trytond.modules.company.tests.tools import create_company
     >>> from trytond.modules.currency.tests.tools import get_currency
     >>> from trytond.tests.tools import activate_modules, assertEqual
 
@@ -20,14 +20,12 @@ Imports::
 
 Activate modules::
 
-    >>> config = activate_modules('account_invoice')
+    >>> config = activate_modules('account_invoice', create_company, create_chart)
 
-Create company::
+Get currencies::
 
     >>> currency = get_currency('USD')
     >>> eur = get_currency('EUR')
-    >>> _ = create_company(currency=currency)
-    >>> company = get_company()
 
 Set alternate currency rates::
 
@@ -39,13 +37,12 @@ Set alternate currency rates::
 Create fiscal year::
 
     >>> fiscalyear = set_fiscalyear_invoice_sequences(
-    ...     create_fiscalyear(company, today))
+    ...     create_fiscalyear(today=today))
     >>> fiscalyear.click('create_period')
 
-Create chart of accounts::
+Get accounts::
 
-    >>> _ = create_chart(company)
-    >>> accounts = get_accounts(company)
+    >>> accounts = get_accounts()
 
 Create payment method::
 

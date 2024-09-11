@@ -11,7 +11,7 @@ Imports::
     ...     create_chart, create_fiscalyear, get_accounts)
     >>> from trytond.modules.account_stock_continental.tests.tools import (
     ...     add_stock_accounts)
-    >>> from trytond.modules.company.tests.tools import create_company, get_company
+    >>> from trytond.modules.company.tests.tools import create_company
     >>> from trytond.tests.tools import activate_modules, assertEqual
 
 Activate modules::
@@ -19,23 +19,18 @@ Activate modules::
     >>> config = activate_modules([
     ...         'purchase_shipment_cost',
     ...         'account_stock_continental',
-    ...         ])
-
-Create company::
-
-    >>> _ = create_company()
-    >>> company = get_company()
+    ...         ],
+    ...     create_company, create_chart)
 
 Create fiscal year::
 
-    >>> fiscalyear = create_fiscalyear(company)
+    >>> fiscalyear = create_fiscalyear()
     >>> fiscalyear.account_stock_method = 'continental'
     >>> fiscalyear.click('create_period')
 
-Create chart of accounts::
+Get accounts::
 
-    >>> _ = create_chart(company)
-    >>> accounts = add_stock_accounts(get_accounts(company), company)
+    >>> accounts = add_stock_accounts(get_accounts())
     >>> receivable = accounts['receivable']
     >>> revenue = accounts['revenue']
     >>> expense = accounts['expense']
@@ -125,7 +120,7 @@ Receive a single product line::
     >>> move.product = product
     >>> move.quantity = 30
     >>> move.unit_price = Decimal('8')
-    >>> move.currency = company.currency
+    >>> move.currency = shipment.company.currency
     >>> move = Move()
     >>> shipment.incoming_moves.append(move)
     >>> move.from_location = supplier_location
@@ -133,11 +128,11 @@ Receive a single product line::
     >>> move.product = product_average
     >>> move.quantity = 20
     >>> move.unit_price = Decimal('8')
-    >>> move.currency = company.currency
+    >>> move.currency = shipment.company.currency
     >>> shipment.carrier = carrier
     >>> shipment.cost_used
     Decimal('3.0000')
-    >>> assertEqual(shipment.cost_currency_used, company.currency)
+    >>> assertEqual(shipment.cost_currency_used, shipment.company.currency)
     >>> shipment.click('receive')
     >>> shipment.state
     'received'
@@ -168,7 +163,7 @@ Receive many product lines::
     ...     move.product = product
     ...     move.quantity = quantity
     ...     move.unit_price = Decimal('8')
-    ...     move.currency = company.currency
+    ...     move.currency = shipment.company.currency
     >>> shipment.carrier = carrier
     >>> shipment.cost_used
     Decimal('3.0000')

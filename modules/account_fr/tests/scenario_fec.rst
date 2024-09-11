@@ -17,11 +17,10 @@ Imports::
 
 Activate modules::
 
-    >>> config = activate_modules('account_fr')
+    >>> config = activate_modules('account_fr', create_company, create_chart)
 
-Create company::
+Setup company::
 
-    >>> _ = create_company()
     >>> company = get_company()
     >>> siren = company.party.identifiers.new(type='fr_siren')
     >>> siren.code = '820043784'
@@ -30,21 +29,20 @@ Create company::
 Create last year fiscal year::
 
     >>> fiscalyear_previous = create_fiscalyear(
-    ...     company, (dt.date(2017, 1, 1), dt.date(2017, 12, 31)))
+    ...     today=(dt.date(2017, 1, 1), dt.date(2017, 12, 31)))
     >>> fiscalyear_previous.click('create_period')
     >>> period_previous = fiscalyear_previous.periods[0]
 
 Create fiscal year::
 
     >>> fiscalyear = create_fiscalyear(
-    ...     company, (dt.date(2018, 1, 1), dt.date(2018, 12, 31)))
+    ...     today=(dt.date(2018, 1, 1), dt.date(2018, 12, 31)))
     >>> fiscalyear.click('create_period')
     >>> period = fiscalyear.periods[0]
 
-Create chart of accounts::
+Get accounts::
 
-    >>> _ = create_chart(company)
-    >>> accounts = get_accounts(company)
+    >>> accounts = get_accounts()
     >>> receivable = accounts['receivable']
     >>> revenue = accounts['revenue']
     >>> expense = accounts['expense']

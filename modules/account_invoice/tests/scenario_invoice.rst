@@ -19,11 +19,10 @@ Imports::
 
 Activate modules::
 
-    >>> config = activate_modules('account_invoice')
+    >>> config = activate_modules('account_invoice', create_company, create_chart)
 
-Create company::
+Setup company::
 
-    >>> _ = create_company()
     >>> company = get_company()
     >>> tax_identifier = company.party.identifiers.new()
     >>> tax_identifier.type = 'eu_vat'
@@ -47,15 +46,14 @@ Set employee::
 Create fiscal year::
 
     >>> fiscalyear = set_fiscalyear_invoice_sequences(
-    ...     create_fiscalyear(company, today))
+    ...     create_fiscalyear(today=today))
     >>> fiscalyear.click('create_period')
     >>> period = fiscalyear.periods[0]
     >>> period_ids = [p.id for p in fiscalyear.periods]
 
-Create chart of accounts::
+Get accounts::
 
-    >>> _ = create_chart(company)
-    >>> accounts = get_accounts(company)
+    >>> accounts = get_accounts()
     >>> receivable = accounts['receivable']
     >>> revenue = accounts['revenue']
     >>> expense = accounts['expense']

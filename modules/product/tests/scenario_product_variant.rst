@@ -12,11 +12,7 @@ Imports::
 
 Activate modules::
 
-    >>> config = activate_modules('product')
-
-Create company::
-
-    >>> _ = create_company()
+    >>> config = activate_modules('product', create_company)
 
 Create a template::
 

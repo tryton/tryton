@@ -8,14 +8,15 @@ Imports::
     >>> from decimal import Decimal
 
     >>> from proteus import Model
-    >>> from trytond.modules.company.tests.tools import create_company, get_company
+    >>> from trytond.modules.company.tests.tools import create_company
     >>> from trytond.tests.tools import activate_modules
 
     >>> today = dt.date.today()
 
 Activate modules::
 
-    >>> config = activate_modules('stock_lot')
+    >>> config = activate_modules('stock_lot', create_company)
+
     >>> Inventory = Model.get('stock.inventory')
     >>> Location = Model.get('stock.location')
     >>> Lot = Model.get('stock.lot')
@@ -23,11 +24,6 @@ Activate modules::
     >>> ProductTemplate = Model.get('product.template')
     >>> ProductUom = Model.get('product.uom')
     >>> ShipmentOut = Model.get('stock.shipment.out')
-
-Create company::
-
-    >>> _ = create_company()
-    >>> company = get_company()
 
 Create customer::
 
@@ -93,16 +89,15 @@ Create shipment out::
     >>> shipment.planned_date = today
     >>> shipment.customer = customer
     >>> shipment.warehouse = warehouse_loc
-    >>> shipment.company = company
     >>> move = shipment.outgoing_moves.new()
     >>> move.product = product
     >>> move.unit = unit
     >>> move.quantity = 10
     >>> move.from_location = output_loc
     >>> move.to_location = customer_loc
-    >>> move.company = company
+    >>> move.company = shipment.company
     >>> move.unit_price = Decimal('1')
-    >>> move.currency = company.currency
+    >>> move.currency = shipment.company.currency
     >>> shipment.click('wait')
 
 Request specific lot in stock assignation::

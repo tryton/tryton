@@ -12,7 +12,9 @@ Imports::
 
 Activate modules::
 
-    >>> config = activate_modules(['sale_supply_production', 'production_routing'])
+    >>> config = activate_modules(
+    ...     ['sale_supply_production', 'production_routing'],
+    ...     create_company)
 
     >>> BoM = Model.get('production.bom')
     >>> Party = Model.get('party.party')
@@ -21,10 +23,6 @@ Activate modules::
     >>> Production = Model.get('production')
     >>> Routing = Model.get('production.routing')
     >>> Sale = Model.get('sale.sale')
-
-Create company::
-
-    >>> _ = create_company()
 
 Create parties::
 

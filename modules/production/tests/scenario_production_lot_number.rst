@@ -7,12 +7,12 @@ Imports::
     >>> from decimal import Decimal
 
     >>> from proteus import Model
-    >>> from trytond.modules.company.tests.tools import create_company, get_company
+    >>> from trytond.modules.company.tests.tools import create_company
     >>> from trytond.tests.tools import activate_modules
 
 Activate modules::
 
-    >>> config = activate_modules(['stock_lot', 'production'])
+    >>> config = activate_modules(['stock_lot', 'production'], create_company)
 
     >>> ProductTemplate = Model.get('product.template')
     >>> Production = Model.get('production')
@@ -20,11 +20,6 @@ Activate modules::
     >>> Sequence = Model.get('ir.sequence')
     >>> SequenceType = Model.get('ir.sequence.type')
     >>> UoM = Model.get('product.uom')
-
-Create company::
-
-    >>> _ = create_company()
-    >>> company = get_company()
 
 Create lot sequence::
 

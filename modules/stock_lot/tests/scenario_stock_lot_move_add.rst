@@ -7,7 +7,8 @@ Imports::
     >>> from decimal import Decimal
 
     >>> from proteus import Model
-    >>> from trytond.modules.company.tests.tools import create_company, get_company
+    >>> from trytond.modules.company.tests.tools import create_company
+    >>> from trytond.modules.currency.tests.tools import get_currency
     >>> from trytond.tests.tools import activate_modules, assertEqual
 
 Activate modules::
@@ -15,12 +16,7 @@ Activate modules::
     >>> modules = ['stock_lot']
     >>> if globals().get('stock_split', False):
     ...     modules.append('stock_split')
-    >>> config = activate_modules(modules)
-
-Create company::
-
-    >>> _ = create_company()
-    >>> company = get_company()
+    >>> config = activate_modules(modules, create_company)
 
 Create product::
 
@@ -51,7 +47,7 @@ Create a move::
     >>> move.product = product
     >>> move.quantity = 10
     >>> move.unit_price = Decimal('20')
-    >>> move.currency = company.currency
+    >>> move.currency = get_currency()
     >>> move.save()
 
 Create a lot::

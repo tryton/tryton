@@ -12,7 +12,7 @@ Imports::
 
 Activate modules::
 
-    >>> config = activate_modules(['account_statement'])
+    >>> config = activate_modules('account_statement', create_company, create_chart)
 
     >>> AccountJournal = Model.get('account.journal')
     >>> Bank = Model.get('bank')
@@ -20,17 +20,15 @@ Activate modules::
     >>> Party = Model.get('party.party')
     >>> StatementJournal = Model.get('account.statement.journal')
 
-Create company::
+Get currencies and company::
 
     >>> eur = get_currency('EUR')
     >>> usd = get_currency('USD')
 
-    >>> _ = create_company(currency=usd)
     >>> company = get_company()
 
-Create chart of accounts::
+Get accounts::
 
-    >>> _ = create_chart()
     >>> accounts = get_accounts()
 
 Create bank account::

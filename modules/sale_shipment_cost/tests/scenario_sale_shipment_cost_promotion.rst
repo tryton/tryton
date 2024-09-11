@@ -8,7 +8,8 @@ Imports::
 
     >>> from proteus import Model
     >>> from trytond.modules.account.tests.tools import create_chart, get_accounts
-    >>> from trytond.modules.company.tests.tools import create_company, get_company
+    >>> from trytond.modules.company.tests.tools import create_company
+    >>> from trytond.modules.currency.tests.tools import get_currency
     >>> from trytond.tests.tools import activate_modules
 
 Activate modules::
@@ -17,17 +18,12 @@ Activate modules::
     ...         'sale_shipment_cost',
     ...         'sale',
     ...         'sale_promotion',
-    ...         ])
+    ...         ],
+    ...     create_company, create_chart)
 
-Create company::
+Get accounts::
 
-    >>> _ = create_company()
-    >>> company = get_company()
-
-Create chart of accounts::
-
-    >>> _ = create_chart(company)
-    >>> accounts = get_accounts(company)
+    >>> accounts = get_accounts()
 
 Create customer::
 
@@ -76,7 +72,7 @@ Create Promotion::
     >>> promotion = Promotion(name='product 2 free')
     >>> promotion.amount = Decimal('101')
     >>> promotion.amount_shipment_cost_included = False
-    >>> promotion.currency = company.currency
+    >>> promotion.currency = get_currency()
     >>> promotion.products.extend([Product(carrier_product.id)])
     >>> promotion.formula = '0.0'
     >>> promotion.save()

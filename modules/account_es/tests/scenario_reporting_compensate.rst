@@ -6,6 +6,7 @@ Imports::
 
     >>> import datetime as dt
     >>> from decimal import Decimal
+    >>> from functools import partial
 
     >>> from proteus import Model, Wizard
     >>> from trytond.modules.account.tests.tools import (
@@ -18,11 +19,12 @@ Imports::
 
 Activate modules::
 
-    >>> config = activate_modules(['account_es', 'account_invoice'])
+    >>> config = activate_modules(
+    ...     ['account_es', 'account_invoice'],
+    ...     create_company, partial(create_chart, chart='account_es.pgc_0_pyme'))
 
-Create company::
+Setup company::
 
-    >>> _ = create_company()
     >>> company = get_company()
     >>> tax_identifier = company.party.identifiers.new()
     >>> tax_identifier.type = 'eu_vat'
@@ -33,15 +35,14 @@ Create fiscal year::
 
     >>> fiscalyear = set_fiscalyear_invoice_sequences(
     ...     create_fiscalyear(
-    ...         company, (dt.date(2018, 1, 1), dt.date(2018, 12, 31))))
+    ...         today=(dt.date(2018, 1, 1), dt.date(2018, 12, 31))))
     >>> fiscalyear.click('create_period')
     >>> previous_period = fiscalyear.periods[0]
     >>> period = fiscalyear.periods[1]
 
-Create chart of accounts::
+Get accounts::
 
-    >>> _ = create_chart(company, 'account_es.pgc_0_pyme')
-    >>> accounts = get_accounts(company)
+    >>> accounts = get_accounts()
     >>> expense = accounts['expense']
     >>> revenue = accounts['revenue']
 

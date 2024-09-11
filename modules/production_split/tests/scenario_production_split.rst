@@ -7,21 +7,16 @@ Imports::
     >>> from decimal import Decimal
 
     >>> from proteus import Model
-    >>> from trytond.modules.company.tests.tools import create_company, get_company
+    >>> from trytond.modules.company.tests.tools import create_company
     >>> from trytond.tests.tools import activate_modules
 
 Activate modules::
 
-    >>> config = activate_modules('production_split')
+    >>> config = activate_modules('production_split', create_company)
 
     >>> ProductTemplate = Model.get('product.template')
     >>> ProductUom = Model.get('product.uom')
     >>> Production = Model.get('production')
-
-Create company::
-
-    >>> _ = create_company()
-    >>> company = get_company()
 
 Create product::
 

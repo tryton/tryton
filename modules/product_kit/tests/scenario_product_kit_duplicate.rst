@@ -12,15 +12,11 @@ Imports::
 
 Activate product_kit::
 
-    >>> config = activate_modules('product_kit')
+    >>> config = activate_modules('product_kit', create_company)
 
     >>> Uom = Model.get('product.uom')
     >>> ProductTemplate = Model.get('product.template')
     >>> Product = Model.get('product.product')
-
-Create company::
-
-    >>> _ = create_company()
 
 Create products::
 

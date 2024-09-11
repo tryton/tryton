@@ -12,17 +12,13 @@ Imports::
 
 Activate modules::
 
-    >>> config = activate_modules('stock_product_location')
+    >>> config = activate_modules('stock_product_location', create_company)
 
     >>> Location = Model.get('stock.location')
     >>> Party = Model.get('party.party')
     >>> ProductTemplate = Model.get('product.template')
     >>> ShipmentOut = Model.get('stock.shipment.out')
     >>> UoM = Model.get('product.uom')
-
-Create company::
-
-    >>> _ = create_company()
 
 Create customer::
 

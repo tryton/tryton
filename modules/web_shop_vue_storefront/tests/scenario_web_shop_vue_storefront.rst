@@ -10,7 +10,7 @@ Imports::
 
     >>> from proteus import Model
     >>> from trytond.modules.account.tests.tools import create_chart, get_accounts
-    >>> from trytond.modules.company.tests.tools import create_company, get_company
+    >>> from trytond.modules.company.tests.tools import create_company
     >>> from trytond.modules.web_shop_vue_storefront import web
     >>> from trytond.modules.web_shop_vue_storefront.tests.tools import AnyDictWith
     >>> from trytond.tests.tools import activate_modules
@@ -33,18 +33,12 @@ Patch elasticsearch::
 Install web_shop_vue_storefront::
 
     >>> config = activate_modules(
-    ...     ['web_shop_vue_storefront', 'product_attribute', 'product_image'])
+    ...     ['web_shop_vue_storefront', 'product_attribute', 'product_image'],
+    ...     create_company, create_chart)
 
-Create company::
+Get accounts::
 
-    >>> Company = Model.get('company.company')
-    >>> _ = create_company()
-    >>> company = get_company()
-
-Create chart of accounts::
-
-    >>> _ = create_chart(company)
-    >>> accounts = get_accounts(company)
+    >>> accounts = get_accounts()
 
 Define a web shop::
 

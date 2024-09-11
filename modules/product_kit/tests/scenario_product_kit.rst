@@ -12,11 +12,10 @@ Imports::
 
 Activate product_kit and stock::
 
-    >>> config = activate_modules(['product_kit', 'stock'])
+    >>> config = activate_modules(['product_kit', 'stock'], create_company)
 
-Create company::
+Get company::
 
-    >>> _ = create_company()
     >>> company = get_company()
 
 Create products::

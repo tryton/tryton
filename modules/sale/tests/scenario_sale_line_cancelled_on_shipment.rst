@@ -13,7 +13,7 @@ Imports::
 
 Activate modules::
 
-    >>> config = activate_modules('sale')
+    >>> config = activate_modules('sale', create_company, create_chart)
 
     >>> Party = Model.get('party.party')
     >>> ProductCategory = Model.get('product.category')
@@ -21,13 +21,8 @@ Activate modules::
     >>> ProductUom = Model.get('product.uom')
     >>> Sale = Model.get('sale.sale')
 
-Create company::
+Get accounts::
 
-    >>> _ = create_company()
-
-Create chart of accounts::
-
-    >>> _ = create_chart()
     >>> accounts = get_accounts()
 
 Create party::

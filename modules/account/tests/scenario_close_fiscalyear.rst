@@ -12,7 +12,7 @@ Imports::
     >>> from proteus import Model, Wizard
     >>> from trytond.modules.account.tests.tools import (
     ...     create_chart, create_fiscalyear, get_accounts)
-    >>> from trytond.modules.company.tests.tools import create_company, get_company
+    >>> from trytond.modules.company.tests.tools import create_company
     >>> from trytond.tests.tools import activate_modules
 
     >>> today = dt.date.today()
@@ -20,7 +20,7 @@ Imports::
 
 Activate modules::
 
-    >>> config = activate_modules('account')
+    >>> config = activate_modules('account', create_company, create_chart)
 
     >>> Account = Model.get('account.account')
     >>> AccountType = Model.get('account.account.type')
@@ -31,21 +31,15 @@ Activate modules::
     >>> Period = Model.get('account.period')
     >>> Sequence = Model.get('ir.sequence')
 
-Create company::
-
-    >>> _ = create_company()
-    >>> company = get_company()
-
 Create fiscal year::
 
-    >>> fiscalyear = create_fiscalyear(company, today=last_year)
+    >>> fiscalyear = create_fiscalyear(today=last_year)
     >>> fiscalyear.click('create_period')
     >>> period = fiscalyear.periods[0]
 
-Create chart of accounts::
+Get accounts::
 
-    >>> _ = create_chart(company)
-    >>> accounts = get_accounts(company)
+    >>> accounts = get_accounts()
 
 Prepare the closing settings for fiscalyear close::
 

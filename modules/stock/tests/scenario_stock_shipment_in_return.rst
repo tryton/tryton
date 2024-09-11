@@ -8,7 +8,8 @@ Imports::
     >>> from decimal import Decimal
 
     >>> from proteus import Model
-    >>> from trytond.modules.company.tests.tools import create_company, get_company
+    >>> from trytond.modules.company.tests.tools import create_company
+    >>> from trytond.modules.currency.tests.tools import get_currency
     >>> from trytond.tests.tools import activate_modules, assertEqual, assertNotEqual
 
     >>> today = dt.date.today()
@@ -16,12 +17,7 @@ Imports::
 
 Activate modules::
 
-    >>> config = activate_modules('stock')
-
-Create company::
-
-    >>> _ = create_company()
-    >>> company = get_company()
+    >>> config = activate_modules('stock', create_company)
 
 Create supplier::
 
@@ -62,9 +58,8 @@ Create Shipment In::
     >>> move.quantity = 1
     >>> move.from_location = storage_loc
     >>> move.to_location = supplier_loc
-    >>> move.company = company
     >>> move.unit_price = Decimal('1')
-    >>> move.currency = company.currency
+    >>> move.currency = get_currency()
     >>> shipment_return.save()
     >>> shipment_return.number
     >>> shipment_return.click('wait')

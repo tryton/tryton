@@ -15,11 +15,7 @@ Imports::
 
 Activate modules::
 
-    >>> _ = activate_modules(['stock_product_location', 'production'])
-
-Create company::
-
-    >>> _ = create_company()
+    >>> _ = activate_modules(['stock_product_location', 'production'], create_company)
 
 Get stock locations::
 
