@@ -284,7 +284,7 @@ class Wizard(URLMixin, PoolBase):
                     raise AccessError(
                         gettext(
                             'ir.msg_access_wizard_error',
-                            name=cls.__name__),
+                            wizard=cls.__name__),
                         gettext(
                             'ir.msg_context_groups',
                             groups=', '.join(g.rec_name for g in groups)))
