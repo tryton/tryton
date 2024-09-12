@@ -34,17 +34,19 @@ class ActionGroup(ModelSQL):
 
     @classmethod
     def create(cls, vlist):
-        Action = Pool().get('ir.action')
+        pool = Pool()
+        Action = pool.get('ir.action')
         vlist = [x.copy() for x in vlist]
         for vals in vlist:
             if vals.get('action'):
                 vals['action'] = Action.get_action_id(vals['action'])
-        res = super(ActionGroup, cls).create(vlist)
-        return res
+        Action._groups_cache.clear()
+        return super().create(vlist)
 
     @classmethod
     def write(cls, records, values, *args):
-        Action = Pool().get('ir.action')
+        pool = Pool()
+        Action = pool.get('ir.action')
         actions = iter((records, values) + args)
         args = []
         for records, values in zip(actions, actions):
@@ -52,7 +54,15 @@ class ActionGroup(ModelSQL):
                 values = values.copy()
                 values['action'] = Action.get_action_id(values['action'])
             args.extend((records, values))
-        super(ActionGroup, cls).write(*args)
+        Action._groups_cache.clear()
+        super().write(*args)
+
+    @classmethod
+    def delete(cls, records):
+        pool = Pool()
+        Action = pool.get('ir.action')
+        Action._groups_cache.clear()
+        super().delete(records)
 
 
 class Action(metaclass=PoolMeta):
@@ -60,6 +70,7 @@ class Action(metaclass=PoolMeta):
 
     groups = fields.Many2Many(
         'ir.action-res.group', 'action', 'group', "Groups")
+    _groups_cache = Cache('ir.action.get_groups', context=False)
 
 
 class ActionMixin(metaclass=PoolMeta):
@@ -67,7 +78,14 @@ class ActionMixin(metaclass=PoolMeta):
     @classmethod
     @without_check_access
     def get_groups(cls, name, action_id=None):
-        # TODO add cache
+        pool = Pool()
+        Action = pool.get('ir.action')
+
+        key = (name, action_id)
+        groups = Action._groups_cache.get(key)
+        if groups is not None:
+            return set(groups)
+
         domain = [
             (cls._action_name, '=', name),
             ]
@@ -75,6 +93,7 @@ class ActionMixin(metaclass=PoolMeta):
             domain.append(('id', '=', action_id))
         actions = cls.search(domain)
         groups = {g.id for a in actions for g in a.groups}
+        Action._groups_cache.set(key, list(groups))
         return groups
 
 
