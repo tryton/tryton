@@ -143,6 +143,7 @@ class Report(URLMixin, PoolBase):
         '''
         pool = Pool()
         ActionReport = pool.get('ir.action.report')
+        ModelAccess = pool.get('ir.model.access')
         cls.check_access()
 
         action_id = data.get('action_id')
@@ -179,6 +180,13 @@ class Report(URLMixin, PoolBase):
         model = action_report.model or data.get('model')
         if model:
             records = cls._get_records(ids, model, data)
+
+        with Transaction().set_context(_check_access=True):
+            if model:
+                Model = pool.get(model)
+                ModelAccess.check(model, 'read')
+                # Check read access
+                Model.read(ids, ['id'])
 
         if not records:
             groups = [[]]
