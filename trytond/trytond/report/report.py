@@ -34,8 +34,8 @@ from genshi.filters import Translator
 from genshi.template.text import TextTemplate
 
 from trytond.config import config
-from trytond.exceptions import UserError
 from trytond.i18n import gettext
+from trytond.model.exceptions import AccessError
 from trytond.pool import Pool, PoolBase
 from trytond.rpc import RPC
 from trytond.tools import slugify
@@ -145,6 +145,7 @@ class Report(URLMixin, PoolBase):
         pool = Pool()
         ActionReport = pool.get('ir.action.report')
         User = pool.get('res.user')
+        Group = pool.get('res.group')
 
         if Transaction().user == 0:
             return
@@ -152,7 +153,14 @@ class Report(URLMixin, PoolBase):
         groups = set(User.get_groups())
         report_groups = ActionReport.get_groups(cls.__name__)
         if report_groups and not groups & report_groups:
-            raise UserError('Calling report %s is not allowed!' % cls.__name__)
+            groups = Group.browse(User.get_groups())
+            raise AccessError(
+                gettext(
+                    'ir.msg_access_report_error',
+                    report=cls.__name__),
+                gettext(
+                    'ir.msg_context_groups',
+                    groups=', '.join(g.rec_name for g in groups)))
 
     @classmethod
     def header_key(cls, record):

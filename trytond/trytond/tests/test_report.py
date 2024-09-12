@@ -42,6 +42,25 @@ class ReportTestCase(TestCase):
             ('txt', 'Administrator\n', False, 'Test Report'))
 
     @with_transaction()
+    def test_execute_without_access(self):
+        "Execute report without model access"
+        pool = Pool()
+        ActionReport = pool.get('ir.action.report')
+        Group = pool.get('res.group')
+        Report = pool.get('test.test_report', type='report')
+
+        group = Group(name="Test")
+        group.save()
+        action_report, = ActionReport.search([
+                ('report_name', '=', 'test.test_report'),
+                ])
+        action_report.groups = [group]
+        action_report.save()
+
+        with self.assertRaises(AccessError):
+            Report.execute([], {'model': 'test.access'})
+
+    @with_transaction()
     def test_execute_without_model_access(self):
         "Execute report without model access"
         pool = Pool()
