@@ -5,7 +5,7 @@ from trytond.cache import Cache
 from trytond.model import DeactivableMixin, ModelSQL, fields
 from trytond.pool import Pool, PoolMeta
 from trytond.pyson import Eval
-from trytond.transaction import Transaction
+from trytond.transaction import Transaction, without_check_access
 
 
 class UIMenu(metaclass=PoolMeta):
@@ -65,6 +65,7 @@ class Action(metaclass=PoolMeta):
 class ActionMixin(metaclass=PoolMeta):
 
     @classmethod
+    @without_check_access
     def get_groups(cls, name, action_id=None):
         # TODO add cache
         domain = [
