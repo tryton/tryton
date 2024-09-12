@@ -348,8 +348,11 @@ class ModelField(ModelSQL, ModelView):
             .join(ir_model, condition=ir_model_field.model == ir_model.id)
             .select(ir_model.model, ir_model_field.name, ir_model_field.id))
         for model, field, id_ in cursor:
-            Model = pool.get(model)
-            if field not in Model._fields:
+            try:
+                Model = pool.get(model)
+            except KeyError:
+                Model = None
+            if not Model or field not in Model._fields:
                 logger.info("remove field: %s.%s", model, field)
                 try:
                     cls.delete([cls(id_)])
