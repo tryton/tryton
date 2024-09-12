@@ -34,7 +34,7 @@ Class methods are:
 
    Registers the report.
 
-.. classmethod:: Report.check_access()
+.. classmethod:: Report.check_access(action, model, ids)
 
    Verifies if the :attr:`~trytond.transaction.Transaction.user` is allowed to
    execute the report.

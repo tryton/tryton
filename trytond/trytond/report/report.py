@@ -141,26 +141,34 @@ class Report(URLMixin, PoolBase):
             }
 
     @classmethod
-    def check_access(cls):
+    def check_access(cls, action, model, ids):
         pool = Pool()
         ActionReport = pool.get('ir.action.report')
         User = pool.get('res.user')
         Group = pool.get('res.group')
+        ModelAccess = pool.get('ir.model.access')
 
         if Transaction().user == 0:
             return
 
-        groups = set(User.get_groups())
-        report_groups = ActionReport.get_groups(cls.__name__)
-        if report_groups and not groups & report_groups:
-            groups = Group.browse(User.get_groups())
-            raise AccessError(
-                gettext(
-                    'ir.msg_access_report_error',
-                    report=cls.__name__),
-                gettext(
-                    'ir.msg_context_groups',
-                    groups=', '.join(g.rec_name for g in groups)))
+        with check_access():
+            groups = set(User.get_groups())
+            report_groups = ActionReport.get_groups(cls.__name__, action.id)
+            if report_groups and not groups & report_groups:
+                groups = Group.browse(User.get_groups())
+                raise AccessError(
+                    gettext(
+                        'ir.msg_access_report_error',
+                        report=cls.__name__),
+                    gettext(
+                        'ir.msg_context_groups',
+                        groups=', '.join(g.rec_name for g in groups)))
+
+            if model:
+                Model = pool.get(model)
+                ModelAccess.check(model, 'read')
+                # Check read access
+                Model.read(ids, ['id'])
 
     @classmethod
     def header_key(cls, record):
@@ -180,8 +188,6 @@ class Report(URLMixin, PoolBase):
         '''
         pool = Pool()
         ActionReport = pool.get('ir.action.report')
-        ModelAccess = pool.get('ir.model.access')
-        cls.check_access()
         context = Transaction().context
         ids = list(map(int, ids))
 
@@ -194,6 +200,9 @@ class Report(URLMixin, PoolBase):
             action_report = action_reports[0]
         else:
             action_report = ActionReport(action_id)
+
+        model = action_report.model or data.get('model')
+        cls.check_access(action_report, model, ids)
 
         def report_name(records, reserved_length=0):
             names = []
@@ -222,17 +231,10 @@ class Report(URLMixin, PoolBase):
                 name += '__' + str(record_count - len(names))
             return name
 
-        records = []
-        model = action_report.model or data.get('model')
         if model:
             records = cls._get_records(ids, model, data)
-
-        with check_access():
-            if model:
-                Model = pool.get(model)
-                ModelAccess.check(model, 'read')
-                # Check read access
-                Model.read(ids, ['id'])
+        else:
+            records = []
 
         if not records:
             groups = [[]]
