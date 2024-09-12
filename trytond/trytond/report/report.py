@@ -36,7 +36,7 @@ from trytond.i18n import gettext
 from trytond.pool import Pool, PoolBase
 from trytond.rpc import RPC
 from trytond.tools import slugify
-from trytond.transaction import Transaction
+from trytond.transaction import Transaction, check_access
 from trytond.url import URLMixin
 
 try:
@@ -162,6 +162,7 @@ class Report(URLMixin, PoolBase):
         '''
         pool = Pool()
         ActionReport = pool.get('ir.action.report')
+        ModelAccess = pool.get('ir.model.access')
         cls.check_access()
         context = Transaction().context
         ids = list(map(int, ids))
@@ -207,6 +208,13 @@ class Report(URLMixin, PoolBase):
         model = action_report.model or data.get('model')
         if model:
             records = cls._get_records(ids, model, data)
+
+        with check_access():
+            if model:
+                Model = pool.get(model)
+                ModelAccess.check(model, 'read')
+                # Check read access
+                Model.read(ids, ['id'])
 
         if not records:
             groups = [[]]
