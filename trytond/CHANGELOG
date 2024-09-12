@@ -1,3 +1,4 @@
+* Retrieve groups of actions without checking access (#13506)
 * Check read access of report records (#13505)
 
 Version 7.2.8 - 2024-09-01
