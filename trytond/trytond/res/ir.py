@@ -3,6 +3,7 @@
 from trytond.model import ModelSQL, DeactivableMixin, fields
 from trytond.pool import Pool, PoolMeta
 from trytond.pyson import Eval
+from trytond.transaction import Transaction
 
 
 class UIMenuGroup(ModelSQL):
@@ -85,15 +86,16 @@ class ActionMixin(metaclass=PoolMeta):
 
     @classmethod
     def get_groups(cls, name, action_id=None):
-        # TODO add cache
-        domain = [
-            (cls._action_name, '=', name),
-            ]
-        if action_id:
-            domain.append(('id', '=', action_id))
-        actions = cls.search(domain)
-        groups = {g.id for a in actions for g in a.groups}
-        return groups
+        with Transaction().set_context(_check_access=False):
+            # TODO add cache
+            domain = [
+                (cls._action_name, '=', name),
+                ]
+            if action_id:
+                domain.append(('id', '=', action_id))
+            actions = cls.search(domain)
+            groups = {g.id for a in actions for g in a.groups}
+            return groups
 
 
 class ActionReport(ActionMixin):
