@@ -271,7 +271,7 @@ class Report(URLMixin, PoolBase):
                         records, len(action_report_name) + len(join_string))]))
         else:
             filename = action_report_name
-        return (oext, content, action_report.direct_print, filename)
+        return (oext, content, bool(action_report.direct_print), filename)
 
     @classmethod
     def _execute(cls, records, header, data, action):

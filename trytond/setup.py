@@ -81,7 +81,7 @@ setup(name=name,
         'trytond.ir.ui': ['*.xml', '*.rng', '*.rnc'],
         'trytond.res': [
             'tryton.cfg', '*.xml', '*.html', 'view/*.xml', 'locale/*.po'],
-        'trytond.tests': ['tryton.cfg', '*.xml', 'forbidden.txt'],
+        'trytond.tests': ['tryton.cfg', '*.xml', '*.txt'],
         },
     scripts=[
         'bin/trytond',

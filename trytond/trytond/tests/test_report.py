@@ -2,6 +2,8 @@
 # this repository contains the full copyright notices and license terms.
 import datetime
 
+from trytond.model.exceptions import AccessError
+from trytond.pool import Pool
 from trytond.report.report import Report
 from trytond.tests.test_tryton import (
     TestCase, activate_module, with_transaction)
@@ -28,6 +30,39 @@ class ReportTestCase(TestCase):
                 datetime.datetime(2020, 7, 8, 13, 30, 00),
                 format='%d %b %Y %I:%M %p'),
             "08 Jul 2020 01:30 PM"),
+
+    @with_transaction()
+    def test_execute(self):
+        "Execute report"
+        pool = Pool()
+        Report = pool.get('test.test_report', type='report')
+
+        self.assertEqual(
+            Report.execute([], {}),
+            ('txt', 'Administrator\n', False, 'Test Report'))
+
+    @with_transaction()
+    def test_execute_without_model_access(self):
+        "Execute report without model access"
+        pool = Pool()
+        Report = pool.get('test.test_report', type='report')
+        ModelAccess = pool.get('ir.model.access')
+        ModelAccess.create([{
+                    'model': 'test.access',
+                    'perm_write': False,
+                    }])
+
+        with self.assertRaises(AccessError):
+            Report.execute([], {'model': 'test.access'})
+
+    @with_transaction()
+    def test_execute_without_read_access(self):
+        "Execute report without read access"
+        pool = Pool()
+        Report = pool.get('test.test_report', type='report')
+
+        with self.assertRaises(AccessError):
+            Report.execute([1], {'model': 'test.access'})
 
 
 def create_test_format_timedelta(i, in_, out):
