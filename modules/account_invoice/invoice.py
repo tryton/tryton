@@ -412,6 +412,7 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin, InvoiceReportMixin):
                 ('validated', 'cancelled'),
                 ('posted', 'cancelled'),
                 ('cancelled', 'draft'),
+                ('cancelled', 'posted'),
                 ))
         cls._buttons.update({
                 'cancel': {
@@ -1251,9 +1252,9 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin, InvoiceReportMixin):
             grouped_invoices = sorted(grouped_invoices, key=invoice_date)
 
             for invoice in grouped_invoices:
-                # Posted and paid invoices are tested by check_modify so we can
-                # not modify tax_identifier nor number
-                if invoice.state in {'posted', 'paid'}:
+                # Posted, paid and cancelled invoices are tested by
+                # check_modify so we can not modify tax_identifier nor number
+                if invoice.state in {'posted', 'paid', 'cancelled'}:
                     continue
                 if not invoice.tax_identifier:
                     invoice.tax_identifier = invoice.get_tax_identifier()
@@ -1983,15 +1984,23 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin, InvoiceReportMixin):
     @classmethod
     @ModelView.button
     def process(cls, invoices):
+        to_save = []
         paid = []
         posted = []
         for invoice in invoices:
-            if invoice.state not in ('posted', 'paid'):
-                continue
-            if invoice.reconciled:
-                paid.append(invoice)
-            else:
-                posted.append(invoice)
+            if invoice.state in {'posted', 'paid'}:
+                if invoice.reconciled:
+                    paid.append(invoice)
+                else:
+                    posted.append(invoice)
+            elif invoice.state == 'cancelled' and invoice.move:
+                if not invoice.reconciled:
+                    if invoice.cancel_move:
+                        invoice.cancel_move = None
+                        invoice.save()
+                        to_save.append(invoice)
+                    posted.append(invoice)
+        cls.save(to_save)
         cls.paid(paid)
         cls._post(posted)
 
