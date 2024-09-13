@@ -246,6 +246,8 @@ Credit invoice with refund::
     >>> invoice.reload()
     >>> invoice.state
     'cancelled'
+    >>> bool(invoice.cancel_move)
+    True
     >>> bool(invoice.reconciled)
     True
     >>> credit_note, = Invoice.find([
@@ -285,6 +287,15 @@ Credit invoice with refund::
     ...     credit_note_tax_code = TaxCode(credit_note_tax_code.id)
     ...     credit_note_tax_code.amount
     Decimal('20.00')
+
+Unreconcile cancelled invoice::
+
+    >>> unreconcile_lines = Wizard(
+    ...     'account.move.unreconcile_lines', invoice.move.lines)
+    >>> invoice.reload()
+    >>> invoice.state
+    'posted'
+    >>> invoice.cancel_move
 
 Pay invoice::
 
