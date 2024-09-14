@@ -260,7 +260,7 @@ this repository contains the full copyright notices and license terms. -->
 
         <record model="ir.action.act_window"
             id="act_product_quantities_warehouse">
-            <field name="name">Product Quantities By Warehouse</field>
+            <field name="name">Stock Quantities By Warehouse</field>
             <field name="res_model">stock.product_quantities_warehouse</field>
             <field name="context" pyson="1"
                 eval="If(Eval('active_model') == 'product.template', {'product_template': Eval('active_ids')}, {'product': Eval('active_ids')})"/>
