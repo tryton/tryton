@@ -34,7 +34,7 @@ If you are interested in finding out where some particular products are
 stored, then once you have selected the products you are interested in, you
 can use the menu items in the product's :guilabel:`Open related records` menu.
 
-To view how much stock is in one or more stock locations you first need to
+To view how much product is in one or more stock locations you first need to
 select the locations you are interested in.
 Once you have done this you can use the :guilabel:`Products` item from the
 :guilabel:`Open related records` menu.
@@ -43,7 +43,7 @@ This then shows the total stock that is in all the selected locations.
 .. tip::
 
    From the [:menuselection:`Inventory & Stock --> Locations`] main menu item
-   you can quickly get a list of stock in a single location by opening the
+   you can quickly get a list of products in a single location by opening the
    location you are interested in.
 
 .. tip::
