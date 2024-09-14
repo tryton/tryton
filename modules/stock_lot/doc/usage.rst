@@ -16,7 +16,8 @@ stock levels for either `Lots <model-stock.lot>` or `Locations
 
 If you are interested in finding out where some particular lots are stored,
 then once you have selected the lots you are interested in, you can use the
-menu items in the lot's :guilabel:`Open related records` menu.
+menu items :guilabel:`Stock Locations` in the lot's :guilabel:`Open related
+records` menu.
 
 To view how much lots is in one or more stock locations you first need to
 select the locations you are interested in.

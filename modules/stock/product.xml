@@ -153,7 +153,7 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
         <record model="ir.action.act_window" id="act_location_quantity_tree">
-            <field name="name">Locations Tree Quantity</field>
+            <field name="name">Stock Locations Tree</field>
             <field name="res_model">stock.location</field>
             <field name="domain" eval="[('parent', '=', None)]" pyson="1"/>
             <field name="context" pyson="1"
@@ -190,7 +190,7 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
         <record model="ir.action.act_window" id="act_location_quantity_list">
-            <field name="name">Locations List Quantity</field>
+            <field name="name">Stock Locations List</field>
             <field name="res_model">stock.location</field>
             <field name="search_value" eval="['OR', ('quantity', '!=', 0), ('forecast_quantity', '!=', 0)]" pyson="1"/>
             <field name="context" pyson="1"

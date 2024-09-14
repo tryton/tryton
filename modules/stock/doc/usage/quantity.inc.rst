@@ -32,7 +32,8 @@ stock levels for either `Products <concept-product>` or
 
 If you are interested in finding out where some particular products are
 stored, then once you have selected the products you are interested in, you
-can use the menu items in the product's :guilabel:`Open related records` menu.
+can use the menu items :guilabel:`Stock Locations` in the product's
+:guilabel:`Open related records` menu.
 
 To view how much product is in one or more stock locations you first need to
 select the locations you are interested in.
