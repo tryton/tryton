@@ -405,38 +405,6 @@ class LotsByLocations(ModelSQL, ModelView):
         return [('lot.' + name + nested, *clause[1:])]
 
 
-class LotByWarehouseContext(LotByLocationContext):
-    "Lot by Warehouse"
-    __name__ = 'stock.lots_by_warehouse.context'
-    warehouse = fields.Many2One(
-        'stock.location', "Warehouse", required=True,
-        domain=[
-            ('type', '=', 'warehouse'),
-            ],
-        )
-    stock_skip_warehouse = fields.Boolean(
-        "Only storage zone",
-        help="Check to use only the quantity of the storage zone.")
-    locations = fields.Function(
-        fields.Many2Many('stock.location', None, None, "Locations"),
-        'on_change_with_locations')
-
-    @classmethod
-    def default_warehouse(cls):
-        return Pool().get('stock.location').get_default_warehouse()
-
-    @classmethod
-    def default_stock_skip_warehouse(cls):
-        return Transaction().context.get('stock_skip_warehouse')
-
-    @fields.depends('warehouse')
-    def on_change_with_locations(self, name=None):
-        locations = []
-        if self.warehouse:
-            locations.append(self.warehouse)
-        return locations
-
-
 class Location(metaclass=PoolMeta):
     __name__ = 'stock.location'
 

@@ -235,39 +235,6 @@ this repository contains the full copyright notices and license terms. -->
             <field name="action" ref="act_lots_by_locations_relate"/>
         </record>
 
-        <record model="ir.ui.view" id="lots_by_warehouse_context_view_form">
-            <field name="model">stock.lots_by_warehouse.context</field>
-            <field name="inherit" ref="lots_by_location_context_view_form"/>
-            <field name="name">lot_by_warehouse_context_form</field>
-        </record>
-
-        <record model="ir.action.act_window" id="act_lots_by_warehouse_relate">
-            <field name="name">Lots By Warehouse</field>
-            <field name="res_model">stock.lots_by_locations</field>
-            <field
-                name="domain"
-                eval="[If(Eval('active_ids', []) == [Eval('active_id')], (If(Eval('active_model') == 'product.template', 'product.template', 'product'), '=', Eval('active_id', -1)), (If(Eval('active_model') == 'product.template', 'product.template', 'product'), 'in', Eval('active_ids', []))), ['OR', ('quantity', '!=', 0.0), ('forecast_quantity', '!=', 0.0)]]"
-                pyson="1"/>
-            <field name="search_value"
-                eval="None" />
-            <field name="context_model">stock.lots_by_warehouse.context</field>
-        </record>
-        <record model="ir.action.act_window.view" id="act_lots_by_warehouse_relate_view1">
-            <field name="sequence" eval="10"/>
-            <field name="view" ref="lots_by_locations_view_list"/>
-            <field name="act_window" ref="act_lots_by_warehouse_relate"/>
-        </record>
-        <record model="ir.action.keyword" id="act_lots_by_warehouse_relate_keyword1">
-            <field name="keyword">form_relate</field>
-            <field name="model">product.template,-1</field>
-            <field name="action" ref="act_lots_by_warehouse_relate"/>
-        </record>
-        <record model="ir.action.keyword" id="act_lots_by_warehouse_relate_keyword2">
-            <field name="keyword">form_relate</field>
-            <field name="model">product.product,-1</field>
-            <field name="action" ref="act_lots_by_warehouse_relate"/>
-        </record>
-
         <record model="ir.action.act_window" id="act_location_quantity_tree">
             <field name="name">Stock Locations Tree</field>
             <field name="res_model">stock.location</field>

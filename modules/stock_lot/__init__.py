@@ -15,7 +15,6 @@ def register():
         stock.LotTrace,
         stock.LotByLocationContext,
         stock.LotsByLocations,
-        stock.LotByWarehouseContext,
         stock.Location,
         stock.Move,
         stock.MoveAddLotsStart,
