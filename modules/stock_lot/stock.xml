@@ -211,7 +211,7 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
         <record model="ir.action.act_window" id="act_lots_by_locations_relate">
-            <field name="name">Lots by Locations</field>
+            <field name="name">Lots</field>
             <field name="res_model">stock.lots_by_locations</field>
             <field name="context" eval="{'locations': Eval('active_ids')}" pyson="1"/>
             <field name="domain"
