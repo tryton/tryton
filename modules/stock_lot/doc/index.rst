@@ -10,5 +10,6 @@ of where the stock is and how much is available.
 .. toctree::
    :maxdepth: 2
 
+   usage
    design
    releases
