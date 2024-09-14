@@ -169,21 +169,22 @@ class Record:
             if related_read_limit:
                 ctx['related_read_limit'] = (
                     CONFIG['client.limit'] // min(related_read_limit, 10))
-            exception = False
             try:
                 values = RPCExecute('model', self.model_name, 'read',
                     list(id2record.keys()), fnames, context=ctx,
                     process_exception=process_exception)
             except RPCException:
-                values = [{'id': x} for x in id2record]
-                default_values = dict((f, None) for f in fnames)
-                for value in values:
-                    value.update(default_values)
-                self.exception = exception = True
+                for record in id2record.values():
+                    record.exception = True
+                if process_exception:
+                    values = [{'id': x} for x in id2record]
+                    default_values = dict((f, None) for f in fnames)
+                    for value in values:
+                        value.update(default_values)
+                else:
+                    raise
             id2value = dict((value['id'], value) for value in values)
             for id, record in id2record.items():
-                if not record.exception:
-                    record.exception = exception
                 value = id2value.get(id)
                 if record and not record.destroyed and value:
                     for key in record.modified_fields:
