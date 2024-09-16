@@ -24,3 +24,13 @@ The ``store_prefix`` contains the prefix to use with the :ref:`FileStore
 <trytond:ref-filestore>`.
 
 The default value is: ``None``
+
+.. _config-inboud_email.max_size:
+
+``max_size``
+============
+
+The maximum size in bytes of the incoming document request (zero means no
+limit).
+
+The default value is: `trytond:config-request.max_size`

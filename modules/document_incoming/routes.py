@@ -3,14 +3,19 @@
 
 import base64
 
+from trytond.config import config
 from trytond.protocols.wrappers import (
-    HTTPStatus, Response, abort, user_application, with_pool, with_transaction)
+    HTTPStatus, Response, abort, set_max_request_size, user_application,
+    with_pool, with_transaction)
 from trytond.wsgi import app
 
 document_incoming_application = user_application('document_incoming')
 
 
 @app.route('/<database_name>/document_incoming', methods=['POST'])
+@set_max_request_size(config.getint(
+        'document_incoming', 'max_size',
+        default=config.getint('request', 'max_size')))
 @with_pool
 @with_transaction()
 @document_incoming_application
