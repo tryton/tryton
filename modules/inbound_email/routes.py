@@ -3,13 +3,18 @@
 
 import json
 
+from trytond.config import config
 from trytond.protocols.wrappers import (
-    HTTPStatus, Response, abort, with_pool, with_transaction)
+    HTTPStatus, Response, abort, set_max_request_size, with_pool,
+    with_transaction)
 from trytond.wsgi import app
 
 
 @app.route(
     '/<database_name>/inbound_email/inbox/<identifier>', methods={'POST'})
+@set_max_request_size(config.getint(
+        'inbound_email', 'max_size',
+        default=config.getint('request', 'max_size')))
 @with_pool
 @with_transaction()
 def inbound_email(request, pool, identifier):
