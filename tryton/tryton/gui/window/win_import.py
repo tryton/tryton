@@ -10,7 +10,8 @@ from decimal import Decimal
 from gi.repository import Gtk
 
 import tryton.common as common
-from tryton.common import RPCException, RPCExecute
+from tryton.common import IconFactory, RPCException, RPCExecute
+from tryton.common.underline import set_underline
 from tryton.gui.window.win_csv import WinCSV
 
 _ = gettext.gettext
@@ -28,6 +29,16 @@ class WinImport(WinCSV):
         self.fields_invert = {}
         super(WinImport, self).__init__()
         self.dialog.set_title(_('CSV Import: %s') % name)
+
+        button_cancel = self.dialog.add_button(
+            set_underline(_("Cancel")), Gtk.ResponseType.CANCEL)
+        button_cancel.set_image(IconFactory.get_image(
+                'tryton-cancel', Gtk.IconSize.BUTTON))
+
+        button_ok = self.dialog.add_button(
+            set_underline(_("Import")), Gtk.ResponseType.OK)
+        button_ok.set_image(IconFactory.get_image(
+                'tryton-import', Gtk.IconSize.BUTTON))
 
     def add_buttons(self, box):
         button_autodetect = Gtk.Button(

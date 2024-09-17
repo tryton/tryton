@@ -14,7 +14,8 @@ from numbers import Number
 from gi.repository import Gdk, GObject, Gtk
 
 import tryton.common as common
-from tryton.common import RPCException, RPCExecute, tempfile
+from tryton.common import IconFactory, RPCException, RPCExecute, tempfile
+from tryton.common.underline import set_underline
 from tryton.config import CONFIG
 from tryton.gui.window.win_csv import WinCSV
 from tryton.jsonrpc import JSONEncoder
@@ -38,6 +39,17 @@ class WinExport(WinCSV, InfoBar):
             self.create_info_bar(), expand=False, fill=True, padding=0)
         # Hide as selected record is the default
         self.ignore_search_limit.hide()
+
+        self.dialog.add_button(
+            set_underline(_("Close")), Gtk.ResponseType.CANCEL).set_image(
+                IconFactory.get_image('tryton-close', Gtk.IconSize.BUTTON))
+        self.dialog.add_button(
+            set_underline(_("Open")), Gtk.ResponseType.OK).set_image(
+                IconFactory.get_image('tryton-open', Gtk.IconSize.BUTTON))
+        self.dialog.add_button(
+            set_underline(_("Save As...")), Gtk.ResponseType.ACCEPT).set_image(
+                IconFactory.get_image('tryton-save', Gtk.IconSize.BUTTON))
+        self.dialog.set_default_response(Gtk.ResponseType.OK)
 
     @property
     def model(self):
@@ -117,12 +129,6 @@ class WinExport(WinCSV, InfoBar):
     def add_chooser(self, box):
         hbox_csv_export = Gtk.HBox()
         box.pack_start(hbox_csv_export, expand=False, fill=True, padding=0)
-        self.saveas = Gtk.ComboBoxText()
-        hbox_csv_export.pack_start(
-            self.saveas, expand=True, fill=True, padding=3)
-        self.saveas.append_text(_("Open"))
-        self.saveas.append_text(_("Save"))
-        self.saveas.set_active(0)
 
         self.selected_records = Gtk.ComboBoxText()
         hbox_csv_export.pack_start(
@@ -346,7 +352,7 @@ class WinExport(WinCSV, InfoBar):
 
     def response(self, dialog, response):
         self.info_bar_clear()
-        if response == Gtk.ResponseType.OK:
+        if response in {Gtk.ResponseType.OK, Gtk.ResponseType.ACCEPT}:
             fields = []
             iter = self.model2.get_iter_first()
             while iter:
@@ -390,7 +396,7 @@ class WinExport(WinCSV, InfoBar):
                 except RPCException:
                     data = []
 
-            if self.saveas.get_active():
+            if response == Gtk.ResponseType.ACCEPT:
                 fname = common.file_selection(_('Save As...'),
                         action=Gtk.FileChooserAction.SAVE)
                 if fname:

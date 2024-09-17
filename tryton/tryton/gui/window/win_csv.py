@@ -8,7 +8,6 @@ import sys
 from gi.repository import Gdk, GObject, Gtk
 
 from tryton.common import IconFactory, RPCExecute
-from tryton.common.underline import set_underline
 from tryton.config import TRYTON_ICON
 from tryton.gui import Main
 from tryton.gui.window.nomodal import NoModal
@@ -176,16 +175,6 @@ class WinCSV(NoModal):
         box.pack_start(self.csv_locale, expand=False, fill=True, padding=0)
 
         self.add_csv_header_param(box)
-
-        button_cancel = self.dialog.add_button(
-            set_underline(_("Cancel")), Gtk.ResponseType.CANCEL)
-        button_cancel.set_image(IconFactory.get_image(
-                'tryton-cancel', Gtk.IconSize.BUTTON))
-
-        button_ok = self.dialog.add_button(
-            set_underline(_("OK")), Gtk.ResponseType.OK)
-        button_ok.set_image(IconFactory.get_image(
-                'tryton-ok', Gtk.IconSize.BUTTON))
 
         self.dialog.vbox.pack_start(
             dialog_vbox, expand=True, fill=True, padding=0)

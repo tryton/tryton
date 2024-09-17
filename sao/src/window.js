@@ -1220,22 +1220,6 @@
 
             this.fields = {};
             this.fields_model = {};
-            jQuery('<button/>', {
-                'class': 'btn btn-link',
-                'type': 'button',
-                'title': Sao.i18n.gettext("Cancel"),
-            }).text(Sao.i18n.gettext('Cancel')).click(() => {
-                this.response('RESPONSE_CANCEL');
-            }).appendTo(this.dialog.footer);
-
-            jQuery('<button/>', {
-                'class': 'btn btn-primary',
-                'type': 'submit',
-                'title': Sao.i18n.gettext("OK"),
-            }).text(Sao.i18n.gettext('OK')).click(e => {
-                e.preventDefault();
-                this.response('RESPONSE_OK');
-            }).appendTo(this.dialog.footer);
 
             var row_fields = jQuery('<div/>', {
                 'class': 'row'
@@ -1419,6 +1403,23 @@
             this.fields_invert = {};
             Sao.Window.Import._super.init.call(this,
                 Sao.i18n.gettext('CSV Import: %1', name));
+
+            jQuery('<button/>', {
+                'class': 'btn btn-link',
+                'type': 'button',
+                'title': Sao.i18n.gettext("Cancel"),
+            }).text(Sao.i18n.gettext("Cancel")).click(() => {
+                this.response('RESPONSE_CANCEL');
+            }).appendTo(this.dialog.footer);
+
+            jQuery('<button/>', {
+                'class': 'btn btn-primary',
+                'type': 'submit',
+                'title': Sao.i18n.gettext("Import"),
+            }).text(Sao.i18n.gettext("Import")).click(e => {
+                e.preventDefault();
+                this.response('RESPONSE_OK');
+            }).appendTo(this.dialog.footer);
 
             jQuery('<button/>', {
                 'class': 'btn btn-default btn-block',
@@ -1757,6 +1758,23 @@
             this.session = Sao.Session.current_session;
             Sao.Window.Export._super.init.call(this,
                 Sao.i18n.gettext('CSV Export: %1',name));
+
+            jQuery('<button/>', {
+                'class': 'btn btn-link',
+                'type': 'button',
+                'title': Sao.i18n.gettext("Close"),
+            }).text(Sao.i18n.gettext("Close")).click(() => {
+                this.response('RESPONSE_CLOSE');
+            }).appendTo(this.dialog.footer);
+
+            jQuery('<button/>', {
+                'class': 'btn btn-primary',
+                'type': 'submit',
+                'title': Sao.i18n.gettext("Save As..."),
+            }).text(Sao.i18n.gettext("Save As...")).click(e => {
+                e.preventDefault();
+                this.response('RESPONSE_OK');
+            }).appendTo(this.dialog.footer);
 
             this.info_bar = new Sao.Window.InfoBar();
             this.dialog.body.append(this.info_bar.el);
