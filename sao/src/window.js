@@ -1757,6 +1757,10 @@
             this.session = Sao.Session.current_session;
             Sao.Window.Export._super.init.call(this,
                 Sao.i18n.gettext('CSV Export: %1',name));
+
+            this.info_bar = new Sao.Window.InfoBar();
+            this.dialog.body.append(this.info_bar.el);
+
             var fields = this.screen.model.fields;
             for (const name of names) {
                 var type = fields[name].description.type;
@@ -2201,6 +2205,7 @@
             ).appendTo(this.fields_selected);
         },
         response: function(response_id) {
+            this.info_bar.clear();
             if(response_id == 'RESPONSE_OK') {
                 var fields = [];
                 this.fields_selected.children('li').each(function(i, field) {
@@ -2251,9 +2256,7 @@
                     }, this.session);
                 }
                 prm.then(data => {
-                    this.export_csv(data, paths, header).then(() => {
-                        this.destroy();
-                    });
+                    this.export_csv(data, paths, header);
                 });
             } else {
                 this.destroy();
@@ -2281,9 +2284,9 @@
             if (header) {
                 size -= 1;
             }
-            return Sao.common.message.run(
+            this.info_bar.add(
                 Sao.i18n.ngettext(
-                    "%1 record saved", "%1 records saved", size));
+                    "%1 record saved", "%1 records saved", size), 'info');
         },
         set_url: function() {
             var path = [this.session.database, 'data', this.screen.model_name];

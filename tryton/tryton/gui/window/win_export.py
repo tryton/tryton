@@ -20,10 +20,12 @@ from tryton.gui.window.win_csv import WinCSV
 from tryton.jsonrpc import JSONEncoder
 from tryton.rpc import CONNECTION, clear_cache
 
+from .infobar import InfoBar
+
 _ = gettext.gettext
 
 
-class WinExport(WinCSV):
+class WinExport(WinCSV, InfoBar):
     "Window export"
 
     def __init__(self, name, screen):
@@ -32,6 +34,8 @@ class WinExport(WinCSV):
         self.fields = {}
         super(WinExport, self).__init__()
         self.dialog.set_title(_('CSV Export: %s') % name)
+        self.dialog.vbox.pack_start(
+            self.create_info_bar(), expand=False, fill=True, padding=0)
         # Hide as selected record is the default
         self.ignore_search_limit.hide()
 
@@ -341,6 +345,7 @@ class WinExport(WinCSV):
         self.model2.append((string_, name))
 
     def response(self, dialog, response):
+        self.info_bar_clear()
         if response == Gtk.ResponseType.OK:
             fields = []
             iter = self.model2.get_iter_first()
@@ -393,15 +398,15 @@ class WinExport(WinCSV):
             else:
                 fileno, fname = tempfile.mkstemp(
                     '.csv', common.slugify(self.name) + '_')
-                if self.export_csv(
-                        fname, data, paths, popup=False, header=header):
+                if self.export_csv(fname, data, paths, header=header):
                     os.close(fileno)
                     common.file_open(fname, 'csv')
                 else:
                     os.close(fileno)
-        self.destroy()
+        else:
+            self.destroy()
 
-    def export_csv(self, fname, data, paths, popup=True, header=False):
+    def export_csv(self, fname, data, paths, header=False):
         encoding = self.csv_enc.get_active_text() or 'utf_8_sig'
         locale_format = self.csv_locale.get_active()
 
@@ -415,14 +420,14 @@ class WinExport(WinCSV):
                 if row:
                     writer.writerow(self.format_row(
                             row, indent=indent, locale_format=locale_format))
-            if popup:
-                size = len(data)
-                if header:
-                    size -= 1
-                if size <= 1:
-                    common.message(_('%d record saved.') % size)
-                else:
-                    common.message(_('%d records saved.') % size)
+            size = len(data)
+            if header:
+                size -= 1
+            if size <= 1:
+                message = _('%d record saved.') % size
+            else:
+                message = _('%d records saved.') % size
+            self.info_bar_add(message, Gtk.MessageType.INFO)
             return True
         except (IOError, UnicodeEncodeError, csv.Error) as exception:
             common.warning(str(exception), _('Export failed'))

@@ -1,3 +1,4 @@
+* Keep CSV export window opened
 * Remove favorite management
 * Retry JSON-RPC requests on Service Unavailable
 * Allow resizing the attachment preview panel
