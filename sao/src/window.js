@@ -1842,16 +1842,17 @@
             }).css('cursor', 'pointer')
             .appendTo(predefined_exports_column);
 
+            var selected = !this.screen_is_tree && this.screen_has_selected
             this.selected_records = jQuery('<select/>', {
                 'class': 'form-control',
                 'id': 'input-records',
             }).append(jQuery('<option/>', {
                 'val': true,
-                'selected': this.screen_is_tree ? false : true,
+                'selected': selected,
             }).text(Sao.i18n.gettext("Selected Records")))
                 .append(jQuery('<option/>', {
                     'val': false,
-                    'selected': this.screen_is_tree ? true : false,
+                    'selected': !selected,
                 }).text(Sao.i18n.gettext("Listed Records")));
 
             this.ignore_search_limit = jQuery('<input/>', {
@@ -1881,7 +1882,7 @@
             }).append(jQuery('<label/>', {
                 'text': ' ' + Sao.i18n.gettext("Ignore search limit")
             }).prepend(this.ignore_search_limit)))
-            .hide();
+                .toggle(!selected && !this.screen_is_tree);
 
             this.el_csv_locale = jQuery('<input/>', {
                 'type': 'checkbox',
@@ -1921,6 +1922,9 @@
                 this.screen.current_view &&
                 (this.screen.current_view.view_type == 'tree') &&
                 this.screen.current_view.children_field);
+        },
+        get screen_has_selected() {
+            return Boolean(this.screen.selected_records.length);
         },
         view_populate: function(parent_node, parent_view) {
             var names = Object.keys(parent_node).sort(function(a, b) {

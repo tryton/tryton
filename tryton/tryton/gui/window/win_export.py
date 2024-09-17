@@ -37,8 +37,10 @@ class WinExport(WinCSV, InfoBar):
         self.dialog.set_title(_('CSV Export: %s') % name)
         self.dialog.vbox.pack_start(
             self.create_info_bar(), expand=False, fill=True, padding=0)
-        # Hide as selected record is the default
-        self.ignore_search_limit.hide()
+        # Trigger changed event to update ignore search limit
+        active_index = self.selected_records.get_active()
+        self.selected_records.set_active(-1)
+        self.selected_records.set_active(active_index)
 
         self.dialog.add_button(
             set_underline(_("Close")), Gtk.ResponseType.CANCEL).set_image(
@@ -65,6 +67,10 @@ class WinExport(WinCSV, InfoBar):
             self.screen.current_view
             and self.screen.current_view.view_type == 'tree'
             and self.screen.current_view.children_field)
+
+    @property
+    def screen_has_selected(self):
+        return bool(self.screen.selected_records)
 
     def add_buttons(self, box):
         button_save_export = Gtk.Button(
@@ -135,7 +141,7 @@ class WinExport(WinCSV, InfoBar):
             self.selected_records, expand=True, fill=True, padding=3)
         self.selected_records.append_text(_("Listed Records"))
         self.selected_records.append_text(_("Selected Records"))
-        if not self.screen_is_tree:
+        if not self.screen_is_tree and self.screen_has_selected:
             self.selected_records.set_active(1)
         else:
             self.selected_records.set_active(0)
