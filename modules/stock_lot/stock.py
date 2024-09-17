@@ -472,6 +472,7 @@ class Move(metaclass=PoolMeta):
     @classmethod
     def __setup__(cls):
         super().__setup__()
+        cls._deny_modify_done_cancel.add('lot')
         cls._buttons.update({
                 'add_lots_wizard': {
                     'invisible': ~Eval('state').in_(['draft', 'assigned']),
