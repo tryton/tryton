@@ -460,7 +460,8 @@ class Location(metaclass=PoolMeta):
 
 class Move(metaclass=PoolMeta):
     __name__ = 'stock.move'
-    lot = fields.Many2One('stock.lot', 'Lot',
+    lot = fields.Many2One(
+        'stock.lot', "Lot", ondelete='RESTRICT',
         domain=[
             ('product', '=', Eval('product')),
             ],
