@@ -66,6 +66,13 @@ class PriceList(DeactivableMixin, ModelSQL, ModelView):
         help="Add price formulas for different criteria.\n"
         "The first matching line is used.")
 
+    @classmethod
+    def __setup__(cls):
+        super().__setup__()
+        cls._buttons.update({
+                'open_lines': {},
+                })
+
     @staticmethod
     def default_company():
         return Transaction().context.get('company')
@@ -101,6 +108,12 @@ class PriceList(DeactivableMixin, ModelSQL, ModelView):
 
     def get_uom(self, product):
         return product.default_uom
+
+    @classmethod
+    @ModelView.button_action(
+        'product_price_list.act_price_list_line_form')
+    def open_lines(cls, price_lists):
+        return {}
 
     def compute(self, product, quantity, uom, pattern=None):
         Uom = Pool().get('product.uom')
@@ -206,3 +219,8 @@ class PriceListLine(sequence_ordered(), ModelSQL, ModelView, MatchMixin):
         'Return unit price (as Decimal)'
         context.setdefault('functions', {})['Decimal'] = Decimal
         return simple_eval(decistmt(self.formula), **context)
+
+
+class PriceListLineContext(ModelView):
+    "Price List Line Context"
+    __name__ = 'product.price_list.line.context'

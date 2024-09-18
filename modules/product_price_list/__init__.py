@@ -12,4 +12,5 @@ def register():
     Pool.register(
         price_list.PriceList,
         price_list.PriceListLine,
+        price_list.PriceListLineContext,
         module='product_price_list', type_='model')

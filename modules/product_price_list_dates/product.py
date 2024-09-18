@@ -6,7 +6,7 @@ import datetime as dt
 from trytond.config import config
 from trytond.model import ModelView, fields
 from trytond.pool import Pool, PoolMeta
-from trytond.pyson import Eval, If
+from trytond.pyson import Date, Eval, If, PYSONDecoder, PYSONEncoder
 from trytond.transaction import Transaction
 
 _cache_days = config.getint(
@@ -17,17 +17,33 @@ class PriceList(metaclass=PoolMeta):
     __name__ = 'product.price_list'
 
     @classmethod
-    def __setup__(cls):
-        super(PriceList, cls).__setup__()
-        cls._buttons.update({
-                'open_lines': {},
-                })
-
-    @classmethod
     @ModelView.button_action(
-        'product_price_list_dates.act_price_list_line_form')
+        'product_price_list.act_price_list_line_form')
     def open_lines(cls, price_lists):
-        pass
+        encoder = PYSONEncoder()
+        decoder = PYSONDecoder(noeval=True)
+        action = super().open_lines(price_lists)
+        context_domain = [
+            ['OR',
+                ('start_date', '=', None),
+                ('start_date', '<=', Eval('date', Date())),
+                ],
+            ['OR',
+                ('end_date', '=', None),
+                ('end_date', '>=', Eval('date', Date())),
+                ],
+            ]
+        if isinstance(action, dict):
+            if action.get('context_domain'):
+                context_domain = [
+                    decoder.decode(action['context_domain']),
+                    context_domain]
+            action['context_domain'] = encoder.encode(context_domain)
+        else:
+            action = {
+                'context_domain': encoder.encode(context_domain),
+                }
+        return action
 
     def compute(self, product, quantity, uom, pattern=None):
         context = Transaction().context
@@ -93,8 +109,7 @@ class PriceListLine(metaclass=PoolMeta):
         return super(PriceListLine, self).match(pattern)
 
 
-class PriceListLineContext(ModelView):
-    "Price List Line Context"
+class PriceListLineContext(metaclass=PoolMeta):
     __name__ = 'product.price_list.line.context'
 
     date = fields.Date("Date")

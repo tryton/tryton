@@ -54,6 +54,12 @@ this repository contains the full copyright notices and license terms. -->
             <field name="perm_delete" eval="True"/>
         </record>
 
+        <record model="ir.model.button" id="price_list_open_lines_button">
+            <field name="model">product.price_list</field>
+            <field name="name">open_lines</field>
+            <field name="string">Open Lines</field>
+        </record>
+
         <record model="ir.rule.group" id="rule_group_price_list_companies">
             <field name="name">User in companies</field>
             <field name="model">product.price_list</field>
@@ -85,5 +91,27 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">price_list_line_tree_sequence</field>
         </record>
 
+        <record model="ir.action.act_window" id="act_price_list_line_form">
+            <field name="name">Price List Lines</field>
+            <field name="res_model">product.price_list.line</field>
+            <field name="context_model">product.price_list.line.context</field>
+            <field name="domain" eval="[('price_list', '=', Eval('active_id'))]" pyson="1"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_price_list_line_form_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="price_list_line_view_tree_sequence"/>
+            <field name="act_window" ref="act_price_list_line_form"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_price_list_line_form_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="price_list_line_view_form"/>
+            <field name="act_window" ref="act_price_list_line_form"/>
+        </record>
+
+        <record model="ir.ui.view" id="price_list_line_context_view_form">
+            <field name="model">product.price_list.line.context</field>
+            <field name="type">form</field>
+            <field name="name">price_list_line_context_form</field>
+        </record>
     </data>
 </tryton>

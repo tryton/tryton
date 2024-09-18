@@ -26,6 +26,7 @@ this repository contains the full copyright notices and license terms. -->
         <page name="lines">
             <field name="lines" colspan="4"
                 view_ids="product_price_list.price_list_line_view_tree_sequence"/>
+            <button name="open_lines" colspan="4"/>
         </page>
     </notebook>
 </form>
