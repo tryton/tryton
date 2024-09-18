@@ -139,6 +139,9 @@ class Move(metaclass=PoolMeta):
             elif (self.from_location.type in {'supplier', 'customer'}
                     and hasattr(self.shipment, 'intrastat_from_country')):
                 return self.shipment.intrastat_from_country
+            elif self.from_location.type == 'lost_found':
+                if self.to_location.type != 'lost_found':
+                    return self.intrastat_to_country
 
     @property
     @fields.depends('to_location', 'shipment')
@@ -149,6 +152,9 @@ class Move(metaclass=PoolMeta):
             elif (self.to_location.type in {'supplier', 'customer'}
                     and hasattr(self.shipment, 'intrastat_to_country')):
                 return self.shipment.intrastat_to_country
+            elif self.to_location.type == 'lost_found':
+                if self.from_location.type != 'lost_found':
+                    return self.intrastat_from_country
 
     @classmethod
     @without_check_access
