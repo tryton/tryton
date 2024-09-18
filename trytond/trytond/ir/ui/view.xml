@@ -136,7 +136,7 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
         <record model="ir.action.act_window" id="act_view_tree_state">
-            <field name="name">Tree State</field>
+            <field name="name">View Tree State</field>
             <field name="res_model">ir.ui.view_tree_state</field>
             <field name="domain" eval="[('model_ref', 'in', Eval('active_ids', []))]" pyson="1"/>
         </record>

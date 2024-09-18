@@ -55,12 +55,8 @@ widths for each `Field <model-ir.model.field>` of the `Model <model-ir.model>`.
 
 .. seealso::
 
-   The View Tree Widths can be found by opening the main menu item:
-
-      |Administration --> User Interface --> View Tree Width|__
-
-      .. |Administration --> User Interface --> View Tree Width| replace:: :menuselection:`Administration --> User Interface --> View Tree Width`
-      __ https://demo.tryton.org/model/ir.ui.view_tree_width
+   The View Tree Widths can be found by opening the :guilabel:`View Tree Width`
+   from the `Model <model-ir.model>`'s :guilabel:`Open related records` menu.
 
 .. _model-ir.ui.view_tree_optional:
 
@@ -72,12 +68,9 @@ optional field to be displayed or not for a `View <model-ir.ui.view>`.
 
 .. seealso::
 
-   The View Tree Optionals can be found by opening the main menu item:
-
-      |Administration --> User Interface --> View Tree Optional|__
-
-      .. |Administration --> User Interface --> View Tree Optional| replace:: :menuselection:`Administration --> User Interface --> View Tree Optional`
-      __ https://demo.tryton.org/model/ir.ui.view_tree_optional
+   The View Tree Optionals can be found by opening the :guilabel:`View Tree
+   Optional` from the `Model <model-ir.model>`'s :guilabel:`Open related records`
+   menu.
 
 .. _model-ir.ui.view_tree_state:
 
@@ -90,12 +83,8 @@ expanded and selected nodes for a `Model <model-ir.model>`, `Domain
 
 .. seealso::
 
-   The View Tree States can be found by opening the main menu item:
-
-      |Administration --> User Interface --> Tree State|__
-
-      .. |Administration --> User Interface --> Tree State| replace:: :menuselection:`Administration --> User Interface --> Tree State`
-      __ https://demo.tryton.org/model/ir.ui.view_tree_state
+   The View Tree States can be found by opening the :guilabel:`View Tree State`
+   from the `Model <model-ir.model>`'s :guilabel:`Open related records` menu.
 
 .. _model-ir.ui.view_search:
 
@@ -107,12 +96,8 @@ The *View Search* stores the `User's <model-res.user>` saved `Domain
 
 .. seealso::
 
-   The View Searches can be found by opening the main menu item:
-
-      |Administration --> User Interface --> View Search|__
-
-      .. |Administration --> User Interface --> View Search| replace:: :menuselection:`Administration --> User Interface --> View Search`
-      __ https://demo.tryton.org/model/ir.ui.view_search
+   The View Searches can be found by opening the :guilabel:`View Search` from
+   the `Model <model-ir.model>`'s :guilabel:`Open related records` menu.
 
 .. _model-ir.ui.icon:
 
