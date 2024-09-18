@@ -554,12 +554,12 @@ class ShipmentIn(
         return self.supplier.supplier_location if self.supplier else None
 
     def get_incoming_moves(self, name):
-        moves = sort(self.moves, self.__class__.incoming_moves.order)
         if self.warehouse_input == self.warehouse_storage:
-            return [m.id for m in moves]
+            moves = self.moves
         else:
-            return [
-                m.id for m in moves if m.to_location == self.warehouse_input]
+            moves = filter(
+                lambda m: m.to_location == self.warehouse_input, self.moves)
+        return sort(moves, self.__class__.incoming_moves.order)
 
     @classmethod
     def set_incoming_moves(cls, shipments, name, value):
@@ -570,8 +570,9 @@ class ShipmentIn(
                 })
 
     def get_inventory_moves(self, name):
-        moves = sort(self.moves, self.__class__.inventory_moves.order)
-        return [m.id for m in moves if m.from_location == self.warehouse_input]
+        moves = filter(
+            lambda m: m.from_location == self.warehouse_input, self.moves)
+        return sort(moves, self.__class__.inventory_moves.order)
 
     @classmethod
     def set_inventory_moves(cls, shipments, name, value):
@@ -1441,13 +1442,12 @@ class ShipmentOut(
         return self.customer.customer_location if self.customer else None
 
     def get_outgoing_moves(self, name):
-        moves = sort(self.moves, self.__class__.outgoing_moves.order)
         if self.warehouse_output == self.warehouse_storage:
-            return [m.id for m in moves]
+            moves = self.moves
         else:
-            return [
-                m.id for m in moves
-                if m.from_location == self.warehouse_output]
+            moves = filter(
+                lambda m: m.from_location == self.warehouse_output, self.moves)
+        return sort(moves, self.__class__.outgoing_moves.order)
 
     @classmethod
     def set_outgoing_moves(cls, shipments, name, value):
@@ -1458,8 +1458,9 @@ class ShipmentOut(
                 })
 
     def get_inventory_moves(self, name):
-        moves = sort(self.moves, self.__class__.inventory_moves.order)
-        return [m.id for m in moves if m.to_location == self.warehouse_output]
+        moves = filter(
+            lambda m: m.to_location == self.warehouse_output, self.moves)
+        return sort(moves, self.__class__.inventory_moves.order)
 
     @classmethod
     def set_inventory_moves(cls, shipments, name, value):
@@ -2084,13 +2085,12 @@ class ShipmentOutReturn(
         return self.customer.customer_location if self.customer else None
 
     def get_incoming_moves(self, name):
-        moves = sort(self.moves, self.__class__.incoming_moves.order)
         if self.warehouse_input == self.warehouse_storage:
-            return [m.id for m in moves]
+            moves = self.moves
         else:
-            return [
-                m.id for m in moves
-                if m.to_location == self.warehouse_input]
+            moves = filter(
+                lambda m: m.to_location == self.warehouse_input, self.moves)
+        return sort(moves, self.__class__.incoming_moves.order)
 
     @classmethod
     def set_incoming_moves(cls, shipments, name, value):
@@ -2101,8 +2101,9 @@ class ShipmentOutReturn(
                 })
 
     def get_inventory_moves(self, name):
-        moves = sort(self.moves, self.__class__.inventory_moves.order)
-        return [m.id for m in moves if m.from_location == self.warehouse_input]
+        moves = filter(
+            lambda m: m.from_location == self.warehouse_input, self.moves)
+        return sort(moves, self.__class__.inventory_moves.order)
 
     @classmethod
     def set_inventory_moves(cls, shipments, name, value):
@@ -2599,21 +2600,20 @@ class ShipmentInternal(
         return self.planned_date
 
     def get_outgoing_moves(self, name):
-        moves = sort(self.moves, self.__class__.outgoing_moves.order)
         if not self.transit_location:
-            return [m.id for m in moves]
+            moves = self.moves
         else:
-            return [
-                m.id for m in moves if m.to_location == self.transit_location]
+            moves = filter(
+                lambda m: m.to_location == self.transit_location, self.moves)
+        return sort(moves, self.__class__.outgoing_moves.order)
 
     def get_incoming_moves(self, name):
-        moves = sort(self.moves, self.__class__.incoming_moves.order)
         if not self.transit_location:
-            return [m.id for m in moves]
+            moves = self.moves
         else:
-            return [
-                m.id for m in moves
-                if m.from_location == self.transit_location]
+            moves = filter(
+                lambda m: m.from_location == self.transit_location, self.moves)
+        return sort(moves, self.__class__.incoming_moves.order)
 
     @classmethod
     def set_moves(cls, shipments, name, value):
