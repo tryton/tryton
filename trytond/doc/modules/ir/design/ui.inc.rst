@@ -30,9 +30,9 @@ A *View* can inherit from another *View* to extend its content.
 
    The Views can be found by opening the main menu item:
 
-      |Administration --< User Interface --> Views|__
+      |Administration --> User Interface --> Views|__
 
-      .. |Administration --< User Interface --> Views| replace:: :menuselection:`Administration --< User Interface --> Views`
+      .. |Administration --> User Interface --> Views| replace:: :menuselection:`Administration --> User Interface --> Views`
       __ https://demo.tryton.org/model/ir.ui.view
 
 Wizards
