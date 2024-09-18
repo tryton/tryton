@@ -1,6 +1,8 @@
 # This file is part of Tryton.  The COPYRIGHT file at the toplevel of this
 # repository contains the full copyright notices and license terms.
 
+from functools import total_ordering
+
 from sql import Column
 
 from trytond.i18n import lazy_gettext
@@ -32,12 +34,31 @@ def sequence_ordered(
     return SequenceOrderedMixin
 
 
-class _attrgetter:
-    __slots__ = ('_attr', '_null')
+@total_ordering
+class _reversor:
+    __slots__ = ('_obj',)
 
-    def __init__(self, attr, null=None):
+    def __init__(self, obj):
+        self._obj = obj
+
+    def __eq__(self, other):
+        if not isinstance(other, _reversor):
+            return NotImplemented
+        return self._obj == other._obj
+
+    def __lt__(self, other):
+        if not isinstance(other, _reversor):
+            return NotImplemented
+        return self._obj > other._obj
+
+
+class _attrgetter:
+    __slots__ = ('_attr', '_null', '_reverse')
+
+    def __init__(self, attr, null=None, reverse=False):
         self._attr = attr
         self._null = null
+        self._reverse = reverse
 
     def __call__(self, obj):
         for name in self._attr.split('.'):
@@ -60,14 +81,18 @@ class _attrgetter:
                 null = self._null
             else:
                 null = not self._null
-        return (null, obj)
+        value = (null, obj)
+        if self._reverse:
+            value = _reversor(value)
+        return value
 
 
 def sort(records, order):
     "Return a new list of records ordered"
     if not order:
         return records
-    for oexpr, otype in reversed(order):
+    getters = []
+    for oexpr, otype in order:
         try:
             otype, null_ordering = otype.split(' ', 1)
         except ValueError:
@@ -79,6 +104,8 @@ def sort(records, order):
             null = not reverse
         else:
             null = None
-        records = sorted(
-            records, key=_attrgetter(oexpr, null), reverse=reverse)
-    return records
+        getters.append(_attrgetter(oexpr, null, reverse))
+
+    def func(obj):
+        return tuple(getter(obj) for getter in getters)
+    return sorted(records, key=func)
