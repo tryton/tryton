@@ -30,6 +30,10 @@ def register():
         stock.ShipmentInternal,
         module='account_stock_eu', type_='model')
     Pool.register(
+        stock.Move_Production,
+        module='account_stock_eu', type_='model',
+        depends=['production'])
+    Pool.register(
         account_stock_eu.IntrastatDeclarationLine_Incoterm,
         stock.Move_Incoterm,
         module='account_stock_eu', type_='model',

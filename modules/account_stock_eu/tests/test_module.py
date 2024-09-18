@@ -6,7 +6,7 @@ from trytond.tests.test_tryton import ModuleTestCase
 class AccountStockEuTestCase(ModuleTestCase):
     "Test Account Stock Eu module"
     module = 'account_stock_eu'
-    extras = ['carrier', 'incoterm', 'stock_consignment']
+    extras = ['carrier', 'incoterm', 'production', 'stock_consignment']
 
 
 del ModuleTestCase

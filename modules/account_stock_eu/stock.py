@@ -479,6 +479,30 @@ class Move(metaclass=PoolMeta):
             return self.shipment.customer
 
 
+class Move_Production(metaclass=PoolMeta):
+    __name__ = 'stock.move'
+
+    @property
+    @fields.depends('from_location', 'production')
+    def intrastat_from_country(self):
+        country = super().intrastat_from_country
+        if self.from_location:
+            if (self.from_location.type == 'production'
+                    and self.production and self.production.warehouse.address):
+                country = self.production.warehouse.address.country
+        return country
+
+    @property
+    @fields.depends('to_location', 'production')
+    def intrastat_to_country(self):
+        country = super().intrastat_to_country
+        if self.to_location:
+            if (self.to_location.type == 'production'
+                    and self.production and self.production.warehouse.address):
+                country = self.production.warehouse.address.country
+        return country
+
+
 class Move_Incoterm(metaclass=PoolMeta):
     __name__ = 'stock.move'
 
