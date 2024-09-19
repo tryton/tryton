@@ -674,15 +674,13 @@ class ModelSQL(ModelStorage):
         table = cls.__table_history__()
         user = User.__table__()
         revisions = []
+        columns = [
+            Coalesce(table.write_date, table.create_date), table.id, user.name]
         for sub_ids in grouped_slice(ids):
             where = reduce_ids(table.id, sub_ids)
             cursor.execute(*table.join(user, 'LEFT',
                     Coalesce(table.write_uid, table.create_uid) == user.id)
-                .select(
-                    Coalesce(table.write_date, table.create_date),
-                    table.id,
-                    user.name,
-                    where=where))
+                .select(*columns, where=where, group_by=columns))
             revisions.append(cursor.fetchall())
         revisions = list(chain(*revisions))
         revisions.sort(reverse=True)
