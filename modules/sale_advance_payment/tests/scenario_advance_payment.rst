@@ -358,7 +358,8 @@ Handle the exception on the sale level, not recreating the invoice will create
 the final invoice with the remaining total::
 
     >>> handle_exception = sale.click('handle_invoice_exception')
-    >>> _ = handle_exception.form.recreate_invoices.pop()
+    >>> handle_exception.form.ignore_invoices.extend(
+    ...     handle_exception.form.ignore_invoices.find())
     >>> handle_exception.execute('handle')
 
     >>> sale.reload()
@@ -391,6 +392,8 @@ it::
     'exception'
 
     >>> handle_exception = sale.click('handle_invoice_exception')
+    >>> handle_exception.form.recreate_invoices.extend(
+    ...     handle_exception.form.recreate_invoices.find())
     >>> handle_exception.execute('handle')
     >>> sale.reload()
     >>> _, inv_recreated = sale.advance_payment_invoices

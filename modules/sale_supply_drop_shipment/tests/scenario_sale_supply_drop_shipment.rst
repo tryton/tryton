@@ -252,7 +252,8 @@ As a consequence the sale order is now in exception::
     >>> purchase.shipment_state
     'exception'
     >>> handle_exception = purchase.click('handle_shipment_exception')
-    >>> _ = handle_exception.form.recreate_moves.pop()
+    >>> handle_exception.form.ignore_moves.extend(
+    ...     handle_exception.form.ignore_moves.find())
     >>> handle_exception.execute('handle')
     >>> purchase.reload()
     >>> purchase.shipment_state
@@ -350,6 +351,8 @@ The sale is then in exception::
     >>> sale.shipment_state
     'exception'
     >>> handle_exception = sale.click('handle_shipment_exception')
+    >>> handle_exception.form.recreate_moves.extend(
+    ...     handle_exception.form.recreate_moves.find())
     >>> handle_exception.execute('handle')
     >>> sale.reload()
     >>> sale.shipment_state

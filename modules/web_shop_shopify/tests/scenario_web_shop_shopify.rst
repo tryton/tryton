@@ -582,7 +582,8 @@ Cancel remaining shipment::
 Ignore shipment exception::
 
     >>> shipment_exception = sale.click('handle_shipment_exception')
-    >>> move = shipment_exception.form.recreate_moves.pop()
+    >>> shipment_exception.form.ignore_moves.extend(
+    ...     shipment_exception.form.ignore_moves.find())
     >>> shipment_exception.execute('handle')
 
     >>> order.reload()

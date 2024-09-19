@@ -281,6 +281,8 @@ Cancel backorder::
 Handle shipment exception::
 
     >>> shipment_exception = purchase.click('handle_shipment_exception')
+    >>> shipment_exception.form.recreate_moves.extend(
+    ...     shipment_exception.form.recreate_moves.find())
     >>> shipment_exception.execute('handle')
 
     >>> len(purchase.moves)

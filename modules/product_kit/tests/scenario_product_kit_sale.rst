@@ -270,10 +270,12 @@ Cancel backorder::
 Handle shipment exception::
 
     >>> shipment_exception = sale.click('handle_shipment_exception')
-    >>> move, = [
-    ...     m for m in shipment_exception.form.recreate_moves
-    ...     if m.product == product1]
-    >>> shipment_exception.form.recreate_moves.remove(move)
+    >>> shipment_exception.form.recreate_moves.extend(
+    ...     shipment_exception.form.recreate_moves.find(
+    ...         [('product', '!=', product1.id)]))
+    >>> shipment_exception.form.ignore_moves.extend(
+    ...     shipment_exception.form.ignore_moves.find(
+    ...         [('product', '=', product1.id)]))
     >>> shipment_exception.execute('handle')
 
     >>> _, _, shipment = sale.shipments

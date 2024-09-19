@@ -95,6 +95,8 @@ Cancel shipment and recreate::
     'cancelled'
 
     >>> handle_shipment_exception = Wizard('sale.handle.shipment.exception', [sale])
+    >>> handle_shipment_exception.form.recreate_moves.extend(
+    ...     handle_shipment_exception.form.recreate_moves.find())
     >>> handle_shipment_exception.execute('handle')
 
 Over ship 12 products::
