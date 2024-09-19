@@ -11,12 +11,12 @@ def register():
     from . import (
         access, copy_, export_data, field_binary, field_boolean, field_char,
         field_context, field_date, field_datetime, field_dict, field_float,
-        field_function, field_integer, field_many2many, field_many2one,
-        field_multiselection, field_numeric, field_one2many, field_one2one,
-        field_reference, field_selection, field_text, field_time,
-        field_timedelta, history, import_data, mixin, model, model_log,
-        modelsql, modelstorage, modelview, mptt, multivalue, path, resource,
-        rule, tree, trigger, wizard, workflow)
+        field_fmany2one, field_function, field_integer, field_many2many,
+        field_many2one, field_multiselection, field_numeric, field_one2many,
+        field_one2one, field_reference, field_selection, field_text,
+        field_time, field_timedelta, history, import_data, mixin, model,
+        model_log, modelsql, modelstorage, modelview, mptt, multivalue, path,
+        resource, rule, tree, trigger, wizard, workflow)
 
     access.register('tests')
     copy_.register('tests')
@@ -33,6 +33,7 @@ def register():
     field_integer.register('tests')
     field_many2many.register('tests')
     field_many2one.register('tests')
+    field_fmany2one.register('tests')
     field_multiselection.register('tests')
     field_numeric.register('tests')
     field_one2many.register('tests')
