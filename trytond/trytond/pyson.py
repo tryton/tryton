@@ -149,7 +149,7 @@ class Eval(PYSON):
     @property
     def __repr_params__(self):
         params = (self._value,)
-        if self._default != '':
+        if isinstance(self._default, PYSON) or self._default != '':
             params += (self._default,)
         return params
 
