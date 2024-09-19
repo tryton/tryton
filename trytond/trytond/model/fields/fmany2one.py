@@ -17,6 +17,12 @@ def fmany2one(
     target_fields = target_fields.split(',')
     assert len(sources) == len(target_fields)
 
+    def convert_value(value):
+        pool = Pool()
+        Target = pool.get(target_model)
+        if isinstance(value, int):
+            return getattr(Target(value), target_fields[0])
+
     class Mixin:
         __slots__ = ()
 
@@ -29,6 +35,25 @@ def fmany2one(
             table_h.add_fk(
                 sources, Target._table, target_fields,
                 on_delete=getattr(cls, name).ondelete)
+
+        @classmethod
+        def create(cls, vlist):
+            vlist = [v.copy() for v in vlist]
+            for values in vlist:
+                if name in values:
+                    values[sources[0]] = convert_value(values.pop(name))
+            return super().create(vlist)
+
+        @classmethod
+        def write(cls, *args):
+            actions = iter(args)
+            args = []
+            for records, values in zip(actions, actions):
+                if name in values:
+                    values = values.copy()
+                    values[sources[0]] = convert_value(values.pop(name))
+                args.extend((records, values))
+            super().write(*args)
 
     @classmethod
     def getter(cls, records, name):
@@ -51,13 +76,7 @@ def fmany2one(
 
     @classmethod
     def setter(cls, records, name, value):
-        pool = Pool()
-        Target = pool.get(target_model)
-        if value:
-            value = getattr(Target(value), target_fields[0])
-        else:
-            value = None
-        cls.write(records, {sources[0]: value})
+        cls.write(records, {sources[0]: convert_value(value)})
 
     @classmethod
     def searcher(cls, clause, tables):
