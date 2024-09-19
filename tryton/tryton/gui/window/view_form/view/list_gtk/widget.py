@@ -1323,12 +1323,13 @@ class Button(Cell):
         cell.set_property('visible', not invisible)
         readonly = record.readonly or states.get('readonly', False)
         cell.set_property('sensitive', not readonly)
-        parent = record.parent if record else None
-        while parent:
-            if parent.modified:
-                cell.set_property('sensitive', False)
-                break
-            parent = parent.parent
+        if self.attrs.get('type', 'class') == 'class':
+            parent = record.parent if record else None
+            while parent:
+                if parent.modified:
+                    cell.set_property('sensitive', False)
+                    break
+                parent = parent.parent
         # TODO icon
         self._set_visual(cell, record)
 
