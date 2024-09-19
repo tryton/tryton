@@ -376,8 +376,6 @@ class PurchaseRequisition(Workflow, ModelSQL, ModelView):
     @reset_employee('approved_by', 'rejected_by')
     def draft(cls, requisitions):
         cls.write(requisitions, {
-                'tax_amount_cache': None,
-                'untaxed_amount_cache': None,
                 'total_amount_cache': None,
                 })
 
