@@ -1448,8 +1448,9 @@ class Line(sequence_ordered(), ModelSQL, ModelView):
         for invoice_line in self.invoice_lines:
             if invoice_line.type != 'line':
                 continue
-            if (invoice_line.invoice.state == 'paid'
-                    or invoice_line.invoice in skips):
+            if (invoice_line.invoice
+                    and (invoice_line.invoice.state == 'paid'
+                        or invoice_line.invoice in skips)):
                 quantity -= UoM.compute_qty(
                     invoice_line.unit or self.unit, invoice_line.quantity,
                     self.unit)
