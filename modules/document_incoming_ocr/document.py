@@ -97,12 +97,11 @@ class IncomingSupplierInvoice(metaclass=PoolMeta):
             currency = invoice_data.get('currency')
             if currency:
                 try:
-                    currency, = Currency.search([
+                    invoice.currency, = Currency.search([
                             ('code', '=', currency),
                             ])
                 except ValueError:
                     logger.debug(f"Cannot find currency '{currency}'")
-                invoice.currency = currency.id
 
             invoice.reference = invoice_data.get('number')
             invoice.description = invoice_data.get('description')
