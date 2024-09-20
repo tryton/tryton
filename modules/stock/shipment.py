@@ -1114,7 +1114,7 @@ class ShipmentInReturn(ShipmentAssignMixin, Workflow, ModelSQL, ModelView):
     @classmethod
     def _get_reschedule_domain(cls, date):
         return [
-            ('state', '=', 'waiting'),
+            ('state', 'in', ['waiting', 'assigned']),
             ('planned_date', '<', date),
             ]
 
@@ -1840,7 +1840,7 @@ class ShipmentOut(
     @classmethod
     def _get_reschedule_domain(cls, date):
         return [
-            ('state', '=', 'waiting'),
+            ('state', 'in', ['waiting', 'assigned', 'picked', 'packed']),
             ('planned_date', '<', date),
             ]
 
@@ -2985,7 +2985,7 @@ class ShipmentInternal(
     @classmethod
     def _get_reschedule_domain(cls, date):
         return [
-            ('state', '=', 'waiting'),
+            ('state', 'in', ['waiting', 'assigned']),
             ('planned_date', '<', date),
             ]
 
