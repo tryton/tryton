@@ -465,10 +465,11 @@ class IntrastatDeclarationExport_Incoterm(metaclass=PoolMeta):
     __name__ = 'account.stock.eu.intrastat.declaration.export'
 
     def export_fallback_row(self, line):
-        return super().export_fallback_row(line) + [
-            line.transport.code if line.transport else '',
-            line.incoterm.code if line.incoterm else '',
-            ]
+        row = super().export_fallback_row(line)
+        if self.record.extended:
+            row.append(line.transport.code if line.transport else '')
+            row.append(line.incoterm.code if line.incoterm else '')
+        return row
 
 
 class IntrastatDeclarationExportResult(ModelView):
@@ -507,8 +508,6 @@ class IntrastatDeclarationExport_BE(metaclass=PoolMeta):
             round(line.additional_unit, 2)
             if line.additional_unit is not None else '',
             round(line.value, 2),
-            '',  # transport
-            '',  # incoterm
             line.country_of_origin.code
             if dispatch and line.country_of_origin else '',
             line.vat.code if dispatch and line.vat else '',
@@ -521,8 +520,8 @@ class IntrastatDeclarationExport_BE_Incoterm(metaclass=PoolMeta):
     def export_be_row(self, line):
         row = super().export_be_row(line)
         if self.record.extended:
-            row[7] = line.transport.code if line.transport else ''
-            row[8] = line.incoterm.code if line.incoterm else ''
+            row.insert(8, line.transport.code if line.transport else '')
+            row.insert(9, line.incoterm.code if line.incoterm else '')
         return row
 
 

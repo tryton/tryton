@@ -283,7 +283,7 @@ Export declaration::
     >>> _ = declaration.click('export')
     >>> export = Wizard('account.stock.eu.intrastat.declaration.export', [declaration])
     >>> export.form.file
-    b'19;FR;11;2;9403 10 51;60.0;20.0;1800.00;;;;\r\n19;FR;21;2;9403 10 51;15.0;5.0;750.00;;;;\r\n'
+    b'19;FR;11;2;9403 10 51;60.0;20.0;1800.00;;\r\n19;FR;21;2;9403 10 51;15.0;5.0;750.00;;\r\n'
     >>> export.form.filename.endswith('.csv')
     True
     >>> declaration.state
