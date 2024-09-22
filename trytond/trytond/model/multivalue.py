@@ -84,7 +84,14 @@ class MultiValueMixin(object):
         if not values:
             values = [self.multivalue_record(name, **pattern)]
         for record in values:
-            setattr(record, name, value)
+            current_value = getattr(record, name, None)
+            if isinstance(current_value, Model):
+                current_value = current_value.id
+            elif isinstance(current_value, (list, tuple)):
+                current_value = [
+                    r.id if isinstance(r, Model) else r for r in current_value]
+            if current_value != value:
+                setattr(record, name, value)
         if save:
             Value.save(values)
         else:
