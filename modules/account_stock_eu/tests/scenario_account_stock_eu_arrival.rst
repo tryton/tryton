@@ -10,20 +10,27 @@ Imports::
     >>> from decimal import Decimal
 
     >>> from proteus import Model, Wizard
+    >>> from trytond.modules.account.tests.tools import create_fiscalyear
     >>> from trytond.modules.company.tests.tools import create_company, get_company
     >>> from trytond.modules.currency.tests.tools import get_currency
     >>> from trytond.tests.tools import activate_modules, assertEqual
 
+    >>> intrastat_extended = globals().get('intrastat_extended', False)
     >>> today = dt.date.today()
 
 Activate modules::
 
-    >>> config = activate_modules('account_stock_eu')
+    >>> config = activate_modules([
+    ...     'account_stock_eu', 'incoterm',
+    ...     'stock_shipment_cost', 'purchase_shipment_cost'])
 
+    >>> Carrier = Model.get('carrier')
     >>> Country = Model.get('country.country')
+    >>> Incoterm = Model.get('incoterm.incoterm')
     >>> IntrastatDeclaration = Model.get('account.stock.eu.intrastat.declaration')
     >>> IntrastatDeclarationLine = Model.get(
     ...     'account.stock.eu.intrastat.declaration.line')
+    >>> IntrastatTransport = Model.get('account.stock.eu.intrastat.transport')
     >>> Organization = Model.get('country.organization')
     >>> Party = Model.get('party.party')
     >>> ProductTemplate = Model.get('product.template')
@@ -65,10 +72,18 @@ Create company in Belgium::
 
     >>> _ = create_company(currency=eur)
     >>> company = get_company()
+    >>> company.incoterms.extend(Incoterm.find())
+    >>> company.save()
     >>> company_address, = company.party.addresses
     >>> company_address.country = belgium
     >>> company_address.subdivision = liege
     >>> company_address.save()
+
+Create fiscal year::
+
+    >>> fiscalyear = create_fiscalyear(company)
+    >>> fiscalyear.intrastat_extended = intrastat_extended
+    >>> fiscalyear.save()
 
 Create suppliers::
 
@@ -116,6 +131,25 @@ Create product::
     >>> template.save()
     >>> product, = template.products
 
+Create carriers::
+
+    >>> carrier_template = ProductTemplate(name="Carrier Product")
+    >>> carrier_template.default_uom = unit
+    >>> carrier_template.type = 'service'
+    >>> carrier_template.list_price = Decimal('5')
+    >>> carrier_template.save()
+    >>> carrier_product, = carrier_template.products
+
+    >>> road_transport, = IntrastatTransport.find([('name', '=', "Road transport")])
+    >>> carrier = Carrier()
+    >>> party = Party(name="Carrier")
+    >>> party.save()
+    >>> carrier.party = party
+    >>> carrier.carrier_product = carrier_product
+    >>> carrier.shipment_cost_allocation_method = 'cost'
+    >>> carrier.intrastat_transport = road_transport
+    >>> carrier.save()
+
 Get stock locations::
 
     >>> warehouse_loc, = StockLocation.find([('code', '=', 'WH')])
@@ -148,6 +182,10 @@ Receive products from France::
 
     >>> shipment = ShipmentIn()
     >>> shipment.supplier = supplier_fr
+    >>> shipment.incoterm, = Incoterm.find([
+    ...         ('code', '=', 'EXW'), ('version', '=', '2020')])
+    >>> shipment.incoterm_location = supplier_fr.addresses[0]
+    >>> shipment.carrier = carrier
     >>> move = shipment.incoming_moves.new()
     >>> move.from_location = shipment.supplier_location
     >>> move.to_location = shipment.warehouse_input
@@ -188,6 +226,7 @@ Receive products from US::
 
     >>> shipment = ShipmentIn()
     >>> shipment.supplier = supplier_us
+    >>> shipment.carrier = carrier
     >>> move = shipment.incoming_moves.new()
     >>> move.from_location = shipment.supplier_location
     >>> move.to_location = shipment.warehouse_input
@@ -210,6 +249,10 @@ Receive returned products from France::
 
     >>> shipment = ShipmentOutReturn()
     >>> shipment.customer = customer_fr
+    >>> shipment.carrier = carrier
+    >>> shipment.incoterm, = Incoterm.find([
+    ...         ('code', '=', 'FCA'), ('version', '=', '2020')])
+    >>> shipment.incoterm_location = warehouse_loc.address
     >>> move = shipment.incoming_moves.new()
     >>> move.from_location = shipment.customer_location
     >>> move.to_location = shipment.warehouse_input
@@ -254,8 +297,7 @@ Check declaration::
     >>> assertEqual(declaration.month, today.replace(day=1))
     >>> declaration.state
     'opened'
-    >>> bool(declaration.extended)
-    False
+    >>> assertEqual(bool(declaration.extended), intrastat_extended)
 
     >>> with config.set_context(declaration=declaration.id):
     ...     declaration_line, _ = IntrastatDeclarationLine.find([])
@@ -276,14 +318,22 @@ Check declaration::
     >>> declaration_line.additional_unit
     20.0
     >>> declaration_line.country_of_origin
+    >>> assertEqual(declaration_line.transport, road_transport)
+    >>> declaration_line.incoterm.code
+    'EXW'
     >>> declaration_line.vat
 
 Export declaration::
 
     >>> _ = declaration.click('export')
     >>> export = Wizard('account.stock.eu.intrastat.declaration.export', [declaration])
-    >>> export.form.file
-    b'19;FR;11;2;9403 10 51;60.0;20.0;1800.00;;\r\n19;FR;21;2;9403 10 51;15.0;5.0;750.00;;\r\n'
+    >>> assertEqual(
+    ...     export.form.file,
+    ...     b'19;FR;11;2;9403 10 51;60.0;20.0;1800.00;3;EXW;;\r\n'
+    ...     b'19;FR;21;2;9403 10 51;15.0;5.0;750.00;3;FCA;;\r\n'
+    ...     if intrastat_extended else
+    ...     b'19;FR;11;2;9403 10 51;60.0;20.0;1800.00;;\r\n'
+    ...     b'19;FR;21;2;9403 10 51;15.0;5.0;750.00;;\r\n')
     >>> export.form.filename.endswith('.csv')
     True
     >>> declaration.state
@@ -301,8 +351,13 @@ Export declaration as Spain::
     >>> zip = zipfile.ZipFile(io.BytesIO(export.form.file))
     >>> zip.namelist()
     ['arrival-0.csv']
-    >>> zip.open('arrival-0.csv').read()
-    b'FR;2;;11;;;9403 10 51;;;60.0;20.0;1800.00;1800.00;\r\nFR;2;;21;;;9403 10 51;;;15.0;5.0;750.00;750.00;\r\n'
+    >>> assertEqual(
+    ...     zip.open('arrival-0.csv').read(),
+    ...     b'FR;2;EXW;11;3;;9403 10 51;;;60.0;20.0;1800.00;1800.00;\r\n'
+    ...     b'FR;2;FCA;21;3;;9403 10 51;;;15.0;5.0;750.00;750.00;\r\n'
+    ...     if intrastat_extended else
+    ...     b'FR;2;;11;;;9403 10 51;;;60.0;20.0;1800.00;1800.00;\r\n'
+    ...     b'FR;2;;21;;;9403 10 51;;;15.0;5.0;750.00;750.00;\r\n')
 
 Export declaration as fallback::
 
@@ -311,7 +366,12 @@ Export declaration as fallback::
 
     >>> _ = declaration.click('export')
     >>> export = Wizard('account.stock.eu.intrastat.declaration.export', [declaration])
-    >>> export.form.file
-    b'arrival,FR,2,9403 10 51,60.0,1800.00,11,20.0,,\r\narrival,FR,2,9403 10 51,15.0,750.00,21,5.0,,\r\n'
+    >>> assertEqual(
+    ...     export.form.file,
+    ...     b'arrival,FR,2,9403 10 51,60.0,1800.00,11,20.0,,,3,EXW\r\n'
+    ...     b'arrival,FR,2,9403 10 51,15.0,750.00,21,5.0,,,3,FCA\r\n'
+    ...     if intrastat_extended else
+    ...     b'arrival,FR,2,9403 10 51,60.0,1800.00,11,20.0,,\r\n'
+    ...     b'arrival,FR,2,9403 10 51,15.0,750.00,21,5.0,,\r\n')
     >>> export.form.filename.endswith('.csv')
     True
