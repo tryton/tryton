@@ -248,7 +248,7 @@ class Database(DatabaseInterface):
         if uri.path and uri.path != '/':
             warnings.warn("The path specified in the URI will be overridden")
         params = {
-            'dsn': uri._replace(path=name).geturl(),
+            'dsn': uri._replace(path='/' + name).geturl(),
             'fallback_application_name': os.environ.get(
                 'TRYTOND_APPNAME', 'trytond'),
             }
