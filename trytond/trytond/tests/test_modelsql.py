@@ -1516,6 +1516,51 @@ class ModelSQLTranslationTestCase(TranslationTestCase):
         self.assertFalse(other.fuzzy)
 
     @with_transaction()
+    def test_write_ir_model(self):
+        "Test writing on ir.model"
+        pool = Pool()
+        NameTranslated = pool.get('test.modelsql.name_translated')
+        Model = pool.get('ir.model')
+
+        record, = NameTranslated.create([{'name': "Bar"}])
+        with Transaction().set_context(language=self.other_language):
+            NameTranslated.write([record], {'name': "Foo"})
+
+            values = NameTranslated.read([record.id], ['name'])
+            self.assertEqual(values[0]['name'], "Foo")
+
+            translated_model, = Model.search([
+                    ('model', '=', 'test.modelsql.name_translated'),
+                    ])
+            Model.write([translated_model], {'name': "NameTranslated"})
+
+            values = NameTranslated.read([record.id], ['name'])
+            self.assertEqual(values[0]['name'], "Foo")
+
+    @with_transaction()
+    def test_write_ir_model_field(self):
+        "Test writing on ir.model.field"
+        pool = Pool()
+        ModelField = pool.get('ir.model.field')
+        Translation = pool.get('ir.translation')
+
+        with Transaction().set_context(language=self.other_language):
+            translated_modelfield, = ModelField.search([
+                    ('model', '=', 'test.modelsql.name_translated'),
+                    ('name', '=', 'name'),
+                    ])
+            ModelField.write(
+                [translated_modelfield], {'help': "Translated help"})
+
+        translation, = Translation.search([
+                ('type', '=', 'help'),
+                ('name', '=', 'test.modelsql.name_translated,name'),
+                ('type', '=', 'help'),
+                ])
+        self.assertEqual(translation.value, "Translated help")
+        self.assertEqual(translation.res_id, -1)
+
+    @with_transaction()
     def test_write_default_language_with_other_language(self):
         "Test write default language with other language"
         pool = Pool()

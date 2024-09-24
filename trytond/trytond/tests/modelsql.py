@@ -234,6 +234,13 @@ class ModelTranslation(ModelSQL):
     name = fields.Char("Name", translate=True)
 
 
+class ModelTranslationName(ModelSQL):
+    "ModelSQL with the 'name' field translated"
+    __name__ = 'test.modelsql.name_translated'
+
+    name = fields.Char("Name", translate=True, help="Name help")
+
+
 class ModelCheck(ModelSQL):
     "ModelSQL with check constraint"
     __name__ = 'test.modelsql.check'
@@ -313,6 +320,7 @@ def register(module):
         ModelSQLForeignKeyTree,
         NullOrder,
         ModelTranslation,
+        ModelTranslationName,
         ModelCheck,
         ModelUnique,
         ModelExclude,
