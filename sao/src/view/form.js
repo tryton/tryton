@@ -3468,7 +3468,11 @@ function eval_pyson(value){
                 first = this._position <= 1;
                 last = this._position >= this._length;
             }
-            var deletable = this.screen.deletable;
+            var deletable =
+                this.screen.deletable &&
+                this.screen.selected_records.some((r) => !r.deleted && !r.removed);
+            var undeletable =
+                this.screen.selected_records.some((r) => r.deleted || r.removed);
             const view_type = this.screen.current_view.view_type;
             const has_views = this.screen.number_of_views > 1;
 
@@ -3494,6 +3498,7 @@ function eval_pyson(value){
                 this._readonly ||
                 !record ||
                 size_limit ||
+                !undeletable ||
                 !this._position);
             this.but_open.prop(
                 'disabled',

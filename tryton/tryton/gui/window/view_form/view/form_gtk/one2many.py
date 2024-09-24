@@ -295,7 +295,13 @@ class One2Many(Widget):
         if isinstance(self._position, int):
             first = self._position <= 1
             last = self._position >= self._length
-        deletable = self.screen.deletable
+        deletable = (
+            self.screen.deletable
+            and any(
+                not r.deleted and not r.removed
+                for r in self.screen.selected_records))
+        undeletable = any(
+            r.deleted or r.removed for r in self.screen.selected_records)
         view_type = self.screen.current_view.view_type
         has_views = self.screen.number_of_views > 1
 
@@ -313,6 +319,7 @@ class One2Many(Widget):
         self.but_undel.set_sensitive(bool(
                 not self._readonly
                 and not size_limit
+                and undeletable
                 and self._position))
         self.but_open.set_sensitive(bool(
                 self._position
