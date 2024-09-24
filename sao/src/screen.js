@@ -1516,10 +1516,10 @@
                     if (previous_view.view_type == 'calendar') {
                         previous_view.set_default_date(record, selected_date);
                     }
-                    this.display().done(function() {
+                    return this.display().then(function() {
                         this.set_cursor(true, true);
+                        return record;
                     }.bind(this));
-                    return record;
                 }.bind(this));
             }.bind(this));
         },
