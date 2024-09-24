@@ -141,7 +141,7 @@ class One2Many(Widget):
         hbox.pack_start(self.but_del, expand=False, fill=False, padding=0)
 
         self.but_undel = Gtk.Button(can_focus=False)
-        tooltips.set_tip(self.but_undel, _('Undelete selected record <Ins>'))
+        tooltips.set_tip(self.but_undel, _("Undelete selected record"))
         self.but_undel.connect('clicked', self._sig_undelete)
         self.but_undel.add(common.IconFactory.get_image(
                 'tryton-undo', Gtk.IconSize.SMALL_TOOLBAR))
