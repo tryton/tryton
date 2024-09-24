@@ -927,6 +927,15 @@
         get view_index() {
             return this.views.indexOf(this.current_view);
         },
+        get next_view_type() {
+            var views = this.views.concat(this.view_to_load)
+            var next_view_index = (this.view_index + 1) % views.length;
+            var next_view = views[next_view_index];
+            if (typeof next_view != 'string') {
+                next_view = next_view.view_type;
+            }
+            return next_view;
+        },
         switch_view: function(
             view_type=null, view_id=null, creatable=null, display=true) {
             if (view_id !== null) {
