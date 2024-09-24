@@ -84,6 +84,9 @@ class User(metaclass=PoolMeta):
         domain=[
             ('id', 'in', Eval('companies', [])),
             ],
+        states={
+            'invisible': ~Eval('companies', []),
+            },
         help="Select the company to work for.")
     employees = fields.Many2Many('res.user-company.employee', 'user',
         'employee', 'Employees',
@@ -96,11 +99,17 @@ class User(metaclass=PoolMeta):
             ('company', '=', Eval('company', -1)),
             ('id', 'in', Eval('employees', [])),
             ],
+        states={
+            'invisible': ~Eval('employees', []),
+            },
         help="Select the employee to make the user behave as such.")
     company_filter = fields.Selection([
             ('one', "Current"),
             ('all', "All"),
             ], "Company Filter",
+        states={
+            'invisible': ~Eval('companies', []),
+            },
         help="Define records of which companies are shown.")
     _get_companies_cache = Cache(__name__ + '.get_companies', context=False)
     _get_employees_cache = Cache(__name__ + '.get_employees', context=False)
@@ -165,6 +174,26 @@ class User(metaclass=PoolMeta):
                 status += ' - %s' % self.company.rec_name
             status += ' [%s]' % self.company.currency.code
         return status
+
+    @fields.depends(
+        'companies', 'company', 'employees', methods=['on_change_employees'])
+    def on_change_companies(self):
+        companies = set(self.companies or [])
+        if self.company and self.company not in companies:
+            self.company = None
+        if self.employees:
+            employees = []
+            for employee in self.employees:
+                if employee.company in companies:
+                    employees.append(employee)
+            self.employees = employees
+            self.on_change_employees()
+
+    @fields.depends('employees', 'employee')
+    def on_change_employees(self):
+        employees = set(self.employees or [])
+        if self.employee and self.employee not in employees:
+            self.employee = None
 
     @fields.depends('company', 'employees')
     def on_change_company(self):
