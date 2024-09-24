@@ -3462,6 +3462,12 @@ function eval_pyson(value){
                 o2m_size = null;
                 size_limit = false;
             }
+            var first = false,
+                last = false;
+            if (typeof this._position == 'number') {
+                first = this._position <= 1;
+                last = this._position >= this._length;
+            }
             var deletable = this.screen.deletable;
             const view_type = this.screen.current_view.view_type;
             const has_views = this.screen.number_of_views > 1;
@@ -3497,12 +3503,13 @@ function eval_pyson(value){
             this.but_next.prop(
                 'disabled',
                 !record ||
-                (this.position > 0) &&
-                ( this._position >= this._length));
+                !this._length ||
+                last);
             this.but_previous.prop(
                 'disabled',
                 !record ||
-                this._position <= 1);
+                !this._length ||
+                first);
             if (this.attributes.add_remove) {
                 this.but_add.prop(
                     'disabled',

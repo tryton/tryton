@@ -318,10 +318,10 @@ class One2Many(Widget):
                 self._position
                 and self.read_access))
         self.but_next.set_sensitive(bool(
-                self._position
+                self._length
                 and not last))
         self.but_pre.set_sensitive(bool(
-                self._position
+                self._length
                 and not first))
         if self.attrs.get('add_remove'):
             self.but_add.set_sensitive(bool(
