@@ -536,6 +536,19 @@ class Screen:
     def number_of_views(self):
         return len(self.views) + len(self.view_to_load)
 
+    @property
+    def view_index(self):
+        return self.__current_view
+
+    @property
+    def next_view_type(self):
+        views = self.views + self.view_to_load
+        next_view_index = (self.view_index + 1) % len(views)
+        next_view = views[next_view_index]
+        if not isinstance(next_view, str):
+            next_view = next_view.view_type
+        return next_view
+
     def switch_view(
             self, view_type=None, view_id=None, creatable=None, display=True):
         if view_id is not None:
