@@ -4083,10 +4083,17 @@ function eval_pyson(value){
                         (m2m_size >= field_size) && (field_size >= 0));
             }
 
+            var removable =
+                this.screen.selected_records.some((r) => !r.deleted && !r.removed);
+
             this.entry.prop('disabled', this._readonly || !record);
             this.but_add.prop('disabled', this._readonly || !record || size_limit);
             this.but_remove.prop(
-                'disabled', this._readonly || !record || this._position === 0);
+                'disabled',
+                this._readonly ||
+                !record ||
+                !removable ||
+                this._position === 0);
         },
         record_message: function(position, size) {
             this._position = position;

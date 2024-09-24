@@ -284,11 +284,16 @@ class Many2Many(Widget):
         else:
             size_limit = False
 
+        removable = any(
+            not r.deleted and not r.removed
+            for r in self.screen.selected_records)
+
         self.but_add.set_sensitive(bool(
                 not self._readonly
                 and not size_limit))
         self.but_remove.set_sensitive(bool(
                 not self._readonly
+                and removable
                 and self._position))
 
     def record_message(self, position, size, *args):
