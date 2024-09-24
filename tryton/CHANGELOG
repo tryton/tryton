@@ -1,3 +1,4 @@
+* Add restore button on Many2Many
 * Keep CSV export window opened
 * Remove favorite management
 * Retry JSON-RPC requests on Service Unavailable

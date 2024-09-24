@@ -82,6 +82,14 @@ class Many2Many(Widget):
         self.but_remove.set_relief(Gtk.ReliefStyle.NONE)
         hbox.pack_start(self.but_remove, expand=False, fill=False, padding=0)
 
+        self.but_unremove = Gtk.Button(can_focus=False)
+        tooltips.set_tip(self.but_unremove, _("Restore selected record"))
+        self.but_unremove.connect('clicked', self._sig_unremove)
+        self.but_unremove.add(common.IconFactory.get_image(
+                'tryton-undo', Gtk.IconSize.SMALL_TOOLBAR))
+        self.but_unremove.set_relief(Gtk.ReliefStyle.NONE)
+        hbox.pack_start(self.but_unremove, expand=False, fill=False, padding=0)
+
         tooltips.enable()
 
         frame = Gtk.Frame()
@@ -129,6 +137,9 @@ class Many2Many(Widget):
                 return True
             elif event.keyval in remove_keys and editable:
                 self._sig_remove()
+                return True
+            elif event.keyval == Gdk.KEY_Insert:
+                self._sig_unremove()
                 return True
         elif widget == self.wid_text:
             if event.keyval == Gdk.KEY_F3:
@@ -193,6 +204,9 @@ class Many2Many(Widget):
 
     def _sig_remove(self, *args):
         self.screen.remove(remove=True)
+
+    def _sig_unremove(self, *args):
+        self.screen.unremove()
 
     def _on_activate(self):
         self._sig_edit()
@@ -287,6 +301,8 @@ class Many2Many(Widget):
         removable = any(
             not r.deleted and not r.removed
             for r in self.screen.selected_records)
+        unremovable = any(
+            r.deleted or r.removed for r in self.screen.selected_records)
 
         self.but_add.set_sensitive(bool(
                 not self._readonly
@@ -294,6 +310,11 @@ class Many2Many(Widget):
         self.but_remove.set_sensitive(bool(
                 not self._readonly
                 and removable
+                and self._position))
+        self.but_unremove.set_sensitive(bool(
+                not self._readonly
+                and not size_limit
+                and unremovable
                 and self._position))
 
     def record_message(self, position, size, *args):

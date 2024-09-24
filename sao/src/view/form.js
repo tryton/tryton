@@ -4015,6 +4015,16 @@ function eval_pyson(value){
             ).appendTo(buttons);
             this.but_remove.click(this.remove.bind(this));
 
+            this.but_unremove = jQuery('<button/>', {
+                'class': 'btn btn-default btn-sm',
+                'type': 'button',
+                'tabindex': -1,
+                'aria-label': Sao.i18n.gettext("Restore"),
+                'title': Sao.i18n.gettext("Restore"),
+            }).append(Sao.common.ICONFACTORY.get_icon_img('tryton-undo')
+            ).appendTo(buttons);
+            this.but_unremove.click(this.unremove.bind(this));
+
             this.content = jQuery('<div/>', {
                 'class': this.class_ + '-content panel-body'
             });
@@ -4085,6 +4095,8 @@ function eval_pyson(value){
 
             var removable =
                 this.screen.selected_records.some((r) => !r.deleted && !r.removed);
+            var unremovable =
+                this.screen.selected_records.some((r) => r.deleted || r.removed);
 
             this.entry.prop('disabled', this._readonly || !record);
             this.but_add.prop('disabled', this._readonly || !record || size_limit);
@@ -4093,6 +4105,12 @@ function eval_pyson(value){
                 this._readonly ||
                 !record ||
                 !removable ||
+                this._position === 0);
+            this.but_unremove.prop(
+                'disabled',
+                this._readonly ||
+                !record ||
+                !unremovable ||
                 this._position === 0);
         },
         record_message: function(position, size) {
@@ -4190,6 +4208,9 @@ function eval_pyson(value){
         },
         remove: function() {
             this.screen.remove(false, true, false);
+        },
+        unremove: function() {
+            this.screen.unremove();
         },
         key_press: function(event_) {
             var activate_keys = [Sao.common.TAB_KEYCODE];
