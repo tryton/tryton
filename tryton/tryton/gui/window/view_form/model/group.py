@@ -128,6 +128,7 @@ class Group(list):
         self._group_list_changed('record-removed', record, idx)
         super(Group, self).remove(record)
         del self.__id2record[record.id]
+        record.destroy()
 
     def clear(self):
         # Use reversed order to minimize the cursor reposition as the cursor

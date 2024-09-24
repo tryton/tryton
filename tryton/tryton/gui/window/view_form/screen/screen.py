@@ -793,6 +793,7 @@ class Screen:
         records = records or self.selected_records
         if not records:
             return
+        current_record = self.current_record
         if delete:
             # Must delete children records before parent
             records.sort(key=lambda r: r.depth, reverse=True)
@@ -820,7 +821,10 @@ class Screen:
                     record.parent.save(force_reload=False)
                 record.destroy()
 
-        self.current_record = None
+        if current_record and not current_record.destroyed:
+            self.current_record = current_record
+        else:
+            self.current_record = None
         self.set_cursor()
         self.display()
         return True

@@ -241,6 +241,7 @@
         array._remove = function(record) {
             var idx = this.indexOf(record);
             this.splice(idx, 1);
+            record.destroy();
         };
         array.unremove = function(record) {
             this.record_removed.splice(this.record_removed.indexOf(record), 1);

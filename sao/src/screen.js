@@ -1689,6 +1689,7 @@
             if (jQuery.isEmptyObject(records)) {
                 return prm;
             }
+            var current_record = this.current_record;
             if (delete_) {
                 // TODO delete children before parent
                 prm = this.group.delete_(records);
@@ -1716,7 +1717,11 @@
                         // TODO destroy
                     }
                 }
-                this.current_record = null;
+                if (current_record && !current_record.destroyed) {
+                    this.current_record = current_record;
+                } else {
+                    this.current_record = null;
+                }
                 return jQuery.when.apply(jQuery, prms).then(() => {
                     return this.display().done(() => {
                         this.set_cursor();
