@@ -1125,9 +1125,14 @@ class ViewTree(View):
                 selection.select_path(path)
             # The search column must be set each time the model is changed
             self.treeview.set_search_column(0)
+        selection = self.treeview.get_selection()
         if not current_record:
-            selection = self.treeview.get_selection()
             selection.unselect_all()
+        else:
+            model = self.treeview.get_model()
+            path = Gtk.TreePath(current_record.get_index_path(model.group))
+            if not selection.path_is_selected(path):
+                selection.select_path(path)
         self.treeview.queue_draw()
         if self.editable:
             self.set_state()
@@ -1263,6 +1268,8 @@ class ViewTree(View):
         records = []
         sel = self.treeview.get_selection()
         sel.selected_foreach(_func_sel_get, records)
+        if not records and self.record:
+            records.append(self.record)
         return records
 
     def get_selected_paths(self):
