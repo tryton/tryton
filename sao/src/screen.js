@@ -1544,10 +1544,10 @@
                     if (previous_view.view_type == 'calendar') {
                         previous_view.set_default_date(record, selected_date);
                     }
-                    this.display().done(() => {
+                    return this.display().then(() => {
                         this.set_cursor(true, true);
+                        return record;
                     });
-                    return record;
                 });
             });
         },
