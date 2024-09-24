@@ -157,8 +157,10 @@ PostgreSQL
 
 ``psycopg2`` supports two type of connections:
 
-    - TCP/IP connection: ``postgresql://user:password@localhost:5432/``
-    - Unix domain connection: ``postgresql://username:password@/``
+- TCP/IP connection: ``postgresql://user:password@localhost:5432/``
+- Unix domain connection:
+   - with password authentication: ``postgresql://username:password``
+   - with operating system user name: ``postgresql://``
 
 Please refer to `psycopg2 for the complete specification of the URI
 <https://www.psycopg.org/docs/module.html#psycopg2.connect>`_.
