@@ -43,7 +43,7 @@ Create order point::
 
     >>> order_point = OrderPoint()
     >>> order_point.product = product
-    >>> order_point.warehouse_location = warehouse_location
+    >>> order_point.location = warehouse_location
     >>> order_point.type = 'purchase'
     >>> order_point.min_quantity = 0
     >>> order_point.target_quantity = 5
