@@ -151,12 +151,17 @@ class User(metaclass=PoolMeta):
 
     @classmethod
     def default_companies(cls):
-        company = Transaction().context.get('company')
-        return [company] if company else []
+        pool = Pool()
+        Company = pool.get('company.company')
+        companies = Company.search([])
+        if len(companies) == 1:
+            return [c.id for c in companies]
 
     @classmethod
     def default_company(cls):
-        return Transaction().context.get('company')
+        if companies := cls.default_companies():
+            if len(companies) == 1:
+                return companies[0]
 
     @classmethod
     def default_company_filter(cls):
