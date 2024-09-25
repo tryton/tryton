@@ -200,17 +200,14 @@ class User(metaclass=PoolMeta):
         if self.employee and self.employee not in employees:
             self.employee = None
 
-    @fields.depends('company', 'employees')
+    @fields.depends('company', 'employees', 'employee')
     def on_change_company(self):
-        Employee = Pool().get('company.employee')
-        self.employee = None
-        if self.company and self.employees:
-            employees = Employee.search([
-                    ('id', 'in', [e.id for e in self.employees]),
-                    ('company', '=', self.company.id),
-                    ])
-            if employees:
-                self.employee = employees[0]
+        if self.employee and self.employee.company != self.company:
+            self.employee = None
+        employees = [
+            e for e in (self.employees or []) if e.company == self.company]
+        if len(employees) == 1:
+            self.employee, = employees
 
     @classmethod
     def _get_preferences(cls, user, context_only=False):
