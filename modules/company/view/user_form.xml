@@ -3,8 +3,8 @@
 this repository contains the full copyright notices and license terms. -->
 <data>
     <xpath expr="/form/notebook/page/separator[@name='signature']" position="before">
-        <field name="companies" colspan="2"/>
-        <field name="employees" colspan="2"/>
+        <field name="companies" colspan="2" view_ids="company.company_view_list_simple"/>
+        <field name="employees" colspan="2" view_ids="company.employee_view_list_simple"/>
 
         <label name="company"/>
         <field name="company" widget="selection"/>

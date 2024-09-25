@@ -51,6 +51,13 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">company_list</field>
         </record>
 
+        <record model="ir.ui.view" id="company_view_list_simple">
+            <field name="model">company.company</field>
+            <field name="type">tree</field>
+            <field name="priority" eval="20"/>
+            <field name="name">company_list_simple</field>
+        </record>
+
         <record model="ir.action.act_window" id="act_company_list">
             <field name="name">Companies</field>
             <field name="res_model">company.company</field>
@@ -128,7 +135,15 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.ui.view" id="employee_view_tree">
             <field name="model">company.employee</field>
             <field name="type">tree</field>
+            <field name="priority" eval="10"/>
             <field name="name">employee_tree</field>
+        </record>
+
+        <record model="ir.ui.view" id="employee_view_list_simple">
+            <field name="model">company.employee</field>
+            <field name="type">tree</field>
+            <field name="priority" eval="20"/>
+            <field name="name">employee_list_simple</field>
         </record>
 
         <record model="ir.action.act_window" id="act_employee_form">
