@@ -309,9 +309,9 @@ class InvoiceDeferred(Workflow, ModelSQL, ModelView):
     def amount_remainder(self):
         balance = 0
         for move in self.moves:
-            income_account = self.invoice_line.account.current(move.date)
+            invoice_account = self.invoice_line.account.current(move.date)
             for line in move.lines:
-                if line.account == income_account:
+                if line.account == invoice_account:
                     balance += line.debit - line.credit
         return balance
 
