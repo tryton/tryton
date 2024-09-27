@@ -1325,6 +1325,32 @@
             'Eval("foo", {}).get("bar")');
     });
 
+    QUnit.test('PYSON eval default', function() {
+        QUnit.ok(
+            Sao.common.compare(
+                    new Sao.PYSON.Eval('date', new Sao.PYSON.Date()).types(),
+                    ['object']),
+            "Eval('date', Date()).types()");
+
+        let expr = new Sao.PYSON.Equal(
+            new Sao.PYSON.Eval('foo', new Sao.PYSON.Eval('bar', 1)),
+            1);
+        let encoded = new Sao.PYSON.Encoder().encode(expr);
+
+        QUnit.ok((new Sao.PYSON.Decoder()).decode(encoded));
+        QUnit.ok(!(new Sao.PYSON.Decoder({
+            'foo': 2,
+        })).decode(encoded));
+        QUnit.ok(!(new Sao.PYSON.Decoder({
+            'bar': 2,
+        })).decode(encoded));
+        QUnit.ok(new Sao.PYSON.Decoder({
+            'foo': 1,
+            'bar': 2,
+        }).decode(encoded));
+        QUnit.strictEqual(expr.toString(), 'Equal(Eval("foo", Eval("bar", 1)), 1)')
+    });
+
     var humanize_tests = [
         [0, '0'],
         [1, '1'],

@@ -47,6 +47,27 @@ class PYSONTestCase(TestCase):
         self.assertIsInstance(pyson.Eval('test', False) | False, pyson.Or)
         self.assertIsInstance(False | pyson.Eval('test', False), pyson.Or)
 
+    def test_Eval_default(self):
+        'Test pyson.Eval default values'
+        self.assertEqual(
+            pyson.Eval('date', pyson.Date()).types(),
+            set([datetime.date]))
+
+        expr = pyson.Eval('foo', pyson.Eval('bar', 1)) == 1
+        encoded = pyson.PYSONEncoder().encode(expr)
+        self.assertTrue(pyson.PYSONDecoder().decode(encoded))
+        self.assertFalse(pyson.PYSONDecoder({
+                    'foo': 2,
+                    }).decode(encoded))
+        self.assertFalse(pyson.PYSONDecoder({
+                    'bar': 2,
+                    }).decode(encoded))
+        self.assertTrue(pyson.PYSONDecoder({
+                    'foo': 1,
+                    'bar': 2,
+                    }).decode(encoded))
+        self.assertEqual(repr(expr), "(Eval('foo', Eval('bar', 1)) == 1)")
+
     def test_Not(self):
         'Test pyson.Not'
         self.assertEqual(pyson.Not(True).pyson(), {
