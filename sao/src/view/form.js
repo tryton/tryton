@@ -193,6 +193,12 @@ function eval_pyson(value){
             this.container.add_row();
         },
         _parse_notebook: function(node, attributes) {
+            if (attributes.yexpand === undefined) {
+                attributes.yexpand = true;
+            }
+            if (attributes.yfill == undefined) {
+                attributes.yfill = true;
+            }
             if (attributes.colspan === undefined) {
                 attributes.colspan = 4;
             }
