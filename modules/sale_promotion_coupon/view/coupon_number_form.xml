@@ -8,4 +8,9 @@ this repository contains the full copyright notices and license terms. -->
     <field name="number"/>
     <label name="active"/>
     <field name="active"/>
+
+    <label name="start_date"/>
+    <field name="start_date"/>
+    <label name="end_date"/>
+    <field name="end_date"/>
 </form>

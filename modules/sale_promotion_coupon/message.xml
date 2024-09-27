@@ -3,6 +3,12 @@
 this repository contains the full copyright notices and license terms. -->
 <tryton>
     <data grouped="1">
+        <record model="ir.message" id="msg_promotion_coupon_number_start_date">
+            <field name="text">The start date of coupons numbered "%(numbers)s" must be after %(start_date)s.</field>
+        </record>
+        <record model="ir.message" id="msg_promotion_coupon_number_end_date">
+            <field name="text">The end date of coupons numbered "%(numbers)s" must be before %(start_date)s.</field>
+        </record>
         <record model="ir.message" id="msg_duplicate_numbers">
             <field name="text">The coupons numbered "%(numbers)s" are duplicated.</field>
         </record>
