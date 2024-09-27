@@ -205,10 +205,8 @@ class InvoiceDeferred(Workflow, ModelSQL, ModelView):
             Period.find(deferral.company.id, deferral.start_date)
         # Set state before create moves and defer amount to pass assert
         cls.write(deferrals, {'state': 'running'})
-        cls.create_moves(deferrals)
-        # defer_amount is called after create_moves to be sure that
-        # create_moves call get_move with the invoice period if needed.
-        cls.defer_amount(deferrals)
+        deferred_moves = cls.defer_amount(deferrals)
+        cls.create_moves(deferrals, _exclude=deferred_moves)
         cls.close_try(deferrals)
 
     @classmethod
@@ -249,12 +247,14 @@ class InvoiceDeferred(Workflow, ModelSQL, ModelView):
             moves.append(deferral.get_move())
         Move.save(moves)
         Move.post(moves)
+        return moves
 
     @classmethod
-    def create_moves(cls, deferrals):
+    def create_moves(cls, deferrals, _exclude=None):
         pool = Pool()
         Period = pool.get('account.period')
         Move = pool.get('account.move')
+        exclude = set(_exclude or [])
         moves = []
         for deferral in deferrals:
             assert deferral.state == 'running'
@@ -265,7 +265,8 @@ class InvoiceDeferred(Workflow, ModelSQL, ModelView):
                     ('end_date', '>=', deferral.start_date),
                     ])
             for period in sorted(
-                    set(periods) - {m.period for m in deferral.moves},
+                    set(periods) - {
+                        m.period for m in deferral.moves if m not in exclude},
                     key=lambda p: p.start_date):
                 moves.append(deferral.get_move(period))
         Move.save(moves)
