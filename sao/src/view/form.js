@@ -589,7 +589,7 @@ function eval_pyson(value){
                 el = widget.el;
             }
             var cell = jQuery('<div/>', {
-                'class': 'form-item ' + (widget ? widget.class_ || '' : ''),
+                'class': 'form-item',
             }).append(el);
             cell.css('grid-column', `${this._col} / ${this._col + colspan}`);
             cell.css('grid-row', `${this._row} / ${this._row + 1}`);
