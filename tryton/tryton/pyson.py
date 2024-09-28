@@ -363,7 +363,7 @@ class Greater(PYSON):
 
     @property
     def _binary_operator(self):
-        return '<=' if self._equal else '<'
+        return '>=' if self._equal else '>'
 
     @property
     def __repr_params__(self):
@@ -413,7 +413,7 @@ class Less(Greater):
 
     @property
     def _binary_operator(self):
-        return '>=' if self._equal else '>'
+        return '<=' if self._equal else '<'
 
     def pyson(self):
         res = super(Less, self).pyson()
