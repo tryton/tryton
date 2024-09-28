@@ -1,6 +1,7 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 import datetime
+import math
 from decimal import Decimal
 from itertools import groupby, chain
 from functools import partial
@@ -27,6 +28,10 @@ from trytond.modules.product import price_digits, round_price
 
 from .exceptions import (
     SaleValidationError, SaleQuotationError, PartyLocationError)
+
+
+def samesign(a, b):
+    return math.copysign(a, b) == a
 
 
 def get_shipments_returns(model_name):
@@ -1533,7 +1538,8 @@ class SaleLine(TaxableMixin, sequence_ordered(), ModelSQL, ModelView):
                 raise AccountError(
                     gettext('sale.msg_sale_missing_account_revenue',
                         sale=self.sale.rec_name))
-        invoice_line.stock_moves = self._get_invoice_line_moves()
+        if samesign(self.quantity, invoice_line.quantity):
+            invoice_line.stock_moves = self._get_invoice_line_moves()
         return [invoice_line]
 
     def _get_invoice_not_line(self):
@@ -1685,7 +1691,8 @@ class SaleLine(TaxableMixin, sequence_ordered(), ModelSQL, ModelView):
                         and invoice_line.invoice.state == 'paid'):
                     if invoice_line.moved_quantity < invoice_line.quantity:
                         invoice_lines.append(invoice_line)
-        return invoice_lines
+        return list(filter(
+                lambda l: samesign(self.quantity, l.quantity), invoice_lines))
 
     def set_actual_quantity(self):
         pool = Pool()
