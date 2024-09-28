@@ -66,6 +66,9 @@ class DatabaseInterface(object):
     def currid(self, connection, table):
         pass
 
+    def estimated_count(self, connection, table):
+        raise NotImplementedError
+
     @classmethod
     def lock(cls, connection, table):
         raise NotImplementedError

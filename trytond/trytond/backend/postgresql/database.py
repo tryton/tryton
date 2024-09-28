@@ -29,7 +29,8 @@ from psycopg2 import OperationalError as DatabaseOperationalError
 from psycopg2 import ProgrammingError
 from psycopg2.errors import QueryCanceled as DatabaseTimeoutError
 from psycopg2.extras import register_default_json, register_default_jsonb
-from sql import Cast, Flavor, For, Table
+from sql import Cast, Flavor, For, Literal, Table
+from sql.aggregate import Count
 from sql.conditionals import Coalesce
 from sql.functions import Function
 from sql.operators import BinaryOperator, Concat
@@ -452,6 +453,17 @@ class Database(DatabaseInterface):
             ('%I', table, 'id'))
         sequence_name, = cursor.fetchone()
         cursor.execute(f"SELECT last_value FROM {sequence_name}")
+        return cursor.fetchone()[0]
+
+    def estimated_count(self, connection, from_item):
+        cursor = connection.cursor()
+        if isinstance(from_item, Table):
+            cursor.execute(
+                'SELECT n_live_tup FROM pg_stat_all_tables '
+                'WHERE relname = %s',
+                (from_item._name,))
+        else:
+            cursor.execute(*from_item.select(Count(Literal('*'))))
         return cursor.fetchone()[0]
 
     def lock(self, connection, table):

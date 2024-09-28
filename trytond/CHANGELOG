@@ -1,3 +1,4 @@
+* Add method to the backend to estimate number of rows
 * Add setup indexes method to ModelSQL
 * Support getting many sequences at once
 * Add sequence_nextval function to Database

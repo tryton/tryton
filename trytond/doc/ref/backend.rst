@@ -79,6 +79,10 @@ Database
 
    Return the current ID of the ``table`` using the ``connection``.
 
+.. method:: Database.estimated_count(connection, from_item)
+
+   Return the estimated number of rows
+
 .. classmethod:: Database.lock(connection, table)
 
    Lock the ``table`` using the ``connection``.

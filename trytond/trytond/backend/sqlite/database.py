@@ -17,6 +17,7 @@ from sqlite3 import OperationalError as DatabaseOperationalError
 from weakref import WeakKeyDictionary
 
 from sql import Expression, Flavor, Literal, Null, Query, Table
+from sql.aggregate import Count
 from sql.conditionals import NullIf
 from sql.functions import (
     CharLength, CurrentTimestamp, Extract, Function, Overlay, Position,
@@ -583,6 +584,11 @@ class Database(DatabaseInterface):
     def lastid(self, cursor):
         # This call is not thread safe
         return cursor.lastrowid
+
+    def estimated_count(self, connection, table):
+        cursor = connection.cursor()
+        cursor.execute(*table.select(Count(Literal('*'))))
+        return cursor.fetchone()[0]
 
     def lock(self, connection, table):
         pass

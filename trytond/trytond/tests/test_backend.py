@@ -3,7 +3,7 @@
 import datetime as dt
 import math
 
-from sql import Literal, Select, functions
+from sql import Literal, Select, Table, functions
 from sql.functions import CurrentTimestamp, DateTrunc, ToChar
 
 from trytond.model import fields
@@ -182,3 +182,24 @@ class BackendTestCase(TestCase):
         cursor.execute(*Select([DateTrunc('month', date.sql_cast(None))]))
         value, = cursor.fetchone()
         self.assertEqual(value, None)
+
+    @with_transaction()
+    def test_estimated_count(self):
+        "Test estimated count queries"
+        database = Transaction().database
+        connection = Transaction().connection
+
+        count = database.estimated_count(connection, Table('res_user'))
+
+        self.assertGreaterEqual(count, 0)
+
+    @with_transaction()
+    def test_estimated_count_table_query(self):
+        "Test estimated count queries on Model using a table query"
+        database = Transaction().database
+        connection = Transaction().connection
+
+        query = Select([Literal(1)])
+        count = database.estimated_count(connection, query)
+
+        self.assertEqual(count, 1)
