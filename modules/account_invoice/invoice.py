@@ -1432,6 +1432,8 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin, InvoiceReportMixin):
         default.setdefault('total_amount_cache', None)
         default.setdefault('untaxed_amount_cache', None)
         default.setdefault('tax_amount_cache', None)
+        default.setdefault('validated_by')
+        default.setdefault('posted_by')
         return super(Invoice, cls).copy(invoices, default=default)
 
     @classmethod
