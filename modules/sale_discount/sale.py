@@ -136,8 +136,12 @@ class Line(metaclass=PoolMeta):
         if not rate or rate % Decimal('0.01'):
             amount = self.on_change_with_discount_amount()
             if amount:
-                return lang.currency(
-                    amount, self.sale.currency, digits=price_digits[1])
+                if self.sale and self.sale.currency:
+                    return lang.currency(
+                        amount, self.sale.currency, digits=price_digits[1])
+                else:
+                    return lang.format(
+                        '%.f', (price_digits[1], amount), monetary=True)
         else:
             return lang.format('%i', rate * 100) + '%'
 
