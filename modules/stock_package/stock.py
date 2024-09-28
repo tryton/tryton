@@ -332,6 +332,13 @@ class PackageMixin(object):
     def packages_moves(self):
         raise NotImplementedError
 
+    @classmethod
+    def copy(cls, shipments, default=None):
+        default = default.copy() if default is not None else {}
+        default.setdefault('packages')
+        default.setdefault('root_packages')
+        return super().copy(shipments, default=default)
+
 
 class ShipmentOut(PackageMixin, object, metaclass=PoolMeta):
     __name__ = 'stock.shipment.out'
