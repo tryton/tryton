@@ -1,10 +1,6 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 
-try:
-    import pygal
-except ImportError:
-    pygal = None
 from dateutil.relativedelta import relativedelta
 from sql import Literal, Null
 from sql.aggregate import Count, Min, Sum
@@ -17,6 +13,7 @@ from trytond.modules.currency.fields import Monetary
 from trytond.pool import Pool
 from trytond.pyson import Eval, If
 from trytond.tools import pairwise_longest
+from trytond.tools.chart import sparkline
 from trytond.transaction import Transaction
 
 
@@ -135,11 +132,8 @@ class Abstract(ModelSQL):
 
     def get_trend(self, name):
         name = name[:-len('_trend')]
-        if pygal:
-            chart = pygal.Line()
-            chart.add('', [getattr(ts, name) if ts else 0
-                    for ts in self.time_series_all])
-            return chart.render_sparktext()
+        return sparkline([
+                getattr(ts, name) if ts else 0 for ts in self.time_series_all])
 
 
 class AbstractTimeseries(Abstract):

@@ -3,10 +3,6 @@
 from collections import defaultdict
 from decimal import Decimal
 
-try:
-    import pygal
-except ImportError:
-    pygal = None
 from dateutil.relativedelta import relativedelta
 from sql import Column, Literal, Null, Union, With
 from sql.aggregate import Count, Max, Min, Sum
@@ -20,6 +16,7 @@ from trytond.modules.currency.fields import Monetary
 from trytond.pool import Pool
 from trytond.pyson import Eval, If
 from trytond.tools import grouped_slice, pairwise_longest, reduce_ids
+from trytond.tools.chart import sparkline
 from trytond.transaction import Transaction
 from trytond.wizard import StateAction, StateTransition, Wizard
 
@@ -206,11 +203,8 @@ class Abstract(ModelSQL):
 
     def get_trend(self, name):
         name = name[:-len('_trend')]
-        if pygal:
-            chart = pygal.Line()
-            chart.add('', [getattr(ts, name) if ts else 0
-                    for ts in self.time_series_all])
-            return chart.render_sparktext()
+        return sparkline([
+                getattr(ts, name) if ts else 0 for ts in self.time_series_all])
 
 
 class AbstractTimeseries(Abstract):

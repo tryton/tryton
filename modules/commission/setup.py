@@ -127,7 +127,6 @@ setup(name=name,
     python_requires='>=3.8',
     install_requires=requires,
     extras_require={
-        'sparklines': ['pygal'],
         'test': tests_require,
         },
     zip_safe=False,

@@ -24,11 +24,6 @@ from genshi.template import TextTemplate
 from sql import Literal
 from sql.aggregate import Count
 
-try:
-    import pygal
-except ImportError:
-    pygal = None
-
 from trytond.config import config
 from trytond.i18n import gettext
 from trytond.model import (
@@ -39,6 +34,7 @@ from trytond.pyson import Eval, If, PYSONDecoder, TimeDelta
 from trytond.report import Report
 from trytond.sendmail import SMTPDataManager, send_message_transactional
 from trytond.tools import grouped_slice, pairwise_longest, reduce_ids
+from trytond.tools.chart import sparkline
 from trytond.tools.email_ import format_address, has_rcpt, set_from_header
 from trytond.transaction import Transaction
 from trytond.url import http_host
@@ -59,12 +55,8 @@ def trend_mixin(model_name, field_name):
 
         def get_trend(self, name):
             name = name[:-len('_trend')]
-            if pygal:
-                chart = pygal.Line()
-                chart.add('', [
-                        getattr(ts, name, 0) or 0
-                        for ts in self.trends])
-                return chart.render_sparktext()
+            return sparkline([
+                    getattr(ts, name, 0) or 0 for ts in self.trends])
 
         @property
         def trends(self):

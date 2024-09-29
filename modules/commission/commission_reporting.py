@@ -2,11 +2,6 @@
 # this repository contains the full copyright notices and license terms.
 
 from dateutil.relativedelta import relativedelta
-
-try:
-    import pygal
-except ImportError:
-    pygal = None
 from sql import Literal, Null
 from sql.aggregate import Count, Min, Sum
 from sql.conditionals import Coalesce
@@ -18,6 +13,7 @@ from trytond.modules.product import price_digits
 from trytond.pool import Pool
 from trytond.pyson import Eval, If
 from trytond.tools import pairwise_longest
+from trytond.tools.chart import sparkline
 from trytond.transaction import Transaction
 
 
@@ -143,12 +139,8 @@ class Agent(ModelView, ModelSQL):
 
     def get_trend(self, name):
         name = name[:-len('_trend')]
-        if pygal:
-            chart = pygal.Line()
-            chart.add('', [
-                    getattr(ts, name, 0) or 0
-                    for ts in self.time_series_all])
-            return chart.render_sparktext()
+        return sparkline([
+                getattr(ts, name, 0) or 0 for ts in self.time_series_all])
 
     def get_rec_name(self, name):
         return self.agent.rec_name

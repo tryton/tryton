@@ -7,17 +7,13 @@ from sql.aggregate import Count, Min, Sum
 from sql.conditionals import Case
 from sql.functions import CurrentTimestamp
 
-try:
-    import pygal
-except ImportError:
-    pygal = None
-
 from trytond.i18n import lazy_gettext
 from trytond.model import ModelSQL, ModelView, fields
 from trytond.modules.currency.fields import Monetary
 from trytond.pool import Pool
 from trytond.pyson import Eval, If
 from trytond.tools import pairwise_longest
+from trytond.tools.chart import sparkline
 from trytond.transaction import Transaction
 
 
@@ -213,11 +209,9 @@ class Abstract(ModelSQL):
 
     def get_trend(self, name):
         name = self._field_name_strip(name, '_trend')
-        if pygal:
-            chart = pygal.Line()
-            chart.add('', [getattr(ts, name) or 0 if ts else 0
-                    for ts in self.time_series_all])
-            return chart.render_sparktext()
+        return sparkline(
+            [getattr(ts, name) or 0 if ts else 0
+                for ts in self.time_series_all])
 
     def get_currency(self, name):
         return self.company.currency.id

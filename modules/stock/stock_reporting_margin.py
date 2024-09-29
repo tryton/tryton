@@ -4,16 +4,11 @@
 from collections import defaultdict
 from decimal import Decimal
 
+from dateutil.relativedelta import relativedelta
 from sql import Literal, Null, With
 from sql.aggregate import Max, Min, Sum
 from sql.conditionals import Case, Coalesce
 from sql.functions import Ceil, CurrentTimestamp, DateTrunc, Log, Power, Round
-
-try:
-    import pygal
-except ImportError:
-    pygal = None
-from dateutil.relativedelta import relativedelta
 
 from trytond.i18n import lazy_gettext
 from trytond.model import ModelSQL, ModelView, fields, sum_tree
@@ -21,6 +16,7 @@ from trytond.modules.currency.fields import Monetary
 from trytond.pool import Pool
 from trytond.pyson import Eval, If
 from trytond.tools import grouped_slice, pairwise_longest, reduce_ids
+from trytond.tools.chart import sparkline
 from trytond.transaction import Transaction
 
 
@@ -223,11 +219,9 @@ class Abstract(ModelSQL, ModelView):
 
     def get_trend(self, name):
         name = name[:-len('_trend')]
-        if pygal:
-            chart = pygal.Line()
-            chart.add('', [getattr(ts, name) or 0 if ts else 0
-                    for ts in self.time_series_all])
-            return chart.render_sparktext()
+        return sparkline(
+            [getattr(ts, name) or 0 if ts else 0
+                for ts in self.time_series_all])
 
     @classmethod
     def view_attributes(cls):
