@@ -10,6 +10,7 @@ Tools API reference.
    :maxdepth: 1
 
    barcode
+   chart
    email
    immutabledict
    logging

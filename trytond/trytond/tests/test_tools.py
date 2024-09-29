@@ -8,6 +8,7 @@ import email.message
 import sys
 import unittest
 from copy import deepcopy
+from decimal import Decimal
 from io import BytesIO
 from unittest.mock import patch
 
@@ -27,6 +28,7 @@ from trytond.tools import (
     pairwise_longest, reduce_domain, reduce_ids, remove_forbidden_chars,
     rstrip_wildcard, slugify, sortable_values, sqlite_apply_types,
     strip_wildcard, timezone, unescape_wildcard)
+from trytond.tools.chart import sparkline
 from trytond.tools.domain_inversion import (
     canonicalize, concat, domain_inversion, eval_domain,
     extract_reference_models, localize_domain, merge, parse,
@@ -1266,6 +1268,27 @@ class QRCodeTestCase(TestCase):
         image = qrcode.generate_png("Tryton")
         self.assertIsInstance(image, BytesIO)
         self.assertIsNotNone(image.getvalue())
+
+
+class ChartTestCase(TestCase):
+    "Test chart module"
+
+    def test_sparkline(self):
+        "Test sparkline"
+        for numbers, chart in [
+                ([1, 2, 3, 4, 5, 6, 7, 8, 7, 6, 5, 4, 3, 2, 1],
+                    '▁▂▃▄▅▆▇█▇▆▅▄▃▂▁'),
+                ([1.5, 0.5, 3.5, 2.5, 5.5, 4.5, 7.5, 6.5], '▂▁▄▃▆▅█▇'),
+                ([0, 1, 19, 20], '▁▁██'),
+                ([0, 999, 4000, 4999, 7000, 7999], '▁▁▅▅██'),
+                ([Decimal('1.5'), Decimal('2'), Decimal('3')], '▁▃█'),
+                ([1, 1, 1, 1], '▁▁▁▁'),
+                ([0, 0, 0, 0], '▁▁▁▁'),
+                ([-5, 0, 5], '▁▅█'),
+                ([], ''),
+                ]:
+            with self.subTest(numbers=numbers):
+                self.assertEqual(sparkline(numbers), chart)
 
 
 class CachedProperty:

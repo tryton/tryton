@@ -1,3 +1,4 @@
+* Add sparkline chart tools
 * Add setup methods to activate_modules
 * Add method to the backend to estimate number of rows
 * Add setup indexes method to ModelSQL
