@@ -446,6 +446,16 @@ class Product(
         cls.suffix_code.search_unaccented = False
         cls.code.search_unaccented = False
 
+        product_fields = {}
+        for attr in dir(cls):
+            if attr.startswith('_'):
+                continue
+            field = getattr(cls, attr)
+            if (not isinstance(field, fields.Field)
+                    or isinstance(field, TemplateFunction)):
+                continue
+            product_fields[attr] = field
+
         super(Product, cls).__setup__()
         cls.__access__.add('template')
         cls._order.insert(0, ('rec_name', 'ASC'))
@@ -467,7 +477,10 @@ class Product(
             if attr in cls._no_template_field:
                 continue
             field = getattr(cls, attr, None)
-            if not field or isinstance(field, TemplateFunction):
+            if (isinstance(field, TemplateFunction)
+                    and attr in product_fields):
+                setattr(cls, attr, copy.deepcopy(product_fields[attr]))
+            elif not field or isinstance(field, TemplateFunction):
                 tfield = copy.deepcopy(tfield)
                 if hasattr(tfield, 'field'):
                     tfield.field = None
