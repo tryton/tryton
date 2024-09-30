@@ -11,9 +11,6 @@ from .float import Float
 
 
 class Numeric(Float):
-    '''
-    Define a numeric field (``decimal``).
-    '''
     _type = 'numeric'
     _sql_type = 'NUMERIC'
     _py_type = Decimal

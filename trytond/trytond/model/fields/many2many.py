@@ -19,10 +19,8 @@ from .field import (
 
 
 class Many2Many(Field):
-    '''
-    Define many2many field (``list``).
-    '''
     _type = 'many2many'
+    _py_type = tuple
 
     def __init__(self, relation_name, origin, target, string='', order=None,
             datetime_field=None, size=None, search_order=None,

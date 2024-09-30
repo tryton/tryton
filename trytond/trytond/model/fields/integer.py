@@ -4,9 +4,6 @@ from .field import Field
 
 
 class Integer(Field):
-    '''
-    Define an integer field (``int``).
-    '''
     _type = 'integer'
     _sql_type = 'INTEGER'
     _py_type = int

@@ -10,9 +10,6 @@ from .field import SQL_OPERATORS, Field, order_method
 
 
 class Text(Char):
-    '''
-    Define a text field (``unicode``).
-    '''
     _type = 'text'
     _sql_type = 'TEXT'
     forbidden_chars = ''
@@ -23,9 +20,6 @@ class Text(Char):
 
 
 class FullText(Field):
-    '''
-    Define a full text field.
-    '''
     _type = 'full_text'
     _sql_type = 'FULLTEXT'
     _py_type = str

@@ -27,9 +27,6 @@ class SQLite_Time(Function):
 
 
 class Date(Field):
-    '''
-    Define a date field (``date``).
-    '''
     _type = 'date'
     _sql_type = 'DATE'
     _py_type = datetime.date
@@ -74,9 +71,6 @@ class FormatMixin(Field):
 
 
 class Timestamp(FormatMixin, Field):
-    '''
-    Define a timestamp field (``datetime``).
-    '''
     _type = 'timestamp'
     _sql_type = 'TIMESTAMP'
     _py_type = datetime.datetime
@@ -123,9 +117,6 @@ class DateTime(Timestamp):
 
 
 class Time(FormatMixin, Field):
-    '''
-    Define a time field (``time``).
-    '''
     _type = 'time'
     _sql_type = 'TIME'
     _py_type = datetime.time
@@ -158,9 +149,6 @@ class Time(FormatMixin, Field):
 
 
 class TimeDelta(Field):
-    '''
-    Define a timedelta field (``timedelta``).
-    '''
     _type = 'timedelta'
     _sql_type = 'INTERVAL'
     _py_type = datetime.timedelta

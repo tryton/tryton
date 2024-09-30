@@ -29,9 +29,6 @@ def getter_context(func):
 
 
 class Function(Field):
-    '''
-    Define function field (any).
-    '''
 
     def __init__(self, field, getter, setter=None, searcher=None,
             getter_with_context=True, loading='lazy'):

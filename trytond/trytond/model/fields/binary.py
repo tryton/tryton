@@ -18,11 +18,9 @@ def caster(d):
 
 
 class Binary(Field):
-    '''
-    Define a binary field (``bytes``).
-    '''
     _type = 'binary'
     _sql_type = 'BLOB'
+    _py_type = bytes
     cast = staticmethod(caster)
 
     def __init__(self, string='', help='', required=False, readonly=False,

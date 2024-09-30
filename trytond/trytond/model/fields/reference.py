@@ -19,9 +19,6 @@ from .selection import SelectionMixin
 
 
 class Reference(SelectionMixin, Field):
-    '''
-    Define a reference field (``str``).
-    '''
     _type = 'reference'
     _sql_type = 'VARCHAR'
 

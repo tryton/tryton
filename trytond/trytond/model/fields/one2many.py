@@ -23,10 +23,8 @@ _subquery_threshold = config.getint('database', 'subquery_threshold')
 
 
 class One2Many(Field):
-    '''
-    Define one2many field (``list``).
-    '''
     _type = 'one2many'
+    _py_type = tuple
 
     def __init__(self, model_name, field, string='', add_remove=None,
             order=None, datetime_field=None, size=None, search_order=None,

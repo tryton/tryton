@@ -5,9 +5,6 @@ from .field import Field
 
 
 class Boolean(Field):
-    '''
-    Define a boolean field (``True`` or ``False``).
-    '''
     _type = 'boolean'
     _sql_type = 'BOOL'
     _py_type = bool

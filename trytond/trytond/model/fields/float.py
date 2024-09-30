@@ -27,9 +27,6 @@ def _get_digits_depends(field):
 
 
 class Float(Field):
-    '''
-    Define a float field (``float``).
-    '''
     _type = 'float'
     _sql_type = 'FLOAT'
     _py_type = float

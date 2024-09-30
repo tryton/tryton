@@ -21,9 +21,6 @@ _subquery_threshold = config.getint('database', 'subquery_threshold')
 
 
 class Many2One(Field):
-    '''
-    Define many2one field (``int``).
-    '''
     _type = 'many2one'
     _sql_type = 'INTEGER'
 

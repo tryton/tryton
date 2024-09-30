@@ -16,9 +16,6 @@ from .field import Field, FieldTranslate, order_method, size_validate
 
 
 class Char(FieldTranslate):
-    '''
-    Define a char field (``unicode``).
-    '''
     _type = 'char'
     _py_type = str
     forbidden_chars = '\t\n\r\x0b\x0c'

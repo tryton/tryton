@@ -94,9 +94,6 @@ class SelectionMixin(Field):
 
 
 class Selection(SelectionMixin, Field):
-    '''
-    Define a selection field (``str``).
-    '''
     _type = 'selection'
     _sql_type = 'VARCHAR'
     _py_type = str

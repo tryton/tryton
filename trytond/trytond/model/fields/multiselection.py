@@ -16,7 +16,6 @@ dumps = partial(json.dumps, separators=(',', ':'), sort_keys=True)
 
 
 class MultiSelection(SelectionMixin, Field):
-    "Define a multi-selection field."
     _type = 'multiselection'
     _sql_type = 'JSON'
     _py_type = tuple

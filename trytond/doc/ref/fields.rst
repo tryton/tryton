@@ -149,6 +149,19 @@ All are optional except :attr:`~Field.string`.
 
    The name of the field.
 
+
+.. attribute:: Field._type
+
+   The type of the field.
+
+.. attribute:: Field._sql_type
+
+   The SQL type of the field.
+
+.. attribute:: Field._py_type
+
+   The Python type of the field.
+
 Instance methods:
 
 .. method:: Field.convert_domain(domain, tables, Model)
@@ -167,7 +180,8 @@ Instance methods:
     use for definition and casting.
     Or ``None`` if the field is not stored in the database.
 
-    sql_type is using the ``_sql_type`` attribute to compute its return value.
+    sql_type is using the :attr:`~Field._sql_type` attribute to compute its
+    return value.
     The backend is responsible for the computation.
 
     For the list of supported types by Tryton see :ref:`backend types
