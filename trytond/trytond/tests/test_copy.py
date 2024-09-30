@@ -111,6 +111,25 @@ class CopyTestCase(TestCase):
             self.assertEqual(copy.one2many, ())
 
     @with_transaction()
+    def test_one2many_filter(self):
+        "Test not copy one2many with filter"
+        pool = Pool()
+        Model = pool.get('test.copy.one2many')
+        Target = pool.get('test.copy.one2many.target')
+
+        record = Model(name="Test")
+        record.one2many = [Target(name="Target")]
+        record.save()
+
+        try:
+            Model.one2many.filter = [('name', '=', "Target")]
+            copy, = Model.copy([record])
+
+            self.assertEqual(copy.one2many, ())
+        finally:
+            Model.one2many.filter = None
+
+    @with_transaction()
     def test_one2many_default(self):
         "Test copy one2many with default"
         pool = Pool()
@@ -190,6 +209,25 @@ class CopyTestCase(TestCase):
             copy, = Model.copy([record])
 
             self.assertEqual(copy.many2many, ())
+
+    @with_transaction()
+    def test_many2many_filter(self):
+        "Test not copy many2many with filter"
+        pool = Pool()
+        Model = pool.get('test.copy.many2many')
+        Target = pool.get('test.copy.many2many.target')
+
+        record = Model(name="Test")
+        record.many2many = [Target(name="Target")]
+        record.save()
+
+        try:
+            Model.many2many.filter = [('name', '=', "Target")]
+            copy, = Model.copy([record])
+
+            self.assertEqual(copy.many2many, ())
+        finally:
+            Model.many2many.filter = None
 
     @with_transaction()
     def test_many2many_default(self):

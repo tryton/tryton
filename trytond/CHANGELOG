@@ -1,3 +1,4 @@
+* Do not copy relational fields with filter
 * Support range functions and operators in EXCLUDE constraint
 * Add sparkline chart tools
 * Add setup methods to activate_modules

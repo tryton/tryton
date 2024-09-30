@@ -435,14 +435,14 @@ class ModelStorage(Model):
                     except Exception:
                         pass
                 elif ftype in ('one2many',):
-                    if is_readonly(field):
+                    if is_readonly(field) or field.filter:
                         del data[field_name]
                     elif data[field_name]:
                         data[field_name] = [(
                                 'copy', data[field_name],
                                 get_default(field_name))]
                 elif ftype == 'many2many':
-                    if is_readonly(field):
+                    if is_readonly(field) or field.filter:
                         del data[field_name]
                     elif data[field_name]:
                         data[field_name] = [('add', data[field_name])]
