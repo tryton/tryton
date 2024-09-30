@@ -149,7 +149,11 @@ class Function(Field):
                         value = int(value)
             elif field._type in {'one2many', 'many2many'}:
                 if value:
-                    value = [int(r) for r in value]
+                    value = tuple(int(r) for r in value)
+            elif (field._py_type
+                    and value is not None
+                    and not isinstance(value, field._py_type)):
+                value = field._py_type(value)
             return value
 
         def convert_dict(values, name):

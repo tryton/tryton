@@ -140,7 +140,7 @@ class One2ManyContextTarget(ModelSQL):
     "One2Many Context Target"
     __name__ = 'test.one2many_context.target'
     origin = fields.Many2One('test.one2many_context', "Origin")
-    context = fields.Function(fields.Char("context"), 'get_context')
+    context = fields.Function(fields.Integer("context"), 'get_context')
 
     def get_context(self, name):
         context = Transaction().context

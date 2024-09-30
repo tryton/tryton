@@ -67,7 +67,7 @@ class ModelStorageSave2ManyRelation(ModelSQL):
 class ModelStorageContext(ModelSQL):
     'Model Storage to test Context'
     __name__ = 'test.modelstorage.context'
-    context = fields.Function(fields.Binary('Context'), 'get_context')
+    context = fields.Function(fields.Dict(None, 'Context'), 'get_context')
 
     def get_context(self, name):
         return Transaction().context

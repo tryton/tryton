@@ -747,10 +747,10 @@ class ActionActWindow(
         help="Part of the domain that will be evaluated on each refresh.")
     act_window_views = fields.One2Many('ir.action.act_window.view',
             'act_window', 'Views')
-    views = fields.Function(fields.Binary('Views'), 'get_views')
+    views = fields.Function(fields.Field('Views'), 'get_views')
     act_window_domains = fields.One2Many('ir.action.act_window.domain',
         'act_window', 'Domains')
-    domains = fields.Function(fields.Binary('Domains'), 'get_domains')
+    domains = fields.Function(fields.Field('Domains'), 'get_domains')
     limit = fields.Integer('Limit', help='Default limit for the list view.')
     search_value = fields.Char('Search Criteria',
             help='Default search criteria for the list view.')
