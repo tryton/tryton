@@ -541,7 +541,8 @@ class TaxCodeContext(ModelView):
         return Transaction().context.get('company')
 
     @fields.depends(
-        'company', 'fiscalyear', 'period', methods=['on_change_with_periods'])
+        'company', 'fiscalyear', 'period', 'periods',
+        methods=['on_change_with_periods'])
     def on_change_company(self):
         if self.fiscalyear and self.fiscalyear.company != self.company:
             self.fiscalyear = None
