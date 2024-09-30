@@ -434,7 +434,7 @@ class ModelStorage(Model):
                             data[field_name][0]
                     except Exception:
                         pass
-                elif ftype in ('one2many',):
+                elif ftype == 'one2many':
                     if is_readonly(field) or field.filter:
                         del data[field_name]
                     elif data[field_name]:
