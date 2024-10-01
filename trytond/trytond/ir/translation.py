@@ -467,6 +467,7 @@ class Translation(ModelSQL, ModelView):
                         ('lang', '=', lang),
                         ('type', '=', ttype),
                         ('name', 'in', [get_name(r) for r in records]),
+                        ('res_id', '=', -1),
                         ]):
                 name2translations[translation.name].append(translation)
 
