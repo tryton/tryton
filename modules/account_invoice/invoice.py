@@ -2997,8 +2997,13 @@ class InvoiceTax(sequence_ordered(), ModelSQL, ModelView):
     invoice_state = fields.Function(
         fields.Selection('get_invoice_states', "Invoice State"),
         'on_change_with_invoice_state')
-    description = fields.Char('Description', size=None, required=True,
-        states=_states)
+    description = fields.Char(
+        "Description", size=None, required=True,
+        states={
+            'readonly': (_states['readonly']
+                & ~Id('account', 'group_account_admin').in_(
+                    Eval('context', {}).get('groups', []))),
+            })
     sequence_number = fields.Function(fields.Integer('Sequence Number'),
             'get_sequence_number')
     account = fields.Many2One('account.account', 'Account', required=True,
@@ -3037,7 +3042,13 @@ class InvoiceTax(sequence_ordered(), ModelSQL, ModelView):
                 | _states['readonly']),
             },
         depends={'invoice'})
-    legal_notice = fields.Text("Legal Notice", states=_states)
+    legal_notice = fields.Text(
+        "Legal Notice",
+        states={
+            'readonly': (_states['readonly']
+                & ~Id('account', 'group_account_admin').in_(
+                    Eval('context', {}).get('groups', []))),
+            })
 
     del _states
 
@@ -3045,6 +3056,7 @@ class InvoiceTax(sequence_ordered(), ModelSQL, ModelView):
     def __setup__(cls):
         super().__setup__()
         cls.__access__.add('invoice')
+        cls._check_modify_exclude = {'description', 'legal_notice'}
 
     @staticmethod
     def default_base():
@@ -3139,16 +3151,17 @@ class InvoiceTax(sequence_ordered(), ModelSQL, ModelView):
         return (account_id, tax_id, (getattr(self, 'base', 0) or 0) >= 0)
 
     @classmethod
-    def check_modify(cls, taxes):
+    def check_modify(cls, taxes, fields=None):
         '''
         Check if the taxes can be modified
         '''
-        for tax in taxes:
-            if not tax.invoice.is_modifiable:
-                raise AccessError(
-                    gettext('account_invoice.msg_invoice_tax_modify',
-                        tax=tax.rec_name,
-                        invoice=tax.invoice.rec_name))
+        if fields is None or fields - cls._check_modify_exclude:
+            for tax in taxes:
+                if not tax.invoice.is_modifiable:
+                    raise AccessError(
+                        gettext('account_invoice.msg_invoice_tax_modify',
+                            tax=tax.rec_name,
+                            invoice=tax.invoice.rec_name))
 
     def get_sequence_number(self, name):
         i = 1
@@ -3165,8 +3178,9 @@ class InvoiceTax(sequence_ordered(), ModelSQL, ModelView):
 
     @classmethod
     def write(cls, *args):
-        taxes = sum(args[0::2], [])
-        cls.check_modify(taxes)
+        actions = iter(args)
+        for taxes, values in zip(actions, actions):
+            cls.check_modify(taxes, set(values))
         super(InvoiceTax, cls).write(*args)
 
     @classmethod
