@@ -176,15 +176,21 @@ class Payment(StripeCustomerMethodMixin, CheckoutMixin, metaclass=PoolMeta):
         "Stripe Idempotency Key", readonly=True, strip=False)
     stripe_error_message = fields.Char("Stripe Error Message", readonly=True,
         states={
-            'invisible': ~Eval('stripe_error_message'),
+            'invisible': (
+                ~Eval('stripe_error_message')
+                | (Eval('state') == 'succeeded')),
             })
     stripe_error_code = fields.Char("Stripe Error Code", readonly=True,
         states={
-            'invisible': ~Eval('stripe_error_code'),
+            'invisible': (
+                ~Eval('stripe_error_code')
+                | (Eval('state') == 'succeeded')),
             })
     stripe_error_param = fields.Char("Stripe Error Param", readonly=True,
         states={
-            'invisible': ~Eval('stripe_error_param'),
+            'invisible': (
+                ~Eval('stripe_error_param')
+                | (Eval('state') == 'succeeded')),
             })
     stripe_dispute_reason = fields.Char("Stripe Dispute Reason", readonly=True,
         states={
@@ -748,15 +754,21 @@ class Refund(Workflow, ModelSQL, ModelView):
         "Stripe Refund ID", readonly=True, strip=False)
     stripe_error_message = fields.Char("Stripe Error Message", readonly=True,
         states={
-            'invisible': ~Eval('stripe_error_message'),
+            'invisible': (
+                ~Eval('stripe_error_message')
+                | (Eval('state') == 'succeeded')),
             })
     stripe_error_code = fields.Char("Stripe Error Code", readonly=True,
         states={
-            'invisible': ~Eval('stripe_error_code'),
+            'invisible': (
+                ~Eval('stripe_error_code')
+                | (Eval('state') == 'succeeded')),
             })
     stripe_error_param = fields.Char("Stripe Error Param", readonly=True,
         states={
-            'invisible': ~Eval('stripe_error_param'),
+            'invisible': (
+                ~Eval('stripe_error_param')
+                | (Eval('state') == 'succeeded')),
             })
 
     currency = fields.Function(
@@ -1419,15 +1431,21 @@ class Customer(CheckoutMixin, DeactivableMixin, ModelSQL, ModelView):
         "Stripe SetupIntent ID", readonly=True, strip=False)
     stripe_error_message = fields.Char("Stripe Error Message", readonly=True,
         states={
-            'invisible': ~Eval('stripe_error_message'),
+            'invisible': (
+                ~Eval('stripe_error_message')
+                | Eval('stripe_customer_id')),
             })
     stripe_error_code = fields.Char("Stripe Error Code", readonly=True,
         states={
-            'invisible': ~Eval('stripe_error_code'),
+            'invisible': (
+                ~Eval('stripe_error_code')
+                | Eval('stripe_customer_id')),
             })
     stripe_error_param = fields.Char("Stripe Error Param", readonly=True,
         states={
-            'invisible': ~Eval('stripe_error_param'),
+            'invisible': (
+                ~Eval('stripe_error_param')
+                | Eval('stripe_customer_id')),
             })
 
     identical_customers = fields.Many2Many(

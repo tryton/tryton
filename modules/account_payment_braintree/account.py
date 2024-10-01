@@ -203,7 +203,9 @@ class Payment(CheckoutMixin, BraintreeCustomerMethodMixin, metaclass=PoolMeta):
     braintree_error_message = fields.Text(
         "Braintree Error Message", readonly=True,
         states={
-            'invisible': ~Eval('braintree_error_message'),
+            'invisible': (
+                ~Eval('braintree_error_message')
+                | (Eval('state') == 'succeeded')),
             })
 
     @classmethod
@@ -568,7 +570,9 @@ class PaymentBraintreeRefund(Workflow, ModelSQL, ModelView):
     braintree_error_message = fields.Text(
         "Braintree Error Message", readonly=True,
         states={
-            'invisible': ~Eval('braintree_error_message'),
+            'invisible': (
+                ~Eval('braintree_error_message')
+                | (Eval('state') == 'succeeded')),
             })
 
     currency = fields.Function(fields.Many2One(
