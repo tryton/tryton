@@ -519,6 +519,8 @@ class Payment(CheckoutMixin, BraintreeCustomerMethodMixin, metaclass=PoolMeta):
                 or (not amount and self.state != 'failed')):
             if self.state == 'succeeded':
                 self.__class__.proceed([self])
+            if transaction.status in SUCCEEDED_STATUSES:
+                self.braintree_error_message = None
             self.amount = amount
             self.save()
             if transaction.status in SUCCEEDED_STATUSES:
