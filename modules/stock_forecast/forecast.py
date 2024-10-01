@@ -213,6 +213,7 @@ class Forecast(Workflow, ModelSQL, ModelView):
                     & (table.warehouse == forecast.warehouse.id)
                     & (table.destination == forecast.destination.id)
                     & (table.company == forecast.company.id)
+                    & (table.state == 'done')
                     & (table.id != forecast.id)))
             forecast_id = cursor.fetchone()
             if forecast_id:
