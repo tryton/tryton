@@ -614,6 +614,9 @@ class Payment(StripeCustomerMethodMixin, CheckoutMixin, metaclass=PoolMeta):
                     logger.warning(str(e))
                     continue
                 payment.stripe_error_message = str(e)
+                payment.stripe_error_code = e.code
+                if isinstance(e, stripe.error.StripeErrorWithParamCode):
+                    payment.stripe_error_param = e.param
                 payment.save()
                 cls.fail([payment])
             except Exception:
@@ -1114,6 +1117,9 @@ class Account(ModelSQL, ModelView):
             payment.stripe_captured = charge['captured']
             payment.stripe_amount = (
                 charge['amount'] - charge['amount_refunded'])
+            payment.stripe_error_code = charge['failure_code']
+            payment.stripe_error_message = charge['failure_message']
+            payment.stripe_error_param = None
             payment.save()
             if payment.amount:
                 if charge['status'] == 'succeeded' and charge['captured']:
@@ -1147,12 +1153,12 @@ class Account(ModelSQL, ModelView):
         if not refunds:
             logger.error("charge.refund.updated: No refund '%s'", rf['id'])
         for refund in refunds:
+            refund.stripe_error_code = rf['failure_reason']
             if rf['status'] == 'pending':
                 Refund.process([refund])
             elif rf['status'] == 'succeeded':
                 Refund.succeed([refund])
             elif rf['status'] in {'failed', 'canceled'}:
-                refund.stripe_error_code = rf['failure_reason']
                 Refund.fail([refund])
                 payments.append(refund.payment)
             refund.save()
