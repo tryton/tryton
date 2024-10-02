@@ -739,7 +739,6 @@ function eval_pyson(value){
                         break;
                     }
                 }
-                e.toggleClass('form-empty', empty);
                 return empty;
             };
             for (i = 0; i < grid_cols.length; i++) {
