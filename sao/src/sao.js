@@ -136,6 +136,19 @@ var Sao = {
         }
     }
 
+    if (!Set.prototype.union) {
+        Set.prototype.union = function(other) {
+            if (this === null) {
+                throw new TypeError();
+            }
+            const result = new Set(this);
+            for (const key of other.keys()) {
+                result.add(key);
+            }
+            return result
+        }
+    }
+
     Sao.setdefault = function(object, key, value) {
         if (!Object.prototype.hasOwnProperty.call(object, key)) {
             object[key] = value;

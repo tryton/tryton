@@ -1355,17 +1355,13 @@
             }
         },
         get_loaded: function(fields) {
-            if (!jQuery.isEmptyObject(fields)) {
-                var result = true;
-                for (const field of fields) {
-                    if (!(field in this._loaded) && !(field in this.modified_fields)) {
-                        result = false;
-                    }
-                }
-                return result;
+            if (!fields) {
+                fields = Object.keys(this.model.fields);
             }
-            return Sao.common.compare(Object.keys(this.model.fields).sort(),
-                    Object.keys(this._loaded).sort());
+            fields = new Set(fields);
+            var loaded = new Set(Object.keys(this._loaded));
+            loaded = loaded.union(new Set(Object.keys(this.modified_fields)));
+            return fields.isSubsetOf(loaded);
         },
         get root_parent() {
             var parent = this;
