@@ -1953,9 +1953,12 @@
                 .replace(escape + '%', '%')
                 .replace(escape + '_', '_');
         },
-        quote: function(value) {
+        quote: function(value, empty=false) {
             if (typeof value != 'string') {
                 return value;
+            }
+            if (empty && value === '') {
+                return '""';
             }
             if (value.contains('\\')) {
                 value = value.replace(new RegExp('\\\\', 'g'), '\\\\');
@@ -2115,7 +2118,8 @@
                 return value;
             }
         },
-        format_value: function(field, value, target=null, context={}) {
+        format_value: function(
+            field, value, target=null, context={}, _quote_empty=false) {
             var format_float = function() {
                 if (!value && value !== 0 && value !== new Sao.Decimal(0)) {
                     return '';
@@ -2226,7 +2230,9 @@
             };
             converts.timestamp = converts.datetime;
             if (value instanceof Array) {
-                return value.map(v => this.format_value(field, v)).join(';');
+                return value.map(
+                    v => this.format_value(field, v, null, context, true))
+                    .join(';');
             } else {
                 var func = converts[field.type];
                 if (func) {
@@ -2234,7 +2240,7 @@
                 } else if (value === null) {
                     return '';
                 } else {
-                    return this.quote(value);
+                    return this.quote(value, _quote_empty);
                 }
             }
         },
