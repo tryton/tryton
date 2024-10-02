@@ -126,10 +126,12 @@ def unescape(value, escape='\\'):
     return value.replace(escape + '%', '%').replace(escape + '_', '_')
 
 
-def quote(value):
+def quote(value, empty=False):
     "Quote string if needed"
     if not isinstance(value, str):
         return value
+    if empty and value == '':
+        return '""'
     if '\\' in value:
         value = value.replace('\\', '\\\\')
     if '"' in value:
@@ -305,7 +307,7 @@ def convert_value(field, value, context=None):
     return converts.get(field['type'], lambda: value)()
 
 
-def format_value(field, value, target=None, context=None):
+def format_value(field, value, target=None, context=None, _quote_empty=False):
     "Format value for field"
     if context is None:
         context = {}
@@ -408,9 +410,11 @@ def format_value(field, value, target=None, context=None):
         'many2one': format_many2one,
         }
     if isinstance(value, (list, tuple)):
-        return ';'.join(format_value(field, x, context=context) for x in value)
+        return ';'.join(
+            format_value(field, x, context=context, _quote_empty=True)
+            for x in value)
     return quote(converts.get(field['type'],
-            lambda: value if value is not None else '')())
+            lambda: value if value is not None else '')(), empty=_quote_empty)
 
 
 def complete_value(field, value):
