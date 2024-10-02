@@ -2266,7 +2266,9 @@
         [[['name', 'ilike', 'Doe\\%']], 'Name: =Doe%'],
         [[['name', 'not ilike', '%Doe%']], 'Name: !Doe'],
         [[['name', 'in', ['John', 'Jane']]], 'Name: John;Jane'],
+        [[['name', 'in', ['John']]], 'Name: =John'],
         [[['name', 'not in', ['John', 'Jane']]], 'Name: !John;Jane'],
+        [[['name', 'not in', ['John']]], 'Name: !=John'],
         [[
             ['name', 'ilike', '%Doe%'],
             ['name', 'ilike', '%Jane%']

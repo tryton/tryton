@@ -1301,10 +1301,18 @@
                         .replace('not', '!').trim();
                 }
                 if (operator.endsWith('in')) {
-                    if (operator == 'not in') {
-                        operator = '!';
+                    if (value instanceof Array && value.length == 1) {
+                        if (operator == 'not in') {
+                            operator = '!=';
+                        } else {
+                            operator = '=';
+                        }
                     } else {
-                        operator = '';
+                        if (operator == 'not in') {
+                            operator = '!';
+                        } else {
+                            operator = '';
+                        }
                     }
                 }
                 var formatted_value = this.format_value(field, value, target);
