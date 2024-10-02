@@ -645,10 +645,16 @@ class DomainParser(object):
                 operator = operator.rstrip(def_operator
                     ).replace('not', '!').strip()
             if operator.endswith('in'):
-                if operator == 'not in':
-                    operator = '!'
+                if isinstance(value, (list, tuple)) and len(value) == 1:
+                    if operator == 'not in':
+                        operator = '!='
+                    else:
+                        operator = '='
                 else:
-                    operator = ''
+                    if operator == 'not in':
+                        operator = '!'
+                    else:
+                        operator = ''
             formatted_value = format_value(field, value, target, self.context)
             if (operator in OPERATORS
                     and field['type'] in ('char', 'text', 'selection')
