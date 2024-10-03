@@ -223,7 +223,7 @@
             } else {
                 this.parent.modified_fields[this.child_name] = true;
                 this.parent.model.fields[this.child_name].changed(this.parent);
-                this.parent.validate(null, true, false);
+                this.parent.validate(null, true, false, true);
                 this.parent.group.record_modified();
             }
         };
@@ -597,16 +597,12 @@
             }
             return prm;
         },
-        reload: function(fields, async=true) {
+        reload: function(fields) {
             if (this.id < 0) {
-                return async? jQuery.when() : null;
+                return jQuery.when();
             }
             if (!fields) {
-                return this.load('*', async);
-            } else if (!async) {
-                for (let field of fields) {
-                    this.load(field, async);
-                }
+                return this.load('*');
             } else {
                 var prms = fields.map(field => this.load(field));
                 return jQuery.when.apply(jQuery, prms);
@@ -870,7 +866,7 @@
                 fieldnames.push(name);
             }
             if (validate) {
-                this.validate(fieldnames, true, false);
+                this.validate(fieldnames, true, false, false);
             }
             if (modified) {
                 this.set_modified();
@@ -1287,25 +1283,38 @@
                 return values[0].rec_name;
             });
         },
-        validate: function(fields, softvalidation, pre_validate) {
-            this._check_load(fields);
-            var result = true;
-            for (var fname in this.model.fields) {
-                var field = this.model.fields[fname];
-                if (fields && !~fields.indexOf(fname)) {
-                    continue;
+        validate: function(fields, softvalidation, pre_validate, sync) {
+            const validate_fields = () => {
+                var result = true;
+                for (var fname in this.model.fields) {
+                    // Skip not loaded fields if sync and record is not new
+                    if (sync && this.id >= 0 && !(fname in this._loaded)) {
+                        continue;
+                    }
+                    if (!this.model.fields.hasOwnProperty(fname)) {
+                        continue;
+                    }
+                    var field = this.model.fields[fname];
+                    if (fields && !~fields.indexOf(fname)) {
+                        continue;
+                    }
+                    if (field.description.readonly) {
+                        continue;
+                    }
+                    if (fname == this.group.exclude_field) {
+                        continue;
+                    }
+                    if (!field.validate(this, softvalidation, pre_validate)) {
+                        result = false;
+                    }
                 }
-                if (field.description.readonly) {
-                    continue;
-                }
-                if (fname == this.group.exclude_field) {
-                    continue;
-                }
-                if (!field.validate(this, softvalidation, pre_validate)) {
-                    result = false;
-                }
+                return result;
+            };
+            if (sync) {
+                return validate_fields();
+            } else {
+                return this._check_load(fields).then(validate_fields);
             }
-            return result;
         },
         pre_validate: function() {
             if (jQuery.isEmptyObject(this.modified_fields)) {
@@ -1327,8 +1336,9 @@
         },
         _check_load: function(fields) {
             if (!this.get_loaded(fields)) {
-                this.reload(fields, false);
+                return this.reload(fields);
             }
+            return jQuery.when();
         },
         get_loaded: function(fields) {
             if (!jQuery.isEmptyObject(fields)) {
@@ -1577,11 +1587,11 @@
             this.set(record, value);
             if (this._has_changed(previous_value, this.get(record))) {
                 this.changed(record);
-                record.validate(null, true, false);
+                record.validate(null, true, false, true);
                 record.set_modified(this.name);
             } else if (force_change) {
                 this.changed(record);
-                record.validate(null, true, false);
+                record.validate(null, true, false, true);
                 record.set_modified();
             }
         },
@@ -2368,11 +2378,11 @@
             this._set_value(record, value, false, modified);
             if (modified) {
                 this.changed(record);
-                record.validate(null, true, false);
+                record.validate(null, true, false, true);
                 record.set_modified(this.name);
             } else if (force_change) {
                 this.changed(record);
-                record.validate(null, true, false);
+                record.validate(null, true, false, true);
                 record.set_modified();
             }
         },
@@ -2589,7 +2599,7 @@
                         !pre_validate) {
                     continue;
                 }
-                if (!record2.validate(null, softvalidation, ldomain)) {
+                if (!record2.validate(null, softvalidation, ldomain, true)) {
                     invalid = 'children';
                 }
             }

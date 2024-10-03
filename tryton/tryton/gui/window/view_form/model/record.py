@@ -262,8 +262,15 @@ class Record:
         return self.group.fields
 
     def _check_load(self, fields=None):
-        if not self.get_loaded(fields):
-            self.reload(fields)
+        if fields is not None:
+            if not self.get_loaded(fields):
+                self.reload(fields)
+                return True
+            return False
+        if not self.loaded:
+            self.reload()
+            return True
+        return False
 
     def get_loaded(self, fields=None):
         if fields:
@@ -399,7 +406,10 @@ class Record:
             return ''
 
     def validate(self, fields=None, softvalidation=False, pre_validate=None):
-        self._check_load()
+        if isinstance(fields, list) and fields:
+            self._check_load(fields)
+        elif fields is None:
+            self._check_load()
         res = True
         for field_name, field in list(self.group.fields.items()):
             if fields is not None and field_name not in fields:
