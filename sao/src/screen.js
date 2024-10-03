@@ -955,8 +955,7 @@
                 }
                 var fields = this.current_view.get_fields();
                 if (this.current_record && this.current_view.editable &&
-                        !this.current_record.validate(
-                            fields, false, false, true)) {
+                        !this.current_record.validate(fields, false, false)) {
                     this.screen_container.set(this.current_view.el);
                     return this.current_view.display().done(() => {
                         this.set_cursor();
@@ -1039,7 +1038,7 @@
                 }
                 var context_record = this.context_screen.current_record;
                 if (context_record &&
-                        !context_record.validate(null, false, null, true)) {
+                        !context_record.validate(null, false, null)) {
                     this.new_group();
                     this.context_screen.display(true);
                     return jQuery.when();
@@ -1630,7 +1629,7 @@
             var prm = jQuery.Deferred();
             if (this.current_view && (this.current_view.view_type == 'tree')) {
                 prm = this.group.save().then(() => this.current_record);
-            } else if (current_record.validate(fields, null, null, true)) {
+            } else if (current_record.validate(fields, null, null)) {
                 prm = current_record.save().then(() => current_record);
             } else if (this.current_view) {
                 return this.current_view.display().then(() => {
@@ -1998,65 +1997,52 @@
                 var fields = this.current_view.get_fields();
             }
 
-            var prms = [];
-            const reset_state = record => {
-                return () => {
-                    this.display(true);
-                    // Reset valid state with normal domain
-                    record.validate(fields);
-                };
-            };
             for (const record of selected_records) {
                 const domain = record.expr_eval(
                     (attributes.states || {})).pre_validate || [];
-                prms.push(record.validate(fields, false, domain));
-            }
-            return jQuery.when.apply(jQuery, prms).then((...args) => {
-                var record;
-                for (var i = 0; i < selected_records.length; i++) {
-                    record = selected_records[i];
-                    var result = args[i];
-                    if (result) {
-                        continue;
-                    }
+                if (!record.validate(fields, false, domain)) {
                     Sao.common.warning.run(
-                            this.invalid_message(record),
-                            Sao.i18n.gettext('Pre-validation'))
-                        .then(reset_state(record));
+                        this.invalid_message(record),
+                        Sao.i18n.gettext('Pre-validation'))
+                        .then(() => {
+                            this.display(true);
+                            // Reset valid state with normal domain
+                            record.validate(fields);
+                        });
                     return;
                 }
-                var prm = jQuery.when();
-                if (attributes.confirm) {
-                    prm = Sao.common.sur.run(attributes.confirm);
-                }
-                return prm.then(() => {
-                    var record = this.current_record;
-                    if (attributes.type === 'instance') {
-                        var args = record.expr_eval(attributes.change || []);
-                        var values = record._get_on_change_args(args);
-                        return record.model.execute(attributes.name, [values],
-                            this.context).then(function(changes) {
+            }
+            var prm = jQuery.when();
+            if (attributes.confirm) {
+                prm = Sao.common.sur.run(attributes.confirm);
+            }
+            return prm.then(() => {
+                var record = this.current_record;
+                if (attributes.type === 'instance') {
+                    var args = record.expr_eval(attributes.change || []);
+                    var values = record._get_on_change_args(args);
+                    return record.model.execute(attributes.name, [values],
+                        this.context).then(function(changes) {
                             record.set_on_change(changes);
                             record.set_modified();
                         });
-                    } else {
-                        return record.save(false).then(() => {
-                            var context = this.context;
-                            context._timestamp = {};
-                            ids = [];
-                            for (i = 0; i < selected_records.length; i++) {
-                                record = selected_records[i];
-                                jQuery.extend(context._timestamp,
-                                    record.get_timestamp());
-                                ids.push(record.id);
-                            }
-                            return record.model.execute(attributes.name,
-                                [ids], context)
-                                .then(process_action)
-                                .fail(() => this.reload(ids, true));
-                        });
-                    }
-                });
+                } else {
+                    return record.save(false).then(() => {
+                        var context = this.context;
+                        context._timestamp = {};
+                        ids = [];
+                        for (let i = 0; i < selected_records.length; i++) {
+                            record = selected_records[i];
+                            jQuery.extend(context._timestamp,
+                                record.get_timestamp());
+                            ids.push(record.id);
+                        }
+                        return record.model.execute(attributes.name,
+                            [ids], context)
+                            .then(process_action)
+                            .fail(() => this.reload(ids, true));
+                    });
+                }
             });
         },
         client_action: function(action) {

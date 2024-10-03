@@ -148,7 +148,7 @@
             this.__waiting_response = false;
             this.screen.current_view.set_value();
             if (definition.validate && !this.screen.current_record.validate(
-                    null, null, null, true)) {
+                    null, null, null)) {
                 this.screen.display(true);
                 this.info_bar.add(this.screen.invalid_message(), 'danger');
                 return;

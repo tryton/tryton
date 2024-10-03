@@ -3882,21 +3882,17 @@ function eval_pyson(value){
             var record = this.screen.current_record;
             if (record) {
                 var fields = this.screen.current_view.get_fields();
-                record.validate(fields).then(validate => {
-                    if (!validate) {
-                        this.screen.display(true);
-                        prm.reject();
-                        return;
-                    }
-                    if (this.screen.pre_validate) {
-                        return record.pre_validate().then(
-                            prm.resolve, prm.reject);
-                    }
-                    prm.resolve();
-                });
-            } else {
-                prm.resolve();
+                if (!record.validate(fields)) {
+                    this.screen.display(true);
+                    prm.reject();
+                    return;
+                }
+                if (this.screen.pre_validate) {
+                    return record.pre_validate().then(
+                        prm.resolve, prm.reject);
+                }
             }
+            prm.resolve();
             return prm;
         },
         set_value: function() {

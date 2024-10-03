@@ -1023,19 +1023,14 @@
             return jQuery.when.apply(jQuery, promises).then(() => {
                 this.on_change(fieldnames);
                 this.on_change_with(fieldnames);
-                const callback = () => {
-                    if (modified) {
-                        this.set_modified();
-                        return jQuery.when.apply(
-                            jQuery, this.group.root_group.screens
-                            .map(screen => screen.display()));
-                    }
-                };
                 if (validate) {
-                    return this.validate(null, true)
-                        .then(callback);
-                } else {
-                    return callback();
+                    return this.validate(null, true);
+                }
+                if (modified) {
+                    this.set_modified();
+                    return jQuery.when.apply(
+                        jQuery, this.group.root_group.screens
+                        .map(screen => screen.display()));
                 }
             });
         },
@@ -1400,31 +1395,23 @@
             return path;
         },
         children_group: function(field_name) {
-            var group_prm = jQuery.Deferred();
             if (!field_name) {
-                group_prm.resolve([]);
-                return group_prm;
+                return [];
             }
-            var load_prm = this._check_load([field_name]);
-            load_prm.done(() => {
-                var group = this._values[field_name];
-                if (group === undefined) {
-                    group_prm.resolve(null);
-                    return;
-                }
-
-                if (group.model.fields !== this.group.model.fields) {
-                    jQuery.extend(this.group.model.fields, group.model.fields);
-                    group.model.fields = this.group.model.fields;
-                }
-                group.on_write = this.group.on_write;
-                group.readonly = this.group.readonly;
-                jQuery.extend(group._context, this.group._context);
-
-                group_prm.resolve(group);
+            this._check_load([field_name]);
+            var group = this._values[field_name];
+            if (group === undefined) {
                 return;
-            });
-            return group_prm;
+            }
+
+            if (group.model.fields !== this.group.model.fields) {
+                jQuery.extend(this.group.model.fields, group.model.fields);
+                group.model.fields = this.group.model.fields;
+            }
+            group.on_write = this.group.on_write;
+            group.readonly = this.group.readonly;
+            jQuery.extend(group._context, this.group._context);
+            return group;
         },
         get deleted() {
             return Boolean(~this.group.record_deleted.indexOf(this));

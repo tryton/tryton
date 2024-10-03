@@ -496,7 +496,7 @@
             if (~['RESPONSE_OK', 'RESPONSE_ACCEPT'].indexOf(response_id) &&
                     !readonly &&
                     this.screen.current_record) {
-                this.screen.current_record.validate().then(validate => {
+                jQuery.when(this.screen.current_record.validate()).then(validate => {
                     if (validate && this.screen.attributes.pre_validate) {
                         return this.screen.current_record.pre_validate().then(
                             () => true, () => false);
@@ -1096,9 +1096,8 @@
                 this.screen.current_record.set(preferences);
                 this.screen.current_record.id =
                     this.screen.model.session.user_id;
-                this.screen.current_record.validate(null, true).then(() => {
-                    this.screen.display(true);
-                });
+                this.screen.current_record.validate(null, true);
+                this.screen.display(true);
                 dialog.body.append(this.screen.screen_container.el);
                 this.el.modal('show');
             };
@@ -1111,21 +1110,16 @@
                 .then(set_view, this.destroy);
         },
         response: function(response_id) {
-            const end = () => {
-                this.destroy();
-            };
-            var prm = jQuery.when();
             if (response_id == 'RESPONSE_OK') {
-                prm = this.screen.current_record.validate()
-                    .then(validate => {
-                        if (validate) {
-                            var values = jQuery.extend({}, this.screen.get());
-                            return this.screen.model.execute(
-                                'set_preferences', [values], {});
-                        }
-                    });
+                if (this.screen.current_record.validate()) {
+                    var values = jQuery.extend({}, this.screen.get());
+                    return this.screen.model.execute(
+                        'set_preferences', [values], {})
+                        .then(() => this.destroy());
+                }
+                return;
             }
-            prm.done(end);
+            this.destroy();
         },
         destroy: function() {
             this.el.modal('hide');

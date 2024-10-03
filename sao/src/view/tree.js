@@ -641,77 +641,75 @@
             };
             row.rows.forEach(move_child);
 
-            var dest_group_prm;
+            var dest_group;
             var origin_group, origin_position;
             origin_group = record.group;
             origin_position = row.group_position;
             if (parent_row) {
-                dest_group_prm = parent_row.record.children_group(
+                dest_group = parent_row.record.children_group(
                     this.children_field);
             } else {
-                dest_group_prm = jQuery.Deferred().resolve(this.group);
+                dest_group = this.group;
             }
 
-            dest_group_prm.then(dest_group => {
-                var origin_rows, dest_rows;
-                if (row.parent_) {
-                    origin_rows = row.parent_.rows;
+            var origin_rows, dest_rows;
+            if (row.parent_) {
+                origin_rows = row.parent_.rows;
+            } else {
+                origin_rows = this.rows;
+            }
+            if (parent_row) {
+                dest_rows = parent_row.rows;
+            } else {
+                dest_rows = this.rows;
+            }
+
+            if (origin_group === dest_group) {
+                if (origin_position < dest_position) {
+                    dest_position -= 1;
+                }
+                origin_group.splice(origin_position, 1);
+                origin_group.splice(dest_position, 0, record);
+                origin_group.record_modified();
+            } else {
+                origin_group.remove(record, true, true);
+                // Don't remove record from previous group
+                // as the new parent will change the parent
+                // This prevents concurrency conflict
+                origin_group.record_removed.splice(
+                    origin_group.record_removed.indexOf(record));
+                dest_group.add(record, dest_position);
+                if (!record.parent_name) {
+                    record.modified_fields[origin_group.parent_name] = true;
+                    record._values[origin_group.parent_name] = null;
                 } else {
-                    origin_rows = this.rows;
+                    record.modified_fields[origin_group.parent_name] = true;
                 }
-                if (parent_row) {
-                    dest_rows = parent_row.rows;
-                } else {
-                    dest_rows = this.rows;
-                }
+            }
+            dest_rows.splice(dest_position, 0, row);
+            origin_rows.splice(origin_position, 1);
 
-                if (origin_group === dest_group) {
-                    if (origin_position < dest_position) {
-                        dest_position -= 1;
-                    }
-                    origin_group.splice(origin_position, 1);
-                    origin_group.splice(dest_position, 0, record);
-                    origin_group.record_modified();
-                } else {
-                    origin_group.remove(record, true, true);
-                    // Don't remove record from previous group
-                    // as the new parent will change the parent
-                    // This prevents concurrency conflict
-                    origin_group.record_removed.splice(
-                        origin_group.record_removed.indexOf(record));
-                    dest_group.add(record, dest_position);
-                    if (!record.parent_name) {
-                        record.modified_fields[origin_group.parent_name] = true;
-                        record._values[origin_group.parent_name] = null;
-                    } else {
-                        record.modified_fields[origin_group.parent_name] = true;
-                    }
-                }
-                dest_rows.splice(dest_position, 0, row);
-                origin_rows.splice(origin_position, 1);
+            row.parent_ = parent_row;
+            row.record.group = dest_group;
+            for (const r of dest_rows.slice(dest_position)) {
+                r.reset_path();
+            }
+            for (const r of origin_rows.slice(origin_position)) {
+                r.reset_path();
+            }
 
-                row.parent_ = parent_row;
-                row.record.group = dest_group;
-                for (const r of dest_rows.slice(dest_position)) {
-                    r.reset_path();
-                }
-                for (const r of origin_rows.slice(origin_position)) {
-                    r.reset_path();
-                }
+            var selected = this.get_selected_paths();
+            row.redraw(selected);
+            var child_redraw = function(child_row) {
+                child_row.redraw(selected);
+                child_row.rows.forEach(child_redraw);
+            };
+            row.rows.forEach(child_redraw);
 
-                var selected = this.get_selected_paths();
-                row.redraw(selected);
-                var child_redraw = function(child_row) {
-                    child_row.redraw(selected);
-                    child_row.rows.forEach(child_redraw);
-                };
-                row.rows.forEach(child_redraw);
-
-                if (this.attributes.sequence) {
-                    row.record.group.set_sequence(
-                        this.attributes.sequence, this.screen.new_position);
-                }
-            });
+            if (this.attributes.sequence) {
+                row.record.group.set_sequence(
+                    this.attributes.sequence, this.screen.new_position);
+            }
         },
         get_fields: function() {
             return Object.keys(this.widgets);
@@ -2148,74 +2146,71 @@
                     event_.which == Sao.common.DOWN_KEYCODE ||
                     event_.which == Sao.common.RETURN_KEYCODE) {
                     next_column = this.edited_column;
-                    this.record.validate(this.tree.get_fields())
-                        .then(validate => {
-                            if (!validate) {
-                                var invalid_fields =
-                                    this.record.invalid_fields();
-                                for (i = 0; i < this.tree.columns.length; i++) {
-                                    var col = this.tree.columns[i];
-                                    if (col.attributes.name in invalid_fields) {
-                                        next_column = i;
-                                        break;
-                                    }
-                                }
-                                this._get_column_td(next_column)
-                                    .find(':input,[tabindex=0]').focus();
-                            } else {
-                                var prm = jQuery.when();
-                                if (!this.tree.screen.group.parent) {
-                                    prm = this.record.save();
-                                } else if (this.tree.screen.attributes.pre_validate) {
-                                    prm = this.record.pre_validate();
-                                }
-                                prm.fail(function() {
-                                    widget.focus();
-                                });
-                                var next_row;
-                                if (event_.which == Sao.common.UP_KEYCODE) {
-                                    next_row = this.el.prev('tr');
-                                } else if (event_.which == Sao.common.DOWN_KEYCODE) {
-                                    next_row = this.el.next('tr');
-                                } else {
-                                    if (this.tree.screen.new_position == -1) {
-                                        next_row = this.el.next('tr');
-                                    } else {
-                                        next_row = this.el.prev('tr');
-                                    }
-                                }
-                                if (!next_row.length &&
-                                    ((event_.which == Sao.common.RETURN_KEYCODE) ||
-                                        ((event_.which == Sao.common.UP_KEYCODE) &&
-                                            (this.tree.screen.new_position == 0)) ||
-                                        ((event_.which == Sao.common.DOWN_KEYCODE) &&
-                                            (this.tree.screen.new_position == -1)))) {
-                                    var model = this.tree.screen.group;
-                                    var access = Sao.common.MODELACCESS.get(
-                                        this.tree.screen.model_name);
-                                    var limit = ((this.tree.screen.size_limit !== null) &&
-                                        (model.length >= this.tree.screen.size_limit));
-                                    if (this.tree.creatable && access.create && !limit) {
-                                        prm.then(() => this.tree.screen.new_())
-                                            .then(record => {
-                                                var sequence = this.tree.attributes.sequence;
-                                                if (sequence) {
-                                                    record.group.set_sequence(
-                                                        sequence, this.tree.screen.new_position);
-                                                }
-                                            });
-                                    }
-                                } else {
-                                    prm.then(() => {
-                                        this._get_column_td(
-                                            next_column, next_row)
-                                            .trigger('click')
-                                            .find(':input,[tabindex=0]')
-                                            .focus();
-                                    });
-                                }
+                    if (!this.record.validate(this.tree.get_fields())) {
+                        var invalid_fields =
+                            this.record.invalid_fields();
+                        for (i = 0; i < this.tree.columns.length; i++) {
+                            var col = this.tree.columns[i];
+                            if (col.attributes.name in invalid_fields) {
+                                next_column = i;
+                                break;
                             }
+                        }
+                        this._get_column_td(next_column)
+                            .find(':input,[tabindex=0]').focus();
+                    } else {
+                        var prm = jQuery.when();
+                        if (!this.tree.screen.group.parent) {
+                            prm = this.record.save();
+                        } else if (this.tree.screen.attributes.pre_validate) {
+                            prm = this.record.pre_validate();
+                        }
+                        prm.fail(function() {
+                            widget.focus();
                         });
+                        var next_row;
+                        if (event_.which == Sao.common.UP_KEYCODE) {
+                            next_row = this.el.prev('tr');
+                        } else if (event_.which == Sao.common.DOWN_KEYCODE) {
+                            next_row = this.el.next('tr');
+                        } else {
+                            if (this.tree.screen.new_position == -1) {
+                                next_row = this.el.next('tr');
+                            } else {
+                                next_row = this.el.prev('tr');
+                            }
+                        }
+                        if (!next_row.length &&
+                            ((event_.which == Sao.common.RETURN_KEYCODE) ||
+                                ((event_.which == Sao.common.UP_KEYCODE) &&
+                                    (this.tree.screen.new_position == 0)) ||
+                                ((event_.which == Sao.common.DOWN_KEYCODE) &&
+                                    (this.tree.screen.new_position == -1)))) {
+                            var model = this.tree.screen.group;
+                            var access = Sao.common.MODELACCESS.get(
+                                this.tree.screen.model_name);
+                            var limit = ((this.tree.screen.size_limit !== null) &&
+                                (model.length >= this.tree.screen.size_limit));
+                            if (this.tree.creatable && access.create && !limit) {
+                                prm.then(() => this.tree.screen.new_())
+                                    .then(record => {
+                                        var sequence = this.tree.attributes.sequence;
+                                        if (sequence) {
+                                            record.group.set_sequence(
+                                                sequence, this.tree.screen.new_position);
+                                        }
+                                    });
+                            }
+                        } else {
+                            prm.then(() => {
+                                this._get_column_td(
+                                    next_column, next_row)
+                                    .trigger('click')
+                                    .find(':input,[tabindex=0]')
+                                    .focus();
+                            });
+                        }
+                    }
                 } else if (event_.which == Sao.common.ESC_KEYCODE) {
                     this.tree.edit_row(null);
                     this.get_static_el().show().find('[tabindex=0]').focus();
@@ -2537,7 +2532,7 @@
             var current_record = this.tree.screen.current_record;
             var fields = this.tree.get_fields();
             if (!current_record || current_record.validate(
-                fields, false, false, true)) {
+                fields, false, false)) {
                 var value = cell.prop('checked');
                 this.field.set_client(record, value);
             } else {
