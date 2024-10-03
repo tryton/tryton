@@ -633,12 +633,16 @@
             }
             return prm;
         },
-        reload: function(fields) {
+        reload: function(fields, async=true) {
             if (this.id < 0) {
-                return jQuery.when();
+                return async? jQuery.when() : null;
             }
             if (!fields) {
-                return this.load('*');
+                return this.load('*', async);
+            } else if (!async) {
+                for (let field of fields) {
+                    this.load(field, async);
+                }
             } else {
                 var prms = fields.map(field => this.load(field));
                 return jQuery.when.apply(jQuery, prms);
@@ -1332,6 +1336,7 @@
                 return result;
             };
             if (sync) {
+                this._check_load(fields, false);
                 return validate_fields();
             } else {
                 return this._check_load(fields).then(validate_fields);
@@ -1355,9 +1360,9 @@
             this.links_counts = {};
             this.exception = false;
         },
-        _check_load: function(fields) {
+        _check_load: function(fields, async=true) {
             if (!this.get_loaded(fields)) {
-                return this.reload(fields);
+                return this.reload(fields, async);
             }
             return jQuery.when();
         },
