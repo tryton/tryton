@@ -22,7 +22,6 @@
     "Gruntfile.js",
     "LICENSE",
     "README.md",
-    "bower.json",
     "dist",
     "images",
     "sounds",
@@ -34,8 +33,7 @@
   ],
   "scripts": {
     "test": "npx grunt test -v",
-    "check": "npx eslint src tests",
-    "postinstall": "npx bower install"
+    "check": "npx eslint src tests"
   },
   "devDependencies": {
     "eslint": "^9.24.0",
@@ -52,7 +50,16 @@
     "tryton"
   ],
   "dependencies": {
-    "bower": "^1.8.14",
+    "jquery": "^3",
+    "bootstrap": "^3.3.7",
+    "moment": "^2.10",
+    "gettext.js": "^2",
+    "c3": "^0.7",
+    "papaparse": "^5.0",
+    "fullcalendar": "^3.10.2",
+    "mousetrap": "^1.6",
+    "bootstrap-rtl-ondemand": "^3.3.4-ondemand",
+    "sortablejs": "^1.8.4",
     "grunt": "^1.6",
     "grunt-cli": "^1.5",
     "grunt-contrib-concat": "^2.1",

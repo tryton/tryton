@@ -148,8 +148,6 @@ check-eslint:
   cache:
     paths:
       - .cache/npm
-  before_script:
-    - sh .gitlab-scripts/bower_allow_root.sh
   script:
     - cd sao
     - npm install --cache ${NODE_CACHE_DIR} --unsafe-perm --legacy-peer-deps
@@ -302,8 +300,6 @@ check-account-chart:
   cache:
     paths:
       - .cache/npm
-  before_script:
-    - sh .gitlab-scripts/bower_allow_root.sh
   script:
     - cd "${PACKAGE}"
     - npm -s install --cache ${NODE_CACHE_DIR} --unsafe-perm --legacy-peer-deps

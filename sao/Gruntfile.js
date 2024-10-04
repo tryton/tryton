@@ -30,10 +30,10 @@ module.exports = function(grunt) {
   ];
   var less_paths = [
       'src',
-      'bower_components',
-      'bower_components/bootstrap',
-      'bower_components/bootstrap/less',
-      'bower_components/bootstrap-rtl-ondemand/less',
+      'node_modules',
+      'node_modules/bootstrap',
+      'node_modules/bootstrap/less',
+      'node_modules/bootstrap-rtl-ondemand/less',
   ];
 
   // Project configuration.
