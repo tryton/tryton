@@ -98,7 +98,8 @@ class Party(metaclass=PoolMeta):
                 & line_clause,
                 group_by=line.party,
                 having=Operator(
-                    Sum(Coalesce(line.debit, 0) - Coalesce(line.credit, 0)),
+                    # Use credit - debit to positive deposit amount
+                    Sum(Coalesce(line.credit, 0) - Coalesce(line.debit, 0)),
                     Decimal(clause[2] or 0))))
         return [('id', 'in', query)]
 
