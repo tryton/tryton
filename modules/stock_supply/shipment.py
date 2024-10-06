@@ -66,6 +66,7 @@ class ShipmentInternal(ModelSQL, ModelView):
         implicit_locations = Location.search(['OR',
                 ('provisioning_location', '!=', None),
                 ('overflowing_location', '!=', None),
+                ('type', '=', 'storage'),
                 ])
         id2location.update({l.id: l for l in implicit_locations})
         location_ids = list(id2location.keys())
