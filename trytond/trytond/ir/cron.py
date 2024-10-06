@@ -275,7 +275,6 @@ class Cron(DeactivableMixin, ModelSQL, ModelView):
                         ended=datetime.datetime.now()).save()
                     logger.info("%s in %i ms", name, duration())
                 except Exception as e:
-                    print(e)
                     transaction.rollback()
                     if isinstance(e, TransactionError):
                         e.fix(transaction_extras)
