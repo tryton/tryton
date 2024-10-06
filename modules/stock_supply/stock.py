@@ -3,7 +3,7 @@
 from trytond.i18n import gettext
 from trytond.model import ModelView, fields
 from trytond.pool import Pool
-from trytond.transaction import check_access
+from trytond.transaction import Transaction, check_access
 from trytond.wizard import (
     Button, StateAction, StateTransition, StateView, Wizard)
 
@@ -41,31 +41,33 @@ class Supply(Wizard):
         ShipmentInternal = pool.get('stock.shipment.internal')
         Date = pool.get('ir.date')
         Warning = pool.get('res.user.warning')
-        today = Date.today()
-        with check_access():
-            moves = Move.search([
-                    ('from_location.type', '=', 'supplier'),
-                    ('to_location.type', '=', 'storage'),
-                    ('state', '=', 'draft'),
-                    ('planned_date', '<', today),
-                    ], order=[], limit=1)
-        if moves:
-            name = '%s.supplier@%s' % (self.__name__, today)
-            if Warning.check(name):
-                raise SupplyWarning(name,
-                    gettext('stock_supply.msg_late_supplier_moves'))
-        with check_access():
-            moves = Move.search([
-                    ('from_location.type', '=', 'storage'),
-                    ('to_location.type', '=', 'customer'),
-                    ('state', '=', 'draft'),
-                    ('planned_date', '<', today),
-                    ], order=[], limit=1)
-        if moves:
-            name = '%s..customer@%s' % (self.__name__, today)
-            if Warning.check(name):
-                raise SupplyWarning(name,
-                    gettext('stock_supply.msg_late_customer_moves'))
+
+        if not Transaction().context.get('_skip_warnings'):
+            today = Date.today()
+            with check_access():
+                moves = Move.search([
+                        ('from_location.type', '=', 'supplier'),
+                        ('to_location.type', '=', 'storage'),
+                        ('state', '=', 'draft'),
+                        ('planned_date', '<', today),
+                        ], order=[], limit=1)
+            if moves:
+                name = '%s.supplier@%s' % (self.__name__, today)
+                if Warning.check(name):
+                    raise SupplyWarning(name,
+                        gettext('stock_supply.msg_late_supplier_moves'))
+            with check_access():
+                moves = Move.search([
+                        ('from_location.type', '=', 'storage'),
+                        ('to_location.type', '=', 'customer'),
+                        ('state', '=', 'draft'),
+                        ('planned_date', '<', today),
+                        ], order=[], limit=1)
+            if moves:
+                name = '%s..customer@%s' % (self.__name__, today)
+                if Warning.check(name):
+                    raise SupplyWarning(name,
+                        gettext('stock_supply.msg_late_customer_moves'))
 
         first = True
         created = False
