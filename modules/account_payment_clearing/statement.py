@@ -232,7 +232,7 @@ class StatementRuleLine(metaclass=PoolMeta):
         pool = Pool()
         PaymentGroup = pool.get('account.payment.group')
         if keywords.get('payment_group'):
-            groups, = PaymentGroup.search([
+            groups = PaymentGroup.search([
                     ('rec_name', '=', keywords['payment_group']),
                     ('company', '=', origin.company.id),
                     ('currency', '=', origin.currency.id),
