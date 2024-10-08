@@ -215,6 +215,7 @@ class PriceListLine(sequence_ordered(), ModelSQL, ModelView, MatchMixin):
             if unit_price is not None:
                 if not isinstance(unit_price, Decimal):
                     raise ValueError("result is not a Decimal")
+                unit_price = round_price(unit_price)
             return unit_price
         except Exception as exception:
             raise FormulaError(
