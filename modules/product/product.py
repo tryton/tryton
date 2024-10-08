@@ -311,13 +311,10 @@ class TemplateFunction(fields.Function):
                 name, tables['template'], Template)
         return order
 
-    def definition(self, model, language):
+    def searchable(self, model):
         pool = Pool()
         Template = pool.get('product.template')
-        definition = super().definition(model, language)
-        definition['searchable'] = self._field.definition(
-            Template, language)['searchable']
-        return definition
+        return super().searchable(model) and self._field.searchable(Template)
 
 
 class TemplateDeactivatableMixin(DeactivableMixin):
