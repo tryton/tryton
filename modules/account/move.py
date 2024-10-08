@@ -11,6 +11,7 @@ from sql.conditionals import Case, Coalesce
 from sql.functions import Abs, CharLength, Round
 from sql.operators import Exists
 
+from trytond import backend
 from trytond.i18n import gettext
 from trytond.model import (
     Check, DeactivableMixin, Index, ModelSQL, ModelView, dualmethod, fields)
@@ -20,7 +21,8 @@ from trytond.pool import Pool
 from trytond.pyson import Bool, Eval, If, PYSONEncoder
 from trytond.report import Report
 from trytond.rpc import RPC
-from trytond.tools import firstline, grouped_slice, reduce_ids
+from trytond.tools import (
+    firstline, grouped_slice, reduce_ids, sqlite_apply_types)
 from trytond.transaction import Transaction, check_access
 from trytond.wizard import (
     Button, StateAction, StateTransition, StateView, Wizard)
@@ -826,6 +828,9 @@ class MoveLineMixin:
         for company, lines in groupby(lines, lambda l: l.company):
             for sub_lines in grouped_slice(lines):
                 sub_lines = list(sub_lines)
+                id2currency = {
+                    l.id: l.second_currency or company.currency
+                    for l in sub_lines}
                 where = account.company == company.id
                 where_type = Literal(False)
                 if context.get('receivable', True):
@@ -873,10 +878,14 @@ class MoveLineMixin:
                     .select(
                         line.id.as_('id'), balance.as_('balance'),
                         where=where))
-                cursor.execute(*query.select(
-                        query.id, query.balance,
-                        where=reduce_ids(query.id, [l.id for l in sub_lines])))
-                balances.update(cursor)
+                query = query.select(
+                    query.id, query.balance.as_('balance'),
+                    where=reduce_ids(query.id, [l.id for l in sub_lines]))
+                if backend.name == 'sqlite':
+                    sqlite_apply_types(query, [None, 'NUMERIC'])
+                cursor.execute(*query)
+                balances.update(
+                    (i, id2currency[i].round(a)) for (i, a) in cursor)
         return balances
 
     def get_rec_name(self, name):
