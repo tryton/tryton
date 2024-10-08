@@ -9,6 +9,7 @@ from trytond.i18n import gettext
 from trytond.model import (
     DeactivableMixin, MatchMixin, ModelSQL, ModelView, fields,
     sequence_ordered)
+from trytond.modules.product import round_price
 from trytond.pool import Pool
 from trytond.tools import decistmt
 from trytond.transaction import Transaction
@@ -139,10 +140,7 @@ class PriceList(DeactivableMixin, ModelSQL, ModelView):
             product, quantity, uom, pattern=pattern)
         for line in self.lines:
             if line.match(pattern):
-                unit_price = line.get_unit_price(**context)
-                if isinstance(unit_price, Null):
-                    unit_price = None
-                return unit_price
+                return line.get_unit_price(**context)
 
 
 class PriceListLine(sequence_ordered(), ModelSQL, ModelView, MatchMixin):
@@ -191,15 +189,7 @@ class PriceListLine(sequence_ordered(), ModelSQL, ModelView, MatchMixin):
         for line in lines:
             context = line.price_list.get_context_formula(
                 product=None, quantity=0, uom=None)
-            try:
-                if not isinstance(line.get_unit_price(**context), Decimal):
-                    raise ValueError
-            except Exception as exception:
-                raise FormulaError(
-                    gettext('product_price_list.msg_invalid_formula',
-                        formula=line.formula,
-                        line=line.rec_name,
-                        exception=exception)) from exception
+            line.get_unit_price(**context)
 
     def match(self, pattern):
         if 'quantity' in pattern:
@@ -218,7 +208,20 @@ class PriceListLine(sequence_ordered(), ModelSQL, ModelView, MatchMixin):
     def get_unit_price(self, **context):
         'Return unit price (as Decimal)'
         context.setdefault('functions', {})['Decimal'] = Decimal
-        return simple_eval(decistmt(self.formula), **context)
+        try:
+            unit_price = simple_eval(decistmt(self.formula), **context)
+            if isinstance(unit_price, Null):
+                unit_price = None
+            if unit_price is not None:
+                if not isinstance(unit_price, Decimal):
+                    raise ValueError("result is not a Decimal")
+            return unit_price
+        except Exception as exception:
+            raise FormulaError(
+                gettext('product_price_list.msg_invalid_formula',
+                    formula=self.formula,
+                    line=self.rec_name,
+                    exception=exception)) from exception
 
 
 class PriceListLineContext(ModelView):
