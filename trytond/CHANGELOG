@@ -1,3 +1,4 @@
+* Set Decimal precision of default context from TRYTOND_DECIMAL_PREC
 * Replace usage of docstring of Model by __string__ attribute
 * Rename ir.model.field 'field_description' into 'string'
 * Replace docstring of models by __string__

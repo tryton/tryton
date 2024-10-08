@@ -1,5 +1,7 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
+
+import decimal
 import os
 import time
 import warnings
@@ -40,3 +42,5 @@ def default_user_agent(name="Tryton"):
 
 if requests_utils:
     requests_utils.default_user_agent = default_user_agent
+
+decimal.DefaultContext.prec = int(os.environ.get('TRYTOND_DECIMAL_PREC', 28))

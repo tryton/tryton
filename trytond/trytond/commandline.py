@@ -65,6 +65,9 @@ def get_parser():
     parser.add_argument(
         "--logconf", dest="logconf", default=logging_config, metavar='FILE',
         help="set logging configuration file (ConfigParser format)")
+    parser.epilog = (
+        "The default Decimal precision can be specified in the "
+        "TRYTOND_DECIMAL_PREC environment variable.")
 
     return parser
 
