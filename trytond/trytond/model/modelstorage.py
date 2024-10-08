@@ -1221,6 +1221,11 @@ class ModelStorage(Model):
                 return
             if field._type == 'dict':
                 return
+            if (field._type not in {
+                        'many2one', 'one2many', 'many2many', 'one2one',
+                        'reference'}
+                    and not field.searchable(cls)):
+                return
 
             def get_relation(record):
                 if field._type in ('many2one', 'one2many'):
@@ -1397,7 +1402,7 @@ class ModelStorage(Model):
                         and not (field.validation_depends & field_names)
                         and not (field.validation_depends & function_fields)):
                     continue
-                if isinstance(field, fields.Function):
+                if isinstance(field, fields.Function) and not pool.test:
                     continue
 
                 validate_domain(field)
