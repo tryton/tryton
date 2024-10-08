@@ -21,7 +21,7 @@ class Icon(
     name = fields.Char('Name', required=True)
     module = fields.Char('Module', readonly=True, required=True)
     path = fields.Char('SVG Path', readonly=True, required=True)
-    icon = fields.Function(fields.Char('Icon', depends=['path']), 'get_icon')
+    icon = fields.Function(fields.Text('Icon', depends=['path']), 'get_icon')
     _list_icons = Cache('ir.ui.icon.list_icons', context=False)
 
     @classmethod
