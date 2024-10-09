@@ -162,9 +162,12 @@ class View(
         return expression
 
     def get_rec_name(self, name):
-        return '%s (%s)' % (
-            self.model_ref.rec_name,
-            self.inherit.rec_name if self.inherit else self.type_string)
+        return ' '.join(filter(None, [
+                    self.model_ref.rec_name if self.model_ref else '',
+                    '(%s)' % (
+                        self.inherit.rec_name if self.inherit else
+                        self.type_string),
+                    ]))
 
     @classmethod
     def search_rec_name(cls, name, clause):
