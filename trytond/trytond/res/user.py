@@ -242,7 +242,7 @@ class User(avatar_mixin(100, 'login'), DeactivableMixin, ModelSQL, ModelView):
             return Lang.default_direction()
 
     def get_status_bar(self, name):
-        return self.name
+        return self.name or ''
 
     def get_avatar_badge_url(self, name):
         pass
