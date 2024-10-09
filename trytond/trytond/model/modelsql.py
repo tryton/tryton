@@ -134,7 +134,13 @@ class Exclude(Constraint):
         return self._where
 
     def __str__(self):
-        exclude = ', '.join('%s WITH %s' % (column, operator._operator)
+        def format_(element):
+            if isinstance(element, Column):
+                return element
+            else:
+                return '(%s)' % element
+        exclude = ', '.join(
+            '%s WITH %s' % (format_(column), operator._operator)
             for column, operator in self.excludes)
         where = ''
         if self.where:
