@@ -1,5 +1,7 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
+
+import datetime as dt
 from decimal import Decimal
 from collections import defaultdict
 
@@ -83,7 +85,7 @@ class Work(metaclass=PoolMeta):
                     group_by=[table.id]))
             for work_id, cost in cursor:
                 # SQLite stores timedelta as float
-                if not isinstance(cost, float):
+                if isinstance(cost, dt.timedelta):
                     cost = cost.total_seconds()
                 # Convert from seconds
                 cost /= 60 * 60
