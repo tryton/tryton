@@ -168,7 +168,7 @@ class Template(metaclass=PoolMeta):
             raise Exception('Bad argument')
         sum_ = 0. if name != 'cost_value' else Decimal(0)
         for product in self.products:
-            sum_ += getattr(product, name)
+            sum_ += getattr(product, name) or 0
         return sum_
 
     @classmethod
