@@ -173,8 +173,10 @@ class Sequence(DeactivableMixin, ModelSQL, ModelView):
 
         transaction = Transaction()
         if sql_sequence and not self._strict:
-            return transaction.database.sequence_next_number(
-                transaction.connection, self._sql_sequence_name)
+            if transaction.database.sequence_exist(
+                    transaction.connection, self._sql_sequence_name):
+                return transaction.database.sequence_next_number(
+                    transaction.connection, self._sql_sequence_name)
         else:
             return self.number_next_internal
 
