@@ -21,19 +21,7 @@ class PeriodDatesError(PeriodValidationError):
     pass
 
 
-class PeriodSequenceError(PeriodValidationError):
-    pass
-
-
 class FiscalYearNotFoundError(UserError):
-    pass
-
-
-class FiscalYearValidationError(ValidationError):
-    pass
-
-
-class FiscalYearSequenceError(FiscalYearValidationError):
     pass
 
 

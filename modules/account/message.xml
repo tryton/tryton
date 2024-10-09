@@ -24,8 +24,8 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.message" id="msg_period_standard_overlap">
             <field name="text">The dates of standard period of the same fiscal year can not overlap.</field>
         </record>
-        <record model="ir.message" id="msg_period_same_sequence">
-            <field name="text">You cannot use the same post move sequence for the periods "%(first)s" and "%(second)s" because they are from different fiscal years.</field>
+        <record model="ir.message" id="msg_period_post_move_sequence_unique">
+            <field name="text">A post move sequence can be reused only by periods in the same fiscal year.</field>
         </record>
         <record model="ir.message" id="msg_period_fiscalyear_dates">
             <field name="text">The dates for period "%(period)s" must be between the dates of its fiscal year "%(fiscalyear)s".</field>
@@ -69,8 +69,8 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.message" id="msg_open_fiscalyear_earlier">
             <field name="text">Open fiscal years can not be before closed fiscal years.</field>
         </record>
-        <record model="ir.message" id="msg_fiscalyear_different_post_move_sequence">
-            <field name="text">The fiscal years "%(first)s" and "%(second)s" cannot have the same post move sequence, you must use different sequences.</field>
+        <record model="ir.message" id="msg_fiscalyear_post_move_sequence_unique">
+            <field name="text">The post move sequence of fiscal years must be unique.</field>
         </record>
         <record model="ir.message" id="msg_close_fiscalyear_account_balance_not_zero">
             <field name="text">To close the fiscal year, the balance of account "%(account)s" must be zero.</field>

@@ -8,7 +8,8 @@ from sql.operators import Equal, NotEqual
 
 from trytond.cache import Cache
 from trytond.i18n import gettext
-from trytond.model import Exclude, ModelSQL, ModelView, Workflow, fields
+from trytond.model import (
+    Exclude, ModelSQL, ModelView, Unique, Workflow, fields)
 from trytond.model.exceptions import AccessError
 from trytond.pool import Pool
 from trytond.pyson import Eval, Id
@@ -20,8 +21,7 @@ from trytond.wizard import (
     Button, StateAction, StateTransition, StateView, Wizard)
 
 from .exceptions import (
-    FiscalYearCloseError, FiscalYearNotFoundError, FiscalYearReOpenError,
-    FiscalYearSequenceError)
+    FiscalYearCloseError, FiscalYearNotFoundError, FiscalYearReOpenError)
 
 STATES = {
     'readonly': Eval('state') != 'open',
@@ -79,6 +79,8 @@ class FiscalYear(Workflow, ModelSQL, ModelView):
                             t.end_date), RangeOverlap),
                     (Case((t.state == 'open', t.id), else_=-1), NotEqual)),
                 'account.msg_open_fiscalyear_earlier'),
+            ('post_move_sequence_unique', Unique(t, t.post_move_sequence),
+                'account.msg_fiscalyear_post_move_unique'),
             ]
         cls._order.insert(0, ('start_date', 'DESC'))
         cls._transitions |= set((
@@ -136,24 +138,7 @@ class FiscalYear(Workflow, ModelSQL, ModelView):
     @classmethod
     def validate_fields(cls, fiscalyears, field_names):
         super().validate_fields(fiscalyears, field_names)
-        cls.check_post_move_sequence(fiscalyears, field_names)
         cls.check_period_dates(fiscalyears, field_names)
-
-    @classmethod
-    def check_post_move_sequence(cls, fiscalyears, field_names=None):
-        if field_names and 'post_move_sequence' not in field_names:
-            return
-        for fiscalyear in fiscalyears:
-            sequence = fiscalyear.post_move_sequence
-            years = cls.search([
-                    ('post_move_sequence', '=', sequence.id),
-                    ('id', '!=', fiscalyear.id),
-                    ], limit=1)
-            if years:
-                raise FiscalYearSequenceError(gettext(
-                        'account.msg_fiscalyear_different_post_move_sequence',
-                        first=fiscalyear.rec_name,
-                        second=years[0].rec_name))
 
     @classmethod
     def check_period_dates(cls, fiscalyears, field_names=None):

@@ -1,7 +1,7 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 
-from sql.operators import Equal
+from sql.operators import Equal, NotEqual
 
 from trytond.cache import Cache
 from trytond.const import OPERATORS
@@ -15,9 +15,7 @@ from trytond.sql.operators import RangeOverlap
 from trytond.tools import grouped_slice
 from trytond.transaction import Transaction
 
-from .exceptions import (
-    ClosePeriodError, PeriodDatesError, PeriodNotFoundError,
-    PeriodSequenceError)
+from .exceptions import ClosePeriodError, PeriodDatesError, PeriodNotFoundError
 
 _STATES = {
     'readonly': Eval('state') != 'open',
@@ -70,6 +68,11 @@ class Period(Workflow, ModelSQL, ModelView):
                     (DateRange(t.start_date, t.end_date, '[]'), RangeOverlap),
                     where=t.type == 'standard'),
                 'account.msg_period_standard_overlap'),
+            ('post_move_sequence_unique',
+                Exclude(t,
+                    (t.post_move_sequence, Equal),
+                    (t.fiscalyear, NotEqual)),
+                'account.msg_period_post_move_sequence_unique'),
             ]
         cls._sql_indexes.add(
             Index(
@@ -135,7 +138,6 @@ class Period(Workflow, ModelSQL, ModelView):
         super().validate_fields(periods, field_names)
         cls.check_fiscalyear_dates(periods, field_names)
         cls.check_move_dates(periods, field_names)
-        cls.check_post_move_sequence(periods, field_names)
 
     @classmethod
     def check_fiscalyear_dates(cls, periods, field_names=None):
@@ -179,24 +181,6 @@ class Period(Workflow, ModelSQL, ModelView):
                         period=move.period.rec_name,
                         move=move.rec_name,
                         move_date=lang.strftime(move.date)))
-
-    @classmethod
-    def check_post_move_sequence(cls, periods, field_names=None):
-        if field_names and not (
-                field_names & {'post_move_sequence', 'fiscalyear'}):
-            return
-        for period in periods:
-            if not period.post_move_sequence:
-                continue
-            periods = cls.search([
-                    ('post_move_sequence', '=', period.post_move_sequence.id),
-                    ('fiscalyear', '!=', period.fiscalyear.id),
-                    ])
-            if periods:
-                raise PeriodSequenceError(
-                    gettext('account.msg_period_same_sequence',
-                        first=period.rec_name,
-                        second=periods[0].rec_name))
 
     @classmethod
     def find(cls, company, date=None, test_state=True):
