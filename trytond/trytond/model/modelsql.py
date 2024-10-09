@@ -600,6 +600,9 @@ class ModelSQL(ModelStorage):
         for _, constraint, error in cls._sql_constraints:
             if (isinstance(constraint, (Unique, Exclude))
                     and all(
+                        isinstance(c, Column)
+                        for c in constraint.columns)
+                    and all(
                         c.name in str(exception)
                         for c in constraint.columns)):
                 raise SQLConstraintError(gettext(error))
