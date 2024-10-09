@@ -79,6 +79,9 @@ class DatabaseInterface(object):
     def has_constraint(self, constraint):
         raise NotImplementedError
 
+    def has_range(self):
+        return False
+
     def has_returning(self):
         return False
 

@@ -21,6 +21,7 @@ from trytond.i18n import gettext
 from trytond.pool import Pool
 from trytond.pyson import PYSONDecoder, PYSONEncoder
 from trytond.rpc import RPC
+from trytond.sql.functions import Range
 from trytond.tools import cursor_dict, grouped_slice, reduce_ids
 from trytond.tools.domain_inversion import simplify
 from trytond.transaction import (
@@ -137,13 +138,15 @@ class Exclude(Constraint):
     def where(self):
         return self._where
 
-    def __str__(self):
+    def __str__(self, using=''):
         exclude = ', '.join('%s WITH %s' % (column, operator._operator)
             for column, operator in self.excludes)
         where = ''
         if self.where:
             where = ' WHERE ' + str(self.where)
-        return 'EXCLUDE (%s)' % exclude + where
+        if using:
+            using = 'USING ' + using
+        return 'EXCLUDE %s (%s)' % (using, exclude) + where
 
     @property
     def params(self):
@@ -2207,7 +2210,17 @@ class ModelSQL(ModelStorage):
             table = sql.table
             if isinstance(sql, (Unique, Exclude)):
                 lock(connection, cls._table)
-                columns = list(sql.columns)
+                if not database.has_range():
+                    columns = []
+                    for col in sql.columns:
+                        if isinstance(col, Range):
+                            columns.extend(
+                                a if isinstance(a, Expression) else Literal(a)
+                                for a in col.args)
+                        else:
+                            columns.append(col)
+                else:
+                    columns = list(sql.columns)
                 columns.insert(0, table.id)
                 in_max = transaction.database.IN_MAX // (len(columns) + 1)
                 for sub_ids in grouped_slice(ids, in_max):
@@ -2219,9 +2232,21 @@ class ModelSQL(ModelStorage):
 
                     where = Literal(False)
                     for row in cursor:
-                        clause = table.id != row[0]
+                        row = list(row)
+                        clause = table.id != row.pop(0)
+                        if not database.has_range():
+                            values = []
+                            for col in sql.columns:
+                                if isinstance(col, Range):
+                                    range_ = col.__class__(
+                                        row.pop(0), row.pop(0), row.pop(0))
+                                    values.append(range_)
+                                else:
+                                    values.append(row.pop(0))
+                        else:
+                            values = row
                         for column, operator, value in zip(
-                                sql.columns, sql.operators, row[1:]):
+                                sql.columns, sql.operators, values):
                             if value is None:
                                 # NULL is always unique
                                 clause &= Literal(False)

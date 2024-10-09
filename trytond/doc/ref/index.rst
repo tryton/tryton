@@ -17,6 +17,7 @@ Reference of the ``trytond`` API:
    transaction
    exceptions
    backend
+   sql/index
    tools/index
    pool
    rpc

@@ -4,9 +4,11 @@ import logging
 import re
 
 from psycopg2.sql import SQL, Identifier
+from sql.operators import NotEqual
 
 from trytond.backend.table import (
     IndexTranslatorInterface, TableHandlerInterface)
+from trytond.sql.operators import RangeOperator
 from trytond.transaction import Transaction
 
 __all__ = ['TableHandler']
@@ -494,18 +496,27 @@ class TableHandler(TableHandlerInterface):
                 raise Exception('Not null action not supported!')
 
     def add_constraint(self, ident, constraint):
-        ident = self.convert_name(self.table_name + "_" + ident)
-        if ident in self._constraints:
-            # This constrain already exist
-            return
-        cursor = Transaction().connection.cursor()
-        cursor.execute(
-            SQL('ALTER TABLE {} ADD CONSTRAINT {} {}').format(
-                Identifier(self.table_name),
-                Identifier(ident),
-                SQL(str(constraint))),
-            constraint.params)
-        self._update_definitions(constraints=True)
+        from trytond.model.modelsql import Exclude
+        transaction = Transaction()
+        database = transaction.database
+
+        if database.has_constraint(constraint):
+            ident = self.convert_name(self.table_name + "_" + ident)
+            if ident in self._constraints:
+                # This constrain already exist
+                return
+            cursor = Transaction().connection.cursor()
+            if isinstance(constraint, Exclude):
+                definition = constraint.__str__(using=index_method(constraint))
+            else:
+                definition = str(constraint)
+            cursor.execute(
+                SQL('ALTER TABLE {} ADD CONSTRAINT {} {}').format(
+                    Identifier(self.table_name),
+                    Identifier(ident),
+                    SQL(definition)),
+                constraint.params)
+            self._update_definitions(constraints=True)
 
     def drop_constraint(self, ident, table=None):
         ident = self.convert_name((table or self.table_name) + "_" + ident)
@@ -730,3 +741,12 @@ class TrigramTranslator(IndexMixin, IndexTranslatorInterface):
         if usage.__class__.__name__ == 'Similarity':
             params['opclass'] = SQL('gin_trgm_ops')
         return params
+
+
+def index_method(exclude):
+    if any(issubclass(o, (RangeOperator, NotEqual))
+            for o in exclude.operators):
+        method = 'GIST'
+    else:
+        method = 'BTREE'
+    return method

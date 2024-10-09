@@ -3,10 +3,12 @@
 import datetime as dt
 import math
 
-from sql import Literal, Select, Table, functions
+from sql import Cast, Literal, Select, Table, functions
 from sql.functions import CurrentTimestamp, DateTrunc, ToChar
 
 from trytond.model import fields
+from trytond.sql.functions import NumRange
+from trytond.sql.operators import RangeContain, RangeIn, RangeOverlap
 from trytond.tests.test_tryton import (
     TestCase, activate_module, with_transaction)
 from trytond.transaction import Transaction
@@ -182,6 +184,81 @@ class BackendTestCase(TestCase):
         cursor.execute(*Select([DateTrunc('month', date.sql_cast(None))]))
         value, = cursor.fetchone()
         self.assertEqual(value, None)
+
+    @with_transaction()
+    def test_operator_range_contain(self):
+        "Test Range Contain operator"
+        cursor = Transaction().connection.cursor()
+        numeric = fields.Numeric("Test")
+
+        def Num(value):
+            return Cast(value, numeric.sql_type().base)
+
+        for expression, value in [
+                (RangeContain(NumRange(2, 4), NumRange(2, 3)), True),
+                (RangeContain(NumRange(2, 4), NumRange(1, 2)), False),
+                (RangeContain(
+                        NumRange(2, 4, '(]'), NumRange(2, 3, '[)')), False),
+                (RangeContain(NumRange(None, 4), NumRange(2, 3)), True),
+                (RangeContain(NumRange(None, 2), NumRange(2, 3)), False),
+                (RangeContain(NumRange(None, 2), NumRange(None, 2)), True),
+                (RangeContain(NumRange(2, 4), NumRange(2, None)), False),
+                (RangeContain(NumRange(2, None), NumRange(2, None)), True),
+                (RangeContain(NumRange(2, 4), Num(1)), False),
+                (RangeContain(NumRange(2, 4), Num(3)), True),
+                (RangeContain(NumRange(2, 4), Num(2)), True),
+                (RangeContain(NumRange(2, 4), Num(4)), False),
+                ]:
+            with self.subTest(expression=expression.params):
+                cursor.execute(*Select([expression]))
+                result, = cursor.fetchone()
+                self.assertEqual(result, value)
+
+    @with_transaction()
+    def test_operator_range_in(self):
+        "Test Range In operator"
+        cursor = Transaction().connection.cursor()
+        numeric = fields.Numeric("Test")
+
+        def Num(value):
+            return Cast(value, numeric.sql_type().base)
+
+        for expression, value in [
+                (RangeIn(NumRange(2, 3), NumRange(2, 4)), True),
+                (RangeIn(Num(2), NumRange(2, 4)), True),
+                ]:
+            with self.subTest(expression=expression.params):
+                cursor.execute(*Select([expression]))
+                result, = cursor.fetchone()
+                self.assertEqual(result, value)
+
+    @with_transaction()
+    def test_operator_range_overlap(self):
+        "test Range Overlap operator"
+        cursor = Transaction().connection.cursor()
+
+        for expression, value in [
+                (RangeOverlap(NumRange(3, 7), NumRange(4, 12)), True),
+                (RangeOverlap(NumRange(3, 4), NumRange(7, 12)), False),
+                (RangeOverlap(NumRange(2, 3), NumRange(3, 4)), False),
+                (RangeOverlap(
+                        NumRange(2, 3, '(]'), NumRange(3, 4, '[)')), True),
+                (RangeOverlap(NumRange(None, 3), NumRange(3, 4)), False),
+                (RangeOverlap(NumRange(2, None), NumRange(3, 4)), True),
+                (RangeOverlap(NumRange(None, 3), NumRange(3, None)), False),
+                (RangeOverlap(NumRange(None, 3), NumRange(None, 4)), True),
+                (RangeOverlap(NumRange(2, None), NumRange(3, None)), True),
+                ]:
+            with self.subTest(expression=expression.params):
+                cursor.execute(*Select([expression]))
+                result, = cursor.fetchone()
+                self.assertEqual(result, value)
+
+                expression.left, expression.right = (
+                    expression.right, expression.left)
+                cursor.execute(*Select([expression]))
+                result, = cursor.fetchone()
+                self.assertEqual(result, value)
 
     @with_transaction()
     def test_estimated_count(self):

@@ -17,6 +17,7 @@ from psycopg2.extensions import (
     register_type)
 from psycopg2.pool import PoolError, ThreadedConnectionPool
 from psycopg2.sql import SQL, Identifier
+from sql.operators import NotEqual
 
 try:
     from psycopg2.extensions import PYDATE, PYDATETIME, PYINTERVAL, PYTIME
@@ -37,7 +38,10 @@ from sql.operators import BinaryOperator, Concat
 
 from trytond.backend.database import DatabaseInterface, SQLType
 from trytond.config import config, parse_uri
+from trytond.sql.operators import RangeOperator
 from trytond.tools.gevent import is_gevent_monkey_patched
+
+from .table import index_method
 
 __all__ = [
     'Database',
@@ -478,6 +482,16 @@ class Database(DatabaseInterface):
             return AdvisoryLock(id)
 
     def has_constraint(self, constraint):
+        from trytond.model.modelsql import Exclude
+        if isinstance(constraint, Exclude):
+            if (index_method(constraint) == 'GIST'
+                    and any(not issubclass(o, (RangeOperator, NotEqual))
+                        for o in constraint.operators)
+                    and not self.has_extension('btree_gist')):
+                return False
+        return True
+
+    def has_range(self):
         return True
 
     def has_multirow_insert(self):
