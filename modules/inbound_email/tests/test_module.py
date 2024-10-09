@@ -123,7 +123,7 @@ class InboundEmailTestCase(ModuleTestCase):
         data = json.dumps({
                 'event': 'inbound',
                 'raw_msg': message.as_string(),
-                })
+                }).encode('utf-8')
         email = Email(data=data, data_type='mailchimp')
 
         self.assertDictEqual(email.as_dict(), self.get_message_dict(message))
@@ -137,7 +137,7 @@ class InboundEmailTestCase(ModuleTestCase):
         message = self.get_message()
         data = json.dumps({
                 'raw': message.as_string(),
-                })
+                }).encode('utf-8')
         email = Email(data=data, data_type='mailpace')
 
         self.assertDictEqual(email.as_dict(), self.get_message_dict(message))
@@ -174,7 +174,7 @@ class InboundEmailTestCase(ModuleTestCase):
                         'Name': 'Message-ID',
                         'Value': '12345@example.com',
                         }],
-                })
+                }).encode('utf-8')
         email = Email(data=data, data_type='postmark')
 
         self.assertDictEqual(
@@ -190,7 +190,7 @@ class InboundEmailTestCase(ModuleTestCase):
         message = self.get_message()
         data = json.dumps({
                 'email': message.as_string(),
-                })
+                }).encode('utf-8')
         email = Email(data=data, data_type='sendgrid')
 
         self.assertDictEqual(email.as_dict(), self.get_message_dict(message))
