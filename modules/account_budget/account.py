@@ -515,7 +515,12 @@ class BudgetLine(BudgetLineMixin, ModelSQL, ModelView):
 
     @classmethod
     def search_current_name(cls, name, clause):
-        return super().search_current_name(name, clause) + [
+        if clause[1].startswith('!') or clause[1].startswith('not '):
+            bool_op = 'AND'
+        else:
+            bool_op = 'OR'
+        return [bool_op,
+            super().search_current_name(name, clause),
             ('account_type.name',) + tuple(clause[1:]),
             ]
 
