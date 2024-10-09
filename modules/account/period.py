@@ -1,13 +1,17 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 
+from sql.operators import Equal
+
 from trytond.cache import Cache
 from trytond.const import OPERATORS
 from trytond.i18n import gettext
-from trytond.model import Index, ModelSQL, ModelView, Workflow, fields
+from trytond.model import Exclude, Index, ModelSQL, ModelView, Workflow, fields
 from trytond.model.exceptions import AccessError
 from trytond.pool import Pool
 from trytond.pyson import Eval, Id
+from trytond.sql.functions import DateRange
+from trytond.sql.operators import RangeOverlap
 from trytond.tools import grouped_slice
 from trytond.transaction import Transaction
 
@@ -59,6 +63,14 @@ class Period(Workflow, ModelSQL, ModelView):
         super(Period, cls).__setup__()
         t = cls.__table__()
         cls.__access__.add('fiscalyear')
+        cls._sql_constraints += [
+            ('standard_dates_overlap',
+                Exclude(t,
+                    (t.fiscalyear, Equal),
+                    (DateRange(t.start_date, t.end_date, '[]'), RangeOverlap),
+                    where=t.type == 'standard'),
+                'account.msg_period_standard_overlap'),
+            ]
         cls._sql_indexes.add(
             Index(
                 t,
@@ -121,42 +133,9 @@ class Period(Workflow, ModelSQL, ModelView):
     @classmethod
     def validate_fields(cls, periods, field_names):
         super().validate_fields(periods, field_names)
-        cls.check_dates(periods, field_names)
         cls.check_fiscalyear_dates(periods, field_names)
         cls.check_move_dates(periods, field_names)
         cls.check_post_move_sequence(periods, field_names)
-
-    @classmethod
-    def check_dates(cls, periods, field_names=None):
-        if field_names and not (
-                field_names & {
-                    'start_date', 'end_date', 'fiscalyear', 'type'}):
-            return
-        transaction = Transaction()
-        connection = transaction.connection
-        cls.lock()
-        table = cls.__table__()
-        cursor = connection.cursor()
-        for period in periods:
-            if period.type != 'standard':
-                continue
-            cursor.execute(*table.select(table.id,
-                    where=(((table.start_date <= period.start_date)
-                            & (table.end_date >= period.start_date))
-                        | ((table.start_date <= period.end_date)
-                            & (table.end_date >= period.end_date))
-                        | ((table.start_date >= period.start_date)
-                            & (table.end_date <= period.end_date)))
-                    & (table.fiscalyear == period.fiscalyear.id)
-                    & (table.type == 'standard')
-                    & (table.id != period.id)))
-            period_id = cursor.fetchone()
-            if period_id:
-                overlapping_period = cls(period_id[0])
-                raise PeriodDatesError(
-                    gettext('account.msg_period_overlap',
-                        first=period.rec_name,
-                        second=overlapping_period.rec_name))
 
     @classmethod
     def check_fiscalyear_dates(cls, periods, field_names=None):

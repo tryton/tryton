@@ -2,21 +2,26 @@
 # this repository contains the full copyright notices and license terms.
 
 from dateutil.relativedelta import relativedelta
+from sql import Null
+from sql.conditionals import Case
+from sql.operators import Equal, NotEqual
 
 from trytond.cache import Cache
 from trytond.i18n import gettext
-from trytond.model import ModelSQL, ModelView, Workflow, fields
+from trytond.model import Exclude, ModelSQL, ModelView, Workflow, fields
 from trytond.model.exceptions import AccessError
 from trytond.pool import Pool
 from trytond.pyson import Eval, Id
 from trytond.rpc import RPC
+from trytond.sql.functions import DateRange
+from trytond.sql.operators import RangeOverlap
 from trytond.transaction import Transaction
 from trytond.wizard import (
     Button, StateAction, StateTransition, StateView, Wizard)
 
 from .exceptions import (
-    FiscalYearCloseError, FiscalYearDatesError, FiscalYearNotFoundError,
-    FiscalYearReOpenError, FiscalYearSequenceError)
+    FiscalYearCloseError, FiscalYearNotFoundError, FiscalYearReOpenError,
+    FiscalYearSequenceError)
 
 STATES = {
     'readonly': Eval('state') != 'open',
@@ -57,6 +62,24 @@ class FiscalYear(Workflow, ModelSQL, ModelView):
     @classmethod
     def __setup__(cls):
         super(FiscalYear, cls).__setup__()
+        t = cls.__table__()
+        cls._sql_constraints += [
+            ('dates_overlap',
+                Exclude(t,
+                    (t.company, Equal),
+                    (DateRange(t.start_date, t.end_date, '[]'), RangeOverlap),
+                    ),
+                'account.msg_fiscalyear_overlap'),
+            ('open_earlier',
+                Exclude(t,
+                    (t.company, Equal),
+                    (DateRange(
+                            Case(
+                                (t.state == 'open', t.start_date), else_=Null),
+                            t.end_date), RangeOverlap),
+                    (Case((t.state == 'open', t.id), else_=-1), NotEqual)),
+                'account.msg_open_fiscalyear_earlier'),
+            ]
         cls._order.insert(0, ('start_date', 'DESC'))
         cls._transitions |= set((
                 ('open', 'closed'),
@@ -113,51 +136,8 @@ class FiscalYear(Workflow, ModelSQL, ModelView):
     @classmethod
     def validate_fields(cls, fiscalyears, field_names):
         super().validate_fields(fiscalyears, field_names)
-        cls.check_dates(fiscalyears, field_names)
         cls.check_post_move_sequence(fiscalyears, field_names)
         cls.check_period_dates(fiscalyears, field_names)
-
-    @classmethod
-    def check_dates(cls, fiscalyears, field_names=None):
-        if field_names and not (field_names & {
-                    'start_date', 'end_date', 'state', 'company'}):
-            return
-        transaction = Transaction()
-        connection = transaction.connection
-        cls.lock()
-        cursor = connection.cursor()
-        table = cls.__table__()
-        for year in fiscalyears:
-            cursor.execute(*table.select(table.id,
-                    where=(((table.start_date <= year.start_date)
-                            & (table.end_date >= year.start_date))
-                        | ((table.start_date <= year.end_date)
-                            & (table.end_date >= year.end_date))
-                        | ((table.start_date >= year.start_date)
-                            & (table.end_date <= year.end_date)))
-                    & (table.company == year.company.id)
-                    & (table.id != year.id)))
-            second_id = cursor.fetchone()
-            if second_id:
-                second = cls(second_id[0])
-                raise FiscalYearDatesError(
-                    gettext('account.msg_fiscalyear_overlap',
-                        first=year.rec_name,
-                        second=second.rec_name))
-            if year.state == 'open':
-                fiscalyears = cls.search([
-                        ('start_date', '>=', year.end_date),
-                        ('state', 'in', ['closed', 'locked']),
-                        ('company', '=', year.company.id),
-                        ],
-                    limit=1,
-                    order=[('start_date', 'ASC')])
-                if fiscalyears:
-                    fiscalyear, = fiscalyears
-                    raise FiscalYearDatesError(
-                        gettext('account.msg_open_fiscalyear_earlier',
-                            open=year.rec_name,
-                            closed=fiscalyear.rec_name))
 
     @classmethod
     def check_post_move_sequence(cls, fiscalyears, field_names=None):

@@ -21,8 +21,8 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.message" id="msg_close_period_non_posted_moves">
             <field name="text">To close period "%(period)s" you must post the moves "%(moves)s".</field>
         </record>
-        <record model="ir.message" id="msg_period_overlap">
-            <field name="text">The periods "%(first)s" and "%(second)s" overlap, you must use different dates.</field>
+        <record model="ir.message" id="msg_period_standard_overlap">
+            <field name="text">The dates of standard period of the same fiscal year can not overlap.</field>
         </record>
         <record model="ir.message" id="msg_period_same_sequence">
             <field name="text">You cannot use the same post move sequence for the periods "%(first)s" and "%(second)s" because they are from different fiscal years.</field>
@@ -64,10 +64,10 @@ this repository contains the full copyright notices and license terms. -->
             <field name="text">To continue, you must reopen the fiscal year "%(fiscalyear)s" of company "%(company)s" for the date "%(date)s".</field>
         </record>
         <record model="ir.message" id="msg_fiscalyear_overlap">
-            <field name="text">The fiscal years "%(first)s" and "%(second)s" overlap, you must use different dates.</field>
+            <field name="text">The dates of fiscal years of the same company can not overlap.</field>
         </record>
         <record model="ir.message" id="msg_open_fiscalyear_earlier">
-            <field name="text">The open fiscal year "%(open)s" can not be before the close fiscal year "%(closed)s".</field>
+            <field name="text">Open fiscal years can not be before closed fiscal years.</field>
         </record>
         <record model="ir.message" id="msg_fiscalyear_different_post_move_sequence">
             <field name="text">The fiscal years "%(first)s" and "%(second)s" cannot have the same post move sequence, you must use different sequences.</field>

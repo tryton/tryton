@@ -33,10 +33,6 @@ class FiscalYearValidationError(ValidationError):
     pass
 
 
-class FiscalYearDatesError(FiscalYearValidationError):
-    pass
-
-
 class FiscalYearSequenceError(FiscalYearValidationError):
     pass
 

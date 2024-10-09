@@ -7,8 +7,8 @@ from decimal import Decimal
 from dateutil.relativedelta import relativedelta
 
 from trytond.exceptions import UserError
-from trytond.modules.account.exceptions import (
-    FiscalYearDatesError, PeriodDatesError)
+from trytond.model.exceptions import SQLConstraintError
+from trytond.modules.account.exceptions import PeriodDatesError
 from trytond.modules.account.tax import TaxableMixin
 from trytond.modules.company.tests import (
     CompanyTestMixin, PartyCompanyCheckEraseMixin, create_company, set_company)
@@ -309,7 +309,7 @@ class AccountTestCase(
                 company,
                 start_date=datetime.date(2021, 1, 1),
                 end_date=datetime.date(2021, 12, 31))
-            with self.assertRaises(FiscalYearDatesError):
+            with self.assertRaises(SQLConstraintError):
                 earlier_fiscalyear.save()
 
     @with_transaction()
