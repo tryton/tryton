@@ -150,7 +150,7 @@ class Email(ModelSQL, ModelView):
                 if event['event'] == 'inbound':
                     emails.append(cls(
                             inbox=inbox,
-                            data=json.dumps(event),
+                            data=json.dumps(event).encode('utf-8'),
                             data_type=data_type))
         return emails
 
