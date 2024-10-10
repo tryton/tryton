@@ -26,7 +26,10 @@ class Journal(metaclass=PoolMeta):
         states={
             'required': Bool(Eval('clearing_account')),
             },
-        depends=['clearing_account'])
+        context={
+            'company': Eval('company', None),
+            },
+        depends=['clearing_account', 'company'])
     clearing_posting_delay = fields.TimeDelta(
         "Clearing Posting Delay",
         help="Post automatically the clearing moves after the delay.\n"
