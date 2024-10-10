@@ -30,6 +30,9 @@ class Journal(metaclass=PoolMeta):
     clearing_journal = fields.Many2One('account.journal', 'Clearing Journal',
         states={
             'required': Bool(Eval('clearing_account')),
+            },
+        context={
+            'company': Eval('company', None),
             })
     clearing_posting_delay = fields.TimeDelta(
         "Clearing Posting Delay",
