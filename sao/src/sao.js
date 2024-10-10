@@ -439,9 +439,6 @@ var Sao = {
     Sao.i18n.set_direction = function(direction) {
         Sao.i18n.rtl = (direction === 'rtl');
         jQuery('html').attr('dir', direction);
-        jQuery('.row-offcanvas')
-            .removeClass('row-offcanvas-left row-offcanvas-right')
-            .addClass(Sao.i18n.rtl ? 'row-offcanvas-right' : 'row-offcanvas-left');
     };
     Sao.i18n.locale = {};
 

@@ -36,14 +36,14 @@ this repository contains the full copyright notices and license terms. -->
             <strong>Sorry sao does not work without JavaScript enabled. Please enable it to continue.</strong>
         </noscript>
         <div class="body" style="display: none;">
-            <nav class="navbar navbar-inverse navbar-static-top" role="navigation" style="margin-bottom: 0px;">
+            <nav class="navbar navbar-inverse navbar-static-top" role="navigation">
                 <div class="container-fluid">
                     <div class="navbar-header">
                         <button type="button" class="navbar-toggle collapsed"
                                               data-toggle="collapse" data-target="#main_navbar">
                             <span class="caret"></span>
                         </button>
-                        <a class="navbar-brand" href="javascript:void(0)" data-toggle="offcanvas">
+                        <a class="navbar-brand" href="javascript:void(0)" data-toggle="menu">
                             <span class="icon">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
                                     <path d="M0 0h24v24H0z" fill="none"/>
@@ -76,14 +76,10 @@ this repository contains the full copyright notices and license terms. -->
                     </div>
                 </div>
             </nav>
-            <div id="main" class="container-fluid" style="padding: 0px;">
-                <div class="row row-offcanvas row-offcanvas-left active"
-                     style="height: calc(100vh - 50px - 1px - 20px); margin: 0px;">
-                    <div class="col-xs-12 col-sm-4 col-lg-3 sidebar-offcanvas" id="menu" role="navigation"
-                                                                                         style="overflow-y: auto; height: 100%;"></div>
-                    <div class="col-xs-12 col-sm-8 col-lg-9 main-offcanvas" style="display:flex; overflow-y: auto; height: 100%;" id="tabs" role="tabpanel">
-                        <div id="tabcontent" class="tab-content"></div>
-                    </div>
+            <div id="main">
+                <div id="menu" role="navigation"></div>
+                <div id="tabs" class="hidden-xs" role="tabpanel">
+                    <div id="tabcontent" class="tab-content"></div>
                 </div>
             </div>
         </div>
@@ -93,16 +89,19 @@ this repository contains the full copyright notices and license terms. -->
             } else {
                 jQuery(function() {
                     jQuery('.body').show();
-                    jQuery('[data-toggle="offcanvas"]').click(function() {
-                        jQuery('.row-offcanvas').toggleClass('active');
+                    jQuery('[data-toggle="menu"]').click(function() {
+                        jQuery('#menu').toggleClass('hidden');
+                        jQuery('#tabs').toggleClass('hidden-xs');
                     });
                     jQuery('#tabs').on('ready', function() {
                         var mq = window.matchMedia('(max-width: 991px)');
                         if (mq.matches) {
                             if (jQuery('#tablist').children().length) {
-                                jQuery('.row-offcanvas').removeClass('active');
+                                jQuery('#menu').addClass('hidden');
+                                jQuery('#tabs').removeClass('hidden-xs');
                             } else {
-                                jQuery('.row-offcanvas').addClass('active');
+                                jQuery('#menu').removeClass('hidden');
+                                jQuery('#tabs').addClass('hidden-xs');
                             }
                         }
                     });

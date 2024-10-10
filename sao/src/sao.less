@@ -11,6 +11,18 @@ html[theme="default"] {
     @import "theme";
 }
 
+.body {
+    bottom: 0;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+
+    > .navbar {
+        margin-bottom: 0;
+    }
+}
+
 // Fix double rtl prefix
 .float-rtl-grid-columns(@class, @rtl-prefix) {
   .col(@index) { // initial
@@ -157,8 +169,20 @@ html[theme="default"] {
     }
 }
 
+#main {
+    bottom: 0;
+    display: flex;
+    flex-direction: row;
+    gap: .5rem;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 6rem;
+}
+
 #menu, #tabs {
-    margin-top: 5px;
+    display: flex;
+    overflow: auto;
 
     .navbar-brand {
         .title {
@@ -168,6 +192,12 @@ html[theme="default"] {
             white-space: nowrap;
         }
     }
+}
+
+#tabs {
+    flex: 1;
+    overflow-x: hidden;
+    padding: 0 5px;
 }
 
 @media screen and (max-width: @screen-md-max) {
@@ -207,20 +237,30 @@ html[theme="default"] {
 }
 
 #menu {
+    overflow-y: auto;
     padding: 0;
     background-color: @navbar-default-bg;
     border-color: @panel-default-border;
     border-style: solid;
     border-radius: 0 @panel-border-radius @panel-border-radius 0;
     border-width: 1px;
-    margin-top: 5px;
     .treeview {
         height: auto;
         .cell {
             user-select: none;
         }
     }
+    @media (min-width: @screen-md-min) {
+        resize: horizontal;
+        width: 35rem;
+        min-width: 20ch;
+        max-width: 100vw;
+    }
+    @media (max-width: (@screen-sm-max)) {
+        width: 100%;
+    }
 }
+
 [dir="rtl"] #menu {
     border-right: none;
 }
@@ -1366,5 +1406,4 @@ img.favorite-icon {
 }
 
 @import "input-icon";
-@import "offcanvas";
 @import (optional) "custom.less";
