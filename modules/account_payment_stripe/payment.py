@@ -1153,7 +1153,7 @@ class Account(ModelSQL, ModelView):
         if not refunds:
             logger.error("charge.refund.updated: No refund '%s'", rf['id'])
         for refund in refunds:
-            refund.stripe_error_code = rf['failure_reason']
+            refund.stripe_error_code = rf.get('failure_reason')
             if rf['status'] == 'pending':
                 Refund.process([refund])
             elif rf['status'] == 'succeeded':
