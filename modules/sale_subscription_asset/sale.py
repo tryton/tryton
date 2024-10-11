@@ -1,14 +1,12 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
-from sql import Null
+from sql.operators import Equal
 
-from trytond.i18n import gettext
-from trytond.model import ModelSQL, ModelView, Workflow, fields
-from trytond.model.exceptions import ValidationError
+from trytond.model import Exclude, ModelSQL, ModelView, Workflow, fields
 from trytond.pool import Pool, PoolMeta
 from trytond.pyson import Bool, Eval, If
-from trytond.tools import grouped_slice, reduce_ids
-from trytond.transaction import Transaction
+from trytond.sql.functions import DateRange
+from trytond.sql.operators import RangeOverlap
 
 
 class SubscriptionService(metaclass=PoolMeta):
@@ -91,6 +89,15 @@ class SubscriptionLine(metaclass=PoolMeta):
     @classmethod
     def __setup__(cls):
         super(SubscriptionLine, cls).__setup__()
+        t = cls.__table__()
+        cls._sql_constraints += [
+            ('dates_asset_lot_overlap',
+                Exclude(t,
+                    (t.asset_lot, Equal),
+                    (DateRange(t.start_date, t.end_date, '[)'), RangeOverlap),
+                    ),
+                'sale_subscription_asset.msg_asset_line_overlap'),
+            ]
 
         cls.quantity.domain = [
             cls.quantity.domain,
@@ -113,54 +120,3 @@ class SubscriptionLine(metaclass=PoolMeta):
             default = default.copy()
         default.setdefault('lot')
         return super(SubscriptionLine, cls).copy(lines, default)
-
-    @classmethod
-    def validate_fields(cls, lines, field_names):
-        super().validate_fields(lines, field_names)
-        cls._validate_dates(lines, field_names)
-
-    @classmethod
-    def _validate_dates(cls, lines, field_names=None):
-        if field_names and not (field_names & {
-                    'start_date', 'end_date', 'asset_lot'}):
-            return
-        transaction = Transaction()
-        connection = transaction.connection
-        cursor = connection.cursor()
-
-        cls.lock()
-
-        line = cls.__table__()
-        other = cls.__table__()
-        overlap_where = (
-            ((line.end_date == Null)
-                & ((other.end_date == Null)
-                    | (other.start_date > line.start_date)
-                    | (other.end_date > line.start_date)))
-            | ((line.end_date != Null)
-                & ((
-                        (other.end_date == Null)
-                        & (other.start_date < line.end_date))
-                    | ((other.end_date != Null)
-                        & ((
-                                (other.end_date >= line.start_date)
-                                & (other.end_date < line.end_date))
-                            | ((other.start_date >= line.start_date)
-                                & (other.start_date < line.end_date)))))))
-        for sub_lines in grouped_slice(lines):
-            sub_ids = [l.id for l in sub_lines]
-            cursor.execute(*line.join(other,
-                    condition=((line.id != other.id)
-                        & (line.asset_lot == other.asset_lot))
-                    ).select(line.id, other.id,
-                    where=((line.asset_lot != Null)
-                        & reduce_ids(line.id, sub_ids)
-                        & overlap_where),
-                    limit=1))
-            overlapping = cursor.fetchone()
-            if overlapping:
-                sline1, sline2 = cls.browse(overlapping)
-                raise ValidationError(
-                    gettext('sale_subscription_asset.msg_asset_line_overlap',
-                        line1=sline1.rec_name,
-                        line2=sline2.rec_name))
