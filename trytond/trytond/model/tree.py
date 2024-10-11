@@ -23,8 +23,10 @@ def tree(parent='parent', name='name', separator=None):
             def __setup__(cls):
                 super(TreeMixin, cls).__setup__()
                 field = getattr(cls, name)
-                clause = (
-                    name, 'not like', '%' + escape_wildcard(separator) + '%')
+                clause = ['OR',
+                    (name, 'not like', '%' + escape_wildcard(separator) + '%'),
+                    (name, '=', None),
+                    ]
                 # If TreeMixin is after the class where name is defined in
                 # __mro__, it modifies the base field copied so it must ensure
                 # to add only once the domain
