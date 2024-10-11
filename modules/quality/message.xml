@@ -12,5 +12,8 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.message" id="msg_quality_inspection_failed">
             <field name="text">To continue, alerts from failed inspections must be resolved.</field>
         </record>
+        <record model="ir.message" id="msg_inspection_delete_non_pending">
+            <field name="text">To delete inspection "%(inspection)s" you must reset its state to pending.</field>
+        </record>
     </data>
 </tryton>

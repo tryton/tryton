@@ -11,7 +11,7 @@ from trytond.i18n import gettext, lazy_gettext
 from trytond.model import (
     DeactivableMixin, DictSchemaMixin, MatchMixin, Model, ModelSingleton,
     ModelSQL, ModelStorage, ModelView, Workflow, dualmethod, fields)
-from trytond.model.exceptions import ButtonActionException
+from trytond.model.exceptions import AccessError, ButtonActionException
 from trytond.modules.company.model import (
     CompanyMultiValueMixin, CompanyValueMixin, employee_field, reset_employee,
     set_employee)
@@ -591,6 +591,15 @@ class Inspection(Workflow, ModelSQL, ModelView):
         default.setdefault('passed_by')
         default.setdefault('failed_by')
         return super().copy(inspections, default=default)
+
+    @classmethod
+    def delete(cls, inspections):
+        for inspection in inspections:
+            if inspection.state != 'pending':
+                raise AccessError(
+                    gettext('quality.msg_inspection_delete_non_pending',
+                        inspection=inspection.rec_name))
+        super().delete(inspections)
 
     @classmethod
     def get_from_control(cls, control, origin=None):

@@ -88,8 +88,19 @@ Pass a failed inspection::
     >>> inspection.state
     'passed'
 
+Its not possible to delete a passed inspection::
+
+    >>> inspection.delete()
+    Traceback (most recent call last):
+        ...
+    AccessError: ...
+
 Reset an inspection back to pending::
 
     >>> inspection.click('pending')
     >>> inspection.state
     'pending'
+
+It is possible to delete pending inspections::
+
+    >>> inspection.delete()
