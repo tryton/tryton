@@ -6,22 +6,29 @@ import datetime as dt
 from sql import Literal
 from sql.aggregate import Count
 from sql.conditionals import Case, Coalesce
+from sql.operators import Equal
 
 from trytond.i18n import gettext
 from trytond.model import (
-    DeactivableMixin, ModelSQL, ModelView, Workflow, fields)
+    DeactivableMixin, Exclude, ModelSQL, ModelView, Workflow, fields)
 from trytond.pool import Pool, PoolMeta
 from trytond.pyson import Eval, If
+from trytond.sql.functions import DateRange
+from trytond.sql.operators import RangeOverlap
 from trytond.tools import grouped_slice, reduce_ids
 from trytond.transaction import Transaction
 
-from .exceptions import DuplicateError, PromotionCouponNumberDatesError
+from .exceptions import PromotionCouponNumberDatesError
 
 
 class Promotion(metaclass=PoolMeta):
     __name__ = 'sale.promotion'
 
-    coupons = fields.One2Many('sale.promotion.coupon', 'promotion', "Coupons")
+    coupons = fields.One2Many(
+        'sale.promotion.coupon', 'promotion', "Coupons",
+        domain=[
+            ('company', '=', Eval('company', -1)),
+            ])
 
     def get_pattern(self, sale):
         pattern = super(Promotion, self).get_pattern(sale)
@@ -71,15 +78,48 @@ class PromotionCoupon(ModelSQL, ModelView):
         "Per Party", help="Check to count usage per party.")
     numbers = fields.One2Many(
         'sale.promotion.coupon.number', 'coupon', "Numbers",
+        domain=[
+            ('company', '=', Eval('company', -1)),
+            ],
         filter=[
             ('active', 'in', [True, False]),  # Show inactive numbers
             ])
-    promotion = fields.Many2One('sale.promotion', "Promotion", required=True)
+    promotion = fields.Many2One(
+        'sale.promotion', "Promotion", required=True,
+        domain=[
+            ('company', '=', Eval('company', -1)),
+            ])
+    company = fields.Many2One('company.company', "Company", required=True)
 
     @classmethod
     def __setup__(cls):
         super().__setup__()
         cls.__access__.add('promotion')
+
+    @classmethod
+    def __register__(cls, module):
+        pool = Pool()
+        Promotion = pool.get('sale.promotion.coupon')
+        table = cls.__table__()
+        promotion = Promotion.__table__()
+        table_h = cls.__table_handler__(module)
+        cursor = Transaction().connection.cursor()
+
+        company_exist = table_h.column_exist('company')
+
+        super().__register__(module)
+
+        # Migration from 7.2: add company
+        if not company_exist:
+            cursor.execute(*table.update(
+                    [table.company],
+                    [promotion.select(
+                            promotion.company,
+                            where=promotion.id == table.promotion)]))
+
+    @classmethod
+    def default_company(cls):
+        return Transaction().context.get('company')
 
     @classmethod
     def default_number_of_use(cls):
@@ -97,7 +137,11 @@ class PromotionCouponNumber(DeactivableMixin, ModelSQL, ModelView):
 
     number = fields.Char("Number", required=True)
     coupon = fields.Many2One(
-        'sale.promotion.coupon', "Coupon", required=True)
+        'sale.promotion.coupon', "Coupon", required=True,
+        domain=[
+            ('company', '=', Eval('company', -1)),
+            ])
+    company = fields.Many2One('company.company', "Company", required=True)
     start_date = fields.Date("Start Date",
         domain=['OR',
             ('start_date', '<=', If(~Eval('end_date', None),
@@ -116,6 +160,15 @@ class PromotionCouponNumber(DeactivableMixin, ModelSQL, ModelView):
     @classmethod
     def __setup__(cls):
         super(PromotionCouponNumber, cls).__setup__()
+        t = cls.__table__()
+        cls._sql_constraints += [
+            ('dates_number_overlap',
+                Exclude(t,
+                    (t.company, Equal),
+                    (t.number, Equal),
+                    (DateRange(t.start_date, t.end_date, '[]'), RangeOverlap)),
+                'sale_promotion_coupon.msg_duplicate_numbers'),
+            ]
         cls.__access__.add('coupon')
         cls.active = fields.Function(
             cls.active, 'get_active', searcher='search_active')
@@ -133,6 +186,7 @@ class PromotionCouponNumber(DeactivableMixin, ModelSQL, ModelView):
 
         start_date_exists = table_h.column_exist('start_date')
         end_date_exists = table_h.column_exist('end_date')
+        company_exist = table_h.column_exist('company')
 
         super().__register__(module)
 
@@ -155,6 +209,21 @@ class PromotionCouponNumber(DeactivableMixin, ModelSQL, ModelView):
                         .select(
                             promotion.end_date,
                             where=coupon.id == table.coupon)]))
+
+        # Migration from 7.2: add company
+        if not company_exist:
+            cursor.execute(*table.update(
+                    [table.company],
+                    [coupon
+                        .join(promotion,
+                            condition=coupon.promotion == promotion.id)
+                        .select(
+                            promotion.company,
+                            where=coupon.id == table.coupon)]))
+
+    @classmethod
+    def default_company(cls):
+        return Transaction().context.get('company')
 
     @classmethod
     def default_start_date(cls):
@@ -270,61 +339,6 @@ class PromotionCouponNumber(DeactivableMixin, ModelSQL, ModelView):
                         '.msg_promotion_coupon_number_end_date',
                         number=number.rec_name,
                         end_date=lang.strftime(end_date)))
-
-    @classmethod
-    def validate_fields(cls, numbers, field_names):
-        super().validate_fields(numbers, field_names)
-        cls.check_unique(numbers, field_names)
-
-    @classmethod
-    def check_unique(cls, numbers, field_names=None):
-        if field_names and not (field_names & {
-                    'number', 'coupon', 'start_date', 'end_date'}):
-            return
-        cls.lock()
-        duplicates = []
-        for sub_numbers in grouped_slice(numbers):
-            domain = ['OR']
-            for number in sub_numbers:
-                start_date = number.start_date or dt.date.min
-                end_date = number.end_date or dt.date.max
-                domain.append([
-                        ('number', '=', number.number),
-                        ('id', '!=', number.id),
-                        ('coupon.promotion.company', '=',
-                            number.coupon.promotion.company.id),
-                        ['OR', [
-                                ['OR',
-                                    ('start_date', '<=', start_date),
-                                    ('start_date', '=', None),
-                                    ],
-                                ['OR',
-                                    ('end_date', '>=', end_date),
-                                    ('end_date', '=', None),
-                                    ],
-                                ], [
-                                ['OR',
-                                    ('start_date', '<=', end_date),
-                                    ('start_date', '=', None),
-                                    ],
-                                ['OR',
-                                    ('end_date', '>=', end_date),
-                                    ('end_date', '=', None),
-                                    ],
-                                ], [
-                                ('start_date', '>=', number.start_date),
-                                ('end_date', '<=', number.end_date),
-                                ],
-                            ],
-                        ])
-            duplicates.extend(cls.search(domain))
-        if duplicates:
-            numbers = ', '.join(n.number for n in duplicates[:5])
-            if len(duplicates) > 5:
-                numbers += '...'
-            raise DuplicateError(
-                gettext('sale_promotion_coupon.msg_duplicate_numbers',
-                    numbers=numbers))
 
 
 class Sale(metaclass=PoolMeta):

@@ -20,6 +20,16 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">coupon_list</field>
         </record>
 
+        <record model="ir.rule.group" id="rule_group_coupon_companies">
+            <field name="name">User in companies</field>
+            <field name="model">sale.promotion.coupon</field>
+            <field name="global_p" eval="True"/>
+        </record>
+        <record model="ir.rule" id="rule_coupon_companies">
+            <field name="domain" eval="[('company', 'in', Eval('companies', []))]" pyson="1"/>
+            <field name="rule_group" ref="rule_group_coupon_companies"/>
+        </record>
+
         <record model="ir.ui.view" id="coupon_number_view_form">
             <field name="model">sale.promotion.coupon.number</field>
             <field name="type">form</field>
@@ -29,6 +39,16 @@ this repository contains the full copyright notices and license terms. -->
             <field name="model">sale.promotion.coupon.number</field>
             <field name="type">tree</field>
             <field name="name">coupon_number_list</field>
+        </record>
+
+        <record model="ir.rule.group" id="rule_group_coupon_number_companies">
+            <field name="name">User in companies</field>
+            <field name="model">sale.promotion.coupon.number</field>
+            <field name="global_p" eval="True"/>
+        </record>
+        <record model="ir.rule" id="rule_coupon_number_companies">
+            <field name="domain" eval="[('company', 'in', Eval('companies', []))]" pyson="1"/>
+            <field name="rule_group" ref="rule_group_coupon_number_companies"/>
         </record>
 
         <record model="ir.ui.view" id="sale_view_form">

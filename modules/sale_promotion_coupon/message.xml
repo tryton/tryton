@@ -10,7 +10,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="text">The end date of coupons numbered "%(numbers)s" must be before %(start_date)s.</field>
         </record>
         <record model="ir.message" id="msg_duplicate_numbers">
-            <field name="text">The coupons numbered "%(numbers)s" are duplicated.</field>
+            <field name="text">The dates of coupon numbers with the same number can not overlap.</field>
         </record>
     </data>
 </tryton>

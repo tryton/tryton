@@ -3,9 +3,5 @@
 from trytond.model.exceptions import ValidationError
 
 
-class DuplicateError(ValidationError):
-    pass
-
-
 class PromotionCouponNumberDatesError(ValidationError):
     pass
