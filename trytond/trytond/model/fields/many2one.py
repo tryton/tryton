@@ -1,6 +1,6 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
-from sql import Literal, Column, With
+from sql import Column, Literal, Null, With
 from sql.aggregate import Max
 from sql.conditionals import Coalesce
 from sql.operators import Or
@@ -227,7 +227,7 @@ class Many2One(Field):
             target_domain.append(('active', 'in', [True, False]))
         if self.target_search == 'subquery':
             query = Target.search(target_domain, order=[], query=True)
-            return column.in_(query)
+            expression = column.in_(query)
         else:
             target_tables = self._get_target_tables(tables)
             target_table, _ = target_tables[None]
@@ -236,7 +236,9 @@ class Many2One(Field):
                 target_domain = [target_domain, rule_domain]
             _, expression = Target.search_domain(
                 target_domain, tables=target_tables)
-            return expression
+        if operator.startswith('not') or operator == '!=':
+            expression |= column == Null
+        return expression
 
     def convert_order(self, name, tables, Model):
         fname, _, oexpr = name.partition('.')

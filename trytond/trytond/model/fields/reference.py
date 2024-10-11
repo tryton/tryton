@@ -2,8 +2,8 @@
 # this repository contains the full copyright notices and license terms.
 import warnings
 
-from sql import Cast, Literal, Query, Expression
-from sql.functions import Substring, Position
+from sql import Cast, Expression, Literal, Null, Query
+from sql.functions import Position, Substring
 
 from trytond.pool import Pool
 from trytond.pyson import PYSONEncoder
@@ -185,10 +185,13 @@ class Reference(SelectionMixin, Field):
         if 'active' in Target._fields:
             target_domain.append(('active', 'in', [True, False]))
         query = Target.search(target_domain, order=[], query=True)
-        return (Cast(Substring(column,
+        expression = (Cast(Substring(column,
                     Position(',', column) + Literal(1)),
                 Model.id.sql_type().base).in_(query)
             & column.ilike(target + ',%'))
+        if operator.startswith('not') or operator == '!=':
+            expression |= column == Null
+        return expression
 
     def definition(self, model, language):
         encoder = PYSONEncoder()

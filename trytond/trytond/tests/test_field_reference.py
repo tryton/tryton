@@ -352,6 +352,28 @@ class FieldReferenceTestCase(unittest.TestCase):
         self.assertListEqual(references, [reference])
 
     @with_transaction()
+    def test_search_join_null(self):
+        "Test search by null reference join"
+        pool = Pool()
+        Target = pool.get('test.reference.target')
+        Reference = pool.get('test.reference')
+        reference, = Reference.create([{
+                    'reference': None,
+                    }])
+
+        result = Reference.search([
+                ('reference.name', '=', "Target", Target.__name__),
+                ])
+
+        self.assertListEqual(result, [])
+
+        result = Reference.search([
+                ('reference.name', '!=', "Target", Target.__name__),
+                ])
+
+        self.assertListEqual(result, [reference])
+
+    @with_transaction()
     def test_write_string(self):
         "Test write reference string"
         pool = Pool()
