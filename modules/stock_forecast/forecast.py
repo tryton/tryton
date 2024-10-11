@@ -14,7 +14,7 @@ from trytond.i18n import gettext
 from trytond.model import Index, ModelSQL, ModelView, Unique, Workflow, fields
 from trytond.model.exceptions import AccessError
 from trytond.pool import Pool
-from trytond.pyson import Bool, Equal, Eval, If, Not, Or
+from trytond.pyson import Bool, Eval, If
 from trytond.tools import grouped_slice, reduce_ids
 from trytond.transaction import Transaction
 from trytond.wizard import Button, StateTransition, StateView, Wizard
@@ -27,14 +27,13 @@ class Forecast(Workflow, ModelSQL, ModelView):
     __name__ = "stock.forecast"
 
     _states = {
-        'readonly': Not(Equal(Eval('state'), 'draft')),
+        'readonly': Eval('state') != 'draft',
     }
 
     warehouse = fields.Many2One(
         'stock.location', 'Location', required=True,
         domain=[('type', '=', 'warehouse')], states={
-            'readonly': Or(Not(Equal(Eval('state'), 'draft')),
-                Bool(Eval('lines', [0]))),
+            'readonly': (Eval('state') != 'draft') | Eval('lines', [0]),
             })
     destination = fields.Many2One(
         'stock.location', 'Destination', required=True,
@@ -51,8 +50,7 @@ class Forecast(Workflow, ModelSQL, ModelView):
         'stock.forecast.line', 'forecast', 'Lines', states=_states)
     company = fields.Many2One(
         'company.company', 'Company', required=True, states={
-            'readonly': Or(Not(Equal(Eval('state'), 'draft')),
-                Bool(Eval('lines', [0]))),
+            'readonly': (Eval('state') != 'draft') | Eval('lines', [0]),
             })
     state = fields.Selection([
             ('draft', "Draft"),
@@ -305,7 +303,7 @@ class ForecastLine(ModelSQL, ModelView):
     unit = fields.Many2One(
         'product.uom', "Unit", required=True,
         domain=[
-            If(Bool(Eval('product_uom_category')),
+            If(Eval('product_uom_category'),
                 ('category', '=', Eval('product_uom_category')),
                 ('category', '!=', -1)),
             ],
@@ -324,8 +322,7 @@ class ForecastLine(ModelSQL, ModelView):
     forecast = fields.Many2One(
         'stock.forecast', 'Forecast', required=True, ondelete='CASCADE',
         states={
-            'readonly': ((Eval('forecast_state') != 'draft')
-                & Bool(Eval('forecast'))),
+            'readonly': (Eval('forecast_state') != 'draft') & Eval('forecast'),
             })
     forecast_state = fields.Function(
         fields.Selection('get_forecast_states', 'Forecast State'),
