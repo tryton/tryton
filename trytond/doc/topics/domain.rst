@@ -37,6 +37,10 @@ by this pattern::
 
     The number of *dots* in a clause is not limited.
 
+    .. note::
+      Negative operators match records for which any of the field before the
+      last dot is empty.
+
     .. warning::
         For :class:`trytond.model.fields.Reference`, an extra ending clause is
         needed to define the target model to join, for example::

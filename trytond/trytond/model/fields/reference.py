@@ -2,7 +2,7 @@
 # this repository contains the full copyright notices and license terms.
 import warnings
 
-from sql import Cast, Expression, Literal, Query
+from sql import Cast, Expression, Literal, Null, Query
 from sql.functions import Position, Substring
 
 from trytond.pool import Pool
@@ -211,9 +211,12 @@ class Reference(SelectionMixin, Field):
         if 'active' in Target._fields:
             target_domain.append(('active', 'in', [True, False]))
         query = Target.search(target_domain, order=[], query=True)
-        return (
+        expression = (
             self.sql_id(column, Model).in_(query)
             & column.like(target + ',%'))
+        if operator.startswith('not') or operator == '!=':
+            expression |= column == Null
+        return expression
 
     def definition(self, model, language):
         encoder = PYSONEncoder()

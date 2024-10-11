@@ -202,6 +202,24 @@ class FieldMany2OneTestCase(TestCase):
         self.assertNotIsInstance(query.from_[0], Join)
 
     @with_transaction()
+    def test_search_nested_null(self):
+        "Test search by null many2one"
+        pool = Pool()
+        Many2One = pool.get('test.many2one')
+
+        record, = Many2One.create([{'many2one': None}])
+
+        result = Many2One.search([
+                ('many2one.value', '=', 1),
+                ])
+        self.assertListEqual(result, [])
+
+        result = Many2One.search([
+                ('many2one.value', '!=', 1),
+                ])
+        self.assertListEqual(result, [record])
+
+    @with_transaction()
     def test_context_attribute(self):
         "Test context on many2one attribute"
         pool = Pool()
