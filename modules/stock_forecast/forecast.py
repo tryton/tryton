@@ -8,18 +8,20 @@ from dateutil.relativedelta import relativedelta
 from sql import Null
 from sql.aggregate import Sum
 from sql.conditionals import Coalesce
+from sql.operators import Equal
 
 from trytond import backend
 from trytond.i18n import gettext
-from trytond.model import Index, ModelSQL, ModelView, Unique, Workflow, fields
+from trytond.model import (
+    Exclude, Index, ModelSQL, ModelView, Unique, Workflow, fields)
 from trytond.model.exceptions import AccessError
 from trytond.pool import Pool
 from trytond.pyson import Bool, Eval, If
+from trytond.sql.functions import DateRange
+from trytond.sql.operators import RangeOverlap
 from trytond.tools import grouped_slice, reduce_ids
 from trytond.transaction import Transaction
 from trytond.wizard import Button, StateTransition, StateView, Wizard
-
-from .exceptions import ForecastValidationError
 
 
 class Forecast(Workflow, ModelSQL, ModelView):
@@ -66,6 +68,16 @@ class Forecast(Workflow, ModelSQL, ModelView):
     def __setup__(cls):
         super(Forecast, cls).__setup__()
         t = cls.__table__()
+        cls._sql_constraints += [
+            ('dates_done_overlap',
+                Exclude(t,
+                    (t.company, Equal),
+                    (t.warehouse, Equal),
+                    (t.destination, Equal),
+                    (DateRange(t.from_date, t.to_date, '[]'), RangeOverlap),
+                    where=t.state == 'done'),
+                'stock_forecast.msg_forecast_done_dates_overlap'),
+            ]
         cls._sql_indexes.add(
             Index(
                 t,
@@ -187,46 +199,6 @@ class Forecast(Workflow, ModelSQL, ModelView):
             ('warehouse.rec_name', *clause[1:]),
             ('destination.rec_name', *clause[1:]),
             ]
-
-    @classmethod
-    def validate_fields(cls, forecasts, field_names):
-        super().validate_fields(forecasts, field_names)
-        cls.check_date_overlap(forecasts, field_names)
-
-    @classmethod
-    def check_date_overlap(cls, forecasts, field_names=None):
-        if field_names and not (field_names & {
-                    'from_date', 'to_date',
-                    'warehouse', 'destination',
-                    'company', 'state'}):
-            return
-        transaction = Transaction()
-        connection = transaction.connection
-        cls.lock()
-        table = cls.__table__()
-        cursor = connection.cursor()
-        for forecast in forecasts:
-            if forecast.state != 'done':
-                continue
-            cursor.execute(*table.select(table.id,
-                    where=(((table.from_date <= forecast.from_date)
-                            & (table.to_date >= forecast.from_date))
-                        | ((table.from_date <= forecast.to_date)
-                            & (table.to_date >= forecast.to_date))
-                        | ((table.from_date >= forecast.from_date)
-                            & (table.to_date <= forecast.to_date)))
-                    & (table.warehouse == forecast.warehouse.id)
-                    & (table.destination == forecast.destination.id)
-                    & (table.company == forecast.company.id)
-                    & (table.state == 'done')
-                    & (table.id != forecast.id)))
-            forecast_id = cursor.fetchone()
-            if forecast_id:
-                second = cls(forecast_id[0])
-                raise ForecastValidationError(
-                    gettext('stock_forecast.msg_forecast_date_overlap',
-                        first=forecast.rec_name,
-                        second=second.rec_name))
 
     @classmethod
     def delete(cls, forecasts):

@@ -3,8 +3,8 @@
 this repository contains the full copyright notices and license terms. -->
 <tryton>
     <data grouped="1">
-        <record model="ir.message" id="msg_forecast_date_overlap">
-            <field name="text">The forecasts "%(first)s" and "%(second)s" overlap, you must use different dates.</field>
+        <record model="ir.message" id="msg_forecast_done_dates_overlap">
+            <field name="text">The dates of done forecasts for the same company, warehouse and destination can not overlap.</field>
         </record>
         <record model="ir.message" id="msg_forecast_delete_cancel">
             <field name="text">To delete forecast "%(forecast)s" you must cancel it.</field>
