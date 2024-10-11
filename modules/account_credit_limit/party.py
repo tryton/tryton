@@ -65,6 +65,10 @@ class Party(metaclass=PoolMeta):
 
         if self.credit_limit_amount is None:
             return
+        company_id = Transaction().context.get('company')
+        if company_id is None or company_id < 0:
+            return
+        company = Company(company_id)
 
         def in_group():
             group = Group(ModelData.get_id('account_credit_limit',
@@ -82,7 +86,6 @@ class Party(metaclass=PoolMeta):
             Model = pool.get(model)
             Transaction().database.lock(Transaction().connection, Model._table)
         if self.credit_limit_amount < self.credit_amount + amount:
-            company = Company(Transaction().context.get('company'))
             lang = Lang.get()
             limit = lang.currency(self.credit_limit_amount, company.currency)
             if not in_group():
@@ -125,7 +128,7 @@ class Party(metaclass=PoolMeta):
         pool = Pool()
         Company = pool.get('company.company')
         company_id = Transaction().context.get('company')
-        if company_id:
+        if company_id is not None and company_id >= 0:
             company = Company(company_id)
             return company.currency.digits
 
