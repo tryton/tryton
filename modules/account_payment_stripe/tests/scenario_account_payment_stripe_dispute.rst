@@ -30,10 +30,6 @@ Create fiscal year::
     >>> fiscalyear = create_fiscalyear(today=today)
     >>> fiscalyear.click('create_period')
 
-Get accounts::
-
-    >>> _ = create_chart()
-
 Create Stripe account::
 
     >>> StripeAccount = Model.get('account.payment.stripe.account')
