@@ -1,6 +1,6 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
-from sql import As, Column, Expression, Literal, Query, With
+from sql import As, Column, Expression, Literal, Null, Query, With
 from sql.aggregate import Max
 from sql.conditionals import Coalesce
 from sql.operators import Or
@@ -266,7 +266,7 @@ class Many2One(Field):
         target_domain = [(target_name,) + tuple(domain[1:])]
         if Target.estimated_count() < _subquery_threshold:
             query = Target.search(target_domain, order=[], query=True)
-            return column.in_(query)
+            expression = column.in_(query)
         else:
             rule_domain = Rule.domain_get(Target.__name__, mode='read')
             if rule_domain:
@@ -279,7 +279,9 @@ class Many2One(Field):
             target_table, _ = target_tables[None]
             _, expression = Target.search_domain(
                 target_domain, tables=target_tables)
-            return expression
+        if operator.startswith('not') or operator == '!=':
+            expression |= column == Null
+        return expression
 
     @order_method
     def convert_order(self, name, tables, Model):
