@@ -1707,16 +1707,16 @@ class Line(sequence_ordered(), ModelSQL, ModelView):
     def get_from_location(self, name):
         if (self.quantity or 0) >= 0:
             if self.purchase.party.supplier_location:
-                return self.purchase.party.supplier_location.id
+                return self.purchase.party.supplier_location
         elif self.purchase.return_from_location:
-            return self.purchase.return_from_location.id
+            return self.purchase.return_from_location
 
     def get_to_location(self, name):
         if (self.quantity or 0) >= 0:
             if self.purchase.warehouse:
-                return self.purchase.warehouse.input_location.id
+                return self.purchase.warehouse.input_location
         elif self.purchase.party.supplier_location:
-            return self.purchase.party.supplier_location.id
+            return self.purchase.party.supplier_location
 
     @fields.depends('product')
     def on_change_with_movable(self, name=None):

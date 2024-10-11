@@ -1775,18 +1775,18 @@ class SaleLine(TaxableMixin, sequence_ordered(), ModelSQL, ModelView):
     def get_from_location(self, name):
         if (self.quantity or 0) >= 0:
             if self.warehouse:
-                return self.warehouse.output_location.id
+                return self.warehouse.output_location
         else:
             party = self.sale.shipment_party or self.sale.party
-            return party.customer_location.id
+            return party.customer_location
 
     def get_to_location(self, name):
         if (self.quantity or 0) >= 0:
             party = self.sale.shipment_party or self.sale.party
-            return party.customer_location.id
+            return party.customer_location
         else:
             if self.warehouse:
-                return self.warehouse.input_location.id
+                return self.warehouse.input_location
 
     @classmethod
     def movable_types(cls):
