@@ -351,6 +351,8 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin, InvoiceReportMixin):
         fields.Boolean("Has Payment Method"), 'get_has_payment_method')
     has_report_cache = fields.Function(
         fields.Boolean("Has Report Cached"), 'get_has_report_cache')
+    has_account_move = fields.Function(
+        fields.Boolean("Has Account Move"), 'on_change_with_has_account_move')
 
     del _states
 
@@ -457,8 +459,9 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin, InvoiceReportMixin):
                             ('type', '!=', 'in'),
                         ],
                     'invisible': (~Eval('state').in_(['draft', 'validated'])
-                        | ((Eval('state') == 'posted') & Bool(Eval('move')))),
-                    'depends': ['state', 'move'],
+                        | ((Eval('state') == 'posted')
+                           & ~Eval('has_account_move', False))),
+                    'depends': ['state', 'has_account_move'],
                     },
                 'pay': {
                     'invisible': (
@@ -627,6 +630,10 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin, InvoiceReportMixin):
         if self.party and self.party.lang:
             return self.party.lang.code
         return Config.get_language()
+
+    @fields.depends('move')
+    def on_change_with_has_account_move(self, name=None):
+        return bool(self.move)
 
     @classmethod
     def get_type_name(cls, invoices, name):
