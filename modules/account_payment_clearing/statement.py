@@ -178,6 +178,15 @@ class StatementLine(metaclass=PoolMeta):
                 and l.payment.clearing_move.state == 'draft'])
 
 
+class StatementRule(metaclass=PoolMeta):
+    __name__ = 'account.statement.rule'
+
+    @classmethod
+    def __setup__(cls):
+        super().__setup__()
+        cls.description.help += "\n'payment_group'"
+
+
 class StatementRuleLine(metaclass=PoolMeta):
     __name__ = 'account.statement.rule.line'
 

@@ -94,7 +94,9 @@ class StatementRule(sequence_ordered(), ModelSQL, ModelView):
     description = fields.Char("Description",
         help="The regular expression the description is searched with.\n"
         "It may define the groups named:\n"
-        "'party', 'bank_account', 'invoice'.")
+        "'party'\n"
+        "'bank_account'\n"
+        "'invoice'")
     information_rules = fields.One2Many(
         'account.statement.rule.information', 'rule', "Information Rules")
 

@@ -896,6 +896,15 @@ class StatementLine(metaclass=PoolMeta):
             yield self.payment.kind, [self.payment]
 
 
+class StatementRule(metaclass=PoolMeta):
+    __name__ = 'account.statement.rule'
+
+    @classmethod
+    def __setup__(cls):
+        super().__setup__()
+        cls.description.help += "\n'payment'"
+
+
 class StatementRuleLine(metaclass=PoolMeta):
     __name__ = 'account.statement.rule.line'
 
