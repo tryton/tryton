@@ -1,3 +1,4 @@
+* Allow cancellation of done shipments
 * Extend domain to reschedule not yet done shipment
 * Remove default planned date on supplier shipment
 * Add shipped state to customer shipment

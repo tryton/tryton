@@ -468,6 +468,7 @@ class ShipmentIn(
                 ('draft', 'cancelled'),
                 ('received', 'cancelled'),
                 ('cancelled', 'draft'),
+                ('done', 'cancelled'),
                 ))
         cls._buttons.update({
                 'cancel': {
@@ -880,6 +881,7 @@ class ShipmentInReturn(ShipmentAssignMixin, Workflow, ModelSQL, ModelView):
                 ('waiting', 'cancelled'),
                 ('assigned', 'cancelled'),
                 ('cancelled', 'draft'),
+                ('done', 'cancelled'),
                 ))
         cls._buttons.update({
                 'cancel': {
@@ -1310,6 +1312,7 @@ class ShipmentOut(
                 ('packed', 'cancelled'),
                 ('shipped', 'cancelled'),
                 ('cancelled', 'draft'),
+                ('done', 'cancelled'),
                 ))
         cls._buttons.update({
                 'cancel': {
@@ -2001,6 +2004,7 @@ class ShipmentOutReturn(
                 ('draft', 'cancelled'),
                 ('received', 'cancelled'),
                 ('cancelled', 'draft'),
+                ('done', 'cancelled'),
                 ))
         cls._buttons.update({
                 'cancel': {
@@ -2491,6 +2495,7 @@ class ShipmentInternal(
                 ('waiting', 'cancelled'),
                 ('assigned', 'cancelled'),
                 ('cancelled', 'draft'),
+                ('done', 'cancelled'),
                 ))
         cls._buttons.update({
                 'cancel': {

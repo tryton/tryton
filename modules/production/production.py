@@ -192,6 +192,7 @@ class Production(ShipmentAssignMixin, Workflow, ModelSQL, ModelView):
                 ('waiting', 'cancelled'),
                 ('assigned', 'cancelled'),
                 ('cancelled', 'draft'),
+                ('done', 'cancelled'),
                 ))
         cls._buttons.update({
                 'cancel': {
