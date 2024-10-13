@@ -544,6 +544,23 @@ this repository contains the full copyright notices and license terms. -->
             <field name="string">Fail</field>
         </record>
 
+        <record model="ir.sequence.type" id="sequence_type_account_payment">
+            <field name="name">Account Payment Group</field>
+        </record>
+        <record model="ir.sequence.type-res.group" id="sequence_type_account_payment_group_admin">
+            <field name="sequence_type" ref="sequence_type_account_payment"/>
+            <field name="group" ref="res.group_admin"/>
+        </record>
+        <record model="ir.sequence.type-res.group" id="sequence_type_account_payment_group_account_admin">
+            <field name="sequence_type" ref="sequence_type_account_payment"/>
+            <field name="group" ref="account.group_account_admin"/>
+        </record>
+
+        <record model="ir.sequence" id="sequence_account_payment">
+            <field name="name">Default Account Payment</field>
+            <field name="sequence_type" ref="sequence_type_account_payment"/>
+        </record>
+
         <record model="ir.action.wizard" id="act_process_payments">
             <field name="name">Process Payments</field>
             <field name="wiz_name">account.payment.process</field>

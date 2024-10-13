@@ -83,6 +83,8 @@ Partially pay line::
     >>> assertEqual(pay_line.form.journal, payment_journal)
     >>> pay_line.execute('next_')
     >>> payment, = Payment.find()
+    >>> bool(payment.number)
+    True
     >>> assertEqual(payment.date, tomorrow)
     >>> assertEqual(payment.party, supplier)
     >>> payment.amount

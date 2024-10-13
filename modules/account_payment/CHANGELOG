@@ -1,3 +1,4 @@
+* Add number as record name to payment
 * Add payment amount cache to account move line
 * Add option to create direct debit based on balance
 * Enforce payment amount to be greater or equal to zero

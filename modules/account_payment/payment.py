@@ -273,6 +273,8 @@ _STATES = {
 class Payment(Workflow, ModelSQL, ModelView):
     'Payment'
     __name__ = 'account.payment'
+    _rec_name = 'number'
+    number = fields.Char("Number", required=True, readonly=True)
     company = fields.Many2One(
         'company.company', "Company", required=True, states=_STATES)
     journal = fields.Many2One('account.payment.journal', 'Journal',
@@ -459,6 +461,24 @@ class Payment(Workflow, ModelSQL, ModelView):
                     readonly=False, instantiate=0, fresh_session=True),
                 })
 
+    @classmethod
+    def __register__(cls, module):
+        cursor = Transaction().connection.cursor()
+        table = cls.__table__()
+        table_h = cls.__table_handler__(module)
+        number_exist = table_h.column_exist('number')
+
+        super().__register__(module)
+
+        # Migration from 7.2: add number
+        if not number_exist:
+            cursor.execute(*table.update([table.number], [table.id]))
+
+    @classmethod
+    def order_number(cls, tables):
+        table, _ = tables[None]
+        return [CharLength(table.number), table.number]
+
     @staticmethod
     def default_company():
         return Transaction().context.get('company')
@@ -553,6 +573,7 @@ class Payment(Workflow, ModelSQL, ModelView):
             default = {}
         else:
             default = default.copy()
+        default.setdefault('number', None)
         default.setdefault('group', None)
         default.setdefault('approved_by')
         default.setdefault('succeeded_by')
@@ -563,6 +584,16 @@ class Payment(Workflow, ModelSQL, ModelView):
     def create(cls, vlist):
         pool = Pool()
         Line = pool.get('account.move.line')
+        Config = pool.get('account.configuration')
+
+        vlist = [v.copy() for v in vlist]
+        config = Config(1)
+        default_company = cls.default_company()
+        for values in vlist:
+            if values.get('number') is None:
+                values['number'] = config.get_multivalue(
+                    'payment_sequence',
+                    company=values.get('company', default_company)).get()
         payments = super().create(vlist)
         lines = {p.line for p in payments if p.line}
         if lines:

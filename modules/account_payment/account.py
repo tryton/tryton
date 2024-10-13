@@ -559,6 +559,15 @@ class PayLine(Wizard):
 
 class Configuration(metaclass=PoolMeta):
     __name__ = 'account.configuration'
+    payment_sequence = fields.MultiValue(fields.Many2One(
+            'ir.sequence', "Payment Sequence", required=True,
+            domain=[
+                ('company', 'in',
+                    [Eval('context', {}).get('company', -1), None]),
+                ('sequence_type', '=',
+                    Id('account_payment',
+                        'sequence_type_account_payment')),
+                ]))
     payment_group_sequence = fields.MultiValue(fields.Many2One(
             'ir.sequence', 'Payment Group Sequence', required=True,
             domain=[
@@ -570,9 +579,36 @@ class Configuration(metaclass=PoolMeta):
                 ]))
 
     @classmethod
+    def default_payment_sequence(cls, **pattern):
+        return cls.multivalue_model(
+            'payment_sequence').default_payment_sequence()
+
+    @classmethod
     def default_payment_group_sequence(cls, **pattern):
         return cls.multivalue_model(
             'payment_group_sequence').default_payment_group_sequence()
+
+
+class ConfigurationPaymentSequence(ModelSQL, CompanyValueMixin):
+    "Account Configuration Payment Sequence"
+    __name__ = 'account.configuration.payment_sequence'
+    payment_sequence = fields.Many2One(
+        'ir.sequence', "Payment Sequence", required=True,
+        domain=[
+            ('company', 'in', [Eval('company', -1), None]),
+            ('sequence_type', '=',
+                Id('account_payment', 'sequence_type_account_payment')),
+            ])
+
+    @classmethod
+    def default_payment_sequence(cls):
+        pool = Pool()
+        ModelData = pool.get('ir.model.data')
+        try:
+            return ModelData.get_id(
+                'account_payment', 'sequence_account_payment')
+        except KeyError:
+            return None
 
 
 class ConfigurationPaymentGroupSequence(ModelSQL, CompanyValueMixin):

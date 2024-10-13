@@ -15,6 +15,7 @@ def register():
         account.PayLineStart,
         account.PayLineAskJournal,
         account.Configuration,
+        account.ConfigurationPaymentSequence,
         account.ConfigurationPaymentGroupSequence,
         party.Party,
         party.PartyPaymentDirectDebit,
