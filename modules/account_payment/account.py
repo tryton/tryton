@@ -883,10 +883,60 @@ class StatementLine(metaclass=PoolMeta):
             if self.payment.line:
                 self.account = self.payment.line.account
 
+    @fields.depends('party', methods=['payment'])
+    def on_change_party(self):
+        super(StatementLine, self).on_change_party()
+        if self.payment:
+            if self.payment.party != self.party:
+                self.payment = None
+
     def payments(self):
         "Yield payments per kind"
         if self.payment:
             yield self.payment.kind, [self.payment]
+
+
+class StatementRuleLine(metaclass=PoolMeta):
+    __name__ = 'account.statement.rule.line'
+
+    def _get_related_to(self, origin, keywords, party=None, amount=0):
+        return super()._get_related_to(
+            origin, keywords, party=party, amount=amount) | {
+            self._get_payment(origin, keywords, party=party, amount=amount),
+            }
+
+    def _get_party_from(self, related_to):
+        pool = Pool()
+        Payment = pool.get('account.payment')
+        party = super()._get_party_from(related_to)
+        if isinstance(related_to, Payment):
+            party = related_to.party
+        return party
+
+    @classmethod
+    def _get_payment_domain(cls, payment, origin):
+        return [
+            ('rec_name', '=', payment),
+            ('company', '=', origin.company.id),
+            ('currency', '=', origin.currency.id),
+            ('state', 'in', ['processing', 'succeeded', 'failed']),
+            ]
+
+    def _get_payment(self, origin, keywords, party=None, amount=0):
+        pool = Pool()
+        Payment = pool.get('account.payment')
+        if keywords.get('payment'):
+            domain = self._get_payment_domain(keywords['payment'], origin)
+            if party:
+                domain.append(('party', '=', party.id))
+            if amount > 0:
+                domain.append(('kind', '=', 'receivable'))
+            elif amount < 0:
+                domain.append(('kind', '=', 'payable'))
+            payments = Payment.search(domain)
+            if len(payments) == 1:
+                payment, = payments
+                return payment
 
 
 class Dunning(metaclass=PoolMeta):

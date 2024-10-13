@@ -29,6 +29,10 @@ def register():
         account.StatementLine,
         module='account_payment', type_='model', depends=['account_statement'])
     Pool.register(
+        account.StatementRuleLine,
+        module='account_payment', type_='model',
+        depends=['account_statement_rule'])
+    Pool.register(
         account.Dunning,
         module='account_payment', type_='model', depends=['account_dunning'])
     Pool.register(

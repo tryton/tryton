@@ -1,6 +1,6 @@
-=======================================
-Account Payment with Statement Scenario
-=======================================
+============================================
+Account Payment with Statement Rule Scenario
+============================================
 
 Imports::
 
@@ -13,14 +13,15 @@ Imports::
     >>> from trytond.modules.account_invoice.tests.tools import (
     ...     set_fiscalyear_invoice_sequences)
     >>> from trytond.modules.company.tests.tools import create_company
-    >>> from trytond.tests.tools import activate_modules
+    >>> from trytond.tests.tools import activate_modules, assertEqual
 
     >>> today = dt.date.today()
 
 Activate modules::
 
     >>> config = activate_modules(
-    ...     ['account_payment', 'account_statement'], create_company, create_chart)
+    ...     ['account_payment', 'account_statement', 'account_statement_rule'],
+    ...     create_company, create_chart)
 
     >>> AccountJournal = Model.get('account.journal')
     >>> Party = Model.get('party.party')
@@ -28,6 +29,7 @@ Activate modules::
     >>> PaymentJournal = Model.get('account.payment.journal')
     >>> Statement = Model.get('account.statement')
     >>> StatementJournal = Model.get('account.statement.journal')
+    >>> StatementRule = Model.get('account.statement.rule')
 
 Create fiscal year::
 
@@ -59,7 +61,15 @@ Create parties::
     >>> customer = Party(name="Customer")
     >>> customer.save()
 
-Receive payment::
+Create statement rules for payment::
+
+    >>> statement_rule = StatementRule(name="Rule Payment")
+    >>> statement_rule.description = r"Payment: *(?P<payment>.*)"
+    >>> statement_line = statement_rule.lines.new()
+    >>> statement_line.amount = "pending"
+    >>> statement_rule.save()
+
+Receive a payments::
 
     >>> payment = Payment(kind='receivable')
     >>> payment.journal = payment_journal
@@ -70,23 +80,25 @@ Receive payment::
     >>> payment.state
     'processing'
 
-Validate statement related to payment::
+Create a statement with payment and group as origins::
 
     >>> statement = Statement(
-    ...     name='001',
+    ...     name="001",
     ...     journal=statement_journal,
-    ...     total_amount=Decimal('90.00'))
-    >>> line = statement.lines.new()
-    >>> line.date = today
-    >>> line.amount = Decimal('90.00')
-    >>> line.account = accounts['receivable']
-    >>> line.related_to = payment
+    ...     total_amount=Decimal('100.00'))
+    >>> origin = statement.origins.new()
+    >>> origin.date = today
+    >>> origin.amount = Decimal('100.00')
+    >>> origin.description = "Payment: %s" % payment.rec_name
+    >>> statement.click('apply_rules')
+    >>> line, = statement.lines
+    >>> assertEqual(line.related_to, payment)
+
+Check payments are succeeded after validation::
+
     >>> statement.click('validate_statement')
     >>> statement.state
     'validated'
-
-Check payment is succeeded::
-
     >>> payment.reload()
     >>> payment.state
     'succeeded'

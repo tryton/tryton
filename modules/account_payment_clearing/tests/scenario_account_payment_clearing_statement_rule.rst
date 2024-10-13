@@ -126,7 +126,9 @@ Create a statement with payment and group as origins::
     >>> origin.description = "Payment Group: %s" % payment2.group.rec_name
     >>> statement.click('apply_rules')
     >>> line1, line2 = statement.lines
+    >>> assertEqual(line1.account, bank_clearing)
     >>> assertEqual(line1.related_to, payment1)
+    >>> assertEqual(line1.account, bank_clearing)
     >>> assertEqual(line2.related_to, payment2.group)
 
 Check payments are succeeded after validation::

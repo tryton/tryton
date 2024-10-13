@@ -152,9 +152,6 @@ class StatementLine(metaclass=PoolMeta):
     @fields.depends('party', methods=['payment'])
     def on_change_party(self):
         super(StatementLine, self).on_change_party()
-        if self.payment:
-            if self.payment.party != self.party:
-                self.payment = None
         if self.party:
             self.payment_group = None
 
@@ -187,17 +184,8 @@ class StatementRuleLine(metaclass=PoolMeta):
     def _get_related_to(self, origin, keywords, party=None, amount=0):
         return super()._get_related_to(
             origin, keywords, party=party, amount=amount) | {
-            self._get_payment(origin, keywords, party=party, amount=amount),
             self._get_payment_group(origin, keywords),
             }
-
-    def _get_party_from(self, related_to):
-        pool = Pool()
-        Payment = pool.get('account.payment')
-        party = super()._get_party_from(related_to)
-        if isinstance(related_to, Payment):
-            party = related_to.party
-        return party
 
     def _get_account_from(self, related_to):
         pool = Pool()
@@ -208,38 +196,29 @@ class StatementRuleLine(metaclass=PoolMeta):
             account = related_to.journal.clearing_account
         return account
 
-    def _get_payment(self, origin, keywords, party=None, amount=0):
-        pool = Pool()
-        Payment = pool.get('account.payment')
-        if keywords.get('payment'):
-            domain = [
-                ('rec_name', '=', keywords['payment']),
-                ('company', '=', origin.company.id),
-                ('currency', '=', origin.currency.id),
-                ('state', 'in', ['processing', 'succeeded', 'failed']),
-                ('clearing_reconciled', '!=', True),
-                ]
-            if party:
-                domain.append(('party', '=', party.id))
-            if amount > 0:
-                domain.append(('kind', '=', 'receivable'))
-            elif amount < 0:
-                domain.append(('kind', '=', 'payable'))
-            payments = Payment.search(domain)
-            if len(payments) == 1:
-                payment, = payments
-                return payment
+    @classmethod
+    def _get_payment_domain(cls, payment, origin):
+        return [
+            super()._get_payment_domain(payment, origin),
+            ('clearing_reconciled', '!=', True),
+            ]
+
+    @classmethod
+    def _get_payment_group_domain(cls, payment_group, origin):
+        return [
+            ('rec_name', '=', payment_group),
+            ('company', '=', origin.company.id),
+            ('currency', '=', origin.currency.id),
+            ('clearing_reconciled', '!=', True),
+            ]
 
     def _get_payment_group(self, origin, keywords):
         pool = Pool()
         PaymentGroup = pool.get('account.payment.group')
         if keywords.get('payment_group'):
-            groups = PaymentGroup.search([
-                    ('rec_name', '=', keywords['payment_group']),
-                    ('company', '=', origin.company.id),
-                    ('currency', '=', origin.currency.id),
-                    ('clearing_reconciled', '!=', True),
-                    ])
+            domain = self._get_payment_group_domain(
+                keywords['payment_group'], origin)
+            groups = PaymentGroup.search(domain)
             if len(groups) == 1:
                 group, = groups
                 return group

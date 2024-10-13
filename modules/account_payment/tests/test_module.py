@@ -10,7 +10,7 @@ class AccountPaymentTestCase(
         PartyCompanyCheckEraseMixin, CompanyTestMixin, ModuleTestCase):
     'Test Account Payment module'
     module = 'account_payment'
-    extras = ['account_invoice']
+    extras = ['account_invoice', 'account_statement', 'account_statement_rule']
 
 
 del ModuleTestCase
