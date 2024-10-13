@@ -31,7 +31,7 @@ def create_chart(company, tax=False, chart='account.account_template_root_en'):
     template = AccountTemplate(ModelData.get_id(module, xml_id))
     if tax:
         tax_account = AccountTemplate(ModelData.get_id(
-                'account', 'account_template_tax_en'))
+                'account', 'account_template_6_3_4_en'))
         with Transaction().set_user(0):
             tax = TaxTemplate()
             tax.name = tax.description = '20% VAT'
@@ -123,7 +123,6 @@ def close_fiscalyear(fiscalyear):
     Sequence = pool.get('ir.sequence')
     Journal = pool.get('account.journal')
     Period = pool.get('account.period')
-    AccountType = pool.get('account.account.type')
     Account = pool.get('account.account')
     Move = pool.get('account.move')
     FiscalYear = pool.get('account.fiscalyear')
@@ -147,17 +146,9 @@ def close_fiscalyear(fiscalyear):
                 'fiscalyear': fiscalyear.id,
                 'type': 'adjustment',
                 }])
-    type_equity, = AccountType.search([
-            ('name', '=', 'Equity'),
+    account_pl, = Account.search([
+            ('code', '=', '3.2.1'),
             ])
-    revenue, = Account.search([
-            ('type.revenue', '=', True),
-            ])
-    account_pl, = Account.create([{
-                'name': 'P&L',
-                'type': type_equity.id,
-                'parent': revenue.parent.id,
-                }])
 
     session_id = BalanceNonDeferral.create()[0]
     balance_non_deferral = BalanceNonDeferral(session_id)
@@ -201,7 +192,7 @@ class AccountTestCase(
 
             # Create an account and tax without template
 
-            cash, = Account.search([('name', '=', 'Main Cash')])
+            cash, = Account.search([('code', '=', '1.1.1')])
             Account.copy([cash.id])
 
             tax, = Tax.search([])
@@ -402,18 +393,22 @@ class AccountTestCase(
                     ])
             revenue, = Account.search([
                     ('type.revenue', '=', True),
-                    ])
+                    ('closed', '=', False),
+                    ], limit=1)
             receivable, = Account.search([
                     ('type.receivable', '=', True),
-                    ])
+                    ('closed', '=', False),
+                    ], limit=1)
             expense, = Account.search([
                     ('type.expense', '=', True),
-                    ])
+                    ('closed', '=', False),
+                    ], limit=1)
             payable, = Account.search([
                     ('type.payable', '=', True),
-                    ])
+                    ('closed', '=', False),
+                    ], limit=1)
             cash, = Account.search([
-                    ('name', '=', 'Main Cash'),
+                    ('code', '=', '1.1.1'),
                     ])
             cash_cur, = Account.copy([cash], default={
                     'second_currency': sec_cur.id,
@@ -604,10 +599,12 @@ class AccountTestCase(
                     ])
             revenue, = Account.search([
                     ('type.revenue', '=', True),
-                    ])
+                    ('closed', '=', False),
+                    ], limit=1)
             receivable, = Account.search([
                     ('type.receivable', '=', True),
-                    ])
+                    ('closed', '=', False),
+                    ], limit=1)
 
             Move.create([{
                         'period': period.id,
@@ -697,10 +694,12 @@ class AccountTestCase(
                     ])
             revenue, = Account.search([
                     ('type.revenue', '=', True),
-                    ])
+                    ('closed', '=', False),
+                    ], limit=1)
             receivable, = Account.search([
                     ('type.receivable', '=', True),
-                    ])
+                    ('closed', '=', False),
+                    ], limit=1)
 
             move = Move()
             move.period = period
@@ -849,7 +848,7 @@ class AccountTestCase(
             create_chart(company)
 
             tax_account, = Account.search([
-                    ('name', '=', 'Main Tax'),
+                    ('code', '=', '6.3.6'),
                     ])
             tax = Tax()
             tax.name = tax.description = 'Test'
@@ -1036,7 +1035,7 @@ class AccountTestCase(
             create_chart(company)
 
             tax_account, = Account.search([
-                    ('name', '=', 'Main Tax'),
+                    ('code', '=', '6.3.6'),
                     ])
             ecotax1 = Tax()
             ecotax1.name = ecotax1.description = 'EcoTax 1'
@@ -1316,7 +1315,7 @@ class AccountTestCase(
             config.save()
 
             tax_account, = Account.search([
-                    ('name', '=', 'Main Tax'),
+                    ('code', '=', '6.3.6'),
                     ])
 
             tax1 = Tax()
@@ -1365,7 +1364,7 @@ class AccountTestCase(
             config.save()
 
             tax_account, = Account.search([
-                    ('name', '=', 'Main Tax'),
+                    ('code', '=', '6.3.6'),
                     ])
 
             tax0 = Tax()
@@ -1423,7 +1422,7 @@ class AccountTestCase(
             config.save()
 
             tax_account, = Account.search([
-                    ('name', '=', 'Main Tax'),
+                    ('code', '=', '6.3.6'),
                     ])
 
             tax1 = Tax()
@@ -1472,7 +1471,7 @@ class AccountTestCase(
             create_chart(company)
 
             tax_account, = Account.search([
-                    ('name', '=', 'Main Tax'),
+                    ('code', '=', '6.3.6'),
                     ])
 
             tax1 = Tax()
@@ -1539,16 +1538,20 @@ class AccountTestCase(
                     ])
             revenue, = Account.search([
                     ('type.revenue', '=', True),
-                    ])
+                    ('closed', '=', False),
+                    ], limit=1)
             receivable, = Account.search([
                     ('type.receivable', '=', True),
-                    ])
+                    ('closed', '=', False),
+                    ], limit=1)
             expense, = Account.search([
                     ('type.expense', '=', True),
-                    ])
+                    ('closed', '=', False),
+                    ], limit=1)
             payable, = Account.search([
                     ('type.payable', '=', True),
-                    ])
+                    ('closed', '=', False),
+                    ], limit=1)
             party, = Party.create([{
                         'name': 'Receivable/Payable party',
                         }])
@@ -1650,10 +1653,12 @@ class AccountTestCase(
             create_chart(company)
             receivable, = Account.search([
                     ('type.receivable', '=', True),
-                    ])
+                    ('closed', '=', False),
+                    ], limit=1)
             payable, = Account.search([
                     ('type.payable', '=', True),
-                    ])
+                    ('closed', '=', False),
+                    ], limit=1)
 
             party = Party(party.id)
 
@@ -1801,7 +1806,9 @@ class AccountTestCase(
             for account in Account.search([]):
                 self.assertEqual(account.name, account.template.name)
                 self.assertEqual(account.code, account.template.code)
-                self.assertEqual(account.type.template, account.template.type)
+                self.assertEqual(
+                    account.type.template if account.type else None,
+                    account.template.type)
                 self.assertEqual(account.reconcile, account.template.reconcile)
                 self.assertEqual(
                     account.start_date, account.template.start_date)
@@ -1857,16 +1864,16 @@ class AccountTestCase(
             create_chart(company, True)
 
             with inactive_records():
-                self.assertEqual(Type.search([], count=True), 16)
-                self.assertEqual(Account.search([], count=True), 7)
+                self.assertEqual(Type.search([], count=True), 46)
+                self.assertEqual(Account.search([], count=True), 135)
                 self.assertEqual(Tax.search([], count=True), 1)
 
                 check()
 
         with Transaction().set_user(0):
             root_type = TypeTemplate(ModelData.get_id(
-                'account', 'account_type_template_minimal_en'))
-            root_type.name = 'Updated Minimal Chart'
+                'account', 'account_type_template_root_en'))
+            root_type.name = "Updated " + root_type.name
             root_type.save()
             chart = AccountTemplate(ModelData.get_id(
                     'account', 'account_template_root_en'))
@@ -1876,7 +1883,7 @@ class AccountTestCase(
             new_type.statement = 'balance'
             new_type.save()
             updated_tax_type, = TypeTemplate.search([
-                    ('name', '=', "Tax"),
+                    ('name', '=', "Liabilities and assets for current tax"),
                     ])
             updated_tax_type.parent = updated_tax_type.parent.parent
             updated_tax_type.save()
@@ -1889,18 +1896,19 @@ class AccountTestCase(
             updated_tax.name = 'VAT'
             updated_tax.invoice_account = new_account
             updated_tax.save()
+            # Can only change type which is compatible with previous parent
             updated_account = AccountTemplate(ModelData.get_id(
-                    'account', 'account_template_revenue_en'))
+                    'account', 'account_template_1_1_1_en'))
             updated_account.code = 'REV'
             updated_account.name = 'Updated Account'
             updated_account.parent = new_account
-            updated_account.type = new_account.type
+            updated_account.type = new_type
             updated_account.reconcile = True
             updated_account.end_date = datetime.date.today()
             updated_account.taxes = [updated_tax]
             updated_account.save()
             inactive_account = AccountTemplate(ModelData.get_id(
-                    'account', 'account_template_expense_en'))
+                    'account', 'account_template_5_1_1_en'))
             inactive_account.end_date = datetime.date.min
             inactive_account.replaced_by = new_account
             inactive_account.save()
@@ -1929,8 +1937,8 @@ class AccountTestCase(
             update_chart.transition_update()
 
             with inactive_records():
-                self.assertEqual(Type.search([], count=True), 17)
-                self.assertEqual(Account.search([], count=True), 8)
+                self.assertEqual(Type.search([], count=True), 47)
+                self.assertEqual(Account.search([], count=True), 136)
                 self.assertEqual(Tax.search([], count=True), 2)
 
                 check()
@@ -2040,7 +2048,7 @@ class AccountTestCase(
             create_chart(company, tax=True)
             root, = Account.search([('parent', '=', None)])
 
-            cash, = Account.search([('name', '=', 'Main Cash')])
+            cash, = Account.search([('code', '=', '1.1.1')])
             cash.template_override = True
             cash.end_date = datetime.date.min
             cash.save()
@@ -2053,7 +2061,7 @@ class AccountTestCase(
 
             with inactive_records():
                 self.assertEqual(
-                    Account.search([('name', '=', 'Main Cash')], count=True),
+                    Account.search([('code', '=', '1.1.1')], count=True),
                     1)
 
     @with_transaction()
@@ -2073,7 +2081,7 @@ class AccountTestCase(
 
         with Transaction().set_user(0):
             root_type_template = TypeTemplate(ModelData.get_id(
-                    'account', 'account_type_template_minimal_en'))
+                    'account', 'account_type_template_root_en'))
 
             type_template, = TypeTemplate.search([
                     ('parent', '!=', None),

@@ -19,12 +19,12 @@ def add_deferred_accounts(accounts, company=None, config=None):
     root, = Account.find([('parent', '=', None)], limit=1)
     asset_type, = AccountType.find([
             ('statement', '=', 'balance'),
-            ('name', '=', "Asset"),
+            ('name', '=', "Current Assets"),
             ('company', '=', company.id),
             ], limit=1)
     liability_type, = AccountType.find([
             ('statement', '=', 'balance'),
-            ('name', '=', "Liability"),
+            ('name', '=', "Liabilities"),
             ('company', '=', company.id),
             ], limit=1)
 

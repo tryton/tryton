@@ -4,8 +4,9 @@ Account Module
 
 The *Account Module* defines the fundamentals needed for basic double entry
 accounting.
-It also includes templates for a basic chart of accounts, balance sheet and
-income statement.
+It also includes templates for the `basic universal chart of accounts
+<https://www.ifrs-gaap.com/basic-universal-coa>`_, balance sheet and income
+statement.
 
 .. toctree::
    :maxdepth: 2

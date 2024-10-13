@@ -32,7 +32,7 @@ def add_advance_payment_accounts(accounts, company=None, config=None):
         company = get_company(config=config)
 
     accounts['advance_payment'], = Account.find([
-            ('type.unearned_revenue', '=', True),
             ('company', '=', company.id),
-            ], limit=1)
+            ('code', '=', '2.2.2'),
+            ])
     return accounts

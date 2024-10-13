@@ -76,6 +76,10 @@ def create_chart(
         create_chart.form.account_receivable = accounts['receivable']
     if accounts['payable'].party_required:
         create_chart.form.account_payable = accounts['payable']
+    if hasattr(create_chart.form, 'category_account_expense'):
+        create_chart.form.category_account_expense = accounts['expense']
+    if hasattr(create_chart.form, 'category_account_revenue'):
+        create_chart.form.category_account_revenue = accounts['revenue']
     create_chart.execute('create_properties')
     return create_chart
 
@@ -100,16 +104,14 @@ def get_accounts(company=None, config=None):
     try:
         accounts['cash'], = Account.find([
                 ('company', '=', company.id),
-                ('name', '=', 'Main Cash'),
-                ('closed', '!=', True),
+                ('code', '=', '1.1.1'),
                 ], limit=1)
     except ValueError:
         pass
     try:
         accounts['tax'], = Account.find([
                 ('company', '=', company.id),
-                ('name', '=', 'Main Tax'),
-                ('closed', '!=', True),
+                ('code', '=', '6.3.6'),
                 ], limit=1)
     except ValueError:
         pass

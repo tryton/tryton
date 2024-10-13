@@ -54,7 +54,7 @@ class WebShopProductDataFeedTestCase(ModuleTestCase):
             create_chart(company)
 
             tax_account, = Account.search([
-                    ('name', '=', 'Main Tax'),
+                    ('code', '=', '6.3.4'),
                     ])
 
             tax = Tax()

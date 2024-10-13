@@ -35,7 +35,8 @@ Taxation
 Development Reference
 *********************
 
-The *Account Module* includes minimal charts of accounts for many languages.
+The *Account Module* includes the `basic universal charts of accounts`_ for
+many languages.
 The :abbr:`XML (eXtensible Markup Language)` files that contain the localised
 charts of account are all generated from the same source XML file.
 The :file:`localize.xsl` :abbr:`XSLT (XML Stylesheet Language Transform)` file
@@ -46,4 +47,6 @@ To output a localised chart of accounts for language ``<lang>`` run:
 
 .. code-block:: bash
 
-   xsltproc --stringparam lang <lang> localize.xsl minimal_chart.xml
+   xsltproc --stringparam lang <lang> localize.xsl account_chart.xml
+
+.. _basic universal charts of accounts: https://www.ifrs-gaap.com/basic-universal-coa

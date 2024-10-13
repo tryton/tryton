@@ -19,7 +19,7 @@ def setup(config, modules, company):
 
     root_template, = AccountTemplate.find([
         ('parent', '=', None),
-        ('name', '=', 'Minimal Account Chart'),
+        ('name', '=', 'Universal Chart of Accounts'),
         ])
     create_chart_account = Wizard('account.create_chart')
     create_chart_account.execute('account')
@@ -28,12 +28,12 @@ def setup(config, modules, company):
     create_chart_account.execute('create_account')
 
     receivable, = Account.find([
-            ('type.receivable', '=', True),
             ('company', '=', company.id),
+            ('code', '=', '1.2.1'),
             ])
     payable, = Account.find([
-            ('type.payable', '=', True),
             ('company', '=', company.id),
+            ('code', '=', '2.1.1'),
             ])
 
     create_chart_account.form.account_receivable = receivable

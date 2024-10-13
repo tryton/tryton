@@ -25,8 +25,8 @@ def setup(config, modules, company):
     sequence.save()
 
     cash, = Account.find([
-            ('name', '=', 'Main Cash'),
             ('company', '=', company.id),
+            ('code', '=', '1.1.1'),
             ])
 
     account_journal = AccountJournal(name='Bank',

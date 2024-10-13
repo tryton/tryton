@@ -1,0 +1,1306 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data>
+        <record model="account.account.type.template" id="account_type_template_root">
+            <field name="name" lang="en">Universal Chart of Account Types</field>
+            <field name="sequence" eval="10"/>
+            <field name="statement" eval="None"/>
+        </record>
+
+        <record model="account.account.type.template" id="account_type_template_assets">
+            <field name="name" lang="en">Assets</field>
+            <field name="parent" ref="account_type_template_root"/>
+            <field name="sequence" eval="10"/>
+            <field name="statement">balance</field>
+        </record>
+
+        <record model="account.account.type.template" id="account_type_template_current_assets">
+            <field name="name" lang="en">Current Assets</field>
+            <field name="parent" ref="account_type_template_assets"/>
+            <field name="sequence" eval="10"/>
+            <field name="statement">balance</field>
+        </record>
+
+        <record model="account.account.type.template" id="account_type_template_accounts_receivable">
+            <field name="name" lang="en">Accounts receivable</field>
+            <field name="parent" ref="account_type_template_current_assets"/>
+            <field name="sequence" eval="10"/>
+            <field name="statement">balance</field>
+            <field name="assets" eval="True"/>
+            <field name="receivable" eval="True"/>
+        </record>
+
+        <record model="account.account.type.template" id="account_type_template_cash">
+            <field name="name" lang="en">Cash and Cash Equivalents</field>
+            <field name="parent" ref="account_type_template_current_assets"/>
+            <field name="sequence" eval="20"/>
+            <field name="statement">balance</field>
+        </record>
+
+        <record model="account.account.type.template" id="account_type_template_inventories">
+            <field name="name" lang="en">Inventories</field>
+            <field name="parent" ref="account_type_template_current_assets"/>
+            <field name="sequence" eval="30"/>
+            <field name="statement">balance</field>
+            <field name="stock" eval="True"/>
+        </record>
+
+        <record model="account.account.type.template" id="account_type_template_petty_cash">
+            <field name="name" lang="en">Cash at bank, Petty Cash, Cash On Hand</field>
+            <field name="parent" ref="account_type_template_current_assets"/>
+            <field name="sequence" eval="40"/>
+            <field name="statement">balance</field>
+        </record>
+
+        <record model="account.account.type.template" id="account_type_template_prepaid_expenses">
+            <field name="name" lang="en">Prepaid expenses for future services that will be used within a year</field>
+            <field name="parent" ref="account_type_template_current_assets"/>
+            <field name="sequence" eval="50"/>
+            <field name="statement">balance</field>
+            <field name="assets" eval="True"/>
+        </record>
+
+        <record model="account.account.type.template" id="account_type_template_revenue_earned_in_arrears">
+            <field name="name" lang="en">Revenue Earned In Arrears (Accrued Revenue) for services done but not yet received for the year</field>
+            <field name="parent" ref="account_type_template_current_assets"/>
+            <field name="sequence" eval="60"/>
+            <field name="statement">balance</field>
+        </record>
+
+        <record model="account.account.type.template" id="account_type_template_loan_to_more">
+            <field name="name" lang="en">Loan To (Less than one financial period)</field>
+            <field name="parent" ref="account_type_template_current_assets"/>
+            <field name="sequence" eval="70"/>
+            <field name="statement">balance</field>
+        </record>
+
+        <record model="account.account.type.template" id="account_type_template_non_current_assets">
+            <field name="name" lang="en">Non-current Assets</field>
+            <field name="parent" ref="account_type_template_assets"/>
+            <field name="sequence" eval="20"/>
+            <field name="statement">balance</field>
+            <field name="assets" eval="True"/>
+        </record>
+
+        <record model="account.account.type.template" id="account_type_template_property">
+            <field name="name" lang="en">Property, Plant and Equipment</field>
+            <field name="parent" ref="account_type_template_non_current_assets"/>
+            <field name="sequence" eval="10"/>
+            <field name="statement">balance</field>
+            <field name="assets" eval="True"/>
+        </record>
+
+        <record model="account.account.type.template" id="account_type_template_investment_property">
+            <field name="name" lang="en">Investment property, such as real estate held for investment purposes</field>
+            <field name="parent" ref="account_type_template_non_current_assets"/>
+            <field name="sequence" eval="20"/>
+            <field name="statement">balance</field>
+            <field name="assets" eval="True"/>
+        </record>
+
+        <record model="account.account.type.template" id="account_type_template_intangible_assets">
+            <field name="name" lang="en">Intangible assets, such as patents, copyrights and goodwill</field>
+            <field name="parent" ref="account_type_template_non_current_assets"/>
+            <field name="sequence" eval="30"/>
+            <field name="statement">balance</field>
+            <field name="assets" eval="True"/>
+        </record>
+
+        <record model="account.account.type.template" id="account_type_template_financial_assets">
+            <field name="name" lang="en">Financial assets (excluding investments accounted for using the equity method, accounts receivables, and cash and cash equivalents), such as notes receivables</field>
+            <field name="parent" ref="account_type_template_non_current_assets"/>
+            <field name="sequence" eval="40"/>
+            <field name="statement">balance</field>
+            <field name="assets" eval="True"/>
+        </record>
+
+        <record model="account.account.type.template" id="account_type_template_investments">
+            <field name="name" lang="en">Investments accounted for using the equity method</field>
+            <field name="parent" ref="account_type_template_non_current_assets"/>
+            <field name="sequence" eval="50"/>
+            <field name="statement">balance</field>
+            <field name="assets" eval="True"/>
+        </record>
+
+        <record model="account.account.type.template" id="account_type_template_biological_assets">
+            <field name="name" lang="en">Biological assets, which are living plants or animals.</field>
+            <field name="parent" ref="account_type_template_non_current_assets"/>
+            <field name="sequence" eval="60"/>
+            <field name="statement">balance</field>
+            <field name="assets" eval="True"/>
+        </record>
+
+        <record model="account.account.type.template" id="account_type_template_loan_to_less">
+            <field name="name" lang="en">Loan To (More than one financial period)</field>
+            <field name="parent" ref="account_type_template_non_current_assets"/>
+            <field name="sequence" eval="70"/>
+            <field name="statement">balance</field>
+            <field name="assets" eval="True"/>
+        </record>
+
+        <record model="account.account.type.template" id="account_type_template_current_liabilities">
+            <field name="name" lang="en">Liabilities</field>
+            <field name="sequence" eval="20"/>
+            <field name="parent" ref="account_type_template_root"/>
+            <field name="statement">balance</field>
+        </record>
+
+        <record model="account.account.type.template" id="account_type_template_payable">
+            <field name="name" lang="en">Accounts payable</field>
+            <field name="parent" ref="account_type_template_current_liabilities"/>
+            <field name="sequence" eval="10"/>
+            <field name="statement">balance</field>
+            <field name="payable" eval="True"/>
+        </record>
+
+        <record model="account.account.type.template" id="account_type_template_provisions">
+            <field name="name" lang="en">Provisions for warranties or court decisions (contingent liabilities that are both probable and measurable)</field>
+            <field name="parent" ref="account_type_template_current_liabilities"/>
+            <field name="sequence" eval="20"/>
+            <field name="statement">balance</field>
+        </record>
+
+        <record model="account.account.type.template" id="account_type_template_financial_liabilities">
+            <field name="name" lang="en">Financial liabilities (excluding provisions and accounts payables), such as promissory notes and corporate bonds</field>
+            <field name="parent" ref="account_type_template_current_liabilities"/>
+            <field name="sequence" eval="30"/>
+            <field name="statement">balance</field>
+        </record>
+
+        <record model="account.account.type.template" id="account_type_template_current_tax">
+            <field name="name" lang="en">Liabilities and assets for current tax</field>
+            <field name="parent" ref="account_type_template_current_liabilities"/>
+            <field name="sequence" eval="40"/>
+            <field name="statement">balance</field>
+        </record>
+
+        <record model="account.account.type.template" id="account_type_template_deferred_tax">
+            <field name="name" lang="en">Deferred tax liabilities and deferred tax assets</field>
+            <field name="parent" ref="account_type_template_current_liabilities"/>
+            <field name="sequence" eval="50"/>
+            <field name="statement">balance</field>
+        </record>
+
+        <record model="account.account.type.template" id="account_type_template_unearned_revenue">
+            <field name="name" lang="en">Unearned revenue for services paid for by customers but not yet provided</field>
+            <field name="parent" ref="account_type_template_current_liabilities"/>
+            <field name="sequence" eval="60"/>
+            <field name="statement">balance</field>
+        </record>
+
+        <record model="account.account.type.template" id="account_type_template_interests">
+            <field name="name" lang="en">Interests on loan stock</field>
+            <field name="parent" ref="account_type_template_current_liabilities"/>
+            <field name="sequence" eval="70"/>
+            <field name="statement">balance</field>
+        </record>
+
+        <record model="account.account.type.template" id="account_type_template_creditor_equity">
+            <field name="name" lang="en">Creditors' equity</field>
+            <field name="parent" ref="account_type_template_current_liabilities"/>
+            <field name="sequence" eval="80"/>
+            <field name="statement">balance</field>
+        </record>
+
+        <record model="account.account.type.template" id="account_type_template_equity">
+            <field name="name" lang="en">Equity / capital</field>
+            <field name="parent" ref="account_type_template_root"/>
+            <field name="sequence" eval="30"/>
+            <field name="statement">balance</field>
+        </record>
+
+        <record model="account.account.type.template" id="account_type_template_capital">
+            <field name="name" lang="en">Issued capital and reserves attributable to equity holders of the parent company (controlling interest)</field>
+            <field name="parent" ref="account_type_template_equity"/>
+            <field name="sequence" eval="10"/>
+            <field name="statement">balance</field>
+        </record>
+
+        <record model="account.account.type.template" id="account_type_template_non_controlling_interest">
+            <field name="name" lang="en">Non-controlling interest in equity</field>
+            <field name="parent" ref="account_type_template_equity"/>
+            <field name="sequence" eval="20"/>
+            <field name="statement">balance</field>
+        </record>
+
+        <record model="account.account.type.template" id="account_type_template_profit_loss">
+            <field name="name" lang="en">Current Period Profit or Lost</field>
+            <field name="sequence" eval="30"/>
+            <field name="parent" ref="account_type_template_equity"/>
+            <field name="statement">income</field>
+        </record>
+
+        <record model="account.account.type.template" id="account_type_template_operating_section">
+            <field name="name" lang="en">Operating section</field>
+            <field name="sequence" eval="10"/>
+            <field name="parent" ref="account_type_template_profit_loss"/>
+            <field name="statement">income</field>
+        </record>
+
+        <record model="account.account.type.template" id="account_type_template_revenue">
+            <field name="name" lang="en">Revenue</field>
+            <field name="parent" ref="account_type_template_operating_section"/>
+            <field name="sequence" eval="10"/>
+            <field name="statement">income</field>
+            <field name="revenue" eval="True"/>
+        </record>
+
+        <record model="account.account.type.template" id="account_type_template_expenses">
+            <field name="name" lang="en">Expenses</field>
+            <field name="parent" ref="account_type_template_profit_loss"/>
+            <field name="sequence" eval="20"/>
+            <field name="statement">income</field>
+            <field name="expense" eval="True"/>
+        </record>
+
+        <record model="account.account.type.template" id="account_type_template_cos">
+            <field name="name" lang="en">Cost of Sales</field>
+            <field name="parent" ref="account_type_template_expenses"/>
+            <field name="sequence" eval="10"/>
+            <field name="statement">income</field>
+            <field name="expense" eval="True"/>
+        </record>
+
+        <record model="account.account.type.template" id="account_type_template_sga">
+            <field name="name" lang="en">Selling, General and Administrative expenses</field>
+            <field name="parent" ref="account_type_template_expenses"/>
+            <field name="sequence" eval="20"/>
+            <field name="statement">income</field>
+            <field name="stock" eval="True"/>
+        </record>
+
+        <record model="account.account.type.template" id="account_type_template_depreciation">
+            <field name="name" lang="en">Depreciation / amortisation</field>
+            <field name="parent" ref="account_type_template_expenses"/>
+            <field name="sequence" eval="30"/>
+            <field name="statement">income</field>
+        </record>
+
+        <record model="account.account.type.template" id="account_type_template_rd">
+            <field name="name" lang="en">Research &amp; Development expenses</field>
+            <field name="parent" ref="account_type_template_expenses"/>
+            <field name="sequence" eval="40"/>
+            <field name="statement">income</field>
+        </record>
+
+        <record model="account.account.type.template" id="account_type_template_non_operating_section">
+            <field name="name" lang="en">Non-operating section</field>
+            <field name="parent" ref="account_type_template_profit_loss"/>
+            <field name="sequence" eval="20"/>
+            <field name="statement">income</field>
+        </record>
+
+        <record model="account.account.type.template" id="account_type_template_other_revenues">
+            <field name="name" lang="en">Other revenues or gains</field>
+            <field name="parent" ref="account_type_template_non_operating_section"/>
+            <field name="sequence" eval="10"/>
+            <field name="statement">income</field>
+        </record>
+
+        <record model="account.account.type.template" id="account_type_template_other_expenses">
+            <field name="name" lang="en">Other expenses or losses</field>
+            <field name="parent" ref="account_type_template_non_operating_section"/>
+            <field name="sequence" eval="20"/>
+            <field name="statement">income</field>
+        </record>
+
+        <record model="account.account.type.template" id="account_type_template_finance_costs">
+            <field name="name" lang="en">Finance costs</field>
+            <field name="parent" ref="account_type_template_non_operating_section"/>
+            <field name="sequence" eval="30"/>
+            <field name="statement">income</field>
+        </record>
+
+        <record model="account.account.type.template" id="account_type_template_income_tax_expense">
+            <field name="name" lang="en">Income tax expense</field>
+            <field name="parent" ref="account_type_template_non_operating_section"/>
+            <field name="sequence" eval="40"/>
+            <field name="statement">income</field>
+        </record>
+
+        <record model="account.account.type.template" id="account_type_template_irregular_items">
+            <field name="name" lang="en">Irregular items</field>
+            <field name="parent" ref="account_type_template_profit_loss"/>
+            <field name="sequence" eval="30"/>
+            <field name="statement">income</field>
+        </record>
+
+        <record model="account.account.type.template" id="account_type_template_discontinued_operations">
+            <field name="name" lang="en">Discontinued operations</field>
+            <field name="parent" ref="account_type_template_irregular_items"/>
+            <field name="sequence" eval="10"/>
+            <field name="statement">income</field>
+        </record>
+
+        <record model="account.account.type.template" id="account_type_template_off_balance">
+            <field name="name" lang="en">Off-Balance</field>
+            <field name="parent" ref="account_type_template_root"/>
+            <field name="sequence" eval="40"/>
+            <field name="statement">off-balance</field>
+        </record>
+    </data>
+    <data>
+        <record model="account.account.template" id="account_template_root">
+            <field name="name" lang="en">Universal Chart of Accounts</field>
+            <field name="type" ref="account_type_template_root"/>
+            <field name="closed" eval="True"/>
+        </record>
+    </data>
+    <data  grouped="1">
+        <record model="account.account.template" id="account_template_1_0_0">
+            <field name="code">1.0.0</field>
+            <field name="name" lang="en">Assets</field>
+            <field name="parent" ref="account_template_root"/>
+        </record>
+
+        <record model="account.account.template" id="account_template_2_0_0">
+            <field name="code">2.0.0</field>
+            <field name="name" lang="en">Liabilities</field>
+            <field name="parent" ref="account_template_root"/>
+        </record>
+
+        <record model="account.account.template" id="account_template_3_0_0">
+            <field name="code">3.0.0</field>
+            <field name="name" lang="en">Equity</field>
+            <field name="parent" ref="account_template_root"/>
+        </record>
+
+        <record model="account.account.template" id="account_template_4_0_0">
+            <field name="code">4.0.0</field>
+            <field name="name" lang="en">Revenue</field>
+            <field name="parent" ref="account_template_root"/>
+        </record>
+
+        <record model="account.account.template" id="account_template_5_0_0">
+            <field name="code">5.0.0</field>
+            <field name="name" lang="en">Expenses</field>
+            <field name="parent" ref="account_template_root"/>
+        </record>
+
+        <record model="account.account.template" id="account_template_6_0_0">
+            <field name="code">6.0.0</field>
+            <field name="name" lang="en">Other (Non-Operating) Income And Expenses</field>
+            <field name="parent" ref="account_template_root"/>
+        </record>
+    </data>
+    <data grouped="1">
+        <record model="account.account.template" id="account_template_1_1_0">
+            <field name="code">1.1.0</field>
+            <field name="name" lang="en">Cash And Financial Assets</field>
+            <field name="parent" ref="account_template_1_0_0"/>
+        </record>
+
+        <record model="account.account.template" id="account_template_1_2_0">
+            <field name="code">1.2.0</field>
+            <field name="name" lang="en">Receivables And Contracts</field>
+            <field name="parent" ref="account_template_1_0_0"/>
+        </record>
+
+        <record model="account.account.template" id="account_template_1_3_0">
+            <field name="code">1.3.0</field>
+            <field name="name" lang="en">Inventory</field>
+            <field name="parent" ref="account_template_1_0_0"/>
+        </record>
+
+        <record model="account.account.template" id="account_template_1_4_0">
+            <field name="code">1.4.0</field>
+            <field name="name" lang="en">Accruals And Additional Assets</field>
+            <field name="parent" ref="account_template_1_0_0"/>
+        </record>
+
+        <record model="account.account.template" id="account_template_1_5_0">
+            <field name="code">1.5.0</field>
+            <field name="name" lang="en">Property, Plant And Equipment</field>
+            <field name="parent" ref="account_template_1_0_0"/>
+            <field name="type" ref="account_type_template_property"/>
+            <field name="closed" eval="True"/>
+        </record>
+
+        <record model="account.account.template" id="account_template_1_6_0">
+            <field name="code">1.6.0</field>
+            <field name="name" lang="en">Property, Plant And Equipment Accumulated Depreciation And Depletion</field>
+            <field name="parent" ref="account_template_1_0_0"/>
+            <field name="type" ref="account_type_template_depreciation"/>
+            <field name="closed" eval="True"/>
+        </record>
+
+        <record model="account.account.template" id="account_template_1_7_0">
+            <field name="code">1.7.0</field>
+            <field name="name" lang="en">Intangible Assets (Excluding Goodwill)</field>
+            <field name="parent" ref="account_template_1_0_0"/>
+            <field name="type" ref="account_type_template_intangible_assets"/>
+            <field name="closed" eval="True"/>
+        </record>
+
+        <record model="account.account.template" id="account_template_1_8_0">
+            <field name="code">1.8.0</field>
+            <field name="name" lang="en">Intangible Assets Accumulated Amortization</field>
+            <field name="parent" ref="account_template_1_0_0"/>
+            <field name="type" ref="account_type_template_intangible_assets"/>
+            <field name="closed" eval="True"/>
+        </record>
+
+        <record model="account.account.template" id="account_template_1_9_0">
+            <field name="code">1.9.0</field>
+            <field name="name" lang="en">Goodwill</field>
+            <field name="parent" ref="account_template_1_0_0"/>
+            <field name="type" ref="account_type_template_intangible_assets"/>
+            <field name="closed" eval="True"/>
+        </record>
+
+        <record model="account.account.template" id="account_template_2_1_0">
+            <field name="code">2.1.0</field>
+            <field name="name" lang="en">Payables</field>
+            <field name="parent" ref="account_template_2_0_0"/>
+            <field name="type" ref="account_type_template_payable"/>
+            <field name="closed" eval="True"/>
+        </record>
+
+        <record model="account.account.template" id="account_template_2_2_0">
+            <field name="code">2.2.0</field>
+            <field name="name" lang="en">Accruals And Other Liabilities</field>
+            <field name="parent" ref="account_template_2_0_0"/>
+        </record>
+
+        <record model="account.account.template" id="account_template_2_3_0">
+            <field name="code">2.3.0</field>
+            <field name="name" lang="en">Financial Liabilities</field>
+            <field name="parent" ref="account_template_2_0_0"/>
+            <field name="type" ref="account_type_template_financial_liabilities"/>
+            <field name="closed" eval="True"/>
+        </record>
+
+        <record model="account.account.template" id="account_template_2_4_0">
+            <field name="code">2.4.0</field>
+            <field name="name" lang="en">Provisions (Contingencies)</field>
+            <field name="parent" ref="account_template_2_0_0"/>
+            <field name="type" ref="account_type_template_provisions"/>
+            <field name="closed" eval="True"/>
+        </record>
+
+        <record model="account.account.template" id="account_template_3_1_0">
+            <field name="code">3.1.0</field>
+            <field name="name" lang="en">Owners Equity (Attributable To Owners Of Parent)</field>
+            <field name="parent" ref="account_template_3_0_0"/>
+            <field name="type" ref="account_type_template_capital"/>
+            <field name="closed" eval="True"/>
+        </record>
+
+        <record model="account.account.template" id="account_template_3_2_0">
+            <field name="code">3.2.0</field>
+            <field name="name" lang="en">Retained Earnings</field>
+            <field name="parent" ref="account_template_3_0_0"/>
+            <field name="type" ref="account_type_template_capital"/>
+            <field name="closed" eval="True"/>
+        </record>
+
+        <record model="account.account.template" id="account_template_3_3_0">
+            <field name="code">3.3.0</field>
+            <field name="name" lang="en">Accumulated Other Comprehensive Income</field>
+            <field name="parent" ref="account_template_3_0_0"/>
+            <field name="type" ref="account_type_template_capital"/>
+            <field name="closed" eval="True"/>
+        </record>
+
+        <record model="account.account.template" id="account_template_3_4_0">
+            <field name="code">3.4.0</field>
+            <field name="name" lang="en">Other Equity Items</field>
+            <field name="parent" ref="account_template_3_0_0"/>
+            <field name="type" ref="account_type_template_capital"/>
+            <field name="closed" eval="True"/>
+        </record>
+
+        <record model="account.account.template" id="account_template_3_5_0">
+            <field name="code">3.5.0</field>
+            <field name="name" lang="en">Noncontrolling (Minority) Interest</field>
+            <field name="parent" ref="account_template_3_0_0"/>
+            <field name="type" ref="account_type_template_non_controlling_interest"/>
+            <field name="closed" eval="True"/>
+        </record>
+
+        <record model="account.account.template" id="account_template_4_1_0">
+            <field name="code">4.1.0</field>
+            <field name="name" lang="en">Recognized Point Of Time</field>
+            <field name="parent" ref="account_template_4_0_0"/>
+            <field name="type" ref="account_type_template_revenue"/>
+            <field name="closed" eval="True"/>
+        </record>
+
+        <record model="account.account.template" id="account_template_4_2_0">
+            <field name="code">4.2.0</field>
+            <field name="name" lang="en">Recognized Over Time</field>
+            <field name="parent" ref="account_template_4_0_0"/>
+            <field name="type" ref="account_type_template_revenue"/>
+            <field name="closed" eval="True"/>
+        </record>
+
+        <record model="account.account.template" id="account_template_4_3_0">
+            <field name="code">4.3.0</field>
+            <field name="name" lang="en">Adjustments</field>
+            <field name="parent" ref="account_template_4_0_0"/>
+            <field name="type" ref="account_type_template_revenue"/>
+            <field name="closed" eval="True"/>
+        </record>
+
+        <record model="account.account.template" id="account_template_5_1_0">
+            <field name="code">5.1.0</field>
+            <field name="name" lang="en">Expenses Classified By Nature</field>
+            <field name="parent" ref="account_template_5_0_0"/>
+        </record>
+
+        <record model="account.account.template" id="account_template_5_2_0">
+            <field name="code">5.2.0</field>
+            <field name="name" lang="en">Expenses Classified By Function</field>
+            <field name="parent" ref="account_template_5_0_0"/>
+        </record>
+
+        <record model="account.account.template" id="account_template_6_1_0">
+            <field name="code">6.1.0</field>
+            <field name="name" lang="en">Other Revenue And Expenses</field>
+            <field name="parent" ref="account_template_6_0_0"/>
+        </record>
+
+        <record model="account.account.template" id="account_template_6_2_0">
+            <field name="code">6.2.0</field>
+            <field name="name" lang="en">Gains And Losses</field>
+            <field name="parent" ref="account_template_6_0_0"/>
+            <field name="type" ref="account_type_template_finance_costs"/>
+            <field name="closed" eval="True"/>
+        </record>
+
+        <record model="account.account.template" id="account_template_6_3_0">
+            <field name="code">6.3.0</field>
+            <field name="name" lang="en">Taxes (Other Than Income And Payroll) And Fees</field>
+            <field name="parent" ref="account_template_6_0_0"/>
+            <field name="type" ref="account_type_template_current_tax"/>
+            <field name="closed" eval="True"/>
+        </record>
+
+        <record model="account.account.template" id="account_template_6_4_0">
+            <field name="code">6.4.0</field>
+            <field name="name" lang="en">Income Tax Expense (Benefit)</field>
+            <field name="parent" ref="account_template_6_0_0"/>
+            <field name="type" ref="account_type_template_income_tax_expense"/>
+        </record>
+    </data>
+    <data grouped="1">
+        <record model="account.account.template" id="account_template_1_1_1">
+            <field name="code">1.1.1</field>
+            <field name="name" lang="en">Cash and Cash Equivalents</field>
+            <field name="parent" ref="account_template_1_1_0"/>
+            <field name="type" ref="account_type_template_cash"/>
+        </record>
+
+        <record model="account.account.template" id="account_template_1_1_2">
+            <field name="code">1.1.2</field>
+            <field name="name" lang="en">Financial Assets (Investments)</field>
+            <field name="parent" ref="account_template_1_1_0"/>
+            <field name="type" ref="account_type_template_investments"/>
+        </record>
+
+        <record model="account.account.template" id="account_template_1_1_3">
+            <field name="code">1.1.3</field>
+            <field name="name" lang="en">Restricted Cash and Financial Assets</field>
+            <field name="parent" ref="account_template_1_1_0"/>
+            <field name="type" ref="account_type_template_cash"/>
+        </record>
+
+        <record model="account.account.template" id="account_template_1_1_4">
+            <field name="code">1.1.4</field>
+            <field name="name" lang="en">Additional Financial Assets and Investments</field>
+            <field name="parent" ref="account_template_1_1_0"/>
+            <field name="type" ref="account_type_template_financial_assets"/>
+        </record>
+
+        <record model="account.account.template" id="account_template_1_2_1">
+            <field name="code">1.2.1</field>
+            <field name="name" lang="en">Accounts, Notes And Loans Receivable</field>
+            <field name="parent" ref="account_template_1_2_0"/>
+            <field name="type" ref="account_type_template_accounts_receivable"/>
+            <field name="party_required" eval="True"/>
+            <field name="reconcile" eval="True"/>
+        </record>
+
+        <record model="account.account.template" id="account_template_1_2_2">
+            <field name="code">1.2.2</field>
+            <field name="name" lang="en">Contracts</field>
+            <field name="parent" ref="account_template_1_2_0"/>
+            <field name="type" ref="account_type_template_accounts_receivable"/>
+            <field name="party_required" eval="True"/>
+            <field name="reconcile" eval="True"/>
+        </record>
+
+        <record model="account.account.template" id="account_template_1_2_3">
+            <field name="code">1.2.3</field>
+            <field name="name" lang="en">Nontrade And Other Receivables</field>
+            <field name="parent" ref="account_template_1_2_0"/>
+            <field name="type" ref="account_type_template_accounts_receivable"/>
+            <field name="party_required" eval="True"/>
+            <field name="reconcile" eval="True"/>
+        </record>
+
+        <record model="account.account.template" id="account_template_1_3_1">
+            <field name="code">1.3.1</field>
+            <field name="name" lang="en">Merchandise</field>
+            <field name="parent" ref="account_template_1_3_0"/>
+            <field name="type" ref="account_type_template_inventories"/>
+        </record>
+
+        <record model="account.account.template" id="account_template_1_3_2">
+            <field name="code">1.3.2</field>
+            <field name="name" lang="en">Raw Material, Parts And Supplies</field>
+            <field name="parent" ref="account_template_1_3_0"/>
+            <field name="type" ref="account_type_template_inventories"/>
+        </record>
+
+        <record model="account.account.template" id="account_template_1_3_3">
+            <field name="code">1.3.3</field>
+            <field name="name" lang="en">Work In Process</field>
+            <field name="parent" ref="account_template_1_3_0"/>
+            <field name="type" ref="account_type_template_inventories"/>
+        </record>
+
+        <record model="account.account.template" id="account_template_1_3_4">
+            <field name="code">1.3.4</field>
+            <field name="name" lang="en">Finished Goods</field>
+            <field name="parent" ref="account_template_1_3_0"/>
+            <field name="type" ref="account_type_template_inventories"/>
+        </record>
+
+        <record model="account.account.template" id="account_template_1_3_5">
+            <field name="code">1.3.5</field>
+            <field name="name" lang="en">Other Inventory</field>
+            <field name="parent" ref="account_template_1_3_0"/>
+            <field name="type" ref="account_type_template_inventories"/>
+        </record>
+
+        <record model="account.account.template" id="account_template_1_4_1">
+            <field name="code">1.4.1</field>
+            <field name="name" lang="en">Prepaid Expense</field>
+            <field name="parent" ref="account_template_1_4_0"/>
+            <field name="type" ref="account_type_template_prepaid_expenses"/>
+        </record>
+
+        <record model="account.account.template" id="account_template_1_4_2">
+            <field name="code">1.4.2</field>
+            <field name="name" lang="en">Accrued Income</field>
+            <field name="parent" ref="account_template_1_4_0"/>
+            <field name="type" ref="account_type_template_revenue_earned_in_arrears"/>
+        </record>
+
+        <record model="account.account.template" id="account_template_1_4_3">
+            <field name="code">1.4.3</field>
+            <field name="name" lang="en">Additional Assets</field>
+            <field name="parent" ref="account_template_1_4_0"/>
+        </record>
+
+        <record model="account.account.template" id="account_template_1_5_1">
+            <field name="code">1.5.1</field>
+            <field name="name" lang="en">Land And Land Improvements</field>
+            <field name="parent" ref="account_template_1_5_0"/>
+            <field name="type" ref="account_type_template_property"/>
+        </record>
+
+        <record model="account.account.template" id="account_template_1_5_2">
+            <field name="code">1.5.2</field>
+            <field name="name" lang="en">Buildings, Structures And Improvements</field>
+            <field name="parent" ref="account_template_1_5_0"/>
+            <field name="type" ref="account_type_template_property"/>
+        </record>
+
+        <record model="account.account.template" id="account_template_1_5_3">
+            <field name="code">1.5.3</field>
+            <field name="name" lang="en">Machinery And Equipment</field>
+            <field name="parent" ref="account_template_1_5_0"/>
+            <field name="type" ref="account_type_template_property"/>
+        </record>
+
+        <record model="account.account.template" id="account_template_1_5_4">
+            <field name="code">1.5.4</field>
+            <field name="name" lang="en">Furniture And Fixtures</field>
+            <field name="parent" ref="account_template_1_5_0"/>
+            <field name="type" ref="account_type_template_property"/>
+        </record>
+
+        <record model="account.account.template" id="account_template_1_5_5">
+            <field name="code">1.5.5</field>
+            <field name="name" lang="en">Right Of Use Assets (Classified As PP&amp;E)</field>
+            <field name="parent" ref="account_template_1_5_0"/>
+            <field name="type" ref="account_type_template_property"/>
+        </record>
+
+        <record model="account.account.template" id="account_template_1_5_6">
+            <field name="code">1.5.6</field>
+            <field name="name" lang="en">Other Property, Plant And Equipment</field>
+            <field name="parent" ref="account_template_1_5_0"/>
+            <field name="type" ref="account_type_template_property"/>
+        </record>
+
+        <record model="account.account.template" id="account_template_1_5_7">
+            <field name="code">1.5.7</field>
+            <field name="name" lang="en">Construction In Progress</field>
+            <field name="parent" ref="account_template_1_5_0"/>
+            <field name="type" ref="account_type_template_property"/>
+        </record>
+
+        <record model="account.account.template" id="account_template_1_6_1">
+            <field name="code">1.6.1</field>
+            <field name="name" lang="en">Accumulated Depletion</field>
+            <field name="parent" ref="account_template_1_6_0"/>
+            <field name="type" ref="account_type_template_depreciation"/>
+        </record>
+
+        <record model="account.account.template" id="account_template_1_6_2">
+            <field name="code">1.6.2</field>
+            <field name="name" lang="en">Accumulated Depreciation</field>
+            <field name="parent" ref="account_template_1_6_0"/>
+            <field name="type" ref="account_type_template_depreciation"/>
+        </record>
+
+        <record model="account.account.template" id="account_template_1_7_1">
+            <field name="code">1.7.1</field>
+            <field name="name" lang="en">Intellectual Property</field>
+            <field name="parent" ref="account_template_1_7_0"/>
+            <field name="type" ref="account_type_template_intangible_assets"/>
+        </record>
+
+        <record model="account.account.template" id="account_template_1_7_2">
+            <field name="code">1.7.2</field>
+            <field name="name" lang="en">Computer Software</field>
+            <field name="parent" ref="account_template_1_7_0"/>
+            <field name="type" ref="account_type_template_intangible_assets"/>
+        </record>
+
+        <record model="account.account.template" id="account_template_1_7_3">
+            <field name="code">1.7.3</field>
+            <field name="name" lang="en">Trade And Distribution Assets</field>
+            <field name="parent" ref="account_template_1_7_0"/>
+            <field name="type" ref="account_type_template_intangible_assets"/>
+        </record>
+
+        <record model="account.account.template" id="account_template_1_7_4">
+            <field name="code">1.7.4</field>
+            <field name="name" lang="en">Contracts And Rights</field>
+            <field name="parent" ref="account_template_1_7_0"/>
+            <field name="type" ref="account_type_template_intangible_assets"/>
+        </record>
+
+        <record model="account.account.template" id="account_template_1_7_5">
+            <field name="code">1.7.5</field>
+            <field name="name" lang="en">Right Of Use Assets</field>
+            <field name="parent" ref="account_template_1_7_0"/>
+            <field name="type" ref="account_type_template_intangible_assets"/>
+        </record>
+
+        <record model="account.account.template" id="account_template_1_7_6">
+            <field name="code">1.7.6</field>
+            <field name="name" lang="en">Crypto Assets</field>
+            <field name="parent" ref="account_template_1_7_0"/>
+            <field name="type" ref="account_type_template_intangible_assets"/>
+        </record>
+
+        <record model="account.account.template" id="account_template_1_7_7">
+            <field name="code">1.7.7</field>
+            <field name="name" lang="en">Other Intangible Assets</field>
+            <field name="parent" ref="account_template_1_7_0"/>
+            <field name="type" ref="account_type_template_intangible_assets"/>
+        </record>
+
+        <record model="account.account.template" id="account_template_1_7_8">
+            <field name="code">1.7.8</field>
+            <field name="name" lang="en">Acquisition In Progress</field>
+            <field name="parent" ref="account_template_1_7_0"/>
+            <field name="type" ref="account_type_template_intangible_assets"/>
+        </record>
+
+        <record model="account.account.template" id="account_template_2_1_1">
+            <field name="code">2.1.1</field>
+            <field name="name" lang="en">Trade Payables</field>
+            <field name="parent" ref="account_template_2_1_0"/>
+            <field name="type" ref="account_type_template_payable"/>
+            <field name="party_required" eval="True"/>
+            <field name="reconcile" eval="True"/>
+        </record>
+
+        <record model="account.account.template" id="account_template_2_1_2">
+            <field name="code">2.1.2</field>
+            <field name="name" lang="en">Dividends Payable</field>
+            <field name="parent" ref="account_template_2_1_0"/>
+            <field name="type" ref="account_type_template_payable"/>
+            <field name="party_required" eval="True"/>
+            <field name="reconcile" eval="True"/>
+        </record>
+
+        <record model="account.account.template" id="account_template_2_1_3">
+            <field name="code">2.1.3</field>
+            <field name="name" lang="en">Interest Payable</field>
+            <field name="parent" ref="account_template_2_1_0"/>
+            <field name="type" ref="account_type_template_payable"/>
+            <field name="reconcile" eval="True"/>
+        </record>
+
+        <record model="account.account.template" id="account_template_2_1_4">
+            <field name="code">2.1.4</field>
+            <field name="name" lang="en">Other Payables</field>
+            <field name="parent" ref="account_template_2_1_0"/>
+            <field name="type" ref="account_type_template_payable"/>
+            <field name="party_required" eval="True"/>
+            <field name="reconcile" eval="True"/>
+        </record>
+
+        <record model="account.account.template" id="account_template_2_2_1">
+            <field name="code">2.2.1</field>
+            <field name="name" lang="en">Accrued Expenses (Including Payroll)</field>
+            <field name="parent" ref="account_template_2_2_0"/>
+            <field name="type" ref="account_type_template_expenses"/>
+        </record>
+
+        <record model="account.account.template" id="account_template_2_2_2">
+            <field name="code">2.2.2</field>
+            <field name="name" lang="en">Deferred Income (Unearned Revenue)</field>
+            <field name="parent" ref="account_template_2_2_0"/>
+            <field name="type" ref="account_type_template_unearned_revenue"/>
+        </record>
+
+        <record model="account.account.template" id="account_template_2_2_3">
+            <field name="code">2.2.3</field>
+            <field name="name" lang="en">Accrued Taxes (Other Than Payroll)</field>
+            <field name="parent" ref="account_template_2_2_0"/>
+            <field name="type" ref="account_type_template_deferred_tax"/>
+        </record>
+
+        <record model="account.account.template" id="account_template_2_2_4">
+            <field name="code">2.2.4</field>
+            <field name="name" lang="en">Other (Non-Financial) Liabilities</field>
+            <field name="parent" ref="account_template_2_2_0"/>
+            <field name="type" ref="account_type_template_deferred_tax"/>
+        </record>
+
+        <record model="account.account.template" id="account_template_2_3_1">
+            <field name="code">2.3.1</field>
+            <field name="name" lang="en">Notes Payable</field>
+            <field name="parent" ref="account_template_2_3_0"/>
+            <field name="type" ref="account_type_template_financial_liabilities"/>
+        </record>
+
+        <record model="account.account.template" id="account_template_2_3_2">
+            <field name="code">2.3.2</field>
+            <field name="name" lang="en">Loans Payable</field>
+            <field name="parent" ref="account_template_2_3_0"/>
+            <field name="type" ref="account_type_template_financial_liabilities"/>
+        </record>
+
+        <record model="account.account.template" id="account_template_2_3_3">
+            <field name="code">2.3.3</field>
+            <field name="name" lang="en">Bonds (Debentures)</field>
+            <field name="parent" ref="account_template_2_3_0"/>
+            <field name="type" ref="account_type_template_financial_liabilities"/>
+        </record>
+
+        <record model="account.account.template" id="account_template_2_3_4">
+            <field name="code">2.3.4</field>
+            <field name="name" lang="en">Other Debts And Borrowings</field>
+            <field name="parent" ref="account_template_2_3_0"/>
+            <field name="type" ref="account_type_template_financial_liabilities"/>
+        </record>
+
+        <record model="account.account.template" id="account_template_2_3_5">
+            <field name="code">2.3.5</field>
+            <field name="name" lang="en">Lease Obligations</field>
+            <field name="parent" ref="account_template_2_3_0"/>
+            <field name="type" ref="account_type_template_financial_liabilities"/>
+        </record>
+
+        <record model="account.account.template" id="account_template_2_3_6">
+            <field name="code">2.3.6</field>
+            <field name="name" lang="en">Derivative Financial Liabilities</field>
+            <field name="parent" ref="account_template_2_3_0"/>
+            <field name="type" ref="account_type_template_financial_liabilities"/>
+        </record>
+
+        <record model="account.account.template" id="account_template_2_3_7">
+            <field name="code">2.3.7</field>
+            <field name="name" lang="en">Other Financial Liabilities</field>
+            <field name="parent" ref="account_template_2_3_0"/>
+            <field name="type" ref="account_type_template_financial_liabilities"/>
+        </record>
+
+        <record model="account.account.template" id="account_template_2_4_1">
+            <field name="code">2.4.1</field>
+            <field name="name" lang="en">Customer Related Provisions</field>
+            <field name="parent" ref="account_template_2_4_0"/>
+            <field name="type" ref="account_type_template_provisions"/>
+        </record>
+
+        <record model="account.account.template" id="account_template_2_4_2">
+            <field name="code">2.4.2</field>
+            <field name="name" lang="en">Ligation And Regulatory Provisions</field>
+            <field name="parent" ref="account_template_2_4_0"/>
+            <field name="type" ref="account_type_template_provisions"/>
+        </record>
+
+        <record model="account.account.template" id="account_template_2_4_3">
+            <field name="code">2.4.3</field>
+            <field name="name" lang="en">Other Provisions</field>
+            <field name="parent" ref="account_template_2_4_0"/>
+            <field name="type" ref="account_type_template_provisions"/>
+        </record>
+
+        <record model="account.account.template" id="account_template_3_1_1">
+            <field name="code">3.1.1</field>
+            <field name="name" lang="en">Equity At par (Issued Capital)</field>
+            <field name="parent" ref="account_template_3_1_0"/>
+            <field name="type" ref="account_type_template_capital"/>
+        </record>
+
+        <record model="account.account.template" id="account_template_3_1_2">
+            <field name="code">3.1.2</field>
+            <field name="name" lang="en">Additional Paid-in Capital</field>
+            <field name="parent" ref="account_template_3_1_0"/>
+            <field name="type" ref="account_type_template_capital"/>
+        </record>
+
+        <record model="account.account.template" id="account_template_3_2_1">
+            <field name="code">3.2.1</field>
+            <field name="name" lang="en">Appropriated</field>
+            <field name="parent" ref="account_template_3_2_0"/>
+            <field name="type" ref="account_type_template_capital"/>
+        </record>
+
+        <record model="account.account.template" id="account_template_3_2_3">
+            <field name="code">3.2.3</field>
+            <field name="name" lang="en">Deficit</field>
+            <field name="parent" ref="account_template_3_2_0"/>
+            <field name="type" ref="account_type_template_capital"/>
+        </record>
+
+        <record model="account.account.template" id="account_template_3_2_4">
+            <field name="code">3.2.4</field>
+            <field name="name" lang="en">In Suspense Zero</field>
+            <field name="parent" ref="account_template_3_2_0"/>
+            <field name="type" ref="account_type_template_capital"/>
+        </record>
+
+        <record model="account.account.template" id="account_template_3_3_1">
+            <field name="code">3.3.1</field>
+            <field name="name" lang="en">Exchange Differences On Translation</field>
+            <field name="parent" ref="account_template_3_3_0"/>
+            <field name="type" ref="account_type_template_capital"/>
+        </record>
+
+        <record model="account.account.template" id="account_template_3_3_2">
+            <field name="code">3.3.2</field>
+            <field name="name" lang="en">Cash Flow Hedges</field>
+            <field name="parent" ref="account_template_3_3_0"/>
+            <field name="type" ref="account_type_template_capital"/>
+        </record>
+
+        <record model="account.account.template" id="account_template_3_3_3">
+            <field name="code">3.3.3</field>
+            <field name="name" lang="en">Gains And Losses On Remeasuring Available-For-Sale Investments</field>
+            <field name="parent" ref="account_template_3_3_0"/>
+            <field name="type" ref="account_type_template_capital"/>
+        </record>
+
+        <record model="account.account.template" id="account_template_3_3_4">
+            <field name="code">3.3.4</field>
+            <field name="name" lang="en">Remeasurements Of Defined Benefit Plans</field>
+            <field name="parent" ref="account_template_3_3_0"/>
+            <field name="type" ref="account_type_template_capital"/>
+        </record>
+
+        <record model="account.account.template" id="account_template_3_3_5">
+            <field name="code">3.3.5</field>
+            <field name="name" lang="en">Revaluation Surplus (IFRS only)</field>
+            <field name="parent" ref="account_template_3_3_0"/>
+            <field name="type" ref="account_type_template_capital"/>
+        </record>
+
+        <record model="account.account.template" id="account_template_3_4_1">
+            <field name="code">3.4.1</field>
+            <field name="name" lang="en">ESOP Related Items</field>
+            <field name="parent" ref="account_template_3_4_0"/>
+            <field name="type" ref="account_type_template_capital"/>
+        </record>
+
+        <record model="account.account.template" id="account_template_3_4_2">
+            <field name="code">3.4.2</field>
+            <field name="name" lang="en">Subscribed Stock Receivables</field>
+            <field name="parent" ref="account_template_3_4_0"/>
+            <field name="type" ref="account_type_template_capital"/>
+        </record>
+
+        <record model="account.account.template" id="account_template_3_4_3">
+            <field name="code">3.4.3</field>
+            <field name="name" lang="en">Treasury Stock (Not Extinguished)</field>
+            <field name="parent" ref="account_template_3_4_0"/>
+            <field name="type" ref="account_type_template_capital"/>
+        </record>
+
+        <record model="account.account.template" id="account_template_3_4_4">
+            <field name="code">3.4.4</field>
+            <field name="name" lang="en">Miscellaneous Equity</field>
+            <field name="parent" ref="account_template_3_4_0"/>
+            <field name="type" ref="account_type_template_capital"/>
+        </record>
+
+        <record model="account.account.template" id="account_template_4_1_1">
+            <field name="code">4.1.1</field>
+            <field name="name" lang="en">Goods</field>
+            <field name="parent" ref="account_template_4_1_0"/>
+            <field name="type" ref="account_type_template_revenue"/>
+        </record>
+
+        <record model="account.account.template" id="account_template_4_1_2">
+            <field name="code">4.1.2</field>
+            <field name="name" lang="en">Services</field>
+            <field name="parent" ref="account_template_4_1_0"/>
+            <field name="type" ref="account_type_template_revenue"/>
+        </record>
+
+        <record model="account.account.template" id="account_template_4_2_1">
+            <field name="code">4.2.1</field>
+            <field name="name" lang="en">Products</field>
+            <field name="parent" ref="account_template_4_2_0"/>
+            <field name="type" ref="account_type_template_revenue"/>
+        </record>
+
+        <record model="account.account.template" id="account_template_4_2_2">
+            <field name="code">4.2.2</field>
+            <field name="name" lang="en">Services</field>
+            <field name="parent" ref="account_template_4_2_0"/>
+            <field name="type" ref="account_type_template_revenue"/>
+        </record>
+
+        <record model="account.account.template" id="account_template_4_3_1">
+            <field name="code">4.3.1</field>
+            <field name="name" lang="en">Variable Consideration</field>
+            <field name="parent" ref="account_template_4_3_0"/>
+            <field name="type" ref="account_type_template_revenue"/>
+        </record>
+
+        <record model="account.account.template" id="account_template_4_3_2">
+            <field name="code">4.3.2</field>
+            <field name="name" lang="en">Consideration Paid (Payable) To Customers</field>
+            <field name="parent" ref="account_template_4_3_0"/>
+            <field name="type" ref="account_type_template_revenue"/>
+        </record>
+
+        <record model="account.account.template" id="account_template_4_3_3">
+            <field name="code">4.3.3</field>
+            <field name="name" lang="en">Other Adjustments</field>
+            <field name="parent" ref="account_template_4_3_0"/>
+            <field name="type" ref="account_type_template_revenue"/>
+        </record>
+
+        <record model="account.account.template" id="account_template_5_1_1">
+            <field name="code">5.1.1</field>
+            <field name="name" lang="en">Merchandise, Material, Parts And Supplies</field>
+            <field name="parent" ref="account_template_5_1_0"/>
+            <field name="type" ref="account_type_template_cos"/>
+        </record>
+
+        <record model="account.account.template" id="account_template_5_1_2">
+            <field name="code">5.1.2</field>
+            <field name="name" lang="en">Employee Benefits</field>
+            <field name="parent" ref="account_template_5_1_0"/>
+        </record>
+
+        <record model="account.account.template" id="account_template_5_1_3">
+            <field name="code">5.1.3</field>
+            <field name="name" lang="en">Services</field>
+            <field name="parent" ref="account_template_5_1_0"/>
+            <field name="type" ref="account_type_template_cos"/>
+        </record>
+
+        <record model="account.account.template" id="account_template_5_1_4">
+            <field name="code">5.1.4</field>
+            <field name="name" lang="en">Rent, Depreciation, Amortization And Depletion</field>
+            <field name="parent" ref="account_template_5_1_0"/>
+            <field name="type" ref="account_type_template_depreciation"/>
+        </record>
+
+        <record model="account.account.template" id="account_template_5_1_5">
+            <field name="code">5.1.5</field>
+            <field name="name" lang="en">Increase (Decrease) In Inventories Of Finished Goods And Work In Progress</field>
+            <field name="parent" ref="account_template_5_1_0"/>
+            <field name="type" ref="account_type_template_sga"/>
+        </record>
+
+        <record model="account.account.template" id="account_template_5_1_6">
+            <field name="code">5.1.6</field>
+            <field name="name" lang="en">Other Work Performed By Entity And Capitalized</field>
+            <field name="parent" ref="account_template_5_1_0"/>
+        </record>
+
+        <record model="account.account.template" id="account_template_5_2_1">
+            <field name="code">5.2.1</field>
+            <field name="name" lang="en">Cost Of Sales</field>
+            <field name="parent" ref="account_template_5_1_0"/>
+            <field name="type" ref="account_type_template_cos"/>
+        </record>
+
+        <record model="account.account.template" id="account_template_5_2_2">
+            <field name="code">5.2.2</field>
+            <field name="name" lang="en">Selling, General And Administrative</field>
+            <field name="parent" ref="account_template_5_2_0"/>
+            <field name="type" ref="account_type_template_sga"/>
+        </record>
+
+        <record model="account.account.template" id="account_template_5_2_3">
+            <field name="code">5.2.3</field>
+            <field name="name" lang="en">Credit Loss (Reversal) On Receivables</field>
+            <field name="parent" ref="account_template_5_2_0"/>
+            <field name="type" ref="account_type_template_cos"/>
+        </record>
+
+        <record model="account.account.template" id="account_template_6_1_1">
+            <field name="code">6.1.1</field>
+            <field name="name" lang="en">Other Revenue</field>
+            <field name="parent" ref="account_template_6_1_0"/>
+            <field name="type" ref="account_type_template_other_revenues"/>
+        </record>
+
+        <record model="account.account.template" id="account_template_6_1_2">
+            <field name="code">6.1.2</field>
+            <field name="name" lang="en">Other Expenses</field>
+            <field name="parent" ref="account_template_6_1_0"/>
+            <field name="type" ref="account_type_template_other_expenses"/>
+        </record>
+
+        <record model="account.account.template" id="account_template_6_2_1">
+            <field name="code">6.2.1</field>
+            <field name="name" lang="en">Foreign Currency Transaction Gain (Loss)</field>
+            <field name="parent" ref="account_template_6_2_0"/>
+            <field name="type" ref="account_type_template_finance_costs"/>
+        </record>
+
+        <record model="account.account.template" id="account_template_6_2_2">
+            <field name="code">6.2.2</field>
+            <field name="name" lang="en">Gain (Loss) On Investments</field>
+            <field name="parent" ref="account_template_6_2_0"/>
+            <field name="type" ref="account_type_template_finance_costs"/>
+        </record>
+
+        <record model="account.account.template" id="account_template_6_2_3">
+            <field name="code">6.2.3</field>
+            <field name="name" lang="en">Gain (Loss) On Derivatives</field>
+            <field name="parent" ref="account_template_6_2_0"/>
+            <field name="type" ref="account_type_template_finance_costs"/>
+        </record>
+
+        <record model="account.account.template" id="account_template_6_2_4">
+            <field name="code">6.2.4</field>
+            <field name="name" lang="en">Crypto Asset Gain (Loss)</field>
+            <field name="parent" ref="account_template_6_2_0"/>
+            <field name="type" ref="account_type_template_finance_costs"/>
+        </record>
+
+        <record model="account.account.template" id="account_template_6_2_5">
+            <field name="code">6.2.5</field>
+            <field name="name" lang="en">Gain (Loss) On Disposal Of Assets</field>
+            <field name="parent" ref="account_template_6_2_0"/>
+            <field name="type" ref="account_type_template_finance_costs"/>
+        </record>
+
+        <record model="account.account.template" id="account_template_6_2_6">
+            <field name="code">6.2.6</field>
+            <field name="name" lang="en">Debt Related Gain (Loss)</field>
+            <field name="parent" ref="account_template_6_2_0"/>
+            <field name="type" ref="account_type_template_finance_costs"/>
+        </record>
+
+        <record model="account.account.template" id="account_template_6_2_7">
+            <field name="code">6.2.7</field>
+            <field name="name" lang="en">Impairment Loss</field>
+            <field name="parent" ref="account_template_6_2_0"/>
+            <field name="type" ref="account_type_template_finance_costs"/>
+        </record>
+
+        <record model="account.account.template" id="account_template_6_2_8">
+            <field name="code">6.2.8</field>
+            <field name="name" lang="en">Other Gains And Losses</field>
+            <field name="parent" ref="account_template_6_2_0"/>
+            <field name="type" ref="account_type_template_finance_costs"/>
+        </record>
+
+        <record model="account.account.template" id="account_template_6_3_1">
+            <field name="code">6.3.1</field>
+            <field name="name" lang="en">Real Estate Taxes And Insurance</field>
+            <field name="parent" ref="account_template_6_3_0"/>
+            <field name="type" ref="account_type_template_current_tax"/>
+        </record>
+
+        <record model="account.account.template" id="account_template_6_3_2">
+            <field name="code">6.3.2</field>
+            <field name="name" lang="en">Highway (Road) Taxes And Tolls</field>
+            <field name="parent" ref="account_template_6_3_0"/>
+            <field name="type" ref="account_type_template_current_tax"/>
+        </record>
+
+        <record model="account.account.template" id="account_template_6_3_3">
+            <field name="code">6.3.3</field>
+            <field name="name" lang="en">Direct Tax And License Fees</field>
+            <field name="parent" ref="account_template_6_3_0"/>
+            <field name="type" ref="account_type_template_current_tax"/>
+        </record>
+
+        <record model="account.account.template" id="account_template_6_3_4">
+            <field name="code">6.3.4</field>
+            <field name="name" lang="en">Excise And Sales Taxes</field>
+            <field name="parent" ref="account_template_6_3_0"/>
+            <field name="type" ref="account_type_template_current_tax"/>
+        </record>
+
+        <record model="account.account.template" id="account_template_6_3_5">
+            <field name="code">6.3.5</field>
+            <field name="name" lang="en">Customs Fees And Duties (Not Classified As Sales Or Excise)</field>
+            <field name="parent" ref="account_template_6_3_0"/>
+            <field name="type" ref="account_type_template_current_tax"/>
+        </record>
+
+        <record model="account.account.template" id="account_template_6_3_6">
+            <field name="code">6.3.6</field>
+            <field name="name" lang="en">Non-Deductible VAT (GST)</field>
+            <field name="parent" ref="account_template_6_3_0"/>
+            <field name="type" ref="account_type_template_current_tax"/>
+        </record>
+
+        <record model="account.account.template" id="account_template_6_3_7">
+            <field name="code">6.3.7</field>
+            <field name="name" lang="en">General Insurance Expense</field>
+            <field name="parent" ref="account_template_6_3_0"/>
+            <field name="type" ref="account_type_template_current_tax"/>
+        </record>
+
+        <record model="account.account.template" id="account_template_6_3_8">
+            <field name="code">6.3.8</field>
+            <field name="name" lang="en">Administrative Fees (Revenue Stamps)</field>
+            <field name="parent" ref="account_template_6_3_0"/>
+            <field name="type" ref="account_type_template_current_tax"/>
+        </record>
+
+        <record model="account.account.template" id="account_template_6_3_9">
+            <field name="code">6.3.9</field>
+            <field name="name" lang="en">Fines And Penalties</field>
+            <field name="parent" ref="account_template_6_3_0"/>
+            <field name="type" ref="account_type_template_current_tax"/>
+        </record>
+
+        <record model="account.account.template" id="account_template_6_3_10">
+            <field name="code">6.3.10</field>
+            <field name="name" lang="en">Miscellaneous Taxes</field>
+            <field name="parent" ref="account_template_6_3_0"/>
+            <field name="type" ref="account_type_template_current_tax"/>
+        </record>
+
+        <record model="account.account.template" id="account_template_6_3_11">
+            <field name="code">6.3.11</field>
+            <field name="name" lang="en">Other Taxes And Fees</field>
+            <field name="parent" ref="account_template_6_3_0"/>
+            <field name="type" ref="account_type_template_current_tax"/>
+        </record>
+    </data>
+</tryton>

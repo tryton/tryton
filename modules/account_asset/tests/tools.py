@@ -12,13 +12,11 @@ def add_asset_accounts(accounts, company=None, config=None):
         company = get_company(config=config)
 
     accounts['asset'], = Account.find([
-            ('type.fixed_asset', '=', True),
-            ('name', '=', "Assets"),
             ('company', '=', company.id),
+            ('code', '=', '1.5.3'),
             ], limit=1)
     accounts['depreciation'], = Account.find([
-            ('type.fixed_asset', '=', True),
-            ('name', '=', "Depreciation"),
             ('company', '=', company.id),
+            ('code', '=', '1.4.1'),
             ], limit=1)
     return accounts

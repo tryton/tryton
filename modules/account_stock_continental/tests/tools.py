@@ -11,11 +11,12 @@ def add_stock_accounts(accounts, company=None, config=None):
     if not company:
         company = get_company(config=config)
 
-    stock_accounts = Account.find([
-            ('type.stock', '=', True),
+    accounts['stock'], = Account.find([
             ('company', '=', company.id),
+            ('code', '=', '1.3.1'),
             ])
-    for account in stock_accounts:
-        name = account.name.lower().replace(' and ', '_').replace(' ', '_')
-        accounts[name] = account
+    accounts['stock_expense'], = Account.find([
+            ('company', '=', company.id),
+            ('code', '=', '5.1.5'),
+            ])
     return accounts

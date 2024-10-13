@@ -12,8 +12,7 @@ def add_cogs_accounts(accounts, company=None, config=None):
         company = get_company(config=config)
 
     accounts['cogs'], = Account.find([
-            ('type.expense', '=', True),
-            ('id', '!=', accounts['expense'].id),
             ('company', '=', company.id),
+            ('code', '=', '5.1.1'),
             ])
     return accounts

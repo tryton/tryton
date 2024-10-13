@@ -29,13 +29,17 @@ class SaleTestCase(
             create_chart(company)
 
             receivable, = Account.search([
+                    ('closed', '!=', True),
                     ('type.receivable', '=', True),
+                    ('party_required', '=', True),
                     ('company', '=', company.id),
-                    ])
+                    ], limit=1)
             payable, = Account.search([
+                    ('closed', '!=', True),
                     ('type.payable', '=', True),
+                    ('party_required', '=', True),
                     ('company', '=', company.id),
-                    ])
+                    ], limit=1)
 
             kg, = Uom.search([('name', '=', 'Kilogram')])
             g, = Uom.search([('name', '=', 'Gram')])

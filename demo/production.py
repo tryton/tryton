@@ -22,12 +22,12 @@ def setup(config, activated, company):
     if 'account_product' in activated:
         Account = Model.get('account.account')
         expense, = Account.find([
-                ('type.expense', '=', True),
                 ('company', '=', company.id),
+                ('code', '=', '5.1.1'),
                 ])
         revenue, = Account.find([
-                ('type.revenue', '=', True),
                 ('company', '=', company.id),
+                ('code', '=', '4.1.1'),
                 ])
         account_category = Category(name="Computers", accounting=True)
         account_category.account_expense = expense

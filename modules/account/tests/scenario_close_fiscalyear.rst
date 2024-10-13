@@ -59,13 +59,8 @@ Prepare the closing settings for fiscalyear close::
     >>> period_closing.fiscalyear = fiscalyear
     >>> period_closing.type = 'adjustment'
     >>> period_closing.save()
-    >>> type_equity, = AccountType.find([('name', '=', "Equity")])
 
-    >>> account_pl = Account()
-    >>> account_pl.name = 'P&L'
-    >>> account_pl.type = type_equity
-    >>> account_pl.parent = accounts['revenue'].parent
-    >>> account_pl.save()
+    >>> account_pl, = Account.find([('code', '=', '3.2.1')])
 
 Create children accounts::
 

@@ -93,13 +93,17 @@ class StockSupplyTestCase(CompanyTestMixin, ModuleTestCase):
         with set_company(company):
             create_chart(company)
             receivable, = Account.search([
+                ('closed', '!=', True),
                 ('type.receivable', '=', True),
+                ('party_required', '=', True),
                 ('company', '=', company.id),
-                ])
+                ], limit=1)
             payable, = Account.search([
+                ('closed', '!=', True),
                 ('type.payable', '=', True),
+                ('party_required', '=', True),
                 ('company', '=', company.id),
-                ])
+                ], limit=1)
             supplier, = Party.create([{
                         'name': 'supplier',
                         'account_receivable': receivable.id,
