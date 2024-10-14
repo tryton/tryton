@@ -56,6 +56,9 @@ class Currency(
         help="Add floating exchange rates for the currency.")
     rounding = fields.Numeric('Rounding factor', required=True,
         digits=(12, Eval('digits', 6)),
+        domain=[
+            ('rounding', '>', 0),
+            ],
         help="The minimum amount which can be represented in this currency.")
     digits = fields.Integer("Digits", required=True,
         help="The number of digits to display after the decimal separator.")
