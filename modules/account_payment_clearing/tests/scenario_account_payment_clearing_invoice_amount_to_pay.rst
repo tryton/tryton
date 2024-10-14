@@ -59,7 +59,8 @@ Create payment journal::
     ...     process_method='manual')
     >>> payment_journal.save()
     >>> clearing_journal = PaymentJournal(name='Clearing',
-    ...     process_method='manual', clearing_journal=expense,
+    ...     process_method='manual',
+    ...     clearing_journal=expense_journal,
     ...     clearing_account=bank_clearing)
     >>> clearing_journal.save()
 
