@@ -10,22 +10,38 @@ from . import avatar
 
 
 def setup(config, modules):
-    Party = Model.get('party.party')
+    Address = Model.get('party.address')
     Company = Model.get('company.company')
+    Country = Model.get('country.country')
     Currency = Model.get('currency.currency')
+    Party = Model.get('party.party')
+    Subdivision = Model.get('country.subdivision')
 
     usd, = Currency.find([('code', '=', 'USD')])
     rate = usd.rates.new()
     rate.date = dt.date(dt.date.today().year, 1, 1)
     rate.rate = Decimal('1')
     usd.save()
+    try:
+        us, = Country.find([('code', '=', 'US')])
+    except ValueError:
+        us = None
 
     company_config = Wizard('company.company.config')
     company_config.execute('company')
     company = company_config.form
-    party = Party(name='Michael Scott Paper Company')
+    party = Party(name="Dunder Mifflin")
+    address = Address()
+    party.addresses.append(address)
+    address.street = "1725 Slough Avenue"
+    address.city = "Scranton"
+    address.country = us
+    try:
+        address.subdivision, = Subdivision.find([('code', '=', 'US-PA')])
+    except ValueError:
+        pass
     if 'party_avatar' in modules:
-        party.avatar = avatar.get('michael-scott-paper-inc.jpg')
+        party.avatar = avatar.get('dunder-mifflin.jpg')
     party.save()
     company.party = party
     company.currency = usd
@@ -40,95 +56,151 @@ def setup(config, modules):
 
 
 def setup_post(config, modules, company):
-    Party = Model.get('party.party')
     Company = Model.get('company.company')
-    Currency = Model.get('currency.currency')
-    Address = Model.get('party.address')
-    Country = Model.get('country.country')
-    Subdivision = Model.get('country.subdivision')
     Employee = Model.get('company.employee')
+    Group = Model.get('res.group')
+    Party = Model.get('party.party')
+    User = Model.get('res.user')
 
     party_avatar = 'party_avatar' in modules
 
-    usd, = Currency.find([('code', '=', 'USD')])
-    try:
-        us, = Country.find([('code', '=', 'US')])
-    except ValueError:
-        us = None
-
-    party_scott = Party(name='Michael Scott')
+    party_scott = Party(name="Michael Scott")
     if party_avatar:
         party_scott.avatar = avatar.get('michael-scott.jpg')
     party_scott.save()
-    Employee(party=party_scott, company=company).save()
-    party_beesly = Party(name='Pam Beesly')
+    employee_scott = Employee(party=party_scott, company=company)
+    employee_scott.save()
+    user_scott = User()
+    user_scott.name = "Michael Scott"
+    user_scott.login = 'michael'
+    user_scott.groups.extend(Group.find([
+                ('name', 'not ilike', "%Admin%"),
+                ]))
+    user_scott.companies.append(Company(company.id))
+    user_scott.company = company
+    user_scott.employees.append(employee_scott)
+    user_scott.employee = employee_scott
+    user_scott.save()
+
+    party_beesly = Party(name="Pam Beesly")
     if party_avatar:
         party_beesly.avatar = avatar.get('pam-beesly.jpg')
     party_beesly.save()
-    Employee(party=party_beesly, company=company).save()
-    party_howard = Party(name='Ryan Howard')
+    employee_beesly = Employee(party=party_beesly, company=company)
+    employee_beesly.save()
+    user_beesly = User()
+    user_beesly.name = "Pam Beesly"
+    user_beesly.login = 'pam'
+    user_beesly.groups.extend(Group.find(['OR',
+                ('name', 'ilike', "Party%"),
+                ('name', 'ilike', "Employee%"),
+                ('name', 'ilike', "Timesheet%"),
+                ('name', 'ilike', "Project%"),
+                ]))
+    user_beesly.companies.append(Company(company.id))
+    user_beesly.company = company
+    user_beesly.employees.append(employee_beesly)
+    user_beesly.employee = employee_beesly
+    user_beesly.save()
+
+    party_howard = Party(name="Ryan Howard")
     if party_avatar:
         party_howard.avatar = avatar.get('ryan-howard.jpg')
     party_howard.save()
-    Employee(party=party_howard, company=company).save()
+    employee_howard = Employee(party=party_howard, company=company)
+    employee_howard.save()
+    user_howard = User()
+    user_howard.name = "Ryan Howard"
+    user_howard.login = 'ryan'
+    user_howard.companies.append(Company(company.id))
+    user_howard.company = company
+    user_howard.employees.append(employee_howard)
+    user_howard.employee = employee_howard
+    user_howard.save()
 
-    dmi = Company()
-    party_dmi = Party(name='Dunder Mifflin inc')
-    address = Address()
-    party_dmi.addresses.append(address)
-    address.city = 'New York'
-    address.country = us
-    try:
-        address.subdivision, = Subdivision.find([('code', '=', 'US-NY')])
-    except ValueError:
-        pass
-    if party_avatar:
-        party_dmi.avatar = avatar.get('dunder-mifflin.jpg')
-    party_dmi.save()
-    dmi.party = party_dmi
-    dmi.currency = usd
-    dmi.save()
-
-    dms = Company()
-    party_dms = Party(name='Dunder Mifflin Scranton')
-    address = Address()
-    party_dms.addresses.append(address)
-    address.city = 'Scranton'
-    address.country = us
-    try:
-        address.subdivision, = Subdivision.find([('code', '=', 'US-PA')])
-    except ValueError:
-        pass
-    party_dms.save()
-    dms.party = party_dms
-    dms.currency = usd
-    dms.save()
-
-    party_halper = Party(name='Jim Halper')
+    party_halper = Party(name="Jim Halper")
     if party_avatar:
         party_halper.avatar = avatar.get('jim-halper.jpg')
     party_halper.save()
-    Employee(party=party_halper, company=dms).save()
-    party_schrute = Party(name='Dwight Schrute')
+    employee_halper = Employee(party=party_halper, company=company)
+    employee_halper.save()
+    user_halper = User()
+    user_halper.name = "Jim Halper"
+    user_halper.login = 'jim'
+    user_halper.groups.extend(Group.find(['OR',
+                ('name', '=', "Sales"),
+                ('name', 'ilike', "Project%"),
+                ]))
+    user_halper.companies.append(Company(company.id))
+    user_halper.company = company
+    user_halper.employees.append(employee_halper)
+    user_halper.employee = employee_halper
+    user_halper.save()
+
+    party_schrute = Party(name="Dwight Schrute")
     if party_avatar:
         party_schrute.avatar = avatar.get('dwight-schrute.jpg')
     party_schrute.save()
-    Employee(party=party_schrute, company=dms).save()
-    party_martin = Party(name='Angela Martin')
+    employee_schrute = Employee(party=party_schrute, company=company)
+    employee_schrute.save()
+    user_schrute = User()
+    user_schrute.name = "Dwight Schrute"
+    user_schrute.login = 'dwight'
+    user_schrute.groups.extend(Group.find(['OR',
+                ('name', '=', "Sales"),
+                ('name', 'ilike', "Project%"),
+                ('name', 'ilike', "Product%"),
+                ]))
+    user_schrute.companies.append(Company(company.id))
+    user_schrute.company = company
+    user_schrute.employees.append(employee_schrute)
+    user_schrute.employee = employee_schrute
+    user_schrute.save()
+
+    party_martin = Party(name="Angela Martin")
     if party_avatar:
         party_martin.avatar = avatar.get('angela-martin.jpg')
     party_martin.save()
-    Employee(party=party_martin, company=dms).save()
-    party_miner = Party(name='Charles Miner')
+    employee_martin = Employee(party=party_martin, company=company)
+    employee_martin.save()
+    user_martin = User()
+    user_martin.name = "Angela Martin"
+    user_martin.login = 'angela'
+    user_martin.groups.extend(Group.find(['OR',
+                ('name', 'ilike', "Account%"),
+                ('name', 'ilike', "Bank%"),
+                ('name', 'ilike', "Currency%"),
+                ('name', 'ilike', "Payment%"),
+                ('name', 'ilike', "Statement%"),
+                ]))
+    user_martin.companies.append(Company(company.id))
+    user_martin.company = company
+    user_martin.employees.append(employee_martin)
+    user_martin.employee = employee_martin
+    user_martin.save()
+
+    party_philbin = Party(name="Darryl Philbin")
     if party_avatar:
-        party_miner.avatar = avatar.get('charles-miner.jpg')
-    party_miner.save()
-    Employee(party=party_miner, company=dms).save()
+        party_philbin.avatar = avatar.get('darryl-philbin.jpg')
+    party_philbin.save()
+    employee_philbin = Employee(party=party_philbin, company=company)
+    employee_philbin.save()
+    user_philbin = User()
+    user_philbin.name = "Darryl Philbin"
+    user_philbin.login = 'darryl'
+    user_philbin.groups.extend(Group.find(['OR',
+                ('name', 'ilike', "Stock%"),
+                ]))
+    user_philbin.companies.append(Company(company.id))
+    user_philbin.company = company
+    user_philbin.employees.append(employee_philbin)
+    user_philbin.employee = employee_philbin
+    user_philbin.save()
 
 
 def get():
     Company = Model.get('company.company')
     company, = Company.find([
-            ('party.name', '=', 'Michael Scott Paper Company'),
+            ('party.name', '=', "Dunder Mifflin"),
             ])
     return company
