@@ -758,7 +758,10 @@ class ViewTree(View):
             clipboard = self.treeview.get_clipboard(clipboard_type)
             selection = self.treeview.get_selection()
             data = StringIO()
-            writer = csv.writer(data, delimiter='\t', lineterminator='\n')
+            lineterminator = (
+                '\n' if selection.count_selected_rows() > 1 else '')
+            writer = csv.writer(
+                data, delimiter='\t', lineterminator=lineterminator)
             selection.selected_foreach(copy_foreach, writer.writerow)
             clipboard.set_text(data.getvalue(), -1)
 
