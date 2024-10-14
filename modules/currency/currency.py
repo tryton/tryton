@@ -61,6 +61,9 @@ class Currency(
             ],
         help="The minimum amount which can be represented in this currency.")
     digits = fields.Integer("Digits", required=True,
+        domain=[
+            ('digits', '>=', 0),
+            ],
         help="The number of digits to display after the decimal separator.")
 
     @classmethod
