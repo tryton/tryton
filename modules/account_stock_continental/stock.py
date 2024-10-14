@@ -2,7 +2,7 @@
 # this repository contains the full copyright notices and license terms.
 from decimal import Decimal
 
-from trytond.model import ModelView, Workflow
+from trytond.model import ModelView, Workflow, fields
 from trytond.modules.account.exceptions import PeriodNotFoundError
 from trytond.pool import Pool, PoolMeta
 from trytond.transaction import Transaction
@@ -10,6 +10,9 @@ from trytond.transaction import Transaction
 
 class Move(metaclass=PoolMeta):
     __name__ = 'stock.move'
+
+    account_moves = fields.One2Many(
+        'account.move', 'origin', "Account Moves", readonly=True)
 
     def _get_account_stock_move_lines(self, type_):
         '''
@@ -176,3 +179,26 @@ class Move(metaclass=PoolMeta):
                 account_moves.append(account_move)
         AccountMove.save(account_moves)
         AccountMove.post(account_moves)
+
+    @classmethod
+    @ModelView.button
+    @Workflow.transition('cancelled')
+    def cancel(cls, moves):
+        pool = Pool()
+        AccountMove = pool.get('account.move')
+        super().cancel(moves)
+
+        delete_moves, cancel_moves = [], []
+        for move in moves:
+            for account_move in move.account_moves:
+                if account_move.state == 'draft':
+                    delete_moves.append(account_move)
+                else:
+                    cancel_move = account_move.cancel()
+                    cancel_move.origin = move
+                    cancel_moves.append(cancel_move)
+        if delete_moves:
+            AccountMove.delete(delete_moves)
+        if cancel_moves:
+            AccountMove.save(cancel_moves)
+            AccountMove.post(cancel_moves)
