@@ -288,7 +288,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="account.account.type.template" id="account_type_template_non_operating_section">
             <field name="name" lang="en">Non-operating section</field>
             <field name="parent" ref="account_type_template_profit_loss"/>
-            <field name="sequence" eval="20"/>
+            <field name="sequence" eval="30"/>
             <field name="statement">income</field>
         </record>
 
@@ -323,7 +323,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="account.account.type.template" id="account_type_template_irregular_items">
             <field name="name" lang="en">Irregular items</field>
             <field name="parent" ref="account_type_template_profit_loss"/>
-            <field name="sequence" eval="30"/>
+            <field name="sequence" eval="40"/>
             <field name="statement">income</field>
         </record>
 
