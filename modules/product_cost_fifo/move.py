@@ -152,15 +152,12 @@ class Move(metaclass=PoolMeta):
 
     @classmethod
     def delete(cls, moves):
-        fifo_moves = cls.search([
-                ('id', 'in', [m.id for m in moves]),
-                ('fifo_quantity', '!=', 0.0),
-                ])
-        if fifo_moves:
-            raise AccessError(
-                gettext('product_cost_fifo.msg_move_delete_fifo',
-                    move=fifo_moves[0].rec_name))
-        super(Move, cls).delete(moves)
+        for move in moves:
+            if move.fifo_quantity:
+                raise AccessError(
+                    gettext('product_cost_fifo.msg_move_delete_fifo',
+                        move=move.rec_name))
+        super().delete(moves)
 
     @classmethod
     def copy(cls, moves, default=None):
