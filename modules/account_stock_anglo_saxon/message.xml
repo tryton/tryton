@@ -7,6 +7,12 @@ this repository contains the full copyright notices and license terms. -->
             <field name="text">The invoice line "%(line)s" is linked to stock moves of other products than "%(product)s".
 This may compute a wrong COGS.</field>
         </record>
+        <record model="ir.message" id="msg_move_cancel_anglo_saxon">
+            <field name="text">You cannot cancel move "%(move)s" because it is used for anglo-saxon accounting.</field>
+        </record>
+        <record model="ir.message" id="msg_move_delete_anglo_saxon">
+            <field name="text">You cannot delete move "%(move)s" because it is used for anglo-saxon accounting.</field>
+        </record>
         <record model="ir.message" id="msg_move_quantity_greater">
             <field name="text">Anglo-Saxon quantity cannot be greater than quantity.</field>
         </record>

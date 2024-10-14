@@ -2,7 +2,9 @@
 # this repository contains the full copyright notices and license terms.
 from decimal import Decimal
 
-from trytond.model import Check, fields
+from trytond.i18n import gettext
+from trytond.model import Check, ModelView, Workflow, fields
+from trytond.model.exceptions import AccessError
 from trytond.pool import Pool, PoolMeta
 from trytond.transaction import Transaction
 
@@ -178,3 +180,25 @@ class Move(metaclass=PoolMeta):
             default.setdefault(prefix + 'anglo_saxon_quantity',
                 getattr(cls, 'default_%sanglo_saxon_quantity' % prefix)())
         return super(Move, cls).copy(moves, default=default)
+
+    @classmethod
+    @ModelView.button
+    @Workflow.transition('cancelled')
+    def cancel(cls, moves):
+        for move in moves:
+            if move.in_anglo_saxon_quantity or move.out_anglo_saxon_quantity:
+                raise AccessError(
+                    gettext('account_stock_anglo_saxon'
+                        '.msg_move_cancel_anglo_saxon',
+                        move=move.rec_name))
+        super().cancel(moves)
+
+    @classmethod
+    def delete(cls, moves):
+        for move in moves:
+            if move.in_anglo_saxon_quantity or move.out_anglo_saxon_quantity:
+                raise AccessError(
+                    gettext('account_stock_anglo_saxon'
+                        '.msg_move_delete_anglo_saxon',
+                        move=move.rec_name))
+        super().delete(moves)
