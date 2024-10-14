@@ -58,19 +58,29 @@ class Work(metaclass=PoolMeta):
 
     @classmethod
     def _get_cost(cls, works):
+        costs = defaultdict(Decimal)
+
+        for work_id, cost in cls._timesheet_cost(works):
+            costs[work_id] += cost
+
+        for work_id, cost in cls._purchase_cost(works):
+            costs[work_id] += cost
+
+        for work in works:
+            costs[work.id] = work.company.currency.round(costs[work.id])
+        return costs
+
+    @classmethod
+    def _timesheet_cost(cls, works):
         pool = Pool()
         Line = pool.get('timesheet.line')
         Work = pool.get('timesheet.work')
         transaction = Transaction()
         cursor = transaction.connection.cursor()
-
-        costs = defaultdict(Decimal)
-
         table = cls.__table__()
         work = Work.__table__()
         line = Line.__table__()
 
-        # Timesheet cost
         work_ids = [w.id for w in works]
         for sub_ids in grouped_slice(work_ids):
             red_sql = reduce_ids(table.id, sub_ids)
@@ -87,20 +97,14 @@ class Work(metaclass=PoolMeta):
                     cost = cost.total_seconds()
                 # Convert from seconds
                 cost /= 60 * 60
-                costs[work_id] += Decimal(str(cost))
-
-        # Purchase cost
-        if hasattr(cls, 'purchase_lines'):
-            for work_id, cost in cls._purchase_cost(works).items():
-                costs[work_id] += cost
-
-        for work in works:
-            costs[work.id] = work.company.currency.round(costs[work.id])
-        return costs
+                yield work_id, Decimal(str(cost))
 
     @classmethod
     def _purchase_cost(cls, works):
         'Compute direct purchase cost'
+        if not hasattr(cls, 'purchase_lines'):
+            return
+
         pool = Pool()
         Currency = pool.get('currency.currency')
         PurchaseLine = pool.get('purchase.line')
@@ -115,7 +119,6 @@ class Work(metaclass=PoolMeta):
         invoice = Invoice.__table__()
         company = Company.__table__()
 
-        amounts = defaultdict(Decimal)
         work_ids = [w.id for w in works]
         work2currency = {}
         iline2work = {}
@@ -153,8 +156,7 @@ class Work(metaclass=PoolMeta):
                         invoice_line.amount, currency)
             else:
                 amount = invoice_line.amount
-            amounts[work_id] += amount
-        return amounts
+            yield work_id, amount
 
     @classmethod
     def _get_revenue(cls, works):
