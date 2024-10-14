@@ -57,6 +57,21 @@ class Work(metaclass=PoolMeta):
                     ])
 
     @classmethod
+    def get_total(cls, works, names):
+        result = super().get_total(works, names)
+        currencies = []
+        for name in names:
+            field = getattr(cls, name)
+            if getattr(field, 'digits', None) == 'currency':
+                currencies.append(name)
+        if currencies:
+            for work in works:
+                for name in currencies:
+                    result[name][work.id] = work.company.currency.round(
+                        result[name][work.id])
+        return result
+
+    @classmethod
     def _get_cost(cls, works):
         costs = defaultdict(Decimal)
 
@@ -65,9 +80,6 @@ class Work(metaclass=PoolMeta):
 
         for work_id, cost in cls._purchase_cost(works):
             costs[work_id] += cost
-
-        for work in works:
-            costs[work.id] = work.company.currency.round(costs[work.id])
         return costs
 
     @classmethod
@@ -165,11 +177,10 @@ class Work(metaclass=PoolMeta):
             if not work.list_price:
                 continue
             if work.price_list_hour:
-                revenue = work.company.currency.round(
-                    work.list_price * Decimal(str(work.effort_hours)))
+                revenue = work.list_price * Decimal(str(work.effort_hours))
             else:
                 revenue = work.list_price
-            revenues[work.id] = work.company.currency.round(revenue)
+            revenues[work.id] = revenue
         return revenues
 
     @fields.depends('company')
