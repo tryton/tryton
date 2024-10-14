@@ -60,7 +60,8 @@ Create payment journal::
 
     >>> PaymentJournal = Model.get('account.payment.journal')
     >>> payment_journal = PaymentJournal(name='Manual',
-    ...     process_method='manual', clearing_journal=expense,
+    ...     process_method='manual',
+    ...     clearing_journal=expense_journal,
     ...     clearing_account=bank_clearing,
     ...     clearing_posting_delay=dt.timedelta(1))
     >>> payment_journal.save()
