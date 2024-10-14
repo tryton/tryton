@@ -244,7 +244,6 @@ class CurrencyTestCase(ModuleTestCase):
         cu1 = create_currency('cu1')
         cu2 = create_currency('cu2')
 
-        add_currency_rate(cu1, Decimal('0'))
         add_currency_rate(cu2, Decimal('1'))
 
         amount = Decimal("10")

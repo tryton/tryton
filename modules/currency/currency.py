@@ -11,8 +11,8 @@ from sql.functions import NthValue
 
 from trytond.i18n import gettext
 from trytond.model import (
-    Check, DeactivableMixin, DigitsMixin, Index, ModelSQL, ModelView,
-    SymbolMixin, Unique, fields)
+    DeactivableMixin, DigitsMixin, Index, ModelSQL, ModelView, SymbolMixin,
+    Unique, fields)
 from trytond.pool import Pool
 from trytond.pyson import Eval, If
 from trytond.rpc import RPC
@@ -274,7 +274,10 @@ class CurrencyRate(ModelSQL, ModelView):
         "Date", required=True,
         help="From when the rate applies.")
     rate = fields.Numeric(
-        "Rate", digits=(rate_decimal * 2, rate_decimal), required=1,
+        "Rate", digits=(rate_decimal * 2, rate_decimal), required=True,
+        domain=[
+            ('rate', '>', 0),
+            ],
         help="The floating exchange rate used to convert the currency.")
     currency = fields.Many2One('currency.currency', 'Currency',
             ondelete='CASCADE',
@@ -288,8 +291,6 @@ class CurrencyRate(ModelSQL, ModelView):
         cls._sql_constraints = [
             ('date_currency_uniq', Unique(t, t.date, t.currency),
                 'currency.msg_currency_unique_rate_date'),
-            ('check_currency_rate', Check(t, t.rate >= 0),
-                'currency.msg_currency_rate_positive'),
             ]
         cls._sql_indexes.add(
             Index(
@@ -298,6 +299,14 @@ class CurrencyRate(ModelSQL, ModelView):
                 (t.date, Index.Range()),
                 order='DESC'))
         cls._order.insert(0, ('date', 'DESC'))
+
+    @classmethod
+    def __register__(cls, module):
+        table_h = cls.__table_handler__(module)
+        super().__register__(module)
+
+        # Migration from 7.2: remove check_currency_rate
+        table_h.drop_constraint('check_currency_rate')
 
     @staticmethod
     def default_date():
