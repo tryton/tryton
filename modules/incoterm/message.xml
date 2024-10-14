@@ -18,5 +18,8 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.message" id="msg_purchase_incoterm_required_for_quotation">
             <field name="text">To get a quote for purchase "%(purchase)s" you must enter an incoterm.</field>
         </record>
+        <record model="ir.message" id="msg_shipment_different_incoterm">
+            <field name="text">The incoterm "%(shipment_incoterm)s" of shipment "%(shipment)s" is different from the incoterms "%(origin_incoterms)s" of its origin.</field>
+        </record>
     </data>
 </tryton>

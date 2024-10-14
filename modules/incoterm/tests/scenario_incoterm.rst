@@ -22,12 +22,14 @@ Activate modules::
     >>> Country = Model.get('country.country')
     >>> Incoterm = Model.get('incoterm.incoterm')
     >>> Location = Model.get('stock.location')
+    >>> Move = Model.get('stock.move')
     >>> Party = Model.get('party.party')
     >>> ProductCategory = Model.get('product.category')
     >>> ProductTemplate = Model.get('product.template')
     >>> ProductUom = Model.get('product.uom')
     >>> Purchase = Model.get('purchase.purchase')
     >>> Sale = Model.get('sale.sale')
+    >>> ShipmentIn = Model.get('stock.shipment.in')
 
 Create countries::
 
@@ -110,6 +112,7 @@ Create products::
     >>> template.default_uom = unit
     >>> template.type = 'goods'
     >>> template.salable = True
+    >>> template.purchasable = True
     >>> template.list_price = Decimal('20')
     >>> template.account_category = account_category
     >>> template.save()
@@ -192,9 +195,51 @@ Test incoterm on shipment::
     'CIF (2020)'
     >>> assertEqual(shipment.incoterm_location, port.addresses[0])
 
+Warn if incoterm on shipment is different from its origins::
+
+    >>> shipment.click('draft')
+    >>> shipment.incoterm, = Incoterm.find([
+    ...         ('code', '=', 'EXW'), ('version', '=', '2020')])
+    >>> shipment.click('wait')
+    Traceback (most recent call last):
+        ...
+    DifferentIncotermWarning: ...
+
 Test incoterm is set on purchase::
 
     >>> purchase = Purchase()
     >>> purchase.party = supplier
     >>> purchase.incoterm.rec_name
     'CFR (2020)'
+    >>> line = purchase.lines.new()
+    >>> line.product = product
+    >>> line.quantity = 1
+    >>> line.unit_price = Decimal('5.0000')
+    >>> purchase.click('quote')
+    >>> purchase.click('confirm')
+    >>> purchase.state
+    'processing'
+
+Create supplier shipment with different incoterm::
+
+    >>> shipment = ShipmentIn()
+    >>> shipment.supplier = supplier
+    >>> shipment.incoterm, = Incoterm.find([
+    ...         ('code', '=', 'EXW'), ('version', '=', '2020')])
+    >>> for move in purchase.moves:
+    ...     incoming_move = Move(id=move.id)
+    ...     shipment.incoming_moves.append(incoming_move)
+    >>> shipment.save()
+    >>> shipment.click('receive')
+    Traceback (most recent call last):
+        ...
+    DifferentIncotermWarning: ...
+
+Update supplier shipment with the same incoterm as the purchase::
+
+    >>> shipment.incoterm, = Incoterm.find([
+    ...         ('code', '=', 'CFR'), ('version', '=', '2020')])
+    >>> shipment.save()
+    >>> shipment.click('receive')
+    >>> shipment.state
+    'received'
