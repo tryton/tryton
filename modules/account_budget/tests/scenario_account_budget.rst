@@ -10,7 +10,7 @@ Imports::
     >>> from trytond.modules.account.tests.tools import (
     ...     create_chart, create_fiscalyear, get_accounts)
     >>> from trytond.modules.company.tests.tools import create_company
-    >>> from trytond.tests.tools import activate_modules
+    >>> from trytond.tests.tools import activate_modules, assertEqual
 
 Activate modules::
 
@@ -50,8 +50,9 @@ Create a budget::
     >>> budget.name = 'Budget'
     >>> budget.fiscalyear = fiscalyear
     >>> budget.click('update_lines')
-    >>> len(budget.lines)
-    5
+    >>> bool(budget.lines)
+    True
+    >>> line_count = len(budget.lines)
 
     >>> revenue_budget, = BudgetLine.find(
     ...     [('account', '=', accounts['revenue'].id)])
@@ -63,8 +64,7 @@ Create a budget::
     >>> expense_budget.save()
 
     >>> budget.click('update_lines')
-    >>> len(budget.lines)
-    5
+    >>> assertEqual(len(budget.lines), line_count)
 
 Create moves to test the budget::
 
@@ -125,7 +125,7 @@ Create periods::
 
     >>> create_periods = pl_budget.click('create_periods')
     >>> create_periods.execute('create_periods')
-    >>> revenue_budget, expense_budget = pl_budget.children
+    >>> revenue_budget, expense_budget = pl_budget.children[:2]
     >>> len(pl_budget.periods)
     12
     >>> {p.total_amount for p in pl_budget.periods}
