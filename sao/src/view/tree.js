@@ -72,7 +72,8 @@
             this.view.columns.push(column);
 
             if (attributes.optional) {
-                this.view.optionals.push(column);
+                Sao.setdefault(
+                    this.view.optionals, column.attributes.name, []).push(column);
             }
 
             if (parseInt(attributes.sum || '0', 10)) {
@@ -99,7 +100,7 @@
         display_size: Sao.config.display_size,
         init: function(view_id, screen, xml, children_field) {
             this.children_field = children_field;
-            this.optionals = [];
+            this.optionals = {};
             this.sum_widgets = new Map();
             this.columns = [];
             this.selection_mode = (screen.attributes.selection_mode ||
@@ -254,7 +255,7 @@
             this.set_drag_and_drop();
 
             th = this.thead.find('th').first();
-            if (this.optionals.length) {
+            if (!jQuery.isEmptyObject(this.optionals)) {
                 th.addClass('optional');
             }
             var menu = jQuery('<ul/>', {
@@ -283,15 +284,19 @@
         },
         tree_menu: function(evt) {
             const toggle = evt => {
-                var column = evt.data;
-                column.set_visible(jQuery(evt.delegateTarget).prop('checked'));
+                let columns = evt.data;
+                let visible = jQuery(evt.delegateTarget).prop('checked');
+                columns.forEach(c => c.set_visible(visible));
                 this.save_optional();
                 this.display();
                 this.update_visible();
             };
             var menu = evt.data;
             menu.empty();
-            for (const optional of this.optionals) {
+            for (let columns of Object.values(this.optionals)) {
+                let visible = columns.some(c => c.get_visible());
+                let string = [...new Set(columns.map(c => c.attributes.string))]
+                    .join(' / ');
                 menu.append(jQuery('<li/>', {
                     'role': 'presentation',
                 }).append(jQuery('<a/>', {
@@ -300,11 +305,11 @@
                     'class': 'checkbox',
                 }).append(jQuery('<input/>', {
                     'type': 'checkbox',
-                    'checked': optional.get_visible(),
-                }).change(optional, toggle))
-                    .append(' ' + optional.attributes.string))));
+                    'checked': visible,
+                }).change(columns, toggle))
+                    .append(' ' + string))));
             }
-            if (this.optionals.length) {
+            if (!jQuery.isEmptyObject(this.optionals)) {
                 menu.append(jQuery('<li/>', {
                     'role': 'separator',
                     'class': 'divider hidden-xs',
@@ -331,12 +336,12 @@
                 })));
         },
         save_optional: function(store=true) {
-            if (!this.optionals.length) {
+            if (jQuery.isEmptyObject(this.optionals)) {
                 return;
             }
             var fields = {};
-            for (const column of this.optionals) {
-                fields[column.attributes.name] = !column.get_visible();
+            for (let [name, columns] of Object.entries(this.optionals)) {
+                fields[name] = columns.every(c => !c.get_visible());
             }
             if (store) {
                 var tree_optional_model = new Sao.Model(
@@ -1510,7 +1515,7 @@
                 td.addClass('draggable-handle');
                 td.append(Sao.common.ICONFACTORY.get_icon_img('tryton-drag'));
             }
-            if (this.tree.optionals.length) {
+            if (!jQuery.isEmptyObject(this.tree.optionals)) {
                 td.addClass('optional');
             }
             this.el.append(td);

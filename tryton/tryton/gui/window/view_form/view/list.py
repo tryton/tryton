@@ -5,6 +5,7 @@ import gettext
 import json
 import locale
 import sys
+from collections import defaultdict
 from functools import wraps
 from io import StringIO
 
@@ -336,7 +337,7 @@ class TreeXMLViewParser(XMLViewParser):
         self.view.treeview.append_column(column)
 
         if 'optional' in attributes:
-            self.view.optionals.append(column)
+            self.view.optionals[column.name].append(column)
 
     def _parse_button(self, node, attributes):
         button = Button(self.view, attributes)
@@ -437,7 +438,7 @@ class ViewTree(View):
 
     def __init__(self, view_id, screen, xml, children_field):
         self.children_field = children_field
-        self.optionals = []
+        self.optionals = defaultdict(list)
         self.sum_widgets = []
         self.sum_box = Gtk.HBox()
         self.treeview = None
@@ -521,21 +522,27 @@ class ViewTree(View):
             self.treeview.append_column(column)
 
     def optional_menu(self, column):
-        def toggle(menuitem, column):
-            column.set_visible(menuitem.get_active())
+        def toggle(menuitem, columns):
+            visible = menuitem.get_active()
+            for column in columns:
+                column.set_visible(visible)
             self.save_optional()
 
         widget = column.get_widget()
         menu = Gtk.Menu()
-        for optional in self.optionals:
-            menuitem = Gtk.CheckMenuItem(label=optional.get_title())
-            menuitem.set_active(optional.get_visible())
-            menuitem.connect('toggled', toggle, optional)
+        for name, columns in self.optionals.items():
+            visible = any(c.get_visible() for c in columns)
+            title = ' / '.join({c.get_title() for c in columns})
+            menuitem = Gtk.CheckMenuItem(label=title)
+            menuitem.set_active(visible)
+            menuitem.connect('toggled', toggle, columns)
             menu.add(menuitem)
         popup(menu, widget)
 
     def save_optional(self):
-        fields = {c.name: not c.get_visible() for c in self.optionals}
+        fields = {}
+        for name, columns in self.optionals.items():
+            fields[name] = all(not c.get_visible() for c in columns)
         try:
             RPCExecute(
                 'model', 'ir.ui.view_tree_optional', 'set_optional',
