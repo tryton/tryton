@@ -477,6 +477,7 @@
             for (const record of this) {
                 if (record.get_loaded([field]) || changed || record.id < 0) {
                     if (prev) {
+                        prev.load(field, false);
                         index = prev.field_get(field);
                     } else {
                         index = null;
