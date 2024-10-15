@@ -6,6 +6,7 @@ from trytond.model import (
 from trytond.model.exceptions import AccessError
 from trytond.pool import Pool
 from trytond.pyson import Id
+from trytond.transaction import Transaction
 
 from .party import IDENTIFIER_TYPES, replace_vat
 
@@ -31,6 +32,7 @@ class Configuration(ModelSingleton, ModelSQL, ModelView, MultiValueMixin):
 
     @classmethod
     def __register__(cls, module):
+        cursor = Transaction().connection.cursor()
         super().__register__(module)
 
         # Migration from 6.8: Use vat alias
@@ -39,8 +41,11 @@ class Configuration(ModelSingleton, ModelSQL, ModelView, MultiValueMixin):
             identifier_types = list(map(
                     replace_vat, configuration.identifier_types))
             if configuration.identifier_types != identifier_types:
-                configuration.identifier_types = identifier_types
-                configuration.save()
+                table = cls.__table__()
+                cursor.execute(*table.update(
+                    [table.identifier_types],
+                    [cls.identifier_types.sql_format(identifier_types)]
+                    ))
 
     @classmethod
     def default_party_sequence(cls, **pattern):
