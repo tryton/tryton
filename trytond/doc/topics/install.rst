@@ -7,11 +7,12 @@ How to install Tryton
 Install Tryton
 ==============
 
-There are three options to install Tryton:
+There are four options to install Tryton ordered by preference:
 
-    * Install the version provided by your operating system distribution. This
-      is the quickest and recommended option for those who has operating system
-      that distributes Tryton.
+    * Using the `docker image <https://www.tryton.org/download#docker>`_.
+
+    * Install the version provided by your `operating system distribution
+      <https://www.tryton.org/download#distributions>`_.
 
     * Install the published package.
       You first need to have `pip <https://pip.pypa.io/>`_ installed.
