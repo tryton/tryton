@@ -1166,7 +1166,8 @@ class ViewTree(View):
                 continue
             widget = self.get_column_widget(column)
             widget.set_editable()
-            if column.name in tree_column_optional:
+            if ('optional' in widget.attrs
+                    and column.name in tree_column_optional):
                 optional = tree_column_optional[column.name]
             else:
                 optional = bool(int(widget.attrs.get('optional', '0')))
