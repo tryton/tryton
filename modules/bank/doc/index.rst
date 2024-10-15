@@ -1,7 +1,15 @@
+###########
 Bank Module
 ###########
 
-The bank module defines the concept of bank and account.
+The *Bank Module* defines the concepts needed for storing banks and bank
+accounts.
+
+.. toctree::
+   :maxdepth: 2
+
+   design
+   releases
 
 Bank
 ****
