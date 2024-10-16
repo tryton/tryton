@@ -6,6 +6,10 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.message" id="msg_test">
             <field name="text">Message</field>
         </record>
+        <record model="ir.message" id="msg_test_plural">
+            <field name="text">%(count)i message</field>
+            <field name="text_plural">%(count)i messages</field>
+        </record>
         <record model="ir.message" id="msg_modelsql_check">
             <field name="text">Value must be greater than 42.</field>
         </record>

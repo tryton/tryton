@@ -16,5 +16,15 @@ Internationalization
 
 .. function:: lazy_gettext(message_id, [language[, \**variables]])
 
-   Return a LazyString that will be translated with gettext later when actually
-   used.
+   Return a LazyString that will be translated with :meth:`gettext` later when
+   actually used.
+
+.. function:: ngettext(message_id, n, [language[, \**variables]])
+
+   Like :meth:`gettext` but for plural message which depend on ``n`` the number
+   of count.
+
+.. function:: lazy_ngettext(message_id, n, [language[, \**variables]])
+
+   Return a LazyString that will be translated with :meth:`ngettext` later when
+   actually used.

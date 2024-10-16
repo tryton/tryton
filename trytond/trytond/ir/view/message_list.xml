@@ -3,4 +3,5 @@
 this repository contains the full copyright notices and license terms. -->
 <tree>
     <field name="text" expand="1"/>
+    <field name="text_plural" expand="1" optional="1"/>
 </tree>
