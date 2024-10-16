@@ -1,3 +1,4 @@
+* Add plural source to translations
 * Add plural to language
 * Set Decimal precision of default context from TRYTOND_DECIMAL_PREC
 * Replace usage of docstring of Model by __string__ attribute
