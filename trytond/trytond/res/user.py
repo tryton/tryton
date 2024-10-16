@@ -42,7 +42,7 @@ except ImportError:
 from trytond.cache import Cache
 from trytond.config import config
 from trytond.exceptions import LoginException, RateLimitException, UserError
-from trytond.i18n import gettext
+from trytond.i18n import gettext, ngettext
 from trytond.model import (
     DeactivableMixin, Index, ModelSQL, ModelView, Unique, Workflow,
     avatar_mixin, dualmethod, fields)
@@ -273,7 +273,8 @@ class User(avatar_mixin(100, 'login'), DeactivableMixin, ModelSQL, ModelView):
         length = config.getint('password', 'length', default=0)
         if length > 0:
             if len(password_b) < length:
-                raise PasswordError(gettext('res.msg_password_length',
+                raise PasswordError(ngettext(
+                        'res.msg_password_length', length,
                         length=length,
                         ))
         path = config.get('password', 'forbidden', default=None)
