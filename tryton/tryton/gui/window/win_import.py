@@ -14,7 +14,8 @@ from tryton.common import IconFactory, RPCException, RPCExecute
 from tryton.common.underline import set_underline
 from tryton.gui.window.win_csv import WinCSV
 
-_ = gettext.gettext
+_ = gettext
+N_ = gettext.ngettext
 
 
 class WinImport(WinCSV):
@@ -256,8 +257,6 @@ class WinImport(WinCSV):
                 context=self.context)
         except RPCException:
             return
-        if count == 1:
-            common.message(_('%d record imported.') % count)
-        else:
-            common.message(_('%d records imported.') % count)
+        common.message(
+            N_('%d record imported.', '%d records imported.', count) % count)
         return count

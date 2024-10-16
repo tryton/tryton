@@ -24,6 +24,7 @@ from tryton.rpc import CONNECTION, clear_cache
 from .infobar import InfoBar
 
 _ = gettext.gettext
+N_ = gettext.ngettext
 
 
 class WinExport(WinCSV, InfoBar):
@@ -435,10 +436,7 @@ class WinExport(WinCSV, InfoBar):
             size = len(data)
             if header:
                 size -= 1
-            if size <= 1:
-                message = _('%d record saved.') % size
-            else:
-                message = _('%d records saved.') % size
+            message = N_('%d record saved.', '%d records saved.', size) % size
             self.info_bar_add(message, Gtk.MessageType.INFO)
             return True
         except (IOError, UnicodeEncodeError, csv.Error) as exception:
