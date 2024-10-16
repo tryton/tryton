@@ -127,8 +127,12 @@ class TranslateFactory:
         self.report_name = report_name
         self.translation = translation
 
-    def __call__(self, text):
+    def gettext(self, text):
         return self.translation.get_report(self.report_name, text)
+
+    def ngettext(self, text, text_plural, n):
+        return self.translation.get_report(
+            self.report_name, text, text_plural, n)
 
 
 class Report(URLMixin, PoolBase):
@@ -373,12 +377,13 @@ class Report(URLMixin, PoolBase):
             pool = Pool()
             Translation = pool.get('ir.translation')
             translate = TranslateFactory(cls.__name__, Translation)
-            translator = Translator(lambda text: translate(text))
+            translator = Translator(translate)
             # Do not use Translator.setup to add filter at the end
             # after set_lang evaluation
             template.filters.append(translator)
             if hasattr(template, 'add_directives'):
                 template.add_directives(Translator.NAMESPACE, translator)
+            return translate
 
     @classmethod
     def render(cls, report, report_context):
@@ -390,7 +395,11 @@ class Report(URLMixin, PoolBase):
             klass = loader.factories[loader.get_type(mimetype)]
             template = klass(BytesIO(report.report_content))
             report.set_template_cached(template)
-        cls._callback_loader(report, template)
+        translate = cls._callback_loader(report, template)
+        if translate:
+            report_context = report_context.copy()
+            report_context['gettext'] = translate.gettext
+            report_context['ngettext'] = translate.ngettext
         data = template.generate(**report_context).render()
         if hasattr(data, 'getvalue'):
             data = data.getvalue()
