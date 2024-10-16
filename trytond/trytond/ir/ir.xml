@@ -10,6 +10,8 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.lang" id="lang_en">
             <field name="code">en</field>
             <field name="name">English</field>
+            <field name="nplurals" eval="2"/>
+            <field name="plural">n != 1</field>
             <field name="date">%m/%d/%Y</field>
             <field name="am">AM</field>
             <field name="pm">PM</field>

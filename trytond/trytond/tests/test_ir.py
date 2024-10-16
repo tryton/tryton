@@ -336,6 +336,17 @@ class IrTestCase(ModuleTestCase):
                 result)
 
     @with_transaction()
+    def test_lang_plural(self):
+        "Test Lang plural"
+        pool = Pool()
+        Lang = pool.get('ir.lang')
+
+        languages = Lang.search([])
+        for i in range(100):
+            for language in languages:
+                language.get_plural(i)
+
+    @with_transaction()
     def test_model_data_get_id(self):
         "Test ModelData.get_id"
         pool = Pool()

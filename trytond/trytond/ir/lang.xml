@@ -11,6 +11,8 @@ this repository contains the full copyright notices and license terms. -->
          <record model="ir.lang" id="lang_bg">
             <field name="code">bg</field>
             <field name="name">Bulgarian</field>
+            <field name="nplurals" eval="2"/>
+            <field name="plural">n != 1</field>
             <field name="date">%d.%m.%Y</field>
             <field name="am"></field>
             <field name="pm"></field>
@@ -32,6 +34,8 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.lang" id="lang_ca">
             <field name="code">ca</field>
             <field name="name">Català</field>
+            <field name="nplurals" eval="2"/>
+            <field name="plural">n != 1</field>
             <field name="date">%d/%m/%Y</field>
             <field name="am">a. m.</field>
             <field name="pm">p. m.</field>
@@ -53,6 +57,8 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.lang" id="lang_cs">
             <field name="code">cs</field>
             <field name="name">Czech</field>
+            <field name="nplurals" eval="3"/>
+            <field name="plural">0 if n == 1 else 1 if n &gt;= 2 and n &lt;= 4 else 2</field>
             <field name="date">%d.%m.%Y</field>
             <field name="am"></field>
             <field name="pm"></field>
@@ -74,6 +80,8 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.lang" id="lang_de">
             <field name="code">de</field>
             <field name="name">German</field>
+            <field name="nplurals" eval="2"/>
+            <field name="plural">n != 1</field>
             <field name="date">%d.%m.%Y</field>
             <field name="am"></field>
             <field name="pm"></field>
@@ -98,6 +106,8 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.lang" id="lang_es">
             <field name="code">es</field>
             <field name="name">Spanish</field>
+            <field name="nplurals" eval="2"/>
+            <field name="plural">n != 1</field>
             <field name="date">%d/%m/%Y</field>
             <field name="am"></field>
             <field name="pm"></field>
@@ -119,6 +129,8 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.lang" id="lang_es_419">
             <field name="code">es_419</field>
             <field name="name">Spanish (Latin American)</field>
+            <field name="nplurals" eval="2"/>
+            <field name="plural">n != 1</field>
             <field name="date">%d/%m/%Y</field>
             <field name="am"></field>
             <field name="pm"></field>
@@ -140,6 +152,8 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.lang" id="lang_et">
             <field name="code">et</field>
             <field name="name">Estonian</field>
+            <field name="nplurals" eval="2"/>
+            <field name="plural">n != 1</field>
             <field name="date">%d.%m.%Y</field>
             <field name="grouping">[3, 3]</field>
             <field name="decimal_point">,</field>
@@ -159,6 +173,8 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.lang" id="lang_fa">
             <field name="code">fa</field>
             <field name="name">Persian</field>
+            <field name="nplurals" eval="2"/>
+            <field name="plural">n &gt; 1</field>
             <field name="direction">rtl</field>
             <field name="date">%Y/%m/%d</field>
             <field name="am"></field>
@@ -181,6 +197,8 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.lang" id="lang_fi">
             <field name="code">fi</field>
             <field name="name">Finnish</field>
+            <field name="nplurals" eval="2"/>
+            <field name="plural">n != 1</field>
             <field name="date">%d.%m.%Y</field>
             <field name="grouping">[3, 3, 0]</field>
             <field name="decimal_point">,</field>
@@ -200,6 +218,8 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.lang" id="lang_fr">
             <field name="code">fr</field>
             <field name="name">French</field>
+            <field name="nplurals" eval="2"/>
+            <field name="plural">n &gt; 1</field>
             <field name="date">%d.%m.%Y</field>
             <field name="am"></field>
             <field name="pm"></field>
@@ -221,6 +241,8 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.lang" id="lang_hu">
             <field name="code">hu</field>
             <field name="name">Hungarian</field>
+            <field name="nplurals" eval="2"/>
+            <field name="plural">n != 1</field>
             <field name="date">%Y-%m-%d</field>
             <field name="am"></field>
             <field name="pm"></field>
@@ -242,6 +264,8 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.lang" id="lang_id">
             <field name="code">id</field>
             <field name="name">Indonesian</field>
+            <field name="nplurals" eval="1"/>
+            <field name="plural">0</field>
             <field name="date">%d/%m/%Y</field>
             <field name="am"></field>
             <field name="pm"></field>
@@ -263,6 +287,8 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.lang" id="lang_it">
             <field name="code">it</field>
             <field name="name">Italian</field>
+            <field name="nplurals" eval="2"/>
+            <field name="plural">n != 1</field>
             <field name="date">%d/%m/%Y</field>
             <field name="am"></field>
             <field name="pm"></field>
@@ -284,6 +310,8 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.lang" id="lang_lo">
             <field name="code">lo</field>
             <field name="name">Lao</field>
+            <field name="nplurals" eval="1"/>
+            <field name="plural">0</field>
             <field name="date">%d/%m/%Y</field>
             <field name="am">AM</field>
             <field name="pm">PM</field>
@@ -305,6 +333,8 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.lang" id="lang_lt">
             <field name="code">lt</field>
             <field name="name">Lithuanian</field>
+            <field name="nplurals" eval="3"/>
+            <field name="plural">0 if n % 10 == 1 and n % 100 != 11 else 1 if n % 10 >= 2 and (n % 100 &lt; 10 or n % 100 &gt;= 20) else 2</field>
             <field name="date">%Y-%m-%d</field>
             <field name="am"></field>
             <field name="pm"></field>
@@ -326,6 +356,8 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.lang" id="lang_nl">
             <field name="code">nl</field>
             <field name="name">Dutch</field>
+            <field name="nplurals" eval="2"/>
+            <field name="plural">n != 1</field>
             <field name="date">%d-%m-%Y</field>
             <field name="am"></field>
             <field name="pm"></field>
@@ -347,6 +379,8 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.lang" id="lang_pl">
             <field name="code">pl</field>
             <field name="name">Polish</field>
+            <field name="nplurals" eval="3"/>
+            <field name="plural">0 if n == 1 else 1 if n % 10 &gt;= 2 and n % 10 &lt;= 4 and (n % 100 &lt; 10 or n % 100 &gt;= 20) else 2</field>
             <field name="date">%d.%m.%Y</field>
             <field name="am"></field>
             <field name="pm"></field>
@@ -368,6 +402,8 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.lang" id="lang_pt">
             <field name="code">pt</field>
             <field name="name">Portuguese</field>
+            <field name="nplurals" eval="2"/>
+            <field name="plural">n != 1</field>
             <field name="date">%d-%m-%Y</field>
             <field name="am"></field>
             <field name="pm"></field>
@@ -389,6 +425,8 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.lang" id="lang_ro">
             <field name="code">ro</field>
             <field name="name">Romanian</field>
+            <field name="nplurals" eval="3"/>
+            <field name="plural">0 if n == 1 else 1 if n == 0 or (n % 100 &gt; 0 and n % 100 &lt; 20) else 2</field>
             <field name="date">%d.%m.%Y</field>
             <field name="am"></field>
             <field name="pm"></field>
@@ -410,6 +448,8 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.lang" id="lang_ru">
             <field name="code">ru</field>
             <field name="name">Russian</field>
+            <field name="nplurals" eval="3"/>
+            <field name="plural">0 if n % 10 == 1 and n % 100 != 11 else 1 if n % 10 &gt;= 2 and n % 10 &lt;= 4 and (n % 100 &lt; 10 or n % 100 &gt;= 20) else 2</field>
             <field name="date">%d.%m.%Y</field>
             <field name="am"></field>
             <field name="pm"></field>
@@ -431,6 +471,8 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.lang" id="lang_sl">
             <field name="code">sl</field>
             <field name="name">Slovenian</field>
+            <field name="nplurals" eval="4"/>
+            <field name="plural">0 if n % 100 == 1 else 1 if n % 100 == 2 else 2 if n % 100 == 3 or n % 100 == 4 else 3</field>
             <field name="date">%d.%m.%Y</field>
             <field name="am"></field>
             <field name="pm"></field>
@@ -452,6 +494,8 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.lang" id="lang_tr">
             <field name="code">tr</field>
             <field name="name">Turkish</field>
+            <field name="nplurals" eval="2"/>
+            <field name="plural">n &gt; 1</field>
             <field name="date">%d-%m-%Y</field>
             <field name="grouping">[3, 3, 0]</field>
             <field name="decimal_point">,</field>
@@ -471,6 +515,8 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.lang" id="lang_uk">
             <field name="code">uk</field>
             <field name="name">Ukrainian</field>
+            <field name="nplurals" eval="3"/>
+            <field name="plural">0 if n % 10 == 1 and n % 100 != 11 else 1 if n % 10 &gt;= 2 and n % 10 &lt;= 4 and (n % 100 &lt; 10 or n % 100 &gt;= 20) else 2</field>
             <field name="date">%d.%m.%Y</field>
             <field name="grouping">[3, 3]</field>
             <field name="decimal_point">,</field>
@@ -490,6 +536,8 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.lang" id="lang_zh_CN">
             <field name="code">zh_CN</field>
             <field name="name">Chinese Simplified</field>
+            <field name="nplurals" eval="1"/>
+            <field name="plural">0</field>
             <field name="date">%Y-%m-%d</field>
             <field name="am">上午</field>
             <field name="pm">下午</field>

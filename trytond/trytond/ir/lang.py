@@ -7,6 +7,7 @@ from decimal import Decimal
 from itertools import takewhile
 from locale import CHAR_MAX
 
+from simpleeval import simple_eval
 from sql import Table
 
 from trytond.cache import Cache
@@ -28,6 +29,10 @@ class GroupingError(UserError):
 
 
 class DateError(UserError):
+    pass
+
+
+class PluralError(UserError):
     pass
 
 
@@ -74,6 +79,16 @@ class Lang(DeactivableMixin, ModelSQL, ModelView):
             ('ltr', 'Left-to-right'),
             ('rtl', 'Right-to-left'),
             ], 'Direction', required=True)
+
+    nplurals = fields.Integer(
+        "Number of plurals", required=True,
+        domain=[
+            ('nplurals', '>=', 1),
+            ('nplurals', '<', 5),
+            ])
+    plural = fields.Char(
+        "Plural", required=True,
+        help="Python expression that returns the plural form for 'n'.")
 
     # date
     date = fields.Char("Date", required=True, strip=False)
@@ -170,6 +185,14 @@ class Lang(DeactivableMixin, ModelSQL, ModelView):
     @staticmethod
     def default_direction():
         return 'ltr'
+
+    @classmethod
+    def default_nplurals(cls):
+        return 2
+
+    @classmethod
+    def default_plural(cls):
+        return 'n != 1'
 
     @staticmethod
     def default_date():
@@ -268,6 +291,7 @@ class Lang(DeactivableMixin, ModelSQL, ModelView):
         cls.check_grouping(languages, field_names)
         cls.check_date(languages, field_names)
         cls.check_translatable(languages)
+        cls.check_plural(languages, field_names)
 
     @classmethod
     def check_grouping(cls, langs, fields_names=None):
@@ -338,6 +362,28 @@ class Lang(DeactivableMixin, ModelSQL, ModelView):
                 raise TranslatableError(
                     gettext('ir.msg_language_default_translatable',
                         language=lang.rec_name))
+
+    @classmethod
+    def check_plural(cls, languages, field_names=None):
+        if field_names and 'plural' not in field_names:
+            return
+        for language in languages:
+            language.get_plural(1)
+
+    def get_plural(self, n):
+        try:
+            plural = simple_eval(self.plural, names={'n': n})
+            if not (0 <= plural < self.nplurals):
+                raise ValueError(
+                    f"result is not between 0 and {self.nplurals}")
+            return int(plural)
+        except Exception as exception:
+            raise PluralError(
+                gettext('ir.msg_language_plural_invalid',
+                    language=self.rec_name,
+                    plural=self.plural,
+                    n=n,
+                    exception=exception)) from exception
 
     @classmethod
     def check_xml_record(cls, langs, values):

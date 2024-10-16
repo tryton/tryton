@@ -4,6 +4,7 @@
 from .lang import DateError as LanguageDateError
 from .lang import DeleteDefaultError as LanguageDeleteDefaultError
 from .lang import GroupingError as LanguageGroupingError
+from .lang import PluralError as LanguagePluralError
 from .lang import TranslatableError as LanguageTranslatableError
 from .module import DeactivateDependencyError
 from .sequence import AffixError as SequenceAffixError
@@ -16,6 +17,7 @@ __all__ = [
     LanguageDateError,
     LanguageDeleteDefaultError,
     LanguageGroupingError,
+    LanguagePluralError,
     LanguageTranslatableError,
     SequenceAffixError,
     SequenceMissingError,

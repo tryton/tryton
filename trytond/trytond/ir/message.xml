@@ -307,6 +307,9 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.message" id="msg_language_invalid_date">
             <field name="text">Invalid date format "%(format)s" for language "%(language)s".</field>
         </record>
+        <record model="ir.message" id="msg_language_plural_invalid">
+            <field name="text">Invalid plural "%(plural)s" for language "%(language)s" with exception "%(exception)s" and n %(n)r.</field>
+        </record>
         <record model="ir.message" id="msg_language_default_translatable">
             <field name="text">The default language "%(language)s" must be translatable.</field>
         </record>
