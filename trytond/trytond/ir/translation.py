@@ -755,7 +755,7 @@ class Translation(
     @classmethod
     def _clear_cache_for(cls, types, models):
         pool = Pool()
-        if 'field' in types and 'ir.message' in models:
+        if 'model' in types and 'ir.message' in models:
             pool.get('ir.message')._message_cache.clear()
         if 'field' in types and 'ir.model' in models:
             pool.get('ir.model')._get_names_cache.clear()
