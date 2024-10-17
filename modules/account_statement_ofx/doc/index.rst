@@ -1,5 +1,11 @@
+############################
 Account Statement OFX Module
 ############################
 
-The Account statement OFX module implement the import of the `OFX
-<https://en.wikipedia.org/wiki/Open_Financial_Exchange>`_ file as statement.
+The *Account Statement OFX Module* implements the import of `OFX
+<https://en.wikipedia.org/wiki/Open_Financial_Exchange>`_ files as statements.
+
+.. toctree::
+   :maxdepth: 2
+
+   releases
