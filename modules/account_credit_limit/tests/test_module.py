@@ -34,11 +34,14 @@ class AccountCreditLimitTestCase(CompanyTestMixin, ModuleTestCase):
             period = fiscalyear.periods[0]
 
             receivable, = Account.search([
+                    ('closed', '!=', True),
                     ('type.receivable', '=', True),
-                    ])
+                    ('party_required', '=', True),
+                    ], limit=1)
             revenue, = Account.search([
+                    ('closed', '!=', True),
                     ('type.revenue', '=', True),
-                    ])
+                    ], limit=1)
             journal, = Journal.search([], limit=1)
             party, = Party.create([{
                         'name': 'Party',
