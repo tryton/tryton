@@ -1,7 +1,12 @@
+############################
 Account Dunning Email Module
 ############################
 
-The account_dunning_email module sends a dunning email to the party email
-contact after the process of dunnings for those which are at a level with *Send
-Email* checked.
-The template of the email is defined on the level.
+The *Account Dunning Email Module* allows dunning levels to be set up so that
+an email is sent when the dunnings are processed.
+
+.. toctree::
+   :maxdepth: 2
+
+   design
+   releases

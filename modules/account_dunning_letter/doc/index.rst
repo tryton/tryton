@@ -1,5 +1,12 @@
+#############################
 Account Dunning Letter Module
 #############################
 
-The account_dunning_letter module generates a dunning letter after the process
-of dunnings for those who are at a level with *Print on Letter* checked.
+The *Account Dunning Letter Module* allows dunning levels to be set up so that
+a letter is printed when the dunnings are processed.
+
+.. toctree::
+   :maxdepth: 2
+
+   design
+   releases
