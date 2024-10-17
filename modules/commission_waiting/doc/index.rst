@@ -1,9 +1,15 @@
-Commission Waiting
-##################
+#########################
+Commission Waiting Module
+#########################
 
-The commission_waiting module allows to generate account move for each
-commission between the expense/revenue account to a waiting account defined on
+The *Commission Waiting Module* allows an account move to be generated for each
+commission between the expense/revenue account and a waiting account defined on
 the agent.
-
-Once the commission invoice is posted the waiting account is cleared with the
+When the commission invoice is posted the waiting account is cleared using the
 payable/receivable account of the invoice.
+
+.. toctree::
+   :maxdepth: 2
+
+   design
+   releases
