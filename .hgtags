@@ -9280,3 +9280,4 @@ b1856951fd4bf31a57e9a94066ccc16347b79e78 inbound_email-7.0.1
 465581d744d014f86e44be887a36c2bccc0a0330 account_payment_clearing-7.0.3
 c02a8e908fb2812165be648e2c1da4abe13ee03b account_invoice_defer-7.0.1
 26d726cdea273f647a9384e218f00a4ae206d57f account_invoice-7.0.10
+bf8d1d50cd2ae26148f10e608f35147278b928a4 account_budget-7.0.1
