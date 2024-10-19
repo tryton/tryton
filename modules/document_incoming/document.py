@@ -186,9 +186,12 @@ class Incoming(DeactivableMixin, Workflow, ModelSQL, ModelView):
         data = message.get('text', message.get('html'))
         if isinstance(data, str):
             data = data.encode()
+        name = message.get('subject') or 'No Subject'
+        for forbidden_char in cls.name.forbidden_chars:
+            name = name.replace(forbidden_char, ' ')
         document = cls(
             active=active,
-            name=message.get('subject') or 'No Subject',
+            name=name,
             company=rule.document_incoming_company,
             data=data,
             type=rule.document_incoming_type if active else None,
