@@ -188,7 +188,7 @@ class Incoming(DeactivableMixin, Workflow, ModelSQL, ModelView):
             data = data.encode()
         document = cls(
             active=active,
-            name=message.get('subject', 'No Subject'),
+            name=message.get('subject') or 'No Subject',
             company=rule.document_incoming_company,
             data=data,
             type=rule.document_incoming_type if active else None,
