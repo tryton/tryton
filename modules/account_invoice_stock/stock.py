@@ -90,7 +90,7 @@ class Move(metaclass=PoolMeta):
     @classmethod
     def update_unit_price(cls, moves):
         for move in moves:
-            if move.state == 'done':
+            if move.state == 'done' and move.unit_price_required:
                 unit_price = move._compute_unit_price(
                     unit_price=move.unit_price)
                 if unit_price != move.unit_price:
