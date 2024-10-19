@@ -124,14 +124,20 @@ class Address(
 
     @fields.depends('city', methods=['_autocomplete_domain'])
     def autocomplete_postal_code(self):
-        domain = self._autocomplete_domain()
+        domain = [
+            self._autocomplete_domain(),
+            ('postal_code', 'not in', [None, '']),
+            ]
         if self.city:
             domain.append(('city', 'ilike', '%%%s%%' % self.city))
         return self._autocomplete_search(domain, 'postal_code')
 
     @fields.depends('postal_code', methods=['_autocomplete_domain'])
     def autocomplete_city(self):
-        domain = self._autocomplete_domain()
+        domain = [
+            self._autocomplete_domain(),
+            ('city', 'not in', [None, '']),
+            ]
         if self.postal_code:
             domain.append(('postal_code', 'ilike', '%s%%' % self.postal_code))
         return self._autocomplete_search(domain, 'city')
