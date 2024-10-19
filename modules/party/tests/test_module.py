@@ -227,6 +227,102 @@ class PartyTestCase(PartyCheckEraseMixin, ModuleTestCase):
                 "City")
 
     @with_transaction()
+    def test_address_autocomplete_postal_code(self):
+        "Test autocomplete of postal code"
+        pool = Pool()
+        Country = pool.get('country.country')
+        Subdivision = pool.get('country.subdivision')
+        PostalCode = pool.get('country.postal_code')
+        Address = pool.get('party.address')
+
+        country = Country(name="Country")
+        country.save()
+        subdivision = Subdivision(name="Subdivision", country=country)
+        subdivision.save()
+        postal_code = PostalCode(
+            country=country,
+            subdivision=subdivision,
+            postal_code="12345",
+            city="City",
+            )
+        postal_code.save()
+
+        address = Address(
+            country=country, subdivision=subdivision, city="C")
+        completions = address.autocomplete_postal_code()
+
+        self.assertEqual(completions, ["12345"])
+
+    @with_transaction()
+    def test_address_autocomplete_postal_code_empty(self):
+        "Test autocomplete with empty postal code"
+        pool = Pool()
+        Country = pool.get('country.country')
+        PostalCode = pool.get('country.postal_code')
+        Address = pool.get('party.address')
+
+        country = Country(name="Country")
+        country.save()
+        for postal_code in [None, '12345']:
+            PostalCode(
+                country=country,
+                postal_code=postal_code,
+                city="City",
+                ).save()
+
+        completions = Address(city="City").autocomplete_postal_code()
+
+        self.assertEqual(completions, ["12345"])
+
+    @with_transaction()
+    def test_address_autocomplete_city(self):
+        "Test autocomplete of city"
+        pool = Pool()
+        Country = pool.get('country.country')
+        Subdivision = pool.get('country.subdivision')
+        PostalCode = pool.get('country.postal_code')
+        Address = pool.get('party.address')
+
+        country = Country(name="Country")
+        country.save()
+        subdivision = Subdivision(name="Subdivision", country=country)
+        subdivision.save()
+        postal_code = PostalCode(
+            country=country,
+            subdivision=subdivision,
+            postal_code="12345",
+            city="City",
+            )
+        postal_code.save()
+
+        address = Address(
+            country=country, subdivision=subdivision, postal_code="123")
+        completions = address.autocomplete_city()
+
+        self.assertEqual(completions, ["City"])
+
+    @with_transaction()
+    def test_address_autocomplete_city_empty(self):
+        "Test autocomplete with empty city"
+        pool = Pool()
+        Country = pool.get('country.country')
+        PostalCode = pool.get('country.postal_code')
+        Address = pool.get('party.address')
+
+        country = Country(name="Country")
+        country.save()
+        for city in [None, "City"]:
+            PostalCode(
+                country=country,
+                postal_code="12345",
+                city=city,
+                ).save()
+
+        completions = Address(postal_code="12345").autocomplete_city()
+
+        self.assertEqual(completions, ["City"])
+
+    @with_transaction()
     def test_full_address_country_subdivision(self):
         'Test full address with country and subdivision'
         pool = Pool()
