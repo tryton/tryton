@@ -7,7 +7,8 @@ import json
 import re
 import urllib
 import uuid
-from email.utils import getaddresses, parseaddr
+from email.policy import default as email_policy_default
+from email.utils import getaddresses
 from functools import partial
 
 from trytond.config import config
@@ -183,17 +184,19 @@ class Email(ModelSQL, ModelView):
     def _as_dict(self, raw):
         value = {}
         if isinstance(raw, str):
-            message = email.message_from_string(raw)
+            message = email.message_from_string(
+                raw, policy=email_policy_default)
         else:
-            message = email.message_from_bytes(raw)
+            message = email.message_from_bytes(
+                raw, policy=email_policy_default)
         if 'From' in message:
-            value['from'] = parseaddr(message.get('From'))[1]
+            value['from'] = getaddresses([message.get('From')])[0][1]
         for key in ['To', 'Cc', 'Bcc']:
             if key in message:
                 value[key.lower()] = [
                     a for _, a in getaddresses(message.get_all(key))]
         if 'Subject' in message:
-            value['subject'] = message.get('Subject')
+            value['subject'] = message['Subject']
         text = _email_text(message)
         if text is not None:
             value['text'] = text
