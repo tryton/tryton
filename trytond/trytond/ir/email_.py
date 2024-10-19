@@ -280,7 +280,7 @@ class EmailTemplate(ModelSQL, ModelView):
             'invisible': Bool(Eval('recipients_hidden_pyson')),
             },
         depends=['recipients_hidden_pyson'],
-        help="The field that contains the secondary recipient(s).")
+        help="The field that contains the hidden recipient(s).")
     recipients_hidden_pyson = fields.Char(
         "Hidden Recipients",
         states={
