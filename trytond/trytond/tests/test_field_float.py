@@ -144,6 +144,52 @@ class FieldFloatTestCase(TestCase):
         self.assertEqual(record.float, 0.123456789012345)
 
     @with_transaction()
+    def test_float_int_digits_valid(self):
+        "Test create float with limit integer digits"
+        pool = Pool()
+        Float = pool.get('test.float_digits')
+
+        record, = Float.create([{
+                    'float': 1234567890123456,
+                    }])
+
+        self.assertEqual(record.float, 1234567890123456)
+
+    @with_transaction()
+    def test_float_negative_int_digits_valid(self):
+        "Test create negative float with limit integer digits"
+        pool = Pool()
+        Float = pool.get('test.float_digits')
+
+        record, = Float.create([{
+                    'float': -1234567890123456,
+                    }])
+
+        self.assertEqual(record.float, -1234567890123456)
+
+    @with_transaction()
+    def test_float_int_digits_invalid(self):
+        "Test create float with invalid integer digits"
+        pool = Pool()
+        Float = pool.get('test.float_digits')
+
+        with self.assertRaises(DigitsValidationError):
+            Float.create([{
+                        'float': '12345678901234567',
+                        }])
+
+    @with_transaction()
+    def test_float_negative_int_digits_invalid(self):
+        "Test create negative float with invalid integer digits"
+        pool = Pool()
+        Float = pool.get('test.float_digits')
+
+        with self.assertRaises(DigitsValidationError):
+            Float.create([{
+                        'float': -12345678901234567,
+                        }])
+
+    @with_transaction()
     def test_search_equals(self):
         "Test search float equals"
         Float = Pool().get('test.float')

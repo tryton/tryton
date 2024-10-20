@@ -12,11 +12,11 @@ def digits_validate(value):
                 'digits must be a tuple or a string'
         if isinstance(value, tuple):
             for i in value:
-                assert isinstance(i, (int, PYSON)), \
-                    'digits must be tuple of integers or PYSON'
+                assert isinstance(i, (type(None), int, PYSON)), \
+                    "digits must be tuple of integers, PYSON or None"
                 if isinstance(i, PYSON):
-                    assert i.types() == {int}, \
-                        'PYSON digits must return an integer'
+                    assert i.types() <= {int, type(None)}, \
+                        "PYSON digits must return an integer or None"
 
 
 def _get_digits_depends(field):

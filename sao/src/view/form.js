@@ -2180,13 +2180,27 @@ function eval_pyson(value){
         display: function() {
             var record = this.record;
             var step = 'any';
+            var max, min;
             if (record) {
                 var digits = this.digits;
                 if (digits) {
-                    step = Math.pow(10, -digits[1]).toFixed(digits[1]);
+                    if (digits[1] !== null) {
+                        step = Math.pow(10, -digits[1]).toFixed(digits[1]);
+                    }
+                    if (digits[0] !== null)  {
+                        max = '9'.repeat(digits[0]);
+                        if (digits[1] !== null) {
+                            max += '.' + '9'.repeat(digits[1]);
+                        } else {
+                            max += 1;
+                        }
+                        min = '-' + max;
+                    }
                 }
             }
             this.input.attr('step', step);
+            this.input.attr('max', max);
+            this.input.attr('min', min);
             Sao.View.Form.Float._super.display.call(this);
         }
     });
@@ -5567,13 +5581,7 @@ function eval_pyson(value){
         get digits() {
             var record = this.parent_widget.record;
             if (record) {
-                var digits = record.expr_eval(this.definition.digits);
-                if (!digits || !digits.every(function(e) {
-                    return e !== null;
-                })) {
-                    return null;
-                }
-                return digits;
+                return record.expr_eval(this.definition.digits);
             } else {
                 return null;
             }
@@ -5592,13 +5600,27 @@ function eval_pyson(value){
         set_value: function(value) {
             var step = 'any',
                 options = {};
+            var max, min;
             var digits = this.digits;
             if (digits) {
-                step = Math.pow(10, -digits[1]).toFixed(digits[1]);
-                options.minimumFractionDigits = digits[1];
-                options.maximumFractionDigits = digits[1];
+                if (digits[1] !== null) {
+                    step = Math.pow(10, -digits[1]).toFixed(digits[1]);
+                    options.minimumFractionDigits = digits[1];
+                    options.maximumFractionDigits = digits[1];
+                }
+                if (digits[0] !== null) {
+                    max = '9'.repeat(digits[0]);
+                    if (digits[1] !== null) {
+                        max += '.' + '9'.repeat(digits[1]);
+                    } else {
+                        max += 1;
+                    }
+                    min = '-' + max;
+                }
             }
             this.input.attr('step', step);
+            this.input.attr('max', max);
+            this.input.attr('min', min);
             Sao.View.Form.Dict.Float._super.set_value.call(this, value, options);
         },
     });

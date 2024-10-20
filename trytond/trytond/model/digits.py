@@ -26,7 +26,7 @@ class DigitsMixin:
         return digits
 
     def _get_digits(self):
-        return (16, self.digits)
+        return (None, self.digits)
 
     @classmethod
     def write(cls, *args):

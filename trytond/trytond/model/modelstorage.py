@@ -5,6 +5,7 @@ import base64
 import csv
 import datetime
 import decimal
+import math
 import random
 import time
 import warnings
@@ -1455,7 +1456,7 @@ class ModelStorage(Model):
                 def digits_test(record, digits, field_name):
                     def raise_error(value):
                         error_args = cls.__names__(field_name, record)
-                        error_args['digits'] = digits[1]
+                        error_args['digits'] = digits
                         raise DigitsValidationError(
                             gettext('ir.msg_digits_validation_record',
                                 **error_args))
@@ -1467,16 +1468,20 @@ class ModelStorage(Model):
                             digits = digit_record.get_digits()
                         else:
                             digits = None
-                    if (value is None
-                            or not digits
-                            or any(d is None for d in digits)):
+                    if value is None or not digits:
                         return
-                    if isinstance(value, Decimal):
-                        if value.as_tuple().exponent < -digits[1]:
+
+                    int_size, dec_size = digits
+                    if int_size is not None and value:
+                        if math.ceil(math.log10(abs(value))) > int_size:
                             raise_error(value)
-                    else:
-                        if round(value, digits[1]) != value:
-                            raise_error(value)
+                    if dec_size is not None:
+                        if isinstance(value, Decimal):
+                            if value.as_tuple().exponent < -dec_size:
+                                raise_error(value)
+                        else:
+                            if round(value, dec_size) != value:
+                                raise_error(value)
                 # validate digits
                 if getattr(field, 'digits', None):
                     if is_pyson(field.digits):

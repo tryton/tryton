@@ -175,7 +175,7 @@ class FieldNumericTestCase(TestCase):
 
         Numeric.create([{
                     'digits': 2,
-                    'numeric': Decimal('10e25'),
+                    'numeric': Decimal('10e15'),
                     }])
 
     @with_transaction()
@@ -187,6 +187,52 @@ class FieldNumericTestCase(TestCase):
             Numeric.create([{
                     'digits': 1,
                     'numeric': Decimal('1.10'),
+                    }])
+
+    @with_transaction()
+    def test_create_int_digits_valid(self):
+        "Test create numeric with limit integer digits"
+        pool = Pool()
+        Numeric = pool.get('test.numeric_digits')
+
+        record, = Numeric.create([{
+                    'numeric': Decimal('10e15'),
+                    }])
+
+        self.assertEqual(record.numeric, Decimal('10e15'))
+
+    @with_transaction()
+    def test_create_negative_int_digits_valid(self):
+        "Test create negative numeric with limit integer digits"
+        pool = Pool()
+        Numeric = pool.get('test.numeric_digits')
+
+        record, = Numeric.create([{
+                    'numeric': Decimal('-10e15'),
+                    }])
+
+        self.assertEqual(record.numeric, Decimal('-10e15'))
+
+    @with_transaction()
+    def test_create_int_digits_invalid(self):
+        "Test create numeric with invalid integer digits"
+        pool = Pool()
+        Numeric = pool.get('test.numeric_digits')
+
+        with self.assertRaises(DigitsValidationError):
+            Numeric.create([{
+                    'numeric': Decimal('10e16'),
+                    }])
+
+    @with_transaction()
+    def test_create_negative_int_digits_invalid(self):
+        "Test create negative numeric with invalid integer digits"
+        pool = Pool()
+        Numeric = pool.get('test.numeric_digits')
+
+        with self.assertRaises(DigitsValidationError):
+            Numeric.create([{
+                    'numeric': Decimal('-10e16'),
                     }])
 
     @with_transaction()

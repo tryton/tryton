@@ -2,6 +2,7 @@
 # this repository contains the full copyright notices and license terms.
 import gettext
 import locale
+import math
 from decimal import Decimal, InvalidOperation
 
 from gi.repository import Gdk, GObject, Gtk
@@ -64,13 +65,18 @@ class NumberEntry(Gtk.Entry, Gtk.Editable):
                 value = Decimal(locale.delocalize(text, self.monetary))
             except (ValueError, InvalidOperation):
                 return position
-        try:
-            if (value and self.__digits is not None
-                    and (round(value, self.__digits) != value
-                        or value.as_tuple().exponent < -self.__digits)):
+        if self.__digits:
+            int_size, dec_size = self.__digits
+            try:
+                if int_size is not None and value:
+                    if math.ceil(math.log10(abs(value))) > int_size:
+                        return position
+                if dec_size is not None:
+                    if (round(value, dec_size) != value
+                            or value.as_tuple().exponent < -dec_size):
+                        return position
+            except InvalidOperation:
                 return position
-        except InvalidOperation:
-            return position
         length = len(new_text.encode('utf-8'))
         buffer_.insert_text(position, new_text, length)
         return position + length

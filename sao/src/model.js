@@ -1976,13 +1976,16 @@
                     return;
                 }
             }
-            if (!digits || !digits.every(function(e) {
-                return e !== null;
-            })) {
-                return;
-            }
             var shift = Math.round(Math.log(Math.abs(factor)) / Math.LN10);
-            return [digits[0] + shift, digits[1] - shift];
+            var int_size = digits[0];
+            if (int_size !== null) {
+                int_size += shift;
+            }
+            var dec_size = digits[1];
+            if (dec_size !== null) {
+                dec_size += shift;
+            }
+            return [int_size, dec_size];
         },
         get_symbol: function(record, symbol) {
             if (record && (symbol in record.model.fields)) {
@@ -2040,7 +2043,7 @@
             if (value !== null) {
                 value /= factor;
                 var digits = this.digits(record);
-                if (digits) {
+                if (digits && (digits[1] !== null)) {
                     // Round to avoid float precision error
                     // after the division by factor
                     value = value.toFixed(digits[1]);
@@ -2061,7 +2064,7 @@
                     useGrouping: grouping,
                 };
                 var digits = this.digits(record, factor);
-                if (digits) {
+                if (digits && (digits[1] !== null)) {
                     options.minimumFractionDigits = digits[1];
                     options.maximumFractionDigits = digits[1];
                 }

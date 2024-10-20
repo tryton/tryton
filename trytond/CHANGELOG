@@ -1,3 +1,4 @@
+* Validate integer digits
 * Add support for DATE_TRUNC from INTERVAL to SQLite backend
 * Add support for EXTRACT from INTERVAL to SQLite backend
 * Add msg_gettext and msg_ngettext to Report context

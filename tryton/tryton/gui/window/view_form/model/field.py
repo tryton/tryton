@@ -472,7 +472,7 @@ class FloatField(Field):
             d = value * factor
             if not isinstance(d, Decimal):
                 d = Decimal(repr(d))
-            if digits:
+            if digits and digits[1] is not None:
                 p = int(digits[1])
             elif d == d.to_integral_value():
                 p = 0
