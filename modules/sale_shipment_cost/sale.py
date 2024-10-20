@@ -177,7 +177,10 @@ class Sale(metaclass=PoolMeta):
         elif self.shipment_cost_method:
             if (not self.carrier
                     or self.carrier not in self.available_carriers):
-                self.carrier = self.available_carriers[0]
+                for carrier in self.available_carriers:
+                    if carrier.active:
+                        self.carrier = carrier
+                        break
 
     @fields.depends(
         'carrier', 'shipment_cost_method',
