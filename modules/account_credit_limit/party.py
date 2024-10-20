@@ -3,6 +3,7 @@
 from trytond.i18n import gettext
 from trytond.model import ModelSQL, fields
 from trytond.modules.company.model import CompanyValueMixin
+from trytond.modules.currency.fields import Monetary
 from trytond.pool import Pool, PoolMeta
 from trytond.pyson import Eval
 from trytond.transaction import Transaction
@@ -13,14 +14,11 @@ from .exceptions import CreditLimitError, CreditLimitWarning
 class Party(metaclass=PoolMeta):
     __name__ = 'party.party'
 
-    credit_amount = fields.Function(fields.Numeric('Credit Amount',
-            digits=(16, Eval('credit_limit_digits', 2))),
+    credit_amount = fields.Function(Monetary(
+            "Credit Amount", currency='currency', digits='currency'),
         'get_credit_amount')
-    credit_limit_amount = fields.MultiValue(fields.Numeric(
-            'Credit Limit Amount',
-            digits=(16, Eval('credit_limit_digits', 2))))
-    credit_limit_digits = fields.Function(fields.Integer('Currency Digits'),
-        'get_credit_limit_digits')
+    credit_limit_amount = fields.MultiValue(Monetary(
+            "Credit Limit Amount", currency='currency', digits='currency'))
     credit_limit_amounts = fields.One2Many(
         'party.party.credit_limit_amount', 'party', "Credit Limit Amounts")
 
@@ -120,14 +118,6 @@ class Party(metaclass=PoolMeta):
                             party=self.rec_name,
                             dunning=dunning.rec_name))
 
-    def get_credit_limit_digits(self, name):
-        pool = Pool()
-        Company = pool.get('company.company')
-        company_id = Transaction().context.get('company')
-        if company_id is not None and company_id >= 0:
-            company = Company(company_id)
-            return company.currency.digits
-
 
 class PartyCreditLimitAmount(ModelSQL, CompanyValueMixin):
     "Party Credit Limit Amount"
@@ -138,12 +128,13 @@ class PartyCreditLimitAmount(ModelSQL, CompanyValueMixin):
             'company': Eval('company', -1),
             },
         depends={'company'})
-    credit_limit_amount = fields.Numeric(
-        "Credit Limit Amount", digits=(16, Eval('credit_limit_digits', 2)))
-    credit_limit_digits = fields.Function(fields.Integer('Currency Digits'),
-        'on_change_with_credit_limit_digits')
+    credit_limit_amount = Monetary(
+        "Credit Limit Amount", currency='currency', digits='currency')
+    currency = fields.Function(
+        fields.Many2One('currency.currency', "Currency"),
+        'on_change_with_currency')
 
     @fields.depends('company')
-    def on_change_with_credit_limit_digits(self, name=None):
+    def on_change_with_currency(self, name=None):
         if self.company:
-            return self.company.currency.digits
+            return self.company.currency
