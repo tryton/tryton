@@ -3,7 +3,7 @@
   "title": "sao",
   "description": "Tryton webclient",
   "version": "7.3.0",
-  "homepage": "http://www.tryton.org/",
+  "homepage": "https://www.tryton.org/",
   "author": {
     "name": "Tryton"
   },
@@ -12,7 +12,7 @@
     "url": "https://code.tryton.org/tryton"
   },
   "bugs": {
-    "url": "http://bugs.tryton.org/",
+    "url": "https://bugs.tryton.org/",
     "email": "bugs@tryton.org"
   },
   "license": "GPL-3.0+",
