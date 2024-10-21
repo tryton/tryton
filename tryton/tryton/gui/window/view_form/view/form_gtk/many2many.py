@@ -177,6 +177,9 @@ class Many2Many(Widget):
         add_remove = self.record.expr_eval(self.attrs.get('add_remove'))
         if add_remove:
             domain = [domain, add_remove]
+        existing_ids = self.field.get_eval(self.record)
+        if existing_ids:
+            domain = [domain, ('id', 'not in', existing_ids)]
         context = self.field.get_search_context(self.record)
         order = self.field.get_search_order(self.record)
         value = self.wid_text.get_text()
@@ -369,6 +372,9 @@ class Many2Many(Widget):
         add_remove = self.record.expr_eval(self.attrs.get('add_remove'))
         if add_remove:
             domain = [domain, add_remove]
+        existing_ids = self.field.get_eval(self.record)
+        if existing_ids:
+            domain = [domain, ('id', 'not in', existing_ids)]
         update_completion(
             self.wid_text, self.record, self.field, model, domain)
 

@@ -3618,6 +3618,10 @@ function eval_pyson(value){
             var context = this.field.get_search_context(this.record);
             domain = [domain,
                 this.record.expr_eval(this.attributes.add_remove)];
+            let existing_ids = this.field.get_eval(this.record);
+            if (existing_ids.length) {
+                domain = [domain, ['id', 'not in', existing_ids]];
+            }
             var removed_ids = this.field.get_removed_ids(this.record);
             domain = ['OR', domain, ['id', 'in', removed_ids]];
             var text = this.wid_text.val();
@@ -3909,6 +3913,10 @@ function eval_pyson(value){
             var domain = this.field.get_domain(this.record);
             domain = [domain,
                 this.record.expr_eval(this.attributes.add_remove)];
+            let existing_ids = this.field.get_eval(this.record);
+            if (existing_ids.length) {
+                domain = [domain, ['id', 'not in', existing_ids]];
+            }
             var removed_ids = this.field.get_removed_ids(this.record);
             domain = ['OR', domain, ['id', 'in', removed_ids]];
             return Sao.common.update_completion(
@@ -4169,6 +4177,10 @@ function eval_pyson(value){
             if (!jQuery.isEmptyObject(add_remove)) {
                 domain = [domain, add_remove];
             }
+            let existing_ids = this.field.get_eval(this.record);
+            if (existing_ids.length) {
+                domain = [domain, ['id', 'not in', existing_ids]];
+            }
             var context = this.field.get_search_context(this.record);
             var order = this.field.get_search_order(this.record);
             var value = this.entry.val();
@@ -4326,6 +4338,10 @@ function eval_pyson(value){
                 this.attributes.add_remove);
             if (!jQuery.isEmptyObject(add_remove)) {
                 domain = [domain, add_remove];
+            }
+            let existing_ids = this.field.get_eval(this.record);
+            if (existing_ids.length) {
+                domain = [domain, ['id', 'not in', existing_ids]];
             }
             return Sao.common.update_completion(
                 this.entry, this.record, this.field, model, domain);
