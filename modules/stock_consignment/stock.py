@@ -245,7 +245,7 @@ class Move(metaclass=PoolMeta):
         with Transaction().set_context(
                 currency=line.currency.id,
                 supplier=line.party.id,
-                uom=line.unit,
+                uom=line.unit.id,
                 taxes=[t.id for t in line.taxes]):
             line.unit_price = Product.get_purchase_price(
                 [line.product], line.quantity)[line.product.id]
@@ -272,7 +272,7 @@ class Move(metaclass=PoolMeta):
         with Transaction().set_context(
                 currency=line.currency.id,
                 customer=line.party.id,
-                uom=line.unit,
+                uom=line.unit.id,
                 taxes=[t.id for t in line.taxes]):
             line.unit_price = Product.get_sale_price(
                 [line.product], line.quantity)[line.product.id]
