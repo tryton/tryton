@@ -453,7 +453,7 @@ class CreatePurchase(Wizard):
         for key, grouped_requests in groupby(requests, key=keyfunc):
             grouped_requests = list(grouped_requests)
             key = dict(key)
-            with Transaction().set_context(company=key['company']):
+            with Transaction().set_context(company=int(key['company'])):
                 today = Date.today()
             try:
                 purchase_date = min(r.purchase_date
