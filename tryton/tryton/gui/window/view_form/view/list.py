@@ -817,6 +817,7 @@ class ViewTree(View):
                         break
             if not record.validate():
                 break
+            record.save()
             idx += 1
         self.record = record
         self.screen.display(set_cursor=True)
