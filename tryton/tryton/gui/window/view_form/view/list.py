@@ -783,7 +783,18 @@ class ViewTree(View):
             for col, value in zip(columns, line):
                 widget = self.get_column_widget(col)
                 if widget.get_textual_value(record) != value:
-                    widget.value_from_text(record, value)
+                    if hasattr(widget, 'search_remote'):
+                        field = record.group.fields[widget.attrs['name']]
+                        win = widget.search_remote(record, field, value)
+                        if len(win.screen.group) == 1:
+                            target, = win.screen.group
+                            field.set_client(
+                                record, (target.id, target.rec_name()))
+                        else:
+                            field.set_client(record, (None, ''))
+                        win.response(win, Gtk.ResponseType.CANCEL)
+                    else:
+                        widget.value_from_text(record, value)
                     if value and not widget.get_textual_value(record):
                         # Stop setting value if a value is correctly set
                         idx = len(group)
