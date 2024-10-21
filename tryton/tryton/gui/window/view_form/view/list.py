@@ -760,6 +760,8 @@ class ViewTree(View):
             data = [[unquote(v) for v in l.split('\t')]
                 for l in text.splitlines()]
             break
+        else:
+            return
         col = self.treeview.get_cursor()[1]
         columns = [c for c in self.treeview.get_columns()
             if c.get_visible() and c.name]
