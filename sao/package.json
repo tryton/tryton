@@ -9,7 +9,7 @@
   },
   "repository": {
     "type": "hg",
-    "url": "http://hg.tryton.org/sao"
+    "url": "https://code.tryton.org/tryton"
   },
   "bugs": {
     "url": "http://bugs.tryton.org/",
