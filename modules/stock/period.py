@@ -152,14 +152,15 @@ class Period(Workflow, ModelSQL, ModelView):
                     pbl = Product.products_by_location(
                         [l.id for l in locations], grouping=grouping)
                 for key, quantity in pbl.items():
-                    values = {
-                        'location': key[0],
-                        'period': period.id,
-                        'internal_quantity': quantity,
-                        }
-                    for i, field in enumerate(grouping, 1):
-                        values[field] = key[i]
-                    to_create.append(values)
+                    if quantity:
+                        values = {
+                            'location': key[0],
+                            'period': period.id,
+                            'internal_quantity': quantity,
+                            }
+                        for i, field in enumerate(grouping, 1):
+                            values[field] = key[i]
+                        to_create.append(values)
             if to_create:
                 Cache.create(to_create)
 
