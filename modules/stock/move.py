@@ -1754,7 +1754,13 @@ class Move(Workflow, ModelSQL, ModelView):
                     continue
                 if parent.id in leafs:
                     leafs.remove(parent.id)
-                parents[location.id] = parent.id
+                # Group children under the common requested grand parent
+                # to skip unnecessary intermediary result
+                while parent:
+                    parents[location.id] = parent.id
+                    if parent.id in location_ids:
+                        break
+                    parent = parent.parent
             locations = set((l.id for l in locations))
             while leafs:
                 for leaf in leafs:
