@@ -71,7 +71,7 @@
             }
             this.view.columns.push(column);
 
-            if (attributes.optional) {
+            if (attributes.optional && (name !== this.exclude_field)) {
                 Sao.setdefault(
                     this.view.optionals, column.attributes.name, []).push(column);
             }
