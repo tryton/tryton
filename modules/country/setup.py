@@ -50,7 +50,7 @@ for dep in info.get('depends', []):
         requires.append(get_require_version('trytond_%s' % dep))
 requires.append(get_require_version('trytond'))
 
-tests_require = [get_require_version('proteus'), 'pycountry']
+tests_require = [get_require_version('proteus'), 'pycountry >= 16.11.8']
 
 setup(name=name,
     version=version,
@@ -122,7 +122,7 @@ setup(name=name,
     python_requires='>=3.8',
     install_requires=requires,
     extras_require={
-        'data': ['pycountry', get_require_version('proteus')],
+        'data': ['pycountry >= 16.11.8', get_require_version('proteus')],
         'test': tests_require,
         'GeoNames': [get_require_version('proteus')],
         'completion': ['argcomplete'],

@@ -443,7 +443,7 @@ def translate_countries(countries):
     for code in _get_language_codes():
         try:
             gnutranslation = gettext.translation(
-                'iso3166', pycountry.LOCALES_DIR, languages=[code])
+                'iso3166-1', pycountry.LOCALES_DIR, languages=[code])
         except IOError:
             continue
         print("Update countries %s" % code, file=sys.stderr)
