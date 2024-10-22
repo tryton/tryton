@@ -333,7 +333,7 @@ class TreeXMLViewParser(XMLViewParser):
 
         self.view.treeview.append_column(column)
 
-        if 'optional' in attributes:
+        if 'optional' in attributes and name != self.exclude_field:
             self.view.optionals.append(column)
 
     def _parse_button(self, node, attributes):

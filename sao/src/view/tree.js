@@ -108,7 +108,7 @@
             }
             this.view.columns.push(column);
 
-            if (attributes.optional) {
+            if (attributes.optional && (name !== this.exclude_field)) {
                 this.view.optionals.push(column);
             }
 
