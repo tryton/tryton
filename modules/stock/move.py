@@ -1747,29 +1747,30 @@ class Move(Workflow, ModelSQL, ModelView):
             # Generate a set of locations without childs and a dict
             # giving the parent of each location.
             leafs = set([l.id for l in locations])
-            parent = {}
+            parents = {}
             for location in locations:
-                if not location.parent or location.parent.flat_childs:
+                parent = location.parent
+                if not parent or parent.flat_childs:
                     continue
-                if location.parent.id in leafs:
-                    leafs.remove(location.parent.id)
-                parent[location.id] = location.parent.id
+                if parent.id in leafs:
+                    leafs.remove(parent.id)
+                parents[location.id] = parent.id
             locations = set((l.id for l in locations))
             while leafs:
-                for l in leafs:
-                    locations.remove(l)
-                    if l not in parent:
+                for leaf in leafs:
+                    locations.remove(leaf)
+                    if leaf not in parents:
                         continue
+                    parent = parents[leaf]
                     for key in keys:
-                        parent_key = (parent[l],) + key
-                        quantities.setdefault(parent_key, 0)
-                        quantities[parent_key] += quantities.get((l,) + key, 0)
+                        quantities[(parent, *key)] += quantities[(leaf, *key)]
                 next_leafs = set(locations)
-                for l in locations:
-                    if l not in parent:
+                for location in locations:
+                    parent = parents.get(location)
+                    if not parent:
                         continue
-                    if parent[l] in next_leafs and parent[l] in locations:
-                        next_leafs.remove(parent[l])
+                    if parent in next_leafs and parent in locations:
+                        next_leafs.remove(parent)
                 leafs = next_leafs
 
             # clean result
