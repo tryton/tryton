@@ -492,11 +492,14 @@ class Production(ShipmentAssignMixin, Workflow, ModelSQL, ModelView):
         Move = pool.get('stock.move')
         to_save = []
         for production in productions:
+            dates = production._get_move_planned_date()
+            input_date, output_date = dates
             if not production.bom:
                 if production.product:
                     move = production._move(
                         'output', production.product, production.unit,
                         production.quantity)
+                    move.planned_date = output_date
                     if move:
                         to_save.append(move)
                 continue
@@ -508,6 +511,7 @@ class Production(ShipmentAssignMixin, Workflow, ModelSQL, ModelView):
                 product = input_.product
                 move = production._move(
                     'input', product, input_.unit, quantity)
+                move.planned_date = input_date
                 if move:
                     to_save.append(move)
 
@@ -516,10 +520,10 @@ class Production(ShipmentAssignMixin, Workflow, ModelSQL, ModelView):
                 product = output.product
                 move = production._move(
                     'output', product, output.unit, quantity)
+                move.planned_date = output_date
                 if move:
                     to_save.append(move)
         Move.save(to_save)
-        cls._set_move_planned_date(productions)
 
     @classmethod
     def set_cost_from_moves(cls):
