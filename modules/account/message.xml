@@ -136,11 +136,11 @@ this repository contains the full copyright notices and license terms. -->
         </record>
         <record model="ir.message" id="msg_move_copy_closed_period">
             <field name="text">The period of move "%(move)s" is closed.
-Use the current period to copy the move?</field>
+If you copy the move, the current period will be used.</field>
         </record>
         <record model="ir.message" id="msg_move_cancel_closed_period">
             <field name="text">The period of move "%(move)s" is closed.
-Use the current period to cancel the move?</field>
+If you cancel the move, the current period will be used.</field>
         </record>
 
         <record model="ir.message" id="msg_move_template_invalid_description">
