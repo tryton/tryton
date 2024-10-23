@@ -1,6 +1,7 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of this
 # repository contains the full copyright notices and license terms.
 
+import datetime as dt
 import decimal
 import gettext
 import locale
@@ -64,7 +65,7 @@ class DictEntry(object):
         return self.widget.get_text()
 
     def set_value(self, value):
-        self.widget.set_text(value or '')
+        self.widget.set_text(str(value or ''))
         reset_position(self.widget)
 
     def set_readonly(self, readonly):
@@ -279,7 +280,7 @@ class DictIntegerEntry(DictEntry):
         return None
 
     def set_value(self, value):
-        if value is not None:
+        if isinstance(value, (int, float, Decimal)):
             txt_val = locale.format_string('%d', value, True)
         else:
             txt_val = ''
@@ -316,7 +317,7 @@ class DictFloatEntry(DictIntegerEntry):
         else:
             self.widget.digits = None
         self.widget.set_width_chars(self.width)
-        if value is not None:
+        if isinstance(value, (int, float, Decimal)):
             txt_val = locale.localize(
                 '{0:.{1}f}'.format(value, digits[1]), True)
         else:
@@ -362,7 +363,8 @@ class DictDateTimeEntry(DictEntry):
         return untimezoned_date(self.widget.props.value)
 
     def set_value(self, value):
-        self.widget.props.value = timezoned_date(value)
+        self.widget.props.value = (
+            timezoned_date(value) if isinstance(value, dt.datetime) else None)
 
     def set_readonly(self, readonly):
         for child in self.widget.get_children():
@@ -397,7 +399,7 @@ class DictDateEntry(DictEntry):
         return self.widget.props.value
 
     def set_value(self, value):
-        self.widget.props.value = value
+        self.widget.props.value = value if isinstance(value, dt.date) else None
 
     def set_readonly(self, readonly):
         super().set_readonly(readonly)
