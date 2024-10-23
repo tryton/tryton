@@ -3,7 +3,7 @@
 this repository contains the full copyright notices and license terms. -->
 <form>
     <image name="tryton-question" xexpand="0" xfill="0"/>
-    <label string="Choose cancelled stock move to ignore or recreate:" id="choose" yalign="0.5" xalign="0.0" xexpand="1" colspan="3"/>
+    <label string="Choose cancelled stock moves to ignore or recreate:" id="choose" yalign="0.5" xalign="0.0" xexpand="1" colspan="3"/>
 
     <field name="ignore_moves" colspan="2" view_ids="stock.move_view_tree_simple"/>
     <field name="recreate_moves" colspan="2" view_ids="stock.move_view_tree_simple"/>

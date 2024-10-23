@@ -2351,7 +2351,7 @@ class HandleInvoiceExceptionAsk(ModelView):
             ('id', 'in', Eval('domain_invoices', [])),
             ('id', 'not in', Eval('recreate_invoices', []))
             ],
-        help="The selected cancelled invoices will be ignored")
+        help="The selected cancelled invoices will be ignored.")
     domain_invoices = fields.Many2Many(
         'account.invoice', None, None, 'Domain Invoices')
 
