@@ -2732,15 +2732,23 @@ class GroupLines(Wizard):
 
         accounts = defaultdict(Decimal)
         amount_second_currency = 0
-        maturity_dates = defaultdict(lambda: None)
+        maturity_dates = {
+            'debit': defaultdict(lambda: None),
+            'credit': defaultdict(lambda: None),
+            }
 
         counterpart_lines = []
         for line in lines:
-            if maturity_dates[line.account] and line.maturity_date:
-                maturity_dates[line.account] = min(
-                    maturity_dates[line.account], line.maturity_date)
-            elif line.maturity_date:
-                maturity_dates[line.account] = line.maturity_date
+            if line.maturity_date:
+                if line.debit:
+                    m_dates = maturity_dates['debit']
+                else:
+                    m_dates = maturity_dates['credit']
+                if m_dates[line.account]:
+                    m_dates[line.account] = min(
+                        m_dates[line.account], line.maturity_date)
+                elif line.maturity_date:
+                    m_dates[line.account] = line.maturity_date
             cline = cls._counterpart_line(line)
             accounts[cline.account] += cline.debit - cline.credit
             if cline.amount_second_currency:
@@ -2769,13 +2777,15 @@ class GroupLines(Wizard):
                 balance_line.party = grouping['party']
             if amount > 0:
                 balance_line.debit, balance_line.credit = amount, 0
+                maturity_date = maturity_dates['debit'][balance_line.account]
             else:
                 balance_line.debit, balance_line.credit = 0, -amount
+                maturity_date = maturity_dates['credit'][balance_line.account]
+            balance_line.maturity_date = maturity_date
             if grouping['second_currency']:
                 balance_line.second_currency = grouping['second_currency']
                 balance_line.amount_second_currency = (
                     -amount_second_currency)
-            balance_line.maturity_date = maturity_dates[balance_line.account]
         return move, balance_line
 
     @classmethod
