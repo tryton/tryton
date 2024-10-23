@@ -38,7 +38,7 @@ this repository contains the full copyright notices and license terms. -->
             id="information_document_number">
             <field name="name">aeb43_document_number</field>
             <field name="string">Document Number</field>
-            <field name="type_">integer</field>
+            <field name="type_">char</field>
         </record>
         <record model="account.statement.origin.information"
             id="information_first_reference">
