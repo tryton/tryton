@@ -5,7 +5,7 @@ from functools import wraps
 from trytond.model import ModelView, Workflow, fields
 from trytond.pool import Pool, PoolMeta
 from trytond.pyson import Eval
-from trytond.transaction import Transaction
+from trytond.transaction import Transaction, inactive_records
 
 
 class Location(metaclass=PoolMeta):
@@ -138,10 +138,44 @@ class Move(metaclass=PoolMeta):
         required = super(Move, self).on_change_with_assignation_required(
             name=name)
         if self.from_location:
-            if (self.from_location.type == 'supplier'
+            if (self.quantity
+                    and self.from_location.type == 'supplier'
                     and self.from_location.warehouse):
                 required = True
         return required
+
+    @classmethod
+    def search_assignation_required(cls, name, clause):
+        pool = Pool()
+        Location = pool.get('stock.location')
+        _, operator, operand = clause
+        domain = super().search_assignation_required(name, clause)
+        reverse = {
+            '=': '!=',
+            '!=': '=',
+            }
+        if operator in reverse:
+            with inactive_records():
+                warehouses = Location.search([
+                        ('type', '=', 'warehouse'),
+                        ])
+                warehouse_ids = list(map(int, warehouses))
+            if operator == '!=':
+                bool_op = 'AND'
+                warehouse_op = 'not child_of'
+            else:
+                bool_op = 'OR'
+                warehouse_op = 'child_of'
+            if not operand:
+                operator = reverse[operator]
+            domain = [bool_op,
+                domain,
+                [('quantity', '!=', 0),
+                    ('from_location.type', operator, 'supplier'),
+                    ('from_location', warehouse_op, warehouse_ids, 'parent'),
+                    ],
+                ]
+        return domain
 
     @property
     def is_supplier_consignment(self):
