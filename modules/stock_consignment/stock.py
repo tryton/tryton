@@ -73,13 +73,14 @@ def set_origin_consignment(state):
             if to_save:
                 InvoiceLine.save(to_save)
                 for move, line in move2line.items():
-                    move.state = state
                     if not move.origin:
                         move.origin = line
+                    original_state, move.state = move.state, state
                     if (move.on_change_with_unit_price_required()
                             and move.unit_price is None):
                         move.unit_price = line.unit_price
                         move.currency = line.currency
+                    move.state = original_state
                 cls.save(list(move2line.keys()))
             return func(cls, moves)
         return wrapper
@@ -94,7 +95,6 @@ def unset_origin_consignment(state):
             InvoiceLine = pool.get('account.invoice.line')
             lines, to_save = [], set()
             for move in moves:
-                move.state = state
                 for invoice_line in move.consignment_invoice_lines:
                     lines.append(invoice_line)
                     if move.origin == move:
@@ -124,7 +124,8 @@ class Move(metaclass=PoolMeta):
             'invisible': ~Eval('consignment_invoice_lines'),
             })
 
-    @fields.depends('state', 'from_location', 'to_location')
+    @fields.depends(
+        'state', 'from_location', 'to_location', 'unit_price', 'currency')
     def on_change_with_unit_price_required(self, name=None):
         required = super().on_change_with_unit_price_required(name)
         if (required
@@ -139,7 +140,9 @@ class Move(metaclass=PoolMeta):
                             'storage', 'production', 'supplier'}
                         and self.to_location.type == 'customer'))
                 and self.from_location.consignment_party):
-            required = False
+            # Keep the requirement to allow origin consignment decorators to
+            # set the unit price before changing the move state
+            required = (self.unit_price is not None) and self.currency
         return required
 
     @classmethod
