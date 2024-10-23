@@ -4858,7 +4858,7 @@ function eval_pyson(value){
             this.input.prop('disabled', readonly);
         },
         set_value: function(value) {
-            this.input.prop('checked', value);
+            this.input.prop('checked', Boolean(value));
         }
     });
 
@@ -4961,7 +4961,8 @@ function eval_pyson(value){
             return value;
         },
         set_value: function(value, options) {
-            if (value !== null) {
+            if ((typeof(value) == 'number') ||
+                (value instanceof Sao.Decimal)) {
                 this.input.val(value);
                 this.input_text.val(value.toLocaleString(
                     Sao.i18n.BC47(Sao.i18n.getlang()), options));
@@ -5094,7 +5095,13 @@ function eval_pyson(value){
             return this._parse(this.format, this.input.val());
         },
         set_value: function(value) {
-            this.input.val(this._format(this.format, value));
+            if ((value instanceof Sao.DateTime) ||
+                (value instanceof Sao.Date)) {
+                value = this._format(this.format, value);
+            } else {
+                value = '';
+            }
+            this.input.val(value);
         },
     });
 
