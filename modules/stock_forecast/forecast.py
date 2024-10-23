@@ -10,7 +10,6 @@ from sql.aggregate import Sum
 from sql.conditionals import Coalesce
 from sql.operators import Equal
 
-from trytond import backend
 from trytond.i18n import gettext
 from trytond.model import (
     Exclude, Index, ModelSQL, ModelView, Unique, Workflow, fields)
@@ -238,14 +237,13 @@ class Forecast(Workflow, ModelSQL, ModelView):
     def create_moves(forecasts):
         'Create stock moves for the forecast ids'
         pool = Pool()
-        Line = pool.get('stock.forecast.line')
+        Move = pool.get('stock.move')
         to_save = []
         for forecast in forecasts:
             if forecast.state == 'done':
                 for line in forecast.lines:
-                    line.moves += tuple(line.get_moves())
-                    to_save.append(line)
-        Line.save(to_save)
+                    to_save.extend(line.get_moves())
+        Move.save(to_save)
 
     @staticmethod
     def delete_moves(forecasts):
@@ -289,8 +287,7 @@ class ForecastLine(ModelSQL, ModelView):
         "Minimal Qty", digits='unit', required=True,
         domain=[('minimal_quantity', '<=', Eval('quantity'))],
         states=_states)
-    moves = fields.Many2Many('stock.forecast.line-stock.move',
-        'line', 'move', 'Moves', readonly=True)
+    moves = fields.One2Many('stock.move', 'origin', "Moves", readonly=True)
     forecast = fields.Many2One(
         'stock.forecast', 'Forecast', required=True, ondelete='CASCADE',
         states={
@@ -370,12 +367,10 @@ class ForecastLine(ModelSQL, ModelView):
         Location = pool.get('stock.location')
         Uom = pool.get('product.uom')
         Forecast = pool.get('stock.forecast')
-        LineMove = pool.get('stock.forecast.line-stock.move')
 
         move = Move.__table__()
         location_from = Location.__table__()
         location_to = Location.__table__()
-        line_move = LineMove.__table__()
 
         result = dict((x.id, 0) for x in lines)
 
@@ -392,8 +387,6 @@ class ForecastLine(ModelSQL, ModelView):
                         condition=move.from_location == location_from.id
                         ).join(location_to,
                         condition=move.to_location == location_to.id
-                        ).join(line_move, 'LEFT',
-                        condition=move.id == line_move.move
                         ).select(move.product, Sum(move.internal_quantity),
                         where=red_sql
                         & (location_from.left >= forecast.warehouse.left)
@@ -405,7 +398,8 @@ class ForecastLine(ModelSQL, ModelView):
                             >= forecast.from_date)
                         & (Coalesce(move.effective_date, move.planned_date)
                             <= forecast.to_date)
-                        & (line_move.id == Null),
+                        & ((move.origin == Null)
+                            | ~move.origin.like('stock.forecast.line,%')),
                         group_by=move.product))
                 for product_id, quantity in cursor:
                     line = product2line[product_id]
@@ -461,6 +455,7 @@ class ForecastLine(ModelSQL, ModelView):
             move.currency = self.forecast.company.currency
             move.unit_price = (
                 0 if self.forecast.destination.type == 'customer' else None)
+            move.origin = self
             moves.append(move)
         return moves
 
@@ -496,23 +491,6 @@ class ForecastLine(ModelSQL, ModelView):
                     i += 1
                 qty = 0
         return a
-
-
-class ForecastLineMove(ModelSQL):
-    'ForecastLine - Move'
-    __name__ = 'stock.forecast.line-stock.move'
-    line = fields.Many2One(
-        'stock.forecast.line', "Forecast Line",
-        ondelete='CASCADE', required=True)
-    move = fields.Many2One(
-        'stock.move', "Move", ondelete='CASCADE', required=True)
-
-    @classmethod
-    def __register__(cls, module):
-        # Migration from 7.0: rename to standard name
-        backend.TableHandler.table_rename(
-            'forecast_line_stock_move_rel', cls._table)
-        super().__register__(module)
 
 
 class ForecastCompleteAsk(ModelView):

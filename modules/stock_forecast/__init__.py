@@ -3,14 +3,14 @@
 
 from trytond.pool import Pool
 
-from . import forecast
+from . import forecast, stock
 
 
 def register():
     Pool.register(
+        stock.Move,
         forecast.Forecast,
         forecast.ForecastLine,
-        forecast.ForecastLineMove,
         forecast.ForecastCompleteAsk,
         module='stock_forecast', type_='model')
     Pool.register(
