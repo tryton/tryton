@@ -2730,9 +2730,9 @@ class GroupLines(Wizard):
         move.period = period
         move.journal = journal
 
-        accounts = {a: 0 for a in grouping['accounts']}
+        accounts = defaultdict(Decimal)
         amount_second_currency = 0
-        maturity_dates = {a: None for a in grouping['accounts']}
+        maturity_dates = defaultdict(lambda: None)
 
         counterpart_lines = []
         for line in lines:
