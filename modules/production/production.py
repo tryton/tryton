@@ -655,15 +655,13 @@ class Production(ShipmentAssignMixin, Workflow, ModelSQL, ModelView):
     @classmethod
     def create(cls, vlist):
         productions = super(Production, cls).create(vlist)
-        for production in productions:
-            production._set_move_planned_date()
+        cls._set_move_planned_date(productions)
         return productions
 
     @classmethod
     def write(cls, *args):
         super(Production, cls).write(*args)
-        for production in sum(args[::2], []):
-            production._set_move_planned_date()
+        cls._set_move_planned_date(sum(args[::2], []))
 
     @classmethod
     def copy(cls, productions, default=None):
