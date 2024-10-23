@@ -1098,6 +1098,13 @@ input.column-boolean {
     .center-block();
 }
 
+.column-many2one, .column-reference {
+    a:hover:after {
+        content: " 🔗";
+        display: inline-block;
+    }
+}
+
 .form-date, .form-datetime, .form-time,
 .dict-date, .dict-datetime,
 .input-date, .input-datetime-local, .input-time,
