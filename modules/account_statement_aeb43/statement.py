@@ -78,7 +78,7 @@ class ImportStatement(metaclass=PoolMeta):
         return {
             'aeb43_operation_date': transaction.transaction_date,
             'aeb43_record_type': transaction.shared_item,
-            'aeb43_document_number': transaction.document,
+            'aeb43_document_number': int(transaction.document),
             'aeb43_first_reference': transaction.reference1,
             'aeb43_second_reference': transaction.reference2,
             }
