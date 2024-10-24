@@ -29,6 +29,8 @@ documentation:
   image: ${CI_DEPENDENCY_PROXY_GROUP_IMAGE_PREFIX}/sphinxdoc/sphinx
   script:
     - .gitlab-scripts/generate-doc.sh docs
+    - find docs -type f -not -name 'objects.inv' -delete
+    - find docs -type d -empty -delete
   artifacts:
     paths:
       - docs/
