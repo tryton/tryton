@@ -51,8 +51,9 @@ class AccountProductTestCase(CompanyTestMixin, ModuleTestCase):
                     ('name', '=', 'Unit'),
                     ])
             account_expense, = Account.search([
+                    ('closed', '!=', True),
                     ('type.expense', '=', True),
-                    ])
+                    ], limit=1)
 
             # raise when empty
             template = ProductTemplate(
