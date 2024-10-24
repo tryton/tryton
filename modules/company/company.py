@@ -353,8 +353,10 @@ class CompanyConfig(Wizard):
 class CompanyReport(Report):
 
     @classmethod
-    def header_key(cls, record):
-        return super().header_key(record) + (('company', record.company),)
+    def header_key(cls, record, data):
+        return super().header_key(record, data) + (
+            ('company', record.company),
+            )
 
     @classmethod
     def get_context(cls, records, header, data):

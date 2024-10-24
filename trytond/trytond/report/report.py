@@ -15,6 +15,7 @@ import unicodedata
 import warnings
 import zipfile
 from email.message import EmailMessage
+from functools import partial
 from io import BytesIO
 from itertools import groupby
 
@@ -175,7 +176,7 @@ class Report(URLMixin, PoolBase):
                 Model.read(ids, ['id'])
 
     @classmethod
-    def header_key(cls, record):
+    def header_key(cls, record, data):
         return ()
 
     @classmethod
@@ -240,16 +241,17 @@ class Report(URLMixin, PoolBase):
         else:
             records = []
 
+        header_key = partial(cls.header_key, data=data)
         if not records:
             groups = [[]]
             headers = [{}]
         elif action_report.single:
             groups = [[r] for r in records]
-            headers = [dict(cls.header_key(r)) for r in records]
+            headers = [dict(header_key(r)) for r in records]
         else:
             groups = []
             headers = []
-            for key, group in groupby(records, key=cls.header_key):
+            for key, group in groupby(records, key=header_key):
                 groups.append(list(group))
                 headers.append(dict(key))
 

@@ -39,10 +39,11 @@ Class methods are:
    Verifies if the :attr:`~trytond.transaction.Transaction.user` is allowed to
    execute the report.
 
-.. classmethod:: Report.header_key(record)
+.. classmethod:: Report.header_key(record[, data])
 
    Returns a tuple of keys, composed of couples of name and record value, used
    to group document with the same header.
+   ``data`` is the dictionary passed to :meth:~Report.execute`.
 
 .. classmethod:: Report.execute(ids, data)
 

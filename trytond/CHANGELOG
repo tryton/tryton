@@ -1,3 +1,4 @@
+* Add report data to header_key
 * Validate integer digits
 * Add support for DATE_TRUNC from INTERVAL to SQLite backend
 * Add support for EXTRACT from INTERVAL to SQLite backend
