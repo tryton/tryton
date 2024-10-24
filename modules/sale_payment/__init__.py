@@ -2,11 +2,12 @@
 # this repository contains the full copyright notices and license terms.
 from trytond.pool import Pool
 
-from . import account, sale
+from . import account, ir, sale
 
 
 def register():
     Pool.register(
+        ir.Cron,
         sale.Sale,
         account.Payment,
         account.Invoice,

@@ -7,6 +7,7 @@ from trytond.model import ModelView, Workflow, fields
 from trytond.model.exceptions import AccessError
 from trytond.pool import PoolMeta
 from trytond.pyson import Bool, Eval, If
+from trytond.transaction import Transaction
 
 
 def no_payment(error):
@@ -73,8 +74,15 @@ class Sale(metaclass=PoolMeta):
         return self.total_amount
 
     @classmethod
-    def payment_confirm(cls, sales):
+    def payment_confirm(cls, sales=None):
         "Confirm the sale based on payment authorization"
+        if sales is None:
+            context = Transaction().context
+            sales = cls.search([
+                    ('state', '=', 'quotation'),
+                    ('payments', '!=', None),
+                    ('company', '=', context.get('company')),
+                    ])
         to_confirm = []
         for sale in sales:
             if sale.payment_amount_authorized >= sale.amount_to_pay:

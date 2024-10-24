@@ -19,5 +19,11 @@
             <field name="model">sale.sale,-1</field>
             <field name="action" ref="act_payments_relate"/>
         </record>
+
+        <record model="ir.cron" id="cron_sale_payment_confirm">
+            <field name="method">sale.sale|payment_confirm</field>
+            <field name="interval_number" eval="15"/>
+            <field name="interval_type">minutes</field>
+        </record>
     </data>
 </tryton>
