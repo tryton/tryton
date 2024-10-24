@@ -153,6 +153,10 @@ def load_module_graph(graph, pool, update=None, lang=None, indexes=None):
             code = get_parent_language(code)
 
     transaction = Transaction()
+    # Do not force to lock table at the transaction start
+    # as the table may not exist yet
+    transaction.lock_table = lambda t: transaction.database.lock(
+        transaction.connection, t)
     with transaction.connection.cursor() as cursor:
         modules = [x.name for x in graph]
         module2state = dict()
