@@ -2204,9 +2204,7 @@ class ModelSQL(ModelStorage):
         super(ModelSQL, cls).validate(records)
         transaction = Transaction()
         database = transaction.database
-        connection = transaction.connection
         has_constraint = database.has_constraint
-        lock = database.lock
         cursor = transaction.connection.cursor()
         # Works only for a single transaction
         ids = list(map(int, records))
@@ -2215,7 +2213,7 @@ class ModelSQL(ModelStorage):
                 continue
             table = sql.table
             if isinstance(sql, (Unique, Exclude)):
-                lock(connection, cls._table)
+                cls.lock()
                 if not database.has_range():
                     columns = []
                     for col in sql.columns:
