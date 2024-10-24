@@ -420,10 +420,6 @@ class TemplateAccountCategory(ModelSQL):
         template = Template.__table__()
         return template.select(
             template.id.as_('id'),
-            template.create_uid.as_('create_uid'),
-            template.create_date.as_('create_date'),
-            template.write_uid.as_('write_uid'),
-            template.write_date.as_('write_date'),
             template.id.as_('template'),
             template.account_category.as_('category'),
             where=template.account_category != Null)

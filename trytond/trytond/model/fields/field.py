@@ -551,10 +551,16 @@ class Field(object):
         return translations
 
     def searchable(self, model):
-        return hasattr(model, 'search')
+        from ..modelsql import _TABLE_QUERY_COLUMNS
+        return (hasattr(model, 'search')
+            and (not callable(getattr(model, 'table_query', None))
+                or self.name not in _TABLE_QUERY_COLUMNS))
 
     def sortable(self, model):
-        return hasattr(model, 'search')
+        from ..modelsql import _TABLE_QUERY_COLUMNS
+        return (hasattr(model, 'search')
+            and (not callable(getattr(model, 'table_query', None))
+                or self.name not in _TABLE_QUERY_COLUMNS))
 
 
 class FieldTranslate(Field):

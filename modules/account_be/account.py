@@ -1,7 +1,6 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
-from sql import Literal
-from sql.aggregate import Max, Min, Sum
+from sql.aggregate import Min, Sum
 
 from trytond.model import ModelSQL, ModelView, fields
 from trytond.modules.account.exceptions import FiscalYearNotFoundError
@@ -98,11 +97,7 @@ class BEVATCustomer(ModelSQL, ModelView):
             .join(party_identifier,
                 condition=invoice.party_tax_identifier == party_identifier.id)
             .select(
-                Max(invoice_tax.id).as_('id'),
-                Literal(0).as_('create_uid'),
-                Min(invoice_tax.create_date).as_('create_date'),
-                Literal(0).as_('write_uid'),
-                Max(invoice_tax.write_date).as_('write_date'),
+                Min(invoice_tax.id).as_('id'),
                 invoice.tax_identifier.as_('company_tax_identifier'),
                 invoice.party_tax_identifier.as_('party_tax_identifier'),
                 Sum(invoice_tax.base).as_('turnover'),

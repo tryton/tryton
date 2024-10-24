@@ -2,10 +2,10 @@
 # this repository contains the full copyright notices and license terms.
 
 from dateutil.relativedelta import relativedelta
-from sql import Literal, Null
+from sql import Null
 from sql.aggregate import Count, Min, Sum
 from sql.conditionals import Coalesce
-from sql.functions import CurrentTimestamp, DateTrunc
+from sql.functions import DateTrunc
 
 from trytond.i18n import lazy_gettext
 from trytond.model import ModelSQL, ModelView, fields
@@ -68,10 +68,6 @@ class Abstract(ModelSQL):
             Sum(quantity * line.unit_price))
         return [
             cls._column_id(tables).as_('id'),
-            Literal(0).as_('create_uid'),
-            CurrentTimestamp().as_('create_date'),
-            cls.write_uid.sql_cast(Literal(Null)).as_('write_uid'),
-            cls.write_date.sql_cast(Literal(Null)).as_('write_date'),
             purchase.company.as_('company'),
             purchase.currency.as_('currency'),
             expense.as_('expense'),

@@ -303,6 +303,14 @@ def apply_sorting(keywords):
     return lambda col: NullOrdering(Order(col))
 
 
+_TABLE_QUERY_COLUMNS = {
+    'create_uid': Literal(0),
+    'create_date': CurrentTimestamp(),
+    'write_uid': Literal(None),
+    'write_date': Literal(None),
+    }
+
+
 class ModelSQL(ModelStorage):
     """
     Define a model with storage in database.
@@ -1100,7 +1108,11 @@ class ModelSQL(ModelStorage):
         for f in all_fields:
             field = cls._fields.get(f)
             if field and field.sql_type():
-                columns[f] = field.sql_column(table).as_(f)
+                if f in _TABLE_QUERY_COLUMNS and callable(cls.table_query):
+                    column = _TABLE_QUERY_COLUMNS[f]
+                else:
+                    column = field.sql_column(table)
+                columns[f] = column.as_(f)
                 if backend.name == 'sqlite':
                     columns[f].output_name += ' [%s]' % field.sql_type().base
             elif f in {'_write', '_delete'}:
@@ -1812,13 +1824,15 @@ class ModelSQL(ModelStorage):
             columns.append(Column(table, '__id').as_('__id'))
 
         if eager:
+            table_query = callable(cls.table_query)
             columns += [f.sql_column(table).as_(n)
                 for n, f in sorted(cls._fields.items())
                 if not hasattr(f, 'get')
                     and n != 'id'
+                    and (not table_query or n not in _TABLE_QUERY_COLUMNS)
                     and not getattr(f, 'translate', False)
                     and f.loading == 'eager']
-            if not callable(cls.table_query):
+            if not table_query:
                 sql_type = fields.Char('timestamp').sql_type().base
                 columns += [Extract('EPOCH',
                         Coalesce(table.write_date, table.create_date)

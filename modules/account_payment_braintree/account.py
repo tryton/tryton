@@ -7,7 +7,6 @@ import uuid
 import braintree
 from braintree.exceptions import TooManyRequestsError
 from braintree.exceptions.braintree_error import BraintreeError
-from sql import Literal
 
 try:
     from braintree.exceptions import GatewayTimeoutError
@@ -1214,10 +1213,6 @@ class PaymentBraintreeCustomerIdentical(ModelSQL):
                     source.braintree_customer_id
                     == target.braintree_customer_id))
             .select(
-                Literal(0).as_('create_uid'),
-                source.create_date.as_('create_date'),
-                Literal(None).as_('write_uid'),
-                Literal(None).as_('write_date'),
                 sql_pairing(source.id, target.id).as_('id'),
                 source.id.as_('source'),
                 target.id.as_('target'),

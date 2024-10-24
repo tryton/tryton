@@ -962,10 +962,6 @@ class POSCashSessionRelation(ModelSQL):
         session = Session.__table__()
         return session.select(
             session.id.as_('id'),
-            session.create_date.as_('create_date'),
-            session.create_uid.as_('create_uid'),
-            session.write_date.as_('write_date'),
-            session.write_uid.as_('write_uid'),
             session.previous_session.as_('previous'),
             session.id.as_('next'))
 

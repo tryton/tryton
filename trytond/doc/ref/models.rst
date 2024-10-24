@@ -668,7 +668,9 @@ Class methods:
 
    Could be defined to use a custom SQL query instead of a table of the
    database.
-   It should return a SQL FromItem.
+   It should return a SQL FromItem with a column ``id`` with a unique value and
+   a column for each field except for ``create_uid``, ``create_date``,
+   ``write_uid`` and ``write_date``.
 
    .. warning::
       By default all CRUD operation raises an error on models implementing this

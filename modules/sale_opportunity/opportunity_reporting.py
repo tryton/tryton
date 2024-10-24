@@ -5,7 +5,6 @@ from dateutil.relativedelta import relativedelta
 from sql import Literal, Null, With
 from sql.aggregate import Count, Min, Sum
 from sql.conditionals import Case
-from sql.functions import CurrentTimestamp
 
 from trytond.i18n import lazy_gettext
 from trytond.model import ModelSQL, ModelView, fields
@@ -120,10 +119,6 @@ class Abstract(ModelSQL):
         opportunity = tables['opportunity']
         return [
             cls._column_id(tables, withs).as_('id'),
-            Literal(0).as_('create_uid'),
-            CurrentTimestamp().as_('create_date'),
-            cls.write_uid.sql_cast(Literal(Null)).as_('write_uid'),
-            cls.write_date.sql_cast(Literal(Null)).as_('write_date'),
             opportunity.company.as_('company'),
             Count(Literal(1)).as_('number'),
             Sum(opportunity.amount).as_('amount'),

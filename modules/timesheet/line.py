@@ -239,10 +239,6 @@ class HoursEmployee(ModelSQL, ModelView):
             where &= line.date <= Transaction().context['end_date']
         return line.select(
             line.employee.as_('id'),
-            Max(line.create_uid).as_('create_uid'),
-            Max(line.create_date).as_('create_date'),
-            Max(line.write_uid).as_('write_uid'),
-            Max(line.write_date).as_('write_date'),
             line.employee,
             Sum(line.duration).as_('duration'),
             where=where,
@@ -280,10 +276,6 @@ class HoursEmployeeWeekly(ModelSQL, ModelView):
             Max(Extract('WEEK', line.date)
                 + Extract('YEAR', line.date) * 100
                 + line.employee * 1000000).as_('id'),
-            Max(line.create_uid).as_('create_uid'),
-            Max(line.create_date).as_('create_date'),
-            Max(line.write_uid).as_('write_uid'),
-            Max(line.write_date).as_('write_date'),
             year_column,
             week_column,
             line.employee,
@@ -318,10 +310,6 @@ class HoursEmployeeMonthly(ModelSQL, ModelView):
             Max(Extract('MONTH', line.date)
                 + Extract('YEAR', line.date) * 100
                 + line.employee * 1000000).as_('id'),
-            Max(line.create_uid).as_('create_uid'),
-            Max(line.create_date).as_('create_date'),
-            Max(line.write_uid).as_('write_uid'),
-            Max(line.write_date).as_('write_date'),
             year_column,
             month.id.as_('month'),
             line.employee,

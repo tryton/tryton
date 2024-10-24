@@ -7,7 +7,7 @@ from dateutil.relativedelta import relativedelta
 from sql import Column, Literal, Null, Union, With
 from sql.aggregate import Count, Max, Min, Sum
 from sql.conditionals import Coalesce
-from sql.functions import Ceil, CurrentTimestamp, DateTrunc, Log, Power, Round
+from sql.functions import Ceil, DateTrunc, Log, Power, Round
 from sql.operators import Concat
 
 from trytond.i18n import lazy_gettext
@@ -133,10 +133,6 @@ class Abstract(ModelSQL):
             currency.digits)
         return [
             cls._column_id(tables, withs).as_('id'),
-            Literal(0).as_('create_uid'),
-            CurrentTimestamp().as_('create_date'),
-            cls.write_uid.sql_cast(Literal(Null)).as_('write_uid'),
-            cls.write_date.sql_cast(Literal(Null)).as_('write_date'),
             line.company.as_('company'),
             revenue.as_('revenue'),
             Count(line.order, distinct=True).as_('number'),

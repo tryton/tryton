@@ -8,7 +8,7 @@ from itertools import groupby, zip_longest
 
 from dateutil.relativedelta import relativedelta
 from sql import Column, Literal, Null, Window
-from sql.aggregate import Count, Max, Min, Sum
+from sql.aggregate import Count, Min, Sum
 from sql.conditionals import Case, Coalesce
 
 from trytond import backend
@@ -3019,10 +3019,6 @@ class AgedBalance(ModelSQL, ModelView):
             & (line.credit != 0))
         columns = [
             line.party.as_('id'),
-            Literal(0).as_('create_uid'),
-            Max(line.create_date).as_('create_date'),
-            Literal(0).as_('write_uid'),
-            Max(line.write_date).as_('write_date'),
             line.party.as_('party'),
             move.company.as_('company'),
             (Sum(line.debit) - Sum(line.credit)).as_('balance'),

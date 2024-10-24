@@ -5,6 +5,8 @@ from sql import Column, Literal, Union
 from trytond.model import fields
 from trytond.pool import Pool
 
+from .modelsql import _TABLE_QUERY_COLUMNS
+
 
 class UnionMixin:
     'Mixin to combine models'
@@ -53,7 +55,8 @@ class UnionMixin:
         columns = [cls.union_shard(table.id, model).as_('id')]
         for name in sorted(cls._fields.keys()):
             field = cls._fields[name]
-            if name == 'id' or hasattr(field, 'set'):
+            if (name == 'id' or name in _TABLE_QUERY_COLUMNS
+                    or hasattr(field, 'set')):
                 continue
             column = cls.union_column(name, field, table, Model)
             columns.append(field.sql_cast(column).as_(name))

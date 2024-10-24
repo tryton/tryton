@@ -5,10 +5,10 @@ import datetime as dt
 from collections import defaultdict
 from itertools import chain
 
-from sql import Column, Literal, Null, Window
+from sql import Column, Window
 from sql.aggregate import Min, Sum
 from sql.conditionals import Coalesce
-from sql.functions import CurrentTimestamp, Function, NthValue
+from sql.functions import Function, NthValue
 
 from trytond import backend
 from trytond.cache import Cache
@@ -350,10 +350,6 @@ class SheetLine(ModelSQL, ModelView):
             duration = query.to - from_
         return query.select(
             query.id.as_('id'),
-            Literal(0).as_('create_uid'),
-            CurrentTimestamp().as_('create_date'),
-            cls.write_uid.sql_cast(Literal(Null)).as_('write_uid'),
-            cls.write_date.sql_cast(Literal(Null)).as_('write_date'),
             query.company.as_('company'),
             query.employee.as_('employee'),
             from_.as_('from_'),
@@ -387,10 +383,6 @@ class Sheet(ModelSQL, ModelView):
 
         return line.select(
             (Min(line.id * 2)).as_('id'),
-            Literal(0).as_('create_uid'),
-            CurrentTimestamp().as_('create_date'),
-            cls.write_uid.sql_cast(Literal(Null)).as_('write_uid'),
-            cls.write_date.sql_cast(Literal(Null)).as_('write_date'),
             line.company.as_('company'),
             line.employee.as_('employee'),
             Sum(line.duration).as_('duration'),
@@ -424,10 +416,6 @@ class Sheet_Timesheet(metaclass=PoolMeta):
                 & (attendance.date == timesheet.date))
             .select(
                 Coalesce(attendance.id, timesheet.id).as_('id'),
-                Literal(0).as_('create_uid'),
-                CurrentTimestamp().as_('create_date'),
-                cls.write_uid.sql_cast(Literal(Null)).as_('write_uid'),
-                cls.write_date.sql_cast(Literal(Null)).as_('write_date'),
                 Coalesce(attendance.company, timesheet.company).as_('company'),
                 Coalesce(
                     attendance.employee, timesheet.employee).as_('employee'),

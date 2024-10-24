@@ -8,7 +8,7 @@ from dateutil.relativedelta import relativedelta
 from sql import Literal, Null, With
 from sql.aggregate import Max, Min, Sum
 from sql.conditionals import Case, Coalesce
-from sql.functions import Ceil, CurrentTimestamp, DateTrunc, Log, Power, Round
+from sql.functions import Ceil, DateTrunc, Log, Power, Round
 
 from trytond.i18n import lazy_gettext
 from trytond.model import ModelSQL, ModelView, fields, sum_tree
@@ -119,10 +119,6 @@ class Abstract(ModelSQL, ModelView):
             else_=Null)
         return [
             cls._column_id(tables, withs).as_('id'),
-            Literal(0).as_('create_uid'),
-            CurrentTimestamp().as_('create_date'),
-            cls.write_uid.sql_cast(Literal(Null)).as_('write_uid'),
-            cls.write_date.sql_cast(Literal(Null)).as_('write_date'),
             move.company.as_('company'),
             cls.cost.sql_cast(
                 Round(cost, currency.digits)).as_('cost'),

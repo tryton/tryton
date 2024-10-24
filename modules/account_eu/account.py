@@ -1,8 +1,7 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
-from sql import Literal, Null
+from sql import Null
 from sql.aggregate import Min, Sum
-from sql.functions import CurrentTimestamp
 
 from trytond.model import ModelSQL, ModelView, fields
 from trytond.modules.account.exceptions import FiscalYearNotFoundError
@@ -87,10 +86,6 @@ class ECSalesList(ModelSQL, ModelView):
             .join(company, condition=company.id == invoice.company)
             .select(
                 Min(tax_line.id).as_('id'),
-                Literal(0).as_('create_uid'),
-                CurrentTimestamp().as_('create_date'),
-                cls.write_uid.sql_cast(Literal(Null)).as_('write_uid'),
-                cls.write_date.sql_cast(Literal(Null)).as_('write_date'),
                 invoice.tax_identifier.as_('company_tax_identifier'),
                 invoice.party.as_('party'),
                 invoice.party_tax_identifier.as_('party_tax_identifier'),

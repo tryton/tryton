@@ -9,7 +9,6 @@ from itertools import groupby
 from operator import attrgetter
 
 import stripe
-from sql import Literal
 
 from trytond.cache import Cache
 from trytond.config import config
@@ -1910,10 +1909,6 @@ class CustomerIdentical(ModelSQL):
             source
             .join(target, condition=source.fingerprint == target.fingerprint)
             .select(
-                Literal(0).as_('create_uid'),
-                source.create_date.as_('create_date'),
-                Literal(None).as_('write_uid'),
-                Literal(None).as_('write_date'),
                 sql_pairing(source.id, target.id).as_('id'),
                 source.customer.as_('source'),
                 target.customer.as_('target'),

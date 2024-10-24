@@ -246,10 +246,6 @@ class LotTrace(ModelSQL, ModelView):
         move = tables['move']
         return [
             move.id.as_('id'),
-            move.create_uid.as_('create_uid'),
-            move.create_date.as_('create_date'),
-            move.write_uid.as_('write_uid'),
-            move.write_date.as_('write_date'),
             move.product.as_('product'),
             move.lot.as_('lot'),
             move.from_location.as_('from_location'),

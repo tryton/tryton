@@ -1,3 +1,4 @@
+* Add metadata columns to ModelSQL with table query
 * Add report data to header_key
 * Validate integer digits
 * Add support for DATE_TRUNC from INTERVAL to SQLite backend

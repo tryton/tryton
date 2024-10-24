@@ -6,9 +6,9 @@ import zipfile
 from io import BytesIO, TextIOWrapper
 from itertools import groupby
 
-from sql import Literal, Null
+from sql import Null
 from sql.aggregate import Min, Sum
-from sql.functions import CurrentTimestamp, Extract, Round
+from sql.functions import Extract, Round
 
 from trytond.cache import Cache
 from trytond.model import (
@@ -325,10 +325,6 @@ class IntrastatDeclarationLine(ModelSQL, ModelView):
         return (move
             .select(
                 Min(move.id).as_('id'),
-                Literal(0).as_('create_uid'),
-                CurrentTimestamp().as_('create_date'),
-                cls.write_uid.sql_cast(Literal(Null)).as_('write_uid'),
-                cls.write_date.sql_cast(Literal(Null)).as_('write_date'),
                 *cls._columns(move),
                 where=where,
                 group_by=cls._group_by(move),

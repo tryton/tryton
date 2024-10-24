@@ -1,9 +1,9 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
-from sql import Column, Literal, Window
+from sql import Column, Window
 from sql.aggregate import Max
 from sql.conditionals import Coalesce
-from sql.functions import CurrentTimestamp, LastValue
+from sql.functions import LastValue
 
 from trytond.model import ModelSQL, ModelView, convert_from, fields
 from trytond.modules.product import round_price
@@ -117,10 +117,6 @@ class ProductCostHistory(ModelSQL, ModelView):
             where=clause)
         query = move_history.select(
             Max(move_history.id).as_('id'),
-            Literal(0).as_('create_uid'),
-            CurrentTimestamp().as_('create_date'),
-            Literal(None).as_('write_uid'),
-            Literal(None).as_('write_date'),
             move_history.date.as_('date'),
             move_history.product.as_('product'),
             Max(move_history.cost_price).as_('cost_price'),
@@ -154,10 +150,6 @@ class ProductCostHistory(ModelSQL, ModelView):
 
         query |= price_history.select(
             Max(price_history.id).as_('id'),
-            Literal(0).as_('create_uid'),
-            CurrentTimestamp().as_('create_date'),
-            Literal(None).as_('write_uid'),
-            Literal(None).as_('write_date'),
             price_history.date.as_('date'),
             price_history.product.as_('product'),
             Max(price_history.cost_price).as_('cost_price'),

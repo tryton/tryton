@@ -1129,10 +1129,6 @@ class LineGroup(ModelSQL, ModelView):
 
         std_columns = [
             move.id,
-            move.create_uid,
-            move.create_date,
-            move.write_uid,
-            move.write_date,
             line.second_currency,
             ]
 

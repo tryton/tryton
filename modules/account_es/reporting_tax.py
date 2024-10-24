@@ -473,10 +473,6 @@ class ESVATList(ModelSQL, ModelView):
             .join(company, condition=company.id == invoice.company)
             .select(
                 Min(tax_line.id).as_('id'),
-                Literal(0).as_('create_uid'),
-                CurrentTimestamp().as_('create_date'),
-                cls.write_uid.sql_cast(Literal(Null)).as_('write_uid'),
-                cls.write_date.sql_cast(Literal(Null)).as_('write_date'),
                 invoice.tax_identifier.as_('company_tax_identifier'),
                 invoice.party.as_('party'),
                 invoice.party_tax_identifier.as_('party_tax_identifier'),
@@ -606,10 +602,6 @@ class ECOperationList(ECSalesList):
             .join(company, condition=company.id == invoice.company)
             .select(
                 Min(tax_line.id).as_('id'),
-                Literal(0).as_('create_uid'),
-                CurrentTimestamp().as_('create_date'),
-                cls.write_uid.sql_cast(Literal(Null)).as_('write_uid'),
-                cls.write_date.sql_cast(Literal(Null)).as_('write_date'),
                 invoice.tax_identifier.as_('company_tax_identifier'),
                 invoice.party.as_('party'),
                 invoice.party_tax_identifier.as_('party_tax_identifier'),

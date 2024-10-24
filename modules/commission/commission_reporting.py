@@ -2,10 +2,10 @@
 # this repository contains the full copyright notices and license terms.
 
 from dateutil.relativedelta import relativedelta
-from sql import Literal, Null
+from sql import Null
 from sql.aggregate import Count, Min, Sum
 from sql.conditionals import Coalesce
-from sql.functions import CurrentTimestamp, DateTrunc, Round
+from sql.functions import DateTrunc, Round
 
 from trytond.model import ModelSQL, ModelView, fields
 from trytond.modules.currency.fields import Monetary
@@ -68,10 +68,6 @@ class Agent(ModelView, ModelSQL):
         currency = tables['commission.agent.currency']
         return [
             cls._column_id(tables, withs).as_('id'),
-            Literal(0).as_('create_uid'),
-            CurrentTimestamp().as_('create_date'),
-            cls.write_uid.sql_cast(Literal(Null)).as_('write_uid'),
-            cls.write_date.sql_cast(Literal(Null)).as_('write_date'),
             commission.agent.as_('agent'),
             agent.currency.as_('currency'),
             Count(commission.id, distinct=True).as_('number'),

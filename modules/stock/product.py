@@ -10,7 +10,6 @@ from simpleeval import InvalidExpression, simple_eval
 from sql import Literal, Null, Select, Window, With
 from sql.aggregate import Max, Sum
 from sql.conditionals import Case, Coalesce
-from sql.functions import CurrentTimestamp
 from sql.operators import Concat
 
 from trytond.i18n import gettext
@@ -724,10 +723,6 @@ class ProductQuantitiesByWarehouse(ModelSQL, ModelView):
         date_column = Coalesce(move.effective_date, move.planned_date)
         query = (from_.select(
                 Max(move.id * 3).as_('id'),
-                Literal(0).as_('create_uid'),
-                CurrentTimestamp().as_('create_date'),
-                Literal(None).as_('write_uid'),
-                Literal(None).as_('write_date'),
                 product_column.as_('product'),
                 date_column.as_('date'),
                 move.company.as_('company'),
@@ -749,10 +744,6 @@ class ProductQuantitiesByWarehouse(ModelSQL, ModelView):
             gap = ['product.template', 'product.product'].index(model) + 1
             query |= Select([
                     Literal(id_ * 3 + gap).as_('id'),
-                    Literal(0).as_('create_uid'),
-                    CurrentTimestamp().as_('create_date'),
-                    Literal(None).as_('write_uid'),
-                    Literal(None).as_('write_date'),
                     Literal('%s,%s' % (model, id_)).as_('product'),
                     Literal(today).as_('date'),
                     Literal(context.get('company', -1)).as_('company'),
@@ -1006,10 +997,6 @@ class ProductQuantitiesByWarehouseMove(ModelSQL, ModelView):
             cumulative_quantity_delta = Literal(0)
         return (from_.select(
                 move.id.as_('id'),
-                Literal(0).as_('create_uid'),
-                CurrentTimestamp().as_('create_date'),
-                Literal(None).as_('write_uid'),
-                Literal(None).as_('write_date'),
                 product_column.as_('product'),
                 date_column.as_('date'),
                 move.id.as_('move'),

@@ -1,8 +1,8 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
-from sql import As, Literal, Null, Select, Window
+from sql import As, Null, Select, Window
 from sql.aggregate import BoolAnd, BoolOr, Min, Sum
-from sql.functions import CurrentTimestamp, FirstValue
+from sql.functions import FirstValue
 
 from trytond.model import ModelSQL, ModelView, fields
 from trytond.modules.account import MoveLineMixin
@@ -142,13 +142,7 @@ class MoveLineGroup(MoveLineMixin, ModelSQL, ModelView):
         Line = pool.get('account.move.line')
         line = Line.__table__()
 
-        std_columns = [
-            Min(line.id).as_('id'),
-            Literal(0).as_('create_uid'),
-            CurrentTimestamp().as_('create_date'),
-            Literal(None).as_('write_uid'),
-            Literal(None).as_('write_date'),
-            ]
+        std_columns = [Min(line.id).as_('id')]
         grouped_columns = cls._grouped_columns(line)
         aggregated_columns = cls._aggregated_columns(line)
 
@@ -229,13 +223,6 @@ class MoveLineGroup_MoveLine(ModelSQL):
         database = transaction.database
         line = Line.__table__()
 
-        std_columns = [
-            Literal(0).as_('create_uid'),
-            CurrentTimestamp().as_('create_date'),
-            Literal(None).as_('write_uid'),
-            Literal(None).as_('write_date'),
-            ]
-
         if database.has_window_functions():
             grouped_columns = LineGroup._grouped_columns(line)
             window = Window(
@@ -244,14 +231,12 @@ class MoveLineGroup_MoveLine(ModelSQL):
             query = line.select(
                 line.id.as_('id'),
                 FirstValue(line.id, window=window).as_('group'),
-                line.id.as_('line'),
-                *std_columns)
+                line.id.as_('line'))
         else:
             query = Select(
                 Null.as_('id'),
                 Null.as_('group'),
                 Null.as_('line'),
-                *std_columns,
                 limit=0)
         return query
 
