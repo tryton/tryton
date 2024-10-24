@@ -111,7 +111,11 @@ check-doc:
     - .gitlab-scripts/doctest2python.py
   rules:
     - if: $CI_MERGE_REQUEST_TARGET_BRANCH_NAME == $CI_DEFAULT_BRANCH
+      changes:
+        - "**/*.py"
+        - "**/tests/*.rst"
       when: always
+    - when: never
 
 check-flake8:
   extends: .check-code
@@ -145,6 +149,12 @@ check-eslint:
     - cd sao
     - npm install --cache ${NODE_CACHE_DIR} --unsafe-perm --legacy-peer-deps
     - npm run check
+  rules:
+    - if: $CI_MERGE_REQUEST_TARGET_BRANCH_NAME == $CI_DEFAULT_BRANCH
+      changes:
+        - "sao/**/*.js"
+      when: always
+    - when: never
 
 check-ci-modules:
   extends: .check
@@ -166,8 +176,11 @@ check-cookiecutter-module:
     - flake8 /tmp/my_module
     - isort --multi-line VERTICAL_GRID --check --diff /tmp/my_module
   rules:
-    - changes:
-        - cookiecutter-module/**/*
+    - if: $CI_MERGE_REQUEST_TARGET_BRANCH_NAME == $CI_DEFAULT_BRANCH
+      changes:
+          - cookiecutter-module/**/*
+      when: always
+    - when: never
 
 check-template-modules:
   extends: .check
