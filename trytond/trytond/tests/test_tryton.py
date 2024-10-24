@@ -533,7 +533,7 @@ class ModuleTestCase(_DBTestCase):
         for icon in icons:
             icon_files.discard(os.path.join(
                     directory, icon.path.replace('/', os.sep)))
-            with self.subTest(icon=icon):
+            with self.subTest(icon=icon.rec_name):
                 self.assertTrue(icon.icon)
         self.assertFalse(icon_files, msg="unused icon files")
 
@@ -781,7 +781,7 @@ class ModuleTestCase(_DBTestCase):
                     if k.keyword == 'tree_open'))
             if not actions_groups:
                 continue
-            with self.subTest(menu=menu):
+            with self.subTest(menu=menu.rec_name):
                 self.assertLessEqual(menu_groups, actions_groups,
                     msg='Menu "%(menu_xml_id)s" actions are not accessible to '
                     '%(groups)s' % {
@@ -987,7 +987,7 @@ class ModuleTestCase(_DBTestCase):
                     ('model', '=', 'ir.action.act_window'),
                     ]):
             action_window = ActionWindow(model_data.db_id)
-            with self.subTest(action_window=action_window):
+            with self.subTest(action_window=action_window.rec_name):
                 test_action_window(action_window)
 
     @with_transaction()
