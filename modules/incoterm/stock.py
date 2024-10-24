@@ -34,6 +34,10 @@ class ShipmentIn(ShipmentMixin, metaclass=PoolMeta):
     def _incoterm_related_party(cls):
         return Eval('supplier'), {'supplier'}
 
+
+class ShipmentIn_Purchase(metaclass=PoolMeta):
+    __name__ = 'stock.shipment.in'
+
     @classmethod
     @ModelView.button
     @Workflow.transition('received')
@@ -78,6 +82,10 @@ class ShipmentOut(ShipmentMixin, metaclass=PoolMeta):
     @classmethod
     def _incoterm_related_party(cls):
         return Eval('customer'), {'customer'}
+
+
+class ShipmentOut_Sale(metaclass=PoolMeta):
+    __name__ = 'stock.shipment.out'
 
     @classmethod
     @ModelView.button

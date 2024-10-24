@@ -22,6 +22,7 @@ def register():
         module='incoterm', type_='model', depends=['carrier'])
     Pool.register(
         sale.Sale,
+        stock.ShipmentOut_Sale,
         module='incoterm', type_='model', depends=['sale'])
     Pool.register(
         sale.Sale_Carrier,
@@ -31,6 +32,7 @@ def register():
         module='incoterm', type_='model', depends=['sale_opportunity'])
     Pool.register(
         purchase.Purchase,
+        stock.ShipmentIn_Purchase,
         module='incoterm', type_='model', depends=['purchase'])
     Pool.register(
         purchase.RequestQuotation,
