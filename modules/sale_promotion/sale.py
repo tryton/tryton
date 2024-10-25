@@ -73,7 +73,10 @@ class Line(metaclass=PoolMeta):
     __name__ = 'sale.line'
 
     draft_unit_price = fields.Numeric('Draft Unit Price',
-        digits=price_digits, readonly=True)
+        digits=price_digits, readonly=True,
+        states={
+            'required': Bool(Eval('promotion', None)),
+            })
     promotion = fields.Many2One('sale.promotion', "Promotion",
         ondelete='RESTRICT',
         domain=[
