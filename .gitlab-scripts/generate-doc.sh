@@ -7,6 +7,7 @@ mkdir -p "${OUTPUTDIR}"
 : ${MAX_PROCS:=$(( `nproc` * 2 ))}
 export DOC_BASE_URL
 
+pip install setuptools
 find . -name 'cookiecutter*' -prune -o -path '*/doc/requirements-doc.txt' -print | while read path; do
     pip install -r "${path}"
 done

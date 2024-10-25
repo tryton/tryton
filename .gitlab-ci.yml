@@ -60,6 +60,7 @@ documentation:
     paths:
       - .cache/pip/http-v2
   before_script:
+    - pip install setuptools
     - pip install -r "${PACKAGE}/${DOC_DIR}/requirements-doc.txt"
     - pip install sphinx-lint rstcheck[sphinx]
   script:
