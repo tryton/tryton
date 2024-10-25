@@ -22,6 +22,44 @@ from .exceptions import FormulaError
 class Sale(metaclass=PoolMeta):
     __name__ = 'sale.sale'
 
+    original_untaxed_amount = fields.Function(Monetary(
+            "Original Untaxed", digits='currency', currency='currency',
+            states={
+                'invisible': (
+                    ~Eval('state').in_(['draft', 'quotation'])
+                    | (Eval('original_untaxed_amount')
+                        == Eval('untaxed_amount'))),
+                }),
+        'get_original_amount')
+    original_tax_amount = fields.Function(Monetary(
+            "Original Tax", digits='currency', currency='currency',
+            states={
+                'invisible': (
+                    ~Eval('state').in_(['draft', 'quotation'])
+                    | (Eval('original_tax_amount') == Eval('tax_amount'))),
+                }),
+        'get_original_amount')
+    original_total_amount = fields.Function(Monetary(
+            "Original Total", digits='currency', currency='currency',
+            states={
+                'invisible': (
+                    ~Eval('state').in_(['draft', 'quotation'])
+                    | (Eval('original_total_amount') == Eval('total_amount'))),
+                }),
+        'get_original_amount')
+
+    def get_original_amount(self, names):
+        amounts = dict.fromkeys(names)
+        if self.state in {'draft', 'quotation'}:
+            amounts['original_untaxed_amount'] = sum(
+                (line.original_amount for line in self.line_lines), Decimal(0))
+            if {'original_tax_amount', 'original_total_amount'} & set(names):
+                with Transaction().set_context(_original_amount=True):
+                    amounts['original_tax_amount'] = self.get_tax_amount()
+                amounts['original_total_amount'] = sum(
+                    filter(None, amounts.values()))
+        return amounts
+
     @classmethod
     @ModelView.button
     @Workflow.transition('draft')
@@ -29,19 +67,7 @@ class Sale(metaclass=PoolMeta):
         super(Sale, cls).draft(sales)
         # Reset to draft unit price
         for sale in sales:
-            changed = False
-            for line in sale.lines:
-                if line.type != 'line':
-                    continue
-                if line.draft_unit_price is not None:
-                    line.unit_price = line.draft_unit_price
-                    line.draft_unit_price = None
-                    changed = True
-                if line.promotion:
-                    line.promotion = None
-                    changed = True
-            if changed:
-                sale.lines = sale.lines  # Trigger changes
+            sale.unapply_promotion()
         cls.save(sales)
 
     @classmethod
@@ -51,18 +77,33 @@ class Sale(metaclass=PoolMeta):
         super(Sale, cls).quote(sales)
         # Store draft unit price before changing it
         for sale in sales:
-            for line in sale.lines:
-                if line.type != 'line':
-                    continue
-                if line.draft_unit_price is None:
-                    line.draft_unit_price = line.unit_price
             sale.apply_promotion()
         cls.save(sales)
 
+    def unapply_promotion(self):
+        "Unapply promotion"
+        changed = False
+        for line in self.lines:
+            if line.type != 'line':
+                continue
+            if line.original_unit_price is not None:
+                line.unit_price = line.original_unit_price
+                line.original_unit_price = None
+                changed = True
+            if line.promotion:
+                line.promotion = None
+                changed = True
+        if changed:
+            self.lines = self.lines  # Trigger changes
+
     def apply_promotion(self):
-        'Apply promotion'
+        "Apply promotion"
         pool = Pool()
         Promotion = pool.get('sale.promotion')
+
+        for line in self.lines:
+            if line.type == 'line' and line.original_unit_price is None:
+                line.original_unit_price = line.unit_price
 
         promotions = Promotion.get_promotions(self)
         for promotion in promotions:
@@ -72,16 +113,67 @@ class Sale(metaclass=PoolMeta):
 class Line(metaclass=PoolMeta):
     __name__ = 'sale.line'
 
-    draft_unit_price = fields.Numeric('Draft Unit Price',
-        digits=price_digits, readonly=True,
+    original_unit_price = Monetary(
+        "Original Unit Price", digits=price_digits, currency='currency',
+        readonly=True,
         states={
             'required': Bool(Eval('promotion', None)),
+            'invisible': ~Eval('promotion'),
             })
+    original_amount = fields.Function(Monetary(
+            "Original Amount", digits='currency', currency='currency',
+            states={
+                'invisible': ~Eval('promotion'),
+                }),
+        'get_original_amount')
     promotion = fields.Many2One('sale.promotion', "Promotion",
         ondelete='RESTRICT',
         domain=[
             ('company', '=', Eval('company', -1)),
             ])
+
+    @classmethod
+    def __register__(cls, module):
+        table_h = cls.__table_handler__(module)
+        # Migration from 7.4: rename draft_unit_price
+        table_h.column_rename('draft_unit_price', 'original_unit_price')
+        super().__register__(module)
+
+    def get_original_amount(self, name):
+        currency = self.sale.currency
+
+        def _amount(line):
+            return currency.round(
+                Decimal(str(line.quantity))
+                * (line.original_unit_price or line.unit_price))
+
+        if self.type == 'line':
+            return _amount(self)
+        elif self.type == 'subtotal':
+            amount = Decimal(0)
+            for line2 in self.sale.lines:
+                if line2.type == 'line':
+                    amount += _amount(line2)
+                elif line2.type == 'subtotal':
+                    if self == line2:
+                        break
+                    amount = Decimal(0)
+            return amount
+
+    @property
+    def taxable_lines(self):
+        lines = super().taxable_lines
+        if (getattr(self, 'type', None) == 'line'
+                and Transaction().context.get('_original_amount')):
+            lines = [(
+                    getattr(self, 'taxes', None) or [],
+                    getattr(self, 'original_unit_price', None)
+                    or getattr(self, 'unit_price', None)
+                    or Decimal(0),
+                    getattr(self, 'quantity', None) or 0,
+                    None,
+                    )]
+        return lines
 
 
 class Promotion(

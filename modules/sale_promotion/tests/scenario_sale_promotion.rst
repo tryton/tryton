@@ -8,7 +8,8 @@ Imports::
     >>> from decimal import Decimal
 
     >>> from proteus import Model
-    >>> from trytond.modules.account.tests.tools import create_chart, get_accounts
+    >>> from trytond.modules.account.tests.tools import (
+    ...     create_chart, create_tax, get_accounts)
     >>> from trytond.modules.account_invoice.tests.tools import create_payment_term
     >>> from trytond.modules.company.tests.tools import create_company
     >>> from trytond.tests.tools import activate_modules
@@ -22,6 +23,10 @@ Get accounts::
     >>> accounts = get_accounts()
     >>> revenue = accounts['revenue']
 
+Create a tax::
+
+    >>> tax = create_tax(Decimal('0.1'))
+
 Create customer::
 
     >>> Party = Model.get('party.party')
@@ -34,6 +39,7 @@ Create account category::
     >>> account_category = ProductCategory(name="Account Category")
     >>> account_category.accounting = True
     >>> account_category.account_revenue = revenue
+    >>> account_category.customer_taxes.append(tax)
     >>> account_category.save()
 
 Create products::
@@ -73,6 +79,8 @@ Create products::
     >>> product3.save()
 
     >>> template4, = template.duplicate(default={'categories': [category2.id]})
+    >>> template4.account_category = account_category
+    >>> template4.save()
     >>> product4 = Product(template4.products[0].id)
 
 Create payment term::
@@ -112,9 +120,23 @@ Sale enough products for promotion::
     >>> sale.save()
     >>> sale.untaxed_amount
     Decimal('500.00')
+    >>> sale.tax_amount
+    Decimal('50.00')
+    >>> sale.total_amount
+    Decimal('550.00')
     >>> sale.click('quote')
     >>> sale.untaxed_amount
     Decimal('470.00')
+    >>> sale.tax_amount
+    Decimal('47.00')
+    >>> sale.total_amount
+    Decimal('517.00')
+    >>> sale.original_untaxed_amount
+    Decimal('500.00')
+    >>> sale.original_tax_amount
+    Decimal('50.00')
+    >>> sale.original_total_amount
+    Decimal('550.00')
 
 Go back to draft reset the original price::
 

@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<data>
+    <xpath expr="//field[@name='untaxed_amount']" position="before">
+        <field name="original_untaxed_amount" xalign="1.0" xexpand="0"/>
+    </xpath>
+    <xpath expr="//field[@name='tax_amount']" position="before">
+        <field name="original_tax_amount" xalign="1.0" xexpand="0"/>
+    </xpath>
+    <xpath expr="//field[@name='total_amount']" position="before">
+        <field name="original_total_amount" xalign="1.0" xexpand="0"/>
+    </xpath>
+</data>
