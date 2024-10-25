@@ -74,12 +74,11 @@ class Line(metaclass=PoolMeta):
 
     draft_unit_price = fields.Numeric('Draft Unit Price',
         digits=price_digits, readonly=True)
-    promotion = fields.Many2One('sale.promotion', 'Promotion',
+    promotion = fields.Many2One('sale.promotion', "Promotion",
         ondelete='RESTRICT',
         domain=[
-            ('company', '=', Eval('_parent_sale', {}).get('company', -1)),
-            ],
-        depends={'sale'})
+            ('company', '=', Eval('company', -1)),
+            ])
 
 
 class Promotion(
