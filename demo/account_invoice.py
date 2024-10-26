@@ -15,6 +15,9 @@ from .tools import skip_warning
 def setup(config, modules, company):
     Party = Model.get('party.party')
     PaymentTerm = Model.get('account.invoice.payment_term')
+    PaymentMethod = Model.get('account.invoice.payment.method')
+    Journal = Model.get('account.journal')
+    Account = Model.get('account.account')
 
     payment_term = PaymentTerm(name='30 days')
     line = payment_term.lines.new()
@@ -28,6 +31,18 @@ def setup(config, modules, company):
             'customer_payment_term': payment_term.id,
             'supplier_payment_term': payment_term.id,
             }, config.context)
+
+    cash_account, = Account.find([
+            ('company', '=', company.id),
+            ('code', '=', '1.1.1'),
+            ], limit=1)
+
+    payment_method = PaymentMethod()
+    payment_method.name = "Cash"
+    payment_method.journal, = Journal.find([('type', '=', 'cash')], limit=1)
+    payment_method.credit_account = cash_account
+    payment_method.debit_account = cash_account
+    payment_method.save()
 
 
 def setup_post(config, modules, company):
