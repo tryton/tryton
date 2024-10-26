@@ -16,6 +16,8 @@ def setup(config, modules, company):
     SequenceStrict = Model.get('ir.sequence.strict')
     SequenceType = Model.get('ir.sequence.type')
     Party = Model.get('party.party')
+    WriteOff = Model.get('account.move.reconcile.write_off')
+    Journal = Model.get('account.journal')
 
     root_template, = AccountTemplate.find([
         ('parent', '=', None),
@@ -80,3 +82,15 @@ def setup(config, modules, company):
                 setattr(invoice_sequence, attr, sequence)
         fiscalyear.save()
         fiscalyear.click('create_period')
+
+    expense, = Account.find([
+            ('company', '=', company.id),
+            ('code', '=', '6.2.1'),
+            ], limit=1)
+    write_off = WriteOff()
+    write_off.name = "Currency Exchange"
+    write_off.journal, = Journal.find(
+        [('code', '=', 'EXC'), ('type', '=', 'write-off')], limit=1)
+    write_off.credit_account = expense
+    write_off.debit_account = expense
+    write_off.save()
