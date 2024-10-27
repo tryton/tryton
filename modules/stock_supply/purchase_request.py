@@ -173,6 +173,8 @@ class PurchaseRequest(metaclass=PoolMeta):
         Request = pool.get('purchase.request')
 
         requests = Request.search([
+                ('product', '!=', None),
+                ('purchase_line', '!=', None),
                 ('purchase_line.moves', '=', None),
                 ('purchase_line.purchase.state', '!=', 'cancelled'),
                 ('company', '=', company.id),
