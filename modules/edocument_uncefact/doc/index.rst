@@ -1,6 +1,12 @@
+##########################
 EDocument UN/CEFACT Module
 ##########################
 
-Implement electronic document from UN/CEFACT:
+The *EDocument UN/CEFACT Module* adds electronic documents from `UN/CEFACT
+<https://en.wikipedia.org/wiki/UN/CEFACT>`_.
 
-    * Cross-Industry-Invoice (16B-CII)
+.. toctree::
+   :maxdepth: 2
+
+   design
+   releases
