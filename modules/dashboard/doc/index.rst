@@ -1,4 +1,12 @@
+################
 Dashboard Module
 ################
 
-The dashboard module allows user to configure his dashboard.
+The *Dashboard Module* allows each user to configure a personal dashboard.
+
+.. toctree::
+   :maxdepth: 2
+
+   usage
+   design
+   releases
