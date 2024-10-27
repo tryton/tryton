@@ -109,7 +109,7 @@ class BudgetMixin:
             default = {}
         else:
             default = default.copy()
-        default.setdefault('lines')
+        default.setdefault('lines', lambda data: data['root_lines'])
         return super().copy(budgets, default=default)
 
 
@@ -768,7 +768,7 @@ class CopyBudgetMixin:
         factor = self.start.factor
         if factor != 1:
             currency = self.start.company.currency
-            default['root_lines.amount'] = (
+            default['lines.amount'] = (
                 lambda data: currency.round(data['amount'] * factor)
                 if data['amount'] else data['amount'])
         return default
