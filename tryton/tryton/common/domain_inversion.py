@@ -433,7 +433,8 @@ def unique_value(domain, single_value=True):
                         and operator == 'in' and len(value) == 1))
                 and (not count
                     or (count == 1 and model and name.endswith('.id')))):
-            value = value if operator == '=' and single_value else value[0]
+            if operator == 'in' and single_value:
+                value = value[0]
             if model and name.endswith('.id'):
                 model = model[0]
                 value = [model, value]

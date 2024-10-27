@@ -2785,7 +2785,9 @@
                         (single_value && operator == 'in' && value.length == 1)) &&
                     (!count ||
                         ((count === 1) && model.length && name.endsWith('.id')))) {
-                    value = operator == '=' ? value : value[0];
+                    if ((operator == 'in') && single_value) {
+                        value = value[0];
+                    }
                     if (model.length && name.endsWith('.id')) {
                         model = model[0];
                         value = [model, value];
