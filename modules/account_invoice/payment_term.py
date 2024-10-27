@@ -150,13 +150,13 @@ class PaymentTermLine(sequence_ordered(), ModelSQL, ModelView):
             self.amount = Decimal(0)
             self.currency = None
         if self.type not in ('percent', 'percent_on_total'):
-            self.ratio = Decimal(0)
-            self.divisor = Decimal(0)
+            self.ratio = None
+            self.divisor = None
 
     @fields.depends('ratio')
     def on_change_ratio(self):
         if not self.ratio:
-            self.divisor = Decimal(0)
+            self.divisor = self.ratio
         else:
             self.divisor = self.round(1 / self.ratio,
                 self.__class__.divisor.digits[1])
@@ -164,7 +164,7 @@ class PaymentTermLine(sequence_ordered(), ModelSQL, ModelView):
     @fields.depends('divisor')
     def on_change_divisor(self):
         if not self.divisor:
-            self.ratio = Decimal(0)
+            self.ratio = self.divisor
         else:
             self.ratio = self.round(1 / self.divisor,
                 self.__class__.ratio.digits[1])
