@@ -6,6 +6,7 @@ from trytond.i18n import gettext
 from trytond.model import Check, ModelView, Workflow, fields
 from trytond.model.exceptions import AccessError
 from trytond.pool import Pool, PoolMeta
+from trytond.pyson import Eval
 from trytond.transaction import Transaction
 
 
@@ -18,10 +19,16 @@ def _get_field(type_):
 
 class Move(metaclass=PoolMeta):
     __name__ = 'stock.move'
-    in_anglo_saxon_quantity = fields.Float('Input Anglo-Saxon Quantity',
-        required=True)
-    out_anglo_saxon_quantity = fields.Float('Output Anglo-Saxon Quantity',
-        required=True)
+    in_anglo_saxon_quantity = fields.Float(
+        "Input Anglo-Saxon Quantity", required=True,
+        domain=[
+            ('in_anglo_saxon_quantity', '<=', Eval('quantity', 0)),
+            ])
+    out_anglo_saxon_quantity = fields.Float(
+        "Output Anglo-Saxon Quantity", required=True,
+        domain=[
+            ('out_anglo_saxon_quantity', '<=', Eval('quantity', 0)),
+            ])
 
     @classmethod
     def __setup__(cls):

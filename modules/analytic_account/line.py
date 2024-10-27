@@ -9,7 +9,7 @@ from sql import Literal
 from trytond.model import Check, Index, ModelSQL, ModelView, dualmethod, fields
 from trytond.modules.currency.fields import Monetary
 from trytond.pool import Pool, PoolMeta
-from trytond.pyson import Eval, PYSONEncoder
+from trytond.pyson import Eval, If, PYSONEncoder
 from trytond.transaction import Transaction
 from trytond.wizard import StateAction, Wizard
 
@@ -17,9 +17,15 @@ from trytond.wizard import StateAction, Wizard
 class Line(ModelSQL, ModelView):
     __name__ = 'analytic_account.line'
     debit = Monetary(
-        "Debit", currency='currency', digits='currency', required=True)
+        "Debit", currency='currency', digits='currency', required=True,
+        domain=[
+            If(Eval('credit', 0), ('debit', '=', 0), ()),
+            ])
     credit = Monetary(
-        "Credit", currency='currency', digits='currency', required=True)
+        "Credit", currency='currency', digits='currency', required=True,
+        domain=[
+            If(Eval('debit', 0), ('credit', '=', 0), ()),
+            ])
     currency = fields.Function(fields.Many2One(
             'currency.currency', "Currency"),
         'on_change_with_currency')

@@ -15,7 +15,7 @@ from trytond.model import (
     fields)
 from trytond.model.exceptions import ValidationError
 from trytond.pool import Pool
-from trytond.pyson import Eval, PYSONDecoder, TimeDelta
+from trytond.pyson import Eval, If, PYSONDecoder, TimeDelta
 from trytond.tools import grouped_slice, reduce_ids
 from trytond.transaction import Transaction
 
@@ -28,20 +28,36 @@ class Trigger(DeactivableMixin, ModelSQL, ModelView):
     __name__ = 'ir.trigger'
     name = fields.Char('Name', required=True, translate=True)
     model = fields.Many2One('ir.model', 'Model', required=True)
-    on_time = fields.Boolean('On Time', states={
-            'invisible': (Eval('on_create', False)
+    on_time = fields.Boolean(
+        "On Time",
+        domain=[
+            If(Eval('on_create', False)
                 | Eval('on_write', False)
-                | Eval('on_delete', False)),
-            }, depends=['on_create', 'on_write', 'on_delete'])
-    on_create = fields.Boolean('On Create', states={
-        'invisible': Eval('on_time', False),
-        }, depends=['on_time'])
-    on_write = fields.Boolean('On Write', states={
-        'invisible': Eval('on_time', False),
-        }, depends=['on_time'])
-    on_delete = fields.Boolean('On Delete', states={
-        'invisible': Eval('on_time', False),
-        }, depends=['on_time'])
+                | Eval('on_delete', False),
+                ('on_time', '=', False),
+                ()),
+            ])
+    on_create = fields.Boolean(
+        "On Create",
+        domain=[
+            If(Eval('on_time', False),
+                ('on_create', '=', False),
+                ()),
+            ])
+    on_write = fields.Boolean(
+        "On Write",
+        domain=[
+            If(Eval('on_time', False),
+                ('on_write', '=', False),
+                ()),
+            ])
+    on_delete = fields.Boolean(
+        "On Delete",
+        domain=[
+            If(Eval('on_time', False),
+                ('on_delete', '=', False),
+                ()),
+            ])
     condition = fields.Char('Condition', required=True,
         help='A PYSON statement evaluated with record represented by '
         '"self"\nIt triggers the action if true.')

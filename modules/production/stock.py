@@ -6,7 +6,7 @@ from sql.operators import Concat
 
 from trytond.model import Check, fields
 from trytond.pool import Pool, PoolMeta
-from trytond.pyson import Eval
+from trytond.pyson import Eval, If
 
 
 class Location(metaclass=PoolMeta):
@@ -47,13 +47,23 @@ class Move(metaclass=PoolMeta):
     __name__ = 'stock.move'
     production_input = fields.Many2One(
         'production', "Production Input", readonly=True, ondelete='CASCADE',
-        domain=[('company', '=', Eval('company', -1))],
+        domain=[
+            ('company', '=', Eval('company', -1)),
+            If(Eval('production_output', None),
+                ('production_input', '=', None),
+                ()),
+            ],
         states={
             'invisible': ~Eval('production_input'),
             })
     production_output = fields.Many2One(
         'production', "Production Output", readonly=True, ondelete='CASCADE',
-        domain=[('company', '=', Eval('company', -1))],
+        domain=[
+            ('company', '=', Eval('company', -1)),
+            If(Eval('production_input', None),
+                ('production_output', '=', None),
+                ()),
+            ],
         states={
             'invisible': ~Eval('production_output'),
             })

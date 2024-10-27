@@ -5,7 +5,7 @@ import datetime
 from itertools import combinations
 
 from trytond.ir.exceptions import TriggerConditionError
-from trytond.model.exceptions import SQLConstraintError
+from trytond.model.exceptions import DomainValidationError, SQLConstraintError
 from trytond.pool import Pool
 from trytond.pyson import Eval, PYSONEncoder
 from trytond.tests.test_tryton import (
@@ -62,7 +62,9 @@ class TriggerTestCase(TestCase):
                 combination_values = values.copy()
                 for mode in combination:
                     combination_values['on_%s' % mode] = True
-                self.assertRaises(SQLConstraintError, Trigger.create,
+                self.assertRaises(
+                    (SQLConstraintError, DomainValidationError),
+                    Trigger.create,
                     [combination_values])
                 transaction.rollback()
 

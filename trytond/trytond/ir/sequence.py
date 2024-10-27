@@ -87,11 +87,16 @@ class Sequence(DeactivableMixin, ModelSQL, ModelView):
             'invisible': ~Eval('type').in_(['incremental']),
             'required': Eval('type').in_(['incremental']),
             }, depends=['type'])
-    timestamp_rounding = fields.Float('Timestamp Rounding', required=True,
+    timestamp_rounding = fields.Float(
+        "Timestamp Rounding", required=True,
+        domain=[
+            ('timestamp_rounding', '>', 0),
+            ],
         states={
             'invisible': ~Eval('type').in_(
                 ['decimal timestamp', 'hexadecimal timestamp']),
-            }, depends=['type'])
+            },
+        depends=['type'])
     timestamp_offset = fields.Float('Timestamp Offset', required=True,
         states={
             'invisible': ~Eval('type').in_(

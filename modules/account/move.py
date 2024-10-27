@@ -907,10 +907,16 @@ class Line(DescriptionOriginMixin, MoveLineMixin, ModelSQL, ModelView):
     debit = Monetary(
         "Debit", currency='currency', digits='currency', required=True,
         states=_states,
+        domain=[
+            If(Eval('credit', 0), ('debit', '=', 0), ()),
+            ],
         depends={'credit', 'tax_lines', 'journal'})
     credit = Monetary(
         "Credit", currency='currency', digits='currency', required=True,
         states=_states,
+        domain=[
+            If(Eval('debit', 0), ('credit', '=', 0), ()),
+            ],
         depends={'debit', 'tax_lines', 'journal'})
     account = fields.Many2One('account.account', 'Account', required=True,
         domain=[
@@ -974,6 +980,15 @@ class Line(DescriptionOriginMixin, MoveLineMixin, ModelSQL, ModelView):
     amount_second_currency = Monetary(
         "Amount Second Currency",
         currency='second_currency', digits='second_currency',
+        domain=[
+            If(Eval('amount_second_currency', 0),
+                If((Eval('debit', 0) > 0) | (Eval('credit', 0) < 0),
+                    ('amount_second_currency', '>=', 0),
+                    If((Eval('debit', 0) < 0) | (Eval('credit', 0) > 0),
+                        ('amount_second_currency', '<=', 0),
+                        ())),
+                ()),
+            ],
         states={
             'required': Bool(Eval('second_currency')),
             'readonly': _states['readonly'],

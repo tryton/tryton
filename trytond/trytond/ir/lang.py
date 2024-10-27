@@ -84,8 +84,15 @@ class Lang(DeactivableMixin, ModelSQL, ModelView):
     # number
     grouping = fields.Char('Grouping', required=True)
     decimal_point = fields.Char(
-        "Decimal Separator", required=True, strip=False)
-    thousands_sep = fields.Char("Thousands Separator", strip=False)
+        "Decimal Separator", required=True, strip=False,
+        domain=[
+            ('decimal_point', '!=', Eval('thousands_sep', '')),
+            ])
+    thousands_sep = fields.Char(
+        "Thousands Separator", strip=False,
+        domain=[
+            ('thousands_sep', '!=', Eval('decimal_point', '')),
+            ])
 
     # monetary formatting
     mon_grouping = fields.Char('Grouping', required=True)

@@ -798,6 +798,13 @@ class Line(origin_mixin(_states), sequence_ordered(), ModelSQL, ModelView):
             'required': (Eval('party_required', False)
                 & (Eval('statement_state') == 'draft')),
             }
+        cls.amount_second_currency.domain = [
+            If(Eval('second_currency', None),
+                If(Eval('amount', 0) >= 0,
+                    ('amount_second_currency', '>=', 0),
+                    ('amount_second_currency', '<=', 0)),
+                ()),
+            ]
         cls._sql_constraints += [
             ('second_currency_sign',
                 Check(

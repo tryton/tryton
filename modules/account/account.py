@@ -662,9 +662,19 @@ class AccountTemplate(
     type = fields.Many2One(
         'account.account.type.template', "Type", ondelete="RESTRICT")
     debit_type = fields.Many2One(
-        'account.account.type.template', "Debit Type", ondelete="RESTRICT")
+        'account.account.type.template', "Debit Type", ondelete="RESTRICT",
+        domain=[
+            If(Eval('credit_type', None),
+                ('debit_type', '=', None),
+                ()),
+            ])
     credit_type = fields.Many2One(
-        'account.account.type.template', "Credit Type", ondelete="RESTRICT")
+        'account.account.type.template', "Credit Type", ondelete="RESTRICT",
+        domain=[
+            If(Eval('debit_type', None),
+                ('credit_type', '=', None),
+                ()),
+            ])
     parent = fields.Many2One(
         'account.account.template', "Parent", ondelete="RESTRICT")
     childs = fields.One2Many('account.account.template', 'parent', 'Children')
@@ -886,6 +896,9 @@ class Account(
             },
         domain=[
             ('company', '=', Eval('company', -1)),
+            If(Eval('credit_type', None),
+                ('debit_type', '=', None),
+                ()),
             ],
         help="The type used if not empty and debit > credit.")
     credit_type = fields.Many2One(
@@ -898,6 +911,9 @@ class Account(
             },
         domain=[
             ('company', '=', Eval('company', -1)),
+            If(Eval('debit_type', None),
+                ('credit_type', '=', None),
+                ()),
             ],
         help="The type used if not empty and debit < credit.")
     parent = fields.Many2One(

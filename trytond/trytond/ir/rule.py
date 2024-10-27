@@ -9,7 +9,7 @@ from trytond.i18n import gettext
 from trytond.model import Check, Index, ModelSQL, ModelView, fields
 from trytond.model.exceptions import ValidationError
 from trytond.pool import Pool
-from trytond.pyson import PYSONDecoder
+from trytond.pyson import Eval, If, PYSONDecoder
 from trytond.transaction import Transaction, inactive_records
 
 
@@ -49,9 +49,21 @@ class RuleGroup(
         "Name", translate=True, required=True,
         help="Displayed to users when access error is raised for this rule.")
     model = fields.Char("Model", required=True)
-    global_p = fields.Boolean('Global',
+    global_p = fields.Boolean(
+        "Global",
+        domain=[
+            If(Eval('default_p', False),
+                ('global_p', '=', False),
+                ()),
+            ],
         help="Make the rule global \nso every users must follow this rule.")
-    default_p = fields.Boolean('Default',
+    default_p = fields.Boolean(
+        "Default",
+        domain=[
+            If(Eval('global_p', False),
+                ('default_p', '=', False),
+                ()),
+            ],
         help="Add this rule to all users by default.")
     rules = fields.One2Many('ir.rule', 'rule_group', 'Tests',
         help="The rule is satisfied if at least one test is True.")

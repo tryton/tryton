@@ -9,13 +9,17 @@ from trytond.model import Check, ModelView, Workflow, fields
 from trytond.model.exceptions import AccessError
 from trytond.modules.product import round_price
 from trytond.pool import Pool, PoolMeta
+from trytond.pyson import Eval
 from trytond.transaction import Transaction
 
 
 class Move(metaclass=PoolMeta):
     __name__ = 'stock.move'
     fifo_quantity = fields.Float(
-        'FIFO Quantity',
+        "FIFO Quantity", required=True,
+        domain=[
+            ('fifo_quantity', '<=', Eval('quantity', 0)),
+            ],
         help="Quantity used by FIFO.")
     fifo_quantity_available = fields.Function(fields.Float(
             "FIFO Quantity Available",

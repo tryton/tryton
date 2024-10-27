@@ -204,13 +204,22 @@ class Move(Workflow, ModelSQL, ModelView):
     quantity = fields.Float(
         "Quantity", digits='unit', required=True,
         states=STATES,
+        domain=[
+            ('quantity', '>=', 0),
+            ],
         help="The amount of stock moved.")
-    internal_quantity = fields.Float('Internal Quantity', readonly=True,
-        required=True)
+    internal_quantity = fields.Float(
+        "Internal Quantity", readonly=True, required=True,
+        domain=[
+            ('internal_quantity', '>=', 0),
+            ])
     from_location = fields.Many2One(
         'stock.location', "From Location",
         required=True, states=STATES,
-        domain=LOCATION_DOMAIN,
+        domain=[
+            LOCATION_DOMAIN,
+            ('id', '!=', Eval('to_location', -1)),
+            ],
         help="Where the stock is moved from.")
     from_location_name = fields.Function(fields.Char(
             "From Location"),
@@ -218,7 +227,10 @@ class Move(Workflow, ModelSQL, ModelView):
     to_location = fields.Many2One(
         'stock.location', "To Location",
         required=True, states=STATES,
-        domain=LOCATION_DOMAIN,
+        domain=[
+            LOCATION_DOMAIN,
+            ('id', '!=', Eval('from_location', -1)),
+            ],
         help="Where the stock is moved to.")
     to_location_name = fields.Function(fields.Char(
             "To Location"),

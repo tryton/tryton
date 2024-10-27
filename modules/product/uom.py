@@ -9,7 +9,7 @@ from trytond.i18n import gettext
 from trytond.model import (
     Check, DeactivableMixin, DigitsMixin, ModelSQL, ModelView, SymbolMixin,
     fields)
-from trytond.pyson import Eval
+from trytond.pyson import Eval, If
 from trytond.transaction import Transaction
 
 from .exceptions import UOMAccessError, UOMValidationError
@@ -44,10 +44,16 @@ class Uom(SymbolMixin, DigitsMixin, DeactivableMixin, ModelSQL, ModelView):
         "are in the same category.")
     rate = fields.Float(
         "Rate", digits=uom_conversion_digits, required=True,
+        domain=[
+            If(Eval('factor', 0) == 0, ('rate', '!=', 0), ()),
+            ],
         help="The coefficient for the formula:\n"
         "1 (base unit) = coef (this unit)")
     factor = fields.Float(
         "Factor", digits=uom_conversion_digits, required=True,
+        domain=[
+            If(Eval('rate', 0) == 0, ('factor', '!=', 0), ()),
+            ],
         help="The coefficient for the formula:\n"
         "coefficient (base unit) = 1 (this unit)")
     rounding = fields.Float(
