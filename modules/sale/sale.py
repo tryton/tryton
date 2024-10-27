@@ -1954,9 +1954,12 @@ class SaleLine(TaxableMixin, sequence_ordered(), ModelSQL, ModelView):
             if invoice_line.type != 'line':
                 continue
             if invoice_line not in skips:
-                quantity += Uom.compute_qty(
-                    invoice_line.unit or self.unit, invoice_line.quantity,
-                    self.unit)
+                if self.unit:
+                    quantity += Uom.compute_qty(
+                        invoice_line.unit or self.unit, invoice_line.quantity,
+                        self.unit)
+                else:
+                    quantity += invoice_line.quantity
         return quantity
 
     def _get_invoice_line_moves(self):
