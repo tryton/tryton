@@ -184,12 +184,7 @@ Prepare to balance non-deferral accounts::
     >>> period_closing.start_date = fiscalyear.end_date
     >>> period_closing.end_date = fiscalyear.end_date
     >>> period_closing.save()
-    >>> equity, = AccountType.find([('name', '=', 'Equity')])
-    >>> account_pl = Account()
-    >>> account_pl.name = 'P&L'
-    >>> account_pl.type = equity
-    >>> account_pl.parent = revenue.parent
-    >>> account_pl.save()
+    >>> account_pl, = Account.find([('code', '=', '3.2.1')])
 
 Balance non-deferral accounts::
 
