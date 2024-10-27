@@ -7,10 +7,10 @@ from dateutil.relativedelta import relativedelta
 from trytond import backend
 from trytond.i18n import gettext
 from trytond.model import (
-    DeactivableMixin, ModelSQL, ModelView, fields, sequence_ordered)
+    Check, DeactivableMixin, ModelSQL, ModelView, fields, sequence_ordered)
 from trytond.modules.currency.fields import Monetary
 from trytond.pool import Pool
-from trytond.pyson import Eval
+from trytond.pyson import Eval, If
 from trytond.transaction import Transaction
 from trytond.wizard import Button, StateView, Wizard
 
@@ -92,6 +92,12 @@ class PaymentTermLine(sequence_ordered(), ModelSQL, ModelView):
             ('remainder', 'Remainder'),
             ], 'Type', required=True)
     ratio = fields.Numeric('Ratio', digits=(14, 10),
+        domain=[
+            If(Eval('type').in_(['percent', 'percent_on_total'])
+                & ~Eval('divisor', 0),
+                ('ratio', '!=', 0),
+                ()),
+            ],
         states={
             'invisible': ~Eval('type').in_(['percent', 'percent_on_total']),
             'required': Eval('type').in_(['percent', 'percent_on_total']),
@@ -118,6 +124,14 @@ class PaymentTermLine(sequence_ordered(), ModelSQL, ModelView):
     @classmethod
     def __setup__(cls):
         super().__setup__()
+        t = cls.__table__()
+        cls._sql_constraints += [
+            ('non_zero_ratio_divisor',
+                Check(t,
+                    (t.ratio != 0) | (t.divisor != 0)
+                    | ~t.type.in_(['percent', 'percent_on_total'])),
+                'account_invoice.msg_payment_term_non_zero_ratio_divisor'),
+            ]
         cls.__access__.add('payment')
 
     @staticmethod

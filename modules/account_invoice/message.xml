@@ -9,6 +9,9 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.message" id="msg_payment_term_missing_remainder">
             <field name="text">To compute terms, you must append a remainder line on payment term "%(payment_term)s".</field>
         </record>
+        <record model="ir.message" id="msg_payment_term_non_zero_ratio_divisor">
+            <field name="text">The ratio and divisor can not be both equal to zero.</field>
+        </record>
         <record model="ir.message" id="msg_payment_term_invalid_ratio_divisor">
             <field name="text">The ratio and divisor are not consistent on line "%(line)s".</field>
         </record>
