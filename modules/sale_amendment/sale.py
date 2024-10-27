@@ -284,12 +284,12 @@ class AmendmentLine(ModelSQL, ModelView):
                 & ~(Eval('quantity', 0) < 0),
                 ('salable', '=', True),
                 ()),
-            If(Eval('product_uom_category'),
-                ('default_uom_category', '=', Eval('product_uom_category')),
-                ()),
+            ('default_uom_category', '=', Eval('product_uom_category', -1)),
             ],
         states={
-            'readonly': Eval('state') != 'draft',
+            'readonly': (
+                (Eval('state') != 'draft')
+                | ~Eval('product_uom_category', None)),
             'invisible': Eval('action') != 'line',
             })
     quantity = fields.Float(
@@ -330,9 +330,7 @@ class AmendmentLine(ModelSQL, ModelView):
         cls.__access__.add('amendment')
         unit_categories = cls._unit_categories()
         cls.unit.domain = [
-            If(Bool(Eval('product_uom_category')),
-                ('category', 'in', [Eval(c) for c in unit_categories]),
-                ('category', '!=', -1)),
+            ('category', 'in', [Eval(c, -1) for c in unit_categories]),
             ]
 
     @classmethod
