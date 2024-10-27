@@ -272,12 +272,12 @@ class AmendmentLine(ModelSQL, ModelView):
             If(Eval('state') == 'draft',
                 ('salable', '=', True),
                 ()),
-            If(Eval('product_uom_category'),
-                ('default_uom_category', '=', Eval('product_uom_category')),
-                ()),
+            ('default_uom_category', '=', Eval('product_uom_category', -1)),
             ],
         states={
-            'readonly': Eval('state') != 'draft',
+            'readonly': (
+                (Eval('state') != 'draft')
+                | ~Eval('product_uom_category', None)),
             'invisible': Eval('action') != 'line',
             },
         depends=['action', 'state', 'product_uom_category'])
