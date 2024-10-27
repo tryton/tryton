@@ -250,12 +250,12 @@ class AmendmentLine(ModelSQL, ModelView):
                 & ~(Eval('quantity', 0) < 0),
                 ('purchasable', '=', True),
                 ()),
-            If(Eval('product_uom_category'),
-                ('default_uom_category', '=', Eval('product_uom_category')),
-                ()),
+            ('default_uom_category', '=', Eval('product_uom_category', -1)),
             ],
         states={
-            'readonly': Eval('state') != 'draft',
+            'readonly': (
+                (Eval('state') != 'draft')
+                | ~Eval('product_uom_category', None)),
             'invisible': Eval('action') != 'line',
             })
     product_supplier = fields.Many2One(
