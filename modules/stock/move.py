@@ -198,7 +198,7 @@ class Move(Workflow, ModelSQL, ModelView):
             },
         domain=[
             If(~Eval('state').in_(['done', 'cancelled']),
-                ('category', '=', Eval('product_uom_category')),
+                ('category', '=', Eval('product_uom_category', -1)),
                 ()),
             ],
         help="The unit in which the quantity is specified.")

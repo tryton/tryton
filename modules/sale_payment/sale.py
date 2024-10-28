@@ -32,8 +32,8 @@ class Sale(metaclass=PoolMeta):
                 ('kind', '=', 'payable'),
                 ),
             ('party', '=', If(Bool(Eval('invoice_party')),
-                    Eval('invoice_party'), Eval('party'))),
-            ('currency', '=', Eval('currency')),
+                    Eval('invoice_party', -1), Eval('party', -1))),
+            ('currency', '=', Eval('currency', -1)),
             ],
         states={
             'readonly': Eval('state') != 'quotation',

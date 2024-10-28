@@ -36,7 +36,7 @@ class Template(metaclass=PoolMeta):
             'invisible': ~Eval('purchasable'),
             'required': Eval('purchasable', False),
             },
-        domain=[('category', '=', Eval('default_uom_category'))],
+        domain=[('category', '=', Eval('default_uom_category', -1))],
         help="The default Unit of Measure for purchases.")
 
     @fields.depends('default_uom', 'purchase_uom', 'purchasable')
@@ -118,7 +118,7 @@ class Product(metaclass=PoolMeta):
     product_suppliers = fields.One2Many(
         'purchase.product_supplier', 'product', "Suppliers",
         domain=[
-            ('template', '=', Eval('template')),
+            ('template', '=', Eval('template', -1)),
             ],
         states={
             'invisible': (~Eval('purchasable', False)

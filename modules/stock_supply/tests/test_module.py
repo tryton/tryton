@@ -151,10 +151,11 @@ class StockSupplyTestCase(CompanyTestMixin, ModuleTestCase):
                         }])
 
             for clause, result in [
-                    (('location', '=', warehouse.name), [order_point]),
-                    (('location', '=', 'storage'), []),
-                    (('location', '!=', warehouse.name), []),
-                    (('location', '!=', 'storage'), [order_point]),
+                    (('location.rec_name', '=', warehouse.name),
+                        [order_point]),
+                    (('location.type', '=', 'storage'), []),
+                    (('location.rec_name', '!=', warehouse.name), []),
+                    (('location.type', '!=', 'storage'), [order_point]),
                     ]:
                 self.assertListEqual(
                     OrderPoint.search(clause), result, msg=clause)

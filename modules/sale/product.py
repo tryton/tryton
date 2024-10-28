@@ -48,7 +48,7 @@ class Template(metaclass=PoolMeta):
             'required': Eval('salable', False),
             },
         domain=[
-            ('category', '=', Eval('default_uom_category')),
+            ('category', '=', Eval('default_uom_category', -1)),
             ],
         help="The default Unit of Measure for sales.")
     lead_time = fields.MultiValue(fields.TimeDelta(

@@ -139,7 +139,7 @@ class Sale(
     invoice_address = fields.Many2One('party.address', 'Invoice Address',
         domain=[
             ('party', '=', If(Bool(Eval('invoice_party')),
-                    Eval('invoice_party'), Eval('party'))),
+                    Eval('invoice_party', -1), Eval('party', -1))),
             ],
         states={
             'readonly': Eval('state') != 'draft',

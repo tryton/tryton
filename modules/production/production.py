@@ -98,7 +98,7 @@ class Production(ShipmentAssignMixin, Workflow, ModelSQL, ModelView):
     unit = fields.Many2One(
         'product.uom', "Unit",
         domain=[
-            ('category', '=', Eval('uom_category')),
+            ('category', '=', Eval('uom_category', -1)),
             ],
         states={
             'readonly': ~Eval('state').in_(['request', 'draft']),
