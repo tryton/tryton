@@ -1684,6 +1684,7 @@ class Customer(CheckoutMixin, DeactivableMixin, ModelSQL, ModelView):
             self._sources_cache.set(self.id, sources)
         return sources
 
+    @classmethod
     def _source_name(cls, source):
         def card_name(card):
             name = card.brand
@@ -1750,6 +1751,7 @@ class Customer(CheckoutMixin, DeactivableMixin, ModelSQL, ModelView):
         self._payment_methods_cache.set(self.id, methods)
         return methods
 
+    @classmethod
     def _payment_method_name(cls, payment_method):
         name = payment_method.id
         if payment_method.type == 'card':
