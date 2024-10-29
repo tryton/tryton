@@ -74,7 +74,7 @@ class SubscriptionLine(metaclass=PoolMeta):
 
     asset_lot = fields.Many2One('stock.lot', "Asset Lot",
         domain=[
-            ('subscription_services', '=', Eval('service')),
+            ('subscription_services', '=', Eval('service', -1)),
             ],
         states={
             'required': ((Eval('subscription_state') == 'running')

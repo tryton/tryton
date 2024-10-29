@@ -21,7 +21,7 @@ class InvoiceLine(metaclass=PoolMeta):
     secondary_unit = fields.Many2One(
         'product.uom', "Secondary Unit", ondelete='RESTRICT',
         domain=[
-            ('category', '=', Eval('product_secondary_uom_category')),
+            ('category', '=', Eval('product_secondary_uom_category', -1)),
             ],
         states={
             'invisible': ((Eval('type') != 'line')

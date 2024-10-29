@@ -14,7 +14,7 @@ class SaleSecondaryMixin:
     sale_secondary_uom = fields.Many2One(
         'product.uom', "Sale Secondary UoM",
         domain=[
-            ('category', '!=', Eval('default_uom_category')),
+            ('category', '!=', Eval('default_uom_category', -1)),
             ],
         help="The secondary Unit of Measure for sales.")
     sale_secondary_uom_factor = fields.Float(

@@ -43,7 +43,7 @@ class Product(metaclass=PoolMeta):
     locations = fields.One2Many('stock.product.location', 'product',
         "Default Locations",
         domain=[
-            ('template', '=', Eval('template')),
+            ('template', '=', Eval('template', -1)),
             ],
         states={
             'invisible': ~Eval('type').in_(['goods', 'assets']),

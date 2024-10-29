@@ -17,10 +17,10 @@ class Line(metaclass=PoolMeta):
             If(Bool(Eval('product')),
                 ['OR',
                     [
-                        ('template.products', '=', Eval('product')),
+                        ('template.products', '=', Eval('product', -1)),
                         ('product', '=', None),
                         ],
-                    ('product', '=', Eval('product')),
+                    ('product', '=', Eval('product', -1)),
                     ],
                 []),
             ('party', '=', Eval('customer', -1)),
@@ -79,10 +79,10 @@ class AmendmentLine(metaclass=PoolMeta):
         domain=[
             ['OR',
                 [
-                    ('template.products', '=', Eval('product')),
+                    ('template.products', '=', Eval('product', -1)),
                     ('product', '=', None),
                     ],
-                ('product', '=', Eval('product')),
+                ('product', '=', Eval('product', -1)),
                 ],
             ('party', '=', Eval('party', -1)),
             ],

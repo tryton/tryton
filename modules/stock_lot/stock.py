@@ -431,7 +431,7 @@ class Move(metaclass=PoolMeta):
     lot = fields.Many2One(
         'stock.lot', "Lot", ondelete='RESTRICT',
         domain=[
-            ('product', '=', Eval('product')),
+            ('product', '=', Eval('product', -1)),
             ],
         states={
             'readonly': Eval('state').in_(['cancelled', 'done']),
@@ -855,7 +855,7 @@ class InventoryLine(metaclass=PoolMeta):
     __name__ = 'stock.inventory.line'
     lot = fields.Many2One('stock.lot', 'Lot',
         domain=[
-            ('product', '=', Eval('product')),
+            ('product', '=', Eval('product', -1)),
             ],
         states={
             'readonly': Eval('inventory_state') != 'draft',

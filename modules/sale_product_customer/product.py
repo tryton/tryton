@@ -130,7 +130,7 @@ class Product(metaclass=PoolMeta):
     product_customers = fields.One2Many(
         'sale.product_customer', 'product', "Customers",
         domain=[
-            ('template', '=', Eval('template')),
+            ('template', '=', Eval('template', -1)),
             ],
         states={
             'invisible': ~Eval('salable', False),
