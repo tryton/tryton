@@ -936,7 +936,7 @@ this repository contains the full copyright notices and license terms. -->
 
         <record id="account_template_2_4_2_en" model="account.account.template">
             <field name="code">2.4.2</field>
-            <field name="name">Ligation And Regulatory Provisions</field>
+            <field name="name">Litigation And Regulatory Provisions</field>
             <field name="parent" ref="account_template_2_4_0_en"/>
             <field name="type" ref="account_type_template_provisions_en"/>
         </record>
