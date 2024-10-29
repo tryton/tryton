@@ -427,7 +427,6 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin, InvoiceReportMixin):
                 ('validated', 'cancelled'),
                 ('posted', 'cancelled'),
                 ('cancelled', 'draft'),
-                ('cancelled', 'posted'),
                 ))
         cls._buttons.update({
                 'cancel': {
