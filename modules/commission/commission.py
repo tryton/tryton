@@ -213,7 +213,7 @@ class AgentSelection(sequence_ordered(), MatchMixin, ModelSQL, ModelView):
     employee = fields.Many2One(
         'company.employee', "Employee",
         domain=[
-            ('company', '=', Eval('company')),
+            ('company', '=', Eval('company', -1)),
             ])
 
     @classmethod

@@ -99,7 +99,7 @@ class SplitProductionStart(ModelView):
     unit = fields.Many2One(
         'product.uom', "Unit", required=True,
         domain=[
-            ('category', '=', Eval('uom_category')),
+            ('category', '=', Eval('uom_category', -1)),
             ])
     uom_category = fields.Many2One(
         'product.uom.category', "UoM Category", readonly=True,

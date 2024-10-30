@@ -810,7 +810,7 @@ class Tax(sequence_ordered(), ModelSQL, ModelView, DeactivableMixin):
     company = fields.Many2One('company.company', "Company", required=True)
     invoice_account = fields.Many2One('account.account', 'Invoice Account',
         domain=[
-            ('company', '=', Eval('company')),
+            ('company', '=', Eval('company', -1)),
             ('type.statement', '=', 'balance'),
             ('closed', '!=', True),
             ],

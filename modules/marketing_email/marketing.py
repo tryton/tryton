@@ -567,5 +567,5 @@ class SendTestView(ModelView):
     email = fields.Many2One(
         'marketing.email', "Email", required=True,
         domain=[
-            ('list_', '=', Eval('list_')),
+            ('list_', '=', Eval('list_', -1)),
             ])

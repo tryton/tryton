@@ -41,10 +41,11 @@ class Routing(metaclass=PoolMeta):
             If(Bool('supplier_service'),
                 ['OR',
                     [
-                        ('template.products', '=', Eval('supplier_service')),
+                        ('template.products',
+                            '=', Eval('supplier_service', -1)),
                         ('product', '=', None),
                         ],
-                    ('product', '=', Eval('supplier_service')),
+                    ('product', '=', Eval('supplier_service', -1)),
                     ],
                 []),
             ('party', '=', Eval('supplier', -1)),

@@ -327,8 +327,8 @@ class QuotationLine(ModelSQL, ModelView):
     quotation = fields.Many2One('purchase.request.quotation', 'Quotation',
         ondelete='CASCADE', required=True,
         domain=[
-               ('supplier', '=', Eval('supplier')),
-        ])
+            ('supplier', '=', Eval('supplier', -1)),
+            ])
     quotation_state = fields.Function(fields.Selection(
             'get_quotation_state', 'Quotation State'),
         'on_change_with_quotation_state', searcher='search_quotation_state')
@@ -590,7 +590,7 @@ class PurchaseRequest(metaclass=PoolMeta):
         'purchase.request.quotation.line', 'Preferred Quotation Line',
         domain=[
             ('quotation_state', '=', 'received'),
-            ('request', '=', Eval('id'))
+            ('request', '=', Eval('id', -1))
         ],
         help="The quotation that will be chosen to create the purchase\n"
         "otherwise first ordered received quotation line will be selected.")
