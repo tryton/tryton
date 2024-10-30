@@ -10,12 +10,16 @@
         </xsl:copy>
     </xsl:template>
     <xsl:template match="record[@id]">
-        <xsl:copy>
-            <xsl:attribute name="id">
-                <xsl:value-of select="attribute::id"/>_<xsl:value-of select="$chart"/>_<xsl:value-of select="$lang"/>
-            </xsl:attribute>
-            <xsl:apply-templates select="@*|node()"/>
-        </xsl:copy>
+        <xsl:choose>
+            <xsl:when test="@chart=$chart or not(@chart)">
+                <xsl:copy>
+                    <xsl:attribute name="id">
+                        <xsl:value-of select="attribute::id"/>_<xsl:value-of select="$chart"/>_<xsl:value-of select="$lang"/>
+                    </xsl:attribute>
+                    <xsl:apply-templates select="@*|node()"/>
+                </xsl:copy>
+            </xsl:when>
+        </xsl:choose>
     </xsl:template>
     <xsl:template match="@*">
         <xsl:choose>
