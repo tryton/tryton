@@ -3,15 +3,18 @@ set -eu
 
 OUTPUT=`mktemp -d`
 
-module="modules/account"
-mkdir -p "${OUTPUT}/${module}"
-for lang in en
+for module in account account_asset account_deposit sale_advance_payment
 do
-    printf "Check ${module} ${lang} ..."
-    file="${module}/account_chart_${lang}.xml"
-    xsltproc --stringparam lang "${lang}" "${module}/localize.xsl" "${module}/account_chart.xml" > "${OUTPUT}/${file}"
-    cmp "${file}" "${OUTPUT}/${file}"
-    printf "OK\n"
+    module="modules/${module}"
+    mkdir -p "${OUTPUT}/${module}"
+    for lang in en
+    do
+        printf "Check ${module} ${lang} ..."
+        file="${module}/account_chart_${lang}.xml"
+        xsltproc --stringparam lang "${lang}" "modules/account/localize.xsl" "${module}/account_chart.xml" > "${OUTPUT}/${file}"
+        cmp "${file}" "${OUTPUT}/${file}"
+        printf "OK\n"
+    done
 done
 
 module="modules/account_be"
