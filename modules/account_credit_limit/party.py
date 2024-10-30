@@ -79,22 +79,27 @@ class Party(metaclass=PoolMeta):
         for model in self._credit_limit_to_lock():
             Model = pool.get(model)
             Model.lock()
-        if self.credit_limit_amount < self.credit_amount + amount:
+        exceeded_amount = (
+            self.credit_amount + amount - self.credit_limit_amount)
+        if exceeded_amount > 0:
             lang = Lang.get()
             limit = lang.currency(self.credit_limit_amount, company.currency)
+            amount = lang.currency(amount, company.currency)
             if not in_group():
                 raise CreditLimitError(
                     gettext('account_credit_limit'
                         '.msg_party_credit_limit_amount',
                         party=self.rec_name,
-                        limit=limit))
+                        limit=limit,
+                        amount=amount))
             warning_name = Warning.format('credit_limit_amount', [origin])
             if Warning.check(warning_name):
                 raise CreditLimitWarning(warning_name,
                     gettext('account_credit_limit'
                         '.msg_party_credit_limit_amount',
                         party=self.rec_name,
-                        limit=limit))
+                        limit=limit,
+                        amount=amount))
 
         if Dunning:
             dunnings = Dunning.search([
