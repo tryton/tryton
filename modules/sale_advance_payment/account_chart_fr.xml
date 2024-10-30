@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+  <data language="fr">
+    <record id="account.account_type_template_unearned_revenue_fr" model="account.account.type.template">
+      <field name="unearned_revenue" eval="True"/>
+    </record>
+  </data>
+</tryton>

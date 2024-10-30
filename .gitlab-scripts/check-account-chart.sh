@@ -7,7 +7,7 @@ for module in account account_asset account_deposit sale_advance_payment
 do
     module="modules/${module}"
     mkdir -p "${OUTPUT}/${module}"
-    for lang in en
+    for lang in en fr
     do
         printf "Check ${module} ${lang} ..."
         file="${module}/account_chart_${lang}.xml"

@@ -5,12 +5,14 @@ this repository contains the full copyright notices and license terms. -->
     <data>
         <record model="account.account.type.template" id="account_type_template_root">
             <field name="name" lang="en">Universal Chart of Account Types</field>
+            <field name="name" lang="fr">Plan de type comptable universel</field>
             <field name="sequence" eval="10"/>
             <field name="statement" eval="None"/>
         </record>
 
         <record model="account.account.type.template" id="account_type_template_assets">
             <field name="name" lang="en">Assets</field>
+            <field name="name" lang="fr">Actifs</field>
             <field name="parent" ref="account_type_template_root"/>
             <field name="sequence" eval="10"/>
             <field name="statement">balance</field>
@@ -18,6 +20,7 @@ this repository contains the full copyright notices and license terms. -->
 
         <record model="account.account.type.template" id="account_type_template_current_assets">
             <field name="name" lang="en">Current Assets</field>
+            <field name="name" lang="fr">Actifs circulant</field>
             <field name="parent" ref="account_type_template_assets"/>
             <field name="sequence" eval="10"/>
             <field name="statement">balance</field>
@@ -25,6 +28,7 @@ this repository contains the full copyright notices and license terms. -->
 
         <record model="account.account.type.template" id="account_type_template_accounts_receivable">
             <field name="name" lang="en">Accounts receivable</field>
+            <field name="name" lang="fr">Comptes clients</field>
             <field name="parent" ref="account_type_template_current_assets"/>
             <field name="sequence" eval="10"/>
             <field name="statement">balance</field>
@@ -34,6 +38,7 @@ this repository contains the full copyright notices and license terms. -->
 
         <record model="account.account.type.template" id="account_type_template_cash">
             <field name="name" lang="en">Cash and Cash Equivalents</field>
+            <field name="name" lang="fr">Trésorerie et équivalents de trésorerie</field>
             <field name="parent" ref="account_type_template_current_assets"/>
             <field name="sequence" eval="20"/>
             <field name="statement">balance</field>
@@ -41,6 +46,7 @@ this repository contains the full copyright notices and license terms. -->
 
         <record model="account.account.type.template" id="account_type_template_inventories">
             <field name="name" lang="en">Inventories</field>
+            <field name="name" lang="fr">Stocks</field>
             <field name="parent" ref="account_type_template_current_assets"/>
             <field name="sequence" eval="30"/>
             <field name="statement">balance</field>
@@ -49,6 +55,7 @@ this repository contains the full copyright notices and license terms. -->
 
         <record model="account.account.type.template" id="account_type_template_petty_cash">
             <field name="name" lang="en">Cash at bank, Petty Cash, Cash On Hand</field>
+            <field name="name" lang="fr">Espèces à la banque, petite caisse, espèces disponibles</field>
             <field name="parent" ref="account_type_template_current_assets"/>
             <field name="sequence" eval="40"/>
             <field name="statement">balance</field>
@@ -56,6 +63,7 @@ this repository contains the full copyright notices and license terms. -->
 
         <record model="account.account.type.template" id="account_type_template_prepaid_expenses">
             <field name="name" lang="en">Prepaid expenses for future services that will be used within a year</field>
+            <field name="name" lang="fr">Dépenses payées d'avance pour des services futurs qui seront utilisés dans un délai d'un an</field>
             <field name="parent" ref="account_type_template_current_assets"/>
             <field name="sequence" eval="50"/>
             <field name="statement">balance</field>
@@ -64,6 +72,7 @@ this repository contains the full copyright notices and license terms. -->
 
         <record model="account.account.type.template" id="account_type_template_revenue_earned_in_arrears">
             <field name="name" lang="en">Revenue Earned In Arrears (Accrued Revenue) for services done but not yet received for the year</field>
+            <field name="name" lang="fr">Revenus gagnés à terme échu (revenus courus) pour services rendus mais pas encore reçus pour l'année</field>
             <field name="parent" ref="account_type_template_current_assets"/>
             <field name="sequence" eval="60"/>
             <field name="statement">balance</field>
@@ -71,6 +80,7 @@ this repository contains the full copyright notices and license terms. -->
 
         <record model="account.account.type.template" id="account_type_template_loan_to_more">
             <field name="name" lang="en">Loan To (Less than one financial period)</field>
+            <field name="name" lang="fr">Prêts (moins d'un exercice financier)</field>
             <field name="parent" ref="account_type_template_current_assets"/>
             <field name="sequence" eval="70"/>
             <field name="statement">balance</field>
@@ -78,6 +88,7 @@ this repository contains the full copyright notices and license terms. -->
 
         <record model="account.account.type.template" id="account_type_template_non_current_assets">
             <field name="name" lang="en">Non-current Assets</field>
+            <field name="name" lang="fr">Actifs non courants</field>
             <field name="parent" ref="account_type_template_assets"/>
             <field name="sequence" eval="20"/>
             <field name="statement">balance</field>
@@ -86,6 +97,7 @@ this repository contains the full copyright notices and license terms. -->
 
         <record model="account.account.type.template" id="account_type_template_property">
             <field name="name" lang="en">Property, Plant and Equipment</field>
+            <field name="name" lang="fr">Immobilisations corporelles</field>
             <field name="parent" ref="account_type_template_non_current_assets"/>
             <field name="sequence" eval="10"/>
             <field name="statement">balance</field>
@@ -94,6 +106,7 @@ this repository contains the full copyright notices and license terms. -->
 
         <record model="account.account.type.template" id="account_type_template_investment_property">
             <field name="name" lang="en">Investment property, such as real estate held for investment purposes</field>
+            <field name="name" lang="fr">Biens d’investissement, tels que des biens immobiliers détenus à des fins d’investissement</field>
             <field name="parent" ref="account_type_template_non_current_assets"/>
             <field name="sequence" eval="20"/>
             <field name="statement">balance</field>
@@ -102,6 +115,7 @@ this repository contains the full copyright notices and license terms. -->
 
         <record model="account.account.type.template" id="account_type_template_intangible_assets">
             <field name="name" lang="en">Intangible assets, such as patents, copyrights and goodwill</field>
+            <field name="name" lang="fr">Immobilisations incorporels, tels que brevets, droits d’auteur et fonds de commerce</field>
             <field name="parent" ref="account_type_template_non_current_assets"/>
             <field name="sequence" eval="30"/>
             <field name="statement">balance</field>
@@ -110,6 +124,7 @@ this repository contains the full copyright notices and license terms. -->
 
         <record model="account.account.type.template" id="account_type_template_financial_assets">
             <field name="name" lang="en">Financial assets (excluding investments accounted for using the equity method, accounts receivables, and cash and cash equivalents), such as notes receivables</field>
+            <field name="name" lang="fr">Immobilisations financiers (à l'exclusion des investissements comptabilisés selon la méthode de la mise en équivalence, des comptes clients et de la trésorerie et des équivalents de trésorerie), tels que les effets à recevoir</field>
             <field name="parent" ref="account_type_template_non_current_assets"/>
             <field name="sequence" eval="40"/>
             <field name="statement">balance</field>
@@ -118,6 +133,7 @@ this repository contains the full copyright notices and license terms. -->
 
         <record model="account.account.type.template" id="account_type_template_investments">
             <field name="name" lang="en">Investments accounted for using the equity method</field>
+            <field name="name" lang="fr">Investissements comptabilisés selon la méthode de la mise en équivalence</field>
             <field name="parent" ref="account_type_template_non_current_assets"/>
             <field name="sequence" eval="50"/>
             <field name="statement">balance</field>
@@ -126,6 +142,7 @@ this repository contains the full copyright notices and license terms. -->
 
         <record model="account.account.type.template" id="account_type_template_biological_assets">
             <field name="name" lang="en">Biological assets, which are living plants or animals.</field>
+            <field name="name" lang="fr">Les actifs biologiques, qui sont des plantes ou des animaux vivants.</field>
             <field name="parent" ref="account_type_template_non_current_assets"/>
             <field name="sequence" eval="60"/>
             <field name="statement">balance</field>
@@ -134,6 +151,7 @@ this repository contains the full copyright notices and license terms. -->
 
         <record model="account.account.type.template" id="account_type_template_loan_to_less">
             <field name="name" lang="en">Loan To (More than one financial period)</field>
+            <field name="name" lang="fr">Prêts (plus d'une période financière)</field>
             <field name="parent" ref="account_type_template_non_current_assets"/>
             <field name="sequence" eval="70"/>
             <field name="statement">balance</field>
@@ -142,6 +160,7 @@ this repository contains the full copyright notices and license terms. -->
 
         <record model="account.account.type.template" id="account_type_template_current_liabilities">
             <field name="name" lang="en">Liabilities</field>
+            <field name="name" lang="fr">Passif</field>
             <field name="sequence" eval="20"/>
             <field name="parent" ref="account_type_template_root"/>
             <field name="statement">balance</field>
@@ -149,6 +168,7 @@ this repository contains the full copyright notices and license terms. -->
 
         <record model="account.account.type.template" id="account_type_template_payable">
             <field name="name" lang="en">Accounts payable</field>
+            <field name="name" lang="fr">Comptes fournisseurs</field>
             <field name="parent" ref="account_type_template_current_liabilities"/>
             <field name="sequence" eval="10"/>
             <field name="statement">balance</field>
@@ -157,6 +177,7 @@ this repository contains the full copyright notices and license terms. -->
 
         <record model="account.account.type.template" id="account_type_template_provisions">
             <field name="name" lang="en">Provisions for warranties or court decisions (contingent liabilities that are both probable and measurable)</field>
+            <field name="name" lang="fr">Provisions pour garanties ou décisions judiciaires (passifs éventuels à la fois probables et mesurables)</field>
             <field name="parent" ref="account_type_template_current_liabilities"/>
             <field name="sequence" eval="20"/>
             <field name="statement">balance</field>
@@ -164,6 +185,7 @@ this repository contains the full copyright notices and license terms. -->
 
         <record model="account.account.type.template" id="account_type_template_financial_liabilities">
             <field name="name" lang="en">Financial liabilities (excluding provisions and accounts payables), such as promissory notes and corporate bonds</field>
+            <field name="name" lang="fr">Passifs financiers (hors provisions et comptes créditeurs), tels que billets à ordre et obligations d'entreprises</field>
             <field name="parent" ref="account_type_template_current_liabilities"/>
             <field name="sequence" eval="30"/>
             <field name="statement">balance</field>
@@ -171,6 +193,7 @@ this repository contains the full copyright notices and license terms. -->
 
         <record model="account.account.type.template" id="account_type_template_current_tax">
             <field name="name" lang="en">Liabilities and assets for current tax</field>
+            <field name="name" lang="fr">Passifs et actifs pour l'impôt courant</field>
             <field name="parent" ref="account_type_template_current_liabilities"/>
             <field name="sequence" eval="40"/>
             <field name="statement">balance</field>
@@ -178,6 +201,7 @@ this repository contains the full copyright notices and license terms. -->
 
         <record model="account.account.type.template" id="account_type_template_deferred_tax">
             <field name="name" lang="en">Deferred tax liabilities and deferred tax assets</field>
+            <field name="name" lang="fr">Passifs d'impôts différés et actifs d'impôts différés</field>
             <field name="parent" ref="account_type_template_current_liabilities"/>
             <field name="sequence" eval="50"/>
             <field name="statement">balance</field>
@@ -185,6 +209,7 @@ this repository contains the full copyright notices and license terms. -->
 
         <record model="account.account.type.template" id="account_type_template_unearned_revenue">
             <field name="name" lang="en">Unearned revenue for services paid for by customers but not yet provided</field>
+            <field name="name" lang="fr">Revenus non gagnés pour les services payés par les clients mais pas encore fournis</field>
             <field name="parent" ref="account_type_template_current_liabilities"/>
             <field name="sequence" eval="60"/>
             <field name="statement">balance</field>
@@ -192,6 +217,7 @@ this repository contains the full copyright notices and license terms. -->
 
         <record model="account.account.type.template" id="account_type_template_interests">
             <field name="name" lang="en">Interests on loan stock</field>
+            <field name="name" lang="fr">Intérêts sur les prêts en actions</field>
             <field name="parent" ref="account_type_template_current_liabilities"/>
             <field name="sequence" eval="70"/>
             <field name="statement">balance</field>
@@ -199,6 +225,7 @@ this repository contains the full copyright notices and license terms. -->
 
         <record model="account.account.type.template" id="account_type_template_creditor_equity">
             <field name="name" lang="en">Creditors' equity</field>
+            <field name="name" lang="fr">Capitaux propres des créanciers</field>
             <field name="parent" ref="account_type_template_current_liabilities"/>
             <field name="sequence" eval="80"/>
             <field name="statement">balance</field>
@@ -206,6 +233,7 @@ this repository contains the full copyright notices and license terms. -->
 
         <record model="account.account.type.template" id="account_type_template_equity">
             <field name="name" lang="en">Equity / capital</field>
+            <field name="name" lang="fr">Capitaux propres</field>
             <field name="parent" ref="account_type_template_root"/>
             <field name="sequence" eval="30"/>
             <field name="statement">balance</field>
@@ -213,6 +241,7 @@ this repository contains the full copyright notices and license terms. -->
 
         <record model="account.account.type.template" id="account_type_template_capital">
             <field name="name" lang="en">Issued capital and reserves attributable to equity holders of the parent company (controlling interest)</field>
+            <field name="name" lang="fr">Capital émis et réserves attribuables aux actionnaires de la société mère (participation majoritaire)</field>
             <field name="parent" ref="account_type_template_equity"/>
             <field name="sequence" eval="10"/>
             <field name="statement">balance</field>
@@ -220,6 +249,7 @@ this repository contains the full copyright notices and license terms. -->
 
         <record model="account.account.type.template" id="account_type_template_non_controlling_interest">
             <field name="name" lang="en">Non-controlling interest in equity</field>
+            <field name="name" lang="fr">Participation sans contrôle dans les capitaux propres</field>
             <field name="parent" ref="account_type_template_equity"/>
             <field name="sequence" eval="20"/>
             <field name="statement">balance</field>
@@ -227,6 +257,7 @@ this repository contains the full copyright notices and license terms. -->
 
         <record model="account.account.type.template" id="account_type_template_profit_loss">
             <field name="name" lang="en">Current Period Profit or Lost</field>
+            <field name="name" lang="fr">Bénéfice ou perte de la période en cours</field>
             <field name="sequence" eval="30"/>
             <field name="parent" ref="account_type_template_equity"/>
             <field name="statement">income</field>
@@ -234,6 +265,7 @@ this repository contains the full copyright notices and license terms. -->
 
         <record model="account.account.type.template" id="account_type_template_operating_section">
             <field name="name" lang="en">Operating section</field>
+            <field name="name" lang="fr">Section Opérationnelle</field>
             <field name="sequence" eval="10"/>
             <field name="parent" ref="account_type_template_profit_loss"/>
             <field name="statement">income</field>
@@ -241,6 +273,7 @@ this repository contains the full copyright notices and license terms. -->
 
         <record model="account.account.type.template" id="account_type_template_revenue">
             <field name="name" lang="en">Revenue</field>
+            <field name="name" lang="fr">Revenu</field>
             <field name="parent" ref="account_type_template_operating_section"/>
             <field name="sequence" eval="10"/>
             <field name="statement">income</field>
@@ -249,6 +282,7 @@ this repository contains the full copyright notices and license terms. -->
 
         <record model="account.account.type.template" id="account_type_template_expenses">
             <field name="name" lang="en">Expenses</field>
+            <field name="name" lang="fr">Dépenses</field>
             <field name="parent" ref="account_type_template_profit_loss"/>
             <field name="sequence" eval="20"/>
             <field name="statement">income</field>
@@ -257,6 +291,7 @@ this repository contains the full copyright notices and license terms. -->
 
         <record model="account.account.type.template" id="account_type_template_cos">
             <field name="name" lang="en">Cost of Sales</field>
+            <field name="name" lang="fr">Coût des ventes</field>
             <field name="parent" ref="account_type_template_expenses"/>
             <field name="sequence" eval="10"/>
             <field name="statement">income</field>
@@ -265,6 +300,7 @@ this repository contains the full copyright notices and license terms. -->
 
         <record model="account.account.type.template" id="account_type_template_sga">
             <field name="name" lang="en">Selling, General and Administrative expenses</field>
+            <field name="name" lang="fr">Frais de vente, généraux et administratifs</field>
             <field name="parent" ref="account_type_template_expenses"/>
             <field name="sequence" eval="20"/>
             <field name="statement">income</field>
@@ -273,6 +309,7 @@ this repository contains the full copyright notices and license terms. -->
 
         <record model="account.account.type.template" id="account_type_template_depreciation">
             <field name="name" lang="en">Depreciation / amortisation</field>
+            <field name="name" lang="fr">Dépréciation / amortissement</field>
             <field name="parent" ref="account_type_template_expenses"/>
             <field name="sequence" eval="30"/>
             <field name="statement">income</field>
@@ -280,6 +317,7 @@ this repository contains the full copyright notices and license terms. -->
 
         <record model="account.account.type.template" id="account_type_template_rd">
             <field name="name" lang="en">Research &amp; Development expenses</field>
+            <field name="name" lang="fr">Dépenses de recherche et développement</field>
             <field name="parent" ref="account_type_template_expenses"/>
             <field name="sequence" eval="40"/>
             <field name="statement">income</field>
@@ -287,6 +325,7 @@ this repository contains the full copyright notices and license terms. -->
 
         <record model="account.account.type.template" id="account_type_template_non_operating_section">
             <field name="name" lang="en">Non-operating section</field>
+            <field name="name" lang="fr">Section non opérationnelle</field>
             <field name="parent" ref="account_type_template_profit_loss"/>
             <field name="sequence" eval="30"/>
             <field name="statement">income</field>
@@ -294,6 +333,7 @@ this repository contains the full copyright notices and license terms. -->
 
         <record model="account.account.type.template" id="account_type_template_other_revenues">
             <field name="name" lang="en">Other revenues or gains</field>
+            <field name="name" lang="fr">Autres revenus ou gains</field>
             <field name="parent" ref="account_type_template_non_operating_section"/>
             <field name="sequence" eval="10"/>
             <field name="statement">income</field>
@@ -301,6 +341,7 @@ this repository contains the full copyright notices and license terms. -->
 
         <record model="account.account.type.template" id="account_type_template_other_expenses">
             <field name="name" lang="en">Other expenses or losses</field>
+            <field name="name" lang="fr">Autres dépenses ou pertes</field>
             <field name="parent" ref="account_type_template_non_operating_section"/>
             <field name="sequence" eval="20"/>
             <field name="statement">income</field>
@@ -308,6 +349,7 @@ this repository contains the full copyright notices and license terms. -->
 
         <record model="account.account.type.template" id="account_type_template_finance_costs">
             <field name="name" lang="en">Finance costs</field>
+            <field name="name" lang="fr">Coûts financiers</field>
             <field name="parent" ref="account_type_template_non_operating_section"/>
             <field name="sequence" eval="30"/>
             <field name="statement">income</field>
@@ -315,6 +357,7 @@ this repository contains the full copyright notices and license terms. -->
 
         <record model="account.account.type.template" id="account_type_template_income_tax_expense">
             <field name="name" lang="en">Income tax expense</field>
+            <field name="name" lang="fr">Charge d'impôt sur le résultat</field>
             <field name="parent" ref="account_type_template_non_operating_section"/>
             <field name="sequence" eval="40"/>
             <field name="statement">income</field>
@@ -322,6 +365,7 @@ this repository contains the full copyright notices and license terms. -->
 
         <record model="account.account.type.template" id="account_type_template_irregular_items">
             <field name="name" lang="en">Irregular items</field>
+            <field name="name" lang="fr">Éléments irréguliers</field>
             <field name="parent" ref="account_type_template_profit_loss"/>
             <field name="sequence" eval="40"/>
             <field name="statement">income</field>
@@ -329,6 +373,7 @@ this repository contains the full copyright notices and license terms. -->
 
         <record model="account.account.type.template" id="account_type_template_discontinued_operations">
             <field name="name" lang="en">Discontinued operations</field>
+            <field name="name" lang="fr">Activités abandonnées</field>
             <field name="parent" ref="account_type_template_irregular_items"/>
             <field name="sequence" eval="10"/>
             <field name="statement">income</field>
@@ -336,6 +381,7 @@ this repository contains the full copyright notices and license terms. -->
 
         <record model="account.account.type.template" id="account_type_template_off_balance">
             <field name="name" lang="en">Off-Balance</field>
+            <field name="name" lang="fr">Hors bilan</field>
             <field name="parent" ref="account_type_template_root"/>
             <field name="sequence" eval="40"/>
             <field name="statement">off-balance</field>
@@ -344,6 +390,7 @@ this repository contains the full copyright notices and license terms. -->
     <data>
         <record model="account.account.template" id="account_template_root">
             <field name="name" lang="en">Universal Chart of Accounts</field>
+            <field name="name" lang="fr">Plan comptable universel</field>
             <field name="type" ref="account_type_template_root"/>
             <field name="closed" eval="True"/>
         </record>
@@ -352,36 +399,42 @@ this repository contains the full copyright notices and license terms. -->
         <record model="account.account.template" id="account_template_1_0_0">
             <field name="code">1.0.0</field>
             <field name="name" lang="en">Assets</field>
+            <field name="name" lang="fr">Actifs</field>
             <field name="parent" ref="account_template_root"/>
         </record>
 
         <record model="account.account.template" id="account_template_2_0_0">
             <field name="code">2.0.0</field>
             <field name="name" lang="en">Liabilities</field>
+            <field name="name" lang="fr">Dettes</field>
             <field name="parent" ref="account_template_root"/>
         </record>
 
         <record model="account.account.template" id="account_template_3_0_0">
             <field name="code">3.0.0</field>
             <field name="name" lang="en">Equity</field>
+            <field name="name" lang="fr">Capitaux propres</field>
             <field name="parent" ref="account_template_root"/>
         </record>
 
         <record model="account.account.template" id="account_template_4_0_0">
             <field name="code">4.0.0</field>
             <field name="name" lang="en">Revenue</field>
+            <field name="name" lang="fr">Revenu</field>
             <field name="parent" ref="account_template_root"/>
         </record>
 
         <record model="account.account.template" id="account_template_5_0_0">
             <field name="code">5.0.0</field>
             <field name="name" lang="en">Expenses</field>
+            <field name="name" lang="fr">Dépenses</field>
             <field name="parent" ref="account_template_root"/>
         </record>
 
         <record model="account.account.template" id="account_template_6_0_0">
             <field name="code">6.0.0</field>
             <field name="name" lang="en">Other (Non-Operating) Income And Expenses</field>
+            <field name="name" lang="fr">Autres revenus et dépenses (hors exploitation)</field>
             <field name="parent" ref="account_template_root"/>
         </record>
     </data>
@@ -389,30 +442,35 @@ this repository contains the full copyright notices and license terms. -->
         <record model="account.account.template" id="account_template_1_1_0">
             <field name="code">1.1.0</field>
             <field name="name" lang="en">Cash And Financial Assets</field>
+            <field name="name" lang="fr">Trésorerie et actifs financiers</field>
             <field name="parent" ref="account_template_1_0_0"/>
         </record>
 
         <record model="account.account.template" id="account_template_1_2_0">
             <field name="code">1.2.0</field>
             <field name="name" lang="en">Receivables And Contracts</field>
+            <field name="name" lang="fr">Créances et contrats</field>
             <field name="parent" ref="account_template_1_0_0"/>
         </record>
 
         <record model="account.account.template" id="account_template_1_3_0">
             <field name="code">1.3.0</field>
             <field name="name" lang="en">Inventory</field>
+            <field name="name" lang="fr">Stock</field>
             <field name="parent" ref="account_template_1_0_0"/>
         </record>
 
         <record model="account.account.template" id="account_template_1_4_0">
             <field name="code">1.4.0</field>
             <field name="name" lang="en">Accruals And Additional Assets</field>
+            <field name="name" lang="fr">Régularisation et actifs supplémentaires</field>
             <field name="parent" ref="account_template_1_0_0"/>
         </record>
 
         <record model="account.account.template" id="account_template_1_5_0">
             <field name="code">1.5.0</field>
             <field name="name" lang="en">Property, Plant And Equipment</field>
+            <field name="name" lang="fr">Immobilisations corporelles</field>
             <field name="parent" ref="account_template_1_0_0"/>
             <field name="type" ref="account_type_template_property"/>
             <field name="closed" eval="True"/>
@@ -421,6 +479,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="account.account.template" id="account_template_1_6_0">
             <field name="code">1.6.0</field>
             <field name="name" lang="en">Property, Plant And Equipment Accumulated Depreciation And Depletion</field>
+            <field name="name" lang="fr">Amortissement et épuisement cumulé des immobilisations corporelles</field>
             <field name="parent" ref="account_template_1_0_0"/>
             <field name="type" ref="account_type_template_depreciation"/>
             <field name="closed" eval="True"/>
@@ -429,6 +488,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="account.account.template" id="account_template_1_7_0">
             <field name="code">1.7.0</field>
             <field name="name" lang="en">Intangible Assets (Excluding Goodwill)</field>
+            <field name="name" lang="fr">Actifs incorporels (hors goodwill)</field>
             <field name="parent" ref="account_template_1_0_0"/>
             <field name="type" ref="account_type_template_intangible_assets"/>
             <field name="closed" eval="True"/>
@@ -437,6 +497,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="account.account.template" id="account_template_1_8_0">
             <field name="code">1.8.0</field>
             <field name="name" lang="en">Intangible Assets Accumulated Amortization</field>
+            <field name="name" lang="fr">Amortissement cumulé des actifs incorporels</field>
             <field name="parent" ref="account_template_1_0_0"/>
             <field name="type" ref="account_type_template_intangible_assets"/>
             <field name="closed" eval="True"/>
@@ -445,6 +506,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="account.account.template" id="account_template_1_9_0">
             <field name="code">1.9.0</field>
             <field name="name" lang="en">Goodwill</field>
+            <field name="name" lang="fr">Goodwill</field>
             <field name="parent" ref="account_template_1_0_0"/>
             <field name="type" ref="account_type_template_intangible_assets"/>
             <field name="closed" eval="True"/>
@@ -453,6 +515,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="account.account.template" id="account_template_2_1_0">
             <field name="code">2.1.0</field>
             <field name="name" lang="en">Payables</field>
+            <field name="name" lang="fr">Fournisseurs</field>
             <field name="parent" ref="account_template_2_0_0"/>
             <field name="type" ref="account_type_template_payable"/>
             <field name="closed" eval="True"/>
@@ -461,12 +524,14 @@ this repository contains the full copyright notices and license terms. -->
         <record model="account.account.template" id="account_template_2_2_0">
             <field name="code">2.2.0</field>
             <field name="name" lang="en">Accruals And Other Liabilities</field>
+            <field name="name" lang="fr">Comptes de régularisation et autres dettes</field>
             <field name="parent" ref="account_template_2_0_0"/>
         </record>
 
         <record model="account.account.template" id="account_template_2_3_0">
             <field name="code">2.3.0</field>
             <field name="name" lang="en">Financial Liabilities</field>
+            <field name="name" lang="fr">Dettes financières</field>
             <field name="parent" ref="account_template_2_0_0"/>
             <field name="type" ref="account_type_template_financial_liabilities"/>
             <field name="closed" eval="True"/>
@@ -475,6 +540,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="account.account.template" id="account_template_2_4_0">
             <field name="code">2.4.0</field>
             <field name="name" lang="en">Provisions (Contingencies)</field>
+            <field name="name" lang="fr">Provisions (imprévus)</field>
             <field name="parent" ref="account_template_2_0_0"/>
             <field name="type" ref="account_type_template_provisions"/>
             <field name="closed" eval="True"/>
@@ -483,6 +549,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="account.account.template" id="account_template_3_1_0">
             <field name="code">3.1.0</field>
             <field name="name" lang="en">Owners Equity (Attributable To Owners Of Parent)</field>
+            <field name="name" lang="fr">Capitaux propres (attribuables aux propriétaires de la société mère)</field>
             <field name="parent" ref="account_template_3_0_0"/>
             <field name="type" ref="account_type_template_capital"/>
             <field name="closed" eval="True"/>
@@ -491,6 +558,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="account.account.template" id="account_template_3_2_0">
             <field name="code">3.2.0</field>
             <field name="name" lang="en">Retained Earnings</field>
+            <field name="name" lang="fr">Bénéfices non répartis</field>
             <field name="parent" ref="account_template_3_0_0"/>
             <field name="type" ref="account_type_template_capital"/>
             <field name="closed" eval="True"/>
@@ -499,6 +567,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="account.account.template" id="account_template_3_3_0">
             <field name="code">3.3.0</field>
             <field name="name" lang="en">Accumulated Other Comprehensive Income</field>
+            <field name="name" lang="fr">Autres éléments du résultat global cumulés</field>
             <field name="parent" ref="account_template_3_0_0"/>
             <field name="type" ref="account_type_template_capital"/>
             <field name="closed" eval="True"/>
@@ -507,6 +576,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="account.account.template" id="account_template_3_4_0">
             <field name="code">3.4.0</field>
             <field name="name" lang="en">Other Equity Items</field>
+            <field name="name" lang="fr">Autres éléments de capitaux propres</field>
             <field name="parent" ref="account_template_3_0_0"/>
             <field name="type" ref="account_type_template_capital"/>
             <field name="closed" eval="True"/>
@@ -515,6 +585,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="account.account.template" id="account_template_3_5_0">
             <field name="code">3.5.0</field>
             <field name="name" lang="en">Noncontrolling (Minority) Interest</field>
+            <field name="name" lang="fr">Participation sans contrôle (minoritaire)</field>
             <field name="parent" ref="account_template_3_0_0"/>
             <field name="type" ref="account_type_template_non_controlling_interest"/>
             <field name="closed" eval="True"/>
@@ -523,6 +594,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="account.account.template" id="account_template_4_1_0">
             <field name="code">4.1.0</field>
             <field name="name" lang="en">Recognized Point Of Time</field>
+            <field name="name" lang="fr">Reconnus à un moment donné</field>
             <field name="parent" ref="account_template_4_0_0"/>
             <field name="type" ref="account_type_template_revenue"/>
             <field name="closed" eval="True"/>
@@ -531,6 +603,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="account.account.template" id="account_template_4_2_0">
             <field name="code">4.2.0</field>
             <field name="name" lang="en">Recognized Over Time</field>
+            <field name="name" lang="fr">Reconnus au fil du temps</field>
             <field name="parent" ref="account_template_4_0_0"/>
             <field name="type" ref="account_type_template_revenue"/>
             <field name="closed" eval="True"/>
@@ -539,6 +612,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="account.account.template" id="account_template_4_3_0">
             <field name="code">4.3.0</field>
             <field name="name" lang="en">Adjustments</field>
+            <field name="name" lang="fr">Ajustements</field>
             <field name="parent" ref="account_template_4_0_0"/>
             <field name="type" ref="account_type_template_revenue"/>
             <field name="closed" eval="True"/>
@@ -547,24 +621,28 @@ this repository contains the full copyright notices and license terms. -->
         <record model="account.account.template" id="account_template_5_1_0">
             <field name="code">5.1.0</field>
             <field name="name" lang="en">Expenses Classified By Nature</field>
+            <field name="name" lang="fr">Dépenses classées par nature</field>
             <field name="parent" ref="account_template_5_0_0"/>
         </record>
 
         <record model="account.account.template" id="account_template_5_2_0">
             <field name="code">5.2.0</field>
             <field name="name" lang="en">Expenses Classified By Function</field>
+            <field name="name" lang="fr">Dépenses classées par fonction</field>
             <field name="parent" ref="account_template_5_0_0"/>
         </record>
 
         <record model="account.account.template" id="account_template_6_1_0">
             <field name="code">6.1.0</field>
             <field name="name" lang="en">Other Revenue And Expenses</field>
+            <field name="name" lang="fr">Autres revenus et dépenses</field>
             <field name="parent" ref="account_template_6_0_0"/>
         </record>
 
         <record model="account.account.template" id="account_template_6_2_0">
             <field name="code">6.2.0</field>
             <field name="name" lang="en">Gains And Losses</field>
+            <field name="name" lang="fr">Gains et pertes</field>
             <field name="parent" ref="account_template_6_0_0"/>
             <field name="type" ref="account_type_template_finance_costs"/>
             <field name="closed" eval="True"/>
@@ -573,6 +651,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="account.account.template" id="account_template_6_3_0">
             <field name="code">6.3.0</field>
             <field name="name" lang="en">Taxes (Other Than Income And Payroll) And Fees</field>
+            <field name="name" lang="fr">Impôts (autres que sur le revenu et les salaires) et frais</field>
             <field name="parent" ref="account_template_6_0_0"/>
             <field name="type" ref="account_type_template_current_tax"/>
             <field name="closed" eval="True"/>
@@ -581,6 +660,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="account.account.template" id="account_template_6_4_0">
             <field name="code">6.4.0</field>
             <field name="name" lang="en">Income Tax Expense (Benefit)</field>
+            <field name="name" lang="fr">Charge d'impôt sur le revenu (benefice)</field>
             <field name="parent" ref="account_template_6_0_0"/>
             <field name="type" ref="account_type_template_income_tax_expense"/>
         </record>
@@ -589,6 +669,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="account.account.template" id="account_template_1_1_1">
             <field name="code">1.1.1</field>
             <field name="name" lang="en">Cash and Cash Equivalents</field>
+            <field name="name" lang="fr">Trésorerie et équivalents de trésorerie</field>
             <field name="parent" ref="account_template_1_1_0"/>
             <field name="type" ref="account_type_template_cash"/>
         </record>
@@ -596,6 +677,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="account.account.template" id="account_template_1_1_2">
             <field name="code">1.1.2</field>
             <field name="name" lang="en">Financial Assets (Investments)</field>
+            <field name="name" lang="fr">Actifs financiers (investissements)</field>
             <field name="parent" ref="account_template_1_1_0"/>
             <field name="type" ref="account_type_template_investments"/>
         </record>
@@ -603,6 +685,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="account.account.template" id="account_template_1_1_3">
             <field name="code">1.1.3</field>
             <field name="name" lang="en">Restricted Cash and Financial Assets</field>
+            <field name="name" lang="fr">Trésorerie et actifs financiers soumis à restrictions</field>
             <field name="parent" ref="account_template_1_1_0"/>
             <field name="type" ref="account_type_template_cash"/>
         </record>
@@ -610,6 +693,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="account.account.template" id="account_template_1_1_4">
             <field name="code">1.1.4</field>
             <field name="name" lang="en">Additional Financial Assets and Investments</field>
+            <field name="name" lang="fr">Actifs financiers et investissements supplémentaires</field>
             <field name="parent" ref="account_template_1_1_0"/>
             <field name="type" ref="account_type_template_financial_assets"/>
         </record>
@@ -617,6 +701,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="account.account.template" id="account_template_1_2_1">
             <field name="code">1.2.1</field>
             <field name="name" lang="en">Accounts, Notes And Loans Receivable</field>
+            <field name="name" lang="fr">Comptes, effets et prêts à recevoir</field>
             <field name="parent" ref="account_template_1_2_0"/>
             <field name="type" ref="account_type_template_accounts_receivable"/>
             <field name="party_required" eval="True"/>
@@ -626,6 +711,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="account.account.template" id="account_template_1_2_2">
             <field name="code">1.2.2</field>
             <field name="name" lang="en">Contracts</field>
+            <field name="name" lang="fr">Contrats</field>
             <field name="parent" ref="account_template_1_2_0"/>
             <field name="type" ref="account_type_template_accounts_receivable"/>
             <field name="party_required" eval="True"/>
@@ -635,6 +721,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="account.account.template" id="account_template_1_2_3">
             <field name="code">1.2.3</field>
             <field name="name" lang="en">Nontrade And Other Receivables</field>
+            <field name="name" lang="fr">Créances non commerciales et autres créances</field>
             <field name="parent" ref="account_template_1_2_0"/>
             <field name="type" ref="account_type_template_accounts_receivable"/>
             <field name="party_required" eval="True"/>
@@ -644,6 +731,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="account.account.template" id="account_template_1_3_1">
             <field name="code">1.3.1</field>
             <field name="name" lang="en">Merchandise</field>
+            <field name="name" lang="fr">Marchandises</field>
             <field name="parent" ref="account_template_1_3_0"/>
             <field name="type" ref="account_type_template_inventories"/>
         </record>
@@ -651,6 +739,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="account.account.template" id="account_template_1_3_2">
             <field name="code">1.3.2</field>
             <field name="name" lang="en">Raw Material, Parts And Supplies</field>
+            <field name="name" lang="fr">Matières premières, pièces et fournitures</field>
             <field name="parent" ref="account_template_1_3_0"/>
             <field name="type" ref="account_type_template_inventories"/>
         </record>
@@ -658,6 +747,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="account.account.template" id="account_template_1_3_3">
             <field name="code">1.3.3</field>
             <field name="name" lang="en">Work In Process</field>
+            <field name="name" lang="fr">Travaux en cours</field>
             <field name="parent" ref="account_template_1_3_0"/>
             <field name="type" ref="account_type_template_inventories"/>
         </record>
@@ -665,6 +755,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="account.account.template" id="account_template_1_3_4">
             <field name="code">1.3.4</field>
             <field name="name" lang="en">Finished Goods</field>
+            <field name="name" lang="fr">Produits finis</field>
             <field name="parent" ref="account_template_1_3_0"/>
             <field name="type" ref="account_type_template_inventories"/>
         </record>
@@ -672,6 +763,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="account.account.template" id="account_template_1_3_5">
             <field name="code">1.3.5</field>
             <field name="name" lang="en">Other Inventory</field>
+            <field name="name" lang="fr">Autres stocks</field>
             <field name="parent" ref="account_template_1_3_0"/>
             <field name="type" ref="account_type_template_inventories"/>
         </record>
@@ -679,6 +771,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="account.account.template" id="account_template_1_4_1">
             <field name="code">1.4.1</field>
             <field name="name" lang="en">Prepaid Expense</field>
+            <field name="name" lang="fr">Dépenses payées d'avance</field>
             <field name="parent" ref="account_template_1_4_0"/>
             <field name="type" ref="account_type_template_prepaid_expenses"/>
         </record>
@@ -686,6 +779,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="account.account.template" id="account_template_1_4_2">
             <field name="code">1.4.2</field>
             <field name="name" lang="en">Accrued Income</field>
+            <field name="name" lang="fr">Revenus</field>
             <field name="parent" ref="account_template_1_4_0"/>
             <field name="type" ref="account_type_template_revenue_earned_in_arrears"/>
         </record>
@@ -693,12 +787,14 @@ this repository contains the full copyright notices and license terms. -->
         <record model="account.account.template" id="account_template_1_4_3">
             <field name="code">1.4.3</field>
             <field name="name" lang="en">Additional Assets</field>
+            <field name="name" lang="fr">Actifs supplémentaires</field>
             <field name="parent" ref="account_template_1_4_0"/>
         </record>
 
         <record model="account.account.template" id="account_template_1_5_1">
             <field name="code">1.5.1</field>
             <field name="name" lang="en">Land And Land Improvements</field>
+            <field name="name" lang="fr">Terrains et améliorations</field>
             <field name="parent" ref="account_template_1_5_0"/>
             <field name="type" ref="account_type_template_property"/>
         </record>
@@ -706,6 +802,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="account.account.template" id="account_template_1_5_2">
             <field name="code">1.5.2</field>
             <field name="name" lang="en">Buildings, Structures And Improvements</field>
+            <field name="name" lang="fr">Bâtiments, structures et améliorations</field>
             <field name="parent" ref="account_template_1_5_0"/>
             <field name="type" ref="account_type_template_property"/>
         </record>
@@ -713,6 +810,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="account.account.template" id="account_template_1_5_3">
             <field name="code">1.5.3</field>
             <field name="name" lang="en">Machinery And Equipment</field>
+            <field name="name" lang="fr">Machines et équipements</field>
             <field name="parent" ref="account_template_1_5_0"/>
             <field name="type" ref="account_type_template_property"/>
         </record>
@@ -720,6 +818,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="account.account.template" id="account_template_1_5_4">
             <field name="code">1.5.4</field>
             <field name="name" lang="en">Furniture And Fixtures</field>
+            <field name="name" lang="fr">Mobilier et accessoires</field>
             <field name="parent" ref="account_template_1_5_0"/>
             <field name="type" ref="account_type_template_property"/>
         </record>
@@ -727,6 +826,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="account.account.template" id="account_template_1_5_5">
             <field name="code">1.5.5</field>
             <field name="name" lang="en">Right Of Use Assets (Classified As PP&amp;E)</field>
+            <field name="name" lang="fr">Droits d'utilisation des actifs (classés comme immobilisations corporelles)</field>
             <field name="parent" ref="account_template_1_5_0"/>
             <field name="type" ref="account_type_template_property"/>
         </record>
@@ -734,6 +834,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="account.account.template" id="account_template_1_5_6">
             <field name="code">1.5.6</field>
             <field name="name" lang="en">Other Property, Plant And Equipment</field>
+            <field name="name" lang="fr">Autres immobilisations corporelles</field>
             <field name="parent" ref="account_template_1_5_0"/>
             <field name="type" ref="account_type_template_property"/>
         </record>
@@ -741,6 +842,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="account.account.template" id="account_template_1_5_7">
             <field name="code">1.5.7</field>
             <field name="name" lang="en">Construction In Progress</field>
+            <field name="name" lang="fr">Construction en cours</field>
             <field name="parent" ref="account_template_1_5_0"/>
             <field name="type" ref="account_type_template_property"/>
         </record>
@@ -748,6 +850,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="account.account.template" id="account_template_1_6_1">
             <field name="code">1.6.1</field>
             <field name="name" lang="en">Accumulated Depletion</field>
+            <field name="name" lang="fr">Épuisement accumulé</field>
             <field name="parent" ref="account_template_1_6_0"/>
             <field name="type" ref="account_type_template_depreciation"/>
         </record>
@@ -755,6 +858,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="account.account.template" id="account_template_1_6_2">
             <field name="code">1.6.2</field>
             <field name="name" lang="en">Accumulated Depreciation</field>
+            <field name="name" lang="fr">Amortissement cumulé</field>
             <field name="parent" ref="account_template_1_6_0"/>
             <field name="type" ref="account_type_template_depreciation"/>
         </record>
@@ -762,6 +866,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="account.account.template" id="account_template_1_7_1">
             <field name="code">1.7.1</field>
             <field name="name" lang="en">Intellectual Property</field>
+            <field name="name" lang="fr">Propriété intellectuelle</field>
             <field name="parent" ref="account_template_1_7_0"/>
             <field name="type" ref="account_type_template_intangible_assets"/>
         </record>
@@ -769,6 +874,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="account.account.template" id="account_template_1_7_2">
             <field name="code">1.7.2</field>
             <field name="name" lang="en">Computer Software</field>
+            <field name="name" lang="fr">Logiciels informatiques</field>
             <field name="parent" ref="account_template_1_7_0"/>
             <field name="type" ref="account_type_template_intangible_assets"/>
         </record>
@@ -776,6 +882,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="account.account.template" id="account_template_1_7_3">
             <field name="code">1.7.3</field>
             <field name="name" lang="en">Trade And Distribution Assets</field>
+            <field name="name" lang="fr">Actifs commerciaux et de distribution</field>
             <field name="parent" ref="account_template_1_7_0"/>
             <field name="type" ref="account_type_template_intangible_assets"/>
         </record>
@@ -783,6 +890,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="account.account.template" id="account_template_1_7_4">
             <field name="code">1.7.4</field>
             <field name="name" lang="en">Contracts And Rights</field>
+            <field name="name" lang="fr">Contrats et droits</field>
             <field name="parent" ref="account_template_1_7_0"/>
             <field name="type" ref="account_type_template_intangible_assets"/>
         </record>
@@ -790,6 +898,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="account.account.template" id="account_template_1_7_5">
             <field name="code">1.7.5</field>
             <field name="name" lang="en">Right Of Use Assets</field>
+            <field name="name" lang="fr">Actifs de droit d’utilisation</field>
             <field name="parent" ref="account_template_1_7_0"/>
             <field name="type" ref="account_type_template_intangible_assets"/>
         </record>
@@ -797,6 +906,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="account.account.template" id="account_template_1_7_6">
             <field name="code">1.7.6</field>
             <field name="name" lang="en">Crypto Assets</field>
+            <field name="name" lang="fr">Actifs de cryptomonnaie</field>
             <field name="parent" ref="account_template_1_7_0"/>
             <field name="type" ref="account_type_template_intangible_assets"/>
         </record>
@@ -804,6 +914,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="account.account.template" id="account_template_1_7_7">
             <field name="code">1.7.7</field>
             <field name="name" lang="en">Other Intangible Assets</field>
+            <field name="name" lang="fr">Autres actifs incorporels</field>
             <field name="parent" ref="account_template_1_7_0"/>
             <field name="type" ref="account_type_template_intangible_assets"/>
         </record>
@@ -811,6 +922,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="account.account.template" id="account_template_1_7_8">
             <field name="code">1.7.8</field>
             <field name="name" lang="en">Acquisition In Progress</field>
+            <field name="name" lang="fr">Acquisition en cours</field>
             <field name="parent" ref="account_template_1_7_0"/>
             <field name="type" ref="account_type_template_intangible_assets"/>
         </record>
@@ -818,6 +930,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="account.account.template" id="account_template_2_1_1">
             <field name="code">2.1.1</field>
             <field name="name" lang="en">Trade Payables</field>
+            <field name="name" lang="fr">Dettes commerciales</field>
             <field name="parent" ref="account_template_2_1_0"/>
             <field name="type" ref="account_type_template_payable"/>
             <field name="party_required" eval="True"/>
@@ -827,6 +940,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="account.account.template" id="account_template_2_1_2">
             <field name="code">2.1.2</field>
             <field name="name" lang="en">Dividends Payable</field>
+            <field name="name" lang="fr">Dividendes à payer</field>
             <field name="parent" ref="account_template_2_1_0"/>
             <field name="type" ref="account_type_template_payable"/>
             <field name="party_required" eval="True"/>
@@ -836,6 +950,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="account.account.template" id="account_template_2_1_3">
             <field name="code">2.1.3</field>
             <field name="name" lang="en">Interest Payable</field>
+            <field name="name" lang="fr">Intérêts à payer</field>
             <field name="parent" ref="account_template_2_1_0"/>
             <field name="type" ref="account_type_template_payable"/>
             <field name="reconcile" eval="True"/>
@@ -844,6 +959,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="account.account.template" id="account_template_2_1_4">
             <field name="code">2.1.4</field>
             <field name="name" lang="en">Other Payables</field>
+            <field name="name" lang="fr">Autres dettes</field>
             <field name="parent" ref="account_template_2_1_0"/>
             <field name="type" ref="account_type_template_payable"/>
             <field name="party_required" eval="True"/>
@@ -853,6 +969,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="account.account.template" id="account_template_2_2_1">
             <field name="code">2.2.1</field>
             <field name="name" lang="en">Accrued Expenses (Including Payroll)</field>
+            <field name="name" lang="fr">Charges à payer (y compris les salaires)</field>
             <field name="parent" ref="account_template_2_2_0"/>
             <field name="type" ref="account_type_template_expenses"/>
         </record>
@@ -860,6 +977,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="account.account.template" id="account_template_2_2_2">
             <field name="code">2.2.2</field>
             <field name="name" lang="en">Deferred Income (Unearned Revenue)</field>
+            <field name="name" lang="fr">Revenus différés (revenus non gagnés)</field>
             <field name="parent" ref="account_template_2_2_0"/>
             <field name="type" ref="account_type_template_unearned_revenue"/>
         </record>
@@ -867,6 +985,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="account.account.template" id="account_template_2_2_3">
             <field name="code">2.2.3</field>
             <field name="name" lang="en">Accrued Taxes (Other Than Payroll)</field>
+            <field name="name" lang="fr">Impôts courus (autres que les salaires)</field>
             <field name="parent" ref="account_template_2_2_0"/>
             <field name="type" ref="account_type_template_deferred_tax"/>
         </record>
@@ -874,6 +993,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="account.account.template" id="account_template_2_2_4">
             <field name="code">2.2.4</field>
             <field name="name" lang="en">Other (Non-Financial) Liabilities</field>
+            <field name="name" lang="fr">Autres passifs (non financiers)</field>
             <field name="parent" ref="account_template_2_2_0"/>
             <field name="type" ref="account_type_template_deferred_tax"/>
         </record>
@@ -881,6 +1001,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="account.account.template" id="account_template_2_3_1">
             <field name="code">2.3.1</field>
             <field name="name" lang="en">Notes Payable</field>
+            <field name="name" lang="fr">Effets à payer</field>
             <field name="parent" ref="account_template_2_3_0"/>
             <field name="type" ref="account_type_template_financial_liabilities"/>
         </record>
@@ -888,6 +1009,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="account.account.template" id="account_template_2_3_2">
             <field name="code">2.3.2</field>
             <field name="name" lang="en">Loans Payable</field>
+            <field name="name" lang="fr">Prêts à payer</field>
             <field name="parent" ref="account_template_2_3_0"/>
             <field name="type" ref="account_type_template_financial_liabilities"/>
         </record>
@@ -895,6 +1017,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="account.account.template" id="account_template_2_3_3">
             <field name="code">2.3.3</field>
             <field name="name" lang="en">Bonds (Debentures)</field>
+            <field name="name" lang="fr">Obligations (débentures)</field>
             <field name="parent" ref="account_template_2_3_0"/>
             <field name="type" ref="account_type_template_financial_liabilities"/>
         </record>
@@ -902,6 +1025,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="account.account.template" id="account_template_2_3_4">
             <field name="code">2.3.4</field>
             <field name="name" lang="en">Other Debts And Borrowings</field>
+            <field name="name" lang="fr">Autres dettes et emprunts</field>
             <field name="parent" ref="account_template_2_3_0"/>
             <field name="type" ref="account_type_template_financial_liabilities"/>
         </record>
@@ -909,6 +1033,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="account.account.template" id="account_template_2_3_5">
             <field name="code">2.3.5</field>
             <field name="name" lang="en">Lease Obligations</field>
+            <field name="name" lang="fr">Obligations de bail</field>
             <field name="parent" ref="account_template_2_3_0"/>
             <field name="type" ref="account_type_template_financial_liabilities"/>
         </record>
@@ -916,6 +1041,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="account.account.template" id="account_template_2_3_6">
             <field name="code">2.3.6</field>
             <field name="name" lang="en">Derivative Financial Liabilities</field>
+            <field name="name" lang="fr">Passifs financiers dérivés</field>
             <field name="parent" ref="account_template_2_3_0"/>
             <field name="type" ref="account_type_template_financial_liabilities"/>
         </record>
@@ -923,6 +1049,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="account.account.template" id="account_template_2_3_7">
             <field name="code">2.3.7</field>
             <field name="name" lang="en">Other Financial Liabilities</field>
+            <field name="name" lang="fr">Autres passifs financiers</field>
             <field name="parent" ref="account_template_2_3_0"/>
             <field name="type" ref="account_type_template_financial_liabilities"/>
         </record>
@@ -930,6 +1057,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="account.account.template" id="account_template_2_4_1">
             <field name="code">2.4.1</field>
             <field name="name" lang="en">Customer Related Provisions</field>
+            <field name="name" lang="fr">Provisions relatives aux clients</field>
             <field name="parent" ref="account_template_2_4_0"/>
             <field name="type" ref="account_type_template_provisions"/>
         </record>
@@ -937,6 +1065,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="account.account.template" id="account_template_2_4_2">
             <field name="code">2.4.2</field>
             <field name="name" lang="en">Litigation And Regulatory Provisions</field>
+            <field name="name" lang="fr">Provisions relatives aux litiges et à la réglementation</field>
             <field name="parent" ref="account_template_2_4_0"/>
             <field name="type" ref="account_type_template_provisions"/>
         </record>
@@ -944,6 +1073,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="account.account.template" id="account_template_2_4_3">
             <field name="code">2.4.3</field>
             <field name="name" lang="en">Other Provisions</field>
+            <field name="name" lang="fr">Autres provisions</field>
             <field name="parent" ref="account_template_2_4_0"/>
             <field name="type" ref="account_type_template_provisions"/>
         </record>
@@ -951,6 +1081,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="account.account.template" id="account_template_3_1_1">
             <field name="code">3.1.1</field>
             <field name="name" lang="en">Equity At par (Issued Capital)</field>
+            <field name="name" lang="fr">Capitaux propres (capital émis)</field>
             <field name="parent" ref="account_template_3_1_0"/>
             <field name="type" ref="account_type_template_capital"/>
         </record>
@@ -958,6 +1089,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="account.account.template" id="account_template_3_1_2">
             <field name="code">3.1.2</field>
             <field name="name" lang="en">Additional Paid-in Capital</field>
+            <field name="name" lang="fr">Capital versé supplémentaire</field>
             <field name="parent" ref="account_template_3_1_0"/>
             <field name="type" ref="account_type_template_capital"/>
         </record>
@@ -965,6 +1097,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="account.account.template" id="account_template_3_2_1">
             <field name="code">3.2.1</field>
             <field name="name" lang="en">Appropriated</field>
+            <field name="name" lang="fr">Approprié</field>
             <field name="parent" ref="account_template_3_2_0"/>
             <field name="type" ref="account_type_template_capital"/>
         </record>
@@ -972,6 +1105,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="account.account.template" id="account_template_3_2_3">
             <field name="code">3.2.3</field>
             <field name="name" lang="en">Deficit</field>
+            <field name="name" lang="fr">Déficit</field>
             <field name="parent" ref="account_template_3_2_0"/>
             <field name="type" ref="account_type_template_capital"/>
         </record>
@@ -979,6 +1113,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="account.account.template" id="account_template_3_2_4">
             <field name="code">3.2.4</field>
             <field name="name" lang="en">In Suspense Zero</field>
+            <field name="name" lang="fr">En suspens zéro</field>
             <field name="parent" ref="account_template_3_2_0"/>
             <field name="type" ref="account_type_template_capital"/>
         </record>
@@ -986,6 +1121,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="account.account.template" id="account_template_3_3_1">
             <field name="code">3.3.1</field>
             <field name="name" lang="en">Exchange Differences On Translation</field>
+            <field name="name" lang="fr">Différences de change</field>
             <field name="parent" ref="account_template_3_3_0"/>
             <field name="type" ref="account_type_template_capital"/>
         </record>
@@ -993,6 +1129,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="account.account.template" id="account_template_3_3_2">
             <field name="code">3.3.2</field>
             <field name="name" lang="en">Cash Flow Hedges</field>
+            <field name="name" lang="fr">Couverture des flux de trésorerie</field>
             <field name="parent" ref="account_template_3_3_0"/>
             <field name="type" ref="account_type_template_capital"/>
         </record>
@@ -1000,6 +1137,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="account.account.template" id="account_template_3_3_3">
             <field name="code">3.3.3</field>
             <field name="name" lang="en">Gains And Losses On Remeasuring Available-For-Sale Investments</field>
+            <field name="name" lang="fr">Gains et pertes sur la réévaluation des investissements disponibles à la vente</field>
             <field name="parent" ref="account_template_3_3_0"/>
             <field name="type" ref="account_type_template_capital"/>
         </record>
@@ -1007,6 +1145,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="account.account.template" id="account_template_3_3_4">
             <field name="code">3.3.4</field>
             <field name="name" lang="en">Remeasurements Of Defined Benefit Plans</field>
+            <field name="name" lang="fr">Réévaluations des régimes à prestations déterminées</field>
             <field name="parent" ref="account_template_3_3_0"/>
             <field name="type" ref="account_type_template_capital"/>
         </record>
@@ -1014,6 +1153,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="account.account.template" id="account_template_3_3_5">
             <field name="code">3.3.5</field>
             <field name="name" lang="en">Revaluation Surplus (IFRS only)</field>
+            <field name="name" lang="fr">Excédent de réévaluation (IFRS uniquement)</field>
             <field name="parent" ref="account_template_3_3_0"/>
             <field name="type" ref="account_type_template_capital"/>
         </record>
@@ -1021,6 +1161,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="account.account.template" id="account_template_3_4_1">
             <field name="code">3.4.1</field>
             <field name="name" lang="en">ESOP Related Items</field>
+            <field name="name" lang="fr">Éléments liés à ESOP</field>
             <field name="parent" ref="account_template_3_4_0"/>
             <field name="type" ref="account_type_template_capital"/>
         </record>
@@ -1028,6 +1169,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="account.account.template" id="account_template_3_4_2">
             <field name="code">3.4.2</field>
             <field name="name" lang="en">Subscribed Stock Receivables</field>
+            <field name="name" lang="fr">Créances sur actions souscrites</field>
             <field name="parent" ref="account_template_3_4_0"/>
             <field name="type" ref="account_type_template_capital"/>
         </record>
@@ -1035,6 +1177,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="account.account.template" id="account_template_3_4_3">
             <field name="code">3.4.3</field>
             <field name="name" lang="en">Treasury Stock (Not Extinguished)</field>
+            <field name="name" lang="fr">Actions propres (non liquidées)</field>
             <field name="parent" ref="account_template_3_4_0"/>
             <field name="type" ref="account_type_template_capital"/>
         </record>
@@ -1042,6 +1185,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="account.account.template" id="account_template_3_4_4">
             <field name="code">3.4.4</field>
             <field name="name" lang="en">Miscellaneous Equity</field>
+            <field name="name" lang="fr">Divers capitaux propres</field>
             <field name="parent" ref="account_template_3_4_0"/>
             <field name="type" ref="account_type_template_capital"/>
         </record>
@@ -1049,6 +1193,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="account.account.template" id="account_template_4_1_1">
             <field name="code">4.1.1</field>
             <field name="name" lang="en">Goods</field>
+            <field name="name" lang="fr">Marchandises</field>
             <field name="parent" ref="account_template_4_1_0"/>
             <field name="type" ref="account_type_template_revenue"/>
         </record>
@@ -1056,6 +1201,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="account.account.template" id="account_template_4_1_2">
             <field name="code">4.1.2</field>
             <field name="name" lang="en">Services</field>
+            <field name="name" lang="fr">Services</field>
             <field name="parent" ref="account_template_4_1_0"/>
             <field name="type" ref="account_type_template_revenue"/>
         </record>
@@ -1063,6 +1209,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="account.account.template" id="account_template_4_2_1">
             <field name="code">4.2.1</field>
             <field name="name" lang="en">Products</field>
+            <field name="name" lang="fr">Produits</field>
             <field name="parent" ref="account_template_4_2_0"/>
             <field name="type" ref="account_type_template_revenue"/>
         </record>
@@ -1070,6 +1217,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="account.account.template" id="account_template_4_2_2">
             <field name="code">4.2.2</field>
             <field name="name" lang="en">Services</field>
+            <field name="name" lang="fr">Services</field>
             <field name="parent" ref="account_template_4_2_0"/>
             <field name="type" ref="account_type_template_revenue"/>
         </record>
@@ -1077,6 +1225,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="account.account.template" id="account_template_4_3_1">
             <field name="code">4.3.1</field>
             <field name="name" lang="en">Variable Consideration</field>
+            <field name="name" lang="fr">Contrepartie variable</field>
             <field name="parent" ref="account_template_4_3_0"/>
             <field name="type" ref="account_type_template_revenue"/>
         </record>
@@ -1084,6 +1233,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="account.account.template" id="account_template_4_3_2">
             <field name="code">4.3.2</field>
             <field name="name" lang="en">Consideration Paid (Payable) To Customers</field>
+            <field name="name" lang="fr">Contrepartie payée (à payer) aux clients</field>
             <field name="parent" ref="account_template_4_3_0"/>
             <field name="type" ref="account_type_template_revenue"/>
         </record>
@@ -1091,6 +1241,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="account.account.template" id="account_template_4_3_3">
             <field name="code">4.3.3</field>
             <field name="name" lang="en">Other Adjustments</field>
+            <field name="name" lang="fr">Autres ajustements</field>
             <field name="parent" ref="account_template_4_3_0"/>
             <field name="type" ref="account_type_template_revenue"/>
         </record>
@@ -1098,6 +1249,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="account.account.template" id="account_template_5_1_1">
             <field name="code">5.1.1</field>
             <field name="name" lang="en">Merchandise, Material, Parts And Supplies</field>
+            <field name="name" lang="fr">Marchandises, matériel, pièces et fournitures</field>
             <field name="parent" ref="account_template_5_1_0"/>
             <field name="type" ref="account_type_template_cos"/>
         </record>
@@ -1105,12 +1257,14 @@ this repository contains the full copyright notices and license terms. -->
         <record model="account.account.template" id="account_template_5_1_2">
             <field name="code">5.1.2</field>
             <field name="name" lang="en">Employee Benefits</field>
+            <field name="name" lang="fr">Avantages sociaux pour les employés</field>
             <field name="parent" ref="account_template_5_1_0"/>
         </record>
 
         <record model="account.account.template" id="account_template_5_1_3">
             <field name="code">5.1.3</field>
             <field name="name" lang="en">Services</field>
+            <field name="name" lang="fr">Services</field>
             <field name="parent" ref="account_template_5_1_0"/>
             <field name="type" ref="account_type_template_cos"/>
         </record>
@@ -1118,6 +1272,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="account.account.template" id="account_template_5_1_4">
             <field name="code">5.1.4</field>
             <field name="name" lang="en">Rent, Depreciation, Amortization And Depletion</field>
+            <field name="name" lang="fr">Loyer, dépréciation, amortissement et épuisement</field>
             <field name="parent" ref="account_template_5_1_0"/>
             <field name="type" ref="account_type_template_depreciation"/>
         </record>
@@ -1125,6 +1280,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="account.account.template" id="account_template_5_1_5">
             <field name="code">5.1.5</field>
             <field name="name" lang="en">Increase (Decrease) In Inventories Of Finished Goods And Work In Progress</field>
+            <field name="name" lang="fr">Augmentation (diminution) des stocks de produits finis et de travaux en cours</field>
             <field name="parent" ref="account_template_5_1_0"/>
             <field name="type" ref="account_type_template_sga"/>
         </record>
@@ -1132,12 +1288,14 @@ this repository contains the full copyright notices and license terms. -->
         <record model="account.account.template" id="account_template_5_1_6">
             <field name="code">5.1.6</field>
             <field name="name" lang="en">Other Work Performed By Entity And Capitalized</field>
+            <field name="name" lang="fr">Autres travaux effectués par l'entité et capitalisés</field>
             <field name="parent" ref="account_template_5_1_0"/>
         </record>
 
         <record model="account.account.template" id="account_template_5_2_1">
             <field name="code">5.2.1</field>
             <field name="name" lang="en">Cost Of Sales</field>
+            <field name="name" lang="fr">Coût des ventes</field>
             <field name="parent" ref="account_template_5_1_0"/>
             <field name="type" ref="account_type_template_cos"/>
         </record>
@@ -1145,6 +1303,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="account.account.template" id="account_template_5_2_2">
             <field name="code">5.2.2</field>
             <field name="name" lang="en">Selling, General And Administrative</field>
+            <field name="name" lang="fr">Vente, Général et Administratif</field>
             <field name="parent" ref="account_template_5_2_0"/>
             <field name="type" ref="account_type_template_sga"/>
         </record>
@@ -1152,6 +1311,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="account.account.template" id="account_template_5_2_3">
             <field name="code">5.2.3</field>
             <field name="name" lang="en">Credit Loss (Reversal) On Receivables</field>
+            <field name="name" lang="fr">Perte de crédit (annulation) sur créances</field>
             <field name="parent" ref="account_template_5_2_0"/>
             <field name="type" ref="account_type_template_cos"/>
         </record>
@@ -1159,6 +1319,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="account.account.template" id="account_template_6_1_1">
             <field name="code">6.1.1</field>
             <field name="name" lang="en">Other Revenue</field>
+            <field name="name" lang="fr">Autres revenus</field>
             <field name="parent" ref="account_template_6_1_0"/>
             <field name="type" ref="account_type_template_other_revenues"/>
         </record>
@@ -1166,6 +1327,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="account.account.template" id="account_template_6_1_2">
             <field name="code">6.1.2</field>
             <field name="name" lang="en">Other Expenses</field>
+            <field name="name" lang="fr">Autres dépenses</field>
             <field name="parent" ref="account_template_6_1_0"/>
             <field name="type" ref="account_type_template_other_expenses"/>
         </record>
@@ -1173,6 +1335,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="account.account.template" id="account_template_6_2_1">
             <field name="code">6.2.1</field>
             <field name="name" lang="en">Foreign Currency Transaction Gain (Loss)</field>
+            <field name="name" lang="fr">Gain (perte) sur transaction en devises étrangères</field>
             <field name="parent" ref="account_template_6_2_0"/>
             <field name="type" ref="account_type_template_finance_costs"/>
         </record>
@@ -1180,6 +1343,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="account.account.template" id="account_template_6_2_2">
             <field name="code">6.2.2</field>
             <field name="name" lang="en">Gain (Loss) On Investments</field>
+            <field name="name" lang="fr">Gain (perte) sur investissements</field>
             <field name="parent" ref="account_template_6_2_0"/>
             <field name="type" ref="account_type_template_finance_costs"/>
         </record>
@@ -1187,6 +1351,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="account.account.template" id="account_template_6_2_3">
             <field name="code">6.2.3</field>
             <field name="name" lang="en">Gain (Loss) On Derivatives</field>
+            <field name="name" lang="fr">Gain (perte) sur produits dérivés</field>
             <field name="parent" ref="account_template_6_2_0"/>
             <field name="type" ref="account_type_template_finance_costs"/>
         </record>
@@ -1194,6 +1359,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="account.account.template" id="account_template_6_2_4">
             <field name="code">6.2.4</field>
             <field name="name" lang="en">Crypto Asset Gain (Loss)</field>
+            <field name="name" lang="fr">Gain (perte) sur actifs de cryptomonnaie</field>
             <field name="parent" ref="account_template_6_2_0"/>
             <field name="type" ref="account_type_template_finance_costs"/>
         </record>
@@ -1201,6 +1367,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="account.account.template" id="account_template_6_2_5">
             <field name="code">6.2.5</field>
             <field name="name" lang="en">Gain (Loss) On Disposal Of Assets</field>
+            <field name="name" lang="fr">Gain (perte) sur cession d'actifs</field>
             <field name="parent" ref="account_template_6_2_0"/>
             <field name="type" ref="account_type_template_finance_costs"/>
         </record>
@@ -1208,6 +1375,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="account.account.template" id="account_template_6_2_6">
             <field name="code">6.2.6</field>
             <field name="name" lang="en">Debt Related Gain (Loss)</field>
+            <field name="name" lang="fr">Gain (perte) lié à la dette</field>
             <field name="parent" ref="account_template_6_2_0"/>
             <field name="type" ref="account_type_template_finance_costs"/>
         </record>
@@ -1215,6 +1383,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="account.account.template" id="account_template_6_2_7">
             <field name="code">6.2.7</field>
             <field name="name" lang="en">Impairment Loss</field>
+            <field name="name" lang="fr">Perte de valeur</field>
             <field name="parent" ref="account_template_6_2_0"/>
             <field name="type" ref="account_type_template_finance_costs"/>
         </record>
@@ -1222,6 +1391,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="account.account.template" id="account_template_6_2_8">
             <field name="code">6.2.8</field>
             <field name="name" lang="en">Other Gains And Losses</field>
+            <field name="name" lang="fr">Autres gains et pertes</field>
             <field name="parent" ref="account_template_6_2_0"/>
             <field name="type" ref="account_type_template_finance_costs"/>
         </record>
@@ -1229,6 +1399,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="account.account.template" id="account_template_6_3_1">
             <field name="code">6.3.1</field>
             <field name="name" lang="en">Real Estate Taxes And Insurance</field>
+            <field name="name" lang="fr">Taxes foncières et assurances</field>
             <field name="parent" ref="account_template_6_3_0"/>
             <field name="type" ref="account_type_template_current_tax"/>
         </record>
@@ -1236,6 +1407,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="account.account.template" id="account_template_6_3_2">
             <field name="code">6.3.2</field>
             <field name="name" lang="en">Highway (Road) Taxes And Tolls</field>
+            <field name="name" lang="fr">Taxes et péages routiers</field>
             <field name="parent" ref="account_template_6_3_0"/>
             <field name="type" ref="account_type_template_current_tax"/>
         </record>
@@ -1243,6 +1415,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="account.account.template" id="account_template_6_3_3">
             <field name="code">6.3.3</field>
             <field name="name" lang="en">Direct Tax And License Fees</field>
+            <field name="name" lang="fr">Impôt direct et droits de licence</field>
             <field name="parent" ref="account_template_6_3_0"/>
             <field name="type" ref="account_type_template_current_tax"/>
         </record>
@@ -1250,6 +1423,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="account.account.template" id="account_template_6_3_4">
             <field name="code">6.3.4</field>
             <field name="name" lang="en">Excise And Sales Taxes</field>
+            <field name="name" lang="fr">Accises et taxes de vente</field>
             <field name="parent" ref="account_template_6_3_0"/>
             <field name="type" ref="account_type_template_current_tax"/>
         </record>
@@ -1257,6 +1431,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="account.account.template" id="account_template_6_3_5">
             <field name="code">6.3.5</field>
             <field name="name" lang="en">Customs Fees And Duties (Not Classified As Sales Or Excise)</field>
+            <field name="name" lang="fr">Droits et taxes de douane (non classés comme ventes ou accises)</field>
             <field name="parent" ref="account_template_6_3_0"/>
             <field name="type" ref="account_type_template_current_tax"/>
         </record>
@@ -1264,6 +1439,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="account.account.template" id="account_template_6_3_6">
             <field name="code">6.3.6</field>
             <field name="name" lang="en">Non-Deductible VAT (GST)</field>
+            <field name="name" lang="fr">TVA non déductible (TPS)</field>
             <field name="parent" ref="account_template_6_3_0"/>
             <field name="type" ref="account_type_template_current_tax"/>
         </record>
@@ -1271,6 +1447,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="account.account.template" id="account_template_6_3_7">
             <field name="code">6.3.7</field>
             <field name="name" lang="en">General Insurance Expense</field>
+            <field name="name" lang="fr">Frais d'assurance générale</field>
             <field name="parent" ref="account_template_6_3_0"/>
             <field name="type" ref="account_type_template_current_tax"/>
         </record>
@@ -1278,6 +1455,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="account.account.template" id="account_template_6_3_8">
             <field name="code">6.3.8</field>
             <field name="name" lang="en">Administrative Fees (Revenue Stamps)</field>
+            <field name="name" lang="fr">Frais administratifs (timbres fiscaux)</field>
             <field name="parent" ref="account_template_6_3_0"/>
             <field name="type" ref="account_type_template_current_tax"/>
         </record>
@@ -1285,6 +1463,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="account.account.template" id="account_template_6_3_9">
             <field name="code">6.3.9</field>
             <field name="name" lang="en">Fines And Penalties</field>
+            <field name="name" lang="fr">Amendes et pénalités</field>
             <field name="parent" ref="account_template_6_3_0"/>
             <field name="type" ref="account_type_template_current_tax"/>
         </record>
@@ -1292,6 +1471,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="account.account.template" id="account_template_6_3_10">
             <field name="code">6.3.10</field>
             <field name="name" lang="en">Miscellaneous Taxes</field>
+            <field name="name" lang="fr">Taxes diverses</field>
             <field name="parent" ref="account_template_6_3_0"/>
             <field name="type" ref="account_type_template_current_tax"/>
         </record>
@@ -1299,6 +1479,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="account.account.template" id="account_template_6_3_11">
             <field name="code">6.3.11</field>
             <field name="name" lang="en">Other Taxes And Fees</field>
+            <field name="name" lang="fr">Autres taxes et frais</field>
             <field name="parent" ref="account_template_6_3_0"/>
             <field name="type" ref="account_type_template_current_tax"/>
         </record>
