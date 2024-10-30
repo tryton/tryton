@@ -887,14 +887,15 @@ class MoveLineMixin:
         return balances
 
     def get_rec_name(self, name):
-        if self.debit > self.credit:
-            return self.account.rec_name
-        else:
-            return '(%s)' % self.account.rec_name
+        pool = Pool()
+        Lang = pool.get('ir.lang')
+        lang = Lang.get()
+        amount = lang.currency(self.amount, self.amount_currency)
+        return f'{amount} @ {self.account.code}'
 
     @classmethod
     def search_rec_name(cls, name, clause):
-        return [('account.rec_name',) + tuple(clause[1:])]
+        return [('account.code', *clause[1:])]
 
 
 class Line(DescriptionOriginMixin, MoveLineMixin, ModelSQL, ModelView):
