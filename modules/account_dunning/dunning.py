@@ -204,6 +204,21 @@ class Dunning(ModelSQL, ModelView):
         else:
             return []
 
+    def get_rec_name(self, name):
+        return f'{self.level.rec_name} [{self.line.rec_name}]'
+
+    @classmethod
+    def search_rec_name(cls, name, clause):
+        _, operator, operand, *extra = clause
+        if operator.startswith('!') or operator.startswith('not '):
+            bool_op = 'AND'
+        else:
+            bool_op = 'OR'
+        return [bool_op,
+            ('level.rec_name', operator, operand, *extra),
+            ('line.rec_name', operator, operand, *extra),
+            ]
+
     @classmethod
     def _overdue_line_domain(cls, date):
         return [
