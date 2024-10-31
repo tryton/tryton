@@ -1,7 +1,8 @@
 #!/bin/sh
 set -eu
 
-OUTPUT=`mktemp -d`
+OUTPUT=${1:-`mktemp -d`}
+
 find modules -name setup.py -print | while read path
 do
     path=`dirname "${path}"`

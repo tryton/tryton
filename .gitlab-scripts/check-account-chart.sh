@@ -1,7 +1,7 @@
 #!/bin/sh
 set -eu
 
-OUTPUT=`mktemp -d`
+OUTPUT=${1:-`mktemp -d`}
 
 for module in account account_asset account_deposit sale_advance_payment
 do
