@@ -76,7 +76,7 @@ class Journal(metaclass=PoolMeta):
             },
         domain=[
             ('type', '=', 'iban'),
-            ('account.owners', '=', Eval('company_party')),
+            ('account.owners', '=', Eval('company_party', -1)),
             ])
     sepa_payable_flavor = fields.Selection([
             (None, ''),
@@ -495,7 +495,7 @@ class Mandate(Workflow, ModelSQL, ModelView):
             },
         domain=[
             ('type', '=', 'iban'),
-            ('account.owners', '=', Eval('party')),
+            ('account.owners', '=', Eval('party', -1)),
             ])
     identification = fields.Char('Identification', size=35,
         states={

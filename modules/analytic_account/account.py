@@ -387,7 +387,7 @@ class AnalyticAccountEntry(ModelView, ModelSQL):
     account = fields.Many2One('analytic_account.account', 'Account',
         ondelete='RESTRICT',
         domain=[
-            ('root', '=', Eval('root')),
+            ('root', '=', Eval('root', -1)),
             ('type', 'in', ['normal', 'distribution']),
             ])
     company = fields.Function(fields.Many2One('company.company', 'Company'),

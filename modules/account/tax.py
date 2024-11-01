@@ -1575,7 +1575,7 @@ class TaxRuleLineTemplate(sequence_ordered(), ModelSQL, ModelView):
     origin_tax = fields.Many2One('account.tax.template', 'Original Tax',
         domain=[
             ('parent', '=', None),
-            ('account', '=', Eval('_parent_rule', {}).get('account', 0)),
+            ('account', '=', Eval('_parent_rule', {}).get('account', -1)),
             ('group', '=', Eval('group', -1)),
             ['OR',
                 ('group', '=', None),
@@ -1698,7 +1698,7 @@ class TaxRuleLine(sequence_ordered(), ModelSQL, ModelView, MatchMixin):
         domain=[
             ('parent', '=', None),
             ('company', '=', Eval('_parent_rule', {}).get('company', -1)),
-            ('group', '=', Eval('group')),
+            ('group', '=', Eval('group', -1)),
             ['OR',
                 ('group', '=', None),
                 If(Eval('_parent_rule', {}).get('kind', 'both') == 'sale',
@@ -1719,7 +1719,7 @@ class TaxRuleLine(sequence_ordered(), ModelSQL, ModelView, MatchMixin):
         domain=[
             ('parent', '=', None),
             ('company', '=', Eval('_parent_rule', {}).get('company', -1)),
-            ('group', '=', Eval('group')),
+            ('group', '=', Eval('group', -1)),
             ['OR',
                 ('group', '=', None),
                 If(Eval('_parent_rule', {}).get('kind', 'both') == 'sale',

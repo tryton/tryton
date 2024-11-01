@@ -36,7 +36,7 @@ class InvoiceCorrectStart(ModelView):
     lines = fields.Many2Many('account.invoice.line', None, None,
         'Invoice Lines',
         domain=[
-            ('invoice', '=', Eval('invoice')),
+            ('invoice', '=', Eval('invoice', -1)),
             ('type', '=', 'line'),
             ])
 

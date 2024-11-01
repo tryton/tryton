@@ -61,7 +61,7 @@ class PaymentJournal(metaclass=PoolMeta):
     braintree_account = fields.Many2One(
         'account.payment.braintree.account', "Account", ondelete='RESTRICT',
         domain=[
-            ('currency', '=', Eval('currency')),
+            ('currency', '=', Eval('currency', -1)),
             ],
         states={
             'required': Eval('process_method') == 'braintree',

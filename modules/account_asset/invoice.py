@@ -10,7 +10,7 @@ class InvoiceLine(metaclass=PoolMeta):
     __name__ = 'account.invoice.line'
     asset = fields.Many2One('account.asset', 'Asset', domain=[
             ('state', '=', 'running'),
-            ('product', '=', Eval('product')),
+            ('product', '=', Eval('product', -1)),
             ],
         states={
             'invisible': (~Eval('is_assets_depreciable', False)
