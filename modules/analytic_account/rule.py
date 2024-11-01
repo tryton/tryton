@@ -18,7 +18,8 @@ class Rule(sequence_ordered(), MatchMixin, AnalyticMixin, ModelSQL, ModelView):
         'account.account', "Account",
         domain=[
             ('company', '=', Eval('company', -1)),
-            ('type', '!=', 'view'),
+            ('type', '!=', None),
+            ('closed', '!=', True),
             ],
         depends=['company'])
     party = fields.Many2One(
