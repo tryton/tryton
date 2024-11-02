@@ -218,6 +218,7 @@ msgctxt "model:ir.action,name:act_rule_form"
 msgid "Rules"
 msgstr "Regels"
 
+#, python-format
 msgctxt "model:ir.message,text:msg_account_wrong_type_line"
 msgid ""
 "You cannot change the type of account \"%(account)s\" because it has move "
@@ -226,6 +227,7 @@ msgstr ""
 "U het soort van grootboekrekening \"%(account)s\" niet wijzigen omdat er "
 "boekingsregels zijn gekoppeld."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_analytic_account_root_change"
 msgid ""
 "You cannot change the root of the analytic account \"%(account)s\" which is "
@@ -234,6 +236,7 @@ msgstr ""
 "U kunt de basis van de analytische grootboekrekening \"%(account)s\" niet "
 "wijzigen omdat er een analytische regel is gekoppeld."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_invalid_distribution"
 msgid ""
 "To save account \"%(account)s\" the sum of their distributions must be "

@@ -94,18 +94,21 @@ msgctxt "model:ir.action,name:act_bank_form"
 msgid "Banks"
 msgstr "Banke"
 
+#, python-format
 msgctxt "model:ir.message,text:msg_account_iban_invalid_bic"
 msgid "The BIC of \"%(account)s\" is not valid with the \"%(bic)s\" from IBAN."
-msgstr "BIC \"%(bic)\" računa \"%(account)s\" ni veljaven za IBAN."
+msgstr "BIC \"%(bic)s\" računa \"%(account)s\" ni veljaven za IBAN."
 
 msgctxt "model:ir.message,text:msg_account_iban_unique"
 msgid "Account can have only one IBAN."
 msgstr "Bančni račun sme imeti samo en IBAN."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_invalid_bic"
 msgid "The BIC \"%(bic)s\" is not valid."
 msgstr "BIC \"%(bic)s\" ni veljaven."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_invalid_iban"
 msgid "IBAN \"%(number)s\" is not valid."
 msgstr "IBAN \"%(number)s\" ni veljaven."

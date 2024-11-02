@@ -23,11 +23,12 @@ msgctxt "help:res.user,mobile:"
 msgid "Phone number that supports receiving SMS."
 msgstr "ເລກໂທລະສັບ ທີ່ຮອງຮັບ ການຮັບຂໍ້ຄວາມສັ້ນ"
 
-#, fuzzy
+#, fuzzy, python-format
 msgctxt "model:ir.message,text:msg_sms_text"
 msgid "%(name)s code %(code)s"
 msgstr "%(name)s ລະຫັດ %(code)s"
 
+#, python-format
 msgctxt "model:ir.message,text:msg_user_sms_code"
 msgid "SMS Code for %(login)s"
 msgstr ""

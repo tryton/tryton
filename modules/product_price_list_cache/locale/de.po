@@ -8,7 +8,7 @@ msgstr "Schema"
 
 msgctxt "field:product.price_list.cache,price_list:"
 msgid "Price List"
-msgstr "Preisliste"
+msgstr "Preiskonditionsschema"
 
 msgctxt "field:product.price_list.cache,product:"
 msgid "Product"
@@ -24,7 +24,7 @@ msgstr "Maßeinheit"
 
 msgctxt "field:product.product,cached_price_lists:"
 msgid "Cached Price Lists"
-msgstr "Preislisten Cache"
+msgstr "Preiskonditionsschemata Cache"
 
 msgctxt "help:product.price_list.cache,uom:"
 msgid "The Unit of Measure."
@@ -32,8 +32,8 @@ msgstr "Die Maßeinheit."
 
 msgctxt "model:product.price_list.cache,name:"
 msgid "Price List Cache"
-msgstr "Preisliste Cache"
+msgstr "Preiskonditionsschema Cache"
 
 msgctxt "selection:ir.cron,method:"
 msgid "Fill Product Price List Cache"
-msgstr "Artikel Preislisten Cache aktualisieren"
+msgstr "Artikel Preiskonditionschema Cache aktualisieren"

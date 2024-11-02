@@ -18,6 +18,7 @@ msgctxt "help:stock.move,fifo_quantity_available:"
 msgid "Quantity available for FIFO"
 msgstr "Quantité disponible pour PEPS"
 
+#, python-format
 msgctxt "model:ir.message,text:msg_move_cancel_fifo"
 msgid ""
 "You cannot cancel move \"%(move)s\" because it is used for FIFO cost price "
@@ -26,6 +27,7 @@ msgstr ""
 "Vous ne pouvez pas annuler le mouvement « %(move)s » parce qu'il est utilisé"
 " pour le calcul PEPS du prix de revient."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_move_delete_fifo"
 msgid ""
 "You cannot delete move \"%(move)s\" because it is used for FIFO cost price "

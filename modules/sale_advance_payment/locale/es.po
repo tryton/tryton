@@ -162,14 +162,11 @@ msgstr ""
 "Retraso a aplicar sobre la fecha de venta para obtener la fecha de la "
 "factura de pago por adelantado."
 
-msgctxt "model:ir.action,name:act_advance_invoice_form"
-msgid "Advance Invoices"
-msgstr "Facturas por adelantado"
-
 msgctxt "model:ir.action,name:act_advance_payment_term_form"
 msgid "Advance Payment Terms"
 msgstr "Plazos de pago por adelantado"
 
+#, python-format
 msgctxt "model:ir.message,text:msg_shipping_blocked"
 msgid ""
 "To pack shipments the customer must paid the advance payment for sale "
@@ -178,6 +175,7 @@ msgstr ""
 "Para empaquetar los albaranes de cliente debe pagar el pago adelantado de la"
 " venta \"%(sale)s\"."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_term_line_invalid_formula"
 msgid ""
 "Invalid formula \"%(formula)s\" in term line \"%(term_line)s\" with "

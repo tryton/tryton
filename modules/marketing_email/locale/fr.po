@@ -3,12 +3,12 @@ msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "field:marketing.email,email:"
-msgid "E-mail"
-msgstr "E-mail"
+msgid "Email"
+msgstr "Adresse électronique"
 
 msgctxt "field:marketing.email,email_token:"
-msgid "E-mail Token"
-msgstr "Jeton d'E-mail"
+msgid "Email Token"
+msgstr "Jeton de courrier électronique"
 
 msgctxt "field:marketing.email,list_:"
 msgid "List"
@@ -24,7 +24,7 @@ msgstr "Utilisateur web"
 
 msgctxt "field:marketing.email.list,emails:"
 msgid "Emails"
-msgstr "E-mails"
+msgstr "Courriels"
 
 msgctxt "field:marketing.email.list,language:"
 msgid "Language"
@@ -63,8 +63,8 @@ msgid "URLs"
 msgstr "URLs"
 
 msgctxt "field:marketing.email.send_test,email:"
-msgid "E-Mail"
-msgstr "E-mail"
+msgid "Email"
+msgstr "Adresse électronique"
 
 msgctxt "field:marketing.email.send_test,list_:"
 msgid "List"
@@ -87,8 +87,8 @@ msgid "Messages"
 msgstr "Messages"
 
 msgctxt "model:ir.action,name:act_email_relate_list"
-msgid "E-mails"
-msgstr "E-mails"
+msgid "Emails"
+msgstr "Adresses électroniques"
 
 msgctxt "model:ir.action,name:report_email_subscribe"
 msgid "Subscribe Request"
@@ -115,16 +115,19 @@ msgctxt ""
 msgid "Sending"
 msgstr "Envoi en cours"
 
+#, python-format
 msgctxt "model:ir.message,text:msg_email_invalid"
 msgid "The email address \"%(email)s\" for \"%(record)s\" is not valid."
-msgstr "L'adresse e-mail « %(email)s » pour « %(record)s » n'est pas valide."
+msgstr ""
+"L'adresse de courriel « %(email)s » pour « %(record)s » n'est pas valide."
 
 msgctxt "model:ir.message,text:msg_email_list_unique"
 msgid "Email addresses can only be subscribed once to each list."
 msgstr ""
-"Les adresses e-mail ne peuvent être abonnées qu'une seule fois à chaque "
-"liste."
+"Les adresses de courriel ne peuvent être abonnées qu'une seule fois à chaque"
+" liste."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_message_invalid_content"
 msgid "Invalid content in message \"%(message)s\" with exception \"%(exception)s\"."
 msgstr ""
@@ -148,20 +151,20 @@ msgid "Mailing Lists"
 msgstr "Listes de diffusion"
 
 msgctxt "model:marketing.email,name:"
-msgid "Marketing E-mail"
-msgstr "E-mail marketing"
+msgid "Marketing Email"
+msgstr "Courriel marketing"
 
 msgctxt "model:marketing.email.list,name:"
 msgid "Marketing Mailing List"
 msgstr "Liste de diffusion marketing"
 
 msgctxt "model:marketing.email.message,name:"
-msgid "Marketing E-mail Message"
-msgstr "Message e-mail marketing"
+msgid "Marketing Email Message"
+msgstr "Message de courriel marketing"
 
 msgctxt "model:marketing.email.send_test,name:"
-msgid "Send Test E-mail"
-msgstr "Envoyer un e-mail de test"
+msgid "Send Test Email"
+msgstr "Envoyer un courriel de test"
 
 msgctxt "report:marketing.email.subscribe:"
 msgid "Button is not working? Paste this into your browser:"
@@ -169,7 +172,7 @@ msgstr "Le bouton ne fonctionne pas ? Copier ceci dans votre navigateur :"
 
 msgctxt "report:marketing.email.subscribe:"
 msgid "If you received this email by mistake, just ignore it."
-msgstr "Si vous avez reçu cet E-mail par erreur, ignorez le."
+msgstr "Si vous avez reçu ce courriel par erreur, ignorez le."
 
 msgctxt "report:marketing.email.subscribe:"
 msgid "Just one more step..."
@@ -189,7 +192,7 @@ msgstr "Le bouton ne fonctionne pas ? Copier ceci dans votre navigateur :"
 
 msgctxt "report:marketing.email.unsubscribe:"
 msgid "If you received this email by mistake, just ignore it."
-msgstr "Si vous avez reçu cet E-mail par erreur, ignorez le."
+msgstr "Si vous avez reçu ce courriel par erreur, ignorez le."
 
 msgctxt "report:marketing.email.unsubscribe:"
 msgid "Just one more step..."

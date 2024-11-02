@@ -8,7 +8,7 @@ msgstr ""
 
 msgctxt "field:account.configuration,default_category_account_revenue:"
 msgid "Default Account Revenue"
-msgstr ""
+msgstr "Domyślne konto przychodów"
 
 msgctxt ""
 "field:account.configuration.default_account,default_category_account_expense:"
@@ -18,7 +18,7 @@ msgstr ""
 msgctxt ""
 "field:account.configuration.default_account,default_category_account_revenue:"
 msgid "Default Account Revenue"
-msgstr ""
+msgstr "Domyślne konto przychodów"
 
 msgctxt "field:account.create_chart.properties,category_account_expense:"
 msgid "Default Expense Account"
@@ -28,7 +28,6 @@ msgctxt "field:account.create_chart.properties,category_account_revenue:"
 msgid "Default Revenue Account"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:analytic_account.rule,product:"
 msgid "Product"
 msgstr "Produkt"
@@ -39,19 +38,19 @@ msgstr ""
 
 msgctxt "field:product.category,account_expense:"
 msgid "Account Expense"
-msgstr ""
+msgstr "Konto kosztów"
 
 msgctxt "field:product.category,account_parent:"
 msgid "Use Parent's accounts"
-msgstr ""
+msgstr "Użyj kont nadrzędnych"
 
 msgctxt "field:product.category,account_revenue:"
 msgid "Account Revenue"
-msgstr ""
+msgstr "Konto Przychodów"
 
 msgctxt "field:product.category,accounting:"
 msgid "Accounting"
-msgstr ""
+msgstr "Księgowanie"
 
 msgctxt "field:product.category,accounts:"
 msgid "Accounts"
@@ -59,7 +58,7 @@ msgstr "Konta"
 
 msgctxt "field:product.category,customer_taxes:"
 msgid "Customer Taxes"
-msgstr ""
+msgstr "Podatki przy sprzedaży"
 
 msgctxt "field:product.category,customer_taxes_used:"
 msgid "Customer Taxes Used"
@@ -67,11 +66,11 @@ msgstr ""
 
 msgctxt "field:product.category,supplier_taxes:"
 msgid "Supplier Taxes"
-msgstr ""
+msgstr "Podatki przy zakupie"
 
 msgctxt "field:product.category,supplier_taxes_deductible_rate:"
 msgid "Supplier Taxes Deductible Rate"
-msgstr ""
+msgstr "Stawka odliczenia podatku dostawcy"
 
 msgctxt "field:product.category,supplier_taxes_used:"
 msgid "Supplier Taxes Used"
@@ -79,7 +78,7 @@ msgstr ""
 
 msgctxt "field:product.category,taxes_parent:"
 msgid "Use the Parent's Taxes"
-msgstr ""
+msgstr "Użyj podatków z kategorii nadrzędnej"
 
 msgctxt "field:product.category-customer-account.tax,category:"
 msgid "Category"
@@ -115,11 +114,11 @@ msgstr "Firma"
 
 msgctxt "field:product.product,account_category:"
 msgid "Account Category"
-msgstr ""
+msgstr "Kategoria konta"
 
 msgctxt "field:product.template,account_category:"
 msgid "Account Category"
-msgstr ""
+msgstr "Kategoria konta"
 
 msgctxt "field:product.template-product.category.account,category:"
 msgid "Category"
@@ -131,28 +130,30 @@ msgstr "Szablon"
 
 msgctxt "help:product.category,account_parent:"
 msgid "Use the accounts defined on the parent category."
-msgstr ""
+msgstr "Użyj kont zdefiniowanych w kategorii nadrzędnej."
 
 msgctxt "help:product.category,accounting:"
 msgid "Check to indicate the category is used for accounting."
-msgstr ""
+msgstr "Zaznacz jeśli kategoria ma być użyta do księgowania."
 
 msgctxt "help:product.category,customer_taxes:"
 msgid "The taxes to apply when selling products of this category."
-msgstr ""
+msgstr "Podatki do zastosownia przy sprzedaży produktów tej kategorii."
 
 msgctxt "help:product.category,supplier_taxes:"
 msgid "The taxes to apply when purchasing products of this category."
-msgstr ""
+msgstr "Podatki do zastosownia przy zakupie produktów tej kategorii."
 
 msgctxt "help:product.category,taxes_parent:"
 msgid "Use the taxes defined on the parent category."
-msgstr ""
+msgstr "Użyj podatków zdefiniowanych w kategorii nadrzędnej."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_missing_account"
 msgid "There is no \"%(field)s\" defined for \"%(name)s\"."
 msgstr ""
 
+#, python-format
 msgctxt "model:ir.message,text:msg_missing_taxes"
 msgid "There is no account category defined on product \"%(name)s\"."
 msgstr ""
@@ -185,7 +186,6 @@ msgctxt "model:res.group,name:group_account_product_admin"
 msgid "Account Product Administration"
 msgstr ""
 
-#, fuzzy
 msgctxt "view:account.configuration:"
 msgid "Product"
 msgstr "Produkt"
@@ -196,7 +196,7 @@ msgstr "Produkt"
 
 msgctxt "view:product.category:"
 msgid "Accounting"
-msgstr ""
+msgstr "Księgowanie"
 
 msgctxt "view:product.category:"
 msgid "Accounts"
@@ -208,4 +208,4 @@ msgstr "Podatki"
 
 msgctxt "view:product.template:"
 msgid "Accounting"
-msgstr ""
+msgstr "Księgowanie"

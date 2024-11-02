@@ -10,6 +10,7 @@ msgctxt "model:ir.action,name:act_production_form"
 msgid "Productions"
 msgstr "Producciones"
 
+#, python-format
 msgctxt "model:ir.message,text:msg_production_reset_draft"
 msgid ""
 "You cannot reset production \"%(production)s\" to draft because it was "

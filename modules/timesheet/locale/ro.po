@@ -231,6 +231,7 @@ msgctxt "model:ir.action.act_window.domain,name:act_work_list_domain_open"
 msgid "Open"
 msgstr "Deschis"
 
+#, python-format
 msgctxt "model:ir.message,text:msg_line_duration_positive"
 msgid "The duration of line \"%(line)s\" must be positive."
 msgstr ""
@@ -239,6 +240,7 @@ msgctxt "model:ir.message,text:msg_line_uuid_unique"
 msgid "The UUID of timesheet line must be unique."
 msgstr "UUID-ul rândului foii de pontaj trebuie să fie unic."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_work_company_different_origin"
 msgid "The companies associated with work \"%(work)s\" and its origin differ."
 msgstr ""
@@ -342,14 +344,12 @@ msgstr "Raportare"
 
 msgctxt "model:ir.ui.menu,name:menu_timesheet"
 msgid "Timesheet"
-msgstr "Foaia de pontaj"
+msgstr "Pontaj"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_work_list"
 msgid "Works"
 msgstr "Lucrări"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_work_report"
 msgid "Works"
 msgstr "Lucrări"
@@ -392,7 +392,7 @@ msgstr ""
 
 msgctxt "selection:res.user.application,application:"
 msgid "Timesheet"
-msgstr "Foaie de pontaj"
+msgstr "Pontaj"
 
 msgctxt "wizard_button:timesheet.line.enter,start,end:"
 msgid "Cancel"

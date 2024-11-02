@@ -101,19 +101,22 @@ msgctxt "help:notification.email,content:"
 msgid "The report used as email template."
 msgstr "O relatório utilizado como modelo para o email."
 
+#, fuzzy
 msgctxt "help:notification.email,fallback_recipients:"
-msgid "User notified when no recipients e-mail is found"
+msgid "User notified when no recipients email is found."
 msgstr ""
 "Usuário a ser notificado quando o email de nenhum destinatário for "
 "encontrado"
 
+#, fuzzy
 msgctxt "help:notification.email,fallback_recipients_hidden:"
-msgid "User notified when no hidden recipients e-mail is found"
+msgid "User notified when no hidden recipients email is found."
 msgstr ""
 "Usuário a ser notificado quando nenhum destinatário oculto for encontrado"
 
+#, fuzzy
 msgctxt "help:notification.email,fallback_recipients_secondary:"
-msgid "User notified when no secondary recipients e-mail is found"
+msgid "User notified when no secondary recipients email is found."
 msgstr ""
 "Usuário a ser notificado quando nenhum destinatário secundário for "
 "encontrado"
@@ -155,12 +158,13 @@ msgid "Notification Emails"
 msgstr "Emails de Notificação"
 
 msgctxt "model:ir.action,name:act_ir_email_form_relate_notification"
-msgid "E-mails"
+msgid "Emails"
 msgstr ""
 
+#, python-format
 msgctxt "model:ir.message,text:msg_notification_invalid_subject"
 msgid ""
-"Invalid e-mail subject in notification \"%(notification)s\" with exception "
+"Invalid email subject in notification \"%(notification)s\" with exception "
 "\"%(exception)s\"."
 msgstr ""
 

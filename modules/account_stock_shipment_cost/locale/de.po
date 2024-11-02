@@ -166,10 +166,12 @@ msgctxt ""
 msgid "Posted"
 msgstr "Festgeschrieben"
 
+#, python-format
 msgctxt "model:ir.message,text:msg_shipment_cost_post_no_shipment"
 msgid "The shipment cost \"%(shipment_cost)s\" has no shipment."
 msgstr "Die Lieferkosten \"%(shipment_cost)s\" sind keiner Lieferung zugeordnet."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_shipment_cost_post_same_parties"
 msgid ""
 "The shipment \"%(shipment)s\" of shipment cost \"%(shipment_cost)s\" has "

@@ -468,15 +468,15 @@ msgstr "Jetzt"
 
 msgctxt "field:account.aged_balance,term1:"
 msgid "First Term"
-msgstr "1. Zeitraum"
+msgstr "1. Bedingung"
 
 msgctxt "field:account.aged_balance,term2:"
 msgid "Second Term"
-msgstr "2. Zeitraum"
+msgstr "2. Bedingung"
 
 msgctxt "field:account.aged_balance,term3:"
 msgid "Third Term"
-msgstr "3. Zeitraum"
+msgstr "3. Bedingung"
 
 msgctxt "field:account.aged_balance.context,company:"
 msgid "Company"
@@ -492,15 +492,15 @@ msgstr "Nur festgeschriebene Buchungssätze"
 
 msgctxt "field:account.aged_balance.context,term1:"
 msgid "First Term"
-msgstr "1. Zeitraum"
+msgstr "1. Bedingung"
 
 msgctxt "field:account.aged_balance.context,term2:"
 msgid "Second Term"
-msgstr "2. Zeitraum"
+msgstr "2. Bedingung"
 
 msgctxt "field:account.aged_balance.context,term3:"
 msgid "Third Term"
-msgstr "3. Zeitraum"
+msgstr "3. Bedingung"
 
 msgctxt "field:account.aged_balance.context,type:"
 msgid "Type"
@@ -508,7 +508,7 @@ msgstr "Typ"
 
 msgctxt "field:account.aged_balance.context,unit:"
 msgid "Unit"
-msgstr "Stück"
+msgstr "Einheit"
 
 msgctxt "field:account.balance_sheet.comparison.context,company:"
 msgid "Company"
@@ -3180,22 +3180,26 @@ msgctxt "model:ir.action,name:wizard_update_chart"
 msgid "Update Chart of Accounts from Template"
 msgstr "Kontenplan von Vorlage aktualisieren"
 
+#, python-format
 msgctxt "model:ir.message,text:msg_account_chart_exists"
 msgid "A chart of accounts already exists for company \"%(company)s\"."
 msgstr "Es existiert bereits ein Kontenplan für das Unternehmen \"%(company)s\"."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_account_closed_lines"
 msgid "You cannot close account \"%(account)s\" because it has move lines."
 msgstr ""
 "Konto \"%(account)s\" kann nicht geschlossen werden, weil es in "
 "Buchungssätzen verwendet wird."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_account_invalid_deferral_second_currency"
 msgid "To set a second currency for account \"%(account)s\", it must be deferral."
 msgstr ""
 "Damit für Konto \"\"%(account)s\" eine Zweitwährung gesetzt werden kann, "
 "muss es für den Saldenvortrag konfiguriert sein."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_account_invalid_lines_second_currency"
 msgid ""
 "To set a second currency for account \"%(account)s\", its lines must have "
@@ -3205,6 +3209,7 @@ msgstr ""
 " muss in den Buchungszeilen des Kontos dieselbe Zweitwährung "
 "\"%(currency)s\" verwendet werden."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_account_invalid_type_second_currency"
 msgid ""
 "To set a second currency for account \"%(account)s\", it must not have a "
@@ -3214,6 +3219,7 @@ msgstr ""
 "nicht vom Typ \"Forderungen\", \"Verbindlichkeiten\", \"Ertrag\" oder "
 "\"Aufwand\" sein."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_account_no_type_lines"
 msgid ""
 "You cannot remove type of account \"%(account)s\" because it has move lines."
@@ -3221,6 +3227,7 @@ msgstr ""
 "Der Kontentyp kann von Konto \"%(account)s\" nicht entfernt werden, weil das"
 " Konto in Buchungszeilen verwendet wird."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_cancel_line_delegated"
 msgid ""
 "The moves \"%(moves)s\" contain grouped lines, cancelling them will ungroup "
@@ -3229,6 +3236,7 @@ msgstr ""
 "Die Buchungssätze \"%(moves)s\" enthalten gruppierte Buchungszeilen. Das "
 "Stornieren wird diese Gruppierung aufheben."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_change_fiscalyear_post_move_sequence"
 msgid ""
 "You cannot change the post move sequence on fiscal year \"%(fiscalyear)s\" "
@@ -3238,6 +3246,7 @@ msgstr ""
 "\"%(fiscalyear)s\" kann nicht geändert werden, da das Geschäftsjahr bereits "
 "festgeschriebene Buchungssätze enthält."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_change_period_post_move_sequence"
 msgid ""
 "You cannot change the post move sequence in period \"%(period)s\" because it"
@@ -3247,6 +3256,7 @@ msgstr ""
 " Buchungszeitraum \"%(period)s\" bereits festgeschriebene Buchungssätze "
 "enthält."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_close_fiscalyear_account_balance_not_zero"
 msgid ""
 "To close the fiscal year, the balance of account \"%(account)s\" must be "
@@ -3255,6 +3265,7 @@ msgstr ""
 "Um das Geschäftsjahr schließen zu können, muss der Saldo von Konto "
 "\"%(account)s\" Null sein."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_close_fiscalyear_earlier"
 msgid ""
 "To close fiscal year \"%(fiscalyear)s\", you must close all earlier fiscal "
@@ -3263,6 +3274,7 @@ msgstr ""
 "Um das Geschäftsjahr \"%(fiscalyear)s\" abzuschließen, müssen zuerst alle "
 "früheren Geschäftsjahre abgeschlossen werden."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_close_period_inactive_accounts"
 msgid ""
 "To close period \"%(period)s\", you must balance the inactive account "
@@ -3271,6 +3283,7 @@ msgstr ""
 "Damit der Buchungszeitraum \"%(period)s\" geschlossen werden kann, muss "
 "zuerst das inaktive Konto \"%(account)s\" ausgeglichen werden."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_close_period_non_posted_moves"
 msgid "To close period \"%(period)s\" you must post the moves \"%(moves)s\"."
 msgstr ""
@@ -3285,12 +3298,14 @@ msgstr ""
 "Die Währung eines Unternehmens kann nicht geändert werden, wenn bereits "
 "Buchungssätze erfasst sind."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_create_journal_period_closed_period"
 msgid "You cannot create a journal-period in closed period \"%(period)s\"."
 msgstr ""
 "Journal - Buchungszeitraum kann nicht in geschlossenem Buchungszeitraum "
 "\"%(period)s\" angelegt werden."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_create_period_closed_fiscalyear"
 msgid ""
 "You cannot create a period in fiscal year \"%(fiscalyear)s\" because it is "
@@ -3315,12 +3330,14 @@ msgstr ""
 "Buchungszeilen mit unterschiedlichen Herkünften können nicht gemeinsam "
 "delegiert werden."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_delete_account_with_move_lines"
 msgid "You cannot delete account \"%(account)s\" because it has move lines."
 msgstr ""
 "Konto \"%(account)s\" darf nicht gelöscht werden, weil es in Buchungszeilen "
 "verwendet wird."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_erase_party_receivable_payable"
 msgid ""
 "You cannot erase party \"%(party)s\" while they have pending "
@@ -3329,23 +3346,19 @@ msgstr ""
 "Partei \"%(party)s\" kann nicht gelöscht werden, da noch offene "
 "Forderungen/Verbindlichkeiten bei Unternehmen \"%(company)s\" bestehen."
 
-msgctxt "model:ir.message,text:msg_fiscalyear_different_post_move_sequence"
-msgid ""
-"The fiscal years \"%(first)s\" and \"%(second)s\" cannot have the same post "
-"move sequence, you must use different sequences."
-msgstr ""
-"Die Geschäftsjahre \"%(first)s\" and \"%(second)s\" können nicht denselben "
-"Nummernkreis für Buchungssatzfestschreibungen haben. Es müssen "
-"unterschiedliche Nummernkreise verwendet werden."
-
 msgctxt "model:ir.message,text:msg_fiscalyear_overlap"
-msgid ""
-"The fiscal years \"%(first)s\" and \"%(second)s\" overlap, you must use "
-"different dates."
+msgid "The dates of fiscal years of the same company can not overlap."
 msgstr ""
-"Die Geschäftsjahre \"%(first)s\" and \"%(second)s\" dürfen sich zeitlich "
-"nicht überschneiden."
+"Die Datumsangaben der Geschäftsjahre eines Unternehmens dürfen sich nicht "
+"überschneiden."
 
+msgctxt "model:ir.message,text:msg_fiscalyear_post_move_sequence_unique"
+msgid "The post move sequence of fiscal years must be unique."
+msgstr ""
+"Der Nummernkreis Buchungsfestschreibungen muss pro Geschäftsjahr eindeutig "
+"sein."
+
+#, python-format
 msgctxt "model:ir.message,text:msg_group_line"
 msgid "Line \"%(line)s\" can not be grouped."
 msgstr "Buchungszeile \"%(line)s\" kann nicht gruppiert werden."
@@ -3376,6 +3389,7 @@ msgctxt "model:ir.message,text:msg_group_line_single"
 msgid "You cannot group a single line."
 msgstr "Eine einzelne Buchungszeile kann nicht gruppiert werden."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_journal_account_moves"
 msgid ""
 "You cannot change the type of journal \"%(journal)s\" because it has posted "
@@ -3388,12 +3402,14 @@ msgctxt "model:ir.message,text:msg_journal_period_unique"
 msgid "You can create only one journal per period."
 msgstr "Es kann nur ein Journal pro Buchungszeitraum erstellt werden."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_line_already_reconciled"
 msgid "You cannot reconcile already reconciled line \"%(line)s\"."
 msgstr ""
 "Die bereits abgestimmten Zeilen \"%(line)s\" können nicht erneut abgestimmt "
 "werden."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_line_closed_account"
 msgid ""
 "To create a line on account \"%(account)s\", you must set a type or unclose "
@@ -3408,6 +3424,7 @@ msgstr ""
 "In einer Buchungszeile dürfen nicht gleichzeitig Soll und Haben eingetragen "
 "werden."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_line_party_required"
 msgid ""
 "To create a line on account \"%(account)s\", you must set a party on line "
@@ -3416,6 +3433,7 @@ msgstr ""
 "Um eine Buchungszeile für Konto \"%(account)s\" zu erstellen, muss eine "
 "Partei auf Zeile \"%(line)s\" erfasst werden."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_line_party_set"
 msgid ""
 "To create a line on account \"%(account)s\", you must remove the party on "
@@ -3432,6 +3450,7 @@ msgstr ""
 "Das Vorzeichen für die Fremdwährung muss mit dem Vorzeichen aus Soll − Haben"
 " übereinstimmen."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_modify_delete_journal_period_moves"
 msgid ""
 "You cannot modify or delete journal-period \"%(journal_period)s\" because it"
@@ -3440,6 +3459,7 @@ msgstr ""
 "Journal - Buchungszeitraum \"%(journal_period)s\" kann nicht geändert oder "
 "gelöscht werden, da Buchungen enthalten sind."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_modify_line_closed_journal_period"
 msgid ""
 "You cannot add/modify/delete lines on closed journal-period "
@@ -3448,27 +3468,32 @@ msgstr ""
 "Sie können keine Buchungszeilen hinzufügen/ändern/löschen, die zum "
 "geschlossenen Journal - Buchungszeitraum \"%(journal_period)s\" gehören."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_modify_line_posted_move"
 msgid "You cannot modify line \"%(line)s\" from posted move \"%(move)s\"."
 msgstr ""
 "Buchungszeile \"%(line)s\" des festgeschriebenen Buchungssatzes \"%(move)s\""
 " kann nicht geändert werden."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_modify_line_reconciled"
 msgid "You cannot modify reconciled line \"%(line)s\"."
 msgstr "Die abgestimmte Buchungszeile \"%(line)s\" kann nicht geändert werden."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_modify_posted_moved"
 msgid "You cannot modify posted move \"%(move)s\"."
 msgstr ""
 "Der festgeschriebene Buchungssatz \"%(move)s\" kann nicht geändert werden."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_modify_tax_line_closed_period"
 msgid "You cannot add/modify/delete tax lines in closed period \"%(period)s\"."
 msgstr ""
 "Im geschlossenen Buchungszeitraum \"%(period)s\" können keine "
 "Steuerpositionen hinzugefügt, geändert oder gelöscht werden."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_move_cancel_closed_period"
 msgid ""
 "The period of move \"%(move)s\" is closed.\n"
@@ -3477,14 +3502,34 @@ msgstr ""
 "Der Buchungszeitraum von Buchungssatz \"%(move)s\" ist geschlossen.\n"
 "Soll stattdessen der aktuelle Buchungszeitraum verwendet werden, um den Buchungssatz zu stornieren?"
 
+#, python-format
+msgctxt "model:ir.message,text:msg_move_copy_closed_period"
+msgid ""
+"The period of move \"%(move)s\" is closed.\n"
+"Use the current period to copy the move?"
+msgstr ""
+"Der Buchungszeitraum von Buchungssatz \"%(move)s\" ist geschlossen.\n"
+"Soll stattdessen der aktuelle Buchungszeitraum verwendet werden, um den Buchungssatz zu kopieren?"
+
+#, python-format
 msgctxt "model:ir.message,text:msg_move_template_expression_not_number"
 msgid ""
 "The value \"%(value)s\" of \"%(expression)s\" from template \"%(template)s\""
 " is not a number."
 msgstr ""
-"Der Wert \"%(value)s\" von \"%(expression)s\" von Vorlage \"%(template)s\" "
+"Der Wert \"%(value)s\" von \"%(expression)s\" in Vorlage \"%(template)s\" "
 "ist keine Nummer."
 
+#, python-format
+msgctxt "model:ir.message,text:msg_move_template_invalid_description"
+msgid ""
+"Failed to evaluate the description \"%(description)s\" from template "
+"\"%(template)s\" with error: \"%(error)s\""
+msgstr ""
+"Die Auswertung der Beschreibung \"%(description)s\" von Vorlage "
+"\"%(template)s\" ist fehlgeschlagen: \"%(error)s\""
+
+#, python-format
 msgctxt "model:ir.message,text:msg_move_template_invalid_expression"
 msgid ""
 "Failed to evaluate expression \"%(expression)s\" from template \"%(template)s\" with error:\n"
@@ -3493,10 +3538,12 @@ msgstr ""
 "Die Auswertung des Ausdrucks \"%(expression)s\" von Vorlage \"%(template)s\" ist fehlgeschlagen:\n"
 "\"%(error)s\""
 
+#, python-format
 msgctxt "model:ir.message,text:msg_move_template_keyword_name_not_identifier"
 msgid "The keyword name \"%(name)s\" is not a valid identifier."
 msgstr "Der Name \"%(name)s\" des Bezeichners ist kein erlaubter Identifikator."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_no_fiscalyear_date"
 msgid ""
 "To continue, you must create a fiscal year for the date \"%(date)s\" and "
@@ -3505,14 +3552,16 @@ msgstr ""
 "Um fortzufahren, muss für das Datum \"%(date)s\" und das Unternehmen "
 "\"%(company)s\" ein Geschäftsjahr erstellt werden."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_no_open_fiscalyear_date"
 msgid ""
 "To continue, you must reopen the fiscal year \"%(fiscalyear)s\" of company "
-"\"%(company)s\"for the date \"%(date)s\"."
+"\"%(company)s\" for the date \"%(date)s\"."
 msgstr ""
 "Um fortzufahren, muss das Geschäftsjahr \"%(fiscalyear)s\" des Unternehmens "
 "\"%(company)s\" für das Datum \"%(date)s\" wieder geöffnet werden."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_no_open_period_date"
 msgid ""
 "To continue, you must reopen the period \"%(period)s\" of company "
@@ -3521,6 +3570,7 @@ msgstr ""
 "Um fortzufahren, muss der Buchungszeitraum \"%(period)s\" des Unternehmens "
 "\"%(company)s\" für das Datum \"%(date)s\" wieder geöffnet werden."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_no_period_date"
 msgid ""
 "To continue, you must create a period for the date \"%(date)s\" and company "
@@ -3536,13 +3586,12 @@ msgstr ""
 "werden."
 
 msgctxt "model:ir.message,text:msg_open_fiscalyear_earlier"
-msgid ""
-"The open fiscal year \"%(open)s\" can not be before the close fiscal year "
-"\"%(closed)s\"."
+msgid "Open fiscal years can not be before closed fiscal years."
 msgstr ""
-"Das offene Geschäftsjahr \"%(open)s\" darf zeitlich nicht vor dem "
-"geschlossenen Geschäftsjahr \"%(closed)s\" liegen."
+"Offene Geschäftsjahre dürfen zeitlich nicht vor geschlossenen "
+"Geschäftsjahren liegen."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_open_journal_period_closed_period"
 msgid ""
 "You cannot reopen journal-period \"%(journal_period)s\" in closed period "
@@ -3551,6 +3600,7 @@ msgstr ""
 "Journal - Buchungszeitraum \"%(journal_period)s\" kann nicht wieder geöffnet"
 " werden, weil Buchungszeitraum \"%(period)s\" geschlossen ist."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_open_period_closed_fiscalyear"
 msgid ""
 "You cannot reopen period \"%(period)s\" because its fiscal year "
@@ -3559,57 +3609,59 @@ msgstr ""
 "Buchungszeitraum \"%(period)s\" kann nicht wieder geöffnet werden, weil "
 "Geschäftsjahr \"%(fiscalyear)s\" geschlossen ist."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_party_missing_payable_account"
 msgid "To continue, you must define a payable account for party \"%(party)s\"."
 msgstr ""
 "Um fortzufahren, muss ein Kreditorenkonto für Partei \"%(party)s\" erfasst "
 "werden."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_party_missing_receivable_account"
 msgid "To continue, you must define a receivable account for party \"%(party)s\"."
 msgstr ""
 "Um fortzufahren, muss ein Debitorenkonto für Partei \"%(party)s\" erfasst "
 "werden."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_period_fiscalyear_dates"
 msgid ""
 "The dates for period \"%(period)s\" must be between the dates of its fiscal "
 "year \"%(fiscalyear)s\"."
 msgstr ""
-"Die Daten für den Buchungszeitraum \"%(period)s\" müssen zwischen den Daten "
-"des zugehörigen Geschäftsjahres \"%(fiscalyear)s\" liegen."
+"Die Datumsangaben für den Buchungszeitraum \"%(period)s\" müssen zwischen "
+"den Daten des zugehörigen Geschäftsjahres \"%(fiscalyear)s\" liegen."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_period_move_dates"
 msgid ""
 "The dates for period \"%(period)s\" must include the date \"%(move_date)s\" "
 "of move \"%(move)s\"."
 msgstr ""
-"Die Daten für den Buchungszeitraum \"%(period)s\" müssen das Datum "
+"Die Datumsangaben für den Buchungszeitraum \"%(period)s\" müssen das Datum "
 "\"%(move_date)s\" des Buchungsatzes \"%(move)s\" enthalten."
 
-msgctxt "model:ir.message,text:msg_period_overlap"
+msgctxt "model:ir.message,text:msg_period_post_move_sequence_unique"
 msgid ""
-"The periods \"%(first)s\" and \"%(second)s\" overlap, you must use different"
-" dates."
+"A post move sequence can be reused only by periods in the same fiscal year."
 msgstr ""
-"Die Buchungszeiträume \"%(first)s\" und \"%(second)s\" dürfen sich zeitlich "
-"nicht überschneiden."
+"Ein Nummernkreis Buchungssatzfestschreibungen darf nur in Buchungszeiträumen"
+" desselben Geschäftsjahres wiederverwendet werden."
 
-msgctxt "model:ir.message,text:msg_period_same_sequence"
-msgid ""
-"You cannot use the same post move sequence for the periods \"%(first)s\" and"
-" \"%(second)s\" because they are from different fiscal years."
+msgctxt "model:ir.message,text:msg_period_standard_overlap"
+msgid "The dates of standard period of the same fiscal year can not overlap."
 msgstr ""
-"Für die Buchungszeiträume \"%(first)s\" und \"%(second)s\" kann nicht "
-"derselbe Nummernkreis für Buchungssatzfestschreibungen verwendet werden, da "
-"sie jeweils zu unterschiedlichen Geschäftsjahren gehören."
+"Die Datumsangaben der Standardbuchungszeiträume eines Geschäftsjahres dürfen"
+" sich nicht überlappen."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_post_empty_move"
 msgid "To post move \"%(move)s\", you must fill in its lines."
 msgstr ""
 "Buchungssatz \"%(move)s\" kann nur festgeschrieben werden, sofern die "
 "zugehörigen Buchungszeilen erfasst wurden."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_post_unbalanced_move"
 msgid ""
 "To post move \"%(move)s\", you must balance all its lines debits and "
@@ -3618,6 +3670,7 @@ msgstr ""
 "Buchungssatz \"%(move)s\" kann nur festgeschrieben werden, wenn Soll und "
 "Haben aller Buchungszeilen ausgeglichen sind."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_reconciliation_account_not_reconcile"
 msgid ""
 "To reconcile line \"%(line)s\", you must set its account \"%(account)s\" as "
@@ -3626,6 +3679,7 @@ msgstr ""
 "Um Buchungszeile \"%(line)s\" abstimmen zu können, muss das Konto "
 "\"%(account)s\" für die Verwendung der Abstimmung konfiguriert werden."
 
+#, python-format
 msgctxt ""
 "model:ir.message,text:msg_reconciliation_currency_exchange_credit_account_missing"
 msgid ""
@@ -3636,6 +3690,7 @@ msgstr ""
 "\"%(company)s\" ein Kreditorenkonto für Wechselkursdifferenzen angegeben "
 "sein."
 
+#, python-format
 msgctxt ""
 "model:ir.message,text:msg_reconciliation_currency_exchange_debit_account_missing"
 msgid ""
@@ -3645,6 +3700,7 @@ msgstr ""
 "Zum Abstimmen der Buchungspositionen muss für Unternehmen \"%(company)s\" "
 "ein Debitorenkonto für Wechselkursdifferenzen angegeben sein."
 
+#, python-format
 msgctxt ""
 "model:ir.message,text:msg_reconciliation_currency_exchange_journal_missing"
 msgid ""
@@ -3654,6 +3710,7 @@ msgstr ""
 "Zum Abstimmen der Buchungspositionen muss für das Unternehmen "
 "\"%(company)s\" ein Wechselkursjournal angegeben sein."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_reconciliation_delete_delegated"
 msgid ""
 "The reconciliation \"%(reconciliation)s\" is delegated to the line \"%(line)s\".\n"
@@ -3662,6 +3719,7 @@ msgstr ""
 "Die Abstimmung \"%(reconciliation)s\" wurde an Buchungszeile \"%(line)s\" übertragen.\n"
 "Es muss gegebenenfalls der Buchungssatz \"%(move)s\" annulliert werden."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_reconciliation_delete_write_off"
 msgid ""
 "The reconciliation \"%(reconciliation)s\" is linked to the write-off line \"%(line)s\".\n"
@@ -3670,6 +3728,7 @@ msgstr ""
 "Die Abstimmung \"%(reconciliation)s\" ist mit der Ausbuchungszeile \"%(line)s\" verknüpft.\n"
 "Es muss gegebenenfalls der Buchungssatz \"%(move)s\" annulliert werden."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_reconciliation_different_accounts"
 msgid ""
 "You cannot reconcile line \"%(line)s\" with others because its account "
@@ -3678,6 +3737,7 @@ msgstr ""
 "Abstimmung von Zeile \"%(line)s\" ist nicht möglich, weil das verwendete "
 "Konto \"%(account1)s\" unterschiedlich zu Konto \"%(account2)s\" ist."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_reconciliation_different_parties"
 msgid ""
 "You cannot reconcile line \"%(line)s\" with others because its party "
@@ -3686,10 +3746,12 @@ msgstr ""
 "Abstimmung von Zeile \"%(line)s\" ist nicht möglich, weil die verwendete "
 "Partei \"%(party1)s\" unterschiedlich zu Partei \"%(party2)s\" ist."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_reconciliation_line_not_valid"
 msgid "You cannot reconcile non-valid line \"%(line)s\"."
 msgstr "Die ungültige Buchungszeile \"%(line)s\" kann nicht abgestimmt werden."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_reconciliation_unbalanced"
 msgid ""
 "To reconcile lines, they must have the same debit \"%(debit)s\" and credit "
@@ -3698,6 +3760,7 @@ msgstr ""
 "Buchungszeilen können nur dann abgestimmt werden, wenn Soll \"%(debit)s\" "
 "and Haben \"%(credit)s\" ausgeglichen sind."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_reconciliation_write_off_missing"
 msgid ""
 "To reconcile lines with \"%(amount)s\" write-off, you must select a write-"
@@ -3706,6 +3769,17 @@ msgstr ""
 "Zum Abstimmen der Buchungspositionen mit Betrag \"%(amount)s\" müssen Sie "
 "eine Ausbuchungsmethode auswählen."
 
+#, python-format
+msgctxt "model:ir.message,text:msg_reconciliation_write_off_same_account"
+msgid ""
+"You cannot reconcile lines using the write-off \"%(write_off)s\" with the "
+"same \"%(account)s\"."
+msgstr ""
+"Die Abstimmung von Buchungszeilen mittels der Ausbuchung \"%(write_off)s\" "
+"ist nicht möglich, da in der Ausbuchung dasselbe Konto \"%(account)s\" "
+"verwendet wird."
+
+#, python-format
 msgctxt "model:ir.message,text:msg_reopen_fiscalyear_later"
 msgid ""
 "To reopen fiscal year \"%(fiscalyear)s\", you must reopen all later fiscal "
@@ -3738,6 +3812,7 @@ msgstr ""
 "Buchungszeilen mit unterschiedlichen Parteien können nicht neu geplant "
 "werden."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_reschedule_line_wrong_amount"
 msgid ""
 "To reschedule the lines you must change the terms to have a total amount of "
@@ -3747,6 +3822,7 @@ msgstr ""
 "geändert werden, dass ein Gesamtbetrag von %(total_amount)s anstatt "
 "%(amount)s erreicht wird."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_tax_update_unit_price_with_parent"
 msgid "You cannot set \"Update Unit Price\" on child tax \"%(tax)s\"."
 msgstr ""
@@ -3782,7 +3858,7 @@ msgid "Lock"
 msgstr "Schließen"
 
 msgctxt "model:ir.model.button,string:fiscalyear_reopen_button"
-msgid "Re-Open"
+msgid "Reopen"
 msgstr "Wieder öffnen"
 
 msgctxt "model:ir.model.button,string:journal_period_close_button"
@@ -3806,7 +3882,7 @@ msgid "Lock"
 msgstr "Schließen"
 
 msgctxt "model:ir.model.button,string:period_reopen_button"
-msgid "Re-Open"
+msgid "Reopen"
 msgstr "Wieder öffnen"
 
 msgctxt "model:ir.rule.group,name:rule_group_account_companies"
@@ -4110,10 +4186,6 @@ msgstr "Buchhaltung"
 msgctxt "model:res.group,name:group_account_admin"
 msgid "Account Administration"
 msgstr "Buchhaltung Administration"
-
-msgctxt "model:res.group,name:group_account_party"
-msgid "Accounting Party"
-msgstr "Buchhaltung Partei"
 
 msgctxt "report:account.account.type.statement:"
 msgid "/"
@@ -4777,7 +4849,7 @@ msgstr "Kontenblätter"
 
 msgctxt "view:account.aged_balance.context:"
 msgid "Terms"
-msgstr "Zeiträume"
+msgstr "Bedingungen"
 
 msgctxt "view:account.configuration:"
 msgid "Credit Account"

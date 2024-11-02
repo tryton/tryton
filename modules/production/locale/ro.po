@@ -111,6 +111,14 @@ msgctxt "field:production,warehouse:"
 msgid "Warehouse"
 msgstr "Depozit"
 
+msgctxt "field:production.bom,code:"
+msgid "Code"
+msgstr "Cod"
+
+msgctxt "field:production.bom,code_readonly:"
+msgid "Code Readonly"
+msgstr "Cod numai pentru citit"
+
 msgctxt "field:production.bom,inputs:"
 msgid "Inputs"
 msgstr "Intrări"
@@ -169,7 +177,7 @@ msgstr "Categorie UM"
 
 msgctxt "field:production.bom.tree,childs:"
 msgid "Childs"
-msgstr ""
+msgstr "Copii"
 
 msgctxt "field:production.bom.tree,product:"
 msgid "Product"
@@ -207,6 +215,10 @@ msgctxt "field:production.bom.tree.open.tree,bom_tree:"
 msgid "BOM Tree"
 msgstr "Arborele BOM"
 
+msgctxt "field:production.configuration,bom_sequence:"
+msgid "BOM Sequence"
+msgstr ""
+
 msgctxt "field:production.configuration,production_sequence:"
 msgid "Production Sequence"
 msgstr "Secvența de producție"
@@ -237,44 +249,37 @@ msgctxt "field:stock.location,production_location:"
 msgid "Production"
 msgstr "Producţie"
 
-#, fuzzy
 msgctxt "field:stock.location,production_output_location:"
 msgid "Production Output"
-msgstr "Ieșire de producție"
+msgstr "Ieșiri Producţie"
 
-#, fuzzy
 msgctxt "field:stock.location,production_picking_location:"
 msgid "Production Picking"
-msgstr "Alegerea producției"
+msgstr "Picking Producţie"
 
-#, fuzzy
 msgctxt "field:stock.lot.trace,production_input:"
 msgid "Production Input"
-msgstr "Intrare de producție"
+msgstr "Intrari Producție"
 
-#, fuzzy
 msgctxt "field:stock.lot.trace,production_output:"
 msgid "Production Output"
-msgstr "Ieșire de producție"
+msgstr "Ieșiri Producţie"
 
 msgctxt "field:stock.move,production:"
 msgid "Production"
 msgstr "Producţie"
 
-#, fuzzy
 msgctxt "field:stock.move,production_cost_price_updated:"
 msgid "Cost Price Updated"
-msgstr "Preț actualizat"
+msgstr "Cost Actualizat"
 
-#, fuzzy
 msgctxt "field:stock.move,production_input:"
 msgid "Production Input"
-msgstr "Intrare de producție"
+msgstr "Intrari Producție"
 
-#, fuzzy
 msgctxt "field:stock.move,production_output:"
 msgid "Production Output"
-msgstr "Ieșire de producție"
+msgstr "Ieșiri Producţie"
 
 msgctxt "help:production,number:"
 msgid "The main identifier for the shipment."
@@ -287,6 +292,10 @@ msgstr "Identificatorul extern pentru expediere."
 msgctxt "help:production,uom_category:"
 msgid "The category of Unit of Measure."
 msgstr "Categoria de unitate de măsură."
+
+msgctxt "help:production.configuration,bom_sequence:"
+msgid "Used to generate the BOM code."
+msgstr ""
 
 msgctxt "help:stock.location,production_output_location:"
 msgid ""
@@ -332,7 +341,6 @@ msgctxt "model:ir.action,name:wizard_bom_tree_open"
 msgid "BOM Tree"
 msgstr "Arborele BOM"
 
-#, fuzzy
 msgctxt "model:ir.action,name:wizard_production_assign"
 msgid "Assign Production"
 msgstr "Alocare Producţie"
@@ -347,7 +355,6 @@ msgctxt ""
 msgid "As Outputs"
 msgstr "Ca Ieșiri"
 
-#, fuzzy
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_production_list_domain_all"
 msgid "All"
@@ -368,7 +375,6 @@ msgctxt ""
 msgid "Draft"
 msgstr "Ciornă"
 
-#, fuzzy
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_production_list_domain_requests"
 msgid "Requests"
@@ -384,6 +390,7 @@ msgctxt ""
 msgid "Waiting"
 msgstr "În Aşteptare"
 
+#, python-format
 msgctxt "model:ir.message,text:msg_missing_product_list_price"
 msgid ""
 "The product \"%(product)s\" on production \"%(production)s\" does not have "
@@ -392,6 +399,7 @@ msgstr ""
 "Produsul \"%(product)s\" din producția \"%(production)s\" nu are niciun preț"
 " de listă definit."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_recursive_bom"
 msgid "You cannot create a recursive BOM for product \"%(product)s\"."
 msgstr "Nu puteți crea un BOM recursiv pentru produsul „%(product)s”."
@@ -401,7 +409,6 @@ msgctxt "model:ir.message,text:msg_stock_move_production_single"
 msgid "Move can not be used for production input and output."
 msgstr "Mișcarea nu poate fi utilizată pentru intrarea și ieșirea producției."
 
-#, fuzzy
 msgctxt "model:ir.model.button,confirm:production_done_button"
 msgid "Are you sure you want to complete the production?"
 msgstr "Sunteți sigur că doriți să finalizați producția?"
@@ -442,6 +449,11 @@ msgctxt "model:ir.sequence,name:sequence_production"
 msgid "Production"
 msgstr "Producţie"
 
+#, fuzzy
+msgctxt "model:ir.sequence.type,name:sequence_type_bom"
+msgid "BOM"
+msgstr "BOM"
+
 msgctxt "model:ir.sequence.type,name:sequence_type_production"
 msgid "Production"
 msgstr "Producţie"
@@ -462,10 +474,9 @@ msgctxt "model:ir.ui.menu,name:menu_production_calendar"
 msgid "Productions"
 msgstr "Producţie"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_production_configuration"
 msgid "Configuration"
-msgstr "Configurație"
+msgstr "Configurare"
 
 msgctxt "model:ir.ui.menu,name:menu_production_list"
 msgid "Productions"
@@ -521,10 +532,9 @@ msgctxt "model:res.group,name:group_production"
 msgid "Production"
 msgstr "Producţie"
 
-#, fuzzy
 msgctxt "model:res.group,name:group_production_admin"
 msgid "Production Administration"
-msgstr "Administrare producție"
+msgstr "Administrare Producție"
 
 msgctxt "model:stock.location,name:location_production"
 msgid "Production"
@@ -534,10 +544,9 @@ msgctxt "selection:ir.cron,method:"
 msgid "Reschedule Productions"
 msgstr "Reprogramare Producţie"
 
-#, fuzzy
 msgctxt "selection:ir.cron,method:"
 msgid "Set Cost from Moves"
-msgstr "Setați costul din mișcări"
+msgstr "Setare Costul de la Mișcări"
 
 msgctxt "selection:production,state:"
 msgid "Assigned"
@@ -555,7 +564,6 @@ msgctxt "selection:production,state:"
 msgid "Draft"
 msgstr "Ciornă"
 
-#, fuzzy
 msgctxt "selection:production,state:"
 msgid "Request"
 msgstr "Cerere"

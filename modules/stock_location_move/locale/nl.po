@@ -22,6 +22,7 @@ msgctxt "field:stock.shipment.internal-location,shipment:"
 msgid "Shipment"
 msgstr "levering"
 
+#, python-format
 msgctxt "model:ir.message,text:msg_location_already_assigned"
 msgid ""
 "The location \"%(location)s\" has already been assigned by "

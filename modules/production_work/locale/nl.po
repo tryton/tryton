@@ -4,15 +4,15 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "field:production,work_center:"
 msgid "Work Center"
-msgstr "Werkplaats"
+msgstr "Werkplek"
 
 msgctxt "field:production,works:"
 msgid "Works"
-msgstr "Werken"
+msgstr "Werkzaamheden"
 
 msgctxt "field:production.routing.operation,work_center_category:"
 msgid "Work Center Category"
-msgstr "Werkplaatscategorie"
+msgstr "Werkplek categorie"
 
 msgctxt "field:production.work,active_cycles:"
 msgid "Active Cycles"
@@ -28,7 +28,7 @@ msgstr "Kosten"
 
 msgctxt "field:production.work,cycles:"
 msgid "Cycles"
-msgstr "cyclisch"
+msgstr "Cycli"
 
 msgctxt "field:production.work,operation:"
 msgid "Operation"
@@ -48,11 +48,11 @@ msgstr "Magazijn"
 
 msgctxt "field:production.work,work_center:"
 msgid "Work Center"
-msgstr "Werkplaats"
+msgstr "Werkplek"
 
 msgctxt "field:production.work,work_center_category:"
 msgid "Work Center Category"
-msgstr "Werkplaatscategorie"
+msgstr "Werkplek categorie"
 
 msgctxt "field:production.work.center,category:"
 msgid "Category"
@@ -120,7 +120,7 @@ msgstr "Status"
 
 msgctxt "field:production.work.cycle,work:"
 msgid "Work"
-msgstr "Werk"
+msgstr "Werkzaamheden"
 
 msgctxt "model:ir.action,name:act_work_center_category_list"
 msgid "Work Center Categories"
@@ -128,11 +128,11 @@ msgstr "Werkplekcategorieën"
 
 msgctxt "model:ir.action,name:act_work_center_list"
 msgid "Work Centers"
-msgstr "Wertkplaats"
+msgstr "Werkplekken"
 
 msgctxt "model:ir.action,name:act_work_center_tree"
 msgid "Work Centers"
-msgstr "Wertkplaats"
+msgstr "Werkplekken"
 
 msgctxt "model:ir.action,name:act_work_list"
 msgid "Works"
@@ -152,24 +152,27 @@ msgstr "Verzoek"
 
 msgctxt "model:ir.action.act_window.domain,name:act_work_list_domain_running"
 msgid "Running"
-msgstr "in uitvoering"
+msgstr "In uitvoering"
 
 msgctxt "model:ir.action.act_window.domain,name:act_work_list_domain_waiting"
 msgid "Waiting"
 msgstr "In afwachting"
 
+#, python-format
 msgctxt "model:ir.message,text:msg_delete_request"
 msgid "To delete work \"%(work)s\" it must be in the \"request\" or \"draft\" state."
 msgstr ""
 "Als u het werk \"%(work)s\" wilt verwijderen, moet dit de status \"verzoek\""
 " of \"concept\" hebben."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_do_finished_work"
 msgid "To complete production \"%(production)s\", work \"%(work)s\" must be finished."
 msgstr ""
 "Om de productie \"%(production)s\" te voltooien, moet het werk \"%(work)s\" "
 "voltooid zijn."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_missing_work_center"
 msgid ""
 "Could not find a work center of category \"%(category)s\" under "
@@ -188,7 +191,7 @@ msgstr "Doe"
 
 msgctxt "model:ir.model.button,string:work_cycle_run_button"
 msgid "Run"
-msgstr "uitvoeren"
+msgstr "Uitvoeren"
 
 msgctxt "model:ir.model.button,string:work_start_button"
 msgid "Start"
@@ -196,7 +199,7 @@ msgstr "Begin"
 
 msgctxt "model:ir.model.button,string:work_stop_button"
 msgid "Stop"
-msgstr "stop"
+msgstr "Stop"
 
 msgctxt "model:ir.rule.group,name:rule_group_work_center_companies"
 msgid "User in companies"
@@ -216,27 +219,27 @@ msgstr "Werkplekcategorieën"
 
 msgctxt "model:ir.ui.menu,name:menu_work_center_list"
 msgid "Work Centers"
-msgstr "Wertkplaats"
+msgstr "Werkplekken"
 
 msgctxt "model:ir.ui.menu,name:menu_work_center_tree"
 msgid "Work Centers"
-msgstr "Wertkplaats"
+msgstr "Werkplekken"
 
 msgctxt "model:ir.ui.menu,name:menu_work_list"
 msgid "Works"
-msgstr "Werken"
+msgstr "Werkzaamheden"
 
 msgctxt "model:production.work,name:"
 msgid "Production Work"
-msgstr "Productiewerk"
+msgstr "Productiewerkzaamheden"
 
 msgctxt "model:production.work.center,name:"
 msgid "Work Center"
-msgstr "Werkplaats"
+msgstr "Werkplek"
 
 msgctxt "model:production.work.center.category,name:"
 msgid "Work Center Category"
-msgstr "Werkplaatscategorie"
+msgstr "Werkplek categorie"
 
 msgctxt "model:production.work.cycle,name:"
 msgid "Work Cycle"
@@ -260,7 +263,7 @@ msgstr "Verzoek"
 
 msgctxt "selection:production.work,state:"
 msgid "Running"
-msgstr "in uitvoering"
+msgstr "In uitvoering"
 
 msgctxt "selection:production.work,state:"
 msgid "Waiting"
@@ -288,4 +291,4 @@ msgstr "Concept"
 
 msgctxt "selection:production.work.cycle,state:"
 msgid "Running"
-msgstr "in uitvoering"
+msgstr "In uitvoering"

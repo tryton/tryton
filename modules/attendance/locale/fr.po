@@ -56,7 +56,7 @@ msgstr "Lignes"
 
 msgctxt "field:attendance.sheet,timesheet_duration:"
 msgid "Timesheet Duration"
-msgstr "Durée de feuille de présence"
+msgstr "Durée de relevé de temps"
 
 msgctxt "field:attendance.sheet.line,company:"
 msgid "Company"
@@ -126,18 +126,21 @@ msgctxt "model:ir.action,name:act_sheet"
 msgid "Sheets"
 msgstr "Feuilles"
 
+#, python-format
 msgctxt "model:ir.message,text:msg_close_period_previous_open"
 msgid "To close period \"%(period)s\" you must first close \"%(other_period)s\"."
 msgstr ""
 "Pour fermer la période « %(period)s », vous devez d'abord fermer "
 "« %(other_period)s »."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_delete_period_close"
 msgid "To delete attendance \"%(attendance)s\" you must reopen period \"%(period)s\"."
 msgstr ""
 "Pour supprimer la présence « %(attendance)s », vous devez rouvrir la période"
 " « %(period)s »."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_draft_period_previous_closed"
 msgid ""
 "To change period \"%(period)s\" you must first change \"%(other_period)s\" "
@@ -146,6 +149,7 @@ msgstr ""
 "Pour modifier la période « %(period)s », vous devez d'abord mettre "
 "« %(other_period)s » en brouillon."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_modify_period_close"
 msgid "To modify attendance \"%(attendance)s\" you must reopen period \"%(period)s\"."
 msgstr ""

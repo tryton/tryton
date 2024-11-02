@@ -2,9 +2,9 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-msgctxt "field:account.invoice.line,cost_shipment_carriages:"
-msgid "Cost of Shipment Carriages"
-msgstr "Cost del transport"
+msgctxt "field:account.invoice.line,cost_sale_shipment_carriages:"
+msgid "Cost Sale of Shipment Carriages"
+msgstr "Cost de venta del transport"
 
 msgctxt "field:incoterm.incoterm,after_carrier:"
 msgid "After Carrier"
@@ -82,14 +82,6 @@ msgctxt "field:stock.shipment.carriage,cost_edit:"
 msgid "Edit Cost"
 msgstr "Edita cost"
 
-msgctxt "field:stock.shipment.carriage,cost_invoice_line:"
-msgid "Cost Invoice Line"
-msgstr "Línia de factura del cost"
-
-msgctxt "field:stock.shipment.carriage,cost_method:"
-msgid "Cost Method"
-msgstr "Mètode de cost"
-
 msgctxt "field:stock.shipment.carriage,cost_sale:"
 msgid "Cost Sale"
 msgstr "Cost de la venda"
@@ -101,6 +93,14 @@ msgstr "Moneda de cost de la venda"
 msgctxt "field:stock.shipment.carriage,cost_sale_currency_used:"
 msgid "Cost Sale Currency"
 msgstr "Moneda de cost de la venda"
+
+msgctxt "field:stock.shipment.carriage,cost_sale_invoice_line:"
+msgid "Cost Sale Invoice Line"
+msgstr "Cost de la línia de factura de venta"
+
+msgctxt "field:stock.shipment.carriage,cost_sale_method:"
+msgid "Cost Sale Method"
+msgstr "Mètode de cost de la venta"
 
 msgctxt "field:stock.shipment.carriage,cost_sale_used:"
 msgid "Cost Sale"
@@ -218,6 +218,7 @@ msgctxt "help:stock.shipment.out.return,before_carriages:"
 msgid "Carriages before the main carrier."
 msgstr "Transports anteriors al transport principal."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_shipment_carriage_delete"
 msgid "You cannot delete the carriage \"%(carriage)s\"."
 msgstr "No es pot eliminar el transport \"%(carriage)s\"."

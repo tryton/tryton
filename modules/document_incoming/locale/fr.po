@@ -1,5 +1,4 @@
 #
-#, fuzzy
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
@@ -118,6 +117,7 @@ msgctxt ""
 msgid "Processing"
 msgstr "En traitements"
 
+#, python-format
 msgctxt "model:ir.message,text:msg_document_split_invalid_pages"
 msgid "Invalid pages \"%(expression)s\" with exception \"%(exception)s\"."
 msgstr ""
@@ -133,7 +133,7 @@ msgstr "Brouillon"
 
 msgctxt "model:ir.model.button,string:document_incoming_extract_email_button"
 msgid "Extract Email"
-msgstr "Extraire l'e-mail"
+msgstr "Extraire le courriel"
 
 msgctxt "model:ir.model.button,string:document_incoming_proceed_button"
 msgid "Proceed"

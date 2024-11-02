@@ -148,10 +148,12 @@ msgctxt "help:product.category,taxes_parent:"
 msgid "Use the taxes defined on the parent category."
 msgstr "A főkategóriánál beállított adókat használja."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_missing_account"
 msgid "There is no \"%(field)s\" defined for \"%(name)s\"."
 msgstr "Nincs „%(field)s” megadva a „%(name)s” rekordhoz."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_missing_taxes"
 msgid "There is no account category defined on product \"%(name)s\"."
 msgstr "A „%(name)s” terméknél nincs megadva számviteli kategória."

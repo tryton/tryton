@@ -120,26 +120,30 @@ msgstr ""
 
 msgctxt "model:ir.action,name:act_period_list"
 msgid "Periods"
-msgstr ""
+msgstr "Okresy"
 
 msgctxt "model:ir.action,name:act_sheet"
 msgid "Sheets"
 msgstr ""
 
+#, python-format
 msgctxt "model:ir.message,text:msg_close_period_previous_open"
 msgid "To close period \"%(period)s\" you must first close \"%(other_period)s\"."
 msgstr ""
 
+#, python-format
 msgctxt "model:ir.message,text:msg_delete_period_close"
 msgid "To delete attendance \"%(attendance)s\" you must reopen period \"%(period)s\"."
 msgstr ""
 
+#, python-format
 msgctxt "model:ir.message,text:msg_draft_period_previous_closed"
 msgid ""
 "To change period \"%(period)s\" you must first change \"%(other_period)s\" "
 "to draft."
 msgstr ""
 
+#, python-format
 msgctxt "model:ir.message,text:msg_modify_period_close"
 msgid "To modify attendance \"%(attendance)s\" you must reopen period \"%(period)s\"."
 msgstr ""
@@ -150,7 +154,7 @@ msgstr ""
 
 msgctxt "model:ir.model.button,string:period_draft_button"
 msgid "Draft"
-msgstr ""
+msgstr "Szkic"
 
 msgctxt "model:ir.rule.group,name:rule_group_attendance"
 msgid "Own attendance"
@@ -166,7 +170,7 @@ msgstr ""
 
 msgctxt "model:ir.rule.group,name:rule_group_period_companies"
 msgid "User in companies"
-msgstr ""
+msgstr "Użytkownik w firmach"
 
 msgctxt "model:ir.rule.group,name:rule_group_sheet"
 msgid "Own attendance sheet"
@@ -206,7 +210,7 @@ msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_period_list"
 msgid "Periods"
-msgstr ""
+msgstr "Okresy"
 
 msgctxt "model:ir.ui.menu,name:menu_sheet"
 msgid "Sheets"

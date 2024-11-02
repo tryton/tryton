@@ -20,6 +20,10 @@ msgctxt "field:product.category.image,category:"
 msgid "Category"
 msgstr ""
 
+msgctxt "field:product.category.image,description:"
+msgid "Description"
+msgstr ""
+
 #, fuzzy
 msgctxt "field:product.category.image,image:"
 msgid "Image"
@@ -54,6 +58,10 @@ msgstr ""
 
 msgctxt "field:product.image,cache:"
 msgid "Cache"
+msgstr ""
+
+msgctxt "field:product.image,description:"
+msgid "Description"
 msgstr ""
 
 msgctxt "field:product.image,image:"

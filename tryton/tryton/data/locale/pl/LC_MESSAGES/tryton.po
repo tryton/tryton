@@ -241,7 +241,7 @@ msgstr "Utwórz raport..."
 msgid "Print..."
 msgstr "Wydrukuj..."
 
-msgid "E-Mail..."
+msgid "Email..."
 msgstr "E-mail..."
 
 msgid "Bold"
@@ -351,12 +351,6 @@ msgstr "Pomoc"
 
 msgid "No result found."
 msgstr "Nie znaleziono wyniku."
-
-msgid "Favorites"
-msgstr "Ulubione"
-
-msgid "Manage..."
-msgstr "Zarządzaj..."
 
 msgid "Action"
 msgstr "Akcja"
@@ -588,6 +582,9 @@ msgstr "Połącz z serwerem Tryton"
 msgid "Profile:"
 msgstr "Profil:"
 
+msgid "Manage..."
+msgstr "Zarządzaj..."
+
 msgid "Host / Database information"
 msgstr "Informacje o hoście / bazie danych"
 
@@ -597,8 +594,8 @@ msgstr "Użytkownik:"
 msgid "Unable to complete email entry"
 msgstr "Brak możliwości ukończenia edycji e-maila"
 
-#, python-format
-msgid "E-mail %s"
+#, fuzzy, python-format
+msgid "Email %s"
 msgstr "E-mail %s"
 
 msgid "To:"
@@ -658,7 +655,7 @@ msgid "Note (%d/%d)"
 msgstr "Notatka (%d/%d)"
 
 msgid "You have to select one record."
-msgstr "Musisz wybrać jeden rekord."
+msgstr "Musisz wybrać rekord."
 
 msgid "Are you sure to remove this record?"
 msgstr "Czy na pewno usunąć wybrany rekord?"
@@ -846,10 +843,12 @@ msgstr "Raport..."
 msgid "_Print..."
 msgstr "Wydruk..."
 
-msgid "_E-Mail..."
+#, fuzzy
+msgid "_Email..."
 msgstr "E-mail..."
 
-msgid "Send an e-mail using the record"
+#, fuzzy
+msgid "Send an email using the record"
 msgstr "Wyślij e-mail używając rekordu"
 
 msgid "_Export Data..."
@@ -901,6 +900,9 @@ msgstr "Nazwa pola"
 msgid "CSV Export: %s"
 msgstr "Eksport do CSV: %s"
 
+msgid "Open"
+msgstr "Otwórz"
+
 msgid "_Save Export"
 msgstr "Zapisz eksport"
 
@@ -915,12 +917,6 @@ msgstr "<b>Predefiniowane eksporty</b>"
 
 msgid "Name"
 msgstr "Nazwa"
-
-msgid "Open"
-msgstr "Otwórz"
-
-msgid "Save"
-msgstr "Zapisz"
 
 msgid "Listed Records"
 msgstr "Wymienione rekordy"
@@ -979,6 +975,9 @@ msgstr "Zapisz i utwórz nowy"
 msgid "Add and New"
 msgstr "Dodaj i utwórz nowy"
 
+msgid "Save"
+msgstr "Zapisz"
+
 msgid "Add"
 msgstr "Dodaj"
 
@@ -1003,6 +1002,10 @@ msgstr "Przywróć zaznaczony rekord <Ins>"
 #, python-format
 msgid "CSV Import: %s"
 msgstr "Import z CSV: %s"
+
+#, fuzzy
+msgid "Import"
+msgstr "Raport"
 
 msgid "_Auto-Detect"
 msgstr "Rozpoznaj"
@@ -1204,6 +1207,10 @@ msgstr "Dodaj istniejący rekord"
 msgid "Remove selected record"
 msgstr "Usuń wybrany rekord"
 
+#, fuzzy
+msgid "Restore selected record"
+msgstr "Usuń wybrany rekord"
+
 msgid "Open the record <F2>"
 msgstr "Otwórz rekord <F2>"
 
@@ -1217,6 +1224,10 @@ msgid "Edit selected record"
 msgstr "Edytuj wybrany rekord"
 
 msgid "Delete selected record"
+msgstr "Usuń wybrany rekord"
+
+#, fuzzy
+msgid "Undelete selected record"
 msgstr "Usuń wybrany rekord"
 
 #, python-format

@@ -6,6 +6,10 @@ msgctxt "field:sale.promotion,coupons:"
 msgid "Coupons"
 msgstr "Coupons"
 
+msgctxt "field:sale.promotion.coupon,company:"
+msgid "Company"
+msgstr "Unternehmen"
+
 msgctxt "field:sale.promotion.coupon,name:"
 msgid "Name"
 msgstr "Name"
@@ -28,17 +32,25 @@ msgctxt "field:sale.promotion.coupon,promotion:"
 msgid "Promotion"
 msgstr "Verkaufsaktion"
 
-msgctxt "field:sale.promotion.coupon.number,active:"
-msgid "Active"
-msgstr "Aktiv"
+msgctxt "field:sale.promotion.coupon.number,company:"
+msgid "Company"
+msgstr "Unternehmen"
 
 msgctxt "field:sale.promotion.coupon.number,coupon:"
 msgid "Coupon"
 msgstr "Coupon"
 
+msgctxt "field:sale.promotion.coupon.number,end_date:"
+msgid "End Date"
+msgstr "Enddatum"
+
 msgctxt "field:sale.promotion.coupon.number,number:"
 msgid "Number"
 msgstr "Nummer"
+
+msgctxt "field:sale.promotion.coupon.number,start_date:"
+msgid "Start Date"
+msgstr "Startdatum"
 
 msgctxt "field:sale.sale,coupon_parties:"
 msgid "Coupon Parties"
@@ -69,8 +81,36 @@ msgid "Check to count usage per party."
 msgstr "Aktivieren um die Anzahl der Verwendungen pro Partei zu zählen."
 
 msgctxt "model:ir.message,text:msg_duplicate_numbers"
-msgid "The coupons numbered \"%(numbers)s\" are duplicated."
-msgstr "Die Coupon Nummern \"%(numbers)s\" sind doppelt."
+msgid "The dates of coupon numbers with the same number can not overlap."
+msgstr ""
+"Die Datumsangaben von Couponnummern mit gleicher Nummer dürfen sich nicht "
+"überschneiden."
+
+#, python-format
+msgctxt "model:ir.message,text:msg_promotion_coupon_number_end_date"
+msgid ""
+"The end date of coupons numbered \"%(numbers)s\" must be before "
+"%(start_date)s."
+msgstr ""
+"Das Enddatum von Coupons mit den Nummern „%(numbers)s“ muss vor dem "
+"%(start_date)s liegen."
+
+#, python-format
+msgctxt "model:ir.message,text:msg_promotion_coupon_number_start_date"
+msgid ""
+"The start date of coupons numbered \"%(numbers)s\" must be after "
+"%(start_date)s."
+msgstr ""
+"Das Startdatum von Coupons mit den Nummern „%(numbers)s“ muss nach dem "
+"%(start_date)s liegen."
+
+msgctxt "model:ir.rule.group,name:rule_group_coupon_companies"
+msgid "User in companies"
+msgstr "Benutzer in Unternehmen"
+
+msgctxt "model:ir.rule.group,name:rule_group_coupon_number_companies"
+msgid "User in companies"
+msgstr "Benutzer in Unternehmen"
 
 msgctxt "model:sale.promotion.coupon,name:"
 msgid "Promotion Coupon"

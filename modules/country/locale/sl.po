@@ -192,19 +192,19 @@ msgstr "Organizacija"
 
 msgctxt "model:country.organization,name:organization_amu"
 msgid "Arab Maghreb Union"
-msgstr ""
+msgstr "Unija arabskega Magreba"
 
 msgctxt "model:country.organization,name:organization_apec"
 msgid "Asia-Pacific Economic Cooperation"
-msgstr ""
+msgstr "Azijsko-pacifiško gospodarsko sodelovanje"
 
 msgctxt "model:country.organization,name:organization_asean"
 msgid "Association of Southeast Asian Nations"
-msgstr ""
+msgstr "Zveza držav Jugovzhodne Azije"
 
 msgctxt "model:country.organization,name:organization_benelux"
 msgid "Benelux Union"
-msgstr ""
+msgstr "Benelux"
 
 msgctxt "model:country.organization,name:organization_can"
 msgid "Andean Community"
@@ -216,15 +216,15 @@ msgstr "Karibska skupnost"
 
 msgctxt "model:country.organization,name:organization_cemac"
 msgid "Economic and Monetary Community of Central Africa"
-msgstr ""
+msgstr "Ekonomska in monetarna skupnost centralne Afrike"
 
 msgctxt "model:country.organization,name:organization_cen-sad"
 msgid "Community of Sahel–Saharan States"
-msgstr ""
+msgstr "Skupnost sahelsko-saharskih držav"
 
 msgctxt "model:country.organization,name:organization_comesa"
 msgid "Common Market for Eastern and Southern Africa"
-msgstr ""
+msgstr "Skupni trg za vzhodno in južno Afriko"
 
 msgctxt "model:country.organization,name:organization_eac"
 msgid "East African Community"
@@ -232,11 +232,11 @@ msgstr "Vzhodnoafriška skupnost"
 
 msgctxt "model:country.organization,name:organization_eccas"
 msgid "Economic Community of Central African States"
-msgstr ""
+msgstr "Gospodarska skupnost srednjeafriških držav"
 
 msgctxt "model:country.organization,name:organization_ecowas"
 msgid "Economic Community of West African States"
-msgstr ""
+msgstr "Gospodarska skupnost zahodnoafriških držav"
 
 msgctxt "model:country.organization,name:organization_eu"
 msgid "European Union"
@@ -244,28 +244,27 @@ msgstr "Evropska unija"
 
 msgctxt "model:country.organization,name:organization_gcc"
 msgid "Cooperation Council for the Arab States of the Gulf"
-msgstr ""
+msgstr "Svet za sodelovanje arabskih zalivskih držav"
 
 msgctxt "model:country.organization,name:organization_igad"
 msgid "Intergovernmental Authority on Development"
-msgstr ""
+msgstr "Medvladna agencija za razvoj (IGAD)"
 
-#, fuzzy
 msgctxt "model:country.organization,name:organization_mercosur"
 msgid "Southern Common Market"
-msgstr "Southern Leyte"
+msgstr "Južni skupni trg (Mercosur)"
 
 msgctxt "model:country.organization,name:organization_nafta"
 msgid "North American Free Trade Agreement"
-msgstr ""
+msgstr "Severno-Ameriški prostotrgovinski sporazum (NAFTA)"
 
 msgctxt "model:country.organization,name:organization_sadc"
 msgid "Southern African Development Community"
-msgstr ""
+msgstr "Južnoafriška razvojna skupnost (SADC)"
 
 msgctxt "model:country.organization,name:organization_safta"
 msgid "South Asian Free Trade Area"
-msgstr ""
+msgstr "Južnoazijsko območje proste trgovine (SAFTA)"
 
 msgctxt "model:country.organization.member,name:"
 msgid "Organization Member"
@@ -751,10 +750,9 @@ msgctxt "selection:country.subdivision,type:"
 msgid "Islands, groups of islands"
 msgstr "Otoki, skupina otokov"
 
-#, fuzzy
 msgctxt "selection:country.subdivision,type:"
 msgid "Land"
-msgstr "Landes"
+msgstr "Ozemlje"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Local council"
@@ -778,7 +776,7 @@ msgstr "Metropolitansko mesto"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Metropolitan collectivity with special status"
-msgstr ""
+msgstr "Metropolitanska kolektivnost s posebnim statusom"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Metropolitan department"
@@ -812,14 +810,13 @@ msgctxt "selection:country.subdivision,type:"
 msgid "Outlying area"
 msgstr "Odročno področje"
 
-#, fuzzy
 msgctxt "selection:country.subdivision,type:"
 msgid "Overseas collectivity"
-msgstr "Čezmorsko ozemeljsko občestvo"
+msgstr "Prekomorsko občestvo"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Overseas collectivity with special status"
-msgstr ""
+msgstr "Prekomorsko občestvo s posebnim statusom"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Overseas department"
@@ -849,10 +846,9 @@ msgctxt "selection:country.subdivision,type:"
 msgid "Parish"
 msgstr "Župnija"
 
-#, fuzzy
 msgctxt "selection:country.subdivision,type:"
 msgid "Popularate"
-msgstr "Popularates"
+msgstr "Popularat"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Popularates"
@@ -918,10 +914,9 @@ msgctxt "selection:country.subdivision,type:"
 msgid "Special Region"
 msgstr "Posebna regija"
 
-#, fuzzy
 msgctxt "selection:country.subdivision,type:"
 msgid "Special administrative city"
-msgstr "Posebna upravna regija"
+msgstr "Posebno upravno mesto"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Special administrative region"
@@ -957,7 +952,7 @@ msgstr "Ozemeljska enota"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Territory"
-msgstr "Ozemlje"
+msgstr "Teritorij"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Town"
@@ -999,10 +994,9 @@ msgctxt "selection:country.subdivision,type:"
 msgid "Voivodship"
 msgstr "Vojvodstvo"
 
-#, fuzzy
 msgctxt "selection:country.subdivision,type:"
 msgid "Ward"
-msgstr "Wardak"
+msgstr "Ward"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "zone"

@@ -338,6 +338,7 @@ msgctxt "model:ir.export-write-res.group,name:"
 msgid "Export Modification Group"
 msgstr "Grupos de modificación de exportación"
 
+#, python-format
 msgctxt "model:ir.message,text:msg_email_invalid"
 msgid "The email address \"%(email)s\" for \"%(user)s\" is not valid."
 msgstr "El correo electrónico \"%(email)s\" del usuario \"%(user)s\" no es valido."
@@ -350,6 +351,7 @@ msgctxt "model:ir.message,text:msg_password_forbidden"
 msgid "The password is forbidden."
 msgstr "La contraseña esta prohibida."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_password_length"
 msgid "The password must have at least %(length)i characters."
 msgstr "La contraseña debe tener al menos %(length)i caracteres."
@@ -371,6 +373,7 @@ msgstr ""
 "Por motivos de registros los usuarios no pueden eliminarse, en su lugar "
 "deben ser desactivados."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_user_password"
 msgid "Password for %(login)s"
 msgstr "Contraseña para %(login)s"
@@ -488,6 +491,7 @@ msgctxt "model:res.user.warning,name:"
 msgid "User Warning"
 msgstr "Aviso usuario"
 
+#, python-format
 msgctxt "report:res.user.email_reset_password:"
 msgid ""
 "Hello,\n"
@@ -497,11 +501,12 @@ msgid ""
 "                [7:%(http_host)s/#%(database)s][8:]\n"
 "                You must set a new one from the user's preferences.[9:]"
 msgstr ""
-"La contraseña para su cuenta, [1:%(login)s], se ha reseteado.[2:]\n"
-"                Debe establecer una nueva desde las preferencias de usuario.[3:]\n"
-"                Puede conectar con esta contraseña temporal [4:%(password)s] a [5:]\n"
-"                [6:tryton://%(host)s/%(database)s][7:]\n"
-"                [8:%(http_host)s/#%(database)s]"
+"Hola,\n"
+"                hemos recibido una solicitud para restablecer la contraseña de la cuenta asociada con [1:%(login)s]. Aún no se han realizado cambios en tu cuenta.[2:]\n"
+"                Puedes conectarte con esta contraseña temporal [3:%(password)s] a[4:]\n"
+"                [5:tryton://%(host)s/%(database)s][6:]\n"
+"                [7:%(http_host)s/#%(database)s][8:]\n"
+"                Debes establecer una nueva desde las preferencias del usuario.[9:]"
 
 msgctxt "report:res.user.email_reset_password:"
 msgid "If you didn't make this request, you can safely ignore this email."
@@ -513,6 +518,7 @@ msgctxt "report:res.user.email_reset_password:"
 msgid "Reset Password"
 msgstr "Restablecer contraseña"
 
+#, python-format
 msgctxt "report:res.user.email_reset_password:"
 msgid "The password will expire in [1:%(datetime)s]."
 msgstr "La contraseña caducará en [1:%(datetime)s]."

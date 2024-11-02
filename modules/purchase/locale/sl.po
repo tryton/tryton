@@ -130,17 +130,30 @@ msgctxt "field:purchase.handle.invoice.exception.ask,domain_invoices:"
 msgid "Domain Invoices"
 msgstr "Vključeni računi"
 
-msgctxt "field:purchase.handle.invoice.exception.ask,recreate_invoices:"
-msgid "Recreate Invoices"
-msgstr "Ponovno izdelani računi"
+#, fuzzy
+msgctxt "field:purchase.handle.invoice.exception.ask,ignore_invoices:"
+msgid "Invoices to Ignore"
+msgstr "Plačnik"
 
+#, fuzzy
+msgctxt "field:purchase.handle.invoice.exception.ask,recreate_invoices:"
+msgid "Invoices to Recreate"
+msgstr "Izbor računov za ponovno izdelavo:"
+
+#, fuzzy
 msgctxt "field:purchase.handle.shipment.exception.ask,domain_moves:"
-msgid "Domain Moves"
+msgid "Domain Stock Moves"
 msgstr "Vključen promet"
 
+#, fuzzy
+msgctxt "field:purchase.handle.shipment.exception.ask,ignore_moves:"
+msgid "Stock Moves to Ignore"
+msgstr "Promet"
+
+#, fuzzy
 msgctxt "field:purchase.handle.shipment.exception.ask,recreate_moves:"
-msgid "Recreate Moves"
-msgstr "Ponovno izdelan promet"
+msgid "Stock Moves to Recreate"
+msgstr "Izbor prometa za ponovno izdelavo:"
 
 msgctxt "field:purchase.line,actual_quantity:"
 msgid "Actual Quantity"
@@ -187,8 +200,13 @@ msgctxt "field:purchase.line,invoice_progress:"
 msgid "Invoice Progress"
 msgstr "Plačnik"
 
+msgctxt "field:purchase.line,movable:"
+msgid "Movable"
+msgstr ""
+
+#, fuzzy
 msgctxt "field:purchase.line,moves:"
-msgid "Moves"
+msgid "Stock Moves"
 msgstr "Promet"
 
 #, fuzzy
@@ -196,8 +214,9 @@ msgctxt "field:purchase.line,moves_exception:"
 msgid "Moves Exception"
 msgstr "Pridržani promet"
 
+#, fuzzy
 msgctxt "field:purchase.line,moves_ignored:"
-msgid "Ignored Moves"
+msgid "Ignored Stock Moves"
 msgstr "Prezrt promet"
 
 #, fuzzy
@@ -205,6 +224,7 @@ msgctxt "field:purchase.line,moves_progress:"
 msgid "Moves Progress"
 msgstr "Zaključen promet"
 
+#, fuzzy
 msgctxt "field:purchase.line,moves_recreated:"
 msgid "Recreated Moves"
 msgstr "Ponovno izdelan promet"
@@ -283,16 +303,16 @@ msgid "Tax"
 msgstr "Davek"
 
 msgctxt "field:purchase.line-ignored-stock.move,move:"
-msgid "Move"
-msgstr "Promet"
+msgid "Stock Move"
+msgstr ""
 
 msgctxt "field:purchase.line-ignored-stock.move,purchase_line:"
 msgid "Purchase Line"
 msgstr "Vrstica nabavnega naloga"
 
 msgctxt "field:purchase.line-recreated-stock.move,move:"
-msgid "Move"
-msgstr "Promet"
+msgid "Stock Move"
+msgstr ""
 
 msgctxt "field:purchase.line-recreated-stock.move,purchase_line:"
 msgid "Purchase Line"
@@ -416,12 +436,18 @@ msgctxt "field:purchase.purchase,invoices_recreated:"
 msgid "Recreated Invoices"
 msgstr "Ponovno izdelani računi"
 
+#, fuzzy
+msgctxt "field:purchase.purchase,line_lines:"
+msgid "Line - Lines"
+msgstr "Postavke računa"
+
 msgctxt "field:purchase.purchase,lines:"
 msgid "Lines"
 msgstr "Postavke"
 
+#, fuzzy
 msgctxt "field:purchase.purchase,moves:"
-msgid "Moves"
+msgid "Stock Moves"
 msgstr "Promet"
 
 msgctxt "field:purchase.purchase,number:"
@@ -624,14 +650,25 @@ msgstr ""
 "Obdobje, v katerem je nabavni nalog še mogoče vrniti v osnutek.\n"
 "Deluje le, če je čakalna vrsta omogočena."
 
-msgctxt "help:purchase.handle.invoice.exception.ask,recreate_invoices:"
-msgid ""
-"The selected invoices will be recreated. The other ones will be ignored."
+#, fuzzy
+msgctxt "help:purchase.handle.invoice.exception.ask,ignore_invoices:"
+msgid "The selected cancelled invoices will be ignored."
 msgstr "Izbrani računi bodo ponovno izdelani, ostali bodo prezrti."
 
+#, fuzzy
+msgctxt "help:purchase.handle.invoice.exception.ask,recreate_invoices:"
+msgid "The selected cancelled invoices will be recreated."
+msgstr "Izbrani računi bodo ponovno izdelani, ostali bodo prezrti."
+
+#, fuzzy
+msgctxt "help:purchase.handle.shipment.exception.ask,ignore_moves:"
+msgid "The selected cancelled stock moves will be ignored."
+msgstr "Izbrani računi bodo ponovno izdelani, ostali bodo prezrti."
+
+#, fuzzy
 msgctxt "help:purchase.handle.shipment.exception.ask,recreate_moves:"
-msgid "The selected moves will be recreated. The other ones will be ignored."
-msgstr "Izbran promet bo ponovno izdelan, ostalo bo prezrto."
+msgid "The selected cancelled stock moves will be recreated."
+msgstr "Izbrani računi bodo ponovno izdelani, ostali bodo prezrti."
 
 msgctxt "help:purchase.line,delivery_date_edit:"
 msgid "Check to edit the delivery date."
@@ -678,9 +715,10 @@ msgctxt "model:ir.action,name:act_invoice_form"
 msgid "Invoices"
 msgstr "Računi"
 
-msgctxt "model:ir.action,name:act_open_supplier"
-msgid "Parties associated to Purchases"
-msgstr "Partnerji povezani z nabavo"
+#, fuzzy
+msgctxt "model:ir.action,name:act_invoice_line_form"
+msgid "Invoice Lines"
+msgstr "Postavke računa"
 
 msgctxt "model:ir.action,name:act_product_supplier_form"
 msgid "Suppliers"
@@ -706,8 +744,9 @@ msgctxt "model:ir.action,name:act_purchase_line_relate"
 msgid "Purchase Lines"
 msgstr "Vrstice nabavnega naloga"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_purchase_move_relate"
-msgid "Moves"
+msgid "Stock Moves"
 msgstr "Promet"
 
 msgctxt "model:ir.action,name:act_purchase_relate"
@@ -833,6 +872,7 @@ msgstr ""
 "Poskušate spremeniti mersko enoto na podlagi katere so določene nabavne "
 "cene."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_erase_party_pending_purchase"
 msgid ""
 "You cannot erase party \"%(party)s\" while they have pending purchases with "
@@ -841,12 +881,14 @@ msgstr ""
 "Ni dovoljeno izbrisati partnerja \"%(party)s\", zaradi nabavnih nalogov za "
 "družbo \"%(company)s\", ki so v teku."
 
+#, fuzzy, python-format
 msgctxt "model:ir.message,text:msg_purchase_delete_cancel"
 msgid "To delete purchase \"%(purchase)s\" you must cancel it."
 msgstr ""
 "Za izbris nabavnega naloga \"%(purchase)\", morate nabavni nalog najprej "
 "preklicati."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_purchase_invoice_reset_draft"
 msgid ""
 "You cannot reset invoice \"%(invoice)s\" to draft because it was generated "
@@ -855,6 +897,7 @@ msgstr ""
 "Računa \"%(invoice)s\" ni mogoče povrniti stanje \"Osnutek\", ker je bil "
 "ustvarjen z nabavnim nalogom."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_purchase_line_create_draft"
 msgid ""
 "You cannot add lines to purchase \"%(purchase)s\" because it is no longer in"
@@ -863,6 +906,7 @@ msgstr ""
 "Ni mogoče dodati postavk na nabavni nalog \"%(purchase)s\", ker ni več v "
 "stanju \"Osnutek\"."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_purchase_line_delete_cancel_draft"
 msgid ""
 "To delete line \"%(line)s\" you must cancel or reset to draft purchase "
@@ -871,6 +915,7 @@ msgstr ""
 "Za brisanje postavke \"%(line)s\", je potrebno preklicati nabavni nalog "
 "\"%(purchase)s\" ali ga vrniti v stanje \"Osnutek\"."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_purchase_line_move_quantity"
 msgid ""
 "The purchase line \"%(line)s\" is moving %(extra)s in addition to the "
@@ -881,6 +926,7 @@ msgctxt "model:ir.message,text:msg_purchase_line_tax_unique"
 msgid "A tax can be added only once to a purchase line."
 msgstr "Davek se lahko doda samo enkrat na vrstico nabavnega naloga."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_purchase_missing_account_expense"
 msgid ""
 "To invoice purchase \"%(purchase)s\" you must configure a default account "
@@ -889,6 +935,7 @@ msgstr ""
 "Za fakturiranje nabavnega naloga \"%(purchase)s\", je potrebno nastaviti "
 "privzeti stroškovni konto."
 
+#, fuzzy, python-format
 msgctxt "model:ir.message,text:msg_purchase_modify_header_draft"
 msgid ""
 "To modify the header of purchase \"%(purchase)s\", it must be in draft "
@@ -897,6 +944,7 @@ msgstr ""
 "Za spremembo glave nabavnega naloga \"%(puchase)s\", ga je potrebno vrniti v"
 " stanje \"Osnutek\"."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_purchase_move_reset_draft"
 msgid ""
 "You cannot reset move \"%(move)s\" to draft because it was generated by a "
@@ -905,6 +953,7 @@ msgstr ""
 "Prometa \"%(move)s\" ni mogoče vrniti v stanje \"Osnutek\", saj je bil "
 "ustvarjen z nabavnim nalogom."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_purchase_product_missing_account_expense"
 msgid ""
 "To invoice purchase \"%(purchase)s\" you must define an account expense for "
@@ -945,6 +994,7 @@ msgctxt "model:ir.message,text:msg_purchase_reporting_time_series"
 msgid "Time Series"
 msgstr "Časovne serije"
 
+#, python-format
 msgctxt "model:ir.message,text:msg_purchase_supplier_location_required"
 msgid ""
 "To process purchase \"%(purchase)s\" you must set a supplier location on "
@@ -953,6 +1003,7 @@ msgstr ""
 "Za obdelavo nabavnega naloga \"%(purchase)s\", je potrebno nastaviti "
 "dobaviteljevo lokacijo na partnerju \"%(party)s\"."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_warehouse_required_for_quotation"
 msgid ""
 "To get a quote for the purchase \"%(purchase)s\" you must enter a warehouse."
@@ -1068,10 +1119,6 @@ msgstr "Poročanje"
 msgctxt "model:ir.ui.menu,name:menu_reporting_purchase"
 msgid "Purchases"
 msgstr "Nabavni nalogi"
-
-msgctxt "model:ir.ui.menu,name:menu_supplier"
-msgid "Associated to Purchases"
-msgstr "Partnerji povezani z nabavo"
 
 msgctxt "model:party.party.customer_code,name:"
 msgid "Party Customer Code"
@@ -1381,12 +1428,14 @@ msgctxt "view:product.template:"
 msgid "Suppliers"
 msgstr "Dobavitelji"
 
+#, fuzzy
 msgctxt "view:purchase.handle.invoice.exception.ask:"
-msgid "Choose invoices to recreate:"
+msgid "Choose cancelled invoices to ignore or recreate:"
 msgstr "Izbor računov za ponovno izdelavo:"
 
+#, fuzzy
 msgctxt "view:purchase.handle.shipment.exception.ask:"
-msgid "Choose move to recreate:"
+msgid "Choose cancelled stock moves to ignore or recreate:"
 msgstr "Izbor prometa za ponovno izdelavo:"
 
 msgctxt "view:purchase.line:"

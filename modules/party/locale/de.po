@@ -127,7 +127,7 @@ msgid "Comment"
 msgstr "Kommentar"
 
 msgctxt "field:party.contact_mechanism,email:"
-msgid "E-Mail"
+msgid "Email"
 msgstr "E-Mail"
 
 msgctxt "field:party.contact_mechanism,language:"
@@ -235,7 +235,7 @@ msgid "Distance"
 msgstr "Distanz"
 
 msgctxt "field:party.party,email:"
-msgid "E-Mail"
+msgid "Email"
 msgstr "E-Mail"
 
 msgctxt "field:party.party,fax:"
@@ -488,6 +488,7 @@ msgctxt "model:ir.action,name:wizard_replace"
 msgid "Replace"
 msgstr "Ersetzen"
 
+#, python-format
 msgctxt "model:ir.message,text:msg_address_change_party"
 msgid "You cannot change the party of address \"%(address)s\"."
 msgstr "Die Partei von Adresse \"%(address)s\" kann nicht geändert werden."
@@ -502,18 +503,21 @@ msgstr ""
 "Der Name einer Parteienkategorie kann pro übergeordneter Kategorie nur "
 "einmal vergeben werden."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_contact_mechanism_change_party"
 msgid "You cannot change the party of contact mechanism \"%(contact)s\"."
 msgstr ""
 "Die Partei der Kontaktinformation \"%(contact)s\" kann nicht geändert "
 "werden."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_different_name"
 msgid "Parties have different names: \"%(source_name)s\" vs \"%(destination_name)s\"."
 msgstr ""
 "Die Parteien weisen unterschiedliche Namen auf: %(source_name)s gegenüber "
 "%(destination_name)s."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_different_tax_identifier"
 msgid ""
 "Parties have different tax identifiers: \"%(source_code)s\" vs "
@@ -522,16 +526,19 @@ msgstr ""
 "Die Parteien weisen unterschiedliche Steueridentifikatoren auf: "
 "%(source_code)s gegenüber %(destination_code)s."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_email_invalid"
 msgid "The email address \"%(email)s\" for party \"%(party)s\" is not valid."
 msgstr "Die E-Mail-Adresse \"%(email)s\" der Partei \"%(party)s\" ist ungültig."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_erase_active_party"
 msgid "Party \"%(party)s\" cannot be erased because they are still active."
 msgstr ""
 "Die Partei \"%(party)s\" kann nicht gelöscht werden, weil sie noch aktiv "
 "ist."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_identifier_type_remove"
 msgid ""
 "To remove the identifier type \"%(type)s\" from the configuration, you must "
@@ -540,14 +547,17 @@ msgstr ""
 "Damit der Identifikatorentyp \"%(type)s\" aus der Konfiguration gelöscht "
 "werden kann, muss er auf \"%(identifier)s\" geändert werden."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_invalid_code"
 msgid "The %(type)s \"%(code)s\" for party \"%(party)s\" is not valid."
 msgstr "%(type)s \"%(code)s\" von Partei \"%(party)s\" ist ungültig."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_invalid_format"
 msgid "Invalid format \"%(format)s\" with exception \"%(exception)s\"."
 msgstr "Ungültiges Format \"%(format)s\" mit Fehlermeldung \"%(exception)s\"."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_invalid_phone_number"
 msgid "The phone number \"%(phone)s\" for party \"%(party)s\" is not valid."
 msgstr "Die Telefonnummer \"%(phone)s\" von Partei \"%(party)s\" ist nicht gültig."
@@ -556,10 +566,12 @@ msgctxt "model:ir.message,text:msg_party_code_unique"
 msgid "The code on party must be unique."
 msgstr "Der Code für eine Partei kann nur einmal vergeben werden."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_party_identifier_duplicate"
 msgid "The party \"%(party)s\" has the same %(type)s \"%(code)s\"."
 msgstr "Die Partei \"%(party)s\" hat dieselbe %(type)s \"%(code)s\"."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_party_set_contact_mechanism"
 msgid ""
 "To change the \"%(field)s\" for party \"%(party)s\", you must edit their "
@@ -880,6 +892,10 @@ msgid "Egyptian Tax Registration Number"
 msgstr "Ägyptische Steuerregistrierungsnummer"
 
 msgctxt "selection:party.configuration,identifier_types:"
+msgid "El Salvador Tax Number"
+msgstr "Salvadorianische Steuernummer"
+
+msgctxt "selection:party.configuration,identifier_types:"
 msgid "English Unique Pupil Number"
 msgstr "Englische Eindeutige Schülernummer (UPN)"
 
@@ -1047,6 +1063,10 @@ msgid "Japanese Corporate Number"
 msgstr "Japanische Unternehmensnummer"
 
 msgctxt "selection:party.configuration,identifier_types:"
+msgid "Kenya Tax Number"
+msgstr "Kenianische Steuernummer"
+
+msgctxt "selection:party.configuration,identifier_types:"
 msgid "Latvian VAT Number"
 msgstr "Lettische Umsatzsteuer-Identifikationsnummer (PVN)"
 
@@ -1089,6 +1109,10 @@ msgstr "Moldavische Unternehmensnummer"
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "Monacan VAT Number"
 msgstr "Monegassische Umsatzsteuer-Identifikationsnummer (n° TVA)"
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Montenegro Tax Number"
+msgstr "Montenegrinische Steuernummer"
 
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "Moroccan Tax Number"
@@ -1175,6 +1199,10 @@ msgid "Serbian Tax Identification"
 msgstr "Serbische Steuernummer (PIB)"
 
 msgctxt "selection:party.configuration,identifier_types:"
+msgid "Singapore's Unique Entity Number"
+msgstr "Singapurische Unique Entity Number"
+
+msgctxt "selection:party.configuration,identifier_types:"
 msgid "Slovak Birth Number"
 msgstr "Slowakische Geburtsnummer (RČ)"
 
@@ -1251,6 +1279,10 @@ msgid "Swiss VAT Number"
 msgstr "Schweizer Mehrwertsteuernummer (VAT, MWST, TVA, IVA, TPV)"
 
 msgctxt "selection:party.configuration,identifier_types:"
+msgid "Taiwanese Tax Number"
+msgstr "Taiwanesische Steuernummer"
+
+msgctxt "selection:party.configuration,identifier_types:"
 msgid "Thai Memorandum of Association Number"
 msgstr "Thailändische Gesellschaftsvertragsnummer"
 
@@ -1269,6 +1301,10 @@ msgstr "Tunesische Steuernummer"
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "Turkish Personal Identification Number"
 msgstr "Türkische Personalausweisnummer (T.C. Kimlik No.)"
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Turkish Tax Identification Number"
+msgstr "Türkische Steueridentifikationsnummer"
 
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "U.S. Adoption Taxpayer Identification Number"
@@ -1311,6 +1347,10 @@ msgid "United Kingdom National Health Service Patient Identifier"
 msgstr "Britische nationale Patientennummer des Gesundheitssystems (NHS)"
 
 msgctxt "selection:party.configuration,identifier_types:"
+msgid "United Kingdom Unique Taxpayer Reference"
+msgstr "Britische Unique Taxpayer Reference (UTR)"
+
+msgctxt "selection:party.configuration,identifier_types:"
 msgid "Uruguay Tax Number"
 msgstr "Uru­gu­a­yische Steuernummer"
 
@@ -1323,7 +1363,7 @@ msgid "Vietnam Tax Number"
 msgstr "Vietnamesische Steuernummer"
 
 msgctxt "selection:party.contact_mechanism,type:"
-msgid "E-Mail"
+msgid "Email"
 msgstr "E-Mail"
 
 msgctxt "selection:party.contact_mechanism,type:"
@@ -1375,8 +1415,8 @@ msgid "Party"
 msgstr "Partei"
 
 msgctxt "view:party.replace.ask:"
-msgid "Replace By"
-msgstr "Ersetzen durch"
+msgid "Replaced By"
+msgstr "Ersetzt durch"
 
 msgctxt "wizard_button:party.check_vies,result,end:"
 msgid "OK"

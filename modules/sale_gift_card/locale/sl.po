@@ -187,16 +187,19 @@ msgctxt ""
 msgid "Sent"
 msgstr ""
 
+#, python-format
 msgctxt "model:ir.message,text:msg_gift_card_email_invalid"
 msgid "The email address \"%(email)s\" for \"%(card)s\" is not valid."
 msgstr ""
 
+#, python-format
 msgctxt "model:ir.message,text:msg_gift_card_invalid_uom"
 msgid ""
 "The default unit of measure for the gift card \"%(template)s\" must be "
 "\"%(unit)s\"."
 msgstr ""
 
+#, python-format
 msgctxt "model:ir.message,text:msg_gift_card_move_quantity"
 msgid ""
 "To do the move \"%(move)s\", you must use exactly %(quantity)d gift card(s)."
@@ -242,6 +245,7 @@ msgctxt "report:sale.gift_card.email:"
 msgid "Here is your code:"
 msgstr ""
 
+#, python-format
 msgctxt "report:sale.gift_card.email:"
 msgid "You received a gift card of %(value)s for %(company)s."
 msgstr ""

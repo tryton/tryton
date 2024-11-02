@@ -78,10 +78,12 @@ msgctxt "model:account.configuration.default_credit_limit_amount,name:"
 msgid "Account Configuration Default Credit Limit Amount"
 msgstr "پیکره بندی حساب پیش فرض مقدار محدودیت اعتبار"
 
+#, fuzzy, python-format
 msgctxt "model:ir.message,text:msg_party_credit_limit_amount"
 msgid "Party \"%(party)s\" has reached their credit limit of %(limit)s."
 msgstr "نهاد/سازمان: \"%(party)s\" به حد اعتبار خود از : \"%(محدودیت)s\" رسیده است."
 
+#, fuzzy, python-format
 msgctxt "model:ir.message,text:msg_party_credit_limit_dunning"
 msgid "Party \"%(party)s\" has reached the credit limit level of %(dunning)s."
 msgstr ""

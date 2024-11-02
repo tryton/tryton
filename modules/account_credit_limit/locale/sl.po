@@ -62,12 +62,12 @@ msgstr "Partner"
 
 msgctxt "help:account.configuration,default_credit_limit_amount:"
 msgid "The default credit limit amount for new customers."
-msgstr ""
+msgstr "Privzeti znesek kreditnega limita za nove stranke."
 
 msgctxt ""
 "help:account.configuration.default_credit_limit_amount,default_credit_limit_amount:"
 msgid "The default credit limit amount for new customers."
-msgstr ""
+msgstr "Privzeti znesek kreditnega limita za nove stranke."
 
 msgctxt "help:account.dunning.level,credit_limit:"
 msgid "Has reached the credit limit."
@@ -77,22 +77,23 @@ msgctxt "model:account.configuration.default_credit_limit_amount,name:"
 msgid "Account Configuration Default Credit Limit Amount"
 msgstr "Konfiguracija privzetega odobrenega limita"
 
+#, python-format
 msgctxt "model:ir.message,text:msg_party_credit_limit_amount"
 msgid "Party \"%(party)s\" has reached their credit limit of %(limit)s."
-msgstr ""
+msgstr "Partner \"%(party)s\" je dosegel kreditni limit %(limit)s."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_party_credit_limit_dunning"
 msgid "Party \"%(party)s\" has reached the credit limit level of %(dunning)s."
-msgstr ""
+msgstr "Partner \"%(party)s\" je dosegel kreditni limit zneska %(dunning)s."
 
 msgctxt "model:party.party.credit_limit_amount,name:"
 msgid "Party Credit Limit Amount"
 msgstr "Partnerjev odobreni limit"
 
-#, fuzzy
 msgctxt "model:res.group,name:group_credit_limit"
 msgid "Account Credit Limit"
-msgstr "Account Credit Limit"
+msgstr "Konto kreditnega limita"
 
 msgctxt "view:account.configuration:"
 msgid "Credit Limit"

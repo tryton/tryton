@@ -126,6 +126,11 @@ msgctxt ""
 msgid "Sent"
 msgstr ""
 
+msgctxt "model:ir.message,text:msg_chorus_credential_modified"
+msgid "Are you sure you want to modify Chorus credentials?"
+msgstr ""
+
+#, fuzzy, python-format
 msgctxt "model:ir.message,text:msg_invoice_address_no_siret"
 msgid ""
 "To create a Chorus invoice for \"%(invoice)s\", you must set a SIRET on "
@@ -134,6 +139,7 @@ msgstr ""
 "Chorus arve \"&(arve)te\" loomiseks tuleb esmalt määrata SIERT (SIRET kood) "
 "aadressile \"%(aadressitele)\""
 
+#, fuzzy, python-format
 msgctxt "model:ir.message,text:msg_invoice_delete_sent"
 msgid "You cannot delete Chorus invoice \"%(invoice)s\" because it is sent."
 msgstr "Chorus arvet \"%(arveid)\" ei saa kustutada kuna see \"(%need)\" on saadetud"

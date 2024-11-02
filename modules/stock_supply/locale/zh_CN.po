@@ -50,10 +50,6 @@ msgctxt "field:stock.order_point,provisioning_location:"
 msgid "Provisioning Location"
 msgstr "调配库位"
 
-msgctxt "field:stock.order_point,storage_location:"
-msgid "Storage Location"
-msgstr "存储库位"
-
 msgctxt "field:stock.order_point,target_quantity:"
 msgid "Target Quantity"
 msgstr "目标数量"
@@ -65,10 +61,6 @@ msgstr "类型"
 msgctxt "field:stock.order_point,unit:"
 msgid "Unit"
 msgstr "单位"
-
-msgctxt "field:stock.order_point,warehouse_location:"
-msgid "Warehouse Location"
-msgstr "仓库库位"
 
 msgctxt "field:stock.supply.start,warehouses:"
 msgid "Warehouses"

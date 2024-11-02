@@ -227,8 +227,8 @@ msgid "Asset Depreciation Frequency"
 msgstr "Afschrijvingsfrequentie activa"
 
 msgctxt "field:account.configuration,asset_sequence:"
-msgid "Asset Reference Sequence"
-msgstr "Activa referentie reeks"
+msgid "Asset Sequence"
+msgstr "Activa reeks"
 
 msgctxt "field:account.configuration.asset_date,asset_bymonth:"
 msgid "Month"
@@ -430,12 +430,14 @@ msgctxt "model:ir.action.act_window.domain,name:act_asset_form_domain_running"
 msgid "Running"
 msgstr "In uitvoering"
 
+#, python-format
 msgctxt "model:ir.message,text:msg_asset_delete_draft"
 msgid "You cannot delete asset \"%(asset)s\" because it is not in \"draft\" state."
 msgstr ""
 "U kunt activa \"%(asset)s\" niet verwijderen omdat het niet in status "
 "\"concept\" staat."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_asset_draft_lines"
 msgid "You cannot reset to draft asset \"%(asset)s\" because it has lines."
 msgstr ""
@@ -446,6 +448,7 @@ msgctxt "model:ir.message,text:msg_asset_invoice_line_unique"
 msgid "Invoice line can be used only once on asset."
 msgstr "Factuurregel kan slechts eenmaal worden gebruikt voor activa."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_asset_running_close_period"
 msgid ""
 "You cannot close period \"%(period)s\" because some assets \"%(assets)s\" "
@@ -462,6 +465,7 @@ msgctxt "model:ir.message,text:msg_no_assets"
 msgid "There is no started asset."
 msgstr "Er zijn geen gestarte activa."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_purchase_product_missing_account_asset"
 msgid ""
 "To invoice purchase \"%(purchase)s\", you must set an account asset on "

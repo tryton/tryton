@@ -3174,20 +3174,24 @@ msgctxt "model:ir.action,name:wizard_update_chart"
 msgid "Update Chart of Accounts from Template"
 msgstr "Actualitza pla comptable des de plantilla"
 
+#, python-format
 msgctxt "model:ir.message,text:msg_account_chart_exists"
 msgid "A chart of accounts already exists for company \"%(company)s\"."
 msgstr "Ja existeix un pla de comptes per l'empresa \"%(company)s\"."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_account_closed_lines"
 msgid "You cannot close account \"%(account)s\" because it has move lines."
 msgstr "No podeu tancar el compte \"%(account)s\" perquè té apunts."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_account_invalid_deferral_second_currency"
 msgid "To set a second currency for account \"%(account)s\", it must be deferral."
 msgstr ""
 "Per establir una moneda secundaria al compte \"%(account)s\", ha de ser de "
 "tancament."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_account_invalid_lines_second_currency"
 msgid ""
 "To set a second currency for account \"%(account)s\", its lines must have "
@@ -3196,6 +3200,7 @@ msgstr ""
 "Per establir una moneda secundaria al compte \"%(account)s\", els seus "
 "apunts han de tenir la mateixa segona divisa \"%(currency)s\"."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_account_invalid_type_second_currency"
 msgid ""
 "To set a second currency for account \"%(account)s\", it must not have a "
@@ -3204,11 +3209,13 @@ msgstr ""
 "Per assignar una moneda secundaria al compte \"%(account)s\", aquest no ha "
 "de ser del tipus \"A pagar\", \"Ingressos\", \"A cobrar\" o \"Despeses\"."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_account_no_type_lines"
 msgid ""
 "You cannot remove type of account \"%(account)s\" because it has move lines."
 msgstr "No podeu eliminar el tipus de compte \"%(account)s\" perquè té apunts."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_cancel_line_delegated"
 msgid ""
 "The moves \"%(moves)s\" contain grouped lines, cancelling them will ungroup "
@@ -3217,6 +3224,7 @@ msgstr ""
 "El assentaments \"%(moves)s\" contenen apunts agrupats, si es cancel·len es "
 "desagrupara els apunts."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_change_fiscalyear_post_move_sequence"
 msgid ""
 "You cannot change the post move sequence on fiscal year \"%(fiscalyear)s\" "
@@ -3225,6 +3233,7 @@ msgstr ""
 "No es pot modificar la seqüència d'assentaments comptabilitzats de "
 "l'exercici fiscal \"%(fiscalyear)s\" perquè conté moviments comptabilitzats."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_change_period_post_move_sequence"
 msgid ""
 "You cannot change the post move sequence in period \"%(period)s\" because it"
@@ -3233,6 +3242,7 @@ msgstr ""
 "No es pot modificar la seqüència d'assentaments comptabilitzats del període "
 "\"%(period)s\" perquè conté moviments comptabilitzats."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_close_fiscalyear_account_balance_not_zero"
 msgid ""
 "To close the fiscal year, the balance of account \"%(account)s\" must be "
@@ -3241,6 +3251,7 @@ msgstr ""
 "El balanç del compte \"%(account)s\" ha de ser zero per poder tancar "
 "l'exercici fiscal."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_close_fiscalyear_earlier"
 msgid ""
 "To close fiscal year \"%(fiscalyear)s\", you must close all earlier fiscal "
@@ -3249,6 +3260,7 @@ msgstr ""
 "Per tancar l'exercici fiscal \"%(fiscalyear)s\", heu de tancar primer els "
 "exercicis fiscals anteriors."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_close_period_inactive_accounts"
 msgid ""
 "To close period \"%(period)s\", you must balance the inactive account "
@@ -3257,6 +3269,7 @@ msgstr ""
 "Per tancar el període \"%(period)s\" heu de eliminar el saldo del compte "
 "inactiu \"%(account)s\"."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_close_period_non_posted_moves"
 msgid "To close period \"%(period)s\" you must post the moves \"%(moves)s\"."
 msgstr ""
@@ -3269,10 +3282,12 @@ msgid ""
 " moves."
 msgstr "No podeu canviar la moneda d'una empresa amb assentaments comptables."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_create_journal_period_closed_period"
 msgid "You cannot create a journal-period in closed period \"%(period)s\"."
 msgstr "No podeu crear un diari - període al període tancat \"%(period)s\"."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_create_period_closed_fiscalyear"
 msgid ""
 "You cannot create a period in fiscal year \"%(fiscalyear)s\" because it is "
@@ -3293,10 +3308,12 @@ msgctxt "model:ir.message,text:msg_delegate_line_same_origins"
 msgid "You cannot delegate together lines with different origins."
 msgstr "No es pot delegar a la vegada línies amb orígens diferents."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_delete_account_with_move_lines"
 msgid "You cannot delete account \"%(account)s\" because it has move lines."
 msgstr "No podeu eliminar el compte \"%(account)s\" perquè té apunts."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_erase_party_receivable_payable"
 msgid ""
 "You cannot erase party \"%(party)s\" while they have pending "
@@ -3305,23 +3322,18 @@ msgstr ""
 "No podeu eliminar el tercer \"%(party)s\" mentre tingui imports a "
 "pagar/cobrar amb l'empresa \"%(company)s\"."
 
-msgctxt "model:ir.message,text:msg_fiscalyear_different_post_move_sequence"
-msgid ""
-"The fiscal years \"%(first)s\" and \"%(second)s\" cannot have the same post "
-"move sequence, you must use different sequences."
-msgstr ""
-"Els exercicis fiscals \"%(first)s\" i \"%(second)s\" no poden tenir la "
-"mateixa seqüència d'assentaments comptabilitats, han d'utilitzar seqüencies "
-"diferents."
-
 msgctxt "model:ir.message,text:msg_fiscalyear_overlap"
-msgid ""
-"The fiscal years \"%(first)s\" and \"%(second)s\" overlap, you must use "
-"different dates."
+msgid "The dates of fiscal years of the same company can not overlap."
 msgstr ""
-"Els exercicis fiscals \"%(first)s\" i \"%(second)s\" es sobreposen, heu "
-"d'utilitzar dates diferents."
+"Les dates dels exercicis fiscals d'una mateixa empresa no es poden solapar."
 
+msgctxt "model:ir.message,text:msg_fiscalyear_post_move_sequence_unique"
+msgid "The post move sequence of fiscal years must be unique."
+msgstr ""
+"La seqüència d'assentaments comptabilitzats dels exercicis fiscals ha de ser"
+" única."
+
+#, python-format
 msgctxt "model:ir.message,text:msg_group_line"
 msgid "Line \"%(line)s\" can not be grouped."
 msgstr "La línia \"%(line)s\" no es pot agrupar."
@@ -3346,6 +3358,7 @@ msgctxt "model:ir.message,text:msg_group_line_single"
 msgid "You cannot group a single line."
 msgstr "No podeu agrupar una sola línia."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_journal_account_moves"
 msgid ""
 "You cannot change the type of journal \"%(journal)s\" because it has posted "
@@ -3358,10 +3371,12 @@ msgctxt "model:ir.message,text:msg_journal_period_unique"
 msgid "You can create only one journal per period."
 msgstr "Només podeu crear un diari per període."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_line_already_reconciled"
 msgid "You cannot reconcile already reconciled line \"%(line)s\"."
 msgstr "No podeu conciliar l'apunt \"%(line)s\" perquè ja està conciliat."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_line_closed_account"
 msgid ""
 "To create a line on account \"%(account)s\", you must set a type or unclose "
@@ -3374,6 +3389,7 @@ msgctxt "model:ir.message,text:msg_line_debit_credit"
 msgid "You cannot set both debit and credit on the line."
 msgstr "No podeu definir a la vegada el haver i el deure de l'apunt."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_line_party_required"
 msgid ""
 "To create a line on account \"%(account)s\", you must set a party on line "
@@ -3382,6 +3398,7 @@ msgstr ""
 "Per crear un apunt pel compte \"%(account)s\" heu de definir un tercer per "
 "la línia \"%(line)s\"."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_line_party_set"
 msgid ""
 "To create a line on account \"%(account)s\", you must remove the party on "
@@ -3398,6 +3415,7 @@ msgstr ""
 "El signe de la moneda secundaria ha de coincidir amb el signe del deure - "
 "haver."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_modify_delete_journal_period_moves"
 msgid ""
 "You cannot modify or delete journal-period \"%(journal_period)s\" because it"
@@ -3406,6 +3424,7 @@ msgstr ""
 "No es pot modificar o eliminar el diari-període \"%(journal_period)s\" "
 "perquè conté assentaments."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_modify_line_closed_journal_period"
 msgid ""
 "You cannot add/modify/delete lines on closed journal-period "
@@ -3414,26 +3433,31 @@ msgstr ""
 "No podeu afegir/modificar/eliminar apunts al diari-període tancat "
 "\"%(journal_period)s\"."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_modify_line_posted_move"
 msgid "You cannot modify line \"%(line)s\" from posted move \"%(move)s\"."
 msgstr ""
 "No podeu modificar el apunt \"%(line)s\" de l'assentament comptabilitzat "
 "\"%(move)s\"."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_modify_line_reconciled"
 msgid "You cannot modify reconciled line \"%(line)s\"."
 msgstr "No es pot modificar l'apunt conciliat \"%(line)s\"."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_modify_posted_moved"
 msgid "You cannot modify posted move \"%(move)s\"."
 msgstr "No podeu modificar l'assentament comptabilitzat \"%(move)s\"."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_modify_tax_line_closed_period"
 msgid "You cannot add/modify/delete tax lines in closed period \"%(period)s\"."
 msgstr ""
 "No podeu afegir/modificar/eliminar línies d'impost al període tancat "
 "\"%(period)s\"."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_move_cancel_closed_period"
 msgid ""
 "The period of move \"%(move)s\" is closed.\n"
@@ -3442,6 +3466,16 @@ msgstr ""
 "El període del assentament \"%(move)s\" està tancat.\n"
 "Voleu utilitzar el període actual per cancel·lar l'assentament?"
 
+#, python-format
+msgctxt "model:ir.message,text:msg_move_copy_closed_period"
+msgid ""
+"The period of move \"%(move)s\" is closed.\n"
+"Use the current period to copy the move?"
+msgstr ""
+"El període de moviment \"%(move)s\" està tancat.\n"
+"Voleu utilitzar el període actual per copiar el moviment?"
+
+#, python-format
 msgctxt "model:ir.message,text:msg_move_template_expression_not_number"
 msgid ""
 "The value \"%(value)s\" of \"%(expression)s\" from template \"%(template)s\""
@@ -3450,6 +3484,16 @@ msgstr ""
 "El valor \"%(value)s\" de \"%(expression)s\" de la plantilla "
 "\"%(template)s\" no és un número."
 
+#, python-format
+msgctxt "model:ir.message,text:msg_move_template_invalid_description"
+msgid ""
+"Failed to evaluate the description \"%(description)s\" from template "
+"\"%(template)s\" with error: \"%(error)s\""
+msgstr ""
+"No s'ha pogut avaluar la descripció \"%(description)s\" de la plantilla "
+"\"%(template)s\" amb error: \"%(error)s\""
+
+#, python-format
 msgctxt "model:ir.message,text:msg_move_template_invalid_expression"
 msgid ""
 "Failed to evaluate expression \"%(expression)s\" from template \"%(template)s\" with error:\n"
@@ -3458,10 +3502,12 @@ msgstr ""
 "No s'ha pogut avaluar l'expressió \"%(expression)s\" de la plantilla \"%(template)s\" amb error:\n"
 "\"%(error)s\""
 
+#, python-format
 msgctxt "model:ir.message,text:msg_move_template_keyword_name_not_identifier"
 msgid "The keyword name \"%(name)s\" is not a valid identifier."
 msgstr "El nom de la parula clau \"%(name)s\" no és un identificador vàlid."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_no_fiscalyear_date"
 msgid ""
 "To continue, you must create a fiscal year for the date \"%(date)s\" and "
@@ -3470,14 +3516,16 @@ msgstr ""
 "Per continuar heu de crear un exercici fiscal per la data \"%(date)s\" i "
 "l'empresa \"%(company)s\"."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_no_open_fiscalyear_date"
 msgid ""
 "To continue, you must reopen the fiscal year \"%(fiscalyear)s\" of company "
-"\"%(company)s\"for the date \"%(date)s\"."
+"\"%(company)s\" for the date \"%(date)s\"."
 msgstr ""
 "Per continuar heu de reobrir l'exercici fiscal \"%(fiscalyear)s\" de "
 "l'empresa \"%(company)s\" per la data \"%(date)s\"."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_no_open_period_date"
 msgid ""
 "To continue, you must reopen the period \"%(period)s\" of company "
@@ -3486,6 +3534,7 @@ msgstr ""
 "Per continuar heu de reobrir el període \"%(period)s\" de l'empresa "
 "\"%(company)s\" per la data \"%(date)s\"."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_no_period_date"
 msgid ""
 "To continue, you must create a period for the date \"%(date)s\" and company "
@@ -3499,13 +3548,12 @@ msgid "Account can have only one of the debit or credit type set."
 msgstr "El compte només pot tenir un tipus deure o haver."
 
 msgctxt "model:ir.message,text:msg_open_fiscalyear_earlier"
-msgid ""
-"The open fiscal year \"%(open)s\" can not be before the close fiscal year "
-"\"%(closed)s\"."
+msgid "Open fiscal years can not be before closed fiscal years."
 msgstr ""
-"L'exercici fiscal obert \"%(open)s\" no pot ser anterior l'exercici fiscal "
-"tancat \"%(closed)s\"."
+"No es poden obrir els ejercicis fiscals anteriors als ejercicis fiscals "
+"tancats."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_open_journal_period_closed_period"
 msgid ""
 "You cannot reopen journal-period \"%(journal_period)s\" in closed period "
@@ -3514,6 +3562,7 @@ msgstr ""
 "No podeu reobrir el diari - període \"%(journal_period)s\" del període "
 "tancat \"%(period)s\"."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_open_period_closed_fiscalyear"
 msgid ""
 "You cannot reopen period \"%(period)s\" because its fiscal year "
@@ -3522,14 +3571,17 @@ msgstr ""
 "No podeu reobrir el període \"%(period)s\" perquè el seu exercici fiscal "
 "\"%(fiscalyear)s\" està tancat."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_party_missing_payable_account"
 msgid "To continue, you must define a payable account for party \"%(party)s\"."
 msgstr "Per continuar heu de crear un compte a pagar pel tercer \"%(party)s\"."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_party_missing_receivable_account"
 msgid "To continue, you must define a receivable account for party \"%(party)s\"."
 msgstr "Per continuar heu de crear un compte a cobrar pel tercer \"%(party)s\"."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_period_fiscalyear_dates"
 msgid ""
 "The dates for period \"%(period)s\" must be between the dates of its fiscal "
@@ -3538,6 +3590,7 @@ msgstr ""
 "Les dates del període \"%(period)s\" ha d'estar dins de les dates del seu "
 "exercici fiscal \"%(fiscalyear)s\"."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_period_move_dates"
 msgid ""
 "The dates for period \"%(period)s\" must include the date \"%(move_date)s\" "
@@ -3546,28 +3599,26 @@ msgstr ""
 "Les dates del període \"%(period)s\" han d'incloure la data "
 "\"%(move_date)s\" del assentament \"%(move)s\"."
 
-msgctxt "model:ir.message,text:msg_period_overlap"
+msgctxt "model:ir.message,text:msg_period_post_move_sequence_unique"
 msgid ""
-"The periods \"%(first)s\" and \"%(second)s\" overlap, you must use different"
-" dates."
+"A post move sequence can be reused only by periods in the same fiscal year."
 msgstr ""
-"El períodes \"%(first)s\" i \"%(second)s\" es sobreposen, heu d'utilitzar "
-"dates diferents."
+"Una seqüència d'assentaments comptabilitzats només es pot reutilitzar per "
+"períodes del mateix exercici fiscal."
 
-msgctxt "model:ir.message,text:msg_period_same_sequence"
-msgid ""
-"You cannot use the same post move sequence for the periods \"%(first)s\" and"
-" \"%(second)s\" because they are from different fiscal years."
+msgctxt "model:ir.message,text:msg_period_standard_overlap"
+msgid "The dates of standard period of the same fiscal year can not overlap."
 msgstr ""
-"No podeu utilitzar la mateixa seqüència d'assentaments comptabilitzats pels "
-"períodes \"%(first)s\" and \"%(second)s\" perquè són d'exercicis fiscals "
-"diferents."
+"Les dates del període estàndard del mateix exercici fiscal no es poden "
+"solapar."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_post_empty_move"
 msgid "To post move \"%(move)s\", you must fill in its lines."
 msgstr ""
 "Per comptabilitzar l'assentament \"%(move)s\" heu de definir-hi algun apunt."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_post_unbalanced_move"
 msgid ""
 "To post move \"%(move)s\", you must balance all its lines debits and "
@@ -3576,6 +3627,7 @@ msgstr ""
 "Per comptabilitzar l'assentament \"%(move)s\" el deure i el haver dels seus "
 "apunts ha d'estar balancejat."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_reconciliation_account_not_reconcile"
 msgid ""
 "To reconcile line \"%(line)s\", you must set its account \"%(account)s\" as "
@@ -3584,6 +3636,7 @@ msgstr ""
 "Per conciliar l'apunt \"%(line)s\", heu de marcar el seu compte "
 "\"%(account)s\" com conciliable."
 
+#, python-format
 msgctxt ""
 "model:ir.message,text:msg_reconciliation_currency_exchange_credit_account_missing"
 msgid ""
@@ -3593,6 +3646,7 @@ msgstr ""
 "Per conciliar les lines, heu de definir un compte haber per les diferencies "
 "de canvi per \"%(company)s\"."
 
+#, python-format
 msgctxt ""
 "model:ir.message,text:msg_reconciliation_currency_exchange_debit_account_missing"
 msgid ""
@@ -3602,6 +3656,7 @@ msgstr ""
 "Per conciliar les lines, heu de definir un compte deure per les diferencies "
 "de canvi per \"%(company)s\"."
 
+#, python-format
 msgctxt ""
 "model:ir.message,text:msg_reconciliation_currency_exchange_journal_missing"
 msgid ""
@@ -3611,6 +3666,7 @@ msgstr ""
 "Per conciliar les lines, heu de definir un diari per les diferencies de "
 "canvi per \"%(company)s\"."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_reconciliation_delete_delegated"
 msgid ""
 "The reconciliation \"%(reconciliation)s\" is delegated to the line \"%(line)s\".\n"
@@ -3619,6 +3675,7 @@ msgstr ""
 "La conciliació: \"%(reconciliation)s\" s'ha delegat a la línia \"%(line)s\".\n"
 "És possible que s'hagi de cancel·lar l'assentament \"%(move)s\"."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_reconciliation_delete_write_off"
 msgid ""
 "The reconciliation \"%(reconciliation)s\" is linked to the write-off line \"%(line)s\".\n"
@@ -3627,6 +3684,7 @@ msgstr ""
 "La conciliació: \"%(reconciliation)s\" s'ha delegat a la línia \"%(line)s\".\n"
 "És possible que s'hagi de cancel·lar l'assentament \"%(move)s\"."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_reconciliation_different_accounts"
 msgid ""
 "You cannot reconcile line \"%(line)s\" with others because its account "
@@ -3635,6 +3693,7 @@ msgstr ""
 "No podeu conciliar l'apunt \"%(line)s\" amb altres apunts perquè el compte "
 "\"%(account1)s\" és diferent de \"%(account2)s\"."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_reconciliation_different_parties"
 msgid ""
 "You cannot reconcile line \"%(line)s\" with others because its party "
@@ -3643,10 +3702,12 @@ msgstr ""
 "No podeu conciliar l'apunt \"%(line)s\" amb altres apunts perquè el tercer "
 "\"%(party1)s\" és diferent de \"%(party2)s\"."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_reconciliation_line_not_valid"
 msgid "You cannot reconcile non-valid line \"%(line)s\"."
 msgstr "No podeu conciliar el apunt invàlid \"%(line)s\"."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_reconciliation_unbalanced"
 msgid ""
 "To reconcile lines, they must have the same debit \"%(debit)s\" and credit "
@@ -3655,6 +3716,7 @@ msgstr ""
 "Per conciliar apunts, aquests han de tenir el mateix deure \"%(debit)s\" i "
 "haver \"%(credit)s\"."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_reconciliation_write_off_missing"
 msgid ""
 "To reconcile lines with \"%(amount)s\" write-off, you must select a write-"
@@ -3663,6 +3725,16 @@ msgstr ""
 "Per conciliar les línies amb un desajust de \"%(amount)s\" heu de "
 "seleccionar una mètode de desajust."
 
+#, python-format
+msgctxt "model:ir.message,text:msg_reconciliation_write_off_same_account"
+msgid ""
+"You cannot reconcile lines using the write-off \"%(write_off)s\" with the "
+"same \"%(account)s\"."
+msgstr ""
+"No podeu conciliar línies utilitzant el desajust \"%(write_off)s\" amb la "
+"mateixa \"%(account)s\"."
+
+#, python-format
 msgctxt "model:ir.message,text:msg_reopen_fiscalyear_later"
 msgid ""
 "To reopen fiscal year \"%(fiscalyear)s\", you must reopen all later fiscal "
@@ -3687,6 +3759,7 @@ msgctxt "model:ir.message,text:msg_reschedule_line_same_party"
 msgid "You cannot reschedule lines with different parties."
 msgstr "No podeu reprogramar apunts amb tercers diferents."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_reschedule_line_wrong_amount"
 msgid ""
 "To reschedule the lines you must change the terms to have a total amount of "
@@ -3695,6 +3768,7 @@ msgstr ""
 "Per reprogramar els apunnts, heu de canviar els terminis per tenir un import"
 " total de %(total_amount)s en comptes de %(amount)s."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_tax_update_unit_price_with_parent"
 msgid "You cannot set \"Update Unit Price\" on child tax \"%(tax)s\"."
 msgstr ""
@@ -3730,7 +3804,7 @@ msgid "Lock"
 msgstr "Bloqueja"
 
 msgctxt "model:ir.model.button,string:fiscalyear_reopen_button"
-msgid "Re-Open"
+msgid "Reopen"
 msgstr "Torna a obrir"
 
 msgctxt "model:ir.model.button,string:journal_period_close_button"
@@ -3754,7 +3828,7 @@ msgid "Lock"
 msgstr "Bloqueja"
 
 msgctxt "model:ir.model.button,string:period_reopen_button"
-msgid "Re-Open"
+msgid "Reopen"
 msgstr "Torna a obrir"
 
 msgctxt "model:ir.rule.group,name:rule_group_account_companies"
@@ -4058,10 +4132,6 @@ msgstr "Comptabilitat"
 msgctxt "model:res.group,name:group_account_admin"
 msgid "Account Administration"
 msgstr "Administració de comptabilitat"
-
-msgctxt "model:res.group,name:group_account_party"
-msgid "Accounting Party"
-msgstr "Comptabilitat dels tercers"
 
 msgctxt "report:account.account.type.statement:"
 msgid "/"
@@ -4821,7 +4891,7 @@ msgstr "Informació general"
 
 msgctxt "view:account.update_chart.succeed:"
 msgid "Chart of accounts updated successfully."
-msgstr "El plà de comptes s'ha actualitzat correctament."
+msgstr "El pla de comptes s'ha actualitzat correctament."
 
 msgctxt "view:company.company:"
 msgid "Account"

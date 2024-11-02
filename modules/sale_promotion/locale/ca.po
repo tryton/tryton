@@ -78,6 +78,10 @@ msgctxt "field:sale.promotion-product.product,promotion:"
 msgid "Promotion"
 msgstr "Promoció"
 
+msgctxt "field:sale.reporting.promotion,promotion:"
+msgid "Promotion"
+msgstr "Promoció"
+
 msgctxt "help:sale.promotion,formula:"
 msgid ""
 "Python expression that will be evaluated with:\n"
@@ -94,6 +98,15 @@ msgctxt "model:ir.action,name:act_promotion_relate"
 msgid "Sale Promotions"
 msgstr "Promocions de venda"
 
+msgctxt "model:ir.action,name:act_sale_relate"
+msgid "Sales"
+msgstr "Vendes"
+
+msgctxt "model:ir.action,name:act_sale_reporting_promotion"
+msgid "Sales per Promotion"
+msgstr "Vendes per promoció"
+
+#, python-format
 msgctxt "model:ir.message,text:msg_invalid_formula"
 msgid ""
 "Invalid formula \"%(formula)s\" in promotion \"%(promotion)s\" 'with "
@@ -103,6 +116,10 @@ msgstr ""
 "l'excepció \"%(exception)s\"."
 
 msgctxt "model:ir.rule.group,name:rule_group_promotion_companies"
+msgid "User in companies"
+msgstr "Usuari a les empreses"
+
+msgctxt "model:ir.rule.group,name:rule_group_reporting_promotion_companies"
 msgid "User in companies"
 msgstr "Usuari a les empreses"
 
@@ -121,3 +138,7 @@ msgstr "Promoció de venda - Categoria de producte"
 msgctxt "model:sale.promotion-product.product,name:"
 msgid "Sale Promotion - Product"
 msgstr "Promoció de venda - Producte"
+
+msgctxt "model:sale.reporting.promotion,name:"
+msgid "Sale Reporting per Promotion"
+msgstr "Informe de vendes per promoció"

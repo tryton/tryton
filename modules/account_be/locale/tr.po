@@ -30,20 +30,22 @@ msgctxt "field:account.be.vat_customer.context,fiscalyear:"
 msgid "Fiscal Year"
 msgstr "Mali Yıl"
 
+#, fuzzy
 msgctxt "model:account.be.vat_customer,name:"
-msgid "Belgium VAT Customer"
+msgid "Belgian VAT Customer"
 msgstr "Belçika KDV Müşterisi"
 
+#, fuzzy
 msgctxt "model:account.be.vat_customer.context,name:"
-msgid "Belgium VAT Customer Context"
+msgid "Belgian VAT Customer Context"
 msgstr "Belçika KDV Müşteri İçeriği"
 
 #, fuzzy
 msgctxt "model:ir.action,name:act_vat_customer_form"
-msgid "Belgium VAT Customer"
+msgid "Belgian VAT Customer"
 msgstr "Belgium VAT Customer"
 
 #, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_vat_customer"
-msgid "Belgium VAT Customer"
+msgid "Belgian VAT Customer"
 msgstr "Belgium VAT Customer"

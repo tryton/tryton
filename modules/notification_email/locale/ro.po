@@ -98,16 +98,19 @@ msgctxt "help:notification.email,content:"
 msgid "The report used as email template."
 msgstr "Raportul utilizat ca șablon pentru email."
 
+#, fuzzy
 msgctxt "help:notification.email,fallback_recipients:"
-msgid "User notified when no recipients e-mail is found"
+msgid "User notified when no recipients email is found."
 msgstr "Utilizator notificat când nu se găsesc destinatari e-mail"
 
+#, fuzzy
 msgctxt "help:notification.email,fallback_recipients_hidden:"
-msgid "User notified when no hidden recipients e-mail is found"
+msgid "User notified when no hidden recipients email is found."
 msgstr "Utilizator notificat când nu sunt destinatari ascunși în e-mail"
 
+#, fuzzy
 msgctxt "help:notification.email,fallback_recipients_secondary:"
-msgid "User notified when no secondary recipients e-mail is found"
+msgid "User notified when no secondary recipients email is found."
 msgstr ""
 "Utilizatorul este notificat când nu este găsit niciun e-mail al "
 "destinatarilor secundari"
@@ -153,13 +156,15 @@ msgctxt "model:ir.action,name:act_email_form"
 msgid "Notification Emails"
 msgstr "E-mailuri de notificare"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_ir_email_form_relate_notification"
-msgid "E-mails"
+msgid "Emails"
 msgstr "E-mailuri"
 
+#, fuzzy, python-format
 msgctxt "model:ir.message,text:msg_notification_invalid_subject"
 msgid ""
-"Invalid e-mail subject in notification \"%(notification)s\" with exception "
+"Invalid email subject in notification \"%(notification)s\" with exception "
 "\"%(exception)s\"."
 msgstr ""
 "Subiect invalid în e-mail notificare \"%(notification)s\" cu excepția "

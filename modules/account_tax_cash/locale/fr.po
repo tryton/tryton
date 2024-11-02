@@ -74,6 +74,7 @@ msgctxt "model:account.tax.group.cash,name:"
 msgid "Tax Group On Cash Basis"
 msgstr "Groupe de taxe au comptant"
 
+#, python-format
 msgctxt "model:ir.message,text:msg_close_period_line_payment"
 msgid ""
 "To close period \"%(period)s\" you must link all payable/receivable lines to"
@@ -81,6 +82,13 @@ msgid ""
 msgstr ""
 "Pour clôture la période « %(period)s » vous devez lier toutes les lignes à "
 "payer / à recevoir aux factures."
+
+msgctxt ""
+"model:ir.message,text:msg_tax_type_move_line_cash_basis_no_period_unique"
+msgid "Only one tax line on cash basis can be without period per move line."
+msgstr ""
+"Une seule ligne de taxe au comptant peut être sans période par ligne de "
+"mouvement.."
 
 msgctxt "view:account.fiscalyear:"
 msgid "Taxes"

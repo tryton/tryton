@@ -260,6 +260,7 @@ msgctxt ""
 msgid "Receivable with Mandate"
 msgstr "À recevoir avec mandat"
 
+#, python-format
 msgctxt "model:ir.message,text:msg_mandate_authorisation_statement"
 msgid ""
 "By signing this mandate form, you authorise (A) %(creditor)s to send "
@@ -271,6 +272,7 @@ msgstr ""
 "votre banque à débiter votre compte conformément aux instructions de "
 "%(creditor)s."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_mandate_delete_draft_cancelled"
 msgid ""
 "To delete mandate \"%(mandate)s\" you must cancel it or reset its state to "
@@ -279,6 +281,7 @@ msgstr ""
 "Pour supprimer le mandat « %(mandate)s », vous devez l'annuler ou le "
 "réinitialiser à l'état brouillon."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_mandate_title"
 msgid "SEPA %(scheme)s Direct Debit MANDATE"
 msgstr "Mandat de prélèvement %(scheme)s SEPA"
@@ -287,10 +290,12 @@ msgctxt "model:ir.message,text:msg_mandate_unique_id"
 msgid "SEPA mandate identification must be unique by company."
 msgstr "L'identification du mandat SEPA doit être unique dans la société."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_party_no_id"
 msgid "The party \"%(party)s\" is missing a \"%(type)s\" identifier."
 msgstr "Le tiers « %(party)s » n'a pas d'identifiant « %(type)s »."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_payment_process_no_bank"
 msgid ""
 "To process payment \"%(payment)s\" you must define a bank for the account "
@@ -299,11 +304,13 @@ msgstr ""
 "Pour traiter le paiement « %(payment)s », vous devez définir une banque pour"
 " le compte « %(bank_account)s »."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_payment_process_no_iban"
 msgid "To process payment \"%(payment)s\" you must define IBAN for it."
 msgstr ""
 "Pour exécuter le paiement « %(payment)s », vous devez lui définir un IBAN."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_payment_process_no_mandate"
 msgid "To process payment \"%(payment)s\" you must define a SEPA mandate for it."
 msgstr ""

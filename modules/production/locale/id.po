@@ -111,6 +111,14 @@ msgctxt "field:production,warehouse:"
 msgid "Warehouse"
 msgstr "Gudang"
 
+msgctxt "field:production.bom,code:"
+msgid "Code"
+msgstr ""
+
+msgctxt "field:production.bom,code_readonly:"
+msgid "Code Readonly"
+msgstr ""
+
 msgctxt "field:production.bom,inputs:"
 msgid "Inputs"
 msgstr ""
@@ -207,6 +215,11 @@ msgctxt "field:production.bom.tree.open.tree,bom_tree:"
 msgid "BOM Tree"
 msgstr ""
 
+#, fuzzy
+msgctxt "field:production.configuration,bom_sequence:"
+msgid "BOM Sequence"
+msgstr "Urutan"
+
 msgctxt "field:production.configuration,production_sequence:"
 msgid "Production Sequence"
 msgstr ""
@@ -283,6 +296,10 @@ msgstr ""
 
 msgctxt "help:production,uom_category:"
 msgid "The category of Unit of Measure."
+msgstr ""
+
+msgctxt "help:production.configuration,bom_sequence:"
+msgid "Used to generate the BOM code."
 msgstr ""
 
 msgctxt "help:stock.location,production_output_location:"
@@ -375,12 +392,14 @@ msgctxt ""
 msgid "Waiting"
 msgstr ""
 
+#, python-format
 msgctxt "model:ir.message,text:msg_missing_product_list_price"
 msgid ""
 "The product \"%(product)s\" on production \"%(production)s\" does not have "
 "any list price defined."
 msgstr ""
 
+#, python-format
 msgctxt "model:ir.message,text:msg_recursive_bom"
 msgid "You cannot create a recursive BOM for product \"%(product)s\"."
 msgstr ""
@@ -429,6 +448,11 @@ msgstr "Pengguna di dalam perusahaan"
 msgctxt "model:ir.sequence,name:sequence_production"
 msgid "Production"
 msgstr "Produksi"
+
+#, fuzzy
+msgctxt "model:ir.sequence.type,name:sequence_type_bom"
+msgid "BOM"
+msgstr "BOMs"
 
 msgctxt "model:ir.sequence.type,name:sequence_type_production"
 msgid "Production"

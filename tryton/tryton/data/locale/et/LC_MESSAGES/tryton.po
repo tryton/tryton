@@ -245,7 +245,7 @@ msgstr "Aruanne..."
 msgid "Print..."
 msgstr "Prindi..."
 
-msgid "E-Mail..."
+msgid "Email..."
 msgstr "E-kiri..."
 
 msgid "Bold"
@@ -356,12 +356,6 @@ msgstr "Abi"
 
 msgid "No result found."
 msgstr "Tulemusi ei leitud."
-
-msgid "Favorites"
-msgstr "Lemmikud"
-
-msgid "Manage..."
-msgstr "Halda..."
 
 msgid "Action"
 msgstr "Toiming"
@@ -597,6 +591,9 @@ msgstr "Ühendu Tryton serveriga"
 msgid "Profile:"
 msgstr "Profiil:"
 
+msgid "Manage..."
+msgstr "Halda..."
+
 msgid "Host / Database information"
 msgstr "Serveri / andmebaasi info"
 
@@ -608,7 +605,7 @@ msgid "Unable to complete email entry"
 msgstr "Ei saa kustutada nõustajat %s"
 
 #, fuzzy, python-format
-msgid "E-mail %s"
+msgid "Email %s"
 msgstr "E-kiri %s"
 
 msgid "To:"
@@ -867,11 +864,12 @@ msgstr "_Aruanne..."
 msgid "_Print..."
 msgstr "_Prindi..."
 
-msgid "_E-Mail..."
-msgstr "_E-kiri..."
+#, fuzzy
+msgid "_Email..."
+msgstr "E-kiri..."
 
 #, fuzzy
-msgid "Send an e-mail using the record"
+msgid "Send an email using the record"
 msgstr "Lisa kirjele manus"
 
 msgid "_Export Data..."
@@ -923,6 +921,9 @@ msgstr "Välja nimi"
 msgid "CSV Export: %s"
 msgstr "CSV eksport: %s"
 
+msgid "Open"
+msgstr "Ava"
+
 msgid "_Save Export"
 msgstr "_Salvesta eksport"
 
@@ -938,12 +939,6 @@ msgstr "<b>Eelnevalt määratletud ekspordid</b>"
 
 msgid "Name"
 msgstr "Nimi"
-
-msgid "Open"
-msgstr "Ava"
-
-msgid "Save"
-msgstr "Salvesta"
 
 #, fuzzy
 msgid "Listed Records"
@@ -1005,6 +1000,9 @@ msgstr ""
 msgid "Add and New"
 msgstr "Lisa väärtus"
 
+msgid "Save"
+msgstr "Salvesta"
+
 msgid "Add"
 msgstr "Lisa"
 
@@ -1029,6 +1027,10 @@ msgstr "Taasta valitud kirje <Ins>"
 #, python-format
 msgid "CSV Import: %s"
 msgstr "CSV import: %s"
+
+#, fuzzy
+msgid "Import"
+msgstr "Aruanne"
 
 msgid "_Auto-Detect"
 msgstr "_Automaatne tuvastus"
@@ -1238,6 +1240,10 @@ msgstr "Lisa olemasolev kirje"
 msgid "Remove selected record"
 msgstr "Eemalda valitud kirje"
 
+#, fuzzy
+msgid "Restore selected record"
+msgstr "Eemalda valitud kirje"
+
 msgid "Open the record <F2>"
 msgstr "Ava see kirje <F2>"
 
@@ -1251,6 +1257,10 @@ msgid "Edit selected record"
 msgstr "Muuda valitud kirjet"
 
 msgid "Delete selected record"
+msgstr "Kustuta valitud kirje"
+
+#, fuzzy
+msgid "Undelete selected record"
 msgstr "Kustuta valitud kirje"
 
 #, python-format

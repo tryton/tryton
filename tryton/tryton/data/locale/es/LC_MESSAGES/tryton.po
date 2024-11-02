@@ -246,7 +246,7 @@ msgstr "Informe..."
 msgid "Print..."
 msgstr "Imprimir..."
 
-msgid "E-Mail..."
+msgid "Email..."
 msgstr "Correo electrónico..."
 
 msgid "Bold"
@@ -356,12 +356,6 @@ msgstr "Ayuda"
 
 msgid "No result found."
 msgstr "No se han encontrado resultados."
-
-msgid "Favorites"
-msgstr "Favoritos"
-
-msgid "Manage..."
-msgstr "Gestionar..."
 
 msgid "Action"
 msgstr "Acción"
@@ -593,6 +587,9 @@ msgstr "Conectar con el servidor Tryton"
 msgid "Profile:"
 msgstr "Perfil:"
 
+msgid "Manage..."
+msgstr "Gestionar..."
+
 msgid "Host / Database information"
 msgstr "Información del Servidor / Base de datos"
 
@@ -603,7 +600,7 @@ msgid "Unable to complete email entry"
 msgstr "No se ha podido completar la entrada de correo electrónico"
 
 #, python-format
-msgid "E-mail %s"
+msgid "Email %s"
 msgstr "Correo electrónico %s"
 
 msgid "To:"
@@ -851,10 +848,10 @@ msgstr "_Informes..."
 msgid "_Print..."
 msgstr "Im_primir..."
 
-msgid "_E-Mail..."
+msgid "_Email..."
 msgstr "_Correo electrónico..."
 
-msgid "Send an e-mail using the record"
+msgid "Send an email using the record"
 msgstr "Enviar un correo electrónico usando el registro"
 
 msgid "_Export Data..."
@@ -906,6 +903,9 @@ msgstr "Nombre del campo"
 msgid "CSV Export: %s"
 msgstr "Exportación CSV: %s"
 
+msgid "Open"
+msgstr "Abrir"
+
 msgid "_Save Export"
 msgstr "_Guardar exportación"
 
@@ -920,12 +920,6 @@ msgstr "<b>Exportaciones predeterminadas</b>"
 
 msgid "Name"
 msgstr "Nombre"
-
-msgid "Open"
-msgstr "Abrir"
-
-msgid "Save"
-msgstr "Guardar"
 
 msgid "Listed Records"
 msgstr "Registros listados"
@@ -984,6 +978,9 @@ msgstr "Guardar y nuevo"
 msgid "Add and New"
 msgstr "Añadir y nuevo"
 
+msgid "Save"
+msgstr "Guardar"
+
 msgid "Add"
 msgstr "Añadir"
 
@@ -1008,6 +1005,9 @@ msgstr "Recuperar registro seleccionado <Ins>"
 #, python-format
 msgid "CSV Import: %s"
 msgstr "Importación CSV: %s"
+
+msgid "Import"
+msgstr "Importar"
 
 msgid "_Auto-Detect"
 msgstr "_Auto-detectar"
@@ -1209,6 +1209,9 @@ msgstr "Añadir un registro existente"
 msgid "Remove selected record"
 msgstr "Eliminar registro seleccionado"
 
+msgid "Restore selected record"
+msgstr "Restaurar el registro seleccionado"
+
 msgid "Open the record <F2>"
 msgstr "Abrir registro <F2>"
 
@@ -1223,6 +1226,9 @@ msgstr "Editar registro seleccionado"
 
 msgid "Delete selected record"
 msgstr "Eliminar registro seleccionado"
+
+msgid "Undelete selected record"
+msgstr "Recuperar registro seleccionado"
 
 #, python-format
 msgid "%s%%"

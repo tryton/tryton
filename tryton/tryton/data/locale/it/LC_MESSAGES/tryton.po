@@ -142,9 +142,9 @@ msgstr "Eccezione di concorrenza"
 msgid "Could not get a session."
 msgstr "Impossibile connettersi al server."
 
-#, python-format
+#, fuzzy, python-format
 msgid "Error: \"%s\". Try again later."
-msgstr ""
+msgstr "Troppe richieste. Riprovare più tardi."
 
 msgid "Too many requests. Try again later."
 msgstr "Troppe richieste. Riprovare più tardi."
@@ -245,8 +245,8 @@ msgstr "Segnala..."
 msgid "Print..."
 msgstr "Stampa..."
 
-msgid "E-Mail..."
-msgstr "E-Mail"
+msgid "Email..."
+msgstr "Email..."
 
 msgid "Bold"
 msgstr ""
@@ -356,12 +356,6 @@ msgstr "Aiuto"
 
 msgid "No result found."
 msgstr "Nessun risultato trovato."
-
-msgid "Favorites"
-msgstr "Preferiti"
-
-msgid "Manage..."
-msgstr "Gestisci..."
 
 msgid "Action"
 msgstr "Azione"
@@ -595,6 +589,9 @@ msgstr "Connetti il server Tryton"
 msgid "Profile:"
 msgstr "Profilo:"
 
+msgid "Manage..."
+msgstr "Gestisci..."
+
 msgid "Host / Database information"
 msgstr "Informazione su Host/ database"
 
@@ -606,7 +603,7 @@ msgid "Unable to complete email entry"
 msgstr "Impossibile impostare la localizzazione %s"
 
 #, fuzzy, python-format
-msgid "E-mail %s"
+msgid "Email %s"
 msgstr "Email %s"
 
 msgid "To:"
@@ -861,11 +858,12 @@ msgstr "_Rapporto..."
 msgid "_Print..."
 msgstr "_Stampa..."
 
-msgid "_E-Mail..."
-msgstr "_E-Mail..."
+#, fuzzy
+msgid "_Email..."
+msgstr "Email..."
 
 #, fuzzy
-msgid "Send an e-mail using the record"
+msgid "Send an email using the record"
 msgstr "Aggiungi un appunto sul record"
 
 msgid "_Export Data..."
@@ -917,6 +915,9 @@ msgstr "Nome di campo"
 msgid "CSV Export: %s"
 msgstr "Esportazione CSV: %s"
 
+msgid "Open"
+msgstr "Apri"
+
 msgid "_Save Export"
 msgstr "_Salva esportazione"
 
@@ -931,12 +932,6 @@ msgstr "<b>esportazioni predefinite</b>"
 
 msgid "Name"
 msgstr "Nome"
-
-msgid "Open"
-msgstr "Apri"
-
-msgid "Save"
-msgstr "Salva"
 
 msgid "Listed Records"
 msgstr "Record elencati"
@@ -996,6 +991,9 @@ msgstr ""
 msgid "Add and New"
 msgstr "Aggiungi valore"
 
+msgid "Save"
+msgstr "Salva"
+
 #, fuzzy
 msgid "Add"
 msgstr "Profilo"
@@ -1022,6 +1020,10 @@ msgstr "Non eliminare il record selezionato <Ins>"
 #, python-format
 msgid "CSV Import: %s"
 msgstr ""
+
+#, fuzzy
+msgid "Import"
+msgstr "Rapporto"
 
 #, fuzzy
 msgid "_Auto-Detect"
@@ -1230,6 +1232,10 @@ msgstr "Aggiungi un record esistente"
 msgid "Remove selected record"
 msgstr "Rimuovi i record selezionati"
 
+#, fuzzy
+msgid "Restore selected record"
+msgstr "Rimuovi i record selezionati"
+
 msgid "Open the record <F2>"
 msgstr ""
 
@@ -1245,6 +1251,10 @@ msgstr "Modifica il record selezionato <F2>"
 
 #, fuzzy
 msgid "Delete selected record"
+msgstr "Rimuovi i record selezionati"
+
+#, fuzzy
+msgid "Undelete selected record"
 msgstr "Rimuovi i record selezionati"
 
 #, python-format

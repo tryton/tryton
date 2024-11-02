@@ -528,11 +528,13 @@ msgctxt "model:ir.message,text:msg_intrastat_declaration_month_first_day"
 msgid "The day of intrastat declaration must be the first of the month."
 msgstr "El dia de la declaració intrastat ha de ser el primer del més."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_move_counterparty_not_found"
 msgid "Could not find the intrastat counterparty of move \"%(move)s\"."
 msgstr ""
 "No s'ha pogut trobar una contrapartida intrastat pel moviment \"%(move)s\"."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_move_country_not_found"
 msgid "Could not find the intrastat countries for moves \"%(moves)s\"."
 msgstr "No s'han pogut trobar els paisos intrastat pels moviments \"%(moves)s\"."

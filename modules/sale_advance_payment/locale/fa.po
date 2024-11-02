@@ -161,14 +161,11 @@ msgid ""
 "Delta to apply on the sale date for the date of the advance payment invoice."
 msgstr "برای تاریخ فاکتور پیش پرداخت. دلتا برای تاریخ فروش اعمال شود"
 
-msgctxt "model:ir.action,name:act_advance_invoice_form"
-msgid "Advance Invoices"
-msgstr "فاکتورهای پیش پرداخت"
-
 msgctxt "model:ir.action,name:act_advance_payment_term_form"
 msgid "Advance Payment Terms"
 msgstr "مدت پرداخت پیش پرداخت"
 
+#, python-format
 msgctxt "model:ir.message,text:msg_shipping_blocked"
 msgid ""
 "To pack shipments the customer must paid the advance payment for sale "
@@ -177,6 +174,7 @@ msgstr ""
 "برای بسته بندی کالاها، مشتری باید پیش پرداخت را برای فروش "
 ":\"%(sale)s\"پرداخت کند."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_term_line_invalid_formula"
 msgid ""
 "Invalid formula \"%(formula)s\" in term line \"%(term_line)s\" with "

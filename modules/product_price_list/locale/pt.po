@@ -111,6 +111,11 @@ msgid "Price Lists"
 msgstr "Price Lists"
 
 #, fuzzy
+msgctxt "model:ir.action,name:act_price_list_line_form"
+msgid "Price List Lines"
+msgstr "Linhas da Lista de Preços"
+
+#, fuzzy, python-format
 msgctxt "model:ir.message,text:msg_invalid_formula"
 msgid ""
 "Invalid formula \"%(formula)s\" in price list line \"%(line)s\" with "
@@ -118,6 +123,11 @@ msgid ""
 msgstr ""
 "A fórmula \"%(formula)s\" na linha \"%(line)s\" da lista de preços com a "
 "exceção \"%(exception)s\"."
+
+#, fuzzy
+msgctxt "model:ir.model.button,string:price_list_open_lines_button"
+msgid "Open Lines"
+msgstr "Linhas"
 
 msgctxt "model:ir.rule.group,name:rule_group_price_list_companies"
 msgid "User in companies"
@@ -134,6 +144,11 @@ msgstr "Lista de Preços"
 
 msgctxt "model:product.price_list.line,name:"
 msgid "Price List Line"
+msgstr "Linha da Lista de Preços"
+
+#, fuzzy
+msgctxt "model:product.price_list.line.context,name:"
+msgid "Price List Line Context"
 msgstr "Linha da Lista de Preços"
 
 msgctxt "selection:product.price_list,price:"

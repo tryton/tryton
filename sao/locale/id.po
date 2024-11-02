@@ -17,13 +17,10 @@ msgstr ""
 msgid "Connection error"
 msgstr ""
 
-msgid "Favorites"
-msgstr ""
-
-msgid "Manage..."
-msgstr ""
-
 msgid "Logout"
+msgstr ""
+
+msgid "Favorites"
 msgstr ""
 
 msgid "Action"
@@ -71,7 +68,7 @@ msgstr ""
 msgid "Print"
 msgstr "Cetak"
 
-msgid "E-Mail"
+msgid "Email"
 msgstr ""
 
 msgid "Previous tab"
@@ -133,6 +130,9 @@ msgid "Not found."
 msgstr ""
 
 msgid "Send you an email to reset your password."
+msgstr ""
+
+msgid "Reset forgotten password"
 msgstr ""
 
 msgid ""
@@ -311,10 +311,11 @@ msgstr ""
 msgid "Add a note to the record"
 msgstr ""
 
-msgid "E-Mail..."
+#, fuzzy
+msgid "Email..."
 msgstr "E-Mail..."
 
-msgid "Send an e-mail using the record"
+msgid "Send an email using the record"
 msgstr ""
 
 msgid "Export"
@@ -370,6 +371,9 @@ msgstr ""
 
 msgid "Preview"
 msgstr "Pratinjau"
+
+msgid "Manage..."
+msgstr ""
 
 msgid "Template"
 msgstr "Templat"
@@ -489,6 +493,9 @@ msgid "Open"
 msgstr "Buka"
 
 msgid "Undelete"
+msgstr ""
+
+msgid "Restore"
 msgstr ""
 
 msgid "Save As"
@@ -707,7 +714,7 @@ msgid "%1 record saved"
 msgid_plural "%1 records saved"
 msgstr[0] ""
 
-msgid "E-mail %1"
+msgid "Email %1"
 msgstr ""
 
 msgid "To:"

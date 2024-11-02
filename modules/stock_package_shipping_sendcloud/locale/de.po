@@ -42,6 +42,14 @@ msgctxt "field:carrier.sendcloud.shipping_method,carrier:"
 msgid "Carrier"
 msgstr "Versanddienstleister"
 
+msgctxt "field:carrier.sendcloud.shipping_method,max_weight:"
+msgid "Maximal Weight"
+msgstr "Maximalgewicht"
+
+msgctxt "field:carrier.sendcloud.shipping_method,min_weight:"
+msgid "Minimal Weight"
+msgstr "Minimalgewicht"
+
 msgctxt "field:carrier.sendcloud.shipping_method,sendcloud:"
 msgid "Sendcloud"
 msgstr "Sendcloud"
@@ -49,6 +57,10 @@ msgstr "Sendcloud"
 msgctxt "field:carrier.sendcloud.shipping_method,shipping_method:"
 msgid "Shipping Method"
 msgstr "Versandart"
+
+msgctxt "field:carrier.sendcloud.shipping_method,warehouse:"
+msgid "Warehouse"
+msgstr "Logistikstandort"
 
 msgctxt "field:stock.package,sendcloud_shipping_id:"
 msgid "ID"
@@ -61,6 +73,14 @@ msgstr "Tracking-URL"
 msgctxt "help:carrier.sendcloud.address,address:"
 msgid "Leave empty for the Sendcloud default."
 msgstr "Leer lassen für Sendcloud Standard."
+
+msgctxt "help:carrier.sendcloud.shipping_method,max_weight:"
+msgid "Maximal weight included in kg."
+msgstr "Maximal zulässiges Gewicht in kg."
+
+msgctxt "help:carrier.sendcloud.shipping_method,min_weight:"
+msgid "Minimal weight included in kg."
+msgstr "Minimal zulässiges Gewicht in kg."
 
 msgctxt "model:carrier.credential.sendcloud,name:"
 msgid "Sendcloud Credential"
@@ -82,6 +102,11 @@ msgctxt "model:ir.action,name:act_credential_form"
 msgid "Sendcloud Credentials"
 msgstr "Sendcloud Anmeldedaten"
 
+msgctxt "model:ir.message,text:msg_sendcloud_credential_modified"
+msgid "Are you sure you want to modify Sendcloud credentials?"
+msgstr "Möchten Sie die Sendcloud-Anmeldeinformationen wirklich ändern?"
+
+#, python-format
 msgctxt "model:ir.message,text:msg_sendcloud_webserver_error"
 msgid ""
 "Sendcloud webservice call failed with the following error message:\n"
@@ -90,6 +115,7 @@ msgstr ""
 "Beim Aufruf des Sendcloud Webservice ist folgender Fehler aufgetreten:\n"
 "%(message)s"
 
+#, python-format
 msgctxt "model:ir.message,text:msg_shipment_has_shipping_reference_number"
 msgid ""
 "You cannot create a shipping label for shipment \"%(shipment)s\" because it "

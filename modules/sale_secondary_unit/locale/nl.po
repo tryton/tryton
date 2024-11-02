@@ -34,6 +34,10 @@ msgctxt "field:product.template,sale_secondary_uom_rate:"
 msgid "Sale Secondary UoM Rate"
 msgstr "Verkoop Secundaire maateenheid verhouding"
 
+msgctxt "field:sale.amendment.line,product_secondary_uom_category:"
+msgid "Product Secondary UoM Category"
+msgstr "Product secundaire maateenheid categorie"
+
 msgctxt "field:sale.blanket_agreement.line,product_secondary_uom_category:"
 msgid "Product Secondary UoM Category"
 msgstr "Product secundaire maateenheid categorie"
@@ -122,6 +126,10 @@ msgstr ""
 "De coëfficiënt voor de formule:\n"
 "coëfficiënt (verkoopeenheid) = 1 (secundaire eenheid)"
 
+msgctxt "help:sale.amendment.line,product_secondary_uom_category:"
+msgid "The category of the secondary Unit of Measure for the product."
+msgstr "De categorie van de secundaire maateenheid van het product."
+
 msgctxt "help:sale.blanket_agreement.line,product_secondary_uom_category:"
 msgid "The category of the secondary Unit of Measure for the product."
 msgstr "De categorie van de secundaire maateenheid van het product."
@@ -162,6 +170,7 @@ msgstr ""
 "De coëfficiënt voor de formule:\n"
 "coëfficiënt (verkoopeenheid) = 1 (secundaire eenheid)"
 
+#, python-format
 msgctxt ""
 "model:ir.message,text:msg_sale_secondary_uom_incompatible_factor_rate"
 msgid "Incompatible sale secondary factor and rate values for \"%(record)s\"."

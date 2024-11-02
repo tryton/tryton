@@ -278,12 +278,21 @@ msgctxt ""
 msgid "Waiting"
 msgstr "در انتظار"
 
+#, python-format
 msgctxt "model:ir.message,text:msg_action_delete_result"
 msgid "You cannot delete action \"%(action)s\" because it has a result."
 msgstr "شما نمی توانید عمل :\"%(action)s\"را حذف کنید، چون این یک نتیجه است."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_complaint_delete_draft"
 msgid "To delete complaint \"%(complaint)s\" you must reset it to draft state."
+msgstr ""
+"برای حذف شکایت :\"%(complaint)s\" شما باید ابتدا آنرا به حالت پیش نویس "
+"بازنشانی کنید."
+
+#, fuzzy, python-format
+msgctxt "model:ir.message,text:msg_complaint_similar"
+msgid "The complaint \"%(complaint)s\" is similar to complaint \"%(similar)s\"."
 msgstr ""
 "برای حذف شکایت :\"%(complaint)s\" شما باید ابتدا آنرا به حالت پیش نویس "
 "بازنشانی کنید."

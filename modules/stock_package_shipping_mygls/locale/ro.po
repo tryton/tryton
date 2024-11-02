@@ -66,6 +66,7 @@ msgctxt "model:ir.action,name:act_credential_form"
 msgid "MyGLS Credentials"
 msgstr "Credenţiale MyGLS"
 
+#, python-format
 msgctxt "model:ir.message,text:msg_email_required"
 msgid ""
 "To validate shipment \"%(shipment)s\" you must add an email for address "
@@ -74,6 +75,7 @@ msgstr ""
 "Pentru a valida expedierea \"%(shipment)s\" trebuie adăugat un e-mail pentru"
 " adresă \"%(address)s\"."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_mobile_required"
 msgid ""
 "To validate shipment \"%(shipment)s\" you must add a mobile number for "
@@ -82,6 +84,7 @@ msgstr ""
 "Pentru a valida expedierea\"%(shipment)s\" trebuie adăugat un mobil pentru "
 "adresa \"%(address)s\"."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_mygls_api_error"
 msgid ""
 "MyGLS API call failed with the following error message:\n"
@@ -90,6 +93,11 @@ msgstr ""
 "Interogarea API MyGLS a eşuat cu următorul mesaj:\n"
 "%(message)s"
 
+msgctxt "model:ir.message,text:msg_mygls_credential_modified"
+msgid "Are you sure you want to modify MyGLS credentials?"
+msgstr "Sigur doriţi sa modificaţi credenţialele MyGLS?"
+
+#, python-format
 msgctxt "model:ir.message,text:msg_phone_mobile_required"
 msgid ""
 "To validate shipment \"%(shipment)s\" you must add a phone or mobile number "
@@ -98,6 +106,7 @@ msgstr ""
 "Pentru a valida expedierea \"%(shipment)s\" trebuie adăugat un număr de "
 "telefon sau mobil pentru adresa \"%(address)s\"."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_shipment_has_shipping_reference_number"
 msgid ""
 "You cannot create a shipping label for shipment \"%(shipment)s\" because it "
@@ -106,6 +115,7 @@ msgstr ""
 "Nu se poate crea o eticheta pentru expedierea \"%(shipment)s\" pentru că are"
 " deja un număr de referinţa."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_shipping_to_address_country_code_required"
 msgid ""
 "To validate shipment \"%(shipment)s\" you must set a country code to the "
@@ -114,6 +124,7 @@ msgstr ""
 "Pentru a valida expedierea \"%(shipment)s\" trebuie sa fie setat un cod de "
 "ţara la adresă al destinatarului."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_warehouse_address_country_code_required"
 msgid ""
 "To validate shipment \"%(shipment)s\" you must set a country code to the "
@@ -122,6 +133,7 @@ msgstr ""
 "Pentru a valida expedierea \"%(shipment)s\" trebuie sa fie setat un cod de "
 "ţara la adresa al depozitului \"%(warehouse)s\"."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_warehouse_address_required"
 msgid ""
 "To validate shipment \"%(shipment)s\" you must set an address on warehouse "

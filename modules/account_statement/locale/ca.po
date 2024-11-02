@@ -389,6 +389,7 @@ msgctxt ""
 msgid "Validated"
 msgstr "Validat"
 
+#, python-format
 msgctxt "model:ir.message,text:msg_bank_account_currency"
 msgid ""
 "The currency of bank account \"%(bank_account)s\" must be the same as "
@@ -397,6 +398,7 @@ msgstr ""
 "La moneda del compte bancari \"%(bank_account)s\" ha de ser la mateixa que "
 "la del diari \"%(journal)s\" (%(currency)s)."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_import_no_journal"
 msgid ""
 "To import statement, you must create a journal for account \"%(account)s\"."
@@ -407,24 +409,27 @@ msgctxt "model:ir.message,text:msg_journal_bank_account_unique"
 msgid "Only one journal is allowed per bank account."
 msgstr "Només es permet un diari per compte bancari."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_post_statement_move"
 msgid "To post the move \"%(move)s\" you must post the statement \"%(statement)s\"."
 msgstr ""
 "Per contabilitzar l'assentament \"%(move)s\" heu de comptabilitzat "
 "l'extracte \"%(statement)s\"."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_statement_delete_cancel"
 msgid "To delete statement \"%(statement)s\" you must cancel it."
 msgstr "Per eliminar el extracte \"%(statement)s\" primer l'heu de cancel·lar."
 
 msgctxt "model:ir.message,text:msg_statement_invoice_paid_cancelled"
 msgid ""
-"The validation of the statements will remove already paid or cancelled "
-"invoices from the statements' lines."
+"Validating the statements will remove already paid or cancelled invoices "
+"from the statements' lines."
 msgstr ""
-"La validació dels extractes eliminarà de les línies dels extractes les "
-"factures ja pagades o cancel·lades."
+"La validació dels extractes eliminarà les factures ja pagades o cancel·lades"
+" de les línies dels extractes."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_statement_line_delete_cancel_draft"
 msgid ""
 "To delete line \"%(line)s\" you must cancel or reset to draft statement "
@@ -438,6 +443,7 @@ msgid "You must set the same sign for second currency than amount."
 msgstr ""
 "El signe de la moneda secundaria ha de ser el mateix que el del import."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_statement_origin_delete_cancel_draft"
 msgid ""
 "To delete origin \"%(origin)s\" you must cancel or reset to draft statement "
@@ -448,12 +454,13 @@ msgstr ""
 
 msgctxt "model:ir.message,text:msg_statement_paid_invoice_draft"
 msgid ""
-"The validation of the statements will remove paid invoices from other "
+"Validating the statements will remove paid invoices from other draft "
 "statements."
 msgstr ""
-"La validació dels extractes eliminarà les factures pagades en altres "
-"extractes."
+"La validació dels extractes eliminarà les factures pagades d'altres "
+"extractes en esborrany."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_statement_post_pending_amount"
 msgid ""
 "To post statement \"%(statement)s\" you must create lines for pending "
@@ -462,6 +469,7 @@ msgstr ""
 "Por comptabilitzar l'extracte \"%(statement)s\" heu de crear línies per "
 "l'import \"%(amount)s\" pendent de l'origen \"%(origin)s\"."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_statement_wrong_end_balance"
 msgid ""
 "To validate statement \"%(statement)s\" you must change lines to have end "
@@ -470,14 +478,17 @@ msgstr ""
 "Per validar l'extracte \"%(statement)s\" heu de canviar les seves línies per"
 " a tenir un balanç final de %(end_balance)s en comptes de %(amount)s."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_statement_wrong_number_of_lines_add"
 msgid "To validate statement \"%(statement)s\" you must add %(n)s line(s)."
 msgstr "Per validar el extracte \"%(statement)s\" heu d'afegir %(n)s línie(s)."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_statement_wrong_number_of_lines_remove"
 msgid "To validate statement \"%(statement)s\" you must remove %(n)s line(s)."
 msgstr "Per validar el extracte \"%(statement)s\" heu d'eliminar %(n)s línie(s)."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_statement_wrong_total_amount"
 msgid ""
 "To validate statement \"%(statement)s\" you must change lines to have total "

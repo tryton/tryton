@@ -162,14 +162,11 @@ msgctxt "model:ir.action,name:act_currency_form"
 msgid "Currencies"
 msgstr "Monedas"
 
-msgctxt "model:ir.message,text:msg_currency_rate_positive"
-msgid "A currency rate must be positive."
-msgstr "La tasa de cambio debe ser positiva."
-
 msgctxt "model:ir.message,text:msg_currency_unique_rate_date"
 msgid "A currency can only have one rate by date."
 msgstr "Una moneda sólo puede tener una tasa de cambio por fecha."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_no_rate"
 msgid "No rate found for currency \"%(currency)s\" on \"%(date)s\"."
 msgstr ""
@@ -210,7 +207,7 @@ msgstr "Semanalmente"
 
 msgctxt "selection:currency.cron,source:"
 msgid "European Central Bank"
-msgstr "Banco cnetral europeo"
+msgstr "Banco central europeo"
 
 msgctxt "selection:ir.cron,method:"
 msgid "Update Currency Rates"

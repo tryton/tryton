@@ -101,16 +101,19 @@ msgctxt "help:notification.email,content:"
 msgid "The report used as email template."
 msgstr "作为电子邮件模板的报告."
 
+#, fuzzy
 msgctxt "help:notification.email,fallback_recipients:"
-msgid "User notified when no recipients e-mail is found"
+msgid "User notified when no recipients email is found."
 msgstr "当找不到收件人电子邮件时通知用户"
 
+#, fuzzy
 msgctxt "help:notification.email,fallback_recipients_hidden:"
-msgid "User notified when no hidden recipients e-mail is found"
+msgid "User notified when no hidden recipients email is found."
 msgstr "当找不到隐藏的收件人电子邮件时通知用户"
 
+#, fuzzy
 msgctxt "help:notification.email,fallback_recipients_secondary:"
-msgid "User notified when no secondary recipients e-mail is found"
+msgid "User notified when no secondary recipients email is found."
 msgstr "当找不到第二收件人电子邮件时通知用户"
 
 msgctxt "help:notification.email,from_:"
@@ -152,12 +155,13 @@ msgid "Notification Emails"
 msgstr "电子邮件通知"
 
 msgctxt "model:ir.action,name:act_ir_email_form_relate_notification"
-msgid "E-mails"
+msgid "Emails"
 msgstr ""
 
+#, fuzzy, python-format
 msgctxt "model:ir.message,text:msg_notification_invalid_subject"
 msgid ""
-"Invalid e-mail subject in notification \"%(notification)s\" with exception "
+"Invalid email subject in notification \"%(notification)s\" with exception "
 "\"%(exception)s\"."
 msgstr "通知 \"%(notification)s\" 中电子邮件主题无效，异常为: \"%(exception)s\"."
 

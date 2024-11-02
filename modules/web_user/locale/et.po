@@ -2,16 +2,17 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
+#, fuzzy
 msgctxt "field:web.user,email:"
-msgid "E-mail"
+msgid "Email"
 msgstr "E-kiri"
 
 msgctxt "field:web.user,email_token:"
-msgid "E-mail Token"
+msgid "Email Token"
 msgstr ""
 
 msgctxt "field:web.user,email_valid:"
-msgid "E-mail Valid"
+msgid "Email Valid"
 msgstr ""
 
 msgctxt "field:web.user,party:"
@@ -89,12 +90,13 @@ msgctxt "model:ir.action,name:report_email_validation"
 msgid "Email Validation"
 msgstr ""
 
+#, python-format
 msgctxt "model:ir.message,text:msg_user_email_invalid"
 msgid "The email address \"%(email)s\" for \"%(user)s\" is not valid."
 msgstr ""
 
 msgctxt "model:ir.message,text:msg_user_email_unique"
-msgid "E-mail of active web user must be unique."
+msgid "Email of active web user must be unique."
 msgstr ""
 
 msgctxt "model:ir.message,text:msg_user_session_key_unique"
@@ -106,7 +108,7 @@ msgid "Reset Password"
 msgstr "Lähtesta salasõna"
 
 msgctxt "model:ir.model.button,string:user_validate_email_button"
-msgid "Validate E-mail"
+msgid "Validate Email"
 msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_user_form"
@@ -134,6 +136,7 @@ msgctxt "report:web.user.email_reset_password:"
 msgid "Button not working? Paste this into your browser:"
 msgstr "Nupp ei tööta? Aseta see link brauseri aadressreale:"
 
+#, python-format
 msgctxt "report:web.user.email_reset_password:"
 msgid ""
 "Hello, we received a request to reset the password for the account associated with [1:%(email)s]. No changes have been made to your account yet.[2:]\n"
@@ -151,10 +154,12 @@ msgctxt "report:web.user.email_reset_password:"
 msgid "Reset Password"
 msgstr "Lähtesta salasõna"
 
+#, python-format
 msgctxt "report:web.user.email_reset_password:"
 msgid "The link will expire in [1:%(datetime)s]."
 msgstr ""
 
+#, python-format
 msgctxt "report:web.user.email_validation:"
 msgid "%(email)s"
 msgstr ""
@@ -184,5 +189,5 @@ msgid "Reset Password"
 msgstr "Lähtesta salasõna"
 
 msgctxt "view:web.user:"
-msgid "Validate E-mail"
+msgid "Validate Email"
 msgstr ""

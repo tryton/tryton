@@ -90,6 +90,10 @@ msgctxt "field:sale.opportunity,state:"
 msgid "State"
 msgstr "Estado"
 
+msgctxt "field:sale.opportunity.line,company:"
+msgid "Company"
+msgstr "Empresa"
+
 msgctxt "field:sale.opportunity.line,description:"
 msgid "Description"
 msgstr "Descripción"
@@ -238,10 +242,12 @@ msgctxt ""
 msgid "Won"
 msgstr "Ganada"
 
+#, python-format
 msgctxt "model:ir.message,text:msg_modify_origin_opportunity"
 msgid "You cannot modify the opportunity origin of the sale \"%(sale)s\"."
 msgstr "No se puede modificar la oportunidad origen de la venta \"%(sale)s\"."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_opportunity_delete_cancel"
 msgid "To delete opportunity \"%(opportunity)s\", you must cancel it."
 msgstr "Debéis cancelar la oportunidad \"%(opportunity)s\" para poderla eliminar."

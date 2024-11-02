@@ -34,14 +34,11 @@ msgstr "امکان دسترسی به سرور وجود ندارد."
 msgid "Connection error"
 msgstr "ایجاد کاربر"
 
-msgid "Favorites"
-msgstr "علاقه مندی ها"
-
-msgid "Manage..."
-msgstr "مدیریت..."
-
 msgid "Logout"
 msgstr "خروج"
+
+msgid "Favorites"
+msgstr "علاقه مندی ها"
 
 msgid "Action"
 msgstr "اقدام"
@@ -88,7 +85,7 @@ msgstr "مربوط"
 msgid "Print"
 msgstr "چاپ"
 
-msgid "E-Mail"
+msgid "Email"
 msgstr ""
 
 msgid "Previous tab"
@@ -150,6 +147,9 @@ msgid "Not found."
 msgstr ""
 
 msgid "Send you an email to reset your password."
+msgstr ""
+
+msgid "Reset forgotten password"
 msgstr ""
 
 msgid ""
@@ -333,11 +333,11 @@ msgstr "پیوست را به پرونده اضافه کنید"
 msgid "Add a note to the record"
 msgstr "یک یادداشت به پرونده اضافه کنید"
 
-msgid "E-Mail..."
+msgid "Email..."
 msgstr ""
 
 #, fuzzy
-msgid "Send an e-mail using the record"
+msgid "Send an email using the record"
 msgstr "یک یادداشت به پرونده اضافه کنید"
 
 msgid "Export"
@@ -396,6 +396,9 @@ msgstr "افزودن..."
 #, fuzzy
 msgid "Preview"
 msgstr "قبلی"
+
+msgid "Manage..."
+msgstr "مدیریت..."
 
 #, fuzzy
 msgid "Template"
@@ -526,6 +529,9 @@ msgstr "باز"
 
 msgid "Undelete"
 msgstr "بازگردانی"
+
+msgid "Restore"
+msgstr ""
 
 msgid "Save As"
 msgstr "ذخیره با نام"
@@ -763,7 +769,7 @@ msgid_plural "%1 records saved"
 msgstr[0] "پرونده ذخیره شد."
 msgstr[1] "پرونده ذخیره شد."
 
-msgid "E-mail %1"
+msgid "Email %1"
 msgstr ""
 
 #, fuzzy

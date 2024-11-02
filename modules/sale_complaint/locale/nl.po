@@ -258,16 +258,23 @@ msgctxt ""
 msgid "Waiting"
 msgstr "In afwachting"
 
+#, python-format
 msgctxt "model:ir.message,text:msg_action_delete_result"
 msgid "You cannot delete action \"%(action)s\" because it has a result."
 msgstr ""
 "U kunt actie \"%(action)s\" niet verwijderen omdat deze een resultaat heeft."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_complaint_delete_draft"
 msgid "To delete complaint \"%(complaint)s\" you must reset it to draft state."
 msgstr ""
 "Om de klacht \"%(complaint)s\" te verwijderen, moet u deze terugzetten naar "
 "concept."
+
+#, python-format
+msgctxt "model:ir.message,text:msg_complaint_similar"
+msgid "The complaint \"%(complaint)s\" is similar to complaint \"%(similar)s\"."
+msgstr "De klacht \"%(complaint)s\" is vergelijkbaar met klacht \"%(similar)s\"."
 
 msgctxt "model:ir.model.button,string:complaint_approve_button"
 msgid "Approve"

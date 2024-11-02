@@ -82,6 +82,10 @@ msgctxt "field:commission.agent,plan:"
 msgid "Plan"
 msgstr "Plan"
 
+msgctxt "field:commission.agent,products:"
+msgid "Products"
+msgstr "Producten"
+
 msgctxt "field:commission.agent,selections:"
 msgid "Selections"
 msgstr "Selecties"
@@ -488,6 +492,7 @@ msgctxt ""
 msgid "To Invoice"
 msgstr "Te factureren"
 
+#, python-format
 msgctxt "model:ir.message,text:msg_erase_party_pending_commission"
 msgid ""
 "You cannot erase party \"%(party)s\" while they have pending commissions "
@@ -496,6 +501,7 @@ msgstr ""
 "U kunt de relatie \"%(party)s\" niet verwijderen terwijl ze "
 "aankopencommissies in behandeling hebben bij bedrijf \"%(company)s\"."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_plan_line_invalid_formula"
 msgid ""
 "Invalid formula \"%(formula)s\" in commission plan line \"%(line)s\" with "

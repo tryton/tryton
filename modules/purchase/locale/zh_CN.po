@@ -127,17 +127,30 @@ msgctxt "field:purchase.handle.invoice.exception.ask,domain_invoices:"
 msgid "Domain Invoices"
 msgstr "域发票"
 
-msgctxt "field:purchase.handle.invoice.exception.ask,recreate_invoices:"
-msgid "Recreate Invoices"
-msgstr "重新创建发票"
+#, fuzzy
+msgctxt "field:purchase.handle.invoice.exception.ask,ignore_invoices:"
+msgid "Invoices to Ignore"
+msgstr "发票地址"
 
+#, fuzzy
+msgctxt "field:purchase.handle.invoice.exception.ask,recreate_invoices:"
+msgid "Invoices to Recreate"
+msgstr "选择要重开的发票:"
+
+#, fuzzy
 msgctxt "field:purchase.handle.shipment.exception.ask,domain_moves:"
-msgid "Domain Moves"
+msgid "Domain Stock Moves"
 msgstr "域移动"
 
+#, fuzzy
+msgctxt "field:purchase.handle.shipment.exception.ask,ignore_moves:"
+msgid "Stock Moves to Ignore"
+msgstr "移动"
+
+#, fuzzy
 msgctxt "field:purchase.handle.shipment.exception.ask,recreate_moves:"
-msgid "Recreate Moves"
-msgstr "重新创建移动"
+msgid "Stock Moves to Recreate"
+msgstr "选择要重新创建的移动:"
 
 msgctxt "field:purchase.line,actual_quantity:"
 msgid "Actual Quantity"
@@ -184,22 +197,29 @@ msgctxt "field:purchase.line,invoice_progress:"
 msgid "Invoice Progress"
 msgstr "发票地址"
 
+msgctxt "field:purchase.line,movable:"
+msgid "Movable"
+msgstr ""
+
+#, fuzzy
 msgctxt "field:purchase.line,moves:"
-msgid "Moves"
+msgid "Stock Moves"
 msgstr "移动"
 
 msgctxt "field:purchase.line,moves_exception:"
 msgid "Moves Exception"
 msgstr "移动异常"
 
+#, fuzzy
 msgctxt "field:purchase.line,moves_ignored:"
-msgid "Ignored Moves"
+msgid "Ignored Stock Moves"
 msgstr "已忽略的移动"
 
 msgctxt "field:purchase.line,moves_progress:"
 msgid "Moves Progress"
 msgstr "移动进度"
 
+#, fuzzy
 msgctxt "field:purchase.line,moves_recreated:"
 msgid "Recreated Moves"
 msgstr "已经重新创建的移动"
@@ -277,16 +297,16 @@ msgid "Tax"
 msgstr "税款"
 
 msgctxt "field:purchase.line-ignored-stock.move,move:"
-msgid "Move"
-msgstr "移动"
+msgid "Stock Move"
+msgstr ""
 
 msgctxt "field:purchase.line-ignored-stock.move,purchase_line:"
 msgid "Purchase Line"
 msgstr "采购明细"
 
 msgctxt "field:purchase.line-recreated-stock.move,move:"
-msgid "Move"
-msgstr "移动"
+msgid "Stock Move"
+msgstr ""
 
 msgctxt "field:purchase.line-recreated-stock.move,purchase_line:"
 msgid "Purchase Line"
@@ -408,12 +428,18 @@ msgctxt "field:purchase.purchase,invoices_recreated:"
 msgid "Recreated Invoices"
 msgstr "重开的发票"
 
+#, fuzzy
+msgctxt "field:purchase.purchase,line_lines:"
+msgid "Line - Lines"
+msgstr "发票明细"
+
 msgctxt "field:purchase.purchase,lines:"
 msgid "Lines"
 msgstr "明细"
 
+#, fuzzy
 msgctxt "field:purchase.purchase,moves:"
-msgid "Moves"
+msgid "Stock Moves"
 msgstr "移动"
 
 msgctxt "field:purchase.purchase,number:"
@@ -613,14 +639,25 @@ msgstr ""
 "采购项目已确认状态可以重置为草稿状态的宽限期\n"
 "仅在激活工作队列时应用."
 
-msgctxt "help:purchase.handle.invoice.exception.ask,recreate_invoices:"
-msgid ""
-"The selected invoices will be recreated. The other ones will be ignored."
+#, fuzzy
+msgctxt "help:purchase.handle.invoice.exception.ask,ignore_invoices:"
+msgid "The selected cancelled invoices will be ignored."
 msgstr "已经选择的发票将重开，忽略其它未选择的发票."
 
+#, fuzzy
+msgctxt "help:purchase.handle.invoice.exception.ask,recreate_invoices:"
+msgid "The selected cancelled invoices will be recreated."
+msgstr "已经选择的发票将重开，忽略其它未选择的发票."
+
+#, fuzzy
+msgctxt "help:purchase.handle.shipment.exception.ask,ignore_moves:"
+msgid "The selected cancelled stock moves will be ignored."
+msgstr "已经选择的发票将重开，忽略其它未选择的发票."
+
+#, fuzzy
 msgctxt "help:purchase.handle.shipment.exception.ask,recreate_moves:"
-msgid "The selected moves will be recreated. The other ones will be ignored."
-msgstr "已经选择的移动将被重新创建，忽略其它未选择的."
+msgid "The selected cancelled stock moves will be recreated."
+msgstr "已经选择的发票将重开，忽略其它未选择的发票."
 
 msgctxt "help:purchase.line,delivery_date_edit:"
 msgid "Check to edit the delivery date."
@@ -666,9 +703,10 @@ msgctxt "model:ir.action,name:act_invoice_form"
 msgid "Invoices"
 msgstr "发票"
 
-msgctxt "model:ir.action,name:act_open_supplier"
-msgid "Parties associated to Purchases"
-msgstr "参与者(采购相关)"
+#, fuzzy
+msgctxt "model:ir.action,name:act_invoice_line_form"
+msgid "Invoice Lines"
+msgstr "发票明细"
 
 msgctxt "model:ir.action,name:act_product_supplier_form"
 msgid "Suppliers"
@@ -694,8 +732,9 @@ msgctxt "model:ir.action,name:act_purchase_line_relate"
 msgid "Purchase Lines"
 msgstr "采购明细"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_purchase_move_relate"
-msgid "Moves"
+msgid "Stock Moves"
 msgstr "移动"
 
 msgctxt "model:ir.action,name:act_purchase_relate"
@@ -819,34 +858,40 @@ msgid ""
 "prices are based."
 msgstr "您正在试图更改采购价格依赖的采购计量单位."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_erase_party_pending_purchase"
 msgid ""
 "You cannot erase party \"%(party)s\" while they have pending purchases with "
 "company \"%(company)s\"."
 msgstr "你不能删除参与者 \"%(party)s\" ， 因为它与公司 \"%(company)s\" 有未完成的采购."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_purchase_delete_cancel"
 msgid "To delete purchase \"%(purchase)s\" you must cancel it."
 msgstr "如果要删除采购项目 \"%(purchase)s\" ，你必须首先取消它."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_purchase_invoice_reset_draft"
 msgid ""
 "You cannot reset invoice \"%(invoice)s\" to draft because it was generated "
 "by a purchase."
 msgstr "无法将发票 \"%(invoice)s\" 重置为草稿状态，因为因为它与某个采购关联。"
 
+#, python-format
 msgctxt "model:ir.message,text:msg_purchase_line_create_draft"
 msgid ""
 "You cannot add lines to purchase \"%(purchase)s\" because it is no longer in"
 " a draft state."
 msgstr "非草案状态下，无法添加采购 \"%(purchase)s\" 的明细 。"
 
+#, python-format
 msgctxt "model:ir.message,text:msg_purchase_line_delete_cancel_draft"
 msgid ""
 "To delete line \"%(line)s\" you must cancel or reset to draft purchase "
 "\"%(purchase)s\"."
 msgstr "要删除明细 \"%(line)s\" ，你必须将采购 \"%(purchase)s\"取消或者重置为草稿状态."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_purchase_line_move_quantity"
 msgid ""
 "The purchase line \"%(line)s\" is moving %(extra)s in addition to the "
@@ -857,24 +902,28 @@ msgctxt "model:ir.message,text:msg_purchase_line_tax_unique"
 msgid "A tax can be added only once to a purchase line."
 msgstr "一条采购明细只能添加一次税款。"
 
+#, fuzzy, python-format
 msgctxt "model:ir.message,text:msg_purchase_missing_account_expense"
 msgid ""
 "To invoice purchase \"%(purchase)s\" you must configure a default account "
 "expense."
 msgstr "要开具采购发票“％(purchase)s”，您必须配置默认帐户费用。"
 
+#, python-format
 msgctxt "model:ir.message,text:msg_purchase_modify_header_draft"
 msgid ""
 "To modify the header of purchase \"%(purchase)s\", it must be in draft "
 "state."
 msgstr "状态在草案时，才能修改采购 \"%(purchase)s\" 标题."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_purchase_move_reset_draft"
 msgid ""
 "You cannot reset move \"%(move)s\" to draft because it was generated by a "
 "purchase."
 msgstr "你无法将移动 \"%(move)s\" 重置为草稿状态，因为它关联着一个采购 ."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_purchase_product_missing_account_expense"
 msgid ""
 "To invoice purchase \"%(purchase)s\" you must define an account expense for "
@@ -913,12 +962,14 @@ msgctxt "model:ir.message,text:msg_purchase_reporting_time_series"
 msgid "Time Series"
 msgstr "时间序列"
 
+#, python-format
 msgctxt "model:ir.message,text:msg_purchase_supplier_location_required"
 msgid ""
 "To process purchase \"%(purchase)s\" you must set a supplier location on "
 "party \"%(party)s\"."
 msgstr "要处理采购 \"%(purchase)s\" ， 你必须设置参与者\"%(party)s\"对应的供应商位置 ."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_warehouse_required_for_quotation"
 msgid ""
 "To get a quote for the purchase \"%(purchase)s\" you must enter a warehouse."
@@ -1031,10 +1082,6 @@ msgstr "报告"
 msgctxt "model:ir.ui.menu,name:menu_reporting_purchase"
 msgid "Purchases"
 msgstr "采购"
-
-msgctxt "model:ir.ui.menu,name:menu_supplier"
-msgid "Associated to Purchases"
-msgstr "采购相关"
 
 msgctxt "model:party.party.customer_code,name:"
 msgid "Party Customer Code"
@@ -1344,12 +1391,14 @@ msgctxt "view:product.template:"
 msgid "Suppliers"
 msgstr "供应商"
 
+#, fuzzy
 msgctxt "view:purchase.handle.invoice.exception.ask:"
-msgid "Choose invoices to recreate:"
+msgid "Choose cancelled invoices to ignore or recreate:"
 msgstr "选择要重开的发票:"
 
+#, fuzzy
 msgctxt "view:purchase.handle.shipment.exception.ask:"
-msgid "Choose move to recreate:"
+msgid "Choose cancelled stock moves to ignore or recreate:"
 msgstr "选择要重新创建的移动:"
 
 msgctxt "view:purchase.line:"

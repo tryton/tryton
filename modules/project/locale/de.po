@@ -181,6 +181,7 @@ msgctxt "model:ir.message,text:msg_domain_all"
 msgid "All"
 msgstr "Alle"
 
+#, python-format
 msgctxt "model:ir.message,text:msg_erase_party_opened_project"
 msgid ""
 "You cannot erase party \"%(party)s\" while they have opened projects with "
@@ -189,12 +190,14 @@ msgstr ""
 "Partei \"%(party)s\" kann nicht gelöscht werden solange für sie noch offene "
 "Projekte bei Unternehmen \"%(company)s\" bestehen."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_work_children_progress"
 msgid "To complete work \"%(work)s\" you must complete also all its children."
 msgstr ""
 "Um das Projekt/die Projektaufgabe \"%(work)s\" abschließen zu können, müssen"
 " auch alle zugehörigen Unteraufgaben abgeschlossen werden."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_work_invalid_progress_status"
 msgid ""
 "To set work \"%(work)s\" in \"%(status)s\" status, you must increase its "
@@ -203,8 +206,11 @@ msgstr ""
 "Um \"%(work)s\" in den Status \"%(status)s\" setzen zu können, muss der "
 "Fortschritt mindestens auf %(progress)s gesetzt werden."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_work_parent_progress"
-msgid "To re-open work \"%(work)s\" you must re-open also its parent \"%(parent)s\"."
+msgid ""
+"To reopen the work \"%(work)s\", you must also reopen its parent "
+"\"%(parent)s\"."
 msgstr ""
 "Um das Projekt \"%(work)s\" wieder öffnen zu können, muss zuerst das "
 "übergeordnete Projekt \"%(parent)s\" wieder geöffnet werden."

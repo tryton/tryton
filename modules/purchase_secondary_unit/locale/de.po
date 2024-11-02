@@ -34,6 +34,10 @@ msgctxt "field:product.template,purchase_secondary_uom_rate:"
 msgid "Purchase Secondary UoM Rate"
 msgstr "Einkauf Zweitmaßeinheit Kehrwert Faktor"
 
+msgctxt "field:purchase.amendment.line,product_secondary_uom_category:"
+msgid "Product Secondary UoM Category"
+msgstr "Artikel Zweitmaßeinheitenkategorie"
+
 msgctxt ""
 "field:purchase.blanket_agreement.line,product_secondary_uom_category:"
 msgid "Product Secondary UOM Category"
@@ -127,6 +131,10 @@ msgstr ""
 "Der Koeffizient für die Formel:\n"
 "Koeffizient(Einkaufseinheit) = 1 (Zweitmaßeinheit)"
 
+msgctxt "help:purchase.amendment.line,product_secondary_uom_category:"
+msgid "The category of the secondary Unit of Measure for the product."
+msgstr "Die Kategorie für die zweite Maßeinheit des Artikels."
+
 msgctxt "help:purchase.blanket_agreement.line,product_secondary_uom_category:"
 msgid "The category of secondary Unit of Measure for the product."
 msgstr "Die Kategorie für die zweite Maßeinheit des Artikels."
@@ -171,6 +179,7 @@ msgctxt "help:purchase.requisition.line,product_secondary_uom_category:"
 msgid "The category of secondary Unit of Measure for the product."
 msgstr "Die Kategorie für die zweite Maßeinheit des Artikels."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_secondary_uom_incompatible_factor_rate"
 msgid "Incompatible secondary factor and rate values for \"%(record)s\"."
 msgstr ""

@@ -30,14 +30,11 @@ msgstr "No se ha podido conectar con el servidor."
 msgid "Connection error"
 msgstr "Error de conexión"
 
-msgid "Favorites"
-msgstr "Favoritos"
-
-msgid "Manage..."
-msgstr "Administrar..."
-
 msgid "Logout"
 msgstr "Desconectar"
+
+msgid "Favorites"
+msgstr "Favoritos"
 
 msgid "Action"
 msgstr "Acción"
@@ -84,8 +81,9 @@ msgstr "Relacionado"
 msgid "Print"
 msgstr "Imprimir"
 
-msgid "E-Mail"
-msgstr "Correo electrónico"
+#, fuzzy
+msgid "Email"
+msgstr "Correo electrónico %1"
 
 msgid "Previous tab"
 msgstr "Pestaña anterior"
@@ -146,6 +144,9 @@ msgid "Not found."
 msgstr "No se ha encontrado."
 
 msgid "Send you an email to reset your password."
+msgstr ""
+
+msgid "Reset forgotten password"
 msgstr ""
 
 msgid ""
@@ -326,10 +327,12 @@ msgstr "Añadir un adjunto al registro"
 msgid "Add a note to the record"
 msgstr "Añadir una nota al registro"
 
-msgid "E-Mail..."
+#, fuzzy
+msgid "Email..."
 msgstr "Correo electrónico..."
 
-msgid "Send an e-mail using the record"
+#, fuzzy
+msgid "Send an email using the record"
 msgstr "Enviar un correo electrónico usando el registro"
 
 msgid "Export"
@@ -387,6 +390,9 @@ msgstr "Añadir..."
 
 msgid "Preview"
 msgstr "Previsualizar"
+
+msgid "Manage..."
+msgstr "Administrar..."
 
 msgid "Template"
 msgstr "Plantilla"
@@ -507,6 +513,9 @@ msgstr "Abrir"
 
 msgid "Undelete"
 msgstr "Recuperar"
+
+msgid "Restore"
+msgstr ""
 
 msgid "Save As"
 msgstr "Guardar cómo"
@@ -732,7 +741,8 @@ msgid_plural "%1 records saved"
 msgstr[0] "%1 registro guardado"
 msgstr[1] "%1 registros guardados"
 
-msgid "E-mail %1"
+#, fuzzy
+msgid "Email %1"
 msgstr "Correo electrónico %1"
 
 msgid "To:"

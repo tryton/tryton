@@ -202,6 +202,7 @@ msgctxt "model:ir.action,name:act_shop"
 msgid "Web Shops"
 msgstr "Boutiques en ligne"
 
+#, python-format
 msgctxt "model:ir.message,text:msg_sale_invalid_party"
 msgid ""
 "To process the sale \"%(sale)s\" you must select another party instead of "
@@ -253,6 +254,10 @@ msgstr "Boutique en ligne - Entrepôt"
 msgctxt "view:product.template:"
 msgid "Edit"
 msgstr "Éditer"
+
+msgctxt "view:product.template:"
+msgid "Web Shop"
+msgstr "Boutique en ligne"
 
 msgctxt "view:web.shop:"
 msgid "Products"

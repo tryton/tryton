@@ -230,12 +230,14 @@ msgctxt "model:ir.action,name:act_package_type_form"
 msgid "Package Types"
 msgstr "Packstücktypen"
 
+#, python-format
 msgctxt "model:ir.message,text:msg_package_mismatch"
 msgid "To process shipment \"%(shipment)s\", you must pack all its moves."
 msgstr ""
 "Damit die Lieferung \"%(shipment)s\" ausgeführt werden kann, müssen zuerst "
 "alle zugehörigen Warenbewegung gepackt werden."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_package_volume_too_small"
 msgid ""
 "The volume (%(volume)s) of package \"%(package)s\" is too small for summed "

@@ -103,6 +103,10 @@ msgctxt "field:account.invoice,description:"
 msgid "Description"
 msgstr "Descripción"
 
+msgctxt "field:account.invoice,has_account_move:"
+msgid "Has Account Move"
+msgstr "Tiene asiento contable"
+
 msgctxt "field:account.invoice,has_payment_method:"
 msgid "Has Payment Method"
 msgstr "Tiene método de pago"
@@ -138,6 +142,10 @@ msgstr "Revisiones Informe factura"
 msgctxt "field:account.invoice,journal:"
 msgid "Journal"
 msgstr "Diario"
+
+msgctxt "field:account.invoice,line_lines:"
+msgid "Line - Lines"
+msgstr "Línea - Líneas"
 
 msgctxt "field:account.invoice,lines:"
 msgid "Lines"
@@ -202,6 +210,10 @@ msgstr "Referencia"
 msgctxt "field:account.invoice,sequence:"
 msgid "Sequence"
 msgstr "Secuencia"
+
+msgctxt "field:account.invoice,sequence_type_cache:"
+msgid "Sequence Type Cache"
+msgstr "Caché de tipo de secuencia"
 
 msgctxt "field:account.invoice,state:"
 msgid "State"
@@ -925,6 +937,7 @@ msgctxt "model:ir.action.act_window.domain,name:act_invoice_relate_pending"
 msgid "Pending"
 msgstr "Pendiente"
 
+#, python-format
 msgctxt "model:ir.message,text:msg_cancel_invoice_move"
 msgid "The moves \"%(moves)s\" have the posted invoices \"%(invoices)s\" as origin."
 msgstr ""
@@ -939,10 +952,12 @@ msgstr ""
 "Al cancelar-los se conciliaran los apuntes i se pagaran las facturas. Quizas"
 " queréis cancelar las facturas primero."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_close_period_non_posted_invoices"
 msgid "To close the periods you must post the invoices \"%(invoices)s\"."
 msgstr "Para cerrar los periodos debe contabilizar las facturas \"%(invoices)s\"."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_erase_party_pending_invoice"
 msgid ""
 "You cannot erase party \"%(party)s\" while they have pending invoices with "
@@ -951,10 +966,12 @@ msgstr ""
 "No puede eliminar el tercero \"%(party)s\" mientras tenga facturas "
 "pendientes con la companía \"%(company)s\"."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_invoice_credit_refund_not_posted"
 msgid "You cannot refund invoice \"%(invoice)s\" because it is not posted."
 msgstr "No puede abonar la factura \"%(invoice)s\" porque no está contabilizada."
 
+#, python-format
 msgctxt ""
 "model:ir.message,text:msg_invoice_currency_exchange_credit_account_missing"
 msgid ""
@@ -964,6 +981,7 @@ msgstr ""
 "Para contabilizar la factura \"%(invoice)s\", debe definir una Cuenta haber "
 "diferencias de cambio para la empresa \"%(company)s\"."
 
+#, python-format
 msgctxt ""
 "model:ir.message,text:msg_invoice_currency_exchange_debit_account_missing"
 msgid ""
@@ -973,6 +991,7 @@ msgstr ""
 "Para contabilizar la factura \"%(invoice)s\", debe definir una Cuenta debe "
 "diferencias de cambio para la empresa \"%(company)s\"."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_invoice_customer_cancel_move"
 msgid ""
 "You cannot cancel customer invoice \"%(invoice)s\" because it is posted and "
@@ -981,25 +1000,30 @@ msgstr ""
 "No puede cancelar la factura de cliente \"%(invoice)s\" porque está "
 "contabilizada y la configuración de la empresa no lo permite."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_invoice_date_future"
 msgid "The invoices \"%(invoices)s\" have an invoice date in the future."
 msgstr ""
 "Las facturas \"%(invoices)s\" tienen una fecha de facturación en el futuro."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_invoice_default_taxes"
 msgid "The invoice \"%(invoice)s\" does not have the default taxes for %(lines)s."
 msgstr ""
-"Las facturas \"%(invoices)s\" no tiene los impuestos por defecto para "
+"La factura \"%(invoice)s\" no tiene los impuestos por defecto para "
 "%(lines)s."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_invoice_delete_cancel"
 msgid "To delete invoice \"%(invoice)s\" you must cancel it."
 msgstr "Para eliminar la factura \"%(invoice)s\" debe cancelarla."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_invoice_delete_numbered"
 msgid "You cannot delete invoice \"%(invoice)s\" because it has a number."
 msgstr "No puede eliminar la factura \"%(invoice)s\" porque está numerada."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_invoice_line_create_draft"
 msgid ""
 "You cannot add lines to invoice \"%(invoice)s\" because it is no longer in a"
@@ -1008,6 +1032,7 @@ msgstr ""
 "No puede añadir lineas a la factura \"%(invoice)s\" porque no está en estado"
 " borrador."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_invoice_line_modify"
 msgid ""
 "You cannot modify line \"%(line)s\" because its invoice \"%(invoice)s\" is "
@@ -1020,6 +1045,7 @@ msgctxt "model:ir.message,text:msg_invoice_line_tax_unique"
 msgid "A tax can be added only once to an invoice line."
 msgstr "Un impuesto solo se puede agregar una vez a una línea de factura."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_invoice_modify"
 msgid ""
 "You cannot modify invoice \"%(invoice)s\" because it is posted, paid or "
@@ -1028,6 +1054,7 @@ msgstr ""
 "No se puede modificar la factura \"%(invoice)s\" porque está contabilizada, "
 "pagada o cancelada."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_invoice_no_sequence"
 msgid ""
 "To post invoice \"%(invoice)s\", you must define a sequence on fiscal year "
@@ -1036,6 +1063,7 @@ msgstr ""
 "Para contabilizar la factura \"%(invoice)s\", debe definir una secuencia "
 "para el ejercicio fiscal \"%(fiscalyear)s\"."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_invoice_number_after"
 msgid ""
 "To number the invoice \"%(invoice)s\", you must set an invoice date after "
@@ -1046,6 +1074,7 @@ msgstr ""
 "factura posterior a \"%(date)s\" porque la secuencia \"%(sequence)s\" ya se "
 "ha utilizado para la factura \"%(after_invoice)s\"."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_invoice_overpay_paid"
 msgid ""
 "You cannot overpay invoice \"%(invoice)s\" because there is no more left to "
@@ -1054,6 +1083,7 @@ msgstr ""
 "No puede pagar de mas la factura \"%(invoice)s\" porqué no hay nada mas que "
 "pagar."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_invoice_pay_amount_greater_amount_to_pay"
 msgid ""
 "You cannot add a partial payment on invoice \"%(invoice)s\" with an amount "
@@ -1066,12 +1096,14 @@ msgctxt "model:ir.message,text:msg_invoice_payment_line_unique"
 msgid "A payment line can be linked to only one invoice."
 msgstr "Una linea de pago solo se puede estar vinculada con una factura."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_invoice_payment_lines_add_remove_paid"
 msgid "You cannot add/remove payment lines on paid invoice \"%(invoice)s\"."
 msgstr ""
 "No puede añadir/eliminar líneas de pago en la factura pagada "
 "\"%(invoice)s\"."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_invoice_payment_lines_greater_amount"
 msgid ""
 "Payment lines amount on invoice \"%(invoice)s\" can not be greater than the "
@@ -1080,17 +1112,20 @@ msgstr ""
 "El importe de las lineas de pago de la factura \"%(invoice)s\" no puede ser "
 "mas grande que el importe de la factura."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_invoice_payment_term_date_past"
 msgid "The invoice \"%(invoice)s\" generates a payment date \"%(date)s\" in the past."
 msgstr ""
 "La factura \"%(invoice)s\" genera una fecha de pago \"%(date)s\" en el "
 "pasado."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_invoice_similar"
 msgid "The invoice \"%(invoice)s\" is similar to invoice \"%(similar)s\"."
 msgstr "La factura \"%(invoice)s\" es similar a la factura \"%(similar)s\"."
 
-msgctxt "model:ir.message,text:msg_invoice_tax_create"
+#, python-format
+msgctxt "model:ir.message,text:msg_invoice_tax_create_draft"
 msgid ""
 "You cannot add taxes to invoice \"%(invoice)s\" because it is no longer in a"
 " draft state."
@@ -1098,6 +1133,7 @@ msgstr ""
 "No puede añadir impuestos a la factura \"%(invoice)s\" porque no está en "
 "estado borrador."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_invoice_tax_invalid"
 msgid ""
 "The taxes on invoice \"%(invoice)s\" are not valid, you must save it again "
@@ -1106,6 +1142,7 @@ msgstr ""
 "Los impuestos en la factura \"%(invoice)s\" no son válidos, debe grabar de "
 "nuevo para forzar su recálculo."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_invoice_tax_modify"
 msgid ""
 "You cannot modify tax \"%(tax)s\" because its invoice \"%(invoice)s\" is "
@@ -1114,10 +1151,12 @@ msgstr ""
 "No puede modificar el impuesto \"%(tax)s\" porque su factura \"%(invoice)s\""
 " está contabilizada, pagada o cancelada."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_payment_term_invalid_ratio_divisor"
 msgid "The ratio and divisor are not consistent on line \"%(line)s\"."
 msgstr "Porcentaje y divisor no son consistentes en la línea \"%(line)s\"."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_payment_term_missing_last_remainder"
 msgid ""
 "To save payment term \"%(payment_term)s\", you must append a last remainder "
@@ -1126,6 +1165,7 @@ msgstr ""
 "Para grabar el plazo de pago \"%(payment_term)s\", debe añadir una última "
 "línea remanente."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_payment_term_missing_remainder"
 msgid ""
 "To compute terms, you must append a remainder line on payment term "
@@ -1313,6 +1353,14 @@ msgstr "Total:"
 msgctxt "report:account.invoice:"
 msgid "Unit Price"
 msgstr "Precio unitario"
+
+msgctxt "selection:account.invoice,sequence_type_cache:"
+msgid "Credit Note"
+msgstr "Abono"
+
+msgctxt "selection:account.invoice,sequence_type_cache:"
+msgid "Invoice"
+msgstr "Factura"
 
 msgctxt "selection:account.invoice,state:"
 msgid "Cancelled"

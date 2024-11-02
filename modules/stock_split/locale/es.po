@@ -75,7 +75,7 @@ msgid "Split"
 msgstr "Dividir"
 
 msgctxt "view:stock.shipment.split.start:"
-msgid "Choose move to send in new shipment:"
+msgid "Select moves to send in a new shipment:"
 msgstr "Selecciona los movimientos a enviar en un albarán nuevo:"
 
 msgctxt "wizard_button:stock.move.split,start,end:"

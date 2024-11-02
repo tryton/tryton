@@ -18,6 +18,14 @@ msgctxt "field:company.company,header:"
 msgid "Header"
 msgstr "Nagłówek"
 
+msgctxt "field:company.company,logo:"
+msgid "Logo"
+msgstr ""
+
+msgctxt "field:company.company,logo_cache:"
+msgid "Cache"
+msgstr ""
+
 msgctxt "field:company.company,party:"
 msgid "Party"
 msgstr "Strona"
@@ -25,6 +33,23 @@ msgstr "Strona"
 msgctxt "field:company.company,timezone:"
 msgid "Timezone"
 msgstr "Strefa czasowa"
+
+#, fuzzy
+msgctxt "field:company.company.logo.cache,company:"
+msgid "Company"
+msgstr "Firma"
+
+msgctxt "field:company.company.logo.cache,height:"
+msgid "Height"
+msgstr ""
+
+msgctxt "field:company.company.logo.cache,image:"
+msgid "Image"
+msgstr ""
+
+msgctxt "field:company.company.logo.cache,width:"
+msgid "Width"
+msgstr ""
 
 msgctxt "field:company.employee,active:"
 msgid "Active"
@@ -145,6 +170,16 @@ msgid ""
 "- ${address}\n"
 "- ${tax_identifier}\n"
 msgstr ""
+"Tekst jaki ma być wyświetlany w stopkach raportów.\n"
+"Możliwe jest użycie następujących znaczników:\n"
+"- ${name}\n"
+"- ${phone}\n"
+"- ${mobile}\n"
+"- ${fax}\n"
+"- ${email}\n"
+"- ${website}\n"
+"- ${address}\n"
+"- ${tax_identifier}\n"
 
 msgctxt "help:company.company,header:"
 msgid ""
@@ -159,6 +194,16 @@ msgid ""
 "- ${address}\n"
 "- ${tax_identifier}\n"
 msgstr ""
+"Tekst jaki ma być wyświetlany w nagłówkach raportów.\n"
+"Możliwe jest użycie następujących znaczników:\n"
+"- ${name}\n"
+"- ${phone}\n"
+"- ${mobile}\n"
+"- ${fax}\n"
+"- ${email}\n"
+"- ${website}\n"
+"- ${address}\n"
+"- ${tax_identifier}\n"
 
 msgctxt "help:company.company,timezone:"
 msgid "Used to compute the today date."
@@ -236,6 +281,11 @@ msgctxt "model:company.company.config.start,name:"
 msgid "Company Config"
 msgstr "Konfiguracja ustawień firmy"
 
+#, fuzzy
+msgctxt "model:company.company.logo.cache,name:"
+msgid "Company Logo Cache"
+msgstr "Konfiguracja ustawień firmy"
+
 msgctxt "model:company.employee,name:"
 msgid "Employee"
 msgstr "Pracownik"
@@ -258,23 +308,24 @@ msgstr "Nadzorowani przez"
 
 msgctxt "model:ir.action,name:report_letter"
 msgid "Letter"
-msgstr "Letter"
+msgstr "List"
 
 msgctxt "model:ir.cron-company.company,name:"
 msgid "Cron - Company"
 msgstr "Cron - Firma"
 
-#, fuzzy
+msgctxt "model:ir.message,text:msg_company_logo_cache_size_unique"
+msgid "The size of cached company logo must be unique."
+msgstr ""
+
 msgctxt "model:ir.rule.group,name:rule_group_sequence_companies"
 msgid "User in companies"
-msgstr "Użytkownik w firmie"
+msgstr "Użytkownik w firmach"
 
-#, fuzzy
 msgctxt "model:ir.rule.group,name:rule_group_sequence_strict_companies"
 msgid "User in companies"
-msgstr "Użytkownik w firmie"
+msgstr "Użytkownik w firmach"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_company"
 msgid "Companies"
 msgstr "Firmy"
@@ -333,8 +384,17 @@ msgid "You can now add your company into the system."
 msgstr "Możesz dodać swoją firmę do systemu."
 
 msgctxt "view:company.company:"
+msgid "Company"
+msgstr "Firma"
+
+msgctxt "view:company.company:"
 msgid "Reports"
 msgstr "Raporty"
+
+#, fuzzy
+msgctxt "view:company.employee:"
+msgid "Employee"
+msgstr "Pracownik"
 
 msgctxt "wizard_button:company.company.config,company,add:"
 msgid "Add"

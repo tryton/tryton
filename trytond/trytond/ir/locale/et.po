@@ -521,6 +521,10 @@ msgctxt "field:ir.cron,interval_type:"
 msgid "Interval Type"
 msgstr "Intervalli tüüp"
 
+msgctxt "field:ir.cron,logs:"
+msgid "Logs"
+msgstr ""
+
 msgctxt "field:ir.cron,method:"
 msgid "Method"
 msgstr "Meetod"
@@ -533,6 +537,10 @@ msgctxt "field:ir.cron,next_call:"
 msgid "Next Call"
 msgstr "Järgmine kutsung"
 
+msgctxt "field:ir.cron,running:"
+msgid "Running"
+msgstr ""
+
 #, fuzzy
 msgctxt "field:ir.cron,timezone:"
 msgid "Timezone"
@@ -541,6 +549,24 @@ msgstr "Aeg"
 msgctxt "field:ir.cron,weekday:"
 msgid "Day of Week"
 msgstr "Nädalapäev"
+
+#, fuzzy
+msgctxt "field:ir.cron.log,cron:"
+msgid "Cron"
+msgstr "Cron"
+
+#, fuzzy
+msgctxt "field:ir.cron.log,duration:"
+msgid "Duration"
+msgstr "Suund"
+
+msgctxt "field:ir.cron.log,ended:"
+msgid "Ended"
+msgstr ""
+
+msgctxt "field:ir.cron.log,started:"
+msgid "Started"
+msgstr ""
 
 msgctxt "field:ir.email,addresses:"
 msgid "Addresses"
@@ -587,7 +613,7 @@ msgstr ""
 
 #, fuzzy
 msgctxt "field:ir.email.address,email:"
-msgid "E-mail"
+msgid "Email"
 msgstr "E-kiri"
 
 msgctxt "field:ir.email.template,body:"
@@ -1578,6 +1604,11 @@ msgctxt "field:ir.ui.menu,favorite:"
 msgid "Favorite"
 msgstr "Lemmik"
 
+#, fuzzy
+msgctxt "field:ir.ui.menu,favorites:"
+msgid "Favorites"
+msgstr "Lemmik"
+
 msgctxt "field:ir.ui.menu,icon:"
 msgid "Icon"
 msgstr "Ikoon"
@@ -1670,6 +1701,11 @@ msgctxt "field:ir.ui.view_search,model:"
 msgid "Model"
 msgstr "Mudel"
 
+#, fuzzy
+msgctxt "field:ir.ui.view_search,model_ref:"
+msgid "Model"
+msgstr "Mudel"
+
 msgctxt "field:ir.ui.view_search,name:"
 msgid "Name"
 msgstr "Nimi"
@@ -1684,6 +1720,21 @@ msgid "Field"
 msgstr "Väli"
 
 #, fuzzy
+msgctxt "field:ir.ui.view_tree_optional,field_ref:"
+msgid "Field"
+msgstr "Väli"
+
+#, fuzzy
+msgctxt "field:ir.ui.view_tree_optional,model:"
+msgid "Model"
+msgstr "Mudel"
+
+#, fuzzy
+msgctxt "field:ir.ui.view_tree_optional,model_ref:"
+msgid "Model"
+msgstr "Mudel"
+
+#, fuzzy
 msgctxt "field:ir.ui.view_tree_optional,user:"
 msgid "User"
 msgstr "Kasutaja"
@@ -1694,9 +1745,14 @@ msgid "Value"
 msgstr "Väärtused"
 
 #, fuzzy
-msgctxt "field:ir.ui.view_tree_optional,view_id:"
-msgid "View ID"
+msgctxt "field:ir.ui.view_tree_optional,view:"
+msgid "View"
 msgstr "Vaade"
+
+#, fuzzy
+msgctxt "field:ir.ui.view_tree_state,child_field:"
+msgid "Child Field"
+msgstr "Alamväli"
 
 msgctxt "field:ir.ui.view_tree_state,child_name:"
 msgid "Child Name"
@@ -1707,6 +1763,11 @@ msgid "Domain"
 msgstr "Domeen"
 
 msgctxt "field:ir.ui.view_tree_state,model:"
+msgid "Model"
+msgstr "Mudel"
+
+#, fuzzy
+msgctxt "field:ir.ui.view_tree_state,model_ref:"
 msgid "Model"
 msgstr "Mudel"
 
@@ -1812,7 +1873,7 @@ msgid "The field that contains the recipient(s)."
 msgstr ""
 
 msgctxt "help:ir.email.template,recipients_hidden:"
-msgid "The field that contains the secondary recipient(s)."
+msgid "The field that contains the hidden recipient(s)."
 msgstr ""
 
 msgctxt "help:ir.email.template,recipients_hidden_pyson:"
@@ -2021,17 +2082,18 @@ msgstr "Toimingud"
 
 #, fuzzy
 msgctxt "model:ir.action,name:act_email_form"
-msgid "E-mails"
+msgid "Emails"
 msgstr "E-kiri"
 
 #, fuzzy
 msgctxt "model:ir.action,name:act_email_form_relate"
-msgid "E-mail Archives"
+msgid "Email Archives"
 msgstr "E-kiri"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_email_template_form"
-msgid "E-mail Templates"
-msgstr ""
+msgid "Email Templates"
+msgstr "Malli laiendus"
 
 msgctxt "model:ir.action,name:act_error_form"
 msgid "Errors"
@@ -2189,9 +2251,10 @@ msgctxt "model:ir.action,name:act_view_tree_optional_form"
 msgid "View Tree Optional"
 msgstr "Vaata puu olekut"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_view_tree_state"
-msgid "Tree State"
-msgstr "Puu olek"
+msgid "View Tree State"
+msgstr "Vaata puu olekut"
 
 msgctxt "model:ir.action,name:act_view_tree_width_form"
 msgid "View Tree Width"
@@ -2460,6 +2523,11 @@ msgctxt "model:ir.cron,name:"
 msgid "Cron"
 msgstr "Cron"
 
+#, fuzzy
+msgctxt "model:ir.cron.log,name:"
+msgid "Cron Log"
+msgstr "Cron"
+
 msgctxt "model:ir.date,name:"
 msgid "Date"
 msgstr "Kuupäev"
@@ -2612,40 +2680,52 @@ msgctxt "model:ir.message,text:msg_ID"
 msgid "ID"
 msgstr "ID"
 
+#, python-format
 msgctxt "model:ir.message,text:msg_access_button_error"
 msgid "Calling button \"%(button)s on \"%(model)s\" is not allowed."
 msgstr "Nupu \"%(button)s väljakutse mudelis \"%(model)s\" on keelatud."
 
+#, fuzzy, python-format
+msgctxt "model:ir.message,text:msg_access_report_error"
+msgid "You are not allowed to execute report \"%(report)s\"."
+msgstr "Puudub ligipääs mudelile (mudelitele)."
+
+#, fuzzy, python-format
 msgctxt "model:ir.message,text:msg_access_rule_error"
 msgid "You are not allowed to access \"%(model)s\"."
 msgstr "Puudub ligipääs mudelile (mudelitele)."
 
+#, fuzzy, python-format
 msgctxt "model:ir.message,text:msg_access_rule_field_error"
 msgid "You are not allowed to access \"%(model)s.%(field)s\"."
 msgstr "Puudub ligipääs mudeli(te) välja(de)le"
 
-#, fuzzy
+#, fuzzy, python-format
 msgctxt "model:ir.message,text:msg_access_wizard_error"
 msgid "You are not allowed to execute wizard \"%(wizard)s\"."
 msgstr "Puudub ligipääs mudelile (mudelitele)."
 
-#, fuzzy
+#, fuzzy, python-format
 msgctxt "model:ir.message,text:msg_access_wizard_model_error"
 msgid "You are not allowed to execute wizard \"%(wizard)s\" on \"%(model)s\"."
 msgstr "Puudub ligipääs mudelile (mudelitele)."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_action_invalid_context"
 msgid "Invalid context \"%(context)s\" for action \"%(action)s\"."
 msgstr "Toimingu \"%(action)s\" jaoks keelatud kontekst \"%(context)s\"."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_action_invalid_domain"
 msgid "Invalid domain or search criteria \"%(domain)s\" for action \"%(action)s\"."
 msgstr ""
 
+#, python-format
 msgctxt "model:ir.message,text:msg_action_invalid_views"
 msgid "Invalid view \"%(view)s\" for action \"%(action)s\"."
 msgstr "Toimingu \"%(action)s\" jaoks keelatud vaade \"%(view)s\"."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_action_wrong_wizard_model"
 msgid "Wrong wizard model in keyword action \"%(name)s\"."
 msgstr ""
@@ -2693,14 +2773,22 @@ msgctxt "model:ir.message,text:msg_button_name_unique"
 msgid "The name of the button must be unique per model."
 msgstr ""
 
+#, fuzzy
+msgctxt "model:ir.message,text:msg_cache_name_unique"
+msgid "The name of cache must be unique."
+msgstr "Vaikimisi keel peab olema tõlgitav."
+
+#, python-format
 msgctxt "model:ir.message,text:msg_context_datetime"
 msgid "At date/time: %(datetime)s"
 msgstr ""
 
+#, python-format
 msgctxt "model:ir.message,text:msg_context_groups"
 msgid "Within groups: %(groups)s"
 msgstr ""
 
+#, python-format
 msgctxt "model:ir.message,text:msg_create_rule_error"
 msgid ""
 "You are not allowed to create records of \"%(model)s\" because they fail on at least one of these rules:\n"
@@ -2717,13 +2805,14 @@ msgctxt "model:ir.message,text:msg_created_by"
 msgid "Created by"
 msgstr "Looja"
 
+#, python-format
 msgctxt "model:ir.message,text:msg_delete_rule_error"
 msgid ""
 "You are not allowed to delete records \"%(ids)s\" of \"%(model)s\" because of at lease one of those rules:\n"
 "%(rules)s"
 msgstr ""
 
-#, fuzzy
+#, fuzzy, python-format
 msgctxt "model:ir.message,text:msg_delete_xml_record"
 msgid "You are not allowed to delete the record \"%(record)s\" of \"%(model)s\"."
 msgstr "Puudub ligipääs mudelile (mudelitele)."
@@ -2788,14 +2877,17 @@ msgctxt "model:ir.message,text:msg_dict_schema_integer"
 msgid "Integer"
 msgstr ""
 
+#, python-format
 msgctxt "model:ir.message,text:msg_dict_schema_invalid_domain"
 msgid "Invalid domain in schema \"%(schema)s\"."
 msgstr ""
 
+#, python-format
 msgctxt "model:ir.message,text:msg_dict_schema_invalid_help_selection"
 msgid "Invalid help selection in schema \"%(schema)s\"."
 msgstr ""
 
+#, python-format
 msgctxt "model:ir.message,text:msg_dict_schema_invalid_selection"
 msgid "Invalid selection in schema \"%(schema)s\"."
 msgstr ""
@@ -2850,14 +2942,14 @@ msgctxt "model:ir.message,text:msg_dict_yes"
 msgid "Yes"
 msgstr ""
 
-#, fuzzy
+#, fuzzy, python-format
 msgctxt "model:ir.message,text:msg_digits_validation_record"
 msgid ""
 "The number of digits in the value \"%(value)r\" for field \"%(field)s\" in "
 "record \"%(record)s\" of \"%(model)s\" exceeds the limit of \"%(digits)i\"."
 msgstr "Väärtust \"%(value)s\" väljale \"%(field)s\" mudelis \"%(model)s\" ei eksisteeri."
 
-#, fuzzy
+#, fuzzy, python-format
 msgctxt "model:ir.message,text:msg_domain_validation_record"
 msgid ""
 "The value \"%(value)s\" for field \"%(field)s\" in record \"%(record)s\" of "
@@ -2876,48 +2968,51 @@ msgctxt "model:ir.message,text:msg_edited_by"
 msgid "Edited by"
 msgstr "Muuda"
 
-#, fuzzy
+#, fuzzy, python-format
 msgctxt "model:ir.message,text:msg_email_template_invalid_body"
 msgid ""
-"Invalid body in e-mail template \"%(template)s\" with exception "
+"Invalid body in email template \"%(template)s\" with exception "
 "\"%(exception)s\"."
 msgstr "Toimingu \"%(action)s\" jaoks keelatud kontekst \"%(context)s\"."
 
-#, fuzzy
+#, fuzzy, python-format
 msgctxt "model:ir.message,text:msg_email_template_invalid_field_pyson"
 msgid ""
-"Invalid PYSON %(field)s in e-mail template \"%(template)s\" with exception "
+"Invalid PYSON %(field)s in email template \"%(template)s\" with exception "
 "\"%(exception)s\"."
 msgstr "Toimingu \"%(action)s\" jaoks keelatud kontekst \"%(context)s\"."
 
+#, fuzzy, python-format
 msgctxt "model:ir.message,text:msg_email_template_invalid_field_pyson_type"
 msgid ""
-"The PYSON %(field)s in e-mail template \"%(template)s\" must generate a "
-"list."
-msgstr ""
+"The PYSON %(field)s in email template \"%(template)s\" must generate a list."
+msgstr "Toimingu \"%(action)s\" jaoks keelatud kontekst \"%(context)s\"."
 
-#, fuzzy
+#, fuzzy, python-format
 msgctxt "model:ir.message,text:msg_email_template_invalid_subject"
 msgid ""
-"Invalid subject in e-mail template \"%(template)s\" with exception "
+"Invalid subject in email template \"%(template)s\" with exception "
 "\"%(exception)s\"."
 msgstr "Toimingu \"%(action)s\" jaoks keelatud kontekst \"%(context)s\"."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_field_model_name"
 msgid "%(field)s (model name)"
 msgstr ""
 
+#, python-format
 msgctxt "model:ir.message,text:msg_field_string"
 msgid "%(field)s (string)"
 msgstr ""
 
-#, fuzzy
+#, fuzzy, python-format
 msgctxt "model:ir.message,text:msg_forbidden_char_validation_record"
 msgid ""
 "The value \"%(value)s\" for field \"%(field)s\" in record \"%(record)s\" of "
 "\"%(model)s\" contains some invalid chars \"%(chars)s\"."
 msgstr "Väärtust \"%(value)s\" väljale \"%(field)s\" mudelis \"%(model)s\" ei eksisteeri."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_foreign_model_exist"
 msgid ""
 "The records could not be deleted because they are used by field "
@@ -2926,6 +3021,7 @@ msgstr ""
 "Kirjeid ei saa kustutada, kuna väljad \"%(field)s\" on kasutusel "
 "\"%(model)s\" poolt."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_foreign_model_missing"
 msgid "The value \"%(value)s\" for field \"%(field)s\" in \"%(model)s\" does not exist."
 msgstr "Väärtust \"%(value)s\" väljale \"%(field)s\" mudelis \"%(model)s\" ei eksisteeri."
@@ -2938,29 +3034,42 @@ msgctxt "model:ir.message,text:msg_id_positive"
 msgid "ID must be positive."
 msgstr "ID peab olema positiivne"
 
+#, python-format
+msgctxt "model:ir.message,text:msg_import_data_missing_column"
+msgid "Missing values for last column at row %(row)d."
+msgstr ""
+
+#, python-format
+msgctxt "model:ir.message,text:msg_import_data_missing_columns"
+msgid "Missing values for %(n)s last columns at row %(row)d."
+msgstr ""
+
 #, fuzzy
 msgctxt "model:ir.message,text:msg_language_code_unique"
 msgid "The code on language must be unique."
 msgstr "Vaikimisi keel peab olema tõlgitav."
 
-#, fuzzy
+#, fuzzy, python-format
 msgctxt "model:ir.message,text:msg_language_default_translatable"
 msgid "The default language \"%(language)s\" must be translatable."
 msgstr "Vaikimisi keel peab olema tõlgitav."
 
-#, fuzzy
+#, fuzzy, python-format
 msgctxt "model:ir.message,text:msg_language_delete_default"
 msgid "The default language \"%(language)s\" can not be deleted."
 msgstr "Vaikimisi keelt ei saa kustutada."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_language_invalid_date"
 msgid "Invalid date format \"%(format)s\" for language \"%(language)s\"."
 msgstr "\"%(language)s\" keele jaoks vale kuupäeva formaat \"%(format)s\"."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_language_invalid_grouping"
 msgid "Invalid grouping \"%(grouping)s\" for language \"%(language)s\"."
 msgstr "Keele \"%(language)s\" jaoks keelatud grupeerimine \"%(grouping)s\"."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_model_invalid_condition"
 msgid ""
 "The condition \"%(condition)s\" is not a valid PYSON expression for button "
@@ -2986,13 +3095,14 @@ msgctxt "model:ir.message,text:msg_notes"
 msgid "Notes"
 msgstr "Märkmed"
 
-#, fuzzy
+#, fuzzy, python-format
 msgctxt "model:ir.message,text:msg_read_error"
 msgid "You are trying to read records \"%(ids)s\" of \"%(model)s\" that don't exist."
 msgstr ""
 "Ei saa lugeda kirjeid \"%(ids)s\" mudelist \"%(model)s\", mida enam ei "
 "eksisteeri."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_read_rule_error"
 msgid ""
 "You are not allowed to read records \"%(ids)s\" of \"%(model)s\" because of at least one of these rules:\n"
@@ -3004,41 +3114,45 @@ msgctxt "model:ir.message,text:msg_record_name"
 msgid "Record Name"
 msgstr "Kirje nimi"
 
+#, python-format
 msgctxt "model:ir.message,text:msg_recursion_error"
 msgid ""
 "Recursion error: Record \"%(rec_name)s\" with parent \"%(parent_rec_name)s\""
 " was configured as ancestor of itself."
 msgstr ""
 
-#, fuzzy
+#, fuzzy, python-format
 msgctxt "model:ir.message,text:msg_reference_syntax_error"
 msgid ""
-"Syntax error for reference: %(value)r in \"%(field)s\" of \"%(model)s\" "
-"(%(column)s)."
-msgstr "Süntaksi viga viitele: \"%(value)r\" in \"%(field)s\"."
+"Syntax error for %(value)r in \"%(field)s\" of \"%(model)s\" at row %(row)d "
+"and column %(column)d."
+msgstr "XML süntaksi viga: \"%(value)r\" in \"%(field)s\"."
 
-#, fuzzy
+#, fuzzy, python-format
 msgctxt "model:ir.message,text:msg_relation_not_found"
-msgid "Relation not found: %(value)r in \"%(model)s\" (%(column)s)."
-msgstr "Seost ei leitud: \"%(value)r\" in \"%(model)s\"."
+msgid ""
+"Could not find relation for %(value)r in \"%(model)s\" at row %(row)d and "
+"column %(column)d."
+msgstr "Leitud on liiga palju seoseid: \"%(value)r\" in \"%(model)s\"."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_report_invalid_email"
 msgid "Invalid email definition for report \"%(name)s\"."
 msgstr ""
 
-#, fuzzy
+#, fuzzy, python-format
 msgctxt "model:ir.message,text:msg_report_invalid_record_name"
 msgid ""
 "Invalid record name definition for report \"%(report)s\" with exception "
 "\"%(exception)s\"."
 msgstr "Toimingu \"%(action)s\" jaoks keelatud kontekst \"%(context)s\"."
 
-#, fuzzy
+#, fuzzy, python-format
 msgctxt "model:ir.message,text:msg_required_validation"
 msgid "A value is required for field \"%(field)s\" in \"%(model)s\"."
 msgstr "Mudeli \"%(model)s\" välja \"%(field)s\" jaoks on väärtus nõutud."
 
-#, fuzzy
+#, fuzzy, python-format
 msgctxt "model:ir.message,text:msg_required_validation_record"
 msgid ""
 "A value is required for field \"%(field)s\" in record \"%(record)s\" of "
@@ -3049,15 +3163,17 @@ msgctxt "model:ir.message,text:msg_resource_copy_help"
 msgid "The resources to which this record must be copied."
 msgstr ""
 
+#, python-format
 msgctxt "model:ir.message,text:msg_rule_invalid_domain"
 msgid "Invalid domain in rule \"%(name)s\"."
 msgstr ""
 
+#, python-format
 msgctxt "model:ir.message,text:msg_search_function_missing"
 msgid "Missing search function for field \"%(field)s\" in \"%(model)s\"."
 msgstr "Välja \"%(field)s\" jaoks puudub ostingufunktsioon mudelis \"%(model)s\"."
 
-#, fuzzy
+#, fuzzy, python-format
 msgctxt "model:ir.message,text:msg_selection_validation_record"
 msgid ""
 "The value \"%(value)s\" for field \"%(field)s\" in record \"%(record)s\" of "
@@ -3075,29 +3191,29 @@ msgid ""
 "sequence."
 msgstr ""
 
-#, fuzzy
+#, fuzzy, python-format
 msgctxt "model:ir.message,text:msg_sequence_invalid_number_increment_next"
 msgid ""
 "Invalid \"Increment Number\" (%(number_increment)s) or \"Next Number\" "
 "(%(number_next)s) with exception \"%(exception)s\"."
 msgstr "Toimingu \"%(action)s\" jaoks keelatud kontekst \"%(context)s\"."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_sequence_invalid_prefix"
 msgid "Invalid prefix \"%(affix)s\" for sequence \"%(sequence)s\"."
 msgstr "Lubamatu eesliide \"%(affix)s\" järjestusele \"%(sequence)s\"."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_sequence_invalid_suffix"
 msgid "Invalid suffix \"%(affix)s\" for sequence \"%(sequence)s\"."
 msgstr "Lubamatu järelliide \"%(affix)s\" järjestusele \"%(sequence)s\"."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_sequence_last_timestamp_future"
 msgid "The \"Last Timestamp\" cannot be in the future for sequence \"%s\"."
 msgstr "\"Viimane ajatempel\" ei saa järjestuse \"%s\" jaoks olla tulevikus."
 
-msgctxt "model:ir.message,text:msg_sequence_missing"
-msgid "Missing sequence."
-msgstr "Puudub jada"
-
+#, python-format
 msgctxt "model:ir.message,text:msg_setter_function_missing"
 msgid "Missing setter function for field \"%(field)s\" in \"%(model)s\"."
 msgstr "Välja \"%(field)s\" jaoks puudub setter funktsioon mudelis \"%(model)s\"."
@@ -3106,7 +3222,7 @@ msgctxt "model:ir.message,text:msg_singleton"
 msgid "Only one singleton can be created."
 msgstr ""
 
-#, fuzzy
+#, fuzzy, python-format
 msgctxt "model:ir.message,text:msg_size_validation"
 msgid ""
 "The value \"%(value)s\" for field \"%(field)s\" in \"%(model)s\" is too long"
@@ -3115,7 +3231,7 @@ msgstr ""
 "Väärtus on mudeli \"%(model)s\" välja \"%(field)s\" jaoks liiga pikk "
 "(%(size)i > %(max_size)i)."
 
-#, fuzzy
+#, fuzzy, python-format
 msgctxt "model:ir.message,text:msg_size_validation_record"
 msgid ""
 "The value \"%(value)s\" for field \"%(field)s\" in record \"%(record)s\" of "
@@ -3124,7 +3240,7 @@ msgstr ""
 "Väärtus on mudeli \"%(model)s\" välja \"%(field)s\" jaoks liiga pikk "
 "(%(size)i > %(max_size)i)."
 
-#, fuzzy
+#, fuzzy, python-format
 msgctxt "model:ir.message,text:msg_time_format_validation_record"
 msgid ""
 "The time value \"%(value)s\" for field \"%(field)s\" in record "
@@ -3160,11 +3276,14 @@ msgctxt "model:ir.message,text:msg_timedelta_w"
 msgid "w"
 msgstr ""
 
-#, fuzzy
+#, fuzzy, python-format
 msgctxt "model:ir.message,text:msg_too_many_relations_found"
-msgid "Too many relations found: %(value)r in \"%(model)s\" (%(column)s)."
+msgid ""
+"Found too many relation for %(value)r in \"%(model)s\" at row %(row)d and "
+"column %(column)d."
 msgstr "Leitud on liiga palju seoseid: \"%(value)r\" in \"%(model)s\"."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_translation_overridden"
 msgid ""
 "You can not export translation \"%(name)s\" because it has been overridden "
@@ -3179,33 +3298,36 @@ msgid ""
 "mutually exclusive."
 msgstr ""
 
+#, python-format
 msgctxt "model:ir.message,text:msg_trigger_invalid_condition"
 msgid ""
 "Condition \"%(condition)s\" is not a valid PYSON expression for trigger "
 "\"%(trigger)s\"."
 msgstr ""
 
-#, fuzzy
+#, fuzzy, python-format
 msgctxt "model:ir.message,text:msg_value_syntax_error"
 msgid ""
-"Syntax error for value: %(value)r in \"%(field)s\" of \"%(model)s\" "
-"(%(column)s)."
+"Syntax error for %(value)r in \"%(field)s\" of \"%(model)s\" at row %(row)d "
+"and column %(column)d."
 msgstr "XML süntaksi viga: \"%(value)r\" in \"%(field)s\"."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_view_invalid_xml"
 msgid "Invalid XML for view \"%(name)s\"."
 msgstr "Vaate \"%(name)s\" jaoks sobimatu XML."
 
-#, fuzzy
+#, fuzzy, python-format
 msgctxt "model:ir.message,text:msg_view_search_invalid_domain"
 msgid "Invalid domain or search criteria \"%(domain)s\" for search \"%(search)s\"."
 msgstr "Lubamatu eesliide \"%(affix)s\" järjestusele \"%(sequence)s\"."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_view_tree_optional_type"
 msgid "You cannot store optional on view \"%(view)s\"."
 msgstr ""
 
-#, fuzzy
+#, fuzzy, python-format
 msgctxt "model:ir.message,text:msg_write_error"
 msgid ""
 "You are trying to write to records \"%(ids)s\" of \"%(model)s\" that don't "
@@ -3214,13 +3336,14 @@ msgstr ""
 "Ei saa salvestada kirjeid \"%(ids)s\" mudelisse \"%(model)s\", mida enam ei "
 "eksisteeri."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_write_rule_error"
 msgid ""
 "You are not allowed to write to records \"%(ids)s\" of \"%(model)s\" because of at least one of these rules:\n"
 "%(rules)s"
 msgstr ""
 
-#, fuzzy
+#, fuzzy, python-format
 msgctxt "model:ir.message,text:msg_write_xml_record"
 msgid ""
 "You are not allowed to modify the field \"%(field)s\" in record "
@@ -3230,13 +3353,6 @@ msgstr "Mudeli \"%(model)s\" välja \"%(field)s\" jaoks on väärtus nõutud."
 msgctxt "model:ir.message,text:msg_xml_id"
 msgid "XML ID"
 msgstr ""
-
-#, fuzzy
-msgctxt "model:ir.message,text:msg_xml_id_syntax_error"
-msgid ""
-"Syntax error for XML id: %(value)r in \"%(field)s\" of \"%(model)s\" "
-"(%(column)s)."
-msgstr "XML süntaksi viga: \"%(value)r\" in \"%(field)s\"."
 
 msgctxt "model:ir.model,name:"
 msgid "Model"
@@ -3519,12 +3635,13 @@ msgstr "Toimingud"
 
 #, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_email_form"
-msgid "E-mails"
+msgid "Emails"
 msgstr "E-kiri"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_email_template_form"
-msgid "E-mail Templates"
-msgstr ""
+msgid "Email Templates"
+msgstr "Malli laiendus"
 
 msgctxt "model:ir.ui.menu,name:menu_error_form"
 msgid "Errors"
@@ -3654,23 +3771,6 @@ msgstr "Kaustajaliides"
 msgctxt "model:ir.ui.menu,name:menu_view"
 msgid "Views"
 msgstr "Vaated"
-
-msgctxt "model:ir.ui.menu,name:menu_view_search"
-msgid "View Search"
-msgstr "Vaate otsing"
-
-#, fuzzy
-msgctxt "model:ir.ui.menu,name:menu_view_tree_optional"
-msgid "View Tree Optional"
-msgstr "Vaata puu olekut"
-
-msgctxt "model:ir.ui.menu,name:menu_view_tree_state"
-msgid "Tree State"
-msgstr "Puu olek"
-
-msgctxt "model:ir.ui.menu,name:menu_view_tree_width"
-msgid "View Tree Width"
-msgstr "Näita puu laiust"
 
 msgctxt "model:ir.ui.menu,name:model_model_fields_form"
 msgid "Fields"
@@ -3917,6 +4017,11 @@ msgstr "Kuud"
 msgctxt "selection:ir.cron,interval_type:"
 msgid "Weeks"
 msgstr "Nädalad"
+
+#, fuzzy
+msgctxt "selection:ir.cron,method:"
+msgid "Clean Cron Logs"
+msgstr "Eemalda tõlked"
 
 msgctxt "selection:ir.cron,method:"
 msgid "Clean Errors"

@@ -98,6 +98,7 @@ msgctxt ""
 msgid "Processing"
 msgstr "In behandeling"
 
+#, python-format
 msgctxt "model:ir.message,text:msg_issue_solve_product_forecast_quantity"
 msgid ""
 "You cannot solve the stock quantity issue \"%(issue)s\" because product "

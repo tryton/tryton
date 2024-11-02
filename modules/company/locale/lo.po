@@ -18,6 +18,14 @@ msgctxt "field:company.company,header:"
 msgid "Header"
 msgstr "ຫົວກະດາດ"
 
+msgctxt "field:company.company,logo:"
+msgid "Logo"
+msgstr ""
+
+msgctxt "field:company.company,logo_cache:"
+msgid "Cache"
+msgstr ""
+
 msgctxt "field:company.company,party:"
 msgid "Party"
 msgstr "ພາກສ່ວນ"
@@ -25,6 +33,23 @@ msgstr "ພາກສ່ວນ"
 msgctxt "field:company.company,timezone:"
 msgid "Timezone"
 msgstr "ເຂດເວລາ"
+
+#, fuzzy
+msgctxt "field:company.company.logo.cache,company:"
+msgid "Company"
+msgstr "ຫ້ອງການ/ສຳນັກງານ"
+
+msgctxt "field:company.company.logo.cache,height:"
+msgid "Height"
+msgstr ""
+
+msgctxt "field:company.company.logo.cache,image:"
+msgid "Image"
+msgstr ""
+
+msgctxt "field:company.company.logo.cache,width:"
+msgid "Width"
+msgstr ""
 
 msgctxt "field:company.employee,active:"
 msgid "Active"
@@ -240,6 +265,11 @@ msgctxt "model:company.company.config.start,name:"
 msgid "Company Config"
 msgstr "ກຳນົດຄ່າ ຫ້ອງການ/ສຳນັກງານ"
 
+#, fuzzy
+msgctxt "model:company.company.logo.cache,name:"
+msgid "Company Logo Cache"
+msgstr "ກຳນົດຄ່າ ຫ້ອງການ/ສຳນັກງານ"
+
 msgctxt "model:company.employee,name:"
 msgid "Employee"
 msgstr "ພະນັກງານ"
@@ -271,6 +301,10 @@ msgstr "Letter"
 msgctxt "model:ir.cron-company.company,name:"
 msgid "Cron - Company"
 msgstr "ຄຣັອນ - ສຳນັກງານ"
+
+msgctxt "model:ir.message,text:msg_company_logo_cache_size_unique"
+msgid "The size of cached company logo must be unique."
+msgstr ""
 
 #, fuzzy
 msgctxt "model:ir.rule.group,name:rule_group_sequence_companies"
@@ -344,8 +378,17 @@ msgid "You can now add your company into the system."
 msgstr "ທ່ານສາມາດເພີ່ມສຳນັກງານຂອງທ່ານເຂົ້າໃສ່ໃນລະບົບໄດ້ແລ້ວ."
 
 msgctxt "view:company.company:"
+msgid "Company"
+msgstr "ຫ້ອງການ/ສຳນັກງານ"
+
+msgctxt "view:company.company:"
 msgid "Reports"
 msgstr "ລາຍງານ"
+
+#, fuzzy
+msgctxt "view:company.employee:"
+msgid "Employee"
+msgstr "ພະນັກງານ"
 
 msgctxt "wizard_button:company.company.config,company,add:"
 msgid "Add"

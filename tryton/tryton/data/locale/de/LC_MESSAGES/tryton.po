@@ -25,7 +25,7 @@ msgid "specify the login user"
 msgstr "Anmeldename angeben"
 
 msgid "specify the server hostname:port"
-msgstr "Den Server mit Hostname:Port angeben."
+msgstr "Den Server mit Hostname:Port angeben"
 
 msgid "disable thread usage"
 msgstr "Threading deaktivieren"
@@ -153,7 +153,7 @@ msgid "Not Found."
 msgstr "Nicht gefunden."
 
 msgid "Reset forgotten password"
-msgstr "Vergessenes Passwort zurücksetzen"
+msgstr "Passwort zurücksetzen"
 
 msgid "Send you an email to reset your password."
 msgstr "E-Mail zum Zurücksetzen des Passworts senden."
@@ -244,7 +244,7 @@ msgstr "Berichte..."
 msgid "Print..."
 msgstr "Drucken..."
 
-msgid "E-Mail..."
+msgid "Email..."
 msgstr "E-Mail..."
 
 msgid "Bold"
@@ -354,12 +354,6 @@ msgstr "Hilfe"
 
 msgid "No result found."
 msgstr "Kein Ergebnis."
-
-msgid "Favorites"
-msgstr "Favoriten"
-
-msgid "Manage..."
-msgstr "Verwalten..."
 
 msgid "Action"
 msgstr "Aktion"
@@ -595,6 +589,9 @@ msgstr "Verbindung zum Tryton Server herstellen"
 msgid "Profile:"
 msgstr "Profil:"
 
+msgid "Manage..."
+msgstr "Verwalten..."
+
 msgid "Host / Database information"
 msgstr "Host-/Datenbankdetails"
 
@@ -606,8 +603,8 @@ msgstr ""
 "Die automatische Vervollständigung des E-Mail Eintrags ist fehlgeschlagen"
 
 #, python-format
-msgid "E-mail %s"
-msgstr "E-mail %s"
+msgid "Email %s"
+msgstr "E-Mail %s"
 
 msgid "To:"
 msgstr "An:"
@@ -825,7 +822,7 @@ msgid "_Delete..."
 msgstr "_Löschen..."
 
 msgid "View _Logs..."
-msgstr "_Protokoll ansehen..."
+msgstr "_Logs ansehen..."
 
 msgid "Show revisions..."
 msgstr "Bearbeitungen anzeigen..."
@@ -854,10 +851,10 @@ msgstr "_Bericht öffnen..."
 msgid "_Print..."
 msgstr "_Bericht drucken..."
 
-msgid "_E-Mail..."
-msgstr "_Bericht per E-Mail..."
+msgid "_Email..."
+msgstr "_E-Mail..."
 
-msgid "Send an e-mail using the record"
+msgid "Send an email using the record"
 msgstr "Eine E-Mail basierend auf diesem Datensatz versenden"
 
 msgid "_Export Data..."
@@ -909,6 +906,9 @@ msgstr "Feldname"
 msgid "CSV Export: %s"
 msgstr "CSV-Export: %s"
 
+msgid "Open"
+msgstr "Öffnen"
+
 msgid "_Save Export"
 msgstr "Exportkonfiguration _speichern"
 
@@ -923,12 +923,6 @@ msgstr "<b>Vordefinierte Exporte</b>"
 
 msgid "Name"
 msgstr "Name"
-
-msgid "Open"
-msgstr "Öffnen"
-
-msgid "Save"
-msgstr "Speichern"
 
 msgid "Listed Records"
 msgstr "Angezeigte Datensätze"
@@ -987,6 +981,9 @@ msgstr "Speichern und Neu"
 msgid "Add and New"
 msgstr "Hinzufügen und Neu"
 
+msgid "Save"
+msgstr "Speichern"
+
 msgid "Add"
 msgstr "Hinzufügen"
 
@@ -1011,6 +1008,9 @@ msgstr "Löschung der ausgewählten Datensätze rückgängig machen <Einfg>"
 #, python-format
 msgid "CSV Import: %s"
 msgstr "CSV-Import: %s"
+
+msgid "Import"
+msgstr "Import"
 
 msgid "_Auto-Detect"
 msgstr "_Automatische Erkennung"
@@ -1212,6 +1212,9 @@ msgstr "Bestehenden Datensatz hinzufügen"
 msgid "Remove selected record"
 msgstr "Ausgewählten Datensatz löschen <Entf>"
 
+msgid "Restore selected record"
+msgstr "Ausgewählten Datensatz wiederherstellen"
+
 msgid "Open the record <F2>"
 msgstr "Datensatz öffnen <F2>"
 
@@ -1226,6 +1229,9 @@ msgstr "Ausgewählten Datensatz bearbeiten"
 
 msgid "Delete selected record"
 msgstr "Ausgewählten Datensatz löschen"
+
+msgid "Undelete selected record"
+msgstr "Zum Löschen ausgewählten Datensatz zurücksetzen"
 
 #, python-format
 msgid "%s%%"

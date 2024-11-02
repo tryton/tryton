@@ -260,6 +260,7 @@ msgctxt ""
 msgid "Receivable with Mandate"
 msgstr "Forderungen per Mandat (Lastschrift)"
 
+#, python-format
 msgctxt "model:ir.message,text:msg_mandate_authorisation_statement"
 msgid ""
 "By signing this mandate form, you authorise (A) %(creditor)s to send "
@@ -271,6 +272,7 @@ msgstr ""
 "weisen wir unser Kreditinstitut an, die von %(creditor)s auf mein/ unser "
 "Konto gezogenen Lastschriften einzulösen."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_mandate_delete_draft_cancelled"
 msgid ""
 "To delete mandate \"%(mandate)s\" you must cancel it or reset its state to "
@@ -279,6 +281,7 @@ msgstr ""
 "Um Mandat \"%(mandate)s\" zu löschen, muss es annulliert oder zurück auf den"
 " Entwurfsstatus gesetzt werden."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_mandate_title"
 msgid "SEPA %(scheme)s Direct Debit MANDATE"
 msgstr "SEPA %(scheme)s Lastschriftmandat"
@@ -288,10 +291,12 @@ msgid "SEPA mandate identification must be unique by company."
 msgstr ""
 "Die SEPA Mandatsreferenz kann nur einmal je Unternehmen vergeben werden."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_party_no_id"
 msgid "The party \"%(party)s\" is missing a \"%(type)s\" identifier."
 msgstr "Die Partei \"%(party)s\" benötigt einen Identifikator vom Typ \"%(type)s\"."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_payment_process_no_bank"
 msgid ""
 "To process payment \"%(payment)s\" you must define a bank for the account "
@@ -300,12 +305,14 @@ msgstr ""
 "Um Zahlung \"%(payment)s\" ausführen zu können, muss eine Bank für das Konto"
 " \"%(bank_account)s\" definiert werden."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_payment_process_no_iban"
 msgid "To process payment \"%(payment)s\" you must define IBAN for it."
 msgstr ""
 "Um Zahlung \"%(payment)s\" ausführen zu können, muss eine IBAN erfasst "
 "werden."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_payment_process_no_mandate"
 msgid "To process payment \"%(payment)s\" you must define a SEPA mandate for it."
 msgstr ""

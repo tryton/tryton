@@ -227,8 +227,8 @@ msgid "Asset Depreciation Frequency"
 msgstr "Fréquence d'amortissement d'actif"
 
 msgctxt "field:account.configuration,asset_sequence:"
-msgid "Asset Reference Sequence"
-msgstr "Séquence de référence d'actif"
+msgid "Asset Sequence"
+msgstr "Séquence d'actifs"
 
 msgctxt "field:account.configuration.asset_date,asset_bymonth:"
 msgid "Month"
@@ -430,12 +430,14 @@ msgctxt "model:ir.action.act_window.domain,name:act_asset_form_domain_running"
 msgid "Running"
 msgstr "En cours"
 
+#, python-format
 msgctxt "model:ir.message,text:msg_asset_delete_draft"
 msgid "You cannot delete asset \"%(asset)s\" because it is not in \"draft\" state."
 msgstr ""
 "Vous ne pouvez pas supprimer l'actif « %(asset)s » car il n'est pas dans "
 "l'état « brouillon »."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_asset_draft_lines"
 msgid "You cannot reset to draft asset \"%(asset)s\" because it has lines."
 msgstr ""
@@ -447,6 +449,7 @@ msgid "Invoice line can be used only once on asset."
 msgstr ""
 "Une ligne de facture ne peut être utilisée qu'une seule fois sur l'actif."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_asset_running_close_period"
 msgid ""
 "You cannot close period \"%(period)s\" because some assets \"%(assets)s\" "
@@ -463,6 +466,7 @@ msgctxt "model:ir.message,text:msg_no_assets"
 msgid "There is no started asset."
 msgstr "Il n'y a pas d'actif démarré."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_purchase_product_missing_account_asset"
 msgid ""
 "To invoice purchase \"%(purchase)s\", you must set an account asset on "

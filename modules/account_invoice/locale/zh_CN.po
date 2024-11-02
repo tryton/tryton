@@ -103,6 +103,11 @@ msgctxt "field:account.invoice,description:"
 msgid "Description"
 msgstr "描述"
 
+#, fuzzy
+msgctxt "field:account.invoice,has_account_move:"
+msgid "Has Account Move"
+msgstr "账户"
+
 msgctxt "field:account.invoice,has_payment_method:"
 msgid "Has Payment Method"
 msgstr "有支付方式"
@@ -138,6 +143,10 @@ msgstr "原始凭证报告修订"
 msgctxt "field:account.invoice,journal:"
 msgid "Journal"
 msgstr "日记账"
+
+msgctxt "field:account.invoice,line_lines:"
+msgid "Line - Lines"
+msgstr ""
 
 msgctxt "field:account.invoice,lines:"
 msgid "Lines"
@@ -202,6 +211,10 @@ msgstr "参考"
 msgctxt "field:account.invoice,sequence:"
 msgid "Sequence"
 msgstr "序列"
+
+msgctxt "field:account.invoice,sequence_type_cache:"
+msgid "Sequence Type Cache"
+msgstr ""
 
 msgctxt "field:account.invoice,state:"
 msgid "State"
@@ -925,6 +938,7 @@ msgctxt "model:ir.action.act_window.domain,name:act_invoice_relate_pending"
 msgid "Pending"
 msgstr "待定"
 
+#, python-format
 msgctxt "model:ir.message,text:msg_cancel_invoice_move"
 msgid "The moves \"%(moves)s\" have the posted invoices \"%(invoices)s\" as origin."
 msgstr "记账凭证 \"%(moves)s\" 已经将入账原始凭证 \"%(invoices)s\" 作为缘由。"
@@ -935,21 +949,24 @@ msgid ""
 "might want to cancel the invoices first."
 msgstr "取消它们后，对记账凭证会进行对账操作，从而按原始凭证支付。最好先把原始凭证取消。"
 
+#, python-format
 msgctxt "model:ir.message,text:msg_close_period_non_posted_invoices"
 msgid "To close the periods you must post the invoices \"%(invoices)s\"."
 msgstr "关闭分期之前，需要将原始凭证 \"%(invoices)s\" 入账。"
 
+#, python-format
 msgctxt "model:ir.message,text:msg_erase_party_pending_invoice"
 msgid ""
 "You cannot erase party \"%(party)s\" while they have pending invoices with "
 "company \"%(company)s\"."
 msgstr "当参与者 \"%(party)s\" 具有公司 \"%(company)s\" 的待定凭证时，不能删除。"
 
+#, python-format
 msgctxt "model:ir.message,text:msg_invoice_credit_refund_not_posted"
 msgid "You cannot refund invoice \"%(invoice)s\" because it is not posted."
 msgstr "无法退还凭证 \"%(invoice)s\" ，因为它未过帐。"
 
-#, fuzzy
+#, fuzzy, python-format
 msgctxt ""
 "model:ir.message,text:msg_invoice_currency_exchange_credit_account_missing"
 msgid ""
@@ -957,7 +974,7 @@ msgid ""
 "account for \"%(company)s\"."
 msgstr "要对 \"%(invoice)s\" 入账，必须在会计年度 \"%(fiscalyear)s\" 上定义一个序列。"
 
-#, fuzzy
+#, fuzzy, python-format
 msgctxt ""
 "model:ir.message,text:msg_invoice_currency_exchange_debit_account_missing"
 msgid ""
@@ -965,35 +982,41 @@ msgid ""
 "account for \"%(company)s\"."
 msgstr "要对 \"%(invoice)s\" 入账，必须在会计年度 \"%(fiscalyear)s\" 上定义一个序列。"
 
+#, python-format
 msgctxt "model:ir.message,text:msg_invoice_customer_cancel_move"
 msgid ""
 "You cannot cancel customer invoice \"%(invoice)s\" because it is posted and "
 "company setup does not allow it."
 msgstr "无法取消客户原始凭证 \"%(invoice)s\"，因为它已过帐并且公司设置不允许。"
 
+#, python-format
 msgctxt "model:ir.message,text:msg_invoice_date_future"
 msgid "The invoices \"%(invoices)s\" have an invoice date in the future."
 msgstr "原始凭证 \"%(invoices)s\" 的日期指向未来。"
 
-#, fuzzy
+#, fuzzy, python-format
 msgctxt "model:ir.message,text:msg_invoice_default_taxes"
 msgid "The invoice \"%(invoice)s\" does not have the default taxes for %(lines)s."
 msgstr "原始凭证 \"%(invoices)s\" 的日期指向未来。"
 
+#, python-format
 msgctxt "model:ir.message,text:msg_invoice_delete_cancel"
 msgid "To delete invoice \"%(invoice)s\" you must cancel it."
 msgstr "删除原始凭证 \"%(invoice)s\" 之前必须先取消它。"
 
+#, python-format
 msgctxt "model:ir.message,text:msg_invoice_delete_numbered"
 msgid "You cannot delete invoice \"%(invoice)s\" because it has a number."
 msgstr "无法删除原始凭证 \"%(invoice)s\" ，因为它包含序号。"
 
+#, python-format
 msgctxt "model:ir.message,text:msg_invoice_line_create_draft"
 msgid ""
 "You cannot add lines to invoice \"%(invoice)s\" because it is no longer in a"
 " draft state."
 msgstr "原始凭证 \"%(invoice)s\" 非草案状态，无法添加明细。"
 
+#, python-format
 msgctxt "model:ir.message,text:msg_invoice_line_modify"
 msgid ""
 "You cannot modify line \"%(line)s\" because its invoice \"%(invoice)s\" is "
@@ -1004,18 +1027,21 @@ msgctxt "model:ir.message,text:msg_invoice_line_tax_unique"
 msgid "A tax can be added only once to an invoice line."
 msgstr "税款只能添加到发票明细一次。"
 
+#, python-format
 msgctxt "model:ir.message,text:msg_invoice_modify"
 msgid ""
 "You cannot modify invoice \"%(invoice)s\" because it is posted, paid or "
 "cancelled."
 msgstr "无法更改原始凭证 \"%(invoice)s\" ，因为它已经入账，付款或者取消。"
 
+#, python-format
 msgctxt "model:ir.message,text:msg_invoice_no_sequence"
 msgid ""
 "To post invoice \"%(invoice)s\", you must define a sequence on fiscal year "
 "\"%(fiscalyear)s\"."
 msgstr "要对 \"%(invoice)s\" 入账，必须在会计年度 \"%(fiscalyear)s\" 上定义一个序列。"
 
+#, python-format
 msgctxt "model:ir.message,text:msg_invoice_number_after"
 msgid ""
 "To number the invoice \"%(invoice)s\", you must set an invoice date after "
@@ -1025,12 +1051,14 @@ msgstr ""
 "若要为原始凭证 \"%(invoice)s\" 编号，必须将凭证日期设置在 \"%(date)s\" 之后，因为序列 \"%(sequence)s\" "
 "已用于发票 \"%(after_invoice)s\"。"
 
+#, python-format
 msgctxt "model:ir.message,text:msg_invoice_overpay_paid"
 msgid ""
 "You cannot overpay invoice \"%(invoice)s\" because there is no more left to "
 "pay."
 msgstr "无法超额支付原始凭证 \"%(invoice)s\"，因为已无剩余付款。"
 
+#, python-format
 msgctxt "model:ir.message,text:msg_invoice_pay_amount_greater_amount_to_pay"
 msgid ""
 "You cannot add a partial payment on invoice \"%(invoice)s\" with an amount "
@@ -1041,52 +1069,62 @@ msgctxt "model:ir.message,text:msg_invoice_payment_line_unique"
 msgid "A payment line can be linked to only one invoice."
 msgstr "一条付款明细只能链接到一张原始凭证。"
 
+#, python-format
 msgctxt "model:ir.message,text:msg_invoice_payment_lines_add_remove_paid"
 msgid "You cannot add/remove payment lines on paid invoice \"%(invoice)s\"."
 msgstr "不能在已付款原始凭证 \"%(invoice)s\" 上添加/删除付款明细。"
 
+#, python-format
 msgctxt "model:ir.message,text:msg_invoice_payment_lines_greater_amount"
 msgid ""
 "Payment lines amount on invoice \"%(invoice)s\" can not be greater than the "
 "invoice amount."
 msgstr "原始凭证 \"%(invoice)s\" 上的付款明细金额不能大于凭证金额。"
 
+#, python-format
 msgctxt "model:ir.message,text:msg_invoice_payment_term_date_past"
 msgid "The invoice \"%(invoice)s\" generates a payment date \"%(date)s\" in the past."
 msgstr "原始凭证 \"%(invoice)s\" 生成的付款日期 \"%(date)s\" 指向过去。"
 
+#, python-format
 msgctxt "model:ir.message,text:msg_invoice_similar"
 msgid "The invoice \"%(invoice)s\" is similar to invoice \"%(similar)s\"."
 msgstr "原始凭证 \"%(invoice)s\" 原始凭证 \"%(similar)s\" 相似。"
 
-msgctxt "model:ir.message,text:msg_invoice_tax_create"
+#, fuzzy, python-format
+msgctxt "model:ir.message,text:msg_invoice_tax_create_draft"
 msgid ""
 "You cannot add taxes to invoice \"%(invoice)s\" because it is no longer in a"
 " draft state."
 msgstr "非草案状态，无法给原始凭证 \"%(invoice)s\" 添加税。"
 
+#, python-format
 msgctxt "model:ir.message,text:msg_invoice_tax_invalid"
 msgid ""
 "The taxes on invoice \"%(invoice)s\" are not valid, you must save it again "
 "to force them to be recalculated."
 msgstr "原始凭证 \"%(invoice)s\" 上的税款无效，必须再次保存以强制重新计算。"
 
+#, python-format
 msgctxt "model:ir.message,text:msg_invoice_tax_modify"
 msgid ""
 "You cannot modify tax \"%(tax)s\" because its invoice \"%(invoice)s\" is "
 "posted, paid or cancelled."
 msgstr "无法更改税 \"%(tax)s\"，因为它的原始凭证 \"%(invoice)s\" 已经入账，付款或者取消."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_payment_term_invalid_ratio_divisor"
 msgid "The ratio and divisor are not consistent on line \"%(line)s\"."
 msgstr "明细 \"%(line)s\" 上的率和除数不匹配."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_payment_term_missing_last_remainder"
 msgid ""
 "To save payment term \"%(payment_term)s\", you must append a last remainder "
 "line."
 msgstr "要保存付款条件 \"%(payment_term)s\"，必须附加一个剩余金额明细."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_payment_term_missing_remainder"
 msgid ""
 "To compute terms, you must append a remainder line on payment term "
@@ -1272,6 +1310,16 @@ msgstr "合计:"
 msgctxt "report:account.invoice:"
 msgid "Unit Price"
 msgstr "单价"
+
+#, fuzzy
+msgctxt "selection:account.invoice,sequence_type_cache:"
+msgid "Credit Note"
+msgstr "贷方账户"
+
+#, fuzzy
+msgctxt "selection:account.invoice,sequence_type_cache:"
+msgid "Invoice"
+msgstr "原始凭证"
 
 msgctxt "selection:account.invoice,state:"
 msgid "Cancelled"

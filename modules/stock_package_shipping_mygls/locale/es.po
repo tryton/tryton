@@ -66,6 +66,7 @@ msgctxt "model:ir.action,name:act_credential_form"
 msgid "MyGLS Credentials"
 msgstr "Credenciales MyGLS"
 
+#, python-format
 msgctxt "model:ir.message,text:msg_email_required"
 msgid ""
 "To validate shipment \"%(shipment)s\" you must add an email for address "
@@ -74,6 +75,7 @@ msgstr ""
 "Para validar el albarán \"%(shipment)s\" debe agregar un correo electrónico "
 "a la dirección \"%(address)s\"."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_mobile_required"
 msgid ""
 "To validate shipment \"%(shipment)s\" you must add a mobile number for "
@@ -82,6 +84,7 @@ msgstr ""
 "Para validar el albarán \"%(shipment)s\" debe agregar un número de móvil a "
 "la dirección \"%(address)s\"."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_mygls_api_error"
 msgid ""
 "MyGLS API call failed with the following error message:\n"
@@ -90,6 +93,11 @@ msgstr ""
 "La llamada de la API de MyGLS ha fallado con el siguiente mensaje de error:\n"
 "%(message)s"
 
+msgctxt "model:ir.message,text:msg_mygls_credential_modified"
+msgid "Are you sure you want to modify MyGLS credentials?"
+msgstr "¿Está seguro de que desea modificar las credenciales de MyGLS?"
+
+#, python-format
 msgctxt "model:ir.message,text:msg_phone_mobile_required"
 msgid ""
 "To validate shipment \"%(shipment)s\" you must add a phone or mobile number "
@@ -98,6 +106,7 @@ msgstr ""
 "Para validar el albarán \"%(shipment)s\" debe agregar un número de teléfono "
 "o móvil la dirección \"%(address)s\"."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_shipment_has_shipping_reference_number"
 msgid ""
 "You cannot create a shipping label for shipment \"%(shipment)s\" because it "
@@ -106,6 +115,7 @@ msgstr ""
 "No puedes crear una etiqueta de envío para el albarán \"%(shipment)s\" "
 "porque ya tiene un número de referencia del envío."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_shipping_to_address_country_code_required"
 msgid ""
 "To validate shipment \"%(shipment)s\" you must set a country code to the "
@@ -114,6 +124,7 @@ msgstr ""
 "Para validar el albarán \"%(shipment)s\" debe establecer un código de país "
 "en la dirección de destino."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_warehouse_address_country_code_required"
 msgid ""
 "To validate shipment \"%(shipment)s\" you must set a country code to the "
@@ -122,6 +133,7 @@ msgstr ""
 "Para validar el albarán \"%(shipment)s\" debe establecer un código de país "
 "en la dirección del almacén \"%(warehouse)s\"."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_warehouse_address_required"
 msgid ""
 "To validate shipment \"%(shipment)s\" you must set an address on warehouse "

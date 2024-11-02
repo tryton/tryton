@@ -140,9 +140,9 @@ msgstr "Excepción de concurrencia"
 msgid "Could not get a session."
 msgstr ""
 
-#, python-format
+#, fuzzy, python-format
 msgid "Error: \"%s\". Try again later."
-msgstr ""
+msgstr "Demasiadas peticiones. Inténtalo de nuevo más tarde."
 
 msgid "Too many requests. Try again later."
 msgstr "Demasiadas peticiones. Inténtalo de nuevo más tarde."
@@ -240,7 +240,8 @@ msgstr ""
 msgid "Print..."
 msgstr ""
 
-msgid "E-Mail..."
+#, fuzzy
+msgid "Email..."
 msgstr "Correo electrónico..."
 
 msgid "Bold"
@@ -350,12 +351,6 @@ msgstr "Ayuda"
 
 msgid "No result found."
 msgstr ""
-
-msgid "Favorites"
-msgstr "Favoritos"
-
-msgid "Manage..."
-msgstr "Administrar..."
 
 msgid "Action"
 msgstr "Acción"
@@ -588,6 +583,9 @@ msgstr ""
 msgid "Profile:"
 msgstr ""
 
+msgid "Manage..."
+msgstr "Administrar..."
+
 msgid "Host / Database information"
 msgstr ""
 
@@ -598,7 +596,7 @@ msgid "Unable to complete email entry"
 msgstr ""
 
 #, python-format
-msgid "E-mail %s"
+msgid "Email %s"
 msgstr ""
 
 msgid "To:"
@@ -846,10 +844,12 @@ msgstr ""
 msgid "_Print..."
 msgstr ""
 
-msgid "_E-Mail..."
-msgstr ""
+#, fuzzy
+msgid "_Email..."
+msgstr "Correo electrónico..."
 
-msgid "Send an e-mail using the record"
+#, fuzzy
+msgid "Send an email using the record"
 msgstr "Enviar un correo electrónico usando el registro"
 
 msgid "_Export Data..."
@@ -901,6 +901,9 @@ msgstr ""
 msgid "CSV Export: %s"
 msgstr ""
 
+msgid "Open"
+msgstr "Abrir"
+
 msgid "_Save Export"
 msgstr ""
 
@@ -915,12 +918,6 @@ msgstr ""
 
 msgid "Name"
 msgstr ""
-
-msgid "Open"
-msgstr "Abrir"
-
-msgid "Save"
-msgstr "Guardar"
 
 msgid "Listed Records"
 msgstr "Registros listados"
@@ -979,6 +976,9 @@ msgstr ""
 msgid "Add and New"
 msgstr ""
 
+msgid "Save"
+msgstr "Guardar"
+
 msgid "Add"
 msgstr "Agregar"
 
@@ -1003,6 +1003,10 @@ msgstr ""
 #, python-format
 msgid "CSV Import: %s"
 msgstr ""
+
+#, fuzzy
+msgid "Import"
+msgstr "Ha fallado la importación"
 
 msgid "_Auto-Detect"
 msgstr ""
@@ -1206,6 +1210,10 @@ msgstr ""
 msgid "Remove selected record"
 msgstr ""
 
+#, fuzzy
+msgid "Restore selected record"
+msgstr "Debe elegir un registro."
+
 msgid "Open the record <F2>"
 msgstr ""
 
@@ -1220,6 +1228,10 @@ msgstr ""
 
 msgid "Delete selected record"
 msgstr ""
+
+#, fuzzy
+msgid "Undelete selected record"
+msgstr "Registros seleccionados"
 
 #, python-format
 msgid "%s%%"

@@ -127,17 +127,25 @@ msgctxt "field:purchase.handle.invoice.exception.ask,domain_invoices:"
 msgid "Domain Invoices"
 msgstr "Domaine des factures"
 
+msgctxt "field:purchase.handle.invoice.exception.ask,ignore_invoices:"
+msgid "Invoices to Ignore"
+msgstr "Factures à ignorer"
+
 msgctxt "field:purchase.handle.invoice.exception.ask,recreate_invoices:"
-msgid "Recreate Invoices"
-msgstr "Recréer les factures"
+msgid "Invoices to Recreate"
+msgstr "Factures à recréer"
 
 msgctxt "field:purchase.handle.shipment.exception.ask,domain_moves:"
-msgid "Domain Moves"
-msgstr "Domaine des mouvements"
+msgid "Domain Stock Moves"
+msgstr "Domaine des mouvements de stock"
+
+msgctxt "field:purchase.handle.shipment.exception.ask,ignore_moves:"
+msgid "Stock Moves to Ignore"
+msgstr "Mouvements de stock à ignorer"
 
 msgctxt "field:purchase.handle.shipment.exception.ask,recreate_moves:"
-msgid "Recreate Moves"
-msgstr "Recréer des mouvements"
+msgid "Stock Moves to Recreate"
+msgstr "Mouvements de stock à recréer"
 
 msgctxt "field:purchase.line,actual_quantity:"
 msgid "Actual Quantity"
@@ -183,17 +191,21 @@ msgctxt "field:purchase.line,invoice_progress:"
 msgid "Invoice Progress"
 msgstr "Progression de la facturation"
 
+msgctxt "field:purchase.line,movable:"
+msgid "Movable"
+msgstr "Mobile"
+
 msgctxt "field:purchase.line,moves:"
-msgid "Moves"
-msgstr "Mouvements"
+msgid "Stock Moves"
+msgstr "Mouvements de stock"
 
 msgctxt "field:purchase.line,moves_exception:"
 msgid "Moves Exception"
 msgstr "Mouvements en exception"
 
 msgctxt "field:purchase.line,moves_ignored:"
-msgid "Ignored Moves"
-msgstr "Mouvements ignorés"
+msgid "Ignored Stock Moves"
+msgstr "Mouvements de stock ignorés"
 
 msgctxt "field:purchase.line,moves_progress:"
 msgid "Moves Progress"
@@ -276,16 +288,16 @@ msgid "Tax"
 msgstr "Taxe"
 
 msgctxt "field:purchase.line-ignored-stock.move,move:"
-msgid "Move"
-msgstr "Mouvement"
+msgid "Stock Move"
+msgstr "Mouvement de stock"
 
 msgctxt "field:purchase.line-ignored-stock.move,purchase_line:"
 msgid "Purchase Line"
 msgstr "Ligne d'achat"
 
 msgctxt "field:purchase.line-recreated-stock.move,move:"
-msgid "Move"
-msgstr "Mouvement"
+msgid "Stock Move"
+msgstr "Mouvement de stock"
 
 msgctxt "field:purchase.line-recreated-stock.move,purchase_line:"
 msgid "Purchase Line"
@@ -407,13 +419,17 @@ msgctxt "field:purchase.purchase,invoices_recreated:"
 msgid "Recreated Invoices"
 msgstr "Factures recréées"
 
+msgctxt "field:purchase.purchase,line_lines:"
+msgid "Line - Lines"
+msgstr "Ligne - Lignes"
+
 msgctxt "field:purchase.purchase,lines:"
 msgid "Lines"
 msgstr "Lignes"
 
 msgctxt "field:purchase.purchase,moves:"
-msgid "Moves"
-msgstr "Mouvements"
+msgid "Stock Moves"
+msgstr "Mouvements de stock"
 
 msgctxt "field:purchase.purchase,number:"
 msgid "Number"
@@ -614,16 +630,21 @@ msgstr ""
 "La période de grâce pendant laquelle un achat confirmé peut toujours être réinitialiser à l'état brouillon.\n"
 "S'applique si une file d'attente de travailleurs est activée."
 
+msgctxt "help:purchase.handle.invoice.exception.ask,ignore_invoices:"
+msgid "The selected cancelled invoices will be ignored."
+msgstr "Les factures annulées sélectionnées seront ignorées."
+
 msgctxt "help:purchase.handle.invoice.exception.ask,recreate_invoices:"
-msgid ""
-"The selected invoices will be recreated. The other ones will be ignored."
-msgstr ""
-"Les factures sélectionnées seront recréés. Les autres seront ignorées."
+msgid "The selected cancelled invoices will be recreated."
+msgstr "Les factures annulées sélectionnées seront recréées."
+
+msgctxt "help:purchase.handle.shipment.exception.ask,ignore_moves:"
+msgid "The selected cancelled stock moves will be ignored."
+msgstr "Les mouvements de stock annulés sélectionnés seront ignorés."
 
 msgctxt "help:purchase.handle.shipment.exception.ask,recreate_moves:"
-msgid "The selected moves will be recreated. The other ones will be ignored."
-msgstr ""
-"Les mouvements sélectionnés seront recréés. Les autres seront ignorés."
+msgid "The selected cancelled stock moves will be recreated."
+msgstr "Les mouvements de stock annulés sélectionnés seront recréés."
 
 msgctxt "help:purchase.line,delivery_date_edit:"
 msgid "Check to edit the delivery date."
@@ -669,9 +690,9 @@ msgctxt "model:ir.action,name:act_invoice_form"
 msgid "Invoices"
 msgstr "Factures"
 
-msgctxt "model:ir.action,name:act_open_supplier"
-msgid "Parties associated to Purchases"
-msgstr "Tiers associés à des achats"
+msgctxt "model:ir.action,name:act_invoice_line_form"
+msgid "Invoice Lines"
+msgstr "Lignes de facture"
 
 msgctxt "model:ir.action,name:act_product_supplier_form"
 msgid "Suppliers"
@@ -698,8 +719,8 @@ msgid "Purchase Lines"
 msgstr "Lignes d'achat"
 
 msgctxt "model:ir.action,name:act_purchase_move_relate"
-msgid "Moves"
-msgstr "Mouvements"
+msgid "Stock Moves"
+msgstr "Mouvements de stock"
 
 msgctxt "model:ir.action,name:act_purchase_relate"
 msgid "Purchases"
@@ -823,6 +844,7 @@ msgstr ""
 "Vous essayez de modifier l'unité de mesure d'achat sur laquelle sont basés "
 "les prix d'achat."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_erase_party_pending_purchase"
 msgid ""
 "You cannot erase party \"%(party)s\" while they have pending purchases with "
@@ -831,10 +853,12 @@ msgstr ""
 "Vous ne pouvez pas effacer le tiers « %(party)s » tant qu'il a des achats en"
 " cours avec la société « %(company)s »."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_purchase_delete_cancel"
 msgid "To delete purchase \"%(purchase)s\" you must cancel it."
 msgstr "Pour supprimer l'achat « %(purchase)s », vous devez l'annuler."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_purchase_invoice_reset_draft"
 msgid ""
 "You cannot reset invoice \"%(invoice)s\" to draft because it was generated "
@@ -843,6 +867,7 @@ msgstr ""
 "Vous ne pouvez réinitialiser la facture « %(invoice)s » à l'état brouillon "
 "car elle a été générée par un achat."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_purchase_line_create_draft"
 msgid ""
 "You cannot add lines to purchase \"%(purchase)s\" because it is no longer in"
@@ -851,6 +876,7 @@ msgstr ""
 "Vous ne pouvez pas ajouter de lignes à l'achat « %(purchase)s » car il n'est"
 " plus dans l'état brouillon."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_purchase_line_delete_cancel_draft"
 msgid ""
 "To delete line \"%(line)s\" you must cancel or reset to draft purchase "
@@ -859,6 +885,7 @@ msgstr ""
 "Pour supprimer la ligne « %(line)s », vous devez annuler ou réinitialiser à "
 "l'état brouillon l'achat « %(purchase)s »."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_purchase_line_move_quantity"
 msgid ""
 "The purchase line \"%(line)s\" is moving %(extra)s in addition to the "
@@ -871,6 +898,7 @@ msgctxt "model:ir.message,text:msg_purchase_line_tax_unique"
 msgid "A tax can be added only once to a purchase line."
 msgstr "Une taxe ne peut être ajoutée qu'une seule fois à une ligne d'achat."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_purchase_missing_account_expense"
 msgid ""
 "To invoice purchase \"%(purchase)s\" you must configure a default account "
@@ -879,6 +907,7 @@ msgstr ""
 "Pour facturer l'achat « %(purchase)s », vous devez configurer un compte de "
 "charge par défaut."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_purchase_modify_header_draft"
 msgid ""
 "To modify the header of purchase \"%(purchase)s\", it must be in draft "
@@ -887,6 +916,7 @@ msgstr ""
 "Pour modifier l'entête de l'achat « %(purchase)s », il doit être dans l'état"
 " brouillon."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_purchase_move_reset_draft"
 msgid ""
 "You cannot reset move \"%(move)s\" to draft because it was generated by a "
@@ -895,6 +925,7 @@ msgstr ""
 "Vous ne pouvez réinitialiser le mouvement « %(move)s » à l'état brouillon "
 "car il a été généré par un achat."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_purchase_product_missing_account_expense"
 msgid ""
 "To invoice purchase \"%(purchase)s\" you must define an account expense for "
@@ -935,6 +966,7 @@ msgctxt "model:ir.message,text:msg_purchase_reporting_time_series"
 msgid "Time Series"
 msgstr "Séries temporelles"
 
+#, python-format
 msgctxt "model:ir.message,text:msg_purchase_supplier_location_required"
 msgid ""
 "To process purchase \"%(purchase)s\" you must set a supplier location on "
@@ -943,6 +975,7 @@ msgstr ""
 "Pour traiter l'achat « %(purchase)s », vous devez définir un emplacement "
 "fournisseur sur le tiers « %(party)s »."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_warehouse_required_for_quotation"
 msgid ""
 "To get a quote for the purchase \"%(purchase)s\" you must enter a warehouse."
@@ -1057,10 +1090,6 @@ msgstr "Rapports"
 msgctxt "model:ir.ui.menu,name:menu_reporting_purchase"
 msgid "Purchases"
 msgstr "Achats"
-
-msgctxt "model:ir.ui.menu,name:menu_supplier"
-msgid "Associated to Purchases"
-msgstr "Associés à des achats"
 
 msgctxt "model:party.party.customer_code,name:"
 msgid "Party Customer Code"
@@ -1371,12 +1400,12 @@ msgid "Suppliers"
 msgstr "Fournisseurs"
 
 msgctxt "view:purchase.handle.invoice.exception.ask:"
-msgid "Choose invoices to recreate:"
-msgstr "Choisissez les factures à recréer :"
+msgid "Choose cancelled invoices to ignore or recreate:"
+msgstr "Choisissez les factures annulées à ignorer ou à recréer :"
 
 msgctxt "view:purchase.handle.shipment.exception.ask:"
-msgid "Choose move to recreate:"
-msgstr "Choisissez les mouvements à recréer :"
+msgid "Choose cancelled stock moves to ignore or recreate:"
+msgstr "Choisissez les mouvements de stock annulés à ignorer ou à recréer :"
 
 msgctxt "view:purchase.line:"
 msgid "Delivery Date:"

@@ -18,6 +18,10 @@ msgctxt "field:product.category.image,category:"
 msgid "Category"
 msgstr "Kategorie"
 
+msgctxt "field:product.category.image,description:"
+msgid "Description"
+msgstr "Beschreibung"
+
 msgctxt "field:product.category.image,image:"
 msgid "Image"
 msgstr "Bild"
@@ -49,6 +53,10 @@ msgstr "Breite"
 msgctxt "field:product.image,cache:"
 msgid "Cache"
 msgstr "Cache"
+
+msgctxt "field:product.image,description:"
+msgid "Description"
+msgstr "Beschreibung"
 
 msgctxt "field:product.image,image:"
 msgid "Image"

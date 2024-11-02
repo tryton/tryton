@@ -60,25 +60,32 @@ msgctxt "model:ir.action,name:act_ups_credential_form"
 msgid "UPS Credentials"
 msgstr "UPS Credentials"
 
+#, python-format
 msgctxt "model:ir.message,text:msg_phone_required"
 msgid ""
 "To validate shipment \"%(shipment)s\" you must add phone number for address "
 "\"%(address)s\"."
 msgstr ""
 
+#, python-format
 msgctxt "model:ir.message,text:msg_shipment_has_reference_number"
 msgid ""
 "You cannot create shipping for shipment \"%(shipment)s\" because it has "
 "already a reference number."
 msgstr ""
 
+#, python-format
 msgctxt "model:ir.message,text:msg_shipping_description_required"
 msgid ""
 "To validate shipment \"%(shipment)s\" you must fill its shipping "
 "description."
 msgstr ""
 
-#, fuzzy
+msgctxt "model:ir.message,text:msg_ups_credential_modified"
+msgid "Are you sure you want to modify UPS credentials?"
+msgstr ""
+
+#, fuzzy, python-format
 msgctxt "model:ir.message,text:msg_ups_webservice_error"
 msgid ""
 "UPS webservice call failed with the following error message:\n"
@@ -88,6 +95,7 @@ msgstr ""
 "\n"
 "%(message)s"
 
+#, python-format
 msgctxt "model:ir.message,text:msg_warehouse_address_required"
 msgid ""
 "To validate shipment \"%(shipment)s\" you must set an address on warehouse "

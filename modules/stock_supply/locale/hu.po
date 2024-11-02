@@ -52,10 +52,6 @@ msgctxt "field:stock.order_point,provisioning_location:"
 msgid "Provisioning Location"
 msgstr "Beszerzési tárhely"
 
-msgctxt "field:stock.order_point,storage_location:"
-msgid "Storage Location"
-msgstr "Cél tárhely"
-
 msgctxt "field:stock.order_point,target_quantity:"
 msgid "Target Quantity"
 msgstr "Cél készletszint"
@@ -67,10 +63,6 @@ msgstr "Áruellátás forrása"
 msgctxt "field:stock.order_point,unit:"
 msgid "Unit"
 msgstr "Mértékegység"
-
-msgctxt "field:stock.order_point,warehouse_location:"
-msgid "Warehouse Location"
-msgstr "Raktár"
 
 #, fuzzy
 msgctxt "field:stock.supply.start,warehouses:"

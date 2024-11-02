@@ -38,6 +38,14 @@ msgctxt "field:stock.package,additional_weight_uom:"
 msgid "Additional Weight UoM"
 msgstr "UdM del peso adicional"
 
+msgctxt "field:stock.package,internal_volume:"
+msgid "Internal Volume"
+msgstr "Volumen interno"
+
+msgctxt "field:stock.package,internal_weight:"
+msgid "Internal Weight"
+msgstr "Peso interno"
+
 msgctxt "field:stock.package,total_volume:"
 msgid "Total Volume"
 msgstr "Volumen total"
@@ -62,6 +70,14 @@ msgctxt "field:stock.package,weight_uom:"
 msgid "Weight UoM"
 msgstr "UdM del peso"
 
+msgctxt "field:stock.shipment.in,internal_volume:"
+msgid "Internal Volume"
+msgstr "Volumen interno"
+
+msgctxt "field:stock.shipment.in,internal_weight:"
+msgid "Internal Weight"
+msgstr "Peso interno"
+
 msgctxt "field:stock.shipment.in,volume:"
 msgid "Volume"
 msgstr "Volumen"
@@ -77,6 +93,14 @@ msgstr "Peso"
 msgctxt "field:stock.shipment.in,weight_uom:"
 msgid "Weight UoM"
 msgstr "UdM del peso"
+
+msgctxt "field:stock.shipment.in.return,internal_volume:"
+msgid "Internal Volume"
+msgstr "Volumen interno"
+
+msgctxt "field:stock.shipment.in.return,internal_weight:"
+msgid "Internal Weight"
+msgstr "Peso interno"
 
 msgctxt "field:stock.shipment.in.return,packages_volume:"
 msgid "Packages Volume"
@@ -102,6 +126,14 @@ msgctxt "field:stock.shipment.in.return,weight_uom:"
 msgid "Weight UoM"
 msgstr "UdM del peso"
 
+msgctxt "field:stock.shipment.out,internal_volume:"
+msgid "Internal Volume"
+msgstr "Volumen interno"
+
+msgctxt "field:stock.shipment.out,internal_weight:"
+msgid "Internal Weight"
+msgstr "Peso interno"
+
 msgctxt "field:stock.shipment.out,packages_volume:"
 msgid "Packages Volume"
 msgstr "Volumen de los paquetes"
@@ -125,6 +157,14 @@ msgstr "Peso"
 msgctxt "field:stock.shipment.out,weight_uom:"
 msgid "Weight UoM"
 msgstr "UdM del peso"
+
+msgctxt "field:stock.shipment.out.return,internal_volume:"
+msgid "Internal Volume"
+msgstr "Volumen interno"
+
+msgctxt "field:stock.shipment.out.return,internal_weight:"
+msgid "Internal Weight"
+msgstr "Peso interno"
 
 msgctxt "field:stock.shipment.out.return,volume:"
 msgid "Volume"

@@ -260,6 +260,7 @@ msgctxt ""
 msgid "Receivable with Mandate"
 msgstr "A cobrar amb mandat"
 
+#, python-format
 msgctxt "model:ir.message,text:msg_mandate_authorisation_statement"
 msgid ""
 "By signing this mandate form, you authorise (A) %(creditor)s to send "
@@ -271,6 +272,7 @@ msgstr ""
 " banc per domiciliar el vostre compte d’acord amb les instruccions de "
 "%(creditor)s."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_mandate_delete_draft_cancelled"
 msgid ""
 "To delete mandate \"%(mandate)s\" you must cancel it or reset its state to "
@@ -279,6 +281,7 @@ msgstr ""
 "Per eliminar el mandat \"%(mandate)s\" l'heu de cancel·lar o restablir el "
 "seu estat a esborrany."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_mandate_title"
 msgid "SEPA %(scheme)s Direct Debit MANDATE"
 msgstr "Ordre de domiciliació SEPA %(scheme)s de dèbit directe"
@@ -287,10 +290,12 @@ msgctxt "model:ir.message,text:msg_mandate_unique_id"
 msgid "SEPA mandate identification must be unique by company."
 msgstr "L'identificador del mandat SEPA ha de ser únic per empresa."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_party_no_id"
 msgid "The party \"%(party)s\" is missing a \"%(type)s\" identifier."
 msgstr "Falta l'identificicador \"%(type)s\" per al tercer \"%(party)s\"."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_payment_process_no_bank"
 msgid ""
 "To process payment \"%(payment)s\" you must define a bank for the account "
@@ -299,10 +304,12 @@ msgstr ""
 "Per processar el pagament \"%(payment)s\" heu de definir un banc pel compte "
 "\"%(bank_account)s\"."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_payment_process_no_iban"
 msgid "To process payment \"%(payment)s\" you must define IBAN for it."
 msgstr "Per processar el pagament \"%(payment)s\" heu de afegir-hi un IBAN."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_payment_process_no_mandate"
 msgid "To process payment \"%(payment)s\" you must define a SEPA mandate for it."
 msgstr ""

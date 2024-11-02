@@ -84,6 +84,11 @@ msgctxt "field:commission.agent,plan:"
 msgid "Plan"
 msgstr "طرح"
 
+#, fuzzy
+msgctxt "field:commission.agent,products:"
+msgid "Products"
+msgstr "محصول"
+
 msgctxt "field:commission.agent,selections:"
 msgid "Selections"
 msgstr ""
@@ -518,6 +523,7 @@ msgctxt ""
 msgid "To Invoice"
 msgstr "Invoice"
 
+#, python-format
 msgctxt "model:ir.message,text:msg_erase_party_pending_commission"
 msgid ""
 "You cannot erase party \"%(party)s\" while they have pending commissions "
@@ -526,6 +532,7 @@ msgstr ""
 "شما نمیتوانید نهاد/سازمان : \"%(party)s\" تا زمانی که کمیسون معوقه با "
 "شرکت:\"%(company)s\"دارد را حذف کنید."
 
+#, fuzzy, python-format
 msgctxt "model:ir.message,text:msg_plan_line_invalid_formula"
 msgid ""
 "Invalid formula \"%(formula)s\" in commission plan line \"%(line)s\" with "

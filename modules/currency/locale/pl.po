@@ -162,14 +162,11 @@ msgctxt "model:ir.action,name:act_currency_form"
 msgid "Currencies"
 msgstr "Waluty"
 
-msgctxt "model:ir.message,text:msg_currency_rate_positive"
-msgid "A currency rate must be positive."
-msgstr "Kurs waluty musi być dodatni."
-
 msgctxt "model:ir.message,text:msg_currency_unique_rate_date"
 msgid "A currency can only have one rate by date."
 msgstr "Dopuszczalny jest tylko jeden dzienny kurs waluty."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_no_rate"
 msgid "No rate found for currency \"%(currency)s\" on \"%(date)s\"."
 msgstr "Brak kursu waluty \"%(currency)s\" z dnia \"%(date)s\"."

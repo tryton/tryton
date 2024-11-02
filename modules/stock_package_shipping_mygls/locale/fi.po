@@ -64,48 +64,60 @@ msgctxt "model:ir.action,name:act_credential_form"
 msgid "MyGLS Credentials"
 msgstr ""
 
+#, python-format
 msgctxt "model:ir.message,text:msg_email_required"
 msgid ""
 "To validate shipment \"%(shipment)s\" you must add an email for address "
 "\"%(address)s\"."
 msgstr ""
 
+#, python-format
 msgctxt "model:ir.message,text:msg_mobile_required"
 msgid ""
 "To validate shipment \"%(shipment)s\" you must add a mobile number for "
 "address \"%(address)s\"."
 msgstr ""
 
+#, python-format
 msgctxt "model:ir.message,text:msg_mygls_api_error"
 msgid ""
 "MyGLS API call failed with the following error message:\n"
 "%(message)s"
 msgstr ""
 
+msgctxt "model:ir.message,text:msg_mygls_credential_modified"
+msgid "Are you sure you want to modify MyGLS credentials?"
+msgstr ""
+
+#, python-format
 msgctxt "model:ir.message,text:msg_phone_mobile_required"
 msgid ""
 "To validate shipment \"%(shipment)s\" you must add a phone or mobile number "
 "for address \"%(address)s\"."
 msgstr ""
 
+#, python-format
 msgctxt "model:ir.message,text:msg_shipment_has_shipping_reference_number"
 msgid ""
 "You cannot create a shipping label for shipment \"%(shipment)s\" because it "
 "already has a shipping reference number."
 msgstr ""
 
+#, python-format
 msgctxt "model:ir.message,text:msg_shipping_to_address_country_code_required"
 msgid ""
 "To validate shipment \"%(shipment)s\" you must set a country code to the "
 "destination address."
 msgstr ""
 
+#, python-format
 msgctxt "model:ir.message,text:msg_warehouse_address_country_code_required"
 msgid ""
 "To validate shipment \"%(shipment)s\" you must set a country code to the "
 "address of warehouse \"%(warehouse)s\"."
 msgstr ""
 
+#, python-format
 msgctxt "model:ir.message,text:msg_warehouse_address_required"
 msgid ""
 "To validate shipment \"%(shipment)s\" you must set an address on warehouse "

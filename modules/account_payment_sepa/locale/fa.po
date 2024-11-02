@@ -268,7 +268,7 @@ msgctxt ""
 msgid "Receivable with Mandate"
 msgstr "قابل دریافت با مجوز"
 
-#, fuzzy
+#, fuzzy, python-format
 msgctxt "model:ir.message,text:msg_mandate_authorisation_statement"
 msgid ""
 "By signing this mandate form, you authorise (A) %(creditor)s to send "
@@ -276,7 +276,7 @@ msgid ""
 "your account in accordance with the instructions from %(creditor)s."
 msgstr "برای ارسال دستورالعمل ها به بانک خود برای پرداخت و کسراز حسابتان"
 
-#, fuzzy
+#, fuzzy, python-format
 msgctxt "model:ir.message,text:msg_mandate_delete_draft_cancelled"
 msgid ""
 "To delete mandate \"%(mandate)s\" you must cancel it or reset its state to "
@@ -285,7 +285,7 @@ msgstr ""
 "برای حذف مجوز\"%(mandate)s\" شما باید آنرا لغو یا حالت آنرا به پیش نویس "
 "دوباره تنظیم کنید."
 
-#, fuzzy
+#, fuzzy, python-format
 msgctxt "model:ir.message,text:msg_mandate_title"
 msgid "SEPA %(scheme)s Direct Debit MANDATE"
 msgstr "مجوز پرداخت مستقیم"
@@ -294,11 +294,12 @@ msgctxt "model:ir.message,text:msg_mandate_unique_id"
 msgid "SEPA mandate identification must be unique by company."
 msgstr "شناسه مجوز SEPA باید برای هر شرکت منحصر بفرد باشد."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_party_no_id"
 msgid "The party \"%(party)s\" is missing a \"%(type)s\" identifier."
 msgstr ""
 
-#, fuzzy
+#, fuzzy, python-format
 msgctxt "model:ir.message,text:msg_payment_process_no_bank"
 msgid ""
 "To process payment \"%(payment)s\" you must define a bank for the account "
@@ -307,10 +308,12 @@ msgstr ""
 "برای پردازش پرداخت :\"%(payment)s\" شما باید یک مجوز SEPA برای آن تعریف "
 "کنید."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_payment_process_no_iban"
 msgid "To process payment \"%(payment)s\" you must define IBAN for it."
 msgstr "برای پردازش پرداخت :\"%(payment)s\" شما باید یک IBAN برای آن تعریف کنید."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_payment_process_no_mandate"
 msgid "To process payment \"%(payment)s\" you must define a SEPA mandate for it."
 msgstr ""

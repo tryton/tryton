@@ -195,6 +195,7 @@ msgctxt ""
 msgid "Sent"
 msgstr "Saadetud"
 
+#, python-format
 msgctxt "model:ir.message,text:msg_previous_quotation"
 msgid "A quotation was already made for request \"%(request)s\"."
 msgstr "Pakkumuse kohta on juba loodud päring \"%(request)s\"."

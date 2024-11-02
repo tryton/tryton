@@ -248,8 +248,9 @@ msgstr "ລາຍງານ..."
 msgid "Print..."
 msgstr "ພິມອອກ..."
 
-msgid "E-Mail..."
-msgstr "ອີ-ເມວລ໌..."
+#, fuzzy
+msgid "Email..."
+msgstr "_ອີເມວລ໌..."
 
 msgid "Bold"
 msgstr ""
@@ -370,13 +371,6 @@ msgstr "_ຊ່ອຍເຫຼືອ"
 
 msgid "No result found."
 msgstr "ບໍ່ພົບຜົນຊອກຫາ"
-
-#, fuzzy
-msgid "Favorites"
-msgstr "ທີ່_ມັກຫຼາຍ"
-
-msgid "Manage..."
-msgstr ""
 
 msgid "Action"
 msgstr "ການດຳເນີນການ"
@@ -616,6 +610,9 @@ msgstr "ເຊື່ອມຕໍ່ກັບແມ່ຂ່າຍ ໄຕຣຕ�
 msgid "Profile:"
 msgstr "ຂໍ້ມູນລາຍລະອຽດ:"
 
+msgid "Manage..."
+msgstr ""
+
 msgid "Host / Database information"
 msgstr "ແມ່ຂ່າຍ / ຂໍ້ມູນກ່ຽວກັບຖານຂໍ້ມູນ"
 
@@ -627,7 +624,7 @@ msgid "Unable to complete email entry"
 msgstr "ບໍ່ສາມາດຕັ້ງຄ່າ ທ້ອງຖິ່ນ %s ໄດ້."
 
 #, fuzzy, python-format
-msgid "E-mail %s"
+msgid "Email %s"
 msgstr "ອີເມວລ໌ %s"
 
 msgid "To:"
@@ -886,11 +883,12 @@ msgstr "_ລາຍງານ..."
 msgid "_Print..."
 msgstr "_ພິມອອກ..."
 
-msgid "_E-Mail..."
-msgstr "_ອີ-ແມວລ໌.."
+#, fuzzy
+msgid "_Email..."
+msgstr "_ອີເມວລ໌..."
 
 #, fuzzy
-msgid "Send an e-mail using the record"
+msgid "Send an email using the record"
 msgstr "ເພີ່ມບັນທຶກຂໍ້ຄວາມໃສ່ແຖວຂໍ້ມູນ"
 
 msgid "_Export Data..."
@@ -942,6 +940,9 @@ msgstr "ຊື່ຊ່ອງຂໍ້ມູນ"
 msgid "CSV Export: %s"
 msgstr ""
 
+msgid "Open"
+msgstr "ໄຂ"
+
 msgid "_Save Export"
 msgstr "_ບັນທຶກການສົ່ງອອກ"
 
@@ -957,12 +958,6 @@ msgstr "<b>ການສົ່ງອອກທີ່ຈັດຕຽມໄວ້ກ
 
 msgid "Name"
 msgstr "ຊື່"
-
-msgid "Open"
-msgstr "ໄຂ"
-
-msgid "Save"
-msgstr "ບັນທຶກ"
 
 #, fuzzy
 msgid "Listed Records"
@@ -1025,6 +1020,9 @@ msgstr ""
 msgid "Add and New"
 msgstr "ເພີ່ມຄ່າ"
 
+msgid "Save"
+msgstr "ບັນທຶກ"
+
 msgid "Add"
 msgstr "ເພີ່ມ"
 
@@ -1049,6 +1047,10 @@ msgstr "ຍົກເລີກການລຶບແຖວທີ່ເລືອກ
 #, python-format
 msgid "CSV Import: %s"
 msgstr ""
+
+#, fuzzy
+msgid "Import"
+msgstr "ລາຍງານ..."
 
 msgid "_Auto-Detect"
 msgstr "_ກວດຫາ-ອັດຕະໂນມັດ"
@@ -1257,6 +1259,10 @@ msgstr "ເພີ່ມແຖວຂໍ້ມູນທີ່ມີຢູ່"
 msgid "Remove selected record"
 msgstr "ເອົາແຖວຂໍ້ມູນທີ່ເລືອກນີ້ອອກ"
 
+#, fuzzy
+msgid "Restore selected record"
+msgstr "ເອົາແຖວຂໍ້ມູນທີ່ເລືອກນີ້ອອກ"
+
 msgid "Open the record <F2>"
 msgstr "ໄຂແຖວຂໍ້ມູນ <F2>"
 
@@ -1273,6 +1279,10 @@ msgstr "ແກ້ໄຂ ແຖວຂໍ້ມູນ ທີ່ເລືອກ <F2
 
 #, fuzzy
 msgid "Delete selected record"
+msgstr "ເອົາແຖວຂໍ້ມູນທີ່ເລືອກນີ້ອອກ"
+
+#, fuzzy
+msgid "Undelete selected record"
 msgstr "ເອົາແຖວຂໍ້ມູນທີ່ເລືອກນີ້ອອກ"
 
 #, python-format

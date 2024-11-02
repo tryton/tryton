@@ -3,11 +3,11 @@ msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "field:marketing.email,email:"
-msgid "E-mail"
+msgid "Email"
 msgstr ""
 
 msgctxt "field:marketing.email,email_token:"
-msgid "E-mail Token"
+msgid "Email Token"
 msgstr ""
 
 msgctxt "field:marketing.email,list_:"
@@ -63,7 +63,7 @@ msgid "URLs"
 msgstr ""
 
 msgctxt "field:marketing.email.send_test,email:"
-msgid "E-Mail"
+msgid "Email"
 msgstr ""
 
 msgctxt "field:marketing.email.send_test,list_:"
@@ -87,7 +87,7 @@ msgid "Messages"
 msgstr ""
 
 msgctxt "model:ir.action,name:act_email_relate_list"
-msgid "E-mails"
+msgid "Emails"
 msgstr ""
 
 msgctxt "model:ir.action,name:report_email_subscribe"
@@ -115,6 +115,7 @@ msgctxt ""
 msgid "Sending"
 msgstr ""
 
+#, python-format
 msgctxt "model:ir.message,text:msg_email_invalid"
 msgid "The email address \"%(email)s\" for \"%(record)s\" is not valid."
 msgstr ""
@@ -123,6 +124,7 @@ msgctxt "model:ir.message,text:msg_email_list_unique"
 msgid "Email addresses can only be subscribed once to each list."
 msgstr ""
 
+#, python-format
 msgctxt "model:ir.message,text:msg_message_invalid_content"
 msgid "Invalid content in message \"%(message)s\" with exception \"%(exception)s\"."
 msgstr ""
@@ -144,7 +146,7 @@ msgid "Mailing Lists"
 msgstr ""
 
 msgctxt "model:marketing.email,name:"
-msgid "Marketing E-mail"
+msgid "Marketing Email"
 msgstr ""
 
 msgctxt "model:marketing.email.list,name:"
@@ -152,11 +154,11 @@ msgid "Marketing Mailing List"
 msgstr ""
 
 msgctxt "model:marketing.email.message,name:"
-msgid "Marketing E-mail Message"
+msgid "Marketing Email Message"
 msgstr ""
 
 msgctxt "model:marketing.email.send_test,name:"
-msgid "Send Test E-mail"
+msgid "Send Test Email"
 msgstr ""
 
 msgctxt "report:marketing.email.subscribe:"

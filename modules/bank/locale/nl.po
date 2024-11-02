@@ -94,6 +94,7 @@ msgctxt "model:ir.action,name:act_bank_form"
 msgid "Banks"
 msgstr "Banken"
 
+#, python-format
 msgctxt "model:ir.message,text:msg_account_iban_invalid_bic"
 msgid "The BIC of \"%(account)s\" is not valid with the \"%(bic)s\" from IBAN."
 msgstr "De BIC van \"%(account)s\" is niet geldig met de \"%(bic)s\" van IBAN."
@@ -102,10 +103,12 @@ msgctxt "model:ir.message,text:msg_account_iban_unique"
 msgid "Account can have only one IBAN."
 msgstr "Bankrekening kan maar één IBAN hebben."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_invalid_bic"
 msgid "The BIC \"%(bic)s\" is not valid."
 msgstr "De BIC code \"%(bic)s\" is niet geldig."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_invalid_iban"
 msgid "IBAN \"%(number)s\" is not valid."
 msgstr "IBAN \"%(number)s\" is niet geldig."

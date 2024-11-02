@@ -2,12 +2,14 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
+#, python-format
 msgctxt "model:ir.message,text:msg_product_forecast_quantity_lower"
 msgid ""
 "The forecast quantity (%(forecast_quantity)s) of product \"%(product)s\" is "
 "lower than the quantity (%(quantity)s)."
 msgstr ""
 
+#, python-format
 msgctxt "model:ir.message,text:msg_sale_stock_quantity"
 msgid ""
 "The forcast quantity (%(forecast_quantity)s) for line \"%(line)s\" is lower "

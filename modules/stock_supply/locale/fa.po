@@ -50,10 +50,6 @@ msgctxt "field:stock.order_point,provisioning_location:"
 msgid "Provisioning Location"
 msgstr "مکان تأمیین کننده"
 
-msgctxt "field:stock.order_point,storage_location:"
-msgid "Storage Location"
-msgstr "محل انبار"
-
 msgctxt "field:stock.order_point,target_quantity:"
 msgid "Target Quantity"
 msgstr "مقدار هدف"
@@ -65,10 +61,6 @@ msgstr "نوع"
 msgctxt "field:stock.order_point,unit:"
 msgid "Unit"
 msgstr "واحد"
-
-msgctxt "field:stock.order_point,warehouse_location:"
-msgid "Warehouse Location"
-msgstr "مکان انبار"
 
 #, fuzzy
 msgctxt "field:stock.supply.start,warehouses:"

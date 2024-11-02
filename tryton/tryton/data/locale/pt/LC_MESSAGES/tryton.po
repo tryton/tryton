@@ -247,8 +247,8 @@ msgstr "Relatório..."
 msgid "Print..."
 msgstr "Imprimir..."
 
-msgid "E-Mail..."
-msgstr "E-mail..."
+msgid "Email..."
+msgstr "Email..."
 
 msgid "Bold"
 msgstr ""
@@ -358,12 +358,6 @@ msgstr "Ajuda"
 
 msgid "No result found."
 msgstr "Nenhum resultado encontrado."
-
-msgid "Favorites"
-msgstr "Favoritos"
-
-msgid "Manage..."
-msgstr "Gerenciar..."
 
 msgid "Action"
 msgstr "Ação"
@@ -601,6 +595,9 @@ msgstr "Conectar ao servidor do Tryton"
 msgid "Profile:"
 msgstr "Perfil:"
 
+msgid "Manage..."
+msgstr "Gerenciar..."
+
 msgid "Host / Database information"
 msgstr "Informações do Servidor / Banco de Dados"
 
@@ -612,7 +609,7 @@ msgid "Unable to complete email entry"
 msgstr "Não é possível apagar o assistente %s"
 
 #, fuzzy, python-format
-msgid "E-mail %s"
+msgid "Email %s"
 msgstr "Email %s"
 
 msgid "To:"
@@ -871,11 +868,12 @@ msgstr "_Relatório..."
 msgid "_Print..."
 msgstr "_Imprimir..."
 
-msgid "_E-Mail..."
-msgstr "_E-Mail..."
+#, fuzzy
+msgid "_Email..."
+msgstr "Email..."
 
 #, fuzzy
-msgid "Send an e-mail using the record"
+msgid "Send an email using the record"
 msgstr "Adicionar uma nota ao registro"
 
 msgid "_Export Data..."
@@ -927,6 +925,9 @@ msgstr "Nome do campo"
 msgid "CSV Export: %s"
 msgstr "Exportar CSV: %s"
 
+msgid "Open"
+msgstr "Abrir"
+
 msgid "_Save Export"
 msgstr "_Gravar exportação"
 
@@ -942,12 +943,6 @@ msgstr "<b>Exportações pré-definidas</b>"
 
 msgid "Name"
 msgstr "Nome"
-
-msgid "Open"
-msgstr "Abrir"
-
-msgid "Save"
-msgstr "Gravar"
 
 #, fuzzy
 msgid "Listed Records"
@@ -1010,6 +1005,9 @@ msgstr ""
 msgid "Add and New"
 msgstr "Adicionar valor"
 
+msgid "Save"
+msgstr "Gravar"
+
 msgid "Add"
 msgstr "Adicionar"
 
@@ -1034,6 +1032,10 @@ msgstr "Recuperar o registro selecionado <Ins>"
 #, python-format
 msgid "CSV Import: %s"
 msgstr "Importar CSV: %s"
+
+#, fuzzy
+msgid "Import"
+msgstr "Relatório"
 
 msgid "_Auto-Detect"
 msgstr "_Auto-Detectar"
@@ -1242,6 +1244,10 @@ msgstr "Adicionar um registro existente"
 msgid "Remove selected record"
 msgstr "Remover o registro selecionado"
 
+#, fuzzy
+msgid "Restore selected record"
+msgstr "Remover o registro selecionado"
+
 msgid "Open the record <F2>"
 msgstr "Abrir o registro <F2>"
 
@@ -1257,6 +1263,10 @@ msgstr "Editar o registro selecionado <F2>"
 
 #, fuzzy
 msgid "Delete selected record"
+msgstr "Remover o registro selecionado"
+
+#, fuzzy
+msgid "Undelete selected record"
 msgstr "Remover o registro selecionado"
 
 #, python-format

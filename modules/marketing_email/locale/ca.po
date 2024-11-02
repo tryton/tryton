@@ -3,11 +3,11 @@ msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "field:marketing.email,email:"
-msgid "E-mail"
+msgid "Email"
 msgstr "Correu electrònic"
 
 msgctxt "field:marketing.email,email_token:"
-msgid "E-mail Token"
+msgid "Email Token"
 msgstr "Token del correu electrònic"
 
 msgctxt "field:marketing.email,list_:"
@@ -63,7 +63,7 @@ msgid "URLs"
 msgstr "URLs"
 
 msgctxt "field:marketing.email.send_test,email:"
-msgid "E-Mail"
+msgid "Email"
 msgstr "Correu electrònic"
 
 msgctxt "field:marketing.email.send_test,list_:"
@@ -88,7 +88,7 @@ msgid "Messages"
 msgstr "Missatges"
 
 msgctxt "model:ir.action,name:act_email_relate_list"
-msgid "E-mails"
+msgid "Emails"
 msgstr "Correus electrònics"
 
 msgctxt "model:ir.action,name:report_email_subscribe"
@@ -116,6 +116,7 @@ msgctxt ""
 msgid "Sending"
 msgstr "Enviant"
 
+#, python-format
 msgctxt "model:ir.message,text:msg_email_invalid"
 msgid "The email address \"%(email)s\" for \"%(record)s\" is not valid."
 msgstr "El correu electrònic \"%(email)s\" del registre \"%(record)s\" no es vàlid."
@@ -125,6 +126,7 @@ msgid "Email addresses can only be subscribed once to each list."
 msgstr ""
 "Les direccions de correu només es poden subscriure una vegada a cada llista."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_message_invalid_content"
 msgid "Invalid content in message \"%(message)s\" with exception \"%(exception)s\"."
 msgstr ""
@@ -148,7 +150,7 @@ msgid "Mailing Lists"
 msgstr "Llistes de correu electrònic"
 
 msgctxt "model:marketing.email,name:"
-msgid "Marketing E-mail"
+msgid "Marketing Email"
 msgstr "Correus electrònics de marketing"
 
 msgctxt "model:marketing.email.list,name:"
@@ -156,12 +158,12 @@ msgid "Marketing Mailing List"
 msgstr "Llista de correus de marketing"
 
 msgctxt "model:marketing.email.message,name:"
-msgid "Marketing E-mail Message"
-msgstr "Missatge de correu electrónic de marketing"
+msgid "Marketing Email Message"
+msgstr "Missatge de correu electrònic de màrqueting"
 
 msgctxt "model:marketing.email.send_test,name:"
-msgid "Send Test E-mail"
-msgstr "Envia correu electrònic de prova"
+msgid "Send Test Email"
+msgstr "Envia un correu electrònic de prova"
 
 msgctxt "report:marketing.email.subscribe:"
 msgid "Button is not working? Paste this into your browser:"

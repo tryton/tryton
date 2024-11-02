@@ -75,8 +75,8 @@ msgid "Split"
 msgstr "opsplitsen"
 
 msgctxt "view:stock.shipment.split.start:"
-msgid "Choose move to send in new shipment:"
-msgstr "Kies beweging om nieuwe zending te verzenden:"
+msgid "Select moves to send in a new shipment:"
+msgstr "Kies voorraadbewegingen om in een nieuwe zending te verzenden:"
 
 msgctxt "wizard_button:stock.move.split,start,end:"
 msgid "Cancel"

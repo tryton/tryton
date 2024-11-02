@@ -103,6 +103,11 @@ msgctxt "field:account.invoice,description:"
 msgid "Description"
 msgstr "Descriere"
 
+#, fuzzy
+msgctxt "field:account.invoice,has_account_move:"
+msgid "Has Account Move"
+msgstr "Cont"
+
 msgctxt "field:account.invoice,has_payment_method:"
 msgid "Has Payment Method"
 msgstr "Are Metodă de Plată"
@@ -138,6 +143,10 @@ msgstr "Revizii Raport Factură"
 msgctxt "field:account.invoice,journal:"
 msgid "Journal"
 msgstr "Jurnal"
+
+msgctxt "field:account.invoice,line_lines:"
+msgid "Line - Lines"
+msgstr ""
 
 msgctxt "field:account.invoice,lines:"
 msgid "Lines"
@@ -202,6 +211,10 @@ msgstr "Referinţă"
 msgctxt "field:account.invoice,sequence:"
 msgid "Sequence"
 msgstr "Secvenţă"
+
+msgctxt "field:account.invoice,sequence_type_cache:"
+msgid "Sequence Type Cache"
+msgstr ""
 
 msgctxt "field:account.invoice,state:"
 msgid "State"
@@ -925,6 +938,7 @@ msgctxt "model:ir.action.act_window.domain,name:act_invoice_relate_pending"
 msgid "Pending"
 msgstr "In Derulare"
 
+#, python-format
 msgctxt "model:ir.message,text:msg_cancel_invoice_move"
 msgid "The moves \"%(moves)s\" have the posted invoices \"%(invoices)s\" as origin."
 msgstr "Mişcările \"%(moves)s\" au facturile \"%(invoices)s\" ca origine."
@@ -937,10 +951,12 @@ msgstr ""
 "Anularea va reconcilia rândurile mişcării, plătind astfel facturile. Poate "
 "doriți să anulați mai întâi facturile."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_close_period_non_posted_invoices"
 msgid "To close the periods you must post the invoices \"%(invoices)s\"."
 msgstr "Pentru a închide perioadele trebuie postate facturile \"%(invoices)s\"."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_erase_party_pending_invoice"
 msgid ""
 "You cannot erase party \"%(party)s\" while they have pending invoices with "
@@ -949,30 +965,32 @@ msgstr ""
 "Nu se poate şterge partea \"%(party)s\" când exista facturi nevalidate cu "
 "compania \"%(company)s\"."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_invoice_credit_refund_not_posted"
 msgid "You cannot refund invoice \"%(invoice)s\" because it is not posted."
 msgstr "Nu se poate storna factura \"%(invoice)s\" pentru ca nu a fost postată."
 
-#, fuzzy
+#, python-format
 msgctxt ""
 "model:ir.message,text:msg_invoice_currency_exchange_credit_account_missing"
 msgid ""
 "To post invoice \"%(invoice)s\", you must define a currency exchange credit "
 "account for \"%(company)s\"."
 msgstr ""
-"Pentru a posta \"%(invoice)s\" trebuie definita o secvenţa pe anul fiscal "
-"\"%(fiscalyear)s\"."
+"Pentru a posta factura \"%(invoice)s\", trebuie definit contul de credit "
+"pentru schimb valutarpentru \"%(company)s\"."
 
-#, fuzzy
+#, python-format
 msgctxt ""
 "model:ir.message,text:msg_invoice_currency_exchange_debit_account_missing"
 msgid ""
 "To post invoice \"%(invoice)s\", you must define a currency exchange debit "
 "account for \"%(company)s\"."
 msgstr ""
-"Pentru a posta \"%(invoice)s\" trebuie definita o secvenţa pe anul fiscal "
-"\"%(fiscalyear)s\"."
+"Pentru a încărca factura \"%(invoice)s\", trebuie să definiți un cont de "
+"debit pentru schimb valutar pentru \"%(company)s\"."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_invoice_customer_cancel_move"
 msgid ""
 "You cannot cancel customer invoice \"%(invoice)s\" because it is posted and "
@@ -981,23 +999,27 @@ msgstr ""
 "Nu se poate anula factura de client \"%(invoice)s\" pentru că este postata "
 "şi configurarea companiei nu permite acest lucru."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_invoice_date_future"
 msgid "The invoices \"%(invoices)s\" have an invoice date in the future."
 msgstr "Facturile \"%(invoices)s\" au o data în viitor."
 
-#, fuzzy
+#, python-format
 msgctxt "model:ir.message,text:msg_invoice_default_taxes"
 msgid "The invoice \"%(invoice)s\" does not have the default taxes for %(lines)s."
-msgstr "Facturile \"%(invoices)s\" au o data în viitor."
+msgstr "Factura \"%(invoice)s\" nu are taxele implicite pentru %(lines)s."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_invoice_delete_cancel"
 msgid "To delete invoice \"%(invoice)s\" you must cancel it."
 msgstr "Pentru a şterge factura \"%(invoice)s\" trebuie anulata."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_invoice_delete_numbered"
 msgid "You cannot delete invoice \"%(invoice)s\" because it has a number."
 msgstr "Nu se poate şterge factura \"%(invoice)s\" pentru că are un număr."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_invoice_line_create_draft"
 msgid ""
 "You cannot add lines to invoice \"%(invoice)s\" because it is no longer in a"
@@ -1006,6 +1028,7 @@ msgstr ""
 "Nu se poate adăuga un rând la factura \"%(invoice)s\" pentru că nu mai este "
 "in starea de ciorna."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_invoice_line_modify"
 msgid ""
 "You cannot modify line \"%(line)s\" because its invoice \"%(invoice)s\" is "
@@ -1018,6 +1041,7 @@ msgctxt "model:ir.message,text:msg_invoice_line_tax_unique"
 msgid "A tax can be added only once to an invoice line."
 msgstr "O taxa poate fi adăugata numai o singura data unui rând pe factura."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_invoice_modify"
 msgid ""
 "You cannot modify invoice \"%(invoice)s\" because it is posted, paid or "
@@ -1026,6 +1050,7 @@ msgstr ""
 "Factura \"%(invoice)s\" nu se poate modifica pentru ca este postata, plătita"
 " sau anulata."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_invoice_no_sequence"
 msgid ""
 "To post invoice \"%(invoice)s\", you must define a sequence on fiscal year "
@@ -1034,6 +1059,7 @@ msgstr ""
 "Pentru a posta \"%(invoice)s\" trebuie definita o secvenţa pe anul fiscal "
 "\"%(fiscalyear)s\"."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_invoice_number_after"
 msgid ""
 "To number the invoice \"%(invoice)s\", you must set an invoice date after "
@@ -1044,6 +1070,7 @@ msgstr ""
 "facturii după \"%(date)s\", deoarece secvența \"%(sequence)s\" a fost deja "
 "utilizată pentru factura \"%(after_invoice)s\"."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_invoice_overpay_paid"
 msgid ""
 "You cannot overpay invoice \"%(invoice)s\" because there is no more left to "
@@ -1052,6 +1079,7 @@ msgstr ""
 "Nu se poate supra-plati factura \"%(invoice)s\" pentru ca nu a ramas nimic "
 "de platit."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_invoice_pay_amount_greater_amount_to_pay"
 msgid ""
 "You cannot add a partial payment on invoice \"%(invoice)s\" with an amount "
@@ -1064,12 +1092,14 @@ msgctxt "model:ir.message,text:msg_invoice_payment_line_unique"
 msgid "A payment line can be linked to only one invoice."
 msgstr "Un rând de plata poate fi legat de o singura factura."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_invoice_payment_lines_add_remove_paid"
 msgid "You cannot add/remove payment lines on paid invoice \"%(invoice)s\"."
 msgstr ""
 "Nu se poate adăuga / elimina rânduri de plată pe factura plătită "
 "\"%(invoice)s\"."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_invoice_payment_lines_greater_amount"
 msgid ""
 "Payment lines amount on invoice \"%(invoice)s\" can not be greater than the "
@@ -1078,17 +1108,20 @@ msgstr ""
 "Suma rândurilor de plată de pe factura \"%(invoice)s\" nu poate fi mai mare "
 "decât suma facturii."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_invoice_payment_term_date_past"
 msgid "The invoice \"%(invoice)s\" generates a payment date \"%(date)s\" in the past."
 msgstr ""
 "Factura \"%(invoice)s\" genereaza data \"%(date)s\" de plata care este in "
 "trecut."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_invoice_similar"
 msgid "The invoice \"%(invoice)s\" is similar to invoice \"%(similar)s\"."
 msgstr "Factura \"%(invoice)s\" este similară cu factura \"%(similar)s\"."
 
-msgctxt "model:ir.message,text:msg_invoice_tax_create"
+#, fuzzy, python-format
+msgctxt "model:ir.message,text:msg_invoice_tax_create_draft"
 msgid ""
 "You cannot add taxes to invoice \"%(invoice)s\" because it is no longer in a"
 " draft state."
@@ -1096,6 +1129,7 @@ msgstr ""
 "Nu se poate adăuga un rând la factura \"%(invoice)s\" pentru că nu mai este "
 "in stare de ciornă."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_invoice_tax_invalid"
 msgid ""
 "The taxes on invoice \"%(invoice)s\" are not valid, you must save it again "
@@ -1104,6 +1138,7 @@ msgstr ""
 "Taxele pe factura \"%(invoice)s\" nu sunt valabile, trebuie să o salvați din"
 " nou pentru a forța recalcularea acestora."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_invoice_tax_modify"
 msgid ""
 "You cannot modify tax \"%(tax)s\" because its invoice \"%(invoice)s\" is "
@@ -1112,10 +1147,12 @@ msgstr ""
 "Nu se poate modifica impozit \"%(tax)s\" deoarece factura sa \"%(invoice)s\""
 " este postată, plătită sau anulată."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_payment_term_invalid_ratio_divisor"
 msgid "The ratio and divisor are not consistent on line \"%(line)s\"."
 msgstr "Raportul și divizorul nu sunt consecvente pe rândul \"%(line)s\"."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_payment_term_missing_last_remainder"
 msgid ""
 "To save payment term \"%(payment_term)s\", you must append a last remainder "
@@ -1124,6 +1161,7 @@ msgstr ""
 "Pentru a salva termenul de plată \"%(payment_term)s\", trebuie să atașați un"
 " ultim rând."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_payment_term_missing_remainder"
 msgid ""
 "To compute terms, you must append a remainder line on payment term "
@@ -1312,6 +1350,16 @@ msgctxt "report:account.invoice:"
 msgid "Unit Price"
 msgstr "Preț unitar"
 
+#, fuzzy
+msgctxt "selection:account.invoice,sequence_type_cache:"
+msgid "Credit Note"
+msgstr "Cont Credit"
+
+#, fuzzy
+msgctxt "selection:account.invoice,sequence_type_cache:"
+msgid "Invoice"
+msgstr "Factura fiscala"
+
 msgctxt "selection:account.invoice,state:"
 msgid "Cancelled"
 msgstr "Anulat"
@@ -1402,7 +1450,7 @@ msgstr "Notițe"
 
 msgctxt "view:account.invoice.payment_term.line.delta:"
 msgid "Operations are applied in this displayed order."
-msgstr ""
+msgstr "Operațiile sunt aplicate în ordinea afișată."
 
 msgctxt "view:account.invoice.payment_term.line:"
 msgid "%"

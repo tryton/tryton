@@ -186,17 +186,29 @@ msgctxt "field:sale.handle.invoice.exception.ask,domain_invoices:"
 msgid "Domain Invoices"
 msgstr ""
 
+#, fuzzy
+msgctxt "field:sale.handle.invoice.exception.ask,ignore_invoices:"
+msgid "Invoices to Ignore"
+msgstr "Számlázási cím"
+
+#, fuzzy
 msgctxt "field:sale.handle.invoice.exception.ask,recreate_invoices:"
-msgid "Recreate Invoices"
-msgstr ""
+msgid "Invoices to Recreate"
+msgstr "Válassza ki a számlákat, amiket újra létre szeretne hozni:"
 
 msgctxt "field:sale.handle.shipment.exception.ask,domain_moves:"
-msgid "Domain Moves"
+msgid "Domain Stock Moves"
 msgstr ""
 
+#, fuzzy
+msgctxt "field:sale.handle.shipment.exception.ask,ignore_moves:"
+msgid "Stock Moves to Ignore"
+msgstr "Mozgások"
+
+#, fuzzy
 msgctxt "field:sale.handle.shipment.exception.ask,recreate_moves:"
-msgid "Recreate Moves"
-msgstr ""
+msgid "Stock Moves to Recreate"
+msgstr "Válassza ki a készletmozgásokat, amiket újra létre szeretne hozni:"
 
 #, fuzzy
 msgctxt "field:sale.line,actual_quantity:"
@@ -237,8 +249,13 @@ msgctxt "field:sale.line,invoice_progress:"
 msgid "Invoice Progress"
 msgstr "Számlázási cím"
 
+msgctxt "field:sale.line,movable:"
+msgid "Movable"
+msgstr ""
+
+#, fuzzy
 msgctxt "field:sale.line,moves:"
-msgid "Moves"
+msgid "Stock Moves"
 msgstr "Mozgások"
 
 #, fuzzy
@@ -247,16 +264,17 @@ msgid "Moves Exception"
 msgstr "visszautasítva"
 
 msgctxt "field:sale.line,moves_ignored:"
-msgid "Ignored Moves"
+msgid "Ignored Stock Moves"
 msgstr ""
 
 msgctxt "field:sale.line,moves_progress:"
 msgid "Moves Progress"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:sale.line,moves_recreated:"
 msgid "Recreated Moves"
-msgstr ""
+msgstr "újra létrehozva"
 
 msgctxt "field:sale.line,note:"
 msgid "Note"
@@ -329,16 +347,16 @@ msgid "Tax"
 msgstr "Adó"
 
 msgctxt "field:sale.line-ignored-stock.move,move:"
-msgid "Move"
-msgstr "Tétel"
+msgid "Stock Move"
+msgstr ""
 
 msgctxt "field:sale.line-ignored-stock.move,sale_line:"
 msgid "Sale Line"
 msgstr "Vevői rendelés sora"
 
 msgctxt "field:sale.line-recreated-stock.move,move:"
-msgid "Move"
-msgstr "Tétel"
+msgid "Stock Move"
+msgstr ""
 
 msgctxt "field:sale.line-recreated-stock.move,sale_line:"
 msgid "Sale Line"
@@ -566,12 +584,18 @@ msgctxt "field:sale.sale,invoices_recreated:"
 msgid "Recreated Invoices"
 msgstr ""
 
+#, fuzzy
+msgctxt "field:sale.sale,line_lines:"
+msgid "Line - Lines"
+msgstr "Számlasorok"
+
 msgctxt "field:sale.sale,lines:"
 msgid "Lines"
 msgstr "Sorok"
 
+#, fuzzy
 msgctxt "field:sale.sale,moves:"
-msgid "Moves"
+msgid "Stock Moves"
 msgstr "Mozgások"
 
 msgctxt "field:sale.sale,number:"
@@ -764,9 +788,30 @@ msgid ""
 "Applied if a worker queue is activated."
 msgstr ""
 
+#, fuzzy
+msgctxt "help:sale.handle.invoice.exception.ask,ignore_invoices:"
+msgid "The selected cancelled invoices will be ignored."
+msgstr ""
+"A kiválasztott számlákat újra létrehozza a rendszer. A többi figyelmen kívül"
+" hagyja."
+
+#, fuzzy
 msgctxt "help:sale.handle.invoice.exception.ask,recreate_invoices:"
-msgid ""
-"The selected invoices will be recreated. The other ones will be ignored."
+msgid "The selected cancelled invoices will be recreated."
+msgstr ""
+"A kiválasztott számlákat újra létrehozza a rendszer. A többi figyelmen kívül"
+" hagyja."
+
+#, fuzzy
+msgctxt "help:sale.handle.shipment.exception.ask,ignore_moves:"
+msgid "The selected cancelled stock moves will be ignored."
+msgstr ""
+"A kiválasztott számlákat újra létrehozza a rendszer. A többi figyelmen kívül"
+" hagyja."
+
+#, fuzzy
+msgctxt "help:sale.handle.shipment.exception.ask,recreate_moves:"
+msgid "The selected cancelled stock moves will be recreated."
 msgstr ""
 "A kiválasztott számlákat újra létrehozza a rendszer. A többi figyelmen kívül"
 " hagyja."
@@ -783,9 +828,10 @@ msgctxt "model:ir.action,name:act_invoice_form"
 msgid "Invoices"
 msgstr "Számlák"
 
-msgctxt "model:ir.action,name:act_open_customer"
-msgid "Parties associated to Sales"
-msgstr "Vevők vevői rendeléssel"
+#, fuzzy
+msgctxt "model:ir.action,name:act_invoice_line_form"
+msgid "Invoice Lines"
+msgstr "Számlasorok"
 
 msgctxt "model:ir.action,name:act_product"
 msgid "Products"
@@ -882,8 +928,9 @@ msgctxt "model:ir.action,name:act_sale_line_relate"
 msgid "Sale Lines"
 msgstr "Vevői rendelés sora"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_sale_move_relate"
-msgid "Moves"
+msgid "Stock Moves"
 msgstr "Készletmozgások"
 
 #, fuzzy
@@ -986,51 +1033,60 @@ msgctxt "model:ir.action.act_window.domain,name:act_sale_relate_pending"
 msgid "Pending"
 msgstr ""
 
+#, python-format
 msgctxt "model:ir.message,text:msg_erase_party_pending_sale"
 msgid ""
 "You cannot erase party \"%(party)s\" while they have pending sales with "
 "company \"%(company)s\"."
 msgstr ""
 
+#, python-format
 msgctxt "model:ir.message,text:msg_sale_customer_location_required"
 msgid ""
 "To process sale \"%(sale)s\" you must set a customer location on party "
 "\"%(party)s\"."
 msgstr ""
 
+#, python-format
 msgctxt "model:ir.message,text:msg_sale_delete_cancel"
 msgid "To delete sale \"%(sale)s\" you must cancel it."
 msgstr ""
 
+#, python-format
 msgctxt "model:ir.message,text:msg_sale_invalid_method"
 msgid ""
 "You cannot use together invoice \"%(invoice_method)s\" and shipment "
 "\"%(shipment_method)s\" on sale \"%(sale)s\"."
 msgstr ""
 
+#, python-format
 msgctxt ""
 "model:ir.message,text:msg_sale_invoice_address_required_for_quotation"
 msgid "To get a quote for sale \"%(sale)s\" you must enter an invoice address."
 msgstr ""
 
+#, python-format
 msgctxt "model:ir.message,text:msg_sale_invoice_reset_draft"
 msgid ""
 "You cannot reset invoice \"%(invoice)s\" to draft because it was generated "
 "by a sale."
 msgstr ""
 
+#, python-format
 msgctxt "model:ir.message,text:msg_sale_line_create_draft"
 msgid ""
 "You cannot add lines to sale \"%(sale)s\" because it is no longer in a draft"
 " state."
 msgstr ""
 
+#, python-format
 msgctxt "model:ir.message,text:msg_sale_line_delete_cancel_draft"
 msgid ""
 "To delete line \"%(line)s\" you must cancel or reset to draft sale "
 "\"%(sale)s\"."
 msgstr ""
 
+#, python-format
 msgctxt "model:ir.message,text:msg_sale_line_move_quantity"
 msgid ""
 "The sale line \"%(line)s\" is moving %(extra)s in addition to the "
@@ -1041,20 +1097,24 @@ msgctxt "model:ir.message,text:msg_sale_line_tax_unique"
 msgid "A tax can be added only once to a sale line."
 msgstr ""
 
+#, python-format
 msgctxt "model:ir.message,text:msg_sale_missing_account_revenue"
 msgid "To invoice sale \"%(sale)s\" you must configure a default account revenue."
 msgstr ""
 
+#, python-format
 msgctxt "model:ir.message,text:msg_sale_modify_header_draft"
 msgid "To modify the header of sale \"%(sale)s\", it must be in \"draft\" state."
 msgstr ""
 
+#, python-format
 msgctxt "model:ir.message,text:msg_sale_move_reset_draft"
 msgid ""
 "You cannot reset move \"%(move)s\" to draft because it was generated by a "
 "sale."
 msgstr ""
 
+#, python-format
 msgctxt "model:ir.message,text:msg_sale_product_missing_account_revenue"
 msgid ""
 "To invoice sale \"%(sale)s\" you must define an account revenue for product "
@@ -1094,11 +1154,13 @@ msgctxt "model:ir.message,text:msg_sale_reporting_time_series"
 msgid "Time Series"
 msgstr ""
 
+#, python-format
 msgctxt ""
 "model:ir.message,text:msg_sale_shipment_address_required_for_quotation"
 msgid "To get a quote for sale \"%(sale)s\" you must enter a shipment address."
 msgstr ""
 
+#, python-format
 msgctxt "model:ir.message,text:msg_sale_warehouse_required_for_quotation"
 msgid "To get a quote for sale \"%(sale)s\" you must enter a warehouse."
 msgstr ""
@@ -1221,10 +1283,6 @@ msgstr "Vevői rendelés"
 msgctxt "model:ir.ui.menu,name:menu_configuration"
 msgid "Configuration"
 msgstr "Beállítások"
-
-msgctxt "model:ir.ui.menu,name:menu_customer"
-msgid "Associated to Sales"
-msgstr "Vevői rendeléssel"
 
 msgctxt "model:ir.ui.menu,name:menu_product"
 msgid "Products"
@@ -1629,12 +1687,14 @@ msgctxt "view:product.template:"
 msgid "Customers"
 msgstr "Értékesítés"
 
+#, fuzzy
 msgctxt "view:sale.handle.invoice.exception.ask:"
-msgid "Choose invoices to recreate:"
+msgid "Choose cancelled invoices to ignore or recreate:"
 msgstr "Válassza ki a számlákat, amiket újra létre szeretne hozni:"
 
+#, fuzzy
 msgctxt "view:sale.handle.shipment.exception.ask:"
-msgid "Choose move to recreate:"
+msgid "Choose cancelled stock moves to ignore or recreate:"
 msgstr "Válassza ki a készletmozgásokat, amiket újra létre szeretne hozni:"
 
 msgctxt "view:sale.line:"

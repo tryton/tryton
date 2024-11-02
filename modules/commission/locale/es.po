@@ -82,6 +82,10 @@ msgctxt "field:commission.agent,plan:"
 msgid "Plan"
 msgstr "Plan"
 
+msgctxt "field:commission.agent,products:"
+msgid "Products"
+msgstr "Productos"
+
 msgctxt "field:commission.agent,selections:"
 msgid "Selections"
 msgstr "Selecciones"
@@ -484,6 +488,7 @@ msgctxt ""
 msgid "To Invoice"
 msgstr "A facturar"
 
+#, python-format
 msgctxt "model:ir.message,text:msg_erase_party_pending_commission"
 msgid ""
 "You cannot erase party \"%(party)s\" while they have pending commissions "
@@ -492,6 +497,7 @@ msgstr ""
 "No puede eliminar el tercero \"%(party)s\" mientras tenga comisiones "
 "pendientes en la empresa \"%(company)s\"."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_plan_line_invalid_formula"
 msgid ""
 "Invalid formula \"%(formula)s\" in commission plan line \"%(line)s\" with "

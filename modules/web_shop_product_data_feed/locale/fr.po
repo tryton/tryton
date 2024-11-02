@@ -1,5 +1,4 @@
 #
-#, fuzzy
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
@@ -100,3 +99,7 @@ msgstr "Catégorie Facebook de produit"
 msgctxt "model:product.category.google,name:"
 msgid "Google Product Category"
 msgstr "Catégorie Google de produit"
+
+msgctxt "selection:ir.cron,method:"
+msgid "Update Web Shop Product Data Feed"
+msgstr "Mettre à jour le flux de données produit des boutiques en ligne"

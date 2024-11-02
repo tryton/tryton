@@ -115,6 +115,7 @@ msgctxt ""
 msgid "Processing"
 msgstr ""
 
+#, python-format
 msgctxt "model:ir.message,text:msg_document_split_invalid_pages"
 msgid "Invalid pages \"%(expression)s\" with exception \"%(exception)s\"."
 msgstr ""

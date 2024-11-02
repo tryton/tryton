@@ -6,6 +6,10 @@ msgctxt "field:sale.promotion,coupons:"
 msgid "Coupons"
 msgstr "کوپن ها"
 
+msgctxt "field:sale.promotion.coupon,company:"
+msgid "Company"
+msgstr ""
+
 msgctxt "field:sale.promotion.coupon,name:"
 msgid "Name"
 msgstr "نام"
@@ -26,17 +30,26 @@ msgctxt "field:sale.promotion.coupon,promotion:"
 msgid "Promotion"
 msgstr "تبلیغ و ترویج"
 
-msgctxt "field:sale.promotion.coupon.number,active:"
-msgid "Active"
-msgstr "فعال"
+msgctxt "field:sale.promotion.coupon.number,company:"
+msgid "Company"
+msgstr ""
 
 msgctxt "field:sale.promotion.coupon.number,coupon:"
 msgid "Coupon"
 msgstr "کوپن"
 
+msgctxt "field:sale.promotion.coupon.number,end_date:"
+msgid "End Date"
+msgstr ""
+
 msgctxt "field:sale.promotion.coupon.number,number:"
 msgid "Number"
 msgstr "شماره"
+
+#, fuzzy
+msgctxt "field:sale.promotion.coupon.number,start_date:"
+msgid "Start Date"
+msgstr "تاریخ نوشته"
 
 #, fuzzy
 msgctxt "field:sale.sale,coupon_parties:"
@@ -68,8 +81,30 @@ msgid "Check to count usage per party."
 msgstr "تیک بزنید برای شمارش استفاده در هر نهاد/سازمان."
 
 msgctxt "model:ir.message,text:msg_duplicate_numbers"
-msgid "The coupons numbered \"%(numbers)s\" are duplicated."
+msgid "The dates of coupon numbers with the same number can not overlap."
+msgstr ""
+
+#, fuzzy, python-format
+msgctxt "model:ir.message,text:msg_promotion_coupon_number_end_date"
+msgid ""
+"The end date of coupons numbered \"%(numbers)s\" must be before "
+"%(start_date)s."
 msgstr "تعداد کوپن های :\"%s\" دوبرابر شده است."
+
+#, fuzzy, python-format
+msgctxt "model:ir.message,text:msg_promotion_coupon_number_start_date"
+msgid ""
+"The start date of coupons numbered \"%(numbers)s\" must be after "
+"%(start_date)s."
+msgstr "تعداد کوپن های :\"%s\" دوبرابر شده است."
+
+msgctxt "model:ir.rule.group,name:rule_group_coupon_companies"
+msgid "User in companies"
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_coupon_number_companies"
+msgid "User in companies"
+msgstr ""
 
 msgctxt "model:sale.promotion.coupon,name:"
 msgid "Promotion Coupon"

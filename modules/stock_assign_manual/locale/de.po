@@ -94,12 +94,14 @@ msgctxt "model:ir.action,name:wizard_shipment_unassign_manual"
 msgid "Manually Unassign Shipment"
 msgstr "Manuelle Aufhebung Reservierung Lieferung"
 
+#, python-format
 msgctxt "model:ir.message,text:msg_assign_failed"
 msgid "Failed to assign of %(move)s from %(place)s, please retry."
 msgstr ""
 "Die Reservierung für Warenbewegung %(move)s von Platz %(place)s ist "
 "fehlgeschlagen. Bitte nochmal versuchen."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_invalid_quantity"
 msgid "The quantity must be between 0 and %(quantity)s."
 msgstr "Die Menge muss zwischen 0 und %(quantity)s liegen."

@@ -38,6 +38,7 @@ msgctxt ""
 msgid "The lower quantity accepted in percentage."
 msgstr "El percentatge de quantitat mínim a acceptar com a enviat."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_over_shipment"
 msgid ""
 "The sale line \"%(line)s\" exceeds the over shipment tolerance (%(shipped)s "

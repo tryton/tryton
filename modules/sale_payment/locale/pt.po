@@ -11,10 +11,12 @@ msgctxt "model:ir.action,name:act_payments_relate"
 msgid "Payments"
 msgstr "Pagamentos"
 
+#, python-format
 msgctxt "model:ir.message,text:msg_sale_cancel_payment"
 msgid "You cannot cancel sale \"%(sale)s\" because it has payments."
 msgstr ""
 
+#, python-format
 msgctxt "model:ir.message,text:msg_sale_draft_payment"
 msgid "You cannot reset to draft sale \"%(sale)s\" because it has payments."
 msgstr ""

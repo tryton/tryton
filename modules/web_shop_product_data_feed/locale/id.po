@@ -86,3 +86,7 @@ msgstr ""
 msgctxt "model:product.category.google,name:"
 msgid "Google Product Category"
 msgstr ""
+
+msgctxt "selection:ir.cron,method:"
+msgid "Update Web Shop Product Data Feed"
+msgstr ""

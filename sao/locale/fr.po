@@ -17,14 +17,11 @@ msgstr "Impossible de se connecter au serveur."
 msgid "Connection error"
 msgstr "Erreur de connexion"
 
-msgid "Favorites"
-msgstr "Favoris"
-
-msgid "Manage..."
-msgstr "Gérer..."
-
 msgid "Logout"
 msgstr "Déconnexion"
+
+msgid "Favorites"
+msgstr "Favoris"
 
 msgid "Action"
 msgstr "Action"
@@ -71,8 +68,8 @@ msgstr "Relation"
 msgid "Print"
 msgstr "Imprimer"
 
-msgid "E-Mail"
-msgstr "E-mail"
+msgid "Email"
+msgstr "Courriel"
 
 msgid "Previous tab"
 msgstr "Onglet précédent"
@@ -132,7 +129,10 @@ msgid "Not found."
 msgstr "Pas trouvé."
 
 msgid "Send you an email to reset your password."
-msgstr "Envoyez-vous un email pour réinitialiser votre mot de passe."
+msgstr "Envoyez-vous un courriel pour réinitialiser votre mot de passe."
+
+msgid "Reset forgotten password"
+msgstr "Réinitialiser le mot de passe oublié"
 
 msgid ""
 "A request to reset your password has been sent.\n"
@@ -314,11 +314,11 @@ msgstr "Ajouter un attachement à l'enregistrement"
 msgid "Add a note to the record"
 msgstr "Ajouter une note à l'enregistrement"
 
-msgid "E-Mail..."
-msgstr "E-mail..."
+msgid "Email..."
+msgstr "Courriel..."
 
-msgid "Send an e-mail using the record"
-msgstr "Envoyer un e-mail en utilisant l'enregistrement"
+msgid "Send an email using the record"
+msgstr "Envoyer un courriel en utilisant l'enregistrement"
 
 msgid "Export"
 msgstr "Exporter"
@@ -375,6 +375,9 @@ msgstr "Ajouter..."
 
 msgid "Preview"
 msgstr "Aperçu"
+
+msgid "Manage..."
+msgstr "Gérer..."
 
 msgid "Template"
 msgstr "Modèle"
@@ -494,6 +497,9 @@ msgid "Open"
 msgstr "Ouvrir"
 
 msgid "Undelete"
+msgstr "Restaurer"
+
+msgid "Restore"
 msgstr "Restaurer"
 
 msgid "Save As"
@@ -714,8 +720,8 @@ msgid_plural "%1 records saved"
 msgstr[0] "%1 entrée enregistrée"
 msgstr[1] "%1 entrées enregistrées"
 
-msgid "E-mail %1"
-msgstr "E-mail %1"
+msgid "Email %1"
+msgstr "Courriel %1"
 
 msgid "To:"
 msgstr "À :"

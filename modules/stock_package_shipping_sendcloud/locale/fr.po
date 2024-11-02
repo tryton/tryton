@@ -42,6 +42,14 @@ msgctxt "field:carrier.sendcloud.shipping_method,carrier:"
 msgid "Carrier"
 msgstr "Transporteur"
 
+msgctxt "field:carrier.sendcloud.shipping_method,max_weight:"
+msgid "Maximal Weight"
+msgstr "Poids maximal"
+
+msgctxt "field:carrier.sendcloud.shipping_method,min_weight:"
+msgid "Minimal Weight"
+msgstr "Poids minimal"
+
 msgctxt "field:carrier.sendcloud.shipping_method,sendcloud:"
 msgid "Sendcloud"
 msgstr "Sendcloud"
@@ -49,6 +57,10 @@ msgstr "Sendcloud"
 msgctxt "field:carrier.sendcloud.shipping_method,shipping_method:"
 msgid "Shipping Method"
 msgstr "Méthode d'expédition"
+
+msgctxt "field:carrier.sendcloud.shipping_method,warehouse:"
+msgid "Warehouse"
+msgstr "Entrepôt"
 
 msgctxt "field:stock.package,sendcloud_shipping_id:"
 msgid "ID"
@@ -61,6 +73,14 @@ msgstr "URL de suivi"
 msgctxt "help:carrier.sendcloud.address,address:"
 msgid "Leave empty for the Sendcloud default."
 msgstr "Laissez vide pour la valeur par défaut de Sendcloud."
+
+msgctxt "help:carrier.sendcloud.shipping_method,max_weight:"
+msgid "Maximal weight included in kg."
+msgstr "Poids maximal inclus en kg."
+
+msgctxt "help:carrier.sendcloud.shipping_method,min_weight:"
+msgid "Minimal weight included in kg."
+msgstr "Poids minimum inclus en kg."
 
 msgctxt "model:carrier.credential.sendcloud,name:"
 msgid "Sendcloud Credential"
@@ -82,6 +102,13 @@ msgctxt "model:ir.action,name:act_credential_form"
 msgid "Sendcloud Credentials"
 msgstr "Identifiants Sendcloud"
 
+msgctxt "model:ir.message,text:msg_sendcloud_credential_modified"
+msgid "Are you sure you want to modify Sendcloud credentials?"
+msgstr ""
+"Êtes-vous sûr de vouloir modifier les informations d'identification de "
+"Sendcloud ?"
+
+#, python-format
 msgctxt "model:ir.message,text:msg_sendcloud_webserver_error"
 msgid ""
 "Sendcloud webservice call failed with the following error message:\n"
@@ -90,6 +117,7 @@ msgstr ""
 "L'appel au service web de Sendcloud a échoué avec le message d'erreur suivant :\n"
 "%(message)s"
 
+#, python-format
 msgctxt "model:ir.message,text:msg_shipment_has_shipping_reference_number"
 msgid ""
 "You cannot create a shipping label for shipment \"%(shipment)s\" because it "

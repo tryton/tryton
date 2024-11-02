@@ -126,18 +126,21 @@ msgctxt "model:ir.action,name:act_sheet"
 msgid "Sheets"
 msgstr "Seznami"
 
+#, python-format
 msgctxt "model:ir.message,text:msg_close_period_previous_open"
 msgid "To close period \"%(period)s\" you must first close \"%(other_period)s\"."
 msgstr ""
 "Za zaprtje obdobja \"%(period)s\", je potrebno najprej zapreti "
 "\"%(other_period)s\"."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_delete_period_close"
 msgid "To delete attendance \"%(attendance)s\" you must reopen period \"%(period)s\"."
 msgstr ""
 "Za izbris prisotnosti \"%(attendance)s\", je potrebno ponovno odpreti "
 "obdobje \"%(period)s\"."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_draft_period_previous_closed"
 msgid ""
 "To change period \"%(period)s\" you must first change \"%(other_period)s\" "
@@ -146,6 +149,7 @@ msgstr ""
 "Za spremembo obdobja \"%(period)s\", je potrebno najprej spremeniti stanje "
 "\"%(other_period)s\" v osnutek."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_modify_period_close"
 msgid "To modify attendance \"%(attendance)s\" you must reopen period \"%(period)s\"."
 msgstr ""

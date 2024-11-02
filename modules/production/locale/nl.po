@@ -110,6 +110,14 @@ msgctxt "field:production,warehouse:"
 msgid "Warehouse"
 msgstr "Magazijn"
 
+msgctxt "field:production.bom,code:"
+msgid "Code"
+msgstr "Code"
+
+msgctxt "field:production.bom,code_readonly:"
+msgid "Code Readonly"
+msgstr "Alleen-lezen code"
+
 msgctxt "field:production.bom,inputs:"
 msgid "Inputs"
 msgstr "Invoer"
@@ -206,6 +214,10 @@ msgctxt "field:production.bom.tree.open.tree,bom_tree:"
 msgid "BOM Tree"
 msgstr "Stuklijst boom structuur"
 
+msgctxt "field:production.configuration,bom_sequence:"
+msgid "BOM Sequence"
+msgstr "Stuklijst reeks"
+
 msgctxt "field:production.configuration,production_sequence:"
 msgid "Production Sequence"
 msgstr "Productiereeks"
@@ -278,6 +290,10 @@ msgstr "De externe referentie voor de zending."
 msgctxt "help:production,uom_category:"
 msgid "The category of Unit of Measure."
 msgstr "De categorie van de maateenheid."
+
+msgctxt "help:production.configuration,bom_sequence:"
+msgid "Used to generate the BOM code."
+msgstr "Wordt gebruikt om de stuklijst code te genereren."
 
 msgctxt "help:stock.location,production_output_location:"
 msgid ""
@@ -372,6 +388,7 @@ msgctxt ""
 msgid "Waiting"
 msgstr "In afwachting"
 
+#, python-format
 msgctxt "model:ir.message,text:msg_missing_product_list_price"
 msgid ""
 "The product \"%(product)s\" on production \"%(production)s\" does not have "
@@ -380,6 +397,7 @@ msgstr ""
 "Voor het product \"%(product)s\" in productie \"%(production)s\" is er geen "
 "catalogusprijs gedefinieerd."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_recursive_bom"
 msgid "You cannot create a recursive BOM for product \"%(product)s\"."
 msgstr "U kunt geen recursieve stuklijst maken voor product \"%(product)s\"."
@@ -428,6 +446,10 @@ msgstr "Gebruiker in het bedrijf"
 msgctxt "model:ir.sequence,name:sequence_production"
 msgid "Production"
 msgstr "Productie"
+
+msgctxt "model:ir.sequence.type,name:sequence_type_bom"
+msgid "BOM"
+msgstr "Stuklijst"
 
 msgctxt "model:ir.sequence.type,name:sequence_type_production"
 msgid "Production"

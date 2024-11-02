@@ -338,6 +338,7 @@ msgctxt "model:ir.export-write-res.group,name:"
 msgid "Export Modification Group"
 msgstr "Grupul de modificare a exportului"
 
+#, fuzzy, python-format
 msgctxt "model:ir.message,text:msg_email_invalid"
 msgid "The email address \"%(email)s\" for \"%(user)s\" is not valid."
 msgstr "Adresa de email \"%(email)s\" pentru parte \"%(party)s\" nu este valid."
@@ -350,6 +351,7 @@ msgctxt "model:ir.message,text:msg_password_forbidden"
 msgid "The password is forbidden."
 msgstr "Parola este interzisă."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_password_length"
 msgid "The password must have at least %(length)i characters."
 msgstr "Parola trebuie să aibă cel puțin %(length)i caractere."
@@ -370,6 +372,7 @@ msgstr ""
 "În scopuri de înregistrare, utilizatorii nu pot fi șterse, ci trebuie "
 "dezactivați."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_user_password"
 msgid "Password for %(login)s"
 msgstr "Parola pentru %(login)s"
@@ -486,7 +489,7 @@ msgctxt "model:res.user.warning,name:"
 msgid "User Warning"
 msgstr "Avertisment utilizator"
 
-#, fuzzy
+#, fuzzy, python-format
 msgctxt "report:res.user.email_reset_password:"
 msgid ""
 "Hello,\n"
@@ -496,20 +499,24 @@ msgid ""
 "                [7:%(http_host)s/#%(database)s][8:]\n"
 "                You must set a new one from the user's preferences.[9:]"
 msgstr ""
-"Parolă pentru contul dvs, [1:%(login)s], a fost resetat.[2:]\n"
-"Trebuie să setaţi o parolă noua de la preferinţele al utilizatorului.[3:]\n"
-"Vă puteţi autentifica cu aceasta parolă temporară: [4:%(password)s] până la [5:]\n"
-"[6:tryton://%(host)s/%(database)s][7:]\n"
-"[8:%(host)s/#%(database)s]"
+"Buna ziua,\n"
+"                am primit o solicitare de resetare a parolei pentru contul asociat cu [1:%(login)s]. Încă nu s-au făcut modificări în contul dvs.[2:]\n"
+"                Vă puteți conecta cu această parolă temporară [3:%(parola)s] la[4:]\n"
+"                [5:tryton://%(gazdă)s/%(bază de date)s][6:]\n"
+"                [7:%(http_host)s/#%(database)s][8:]\n"
+"                Trebuie să setați unul nou din preferințele utilizatorului.[9:]"
 
 msgctxt "report:res.user.email_reset_password:"
 msgid "If you didn't make this request, you can safely ignore this email."
 msgstr ""
+"Dacă nu ați făcut această solicitare, puteți ignora acest e-mail în "
+"siguranță."
 
 msgctxt "report:res.user.email_reset_password:"
 msgid "Reset Password"
 msgstr "Resetare parola"
 
+#, python-format
 msgctxt "report:res.user.email_reset_password:"
 msgid "The password will expire in [1:%(datetime)s]."
 msgstr "Parola va expira in [1:%(datetime)s]."

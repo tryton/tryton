@@ -18,15 +18,3 @@ msgstr "Kuupäev"
 msgctxt "field:product.sale.context,date:"
 msgid "Date"
 msgstr "Kuupäev"
-
-msgctxt "model:ir.action,name:act_price_list_line_form"
-msgid "Lines"
-msgstr "Read"
-
-msgctxt "model:ir.model.button,string:price_list_open_lines_button"
-msgid "Open Lines"
-msgstr "Avatud read"
-
-msgctxt "model:product.price_list.line.context,name:"
-msgid "Price List Line Context"
-msgstr "Hinnakirja rea sisu"

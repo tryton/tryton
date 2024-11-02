@@ -27,6 +27,10 @@ msgctxt "field:product.template,lot_sequence:"
 msgid "Lot Sequence"
 msgstr "Secuencia de lote"
 
+msgctxt "field:stock.inventory.count.quantity,lot:"
+msgid "Lot"
+msgstr "Lote"
+
 msgctxt "field:stock.inventory.line,lot:"
 msgid "Lot"
 msgstr "Lote"
@@ -87,10 +91,6 @@ msgctxt "field:stock.lot.trace,quantity:"
 msgid "Quantity"
 msgstr "Cantidad"
 
-msgctxt "field:stock.lot.trace,shipment:"
-msgid "Shipment"
-msgstr "Albarán"
-
 msgctxt "field:stock.lot.trace,to_location:"
 msgid "To Location"
 msgstr "A ubicación"
@@ -130,26 +130,6 @@ msgstr "Producto"
 msgctxt "field:stock.lots_by_locations,quantity:"
 msgid "Quantity"
 msgstr "Cantidad"
-
-msgctxt "field:stock.lots_by_warehouse.context,forecast_date:"
-msgid "At Date"
-msgstr "A la fecha"
-
-msgctxt "field:stock.lots_by_warehouse.context,locations:"
-msgid "Locations"
-msgstr "Ubicaciones"
-
-msgctxt "field:stock.lots_by_warehouse.context,stock_date_end:"
-msgid "At Date"
-msgstr "A la fecha"
-
-msgctxt "field:stock.lots_by_warehouse.context,stock_skip_warehouse:"
-msgid "Only storage zone"
-msgstr "Solo zona de almacenamiento"
-
-msgctxt "field:stock.lots_by_warehouse.context,warehouse:"
-msgid "Warehouse"
-msgstr "Almacén"
 
 msgctxt "field:stock.move,lot:"
 msgid "Lot"
@@ -261,31 +241,17 @@ msgctxt "help:stock.lots_by_locations,default_uom:"
 msgid "The default Unit of Measure."
 msgstr "La unidad de medida por defecto."
 
-msgctxt "help:stock.lots_by_warehouse.context,forecast_date:"
-msgid ""
-"Allow to compute expected stock quantities for this date.\n"
-"* An empty value is an infinite date in the future.\n"
-"* A date in the past will provide historical values."
-msgstr ""
-"Permite calcular las cantidades previstas para esta fecha.\n"
-"* Un valor vacío es una fecha infinita en el futuro.\n"
-"* Una fecha en el pasado proporcionará valores históricos."
-
-msgctxt "help:stock.lots_by_warehouse.context,stock_skip_warehouse:"
-msgid "Check to use only the quantity of the storage zone."
-msgstr "Marcar para usar solo la cantidad de la zona de almacenamiento."
-
 msgctxt "help:stock.move.add.lots.start,duplicate_lot_number:"
 msgid "The number of times the lot must be duplicated."
 msgstr "El número de veces que el lote debe ser duplicado."
 
 msgctxt "model:ir.action,name:act_location_quantity_list"
-msgid "Locations List Quantity"
-msgstr "Cantidad por ubicaciones (listado)"
+msgid "Stock Locations List"
+msgstr "Lista de ubicaciones de existencias"
 
 msgctxt "model:ir.action,name:act_location_quantity_tree"
-msgid "Locations Tree Quantity"
-msgstr "Cantidad por ubicaciones"
+msgid "Stock Locations Tree"
+msgstr "Árbol de ubicaciones de existencias"
 
 msgctxt "model:ir.action,name:act_lot_form"
 msgid "Lots"
@@ -304,12 +270,8 @@ msgid "Upward Traces"
 msgstr "Trazabilidad ascendente"
 
 msgctxt "model:ir.action,name:act_lots_by_locations_relate"
-msgid "Lots by Locations"
-msgstr "Lotes por ubicación"
-
-msgctxt "model:ir.action,name:act_lots_by_warehouse_relate"
-msgid "Lots By Warehouse"
-msgstr "Lotes por almacén"
+msgid "Lots"
+msgstr "Lotes"
 
 msgctxt "model:ir.action,name:wizard_move_add_lots"
 msgid "Add Lots"
@@ -321,10 +283,12 @@ msgstr ""
 "No puede cambiar el producto de un lote que ya tiene movimientos de "
 "existencias."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_lot_required"
 msgid "To move product \"%(product)s\" you must provide a stock lot."
 msgstr "Para mover el producto \"%(product)s\" debe especificar su lote."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_move_add_lot_quantity"
 msgid ""
 "The total quantity \"%(lot_quantity)s\" of the lots must be less than or "
@@ -333,6 +297,7 @@ msgstr ""
 "La cantidad total \"%(lot_quantity)s\" de los lotes debe ser menor o igual "
 "que la cantidad \"%(move_quantity)s\" del movimiento."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_only_lot"
 msgid "You must select a stock lot instead of a product for \"%(product)s\"."
 msgstr "Debe seleccionar un lote en lugar de un producto en \"%(product)s\"."
@@ -385,10 +350,6 @@ msgstr "Lote por ubicación"
 msgctxt "model:stock.lots_by_locations,name:"
 msgid "Lots by Locations"
 msgstr "Lotes por ubicación"
-
-msgctxt "model:stock.lots_by_warehouse.context,name:"
-msgid "Lot by Warehouse"
-msgstr "Lote por almacén"
 
 msgctxt "model:stock.move.add.lots.start,name:"
 msgid "Add Lots"

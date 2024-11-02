@@ -2,9 +2,10 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-msgctxt "field:account.invoice.line,cost_shipments:"
-msgid "Cost of Shipments"
-msgstr ""
+#, fuzzy
+msgctxt "field:account.invoice.line,cost_sale_shipments:"
+msgid "Cost Sale of Shipments"
+msgstr "Koszt"
 
 #, fuzzy
 msgctxt "field:party.party,sale_shipment_cost_method:"
@@ -68,14 +69,6 @@ msgctxt "field:stock.shipment.cost_sale,shipment:"
 msgid "Shipment"
 msgstr "Koszt wysyłki"
 
-msgctxt "field:stock.shipment.out,cost_invoice_line:"
-msgid "Cost Invoice Line"
-msgstr ""
-
-msgctxt "field:stock.shipment.out,cost_method:"
-msgid "Cost Method"
-msgstr ""
-
 #, fuzzy
 msgctxt "field:stock.shipment.out,cost_sale:"
 msgid "Cost Sale"
@@ -90,6 +83,15 @@ msgstr "Koszt waluty"
 msgctxt "field:stock.shipment.out,cost_sale_currency_used:"
 msgid "Cost Sale Currency"
 msgstr "Koszt waluty"
+
+msgctxt "field:stock.shipment.out,cost_sale_invoice_line:"
+msgid "Cost Sale Invoice Line"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:stock.shipment.out,cost_sale_method:"
+msgid "Cost Sale Method"
+msgstr "Koszt"
 
 #, fuzzy
 msgctxt "field:stock.shipment.out,cost_sale_used:"
@@ -112,14 +114,17 @@ msgid ""
 "Leave empty to use the default value from the configuration."
 msgstr ""
 
+#, python-format
 msgctxt "model:ir.message,text:msg_sale_carrier_required_for_quotation"
 msgid "To get a quote for sale \"%(sale)s\" you must enter a carrier."
 msgstr ""
 
+#, python-format
 msgctxt "model:ir.message,text:msg_sale_invalid_carrier"
 msgid "To confirm sale \"%(sale)s\" you must change the carrier \"%(carrier)s\"."
 msgstr ""
 
+#, python-format
 msgctxt ""
 "model:ir.message,text:msg_shipment_cost_invoice_missing_account_revenue"
 msgid ""

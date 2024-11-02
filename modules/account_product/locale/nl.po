@@ -155,10 +155,12 @@ msgid "Use the taxes defined on the parent category."
 msgstr ""
 "Gebruik de belastingen die zijn gedefinieerd op het bovenliggende niveau."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_missing_account"
 msgid "There is no \"%(field)s\" defined for \"%(name)s\"."
 msgstr "Er is geen \"%(field)s\" gedefinieerd voor \"%(name)s\"."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_missing_taxes"
 msgid "There is no account category defined on product \"%(name)s\"."
 msgstr ""

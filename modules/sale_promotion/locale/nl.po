@@ -78,6 +78,10 @@ msgctxt "field:sale.promotion-product.product,promotion:"
 msgid "Promotion"
 msgstr "Promotie"
 
+msgctxt "field:sale.reporting.promotion,promotion:"
+msgid "Promotion"
+msgstr "Promotie"
+
 msgctxt "help:sale.promotion,formula:"
 msgid ""
 "Python expression that will be evaluated with:\n"
@@ -94,6 +98,15 @@ msgctxt "model:ir.action,name:act_promotion_relate"
 msgid "Sale Promotions"
 msgstr "Verkoopspromoties"
 
+msgctxt "model:ir.action,name:act_sale_relate"
+msgid "Sales"
+msgstr "Verkopen"
+
+msgctxt "model:ir.action,name:act_sale_reporting_promotion"
+msgid "Sales per Promotion"
+msgstr "Verkopen per promotie"
+
+#, python-format
 msgctxt "model:ir.message,text:msg_invalid_formula"
 msgid ""
 "Invalid formula \"%(formula)s\" in promotion \"%(promotion)s\" 'with "
@@ -105,6 +118,10 @@ msgstr ""
 msgctxt "model:ir.rule.group,name:rule_group_promotion_companies"
 msgid "User in companies"
 msgstr "Gebruiker in het bedrijf"
+
+msgctxt "model:ir.rule.group,name:rule_group_reporting_promotion_companies"
+msgid "User in companies"
+msgstr "Gebruiker in bedrijven"
 
 msgctxt "model:ir.ui.menu,name:menu_promotion"
 msgid "Promotions"
@@ -121,3 +138,7 @@ msgstr "Verkooppromotie - Productcategorie"
 msgctxt "model:sale.promotion-product.product,name:"
 msgid "Sale Promotion - Product"
 msgstr "Verkooppromotie - Product"
+
+msgctxt "model:sale.reporting.promotion,name:"
+msgid "Sale Reporting per Promotion"
+msgstr "Rapportage verkoop per promotie"

@@ -18,6 +18,14 @@ msgctxt "field:company.company,header:"
 msgid "Header"
 msgstr "Encabezado"
 
+msgctxt "field:company.company,logo:"
+msgid "Logo"
+msgstr "Logo"
+
+msgctxt "field:company.company,logo_cache:"
+msgid "Cache"
+msgstr "Caché"
+
 msgctxt "field:company.company,party:"
 msgid "Party"
 msgstr "Tercero"
@@ -25,6 +33,22 @@ msgstr "Tercero"
 msgctxt "field:company.company,timezone:"
 msgid "Timezone"
 msgstr "Zona horaria"
+
+msgctxt "field:company.company.logo.cache,company:"
+msgid "Company"
+msgstr "Empresa"
+
+msgctxt "field:company.company.logo.cache,height:"
+msgid "Height"
+msgstr "Altura"
+
+msgctxt "field:company.company.logo.cache,image:"
+msgid "Image"
+msgstr "Imagen"
+
+msgctxt "field:company.company.logo.cache,width:"
+msgid "Width"
+msgstr "Ancho"
 
 msgctxt "field:company.employee,active:"
 msgid "Active"
@@ -254,6 +278,10 @@ msgctxt "model:company.company.config.start,name:"
 msgid "Company Config"
 msgstr "Configuración empresa"
 
+msgctxt "model:company.company.logo.cache,name:"
+msgid "Company Logo Cache"
+msgstr "Caché del logotipo de la empresa"
+
 msgctxt "model:company.employee,name:"
 msgid "Employee"
 msgstr "Empleado"
@@ -281,6 +309,11 @@ msgstr "Carta"
 msgctxt "model:ir.cron-company.company,name:"
 msgid "Cron - Company"
 msgstr "Planificador - Empresa"
+
+msgctxt "model:ir.message,text:msg_company_logo_cache_size_unique"
+msgid "The size of cached company logo must be unique."
+msgstr ""
+"El tamaño del logotipo de la empresa almacenado en caché debe ser único."
 
 msgctxt "model:ir.rule.group,name:rule_group_sequence_companies"
 msgid "User in companies"
@@ -347,8 +380,16 @@ msgid "You can now add your company into the system."
 msgstr "Ahora puede añadir su empresa en el sistema."
 
 msgctxt "view:company.company:"
+msgid "Company"
+msgstr "Empresa"
+
+msgctxt "view:company.company:"
 msgid "Reports"
 msgstr "Informes"
+
+msgctxt "view:company.employee:"
+msgid "Employee"
+msgstr "Empleado"
 
 msgctxt "wizard_button:company.company.config,company,add:"
 msgid "Add"

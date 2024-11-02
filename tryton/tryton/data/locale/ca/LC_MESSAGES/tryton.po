@@ -242,7 +242,7 @@ msgstr "Informe..."
 msgid "Print..."
 msgstr "Imprimeix..."
 
-msgid "E-Mail..."
+msgid "Email..."
 msgstr "Correu electrònic..."
 
 msgid "Bold"
@@ -352,12 +352,6 @@ msgstr "Ajuda"
 
 msgid "No result found."
 msgstr "No s'han trobat resultats."
-
-msgid "Favorites"
-msgstr "Preferits"
-
-msgid "Manage..."
-msgstr "Gestiona..."
 
 msgid "Action"
 msgstr "Acció"
@@ -589,6 +583,9 @@ msgstr "Connecta amb el servidor Tryton"
 msgid "Profile:"
 msgstr "Perfil:"
 
+msgid "Manage..."
+msgstr "Gestiona..."
+
 msgid "Host / Database information"
 msgstr "Informació del Servidor / Base de dades"
 
@@ -599,7 +596,7 @@ msgid "Unable to complete email entry"
 msgstr "No s'ha pogut completar l'entrada del correu electrònic"
 
 #, python-format
-msgid "E-mail %s"
+msgid "Email %s"
 msgstr "Correu electrònic %s"
 
 msgid "To:"
@@ -847,11 +844,11 @@ msgstr "_Informes..."
 msgid "_Print..."
 msgstr "Im_primeix..."
 
-msgid "_E-Mail..."
+msgid "_Email..."
 msgstr "_Correu electrònic..."
 
-msgid "Send an e-mail using the record"
-msgstr "Envia un correu electrònic utilitzant el registre"
+msgid "Send an email using the record"
+msgstr "Envieu un correu electrònic utilitzant el registre"
 
 msgid "_Export Data..."
 msgstr "_Exporta dades..."
@@ -902,6 +899,9 @@ msgstr "Nom del camp"
 msgid "CSV Export: %s"
 msgstr "Exportació CSV: %s"
 
+msgid "Open"
+msgstr "Obre"
+
 msgid "_Save Export"
 msgstr "_Desa exportació"
 
@@ -916,12 +916,6 @@ msgstr "<b>Exportacions predeterminades</b>"
 
 msgid "Name"
 msgstr "Nom"
-
-msgid "Open"
-msgstr "Obre"
-
-msgid "Save"
-msgstr "Desa"
 
 msgid "Listed Records"
 msgstr "Registres llistats"
@@ -980,6 +974,9 @@ msgstr "Guarda i nou"
 msgid "Add and New"
 msgstr "Afegeix i nou"
 
+msgid "Save"
+msgstr "Desa"
+
 msgid "Add"
 msgstr "Afegeix"
 
@@ -1004,6 +1001,9 @@ msgstr "Recupera el registre seleccionat <Ins>"
 #, python-format
 msgid "CSV Import: %s"
 msgstr "Importació CSV: %s"
+
+msgid "Import"
+msgstr "Importa"
 
 msgid "_Auto-Detect"
 msgstr "Detecta _automàticament"
@@ -1205,6 +1205,9 @@ msgstr "Afegeix un registre existent"
 msgid "Remove selected record"
 msgstr "Elimina el registre seleccionat"
 
+msgid "Restore selected record"
+msgstr "Restaura el registre seleccionat"
+
 msgid "Open the record <F2>"
 msgstr "Obre el registre <F2>"
 
@@ -1219,6 +1222,9 @@ msgstr "Edita registre seleccionat"
 
 msgid "Delete selected record"
 msgstr "Elimina el registre seleccionat"
+
+msgid "Undelete selected record"
+msgstr "Recuperar el registre seleccionat"
 
 #, python-format
 msgid "%s%%"

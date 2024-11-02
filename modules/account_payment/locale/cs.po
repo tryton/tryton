@@ -6,6 +6,11 @@ msgctxt "field:account.configuration,payment_group_sequence:"
 msgid "Payment Group Sequence"
 msgstr ""
 
+#, fuzzy
+msgctxt "field:account.configuration,payment_sequence:"
+msgid "Payment Sequence"
+msgstr "Payment Journals"
+
 msgctxt "field:account.configuration.payment_group_sequence,company:"
 msgid "Company"
 msgstr ""
@@ -15,6 +20,15 @@ msgctxt ""
 msgid "Payment Group Sequence"
 msgstr ""
 
+msgctxt "field:account.configuration.payment_sequence,company:"
+msgid "Company"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:account.configuration.payment_sequence,payment_sequence:"
+msgid "Payment Sequence"
+msgstr "Payment Journals"
+
 msgctxt "field:account.invoice,payment_direct_debit:"
 msgid "Direct Debit"
 msgstr ""
@@ -22,6 +36,11 @@ msgstr ""
 #, fuzzy
 msgctxt "field:account.move.line,payment_amount:"
 msgid "Amount to Pay"
+msgstr "Lines to Pay"
+
+#, fuzzy
+msgctxt "field:account.move.line,payment_amount_cache:"
+msgid "Amount to Pay Cache"
 msgstr "Lines to Pay"
 
 msgctxt "field:account.move.line,payment_blocked:"
@@ -113,6 +132,10 @@ msgstr ""
 
 msgctxt "field:account.payment,line:"
 msgid "Line"
+msgstr ""
+
+msgctxt "field:account.payment,number:"
+msgid "Number"
 msgstr ""
 
 msgctxt "field:account.payment,origin:"
@@ -260,6 +283,10 @@ msgctxt "field:party.party.reception_direct_debit,process_method:"
 msgid "Process Method"
 msgstr "Process Payments"
 
+msgctxt "field:party.party.reception_direct_debit,type:"
+msgid "Type"
+msgstr ""
+
 msgctxt "help:account.invoice,payment_direct_debit:"
 msgid "Check if the invoice is paid by direct debit."
 msgstr ""
@@ -294,6 +321,13 @@ msgctxt "help:account.payment.group,payment_count:"
 msgid "The number of payments in the group."
 msgstr ""
 
+#, fuzzy
+msgctxt "help:account.statement.rule,description:"
+msgid ""
+"\n"
+"'payment'"
+msgstr "Payment"
+
 msgctxt "help:party.party,payment_direct_debit:"
 msgid "Check if supplier does direct debit."
 msgstr ""
@@ -308,6 +342,10 @@ msgstr ""
 
 msgctxt "model:account.configuration.payment_group_sequence,name:"
 msgid "Account Configuration Payment Group Sequence"
+msgstr ""
+
+msgctxt "model:account.configuration.payment_sequence,name:"
+msgid "Account Configuration Payment Sequence"
 msgstr ""
 
 msgctxt "model:account.move.line.create_direct_debit.start,name:"
@@ -491,54 +529,64 @@ msgctxt ""
 msgid "Pending"
 msgstr ""
 
+#, python-format
 msgctxt "model:ir.message,text:msg_erase_party_pending_payment"
 msgid ""
 "You cannot erase party \"%(party)s\" while they have pending payments with "
 "company \"%(company)s\"."
 msgstr ""
 
+#, python-format
 msgctxt "model:ir.message,text:msg_move_cancel_payments"
 msgid ""
 "The moves \"%(moves)s\" contain lines with payments, you may want to cancel "
 "them before cancelling."
 msgstr ""
 
+#, python-format
 msgctxt "model:ir.message,text:msg_move_line_delegate_payments"
 msgid ""
 "The lines \"%(lines)s\" have payments, you may want to cancel them before "
 "delegating."
 msgstr ""
 
+#, python-format
 msgctxt "model:ir.message,text:msg_move_line_group_payments"
 msgid ""
 "The lines \"%(lines)s\" have payments, you may want to cancel them before "
 "grouping."
 msgstr ""
 
+#, python-format
 msgctxt "model:ir.message,text:msg_move_line_reschedule_payments"
 msgid ""
 "The lines \"%(lines)s\" have payments, you may want to cancel them before "
 "rescheduling."
 msgstr ""
 
+#, python-format
 msgctxt "model:ir.message,text:msg_pay_line_blocked"
 msgid "Line \"%(line)s\" is blocked for payment."
 msgstr ""
 
+#, python-format
 msgctxt "model:ir.message,text:msg_pay_line_group"
 msgid ""
 "The lines \"%(names)s\" for %(party)s could be grouped with the line "
 "\"%(line)s\"."
 msgstr ""
 
+#, python-format
 msgctxt "model:ir.message,text:msg_payment_delete_draft"
 msgid "To delete payment \"%(payment)s\" you must reset it to draft state."
 msgstr ""
 
+#, python-format
 msgctxt "model:ir.message,text:msg_payment_overpay"
 msgid "Payment \"%(payment)s\" overpays line \"%(line)s\"."
 msgstr ""
 
+#, python-format
 msgctxt "model:ir.message,text:msg_payment_reconciled"
 msgid "The line \"%(line)s\" of payment \"%(payment)s\" is already reconciled."
 msgstr ""
@@ -611,9 +659,19 @@ msgctxt "model:ir.rule.group,name:rule_group_payment_journal_companies"
 msgid "User in companies"
 msgstr ""
 
+#, fuzzy
+msgctxt "model:ir.sequence,name:sequence_account_payment"
+msgid "Default Account Payment"
+msgstr "Default Account Payment Group"
+
 msgctxt "model:ir.sequence,name:sequence_account_payment_group"
 msgid "Default Account Payment Group"
 msgstr "Default Account Payment Group"
+
+#, fuzzy
+msgctxt "model:ir.sequence.type,name:sequence_type_account_payment"
+msgid "Account Payment Group"
+msgstr "Account Payment Group"
 
 msgctxt "model:ir.sequence.type,name:sequence_type_account_payment_group"
 msgid "Account Payment Group"
@@ -734,14 +792,27 @@ msgctxt "selection:account.payment.journal,process_method:"
 msgid "Manual"
 msgstr ""
 
+msgctxt "selection:party.party.reception_direct_debit,type:"
+msgid "Balance"
+msgstr ""
+
+#, fuzzy
+msgctxt "selection:party.party.reception_direct_debit,type:"
+msgid "Line"
+msgstr "Pay Lines"
+
 msgctxt "view:account.configuration:"
-msgid "Group Sequence"
+msgid "Group Sequence:"
 msgstr ""
 
 #, fuzzy
 msgctxt "view:account.configuration:"
 msgid "Payment"
 msgstr "Payment"
+
+msgctxt "view:account.configuration:"
+msgid "Sequence:"
+msgstr ""
 
 msgctxt "view:account.move.line.create_direct_debit.start:"
 msgid "Create Direct Debit for date"

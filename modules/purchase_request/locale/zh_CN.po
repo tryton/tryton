@@ -153,12 +153,14 @@ msgctxt ""
 msgid "Exception"
 msgstr "异常"
 
+#, python-format
 msgctxt "model:ir.message,text:msg_purchase_delete_request"
 msgid ""
 "You cannot delete purchase \"%(purchase)s\" because it is linked to purchase"
 " requests."
 msgstr "你无法删除采购 \"%(purchase)s\" ，因为有采购申请与其对应."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_purchase_request_warehouse"
 msgid ""
 "Warehouse \"%(purchase_warehouse)s\" on purchase \"%(purchase)s\" is "
@@ -168,6 +170,7 @@ msgstr ""
 "采购 \"%(purchase)s\"对应的仓库\"%(purchase_warehouse)s\"和采购申请 \"%(request)s\" "
 "对应的仓库 \"%(request_warehouse)s\"不一致."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_request_delete_purchased"
 msgid ""
 "You cannot delete purchase request \"%(request)s\" because it is purchased."
@@ -256,7 +259,8 @@ msgctxt ""
 msgid "Cancel"
 msgstr "取消"
 
+#, fuzzy
 msgctxt ""
 "wizard_button:purchase.request.handle.purchase.cancellation,start,reset:"
-msgid "Reset to draft"
+msgid "Reset to Draft"
 msgstr "重置为草案"

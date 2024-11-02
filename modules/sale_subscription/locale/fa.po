@@ -416,10 +416,12 @@ msgctxt ""
 msgid "Running"
 msgstr "در حال اجرا"
 
+#, python-format
 msgctxt "model:ir.message,text:msg_consumption_delete_invoiced"
 msgid "You cannot delete invoiced consumption \"%(consumption)s\"."
 msgstr "شما نمی توانید صورتحساب کالای مصرفی :\"%(consumption)s\" را حذف کنید."
 
+#, python-format
 msgctxt ""
 "model:ir.message,text:msg_consumption_invoice_missing_account_revenue"
 msgid ""
@@ -429,16 +431,19 @@ msgstr ""
 "برای صورتحساب کالای مصرفی شما باید یک حساب درآمد برای محصول :\"%(product)s\""
 " تعریف کنید."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_consumption_modify_invoiced"
 msgid "You cannot modify invoiced consumption \"%(consumption)s\"."
 msgstr "شما نمی توانید صورتحساب کالای مصرفی :\"%(consumption)s\"را اصلاح کنید."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_consumption_recurrence_invalid"
 msgid ""
 "The consumption recurrence of line \"%(line)s\" of subscription "
 "\"%(subscription)s\" does not generate any occurrence."
 msgstr ""
 
+#, python-format
 msgctxt "model:ir.message,text:msg_erase_party_pending_subscription"
 msgid ""
 "You cannot erase party \"%(party)s\" while they have pending subscriptions "
@@ -447,12 +452,14 @@ msgstr ""
 "شما نمیتوانید نهاد/سازمان :\"%(party)s\"را که مشترکین در انتظار با شرکت "
 ":\"%(company)s\" دارد را حذف کنید."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_invoice_recurrence_invalid"
 msgid ""
 "The invoice recurrence of subscription \"%(subscription)s\" does not "
 "generate any occurrence."
 msgstr ""
 
+#, python-format
 msgctxt "model:ir.message,text:msg_recurrence_rule_invalid_by"
 msgid ""
 "Invalid \"%(field)s\" \"%(value)s\" in recurence rule "

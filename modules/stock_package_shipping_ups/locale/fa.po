@@ -58,7 +58,7 @@ msgctxt "model:ir.action,name:act_ups_credential_form"
 msgid "UPS Credentials"
 msgstr "گواهی نامه UPS"
 
-#, fuzzy
+#, fuzzy, python-format
 msgctxt "model:ir.message,text:msg_phone_required"
 msgid ""
 "To validate shipment \"%(shipment)s\" you must add phone number for address "
@@ -67,6 +67,7 @@ msgstr ""
 "برای تأیید حمل و نقل :\"%(shipment)s\" شما باید شماره تلفن را به نهاد/سازمان"
 " :\"%(party)s\" اضافه کنید."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_shipment_has_reference_number"
 msgid ""
 "You cannot create shipping for shipment \"%(shipment)s\" because it has "
@@ -75,6 +76,7 @@ msgstr ""
 "شما نمی توانید حمل را برای حمل و نقل :\"%(shipment)s\" ایجاد کنید، چراکه "
 "دارای یک شماره مرجع است."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_shipping_description_required"
 msgid ""
 "To validate shipment \"%(shipment)s\" you must fill its shipping "
@@ -83,6 +85,11 @@ msgstr ""
 "برای تایید حمل و نقل :\"%(shipment)s\" شما باید توضیحات حمل و نقل خود را پر "
 "کنید."
 
+msgctxt "model:ir.message,text:msg_ups_credential_modified"
+msgid "Are you sure you want to modify UPS credentials?"
+msgstr ""
+
+#, fuzzy, python-format
 msgctxt "model:ir.message,text:msg_ups_webservice_error"
 msgid ""
 "UPS webservice call failed with the following error message:\n"
@@ -91,6 +98,7 @@ msgstr ""
 "تماس با وب سرویس UPS با پیغام خطای زیر انجام نشد :\n"
 "\"%s\""
 
+#, python-format
 msgctxt "model:ir.message,text:msg_warehouse_address_required"
 msgid ""
 "To validate shipment \"%(shipment)s\" you must set an address on warehouse "

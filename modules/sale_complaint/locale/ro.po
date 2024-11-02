@@ -265,12 +265,21 @@ msgctxt ""
 msgid "Waiting"
 msgstr "În Aşteptare"
 
+#, python-format
 msgctxt "model:ir.message,text:msg_action_delete_result"
 msgid "You cannot delete action \"%(action)s\" because it has a result."
 msgstr "Nu se poate șterge acțiunea \"%(action)s\" deoarece are un rezultat."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_complaint_delete_draft"
 msgid "To delete complaint \"%(complaint)s\" you must reset it to draft state."
+msgstr ""
+"Pentru a șterge reclamația \"%(complaint)s\", trebuie resetată la starea de "
+"ciornă."
+
+#, fuzzy, python-format
+msgctxt "model:ir.message,text:msg_complaint_similar"
+msgid "The complaint \"%(complaint)s\" is similar to complaint \"%(similar)s\"."
 msgstr ""
 "Pentru a șterge reclamația \"%(complaint)s\", trebuie resetată la starea de "
 "ciornă."

@@ -137,9 +137,9 @@ msgstr ""
 msgid "Could not get a session."
 msgstr "Tidak dapat terhubung ke server."
 
-#, python-format
+#, fuzzy, python-format
 msgid "Error: \"%s\". Try again later."
-msgstr ""
+msgstr "Terlalu banyak permintaan. Coba lagi nanti."
 
 msgid "Too many requests. Try again later."
 msgstr "Terlalu banyak permintaan. Coba lagi nanti."
@@ -237,8 +237,8 @@ msgstr "Laporan..."
 msgid "Print..."
 msgstr "Cetak..."
 
-msgid "E-Mail..."
-msgstr "E-Mail..."
+msgid "Email..."
+msgstr "Email..."
 
 msgid "Bold"
 msgstr "Tebal"
@@ -346,12 +346,6 @@ msgid "Help"
 msgstr "Bantuan"
 
 msgid "No result found."
-msgstr ""
-
-msgid "Favorites"
-msgstr ""
-
-msgid "Manage..."
 msgstr ""
 
 msgid "Action"
@@ -585,6 +579,9 @@ msgstr ""
 msgid "Profile:"
 msgstr ""
 
+msgid "Manage..."
+msgstr ""
+
 msgid "Host / Database information"
 msgstr ""
 
@@ -594,8 +591,8 @@ msgstr ""
 msgid "Unable to complete email entry"
 msgstr ""
 
-#, python-format
-msgid "E-mail %s"
+#, fuzzy, python-format
+msgid "Email %s"
 msgstr "E-mail %s"
 
 msgid "To:"
@@ -841,10 +838,11 @@ msgstr ""
 msgid "_Print..."
 msgstr ""
 
-msgid "_E-Mail..."
-msgstr ""
+#, fuzzy
+msgid "_Email..."
+msgstr "Email..."
 
-msgid "Send an e-mail using the record"
+msgid "Send an email using the record"
 msgstr ""
 
 msgid "_Export Data..."
@@ -896,6 +894,9 @@ msgstr ""
 msgid "CSV Export: %s"
 msgstr ""
 
+msgid "Open"
+msgstr "Buka"
+
 msgid "_Save Export"
 msgstr ""
 
@@ -910,12 +911,6 @@ msgstr ""
 
 msgid "Name"
 msgstr "Nama"
-
-msgid "Open"
-msgstr "Buka"
-
-msgid "Save"
-msgstr "Simpan"
 
 msgid "Listed Records"
 msgstr ""
@@ -975,6 +970,9 @@ msgstr ""
 msgid "Add and New"
 msgstr ""
 
+msgid "Save"
+msgstr "Simpan"
+
 msgid "Add"
 msgstr "Tambah"
 
@@ -999,6 +997,10 @@ msgstr ""
 #, python-format
 msgid "CSV Import: %s"
 msgstr ""
+
+#, fuzzy
+msgid "Import"
+msgstr "Laporan"
 
 msgid "_Auto-Detect"
 msgstr ""
@@ -1202,6 +1204,10 @@ msgstr ""
 msgid "Remove selected record"
 msgstr ""
 
+#, fuzzy
+msgid "Restore selected record"
+msgstr "Pilih satu warna"
+
 msgid "Open the record <F2>"
 msgstr ""
 
@@ -1216,6 +1222,10 @@ msgstr ""
 
 msgid "Delete selected record"
 msgstr ""
+
+#, fuzzy
+msgid "Undelete selected record"
+msgstr "Pilih satu warna"
 
 #, python-format
 msgid "%s%%"

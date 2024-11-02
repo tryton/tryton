@@ -110,6 +110,14 @@ msgctxt "field:production,warehouse:"
 msgid "Warehouse"
 msgstr "Logistikstandort"
 
+msgctxt "field:production.bom,code:"
+msgid "Code"
+msgstr "Code"
+
+msgctxt "field:production.bom,code_readonly:"
+msgid "Code Readonly"
+msgstr "Code nur lesbar"
+
 msgctxt "field:production.bom,inputs:"
 msgid "Inputs"
 msgstr "Eingänge"
@@ -206,6 +214,10 @@ msgctxt "field:production.bom.tree.open.tree,bom_tree:"
 msgid "BOM Tree"
 msgstr "Stücklistenbaum"
 
+msgctxt "field:production.configuration,bom_sequence:"
+msgid "BOM Sequence"
+msgstr "Nummernkreis Stückliste"
+
 msgctxt "field:production.configuration,production_sequence:"
 msgid "Production Sequence"
 msgstr "Nummernkreis Produktion"
@@ -278,6 +290,10 @@ msgstr "Das externe Identifizierungsmerkmal der Lieferung."
 msgctxt "help:production,uom_category:"
 msgid "The category of Unit of Measure."
 msgstr "Die Kategorie der Maßeinheit."
+
+msgctxt "help:production.configuration,bom_sequence:"
+msgid "Used to generate the BOM code."
+msgstr "Wird benutzt, um die Stücklisten-Codes zu erzeugen."
 
 msgctxt "help:stock.location,production_output_location:"
 msgid ""
@@ -372,6 +388,7 @@ msgctxt ""
 msgid "Waiting"
 msgstr "Wartend"
 
+#, python-format
 msgctxt "model:ir.message,text:msg_missing_product_list_price"
 msgid ""
 "The product \"%(product)s\" on production \"%(production)s\" does not have "
@@ -380,6 +397,7 @@ msgstr ""
 "Für den Artikel \"%(product)s\" auf dem Produktionsauftrag "
 "\"%(production)s\" wurde kein Listenpreis erfasst."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_recursive_bom"
 msgid "You cannot create a recursive BOM for product \"%(product)s\"."
 msgstr ""
@@ -430,6 +448,10 @@ msgstr "Benutzer in Unternehmen"
 msgctxt "model:ir.sequence,name:sequence_production"
 msgid "Production"
 msgstr "Produktion"
+
+msgctxt "model:ir.sequence.type,name:sequence_type_bom"
+msgid "BOM"
+msgstr "Stückliste"
 
 msgctxt "model:ir.sequence.type,name:sequence_type_production"
 msgid "Production"

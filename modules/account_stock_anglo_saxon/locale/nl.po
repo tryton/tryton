@@ -18,6 +18,7 @@ msgctxt "field:stock.move,out_anglo_saxon_quantity:"
 msgid "Output Anglo-Saxon Quantity"
 msgstr "Output Angelsaksische hoeveelheid"
 
+#, python-format
 msgctxt "model:ir.message,text:msg_invoice_line_stock_move_different_product"
 msgid ""
 "The invoice line \"%(line)s\" is linked to stock moves of other products than \"%(product)s\".\n"
@@ -25,6 +26,24 @@ msgid ""
 msgstr ""
 "De factuurlijn \"%(line)s\" is gekoppeld aan voorraadbewegingen van andere producten dan \"%(product)s\".\n"
 "Dit kan een verkeerde COGS berekenen.(cogs=kost verkochte goederen)."
+
+#, python-format
+msgctxt "model:ir.message,text:msg_move_cancel_anglo_saxon"
+msgid ""
+"You cannot cancel move \"%(move)s\" because it is used for anglo-saxon "
+"accounting."
+msgstr ""
+"U kunt de boeking \"%(move)s\" niet annuleren omdat deze gebruikt wordt voor"
+" Angelsaksisch boekhouden."
+
+#, python-format
+msgctxt "model:ir.message,text:msg_move_delete_anglo_saxon"
+msgid ""
+"You cannot delete move \"%(move)s\" because it is used for anglo-saxon "
+"accounting."
+msgstr ""
+"U kunt de boeking \"%(move)s\" niet verwijderen omdat deze gebruikt wordt "
+"voor Angelsaksisch boekhouden."
 
 msgctxt "model:ir.message,text:msg_move_quantity_greater"
 msgid "Anglo-Saxon quantity cannot be greater than quantity."

@@ -128,14 +128,15 @@ msgctxt ""
 msgid "Draft"
 msgstr ""
 
-msgctxt "model:ir.message,text:msg_forecast_date_overlap"
-msgid ""
-"The forecasts \"%(first)s\" and \"%(second)s\" overlap, you must use "
-"different dates."
-msgstr ""
-
+#, python-format
 msgctxt "model:ir.message,text:msg_forecast_delete_cancel"
 msgid "To delete forecast \"%(forecast)s\" you must cancel it."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_forecast_done_dates_overlap"
+msgid ""
+"The dates of done forecasts for the same company, warehouse and destination "
+"can not overlap."
 msgstr ""
 
 msgctxt "model:ir.message,text:msg_forecast_line_product_unique"

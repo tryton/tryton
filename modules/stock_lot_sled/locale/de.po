@@ -98,6 +98,7 @@ msgctxt "help:stock.location.lot.shelf_life,shelf_life_delay:"
 msgid "The delay before removal from the forecast."
 msgstr "Der Aufschub vor dem Entfernen aus der Bedarfsermittlung."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_lot_modify_expiration_date_period_close"
 msgid ""
 "You cannot modify expiration dates of lot \"%(lot)s because it is used on "
@@ -107,12 +108,14 @@ msgstr ""
 "sie in Warenbewegung \"%(move)s\" in einem geschlossenen "
 "Lagerbuchungszeitraum verwendet wird."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_move_lot_expired"
 msgid "You cannot process move \"%(move)s\" because its lot \"%(lot)s\" has expired."
 msgstr ""
 "Die Warenbewegung \"%(move)s\" kann nicht ausgeführt werden, weil die "
 "zugewiesene Charge \"%(lot)s\" abgelaufen ist."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_period_close_sled"
 msgid ""
 "You cannot close periods before the expiration of lot \"%(lot)s\" "

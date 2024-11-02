@@ -16,7 +16,7 @@ msgstr "Banca"
 
 msgctxt "field:bank.account,currency:"
 msgid "Currency"
-msgstr "Moneda"
+msgstr "Valuta"
 
 msgctxt "field:bank.account,numbers:"
 msgid "Numbers"
@@ -94,6 +94,7 @@ msgctxt "model:ir.action,name:act_bank_form"
 msgid "Banks"
 msgstr "Bănci"
 
+#, python-format
 msgctxt "model:ir.message,text:msg_account_iban_invalid_bic"
 msgid "The BIC of \"%(account)s\" is not valid with the \"%(bic)s\" from IBAN."
 msgstr "BIC-ul contului \"%(account)s\" nu corespunde cu \"%(bic)s\"-ul de la IBAN."
@@ -102,10 +103,12 @@ msgctxt "model:ir.message,text:msg_account_iban_unique"
 msgid "Account can have only one IBAN."
 msgstr "Contul poate avea un singur IBAN."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_invalid_bic"
 msgid "The BIC \"%(bic)s\" is not valid."
 msgstr "Codul BIC \"%(bic)s\" nu este valid."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_invalid_iban"
 msgid "IBAN \"%(number)s\" is not valid."
 msgstr "Codul IBAN \"%(number)s\" nu este valid."
@@ -124,7 +127,7 @@ msgstr "Bănci"
 
 msgctxt "model:ir.ui.menu,name:menu_banking"
 msgid "Banking"
-msgstr "Bancar"
+msgstr "Bănci"
 
 msgctxt "model:res.group,name:group_bank_admin"
 msgid "Bank Administration"

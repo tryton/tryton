@@ -245,7 +245,7 @@ msgstr "گزارش..."
 msgid "Print..."
 msgstr "چاپ..."
 
-msgid "E-Mail..."
+msgid "Email..."
 msgstr "ایمیل..."
 
 msgid "Bold"
@@ -356,12 +356,6 @@ msgstr "راهنما"
 
 msgid "No result found."
 msgstr "نتیجه ای پیدا نشد."
-
-msgid "Favorites"
-msgstr "علاقمندی ها"
-
-msgid "Manage..."
-msgstr "مدیریت..."
 
 msgid "Action"
 msgstr "اقدام"
@@ -602,6 +596,9 @@ msgstr "اتصال سرور تریتون"
 msgid "Profile:"
 msgstr "پروفایل:"
 
+msgid "Manage..."
+msgstr "مدیریت..."
+
 msgid "Host / Database information"
 msgstr "اطلاعات میزبان / پایگاه داده"
 
@@ -612,8 +609,8 @@ msgstr "نام کاربر:"
 msgid "Unable to complete email entry"
 msgstr "قادر به حذف دستیار \"%s\" نیست"
 
-#, python-format
-msgid "E-mail %s"
+#, fuzzy, python-format
+msgid "Email %s"
 msgstr "ایمیل %s"
 
 msgid "To:"
@@ -872,11 +869,12 @@ msgstr "_گزارش..."
 msgid "_Print..."
 msgstr "_چاپ..."
 
-msgid "_E-Mail..."
-msgstr "_ایمیل..."
+#, fuzzy
+msgid "_Email..."
+msgstr "ایمیل..."
 
 #, fuzzy
-msgid "Send an e-mail using the record"
+msgid "Send an email using the record"
 msgstr "یک یادداشت به پرونده اضافه کنید"
 
 msgid "_Export Data..."
@@ -928,6 +926,9 @@ msgstr "نام فیلد"
 msgid "CSV Export: %s"
 msgstr "صادرکردن(CSV) : %s"
 
+msgid "Open"
+msgstr "باز کردن"
+
 msgid "_Save Export"
 msgstr "_ذخیره استخراج"
 
@@ -943,12 +944,6 @@ msgstr "<b>استخراج از پیش تعریف شده</b>"
 
 msgid "Name"
 msgstr "نام"
-
-msgid "Open"
-msgstr "باز کردن"
-
-msgid "Save"
-msgstr "ذخیره"
 
 #, fuzzy
 msgid "Listed Records"
@@ -1011,6 +1006,9 @@ msgstr ""
 msgid "Add and New"
 msgstr "افزودن مقدار"
 
+msgid "Save"
+msgstr "ذخیره"
+
 msgid "Add"
 msgstr "افزودن"
 
@@ -1035,6 +1033,10 @@ msgstr "بازگردانی فایل انتخابی <Ins>"
 #, python-format
 msgid "CSV Import: %s"
 msgstr "وارد کردن (CSV) : %s"
+
+#, fuzzy
+msgid "Import"
+msgstr "گزارش"
 
 msgid "_Auto-Detect"
 msgstr "_شناسایی - خودکار"
@@ -1243,6 +1245,10 @@ msgstr "افزودن پرونده موجود"
 msgid "Remove selected record"
 msgstr "حذف پرونده انتخابی"
 
+#, fuzzy
+msgid "Restore selected record"
+msgstr "حذف پرونده انتخابی"
+
 msgid "Open the record <F2>"
 msgstr "بازکردن پرونده <F2>"
 
@@ -1258,6 +1264,10 @@ msgstr "ویرایش پرونده انتخابی <F2>"
 
 #, fuzzy
 msgid "Delete selected record"
+msgstr "حذف پرونده انتخابی"
+
+#, fuzzy
+msgid "Undelete selected record"
 msgstr "حذف پرونده انتخابی"
 
 #, python-format

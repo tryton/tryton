@@ -50,6 +50,7 @@ msgctxt "help:purchase.line,production:"
 msgid "Add to the cost of the production."
 msgstr "Añade coste a la producción."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_pending_purchase_done"
 msgid ""
 "The productions \"%(productions)s\" cannot be processed as they have pending"

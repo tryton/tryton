@@ -3,12 +3,14 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
+#, fuzzy
 msgctxt "field:marketing.email,email:"
-msgid "E-mail"
+msgid "Email"
 msgstr "E-pošta"
 
+#, fuzzy
 msgctxt "field:marketing.email,email_token:"
-msgid "E-mail Token"
+msgid "Email Token"
 msgstr "E-poštni žeton"
 
 msgctxt "field:marketing.email,list_:"
@@ -63,9 +65,10 @@ msgctxt "field:marketing.email.message,urls:"
 msgid "URLs"
 msgstr "URL-ji"
 
+#, fuzzy
 msgctxt "field:marketing.email.send_test,email:"
-msgid "E-Mail"
-msgstr "E-pošta"
+msgid "Email"
+msgstr "E-poštni naslovi"
 
 msgctxt "field:marketing.email.send_test,list_:"
 msgid "List"
@@ -88,9 +91,10 @@ msgctxt "model:ir.action,name:act_email_message_form"
 msgid "Messages"
 msgstr "Sporočila"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_email_relate_list"
-msgid "E-mails"
-msgstr "E-pošte"
+msgid "Emails"
+msgstr "E-poštni naslovi"
 
 msgctxt "model:ir.action,name:report_email_subscribe"
 msgid "Subscribe Request"
@@ -117,6 +121,7 @@ msgctxt ""
 msgid "Sending"
 msgstr "V pošiljanju"
 
+#, python-format
 msgctxt "model:ir.message,text:msg_email_invalid"
 msgid "The email address \"%(email)s\" for \"%(record)s\" is not valid."
 msgstr "E-poštni naslov \"%(email)s\" za \"%(record)s\" ni veljaven."
@@ -125,6 +130,7 @@ msgctxt "model:ir.message,text:msg_email_list_unique"
 msgid "Email addresses can only be subscribed once to each list."
 msgstr "E-poštni naslov sme biti naročen samo enkrat na posameznem seznamu."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_message_invalid_content"
 msgid "Invalid content in message \"%(message)s\" with exception \"%(exception)s\"."
 msgstr "Sporočilo \"%(message)s\" ima neveljavno vsebino. Napaka: \"%(exception)s\"."
@@ -145,20 +151,23 @@ msgctxt "model:ir.ui.menu,name:menu_email_list_form"
 msgid "Mailing Lists"
 msgstr "Elektronski poštni seznami"
 
+#, fuzzy
 msgctxt "model:marketing.email,name:"
-msgid "Marketing E-mail"
+msgid "Marketing Email"
 msgstr "Marketinška e-pošta"
 
 msgctxt "model:marketing.email.list,name:"
 msgid "Marketing Mailing List"
 msgstr "Marketinški elektronski poštni seznam"
 
+#, fuzzy
 msgctxt "model:marketing.email.message,name:"
-msgid "Marketing E-mail Message"
+msgid "Marketing Email Message"
 msgstr "Marketinško e-poštno sporočilo"
 
+#, fuzzy
 msgctxt "model:marketing.email.send_test,name:"
-msgid "Send Test E-mail"
+msgid "Send Test Email"
 msgstr "Pošlji testno e-pošto"
 
 msgctxt "report:marketing.email.subscribe:"

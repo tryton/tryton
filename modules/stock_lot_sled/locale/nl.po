@@ -98,6 +98,7 @@ msgctxt "help:stock.location.lot.shelf_life,shelf_life_delay:"
 msgid "The delay before removal from the forecast."
 msgstr "De vertraging voor de verwijdering uit de prognose."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_lot_modify_expiration_date_period_close"
 msgid ""
 "You cannot modify expiration dates of lot \"%(lot)s because it is used on "
@@ -106,12 +107,14 @@ msgstr ""
 "U kunt de houdbaarheidsdatums van batch \"%(lot)s niet wijzigen omdat het "
 "wordt gebruikt bij voorraadboeking \"%(move)s\" in een afgesloten periode."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_move_lot_expired"
 msgid "You cannot process move \"%(move)s\" because its lot \"%(lot)s\" has expired."
 msgstr ""
 "U kunt de voorraadboeking \"%(move)s\" niet verwerken omdat de batch "
 "\"%(lot)s verlopen is."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_period_close_sled"
 msgid ""
 "You cannot close periods before the expiration of lot \"%(lot)s\" "

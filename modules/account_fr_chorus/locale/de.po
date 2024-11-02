@@ -122,6 +122,11 @@ msgctxt ""
 msgid "Sent"
 msgstr "Gesendet"
 
+msgctxt "model:ir.message,text:msg_chorus_credential_modified"
+msgid "Are you sure you want to modify Chorus credentials?"
+msgstr "Wollen Sie wirklich die Chorus Zugangsdaten ändern?"
+
+#, python-format
 msgctxt "model:ir.message,text:msg_invoice_address_no_siret"
 msgid ""
 "To create a Chorus invoice for \"%(invoice)s\", you must set a SIRET on "
@@ -130,6 +135,7 @@ msgstr ""
 "Auf Adresse \"%(address)s\" muss eine SIRET gesetzt sein, damit eine Chorus "
 "Rechnung für \"%(invoice)s\" erstellt werden kann."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_invoice_delete_sent"
 msgid "You cannot delete Chorus invoice \"%(invoice)s\" because it is sent."
 msgstr ""

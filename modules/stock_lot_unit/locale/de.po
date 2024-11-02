@@ -70,6 +70,7 @@ msgstr ""
 "Die Menge einer Charge, für die es Warenbewegungen gibt, kann nicht gändert "
 "werden."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_lot_unit_quantity_greater"
 msgid ""
 "You cannot use more than %(quantity)s%(unit)s of lot \"%(lot)s\" in "

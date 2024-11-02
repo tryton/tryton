@@ -134,7 +134,7 @@ msgid "Inbound Email Rule Header"
 msgstr "Cabeceras de las reglas de correo electrónico entrante"
 
 msgctxt "model:ir.action,name:act_inbound_email_form_relate"
-msgid "E-mails"
+msgid "Emails"
 msgstr "Correos electrónicos"
 
 msgctxt "model:ir.action,name:act_inbound_email_inbox_form"

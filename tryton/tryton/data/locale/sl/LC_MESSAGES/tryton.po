@@ -31,7 +31,7 @@ msgstr "onemogoči uporabo niti"
 
 #, python-format
 msgid "Invalid response id (%s) expected %s"
-msgstr ""
+msgstr "Neveljaven odziv ID (%s), pričakovano %s"
 
 #, python-format
 msgid "Unable to set locale %s"
@@ -84,9 +84,8 @@ msgstr "Ne"
 msgid "Yes"
 msgstr "Da"
 
-#, fuzzy
 msgid "Concurrency Warning"
-msgstr "Izjema sočasnega izvajanja"
+msgstr "Opozorilo o sočasni spremembi"
 
 msgid "This record has been modified while you were editing it."
 msgstr "Ta zapis je bil spremenjen med urejanjem."
@@ -117,7 +116,7 @@ msgid "Application Error"
 msgstr "Programska napaka"
 
 msgid "Details"
-msgstr ""
+msgstr "Podrobnosti"
 
 msgid "Report Bug"
 msgstr "Prijava programske napake"
@@ -143,7 +142,7 @@ msgstr "Ni mogoče vzpostaviti seje."
 
 #, python-format
 msgid "Error: \"%s\". Try again later."
-msgstr ""
+msgstr "Napaka: \"%s\". Poskusite znova pozneje."
 
 msgid "Too many requests. Try again later."
 msgstr "Preveč poslanih zahtev. Poskusite kasneje."
@@ -152,15 +151,17 @@ msgid "Not Found."
 msgstr "Ni najdeno."
 
 msgid "Reset forgotten password"
-msgstr ""
+msgstr "Ponastavite pozabljeno geslo"
 
 msgid "Send you an email to reset your password."
-msgstr ""
+msgstr "Pošljite e-poštno sporočilo za ponastavitev gesla."
 
 msgid ""
 "A request to reset your password has been sent.\n"
 "Please check your mailbox."
 msgstr ""
+"Zahteva za ponastavitev gesla je bila poslana.\n"
+"Preverite svoj poštni predal."
 
 msgid "..."
 msgstr "..."
@@ -241,8 +242,9 @@ msgstr "Poročilo..."
 msgid "Print..."
 msgstr "_Izpis..."
 
-msgid "E-Mail..."
-msgstr "E-pošta..."
+#, fuzzy
+msgid "Email..."
+msgstr "_Epošta..."
 
 msgid "Bold"
 msgstr "Krepko"
@@ -351,12 +353,6 @@ msgstr "Pomoč"
 
 msgid "No result found."
 msgstr "Brez rezultatov."
-
-msgid "Favorites"
-msgstr "Priljubljene"
-
-msgid "Manage..."
-msgstr "Upravljaj..."
 
 msgid "Action"
 msgstr "Ukrep"
@@ -588,6 +584,9 @@ msgstr "Poveži se s Tryton strežnikom"
 msgid "Profile:"
 msgstr "Profil:"
 
+msgid "Manage..."
+msgstr "Upravljaj..."
+
 msgid "Host / Database information"
 msgstr "Strežnik in podatkovna baza"
 
@@ -597,8 +596,8 @@ msgstr "Uporabnik:"
 msgid "Unable to complete email entry"
 msgstr "Ni mogoče samodejno dokončati e-poštnega vnosa"
 
-#, python-format
-msgid "E-mail %s"
+#, fuzzy, python-format
+msgid "Email %s"
 msgstr "E-pošta %s"
 
 msgid "To:"
@@ -736,10 +735,10 @@ msgid "ID:"
 msgstr "ID:"
 
 msgid "Module:"
-msgstr ""
+msgstr "Modul:"
 
 msgid "XML ID:"
-msgstr ""
+msgstr "XML ID:"
 
 msgid "Created by:"
 msgstr "Ustvaril:"
@@ -847,10 +846,12 @@ msgstr "P_oročila..."
 msgid "_Print..."
 msgstr "_Tiskaj..."
 
-msgid "_E-Mail..."
-msgstr "_Elektronska pošta..."
+#, fuzzy
+msgid "_Email..."
+msgstr "_Epošta..."
 
-msgid "Send an e-mail using the record"
+#, fuzzy
+msgid "Send an email using the record"
 msgstr "Pošlji e-pošto z uporabo zapisa"
 
 msgid "_Export Data..."
@@ -902,6 +903,9 @@ msgstr "Naziv polja"
 msgid "CSV Export: %s"
 msgstr "CSV izvoz: %s"
 
+msgid "Open"
+msgstr "Odpri"
+
 msgid "_Save Export"
 msgstr "_Shrani izvoz"
 
@@ -916,12 +920,6 @@ msgstr "<b>Predefinirani izvozi</b>"
 
 msgid "Name"
 msgstr "Naziv"
-
-msgid "Open"
-msgstr "Odpri"
-
-msgid "Save"
-msgstr "Shrani"
 
 msgid "Listed Records"
 msgstr "Prikazani zapisi"
@@ -980,6 +978,9 @@ msgstr "Shrani in ustvari novo"
 msgid "Add and New"
 msgstr "Dodaj in ustvari novo"
 
+msgid "Save"
+msgstr "Shrani"
+
 msgid "Add"
 msgstr "Dodaj"
 
@@ -1004,6 +1005,10 @@ msgstr "Povrni izbran zapis <Ins>"
 #, python-format
 msgid "CSV Import: %s"
 msgstr "CSV uvoz: %s"
+
+#, fuzzy
+msgid "Import"
+msgstr "Poročilo"
 
 msgid "_Auto-Detect"
 msgstr "_Samozaznava"
@@ -1114,20 +1119,17 @@ msgstr "Podoba je prevelika."
 msgid "Copy"
 msgstr "Kopiraj"
 
-#, fuzzy
 msgid "Copy Row"
-msgstr "_Kopiraj URL"
+msgstr "Kopiraj vrstico"
 
-#, fuzzy
 msgid "Copy Rows"
-msgstr "_Kopiraj URL"
+msgstr "Kopiraj vrstice"
 
 msgid "Copy Column"
-msgstr ""
+msgstr "Kopiraj stolpec"
 
-#, fuzzy
 msgid "Paste Rows"
-msgstr "Prilepi"
+msgstr "Prilepi vrstice"
 
 msgid ".."
 msgstr ".."
@@ -1208,6 +1210,10 @@ msgstr "Dodaj obstoječi zapis"
 msgid "Remove selected record"
 msgstr "Odstrani izbran zapis"
 
+#, fuzzy
+msgid "Restore selected record"
+msgstr "Odstrani izbran zapis"
+
 msgid "Open the record <F2>"
 msgstr "Odpri zapis <F2>"
 
@@ -1221,6 +1227,10 @@ msgid "Edit selected record"
 msgstr "Uredi izbran zapis"
 
 msgid "Delete selected record"
+msgstr "Izbriši izbran zapis"
+
+#, fuzzy
+msgid "Undelete selected record"
 msgstr "Izbriši izbran zapis"
 
 #, python-format

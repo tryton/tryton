@@ -103,11 +103,22 @@ msgctxt "model:ir.action,name:act_price_list_form"
 msgid "Price Lists"
 msgstr "Hinnakirjad"
 
+#, fuzzy
+msgctxt "model:ir.action,name:act_price_list_line_form"
+msgid "Price List Lines"
+msgstr "Hinnakirja rida"
+
+#, python-format
 msgctxt "model:ir.message,text:msg_invalid_formula"
 msgid ""
 "Invalid formula \"%(formula)s\" in price list line \"%(line)s\" with "
 "exception \"%(exception)s\"."
 msgstr ""
+
+#, fuzzy
+msgctxt "model:ir.model.button,string:price_list_open_lines_button"
+msgid "Open Lines"
+msgstr "Read"
 
 #, fuzzy
 msgctxt "model:ir.rule.group,name:rule_group_price_list_companies"
@@ -124,6 +135,11 @@ msgstr "Hinnakiri"
 
 msgctxt "model:product.price_list.line,name:"
 msgid "Price List Line"
+msgstr "Hinnakirja rida"
+
+#, fuzzy
+msgctxt "model:product.price_list.line.context,name:"
+msgid "Price List Line Context"
 msgstr "Hinnakirja rida"
 
 msgctxt "selection:product.price_list,price:"

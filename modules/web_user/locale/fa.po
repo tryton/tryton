@@ -2,16 +2,19 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
+#, fuzzy
 msgctxt "field:web.user,email:"
-msgid "E-mail"
+msgid "Email"
 msgstr "ایمیل"
 
+#, fuzzy
 msgctxt "field:web.user,email_token:"
-msgid "E-mail Token"
+msgid "Email Token"
 msgstr "نشانه(Token) ایمیل"
 
+#, fuzzy
 msgctxt "field:web.user,email_valid:"
-msgid "E-mail Valid"
+msgid "Email Valid"
 msgstr "ایمیل معتبر است"
 
 msgctxt "field:web.user,party:"
@@ -89,12 +92,14 @@ msgctxt "model:ir.action,name:report_email_validation"
 msgid "Email Validation"
 msgstr "اعتبار سنجی ایمیل"
 
+#, python-format
 msgctxt "model:ir.message,text:msg_user_email_invalid"
 msgid "The email address \"%(email)s\" for \"%(user)s\" is not valid."
 msgstr ""
 
+#, fuzzy
 msgctxt "model:ir.message,text:msg_user_email_unique"
-msgid "E-mail of active web user must be unique."
+msgid "Email of active web user must be unique."
 msgstr "پست الکترونیکی کاربر فعال وب سایت باید منحصر به فرد باشد."
 
 msgctxt "model:ir.message,text:msg_user_session_key_unique"
@@ -105,8 +110,9 @@ msgctxt "model:ir.model.button,string:user_reset_password_button"
 msgid "Reset Password"
 msgstr "Reset Password"
 
+#, fuzzy
 msgctxt "model:ir.model.button,string:user_validate_email_button"
-msgid "Validate E-mail"
+msgid "Validate Email"
 msgstr "Validate E-mail"
 
 msgctxt "model:ir.ui.menu,name:menu_user_form"
@@ -135,6 +141,7 @@ msgctxt "report:web.user.email_reset_password:"
 msgid "Button not working? Paste this into your browser:"
 msgstr "دکمه کار نمی کند؟ این آدرس را در مرورگر خود مرور کنید:"
 
+#, python-format
 msgctxt "report:web.user.email_reset_password:"
 msgid ""
 "Hello, we received a request to reset the password for the account associated with [1:%(email)s]. No changes have been made to your account yet.[2:]\n"
@@ -152,10 +159,12 @@ msgctxt "report:web.user.email_reset_password:"
 msgid "Reset Password"
 msgstr "بازنشانی کلمه عبور"
 
+#, python-format
 msgctxt "report:web.user.email_reset_password:"
 msgid "The link will expire in [1:%(datetime)s]."
 msgstr ""
 
+#, python-format
 msgctxt "report:web.user.email_validation:"
 msgid "%(email)s"
 msgstr ""
@@ -184,6 +193,7 @@ msgctxt "view:web.user:"
 msgid "Reset Password"
 msgstr "بازنشانی کلمه عبور"
 
+#, fuzzy
 msgctxt "view:web.user:"
-msgid "Validate E-mail"
+msgid "Validate Email"
 msgstr "ایمیل معتبر است"

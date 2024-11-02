@@ -242,8 +242,8 @@ msgstr "Rapport..."
 msgid "Print..."
 msgstr "Afdrukken..."
 
-msgid "E-Mail..."
-msgstr "E-mail..."
+msgid "Email..."
+msgstr "Email..."
 
 msgid "Bold"
 msgstr "Vet"
@@ -352,12 +352,6 @@ msgstr "Help"
 
 msgid "No result found."
 msgstr "Geen resultaat gevonden."
-
-msgid "Favorites"
-msgstr "Favorieten"
-
-msgid "Manage..."
-msgstr "Beheren..."
 
 msgid "Action"
 msgstr "Actie"
@@ -589,6 +583,9 @@ msgstr "Verbind met Tryton server"
 msgid "Profile:"
 msgstr "Profiel:"
 
+msgid "Manage..."
+msgstr "Beheren..."
+
 msgid "Host / Database information"
 msgstr "Hostnaam / database informatie"
 
@@ -599,8 +596,8 @@ msgid "Unable to complete email entry"
 msgstr "E-mailinvoer kan niet worden voltooid"
 
 #, python-format
-msgid "E-mail %s"
-msgstr "E-mail %s"
+msgid "Email %s"
+msgstr "Email %s"
 
 msgid "To:"
 msgstr "Aan:"
@@ -847,11 +844,11 @@ msgstr "_Rapport..."
 msgid "_Print..."
 msgstr "_Afdrukken..."
 
-msgid "_E-Mail..."
-msgstr "_E-mail..."
+msgid "_Email..."
+msgstr "_Email..."
 
-msgid "Send an e-mail using the record"
-msgstr "Stuur een e-mail met behulp van het record"
+msgid "Send an email using the record"
+msgstr "Stuur een email met behulp van het record"
 
 msgid "_Export Data..."
 msgstr "_Exporteer gegevens..."
@@ -902,6 +899,9 @@ msgstr "Veldnaam"
 msgid "CSV Export: %s"
 msgstr "Exporteer CSV: %s"
 
+msgid "Open"
+msgstr "Openen"
+
 msgid "_Save Export"
 msgstr "_Exportgegevens opslaan"
 
@@ -916,12 +916,6 @@ msgstr "<b>Voorgedefinieerde exportinstellingen</b>"
 
 msgid "Name"
 msgstr "Naam"
-
-msgid "Open"
-msgstr "Openen"
-
-msgid "Save"
-msgstr "Opslaan"
 
 msgid "Listed Records"
 msgstr "Weergegeven records"
@@ -980,6 +974,9 @@ msgstr "Opslaan en nieuw"
 msgid "Add and New"
 msgstr "Toevoegen en nieuw"
 
+msgid "Save"
+msgstr "Opslaan"
+
 msgid "Add"
 msgstr "Toevoegen"
 
@@ -1004,6 +1001,9 @@ msgstr "Verwijderen van geselecteerde record <Ins> ongedaan maken"
 #, python-format
 msgid "CSV Import: %s"
 msgstr "Importeer CSV: %s"
+
+msgid "Import"
+msgstr "Importeer"
 
 msgid "_Auto-Detect"
 msgstr "_Automatische detectie"
@@ -1205,6 +1205,9 @@ msgstr "Bestaand record toevoegen"
 msgid "Remove selected record"
 msgstr "Geselecteerd record verwijderen"
 
+msgid "Restore selected record"
+msgstr "Geselecteerd record herstellen"
+
 msgid "Open the record <F2>"
 msgstr "Open het record <F2>"
 
@@ -1219,6 +1222,9 @@ msgstr "Bewerk geselecteerde record"
 
 msgid "Delete selected record"
 msgstr "Geselecteerde record verwijderen"
+
+msgid "Undelete selected record"
+msgstr "Geselecteerd record ongedaan maken"
 
 #, python-format
 msgid "%s%%"

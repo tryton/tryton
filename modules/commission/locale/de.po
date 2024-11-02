@@ -4,11 +4,11 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "field:account.invoice,agent:"
 msgid "Commission Agent"
-msgstr "Vertreter"
+msgstr "Provisionsempfänger"
 
 msgctxt "field:account.invoice.credit.start,with_agent:"
 msgid "With Agent"
-msgstr "Vertreter übernehmen"
+msgstr "Provisionsempfänger übernehmen"
 
 msgctxt "field:account.invoice.line,commissions:"
 msgid "Commissions"
@@ -20,11 +20,11 @@ msgstr "Aus Provisionen"
 
 msgctxt "field:account.invoice.line,principal:"
 msgid "Commission Principal"
-msgstr "Provisionsschuldner"
+msgstr "Auftraggeber"
 
 msgctxt "field:commission,agent:"
 msgid "Agent"
-msgstr "Vertreter"
+msgstr "Provisionsempfänger"
 
 msgctxt "field:commission,amount:"
 msgid "Amount"
@@ -82,6 +82,10 @@ msgctxt "field:commission.agent,plan:"
 msgid "Plan"
 msgstr "Plan"
 
+msgctxt "field:commission.agent,products:"
+msgid "Products"
+msgstr "Artikel"
+
 msgctxt "field:commission.agent,selections:"
 msgid "Selections"
 msgstr "Zuweisungen"
@@ -92,7 +96,7 @@ msgstr "Typ"
 
 msgctxt "field:commission.agent.selection,agent:"
 msgid "Agent"
-msgstr "Vertreter"
+msgstr "Provisionsempfänger"
 
 msgctxt "field:commission.agent.selection,company:"
 msgid "Company"
@@ -116,7 +120,7 @@ msgstr "Startdatum"
 
 msgctxt "field:commission.create_invoice.ask,agents:"
 msgid "Agents"
-msgstr "Vertreter"
+msgstr "Provisionsempfänger"
 
 msgctxt "field:commission.create_invoice.ask,from_:"
 msgid "From"
@@ -164,7 +168,7 @@ msgstr "Artikel"
 
 msgctxt "field:commission.reporting.agent,agent:"
 msgid "Agent"
-msgstr "Vertreter"
+msgstr "Provisionsempfänger"
 
 msgctxt "field:commission.reporting.agent,amount:"
 msgid "Amount"
@@ -192,7 +196,7 @@ msgstr "Zeitreihe"
 
 msgctxt "field:commission.reporting.agent.time_series,agent:"
 msgid "Agent"
-msgstr "Vertreter"
+msgstr "Provisionsempfänger"
 
 msgctxt "field:commission.reporting.agent.time_series,amount:"
 msgid "Amount"
@@ -240,19 +244,19 @@ msgstr "Typ"
 
 msgctxt "field:party.party,agents:"
 msgid "Agents"
-msgstr "Vertreter"
+msgstr "Provisionsempfänger"
 
 msgctxt "field:product.product,principals:"
 msgid "Commission Principals"
-msgstr "Provisionsschuldner"
+msgstr "Auftraggeber"
 
 msgctxt "field:product.template,principals:"
 msgid "Commission Principals"
-msgstr "Provisionsschuldner"
+msgstr "Auftraggeber"
 
 msgctxt "field:product.template-commission.agent,agent:"
 msgid "Agent"
-msgstr "Vertreter"
+msgstr "Provisionsempfänger"
 
 msgctxt "field:product.template-commission.agent,template:"
 msgid "Template"
@@ -260,11 +264,11 @@ msgstr "Vorlage"
 
 msgctxt "field:sale.line,principal:"
 msgid "Commission Principal"
-msgstr "Provisionsschuldner"
+msgstr "Auftraggeber"
 
 msgctxt "field:sale.sale,agent:"
 msgid "Commission Agent"
-msgstr "Vertreter"
+msgstr "Provisionsempfänger"
 
 msgctxt "field:stock.move,commission_price:"
 msgid "Commission Price"
@@ -276,11 +280,14 @@ msgstr "Provision einbeziehen"
 
 msgctxt "help:account.invoice,agent:"
 msgid "The agent who receives a commission for the invoice."
-msgstr "Der Vertreter, der eine Provision für diese Rechnung erhält."
+msgstr ""
+"Der Provisionsempfänger, der eine Provision für diese Rechnung erhält."
 
 msgctxt "help:account.invoice.credit.start,with_agent:"
 msgid "Check to keep the original invoice's agent."
-msgstr "Auswählen um den ursprünglichen Vertreter der Rechnung beizubehalten."
+msgstr ""
+"Auswählen um den ursprünglichen Provisionsempfänger der Rechnung "
+"beizubehalten."
 
 msgctxt "help:account.invoice.line,principal:"
 msgid "The principal who pays a commission for the invoice line."
@@ -313,20 +320,22 @@ msgstr "Der für die Berechnung der Provision verwendete Plan."
 msgctxt "help:commission.agent.selection,end_date:"
 msgid "The last date that the agent will be considered for selection."
 msgstr ""
-"Das letzte Datum an dem der Vertreter zur Zuweisung berücksichtigt wird."
+"Das letzte Datum an dem der Provisionsempfänger zur Zuweisung berücksichtigt"
+" wird."
 
 msgctxt "help:commission.agent.selection,start_date:"
 msgid "The first date that the agent will be considered for selection."
 msgstr ""
-"Das erste Datum an dem der Vertreter zur Zuweisung berücksichtigt wird."
+"Das erste Datum an dem der Provisionsempfänger zur Zuweisung berücksichtigt "
+"wird."
 
 msgctxt "help:commission.create_invoice.ask,agents:"
 msgid ""
 "Limit to commissions for these agents.\n"
 "If empty all agents of the selected type are used."
 msgstr ""
-"Auf Provisionen für die ausgewählten Vertreter einschränken.\n"
-"Leer lassen, um alle Vertreter des ausgewählten Typs zu verwenden."
+"Auf Provisionen für die ausgewählten Provisionsempfänger einschränken.\n"
+"Leer lassen, um alle Provisionsempfänger des ausgewählten Typs zu verwenden."
 
 msgctxt "help:commission.create_invoice.ask,from_:"
 msgid "Limit to commissions from this date."
@@ -396,7 +405,7 @@ msgstr "Der Auftraggeber, der für diese Position eine Provision zahlt."
 
 msgctxt "help:sale.sale,agent:"
 msgid "The agent who receives a commission for the sale."
-msgstr "Der Vertreter, der für den Verkauf eine Provision erhält."
+msgstr "Der Provisionsempfänger, der für den Verkauf eine Provision erhält."
 
 msgctxt "model:account.journal,name:journal_commission"
 msgid "Commission"
@@ -408,11 +417,11 @@ msgstr "Provision"
 
 msgctxt "model:commission.agent,name:"
 msgid "Commission Agent"
-msgstr "Vertreter"
+msgstr "Provisionsempfänger"
 
 msgctxt "model:commission.agent.selection,name:"
 msgid "Agent Selection"
-msgstr "Vertreter Zuweisung"
+msgstr "Provisionsempfänger Zuweisung"
 
 msgctxt "model:commission.create_invoice.ask,name:"
 msgid "Create Commission Invoice"
@@ -428,11 +437,11 @@ msgstr "Provisionsplan Position"
 
 msgctxt "model:commission.reporting.agent,name:"
 msgid "Commission Reporting per Agent"
-msgstr "Provisionsauswertung pro Vertreter"
+msgstr "Provisionsauswertung pro Provisionsempfänger"
 
 msgctxt "model:commission.reporting.agent.time_series,name:"
 msgid "Commission Reporting per Agent"
-msgstr "Provisionsauswertung pro Vertreter"
+msgstr "Provisionsauswertung pro Provisionsempfänger"
 
 msgctxt "model:commission.reporting.context,name:"
 msgid "Commission Reporting Context"
@@ -440,7 +449,7 @@ msgstr "Provisionsauswertung Kontext"
 
 msgctxt "model:ir.action,name:act_agent_form"
 msgid "Agents"
-msgstr "Vertreter"
+msgstr "Provisionsempfänger"
 
 msgctxt "model:ir.action,name:act_agent_selections"
 msgid "Selections"
@@ -472,11 +481,11 @@ msgstr "Pläne"
 
 msgctxt "model:ir.action,name:act_reporting_agent"
 msgid "Commissions per Agent"
-msgstr "Provisionen pro Vertreter"
+msgstr "Provisionen pro Provisionsempfänger"
 
 msgctxt "model:ir.action,name:act_reporting_agent_time_series"
 msgid "Commissions per Agent"
-msgstr "Provisionen pro Vertreter"
+msgstr "Provisionen pro Provisionsempfänger"
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_commission_form_domain_all"
@@ -488,6 +497,7 @@ msgctxt ""
 msgid "To Invoice"
 msgstr "Abrechenbar"
 
+#, python-format
 msgctxt "model:ir.message,text:msg_erase_party_pending_commission"
 msgid ""
 "You cannot erase party \"%(party)s\" while they have pending commissions "
@@ -496,6 +506,7 @@ msgstr ""
 "Partei \"%(party)s\" kann nicht gelöscht werden, solange noch unerledigte "
 "Provisionen bei Unternehmen \"%(company)s\" bestehen."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_plan_line_invalid_formula"
 msgid ""
 "Invalid formula \"%(formula)s\" in commission plan line \"%(line)s\" with "
@@ -523,7 +534,7 @@ msgstr "Benutzer in Unternehmen"
 
 msgctxt "model:ir.ui.menu,name:menu_agent_form"
 msgid "Agents"
-msgstr "Vertreter"
+msgstr "Provisionsempfänger"
 
 msgctxt "model:ir.ui.menu,name:menu_commission"
 msgid "Commission"
@@ -555,7 +566,7 @@ msgstr "Provisionen"
 
 msgctxt "model:product.template-commission.agent,name:"
 msgid "Product Template - Commission Agent"
-msgstr "Artikelvorlage - Kommissonsvertreter"
+msgstr "Artikelvorlage - Provisionsempfänger"
 
 msgctxt "model:res.group,name:group_commission"
 msgid "Commission"
@@ -591,7 +602,7 @@ msgstr "Ausgehend"
 
 msgctxt "selection:commission.agent,type_:"
 msgid "Agent Of"
-msgstr "Vertreter von"
+msgstr "Provisionsempfänger von"
 
 msgctxt "selection:commission.agent,type_:"
 msgid "Principal Of"

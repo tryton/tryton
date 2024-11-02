@@ -62,10 +62,16 @@ msgctxt "model:ir.action,name:act_dpd_credential_form"
 msgid "DPD Credentials"
 msgstr "Credencials DPD"
 
+msgctxt "model:ir.message,text:msg_dpd_credential_modified"
+msgid "Are you sure you want to modify DPD credentials?"
+msgstr "Estas segur que vols modificar les credencials de DPD?"
+
+#, python-format
 msgctxt "model:ir.message,text:msg_dpd_login_error"
 msgid "DPD login failed with credential \"%(credential)s\"."
 msgstr "La identificació DPD ha fallat amb les credencials \"%(credential)s\"."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_dpd_webservice_error"
 msgid ""
 "DPD webservice call failed with the following error message:\n"
@@ -74,6 +80,7 @@ msgstr ""
 "La crida al servei web DPD ha fallat amb el següent missatge d'error:\n"
 "%(message)s"
 
+#, python-format
 msgctxt "model:ir.message,text:msg_shipment_has_shipping_reference_number"
 msgid ""
 "You cannot create shipping for shipment \"%(shipment)s\" because it has "
@@ -82,6 +89,7 @@ msgstr ""
 "No podeu crear l'enviament per l'albarà \"%(shipment)s\" perquè ja té un "
 "número de referència de l'enviament."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_warehouse_address_required"
 msgid ""
 "To validate shipment \"%(shipment)s\" you must set an address on the "
@@ -95,7 +103,7 @@ msgid "DPD Credentials"
 msgstr "Credencials DPD"
 
 msgctxt "selection:carrier,dpd_notification:"
-msgid "E-Mail"
+msgid "Email"
 msgstr "Correu electrònic"
 
 msgctxt "selection:carrier,dpd_notification:"

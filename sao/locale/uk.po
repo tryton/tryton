@@ -20,14 +20,11 @@ msgstr "Не вдається підключитися до сервера."
 msgid "Connection error"
 msgstr "Помилка програми"
 
-msgid "Favorites"
-msgstr "Вибране"
-
-msgid "Manage..."
-msgstr "Керування..."
-
 msgid "Logout"
 msgstr "Вихід"
+
+msgid "Favorites"
+msgstr "Вибране"
 
 msgid "Action"
 msgstr "Дія"
@@ -74,8 +71,9 @@ msgstr "Пов'язані"
 msgid "Print"
 msgstr "Друк"
 
-msgid "E-Mail"
-msgstr "Ел.пошта"
+#, fuzzy
+msgid "Email"
+msgstr "Ел.лист %1"
 
 msgid "Previous tab"
 msgstr "Попередня вкладка"
@@ -137,6 +135,9 @@ msgid "Not found."
 msgstr ""
 
 msgid "Send you an email to reset your password."
+msgstr ""
+
+msgid "Reset forgotten password"
 msgstr ""
 
 msgid ""
@@ -317,10 +318,12 @@ msgstr "Додати вкладення до запису"
 msgid "Add a note to the record"
 msgstr "Додати примітку до запису"
 
-msgid "E-Mail..."
+#, fuzzy
+msgid "Email..."
 msgstr "Ел.пошта..."
 
-msgid "Send an e-mail using the record"
+#, fuzzy
+msgid "Send an email using the record"
 msgstr "Надіслати ел.лист, використовуючи запис"
 
 msgid "Export"
@@ -378,6 +381,9 @@ msgstr "Додати..."
 
 msgid "Preview"
 msgstr "Перегляд"
+
+msgid "Manage..."
+msgstr "Керування..."
 
 msgid "Template"
 msgstr "Шаблон"
@@ -498,6 +504,9 @@ msgstr "Відкрити"
 
 msgid "Undelete"
 msgstr "Відновити"
+
+msgid "Restore"
+msgstr ""
 
 msgid "Save As"
 msgstr "Зберегти як"
@@ -726,7 +735,8 @@ msgstr[0] "Збережено %1 запис"
 msgstr[1] "Збережено %1 записи"
 msgstr[2] "Збережено %1 записів"
 
-msgid "E-mail %1"
+#, fuzzy
+msgid "Email %1"
 msgstr "Ел.лист %1"
 
 msgid "To:"

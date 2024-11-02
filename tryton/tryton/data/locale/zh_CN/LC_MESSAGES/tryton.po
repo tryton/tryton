@@ -140,9 +140,9 @@ msgstr "并行操作异常"
 msgid "Could not get a session."
 msgstr "无法获取会话。"
 
-#, python-format
+#, fuzzy, python-format
 msgid "Error: \"%s\". Try again later."
-msgstr ""
+msgstr "请求太多，请稍后重试."
 
 msgid "Too many requests. Try again later."
 msgstr "请求太多，请稍后重试."
@@ -240,8 +240,8 @@ msgstr "报告..."
 msgid "Print..."
 msgstr "打印..."
 
-msgid "E-Mail..."
-msgstr "用电子邮件发送..."
+msgid "Email..."
+msgstr "电子邮件(_E)..."
 
 msgid "Bold"
 msgstr "粗体"
@@ -350,12 +350,6 @@ msgstr "帮助"
 
 msgid "No result found."
 msgstr "无符合条件的数据."
-
-msgid "Favorites"
-msgstr "收藏(_V)"
-
-msgid "Manage..."
-msgstr "管理..."
 
 msgid "Action"
 msgstr "操作"
@@ -587,6 +581,9 @@ msgstr "连接 Tryton 服务器"
 msgid "Profile:"
 msgstr "配置:"
 
+msgid "Manage..."
+msgstr "管理..."
+
 msgid "Host / Database information"
 msgstr "主机/数据库信息"
 
@@ -596,8 +593,8 @@ msgstr "用户名:"
 msgid "Unable to complete email entry"
 msgstr "无法完成电子邮件输入"
 
-#, python-format
-msgid "E-mail %s"
+#, fuzzy, python-format
+msgid "Email %s"
 msgstr "电子邮件 %s"
 
 msgid "To:"
@@ -845,10 +842,12 @@ msgstr "报告(_R)..."
 msgid "_Print..."
 msgstr "打印(_P)..."
 
-msgid "_E-Mail..."
-msgstr "电子邮件发送(_E)..."
+#, fuzzy
+msgid "_Email..."
+msgstr "电子邮件(_E)..."
 
-msgid "Send an e-mail using the record"
+#, fuzzy
+msgid "Send an email using the record"
 msgstr "使用当前记录发送电子邮件"
 
 msgid "_Export Data..."
@@ -900,6 +899,9 @@ msgstr "字段名"
 msgid "CSV Export: %s"
 msgstr "CSV导出：%s"
 
+msgid "Open"
+msgstr "打开"
+
 msgid "_Save Export"
 msgstr "保存导出设置（_S）"
 
@@ -914,12 +916,6 @@ msgstr "<b>预定义导出设置</b>"
 
 msgid "Name"
 msgstr "名称"
-
-msgid "Open"
-msgstr "打开"
-
-msgid "Save"
-msgstr "保存"
 
 msgid "Listed Records"
 msgstr "已列出记录"
@@ -978,6 +974,9 @@ msgstr "保存和新建"
 msgid "Add and New"
 msgstr "添加和新建"
 
+msgid "Save"
+msgstr "保存"
+
 msgid "Add"
 msgstr "添加"
 
@@ -1002,6 +1001,10 @@ msgstr "已选记录取消删除 <Ins>"
 #, python-format
 msgid "CSV Import: %s"
 msgstr "CSV导入: %s"
+
+#, fuzzy
+msgid "Import"
+msgstr "报告(_R)"
 
 msgid "_Auto-Detect"
 msgstr "自动设置（_A）"
@@ -1206,6 +1209,10 @@ msgstr "添加已存在记录"
 msgid "Remove selected record"
 msgstr "删除所选记录"
 
+#, fuzzy
+msgid "Restore selected record"
+msgstr "删除所选记录"
+
 msgid "Open the record <F2>"
 msgstr "打开记录 <F2>"
 
@@ -1219,6 +1226,10 @@ msgid "Edit selected record"
 msgstr "编辑所选记录<F2>"
 
 msgid "Delete selected record"
+msgstr "删除所选记录"
+
+#, fuzzy
+msgid "Undelete selected record"
 msgstr "删除所选记录"
 
 #, python-format

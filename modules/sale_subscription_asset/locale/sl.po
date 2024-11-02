@@ -40,8 +40,7 @@ msgstr ""
 
 msgctxt "model:ir.message,text:msg_asset_line_overlap"
 msgid ""
-"The lines \"%(line1)s\" and \"%(line2)s\" overlap, you must use different "
-"dates."
+"The dates of subscription lines with the same asset lot can not overlap."
 msgstr ""
 
 msgctxt "model:sale.subscription.service-stock.lot.asset,name:"

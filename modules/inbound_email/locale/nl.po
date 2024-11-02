@@ -1,5 +1,4 @@
 #
-#, fuzzy
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
@@ -134,8 +133,8 @@ msgid "Inbound Email Rule Header"
 msgstr "Inkomende email regel kop"
 
 msgctxt "model:ir.action,name:act_inbound_email_form_relate"
-msgid "E-mails"
-msgstr "E-mails"
+msgid "Emails"
+msgstr "Emails"
 
 msgctxt "model:ir.action,name:act_inbound_email_inbox_form"
 msgid "Inbox"

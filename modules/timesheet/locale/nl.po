@@ -76,7 +76,7 @@ msgstr "UUID"
 
 msgctxt "field:timesheet.line,work:"
 msgid "Work"
-msgstr "Werk"
+msgstr "Werkzaamheden"
 
 msgctxt "field:timesheet.line.enter.start,date:"
 msgid "Date"
@@ -116,7 +116,7 @@ msgstr "Start urenstaat"
 
 msgctxt "field:timesheet.work,work:"
 msgid "Work"
-msgstr "Werk"
+msgstr "Werkzaamheden"
 
 msgctxt "field:timesheet.work.context,from_date:"
 msgid "From Date"
@@ -230,6 +230,7 @@ msgctxt "model:ir.action.act_window.domain,name:act_work_list_domain_open"
 msgid "Open"
 msgstr "Open"
 
+#, python-format
 msgctxt "model:ir.message,text:msg_line_duration_positive"
 msgid "The duration of line \"%(line)s\" must be positive."
 msgstr "De duur van regel \"%(line)s\" moet positief zijn."
@@ -238,6 +239,7 @@ msgctxt "model:ir.message,text:msg_line_uuid_unique"
 msgid "The UUID of timesheet line must be unique."
 msgstr "De UUID van de urenstaatregel moet uniek zijn."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_work_company_different_origin"
 msgid "The companies associated with work \"%(work)s\" and its origin differ."
 msgstr ""
@@ -336,11 +338,11 @@ msgstr "Tijdsregistratie"
 
 msgctxt "model:ir.ui.menu,name:menu_work_list"
 msgid "Works"
-msgstr "Werken"
+msgstr "Werkzaamheden"
 
 msgctxt "model:ir.ui.menu,name:menu_work_report"
 msgid "Works"
-msgstr "Werken"
+msgstr "Werkzaamheden"
 
 msgctxt "model:res.group,name:group_timesheet_admin"
 msgid "Timesheet Administration"
@@ -372,11 +374,11 @@ msgstr "Voer regels in"
 
 msgctxt "model:timesheet.work,name:"
 msgid "Work"
-msgstr "Werk"
+msgstr "Werkzaamheden"
 
 msgctxt "model:timesheet.work.context,name:"
 msgid "Work Context"
-msgstr "Werk context"
+msgstr "Werkzaamheden context"
 
 msgctxt "selection:res.user.application,application:"
 msgid "Timesheet"

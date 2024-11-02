@@ -2,9 +2,9 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-msgctxt "field:account.invoice.line,cost_shipments:"
-msgid "Cost of Shipments"
-msgstr "Coût des expéditions"
+msgctxt "field:account.invoice.line,cost_sale_shipments:"
+msgid "Cost Sale of Shipments"
+msgstr "Coût de vente des expéditions"
 
 msgctxt "field:party.party,sale_shipment_cost_method:"
 msgid "Shipment Cost Method"
@@ -62,14 +62,6 @@ msgctxt "field:stock.shipment.cost_sale,shipment:"
 msgid "Shipment"
 msgstr "Expédition"
 
-msgctxt "field:stock.shipment.out,cost_invoice_line:"
-msgid "Cost Invoice Line"
-msgstr "Ligne de facture du coût"
-
-msgctxt "field:stock.shipment.out,cost_method:"
-msgid "Cost Method"
-msgstr "Méthode de coût"
-
 msgctxt "field:stock.shipment.out,cost_sale:"
 msgid "Cost Sale"
 msgstr "Coût de la vente"
@@ -81,6 +73,14 @@ msgstr "Devise du coût de la vente"
 msgctxt "field:stock.shipment.out,cost_sale_currency_used:"
 msgid "Cost Sale Currency"
 msgstr "Devise du coût de la vente"
+
+msgctxt "field:stock.shipment.out,cost_sale_invoice_line:"
+msgid "Cost Sale Invoice Line"
+msgstr "Ligne de facture de coût de vente"
+
+msgctxt "field:stock.shipment.out,cost_sale_method:"
+msgid "Cost Sale Method"
+msgstr "Méthode de coût de vente"
 
 msgctxt "field:stock.shipment.out,cost_sale_used:"
 msgid "Cost Sale"
@@ -102,18 +102,21 @@ msgstr ""
 "La méthode de frais d'expédition par défaut pour le client.\n"
 "Laissez vide pour utiliser la valeur par défaut de la configuration."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_sale_carrier_required_for_quotation"
 msgid "To get a quote for sale \"%(sale)s\" you must enter a carrier."
 msgstr ""
 "Pour obtenir un devis pour la vente « %(sale)s », vous devez entrer un "
 "transporteur."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_sale_invalid_carrier"
 msgid "To confirm sale \"%(sale)s\" you must change the carrier \"%(carrier)s\"."
 msgstr ""
 "Pour confirmer la vente « %(sale)s », vous devez changer le transporteur "
 "« %(carrier)s »."
 
+#, python-format
 msgctxt ""
 "model:ir.message,text:msg_shipment_cost_invoice_missing_account_revenue"
 msgid ""

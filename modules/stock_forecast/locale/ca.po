@@ -127,17 +127,18 @@ msgctxt ""
 msgid "Draft"
 msgstr "Esborrany"
 
-msgctxt "model:ir.message,text:msg_forecast_date_overlap"
-msgid ""
-"The forecasts \"%(first)s\" and \"%(second)s\" overlap, you must use "
-"different dates."
-msgstr ""
-"Les previsions \"%(first)s\" i \"%(second)s\" es superposen, heu d'utilitzar"
-" dates diferents."
-
+#, python-format
 msgctxt "model:ir.message,text:msg_forecast_delete_cancel"
 msgid "To delete forecast \"%(forecast)s\" you must cancel it."
 msgstr "Per eliminar la previsió \"%(forecast)s\" l'heu de cancel·lar."
+
+msgctxt "model:ir.message,text:msg_forecast_done_dates_overlap"
+msgid ""
+"The dates of done forecasts for the same company, warehouse and destination "
+"can not overlap."
+msgstr ""
+"Les dates de previsions fetes per a la mateixa empresa, magatzem i "
+"destinació no es poden solapar."
 
 msgctxt "model:ir.message,text:msg_forecast_line_product_unique"
 msgid "Product must be unique by forecast."

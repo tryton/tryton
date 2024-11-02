@@ -338,6 +338,7 @@ msgctxt "model:ir.export-write-res.group,name:"
 msgid "Export Modification Group"
 msgstr "Skupina urejanje izvozov"
 
+#, python-format
 msgctxt "model:ir.message,text:msg_email_invalid"
 msgid "The email address \"%(email)s\" for \"%(user)s\" is not valid."
 msgstr "E-poštni naslov \"%(email)s\" uporabnika \"%(user)s\" ni veljaven."
@@ -350,6 +351,7 @@ msgctxt "model:ir.message,text:msg_password_forbidden"
 msgid "The password is forbidden."
 msgstr "To geslo ni dovoljeno."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_password_length"
 msgid "The password must have at least %(length)i characters."
 msgstr "Geslo mora vsebovati najmanj %(length)i znakov."
@@ -368,6 +370,7 @@ msgid ""
 "deactivated."
 msgstr "Uporabnika ni mogoče izbrisati, namesto tega naj se jih deaktivira."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_user_password"
 msgid "Password for %(login)s"
 msgstr "Geslo za %(login)s"
@@ -484,7 +487,7 @@ msgctxt "model:res.user.warning,name:"
 msgid "User Warning"
 msgstr "Uporabniško opozorilo"
 
-#, fuzzy
+#, python-format
 msgctxt "report:res.user.email_reset_password:"
 msgid ""
 "Hello,\n"
@@ -494,20 +497,22 @@ msgid ""
 "                [7:%(http_host)s/#%(database)s][8:]\n"
 "                You must set a new one from the user's preferences.[9:]"
 msgstr ""
-"Geslo za vaš uporabniški račun, [1:%(login)s], je bilo ponastavljeno.[2:]\n"
-"                V uporabniških nastavitvah si morate nastaviti novo geslo.[3:]\n"
-"                Povežete se lahko s tem začasnim geslom [4:%(password)s] to[5:]\n"
-"                [6:tryton://%(host)s/%(database)s][7:]\n"
-"                [8:%(http_host)s/#%(database)s]"
+"Pozdravljeni,\n"
+"                prejeli smo zahtevek za ponastavitev gesla povezano z vašim uporabniškim računom [1:%(login)s]. Za enkrat vaš uporabniški račun še ni bil spremenjen.[2:]\n"
+"                Povežete se lahko s tem začasnim geslom [3:%(password)s] to[4:]\n"
+"                [5:tryton://%(host)s/%(database)s][6:]\n"
+"                [7:%(http_host)s/#%(database)s][8:]\n"
+"                Novo geslo morate nastaviti v uporabniških nastavitvah.[9:]"
 
 msgctxt "report:res.user.email_reset_password:"
 msgid "If you didn't make this request, you can safely ignore this email."
-msgstr ""
+msgstr "Če niste vložili te zahteve, lahko mirno prezrete to e-pošto."
 
 msgctxt "report:res.user.email_reset_password:"
 msgid "Reset Password"
 msgstr "Ponastavitev gesla"
 
+#, python-format
 msgctxt "report:res.user.email_reset_password:"
 msgid "The password will expire in [1:%(datetime)s]."
 msgstr "Geslo poteče v [1:%(datetime)s]."

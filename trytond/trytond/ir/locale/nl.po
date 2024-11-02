@@ -502,6 +502,10 @@ msgctxt "field:ir.cron,interval_type:"
 msgid "Interval Type"
 msgstr "Interval Type"
 
+msgctxt "field:ir.cron,logs:"
+msgid "Logs"
+msgstr "Logboeken"
+
 msgctxt "field:ir.cron,method:"
 msgid "Method"
 msgstr "Methode"
@@ -514,6 +518,10 @@ msgctxt "field:ir.cron,next_call:"
 msgid "Next Call"
 msgstr "Volgende oproep"
 
+msgctxt "field:ir.cron,running:"
+msgid "Running"
+msgstr "In uitvoering"
+
 msgctxt "field:ir.cron,timezone:"
 msgid "Timezone"
 msgstr "Tijdzone"
@@ -521,6 +529,22 @@ msgstr "Tijdzone"
 msgctxt "field:ir.cron,weekday:"
 msgid "Day of Week"
 msgstr "Dag van de week"
+
+msgctxt "field:ir.cron.log,cron:"
+msgid "Cron"
+msgstr "Cyclische opdracht"
+
+msgctxt "field:ir.cron.log,duration:"
+msgid "Duration"
+msgstr "Duur"
+
+msgctxt "field:ir.cron.log,ended:"
+msgid "Ended"
+msgstr "Geëindigd"
+
+msgctxt "field:ir.cron.log,started:"
+msgid "Started"
+msgstr "Gestart"
 
 msgctxt "field:ir.email,addresses:"
 msgid "Addresses"
@@ -563,8 +587,8 @@ msgid "Address"
 msgstr "Adres"
 
 msgctxt "field:ir.email.address,email:"
-msgid "E-mail"
-msgstr "E-mail"
+msgid "Email"
+msgstr "Email"
 
 msgctxt "field:ir.email.template,body:"
 msgid "Body"
@@ -1514,6 +1538,10 @@ msgctxt "field:ir.ui.menu,favorite:"
 msgid "Favorite"
 msgstr "Favoriet"
 
+msgctxt "field:ir.ui.menu,favorites:"
+msgid "Favorites"
+msgstr "Favorieten"
+
 msgctxt "field:ir.ui.menu,icon:"
 msgid "Icon"
 msgstr "Pictogram"
@@ -1602,6 +1630,10 @@ msgctxt "field:ir.ui.view_search,model:"
 msgid "Model"
 msgstr "Model"
 
+msgctxt "field:ir.ui.view_search,model_ref:"
+msgid "Model"
+msgstr "Model"
+
 msgctxt "field:ir.ui.view_search,name:"
 msgid "Name"
 msgstr "Naam"
@@ -1614,6 +1646,18 @@ msgctxt "field:ir.ui.view_tree_optional,field:"
 msgid "Field"
 msgstr "Veld"
 
+msgctxt "field:ir.ui.view_tree_optional,field_ref:"
+msgid "Field"
+msgstr "Veld"
+
+msgctxt "field:ir.ui.view_tree_optional,model:"
+msgid "Model"
+msgstr "Model"
+
+msgctxt "field:ir.ui.view_tree_optional,model_ref:"
+msgid "Model"
+msgstr "Model"
+
 msgctxt "field:ir.ui.view_tree_optional,user:"
 msgid "User"
 msgstr "Gebruiker"
@@ -1622,9 +1666,13 @@ msgctxt "field:ir.ui.view_tree_optional,value:"
 msgid "Value"
 msgstr "Waarde"
 
-msgctxt "field:ir.ui.view_tree_optional,view_id:"
-msgid "View ID"
-msgstr "Weergave ID"
+msgctxt "field:ir.ui.view_tree_optional,view:"
+msgid "View"
+msgstr "Weergave"
+
+msgctxt "field:ir.ui.view_tree_state,child_field:"
+msgid "Child Field"
+msgstr "Onderliggend veld"
 
 msgctxt "field:ir.ui.view_tree_state,child_name:"
 msgid "Child Name"
@@ -1635,6 +1683,10 @@ msgid "Domain"
 msgstr "Domein"
 
 msgctxt "field:ir.ui.view_tree_state,model:"
+msgid "Model"
+msgstr "Model"
+
+msgctxt "field:ir.ui.view_tree_state,model_ref:"
 msgid "Model"
 msgstr "Model"
 
@@ -1740,7 +1792,7 @@ msgid "The field that contains the recipient(s)."
 msgstr "Het veld dat de ontvanger(s) bevat."
 
 msgctxt "help:ir.email.template,recipients_hidden:"
-msgid "The field that contains the secondary recipient(s)."
+msgid "The field that contains the hidden recipient(s)."
 msgstr "Het veld dat de verborgen ontvanger(s) bevat."
 
 msgctxt "help:ir.email.template,recipients_hidden_pyson:"
@@ -1972,16 +2024,16 @@ msgid "Actions"
 msgstr "Acties"
 
 msgctxt "model:ir.action,name:act_email_form"
-msgid "E-mails"
-msgstr "E-mails"
+msgid "Emails"
+msgstr "Emails"
 
 msgctxt "model:ir.action,name:act_email_form_relate"
-msgid "E-mail Archives"
-msgstr "E-mailarchief"
+msgid "Email Archives"
+msgstr "Emailarchief"
 
 msgctxt "model:ir.action,name:act_email_template_form"
-msgid "E-mail Templates"
-msgstr "E-mail templates"
+msgid "Email Templates"
+msgstr "Email templates"
 
 msgctxt "model:ir.action,name:act_error_form"
 msgid "Errors"
@@ -2136,8 +2188,8 @@ msgid "View Tree Optional"
 msgstr "Optionele boomstructuur weergave"
 
 msgctxt "model:ir.action,name:act_view_tree_state"
-msgid "Tree State"
-msgstr "Status boom"
+msgid "View Tree State"
+msgstr "Geef boomstructuur weer"
 
 msgctxt "model:ir.action,name:act_view_tree_width_form"
 msgid "View Tree Width"
@@ -2404,6 +2456,10 @@ msgctxt "model:ir.cron,name:"
 msgid "Cron"
 msgstr "Cyclische opdracht"
 
+msgctxt "model:ir.cron.log,name:"
+msgid "Cron Log"
+msgstr "Logboek cyclische opdracht"
+
 msgctxt "model:ir.date,name:"
 msgid "Date"
 msgstr "Datum"
@@ -2552,40 +2608,54 @@ msgctxt "model:ir.message,text:msg_ID"
 msgid "ID"
 msgstr "ID"
 
+#, python-format
 msgctxt "model:ir.message,text:msg_access_button_error"
 msgid "Calling button \"%(button)s on \"%(model)s\" is not allowed."
 msgstr "De knop \"%(button)s op\"%(model)s \" aanroepen is niet toegestaan."
 
+#, python-format
+msgctxt "model:ir.message,text:msg_access_report_error"
+msgid "You are not allowed to execute report \"%(report)s\"."
+msgstr "U bent niet gemachtigd om rapport \"%(report)s\" uit te voeren."
+
+#, python-format
 msgctxt "model:ir.message,text:msg_access_rule_error"
 msgid "You are not allowed to access \"%(model)s\"."
 msgstr "U hebt geen toegang tot \"%(model)s\"."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_access_rule_field_error"
 msgid "You are not allowed to access \"%(model)s.%(field)s\"."
 msgstr "U hebt geen toegang tot \" \"%(model)s.%(field)s\"."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_access_wizard_error"
 msgid "You are not allowed to execute wizard \"%(wizard)s\"."
 msgstr "U hebt niet de rechten om wizard \"%(wizard)s\" uit te voeren."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_access_wizard_model_error"
 msgid "You are not allowed to execute wizard \"%(wizard)s\" on \"%(model)s\"."
 msgstr ""
 "U hebt niet de rechten om wizard \"%(wizard)s\" op \"%(model)s\"uit te "
 "voeren."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_action_invalid_context"
 msgid "Invalid context \"%(context)s\" for action \"%(action)s\"."
 msgstr "Ongeldige context \"%(context)s\" voor actie \"%(action)s\"."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_action_invalid_domain"
 msgid "Invalid domain or search criteria \"%(domain)s\" for action \"%(action)s\"."
 msgstr "Ongeldig domein of zoekcriteria \"%(domain)s\" voor actie \"%(action)s\"."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_action_invalid_views"
 msgid "Invalid view \"%(view)s\" for action \"%(action)s\"."
 msgstr "Ongeldige weergave\"%(view)s\" voor actie \"%(action)s\"."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_action_wrong_wizard_model"
 msgid "Wrong wizard model in keyword action \"%(name)s\"."
 msgstr "Verkeerd wizardmodel in trefwoordactie \"%(name)s\"."
@@ -2630,14 +2700,21 @@ msgctxt "model:ir.message,text:msg_button_name_unique"
 msgid "The name of the button must be unique per model."
 msgstr "De naam van de knop moet uniek zijn per model."
 
+msgctxt "model:ir.message,text:msg_cache_name_unique"
+msgid "The name of cache must be unique."
+msgstr "De naam van de cache moet uniek zijn."
+
+#, python-format
 msgctxt "model:ir.message,text:msg_context_datetime"
 msgid "At date/time: %(datetime)s"
 msgstr "Op datum/tijd: %(datetime)s"
 
+#, python-format
 msgctxt "model:ir.message,text:msg_context_groups"
 msgid "Within groups: %(groups)s"
 msgstr "Binnen de groepen: %(groups)s"
 
+#, python-format
 msgctxt "model:ir.message,text:msg_create_rule_error"
 msgid ""
 "You are not allowed to create records of \"%(model)s\" because they fail on at least one of these rules:\n"
@@ -2654,6 +2731,7 @@ msgctxt "model:ir.message,text:msg_created_by"
 msgid "Created by"
 msgstr "Aangemaakt door"
 
+#, python-format
 msgctxt "model:ir.message,text:msg_delete_rule_error"
 msgid ""
 "You are not allowed to delete records \"%(ids)s\" of \"%(model)s\" because of at lease one of those rules:\n"
@@ -2662,6 +2740,7 @@ msgstr ""
 "Het is niet toegestaan records \"%(ids)s\" van \"%(model)s\" te verwijderen vanwege ten minste één van deze regels:\n"
 "%(rules)s"
 
+#, python-format
 msgctxt "model:ir.message,text:msg_delete_xml_record"
 msgid "You are not allowed to delete the record \"%(record)s\" of \"%(model)s\"."
 msgstr ""
@@ -2722,14 +2801,17 @@ msgctxt "model:ir.message,text:msg_dict_schema_integer"
 msgid "Integer"
 msgstr "Geheel getal"
 
+#, python-format
 msgctxt "model:ir.message,text:msg_dict_schema_invalid_domain"
 msgid "Invalid domain in schema \"%(schema)s\"."
 msgstr "Ongeldig domein in schema \"%(schema)s\"."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_dict_schema_invalid_help_selection"
 msgid "Invalid help selection in schema \"%(schema)s\"."
 msgstr "Ongeldige hulpselectie in schema \"%(schema)s\"."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_dict_schema_invalid_selection"
 msgid "Invalid selection in schema \"%(schema)s\"."
 msgstr "Ongeldige selectie in schema \"%(schema)s\"."
@@ -2778,6 +2860,7 @@ msgctxt "model:ir.message,text:msg_dict_yes"
 msgid "Yes"
 msgstr "Ja"
 
+#, python-format
 msgctxt "model:ir.message,text:msg_digits_validation_record"
 msgid ""
 "The number of digits in the value \"%(value)r\" for field \"%(field)s\" in "
@@ -2787,6 +2870,7 @@ msgstr ""
 "record \"%(record)s\" van \"%(model)s\" overschrijdt de limiet van "
 "\"%(digits)i\"."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_domain_validation_record"
 msgid ""
 "The value \"%(value)s\" for field \"%(field)s\" in record \"%(record)s\" of "
@@ -2803,46 +2887,52 @@ msgctxt "model:ir.message,text:msg_edited_by"
 msgid "Edited by"
 msgstr "Bewerk door"
 
+#, python-format
 msgctxt "model:ir.message,text:msg_email_template_invalid_body"
 msgid ""
-"Invalid body in e-mail template \"%(template)s\" with exception "
+"Invalid body in email template \"%(template)s\" with exception "
 "\"%(exception)s\"."
 msgstr ""
-"Ongeldige tekst in e-mail template \"%(template)s\" met uitzondering "
+"Ongeldige tekst in email template \"%(template)s\" met uitzondering "
 "\"%(exception)s\"."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_email_template_invalid_field_pyson"
 msgid ""
-"Invalid PYSON %(field)s in e-mail template \"%(template)s\" with exception "
+"Invalid PYSON %(field)s in email template \"%(template)s\" with exception "
 "\"%(exception)s\"."
 msgstr ""
-"Ongeldig PYSON %(field)s in e-mail template \"%(template)s\" met "
-"uitzondering \"%(exception)s\"."
+"Ongeldig PYSON %(field)s in email template \"%(template)s\" met uitzondering"
+" \"%(exception)s\"."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_email_template_invalid_field_pyson_type"
 msgid ""
-"The PYSON %(field)s in e-mail template \"%(template)s\" must generate a "
-"list."
+"The PYSON %(field)s in email template \"%(template)s\" must generate a list."
 msgstr ""
-"Het PYSON %(field)s in e-mailsjabloon \"%(template)s\" moet een lijst "
+"Het PYSON %(field)s in email template \"%(template)s\" moet een lijst "
 "genereren."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_email_template_invalid_subject"
 msgid ""
-"Invalid subject in e-mail template \"%(template)s\" with exception "
+"Invalid subject in email template \"%(template)s\" with exception "
 "\"%(exception)s\"."
 msgstr ""
-"Ongeldige onderwerp in e-mail template \"%(template)s\" met uitzondering "
+"Ongeldig onderwerp in email template \"%(template)s\" met uitzondering "
 "\"%(exception)s\"."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_field_model_name"
 msgid "%(field)s (model name)"
 msgstr "%(field)s (model naam)"
 
+#, python-format
 msgctxt "model:ir.message,text:msg_field_string"
 msgid "%(field)s (string)"
 msgstr "%(field)s (tekst)"
 
+#, python-format
 msgctxt "model:ir.message,text:msg_forbidden_char_validation_record"
 msgid ""
 "The value \"%(value)s\" for field \"%(field)s\" in record \"%(record)s\" of "
@@ -2851,6 +2941,7 @@ msgstr ""
 "De waarde \"%(value)s\" voor veld \"%(field)s\" in record \"%(record)s\" van"
 " \"%(model)s\" bevat ongeldige tekens \"%(chars)s\"."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_foreign_model_exist"
 msgid ""
 "The records could not be deleted because they are used by field "
@@ -2859,6 +2950,7 @@ msgstr ""
 "De records konden niet worden verwijderd omdat ze worden gebruikt door veld "
 "\"%(field)s\" van %(model)s\"."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_foreign_model_missing"
 msgid "The value \"%(value)s\" for field \"%(field)s\" in \"%(model)s\" does not exist."
 msgstr "De waarde \"%(value)s\" voor veld \"%(field)s\" in \"%(model)s\" bestaat niet."
@@ -2871,26 +2963,41 @@ msgctxt "model:ir.message,text:msg_id_positive"
 msgid "ID must be positive."
 msgstr "ID moet positief zijn."
 
+#, python-format
+msgctxt "model:ir.message,text:msg_import_data_missing_column"
+msgid "Missing values for last column at row %(row)d."
+msgstr "Er ontbreken waarden voor de laatste kolom in rij %(row)d."
+
+#, python-format
+msgctxt "model:ir.message,text:msg_import_data_missing_columns"
+msgid "Missing values for %(n)s last columns at row %(row)d."
+msgstr "Er ontbreken waarden voor de laatste kolommen %(n)s in rij %(row)d."
+
 msgctxt "model:ir.message,text:msg_language_code_unique"
 msgid "The code on language must be unique."
 msgstr "De code voor taal moet uniek zijn."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_language_default_translatable"
 msgid "The default language \"%(language)s\" must be translatable."
 msgstr "De standaardtaal \"%(language)s\"moet vertaalbaar zijn."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_language_delete_default"
 msgid "The default language \"%(language)s\" can not be deleted."
 msgstr "De standaardtaal\"%(language)s\" kan niet verwijderd worden."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_language_invalid_date"
 msgid "Invalid date format \"%(format)s\" for language \"%(language)s\"."
 msgstr "Ongeldig datum formaat \"%(format)s\" voor taal \"%(language)s\"."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_language_invalid_grouping"
 msgid "Invalid grouping \"%(grouping)s\" for language \"%(language)s\"."
 msgstr "Ongeldige groepering \"%(grouping)s\" voor taal \"%(language)s\"."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_model_invalid_condition"
 msgid ""
 "The condition \"%(condition)s\" is not a valid PYSON expression for button "
@@ -2918,10 +3025,12 @@ msgctxt "model:ir.message,text:msg_notes"
 msgid "Notes"
 msgstr "Notities"
 
+#, python-format
 msgctxt "model:ir.message,text:msg_read_error"
 msgid "You are trying to read records \"%(ids)s\" of \"%(model)s\" that don't exist."
 msgstr "U probeert records \"%(ids)s\"van \"%(model)s\" te lezen die niet bestaan."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_read_rule_error"
 msgid ""
 "You are not allowed to read records \"%(ids)s\" of \"%(model)s\" because of at least one of these rules:\n"
@@ -2934,6 +3043,7 @@ msgctxt "model:ir.message,text:msg_record_name"
 msgid "Record Name"
 msgstr "Recordnaam"
 
+#, python-format
 msgctxt "model:ir.message,text:msg_recursion_error"
 msgid ""
 "Recursion error: Record \"%(rec_name)s\" with parent \"%(parent_rec_name)s\""
@@ -2942,22 +3052,30 @@ msgstr ""
 "Recursiefout: record \"%(rec_name)s\" met bovenliggend record "
 "\"%(parent_rec_name)s\" is gedefinieerd als zijn eigen voorganger."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_reference_syntax_error"
 msgid ""
-"Syntax error for reference: %(value)r in \"%(field)s\" of \"%(model)s\" "
-"(%(column)s)."
+"Syntax error for %(value)r in \"%(field)s\" of \"%(model)s\" at row %(row)d "
+"and column %(column)d."
 msgstr ""
-"Syntaxfout voor referentie: \"%(value)r\" van \"%(field)s\" in model "
-"\"%(model)s\" (%(column)s)."
+"Syntaxisfout voor %(value)r in \"%(field)s\" van \"%(model)s\" in rij "
+"%(row)d en kolom %(column)d."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_relation_not_found"
-msgid "Relation not found: %(value)r in \"%(model)s\" (%(column)s)."
-msgstr "Relatie niet gevonden: \"%(value)r\" in \"%(model)s\" (%(column)s)."
+msgid ""
+"Could not find relation for %(value)r in \"%(model)s\" at row %(row)d and "
+"column %(column)d."
+msgstr ""
+"Geen relatie gevonden voor %(value)r in \"%(model)s\" in rij %(row)d en "
+"kolom %(column)d."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_report_invalid_email"
 msgid "Invalid email definition for report \"%(name)s\"."
 msgstr "Ongeldige e-maildefinitie voor rapport \"%(name)s\"."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_report_invalid_record_name"
 msgid ""
 "Invalid record name definition for report \"%(report)s\" with exception "
@@ -2966,10 +3084,12 @@ msgstr ""
 "Ongeldige recordnaamdefinitie voor rapport \"%(report)s\" met uitzondering "
 "\"%(exception)s\"."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_required_validation"
 msgid "A value is required for field \"%(field)s\" in \"%(model)s\"."
 msgstr "Een waarde is vereist voor veld \"%(field)s\" in \"%(model)s\"."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_required_validation_record"
 msgid ""
 "A value is required for field \"%(field)s\" in record \"%(record)s\" of "
@@ -2982,14 +3102,17 @@ msgctxt "model:ir.message,text:msg_resource_copy_help"
 msgid "The resources to which this record must be copied."
 msgstr "De bronnen waarnaar dit record moet worden gekopieerd."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_rule_invalid_domain"
 msgid "Invalid domain in rule \"%(name)s\"."
 msgstr "Ongeldig domein in regel \"%(name)s\"."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_search_function_missing"
 msgid "Missing search function for field \"%(field)s\" in \"%(model)s\"."
 msgstr "Zoekfunctie ontbreekt voor veld \"%(field)s\" in \"%(model)s\"."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_selection_validation_record"
 msgid ""
 "The value \"%(value)s\" for field \"%(field)s\" in record \"%(record)s\" of "
@@ -3010,6 +3133,7 @@ msgstr ""
 "U kunt het reekstype van een reeks niet wijzigen, maak in de plaats een "
 "nieuwe reeks aan."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_sequence_invalid_number_increment_next"
 msgid ""
 "Invalid \"Increment Number\" (%(number_increment)s) or \"Next Number\" "
@@ -3018,24 +3142,24 @@ msgstr ""
 "Ongeldig \"Toenamenummer\" (%(number_increment)s) of \"Volgend nummer\" "
 "(%(number_next)s) met uitzondering \"%(exception)s\"."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_sequence_invalid_prefix"
 msgid "Invalid prefix \"%(affix)s\" for sequence \"%(sequence)s\"."
 msgstr "Ongeldig voorvoegsel \"%(affix)s\" voor reeks \"%(sequence)s\"."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_sequence_invalid_suffix"
 msgid "Invalid suffix \"%(affix)s\" for sequence \"%(sequence)s\"."
 msgstr "Ongeldig achtervoegsel \"%(affix)s\" voor reeks \"%(sequence)s\"."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_sequence_last_timestamp_future"
 msgid "The \"Last Timestamp\" cannot be in the future for sequence \"%s\"."
 msgstr ""
 "De \"Laatste tijdstempel\" kan niet in de toekomst liggen voor de reeks "
 "\"%s\"."
 
-msgctxt "model:ir.message,text:msg_sequence_missing"
-msgid "Missing sequence."
-msgstr "Reeks ontbreekt."
-
+#, python-format
 msgctxt "model:ir.message,text:msg_setter_function_missing"
 msgid "Missing setter function for field \"%(field)s\" in \"%(model)s\"."
 msgstr "Definitiefunctie voor het veld \"%(field)s\" in \"%(model)s\" ontbreekt."
@@ -3044,6 +3168,7 @@ msgctxt "model:ir.message,text:msg_singleton"
 msgid "Only one singleton can be created."
 msgstr "Er kan slecht één singleton worden aangemaakt."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_size_validation"
 msgid ""
 "The value \"%(value)s\" for field \"%(field)s\" in \"%(model)s\" is too long"
@@ -3052,6 +3177,7 @@ msgstr ""
 "De waarde \"%(value)s\" voor veld \"%(field)s\" in \"%(model)s\" is te lang "
 "(%(size)i > %(max_size)i)."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_size_validation_record"
 msgid ""
 "The value \"%(value)s\" for field \"%(field)s\" in record \"%(record)s\" of "
@@ -3060,6 +3186,7 @@ msgstr ""
 "De waarde \"%(value)s\" voor veld \"%(field)s\" in record \"%(record)s\" van"
 " \"%(model)s\" is te lang (%(size)i > %(max_size)i)."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_time_format_validation_record"
 msgid ""
 "The time value \"%(value)s\" for field \"%(field)s\" in record "
@@ -3096,10 +3223,16 @@ msgctxt "model:ir.message,text:msg_timedelta_w"
 msgid "w"
 msgstr "w"
 
+#, python-format
 msgctxt "model:ir.message,text:msg_too_many_relations_found"
-msgid "Too many relations found: %(value)r in \"%(model)s\" (%(column)s)."
-msgstr "Te veel relaties gevonden: %(value)r\" in \"%(model)s\" (%(column)s)."
+msgid ""
+"Found too many relation for %(value)r in \"%(model)s\" at row %(row)d and "
+"column %(column)d."
+msgstr ""
+"Te veel relaties gevonden voor %(value)r\" in \"%(model)s\" in rij %(row)d "
+"en kolom %(column)d."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_translation_overridden"
 msgid ""
 "You can not export translation \"%(name)s\" because it has been overridden "
@@ -3116,6 +3249,7 @@ msgstr ""
 "U kunt niet tegelijkertijd \"Op Tijd\" en iets anders selecteren; ze sluiten"
 " elkaar uit."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_trigger_invalid_condition"
 msgid ""
 "Condition \"%(condition)s\" is not a valid PYSON expression for trigger "
@@ -3124,26 +3258,31 @@ msgstr ""
 "Voorwaarde %(condition)s\" is geen geldige PYSON-expressie voor trigger "
 "\"%(trigger)s\"."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_value_syntax_error"
 msgid ""
-"Syntax error for value: %(value)r in \"%(field)s\" of \"%(model)s\" "
-"(%(column)s)."
+"Syntax error for %(value)r in \"%(field)s\" of \"%(model)s\" at row %(row)d "
+"and column %(column)d."
 msgstr ""
-"Syntaxfout voor waarde: \"%(value)r\" in \"%(field)s\" van \"%(model)s\" "
-"(%(column)s)."
+"Syntaxisfout voor \"%(value)r\" in \"%(field)s\" van \"%(model)s\" in rij "
+"%(row)d en kolom %(column)d."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_view_invalid_xml"
 msgid "Invalid XML for view \"%(name)s\"."
 msgstr "Ongeldige XML voor weergave \"%(name)s\"."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_view_search_invalid_domain"
 msgid "Invalid domain or search criteria \"%(domain)s\" for search \"%(search)s\"."
 msgstr "Ongeldig domein of zoekcriteria \"%(domain)s\" voor zoekactie \"%(search)s\"."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_view_tree_optional_type"
 msgid "You cannot store optional on view \"%(view)s\"."
 msgstr "U kunt de optionele weergave niet opslaan in weergave \"%(view)s\"."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_write_error"
 msgid ""
 "You are trying to write to records \"%(ids)s\" of \"%(model)s\" that don't "
@@ -3152,6 +3291,7 @@ msgstr ""
 "U probeert records \"%(ids)s\" van\"%(model)s weg te schrijven die niet "
 "bestaan."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_write_rule_error"
 msgid ""
 "You are not allowed to write to records \"%(ids)s\" of \"%(model)s\" because of at least one of these rules:\n"
@@ -3160,6 +3300,7 @@ msgstr ""
 "Het is niet toegestaan om te schrijven in de records \"%(ids)s\" van \"%(model)s\"vanwege ten minste één van deze regels:\n"
 "%(rules)s"
 
+#, python-format
 msgctxt "model:ir.message,text:msg_write_xml_record"
 msgid ""
 "You are not allowed to modify the field \"%(field)s\" in record "
@@ -3171,14 +3312,6 @@ msgstr ""
 msgctxt "model:ir.message,text:msg_xml_id"
 msgid "XML ID"
 msgstr "XML id"
-
-msgctxt "model:ir.message,text:msg_xml_id_syntax_error"
-msgid ""
-"Syntax error for XML id: %(value)r in \"%(field)s\" of \"%(model)s\" "
-"(%(column)s)."
-msgstr ""
-"Syntaxfout voor XML-id: \"%(value)r\" in \"%(field)s\" van \"%(model)s\" "
-"(%(column)s)."
 
 msgctxt "model:ir.model,name:"
 msgid "Model"
@@ -3453,12 +3586,12 @@ msgid "Actions"
 msgstr "Acties"
 
 msgctxt "model:ir.ui.menu,name:menu_email_form"
-msgid "E-mails"
-msgstr "E-mails"
+msgid "Emails"
+msgstr "Emails"
 
 msgctxt "model:ir.ui.menu,name:menu_email_template_form"
-msgid "E-mail Templates"
-msgstr "E-mail templates"
+msgid "Email Templates"
+msgstr "Email templates"
 
 msgctxt "model:ir.ui.menu,name:menu_error_form"
 msgid "Errors"
@@ -3587,22 +3720,6 @@ msgstr "Gebruikersomgeving"
 msgctxt "model:ir.ui.menu,name:menu_view"
 msgid "Views"
 msgstr "Weergaves"
-
-msgctxt "model:ir.ui.menu,name:menu_view_search"
-msgid "View Search"
-msgstr "Zoek weergave"
-
-msgctxt "model:ir.ui.menu,name:menu_view_tree_optional"
-msgid "View Tree Optional"
-msgstr "Optionele boomstructuur weergave"
-
-msgctxt "model:ir.ui.menu,name:menu_view_tree_state"
-msgid "Tree State"
-msgstr "Status boom"
-
-msgctxt "model:ir.ui.menu,name:menu_view_tree_width"
-msgid "View Tree Width"
-msgstr "Kolombreedte boomweergave"
 
 msgctxt "model:ir.ui.menu,name:model_model_fields_form"
 msgid "Fields"
@@ -3819,6 +3936,10 @@ msgstr "Maanden"
 msgctxt "selection:ir.cron,interval_type:"
 msgid "Weeks"
 msgstr "Weken"
+
+msgctxt "selection:ir.cron,method:"
+msgid "Clean Cron Logs"
+msgstr "Opschonen logboeken cyclische taken"
 
 msgctxt "selection:ir.cron,method:"
 msgid "Clean Errors"

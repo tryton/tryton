@@ -27,6 +27,10 @@ msgctxt "field:product.template,lot_sequence:"
 msgid "Lot Sequence"
 msgstr "Seqüència del lot"
 
+msgctxt "field:stock.inventory.count.quantity,lot:"
+msgid "Lot"
+msgstr "Lot"
+
 msgctxt "field:stock.inventory.line,lot:"
 msgid "Lot"
 msgstr "Lot"
@@ -87,10 +91,6 @@ msgctxt "field:stock.lot.trace,quantity:"
 msgid "Quantity"
 msgstr "Quantitat"
 
-msgctxt "field:stock.lot.trace,shipment:"
-msgid "Shipment"
-msgstr "Albarà"
-
 msgctxt "field:stock.lot.trace,to_location:"
 msgid "To Location"
 msgstr "A la ubicació"
@@ -130,26 +130,6 @@ msgstr "Producte"
 msgctxt "field:stock.lots_by_locations,quantity:"
 msgid "Quantity"
 msgstr "Quantitat"
-
-msgctxt "field:stock.lots_by_warehouse.context,forecast_date:"
-msgid "At Date"
-msgstr "A data"
-
-msgctxt "field:stock.lots_by_warehouse.context,locations:"
-msgid "Locations"
-msgstr "Ubicacions"
-
-msgctxt "field:stock.lots_by_warehouse.context,stock_date_end:"
-msgid "At Date"
-msgstr "A data"
-
-msgctxt "field:stock.lots_by_warehouse.context,stock_skip_warehouse:"
-msgid "Only storage zone"
-msgstr "Només zona d'emmagatzematge"
-
-msgctxt "field:stock.lots_by_warehouse.context,warehouse:"
-msgid "Warehouse"
-msgstr "Magatzem"
 
 msgctxt "field:stock.move,lot:"
 msgid "Lot"
@@ -261,31 +241,17 @@ msgctxt "help:stock.lots_by_locations,default_uom:"
 msgid "The default Unit of Measure."
 msgstr "La unitat de mesura per defecte."
 
-msgctxt "help:stock.lots_by_warehouse.context,forecast_date:"
-msgid ""
-"Allow to compute expected stock quantities for this date.\n"
-"* An empty value is an infinite date in the future.\n"
-"* A date in the past will provide historical values."
-msgstr ""
-"Permet calcular les quantitats previstes per a aquesta data.\n"
-"* Un valor buit és un data infinita en el futur.\n"
-"* Una data en el passat proporcionarà valors històrics."
-
-msgctxt "help:stock.lots_by_warehouse.context,stock_skip_warehouse:"
-msgid "Check to use only the quantity of the storage zone."
-msgstr "Marqueu per utilitzar només la quantitat de la zona d'emmagatzematge."
-
 msgctxt "help:stock.move.add.lots.start,duplicate_lot_number:"
 msgid "The number of times the lot must be duplicated."
 msgstr "El nombre de vegades que s’ha de duplicar el lot."
 
 msgctxt "model:ir.action,name:act_location_quantity_list"
-msgid "Locations List Quantity"
-msgstr "Quantitat per ubicacions (llistat)"
+msgid "Stock Locations List"
+msgstr "Llista d'ubicacions d'existències"
 
 msgctxt "model:ir.action,name:act_location_quantity_tree"
-msgid "Locations Tree Quantity"
-msgstr "Quantitat per ubicacions"
+msgid "Stock Locations Tree"
+msgstr "Arbre d'ubicacions d'existències"
 
 msgctxt "model:ir.action,name:act_lot_form"
 msgid "Lots"
@@ -304,12 +270,8 @@ msgid "Upward Traces"
 msgstr "Traçabilitat ascendent"
 
 msgctxt "model:ir.action,name:act_lots_by_locations_relate"
-msgid "Lots by Locations"
-msgstr "Lots per ubicació"
-
-msgctxt "model:ir.action,name:act_lots_by_warehouse_relate"
-msgid "Lots By Warehouse"
-msgstr "Lots per magatzem"
+msgid "Lots"
+msgstr "Lots"
 
 msgctxt "model:ir.action,name:wizard_move_add_lots"
 msgid "Add Lots"
@@ -319,10 +281,12 @@ msgctxt "model:ir.message,text:msg_change_product"
 msgid "You cannot change the product of a stock lot which has stock moves."
 msgstr "No podeu canviar el producte d'un lot que te moviments d'existències."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_lot_required"
 msgid "To move product \"%(product)s\" you must provide a stock lot."
 msgstr "Per moure el producte \"%(product)s\" heu d'especificar-n'he el lot."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_move_add_lot_quantity"
 msgid ""
 "The total quantity \"%(lot_quantity)s\" of the lots must be less than or "
@@ -331,6 +295,7 @@ msgstr ""
 "La quantitat total \"%(lot_quantity)s\" dels lots ha de ser inferior o igual"
 " a la quantitat \"%(move_quantity)s\" del moviment."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_only_lot"
 msgid "You must select a stock lot instead of a product for \"%(product)s\"."
 msgstr "Heu de seleccionar un lot en comptes d'un producte per \"%(product)s\"."
@@ -383,10 +348,6 @@ msgstr "Lot per ubicació"
 msgctxt "model:stock.lots_by_locations,name:"
 msgid "Lots by Locations"
 msgstr "Lots per ubicació"
-
-msgctxt "model:stock.lots_by_warehouse.context,name:"
-msgid "Lot by Warehouse"
-msgstr "Lots per Magatzem"
 
 msgctxt "model:stock.move.add.lots.start,name:"
 msgid "Add Lots"

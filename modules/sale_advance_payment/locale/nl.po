@@ -160,14 +160,11 @@ msgstr ""
 "Tijdsperiode voor de verkoopdatum, om de datum van de voorschotfactuur te "
 "bepalen."
 
-msgctxt "model:ir.action,name:act_advance_invoice_form"
-msgid "Advance Invoices"
-msgstr "Voorschotfacturen"
-
 msgctxt "model:ir.action,name:act_advance_payment_term_form"
 msgid "Advance Payment Terms"
 msgstr "betalingsvoorwaarden voorschotfacturen"
 
+#, python-format
 msgctxt "model:ir.message,text:msg_shipping_blocked"
 msgid ""
 "To pack shipments the customer must paid the advance payment for sale "
@@ -176,6 +173,7 @@ msgstr ""
 "Om zendingen in te pakken, moet de klant het voorschot betalen voor verkoop "
 "\"%(sale)s\"."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_term_line_invalid_formula"
 msgid ""
 "Invalid formula \"%(formula)s\" in term line \"%(term_line)s\" with "

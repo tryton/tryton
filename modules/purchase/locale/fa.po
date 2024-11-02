@@ -141,17 +141,30 @@ msgctxt "field:purchase.handle.invoice.exception.ask,domain_invoices:"
 msgid "Domain Invoices"
 msgstr "دامنه صورتحساب ها"
 
-msgctxt "field:purchase.handle.invoice.exception.ask,recreate_invoices:"
-msgid "Recreate Invoices"
-msgstr "ایجاد دوباره صورتحساب ها"
+#, fuzzy
+msgctxt "field:purchase.handle.invoice.exception.ask,ignore_invoices:"
+msgid "Invoices to Ignore"
+msgstr "آدرس صورتحساب"
 
+#, fuzzy
+msgctxt "field:purchase.handle.invoice.exception.ask,recreate_invoices:"
+msgid "Invoices to Recreate"
+msgstr "انتخاب صورتحساب ها برای ایجاد دوباره"
+
+#, fuzzy
 msgctxt "field:purchase.handle.shipment.exception.ask,domain_moves:"
-msgid "Domain Moves"
+msgid "Domain Stock Moves"
 msgstr "دامنه جابجایی ها"
 
+#, fuzzy
+msgctxt "field:purchase.handle.shipment.exception.ask,ignore_moves:"
+msgid "Stock Moves to Ignore"
+msgstr "جابجایی ها"
+
+#, fuzzy
 msgctxt "field:purchase.handle.shipment.exception.ask,recreate_moves:"
-msgid "Recreate Moves"
-msgstr "ایجاد دوباره جابجایی ها"
+msgid "Stock Moves to Recreate"
+msgstr "انتخاب جابجایی برای ایجاد دوباره"
 
 #, fuzzy
 msgctxt "field:purchase.line,actual_quantity:"
@@ -201,8 +214,13 @@ msgctxt "field:purchase.line,invoice_progress:"
 msgid "Invoice Progress"
 msgstr "آدرس صورتحساب"
 
+msgctxt "field:purchase.line,movable:"
+msgid "Movable"
+msgstr ""
+
+#, fuzzy
 msgctxt "field:purchase.line,moves:"
-msgid "Moves"
+msgid "Stock Moves"
 msgstr "جابجایی ها"
 
 #, fuzzy
@@ -210,8 +228,9 @@ msgctxt "field:purchase.line,moves_exception:"
 msgid "Moves Exception"
 msgstr "جابجایی های اعتراضی"
 
+#, fuzzy
 msgctxt "field:purchase.line,moves_ignored:"
-msgid "Ignored Moves"
+msgid "Ignored Stock Moves"
 msgstr "جابجایی های نادیده گرفته شده"
 
 #, fuzzy
@@ -219,6 +238,7 @@ msgctxt "field:purchase.line,moves_progress:"
 msgid "Moves Progress"
 msgstr "جابجایی ها انجام شد"
 
+#, fuzzy
 msgctxt "field:purchase.line,moves_recreated:"
 msgid "Recreated Moves"
 msgstr "جابجایی های دوباره انجام شده"
@@ -300,16 +320,16 @@ msgid "Tax"
 msgstr "مالیات"
 
 msgctxt "field:purchase.line-ignored-stock.move,move:"
-msgid "Move"
-msgstr "جابجایی"
+msgid "Stock Move"
+msgstr ""
 
 msgctxt "field:purchase.line-ignored-stock.move,purchase_line:"
 msgid "Purchase Line"
 msgstr "خط خرید"
 
 msgctxt "field:purchase.line-recreated-stock.move,move:"
-msgid "Move"
-msgstr "جابجایی"
+msgid "Stock Move"
+msgstr ""
 
 msgctxt "field:purchase.line-recreated-stock.move,purchase_line:"
 msgid "Purchase Line"
@@ -437,12 +457,18 @@ msgctxt "field:purchase.purchase,invoices_recreated:"
 msgid "Recreated Invoices"
 msgstr "صورتحساب های دوباره ایجاد شده"
 
+#, fuzzy
+msgctxt "field:purchase.purchase,line_lines:"
+msgid "Line - Lines"
+msgstr "خطوط صورتحساب"
+
 msgctxt "field:purchase.purchase,lines:"
 msgid "Lines"
 msgstr "خطوط"
 
+#, fuzzy
 msgctxt "field:purchase.purchase,moves:"
-msgid "Moves"
+msgid "Stock Moves"
 msgstr "جابجایی ها"
 
 msgctxt "field:purchase.purchase,number:"
@@ -651,16 +677,29 @@ msgstr ""
 "دوره فصلی که در آن تأیید خرید هنوز می تواند به پیش نویس مجدد تنظیم مجدد "
 "شود.فقط اگر یک کارگر فعال باشد اعمال می شود."
 
-msgctxt "help:purchase.handle.invoice.exception.ask,recreate_invoices:"
-msgid ""
-"The selected invoices will be recreated. The other ones will be ignored."
+#, fuzzy
+msgctxt "help:purchase.handle.invoice.exception.ask,ignore_invoices:"
+msgid "The selected cancelled invoices will be ignored."
 msgstr ""
 "صورتحساب های انتخاب شده دوباره ایجاد خواهند شد، مابقی نادیده گرفته میشوند."
 
-msgctxt "help:purchase.handle.shipment.exception.ask,recreate_moves:"
-msgid "The selected moves will be recreated. The other ones will be ignored."
+#, fuzzy
+msgctxt "help:purchase.handle.invoice.exception.ask,recreate_invoices:"
+msgid "The selected cancelled invoices will be recreated."
 msgstr ""
-"جابجایی های انتخاب شده دوباره ایجاد خواهند شد، مابقی نادیده گرفته میشوند."
+"صورتحساب های انتخاب شده دوباره ایجاد خواهند شد، مابقی نادیده گرفته میشوند."
+
+#, fuzzy
+msgctxt "help:purchase.handle.shipment.exception.ask,ignore_moves:"
+msgid "The selected cancelled stock moves will be ignored."
+msgstr ""
+"صورتحساب های انتخاب شده دوباره ایجاد خواهند شد، مابقی نادیده گرفته میشوند."
+
+#, fuzzy
+msgctxt "help:purchase.handle.shipment.exception.ask,recreate_moves:"
+msgid "The selected cancelled stock moves will be recreated."
+msgstr ""
+"صورتحساب های انتخاب شده دوباره ایجاد خواهند شد، مابقی نادیده گرفته میشوند."
 
 msgctxt "help:purchase.line,delivery_date_edit:"
 msgid "Check to edit the delivery date."
@@ -704,9 +743,10 @@ msgctxt "model:ir.action,name:act_invoice_form"
 msgid "Invoices"
 msgstr "صورتحساب ها"
 
-msgctxt "model:ir.action,name:act_open_supplier"
-msgid "Parties associated to Purchases"
-msgstr "نهادها/سازمان های مرتبط با خریدها"
+#, fuzzy
+msgctxt "model:ir.action,name:act_invoice_line_form"
+msgid "Invoice Lines"
+msgstr "خطوط صورتحساب"
 
 #, fuzzy
 msgctxt "model:ir.action,name:act_product_supplier_form"
@@ -737,7 +777,7 @@ msgstr "خط خرید"
 
 #, fuzzy
 msgctxt "model:ir.action,name:act_purchase_move_relate"
-msgid "Moves"
+msgid "Stock Moves"
 msgstr "جابجایی ها"
 
 #, fuzzy
@@ -877,6 +917,7 @@ msgstr ""
 "شما در حال تلاش برای تغییرواحد قیمت خرید هستید، که قیمت خرید بر مبنای آن "
 "متکی است."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_erase_party_pending_purchase"
 msgid ""
 "You cannot erase party \"%(party)s\" while they have pending purchases with "
@@ -885,10 +926,12 @@ msgstr ""
 "شما نمیتوانید نهاد/سازمان: \"%(party)s\"را هنگامی که خریدهای معوقه با شرکت :"
 " \"%(company)s\"دارد را حذف کنید."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_purchase_delete_cancel"
 msgid "To delete purchase \"%(purchase)s\" you must cancel it."
 msgstr "برای حذف خرید : \"%(purchase)s\"شما باید ابتدا آنرا لغو کنید."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_purchase_invoice_reset_draft"
 msgid ""
 "You cannot reset invoice \"%(invoice)s\" to draft because it was generated "
@@ -897,13 +940,14 @@ msgstr ""
 "شما نمیتوانید حالت صورتحساب: \"%(invoice)s\"را به پیش نویس تغیر دهید چراکه "
 "بوسیله یک خرید تولید شده است."
 
-#, fuzzy
+#, fuzzy, python-format
 msgctxt "model:ir.message,text:msg_purchase_line_create_draft"
 msgid ""
 "You cannot add lines to purchase \"%(purchase)s\" because it is no longer in"
 " a draft state."
 msgstr "برای تغییر عنوان خرید:\"%(purchase)s\" باید در حالت پیش نویس باشد."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_purchase_line_delete_cancel_draft"
 msgid ""
 "To delete line \"%(line)s\" you must cancel or reset to draft purchase "
@@ -912,6 +956,7 @@ msgstr ""
 "برای حذف سطر: \"%(line)s\" شما باید خرید : \"%(purchase)s\" را لغو یا به "
 "حالت پیش نویس تغیر دهید."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_purchase_line_move_quantity"
 msgid ""
 "The purchase line \"%(line)s\" is moving %(extra)s in addition to the "
@@ -922,6 +967,7 @@ msgctxt "model:ir.message,text:msg_purchase_line_tax_unique"
 msgid "A tax can be added only once to a purchase line."
 msgstr ""
 
+#, python-format
 msgctxt "model:ir.message,text:msg_purchase_missing_account_expense"
 msgid ""
 "To invoice purchase \"%(purchase)s\" you must configure a default account "
@@ -930,12 +976,14 @@ msgstr ""
 "برای صورتحساب خرید : \"%(purchase)s\" شما باید یک حساب هزینه پیش فرض "
 "پیکربندی کنید."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_purchase_modify_header_draft"
 msgid ""
 "To modify the header of purchase \"%(purchase)s\", it must be in draft "
 "state."
 msgstr "برای تغییر عنوان خرید:\"%(purchase)s\" باید در حالت پیش نویس باشد."
 
+#, fuzzy, python-format
 msgctxt "model:ir.message,text:msg_purchase_move_reset_draft"
 msgid ""
 "You cannot reset move \"%(move)s\" to draft because it was generated by a "
@@ -944,6 +992,7 @@ msgstr ""
 "شمانمیتوانید جابجایی :\"%s\" را که توسط یک خرید تولید شده است بعنوان پیش "
 "نویس بازنشانی کنید."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_purchase_product_missing_account_expense"
 msgid ""
 "To invoice purchase \"%(purchase)s\" you must define an account expense for "
@@ -987,6 +1036,7 @@ msgctxt "model:ir.message,text:msg_purchase_reporting_time_series"
 msgid "Time Series"
 msgstr ""
 
+#, python-format
 msgctxt "model:ir.message,text:msg_purchase_supplier_location_required"
 msgid ""
 "To process purchase \"%(purchase)s\" you must set a supplier location on "
@@ -995,7 +1045,7 @@ msgstr ""
 "برای پردازش خرید: \"%(purchase)s\" شما باید مکان عرضه کننده را در "
 "نهاد/سازمان : \"%(party)s\" تنظیم کنید."
 
-#, fuzzy
+#, fuzzy, python-format
 msgctxt "model:ir.message,text:msg_warehouse_required_for_quotation"
 msgid ""
 "To get a quote for the purchase \"%(purchase)s\" you must enter a warehouse."
@@ -1115,11 +1165,6 @@ msgstr "گزارش گیری"
 msgctxt "model:ir.ui.menu,name:menu_reporting_purchase"
 msgid "Purchases"
 msgstr "خریدها"
-
-#, fuzzy
-msgctxt "model:ir.ui.menu,name:menu_supplier"
-msgid "Associated to Purchases"
-msgstr "نهادها/سازمان های مرتبط با خریدها"
 
 msgctxt "model:party.party.customer_code,name:"
 msgid "Party Customer Code"
@@ -1439,12 +1484,12 @@ msgstr "تأمین کنندگان"
 
 #, fuzzy
 msgctxt "view:purchase.handle.invoice.exception.ask:"
-msgid "Choose invoices to recreate:"
+msgid "Choose cancelled invoices to ignore or recreate:"
 msgstr "انتخاب صورتحساب ها برای ایجاد دوباره"
 
 #, fuzzy
 msgctxt "view:purchase.handle.shipment.exception.ask:"
-msgid "Choose move to recreate:"
+msgid "Choose cancelled stock moves to ignore or recreate:"
 msgstr "انتخاب جابجایی برای ایجاد دوباره"
 
 #, fuzzy

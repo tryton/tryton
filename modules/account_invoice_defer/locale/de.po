@@ -122,6 +122,7 @@ msgctxt "model:ir.message,text:msg_defer_invoice_line_unique"
 msgid "Invoice line can be deferred only once."
 msgstr "Eine Rechnungsposition kann nur einmal abgegrenzt werden."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_invoice_deferred_delete_draft"
 msgid ""
 "You cannot delete invoice deferred \"%(deferral)s\" because it is not in "
@@ -130,6 +131,7 @@ msgstr ""
 "Der Rechnungsabgrenzungsposten \"%(deferral)s\" kann nicht gelöscht werden, "
 "da er nicht im Status \"Entwurf\" ist."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_invoice_deferred_running_close_period"
 msgid ""
 "You cannot close period \"%(period)s\" because some invoices deferred "

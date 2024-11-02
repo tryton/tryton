@@ -338,6 +338,7 @@ msgctxt "model:ir.export-write-res.group,name:"
 msgid "Export Modification Group"
 msgstr "Exporteer modificatiegroep"
 
+#, python-format
 msgctxt "model:ir.message,text:msg_email_invalid"
 msgid "The email address \"%(email)s\" for \"%(user)s\" is not valid."
 msgstr "Het email adres \"%(email)s\" voor \"%(user)s\" is niet geldig."
@@ -351,6 +352,7 @@ msgctxt "model:ir.message,text:msg_password_forbidden"
 msgid "The password is forbidden."
 msgstr "Dit wachtwoord is niet toegestaan."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_password_length"
 msgid "The password must have at least %(length)i characters."
 msgstr "Het wachtwoord moet minimaal %(length)i tekens bevatten."
@@ -373,6 +375,7 @@ msgstr ""
 "Voor logboekdoeleinden kunnen gebruikers niet worden verwijderd, maar moeten"
 " ze worden gedeactiveerd."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_user_password"
 msgid "Password for %(login)s"
 msgstr "Wachtwoord voor %(login)s"
@@ -489,6 +492,7 @@ msgctxt "model:res.user.warning,name:"
 msgid "User Warning"
 msgstr "Gebruikerswaarschuwing"
 
+#, python-format
 msgctxt "report:res.user.email_reset_password:"
 msgid ""
 "Hello,\n"
@@ -513,6 +517,7 @@ msgctxt "report:res.user.email_reset_password:"
 msgid "Reset Password"
 msgstr "Reset wachtwoord"
 
+#, python-format
 msgctxt "report:res.user.email_reset_password:"
 msgid "The password will expire in [1:%(datetime)s]."
 msgstr "Het wachtwoord verloopt op [1:%(datetime)s]."

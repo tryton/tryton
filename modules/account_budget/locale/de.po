@@ -301,6 +301,7 @@ msgid "The period must be unique for each budget line."
 msgstr ""
 "Ein Buchungszeitraum kann nur einmal pro Budgetposition verwendet werden."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_budget_line_period_ratio"
 msgid ""
 "The sum of period ratios for the budget line \"%(budget_line)s\" must be "

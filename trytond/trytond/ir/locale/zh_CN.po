@@ -507,6 +507,11 @@ msgctxt "field:ir.cron,interval_type:"
 msgid "Interval Type"
 msgstr "间隔类型"
 
+#, fuzzy
+msgctxt "field:ir.cron,logs:"
+msgid "Logs"
+msgstr "日志"
+
 msgctxt "field:ir.cron,method:"
 msgid "Method"
 msgstr "方法"
@@ -519,6 +524,10 @@ msgctxt "field:ir.cron,next_call:"
 msgid "Next Call"
 msgstr "下一次调用"
 
+msgctxt "field:ir.cron,running:"
+msgid "Running"
+msgstr ""
+
 msgctxt "field:ir.cron,timezone:"
 msgid "Timezone"
 msgstr "时区"
@@ -526,6 +535,24 @@ msgstr "时区"
 msgctxt "field:ir.cron,weekday:"
 msgid "Day of Week"
 msgstr "星期几"
+
+#, fuzzy
+msgctxt "field:ir.cron.log,cron:"
+msgid "Cron"
+msgstr "计划任务"
+
+#, fuzzy
+msgctxt "field:ir.cron.log,duration:"
+msgid "Duration"
+msgstr "书写方向"
+
+msgctxt "field:ir.cron.log,ended:"
+msgid "Ended"
+msgstr ""
+
+msgctxt "field:ir.cron.log,started:"
+msgid "Started"
+msgstr ""
 
 msgctxt "field:ir.email,addresses:"
 msgid "Addresses"
@@ -567,8 +594,9 @@ msgctxt "field:ir.email.address,address:"
 msgid "Address"
 msgstr "地址"
 
+#, fuzzy
 msgctxt "field:ir.email.address,email:"
-msgid "E-mail"
+msgid "Email"
 msgstr "电子邮箱"
 
 msgctxt "field:ir.email.template,body:"
@@ -1533,6 +1561,11 @@ msgctxt "field:ir.ui.menu,favorite:"
 msgid "Favorite"
 msgstr "最喜欢的"
 
+#, fuzzy
+msgctxt "field:ir.ui.menu,favorites:"
+msgid "Favorites"
+msgstr "最喜欢的"
+
 msgctxt "field:ir.ui.menu,icon:"
 msgid "Icon"
 msgstr "图标"
@@ -1625,6 +1658,11 @@ msgctxt "field:ir.ui.view_search,model:"
 msgid "Model"
 msgstr "模型"
 
+#, fuzzy
+msgctxt "field:ir.ui.view_search,model_ref:"
+msgid "Model"
+msgstr "模型"
+
 msgctxt "field:ir.ui.view_search,name:"
 msgid "Name"
 msgstr "名称"
@@ -1637,6 +1675,21 @@ msgctxt "field:ir.ui.view_tree_optional,field:"
 msgid "Field"
 msgstr "字段"
 
+#, fuzzy
+msgctxt "field:ir.ui.view_tree_optional,field_ref:"
+msgid "Field"
+msgstr "字段"
+
+#, fuzzy
+msgctxt "field:ir.ui.view_tree_optional,model:"
+msgid "Model"
+msgstr "模型"
+
+#, fuzzy
+msgctxt "field:ir.ui.view_tree_optional,model_ref:"
+msgid "Model"
+msgstr "模型"
+
 msgctxt "field:ir.ui.view_tree_optional,user:"
 msgid "User"
 msgstr "用户"
@@ -1645,9 +1698,15 @@ msgctxt "field:ir.ui.view_tree_optional,value:"
 msgid "Value"
 msgstr "取值"
 
-msgctxt "field:ir.ui.view_tree_optional,view_id:"
-msgid "View ID"
-msgstr "视图 ID"
+#, fuzzy
+msgctxt "field:ir.ui.view_tree_optional,view:"
+msgid "View"
+msgstr "视图"
+
+#, fuzzy
+msgctxt "field:ir.ui.view_tree_state,child_field:"
+msgid "Child Field"
+msgstr "子字段"
 
 msgctxt "field:ir.ui.view_tree_state,child_name:"
 msgid "Child Name"
@@ -1658,6 +1717,11 @@ msgid "Domain"
 msgstr "域"
 
 msgctxt "field:ir.ui.view_tree_state,model:"
+msgid "Model"
+msgstr "模型"
+
+#, fuzzy
+msgctxt "field:ir.ui.view_tree_state,model_ref:"
 msgid "Model"
 msgstr "模型"
 
@@ -1761,9 +1825,10 @@ msgctxt "help:ir.email.template,recipients:"
 msgid "The field that contains the recipient(s)."
 msgstr "包含收件人的字段."
 
+#, fuzzy
 msgctxt "help:ir.email.template,recipients_hidden:"
-msgid "The field that contains the secondary recipient(s)."
-msgstr "包含次要收件人的字段."
+msgid "The field that contains the hidden recipient(s)."
+msgstr "包含收件人的字段."
 
 msgctxt "help:ir.email.template,recipients_hidden_pyson:"
 msgid ""
@@ -1973,16 +2038,19 @@ msgctxt "model:ir.action,name:act_cron_form"
 msgid "Actions"
 msgstr "操作"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_email_form"
-msgid "E-mails"
+msgid "Emails"
 msgstr "电子邮箱"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_email_form_relate"
-msgid "E-mail Archives"
+msgid "Email Archives"
 msgstr "电子邮件存档"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_email_template_form"
-msgid "E-mail Templates"
+msgid "Email Templates"
 msgstr "电子邮件模板"
 
 msgctxt "model:ir.action,name:act_error_form"
@@ -2137,9 +2205,10 @@ msgctxt "model:ir.action,name:act_view_tree_optional_form"
 msgid "View Tree Optional"
 msgstr "视图树（可选）"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_view_tree_state"
-msgid "Tree State"
-msgstr "树状态"
+msgid "View Tree State"
+msgstr "视图树状态"
 
 msgctxt "model:ir.action,name:act_view_tree_width_form"
 msgid "View Tree Width"
@@ -2406,6 +2475,11 @@ msgctxt "model:ir.cron,name:"
 msgid "Cron"
 msgstr "计划任务"
 
+#, fuzzy
+msgctxt "model:ir.cron.log,name:"
+msgid "Cron Log"
+msgstr "计划任务"
+
 msgctxt "model:ir.date,name:"
 msgid "Date"
 msgstr "日期"
@@ -2554,38 +2628,52 @@ msgctxt "model:ir.message,text:msg_ID"
 msgid "ID"
 msgstr "ID"
 
+#, python-format
 msgctxt "model:ir.message,text:msg_access_button_error"
 msgid "Calling button \"%(button)s on \"%(model)s\" is not allowed."
 msgstr "不允许在 \"%(model)s\" 上点击按钮 \"%(button)s."
 
+#, fuzzy, python-format
+msgctxt "model:ir.message,text:msg_access_report_error"
+msgid "You are not allowed to execute report \"%(report)s\"."
+msgstr "没有运行向导程序 \"%(wizard)s\" 的权限."
+
+#, python-format
 msgctxt "model:ir.message,text:msg_access_rule_error"
 msgid "You are not allowed to access \"%(model)s\"."
 msgstr "没有访问 \"%(model)s\" 的权限."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_access_rule_field_error"
 msgid "You are not allowed to access \"%(model)s.%(field)s\"."
 msgstr "没有访问 \"%(model)s.%(field)s\" 的权限."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_access_wizard_error"
 msgid "You are not allowed to execute wizard \"%(wizard)s\"."
 msgstr "没有运行向导程序 \"%(wizard)s\" 的权限."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_access_wizard_model_error"
 msgid "You are not allowed to execute wizard \"%(wizard)s\" on \"%(model)s\"."
 msgstr "没有权限在 \"%(model)s\" 上运行向导程序 \"%(wizard)s\"."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_action_invalid_context"
 msgid "Invalid context \"%(context)s\" for action \"%(action)s\"."
 msgstr "动作 \"%(action)s\" 的内容 \"%(context)s\" 设置无效."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_action_invalid_domain"
 msgid "Invalid domain or search criteria \"%(domain)s\" for action \"%(action)s\"."
 msgstr "动作 \"%(action)s\" 的域或找条件 \"%(domain)s\" 无效."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_action_invalid_views"
 msgid "Invalid view \"%(view)s\" for action \"%(action)s\"."
 msgstr "动作\"%(action)s\" 的视图 \"%(view)s\" 无效."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_action_wrong_wizard_model"
 msgid "Wrong wizard model in keyword action \"%(name)s\"."
 msgstr "关键字操作 \"%(name)s\" 的向导模型有误."
@@ -2630,14 +2718,22 @@ msgctxt "model:ir.message,text:msg_button_name_unique"
 msgid "The name of the button must be unique per model."
 msgstr "每个模型的按钮名称不能重复。"
 
+#, fuzzy
+msgctxt "model:ir.message,text:msg_cache_name_unique"
+msgid "The name of cache must be unique."
+msgstr "语言代码不能重复。"
+
+#, python-format
 msgctxt "model:ir.message,text:msg_context_datetime"
 msgid "At date/time: %(datetime)s"
 msgstr ""
 
+#, python-format
 msgctxt "model:ir.message,text:msg_context_groups"
 msgid "Within groups: %(groups)s"
 msgstr ""
 
+#, python-format
 msgctxt "model:ir.message,text:msg_create_rule_error"
 msgid ""
 "You are not allowed to create records of \"%(model)s\" because they fail on at least one of these rules:\n"
@@ -2654,6 +2750,7 @@ msgctxt "model:ir.message,text:msg_created_by"
 msgid "Created by"
 msgstr "创建者"
 
+#, python-format
 msgctxt "model:ir.message,text:msg_delete_rule_error"
 msgid ""
 "You are not allowed to delete records \"%(ids)s\" of \"%(model)s\" because of at lease one of those rules:\n"
@@ -2662,6 +2759,7 @@ msgstr ""
 "不允许删除模型 \"%(model)s\" 的记录 \"%(ids)s\" ， 由于下面的规则（至少一条）:\n"
 "%(rules)s"
 
+#, python-format
 msgctxt "model:ir.message,text:msg_delete_xml_record"
 msgid "You are not allowed to delete the record \"%(record)s\" of \"%(model)s\"."
 msgstr "不允许删除 \"%(model)s\" 对应的记录 \"%(record)s\" ."
@@ -2718,14 +2816,17 @@ msgctxt "model:ir.message,text:msg_dict_schema_integer"
 msgid "Integer"
 msgstr "整型"
 
+#, python-format
 msgctxt "model:ir.message,text:msg_dict_schema_invalid_domain"
 msgid "Invalid domain in schema \"%(schema)s\"."
 msgstr "模式 \"%(schema)s\" 中的域无效."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_dict_schema_invalid_help_selection"
 msgid "Invalid help selection in schema \"%(schema)s\"."
 msgstr "模式\"%(schema)s\"中的帮助选择无效."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_dict_schema_invalid_selection"
 msgid "Invalid selection in schema \"%(schema)s\"."
 msgstr "模式\"%(schema)s\"中的选择无效."
@@ -2774,14 +2875,14 @@ msgctxt "model:ir.message,text:msg_dict_yes"
 msgid "Yes"
 msgstr "是"
 
-#, fuzzy
+#, fuzzy, python-format
 msgctxt "model:ir.message,text:msg_digits_validation_record"
 msgid ""
 "The number of digits in the value \"%(value)r\" for field \"%(field)s\" in "
 "record \"%(record)s\" of \"%(model)s\" exceeds the limit of \"%(digits)i\"."
 msgstr "模型 \"%(model)s\" ，其字段 \"%(field)s\" 的数字取值 \"%(value)s\" 的位数超出了 \"%(digits)i\" 的限制."
 
-#, fuzzy
+#, fuzzy, python-format
 msgctxt "model:ir.message,text:msg_domain_validation_record"
 msgid ""
 "The value \"%(value)s\" for field \"%(field)s\" in record \"%(record)s\" of "
@@ -2796,39 +2897,44 @@ msgctxt "model:ir.message,text:msg_edited_by"
 msgid "Edited by"
 msgstr "编辑者"
 
+#, fuzzy, python-format
 msgctxt "model:ir.message,text:msg_email_template_invalid_body"
 msgid ""
-"Invalid body in e-mail template \"%(template)s\" with exception "
+"Invalid body in email template \"%(template)s\" with exception "
 "\"%(exception)s\"."
 msgstr "电子邮件模板 \"%(template)s\" 中的正文无效，异常为 \"%(exception)s\"."
 
+#, fuzzy, python-format
 msgctxt "model:ir.message,text:msg_email_template_invalid_field_pyson"
 msgid ""
-"Invalid PYSON %(field)s in e-mail template \"%(template)s\" with exception "
+"Invalid PYSON %(field)s in email template \"%(template)s\" with exception "
 "\"%(exception)s\"."
 msgstr "电子邮件模板 \"%(template)s\" 中的 PYSON %(field)s无效，异常为 \"%(exception)s\"."
 
+#, fuzzy, python-format
 msgctxt "model:ir.message,text:msg_email_template_invalid_field_pyson_type"
 msgid ""
-"The PYSON %(field)s in e-mail template \"%(template)s\" must generate a "
-"list."
+"The PYSON %(field)s in email template \"%(template)s\" must generate a list."
 msgstr "电子邮件模板 \"%(template)s\" 中的 PYSON %(field)s 必须生成一个列表."
 
+#, fuzzy, python-format
 msgctxt "model:ir.message,text:msg_email_template_invalid_subject"
 msgid ""
-"Invalid subject in e-mail template \"%(template)s\" with exception "
+"Invalid subject in email template \"%(template)s\" with exception "
 "\"%(exception)s\"."
 msgstr "电子邮件模板 \"%(template)s\" 中的主题无效，异常为 \"%(exception)s\"."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_field_model_name"
 msgid "%(field)s (model name)"
 msgstr "%(field)s (模型名称)"
 
+#, python-format
 msgctxt "model:ir.message,text:msg_field_string"
 msgid "%(field)s (string)"
 msgstr "%(field)s (字符串)"
 
-#, fuzzy
+#, fuzzy, python-format
 msgctxt "model:ir.message,text:msg_forbidden_char_validation_record"
 msgid ""
 "The value \"%(value)s\" for field \"%(field)s\" in record \"%(record)s\" of "
@@ -2837,12 +2943,14 @@ msgstr ""
 "模型 \"%(model)s\" 的记录 \"%(record)s\"，其字段 \"%(field)s\" 的取值 \"%(value)s\" "
 "包含一些无效字符 \"%(chars)s\"."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_foreign_model_exist"
 msgid ""
 "The records could not be deleted because they are used by field "
 "\"%(field)s\" of \"%(model)s\"."
 msgstr "记录无法删除，因为 \"%(model)s\" 的字段 \"%(field)s\" 正在使用此记录."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_foreign_model_missing"
 msgid "The value \"%(value)s\" for field \"%(field)s\" in \"%(model)s\" does not exist."
 msgstr "模型 \"%(model)s\" 的字段 \"%(field)s\" 对应的取值 \"%(value)s\" 不存在."
@@ -2855,26 +2963,41 @@ msgctxt "model:ir.message,text:msg_id_positive"
 msgid "ID must be positive."
 msgstr "ID 必须为正."
 
+#, python-format
+msgctxt "model:ir.message,text:msg_import_data_missing_column"
+msgid "Missing values for last column at row %(row)d."
+msgstr ""
+
+#, python-format
+msgctxt "model:ir.message,text:msg_import_data_missing_columns"
+msgid "Missing values for %(n)s last columns at row %(row)d."
+msgstr ""
+
 msgctxt "model:ir.message,text:msg_language_code_unique"
 msgid "The code on language must be unique."
 msgstr "语言代码不能重复。"
 
+#, python-format
 msgctxt "model:ir.message,text:msg_language_default_translatable"
 msgid "The default language \"%(language)s\" must be translatable."
 msgstr "默认语言 \"%(language)s\" 必须设置为可翻译。"
 
+#, python-format
 msgctxt "model:ir.message,text:msg_language_delete_default"
 msgid "The default language \"%(language)s\" can not be deleted."
 msgstr "默认语言 \"%(language)s\" 不可删除。"
 
+#, python-format
 msgctxt "model:ir.message,text:msg_language_invalid_date"
 msgid "Invalid date format \"%(format)s\" for language \"%(language)s\"."
 msgstr "语言\"%(language)s\"中的日期格式 \"%(format)s\"设置无效."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_language_invalid_grouping"
 msgid "Invalid grouping \"%(grouping)s\" for language \"%(language)s\"."
 msgstr "语言\"%(language)s\"中的分组 \"%(grouping)s\"设置无效."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_model_invalid_condition"
 msgid ""
 "The condition \"%(condition)s\" is not a valid PYSON expression for button "
@@ -2896,10 +3019,12 @@ msgctxt "model:ir.message,text:msg_notes"
 msgid "Notes"
 msgstr "注释"
 
+#, python-format
 msgctxt "model:ir.message,text:msg_read_error"
 msgid "You are trying to read records \"%(ids)s\" of \"%(model)s\" that don't exist."
 msgstr "\"%(model)s\" 的记录 \"%(ids)s\" 已经不存在了，无法读取."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_read_rule_error"
 msgid ""
 "You are not allowed to read records \"%(ids)s\" of \"%(model)s\" because of at least one of these rules:\n"
@@ -2912,37 +3037,45 @@ msgctxt "model:ir.message,text:msg_record_name"
 msgid "Record Name"
 msgstr "记录名称"
 
+#, python-format
 msgctxt "model:ir.message,text:msg_recursion_error"
 msgid ""
 "Recursion error: Record \"%(rec_name)s\" with parent \"%(parent_rec_name)s\""
 " was configured as ancestor of itself."
 msgstr "递归错误：记录 \"%(rec_name)s\"和父项\"%(parent_rec_name)s\" 已配置为其自身的祖先."
 
+#, fuzzy, python-format
 msgctxt "model:ir.message,text:msg_reference_syntax_error"
 msgid ""
-"Syntax error for reference: %(value)r in \"%(field)s\" of \"%(model)s\" "
-"(%(column)s)."
-msgstr "引用的语法错误：\"%(model)s\" 的 \"%(field)s\" 中的 %(value)r（%(column)s）。"
+"Syntax error for %(value)r in \"%(field)s\" of \"%(model)s\" at row %(row)d "
+"and column %(column)d."
+msgstr "\"%(model)s\"（%(column)s 的 \"%(field)s\"）中的 XML %(value)r 的语法错误。"
 
+#, fuzzy, python-format
 msgctxt "model:ir.message,text:msg_relation_not_found"
-msgid "Relation not found: %(value)r in \"%(model)s\" (%(column)s)."
-msgstr "找不到关系: 模型 \"%(model)s\" 中的 \"%(value)r\" (%(column)s)."
+msgid ""
+"Could not find relation for %(value)r in \"%(model)s\" at row %(row)d and "
+"column %(column)d."
+msgstr "发现太多的关系：\"%(value)r\" in \"%(model)s\" (%(column)s)."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_report_invalid_email"
 msgid "Invalid email definition for report \"%(name)s\"."
 msgstr "报表 \"%(name)s\" 的电子邮件定义无效."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_report_invalid_record_name"
 msgid ""
 "Invalid record name definition for report \"%(report)s\" with exception "
 "\"%(exception)s\"."
 msgstr "报告 \"%(report)s\" 中的记录名称定义无效，异常为 \"%(exception)s\"."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_required_validation"
 msgid "A value is required for field \"%(field)s\" in \"%(model)s\"."
 msgstr "模型\"%(model)s\"的字段\"%(field)s\"需要有取值."
 
-#, fuzzy
+#, fuzzy, python-format
 msgctxt "model:ir.message,text:msg_required_validation_record"
 msgid ""
 "A value is required for field \"%(field)s\" in record \"%(record)s\" of "
@@ -2953,15 +3086,17 @@ msgctxt "model:ir.message,text:msg_resource_copy_help"
 msgid "The resources to which this record must be copied."
 msgstr "必须将此记录复制的资源."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_rule_invalid_domain"
 msgid "Invalid domain in rule \"%(name)s\"."
 msgstr "规则\"%(name)s\"的域配置无效."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_search_function_missing"
 msgid "Missing search function for field \"%(field)s\" in \"%(model)s\"."
 msgstr "模型 \"%(model)s\" 的字段 \"%(field)s\" 缺少搜索函数."
 
-#, fuzzy
+#, fuzzy, python-format
 msgctxt "model:ir.message,text:msg_selection_validation_record"
 msgid ""
 "The value \"%(value)s\" for field \"%(field)s\" in record \"%(record)s\" of "
@@ -2980,6 +3115,7 @@ msgid ""
 "sequence."
 msgstr "不能更改序列的序列类型，而只能创建新序列。"
 
+#, fuzzy, python-format
 msgctxt "model:ir.message,text:msg_sequence_invalid_number_increment_next"
 msgid ""
 "Invalid \"Increment Number\" (%(number_increment)s) or \"Next Number\" "
@@ -2988,22 +3124,22 @@ msgstr ""
 "无效的\"Increment "
 "Number\"（%（Number_Increment）s）或“下一个编号”（%n（Number_Next）s），异常为“%（exception）s”。"
 
+#, fuzzy, python-format
 msgctxt "model:ir.message,text:msg_sequence_invalid_prefix"
 msgid "Invalid prefix \"%(affix)s\" for sequence \"%(sequence)s\"."
 msgstr "序列 \"%(sequence)s\"前缀\"%(prefix)s\"无效."
 
+#, fuzzy, python-format
 msgctxt "model:ir.message,text:msg_sequence_invalid_suffix"
 msgid "Invalid suffix \"%(affix)s\" for sequence \"%(sequence)s\"."
 msgstr "序列 \"%(sequence)s\"后缀\"%(suffix)s\"无效."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_sequence_last_timestamp_future"
 msgid "The \"Last Timestamp\" cannot be in the future for sequence \"%s\"."
 msgstr "\"最近一个时间戳\"不能超过序列\"%s\"."
 
-msgctxt "model:ir.message,text:msg_sequence_missing"
-msgid "Missing sequence."
-msgstr "序列缺失."
-
+#, python-format
 msgctxt "model:ir.message,text:msg_setter_function_missing"
 msgid "Missing setter function for field \"%(field)s\" in \"%(model)s\"."
 msgstr "模型 \"%(model)s\" 的字段\"%(field)s\" 没有 setter 函数."
@@ -3012,13 +3148,14 @@ msgctxt "model:ir.message,text:msg_singleton"
 msgid "Only one singleton can be created."
 msgstr "只能创建一个单例。"
 
+#, python-format
 msgctxt "model:ir.message,text:msg_size_validation"
 msgid ""
 "The value \"%(value)s\" for field \"%(field)s\" in \"%(model)s\" is too long"
 " (%(size)i > %(max_size)i)."
 msgstr "模型 \"%(model)s\" 中字段 \"%(field)s\" 的值 \"%(value)s\" 太长 (%(size)i > %(max_size)i)。"
 
-#, fuzzy
+#, fuzzy, python-format
 msgctxt "model:ir.message,text:msg_size_validation_record"
 msgid ""
 "The value \"%(value)s\" for field \"%(field)s\" in record \"%(record)s\" of "
@@ -3027,7 +3164,7 @@ msgstr ""
 "模型 \"%(model)s\" 的字段 \"%(field)s\" ，其取值 \"%(value)s\" 位数太长(%(size)i > "
 "%(max_size)i)."
 
-#, fuzzy
+#, fuzzy, python-format
 msgctxt "model:ir.message,text:msg_time_format_validation_record"
 msgid ""
 "The time value \"%(value)s\" for field \"%(field)s\" in record "
@@ -3062,10 +3199,14 @@ msgctxt "model:ir.message,text:msg_timedelta_w"
 msgid "w"
 msgstr "周"
 
+#, fuzzy, python-format
 msgctxt "model:ir.message,text:msg_too_many_relations_found"
-msgid "Too many relations found: %(value)r in \"%(model)s\" (%(column)s)."
+msgid ""
+"Found too many relation for %(value)r in \"%(model)s\" at row %(row)d and "
+"column %(column)d."
 msgstr "发现太多的关系：\"%(value)r\" in \"%(model)s\" (%(column)s)."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_translation_overridden"
 msgid ""
 "You can not export translation \"%(name)s\" because it has been overridden "
@@ -3078,36 +3219,43 @@ msgid ""
 "mutually exclusive."
 msgstr "不能同时选择“On Time”和任何其他触发器，它们是互斥的。"
 
+#, python-format
 msgctxt "model:ir.message,text:msg_trigger_invalid_condition"
 msgid ""
 "Condition \"%(condition)s\" is not a valid PYSON expression for trigger "
 "\"%(trigger)s\"."
 msgstr "触发器\"%(trigger)s\"设置的条件\"%(condition)s\" 不是合法的 PYSON 表达式."
 
+#, fuzzy, python-format
 msgctxt "model:ir.message,text:msg_value_syntax_error"
 msgid ""
-"Syntax error for value: %(value)r in \"%(field)s\" of \"%(model)s\" "
-"(%(column)s)."
+"Syntax error for %(value)r in \"%(field)s\" of \"%(model)s\" at row %(row)d "
+"and column %(column)d."
 msgstr "\"%(model)s\"（%(column)s 的 \"%(field)s\"）中的 XML %(value)r 的语法错误。"
 
+#, python-format
 msgctxt "model:ir.message,text:msg_view_invalid_xml"
 msgid "Invalid XML for view \"%(name)s\"."
 msgstr "视图 \"%(name)s\" 对应的XML不合法."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_view_search_invalid_domain"
 msgid "Invalid domain or search criteria \"%(domain)s\" for search \"%(search)s\"."
 msgstr "搜索 \"%(search)s\" 的域或搜索条件 \"%(domain)s\" 无效。"
 
+#, python-format
 msgctxt "model:ir.message,text:msg_view_tree_optional_type"
 msgid "You cannot store optional on view \"%(view)s\"."
 msgstr "无法在视图 \"%(view)s\" 上存储可选项。"
 
+#, python-format
 msgctxt "model:ir.message,text:msg_write_error"
 msgid ""
 "You are trying to write to records \"%(ids)s\" of \"%(model)s\" that don't "
 "exist."
 msgstr "正在尝试写入不存在的记录 \"%(ids)s\"（属于\"%(model)s\"）。"
 
+#, python-format
 msgctxt "model:ir.message,text:msg_write_rule_error"
 msgid ""
 "You are not allowed to write to records \"%(ids)s\" of \"%(model)s\" because of at least one of these rules:\n"
@@ -3116,7 +3264,7 @@ msgstr ""
 "不允许写入模型 \"%(model)s\" 的记录 \"%(ids)s\" ， 由于下面的规则（至少一条）:\n"
 "%(rules)s"
 
-#, fuzzy
+#, fuzzy, python-format
 msgctxt "model:ir.message,text:msg_write_xml_record"
 msgid ""
 "You are not allowed to modify the field \"%(field)s\" in record "
@@ -3126,12 +3274,6 @@ msgstr "不允许修改 \"%(model)s\" 的 \"%(record)s\" 中的字段 \"%(field)
 msgctxt "model:ir.message,text:msg_xml_id"
 msgid "XML ID"
 msgstr ""
-
-msgctxt "model:ir.message,text:msg_xml_id_syntax_error"
-msgid ""
-"Syntax error for XML id: %(value)r in \"%(field)s\" of \"%(model)s\" "
-"(%(column)s)."
-msgstr "\"%(model)s\"（%(column)s 的 \"%(field)s\"）中的 XML %(value)r 的语法错误。"
 
 msgctxt "model:ir.model,name:"
 msgid "Model"
@@ -3405,12 +3547,14 @@ msgctxt "model:ir.ui.menu,name:menu_cron_form"
 msgid "Actions"
 msgstr "操作"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_email_form"
-msgid "E-mails"
+msgid "Emails"
 msgstr "电子邮箱"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_email_template_form"
-msgid "E-mail Templates"
+msgid "Email Templates"
 msgstr "电子邮件模板"
 
 msgctxt "model:ir.ui.menu,name:menu_error_form"
@@ -3540,22 +3684,6 @@ msgstr "用户界面"
 msgctxt "model:ir.ui.menu,name:menu_view"
 msgid "Views"
 msgstr "视图"
-
-msgctxt "model:ir.ui.menu,name:menu_view_search"
-msgid "View Search"
-msgstr "搜索视图"
-
-msgctxt "model:ir.ui.menu,name:menu_view_tree_optional"
-msgid "View Tree Optional"
-msgstr "视图树（可选）"
-
-msgctxt "model:ir.ui.menu,name:menu_view_tree_state"
-msgid "Tree State"
-msgstr "树状态"
-
-msgctxt "model:ir.ui.menu,name:menu_view_tree_width"
-msgid "View Tree Width"
-msgstr "视图树宽度"
 
 msgctxt "model:ir.ui.menu,name:model_model_fields_form"
 msgid "Fields"
@@ -3772,6 +3900,11 @@ msgstr "月"
 msgctxt "selection:ir.cron,interval_type:"
 msgid "Weeks"
 msgstr "周"
+
+#, fuzzy
+msgctxt "selection:ir.cron,method:"
+msgid "Clean Cron Logs"
+msgstr "清除错误"
 
 msgctxt "selection:ir.cron,method:"
 msgid "Clean Errors"

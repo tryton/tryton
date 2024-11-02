@@ -196,16 +196,16 @@ msgid "Inspect Run"
 msgstr "Qualitätsprüfung für Status \"In Ausführung\" durchführen"
 
 msgctxt "model:ir.action,name:wizard_stock_shipment_in_inspect_do"
-msgid "Inspect Done"
-msgstr "Qualitätsprüfung für Status \"Erledigt\" durchführen"
+msgid "Inspect Completion"
+msgstr "Abschlussprüfung"
 
 msgctxt "model:ir.action,name:wizard_stock_shipment_in_inspect_receive"
 msgid "Inspect Reception"
 msgstr "Qualitätsprüfung für Status \"Erhalten\" durchführen"
 
 msgctxt "model:ir.action,name:wizard_stock_shipment_internal_inspect_do"
-msgid "Inspect Done"
-msgstr "Qualitätsprüfung für Status \"Erledigt\" durchführen"
+msgid "Inspect Completion"
+msgstr "Abschlussprüfung"
 
 msgctxt "model:ir.action,name:wizard_stock_shipment_internal_inspect_ship"
 msgid "Inspect Ship"
@@ -220,8 +220,8 @@ msgid "Inspect Pick"
 msgstr "Qualitätsprüfung für Status \"Kommissioniert\" durchführen"
 
 msgctxt "model:ir.action,name:wizard_stock_shipment_out_return_inspect_do"
-msgid "Inspect Done"
-msgstr "Qualitätsprüfung für Status \"Erledigt\" durchführen"
+msgid "Inspect Completion"
+msgstr "Abschlussprüfung"
 
 msgctxt ""
 "model:ir.action,name:wizard_stock_shipment_out_return_inspect_receive"
@@ -263,12 +263,21 @@ msgctxt ""
 msgid "Processed"
 msgstr "Ausgeführt"
 
+#, python-format
+msgctxt "model:ir.message,text:msg_inspection_delete_non_pending"
+msgid ""
+"To delete inspection \"%(inspection)s\" you must reset its state to pending."
+msgstr ""
+"Um die Qualitätsprüfung \"%(inspection)s\" löschen zu können, muss der "
+"Status auf \"Ausstehend\" zurück gesetzt werden."
+
 msgctxt "model:ir.message,text:msg_quality_inspection_failed"
 msgid "To continue, alerts from failed inspections must be resolved."
 msgstr ""
 "Die Warnungen über fehlgeschlagene Qualitätsprüfungen müssen bearbeitet "
 "werden, um fortfahren zu können."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_quality_inspection_missing_point"
 msgid ""
 "To complete the inspection \"%(inspection)s\", you must test points "

@@ -108,6 +108,11 @@ msgid "Description"
 msgstr "شرح"
 
 #, fuzzy
+msgctxt "field:account.invoice,has_account_move:"
+msgid "Has Account Move"
+msgstr "حساب"
+
+#, fuzzy
 msgctxt "field:account.invoice,has_payment_method:"
 msgid "Has Payment Method"
 msgstr "روش پرداخت"
@@ -144,6 +149,10 @@ msgstr "گزارش صورت حساب"
 msgctxt "field:account.invoice,journal:"
 msgid "Journal"
 msgstr "روزنامه"
+
+msgctxt "field:account.invoice,line_lines:"
+msgid "Line - Lines"
+msgstr ""
 
 msgctxt "field:account.invoice,lines:"
 msgid "Lines"
@@ -212,6 +221,10 @@ msgstr "مرجع"
 msgctxt "field:account.invoice,sequence:"
 msgid "Sequence"
 msgstr "ادامه"
+
+msgctxt "field:account.invoice,sequence_type_cache:"
+msgid "Sequence Type Cache"
+msgstr ""
 
 msgctxt "field:account.invoice,state:"
 msgid "State"
@@ -963,6 +976,7 @@ msgctxt "model:ir.action.act_window.domain,name:act_invoice_relate_pending"
 msgid "Pending"
 msgstr ""
 
+#, python-format
 msgctxt "model:ir.message,text:msg_cancel_invoice_move"
 msgid "The moves \"%(moves)s\" have the posted invoices \"%(invoices)s\" as origin."
 msgstr ""
@@ -973,10 +987,12 @@ msgid ""
 "might want to cancel the invoices first."
 msgstr ""
 
+#, python-format
 msgctxt "model:ir.message,text:msg_close_period_non_posted_invoices"
 msgid "To close the periods you must post the invoices \"%(invoices)s\"."
 msgstr ""
 
+#, python-format
 msgctxt "model:ir.message,text:msg_erase_party_pending_invoice"
 msgid ""
 "You cannot erase party \"%(party)s\" while they have pending invoices with "
@@ -985,13 +1001,14 @@ msgstr ""
 "شما نمیتوانید نهاد/سازمان : \"%(party)s\"را حذف کنید هنگامی که با شرکت : "
 "\"%(company)s\"صورتحساب معوقه دارد."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_invoice_credit_refund_not_posted"
 msgid "You cannot refund invoice \"%(invoice)s\" because it is not posted."
 msgstr ""
 "شما نمی توانید صورتحساب : \"%(invoice)s\" را بازپرداخت شده کنید، چرا که "
 "ارسال نشده است."
 
-#, fuzzy
+#, fuzzy, python-format
 msgctxt ""
 "model:ir.message,text:msg_invoice_currency_exchange_credit_account_missing"
 msgid ""
@@ -1001,7 +1018,7 @@ msgstr ""
 "برای ارسال صورتحساب : \"%(invoice)s\"،شما باید یک دنباله در سال مالی : "
 "\"%(fiscalyear)s\" تعریف کنید."
 
-#, fuzzy
+#, fuzzy, python-format
 msgctxt ""
 "model:ir.message,text:msg_invoice_currency_exchange_debit_account_missing"
 msgid ""
@@ -1011,7 +1028,7 @@ msgstr ""
 "برای ارسال صورتحساب : \"%(invoice)s\"،شما باید یک دنباله در سال مالی : "
 "\"%(fiscalyear)s\" تعریف کنید."
 
-#, fuzzy
+#, fuzzy, python-format
 msgctxt "model:ir.message,text:msg_invoice_customer_cancel_move"
 msgid ""
 "You cannot cancel customer invoice \"%(invoice)s\" because it is posted and "
@@ -1020,24 +1037,28 @@ msgstr ""
 "شما نمیتوانید صورتحساب مشتری : \"%(invoice)s\" را لغو کنید، چراکه آن ارسال "
 "شده است."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_invoice_date_future"
 msgid "The invoices \"%(invoices)s\" have an invoice date in the future."
 msgstr ""
 
+#, python-format
 msgctxt "model:ir.message,text:msg_invoice_default_taxes"
 msgid "The invoice \"%(invoice)s\" does not have the default taxes for %(lines)s."
 msgstr ""
 
+#, python-format
 msgctxt "model:ir.message,text:msg_invoice_delete_cancel"
 msgid "To delete invoice \"%(invoice)s\" you must cancel it."
 msgstr "برای حذف صورتحساب : \"%(invoice)s\" شما باید آنرا لغو کنید."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_invoice_delete_numbered"
 msgid "You cannot delete invoice \"%(invoice)s\" because it has a number."
 msgstr ""
 "شما نمیتوانید صورتحساب : \"%(invoice)s\" را حذف کنید چراکه آن یک شماره دارد."
 
-#, fuzzy
+#, fuzzy, python-format
 msgctxt "model:ir.message,text:msg_invoice_line_create_draft"
 msgid ""
 "You cannot add lines to invoice \"%(invoice)s\" because it is no longer in a"
@@ -1046,6 +1067,7 @@ msgstr ""
 "شما نمیتوانید یک سطر به صورتحساب : \"٪s\" اضافه کنید زیرا آن ارسال، پرداخت و"
 " یا لغو شده است."
 
+#, fuzzy, python-format
 msgctxt "model:ir.message,text:msg_invoice_line_modify"
 msgid ""
 "You cannot modify line \"%(line)s\" because its invoice \"%(invoice)s\" is "
@@ -1059,6 +1081,7 @@ msgctxt "model:ir.message,text:msg_invoice_line_tax_unique"
 msgid "A tax can be added only once to an invoice line."
 msgstr "یک سطر پرداخت را می توانید تنهابه یک صورتحساب پیوند کنید."
 
+#, fuzzy, python-format
 msgctxt "model:ir.message,text:msg_invoice_modify"
 msgid ""
 "You cannot modify invoice \"%(invoice)s\" because it is posted, paid or "
@@ -1067,6 +1090,7 @@ msgstr ""
 "شما نمیتوانید صورتحساب\"٪s\" را تغییر دهید، زیرا آن ارسال، پرداخت و یا لغو "
 "شده است."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_invoice_no_sequence"
 msgid ""
 "To post invoice \"%(invoice)s\", you must define a sequence on fiscal year "
@@ -1075,6 +1099,7 @@ msgstr ""
 "برای ارسال صورتحساب : \"%(invoice)s\"،شما باید یک دنباله در سال مالی : "
 "\"%(fiscalyear)s\" تعریف کنید."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_invoice_number_after"
 msgid ""
 "To number the invoice \"%(invoice)s\", you must set an invoice date after "
@@ -1082,7 +1107,7 @@ msgid ""
 " invoice \"%(after_invoice)s\"."
 msgstr ""
 
-#, fuzzy
+#, fuzzy, python-format
 msgctxt "model:ir.message,text:msg_invoice_overpay_paid"
 msgid ""
 "You cannot overpay invoice \"%(invoice)s\" because there is no more left to "
@@ -1091,6 +1116,7 @@ msgstr ""
 "شما نمی توانید صورتحساب : \"%(invoice)s\" را بازپرداخت شده کنید، چرا که "
 "ارسال نشده است."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_invoice_pay_amount_greater_amount_to_pay"
 msgid ""
 "You cannot add a partial payment on invoice \"%(invoice)s\" with an amount "
@@ -1103,12 +1129,14 @@ msgctxt "model:ir.message,text:msg_invoice_payment_line_unique"
 msgid "A payment line can be linked to only one invoice."
 msgstr "یک سطر پرداخت را می توانید تنهابه یک صورتحساب پیوند کنید."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_invoice_payment_lines_add_remove_paid"
 msgid "You cannot add/remove payment lines on paid invoice \"%(invoice)s\"."
 msgstr ""
 "شما نمی توانید سطرهای پرداخت را در صورتحساب : \"%(invoice)s\"پرداخت شده، "
 "اضافه / حذف کنید."
 
+#, fuzzy, python-format
 msgctxt "model:ir.message,text:msg_invoice_payment_lines_greater_amount"
 msgid ""
 "Payment lines amount on invoice \"%(invoice)s\" can not be greater than the "
@@ -1117,17 +1145,18 @@ msgstr ""
 "مبلغ سطرهای پرداخت در صورتحساب :\"%s\" نمیتوانند بزرگتراز مجموع مبلغ "
 "صورتحساب باشد."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_invoice_payment_term_date_past"
 msgid "The invoice \"%(invoice)s\" generates a payment date \"%(date)s\" in the past."
 msgstr ""
 
-#, fuzzy
+#, fuzzy, python-format
 msgctxt "model:ir.message,text:msg_invoice_similar"
 msgid "The invoice \"%(invoice)s\" is similar to invoice \"%(similar)s\"."
 msgstr "برای حذف صورتحساب : \"%(invoice)s\" شما باید آنرا لغو کنید."
 
-#, fuzzy
-msgctxt "model:ir.message,text:msg_invoice_tax_create"
+#, fuzzy, python-format
+msgctxt "model:ir.message,text:msg_invoice_tax_create_draft"
 msgid ""
 "You cannot add taxes to invoice \"%(invoice)s\" because it is no longer in a"
 " draft state."
@@ -1135,6 +1164,7 @@ msgstr ""
 "شما نمیتوانید مالیات را به صورتحساب\"٪s\" اضافه کنید زیرا آن ارسال، پرداخت و"
 " یا لغو شده است."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_invoice_tax_invalid"
 msgid ""
 "The taxes on invoice \"%(invoice)s\" are not valid, you must save it again "
@@ -1143,6 +1173,7 @@ msgstr ""
 "مالیات بر صورتحساب: \"%(invoice)s\" غیر معتبر است،شما باید آن را دوباره "
 "ذخیره کنید تا مجبور شوید آنها را مجددا محاسبه کنید."
 
+#, fuzzy, python-format
 msgctxt "model:ir.message,text:msg_invoice_tax_modify"
 msgid ""
 "You cannot modify tax \"%(tax)s\" because its invoice \"%(invoice)s\" is "
@@ -1151,10 +1182,12 @@ msgstr ""
 "شما نمیتوانید مالیات : \"%(tax)s\" را تغیردهید، زیرا صورتحساب: \"٪s\" ارسال،"
 " پرداخت و یا لغو شده است."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_payment_term_invalid_ratio_divisor"
 msgid "The ratio and divisor are not consistent on line \"%(line)s\"."
 msgstr "ضریب و تقسیم کننده در سطر: \"%(line)s\" سازگارنیستند."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_payment_term_missing_last_remainder"
 msgid ""
 "To save payment term \"%(payment_term)s\", you must append a last remainder "
@@ -1163,6 +1196,7 @@ msgstr ""
 "برای صرفه جویی در مدت پرداخت: \"%(payment_term)s\" شما باید یک سطر\"یادآوری "
 "آخر\" اضافه کنید."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_payment_term_missing_remainder"
 msgid ""
 "To compute terms, you must append a remainder line on payment term "
@@ -1352,6 +1386,16 @@ msgstr "مجموع :"
 msgctxt "report:account.invoice:"
 msgid "Unit Price"
 msgstr "قیمت واحد"
+
+#, fuzzy
+msgctxt "selection:account.invoice,sequence_type_cache:"
+msgid "Credit Note"
+msgstr "حساب اعتباری"
+
+#, fuzzy
+msgctxt "selection:account.invoice,sequence_type_cache:"
+msgid "Invoice"
+msgstr "صورت حساب"
 
 msgctxt "selection:account.invoice,state:"
 msgid "Cancelled"

@@ -113,13 +113,14 @@ msgctxt ""
 msgid "Validated"
 msgstr "Validada"
 
+#, python-format
 msgctxt "model:ir.message,text:msg_one_purchase_at_time"
 msgid ""
 "You cannot validate more than one amendment at the same time for purchase "
 "\"%(purchase)s\"."
 msgstr ""
 "No puedes validar a la vez mas de una corrección de la misma compra "
-"\"%(compra)s\"."
+"\"%(purchase)s\"."
 
 msgctxt ""
 "model:ir.model.button,confirm:purchase_amendment_validation_amendment_button"

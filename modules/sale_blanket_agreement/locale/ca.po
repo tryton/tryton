@@ -157,12 +157,14 @@ msgctxt ""
 msgid "Running"
 msgstr "En execució"
 
+#, python-format
 msgctxt "model:ir.message,text:msg_agreement_closed_remaining_quantity"
 msgid ""
 "The agreement \"%(agreement)s\" to be closed has still remaining quantities."
 msgstr ""
 "El acord \"%(agreement)s\" que es vol tancar encara té quantitats pendents."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_agreement_line_incompatible_unit"
 msgid ""
 "To change the unit of agreement line \"%(line)s\", you must choose one "
@@ -171,6 +173,7 @@ msgstr ""
 "Per canviar la unitat de la línia d'acord \"%(line)s\", heu d'escollir una "
 "compatible amb les línies de venda existents."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_quantity_greater_remaining"
 msgid ""
 "The quantity of line \"%(line)s\" is greater than the remaining quantity "

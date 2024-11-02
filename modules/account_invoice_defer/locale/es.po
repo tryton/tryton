@@ -122,6 +122,7 @@ msgctxt "model:ir.message,text:msg_defer_invoice_line_unique"
 msgid "Invoice line can be deferred only once."
 msgstr "La línea de la factura solo se puede diferir una vez."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_invoice_deferred_delete_draft"
 msgid ""
 "You cannot delete invoice deferred \"%(deferral)s\" because it is not in "
@@ -130,6 +131,7 @@ msgstr ""
 "No se puede eliminar la factura diferida \"%(deferral)s\" por qué no está en"
 " estado \"borrador\"."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_invoice_deferred_running_close_period"
 msgid ""
 "You cannot close period \"%(period)s\" because some invoices deferred "

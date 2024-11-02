@@ -160,7 +160,7 @@ msgstr "URL du badge avatar"
 
 msgctxt "field:res.user,email:"
 msgid "Email"
-msgstr "E-mail"
+msgstr "Adresse électronique"
 
 msgctxt "field:res.user,groups:"
 msgid "Groups"
@@ -338,20 +338,23 @@ msgctxt "model:ir.export-write-res.group,name:"
 msgid "Export Modification Group"
 msgstr "Groupe de modification d'export"
 
+#, python-format
 msgctxt "model:ir.message,text:msg_email_invalid"
 msgid "The email address \"%(email)s\" for \"%(user)s\" is not valid."
-msgstr "L'adresse e-mail « %(email)s » pour « %(user)s » n'est pas valide."
+msgstr ""
+"L'adresse électronique « %(email)s » pour « %(user)s » n'est pas valide."
 
 msgctxt "model:ir.message,text:msg_password_email"
 msgid "The password cannot be the same as user's email address."
 msgstr ""
-"Le mot de passe ne peut pas être le même que l'adresse e-mail de "
+"Le mot de passe ne peut pas être le même que l'adresse électronique de "
 "l'utilisateur."
 
 msgctxt "model:ir.message,text:msg_password_forbidden"
 msgid "The password is forbidden."
 msgstr "Le mot de passe est interdit."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_password_length"
 msgid "The password must have at least %(length)i characters."
 msgstr "Le mot de passe doit comporter au moins %(length)i caractères."
@@ -373,13 +376,15 @@ msgstr ""
 "Dans le but de la journalisation les utilisateurs ne peuvent pas être "
 "supprimés, ils doivent être désactivés à la place."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_user_password"
 msgid "Password for %(login)s"
 msgstr "Mot de passe pour %(login)s"
 
 msgctxt "model:ir.model.button,help:user_reset_password_button"
 msgid "Send by email a new temporary password to the user"
-msgstr "Envoie par e-mail un nouveau mot de passe temporaire à l'utilisateur"
+msgstr ""
+"Envoie par courriel un nouveau mot de passe temporaire à l'utilisateur"
 
 msgctxt "model:ir.model.button,string:user_application_cancel_button"
 msgid "Cancel"
@@ -489,6 +494,7 @@ msgctxt "model:res.user.warning,name:"
 msgid "User Warning"
 msgstr "Avertissement utilisateur"
 
+#, python-format
 msgctxt "report:res.user.email_reset_password:"
 msgid ""
 "Hello,\n"
@@ -501,20 +507,21 @@ msgstr ""
 "Bonjour,\n"
 "                nous avons reçu une demande de réinitialisation du mot de passe du compte associé à [1:%(login)s]. Aucune modification n'a encore été apportée à votre compte.[2:]\n"
 "                Vous pouvez vous connecter avec ce mot de passe temporaire [3:%(password)s] à[4:]\n"
-"                [5:tryton://%(hôte)s/%(base de données)s][6:]\n"
-"                [7:%(http_host)s/#%(base de données)s][8:]\n"
+"                [5:tryton://%(host)s/%(database)s][6:]\n"
+"                [7:%(http_host)s/#%(database)s][8:]\n"
 "                Vous devez en définir un nouveau à partir des préférences de l'utilisateur.[9:]"
 
 msgctxt "report:res.user.email_reset_password:"
 msgid "If you didn't make this request, you can safely ignore this email."
 msgstr ""
-"Si vous n'avez pas fait cette demande, vous pouvez ignorer cet e-mail en "
+"Si vous n'avez pas fait cette demande, vous pouvez ignorer ce courriel en "
 "toute sécurité."
 
 msgctxt "report:res.user.email_reset_password:"
 msgid "Reset Password"
 msgstr "Réinitialisation de mot de passe"
 
+#, python-format
 msgctxt "report:res.user.email_reset_password:"
 msgid "The password will expire in [1:%(datetime)s]."
 msgstr "Le mot de passe expirera dans [1:%(datetime)s]."

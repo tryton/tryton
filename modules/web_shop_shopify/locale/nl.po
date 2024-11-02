@@ -135,6 +135,7 @@ msgctxt "model:ir.action,name:act_stock_shipment_shopify_identifier_form"
 msgid "Shipment Identifiers"
 msgstr "Zendings-ID's"
 
+#, python-format
 msgctxt "model:ir.message,text:msg_custom_collection_fail"
 msgid ""
 "Failed to save custom collection \"%(category)s\" with error:\n"
@@ -143,6 +144,7 @@ msgstr ""
 "De volgende fout is opgetreden tijdens het opslaan van de gepersonaliseerde compilatie \"%(category)s\":\n"
 "%(error)s"
 
+#, python-format
 msgctxt "model:ir.message,text:msg_fulfillment_fail"
 msgid ""
 "Failed to save fulfillment for sale \"%(sale)s\" with error:\n"
@@ -151,6 +153,7 @@ msgstr ""
 "Kan uitvoering voor verkoop \"%(sale)s\" niet opslaan met fout:\n"
 "%(error)s"
 
+#, python-format
 msgctxt "model:ir.message,text:msg_fulfillment_order_line_not_found"
 msgid "Failed to find fulfillment order for %(quantity)s of move \"%(move)s\"."
 msgstr "Kan opdracht voor %(quantity)s van boeking \"%(move)s\" niet vinden."
@@ -174,6 +177,7 @@ msgctxt "model:ir.message,text:msg_identifier_shipment_sale_unique"
 msgid "The shipment can not have more than one Shopify identifier per sale."
 msgstr "De zending mag niet meer dan één Shopify-ID per verkoop hebben."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_inventory_item_fail"
 msgid ""
 "Failed to save inventory item for product \"%(product)s\" with error:\n"
@@ -186,6 +190,7 @@ msgctxt "model:ir.message,text:msg_location_id_unique"
 msgid "Each Shopify location can only be linked to one warehouse."
 msgstr "Elke Shopify-locatie kan slechts aan één magazijn worden gekoppeld."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_product_change_template"
 msgid ""
 "To change the template of product \"%(product)s\" you must unpublish it from"
@@ -194,6 +199,7 @@ msgstr ""
 "Om het sjabloon van het artikel \"%(product)s\" te kunnen bewerken, moet de "
 "publicatie in de Shopfiy webshop eerst worden ingetrokken."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_product_fail"
 msgid ""
 "Failed to save product \"%(template)s\" with error:\n"
@@ -202,6 +208,7 @@ msgstr ""
 "De volgende fout is opgetreden tijdens het opslaan van het artikel \"%(template)s\":\n"
 "%(error)s"
 
+#, python-format
 msgctxt "model:ir.message,text:msg_product_image_fail"
 msgid ""
 "Failed to save image \"%(image)s\" for product \"%(template)s\" with error:\n"
@@ -210,6 +217,7 @@ msgstr ""
 "De volgende fout is opgetreden tijdens het opslaan van de afbeelding \"%(image)s\" voor artikel \"%(template)s\":\n"
 "%(error)s"
 
+#, python-format
 msgctxt "model:ir.message,text:msg_product_shopify_uom_digits"
 msgid ""
 "To update product \"%(product)s\" on Shopify, you must use an unit of "
@@ -218,6 +226,7 @@ msgstr ""
 "Om product \"%(product)s\" op Shopify bij te werken, moet er een maateenheid"
 " gebruikt worden zonder decimalen."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_refund_fail"
 msgid ""
 "Failed to save refund for sale \"%(sale)s\" with error:\n"
@@ -226,6 +235,7 @@ msgstr ""
 "De volgende fout is opgetreden tijdens het opslaan van het tegoed voor de verkoop \"%(sale)s\":\n"
 "%(error)s"
 
+#, python-format
 msgctxt "model:ir.message,text:msg_sale_line_without_product"
 msgid ""
 "To process the sale \"%(sale)s\" you must set a product on the line "
@@ -234,6 +244,7 @@ msgstr ""
 "Om de verkoop \"%(sale)s\" te verwerken, moet u een product instellen op de "
 "regel \"%(line)s\"."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_shop_currency_different"
 msgid ""
 "To update products on the shop \"%(shop)s\", you must set the currency to "
@@ -242,6 +253,7 @@ msgstr ""
 "Om producten in de winkel \"%(shop)s\" bij te werken, moet u de valuta "
 "instellen op \"%(shopify_currency)s\" in plaats van \"%(shop_currency)s\"."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_shop_locale_different"
 msgid ""
 "To update products on the shop \"%(shop)s\", you must set the language to "
@@ -251,6 +263,10 @@ msgstr ""
 "instellen op \"%(shopify_primary_locale)s\" in plaats van "
 "\"%(shop_language)s\"."
 
+msgctxt "model:ir.message,text:msg_shopify_credential_modified"
+msgid "Are you sure you want to modify Shopify credentials?"
+msgstr "Weet u zeker dat u de inloggegevens bij Shopify wil wijzigen?"
+
 msgctxt "model:ir.message,text:msg_shopify_identifier"
 msgid "Shopify Identifier"
 msgstr "Shopify-ID"
@@ -259,6 +275,7 @@ msgctxt "model:ir.message,text:msg_shopify_identifiers"
 msgid "Shopify Identifiers"
 msgstr "Shopify-ID's"
 
+#, python-format
 msgctxt "model:ir.message,text:msg_variant_fail"
 msgid ""
 "Failed to save variant \"%(product)s\" with error:\n"

@@ -38,7 +38,6 @@ msgctxt "field:customs.duty.rate,type:"
 msgid "Type"
 msgstr "Vrsta"
 
-#, fuzzy
 msgctxt "field:customs.duty.rate,uom:"
 msgid "UoM"
 msgstr "ME"
@@ -157,7 +156,7 @@ msgstr "Uporabi tarifne številke iz kategorije"
 
 msgctxt "help:customs.duty.rate,uom:"
 msgid "The Unit of Measure."
-msgstr ""
+msgstr "Merska enota."
 
 msgctxt "help:customs.tariff.code,code:"
 msgid "The code from Harmonized System of Nomenclature."

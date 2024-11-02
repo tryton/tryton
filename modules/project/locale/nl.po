@@ -174,6 +174,7 @@ msgctxt "model:ir.message,text:msg_domain_all"
 msgid "All"
 msgstr "Alle"
 
+#, python-format
 msgctxt "model:ir.message,text:msg_erase_party_opened_project"
 msgid ""
 "You cannot erase party \"%(party)s\" while they have opened projects with "
@@ -182,12 +183,14 @@ msgstr ""
 "U kunt de relatie \"%(party)s\" niet verwijderen terwijl ze facturen in "
 "behandeling hebben bij bedrijf \"%(company)s\"."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_work_children_progress"
 msgid "To complete work \"%(work)s\" you must complete also all its children."
 msgstr ""
 "Om het werk \"%(work)s\" te voltooien, moet u ook al zijn kinderen "
 "voltooien."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_work_invalid_progress_status"
 msgid ""
 "To set work \"%(work)s\" in \"%(status)s\" status, you must increase its "
@@ -196,11 +199,14 @@ msgstr ""
 "Om werk \"%(work)s\" in te stellen op \"%(status)s\" status, moet u de "
 "progressie (vooruitgang) verhogen tot minstens %(progress)s."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_work_parent_progress"
-msgid "To re-open work \"%(work)s\" you must re-open also its parent \"%(parent)s\"."
+msgid ""
+"To reopen the work \"%(work)s\", you must also reopen its parent "
+"\"%(parent)s\"."
 msgstr ""
-"Om werk \"%(work)s\" opnieuw te openen, moet u ook het bovenliggende niveau "
-"\"%(parent)s\" opnieuw openen."
+"Om werkzaamheden \"%(work)s\" te heropenen, moet u het bovenliggende niveau "
+"\"%(parent)s\" ook heropenen."
 
 msgctxt "model:ir.rule.group,name:rule_group_work_companies"
 msgid "User in companies"

@@ -121,24 +121,27 @@ msgstr "Anwesenheiten"
 
 msgctxt "model:ir.action,name:act_period_list"
 msgid "Periods"
-msgstr "Anwesenheitszeiträume"
+msgstr "Zeiträume"
 
 msgctxt "model:ir.action,name:act_sheet"
 msgid "Sheets"
 msgstr "Listen"
 
+#, python-format
 msgctxt "model:ir.message,text:msg_close_period_previous_open"
 msgid "To close period \"%(period)s\" you must first close \"%(other_period)s\"."
 msgstr ""
 "Damit der Anwesenheitseintragszeitraum \"%(period)s\" geschlossen werden "
 "kann muss zuerst \"%(other_period)s\" geschlossen werden."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_delete_period_close"
 msgid "To delete attendance \"%(attendance)s\" you must reopen period \"%(period)s\"."
 msgstr ""
 "Um den Anwesenheitseintrag \"%(attendance)s\" zu löschen muss zuerst der "
 "Anwesenheitseintragszeitraum \"%(period)s\" wieder geöffnet werden."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_draft_period_previous_closed"
 msgid ""
 "To change period \"%(period)s\" you must first change \"%(other_period)s\" "
@@ -148,6 +151,7 @@ msgstr ""
 " Anwesenheitseintragszeitraum \"%(other_period)s\" auf Entwurf gesetzt "
 "werden."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_modify_period_close"
 msgid "To modify attendance \"%(attendance)s\" you must reopen period \"%(period)s\"."
 msgstr ""
@@ -216,7 +220,7 @@ msgstr "Anwesenheit"
 
 msgctxt "model:ir.ui.menu,name:menu_period_list"
 msgid "Periods"
-msgstr "Anwesenheitszeiträume"
+msgstr "Zeiträume"
 
 msgctxt "model:ir.ui.menu,name:menu_sheet"
 msgid "Sheets"

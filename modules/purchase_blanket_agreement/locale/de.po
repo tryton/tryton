@@ -105,7 +105,7 @@ msgstr "Verbleibende Menge"
 
 msgctxt "field:purchase.blanket_agreement.line,unit:"
 msgid "Unit"
-msgstr "Maßeinheit"
+msgstr "Einheit"
 
 msgctxt "field:purchase.blanket_agreement.line,unit_price:"
 msgid "Unit Price"
@@ -163,6 +163,7 @@ msgctxt ""
 msgid "Running"
 msgstr "In Ausführung"
 
+#, python-format
 msgctxt "model:ir.message,text:msg_agreement_closed_remaining_quantity"
 msgid ""
 "The agreement \"%(agreement)s\" to be closed has still remaining quantities."
@@ -170,6 +171,7 @@ msgstr ""
 "Der zu schließende Rahmenvertrag \"%(agreement)s\" verfügt noch über "
 "Restmengen."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_agreement_line_incompatible_unit"
 msgid ""
 "To change the unit of agreement line \"%(line)s\", you must choose one "
@@ -178,6 +180,7 @@ msgstr ""
 "Um die Maßeinheit der Rahmenvertragsposition \"%(line)s\" zu ändern, müssen "
 "Sie eine auswählen, die mit den vorhandenen Kaufpositionen kompatibel ist."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_quantity_greater_remaining"
 msgid ""
 "The quantity of line \"%(line)s\" is greater than the remaining quantity "

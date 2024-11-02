@@ -77,10 +77,12 @@ msgctxt "model:account.configuration.default_credit_limit_amount,name:"
 msgid "Account Configuration Default Credit Limit Amount"
 msgstr "Rekeningconfiguratie Standaard kredietlimiet bedrag"
 
+#, python-format
 msgctxt "model:ir.message,text:msg_party_credit_limit_amount"
 msgid "Party \"%(party)s\" has reached their credit limit of %(limit)s."
 msgstr "Relatie \"%(party)s\" heeft het kredietlimiet van %(limit)s bereikt."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_party_credit_limit_dunning"
 msgid "Party \"%(party)s\" has reached the credit limit level of %(dunning)s."
 msgstr "Relatie \"%(party)s\" heeft het kredietlimiet van %(dunning)s bereikt."

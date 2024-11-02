@@ -113,7 +113,7 @@ msgid "Application Error"
 msgstr "Eroare de aplicație"
 
 msgid "Details"
-msgstr ""
+msgstr "Detalii"
 
 msgid "Report Bug"
 msgstr "Raporteati eroare"
@@ -137,9 +137,9 @@ msgstr "Excepție de concurgență"
 msgid "Could not get a session."
 msgstr "Nu s-a putut găsi o sesiune."
 
-#, python-format
+#, fuzzy, python-format
 msgid "Error: \"%s\". Try again later."
-msgstr ""
+msgstr "Prea multe cereri. Încercați mai târziu."
 
 msgid "Too many requests. Try again later."
 msgstr "Prea multe cereri. Încercați mai târziu."
@@ -148,10 +148,10 @@ msgid "Not Found."
 msgstr "Niciun rezultat găsit."
 
 msgid "Reset forgotten password"
-msgstr ""
+msgstr "Resetare parola uitata"
 
 msgid "Send you an email to reset your password."
-msgstr ""
+msgstr "Resetare parola prin trimitere email."
 
 msgid ""
 "A request to reset your password has been sent.\n"
@@ -237,8 +237,8 @@ msgstr "Raportare..."
 msgid "Print..."
 msgstr "Imprimare..."
 
-msgid "E-Mail..."
-msgstr "E-Mail..."
+msgid "Email..."
+msgstr "Email..."
 
 msgid "Bold"
 msgstr "Text ingroșat"
@@ -347,12 +347,6 @@ msgstr "Ajutor"
 
 msgid "No result found."
 msgstr "Niciun rezultat găsit."
-
-msgid "Favorites"
-msgstr "Favorite"
-
-msgid "Manage..."
-msgstr "Gestionare..."
 
 msgid "Action"
 msgstr "Acțiune"
@@ -584,6 +578,9 @@ msgstr "Conectați serverul Tryton"
 msgid "Profile:"
 msgstr "Profil:"
 
+msgid "Manage..."
+msgstr "Gestionare..."
+
 msgid "Host / Database information"
 msgstr "Informații despre gazdă / bază de date"
 
@@ -593,8 +590,8 @@ msgstr "Utilizator:"
 msgid "Unable to complete email entry"
 msgstr "Nu se poate finaliza introducerea e-mailului"
 
-#, python-format
-msgid "E-mail %s"
+#, fuzzy, python-format
+msgid "Email %s"
 msgstr "E-mail %s"
 
 msgid "To:"
@@ -731,10 +728,10 @@ msgid "ID:"
 msgstr "ID:"
 
 msgid "Module:"
-msgstr ""
+msgstr "Modul:"
 
 msgid "XML ID:"
-msgstr ""
+msgstr "ID XML:"
 
 msgid "Created by:"
 msgstr "Creat de:"
@@ -842,10 +839,12 @@ msgstr "_Raportare..."
 msgid "_Print..."
 msgstr "_Imprimare..."
 
-msgid "_E-Mail..."
-msgstr "_E-mail..."
+#, fuzzy
+msgid "_Email..."
+msgstr "Email..."
 
-msgid "Send an e-mail using the record"
+#, fuzzy
+msgid "Send an email using the record"
 msgstr "Trimiteți un e-mail folosind înregistrarea"
 
 msgid "_Export Data..."
@@ -897,6 +896,9 @@ msgstr "Denumire Câmp"
 msgid "CSV Export: %s"
 msgstr "Export CSV: %s"
 
+msgid "Open"
+msgstr "Deschidere"
+
 msgid "_Save Export"
 msgstr "_Salvare Export"
 
@@ -911,12 +913,6 @@ msgstr "<b>Exporturi predefinite</b>"
 
 msgid "Name"
 msgstr "Denumire"
-
-msgid "Open"
-msgstr "Deschidere"
-
-msgid "Save"
-msgstr "Salvare"
 
 msgid "Listed Records"
 msgstr "Înregistrări enumerate"
@@ -975,6 +971,9 @@ msgstr "Salvare şi Nou"
 msgid "Add and New"
 msgstr "Adăugare şi Nou"
 
+msgid "Save"
+msgstr "Salvare"
+
 msgid "Add"
 msgstr "Adăuga"
 
@@ -999,6 +998,10 @@ msgstr "Anulare stergere pentru înregistrarea selectată <Ins>"
 #, python-format
 msgid "CSV Import: %s"
 msgstr "Import CSV: %s"
+
+#, fuzzy
+msgid "Import"
+msgstr "Raport"
 
 msgid "_Auto-Detect"
 msgstr "_Auto detectare"
@@ -1203,6 +1206,10 @@ msgstr "Adăugare înregistrare existentă"
 msgid "Remove selected record"
 msgstr "Eliminare înregistrare selectată"
 
+#, fuzzy
+msgid "Restore selected record"
+msgstr "Eliminare înregistrare selectată"
+
 msgid "Open the record <F2>"
 msgstr "Deschidere înregistrare <F2>"
 
@@ -1216,6 +1223,10 @@ msgid "Edit selected record"
 msgstr "Editeare înregistrare selectată"
 
 msgid "Delete selected record"
+msgstr "Ștergere înregistrare selectată"
+
+#, fuzzy
+msgid "Undelete selected record"
 msgstr "Ștergere înregistrare selectată"
 
 #, python-format

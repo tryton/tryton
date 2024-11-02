@@ -18,6 +18,14 @@ msgctxt "field:company.company,header:"
 msgid "Header"
 msgstr "Заголовок"
 
+msgctxt "field:company.company,logo:"
+msgid "Logo"
+msgstr ""
+
+msgctxt "field:company.company,logo_cache:"
+msgid "Cache"
+msgstr ""
+
 msgctxt "field:company.company,party:"
 msgid "Party"
 msgstr "Особа"
@@ -25,6 +33,23 @@ msgstr "Особа"
 msgctxt "field:company.company,timezone:"
 msgid "Timezone"
 msgstr "Часовий пояс"
+
+#, fuzzy
+msgctxt "field:company.company.logo.cache,company:"
+msgid "Company"
+msgstr "Компанія"
+
+msgctxt "field:company.company.logo.cache,height:"
+msgid "Height"
+msgstr ""
+
+msgctxt "field:company.company.logo.cache,image:"
+msgid "Image"
+msgstr ""
+
+msgctxt "field:company.company.logo.cache,width:"
+msgid "Width"
+msgstr ""
 
 msgctxt "field:company.employee,active:"
 msgid "Active"
@@ -232,6 +257,11 @@ msgctxt "model:company.company.config.start,name:"
 msgid "Company Config"
 msgstr "Налаштування компаній"
 
+#, fuzzy
+msgctxt "model:company.company.logo.cache,name:"
+msgid "Company Logo Cache"
+msgstr "Налаштування компаній"
+
 msgctxt "model:company.employee,name:"
 msgid "Employee"
 msgstr "Працівник"
@@ -259,6 +289,10 @@ msgstr "Лист"
 msgctxt "model:ir.cron-company.company,name:"
 msgid "Cron - Company"
 msgstr "Демон - Компанія"
+
+msgctxt "model:ir.message,text:msg_company_logo_cache_size_unique"
+msgid "The size of cached company logo must be unique."
+msgstr ""
 
 msgctxt "model:ir.rule.group,name:rule_group_sequence_companies"
 msgid "User in companies"
@@ -324,9 +358,19 @@ msgctxt "view:company.company.config.start:"
 msgid "You can now add your company into the system."
 msgstr "Тепер ви можете додати свою компанію до системи."
 
+#, fuzzy
+msgctxt "view:company.company:"
+msgid "Company"
+msgstr "Компанія"
+
 msgctxt "view:company.company:"
 msgid "Reports"
 msgstr "Звіти"
+
+#, fuzzy
+msgctxt "view:company.employee:"
+msgid "Employee"
+msgstr "Працівник"
 
 msgctxt "wizard_button:company.company.config,company,add:"
 msgid "Add"

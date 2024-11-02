@@ -99,3 +99,7 @@ msgstr "Facebook Artikelkategorien"
 msgctxt "model:product.category.google,name:"
 msgid "Google Product Category"
 msgstr "Google Artikelkategorien"
+
+msgctxt "selection:ir.cron,method:"
+msgid "Update Web Shop Product Data Feed"
+msgstr "Artikeldaten-Feed des Webshops aktualisieren"

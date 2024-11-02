@@ -6,6 +6,11 @@ msgctxt "field:account.configuration,payment_group_sequence:"
 msgid "Payment Group Sequence"
 msgstr ""
 
+#, fuzzy
+msgctxt "field:account.configuration,payment_sequence:"
+msgid "Payment Sequence"
+msgstr "Payment Journals"
+
 msgctxt "field:account.configuration.payment_group_sequence,company:"
 msgid "Company"
 msgstr "Firma"
@@ -15,18 +20,32 @@ msgctxt ""
 msgid "Payment Group Sequence"
 msgstr ""
 
-msgctxt "field:account.invoice,payment_direct_debit:"
-msgid "Direct Debit"
-msgstr ""
+#, fuzzy
+msgctxt "field:account.configuration.payment_sequence,company:"
+msgid "Company"
+msgstr "Firma"
 
 #, fuzzy
+msgctxt "field:account.configuration.payment_sequence,payment_sequence:"
+msgid "Payment Sequence"
+msgstr "Payment Journals"
+
+msgctxt "field:account.invoice,payment_direct_debit:"
+msgid "Direct Debit"
+msgstr "Polecenie zapłaty"
+
 msgctxt "field:account.move.line,payment_amount:"
 msgid "Amount to Pay"
-msgstr "Lines to Pay"
+msgstr "Kwota do zapłaty"
+
+#, fuzzy
+msgctxt "field:account.move.line,payment_amount_cache:"
+msgid "Amount to Pay Cache"
+msgstr "Kwota do zapłaty"
 
 msgctxt "field:account.move.line,payment_blocked:"
 msgid "Blocked"
-msgstr ""
+msgstr "Zablokowane"
 
 #, fuzzy
 msgctxt "field:account.move.line,payment_currency:"
@@ -35,16 +54,15 @@ msgstr "Payment Journals"
 
 msgctxt "field:account.move.line,payment_direct_debit:"
 msgid "Direct Debit"
-msgstr ""
+msgstr "Polecenie zapłaty"
 
 msgctxt "field:account.move.line,payment_kind:"
 msgid "Payment Kind"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:account.move.line,payments:"
 msgid "Payments"
-msgstr "Payments"
+msgstr "Płatności"
 
 #, fuzzy
 msgctxt "field:account.move.line.create_direct_debit.start,date:"
@@ -61,25 +79,23 @@ msgstr "Waluta"
 
 msgctxt "field:account.move.line.pay.ask_journal,journal:"
 msgid "Journal"
-msgstr ""
+msgstr "Dziennik"
 
 msgctxt "field:account.move.line.pay.ask_journal,journals:"
 msgid "Journals"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:account.move.line.pay.start,date:"
 msgid "Date"
 msgstr "Data"
 
 msgctxt "field:account.payment,amount:"
 msgid "Amount"
-msgstr ""
+msgstr "Kwota"
 
-#, fuzzy
 msgctxt "field:account.payment,approved_by:"
 msgid "Approved by"
-msgstr "Approved"
+msgstr "Zatwierdzone przez"
 
 msgctxt "field:account.payment,company:"
 msgid "Company"
@@ -97,10 +113,9 @@ msgctxt "field:account.payment,description:"
 msgid "Description"
 msgstr "Opis"
 
-#, fuzzy
 msgctxt "field:account.payment,failed_by:"
 msgid "Failure Noted by"
-msgstr "Utworzył"
+msgstr "Niepowodzenie odnotowane przez"
 
 msgctxt "field:account.payment,group:"
 msgid "Group"
@@ -108,19 +123,24 @@ msgstr "Grupa"
 
 msgctxt "field:account.payment,journal:"
 msgid "Journal"
-msgstr ""
+msgstr "Dziennik"
 
 msgctxt "field:account.payment,kind:"
 msgid "Kind"
-msgstr ""
+msgstr "Rodzaj"
 
 msgctxt "field:account.payment,line:"
 msgid "Line"
-msgstr ""
+msgstr "Pozycja"
+
+#, fuzzy
+msgctxt "field:account.payment,number:"
+msgid "Number"
+msgstr "Numer"
 
 msgctxt "field:account.payment,origin:"
 msgid "Origin"
-msgstr ""
+msgstr "Źródło"
 
 msgctxt "field:account.payment,party:"
 msgid "Party"
@@ -137,12 +157,11 @@ msgstr "Stan"
 
 msgctxt "field:account.payment,submitted_by:"
 msgid "Submitted by"
-msgstr ""
+msgstr "Przekazane przez"
 
-#, fuzzy
 msgctxt "field:account.payment,succeeded_by:"
 msgid "Success Noted by"
-msgstr "Succeed"
+msgstr "Sukces odnotowany przez"
 
 msgctxt "field:account.payment.group,company:"
 msgid "Company"
@@ -155,15 +174,15 @@ msgstr "Waluta"
 
 msgctxt "field:account.payment.group,journal:"
 msgid "Journal"
-msgstr ""
+msgstr "Dziennik"
 
 msgctxt "field:account.payment.group,kind:"
 msgid "Kind"
-msgstr ""
+msgstr "Rodzaj"
 
 msgctxt "field:account.payment.group,number:"
 msgid "Number"
-msgstr ""
+msgstr "Numer"
 
 #, fuzzy
 msgctxt "field:account.payment.group,payment_amount:"
@@ -185,10 +204,9 @@ msgctxt "field:account.payment.group,payment_count:"
 msgid "Payment Count"
 msgstr "Payment Journals"
 
-#, fuzzy
 msgctxt "field:account.payment.group,payments:"
 msgid "Payments"
-msgstr "Payments"
+msgstr "Płatności"
 
 #, fuzzy
 msgctxt "field:account.payment.group,process_method:"
@@ -209,15 +227,15 @@ msgstr "Nazwa"
 
 msgctxt "field:account.payment.journal,process_method:"
 msgid "Process Method"
-msgstr ""
+msgstr "Metoda przetwarzania"
 
 msgctxt "field:party.party,payment_direct_debit:"
 msgid "Direct Debit"
-msgstr ""
+msgstr "Polecenie zapłaty"
 
 msgctxt "field:party.party,payment_direct_debits:"
 msgid "Direct Debits"
-msgstr ""
+msgstr "Polecenia zapłaty"
 
 msgctxt "field:party.party,payment_identical_parties:"
 msgid "Identical Parties"
@@ -225,7 +243,7 @@ msgstr ""
 
 msgctxt "field:party.party,reception_direct_debits:"
 msgid "Direct Debits"
-msgstr ""
+msgstr "Polecenia zapłaty"
 
 msgctxt "field:party.party.payment_direct_debit,company:"
 msgid "Company"
@@ -237,24 +255,20 @@ msgstr "Strona"
 
 msgctxt "field:party.party.payment_direct_debit,payment_direct_debit:"
 msgid "Direct Debit"
-msgstr ""
+msgstr "Polecenie zapłaty"
 
-#, fuzzy
 msgctxt "field:party.party.reception_direct_debit,company:"
 msgid "Company"
 msgstr "Firma"
 
-#, fuzzy
 msgctxt "field:party.party.reception_direct_debit,currency:"
 msgid "Currency"
 msgstr "Waluta"
 
-#, fuzzy
 msgctxt "field:party.party.reception_direct_debit,journal:"
 msgid "Journal"
-msgstr "Payment Journals"
+msgstr "Dziennik"
 
-#, fuzzy
 msgctxt "field:party.party.reception_direct_debit,party:"
 msgid "Party"
 msgstr "Strona"
@@ -264,9 +278,13 @@ msgctxt "field:party.party.reception_direct_debit,process_method:"
 msgid "Process Method"
 msgstr "Process Payments"
 
+msgctxt "field:party.party.reception_direct_debit,type:"
+msgid "Type"
+msgstr ""
+
 msgctxt "help:account.invoice,payment_direct_debit:"
 msgid "Check if the invoice is paid by direct debit."
-msgstr ""
+msgstr "Zaznacz jeśli faktura jest opłacana poprzez polecenie zapłaty."
 
 msgctxt "help:account.move.line,payment_direct_debit:"
 msgid "Check if the line will be paid by direct debit."
@@ -284,23 +302,30 @@ msgstr ""
 
 msgctxt "help:account.payment.group,payment_amount:"
 msgid "The sum of all payment amounts."
-msgstr ""
+msgstr "Suma kwot wszystkich płatności."
 
 msgctxt "help:account.payment.group,payment_amount_succeeded:"
 msgid "The sum of the amounts of the successful payments."
-msgstr ""
+msgstr "Suma kwot udanych płatności."
 
 msgctxt "help:account.payment.group,payment_complete:"
 msgid "All the payments in the group are complete."
-msgstr ""
+msgstr "Wszystkie płatności w grupie są zakończone."
 
 msgctxt "help:account.payment.group,payment_count:"
 msgid "The number of payments in the group."
-msgstr ""
+msgstr "Liczba płatności w grupie."
+
+#, fuzzy
+msgctxt "help:account.statement.rule,description:"
+msgid ""
+"\n"
+"'payment'"
+msgstr "Płatność"
 
 msgctxt "help:party.party,payment_direct_debit:"
 msgid "Check if supplier does direct debit."
-msgstr ""
+msgstr "Zaznacz, jeśli dostawca obsługuje polecenie zapłaty."
 
 msgctxt "help:party.party,reception_direct_debits:"
 msgid "Fill to debit automatically the customer."
@@ -308,15 +333,19 @@ msgstr ""
 
 msgctxt "help:party.party.payment_direct_debit,payment_direct_debit:"
 msgid "Check if supplier does direct debit."
-msgstr ""
+msgstr "Zaznacz, jeśli dostawca obsługuje polecenie zapłaty."
 
 msgctxt "model:account.configuration.payment_group_sequence,name:"
 msgid "Account Configuration Payment Group Sequence"
 msgstr ""
 
+msgctxt "model:account.configuration.payment_sequence,name:"
+msgid "Account Configuration Payment Sequence"
+msgstr ""
+
 msgctxt "model:account.move.line.create_direct_debit.start,name:"
 msgid "Create Direct Debit"
-msgstr ""
+msgstr "Utwórz polecenie zapłaty"
 
 #, fuzzy
 msgctxt "model:account.move.line.pay.ask_journal,name:"
@@ -328,10 +357,9 @@ msgctxt "model:account.move.line.pay.start,name:"
 msgid "Pay Line"
 msgstr "Pay Lines"
 
-#, fuzzy
 msgctxt "model:account.payment,name:"
 msgid "Payment"
-msgstr "Payment"
+msgstr "Płatność"
 
 #, fuzzy
 msgctxt "model:account.payment.group,name:"
@@ -345,52 +373,43 @@ msgstr "Payment Journals"
 
 msgctxt "model:ir.action,name:act_move_line_form"
 msgid "Lines to Pay"
-msgstr "Lines to Pay"
+msgstr "Pozycje do zapłaty"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_pay_line"
 msgid "Pay Lines"
-msgstr "Pay Lines"
+msgstr "Opłać pozycje"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_payment_form"
 msgid "Payments"
-msgstr "Payments"
+msgstr "Płatności"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_payment_form_group_open"
 msgid "Payments"
-msgstr "Payments"
+msgstr "Płatności"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_payment_form_line_relate"
 msgid "Payments"
-msgstr "Payments"
+msgstr "Płatności"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_payment_form_payable"
 msgid "Payable Payments"
-msgstr "Process Payments"
+msgstr "Płatności do zapłaty"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_payment_form_receivable"
 msgid "Receivable Payments"
-msgstr "Receivable"
+msgstr "Płatności należne"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_payment_form_relate_party"
 msgid "Payments"
-msgstr "Payments"
+msgstr "Płatności"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_payment_group_form"
 msgid "Payment Groups"
-msgstr "Payment Groups"
+msgstr "Grupy płatności"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_payment_journal_form"
 msgid "Payment Journals"
-msgstr "Payment Journals"
+msgstr "Dzienniki płatności"
 
 #, fuzzy
 msgctxt "model:ir.action,name:act_process_payments"
@@ -399,212 +418,202 @@ msgstr "Process Payments"
 
 msgctxt "model:ir.action,name:wizard_create_direct_debit"
 msgid "Create Direct Debit"
-msgstr ""
+msgstr "Utwórz polecenie zapłaty"
 
-#, fuzzy
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_move_line_form_domain_payable"
 msgid "Payable"
-msgstr "Payable"
+msgstr "Do zapłaty"
 
-#, fuzzy
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_move_line_form_domain_receivable"
 msgid "Receivable"
-msgstr "Receivable"
+msgstr "Należne"
 
-#, fuzzy
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_payment_form_group_open_domain_all"
 msgid "All"
-msgstr "All"
+msgstr "Wszystkie"
 
-#, fuzzy
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_payment_form_group_open_domain_failed"
 msgid "Failed"
-msgstr "Failed"
+msgstr "Nieudane"
 
-#, fuzzy
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_payment_form_group_open_domain_processing"
 msgid "Processing"
-msgstr "Processing"
+msgstr "W realizacji"
 
-#, fuzzy
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_payment_form_group_open_domain_succeeded"
 msgid "Succeeded"
-msgstr "Succeeded"
+msgstr "Udane"
 
-#, fuzzy
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_payment_form_payable_domain_all"
 msgid "All"
-msgstr "All"
+msgstr "Wszystkie"
 
-#, fuzzy
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_payment_form_payable_domain_draft"
 msgid "Draft"
-msgstr "Draft"
+msgstr "Szkic"
 
-#, fuzzy
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_payment_form_payable_domain_processing"
 msgid "Processing"
-msgstr "Processing"
+msgstr "W realizacji"
 
-#, fuzzy
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_payment_form_payable_domain_to_approve"
 msgid "To Approve"
-msgstr "Approve"
+msgstr "Do zatwierdzenia"
 
-#, fuzzy
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_payment_form_payable_domain_to_process"
 msgid "To Process"
-msgstr "Processing"
+msgstr "Do realizacji"
 
-#, fuzzy
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_payment_form_receivable_domain_all"
 msgid "All"
-msgstr "All"
+msgstr "Wszystkie"
 
-#, fuzzy
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_payment_form_receivable_domain_draft"
 msgid "Draft"
-msgstr "Draft"
+msgstr "Szkic"
 
-#, fuzzy
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_payment_form_receivable_domain_processing"
 msgid "Processing"
-msgstr "Processing"
+msgstr "W realizacji"
 
-#, fuzzy
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_payment_form_receivable_domain_to_process"
 msgid "To Process"
-msgstr "Processing"
+msgstr "Do realizacji"
 
-#, fuzzy
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_payment_group_form_domain_all"
 msgid "All"
-msgstr "All"
+msgstr "Wszystkie"
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_payment_group_form_domain_not_completed"
 msgid "Pending"
-msgstr ""
+msgstr "W toku"
 
+#, python-format
 msgctxt "model:ir.message,text:msg_erase_party_pending_payment"
 msgid ""
 "You cannot erase party \"%(party)s\" while they have pending payments with "
 "company \"%(company)s\"."
 msgstr ""
 
+#, python-format
 msgctxt "model:ir.message,text:msg_move_cancel_payments"
 msgid ""
 "The moves \"%(moves)s\" contain lines with payments, you may want to cancel "
 "them before cancelling."
 msgstr ""
 
+#, python-format
 msgctxt "model:ir.message,text:msg_move_line_delegate_payments"
 msgid ""
 "The lines \"%(lines)s\" have payments, you may want to cancel them before "
 "delegating."
 msgstr ""
 
+#, python-format
 msgctxt "model:ir.message,text:msg_move_line_group_payments"
 msgid ""
 "The lines \"%(lines)s\" have payments, you may want to cancel them before "
 "grouping."
 msgstr ""
 
+#, python-format
 msgctxt "model:ir.message,text:msg_move_line_reschedule_payments"
 msgid ""
 "The lines \"%(lines)s\" have payments, you may want to cancel them before "
 "rescheduling."
 msgstr ""
 
+#, python-format
 msgctxt "model:ir.message,text:msg_pay_line_blocked"
 msgid "Line \"%(line)s\" is blocked for payment."
-msgstr ""
+msgstr "Pozycja \"%(line)s\" ma zablokowaną płatność."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_pay_line_group"
 msgid ""
 "The lines \"%(names)s\" for %(party)s could be grouped with the line "
 "\"%(line)s\"."
 msgstr ""
 
+#, python-format
 msgctxt "model:ir.message,text:msg_payment_delete_draft"
 msgid "To delete payment \"%(payment)s\" you must reset it to draft state."
 msgstr ""
 
+#, python-format
 msgctxt "model:ir.message,text:msg_payment_overpay"
 msgid "Payment \"%(payment)s\" overpays line \"%(line)s\"."
 msgstr ""
 
+#, python-format
 msgctxt "model:ir.message,text:msg_payment_reconciled"
 msgid "The line \"%(line)s\" of payment \"%(payment)s\" is already reconciled."
 msgstr ""
 
 msgctxt "model:ir.model.button,confirm:payment_process_wizard_button"
 msgid "Are you sure you want to process the payments?"
-msgstr ""
+msgstr "Czy na pewno chcesz zrealizować płatności?"
 
-#, fuzzy
 msgctxt "model:ir.model.button,string:move_line_pay_button"
 msgid "Pay"
-msgstr "Strona"
+msgstr "Zapłać"
 
 msgctxt "model:ir.model.button,string:move_line_payment_block_button"
 msgid "Block"
-msgstr "Block"
+msgstr "Zablokuj"
 
 msgctxt "model:ir.model.button,string:move_line_payment_unblock_button"
 msgid "Unblock"
-msgstr "Unblock"
+msgstr "Odblokuj"
 
 msgctxt "model:ir.model.button,string:payment_approve_button"
 msgid "Approve"
-msgstr "Approve"
+msgstr "Zatwierdź"
 
 msgctxt "model:ir.model.button,string:payment_draft_button"
 msgid "Draft"
-msgstr "Draft"
+msgstr "Szkic"
 
 msgctxt "model:ir.model.button,string:payment_fail_button"
 msgid "Fail"
-msgstr "Fail"
+msgstr "Niepowodzenie"
 
-#, fuzzy
 msgctxt "model:ir.model.button,string:payment_group_succeed_button"
 msgid "Succeed"
-msgstr "Succeed"
+msgstr "Powodzenie"
 
-#, fuzzy
 msgctxt "model:ir.model.button,string:payment_proceed_button"
 msgid "Processing"
-msgstr "Processing"
+msgstr "W realizacji"
 
-#, fuzzy
 msgctxt "model:ir.model.button,string:payment_process_wizard_button"
 msgid "Process"
-msgstr "Processing"
+msgstr "Realizuj"
 
 msgctxt "model:ir.model.button,string:payment_submit_button"
 msgid "Submit"
-msgstr ""
+msgstr "Przekaż"
 
 msgctxt "model:ir.model.button,string:payment_succeed_button"
 msgid "Succeed"
-msgstr "Succeed"
+msgstr "Powodzenie"
 
 msgctxt ""
 "model:ir.rule.group,name:rule_group_party_reception_direct_debit_companies"
@@ -623,9 +632,19 @@ msgctxt "model:ir.rule.group,name:rule_group_payment_journal_companies"
 msgid "User in companies"
 msgstr ""
 
+#, fuzzy
+msgctxt "model:ir.sequence,name:sequence_account_payment"
+msgid "Default Account Payment"
+msgstr "Default Account Payment Group"
+
 msgctxt "model:ir.sequence,name:sequence_account_payment_group"
 msgid "Default Account Payment Group"
 msgstr "Default Account Payment Group"
+
+#, fuzzy
+msgctxt "model:ir.sequence.type,name:sequence_type_account_payment"
+msgid "Account Payment Group"
+msgstr "Account Payment Group"
 
 msgctxt "model:ir.sequence.type,name:sequence_type_account_payment_group"
 msgid "Account Payment Group"
@@ -633,41 +652,35 @@ msgstr "Account Payment Group"
 
 msgctxt "model:ir.ui.menu,name:menu_create_direct_debit"
 msgid "Create Direct Debit"
-msgstr ""
+msgstr "Utwórz polecenie zapłaty"
 
 msgctxt "model:ir.ui.menu,name:menu_move_line_form"
 msgid "Lines to Pay"
-msgstr "Lines to Pay"
+msgstr "Pozycje do zapłaty"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_payment_configuration"
 msgid "Payments"
-msgstr "Payments"
+msgstr "Płatności"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_payment_form_payable"
 msgid "Payable Payments"
-msgstr "Process Payments"
+msgstr "Płatności do zapłaty"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_payment_form_receivable"
 msgid "Receivable Payments"
-msgstr "Receivable"
+msgstr "Płatności należne"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_payment_group_form"
 msgid "Payment Groups"
-msgstr "Payment Groups"
+msgstr "Grupy płatności"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_payment_journal_form"
 msgid "Payment Journals"
-msgstr "Payment Journals"
+msgstr "Dzienniki płatności"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_payments"
 msgid "Payments"
-msgstr "Payments"
+msgstr "Płatności"
 
 msgctxt "model:party.party.payment_direct_debit,name:"
 msgid "Party Payment Direct Debit"
@@ -677,128 +690,126 @@ msgctxt "model:party.party.reception_direct_debit,name:"
 msgid "Party Reception Direct Debit"
 msgstr ""
 
-#, fuzzy
 msgctxt "model:res.group,name:group_payment"
 msgid "Payment"
-msgstr "Payment"
+msgstr "Płatność"
 
 msgctxt "model:res.group,name:group_payment_approval"
 msgid "Payment Approval"
 msgstr "Payment Approval"
 
-#, fuzzy
 msgctxt "selection:account.move.line,payment_kind:"
 msgid "Payable"
-msgstr "Payable"
+msgstr "Do zapłaty"
 
-#, fuzzy
 msgctxt "selection:account.move.line,payment_kind:"
 msgid "Receivable"
-msgstr "Receivable"
+msgstr "Należne"
 
-#, fuzzy
 msgctxt "selection:account.payment,kind:"
 msgid "Payable"
-msgstr "Payable"
+msgstr "Do zapłaty"
 
-#, fuzzy
 msgctxt "selection:account.payment,kind:"
 msgid "Receivable"
-msgstr "Receivable"
+msgstr "Należne"
 
-#, fuzzy
 msgctxt "selection:account.payment,state:"
 msgid "Approved"
-msgstr "Approved"
+msgstr "Zatwierdzone"
 
-#, fuzzy
 msgctxt "selection:account.payment,state:"
 msgid "Draft"
-msgstr "Draft"
+msgstr "Szkic"
 
-#, fuzzy
 msgctxt "selection:account.payment,state:"
 msgid "Failed"
-msgstr "Failed"
+msgstr "Nieudane"
 
-#, fuzzy
 msgctxt "selection:account.payment,state:"
 msgid "Processing"
-msgstr "Processing"
+msgstr "W realizacji"
 
 msgctxt "selection:account.payment,state:"
 msgid "Submitted"
-msgstr ""
+msgstr "Przekazane"
 
-#, fuzzy
 msgctxt "selection:account.payment,state:"
 msgid "Succeeded"
-msgstr "Succeeded"
+msgstr "Udane"
 
-#, fuzzy
 msgctxt "selection:account.payment.group,kind:"
 msgid "Payable"
-msgstr "Payable"
+msgstr "Do zapłaty"
 
-#, fuzzy
 msgctxt "selection:account.payment.group,kind:"
 msgid "Receivable"
-msgstr "Receivable"
+msgstr "Należne"
 
 msgctxt "selection:account.payment.journal,process_method:"
 msgid "Manual"
-msgstr ""
+msgstr "Ręcznie"
 
-msgctxt "view:account.configuration:"
-msgid "Group Sequence"
-msgstr ""
+#, fuzzy
+msgctxt "selection:party.party.reception_direct_debit,type:"
+msgid "Balance"
+msgstr "Anuluj"
+
+#, fuzzy
+msgctxt "selection:party.party.reception_direct_debit,type:"
+msgid "Line"
+msgstr "Pozycja"
 
 #, fuzzy
 msgctxt "view:account.configuration:"
+msgid "Group Sequence:"
+msgstr "Sekwencja grupy"
+
+msgctxt "view:account.configuration:"
 msgid "Payment"
-msgstr "Payment"
+msgstr "Płatność"
+
+#, fuzzy
+msgctxt "view:account.configuration:"
+msgid "Sequence:"
+msgstr "Sekwencja grupy"
 
 msgctxt "view:account.move.line.create_direct_debit.start:"
 msgid "Create Direct Debit for date"
-msgstr ""
+msgstr "Utwórz polecenie zapłaty dla daty"
 
 msgctxt "view:account.payment.group:"
 msgid "Complete"
-msgstr ""
+msgstr "Zakończone"
 
 msgctxt "view:account.payment.group:"
 msgid "Count"
-msgstr ""
+msgstr "Liczba"
 
-#, fuzzy
 msgctxt "view:account.payment.group:"
 msgid "Payments Info"
-msgstr "Payments"
+msgstr "Informacje o płatnościach"
 
-#, fuzzy
 msgctxt "view:account.payment.group:"
 msgid "Succeeded"
-msgstr "Succeeded"
+msgstr "Udane"
 
 msgctxt "view:account.payment.group:"
 msgid "Total Amount"
-msgstr ""
+msgstr "Kwota łączna"
 
-#, fuzzy
 msgctxt "view:account.payment:"
 msgid "Description"
 msgstr "Opis"
 
 msgctxt "view:account.payment:"
 msgid "Other Info"
-msgstr ""
+msgstr "Inne informacje"
 
-#, fuzzy
 msgctxt "wizard_button:account.move.line.create_direct_debit,start,create_:"
 msgid "Create"
-msgstr "Data utworzenia"
+msgstr "Utwórz"
 
-#, fuzzy
 msgctxt "wizard_button:account.move.line.create_direct_debit,start,end:"
 msgid "Cancel"
 msgstr "Anuluj"
@@ -809,13 +820,12 @@ msgstr "Anuluj"
 
 msgctxt "wizard_button:account.move.line.pay,ask_journal,next_:"
 msgid "Pay"
-msgstr ""
+msgstr "Zapłać"
 
-#, fuzzy
 msgctxt "wizard_button:account.move.line.pay,start,end:"
 msgid "Cancel"
 msgstr "Anuluj"
 
 msgctxt "wizard_button:account.move.line.pay,start,next_:"
 msgid "Pay"
-msgstr ""
+msgstr "Opłać"

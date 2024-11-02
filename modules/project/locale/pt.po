@@ -183,6 +183,7 @@ msgctxt "model:ir.message,text:msg_domain_all"
 msgid "All"
 msgstr ""
 
+#, python-format
 msgctxt "model:ir.message,text:msg_erase_party_opened_project"
 msgid ""
 "You cannot erase party \"%(party)s\" while they have opened projects with "
@@ -191,22 +192,25 @@ msgstr ""
 "Você não pode remover a pessoa \"%(party)s\" enquanto ela tiver projetos em "
 "aberto com a empresa \"%(company)s\"."
 
-#, fuzzy
+#, fuzzy, python-format
 msgctxt "model:ir.message,text:msg_work_children_progress"
 msgid "To complete work \"%(work)s\" you must complete also all its children."
 msgstr ""
 "Para fechar o trabalho \"%(parent)s\", você precisa fechar o trabalho "
 "\"%(child)s\"."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_work_invalid_progress_status"
 msgid ""
 "To set work \"%(work)s\" in \"%(status)s\" status, you must increase its "
 "progress up to at least %(progress)s."
 msgstr ""
 
-#, fuzzy
+#, fuzzy, python-format
 msgctxt "model:ir.message,text:msg_work_parent_progress"
-msgid "To re-open work \"%(work)s\" you must re-open also its parent \"%(parent)s\"."
+msgid ""
+"To reopen the work \"%(work)s\", you must also reopen its parent "
+"\"%(parent)s\"."
 msgstr "Para abrir o trabalho \"%(child)s\", você precisa abrir \"%(parent)s\"."
 
 msgctxt "model:ir.rule.group,name:rule_group_work_companies"

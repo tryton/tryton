@@ -389,6 +389,7 @@ msgctxt ""
 msgid "Validated"
 msgstr "Geprüft"
 
+#, python-format
 msgctxt "model:ir.message,text:msg_bank_account_currency"
 msgid ""
 "The currency of bank account \"%(bank_account)s\" must be the same as "
@@ -397,6 +398,7 @@ msgstr ""
 "Die Währung des Bankkontos \"%(bank_account)s\" muss mit der Währung "
 "\"%(currency)s\" des Journals \"%(journal)s\" übereinstimmen."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_import_no_journal"
 msgid ""
 "To import statement, you must create a journal for account \"%(account)s\"."
@@ -408,12 +410,14 @@ msgctxt "model:ir.message,text:msg_journal_bank_account_unique"
 msgid "Only one journal is allowed per bank account."
 msgstr "Es ist nur ein Journal pro Bankkonto erlaubt."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_post_statement_move"
 msgid "To post the move \"%(move)s\" you must post the statement \"%(statement)s\"."
 msgstr ""
 "Damit der Buchungssatz \"%(move)s\" festgeschrieben werden kann, muss zuerst"
 " der Auszug \"%(statement)s\" festgeschrieben werden."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_statement_delete_cancel"
 msgid "To delete statement \"%(statement)s\" you must cancel it."
 msgstr ""
@@ -422,12 +426,13 @@ msgstr ""
 
 msgctxt "model:ir.message,text:msg_statement_invoice_paid_cancelled"
 msgid ""
-"The validation of the statements will remove already paid or cancelled "
-"invoices from the statements' lines."
+"Validating the statements will remove already paid or cancelled invoices "
+"from the statements' lines."
 msgstr ""
 "Die Validierung der Kontoauszüge wird bereits bezahlte oder stornierte "
 "Rechnungen von den Kontoauszugspositionen entfernen."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_statement_line_delete_cancel_draft"
 msgid ""
 "To delete line \"%(line)s\" you must cancel or reset to draft statement "
@@ -443,6 +448,7 @@ msgstr ""
 "Sie müssen für den Fremdwährungsbetrag das gleiche Vorzeichen wie für den "
 "Betrag verwenden."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_statement_origin_delete_cancel_draft"
 msgid ""
 "To delete origin \"%(origin)s\" you must cancel or reset to draft statement "
@@ -454,12 +460,13 @@ msgstr ""
 
 msgctxt "model:ir.message,text:msg_statement_paid_invoice_draft"
 msgid ""
-"The validation of the statements will remove paid invoices from other "
+"Validating the statements will remove paid invoices from other draft "
 "statements."
 msgstr ""
-"Die Validierung des Kontoauszugs wird bezahlte Rechnungen von anderen "
-"Kontoauszügen entfernen."
+"Die Validierung der Kontoauszüge wird bezahlte Rechnungen von anderen "
+"Kontoauszugentwürfen entfernen."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_statement_post_pending_amount"
 msgid ""
 "To post statement \"%(statement)s\" you must create lines for pending "
@@ -468,6 +475,7 @@ msgstr ""
 "Um Kontoauszug \"%(statement)s\" festzuschreiben, müssen zuerst Positionen "
 "für den offenen Betrag von %(amount)s aus \"%(origin)s\" erstellt werden."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_statement_wrong_end_balance"
 msgid ""
 "To validate statement \"%(statement)s\" you must change lines to have end "
@@ -477,18 +485,21 @@ msgstr ""
 "Positionen so angepasst werden, dass der Endsaldo von %(end_balance)s "
 "erreicht wird anstatt %(amount)s."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_statement_wrong_number_of_lines_add"
 msgid "To validate statement \"%(statement)s\" you must add %(n)s line(s)."
 msgstr ""
 "Um den Kontoauszug \"%(statement)s\" validieren zu können, müssen noch %(n)s"
 " Positionen erfasst werden."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_statement_wrong_number_of_lines_remove"
 msgid "To validate statement \"%(statement)s\" you must remove %(n)s line(s)."
 msgstr ""
 "Um den Kontoauszug \"%(statement)s\" validieren zu können, müssen %(n)s "
 "Positionen entfernt werden."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_statement_wrong_total_amount"
 msgid ""
 "To validate statement \"%(statement)s\" you must change lines to have total "

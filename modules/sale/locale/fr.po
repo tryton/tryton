@@ -170,17 +170,25 @@ msgctxt "field:sale.handle.invoice.exception.ask,domain_invoices:"
 msgid "Domain Invoices"
 msgstr "Domaine des factures"
 
+msgctxt "field:sale.handle.invoice.exception.ask,ignore_invoices:"
+msgid "Invoices to Ignore"
+msgstr "Factures à ignorer"
+
 msgctxt "field:sale.handle.invoice.exception.ask,recreate_invoices:"
-msgid "Recreate Invoices"
-msgstr "Recréer les factures"
+msgid "Invoices to Recreate"
+msgstr "Factures à recréer"
 
 msgctxt "field:sale.handle.shipment.exception.ask,domain_moves:"
-msgid "Domain Moves"
-msgstr "Domaine des mouvements"
+msgid "Domain Stock Moves"
+msgstr "Domaine des mouvements de stock"
+
+msgctxt "field:sale.handle.shipment.exception.ask,ignore_moves:"
+msgid "Stock Moves to Ignore"
+msgstr "Mouvements de stock à ignorer"
 
 msgctxt "field:sale.handle.shipment.exception.ask,recreate_moves:"
-msgid "Recreate Moves"
-msgstr "Recréer des mouvements"
+msgid "Stock Moves to Recreate"
+msgstr "Mouvements de stock à recréer"
 
 msgctxt "field:sale.line,actual_quantity:"
 msgid "Actual Quantity"
@@ -218,17 +226,21 @@ msgctxt "field:sale.line,invoice_progress:"
 msgid "Invoice Progress"
 msgstr "Progression de la facturation"
 
+msgctxt "field:sale.line,movable:"
+msgid "Movable"
+msgstr "Mobile"
+
 msgctxt "field:sale.line,moves:"
-msgid "Moves"
-msgstr "Mouvements"
+msgid "Stock Moves"
+msgstr "Mouvements de stock"
 
 msgctxt "field:sale.line,moves_exception:"
 msgid "Moves Exception"
 msgstr "Mouvements en exception"
 
 msgctxt "field:sale.line,moves_ignored:"
-msgid "Ignored Moves"
-msgstr "Mouvements ignorés"
+msgid "Ignored Stock Moves"
+msgstr "Mouvements de stock ignorés"
 
 msgctxt "field:sale.line,moves_progress:"
 msgid "Moves Progress"
@@ -307,16 +319,16 @@ msgid "Tax"
 msgstr "Taxe"
 
 msgctxt "field:sale.line-ignored-stock.move,move:"
-msgid "Move"
-msgstr "Mouvement"
+msgid "Stock Move"
+msgstr "Mouvement de stock"
 
 msgctxt "field:sale.line-ignored-stock.move,sale_line:"
 msgid "Sale Line"
 msgstr "Ligne de vente"
 
 msgctxt "field:sale.line-recreated-stock.move,move:"
-msgid "Move"
-msgstr "Mouvement"
+msgid "Stock Move"
+msgstr "Mouvement de stock"
 
 msgctxt "field:sale.line-recreated-stock.move,sale_line:"
 msgid "Sale Line"
@@ -522,13 +534,17 @@ msgctxt "field:sale.sale,invoices_recreated:"
 msgid "Recreated Invoices"
 msgstr "Factures recréées"
 
+msgctxt "field:sale.sale,line_lines:"
+msgid "Line - Lines"
+msgstr "Ligne - Lignes"
+
 msgctxt "field:sale.sale,lines:"
 msgid "Lines"
 msgstr "Lignes"
 
 msgctxt "field:sale.sale,moves:"
-msgid "Moves"
-msgstr "Mouvements"
+msgid "Stock Moves"
+msgstr "Mouvements de stock"
 
 msgctxt "field:sale.sale,number:"
 msgid "Number"
@@ -718,11 +734,21 @@ msgstr ""
 "La période de grâce pendant laquelle une vente confirmée peut toujours être réinitialiser à l'état brouillon.\n"
 "S'applique si une fille d'attente de travailleurs est activée."
 
+msgctxt "help:sale.handle.invoice.exception.ask,ignore_invoices:"
+msgid "The selected cancelled invoices will be ignored."
+msgstr "Les factures annulées sélectionnées seront ignorées."
+
 msgctxt "help:sale.handle.invoice.exception.ask,recreate_invoices:"
-msgid ""
-"The selected invoices will be recreated. The other ones will be ignored."
-msgstr ""
-"Les factures sélectionnées seront recréés. Les autres seront ignorées."
+msgid "The selected cancelled invoices will be recreated."
+msgstr "Les factures annulées sélectionnées seront recréées."
+
+msgctxt "help:sale.handle.shipment.exception.ask,ignore_moves:"
+msgid "The selected cancelled stock moves will be ignored."
+msgstr "Les mouvements de stock annulés sélectionnés seront ignorés."
+
+msgctxt "help:sale.handle.shipment.exception.ask,recreate_moves:"
+msgid "The selected cancelled stock moves will be recreated."
+msgstr "Les mouvements de stock annulés sélectionnés seront recréés."
 
 msgctxt "help:sale.line,product_uom_category:"
 msgid "The category of Unit of Measure for the product."
@@ -736,9 +762,9 @@ msgctxt "model:ir.action,name:act_invoice_form"
 msgid "Invoices"
 msgstr "Factures"
 
-msgctxt "model:ir.action,name:act_open_customer"
-msgid "Parties associated to Sales"
-msgstr "Tiers associés à des ventes"
+msgctxt "model:ir.action,name:act_invoice_line_form"
+msgid "Invoice Lines"
+msgstr "Lignes de facture"
 
 msgctxt "model:ir.action,name:act_product"
 msgid "Products"
@@ -825,8 +851,8 @@ msgid "Sale Lines"
 msgstr "Lignes de vente"
 
 msgctxt "model:ir.action,name:act_sale_move_relate"
-msgid "Moves"
-msgstr "Mouvements"
+msgid "Stock Moves"
+msgstr "Mouvements de stock"
 
 msgctxt "model:ir.action,name:act_sale_relate"
 msgid "Sales"
@@ -920,6 +946,7 @@ msgctxt "model:ir.action.act_window.domain,name:act_sale_relate_pending"
 msgid "Pending"
 msgstr "En attentes"
 
+#, python-format
 msgctxt "model:ir.message,text:msg_erase_party_pending_sale"
 msgid ""
 "You cannot erase party \"%(party)s\" while they have pending sales with "
@@ -928,6 +955,7 @@ msgstr ""
 "Vous ne pouvez pas effacer le tiers « %(party)s » tant qu'il a des ventes en"
 " attentes pour la société « %(company)s »."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_sale_customer_location_required"
 msgid ""
 "To process sale \"%(sale)s\" you must set a customer location on party "
@@ -936,10 +964,12 @@ msgstr ""
 "Pour traiter la vente « %(sale)s », vous devez définir un emplacement client"
 " pour le tiers « %(party)s »."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_sale_delete_cancel"
 msgid "To delete sale \"%(sale)s\" you must cancel it."
 msgstr "Pour supprimer la vente « %(sale)s », vous devez l'annuler."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_sale_invalid_method"
 msgid ""
 "You cannot use together invoice \"%(invoice_method)s\" and shipment "
@@ -949,6 +979,7 @@ msgstr ""
 "« %(invoice_method)s » et l'exédition « %(shipment_method)s » sur la vente "
 "« %(sale)s »."
 
+#, python-format
 msgctxt ""
 "model:ir.message,text:msg_sale_invoice_address_required_for_quotation"
 msgid "To get a quote for sale \"%(sale)s\" you must enter an invoice address."
@@ -956,6 +987,7 @@ msgstr ""
 "Pour avoir un devis pour la vente « %(sale)s », vous devez entrer une "
 "adresse de facturation."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_sale_invoice_reset_draft"
 msgid ""
 "You cannot reset invoice \"%(invoice)s\" to draft because it was generated "
@@ -964,6 +996,7 @@ msgstr ""
 "Vous ne pouvez pas réinitialiser à l'état brouillon la facture "
 "« %(invoice)s » car elle a été générée par une vente."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_sale_line_create_draft"
 msgid ""
 "You cannot add lines to sale \"%(sale)s\" because it is no longer in a draft"
@@ -972,6 +1005,7 @@ msgstr ""
 "Vous ne pouvez pas ajouter de lignes à la vente « %(sale)s » car elle n'est "
 "plus dans l'état brouillon."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_sale_line_delete_cancel_draft"
 msgid ""
 "To delete line \"%(line)s\" you must cancel or reset to draft sale "
@@ -980,6 +1014,7 @@ msgstr ""
 "Pour supprimer la ligne « %(line)s », vous devez annuler ou réinitialiser à "
 "l'état brouillon la vente « %(sale)s »."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_sale_line_move_quantity"
 msgid ""
 "The sale line \"%(line)s\" is moving %(extra)s in addition to the "
@@ -992,18 +1027,21 @@ msgctxt "model:ir.message,text:msg_sale_line_tax_unique"
 msgid "A tax can be added only once to a sale line."
 msgstr "Une taxe ne peut être ajoutée qu'une seule fois à une ligne de vente."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_sale_missing_account_revenue"
 msgid "To invoice sale \"%(sale)s\" you must configure a default account revenue."
 msgstr ""
 "Pour facturer la vente « %(sale)s », vous devez configurer un compte de "
 "produits par défaut."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_sale_modify_header_draft"
 msgid "To modify the header of sale \"%(sale)s\", it must be in \"draft\" state."
 msgstr ""
 "Pour modifier l'entête de la vente « %(sale)s », elle doit être dans l'état "
 "« brouillon »."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_sale_move_reset_draft"
 msgid ""
 "You cannot reset move \"%(move)s\" to draft because it was generated by a "
@@ -1012,6 +1050,7 @@ msgstr ""
 "Vous ne pouvez pas réinitialiser à l'état brouillon le mouvement "
 "« %(move)s » car il a été généré par une vente."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_sale_product_missing_account_revenue"
 msgid ""
 "To invoice sale \"%(sale)s\" you must define an account revenue for product "
@@ -1052,6 +1091,7 @@ msgctxt "model:ir.message,text:msg_sale_reporting_time_series"
 msgid "Time Series"
 msgstr "Séries temporelles"
 
+#, python-format
 msgctxt ""
 "model:ir.message,text:msg_sale_shipment_address_required_for_quotation"
 msgid "To get a quote for sale \"%(sale)s\" you must enter a shipment address."
@@ -1059,6 +1099,7 @@ msgstr ""
 "Pour avoir un devis pour la vente « %(sale)s », vous devez entrer une "
 "adresse de livraison."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_sale_warehouse_required_for_quotation"
 msgid "To get a quote for sale \"%(sale)s\" you must enter a warehouse."
 msgstr ""
@@ -1181,10 +1222,6 @@ msgstr "Vente"
 msgctxt "model:ir.ui.menu,name:menu_configuration"
 msgid "Configuration"
 msgstr "Configuration"
-
-msgctxt "model:ir.ui.menu,name:menu_customer"
-msgid "Associated to Sales"
-msgstr "Associés à des ventes"
 
 msgctxt "model:ir.ui.menu,name:menu_product"
 msgid "Products"
@@ -1575,12 +1612,12 @@ msgid "Customers"
 msgstr "Clients"
 
 msgctxt "view:sale.handle.invoice.exception.ask:"
-msgid "Choose invoices to recreate:"
-msgstr "Choisissez les factures à recréer :"
+msgid "Choose cancelled invoices to ignore or recreate:"
+msgstr "Choisissez les factures annulées à ignorer ou à recréer :"
 
 msgctxt "view:sale.handle.shipment.exception.ask:"
-msgid "Choose move to recreate:"
-msgstr "Choisissez les mouvements à recréer :"
+msgid "Choose cancelled stock moves to ignore or recreate:"
+msgstr "Choisissez les mouvements de stock annulés à ignorer ou à recréer :"
 
 msgctxt "view:sale.line:"
 msgid "General"

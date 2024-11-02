@@ -127,7 +127,7 @@ msgid "Comment"
 msgstr "Comentari"
 
 msgctxt "field:party.contact_mechanism,email:"
-msgid "E-Mail"
+msgid "Email"
 msgstr "Correu electrònic"
 
 msgctxt "field:party.contact_mechanism,language:"
@@ -235,7 +235,7 @@ msgid "Distance"
 msgstr "Distància"
 
 msgctxt "field:party.party,email:"
-msgid "E-Mail"
+msgid "Email"
 msgstr "Correu electrònic"
 
 msgctxt "field:party.party,fax:"
@@ -487,6 +487,7 @@ msgctxt "model:ir.action,name:wizard_replace"
 msgid "Replace"
 msgstr "Substitueix"
 
+#, python-format
 msgctxt "model:ir.message,text:msg_address_change_party"
 msgid "You cannot change the party of address \"%(address)s\"."
 msgstr "No es pot canviar el tercer de l'adreça \"%(address)s\"."
@@ -499,16 +500,19 @@ msgctxt "model:ir.message,text:msg_category_name_unique"
 msgid "The name of party category must be unique by parent."
 msgstr "El nom de la categoria del tercer ha de ser únic segons el pare."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_contact_mechanism_change_party"
 msgid "You cannot change the party of contact mechanism \"%(contact)s\"."
 msgstr "No es pot canviar el tercer del mètode de contacte \"%(contact)s\"."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_different_name"
 msgid "Parties have different names: \"%(source_name)s\" vs \"%(destination_name)s\"."
 msgstr ""
 "Els tercers tenen diferent nom: \"%(source_name)s\" vs "
 "\"%(destination_name)s\"."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_different_tax_identifier"
 msgid ""
 "Parties have different tax identifiers: \"%(source_code)s\" vs "
@@ -517,14 +521,17 @@ msgstr ""
 "Els tercers tenen diferent identificador fiscal: \"%(source_code)s\" vs "
 "\"%(destination_code)s\"."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_email_invalid"
 msgid "The email address \"%(email)s\" for party \"%(party)s\" is not valid."
 msgstr "El correu electrònic \"%(email)s\" del tercer \"%(party)s\" no és vàlid."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_erase_active_party"
 msgid "Party \"%(party)s\" cannot be erased because they are still active."
 msgstr "No es pot eliminar el tercer \"%(party)s\" perquè encara està actiu."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_identifier_type_remove"
 msgid ""
 "To remove the identifier type \"%(type)s\" from the configuration, you must "
@@ -533,14 +540,17 @@ msgstr ""
 "Per treure el tipus d'identificador \"%(type)s\" de la configuració, has de "
 "canviar-lo en \"%(identifier)s\"."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_invalid_code"
 msgid "The %(type)s \"%(code)s\" for party \"%(party)s\" is not valid."
 msgstr "El %(type)s \"%(code)s\" del tercer \"%(party)s\" no és vàlid."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_invalid_format"
 msgid "Invalid format \"%(format)s\" with exception \"%(exception)s\"."
 msgstr "El format \"%(format)s\" es invàlid amb la excepció \"%(exception)s\"."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_invalid_phone_number"
 msgid "The phone number \"%(phone)s\" for party \"%(party)s\" is not valid."
 msgstr "El número de telèfon \"%(phone)s\" del tercer \"%(party)s\" no és vàlid."
@@ -549,10 +559,12 @@ msgctxt "model:ir.message,text:msg_party_code_unique"
 msgid "The code on party must be unique."
 msgstr "El codi del tercer ha de ser únic."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_party_identifier_duplicate"
 msgid "The party \"%(party)s\" has the same %(type)s \"%(code)s\"."
 msgstr "El tercer \"%(party)s\" té el mateix \"%(type)s\" \"%(code)s\"."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_party_set_contact_mechanism"
 msgid ""
 "To change the \"%(field)s\" for party \"%(party)s\", you must edit their "
@@ -870,6 +882,10 @@ msgid "Egyptian Tax Registration Number"
 msgstr "Número de registre del contribuent egipci"
 
 msgctxt "selection:party.configuration,identifier_types:"
+msgid "El Salvador Tax Number"
+msgstr "Número fiscal d'El Salvador"
+
+msgctxt "selection:party.configuration,identifier_types:"
 msgid "English Unique Pupil Number"
 msgstr "Número únic d'alumne anglès"
 
@@ -1034,6 +1050,10 @@ msgid "Japanese Corporate Number"
 msgstr "Número d'empresa Japonés"
 
 msgctxt "selection:party.configuration,identifier_types:"
+msgid "Kenya Tax Number"
+msgstr "Número fiscal de Kenya"
+
+msgctxt "selection:party.configuration,identifier_types:"
 msgid "Latvian VAT Number"
 msgstr "Identificador fiscal Letó"
 
@@ -1076,6 +1096,10 @@ msgstr "Número d'identificació d'empresa Moldava"
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "Monacan VAT Number"
 msgstr "Identificador fiscal de Mònaco"
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Montenegro Tax Number"
+msgstr "Número fiscal de Montenegro"
 
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "Moroccan Tax Number"
@@ -1162,6 +1186,10 @@ msgid "Serbian Tax Identification"
 msgstr "Identificador fiscal Serbi"
 
 msgctxt "selection:party.configuration,identifier_types:"
+msgid "Singapore's Unique Entity Number"
+msgstr "Número d'entitat únic de Singapur"
+
+msgctxt "selection:party.configuration,identifier_types:"
 msgid "Slovak Birth Number"
 msgstr "Número de naixement Eslovac"
 
@@ -1238,6 +1266,10 @@ msgid "Swiss VAT Number"
 msgstr "Identificador fiscal Suís"
 
 msgctxt "selection:party.configuration,identifier_types:"
+msgid "Taiwanese Tax Number"
+msgstr "Número fiscal taiwanès"
+
+msgctxt "selection:party.configuration,identifier_types:"
 msgid "Thai Memorandum of Association Number"
 msgstr "Número d'associació Thai"
 
@@ -1256,6 +1288,10 @@ msgstr "Identificador fiscal de Tunisia"
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "Turkish Personal Identification Number"
 msgstr "Número d'identificació personal Turc"
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Turkish Tax Identification Number"
+msgstr "Número d'identificació fiscal turc"
 
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "U.S. Adoption Taxpayer Identification Number"
@@ -1298,6 +1334,10 @@ msgid "United Kingdom National Health Service Patient Identifier"
 msgstr "Identificador del pacient del servei nacional de salut del Regne Unit"
 
 msgctxt "selection:party.configuration,identifier_types:"
+msgid "United Kingdom Unique Taxpayer Reference"
+msgstr "Referència única del contribuent del Regne Unit"
+
+msgctxt "selection:party.configuration,identifier_types:"
 msgid "Uruguay Tax Number"
 msgstr "Identificador fiscal Uruguay"
 
@@ -1310,7 +1350,7 @@ msgid "Vietnam Tax Number"
 msgstr "Número fiscal vietnamita"
 
 msgctxt "selection:party.contact_mechanism,type:"
-msgid "E-Mail"
+msgid "Email"
 msgstr "Correu electrònic"
 
 msgctxt "selection:party.contact_mechanism,type:"
@@ -1362,8 +1402,8 @@ msgid "Party"
 msgstr "Tercer"
 
 msgctxt "view:party.replace.ask:"
-msgid "Replace By"
-msgstr "Substitueix per"
+msgid "Replaced By"
+msgstr "Substituït per"
 
 msgctxt "wizard_button:party.check_vies,result,end:"
 msgid "OK"

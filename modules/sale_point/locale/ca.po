@@ -401,14 +401,16 @@ msgctxt "model:ir.action.act_window.domain,name:act_sale_form_domain_open"
 msgid "Opened"
 msgstr "Oberta"
 
+#, python-format
 msgctxt "model:ir.message,text:msg_cash_session_delete_open"
-msgid "To delete session \"%(session)s\" you must re-open it."
-msgstr "Per eliminar la sessió \"%(session)s\", heu de tornar a obrir-la."
+msgid "To delete session \"%(session)s\", you must reopen it."
+msgstr "Per suprimir la sessió \"%(session)s\", l'has de tornar a obrir."
 
 msgctxt "model:ir.message,text:msg_cash_session_previous_unique"
 msgid "A session can be used as previous only once."
 msgstr "Una sessió només es pot utilitzar com a anterior una vegada."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_cash_session_wrong_end_amount"
 msgid ""
 "To close session \"%(session)s\" you must change end amount to have "
@@ -417,14 +419,16 @@ msgstr ""
 "Per tancar la sessió \"%(session)s\", heu de canviar l'import final per "
 "tenir %(amount)s en lloc de %(end_amount)s."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_payment_delete_sale_open"
-msgid "To delete payment \"%(payment)s\" you must re-open sale \"%(sale)s\"."
+msgid "To delete payment \"%(payment)s\", you must reopen sale \"%(sale)s\"."
 msgstr ""
 "Per eliminar el pagament \"%(payment)s\", heu de tornar a obrir la venda "
 "\"%(sale)s\"."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_payment_delete_session_open"
-msgid "To delete payment \"%(payment)s\" you must re-open session \"%(session)s\"."
+msgid "To delete payment \"%(payment)s\", you must reopen session \"%(session)s\"."
 msgstr ""
 "Per eliminar el pagament \"%(payment)s\", heu de tornar a obrir la sessió "
 "\"%(session)s\"."
@@ -445,30 +449,35 @@ msgstr ""
 "No podeu canviar la marca d'impostos inclosos del punt de venda perquè té ja"
 " té vendes."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_sale_amount_paid_cancelled"
 msgid "The sale \"%(sale)s\" is cancelled so cannot have amount paid."
 msgstr ""
 "La venda %(sale)s\" està cancel·lada, de manera que no pot tenir import "
 "pagat."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_sale_amount_to_pay_done_posted"
 msgid "The sale \"%(sale)s\" is done so cannot have an amount to pay."
 msgstr ""
 "La venda \"%(sale)s\" està finalitzada, de manera que no pot tenir un import"
 " a pagar."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_sale_delete_numbered"
 msgid "You cannot delete sale \"%(sale)s\" because it has a number."
 msgstr "No podeu eliminar la venda \"%(sale)s\" perquè té un número."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_transfer_delete_posted"
 msgid "You cannot delete transfer \"%(transfer)s\" because it is posted."
 msgstr ""
 "No podeu eliminar la transferència \"%(transfer)s\" perquè està "
 "comptabilitzada."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_transfer_delete_session_open"
-msgid "To delete transfer \"%(transfer)s\" you must re-open session \"%(session)s\"."
+msgid "To delete transfer \"%(transfer)s\", you must reopen session \"%(session)s\"."
 msgstr ""
 "Per eliminar la transferència \"%(transfer)s\" heu de tornar a obrir la "
 "sessió \"%(session)s\"."
@@ -490,7 +499,7 @@ msgid "Close"
 msgstr "Tanca"
 
 msgctxt "model:ir.model.button,string:cash_session_open_button"
-msgid "Re-Open"
+msgid "Reopen"
 msgstr "Torna a obrir"
 
 msgctxt "model:ir.model.button,string:cash_session_post_button"
@@ -506,7 +515,7 @@ msgid "Cancel"
 msgstr "Cancel·la"
 
 msgctxt "model:ir.model.button,string:sale_open_button"
-msgid "Re-Open"
+msgid "Reopen"
 msgstr "Torna a obrir"
 
 msgctxt "model:ir.model.button,string:sale_pay_button"

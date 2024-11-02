@@ -50,10 +50,6 @@ msgctxt "field:stock.order_point,provisioning_location:"
 msgid "Provisioning Location"
 msgstr ""
 
-msgctxt "field:stock.order_point,storage_location:"
-msgid "Storage Location"
-msgstr "Lokasi Penyimpanan"
-
 msgctxt "field:stock.order_point,target_quantity:"
 msgid "Target Quantity"
 msgstr ""
@@ -64,10 +60,6 @@ msgstr ""
 
 msgctxt "field:stock.order_point,unit:"
 msgid "Unit"
-msgstr ""
-
-msgctxt "field:stock.order_point,warehouse_location:"
-msgid "Warehouse Location"
 msgstr ""
 
 msgctxt "field:stock.supply.start,warehouses:"

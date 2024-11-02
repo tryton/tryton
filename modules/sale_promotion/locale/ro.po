@@ -80,6 +80,11 @@ msgid "Promotion"
 msgstr "Promoție"
 
 #, fuzzy
+msgctxt "field:sale.reporting.promotion,promotion:"
+msgid "Promotion"
+msgstr "Promoție"
+
+#, fuzzy
 msgctxt "help:sale.promotion,formula:"
 msgid ""
 "Python expression that will be evaluated with:\n"
@@ -96,6 +101,16 @@ msgctxt "model:ir.action,name:act_promotion_relate"
 msgid "Sale Promotions"
 msgstr "Promoții de vânzare"
 
+msgctxt "model:ir.action,name:act_sale_relate"
+msgid "Sales"
+msgstr ""
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_sale_reporting_promotion"
+msgid "Sales per Promotion"
+msgstr "Promoție de vânzare"
+
+#, python-format
 msgctxt "model:ir.message,text:msg_invalid_formula"
 msgid ""
 "Invalid formula \"%(formula)s\" in promotion \"%(promotion)s\" 'with "
@@ -105,6 +120,11 @@ msgstr ""
 "\"%(exception)s\"."
 
 msgctxt "model:ir.rule.group,name:rule_group_promotion_companies"
+msgid "User in companies"
+msgstr "Utilizator în Companii"
+
+#, fuzzy
+msgctxt "model:ir.rule.group,name:rule_group_reporting_promotion_companies"
 msgid "User in companies"
 msgstr "Utilizator în Companii"
 
@@ -123,3 +143,8 @@ msgstr "Promoție de vânzare - Categorie de produse"
 msgctxt "model:sale.promotion-product.product,name:"
 msgid "Sale Promotion - Product"
 msgstr "Promoție de vânzare - Produs"
+
+#, fuzzy
+msgctxt "model:sale.reporting.promotion,name:"
+msgid "Sale Reporting per Promotion"
+msgstr "Promoție de vânzare"

@@ -231,6 +231,7 @@ msgctxt "model:ir.action.act_window.domain,name:act_work_list_domain_open"
 msgid "Open"
 msgstr ""
 
+#, python-format
 msgctxt "model:ir.message,text:msg_line_duration_positive"
 msgid "The duration of line \"%(line)s\" must be positive."
 msgstr "持续时间明细 \"%(line)s\" 必须为正."
@@ -239,6 +240,7 @@ msgctxt "model:ir.message,text:msg_line_uuid_unique"
 msgid "The UUID of timesheet line must be unique."
 msgstr "时间表的 UUID 不能重复."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_work_company_different_origin"
 msgid "The companies associated with work \"%(work)s\" and its origin differ."
 msgstr "工作\"%(work)s\"关联的公司与其来源关联的公司不一致."

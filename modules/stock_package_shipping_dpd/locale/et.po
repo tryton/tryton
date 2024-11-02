@@ -61,22 +61,30 @@ msgctxt "model:ir.action,name:act_dpd_credential_form"
 msgid "DPD Credentials"
 msgstr "DPD viide"
 
+msgctxt "model:ir.message,text:msg_dpd_credential_modified"
+msgid "Are you sure you want to modify DPD credentials?"
+msgstr ""
+
+#, python-format
 msgctxt "model:ir.message,text:msg_dpd_login_error"
 msgid "DPD login failed with credential \"%(credential)s\"."
 msgstr ""
 
+#, python-format
 msgctxt "model:ir.message,text:msg_dpd_webservice_error"
 msgid ""
 "DPD webservice call failed with the following error message:\n"
 "%(message)s"
 msgstr ""
 
+#, python-format
 msgctxt "model:ir.message,text:msg_shipment_has_shipping_reference_number"
 msgid ""
 "You cannot create shipping for shipment \"%(shipment)s\" because it has "
 "already a shipping reference number."
 msgstr ""
 
+#, python-format
 msgctxt "model:ir.message,text:msg_warehouse_address_required"
 msgid ""
 "To validate shipment \"%(shipment)s\" you must set an address on the "
@@ -88,7 +96,7 @@ msgid "DPD Credentials"
 msgstr "DPD viide"
 
 msgctxt "selection:carrier,dpd_notification:"
-msgid "E-Mail"
+msgid "Email"
 msgstr ""
 
 msgctxt "selection:carrier,dpd_notification:"

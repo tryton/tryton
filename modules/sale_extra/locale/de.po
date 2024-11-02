@@ -24,7 +24,7 @@ msgstr "Name"
 
 msgctxt "field:sale.extra,price_list:"
 msgid "Price List"
-msgstr "Preisliste"
+msgstr "Preiskonditionsschema"
 
 msgctxt "field:sale.extra,sale_amount:"
 msgid "Sale Amount"

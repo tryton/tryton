@@ -92,7 +92,7 @@ msgstr "Société"
 
 msgctxt "field:timesheet.work,duration:"
 msgid "Timesheet Duration"
-msgstr "Durée de feuille de présence"
+msgstr "Durée de relevé de temps"
 
 msgctxt "field:timesheet.work,name:"
 msgid "Name"
@@ -104,15 +104,15 @@ msgstr "Origine"
 
 msgctxt "field:timesheet.work,timesheet_end_date:"
 msgid "Timesheet End"
-msgstr "Fin de feuille de présence"
+msgstr "Fin de relevé de temps"
 
 msgctxt "field:timesheet.work,timesheet_lines:"
 msgid "Timesheet Lines"
-msgstr "Lignes de feuille de présence"
+msgstr "Lignes de relevé de temps"
 
 msgctxt "field:timesheet.work,timesheet_start_date:"
 msgid "Timesheet Start"
-msgstr "Début de feuille de présence"
+msgstr "Début de relevé de temps"
 
 msgctxt "field:timesheet.work,work:"
 msgid "Work"
@@ -204,7 +204,7 @@ msgstr "Heures par employé par semaine"
 
 msgctxt "model:ir.action,name:act_line_enter"
 msgid "Enter Timesheet"
-msgstr "Entrer une feuille de présence"
+msgstr "Entrer un relevé de temps"
 
 msgctxt "model:ir.action,name:act_line_form"
 msgid "Lines"
@@ -212,7 +212,7 @@ msgstr "Lignes"
 
 msgctxt "model:ir.action,name:act_line_form_work"
 msgid "Timesheet Lines"
-msgstr "Lignes de feuille de présence"
+msgstr "Lignes de relevé de temps"
 
 msgctxt "model:ir.action,name:act_work_list"
 msgid "Works"
@@ -230,14 +230,16 @@ msgctxt "model:ir.action.act_window.domain,name:act_work_list_domain_open"
 msgid "Open"
 msgstr "Ouverts"
 
+#, python-format
 msgctxt "model:ir.message,text:msg_line_duration_positive"
 msgid "The duration of line \"%(line)s\" must be positive."
 msgstr "La durée de la ligne « %(line)s » doit être positive."
 
 msgctxt "model:ir.message,text:msg_line_uuid_unique"
 msgid "The UUID of timesheet line must be unique."
-msgstr "L'UUID des lignes de feuille de présence doit être unique."
+msgstr "L'UUID des lignes de relevé de temps doit être unique."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_work_company_different_origin"
 msgid "The companies associated with work \"%(work)s\" and its origin differ."
 msgstr ""
@@ -287,11 +289,11 @@ msgstr "Heures d'employés supervisés"
 
 msgctxt "model:ir.rule.group,name:rule_group_line"
 msgid "Own timesheet line"
-msgstr "Ligne de feuille de présence propre"
+msgstr "Ligne de relevé de temps propre"
 
 msgctxt "model:ir.rule.group,name:rule_group_line_admin"
 msgid "Any timesheet line"
-msgstr "N'importe quelle ligne de feuille de présence"
+msgstr "N'importe quelle ligne de relevé de temps"
 
 msgctxt "model:ir.rule.group,name:rule_group_line_companies"
 msgid "User in companies"
@@ -319,7 +321,7 @@ msgstr "Heures par employé par semaine"
 
 msgctxt "model:ir.ui.menu,name:menu_line_enter"
 msgid "Enter Timesheet"
-msgstr "Entrer un feuille de présence"
+msgstr "Entrer un relevé de temps"
 
 msgctxt "model:ir.ui.menu,name:menu_line_form"
 msgid "Lines"
@@ -331,7 +333,7 @@ msgstr "Rapports"
 
 msgctxt "model:ir.ui.menu,name:menu_timesheet"
 msgid "Timesheet"
-msgstr "Feuilles de présence"
+msgstr "Relevés de temps"
 
 msgctxt "model:ir.ui.menu,name:menu_work_list"
 msgid "Works"
@@ -343,7 +345,7 @@ msgstr "Travaux"
 
 msgctxt "model:res.group,name:group_timesheet_admin"
 msgid "Timesheet Administration"
-msgstr "Administration des feuilles de présence"
+msgstr "Administration des relevés de temps"
 
 msgctxt "model:timesheet.hours_employee,name:"
 msgid "Hours per Employee"
@@ -363,7 +365,7 @@ msgstr "Nombre d'heures par employé par semaine"
 
 msgctxt "model:timesheet.line,name:"
 msgid "Timesheet Line"
-msgstr "Ligne de feuille de présence"
+msgstr "Ligne de relevé de temps"
 
 msgctxt "model:timesheet.line.enter.start,name:"
 msgid "Enter Lines"
@@ -379,7 +381,7 @@ msgstr "Travail contexte"
 
 msgctxt "selection:res.user.application,application:"
 msgid "Timesheet"
-msgstr "Feuilles de présence"
+msgstr "Relevés de temps"
 
 msgctxt "wizard_button:timesheet.line.enter,start,end:"
 msgid "Cancel"

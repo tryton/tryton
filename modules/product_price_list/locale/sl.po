@@ -111,6 +111,12 @@ msgctxt "model:ir.action,name:act_price_list_form"
 msgid "Price Lists"
 msgstr "Ceniki"
 
+#, fuzzy
+msgctxt "model:ir.action,name:act_price_list_line_form"
+msgid "Price List Lines"
+msgstr "Postavke cenika"
+
+#, python-format
 msgctxt "model:ir.message,text:msg_invalid_formula"
 msgid ""
 "Invalid formula \"%(formula)s\" in price list line \"%(line)s\" with "
@@ -118,6 +124,11 @@ msgid ""
 msgstr ""
 "Neveljavna formula \"%(formula)s\" v postavki cenika \"%(line)s\" z napako "
 "\"%(exception)s\"."
+
+#, fuzzy
+msgctxt "model:ir.model.button,string:price_list_open_lines_button"
+msgid "Open Lines"
+msgstr "Postavke"
 
 msgctxt "model:ir.rule.group,name:rule_group_price_list_companies"
 msgid "User in companies"
@@ -133,6 +144,11 @@ msgstr "Cenik"
 
 msgctxt "model:product.price_list.line,name:"
 msgid "Price List Line"
+msgstr "Postavka cenika"
+
+#, fuzzy
+msgctxt "model:product.price_list.line.context,name:"
+msgid "Price List Line Context"
 msgstr "Postavka cenika"
 
 msgctxt "selection:product.price_list,price:"

@@ -103,6 +103,11 @@ msgid "State"
 msgstr "Állapot"
 
 #, fuzzy
+msgctxt "field:sale.opportunity.line,company:"
+msgid "Company"
+msgstr "Társaság"
+
+#, fuzzy
 msgctxt "field:sale.opportunity.line,description:"
 msgid "Description"
 msgstr "Leírás"
@@ -265,10 +270,12 @@ msgctxt ""
 msgid "Won"
 msgstr "von"
 
+#, python-format
 msgctxt "model:ir.message,text:msg_modify_origin_opportunity"
 msgid "You cannot modify the opportunity origin of the sale \"%(sale)s\"."
 msgstr ""
 
+#, python-format
 msgctxt "model:ir.message,text:msg_opportunity_delete_cancel"
 msgid "To delete opportunity \"%(opportunity)s\", you must cancel it."
 msgstr ""

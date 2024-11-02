@@ -324,7 +324,7 @@ msgstr "Użytkownicy"
 
 msgctxt "model:ir.action,name:report_email_reset_password"
 msgid "Reset Password"
-msgstr "Reset Password"
+msgstr "Zresetuj hasło"
 
 msgctxt "model:ir.action-res.group,name:"
 msgid "Action - Group"
@@ -338,6 +338,7 @@ msgctxt "model:ir.export-write-res.group,name:"
 msgid "Export Modification Group"
 msgstr "Grupa zezwalająca na modyfikowanie eksportu"
 
+#, python-format
 msgctxt "model:ir.message,text:msg_email_invalid"
 msgid "The email address \"%(email)s\" for \"%(user)s\" is not valid."
 msgstr "Adres e-mail \"%(email)s\" użytkownika \"%(user)s\" jest niepoprawny."
@@ -350,6 +351,7 @@ msgctxt "model:ir.message,text:msg_password_forbidden"
 msgid "The password is forbidden."
 msgstr "Takie hasło jest niedozwolone."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_password_length"
 msgid "The password must have at least %(length)i characters."
 msgstr "Hasło musi zawierać przynajmniej %(length)i znaków."
@@ -370,6 +372,7 @@ msgstr ""
 "Z powodu zapisów w dziennikach użytkownicy nie mogą zostać usunięci. W "
 "zamian należy ich zdezaktywować."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_user_password"
 msgid "Password for %(login)s"
 msgstr "Hasło użytkownika: %(login)s"
@@ -388,7 +391,7 @@ msgstr "Wykonaj walidację"
 
 msgctxt "model:ir.model.button,string:user_reset_password_button"
 msgid "Reset Password"
-msgstr "Reset Password"
+msgstr "Reset hasła"
 
 msgctxt "model:ir.model.button-res.group,name:"
 msgid "Model Button - Group"
@@ -486,6 +489,7 @@ msgctxt "model:res.user.warning,name:"
 msgid "User Warning"
 msgstr "Ostrzeżenie użytkownika"
 
+#, python-format
 msgctxt "report:res.user.email_reset_password:"
 msgid ""
 "Hello,\n"
@@ -510,6 +514,7 @@ msgctxt "report:res.user.email_reset_password:"
 msgid "Reset Password"
 msgstr "Zresetuj hasło"
 
+#, python-format
 msgctxt "report:res.user.email_reset_password:"
 msgid "The password will expire in [1:%(datetime)s]."
 msgstr "Hasło wygaśnie za [1:%(datetime)s]."

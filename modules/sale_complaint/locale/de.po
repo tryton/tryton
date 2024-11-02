@@ -258,17 +258,24 @@ msgctxt ""
 msgid "Waiting"
 msgstr "Wartend"
 
+#, python-format
 msgctxt "model:ir.message,text:msg_action_delete_result"
 msgid "You cannot delete action \"%(action)s\" because it has a result."
 msgstr ""
 "Aktion \"%(action)s\" kann nicht gelöscht werden, da bereits ein Ergebnis "
 "vorliegt."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_complaint_delete_draft"
 msgid "To delete complaint \"%(complaint)s\" you must reset it to draft state."
 msgstr ""
 "Damit die Reklamation \"%(complaint)s\" gelöscht werden kann, muss sie "
 "zuerst in den Entwurfsstatus zurückgesetzt werden."
+
+#, python-format
+msgctxt "model:ir.message,text:msg_complaint_similar"
+msgid "The complaint \"%(complaint)s\" is similar to complaint \"%(similar)s\"."
+msgstr "Die Reklamation \"%(complaint)s\" ähnelt der Reklamation \"%(similar)s\"."
 
 msgctxt "model:ir.model.button,string:complaint_approve_button"
 msgid "Approve"

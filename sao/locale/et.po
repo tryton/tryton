@@ -27,14 +27,11 @@ msgstr "Serverit ei leita."
 msgid "Connection error"
 msgstr "Looja"
 
-msgid "Favorites"
-msgstr "Lemmikud"
-
-msgid "Manage..."
-msgstr "Halda..."
-
 msgid "Logout"
 msgstr "Logi välja"
+
+msgid "Favorites"
+msgstr "Lemmikud"
 
 msgid "Action"
 msgstr "Toiming"
@@ -81,7 +78,7 @@ msgstr "Seosta"
 msgid "Print"
 msgstr "Prindi"
 
-msgid "E-Mail"
+msgid "Email"
 msgstr ""
 
 msgid "Previous tab"
@@ -143,6 +140,9 @@ msgid "Not found."
 msgstr ""
 
 msgid "Send you an email to reset your password."
+msgstr ""
+
+msgid "Reset forgotten password"
 msgstr ""
 
 msgid ""
@@ -325,11 +325,11 @@ msgstr "Lisa manus"
 msgid "Add a note to the record"
 msgstr "Lisa märkus"
 
-msgid "E-Mail..."
+msgid "Email..."
 msgstr ""
 
 #, fuzzy
-msgid "Send an e-mail using the record"
+msgid "Send an email using the record"
 msgstr "Lisa märkus"
 
 msgid "Export"
@@ -388,6 +388,9 @@ msgstr "Lisa..."
 #, fuzzy
 msgid "Preview"
 msgstr "Eelmine"
+
+msgid "Manage..."
+msgstr "Halda..."
 
 #, fuzzy
 msgid "Template"
@@ -515,6 +518,9 @@ msgstr "Ava"
 
 msgid "Undelete"
 msgstr "Taasta"
+
+msgid "Restore"
+msgstr ""
 
 msgid "Save As"
 msgstr "Salvesta nimega"
@@ -752,7 +758,7 @@ msgid_plural "%1 records saved"
 msgstr[0] "Kirje salvestatud."
 msgstr[1] "Kirje salvestatud."
 
-msgid "E-mail %1"
+msgid "Email %1"
 msgstr ""
 
 #, fuzzy

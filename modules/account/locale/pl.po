@@ -39,10 +39,9 @@ msgctxt "field:account.account,credit:"
 msgid "Credit"
 msgstr "Ma"
 
-#, fuzzy
 msgctxt "field:account.account,credit_type:"
 msgid "Credit Type"
-msgstr "Typ strony Wn"
+msgstr "Typ strony Ma"
 
 msgctxt "field:account.account,currency:"
 msgid "Currency"
@@ -78,7 +77,7 @@ msgstr "W lewo"
 
 msgctxt "field:account.account,line_count:"
 msgid "Line Count"
-msgstr ""
+msgstr "Liczba pozycji"
 
 msgctxt "field:account.account,name:"
 msgid "Name"
@@ -108,7 +107,6 @@ msgctxt "field:account.account,right:"
 msgid "Right"
 msgstr "W prawo"
 
-#, fuzzy
 msgctxt "field:account.account,second_currency:"
 msgid "Second Currency"
 msgstr "Druga waluta"
@@ -141,17 +139,14 @@ msgctxt "field:account.account-account.tax,tax:"
 msgid "Tax"
 msgstr "Podatek"
 
-#, fuzzy
 msgctxt "field:account.account.context,company:"
 msgid "Company"
 msgstr "Firma"
 
-#, fuzzy
 msgctxt "field:account.account.context,fiscalyear:"
 msgid "Fiscal Year"
 msgstr "Rok podatkowy"
 
-#, fuzzy
 msgctxt "field:account.account.context,posted:"
 msgid "Posted Moves"
 msgstr "Zaksięgowane dowody"
@@ -186,13 +181,12 @@ msgstr "Rok podatkowy"
 
 msgctxt "field:account.account.deferral,line_count:"
 msgid "Line Count"
-msgstr ""
+msgstr "Liczba pozycji"
 
 msgctxt "field:account.account.deferral,second_currency:"
 msgid "Second Currency"
 msgstr "Druga waluta"
 
-#, fuzzy
 msgctxt "field:account.account.party,account:"
 msgid "Account"
 msgstr "Konto"
@@ -207,7 +201,6 @@ msgctxt "field:account.account.party,amount_second_currency:"
 msgid "Amount Second Currency"
 msgstr "Wartość w drugiej walucie"
 
-#, fuzzy
 msgctxt "field:account.account.party,balance:"
 msgid "Balance"
 msgstr "Bilans"
@@ -222,27 +215,22 @@ msgctxt "field:account.account.party,code:"
 msgid "Code"
 msgstr "Kod"
 
-#, fuzzy
 msgctxt "field:account.account.party,company:"
 msgid "Company"
 msgstr "Firma"
 
-#, fuzzy
 msgctxt "field:account.account.party,credit:"
 msgid "Credit"
 msgstr "Ma"
 
-#, fuzzy
 msgctxt "field:account.account.party,credit_type:"
 msgid "Credit Type"
-msgstr "Typ strony Wn"
+msgstr "Typ strony Ma"
 
-#, fuzzy
 msgctxt "field:account.account.party,currency:"
 msgid "Currency"
 msgstr "Waluta"
 
-#, fuzzy
 msgctxt "field:account.account.party,debit:"
 msgid "Debit"
 msgstr "Wn"
@@ -252,21 +240,19 @@ msgctxt "field:account.account.party,debit_type:"
 msgid "Debit Type"
 msgstr "Typ strony Wn"
 
-#, fuzzy
 msgctxt "field:account.account.party,end_date:"
 msgid "End Date"
 msgstr "Data ukończenia"
 
 msgctxt "field:account.account.party,line_count:"
 msgid "Line Count"
-msgstr ""
+msgstr "Liczba pozycji"
 
 #, fuzzy
 msgctxt "field:account.account.party,name:"
 msgid "Name"
 msgstr "Nazwa"
 
-#, fuzzy
 msgctxt "field:account.account.party,party:"
 msgid "Party"
 msgstr "Strona"
@@ -276,7 +262,6 @@ msgctxt "field:account.account.party,second_currency:"
 msgid "Secondary Currency"
 msgstr "Druga waluta"
 
-#, fuzzy
 msgctxt "field:account.account.party,start_date:"
 msgid "Start Date"
 msgstr "Data rozpoczęcia"
@@ -298,10 +283,9 @@ msgctxt "field:account.account.template,code:"
 msgid "Code"
 msgstr "Kod"
 
-#, fuzzy
 msgctxt "field:account.account.template,credit_type:"
 msgid "Credit Type"
-msgstr "Typ strony Wn"
+msgstr "Typ strony Ma"
 
 msgctxt "field:account.account.template,debit_type:"
 msgid "Debit Type"
@@ -339,14 +323,13 @@ msgctxt "field:account.account.template,replaced_by:"
 msgid "Replaced By"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:account.account.template,start_date:"
 msgid "Start Date"
 msgstr "Data rozpoczęcia"
 
 msgctxt "field:account.account.template,taxes:"
 msgid "Default Taxes"
-msgstr ""
+msgstr "Podatki domyślne"
 
 msgctxt "field:account.account.template,type:"
 msgid "Type"
@@ -363,15 +346,15 @@ msgstr "Taxes Templates"
 
 msgctxt "field:account.account.type,amount:"
 msgid "Amount"
-msgstr "Ilość"
+msgstr "Kwota"
 
 msgctxt "field:account.account.type,amount_cmp:"
 msgid "Amount"
-msgstr "Ilość"
+msgstr "Kwota"
 
 msgctxt "field:account.account.type,assets:"
 msgid "Assets"
-msgstr ""
+msgstr "Aktywa"
 
 msgctxt "field:account.account.type,childs:"
 msgid "Children"
@@ -381,19 +364,17 @@ msgctxt "field:account.account.type,company:"
 msgid "Company"
 msgstr "Firma"
 
-#, fuzzy
 msgctxt "field:account.account.type,currency:"
 msgid "Currency"
 msgstr "Waluta"
 
 msgctxt "field:account.account.type,debt:"
 msgid "Debt"
-msgstr ""
+msgstr "Dług"
 
-#, fuzzy
 msgctxt "field:account.account.type,expense:"
 msgid "Expense"
-msgstr "Expense"
+msgstr "Koszt"
 
 msgctxt "field:account.account.type,name:"
 msgid "Name"
@@ -403,29 +384,25 @@ msgctxt "field:account.account.type,parent:"
 msgid "Parent"
 msgstr "Konto nadrzędne"
 
-#, fuzzy
 msgctxt "field:account.account.type,payable:"
 msgid "Payable"
 msgstr "Zobowiązania"
 
-#, fuzzy
 msgctxt "field:account.account.type,receivable:"
 msgid "Receivable"
 msgstr "Należności"
 
-#, fuzzy
 msgctxt "field:account.account.type,revenue:"
 msgid "Revenue"
-msgstr "Revenue"
+msgstr "Przychód"
 
 msgctxt "field:account.account.type,statement:"
 msgid "Statement"
-msgstr ""
+msgstr "Zestawienie"
 
-#, fuzzy
 msgctxt "field:account.account.type,stock:"
 msgid "Stock"
-msgstr "Stock"
+msgstr "Magazyn"
 
 msgctxt "field:account.account.type,template:"
 msgid "Template"
@@ -433,11 +410,11 @@ msgstr "Szablon"
 
 msgctxt "field:account.account.type,template_override:"
 msgid "Override Template"
-msgstr ""
+msgstr "Zastąp szablon"
 
 msgctxt "field:account.account.type.template,assets:"
 msgid "Assets"
-msgstr ""
+msgstr "Aktywa"
 
 msgctxt "field:account.account.type.template,childs:"
 msgid "Children"
@@ -445,12 +422,11 @@ msgstr "Konta podrzędne"
 
 msgctxt "field:account.account.type.template,debt:"
 msgid "Debt"
-msgstr ""
+msgstr "Dług"
 
-#, fuzzy
 msgctxt "field:account.account.type.template,expense:"
 msgid "Expense"
-msgstr "Expense"
+msgstr "Koszt"
 
 msgctxt "field:account.account.type.template,name:"
 msgid "Name"
@@ -460,29 +436,25 @@ msgctxt "field:account.account.type.template,parent:"
 msgid "Parent"
 msgstr "Konto nadrzędne"
 
-#, fuzzy
 msgctxt "field:account.account.type.template,payable:"
 msgid "Payable"
 msgstr "Zobowiązania"
 
-#, fuzzy
 msgctxt "field:account.account.type.template,receivable:"
 msgid "Receivable"
 msgstr "Należności"
 
-#, fuzzy
 msgctxt "field:account.account.type.template,revenue:"
 msgid "Revenue"
-msgstr "Revenue"
+msgstr "Przychód"
 
 msgctxt "field:account.account.type.template,statement:"
 msgid "Statement"
-msgstr ""
+msgstr "Zestawienie"
 
-#, fuzzy
 msgctxt "field:account.account.type.template,stock:"
 msgid "Stock"
-msgstr "Stock"
+msgstr "Magazyn"
 
 msgctxt "field:account.aged_balance,balance:"
 msgid "Balance"
@@ -492,7 +464,6 @@ msgctxt "field:account.aged_balance,company:"
 msgid "Company"
 msgstr "Firma"
 
-#, fuzzy
 msgctxt "field:account.aged_balance,currency:"
 msgid "Currency"
 msgstr "Waluta"
@@ -549,12 +520,10 @@ msgctxt "field:account.aged_balance.context,unit:"
 msgid "Unit"
 msgstr "Jednostka"
 
-#, fuzzy
 msgctxt "field:account.balance_sheet.comparison.context,company:"
 msgid "Company"
 msgstr "Firma"
 
-#, fuzzy
 msgctxt "field:account.balance_sheet.comparison.context,comparison:"
 msgid "Comparison"
 msgstr "Porównanie"
@@ -569,7 +538,6 @@ msgctxt "field:account.balance_sheet.comparison.context,date_cmp:"
 msgid "Date"
 msgstr "Data"
 
-#, fuzzy
 msgctxt "field:account.balance_sheet.comparison.context,posted:"
 msgid "Posted Moves"
 msgstr "Zaksięgowane dowody"
@@ -582,7 +550,6 @@ msgctxt "field:account.balance_sheet.context,date:"
 msgid "Date"
 msgstr "Data"
 
-#, fuzzy
 msgctxt "field:account.balance_sheet.context,posted:"
 msgid "Posted Moves"
 msgstr "Zaksięgowane dowody"
@@ -610,20 +577,19 @@ msgstr "Domyślne konto należności"
 
 msgctxt "field:account.configuration,default_customer_tax_rule:"
 msgid "Default Customer Tax Rule"
-msgstr ""
+msgstr "Domyślna reguła podatkowa klienta"
 
 msgctxt "field:account.configuration,default_supplier_tax_rule:"
 msgid "Default Supplier Tax Rule"
-msgstr ""
+msgstr "Domyślna reguła podatkowa dostawcy"
 
-#, fuzzy
 msgctxt "field:account.configuration,reconciliation_sequence:"
 msgid "Reconciliation Sequence"
-msgstr "Reconciliation Lines"
+msgstr "Sekwencja uzgodnienia"
 
 msgctxt "field:account.configuration,tax_rounding:"
 msgid "Tax Rounding"
-msgstr ""
+msgstr "Zaokrąglanie podatku"
 
 msgctxt "field:account.configuration.default_account,company:"
 msgid "Company"
@@ -649,7 +615,6 @@ msgctxt ""
 msgid "Default Account Receivable"
 msgstr "Domyślne konto należności"
 
-#, fuzzy
 msgctxt "field:account.configuration.default_tax_rule,company:"
 msgid "Company"
 msgstr "Firma"
@@ -657,14 +622,13 @@ msgstr "Firma"
 msgctxt ""
 "field:account.configuration.default_tax_rule,default_customer_tax_rule:"
 msgid "Default Customer Tax Rule"
-msgstr ""
+msgstr "Domyślna reguła podatkowa klienta"
 
 msgctxt ""
 "field:account.configuration.default_tax_rule,default_supplier_tax_rule:"
 msgid "Default Supplier Tax Rule"
-msgstr ""
+msgstr "Domyślna reguła podatkowa dostawcy"
 
-#, fuzzy
 msgctxt "field:account.configuration.journal,company:"
 msgid "Company"
 msgstr "Firma"
@@ -673,15 +637,13 @@ msgctxt "field:account.configuration.journal,currency_exchange_journal:"
 msgid "Currency Exchange Journal"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:account.configuration.sequence,company:"
 msgid "Company"
 msgstr "Firma"
 
-#, fuzzy
 msgctxt "field:account.configuration.sequence,reconciliation_sequence:"
 msgid "Reconciliation Sequence"
-msgstr "Reconciliation Lines"
+msgstr "Sekwencja uzgodnienia"
 
 msgctxt "field:account.configuration.tax_rounding,company:"
 msgid "Company"
@@ -765,7 +727,7 @@ msgstr "Rok podatkowy"
 
 msgctxt "field:account.fiscalyear.balance_non_deferral.start,journal:"
 msgid "Journal"
-msgstr "Rejestr"
+msgstr "Dziennik"
 
 msgctxt "field:account.fiscalyear.balance_non_deferral.start,period:"
 msgid "Period"
@@ -809,7 +771,6 @@ msgctxt "field:account.fiscalyear.renew.start,start_date:"
 msgid "Start Date"
 msgstr "Data rozpoczęcia"
 
-#, fuzzy
 msgctxt "field:account.general_ledger.account,account:"
 msgid "Account"
 msgstr "Konto"
@@ -826,12 +787,10 @@ msgctxt "field:account.general_ledger.account,credit:"
 msgid "Credit"
 msgstr "Ma"
 
-#, fuzzy
 msgctxt "field:account.general_ledger.account,credit_type:"
 msgid "Credit Type"
-msgstr "Typ strony Wn"
+msgstr "Typ strony Ma"
 
-#, fuzzy
 msgctxt "field:account.general_ledger.account,currency:"
 msgid "Currency"
 msgstr "Waluta"
@@ -853,7 +812,6 @@ msgctxt "field:account.general_ledger.account,end_credit:"
 msgid "End Credit"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:account.general_ledger.account,end_date:"
 msgid "End Date"
 msgstr "Data ukończenia"
@@ -869,7 +827,7 @@ msgstr "General Ledger - Lines"
 
 msgctxt "field:account.general_ledger.account,line_count:"
 msgid "Line Count"
-msgstr ""
+msgstr "Liczba pozycji"
 
 #, fuzzy
 msgctxt "field:account.general_ledger.account,lines:"
@@ -884,7 +842,6 @@ msgctxt "field:account.general_ledger.account,start_credit:"
 msgid "Start Credit"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:account.general_ledger.account,start_date:"
 msgid "Start Date"
 msgstr "Data rozpoczęcia"
@@ -904,37 +861,32 @@ msgstr "Firma"
 
 msgctxt "field:account.general_ledger.account.context,end_period:"
 msgid "End Period"
-msgstr ""
+msgstr "Okres końcowy"
 
 msgctxt "field:account.general_ledger.account.context,fiscalyear:"
 msgid "Fiscal Year"
 msgstr "Rok podatkowy"
 
-#, fuzzy
 msgctxt "field:account.general_ledger.account.context,from_date:"
 msgid "From Date"
 msgstr "Od dnia"
 
-#, fuzzy
 msgctxt "field:account.general_ledger.account.context,journal:"
 msgid "Journal"
-msgstr "Rejestr"
+msgstr "Dziennik"
 
-#, fuzzy
 msgctxt "field:account.general_ledger.account.context,posted:"
 msgid "Posted Moves"
 msgstr "Zaksięgowane dowody"
 
 msgctxt "field:account.general_ledger.account.context,start_period:"
 msgid "Start Period"
-msgstr ""
+msgstr "Okres początkowy"
 
-#, fuzzy
 msgctxt "field:account.general_ledger.account.context,to_date:"
 msgid "To Date"
 msgstr "Do dnia"
 
-#, fuzzy
 msgctxt "field:account.general_ledger.account.party,account:"
 msgid "Account"
 msgstr "Konto"
@@ -944,27 +896,22 @@ msgctxt "field:account.general_ledger.account.party,active:"
 msgid "Active"
 msgstr "Aktywne"
 
-#, fuzzy
 msgctxt "field:account.general_ledger.account.party,company:"
 msgid "Company"
 msgstr "Firma"
 
-#, fuzzy
 msgctxt "field:account.general_ledger.account.party,credit:"
 msgid "Credit"
 msgstr "Ma"
 
-#, fuzzy
 msgctxt "field:account.general_ledger.account.party,currency:"
 msgid "Currency"
 msgstr "Waluta"
 
-#, fuzzy
 msgctxt "field:account.general_ledger.account.party,debit:"
 msgid "Debit"
 msgstr "Wn"
 
-#, fuzzy
 msgctxt "field:account.general_ledger.account.party,end_balance:"
 msgid "End Balance"
 msgstr "Bilans zamknięcia"
@@ -974,7 +921,6 @@ msgctxt "field:account.general_ledger.account.party,end_credit:"
 msgid "End Credit"
 msgstr "Ma"
 
-#, fuzzy
 msgctxt "field:account.general_ledger.account.party,end_date:"
 msgid "End Date"
 msgstr "Data ukończenia"
@@ -986,14 +932,12 @@ msgstr "Wn"
 
 msgctxt "field:account.general_ledger.account.party,line_count:"
 msgid "Line Count"
-msgstr ""
+msgstr "Liczba pozycji"
 
-#, fuzzy
 msgctxt "field:account.general_ledger.account.party,party:"
 msgid "Party"
 msgstr "Strona"
 
-#, fuzzy
 msgctxt "field:account.general_ledger.account.party,start_balance:"
 msgid "Start Balance"
 msgstr "Bilans otwarcia"
@@ -1003,7 +947,6 @@ msgctxt "field:account.general_ledger.account.party,start_credit:"
 msgid "Start Credit"
 msgstr "Ma"
 
-#, fuzzy
 msgctxt "field:account.general_ledger.account.party,start_date:"
 msgid "Start Date"
 msgstr "Data rozpoczęcia"
@@ -1039,7 +982,6 @@ msgctxt "field:account.general_ledger.line,credit:"
 msgid "Credit"
 msgstr "Ma"
 
-#, fuzzy
 msgctxt "field:account.general_ledger.line,currency:"
 msgid "Currency"
 msgstr "Waluta"
@@ -1056,7 +998,6 @@ msgctxt "field:account.general_ledger.line,description:"
 msgid "Description"
 msgstr "Opis"
 
-#, fuzzy
 msgctxt "field:account.general_ledger.line,description_used:"
 msgid "Description"
 msgstr "Opis"
@@ -1092,7 +1033,6 @@ msgctxt "field:account.general_ledger.line,reconciliation:"
 msgid "Reconciliation"
 msgstr "Reconciliation Lines"
 
-#, fuzzy
 msgctxt "field:account.general_ledger.line,second_currency:"
 msgid "Second Currency"
 msgstr "Druga waluta"
@@ -1107,36 +1047,32 @@ msgstr "Firma"
 
 msgctxt "field:account.general_ledger.line.context,end_period:"
 msgid "End Period"
-msgstr ""
+msgstr "Okres końcowy"
 
 msgctxt "field:account.general_ledger.line.context,fiscalyear:"
 msgid "Fiscal Year"
 msgstr "Rok podatkowy"
 
-#, fuzzy
 msgctxt "field:account.general_ledger.line.context,from_date:"
 msgid "From Date"
 msgstr "Od dnia"
 
-#, fuzzy
 msgctxt "field:account.general_ledger.line.context,journal:"
 msgid "Journal"
-msgstr "Rejestr"
+msgstr "Dziennik"
 
 msgctxt "field:account.general_ledger.line.context,party_cumulate:"
 msgid "Cumulate per Party"
-msgstr ""
+msgstr "Kumuluj według strony"
 
-#, fuzzy
 msgctxt "field:account.general_ledger.line.context,posted:"
 msgid "Posted Moves"
 msgstr "Zaksięgowane dowody"
 
 msgctxt "field:account.general_ledger.line.context,start_period:"
 msgid "Start Period"
-msgstr ""
+msgstr "Okres początkowy"
 
-#, fuzzy
 msgctxt "field:account.general_ledger.line.context,to_date:"
 msgid "To Date"
 msgstr "Do dnia"
@@ -1145,18 +1081,17 @@ msgctxt "field:account.income_statement.context,company:"
 msgid "Company"
 msgstr "Firma"
 
-#, fuzzy
 msgctxt "field:account.income_statement.context,comparison:"
 msgid "Comparison"
 msgstr "Porównanie"
 
 msgctxt "field:account.income_statement.context,end_period:"
 msgid "End Period"
-msgstr ""
+msgstr "Okres końcowy"
 
 msgctxt "field:account.income_statement.context,end_period_cmp:"
 msgid "End Period"
-msgstr ""
+msgstr "Okres końcowy"
 
 msgctxt "field:account.income_statement.context,fiscalyear:"
 msgid "Fiscal Year"
@@ -1166,12 +1101,10 @@ msgctxt "field:account.income_statement.context,fiscalyear_cmp:"
 msgid "Fiscal Year"
 msgstr "Rok podatkowy"
 
-#, fuzzy
 msgctxt "field:account.income_statement.context,from_date:"
 msgid "From Date"
 msgstr "Od dnia"
 
-#, fuzzy
 msgctxt "field:account.income_statement.context,from_date_cmp:"
 msgid "From Date"
 msgstr "Od dnia"
@@ -1182,18 +1115,16 @@ msgstr "Zaksięgowany dowód"
 
 msgctxt "field:account.income_statement.context,start_period:"
 msgid "Start Period"
-msgstr ""
+msgstr "Okres początkowy"
 
 msgctxt "field:account.income_statement.context,start_period_cmp:"
 msgid "Start Period"
-msgstr ""
+msgstr "Okres początkowy"
 
-#, fuzzy
 msgctxt "field:account.income_statement.context,to_date:"
 msgid "To Date"
 msgstr "Do dnia"
 
-#, fuzzy
 msgctxt "field:account.income_statement.context,to_date_cmp:"
 msgid "To Date"
 msgstr "Do dnia"
@@ -1210,7 +1141,6 @@ msgctxt "field:account.journal,credit:"
 msgid "Credit"
 msgstr "Ma"
 
-#, fuzzy
 msgctxt "field:account.journal,currency:"
 msgid "Currency"
 msgstr "Waluta"
@@ -1219,10 +1149,9 @@ msgctxt "field:account.journal,debit:"
 msgid "Debit"
 msgstr "Wn"
 
-#, fuzzy
 msgctxt "field:account.journal,matching_sequence:"
 msgid "Matching Sequence"
-msgstr "Reconciliation Lines"
+msgstr "Sekwencja dopasowania"
 
 msgctxt "field:account.journal,name:"
 msgid "Name"
@@ -1248,7 +1177,6 @@ msgctxt "field:account.journal.open_cash.context,start_date:"
 msgid "Start Date"
 msgstr "Data rozpoczęcia"
 
-#, fuzzy
 msgctxt "field:account.journal.period,company:"
 msgid "Company"
 msgstr "Firma"
@@ -1259,7 +1187,7 @@ msgstr "Ikona"
 
 msgctxt "field:account.journal.period,journal:"
 msgid "Journal"
-msgstr "Rejestr"
+msgstr "Dziennik"
 
 msgctxt "field:account.journal.period,period:"
 msgid "Period"
@@ -1275,7 +1203,7 @@ msgstr "Firma"
 
 msgctxt "field:account.journal.sequence,journal:"
 msgid "Journal"
-msgstr "Rejestr"
+msgstr "Dziennik"
 
 msgctxt "field:account.journal.sequence,sequence:"
 msgid "Sequence"
@@ -1293,14 +1221,13 @@ msgctxt "field:account.move,description:"
 msgid "Description"
 msgstr "Opis"
 
-#, fuzzy
 msgctxt "field:account.move,description_used:"
 msgid "Description"
 msgstr "Opis"
 
 msgctxt "field:account.move,journal:"
 msgid "Journal"
-msgstr "Rejestr"
+msgstr "Dziennik"
 
 msgctxt "field:account.move,lines:"
 msgid "Lines"
@@ -1354,7 +1281,6 @@ msgctxt "field:account.move.line,amount_second_currency:"
 msgid "Amount Second Currency"
 msgstr "Wartość w drugiej walucie"
 
-#, fuzzy
 msgctxt "field:account.move.line,company:"
 msgid "Company"
 msgstr "Firma"
@@ -1363,7 +1289,6 @@ msgctxt "field:account.move.line,credit:"
 msgid "Credit"
 msgstr "Ma"
 
-#, fuzzy
 msgctxt "field:account.move.line,currency:"
 msgid "Currency"
 msgstr "Waluta"
@@ -1376,16 +1301,14 @@ msgctxt "field:account.move.line,debit:"
 msgid "Debit"
 msgstr "Wn"
 
-#, fuzzy
 msgctxt "field:account.move.line,delegated_amount:"
 msgid "Delegated Amount"
-msgstr "Konto Wn"
+msgstr "Wartość delegowana"
 
 msgctxt "field:account.move.line,description:"
 msgid "Description"
 msgstr "Opis"
 
-#, fuzzy
 msgctxt "field:account.move.line,description_used:"
 msgid "Description"
 msgstr "Opis"
@@ -1397,7 +1320,7 @@ msgstr "Termin zapadalności"
 
 msgctxt "field:account.move.line,journal:"
 msgid "Journal"
-msgstr "Rejestr"
+msgstr "Dziennik"
 
 msgctxt "field:account.move.line,maturity_date:"
 msgid "Maturity Date"
@@ -1414,7 +1337,7 @@ msgstr "Opis dowodu księgowego"
 
 msgctxt "field:account.move.line,move_origin:"
 msgid "Move Origin"
-msgstr ""
+msgstr "Źródło dowodu"
 
 msgctxt "field:account.move.line,move_state:"
 msgid "Move State"
@@ -1443,7 +1366,7 @@ msgstr "Okres"
 
 msgctxt "field:account.move.line,reconciliation:"
 msgid "Reconciliation"
-msgstr ""
+msgstr "Uzgodnienie"
 
 msgctxt "field:account.move.line,reconciliations_delegated:"
 msgid "Reconciliations Delegated"
@@ -1461,96 +1384,78 @@ msgctxt "field:account.move.line,state:"
 msgid "State"
 msgstr "Status"
 
-#, fuzzy
 msgctxt "field:account.move.line,tax_lines:"
 msgid "Tax Lines"
-msgstr "Tax Lines"
+msgstr "Pozycje podatku"
 
-#, fuzzy
 msgctxt "field:account.move.line.delegate.start,description:"
 msgid "Description"
 msgstr "Opis"
 
-#, fuzzy
 msgctxt "field:account.move.line.delegate.start,journal:"
 msgid "Journal"
-msgstr "Rejestr"
+msgstr "Dziennik"
 
-#, fuzzy
 msgctxt "field:account.move.line.delegate.start,party:"
 msgid "Party"
 msgstr "Strona"
 
-#, fuzzy
 msgctxt "field:account.move.line.group.start,description:"
 msgid "Description"
 msgstr "Opis"
 
-#, fuzzy
 msgctxt "field:account.move.line.group.start,journal:"
 msgid "Journal"
-msgstr "Rejestr"
+msgstr "Dziennik"
 
-#, fuzzy
 msgctxt "field:account.move.line.receivable_payable.context,payable:"
 msgid "Payable"
 msgstr "Zobowiązania"
 
-#, fuzzy
 msgctxt "field:account.move.line.receivable_payable.context,receivable:"
 msgid "Receivable"
 msgstr "Należności"
 
-#, fuzzy
 msgctxt "field:account.move.line.receivable_payable.context,reconciled:"
 msgid "Reconciled"
-msgstr "Uzgodnienie"
+msgstr "Uzgodnione"
 
-#, fuzzy
 msgctxt "field:account.move.line.reschedule.preview,currency:"
 msgid "Currency"
 msgstr "Waluta"
 
-#, fuzzy
 msgctxt "field:account.move.line.reschedule.preview,description:"
 msgid "Description"
 msgstr "Opis"
 
-#, fuzzy
 msgctxt "field:account.move.line.reschedule.preview,journal:"
 msgid "Journal"
-msgstr "Rejestr"
+msgstr "Dziennik"
 
-#, fuzzy
 msgctxt "field:account.move.line.reschedule.preview,terms:"
 msgid "Terms"
 msgstr "Terminy"
 
-#, fuzzy
 msgctxt "field:account.move.line.reschedule.start,amount:"
 msgid "Amount"
-msgstr "Ilość"
+msgstr "Kwota"
 
-#, fuzzy
 msgctxt "field:account.move.line.reschedule.start,currency:"
 msgid "Currency"
 msgstr "Waluta"
 
-#, fuzzy
 msgctxt "field:account.move.line.reschedule.start,frequency:"
 msgid "Frequency"
-msgstr "Sekwencja"
+msgstr "Częstotliwość"
 
 msgctxt "field:account.move.line.reschedule.start,interval:"
 msgid "Interval"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:account.move.line.reschedule.start,number:"
 msgid "Number"
-msgstr "Numer dowodu"
+msgstr "Liczba"
 
-#, fuzzy
 msgctxt "field:account.move.line.reschedule.start,start_date:"
 msgid "Start Date"
 msgstr "Data rozpoczęcia"
@@ -1560,17 +1465,14 @@ msgctxt "field:account.move.line.reschedule.start,total_amount:"
 msgid "Total Amount"
 msgstr "Ilość"
 
-#, fuzzy
 msgctxt "field:account.move.line.reschedule.term,amount:"
 msgid "Amount"
-msgstr "Ilość"
+msgstr "Kwota"
 
-#, fuzzy
 msgctxt "field:account.move.line.reschedule.term,currency:"
 msgid "Currency"
 msgstr "Waluta"
 
-#, fuzzy
 msgctxt "field:account.move.line.reschedule.term,date:"
 msgid "Date"
 msgstr "Data"
@@ -1609,31 +1511,27 @@ msgstr "Podatki"
 
 msgctxt "field:account.move.open_journal.ask,journal:"
 msgid "Journal"
-msgstr "Rejestr"
+msgstr "Dziennik"
 
 msgctxt "field:account.move.open_journal.ask,period:"
 msgid "Period"
 msgstr "Okres"
 
-#, fuzzy
 msgctxt "field:account.move.reconcile.write_off,company:"
 msgid "Company"
 msgstr "Firma"
 
-#, fuzzy
 msgctxt "field:account.move.reconcile.write_off,credit_account:"
 msgid "Credit Account"
 msgstr "Konto Ma"
 
-#, fuzzy
 msgctxt "field:account.move.reconcile.write_off,debit_account:"
 msgid "Debit Account"
 msgstr "Konto Wn"
 
-#, fuzzy
 msgctxt "field:account.move.reconcile.write_off,journal:"
 msgid "Journal"
-msgstr "Rejestr"
+msgstr "Dziennik"
 
 #, fuzzy
 msgctxt "field:account.move.reconcile.write_off,name:"
@@ -1644,12 +1542,10 @@ msgctxt "field:account.move.reconcile_lines.writeoff,amount:"
 msgid "Amount"
 msgstr "Wartość"
 
-#, fuzzy
 msgctxt "field:account.move.reconcile_lines.writeoff,company:"
 msgid "Company"
 msgstr "Firma"
 
-#, fuzzy
 msgctxt "field:account.move.reconcile_lines.writeoff,currency:"
 msgid "Currency"
 msgstr "Waluta"
@@ -1667,7 +1563,6 @@ msgctxt "field:account.move.reconcile_lines.writeoff,writeoff:"
 msgid "Write Off"
 msgstr "Write-Off"
 
-#, fuzzy
 msgctxt "field:account.move.reconciliation,company:"
 msgid "Company"
 msgstr "Firma"
@@ -1700,7 +1595,7 @@ msgstr "Opis"
 
 msgctxt "field:account.move.template,journal:"
 msgid "Journal"
-msgstr "Rejestr"
+msgstr "Dziennik"
 
 msgctxt "field:account.move.template,keywords:"
 msgid "Keywords"
@@ -1714,7 +1609,6 @@ msgctxt "field:account.move.template,name:"
 msgid "Name"
 msgstr "Nazwa"
 
-#, fuzzy
 msgctxt "field:account.move.template.create.template,date:"
 msgid "Effective Date"
 msgstr "Data dowodu"
@@ -1795,7 +1689,6 @@ msgctxt "field:account.reconcile.show,accounts:"
 msgid "Account"
 msgstr "Konto"
 
-#, fuzzy
 msgctxt "field:account.reconcile.show,company:"
 msgid "Company"
 msgstr "Firma"
@@ -1805,7 +1698,6 @@ msgctxt "field:account.reconcile.show,currencies:"
 msgid "Currencies"
 msgstr "Waluta"
 
-#, fuzzy
 msgctxt "field:account.reconcile.show,currency:"
 msgid "Currency"
 msgstr "Waluta"
@@ -1843,12 +1735,11 @@ msgstr "Ilość"
 
 msgctxt "field:account.reconcile.start,automatic:"
 msgid "Automatic"
-msgstr ""
+msgstr "Automatycznie"
 
-#, fuzzy
 msgctxt "field:account.reconcile.start,only_balanced:"
 msgid "Only Balanced"
-msgstr "Bilans zamknięcia"
+msgstr "Tylko zbilansowane"
 
 msgctxt "field:account.tax,amount:"
 msgid "Amount"
@@ -1874,7 +1765,6 @@ msgctxt "field:account.tax,credit_tax_amount:"
 msgid "Credit Tax Amount"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:account.tax,currency:"
 msgid "Currency"
 msgstr "Waluta"
@@ -1893,7 +1783,7 @@ msgstr "Grupa"
 
 msgctxt "field:account.tax,invoice_account:"
 msgid "Invoice Account"
-msgstr ""
+msgstr "Konto faktury"
 
 msgctxt "field:account.tax,invoice_base_amount:"
 msgid "Invoice Base Amount"
@@ -1905,7 +1795,7 @@ msgstr ""
 
 msgctxt "field:account.tax,legal_notice:"
 msgid "Legal Notice"
-msgstr ""
+msgstr "Nota prawna"
 
 msgctxt "field:account.tax,name:"
 msgid "Name"
@@ -1915,10 +1805,9 @@ msgctxt "field:account.tax,parent:"
 msgid "Parent"
 msgstr "Konto nadrzędne"
 
-#, fuzzy
 msgctxt "field:account.tax,rate:"
 msgid "Rate"
-msgstr "Data"
+msgstr "Stawka"
 
 msgctxt "field:account.tax,start_date:"
 msgid "Starting Date"
@@ -1930,7 +1819,7 @@ msgstr "Szablon"
 
 msgctxt "field:account.tax,template_override:"
 msgid "Override Template"
-msgstr ""
+msgstr "Zastąp szablon"
 
 msgctxt "field:account.tax,type:"
 msgid "Type"
@@ -1938,7 +1827,7 @@ msgstr "Typ"
 
 msgctxt "field:account.tax,update_unit_price:"
 msgid "Update Unit Price"
-msgstr ""
+msgstr "Aktualizuj cenę jednostkową"
 
 msgctxt "field:account.tax.code,active:"
 msgid "Active"
@@ -1966,7 +1855,6 @@ msgctxt "field:account.tax.code,context_company:"
 msgid "Context Company"
 msgstr "Firma"
 
-#, fuzzy
 msgctxt "field:account.tax.code,currency:"
 msgid "Currency"
 msgstr "Waluta"
@@ -1975,15 +1863,13 @@ msgctxt "field:account.tax.code,description:"
 msgid "Description"
 msgstr "Opis"
 
-#, fuzzy
 msgctxt "field:account.tax.code,end_date:"
 msgid "End Date"
 msgstr "Data ukończenia"
 
-#, fuzzy
 msgctxt "field:account.tax.code,lines:"
 msgid "Lines"
-msgstr "Zapisy księgowe"
+msgstr "Pozycje"
 
 msgctxt "field:account.tax.code,name:"
 msgid "Name"
@@ -1993,7 +1879,6 @@ msgctxt "field:account.tax.code,parent:"
 msgid "Parent"
 msgstr "Konto nadrzędne"
 
-#, fuzzy
 msgctxt "field:account.tax.code,start_date:"
 msgid "Start Date"
 msgstr "Data rozpoczęcia"
@@ -2004,19 +1889,16 @@ msgstr "Szablon"
 
 msgctxt "field:account.tax.code,template_override:"
 msgid "Override Template"
-msgstr ""
+msgstr "Zastąp szablon"
 
-#, fuzzy
 msgctxt "field:account.tax.code.context,company:"
 msgid "Company"
 msgstr "Firma"
 
-#, fuzzy
 msgctxt "field:account.tax.code.context,end_period:"
 msgid "End Period"
-msgstr "Okres"
+msgstr "Okres końcowy"
 
-#, fuzzy
 msgctxt "field:account.tax.code.context,fiscalyear:"
 msgid "Fiscal Year"
 msgstr "Rok podatkowy"
@@ -2031,32 +1913,26 @@ msgctxt "field:account.tax.code.context,period:"
 msgid "Period"
 msgstr "Okres"
 
-#, fuzzy
 msgctxt "field:account.tax.code.context,periods:"
 msgid "Periods"
 msgstr "Okresy"
 
-#, fuzzy
 msgctxt "field:account.tax.code.context,start_period:"
 msgid "Start Period"
-msgstr "Od okresu:"
+msgstr "Okres początkowy"
 
-#, fuzzy
 msgctxt "field:account.tax.code.line,amount:"
 msgid "Amount"
-msgstr "Ilość"
+msgstr "Kwota"
 
-#, fuzzy
 msgctxt "field:account.tax.code.line,code:"
 msgid "Code"
 msgstr "Kod"
 
-#, fuzzy
 msgctxt "field:account.tax.code.line,operator:"
 msgid "Operator"
 msgstr "Operacja"
 
-#, fuzzy
 msgctxt "field:account.tax.code.line,tax:"
 msgid "Tax"
 msgstr "Podatek"
@@ -2068,9 +1944,8 @@ msgstr "Szablon"
 
 msgctxt "field:account.tax.code.line,template_override:"
 msgid "Override Template"
-msgstr ""
+msgstr "Zastąp szablon"
 
-#, fuzzy
 msgctxt "field:account.tax.code.line,type:"
 msgid "Type"
 msgstr "Typ"
@@ -2116,15 +1991,13 @@ msgctxt "field:account.tax.code.template,description:"
 msgid "Description"
 msgstr "Opis"
 
-#, fuzzy
 msgctxt "field:account.tax.code.template,end_date:"
 msgid "End Date"
 msgstr "Data ukończenia"
 
-#, fuzzy
 msgctxt "field:account.tax.code.template,lines:"
 msgid "Lines"
-msgstr "Zapisy księgowe"
+msgstr "Pozycje"
 
 msgctxt "field:account.tax.code.template,name:"
 msgid "Name"
@@ -2134,7 +2007,6 @@ msgctxt "field:account.tax.code.template,parent:"
 msgid "Parent"
 msgstr "Konto nadrzędne"
 
-#, fuzzy
 msgctxt "field:account.tax.code.template,start_date:"
 msgid "Start Date"
 msgstr "Data rozpoczęcia"
@@ -2159,7 +2031,6 @@ msgctxt "field:account.tax.line,company:"
 msgid "Company"
 msgstr "Firma"
 
-#, fuzzy
 msgctxt "field:account.tax.line,currency:"
 msgid "Currency"
 msgstr "Waluta"
@@ -2172,7 +2043,6 @@ msgctxt "field:account.tax.line,tax:"
 msgid "Tax"
 msgstr "Podatek"
 
-#, fuzzy
 msgctxt "field:account.tax.line,type:"
 msgid "Type"
 msgstr "Typ"
@@ -2218,9 +2088,8 @@ msgstr "Szablon"
 
 msgctxt "field:account.tax.rule,template_override:"
 msgid "Override Template"
-msgstr ""
+msgstr "Zastąp szablon"
 
-#, fuzzy
 msgctxt "field:account.tax.rule.line,end_date:"
 msgid "Ending Date"
 msgstr "Data ukończenia"
@@ -2231,24 +2100,23 @@ msgstr "Grupa podatkowa"
 
 msgctxt "field:account.tax.rule.line,keep_origin:"
 msgid "Keep Origin"
-msgstr ""
+msgstr "Zachowaj pierwotny"
 
 msgctxt "field:account.tax.rule.line,origin_tax:"
 msgid "Original Tax"
-msgstr ""
+msgstr "Pierwotny podatek"
 
 msgctxt "field:account.tax.rule.line,rule:"
 msgid "Rule"
 msgstr "Reguła"
 
-#, fuzzy
 msgctxt "field:account.tax.rule.line,start_date:"
 msgid "Starting Date"
 msgstr "Data rozpoczęcia"
 
 msgctxt "field:account.tax.rule.line,tax:"
 msgid "Substitution Tax"
-msgstr ""
+msgstr "Podatek zamienny"
 
 msgctxt "field:account.tax.rule.line,template:"
 msgid "Template"
@@ -2256,9 +2124,8 @@ msgstr "Szablon"
 
 msgctxt "field:account.tax.rule.line,template_override:"
 msgid "Override Template"
-msgstr ""
+msgstr "Zastąp szablon"
 
-#, fuzzy
 msgctxt "field:account.tax.rule.line.template,end_date:"
 msgid "Ending Date"
 msgstr "Data ukończenia"
@@ -2269,24 +2136,23 @@ msgstr "Grupa podatkowa"
 
 msgctxt "field:account.tax.rule.line.template,keep_origin:"
 msgid "Keep Origin"
-msgstr ""
+msgstr "Zachowaj pierwotny"
 
 msgctxt "field:account.tax.rule.line.template,origin_tax:"
 msgid "Original Tax"
-msgstr ""
+msgstr "Pierwotny podatek"
 
 msgctxt "field:account.tax.rule.line.template,rule:"
 msgid "Rule"
 msgstr "Reguła"
 
-#, fuzzy
 msgctxt "field:account.tax.rule.line.template,start_date:"
 msgid "Starting Date"
 msgstr "Data rozpoczęcia"
 
 msgctxt "field:account.tax.rule.line.template,tax:"
 msgid "Substitution Tax"
-msgstr ""
+msgstr "Podatek zamienny"
 
 msgctxt "field:account.tax.rule.template,account:"
 msgid "Account Template"
@@ -2335,11 +2201,11 @@ msgstr "Grupa"
 
 msgctxt "field:account.tax.template,invoice_account:"
 msgid "Invoice Account"
-msgstr ""
+msgstr "Konto faktury"
 
 msgctxt "field:account.tax.template,legal_notice:"
 msgid "Legal Notice"
-msgstr ""
+msgstr "Nota prawna"
 
 msgctxt "field:account.tax.template,name:"
 msgid "Name"
@@ -2349,10 +2215,9 @@ msgctxt "field:account.tax.template,parent:"
 msgid "Parent"
 msgstr "Konto nadrzędne"
 
-#, fuzzy
 msgctxt "field:account.tax.template,rate:"
 msgid "Rate"
-msgstr "Data"
+msgstr "Stawka"
 
 msgctxt "field:account.tax.template,start_date:"
 msgid "Starting Date"
@@ -2364,7 +2229,7 @@ msgstr "Typ"
 
 msgctxt "field:account.tax.template,update_unit_price:"
 msgid "Update Unit Price"
-msgstr ""
+msgstr "Aktualizuj cenę jednostkową"
 
 msgctxt "field:account.tax.test,currency:"
 msgid "Currency"
@@ -2400,7 +2265,7 @@ msgstr "Wartość"
 
 msgctxt "field:account.tax.test.result,base:"
 msgid "Base"
-msgstr ""
+msgstr "Wartość netto"
 
 msgctxt "field:account.tax.test.result,description:"
 msgid "Description"
@@ -2408,7 +2273,7 @@ msgstr "Opis"
 
 msgctxt "field:account.tax.test.result,legal_notice:"
 msgid "Legal Notice"
-msgstr ""
+msgstr "Nota prawna"
 
 msgctxt "field:account.tax.test.result,tax:"
 msgid "Tax"
@@ -2416,24 +2281,20 @@ msgstr "Podatek"
 
 msgctxt "field:account.update_chart.start,account:"
 msgid "Root Account"
-msgstr ""
+msgstr "Konto główne"
 
-#, fuzzy
 msgctxt "field:company.company,payable:"
 msgid "Payable"
 msgstr "Zobowiązania"
 
-#, fuzzy
 msgctxt "field:company.company,payable_today:"
 msgid "Payable Today"
 msgstr "Zobowiązania na dzisiaj"
 
-#, fuzzy
 msgctxt "field:company.company,receivable:"
 msgid "Receivable"
 msgstr "Należności"
 
-#, fuzzy
 msgctxt "field:company.company,receivable_today:"
 msgid "Receivable Today"
 msgstr "Należności na dzisiaj"
@@ -2450,7 +2311,6 @@ msgctxt "field:party.party,accounts:"
 msgid "Accounts"
 msgstr "Konta"
 
-#, fuzzy
 msgctxt "field:party.party,currency:"
 msgid "Currency"
 msgstr "Waluta"
@@ -2505,7 +2365,7 @@ msgstr ""
 
 msgctxt "help:account.account,closed:"
 msgid "Check to prevent posting move on the account."
-msgstr ""
+msgstr "Zaznacz, aby zapobiec księgowaniu na tym koncie."
 
 msgctxt "help:account.account,credit_type:"
 msgid "The type used if not empty and debit < credit."
@@ -2517,7 +2377,7 @@ msgstr ""
 
 msgctxt "help:account.account,general_ledger_balance:"
 msgid "Display only the balance in the general ledger report."
-msgstr ""
+msgstr "Wyświetlaj tylko saldo w raporcie księgi głównej."
 
 msgctxt "help:account.account,reconcile:"
 msgid "Allow move lines of this account to be reconciled."
@@ -2535,24 +2395,23 @@ msgstr ""
 
 msgctxt "help:account.account,template_override:"
 msgid "Check to override template definition"
-msgstr ""
+msgstr "Zaznacz, aby zastąpić definicję szablonu"
 
 msgctxt "help:account.account.context,fiscalyear:"
 msgid "Leave empty for all open fiscal year."
 msgstr ""
 
-#, fuzzy
 msgctxt "help:account.account.context,posted:"
 msgid "Only include posted moves."
-msgstr "Pokaż tylko zaksięgowany dowód"
+msgstr "Uwzględnij tylko zaksięgowane dowody."
 
 msgctxt "help:account.account.template,closed:"
 msgid "Check to prevent posting move on the account."
-msgstr ""
+msgstr "Zaznacz, aby zapobiec księgowaniu na tym koncie."
 
 msgctxt "help:account.account.template,general_ledger_balance:"
 msgid "Display only the balance in the general ledger report."
-msgstr ""
+msgstr "Wyświetlaj tylko saldo w raporcie księgi głównej."
 
 msgctxt "help:account.account.template,reconcile:"
 msgid "Allow move lines of this account to be reconciled."
@@ -2561,33 +2420,34 @@ msgstr "Pozwala uzgadniać zapisy księgowe dla tego konta."
 msgctxt "help:account.account.type,debt:"
 msgid "Check to allow booking debt via supplier invoice."
 msgstr ""
+"Zaznacz, aby zezwolić na księgowanie zadłużenia za pośrednictwem faktury "
+"dostawcy."
 
 msgctxt "help:account.account.type,template_override:"
 msgid "Check to override template definition"
-msgstr ""
+msgstr "Zaznacz, aby zastąpić definicję szablonu"
 
 msgctxt "help:account.account.type.template,debt:"
 msgid "Check to allow booking debt via supplier invoice."
 msgstr ""
+"Zaznacz, aby zezwolić na księgowanie zadłużenia za pośrednictwem faktury "
+"dostawcy."
 
-#, fuzzy
 msgctxt "help:account.aged_balance.context,posted:"
 msgid "Only include posted moves."
-msgstr "Pokaż tylko zaksięgowany dowód"
+msgstr "Uwzględnij tylko zaksięgowane dowody."
 
-#, fuzzy
 msgctxt "help:account.balance_sheet.comparison.context,posted:"
 msgid "Only include posted moves."
-msgstr "Pokaż tylko zaksięgowany dowód"
+msgstr "Uwzględnij tylko zaksięgowane dowody."
 
-#, fuzzy
 msgctxt "help:account.balance_sheet.context,posted:"
 msgid "Only include posted moves."
-msgstr "Pokaż tylko zaksięgowany dowód"
+msgstr "Uwzględnij tylko zaksięgowane dowody."
 
 msgctxt "help:account.configuration,default_customer_tax_rule:"
 msgid "Default customer tax rule for new parties."
-msgstr ""
+msgstr "Domyślna reguła podatkowa dla nowego klienta."
 
 msgctxt "help:account.configuration,default_supplier_tax_rule:"
 msgid "Default supplier tax rule for new parties."
@@ -2616,25 +2476,22 @@ msgctxt "help:account.general_ledger.account.context,journal:"
 msgid "Only include moves from the journal."
 msgstr "Pokaż tylko zaksięgowany dowód"
 
-#, fuzzy
 msgctxt "help:account.general_ledger.account.context,posted:"
 msgid "Only include posted moves."
-msgstr "Pokaż tylko zaksięgowany dowód"
+msgstr "Uwzględnij tylko zaksięgowane dowody."
 
 #, fuzzy
 msgctxt "help:account.general_ledger.line.context,journal:"
 msgid "Only include moves from the journal."
 msgstr "Pokaż tylko zaksięgowany dowód"
 
-#, fuzzy
 msgctxt "help:account.general_ledger.line.context,posted:"
 msgid "Only include posted moves."
-msgstr "Pokaż tylko zaksięgowany dowód"
+msgstr "Uwzględnij tylko zaksięgowane dowody."
 
-#, fuzzy
 msgctxt "help:account.income_statement.context,posted:"
 msgid "Only include posted moves."
-msgstr "Pokaż tylko zaksięgowany dowód"
+msgstr "Uwzględnij tylko zaksięgowane dowody."
 
 msgctxt "help:account.move,post_number:"
 msgid "Also known as Folio Number."
@@ -2687,39 +2544,40 @@ msgstr ""
 
 msgctxt "help:account.reconcile.start,automatic:"
 msgid "Automatically reconcile suggestions."
-msgstr ""
+msgstr "Automatycznie uzgodnij sugestie."
 
 msgctxt "help:account.reconcile.start,only_balanced:"
 msgid "Skip suggestion with write-off."
-msgstr ""
+msgstr "Pomiń sugestie z niedopasowaniem."
 
 #, fuzzy
 msgctxt "help:account.tax,amount:"
 msgid "In company's currency."
 msgstr "W walucie firmy"
 
-#, fuzzy
 msgctxt "help:account.tax,description:"
 msgid "The name that will be used in reports."
-msgstr "Nazwa używana w raportach"
+msgstr "Nazwa używana w raportach."
 
 msgctxt "help:account.tax,template_override:"
 msgid "Check to override template definition"
-msgstr ""
+msgstr "Zaznacz, aby zastąpić definicję szablonu"
 
 msgctxt "help:account.tax,update_unit_price:"
 msgid ""
 "If checked then the unit price for further tax computation will be modified "
 "by this tax."
 msgstr ""
+"Jeśli zaznaczone, cena jednostkowa do dalszych obliczeń podatkowych zostanie"
+" zmodyfikowana o ten podatek."
 
 msgctxt "help:account.tax.code,template_override:"
 msgid "Check to override template definition"
-msgstr ""
+msgstr "Zaznacz, aby zastąpić definicję szablonu"
 
 msgctxt "help:account.tax.code.line,template_override:"
 msgid "Check to override template definition"
-msgstr ""
+msgstr "Zaznacz, aby zastąpić definicję szablonu"
 
 msgctxt "help:account.tax.line.template,amount:"
 msgid "A python expression that will be evaluated with the keywords."
@@ -2727,24 +2585,26 @@ msgstr ""
 
 msgctxt "help:account.tax.rule,template_override:"
 msgid "Check to override template definition"
-msgstr ""
+msgstr "Zaznacz, aby zastąpić definicję szablonu"
 
 msgctxt "help:account.tax.rule.line,keep_origin:"
 msgid "Check to append the original tax to substituted tax."
-msgstr ""
+msgstr "Zaznacz, aby dołączyć pierwotny podatek do podatku zamiennego."
 
 msgctxt "help:account.tax.rule.line,origin_tax:"
 msgid ""
 "If the original tax is filled, the rule will be applied only for this tax."
 msgstr ""
+"Jeśli pierwotny podatek jest wypełniony, reguła zostanie zastosowana tylko "
+"do tego podatku."
 
 msgctxt "help:account.tax.rule.line,template_override:"
 msgid "Check to override template definition"
-msgstr ""
+msgstr "Zaznacz, aby zastąpić definicję szablonu"
 
 msgctxt "help:account.tax.rule.line.template,keep_origin:"
 msgid "Check to append the original tax to substituted tax."
-msgstr ""
+msgstr "Zaznacz, aby dołączyć pierwotny podatek do podatku zamiennego."
 
 msgctxt "help:account.tax.rule.line.template,origin_tax:"
 msgid ""
@@ -2798,10 +2658,9 @@ msgctxt "model:account.account.type.template,name:"
 msgid "Account Type Template"
 msgstr "Szablony typów kont"
 
-#, fuzzy
 msgctxt "model:account.aged_balance,name:"
 msgid "Aged Balance"
-msgstr "Aged Balance"
+msgstr "Wiekowanie należności"
 
 msgctxt "model:account.aged_balance.context,name:"
 msgid "Aged Balance Context"
@@ -2901,31 +2760,28 @@ msgstr ""
 
 msgctxt "model:account.journal,name:"
 msgid "Journal"
-msgstr "Rejestr"
+msgstr "Dziennik"
 
 #, fuzzy
 msgctxt "model:account.journal,name:journal_cash"
 msgid "Cash"
 msgstr "Cash"
 
-#, fuzzy
 msgctxt "model:account.journal,name:journal_currency_exchange"
 msgid "Currency Exchange"
-msgstr "Waluta"
+msgstr "Wymiana walut"
 
-#, fuzzy
 msgctxt "model:account.journal,name:journal_expense"
 msgid "Expense"
-msgstr "Expense"
+msgstr "Koszt"
 
 msgctxt "model:account.journal,name:journal_miscellaneous"
 msgid "Miscellaneous"
 msgstr ""
 
-#, fuzzy
 msgctxt "model:account.journal,name:journal_revenue"
 msgid "Revenue"
-msgstr "Revenue"
+msgstr "Przychód"
 
 #, fuzzy
 msgctxt "model:account.journal,name:journal_stock"
@@ -2965,7 +2821,7 @@ msgstr "Konto Wn"
 
 msgctxt "model:account.move.line.group.start,name:"
 msgid "Group Lines"
-msgstr ""
+msgstr "Grupuj pozycje"
 
 msgctxt "model:account.move.line.receivable_payable.context,name:"
 msgid "Receivable/Payable Line Context"
@@ -3034,10 +2890,9 @@ msgctxt "model:account.reconcile.show,name:"
 msgid "Reconcile"
 msgstr "Uzgodnij"
 
-#, fuzzy
 msgctxt "model:account.reconcile.start,name:"
 msgid "Reconcile"
-msgstr "Uzgodnienie"
+msgstr "Uzgodnij"
 
 #, fuzzy
 msgctxt "model:account.tax,name:"
@@ -3067,10 +2922,9 @@ msgctxt "model:account.tax.code.template,name:"
 msgid "Tax Code Template"
 msgstr "Tax Codes Templates"
 
-#, fuzzy
 msgctxt "model:account.tax.group,name:"
 msgid "Tax Group"
-msgstr "Tax Groups"
+msgstr "Grupa podatkowa"
 
 #, fuzzy
 msgctxt "model:account.tax.line,name:"
@@ -3106,15 +2960,13 @@ msgctxt "model:account.tax.template,name:"
 msgid "Account Tax Template"
 msgstr "Account Type Templates"
 
-#, fuzzy
 msgctxt "model:account.tax.test,name:"
 msgid "Test Tax"
-msgstr "Test Tax"
+msgstr "Testuj podatek"
 
-#, fuzzy
 msgctxt "model:account.tax.test.result,name:"
 msgid "Test Tax"
-msgstr "Test Tax"
+msgstr "Testuj podatek"
 
 #, fuzzy
 msgctxt "model:account.update_chart.start,name:"
@@ -3128,61 +2980,51 @@ msgstr "Utwórz wykres"
 
 msgctxt "model:ir.action,name:act_account_balance_sheet"
 msgid "Accounts"
-msgstr "Accounts"
+msgstr "Konta"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_account_balance_sheet_tree"
 msgid "Balance Sheet"
-msgstr "Balance Sheet"
+msgstr "Bilans"
 
 msgctxt "model:ir.action,name:act_account_general_ledger"
 msgid "Accounts"
-msgstr "Accounts"
+msgstr "Konta"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_account_income_statement_tree"
 msgid "Income Statement"
-msgstr "Income Statement"
+msgstr "Rachunek zysków i strat"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_account_list"
 msgid "Accounts"
-msgstr "Accounts"
+msgstr "Konta"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_account_template_tree"
 msgid "Accounts"
 msgstr "Konta"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_account_tree"
 msgid "Accounts"
-msgstr "Accounts"
+msgstr "Konta"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_account_tree_chart"
 msgid "Chart of Accounts"
-msgstr "Open Chart of Accounts"
+msgstr "Plan kont"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_account_type_list"
 msgid "Account Types"
-msgstr "Account Types"
+msgstr "Typy kont"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_account_type_template_tree"
 msgid "Account Types"
-msgstr "Account Types"
+msgstr "Typy kont"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_account_type_tree"
 msgid "Account Types"
-msgstr "Account Types"
+msgstr "Typy kont"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_aged_balance_list"
 msgid "Aged Balance"
-msgstr "Aged Balance"
+msgstr "Wiekowanie należności"
 
 #, fuzzy
 msgctxt "model:ir.action,name:act_balance_non_deferral"
@@ -3194,7 +3036,6 @@ msgctxt "model:ir.action,name:act_cancel_moves"
 msgid "Cancel Moves"
 msgstr "Cancel Moves"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_configuration_form"
 msgid "Configuration"
 msgstr "Konfiguracja"
@@ -3204,10 +3045,9 @@ msgctxt "model:ir.action,name:act_create_periods"
 msgid "Create Periods"
 msgstr "Create Monthly Periods"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_delegate_lines_wizard"
 msgid "Delegate Lines"
-msgstr "Konto Wn"
+msgstr "Deleguj pozycje"
 
 msgctxt "model:ir.action,name:act_fiscalyear_form"
 msgid "Fiscal Years"
@@ -3222,12 +3062,10 @@ msgctxt "model:ir.action,name:act_general_ledger_account_form"
 msgid "General Ledger - Accounts"
 msgstr "General Ledger - Accounts"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_general_ledger_account_party_form"
 msgid "General Ledger - Account Parties"
-msgstr "General Ledger - Accounts"
+msgstr "Księga główna - strony konta"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_general_ledger_account_party_form_party"
 msgid "Accounts"
 msgstr "Konta"
@@ -3237,43 +3075,37 @@ msgctxt "model:ir.action,name:act_general_ledger_account_party_open"
 msgid "Open General Ledger Account Parties"
 msgstr "General Ledger - Accounts"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_general_ledger_line_form"
 msgid "General Ledger - Lines"
-msgstr "General Ledger - Lines"
+msgstr "Księga główna - pozycje"
 
 msgctxt "model:ir.action,name:act_group_lines_wizard"
 msgid "Group Lines"
-msgstr ""
+msgstr "Grupuj pozycje"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_journal_form"
 msgid "Journals"
-msgstr "Journals"
+msgstr "Dzienniki"
 
 msgctxt "model:ir.action,name:act_journal_open_cash"
 msgid "Journals Cash"
 msgstr "Journals Cash"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_journal_period_form_close"
 msgid "Close Journals - Periods"
-msgstr "Close Journals - Periods"
+msgstr "Zamknij okresy dzienników"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_journal_period_tree"
 msgid "Journals - Periods"
-msgstr "Journals - Periods"
+msgstr "Dzienniki - okresy"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_journal_period_tree2"
 msgid "Journals - Periods"
-msgstr "Journals - Periods"
+msgstr "Dzienniki - okresy"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_move_form"
 msgid "Account Moves"
-msgstr "Account Moves"
+msgstr "Zapisy księgowe"
 
 #, fuzzy
 msgctxt "model:ir.action,name:act_move_form_delegate"
@@ -3295,37 +3127,33 @@ msgctxt "model:ir.action,name:act_move_from_template"
 msgid "Account Move"
 msgstr "Account Move"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_move_line_form"
 msgid "Account Move Lines"
-msgstr "Account Move Lines"
+msgstr "Pozycje zapisu księgowego"
 
 msgctxt "model:ir.action,name:act_move_line_payable_receivable"
 msgid "Payable/Receivable Lines"
-msgstr "Payable/Receivable Lines"
+msgstr "Pozycje zobowiązań/należności"
 
 msgctxt "model:ir.action,name:act_move_reconciliation_lines"
 msgid "Reconciliation Lines"
 msgstr "Reconciliation Lines"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_move_template_create"
 msgid "Create Move from Template"
-msgstr "Create Move from Template"
+msgstr "Utwórz zapis z szablonu"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_move_template_form"
 msgid "Moves"
-msgstr "Dowód księgowy"
+msgstr "Zapisy"
 
 msgctxt "model:ir.action,name:act_open_account"
 msgid "Open Move Account"
-msgstr "Open Move Account"
+msgstr "Otwórz zapisy na koncie"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_open_journal"
 msgid "Open Journal"
-msgstr "Open Journal"
+msgstr "Otwórz dziennik"
 
 msgctxt "model:ir.action,name:act_open_tax_code"
 msgid "Open Tax Code"
@@ -3335,25 +3163,21 @@ msgctxt "model:ir.action,name:act_open_type"
 msgid "Open Type"
 msgstr "Open Type"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_period_form"
 msgid "Periods"
-msgstr "Periods"
+msgstr "Okresy"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_period_form_close"
 msgid "Close Periods"
-msgstr "Close Periods"
+msgstr "Zamknij okresy"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_reconcile"
 msgid "Reconcile Accounts"
-msgstr "Reconcile Accounts"
+msgstr "Uzgodnij konta"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_reconcile_lines"
 msgid "Reconcile Lines"
-msgstr "Reconcile Lines"
+msgstr "Uzgodnij pozycje"
 
 #, fuzzy
 msgctxt "model:ir.action,name:act_reconcile_writeoff_form"
@@ -3364,158 +3188,157 @@ msgctxt "model:ir.action,name:act_renew_fiscalyear"
 msgid "Renew Fiscal Year"
 msgstr "Otworzenie na nowo roku podatkowego"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_reschedule_lines_wizard"
 msgid "Reschedule Lines"
-msgstr "Reconcile Lines"
+msgstr "Zmień terminy pozycji"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_tax_code_list"
 msgid "Codes"
-msgstr "Kod"
+msgstr "Kody"
 
 #, fuzzy
 msgctxt "model:ir.action,name:act_tax_code_template_tree"
 msgid "Tax Codes"
 msgstr "Kod podatku"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_tax_code_tree"
 msgid "Codes"
-msgstr "Kod"
+msgstr "Kody"
 
 #, fuzzy
 msgctxt "model:ir.action,name:act_tax_code_tree_chart"
 msgid "Chart of Tax Codes"
 msgstr "Open Chart of Tax Codes"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_tax_group_form"
 msgid "Groups"
-msgstr "Grupa"
+msgstr "Grupy"
 
 #, fuzzy
 msgctxt "model:ir.action,name:act_tax_line_form"
 msgid "Tax Lines"
 msgstr "Tax Lines"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_tax_list"
 msgid "Taxes"
-msgstr "Taxes"
+msgstr "Podatki"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_tax_rule_form"
 msgid "Rules"
-msgstr "Reguła"
+msgstr "Reguły"
 
 #, fuzzy
 msgctxt "model:ir.action,name:act_tax_rule_template_form"
 msgid "Tax Rules"
 msgstr "Tax Rules"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_tax_template_list"
 msgid "Taxes"
 msgstr "Podatki"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_unreconcile_lines"
 msgid "Unreconcile Lines"
-msgstr "Unreconcile Lines"
+msgstr "Usuń uzgodnienie pozycji"
 
-#, fuzzy
 msgctxt "model:ir.action,name:report_account_type_statement"
 msgid "Statement"
-msgstr "Income Statement"
+msgstr "Zestawienie"
 
-#, fuzzy
 msgctxt "model:ir.action,name:report_aged_balance"
 msgid "Aged Balance"
-msgstr "Aged Balance"
+msgstr "Wiekowanie należności"
 
 #, fuzzy
 msgctxt "model:ir.action,name:report_general_journal"
 msgid "General Journal"
 msgstr "General Journal"
 
-#, fuzzy
 msgctxt "model:ir.action,name:report_general_ledger"
 msgid "General Ledger"
-msgstr "General Ledger"
+msgstr "Księga główna"
 
-#, fuzzy
 msgctxt "model:ir.action,name:report_trial_balance"
 msgid "Trial Balance"
-msgstr "Trial Balance"
+msgstr "Bilans próbny"
 
 msgctxt "model:ir.action,name:wizard_create_chart"
 msgid "Create Chart of Accounts from Template"
-msgstr "Create Chart of Accounts from Template"
+msgstr "Stwórz plan kont z użyciem szablonu"
 
 msgctxt "model:ir.action,name:wizard_tax_test"
 msgid "Test Tax"
-msgstr "Test Tax"
+msgstr "Testuj podatek"
 
 msgctxt "model:ir.action,name:wizard_update_chart"
 msgid "Update Chart of Accounts from Template"
-msgstr "Update Chart of Accounts from Template"
+msgstr "Aktualizuj plan kont z użyciem szablonu"
 
+#, python-format
 msgctxt "model:ir.message,text:msg_account_chart_exists"
 msgid "A chart of accounts already exists for company \"%(company)s\"."
 msgstr ""
 
-#, fuzzy
+#, fuzzy, python-format
 msgctxt "model:ir.message,text:msg_account_closed_lines"
 msgid "You cannot close account \"%(account)s\" because it has move lines."
 msgstr "Nie można usunąć konta \"%s\" zawierającego zapisy księgowe."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_account_invalid_deferral_second_currency"
 msgid "To set a second currency for account \"%(account)s\", it must be deferral."
 msgstr ""
 
+#, python-format
 msgctxt "model:ir.message,text:msg_account_invalid_lines_second_currency"
 msgid ""
 "To set a second currency for account \"%(account)s\", its lines must have "
 "the same second currency \"%(currency)s\"."
 msgstr ""
 
+#, python-format
 msgctxt "model:ir.message,text:msg_account_invalid_type_second_currency"
 msgid ""
 "To set a second currency for account \"%(account)s\", it must not have a "
 "type \"payable\", \"revenue\", \"receivable\" nor \"expense\"."
 msgstr ""
+"Aby ustawić drugą walutę dla konta \"%(account)s\", nie może ono być typu "
+"\"zobowiązania\", \"przychód\", \"należności\" ani \"koszt\"."
 
-#, fuzzy
+#, fuzzy, python-format
 msgctxt "model:ir.message,text:msg_account_no_type_lines"
 msgid ""
 "You cannot remove type of account \"%(account)s\" because it has move lines."
 msgstr "Nie można usunąć konta \"%s\" zawierającego zapisy księgowe."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_cancel_line_delegated"
 msgid ""
 "The moves \"%(moves)s\" contain grouped lines, cancelling them will ungroup "
 "the lines."
 msgstr ""
 
+#, python-format
 msgctxt "model:ir.message,text:msg_change_fiscalyear_post_move_sequence"
 msgid ""
 "You cannot change the post move sequence on fiscal year \"%(fiscalyear)s\" "
 "because it contains posted moves."
 msgstr ""
 
+#, python-format
 msgctxt "model:ir.message,text:msg_change_period_post_move_sequence"
 msgid ""
 "You cannot change the post move sequence in period \"%(period)s\" because it"
 " has posted moves."
 msgstr ""
 
+#, python-format
 msgctxt "model:ir.message,text:msg_close_fiscalyear_account_balance_not_zero"
 msgid ""
 "To close the fiscal year, the balance of account \"%(account)s\" must be "
 "zero."
 msgstr ""
 
+#, python-format
 msgctxt "model:ir.message,text:msg_close_fiscalyear_earlier"
 msgid ""
 "To close fiscal year \"%(fiscalyear)s\", you must close all earlier fiscal "
@@ -3524,12 +3347,14 @@ msgstr ""
 "Aby zamknąć rok podatkowy \"%(fiscalyear)s\", musisz najpierw zamknąć "
 "poprzednie lata."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_close_period_inactive_accounts"
 msgid ""
 "To close period \"%(period)s\", you must balance the inactive account "
 "\"%(account)s\"."
 msgstr ""
 
+#, python-format
 msgctxt "model:ir.message,text:msg_close_period_non_posted_moves"
 msgid "To close period \"%(period)s\" you must post the moves \"%(moves)s\"."
 msgstr ""
@@ -3540,13 +3365,14 @@ msgid ""
 " moves."
 msgstr ""
 
-#, fuzzy
+#, fuzzy, python-format
 msgctxt "model:ir.message,text:msg_create_journal_period_closed_period"
 msgid "You cannot create a journal-period in closed period \"%(period)s\"."
 msgstr ""
 "Nie można utworzyć okresu w dzienniku na podstawie zamkniętego okresu "
 "\"%s\"."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_create_period_closed_fiscalyear"
 msgid ""
 "You cannot create a period in fiscal year \"%(fiscalyear)s\" because it is "
@@ -3566,31 +3392,27 @@ msgctxt "model:ir.message,text:msg_delegate_line_same_origins"
 msgid "You cannot delegate together lines with different origins."
 msgstr ""
 
-#, fuzzy
+#, fuzzy, python-format
 msgctxt "model:ir.message,text:msg_delete_account_with_move_lines"
 msgid "You cannot delete account \"%(account)s\" because it has move lines."
 msgstr "Nie można usunąć konta \"%s\" zawierającego zapisy księgowe."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_erase_party_receivable_payable"
 msgid ""
 "You cannot erase party \"%(party)s\" while they have pending "
 "receivable/payable with company \"%(company)s\"."
 msgstr ""
 
-msgctxt "model:ir.message,text:msg_fiscalyear_different_post_move_sequence"
-msgid ""
-"The fiscal years \"%(first)s\" and \"%(second)s\" cannot have the same post "
-"move sequence, you must use different sequences."
-msgstr ""
-
 msgctxt "model:ir.message,text:msg_fiscalyear_overlap"
-msgid ""
-"The fiscal years \"%(first)s\" and \"%(second)s\" overlap, you must use "
-"different dates."
+msgid "The dates of fiscal years of the same company can not overlap."
 msgstr ""
-"Lata podatkowe \"%(first)s\" i \"%(second)s\" nachodzą na siebie. Użyj "
-"różnych dat."
 
+msgctxt "model:ir.message,text:msg_fiscalyear_post_move_sequence_unique"
+msgid "The post move sequence of fiscal years must be unique."
+msgstr ""
+
+#, python-format
 msgctxt "model:ir.message,text:msg_group_line"
 msgid "Line \"%(line)s\" can not be grouped."
 msgstr ""
@@ -3615,7 +3437,7 @@ msgctxt "model:ir.message,text:msg_group_line_single"
 msgid "You cannot group a single line."
 msgstr ""
 
-#, fuzzy
+#, fuzzy, python-format
 msgctxt "model:ir.message,text:msg_journal_account_moves"
 msgid ""
 "You cannot change the type of journal \"%(journal)s\" because it has posted "
@@ -3627,10 +3449,12 @@ msgctxt "model:ir.message,text:msg_journal_period_unique"
 msgid "You can create only one journal per period."
 msgstr "Można otworzyć tylko jeden dziennik dla okresu."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_line_already_reconciled"
 msgid "You cannot reconcile already reconciled line \"%(line)s\"."
 msgstr ""
 
+#, python-format
 msgctxt "model:ir.message,text:msg_line_closed_account"
 msgid ""
 "To create a line on account \"%(account)s\", you must set a type or unclose "
@@ -3641,12 +3465,14 @@ msgctxt "model:ir.message,text:msg_line_debit_credit"
 msgid "You cannot set both debit and credit on the line."
 msgstr ""
 
+#, python-format
 msgctxt "model:ir.message,text:msg_line_party_required"
 msgid ""
 "To create a line on account \"%(account)s\", you must set a party on line "
 "\"%(line)s\"."
 msgstr ""
 
+#, python-format
 msgctxt "model:ir.message,text:msg_line_party_set"
 msgid ""
 "To create a line on account \"%(account)s\", you must remove the party on "
@@ -3659,77 +3485,108 @@ msgid ""
 "credit."
 msgstr ""
 
+#, python-format
 msgctxt "model:ir.message,text:msg_modify_delete_journal_period_moves"
 msgid ""
 "You cannot modify or delete journal-period \"%(journal_period)s\" because it"
 " contains moves."
 msgstr ""
 
+#, python-format
 msgctxt "model:ir.message,text:msg_modify_line_closed_journal_period"
 msgid ""
 "You cannot add/modify/delete lines on closed journal-period "
 "\"%(journal_period)s\"."
 msgstr ""
 
+#, python-format
 msgctxt "model:ir.message,text:msg_modify_line_posted_move"
 msgid "You cannot modify line \"%(line)s\" from posted move \"%(move)s\"."
 msgstr ""
 
+#, python-format
 msgctxt "model:ir.message,text:msg_modify_line_reconciled"
 msgid "You cannot modify reconciled line \"%(line)s\"."
 msgstr ""
 
+#, python-format
 msgctxt "model:ir.message,text:msg_modify_posted_moved"
 msgid "You cannot modify posted move \"%(move)s\"."
 msgstr ""
 
-#, fuzzy
+#, fuzzy, python-format
 msgctxt "model:ir.message,text:msg_modify_tax_line_closed_period"
 msgid "You cannot add/modify/delete tax lines in closed period \"%(period)s\"."
 msgstr ""
 "Nie można dodawać/modyfikować zapisów księgowych w dzienniku dla zamkniętego"
 " okresu \"%s\"."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_move_cancel_closed_period"
 msgid ""
 "The period of move \"%(move)s\" is closed.\n"
 "Use the current period to cancel the move?"
 msgstr ""
 
+#, python-format
+msgctxt "model:ir.message,text:msg_move_copy_closed_period"
+msgid ""
+"The period of move \"%(move)s\" is closed.\n"
+"Use the current period to copy the move?"
+msgstr ""
+
+#, python-format
 msgctxt "model:ir.message,text:msg_move_template_expression_not_number"
 msgid ""
 "The value \"%(value)s\" of \"%(expression)s\" from template \"%(template)s\""
 " is not a number."
 msgstr ""
 
+#, python-format
+msgctxt "model:ir.message,text:msg_move_template_invalid_description"
+msgid ""
+"Failed to evaluate the description \"%(description)s\" from template "
+"\"%(template)s\" with error: \"%(error)s\""
+msgstr ""
+
+#, python-format
 msgctxt "model:ir.message,text:msg_move_template_invalid_expression"
 msgid ""
 "Failed to evaluate expression \"%(expression)s\" from template \"%(template)s\" with error:\n"
 "\"%(error)s\""
 msgstr ""
 
+#, python-format
 msgctxt "model:ir.message,text:msg_move_template_keyword_name_not_identifier"
 msgid "The keyword name \"%(name)s\" is not a valid identifier."
 msgstr ""
 
+#, python-format
 msgctxt "model:ir.message,text:msg_no_fiscalyear_date"
 msgid ""
 "To continue, you must create a fiscal year for the date \"%(date)s\" and "
 "company \"%(company)s\"."
 msgstr ""
 
+#, python-format
 msgctxt "model:ir.message,text:msg_no_open_fiscalyear_date"
 msgid ""
 "To continue, you must reopen the fiscal year \"%(fiscalyear)s\" of company "
-"\"%(company)s\"for the date \"%(date)s\"."
+"\"%(company)s\" for the date \"%(date)s\"."
 msgstr ""
+"Aby kontynuować, musisz ponownie otworzyć rok podatkowy \"%(fiscalyear)s\" "
+"firmy \"%(company)s\" dla daty \"%(date)s\"."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_no_open_period_date"
 msgid ""
 "To continue, you must reopen the period \"%(period)s\" of company "
 "\"%(company)s\" for the date \"%(date)s\"."
 msgstr ""
+"Aby kontynuować, musisz ponownie otworzyć okres \"%(period)s\" firmy "
+"\"%(company)s\" dla daty \"%(date)s\"."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_no_period_date"
 msgid ""
 "To continue, you must create a period for the date \"%(date)s\" and company "
@@ -3742,76 +3599,82 @@ msgstr ""
 
 #, fuzzy
 msgctxt "model:ir.message,text:msg_open_fiscalyear_earlier"
-msgid ""
-"The open fiscal year \"%(open)s\" can not be before the close fiscal year "
-"\"%(closed)s\"."
+msgid "Open fiscal years can not be before closed fiscal years."
 msgstr ""
 "Aby ponownie otworzyć rok podatkowy \"%(fiscalyear)s\", musisz wcześniej "
 "otworzyć wszystkie następujące po nim lata."
 
-#, fuzzy
+#, python-format
 msgctxt "model:ir.message,text:msg_open_journal_period_closed_period"
 msgid ""
 "You cannot reopen journal-period \"%(journal_period)s\" in closed period "
 "\"%(period)s\"."
 msgstr ""
-"Nie można otworzyć okresu \"%(journal_period)s\" w dzienniku ponieważ okres "
-"\"%(period)s\" jest zamknięty."
+"Nie można ponownie otworzyć okresu dziennika \"%(journal_period)s\" ponieważ"
+" okres \"%(period)s\" jest zamknięty."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_open_period_closed_fiscalyear"
 msgid ""
 "You cannot reopen period \"%(period)s\" because its fiscal year "
 "\"%(fiscalyear)s\" is closed."
 msgstr ""
+"Nie można ponownie otworzyć okresu \"%(period)s\" ponieważ rok podatkowy "
+"\"%(fiscalyear)s\" jest zamknięty."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_party_missing_payable_account"
 msgid "To continue, you must define a payable account for party \"%(party)s\"."
 msgstr ""
 
+#, python-format
 msgctxt "model:ir.message,text:msg_party_missing_receivable_account"
 msgid "To continue, you must define a receivable account for party \"%(party)s\"."
 msgstr ""
 
+#, python-format
 msgctxt "model:ir.message,text:msg_period_fiscalyear_dates"
 msgid ""
 "The dates for period \"%(period)s\" must be between the dates of its fiscal "
 "year \"%(fiscalyear)s\"."
 msgstr ""
 
+#, python-format
 msgctxt "model:ir.message,text:msg_period_move_dates"
 msgid ""
 "The dates for period \"%(period)s\" must include the date \"%(move_date)s\" "
 "of move \"%(move)s\"."
 msgstr ""
 
-msgctxt "model:ir.message,text:msg_period_overlap"
+msgctxt "model:ir.message,text:msg_period_post_move_sequence_unique"
 msgid ""
-"The periods \"%(first)s\" and \"%(second)s\" overlap, you must use different"
-" dates."
+"A post move sequence can be reused only by periods in the same fiscal year."
 msgstr ""
 
-msgctxt "model:ir.message,text:msg_period_same_sequence"
-msgid ""
-"You cannot use the same post move sequence for the periods \"%(first)s\" and"
-" \"%(second)s\" because they are from different fiscal years."
+msgctxt "model:ir.message,text:msg_period_standard_overlap"
+msgid "The dates of standard period of the same fiscal year can not overlap."
 msgstr ""
 
+#, python-format
 msgctxt "model:ir.message,text:msg_post_empty_move"
 msgid "To post move \"%(move)s\", you must fill in its lines."
 msgstr ""
 
+#, python-format
 msgctxt "model:ir.message,text:msg_post_unbalanced_move"
 msgid ""
 "To post move \"%(move)s\", you must balance all its lines debits and "
 "credits."
 msgstr ""
 
+#, python-format
 msgctxt "model:ir.message,text:msg_reconciliation_account_not_reconcile"
 msgid ""
 "To reconcile line \"%(line)s\", you must set its account \"%(account)s\" as "
 "reconcilable."
 msgstr ""
 
+#, python-format
 msgctxt ""
 "model:ir.message,text:msg_reconciliation_currency_exchange_credit_account_missing"
 msgid ""
@@ -3819,6 +3682,7 @@ msgid ""
 "\"%(company)s\"."
 msgstr ""
 
+#, python-format
 msgctxt ""
 "model:ir.message,text:msg_reconciliation_currency_exchange_debit_account_missing"
 msgid ""
@@ -3826,6 +3690,7 @@ msgid ""
 "\"%(company)s\"."
 msgstr ""
 
+#, python-format
 msgctxt ""
 "model:ir.message,text:msg_reconciliation_currency_exchange_journal_missing"
 msgid ""
@@ -3833,19 +3698,23 @@ msgid ""
 "\"%(company)s\"."
 msgstr ""
 
+#, python-format
 msgctxt "model:ir.message,text:msg_reconciliation_delete_delegated"
 msgid ""
 "The reconciliation \"%(reconciliation)s\" is delegated to the line \"%(line)s\".\n"
 "You may need to cancel its move \"%(move)s\"."
 msgstr ""
 
+#, python-format
 msgctxt "model:ir.message,text:msg_reconciliation_delete_write_off"
 msgid ""
 "The reconciliation \"%(reconciliation)s\" is linked to the write-off line \"%(line)s\".\n"
 "You may need to cancel its move \"%(move)s\"."
 msgstr ""
+"Uzgodnienie \"%(reconciliation)s\" jest skojarzone z pozycją odpisu \"%(line)s\".\n"
+"Może być konieczne anulowanie jego zapisu księgowego \"%(move)s\"."
 
-#, fuzzy
+#, fuzzy, python-format
 msgctxt "model:ir.message,text:msg_reconciliation_different_accounts"
 msgid ""
 "You cannot reconcile line \"%(line)s\" with others because its account "
@@ -3854,7 +3723,7 @@ msgstr ""
 "Nie można uzgodnić zapisu \"%(line)s\" ponieważ konto \"%(account1)s\" różni"
 " się od konta \"%(account2)s\"."
 
-#, fuzzy
+#, fuzzy, python-format
 msgctxt "model:ir.message,text:msg_reconciliation_different_parties"
 msgid ""
 "You cannot reconcile line \"%(line)s\" with others because its party "
@@ -3863,22 +3732,35 @@ msgstr ""
 "Nie można uzgodnić zapisu \"%(line)s\" ponieważ występująca w nim strona "
 "\"%(party1)s\" różni się od \"%(party2)s\"."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_reconciliation_line_not_valid"
 msgid "You cannot reconcile non-valid line \"%(line)s\"."
 msgstr ""
 
+#, python-format
 msgctxt "model:ir.message,text:msg_reconciliation_unbalanced"
 msgid ""
 "To reconcile lines, they must have the same debit \"%(debit)s\" and credit "
 "\"%(credit)s\"."
 msgstr ""
 
+#, python-format
 msgctxt "model:ir.message,text:msg_reconciliation_write_off_missing"
 msgid ""
 "To reconcile lines with \"%(amount)s\" write-off, you must select a write-"
 "off method."
 msgstr ""
 
+#, fuzzy, python-format
+msgctxt "model:ir.message,text:msg_reconciliation_write_off_same_account"
+msgid ""
+"You cannot reconcile lines using the write-off \"%(write_off)s\" with the "
+"same \"%(account)s\"."
+msgstr ""
+"Nie można uzgodnić zapisu \"%(line)s\" ponieważ konto \"%(account1)s\" różni"
+" się od konta \"%(account2)s\"."
+
+#, python-format
 msgctxt "model:ir.message,text:msg_reopen_fiscalyear_later"
 msgid ""
 "To reopen fiscal year \"%(fiscalyear)s\", you must reopen all later fiscal "
@@ -3903,15 +3785,19 @@ msgctxt "model:ir.message,text:msg_reschedule_line_same_party"
 msgid "You cannot reschedule lines with different parties."
 msgstr ""
 
+#, python-format
 msgctxt "model:ir.message,text:msg_reschedule_line_wrong_amount"
 msgid ""
 "To reschedule the lines you must change the terms to have a total amount of "
 "%(total_amount)s instead of %(amount)s."
 msgstr ""
 
+#, python-format
 msgctxt "model:ir.message,text:msg_tax_update_unit_price_with_parent"
 msgid "You cannot set \"Update Unit Price\" on child tax \"%(tax)s\"."
 msgstr ""
+"Nie możesz ustawić \"Aktualizuj cenę jednostkową\" na podatku podrzędnym do "
+"\"%(tax)s\"."
 
 msgctxt "model:ir.message,text:msg_write_deferral"
 msgid "You cannot modify any account deferrals."
@@ -3922,15 +3808,13 @@ msgctxt "model:ir.message,text:msg_write_reconciliation"
 msgid "You cannot modify any reconciliation."
 msgstr "Nie można modyfikować uzgodnienia."
 
-#, fuzzy
 msgctxt "model:ir.model.button,confirm:fiscalyear_lock_button"
 msgid "Are you sure you want to lock the fiscal year?"
-msgstr "Are you sure to lock the fiscal year?"
+msgstr "Czy na pewno chcesz zablokować rok podatkowy?"
 
-#, fuzzy
 msgctxt "model:ir.model.button,confirm:period_lock_button"
 msgid "Are you sure you want to lock the period?"
-msgstr "Are you sure to lock the period?"
+msgstr "Czy na pewno chcesz zablokować okres?"
 
 msgctxt "model:ir.model.button,string:fiscalyear_close_button"
 msgid "Close"
@@ -3943,20 +3827,19 @@ msgstr "Create Monthly Periods"
 
 msgctxt "model:ir.model.button,string:fiscalyear_lock_button"
 msgid "Lock"
-msgstr "Lock"
+msgstr "Zablokuj"
 
 msgctxt "model:ir.model.button,string:fiscalyear_reopen_button"
-msgid "Re-Open"
-msgstr "Re-Open"
+msgid "Reopen"
+msgstr "Otwórz ponownie"
 
-#, fuzzy
 msgctxt "model:ir.model.button,string:journal_period_close_button"
 msgid "Close"
 msgstr "Zamknij"
 
 msgctxt "model:ir.model.button,string:journal_period_reopen_button"
 msgid "Reopen"
-msgstr ""
+msgstr "Otwórz ponownie"
 
 msgctxt "model:ir.model.button,string:move_post_button"
 msgid "Post"
@@ -3968,11 +3851,11 @@ msgstr "Zamknij"
 
 msgctxt "model:ir.model.button,string:period_lock_button"
 msgid "Lock"
-msgstr "Lock"
+msgstr "Zablokuj"
 
 msgctxt "model:ir.model.button,string:period_reopen_button"
-msgid "Re-Open"
-msgstr "Re-Open"
+msgid "Reopen"
+msgstr "Otwórz ponownie"
 
 msgctxt "model:ir.rule.group,name:rule_group_account_companies"
 msgid "User in companies"
@@ -4009,7 +3892,7 @@ msgstr ""
 
 msgctxt "model:ir.rule.group,name:rule_group_move_companies"
 msgid "User in companies"
-msgstr ""
+msgstr "Użytkownik w firmach"
 
 msgctxt "model:ir.rule.group,name:rule_group_move_reconciliation_companies"
 msgid "User in companies"
@@ -4021,7 +3904,7 @@ msgstr ""
 
 msgctxt "model:ir.rule.group,name:rule_group_period_companies"
 msgid "User in companies"
-msgstr ""
+msgstr "Użytkownik w firmach"
 
 msgctxt "model:ir.rule.group,name:rule_group_reconcile_writeoff_companies"
 msgid "User in companies"
@@ -4075,7 +3958,6 @@ msgctxt "model:ir.ui.menu,name:menu_account_list"
 msgid "Accounts"
 msgstr "Konta"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_account_template_tree"
 msgid "Accounts"
 msgstr "Konta"
@@ -4084,28 +3966,25 @@ msgctxt "model:ir.ui.menu,name:menu_account_tree"
 msgid "Accounts"
 msgstr "Konta"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_account_tree_chart"
 msgid "Chart of Accounts"
-msgstr "Open Chart of Accounts"
+msgstr "Plan kont"
 
 msgctxt "model:ir.ui.menu,name:menu_account_type_list"
 msgid "Account Types"
 msgstr "Typy kont"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_account_type_template_tree"
 msgid "Account Types"
-msgstr "Account Types"
+msgstr "Typy kont"
 
 msgctxt "model:ir.ui.menu,name:menu_account_type_tree"
 msgid "Account Types"
 msgstr "Typy kont"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_aged_balance"
 msgid "Aged Balance"
-msgstr "Aged Balance"
+msgstr "Wiekowanie należności"
 
 #, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_balance_non_deferral"
@@ -4116,24 +3995,21 @@ msgctxt "model:ir.ui.menu,name:menu_close_fiscalyear"
 msgid "Close Fiscal Years"
 msgstr "Zamknij lata podatkowe"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_close_journal_period"
 msgid "Close Journals - Periods"
-msgstr "Close Journals - Periods"
+msgstr "Zamknij okresy dzienników"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_close_period"
 msgid "Close Periods"
-msgstr "Close Periods"
+msgstr "Zamknij okresy"
 
 msgctxt "model:ir.ui.menu,name:menu_create_chart"
 msgid "Create Chart of Accounts from Template"
-msgstr "Create Chart of Accounts from Template"
+msgstr "Stwórz plan kont z użyciem szablonu"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_entries"
 msgid "Entries"
-msgstr "Entries"
+msgstr "Wpisy"
 
 msgctxt "model:ir.ui.menu,name:menu_fiscalyear_configuration"
 msgid "Fiscal Years"
@@ -4145,80 +4021,67 @@ msgstr "Lata podatkowe"
 
 msgctxt "model:ir.ui.menu,name:menu_general_account_configuration"
 msgid "General Account"
-msgstr "General Account"
+msgstr "Konto ogólne"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_general_ledger"
 msgid "General Ledger"
-msgstr "General Ledger"
+msgstr "Księga główna"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_journal_configuration"
 msgid "Journals"
-msgstr "Journals"
+msgstr "Dzienniki"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_journal_form"
 msgid "Journals"
-msgstr "Journals"
+msgstr "Dzienniki"
 
 msgctxt "model:ir.ui.menu,name:menu_journal_open_cash"
 msgid "Journals Cash"
 msgstr "Journals Cash"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_journal_period_tree"
 msgid "Journals - Periods"
-msgstr "Journals - Periods"
+msgstr "Dzienniki - okresy"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_journal_period_tree2"
 msgid "Journals - Periods"
-msgstr "Journals - Periods"
+msgstr "Dzienniki - okresy"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_move_form"
 msgid "Account Moves"
-msgstr "Account Moves"
+msgstr "Zapisy księgowe"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_move_template_create"
 msgid "Create Move from Template"
-msgstr "Create Move from Template"
+msgstr "Utwórz zapis z szablonu"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_move_template_form"
 msgid "Moves"
-msgstr "Dowód księgowy"
+msgstr "Zapisy"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_open_balance_sheet"
 msgid "Balance Sheet"
-msgstr "Balance Sheet"
+msgstr "Bilans"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_open_income_statement"
 msgid "Income Statement"
-msgstr "Income Statement"
+msgstr "Rachunek zysków i strat"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_open_journal"
 msgid "Open Journal"
-msgstr "Open Journal"
+msgstr "Otwórz dziennik"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_period_form"
 msgid "Periods"
-msgstr "Periods"
+msgstr "Okresy"
 
 msgctxt "model:ir.ui.menu,name:menu_processing"
 msgid "Processing"
-msgstr "Processing"
+msgstr "Operacje zamknięcia"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_reconcile"
 msgid "Reconcile Accounts"
-msgstr "Reconcile Accounts"
+msgstr "Uzgodnij konta"
 
 #, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_reconcile_writeoff_form"
@@ -4233,59 +4096,52 @@ msgctxt "model:ir.ui.menu,name:menu_reporting"
 msgid "Reporting"
 msgstr "Raportowanie"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_tax_code_list"
 msgid "Codes"
-msgstr "Kod"
+msgstr "Kody"
 
 #, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_tax_code_template_tree"
 msgid "Tax Codes"
 msgstr "Kod podatku"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_tax_code_tree"
 msgid "Codes"
-msgstr "Kod"
+msgstr "Kody"
 
 #, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_tax_code_tree_chart"
 msgid "Chart of Tax Codes"
 msgstr "Open Chart of Tax Codes"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_tax_group_form"
 msgid "Groups"
-msgstr "Grupa"
+msgstr "Grupy"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_tax_list"
 msgid "Taxes"
-msgstr "Taxes"
+msgstr "Podatki"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_tax_rule_form"
 msgid "Rules"
-msgstr "Reguła"
+msgstr "Reguły"
 
 #, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_tax_rule_template_form"
 msgid "Tax Rules"
 msgstr "Tax Rules"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_tax_template_list"
 msgid "Taxes"
 msgstr "Podatki"
 
 msgctxt "model:ir.ui.menu,name:menu_tax_test"
 msgid "Test Tax"
-msgstr "Test Tax"
+msgstr "Testuj podatek"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_taxes"
 msgid "Taxes"
-msgstr "Taxes"
+msgstr "Podatki"
 
 #, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_templates"
@@ -4294,9 +4150,8 @@ msgstr "Templates"
 
 msgctxt "model:ir.ui.menu,name:menu_update_chart"
 msgid "Update Chart of Accounts from Template"
-msgstr "Update Chart of Accounts from Template"
+msgstr "Aktualizuj plan kont z użyciem szablonu"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menuitem_account_configuration"
 msgid "Configuration"
 msgstr "Konfiguracja"
@@ -4313,77 +4168,58 @@ msgctxt "model:res.group,name:group_account_admin"
 msgid "Account Administration"
 msgstr "Administracja ustawieniami księgowości"
 
-#, fuzzy
-msgctxt "model:res.group,name:group_account_party"
-msgid "Accounting Party"
-msgstr "Konto zobowiązań"
-
-#, fuzzy
 msgctxt "report:account.account.type.statement:"
 msgid "/"
 msgstr "/"
 
-#, fuzzy
 msgctxt "report:account.account.type.statement:"
 msgid ":"
 msgstr ":"
 
-#, fuzzy
 msgctxt "report:account.account.type.statement:"
 msgid "Balance Sheet"
-msgstr "Balance Sheet"
+msgstr "Bilans"
 
-#, fuzzy
 msgctxt "report:account.account.type.statement:"
 msgid "Company:"
 msgstr "Firma:"
 
-#, fuzzy
 msgctxt "report:account.account.type.statement:"
 msgid "Date:"
 msgstr "Data:"
 
-#, fuzzy
 msgctxt "report:account.account.type.statement:"
 msgid "Fiscal Year:"
 msgstr "Rok podatkowy:"
 
-#, fuzzy
 msgctxt "report:account.account.type.statement:"
 msgid "From Date:"
 msgstr "Od dnia:"
 
-#, fuzzy
 msgctxt "report:account.account.type.statement:"
 msgid "From Period"
-msgstr "Od okresu:"
+msgstr "Od okresu"
 
-#, fuzzy
 msgctxt "report:account.account.type.statement:"
 msgid "Income Statement"
-msgstr "Income Statement"
+msgstr "Rachunek zysków i strat"
 
-#, fuzzy
 msgctxt "report:account.account.type.statement:"
 msgid "Print Date:"
 msgstr "Data wydruku:"
 
-#, fuzzy
 msgctxt "report:account.account.type.statement:"
 msgid "Statement"
-msgstr "Income Statement"
+msgstr "Zestawienie"
 
-#, fuzzy
 msgctxt "report:account.account.type.statement:"
 msgid "To"
 msgstr "Do"
 
-#, fuzzy
 msgctxt "report:account.account.type.statement:"
 msgid "User:"
 msgstr "Użytkownik:"
 
-#, fuzzy
 msgctxt "report:account.account.type.statement:"
 msgid "at"
 msgstr "w"
@@ -4396,10 +4232,9 @@ msgctxt "report:account.aged_balance:"
 msgid "/"
 msgstr "/"
 
-#, fuzzy
 msgctxt "report:account.aged_balance:"
 msgid "Aged Balance for"
-msgstr "Aged Balance"
+msgstr "Wiekowanie należności dla"
 
 msgctxt "report:account.aged_balance:"
 msgid "Balance"
@@ -4462,15 +4297,13 @@ msgctxt "report:account.general_ledger:"
 msgid "Debit"
 msgstr "Wn"
 
-#, fuzzy
 msgctxt "report:account.general_ledger:"
 msgid "Description"
 msgstr "Opis"
 
-#, fuzzy
 msgctxt "report:account.general_ledger:"
 msgid "Draft"
-msgstr "Zarejestrowany"
+msgstr "Szkic"
 
 msgctxt "report:account.general_ledger:"
 msgid "Fiscal Year:"
@@ -4485,10 +4318,9 @@ msgctxt "report:account.general_ledger:"
 msgid "From Period"
 msgstr "Od okresu:"
 
-#, fuzzy
 msgctxt "report:account.general_ledger:"
 msgid "General Ledger"
-msgstr "General Ledger"
+msgstr "Księga główna"
 
 msgctxt "report:account.general_ledger:"
 msgid "Move"
@@ -4599,10 +4431,9 @@ msgctxt "report:account.trial_balance:"
 msgid "Debit"
 msgstr "Wn"
 
-#, fuzzy
 msgctxt "report:account.trial_balance:"
 msgid "End Balance"
-msgstr "Aged Balance"
+msgstr "Bilans zamknięcia"
 
 msgctxt "report:account.trial_balance:"
 msgid "Fiscal Year:"
@@ -4633,10 +4464,9 @@ msgctxt "report:account.trial_balance:"
 msgid "Total"
 msgstr "Razem"
 
-#, fuzzy
 msgctxt "report:account.trial_balance:"
 msgid "Trial Balance"
-msgstr "Trial Balance"
+msgstr "Bilans próbny"
 
 msgctxt "report:account.trial_balance:"
 msgid "User:"
@@ -4694,11 +4524,11 @@ msgstr "Miesiące"
 
 msgctxt "selection:account.aged_balance.context,unit:"
 msgid "Weeks"
-msgstr ""
+msgstr "Tygodnie"
 
 msgctxt "selection:account.aged_balance.context,unit:"
 msgid "Years"
-msgstr ""
+msgstr "Lata"
 
 msgctxt "selection:account.configuration,tax_rounding:"
 msgid "Per Document"
@@ -4756,20 +4586,18 @@ msgctxt "selection:account.journal,type:"
 msgid "Cash"
 msgstr "Cash"
 
-#, fuzzy
 msgctxt "selection:account.journal,type:"
 msgid "Expense"
-msgstr "Expense"
+msgstr "Koszt"
 
 #, fuzzy
 msgctxt "selection:account.journal,type:"
 msgid "General"
 msgstr "General"
 
-#, fuzzy
 msgctxt "selection:account.journal,type:"
 msgid "Revenue"
-msgstr "Revenue"
+msgstr "Przychód"
 
 #, fuzzy
 msgctxt "selection:account.journal,type:"
@@ -4806,19 +4634,17 @@ msgctxt "selection:account.move.line,state:"
 msgid "Valid"
 msgstr "Poprawny"
 
-#, fuzzy
 msgctxt "selection:account.move.line.reschedule.start,frequency:"
 msgid "Monthly"
-msgstr "Miesiące"
+msgstr "Miesięcznie"
 
-#, fuzzy
 msgctxt "selection:account.move.line.reschedule.start,frequency:"
 msgid "Other"
-msgstr "Inne informacje"
+msgstr "Inna"
 
 msgctxt "selection:account.move.line.reschedule.start,frequency:"
 msgid "Quarterly"
-msgstr ""
+msgstr "Kwartalnie"
 
 msgctxt "selection:account.move.line.template,operation:"
 msgid "Credit"
@@ -4894,28 +4720,24 @@ msgstr "Okresy"
 
 msgctxt "selection:account.tax.code.line,amount:"
 msgid "Base"
-msgstr ""
+msgstr "Wartość netto"
 
-#, fuzzy
 msgctxt "selection:account.tax.code.line,amount:"
 msgid "Tax"
-msgstr "Podatek"
+msgstr "Wartość podatku"
 
 msgctxt "selection:account.tax.code.line,operator:"
 msgid "+"
-msgstr ""
+msgstr "+"
 
-#, fuzzy
 msgctxt "selection:account.tax.code.line,operator:"
 msgid "-"
 msgstr "-"
 
-#, fuzzy
 msgctxt "selection:account.tax.code.line,type:"
 msgid "Credit"
-msgstr "Ma"
+msgstr "Faktura korygująca"
 
-#, fuzzy
 msgctxt "selection:account.tax.code.line,type:"
 msgid "Invoice"
 msgstr "Faktura"
@@ -4943,7 +4765,6 @@ msgctxt "selection:account.tax.code.line.template,type:"
 msgid "Credit"
 msgstr "Ma"
 
-#, fuzzy
 msgctxt "selection:account.tax.code.line.template,type:"
 msgid "Invoice"
 msgstr "Faktura"
@@ -5026,26 +4847,22 @@ msgctxt "view:account.account:"
 msgid "General Information"
 msgstr "Informacje ogólne"
 
-#, fuzzy
 msgctxt "view:account.account:"
 msgid "General Ledger"
-msgstr "General Ledger"
+msgstr "Księga główna"
 
 msgctxt "view:account.aged_balance.context:"
 msgid "Terms"
 msgstr "Terminy"
 
-#, fuzzy
 msgctxt "view:account.configuration:"
 msgid "Credit Account"
 msgstr "Konto Ma"
 
-#, fuzzy
 msgctxt "view:account.configuration:"
 msgid "Currency Exchange"
-msgstr "Waluta"
+msgstr "Wymiana walut"
 
-#, fuzzy
 msgctxt "view:account.configuration:"
 msgid "Debit Account"
 msgstr "Konto Wn"
@@ -5054,15 +4871,13 @@ msgctxt "view:account.configuration:"
 msgid "Invoice"
 msgstr "Faktura"
 
-#, fuzzy
 msgctxt "view:account.configuration:"
 msgid "Journal"
-msgstr "Rejestr"
+msgstr "Dziennik"
 
-#, fuzzy
 msgctxt "view:account.configuration:"
 msgid "Move"
-msgstr "Dowód księgowy"
+msgstr "Zapis księgowy"
 
 msgctxt "view:account.configuration:"
 msgid "Party"
@@ -5073,6 +4888,8 @@ msgid ""
 "You can now create a chart of account for your company by selecting a chart "
 "of account template."
 msgstr ""
+"Teraz możesz utworzyć plan kont dla swojej firmy, wybierając szablon planu "
+"kont."
 
 msgctxt "view:account.fiscalyear.create_periods.start:"
 msgid "every"
@@ -5093,18 +4910,16 @@ msgstr "Sekwencje"
 
 msgctxt "view:account.move.line.reschedule.start:"
 msgid "every"
-msgstr ""
+msgstr "co"
 
-#, fuzzy
 msgctxt "view:account.move.line.reschedule.start:"
 msgid "months"
-msgstr "Miesiące"
+msgstr "miesiące"
 
 msgctxt "view:account.move.line.template:"
 msgid "Other Info"
 msgstr "Inne informacje"
 
-#, fuzzy
 msgctxt "view:account.move.line:"
 msgid "Balance"
 msgstr "Bilans"
@@ -5135,14 +4950,12 @@ msgstr "Informacje ogólne"
 
 msgctxt "view:account.update_chart.succeed:"
 msgid "Chart of accounts updated successfully."
-msgstr ""
+msgstr "Plan kont został pomyślnie zaktualizowany."
 
-#, fuzzy
 msgctxt "view:company.company:"
 msgid "Account"
 msgstr "Konto"
 
-#, fuzzy
 msgctxt "view:company.company:"
 msgid "Accounting"
 msgstr "Księgowość"
@@ -5197,7 +5010,6 @@ msgctxt ""
 msgid "Create"
 msgstr "Utwórz"
 
-#, fuzzy
 msgctxt "wizard_button:account.fiscalyear.create_periods,start,end:"
 msgid "Cancel"
 msgstr "Anuluj"
@@ -5218,36 +5030,30 @@ msgctxt "wizard_button:account.move.cancel,default,end:"
 msgid "Cancel"
 msgstr "Anuluj"
 
-#, fuzzy
 msgctxt "wizard_button:account.move.line.delegate,start,delegate:"
 msgid "Delegate"
-msgstr "Konto Wn"
+msgstr "Deleguj"
 
-#, fuzzy
 msgctxt "wizard_button:account.move.line.delegate,start,end:"
 msgid "Cancel"
 msgstr "Anuluj"
 
-#, fuzzy
 msgctxt "wizard_button:account.move.line.group,start,end:"
 msgid "Cancel"
 msgstr "Anuluj"
 
-#, fuzzy
 msgctxt "wizard_button:account.move.line.group,start,group:"
 msgid "Group"
-msgstr "Grupa"
+msgstr "Grupuj"
 
-#, fuzzy
 msgctxt "wizard_button:account.move.line.reschedule,preview,end:"
 msgid "Cancel"
 msgstr "Anuluj"
 
 msgctxt "wizard_button:account.move.line.reschedule,preview,reschedule:"
 msgid "Reschedule"
-msgstr ""
+msgstr "Zmień terminy"
 
-#, fuzzy
 msgctxt "wizard_button:account.move.line.reschedule,start,end:"
 msgid "Cancel"
 msgstr "Anuluj"
@@ -5300,15 +5106,13 @@ msgctxt "wizard_button:account.reconcile,show,reconcile:"
 msgid "Reconcile"
 msgstr "Uzgodnij"
 
-#, fuzzy
 msgctxt "wizard_button:account.reconcile,start,end:"
 msgid "Cancel"
 msgstr "Anuluj"
 
-#, fuzzy
 msgctxt "wizard_button:account.reconcile,start,next_:"
 msgid "Reconcile"
-msgstr "Uzgodnienie"
+msgstr "Uzgodnij"
 
 msgctxt "wizard_button:account.tax.test,test,end:"
 msgid "Close"

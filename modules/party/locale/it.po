@@ -140,8 +140,8 @@ msgid "Comment"
 msgstr "Commento"
 
 msgctxt "field:party.contact_mechanism,email:"
-msgid "E-Mail"
-msgstr "E-mail"
+msgid "Email"
+msgstr ""
 
 #, fuzzy
 msgctxt "field:party.contact_mechanism,language:"
@@ -255,8 +255,8 @@ msgid "Distance"
 msgstr ""
 
 msgctxt "field:party.party,email:"
-msgid "E-Mail"
-msgstr "E-mail"
+msgid "Email"
+msgstr ""
 
 msgctxt "field:party.party,fax:"
 msgid "Fax"
@@ -507,6 +507,7 @@ msgctxt "model:ir.action,name:wizard_replace"
 msgid "Replace"
 msgstr "Sostituisci"
 
+#, python-format
 msgctxt "model:ir.message,text:msg_address_change_party"
 msgid "You cannot change the party of address \"%(address)s\"."
 msgstr ""
@@ -520,16 +521,19 @@ msgctxt "model:ir.message,text:msg_category_name_unique"
 msgid "The name of party category must be unique by parent."
 msgstr ""
 
+#, python-format
 msgctxt "model:ir.message,text:msg_contact_mechanism_change_party"
 msgid "You cannot change the party of contact mechanism \"%(contact)s\"."
 msgstr ""
 
+#, python-format
 msgctxt "model:ir.message,text:msg_different_name"
 msgid "Parties have different names: \"%(source_name)s\" vs \"%(destination_name)s\"."
 msgstr ""
 "Le controparti hanno nomi differenti: \"%(source_name)s\" contro "
 "\"%(destination_name)s\"."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_different_tax_identifier"
 msgid ""
 "Parties have different tax identifiers: \"%(source_code)s\" vs "
@@ -538,37 +542,40 @@ msgstr ""
 "Le controparti hanno identificativi fiscali differenti: \"%(source_code)s\" "
 "contro \"%(destination_code)s\"."
 
-#, fuzzy
+#, fuzzy, python-format
 msgctxt "model:ir.message,text:msg_email_invalid"
 msgid "The email address \"%(email)s\" for party \"%(party)s\" is not valid."
 msgstr ""
 "Il numero di partita IVA \"%(code)s\" della controparte \"%(party)s\" non è "
 "valido."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_erase_active_party"
 msgid "Party \"%(party)s\" cannot be erased because they are still active."
 msgstr ""
 "La controparte \"%(party)s\" non può essere cancellata perché è ancora "
 "attiva."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_identifier_type_remove"
 msgid ""
 "To remove the identifier type \"%(type)s\" from the configuration, you must "
 "change it on \"%(identifier)s\"."
 msgstr ""
 
-#, fuzzy
+#, fuzzy, python-format
 msgctxt "model:ir.message,text:msg_invalid_code"
 msgid "The %(type)s \"%(code)s\" for party \"%(party)s\" is not valid."
 msgstr ""
 "Il numero di partita IVA \"%(code)s\" della controparte \"%(party)s\" non è "
 "valido."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_invalid_format"
 msgid "Invalid format \"%(format)s\" with exception \"%(exception)s\"."
 msgstr "Formato non valido \"%(format)s\" con eccezione \"%(exception)s\"."
 
-#, fuzzy
+#, fuzzy, python-format
 msgctxt "model:ir.message,text:msg_invalid_phone_number"
 msgid "The phone number \"%(phone)s\" for party \"%(party)s\" is not valid."
 msgstr ""
@@ -579,11 +586,12 @@ msgctxt "model:ir.message,text:msg_party_code_unique"
 msgid "The code on party must be unique."
 msgstr "Il codice della controparte deve essere univoco."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_party_identifier_duplicate"
 msgid "The party \"%(party)s\" has the same %(type)s \"%(code)s\"."
 msgstr ""
 
-#, fuzzy
+#, fuzzy, python-format
 msgctxt "model:ir.message,text:msg_party_set_contact_mechanism"
 msgid ""
 "To change the \"%(field)s\" for party \"%(party)s\", you must edit their "
@@ -908,6 +916,10 @@ msgid "Egyptian Tax Registration Number"
 msgstr "Identificatore fiscale"
 
 msgctxt "selection:party.configuration,identifier_types:"
+msgid "El Salvador Tax Number"
+msgstr ""
+
+msgctxt "selection:party.configuration,identifier_types:"
 msgid "English Unique Pupil Number"
 msgstr ""
 
@@ -1077,6 +1089,10 @@ msgid "Japanese Corporate Number"
 msgstr ""
 
 msgctxt "selection:party.configuration,identifier_types:"
+msgid "Kenya Tax Number"
+msgstr ""
+
+msgctxt "selection:party.configuration,identifier_types:"
 msgid "Latvian VAT Number"
 msgstr ""
 
@@ -1119,6 +1135,10 @@ msgstr ""
 
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "Monacan VAT Number"
+msgstr ""
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Montenegro Tax Number"
 msgstr ""
 
 msgctxt "selection:party.configuration,identifier_types:"
@@ -1207,6 +1227,10 @@ msgid "Serbian Tax Identification"
 msgstr ""
 
 msgctxt "selection:party.configuration,identifier_types:"
+msgid "Singapore's Unique Entity Number"
+msgstr ""
+
+msgctxt "selection:party.configuration,identifier_types:"
 msgid "Slovak Birth Number"
 msgstr ""
 
@@ -1283,6 +1307,10 @@ msgid "Swiss VAT Number"
 msgstr ""
 
 msgctxt "selection:party.configuration,identifier_types:"
+msgid "Taiwanese Tax Number"
+msgstr ""
+
+msgctxt "selection:party.configuration,identifier_types:"
 msgid "Thai Memorandum of Association Number"
 msgstr ""
 
@@ -1303,6 +1331,11 @@ msgstr ""
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "Turkish Personal Identification Number"
 msgstr ""
+
+#, fuzzy
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Turkish Tax Identification Number"
+msgstr "Identificatore fiscale"
 
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "U.S. Adoption Taxpayer Identification Number"
@@ -1345,6 +1378,10 @@ msgid "United Kingdom National Health Service Patient Identifier"
 msgstr ""
 
 msgctxt "selection:party.configuration,identifier_types:"
+msgid "United Kingdom Unique Taxpayer Reference"
+msgstr ""
+
+msgctxt "selection:party.configuration,identifier_types:"
 msgid "Uruguay Tax Number"
 msgstr ""
 
@@ -1357,8 +1394,8 @@ msgid "Vietnam Tax Number"
 msgstr ""
 
 msgctxt "selection:party.contact_mechanism,type:"
-msgid "E-Mail"
-msgstr "E-mail"
+msgid "Email"
+msgstr ""
 
 msgctxt "selection:party.contact_mechanism,type:"
 msgid "Fax"
@@ -1409,9 +1446,10 @@ msgctxt "view:party.replace.ask:"
 msgid "Party"
 msgstr "Controparte"
 
+#, fuzzy
 msgctxt "view:party.replace.ask:"
-msgid "Replace By"
-msgstr "Sostituisci con"
+msgid "Replaced By"
+msgstr "Sostituito da"
 
 msgctxt "wizard_button:party.check_vies,result,end:"
 msgid "OK"

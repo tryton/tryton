@@ -153,6 +153,7 @@ msgctxt ""
 msgid "Exception"
 msgstr "Uitzondering"
 
+#, python-format
 msgctxt "model:ir.message,text:msg_purchase_delete_request"
 msgid ""
 "You cannot delete purchase \"%(purchase)s\" because it is linked to purchase"
@@ -161,6 +162,7 @@ msgstr ""
 "U kunt de inkooporder \"%(purchase)s\" niet verwijderen omdat deze is "
 "gekoppeld aan inkoopaanvragen."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_purchase_request_warehouse"
 msgid ""
 "Warehouse \"%(purchase_warehouse)s\" on purchase \"%(purchase)s\" is "
@@ -171,6 +173,7 @@ msgstr ""
 "verschilt van magazijn \"%(request_warehouse)s\" van gekoppeld "
 "inkoopaanvraag \"%(request)s\"."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_request_delete_purchased"
 msgid ""
 "You cannot delete purchase request \"%(request)s\" because it is purchased."
@@ -263,5 +266,5 @@ msgstr "Annuleer"
 
 msgctxt ""
 "wizard_button:purchase.request.handle.purchase.cancellation,start,reset:"
-msgid "Reset to draft"
-msgstr "Terug naar concept"
+msgid "Reset to Draft"
+msgstr "Terugzetten naar concept"

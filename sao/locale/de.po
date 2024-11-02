@@ -17,14 +17,11 @@ msgstr "Verbindung zum Server nicht möglich."
 msgid "Connection error"
 msgstr "Verbindungsfehler"
 
-msgid "Favorites"
-msgstr "Favoriten"
-
-msgid "Manage..."
-msgstr "Verwalten..."
-
 msgid "Logout"
 msgstr "Abmelden"
+
+msgid "Favorites"
+msgstr "Favoriten"
 
 msgid "Action"
 msgstr "Aktion"
@@ -71,7 +68,7 @@ msgstr "Beziehung"
 msgid "Print"
 msgstr "Drucken"
 
-msgid "E-Mail"
+msgid "Email"
 msgstr "E-Mail"
 
 msgid "Previous tab"
@@ -133,6 +130,9 @@ msgstr "Nicht gefunden."
 
 msgid "Send you an email to reset your password."
 msgstr "E-Mail zum Zurücksetzen des Passworts senden."
+
+msgid "Reset forgotten password"
+msgstr "Passwort zurücksetzen"
 
 msgid ""
 "A request to reset your password has been sent.\n"
@@ -316,10 +316,10 @@ msgstr "Einen Anhang zum Datensatz hinzufügen"
 msgid "Add a note to the record"
 msgstr "Eine Notiz zu einem Datensatz hinzufügen"
 
-msgid "E-Mail..."
+msgid "Email..."
 msgstr "E-Mail..."
 
-msgid "Send an e-mail using the record"
+msgid "Send an email using the record"
 msgstr "Eine E-Mail basierend auf diesem Datensatz versenden"
 
 msgid "Export"
@@ -377,6 +377,9 @@ msgstr "Hinzufügen..."
 
 msgid "Preview"
 msgstr "Vorschau"
+
+msgid "Manage..."
+msgstr "Verwalten..."
 
 msgid "Template"
 msgstr "Vorlage"
@@ -499,6 +502,9 @@ msgstr "Öffnen"
 
 msgid "Undelete"
 msgstr "Löschung rückgängig machen"
+
+msgid "Restore"
+msgstr "Zurücksetzen"
 
 msgid "Save As"
 msgstr "Speichern unter…"
@@ -718,7 +724,7 @@ msgid_plural "%1 records saved"
 msgstr[0] "%1 Datensatz gespeichert"
 msgstr[1] "%1 Datensätze gespeichert"
 
-msgid "E-mail %1"
+msgid "Email %1"
 msgstr "E-Mail %1"
 
 msgid "To:"

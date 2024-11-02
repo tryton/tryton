@@ -17,14 +17,11 @@ msgstr "Kan geen verbinding maken met server."
 msgid "Connection error"
 msgstr "Verbindingsfout"
 
-msgid "Favorites"
-msgstr "Favorieten"
-
-msgid "Manage..."
-msgstr "Beheren..."
-
 msgid "Logout"
 msgstr "Uitloggen"
+
+msgid "Favorites"
+msgstr "Favorieten"
 
 msgid "Action"
 msgstr "Actie"
@@ -71,8 +68,8 @@ msgstr "Gerelateerd"
 msgid "Print"
 msgstr "Afdrukken"
 
-msgid "E-Mail"
-msgstr "E-mail"
+msgid "Email"
+msgstr "Email"
 
 msgid "Previous tab"
 msgstr "Vorig tabblad"
@@ -133,6 +130,9 @@ msgstr "Niet gevonden."
 
 msgid "Send you an email to reset your password."
 msgstr "Stuurt u een email om het wachtwoord te resetten."
+
+msgid "Reset forgotten password"
+msgstr "Reset vergeten wachtwoord"
 
 msgid ""
 "A request to reset your password has been sent.\n"
@@ -312,17 +312,17 @@ msgstr "Voeg een bijlage toe aan het record"
 msgid "Add a note to the record"
 msgstr "Voeg een notitie toe aan het record"
 
-msgid "E-Mail..."
-msgstr "E-mail..."
+msgid "Email..."
+msgstr "Email..."
 
-msgid "Send an e-mail using the record"
-msgstr "Stuur een e-mail met behulp van het record"
+msgid "Send an email using the record"
+msgstr "Stuur een email met behulp van het record"
 
 msgid "Export"
 msgstr "Exporteren"
 
 msgid "Import"
-msgstr "Importeren"
+msgstr "Importeer"
 
 msgid ""
 "The following action requires to close all tabs.\n"
@@ -373,6 +373,9 @@ msgstr "Toevoegen..."
 
 msgid "Preview"
 msgstr "Voorbeeld"
+
+msgid "Manage..."
+msgstr "Beheren..."
 
 msgid "Template"
 msgstr "Sjabloon"
@@ -493,6 +496,9 @@ msgstr "Openen"
 
 msgid "Undelete"
 msgstr "wissen ongedaan maken"
+
+msgid "Restore"
+msgstr "Herstellen"
 
 msgid "Save As"
 msgstr "Opslaan als"
@@ -712,8 +718,8 @@ msgid_plural "%1 records saved"
 msgstr[0] "%1 record opgeslagen"
 msgstr[1] "%1 records opgeslagen"
 
-msgid "E-mail %1"
-msgstr "E-mail %1"
+msgid "Email %1"
+msgstr "Email %1"
 
 msgid "To:"
 msgstr "Aan:"

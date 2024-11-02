@@ -58,6 +58,7 @@ msgctxt "model:ir.action,name:act_ups_credential_form"
 msgid "UPS Credentials"
 msgstr "Credenciales UPS"
 
+#, python-format
 msgctxt "model:ir.message,text:msg_phone_required"
 msgid ""
 "To validate shipment \"%(shipment)s\" you must add phone number for address "
@@ -66,6 +67,7 @@ msgstr ""
 "Para validar el albarán \"%(shipment)s\" debes añadir un numero de teléfono "
 "a la dirección \"%(address)s\"."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_shipment_has_reference_number"
 msgid ""
 "You cannot create shipping for shipment \"%(shipment)s\" because it has "
@@ -74,6 +76,7 @@ msgstr ""
 "No puede crear el envío para el albarán \"%(shipment)s\" porque ya tiene un "
 "número de referencia."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_shipping_description_required"
 msgid ""
 "To validate shipment \"%(shipment)s\" you must fill its shipping "
@@ -82,6 +85,11 @@ msgstr ""
 "Para validar el albaran \"%(shipment)s\" debe llenar la descripción de "
 "envío."
 
+msgctxt "model:ir.message,text:msg_ups_credential_modified"
+msgid "Are you sure you want to modify UPS credentials?"
+msgstr "¿Está seguro de que desea modificar las credenciales de UPS?"
+
+#, python-format
 msgctxt "model:ir.message,text:msg_ups_webservice_error"
 msgid ""
 "UPS webservice call failed with the following error message:\n"
@@ -90,6 +98,7 @@ msgstr ""
 "La llamada al servicio web UPS ha fallado con el siguiente mensaje de error:\n"
 "%(message)s"
 
+#, python-format
 msgctxt "model:ir.message,text:msg_warehouse_address_required"
 msgid ""
 "To validate shipment \"%(shipment)s\" you must set an address on warehouse "

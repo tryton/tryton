@@ -42,12 +42,14 @@ msgctxt "model:ir.action,name:wizard_recall_deposit"
 msgid "Recall Deposit"
 msgstr "Anzahlung verrechnen"
 
+#, python-format
 msgctxt "model:ir.message,text:msg_deposit_not_enough"
 msgid "The account \"%(account)s\" has not enough deposit from party \"%(party)s\"."
 msgstr ""
 "Auf Konto \"%(account)s\" ist nicht genügend Guthaben von Partei "
 "\"%(party)s\" vorhanden."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_erase_party_deposit"
 msgid ""
 "You cannot erase party \"%(party)s\" while they have deposit at company "

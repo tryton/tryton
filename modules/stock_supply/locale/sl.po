@@ -50,10 +50,6 @@ msgctxt "field:stock.order_point,provisioning_location:"
 msgid "Provisioning Location"
 msgstr "Preskrbovalna lokacija"
 
-msgctxt "field:stock.order_point,storage_location:"
-msgid "Storage Location"
-msgstr "Shramba"
-
 msgctxt "field:stock.order_point,target_quantity:"
 msgid "Target Quantity"
 msgstr "Ciljna količina"
@@ -65,10 +61,6 @@ msgstr "Vrsta"
 msgctxt "field:stock.order_point,unit:"
 msgid "Unit"
 msgstr "enota"
-
-msgctxt "field:stock.order_point,warehouse_location:"
-msgid "Warehouse Location"
-msgstr "Lokacija skladišča"
 
 msgctxt "field:stock.supply.start,warehouses:"
 msgid "Warehouses"

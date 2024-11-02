@@ -246,8 +246,9 @@ msgstr "Jelentés..."
 msgid "Print..."
 msgstr "Nyomtatás..."
 
-msgid "E-Mail..."
-msgstr "E-Mail..."
+#, fuzzy
+msgid "Email..."
+msgstr "E-mail..."
 
 msgid "Bold"
 msgstr "Félkövér"
@@ -357,12 +358,6 @@ msgstr "Súgó"
 
 msgid "No result found."
 msgstr "Nincs találat"
-
-msgid "Favorites"
-msgstr "Könyvjelzők"
-
-msgid "Manage..."
-msgstr "Módosítás..."
 
 msgid "Action"
 msgstr "Művelet"
@@ -596,6 +591,9 @@ msgstr "Kapcsolódás a Tryton kiszolgálóhoz"
 msgid "Profile:"
 msgstr "Profil:"
 
+msgid "Manage..."
+msgstr "Módosítás..."
+
 msgid "Host / Database information"
 msgstr "Kiszolgáló / adatbázis információ"
 
@@ -607,7 +605,7 @@ msgid "Unable to complete email entry"
 msgstr "Nem lehet beállítani a csoportot: %s"
 
 #, fuzzy, python-format
-msgid "E-mail %s"
+msgid "Email %s"
 msgstr "E-mail %s"
 
 msgid "To:"
@@ -858,10 +856,12 @@ msgstr "Nyomtatvány megnyitása..."
 msgid "_Print..."
 msgstr "Nyomtatás…"
 
-msgid "_E-Mail..."
+#, fuzzy
+msgid "_Email..."
 msgstr "E-mail..."
 
-msgid "Send an e-mail using the record"
+#, fuzzy
+msgid "Send an email using the record"
 msgstr "E-mail küldése a rekord adataival"
 
 msgid "_Export Data..."
@@ -913,6 +913,9 @@ msgstr "Mezőnév"
 msgid "CSV Export: %s"
 msgstr "Exportálás CSV-be: %s"
 
+msgid "Open"
+msgstr "Megnyitás"
+
 msgid "_Save Export"
 msgstr "Oszloplista elmenté_se"
 
@@ -927,12 +930,6 @@ msgstr "<b>Elmentett oszloplisták</b>"
 
 msgid "Name"
 msgstr "Név"
-
-msgid "Open"
-msgstr "Megnyitás"
-
-msgid "Save"
-msgstr "Mentés"
 
 msgid "Listed Records"
 msgstr "A listán szereplő összes rekordot"
@@ -992,6 +989,9 @@ msgstr ""
 msgid "Add and New"
 msgstr "Érték hozzáadása"
 
+msgid "Save"
+msgstr "Mentés"
+
 msgid "Add"
 msgstr "Hozzáad"
 
@@ -1016,6 +1016,10 @@ msgstr "Rekord törlésének visszavonása <Ins>"
 #, python-format
 msgid "CSV Import: %s"
 msgstr "Importálás CSV-ből: %s"
+
+#, fuzzy
+msgid "Import"
+msgstr "Nyomtatvány"
 
 msgid "_Auto-Detect"
 msgstr "_Automatikus felismerés"
@@ -1223,6 +1227,10 @@ msgstr "Meglévő rekord hozzáadása"
 msgid "Remove selected record"
 msgstr "A kiválasztott rekord eltávolítása"
 
+#, fuzzy
+msgid "Restore selected record"
+msgstr "A kiválasztott rekord eltávolítása"
+
 msgid "Open the record <F2>"
 msgstr "Rekord megnyitása <F2>"
 
@@ -1236,6 +1244,10 @@ msgid "Edit selected record"
 msgstr "Kiválasztott rekord szerkesztése"
 
 msgid "Delete selected record"
+msgstr "Kiválasztott rekord törlése"
+
+#, fuzzy
+msgid "Undelete selected record"
 msgstr "Kiválasztott rekord törlése"
 
 #, python-format

@@ -6,6 +6,10 @@ msgctxt "field:account.configuration,payment_group_sequence:"
 msgid "Payment Group Sequence"
 msgstr "Volgorde van de betalingsgroepen"
 
+msgctxt "field:account.configuration,payment_sequence:"
+msgid "Payment Sequence"
+msgstr "Betalingen reeks"
+
 msgctxt "field:account.configuration.payment_group_sequence,company:"
 msgid "Company"
 msgstr "Bedrijf"
@@ -15,6 +19,14 @@ msgctxt ""
 msgid "Payment Group Sequence"
 msgstr "Volgorde van de betalingsgroepen"
 
+msgctxt "field:account.configuration.payment_sequence,company:"
+msgid "Company"
+msgstr "Bedrijf"
+
+msgctxt "field:account.configuration.payment_sequence,payment_sequence:"
+msgid "Payment Sequence"
+msgstr "Betalingen reeks"
+
 msgctxt "field:account.invoice,payment_direct_debit:"
 msgid "Direct Debit"
 msgstr "Automatische incasso"
@@ -22,6 +34,10 @@ msgstr "Automatische incasso"
 msgctxt "field:account.move.line,payment_amount:"
 msgid "Amount to Pay"
 msgstr "Te betalen bedrag"
+
+msgctxt "field:account.move.line,payment_amount_cache:"
+msgid "Amount to Pay Cache"
+msgstr "Cache te betalen bedrag"
 
 msgctxt "field:account.move.line,payment_blocked:"
 msgid "Blocked"
@@ -110,6 +126,10 @@ msgstr "Soort"
 msgctxt "field:account.payment,line:"
 msgid "Line"
 msgstr "Regel"
+
+msgctxt "field:account.payment,number:"
+msgid "Number"
+msgstr "Nummer"
 
 msgctxt "field:account.payment,origin:"
 msgid "Origin"
@@ -243,6 +263,10 @@ msgctxt "field:party.party.reception_direct_debit,process_method:"
 msgid "Process Method"
 msgstr "Uitvoeringsmethode"
 
+msgctxt "field:party.party.reception_direct_debit,type:"
+msgid "Type"
+msgstr "Soort"
+
 msgctxt "help:account.invoice,payment_direct_debit:"
 msgid "Check if the invoice is paid by direct debit."
 msgstr "Vink aan als de factuur per automatische incasso wordt betaald."
@@ -280,6 +304,14 @@ msgctxt "help:account.payment.group,payment_count:"
 msgid "The number of payments in the group."
 msgstr "Het aantal betalingen in de groep."
 
+msgctxt "help:account.statement.rule,description:"
+msgid ""
+"\n"
+"'payment'"
+msgstr ""
+"\n"
+"'betaling'"
+
 msgctxt "help:party.party,payment_direct_debit:"
 msgid "Check if supplier does direct debit."
 msgstr "Controleer of de leverancier een automatische incasso uitvoert."
@@ -295,6 +327,10 @@ msgstr "Controleer of de leverancier een automatische incasso uitvoert."
 msgctxt "model:account.configuration.payment_group_sequence,name:"
 msgid "Account Configuration Payment Group Sequence"
 msgstr "Rekeningconfiguratie Betalingsgroepvolgorde"
+
+msgctxt "model:account.configuration.payment_sequence,name:"
+msgid "Account Configuration Payment Sequence"
+msgstr "Rekeningconfiguratie betalingsreeks"
 
 msgctxt "model:account.move.line.create_direct_debit.start,name:"
 msgid "Create Direct Debit"
@@ -453,6 +489,7 @@ msgctxt ""
 msgid "Pending"
 msgstr "In behandeling"
 
+#, python-format
 msgctxt "model:ir.message,text:msg_erase_party_pending_payment"
 msgid ""
 "You cannot erase party \"%(party)s\" while they have pending payments with "
@@ -461,6 +498,7 @@ msgstr ""
 "U kunt relatie \"%(party)s\" niet verwijderen terwijl ze betalingen open "
 "hebben staan bij bedrijf \"%(company)s\"."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_move_cancel_payments"
 msgid ""
 "The moves \"%(moves)s\" contain lines with payments, you may want to cancel "
@@ -469,6 +507,7 @@ msgstr ""
 "De boekingen \"%(moves)s\" bevatten regels met betalingen, mogelijk wilt u "
 "deze annuleren voordat boekingen worden geannuleerd."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_move_line_delegate_payments"
 msgid ""
 "The lines \"%(lines)s\" have payments, you may want to cancel them before "
@@ -477,6 +516,7 @@ msgstr ""
 "De regels \"%(lines)s\" bevatten betalingen, mogelijk wilt u deze annuleren "
 "voordat de regels worden gedelegeerd."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_move_line_group_payments"
 msgid ""
 "The lines \"%(lines)s\" have payments, you may want to cancel them before "
@@ -485,6 +525,7 @@ msgstr ""
 "De regels \"%(lines)s\" bevatten betalingen, mogelijk wilt u deze annuleren "
 "voordat de regels worden gegroepeerd."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_move_line_reschedule_payments"
 msgid ""
 "The lines \"%(lines)s\" have payments, you may want to cancel them before "
@@ -493,10 +534,12 @@ msgstr ""
 "De regels \"%(lines)s\" bevatten betalingen, mogelijk wilt u deze annuleren "
 "voordat de regels worden herpland."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_pay_line_blocked"
 msgid "Line \"%(line)s\" is blocked for payment."
 msgstr "Regel \"%(line)s\" is geblokkeerd voor betaling."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_pay_line_group"
 msgid ""
 "The lines \"%(names)s\" for %(party)s could be grouped with the line "
@@ -505,18 +548,21 @@ msgstr ""
 "De regels \"%(names)s\" voor %(party)s kunnen worden gegroepeerd met de "
 "regel \"%(line)s\"."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_payment_delete_draft"
 msgid "To delete payment \"%(payment)s\" you must reset it to draft state."
 msgstr ""
 "Om betaling \"%(payment)s\" te verwijderen, moet u het terugzetten naar de "
 "conceptstatus."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_payment_overpay"
 msgid "Payment \"%(payment)s\" overpays line \"%(line)s\"."
 msgstr ""
 "Het betaalde bedrag \"%(payment)s\" is hoger dan \"%(line)s\" (te veel "
 "betaald) ."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_payment_reconciled"
 msgid "The line \"%(line)s\" of payment \"%(payment)s\" is already reconciled."
 msgstr "De regel \"%(line)s\" van betaling \"%(payment)s\" is alreeds afgeletterd."
@@ -586,9 +632,17 @@ msgctxt "model:ir.rule.group,name:rule_group_payment_journal_companies"
 msgid "User in companies"
 msgstr "Gebruiker in het bedrijf"
 
+msgctxt "model:ir.sequence,name:sequence_account_payment"
+msgid "Default Account Payment"
+msgstr "Standaard betalingen rekening"
+
 msgctxt "model:ir.sequence,name:sequence_account_payment_group"
 msgid "Default Account Payment Group"
 msgstr "Standaard rekening betalingsgroep"
+
+msgctxt "model:ir.sequence.type,name:sequence_type_account_payment"
+msgid "Account Payment Group"
+msgstr "Rekening groupsbetalingen"
 
 msgctxt "model:ir.sequence.type,name:sequence_type_account_payment_group"
 msgid "Account Payment Group"
@@ -694,13 +748,25 @@ msgctxt "selection:account.payment.journal,process_method:"
 msgid "Manual"
 msgstr "Handmatig"
 
+msgctxt "selection:party.party.reception_direct_debit,type:"
+msgid "Balance"
+msgstr "Balans"
+
+msgctxt "selection:party.party.reception_direct_debit,type:"
+msgid "Line"
+msgstr "Regel"
+
 msgctxt "view:account.configuration:"
-msgid "Group Sequence"
-msgstr "Groepsvolgorde"
+msgid "Group Sequence:"
+msgstr "Groepsvolgorde:"
 
 msgctxt "view:account.configuration:"
 msgid "Payment"
 msgstr "Betaling"
+
+msgctxt "view:account.configuration:"
+msgid "Sequence:"
+msgstr "Reek:"
 
 msgctxt "view:account.move.line.create_direct_debit.start:"
 msgid "Create Direct Debit for date"

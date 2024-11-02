@@ -25,10 +25,12 @@ msgctxt "help:res.user,mobile:"
 msgid "Phone number that supports receiving SMS."
 msgstr ""
 
+#, python-format
 msgctxt "model:ir.message,text:msg_sms_text"
 msgid "%(name)s code %(code)s"
 msgstr ""
 
+#, python-format
 msgctxt "model:ir.message,text:msg_user_sms_code"
 msgid "SMS Code for %(login)s"
 msgstr ""

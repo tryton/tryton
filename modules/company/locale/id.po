@@ -18,6 +18,14 @@ msgctxt "field:company.company,header:"
 msgid "Header"
 msgstr "Tajuk"
 
+msgctxt "field:company.company,logo:"
+msgid "Logo"
+msgstr ""
+
+msgctxt "field:company.company,logo_cache:"
+msgid "Cache"
+msgstr ""
+
 msgctxt "field:company.company,party:"
 msgid "Party"
 msgstr "Pihak"
@@ -25,6 +33,23 @@ msgstr "Pihak"
 msgctxt "field:company.company,timezone:"
 msgid "Timezone"
 msgstr "Zona Waktu"
+
+#, fuzzy
+msgctxt "field:company.company.logo.cache,company:"
+msgid "Company"
+msgstr "Perusahaan"
+
+msgctxt "field:company.company.logo.cache,height:"
+msgid "Height"
+msgstr ""
+
+msgctxt "field:company.company.logo.cache,image:"
+msgid "Image"
+msgstr ""
+
+msgctxt "field:company.company.logo.cache,width:"
+msgid "Width"
+msgstr ""
 
 msgctxt "field:company.employee,active:"
 msgid "Active"
@@ -235,6 +260,11 @@ msgctxt "model:company.company.config.start,name:"
 msgid "Company Config"
 msgstr "Konfigurasi Perusahaan"
 
+#, fuzzy
+msgctxt "model:company.company.logo.cache,name:"
+msgid "Company Logo Cache"
+msgstr "Konfigurasi Perusahaan"
+
 msgctxt "model:company.employee,name:"
 msgid "Employee"
 msgstr "Karyawan"
@@ -262,6 +292,10 @@ msgstr ""
 msgctxt "model:ir.cron-company.company,name:"
 msgid "Cron - Company"
 msgstr "Cron - Perusahaan"
+
+msgctxt "model:ir.message,text:msg_company_logo_cache_size_unique"
+msgid "The size of cached company logo must be unique."
+msgstr ""
 
 #, fuzzy
 msgctxt "model:ir.rule.group,name:rule_group_sequence_companies"
@@ -331,8 +365,17 @@ msgid "You can now add your company into the system."
 msgstr "Anda sekarang dapat menambahkan perusahaan Anda ke dalam sistem."
 
 msgctxt "view:company.company:"
+msgid "Company"
+msgstr "Perusahaan"
+
+msgctxt "view:company.company:"
 msgid "Reports"
 msgstr "Laporan-Laporan"
+
+#, fuzzy
+msgctxt "view:company.employee:"
+msgid "Employee"
+msgstr "Karyawan"
 
 msgctxt "wizard_button:company.company.config,company,add:"
 msgid "Add"

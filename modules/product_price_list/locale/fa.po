@@ -109,11 +109,22 @@ msgctxt "model:ir.action,name:act_price_list_form"
 msgid "Price Lists"
 msgstr "لیست های قیمت"
 
+#, fuzzy
+msgctxt "model:ir.action,name:act_price_list_line_form"
+msgid "Price List Lines"
+msgstr "خط لیست قیمت"
+
+#, fuzzy, python-format
 msgctxt "model:ir.message,text:msg_invalid_formula"
 msgid ""
 "Invalid formula \"%(formula)s\" in price list line \"%(line)s\" with "
 "exception \"%(exception)s\"."
 msgstr "فرمول: \"%s\" در سطر لیست قیمت: \"%s\" با استثنا: \"%s\" نامعتبر میباشد."
+
+#, fuzzy
+msgctxt "model:ir.model.button,string:price_list_open_lines_button"
+msgid "Open Lines"
+msgstr "خطوط"
 
 msgctxt "model:ir.rule.group,name:rule_group_price_list_companies"
 msgid "User in companies"
@@ -129,6 +140,11 @@ msgstr "لیست قیمت"
 
 msgctxt "model:product.price_list.line,name:"
 msgid "Price List Line"
+msgstr "خط لیست قیمت"
+
+#, fuzzy
+msgctxt "model:product.price_list.line.context,name:"
+msgid "Price List Line Context"
 msgstr "خط لیست قیمت"
 
 msgctxt "selection:product.price_list,price:"

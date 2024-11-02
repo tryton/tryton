@@ -74,6 +74,7 @@ msgctxt ""
 msgid "Waiting"
 msgstr "En attentes"
 
+#, python-format
 msgctxt "model:ir.message,text:msg_account_move_export_delete_draft"
 msgid "To delete move export \"%(export)s\" you must reset it to draft."
 msgstr ""

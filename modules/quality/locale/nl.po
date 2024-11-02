@@ -195,16 +195,16 @@ msgid "Inspect Run"
 msgstr "Inspectie Uitvoeren"
 
 msgctxt "model:ir.action,name:wizard_stock_shipment_in_inspect_do"
-msgid "Inspect Done"
-msgstr "Inspectie afronden"
+msgid "Inspect Completion"
+msgstr "Voltooi inspectie"
 
 msgctxt "model:ir.action,name:wizard_stock_shipment_in_inspect_receive"
 msgid "Inspect Reception"
 msgstr "Inspectie Levering"
 
 msgctxt "model:ir.action,name:wizard_stock_shipment_internal_inspect_do"
-msgid "Inspect Done"
-msgstr "Inspectie afronden"
+msgid "Inspect Completion"
+msgstr "Voltooi inspectie"
 
 msgctxt "model:ir.action,name:wizard_stock_shipment_internal_inspect_ship"
 msgid "Inspect Ship"
@@ -219,8 +219,8 @@ msgid "Inspect Pick"
 msgstr "Inspectie Picking"
 
 msgctxt "model:ir.action,name:wizard_stock_shipment_out_return_inspect_do"
-msgid "Inspect Done"
-msgstr "Inspectie afronden"
+msgid "Inspect Completion"
+msgstr "Voltooi inspectie"
 
 msgctxt ""
 "model:ir.action,name:wizard_stock_shipment_out_return_inspect_receive"
@@ -262,12 +262,21 @@ msgctxt ""
 msgid "Processed"
 msgstr "Verwerkt"
 
+#, python-format
+msgctxt "model:ir.message,text:msg_inspection_delete_non_pending"
+msgid ""
+"To delete inspection \"%(inspection)s\" you must reset its state to pending."
+msgstr ""
+"Om inspectie \"%(inspection)s\" te verwijderen, moet u de status ervan "
+"terugzetten naar in behandeling."
+
 msgctxt "model:ir.message,text:msg_quality_inspection_failed"
 msgid "To continue, alerts from failed inspections must be resolved."
 msgstr ""
 "Om door te gaan, moeten waarschuwingen van mislukte inspecties worden "
 "opgelost."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_quality_inspection_missing_point"
 msgid ""
 "To complete the inspection \"%(inspection)s\", you must test points "

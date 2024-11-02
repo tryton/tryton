@@ -158,18 +158,21 @@ msgctxt "model:ir.action.act_window.domain,name:act_work_list_domain_waiting"
 msgid "Waiting"
 msgstr "V čakanju"
 
+#, python-format
 msgctxt "model:ir.message,text:msg_delete_request"
 msgid "To delete work \"%(work)s\" it must be in the \"request\" or \"draft\" state."
 msgstr ""
 "Če želite izbrisati delo »%(work)s«, mora biti v stanju »Zahtevek« ali "
 "»Osnutek«."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_do_finished_work"
 msgid "To complete production \"%(production)s\", work \"%(work)s\" must be finished."
 msgstr ""
 "Za dokončanje proizvodnje \"%(production)s\" mora biti dokončano delo "
 "\"%(work)s\"."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_missing_work_center"
 msgid ""
 "Could not find a work center of category \"%(category)s\" under "

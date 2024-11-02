@@ -2,16 +2,19 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
+#, fuzzy
 msgctxt "field:web.user,email:"
-msgid "E-mail"
+msgid "Email"
 msgstr "电子邮件"
 
+#, fuzzy
 msgctxt "field:web.user,email_token:"
-msgid "E-mail Token"
+msgid "Email Token"
 msgstr "电子邮件令牌"
 
+#, fuzzy
 msgctxt "field:web.user,email_valid:"
-msgid "E-mail Valid"
+msgid "Email Valid"
 msgstr "电子邮件有效"
 
 msgctxt "field:web.user,party:"
@@ -86,12 +89,14 @@ msgctxt "model:ir.action,name:report_email_validation"
 msgid "Email Validation"
 msgstr "电子邮件验证"
 
+#, python-format
 msgctxt "model:ir.message,text:msg_user_email_invalid"
 msgid "The email address \"%(email)s\" for \"%(user)s\" is not valid."
 msgstr "用户 \"%(user)s\" 的电子邮件地址 \"%(email)s\" 无效。"
 
+#, fuzzy
 msgctxt "model:ir.message,text:msg_user_email_unique"
-msgid "E-mail of active web user must be unique."
+msgid "Email of active web user must be unique."
 msgstr "已经激活的Web用户，电子邮件不能重复."
 
 msgctxt "model:ir.message,text:msg_user_session_key_unique"
@@ -102,8 +107,9 @@ msgctxt "model:ir.model.button,string:user_reset_password_button"
 msgid "Reset Password"
 msgstr "重置密码"
 
+#, fuzzy
 msgctxt "model:ir.model.button,string:user_validate_email_button"
-msgid "Validate E-mail"
+msgid "Validate Email"
 msgstr "验证电子邮件"
 
 msgctxt "model:ir.ui.menu,name:menu_user_form"
@@ -131,6 +137,7 @@ msgctxt "report:web.user.email_reset_password:"
 msgid "Button not working? Paste this into your browser:"
 msgstr "按钮不起作用？ 将此粘贴到浏览器的地址栏中:"
 
+#, python-format
 msgctxt "report:web.user.email_reset_password:"
 msgid ""
 "Hello, we received a request to reset the password for the account associated with [1:%(email)s]. No changes have been made to your account yet.[2:]\n"
@@ -148,10 +155,12 @@ msgctxt "report:web.user.email_reset_password:"
 msgid "Reset Password"
 msgstr "重置密码"
 
+#, python-format
 msgctxt "report:web.user.email_reset_password:"
 msgid "The link will expire in [1:%(datetime)s]."
 msgstr "链接过期时间： [1:%(datetime)s]。"
 
+#, python-format
 msgctxt "report:web.user.email_validation:"
 msgid "%(email)s"
 msgstr "%(email)s"
@@ -180,6 +189,7 @@ msgctxt "view:web.user:"
 msgid "Reset Password"
 msgstr "重置密码"
 
+#, fuzzy
 msgctxt "view:web.user:"
-msgid "Validate E-mail"
+msgid "Validate Email"
 msgstr "验证电子邮件"

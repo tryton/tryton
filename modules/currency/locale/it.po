@@ -170,14 +170,11 @@ msgctxt "model:ir.action,name:act_currency_form"
 msgid "Currencies"
 msgstr "Valute"
 
-msgctxt "model:ir.message,text:msg_currency_rate_positive"
-msgid "A currency rate must be positive."
-msgstr "Un tasso di cambio deve essere positivo."
-
 msgctxt "model:ir.message,text:msg_currency_unique_rate_date"
 msgid "A currency can only have one rate by date."
 msgstr "Una valuta può avere solo un cambio per giorno."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_no_rate"
 msgid "No rate found for currency \"%(currency)s\" on \"%(date)s\"."
 msgstr "Tasso di cambio non trovato per la valuta \"%(currency)s\" il \"%(date)s\"."

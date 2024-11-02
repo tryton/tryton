@@ -197,6 +197,7 @@ msgctxt ""
 msgid "Sent"
 msgstr "ارسال"
 
+#, fuzzy, python-format
 msgctxt "model:ir.message,text:msg_previous_quotation"
 msgid "A quotation was already made for request \"%(request)s\"."
 msgstr "یک نقل قول(دستور) در حال حاضر برای درخواست : \"%s\" وجود دارد."

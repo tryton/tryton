@@ -502,6 +502,11 @@ msgctxt "field:ir.cron,interval_type:"
 msgid "Interval Type"
 msgstr "Typ interwału"
 
+#, fuzzy
+msgctxt "field:ir.cron,logs:"
+msgid "Logs"
+msgstr "Logi"
+
 msgctxt "field:ir.cron,method:"
 msgid "Method"
 msgstr "Metoda"
@@ -514,6 +519,10 @@ msgctxt "field:ir.cron,next_call:"
 msgid "Next Call"
 msgstr "Kolejne wywołanie"
 
+msgctxt "field:ir.cron,running:"
+msgid "Running"
+msgstr ""
+
 msgctxt "field:ir.cron,timezone:"
 msgid "Timezone"
 msgstr "Strefa czasowa"
@@ -521,6 +530,24 @@ msgstr "Strefa czasowa"
 msgctxt "field:ir.cron,weekday:"
 msgid "Day of Week"
 msgstr "Dzień tygodnia"
+
+#, fuzzy
+msgctxt "field:ir.cron.log,cron:"
+msgid "Cron"
+msgstr "Cron"
+
+#, fuzzy
+msgctxt "field:ir.cron.log,duration:"
+msgid "Duration"
+msgstr "Kierunek"
+
+msgctxt "field:ir.cron.log,ended:"
+msgid "Ended"
+msgstr ""
+
+msgctxt "field:ir.cron.log,started:"
+msgid "Started"
+msgstr ""
 
 msgctxt "field:ir.email,addresses:"
 msgid "Addresses"
@@ -562,8 +589,9 @@ msgctxt "field:ir.email.address,address:"
 msgid "Address"
 msgstr "Adres"
 
+#, fuzzy
 msgctxt "field:ir.email.address,email:"
-msgid "E-mail"
+msgid "Email"
 msgstr "E-mail"
 
 msgctxt "field:ir.email.template,body:"
@@ -1514,6 +1542,11 @@ msgctxt "field:ir.ui.menu,favorite:"
 msgid "Favorite"
 msgstr "Ulubione"
 
+#, fuzzy
+msgctxt "field:ir.ui.menu,favorites:"
+msgid "Favorites"
+msgstr "Ulubione"
+
 msgctxt "field:ir.ui.menu,icon:"
 msgid "Icon"
 msgstr "Ikona"
@@ -1602,6 +1635,11 @@ msgctxt "field:ir.ui.view_search,model:"
 msgid "Model"
 msgstr "Model"
 
+#, fuzzy
+msgctxt "field:ir.ui.view_search,model_ref:"
+msgid "Model"
+msgstr "Model"
+
 msgctxt "field:ir.ui.view_search,name:"
 msgid "Name"
 msgstr "Nazwa"
@@ -1614,6 +1652,21 @@ msgctxt "field:ir.ui.view_tree_optional,field:"
 msgid "Field"
 msgstr "Pole"
 
+#, fuzzy
+msgctxt "field:ir.ui.view_tree_optional,field_ref:"
+msgid "Field"
+msgstr "Pole"
+
+#, fuzzy
+msgctxt "field:ir.ui.view_tree_optional,model:"
+msgid "Model"
+msgstr "Model"
+
+#, fuzzy
+msgctxt "field:ir.ui.view_tree_optional,model_ref:"
+msgid "Model"
+msgstr "Model"
+
 msgctxt "field:ir.ui.view_tree_optional,user:"
 msgid "User"
 msgstr "Użytkownik"
@@ -1622,9 +1675,15 @@ msgctxt "field:ir.ui.view_tree_optional,value:"
 msgid "Value"
 msgstr "Wartość"
 
-msgctxt "field:ir.ui.view_tree_optional,view_id:"
-msgid "View ID"
-msgstr "ID widoku"
+#, fuzzy
+msgctxt "field:ir.ui.view_tree_optional,view:"
+msgid "View"
+msgstr "Widok"
+
+#, fuzzy
+msgctxt "field:ir.ui.view_tree_state,child_field:"
+msgid "Child Field"
+msgstr "Pole elementów podrzędnych"
 
 msgctxt "field:ir.ui.view_tree_state,child_name:"
 msgid "Child Name"
@@ -1635,6 +1694,11 @@ msgid "Domain"
 msgstr "Domena"
 
 msgctxt "field:ir.ui.view_tree_state,model:"
+msgid "Model"
+msgstr "Model"
+
+#, fuzzy
+msgctxt "field:ir.ui.view_tree_state,model_ref:"
 msgid "Model"
 msgstr "Model"
 
@@ -1738,9 +1802,10 @@ msgctxt "help:ir.email.template,recipients:"
 msgid "The field that contains the recipient(s)."
 msgstr "Pole zawierające odbiorcę(ów)."
 
+#, fuzzy
 msgctxt "help:ir.email.template,recipients_hidden:"
-msgid "The field that contains the secondary recipient(s)."
-msgstr "Pole zawierające dodatkowego odbiorcę(ów)."
+msgid "The field that contains the hidden recipient(s)."
+msgstr "Pole zawierające odbiorcę(ów)."
 
 msgctxt "help:ir.email.template,recipients_hidden_pyson:"
 msgid ""
@@ -1970,16 +2035,19 @@ msgctxt "model:ir.action,name:act_cron_form"
 msgid "Actions"
 msgstr "Akcje"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_email_form"
-msgid "E-mails"
+msgid "Emails"
 msgstr "E-mail"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_email_form_relate"
-msgid "E-mail Archives"
+msgid "Email Archives"
 msgstr "Archiwa wiadomości e-mail"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_email_template_form"
-msgid "E-mail Templates"
+msgid "Email Templates"
 msgstr "Szablony e-maili"
 
 msgctxt "model:ir.action,name:act_error_form"
@@ -2134,9 +2202,10 @@ msgctxt "model:ir.action,name:act_view_tree_optional_form"
 msgid "View Tree Optional"
 msgstr "Opcjonalny widok drzewa"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_view_tree_state"
-msgid "Tree State"
-msgstr "Stan drzewa"
+msgid "View Tree State"
+msgstr "Stan drzewa widoku"
 
 msgctxt "model:ir.action,name:act_view_tree_width_form"
 msgid "View Tree Width"
@@ -2403,6 +2472,11 @@ msgctxt "model:ir.cron,name:"
 msgid "Cron"
 msgstr "Cron"
 
+#, fuzzy
+msgctxt "model:ir.cron.log,name:"
+msgid "Cron Log"
+msgstr "Cron"
+
 msgctxt "model:ir.date,name:"
 msgid "Date"
 msgstr "Data"
@@ -2551,44 +2625,58 @@ msgctxt "model:ir.message,text:msg_ID"
 msgid "ID"
 msgstr "ID"
 
+#, python-format
 msgctxt "model:ir.message,text:msg_access_button_error"
 msgid "Calling button \"%(button)s on \"%(model)s\" is not allowed."
 msgstr ""
 "Uruchomienie przycisku \"%(button)s\" w modelu \"%(model)s\" jest "
 "niedozwolone."
 
+#, fuzzy, python-format
+msgctxt "model:ir.message,text:msg_access_report_error"
+msgid "You are not allowed to execute report \"%(report)s\"."
+msgstr "Nie masz uprawnień do uruchomienia kreatora \"%(wizard)s\"."
+
+#, python-format
 msgctxt "model:ir.message,text:msg_access_rule_error"
 msgid "You are not allowed to access \"%(model)s\"."
 msgstr "Nie masz dostępu do \"%(model)s\"."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_access_rule_field_error"
 msgid "You are not allowed to access \"%(model)s.%(field)s\"."
 msgstr "Nie masz dostępu do \"%(model)s.%(field)s\"."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_access_wizard_error"
 msgid "You are not allowed to execute wizard \"%(wizard)s\"."
 msgstr "Nie masz uprawnień do uruchomienia kreatora \"%(wizard)s\"."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_access_wizard_model_error"
 msgid "You are not allowed to execute wizard \"%(wizard)s\" on \"%(model)s\"."
 msgstr ""
 "Nie masz uprawnień do uruchomienia kreatora \"%(wizard)s\" w modelu "
 "\"%(model)s\"."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_action_invalid_context"
 msgid "Invalid context \"%(context)s\" for action \"%(action)s\"."
 msgstr "Nieprawidłowy kontekst \"%(context)s\" dla akcji \"%(action)s\"."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_action_invalid_domain"
 msgid "Invalid domain or search criteria \"%(domain)s\" for action \"%(action)s\"."
 msgstr ""
 "Nieprawidłowa domena lub kryteria wyszukiwania \"%(domain)s\" dla akcji "
 "\"%(action)s\"."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_action_invalid_views"
 msgid "Invalid view \"%(view)s\" for action \"%(action)s\"."
 msgstr "Nieprawidłowy widok \"%(view)s\" dla akcji \"%(action)s\"."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_action_wrong_wizard_model"
 msgid "Wrong wizard model in keyword action \"%(name)s\"."
 msgstr "Nieprawidłowy model kreatora w akcji \"%(name)s\" dot. słów kluczowych."
@@ -2633,14 +2721,22 @@ msgctxt "model:ir.message,text:msg_button_name_unique"
 msgid "The name of the button must be unique per model."
 msgstr "Nazwa przycisku musi być unikalna dla każdego modelu."
 
+#, fuzzy
+msgctxt "model:ir.message,text:msg_cache_name_unique"
+msgid "The name of cache must be unique."
+msgstr "Kod języka musi być unikalny."
+
+#, python-format
 msgctxt "model:ir.message,text:msg_context_datetime"
 msgid "At date/time: %(datetime)s"
 msgstr "Data/czas: %(datetime)s"
 
+#, python-format
 msgctxt "model:ir.message,text:msg_context_groups"
 msgid "Within groups: %(groups)s"
 msgstr "W grupach: %(groups)s"
 
+#, python-format
 msgctxt "model:ir.message,text:msg_create_rule_error"
 msgid ""
 "You are not allowed to create records of \"%(model)s\" because they fail on at least one of these rules:\n"
@@ -2657,6 +2753,7 @@ msgctxt "model:ir.message,text:msg_created_by"
 msgid "Created by"
 msgstr "Utworzył"
 
+#, python-format
 msgctxt "model:ir.message,text:msg_delete_rule_error"
 msgid ""
 "You are not allowed to delete records \"%(ids)s\" of \"%(model)s\" because of at lease one of those rules:\n"
@@ -2665,6 +2762,7 @@ msgstr ""
 "Nie masz uprawnień do usunięcia rekordów \"%(ids)s\" z modelu \"%(model)s\" z powodu niezgodności przynajmniej jednej z reguł:\n"
 "%(rules)s"
 
+#, python-format
 msgctxt "model:ir.message,text:msg_delete_xml_record"
 msgid "You are not allowed to delete the record \"%(record)s\" of \"%(model)s\"."
 msgstr "Nie możesz usunąć rekordu \"%(record)s\" z \"%(model)s\"."
@@ -2723,14 +2821,17 @@ msgctxt "model:ir.message,text:msg_dict_schema_integer"
 msgid "Integer"
 msgstr "Integer"
 
+#, python-format
 msgctxt "model:ir.message,text:msg_dict_schema_invalid_domain"
 msgid "Invalid domain in schema \"%(schema)s\"."
 msgstr "Nieprawidłowa domena w schemacie \"%(schema)s\"."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_dict_schema_invalid_help_selection"
 msgid "Invalid help selection in schema \"%(schema)s\"."
 msgstr "Nieprawidłowy wybór pomocy w schemacie \"%(schema)s\"."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_dict_schema_invalid_selection"
 msgid "Invalid selection in schema \"%(schema)s\"."
 msgstr "Nieprawidłowe zaznaczenie w schemacie \"%(schema)s\"."
@@ -2779,6 +2880,7 @@ msgctxt "model:ir.message,text:msg_dict_yes"
 msgid "Yes"
 msgstr "Tak"
 
+#, python-format
 msgctxt "model:ir.message,text:msg_digits_validation_record"
 msgid ""
 "The number of digits in the value \"%(value)r\" for field \"%(field)s\" in "
@@ -2787,6 +2889,7 @@ msgstr ""
 "Liczba cyfr wartości \"%(value)r\" dla pola \"%(field)s\" w rekordzie "
 "\"%(record)s\" z modelu \"%(model)s\" przekracza limit \"%(digits)i\"."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_domain_validation_record"
 msgid ""
 "The value \"%(value)s\" for field \"%(field)s\" in record \"%(record)s\" of "
@@ -2803,44 +2906,50 @@ msgctxt "model:ir.message,text:msg_edited_by"
 msgid "Edited by"
 msgstr "Zmodyfikował"
 
+#, fuzzy, python-format
 msgctxt "model:ir.message,text:msg_email_template_invalid_body"
 msgid ""
-"Invalid body in e-mail template \"%(template)s\" with exception "
+"Invalid body in email template \"%(template)s\" with exception "
 "\"%(exception)s\"."
 msgstr ""
 "Nieprawidłowa treść w szablonie e-mail \"%(template)s\" generująca wyjątek "
 "\"%(exception)s\"."
 
+#, fuzzy, python-format
 msgctxt "model:ir.message,text:msg_email_template_invalid_field_pyson"
 msgid ""
-"Invalid PYSON %(field)s in e-mail template \"%(template)s\" with exception "
+"Invalid PYSON %(field)s in email template \"%(template)s\" with exception "
 "\"%(exception)s\"."
 msgstr ""
 "Nieprawidłowe wyrażenie PYSON %(field)s w szablonie e-mail \"%(template)s\" "
 "generujące wyjątek \"%(exception)s\"."
 
+#, fuzzy, python-format
 msgctxt "model:ir.message,text:msg_email_template_invalid_field_pyson_type"
 msgid ""
-"The PYSON %(field)s in e-mail template \"%(template)s\" must generate a "
-"list."
+"The PYSON %(field)s in email template \"%(template)s\" must generate a list."
 msgstr "PYSON %(field)s w szablonie e-mail \"%(template)s\" musi generować listę."
 
+#, fuzzy, python-format
 msgctxt "model:ir.message,text:msg_email_template_invalid_subject"
 msgid ""
-"Invalid subject in e-mail template \"%(template)s\" with exception "
+"Invalid subject in email template \"%(template)s\" with exception "
 "\"%(exception)s\"."
 msgstr ""
 "Nieprawidłowy temat w szablonie e-mail \"%(template)s\" generujący wyjątek "
 "\"%(exception)s\"."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_field_model_name"
 msgid "%(field)s (model name)"
 msgstr "%(field)s (nazwa modelu)"
 
+#, python-format
 msgctxt "model:ir.message,text:msg_field_string"
 msgid "%(field)s (string)"
 msgstr "%(field)s (łańcuch znakowy)"
 
+#, python-format
 msgctxt "model:ir.message,text:msg_forbidden_char_validation_record"
 msgid ""
 "The value \"%(value)s\" for field \"%(field)s\" in record \"%(record)s\" of "
@@ -2849,6 +2958,7 @@ msgstr ""
 "Wartość \"%(value)s\" w polu \"%(field)s\" w rekordzie \"%(record)s\" w "
 "modelu \"%(model)s\" zawiera nieprawidłowe znaki \"%(chars)s\"."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_foreign_model_exist"
 msgid ""
 "The records could not be deleted because they are used by field "
@@ -2857,6 +2967,7 @@ msgstr ""
 "Rekordy nie mogą zostać usunięte ponieważ są używane w polu \"%(field)s\" "
 "modelu \"%(model)s\"."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_foreign_model_missing"
 msgid "The value \"%(value)s\" for field \"%(field)s\" in \"%(model)s\" does not exist."
 msgstr "Wartość \"%(value)s\" pola \"%(field)s\" w modelu \"%(model)s\" nie istnieje."
@@ -2869,26 +2980,41 @@ msgctxt "model:ir.message,text:msg_id_positive"
 msgid "ID must be positive."
 msgstr "ID musi być dodatnie."
 
+#, python-format
+msgctxt "model:ir.message,text:msg_import_data_missing_column"
+msgid "Missing values for last column at row %(row)d."
+msgstr ""
+
+#, python-format
+msgctxt "model:ir.message,text:msg_import_data_missing_columns"
+msgid "Missing values for %(n)s last columns at row %(row)d."
+msgstr ""
+
 msgctxt "model:ir.message,text:msg_language_code_unique"
 msgid "The code on language must be unique."
 msgstr "Kod języka musi być unikalny."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_language_default_translatable"
 msgid "The default language \"%(language)s\" must be translatable."
 msgstr "Domyślny język \"%(language)s\" musi być przetłumaczalny."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_language_delete_default"
 msgid "The default language \"%(language)s\" can not be deleted."
 msgstr "Domyślny język \"%(language)s\" nie może zostać usunięty."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_language_invalid_date"
 msgid "Invalid date format \"%(format)s\" for language \"%(language)s\"."
 msgstr "Niewłaściwy format daty \"%(format)s\" w języku \"%(language)s\"."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_language_invalid_grouping"
 msgid "Invalid grouping \"%(grouping)s\" for language \"%(language)s\"."
 msgstr "Niewłaściwe grupowanie \"%(grouping)s\" w języku \"%(language)s\"."
 
+#, fuzzy, python-format
 msgctxt "model:ir.message,text:msg_model_invalid_condition"
 msgid ""
 "The condition \"%(condition)s\" is not a valid PYSON expression for button "
@@ -2913,12 +3039,14 @@ msgctxt "model:ir.message,text:msg_notes"
 msgid "Notes"
 msgstr "Notatki"
 
+#, python-format
 msgctxt "model:ir.message,text:msg_read_error"
 msgid "You are trying to read records \"%(ids)s\" of \"%(model)s\" that don't exist."
 msgstr ""
 "Próbujesz odczytać rekordy \"%(ids)s\" z modelu \"%(model)s\", które nie "
 "istnieją."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_read_rule_error"
 msgid ""
 "You are not allowed to read records \"%(ids)s\" of \"%(model)s\" because of at least one of these rules:\n"
@@ -2931,6 +3059,7 @@ msgctxt "model:ir.message,text:msg_record_name"
 msgid "Record Name"
 msgstr "Nazwa rekordu"
 
+#, python-format
 msgctxt "model:ir.message,text:msg_recursion_error"
 msgid ""
 "Recursion error: Record \"%(rec_name)s\" with parent \"%(parent_rec_name)s\""
@@ -2940,22 +3069,28 @@ msgstr ""
 "\"%(parent_rec_name)s\" został skonfigurowany jako element nadrzędny siebie "
 "samego."
 
+#, fuzzy, python-format
 msgctxt "model:ir.message,text:msg_reference_syntax_error"
 msgid ""
-"Syntax error for reference: %(value)r in \"%(field)s\" of \"%(model)s\" "
-"(%(column)s)."
+"Syntax error for %(value)r in \"%(field)s\" of \"%(model)s\" at row %(row)d "
+"and column %(column)d."
 msgstr ""
-"Błąd składniowy dla referencji: %(value)r w \"%(pole)s\" z modelu "
+"Błąd składni dla wartości: %(value)r w polu \"%(pole)s\" w modelu "
 "\"%(model)s\" (%(column)s)."
 
+#, fuzzy, python-format
 msgctxt "model:ir.message,text:msg_relation_not_found"
-msgid "Relation not found: %(value)r in \"%(model)s\" (%(column)s)."
-msgstr "Brak relacji: \"%(value)r\" w \"%(model)s\" (%(column)s)."
+msgid ""
+"Could not find relation for %(value)r in \"%(model)s\" at row %(row)d and "
+"column %(column)d."
+msgstr "Znaleziono zbyt wiele relacji: %(value)r w \"%(model)s\" (%(column)s)."
 
+#, fuzzy, python-format
 msgctxt "model:ir.message,text:msg_report_invalid_email"
 msgid "Invalid email definition for report \"%(name)s\"."
 msgstr "Nieprawidłowe określenie e-maila w raporcie \"%s\"."
 
+#, fuzzy, python-format
 msgctxt "model:ir.message,text:msg_report_invalid_record_name"
 msgid ""
 "Invalid record name definition for report \"%(report)s\" with exception "
@@ -2964,10 +3099,12 @@ msgstr ""
 "Nieprawidłowa definicja nazwy rekordu dla raportu \"%(raport)s\" z wyjątkiem"
 " \"%(wyjątek)s\"."
 
+#, fuzzy, python-format
 msgctxt "model:ir.message,text:msg_required_validation"
 msgid "A value is required for field \"%(field)s\" in \"%(model)s\"."
 msgstr "W polu \"%(fields)s\" w modelu \"%(model)s\" wymagana jest wartość."
 
+#, fuzzy, python-format
 msgctxt "model:ir.message,text:msg_required_validation_record"
 msgid ""
 "A value is required for field \"%(field)s\" in record \"%(record)s\" of "
@@ -2980,14 +3117,17 @@ msgctxt "model:ir.message,text:msg_resource_copy_help"
 msgid "The resources to which this record must be copied."
 msgstr "Zasoby, do których należy skopiować ten rekord."
 
+#, fuzzy, python-format
 msgctxt "model:ir.message,text:msg_rule_invalid_domain"
 msgid "Invalid domain in rule \"%(name)s\"."
 msgstr "Nieprawidłowa domena w regule \"%s\"."
 
+#, fuzzy, python-format
 msgctxt "model:ir.message,text:msg_search_function_missing"
 msgid "Missing search function for field \"%(field)s\" in \"%(model)s\"."
 msgstr "Brak funkcji wyszukiwania w polu \"%s\"."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_selection_validation_record"
 msgid ""
 "The value \"%(value)s\" for field \"%(field)s\" in record \"%(record)s\" of "
@@ -3007,6 +3147,7 @@ msgid ""
 msgstr ""
 "Typ sekwencji nie może zostać zmieniony. Należy utworzyć nową sekwencję."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_sequence_invalid_number_increment_next"
 msgid ""
 "Invalid \"Increment Number\" (%(number_increment)s) or \"Next Number\" "
@@ -3015,22 +3156,22 @@ msgstr ""
 "Nieprawidłowy \"Numer przyrostu\" (%(number_increment)s) lub \"Następny "
 "numer\" (%(number_next)s) z wyjątkiem \"%(exception)s\"."
 
+#, fuzzy, python-format
 msgctxt "model:ir.message,text:msg_sequence_invalid_prefix"
 msgid "Invalid prefix \"%(affix)s\" for sequence \"%(sequence)s\"."
 msgstr "Niewłaściwy prefiks \"%(prefix)s\" w sekwencji \"%(sequence)s\"."
 
+#, fuzzy, python-format
 msgctxt "model:ir.message,text:msg_sequence_invalid_suffix"
 msgid "Invalid suffix \"%(affix)s\" for sequence \"%(sequence)s\"."
 msgstr "Niewłaściwy sufiks \"%(suffix)s\" w sekwencji \"%(sequence)s\"."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_sequence_last_timestamp_future"
 msgid "The \"Last Timestamp\" cannot be in the future for sequence \"%s\"."
 msgstr "Ostatni znak czasu nie może wystąpić w przyszłości w sekwencji \"%s\"."
 
-msgctxt "model:ir.message,text:msg_sequence_missing"
-msgid "Missing sequence."
-msgstr "Brakująca sekwencja."
-
+#, python-format
 msgctxt "model:ir.message,text:msg_setter_function_missing"
 msgid "Missing setter function for field \"%(field)s\" in \"%(model)s\"."
 msgstr "Brakująca funkcja setter dla pola \"%(field)s\" w \"%(model)s\"."
@@ -3039,6 +3180,7 @@ msgctxt "model:ir.message,text:msg_singleton"
 msgid "Only one singleton can be created."
 msgstr "Można utworzyć tylko jeden singleton."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_size_validation"
 msgid ""
 "The value \"%(value)s\" for field \"%(field)s\" in \"%(model)s\" is too long"
@@ -3047,6 +3189,7 @@ msgstr ""
 "Wartość \"%(value)s\" w polu \"%(field)s\" w modelu \"%(model)s\" jest za "
 "długa (%(size)i > %(max_size)i)."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_size_validation_record"
 msgid ""
 "The value \"%(value)s\" for field \"%(field)s\" in record \"%(record)s\" of "
@@ -3055,6 +3198,7 @@ msgstr ""
 "Wartość \"%(value)s\" w polu \"%(field)s\" w rekordzie \"%(record)s\" w "
 "modelu \"%(model)s\" jest za długa (%(size)i > %(max_size)i)."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_time_format_validation_record"
 msgid ""
 "The time value \"%(value)s\" for field \"%(field)s\" in record "
@@ -3091,10 +3235,14 @@ msgctxt "model:ir.message,text:msg_timedelta_w"
 msgid "w"
 msgstr "t"
 
+#, fuzzy, python-format
 msgctxt "model:ir.message,text:msg_too_many_relations_found"
-msgid "Too many relations found: %(value)r in \"%(model)s\" (%(column)s)."
+msgid ""
+"Found too many relation for %(value)r in \"%(model)s\" at row %(row)d and "
+"column %(column)d."
 msgstr "Znaleziono zbyt wiele relacji: %(value)r w \"%(model)s\" (%(column)s)."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_translation_overridden"
 msgid ""
 "You can not export translation \"%(name)s\" because it has been overridden "
@@ -3111,6 +3259,7 @@ msgstr ""
 "Nie można wybrać opcji „Na czas” i żadnej innej w tym samym czasie, ponieważ"
 " wykluczają się one wzajemnie."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_trigger_invalid_condition"
 msgid ""
 "Condition \"%(condition)s\" is not a valid PYSON expression for trigger "
@@ -3119,28 +3268,33 @@ msgstr ""
 "Warunek \"%(condition)s\" nie jest poprawnym wyrażeniem PYSON dla wyzwalacza"
 " \"%(trigger)s\"."
 
+#, fuzzy, python-format
 msgctxt "model:ir.message,text:msg_value_syntax_error"
 msgid ""
-"Syntax error for value: %(value)r in \"%(field)s\" of \"%(model)s\" "
-"(%(column)s)."
+"Syntax error for %(value)r in \"%(field)s\" of \"%(model)s\" at row %(row)d "
+"and column %(column)d."
 msgstr ""
 "Błąd składni dla wartości: %(value)r w polu \"%(pole)s\" w modelu "
 "\"%(model)s\" (%(column)s)."
 
+#, fuzzy, python-format
 msgctxt "model:ir.message,text:msg_view_invalid_xml"
 msgid "Invalid XML for view \"%(name)s\"."
 msgstr "Niewłaściwy XML dla widoku \"%s\"."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_view_search_invalid_domain"
 msgid "Invalid domain or search criteria \"%(domain)s\" for search \"%(search)s\"."
 msgstr ""
 "Nieprawidłowa domena lub kryteria wyszukiwania \"%(domain)s\" dla "
 "wyszukiwania \"%(search)s\"."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_view_tree_optional_type"
 msgid "You cannot store optional on view \"%(view)s\"."
 msgstr "Nie można zapisać opcjonalnej kolumny w widoku \"%(view)s\"."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_write_error"
 msgid ""
 "You are trying to write to records \"%(ids)s\" of \"%(model)s\" that don't "
@@ -3149,6 +3303,7 @@ msgstr ""
 "Próbujesz zapisać rekordy \"%(ids)s\" z modelu \"%(model)s\", które już nie "
 "istnieją."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_write_rule_error"
 msgid ""
 "You are not allowed to write to records \"%(ids)s\" of \"%(model)s\" because of at least one of these rules:\n"
@@ -3157,6 +3312,7 @@ msgstr ""
 "Nie masz uprawnień do zapisu rekordów \"%(ids)s\" modelu \"%(model)s\" z powodu przynajmniej jednego z reguł:\n"
 "%(rules)s"
 
+#, python-format
 msgctxt "model:ir.message,text:msg_write_xml_record"
 msgid ""
 "You are not allowed to modify the field \"%(field)s\" in record "
@@ -3168,14 +3324,6 @@ msgstr ""
 msgctxt "model:ir.message,text:msg_xml_id"
 msgid "XML ID"
 msgstr "ID XML"
-
-msgctxt "model:ir.message,text:msg_xml_id_syntax_error"
-msgid ""
-"Syntax error for XML id: %(value)r in \"%(field)s\" of \"%(model)s\" "
-"(%(column)s)."
-msgstr ""
-"Błąd składni w XML id: %(value)r w \"%(field)s\" w modelu \"%(model)s\" "
-"(%(column)s)."
 
 msgctxt "model:ir.model,name:"
 msgid "Model"
@@ -3449,12 +3597,14 @@ msgctxt "model:ir.ui.menu,name:menu_cron_form"
 msgid "Actions"
 msgstr "Akcje"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_email_form"
-msgid "E-mails"
+msgid "Emails"
 msgstr "E-mails"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_email_template_form"
-msgid "E-mail Templates"
+msgid "Email Templates"
 msgstr "Szablony e-maili"
 
 msgctxt "model:ir.ui.menu,name:menu_error_form"
@@ -3584,22 +3734,6 @@ msgstr "Interfejs użytkownika"
 msgctxt "model:ir.ui.menu,name:menu_view"
 msgid "Views"
 msgstr "Widoki"
-
-msgctxt "model:ir.ui.menu,name:menu_view_search"
-msgid "View Search"
-msgstr "Wyszukiwanie widoku"
-
-msgctxt "model:ir.ui.menu,name:menu_view_tree_optional"
-msgid "View Tree Optional"
-msgstr "Opcjonalny widok drzewa"
-
-msgctxt "model:ir.ui.menu,name:menu_view_tree_state"
-msgid "Tree State"
-msgstr "Stan drzewa"
-
-msgctxt "model:ir.ui.menu,name:menu_view_tree_width"
-msgid "View Tree Width"
-msgstr "Szerokość drzewa widoku"
 
 msgctxt "model:ir.ui.menu,name:model_model_fields_form"
 msgid "Fields"
@@ -3816,6 +3950,11 @@ msgstr "Miesiące"
 msgctxt "selection:ir.cron,interval_type:"
 msgid "Weeks"
 msgstr "Tygodnie"
+
+#, fuzzy
+msgctxt "selection:ir.cron,method:"
+msgid "Clean Cron Logs"
+msgstr "Wyczyść błędy"
 
 msgctxt "selection:ir.cron,method:"
 msgid "Clean Errors"

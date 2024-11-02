@@ -302,12 +302,18 @@ msgctxt ""
 msgid "To Process"
 msgstr "À traiter"
 
+msgctxt "model:ir.message,text:msg_braintree_key_modified"
+msgid "Are you sure you want to modify the keys of the Braintree account?"
+msgstr "Etes-vous sûr de vouloir modifier les clés du compte Braintree ?"
+
+#, python-format
 msgctxt "model:ir.message,text:msg_braintree_receivable"
 msgid "To pay \"%(payment)s\", you cannot use a Braintree journal \"%(journal)s\"."
 msgstr ""
 "Pour payer « %(payment)s », vous ne pouvez pas utiliser un journal Braintree"
 " « %(journal)s »."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_no_braintree_nonce"
 msgid ""
 "To process payment \"%(payment)s\" you must set a Braintree nonce or "
@@ -329,6 +335,10 @@ msgstr "Nouvelle URL"
 msgctxt "model:ir.model.button,string:customer_braintree_checkout_button"
 msgid "Add Card"
 msgstr "Ajouter une carte"
+
+msgctxt "model:ir.model.button,string:customer_braintree_update_button"
+msgid "Update"
+msgstr "Mettre à jour"
 
 msgctxt "model:ir.model.button,string:customer_payment_method_delete_button"
 msgid "Delete Payment Method"

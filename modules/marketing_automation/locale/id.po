@@ -28,23 +28,23 @@ msgid "Delay"
 msgstr "Jeda"
 
 msgctxt "field:marketing.automation.activity,email_click_rate:"
-msgid "E-mail Click Rate"
+msgid "Email Click Rate"
 msgstr ""
 
 msgctxt "field:marketing.automation.activity,email_click_rate_trend:"
-msgid "E-mail Click Rate Trend"
+msgid "Email Click Rate Trend"
 msgstr ""
 
 msgctxt "field:marketing.automation.activity,email_click_through_rate:"
-msgid "E-mail Click-Through Rate"
+msgid "Email Click-Through Rate"
 msgstr ""
 
 msgctxt "field:marketing.automation.activity,email_click_through_rate_trend:"
-msgid "E-mail Click-Through Rate Trend"
+msgid "Email Click-Through Rate Trend"
 msgstr ""
 
 msgctxt "field:marketing.automation.activity,email_clicked:"
-msgid "E-Mails Clicked"
+msgid "Emails Clicked"
 msgstr ""
 
 msgctxt "field:marketing.automation.activity,email_from:"
@@ -52,23 +52,23 @@ msgid "From"
 msgstr "Dari"
 
 msgctxt "field:marketing.automation.activity,email_open_rate:"
-msgid "E-mail Open Rate"
+msgid "Email Open Rate"
 msgstr ""
 
 msgctxt "field:marketing.automation.activity,email_open_rate_trend:"
-msgid "E-mail Open Rate Trend"
+msgid "Email Open Rate Trend"
 msgstr ""
 
 msgctxt "field:marketing.automation.activity,email_opened:"
-msgid "E-Mails Opened"
+msgid "Emails Opened"
 msgstr ""
 
 msgctxt "field:marketing.automation.activity,email_template:"
-msgid "E-Mail Template"
+msgid "Email Template"
 msgstr ""
 
 msgctxt "field:marketing.automation.activity,email_title:"
-msgid "E-Mail Title"
+msgid "Email Title"
 msgstr ""
 
 msgctxt "field:marketing.automation.activity,event:"
@@ -128,11 +128,11 @@ msgid "At"
 msgstr ""
 
 msgctxt "field:marketing.automation.record.activity,email_clicked:"
-msgid "E-Mail Clicked"
+msgid "Email Clicked"
 msgstr ""
 
 msgctxt "field:marketing.automation.record.activity,email_opened:"
-msgid "E-Mail Opened"
+msgid "Email Opened"
 msgstr ""
 
 msgctxt "field:marketing.automation.record.activity,record:"
@@ -158,24 +158,24 @@ msgid "Date"
 msgstr ""
 
 msgctxt "field:marketing.automation.reporting.activity,email_click_rate:"
-msgid "E-mail Click Rate"
+msgid "Email Click Rate"
 msgstr ""
 
 msgctxt ""
 "field:marketing.automation.reporting.activity,email_click_through_rate:"
-msgid "E-mail Click-Through Rate"
+msgid "Email Click-Through Rate"
 msgstr ""
 
 msgctxt "field:marketing.automation.reporting.activity,email_clicked:"
-msgid "E-Mails Clicked"
+msgid "Emails Clicked"
 msgstr ""
 
 msgctxt "field:marketing.automation.reporting.activity,email_open_rate:"
-msgid "E-mail Open Rate"
+msgid "Email Open Rate"
 msgstr ""
 
 msgctxt "field:marketing.automation.reporting.activity,email_opened:"
-msgid "E-Mails Opened"
+msgid "Emails Opened"
 msgstr ""
 
 msgctxt "field:marketing.automation.reporting.activity,record_count:"
@@ -293,7 +293,7 @@ msgstr ""
 
 msgctxt "help:marketing.automation.activity,email_template:"
 msgid ""
-"The HTML content of the E-mail.\n"
+"The HTML content of the email.\n"
 "The Genshi syntax can be used with 'record' in the evaluation context."
 msgstr ""
 
@@ -322,7 +322,7 @@ msgid "Activities"
 msgstr ""
 
 msgctxt "model:ir.action,name:act_ir_email_form_relate_activity"
-msgid "E-mails"
+msgid "Emails"
 msgstr ""
 
 msgctxt "model:ir.action,name:act_record_activity_form"
@@ -390,21 +390,24 @@ msgctxt ""
 msgid "Stopped"
 msgstr ""
 
+#, python-format
 msgctxt "model:ir.message,text:msg_activity_invalid_condition"
 msgid ""
 "Invalid condition \"%(condition)s\" in activity \"%(activity)s\" with "
 "exception \"%(exception)s\"."
 msgstr ""
 
+#, python-format
 msgctxt "model:ir.message,text:msg_activity_invalid_email_template"
 msgid ""
-"Invalid e-mail template in activity \"%(activity)s\" with exception "
+"Invalid email template in activity \"%(activity)s\" with exception "
 "\"%(exception)s\"."
 msgstr ""
 
+#, python-format
 msgctxt "model:ir.message,text:msg_activity_invalid_email_title"
 msgid ""
-"Invalid e-mail title in activity \"%(activity)s\" with exception "
+"Invalid email title in activity \"%(activity)s\" with exception "
 "\"%(exception)s\"."
 msgstr ""
 
@@ -420,16 +423,17 @@ msgctxt "model:ir.message,text:msg_record_uuid_unique"
 msgid "UUID of record must be unique."
 msgstr ""
 
+#, python-format
 msgctxt "model:ir.message,text:msg_scenario_invalid_domain"
 msgid "Invalid domain in scenario \"%(scenario)s\" with exception \"%(exception)s\"."
 msgstr ""
 
 msgctxt "model:ir.model.button,string:record_activity_on_email_clicked_button"
-msgid "E-Mail Clicked"
+msgid "Email Clicked"
 msgstr ""
 
 msgctxt "model:ir.model.button,string:record_activity_on_email_opened_button"
-msgid "E-Mail Opened"
+msgid "Email Opened"
 msgstr ""
 
 msgctxt "model:ir.model.button,string:record_block_button"
@@ -510,31 +514,31 @@ msgid "Trigger Marketing Scenarios"
 msgstr ""
 
 msgctxt "selection:marketing.automation.activity,action:"
-msgid "Send E-Mail"
+msgid "Send email"
 msgstr ""
 
 msgctxt "selection:marketing.automation.activity,event:"
-msgid "E-Mail Clicked"
+msgid "Email Clicked"
 msgstr ""
 
 msgctxt "selection:marketing.automation.activity,event:"
-msgid "E-Mail Opened"
+msgid "Email Opened"
 msgstr ""
 
 msgctxt "selection:marketing.automation.activity,on:"
-msgid "E-Mail Clicked"
+msgid "Email Clicked"
 msgstr ""
 
 msgctxt "selection:marketing.automation.activity,on:"
-msgid "E-Mail Not Clicked"
+msgid "Email Not Clicked"
 msgstr ""
 
 msgctxt "selection:marketing.automation.activity,on:"
-msgid "E-Mail Not Opened"
+msgid "Email Not Opened"
 msgstr ""
 
 msgctxt "selection:marketing.automation.activity,on:"
-msgid "E-Mail Opened"
+msgid "Email Opened"
 msgstr ""
 
 msgctxt "selection:marketing.automation.activity,parent:"

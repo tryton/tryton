@@ -174,24 +174,30 @@ msgctxt "model:ir.message,text:msg_domain_all"
 msgid "All"
 msgstr "所有"
 
+#, python-format
 msgctxt "model:ir.message,text:msg_erase_party_opened_project"
 msgid ""
 "You cannot erase party \"%(party)s\" while they have opened projects with "
 "company \"%(company)s\"."
 msgstr "无法清除参与者 \"%(party)s\" ， 因为他们与公司 \"%(company)s\" 有未完成项目."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_work_children_progress"
 msgid "To complete work \"%(work)s\" you must complete also all its children."
 msgstr "如果要完成工作 \"%(work)s\"，你必须完成它的所有子工作."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_work_invalid_progress_status"
 msgid ""
 "To set work \"%(work)s\" in \"%(status)s\" status, you must increase its "
 "progress up to at least %(progress)s."
 msgstr "如果要设置工作 \"%(work)s\" 的状态为 \"%(status)s\"，你必须将其进度推进到至少 %(progress)s."
 
+#, fuzzy, python-format
 msgctxt "model:ir.message,text:msg_work_parent_progress"
-msgid "To re-open work \"%(work)s\" you must re-open also its parent \"%(parent)s\"."
+msgid ""
+"To reopen the work \"%(work)s\", you must also reopen its parent "
+"\"%(parent)s\"."
 msgstr "如果要重新开启工作 \"%(work)s\"，你首先必须重新开启它的父工作 \"%(parent)s\"."
 
 msgctxt "model:ir.rule.group,name:rule_group_work_companies"

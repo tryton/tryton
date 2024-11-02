@@ -27,14 +27,16 @@ msgctxt "field:ir.email,dunning_level:"
 msgid "Level"
 msgstr "Livello"
 
+#, fuzzy
 msgctxt "help:account.configuration,dunning_email_fallback:"
-msgid "User notified when no e-mail is found to send the dunning"
+msgid "User notified when no email is found to send the dunning"
 msgstr ""
 "Utente notificato quando non viene trovata alcuna e-mail per inviare il "
 "sollecito"
 
+#, fuzzy
 msgctxt "help:account.dunning.level,email_contact_mechanism:"
-msgid "Define which e-mail to use from the party's contact mechanisms"
+msgid "Define which email to use from the party's contact mechanisms"
 msgstr ""
 "Definire quale e-mail utilizzare fra i meccanismi di contatto della "
 "controparte"
@@ -83,6 +85,7 @@ msgctxt "report:account.dunning.letter:"
 msgid "Reminder Notice"
 msgstr "Avviso di promemoria"
 
+#, fuzzy
 msgctxt "view:account.dunning.level:"
-msgid "E-mail"
+msgid "Email"
 msgstr "E-mail"

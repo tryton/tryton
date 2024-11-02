@@ -267,7 +267,7 @@ msgctxt ""
 msgid "Receivable with Mandate"
 msgstr "Ricevibili con mandato"
 
-#, fuzzy
+#, fuzzy, python-format
 msgctxt "model:ir.message,text:msg_mandate_authorisation_statement"
 msgid ""
 "By signing this mandate form, you authorise (A) %(creditor)s to send "
@@ -277,7 +277,7 @@ msgstr ""
 "per inviare alla tua banca le istruzioni sull'addebito del tuo conto ed alla"
 " tua banca di addebitare il tuo conto secondo il modulo di istruzioni"
 
-#, fuzzy
+#, fuzzy, python-format
 msgctxt "model:ir.message,text:msg_mandate_delete_draft_cancelled"
 msgid ""
 "To delete mandate \"%(mandate)s\" you must cancel it or reset its state to "
@@ -286,7 +286,7 @@ msgstr ""
 "Per eliminare il mandato \"%(mandate)s\" è necessario annullarlo o "
 "reimpostare il suo stato come bozza."
 
-#, fuzzy
+#, fuzzy, python-format
 msgctxt "model:ir.message,text:msg_mandate_title"
 msgid "SEPA %(scheme)s Direct Debit MANDATE"
 msgstr "Addebito diretto MANDATO"
@@ -295,11 +295,12 @@ msgctxt "model:ir.message,text:msg_mandate_unique_id"
 msgid "SEPA mandate identification must be unique by company."
 msgstr "L'identificazione del mandato SEPA deve essere univoca per azienda."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_party_no_id"
 msgid "The party \"%(party)s\" is missing a \"%(type)s\" identifier."
 msgstr ""
 
-#, fuzzy
+#, fuzzy, python-format
 msgctxt "model:ir.message,text:msg_payment_process_no_bank"
 msgid ""
 "To process payment \"%(payment)s\" you must define a bank for the account "
@@ -308,12 +309,14 @@ msgstr ""
 "Per elaborare il pagamento \"%(payment)s\" è necessario definire un mandato "
 "SEPA per esso."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_payment_process_no_iban"
 msgid "To process payment \"%(payment)s\" you must define IBAN for it."
 msgstr ""
 "Per elaborare il pagamento \"%(payment)s\" è necessario definire un codice "
 "IBAN per esso."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_payment_process_no_mandate"
 msgid "To process payment \"%(payment)s\" you must define a SEPA mandate for it."
 msgstr ""

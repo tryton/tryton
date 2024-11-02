@@ -80,6 +80,7 @@ msgctxt "model:account.tax.group.cash,name:"
 msgid "Tax Group On Cash Basis"
 msgstr "Grup d'imposts amb criteri de caixa"
 
+#, python-format
 msgctxt "model:ir.message,text:msg_close_period_line_payment"
 msgid ""
 "To close period \"%(period)s\" you must link all payable/receivable lines to"
@@ -87,6 +88,13 @@ msgid ""
 msgstr ""
 "Per tancar el període \"%(period)s\" heu de vincular totes els apunts a "
 "cobrar/pagar amb alguna factura."
+
+msgctxt ""
+"model:ir.message,text:msg_tax_type_move_line_cash_basis_no_period_unique"
+msgid "Only one tax line on cash basis can be without period per move line."
+msgstr ""
+"Només una línia d'impostos amb criteri de caixa pot estar sense període per "
+"línia de moviment."
 
 msgctxt "view:account.fiscalyear:"
 msgid "Taxes"

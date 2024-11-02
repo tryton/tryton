@@ -2,12 +2,10 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-#, fuzzy
 msgctxt "field:account.account.type,deposit:"
 msgid "Deposit"
 msgstr "Depozit"
 
-#, fuzzy
 msgctxt "field:account.account.type.template,deposit:"
 msgid "Deposit"
 msgstr "Depozit"
@@ -22,7 +20,7 @@ msgstr "Družba"
 
 msgctxt "field:account.invoice.recall_deposit.start,currency:"
 msgid "Currency"
-msgstr ""
+msgstr "Valuta"
 
 msgctxt "field:account.invoice.recall_deposit.start,description:"
 msgid "Description"
@@ -38,22 +36,25 @@ msgstr "Odpoklic depozita za račun"
 
 msgctxt "model:ir.action,name:act_move_line_deposit"
 msgid "Deposit Lines"
-msgstr ""
+msgstr "Vrstice depozita"
 
-#, fuzzy
 msgctxt "model:ir.action,name:wizard_recall_deposit"
 msgid "Recall Deposit"
-msgstr "Recall Deposit"
+msgstr "Odpoklic depozita"
 
+#, python-format
 msgctxt "model:ir.message,text:msg_deposit_not_enough"
 msgid "The account \"%(account)s\" has not enough deposit from party \"%(party)s\"."
-msgstr ""
+msgstr "Konto \"%(account)s\" partnerja \"%(party)s\" nima zadostnega depozita."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_erase_party_deposit"
 msgid ""
 "You cannot erase party \"%(party)s\" while they have deposit at company "
 "\"%(company)s\"."
 msgstr ""
+"Partnerja \"%(party)s\" ni mogoče izbrisati dokler ima depozit pri družbi "
+"\"%(company)s\"."
 
 msgctxt "model:ir.model.button,string:invoice_recall_deposit_button"
 msgid "Recall Deposit"

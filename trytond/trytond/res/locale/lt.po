@@ -352,6 +352,7 @@ msgctxt "model:ir.export-write-res.group,name:"
 msgid "Export Modification Group"
 msgstr "Galinčių taisyti eksportavimą grupė"
 
+#, python-format
 msgctxt "model:ir.message,text:msg_email_invalid"
 msgid "The email address \"%(email)s\" for \"%(user)s\" is not valid."
 msgstr ""
@@ -364,6 +365,7 @@ msgctxt "model:ir.message,text:msg_password_forbidden"
 msgid "The password is forbidden."
 msgstr "Slaptažodis neleidžiamas."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_password_length"
 msgid "The password must have at least %(length)i characters."
 msgstr ""
@@ -384,6 +386,7 @@ msgstr ""
 "Dėl duomenų registravimo naudotojas negali būti ištrintas, vietoj to jis "
 "turi būti išjungtas."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_user_password"
 msgid "Password for %(login)s"
 msgstr ""
@@ -500,6 +503,7 @@ msgctxt "model:res.user.warning,name:"
 msgid "User Warning"
 msgstr "Perspėjimai naudotojui"
 
+#, python-format
 msgctxt "report:res.user.email_reset_password:"
 msgid ""
 "Hello,\n"
@@ -518,7 +522,7 @@ msgctxt "report:res.user.email_reset_password:"
 msgid "Reset Password"
 msgstr "Atstatyti slaptažodį"
 
-#, fuzzy
+#, fuzzy, python-format
 msgctxt "report:res.user.email_reset_password:"
 msgid "The password will expire in [1:%(datetime)s]."
 msgstr "Slaptažodžio galiojimas baigsis"

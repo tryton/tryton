@@ -237,8 +237,9 @@ msgctxt "field:account.configuration,asset_frequency:"
 msgid "Asset Depreciation Frequency"
 msgstr "ເລີ່ມ ຕາຕະລາງ ຊັບສິນ ຄ່າຫຼຸ້ຍຫ້ຽນ"
 
+#, fuzzy
 msgctxt "field:account.configuration,asset_sequence:"
-msgid "Asset Reference Sequence"
+msgid "Asset Sequence"
 msgstr "ລໍາດັບ ເອກະສານອ້າງອີງ ຊັບສິນ"
 
 msgctxt "field:account.configuration.asset_date,asset_bymonth:"
@@ -457,10 +458,12 @@ msgctxt "model:ir.action.act_window.domain,name:act_asset_form_domain_running"
 msgid "Running"
 msgstr "Running"
 
+#, python-format
 msgctxt "model:ir.message,text:msg_asset_delete_draft"
 msgid "You cannot delete asset \"%(asset)s\" because it is not in \"draft\" state."
 msgstr ""
 
+#, python-format
 msgctxt "model:ir.message,text:msg_asset_draft_lines"
 msgid "You cannot reset to draft asset \"%(asset)s\" because it has lines."
 msgstr ""
@@ -470,6 +473,7 @@ msgctxt "model:ir.message,text:msg_asset_invoice_line_unique"
 msgid "Invoice line can be used only once on asset."
 msgstr "ລາຍການເກັບເງິນລູກຄ້າ ສາມາດໃຊ້ໄດ້ ພຽງ ເທື່ອດຽວເທົ່ານັ້ນ ໃນ ຊັບສິນ."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_asset_running_close_period"
 msgid ""
 "You cannot close period \"%(period)s\" because some assets \"%(assets)s\" "
@@ -485,6 +489,7 @@ msgctxt "model:ir.message,text:msg_no_assets"
 msgid "There is no started asset."
 msgstr ""
 
+#, python-format
 msgctxt "model:ir.message,text:msg_purchase_product_missing_account_asset"
 msgid ""
 "To invoice purchase \"%(purchase)s\", you must set an account asset on "

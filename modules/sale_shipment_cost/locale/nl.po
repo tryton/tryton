@@ -2,9 +2,9 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-msgctxt "field:account.invoice.line,cost_shipments:"
-msgid "Cost of Shipments"
-msgstr "Kosten van verzendingen"
+msgctxt "field:account.invoice.line,cost_sale_shipments:"
+msgid "Cost Sale of Shipments"
+msgstr "Verkoopkosten van zendingen"
 
 msgctxt "field:party.party,sale_shipment_cost_method:"
 msgid "Shipment Cost Method"
@@ -62,14 +62,6 @@ msgctxt "field:stock.shipment.cost_sale,shipment:"
 msgid "Shipment"
 msgstr "Zending"
 
-msgctxt "field:stock.shipment.out,cost_invoice_line:"
-msgid "Cost Invoice Line"
-msgstr "Kostenfactuurregel"
-
-msgctxt "field:stock.shipment.out,cost_method:"
-msgid "Cost Method"
-msgstr "Kostprijsmethode"
-
 msgctxt "field:stock.shipment.out,cost_sale:"
 msgid "Cost Sale"
 msgstr "Kosten verkoop"
@@ -81,6 +73,14 @@ msgstr "Valuta kosten verkoop"
 msgctxt "field:stock.shipment.out,cost_sale_currency_used:"
 msgid "Cost Sale Currency"
 msgstr "Valuta kosten verkoop"
+
+msgctxt "field:stock.shipment.out,cost_sale_invoice_line:"
+msgid "Cost Sale Invoice Line"
+msgstr "Verkoopkosten factuurregel"
+
+msgctxt "field:stock.shipment.out,cost_sale_method:"
+msgid "Cost Sale Method"
+msgstr "Verkoopkosten methode"
 
 msgctxt "field:stock.shipment.out,cost_sale_used:"
 msgid "Cost Sale"
@@ -102,18 +102,21 @@ msgstr ""
 "De standaardverzendkostenmethode voor de klant.\n"
 "Laat leeg om de standaardwaarde uit de configuratie te gebruiken."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_sale_carrier_required_for_quotation"
 msgid "To get a quote for sale \"%(sale)s\" you must enter a carrier."
 msgstr ""
 "Om een offerte voor verkoop \"%(sale)s\" te maken, moet u een koerier "
 "toevoegen."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_sale_invalid_carrier"
 msgid "To confirm sale \"%(sale)s\" you must change the carrier \"%(carrier)s\"."
 msgstr ""
 "Om verkoop \"%(sale)s\" te bevestigen, moet u de vervoerder "
 "\"%(carrier)s\"wijzigen."
 
+#, python-format
 msgctxt ""
 "model:ir.message,text:msg_shipment_cost_invoice_missing_account_revenue"
 msgid ""

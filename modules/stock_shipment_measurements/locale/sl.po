@@ -39,6 +39,16 @@ msgctxt "field:stock.package,additional_weight_uom:"
 msgid "Additional Weight UoM"
 msgstr "Dodatna teža"
 
+#, fuzzy
+msgctxt "field:stock.package,internal_volume:"
+msgid "Internal Volume"
+msgstr "Neto volumen"
+
+#, fuzzy
+msgctxt "field:stock.package,internal_weight:"
+msgid "Internal Weight"
+msgstr "Neto teža"
+
 msgctxt "field:stock.package,total_volume:"
 msgid "Total Volume"
 msgstr "Bruto volumen"
@@ -65,6 +75,16 @@ msgctxt "field:stock.package,weight_uom:"
 msgid "Weight UoM"
 msgstr "Teža"
 
+#, fuzzy
+msgctxt "field:stock.shipment.in,internal_volume:"
+msgid "Internal Volume"
+msgstr "Neto volumen"
+
+#, fuzzy
+msgctxt "field:stock.shipment.in,internal_weight:"
+msgid "Internal Weight"
+msgstr "Neto teža"
+
 msgctxt "field:stock.shipment.in,volume:"
 msgid "Volume"
 msgstr "Volumen"
@@ -82,6 +102,16 @@ msgstr "Teža"
 msgctxt "field:stock.shipment.in,weight_uom:"
 msgid "Weight UoM"
 msgstr "Teža"
+
+#, fuzzy
+msgctxt "field:stock.shipment.in.return,internal_volume:"
+msgid "Internal Volume"
+msgstr "Neto volumen"
+
+#, fuzzy
+msgctxt "field:stock.shipment.in.return,internal_weight:"
+msgid "Internal Weight"
+msgstr "Neto teža"
 
 msgctxt "field:stock.shipment.in.return,packages_volume:"
 msgid "Packages Volume"
@@ -109,6 +139,16 @@ msgctxt "field:stock.shipment.in.return,weight_uom:"
 msgid "Weight UoM"
 msgstr "Teža"
 
+#, fuzzy
+msgctxt "field:stock.shipment.out,internal_volume:"
+msgid "Internal Volume"
+msgstr "Neto volumen"
+
+#, fuzzy
+msgctxt "field:stock.shipment.out,internal_weight:"
+msgid "Internal Weight"
+msgstr "Neto teža"
+
 msgctxt "field:stock.shipment.out,packages_volume:"
 msgid "Packages Volume"
 msgstr ""
@@ -134,6 +174,16 @@ msgstr "Teža"
 msgctxt "field:stock.shipment.out,weight_uom:"
 msgid "Weight UoM"
 msgstr "Teža"
+
+#, fuzzy
+msgctxt "field:stock.shipment.out.return,internal_volume:"
+msgid "Internal Volume"
+msgstr "Neto volumen"
+
+#, fuzzy
+msgctxt "field:stock.shipment.out.return,internal_weight:"
+msgid "Internal Weight"
+msgstr "Neto teža"
 
 msgctxt "field:stock.shipment.out.return,volume:"
 msgid "Volume"

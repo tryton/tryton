@@ -32,14 +32,11 @@ msgstr "Brak dostępu do serwera."
 msgid "Connection error"
 msgstr "Błąd połączenia"
 
-msgid "Favorites"
-msgstr "Ulubione"
-
-msgid "Manage..."
-msgstr "Zarządzaj..."
-
 msgid "Logout"
 msgstr "Wyloguj"
+
+msgid "Favorites"
+msgstr "Ulubione"
 
 msgid "Action"
 msgstr "Akcja"
@@ -86,8 +83,9 @@ msgstr "Odnośnik"
 msgid "Print"
 msgstr "Wydruk"
 
-msgid "E-Mail"
-msgstr "E-mail"
+#, fuzzy
+msgid "Email"
+msgstr "E-mail %1"
 
 msgid "Previous tab"
 msgstr "Poprzednia karta"
@@ -148,6 +146,9 @@ msgstr "Nie znaleziono."
 
 msgid "Send you an email to reset your password."
 msgstr "Wyślij wiadomość, aby zresetować hasło."
+
+msgid "Reset forgotten password"
+msgstr ""
 
 msgid ""
 "A request to reset your password has been sent.\n"
@@ -327,10 +328,12 @@ msgstr "Dodaj załącznik do rekordu"
 msgid "Add a note to the record"
 msgstr "Dodaj notatkę do rekordu"
 
-msgid "E-Mail..."
+#, fuzzy
+msgid "Email..."
 msgstr "E-mail..."
 
-msgid "Send an e-mail using the record"
+#, fuzzy
+msgid "Send an email using the record"
 msgstr "Wyślij e-mail używając rekordu"
 
 msgid "Export"
@@ -381,13 +384,16 @@ msgid "Records not removed."
 msgstr "Rekordy nie zostały usunięte."
 
 msgid "You have to select one record."
-msgstr "Musisz wybrać jeden rekord."
+msgstr "Musisz wybrać rekord."
 
 msgid "Add..."
 msgstr "Dodaj..."
 
 msgid "Preview"
 msgstr "Podgląd"
+
+msgid "Manage..."
+msgstr "Zarządzaj..."
 
 msgid "Template"
 msgstr "Szablon"
@@ -508,6 +514,9 @@ msgstr "Otwórz"
 
 msgid "Undelete"
 msgstr "Przywróć"
+
+msgid "Restore"
+msgstr ""
 
 msgid "Save As"
 msgstr "Zapisz jako"
@@ -729,7 +738,8 @@ msgstr[0] "%1 rekord zapisano"
 msgstr[1] "%1 rekordy zapisano"
 msgstr[2] "%1 rekordów zapisano"
 
-msgid "E-mail %1"
+#, fuzzy
+msgid "Email %1"
 msgstr "E-mail %1"
 
 msgid "To:"

@@ -148,10 +148,12 @@ msgctxt "help:product.category,taxes_parent:"
 msgid "Use the taxes defined on the parent category."
 msgstr "Utilizare taxe definite în categoria părintelui."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_missing_account"
 msgid "There is no \"%(field)s\" defined for \"%(name)s\"."
 msgstr "Câmpul \"%(field)s\" nu este definit pentru \"%(name)s\"."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_missing_taxes"
 msgid "There is no account category defined on product \"%(name)s\"."
 msgstr "Nu este definita o categorie de cont pentru produs \"%(name)s\"."
@@ -188,7 +190,6 @@ msgctxt "view:account.configuration:"
 msgid "Product"
 msgstr "Produs"
 
-#, fuzzy
 msgctxt "view:account.create_chart.properties:"
 msgid "Product"
 msgstr "Produs"

@@ -155,7 +155,7 @@ msgctxt ""
 msgid "Exception"
 msgstr "Excepție"
 
-#, fuzzy
+#, fuzzy, python-format
 msgctxt "model:ir.message,text:msg_purchase_delete_request"
 msgid ""
 "You cannot delete purchase \"%(purchase)s\" because it is linked to purchase"
@@ -164,7 +164,7 @@ msgstr ""
 "Nu puteți șterge achiziția \"%(purchase)s\" deoarece este legată de "
 "solicitările de achiziție."
 
-#, fuzzy
+#, fuzzy, python-format
 msgctxt "model:ir.message,text:msg_purchase_request_warehouse"
 msgid ""
 "Warehouse \"%(purchase_warehouse)s\" on purchase \"%(purchase)s\" is "
@@ -175,7 +175,7 @@ msgstr ""
 "diferit de depozitul \"%(request_warehouse)s\" la cererea de achiziție "
 "aferentă \"%(request)s\"."
 
-#, fuzzy
+#, fuzzy, python-format
 msgctxt "model:ir.message,text:msg_request_delete_purchased"
 msgid ""
 "You cannot delete purchase request \"%(request)s\" because it is purchased."
@@ -279,5 +279,5 @@ msgstr "Anulare"
 #, fuzzy
 msgctxt ""
 "wizard_button:purchase.request.handle.purchase.cancellation,start,reset:"
-msgid "Reset to draft"
+msgid "Reset to Draft"
 msgstr "Resetare la ciornă"

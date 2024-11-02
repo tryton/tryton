@@ -71,6 +71,7 @@ msgctxt "model:ir.action,name:act_attribute_set_form"
 msgid "Attribute Sets"
 msgstr "Atributų rinkiniai"
 
+#, python-format
 msgctxt "model:ir.message,text:msg_label_value"
 msgid "%(label)s: %(value)s"
 msgstr ""

@@ -76,6 +76,7 @@ msgctxt "model:ir.message,text:msg_change_unit_quantity"
 msgid "You cannot change the quantity of a stock lot which has stock moves."
 msgstr "Laoliikumistega seotud partii kogust ei saa muuta."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_lot_unit_quantity_greater"
 msgid ""
 "You cannot use more than %(quantity)s%(unit)s of lot \"%(lot)s\" in "

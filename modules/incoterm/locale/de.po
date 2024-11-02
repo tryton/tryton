@@ -162,17 +162,29 @@ msgctxt "model:ir.message,text:msg_incoterm_location_required"
 msgid "Incoterm Location Required"
 msgstr "Incoterm Ort Erforderlich"
 
+#, python-format
 msgctxt "model:ir.message,text:msg_purchase_incoterm_required_for_quotation"
 msgid "To get a quote for purchase \"%(purchase)s\" you must enter an incoterm."
 msgstr ""
 "Um ein Angebot für Einkauf \"%(purchase)s\" erstellen zu können, muss ein "
 "Incoterm erfasst werden."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_sale_incoterm_required_for_quotation"
 msgid "To get a quote for sale \"%(sale)s\" you must enter an incoterm."
 msgstr ""
 "Um ein Angebot für Verkauf \"%(sale)s\" erstellen zu können, muss ein "
 "Incoterm erfasst werden."
+
+#, python-format
+msgctxt "model:ir.message,text:msg_shipment_different_incoterm"
+msgid ""
+"The incoterm \"%(shipment_incoterm)s\" of shipment \"%(shipment)s\" is "
+"different from the incoterms \"%(origin_incoterms)s\" of its origin."
+msgstr ""
+"Der Incoterm \"%(shipment_incoterm)s\" von Lieferung \"%(shipment)s\" ist "
+"nicht in den Incoterms \"%(origin_incoterms)s\" des Herkunftsdatensatzes "
+"enthalten."
 
 msgctxt "model:ir.rule.group,name:rule_group_party_incoterm_companies"
 msgid "User in companies"

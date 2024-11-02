@@ -67,6 +67,7 @@ msgid "You cannot change the quantity of a stock lot which has stock moves."
 msgstr ""
 "No podeu canviar la quantitat d'un lot que té moviments d'existències."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_lot_unit_quantity_greater"
 msgid ""
 "You cannot use more than %(quantity)s%(unit)s of lot \"%(lot)s\" in "

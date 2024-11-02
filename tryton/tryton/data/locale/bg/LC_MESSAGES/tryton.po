@@ -254,7 +254,8 @@ msgstr "Справки..."
 msgid "Print..."
 msgstr "Печат..."
 
-msgid "E-Mail..."
+#, fuzzy
+msgid "Email..."
 msgstr "Email..."
 
 msgid "Bold"
@@ -376,12 +377,6 @@ msgid "Help"
 msgstr "Помощ"
 
 msgid "No result found."
-msgstr ""
-
-msgid "Favorites"
-msgstr ""
-
-msgid "Manage..."
 msgstr ""
 
 msgid "Action"
@@ -619,6 +614,9 @@ msgstr "Свързване с Tryton сървъра"
 msgid "Profile:"
 msgstr "Профил:"
 
+msgid "Manage..."
+msgstr ""
+
 msgid "Host / Database information"
 msgstr "Информация за Хост / База данни"
 
@@ -630,7 +628,7 @@ msgid "Unable to complete email entry"
 msgstr "Не може да зададе локални настройки %s"
 
 #, fuzzy, python-format
-msgid "E-mail %s"
+msgid "Email %s"
 msgstr "Email %s"
 
 msgid "To:"
@@ -902,11 +900,12 @@ msgstr "Справки..."
 msgid "_Print..."
 msgstr "Печат..."
 
-msgid "_E-Mail..."
+#, fuzzy
+msgid "_Email..."
 msgstr "Email..."
 
 #, fuzzy
-msgid "Send an e-mail using the record"
+msgid "Send an email using the record"
 msgstr "Съхраняване на този запис"
 
 msgid "_Export Data..."
@@ -959,6 +958,9 @@ msgstr "Име на поле"
 msgid "CSV Export: %s"
 msgstr ""
 
+msgid "Open"
+msgstr "Отваряне"
+
 #, fuzzy
 msgid "_Save Export"
 msgstr "Запис на извличане"
@@ -976,12 +978,6 @@ msgstr "<b>Предварително зададени извличания</b>"
 
 msgid "Name"
 msgstr "Име"
-
-msgid "Open"
-msgstr "Отваряне"
-
-msgid "Save"
-msgstr "Съхраняване"
 
 #, fuzzy
 msgid "Listed Records"
@@ -1043,6 +1039,9 @@ msgstr ""
 msgid "Add and New"
 msgstr ""
 
+msgid "Save"
+msgstr "Съхраняване"
+
 msgid "Add"
 msgstr "Добавяне"
 
@@ -1067,6 +1066,10 @@ msgstr "Възтановяване на избрания запис <Ins>"
 #, python-format
 msgid "CSV Import: %s"
 msgstr ""
+
+#, fuzzy
+msgid "Import"
+msgstr "Справки"
 
 #, fuzzy
 msgid "_Auto-Detect"
@@ -1282,6 +1285,10 @@ msgid "Remove selected record"
 msgstr "Изтриване на избрания запис <Del>"
 
 #, fuzzy
+msgid "Restore selected record"
+msgstr "Изтриване на избрания запис <Del>"
+
+#, fuzzy
 msgid "Open the record <F2>"
 msgstr "Отваряне на запис"
 
@@ -1297,6 +1304,10 @@ msgstr "Редактиране на избрания запис"
 
 #, fuzzy
 msgid "Delete selected record"
+msgstr "Изтриване на избрания запис <Del>"
+
+#, fuzzy
+msgid "Undelete selected record"
 msgstr "Изтриване на избрания запис <Del>"
 
 #, python-format

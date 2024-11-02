@@ -42,12 +42,24 @@ msgctxt "field:carrier.sendcloud.shipping_method,carrier:"
 msgid "Carrier"
 msgstr ""
 
+msgctxt "field:carrier.sendcloud.shipping_method,max_weight:"
+msgid "Maximal Weight"
+msgstr ""
+
+msgctxt "field:carrier.sendcloud.shipping_method,min_weight:"
+msgid "Minimal Weight"
+msgstr ""
+
 msgctxt "field:carrier.sendcloud.shipping_method,sendcloud:"
 msgid "Sendcloud"
 msgstr ""
 
 msgctxt "field:carrier.sendcloud.shipping_method,shipping_method:"
 msgid "Shipping Method"
+msgstr ""
+
+msgctxt "field:carrier.sendcloud.shipping_method,warehouse:"
+msgid "Warehouse"
 msgstr ""
 
 msgctxt "field:stock.package,sendcloud_shipping_id:"
@@ -60,6 +72,14 @@ msgstr ""
 
 msgctxt "help:carrier.sendcloud.address,address:"
 msgid "Leave empty for the Sendcloud default."
+msgstr ""
+
+msgctxt "help:carrier.sendcloud.shipping_method,max_weight:"
+msgid "Maximal weight included in kg."
+msgstr ""
+
+msgctxt "help:carrier.sendcloud.shipping_method,min_weight:"
+msgid "Minimal weight included in kg."
 msgstr ""
 
 msgctxt "model:carrier.credential.sendcloud,name:"
@@ -82,12 +102,18 @@ msgctxt "model:ir.action,name:act_credential_form"
 msgid "Sendcloud Credentials"
 msgstr ""
 
+msgctxt "model:ir.message,text:msg_sendcloud_credential_modified"
+msgid "Are you sure you want to modify Sendcloud credentials?"
+msgstr ""
+
+#, python-format
 msgctxt "model:ir.message,text:msg_sendcloud_webserver_error"
 msgid ""
 "Sendcloud webservice call failed with the following error message:\n"
 "%(message)s"
 msgstr ""
 
+#, python-format
 msgctxt "model:ir.message,text:msg_shipment_has_shipping_reference_number"
 msgid ""
 "You cannot create a shipping label for shipment \"%(shipment)s\" because it "

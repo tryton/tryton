@@ -232,7 +232,7 @@ msgstr ""
 msgid "Print..."
 msgstr ""
 
-msgid "E-Mail..."
+msgid "Email..."
 msgstr ""
 
 msgid "Bold"
@@ -341,12 +341,6 @@ msgid "Help"
 msgstr ""
 
 msgid "No result found."
-msgstr ""
-
-msgid "Favorites"
-msgstr ""
-
-msgid "Manage..."
 msgstr ""
 
 msgid "Action"
@@ -577,6 +571,9 @@ msgstr ""
 msgid "Profile:"
 msgstr ""
 
+msgid "Manage..."
+msgstr ""
+
 msgid "Host / Database information"
 msgstr ""
 
@@ -587,7 +584,7 @@ msgid "Unable to complete email entry"
 msgstr ""
 
 #, python-format
-msgid "E-mail %s"
+msgid "Email %s"
 msgstr ""
 
 msgid "To:"
@@ -833,10 +830,10 @@ msgstr ""
 msgid "_Print..."
 msgstr ""
 
-msgid "_E-Mail..."
+msgid "_Email..."
 msgstr ""
 
-msgid "Send an e-mail using the record"
+msgid "Send an email using the record"
 msgstr ""
 
 msgid "_Export Data..."
@@ -888,6 +885,9 @@ msgstr ""
 msgid "CSV Export: %s"
 msgstr ""
 
+msgid "Open"
+msgstr ""
+
 msgid "_Save Export"
 msgstr ""
 
@@ -901,12 +901,6 @@ msgid "<b>Predefined exports</b>"
 msgstr ""
 
 msgid "Name"
-msgstr ""
-
-msgid "Open"
-msgstr ""
-
-msgid "Save"
 msgstr ""
 
 msgid "Listed Records"
@@ -966,6 +960,9 @@ msgstr ""
 msgid "Add and New"
 msgstr ""
 
+msgid "Save"
+msgstr ""
+
 msgid "Add"
 msgstr ""
 
@@ -989,6 +986,9 @@ msgstr ""
 
 #, python-format
 msgid "CSV Import: %s"
+msgstr ""
+
+msgid "Import"
 msgstr ""
 
 msgid "_Auto-Detect"
@@ -1191,6 +1191,9 @@ msgstr ""
 msgid "Remove selected record"
 msgstr ""
 
+msgid "Restore selected record"
+msgstr ""
+
 msgid "Open the record <F2>"
 msgstr ""
 
@@ -1204,6 +1207,9 @@ msgid "Edit selected record"
 msgstr ""
 
 msgid "Delete selected record"
+msgstr ""
+
+msgid "Undelete selected record"
 msgstr ""
 
 #, python-format

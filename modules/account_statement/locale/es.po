@@ -389,6 +389,7 @@ msgctxt ""
 msgid "Validated"
 msgstr "Validado"
 
+#, python-format
 msgctxt "model:ir.message,text:msg_bank_account_currency"
 msgid ""
 "The currency of bank account \"%(bank_account)s\" must be the same as "
@@ -397,6 +398,7 @@ msgstr ""
 "La moneda de la cuenta bancaria \"%(bank_account)s\" debe ser la misma que "
 "la del diario \"%(journal)s\" (%(currency)s)."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_import_no_journal"
 msgid ""
 "To import statement, you must create a journal for account \"%(account)s\"."
@@ -408,24 +410,27 @@ msgctxt "model:ir.message,text:msg_journal_bank_account_unique"
 msgid "Only one journal is allowed per bank account."
 msgstr "Solo se permite un diario por cuenta bancaria."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_post_statement_move"
 msgid "To post the move \"%(move)s\" you must post the statement \"%(statement)s\"."
 msgstr ""
 "Para contabilizar el asiento \"%(move)s\" teneis que contabilizar el "
 "extracto \"%(statement)s\"."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_statement_delete_cancel"
 msgid "To delete statement \"%(statement)s\" you must cancel it."
 msgstr "Para eliminar el extracto \"%(statement)s\" debe cancelarlo."
 
 msgctxt "model:ir.message,text:msg_statement_invoice_paid_cancelled"
 msgid ""
-"The validation of the statements will remove already paid or cancelled "
-"invoices from the statements' lines."
+"Validating the statements will remove already paid or cancelled invoices "
+"from the statements' lines."
 msgstr ""
 "La validación de los extractos eliminará de las líneas de los extractos las "
 "facturas ya pagadas o canceladas."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_statement_line_delete_cancel_draft"
 msgid ""
 "To delete line \"%(line)s\" you must cancel or reset to draft statement "
@@ -439,6 +444,7 @@ msgid "You must set the same sign for second currency than amount."
 msgstr ""
 "El signo de la moneda secundaria debe ser el mismo que el del importe."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_statement_origin_delete_cancel_draft"
 msgid ""
 "To delete origin \"%(origin)s\" you must cancel or reset to draft statement "
@@ -449,12 +455,13 @@ msgstr ""
 
 msgctxt "model:ir.message,text:msg_statement_paid_invoice_draft"
 msgid ""
-"The validation of the statements will remove paid invoices from other "
+"Validating the statements will remove paid invoices from other draft "
 "statements."
 msgstr ""
 "La validación de los extractos eliminará las facturas pagadas en otros "
-"extractos."
+"extractos en borrador."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_statement_post_pending_amount"
 msgid ""
 "To post statement \"%(statement)s\" you must create lines for pending "
@@ -463,6 +470,7 @@ msgstr ""
 "Para contabilizar el extracto \"%(statement)s\" debe crear líneas por "
 "%(amount)s pendiente del origen \"%(origin)s\"."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_statement_wrong_end_balance"
 msgid ""
 "To validate statement \"%(statement)s\" you must change lines to have end "
@@ -471,14 +479,17 @@ msgstr ""
 "Para validar el extracto \"%(statement)s\" debe modificar las líneas para "
 "tener un saldo final de %(end_balance)s en lugar de %(amount)s."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_statement_wrong_number_of_lines_add"
 msgid "To validate statement \"%(statement)s\" you must add %(n)s line(s)."
 msgstr "Para validar el extracto \"%(statement)s\" debe añadir %(n)s línea(s)."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_statement_wrong_number_of_lines_remove"
 msgid "To validate statement \"%(statement)s\" you must remove %(n)s line(s)."
 msgstr "Para validar el extracto \"%(statement)s\" debe eliminar %(n)s línea(s)."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_statement_wrong_total_amount"
 msgid ""
 "To validate statement \"%(statement)s\" you must change lines to have total "

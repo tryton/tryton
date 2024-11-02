@@ -2,9 +2,9 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-msgctxt "field:account.invoice.line,cost_shipments:"
-msgid "Cost of Shipments"
-msgstr "Kosten der Lieferungen"
+msgctxt "field:account.invoice.line,cost_sale_shipments:"
+msgid "Cost Sale of Shipments"
+msgstr "Lieferkosten Verkauf"
 
 msgctxt "field:party.party,sale_shipment_cost_method:"
 msgid "Shipment Cost Method"
@@ -62,14 +62,6 @@ msgctxt "field:stock.shipment.cost_sale,shipment:"
 msgid "Shipment"
 msgstr "Lieferung"
 
-msgctxt "field:stock.shipment.out,cost_invoice_line:"
-msgid "Cost Invoice Line"
-msgstr "Rechnungsposition Kosten"
-
-msgctxt "field:stock.shipment.out,cost_method:"
-msgid "Cost Method"
-msgstr "Lieferkostenmethode"
-
 msgctxt "field:stock.shipment.out,cost_sale:"
 msgid "Cost Sale"
 msgstr "Kosten Verkauf"
@@ -81,6 +73,14 @@ msgstr "Währung Kosten Verkauf"
 msgctxt "field:stock.shipment.out,cost_sale_currency_used:"
 msgid "Cost Sale Currency"
 msgstr "Währung Kosten Verkauf"
+
+msgctxt "field:stock.shipment.out,cost_sale_invoice_line:"
+msgid "Cost Sale Invoice Line"
+msgstr "Rechnungsposition Lieferkosten Verkauf"
+
+msgctxt "field:stock.shipment.out,cost_sale_method:"
+msgid "Cost Sale Method"
+msgstr "Lieferkostenmethode"
 
 msgctxt "field:stock.shipment.out,cost_sale_used:"
 msgid "Cost Sale"
@@ -102,18 +102,21 @@ msgstr ""
 "Die Standard-Lieferkostenmethode für den Kunden.\n"
 "Leer lassen, um den Standardwert aus den Einstellungen zu verwenden."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_sale_carrier_required_for_quotation"
 msgid "To get a quote for sale \"%(sale)s\" you must enter a carrier."
 msgstr ""
 "Damit der Verkauf \"%(sale)s\" in den Status \"Angebot\" gesetzt werden "
 "kann, muss zuerst ein Versanddienstleister erfasst werden."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_sale_invalid_carrier"
 msgid "To confirm sale \"%(sale)s\" you must change the carrier \"%(carrier)s\"."
 msgstr ""
 "Damit der Verkauf \"%(sale)s\" bestätigt werden kann, muss der "
 "Versanddienstleister \"%(carrier)s\" geändert werden."
 
+#, python-format
 msgctxt ""
 "model:ir.message,text:msg_shipment_cost_invoice_missing_account_revenue"
 msgid ""

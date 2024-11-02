@@ -72,6 +72,7 @@ msgctxt "model:ir.cron-stock.warehouse,name:"
 msgid "Cron - Warehouse"
 msgstr "Tasca programada - Magatzem"
 
+#, python-format
 msgctxt "model:ir.message,text:msg_move_storage_location_same_warehouse"
 msgid ""
 "To move products between \"%(from_)s\" and \"%(to)s\", you must use the "

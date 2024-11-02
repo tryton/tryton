@@ -22,10 +22,12 @@ msgctxt "help:res.user,mobile:"
 msgid "Phone number that supports receiving SMS."
 msgstr "Número de telèfon que suporta rebre SMS."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_sms_text"
 msgid "%(name)s code %(code)s"
 msgstr "%(name)s codi %(code)s"
 
+#, python-format
 msgctxt "model:ir.message,text:msg_user_sms_code"
 msgid "SMS Code for %(login)s"
 msgstr "Codi SMS per %(login)s"

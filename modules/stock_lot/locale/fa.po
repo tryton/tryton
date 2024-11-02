@@ -29,6 +29,11 @@ msgctxt "field:product.template,lot_sequence:"
 msgid "Lot Sequence"
 msgstr "قطعه مورد نیاز"
 
+#, fuzzy
+msgctxt "field:stock.inventory.count.quantity,lot:"
+msgid "Lot"
+msgstr "قطعه"
+
 msgctxt "field:stock.inventory.line,lot:"
 msgid "Lot"
 msgstr "قطعه"
@@ -94,10 +99,6 @@ msgctxt "field:stock.lot.trace,quantity:"
 msgid "Quantity"
 msgstr "مقدار/تعداد"
 
-msgctxt "field:stock.lot.trace,shipment:"
-msgid "Shipment"
-msgstr ""
-
 #, fuzzy
 msgctxt "field:stock.lot.trace,to_location:"
 msgid "To Location"
@@ -142,29 +143,6 @@ msgstr "محصول"
 msgctxt "field:stock.lots_by_locations,quantity:"
 msgid "Quantity"
 msgstr "مقدار/تعداد"
-
-#, fuzzy
-msgctxt "field:stock.lots_by_warehouse.context,forecast_date:"
-msgid "At Date"
-msgstr "در تاریخ"
-
-#, fuzzy
-msgctxt "field:stock.lots_by_warehouse.context,locations:"
-msgid "Locations"
-msgstr "مکان"
-
-#, fuzzy
-msgctxt "field:stock.lots_by_warehouse.context,stock_date_end:"
-msgid "At Date"
-msgstr "در تاریخ"
-
-msgctxt "field:stock.lots_by_warehouse.context,stock_skip_warehouse:"
-msgid "Only storage zone"
-msgstr ""
-
-msgctxt "field:stock.lots_by_warehouse.context,warehouse:"
-msgid "Warehouse"
-msgstr ""
 
 msgctxt "field:stock.move,lot:"
 msgid "Lot"
@@ -285,34 +263,19 @@ msgctxt "help:stock.lots_by_locations,default_uom:"
 msgid "The default Unit of Measure."
 msgstr ""
 
-#, fuzzy
-msgctxt "help:stock.lots_by_warehouse.context,forecast_date:"
-msgid ""
-"Allow to compute expected stock quantities for this date.\n"
-"* An empty value is an infinite date in the future.\n"
-"* A date in the past will provide historical values."
-msgstr ""
-"اجازه می دهد مقادیرموجودی مورد انتظار را برای این تاریخ محاسبه کنید.\n"
-"* مقدار خالی یک تاریخ درآینده نامحدود است.\n"
-"* یک تاریخ در گذشته ارزش های تاریخی را فراهم می کند."
-
-msgctxt "help:stock.lots_by_warehouse.context,stock_skip_warehouse:"
-msgid "Check to use only the quantity of the storage zone."
-msgstr ""
-
 msgctxt "help:stock.move.add.lots.start,duplicate_lot_number:"
 msgid "The number of times the lot must be duplicated."
 msgstr ""
 
 #, fuzzy
 msgctxt "model:ir.action,name:act_location_quantity_list"
-msgid "Locations List Quantity"
+msgid "Stock Locations List"
 msgstr "مقدار پیش بینی شده"
 
 #, fuzzy
 msgctxt "model:ir.action,name:act_location_quantity_tree"
-msgid "Locations Tree Quantity"
-msgstr "مقدار پیش بینی شده"
+msgid "Stock Locations Tree"
+msgstr "نوع قطعه موجود"
 
 msgctxt "model:ir.action,name:act_lot_form"
 msgid "Lots"
@@ -333,12 +296,8 @@ msgstr ""
 
 #, fuzzy
 msgctxt "model:ir.action,name:act_lots_by_locations_relate"
-msgid "Lots by Locations"
-msgstr "قطعه بواسطه مکان"
-
-msgctxt "model:ir.action,name:act_lots_by_warehouse_relate"
-msgid "Lots By Warehouse"
-msgstr ""
+msgid "Lots"
+msgstr "قطعه‌ها"
 
 #, fuzzy
 msgctxt "model:ir.action,name:wizard_move_add_lots"
@@ -351,17 +310,20 @@ msgstr ""
 "شما نمیتوانید محصول زیادی از یک جنس را تغییر دهید که جابجایی اجناس داشته "
 "باشد."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_lot_required"
 msgid "To move product \"%(product)s\" you must provide a stock lot."
 msgstr ""
 "برای جابجایی محصول :\"%(product)s\" شما باید یک قطعه از جنس را ارائه کنید."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_move_add_lot_quantity"
 msgid ""
 "The total quantity \"%(lot_quantity)s\" of the lots must be less than or "
 "equal to the quantity \"%(move_quantity)s\" of the move."
 msgstr ""
 
+#, python-format
 msgctxt "model:ir.message,text:msg_only_lot"
 msgid "You must select a stock lot instead of a product for \"%(product)s\"."
 msgstr ""
@@ -419,10 +381,6 @@ msgstr "قطعه بواسطه مکان"
 msgctxt "model:stock.lots_by_locations,name:"
 msgid "Lots by Locations"
 msgstr "قطعه بواسطه مکان"
-
-msgctxt "model:stock.lots_by_warehouse.context,name:"
-msgid "Lot by Warehouse"
-msgstr ""
 
 #, fuzzy
 msgctxt "model:stock.move.add.lots.start,name:"

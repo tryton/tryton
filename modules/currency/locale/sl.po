@@ -32,7 +32,7 @@ msgstr "Dan v tednu"
 
 msgctxt "field:currency.cron-currency.currency,cron:"
 msgid "Cron"
-msgstr ""
+msgstr "Časovni razporejevalnik"
 
 msgctxt "field:currency.cron-currency.currency,currency:"
 msgid "Currency"
@@ -138,14 +138,13 @@ msgctxt "help:currency.currency.rate,rate:"
 msgid "The floating exchange rate used to convert the currency."
 msgstr "Plavajoči tečaj uporabljen za pretvorbo valute."
 
-#, fuzzy
 msgctxt "model:currency.cron,name:"
 msgid "Currency Cron"
-msgstr "Valuta"
+msgstr "Časovni razporejevalnik valut"
 
 msgctxt "model:currency.cron-currency.currency,name:"
 msgid "Currency Cron - Currency"
-msgstr ""
+msgstr "Časovni razporejevalnik valut - Valuta"
 
 msgctxt "model:currency.currency,name:"
 msgid "Currency"
@@ -163,14 +162,11 @@ msgctxt "model:ir.action,name:act_currency_form"
 msgid "Currencies"
 msgstr "Valute"
 
-msgctxt "model:ir.message,text:msg_currency_rate_positive"
-msgid "A currency rate must be positive."
-msgstr "Valutni tečaj mora biti pozitiven."
-
 msgctxt "model:ir.message,text:msg_currency_unique_rate_date"
 msgid "A currency can only have one rate by date."
 msgstr "Valuta ima lahko samo en tečaj na dan."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_no_rate"
 msgid "No rate found for currency \"%(currency)s\" on \"%(date)s\"."
 msgstr "Za valuto \"%(currency)s\" na dan \"%(date)s\" tečaja ni bilo mogoče najti."

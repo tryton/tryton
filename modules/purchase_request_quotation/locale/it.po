@@ -195,6 +195,7 @@ msgctxt ""
 msgid "Sent"
 msgstr "Inviato"
 
+#, fuzzy, python-format
 msgctxt "model:ir.message,text:msg_previous_quotation"
 msgid "A quotation was already made for request \"%(request)s\"."
 msgstr "È stata già fatta un'offerta per la richiesta \"% (richiesta) s\"."

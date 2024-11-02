@@ -18,6 +18,14 @@ msgctxt "field:company.company,header:"
 msgid "Header"
 msgstr "Capçalera"
 
+msgctxt "field:company.company,logo:"
+msgid "Logo"
+msgstr "Logo"
+
+msgctxt "field:company.company,logo_cache:"
+msgid "Cache"
+msgstr "Caché"
+
 msgctxt "field:company.company,party:"
 msgid "Party"
 msgstr "Tercer"
@@ -25,6 +33,22 @@ msgstr "Tercer"
 msgctxt "field:company.company,timezone:"
 msgid "Timezone"
 msgstr "Zona horària"
+
+msgctxt "field:company.company.logo.cache,company:"
+msgid "Company"
+msgstr "Empresa"
+
+msgctxt "field:company.company.logo.cache,height:"
+msgid "Height"
+msgstr "Altura"
+
+msgctxt "field:company.company.logo.cache,image:"
+msgid "Image"
+msgstr "Imatge"
+
+msgctxt "field:company.company.logo.cache,width:"
+msgid "Width"
+msgstr "Amplada"
 
 msgctxt "field:company.employee,active:"
 msgid "Active"
@@ -254,6 +278,10 @@ msgctxt "model:company.company.config.start,name:"
 msgid "Company Config"
 msgstr "Configuració empresa"
 
+msgctxt "model:company.company.logo.cache,name:"
+msgid "Company Logo Cache"
+msgstr "Memòria cau del logotip de l'empresa"
+
 msgctxt "model:company.employee,name:"
 msgid "Employee"
 msgstr "Empleat"
@@ -281,6 +309,10 @@ msgstr "Carta"
 msgctxt "model:ir.cron-company.company,name:"
 msgid "Cron - Company"
 msgstr "Planificador - Empresa"
+
+msgctxt "model:ir.message,text:msg_company_logo_cache_size_unique"
+msgid "The size of cached company logo must be unique."
+msgstr "La mida del logotip de l'empresa a la memòria cau ha de ser única."
 
 msgctxt "model:ir.rule.group,name:rule_group_sequence_companies"
 msgid "User in companies"
@@ -347,8 +379,16 @@ msgid "You can now add your company into the system."
 msgstr "Ara podeu afegir la vostra empresa al sistema."
 
 msgctxt "view:company.company:"
+msgid "Company"
+msgstr "Empresa"
+
+msgctxt "view:company.company:"
 msgid "Reports"
 msgstr "Informes"
+
+msgctxt "view:company.employee:"
+msgid "Employee"
+msgstr "Empleat"
 
 msgctxt "wizard_button:company.company.config,company,add:"
 msgid "Add"

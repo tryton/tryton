@@ -110,6 +110,14 @@ msgctxt "field:production,warehouse:"
 msgid "Warehouse"
 msgstr "Magatzem"
 
+msgctxt "field:production.bom,code:"
+msgid "Code"
+msgstr "Codi"
+
+msgctxt "field:production.bom,code_readonly:"
+msgid "Code Readonly"
+msgstr "Codi només lectura"
+
 msgctxt "field:production.bom,inputs:"
 msgid "Inputs"
 msgstr "Entrades"
@@ -206,6 +214,10 @@ msgctxt "field:production.bom.tree.open.tree,bom_tree:"
 msgid "BOM Tree"
 msgstr "Arbre de la llista de materials"
 
+msgctxt "field:production.configuration,bom_sequence:"
+msgid "BOM Sequence"
+msgstr "Seqüència de llista de materials"
+
 msgctxt "field:production.configuration,production_sequence:"
 msgid "Production Sequence"
 msgstr "Seqüència de producció"
@@ -278,6 +290,10 @@ msgstr "L'identificador extern de l'albarà."
 msgctxt "help:production,uom_category:"
 msgid "The category of Unit of Measure."
 msgstr "La categoria de la unitat de mesura."
+
+msgctxt "help:production.configuration,bom_sequence:"
+msgid "Used to generate the BOM code."
+msgstr "S'utilitza per generar el codi de la LdM."
 
 msgctxt "help:stock.location,production_output_location:"
 msgid ""
@@ -372,6 +388,7 @@ msgctxt ""
 msgid "Waiting"
 msgstr "En espera"
 
+#, python-format
 msgctxt "model:ir.message,text:msg_missing_product_list_price"
 msgid ""
 "The product \"%(product)s\" on production \"%(production)s\" does not have "
@@ -380,6 +397,7 @@ msgstr ""
 "El producte \"%(product)s\" de la producció \"%(production)s\" no té cap "
 "preu de venda definit."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_recursive_bom"
 msgid "You cannot create a recursive BOM for product \"%(product)s\"."
 msgstr "No podeu crear una LdM recursiva pel producte \"%(product)s\"."
@@ -428,6 +446,10 @@ msgstr "Usuari a les empreses"
 msgctxt "model:ir.sequence,name:sequence_production"
 msgid "Production"
 msgstr "Producció"
+
+msgctxt "model:ir.sequence.type,name:sequence_type_bom"
+msgid "BOM"
+msgstr "LdM"
 
 msgctxt "model:ir.sequence.type,name:sequence_type_production"
 msgid "Production"
@@ -479,7 +501,7 @@ msgstr "Sortida de la llista de materials"
 
 msgctxt "model:production.bom.tree,name:"
 msgid "BOM Tree"
-msgstr "Arbre de l'escandall"
+msgstr "Arbre de llista de material"
 
 msgctxt "model:production.bom.tree.open.start,name:"
 msgid "Open BOM Tree"

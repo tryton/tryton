@@ -17,14 +17,11 @@ msgstr "Nu s-a putut efectua conexiunea la server."
 msgid "Connection error"
 msgstr "Eroare de conexiune"
 
-msgid "Favorites"
-msgstr "Favorite"
-
-msgid "Manage..."
-msgstr "Gestionare..."
-
 msgid "Logout"
 msgstr "Deconectare"
+
+msgid "Favorites"
+msgstr "Favorite"
 
 msgid "Action"
 msgstr "Acțiune"
@@ -71,8 +68,9 @@ msgstr "Relata"
 msgid "Print"
 msgstr "Tipărire"
 
-msgid "E-Mail"
-msgstr "E-Mail"
+#, fuzzy
+msgid "Email"
+msgstr "E-mail %1"
 
 msgid "Previous tab"
 msgstr "Fila anterioară"
@@ -133,7 +131,10 @@ msgid "Not found."
 msgstr "Nimic găsit."
 
 msgid "Send you an email to reset your password."
-msgstr ""
+msgstr "Resetare parola prin trimitere email."
+
+msgid "Reset forgotten password"
+msgstr "Resetare parola uitata"
 
 msgid ""
 "A request to reset your password has been sent.\n"
@@ -232,7 +233,7 @@ msgid "Application Error"
 msgstr "Eroare de aplicație"
 
 msgid "Details"
-msgstr ""
+msgstr "Detalii"
 
 msgid "Report Bug"
 msgstr "Raporteati eroare"
@@ -312,10 +313,12 @@ msgstr "Adăugați un atașament la înregistrare"
 msgid "Add a note to the record"
 msgstr "Adăugați o notă la înregistrare"
 
-msgid "E-Mail..."
+#, fuzzy
+msgid "Email..."
 msgstr "E-Mail..."
 
-msgid "Send an e-mail using the record"
+#, fuzzy
+msgid "Send an email using the record"
 msgstr "Trimiteți un e-mail folosind înregistrarea"
 
 msgid "Export"
@@ -373,6 +376,9 @@ msgstr "Adăuga..."
 
 msgid "Preview"
 msgstr "Previzualizare"
+
+msgid "Manage..."
+msgstr "Gestionare..."
 
 msgid "Template"
 msgstr "Șablon"
@@ -494,6 +500,9 @@ msgstr "Deschidere"
 msgid "Undelete"
 msgstr "Anulați ștergerea"
 
+msgid "Restore"
+msgstr ""
+
 msgid "Save As"
 msgstr "Salvează ca"
 
@@ -522,9 +531,8 @@ msgstr "%1%"
 msgid "Menu"
 msgstr "Meniu"
 
-#, fuzzy
 msgid "Copy Selected Rows"
-msgstr "Înregistrări selectate"
+msgstr "Copiere Rânduri Selectate"
 
 msgid "#ERROR"
 msgstr "#EROARE"
@@ -587,10 +595,10 @@ msgid "ID:"
 msgstr "ID:"
 
 msgid "Module:"
-msgstr ""
+msgstr "Modul:"
 
 msgid "XML ID:"
-msgstr ""
+msgstr "ID XML:"
 
 msgid "Created by:"
 msgstr "Creat de:"
@@ -715,7 +723,8 @@ msgstr[0] "%1 înregistrare salvată"
 msgstr[1] "%1 înregistrări salvate"
 msgstr[2] "%1 înregistrări salvate"
 
-msgid "E-mail %1"
+#, fuzzy
+msgid "Email %1"
 msgstr "E-mail %1"
 
 msgid "To:"

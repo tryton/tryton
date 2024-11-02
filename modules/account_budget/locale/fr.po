@@ -291,6 +291,7 @@ msgctxt ""
 msgid "The period must be unique for each budget line."
 msgstr "La période doit être unique pour chaque ligne budgétaire."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_budget_line_period_ratio"
 msgid ""
 "The sum of period ratios for the budget line \"%(budget_line)s\" must be "

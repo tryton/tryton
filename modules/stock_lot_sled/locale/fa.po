@@ -106,6 +106,7 @@ msgctxt "help:stock.location.lot.shelf_life,shelf_life_delay:"
 msgid "The delay before removal from the forecast."
 msgstr "تاخیر قبل از حذف از پیش بینی."
 
+#, fuzzy, python-format
 msgctxt "model:ir.message,text:msg_lot_modify_expiration_date_period_close"
 msgid ""
 "You cannot modify expiration dates of lot \"%(lot)s because it is used on "
@@ -114,12 +115,14 @@ msgstr ""
 "شما نمیتوانید تاریخ های انقضاء کالاهای: \"%s\" را تغییر دهید چونکه در "
 "جابجایی : \"%s\" در دوره بسته شده استفاده شده است."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_move_lot_expired"
 msgid "You cannot process move \"%(move)s\" because its lot \"%(lot)s\" has expired."
 msgstr ""
 "شما نمیتوانید جابجایی :\"%(move)s\" را پردازش کنید، چراکه تاریخ اجناس "
 ":\"%(lot)s\" منقضی شده است."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_period_close_sled"
 msgid ""
 "You cannot close periods before the expiration of lot \"%(lot)s\" "

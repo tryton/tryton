@@ -64,6 +64,13 @@ msgstr ""
 "Postita automaatselt arvelduse kanded pärast viivitust.Jäta tühjaks kui ei "
 "soovi postitada."
 
+#, fuzzy
+msgctxt "help:account.statement.rule,description:"
+msgid ""
+"\n"
+"'payment_group'"
+msgstr "Tasumise grupp"
+
 msgctxt "model:account.payment.succeed.start,name:"
 msgid "Succeed Payment"
 msgstr "Tasumine õnnestus"

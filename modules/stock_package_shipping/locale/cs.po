@@ -76,10 +76,12 @@ msgctxt "model:ir.action,name:wizard_print_shipping_label"
 msgid "Shipping Labels"
 msgstr "Shipping"
 
+#, python-format
 msgctxt "model:ir.message,text:msg_shipment_not_packed"
 msgid "To create shipping labels for shipment \"%(shipment)s\", you must pack it."
 msgstr ""
 
+#, python-format
 msgctxt "model:ir.message,text:msg_shipment_without_carrier"
 msgid "The shipment \"%(shipment)s\" does not have a carrier set."
 msgstr ""

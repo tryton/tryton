@@ -76,7 +76,7 @@ msgstr "Name"
 
 msgctxt "field:web.shop,non_sale_price_list:"
 msgid "Non-Sale Price List"
-msgstr "Vergleichspreisliste"
+msgstr "Vergleichspreiskonditionsschema"
 
 msgctxt "field:web.shop,products:"
 msgid "Products"
@@ -88,7 +88,7 @@ msgstr "Entfernte Artikel"
 
 msgctxt "field:web.shop,sale_price_list:"
 msgid "Sale Price List"
-msgstr "Preisliste Verkauf"
+msgstr "Preiskonditionsschema Verkauf"
 
 msgctxt "field:web.shop,type:"
 msgid "Type"
@@ -178,7 +178,7 @@ msgctxt "help:web.shop,non_sale_price_list:"
 msgid ""
 "The price list to compute the price of products when it is not on sale."
 msgstr ""
-"Die Preisliste zur Berechnung des Basispreises zum Zweck der "
+"Das Preiskonditionsschema zur Berechnung des Basispreises zum Zweck der "
 "Preisgegenüberstellung."
 
 msgctxt "help:web.shop,products:"
@@ -191,7 +191,7 @@ msgstr "Liste der von der Veröffentlichung zurückzuziehenden Artikel."
 
 msgctxt "help:web.shop,sale_price_list:"
 msgid "The price list to compute sale price of products."
-msgstr "Preisliste zur Berechnung der Verkaufspreise der Artikel."
+msgstr "Preiskonditionsschema zur Berechnung der Verkaufspreise der Artikel."
 
 msgctxt "help:web.shop,type:"
 msgid "The front-end used for the web shop."
@@ -201,6 +201,7 @@ msgctxt "model:ir.action,name:act_shop"
 msgid "Web Shops"
 msgstr "Webshops"
 
+#, python-format
 msgctxt "model:ir.message,text:msg_sale_invalid_party"
 msgid ""
 "To process the sale \"%(sale)s\" you must select another party instead of "
@@ -252,6 +253,10 @@ msgstr "Webshop - Logistikstandort"
 msgctxt "view:product.template:"
 msgid "Edit"
 msgstr "Bearbeiten"
+
+msgctxt "view:product.template:"
+msgid "Web Shop"
+msgstr "Webshop"
 
 msgctxt "view:web.shop:"
 msgid "Products"

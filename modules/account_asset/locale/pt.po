@@ -237,8 +237,9 @@ msgctxt "field:account.configuration,asset_frequency:"
 msgid "Asset Depreciation Frequency"
 msgstr "Tabela de Depreciação - Início"
 
+#, fuzzy
 msgctxt "field:account.configuration,asset_sequence:"
-msgid "Asset Reference Sequence"
+msgid "Asset Sequence"
 msgstr "Sequência de Referência do Ativo"
 
 msgctxt "field:account.configuration.asset_date,asset_bymonth:"
@@ -445,11 +446,12 @@ msgctxt "model:ir.action.act_window.domain,name:act_asset_form_domain_running"
 msgid "Running"
 msgstr "Em execução"
 
+#, python-format
 msgctxt "model:ir.message,text:msg_asset_delete_draft"
 msgid "You cannot delete asset \"%(asset)s\" because it is not in \"draft\" state."
 msgstr "Você não pode apagar o ativo \"%(asset)s\", pois o estado não é \"rascunho\"."
 
-#, fuzzy
+#, fuzzy, python-format
 msgctxt "model:ir.message,text:msg_asset_draft_lines"
 msgid "You cannot reset to draft asset \"%(asset)s\" because it has lines."
 msgstr "Você não pode apagar o ativo \"%(asset)s\", pois o estado não é \"rascunho\"."
@@ -458,6 +460,7 @@ msgctxt "model:ir.message,text:msg_asset_invoice_line_unique"
 msgid "Invoice line can be used only once on asset."
 msgstr "A linha da fatura somente pode ser usada uma vez no ativo."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_asset_running_close_period"
 msgid ""
 "You cannot close period \"%(period)s\" because some assets \"%(assets)s\" "
@@ -474,6 +477,7 @@ msgctxt "model:ir.message,text:msg_no_assets"
 msgid "There is no started asset."
 msgstr ""
 
+#, python-format
 msgctxt "model:ir.message,text:msg_purchase_product_missing_account_asset"
 msgid ""
 "To invoice purchase \"%(purchase)s\", you must set an account asset on "

@@ -1,5 +1,4 @@
 #
-#, fuzzy
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
@@ -70,7 +69,7 @@ msgid ""
 "- ${name}\n"
 "- ${language}\n"
 msgstr ""
-"De template om een een product URL te generen voor de webshop.\n"
+"De template om een product URL te generen voor de webshop.\n"
 "De volgende aanduidingen kunnen worden gebruikt:\n"
 "- ${id}\n"
 "- ${code}\n"
@@ -100,3 +99,7 @@ msgstr "Facebook product categorie"
 msgctxt "model:product.category.google,name:"
 msgid "Google Product Category"
 msgstr "Google product categorie"
+
+msgctxt "selection:ir.cron,method:"
+msgid "Update Web Shop Product Data Feed"
+msgstr "Update de webshop product feed"

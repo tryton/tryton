@@ -3158,71 +3158,84 @@ msgctxt "model:ir.action,name:wizard_update_chart"
 msgid "Update Chart of Accounts from Template"
 msgstr "从模板中更新账户一脸表"
 
+#, python-format
 msgctxt "model:ir.message,text:msg_account_chart_exists"
 msgid "A chart of accounts already exists for company \"%(company)s\"."
 msgstr "公司 \"%(company)s\" 已经存在一个账户一览表."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_account_closed_lines"
 msgid "You cannot close account \"%(account)s\" because it has move lines."
 msgstr "账户 \"%(account)s\" 已经包含记账凭证明细，所以无法关闭."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_account_invalid_deferral_second_currency"
 msgid "To set a second currency for account \"%(account)s\", it must be deferral."
 msgstr "要为帐户 \"%(account)s\" 设置第二种货币，账户必须结转。"
 
+#, python-format
 msgctxt "model:ir.message,text:msg_account_invalid_lines_second_currency"
 msgid ""
 "To set a second currency for account \"%(account)s\", its lines must have "
 "the same second currency \"%(currency)s\"."
 msgstr "若要为帐户 \"%(account)s\" 设置第二种货币，其明细必须具有相同的第二种币种 \"%(currency)s\"。"
 
+#, python-format
 msgctxt "model:ir.message,text:msg_account_invalid_type_second_currency"
 msgid ""
 "To set a second currency for account \"%(account)s\", it must not have a "
 "type \"payable\", \"revenue\", \"receivable\" nor \"expense\"."
 msgstr "要为帐户\"%(account)s\"设置第二种货币，账户不能有 “应付”、“收入”、“应收款” 或“费用”科目。"
 
+#, python-format
 msgctxt "model:ir.message,text:msg_account_no_type_lines"
 msgid ""
 "You cannot remove type of account \"%(account)s\" because it has move lines."
 msgstr "账户类型 \"%(account)s\" 已经包含记账凭证明细，所以无法删除."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_cancel_line_delegated"
 msgid ""
 "The moves \"%(moves)s\" contain grouped lines, cancelling them will ungroup "
 "the lines."
 msgstr "如果记账凭证 \"%(moves)s\" 包含汇总的明细，取消他们将取消对明细的汇总操作。"
 
+#, python-format
 msgctxt "model:ir.message,text:msg_change_fiscalyear_post_move_sequence"
 msgid ""
 "You cannot change the post move sequence on fiscal year \"%(fiscalyear)s\" "
 "because it contains posted moves."
 msgstr "无法更改会计年度 \"%(fiscalyear)s\" 对应的记账凭证入账序列，因为包含已入账的记账凭证。"
 
+#, python-format
 msgctxt "model:ir.message,text:msg_change_period_post_move_sequence"
 msgid ""
 "You cannot change the post move sequence in period \"%(period)s\" because it"
 " has posted moves."
 msgstr "无法更改分期 \"%(period)s\" 对应的记账凭证入账序列，因为包含已入账的记账凭证。"
 
+#, python-format
 msgctxt "model:ir.message,text:msg_close_fiscalyear_account_balance_not_zero"
 msgid ""
 "To close the fiscal year, the balance of account \"%(account)s\" must be "
 "zero."
 msgstr "年终结账，账户 \"%(account)s\" 的余额必须为0."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_close_fiscalyear_earlier"
 msgid ""
 "To close fiscal year \"%(fiscalyear)s\", you must close all earlier fiscal "
 "years."
 msgstr "要对会计年度 \"%(fiscalyear)s\" 结账, 必须将其之前的所有年度都结账."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_close_period_inactive_accounts"
 msgid ""
 "To close period \"%(period)s\", you must balance the inactive account "
 "\"%(account)s\"."
 msgstr "要想关闭分期 \"%(period)s\"，必须平衡非活动帐户 \"%(account)s\"。"
 
+#, python-format
 msgctxt "model:ir.message,text:msg_close_period_non_posted_moves"
 msgid "To close period \"%(period)s\" you must post the moves \"%(moves)s\"."
 msgstr "对分期 \"%(period)s\" 进行期末结账之前， 需要将记账凭证 \"%(moves)s\" 登记入账."
@@ -3233,10 +3246,12 @@ msgid ""
 " moves."
 msgstr "不能更改与记账凭证关联的公司的货币。"
 
+#, python-format
 msgctxt "model:ir.message,text:msg_create_journal_period_closed_period"
 msgid "You cannot create a journal-period in closed period \"%(period)s\"."
 msgstr "无法创建分期日记账，因为分期 \"%(period)s\" 已经结账."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_create_period_closed_fiscalyear"
 msgid ""
 "You cannot create a period in fiscal year \"%(fiscalyear)s\" because it is "
@@ -3255,28 +3270,27 @@ msgctxt "model:ir.message,text:msg_delegate_line_same_origins"
 msgid "You cannot delegate together lines with different origins."
 msgstr "无法将不同缘由的明细汇总."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_delete_account_with_move_lines"
 msgid "You cannot delete account \"%(account)s\" because it has move lines."
 msgstr "账户 \"%(account)s\" 已经包含记账凭证明细，所以无法删除."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_erase_party_receivable_payable"
 msgid ""
 "You cannot erase party \"%(party)s\" while they have pending "
 "receivable/payable with company \"%(company)s\"."
 msgstr "当参与者 \"%(party)s\" 与公司 \"%(company)s\" 有待处理的应收/应付款项时，不能删除它们。"
 
-msgctxt "model:ir.message,text:msg_fiscalyear_different_post_move_sequence"
-msgid ""
-"The fiscal years \"%(first)s\" and \"%(second)s\" cannot have the same post "
-"move sequence, you must use different sequences."
-msgstr "会计年度 \"%(first)s\" 和 \"%(second)s\" 不能有相同的记账凭证入账序列，必须使用不同的序列."
-
 msgctxt "model:ir.message,text:msg_fiscalyear_overlap"
-msgid ""
-"The fiscal years \"%(first)s\" and \"%(second)s\" overlap, you must use "
-"different dates."
-msgstr "会计年度 \"%(first)s\" 和 \"%(second)s\" 有重叠，必须使用不同的日期."
+msgid "The dates of fiscal years of the same company can not overlap."
+msgstr ""
 
+msgctxt "model:ir.message,text:msg_fiscalyear_post_move_sequence_unique"
+msgid "The post move sequence of fiscal years must be unique."
+msgstr ""
+
+#, python-format
 msgctxt "model:ir.message,text:msg_group_line"
 msgid "Line \"%(line)s\" can not be grouped."
 msgstr "明细 \"%(line)s\" 无法汇总."
@@ -3301,6 +3315,7 @@ msgctxt "model:ir.message,text:msg_group_line_single"
 msgid "You cannot group a single line."
 msgstr "不能汇总一条明细."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_journal_account_moves"
 msgid ""
 "You cannot change the type of journal \"%(journal)s\" because it has posted "
@@ -3311,10 +3326,12 @@ msgctxt "model:ir.message,text:msg_journal_period_unique"
 msgid "You can create only one journal per period."
 msgstr "一个分期只能创建一个日记账."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_line_already_reconciled"
 msgid "You cannot reconcile already reconciled line \"%(line)s\"."
 msgstr "明细 \"%(line)s\" 已经对账，不能再对账。"
 
+#, python-format
 msgctxt "model:ir.message,text:msg_line_closed_account"
 msgid ""
 "To create a line on account \"%(account)s\", you must set a type or unclose "
@@ -3325,12 +3342,14 @@ msgctxt "model:ir.message,text:msg_line_debit_credit"
 msgid "You cannot set both debit and credit on the line."
 msgstr "一条明细不能同时设置借方和贷方。"
 
+#, python-format
 msgctxt "model:ir.message,text:msg_line_party_required"
 msgid ""
 "To create a line on account \"%(account)s\", you must set a party on line "
 "\"%(line)s\"."
 msgstr "要在帐户 \"%(account)s\"上创建明细，必须为明细 \"%(line)s\" 设置一个参与者。"
 
+#, python-format
 msgctxt "model:ir.message,text:msg_line_party_set"
 msgid ""
 "To create a line on account \"%(account)s\", you must remove the party on "
@@ -3343,34 +3362,41 @@ msgid ""
 "credit."
 msgstr "必须为第二种货币设置记账符号，以匹配借方-贷方这种记账符号。"
 
+#, python-format
 msgctxt "model:ir.message,text:msg_modify_delete_journal_period_moves"
 msgid ""
 "You cannot modify or delete journal-period \"%(journal_period)s\" because it"
 " contains moves."
 msgstr "无法更改或者删除分期日记账 \"%(journal_period)s\"，因为它已经登记记账凭证."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_modify_line_closed_journal_period"
 msgid ""
 "You cannot add/modify/delete lines on closed journal-period "
 "\"%(journal_period)s\"."
 msgstr "已经结账的分期日记账 \"%(journal_period)s\" 无法添加/编辑/删除明细."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_modify_line_posted_move"
 msgid "You cannot modify line \"%(line)s\" from posted move \"%(move)s\"."
 msgstr "已经入账的记账凭证 \"%(move)s\" 无法更改明细 \"%(line)s\"。"
 
+#, python-format
 msgctxt "model:ir.message,text:msg_modify_line_reconciled"
 msgid "You cannot modify reconciled line \"%(line)s\"."
 msgstr "无法编辑对账明细\"%(line)s\"。"
 
+#, python-format
 msgctxt "model:ir.message,text:msg_modify_posted_moved"
 msgid "You cannot modify posted move \"%(move)s\"."
 msgstr "无法编辑已登记入账的记账凭证 \"%(move)s\"。"
 
+#, python-format
 msgctxt "model:ir.message,text:msg_modify_tax_line_closed_period"
 msgid "You cannot add/modify/delete tax lines in closed period \"%(period)s\"."
 msgstr "已经结账的分期 \"%(period)s\" 无法添加/更改/删除税明细."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_move_cancel_closed_period"
 msgid ""
 "The period of move \"%(move)s\" is closed.\n"
@@ -3379,12 +3405,32 @@ msgstr ""
 "记账凭证 \"%(move)s\" 对应的分期已经结账.\n"
 "使用当前分期来取消此记账凭证？"
 
+#, fuzzy, python-format
+msgctxt "model:ir.message,text:msg_move_copy_closed_period"
+msgid ""
+"The period of move \"%(move)s\" is closed.\n"
+"Use the current period to copy the move?"
+msgstr ""
+"记账凭证 \"%(move)s\" 对应的分期已经结账.\n"
+"使用当前分期来取消此记账凭证？"
+
+#, python-format
 msgctxt "model:ir.message,text:msg_move_template_expression_not_number"
 msgid ""
 "The value \"%(value)s\" of \"%(expression)s\" from template \"%(template)s\""
 " is not a number."
 msgstr "来自模板 \"%(template)s\" 的表达式 \"%(expression)s\" 的值 \"%(value)s\" 不是数字。"
 
+#, fuzzy, python-format
+msgctxt "model:ir.message,text:msg_move_template_invalid_description"
+msgid ""
+"Failed to evaluate the description \"%(description)s\" from template "
+"\"%(template)s\" with error: \"%(error)s\""
+msgstr ""
+"无法计算模板 \"%(template)s\" 中的表达式 \"%(expression)s\"，出现错误：\n"
+"\"%(error)s\""
+
+#, python-format
 msgctxt "model:ir.message,text:msg_move_template_invalid_expression"
 msgid ""
 "Failed to evaluate expression \"%(expression)s\" from template \"%(template)s\" with error:\n"
@@ -3393,28 +3439,33 @@ msgstr ""
 "无法计算模板 \"%(template)s\" 中的表达式 \"%(expression)s\"，出现错误：\n"
 "\"%(error)s\""
 
+#, python-format
 msgctxt "model:ir.message,text:msg_move_template_keyword_name_not_identifier"
 msgid "The keyword name \"%(name)s\" is not a valid identifier."
 msgstr "关键字名称 \"%(name)s\" 不是有效的标识符。"
 
+#, python-format
 msgctxt "model:ir.message,text:msg_no_fiscalyear_date"
 msgid ""
 "To continue, you must create a fiscal year for the date \"%(date)s\" and "
 "company \"%(company)s\"."
 msgstr "若要继续，必须为日期 \"%(date)s\" 和公司 \"%(company)s\" 创建会计年度。"
 
+#, fuzzy, python-format
 msgctxt "model:ir.message,text:msg_no_open_fiscalyear_date"
 msgid ""
 "To continue, you must reopen the fiscal year \"%(fiscalyear)s\" of company "
-"\"%(company)s\"for the date \"%(date)s\"."
+"\"%(company)s\" for the date \"%(date)s\"."
 msgstr "若要继续，必须为日期 \"%(date)s\" 重新打开公司 \"%(company)s\" 的会计年度 \"%(fiscalyear)s\" 。"
 
+#, python-format
 msgctxt "model:ir.message,text:msg_no_open_period_date"
 msgid ""
 "To continue, you must reopen the period \"%(period)s\" of company "
 "\"%(company)s\" for the date \"%(date)s\"."
 msgstr "若要继续，必须为日期 \"%(date)s\" 重新打开公司 \"%(company)s\" 的分期 \"%(period)s\" 。"
 
+#, python-format
 msgctxt "model:ir.message,text:msg_no_period_date"
 msgid ""
 "To continue, you must create a period for the date \"%(date)s\" and company "
@@ -3425,73 +3476,78 @@ msgctxt "model:ir.message,text:msg_only_one_debit_credit_types"
 msgid "Account can have only one of the debit or credit type set."
 msgstr "帐户只能设置借方或贷方类型中的一种。"
 
+#, fuzzy
 msgctxt "model:ir.message,text:msg_open_fiscalyear_earlier"
-msgid ""
-"The open fiscal year \"%(open)s\" can not be before the close fiscal year "
-"\"%(closed)s\"."
+msgid "Open fiscal years can not be before closed fiscal years."
 msgstr "打开的会计年度 \"%(open)s\" 不能在关闭的会计年度 \"%(closed)s\" 之前。"
 
+#, python-format
 msgctxt "model:ir.message,text:msg_open_journal_period_closed_period"
 msgid ""
 "You cannot reopen journal-period \"%(journal_period)s\" in closed period "
 "\"%(period)s\"."
 msgstr "分期 \"%(period)s\" 已经结账，所以无法重新开启分期日记账 \"%(journal_period)s\"。"
 
+#, python-format
 msgctxt "model:ir.message,text:msg_open_period_closed_fiscalyear"
 msgid ""
 "You cannot reopen period \"%(period)s\" because its fiscal year "
 "\"%(fiscalyear)s\" is closed."
 msgstr "分期 \"%(period)s\" 对应的会计年度 \"%(fiscalyear)s\" 已经结账，所以无法重新将其开启。"
 
+#, python-format
 msgctxt "model:ir.message,text:msg_party_missing_payable_account"
 msgid "To continue, you must define a payable account for party \"%(party)s\"."
 msgstr "若要继续，必须为参与者 \"%(party)s\" 定义应付账款账户。"
 
+#, python-format
 msgctxt "model:ir.message,text:msg_party_missing_receivable_account"
 msgid "To continue, you must define a receivable account for party \"%(party)s\"."
 msgstr "若要继续，必须为参与者 \"%(party)s\" 定义应收账款账户。"
 
+#, python-format
 msgctxt "model:ir.message,text:msg_period_fiscalyear_dates"
 msgid ""
 "The dates for period \"%(period)s\" must be between the dates of its fiscal "
 "year \"%(fiscalyear)s\"."
 msgstr "分期 \"%(period)s\" 的日期必须在会计年度 \"%(fiscalyear)s\" 的日期之间."
 
-#, fuzzy
+#, fuzzy, python-format
 msgctxt "model:ir.message,text:msg_period_move_dates"
 msgid ""
 "The dates for period \"%(period)s\" must include the date \"%(move_date)s\" "
 "of move \"%(move)s\"."
 msgstr "分期 \"%(period)s\" 的日期必须在会计年度 \"%(fiscalyear)s\" 的日期之间."
 
-msgctxt "model:ir.message,text:msg_period_overlap"
+msgctxt "model:ir.message,text:msg_period_post_move_sequence_unique"
 msgid ""
-"The periods \"%(first)s\" and \"%(second)s\" overlap, you must use different"
-" dates."
-msgstr "分期 \"%(first)s\" 和 \"%(second)s\" 重叠，必须使用不同的日期."
+"A post move sequence can be reused only by periods in the same fiscal year."
+msgstr ""
 
-msgctxt "model:ir.message,text:msg_period_same_sequence"
-msgid ""
-"You cannot use the same post move sequence for the periods \"%(first)s\" and"
-" \"%(second)s\" because they are from different fiscal years."
-msgstr "在分期 \"%(first)s\" 和 \"%(second)s\" 中不能使用相同的记账凭证入账序列，因为它们属于不同的会计年度。"
+msgctxt "model:ir.message,text:msg_period_standard_overlap"
+msgid "The dates of standard period of the same fiscal year can not overlap."
+msgstr ""
 
+#, python-format
 msgctxt "model:ir.message,text:msg_post_empty_move"
 msgid "To post move \"%(move)s\", you must fill in its lines."
 msgstr "要入账记账凭证 \"%(move)s\"，必须为其添加明细."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_post_unbalanced_move"
 msgid ""
 "To post move \"%(move)s\", you must balance all its lines debits and "
 "credits."
 msgstr "要登记入账记账凭证 \"%(move)s\"，必须平衡明细的贷方和借方."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_reconciliation_account_not_reconcile"
 msgid ""
 "To reconcile line \"%(line)s\", you must set its account \"%(account)s\" as "
 "reconcilable."
 msgstr "若要对明细 \"%(line)s\"进行对帐，必须将其帐户\"%(account)s\"设置为可对帐。"
 
+#, python-format
 msgctxt ""
 "model:ir.message,text:msg_reconciliation_currency_exchange_credit_account_missing"
 msgid ""
@@ -3499,6 +3555,7 @@ msgid ""
 "\"%(company)s\"."
 msgstr "若要对账，必须为公司 \"%(company)s\" 定义一个货币兑换信用帐户。"
 
+#, python-format
 msgctxt ""
 "model:ir.message,text:msg_reconciliation_currency_exchange_debit_account_missing"
 msgid ""
@@ -3506,6 +3563,7 @@ msgid ""
 "\"%(company)s\"."
 msgstr "若要对账明细，必须为公司 \"%(company)s\" 定义一个货币兑换借方帐户。"
 
+#, python-format
 msgctxt ""
 "model:ir.message,text:msg_reconciliation_currency_exchange_journal_missing"
 msgid ""
@@ -3513,6 +3571,7 @@ msgid ""
 "\"%(company)s\"."
 msgstr "若要对账明细，必须为公司 \"%(company)s\" 定义一个货币兑换日记帐。"
 
+#, python-format
 msgctxt "model:ir.message,text:msg_reconciliation_delete_delegated"
 msgid ""
 "The reconciliation \"%(reconciliation)s\" is delegated to the line \"%(line)s\".\n"
@@ -3521,6 +3580,7 @@ msgstr ""
 "对帐 \"%(reconciliation)s\" 已经委托给明细 \"%(line)s\".\n"
 "您可能需要取消其对应的记账凭证 \"%(move)s\"."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_reconciliation_delete_write_off"
 msgid ""
 "The reconciliation \"%(reconciliation)s\" is linked to the write-off line \"%(line)s\".\n"
@@ -3529,34 +3589,47 @@ msgstr ""
 "对账 \"%(reconciliation)s\" 已经链接到核销明细 \"%(line)s\"。\n"
 "需要取消对应记账凭证 \"%(move)s\"。"
 
+#, python-format
 msgctxt "model:ir.message,text:msg_reconciliation_different_accounts"
 msgid ""
 "You cannot reconcile line \"%(line)s\" with others because its account "
 "\"%(account1)s\" is different from \"%(account2)s\"."
 msgstr "不能将明细 \"%(line)s\" 与其他明细对帐，因为它的帐户\"%(account1)s\"与\"%(account2)s\"不同。"
 
+#, python-format
 msgctxt "model:ir.message,text:msg_reconciliation_different_parties"
 msgid ""
 "You cannot reconcile line \"%(line)s\" with others because its party "
 "\"%(party1)s\" is different from \"%(party2)s\"."
 msgstr "不能将明细 \"%(line)s\" 与其他明细对帐，因为它的参与者\"%(party1)s\" 和\"%(party2)s\" 不同."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_reconciliation_line_not_valid"
 msgid "You cannot reconcile non-valid line \"%(line)s\"."
 msgstr "无法对无效明细 \"%(line)s\"对账."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_reconciliation_unbalanced"
 msgid ""
 "To reconcile lines, they must have the same debit \"%(debit)s\" and credit "
 "\"%(credit)s\"."
 msgstr "若要对明细对帐，它们必须具有相同的借方 \"%(debit)s\" 和贷方 \"%(credit)s\"。"
 
+#, python-format
 msgctxt "model:ir.message,text:msg_reconciliation_write_off_missing"
 msgid ""
 "To reconcile lines with \"%(amount)s\" write-off, you must select a write-"
 "off method."
 msgstr "要将行与 \"%(amount)s\" 核销进行对账，必须选择一种核销方法。"
 
+#, fuzzy, python-format
+msgctxt "model:ir.message,text:msg_reconciliation_write_off_same_account"
+msgid ""
+"You cannot reconcile lines using the write-off \"%(write_off)s\" with the "
+"same \"%(account)s\"."
+msgstr "不能将明细 \"%(line)s\" 与其他明细对帐，因为它的帐户\"%(account1)s\"与\"%(account2)s\"不同。"
+
+#, python-format
 msgctxt "model:ir.message,text:msg_reopen_fiscalyear_later"
 msgid ""
 "To reopen fiscal year \"%(fiscalyear)s\", you must reopen all later fiscal "
@@ -3579,12 +3652,14 @@ msgctxt "model:ir.message,text:msg_reschedule_line_same_party"
 msgid "You cannot reschedule lines with different parties."
 msgstr "不能重新安排不同参与者的明细。"
 
+#, python-format
 msgctxt "model:ir.message,text:msg_reschedule_line_wrong_amount"
 msgid ""
 "To reschedule the lines you must change the terms to have a total amount of "
 "%(total_amount)s instead of %(amount)s."
 msgstr "要重新安排明细，必须修改条款，使总金额为 %(total_amount)s 而不是 %(amount)s。"
 
+#, python-format
 msgctxt "model:ir.message,text:msg_tax_update_unit_price_with_parent"
 msgid "You cannot set \"Update Unit Price\" on child tax \"%(tax)s\"."
 msgstr "子税 \"%(tax)s\" 无法设置 \"更新单价\"。"
@@ -3618,8 +3693,8 @@ msgid "Lock"
 msgstr "锁定"
 
 msgctxt "model:ir.model.button,string:fiscalyear_reopen_button"
-msgid "Re-Open"
-msgstr "重新打开"
+msgid "Reopen"
+msgstr ""
 
 #, fuzzy
 msgctxt "model:ir.model.button,string:journal_period_close_button"
@@ -3643,8 +3718,8 @@ msgid "Lock"
 msgstr "锁定"
 
 msgctxt "model:ir.model.button,string:period_reopen_button"
-msgid "Re-Open"
-msgstr "重新打开"
+msgid "Reopen"
+msgstr ""
 
 msgctxt "model:ir.rule.group,name:rule_group_account_companies"
 msgid "User in companies"
@@ -3948,10 +4023,6 @@ msgstr "账户"
 msgctxt "model:res.group,name:group_account_admin"
 msgid "Account Administration"
 msgstr "账户管理"
-
-msgctxt "model:res.group,name:group_account_party"
-msgid "Accounting Party"
-msgstr "账户参与者"
 
 msgctxt "report:account.account.type.statement:"
 msgid "/"

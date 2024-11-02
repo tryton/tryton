@@ -8,7 +8,7 @@ msgstr ""
 
 msgctxt "field:account.invoice.line,correction:"
 msgid "Correction"
-msgstr ""
+msgstr "Korekta"
 
 msgctxt "field:account.invoice.line,shipments:"
 msgid "Shipments"
@@ -32,7 +32,7 @@ msgstr ""
 
 msgctxt "field:stock.move,invoice_lines:"
 msgid "Invoice Lines"
-msgstr ""
+msgstr "Pozycje faktury"
 
 msgctxt "field:stock.move,invoice_types:"
 msgid "Invoice Types"
@@ -40,7 +40,7 @@ msgstr ""
 
 msgctxt "help:account.invoice.line,correction:"
 msgid "Check to correct price of already posted invoice."
-msgstr ""
+msgstr "Zanacz, aby skorygować cenę już wystawionej faktury."
 
 msgctxt "model:account.invoice.line-stock.move,name:"
 msgid "Invoice Line - Stock Move"

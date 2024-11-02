@@ -126,18 +126,21 @@ msgctxt "model:ir.action,name:act_sheet"
 msgid "Sheets"
 msgstr ""
 
+#, python-format
 msgctxt "model:ir.message,text:msg_close_period_previous_open"
 msgid "To close period \"%(period)s\" you must first close \"%(other_period)s\"."
 msgstr ""
 "Untuk menutup periode \"%(period)s\" Anda harus terlebih dahulu menutup "
 "\"%(other_period)s\"."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_delete_period_close"
 msgid "To delete attendance \"%(attendance)s\" you must reopen period \"%(period)s\"."
 msgstr ""
 "Untuk menghapus kehadiran \"%(attendance)s\" Anda harus membuka kembali "
 "periode \"%(period)s\"."
 
+#, fuzzy, python-format
 msgctxt "model:ir.message,text:msg_draft_period_previous_closed"
 msgid ""
 "To change period \"%(period)s\" you must first change \"%(other_period)s\" "
@@ -146,6 +149,7 @@ msgstr ""
 "Untuk mengubah periode \"%(period)s\" Anda harus terlebih dahulu mengubah "
 "\"(other_period)s\" menjadi rancangan."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_modify_period_close"
 msgid "To modify attendance \"%(attendance)s\" you must reopen period \"%(period)s\"."
 msgstr ""

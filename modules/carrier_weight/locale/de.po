@@ -8,7 +8,7 @@ msgstr "Währung"
 
 msgctxt "field:carrier,weight_price_list:"
 msgid "Price List"
-msgstr "Preisliste"
+msgstr "Preiskonditionsschema"
 
 msgctxt "field:carrier,weight_uom:"
 msgid "Weight UoM"
@@ -50,11 +50,13 @@ msgstr ""
 
 msgctxt "help:carrier,weight_uom:"
 msgid "The Unit of Measure of weight criteria for the price list."
-msgstr "Die Gewichtseinheit des Gewichtskriteriums für die Preisliste."
+msgstr ""
+"Die Gewichtseinheit des Gewichtskriteriums für das Preiskonditionsschema."
 
 msgctxt "help:carrier.weight_price_list,carrier:"
 msgid "The carrier that the price list belongs to."
-msgstr "Der Versanddienstleister dem diese Preisliste zugeordnet ist."
+msgstr ""
+"Der Versanddienstleister dem dieses Preiskonditionsschema zugeordnet ist."
 
 msgctxt "help:carrier.weight_price_list,price:"
 msgid "The price of the carrier service."
@@ -70,7 +72,7 @@ msgstr "Die Maßeinheit für das Gewicht."
 
 msgctxt "model:carrier.weight_price_list,name:"
 msgid "Carrier Weight Price List"
-msgstr "Preisliste Versandgewicht"
+msgstr "Preiskonditionsschema Versandgewicht"
 
 msgctxt "selection:carrier,carrier_cost_method:"
 msgid "Weight"

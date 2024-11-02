@@ -230,6 +230,7 @@ msgctxt "model:ir.action.act_window.domain,name:act_work_list_domain_open"
 msgid "Open"
 msgstr "Abierto"
 
+#, python-format
 msgctxt "model:ir.message,text:msg_line_duration_positive"
 msgid "The duration of line \"%(line)s\" must be positive."
 msgstr "La duración de la línea \"%(line)s\" debe ser positiva."
@@ -238,6 +239,7 @@ msgctxt "model:ir.message,text:msg_line_uuid_unique"
 msgid "The UUID of timesheet line must be unique."
 msgstr "El UUID de la linea del parte de trabajo tiene que ser único."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_work_company_different_origin"
 msgid "The companies associated with work \"%(work)s\" and its origin differ."
 msgstr ""

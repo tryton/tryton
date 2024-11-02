@@ -34,6 +34,7 @@ msgctxt "model:ir.message,text:msg_identifier_record_unique"
 msgid "The Vue Storefront identifier must be unique for each record."
 msgstr "El indentificador Vue Storefront ha de ser únic per a cada registre."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_invalid_tax_identifier"
 msgid "The number \"%(code)s\" is not a valid tax identifier."
 msgstr "El númbero \"%(code)s\" no és un identificador fiscal vàlid."
@@ -56,6 +57,7 @@ msgctxt "model:ir.message,text:msg_tax"
 msgid "Tax"
 msgstr "Impost"
 
+#, python-format
 msgctxt "model:ir.message,text:msg_unknown_country_code"
 msgid "The country code \"%(code)s\" is not known."
 msgstr "El codi de país \"%(code)s\" és desconegut."

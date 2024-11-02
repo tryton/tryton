@@ -50,10 +50,6 @@ msgctxt "field:stock.order_point,provisioning_location:"
 msgid "Provisioning Location"
 msgstr "Местонахождение на провизии"
 
-msgctxt "field:stock.order_point,storage_location:"
-msgid "Storage Location"
-msgstr "Местонахождение на съхранение"
-
 msgctxt "field:stock.order_point,target_quantity:"
 msgid "Target Quantity"
 msgstr ""
@@ -65,10 +61,6 @@ msgstr "Вид"
 msgctxt "field:stock.order_point,unit:"
 msgid "Unit"
 msgstr "Единица"
-
-msgctxt "field:stock.order_point,warehouse_location:"
-msgid "Warehouse Location"
-msgstr "Местонахождение на склад"
 
 #, fuzzy
 msgctxt "field:stock.supply.start,warehouses:"

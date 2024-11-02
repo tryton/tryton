@@ -1,5 +1,4 @@
 #
-#, fuzzy
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
@@ -167,10 +166,12 @@ msgctxt ""
 msgid "Posted"
 msgstr ""
 
+#, python-format
 msgctxt "model:ir.message,text:msg_shipment_cost_post_no_shipment"
 msgid "The shipment cost \"%(shipment_cost)s\" has no shipment."
 msgstr ""
 
+#, python-format
 msgctxt "model:ir.message,text:msg_shipment_cost_post_same_parties"
 msgid ""
 "The shipment \"%(shipment)s\" of shipment cost \"%(shipment_cost)s\" has "

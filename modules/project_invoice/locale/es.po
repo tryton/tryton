@@ -81,6 +81,7 @@ msgctxt "model:ir.action,name:open_invoice"
 msgid "Invoices"
 msgstr "Facturas"
 
+#, python-format
 msgctxt "model:ir.message,text:msg_invoiced_timesheet_line_delete"
 msgid ""
 "You cannot delete timesheet line \"%(line)s\" because it has been invoiced."
@@ -88,6 +89,7 @@ msgstr ""
 "No puedes eliminar la linea del parte de trabajo \"%(line)s\" porque se ha "
 "facturado."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_invoiced_timesheet_line_modify_duration"
 msgid ""
 "You cannot modify the duration of timesheet line \"%(line)s\" because it has"
@@ -96,6 +98,7 @@ msgstr ""
 "No puedes modificar la duración de la linea del parte de trabajo "
 "\"%(line)s\" porque se ha facturado."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_invoiced_timesheet_line_modify_work"
 msgid ""
 "You cannot modify the work of timesheet line \"%(line)s\" because it has "
@@ -104,10 +107,12 @@ msgstr ""
 "No puedes modificar el trabajo de la linea del parte de trabajo \"%(line)s\""
 " porque se ha facturado."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_invoiced_work_delete"
 msgid "You cannot delete work \"%(work)s\" because it has been invoiced."
 msgstr "No se puede eliminar el trabajo \"%(work)s\" porque se ha facturado."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_invoiced_work_modify_effort"
 msgid ""
 "You cannot modify the effort of work \"%(work)s\" because it has been "
@@ -116,20 +121,24 @@ msgstr ""
 "No se puede modificar el esfuerzo del trabajo \"%(work)s\" porque se ha "
 "facturado."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_missing_account_revenue"
 msgid "To invoice work \"%(work)s\" you must configure a default account revenue."
 msgstr ""
-"Para facturar el trabajo \"%(works)s\" debéis configurar una cuenta de "
+"Para facturar el trabajo \"%(work)s\" debéis configurar una cuenta de "
 "ingressos por defecto."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_missing_list_price"
 msgid "There is no list price on work \"%(work)s\"."
 msgstr "No hay ningún precio en el trabajo \"%(work)s\"."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_missing_party"
 msgid "There is no party on work \"%(work)s\"."
 msgstr "No hay ningún tercero en el trabajo \"%(work)s\"."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_product_missing_account_revenue"
 msgid ""
 "To invoice work \"%(work)s\" you must define an account revenue for product "
@@ -138,6 +147,7 @@ msgstr ""
 "Para facturar el trabajo \"%(work)s\" debeis definir una cuenta de ingressos"
 " para el producto \"%(product)s\"."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_project_invoice_line_quantity"
 msgid ""
 "The quantity of project invoice line \"%(invoice_line)s\" must be "

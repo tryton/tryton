@@ -4,15 +4,15 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "field:account.account.type,deposit:"
 msgid "Deposit"
-msgstr "Storting"
+msgstr "Aanbetaling"
 
 msgctxt "field:account.account.type.template,deposit:"
 msgid "Deposit"
-msgstr "Storting"
+msgstr "Aanbetaling"
 
 msgctxt "field:account.invoice.recall_deposit.start,account:"
 msgid "Account"
-msgstr "Rekening"
+msgstr "Grootboekrekening"
 
 msgctxt "field:account.invoice.recall_deposit.start,company:"
 msgid "Company"
@@ -24,41 +24,43 @@ msgstr "Valuta"
 
 msgctxt "field:account.invoice.recall_deposit.start,description:"
 msgid "Description"
-msgstr "Specificatie"
+msgstr "Omschrijving"
 
 msgctxt "field:party.party,deposit:"
 msgid "Deposit"
-msgstr "storting"
+msgstr "Aanbetaling"
 
 msgctxt "model:account.invoice.recall_deposit.start,name:"
 msgid "Recall deposit on Invoice"
-msgstr "herinnering ??( Recall deposit on Invoice)"
+msgstr "Start aanbetaling terug op factuur"
 
 msgctxt "model:ir.action,name:act_move_line_deposit"
 msgid "Deposit Lines"
-msgstr "Stortingsregels"
+msgstr "Aanbetalingsregels"
 
 msgctxt "model:ir.action,name:wizard_recall_deposit"
 msgid "Recall Deposit"
-msgstr "Stort terug"
+msgstr "Terugstorten aanbetaling"
 
+#, python-format
 msgctxt "model:ir.message,text:msg_deposit_not_enough"
 msgid "The account \"%(account)s\" has not enough deposit from party \"%(party)s\"."
 msgstr ""
-"De rekening \"%(account)s\" heeft niet voldoende krediet van relatie "
-"\"%(party)s\"."
+"De grootboekrekening \"%(account)s\" heeft niet voldoende aanbetaling van "
+"relatie \"%(party)s\"."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_erase_party_deposit"
 msgid ""
 "You cannot erase party \"%(party)s\" while they have deposit at company "
 "\"%(company)s\"."
 msgstr ""
-"U kunt relatie \"%(party)s\" niet wissen terwijl ze een tegoed hebben bij "
-"bedrijf \"%(company)s\"."
+"U kunt relatie \"%(party)s\" niet verwijderen terwijl men een aanbetaling "
+"heeft bij bedrijf \"%(company)s\"."
 
 msgctxt "model:ir.model.button,string:invoice_recall_deposit_button"
 msgid "Recall Deposit"
-msgstr "Stort terug"
+msgstr "Stort aanbetaling terug"
 
 msgctxt "wizard_button:account.invoice.recall_deposit,start,end:"
 msgid "Cancel"
@@ -66,4 +68,4 @@ msgstr "Annuleren"
 
 msgctxt "wizard_button:account.invoice.recall_deposit,start,recall:"
 msgid "Recall"
-msgstr "Terugroepen"
+msgstr "Terugstorten"

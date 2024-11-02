@@ -3382,22 +3382,24 @@ msgctxt "model:ir.action,name:wizard_update_chart"
 msgid "Update Chart of Accounts from Template"
 msgstr "به روزرسانی نمودار حساب ها از روی الگو"
 
+#, fuzzy, python-format
 msgctxt "model:ir.message,text:msg_account_chart_exists"
 msgid "A chart of accounts already exists for company \"%(company)s\"."
 msgstr "یک نمودار حساب ها برای شرکت \"%s\" وجود دارد."
 
-#, fuzzy
+#, fuzzy, python-format
 msgctxt "model:ir.message,text:msg_account_closed_lines"
 msgid "You cannot close account \"%(account)s\" because it has move lines."
 msgstr "شما نمیتوانید حساب \"٪ s\" را حذف کنید زیرا دارای سطرهای جابجایی است."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_account_invalid_deferral_second_currency"
 msgid "To set a second currency for account \"%(account)s\", it must be deferral."
 msgstr ""
 "برای تعیین یک ارز دوم برای حساب \"%(account)s\" ، باید آن را به تعویق "
 "انداخت."
 
-#, fuzzy
+#, fuzzy, python-format
 msgctxt "model:ir.message,text:msg_account_invalid_lines_second_currency"
 msgid ""
 "To set a second currency for account \"%(account)s\", its lines must have "
@@ -3406,24 +3408,27 @@ msgstr ""
 "برای تعیین یک ارز دوم برای حساب \"%(account)s\" ، باید آن را به تعویق "
 "انداخت."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_account_invalid_type_second_currency"
 msgid ""
 "To set a second currency for account \"%(account)s\", it must not have a "
 "type \"payable\", \"revenue\", \"receivable\" nor \"expense\"."
 msgstr ""
 
-#, fuzzy
+#, fuzzy, python-format
 msgctxt "model:ir.message,text:msg_account_no_type_lines"
 msgid ""
 "You cannot remove type of account \"%(account)s\" because it has move lines."
 msgstr "شما نمیتوانید حساب \"٪ s\" را حذف کنید زیرا دارای سطرهای جابجایی است."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_cancel_line_delegated"
 msgid ""
 "The moves \"%(moves)s\" contain grouped lines, cancelling them will ungroup "
 "the lines."
 msgstr ""
 
+#, python-format
 msgctxt "model:ir.message,text:msg_change_fiscalyear_post_move_sequence"
 msgid ""
 "You cannot change the post move sequence on fiscal year \"%(fiscalyear)s\" "
@@ -3432,6 +3437,7 @@ msgstr ""
 "شما نمی توانید دنباله حرکت پست را در سال مالی \"%(fiscalyear)s\" تغییر "
 "دهید،زیرا شامل حرکت های ارسال شده است."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_change_period_post_move_sequence"
 msgid ""
 "You cannot change the post move sequence in period \"%(period)s\" because it"
@@ -3440,12 +3446,14 @@ msgstr ""
 "شما نمیتوانید دنباله حرکت پست در دوره \"%(period)s\" را تغییر دهید، زیرا "
 "حرکتهای ارسال شده را ارسال کرده است."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_close_fiscalyear_account_balance_not_zero"
 msgid ""
 "To close the fiscal year, the balance of account \"%(account)s\" must be "
 "zero."
 msgstr "برای بستن سال مالی، تعادل حساب \"%(account)s\" باید صفر باشد."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_close_fiscalyear_earlier"
 msgid ""
 "To close fiscal year \"%(fiscalyear)s\", you must close all earlier fiscal "
@@ -3454,7 +3462,7 @@ msgstr ""
 "برای بستن سال مالی \"%(fiscalyear)s\"، شما باید تمام سال های مالی قبل را "
 "ببندید."
 
-#, fuzzy
+#, fuzzy, python-format
 msgctxt "model:ir.message,text:msg_close_period_inactive_accounts"
 msgid ""
 "To close period \"%(period)s\", you must balance the inactive account "
@@ -3463,6 +3471,7 @@ msgstr ""
 "برای بستن دوره \"%(period)s\" شما باید جابجایی های \"%(moves)s\" را ارسال "
 "کنید."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_close_period_non_posted_moves"
 msgid "To close period \"%(period)s\" you must post the moves \"%(moves)s\"."
 msgstr ""
@@ -3475,10 +3484,12 @@ msgid ""
 " moves."
 msgstr ""
 
+#, fuzzy, python-format
 msgctxt "model:ir.message,text:msg_create_journal_period_closed_period"
 msgid "You cannot create a journal-period in closed period \"%(period)s\"."
 msgstr "شما نمی توانید یک دوره - روزنامه ایجاد کنید در دوره بسته شده : \"%s\"."
 
+#, fuzzy, python-format
 msgctxt "model:ir.message,text:msg_create_period_closed_fiscalyear"
 msgid ""
 "You cannot create a period in fiscal year \"%(fiscalyear)s\" because it is "
@@ -3498,10 +3509,12 @@ msgctxt "model:ir.message,text:msg_delegate_line_same_origins"
 msgid "You cannot delegate together lines with different origins."
 msgstr ""
 
+#, fuzzy, python-format
 msgctxt "model:ir.message,text:msg_delete_account_with_move_lines"
 msgid "You cannot delete account \"%(account)s\" because it has move lines."
 msgstr "شما نمیتوانید حساب \"٪ s\" را حذف کنید زیرا دارای سطرهای جابجایی است."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_erase_party_receivable_payable"
 msgid ""
 "You cannot erase party \"%(party)s\" while they have pending "
@@ -3510,22 +3523,15 @@ msgstr ""
 "شما نمیتوانید نهاد/سازمان: \"%(party)s\" در حالی که آنها در انتظار قابل "
 "دریافت/ قابل پرداخت با شرکت:\"%(company)s\" هستند راحذف کنید."
 
-msgctxt "model:ir.message,text:msg_fiscalyear_different_post_move_sequence"
-msgid ""
-"The fiscal years \"%(first)s\" and \"%(second)s\" cannot have the same post "
-"move sequence, you must use different sequences."
-msgstr ""
-"سال های مالی: \"%(اولیه)s\" و \"%(ثانویه)s\" نمی تواند دنباله انتقال پست "
-"یکسان داشته باشد، شما باید از توالی های مختلف استفاده کنید."
-
 msgctxt "model:ir.message,text:msg_fiscalyear_overlap"
-msgid ""
-"The fiscal years \"%(first)s\" and \"%(second)s\" overlap, you must use "
-"different dates."
+msgid "The dates of fiscal years of the same company can not overlap."
 msgstr ""
-"سال های مالی: \"%(اولیه)s\" و \"%(ثانویه)s\" همپوشانی دارند، شما باید از "
-"تاریخ های مختلف استفاده کنید."
 
+msgctxt "model:ir.message,text:msg_fiscalyear_post_move_sequence_unique"
+msgid "The post move sequence of fiscal years must be unique."
+msgstr ""
+
+#, python-format
 msgctxt "model:ir.message,text:msg_group_line"
 msgid "Line \"%(line)s\" can not be grouped."
 msgstr ""
@@ -3550,7 +3556,7 @@ msgctxt "model:ir.message,text:msg_group_line_single"
 msgid "You cannot group a single line."
 msgstr ""
 
-#, fuzzy
+#, fuzzy, python-format
 msgctxt "model:ir.message,text:msg_journal_account_moves"
 msgid ""
 "You cannot change the type of journal \"%(journal)s\" because it has posted "
@@ -3563,11 +3569,12 @@ msgctxt "model:ir.message,text:msg_journal_period_unique"
 msgid "You can create only one journal per period."
 msgstr "شما برای هر دوره فقط میتوانید یک روزنامه ایجاد کنید."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_line_already_reconciled"
 msgid "You cannot reconcile already reconciled line \"%(line)s\"."
 msgstr "شما نمیتوانید مطابقت سطر: \"%(line)s\" را تطبیق دهید."
 
-#, fuzzy
+#, fuzzy, python-format
 msgctxt "model:ir.message,text:msg_line_closed_account"
 msgid ""
 "To create a line on account \"%(account)s\", you must set a type or unclose "
@@ -3580,6 +3587,7 @@ msgctxt "model:ir.message,text:msg_line_debit_credit"
 msgid "You cannot set both debit and credit on the line."
 msgstr "شما نمی توانید هر دو (بدهی و اعتباری) را در سطرتنظیم کنید."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_line_party_required"
 msgid ""
 "To create a line on account \"%(account)s\", you must set a party on line "
@@ -3588,6 +3596,7 @@ msgstr ""
 "برای ایجاد یک سطر در حساب:\"%(account)s\"،شما باید یک نهاد/سازمان روی "
 "سطر:\"%(line)s\" تنظیم کنید."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_line_party_set"
 msgid ""
 "To create a line on account \"%(account)s\", you must remove the party on "
@@ -3604,6 +3613,7 @@ msgstr ""
 "شما باید علامت ارز دوم را برای مطابقت با کارت اعتباری-کارت پیش خرید تنظیم "
 "کنید."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_modify_delete_journal_period_moves"
 msgid ""
 "You cannot modify or delete journal-period \"%(journal_period)s\" because it"
@@ -3612,6 +3622,7 @@ msgstr ""
 "شما نمیتوانید روزنامه-دوره : \"%(journal_period)s\" را اصلاح یا حذف کنید، "
 "زیرا دارای جابجایی ها میباشد."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_modify_line_closed_journal_period"
 msgid ""
 "You cannot add/modify/delete lines on closed journal-period "
@@ -3620,26 +3631,31 @@ msgstr ""
 "شما نمیتوانید سطرهایی را در روزنامه-دوره بسته شده :\"%(journal_period)s\"، "
 "اضافه / اصلاح/ حذف کنید."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_modify_line_posted_move"
 msgid "You cannot modify line \"%(line)s\" from posted move \"%(move)s\"."
 msgstr ""
 "شما نمی توانید خط :\"%(line)s\" از حرکت ارسال شده :\"%(move)s\" را تغییر "
 "دهید."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_modify_line_reconciled"
 msgid "You cannot modify reconciled line \"%(line)s\"."
 msgstr "شما نمی توانید سطر : \"%(line)s\" مطابقت شده را اصلاح کنید."
 
+#, fuzzy, python-format
 msgctxt "model:ir.message,text:msg_modify_posted_moved"
 msgid "You cannot modify posted move \"%(move)s\"."
 msgstr "شما نمی توانید جابجایی: \"%(جابجایی)s\" ارسال شده را اصلاح کنید."
 
+#, fuzzy, python-format
 msgctxt "model:ir.message,text:msg_modify_tax_line_closed_period"
 msgid "You cannot add/modify/delete tax lines in closed period \"%(period)s\"."
 msgstr ""
 "شما نمی توانید سطرهای مالیاتی را در دوره بسته \"%s\" ،اضافه / تغییر/حذف "
 "کنید."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_move_cancel_closed_period"
 msgid ""
 "The period of move \"%(move)s\" is closed.\n"
@@ -3648,44 +3664,63 @@ msgstr ""
 "دوره جابجایی:\"%(move)s\" بسته شده است.\n"
 "از دوره جاری برای لغو جابجایی استفاده می کنید؟"
 
+#, fuzzy, python-format
+msgctxt "model:ir.message,text:msg_move_copy_closed_period"
+msgid ""
+"The period of move \"%(move)s\" is closed.\n"
+"Use the current period to copy the move?"
+msgstr ""
+"دوره جابجایی:\"%(move)s\" بسته شده است.\n"
+"از دوره جاری برای لغو جابجایی استفاده می کنید؟"
+
+#, python-format
 msgctxt "model:ir.message,text:msg_move_template_expression_not_number"
 msgid ""
 "The value \"%(value)s\" of \"%(expression)s\" from template \"%(template)s\""
 " is not a number."
 msgstr ""
 
+#, python-format
+msgctxt "model:ir.message,text:msg_move_template_invalid_description"
+msgid ""
+"Failed to evaluate the description \"%(description)s\" from template "
+"\"%(template)s\" with error: \"%(error)s\""
+msgstr ""
+
+#, python-format
 msgctxt "model:ir.message,text:msg_move_template_invalid_expression"
 msgid ""
 "Failed to evaluate expression \"%(expression)s\" from template \"%(template)s\" with error:\n"
 "\"%(error)s\""
 msgstr ""
 
+#, python-format
 msgctxt "model:ir.message,text:msg_move_template_keyword_name_not_identifier"
 msgid "The keyword name \"%(name)s\" is not a valid identifier."
 msgstr ""
 
-#, fuzzy
+#, fuzzy, python-format
 msgctxt "model:ir.message,text:msg_no_fiscalyear_date"
 msgid ""
 "To continue, you must create a fiscal year for the date \"%(date)s\" and "
 "company \"%(company)s\"."
 msgstr "برای ادامه، شما باید یک سال مالی برای تاریخ : \"%(date)s\" ایجاد کنید."
 
-#, fuzzy
+#, fuzzy, python-format
 msgctxt "model:ir.message,text:msg_no_open_fiscalyear_date"
 msgid ""
 "To continue, you must reopen the fiscal year \"%(fiscalyear)s\" of company "
-"\"%(company)s\"for the date \"%(date)s\"."
+"\"%(company)s\" for the date \"%(date)s\"."
 msgstr "برای ادامه، شما باید یک سال مالی برای تاریخ : \"%(date)s\" ایجاد کنید."
 
-#, fuzzy
+#, fuzzy, python-format
 msgctxt "model:ir.message,text:msg_no_open_period_date"
 msgid ""
 "To continue, you must reopen the period \"%(period)s\" of company "
 "\"%(company)s\" for the date \"%(date)s\"."
 msgstr "برای ادامه، شما باید یک دوره برای تاریخ : \"%(date)s\" ایجاد کنید."
 
-#, fuzzy
+#, fuzzy, python-format
 msgctxt "model:ir.message,text:msg_no_period_date"
 msgid ""
 "To continue, you must create a period for the date \"%(date)s\" and company "
@@ -3699,13 +3734,12 @@ msgstr "شما نمی توانید هر دو (بدهی و اعتباری) را �
 
 #, fuzzy
 msgctxt "model:ir.message,text:msg_open_fiscalyear_earlier"
-msgid ""
-"The open fiscal year \"%(open)s\" can not be before the close fiscal year "
-"\"%(closed)s\"."
+msgid "Open fiscal years can not be before closed fiscal years."
 msgstr ""
 "تاریخ های دوره : \"%(period)s\" باید مابین تاریخ های این سال مای : "
 "\"%(fiscalyear)s\" باشد."
 
+#, fuzzy, python-format
 msgctxt "model:ir.message,text:msg_open_journal_period_closed_period"
 msgid ""
 "You cannot reopen journal-period \"%(journal_period)s\" in closed period "
@@ -3714,6 +3748,7 @@ msgstr ""
 "شما نمیتوانید روزنامه - دوره : \"%s\" را دوباره باز کنید، چونکه دوره \"%s\" "
 "بسته شده است."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_open_period_closed_fiscalyear"
 msgid ""
 "You cannot reopen period \"%(period)s\" because its fiscal year "
@@ -3722,18 +3757,21 @@ msgstr ""
 "شما نمیتوانید دوره : \"%(period)s\" را دوباره باز کنید چرا که سال مالی : "
 "\"%(fiscalyear)s\" بسته شده است."
 
+#, fuzzy, python-format
 msgctxt "model:ir.message,text:msg_party_missing_payable_account"
 msgid "To continue, you must define a payable account for party \"%(party)s\"."
 msgstr ""
 "برای ادامه، شما باید یک حساب قابل پرداخت برای نهاد/سازمان : "
 "\"%(نهاد/سازمان)s\" تعریف کنید."
 
+#, fuzzy, python-format
 msgctxt "model:ir.message,text:msg_party_missing_receivable_account"
 msgid "To continue, you must define a receivable account for party \"%(party)s\"."
 msgstr ""
 "برای ادامه، شما باید یک حساب قابل دریافت برای نهاد/سازمان : "
 "\"%(نهاد/سازمان)s\" تعریف کنید."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_period_fiscalyear_dates"
 msgid ""
 "The dates for period \"%(period)s\" must be between the dates of its fiscal "
@@ -3742,7 +3780,7 @@ msgstr ""
 "تاریخ های دوره : \"%(period)s\" باید مابین تاریخ های این سال مای : "
 "\"%(fiscalyear)s\" باشد."
 
-#, fuzzy
+#, fuzzy, python-format
 msgctxt "model:ir.message,text:msg_period_move_dates"
 msgid ""
 "The dates for period \"%(period)s\" must include the date \"%(move_date)s\" "
@@ -3751,26 +3789,21 @@ msgstr ""
 "تاریخ های دوره : \"%(period)s\" باید مابین تاریخ های این سال مای : "
 "\"%(fiscalyear)s\" باشد."
 
-msgctxt "model:ir.message,text:msg_period_overlap"
+msgctxt "model:ir.message,text:msg_period_post_move_sequence_unique"
 msgid ""
-"The periods \"%(first)s\" and \"%(second)s\" overlap, you must use different"
-" dates."
+"A post move sequence can be reused only by periods in the same fiscal year."
 msgstr ""
-"دوره های : \"%(اولیه)s\" و \"%(ثانویه)s\" دارای همپوشانی هستند، شما باید از "
-"تاریخ های متفاوت استفاده کنید."
 
-msgctxt "model:ir.message,text:msg_period_same_sequence"
-msgid ""
-"You cannot use the same post move sequence for the periods \"%(first)s\" and"
-" \"%(second)s\" because they are from different fiscal years."
+msgctxt "model:ir.message,text:msg_period_standard_overlap"
+msgid "The dates of standard period of the same fiscal year can not overlap."
 msgstr ""
-"شما نمیتوانید از همان دنباله ارسال جابجایی برای دوره های : \"%(اولیه)s\" و "
-"\"%(ثانویه)s\" استفاده کنید، چراکه آنها از سال های مالی مختلف هستند."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_post_empty_move"
 msgid "To post move \"%(move)s\", you must fill in its lines."
 msgstr "برای ارسال جابجایی : \"%(move)s\" شما باید این سطرها را پر کنید."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_post_unbalanced_move"
 msgid ""
 "To post move \"%(move)s\", you must balance all its lines debits and "
@@ -3779,6 +3812,7 @@ msgstr ""
 "برای ارسال جابجایی : \"%(move)s\" شما باید تمام خطوط بدهی و اعتبارات آن را "
 "تراز کنید."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_reconciliation_account_not_reconcile"
 msgid ""
 "To reconcile line \"%(line)s\", you must set its account \"%(account)s\" as "
@@ -3787,7 +3821,7 @@ msgstr ""
 "برای مطابقت سطر: \"%(line)s\" شماباید حساب : \"%(account)s\" را بعنوان قابل "
 "مطابقت تنظیم کنید."
 
-#, fuzzy
+#, fuzzy, python-format
 msgctxt ""
 "model:ir.message,text:msg_reconciliation_currency_exchange_credit_account_missing"
 msgid ""
@@ -3797,7 +3831,7 @@ msgstr ""
 "برای ادامه، شما باید یک حساب قابل دریافت برای نهاد/سازمان : "
 "\"%(نهاد/سازمان)s\" تعریف کنید."
 
-#, fuzzy
+#, fuzzy, python-format
 msgctxt ""
 "model:ir.message,text:msg_reconciliation_currency_exchange_debit_account_missing"
 msgid ""
@@ -3807,7 +3841,7 @@ msgstr ""
 "برای ادامه، شما باید یک حساب قابل دریافت برای نهاد/سازمان : "
 "\"%(نهاد/سازمان)s\" تعریف کنید."
 
-#, fuzzy
+#, fuzzy, python-format
 msgctxt ""
 "model:ir.message,text:msg_reconciliation_currency_exchange_journal_missing"
 msgid ""
@@ -3817,18 +3851,21 @@ msgstr ""
 "برای ادامه، شما باید یک حساب قابل دریافت برای نهاد/سازمان : "
 "\"%(نهاد/سازمان)s\" تعریف کنید."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_reconciliation_delete_delegated"
 msgid ""
 "The reconciliation \"%(reconciliation)s\" is delegated to the line \"%(line)s\".\n"
 "You may need to cancel its move \"%(move)s\"."
 msgstr ""
 
+#, python-format
 msgctxt "model:ir.message,text:msg_reconciliation_delete_write_off"
 msgid ""
 "The reconciliation \"%(reconciliation)s\" is linked to the write-off line \"%(line)s\".\n"
 "You may need to cancel its move \"%(move)s\"."
 msgstr ""
 
+#, fuzzy, python-format
 msgctxt "model:ir.message,text:msg_reconciliation_different_accounts"
 msgid ""
 "You cannot reconcile line \"%(line)s\" with others because its account "
@@ -3837,6 +3874,7 @@ msgstr ""
 "شما نمیتوانید سطر \"%s\" را مطابقت دهید، چراکه حساب \"%s\" با \"%s\" دارای "
 "تفاوت است."
 
+#, fuzzy, python-format
 msgctxt "model:ir.message,text:msg_reconciliation_different_parties"
 msgid ""
 "You cannot reconcile line \"%(line)s\" with others because its party "
@@ -3845,10 +3883,12 @@ msgstr ""
 "شما نمیتوانید سطر \"%s\" را مطابقت دهید، چراکه نهاد/مؤسسه: \"%s\" مغایراست "
 "با \"%s\"."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_reconciliation_line_not_valid"
 msgid "You cannot reconcile non-valid line \"%(line)s\"."
 msgstr "شما نمی توانید سطرغیر معتبر: \"%(line)s\" را مطابقت دهید."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_reconciliation_unbalanced"
 msgid ""
 "To reconcile lines, they must have the same debit \"%(debit)s\" and credit "
@@ -3857,7 +3897,7 @@ msgstr ""
 "برای مطابقت دادن سطرها، آنها باید دارای مقدار بدهی: \"%(debit)s\" و اعتبار: "
 "\"%(credit)s\" باشند."
 
-#, fuzzy
+#, fuzzy, python-format
 msgctxt "model:ir.message,text:msg_reconciliation_write_off_missing"
 msgid ""
 "To reconcile lines with \"%(amount)s\" write-off, you must select a write-"
@@ -3866,6 +3906,16 @@ msgstr ""
 "برای ایجاد یک سطر در حساب:\"%(account)s\"،شما باید یک نهاد/سازمان روی "
 "سطر:\"%(line)s\" تنظیم کنید."
 
+#, fuzzy, python-format
+msgctxt "model:ir.message,text:msg_reconciliation_write_off_same_account"
+msgid ""
+"You cannot reconcile lines using the write-off \"%(write_off)s\" with the "
+"same \"%(account)s\"."
+msgstr ""
+"شما نمیتوانید سطر \"%s\" را مطابقت دهید، چراکه حساب \"%s\" با \"%s\" دارای "
+"تفاوت است."
+
+#, python-format
 msgctxt "model:ir.message,text:msg_reopen_fiscalyear_later"
 msgid ""
 "To reopen fiscal year \"%(fiscalyear)s\", you must reopen all later fiscal "
@@ -3890,12 +3940,14 @@ msgctxt "model:ir.message,text:msg_reschedule_line_same_party"
 msgid "You cannot reschedule lines with different parties."
 msgstr ""
 
+#, python-format
 msgctxt "model:ir.message,text:msg_reschedule_line_wrong_amount"
 msgid ""
 "To reschedule the lines you must change the terms to have a total amount of "
 "%(total_amount)s instead of %(amount)s."
 msgstr ""
 
+#, python-format
 msgctxt "model:ir.message,text:msg_tax_update_unit_price_with_parent"
 msgid "You cannot set \"Update Unit Price\" on child tax \"%(tax)s\"."
 msgstr ""
@@ -3934,8 +3986,8 @@ msgid "Lock"
 msgstr "قفل"
 
 msgctxt "model:ir.model.button,string:fiscalyear_reopen_button"
-msgid "Re-Open"
-msgstr "بازگشایی"
+msgid "Reopen"
+msgstr ""
 
 #, fuzzy
 msgctxt "model:ir.model.button,string:journal_period_close_button"
@@ -3959,8 +4011,8 @@ msgid "Lock"
 msgstr "قفل"
 
 msgctxt "model:ir.model.button,string:period_reopen_button"
-msgid "Re-Open"
-msgstr "بازگشایی"
+msgid "Reopen"
+msgstr ""
 
 msgctxt "model:ir.rule.group,name:rule_group_account_companies"
 msgid "User in companies"
@@ -4277,11 +4329,6 @@ msgstr "حساب"
 msgctxt "model:res.group,name:group_account_admin"
 msgid "Account Administration"
 msgstr "مدیریت حسابداری"
-
-#, fuzzy
-msgctxt "model:res.group,name:group_account_party"
-msgid "Accounting Party"
-msgstr "حساب پرداختی"
 
 #, fuzzy
 msgctxt "report:account.account.type.statement:"

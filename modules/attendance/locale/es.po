@@ -126,18 +126,21 @@ msgctxt "model:ir.action,name:act_sheet"
 msgid "Sheets"
 msgstr "Partes"
 
+#, python-format
 msgctxt "model:ir.message,text:msg_close_period_previous_open"
 msgid "To close period \"%(period)s\" you must first close \"%(other_period)s\"."
 msgstr ""
 "Para cerrar el periodo \"%(period)s\" debes cerrar primero "
 "%(other_period)s\"."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_delete_period_close"
 msgid "To delete attendance \"%(attendance)s\" you must reopen period \"%(period)s\"."
 msgstr ""
 "Para eliminar la asistencia \"%(attendance)s\" debes reabrir el periodo "
 "\"%(period)s\"."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_draft_period_previous_closed"
 msgid ""
 "To change period \"%(period)s\" you must first change \"%(other_period)s\" "
@@ -146,6 +149,7 @@ msgstr ""
 "Para cambiar el periodo \"%(period)s\" debes establecer antes "
 "\"%(other_period)s\" a borrador."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_modify_period_close"
 msgid "To modify attendance \"%(attendance)s\" you must reopen period \"%(period)s\"."
 msgstr ""

@@ -355,6 +355,7 @@ msgctxt "model:ir.export-write-res.group,name:"
 msgid "Export Modification Group"
 msgstr ""
 
+#, python-format
 msgctxt "model:ir.message,text:msg_email_invalid"
 msgid "The email address \"%(email)s\" for \"%(user)s\" is not valid."
 msgstr ""
@@ -367,6 +368,7 @@ msgctxt "model:ir.message,text:msg_password_forbidden"
 msgid "The password is forbidden."
 msgstr "رمز عبور ممنوع است."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_password_length"
 msgid "The password must have at least %(length)i characters."
 msgstr ""
@@ -387,6 +389,7 @@ msgstr ""
 "برای اهداف ورود به سیستم، کاربران نمی توانند حذف شوند، در عوض آنها را "
 "میتوانید غیرفعال کنید."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_user_password"
 msgid "Password for %(login)s"
 msgstr ""
@@ -503,6 +506,7 @@ msgctxt "model:res.user.warning,name:"
 msgid "User Warning"
 msgstr "هشدار کاربر"
 
+#, python-format
 msgctxt "report:res.user.email_reset_password:"
 msgid ""
 "Hello,\n"
@@ -521,7 +525,7 @@ msgctxt "report:res.user.email_reset_password:"
 msgid "Reset Password"
 msgstr "بازنشانی کلمه عبور"
 
-#, fuzzy
+#, fuzzy, python-format
 msgctxt "report:res.user.email_reset_password:"
 msgid "The password will expire in [1:%(datetime)s]."
 msgstr "کلمه عبور شما منقضی میشود در"

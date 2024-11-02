@@ -104,7 +104,7 @@ msgstr "Verbraucht bis"
 
 msgctxt "field:sale.subscription.line,consumption_delay:"
 msgid "Consumption Delay"
-msgstr "Verbrauchszeitraum"
+msgstr "Verbrauchsverzögerung"
 
 msgctxt "field:sale.subscription.line,consumption_recurrence:"
 msgid "Consumption Recurrence"
@@ -196,7 +196,7 @@ msgstr "Datum"
 
 msgctxt "field:sale.subscription.recurrence.rule,bymonth:"
 msgid "By Month"
-msgstr "Am Tag des Monats"
+msgstr "In Monat"
 
 msgctxt "field:sale.subscription.recurrence.rule,bymonthday:"
 msgid "By Month Day"
@@ -268,7 +268,7 @@ msgstr "Datum"
 
 msgctxt "field:sale.subscription.service,consumption_delay:"
 msgid "Consumption Delay"
-msgstr "Verbrauchszeitraum"
+msgstr "Verbrauchsverzögerung"
 
 msgctxt "field:sale.subscription.service,consumption_recurrence:"
 msgid "Consumption Recurrence"
@@ -405,12 +405,14 @@ msgctxt ""
 msgid "Running"
 msgstr "In Ausführung"
 
+#, python-format
 msgctxt "model:ir.message,text:msg_consumption_delete_invoiced"
 msgid "You cannot delete invoiced consumption \"%(consumption)s\"."
 msgstr ""
 "Der bereits abgerechnete Verbrauch \"%(consumption)s\" kann nicht gelöscht "
 "werden."
 
+#, python-format
 msgctxt ""
 "model:ir.message,text:msg_consumption_invoice_missing_account_revenue"
 msgid ""
@@ -420,12 +422,14 @@ msgstr ""
 "Damit der Verbrauch abgerechnet werden kann, muss zuerst ein Ertragskonto "
 "für Artikel \"%(product)s\" konfiguriert werden."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_consumption_modify_invoiced"
 msgid "You cannot modify invoiced consumption \"%(consumption)s\"."
 msgstr ""
 "Der bereits abgerechnete Verbrauch \"%(consumption)s\" kann nicht mehr "
 "geändert werden."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_consumption_recurrence_invalid"
 msgid ""
 "The consumption recurrence of line \"%(line)s\" of subscription "
@@ -434,6 +438,7 @@ msgstr ""
 "Die Verbrauchswiederholung von Position \"%(line)s\" von Abonnement "
 "\"%(subscription)s\" erzeugt keine Vorkommnisse."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_erase_party_pending_subscription"
 msgid ""
 "You cannot erase party \"%(party)s\" while they have pending subscriptions "
@@ -442,6 +447,7 @@ msgstr ""
 "Die Partei \"%(party)s\" kann nicht gelöscht werden, solange für sie noch "
 "unerledigte Abonnements bei Unternehmen \"%(company)s\" bestehen."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_invoice_recurrence_invalid"
 msgid ""
 "The invoice recurrence of subscription \"%(subscription)s\" does not "
@@ -450,6 +456,7 @@ msgstr ""
 "Die Rechnungswiederholung von Abonnement \"%(subscription)s\" erzeugt keine "
 "Vorkommnisse."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_recurrence_rule_invalid_by"
 msgid ""
 "Invalid \"%(field)s\" \"%(value)s\" in recurence rule "

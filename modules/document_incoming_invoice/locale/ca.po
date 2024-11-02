@@ -11,6 +11,7 @@ msgctxt "field:document.incoming.configuration,default_supplier:"
 msgid "Default Supplier"
 msgstr "Proveïdor per defecte"
 
+#, python-format
 msgctxt "model:ir.message,text:msg_supplier_invoice_company"
 msgid "To process document \"%(document)s\" you must set a company on it."
 msgstr "Per procesar el document \"%(document)s\" n'heu de definir l'empresa."

@@ -138,9 +138,9 @@ msgstr "Виняток одночасного доступу"
 msgid "Could not get a session."
 msgstr "Не вдалося підключитися до сервера."
 
-#, python-format
+#, fuzzy, python-format
 msgid "Error: \"%s\". Try again later."
-msgstr ""
+msgstr "Дуже багато запитів. Спробуйте ще раз пізніше."
 
 msgid "Too many requests. Try again later."
 msgstr "Дуже багато запитів. Спробуйте ще раз пізніше."
@@ -240,7 +240,8 @@ msgstr "Звіт..."
 msgid "Print..."
 msgstr "Друк..."
 
-msgid "E-Mail..."
+#, fuzzy
+msgid "Email..."
 msgstr "Ел.пошта..."
 
 msgid "Bold"
@@ -351,12 +352,6 @@ msgstr "Довідка"
 
 msgid "No result found."
 msgstr "Нічого не знайдено."
-
-msgid "Favorites"
-msgstr "Вибране"
-
-msgid "Manage..."
-msgstr "Керування..."
 
 msgid "Action"
 msgstr "Дія"
@@ -592,6 +587,9 @@ msgstr "Підключення до сервера Tryton"
 msgid "Profile:"
 msgstr "Профіль:"
 
+msgid "Manage..."
+msgstr "Керування..."
+
 msgid "Host / Database information"
 msgstr "Сервер / База даних"
 
@@ -601,8 +599,8 @@ msgstr "Ім'я користувача:"
 msgid "Unable to complete email entry"
 msgstr "Не вдалося відправити ел.лист"
 
-#, python-format
-msgid "E-mail %s"
+#, fuzzy, python-format
+msgid "Email %s"
 msgstr "Ел.лист %s"
 
 msgid "To:"
@@ -850,10 +848,12 @@ msgstr "_Звіт..."
 msgid "_Print..."
 msgstr "_Друк..."
 
-msgid "_E-Mail..."
+#, fuzzy
+msgid "_Email..."
 msgstr "_Ел.пошта..."
 
-msgid "Send an e-mail using the record"
+#, fuzzy
+msgid "Send an email using the record"
 msgstr "Надіслати ел.лист, використовуючи запис"
 
 msgid "_Export Data..."
@@ -905,6 +905,9 @@ msgstr "Ім'я поля"
 msgid "CSV Export: %s"
 msgstr "Експорт CSV: %s"
 
+msgid "Open"
+msgstr "Відкрити"
+
 msgid "_Save Export"
 msgstr "_Зберегти експорт"
 
@@ -919,12 +922,6 @@ msgstr "<b>Попередньо визначені експорти</b>"
 
 msgid "Name"
 msgstr "Ім'я"
-
-msgid "Open"
-msgstr "Відкрити"
-
-msgid "Save"
-msgstr "Зберегти"
 
 msgid "Listed Records"
 msgstr "Записи списку"
@@ -984,6 +981,9 @@ msgstr ""
 msgid "Add and New"
 msgstr "Додати значення"
 
+msgid "Save"
+msgstr "Зберегти"
+
 msgid "Add"
 msgstr "Додати"
 
@@ -1008,6 +1008,10 @@ msgstr "Відновити вибраний запис <Ins>"
 #, python-format
 msgid "CSV Import: %s"
 msgstr "Імпорт CSV: %s"
+
+#, fuzzy
+msgid "Import"
+msgstr "Звіт"
 
 msgid "_Auto-Detect"
 msgstr "_Автовизначення"
@@ -1213,6 +1217,10 @@ msgstr "Додати існуючий запис"
 msgid "Remove selected record"
 msgstr "Видалити вибраний запис"
 
+#, fuzzy
+msgid "Restore selected record"
+msgstr "Видалити вибраний запис"
+
 msgid "Open the record <F2>"
 msgstr "Відкрити запис <F2>"
 
@@ -1226,6 +1234,10 @@ msgid "Edit selected record"
 msgstr "Редагувати вибраний запис"
 
 msgid "Delete selected record"
+msgstr "Видалити вибраний запис"
+
+#, fuzzy
+msgid "Undelete selected record"
 msgstr "Видалити вибраний запис"
 
 #, python-format

@@ -20,14 +20,11 @@ msgstr "server non raggiungibile"
 msgid "Connection error"
 msgstr "Errore dell'applicazione"
 
-msgid "Favorites"
-msgstr "Preferiti"
-
-msgid "Manage..."
-msgstr "Gestisci..."
-
 msgid "Logout"
 msgstr "Esci"
+
+msgid "Favorites"
+msgstr "Preferiti"
 
 msgid "Action"
 msgstr "Azione"
@@ -74,7 +71,7 @@ msgstr "collega"
 msgid "Print"
 msgstr "Stampa"
 
-msgid "E-Mail"
+msgid "Email"
 msgstr ""
 
 msgid "Previous tab"
@@ -137,6 +134,9 @@ msgid "Not found."
 msgstr ""
 
 msgid "Send you an email to reset your password."
+msgstr ""
+
+msgid "Reset forgotten password"
 msgstr ""
 
 msgid ""
@@ -318,11 +318,11 @@ msgstr "aggiungere un allegato al record"
 msgid "Add a note to the record"
 msgstr "Aggiungi un appunto sul record"
 
-msgid "E-Mail..."
+msgid "Email..."
 msgstr ""
 
 #, fuzzy
-msgid "Send an e-mail using the record"
+msgid "Send an email using the record"
 msgstr "Aggiungi un appunto sul record"
 
 msgid "Export"
@@ -381,6 +381,9 @@ msgstr "Inserisci..."
 #, fuzzy
 msgid "Preview"
 msgstr "Precedente"
+
+msgid "Manage..."
+msgstr "Gestisci..."
 
 #, fuzzy
 msgid "Template"
@@ -506,6 +509,9 @@ msgstr "Apri"
 
 msgid "Undelete"
 msgstr "Annullare l'eliminazione"
+
+msgid "Restore"
+msgstr ""
 
 msgid "Save As"
 msgstr ""
@@ -736,7 +742,7 @@ msgid_plural "%1 records saved"
 msgstr[0] "%1 record salvato"
 msgstr[1] "%1 record salvati"
 
-msgid "E-mail %1"
+msgid "Email %1"
 msgstr ""
 
 msgid "To:"

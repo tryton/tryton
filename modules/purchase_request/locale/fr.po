@@ -153,6 +153,7 @@ msgctxt ""
 msgid "Exception"
 msgstr "Exception"
 
+#, python-format
 msgctxt "model:ir.message,text:msg_purchase_delete_request"
 msgid ""
 "You cannot delete purchase \"%(purchase)s\" because it is linked to purchase"
@@ -161,6 +162,7 @@ msgstr ""
 "Vous ne pouvez pas supprimer l'achat « %(purchase)s » car il est lié à des "
 "demandes d'achat."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_purchase_request_warehouse"
 msgid ""
 "Warehouse \"%(purchase_warehouse)s\" on purchase \"%(purchase)s\" is "
@@ -171,6 +173,7 @@ msgstr ""
 "différent de l'entrepôt « %(request_warehouse)s » de la demande d'achat liée"
 " « %(request)s »."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_request_delete_purchased"
 msgid ""
 "You cannot delete purchase request \"%(request)s\" because it is purchased."
@@ -264,5 +267,5 @@ msgstr "Annuler"
 
 msgctxt ""
 "wizard_button:purchase.request.handle.purchase.cancellation,start,reset:"
-msgid "Reset to draft"
+msgid "Reset to Draft"
 msgstr "Réinitialiser à l'état brouillon"

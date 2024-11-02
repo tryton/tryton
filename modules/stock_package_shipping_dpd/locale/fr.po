@@ -62,12 +62,18 @@ msgctxt "model:ir.action,name:act_dpd_credential_form"
 msgid "DPD Credentials"
 msgstr "Identifiants DPD"
 
+msgctxt "model:ir.message,text:msg_dpd_credential_modified"
+msgid "Are you sure you want to modify DPD credentials?"
+msgstr "Êtes-vous sûr de vouloir modifier les identifiants de DPD ?"
+
+#, python-format
 msgctxt "model:ir.message,text:msg_dpd_login_error"
 msgid "DPD login failed with credential \"%(credential)s\"."
 msgstr ""
 "La connexion DPD a échoué avec les informations d'identification "
 "« %(credential)s »."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_dpd_webservice_error"
 msgid ""
 "DPD webservice call failed with the following error message:\n"
@@ -76,6 +82,7 @@ msgstr ""
 "L'appel au service web de DPD a échoué avec le message d'erreur suivant :\n"
 "%(message)s"
 
+#, python-format
 msgctxt "model:ir.message,text:msg_shipment_has_shipping_reference_number"
 msgid ""
 "You cannot create shipping for shipment \"%(shipment)s\" because it has "
@@ -84,6 +91,7 @@ msgstr ""
 "Vous ne pouvez pas créer de livraison pour l'expédition « %(shipment)s » car"
 " elle a déjà un numéro de référence d'expédition."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_warehouse_address_required"
 msgid ""
 "To validate shipment \"%(shipment)s\" you must set an address on the "
@@ -97,8 +105,8 @@ msgid "DPD Credentials"
 msgstr "Identifiants DPD"
 
 msgctxt "selection:carrier,dpd_notification:"
-msgid "E-Mail"
-msgstr "E-Mail"
+msgid "Email"
+msgstr "Courriel"
 
 msgctxt "selection:carrier,dpd_notification:"
 msgid "SMS"

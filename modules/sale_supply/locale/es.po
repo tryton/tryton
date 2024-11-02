@@ -26,14 +26,16 @@ msgctxt "model:ir.action,name:act_purchase_request_form"
 msgid "Purchase Requests"
 msgstr "Solicitudes de compra"
 
+#, python-format
 msgctxt "model:ir.message,text:msg_order_point_product_supply_on_sale"
 msgid "The product \"%(product)s\" is supplied on sale."
 msgstr "El producto \"%(product)s\" se subministra en la venta."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_template_supply_on_sale_order_point"
 msgid "The product has purchase order points \"%(order_points)s\" defined."
 msgstr ""
-"El producto tiene reglas de abastecimientod e compra \"%(order_point)s\" "
+"El producto tiene reglas de abastecimientod de compra \"%(order_points)s\" "
 "definidos."
 
 msgctxt "selection:product.product,supply_on_sale:"

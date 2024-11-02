@@ -3219,19 +3219,22 @@ msgctxt "model:ir.action,name:wizard_update_chart"
 msgid "Update Chart of Accounts from Template"
 msgstr "Actualizare Plan de Conturi de la Șablon"
 
+#, python-format
 msgctxt "model:ir.message,text:msg_account_chart_exists"
 msgid "A chart of accounts already exists for company \"%(company)s\"."
 msgstr "Un plan de conturi exista deja pentru compania \"%(company)s\"."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_account_closed_lines"
 msgid "You cannot close account \"%(account)s\" because it has move lines."
 msgstr "Nu puteți închide contul \"%(account)s\" deoarece are rânduri de mişcare."
 
-#, fuzzy
+#, fuzzy, python-format
 msgctxt "model:ir.message,text:msg_account_invalid_deferral_second_currency"
 msgid "To set a second currency for account \"%(account)s\", it must be deferral."
 msgstr "Pentru a seta valuta secundară pentru contul \"%(account)s\""
 
+#, python-format
 msgctxt "model:ir.message,text:msg_account_invalid_lines_second_currency"
 msgid ""
 "To set a second currency for account \"%(account)s\", its lines must have "
@@ -3240,6 +3243,7 @@ msgstr ""
 "Pentru a seta o a doua monedă pentru contul \"%(account)s\", rândurile "
 "acestuia trebuie să aibă aceeași a doua monedă \"%(currency)s\"."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_account_invalid_type_second_currency"
 msgid ""
 "To set a second currency for account \"%(account)s\", it must not have a "
@@ -3248,11 +3252,13 @@ msgstr ""
 "Pentru a seta o valută secundara pentru cont \"%(account)s\", nu trebuie sa "
 "aiba tip \"furnizor\", \"venit\", \"client\" şi nici \"cheltuială\"."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_account_no_type_lines"
 msgid ""
 "You cannot remove type of account \"%(account)s\" because it has move lines."
 msgstr "Nu puteți şterge Contul \"%(account)s\" deoarece are rânduri de mişcare."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_cancel_line_delegated"
 msgid ""
 "The moves \"%(moves)s\" contain grouped lines, cancelling them will ungroup "
@@ -3261,6 +3267,7 @@ msgstr ""
 "Mişcările \"%(moves)s\" conşin rânduri grupate, anularea lor o sa le "
 "dezgrupeze."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_change_fiscalyear_post_move_sequence"
 msgid ""
 "You cannot change the post move sequence on fiscal year \"%(fiscalyear)s\" "
@@ -3269,6 +3276,7 @@ msgstr ""
 "Nu se poate schimba secvenţa al mişcărilor postate pentru anul fiscal "
 "\"%(fiscalyear)s\" pentru că conţine mişcări postate."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_change_period_post_move_sequence"
 msgid ""
 "You cannot change the post move sequence in period \"%(period)s\" because it"
@@ -3277,6 +3285,7 @@ msgstr ""
 "Nu se poate schimba secvenţa al mişcărilor postate pentru perioadă "
 "\"%(period)s\" pentru că conţine mişcări postate."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_close_fiscalyear_account_balance_not_zero"
 msgid ""
 "To close the fiscal year, the balance of account \"%(account)s\" must be "
@@ -3285,6 +3294,7 @@ msgstr ""
 "Pentru a închide anul fiscal, soldul al contului \"%(account)s\" trebuie să "
 "fie zero."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_close_fiscalyear_earlier"
 msgid ""
 "To close fiscal year \"%(fiscalyear)s\", you must close all earlier fiscal "
@@ -3293,6 +3303,7 @@ msgstr ""
 "Pentru a închide anul fiscal \"%(fiscalyear)s\", trebuie închişi toţi ani "
 "fiscali anteriori."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_close_period_inactive_accounts"
 msgid ""
 "To close period \"%(period)s\", you must balance the inactive account "
@@ -3301,6 +3312,7 @@ msgstr ""
 "Pentru a închide perioada \"%(period)s\", trebuie să soldați contul inactiv "
 "\"%(account)s\"."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_close_period_non_posted_moves"
 msgid "To close period \"%(period)s\" you must post the moves \"%(moves)s\"."
 msgstr ""
@@ -3315,10 +3327,12 @@ msgstr ""
 "Nu se poate schimba valuta unei companii care este deja asociată cu mişcări "
 "pe conturi."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_create_journal_period_closed_period"
 msgid "You cannot create a journal-period in closed period \"%(period)s\"."
 msgstr "Nu se poate crea jurnal-perioadă în perioadă inchisă \"%(period)s\"."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_create_period_closed_fiscalyear"
 msgid ""
 "You cannot create a period in fiscal year \"%(fiscalyear)s\" because it is "
@@ -3342,11 +3356,13 @@ msgctxt "model:ir.message,text:msg_delegate_line_same_origins"
 msgid "You cannot delegate together lines with different origins."
 msgstr "Nu se pot diviza rânduri cu diferite surse."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_delete_account_with_move_lines"
 msgid "You cannot delete account \"%(account)s\" because it has move lines."
 msgstr ""
 "Contul \"%(account)s\" nu se poate şterge deoarece are rânduri de mişcări."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_erase_party_receivable_payable"
 msgid ""
 "You cannot erase party \"%(party)s\" while they have pending "
@@ -3355,22 +3371,15 @@ msgstr ""
 "Nu se poate şterge partea \"%(party)s\" deoarece au un sold neachitat de "
 "client/furnizor cu compania \"%(company)s\"."
 
-msgctxt "model:ir.message,text:msg_fiscalyear_different_post_move_sequence"
-msgid ""
-"The fiscal years \"%(first)s\" and \"%(second)s\" cannot have the same post "
-"move sequence, you must use different sequences."
-msgstr ""
-"Anii fiscali \"%(first)s\" și \"%(second)s\" nu pot avea aceeași secvență de"
-" post mutare, trebuie să utilizați secvențe diferite."
-
 msgctxt "model:ir.message,text:msg_fiscalyear_overlap"
-msgid ""
-"The fiscal years \"%(first)s\" and \"%(second)s\" overlap, you must use "
-"different dates."
+msgid "The dates of fiscal years of the same company can not overlap."
 msgstr ""
-"Anii fiscali \"%(first)s\" și \"%(second)s\" se suprapun, folosiți date "
-"diferite."
 
+msgctxt "model:ir.message,text:msg_fiscalyear_post_move_sequence_unique"
+msgid "The post move sequence of fiscal years must be unique."
+msgstr ""
+
+#, python-format
 msgctxt "model:ir.message,text:msg_group_line"
 msgid "Line \"%(line)s\" can not be grouped."
 msgstr "Rândul \"%(line)s\" nu poate fi grupat."
@@ -3395,7 +3404,7 @@ msgctxt "model:ir.message,text:msg_group_line_single"
 msgid "You cannot group a single line."
 msgstr "Nu se poate grupa un singur rând."
 
-#, fuzzy
+#, fuzzy, python-format
 msgctxt "model:ir.message,text:msg_journal_account_moves"
 msgid ""
 "You cannot change the type of journal \"%(journal)s\" because it has posted "
@@ -3408,11 +3417,12 @@ msgctxt "model:ir.message,text:msg_journal_period_unique"
 msgid "You can create only one journal per period."
 msgstr "Se poate crea un sigur jurnal pe perioadă."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_line_already_reconciled"
 msgid "You cannot reconcile already reconciled line \"%(line)s\"."
 msgstr "Nu se poate reconcilia rândul \"%(line)s\" care este deja reconciliat."
 
-#, fuzzy
+#, fuzzy, python-format
 msgctxt "model:ir.message,text:msg_line_closed_account"
 msgid ""
 "To create a line on account \"%(account)s\", you must set a type or unclose "
@@ -3423,6 +3433,7 @@ msgctxt "model:ir.message,text:msg_line_debit_credit"
 msgid "You cannot set both debit and credit on the line."
 msgstr "Nu puteți seta debit și credit pe rând."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_line_party_required"
 msgid ""
 "To create a line on account \"%(account)s\", you must set a party on line "
@@ -3431,6 +3442,7 @@ msgstr ""
 "Pentru a crea un rând în contul \"%(account)s\", setați o parte pe rândul "
 "\"%(line)s\"."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_line_party_set"
 msgid ""
 "To create a line on account \"%(account)s\", you must remove the party on "
@@ -3445,6 +3457,7 @@ msgid ""
 "credit."
 msgstr "Setați semnul pentru valuta secundară conform cu semnul debit-credit."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_modify_delete_journal_period_moves"
 msgid ""
 "You cannot modify or delete journal-period \"%(journal_period)s\" because it"
@@ -3453,6 +3466,7 @@ msgstr ""
 "Nu puteți modifica sau șterge perioada jurnal \"%(journal_period)s\" pentru "
 "că conține mișcări."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_modify_line_closed_journal_period"
 msgid ""
 "You cannot add/modify/delete lines on closed journal-period "
@@ -3461,24 +3475,29 @@ msgstr ""
 "Nu puteți adăuga/modifica/ștege rânduri în perioada jurnal închisă "
 "\"%(journal_period)s\"."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_modify_line_posted_move"
 msgid "You cannot modify line \"%(line)s\" from posted move \"%(move)s\"."
 msgstr "Nu puteți modifica rândul \"%(line)s\" din mișcarea postată \"%(move)s\"."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_modify_line_reconciled"
 msgid "You cannot modify reconciled line \"%(line)s\"."
 msgstr "Nu puteți modifica rândul \"%(line)s\" reconciliat."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_modify_posted_moved"
 msgid "You cannot modify posted move \"%(move)s\"."
 msgstr "Nu puteți modifica mișcarea \"%(move)s\" postată."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_modify_tax_line_closed_period"
 msgid "You cannot add/modify/delete tax lines in closed period \"%(period)s\"."
 msgstr ""
 "Nu se po tadăuga/modifica/șterge randuri cu impozite din perioada "
 "\"%(period)s\" inchisă."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_move_cancel_closed_period"
 msgid ""
 "The period of move \"%(move)s\" is closed.\n"
@@ -3487,6 +3506,16 @@ msgstr ""
 "Perioada mișcării \"%(move)s\" este închisă. \n"
 "Folosiți perioada curentă pentru a anula mișcarea?"
 
+#, fuzzy, python-format
+msgctxt "model:ir.message,text:msg_move_copy_closed_period"
+msgid ""
+"The period of move \"%(move)s\" is closed.\n"
+"Use the current period to copy the move?"
+msgstr ""
+"Perioada mișcării \"%(move)s\" este închisă. \n"
+"Folosiți perioada curentă pentru a anula mișcarea?"
+
+#, python-format
 msgctxt "model:ir.message,text:msg_move_template_expression_not_number"
 msgid ""
 "The value \"%(value)s\" of \"%(expression)s\" from template \"%(template)s\""
@@ -3495,6 +3524,16 @@ msgstr ""
 "Valoarea \"%(value)s\" a lui \"%(expression)s\" din șablonul "
 "\"%(template)s\" nu este un număr."
 
+#, fuzzy, python-format
+msgctxt "model:ir.message,text:msg_move_template_invalid_description"
+msgid ""
+"Failed to evaluate the description \"%(description)s\" from template "
+"\"%(template)s\" with error: \"%(error)s\""
+msgstr ""
+"Nu s-a putut evalua expresia \"%(expression)s\" din șablonul \"%(template)s\" cu eroarea:\n"
+"\"%(error)s\""
+
+#, python-format
 msgctxt "model:ir.message,text:msg_move_template_invalid_expression"
 msgid ""
 "Failed to evaluate expression \"%(expression)s\" from template \"%(template)s\" with error:\n"
@@ -3503,10 +3542,12 @@ msgstr ""
 "Nu s-a putut evalua expresia \"%(expression)s\" din șablonul \"%(template)s\" cu eroarea:\n"
 "\"%(error)s\""
 
+#, python-format
 msgctxt "model:ir.message,text:msg_move_template_keyword_name_not_identifier"
 msgid "The keyword name \"%(name)s\" is not a valid identifier."
 msgstr "Numele cuvântului cheie \"%(name)s\" nu este un identificator valid."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_no_fiscalyear_date"
 msgid ""
 "To continue, you must create a fiscal year for the date \"%(date)s\" and "
@@ -3515,14 +3556,16 @@ msgstr ""
 "Pentru a continua, trebuie creat anul fiscal pentru data \"%(date)s\" și "
 "compania \"%(company)s\"."
 
+#, fuzzy, python-format
 msgctxt "model:ir.message,text:msg_no_open_fiscalyear_date"
 msgid ""
 "To continue, you must reopen the fiscal year \"%(fiscalyear)s\" of company "
-"\"%(company)s\"for the date \"%(date)s\"."
+"\"%(company)s\" for the date \"%(date)s\"."
 msgstr ""
 "Pentru a continua, trebuie să redeschideți anul fiscal \"%(fiscalyear)s\" al"
 " companiei \"%(company)s\" pentru data \"%(date)s\"."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_no_open_period_date"
 msgid ""
 "To continue, you must reopen the period \"%(period)s\" of company "
@@ -3531,6 +3574,7 @@ msgstr ""
 "Pentru a continua, trebuie să redeschideți perioada \"%(period)s\" a "
 "companiei \"%(company)s\" pentru data \"%(date)s\"."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_no_period_date"
 msgid ""
 "To continue, you must create a period for the date \"%(date)s\" and company "
@@ -3544,14 +3588,14 @@ msgctxt "model:ir.message,text:msg_only_one_debit_credit_types"
 msgid "Account can have only one of the debit or credit type set."
 msgstr "Contul poate avea setat doar un singur tip de debit sau credit."
 
+#, fuzzy
 msgctxt "model:ir.message,text:msg_open_fiscalyear_earlier"
-msgid ""
-"The open fiscal year \"%(open)s\" can not be before the close fiscal year "
-"\"%(closed)s\"."
+msgid "Open fiscal years can not be before closed fiscal years."
 msgstr ""
 "Anul fiscal deschis \"%(open)s\" nu poate fi anterior celui de închidere "
 "\"%(closed)s\"."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_open_journal_period_closed_period"
 msgid ""
 "You cannot reopen journal-period \"%(journal_period)s\" in closed period "
@@ -3560,6 +3604,7 @@ msgstr ""
 "Nu puteți redeschide perioda jurnal \"%(journal_period)s\" în perioada "
 "închisă \"%(period)s\"."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_open_period_closed_fiscalyear"
 msgid ""
 "You cannot reopen period \"%(period)s\" because its fiscal year "
@@ -3568,18 +3613,21 @@ msgstr ""
 "Nu puteți redeschide perioda \"%(period)s\" pentru că anul fiscal "
 "\"%(fiscalyear)s\" este închis."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_party_missing_payable_account"
 msgid "To continue, you must define a payable account for party \"%(party)s\"."
 msgstr ""
 "Pentru a continua, trebuie definit un cont de furnizor pentru parte "
 "\"%(party)s\"."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_party_missing_receivable_account"
 msgid "To continue, you must define a receivable account for party \"%(party)s\"."
 msgstr ""
 "Pentru a continua, trebuie definit un cont de client pentru parte "
 "\"%(party)s\"."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_period_fiscalyear_dates"
 msgid ""
 "The dates for period \"%(period)s\" must be between the dates of its fiscal "
@@ -3588,7 +3636,7 @@ msgstr ""
 "Datele pentru perioada \"%(period)s\" trebuie să fie în intervalul anului "
 "fiscal \"%(fiscalyear)s\"."
 
-#, fuzzy
+#, fuzzy, python-format
 msgctxt "model:ir.message,text:msg_period_move_dates"
 msgid ""
 "The dates for period \"%(period)s\" must include the date \"%(move_date)s\" "
@@ -3597,27 +3645,21 @@ msgstr ""
 "Datele pentru perioada \"%(period)s\" trebuie să fie în intervalul anului "
 "fiscal \"%(fiscalyear)s\"."
 
-msgctxt "model:ir.message,text:msg_period_overlap"
+msgctxt "model:ir.message,text:msg_period_post_move_sequence_unique"
 msgid ""
-"The periods \"%(first)s\" and \"%(second)s\" overlap, you must use different"
-" dates."
+"A post move sequence can be reused only by periods in the same fiscal year."
 msgstr ""
-"Perioadele \"%(first)s\" și \"%(second)s\" se suprapun, trebuie folosite "
-"date diferite."
 
-msgctxt "model:ir.message,text:msg_period_same_sequence"
-msgid ""
-"You cannot use the same post move sequence for the periods \"%(first)s\" and"
-" \"%(second)s\" because they are from different fiscal years."
+msgctxt "model:ir.message,text:msg_period_standard_overlap"
+msgid "The dates of standard period of the same fiscal year can not overlap."
 msgstr ""
-"Nu puteți utiliza aceeași secvență de post mutare pentru perioadele "
-"\"%(first)s\" și \"%(second)s\" deoarece acestea provin din ani fiscali "
-"diferiți."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_post_empty_move"
 msgid "To post move \"%(move)s\", you must fill in its lines."
 msgstr "Pentru a posta mișcarea \"%(move)s\", trebuie completate rândurile."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_post_unbalanced_move"
 msgid ""
 "To post move \"%(move)s\", you must balance all its lines debits and "
@@ -3626,6 +3668,7 @@ msgstr ""
 "Pentru a posta mișcarea \"%(move)s\", trebuie ca debitul să fie egal cu "
 "creditul."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_reconciliation_account_not_reconcile"
 msgid ""
 "To reconcile line \"%(line)s\", you must set its account \"%(account)s\" as "
@@ -3634,6 +3677,7 @@ msgstr ""
 "Pentru a reconcilia rândul \"%(line)s\", contul \"%(account)s\" trebuie "
 "setat ca reconciliabil."
 
+#, python-format
 msgctxt ""
 "model:ir.message,text:msg_reconciliation_currency_exchange_credit_account_missing"
 msgid ""
@@ -3643,6 +3687,7 @@ msgstr ""
 "Pentru a reconcilia rândurile trebuie să definiți un cont de credit de "
 "schimb valutar pentru \"%(company)s\"."
 
+#, python-format
 msgctxt ""
 "model:ir.message,text:msg_reconciliation_currency_exchange_debit_account_missing"
 msgid ""
@@ -3652,6 +3697,7 @@ msgstr ""
 "Pentru a reconcilia rânduri, trebuie să definiți un cont de debit de schimb "
 "valutar pentru \"%(company)s\"."
 
+#, python-format
 msgctxt ""
 "model:ir.message,text:msg_reconciliation_currency_exchange_journal_missing"
 msgid ""
@@ -3661,6 +3707,7 @@ msgstr ""
 "Pentru a reconcilia rânduri trebuie să definiți un jurnal de schimb valutar "
 "pentru \"%(company)s\"."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_reconciliation_delete_delegated"
 msgid ""
 "The reconciliation \"%(reconciliation)s\" is delegated to the line \"%(line)s\".\n"
@@ -3669,7 +3716,7 @@ msgstr ""
 "Reconcilierea \"%(reconciliation)s\" este corelată cu rândul \"%(line)s\".\n"
 "Posibil să fie nevoie de anularea mișcării \"%(move)s\"."
 
-#, fuzzy
+#, fuzzy, python-format
 msgctxt "model:ir.message,text:msg_reconciliation_delete_write_off"
 msgid ""
 "The reconciliation \"%(reconciliation)s\" is linked to the write-off line \"%(line)s\".\n"
@@ -3678,6 +3725,7 @@ msgstr ""
 "Reconcilierea \"%(reconciliation)s\" este corelată cu rândul de prescriptie \"%(line)s\".\n"
 "Posibil să fie nevoie de anularea mișcării \"%(move)s\"."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_reconciliation_different_accounts"
 msgid ""
 "You cannot reconcile line \"%(line)s\" with others because its account "
@@ -3686,6 +3734,7 @@ msgstr ""
 "Nu puteți reconcilia rândul \"%(line)s\" cu altele pentru că contul "
 "\"%(account1)s\" este diferit de \"%(account2)s\"."
 
+#, fuzzy, python-format
 msgctxt "model:ir.message,text:msg_reconciliation_different_parties"
 msgid ""
 "You cannot reconcile line \"%(line)s\" with others because its party "
@@ -3694,10 +3743,12 @@ msgstr ""
 "Nu puteți reconcilia rândul \"%(line)s\" cu altele pentru că partea "
 "\"%(account1)s\" este diferită de \"%(account2)s\"."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_reconciliation_line_not_valid"
 msgid "You cannot reconcile non-valid line \"%(line)s\"."
 msgstr "Rândul \"%(line)s\" este neconform si nu se poate reconcilia."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_reconciliation_unbalanced"
 msgid ""
 "To reconcile lines, they must have the same debit \"%(debit)s\" and credit "
@@ -3706,6 +3757,7 @@ msgstr ""
 "Pentru a reconcilia, rândurile trebuie să aibă același debit \"%(debit)s\" "
 "și credit \"%(credit)s\"."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_reconciliation_write_off_missing"
 msgid ""
 "To reconcile lines with \"%(amount)s\" write-off, you must select a write-"
@@ -3714,6 +3766,16 @@ msgstr ""
 "Pentru a reconcilia rândurile cu prescriptia \"%(amount)s\", trebuie să "
 "selectați o metodă de prescriptie."
 
+#, fuzzy, python-format
+msgctxt "model:ir.message,text:msg_reconciliation_write_off_same_account"
+msgid ""
+"You cannot reconcile lines using the write-off \"%(write_off)s\" with the "
+"same \"%(account)s\"."
+msgstr ""
+"Nu puteți reconcilia rândul \"%(line)s\" cu altele pentru că contul "
+"\"%(account1)s\" este diferit de \"%(account2)s\"."
+
+#, python-format
 msgctxt "model:ir.message,text:msg_reopen_fiscalyear_later"
 msgid ""
 "To reopen fiscal year \"%(fiscalyear)s\", you must reopen all later fiscal "
@@ -3742,7 +3804,7 @@ msgctxt "model:ir.message,text:msg_reschedule_line_same_party"
 msgid "You cannot reschedule lines with different parties."
 msgstr "Nu se pot grupa rânduri cu părţi diferite."
 
-#, fuzzy
+#, fuzzy, python-format
 msgctxt "model:ir.message,text:msg_reschedule_line_wrong_amount"
 msgid ""
 "To reschedule the lines you must change the terms to have a total amount of "
@@ -3751,6 +3813,7 @@ msgstr ""
 "Pentru a reprograma rândurile, trebuie să modificați termenii astfel încât "
 "să aibă o sumă totală de %(total_amount)s în loc de %(amount)s."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_tax_update_unit_price_with_parent"
 msgid "You cannot set \"Update Unit Price\" on child tax \"%(tax)s\"."
 msgstr ""
@@ -3784,8 +3847,8 @@ msgid "Lock"
 msgstr "Blocare"
 
 msgctxt "model:ir.model.button,string:fiscalyear_reopen_button"
-msgid "Re-Open"
-msgstr "Re-Deschide"
+msgid "Reopen"
+msgstr ""
 
 #, fuzzy
 msgctxt "model:ir.model.button,string:journal_period_close_button"
@@ -3809,8 +3872,8 @@ msgid "Lock"
 msgstr "Blocare"
 
 msgctxt "model:ir.model.button,string:period_reopen_button"
-msgid "Re-Open"
-msgstr "Re-Deschide"
+msgid "Reopen"
+msgstr ""
 
 msgctxt "model:ir.rule.group,name:rule_group_account_companies"
 msgid "User in companies"
@@ -4031,7 +4094,7 @@ msgstr "Perioade"
 
 msgctxt "model:ir.ui.menu,name:menu_processing"
 msgid "Processing"
-msgstr "Se prelucreaza"
+msgstr "Prelucrare"
 
 msgctxt "model:ir.ui.menu,name:menu_reconcile"
 msgid "Reconcile Accounts"
@@ -4119,10 +4182,6 @@ msgstr "Cont"
 msgctxt "model:res.group,name:group_account_admin"
 msgid "Account Administration"
 msgstr "Administrare Cont"
-
-msgctxt "model:res.group,name:group_account_party"
-msgid "Accounting Party"
-msgstr "Contabilitate Parte"
 
 msgctxt "report:account.account.type.statement:"
 msgid "/"

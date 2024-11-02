@@ -195,7 +195,7 @@ msgid "Inspect Run"
 msgstr "Inspecter l'exécution"
 
 msgctxt "model:ir.action,name:wizard_stock_shipment_in_inspect_do"
-msgid "Inspect Done"
+msgid "Inspect Completion"
 msgstr "Inspecter l'achèvement"
 
 msgctxt "model:ir.action,name:wizard_stock_shipment_in_inspect_receive"
@@ -203,7 +203,7 @@ msgid "Inspect Reception"
 msgstr "Inspecter la réception"
 
 msgctxt "model:ir.action,name:wizard_stock_shipment_internal_inspect_do"
-msgid "Inspect Done"
+msgid "Inspect Completion"
 msgstr "Inspecter l'achèvement"
 
 msgctxt "model:ir.action,name:wizard_stock_shipment_internal_inspect_ship"
@@ -219,7 +219,7 @@ msgid "Inspect Pick"
 msgstr "Inspecter le prélèvement"
 
 msgctxt "model:ir.action,name:wizard_stock_shipment_out_return_inspect_do"
-msgid "Inspect Done"
+msgid "Inspect Completion"
 msgstr "Inspecter l'achèvement"
 
 msgctxt ""
@@ -262,12 +262,21 @@ msgctxt ""
 msgid "Processed"
 msgstr "Traitées"
 
+#, python-format
+msgctxt "model:ir.message,text:msg_inspection_delete_non_pending"
+msgid ""
+"To delete inspection \"%(inspection)s\" you must reset its state to pending."
+msgstr ""
+"Pour supprimer l'inspection « %(inspection)s », vous devez réinitialiser son"
+" état sur « en attente »."
+
 msgctxt "model:ir.message,text:msg_quality_inspection_failed"
 msgid "To continue, alerts from failed inspections must be resolved."
 msgstr ""
 "Pour continuer, les alertes provenant d'inspections ayant échouées doivent "
 "être résolues."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_quality_inspection_missing_point"
 msgid ""
 "To complete the inspection \"%(inspection)s\", you must test points "

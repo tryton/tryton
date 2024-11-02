@@ -8,7 +8,7 @@ msgstr "Avancement de facturation de projet"
 
 msgctxt "field:account.invoice.line,project_invoice_timesheet_duration:"
 msgid "Project Invoice Timesheet Duration"
-msgstr "Durée de feuille de temps de facturation de projet"
+msgstr "Durée de relevé de temps de facturation de projet"
 
 msgctxt "field:account.invoice.line,project_invoice_works:"
 msgid "Project Invoice Works"
@@ -70,32 +70,35 @@ msgctxt "help:project.work,project_invoice_timesheet_up_to:"
 msgid ""
 "Limits which timesheet lines get invoiced to only those before the date."
 msgstr ""
-"Limite les lignes de feuille de temps facturées à celles antérieures à la "
+"Limite les lignes de relevé de temps facturées à celles antérieures à la "
 "date."
 
 msgctxt "model:ir.action,name:act_timesheet_line_form_invoice"
 msgid "Timesheet Lines"
-msgstr "Lignes de feuille de présence"
+msgstr "Lignes de relevé de temps"
 
 msgctxt "model:ir.action,name:open_invoice"
 msgid "Invoices"
 msgstr "Factures"
 
+#, python-format
 msgctxt "model:ir.message,text:msg_invoiced_timesheet_line_delete"
 msgid ""
 "You cannot delete timesheet line \"%(line)s\" because it has been invoiced."
 msgstr ""
-"Vous ne pouvez pas supprimer la ligne de feuille de temps « %(line)s » car "
+"Vous ne pouvez pas supprimer la ligne de relevé de temps « %(line)s » car "
 "elle a été facturée."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_invoiced_timesheet_line_modify_duration"
 msgid ""
 "You cannot modify the duration of timesheet line \"%(line)s\" because it has"
 " been invoiced."
 msgstr ""
-"Vous ne pouvez pas modifier la durée de la ligne de feuille de temps "
+"Vous ne pouvez pas modifier la durée de la ligne de relevé de temps "
 "« %(line)s » car elle a été facturée."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_invoiced_timesheet_line_modify_work"
 msgid ""
 "You cannot modify the work of timesheet line \"%(line)s\" because it has "
@@ -104,11 +107,13 @@ msgstr ""
 "Vous ne pouvez pas modifier le travail de la ligne de feuille de temps "
 "« %(line)s » car il a été facturé."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_invoiced_work_delete"
 msgid "You cannot delete work \"%(work)s\" because it has been invoiced."
 msgstr ""
 "Vous ne pouvez pas supprimer le travail « %(work)s » car il a été facturé."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_invoiced_work_modify_effort"
 msgid ""
 "You cannot modify the effort of work \"%(work)s\" because it has been "
@@ -117,20 +122,24 @@ msgstr ""
 "Vous ne pouvez pas modifier l'effort de travail « %(work)s » car il a été "
 "facturé."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_missing_account_revenue"
 msgid "To invoice work \"%(work)s\" you must configure a default account revenue."
 msgstr ""
 "Pour facturer le travail « %(work)s », vous devez configurer un compte de "
 "revenu par défaut."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_missing_list_price"
 msgid "There is no list price on work \"%(work)s\"."
 msgstr "Il n'y a pas de prix listé sur le travail « %(work)s »."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_missing_party"
 msgid "There is no party on work \"%(work)s\"."
 msgstr "Il n'y a pas de tiers sur le travail « %(work)s »."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_product_missing_account_revenue"
 msgid ""
 "To invoice work \"%(work)s\" you must define an account revenue for product "
@@ -139,6 +148,7 @@ msgstr ""
 "Pour facturer le travail « %(work)s », vous devez définir un compte de "
 "revenu pour le produit « %(product)s »."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_project_invoice_line_quantity"
 msgid ""
 "The quantity of project invoice line \"%(invoice_line)s\" must be "
@@ -173,7 +183,7 @@ msgstr "Sur progrès"
 
 msgctxt "selection:project.work,project_invoice_method:"
 msgid "On Timesheet"
-msgstr "Sur feuille de présence"
+msgstr "Sur relevé de temps"
 
 msgctxt "view:project.work.invoiced_progress:"
 msgid "%"

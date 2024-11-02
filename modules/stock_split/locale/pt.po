@@ -80,7 +80,7 @@ msgstr "Dividir"
 
 #, fuzzy
 msgctxt "view:stock.shipment.split.start:"
-msgid "Choose move to send in new shipment:"
+msgid "Select moves to send in a new shipment:"
 msgstr "Escolher movimentações para enviar na nova remessa"
 
 msgctxt "wizard_button:stock.move.split,start,end:"

@@ -77,10 +77,12 @@ msgctxt "model:account.configuration.default_credit_limit_amount,name:"
 msgid "Account Configuration Default Credit Limit Amount"
 msgstr "Einstellungen Buchhaltung Standardkonto Kreditlimit"
 
+#, python-format
 msgctxt "model:ir.message,text:msg_party_credit_limit_amount"
 msgid "Party \"%(party)s\" has reached their credit limit of %(limit)s."
 msgstr "Partei \"%(party)s\" hat ihr Kreditlimit von %(limit)s erreicht."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_party_credit_limit_dunning"
 msgid "Party \"%(party)s\" has reached the credit limit level of %(dunning)s."
 msgstr "Partei \"%(party)s\" hat das Kreditlimitlevel von %(dunning)s erreicht."

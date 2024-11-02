@@ -245,7 +245,7 @@ msgstr "Ataskaita..."
 msgid "Print..."
 msgstr "Spausdinti..."
 
-msgid "E-Mail..."
+msgid "Email..."
 msgstr "El. paštas..."
 
 msgid "Bold"
@@ -356,12 +356,6 @@ msgstr "Pagalba"
 
 msgid "No result found."
 msgstr "Nerasta rezultatų."
-
-msgid "Favorites"
-msgstr "Mėgstami"
-
-msgid "Manage..."
-msgstr "Valdyti..."
 
 msgid "Action"
 msgstr "Veiksmai"
@@ -599,6 +593,9 @@ msgstr "Prisijungti prie Tryton serverio"
 msgid "Profile:"
 msgstr "Profilis:"
 
+msgid "Manage..."
+msgstr "Valdyti..."
+
 msgid "Host / Database information"
 msgstr "Serverio / duomenų bazės duomenys"
 
@@ -610,7 +607,7 @@ msgid "Unable to complete email entry"
 msgstr "Negalima ištrinti %s vedlio"
 
 #, fuzzy, python-format
-msgid "E-mail %s"
+msgid "Email %s"
 msgstr "El. paštas %s"
 
 msgid "To:"
@@ -869,11 +866,12 @@ msgstr "_Ataskaita..."
 msgid "_Print..."
 msgstr "_Spausdinti..."
 
-msgid "_E-Mail..."
-msgstr "Siųsti _el. paštu..."
+#, fuzzy
+msgid "_Email..."
+msgstr "El. paštas..."
 
 #, fuzzy
-msgid "Send an e-mail using the record"
+msgid "Send an email using the record"
 msgstr "Prisegti pastabą prie įrašo"
 
 msgid "_Export Data..."
@@ -925,6 +923,9 @@ msgstr "Lauko pavadinimas"
 msgid "CSV Export: %s"
 msgstr "CSV eksportavimas: %s"
 
+msgid "Open"
+msgstr "Atvėrimas"
+
 msgid "_Save Export"
 msgstr "Išsaugoti eksporto šabloną"
 
@@ -940,12 +941,6 @@ msgstr "<b>Išsaugoti eksportavimo šablonai</b>"
 
 msgid "Name"
 msgstr "Pavadinimas"
-
-msgid "Open"
-msgstr "Atvėrimas"
-
-msgid "Save"
-msgstr "Išsaugoti"
 
 msgid "Listed Records"
 msgstr "Rodomi įrašai"
@@ -1006,6 +1001,9 @@ msgstr ""
 msgid "Add and New"
 msgstr "Pridėti reikšmę"
 
+msgid "Save"
+msgstr "Išsaugoti"
+
 msgid "Add"
 msgstr "Pridėti"
 
@@ -1030,6 +1028,10 @@ msgstr "Atkurti pasirinktą įrašą <Ins>"
 #, python-format
 msgid "CSV Import: %s"
 msgstr "CSV importas: %s"
+
+#, fuzzy
+msgid "Import"
+msgstr "Ataskaita"
 
 msgid "_Auto-Detect"
 msgstr "Aptikti automatiškai"
@@ -1236,6 +1238,10 @@ msgstr "Pridėti turimą įrašą"
 msgid "Remove selected record"
 msgstr "Pašalinti pasirinktą įrašą"
 
+#, fuzzy
+msgid "Restore selected record"
+msgstr "Pašalinti pasirinktą įrašą"
+
 msgid "Open the record <F2>"
 msgstr "Atverti įrašą <F2>"
 
@@ -1251,6 +1257,10 @@ msgstr "Keisti pasirinktą įrašą <F2>"
 
 #, fuzzy
 msgid "Delete selected record"
+msgstr "Pašalinti pasirinktą įrašą"
+
+#, fuzzy
+msgid "Undelete selected record"
 msgstr "Pašalinti pasirinktą įrašą"
 
 #, python-format

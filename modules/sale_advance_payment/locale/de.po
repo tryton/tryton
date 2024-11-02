@@ -160,14 +160,11 @@ msgstr ""
 "Zeitspanne für das Verkaufsdatum zum Bestimmen des Datums der "
 "Anzahlungsrechnung."
 
-msgctxt "model:ir.action,name:act_advance_invoice_form"
-msgid "Advance Invoices"
-msgstr "Anzahlungsrechnungen"
-
 msgctxt "model:ir.action,name:act_advance_payment_term_form"
 msgid "Advance Payment Terms"
 msgstr "Zahlungsbedingungen Anzahlung"
 
+#, python-format
 msgctxt "model:ir.message,text:msg_shipping_blocked"
 msgid ""
 "To pack shipments the customer must paid the advance payment for sale "
@@ -176,6 +173,7 @@ msgstr ""
 "Damit die Lieferungen gepackt werden können, muss der Kunde die Anzahlung "
 "für Verkauf \"%(sale)s\" geleistet haben."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_term_line_invalid_formula"
 msgid ""
 "Invalid formula \"%(formula)s\" in term line \"%(term_line)s\" with "

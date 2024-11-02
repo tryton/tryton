@@ -426,6 +426,10 @@ msgctxt "field:stock.move,origin_planned_date:"
 msgid "Origin Planned Date"
 msgstr "Basis geplande datum"
 
+msgctxt "field:stock.move,outcome_moves:"
+msgid "Outcome Moves"
+msgstr "Resulterende voorraadbewegingen"
+
 msgctxt "field:stock.move,planned_date:"
 msgid "Planned Date"
 msgstr "Geplande datum"
@@ -965,6 +969,10 @@ msgstr "Verzameld door"
 msgctxt "field:stock.shipment.out,reference:"
 msgid "Reference"
 msgstr "Referentie"
+
+msgctxt "field:stock.shipment.out,shipped_by:"
+msgid "Shipped By"
+msgstr "Verzonden door"
 
 msgctxt "field:stock.shipment.out,state:"
 msgid "State"
@@ -1636,12 +1644,12 @@ msgid "Location Lead Times"
 msgstr "Locatie doorlooptijden"
 
 msgctxt "model:ir.action,name:act_location_quantity_list"
-msgid "Locations List Quantity"
-msgstr "Lijst met hoeveelheden per locatie"
+msgid "Stock Locations List"
+msgstr "Lijst met hoeveelheden per voorraadlocatie"
 
 msgctxt "model:ir.action,name:act_location_quantity_tree"
-msgid "Locations Tree Quantity"
-msgstr "Boomstructuur met hoeveelheden per locatie"
+msgid "Stock Locations Tree"
+msgstr "Voorraad locaties boom"
 
 msgctxt "model:ir.action,name:act_location_tree"
 msgid "Locations"
@@ -1664,16 +1672,16 @@ msgid "Stock Moves"
 msgstr "Voorraad beweging"
 
 msgctxt "model:ir.action,name:act_product_quantities_warehouse"
-msgid "Product Quantities By Warehouse"
-msgstr "Product hoeveelheden per magazijn"
+msgid "Stock Quantities By Warehouse"
+msgstr "Voorraad hoeveelheden per magazijn"
 
 msgctxt "model:ir.action,name:act_product_quantities_warehouse_move"
 msgid "Stock Moves By Warehouse"
 msgstr "Voorraad bewegingen per magazijn"
 
 msgctxt "model:ir.action,name:act_products_by_locations_relate"
-msgid "Products by Locations"
-msgstr "Producten per locatie"
+msgid "Products"
+msgstr "Producten"
 
 msgctxt "model:ir.action,name:act_reporting_margin_category"
 msgid "Margins per Category"
@@ -1926,6 +1934,11 @@ msgid "Picked"
 msgstr "Verzameld"
 
 msgctxt ""
+"model:ir.action.act_window.domain,name:act_shipment_out_form_domain_shipped"
+msgid "Shipped"
+msgstr "Verzonden"
+
+msgctxt ""
 "model:ir.action.act_window.domain,name:act_shipment_out_form_domain_waiting"
 msgid "Waiting"
 msgstr "In afwachting"
@@ -1945,6 +1958,7 @@ msgctxt ""
 msgid "Received"
 msgstr "Ontvangen"
 
+#, python-format
 msgctxt "model:ir.message,text:msg_erase_party_shipment"
 msgid ""
 "You cannot erase party \"%(party)s\" while they have pending shipments with "
@@ -1953,6 +1967,7 @@ msgstr ""
 "U kunt de relatie \"%(party)s\" niet verwijderen terwijl ze leveringen in "
 "behandeling hebben bij bedrijf \"%(company)s\"."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_invalid_cost_price"
 msgid ""
 "Invalid cost price \"%(cost_price)s\" for product \"%(product)s\" with "
@@ -1961,6 +1976,7 @@ msgstr ""
 "Ongeldige kostprijs \"%(cost_price)s\" voor product \"%(product)s\" met "
 "uitzondering \"%(exception)s\"."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_invalid_cost_price_not_number"
 msgid ""
 "The value \"%(value)s\" of \"%(cost_price)s\" for product \"%(product)s\" is"
@@ -1969,18 +1985,22 @@ msgstr ""
 "De waarde \"%(value)s\" van \"%(cost_price)s\" voor product \"%(product)s\" "
 "is geen getal."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_inventory_count_create_line"
 msgid "No existing line found for \"%(search)s\"."
 msgstr "Geen bestaande regel gevonden voor \"%(search)s\"."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_inventory_date_in_the_future"
 msgid "The inventories \"%(inventories)s\" have dates in the future."
 msgstr "De voorraden \"%(inventories)s\" hebben datums in de toekomst."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_inventory_delete_cancel"
 msgid "To delete inventory \"%(inventory)s\" you must cancel it."
 msgstr "Om de voorraad \"%(inventory)s\" te verwijderen, moet u deze annuleren."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_inventory_line_delete_cancel"
 msgid ""
 "To delete inventory line \"%(line)s\" you must cancel inventory "
@@ -1993,10 +2013,12 @@ msgctxt "model:ir.message,text:msg_inventory_line_quantity_positive"
 msgid "Inventory line quantity must be positive."
 msgstr "Hoeveelheid van een voorraad regel moet positief zijn."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_inventory_line_unique"
 msgid "Inventory line \"%(line)s\" is not unique on inventory \"%(inventory)s\"."
 msgstr "Voorraad regel \"%(line)s\"is niet uniek op voorraad \"%(inventory)s\"."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_inventory_location_missing_lost_found"
 msgid ""
 "To confirm the inventory \"%(inventory)s\" you must set a lost and found on "
@@ -2005,6 +2027,7 @@ msgstr ""
 "Om de voorraad \"%(inventory)s\" te bevestigen, moet u voorraadverschillen "
 "op de hoofd locatie aanzetten \"%(location)s\"."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_inventory_missing_empty_quantity"
 msgid ""
 "To confirm the inventory \"%(inventory)s\" you must select an option for "
@@ -2013,6 +2036,7 @@ msgstr ""
 "Om de voorraad \"%(inventory)s\" te bevestigen, moet u een optie voor de "
 "lege hoeveelheid selecteren."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_location_child_of_warehouse"
 msgid ""
 "To set location \"%(location)s\" as storage/input/output of warehouse "
@@ -2021,10 +2045,12 @@ msgstr ""
 "Om locatie \"%(location)s\" in te stellen als opslag / inkomend / uitgaand "
 "van magazijn \"%(warehouse)s\", moet deze zich in het magazijn bevinden."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_location_inactive_not_empty"
 msgid "To inactivate location \"%(location)s\", you must empty it."
 msgstr "Om locatie \"%(location)s\" te deactiveren, moet deze leeg zijn."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_location_invalid_type_for_moves"
 msgid ""
 "You cannot change the type of location \"%(location)s\" to \"%(type)s\"\n"
@@ -2033,6 +2059,7 @@ msgstr ""
 "U kunt het soort van locatie \"%(location)s\" niet wijzigen in \"%(type)s\n"
 "omdat het soort geen voorraad bewegingen ondersteunt en de bestaande locatie voorraad bewegingen heeft."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_move_delete_draft_cancel"
 msgid ""
 "To delete stock move \"%(move)s\" you must cancel it or reset its state to "
@@ -2041,6 +2068,7 @@ msgstr ""
 "Als u voorraad bewegingen \"%(move)s\" wilt verwijderen, moet u deze "
 "annuleren of de status opnieuw instellen op concept."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_move_effective_date_in_the_future"
 msgid "The moves \"%(moves)s\" have effective dates in the future."
 msgstr ""
@@ -2056,30 +2084,35 @@ msgctxt "model:ir.message,text:msg_move_internal_quantity_positive"
 msgid "Internal move quantity must be positive."
 msgstr "De hoeveelheid van interne beweging moet positief zijn."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_move_modify_assigned"
 msgid "To modify stock move \"%(move)s\" you must reset its state to draft."
 msgstr ""
 "Om voorraad beweging \"%(move)s\" te wijzigen, moet u de status opnieuw "
 "instellen op concept."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_move_modify_cancelled"
 msgid "You cannot modify stock move \"%(move)s\" because it is cancelled."
 msgstr ""
 "U kunt voorraad beweging \"%(move)s\" niet wijzigen omdat deze is "
 "geannuleerd."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_move_modify_done"
 msgid "You cannot modify stock move \"%(move)s\" because it is done."
 msgstr ""
 "U kunt voorraad beweging \"%(move)s\" niet wijzigen omdat deze al afgerond "
 "is."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_move_modify_period_close"
 msgid "To modify stock move \"%(move)s\" you must reopen period \"%(period)s\"."
 msgstr ""
 "Om voorraad beweging \"%(move)s\" te wijzigen, moet u periode \"%(period)s\""
 " opnieuw openen."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_move_no_origin"
 msgid "Stock moves \"%(moves)s\" have no origin."
 msgstr "Voorraad bewegingen \"%(moves)s\" hebben geen oorsprong."
@@ -2120,6 +2153,7 @@ msgstr ""
 "U kunt het soort van het product dat is gekoppeld aan voorraad bewegingen "
 "niet wijzigen."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_product_location_quantity"
 msgid ""
 "The product \"%(product)s\" has still some quantities in locations "
@@ -2136,12 +2170,14 @@ msgstr ""
 "Het is aan te raden om de voorraad op te maken in het magazijn voordat het "
 "product gedeactiveerd wordt."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_product_quantities_max"
 msgid "You cannot select more than %(max)s products to compute quantities."
 msgstr ""
 "U kunt niet meer dan %(max)s producten selecteren om de hoeveelheden te "
 "berekenen."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_shipment_check_quantity"
 msgid ""
 "The quantities of shipment \"%(shipment)s\" are different by %(quantities)s."
@@ -2152,6 +2188,7 @@ msgctxt "model:ir.message,text:msg_shipment_delay"
 msgid "Delay"
 msgstr "Vertraging"
 
+#, python-format
 msgctxt "model:ir.message,text:msg_shipment_delete_cancel"
 msgid "To delete shipment \"%(shipment)s\" you must cancel it."
 msgstr "Om zending \"%(shipment)s\" te verwijderen, moet u deze annuleren."
@@ -2172,6 +2209,7 @@ msgctxt "model:ir.message,text:msg_shipment_origin_planned_date_help"
 msgid "When the stock operation was initially expected to be completed."
 msgstr "Initiële verwachting wanneer de verzending wordt afgerond."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_shipment_pack_inventory_done"
 msgid "To pack shipment \"%(shipment)s\" you must do the inventory moves."
 msgstr ""
@@ -2269,6 +2307,10 @@ msgstr "Weet u zeker dat u de zending wilt annuleren?"
 msgctxt "model:ir.model.button,confirm:shipment_out_return_receive_button"
 msgid "Are you sure you want to receive the shipment?"
 msgstr "Weet u zeker dat u de zending wilt ontvangen?"
+
+msgctxt "model:ir.model.button,confirm:shipment_out_ship_button"
+msgid "Are you sure you want to ship the shipment?"
+msgstr "Weet u zeker dat u de zending wilt verzenden?"
 
 msgctxt "model:ir.model.button,help:inventory_complete_lines_button"
 msgid "Add an inventory line for each missing products"
@@ -2413,6 +2455,10 @@ msgstr "Concept"
 msgctxt "model:ir.model.button,string:shipment_out_return_receive_button"
 msgid "Receive"
 msgstr "Ontvang"
+
+msgctxt "model:ir.model.button,string:shipment_out_ship_button"
+msgid "Ship"
+msgstr "Verzend"
 
 msgctxt "model:ir.model.button,string:shipment_out_wait_button"
 msgid "Wait"
@@ -3285,6 +3331,10 @@ msgstr "Verpakt"
 msgctxt "selection:stock.shipment.out,state:"
 msgid "Picked"
 msgstr "Verzameld"
+
+msgctxt "selection:stock.shipment.out,state:"
+msgid "Shipped"
+msgstr "Verzonden"
 
 msgctxt "selection:stock.shipment.out,state:"
 msgid "Waiting"

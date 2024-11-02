@@ -69,6 +69,7 @@ msgstr ""
 "No puede cambiar la cantidad de un lote que tiene movimientos de "
 "existencias."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_lot_unit_quantity_greater"
 msgid ""
 "You cannot use more than %(quantity)s%(unit)s of lot \"%(lot)s\" in "

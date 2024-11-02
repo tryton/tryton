@@ -64,6 +64,13 @@ msgstr ""
 "ارسال تسویه جابجایی ها بعداز تأخییر بطورخودکار.\n"
 "برای بدون ارسال خالی بگذارید."
 
+#, fuzzy
+msgctxt "help:account.statement.rule,description:"
+msgid ""
+"\n"
+"'payment_group'"
+msgstr "گروه پرداخت"
+
 msgctxt "model:account.payment.succeed.start,name:"
 msgid "Succeed Payment"
 msgstr "پرداخت موفق"

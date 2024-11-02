@@ -148,10 +148,12 @@ msgctxt "help:product.category,taxes_parent:"
 msgid "Use the taxes defined on the parent category."
 msgstr "Upoštevani davki iz matične kategorije."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_missing_account"
 msgid "There is no \"%(field)s\" defined for \"%(name)s\"."
 msgstr "Za \"%(name)s\" ni definirano polje \"%(field)s\"."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_missing_taxes"
 msgid "There is no account category defined on product \"%(name)s\"."
 msgstr "Izdelek \"%(name)s\" nima definirane računovodske kategorije."
@@ -188,10 +190,9 @@ msgctxt "view:account.configuration:"
 msgid "Product"
 msgstr "Izdelek"
 
-#, fuzzy
 msgctxt "view:account.create_chart.properties:"
 msgid "Product"
-msgstr "Izdelek"
+msgstr "Produkt"
 
 msgctxt "view:product.category:"
 msgid "Accounting"

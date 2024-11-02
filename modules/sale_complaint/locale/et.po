@@ -278,12 +278,21 @@ msgctxt ""
 msgid "Waiting"
 msgstr "Ootel"
 
+#, python-format
 msgctxt "model:ir.message,text:msg_action_delete_result"
 msgid "You cannot delete action \"%(action)s\" because it has a result."
 msgstr ""
 
+#, python-format
 msgctxt "model:ir.message,text:msg_complaint_delete_draft"
 msgid "To delete complaint \"%(complaint)s\" you must reset it to draft state."
+msgstr ""
+"Kaebuse \"%(complaint)s\" kustutamiseks tuleb selle staatus muuta "
+"mustandiks."
+
+#, fuzzy, python-format
+msgctxt "model:ir.message,text:msg_complaint_similar"
+msgid "The complaint \"%(complaint)s\" is similar to complaint \"%(similar)s\"."
 msgstr ""
 "Kaebuse \"%(complaint)s\" kustutamiseks tuleb selle staatus muuta "
 "mustandiks."

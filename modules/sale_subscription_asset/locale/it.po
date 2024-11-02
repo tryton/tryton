@@ -40,11 +40,8 @@ msgstr "Servizi"
 
 msgctxt "model:ir.message,text:msg_asset_line_overlap"
 msgid ""
-"The lines \"%(line1)s\" and \"%(line2)s\" overlap, you must use different "
-"dates."
+"The dates of subscription lines with the same asset lot can not overlap."
 msgstr ""
-"Le linee \"%(line1)s\" e \"%(line2)s\" si sovrappongono, è necessario "
-"utilizzare date diverse."
 
 msgctxt "model:sale.subscription.service-stock.lot.asset,name:"
 msgid "Subscription Service - Stock Lot Asset"

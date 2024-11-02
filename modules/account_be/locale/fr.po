@@ -31,17 +31,17 @@ msgid "Fiscal Year"
 msgstr "Année fiscale"
 
 msgctxt "model:account.be.vat_customer,name:"
-msgid "Belgium VAT Customer"
+msgid "Belgian VAT Customer"
 msgstr "Client TVA belge"
 
 msgctxt "model:account.be.vat_customer.context,name:"
-msgid "Belgium VAT Customer Context"
-msgstr "Contexte du client TVA belge"
+msgid "Belgian VAT Customer Context"
+msgstr "Contexte client TVA belge"
 
 msgctxt "model:ir.action,name:act_vat_customer_form"
-msgid "Belgium VAT Customer"
+msgid "Belgian VAT Customer"
 msgstr "Client TVA belge"
 
 msgctxt "model:ir.ui.menu,name:menu_vat_customer"
-msgid "Belgium VAT Customer"
+msgid "Belgian VAT Customer"
 msgstr "Client TVA belge"

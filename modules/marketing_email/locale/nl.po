@@ -3,12 +3,12 @@ msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "field:marketing.email,email:"
-msgid "E-mail"
-msgstr "E-mail"
+msgid "Email"
+msgstr "Email"
 
 msgctxt "field:marketing.email,email_token:"
-msgid "E-mail Token"
-msgstr "E-mail token"
+msgid "Email Token"
+msgstr "Email token"
 
 msgctxt "field:marketing.email,list_:"
 msgid "List"
@@ -63,8 +63,8 @@ msgid "URLs"
 msgstr "URLs"
 
 msgctxt "field:marketing.email.send_test,email:"
-msgid "E-Mail"
-msgstr "E-mail"
+msgid "Email"
+msgstr "Email"
 
 msgctxt "field:marketing.email.send_test,list_:"
 msgid "List"
@@ -89,8 +89,8 @@ msgid "Messages"
 msgstr "Bericht"
 
 msgctxt "model:ir.action,name:act_email_relate_list"
-msgid "E-mails"
-msgstr "E-mails"
+msgid "Emails"
+msgstr "Emails"
 
 msgctxt "model:ir.action,name:report_email_subscribe"
 msgid "Subscribe Request"
@@ -117,6 +117,7 @@ msgctxt ""
 msgid "Sending"
 msgstr "Bezig met verzenden"
 
+#, python-format
 msgctxt "model:ir.message,text:msg_email_invalid"
 msgid "The email address \"%(email)s\" for \"%(record)s\" is not valid."
 msgstr "Het email adres \"%(email)s\" voor \"%(record)s\" is not geldig."
@@ -126,6 +127,7 @@ msgid "Email addresses can only be subscribed once to each list."
 msgstr ""
 "E-mailadressen kunnen slechts één keer op elke lijst worden ingeschreven."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_message_invalid_content"
 msgid "Invalid content in message \"%(message)s\" with exception \"%(exception)s\"."
 msgstr ""
@@ -149,20 +151,20 @@ msgid "Mailing Lists"
 msgstr "Mail lijst"
 
 msgctxt "model:marketing.email,name:"
-msgid "Marketing E-mail"
-msgstr "Marketing-e-mail"
+msgid "Marketing Email"
+msgstr "Marketing email"
 
 msgctxt "model:marketing.email.list,name:"
 msgid "Marketing Mailing List"
 msgstr "Marketing mailinglijst"
 
 msgctxt "model:marketing.email.message,name:"
-msgid "Marketing E-mail Message"
-msgstr "Marketing e-mailbericht"
+msgid "Marketing Email Message"
+msgstr "Marketing emailbericht"
 
 msgctxt "model:marketing.email.send_test,name:"
-msgid "Send Test E-mail"
-msgstr "Stuur test-e-mail"
+msgid "Send Test Email"
+msgstr "Stuur test email"
 
 msgctxt "report:marketing.email.subscribe:"
 msgid "Button is not working? Paste this into your browser:"

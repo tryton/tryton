@@ -398,11 +398,17 @@ msgctxt "model:ir.message,text:msg_customer_fingerprint_unique"
 msgid "The fingerprint must be unique by customer."
 msgstr ""
 
+#, python-format
 msgctxt "model:ir.message,text:msg_no_stripe_token"
 msgid ""
 "To process payment \"%(payment)s\" you must set a Stripe token or customer."
 msgstr ""
 
+msgctxt "model:ir.message,text:msg_stripe_key_modified"
+msgid "Are you sure you want to modify the keys of the Stripe account?"
+msgstr ""
+
+#, python-format
 msgctxt "model:ir.message,text:msg_stripe_receivable"
 msgid "To pay \"%(payment)s\", you cannot use a stripe journal \"%(journal)s\"."
 msgstr ""
@@ -430,6 +436,10 @@ msgctxt "model:ir.model.button,string:customer_stripe_checkout_button"
 msgid "Add Card"
 msgstr ""
 
+msgctxt "model:ir.model.button,string:customer_stripe_update_button"
+msgid "Update"
+msgstr ""
+
 msgctxt "model:ir.model.button,string:payment_stripe_capture_button"
 msgid "Stripe Capture"
 msgstr ""
@@ -437,6 +447,11 @@ msgstr ""
 msgctxt "model:ir.model.button,string:payment_stripe_checkout_button"
 msgid "Stripe Checkout"
 msgstr ""
+
+#, fuzzy
+msgctxt "model:ir.model.button,string:payment_stripe_pull_button"
+msgid "Stripe Pull"
+msgstr "Cont"
 
 msgctxt "model:ir.model.button,string:refund_approve_button"
 msgid "Approve"

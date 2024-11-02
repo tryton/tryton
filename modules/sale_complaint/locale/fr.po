@@ -258,17 +258,25 @@ msgctxt ""
 msgid "Waiting"
 msgstr "En attentes"
 
+#, python-format
 msgctxt "model:ir.message,text:msg_action_delete_result"
 msgid "You cannot delete action \"%(action)s\" because it has a result."
 msgstr ""
 "Vous ne pouvez pas supprimer l'action « %(action)s » parce qu'elle a un "
 "résultat."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_complaint_delete_draft"
 msgid "To delete complaint \"%(complaint)s\" you must reset it to draft state."
 msgstr ""
 "Pour supprimer la plainte « %(complaint)s », vous devez la réinitialiser à "
 "l'état brouillon."
+
+#, python-format
+msgctxt "model:ir.message,text:msg_complaint_similar"
+msgid "The complaint \"%(complaint)s\" is similar to complaint \"%(similar)s\"."
+msgstr ""
+"La plainte « %(complaint)s » est similaire à la plainte « %(similar)s »."
 
 msgctxt "model:ir.model.button,string:complaint_approve_button"
 msgid "Approve"

@@ -18,6 +18,14 @@ msgctxt "field:company.company,header:"
 msgid "Header"
 msgstr "Koptekst"
 
+msgctxt "field:company.company,logo:"
+msgid "Logo"
+msgstr "Logo"
+
+msgctxt "field:company.company,logo_cache:"
+msgid "Cache"
+msgstr "Cache"
+
 msgctxt "field:company.company,party:"
 msgid "Party"
 msgstr "Relatie"
@@ -25,6 +33,22 @@ msgstr "Relatie"
 msgctxt "field:company.company,timezone:"
 msgid "Timezone"
 msgstr "Tijdzone"
+
+msgctxt "field:company.company.logo.cache,company:"
+msgid "Company"
+msgstr "Bedrijf"
+
+msgctxt "field:company.company.logo.cache,height:"
+msgid "Height"
+msgstr "Hoogte"
+
+msgctxt "field:company.company.logo.cache,image:"
+msgid "Image"
+msgstr "Afbeelding"
+
+msgctxt "field:company.company.logo.cache,width:"
+msgid "Width"
+msgstr "Breedte"
 
 msgctxt "field:company.employee,active:"
 msgid "Active"
@@ -254,6 +278,10 @@ msgctxt "model:company.company.config.start,name:"
 msgid "Company Config"
 msgstr "Bedrijf configuratie"
 
+msgctxt "model:company.company.logo.cache,name:"
+msgid "Company Logo Cache"
+msgstr "Bedrijfslogo cache"
+
 msgctxt "model:company.employee,name:"
 msgid "Employee"
 msgstr "Werknemer"
@@ -281,6 +309,10 @@ msgstr "Brief"
 msgctxt "model:ir.cron-company.company,name:"
 msgid "Cron - Company"
 msgstr "Planner - Bedrijf"
+
+msgctxt "model:ir.message,text:msg_company_logo_cache_size_unique"
+msgid "The size of cached company logo must be unique."
+msgstr "De grootte van het ge-cachde bedrijfslogo moet uniek zijn."
 
 msgctxt "model:ir.rule.group,name:rule_group_sequence_companies"
 msgid "User in companies"
@@ -347,8 +379,16 @@ msgid "You can now add your company into the system."
 msgstr "U kunt nu uw bedrijf toevoegen aan het systeem."
 
 msgctxt "view:company.company:"
+msgid "Company"
+msgstr "Bedrijf"
+
+msgctxt "view:company.company:"
 msgid "Reports"
 msgstr "Rapporten"
+
+msgctxt "view:company.employee:"
+msgid "Employee"
+msgstr "Werknemer"
 
 msgctxt "wizard_button:company.company.config,company,add:"
 msgid "Add"

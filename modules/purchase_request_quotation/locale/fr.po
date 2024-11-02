@@ -192,6 +192,7 @@ msgctxt ""
 msgid "Sent"
 msgstr "Envoyé"
 
+#, python-format
 msgctxt "model:ir.message,text:msg_previous_quotation"
 msgid "A quotation was already made for request \"%(request)s\"."
 msgstr "Un devis a déjà été fait pour la demande « %(request)s »."

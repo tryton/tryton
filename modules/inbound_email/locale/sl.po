@@ -131,8 +131,9 @@ msgctxt "model:inbound.email.rule.header,name:"
 msgid "Inbound Email Rule Header"
 msgstr "Pravilo za glavo vhodno e-pošto"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_inbound_email_form_relate"
-msgid "E-mails"
+msgid "Emails"
 msgstr "E-pošte"
 
 msgctxt "model:ir.action,name:act_inbound_email_inbox_form"

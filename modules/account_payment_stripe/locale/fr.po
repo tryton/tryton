@@ -399,6 +399,7 @@ msgctxt "model:ir.message,text:msg_customer_fingerprint_unique"
 msgid "The fingerprint must be unique by customer."
 msgstr "L'empreinte doit être unique par client."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_no_stripe_token"
 msgid ""
 "To process payment \"%(payment)s\" you must set a Stripe token or customer."
@@ -406,6 +407,11 @@ msgstr ""
 "Pour exécuter le paiement « %(payment)s », vous devez définir un jeton ou "
 "client Stripe."
 
+msgctxt "model:ir.message,text:msg_stripe_key_modified"
+msgid "Are you sure you want to modify the keys of the Stripe account?"
+msgstr "Êtes-vous sûr de vouloir modifier les clés du compte Stripe ?"
+
+#, python-format
 msgctxt "model:ir.message,text:msg_stripe_receivable"
 msgid "To pay \"%(payment)s\", you cannot use a stripe journal \"%(journal)s\"."
 msgstr ""
@@ -434,6 +440,10 @@ msgctxt "model:ir.model.button,string:customer_stripe_checkout_button"
 msgid "Add Card"
 msgstr "Ajouter une carte"
 
+msgctxt "model:ir.model.button,string:customer_stripe_update_button"
+msgid "Update"
+msgstr "Mettre à jour"
+
 msgctxt "model:ir.model.button,string:payment_stripe_capture_button"
 msgid "Stripe Capture"
 msgstr "Stripe Capture"
@@ -441,6 +451,10 @@ msgstr "Stripe Capture"
 msgctxt "model:ir.model.button,string:payment_stripe_checkout_button"
 msgid "Stripe Checkout"
 msgstr "Paiement Stripe"
+
+msgctxt "model:ir.model.button,string:payment_stripe_pull_button"
+msgid "Stripe Pull"
+msgstr "Mettre à jour de Stripe"
 
 msgctxt "model:ir.model.button,string:refund_approve_button"
 msgid "Approve"
@@ -497,7 +511,7 @@ msgstr "Check-out"
 msgctxt "report:account.payment.stripe.email_checkout:"
 msgid "If you didn't make this request, you can ignore this email."
 msgstr ""
-"Si vous n'avez pas fait cette demande, vous pouvez ignorer cet e-mail."
+"Si vous n'avez pas fait cette demande, vous pouvez ignorer ce courriel."
 
 msgctxt "report:account.payment.stripe.email_checkout:"
 msgid "You need to authorize the payment"

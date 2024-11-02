@@ -256,8 +256,9 @@ msgstr "Отчет..."
 msgid "Print..."
 msgstr "Печать..."
 
-msgid "E-Mail..."
-msgstr "Эл.почта..."
+#, fuzzy
+msgid "Email..."
+msgstr "Настройки _Эл.почты"
 
 msgid "Bold"
 msgstr ""
@@ -379,13 +380,6 @@ msgstr "Помощь"
 
 msgid "No result found."
 msgstr "Ничего не найдено."
-
-#, fuzzy
-msgid "Favorites"
-msgstr "Избранное"
-
-msgid "Manage..."
-msgstr ""
 
 msgid "Action"
 msgstr "Действие"
@@ -623,6 +617,9 @@ msgstr "Соединение с сервером"
 msgid "Profile:"
 msgstr "Профиль:"
 
+msgid "Manage..."
+msgstr ""
+
 msgid "Host / Database information"
 msgstr "Сервер / база данных"
 
@@ -634,7 +631,7 @@ msgid "Unable to complete email entry"
 msgstr "Не удается установить локализацию %s"
 
 #, fuzzy, python-format
-msgid "E-mail %s"
+msgid "Email %s"
 msgstr "Эл.почта %s"
 
 msgid "To:"
@@ -904,11 +901,12 @@ msgstr "Отчет..."
 msgid "_Print..."
 msgstr "печать"
 
-msgid "_E-Mail..."
-msgstr "Эл.почта..."
+#, fuzzy
+msgid "_Email..."
+msgstr "Настройки _Эл.почты"
 
 #, fuzzy
-msgid "Send an e-mail using the record"
+msgid "Send an email using the record"
 msgstr "Добавить существующую запись"
 
 msgid "_Export Data..."
@@ -961,6 +959,9 @@ msgstr "Наименование поля"
 msgid "CSV Export: %s"
 msgstr ""
 
+msgid "Open"
+msgstr "Открыть"
+
 #, fuzzy
 msgid "_Save Export"
 msgstr "Сохранить настройку экспорта"
@@ -978,12 +979,6 @@ msgstr "<b>Предопределенные экспорты</b>"
 
 msgid "Name"
 msgstr "Имя"
-
-msgid "Open"
-msgstr "Открыть"
-
-msgid "Save"
-msgstr "Сохранить"
 
 #, fuzzy
 msgid "Listed Records"
@@ -1046,6 +1041,9 @@ msgstr ""
 msgid "Add and New"
 msgstr "Добавить значение"
 
+msgid "Save"
+msgstr "Сохранить"
+
 msgid "Add"
 msgstr "Добавить"
 
@@ -1070,6 +1068,10 @@ msgstr "Восстановить выбраную запись <Ins>"
 #, python-format
 msgid "CSV Import: %s"
 msgstr ""
+
+#, fuzzy
+msgid "Import"
+msgstr "Отчет"
 
 #, fuzzy
 msgid "_Auto-Detect"
@@ -1282,6 +1284,10 @@ msgid "Remove selected record"
 msgstr "Удалить выбраную запись"
 
 #, fuzzy
+msgid "Restore selected record"
+msgstr "Удалить выбраную запись"
+
+#, fuzzy
 msgid "Open the record <F2>"
 msgstr "Открыть запись <F2>"
 
@@ -1297,6 +1303,10 @@ msgstr "Изменить выбранную запись <F2>"
 
 #, fuzzy
 msgid "Delete selected record"
+msgstr "Удалить выбраную запись"
+
+#, fuzzy
+msgid "Undelete selected record"
 msgstr "Удалить выбраную запись"
 
 #, python-format

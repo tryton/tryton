@@ -87,52 +87,61 @@ msgctxt "model:ir.action,name:open_invoice"
 msgid "Invoices"
 msgstr "صورتحساب ها"
 
+#, python-format
 msgctxt "model:ir.message,text:msg_invoiced_timesheet_line_delete"
 msgid ""
 "You cannot delete timesheet line \"%(line)s\" because it has been invoiced."
 msgstr ""
 
+#, python-format
 msgctxt "model:ir.message,text:msg_invoiced_timesheet_line_modify_duration"
 msgid ""
 "You cannot modify the duration of timesheet line \"%(line)s\" because it has"
 " been invoiced."
 msgstr ""
 
+#, python-format
 msgctxt "model:ir.message,text:msg_invoiced_timesheet_line_modify_work"
 msgid ""
 "You cannot modify the work of timesheet line \"%(line)s\" because it has "
 "been invoiced."
 msgstr ""
 
-#, fuzzy
+#, fuzzy, python-format
 msgctxt "model:ir.message,text:msg_invoiced_work_delete"
 msgid "You cannot delete work \"%(work)s\" because it has been invoiced."
 msgstr "شما نمی توانید سطر صورتحساب را حذف کنید."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_invoiced_work_modify_effort"
 msgid ""
 "You cannot modify the effort of work \"%(work)s\" because it has been "
 "invoiced."
 msgstr ""
 
+#, python-format
 msgctxt "model:ir.message,text:msg_missing_account_revenue"
 msgid "To invoice work \"%(work)s\" you must configure a default account revenue."
 msgstr ""
 
+#, fuzzy, python-format
 msgctxt "model:ir.message,text:msg_missing_list_price"
 msgid "There is no list price on work \"%(work)s\"."
 msgstr "در کار : \"%s\" هیچ لیست قیمتی وجود ندارد."
 
+#, fuzzy, python-format
 msgctxt "model:ir.message,text:msg_missing_party"
 msgid "There is no party on work \"%(work)s\"."
 msgstr "در کار : \"%s\" هیچ نهاد/سازمانی وجود ندارد."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_product_missing_account_revenue"
 msgid ""
 "To invoice work \"%(work)s\" you must define an account revenue for product "
 "\"%(product)s\"."
 msgstr ""
 
+#, python-format
 msgctxt "model:ir.message,text:msg_project_invoice_line_quantity"
 msgid ""
 "The quantity of project invoice line \"%(invoice_line)s\" must be "

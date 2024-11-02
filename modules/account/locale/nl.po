@@ -3173,22 +3173,26 @@ msgctxt "model:ir.action,name:wizard_update_chart"
 msgid "Update Chart of Accounts from Template"
 msgstr "Grootboekschema actualiseren"
 
+#, python-format
 msgctxt "model:ir.message,text:msg_account_chart_exists"
 msgid "A chart of accounts already exists for company \"%(company)s\"."
 msgstr "Er bestaat al een rekeningschema voor bedrijf \"%(company)s\"."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_account_closed_lines"
 msgid "You cannot close account \"%(account)s\" because it has move lines."
 msgstr ""
 "U kunt de grootboekrekening \"%(account)s\" niet sluiten omdat er boekingen "
 "op gedaan zijn."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_account_invalid_deferral_second_currency"
 msgid "To set a second currency for account \"%(account)s\", it must be deferral."
 msgstr ""
 "Om een secundaire valuta in te stellen voor rekening \"%(account)s\", moet "
 "deze geconfigureerd worden als overdraagbaar."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_account_invalid_lines_second_currency"
 msgid ""
 "To set a second currency for account \"%(account)s\", its lines must have "
@@ -3198,6 +3202,7 @@ msgstr ""
 "\"%(account)s\", de regels moeten dezelfde secundaire valuta "
 "\"%(currency)s\" hebben."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_account_invalid_type_second_currency"
 msgid ""
 "To set a second currency for account \"%(account)s\", it must not have a "
@@ -3207,6 +3212,7 @@ msgstr ""
 "\"%(account)s\", mag deze niet van het type \"te betalen\", \"omzet\", "
 "\"inkomsten\" of \"kosten\" zijn."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_account_no_type_lines"
 msgid ""
 "You cannot remove type of account \"%(account)s\" because it has move lines."
@@ -3214,6 +3220,7 @@ msgstr ""
 "U kunt de grootboekrekening \"%(account)s\" niet verwijderen omdat er "
 "boekingen op gedaan zijn."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_cancel_line_delegated"
 msgid ""
 "The moves \"%(moves)s\" contain grouped lines, cancelling them will ungroup "
@@ -3222,6 +3229,7 @@ msgstr ""
 "De boekingen \"%(moves)s\" bevatten gegroepeerde regels. Annuleren zal de "
 "groep opheffen."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_change_fiscalyear_post_move_sequence"
 msgid ""
 "You cannot change the post move sequence on fiscal year \"%(fiscalyear)s\" "
@@ -3230,6 +3238,7 @@ msgstr ""
 "U kunt de bevestigde boekingen reeks van het fiscale jaar \"%(fiscalyear)s "
 "niet wijzigen om dat het geboekte boekingen bevat."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_change_period_post_move_sequence"
 msgid ""
 "You cannot change the post move sequence in period \"%(period)s\" because it"
@@ -3238,6 +3247,7 @@ msgstr ""
 "U kunt de bevestigde boekingen reeks van de periode \"%(period)s\" niet "
 "wijzigen omdat deze afgesloten boekingen bevat."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_close_fiscalyear_account_balance_not_zero"
 msgid ""
 "To close the fiscal year, the balance of account \"%(account)s\" must be "
@@ -3246,6 +3256,7 @@ msgstr ""
 "Om het boekjaar af te sluiten, moet het saldo van grootboekrekening "
 "\"%(account)s\"\" nul zijn."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_close_fiscalyear_earlier"
 msgid ""
 "To close fiscal year \"%(fiscalyear)s\", you must close all earlier fiscal "
@@ -3254,6 +3265,7 @@ msgstr ""
 "Om het boekjaar \"%(fiscalyear)s\"af te sluiten, moet u eerst alle "
 "voorgaande boekjaren afsluiten."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_close_period_inactive_accounts"
 msgid ""
 "To close period \"%(period)s\", you must balance the inactive account "
@@ -3262,6 +3274,7 @@ msgstr ""
 "Om periode \"%(period)s\" af te sluiten, moet u het inactieve "
 "grootboekrekening \"%(account)s\" in evenwicht brengen."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_close_period_non_posted_moves"
 msgid "To close period \"%(period)s\" you must post the moves \"%(moves)s\"."
 msgstr ""
@@ -3276,10 +3289,12 @@ msgstr ""
 "U kunt de valuta van het bedrijf niet wijzigen als er al boekingen aanwezig "
 "zijn met deze valuta."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_create_journal_period_closed_period"
 msgid "You cannot create a journal-period in closed period \"%(period)s\"."
 msgstr "U kunt geen boeking maken in de afgesloten periode \"%(period)s\"."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_create_period_closed_fiscalyear"
 msgid ""
 "You cannot create a period in fiscal year \"%(fiscalyear)s\" because it is "
@@ -3300,12 +3315,14 @@ msgctxt "model:ir.message,text:msg_delegate_line_same_origins"
 msgid "You cannot delegate together lines with different origins."
 msgstr "U kunt regels met verschillende oorsprongen niet overdragen."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_delete_account_with_move_lines"
 msgid "You cannot delete account \"%(account)s\" because it has move lines."
 msgstr ""
 "U kunt de grootboekrekening \"%(account)s\" niet verwijderen omdat er "
 "boekingen op gedaan zijn."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_erase_party_receivable_payable"
 msgid ""
 "You cannot erase party \"%(party)s\" while they have pending "
@@ -3314,22 +3331,15 @@ msgstr ""
 "U kunt relatie \"%(party)s\" niet wissen omdat het nog vorderingen / "
 "schulden heeft bij bedrijf \"%(company)s\"."
 
-msgctxt "model:ir.message,text:msg_fiscalyear_different_post_move_sequence"
-msgid ""
-"The fiscal years \"%(first)s\" and \"%(second)s\" cannot have the same post "
-"move sequence, you must use different sequences."
-msgstr ""
-"De boekjaren \"%(first)s\" en \"%(second)s\" kunnen niet dezelfde bevestigde"
-" boekingen reeks gebruiken, u moet verschillende reeksen gebruiken."
-
 msgctxt "model:ir.message,text:msg_fiscalyear_overlap"
-msgid ""
-"The fiscal years \"%(first)s\" and \"%(second)s\" overlap, you must use "
-"different dates."
-msgstr ""
-"De boekjaren \"%(first)s\" en \"%(second)s\" overlappen elkaar, u moet "
-"verschillende datums gebruiken."
+msgid "The dates of fiscal years of the same company can not overlap."
+msgstr "De datums van boekjaren van hetzelfde bedrijf mogen niet overlappen."
 
+msgctxt "model:ir.message,text:msg_fiscalyear_post_move_sequence_unique"
+msgid "The post move sequence of fiscal years must be unique."
+msgstr "De boekingsreeks van boekjaren moet uniek zijn."
+
+#, python-format
 msgctxt "model:ir.message,text:msg_group_line"
 msgid "Line \"%(line)s\" can not be grouped."
 msgstr "Regel \"%(line)s\" kan niet worden gegroepeerd."
@@ -3356,6 +3366,7 @@ msgctxt "model:ir.message,text:msg_group_line_single"
 msgid "You cannot group a single line."
 msgstr "U kunt een enkele regel niet groeperen."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_journal_account_moves"
 msgid ""
 "You cannot change the type of journal \"%(journal)s\" because it has posted "
@@ -3368,10 +3379,12 @@ msgctxt "model:ir.message,text:msg_journal_period_unique"
 msgid "You can create only one journal per period."
 msgstr "U kunt slechts één dagboek per periode openen."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_line_already_reconciled"
 msgid "You cannot reconcile already reconciled line \"%(line)s\"."
 msgstr "U kunt de reeds afgeletterde regel \"%(line)s\" niet nogmaals afletteren."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_line_closed_account"
 msgid ""
 "To create a line on account \"%(account)s\", you must set a type or unclose "
@@ -3384,6 +3397,7 @@ msgctxt "model:ir.message,text:msg_line_debit_credit"
 msgid "You cannot set both debit and credit on the line."
 msgstr "U kunt niet zowel debet als credit op de regel instellen."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_line_party_required"
 msgid ""
 "To create a line on account \"%(account)s\", you must set a party on line "
@@ -3392,6 +3406,7 @@ msgstr ""
 "Om een regel op grootboekrekening \"%(account)s\" te maken, moet een relatie"
 " op regel \"%(line)s\" ingevuld zijn."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_line_party_set"
 msgid ""
 "To create a line on account \"%(account)s\", you must remove the party on "
@@ -3408,6 +3423,7 @@ msgstr ""
 "De eenheid van de secundaire valuta moet overeenkomen met het teken van "
 "debet - credit."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_modify_delete_journal_period_moves"
 msgid ""
 "You cannot modify or delete journal-period \"%(journal_period)s\" because it"
@@ -3416,6 +3432,7 @@ msgstr ""
 "U kunt periode \"%(journal_period)s\" van het dagboek niet wijzigen of "
 "verwijderen omdat deze boekingen bevat."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_modify_line_closed_journal_period"
 msgid ""
 "You cannot add/modify/delete lines on closed journal-period "
@@ -3424,24 +3441,29 @@ msgstr ""
 "U kunt geen regels toevoegen / wijzigen / verwijderen in de gesloten dagboek"
 " periode \"%(journal_period)s\"."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_modify_line_posted_move"
 msgid "You cannot modify line \"%(line)s\" from posted move \"%(move)s\"."
 msgstr "U kunt regel \"%(line)s\" van geboekte boeking \"%(move)s\" niet wijzigen."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_modify_line_reconciled"
 msgid "You cannot modify reconciled line \"%(line)s\"."
 msgstr "U kunt de afgeletterde regel \"%(line)s\" niet aanpassen."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_modify_posted_moved"
 msgid "You cannot modify posted move \"%(move)s\"."
 msgstr "U kunt geboekte boeking \"%(move)s\" niet wijzigen."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_modify_tax_line_closed_period"
 msgid "You cannot add/modify/delete tax lines in closed period \"%(period)s\"."
 msgstr ""
 "U kunt geen belasting regels toevoegen / wijzigingen / verwijderen in "
 "afgesloten periode\"%(period)s\"."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_move_cancel_closed_period"
 msgid ""
 "The period of move \"%(move)s\" is closed.\n"
@@ -3450,6 +3472,16 @@ msgstr ""
 "De periode van boeking \"%(move)s\" is afgesloten.\n"
 "Moet de huidige periode gebruikt worden om de boeking te annuleren?"
 
+#, python-format
+msgctxt "model:ir.message,text:msg_move_copy_closed_period"
+msgid ""
+"The period of move \"%(move)s\" is closed.\n"
+"Use the current period to copy the move?"
+msgstr ""
+"De periode van boeking \"%(move)s\" is afgesloten.\n"
+"De huidige periode gebruiken om de boeking te kopiëren?"
+
+#, python-format
 msgctxt "model:ir.message,text:msg_move_template_expression_not_number"
 msgid ""
 "The value \"%(value)s\" of \"%(expression)s\" from template \"%(template)s\""
@@ -3458,6 +3490,16 @@ msgstr ""
 "De waarde \"%(value)s\" van \"%(expression)s\" van template \"%(template)s\""
 " is geen nummer."
 
+#, python-format
+msgctxt "model:ir.message,text:msg_move_template_invalid_description"
+msgid ""
+"Failed to evaluate the description \"%(description)s\" from template "
+"\"%(template)s\" with error: \"%(error)s\""
+msgstr ""
+"Evaluatie van \"%(description)s\" van de template \"%(template)s\" faalde "
+"met error: \"%(error)s\""
+
+#, python-format
 msgctxt "model:ir.message,text:msg_move_template_invalid_expression"
 msgid ""
 "Failed to evaluate expression \"%(expression)s\" from template \"%(template)s\" with error:\n"
@@ -3466,10 +3508,12 @@ msgstr ""
 "Evaluatie van expressie \"%(expression)s\" van template \"%(template)s\" faalde met error:\n"
 "\"%(error)s\""
 
+#, python-format
 msgctxt "model:ir.message,text:msg_move_template_keyword_name_not_identifier"
 msgid "The keyword name \"%(name)s\" is not a valid identifier."
 msgstr "Het trefwoord \"%(name)s\" is geen geldige identificator."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_no_fiscalyear_date"
 msgid ""
 "To continue, you must create a fiscal year for the date \"%(date)s\" and "
@@ -3478,14 +3522,16 @@ msgstr ""
 "Om door te gaan moet u een fiscaal jaar aanmaken voor de datum \"%(date)s\" "
 "en bedrijf \"%(company)s\"."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_no_open_fiscalyear_date"
 msgid ""
 "To continue, you must reopen the fiscal year \"%(fiscalyear)s\" of company "
-"\"%(company)s\"for the date \"%(date)s\"."
+"\"%(company)s\" for the date \"%(date)s\"."
 msgstr ""
-"Om door te gaan moet u het fiscaal jaar \"%(fiscalyear)s\" van bedrijf "
-"\"%(company)s\" voor de datum \"%(date)s\" heropenen."
+"Om door te gaan moet het boekjaar \"%(fiscalyear)s\" van bedrijf "
+"\"%(company)s\" voor de datum \"%(date)s\" heropend worden."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_no_open_period_date"
 msgid ""
 "To continue, you must reopen the period \"%(period)s\" of company "
@@ -3494,6 +3540,7 @@ msgstr ""
 "Om door te gaan moet u de periode \"%(period)s\" van bedrijf \"%(company)s\""
 " voor de datum \"%(date)s\" heropenen."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_no_period_date"
 msgid ""
 "To continue, you must create a period for the date \"%(date)s\" and company "
@@ -3509,13 +3556,10 @@ msgstr ""
 "ingesteld worden."
 
 msgctxt "model:ir.message,text:msg_open_fiscalyear_earlier"
-msgid ""
-"The open fiscal year \"%(open)s\" can not be before the close fiscal year "
-"\"%(closed)s\"."
-msgstr ""
-"Het open fiscale jaar \"%(open)s\" kan niet ouder zijn dan het gesloten "
-"fiscale jaar \"%(closed)s\"."
+msgid "Open fiscal years can not be before closed fiscal years."
+msgstr "Open boekjaren kunnen niet ouder zijn dan gesloten boekjaren."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_open_journal_period_closed_period"
 msgid ""
 "You cannot reopen journal-period \"%(journal_period)s\" in closed period "
@@ -3524,6 +3568,7 @@ msgstr ""
 "U kunt dagboek periode \"%(journal_period)s\" niet heropenen omdat de "
 "periode \"%(period)s\" gesloten is."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_open_period_closed_fiscalyear"
 msgid ""
 "You cannot reopen period \"%(period)s\" because its fiscal year "
@@ -3532,18 +3577,21 @@ msgstr ""
 "U kunt de periode \"%(period)s\" niet heropenen omdat het boekjaar "
 "\"%(fiscalyear)s\" afgesloten is."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_party_missing_payable_account"
 msgid "To continue, you must define a payable account for party \"%(party)s\"."
 msgstr ""
 "Om door te gaan, moet een leverancier grootboekrekening voor relatie "
 "\"%(party)s\" ingevuld worden."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_party_missing_receivable_account"
 msgid "To continue, you must define a receivable account for party \"%(party)s\"."
 msgstr ""
 "Om door te gaan , moet er een klant grootboekrekening voor relatie "
 "\"%(party)s\" ingevuld worden."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_period_fiscalyear_dates"
 msgid ""
 "The dates for period \"%(period)s\" must be between the dates of its fiscal "
@@ -3552,6 +3600,7 @@ msgstr ""
 "De datums voor periode \"%(period)s\" moeten binnen het gerelateerde "
 "boekjaar \"%(fiscalyear)s\" vallen."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_period_move_dates"
 msgid ""
 "The dates for period \"%(period)s\" must include the date \"%(move_date)s\" "
@@ -3560,29 +3609,27 @@ msgstr ""
 "De datums voor periode \"%(period)s\" moeten de datum \"%(move_date)s\" van "
 "boeking \"%(move)s\" bevatten ."
 
-msgctxt "model:ir.message,text:msg_period_overlap"
+msgctxt "model:ir.message,text:msg_period_post_move_sequence_unique"
 msgid ""
-"The periods \"%(first)s\" and \"%(second)s\" overlap, you must use different"
-" dates."
+"A post move sequence can be reused only by periods in the same fiscal year."
 msgstr ""
-"De periodes \"%(first)s\" en \"%(second)s\" overlappen elkaar, gebruikt "
-"verschillende datums."
+"Een boekingsreeks kan alleen hergebruikt worden bij boekingsperioden in "
+"hetzelfde boekjaar."
 
-msgctxt "model:ir.message,text:msg_period_same_sequence"
-msgid ""
-"You cannot use the same post move sequence for the periods \"%(first)s\" and"
-" \"%(second)s\" because they are from different fiscal years."
+msgctxt "model:ir.message,text:msg_period_standard_overlap"
+msgid "The dates of standard period of the same fiscal year can not overlap."
 msgstr ""
-"U kunt niet dezelfde bevestigde boeking reeks gebruiken voor periodes "
-"\"%(first)s\" en \"%(second)s\" om dat ze tot een verschillend boekjaar "
-"behoren."
+"De datums van standaard boekingsperiodes van hetzelfde boekjaar mogen niet "
+"overlappen."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_post_empty_move"
 msgid "To post move \"%(move)s\", you must fill in its lines."
 msgstr ""
 "Het boeken van \"%(move)s\" kan alleen doorgaan als de overeenkomstige "
 "regels zijn ingevuld."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_post_unbalanced_move"
 msgid ""
 "To post move \"%(move)s\", you must balance all its lines debits and "
@@ -3591,6 +3638,7 @@ msgstr ""
 "Het boeken van \"%(move)s\", kan enkel uitgevoerd worden als debit en credit"
 " regels in evenwicht zijn."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_reconciliation_account_not_reconcile"
 msgid ""
 "To reconcile line \"%(line)s\", you must set its account \"%(account)s\" as "
@@ -3599,6 +3647,7 @@ msgstr ""
 "Om de regel \"%(line)s\" af te kunnen letteren, moet zijn grootboekrekening "
 "\"%(account)s gemarkeerd zijn als afletterbaar."
 
+#, python-format
 msgctxt ""
 "model:ir.message,text:msg_reconciliation_currency_exchange_credit_account_missing"
 msgid ""
@@ -3608,6 +3657,7 @@ msgstr ""
 "Om de regels af te letteren, moet er een credit grootboekrekening voor de "
 "valuta wisselkoers gedefinieerd worden voor \"%(company)s\"."
 
+#, python-format
 msgctxt ""
 "model:ir.message,text:msg_reconciliation_currency_exchange_debit_account_missing"
 msgid ""
@@ -3617,6 +3667,7 @@ msgstr ""
 "Om de regels af te letteren, moet er een debet grootboekrekening voor de "
 "valuta wisselkoers gedefinieerd worden voor \"%(company)s\"."
 
+#, python-format
 msgctxt ""
 "model:ir.message,text:msg_reconciliation_currency_exchange_journal_missing"
 msgid ""
@@ -3626,6 +3677,7 @@ msgstr ""
 "Om de regels af te letteren, moet er een dagboek voor de valuta wisselkoers "
 "gedefinieerd worden voor \"%(company)s\"."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_reconciliation_delete_delegated"
 msgid ""
 "The reconciliation \"%(reconciliation)s\" is delegated to the line \"%(line)s\".\n"
@@ -3634,6 +3686,7 @@ msgstr ""
 "Het afletteren \"%(reconciliation)s is gedelegeerd naar de regel \"%(line)s\".\n"
 "Indien nodig kunt u de boeking \"%(move)s\" annuleren."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_reconciliation_delete_write_off"
 msgid ""
 "The reconciliation \"%(reconciliation)s\" is linked to the write-off line \"%(line)s\".\n"
@@ -3642,6 +3695,7 @@ msgstr ""
 "Het afletteren \"%(reconciliation)s is gekoppeld aan de afboek regel \"%(line)s\".\n"
 "Indien nodig kunt u de boeking \"%(move)s\" annuleren."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_reconciliation_different_accounts"
 msgid ""
 "You cannot reconcile line \"%(line)s\" with others because its account "
@@ -3650,6 +3704,7 @@ msgstr ""
 "U kunt de regel \"%(line)s\" niet afletteren, omdat de grootboekrekening "
 "\"%(account1)s niet overeenkomt met \"%(account2)s\"."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_reconciliation_different_parties"
 msgid ""
 "You cannot reconcile line \"%(line)s\" with others because its party "
@@ -3658,10 +3713,12 @@ msgstr ""
 "U kunt de regel \"%(line)s\" niet afletteren, omdat de relatie "
 "\"%(party1)s\" niet overeenkomt met \"%(party2)s\"."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_reconciliation_line_not_valid"
 msgid "You cannot reconcile non-valid line \"%(line)s\"."
 msgstr "U kunt ongeldige boeking \"%(line)s\" niet afletteren."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_reconciliation_unbalanced"
 msgid ""
 "To reconcile lines, they must have the same debit \"%(debit)s\" and credit "
@@ -3670,6 +3727,7 @@ msgstr ""
 "Om regels af te letteren, moeten deze dezelfde debet \"%(debit)s\" en "
 "credit\"%(credit)s\" hebben."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_reconciliation_write_off_missing"
 msgid ""
 "To reconcile lines with \"%(amount)s\" write-off, you must select a write-"
@@ -3678,6 +3736,16 @@ msgstr ""
 "Selecteer een afschrijf methode om de regels met \"%(amount)s\" afschrijving"
 " af te letteren."
 
+#, python-format
+msgctxt "model:ir.message,text:msg_reconciliation_write_off_same_account"
+msgid ""
+"You cannot reconcile lines using the write-off \"%(write_off)s\" with the "
+"same \"%(account)s\"."
+msgstr ""
+"U kunt geen boekingsregels afletteren op \"%(write_off)s\" vanwege dezelfde "
+"grootboekrekening \"%(account)s\"."
+
+#, python-format
 msgctxt "model:ir.message,text:msg_reopen_fiscalyear_later"
 msgid ""
 "To reopen fiscal year \"%(fiscalyear)s\", you must reopen all later fiscal "
@@ -3702,6 +3770,7 @@ msgctxt "model:ir.message,text:msg_reschedule_line_same_party"
 msgid "You cannot reschedule lines with different parties."
 msgstr "U kunt geen regels met verschillende relaties herplannen."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_reschedule_line_wrong_amount"
 msgid ""
 "To reschedule the lines you must change the terms to have a total amount of "
@@ -3710,6 +3779,7 @@ msgstr ""
 "Om de regels te herplannen, moet u de voorwaarden wijzigen om een "
 "totaalbedrag van %(total_amount)s te krijgen in plaats van %(amount)s."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_tax_update_unit_price_with_parent"
 msgid "You cannot set \"Update Unit Price\" on child tax \"%(tax)s\"."
 msgstr ""
@@ -3745,8 +3815,8 @@ msgid "Lock"
 msgstr "Vergrendel"
 
 msgctxt "model:ir.model.button,string:fiscalyear_reopen_button"
-msgid "Re-Open"
-msgstr "Heropen"
+msgid "Reopen"
+msgstr "Heropenen"
 
 msgctxt "model:ir.model.button,string:journal_period_close_button"
 msgid "Close"
@@ -3769,8 +3839,8 @@ msgid "Lock"
 msgstr "Vergrendel"
 
 msgctxt "model:ir.model.button,string:period_reopen_button"
-msgid "Re-Open"
-msgstr "Heropen"
+msgid "Reopen"
+msgstr "Heropenen"
 
 msgctxt "model:ir.rule.group,name:rule_group_account_companies"
 msgid "User in companies"
@@ -4073,10 +4143,6 @@ msgstr "Financieel"
 msgctxt "model:res.group,name:group_account_admin"
 msgid "Account Administration"
 msgstr "Financiële adminstratie"
-
-msgctxt "model:res.group,name:group_account_party"
-msgid "Accounting Party"
-msgstr "Relatie boekhouding"
 
 msgctxt "report:account.account.type.statement:"
 msgid "/"

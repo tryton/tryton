@@ -34,6 +34,10 @@ msgctxt "field:product.template,sale_secondary_uom_rate:"
 msgid "Sale Secondary UoM Rate"
 msgstr ""
 
+msgctxt "field:sale.amendment.line,product_secondary_uom_category:"
+msgid "Product Secondary UoM Category"
+msgstr ""
+
 msgctxt "field:sale.blanket_agreement.line,product_secondary_uom_category:"
 msgid "Product Secondary UoM Category"
 msgstr ""
@@ -114,6 +118,10 @@ msgid ""
 "coefficient (sale unit) = 1 (secondary unit)"
 msgstr ""
 
+msgctxt "help:sale.amendment.line,product_secondary_uom_category:"
+msgid "The category of the secondary Unit of Measure for the product."
+msgstr ""
+
 msgctxt "help:sale.blanket_agreement.line,product_secondary_uom_category:"
 msgid "The category of the secondary Unit of Measure for the product."
 msgstr ""
@@ -150,6 +158,7 @@ msgid ""
 "coefficient (sale unit) = 1 (secondary unit)"
 msgstr ""
 
+#, python-format
 msgctxt ""
 "model:ir.message,text:msg_sale_secondary_uom_incompatible_factor_rate"
 msgid "Incompatible sale secondary factor and rate values for \"%(record)s\"."

@@ -32,17 +32,20 @@ msgstr "Rok podatkowy"
 
 #, fuzzy
 msgctxt "model:account.be.vat_customer,name:"
-msgid "Belgium VAT Customer"
+msgid "Belgian VAT Customer"
 msgstr "Belgium VAT Customer"
 
+#, fuzzy
 msgctxt "model:account.be.vat_customer.context,name:"
-msgid "Belgium VAT Customer Context"
-msgstr ""
-
-msgctxt "model:ir.action,name:act_vat_customer_form"
-msgid "Belgium VAT Customer"
+msgid "Belgian VAT Customer Context"
 msgstr "Belgium VAT Customer"
 
+#, fuzzy
+msgctxt "model:ir.action,name:act_vat_customer_form"
+msgid "Belgian VAT Customer"
+msgstr "Belgium VAT Customer"
+
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_vat_customer"
-msgid "Belgium VAT Customer"
+msgid "Belgian VAT Customer"
 msgstr "Belgium VAT Customer"

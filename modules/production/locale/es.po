@@ -110,6 +110,14 @@ msgctxt "field:production,warehouse:"
 msgid "Warehouse"
 msgstr "Almacén"
 
+msgctxt "field:production.bom,code:"
+msgid "Code"
+msgstr "Código"
+
+msgctxt "field:production.bom,code_readonly:"
+msgid "Code Readonly"
+msgstr "Código sólo lectura"
+
 msgctxt "field:production.bom,inputs:"
 msgid "Inputs"
 msgstr "Entradas"
@@ -206,6 +214,10 @@ msgctxt "field:production.bom.tree.open.tree,bom_tree:"
 msgid "BOM Tree"
 msgstr "Árbol LdM"
 
+msgctxt "field:production.configuration,bom_sequence:"
+msgid "BOM Sequence"
+msgstr "Secuencia de lista de materiales"
+
 msgctxt "field:production.configuration,production_sequence:"
 msgid "Production Sequence"
 msgstr "Secuencia de producción"
@@ -221,7 +233,7 @@ msgstr "Secuencia de producción"
 
 msgctxt "field:production.lead_time,bom:"
 msgid "BOM"
-msgstr "Lista de material"
+msgstr "LdM"
 
 msgctxt "field:production.lead_time,lead_time:"
 msgid "Lead Time"
@@ -279,6 +291,10 @@ msgctxt "help:production,uom_category:"
 msgid "The category of Unit of Measure."
 msgstr "La categoria de la unidad de medida."
 
+msgctxt "help:production.configuration,bom_sequence:"
+msgid "Used to generate the BOM code."
+msgstr "Utilizado para generar el código de la LdM."
+
 msgctxt "help:stock.location,production_output_location:"
 msgid ""
 "Where the produced goods are stored.\n"
@@ -297,7 +313,7 @@ msgstr ""
 
 msgctxt "model:ir.action,name:act_bom_form"
 msgid "BOM"
-msgstr "Listas de materiales"
+msgstr "LdM"
 
 msgctxt "model:ir.action,name:act_bom_list"
 msgid "BOMs"
@@ -372,6 +388,7 @@ msgctxt ""
 msgid "Waiting"
 msgstr "En espera"
 
+#, python-format
 msgctxt "model:ir.message,text:msg_missing_product_list_price"
 msgid ""
 "The product \"%(product)s\" on production \"%(production)s\" does not have "
@@ -380,6 +397,7 @@ msgstr ""
 "El producto \"%(product)s\" de la producción \"%(production)s\" no tiene "
 "ningún precio de venta definido."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_recursive_bom"
 msgid "You cannot create a recursive BOM for product \"%(product)s\"."
 msgstr "No puede crear una LdM recursiva para el producto \"%(product)s\"."
@@ -429,6 +447,10 @@ msgstr "Usuario en las empresas"
 msgctxt "model:ir.sequence,name:sequence_production"
 msgid "Production"
 msgstr "Producción"
+
+msgctxt "model:ir.sequence.type,name:sequence_type_bom"
+msgid "BOM"
+msgstr "LdM"
 
 msgctxt "model:ir.sequence.type,name:sequence_type_production"
 msgid "Production"

@@ -122,6 +122,7 @@ msgctxt "model:ir.message,text:msg_defer_invoice_line_unique"
 msgid "Invoice line can be deferred only once."
 msgstr "Factuurregel kan slechts één keer worden uitgesteld."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_invoice_deferred_delete_draft"
 msgid ""
 "You cannot delete invoice deferred \"%(deferral)s\" because it is not in "
@@ -130,6 +131,7 @@ msgstr ""
 "U kunt uitgestelde facturen \"%(deferral)s\" niet verwijderen omdat deze "
 "niet de status \"concept\" heeft."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_invoice_deferred_running_close_period"
 msgid ""
 "You cannot close period \"%(period)s\" because some invoices deferred "

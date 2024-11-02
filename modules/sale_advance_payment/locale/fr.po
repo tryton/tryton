@@ -163,14 +163,11 @@ msgstr ""
 "Le délai à appliquer à la date de vente pour déterminer la date de la "
 "facture d'acompte."
 
-msgctxt "model:ir.action,name:act_advance_invoice_form"
-msgid "Advance Invoices"
-msgstr "Factures d'acompte"
-
 msgctxt "model:ir.action,name:act_advance_payment_term_form"
 msgid "Advance Payment Terms"
 msgstr "Conditions de paiement d'acompte"
 
+#, python-format
 msgctxt "model:ir.message,text:msg_shipping_blocked"
 msgid ""
 "To pack shipments the customer must paid the advance payment for sale "
@@ -179,6 +176,7 @@ msgstr ""
 "Pour emballer les expéditions, le client doit payer l'acompte pour la vente "
 "« %(sale)s »."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_term_line_invalid_formula"
 msgid ""
 "Invalid formula \"%(formula)s\" in term line \"%(term_line)s\" with "

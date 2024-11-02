@@ -1,5 +1,4 @@
 #
-#, fuzzy
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
@@ -19,6 +18,11 @@ msgctxt "help:document.incoming.ocr.service,typless_document_type:"
 msgid "The name of the document type on Typless."
 msgstr "De naam van het soort document op Typless."
 
+msgctxt "model:ir.message,text:msg_typless_credential_modified"
+msgid "Are you sure you want to modify Typless credentials?"
+msgstr "Weet u zeker dat u de inloggegevens van Typless wilt wijzigen?"
+
+#, python-format
 msgctxt "model:ir.message,text:msg_typless_webserver_error"
 msgid ""
 "Typless webservice call failed with the following error message:\n"

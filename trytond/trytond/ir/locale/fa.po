@@ -526,6 +526,10 @@ msgctxt "field:ir.cron,interval_type:"
 msgid "Interval Type"
 msgstr ""
 
+msgctxt "field:ir.cron,logs:"
+msgid "Logs"
+msgstr ""
+
 msgctxt "field:ir.cron,method:"
 msgid "Method"
 msgstr ""
@@ -539,6 +543,10 @@ msgctxt "field:ir.cron,next_call:"
 msgid "Next Call"
 msgstr "تماس بعدی"
 
+msgctxt "field:ir.cron,running:"
+msgid "Running"
+msgstr ""
+
 #, fuzzy
 msgctxt "field:ir.cron,timezone:"
 msgid "Timezone"
@@ -546,6 +554,24 @@ msgstr "زمان"
 
 msgctxt "field:ir.cron,weekday:"
 msgid "Day of Week"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:ir.cron.log,cron:"
+msgid "Cron"
+msgstr "برنامه وظایف"
+
+#, fuzzy
+msgctxt "field:ir.cron.log,duration:"
+msgid "Duration"
+msgstr "جهت"
+
+msgctxt "field:ir.cron.log,ended:"
+msgid "Ended"
+msgstr ""
+
+msgctxt "field:ir.cron.log,started:"
+msgid "Started"
 msgstr ""
 
 msgctxt "field:ir.email,addresses:"
@@ -592,7 +618,7 @@ msgstr ""
 
 #, fuzzy
 msgctxt "field:ir.email.address,email:"
-msgid "E-mail"
+msgid "Email"
 msgstr "ایمیل"
 
 msgctxt "field:ir.email.template,body:"
@@ -1583,6 +1609,11 @@ msgctxt "field:ir.ui.menu,favorite:"
 msgid "Favorite"
 msgstr "مورد علاقه"
 
+#, fuzzy
+msgctxt "field:ir.ui.menu,favorites:"
+msgid "Favorites"
+msgstr "مورد علاقه"
+
 msgctxt "field:ir.ui.menu,icon:"
 msgid "Icon"
 msgstr "آیکون"
@@ -1675,6 +1706,11 @@ msgctxt "field:ir.ui.view_search,model:"
 msgid "Model"
 msgstr "مدل"
 
+#, fuzzy
+msgctxt "field:ir.ui.view_search,model_ref:"
+msgid "Model"
+msgstr "مدل"
+
 msgctxt "field:ir.ui.view_search,name:"
 msgid "Name"
 msgstr "نام"
@@ -1689,6 +1725,21 @@ msgid "Field"
 msgstr "فیلد"
 
 #, fuzzy
+msgctxt "field:ir.ui.view_tree_optional,field_ref:"
+msgid "Field"
+msgstr "فیلد"
+
+#, fuzzy
+msgctxt "field:ir.ui.view_tree_optional,model:"
+msgid "Model"
+msgstr "مدل"
+
+#, fuzzy
+msgctxt "field:ir.ui.view_tree_optional,model_ref:"
+msgid "Model"
+msgstr "مدل"
+
+#, fuzzy
 msgctxt "field:ir.ui.view_tree_optional,user:"
 msgid "User"
 msgstr "کاربر"
@@ -1699,9 +1750,14 @@ msgid "Value"
 msgstr "مقادیر"
 
 #, fuzzy
-msgctxt "field:ir.ui.view_tree_optional,view_id:"
-msgid "View ID"
+msgctxt "field:ir.ui.view_tree_optional,view:"
+msgid "View"
 msgstr "مشاهده"
+
+#, fuzzy
+msgctxt "field:ir.ui.view_tree_state,child_field:"
+msgid "Child Field"
+msgstr "فیلد زیرمجموعه"
 
 msgctxt "field:ir.ui.view_tree_state,child_name:"
 msgid "Child Name"
@@ -1712,6 +1768,11 @@ msgid "Domain"
 msgstr "دامنه"
 
 msgctxt "field:ir.ui.view_tree_state,model:"
+msgid "Model"
+msgstr "مدل"
+
+#, fuzzy
+msgctxt "field:ir.ui.view_tree_state,model_ref:"
 msgid "Model"
 msgstr "مدل"
 
@@ -1821,7 +1882,7 @@ msgid "The field that contains the recipient(s)."
 msgstr ""
 
 msgctxt "help:ir.email.template,recipients_hidden:"
-msgid "The field that contains the secondary recipient(s)."
+msgid "The field that contains the hidden recipient(s)."
 msgstr ""
 
 #, fuzzy
@@ -2051,17 +2112,18 @@ msgstr "اقدامات"
 
 #, fuzzy
 msgctxt "model:ir.action,name:act_email_form"
-msgid "E-mails"
+msgid "Emails"
 msgstr "ایمیل"
 
 #, fuzzy
 msgctxt "model:ir.action,name:act_email_form_relate"
-msgid "E-mail Archives"
+msgid "Email Archives"
 msgstr "ایمیل"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_email_template_form"
-msgid "E-mail Templates"
-msgstr ""
+msgid "Email Templates"
+msgstr "الگوی افزونه ها"
 
 #, fuzzy
 msgctxt "model:ir.action,name:act_error_form"
@@ -2220,9 +2282,10 @@ msgctxt "model:ir.action,name:act_view_tree_optional_form"
 msgid "View Tree Optional"
 msgstr "نمایش حالت درختی"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_view_tree_state"
-msgid "Tree State"
-msgstr "حالت درختی"
+msgid "View Tree State"
+msgstr "نمایش حالت درختی"
 
 msgctxt "model:ir.action,name:act_view_tree_width_form"
 msgid "View Tree Width"
@@ -2493,6 +2556,11 @@ msgctxt "model:ir.cron,name:"
 msgid "Cron"
 msgstr "برنامه وظایف"
 
+#, fuzzy
+msgctxt "model:ir.cron.log,name:"
+msgid "Cron Log"
+msgstr "برنامه وظایف"
+
 msgctxt "model:ir.date,name:"
 msgid "Date"
 msgstr "تاریخ"
@@ -2646,40 +2714,52 @@ msgctxt "model:ir.message,text:msg_ID"
 msgid "ID"
 msgstr "شناسه"
 
+#, python-format
 msgctxt "model:ir.message,text:msg_access_button_error"
 msgid "Calling button \"%(button)s on \"%(model)s\" is not allowed."
 msgstr "دکمه تماس :\"%(button)s\" در :\"%(model)s\" مجاز نیست."
 
+#, fuzzy, python-format
+msgctxt "model:ir.message,text:msg_access_report_error"
+msgid "You are not allowed to execute report \"%(report)s\"."
+msgstr "شما مجاز به دسترسی به \"%(model)s\" نیستید."
+
+#, python-format
 msgctxt "model:ir.message,text:msg_access_rule_error"
 msgid "You are not allowed to access \"%(model)s\"."
 msgstr "شما مجاز به دسترسی به \"%(model)s\" نیستید."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_access_rule_field_error"
 msgid "You are not allowed to access \"%(model)s.%(field)s\"."
 msgstr "شما مجاز به دسترسی به \"%(model)s\" \"%(field)s\" نیستید."
 
-#, fuzzy
+#, fuzzy, python-format
 msgctxt "model:ir.message,text:msg_access_wizard_error"
 msgid "You are not allowed to execute wizard \"%(wizard)s\"."
 msgstr "شما مجاز به دسترسی به \"%(model)s\" نیستید."
 
-#, fuzzy
+#, fuzzy, python-format
 msgctxt "model:ir.message,text:msg_access_wizard_model_error"
 msgid "You are not allowed to execute wizard \"%(wizard)s\" on \"%(model)s\"."
 msgstr "شما مجاز به دسترسی به \"%(model)s\" نیستید."
 
+#, fuzzy, python-format
 msgctxt "model:ir.message,text:msg_action_invalid_context"
 msgid "Invalid context \"%(context)s\" for action \"%(action)s\"."
 msgstr "مفاد : \"%s\" در اقدام : \"%s\" نامعتبر است."
 
+#, fuzzy, python-format
 msgctxt "model:ir.message,text:msg_action_invalid_domain"
 msgid "Invalid domain or search criteria \"%(domain)s\" for action \"%(action)s\"."
 msgstr "نام دامنه یا معیارهای جستجوی: \"%s\" در اقدام: \"%s\" معتبر نیست."
 
+#, fuzzy, python-format
 msgctxt "model:ir.message,text:msg_action_invalid_views"
 msgid "Invalid view \"%(view)s\" for action \"%(action)s\"."
 msgstr "مشاهده: \"%s\" از اقدام: \"%s\" معتبر نمیباشد."
 
+#, fuzzy, python-format
 msgctxt "model:ir.message,text:msg_action_wrong_wizard_model"
 msgid "Wrong wizard model in keyword action \"%(name)s\"."
 msgstr "اشتباه دستیارمدل در کلیدواژه اقدام \"%s\"."
@@ -2729,14 +2809,22 @@ msgctxt "model:ir.message,text:msg_button_name_unique"
 msgid "The name of the button must be unique per model."
 msgstr "نام مدل باید منحصر به فرد باشد!"
 
+#, fuzzy
+msgctxt "model:ir.message,text:msg_cache_name_unique"
+msgid "The name of cache must be unique."
+msgstr "مدل باید منحصر به فرد باشد!"
+
+#, python-format
 msgctxt "model:ir.message,text:msg_context_datetime"
 msgid "At date/time: %(datetime)s"
 msgstr ""
 
+#, python-format
 msgctxt "model:ir.message,text:msg_context_groups"
 msgid "Within groups: %(groups)s"
 msgstr ""
 
+#, python-format
 msgctxt "model:ir.message,text:msg_create_rule_error"
 msgid ""
 "You are not allowed to create records of \"%(model)s\" because they fail on at least one of these rules:\n"
@@ -2753,13 +2841,14 @@ msgctxt "model:ir.message,text:msg_created_by"
 msgid "Created by"
 msgstr "کاربر ایجاد کننده"
 
+#, python-format
 msgctxt "model:ir.message,text:msg_delete_rule_error"
 msgid ""
 "You are not allowed to delete records \"%(ids)s\" of \"%(model)s\" because of at lease one of those rules:\n"
 "%(rules)s"
 msgstr ""
 
-#, fuzzy
+#, fuzzy, python-format
 msgctxt "model:ir.message,text:msg_delete_xml_record"
 msgid "You are not allowed to delete the record \"%(record)s\" of \"%(model)s\"."
 msgstr "شما مجاز به دسترسی به \"%(model)s\" نیستید."
@@ -2824,16 +2913,17 @@ msgctxt "model:ir.message,text:msg_dict_schema_integer"
 msgid "Integer"
 msgstr ""
 
+#, python-format
 msgctxt "model:ir.message,text:msg_dict_schema_invalid_domain"
 msgid "Invalid domain in schema \"%(schema)s\"."
 msgstr "دامنه نامعتبر در طرح \"%(schema)s\"."
 
-#, fuzzy
+#, fuzzy, python-format
 msgctxt "model:ir.message,text:msg_dict_schema_invalid_help_selection"
 msgid "Invalid help selection in schema \"%(schema)s\"."
 msgstr "دامنه نامعتبر در طرح \"%(schema)s\"."
 
-#, fuzzy
+#, fuzzy, python-format
 msgctxt "model:ir.message,text:msg_dict_schema_invalid_selection"
 msgid "Invalid selection in schema \"%(schema)s\"."
 msgstr "دامنه نامعتبر در طرح \"%(schema)s\"."
@@ -2888,7 +2978,7 @@ msgctxt "model:ir.message,text:msg_dict_yes"
 msgid "Yes"
 msgstr ""
 
-#, fuzzy
+#, fuzzy, python-format
 msgctxt "model:ir.message,text:msg_digits_validation_record"
 msgid ""
 "The number of digits in the value \"%(value)r\" for field \"%(field)s\" in "
@@ -2897,7 +2987,7 @@ msgstr ""
 "تعداد ارقام در مقدار:\"%(value)s\" برای فیلد :\"%(field)s\" در \"%(model)s\""
 " بیش از حد \"%(digits)i\"."
 
-#, fuzzy
+#, fuzzy, python-format
 msgctxt "model:ir.message,text:msg_domain_validation_record"
 msgid ""
 "The value \"%(value)s\" for field \"%(field)s\" in record \"%(record)s\" of "
@@ -2914,48 +3004,51 @@ msgctxt "model:ir.message,text:msg_edited_by"
 msgid "Edited by"
 msgstr "پذیرفته شده در"
 
-#, fuzzy
+#, fuzzy, python-format
 msgctxt "model:ir.message,text:msg_email_template_invalid_body"
 msgid ""
-"Invalid body in e-mail template \"%(template)s\" with exception "
+"Invalid body in email template \"%(template)s\" with exception "
 "\"%(exception)s\"."
 msgstr "مفاد : \"%s\" در اقدام : \"%s\" نامعتبر است."
 
-#, fuzzy
+#, fuzzy, python-format
 msgctxt "model:ir.message,text:msg_email_template_invalid_field_pyson"
 msgid ""
-"Invalid PYSON %(field)s in e-mail template \"%(template)s\" with exception "
+"Invalid PYSON %(field)s in email template \"%(template)s\" with exception "
 "\"%(exception)s\"."
 msgstr "مفاد : \"%s\" در اقدام : \"%s\" نامعتبر است."
 
+#, fuzzy, python-format
 msgctxt "model:ir.message,text:msg_email_template_invalid_field_pyson_type"
 msgid ""
-"The PYSON %(field)s in e-mail template \"%(template)s\" must generate a "
-"list."
-msgstr ""
+"The PYSON %(field)s in email template \"%(template)s\" must generate a list."
+msgstr "مفاد : \"%s\" در اقدام : \"%s\" نامعتبر است."
 
-#, fuzzy
+#, fuzzy, python-format
 msgctxt "model:ir.message,text:msg_email_template_invalid_subject"
 msgid ""
-"Invalid subject in e-mail template \"%(template)s\" with exception "
+"Invalid subject in email template \"%(template)s\" with exception "
 "\"%(exception)s\"."
 msgstr "مفاد : \"%s\" در اقدام : \"%s\" نامعتبر است."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_field_model_name"
 msgid "%(field)s (model name)"
 msgstr ""
 
+#, python-format
 msgctxt "model:ir.message,text:msg_field_string"
 msgid "%(field)s (string)"
 msgstr ""
 
-#, fuzzy
+#, fuzzy, python-format
 msgctxt "model:ir.message,text:msg_forbidden_char_validation_record"
 msgid ""
 "The value \"%(value)s\" for field \"%(field)s\" in record \"%(record)s\" of "
 "\"%(model)s\" contains some invalid chars \"%(chars)s\"."
 msgstr "مقدار زمان: \"%s\" برای فیلد : \"%s\" در مدل : \"%s\" معتبر نیست."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_foreign_model_exist"
 msgid ""
 "The records could not be deleted because they are used by field "
@@ -2964,6 +3057,7 @@ msgstr ""
 "پرونده ها را نمی توان حذف کرد زیرا آنها توسط فیلد :\"%(field)s\" از "
 "\"%(model)s\" استفاده می شوند."
 
+#, fuzzy, python-format
 msgctxt "model:ir.message,text:msg_foreign_model_missing"
 msgid "The value \"%(value)s\" for field \"%(field)s\" in \"%(model)s\" does not exist."
 msgstr "مقدار: \"%s\" فیلد: \"%s\" در مدل: \"%s\" ایجاد نشده است."
@@ -2976,29 +3070,42 @@ msgctxt "model:ir.message,text:msg_id_positive"
 msgid "ID must be positive."
 msgstr "شناسه باید مثبت باشد."
 
+#, python-format
+msgctxt "model:ir.message,text:msg_import_data_missing_column"
+msgid "Missing values for last column at row %(row)d."
+msgstr ""
+
+#, python-format
+msgctxt "model:ir.message,text:msg_import_data_missing_columns"
+msgid "Missing values for %(n)s last columns at row %(row)d."
+msgstr ""
+
 #, fuzzy
 msgctxt "model:ir.message,text:msg_language_code_unique"
 msgid "The code on language must be unique."
 msgstr "مدل باید منحصر به فرد باشد!"
 
-#, fuzzy
+#, fuzzy, python-format
 msgctxt "model:ir.message,text:msg_language_default_translatable"
 msgid "The default language \"%(language)s\" must be translatable."
 msgstr "زبان پیش فرض باید قابل ترجمه باشد."
 
-#, fuzzy
+#, fuzzy, python-format
 msgctxt "model:ir.message,text:msg_language_delete_default"
 msgid "The default language \"%(language)s\" can not be deleted."
 msgstr "زبان پیش فرض قابل حذف نیست."
 
+#, fuzzy, python-format
 msgctxt "model:ir.message,text:msg_language_invalid_date"
 msgid "Invalid date format \"%(format)s\" for language \"%(language)s\"."
 msgstr "فرمت تاریخ : \"%s\" در زبان : \"%s\" معتبر نیست."
 
+#, fuzzy, python-format
 msgctxt "model:ir.message,text:msg_language_invalid_grouping"
 msgid "Invalid grouping \"%(grouping)s\" for language \"%(language)s\"."
 msgstr "گروه بندی : \"%s\" در زبان : \"%s\" معتبر نیست."
 
+#, fuzzy, python-format
 msgctxt "model:ir.message,text:msg_model_invalid_condition"
 msgid ""
 "The condition \"%(condition)s\" is not a valid PYSON expression for button "
@@ -3021,11 +3128,12 @@ msgctxt "model:ir.message,text:msg_notes"
 msgid "Notes"
 msgstr "یادداشت ها"
 
-#, fuzzy
+#, fuzzy, python-format
 msgctxt "model:ir.message,text:msg_read_error"
 msgid "You are trying to read records \"%(ids)s\" of \"%(model)s\" that don't exist."
 msgstr "شما تلاش می کنید پرونده ی :\"%(model)s\" را بخوانید، که دیگر وجود ندارد."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_read_rule_error"
 msgid ""
 "You are not allowed to read records \"%(ids)s\" of \"%(model)s\" because of at least one of these rules:\n"
@@ -3037,6 +3145,7 @@ msgctxt "model:ir.message,text:msg_record_name"
 msgid "Record Name"
 msgstr "نام پرونده"
 
+#, fuzzy, python-format
 msgctxt "model:ir.message,text:msg_recursion_error"
 msgid ""
 "Recursion error: Record \"%(rec_name)s\" with parent \"%(parent_rec_name)s\""
@@ -3045,35 +3154,38 @@ msgstr ""
 "توابع بازگشتی خطا: پرونده: \"%s\" با مرجعیت: \"%s\" به عنوان والد خود "
 "پیکربندی شده است."
 
-#, fuzzy
+#, fuzzy, python-format
 msgctxt "model:ir.message,text:msg_reference_syntax_error"
 msgid ""
-"Syntax error for reference: %(value)r in \"%(field)s\" of \"%(model)s\" "
-"(%(column)s)."
-msgstr "خطای نحو برای مرجع :\"%(value)r\" در \"%(field)s\"."
+"Syntax error for %(value)r in \"%(field)s\" of \"%(model)s\" at row %(row)d "
+"and column %(column)d."
+msgstr "خطای نحوی برای شناسه xml :\"%(value)r\" در \"%(field)s\"."
 
-#, fuzzy
+#, fuzzy, python-format
 msgctxt "model:ir.message,text:msg_relation_not_found"
-msgid "Relation not found: %(value)r in \"%(model)s\" (%(column)s)."
-msgstr "رابطه :\"%(value)r\" در \"%(model)s\" یافت نشد."
+msgid ""
+"Could not find relation for %(value)r in \"%(model)s\" at row %(row)d and "
+"column %(column)d."
+msgstr "روابط بسیار زیادی :\"%(value)r\" در \"%(model)s\" پیدا شد."
 
+#, fuzzy, python-format
 msgctxt "model:ir.message,text:msg_report_invalid_email"
 msgid "Invalid email definition for report \"%(name)s\"."
 msgstr "ایمیل تعریف شده برای گزارش : \"%s\" معتبر نمیباشد."
 
-#, fuzzy
+#, fuzzy, python-format
 msgctxt "model:ir.message,text:msg_report_invalid_record_name"
 msgid ""
 "Invalid record name definition for report \"%(report)s\" with exception "
 "\"%(exception)s\"."
 msgstr "مفاد : \"%s\" در اقدام : \"%s\" نامعتبر است."
 
-#, fuzzy
+#, fuzzy, python-format
 msgctxt "model:ir.message,text:msg_required_validation"
 msgid "A value is required for field \"%(field)s\" in \"%(model)s\"."
 msgstr "یک مقدار برای فیلد :\"%(field)s\" در\"%(model)s\" مورد نیاز است."
 
-#, fuzzy
+#, fuzzy, python-format
 msgctxt "model:ir.message,text:msg_required_validation_record"
 msgid ""
 "A value is required for field \"%(field)s\" in record \"%(record)s\" of "
@@ -3084,16 +3196,17 @@ msgctxt "model:ir.message,text:msg_resource_copy_help"
 msgid "The resources to which this record must be copied."
 msgstr ""
 
+#, fuzzy, python-format
 msgctxt "model:ir.message,text:msg_rule_invalid_domain"
 msgid "Invalid domain in rule \"%(name)s\"."
 msgstr "نام دامنه در قانون: \"%s\" معتبر نیست."
 
-#, fuzzy
+#, fuzzy, python-format
 msgctxt "model:ir.message,text:msg_search_function_missing"
 msgid "Missing search function for field \"%(field)s\" in \"%(model)s\"."
 msgstr "عملکرد جستجو برای فیلد \"٪ s\" گم شده است."
 
-#, fuzzy
+#, fuzzy, python-format
 msgctxt "model:ir.message,text:msg_selection_validation_record"
 msgid ""
 "The value \"%(value)s\" for field \"%(field)s\" in record \"%(record)s\" of "
@@ -3111,29 +3224,29 @@ msgid ""
 "sequence."
 msgstr ""
 
-#, fuzzy
+#, fuzzy, python-format
 msgctxt "model:ir.message,text:msg_sequence_invalid_number_increment_next"
 msgid ""
 "Invalid \"Increment Number\" (%(number_increment)s) or \"Next Number\" "
 "(%(number_next)s) with exception \"%(exception)s\"."
 msgstr "مفاد : \"%s\" در اقدام : \"%s\" نامعتبر است."
 
+#, fuzzy, python-format
 msgctxt "model:ir.message,text:msg_sequence_invalid_prefix"
 msgid "Invalid prefix \"%(affix)s\" for sequence \"%(sequence)s\"."
 msgstr "پیشوند: \"%s\" در ادامه: \"%s\" نامعتبر است."
 
+#, fuzzy, python-format
 msgctxt "model:ir.message,text:msg_sequence_invalid_suffix"
 msgid "Invalid suffix \"%(affix)s\" for sequence \"%(sequence)s\"."
 msgstr "پسوند: \"%s\" در ادامه: \"%s\" نامعتبر است."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_sequence_last_timestamp_future"
 msgid "The \"Last Timestamp\" cannot be in the future for sequence \"%s\"."
 msgstr "آخرین برچسب زمان نباید در آینده دنباله : \"%s\" باشد."
 
-msgctxt "model:ir.message,text:msg_sequence_missing"
-msgid "Missing sequence."
-msgstr "دنباله گمشده."
-
+#, python-format
 msgctxt "model:ir.message,text:msg_setter_function_missing"
 msgid "Missing setter function for field \"%(field)s\" in \"%(model)s\"."
 msgstr ""
@@ -3142,7 +3255,7 @@ msgctxt "model:ir.message,text:msg_singleton"
 msgid "Only one singleton can be created."
 msgstr ""
 
-#, fuzzy
+#, fuzzy, python-format
 msgctxt "model:ir.message,text:msg_size_validation"
 msgid ""
 "The value \"%(value)s\" for field \"%(field)s\" in \"%(model)s\" is too long"
@@ -3151,7 +3264,7 @@ msgstr ""
 "مقدار فیلد :\"%(field)s\" در \"%(model)s\" خیلی طولانی است (%(size)i > "
 "%(max_size)i)."
 
-#, fuzzy
+#, fuzzy, python-format
 msgctxt "model:ir.message,text:msg_size_validation_record"
 msgid ""
 "The value \"%(value)s\" for field \"%(field)s\" in record \"%(record)s\" of "
@@ -3160,7 +3273,7 @@ msgstr ""
 "مقدار فیلد :\"%(field)s\" در \"%(model)s\" خیلی طولانی است (%(size)i > "
 "%(max_size)i)."
 
-#, fuzzy
+#, fuzzy, python-format
 msgctxt "model:ir.message,text:msg_time_format_validation_record"
 msgid ""
 "The time value \"%(value)s\" for field \"%(field)s\" in record "
@@ -3195,11 +3308,14 @@ msgctxt "model:ir.message,text:msg_timedelta_w"
 msgid "w"
 msgstr ""
 
-#, fuzzy
+#, fuzzy, python-format
 msgctxt "model:ir.message,text:msg_too_many_relations_found"
-msgid "Too many relations found: %(value)r in \"%(model)s\" (%(column)s)."
+msgid ""
+"Found too many relation for %(value)r in \"%(model)s\" at row %(row)d and "
+"column %(column)d."
 msgstr "روابط بسیار زیادی :\"%(value)r\" در \"%(model)s\" پیدا شد."
 
+#, fuzzy, python-format
 msgctxt "model:ir.message,text:msg_translation_overridden"
 msgid ""
 "You can not export translation \"%(name)s\" because it has been overridden "
@@ -3215,33 +3331,36 @@ msgid ""
 "mutually exclusive."
 msgstr "\"سر وقت\" و دیگران متقابلاً انحصاری میباشند!"
 
+#, fuzzy, python-format
 msgctxt "model:ir.message,text:msg_trigger_invalid_condition"
 msgid ""
 "Condition \"%(condition)s\" is not a valid PYSON expression for trigger "
 "\"%(trigger)s\"."
 msgstr "شرط : \"%s\" یک عبارت PYSON معتبر برای ماشه :\"%(trigger)s\" نیست."
 
-#, fuzzy
+#, fuzzy, python-format
 msgctxt "model:ir.message,text:msg_value_syntax_error"
 msgid ""
-"Syntax error for value: %(value)r in \"%(field)s\" of \"%(model)s\" "
-"(%(column)s)."
+"Syntax error for %(value)r in \"%(field)s\" of \"%(model)s\" at row %(row)d "
+"and column %(column)d."
 msgstr "خطای نحوی برای شناسه xml :\"%(value)r\" در \"%(field)s\"."
 
+#, fuzzy, python-format
 msgctxt "model:ir.message,text:msg_view_invalid_xml"
 msgid "Invalid XML for view \"%(name)s\"."
 msgstr "XML غیرمعتبر برای مشاهده \"%s\"."
 
-#, fuzzy
+#, fuzzy, python-format
 msgctxt "model:ir.message,text:msg_view_search_invalid_domain"
 msgid "Invalid domain or search criteria \"%(domain)s\" for search \"%(search)s\"."
 msgstr "نام دامنه یا معیارهای جستجوی: \"%s\" در اقدام: \"%s\" معتبر نیست."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_view_tree_optional_type"
 msgid "You cannot store optional on view \"%(view)s\"."
 msgstr ""
 
-#, fuzzy
+#, fuzzy, python-format
 msgctxt "model:ir.message,text:msg_write_error"
 msgid ""
 "You are trying to write to records \"%(ids)s\" of \"%(model)s\" that don't "
@@ -3250,13 +3369,14 @@ msgstr ""
 "شما در حال تلاش برای نوشتن روی اسناد :\"%(model)s\" که دیگر وجود ندارد، می "
 "باشید."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_write_rule_error"
 msgid ""
 "You are not allowed to write to records \"%(ids)s\" of \"%(model)s\" because of at least one of these rules:\n"
 "%(rules)s"
 msgstr ""
 
-#, fuzzy
+#, fuzzy, python-format
 msgctxt "model:ir.message,text:msg_write_xml_record"
 msgid ""
 "You are not allowed to modify the field \"%(field)s\" in record "
@@ -3266,13 +3386,6 @@ msgstr "یک مقدار برای فیلد :\"%(field)s\" در\"%(model)s\" مو�
 msgctxt "model:ir.message,text:msg_xml_id"
 msgid "XML ID"
 msgstr ""
-
-#, fuzzy
-msgctxt "model:ir.message,text:msg_xml_id_syntax_error"
-msgid ""
-"Syntax error for XML id: %(value)r in \"%(field)s\" of \"%(model)s\" "
-"(%(column)s)."
-msgstr "خطای نحوی برای شناسه xml :\"%(value)r\" در \"%(field)s\"."
 
 msgctxt "model:ir.model,name:"
 msgid "Model"
@@ -3555,12 +3668,13 @@ msgstr "اقدامات"
 
 #, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_email_form"
-msgid "E-mails"
+msgid "Emails"
 msgstr "ایمیل"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_email_template_form"
-msgid "E-mail Templates"
-msgstr ""
+msgid "Email Templates"
+msgstr "الگوی افزونه ها"
 
 #, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_error_form"
@@ -3691,23 +3805,6 @@ msgstr "رابط کاربری"
 msgctxt "model:ir.ui.menu,name:menu_view"
 msgid "Views"
 msgstr "مشاهدات"
-
-msgctxt "model:ir.ui.menu,name:menu_view_search"
-msgid "View Search"
-msgstr "دیدن جستجو"
-
-#, fuzzy
-msgctxt "model:ir.ui.menu,name:menu_view_tree_optional"
-msgid "View Tree Optional"
-msgstr "نمایش حالت درختی"
-
-msgctxt "model:ir.ui.menu,name:menu_view_tree_state"
-msgid "Tree State"
-msgstr "حالت درختی"
-
-msgctxt "model:ir.ui.menu,name:menu_view_tree_width"
-msgid "View Tree Width"
-msgstr "عرض نمایش درختی"
 
 msgctxt "model:ir.ui.menu,name:model_model_fields_form"
 msgid "Fields"
@@ -3954,6 +4051,11 @@ msgstr "ماه ها"
 msgctxt "selection:ir.cron,interval_type:"
 msgid "Weeks"
 msgstr "هفته ها"
+
+#, fuzzy
+msgctxt "selection:ir.cron,method:"
+msgid "Clean Cron Logs"
+msgstr "پاک کردن ترجمه ها"
 
 msgctxt "selection:ir.cron,method:"
 msgid "Clean Errors"

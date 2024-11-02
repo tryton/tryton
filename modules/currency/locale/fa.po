@@ -170,14 +170,11 @@ msgctxt "model:ir.action,name:act_currency_form"
 msgid "Currencies"
 msgstr "ارزها"
 
-msgctxt "model:ir.message,text:msg_currency_rate_positive"
-msgid "A currency rate must be positive."
-msgstr "نرخ ارز باید مثبت باشد."
-
 msgctxt "model:ir.message,text:msg_currency_unique_rate_date"
 msgid "A currency can only have one rate by date."
 msgstr "یک ارز در هر تاریخ تنها می تواند یک نرخ داشته باشد."
 
+#, fuzzy, python-format
 msgctxt "model:ir.message,text:msg_no_rate"
 msgid "No rate found for currency \"%(currency)s\" on \"%(date)s\"."
 msgstr "هیچ نرخی پیدا نشد برای واحد پولی \"٪s\" در تاریخ \"٪s\"."

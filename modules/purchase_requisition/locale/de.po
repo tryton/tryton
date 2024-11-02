@@ -150,12 +150,14 @@ msgctxt ""
 msgid "Waiting"
 msgstr "Wartend"
 
+#, python-format
 msgctxt "model:ir.message,text:msg_delete_cancel"
 msgid "To delete requisition \"%(requisition)s\" you must cancel it."
 msgstr ""
 "Damit die Bestellanforderung \"%(requisition)s\" gelöscht werden kann, muss "
 "sie zuerst annulliert werden."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_warehouse_required"
 msgid "A warehouse must be defined for requisition \"%(requisition)s\"."
 msgstr ""

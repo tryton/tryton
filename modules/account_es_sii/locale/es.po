@@ -121,6 +121,7 @@ msgctxt ""
 msgid "Rejected"
 msgstr "Rechazada"
 
+#, python-format
 msgctxt "model:ir.message,text:msg_es_sii_invoice_delete_sent"
 msgid ""
 "You cannot delete SII invoice \"%(invoice)s\" because it has already been "
@@ -132,6 +133,7 @@ msgctxt "model:ir.message,text:msg_es_sii_invoice_unique"
 msgid "Only one SII invoice can be created for each invoice."
 msgstr "Solo se puede crear una factura SII por cada factura."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_es_sii_posted_invoices"
 msgid ""
 "You can not change the SII setting for period \"%(period)s\" because there "

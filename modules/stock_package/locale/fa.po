@@ -244,12 +244,14 @@ msgctxt "model:ir.action,name:act_package_type_form"
 msgid "Package Types"
 msgstr "انواع بسته"
 
+#, python-format
 msgctxt "model:ir.message,text:msg_package_mismatch"
 msgid "To process shipment \"%(shipment)s\", you must pack all its moves."
 msgstr ""
 "برای پردازش محموله :\"%(shipment)s\"، شما باید همه جابجایی های آن را بسته "
 "بندی کنید."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_package_volume_too_small"
 msgid ""
 "The volume (%(volume)s) of package \"%(package)s\" is too small for summed "

@@ -127,17 +127,25 @@ msgctxt "field:purchase.handle.invoice.exception.ask,domain_invoices:"
 msgid "Domain Invoices"
 msgstr "Domein facturen"
 
+msgctxt "field:purchase.handle.invoice.exception.ask,ignore_invoices:"
+msgid "Invoices to Ignore"
+msgstr "Te negeren facturen"
+
 msgctxt "field:purchase.handle.invoice.exception.ask,recreate_invoices:"
-msgid "Recreate Invoices"
-msgstr "Facturen opnieuw aanmaken"
+msgid "Invoices to Recreate"
+msgstr "Opnieuw aan te maken facturen"
 
 msgctxt "field:purchase.handle.shipment.exception.ask,domain_moves:"
-msgid "Domain Moves"
-msgstr "Domein voorraadbewegingen"
+msgid "Domain Stock Moves"
+msgstr "Voorraadbewegingen domein"
+
+msgctxt "field:purchase.handle.shipment.exception.ask,ignore_moves:"
+msgid "Stock Moves to Ignore"
+msgstr "Te negeren voorraadbewegingen"
 
 msgctxt "field:purchase.handle.shipment.exception.ask,recreate_moves:"
-msgid "Recreate Moves"
-msgstr "Voorraad bewegingen opnieuw aanmaken"
+msgid "Stock Moves to Recreate"
+msgstr "Opnieuw aan te maken voorraadbewegingen"
 
 msgctxt "field:purchase.line,actual_quantity:"
 msgid "Actual Quantity"
@@ -183,16 +191,20 @@ msgctxt "field:purchase.line,invoice_progress:"
 msgid "Invoice Progress"
 msgstr "Factuur voortgang"
 
+msgctxt "field:purchase.line,movable:"
+msgid "Movable"
+msgstr "Beweegbaar"
+
 msgctxt "field:purchase.line,moves:"
-msgid "Moves"
-msgstr "Voorraad bewegingen"
+msgid "Stock Moves"
+msgstr "Voorraadbewegingen"
 
 msgctxt "field:purchase.line,moves_exception:"
 msgid "Moves Exception"
 msgstr "Voorraad Mutaties Uitzondering"
 
 msgctxt "field:purchase.line,moves_ignored:"
-msgid "Ignored Moves"
+msgid "Ignored Stock Moves"
 msgstr "Genegeerde voorraadbewegingen"
 
 msgctxt "field:purchase.line,moves_progress:"
@@ -276,16 +288,16 @@ msgid "Tax"
 msgstr "Belasting"
 
 msgctxt "field:purchase.line-ignored-stock.move,move:"
-msgid "Move"
-msgstr "Voorraad beweging"
+msgid "Stock Move"
+msgstr "Voorraadbeweging"
 
 msgctxt "field:purchase.line-ignored-stock.move,purchase_line:"
 msgid "Purchase Line"
 msgstr "Inkoopregel"
 
 msgctxt "field:purchase.line-recreated-stock.move,move:"
-msgid "Move"
-msgstr "Voorraad beweging"
+msgid "Stock Move"
+msgstr "Voorraadbeweging"
 
 msgctxt "field:purchase.line-recreated-stock.move,purchase_line:"
 msgid "Purchase Line"
@@ -407,13 +419,17 @@ msgctxt "field:purchase.purchase,invoices_recreated:"
 msgid "Recreated Invoices"
 msgstr "Opnieuw aangemaakte facturen"
 
+msgctxt "field:purchase.purchase,line_lines:"
+msgid "Line - Lines"
+msgstr "Regel - Regels"
+
 msgctxt "field:purchase.purchase,lines:"
 msgid "Lines"
 msgstr "Regels"
 
 msgctxt "field:purchase.purchase,moves:"
-msgid "Moves"
-msgstr "Voorraad bewegingen"
+msgid "Stock Moves"
+msgstr "Voorraadbewegingen"
 
 msgctxt "field:purchase.purchase,number:"
 msgid "Number"
@@ -614,18 +630,22 @@ msgstr ""
 "De periode waarin bevestigde aankoop nog steeds kan worden gereset naar concept.\n"
 "Alleen toegepast als de wachtrij is geactiveerd."
 
+msgctxt "help:purchase.handle.invoice.exception.ask,ignore_invoices:"
+msgid "The selected cancelled invoices will be ignored."
+msgstr "De geselecteerde geannuleerde facturen worden genegeerd."
+
 msgctxt "help:purchase.handle.invoice.exception.ask,recreate_invoices:"
-msgid ""
-"The selected invoices will be recreated. The other ones will be ignored."
-msgstr ""
-"De geselecteerde facturen worden opnieuw aangemaakt. De rest wordt "
-"genegeerd."
+msgid "The selected cancelled invoices will be recreated."
+msgstr "De geselecteerde geannuleerde facturen worden opnieuw aangemaakt."
+
+msgctxt "help:purchase.handle.shipment.exception.ask,ignore_moves:"
+msgid "The selected cancelled stock moves will be ignored."
+msgstr "De geselecteerde geannuleerde voorraadbewegingen worden genegeerd."
 
 msgctxt "help:purchase.handle.shipment.exception.ask,recreate_moves:"
-msgid "The selected moves will be recreated. The other ones will be ignored."
+msgid "The selected cancelled stock moves will be recreated."
 msgstr ""
-"De geselecteerde voorraadbewegingen worden opnieuw aangemaakt. De rest wordt"
-" genegeerd."
+"De geselecteerde geannuleerde voorraadbewegingen worden opnieuw aangemaakt."
 
 msgctxt "help:purchase.line,delivery_date_edit:"
 msgid "Check to edit the delivery date."
@@ -671,9 +691,9 @@ msgctxt "model:ir.action,name:act_invoice_form"
 msgid "Invoices"
 msgstr "Facturen"
 
-msgctxt "model:ir.action,name:act_open_supplier"
-msgid "Parties associated to Purchases"
-msgstr "Relaties gekoppeld aan inkopen"
+msgctxt "model:ir.action,name:act_invoice_line_form"
+msgid "Invoice Lines"
+msgstr "Factuur regels"
 
 msgctxt "model:ir.action,name:act_product_supplier_form"
 msgid "Suppliers"
@@ -700,8 +720,8 @@ msgid "Purchase Lines"
 msgstr "Inkoopregels"
 
 msgctxt "model:ir.action,name:act_purchase_move_relate"
-msgid "Moves"
-msgstr "Voorraad bewegingen"
+msgid "Stock Moves"
+msgstr "Voorraadbewegingen"
 
 msgctxt "model:ir.action,name:act_purchase_relate"
 msgid "Purchases"
@@ -825,6 +845,7 @@ msgstr ""
 "U probeert de inkoop maateenheid waarop de inkoopprijzen zijn gebaseerd te "
 "wijzigen."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_erase_party_pending_purchase"
 msgid ""
 "You cannot erase party \"%(party)s\" while they have pending purchases with "
@@ -833,10 +854,12 @@ msgstr ""
 "U kunt de relatie \"%(party)s\" niet verwijderen terwijl ze inkopen in "
 "behandeling hebben bij bedrijf \"%(company)s\"."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_purchase_delete_cancel"
 msgid "To delete purchase \"%(purchase)s\" you must cancel it."
 msgstr "Om inkooporder \"%(purchase)s\" te verwijderen, moet u deze annuleren."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_purchase_invoice_reset_draft"
 msgid ""
 "You cannot reset invoice \"%(invoice)s\" to draft because it was generated "
@@ -845,6 +868,7 @@ msgstr ""
 "U kunt de factuur \"%(invoice)s\" niet terugzetten naar concept zetten omdat"
 " deze gegenereerd is door een inkooporder."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_purchase_line_create_draft"
 msgid ""
 "You cannot add lines to purchase \"%(purchase)s\" because it is no longer in"
@@ -853,6 +877,7 @@ msgstr ""
 "U kunt geen regels toevoegen aan inkoop \"%(purchase)s\" omdat deze niet "
 "meer in status concept staat."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_purchase_line_delete_cancel_draft"
 msgid ""
 "To delete line \"%(line)s\" you must cancel or reset to draft purchase "
@@ -861,6 +886,7 @@ msgstr ""
 "Om regel \"%(line)s\" te verwijderen, moet u de inkooporder \"%(purchase)s\""
 " annuleren, resetten of terugzetten naar concept."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_purchase_line_move_quantity"
 msgid ""
 "The purchase line \"%(line)s\" is moving %(extra)s in addition to the "
@@ -874,6 +900,7 @@ msgid "A tax can be added only once to a purchase line."
 msgstr ""
 "Een belasting kan slechts één keer worden toegevoegd aan een inkoopregel."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_purchase_missing_account_expense"
 msgid ""
 "To invoice purchase \"%(purchase)s\" you must configure a default account "
@@ -882,6 +909,7 @@ msgstr ""
 "Om inkooporder \"%(purchase)s\" te factureren, moet u een standaard "
 "grootboekrekening kosten configureren."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_purchase_modify_header_draft"
 msgid ""
 "To modify the header of purchase \"%(purchase)s\", it must be in draft "
@@ -890,6 +918,7 @@ msgstr ""
 "Als u de kop van de inkoop \"%(purchase)s\" wilt wijzigen, moet deze in "
 "status concept staan."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_purchase_move_reset_draft"
 msgid ""
 "You cannot reset move \"%(move)s\" to draft because it was generated by a "
@@ -898,6 +927,7 @@ msgstr ""
 "U kunt voorraadbeweging \"%(move)s\" niet terug zetten naar concept omdat "
 "deze is gegenereerd door een inkooporder."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_purchase_product_missing_account_expense"
 msgid ""
 "To invoice purchase \"%(purchase)s\" you must define an account expense for "
@@ -938,6 +968,7 @@ msgctxt "model:ir.message,text:msg_purchase_reporting_time_series"
 msgid "Time Series"
 msgstr "Tijdreeksen"
 
+#, python-format
 msgctxt "model:ir.message,text:msg_purchase_supplier_location_required"
 msgid ""
 "To process purchase \"%(purchase)s\" you must set a supplier location on "
@@ -946,6 +977,7 @@ msgstr ""
 "Om inkooporder \"%(purchase)s\" te verwerken, moet de opslaglocatie van de "
 "leverancier worden geconfigureerd op relatie \"%(party)s\"."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_warehouse_required_for_quotation"
 msgid ""
 "To get a quote for the purchase \"%(purchase)s\" you must enter a warehouse."
@@ -1060,10 +1092,6 @@ msgstr "Rapportage"
 msgctxt "model:ir.ui.menu,name:menu_reporting_purchase"
 msgid "Purchases"
 msgstr "Inkopen"
-
-msgctxt "model:ir.ui.menu,name:menu_supplier"
-msgid "Associated to Purchases"
-msgstr "Gekoppeld aan inkoop"
 
 msgctxt "model:party.party.customer_code,name:"
 msgid "Party Customer Code"
@@ -1374,12 +1402,15 @@ msgid "Suppliers"
 msgstr "Leveranciers"
 
 msgctxt "view:purchase.handle.invoice.exception.ask:"
-msgid "Choose invoices to recreate:"
-msgstr "Kies de facturen om opnieuw aan te maken:"
+msgid "Choose cancelled invoices to ignore or recreate:"
+msgstr ""
+"Selecteer geannuleerde facturen die u wilt negeren of opnieuw wilt aanmaken:"
 
 msgctxt "view:purchase.handle.shipment.exception.ask:"
-msgid "Choose move to recreate:"
-msgstr "Kies de voorraadbeweging om opnieuw aan te maken:"
+msgid "Choose cancelled stock moves to ignore or recreate:"
+msgstr ""
+"Selecteer geannuleerde voorraadbewegingen om te negeren of om opnieuw aan te"
+" maken:"
 
 msgctxt "view:purchase.line:"
 msgid "Delivery Date:"

@@ -8,31 +8,31 @@ msgstr ""
 
 msgctxt "field:account.statement,company:"
 msgid "Company"
-msgstr ""
+msgstr "Firma"
 
 msgctxt "field:account.statement,currency:"
 msgid "Currency"
-msgstr ""
+msgstr "Waluta"
 
 msgctxt "field:account.statement,date:"
 msgid "Date"
-msgstr ""
+msgstr "Data"
 
 msgctxt "field:account.statement,end_balance:"
 msgid "End Balance"
-msgstr ""
+msgstr "Saldo końcowe"
 
 msgctxt "field:account.statement,journal:"
 msgid "Journal"
-msgstr ""
+msgstr "Dziennik"
 
 msgctxt "field:account.statement,lines:"
 msgid "Lines"
-msgstr ""
+msgstr "Pozycje"
 
 msgctxt "field:account.statement,name:"
 msgid "Name"
-msgstr ""
+msgstr "Nazwa"
 
 msgctxt "field:account.statement,number_of_lines:"
 msgid "Number of Lines"
@@ -40,24 +40,23 @@ msgstr ""
 
 msgctxt "field:account.statement,origin_file:"
 msgid "Origin File"
-msgstr ""
+msgstr "Plik źródłowy"
 
 msgctxt "field:account.statement,origin_file_id:"
 msgid "Origin File ID"
-msgstr ""
+msgstr "ID pliku źródłowego"
 
-#, fuzzy
 msgctxt "field:account.statement,origins:"
 msgid "Origins"
-msgstr "Origins"
+msgstr "Źródła"
 
 msgctxt "field:account.statement,start_balance:"
 msgid "Start Balance"
-msgstr ""
+msgstr "Saldo początkowe"
 
 msgctxt "field:account.statement,state:"
 msgid "State"
-msgstr ""
+msgstr "Stan"
 
 #, fuzzy
 msgctxt "field:account.statement,to_reconcile:"
@@ -74,27 +73,27 @@ msgstr ""
 
 msgctxt "field:account.statement.import.start,company:"
 msgid "Company"
-msgstr ""
+msgstr "Firma"
 
 msgctxt "field:account.statement.import.start,file_:"
 msgid "File"
-msgstr ""
+msgstr "Plik"
 
 msgctxt "field:account.statement.import.start,file_format:"
 msgid "File Format"
-msgstr ""
+msgstr "Format pliku"
 
 msgctxt "field:account.statement.journal,account:"
 msgid "Account"
-msgstr ""
+msgstr "Konto"
 
 msgctxt "field:account.statement.journal,bank_account:"
 msgid "Bank Account"
-msgstr ""
+msgstr "Konto bankowe"
 
 msgctxt "field:account.statement.journal,company:"
 msgid "Company"
-msgstr ""
+msgstr "Firma"
 
 msgctxt "field:account.statement.journal,company_party:"
 msgid "Company Party"
@@ -102,35 +101,35 @@ msgstr ""
 
 msgctxt "field:account.statement.journal,currency:"
 msgid "Currency"
-msgstr ""
+msgstr "Waluta"
 
 msgctxt "field:account.statement.journal,journal:"
 msgid "Journal"
-msgstr ""
+msgstr "Dziennik"
 
 msgctxt "field:account.statement.journal,name:"
 msgid "Name"
-msgstr ""
+msgstr "Nazwa"
 
 msgctxt "field:account.statement.journal,validation:"
 msgid "Validation Type"
-msgstr ""
+msgstr "Typ walidacji"
 
 msgctxt "field:account.statement.line,account:"
 msgid "Account"
-msgstr ""
+msgstr "Konto"
 
 msgctxt "field:account.statement.line,amount:"
 msgid "Amount"
-msgstr ""
+msgstr "Kwota"
 
 msgctxt "field:account.statement.line,amount_second_currency:"
 msgid "Amount Second Currency"
-msgstr ""
+msgstr "Kwota w drugiej walucie"
 
 msgctxt "field:account.statement.line,company:"
 msgid "Company"
-msgstr ""
+msgstr "Firma"
 
 msgctxt "field:account.statement.line,company_currency:"
 msgid "Company Currency"
@@ -138,15 +137,15 @@ msgstr ""
 
 msgctxt "field:account.statement.line,currency:"
 msgid "Currency"
-msgstr ""
+msgstr "Waluta"
 
 msgctxt "field:account.statement.line,date:"
 msgid "Date"
-msgstr ""
+msgstr "Data"
 
 msgctxt "field:account.statement.line,description:"
 msgid "Description"
-msgstr ""
+msgstr "Opis"
 
 msgctxt "field:account.statement.line,move:"
 msgid "Account Move"
@@ -154,7 +153,7 @@ msgstr ""
 
 msgctxt "field:account.statement.line,number:"
 msgid "Number"
-msgstr ""
+msgstr "Numer"
 
 #, fuzzy
 msgctxt "field:account.statement.line,origin:"
@@ -163,7 +162,7 @@ msgstr "Origins"
 
 msgctxt "field:account.statement.line,party:"
 msgid "Party"
-msgstr ""
+msgstr "Strona"
 
 msgctxt "field:account.statement.line,party_required:"
 msgid "Party Required"
@@ -171,16 +170,15 @@ msgstr ""
 
 msgctxt "field:account.statement.line,related_to:"
 msgid "Related To"
-msgstr ""
+msgstr "Powiązane z"
 
 msgctxt "field:account.statement.line,second_currency:"
 msgid "Second Currency"
-msgstr ""
+msgstr "Druga waluta"
 
-#, fuzzy
 msgctxt "field:account.statement.line,statement:"
 msgid "Statement"
-msgstr "Statement"
+msgstr "Wyciąg"
 
 msgctxt "field:account.statement.line,statement_state:"
 msgid "Statement State"
@@ -188,61 +186,59 @@ msgstr ""
 
 msgctxt "field:account.statement.line.group,amount:"
 msgid "Amount"
-msgstr ""
+msgstr "Kwota"
 
 msgctxt "field:account.statement.line.group,amount_second_currency:"
 msgid "Amount Second Currency"
-msgstr ""
+msgstr "Kwota w drugiej walucie"
 
 msgctxt "field:account.statement.line.group,currency:"
 msgid "Currency"
-msgstr ""
+msgstr "Waluta"
 
 msgctxt "field:account.statement.line.group,date:"
 msgid "Date"
-msgstr ""
+msgstr "Data"
 
 msgctxt "field:account.statement.line.group,journal:"
 msgid "Journal"
-msgstr ""
+msgstr "Dziennik"
 
-#, fuzzy
 msgctxt "field:account.statement.line.group,move:"
 msgid "Move"
-msgstr "Moves"
+msgstr "Dowód"
 
 msgctxt "field:account.statement.line.group,number:"
 msgid "Number"
-msgstr ""
+msgstr "Numer"
 
 msgctxt "field:account.statement.line.group,party:"
 msgid "Party"
-msgstr ""
+msgstr "Strona"
 
 msgctxt "field:account.statement.line.group,second_currency:"
 msgid "Second Currency"
-msgstr ""
+msgstr "Druga waluta"
 
-#, fuzzy
 msgctxt "field:account.statement.line.group,statement:"
 msgid "Statement"
-msgstr "Statement"
+msgstr "Wyciąg"
 
 msgctxt "field:account.statement.origin,account:"
 msgid "Account"
-msgstr ""
+msgstr "Konto"
 
 msgctxt "field:account.statement.origin,amount:"
 msgid "Amount"
-msgstr ""
+msgstr "Kwota"
 
 msgctxt "field:account.statement.origin,amount_second_currency:"
 msgid "Amount Second Currency"
-msgstr ""
+msgstr "Kwota w drugiej walucie"
 
 msgctxt "field:account.statement.origin,company:"
 msgid "Company"
-msgstr ""
+msgstr "Firma"
 
 msgctxt "field:account.statement.origin,company_currency:"
 msgid "Company Currency"
@@ -250,44 +246,43 @@ msgstr ""
 
 msgctxt "field:account.statement.origin,currency:"
 msgid "Currency"
-msgstr ""
+msgstr "Waluta"
 
 msgctxt "field:account.statement.origin,date:"
 msgid "Date"
-msgstr ""
+msgstr "Data"
 
 msgctxt "field:account.statement.origin,description:"
 msgid "Description"
-msgstr ""
+msgstr "Opis"
 
 msgctxt "field:account.statement.origin,information:"
 msgid "Information"
-msgstr ""
+msgstr "Informacja"
 
 msgctxt "field:account.statement.origin,lines:"
 msgid "Lines"
-msgstr ""
+msgstr "Pozycje"
 
 msgctxt "field:account.statement.origin,number:"
 msgid "Number"
-msgstr ""
+msgstr "Numer"
 
 msgctxt "field:account.statement.origin,party:"
 msgid "Party"
-msgstr ""
+msgstr "Strona"
 
 msgctxt "field:account.statement.origin,pending_amount:"
 msgid "Pending Amount"
-msgstr ""
+msgstr "Oczekująca kwota"
 
 msgctxt "field:account.statement.origin,second_currency:"
 msgid "Second Currency"
-msgstr ""
+msgstr "Druga waluta"
 
-#, fuzzy
 msgctxt "field:account.statement.origin,statement:"
 msgid "Statement"
-msgstr "Statement"
+msgstr "Wyciąg"
 
 #, fuzzy
 msgctxt "field:account.statement.origin,statement_id:"
@@ -298,10 +293,9 @@ msgctxt "field:account.statement.origin,statement_state:"
 msgid "Statement State"
 msgstr ""
 
-#, fuzzy
 msgctxt "model:account.journal,name:journal_statement"
 msgid "Statement"
-msgstr "Statement"
+msgstr "Wyciąg"
 
 msgctxt "model:account.statement,name:"
 msgid "Account Statement"
@@ -332,14 +326,13 @@ msgctxt "model:account.statement.origin.information,name:"
 msgid "Statement Origin Information"
 msgstr ""
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_line_group_form"
 msgid "Line Groups"
-msgstr "Line Groups"
+msgstr "Grupy pozycji"
 
 msgctxt "model:ir.action,name:act_line_groups_form"
 msgid "Line Groups"
-msgstr "Line Groups"
+msgstr "Grupy pozycji"
 
 msgctxt "model:ir.action,name:act_move_lines_form"
 msgid "Move Lines"
@@ -355,81 +348,86 @@ msgstr "Reconcile Statements"
 
 msgctxt "model:ir.action,name:act_statement_form"
 msgid "Statements"
-msgstr "Statements"
+msgstr "Wyciągi"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_statement_journal_form"
 msgid "Statement Journals"
-msgstr "Statement Journals"
+msgstr "Dzienniki wyciągów"
 
 msgctxt "model:ir.action,name:act_statement_line_move"
 msgid "Statement Lines"
-msgstr "Statement Lines"
+msgstr "Pozycje wyciągu"
 
 msgctxt "model:ir.action,name:act_statement_line_move_line"
 msgid "Statement Lines"
-msgstr "Statement Lines"
+msgstr "Pozycje wyciągu"
 
 msgctxt "model:ir.action,name:act_statement_origin_form_statement"
 msgid "Origins"
-msgstr "Origins"
+msgstr "Źródła"
 
 msgctxt "model:ir.action,name:report_statement"
 msgid "Statement"
-msgstr "Statement"
+msgstr "Wyciąg"
 
 msgctxt "model:ir.action,name:wizard_statement_import"
 msgid "Import Statement"
-msgstr "Import Statement"
+msgstr "Importuj wyciąg"
 
 msgctxt "model:ir.action.act_window.domain,name:act_statement_form_domain_all"
 msgid "All"
-msgstr "All"
+msgstr "Wszystkie"
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_statement_form_domain_draft"
 msgid "Draft"
-msgstr "Draft"
+msgstr "Szkic"
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_statement_form_domain_posted"
 msgid "Posted"
-msgstr "Posted"
+msgstr "Zaksięgowane"
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_statement_form_domain_validated"
 msgid "Validated"
-msgstr "Validated"
+msgstr "Zatwierdzone"
 
+#, python-format
 msgctxt "model:ir.message,text:msg_bank_account_currency"
 msgid ""
 "The currency of bank account \"%(bank_account)s\" must be the same as "
 "\"%(currency)s\" of the journal \"%(journal)s\"."
 msgstr ""
 
+#, python-format
 msgctxt "model:ir.message,text:msg_import_no_journal"
 msgid ""
 "To import statement, you must create a journal for account \"%(account)s\"."
 msgstr ""
+"Aby zaimportować wyciąg, musisz utworzyć dziennik dla konta \"%(account)s\"."
 
 msgctxt "model:ir.message,text:msg_journal_bank_account_unique"
 msgid "Only one journal is allowed per bank account."
 msgstr ""
 
+#, python-format
 msgctxt "model:ir.message,text:msg_post_statement_move"
 msgid "To post the move \"%(move)s\" you must post the statement \"%(statement)s\"."
 msgstr ""
 
+#, python-format
 msgctxt "model:ir.message,text:msg_statement_delete_cancel"
 msgid "To delete statement \"%(statement)s\" you must cancel it."
 msgstr ""
 
 msgctxt "model:ir.message,text:msg_statement_invoice_paid_cancelled"
 msgid ""
-"The validation of the statements will remove already paid or cancelled "
-"invoices from the statements' lines."
+"Validating the statements will remove already paid or cancelled invoices "
+"from the statements' lines."
 msgstr ""
 
+#, python-format
 msgctxt "model:ir.message,text:msg_statement_line_delete_cancel_draft"
 msgid ""
 "To delete line \"%(line)s\" you must cancel or reset to draft statement "
@@ -440,6 +438,7 @@ msgctxt "model:ir.message,text:msg_statement_line_second_currency_sign"
 msgid "You must set the same sign for second currency than amount."
 msgstr ""
 
+#, python-format
 msgctxt "model:ir.message,text:msg_statement_origin_delete_cancel_draft"
 msgid ""
 "To delete origin \"%(origin)s\" you must cancel or reset to draft statement "
@@ -448,30 +447,35 @@ msgstr ""
 
 msgctxt "model:ir.message,text:msg_statement_paid_invoice_draft"
 msgid ""
-"The validation of the statements will remove paid invoices from other "
+"Validating the statements will remove paid invoices from other draft "
 "statements."
 msgstr ""
 
+#, python-format
 msgctxt "model:ir.message,text:msg_statement_post_pending_amount"
 msgid ""
 "To post statement \"%(statement)s\" you must create lines for pending "
 "%(amount)s of origin \"%(origin)s\"."
 msgstr ""
 
+#, python-format
 msgctxt "model:ir.message,text:msg_statement_wrong_end_balance"
 msgid ""
 "To validate statement \"%(statement)s\" you must change lines to have end "
 "balance of %(end_balance)s instead of %(amount)s."
 msgstr ""
 
+#, python-format
 msgctxt "model:ir.message,text:msg_statement_wrong_number_of_lines_add"
 msgid "To validate statement \"%(statement)s\" you must add %(n)s line(s)."
 msgstr ""
 
+#, python-format
 msgctxt "model:ir.message,text:msg_statement_wrong_number_of_lines_remove"
 msgid "To validate statement \"%(statement)s\" you must remove %(n)s line(s)."
 msgstr ""
 
+#, python-format
 msgctxt "model:ir.message,text:msg_statement_wrong_total_amount"
 msgid ""
 "To validate statement \"%(statement)s\" you must change lines to have total "
@@ -484,23 +488,23 @@ msgstr ""
 
 msgctxt "model:ir.model.button,string:statement_cancel_button"
 msgid "Cancel"
-msgstr "Cancel"
+msgstr "Anuluj"
 
 msgctxt "model:ir.model.button,string:statement_draft_button"
 msgid "Draft"
-msgstr "Draft"
+msgstr "Szkic"
 
 msgctxt "model:ir.model.button,string:statement_post_button"
 msgid "Post"
-msgstr "Post"
+msgstr "Zaksięguj"
 
 msgctxt "model:ir.model.button,string:statement_reconcile_button"
 msgid "Reconcile"
-msgstr "Reconcile"
+msgstr "Uzgodnij"
 
 msgctxt "model:ir.model.button,string:statement_validate_button"
 msgid "Validate"
-msgstr "Validate"
+msgstr "Zatwierdź"
 
 msgctxt "model:ir.rule.group,name:rule_group_statement_companies"
 msgid "User in companies"
@@ -510,35 +514,33 @@ msgctxt "model:ir.rule.group,name:rule_group_statement_journal_companies"
 msgid "User in companies"
 msgstr ""
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_line_group_form"
 msgid "Line Groups"
-msgstr "Line Groups"
+msgstr "Grupy pozycji"
 
 msgctxt "model:ir.ui.menu,name:menu_statement_configuration"
 msgid "Statements"
-msgstr "Statements"
+msgstr "Wyciągi"
 
 msgctxt "model:ir.ui.menu,name:menu_statement_form"
 msgid "Statements"
-msgstr "Statements"
+msgstr "Wyciągi"
 
 msgctxt "model:ir.ui.menu,name:menu_statement_import"
 msgid "Import Statement"
-msgstr "Import Statement"
+msgstr "Importuj wyciąg"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_statement_journal_form"
 msgid "Statement Journals"
-msgstr "Statement Journals"
+msgstr "Dzienniki wyciągów"
 
 msgctxt "model:ir.ui.menu,name:menu_statements"
 msgid "Statements"
-msgstr "Statements"
+msgstr "Wyciągi"
 
 msgctxt "model:res.group,name:group_statement"
 msgid "Statement"
-msgstr "Statement"
+msgstr "Wyciąg"
 
 msgctxt "report:account.statement:"
 msgid "#"
@@ -546,7 +548,7 @@ msgstr ""
 
 msgctxt "report:account.statement:"
 msgid "Amount"
-msgstr ""
+msgstr "Kwota"
 
 #, fuzzy
 msgctxt "report:account.statement:"
@@ -555,7 +557,7 @@ msgstr "Cancel"
 
 msgctxt "report:account.statement:"
 msgid "Date"
-msgstr ""
+msgstr "Data"
 
 msgctxt "report:account.statement:"
 msgid "Date:"
@@ -563,48 +565,44 @@ msgstr ""
 
 msgctxt "report:account.statement:"
 msgid "Description"
-msgstr ""
+msgstr "Opis"
 
-#, fuzzy
 msgctxt "report:account.statement:"
 msgid "Draft"
-msgstr "Draft"
+msgstr "Szkic"
 
 msgctxt "report:account.statement:"
 msgid "Journal:"
-msgstr ""
+msgstr "Dziennik:"
 
 msgctxt "report:account.statement:"
 msgid "Number"
-msgstr ""
+msgstr "Numer"
 
 msgctxt "report:account.statement:"
 msgid "Party"
-msgstr ""
+msgstr "Strona"
 
-#, fuzzy
 msgctxt "report:account.statement:"
 msgid "Statement"
-msgstr "Statement"
+msgstr "Wyciąg"
 
 msgctxt "report:account.statement:"
 msgid "Total"
 msgstr ""
 
-#, fuzzy
 msgctxt "selection:account.journal,type:"
 msgid "Statement"
-msgstr "Statement"
+msgstr "Wyciąg"
 
 #, fuzzy
 msgctxt "selection:account.statement,state:"
 msgid "Cancelled"
 msgstr "Cancel"
 
-#, fuzzy
 msgctxt "selection:account.statement,state:"
 msgid "Draft"
-msgstr "Draft"
+msgstr "Szkic"
 
 #, fuzzy
 msgctxt "selection:account.statement,state:"
@@ -618,29 +616,27 @@ msgstr "Validated"
 
 msgctxt "selection:account.statement.journal,validation:"
 msgid "Amount"
-msgstr ""
+msgstr "Kwota"
 
 msgctxt "selection:account.statement.journal,validation:"
 msgid "Balance"
-msgstr ""
+msgstr "Saldo"
 
 msgctxt "selection:account.statement.journal,validation:"
 msgid "Number of Lines"
-msgstr ""
+msgstr "Liczba pozycji (linii)"
 
 msgctxt "view:account.statement:"
 msgid "Other Info"
-msgstr ""
+msgstr "Inne informacje"
 
-#, fuzzy
 msgctxt "view:account.statement:"
 msgid "Statement Lines"
-msgstr "Statement Lines"
+msgstr "Pozycje wyciągu"
 
-#, fuzzy
 msgctxt "wizard_button:account.statement.import,start,end:"
 msgid "Cancel"
-msgstr "Cancel"
+msgstr "Anuluj"
 
 msgctxt "wizard_button:account.statement.import,start,import_:"
 msgid "Import"

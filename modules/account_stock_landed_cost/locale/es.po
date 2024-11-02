@@ -178,18 +178,21 @@ msgctxt ""
 msgid "Posted"
 msgstr "Contabilizado"
 
+#, python-format
 msgctxt "model:ir.message,text:msg_landed_cost_post_no_stock_move"
 msgid "The posted landed cost \"%(landed_cost)s\" has no stock move."
 msgstr ""
 "El coste de recepción contabilizado \"%(landed_cost)s\" no tiene ningún "
 "movimiento de existencias."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_landed_cost_unused_category"
 msgid "The category \"%(category)s\" on landed cost \"%(landed_cost)s\" is not used."
 msgstr ""
 "La categoría \"%(category)s\" del coste de recepción \"%(landed_cost)s\" no "
 "se utiliza."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_landed_cost_unused_product"
 msgid "The product \"%(product)s\" on landed cost \"%(landed_cost)s\" is not used."
 msgstr ""

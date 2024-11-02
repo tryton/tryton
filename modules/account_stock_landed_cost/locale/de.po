@@ -178,16 +178,19 @@ msgctxt ""
 msgid "Posted"
 msgstr "Festgeschrieben"
 
+#, python-format
 msgctxt "model:ir.message,text:msg_landed_cost_post_no_stock_move"
 msgid "The posted landed cost \"%(landed_cost)s\" has no stock move."
 msgstr "Die Einstandskostenposition \"%(landed_cost)s\" hat keine Warenbewegung."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_landed_cost_unused_category"
 msgid "The category \"%(category)s\" on landed cost \"%(landed_cost)s\" is not used."
 msgstr ""
 "Die Kategorie \"%(category)s\" auf Einstandskostenposition "
 "\"%(landed_cost)s\" wird nicht genutzt."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_landed_cost_unused_product"
 msgid "The product \"%(product)s\" on landed cost \"%(landed_cost)s\" is not used."
 msgstr ""

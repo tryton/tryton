@@ -260,6 +260,7 @@ msgctxt ""
 msgid "Receivable with Mandate"
 msgstr "A cobrar con mandato"
 
+#, python-format
 msgctxt "model:ir.message,text:msg_mandate_authorisation_statement"
 msgid ""
 "By signing this mandate form, you authorise (A) %(creditor)s to send "
@@ -270,6 +271,7 @@ msgstr ""
 "enviar instrucciones a su banco para domiciliar su cuenta y (B) a su banco "
 "para domiciliar su cuenta de acuerdo con las instrucciones de %(creditor)s."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_mandate_delete_draft_cancelled"
 msgid ""
 "To delete mandate \"%(mandate)s\" you must cancel it or reset its state to "
@@ -278,6 +280,7 @@ msgstr ""
 "Para eliminar el mandato \"%(mandate)s\" debe cancelarlo o restablecerlo a "
 "estado borrador."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_mandate_title"
 msgid "SEPA %(scheme)s Direct Debit MANDATE"
 msgstr "Orden de domiciliación SEPA %(scheme)s de adeudo directo"
@@ -286,10 +289,12 @@ msgctxt "model:ir.message,text:msg_mandate_unique_id"
 msgid "SEPA mandate identification must be unique by company."
 msgstr "Identificador de mandato SEPA debe ser único por empresa."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_party_no_id"
 msgid "The party \"%(party)s\" is missing a \"%(type)s\" identifier."
 msgstr "Falta el identificador \"%(type)s\" para el tercero \"%(party)s\"."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_payment_process_no_bank"
 msgid ""
 "To process payment \"%(payment)s\" you must define a bank for the account "
@@ -298,10 +303,12 @@ msgstr ""
 "Para procesar el pago \"%(payment)s\" debe definir un banco para la cuenta "
 "\"%(bank_account)s\"."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_payment_process_no_iban"
 msgid "To process payment \"%(payment)s\" you must define IBAN for it."
 msgstr "Para procesar el pago \"%(payment)s\" debe definirle un IBAN."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_payment_process_no_mandate"
 msgid "To process payment \"%(payment)s\" you must define a SEPA mandate for it."
 msgstr "Para procesar el pago \"%(payment)s\" debe definirle un mandato SEPA."

@@ -389,6 +389,7 @@ msgctxt ""
 msgid "Validated"
 msgstr "Gevalideerd"
 
+#, python-format
 msgctxt "model:ir.message,text:msg_bank_account_currency"
 msgid ""
 "The currency of bank account \"%(bank_account)s\" must be the same as "
@@ -397,6 +398,7 @@ msgstr ""
 "De valuta \"%(currency)s\" van bankrekening \"%(bank_account)s\" moet "
 "hetzelfde zijn als van het dagboek \"%(journal)s\"."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_import_no_journal"
 msgid ""
 "To import statement, you must create a journal for account \"%(account)s\"."
@@ -408,12 +410,14 @@ msgctxt "model:ir.message,text:msg_journal_bank_account_unique"
 msgid "Only one journal is allowed per bank account."
 msgstr "Per bankrekening is slechts één dagboek toegestaan."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_post_statement_move"
 msgid "To post the move \"%(move)s\" you must post the statement \"%(statement)s\"."
 msgstr ""
 "Om de boeking \"%(move)s\" te boeken moet u eerst bankafschrift "
 "\"%(statement)s\" boeken."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_statement_delete_cancel"
 msgid "To delete statement \"%(statement)s\" you must cancel it."
 msgstr ""
@@ -422,12 +426,13 @@ msgstr ""
 
 msgctxt "model:ir.message,text:msg_statement_invoice_paid_cancelled"
 msgid ""
-"The validation of the statements will remove already paid or cancelled "
-"invoices from the statements' lines."
+"Validating the statements will remove already paid or cancelled invoices "
+"from the statements' lines."
 msgstr ""
 "De validatie van de bankafschriften zal reeds betaalde of geannuleerde "
 "facturen uit de bankafschriften regels verwijderen."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_statement_line_delete_cancel_draft"
 msgid ""
 "To delete line \"%(line)s\" you must cancel or reset to draft statement "
@@ -441,6 +446,7 @@ msgid "You must set the same sign for second currency than amount."
 msgstr ""
 "U moet hetzelfde teken instellen voor de secundaire valuta dan het bedrag."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_statement_origin_delete_cancel_draft"
 msgid ""
 "To delete origin \"%(origin)s\" you must cancel or reset to draft statement "
@@ -451,12 +457,13 @@ msgstr ""
 
 msgctxt "model:ir.message,text:msg_statement_paid_invoice_draft"
 msgid ""
-"The validation of the statements will remove paid invoices from other "
+"Validating the statements will remove paid invoices from other draft "
 "statements."
 msgstr ""
 "Validatie van bankafschriften verwijdert betaalde facturen uit andere "
-"bankafschriften."
+"bankafschriften die in status concept staan."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_statement_post_pending_amount"
 msgid ""
 "To post statement \"%(statement)s\" you must create lines for pending "
@@ -465,6 +472,7 @@ msgstr ""
 "Om bankrekening afschrift \"%(statement)s\" te boeken, moet u eerst regels "
 "aanmaken voor het openstaand bedrag van %(amount)s uit \"%(origin)s\"."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_statement_wrong_end_balance"
 msgid ""
 "To validate statement \"%(statement)s\" you must change lines to have end "
@@ -473,18 +481,21 @@ msgstr ""
 "Om bankafschrift \"%(statement)s\" te valideren, moet u regels wijzigen om "
 "een eind balans van %(end_balance)s te verkrijgen in plaats van %(amount)s."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_statement_wrong_number_of_lines_add"
 msgid "To validate statement \"%(statement)s\" you must add %(n)s line(s)."
 msgstr ""
 "Om bankafschrift \"%(statement)s\" te kunnen valideren, moeten nog %(n)s "
 "regel(s) toegevoegd worden."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_statement_wrong_number_of_lines_remove"
 msgid "To validate statement \"%(statement)s\" you must remove %(n)s line(s)."
 msgstr ""
 "Om bankafschrift \"%(statement)s\" te kunnen valideren, moeten %(n)s "
 "regel(s) verwijderd worden."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_statement_wrong_total_amount"
 msgid ""
 "To validate statement \"%(statement)s\" you must change lines to have total "

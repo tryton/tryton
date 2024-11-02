@@ -17,14 +17,11 @@ msgstr "No s'ha pogut connectar amb el servidor."
 msgid "Connection error"
 msgstr "Error de connexió"
 
-msgid "Favorites"
-msgstr "Preferits"
-
-msgid "Manage..."
-msgstr "Gestiona..."
-
 msgid "Logout"
 msgstr "Sortir"
+
+msgid "Favorites"
+msgstr "Preferits"
 
 msgid "Action"
 msgstr "Acció"
@@ -71,7 +68,7 @@ msgstr "Relacionat"
 msgid "Print"
 msgstr "Imprimeix"
 
-msgid "E-Mail"
+msgid "Email"
 msgstr "Correu electrònic"
 
 msgid "Previous tab"
@@ -133,6 +130,9 @@ msgstr "No s'han trobat."
 
 msgid "Send you an email to reset your password."
 msgstr "Reb un correu electrònic per restablir la teva contrasenya."
+
+msgid "Reset forgotten password"
+msgstr "Restableix la contrasenya"
 
 msgid ""
 "A request to reset your password has been sent.\n"
@@ -312,11 +312,11 @@ msgstr "Afegeix un adjunt al registre"
 msgid "Add a note to the record"
 msgstr "Afegeix una nota al registre"
 
-msgid "E-Mail..."
+msgid "Email..."
 msgstr "Correu electrònic..."
 
-msgid "Send an e-mail using the record"
-msgstr "Envia un correu electrònic utilitzant el registre"
+msgid "Send an email using the record"
+msgstr "Envieu un correu electrònic utilitzant el registre"
 
 msgid "Export"
 msgstr "Exporta"
@@ -373,6 +373,9 @@ msgstr "Afegeix..."
 
 msgid "Preview"
 msgstr "Previsualitza"
+
+msgid "Manage..."
+msgstr "Gestiona..."
 
 msgid "Template"
 msgstr "Plantilla"
@@ -493,6 +496,9 @@ msgstr "Obre"
 
 msgid "Undelete"
 msgstr "Recupera"
+
+msgid "Restore"
+msgstr "Restaurar"
 
 msgid "Save As"
 msgstr "Anomena i desa"
@@ -712,7 +718,7 @@ msgid_plural "%1 records saved"
 msgstr[0] "%1 registre desat"
 msgstr[1] "%1 registres desats"
 
-msgid "E-mail %1"
+msgid "Email %1"
 msgstr "Correu electrònic %1"
 
 msgid "To:"

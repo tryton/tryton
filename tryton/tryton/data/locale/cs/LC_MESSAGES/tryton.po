@@ -259,7 +259,7 @@ msgid "Print..."
 msgstr "_Tisk..."
 
 #, fuzzy
-msgid "E-Mail..."
+msgid "Email..."
 msgstr "_Email..."
 
 msgid "Bold"
@@ -380,12 +380,6 @@ msgid "Help"
 msgstr "Nápo_věda"
 
 msgid "No result found."
-msgstr ""
-
-msgid "Favorites"
-msgstr ""
-
-msgid "Manage..."
 msgstr ""
 
 msgid "Action"
@@ -625,6 +619,9 @@ msgstr "Připojit k Tryton serveru"
 msgid "Profile:"
 msgstr ""
 
+msgid "Manage..."
+msgstr ""
+
 msgid "Host / Database information"
 msgstr ""
 
@@ -636,7 +633,7 @@ msgid "Unable to complete email entry"
 msgstr "Nemohu nastavit lokalizaci %s"
 
 #, fuzzy, python-format
-msgid "E-mail %s"
+msgid "Email %s"
 msgstr "Email %s"
 
 msgid "To:"
@@ -917,11 +914,11 @@ msgid "_Print..."
 msgstr "_Tisk..."
 
 #, fuzzy
-msgid "_E-Mail..."
+msgid "_Email..."
 msgstr "_Email..."
 
 #, fuzzy
-msgid "Send an e-mail using the record"
+msgid "Send an email using the record"
 msgstr "Uložit tento záznam"
 
 msgid "_Export Data..."
@@ -974,6 +971,9 @@ msgstr "Jméno pole"
 msgid "CSV Export: %s"
 msgstr ""
 
+msgid "Open"
+msgstr "Otevřít"
+
 #, fuzzy
 msgid "_Save Export"
 msgstr "Uložit exportu"
@@ -991,13 +991,6 @@ msgstr "<b>Předdefinované exporty</b>"
 
 msgid "Name"
 msgstr ""
-
-msgid "Open"
-msgstr "Otevřít"
-
-#, fuzzy
-msgid "Save"
-msgstr "_Uložit"
 
 #, fuzzy
 msgid "Listed Records"
@@ -1059,6 +1052,10 @@ msgstr ""
 msgid "Add and New"
 msgstr ""
 
+#, fuzzy
+msgid "Save"
+msgstr "_Uložit"
+
 msgid "Add"
 msgstr "Přidat"
 
@@ -1086,6 +1083,10 @@ msgstr "Smazat vybraný záznam"
 #, python-format
 msgid "CSV Import: %s"
 msgstr ""
+
+#, fuzzy
+msgid "Import"
+msgstr "Sestavy"
 
 #, fuzzy
 msgid "_Auto-Detect"
@@ -1299,6 +1300,10 @@ msgid "Remove selected record"
 msgstr "Smazat vybraný záznam"
 
 #, fuzzy
+msgid "Restore selected record"
+msgstr "Smazat vybraný záznam"
+
+#, fuzzy
 msgid "Open the record <F2>"
 msgstr "Otevřít záznam"
 
@@ -1315,6 +1320,10 @@ msgstr "Upravit vybraný záznam"
 
 #, fuzzy
 msgid "Delete selected record"
+msgstr "Smazat vybraný záznam"
+
+#, fuzzy
+msgid "Undelete selected record"
 msgstr "Smazat vybraný záznam"
 
 #, python-format

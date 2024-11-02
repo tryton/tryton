@@ -20,14 +20,11 @@ msgstr "Jegyzet hozzáadása a rekordhoz"
 msgid "Connection error"
 msgstr "Alkalmazáshiba"
 
-msgid "Favorites"
-msgstr "Könyvjelzők"
-
-msgid "Manage..."
-msgstr "Módosítás..."
-
 msgid "Logout"
 msgstr "Kilépés"
+
+msgid "Favorites"
+msgstr "Könyvjelzők"
 
 msgid "Action"
 msgstr "Művelet"
@@ -74,8 +71,8 @@ msgstr "Kapcsolat"
 msgid "Print"
 msgstr "Nyomtatás"
 
-msgid "E-Mail"
-msgstr "E-mail"
+msgid "Email"
+msgstr ""
 
 msgid "Previous tab"
 msgstr "Előző lap"
@@ -136,6 +133,9 @@ msgid "Not found."
 msgstr ""
 
 msgid "Send you an email to reset your password."
+msgstr ""
+
+msgid "Reset forgotten password"
 msgstr ""
 
 msgid ""
@@ -320,10 +320,11 @@ msgstr "Melléklet hozzáadása a rekordhoz"
 msgid "Add a note to the record"
 msgstr "Jegyzet hozzáadása a rekordhoz"
 
-msgid "E-Mail..."
+msgid "Email..."
 msgstr ""
 
-msgid "Send an e-mail using the record"
+#, fuzzy
+msgid "Send an email using the record"
 msgstr "E-mail küldése a rekord adataival"
 
 msgid "Export"
@@ -381,6 +382,9 @@ msgstr "Hozzáadás..."
 
 msgid "Preview"
 msgstr "Előnézet"
+
+msgid "Manage..."
+msgstr "Módosítás..."
 
 msgid "Template"
 msgstr "Sablon"
@@ -500,6 +504,9 @@ msgid "Open"
 msgstr "Megnyitás"
 
 msgid "Undelete"
+msgstr ""
+
+msgid "Restore"
 msgstr ""
 
 msgid "Save As"
@@ -730,7 +737,7 @@ msgid_plural "%1 records saved"
 msgstr[0] "Rekord elmentve."
 msgstr[1] "Rekord elmentve."
 
-msgid "E-mail %1"
+msgid "Email %1"
 msgstr ""
 
 msgid "To:"

@@ -29,24 +29,27 @@ msgstr "Ritardo"
 
 #, fuzzy
 msgctxt "field:marketing.automation.activity,email_click_rate:"
-msgid "E-mail Click Rate"
+msgid "Email Click Rate"
 msgstr "E-mail cliccate"
 
 #, fuzzy
 msgctxt "field:marketing.automation.activity,email_click_rate_trend:"
-msgid "E-mail Click Rate Trend"
+msgid "Email Click Rate Trend"
 msgstr "E-mail cliccate"
 
+#, fuzzy
 msgctxt "field:marketing.automation.activity,email_click_through_rate:"
-msgid "E-mail Click-Through Rate"
-msgstr ""
+msgid "Email Click-Through Rate"
+msgstr "E-mail cliccate"
 
+#, fuzzy
 msgctxt "field:marketing.automation.activity,email_click_through_rate_trend:"
-msgid "E-mail Click-Through Rate Trend"
-msgstr ""
+msgid "Email Click-Through Rate Trend"
+msgstr "E-mail cliccate"
 
+#, fuzzy
 msgctxt "field:marketing.automation.activity,email_clicked:"
-msgid "E-Mails Clicked"
+msgid "Emails Clicked"
 msgstr "E-mail cliccate"
 
 msgctxt "field:marketing.automation.activity,email_from:"
@@ -55,24 +58,27 @@ msgstr "Da"
 
 #, fuzzy
 msgctxt "field:marketing.automation.activity,email_open_rate:"
-msgid "E-mail Open Rate"
+msgid "Email Open Rate"
 msgstr "E-mail aperte"
 
 #, fuzzy
 msgctxt "field:marketing.automation.activity,email_open_rate_trend:"
-msgid "E-mail Open Rate Trend"
+msgid "Email Open Rate Trend"
 msgstr "E-mail aperte"
 
+#, fuzzy
 msgctxt "field:marketing.automation.activity,email_opened:"
-msgid "E-Mails Opened"
+msgid "Emails Opened"
 msgstr "E-mail aperte"
 
+#, fuzzy
 msgctxt "field:marketing.automation.activity,email_template:"
-msgid "E-Mail Template"
+msgid "Email Template"
 msgstr "Modello E-mail"
 
+#, fuzzy
 msgctxt "field:marketing.automation.activity,email_title:"
-msgid "E-Mail Title"
+msgid "Email Title"
 msgstr "Titolo E-mail"
 
 msgctxt "field:marketing.automation.activity,event:"
@@ -131,12 +137,14 @@ msgctxt "field:marketing.automation.record.activity,at:"
 msgid "At"
 msgstr "A"
 
+#, fuzzy
 msgctxt "field:marketing.automation.record.activity,email_clicked:"
-msgid "E-Mail Clicked"
-msgstr ""
+msgid "Email Clicked"
+msgstr "E-mail cliccate"
 
+#, fuzzy
 msgctxt "field:marketing.automation.record.activity,email_opened:"
-msgid "E-Mail Opened"
+msgid "Email Opened"
 msgstr "E-mail aperte"
 
 msgctxt "field:marketing.automation.record.activity,record:"
@@ -163,27 +171,28 @@ msgstr ""
 
 #, fuzzy
 msgctxt "field:marketing.automation.reporting.activity,email_click_rate:"
-msgid "E-mail Click Rate"
+msgid "Email Click Rate"
 msgstr "E-mail cliccate"
 
+#, fuzzy
 msgctxt ""
 "field:marketing.automation.reporting.activity,email_click_through_rate:"
-msgid "E-mail Click-Through Rate"
-msgstr ""
+msgid "Email Click-Through Rate"
+msgstr "E-mail cliccate"
 
 #, fuzzy
 msgctxt "field:marketing.automation.reporting.activity,email_clicked:"
-msgid "E-Mails Clicked"
+msgid "Emails Clicked"
 msgstr "E-mail cliccate"
 
 #, fuzzy
 msgctxt "field:marketing.automation.reporting.activity,email_open_rate:"
-msgid "E-mail Open Rate"
+msgid "Email Open Rate"
 msgstr "E-mail aperte"
 
 #, fuzzy
 msgctxt "field:marketing.automation.reporting.activity,email_opened:"
-msgid "E-Mails Opened"
+msgid "Emails Opened"
 msgstr "E-mail aperte"
 
 msgctxt "field:marketing.automation.reporting.activity,record_count:"
@@ -308,7 +317,7 @@ msgstr "Lasciare vuoto per il valore definito nel file di configurazione."
 
 msgctxt "help:marketing.automation.activity,email_template:"
 msgid ""
-"The HTML content of the E-mail.\n"
+"The HTML content of the email.\n"
 "The Genshi syntax can be used with 'record' in the evaluation context."
 msgstr ""
 
@@ -339,7 +348,7 @@ msgid "Activities"
 msgstr "Attività"
 
 msgctxt "model:ir.action,name:act_ir_email_form_relate_activity"
-msgid "E-mails"
+msgid "Emails"
 msgstr ""
 
 msgctxt "model:ir.action,name:act_record_activity_form"
@@ -407,21 +416,24 @@ msgctxt ""
 msgid "Stopped"
 msgstr "Fermato"
 
+#, python-format
 msgctxt "model:ir.message,text:msg_activity_invalid_condition"
 msgid ""
 "Invalid condition \"%(condition)s\" in activity \"%(activity)s\" with "
 "exception \"%(exception)s\"."
 msgstr ""
 
+#, python-format
 msgctxt "model:ir.message,text:msg_activity_invalid_email_template"
 msgid ""
-"Invalid e-mail template in activity \"%(activity)s\" with exception "
+"Invalid email template in activity \"%(activity)s\" with exception "
 "\"%(exception)s\"."
 msgstr ""
 
+#, python-format
 msgctxt "model:ir.message,text:msg_activity_invalid_email_title"
 msgid ""
-"Invalid e-mail title in activity \"%(activity)s\" with exception "
+"Invalid email title in activity \"%(activity)s\" with exception "
 "\"%(exception)s\"."
 msgstr ""
 
@@ -437,17 +449,20 @@ msgctxt "model:ir.message,text:msg_record_uuid_unique"
 msgid "UUID of record must be unique."
 msgstr ""
 
+#, python-format
 msgctxt "model:ir.message,text:msg_scenario_invalid_domain"
 msgid "Invalid domain in scenario \"%(scenario)s\" with exception \"%(exception)s\"."
 msgstr ""
 
+#, fuzzy
 msgctxt "model:ir.model.button,string:record_activity_on_email_clicked_button"
-msgid "E-Mail Clicked"
-msgstr ""
+msgid "Email Clicked"
+msgstr "E-mail cliccate"
 
+#, fuzzy
 msgctxt "model:ir.model.button,string:record_activity_on_email_opened_button"
-msgid "E-Mail Opened"
-msgstr ""
+msgid "Email Opened"
+msgstr "E-mail aperte"
 
 #, fuzzy
 msgctxt "model:ir.model.button,string:record_block_button"
@@ -530,33 +545,40 @@ msgctxt "selection:ir.cron,method:"
 msgid "Trigger Marketing Scenarios"
 msgstr ""
 
+#, fuzzy
 msgctxt "selection:marketing.automation.activity,action:"
-msgid "Send E-Mail"
+msgid "Send email"
 msgstr "Invia E-mail"
 
+#, fuzzy
 msgctxt "selection:marketing.automation.activity,event:"
-msgid "E-Mail Clicked"
-msgstr ""
+msgid "Email Clicked"
+msgstr "E-mail cliccate"
 
+#, fuzzy
 msgctxt "selection:marketing.automation.activity,event:"
-msgid "E-Mail Opened"
-msgstr ""
+msgid "Email Opened"
+msgstr "E-mail aperte"
 
+#, fuzzy
 msgctxt "selection:marketing.automation.activity,on:"
-msgid "E-Mail Clicked"
-msgstr ""
+msgid "Email Clicked"
+msgstr "E-mail cliccate"
 
+#, fuzzy
 msgctxt "selection:marketing.automation.activity,on:"
-msgid "E-Mail Not Clicked"
-msgstr ""
+msgid "Email Not Clicked"
+msgstr "E-mail cliccate"
 
+#, fuzzy
 msgctxt "selection:marketing.automation.activity,on:"
-msgid "E-Mail Not Opened"
-msgstr ""
+msgid "Email Not Opened"
+msgstr "E-mail aperte"
 
+#, fuzzy
 msgctxt "selection:marketing.automation.activity,on:"
-msgid "E-Mail Opened"
-msgstr ""
+msgid "Email Opened"
+msgstr "E-mail aperte"
 
 msgctxt "selection:marketing.automation.activity,parent:"
 msgid "Activity"

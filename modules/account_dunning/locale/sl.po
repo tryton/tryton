@@ -113,28 +113,28 @@ msgstr "Partner"
 
 msgctxt "help:account.configuration,default_dunning_procedure:"
 msgid "The default dunning procedure for new customers."
-msgstr ""
+msgstr "Privzeti postopek opominjanja za nove stranke."
 
 msgctxt ""
 "help:account.configuration.default_dunning_procedure,default_dunning_procedure:"
 msgid "The default dunning procedure for new customers."
-msgstr ""
+msgstr "Privzeti postopek opominjanja za nove stranke."
 
 msgctxt "help:account.dunning,age:"
 msgid "How long the dunning has been at the level."
-msgstr ""
+msgstr "Trajanje zapadlih terjatev na tej ravni."
 
 msgctxt "help:account.dunning,blocked:"
 msgid "Check to block further levels of the procedure."
-msgstr ""
+msgstr "Označite, da blokirate nadaljnje ravni postopka."
 
 msgctxt "help:account.dunning,company:"
 msgid "Make the dunning belong to the company."
-msgstr ""
+msgstr "Naj zapadle terjatve pripadajo podjetju."
 
 msgctxt "help:account.dunning,date:"
 msgid "When the dunning reached the level."
-msgstr ""
+msgstr "Ko je zapadle terjave dosežejo raven."
 
 msgctxt "help:account.dunning,line:"
 msgid "The receivable line to dun for."
@@ -142,15 +142,15 @@ msgstr ""
 
 msgctxt "help:account.dunning.create.start,date:"
 msgid "Create dunning up to this date."
-msgstr ""
+msgstr "Ustvari opomin do tega datuma."
 
 msgctxt "help:account.dunning.level,overdue:"
 msgid "When the level should be applied."
-msgstr ""
+msgstr "Kdaj se uporabi ta raven."
 
 msgctxt "help:account.dunning.procedure,name:"
 msgid "The main identifier of the Dunning Procedure."
-msgstr ""
+msgstr "Glavni identifikator procesa zapadlih terjatev."
 
 msgctxt "model:account.configuration.default_dunning_procedure,name:"
 msgid "Account Configuration Default Dunning Procedure"
@@ -176,101 +176,86 @@ msgctxt "model:account.dunning.process.start,name:"
 msgid "Create Account Dunning"
 msgstr "Obdelava izterjave"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_dunning_form"
 msgid "Dunnings"
-msgstr "Dunnings"
+msgstr "Izterjave"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_dunning_party"
 msgid "Dunnings"
-msgstr "Dunnings"
+msgstr "Izterjave"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_dunning_procedure_form"
 msgid "Procedures"
-msgstr "Postopek"
+msgstr "Postopki"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_reschedule_dunning_wizard"
 msgid "Reschedule Dunning"
-msgstr "Create Dunnings"
+msgstr "Ustvari opomin"
 
-#, fuzzy
 msgctxt "model:ir.action,name:wizard_dunning_create"
 msgid "Create Dunnings"
-msgstr "Create Dunnings"
+msgstr "Ustvari opomine"
 
-#, fuzzy
 msgctxt "model:ir.action,name:wizard_dunning_process"
 msgid "Process Dunning"
-msgstr "Process Dunning"
+msgstr "Obdelaj opomine"
 
-#, fuzzy
 msgctxt "model:ir.action.act_window.domain,name:act_dunning_form_domain_all"
 msgid "All"
-msgstr "All"
+msgstr "Vse"
 
-#, fuzzy
 msgctxt "model:ir.action.act_window.domain,name:act_dunning_form_domain_draft"
 msgid "Draft"
-msgstr "Draft"
+msgstr "Osnutek"
 
 msgctxt "model:ir.action.act_window.domain,name:act_dunning_form_domain_final"
 msgid "Final"
-msgstr ""
+msgstr "Končno"
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_dunning_form_domain_waiting"
 msgid "Waiting"
-msgstr ""
+msgstr "V čakanju"
 
-#, fuzzy
 msgctxt "model:ir.message,text:msg_dunning_line_unique"
 msgid "Line can be used only once on dunning."
-msgstr "Postavka se lahko na izterjavi uporabi samo enkrat."
+msgstr "Postavka se lahko na opominu uporabi samo enkrat."
 
 msgctxt "model:ir.model.button,string:dunning_reschedule_button"
 msgid "Reschedule"
-msgstr ""
+msgstr "Nov plan plačil"
 
 msgctxt "model:ir.rule.group,name:rule_group_dunning_companies"
 msgid "User in companies"
-msgstr ""
+msgstr "Uporabnik v družbah"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_dunning_configuration"
 msgid "Dunnings"
-msgstr "Dunnings"
+msgstr "Izterjave"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_dunning_create"
 msgid "Create Dunnings"
-msgstr "Create Dunnings"
+msgstr "Ustvari opomine"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_dunning_form"
 msgid "Dunnings"
-msgstr "Dunnings"
+msgstr "Izterjave"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_dunning_procedure_form"
 msgid "Procedures"
-msgstr "Postopek"
+msgstr "Postopki"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_dunnings"
 msgid "Dunnings"
-msgstr "Dunnings"
+msgstr "Izterjave"
 
 msgctxt "model:party.party.dunning_procedure,name:"
 msgid "Party Dunning Procedure"
 msgstr "Partnerjev postopek izterjave"
 
-#, fuzzy
 msgctxt "model:res.group,name:group_dunning"
 msgid "Dunning"
-msgstr "Dunning"
+msgstr "Izterjava"
 
 msgctxt "selection:account.dunning,state:"
 msgid "Draft"
@@ -278,11 +263,11 @@ msgstr "V pripravi"
 
 msgctxt "selection:account.dunning,state:"
 msgid "Final"
-msgstr ""
+msgstr "Končno"
 
 msgctxt "selection:account.dunning,state:"
 msgid "Waiting"
-msgstr ""
+msgstr "V čakanju"
 
 msgctxt "view:account.configuration:"
 msgid "Dunning"

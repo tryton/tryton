@@ -117,6 +117,7 @@ msgctxt ""
 msgid "Validated"
 msgstr "Validata"
 
+#, python-format
 msgctxt "model:ir.message,text:msg_one_sale_at_time"
 msgid ""
 "You cannot validate more than one amendment at the same time for sale "

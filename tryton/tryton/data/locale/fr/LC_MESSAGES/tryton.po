@@ -156,7 +156,7 @@ msgid "Reset forgotten password"
 msgstr "Réinitialiser le mot de passe oublié"
 
 msgid "Send you an email to reset your password."
-msgstr "Envoyez-vous un email pour réinitialiser votre mot de passe."
+msgstr "Envoyez-vous un courriel pour réinitialiser votre mot de passe."
 
 msgid ""
 "A request to reset your password has been sent.\n"
@@ -244,8 +244,8 @@ msgstr "Rapport..."
 msgid "Print..."
 msgstr "Imprimer..."
 
-msgid "E-Mail..."
-msgstr "E-mail..."
+msgid "Email..."
+msgstr "Courriel..."
 
 msgid "Bold"
 msgstr "Gras"
@@ -354,12 +354,6 @@ msgstr "Aide"
 
 msgid "No result found."
 msgstr "Aucun résultat trouvé."
-
-msgid "Favorites"
-msgstr "Favoris"
-
-msgid "Manage..."
-msgstr "Gérer..."
 
 msgid "Action"
 msgstr "Action"
@@ -593,6 +587,9 @@ msgstr "Se connecter au serveur Tryton"
 msgid "Profile:"
 msgstr "Profil :"
 
+msgid "Manage..."
+msgstr "Gérer..."
+
 msgid "Host / Database information"
 msgstr "Hôte / Port"
 
@@ -600,11 +597,11 @@ msgid "User name:"
 msgstr "Nom d'utilisateur :"
 
 msgid "Unable to complete email entry"
-msgstr "Impossible de compléter l'entrée d'e-mail"
+msgstr "Impossible de compléter l'entrée d'adresse électronique"
 
 #, python-format
-msgid "E-mail %s"
-msgstr "E-mail %s"
+msgid "Email %s"
+msgstr "Courriel %s"
 
 msgid "To:"
 msgstr "À :"
@@ -851,11 +848,11 @@ msgstr "_Rapport..."
 msgid "_Print..."
 msgstr "_Imprimer..."
 
-msgid "_E-Mail..."
-msgstr "_E-mail..."
+msgid "_Email..."
+msgstr "_Courriel..."
 
-msgid "Send an e-mail using the record"
-msgstr "Envoyer un e-mail en utilisant l'enregistrement"
+msgid "Send an email using the record"
+msgstr "Envoyer un courriel en utilisant l'enregistrement"
 
 msgid "_Export Data..."
 msgstr "_Export de données..."
@@ -906,6 +903,9 @@ msgstr "Nom du champ"
 msgid "CSV Export: %s"
 msgstr "Export CSV : %s"
 
+msgid "Open"
+msgstr "Ouvrir"
+
 msgid "_Save Export"
 msgstr "Enregi_strer l'export"
 
@@ -920,12 +920,6 @@ msgstr "<b>Exportations prédéfinies</b>"
 
 msgid "Name"
 msgstr "Nom"
-
-msgid "Open"
-msgstr "Ouvrir"
-
-msgid "Save"
-msgstr "Enregistrer"
 
 msgid "Listed Records"
 msgstr "Enregistrements listés"
@@ -984,6 +978,9 @@ msgstr "Enregistrer et nouveau"
 msgid "Add and New"
 msgstr "Ajouter et nouveau"
 
+msgid "Save"
+msgstr "Enregistrer"
+
 msgid "Add"
 msgstr "Ajouter"
 
@@ -1008,6 +1005,9 @@ msgstr "Restaurer l'enregistrement sélectionné<Ins>"
 #, python-format
 msgid "CSV Import: %s"
 msgstr "Import CSV : %s"
+
+msgid "Import"
+msgstr "Importer"
 
 msgid "_Auto-Detect"
 msgstr "Détection _automatique"
@@ -1209,6 +1209,9 @@ msgstr "Ajouter un enregistrement existant"
 msgid "Remove selected record"
 msgstr "Supprimer l'enregistrement sélectionné"
 
+msgid "Restore selected record"
+msgstr "Restaurer l'enregistrement sélectionné"
+
 msgid "Open the record <F2>"
 msgstr "Ouvrir l'enregistrement <F2>"
 
@@ -1223,6 +1226,9 @@ msgstr "Éditer l'enregistrement sélectionné"
 
 msgid "Delete selected record"
 msgstr "Supprimer l'enregistrement sélectionné"
+
+msgid "Undelete selected record"
+msgstr "Annuler la suppression de l'enregistrement sélectionné"
 
 #, python-format
 msgid "%s%%"

@@ -3,12 +3,12 @@ msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "field:marketing.email,email:"
-msgid "E-mail"
+msgid "Email"
 msgstr "Correo electrónico"
 
 msgctxt "field:marketing.email,email_token:"
-msgid "E-mail Token"
-msgstr "Token Correo electrónico"
+msgid "Email Token"
+msgstr "Token de correo electrónico"
 
 msgctxt "field:marketing.email,list_:"
 msgid "List"
@@ -63,7 +63,7 @@ msgid "URLs"
 msgstr "URLs"
 
 msgctxt "field:marketing.email.send_test,email:"
-msgid "E-Mail"
+msgid "Email"
 msgstr "Correo electrónico"
 
 msgctxt "field:marketing.email.send_test,list_:"
@@ -88,7 +88,7 @@ msgid "Messages"
 msgstr "Mensajes"
 
 msgctxt "model:ir.action,name:act_email_relate_list"
-msgid "E-mails"
+msgid "Emails"
 msgstr "Correos electrónicos"
 
 msgctxt "model:ir.action,name:report_email_subscribe"
@@ -116,6 +116,7 @@ msgctxt ""
 msgid "Sending"
 msgstr "Enviando"
 
+#, python-format
 msgctxt "model:ir.message,text:msg_email_invalid"
 msgid "The email address \"%(email)s\" for \"%(record)s\" is not valid."
 msgstr "El correo electrónico \"%(email)s\" de \"%(record)s\" no es valido."
@@ -126,6 +127,7 @@ msgstr ""
 "Las direcciones de correo electrónico solo se pueden suscribir una vez a "
 "cada lista."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_message_invalid_content"
 msgid "Invalid content in message \"%(message)s\" with exception \"%(exception)s\"."
 msgstr ""
@@ -149,19 +151,19 @@ msgid "Mailing Lists"
 msgstr "Listas de correos electrónicos"
 
 msgctxt "model:marketing.email,name:"
-msgid "Marketing E-mail"
-msgstr "Correos electrónicos de marketing"
+msgid "Marketing Email"
+msgstr "Email Marketing"
 
 msgctxt "model:marketing.email.list,name:"
 msgid "Marketing Mailing List"
 msgstr "Lista de correos de marketing"
 
 msgctxt "model:marketing.email.message,name:"
-msgid "Marketing E-mail Message"
-msgstr "Mensaje de correo electrónico de marketing"
+msgid "Marketing Email Message"
+msgstr "Mensaje de Email Marketing"
 
 msgctxt "model:marketing.email.send_test,name:"
-msgid "Send Test E-mail"
+msgid "Send Test Email"
 msgstr "Enviar correo electrónico de prueba"
 
 msgctxt "report:marketing.email.subscribe:"
