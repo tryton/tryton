@@ -44,6 +44,8 @@ Get accounts::
     >>> accounts['receivable'].save()
     >>> accounts['revenue'].code = '700000'
     >>> accounts['revenue'].save()
+    >>> accounts['cash'].code = '550000'
+    >>> accounts['cash'].save()
 
 Create taxes::
 
