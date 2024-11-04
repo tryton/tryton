@@ -318,6 +318,16 @@ class PYSONTestCase(unittest.TestCase):
         self.assertFalse(pyson.PYSONDecoder().decode(eval))
 
         eval = pyson.PYSONEncoder().encode(pyson.Greater(
+                pyson.Eval('foo', datetime.date(2020, 1, 1)),
+                datetime.date(2020, 1, 1)))
+        self.assertFalse(pyson.PYSONDecoder().decode(eval))
+
+        eval = pyson.PYSONEncoder().encode(pyson.Greater(
+                pyson.Eval('foo', pyson.Date(2020, 1, 1)),
+                pyson.Date(2020, 1, 1)))
+        self.assertFalse(pyson.PYSONDecoder().decode(eval))
+
+        eval = pyson.PYSONEncoder().encode(pyson.Greater(
                 pyson.Date(2020, 1, 1),
                 pyson.DateTime(2020, 1, 1, 0, 0, 0, 1)))
         self.assertFalse(pyson.PYSONDecoder().decode(eval))
