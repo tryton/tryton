@@ -1,3 +1,7 @@
+
+Version 7.4.0 - 2024-11-04
+--------------------------
+* Bug fixes (see mercurial logs for details)
 * Allow reuse coupon number
 * Add validity dates to coupon number
 

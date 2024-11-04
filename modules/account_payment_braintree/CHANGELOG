@@ -1,3 +1,7 @@
+
+Version 7.4.0 - 2024-11-04
+--------------------------
+* Bug fixes (see mercurial logs for details)
 * Add button to update customer
 * Warn when changing credential
 

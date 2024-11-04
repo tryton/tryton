@@ -1,3 +1,7 @@
+
+Version 7.4.0 - 2024-11-04
+--------------------------
+* Bug fixes (see mercurial logs for details)
 * Add configuration for maximum size of document incoming request
 
 Version 7.2.0 - 2024-04-29

@@ -1,3 +1,7 @@
+
+Version 7.4.0 - 2024-11-04
+--------------------------
+* Bug fixes (see mercurial logs for details)
 * Do not include cancelled moves in measurements
 * Store internal measurements for final states of shipments
 

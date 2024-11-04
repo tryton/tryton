@@ -1,3 +1,7 @@
+
+Version 7.4.0 - 2024-11-04
+--------------------------
+* Bug fixes (see mercurial logs for details)
 * Raise a warning when submitting complaint for the same origin
 
 Version 7.2.0 - 2024-04-29
