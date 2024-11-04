@@ -431,7 +431,8 @@
                     if ( (!(statement instanceof Sao.PYSON.DateTime ||
                         statement instanceof Sao.PYSON.Date ||
                         statement instanceof Sao.PYSON.TimeDelta)) &&
-                        (jQuery(statement.types()).not(['number']).length) ) {
+                        (jQuery(statement.types()).not(
+                            ['number', 'object']).length) ) {
                         throw 'statement must be an integer, float, ' +
                             'date, datetime or timedelta';
                     }

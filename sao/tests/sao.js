@@ -520,6 +520,20 @@
             'decode(Greater(PYSON.Date(2020, 1, 1), Date(2020, 0, 1)))');
 
         eval_ = new Sao.PYSON.Encoder().encode(new Sao.PYSON.Greater(
+            new Sao.PYSON.Eval('foo', Sao.Date(2020, 0, 1)),
+            Sao.Date(2020, 0, 1)));
+        QUnit.strictEqual(new Sao.PYSON.Decoder().decode(eval_), false,
+            'decode(Greater(PYSON.Eval("foo", Date(2020, 1, 1)), ' +
+            'Date(2020, 0, 1)))');
+
+        eval_ = new Sao.PYSON.Encoder().encode(new Sao.PYSON.Greater(
+            new Sao.PYSON.Eval('foo', new Sao.PYSON.Date(2020, 1, 1)),
+            new Sao.PYSON.Date(2020, 1, 1)));
+        QUnit.strictEqual(new Sao.PYSON.Decoder().decode(eval_), false,
+            'decode(Greater(PYSON.Eval("foo", PYSON.Date(2020, 1, 1)), ' +
+            'PYSON.Date(2020, 1, 1)))');
+
+        eval_ = new Sao.PYSON.Encoder().encode(new Sao.PYSON.Greater(
             new Sao.PYSON.Date(2020, 1, 1),
             new Sao.PYSON.DateTime(2020, 1, 1, 0, 0, 0, 1)));
         QUnit.strictEqual(new Sao.PYSON.Decoder().decode(eval_), false,
