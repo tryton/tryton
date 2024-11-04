@@ -126,6 +126,13 @@ The supplier sends more than expected::
     >>> move, = shipment.supplier_moves
     >>> move.quantity = 300
     >>> shipment.click('ship')
+    Traceback (most recent call last):
+        ...
+    MoveOriginWarning: ...
+    >>> config.skip_warning = True
+    >>> shipment.click('ship')
+    >>> shipment.state
+    'shipped'
 
 Another move has been created to synchronize supplier and customer quantities::
 

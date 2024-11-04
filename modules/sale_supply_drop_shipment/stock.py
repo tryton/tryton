@@ -499,6 +499,15 @@ class ShipmentDrop(
         Move = pool.get('stock.move')
         Move.do([m for s in shipments for m in s.supplier_moves])
         cls._synchronize_moves(shipments)
+        to_assign, to_delete = [], []
+        for shipment in shipments:
+            for move in shipment.customer_moves:
+                if move.quantity:
+                    to_assign.append(move)
+                else:
+                    to_delete.append(move)
+        Move.delete(to_delete)
+        Move.assign(to_assign)
 
     @classmethod
     @ModelView.button
