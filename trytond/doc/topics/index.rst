@@ -6,6 +6,9 @@ Using trytond
 
 Introduction key parts of ``trytond``:
 
+
+For Administrator:
+
 .. toctree::
    :maxdepth: 1
 
@@ -14,25 +17,31 @@ Introduction key parts of ``trytond``:
    setup_database
    logs
    start_server
+   access_rights
+
+For Developer:
+
+.. toctree::
+   :maxdepth: 1
+
+   modules/index
    models/index
-   backend_types
    models/fields_default_value
    models/fields_on_change
    domain
    pyson
-   access_rights
-   user_errors_warnings
-   triggers
-   actions
    views/index
    views/extension
+   actions
    wizard
    reports/index
-   rpc
-   task_queue
-   cron
-   user_application
-   bus
-   modules/index
    translation
+   user_errors_warnings
+   bus
+   cron
+   task_queue
+   triggers
+   backend_types
+   rpc
+   user_application
    testing

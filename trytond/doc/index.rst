@@ -24,7 +24,6 @@ The model layer
   :ref:`Field types <ref-models-fields-types>` |
   :ref:`Domain syntax <topics-domain>` |
   :ref:`Access rights <topics-access_rights>` |
-  :ref:`Triggers <topics-triggers>`
 
 * **Wizards:**
   :ref:`Wizards definition <topics-wizard>`
@@ -53,7 +52,7 @@ Contents
 ========
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 1
 
    topics/index
    ref/index
