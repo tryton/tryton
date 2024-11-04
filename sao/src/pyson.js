@@ -406,7 +406,8 @@
                 if (statement instanceof Sao.PYSON.PYSON) {
                     if ( (!(statement instanceof Sao.PYSON.DateTime ||
                         statement instanceof Sao.PYSON.Date)) &&
-                        (jQuery(statement.types()).not(['number']).length) ) {
+                        (jQuery(statement.types()).not(
+                            ['number', 'object']).length) ) {
                         throw 'statement must be an integer, float, ' +
                             'date or datetime';
                     }
