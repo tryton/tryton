@@ -49,6 +49,7 @@ requires.append(get_require_version('trytond'))
 
 tests_require = [
     get_require_version('proteus'),
+    get_require_version('trytond_sale_amendment'),
     get_require_version('trytond_stock_split'),
     ]
 

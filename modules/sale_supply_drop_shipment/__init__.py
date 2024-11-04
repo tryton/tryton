@@ -31,6 +31,10 @@ def register():
         party.Erase,
         module='sale_supply_drop_shipment', type_='wizard')
     Pool.register(
+        sale.Amendment,
+        module='sale_supply_drop_shipment', type_='model',
+        depends=['sale_amendment'])
+    Pool.register(
         stock.ShipmentDropSplit,
         stock.MoveSplit,
         module='sale_supply_drop_shipment', type_='model',

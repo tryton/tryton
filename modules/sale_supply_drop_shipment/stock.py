@@ -178,6 +178,7 @@ class ShipmentDrop(
                 ('draft', 'cancelled'),
                 ('waiting', 'cancelled'),
                 ('waiting', 'draft'),
+                ('waiting', 'waiting'),
                 ('cancelled', 'draft'),
                 ('shipped', 'done'),
                 ('shipped', 'cancelled'),

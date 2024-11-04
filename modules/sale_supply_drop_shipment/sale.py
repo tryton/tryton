@@ -133,3 +133,21 @@ class Line(metaclass=PoolMeta):
                 move.from_location = self.sale.drop_location
                 moves.append(move)
         return moves
+
+
+class Amendment(metaclass=PoolMeta):
+    __name__ = 'sale.amendment'
+
+    @classmethod
+    def _clear_sale(cls, sales):
+        pool = Pool()
+        Shipment = pool.get('stock.shipment.drop')
+        shipments = set()
+        for sale in sales:
+            for shipment in sale.drop_shipments:
+                if shipment.state == 'waiting':
+                    shipments.add(shipment)
+
+        super()._clear_sale(sales)
+
+        Shipment.wait(Shipment.browse(list(shipments)))
