@@ -19,7 +19,11 @@ class Category(metaclass=PoolMeta):
             },
         help='Use the tariff codes defined on the parent category.')
     tariff_codes = fields.One2Many('product-customs.tariff.code',
-        'product', 'Tariff Codes', order=[('sequence', 'ASC'), ('id', 'ASC')],
+        'product', "Tariff Codes",
+        order=[
+            ('sequence', 'ASC NULLS FIRST'),
+            ('id', 'ASC'),
+            ],
         states={
             'invisible': (Eval('tariff_codes_parent', False)
                 | ~Eval('customs', False)),
@@ -98,7 +102,11 @@ class Template(metaclass=PoolMeta):
     tariff_codes_category = fields.Boolean("Use Category's Tariff Codes",
         help='Use the tariff codes defined on the category.')
     tariff_codes = fields.One2Many('product-customs.tariff.code',
-        'product', 'Tariff Codes', order=[('sequence', 'ASC'), ('id', 'ASC')],
+        'product', "Tariff Codes",
+        order=[
+            ('sequence', 'ASC NULLS FIRST'),
+            ('id', 'ASC'),
+            ],
         states={
             'invisible': ((Eval('type') == 'service')
                 | Eval('tariff_codes_category', False)),
