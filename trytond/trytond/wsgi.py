@@ -6,6 +6,7 @@ import logging
 import os
 import posixpath
 import sys
+import time
 import traceback
 import urllib.parse
 from functools import wraps
@@ -142,51 +143,58 @@ class TrytondWSGI(object):
         return response
 
     def wsgi_app(self, environ, start_response):
-        for cls in self.protocols:
-            if cls.content_type in environ.get('CONTENT_TYPE', ''):
-                request = cls.request(environ)
-                break
-        else:
-            request = Request(environ)
-        logger.info('%s', request)
+        def duration():
+            return (time.monotonic() - started) * 1000
+        started, request = time.monotonic(), None
+        try:
 
-        origin = request.headers.get('Origin')
-        origin_host = urllib.parse.urlparse(origin).netloc if origin else ''
-        host = request.headers.get('Host')
-        if origin and origin != 'null' and origin_host != host:
-            cors = filter(
-                None, config.get('web', 'cors', default='').splitlines())
-            if origin not in cors:
-                if (origin.startswith('moz-extension://')
-                        or origin.startswith('chrome-extension://')):
-                    origin = 'null'
-                else:
-                    abort(HTTPStatus.FORBIDDEN)
-        if origin == 'null':
-            adapter = self.url_map.bind_to_environ(request.environ)
-            endpoint = adapter.match()[0]
-            if not getattr(endpoint, 'allow_null_origin', False):
-                abort(HTTPStatus.FORBIDDEN)
-
-        with processing(request):
-            data = self.dispatch_request(request)
-            if not isinstance(data, (Response, exceptions.HTTPException)):
-                response = self.make_response(request, data)
+            for cls in self.protocols:
+                if cls.content_type in environ.get('CONTENT_TYPE', ''):
+                    request = cls.request(environ)
+                    break
             else:
-                response = data
+                request = Request(environ)
 
-        if origin and isinstance(response, Response):
-            response.headers['Access-Control-Allow-Origin'] = origin
-            response.headers['Vary'] = 'Origin'
-            method = request.headers.get('Access-Control-Request-Method')
-            if method:
-                response.headers['Access-Control-Allow-Methods'] = method
-            headers = request.headers.get('Access-Control-Request-Headers')
-            if headers:
-                response.headers['Access-Control-Allow-Headers'] = headers
-            response.headers['Access-Control-Max-Age'] = config.getint(
-                'web', 'cache_timeout')
-        return response(environ, start_response)
+            origin = request.headers.get('Origin')
+            origin_host = (
+                urllib.parse.urlparse(origin).netloc if origin else '')
+            host = request.headers.get('Host')
+            if origin and origin != 'null' and origin_host != host:
+                cors = filter(
+                    None, config.get('web', 'cors', default='').splitlines())
+                if origin not in cors:
+                    if (origin.startswith('moz-extension://')
+                            or origin.startswith('chrome-extension://')):
+                        origin = 'null'
+                    else:
+                        abort(HTTPStatus.FORBIDDEN)
+            if origin == 'null':
+                adapter = self.url_map.bind_to_environ(request.environ)
+                endpoint = adapter.match()[0]
+                if not getattr(endpoint, 'allow_null_origin', False):
+                    abort(HTTPStatus.FORBIDDEN)
+
+            with processing(request):
+                data = self.dispatch_request(request)
+                if not isinstance(data, (Response, exceptions.HTTPException)):
+                    response = self.make_response(request, data)
+                else:
+                    response = data
+
+            if origin and isinstance(response, Response):
+                response.headers['Access-Control-Allow-Origin'] = origin
+                response.headers['Vary'] = 'Origin'
+                method = request.headers.get('Access-Control-Request-Method')
+                if method:
+                    response.headers['Access-Control-Allow-Methods'] = method
+                headers = request.headers.get('Access-Control-Request-Headers')
+                if headers:
+                    response.headers['Access-Control-Allow-Headers'] = headers
+                response.headers['Access-Control-Max-Age'] = config.getint(
+                    'web', 'cache_timeout')
+            return response(environ, start_response)
+        finally:
+            logger.info('%s in %i ms', request, duration())
 
     def __call__(self, environ, start_response):
         return self.wsgi_app(environ, start_response)
