@@ -34,5 +34,21 @@ this repository contains the full copyright notices and license terms. -->
             <field name="type">form</field>
             <field name="name">product-tariff_code_form</field>
         </record>
+
+        <record model="ir.model.access" id="access_product-tariff_code">
+            <field name="model">product-customs.tariff.code</field>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_product-tariff_code_customs_admin">
+            <field name="model">product-customs.tariff.code</field>
+            <field name="group" ref="group_customs_admin"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
     </data>
 </tryton>
