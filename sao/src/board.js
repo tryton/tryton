@@ -7,6 +7,7 @@
         _parse_board: function(node, attributes) {
             var container = new Sao.View.Form.Container(
                 Number(node.getAttribute('col') || 4));
+            this.view.containers.push(container);
             this.view.el.append(container.el);
             this.parse_child(node, container);
             if (this._containers.length > 0) {
@@ -52,9 +53,23 @@
             for (i = 0; i < this.actions.length; i++) {
                 this.actions[i].display();
             }
-            for (i = 0; i < this.state_widgets.length; i++) {
-                this.state_widgets[i].set_state(null);
+            var promesses = [];
+            for (let state_widget of this.state_widgets.toReversed()) {
+                var prm = state_widget.set_state(null);
+                if (prm) {
+                    promesses.push(prm);
+                }
             }
+            for (const container of this.containers) {
+                container.set_grid_template();
+            }
+            // re-set the grid templates for the StateWidget that are
+            // asynchronous
+            jQuery.when.apply(jQuery, promesses).done(() => {
+                for (const container of this.containers) {
+                    container.set_grid_template();
+                }
+            });
         },
         active_changed: function(event_action) {
             for (const action of this.actions) {
