@@ -192,12 +192,12 @@ class Transaction(object):
             self.counter = 0
             self._datamanagers = []
 
+            self.connection = database.get_connection(readonly=readonly,
+                autocommit=autocommit, statement_timeout=timeout)
             count = 0
             while True:
                 if count:
                     time.sleep(0.002 * (_retry - count))
-                self.connection = database.get_connection(readonly=readonly,
-                    autocommit=autocommit, statement_timeout=timeout)
                 try:
                     lock_tables = extras.get('_lock_tables', [])
                     for table in lock_tables:
